@@ -284,24 +284,19 @@ void Smb4KNetworkBrowserItem::setMounted( Smb4KShare *share, MountFlag flag )
     {
       case Mounted:
       {
-        if ( !m_share.isMounted() )
+        // Set the font
+        for ( int i = 0; i < columnCount(); ++i )
         {
-          for ( int i = 0; i < columnCount(); ++i )
-          {
-            QFont f = font( i );
-            f.setItalic( true );
-            setFont( i, f );
-          }
+          QFont f = font( i );
+          f.setItalic( true );
+          setFont( i, f );
+        }
 
-          QStringList overlays;
-          overlays.append( "emblem-mounted" );
-          m_icon = KIcon( "folder-remote", KIconLoader::global(), overlays );
-          setIcon( Network, m_icon );
-        }
-        else
-        {
-          // Do nothing
-        }
+        // Set the icon
+        QStringList overlays;
+        overlays.append( "emblem-mounted" );
+        m_icon = KIcon( "folder-remote", KIconLoader::global(), overlays );
+        setIcon( Network, m_icon );
 
         // Set the mount releated data of the share.
         m_share.setMountData( share );
@@ -310,22 +305,17 @@ void Smb4KNetworkBrowserItem::setMounted( Smb4KShare *share, MountFlag flag )
       }
       case NotMounted:
       {
-        if ( m_share.isMounted() )
+        // Set the font
+        for ( int i = 0; i < columnCount(); ++i )
         {
-          for ( int i = 0; i < columnCount(); ++i )
-          {
-            QFont f = font( i );
-            f.setItalic( false );
-            setFont( i, f );
-          }
+          QFont f = font( i );
+          f.setItalic( false );
+          setFont( i, f );
+        }
 
-          m_icon = KIcon( "folder-remote" );
-          setIcon( Network, m_icon );
-        }
-        else
-        {
-          // Do nothing
-        }
+        // Set the icon
+        m_icon = KIcon( "folder-remote" );
+        setIcon( Network, m_icon );
 
         // Reset the mount related data of the share.
         m_share.resetMountData();
@@ -336,46 +326,38 @@ void Smb4KNetworkBrowserItem::setMounted( Smb4KShare *share, MountFlag flag )
       {
         if ( share->isMounted() )
         {
-          if ( !m_share.isMounted() )
+          // Set the font
+          for ( int i = 0; i < columnCount(); ++i )
           {
-            for ( int i = 0; i < columnCount(); ++i )
-            {
-              QFont f = font( i );
-              f.setItalic( true );
-              setFont( i, f );
-            }
-
-            QStringList overlays;
-            overlays.append( "emblem-mounted" );
-            m_icon = KIcon( "folder-remote", KIconLoader::global(), overlays );
-            setIcon( Network, m_icon );
-          }
-          else
-          {
-            // Do nothing
+            QFont f = font( i );
+            f.setItalic( true );
+            setFont( i, f );
           }
 
+          // Set the icon
+          QStringList overlays;
+          overlays.append( "emblem-mounted" );
+          m_icon = KIcon( "folder-remote", KIconLoader::global(), overlays );
+          setIcon( Network, m_icon );
+
+          // Set the mount releated data of the share.
           m_share.setMountData( share );
         }
         else
         {
-          if ( m_share.isMounted() )
+          // Set the font
+          for ( int i = 0; i < columnCount(); ++i )
           {
-            for ( int i = 0; i < columnCount(); ++i )
-            {
-              QFont f = font( i );
-              f.setItalic( false );
-              setFont( i, f );
-            }
-
-            m_icon = KIcon( "folder-remote" );
-            setIcon( Network, m_icon );
-          }
-          else
-          {
-            // Do nothing
+            QFont f = font( i );
+            f.setItalic( false );
+            setFont( i, f );
           }
 
+          // Set the icon
+          m_icon = KIcon( "folder-remote" );
+          setIcon( Network, m_icon );
+
+          // Reset the mount related data of the share.
           m_share.resetMountData();
         }
 
