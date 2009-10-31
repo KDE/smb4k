@@ -97,6 +97,9 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
                   IP = 2,
                   Comment = 3 };
 
+    /**
+     * The mount flags
+     */
     enum MountFlag{ UseShare,
                     Mounted,
                     NotMounted };
