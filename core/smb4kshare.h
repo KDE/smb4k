@@ -1,0 +1,754 @@
+/***************************************************************************
+    smb4kshare  -  Smb4K's container class for information about a share.
+                             -------------------
+    begin                : Mo Jan 28 2008
+    copyright            : (C) 2008-2009 by Alexander Reinholdt
+    email                : dustpuppy@users.berlios.de
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful, but   *
+ *   WITHOUT ANY WARRANTY; without even the implied warranty of            *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU     *
+ *   General Public License for more details.                              *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
+ *   MA  02111-1307 USA                                                    *
+ ***************************************************************************/
+
+#ifndef SMB4KSHARE_H
+#define SMB4KSHARE_H
+
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+// Qt includes
+#include <QString>
+#include <QByteArray>
+#include <QStringList>
+#include <QUrl>
+
+// KDE includes
+#include <kuser.h>
+#include <kdemacros.h>
+
+// application specific includes
+#include <smb4kbasicnetworkitem.h>
+
+// forward declarations
+class Smb4KAuthInfo;
+
+class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
+{
+  public:
+    /**
+     * This constructor takes the host name @p hostName and the name of the
+     * shared resource @p name. All other information has to be set by the
+     * other functions this class provides.
+     *
+     * This constructor will also assemble the UNC from the provided arguments.
+     *
+     * @param hostName      The name of the host where the share is
+     *                      located.
+     *
+     * @param name          The name of the share.
+     */
+    Smb4KShare( const QString &hostName,
+                const QString &name );
+
+    /**
+     * This constructor takes the UNC @p unc (in the form [smb:]//[USER@]HOST/SHARE) as
+     * only argument. It feeds the internal QUrl object with the string, that extracts
+     * all parts from it. All other information has to be set by the other functions
+     * this class provides.
+     *
+     * @param unc           The UNC in the form [smb:]//[USER@]HOST/SHARE.
+     */
+    Smb4KShare( const QString &unc );
+
+    /**
+     * This is the copy constructor. It takes another Smb4KShare item and copies all
+     * its values.
+     *
+     * @param share         The Smb4KShare item that is to be copied
+     */
+    Smb4KShare( const Smb4KShare &share );
+
+    /**
+     * The empty constructor. You need to set all information by the functions that
+     * are provided with this class.
+     */
+    Smb4KShare();
+
+    /**
+     * The destructor.
+     */
+    ~Smb4KShare();
+
+    /**
+     * Sets the name of the share (*not* the UNC).
+     *
+     * @param name          The share name
+     */
+    void setShareName( const QString &name );
+
+    /**
+     * Returns the name of the share, e.g. "Music", "Data", etc.
+     *
+     * @returns the name of the share.
+     */
+    QString shareName() const;
+
+    /**
+     * Sets the name of the host where the share is located.
+     *
+     * @param hostName      The host name
+     */
+    void setHostName( const QString &hostName );
+
+    /**
+     * Returns the name of the host where the share is located.
+     *
+     * @returns the host name
+     */
+    QString hostName() const { return m_url.host().toUpper(); }
+
+    /**
+     * This function sets the UNC (Uniform Naming Convention string). This
+     * has to conform to the following scheme: [smb:]//[USER@]HOST[:PORT]/SHARE.
+     *
+     * The UNC may contain the protocol, i.e. "smb://". If a wrong protocol or a mal-
+     * formatted UNC is passed, this function will return immediately without doing
+     * anything.
+     *
+     * @param unc           The UNC of the share
+     */
+    void setUNC( const QString &unc );
+
+    /**
+     * Returns the UNC in the form [smb:]//[USER@]HOST[:PORT]/SHARE depending on
+     * the format specified by @p options.
+     *
+     * @returns the UNC.
+     */
+    QString unc( QUrl::FormattingOptions options = QUrl::RemoveScheme|
+                                                   QUrl::RemoveUserInfo|
+                                                   QUrl::RemovePort ) const;
+
+    /**
+     * Returns the host's UNC in the form [smb:]//[USER@]HOST[:PORT] depending on
+     * the format specified by @p options.
+     *
+     * @returns the UNC of the host.
+     */
+    QString hostUNC( QUrl::FormattingOptions options = QUrl::RemoveScheme|
+                                                       QUrl::RemoveUserInfo|
+                                                       QUrl::RemovePort ) const;
+
+    /**
+     * Set the workgroup where the host is located that offers this share.
+     *
+     * @param workgroup     The name of the workgroup
+     */
+    void setWorkgroupName( const QString &workgroup );
+
+    /**
+     * Returns the name of the workgroup where the host is located that
+     * offers this share.
+     *
+     * @returns the workgroup name
+     */
+    const QString &workgroupName() const { return m_workgroup; }
+
+    /**
+     * Sets the type of the share.
+     *
+     * @param type          The string defining the type of the share
+     */
+    void setType( const QString &type );
+
+    /**
+     * Returns the type of the share as reported by the server. If you are
+     * looking for a translated type string, then use the translatedType()
+     * function.
+     *
+     * @returns the type of the share.
+     */
+    const QString &type() const { return m_type; }
+
+    /**
+     * Returns the type of the share as translated string. You can use this
+     * in the GUI.
+     *
+     * @returns a translated type string.
+     */
+    const QString translatedType() const;
+
+    /**
+     * Sets the comment that was defined for the share.
+     *
+     * @param comment       The comment for the share
+     */
+    void setComment( const QString &comment );
+
+    /**
+     * Returns the comment that was defined for this share.
+     *
+     * @returns the comment.
+     */
+    const QString &comment() const { return m_comment; }
+
+    /**
+     * Set the IP address of the host where the share is located. @p ip will
+     * only be accepted if it is compatible with either IPv4 or IPv6.
+     *
+     * @param ip              The host's IP address
+     */
+    void setHostIP( const QString &ip );
+
+    /**
+     * Returns the IP address of the host. If the IP address was not compatible
+     * with IPv4 and IPv6 or if no IP address was supplied, an empty string is
+     * returned.
+     *
+     * @returns the IP address of the host or an empty string.
+     */
+    const QString &hostIP() const { return m_host_ip; }
+
+    /**
+     * If the share is a hidden one, i.e. it ends with a '$', this function returns
+     * TRUE and FALSE otherwise.
+     *
+     * @returns TRUE if this is a hidden share.
+     */
+    bool isHidden() const;
+
+    /**
+     * If the share is a printer this function returns TRUE and otherwise FALSE.
+     *
+     * @returns TRUE if the share is a printer.
+     */
+    bool isPrinter() const;
+
+    /**
+     * If the share is an IPC$ share this function returns TRUE and FALSE
+     * otherwise.
+     *
+     * @returns TRUE if the share is an IPC share.
+     */
+    bool isIPC() const;
+
+    /**
+     * If the share is an ADMIN$ share this function returns TRUE and FALSE
+     * otherwise.
+     *
+     * @returns TRUE if the share is an ADMIN share.
+     */
+    bool isADMIN() const;
+
+    /**
+     * Sets the path aka mount point of the share as gathered by the mounter.
+     *
+     * @param mountpoint      The mount point of the share.
+     */
+    void setPath( const QString &mountpoint );
+
+    /**
+     * Returns the path to the mounted share (aka the mount point) as it was gathered
+     * by the mounter. It is a C-type string.
+     *
+     * @returns the path to the mounted share.
+     */
+    const QByteArray &path() const { return m_path; }
+
+    /**
+     * Returns the canonical path to the mounted share. In contrast to the path()
+     * function it will return the absolute path without symlinks. However, should
+     * the share be inaccessible (i.e. the isInaccessible() returns TRUE), only
+     * the "normal" path is returned.
+     *
+     * @returns the canonical path to the mounted share.
+     */
+    const QByteArray canonicalPath() const;
+
+    /**
+     * Set @p in to TRUE if the share cannot be accessed by the user. This may be
+     * because if strict permissions or because the remote server went offline. By
+     * default it is assumed that the share is accessible.
+     *
+     * @param in              Tells if the share is inaccessible or not.
+     */
+    void setInaccessible( bool in );
+
+    /**
+     * Returns TRUE if the share is not accessible by the user and FALSE otherwise.
+     *
+     * @returns TRUE if the share is inaccessible.
+     */
+    bool isInaccessible() const { return m_inaccessible; }
+
+    /**
+     * If the share was mounted by another user, @p foreign should be set to TRUE.
+     * By default it is assumed that the share is not foreign but owned by the
+     * user.
+     *
+     * @param foreign         TRUE if the share is foreign and FALSE otherwise.
+     */
+    void setForeign( bool foreign );
+
+    /**
+     * Returns TRUE if the share was mounted and is owned by another user.
+     *
+     * @returns TRUE if this is a foreign share.
+     */
+    bool isForeign() const { return m_foreign; }
+
+    /**
+     * Enumeration for the file system
+     */
+    enum FileSystem{ CIFS,
+                     SMBFS,
+                     Unknown };
+
+    /**
+     * Set the file system with which the share is mounted.
+     *
+     * @param filesystem      The file system of the mounted share.
+     */
+    void setFileSystem( FileSystem filesystem );
+
+    /**
+     * Returns the file system of the share. If it wasn't set, FileSystem::Unknown
+     * is returned.
+     *
+     * @returns the file system of the share.
+     */
+    FileSystem fileSystem() const { return m_filesystem; }
+
+    /**
+     * Returns the file system as string in capital letters. If no file system
+     * was specified, an empty string is returned.
+     *
+     * @returns the file system string or an empty string.
+     */
+    const QString fileSystemString() const;
+
+    /**
+     * Sets the UID of the owner of this share.
+     *
+     * @param uid             The UID of the owner
+     */
+    void setUID( uid_t uid );
+
+    /**
+     * Returns the UID of the owner of this share or the UID of the user, if
+     * the UID was not set.
+     *
+     * @returns the UID of the owner.
+     */
+    uid_t uid() const { return m_user.uid(); }
+
+    /**
+     * Returns the owner's login name. If the owner's UID was not set, the login
+     * name of the user is returned.
+     *
+     * @returns the owner's login name.
+     */
+    const QString owner() const { return m_user.loginName(); }
+
+    /**
+     * Returns TRUE if the UID was set by invoking the setUID() function and
+     * FALSE otherwise.
+     *
+     * @returns TRUE if the UID was set.
+     */
+    bool uidIsSet() const { return m_uid_set; }
+
+    /**
+     * Set the owning GID of this share.
+     *
+     * @param gid             The owning GID
+     */
+    void setGID( gid_t gid );
+
+    /**
+     * Returns the GID of the owner of this share or the GID of the user, if
+     * the GID was not set.
+     *
+     * @returns the GID of the owner.
+     */
+    gid_t gid() const { return m_group.gid(); }
+
+    /**
+     * Returns the owning group name. If the owning GID was not set, the group
+     * name of the user is returned.
+     *
+     * @returns the owning group name.
+     */
+    const QString group() const { return m_group.name(); }
+
+    /**
+     * Returns TRUE if the GID was set by invoking the setGID() function and
+     * FALSE otherwise.
+     *
+     * @returns TRUE if the GID was set.
+     */
+    bool gidIsSet() const { return m_gid_set; }
+
+    /**
+     * Sets the login that is used to mount a share. Under FreeBSD the UNC is also adjusted
+     * accordings to the value of @p login.
+     *
+     * @param login           The login
+     */
+    void setLogin( const QString &login );
+
+    /**
+     * Returns the login that was used to mount a share.
+     *
+     * @returns the login.
+     */
+    QString login() const { return m_url.userName(); }
+
+    /**
+     * Returns TRUE if the login was set by invoking the setLogin() function and
+     * FALSE otherwise.
+     *
+     * @returns TRUE if the login was set.
+     */
+    bool loginIsSet() const { return m_login_set; }
+
+    /**
+     * Sets the value of the total disk space that is available on the share. The
+     * value has to be provided in KiloBytes. If the disk usage could not be
+     * determined, @p total has to be set to -1.
+     *
+     * @param total           The total disk space that is available on the share
+     */
+    void setTotalDiskSpace( double total );
+
+    /**
+     * Returns the total disk space that is available on the share or -1 if the
+     * disk space was not set or could not be determined.
+     *
+     * @returns the total disk space or -1.
+     */
+    double totalDiskSpace() const { return m_total; }
+
+    /**
+     * Returns the total disk space in a human readable form with value and unit,
+     * for example 10 KiB, 25 MiB, etc. If the total disk space was not set or
+     * could not be determined, this funtion returns an empty string.
+     *
+     * @returns the total disk space in a human readable form or an empty string.
+     */
+    QString totalDiskSpaceString() const;
+
+    /**
+     * Sets the value of the free disk space that is available on the share. The
+     * value has to be provided in KiloBytes. If the free disk space could not be
+     * determined, @p free has to be set to -1.
+     *
+     * @param free            The free disk space that is available on the share
+     */
+    void setFreeDiskSpace( double free );
+
+    /**
+     * Returns the free disk space that is available on the share or -1 if the disk
+     * space was not set or could not be determined.
+     *
+     * @returns the free disk space or -1.
+     */
+    double freeDiskSpace() const { return m_free; }
+
+    /**
+     * Returns the free disk space in a human readable form with value and unit,
+     * for example 10 KiB, 25 MiB, etc. If the free disk space was not set or
+     * could not be determined, this funtion returns an empty string.
+     *
+     * @returns the free disk space in a human readable form or an empty string.
+     */
+    QString freeDiskSpaceString() const;
+
+    /**
+     * Returns the used disk space that is used on the share or -1 if it
+     * could not be determined.
+     *
+     * @returns the used disk space or -1.
+     */
+    double usedDiskSpace() const;
+
+    /**
+     * Returns the used disk space in a human readable form with value and unit,
+     * for example 10 KiB, 25 MiB, etc. If the used disk space was not set or
+     * could not be determined, this funtion returns an empty string.
+     *
+     * @returns the used disk space in a human readable form or an empty string.
+     */
+    QString usedDiskSpaceString() const;
+
+    /**
+     * Returns the disk usage in percent or, if it could not be determined -1.
+     *
+     * @returns the disk usage in percent or -1.
+     */
+    double diskUsage() const;
+
+    /**
+     * Returns the disk usage in a human readable form with value and unit,
+     * for example 3.5 %, 67.0 % etc. If the usage was not set or could not
+     * be determined, this funtion returns an empty string.
+     *
+     * @returns the disk usage in a human readable form or an empty string.
+     */
+    QString diskUsageString() const;
+
+    /**
+     * Enumeration for the checks.
+     *
+     * @param Full          Full comparison
+     *
+     * @param NetworkOnly   Only the network related values are compared (except the UNC!).
+     *
+     * @param LocalOnly     Only those values are compared that are of local importance
+     *                      (including the UNC).
+     */
+    enum CheckFlags{ Full,
+                     NetworkOnly,
+                     LocalOnly };
+
+    /**
+     * Compare another Smb4KShare object with this one an return TRUE if both carry
+     * the same data. Depending on the value of @p flag either all data will be compared
+     * or only the one that is network related or the one that is of local importance.
+     *
+     * Please note, that the UNC won't be checked with the flag CheckFlags::NetworkOnly,
+     * but only with either CheckFlags::Full or CheckFlags::LocalOnly.
+     *
+     * @param share           The Smb4KShare object that should be compared with this
+     *                        one.
+     *
+     * @param flag            The flag that determines which values are compared.
+     *
+     * @returns TRUE if the data that was compared is the same.
+     */
+    bool equals( Smb4KShare *share,
+                 CheckFlags flag );
+
+    /**
+     * Returns TRUE if values that were checked according to @p flag are empty.
+     * Modified booleans are not considered.
+     *
+     * Please note, that the UNC won't be checked with the flag CheckFlags::NetworkOnly,
+     * but only with either CheckFlags::Full or CheckFlags::LocalOnly.
+     *
+     * @param flag            The flag that determines which values are checked.
+     *
+     * @returns TRUE if the item is empty.
+     */
+    bool isEmpty( CheckFlags flag = Full ) const;
+
+    /**
+     * If this share was mounted, set @p mounted to TRUE. This function will not
+     * work with printer shares.
+     *
+     * @param mounted         Should be set to TRUE if the share was mounted.
+     */
+    void setIsMounted( bool mounted );
+
+    /**
+     * This function returns TRUE if the share has been mounted and FALSE
+     * otherwise.
+     *
+     * @returns TRUE if this share was mounted.
+     */
+    bool isMounted() const { return m_is_mounted; }
+
+    /**
+     * This convenience function sets the mount related data. It is copied
+     * from @p share.
+     *
+     * @param share           The share object from where the mount related
+     *                        data should be copied.
+     */
+    void setMountData( Smb4KShare *share );
+
+    /**
+     * This convenience function resets the mount related data (mount point,
+     * file system, etc.).
+     */
+    void resetMountData();
+
+    /**
+     * Returns TRUE if the share is or *was* a 'homes' share. That means that
+     * this value is not changed when the share name is changed.
+     *
+     * @returns TRUE if this is or *was* a 'homes' share and FALSE otherwise.
+     */
+    bool isHomesShare() const { return m_homes_share; }
+
+    /**
+     * Set the list of defined users in case this is a homes share.
+     *
+     * Note that this function will only set the list if this indead is a
+     * homes share. It will just return otherwise.
+     *
+     * @param users           The list of defined 'homes' share users.
+     */
+    void setHomesUsers( const QStringList &users );
+
+    /**
+     * Returns the list of defined 'homes' share users or an empty list.
+     *
+     * @returns the list of 'homes' share users.
+     */
+    const QStringList &homesUsers() const { return m_homes_users; }
+
+    /**
+     * Set the port for the use in the UNC.
+     *
+     * @param port            The port
+     */
+    void setPort( int port );
+
+    /**
+     * Returns the port that is used in the UNC.
+     *
+     * @returns the port.
+     */
+    int port() const { return m_url.port(); }
+
+    /**
+     * Set the authentication information for the share. This function will add
+     * the authentication information to the URL of the share. Any previous
+     * user information including the login will be overwritten.
+     *
+     * @param authInfo    The authentication information
+     */
+    void setAuthInfo( Smb4KAuthInfo *authInfo );
+    
+    /**
+     * Returns TRUE if the host's IP address is set and FALSE otherwise.
+     * 
+     * @returns TRUE if the host's IP address is set and FALSE otherwise.
+     */
+    bool hasHostIP() const { return !m_host_ip.isEmpty(); }
+
+  private:
+    /**
+     * The URL
+     */
+    QUrl m_url;
+
+    /**
+     * The workgroup
+     */
+    QString m_workgroup;
+
+    /**
+     * The type of the share
+     */
+    QString m_type;
+
+    /**
+     * The comment
+     */
+    QString m_comment;
+
+    /**
+     * The host's IP address
+     */
+    QString m_host_ip;
+
+    /**
+     * The path to the mounted share
+     */
+    QByteArray m_path;
+
+    /**
+     * Determines if the share is inaccessible
+     */
+    bool m_inaccessible;
+
+    /**
+     * Determines if the share is foreign
+     */
+    bool m_foreign;
+
+    /**
+     * The file system
+     */
+    FileSystem m_filesystem;
+
+    /**
+     * The UID of the owner
+     */
+    KUser m_user;
+
+    /**
+     * The owning GID
+     */
+    KUserGroup m_group;
+
+    /**
+     * The total disk space
+     */
+    double m_total;
+
+    /**
+     * The free disk space
+     */
+    double m_free;
+
+    /**
+     * UID was set
+     */
+    bool m_uid_set;
+
+    /**
+     * GID was set
+     */
+    bool m_gid_set;
+
+    /**
+     * Login was set
+     */
+    bool m_login_set;
+
+    /**
+     * Is mounted
+     */
+    bool m_is_mounted;
+
+    /**
+     * 'homes' share?
+     */
+    bool m_homes_share;
+
+    /**
+     * The list of 'homes' users
+     */
+    QStringList m_homes_users;
+
+    /**
+     * This function checks if the given IP address is either
+     * compatible with IPv4 or IPv6. If it is not, an empty string
+     * is returned.
+     *
+     * @param ip              The IP address that needs to be checked.
+     *
+     * @returns the IP address or an empty string if the IP address
+     * is not compatible with either IPv4 or IPv6.
+     */
+    const QString &ipIsValid( const QString &ip );
+};
+
+#endif

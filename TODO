@@ -1,0 +1,23 @@
+TODO list:
+- Replace current tool tips with generic ones.
+  + Use ::viewportEvent( QEvent *e ) to catch tool tip events, etc.
+  + Use <qt>...</qt> tags to layout the tool tip (see e.g. kopete's
+    tool tips.
+- Revise Smb4KCustomConfigDialog class.
+  + Allow more settings (machine account, advanced CIFS options...)
+  + Rewrite the enabling of the "Default" button.
+- Implement profiles.
+- Support suspend/hibernate/etc.
+- Allow multiple synchronization dialogs. Use threads for that.
+- Allow several file managers: dolphin, konqueror, thunar, nautilus, ...
+- Implement reenabling of wallet support during program run.
+- Allow scripting using D-BUS.
+- Make authentication information accessible and editable through the
+  configuration dialog.
+- Mount shares by drag and drop into the shares view.
+
+Deferred:
+- Add possibility to download files and directories from the preview dialog.
+- Add eyecandy: If the mouse is over an icon, show it as active.
+- Implement more 'net' commands. Especially the 'rpc shutdown' command seems
+  to be very nice.

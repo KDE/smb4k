@@ -1,0 +1,8 @@
+File=smb4k.kcfg
+ClassName=Smb4KSettings
+Singleton=true
+Mutators=true
+ItemAccessors=true
+SetUserTexts=true
+Inherits=KConfigSkeleton
+Visibility=KDE_EXPORT

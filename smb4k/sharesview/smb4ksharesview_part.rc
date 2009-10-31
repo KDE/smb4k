@@ -1,0 +1,25 @@
+<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
+<kpartgui name="smb4ksharesview_part" version="1">
+<MenuBar>
+  <Menu name="shares"><text>&amp;Shares</text>
+    <Action name="unmount_action"/>
+    <Action name="force_unmount_action"/>
+    <Action name="unmount_all_action"/>
+    <Separator/>
+    <Action name="synchronize_action"/>
+    <Separator/>
+    <Action name="konsole_action"/>
+    <Action name="filemanager_action"/>
+  </Menu>
+</MenuBar>
+<ToolBar name="sharesViewToolBar">
+  <Action name="unmount_action"/>
+  <Action name="force_unmount_action"/>
+  <Action name="unmount_all_action"/>
+  <Separator/>
+  <Action name="synchronize_action"/>
+  <Separator/>
+  <Action name="konsole_action"/>
+  <Action name="filemanager_action"/>
+</ToolBar>
+</kpartgui>

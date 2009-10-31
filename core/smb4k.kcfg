@@ -1,0 +1,981 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE kcfg SYSTEM "http://www.kde.org/standards/kcfg/1.0/kcfg.dtd">
+<kcfg>
+  <include>unistd.h</include>
+  <include>sys/types.h</include>
+  <include>QString</include>
+  <include>QDir</include>
+  <include>kurl.h</include>
+  <kcfgfile name="smb4krc" />
+
+<!-- User Interface -->
+
+  <group name="UserInterface">
+    <entry name="ShowCustomBookmarkLabel" type="Bool">
+      <label>Show custom bookmark label if available</label>
+      <whatsthis>Do not show the name of the share that is represented by the bookmark but the custom label that was defined in the bookmark editor.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="EmbedIntoSystemTray" type="Bool">
+      <label>Embed application into the system tray</label>
+      <whatsthis>Embed the application into the system tray. The system tray widget provides a popup menu with several commonly used tasks so that you do not need to bring up the main window everytime. If this setting is chosen you have to use "Quit" from the "File" menu or the system tray widget to exit the application.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="StartMainWindowDocked" type="Bool">
+      <label>Start docked</label>
+      <whatsthis>Start the application docked to the system tray, i.e. only the system tray widget is shown and the main window is hidden. You can bring the main window up by clicking on the system tray widget or by choosing "Restore" from its popup menu.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="SharesIconView" type="Bool">
+      <label>Show mounted shares in an icon view</label>
+      <whatsthis>The mounted shares will be displayed in an icon view.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="SharesListView" type="Bool">
+      <label>Show mounted shares in a list view</label>
+      <whatsthis>The mounted shares will be displayed in a list view.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="ShowPrinterShares" type="Bool">
+      <label>Show printer shares</label>
+      <whatsthis>Printer shares will be displayed in the network browser.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="ShowHiddenShares" type="Bool">
+      <label>Show hidden shares</label>
+      <whatsthis>Hidden shares will be displayed in the network browser. Hidden shares are ending with a $ sign, e.g. Musik$ or IPC$.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="ShowHiddenIPCShares" type="Bool">
+      <label>Show hidden IPC$ shares</label>
+      <whatsthis>Hidden IPC$ shares will be displayed in the network browser.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="ShowHiddenADMINShares" type="Bool">
+      <label>Show hidden ADMIN$ shares</label>
+      <whatsthis>Hidden ADMIN$ shares will be displayed in the network browser.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="ShowType" type="Bool">
+      <label>Show the type of the share</label>
+      <whatsthis>The type of a share will be displayed in a separate column in the network browser. It can either be Disk, Print or IPC.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="ShowIPAddress" type="Bool">
+      <label>Show the IP address of the server</label>
+      <whatsthis>The IP address of the server will be displayed in a separate column in the network browser.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="ShowComment" type="Bool">
+      <label>Show the comment</label>
+      <whatsthis>The comment describing the server or share will be displayed in a separate column in the network browser.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="ShowNetworkItemToolTip" type="Bool">
+      <label>Show a tooltip with information about the network item</label>
+      <whatsthis>The tooltip shows various information about the current network item.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="ShowMountPoint" type="Bool">
+      <label>Show the mount point instead of the share name</label>
+      <whatsthis>A share is normally displayed with its name in the shares view. Choosing this feature will cause the exchange of the share name by the mount point.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="ShowAllShares" type="Bool">
+      <label>Show all shares that are mounted on the system</label>
+      <whatsthis>You will not only see the shares that were mounted and are owned by you, but also all other mounts using the SMBFS and CIFS file system that are present on the system.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="ShowShareToolTip" type="Bool">
+      <label>Show a tooltip with information about the share</label>
+      <whatsthis>The tooltip shows various information about the current share.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="ShowOwner" type="Bool">
+      <label>Show the owner and group</label>
+      <whatsthis>Show the UID and GID that own all files on the mounted file system.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="ShowLogin" type="Bool">
+      <label>Show the login</label>
+      <whatsthis>Show the login that was used to authenticate to the server. The column will only contain an entry if the share was mounted with the CIFS file system.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="ShowFileSystem" type="Bool">
+      <label>Show the file system</label>
+      <whatsthis>Show the file system that was used for mounting the share.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="ShowFreeDiskSpace" type="Bool">
+      <label>Show the free disk space</label>
+      <whatsthis>Show the free disk space that is left on the share.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="ShowUsedDiskSpace" type="Bool">
+      <label>Show the used disk space</label>
+      <whatsthis>Show the disk space that is already used on the share.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="ShowTotalDiskSpace" type="Bool">
+      <label>Show the total disk space</label>
+      <whatsthis>Show the total disk space of the share.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="ShowDiskUsage" type="Bool">
+      <label>Show the disk usage</label>
+      <whatsthis>Show the space that is used on the share in percent.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="PreviewHiddenItems" type="Bool">
+      <label>Preview hidden files and directories</label>
+      <whatsthis>Display hidden files and directories in the preview dialog. The names of hidden files and directories are beginning with a period and are usually needed for very specific purposes (configuration file of an application, etc.). Since they are not of any importance for your regular work, you normally do not need to enable this feature.</whatsthis>
+      <default>false</default>
+    </entry>
+  </group>
+
+<!-- Network -->
+
+  <group name="Network">
+    <entry name="LookupDomains" type="Bool">
+      <label>Scan the network neighborhood for available workgroups and domains</label>
+      <whatsthis>This is the default method to retrieve the initial browse list. It discovers all workgroups and domains by looking for all known master browsers on your network neighborhood.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="QueryCurrentMaster" type="Bool">
+      <label>Query the current workgroup master browser</label>
+      <whatsthis>This method queries the current master browser of your workgroup or domain to retrieve the initial browse list.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="QueryCustomMaster" type="Bool">
+      <label>Query this custom master browser:</label>
+      <whatsthis>This method queries a custom master browser to retrieve the initial browse list.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="CustomMasterBrowser" type="String">
+      <label>A custom master browser that is to be queried</label>
+      <whatsthis>Enter the name or IP address of a master browser here that should be queried to compile the initial browse list.</whatsthis>
+      <default></default>
+    </entry>
+    <entry name="ScanBroadcastAreas" type="Bool">
+      <label>Scan these broadcast areas:</label>
+      <whatsthis>This method will scan the given broadcast areas and look for all registered hosts.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="BroadcastAreas" type="String">
+      <label>A custom list of broadcast addresses</label>
+      <whatsthis>Enter a comma-separated list of broadcast addresses here (e.g. 192.168.0.255, 192.168.1.255). It is used to scan for all known hosts in the respective broadcast areas.</whatsthis>
+      <default></default>
+    </entry>
+    <entry name="MasterBrowsersRequireAuth" type="Bool">
+      <label>The master browsers require authentication to return the browse list</label>
+      <whatsthis>The master browsers in your network neighborhood require a login and password to return the browse list. This setting is rarely needed and might even cause a master browser to return an empty browse list. It will not have any effect when you let Smb4K scan broadcast areas.</whatsthis>
+      <default>false</default>
+    </entry>
+  </group>
+
+<!-- Shares -->
+
+  <group name="Shares">
+    <entry name="MountPrefix" type="Url">
+      <label>Mount prefix:</label>
+      <whatsthis>This is the prefix where Smb4K will create the mount points and mount the remote shares.</whatsthis>
+      <default code="true">KUrl::fromPath( QDir::homePath()+"/smb4k/" )</default>
+    </entry>
+    <entry name="ForceLowerCaseSubdirs" type="Bool">
+      <label>Force generated subdirectories to be lower case</label>
+      <whatsthis>All names of the subdirectories created by Smb4K below the mount prefix will be lowercase.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="UnmountSharesOnExit" type="Bool">
+      <label>Unmount all personal shares on exit</label>
+      <whatsthis>Unmount all shares that belong to you when the program exits. Shares that are owned by other users are ignored.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="RemountShares" type="Bool">
+      <label>Remount recently used shares on program start</label>
+      <whatsthis>Remount all your shares that were mounted when you exited the program. If a remount fails, Smb4K will retry the next time it is started. Shares that were mounted by other users are ignored.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="UnmountForeignShares" type="Bool">
+      <label>Allow the unmounting of shares that are owned by other users</label>
+      <whatsthis>Allow the unmounting of shares that were mounted by other users. In most cases you need super user privileges for this. Please think before you enable this option!</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="CheckInterval" type="Int">
+      <label>Interval between checks:</label>
+      <whatsthis>This is the time that elapses until Smb4K checks again for new mounts and unmounts. The lower limit is 500 ms, the upper one 300000 ms. Please note that the smaller the interval gets the higher is your system load.</whatsthis>
+      <min>500</min>
+      <max>300000</max>
+      <default>2500</default>
+    </entry>
+  </group>
+
+<!-- Authentication -->
+
+  <group name="Authentication">
+    <entry name="UseWallet" type="Bool">
+      <label>Save logins in a wallet</label>
+      <whatsthis>Use a wallet to store the authentication data. The login name and the password name are stored encrypted on your hard drive. If this setting is disabled, the authentication data is not stored permanently but only temporarily.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="RememberLogins" type="Bool">
+      <label>Remember logins during program run</label>
+      <whatsthis>If you decided to store your logins only temporarily, Smb4K will remember them until the program exits. If you disable this setting, you will have to provide the authentication data everytime it is needed.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="UseDefaultLogin" type="Bool">
+      <label>Use a default login</label>
+      <whatsthis>Enable the usage of a default login name and password. The authentication data provided below is then used by default to authenticate to a remote server. This is very useful e.g. if you are working in an Active Directory environment or an NT domain.</whatsthis>
+      <default>false</default>
+    </entry>
+  </group>
+
+<!-- Samba -->
+
+  <group name="Samba">
+    <entry name="NetBIOSName" type="String">
+      <label>NetBIOS name:</label>
+      <whatsthis>This is the NetBIOS name of this computer that is used by Smb4K. By default, it is either the NetBIOS name that is defined in the smb.conf file or the host name.</whatsthis>
+      <!-- Will be filled by Smb4KCore::setDefaultConfigValues() -->
+    </entry>
+    <entry name="DomainName" type="String">
+      <label>Domain:</label>
+      <whatsthis>This is the workgroup or domain this computer is or should be in. By default, it is the workgroup that is defined in the smb.conf file.</whatsthis>
+      <!-- Will be filled by Smb4KCore::setDefaultConfigValues() -->
+    </entry>
+    <entry name="SocketOptions" type="String">
+      <label>Socket options:</label>
+      <whatsthis>These are the TCP socket options that are used by nmblookup, smbmount and smbclient. Socket options are controls on the networking layer of the operating systems which allow the connection to be tuned. See the manual page of smb.conf for more information.</whatsthis>
+      <!-- Will be filled by Smb4KCore::setDefaultConfigValues() -->
+    </entry>
+    <entry name="NetBIOSScope" type="String">
+      <label>NetBIOS scope:</label>
+      <whatsthis>This sets the NetBIOS scope that nmblookup, smbmount and smbclient will operate under. It should not be set unless every machine on your network neighborhood sets this value.</whatsthis>
+      <!-- Will be filled by Smb4KCore::setDefaultConfigValues() -->
+    </entry>
+    <entry name="RemoteSMBPort" type="Int">
+      <label>SMB port:</label>
+      <whatsthis>This is the port that is used for connecting to remote servers with the client programs net, smbclient and smbtree. The default value is 139 (NetBIOS). This setting is not used for mounting.</whatsthis>
+      <min>1</min>
+      <max>65535</max>
+      <default>139</default>
+    </entry>
+    <entry name="RemoteFileSystemPort" type="Int">
+      <label>File system port:</label>
+      <whatsthis>This is the port that is exclusively used to mount shares from remote servers. The default value is 445 (CIFS file system).</whatsthis>
+      <min>1</min>
+      <max>65535</max>
+      <default>445</default>
+    </entry>
+    <entry name="UseKerberos" type="Bool">
+      <label>Try to authenticate with Kerberos</label>
+      <whatsthis>Try to authenticate with Kerberos. This is only useful in an Active Directory environment. The setting affects the smbclient and smbtree command.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="MachineAccount" type="Bool">
+      <label>Authenticate with local machine account</label>
+      <whatsthis>Make queries to the remote server using the machine account of the local server. The setting affects the net, smbclient, and smbtree command.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="SigningState" type="Enum">
+      <label>Signing state:</label>
+      <whatsthis>Set the signing state. This setting affects the smbclient and smbtree command.</whatsthis>
+      <choices>
+        <choice name="None">
+          <label>none</label>
+        </choice>
+        <choice name="On">
+          <label>on</label>
+        </choice>
+        <choice name="Off">
+          <label>off</label>
+        </choice>
+        <choice name="Required">
+          <label>required</label>
+        </choice>
+      </choices>
+      <default>None</default>
+    </entry>
+    <entry name="ClientCharset" type="Enum">
+      <label>Client character set:</label>
+      <whatsthis>This is the character set that is used by the client side (i.e. your side) either to convert local path names to and from Unicode (CIFS, Linux) or for codepage to charset translations (SMBFS, FreeBSD). If you keep the default setting, Smb4K will try to automatically determine the charset by looking up the "unix charset" option in the smb.conf.</whatsthis>
+      <choices>
+        <choice name="default_charset">
+          <label>default</label>
+        </choice>
+        <choice name="iso8859_1">
+          <label>iso8859-1</label>
+        </choice>
+        <choice name="iso8859_2">
+          <label>iso8859-2</label>
+        </choice>
+        <choice name="iso8859_3">
+          <label>iso8859-3</label>
+        </choice>
+        <choice name="iso8859_4">
+          <label>iso8859-4</label>
+        </choice>
+        <choice name="iso8859_5">
+          <label>iso8859-5</label>
+        </choice>
+        <choice name="iso8859_6">
+          <label>iso8859-6</label>
+        </choice>
+        <choice name="iso8859_7">
+          <label>iso8859-7</label>
+        </choice>
+        <choice name="iso8859_8">
+          <label>iso8859-8</label>
+        </choice>
+        <choice name="iso8859_9">
+          <label>iso8859-9</label>
+        </choice>
+        <choice name="iso8859_13">
+          <label>iso8859-13</label>
+        </choice>
+        <choice name="iso8859_14">
+          <label>iso8859-14</label>
+        </choice>
+        <choice name="iso8859_15">
+          <label>iso8859-15</label>
+        </choice>
+        <choice name="utf8">
+          <label>utf8</label>
+        </choice>
+        <choice name="koi8_r">
+          <label>koi8-r</label>
+        </choice>
+        <choice name="koi8_u">
+          <label>koi8-u</label>
+        </choice>
+        <choice name="koi8_ru">
+          <label>koi8-ru</label>
+        </choice>
+        <choice name="cp1251">
+          <label>cp1251</label>
+        </choice>
+        <choice name="gb2312">
+          <label>gb2312</label>
+        </choice>
+        <choice name="big5">
+          <label>big5</label>
+        </choice>
+        <choice name="euc_jp">
+          <label>euc-jp</label>
+        </choice>
+        <choice name="euc_kr">
+          <label>euc-kr</label>
+        </choice>
+        <choice name="tis_620">
+          <label>tis-620</label>
+        </choice>
+      </choices>
+      <default>default_charset</default>
+    </entry>
+    <entry name="ServerCodepage" type="Enum">
+      <label>Server codepage:</label>
+      <whatsthis>This is the codepage that is used by the server. The setting is only available with the SMBFS file system. If you keep the default setting, Smb4K will try to automatically determine the codepage by looking up the "dos charset" option in the smb.conf file.</whatsthis>
+      <choices>
+        <choice name="default_codepage">
+          <label>default</label>
+        </choice>
+        <choice name="cp437">
+          <label>cp437</label>
+        </choice>
+        <choice name="cp720">
+          <label>cp720</label>
+        </choice>
+        <choice name="cp737">
+          <label>cp737</label>
+        </choice>
+        <choice name="cp775">
+          <label>cp775</label>
+        </choice>
+        <choice name="cp850">
+          <label>cp850</label>
+        </choice>
+        <choice name="cp852">
+          <label>cp852</label>
+        </choice>
+        <choice name="cp855">
+          <label>cp855</label>
+        </choice>
+        <choice name="cp857">
+          <label>cp857</label>
+        </choice>
+        <choice name="cp858">
+          <label>cp858</label>
+        </choice>
+        <choice name="cp860">
+          <label>cp860</label>
+        </choice>
+        <choice name="cp861">
+          <label>cp861</label>
+        </choice>
+        <choice name="cp862">
+          <label>cp862</label>
+        </choice>
+        <choice name="cp863">
+          <label>cp863</label>
+        </choice>
+        <choice name="cp864">
+          <label>cp864</label>
+        </choice>
+        <choice name="cp865">
+          <label>cp865</label>
+        </choice>
+        <choice name="cp866">
+          <label>cp866</label>
+        </choice>
+        <choice name="cp869">
+          <label>cp869</label>
+        </choice>
+        <choice name="cp874">
+          <label>cp874</label>
+        </choice>
+        <choice name="cp932">
+          <label>cp932</label>
+        </choice>
+        <choice name="cp936">
+          <label>cp936</label>
+        </choice>
+        <choice name="cp949">
+          <label>cp949</label>
+        </choice>
+        <choice name="cp950">
+          <label>cp950</label>
+        </choice>
+        <choice name="cp1250">
+          <label>cp1250</label>
+        </choice>
+        <choice name="cp1251">
+          <label>cp1251</label>
+        </choice>
+        <choice name="cp1252">
+          <label>cp1252</label>
+        </choice>
+        <choice name="cp1253">
+          <label>cp1253</label>
+        </choice>
+        <choice name="cp1254">
+          <label>cp1254</label>
+        </choice>
+        <choice name="cp1255">
+          <label>cp1255</label>
+        </choice>
+        <choice name="cp1256">
+          <label>cp1256</label>
+        </choice>
+        <choice name="cp1257">
+          <label>cp1257</label>
+        </choice>
+        <choice name="cp1258">
+          <label>cp1258</label>
+        </choice>
+        <choice name="unicode">
+          <label>unicode</label>
+        </choice>
+      </choices>
+      <default>default_codepage</default>
+    </entry>
+    <entry name="UserID" type="String">
+      <label>User ID:</label>
+      <whatsthis>This is the user ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS file system and the remote server supports the CIFS Unix Extentions, this setting will be ignored.</whatsthis>
+      <default code="true">QString( "%1" ).arg( (int)getuid() )</default>
+    </entry>
+    <entry name="GroupID" type="String">
+      <label>Group ID:</label>
+      <whatsthis>This is the group ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS file system and the remote server supports the CIFS Unix Extentions, this setting will be ignored.</whatsthis>
+      <default code="true">QString( "%1" ).arg( (int)getgid() )</default>
+    </entry>
+    <entry name="FileMask" type="String">
+      <label>File mask:</label>
+      <whatsthis>This is the mask that will be used for creating files. It must be defined in octal. In case the CIFS file system is used, this setting only takes effect if the server does not support the CIFS Unix Extensions.</whatsthis>
+      <default>0755</default>
+    </entry>
+    <entry name="DirectoryMask" type="String">
+      <label>Directory mask:</label>
+      <whatsthis>This is the mask that will be used for creating directories. It must be defined in octal. In case the CIFS file system is used, this setting only takes effect if the server does not support the CIFS Unix Extensions.</whatsthis>
+      <default>0755</default>
+    </entry>
+    <entry name="WriteAccess" type="Enum">
+      <label>Write access:</label>
+      <whatsthis>Here you can choose if the shares should be mounted in read and write mode or only read-only.</whatsthis>
+      <choices>
+        <choice name="ReadWrite">
+          <label>read-write</label>
+        </choice>
+        <choice name="ReadOnly">
+          <label>read-only</label>
+        </choice>
+      </choices>
+      <default>ReadWrite</default>
+    </entry>
+    <entry name="PermissionChecks" type="Bool">
+      <label>Do permission checks</label>
+      <whatsthis>The client side (i.e. your side) will check if you have the right UID/GID to manipulate a file or directory. You might want to switch this feature off if the server(s) support the CIFS Unix Extensions and you are not allowed to access the files and directories. This setting does not affect the normal ACL check.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="ClientControlsIDs" type="Bool">
+      <label>Attempt to set UID and GID</label>
+      <whatsthis>In case the server supports the CIFS Unix Extensions, the client side (i.e. your side) attempts to set the effective UID and GID of the current process on newly created files, directories and devices. If this feature is turned off, the default UID and GID defined for the share will be used. It is recommended that you read the manual page of mount.cifs before you change this setting.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="ServerInodeNumbers" type="Bool">
+      <label>Use server inode numbers</label>
+      <whatsthis>Use inode numbers (unique persistent file identifiers) returned by the server instead of automatically generating temporary inode numbers on the client side.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="NoInodeDataCaching" type="Bool">
+      <label>Do not cache inode data</label>
+      <whatsthis>Directly read from and write to files opened on the share. In some cases this can provide better performance than the default behavior which caches reads and writes.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="TranslateReservedChars" type="Bool">
+      <label>Translate reserved characters</label>
+      <whatsthis>Translate six of the seven reserved characters (including the colon, question mark, pipe, asterisk, greater than and less than characters but not the backslash) to remap range (above 0xF000). This allows you to open files that were created with such characters. This has no effect if the server does not support Unicode.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="NoLocking" type="Bool">
+      <label>Do not use locking</label>
+      <whatsthis>Do not use locking. Do not start lockd.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="CustomCIFSOptions" type="String">
+      <label>Additional options:</label>
+      <whatsthis>Here you can enter advanced options for the CIFS file system in a comma-separated list (refer to the manual page of mount.cifs to learn more). The list will be added AS IS to the "-o" argument of mount.cifs. Please do not enter options that have already been defined in the configuration dialog.</whatsthis>
+      <default></default>
+    </entry>
+    <entry name="ProtocolHint" type="Enum">
+      <label>Protocol hint:</label>
+      <whatsthis>Here you can choose the protocol that will be used by the net command for the communication with remote servers if appropriate. In most cases the automatic detection will work fine and you should not need to change the default setting. However, if you experience problems, use the RPC protocol for newer operating systems (Windows NT4 and above) and the RAP protocol for older ones (Windows 98/NT3 and below). Functions that need the ADS protocol (for Active Directory environments) have not been implemented yet, so you can ignore that one for now.</whatsthis>
+      <choices>
+        <choice name="Automatic">
+          <label>Automatic detection</label>
+        </choice>
+        <choice name="RPC">
+          <label>RPC: Modern operating systems</label>
+        </choice>
+        <choice name="RAP">
+          <label>RAP: Older operating systems</label>
+        </choice>
+        <choice name="ADS">
+          <label>ADS: Active Directory environment (LDAP/Kerberos)</label>
+        </choice>
+      </choices>
+      <default>Automatic</default>
+    </entry>
+    <entry name="NameResolveOrder" type="String">
+      <label>Name resolve order:</label>
+      <whatsthis>This option is used to determine what naming services and in what order are used to resolve host names and IP addresses. It takes a space-separated list of up to four different name resolution options. Those are: lmhost, host, wins, bcast. See the manual page of smbclient for further information.</whatsthis>
+      <!-- Will be filled by Smb4KCore::setDefaultConfigValues() -->
+    </entry>
+    <entry name="BufferSize" type="Int">
+      <label>Buffer size:</label>
+      <whatsthis>This option changes the transmit/send buffer size when getting or putting a file from/to the server. The default is 65520 bytes. Setting this value smaller has been observed to speed up file transfers to and from Windows 9x servers.</whatsthis>
+      <min>0</min>
+      <default>65520</default>
+    </entry>
+    <entry name="BroadcastAddress" type="String">
+      <label>Broadcast address:</label>
+      <whatsthis>Queries performed with nmblookup will be send to the given broadcast address. Without this option the default behavior is to send the queries to the broadcast address of the network interface that was either auto-detected or defined in the "interfaces" parameter of the smb.conf file.</whatsthis>
+      <!-- Will be filled by Smb4KCore::setDefaultConfigValues() -->
+    </entry>
+    <entry name="UsePort137" type="Bool">
+      <label>Try and bind to UDP port 137 to send and receive UDP datagrams</label>
+      <whatsthis>Try and bind to UDP port 137 to send and receive UDP datagrams. The reason for this option is a bug in Windows 95 where it ignores the source port of the requesting packet and only replies to UDP port 137. Unfortunately, on most Unix systems super user privileges are needed to bind to this port. Please read the manual page of nmblookup for more information.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="SmbtreeSendBroadcasts" type="Bool">
+      <label>Send requests as broadcasts</label>
+      <whatsthis>Let smbtree query the network nodes by sending requests as broadcasts instead of querying the local master browser.</whatsthis>
+      <default>false</default>
+    </entry>
+    <!-- The custom tab is filled by the core -->
+  </group>
+
+<!-- Synchronization -->
+
+  <!-- Many <whatsthis></whatsthis> entries contain excerpts from the rsync
+       manual page (version 2.6.9). -->
+
+  <group name="Synchronization">
+    <entry name="RsyncPrefix" type="Url">
+      <label>Synchronization prefix:</label>
+      <whatsthis>This is the path where Smb4K will store the files and directories during synchronization. If you plan to synchronize only with one remote share, then you can put the data directly in this directory. If you want to synchronize with several remote shares, then you should create a subdirectory for each share and choose the appropriate one in the synchronization dialog.</whatsthis>
+      <default code="true">KUrl::fromPath( QDir::homePath()+"/smb4k_sync/" )</default>
+    </entry>
+    <entry name="ArchiveMode" type="Bool">
+      <label>Archive mode</label>
+      <whatsthis>Use archive mode (-a, --archive). This is a short form of -rlptgoD.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="RecurseIntoDirectories" type="Bool">
+      <label>Recurse into subdirectories</label>
+      <whatsthis>Recurse into directories (-r, --recursive).</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="UpdateTarget" type="Bool">
+      <label>Update files</label>
+      <whatsthis>Update files in the destination directory that are older than in the source directory (-u, --update).</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="UpdateInPlace" type="Bool">
+      <label>Update files in place</label>
+      <whatsthis>Update destination files in-place (--inplace). By default, rsync first creates a new copy of a file and moves it into place after its transfer finished. If you enable this feature, no copy will be created but the destination file will immediately be overwritten instead. An exception to this is if you combine this option with --backup.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="RelativePathNames" type="Bool">
+      <label>Use relative path names</label>
+      <whatsthis>Use relative paths (-R, --relative). This means that the full path names specified on the command line are sent to the server rather than just the last parts of the file names.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="NoImpliedDirectories" type="Bool">
+      <label>Don't send implied directories</label>
+      <whatsthis>Don't send implied directories with --relative (--no-implied-dirs). This means that the corresponding path elements on the destination system are left unchanged if they exist, and any missing implied directories are created with default attributes. This even allows these implied path elements to have big differences, such as being a symlink to a directory on one side of the transfer, and a real directory on the other side.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="TransferDirectories" type="Bool">
+      <label>Transfer directories without recursing</label>
+      <whatsthis>Transfer directories without recursing (-d, --dirs). This means that all top-level subdirectories are transferred but without their contents.</whatsthis>
+      <!-- This description is only correct for Smb4K. See manual page for further information. -->
+      <default>false</default>
+    </entry>
+    <entry name="CompressData" type="Bool">
+      <label>Compress data during transfer</label>
+      <whatsthis>Compress data during transfer (-z, --compress). This significantly reduces the amount of data that is being transferred. You may want to use this option, if you have a slow connection.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="PreserveSymlinks" type="Bool">
+      <label>Preserve symlinks</label>
+      <whatsthis>Copy symlinks as symlinks (-l, --links).</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="TransformSymlinks" type="Bool">
+      <label>Transform symlinks</label>
+      <whatsthis>Transform symlinks into the items they are pointing to (-L, --copy-links).</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="TransformUnsafeSymlinks" type="Bool">
+      <label>Only transform unsafe symlinks</label>
+      <whatsthis>Transform unsafe symlinks into the items they are pointing to (--copy-unsafe-links). This means that only those symlinks are transformed that point to items that are outside the copied tree. Absolute symlinks are treated the same way. This option has no additional effect if --copy-links has also been specified.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="IgnoreUnsafeSymlinks" type="Bool">
+      <label>Ignore unsafe symlinks</label>
+      <whatsthis>Ignore symlinks that point outside the copied tree (--safe-links). All absolute symlinks are also ignored. If you use this option in conjunction with --relative you might get unexpected results.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="PreserveHardLinks" type="Bool">
+      <label>Preserve hard links</label>
+      <whatsthis>Preserve hard links (-H, --hard-links). This options causes rsync to preserve the hard links that are found during the transfer. Without it, hard links are treated as though they were separate files.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="KeepDirectorySymlinks" type="Bool">
+      <label>Keep directory symlinks</label>
+      <whatsthis>Treat symlinked directories on the receiving side as though they were real ones (-K, --keep-dirlinks). This only works if the symlink matches a real directory from the sending side. Without this option, the receiver's symlink will be deleted and replaced with a real directory.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="PreservePermissions" type="Bool">
+      <label>Preserve permissions</label>
+      <whatsthis>Preserve permissions (-p, --perms). The permissions of the destination file will be same as the source file. For what happens if this option is switched off, please read rsync's manual page.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="PreserveGroup" type="Bool">
+      <label>Preserve group</label>
+      <whatsthis>Preserve the group (-g, --group). The group of the destination file will be set to the same value as the source file.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="PreserveOwner" type="Bool">
+      <label>Preserve owner</label>
+      <whatsthis>Preserve the owner (-o, --owner). The owner of the destination file will be set to the same value as the source file, but only if the receiving rsync is run as the super user. Without this option, the owner is set to the invoking user on the receiving side.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="PreserveDevicesAndSpecials" type="Bool">
+      <label>Preserve device and special files</label>
+      <whatsthis>Preserve device and special files (-D, --devices --specials). This option causes rsync to transfer character and block devices as well as special files such as named sockets and fifos. It works only partially if rsync is not run as super user and the --super option is not specified.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="PreserveTimes" type="Bool">
+      <label>Preserve times</label>
+      <whatsthis>Preserve times (-t, --times). The modification times are transferred along with the files. For what happens if this option is switched off, please read rsync's manual page.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="OmitDirectoryTimes" type="Bool">
+      <label>Omit directories when preserving times</label>
+      <whatsthis>Omit directories when preserving times (-O, --omit-dir-times). This means that directories are omitted when modification times are being preserved. Thus, this feature only works in conjunction with --times.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="RemoveSourceFiles" type="Bool">
+      <label>Remove synchronized source files</label>
+      <whatsthis>Remove all synchronized source files (--remove-source-files). This tells rsync to remove from the sending side the non-directory items that are a part of the transfer and have been successfully duplicated on the receiving side.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="DeleteExtraneous" type="Bool">
+      <label>Delete extraneous files</label>
+      <whatsthis>Delete extraneous files from destination (--delete). This tells rsync to delete all files from the receiving side that are not present on the sending side, but only for the directories that are being synchronized.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="DeleteBefore" type="Bool">
+      <label>Delete files before transfer</label>
+      <whatsthis>Delete files on the receiving side before the transfer starts (--delete-before). This is the default behavior if --delete or --delete-excluded is specified without one of the --delete-WHEN options.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="DeleteAfter" type="Bool">
+      <label>Delete files after transfer</label>
+      <whatsthis>Delete files on the receiving side after the transfer has completed (--delete-after, --del).</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="DeleteDuring" type="Bool">
+      <label>Delete files during transfer</label>
+      <whatsthis>Delete files on the receiving side during the transfer (--delete-during). This method is faster than --delete-before or --delete-after, but it is only supported with rsync 2.6.4 or later.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="DeleteExcluded" type="Bool">
+      <label>Also delete excluded files</label>
+      <whatsthis>Also delete excluded files from destination directory (--delete-excluded). In addition to deleting the files on the receiving side that are not on the sending side, this tells rsync to also delete any files on the receiving side that are excluded. Refer to rsync's manual page for further information.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="IgnoreErrors" type="Bool">
+      <label>Delete even if I/O errors occur</label>
+      <whatsthis>Delete even if I/O errors occur (--ignore-errors). This option has to be specified in conjunction with --delete to take effect.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="ForceDirectoryDeletion" type="Bool">
+      <label>Force deletion of non-void directories</label>
+      <whatsthis>Force deletion of directories even if they are not empty (--force). This option tells rsync to delete a non-empty directory when it is to be replaced by a non-directory. This is only relevant if deletions are not active.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="UseMaximumDelete" type="Bool">
+      <label>Don't delete more than this many files:</label>
+      <whatsthis>Only delete as many files as defined here (--max-delete=NUM). This tells rsync not to delete more than NUM files or directories (NUM must be non-zero). This is useful when mirroring very large trees to prevent disasters.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="MaximumDeleteValue" type="Int">
+      <label>Value for DeleteMaximum config entry</label>
+      <whatsthis></whatsthis>
+      <min>0</min>
+      <default>0</default>
+    </entry>
+    <entry name="UseMinimalTransferSize" type="Bool">
+      <label>Don't transfer any file smaller than:</label>
+      <whatsthis>This option causes rsync to not transfer any file that is smaller than the specified size (--min-size=SIZE).</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="MinimalTransferSize" type="Int">
+      <label>Value for MinimalTransferSize config entry</label>
+      <whatsthis></whatsthis>
+      <min>0</min>
+      <default>0</default>
+    </entry>
+    <entry name="UseMaximalTransferSize" type="Bool">
+      <label>Don't transfer any file larger than:</label>
+      <whatsthis>This option causes rsync to not transfer any file that is larger than the specified size (--max-size=SIZE).</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="MaximalTransferSize" type="Int">
+      <label>Value for MamximalTransferSize config entry</label>
+      <whatsthis></whatsthis>
+      <min>0</min>
+      <default>0</default>
+    </entry>
+    <entry name="KeepPartial" type="Bool">
+      <label>Keep partially transferred files</label>
+      <whatsthis>Keep partially transferred files (--partial). The default behavor is that any partially transferred file is deleted if the transfer is interrupted.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="UsePartialDirectory" type="Bool">
+      <label>Put partially transferred files into:</label>
+      <whatsthis>Put a partially transferred file into this directory (--partial-dir=DIR). This is a better way than the --partial option to keep partial files, because the partially transferred file is kept in a different directory and the destination file is not overwritten.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="PartialDirectory" type="Url">
+      <label>The data for the UsePartialDirectory option</label>
+      <whatsthis></whatsthis>
+      <default code="true">KUrl::fromPath( QDir::homePath() )</default>
+    </entry>
+    <entry name="UseCVSExclude" type="Bool">
+      <label>Auto-ignore files in the same way CVS does</label>
+      <whatsthis>Auto-ignore files in the same way CVS does (-C, --cvs-exclude). This is a useful shorthand for excluding a broad range of files that you often do not want to transfer between systems. This option uses the same algorithm that CVS uses to determine if a file should be ignored.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="UseExcludePattern" type="Bool">
+      <label>Exclude files matching this pattern:</label>
+      <whatsthis>Exclude files that match a certain pattern (--exclude=PATTERN). This is a special filter rule. For further information on filter rules see rsync's manual page.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="ExcludePattern" type="String">
+      <label>Pattern that is used for file exclusion</label>
+      <whatsthis></whatsthis>
+      <default></default>
+    </entry>
+    <entry name="UseExcludeFrom" type="Bool">
+      <label>Read exclude patterns from:</label>
+      <whatsthis>Read exclude patterns from a file (--exclude-from=FILE). This option is similar to the --exclude=PATTERN option except that the exclude patterns are read from a file. This is a special filter rule. For further information on filter rules see rsync's manual page.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="ExcludeFrom" type="Url">
+      <label>The file from which the exclude patterns are read</label>
+      <whatsthis></whatsthis>
+      <default code="true">KUrl::fromPath( QDir::homePath()+"/exclude.txt" )</default>
+    </entry>
+    <entry name="UseIncludePattern" type="Bool">
+      <label>Don't exclude files matching this pattern:</label>
+      <whatsthis>Do not exclude files matching a certain pattern (--include=PATTERN). This is a special filter rule. For further information on filter rules see rsync's manual page.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="IncludePattern" type="String">
+      <label>Pattern that is used for file inclusion</label>
+      <whatsthis></whatsthis>
+      <default></default>
+    </entry>
+    <entry name="UseIncludeFrom" type="Bool">
+      <label>Read include patterns from:</label>
+      <whatsthis>Read include patterns from a file (--include-from=FILE). This option is similar to the --include=PATTERN option except that the include patterns are read from a file. This is a special filter rule. For further information on filter rules see rsync's manual page.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="IncludeFrom" type="Url">
+      <label>The file from which the include patterns are read</label>
+      <whatsthis></whatsthis>
+      <default code="true">KUrl::fromPath( QDir::homePath()+"/include.txt" )</default>
+    </entry>
+    <entry name="CustomFilteringRules" type="String">
+      <label>Custom filter rules:</label>
+      <whatsthis>Add custom file-filtering rules (-f, --filter=RULE). This option allows you to add rules to selectively exclude certain files from the list of files to be transferred. These rules will be added to the rsync command as they are. Thus, each rule has to start with the --filter=... argument.</whatsthis>
+      <default></default>
+    </entry>
+    <entry name="UseFFilterRule" type="Bool">
+      <label>Use --filter='dir-merge /.rsync-filter' filter rule</label>
+      <whatsthis>This filter rule tells rsync to look for per-directory .rsync-filter files that have been sprinkled through the hierarchy and use their rules to filter the files in the transfer. It has no effect, if you also choose to use the --filter='exclude .rsync-filter' rule.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="UseFFFilterRule" type="Bool">
+      <label>Use --filter='exclude .rsync-filter' filter rule</label>
+      <whatsthis>This rule filters out the .rsync-filter files from the transfer. These files normally contain filter rules that can be activated by choosing the --filter='dir-merge /.rsync-filter' rule and deselecting this one.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="EfficientSparseFileHandling" type="Bool">
+      <label>Handle sparse files efficiently</label>
+      <whatsthis>Handle sparse files efficiently (-S, --sparse) so that they take up less space on the destination. This option conflicts with --inplace. For further information read rsync's manual page.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="CopyFilesWhole" type="Bool">
+      <label>Copy files whole (no rsync algorithm)</label>
+      <whatsthis>Copy files whole (-W, --whole-file). With this option the incremental rsync algorithm is not used and the whole file is sent as-is instead.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="OneFileSystem" type="Bool">
+      <label>Don't cross file system boundaries</label>
+      <whatsthis>Do not cross file system boundaries (-x, --one-file-system). This tells rsync to avoid crossing a filesystem boundary when recursing. For further information on this option, read the manual page.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="UpdateExisting" type="Bool">
+      <label>Only update files that already exist</label>
+      <whatsthis>Skip creating new files on the receiving side (--existing). This tells rsync to skip creating files (including directories) that do not exist yet on the destination. If this option is combined with the --ignore-existing option, no files will be updated (which can be useful if all you want to do is to delete extraneous files).</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="IgnoreExisting" type="Bool">
+      <label>Ignore files that already exist</label>
+      <whatsthis>Skip updating files that already exist on the receiving side (--ignore-existing). Existing directories are not ignored.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="DelayUpdates" type="Bool">
+      <label>Delay updates until the end of transfer</label>
+      <whatsthis>Delay updates until the end of the transfer (--delay-updates). This option puts the temporary file from each updated file into a holding directory until the end of the transfer, at which time all the files are renamed and copied into place in rapid succession.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="MakeBackups" type="Bool">
+      <label>Make backups</label>
+      <whatsthis>Make backups (-b, --backup). With this option, preexisting destination files are renamed as each file is transferred or deleted. You can control where the backup file goes and what (if any) suffix gets appended using the --backup-dir=DIR and --suffix=SUFFIX options.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="UseBackupSuffix" type="Bool">
+      <label>Backup suffix:</label>
+      <whatsthis>Use this suffix for backups (--suffix=SUFFIX).</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="BackupSuffix" type="String">
+      <label>Backup suffix</label>
+      <whatsthis></whatsthis>
+      <default>~</default>
+    </entry>
+    <entry name="UseBackupDirectory" type="Bool">
+      <label>Backup directory:</label>
+      <whatsthis>Store backups in this directory (--backup-dir=DIR).</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="BackupDirectory" type="Url">
+      <label>Backup directory</label>
+      <whatsthis></whatsthis>
+      <default code="true">KUrl::fromPath( QDir::homePath() )</default>
+    </entry>
+    <entry name="UseBlockSize" type="Bool">
+      <label>Force fixed checksum block size:</label>
+      <whatsthis>Force a fixed checksum block-size (-B, --block-size=SIZE). This forces the block size used in the rsync algorithm to a fixed value.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="BlockSize" type="Int">
+      <label>The block size</label>
+      <whatsthis></whatsthis>
+      <min>0</min>
+      <default>0</default>
+    </entry>
+    <entry name="UseChecksumSeed" type="Bool">
+      <label>Set block/file checksum seed:</label>
+      <whatsthis>Set block/file checksum seed (--checksum-seed=NUM). Set the MD4 checksum seed to this integer. This 4 byte checksum seed is included in each block and file MD4 checksum calculation. By default the checksum seed is generated by the server and defaults to the current time.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="ChecksumSeed" type="Int">
+      <label>The checksum seed</label>
+      <whatsthis></whatsthis>
+      <min>0</min>
+      <default>0</default>
+    </entry>
+    <entry name="UseChecksum" type="Bool">
+      <label>Skip files based on checksum</label>
+      <whatsthis>Skip files based on a checksum and not based on modification time and size (-c, --checksum). For further information on how this feature works read rsync's manual page.</whatsthis>
+      <default>false</default>
+    </entry>
+  </group>
+
+
+<!-- Super User -->
+
+  <group name="SuperUser">
+    <entry name="UseForceUnmount" type="Bool">
+      <label>Use super user privileges to force the unmounting of (inaccessible) shares</label>
+      <whatsthis>Unmount a share under Linux by force. This even works if the file system is "busy", because it is immediately detached from the file system hierarchy and all references to it are cleaned up later when it is not busy anymore. Linux kernel 2.4.11 or later is needed to take advantage of this feature. Use with case! Note, that you will need the root password to write the necessary changes to the configuration file.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="AlwaysUseSuperUser" type="Bool">
+      <label>Use super user privileges to mount and unmount shares</label>
+      <whatsthis>Use super user privileges for mounting and unmounting remote shares. This feature is only needed, if you are not allowed to use smbmount, smbumount, mount.cifs and umount.cifs as normal user. Note, that you will need the root password to write the necessary changes to the configuration file.</whatsthis>
+      <default>false</default>
+    </entry>
+  </group>
+
+<!-- Laptop support -->
+
+  <group name="LaptopSupport">
+    <entry name="UnmountWhenSleepButtonPressed" type="Bool">
+      <label>Unmount all shares when the sleep button was pressed</label>
+     <whatsthis>Unmount all mounted shares after the hardware sleep button was pressed. The shares will automatically be remounted after the computer woke up again.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="UnmountWhenLidButtonPressed" type="Bool">
+      <label>Unmount all shares when the lid was closed</label>
+     <whatsthis>Unmount all mounted shares after the lid of the laptop was being closed. The shares will automatically be remounted after the computer woke up again.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="UnmountWhenPowerButtonPressed" type="Bool">
+      <label>Unmount all shares when the power button was pressed</label>
+     <whatsthis>Unmount all mounted shares after the hardware power button was pressed. The shares will automatically be remounted after the computer woke up again.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="UnmountWhenNetworkDisconnected" type="Bool">
+      <label>Unmount all shares when the network was disconnected</label>
+      <whatsthis>Unmount all shares when the user disconnected the network or the connection got lost due to a different reason. Using this option in combination with software suspend and hibernation might lead to unwanted side effects. In this case you should better unmount the shares manually before you suspend the computer.</whatsthis>
+      <default>true</default>
+    </entry>
+  </group>
+</kcfg>

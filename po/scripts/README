@@ -1,0 +1,8 @@
+To extract messages from the source code, run extract-messages.sh
+from the root directory of the source code.
+
+To generate the translations from the template ($podir/smb4k.pot),
+run the generate-translations.sh from the root directory of the source
+code.
+
+

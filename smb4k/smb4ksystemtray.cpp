@@ -1,0 +1,936 @@
+/***************************************************************************
+    smb4ksystemtray  -  This is the system tray window class of Smb4K.
+                             -------------------
+    begin                : Mi Jun 13 2007
+    copyright            : (C) 2007-2009 by Alexander Reinholdt
+    email                : dustpuppy@users.berlios.de
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful, but   *
+ *   WITHOUT ANY WARRANTY; without even the implied warranty of            *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU     *
+ *   General Public License for more details.                              *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
+ *   MA  02111-1307 USA                                                    *
+ ***************************************************************************/
+
+// Qt includes
+#include <QMenu>
+
+// KDE specific includes
+#include <kiconloader.h>
+#include <klocale.h>
+#include <kdebug.h>
+#include <kaction.h>
+#include <kmessagebox.h>
+#include <kconfigdialog.h>
+#include <kiconeffect.h>
+#include <kicon.h>
+#include <kstandardaction.h>
+#include <kpluginloader.h>
+#include <kpluginfactory.h>
+#include <kmenu.h>
+#include <kstandarddirs.h>
+
+// application specific includes
+#include <smb4ksystemtray.h>
+#include <dialogs/smb4kmountdialog.h>
+#include <dialogs/smb4kbookmarkeditor.h>
+#include <dialogs/smb4ksynchronizationdialog.h>
+#include <core/smb4kcore.h>
+#include <core/smb4kbookmark.h>
+#include <core/smb4kshare.h>
+#include <core/smb4ksettings.h>
+#include <core/smb4kglobal.h>
+
+using namespace Smb4KGlobal;
+
+
+Smb4KSystemTray::Smb4KSystemTray( QWidget *parent )
+: KSystemTrayIcon( "smb4k", parent )
+{
+  setToolTip( i18n( "Smb4K" ) );
+
+  m_bookmarks      = new QActionGroup( actionCollection() );
+  m_share_menus    = new QActionGroup( actionCollection() );
+  m_shares_actions = new QActionGroup( actionCollection() );
+
+  // Set up the context menu (skeleton):
+  QStringList shares_overlay;
+  shares_overlay.append( "emblem-mounted" );
+
+  m_shares_menu         = new KActionMenu( KIcon( "folder-remote", KIconLoader::global(), shares_overlay ),
+                          i18n( "Mounted Shares" ), actionCollection() );
+  m_bookmarks_menu      = new KActionMenu( KIcon( "folder-bookmarks" ), i18n( "Bookmarks" ),
+                          actionCollection() );
+  KAction *manual_mount = new KAction( KIcon( "list-add" ), i18n( "M&ount Manually" ),
+                          actionCollection() );
+  KAction *configure    = KStandardAction::preferences( this, SLOT( slotConfigDialog() ),
+                          actionCollection() );
+
+  contextMenu()->addAction( m_shares_menu );
+  contextMenu()->addAction( m_bookmarks_menu );
+  contextMenu()->addSeparator();
+  contextMenu()->addAction( manual_mount );
+  contextMenu()->addAction( configure );
+
+  // Set up the menus:
+  slotSetupBookmarksMenu();
+  slotSetupSharesMenu();
+
+  // Connections:
+  connect( manual_mount,                 SIGNAL( triggered( bool ) ),
+           this,                         SLOT( slotMountDialog( bool ) ) );
+
+  connect( m_bookmarks,                  SIGNAL( triggered( QAction * ) ),
+           this,                         SLOT( slotBookmarkTriggered( QAction * ) ) );
+
+  connect( m_shares_actions,             SIGNAL( triggered( QAction * ) ),
+           this,                         SLOT( slotShareActionTriggered( QAction * ) ) );
+
+  connect( Smb4KCore::bookmarkHandler(), SIGNAL( updated() ),
+           this,                         SLOT( slotSetupBookmarksMenu() ) );
+
+  connect( Smb4KCore::mounter(),         SIGNAL( updated() ),
+           this,                         SLOT( slotEnableBookmarks() ) );
+
+  connect( Smb4KCore::mounter(),         SIGNAL( updated() ),
+           this,                         SLOT( slotSetupSharesMenu() ) );
+
+  // Connection to quitSelected() signal must be done in parent widget.
+}
+
+
+Smb4KSystemTray::~Smb4KSystemTray()
+{
+}
+
+
+void Smb4KSystemTray::embed( bool ebd )
+{
+  setVisible( ebd );
+}
+
+
+void Smb4KSystemTray::loadSettings()
+{
+  // Adjust the bookmarks menu.
+  // Since the menu is rebuilt everytime slotSetupBookmarksMenu() is
+  // called, we just call it and are done.
+  slotSetupBookmarksMenu();
+
+  // Adjust the shares menu.
+  // slotSetupSharesMenu() is doing everything for us, so just call it.
+  slotSetupSharesMenu();
+}
+
+
+/////////////////////////////////////////////////////////////////////////////
+// SLOT IMPLEMENTATIONS
+/////////////////////////////////////////////////////////////////////////////
+
+void Smb4KSystemTray::slotMountDialog( bool /* checked */ )
+{
+  Smb4KMountDialog *dlg = NULL;
+
+  // Do not open the mount dialog twice. So, look
+  // if there is already one.
+  if ( parentWidget() )
+  {
+    dlg = parentWidget()->findChild<Smb4KMountDialog *>();
+  }
+  else
+  {
+    dlg = contextMenu()->findChild<Smb4KMountDialog *>();
+  }
+
+  // If there is no dialog yet, create one.
+  if ( !dlg )
+  {
+    if ( parentWidget() )
+    {
+      dlg = new Smb4KMountDialog( parentWidget() );
+    }
+    else
+    {
+      // This is a bit strange, but we need a QWidget object.
+      // Since KSystemTrayIcon class inherits QObject, we do
+      // it this way. 0 as parent would make the check above
+      // fail.
+      dlg = new Smb4KMountDialog( contextMenu() );
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  if ( !dlg->isVisible() )
+  {
+    dlg->show();
+  }
+  else
+  {
+    if ( dlg->isMinimized() )
+    {
+      dlg->showNormal();
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+}
+
+
+void Smb4KSystemTray::slotConfigDialog()
+{
+  // If the config dialog is already created and cached,
+  // we do not create a new one but show the old instead:
+  KConfigDialog *dlg = NULL;
+
+  if ( (dlg = KConfigDialog::exists( "ConfigDialog" )) && KConfigDialog::showDialog( "ConfigDialog" ) )
+  {
+    // To make sure we do not connect the config dialog several times
+    // to slotSettingsChanged(), we break the connection first and re-
+    // establish it afterwards:
+    disconnect( dlg,  SIGNAL( settingsChanged( const QString & ) ),
+                this, SLOT( slotSettingsChanged( const QString & ) ) );
+
+    connect( dlg,  SIGNAL( settingsChanged( const QString & ) ),
+             this, SLOT( slotSettingsChanged( const QString & ) ) );
+
+    return;
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // Load the configuration dialog:
+  KPluginLoader loader( "libsmb4kconfigdialog" );
+  KPluginFactory *config_factory = loader.factory();
+
+  if ( config_factory )
+  {
+    if ( parentWidget() )
+    {
+      dlg = config_factory->create<KConfigDialog>( parentWidget() );
+      dlg->setObjectName( "ConfigDialog" );
+    }
+    else
+    {
+      dlg = config_factory->create<KConfigDialog>( contextMenu() );
+      dlg->setObjectName( "ConfigDialog" );
+    }
+
+    // ... and show it.
+    if ( dlg )
+    {
+      connect( dlg,  SIGNAL( settingsChanged( const QString & ) ),
+               this, SLOT( slotSettingsChanged( const QString & ) ) );
+
+      connect( dlg,  SIGNAL( settingsChanged( const QString & ) ),
+               this, SIGNAL( settingsChanged( const QString & ) ) );
+
+      dlg->show();
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    KMessageBox::error( 0, "<qt>"+loader.errorString()+"</qt>" );
+
+    return;
+  }
+}
+
+void Smb4KSystemTray::slotSettingsChanged( const QString & )
+{
+  // Execute loadSettings():
+  loadSettings();
+}
+
+
+void Smb4KSystemTray::slotSetupBookmarksMenu()
+{
+  // First check if we have to set up the menu completely:
+  if ( !actionCollection()->action( "st_edit_bookmarks_action" ) )
+  {
+    // OK, build the menu from ground up:
+    KAction *edit_bookmarks = new KAction( KIcon( "bookmarks-organize" ), i18n( "&Edit Bookmarks" ),
+                              actionCollection() );
+    actionCollection()->addAction( "st_edit_bookmarks_action", edit_bookmarks );
+
+    connect( edit_bookmarks, SIGNAL( triggered( bool ) ), this, SLOT( slotBookmarkEditor( bool ) ) );
+
+    m_bookmarks_menu->addAction( edit_bookmarks );
+    m_bookmarks_menu->addSeparator();
+  }
+
+  // Get the list of bookmark actions and delete all entries. We could
+  // also try to keep those actions that are not obsolete, but I think
+  // this is the cleanest way.
+  while ( !m_bookmarks->actions().isEmpty() )
+  {
+    m_bookmarks_menu->removeAction( m_bookmarks->actions().first() );
+    actionCollection()->removeAction( m_bookmarks->actions().first() );
+    delete m_bookmarks->actions().takeFirst();
+  }
+
+  // Get the list of bookmarks:
+  QList<Smb4KBookmark *> bookmarks = Smb4KCore::bookmarkHandler()->getBookmarks();
+  QMap<QString, bool> actions;
+
+  // Prepare the list of bookmarks for display:
+  if ( !bookmarks.isEmpty() )
+  {
+    // Enable the "Edit Bookmarks" action:
+    actionCollection()->action( "st_edit_bookmarks_action" )->setEnabled( true );
+
+    // Work around sorting problems:
+    for ( int i = 0; i < bookmarks.size(); ++i )
+    {
+      QList<Smb4KShare *> shares_list = findShareByUNC( bookmarks.at( i )->unc() );
+      bool enable = true;
+
+      for ( int j = 0; j < shares_list.size(); ++j )
+      {
+        if ( !shares_list.at( j )->isForeign() )
+        {
+          enable = false;
+          break;
+        }
+        else
+        {
+          continue;
+        }
+      }
+
+      if ( !bookmarks.at( i )->label().isEmpty() && Smb4KSettings::showCustomBookmarkLabel() )
+      {
+        actions.insert( bookmarks.at( i )->label(), enable );
+      }
+      else
+      {
+        actions.insert( bookmarks.at( i )->unc(), enable );
+      }
+    }
+  }
+  else
+  {
+    // Disable the "Edit Bookmarks" action:
+    actionCollection()->action( "st_edit_bookmarks_action" )->setEnabled( false );
+  }
+
+  // Now create the actions and put them into the action group
+  // and the menu.
+  QMapIterator<QString, bool> it( actions );
+
+  while ( it.hasNext() )
+  {
+    it.next();
+
+    KAction *bm_action = new KAction( KIcon( "folder-remote" ), it.key(), m_bookmarks );
+    bm_action->setData( it.key() );
+    bm_action->setEnabled( it.value() );
+    m_bookmarks_menu->addAction( bm_action );
+  }
+}
+
+
+void Smb4KSystemTray::slotBookmarkEditor( bool /* checked */ )
+{
+  Smb4KBookmarkEditor *dlg = NULL;
+
+  // Do not open the bookmark editor twice. So, look
+  // if there is already one.
+  if ( parentWidget() )
+  {
+    dlg = parentWidget()->findChild<Smb4KBookmarkEditor *>();
+  }
+  else
+  {
+    dlg = contextMenu()->findChild<Smb4KBookmarkEditor *>();
+  }
+
+  if ( !dlg )
+  {
+    if ( parentWidget() && parentWidget()->isVisible() )
+    {
+      dlg = new Smb4KBookmarkEditor( parentWidget() );
+    }
+    else
+    {
+      // This is a bit strange, but we need a QWidget object.
+      // Since KSystemTrayIcon class inherits QObject, we do
+      // it this way. 0 as parent would make the check above
+      // fail.
+      dlg = new Smb4KBookmarkEditor( contextMenu() );
+    }
+  }
+
+  dlg->setVisible( true );
+}
+
+
+void Smb4KSystemTray::slotBookmarkTriggered( QAction *action )
+{
+  if ( action )
+  {
+    Smb4KBookmark *bookmark = Smb4KCore::bookmarkHandler()->findBookmarkByUNC( action->data().toString() );
+
+    if ( bookmark )
+    {
+      Smb4KShare share( bookmark->hostName(), bookmark->shareName() );
+      share.setWorkgroupName( bookmark->workgroupName() );
+      share.setHostIP( bookmark->hostIP() );
+
+      Smb4KCore::mounter()->mountShare( &share );
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KSystemTray::slotEnableBookmarks()
+{
+  // Enable/disable the bookmark actions.
+  for ( int i = 0; i < m_bookmarks->actions().size(); ++i )
+  {
+    QList<Smb4KShare *> shares_list = findShareByUNC( m_bookmarks->actions().at( i )->data().toString() );
+
+    bool enable = true;
+
+    for ( int j = 0; j < shares_list.size(); ++j )
+    {
+      if ( !shares_list.at( j )->isForeign() )
+      {
+        enable = false;
+
+        break;
+      }
+      else
+      {
+        continue;
+      }
+    }
+
+    m_bookmarks->actions().at( i )->setEnabled( enable );
+  }
+}
+
+
+void Smb4KSystemTray::slotSetupSharesMenu()
+{
+  // First check if we have to set up the menu completely:
+  if ( !actionCollection()->action( "st_unmount_all_action" ) )
+  {
+    // OK, build the menu from ground up:
+    KAction *unmount_all  = new KAction( KIcon( "system-run" ), i18n( "U&nmount All" ),
+                            actionCollection() );
+    actionCollection()->addAction( "st_unmount_all_action", unmount_all );
+
+    connect( unmount_all, SIGNAL( triggered( bool ) ), this, SLOT( slotUnmountAllTriggered( bool ) ) );
+
+    m_shares_menu->addAction( unmount_all );
+    m_shares_menu->addSeparator();
+  }
+
+  // Since we are updating the list of shares very frequently, we should
+  // not delete all entries in the menu, but look for changes.
+
+  // Get the list of mounted shares:
+  QList<Smb4KShare *> *shares_list = mountedSharesList();
+
+  if ( !shares_list->isEmpty() )
+  {
+    // Enable the "Unmount All" action.
+    actionCollection()->action( "st_unmount_all_action" )->setEnabled( true );
+
+    // Delete all obsolete actions.
+    for ( int i = 0; i < m_share_menus->actions().size(); ++i )
+    {
+      // Find the associated share by its canonical path.
+      QString canonical_path = m_share_menus->actions().at( i )->objectName();
+      Smb4KShare *share = findShareByPath( canonical_path.toUtf8() );
+
+      if ( share )
+      {
+        // Check what to do with the share.
+        if ( !share->isForeign() || Smb4KSettings::showAllShares() )
+        {
+          // To avoid sorting problems later, we remove *all* actions that
+          // have data entries (displayed texts) that do not match the current
+          // criterions.
+          if ( (!Smb4KSettings::showMountPoint() &&
+               QString::compare( m_share_menus->actions().at( i )->data().toString(),
+               share->unc() ) == 0) ||
+               (Smb4KSettings::showMountPoint() &&
+               QString::compare( m_share_menus->actions().at( i )->data().toString(),
+               share->canonicalPath() ) == 0) )
+          {
+#ifdef __linux__
+            // Find the "Force Unmount" action and decide if it needs to be
+            // enabled/disabled:
+            QAction *force = actionCollection()->action( "st_force_"+canonical_path );
+
+            if ( force )
+            {
+              force->setEnabled( Smb4KSettings::useForceUnmount() );
+            }
+#endif
+
+            continue;
+          }
+          else
+          {
+            // Remove all actions associated with this share.
+            KActionMenu *menu = static_cast<KActionMenu *>( m_share_menus->actions().at( i ) );
+            QAction *action = NULL;
+
+            while ( !menu->menu()->actions().isEmpty() )
+            {
+              // Remove the action from the menu.
+              action = menu->menu()->actions().takeFirst();
+              // Remove the action from the action group.
+              m_shares_actions->removeAction( action );
+              // Delete it.
+              delete action;
+            }
+
+            // Now remove the menu itself.
+            m_shares_menu->removeAction( menu );
+            m_share_menus->removeAction( menu );
+            delete menu;
+
+            continue;
+          }
+        }
+        else
+        {
+          // The user does not want to see foreign shares. Remove all
+          // actions associated with this share.
+          KActionMenu *menu = static_cast<KActionMenu *>( m_share_menus->actions().at( i ) );
+          QAction *action = NULL;
+
+          while ( !menu->menu()->actions().isEmpty() )
+          {
+            // Remove the action from the menu.
+            action = menu->menu()->actions().takeFirst();
+            // Remove the action from the action group.
+            m_shares_actions->removeAction( action );
+            // Delete it.
+            delete action;
+          }
+
+          // Now remove the menu itself.
+          m_shares_menu->removeAction( menu );
+          m_share_menus->removeAction( menu );
+          delete menu;
+
+          continue;
+        }
+      }
+      else
+      {
+        // First remove all actions associated with this share.
+        KActionMenu *menu = static_cast<KActionMenu *>( m_share_menus->actions().at( i ) );
+        QAction *action = NULL;
+
+        while ( !menu->menu()->actions().isEmpty() )
+        {
+          // Remove the action from the menu.
+          action = menu->menu()->actions().takeFirst();
+          // Remove the action from the action group.
+          m_shares_actions->removeAction( action );
+          // Delete it.
+          delete action;
+        }
+
+        // Now remove the menu itself.
+        m_shares_menu->removeAction( menu );
+        m_share_menus->removeAction( menu );
+        delete menu;
+
+        continue;
+      }
+    }
+
+    // Now look if we have to add some shares or if we have to
+    // alter their icon/text.
+    // First, work around sorting problems. We cannot sort the
+    // Smb4KShare items properly...
+    QMap<QString, Smb4KShare> shares_map;
+
+    for ( int i = 0; i < shares_list->size(); ++i )
+    {
+      if ( !shares_list->at( i )->isForeign() || Smb4KSettings::showAllShares() )
+      {
+        // ATTENTION: If the user chose to see the mount points
+        // rather than the share name, the mount point is the key,
+        // otherwise it is the share name.
+        if ( Smb4KSettings::showMountPoint() )
+        {
+          shares_map.insert( QString::fromUtf8( shares_list->at( i )->canonicalPath() ),
+                             *shares_list->at( i ) );
+
+          continue;
+        }
+        else
+        {
+          shares_map.insert( shares_list->at( i )->unc(),
+                             *shares_list->at( i ) );
+
+          continue;
+        }
+      }
+      else
+      {
+        continue;
+      }
+    }
+
+    // We are ready to insert the new shares into the menu.
+    // First, we look in m_share_menus, if an respective menu
+    // already exists or not. If not, we add a new menu:
+    QMapIterator<QString, Smb4KShare> it( shares_map );
+
+    while ( it.hasNext() )
+    {
+      it.next();
+
+      KActionMenu *action_menu = NULL;
+
+      if ( (action_menu = static_cast<KActionMenu *>( actionCollection()->action( QString::fromUtf8( it.value().canonicalPath() ) ) )) )
+      {
+        QString canonical_path = QString::fromUtf8( it.value().canonicalPath() );
+
+        // The action already exists. Have a look whether we have
+        // to change anything.
+        if ( it.value().isInaccessible() )
+        {
+          // Change the icon:
+          QStringList overlay;
+          overlay.append( "emblem-mounted" );
+
+          KIcon icon( "folder-locked", KIconLoader::global(), overlay );
+
+          if ( it.value().isForeign() )
+          {
+            int icon_size = KIconLoader::global()->currentSize( KIconLoader::Small );
+            KIcon disabled_icon( icon.pixmap( icon_size, QIcon::Disabled ) );
+
+            action_menu->setIcon( disabled_icon );
+          }
+          else
+          {
+            action_menu->setIcon( icon );
+          }
+
+          // Disable actions that should not be performed on an inaccessible
+          // share:
+          actionCollection()->action( "st_synchronize_"+canonical_path )->setEnabled( false );
+          actionCollection()->action( "st_konsole_"+canonical_path )->setEnabled( false );
+          actionCollection()->action( "st_filemanager_"+canonical_path )->setEnabled( false );
+        }
+        else
+        {
+          // Do nothing
+        }
+
+        // Change the text if necessary:
+        if ( !Smb4KSettings::showMountPoint() &&
+             QString::compare( action_menu->data().toString(), it.value().unc() ) != 0 )
+        {
+          action_menu->setText( it.value().unc() );
+          action_menu->setData( it.value().unc() );
+        }
+        else if ( Smb4KSettings::showMountPoint() &&
+                  QString::compare( action_menu->data().toString(), it.value().path() ) != 0 )
+        {
+          action_menu->setText( it.value().canonicalPath() );
+          action_menu->setData( it.value().canonicalPath() );
+        }
+        else
+        {
+          // Do nothing
+        }
+
+        // If we have a foreign share, check if we have to enable/disable the
+        // unmount actions.
+        actionCollection()->action( "st_unmount_"+canonical_path )->setEnabled(
+                            !(it.value().isForeign() && !Smb4KSettings::unmountForeignShares()) );
+#ifdef __linux__
+        actionCollection()->action( "st_force_"+canonical_path )->setEnabled(
+                            !(it.value().isForeign() && !Smb4KSettings::unmountForeignShares()) &&
+                            Smb4KSettings::useForceUnmount() );
+#endif
+
+        continue;
+      }
+      else
+      {
+        // The menu does not exist. Create it with all its entries.
+        // First set up the action menu.
+        QStringList overlay;
+        overlay.append( "emblem-mounted" );
+
+        KIcon icon;
+
+        if ( !it.value().isInaccessible() )
+        {
+          icon = KIcon( "folder-remote", KIconLoader::global(), overlay );
+        }
+        else
+        {
+          icon = KIcon( "folder-locked", KIconLoader::global(), overlay );
+        }
+
+        QString text = Smb4KSettings::showMountPoint() ?
+                       it.value().canonicalPath() :
+                       it.value().unc();
+
+        if ( it.value().isForeign() )
+        {
+          int icon_size = KIconLoader::global()->currentSize( KIconLoader::Small );
+          KIcon disabled_icon( icon.pixmap( icon_size, QIcon::Disabled ) );
+
+          action_menu = new KActionMenu( disabled_icon, text, m_share_menus );
+        }
+        else
+        {
+          action_menu = new KActionMenu( icon, text, m_share_menus );
+        }
+
+        action_menu->setObjectName( it.value().canonicalPath() );
+        action_menu->setData( text );
+        actionCollection()->addAction( it.value().canonicalPath(), action_menu );
+
+        // Now add the actions. We do not need to connect them to any slots,
+        // because m_shares_actions is.
+        KAction *unmount     = new KAction( KIcon( "media-eject" ), i18n( "&Unmount" ),
+                               m_shares_actions );
+        unmount->setData( "st_unmount_"+it.value().canonicalPath() );
+        unmount->setEnabled( !(it.value().isForeign() && !Smb4KSettings::unmountForeignShares()) );
+        actionCollection()->addAction( unmount->data().toString(), unmount );
+
+#ifdef __linux__
+        KAction *force       = new KAction( KIcon( "media-eject" ), i18n( "&Force Unmounting" ),
+                               m_shares_actions );
+        force->setData( "st_force_"+it.value().canonicalPath() );
+        force->setEnabled( !(it.value().isForeign() && !Smb4KSettings::unmountForeignShares()) &&
+                           Smb4KSettings::useForceUnmount() );
+        actionCollection()->addAction( force->data().toString(), force );
+#endif
+        KAction *synchronize = new KAction( KIcon( "go-bottom" ), i18n( "S&ynchronize" ),
+                               m_shares_actions );
+        synchronize->setData( "st_synchronize_"+it.value().canonicalPath() );
+        synchronize->setEnabled( !KStandardDirs::findExe( "rsync" ).isEmpty() );
+        actionCollection()->addAction( synchronize->data().toString(), synchronize );
+
+        KAction *konsole     = new KAction( KIcon( "utilities-terminal" ), i18n( "Open with Konso&le" ),
+                               m_shares_actions );
+        konsole->setData( "st_konsole_"+it.value().canonicalPath() );
+        konsole->setEnabled( !KGlobal::dirs()->findResource( "exe", "konsole" ).isEmpty() );
+        actionCollection()->addAction( konsole->data().toString(), konsole );
+
+        KAction *filemanager = new KAction( KIcon( "system-file-manager" ), i18n( "Open with F&ile Manager" ),
+                               m_shares_actions );
+        filemanager->setData( "st_filemanager_"+it.value().canonicalPath() );
+        actionCollection()->addAction( filemanager->data().toString(), filemanager );
+
+        action_menu->addAction( unmount );
+#ifdef __linux__
+        action_menu->addAction( force );
+#endif
+        action_menu->addSeparator();
+        action_menu->addAction( synchronize );
+        action_menu->addSeparator();
+        action_menu->addAction( konsole );
+        action_menu->addAction( filemanager );
+
+        // Now put the menu into the shares menu:
+        QAction *action = actionCollection()->action( it.peekPrevious().key() );
+
+        m_shares_menu->insertAction( action, action_menu );
+      }
+    }
+  }
+  else
+  {
+    // Remove all share menus and all their children.
+    for ( int i = 0; i < m_share_menus->actions().size(); ++i )
+    {
+      // First remove all actions associated with this share.
+      KActionMenu *menu = static_cast<KActionMenu *>( m_share_menus->actions().at( i ) );
+      QAction *action = NULL;
+
+      while ( !menu->menu()->actions().isEmpty() )
+      {
+        // Remove the action from the menu.
+        action = menu->menu()->actions().takeFirst();
+        // Remove the action from the action group.
+        m_shares_actions->removeAction( action );
+        // Delete it.
+        delete action;
+      }
+
+      // Now remove the menu itself.
+      m_shares_menu->removeAction( menu );
+      m_share_menus->removeAction( menu );
+      delete menu;
+    }
+
+    // Disable the "Unmount All" action.
+    actionCollection()->action( "st_unmount_all_action" )->setEnabled( false );
+  }
+
+}
+
+
+void Smb4KSystemTray::slotUnmountAllTriggered( bool /* checked */ )
+{
+  Smb4KCore::mounter()->unmountAllShares();
+}
+
+
+void Smb4KSystemTray::slotShareActionTriggered( QAction *action )
+{
+  if ( action )
+  {
+    if ( action->data().toString().startsWith( "st_unmount_" ) )
+    {
+      QString canonical_path = QString( action->data().toString() ).section( "st_unmount_", 1, 1 );
+
+      Smb4KShare *share = findShareByPath( canonical_path.toUtf8() );
+
+      if ( share )
+      {
+        Smb4KCore::mounter()->unmountShare( share, false, false );
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+#ifdef __linux__
+    else if ( action->data().toString().startsWith( "st_force_" ) )
+    {
+      QString canonical_path = QString( action->data().toString() ).section( "st_force_", 1, 1 );
+
+      Smb4KShare *share = findShareByPath( canonical_path.toUtf8() );
+
+      if ( share )
+      {
+        Smb4KCore::mounter()->unmountShare( share, true, false );
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+#endif
+    else if ( action->data().toString().startsWith( "st_synchronize_" ) )
+    {
+      QString canonical_path = QString( action->data().toString() ).section( "st_synchronize_", 1, 1 );
+
+      Smb4KShare *share = findShareByPath( canonical_path.toUtf8() );
+
+      if ( share && !share->isInaccessible() )
+      {
+        Smb4KSynchronizationDialog *dlg = NULL;
+
+        // Do not open the synchronization dialog twice. So, look
+        // if there is already one.
+        if ( parentWidget() )
+        {
+          dlg = parentWidget()->findChild<Smb4KSynchronizationDialog *>();
+        }
+        else
+        {
+          dlg = contextMenu()->findChild<Smb4KSynchronizationDialog *>();
+        }
+
+        // If there is no dialog yet, create one.
+        if ( !dlg )
+        {
+          if ( parentWidget() && parentWidget()->isVisible() )
+          {
+            dlg = new Smb4KSynchronizationDialog( share, parentWidget() );
+          }
+          else
+          {
+            // This is a bit strange, but we need a QWidget object.
+            // Since KSystemTrayIcon class inherits QObject, we do
+            // it this way. 0 as parent witll make the check above
+            // fail.
+            dlg = new Smb4KSynchronizationDialog( share, contextMenu() );
+          }
+        }
+
+        dlg->setVisible( true );
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else if ( action->data().toString().startsWith( "st_konsole_" ) )
+    {
+      QString canonical_path = QString( action->data().toString() ).section( "st_konsole_", 1, 1 );
+
+      Smb4KShare *share = findShareByPath( canonical_path.toUtf8() );
+
+      if ( share && !share->isInaccessible() )
+      {
+        Smb4KCore::open( share, Smb4KCore::Konsole );
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else if ( action->data().toString().startsWith( "st_filemanager" ) )
+    {
+      QString canonical_path = QString( action->data().toString() ).section( "st_filemanager_", 1, 1 );
+
+      Smb4KShare *share = findShareByPath( canonical_path.toUtf8() );
+
+      if ( share && !share->isInaccessible() )
+      {
+        Smb4KCore::open( share, Smb4KCore::FileManager );
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+#include "smb4ksystemtray.moc"
+

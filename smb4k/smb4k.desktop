@@ -1,0 +1,12 @@
+# KDE Config File
+[Desktop Entry]
+Name=Smb4K
+Comment=Advanced Network Neighborhood Browser
+Exec=smb4k
+Icon=smb4k
+X-DocPath=smb4k/index.html
+Type=Application
+Terminal=false
+Categories=Qt;KDE;Utility;
+X-DBUS-StartupType=Unique
+X-DBUS-ServiceName=de.berlios.smb4k

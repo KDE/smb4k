@@ -1,0 +1,5240 @@
+# translation of sv.po to svenska
+# Alexander Reinholdt <alexander.reinholdt@web.de>, 2003.
+# Marc Hansen <marcgie@mail.berlios.de>, 2003, 2004, 2005.
+# Marc Hansen <marcgie@berlios.de>, 2005.
+# Leslie Jensen <leslie@eskk.nu>, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: sv\n"
+"Report-Msgid-Bugs-To: http://developer.berlios.de/bugs/?group_id=769\n"
+"POT-Creation-Date: 2008-08-03 20:43+0200\n"
+"PO-Revision-Date: 2008-04-23 10:50+0200\n"
+"Last-Translator: Leslie Jensen <leslie@eskk.nu>\n"
+"Language-Team: svenska <sv@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+
+#: core/smb4khomesshareshandler.cpp:113
+msgid "Specify User"
+msgstr "Definiera användaren"
+
+#: core/smb4khomesshareshandler.cpp:116
+#, fuzzy
+msgid "Clear List"
+msgstr "&Rensa"
+
+#: core/smb4khomesshareshandler.cpp:132
+msgid "Please specify a user name."
+msgstr "Ange användarnamn"
+
+#: core/smb4khomesshareshandler.cpp:134 core/smb4kpasswordhandler.cpp:431
+#: smb4k/configdlg/smb4kauthoptions.cpp:79
+msgid "User:"
+msgstr "Användare:"
+
+#: core/smb4khomesshareshandler.cpp:359 core/smb4kbookmarkhandler.cpp:346
+#: core/smb4ksambaoptionshandler.cpp:343
+#, kde-format
+msgid "%1 is not a version 1.0 file."
+msgstr ""
+
+#: core/smb4kpasswordhandler.cpp:359
+#: smb4k/configdlg/smb4knetworkoptions.cpp:100
+#: smb4k/configdlg/smb4kconfigdialog.cpp:146
+#: smb4k/configdlg/smb4ksambaoptions.cpp:138
+msgid "Authentication"
+msgstr "Autentisering"
+
+#: core/smb4kpasswordhandler.cpp:386
+msgid "The access was denied. "
+msgstr "Ej ingripande."
+
+#: core/smb4kpasswordhandler.cpp:391
+#, fuzzy
+msgid "The password is not correct. "
+msgstr "Fel lösenord."
+
+#: core/smb4kpasswordhandler.cpp:396
+msgid "The permission was denied. "
+msgstr "Ej ingripande."
+
+#: core/smb4kpasswordhandler.cpp:401
+msgid "An authentication error occurred. "
+msgstr "Ett authentiserings fel uppstod."
+
+#: core/smb4kpasswordhandler.cpp:406
+msgid "The logon failed. "
+msgstr "Login mislykades."
+
+#: core/smb4kpasswordhandler.cpp:417
+#, fuzzy, kde-format
+msgid "Please enter authentication data for server %1."
+msgstr "Använd autentisiering för %1."
+
+#: core/smb4kpasswordhandler.cpp:421
+#, fuzzy, kde-format
+msgid "Please enter authentication data for share %1."
+msgstr "Använd autentisiering för %1."
+
+#: core/smb4kpasswordhandler.cpp:453 smb4k/configdlg/smb4kauthoptions.cpp:86
+msgid "Password:"
+msgstr "Lösenord:"
+
+#: core/smb4kcoremessage.cpp:65
+#, fuzzy
+msgid ""
+"<qt><p>The list of workgroups and domains could not be retrieved.</"
+"p><p>Detailed information cannot be provided because there was no error "
+"message.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:69
+#, fuzzy
+msgid ""
+"<qt><p>The list of workgroups and domains could not be retrieved.</p><p>Read "
+"the error message under \"Details\" to find out more.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:78
+#, fuzzy
+msgid ""
+"<qt><p>The list of registered IP addresses within the given broadcast areas "
+"could not be retrieved.</p><p>Detailed information cannot be provided "
+"because there was no error message.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:82
+#, fuzzy
+msgid ""
+"<qt><p>The list of registered IP addresses within the given broadcast areas "
+"could not be retrieved.</p><p>Read the error message under \"Details\" to "
+"find out more.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:91
+#, fuzzy
+msgid ""
+"<qt><p>The list of servers could not be retrieved.</p><p>Detailed "
+"information cannot be provided because there was no error message.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:95
+#, fuzzy
+msgid ""
+"<qt><p>The list of servers could not be retrieved.</p><p>Read the error "
+"message under \"Details\" to find out more.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:104
+#, fuzzy
+msgid ""
+"<qt><p>The list of shares could not be retrieved.</p><p>Detailed information "
+"cannot be provided because there was no error message.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:108
+#, fuzzy
+msgid ""
+"<qt><p>The list of shares could not be retrieved.</p><p>Read the error "
+"message under \"Details\" to find out more.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:117
+#, fuzzy
+msgid ""
+"<qt><p>The preview could not be compiled.</p><p>Detailed information cannot "
+"be provided because there was no error message.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:121
+#, fuzzy
+msgid ""
+"<qt><p>The preview could not be compiled.</p><p>Read the error message under "
+"\"Details\" to find out more.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:128
+#, fuzzy
+msgid ""
+"<qt>You are not allowed to unmount this share. It is owned by another user.</"
+"qt>"
+msgstr "Du har inte tillåtelse att avmontera denna katalog."
+
+#: core/smb4kcoremessage.cpp:136
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>The share \"%1\" could not be mounted.</p><p>Detailed information "
+"cannot be provided because there was no error message.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:140
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>The share \"%1\" could not be mounted.</p><p>Read the error message "
+"under \"Details\" to find out more.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:149
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>The share \"%1\" could not be unmounted.</p><p>Detailed information "
+"cannot be provided because there was no error message.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:153
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>The share \"%1\" could not be unmounted.</p><p>Read the error message "
+"under \"Details\" to find out more.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:160
+#, fuzzy, kde-format
+msgid "<qt>The file \"%1\" could not be found.</qt>"
+msgstr "Filen %1 kan inte hittas."
+
+#: core/smb4kcoremessage.cpp:168
+#, fuzzy
+msgid ""
+"<qt><p>The name of your computer could not be determined by using the "
+"gethostname() system call.</p><p>Detailed information cannot be provided "
+"because there was no error message.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:172
+#, fuzzy
+msgid ""
+"<qt><p>The name of your computer could not be determined by using the "
+"gethostname() system call.</p><p>Read the error message under \"Details\" to "
+"find out more.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:179
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>Either your PATH environment variable is not set properly or there "
+"are the following programs missing on your system:</p><p>%1</p><p>Please "
+"correct this and restart Smb4K.</p></qt>"
+msgstr ""
+"PATH variabeln är inte riktig stätt, eller dem följande programm är inte på "
+"datorn:\n"
+"%1\n"
+"Omstart Smb4k efter rättning."
+
+#: core/smb4kcoremessage.cpp:185
+#, fuzzy, kde-format
+msgid "<qt>The directory \"%1\" could not be created.</qt>"
+msgstr "Katalogen %1 kann inte hittas."
+
+#: core/smb4kcoremessage.cpp:191
+#, fuzzy
+msgid ""
+"<qt>The share could not be unmounted, because the mount point string was "
+"empty.</qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:197
+#, fuzzy
+msgid "<qt>This feature has not been enabled.</qt>"
+msgstr "Den här funktion är inte aktiverat."
+
+#: core/smb4kcoremessage.cpp:203
+#, fuzzy
+msgid "<qt>Printers cannot be bookmarked.</qt>"
+msgstr "Skrivare kann inte vara bokmärken."
+
+#: core/smb4kcoremessage.cpp:211
+#, fuzzy
+msgid ""
+"<qt><p>An error occurred while writing to the sudoers file.</p><p>Detailed "
+"information cannot be provided because there was no error message.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:215
+#, fuzzy
+msgid ""
+"<qt><p>An error occurred while writing to the sudoers file.</p><p>Read the "
+"error message under \"Details\" to find out more.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:224
+#, fuzzy
+msgid ""
+"<qt><p>The list of mounted shares could not be imported.</p><p>Detailed "
+"information cannot be provided because there was no error message.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:228
+#, fuzzy
+msgid ""
+"<qt><p>The list of mounted shares could not be imported.</p><p>Read the "
+"error message under \"Details\" to find out more.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:235
+#, fuzzy, kde-format
+msgid "<qt>The command \"%1\" could not be found.</qt>"
+msgstr "Kommandot \"%1\" kan inte hittas."
+
+#: core/smb4kcoremessage.cpp:243
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>The file \"%1\" could not be printed.</p></p>Detailed information "
+"cannot be provided because there was no error message.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:247
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>The file \"%1\" could not be printed.</p><p>Read the error message "
+"under \"Details\" to find out more.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:256
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>The temporary directory \"%1\" could not be created.</p><p>Detailed "
+"information cannot be provided because there was no error message.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:260
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>The temporary directory \"%1\" could not be created.</p><p>Read the "
+"error message under \"Details\" to find out more.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:269
+#, fuzzy
+msgid ""
+"<qt></p>The synchronization could not be finished successfully.</"
+"p><p>Detailed information cannot be provided because there was no error "
+"message.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:273
+#, fuzzy
+msgid ""
+"<qt><p>The synchronization could not be finished successfully.</p><p>Read "
+"the error message under \"Details\" to find out more.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:282
+#, fuzzy
+msgid ""
+"<qt><p>The search could not be finished successfully.</p><p>Detailed "
+"information cannot be provided because there was no error message.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:286
+#, fuzzy
+msgid ""
+"<qt><p>The search could not be finished successfully.</p><p>Read the error "
+"message under \"Details\" to find out more.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:295
+#, fuzzy, kde-format
+msgid "<qt>The file \"%1\" could not be opened.</qt>"
+msgstr "Filen \"%1\" kan inte öppnas."
+
+#: core/smb4kcoremessage.cpp:299
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>The file \"%1\" could not be opened.</p><p>Read the error message "
+"under \"Details\" to find out more.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:306
+msgid ""
+"<qt>The list of arguments for the \"net\" command could not be assembled.</"
+"qt>"
+msgstr ""
+
+#: core/smb4kcoremessage.cpp:314
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>An error occurred while parsing the XML file \"%1\".</p><p>Detailed "
+"information cannot be provided because there was no error message.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:318
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>An error occurred while parsing the XML file \"%1\".</p><p>Read the "
+"error message under \"Details\" to find out more.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:328
+#, fuzzy
+msgid ""
+"<qt><p>An unknown error occurred.</p><p>Detailed information cannot be "
+"provided because there was no error message.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:332
+#, fuzzy
+msgid ""
+"<qt><p>An unknown error occurred.</p><p>Read the error message under "
+"\"Details\" to find out more.</p></qt>"
+msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#: core/smb4kcoremessage.cpp:369
+#, kde-format
+msgid "<qt>The process failed to start (error code: %1).</qt>"
+msgstr ""
+
+#: core/smb4kcoremessage.cpp:375
+#, kde-format
+msgid "<qt>The process crashed (error code: %1).</qt>"
+msgstr ""
+
+#: core/smb4kcoremessage.cpp:381
+#, kde-format
+msgid "<qt>The process timed out (error code: %1).</qt>"
+msgstr ""
+
+#: core/smb4kcoremessage.cpp:387
+#, kde-format
+msgid "<qt>Could not write to the process (error code: %1).</qt>"
+msgstr ""
+
+#: core/smb4kcoremessage.cpp:393
+#, kde-format
+msgid "<qt>Could not read from the process (error code: %1).</qt>"
+msgstr ""
+
+#: core/smb4kcoremessage.cpp:400
+msgid "<qt>The process reported an unknown error.</qt>"
+msgstr ""
+
+#: core/smb4kcoremessage.cpp:410
+msgid "<qt>The process exited unexpectedly.</qt>"
+msgstr ""
+
+#: core/smb4kcoremessage.cpp:480
+#, fuzzy, kde-format
+msgid ""
+"<qt>The mimetype \"%1\" is not supported. Please convert the file to "
+"PostScript or PDF.</qt>"
+msgstr ""
+"Mimetypen \"%1\" är inte understöd. Convertera filen till PostScript eller "
+"PDF."
+
+#: core/smb4kcoremessage.cpp:486
+#, fuzzy, kde-format
+msgid ""
+"<qt>You previously chose to use \"%1\", but now it is missing on your "
+"system. Smb4K will disable this feature.</qt>"
+msgstr ""
+"Programmed %1 finnas inte mer på datorn. Smb4k ska inaktivera den här "
+"funktion!"
+
+#: core/smb4kcoremessage.cpp:492
+#, kde-format
+msgid ""
+"<qt>The label \"%1\" is used more than once. It will automatically be "
+"renamed for bookmark \"%2\" to avoid confusion.</qt>"
+msgstr ""
+
+#: core/smb4kcoremessage.cpp:498
+#, fuzzy, kde-format
+msgid ""
+"<qt>The wallet \"%1\" could not be opened. KWallet support will be disabled "
+"for this session.</qt>"
+msgstr "Att öppna Kwallet fungera inte."
+
+#: core/smb4kshare.cpp:250
+msgid "Disk"
+msgstr ""
+
+#: core/smb4kshare.cpp:255 smb4k/dialogs/smb4kprintdialog.cpp:79
+msgid "Printer"
+msgstr "Skrivare"
+
+#: core/smb4kmounter.cpp:896 core/smb4kmounter.cpp:961
+#, fuzzy
+msgid "<qt>Do you really want to force the unmounting of this share?</qt>"
+msgstr "Vill du verkligen forcera avmonteringen av denna katalog?"
+
+#: plugin/smb4k_konqplugin.cpp:70
+msgid "Scan Network"
+msgstr "Sök i nätverket"
+
+#. i18n: tag text
+#. i18n: file ./smb4k/searchdlg/smb4ksearchdialog_part.rc line 4
+#: plugin/smb4k_konqplugin.cpp:71 rc.cpp:1145
+msgid "Search"
+msgstr "Sök"
+
+#: plugin/smb4k_konqplugin.cpp:72
+msgid "Configure"
+msgstr ""
+
+#: plugin/smb4k_konqplugin.cpp:122
+msgid "Samba Browser"
+msgstr "Samba Browser"
+
+#: plugin/smb4k_konqplugin.cpp:149
+#, fuzzy
+msgid "Search Dialog"
+msgstr "Söker..."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 15
+#: rc.cpp:3
+msgid "The path to the program \"grep\""
+msgstr "Sökvägen till programmet \"grep\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 20
+#: rc.cpp:7
+msgid "The path to the program \"awk\""
+msgstr "Sökvägen till programmet \"awk\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 25
+#: rc.cpp:11
+msgid "The path to the program \"sed\""
+msgstr "Sökvägen till programmet \"sed\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 30
+#: rc.cpp:15
+msgid "The path to the program \"xargs\""
+msgstr "Sökvägen till programmet \"xargs\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 35
+#: rc.cpp:19
+msgid "The path to the program \"rmdir\""
+msgstr "Sökvägen till programmet \"rmdir\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 40
+#: rc.cpp:23
+msgid "The path to the program \"nmblookup\""
+msgstr "Sökvägen till programmet \"nmblookup\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 45
+#: rc.cpp:27
+msgid "The path to the program \"smbclient\""
+msgstr "Sökvägen till programmet \"smbclient\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 50
+#: rc.cpp:31
+msgid "The path to the program \"smbspool\""
+msgstr "Sökvägen till programmet \"smbspool\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 55
+#: rc.cpp:35
+#, fuzzy
+msgid "The path to the program \"smbtree\""
+msgstr "Sökvägen till programmet \"sed\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 60
+#: rc.cpp:39
+msgid "The path to the program \"net\""
+msgstr "Sökvägen till programmet \"net\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 65
+#: rc.cpp:43
+msgid "The path to the program \"mount.cifs\""
+msgstr "Sökvägen till programmet \"mount.cifs\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 70
+#: rc.cpp:47
+msgid "The path to the program \"umount.cifs\""
+msgstr "Sökvägen till programmet \"umount.cifs\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 75
+#: rc.cpp:51
+msgid "The path to the program \"smbmount\""
+msgstr "Sökvägen till programmet \"smbmount\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 80
+#: rc.cpp:55
+msgid "The path to the program \"smbumount\""
+msgstr "Sökvägen till programmet \"smbumount\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 85
+#: rc.cpp:59
+msgid "The path to the program \"mount\""
+msgstr "Sökvägen till programmet \"mount\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 90
+#: rc.cpp:63
+msgid "The path to the program \"mount_smbfs\" (FreeBSD only)"
+msgstr "Sökvägen till programmet \"mount_smbfs\" (Endast FreeBSD)"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 94
+#: rc.cpp:67
+msgid "The path to the program \"smbutil\" (FreeBSD only)"
+msgstr "Sökvägen till programmet \"smbutil\" (Endast FreeBSD)"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 99
+#: rc.cpp:71
+msgid "The path to the program \"umount\""
+msgstr "Sökvägen till programmet \"umount\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 104
+#: rc.cpp:75
+msgid "The path to the program \"smb4k_mount\""
+msgstr "Sökvägen till programmet \"smb4k_mount\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 109
+#: rc.cpp:79
+msgid "The path to the program \"smb4k_umount\""
+msgstr "Sökvägen till programmet \"smb4k_umount\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 114
+#: rc.cpp:83
+msgid "The path to the program \"smb4k_kill\""
+msgstr "Sökvägen till programmet \"smb4k_kill\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 119
+#: rc.cpp:87
+#, fuzzy
+msgid "The path to the program \"smb4k_sudowriter\""
+msgstr "Sökvägen till programmet \"smb4k_umount\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 124
+#: rc.cpp:91
+#, fuzzy
+msgid "The path to the program \"kdesu\" (optional)"
+msgstr "Sökvägen till programmet \"sudo\" (valfri)"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 129
+#: rc.cpp:95
+msgid "The path to the program \"sudo\" (optional)"
+msgstr "Sökvägen till programmet \"sudo\" (valfri)"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 134
+#: rc.cpp:99
+msgid "The path to the program \"dvips\" (optional)"
+msgstr "Sökvägen till programmet. \"dvips\" (valfri)"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 139
+#: rc.cpp:103
+msgid "The path to the program \"enscript\" (optional)"
+msgstr "Sökvägen till programmet. \"enscript\" (valfri)"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 144
+#: rc.cpp:107
+msgid "The path to the program \"rsync\" (optional)"
+msgstr "Sökvägen till programmet. \"rsync\" (valfri)"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 149
+#: rc.cpp:111
+msgid "The path to the program \"konsole\" (optional)"
+msgstr "Sökvägen till programmet. \"konsole\" (valfri)"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 159
+#: rc.cpp:115
+msgid "Show custom bookmark label if available"
+msgstr "Visa anpassad bokmärkesetikett om tillgänglig"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 160
+#: rc.cpp:118
+msgid ""
+"Do not show the name of the share that is represented by the bookmark but "
+"the custom label that was defined in the bookmark editor."
+msgstr ""
+"Visa inte namnet på den utdelade resursen som reprensenteras av bokmärket, "
+"utan den anpassade etiketten som angavs i bokmärkes editorn"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 164
+#: rc.cpp:121
+msgid "Embed application into the system tray"
+msgstr "Lägg till programet i systembrickan"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 165
+#: rc.cpp:124
+msgid ""
+"Embed the application into the system tray. The system tray widget provides "
+"a popup menu with several commonly used tasks so that you do not need to "
+"bring up the main window everytime. If this setting is chosen you have to "
+"use \"Quit\" from the \"File\" menu or the system tray widget to exit the "
+"application."
+msgstr ""
+"Inbädda programmet i systembrickan. Manicken i systembrickan tillhandahåller "
+"en popup meny med flera ofta använda uppgifter, så att man inte behöver "
+"öppna huvudfönstret varje gång. Om denna inställning används måste man "
+"använda \"Avsluta\" i \"Arkiv\" menyn eller manicken i systembrickan för att "
+"avsluta programmet."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 169
+#: rc.cpp:127
+msgid "Start docked"
+msgstr "Starta inbäddad"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 170
+#: rc.cpp:130
+msgid ""
+"Start the application docked to the system tray, i.e. only the system tray "
+"widget is shown and the main window is hidden. You can bring the main window "
+"up by clicking on the system tray widget or by choosing \"Restore\" from its "
+"popup menu."
+msgstr ""
+"Starta programmet inbäddad i systembrickan. Det innebär att endast manicken "
+"i systembrickan visas och huvudfönstret är döljd. Huvudfönstret öppnas genom "
+"att klicka på systembrickan eller genom att välja \"Återställ\" från dennas "
+"popup meny."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 174
+#: rc.cpp:133
+msgid "Show mounted shares in an icon view"
+msgstr "Visa utdelade resurser som ikoner"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 175
+#: rc.cpp:136
+#, fuzzy
+msgid "The mounted shares will be displayed in an icon view."
+msgstr "Visa utdelade resurser som ikoner"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 179
+#: rc.cpp:139
+msgid "Show mounted shares in a list view"
+msgstr "Visa utdelade resurser som lista"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 180
+#: rc.cpp:142
+#, fuzzy
+msgid "The mounted shares will be displayed in a list view."
+msgstr "Visa utdelade resurser som lista"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 184
+#: rc.cpp:145
+msgid "Show printer shares"
+msgstr "Visa utdelade skrivarresurser"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 185
+#: rc.cpp:148
+msgid "Printer shares will be displayed in the network browser."
+msgstr "Utdelade skrivare visas i nätverksbläddraren."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 189
+#: rc.cpp:151
+msgid "Show hidden shares"
+msgstr "Visa dolda resurser"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 190
+#: rc.cpp:154
+msgid ""
+"Hidden shares will be displayed in the network browser. Hidden shares are "
+"ending with a $ sign, e.g. Musik$ or IPC$."
+msgstr ""
+"Dolda resurser visas i nätverksbläddraren. Dem visas med ett $-tecken, ex."
+"vis Musik$ or IPC$."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 194
+#: rc.cpp:157
+msgid "Show hidden IPC$ shares"
+msgstr "Visa dolda IPC$ resurser"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 195
+#: rc.cpp:160
+msgid "Hidden IPC$ shares will be displayed in the network browser."
+msgstr "Dolda IPC$ resurser visas i nätverksbläddraren."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 199
+#: rc.cpp:163
+msgid "Show hidden ADMIN$ shares"
+msgstr "Visa dolda ADMIN$ resurser"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 200
+#: rc.cpp:166
+msgid "Hidden ADMIN$ shares will be displayed in the network browser."
+msgstr "Dolda ADMIN$ resurser visas i nätverksbläddraren."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 204
+#: rc.cpp:169
+#, fuzzy
+msgid "Show the type of the share"
+msgstr "Visa typ av resurs"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 205
+#: rc.cpp:172
+msgid ""
+"The type of a share will be displayed in a separate column in the network "
+"browser. It can either be Disk, Print or IPC."
+msgstr ""
+"Resurstypen visas i en separat kolulmn i nätverksbläddraren. Det kan vara "
+"antigen en disk, printer eller IPC."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 209
+#: rc.cpp:175
+#, fuzzy
+msgid "Show the IP address of the server"
+msgstr "Visa serverns IP-adress"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 210
+#: rc.cpp:178
+msgid ""
+"The IP address of the server will be displayed in a separate column in the "
+"network browser."
+msgstr "Serverns IP-adress visas i en separat kolulmn i nätverksbläddraren."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 214
+#: rc.cpp:181
+#, fuzzy
+msgid "Show the comment"
+msgstr "Visa kommentar"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 215
+#: rc.cpp:184
+msgid ""
+"The comment describing the server or share will be displayed in a separate "
+"column in the network browser."
+msgstr ""
+"Kommentaren som beskriver servern eller den utdelade resursen visas i en "
+"separat kolulmn i nätverksbläddraren."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 219
+#: rc.cpp:187
+msgid "Show a tooltip with information about the network item"
+msgstr "Visa verktygstips med information om nätverksposten"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 220
+#: rc.cpp:190
+msgid "The tooltip shows various information about the current network item."
+msgstr "Verktygstipset visar blandat information om nätverksposten."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 224
+#: rc.cpp:193
+#, fuzzy
+msgid "Show the mount point instead of the share name"
+msgstr "Visa monteringsnamn istället för resursnamn"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 225
+#: rc.cpp:196
+msgid ""
+"A share is normally displayed with its name in the shares view. Choosing "
+"this feature will cause the exchange of the share name by the mount point."
+msgstr ""
+"Resursen visas normalt med dets namn. Väljs denna funktion orsaker detta "
+"byte av visning av namnet till visning av vart den är monterad."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 229
+#: rc.cpp:199
+msgid "Show all shares that are mounted on the system"
+msgstr "Visa alla resurser som är monterade i systemet"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 230
+#: rc.cpp:202
+msgid ""
+"You will not only see the shares that were mounted and are owned by you, but "
+"also all other mounts using the SMBFS and CIFS file system that are present "
+"on the system."
+msgstr ""
+"Man ser inte bara de resurser som monterades och ägs av en själv, utan även "
+"alla andra resurser som använder SMBFS och CIFS filsystem och som finns på "
+"gällande system."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 234
+#: rc.cpp:205
+msgid "Show a tooltip with information about the share"
+msgstr "Visa verktygstips med information om den utdelade resurs"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 235
+#: rc.cpp:208
+msgid "The tooltip shows various information about the current share."
+msgstr "Verktygstipset visar diverse information om den utdelade resursen."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 239
+#: rc.cpp:211
+#, fuzzy
+msgid "Show the owner and group"
+msgstr "Visa användare och grupp"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 240
+#: rc.cpp:214
+msgid "Show the UID and GID that own all files on the mounted file system."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 244
+#: rc.cpp:217
+#, fuzzy
+msgid "Show the login"
+msgstr "Visa typ"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 245
+#: rc.cpp:220
+msgid ""
+"Show the login that was used to authenticate to the server. The column will "
+"only contain an entry if the share was mounted with the CIFS file system."
+msgstr ""
+"Visa det användarnamn som användes för att authentisera mot servern. "
+"Kolumnen innehåller endast information om den utdelade resursen monterades "
+"med CIFS filsystem."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 249
+#: rc.cpp:223
+#, fuzzy
+msgid "Show the file system"
+msgstr "Visa filsystem"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 250
+#: rc.cpp:226
+msgid "Show the file system that was used for mounting the share."
+msgstr "Visa det filsystem som användes för att montera den utdelade resursen."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 254
+#: rc.cpp:229
+#, fuzzy
+msgid "Show the free disk space"
+msgstr "Visa ledigt diskutrymme"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 255
+#: rc.cpp:232
+msgid "Show the free disk space that is left on the share."
+msgstr "Visa det fria diskutrymme som finns kvar på den utdelade resursen."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 259
+#: rc.cpp:235
+#, fuzzy
+msgid "Show the used disk space"
+msgstr "Visa använt diskutrymme"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 260
+#: rc.cpp:238
+msgid "Show the disk space that is already used on the share."
+msgstr "Visa det diskutrymme som redan används på den utdelade resursen."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 264
+#: rc.cpp:241
+#, fuzzy
+msgid "Show the total disk space"
+msgstr "Visa sammanlagt diskutrymme"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 265
+#: rc.cpp:244
+msgid "Show the total disk space of the share."
+msgstr "Visa det sammanlagda diskutrymmet på den utdelade resursen."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 269
+#: rc.cpp:247
+#, fuzzy
+msgid "Show the disk usage"
+msgstr "Visa diskanvändning"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 270
+#: rc.cpp:250
+msgid "Show the space that is used on the share in percent."
+msgstr "Visa det diskutrymme som används på den utdelade resursen i procent."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 274
+#: rc.cpp:253
+msgid "Preview hidden files and directories"
+msgstr "Förhandsgranska dolda filer och kataloger"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 275
+#: rc.cpp:256
+msgid ""
+"Display hidden files and directories in the preview dialog. The names of "
+"hidden files and directories are beginning with a period and are usually "
+"needed for very specific purposes (configuration file of an application, "
+"etc.). Since they are not of any importance for your regular work, you "
+"normally do not need to enable this feature."
+msgstr ""
+"Visa dolda filer och kataloger i dialogen för förhandsgranskning. Namnen på "
+"dolda filer och katalogerbörjar med en punkt och används normalt för väldigt "
+"specifika ändamål. (Som ex.vis konfigurationsfiler för program) Eftersom dem "
+"inte är viktiga för normalt användande, behöver denna funktion inte "
+"aktiveras."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 284
+#: rc.cpp:259
+msgid "Scan the network neighborhood for available workgroups and domains"
+msgstr "Sök i mina nätverkersplatser efter arbetsgrupper och domäner"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 285
+#: rc.cpp:262
+msgid ""
+"This is the default method to retrieve the initial browse list. It discovers "
+"all workgroups and domains by looking for all known master browsers on your "
+"network neighborhood."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 289
+#: rc.cpp:265
+msgid "Query the current workgroup master browser"
+msgstr "Fråga nuvarande arbetsgrupps masterbrowser"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 290
+#: rc.cpp:268
+msgid ""
+"This method queries the current master browser of your workgroup or domain "
+"to retrieve the initial browse list."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 294
+#: rc.cpp:271
+#, fuzzy
+msgid "Query this custom master browser:"
+msgstr "Fråga denna master browser:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 295
+#: rc.cpp:274
+#, fuzzy
+msgid ""
+"This method queries a custom master browser to retrieve the initial browse "
+"list."
+msgstr ""
+"Skriv in namn eller IP-adress på den Master Browser, som ska bli tillfrågad "
+"om att sammanställa den första bläddringslistan, här."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 299
+#: rc.cpp:277
+msgid "A custom master browser that is to be queried"
+msgstr "Angiven Master Browser som ska frågas"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 300
+#: rc.cpp:280
+msgid ""
+"Enter the name or IP address of a master browser here that should be queried "
+"to compile the initial browse list."
+msgstr ""
+"Skriv in namn eller IP-adress på den Master Browser, som ska bli tillfrågad "
+"om att sammanställa den första bläddringslistan, här."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 304
+#: rc.cpp:283
+#, fuzzy
+msgid "Scan these broadcast areas:"
+msgstr "Sök av broadcast området:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 305
+#: rc.cpp:286
+msgid ""
+"This method will scan the given broadcast areas and look for all registered "
+"hosts."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 309
+#: rc.cpp:289
+msgid "A custom list of broadcast addresses"
+msgstr "Anpassad lista med broadcast adresser"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 310
+#: rc.cpp:292
+msgid ""
+"Enter a comma-separated list of broadcast addresses here (e.g. "
+"192.168.0.255, 192.168.1.255). It is used to scan for all known hosts in the "
+"respective broadcast areas."
+msgstr ""
+"Skriv in komma separerad lista över broadcast adresser här (ex.vis "
+"192.168.0.255, 192.168.1.255). Listan används för att hitta alla kända "
+"värdar i respektive adressutrymme."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 314
+#: rc.cpp:295
+msgid "The master browsers require authentication to return the browse list"
+msgstr ""
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 315
+#: rc.cpp:298
+msgid ""
+"The master browsers in your network neighborhood require a login and "
+"password to return the browse list. This setting is rarely needed and might "
+"even cause a master browser to return an empty browse list. It will not have "
+"any effect when you let Smb4K scan broadcast areas."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 324
+#: rc.cpp:301
+msgid "Mount prefix:"
+msgstr "Prefix för montering:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 325
+#: rc.cpp:304
+msgid ""
+"This is the prefix where Smb4K will create the mount points and mount the "
+"remote shares."
+msgstr ""
+"Detta är det prefix där Smb4K skapar monteringspunkter och monterar utdelade "
+"resurser."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 329
+#: rc.cpp:307
+msgid "Force generated subdirectories to be lower case"
+msgstr "Tvingande gemener på skapade underkataloger"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 330
+#: rc.cpp:310
+msgid ""
+"All names of the subdirectories created by Smb4K below the mount prefix will "
+"be lowercase."
+msgstr ""
+"Alla underkatalogernas namn som Smb4K skapar under monteringsprefixet kommer "
+"att skrivas med gemener."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 334
+#: rc.cpp:313
+#, fuzzy
+msgid "Unmount all personal shares on exit"
+msgstr "Avmontera alla användarens delade resurser %1 vid avslut"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 335
+#: rc.cpp:316
+#, fuzzy
+msgid ""
+"Unmount all shares that belong to you when the program exits. Shares that "
+"are owned by other users are ignored."
+msgstr ""
+"Återmontera alla dina utdelade resurser som fortfarande var monterade när du "
+"avslutade programmet. Utdelade resurser monterade av andra användare berörs "
+"inte."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 339
+#: rc.cpp:319
+msgid "Remount recently used shares on program start"
+msgstr "Montera nyligen använda resurser vid program start"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 340
+#: rc.cpp:322
+#, fuzzy
+msgid ""
+"Remount all your shares that were mounted when you exited the program. If a "
+"remount fails, Smb4K will retry the next time it is started. Shares that "
+"were mounted by other users are ignored."
+msgstr ""
+"Återmontera alla dina utdelade resurser som fortfarande var monterade när du "
+"avslutade programmet. Utdelade resurser monterade av andra användare berörs "
+"inte."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 344
+#: rc.cpp:325
+msgid "Allow the unmounting of shares that are owned by other users"
+msgstr "Tillåt avmontering av resurser, som ägs av andra användare"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 345
+#: rc.cpp:328
+msgid ""
+"Allow the unmounting of shares that were mounted by other users. In most "
+"cases you need super user privileges for this. Please think before you "
+"enable this option!"
+msgstr ""
+"Tillåt avmontering av utdelade resurser, som monterades av andra användare. "
+"I dem flesta fallen behövs administratörsrättigheter för detta. Vänligen "
+"tänk efter innan detta val aktiveras."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 349
+#: rc.cpp:331
+msgid "Interval between checks:"
+msgstr "Kontrollinterval"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 350
+#: rc.cpp:334
+msgid ""
+"This is the time that elapses until Smb4K checks again for new mounts and "
+"unmounts. The lower limit is 500 ms, the upper one 300000 ms. Please note "
+"that the smaller the interval gets the higher is your system load."
+msgstr ""
+"Tid emellen Smb4Ks kontroll av nya monteringar och avmonteringar. Lägsta "
+"gräns är 500 ms, högsta är 300000 ms.Notera vänligen att ju kortare "
+"intervall desto högre systembelastning."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 361
+#: rc.cpp:337
+#, fuzzy
+msgid "Save logins in a wallet"
+msgstr "Spara autentisieringsdata i en plånbok"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 362
+#: rc.cpp:340
+msgid ""
+"Use a wallet to store the authentication data. The login name and the "
+"password name are stored encrypted on your hard drive. If this setting is "
+"disabled, the authentication data is not stored permanently but only "
+"temporarily."
+msgstr ""
+"Använd en plånbok för att lagra autentisieringsinformation. Användarnamn och "
+"lösenord lagras krypterad på hårddisken. Om denna inställning inte är aktiv "
+"lagras autentisieringsinformationen endast temporärt."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 366
+#: rc.cpp:343
+msgid "Remember logins during program run"
+msgstr ""
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 367
+#: rc.cpp:346
+#, fuzzy
+msgid ""
+"If you decided to store your logins only temporarily, Smb4K will remember "
+"them until the program exits. If you disable this setting, you will have to "
+"provide the authentication data everytime it is needed."
+msgstr ""
+"Om man väljer att endast spara användarnamn och lösenord temporärt, kommer "
+"Smb4K att lagra dem tills att programmet avslutas. Om detta val avaktiveras "
+"måste användarnamn och lösenord skrivas in varje gång det behövs."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 371
+#: rc.cpp:349
+msgid "Use a default login"
+msgstr "Använd standardanvändare"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 372
+#: rc.cpp:352
+msgid ""
+"Enable the usage of a default login name and password. The authentication "
+"data provided below is then used by default to authenticate to a remote "
+"server. This is very useful e.g. if you are working in an Active Directory "
+"environment or an NT domain."
+msgstr ""
+"Aktivera användandet av en standardanvändare och lösenord. Den "
+"autentisieringsinformation som lämnas nedan, används som standard för att "
+"autentisiera mot en fjärr server. Detta är mycket användbart om man arbetar "
+"i en Active Directory miljö eller en NT domän."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 381
+#: rc.cpp:355
+msgid "NetBIOS name:"
+msgstr "NetBIOS namn:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 382
+#: rc.cpp:358
+msgid ""
+"This is the NetBIOS name of this computer that is used by Smb4K. By default, "
+"it is either the NetBIOS name that is defined in the smb.conf file or the "
+"host name."
+msgstr ""
+"Detta är det NetBIOS namn som används av Smb4K för denna dator. Som standard "
+"är det antigen NetBIOS namnet som angetts i smb.conf eller värdnamnet."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 386
+#: rc.cpp:361
+msgid "Domain:"
+msgstr "Domän:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 387
+#: rc.cpp:364
+msgid ""
+"This is the workgroup or domain this computer is or should be in. By "
+"default, it is the workgroup that is defined in the smb.conf file."
+msgstr ""
+"Detta är den arbetsgrupp eller domän som denna dator borde vara eller är med "
+"i. Som standard är det arbetsgruppen, som angivits i smb.conf filen."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 391
+#: rc.cpp:367
+msgid "Socket options:"
+msgstr "Socketinställningar:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 392
+#: rc.cpp:370
+msgid ""
+"These are the TCP socket options that are used by nmblookup, smbmount and "
+"smbclient. Socket options are controls on the networking layer of the "
+"operating systems which allow the connection to be tuned. See the manual "
+"page of smb.conf for more information."
+msgstr ""
+"Detta är de socketinställningar som används av nmblookup, smbmount och "
+"smbclient. Socketinställningar är de parametrar i operativsystemets "
+"nätverksskikt som tillåtar fininställning av förbindelsen. Läs "
+"instruktionerna i mansidan för smb.conf för ytterligare information."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 396
+#: rc.cpp:373
+msgid "NetBIOS scope:"
+msgstr "NetBIOS ram:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 397
+#: rc.cpp:376
+msgid ""
+"This sets the NetBIOS scope that nmblookup, smbmount and smbclient will "
+"operate under. It should not be set unless every machine on your network "
+"neighborhood sets this value."
+msgstr ""
+"Detta sätter det NetBIOS omfång som nmblookup, smbmount and smbclient "
+"arbetar under. Det bör inte sättas om inte alla maskiner i mina "
+"nätverkersplatser sätter värdet."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 401
+#: rc.cpp:379
+#, fuzzy
+msgid "SMB port:"
+msgstr "Fjärrliggande SMB-port:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 402
+#: rc.cpp:382
+#, fuzzy
+msgid ""
+"This is the port that is used for connecting to remote servers with the "
+"client programs net, smbclient and smbtree. The default value is 139 "
+"(NetBIOS). This setting is not used for mounting."
+msgstr ""
+"Detta är porten som ska användas vid anslutning till fjärrservrar. Notera, "
+"att detta är oberoende av vilken inställning som finns i smb.conf filen."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 408
+#: rc.cpp:385
+#, fuzzy
+msgid "File system port:"
+msgstr "Filsystem"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 409
+#: rc.cpp:388
+msgid ""
+"This is the port that is exclusively used to mount shares from remote "
+"servers. The default value is 445 (CIFS file system)."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 415
+#: rc.cpp:391
+msgid "Try to authenticate with Kerberos"
+msgstr "Försök att använda Kerberos för authentisering"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 416
+#: rc.cpp:394
+#, fuzzy
+msgid ""
+"Try to authenticate with Kerberos. This is only useful in an Active "
+"Directory environment. The setting affects the smbclient and smbtree command."
+msgstr ""
+"Försök att använda Kerberos för att autentisera. Detta är endast användbart "
+"i en Active Directory miljö. Inställningen påverkar kommandona smbmount och "
+"smbclient."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 420
+#: rc.cpp:397
+#, fuzzy
+msgid "Authenticate with local machine account"
+msgstr "Autentisera som datorkonto"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 421
+#: rc.cpp:400
+#, fuzzy
+msgid ""
+"Make queries to the remote server using the machine account of the local "
+"server. The setting affects the net, smbclient, and smbtree command."
+msgstr ""
+"Gör förfrågningar till fjärrservern och använd systemkontot för den lokala "
+"servern. Denna inställning påverkar kommandona net och smbclient."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 425
+#: rc.cpp:403
+msgid "Signing state:"
+msgstr "Signerings tillstånd"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 426
+#: rc.cpp:406
+msgid ""
+"Set the signing state. This setting affects the smbclient and smbtree "
+"command."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 429
+#: rc.cpp:409
+#, fuzzy
+msgid "none"
+msgstr "Ingen"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 432
+#: rc.cpp:412
+msgid "on"
+msgstr "på"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 435
+#: rc.cpp:415
+msgid "off"
+msgstr "av"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 438
+#: rc.cpp:418
+msgid "required"
+msgstr "obligatorisk"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 444
+#: rc.cpp:421
+#, fuzzy
+msgid "Client character set:"
+msgstr "Klient teckenuppsättning:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 445
+#: rc.cpp:424
+#, fuzzy
+msgid ""
+"This is the character set that is used by the client side (i.e. your side) "
+"either to convert local path names to and from Unicode (CIFS, Linux) or for "
+"codepage to charset translations (SMBFS, FreeBSD). If you keep the default "
+"setting, Smb4K will try to automatically determine the charset by looking up "
+"the \"unix charset\" option in the smb.conf."
+msgstr ""
+"Detta är den teckenuppsättning klienten använder (det vill säga, din sida) "
+"antigen för att omvandla lokala sökväger till och från Unicode om det är ett "
+"CIFS filsystem eller landsinställning till teckenuppsättningsöversättning "
+"(NLS) ifall SMBFS filsystem används. Standardinställningen gör att Smb4K "
+"automatiskt försöker bestämma teckenuppsättning genom att läsa \"unix charset"
+"\" inställningen i smb.conf. filen."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 448
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 524
+#: rc.cpp:427 rc.cpp:502
+msgid "default"
+msgstr "grundinställning"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 451
+#: rc.cpp:430
+msgid "iso8859-1"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 454
+#: rc.cpp:433
+msgid "iso8859-2"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 457
+#: rc.cpp:436
+msgid "iso8859-3"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 460
+#: rc.cpp:439
+msgid "iso8859-4"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 463
+#: rc.cpp:442
+msgid "iso8859-5"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 466
+#: rc.cpp:445
+msgid "iso8859-6"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 469
+#: rc.cpp:448
+msgid "iso8859-7"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 472
+#: rc.cpp:451
+msgid "iso8859-8"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 475
+#: rc.cpp:454
+msgid "iso8859-9"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 478
+#: rc.cpp:457
+msgid "iso8859-13"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 481
+#: rc.cpp:460
+msgid "iso8859-14"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 484
+#: rc.cpp:463
+msgid "iso8859-15"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 487
+#: rc.cpp:466
+msgid "utf8"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 490
+#: rc.cpp:469
+msgid "koi8-r"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 493
+#: rc.cpp:472
+msgid "koi8-u"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 496
+#: rc.cpp:475
+msgid "koi8-ru"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 499
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 596
+#: rc.cpp:478 rc.cpp:574
+msgid "cp1251"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 502
+#: rc.cpp:481
+msgid "gb2312"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 505
+#: rc.cpp:484
+msgid "big5"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 508
+#: rc.cpp:487
+msgid "euc-jp"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 511
+#: rc.cpp:490
+msgid "euc-kr"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 514
+#: rc.cpp:493
+msgid "tis-620"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 520
+#: rc.cpp:496
+msgid "Server codepage:"
+msgstr "Server landsinställning:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 521
+#: rc.cpp:499
+#, fuzzy
+msgid ""
+"This is the codepage that is used by the server. The setting is only "
+"available with the SMBFS file system. If you keep the default setting, Smb4K "
+"will try to automatically determine the codepage by looking up the \"dos "
+"charset\" option in the smb.conf file."
+msgstr ""
+"Detta är den landsinställning som servern använder. Denna inställning är "
+"endast åtkommlig när SMBFS filsystemet används. Om standardinställningen "
+"behålls, kommer Smb4K automatiskt att försöka bestämma landsinställning "
+"genom att läsa inställningen \"dos charset\" i smb.conf filen."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 527
+#: rc.cpp:505
+msgid "cp437"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 530
+#: rc.cpp:508
+msgid "cp720"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 533
+#: rc.cpp:511
+msgid "cp737"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 536
+#: rc.cpp:514
+msgid "cp775"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 539
+#: rc.cpp:517
+msgid "cp850"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 542
+#: rc.cpp:520
+msgid "cp852"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 545
+#: rc.cpp:523
+msgid "cp855"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 548
+#: rc.cpp:526
+msgid "cp857"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 551
+#: rc.cpp:529
+msgid "cp858"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 554
+#: rc.cpp:532
+msgid "cp860"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 557
+#: rc.cpp:535
+msgid "cp861"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 560
+#: rc.cpp:538
+msgid "cp862"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 563
+#: rc.cpp:541
+msgid "cp863"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 566
+#: rc.cpp:544
+msgid "cp864"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 569
+#: rc.cpp:547
+msgid "cp865"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 572
+#: rc.cpp:550
+msgid "cp866"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 575
+#: rc.cpp:553
+msgid "cp869"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 578
+#: rc.cpp:556
+msgid "cp874"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 581
+#: rc.cpp:559
+msgid "cp932"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 584
+#: rc.cpp:562
+msgid "cp936"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 587
+#: rc.cpp:565
+msgid "cp949"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 590
+#: rc.cpp:568
+msgid "cp950"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 593
+#: rc.cpp:571
+msgid "cp1250"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 599
+#: rc.cpp:577
+msgid "cp1252"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 602
+#: rc.cpp:580
+msgid "cp1253"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 605
+#: rc.cpp:583
+msgid "cp1254"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 608
+#: rc.cpp:586
+msgid "cp1255"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 611
+#: rc.cpp:589
+msgid "cp1256"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 614
+#: rc.cpp:592
+msgid "cp1257"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 617
+#: rc.cpp:595
+msgid "cp1258"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 620
+#: rc.cpp:598
+msgid "unicode"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 626
+#: rc.cpp:601 smb4k/dialogs/smb4kcustomoptionsdialog.cpp:398
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:443
+msgid "User ID:"
+msgstr "Användar ID:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 627
+#: rc.cpp:604
+#, fuzzy
+msgid ""
+"This is the user ID (a number) that the files and directories of the mounted "
+"share will have. If you are using the CIFS file system and the remote server "
+"supports the CIFS Unix Extentions, this setting will be ignored."
+msgstr ""
+"Här skriver man in det användar ID (ett nummer) som filer och kataloger på "
+"den monterade resursen kommer att ha. Om man använder CIFS filsystemet och "
+"fjärrservern stödjer CIFS Linux Extentions, kommer denna inställning inte "
+"att användas."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 631
+#: rc.cpp:607 smb4k/dialogs/smb4kcustomoptionsdialog.cpp:415
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:460
+msgid "Group ID:"
+msgstr "Grupp ID:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 632
+#: rc.cpp:610
+#, fuzzy
+msgid ""
+"This is the group ID (a number) that the files and directories of the "
+"mounted share will have. If you are using the CIFS file system and the "
+"remote server supports the CIFS Unix Extentions, this setting will be "
+"ignored."
+msgstr ""
+"Här skriver man in det grupp ID (ett nummer) som filer och kataloger på den "
+"monterade resursen kommer att ha. Om man använder CIFS filsystemet och "
+"fjärrservern stödjer CIFS Linux Extentions, kommer denna inställning inte "
+"att användas."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 636
+#: rc.cpp:613
+msgid "File mask:"
+msgstr "Filmask"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 637
+#: rc.cpp:616
+msgid ""
+"This is the mask that will be used for creating files. It must be defined in "
+"octal. In case the CIFS file system is used, this setting only takes effect "
+"if the server does not support the CIFS Unix Extensions."
+msgstr ""
+"Här skriver man in masken som används för att skapa filer. Denna måste "
+"definieras oktalt. Om CIFS filsystemet används, kommer inställningen endast "
+"att användas om servern inte stödjer CIFS Linux Extentions."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 641
+#: rc.cpp:619
+msgid "Directory mask:"
+msgstr "Katalogmask:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 642
+#: rc.cpp:622
+msgid ""
+"This is the mask that will be used for creating directories. It must be "
+"defined in octal. In case the CIFS file system is used, this setting only "
+"takes effect if the server does not support the CIFS Unix Extensions."
+msgstr ""
+"Här skriver man in masken som används för att skapa kataloger. Denna måste "
+"definieras oktalt. Om CIFS filsystemet används, kommer inställningen endast "
+"att användas om servern inte stödjer CIFS Linux Extentions."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 646
+#: rc.cpp:625 smb4k/dialogs/smb4kcustomoptionsdialog.cpp:388
+msgid "Write access:"
+msgstr "Skrivrättigheter"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 647
+#: rc.cpp:628
+msgid ""
+"Here you can choose if the shares should be mounted in read and write mode "
+"or only read-only."
+msgstr ""
+"Här väljs om resurserna ska monteras med skriv och läsrättigheter eller "
+"endast läsrättigheter."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 650
+#: rc.cpp:631 smb4k/dialogs/smb4kcustomoptionsdialog.cpp:393
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:576
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:770
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:998
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:1095
+#: smb4k/configdlg/smb4ksambaoptions.cpp:904
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1056
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1150
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1357
+msgid "read-write"
+msgstr "läs-skriv"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 653
+#: rc.cpp:634 smb4k/dialogs/smb4kcustomoptionsdialog.cpp:394
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:577
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:1002
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:1095
+#: smb4k/configdlg/smb4ksambaoptions.cpp:910
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1062
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1154
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1358
+msgid "read-only"
+msgstr "läs-bara"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 659
+#: rc.cpp:637
+msgid "Do permission checks"
+msgstr "Kontrollera rättigheter"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 660
+#: rc.cpp:640
+msgid ""
+"The client side (i.e. your side) will check if you have the right UID/GID to "
+"manipulate a file or directory. You might want to switch this feature off if "
+"the server(s) support the CIFS Unix Extensions and you are not allowed to "
+"access the files and directories. This setting does not affect the normal "
+"ACL check."
+msgstr ""
+"Klientsidan (ex.vis din sida) kontrollerar om det är rätt UID/GID för att "
+"ändra en fil eller katalog. om servern stödjer CIFS Unix Extensions och man "
+"inte får komma åt filer och kataloger kan man vilja avaktivera denna "
+"inställning. Inställningen påverkar inte den normala ACL kontrollen."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 664
+#: rc.cpp:643
+msgid "Attempt to set UID and GID"
+msgstr "Försök sätta UID och GUID"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 665
+#: rc.cpp:646
+msgid ""
+"In case the server supports the CIFS Unix Extensions, the client side (i.e. "
+"your side) attempts to set the effective UID and GID of the current process "
+"on newly created files, directories and devices. If this feature is turned "
+"off, the default UID and GID defined for the share will be used. It is "
+"recommended that you read the manual page of mount.cifs before you change "
+"this setting."
+msgstr ""
+"Om servern stödjer CIFS Unix Extensions kommer klientsidan (ex.vis din sida) "
+"att försöka ställa in de UID och GID som används av den nuvarande processen "
+"på nyligen skapade filer, kataloger och enheter. Om inställningen inte "
+"används, kommer de UID och GID som är definierade som standard för resursen "
+"att användas. Det rekommenderas att man läser mansidan för mount.sifs innan "
+"denna inställning ändras."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 669
+#: rc.cpp:649
+msgid "Use server inode numbers"
+msgstr "Använd serverns inodnummer"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 670
+#: rc.cpp:652
+msgid ""
+"Use inode numbers (unique persistent file identifiers) returned by the "
+"server instead of automatically generating temporary inode numbers on the "
+"client side."
+msgstr ""
+"Använd inodnummer (unika och ständiga filidentifieringar) som retuneras a "
+"servern, iställer för automatiskt genererade temporära inodnummer på "
+"klientsidan."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 674
+#: rc.cpp:655
+msgid "Do not cache inode data"
+msgstr "Spara inte inod data"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 675
+#: rc.cpp:658
+msgid ""
+"Directly read from and write to files opened on the share. In some cases "
+"this can provide better performance than the default behavior which caches "
+"reads and writes."
+msgstr ""
+"Läs från och skriv direkt till filer som är öppna på den utdelade resursen. "
+"Detta kan i vissa fall ge bättre prestanda än standardinställningen, som "
+"cachar skrivningar och läsningar."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 679
+#: rc.cpp:661
+msgid "Translate reserved characters"
+msgstr "Översätt reserverade tecken"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 680
+#: rc.cpp:664
+msgid ""
+"Translate six of the seven reserved characters (including the colon, "
+"question mark, pipe, asterisk, greater than and less than characters but not "
+"the backslash) to remap range (above 0xF000). This allows you to open files "
+"that were created with such characters. This has no effect if the server "
+"does not support Unicode."
+msgstr ""
+"Översätt sex av de sju reserverade tecken ( detta inkluderar kolon, "
+"frågetecken, pipe, asteriks, större än och mindre än tecknen men inte omvänt "
+"snedstreck) till ommappningsområdet (ovanför 0xF000). Denna inställning "
+"tillåter att man öppnar filer skapade med dessa tecken. Inställningen har "
+"ingen effekt om servern inte har stöd för Unicode."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 684
+#: rc.cpp:667
+msgid "Do not use locking"
+msgstr "Använd inte låsning"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 685
+#: rc.cpp:670
+msgid "Do not use locking. Do not start lockd."
+msgstr "Använd inte låsning. Starta inte lockd."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 689
+#: rc.cpp:673
+msgid "Additional options:"
+msgstr "Ytterligare inställningar:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 690
+#: rc.cpp:676
+msgid ""
+"Here you can enter advanced options for the CIFS file system in a comma-"
+"separated list (refer to the manual page of mount.cifs to learn more). The "
+"list will be added AS IS to the \"-o\" argument of mount.cifs. Please do not "
+"enter options that have already been defined in the configuration dialog."
+msgstr ""
+"Här kan man skriva in advancerade inställningar för CIFS filsystemet i en "
+"kommaseparerad lista (Läs mansidan för mount.cifs för ytterligare "
+"information) Listan läggs till som den är till \"-o\" parametern i mount."
+"cifs. Lägg inte till inställningar i konfigurationsdialogen som redan har "
+"definierats."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 694
+#: rc.cpp:679
+#, fuzzy
+msgid "Protocol hint:"
+msgstr "Protokoll"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 695
+#: rc.cpp:682
+msgid ""
+"Here you can choose the protocol that will be used by the net command for "
+"the communication with remote servers if appropriate. In most cases the "
+"automatic detection will work fine and you should not need to change the "
+"default setting. However, if you experience problems, use the RPC protocol "
+"for newer operating systems (Windows NT4 and above) and the RAP protocol for "
+"older ones (Windows 98/NT3 and below). Functions that need the ADS protocol "
+"(for Active Directory environments) have not been implemented yet, so you "
+"can ignore that one for now."
+msgstr ""
+"Välj om lämpligt det protokoll som kommandot net ska använda för att "
+"kommunicera med fjärrsrevrar. I dem flesta fall fungerar den automatiska "
+"inställningen bra och det finns inget behov av att ändra "
+"standardinställningen. Men, om problem uppstår, använd RPC protokollet för "
+"nyare operativsystem (Windows NT4 och senare) och RAP för dem äldre (Windows "
+"98/NT3 och tidigare). Funktioner för ADS protokollet (för Active Directory "
+"miljöer) tillämpas för närvarande inte, så man kan bortse från denna "
+"inställning så länge."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 698
+#: rc.cpp:685
+msgid "Automatic detection"
+msgstr "Upptäck automatiskt"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 701
+#: rc.cpp:688
+msgid "RPC: Modern operating systems"
+msgstr "RPC: moderna operativsystem"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 704
+#: rc.cpp:691
+msgid "RAP: Older operating systems"
+msgstr "RAP: äldre operativsystem"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 707
+#: rc.cpp:694
+msgid "ADS: Active Directory environment (LDAP/Kerberos)"
+msgstr "ADS: Active Directory (LDAP/Kerberos)"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 713
+#: rc.cpp:697
+msgid "Name resolve order:"
+msgstr "Namnupplösningsföljd:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 714
+#: rc.cpp:700
+msgid ""
+"This option is used to determine what naming services and in what order are "
+"used to resolve host names and IP addresses. It takes a space-separated list "
+"of up to four different name resolution options. Those are: lmhost, host, "
+"wins, bcast. See the manual page of smbclient for further information."
+msgstr ""
+"Detta val används för att bestämma vilka namntjänster och i vilken "
+"ordningsföljd dem används för att göra namnuppslag på datornamn och IP-"
+"adresser. Det behövs en lista, separerad av mellanslag, på upp till fyra "
+"olika namnuppslagsmöjligheter. Dessa är lmhost, host, wins, bcast. Läs "
+"mansidan för smbclient för ytterligare information."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 718
+#: rc.cpp:703
+msgid "Buffer size:"
+msgstr "Buffertstorlek:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 719
+#: rc.cpp:706
+msgid ""
+"This option changes the transmit/send buffer size when getting or putting a "
+"file from/to the server. The default is 65520 bytes. Setting this value "
+"smaller has been observed to speed up file transfers to and from Windows 9x "
+"servers."
+msgstr ""
+"Detta val ändrar överföring/sänd buffertens storlek när en fil hämtas eller "
+"läggs på servern. Standardinställningen är 65520 bytes. Det har observerats "
+"att, om detta värde minskas har det medfört att filöverföringar till Windows "
+"9x värdar har snabbats upp."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 724
+#: rc.cpp:709
+msgid "Broadcast address:"
+msgstr "Broadcastadress:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 725
+#: rc.cpp:712
+msgid ""
+"Queries performed with nmblookup will be send to the given broadcast "
+"address. Without this option the default behavior is to send the queries to "
+"the broadcast address of the network interface that was either auto-detected "
+"or defined in the \"interfaces\" parameter of the smb.conf file."
+msgstr ""
+"Förfrågningar utförda med nmblookup, sänds till den givna broadcast "
+"adressen. Utan detta val är standardinställningen att skicka förfrågningar "
+"till den broadcast adress som används av det nätverkskort som upptäckts "
+"automatisk eller som har angivits med \"interfaces\" parametern i smb.conf "
+"filen."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 729
+#: rc.cpp:715
+msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
+msgstr ""
+"Försök att använda UDP-port 137 för att skicka och mottaga UDP-datagram"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 730
+#: rc.cpp:718
+msgid ""
+"Try and bind to UDP port 137 to send and receive UDP datagrams. The reason "
+"for this option is a bug in Windows 95 where it ignores the source port of "
+"the requesting packet and only replies to UDP port 137. Unfortunately, on "
+"most Unix systems super user privileges are needed to bind to this port. "
+"Please read the manual page of nmblookup for more information."
+msgstr ""
+"Försök och knyt an till UDP port 137 för att sända och ta emot UDP datagram. "
+"Orsaken till att denna inställning finns, är en bugg i Windows 95, som "
+"bortser ifrån ursprungsporten som det frågande paketet kommer ifrån och "
+"endast svarar till UDP port 137. Olyckligtvis krävs det "
+"administratorrättigheter på dem flesta Unix system för att knyta an till "
+"denna port. Läs vänligen mansidan för nmblookup för ytterligare information."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 734
+#: rc.cpp:721
+msgid "Send requests as broadcasts"
+msgstr ""
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 735
+#: rc.cpp:724
+msgid ""
+"Let smbtree query the network nodes by sending requests as broadcasts "
+"instead of querying the local master browser."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 748
+#: rc.cpp:728
+#, fuzzy
+msgid "Synchronization prefix:"
+msgstr "Synkronisering"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 749
+#: rc.cpp:731
+msgid ""
+"This is the path where Smb4K will store the files and directories during "
+"synchronization. If you plan to synchronize only with one remote share, then "
+"you can put the data directly in this directory. If you want to synchronize "
+"with several remote shares, then you should create a subdirectory for each "
+"share and choose the appropriate one in the synchronization dialog."
+msgstr ""
+"Detta är sökvägen där Smb4K sparar filer och kataloger under "
+"synkroniseringen. Om man endast planerar att synkronisera med en utdelad "
+"resurs, då kan man lägga datat direkt i denna katalog. Om man vill "
+"synkronisera med ett flertal utdelade resurser, bör man skapa en "
+"underkatalog för varje resurs och välja den som passar i dialogen för "
+"synkronisering."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 753
+#: rc.cpp:734
+msgid "Archive mode"
+msgstr "Arkivering"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 754
+#: rc.cpp:737
+msgid "Use archive mode (-a, --archive). This is a short form of -rlptgoD."
+msgstr "Använd arkivering (-a, --archive). Detta är kortformen av -rlptgoD."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 758
+#: rc.cpp:740
+msgid "Recurse into subdirectories"
+msgstr "Gå in i underkataloger"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 759
+#: rc.cpp:743
+msgid "Recurse into directories (-r, --recursive)."
+msgstr "Gå in i kataloger (-r, --recursive)."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 763
+#: rc.cpp:746
+msgid "Update files"
+msgstr ""
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 764
+#: rc.cpp:749
+msgid ""
+"Update files in the destination directory that are older than in the source "
+"directory (-u, --update)."
+msgstr ""
+"Uppdatera filer i målkatalogen som är äldre än dem i källkatalogen (-u, --"
+"update)."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 768
+#: rc.cpp:752
+#, fuzzy
+msgid "Update files in place"
+msgstr "Skriv över filer på plats"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 769
+#: rc.cpp:755
+msgid ""
+"Update destination files in-place (--inplace). By default, rsync first "
+"creates a new copy of a file and moves it into place after its transfer "
+"finished. If you enable this feature, no copy will be created but the "
+"destination file will immediately be overwritten instead. An exception to "
+"this is if you combine this option with --backup."
+msgstr ""
+"Skriv över målfilerna (--inplace). Som standard skapar rsync först en ny "
+"kopia av filen och flyttar den till målfilen efter att kopieringen är "
+"avslutat. Om denna inställning aktiveras skapas ingen kopia utan målfilen "
+"skrivs över direkt. Undantaget är om man använder inställningen med valet --"
+"backup."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 773
+#: rc.cpp:758
+msgid "Use relative path names"
+msgstr "Använd relativa sökväger"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 774
+#: rc.cpp:761
+msgid ""
+"Use relative paths (-R, --relative). This means that the full path names "
+"specified on the command line are sent to the server rather than just the "
+"last parts of the file names."
+msgstr ""
+"Använd relativa sökväger (-R, --relative). Det innebär att fulständiga "
+"sökväger som angivits på kommandoraden skickas till servern istället för "
+"bara dem sista delarna av filnamnen."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 778
+#: rc.cpp:764
+msgid "Don't send implied directories"
+msgstr "Skicka inte underkataloger"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 779
+#: rc.cpp:767
+msgid ""
+"Don't send implied directories with --relative (--no-implied-dirs). This "
+"means that the corresponding path elements on the destination system are "
+"left unchanged if they exist, and any missing implied directories are "
+"created with default attributes. This even allows these implied path "
+"elements to have big differences, such as being a symlink to a directory on "
+"one side of the transfer, and a real directory on the other side."
+msgstr ""
+"Skicka inte tillhörande kataloger med --relative (--no-implied-dirs). Detta "
+"innebär att de delar av sökvägen som överensstämmer med dem på det "
+"mottagande systemet inte ändras om dem redan finns, och de tillhörande "
+"kataloger som saknas, skapas med standard attribut. Det tillåter stora "
+"skillnader även i dessa delar av sökvägen, som till exempel att ett symlink "
+"till en katalog på den ena sidan av överföringen är en riktig katalog på den "
+"andra sidan."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 783
+#: rc.cpp:770
+msgid "Transfer directories without recursing"
+msgstr "Överför utan att läsa ner i kataloger"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 784
+#: rc.cpp:773
+msgid ""
+"Transfer directories without recursing (-d, --dirs). This means that all top-"
+"level subdirectories are transferred but without their contents."
+msgstr ""
+"Överför utan tillhörande kataloger  (-d, --dirs). Det innebär att alla "
+"underkataloger som finns i högsta nivån överförs men utan innehållet."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 789
+#: rc.cpp:776
+msgid "Compress data during transfer"
+msgstr "Komprimera data under överföringen"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 790
+#: rc.cpp:779
+msgid ""
+"Compress data during transfer (-z, --compress). This significantly reduces "
+"the amount of data that is being transferred. You may want to use this "
+"option, if you have a slow connection."
+msgstr ""
+"Komprimera data under överföring (-z, --compress). Detta reducerar märkbart "
+"den mängd data som förs över. Har man en långsam uppkoppling kan man med "
+"fördel använda denna inställning."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 794
+#: rc.cpp:782
+msgid "Preserve symlinks"
+msgstr "Bevara symlinks"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 795
+#: rc.cpp:785
+msgid "Copy symlinks as symlinks (-l, --links)."
+msgstr "Kopiera symlinks som symlinks (-l, --links)."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 799
+#: rc.cpp:788
+msgid "Transform symlinks"
+msgstr "Omvandla symlinks"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 800
+#: rc.cpp:791
+msgid ""
+"Transform symlinks into the items they are pointing to (-L, --copy-links)."
+msgstr "Omvandla symlinks till det dem pekar på (-L, --copy-links)."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 804
+#: rc.cpp:794
+msgid "Only transform unsafe symlinks"
+msgstr "Omvandla endast osäkra symlinks"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 805
+#: rc.cpp:797
+msgid ""
+"Transform unsafe symlinks into the items they are pointing to (--copy-unsafe-"
+"links). This means that only those symlinks are transformed that point to "
+"items that are outside the copied tree. Absolute symlinks are treated the "
+"same way. This option has no additional effect if --copy-links has also been "
+"specified."
+msgstr ""
+"Omvandla osäkra symlinks till det dem pekar på (--copy-unsafe-links). Det "
+"innebär att endast de symlinks som pekar utanför den trädstruktur som "
+"kopieras, omvandlas. Absoluta symlinks hanteras på samma sätt. Inställningen "
+"har ingen ytterligare effekt om --copy-links också har angivits."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 809
+#: rc.cpp:800
+msgid "Ignore unsafe symlinks"
+msgstr "Ignorera osäkra symlinks"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 810
+#: rc.cpp:803
+msgid ""
+"Ignore symlinks that point outside the copied tree (--safe-links). All "
+"absolute symlinks are also ignored. If you use this option in conjunction "
+"with --relative you might get unexpected results."
+msgstr ""
+"Hoppas över symlinks som pekar utanför den kopierade trädstrukturen (--safe-"
+"links). Det hoppas också över absoluta symlinks. Om detta används "
+"tillsammans med --relative kan oönskade resultat förekomma."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 814
+#: rc.cpp:806
+msgid "Preserve hard links"
+msgstr "Bevara hårda länkar"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 815
+#: rc.cpp:809
+msgid ""
+"Preserve hard links (-H, --hard-links). This options causes rsync to "
+"preserve the hard links that are found during the transfer. Without it, hard "
+"links are treated as though they were separate files."
+msgstr ""
+"Bevara hårda länkar (-H, --hard-links). Detta gör att rsync bevarar de hårda "
+"länker den stöter på under överföringen. Utan denna inställning, behandlas "
+"länkarna som vore dem separata filer."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 819
+#: rc.cpp:812
+msgid "Keep directory symlinks"
+msgstr "Behåll katalog symlinks"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 820
+#: rc.cpp:815
+msgid ""
+"Treat symlinked directories on the receiving side as though they were real "
+"ones (-K, --keep-dirlinks). This only works if the symlink matches a real "
+"directory from the sending side. Without this option, the receiver's symlink "
+"will be deleted and replaced with a real directory."
+msgstr ""
+"Se symlinkade kataloger på den mottagande sidan som vore dem riktiga (-K, --"
+"keep-dirlinks). Detta fungerar endast om länken matchar en riktig katalog på "
+"den sändande sidan. Utan detta val kommer mottagarens länk att skrivas över "
+"med en riktig katalog."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 824
+#: rc.cpp:818
+msgid "Preserve permissions"
+msgstr "Bevara rättigheter"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 825
+#: rc.cpp:821
+msgid ""
+"Preserve permissions (-p, --perms). The permissions of the destination file "
+"will be same as the source file. For what happens if this option is switched "
+"off, please read rsync's manual page."
+msgstr ""
+"Bevara rättigheter (-p, --perms). Målfilens rättigheter kommer att vara "
+"samma som källfilens. Mansidan för rsync talar om vad som händer om inte "
+"denna inställning inte används."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 829
+#: rc.cpp:824
+msgid "Preserve group"
+msgstr "Bevara grupp"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 830
+#: rc.cpp:827
+msgid ""
+"Preserve the group (-g, --group). The group of the destination file will be "
+"set to the same value as the source file."
+msgstr ""
+"Bevara grupptillhörighet (-g, --group). Målfilens grupptillhörighet kommer "
+"att vara samma som källfilens."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 834
+#: rc.cpp:830
+msgid "Preserve owner"
+msgstr "Bevara ägare"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 835
+#: rc.cpp:833
+msgid ""
+"Preserve the owner (-o, --owner). The owner of the destination file will be "
+"set to the same value as the source file, but only if the receiving rsync is "
+"run as the super user. Without this option, the owner is set to the invoking "
+"user on the receiving side."
+msgstr ""
+"Bevara ägaren (-o, --owner). Ägaren av målfilen kommer att sättas till samma "
+"som källfilen, men endast om den mottagande rsync körs som administratör. "
+"Utan detta val kommer ägaren bli den som skriver filen på mottagarsidan."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 839
+#: rc.cpp:836
+msgid "Preserve device and special files"
+msgstr "Bevara enheter och speciella filer"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 840
+#: rc.cpp:839
+msgid ""
+"Preserve device and special files (-D, --devices --specials). This option "
+"causes rsync to transfer character and block devices as well as special "
+"files such as named sockets and fifos. It works only partially if rsync is "
+"not run as super user and the --super option is not specified."
+msgstr ""
+"Bevara enheter och speciella filer (-D, --devices --specials). Detta val gör "
+"att rsync flyttar tecken och blockenheter och även named sockets och fifos. "
+"Fungerar endast delvis om inte rsync körs som administratör och valet --"
+"super inte angivits."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 844
+#: rc.cpp:842
+msgid "Preserve times"
+msgstr "Bevara tidsstämpeln"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 845
+#: rc.cpp:845
+msgid ""
+"Preserve times (-t, --times). The modification times are transferred along "
+"with the files. For what happens if this option is switched off, please read "
+"rsync's manual page."
+msgstr ""
+"Bevara tidsstämpeln (-t, --times). Ändringstiderna flyttas tillsammans med "
+"filerna. Mansidan för rsync talar om vad som händer om inte denna "
+"inställning inte används."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 849
+#: rc.cpp:848
+msgid "Omit directories when preserving times"
+msgstr "Undanhåll kataloger när tidsstämpeln bevaras"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 850
+#: rc.cpp:851
+msgid ""
+"Omit directories when preserving times (-O, --omit-dir-times). This means "
+"that directories are omitted when modification times are being preserved. "
+"Thus, this feature only works in conjunction with --times."
+msgstr ""
+"Hoppa över kataloger när tidsstämplen bevaras (-O, --omit-dir-times). Detta "
+"innebär att kataloger utelämnas när tidsstämplen sparas. Men, denna "
+"inställning fungerar endast tillsammans med --times."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 854
+#: rc.cpp:854
+msgid "Remove synchronized source files"
+msgstr "Ta bort synkroniserade källfiler"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 855
+#: rc.cpp:857
+msgid ""
+"Remove all synchronized source files (--remove-source-files). This tells "
+"rsync to remove from the sending side the non-directory items that are a "
+"part of the transfer and have been successfully duplicated on the receiving "
+"side."
+msgstr ""
+"Ta bort alla källfiler som har synkroniserats (--remove-source-files). Detta "
+"talar om för rsync att ta bort de icke katalog poster som är en del av "
+"överföringen och där kopieringen till den mottagande sidan har lyckats."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 859
+#: rc.cpp:860
+msgid "Delete extraneous files"
+msgstr "Ta bort irrelevanta filer"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 860
+#: rc.cpp:863
+msgid ""
+"Delete extraneous files from destination (--delete). This tells rsync to "
+"delete all files from the receiving side that are not present on the sending "
+"side, but only for the directories that are being synchronized."
+msgstr ""
+"Ta bort betydelselösa filer från målet (--delete). Detta talar om för rsync "
+"att ta bort alla filer från mottagarsidan som inte finns på den sändande "
+"sidan, dock endast för de kataloter som har synkroniserats."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 864
+#: rc.cpp:866
+msgid "Delete files before transfer"
+msgstr "Ta bort filer innan överföring"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 865
+#: rc.cpp:869
+msgid ""
+"Delete files on the receiving side before the transfer starts (--delete-"
+"before). This is the default behavior if --delete or --delete-excluded is "
+"specified without one of the --delete-WHEN options."
+msgstr ""
+"Ta bort filer på mottagarsidan innan överföringen påbörjas. (--delete-"
+"before). Detta är standardinställningen, om --delete or --delete-excluded "
+"har angivits utan en av --delete-WHEN valen."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 869
+#: rc.cpp:872
+msgid "Delete files after transfer"
+msgstr "Ta bort filer efter överföring"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 870
+#: rc.cpp:875
+msgid ""
+"Delete files on the receiving side after the transfer has completed (--"
+"delete-after, --del)."
+msgstr ""
+"Ta bort filer på mottagarsidan efter att överföringen har fullförts (--"
+"delete-after, --del)."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 874
+#: rc.cpp:878
+msgid "Delete files during transfer"
+msgstr "Ta bort filer under överföring"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 875
+#: rc.cpp:881
+msgid ""
+"Delete files on the receiving side during the transfer (--delete-during). "
+"This method is faster than --delete-before or --delete-after, but it is only "
+"supported with rsync 2.6.4 or later."
+msgstr ""
+"Ta bort filer på mottagarsidan under överföringen (--delete-during). Denna "
+"metod är snabbare än --delete-before eller --delete-after, fungerar endast "
+"med rsync 2.6.4 eller senare version."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 879
+#: rc.cpp:884
+msgid "Also delete excluded files"
+msgstr "Ta även bort uteslutna filer"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 880
+#: rc.cpp:887
+msgid ""
+"Also delete excluded files from destination directory (--delete-excluded). "
+"In addition to deleting the files on the receiving side that are not on the "
+"sending side, this tells rsync to also delete any files on the receiving "
+"side that are excluded. Refer to rsync's manual page for further information."
+msgstr ""
+"Ta även bort uteslutna filer från målkatalogen(--delete-excluded). "
+"Tillsammans med att ta bort de filer på mottagarsidan som inte finns på den "
+"sändande sidan, talar detta om för rsync att även ta bort de filer på "
+"mottagarsidan som uteslutits. Läs rsyncs mansida för ytterligare information."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 884
+#: rc.cpp:890
+msgid "Delete even if I/O errors occur"
+msgstr "Ta bort även om I/O fel uppstår"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 885
+#: rc.cpp:893
+msgid ""
+"Delete even if I/O errors occur (--ignore-errors). This option has to be "
+"specified in conjunction with --delete to take effect."
+msgstr ""
+"Ta bort även om I/O fel förekommer (--ignore-errors). Denna inställning "
+"måste användas tillsammans med --delete för att fungera."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 889
+#: rc.cpp:896
+msgid "Force deletion of non-void directories"
+msgstr "Tvinga borttagning av ogiltiga kataloger"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 890
+#: rc.cpp:899
+msgid ""
+"Force deletion of directories even if they are not empty (--force). This "
+"option tells rsync to delete a non-empty directory when it is to be replaced "
+"by a non-directory. This is only relevant if deletions are not active."
+msgstr ""
+"Tvinga borttagning av kataloger även när dem inte är tomma (--force). Detta "
+"talar om för rsync att ta bort kataloger som inte är tomma när de ska "
+"ersättas med annat än en katalog. Detta är endast relevant om borttagningar "
+"inte är aktiva."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 894
+#: rc.cpp:902
+msgid "Don't delete more than this many files:"
+msgstr "Ta inte bort mer än så här mycket filer"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 895
+#: rc.cpp:905
+msgid ""
+"Only delete as many files as defined here (--max-delete=NUM). This tells "
+"rsync not to delete more than NUM files or directories (NUM must be non-"
+"zero). This is useful when mirroring very large trees to prevent disasters."
+msgstr ""
+"Ta endast bort så många filer som definierats här (--max-delete=NUM). Detta "
+"talar om för rsync att inte ta bort flera än NUM filer eller kataloger (NUM "
+"måste vara större än noll). Detta är användbart när mycket stora träd "
+"speglas för att unvika missöden."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 899
+#: rc.cpp:908
+msgid "Value for DeleteMaximum config entry"
+msgstr "Värde för DeleteMaximum konfigurationsinställning"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 905
+#: rc.cpp:912
+msgid "Don't transfer any file smaller than:"
+msgstr "Överför inte filer mindre än:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 906
+#: rc.cpp:915
+msgid ""
+"This option causes rsync to not transfer any file that is smaller than the "
+"specified size (--min-size=SIZE)."
+msgstr ""
+"Detta gör att rsync inte överför någon fil som är mindre än den angivna "
+"storleken (--min-size=SIZE)."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 910
+#: rc.cpp:918
+msgid "Value for MinimalTransferSize config entry"
+msgstr "Värde för MinimalTransferSize konfigurationsinställning"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 916
+#: rc.cpp:922
+msgid "Don't transfer any file larger than:"
+msgstr "Överför inte filer större än:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 917
+#: rc.cpp:925
+msgid ""
+"This option causes rsync to not transfer any file that is larger than the "
+"specified size (--max-size=SIZE)."
+msgstr ""
+"Detta gör att rsync inte överför någon fil som är större än den angivna "
+"storleken (--max-size=SIZE)."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 921
+#: rc.cpp:928
+msgid "Value for MamximalTransferSize config entry"
+msgstr "Värde för MamximalTransferSize konfigurationsinställning"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 927
+#: rc.cpp:932
+msgid "Keep partially transferred files"
+msgstr "Behåll delvis överförda filer"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 928
+#: rc.cpp:935
+msgid ""
+"Keep partially transferred files (--partial). The default behavor is that "
+"any partially transferred file is deleted if the transfer is interrupted."
+msgstr ""
+"Spara delvis överförda filer (--partial). Standard förfarandet är att ta "
+"bort delvis överförda filer om överföringen avbryts."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 932
+#: rc.cpp:938
+#, fuzzy
+msgid "Put partially transferred files into:"
+msgstr "Lägg delvis överförda filer i:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 933
+#: rc.cpp:941
+msgid ""
+"Put a partially transferred file into this directory (--partial-dir=DIR). "
+"This is a better way than the --partial option to keep partial files, "
+"because the partially transferred file is kept in a different directory and "
+"the destination file is not overwritten."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 937
+#: rc.cpp:944
+msgid "The data for the UsePartialDirectory option"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 942
+#: rc.cpp:948
+msgid "Auto-ignore files in the same way CVS does"
+msgstr "Ignorera automatiskt filer på samma sätt som CVS"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 943
+#: rc.cpp:951
+msgid ""
+"Auto-ignore files in the same way CVS does (-C, --cvs-exclude). This is a "
+"useful shorthand for excluding a broad range of files that you often do not "
+"want to transfer between systems. This option uses the same algorithm that "
+"CVS uses to determine if a file should be ignored."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 947
+#: rc.cpp:954
+msgid "Exclude files matching this pattern:"
+msgstr "Uteslut filer som matchar följande mönster:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 948
+#: rc.cpp:957
+msgid ""
+"Exclude files that match a certain pattern (--exclude=PATTERN). This is a "
+"special filter rule. For further information on filter rules see rsync's "
+"manual page."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 952
+#: rc.cpp:960
+msgid "Pattern that is used for file exclusion"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 957
+#: rc.cpp:964
+msgid "Read exclude patterns from:"
+msgstr "Läs mönster att utesluta från:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 958
+#: rc.cpp:967
+msgid ""
+"Read exclude patterns from a file (--exclude-from=FILE). This option is "
+"similar to the --exclude=PATTERN option except that the exclude patterns are "
+"read from a file. This is a special filter rule. For further information on "
+"filter rules see rsync's manual page."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 962
+#: rc.cpp:970
+msgid "The file from which the exclude patterns are read"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 967
+#: rc.cpp:974
+msgid "Don't exclude files matching this pattern:"
+msgstr "Uteslut inte filer som matchar följande mönster:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 968
+#: rc.cpp:977
+msgid ""
+"Do not exclude files matching a certain pattern (--include=PATTERN). This is "
+"a special filter rule. For further information on filter rules see rsync's "
+"manual page."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 972
+#: rc.cpp:980
+msgid "Pattern that is used for file inclusion"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 977
+#: rc.cpp:984
+msgid "Read include patterns from:"
+msgstr "Läs mönster att inkludera från:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 978
+#: rc.cpp:987
+msgid ""
+"Read include patterns from a file (--include-from=FILE). This option is "
+"similar to the --include=PATTERN option except that the include patterns are "
+"read from a file. This is a special filter rule. For further information on "
+"filter rules see rsync's manual page."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 982
+#: rc.cpp:990
+msgid "The file from which the include patterns are read"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 987
+#: rc.cpp:994
+#, fuzzy
+msgid "Custom filter rules:"
+msgstr "Speciella filterregler"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 988
+#: rc.cpp:997
+msgid ""
+"Add custom file-filtering rules (-f, --filter=RULE). This option allows you "
+"to add rules to selectively exclude certain files from the list of files to "
+"be transferred. These rules will be added to the rsync command as they are. "
+"Thus, each rule has to start with the --filter=... argument."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 992
+#: rc.cpp:1000
+msgid "Use --filter='dir-merge /.rsync-filter' filter rule"
+msgstr "Använd --filter='dir-merge /.rsync-filter' filterregel"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 993
+#: rc.cpp:1003
+msgid ""
+"This filter rule tells rsync to look for per-directory .rsync-filter files "
+"that have been sprinkled through the hierarchy and use their rules to filter "
+"the files in the transfer. It has no effect, if you also choose to use the --"
+"filter='exclude .rsync-filter' rule."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 997
+#: rc.cpp:1006
+msgid "Use --filter='exclude .rsync-filter' filter rule"
+msgstr "Använd --filter='exclude .rsync-filter' filterregel"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 998
+#: rc.cpp:1009
+msgid ""
+"This rule filters out the .rsync-filter files from the transfer. These files "
+"normally contain filter rules that can be activated by choosing the --"
+"filter='dir-merge /.rsync-filter' rule and deselecting this one."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1002
+#: rc.cpp:1012
+msgid "Handle sparse files efficiently"
+msgstr "Hantera spridda filer effektivt"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1003
+#: rc.cpp:1015
+msgid ""
+"Handle sparse files efficiently (-S, --sparse) so that they take up less "
+"space on the destination. This option conflicts with --inplace. For further "
+"information read rsync's manual page."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1007
+#: rc.cpp:1018
+msgid "Copy files whole (no rsync algorithm)"
+msgstr "Kopiera hela filer(ingen rsync algoritm)"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1008
+#: rc.cpp:1021
+msgid ""
+"Copy files whole (-W, --whole-file). With this option the incremental rsync "
+"algorithm is not used and the whole file is sent as-is instead."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1012
+#: rc.cpp:1024
+msgid "Don't cross file system boundaries"
+msgstr "Korsa inte filsystemets gränser"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1013
+#: rc.cpp:1027
+msgid ""
+"Do not cross file system boundaries (-x, --one-file-system). This tells "
+"rsync to avoid crossing a filesystem boundary when recursing. For further "
+"information on this option, read the manual page."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1017
+#: rc.cpp:1030
+msgid "Only update files that already exist"
+msgstr "Uppdatera endast extsterande filer"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1018
+#: rc.cpp:1033
+msgid ""
+"Skip creating new files on the receiving side (--existing). This tells rsync "
+"to skip creating files (including directories) that do not exist yet on the "
+"destination. If this option is combined with the --ignore-existing option, "
+"no files will be updated (which can be useful if all you want to do is to "
+"delete extraneous files)."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1022
+#: rc.cpp:1036
+msgid "Ignore files that already exist"
+msgstr "Ignorera extsterande filer"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1023
+#: rc.cpp:1039
+msgid ""
+"Skip updating files that already exist on the receiving side (--ignore-"
+"existing). Existing directories are not ignored."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1027
+#: rc.cpp:1042
+msgid "Delay updates until the end of transfer"
+msgstr "Vänta med uppdatering tills slutet av överföringen"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1028
+#: rc.cpp:1045
+msgid ""
+"Delay updates until the end of the transfer (--delay-updates). This option "
+"puts the temporary file from each updated file into a holding directory "
+"until the end of the transfer, at which time all the files are renamed and "
+"copied into place in rapid succession."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1032
+#: rc.cpp:1048
+msgid "Make backups"
+msgstr "Säkerhetskopiera"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1033
+#: rc.cpp:1051
+msgid ""
+"Make backups (-b, --backup). With this option, preexisting destination files "
+"are renamed as each file is transferred or deleted. You can control where "
+"the backup file goes and what (if any) suffix gets appended using the --"
+"backup-dir=DIR and --suffix=SUFFIX options."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1037
+#: rc.cpp:1054
+msgid "Backup suffix:"
+msgstr "Säkerhetskopieringsändelse "
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1038
+#: rc.cpp:1057
+msgid "Use this suffix for backups (--suffix=SUFFIX)."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1042
+#: rc.cpp:1060
+msgid "Backup suffix"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1047
+#: rc.cpp:1064
+msgid "Backup directory:"
+msgstr "Säkerhetskopieringskatalog"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1048
+#: rc.cpp:1067
+msgid "Store backups in this directory (--backup-dir=DIR)."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1052
+#: rc.cpp:1070
+#, fuzzy
+msgid "Backup directory"
+msgstr "Active Directory"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1057
+#: rc.cpp:1074
+msgid "Force fixed checksum block size:"
+msgstr "Tvinga fast checksumma blockstorlek"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1058
+#: rc.cpp:1077
+msgid ""
+"Force a fixed checksum block-size (-B, --block-size=SIZE). This forces the "
+"block size used in the rsync algorithm to a fixed value."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1062
+#: rc.cpp:1080
+msgid "The block size"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1068
+#: rc.cpp:1084
+msgid "Set block/file checksum seed:"
+msgstr "Sätt block/fil checksumma frö"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1069
+#: rc.cpp:1087
+msgid ""
+"Set block/file checksum seed (--checksum-seed=NUM). Set the MD4 checksum "
+"seed to this integer. This 4 byte checksum seed is included in each block "
+"and file MD4 checksum calculation. By default the checksum seed is generated "
+"by the server and defaults to the current time."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1073
+#: rc.cpp:1090
+#, fuzzy
+msgid "The checksum seed"
+msgstr "Ej ingripande."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1079
+#: rc.cpp:1094
+msgid "Skip files based on checksum"
+msgstr "Hoppa över filer baserad på checksumma"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1080
+#: rc.cpp:1097
+msgid ""
+"Skip files based on a checksum and not based on modification time and size (-"
+"c, --checksum). For further information on how this feature works read "
+"rsync's manual page."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1090
+#: rc.cpp:1100
+msgid ""
+"Use super user privileges to force the unmounting of (inaccessible) shares"
+msgstr ""
+"Använd administratörsrättigheter för att tvinga avmontering av (oåtkomliga) "
+"utdelade resurser"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1091
+#: rc.cpp:1103
+msgid ""
+"Unmount a share under Linux by force. This even works if the file system is "
+"\"busy\", because it is immediately detached from the file system hierarchy "
+"and all references to it are cleaned up later when it is not busy anymore. "
+"Linux kernel 2.4.11 or later is needed to take advantage of this feature. "
+"Use with case! Note, that you will need the root password to write the "
+"necessary changes to the configuration file."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1095
+#: rc.cpp:1106
+msgid "Use super user privileges to mount and unmount shares"
+msgstr ""
+"Använd administratörsrättigheter för att montera och avmontera utdelade "
+"resurser"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1096
+#: rc.cpp:1109
+msgid ""
+"Use super user privileges for mounting and unmounting remote shares. This "
+"feature is only needed, if you are not allowed to use smbmount, smbumount, "
+"mount.cifs and umount.cifs as normal user. Note, that you will need the root "
+"password to write the necessary changes to the configuration file."
+msgstr ""
+
+#. i18n: tag text
+#. i18n: file ./smb4k/smb4k_shell.rc line 4
+#: rc.cpp:1112
+#, fuzzy
+msgid "&File"
+msgstr "Fil:"
+
+#. i18n: tag text
+#. i18n: file ./smb4k/smb4k_shell.rc line 7
+#. i18n: tag text
+#. i18n: file ./smb4k/browser/smb4knetworkbrowser_part.rc line 4
+#: rc.cpp:1115 rc.cpp:1142
+msgid "&Network"
+msgstr "&Nätverk"
+
+#. i18n: tag text
+#. i18n: file ./smb4k/smb4k_shell.rc line 9
+#: rc.cpp:1118 smb4k/searchdlg/smb4ksearchdialog_part.cpp:112
+#, fuzzy
+msgid "&Search"
+msgstr "Sök"
+
+#. i18n: tag text
+#. i18n: file ./smb4k/smb4k_shell.rc line 11
+#: rc.cpp:1121
+msgid "Sh&ares"
+msgstr "&Utdelade resurser"
+
+#. i18n: tag text
+#. i18n: file ./smb4k/smb4k_shell.rc line 13
+#: rc.cpp:1124
+#, fuzzy
+msgid "&Bookmarks"
+msgstr "Bokmärke"
+
+#. i18n: tag text
+#. i18n: file ./smb4k/smb4k_shell.rc line 19
+#: rc.cpp:1127
+#, fuzzy
+msgid "&Settings"
+msgstr "Allmänt inställningar"
+
+#. i18n: tag text
+#. i18n: file ./smb4k/smb4k_shell.rc line 31
+#: rc.cpp:1130
+#, fuzzy
+msgid "Network Toolbar"
+msgstr "Verktygsfält för nätverket"
+
+#. i18n: tag text
+#. i18n: file ./smb4k/smb4k_shell.rc line 33
+#: rc.cpp:1133
+#, fuzzy
+msgid "Search Toolbar"
+msgstr "Verktygsfält för nätverket"
+
+#. i18n: tag text
+#. i18n: file ./smb4k/smb4k_shell.rc line 35
+#: rc.cpp:1136
+#, fuzzy
+msgid "Shares Toolbar"
+msgstr "Verktygsfält för utdelade resurser"
+
+#. i18n: tag text
+#. i18n: file ./smb4k/smb4k_shell.rc line 37
+#: rc.cpp:1139
+#, fuzzy
+msgid "Main Toolbar"
+msgstr "Verktygsfält"
+
+#. i18n: tag text
+#. i18n: file ./smb4k/sharesview/smb4ksharesview_part.rc line 4
+#: rc.cpp:1148
+msgid "&Shares"
+msgstr "&Kataloger"
+
+#: smb4k/dialogs/smb4kbookmarkeditor.cpp:56
+msgid "Bookmark Editor"
+msgstr "Bokmärkeseditor"
+
+#: smb4k/dialogs/smb4kbookmarkeditor.cpp:74
+msgid "Bookmark"
+msgstr "Bokmärke"
+
+#: smb4k/dialogs/smb4kbookmarkeditor.cpp:75
+msgid "Workgroup"
+msgstr "Arbetsgrupp"
+
+#: smb4k/dialogs/smb4kbookmarkeditor.cpp:76
+#: smb4k/browser/smb4knetworkbrowser.cpp:66
+msgid "IP Address"
+msgstr "IP-adress"
+
+#: smb4k/dialogs/smb4kbookmarkeditor.cpp:77
+msgid "Label"
+msgstr "Etikett"
+
+#: smb4k/dialogs/smb4kbookmarkeditor.cpp:91
+#: smb4k/configdlg/smb4ksambaoptions.cpp:690
+msgid "Edit"
+msgstr ""
+
+#: smb4k/dialogs/smb4kbookmarkeditor.cpp:96
+msgid "Delete"
+msgstr ""
+
+#: smb4k/dialogs/smb4ksynchronizationdialog.cpp:47
+#: smb4k/configdlg/smb4kconfigdialog.cpp:148
+msgid "Synchronization"
+msgstr "Synkronisering"
+
+#: smb4k/dialogs/smb4ksynchronizationdialog.cpp:51
+msgid "Synchronize"
+msgstr "Synkronisera"
+
+#: smb4k/dialogs/smb4ksynchronizationdialog.cpp:52
+msgid "Synchronize the destination with the source"
+msgstr "Synkronisera målet med källan"
+
+#: smb4k/dialogs/smb4ksynchronizationdialog.cpp:53
+msgid "Swap Paths"
+msgstr "Byt sökvägar"
+
+#: smb4k/dialogs/smb4ksynchronizationdialog.cpp:54
+msgid "Swap source and destination"
+msgstr "Byt källa och mål"
+
+#: smb4k/dialogs/smb4ksynchronizationdialog.cpp:63
+msgid "Source:"
+msgstr "Källa:"
+
+#: smb4k/dialogs/smb4ksynchronizationdialog.cpp:69
+msgid "Destination:"
+msgstr "Mål:"
+
+#: smb4k/dialogs/smb4ksynchronizationdialog.cpp:93
+msgid "Files transferred:"
+msgstr "Filer överflyttade:"
+
+#: smb4k/dialogs/smb4ksynchronizationdialog.cpp:96
+msgid "Transfer rate:"
+msgstr "Överflyttningshastighet:"
+
+#: smb4k/dialogs/smb4kmountdialog.cpp:51
+msgid "Mount Share"
+msgstr "Montera utdelade resurser"
+
+#: smb4k/dialogs/smb4kmountdialog.cpp:89
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:187
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:204
+#: smb4k/sharesview/smb4ksharesviewtooltip.cpp:111
+msgid "Share:"
+msgstr "Utdelad resurs:"
+
+#: smb4k/dialogs/smb4kmountdialog.cpp:94 smb4k/dialogs/smb4kprintdialog.cpp:91
+msgid "IP Address:"
+msgstr "IP-adress:"
+
+#: smb4k/dialogs/smb4kmountdialog.cpp:98 smb4k/dialogs/smb4kprintdialog.cpp:95
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:119
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:174
+msgid "Workgroup:"
+msgstr "Arbetsgrupp:"
+
+#: smb4k/dialogs/smb4kmountdialog.cpp:102
+msgid "Add this share to the bookmarks"
+msgstr "Lägg till denna resurs till bokmärken"
+
+#: smb4k/dialogs/smb4kmountdialog.cpp:161
+msgid ""
+"The format of the share you entered is not correct. It must have the form //"
+"HOST/SHARE."
+msgstr ""
+"Namnet på den utdelade resursen är felskrivet. Måste vara //DATOR/RESURSNAMN."
+
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:97
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:120
+#: smb4k/configdlg/smb4ksambaoptions.cpp:706
+msgid "Custom Options"
+msgstr "Anpassade inställningar"
+
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:187
+#: smb4k/dialogs/smb4kprintdialog.cpp:89
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:145
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:233
+msgid "Host:"
+msgstr "Värddator:"
+
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:207
+#, fuzzy
+msgid "Protocol:"
+msgstr "Protokoll"
+
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:212
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:356
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:935
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:1071
+#: smb4k/configdlg/smb4ksambaoptions.cpp:868
+#: smb4k/configdlg/smb4ksambaoptions.cpp:949
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1127
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1274
+#, fuzzy
+msgid "automatic"
+msgstr "Automatiskt"
+
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:219
+msgid "Try to authenticate with Kerberos (Active Directory)"
+msgstr "Försök att använda Kerberos för authentisering (Active Directory)"
+
+#: smb4k/dialogs/smb4kpreviewdialog.cpp:58
+msgid "Preview"
+msgstr "Förhandsgranskning"
+
+#: smb4k/dialogs/smb4kpreviewdialog.cpp:114
+#, fuzzy
+msgid "Reload"
+msgstr "Klar."
+
+#: smb4k/dialogs/smb4kpreviewdialog.cpp:115
+#, fuzzy
+msgid "Back"
+msgstr "Säkerhetskopiering"
+
+#: smb4k/dialogs/smb4kpreviewdialog.cpp:116
+msgid "Forward"
+msgstr "Vidarbefordra"
+
+#: smb4k/dialogs/smb4kpreviewdialog.cpp:117
+msgid "Up"
+msgstr "Upp:"
+
+#: smb4k/dialogs/smb4kprintdialog.cpp:56
+msgid "Print File"
+msgstr "Skriv ut filen"
+
+#: smb4k/dialogs/smb4kprintdialog.cpp:61
+#: smb4k/dialogs/smb4kprintdialog.cpp:125
+#, fuzzy
+msgid "Options"
+msgstr "Händelser"
+
+#: smb4k/dialogs/smb4kprintdialog.cpp:84
+msgid "Name:"
+msgstr "Namn:"
+
+#: smb4k/dialogs/smb4kprintdialog.cpp:93
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:130
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:153
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:159
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:164
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:182
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:239
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:473
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:483
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:493
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:507
+#, fuzzy
+msgid "unknown"
+msgstr "Okänd"
+
+#: smb4k/dialogs/smb4kprintdialog.cpp:108
+#, fuzzy
+msgid "File"
+msgstr "Fil:"
+
+#: smb4k/dialogs/smb4kprintdialog.cpp:116
+msgid "File:"
+msgstr "Fil:"
+
+#: smb4k/dialogs/smb4kprintdialog.cpp:131
+msgid "Copies:"
+msgstr "Kopior:"
+
+#: smb4k/dialogs/smb4kprintdialog.cpp:192
+msgid "You haven't specified a file."
+msgstr "Du har inte uppget filnamn."
+
+#: smb4k/browser/smb4knetworkbrowser.cpp:64
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:237
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:402
+#: smb4k/configdlg/smb4kconfigdialog.cpp:144
+msgid "Network"
+msgstr "Nätverk"
+
+#: smb4k/browser/smb4knetworkbrowser.cpp:65
+msgid "Type"
+msgstr "Typ"
+
+#: smb4k/browser/smb4knetworkbrowser.cpp:67
+msgid "Comment"
+msgstr "Kommentar"
+
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:123
+msgid "Pseudo master browser:"
+msgstr "Pseudo master browser:"
+
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:124
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:179
+msgid "Master browser:"
+msgstr "Master browser:"
+
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:148
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:207
+msgid "Comment:"
+msgstr "Kommentar:"
+
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:151
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:236
+#, fuzzy
+msgid "IP address:"
+msgstr "IP-adress:"
+
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:157
+msgid "Operating system:"
+msgstr "Operativsystem"
+
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:162
+msgid "Server string:"
+msgstr "Serversträng:"
+
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:210
+msgid "Type:"
+msgstr "Typ:"
+
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:215
+msgid "Mounted:"
+msgstr "Monterad:"
+
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:218
+#: smb4k/configdlg/smb4ksambaoptions.cpp:924
+#: smb4k/configdlg/smb4ksambaoptions.cpp:999
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1164
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1300
+msgid "yes"
+msgstr "ja"
+
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:219
+#: smb4k/configdlg/smb4ksambaoptions.cpp:928
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1005
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1168
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1301
+msgid "no"
+msgstr "nej"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:169
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:663
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:683
+msgid "Scan Netwo&rk"
+msgstr "Läs av nätverket"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:174
+msgid "&Abort"
+msgstr "&Avbryt"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:179 smb4k/smb4ksystemtray.cpp:74
+msgid "M&ount Manually"
+msgstr "M&ontera manuellt"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:184
+msgid "Au&thentication"
+msgstr "Au&tentisering:"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:189
+msgid "&Custom Options"
+msgstr "&Anpassade alternativ"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:194
+msgid "Add &Bookmark"
+msgstr "Lägg till &bokmärke"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:199
+msgid "Pre&view"
+msgstr "F&örhandsgranska"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:204
+msgid "&Print File"
+msgstr "Sk&riv ut filen"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:209
+msgid "&Mount"
+msgstr "&Montera"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:254
+#: smb4k/smb4ksystemtray.cpp:741 smb4k/sharesview/smb4ksharesview_part.cpp:276
+msgid "&Unmount"
+msgstr "&Avmontera"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:323
+msgid "Smb4KNetworkBrowserPart"
+msgstr "Smb4KNetworkBrowserPart"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:325
+msgid "The network browser KPart of Smb4K"
+msgstr ""
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:327
+#: smb4k/searchdlg/smb4ksearchdialog_part.cpp:159
+#: smb4k/sharesview/smb4ksharesview_part.cpp:488
+msgid "(c) 2007-2008, Alexander Reinholdt"
+msgstr ""
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:430
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:445
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:494
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:526
+msgid "Scan Compute&r"
+msgstr "Läs av &datorn"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:472
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:602
+msgid "Scan Wo&rkgroup"
+msgstr "Läs av arbets&grupp"
+
+#: smb4k/smb4ksystemtray.cpp:60 smb4k/main.cpp:62
+msgid "Smb4K"
+msgstr "Smb4K"
+
+#: smb4k/smb4ksystemtray.cpp:71 smb4k/smb4kmainwindow.cpp:277
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:249
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:284
+msgid "Mounted Shares"
+msgstr "Monterade resurser"
+
+#: smb4k/smb4ksystemtray.cpp:72
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:55
+#, fuzzy
+msgid "Bookmarks"
+msgstr "Bokmärke"
+
+#: smb4k/smb4ksystemtray.cpp:272 smb4k/smb4kmainwindow.cpp:367
+msgid "&Edit Bookmarks"
+msgstr "&Ordna bokmärken"
+
+#: smb4k/smb4ksystemtray.cpp:459 smb4k/sharesview/smb4ksharesview_part.cpp:288
+msgid "U&nmount All"
+msgstr "A&vmontera allt"
+
+#: smb4k/smb4ksystemtray.cpp:748 smb4k/sharesview/smb4ksharesview_part.cpp:282
+msgid "&Force Unmounting"
+msgstr "&Tvinga avmontering"
+
+#: smb4k/smb4ksystemtray.cpp:756 smb4k/sharesview/smb4ksharesview_part.cpp:293
+msgid "S&ynchronize"
+msgstr "S&ynkronisera"
+
+#: smb4k/smb4ksystemtray.cpp:762 smb4k/sharesview/smb4ksharesview_part.cpp:298
+msgid "Open with Konso&le"
+msgstr "Öppna i Konso&le"
+
+#: smb4k/smb4ksystemtray.cpp:768 smb4k/sharesview/smb4ksharesview_part.cpp:303
+#, fuzzy
+msgid "Open with F&ile Manager"
+msgstr "Öppna med &Konqueror"
+
+#: smb4k/searchdlg/smb4ksearchdialogitem.cpp:109
+msgid "The search returned no results."
+msgstr ""
+
+#: smb4k/searchdlg/smb4ksearchdialog.cpp:46
+#, fuzzy
+msgid "Search item:"
+msgstr "Sök"
+
+#: smb4k/searchdlg/smb4ksearchdialog.cpp:49
+msgid "Enter the search string here."
+msgstr "Skriv in söksträng här."
+
+#: smb4k/searchdlg/smb4ksearchdialog_part.cpp:117
+#, fuzzy
+msgid "&Clear"
+msgstr "&Rensa"
+
+#: smb4k/searchdlg/smb4ksearchdialog_part.cpp:122
+#: smb4k/searchdlg/smb4ksearchdialog_part.cpp:338
+msgid "A&dd"
+msgstr ""
+
+#: smb4k/searchdlg/smb4ksearchdialog_part.cpp:127
+#, fuzzy
+msgid "Abort"
+msgstr "&Avbryt"
+
+#: smb4k/searchdlg/smb4ksearchdialog_part.cpp:145
+#: smb4k/searchdlg/smb4ksearchdialog_part.cpp:400
+#: smb4k/searchdlg/smb4ksearchdialog_part.cpp:410
+#, fuzzy
+msgid "Search Results"
+msgstr "Sökresultat"
+
+#: smb4k/searchdlg/smb4ksearchdialog_part.cpp:155
+msgid "Smb4KSearchDialogPart"
+msgstr "Smb4KSearchDialogPart"
+
+#: smb4k/searchdlg/smb4ksearchdialog_part.cpp:157
+msgid "The search dialog KPart of Smb4K"
+msgstr ""
+
+#: smb4k/searchdlg/smb4ksearchdialog_part.cpp:346
+#, fuzzy
+msgid "Mount"
+msgstr "&Montera"
+
+#: smb4k/smb4kmainwindow.cpp:98
+#, fuzzy
+msgid "Dock Widgets"
+msgstr "&Dock fönster"
+
+#: smb4k/smb4kmainwindow.cpp:105
+msgid "Shares View"
+msgstr "Visa utdelade resurser"
+
+#: smb4k/smb4kmainwindow.cpp:112
+#, fuzzy
+msgid "Icon View"
+msgstr "Visa &ikoner"
+
+#: smb4k/smb4kmainwindow.cpp:117
+msgid "List View"
+msgstr "Visa lista"
+
+#: smb4k/smb4kmainwindow.cpp:159 smb4k/smb4kmainwindow.cpp:924
+msgid "Wallet is not in use"
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:165 smb4k/smb4kmainwindow.cpp:954
+msgid "Wallet support is disabled"
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:196
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:163
+#, fuzzy
+msgid "Network Neighborhood"
+msgstr "Nätverkssökning"
+
+#: smb4k/smb4kmainwindow.cpp:212
+#, fuzzy
+msgid "The network browser could not be created."
+msgstr "Katalogen %1 kann inte hittas."
+
+#: smb4k/smb4kmainwindow.cpp:237
+msgid "Network Search"
+msgstr "Nätverkssökning"
+
+#: smb4k/smb4kmainwindow.cpp:253
+#, fuzzy
+msgid "The search dialog could not be created."
+msgstr "Katalogen %1 kann inte hittas."
+
+#: smb4k/smb4kmainwindow.cpp:293
+#, fuzzy
+msgid "The shares view could not be created."
+msgstr "Katalogen %1 kann inte hittas."
+
+#: smb4k/smb4kmainwindow.cpp:469
+#, fuzzy
+msgid ""
+"<qt>Closing the main window will keep Smb4K running in the system tray. Use "
+"'Quit' from the 'File' menu to quit the application.</qt>"
+msgstr ""
+"Smb4k fortsätter att vara aktivt i systembrickan efter att huvudfönstret har "
+"stängts. Använd \"Avsluta\" från \"Arkiv\" menyn för att avsluta programmet."
+
+#: smb4k/smb4kmainwindow.cpp:471
+#, fuzzy
+msgid "Docking"
+msgstr "&Dock fönster"
+
+#: smb4k/smb4kmainwindow.cpp:824
+#, fuzzy
+msgid "Looking for workgroups and domains..."
+msgstr "Söker arbetsgrupper och domäner"
+
+#: smb4k/smb4kmainwindow.cpp:830
+#, fuzzy
+msgid "Querying master browser for workgroups and domains..."
+msgstr "Söker arbetsgrupper och domäner"
+
+#: smb4k/smb4kmainwindow.cpp:836
+#, fuzzy
+msgid "Scanning broadcast areas for workgroups and domains..."
+msgstr "Söker arbetsgrupper och domäner"
+
+#: smb4k/smb4kmainwindow.cpp:842
+#, fuzzy
+msgid "Looking for workgroup members..."
+msgstr "Söker arbetsgrupper och domäner"
+
+#: smb4k/smb4kmainwindow.cpp:848
+#, fuzzy
+msgid "Querying host for list of shares..."
+msgstr "Försöker ta emot lista på utdelade resurser..."
+
+#: smb4k/smb4kmainwindow.cpp:854
+#, fuzzy
+msgid "Querying host for additional information..."
+msgstr "Tar emot ytterligare Information..."
+
+#: smb4k/smb4kmainwindow.cpp:860
+msgid "Mounting share..."
+msgstr "Monterar utdelad resurs..."
+
+#: smb4k/smb4kmainwindow.cpp:866
+msgid "Unmounting share..."
+msgstr "Avmonterar utdelad resurs..."
+
+#: smb4k/smb4kmainwindow.cpp:872
+msgid "Sending file to printer..."
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:878
+msgid "Synchronizing data..."
+msgstr "Synkroniserar data "
+
+#: smb4k/smb4kmainwindow.cpp:884
+msgid "Generating preview..."
+msgstr "Skapar förhandsgranskning..."
+
+#: smb4k/smb4kmainwindow.cpp:890
+msgid "Searching..."
+msgstr "Söker..."
+
+#: smb4k/smb4kmainwindow.cpp:896
+msgid "Done."
+msgstr "Klar."
+
+#: smb4k/smb4kmainwindow.cpp:916
+msgid "Wallet is in use"
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:937
+msgid "Wallet support is temporarily disabled"
+msgstr ""
+
+#: smb4k/main.cpp:51
+msgid "The advanced network neighborhood browser for KDE."
+msgstr ""
+
+#: smb4k/main.cpp:54
+#, fuzzy
+msgid ""
+"(c) 2003-2008, Alexander Reinholdt\n"
+"(c) 2004-2007, Massimo Callegari\n"
+"(c) 2004, Franck Babin"
+msgstr ""
+"(c) 2003-2008, Alexander Reinholdt\n"
+"(c) 2004-2008, Massimo Callegari\n"
+"(c) 2004, Franck Babin"
+
+#: smb4k/main.cpp:72
+msgid "Alexander Reinholdt"
+msgstr ""
+
+#: smb4k/main.cpp:73 smb4k/main.cpp:76
+msgid "Developer"
+msgstr "Utvecklare"
+
+#: smb4k/main.cpp:75
+msgid "Massimo Callegari"
+msgstr ""
+
+#: smb4k/main.cpp:80
+msgid "Leopold Palomo Avellaneda"
+msgstr ""
+
+#: smb4k/main.cpp:81
+msgid "Catalan translation"
+msgstr "Katalansk översättning"
+
+#: smb4k/main.cpp:83
+msgid "Radoslaw Zawartko"
+msgstr ""
+
+#: smb4k/main.cpp:84 smb4k/main.cpp:159
+msgid "Polish translation"
+msgstr "Polsk översättning"
+
+#: smb4k/main.cpp:86
+msgid "Nick Chen"
+msgstr ""
+
+#: smb4k/main.cpp:87
+msgid "Chinese Simplified translation"
+msgstr "Kinesisk förenklad översättning"
+
+#: smb4k/main.cpp:89
+msgid "Stanislav Yudin"
+msgstr ""
+
+#: smb4k/main.cpp:90
+msgid "Russian translation"
+msgstr "Rysk översättning"
+
+#: smb4k/main.cpp:92
+msgid "Marc Hansen"
+msgstr ""
+
+#: smb4k/main.cpp:93
+msgid "Swedish translation and intensive testing"
+msgstr "Svensk översättning och test"
+
+#: smb4k/main.cpp:95
+msgid "Giovanni Degani"
+msgstr ""
+
+#: smb4k/main.cpp:96 smb4k/main.cpp:147
+msgid "Brazilian Portuguese translation"
+msgstr "Brasiliansk portugisisk översättning"
+
+#: smb4k/main.cpp:98
+msgid "Ivan Petrouchtchak"
+msgstr ""
+
+#: smb4k/main.cpp:99
+msgid "Ukrainian translation"
+msgstr "Ukrainsk översättning"
+
+#: smb4k/main.cpp:101
+msgid "Karoly Barcza"
+msgstr ""
+
+#: smb4k/main.cpp:102
+msgid "Hungarian translation"
+msgstr "Ungersk översättning"
+
+#: smb4k/main.cpp:104
+msgid "Quique"
+msgstr ""
+
+#: smb4k/main.cpp:105 smb4k/main.cpp:129
+msgid "Spanish translation"
+msgstr "Spansk översättning"
+
+#: smb4k/main.cpp:107
+msgid "Michal Šulek"
+msgstr ""
+
+#: smb4k/main.cpp:108
+msgid "Slovak translation"
+msgstr "Slovakisk översättning"
+
+#: smb4k/main.cpp:110
+msgid "Nicolas Ternisien"
+msgstr ""
+
+#: smb4k/main.cpp:111
+msgid "French translation"
+msgstr "Fransk översättning"
+
+#: smb4k/main.cpp:113
+msgid "Toyohiro Asukai"
+msgstr ""
+
+#: smb4k/main.cpp:114
+msgid "Japanese translation"
+msgstr "Japansk översättning"
+
+#: smb4k/main.cpp:116
+msgid "Atanas Mavrov"
+msgstr ""
+
+#: smb4k/main.cpp:117
+msgid "Bulgarian translation"
+msgstr "Bulgarisk översättning"
+
+#: smb4k/main.cpp:119
+msgid "Isidoro Russo"
+msgstr ""
+
+#: smb4k/main.cpp:120
+msgid "Italian translation"
+msgstr "Italiensk översättning"
+
+#: smb4k/main.cpp:122
+msgid "Nils Kristian Tomren"
+msgstr ""
+
+#: smb4k/main.cpp:123
+msgid "Norwegian translations"
+msgstr "Norsk översättning"
+
+#: smb4k/main.cpp:125
+msgid "Alois Nešpor"
+msgstr ""
+
+#: smb4k/main.cpp:126
+msgid "Czech translation"
+msgstr "Czech översättning"
+
+#: smb4k/main.cpp:128
+msgid "Martín Carr"
+msgstr ""
+
+#: smb4k/main.cpp:131
+msgid "Görkem Çetin"
+msgstr ""
+
+#: smb4k/main.cpp:132 smb4k/main.cpp:150
+msgid "Turkish translation"
+msgstr "Turkisk översättning"
+
+#: smb4k/main.cpp:134
+msgid "Jack Liu"
+msgstr ""
+
+#: smb4k/main.cpp:135 smb4k/main.cpp:153
+msgid "Chinese Traditional translation"
+msgstr "Kinesisk traditionell översättning"
+
+#: smb4k/main.cpp:137
+msgid "Arnar Leósson"
+msgstr ""
+
+#: smb4k/main.cpp:138
+msgid "Icelandic translation"
+msgstr "Isländska översättning"
+
+#: smb4k/main.cpp:140
+msgid "Michael Brinkloev"
+msgstr ""
+
+#: smb4k/main.cpp:141
+msgid "Danish translation"
+msgstr "Dansk översättning"
+
+#: smb4k/main.cpp:143
+msgid "Joop Beris"
+msgstr ""
+
+#: smb4k/main.cpp:144
+msgid "Dutch translation"
+msgstr "Hollöndsk översättning"
+
+#: smb4k/main.cpp:146
+msgid "Lamarque V. Souza"
+msgstr ""
+
+#: smb4k/main.cpp:149
+msgid "Serdar Soytetir"
+msgstr ""
+
+#: smb4k/main.cpp:152
+msgid "Wei-Lun Chao"
+msgstr ""
+
+#: smb4k/main.cpp:155
+msgid "Rashid N. Achilov"
+msgstr ""
+
+#: smb4k/main.cpp:156
+msgid "Testing of Smb4K under FreeBSD"
+msgstr "Test av Smb4k med FreeBSD"
+
+#: smb4k/main.cpp:158
+msgid "Jerzy Trzeciak"
+msgstr ""
+
+#: smb4k/main.cpp:198
+#, fuzzy
+msgid ""
+"<qt><p>Smb4K now uses a different configuration system. Thus, your old "
+"settings are obsolete and you have to reconfigure the application.</p><p>To "
+"assure a clean transition, the current configuration file will be removed.</"
+"p></qt>"
+msgstr ""
+"Smb4K använder nu ett annat konfigurationsätt. Därför är dina gamla "
+"inställningar obrukbara och du måste ställa in programmet på nytt.\n"
+"För att säkerställa en ren överflyttning, kommer nuvarande "
+"konfigurationsfile att raderas."
+
+#: smb4k/main.cpp:221
+msgid ""
+"<qt>Support for the program 'super' has been terminated. You have to "
+"reconfigure Smb4K.</qt>"
+msgstr ""
+
+#: smb4k/sharesview/smb4kshareslistview.cpp:66
+#: smb4k/configdlg/smb4ksambaoptions.cpp:676
+msgid "Item"
+msgstr "punkt"
+
+#: smb4k/sharesview/smb4kshareslistview.cpp:68
+msgid "Login"
+msgstr "Användarnamn"
+
+#: smb4k/sharesview/smb4kshareslistview.cpp:70
+msgid "File System"
+msgstr "Filsystem"
+
+#: smb4k/sharesview/smb4kshareslistview.cpp:71
+msgid "Owner"
+msgstr "Ägare"
+
+#: smb4k/sharesview/smb4kshareslistview.cpp:72
+msgid "Free"
+msgstr "Ledig"
+
+#: smb4k/sharesview/smb4kshareslistview.cpp:73
+msgid "Used"
+msgstr "Använt"
+
+#: smb4k/sharesview/smb4kshareslistview.cpp:74
+msgid "Total"
+msgstr "Totalt"
+
+#: smb4k/sharesview/smb4kshareslistview.cpp:75
+msgid "Usage"
+msgstr "Användning:"
+
+#: smb4k/sharesview/smb4ksharesviewtooltip.cpp:118
+#, fuzzy
+msgid "Mount point:"
+msgstr "Monteringspunkt:"
+
+#: smb4k/sharesview/smb4ksharesviewtooltip.cpp:125
+#, fuzzy
+msgid "Owner:"
+msgstr "Ägare"
+
+#: smb4k/sharesview/smb4ksharesviewtooltip.cpp:132
+#, fuzzy
+msgid "Login:"
+msgstr "Användarnamn"
+
+#: smb4k/sharesview/smb4ksharesviewtooltip.cpp:144
+#, fuzzy
+msgid "File system:"
+msgstr "Filsystem"
+
+#: smb4k/sharesview/smb4ksharesviewtooltip.cpp:162
+msgid "Free:"
+msgstr "Ledig:"
+
+#: smb4k/sharesview/smb4ksharesviewtooltip.cpp:168
+msgid "Used:"
+msgstr "Använt:"
+
+#: smb4k/sharesview/smb4ksharesviewtooltip.cpp:174
+msgid "Total:"
+msgstr "Totalt:"
+
+#: smb4k/sharesview/smb4ksharesviewtooltip.cpp:181
+msgid "Usage:"
+msgstr "Användning:"
+
+#: smb4k/sharesview/smb4ksharesviewtooltip.cpp:189
+#: smb4k/sharesview/smb4ksharesviewtooltip.cpp:349
+msgid "This share is inaccessible."
+msgstr "Denna resurs är inte tillgänglig."
+
+#: smb4k/sharesview/smb4ksharesview_part.cpp:332
+#: smb4k/sharesview/smb4ksharesview_part.cpp:602
+#: smb4k/sharesview/smb4ksharesview_part.cpp:623
+#: smb4k/configdlg/smb4kconfigdialog.cpp:145
+msgid "Shares"
+msgstr "Utdelade resurser"
+
+#: smb4k/sharesview/smb4ksharesview_part.cpp:484
+#, fuzzy
+msgid "Smb4KSharesViewPart"
+msgstr "Smb4KSharesListViewPart"
+
+#: smb4k/sharesview/smb4ksharesview_part.cpp:486
+msgid "The shares view KPart of Smb4K"
+msgstr ""
+
+#: smb4k/configdlg/smb4kauthoptions.cpp:52
+msgid "Password Storage"
+msgstr "Lösenords förvaring"
+
+#: smb4k/configdlg/smb4kauthoptions.cpp:69
+msgid "Default Login"
+msgstr "Standardlogin"
+
+#: smb4k/configdlg/smb4kauthoptions.cpp:84
+#, fuzzy
+msgid "This user name is used by default to authenticate to a remote server."
+msgstr ""
+"Detta användarnamn används som standard för autentisiering mot fjärrserver"
+
+#: smb4k/configdlg/smb4kauthoptions.cpp:92
+msgid ""
+"This password is used by default to authenticate to a remote server. It may "
+"be empty."
+msgstr ""
+"Detta lösenord används som standard för autentisiering mot fjärrserver. "
+"Inget lösenord är tillåtet."
+
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:67
+msgid "System Tray"
+msgstr "Systembrickan"
+
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:84
+#, fuzzy
+msgid "Main Window & System Tray"
+msgstr "Huvudfönster && systembricka"
+
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:96
+msgid "Remote Shares"
+msgstr "Fjärr kataloger"
+
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:123
+msgid "Columns"
+msgstr "Kolumner"
+
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:145
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:266
+msgid "Tooltips"
+msgstr "Verktygstips"
+
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:175
+#, fuzzy
+msgid "View"
+msgstr "Visa lista"
+
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:195
+msgid "Settings for the list view:"
+msgstr ""
+
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:296
+#, fuzzy
+msgid "Hidden Files && Directories"
+msgstr "Dolda filer och kataloger"
+
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:312
+msgid "Preview Dialog"
+msgstr "Förhandsgranskningsdialog"
+
+#: smb4k/configdlg/smb4knetworkoptions.cpp:54
+msgid "Browse List"
+msgstr "Bläddra i lista"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:143
+msgid "User Interface"
+msgstr "Användargränssnitt"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:147
+msgid "Samba"
+msgstr "Samba"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:149
+msgid "Super User"
+msgstr "Administratör"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:342
+#, fuzzy
+msgid "[Network] The custom master browser has not been entered."
+msgstr "[Nätverk] Anpassad master browser har inte angivits.\n"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:357
+#, fuzzy
+msgid "[Network] The broadcast areas have not been entered."
+msgstr "[Nätverk] Broadcast område har inte angivits.\n"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:368
+#, fuzzy
+msgid "[Shares] The mount prefix is empty."
+msgstr "[Utdelade resurser] Monteringsprefix har inte angivits.\n"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:383
+#, fuzzy
+msgid "[Authentication] The default user name has not been entered."
+msgstr "[Autentisering] Standardanvändare har inte angivits.\n"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:394
+#, fuzzy
+msgid "[Samba] The file mask is empty."
+msgstr "[Samba] Filmask har inte angivits.\n"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:405
+#, fuzzy
+msgid "[Samba] The directory mask is empty."
+msgstr "[Samba] Katalogmask har inte angivits.\n"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:416
+#, fuzzy
+msgid "[Synchronization] The rsync prefix is empty."
+msgstr "[Synkronisering] Rsync prefix har inte angivits.\n"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:429
+#, fuzzy
+msgid ""
+"[Synchronization] The directory where partially transferred files should be "
+"stored is empty."
+msgstr "[Synkronisering] Katalogen för delvis överflyttade filer är tom.\n"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:442
+#, fuzzy
+msgid "[Synchronization] The exclude patterns have not been entered."
+msgstr "[Synkronisering] Undantagsmönster har inte angivits.\n"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:455
+#, fuzzy
+msgid "[Synchronization] The path of the exclude file is empty."
+msgstr "[Synkronisering] Sökvägen till filen med undantag har inte angivits.\n"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:468
+#, fuzzy
+msgid "[Synchronization] The include patterns have not been entered."
+msgstr "[Synkronisering] Ingående mönster har inte angivits.\n"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:481
+#, fuzzy
+msgid "[Synchronization] The path of the include file is empty."
+msgstr "[Synkronisering] Sökvägen till filen med tillägg har inte angivits.\n"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:500
+#, fuzzy
+msgid "[Synchronization] The backup suffix has not been defined."
+msgstr ""
+"[Synkronisering] Ändelse för säkerhetskopiering har inte definierats.\n"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:513
+#, fuzzy
+msgid "[Synchronization] The backup directory is empty."
+msgstr "[Synkronisering] Katalogen för säkerhetskopiering är tom.\n"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:521
+#, fuzzy, kde-format
+msgid ""
+"<qt>The configuration could not be written, because one setting is "
+"incomplete:<ul>%1</ul>Please correct this issue.</qt>"
+msgstr ""
+"Konfigurationen kunne inte sparas då en inställning är ofullständig:\n"
+"%1 Rätta vänligen felet."
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:525
+#, fuzzy, kde-format
+msgid ""
+"<qt>The configuration could not be written, because %1 settings are "
+"incomplete:<ul>%2</ul>Please correct these issues.</qt>"
+msgstr ""
+"Konfigurationen kunne inte sparas då %1 inställningar är ofullständiga:\n"
+"%1 Rätta vänligen felen."
+
+#: smb4k/configdlg/smb4ksuperuseroptions.cpp:52
+msgid "Actions"
+msgstr "Händelser"
+
+#: smb4k/configdlg/smb4ksuperuseroptions.cpp:73
+msgid "Remove Entries"
+msgstr "Radera text"
+
+#: smb4k/configdlg/smb4ksuperuseroptions.cpp:74
+msgid "Remove entries from the configuration file"
+msgstr "Ta bort text från konfigurationsfilen"
+
+#: smb4k/configdlg/smb4ksuperuseroptions.cpp:75
+msgid ""
+"Depending on your choice under \"Programs\", all entries that were written "
+"by Smb4K will be removed either from /etc/super.tab or /etc/sudoers. "
+"Additionally, all your choices under \"Actions\" will be cleared."
+msgstr ""
+"Beroende på ditt val under \"Program\" kommer allt som Smb4k har skrivit i /"
+"etc/super.tab eller /etc/sudoers att tas bort. Alla dina val under \"Actions"
+"\" kommer också att rensas."
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:58
+#, fuzzy
+msgid "Default Destination"
+msgstr "Standardlogin"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:74
+#: smb4k/configdlg/smb4krsyncoptions.cpp:337
+#: smb4k/configdlg/smb4krsyncoptions.cpp:432
+msgid "General"
+msgstr "Allmänt"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:121
+msgid "Links"
+msgstr "Länkar"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:158
+msgid "File Permissions, etc."
+msgstr "Filrättigheter, etc."
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:202
+msgid "Copying"
+msgstr "Kopiera"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:214
+msgid "File Deletion"
+msgstr "Radera filer"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:261
+msgid "Restrictions"
+msgstr "Begränsningar"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:277
+msgid "File Transfer"
+msgstr "Filöverföring"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:325
+#, fuzzy
+msgid "File Deletion & Transfer"
+msgstr "Filborttagning && överföring"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:387
+msgid "Filter Rules"
+msgstr "Filterregler"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:398
+msgid "Special filter rules:"
+msgstr "Speciella filterregler"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:420
+msgid "Filtering"
+msgstr "Filtrera"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:469
+msgid "Backup"
+msgstr "Säkerhetskopiering"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:500
+msgid "Checksums"
+msgstr "Checksummor"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:536
+msgid "Advanced"
+msgstr "Advancerad"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:77
+msgid "General Options"
+msgstr "Allmänna inställningar"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:116
+#, fuzzy
+msgid "Remote Ports"
+msgstr "Fjärr kataloger"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:154
+#, fuzzy
+msgid "Signing State"
+msgstr "Status på signering"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:183
+msgid "General Settings"
+msgstr "Allmänt inställningar"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:195
+#, fuzzy
+msgid "Common Options"
+msgstr "Anpassade inställningar"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:215
+msgid "Choose a different user"
+msgstr ""
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:257
+msgid "Choose a different group"
+msgstr ""
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:467
+#, fuzzy
+msgid "Advanced Options"
+msgstr "Avancerade CIFS inställningar"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:531
+msgid ""
+"<qt>If you experience problems due to insufficient privileges when mounting "
+"shares, you should enable the appropriate settings in the <b>Super User</b> "
+"configuration page.</qt>"
+msgstr ""
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:553
+#, fuzzy
+msgid "Mounting"
+msgstr "&Montera"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:565
+msgid "net"
+msgstr ""
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:588
+#, fuzzy
+msgid "smbclient"
+msgstr "Använd smbclient"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:604
+msgid " Bytes"
+msgstr " Bytes"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:612
+msgid "nmblookup"
+msgstr ""
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:632
+msgid "smbtree"
+msgstr ""
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:651
+#, fuzzy
+msgid "Client Programs"
+msgstr "Program"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:677
+#, fuzzy
+msgid "Protocol"
+msgstr "Protokoll"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:679
+msgid "Write Access"
+msgstr "Skrivrättighet"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:681
+msgid "Kerberos"
+msgstr "Kerberos"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:682
+msgid "UID"
+msgstr "UID"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:683
+msgid "GID"
+msgstr "GID"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:684
+msgid "Port"
+msgstr "Port"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:694
+#, fuzzy
+msgid "Remove"
+msgstr "Radera allt"
+
+#: smb4k/configdlg/smb4kshareoptions.cpp:53
+msgid "Directories"
+msgstr "Kataloger"
+
+#: smb4k/configdlg/smb4kshareoptions.cpp:74
+#, fuzzy
+msgid "Mounting && Unmounting"
+msgstr "Montera och avmontera"
+
+#: smb4k/configdlg/smb4kshareoptions.cpp:97
+msgid "Checks"
+msgstr "Kontroller"
+
+#: utilities/smb4k_sudowriter.cpp:58
+msgid "This program writes to the sudoers file."
+msgstr ""
+
+#: utilities/smb4k_sudowriter.cpp:61
+msgid "(c) 2008, Alexander Reinholdt"
+msgstr ""
+
+#: utilities/smb4k_sudowriter.cpp:306
+msgid "smb4k_sudowriter"
+msgstr ""
+
+#: utilities/smb4k_sudowriter.cpp:319
+msgid "Adds an user to the sudoers file"
+msgstr ""
+
+#: utilities/smb4k_sudowriter.cpp:322
+#, fuzzy
+msgid "Removes an user from the sudoers file"
+msgstr "Ta bort text från konfigurationsfilen"
+
+#: utilities/smb4k_sudowriter.cpp:338
+#, fuzzy
+msgid "The lock file could not be created."
+msgstr "Filen %1 kann inte läst."
+
+#: utilities/smb4k_sudowriter.cpp:343
+msgid "Another user is currently editing the sudoers file."
+msgstr ""
+
+#: utilities/smb4k_sudowriter.cpp:353 utilities/smb4k_sudowriter.cpp:383
+#: utilities/smb4k_sudowriter.cpp:398 utilities/smb4k_sudowriter.cpp:429
+#: utilities/smb4k_sudowriter.cpp:442 utilities/smb4k_sudowriter.cpp:572
+#: utilities/smb4k_sudowriter.cpp:668
+#, fuzzy
+msgid "Aborting."
+msgstr "&Avbryt"
+
+#: utilities/smb4k_sudowriter.cpp:370
+msgid "No arguments given."
+msgstr ""
+
+#: utilities/smb4k_sudowriter.cpp:382
+#, fuzzy
+msgid "An invalid user name has been provided."
+msgstr "[Autentisering] Standardanvändare har inte angivits.\n"
+
+#: utilities/smb4k_sudowriter.cpp:397
+#, fuzzy
+msgid "The sudoers file was not found."
+msgstr "Filen %1 kan inte hittas."
+
+#: utilities/smb4k_sudowriter.cpp:414
+msgid "The sudoers file is irregular."
+msgstr ""
+
+#: utilities/smb4k_sudowriter.cpp:419
+msgid "Cannot access sudoers file."
+msgstr ""
+
+#: utilities/smb4k_sudowriter.cpp:441
+#, fuzzy
+msgid "One or more utility programs could not be found."
+msgstr "Katalogen \"%1\" kan inte hittas."
+
+#: utilities/smb4k_sudowriter.cpp:571 utilities/smb4k_sudowriter.cpp:667
+msgid "The Smb4K section does not conform with the required format."
+msgstr ""
+
+#~ msgid ""
+#~ "_: NAME OF TRANSLATORS\n"
+#~ "Your names"
+#~ msgstr ""
+#~ "_:Översättare \n"
+#~ "Leslie JensenMarc Hansen"
+
+#~ msgid ""
+#~ "_: EMAIL OF TRANSLATORS\n"
+#~ "Your emails"
+#~ msgstr ""
+#~ "_:Översättarens mailadress:\n"
+#~ "lesjen@mail.berlios.de"
+
+#~ msgid "Network Browser"
+#~ msgstr "Nätverksbläddrare"
+
+#~ msgid "Shares Vie&w"
+#~ msgstr "Visa &utdelade resurser"
+
+#~ msgid "List Vie&w"
+#~ msgstr "&Visa fillistning"
+
+#~ msgid "Jump to shares view"
+#~ msgstr "Utdelade resurser"
+
+#~ msgid "Jump to network browser"
+#~ msgstr "Nätverksbläddrare"
+
+#~ msgid "Jump to search dialog"
+#~ msgstr "Sökdialog"
+
+#~ msgid "Docking in System Tray"
+#~ msgstr "Docka i systembrickan"
+
+#~ msgid "Exiting..."
+#~ msgstr "Avslutar..."
+
+#~ msgid "Querying current master browser..."
+#~ msgstr "Fråga nuvarande masterbrowser..."
+
+#~ msgid "Querying master browser %1..."
+#~ msgstr "Fråga masterbrowser %1..."
+
+#~ msgid "Scanning broadcast areas..."
+#~ msgstr "Läser broadcastadress:"
+
+#~ msgid "Opening workgroup..."
+#~ msgstr "Öppnar arbetsgrupp..."
+
+#~ msgid "Retrieving list of shares..."
+#~ msgstr "Tar emot lista på utdelade resurser..."
+
+#~ msgid "Printing file..."
+#~ msgstr "Skriver ut filen"
+
+#~ msgid "Use the following program to gain super user privileges:"
+#~ msgstr "Använd följande program för att få administratörsrättigheter:"
+
+#, fuzzy
+#~ msgid ""
+#~ "NOTE: You might need to enable support for either \"super\" or \"sudo\" "
+#~ "in the Super User page."
+#~ msgstr ""
+#~ "OBS: Om du använder CIFS filsystemed, du behöver <i>super<i> eller "
+#~ "<i>sudo<i> i filen \"super.tab\"."
+
+#~ msgid "User and Group"
+#~ msgstr "Användare och grupp"
+
+#~ msgid "Charset and Codepage"
+#~ msgstr "Teckenuppsättning och landsinställning."
+
+#~ msgid "Permissions"
+#~ msgstr "Rättigheter"
+
+#~ msgid "Advanced SMBFS Options"
+#~ msgstr "Avancerade SMBFS inställningar"
+
+#, fuzzy
+#~ msgid "Use Unicode when communicating with the server"
+#~ msgstr "Använd unicode vid kommunikation med servern"
+
+#~ msgid "Use large file system support"
+#~ msgstr "Använd stöd för stora filsystemer"
+
+#~ msgid "Caching time of directory listings:"
+#~ msgstr "Cachetid för listning av kataloger:"
+
+#~ msgid "Kerberos:"
+#~ msgstr "Kerberos:"
+
+#~ msgid "Port:"
+#~ msgstr "Port:"
+
+#~ msgid "Custom"
+#~ msgstr "Anpassat"
+
+#~ msgid "Rsync prefix:"
+#~ msgstr "Rsync prefix:"
+
+#~ msgid "Recurse into directories"
+#~ msgstr "Läs neråt i kataloger"
+
+#~ msgid "Skip files that are newer in target directory"
+#~ msgstr "Hoppa över nyare filer i målkatalogen"
+
+#~ msgid ""
+#~ "The rules defined below will be added to the \"rsync\" command as they "
+#~ "are. Thus, you have to start with the --filter=... argument."
+#~ msgstr ""
+#~ "Reglerna som är definierade nedan läggs till \"rsync\" kommandot som dem "
+#~ "är. Men, du måste börja med --filter=... argumentet"
+
+#~ msgid ""
+#~ "Smb4K uses \"nmblookup\" by default to search for remote hosts. This "
+#~ "method is very reliable but fails sometimes if your network neighborhood "
+#~ "is configured uncommonly. In this case you should try to use \"smbclient"
+#~ "\"."
+#~ msgstr ""
+#~ "Sm4k använder <i> nmblookup </i> som grundinställing för att söka efter "
+#~ "fjärrvärdar. Denna metod är mycket tillförlitlig, men misslyckas ibland "
+#~ "om dina nätverksplatser är konfiguerat på ett ovanligt sätt.Försök i så "
+#~ "fall att använda <i> smbclient</i>."
+
+#~ msgid "Use nmblookup (recommended)"
+#~ msgstr "Använd nmblookup (rekommenderat)"
+
+#~ msgid "Show IPC$ shares"
+#~ msgstr "Visa IPC$-resurser"
+
+#~ msgid "Show ADMIN$ shares"
+#~ msgstr "Visa ADMIN$-resurser"
+
+#~ msgid "Show IP address"
+#~ msgstr "Visa IP-adress"
+
+#~ msgid "Show tooltip with information about a network item"
+#~ msgstr "Visa verktygstips med information om en nätverkspost"
+
+#~ msgid "Drag and Drop"
+#~ msgstr "Dra och släpp"
+
+#~ msgid "Allow dropping of files and directories onto shares"
+#~ msgstr "Tillåt att släppa filer och kataloger på utdelade resurser"
+
+#~ msgid "Allow dragging of shares"
+#~ msgstr "Tillåt att dra utdelade resurser"
+
+#~ msgid "Show tooltip with information about a share"
+#~ msgstr "Visa verktygstips med information om en utdelat resurs"
+
+#~ msgid "Show owner and group (SMBFS only)"
+#~ msgstr "Visa ägare och grupp (endast SMBFS)"
+
+#~ msgid "Show login (CIFS only)"
+#~ msgstr "Visa login (endast CIFS)"
+
+#~ msgid "[Samba] The UID is empty.\n"
+#~ msgstr "[Samba] UID har inte angivits.\n"
+
+#~ msgid "[Samba] The GID is empty.\n"
+#~ msgstr "[Samba] GID har inte angivits.\n"
+
+#~ msgid "Smb4KConfigDialog"
+#~ msgstr "Smb4Kkonfigurationsdialog"
+
+#~ msgid "If no wallet is used, remember authentication data during run time"
+#~ msgstr ""
+#~ "Om ingen plånbook används, komihåg autentisieringsdata sålänge programmet "
+#~ "körs"
+
+#~ msgid "Use default login"
+#~ msgstr "Använd standardlogin"
+
+#~ msgid "Remove &All"
+#~ msgstr "Radera &allt"
+
+#~ msgid "The search failed."
+#~ msgstr "Sökningen misslyckades."
+
+#~ msgid "Smb4KSharesIconViewPart"
+#~ msgstr "Smb4KSharesIconViewPart"
+
+#~ msgid ""
+#~ "Smb4K is an advanced network neighborhood browser and a\n"
+#~ "front end to the programs of the Samba software suite."
+#~ msgstr ""
+#~ "Smb4K är en avancerad bläddrare för mina nätverksplatser\n"
+#~ "och GUI til programmen från Samba."
+
+#~ msgid "The path to the program \"smb4k_cat\""
+#~ msgstr "Sökvägen till programmet \"smb4k_cat\""
+
+#~ msgid "The path to the program \"smb4k_mv\""
+#~ msgstr "Sökvägen till programmet \"smb4k_mv\""
+
+#~ msgid "The path to the program \"super\" (optional)"
+#~ msgstr "Sökvägen till programmet \"super\" (valfri)"
+
+#~ msgid "Embed application into system tray"
+#~ msgstr "Inbädda programmet i systembrickan"
+
+#~ msgid "How the shares should be displayed"
+#~ msgstr "Hur skall dem utdelade resurserna visas"
+
+#~ msgid ""
+#~ "Choose the kind of view you prefer for displaying the mounted shares. "
+#~ "There is an icon view or a list view available."
+#~ msgstr ""
+#~ "Välj önskad visningssätt för munterade resurser. Det finns ikoner eller "
+#~ "lista att välja från."
+
+#~ msgid "Show the comment of a share"
+#~ msgstr "Visa resursens kommentar"
+
+#~ msgid "Show the mount point of a share instead of its name"
+#~ msgstr "Visa vart resursen är monterat istället för dets namn"
+
+#~ msgid "Allow the dropping of files and directories onto share icons"
+#~ msgstr "Tillåt att släppa filer och kataloger på resursikoner"
+
+#~ msgid ""
+#~ "This setting allows you to drop files or whole directories onto the share "
+#~ "icons, which will cause them to be copied."
+#~ msgstr ""
+#~ "Denna inställning tillåter att släppa filer eller hela kataloger på en "
+#~ "resursikon, vilket medför att dessa kopieras."
+
+#~ msgid "Allow the dragging of share icons"
+#~ msgstr "Tillåt att dra resursikoner"
+
+#~ msgid ""
+#~ "This setting allows you to drag a share item out of Smb4K and onto the "
+#~ "desktop or into a file manager. Only enable it if you think you "
+#~ "absolutely need it and read the handbook before you mark this checkbox."
+#~ msgstr ""
+#~ "Denna inställning tillåter att man drar en utdelad resurs ut ur Smb4K och "
+#~ "ut på skrivbordet eller till en filhanterare. Aktivera endast detta om "
+#~ "det är absolut nödvändigt och läs handboken innan detta val markeras."
+
+#~ msgid "Show hidden files and directories when previewing a share"
+#~ msgstr ""
+#~ "Visa dolda filer och kataloger vid förhandsgranskning av en utdelad "
+#~ "resurs."
+
+#~ msgid ""
+#~ "Show the UID and GID that own all files on the mounted file system. At "
+#~ "the moment the column will only contain an entry if the share was mounted "
+#~ "with the SMBFS file system."
+#~ msgstr ""
+#~ "Visa det UID och GID som äger alla filer på det monterade filsystemet. "
+#~ "Just nu innehåller kolumnen endast information om den utdelade resursen "
+#~ "monterades med SMBFS filsystem."
+
+#~ msgid "Method how to retrieve the browse list"
+#~ msgstr "Metod för att hämta in bläddringslistan"
+
+#~ msgid ""
+#~ "Choose the method how to compile the initial browse list. There are four "
+#~ "options available: The first one is the default one and employs "
+#~ "\"nmblookup -M -- -\" to discover all workgroups, domains, and their "
+#~ "master browsers on your network neighborhood. The second one instructs "
+#~ "Smb4K to query the current master browser of your workgroup or domain to "
+#~ "retrieve the browse list. The third is similar to the second one except "
+#~ "that you can define the master browser that should be queried. If you "
+#~ "choose the last option, the provided list of broadcast areas will be "
+#~ "scanned using \"nmblookup -B x.x.x.x -- '*'\"."
+#~ msgstr ""
+#~ "Välj den metod som önskas för att sammanställa en bläddringslista. Det "
+#~ "finns fyra valmöjligheter. Första är standardvalet och den använder "
+#~ "\"nmblookup -M -- -\" för att upptäcka alla arbetsgrupper, domäner och "
+#~ "deras Master Browsers i dina nätverksplatser. Andra valet beordrar Smb4K "
+#~ "att fråga nuvarande Master Browser i arbetsgruppen eller domänen efter "
+#~ "bläddringslistan. Tredje valet liknar det andra på så sätt att här kan "
+#~ "man definiera vilken Master Browser som ska frågas. Om man väljer den "
+#~ "sista valmöjligheten, kommer tillhandahållna listan på broadcast området "
+#~ "att läsas med \"nmblookup -B x.x.x.x -- '*'\"."
+
+#~ msgid "Method for searching for remote hosts"
+#~ msgstr "Metod för att hitta fjärrvärdar"
+
+#~ msgid ""
+#~ "Smb4K is able to search for remote hosts either using nmblookup or "
+#~ "smbclient. The nmblookup method is very reliable and works well. However, "
+#~ "if your network is configured uncommonly and you experience problems when "
+#~ "searching, you should try the smbclient method. But please note that you "
+#~ "lose the ability to search for IP addresses in that case."
+#~ msgstr ""
+#~ "Smb4K kan söka efter fjärrvärdar antigen genom att använda nmblookup "
+#~ "eller smbclient. Nmblookup metoden är mycket tillförlitlig og fungerar "
+#~ "bra. Men, om du har en ovanlig nätverkskonfiguration och du upplever "
+#~ "problem med sökningen, prova då smbclient metoden. Uppmärksamma vänligen "
+#~ "att möjligheten att söka efter IP-adresser i så fall går forlorat."
+
+#~ msgid "The mount prefix"
+#~ msgstr "Monteringsprefix"
+
+#~ msgid "Force the subdirectories created by Smb4K to be lowercase"
+#~ msgstr ""
+#~ "Tvinga namnen på de underkataloger som Smb4K har skapat till gemener."
+
+#~ msgid "Unmount the shares owned by the user on exit"
+#~ msgstr "Avmontera dem utdelade resurserna som ägs av användaren vid avslut"
+
+#~ msgid "Unmount all shares that belong to you when the program exits."
+#~ msgstr "Avmontera alla utdelade resurser som du äger vid avslut."
+
+#~ msgid "Remount shares"
+#~ msgstr "Återmontera utdelade resurser"
+
+#~ msgid "Allow the unmounting of shares owned by other users"
+#~ msgstr "Tillåt avmontering av utdelade resurser, som ägs av andra användare"
+
+#~ msgid "Interval between checks for new and inaccessible shares"
+#~ msgstr "Interval emellan kontroll av nya och oåtkommliga resurser"
+
+#~ msgid "Use a wallet to store authentication data"
+#~ msgstr "Använd en plånbok för att lagra autentisieringsinformation"
+
+#~ msgid "Remember passwords if no wallet is used"
+#~ msgstr "Komm ihåg lösenord om plånboken inte används"
+
+#~ msgid "The NetBIOS name of this computer"
+#~ msgstr "Denna dators NetBIOS namn"
+
+#~ msgid "The name of the workgroup/domain this computer is in"
+#~ msgstr "Namnet på den arbetsgrupp/domän som denna dator är med i."
+
+#~ msgid "The socket options"
+#~ msgstr "Socketinställningar"
+
+#~ msgid "The NetBIOS scope"
+#~ msgstr "NetBIOS omfång"
+
+#~ msgid "The remote SMB port"
+#~ msgstr "SMB fjärr porten"
+
+#~ msgid "Use Kerberos for authentication"
+#~ msgstr "Använd Kerberos för att autentisera"
+
+#~ msgid "Use machine account for login"
+#~ msgstr "Använd systemkontot för inlogning"
+
+#~ msgid "The file system that is used for mounting remote shares"
+#~ msgstr "Filsystem som används för att montera utdelade resurser"
+
+#~ msgid ""
+#~ "This is the file system that will be used to mount the remote shares. The "
+#~ "Common Internet File System (CIFS) is supported by Windows 2000 and above "
+#~ "as well as by Samba. It offers many improvements and advancements "
+#~ "compared to the Server Message Block File System (SMBFS) which is used by "
+#~ "Windows 9x and below."
+#~ msgstr ""
+#~ "Detta är det filsystem som används för att montera utdelade resurser. "
+#~ "Common Internet File System (CIFS) stöds av Windows 2000 och senare "
+#~ "versioner, och av Samba. Det erbjuder många förbättringar och framsteg "
+#~ "jämnfört med Server Message Block File System (SMBFS) som används av "
+#~ "Windows 9x och lägre versioner."
+
+#~ msgid "The charset used by the client"
+#~ msgstr "Teckenuppsättning som klienten använder"
+
+#~ msgid "The codepage used by the server"
+#~ msgstr "Serverns landsinställning"
+
+#~ msgid "The user ID that is to be used for mounting"
+#~ msgstr "Det användar ID som ska användas vid montering"
+
+#~ msgid "The group ID that is to be used for mounting"
+#~ msgstr "Det grupp ID som ska användas vid montering"
+
+#~ msgid "The file mask for a share"
+#~ msgstr "Filmask för en utdelad resurs"
+
+#~ msgid "The directory mask for a share"
+#~ msgstr "Katalogmask för en utdelad resurs"
+
+#~ msgid "The write access granted for the share"
+#~ msgstr "Tilldela skrivrättigheter till resursen"
+
+#~ msgid "Set UID and GID"
+#~ msgstr "Sätt UID och GID"
+
+#~ msgid "Advanced custom options for the CIFS file system"
+#~ msgstr "Advancerade inställningar för CIFS filsystemet"
+
+#~ msgid "Determines how long directory listings are cached"
+#~ msgstr "Bestämmer hur länge kataloglistningar cachas"
+
+#~ msgid ""
+#~ "This setting determines how long a directory listing is cached in "
+#~ "milliseconds. A high value means it takes longer until changes on the "
+#~ "server are noticed on the client side (i.e. your side), but it can also "
+#~ "give you an increase in performance on large directories, especially on "
+#~ "long distances. You need Linux kernel 2.4.2 or later to take advantage of "
+#~ "this setting."
+#~ msgstr ""
+#~ "Denna inställning bestämmer hur länge kataloglistningar cachas i "
+#~ "millisekunder. Ett högt värde innebär att det tar längre tid innan "
+#~ "ändringar på servern uppmärksammas av klientsidan ( ex.vis din sida), men "
+#~ "det kan också ge prestandaförbättringar då det gäller kataloger med "
+#~ "mycket innehåll, speciellt över långa avstånd. Linux kärna 2.4.2 eller "
+#~ "senare behövs för att kunna dra nytta av denna inställning."
+
+#~ msgid "Unicode support"
+#~ msgstr "Stöd för Unicode"
+
+#~ msgid ""
+#~ "Use Unicode when communicating with the server. This will give you better "
+#~ "support for non-ASCII character sets with the SMBFS file system."
+#~ msgstr ""
+#~ "Använd Unicode vid kommunikation med servern. Detta ger bättre stöd för "
+#~ "icke-ASCII teckensnitt när SMBFS filsystemet används."
+
+#~ msgid "Long file support"
+#~ msgstr "Stöd för stora filer"
+
+#~ msgid ""
+#~ "Large file system support (LFS) enables you to read and write files "
+#~ "bigger than 2 GB on shares that were mounted with the SMBFS file system."
+#~ msgstr ""
+#~ "Stöd för stora filer (LFS) möjliggör läsning och skrivning a filer som "
+#~ "överstiger 2Gb på utdelade resurser som monterats med SMBFS filsystem."
+
+#~ msgid "The protocol that is used with the net command"
+#~ msgstr "Använd detta protokoll med kommandot net"
+
+#~ msgid "Name resolve order used by smbclient"
+#~ msgstr "Ordningsföljd som smbclient använder för namnupplösning"
+
+#~ msgid "Transmit/send buffer size used by smbclient"
+#~ msgstr "Överföring/sänd buffer som smbclient använder."
+
+#~ msgid "Set the signing state for smbclient."
+#~ msgstr "Ställ in status på signering för smbclient."
+
+#~ msgid "The broadcast address used by nmblookup"
+#~ msgstr "Broadcast adress som nmblookup använder"
+
+#~ msgid "Use UDP port 137 with nmblookup"
+#~ msgstr "Använd UDP port 137 med nmblookup"
+
+#~ msgid "Prefix for synchronization"
+#~ msgstr "Synkroniseringsprefix"
+
+#~ msgid "Use archive mode"
+#~ msgstr "Använd arkivering"
+
+#~ msgid "Skip files that are newer in the target directory"
+#~ msgstr "Hoppa över filer i målkatalogen som är nyare"
+
+#~ msgid "Don't send implied directories with --relative"
+#~ msgstr "Skicka inte tillhörande kataloger med --relative"
+
+#~ msgid "Preserve owner (super user only)"
+#~ msgstr "Bevara ägaren (Endast administrator)"
+
+#~ msgid "Also delete excluded files from destination directory"
+#~ msgstr "Ta även bort uteslutna filer från målkatalogen"
+
+#~ msgid "Only delete a maximum number of files"
+#~ msgstr "Ta endast bort maximalt antal filer"
+
+#~ msgid "Don't transfer any file smaller than SIZE"
+#~ msgstr "Överför inte filer mindre än SIZE"
+
+#~ msgid "The directory where to put a partially transferred file into."
+#~ msgstr "Katalogen där delvis överförda filer sparas."
+
+#, fuzzy
+#~ msgid "The program that should be used to gain super user privileges"
+#~ msgstr "Använd följande Program, att få \"super användare\" privileges:"
+
+#, fuzzy
+#~ msgid "Use super user privileges to unmount inaccessible shares"
+#~ msgstr ""
+#~ "Använd superanvändareprivilegier för att montera och avmontera kataloger"
+
+#, fuzzy
+#~ msgid "Buffer size exceeded"
+#~ msgstr "Buffertstorlek:"
+
+#, fuzzy
+#~ msgid ""
+#~ "The browse list could not be retrieved.\n"
+#~ "Read the error message under \"Details\" to find out more."
+#~ msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#, fuzzy
+#~ msgid ""
+#~ "Some file permissions could not be determined.\n"
+#~ "Read the error message under \"Details\" to find out more."
+#~ msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#, fuzzy
+#~ msgid ""
+#~ "The file \"%1\" could not be read.\n"
+#~ "Read the error message under \"Details\" to find out more."
+#~ msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#, fuzzy
+#~ msgid ""
+#~ "The file \"%1\" is currently being edited by user %2. To avoid any "
+#~ "problems, access to this file is denied at the moment. Please try again "
+#~ "later."
+#~ msgstr ""
+#~ "En annan användare (%2) öppnade just systemfilerna %1. Försök igen senare."
+
+#, fuzzy
+#~ msgid "The file \"%1\" could not be written."
+#~ msgstr "Filen %1 kann inte läst."
+
+#, fuzzy
+#~ msgid ""
+#~ "IP addresses are not supported with this search method. Please choose "
+#~ "\"Use nmblookup\" in the configuration dialog and try again."
+#~ msgstr ""
+#~ "Sökmetoden (smbclient) som du valde kan inte hantera IP-adresserna "
+#~ "korrekt. Välj \"Använd nmblookup\" under konfiguration dialog och försök "
+#~ "igen."
+
+#, fuzzy
+#~ msgid ""
+#~ "The temporary file \"%1\" could not be created.\n"
+#~ "Read the error message under \"Details\" to find out more."
+#~ msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#~ msgid "The file \"%1\" could not be closed."
+#~ msgstr "Filen \"%1\" kan inte stängas."
+
+#, fuzzy
+#~ msgid ""
+#~ "The file \"%1\" could not be closed.\n"
+#~ "Read the error message under \"Details\" to find out more."
+#~ msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#, fuzzy
+#~ msgid "The list of supplementary group IDs could not be determined."
+#~ msgstr "Hårtdisk usage kann inte hittas."
+
+#, fuzzy
+#~ msgid ""
+#~ "The list of supplementary group IDs could not be determined.\n"
+#~ "Read the error message under \"Details\" to find out more."
+#~ msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#, fuzzy
+#~ msgid ""
+#~ "Up to KDE 3.3.x, KIO and Konqueror cannot handle CIFS shares. Konqueror "
+#~ "will hang if you try to access it.\n"
+#~ "Do you want to continue?"
+#~ msgstr ""
+#~ "Minst till version 3.3.2 från KDE och KIO. Det är inte mögligt att "
+#~ "hantera CIFS-Kataloger. Konqueror misslyckades, om du använder det.\n"
+#~ " Vill du fortsätter?"

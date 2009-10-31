@@ -1,0 +1,4976 @@
+# translation of it.po to
+# Isidoro Russo <risidoro@despammed.com>, 2004.
+msgid ""
+msgstr ""
+"Project-Id-Version: it\n"
+"Report-Msgid-Bugs-To: http://developer.berlios.de/bugs/?group_id=769\n"
+"POT-Creation-Date: 2008-08-03 11:30+0200\n"
+"PO-Revision-Date: 2007-12-15 19:18+0100\n"
+"Last-Translator: dragon\n"
+"Language-Team:  <it@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: core/smb4khomesshareshandler.cpp:113
+msgid "Specify User"
+msgstr "Specificare un utente"
+
+#: core/smb4khomesshareshandler.cpp:116
+msgid "Clear List"
+msgstr "Cancella"
+
+#: core/smb4khomesshareshandler.cpp:132
+msgid "Please specify a user name."
+msgstr "Per favore, specificare un nome utente."
+
+#: core/smb4khomesshareshandler.cpp:134 core/smb4kpasswordhandler.cpp:431
+#: smb4k/configdlg/smb4kauthoptions.cpp:79
+msgid "User:"
+msgstr "Utente:"
+
+#: core/smb4khomesshareshandler.cpp:359 core/smb4kbookmarkhandler.cpp:346
+#: core/smb4ksambaoptionshandler.cpp:343
+#, kde-format
+msgid "%1 is not a version 1.0 file."
+msgstr ""
+
+#: core/smb4kpasswordhandler.cpp:359
+#: smb4k/configdlg/smb4knetworkoptions.cpp:100
+#: smb4k/configdlg/smb4kconfigdialog.cpp:146
+#: smb4k/configdlg/smb4ksambaoptions.cpp:138
+msgid "Authentication"
+msgstr "Autenticazione"
+
+#: core/smb4kpasswordhandler.cpp:386
+msgid "The access was denied. "
+msgstr "L'accesso è stato negato."
+
+#: core/smb4kpasswordhandler.cpp:391
+msgid "The password is not correct. "
+msgstr "La password non è corretta.\t"
+
+#: core/smb4kpasswordhandler.cpp:396
+msgid "The permission was denied. "
+msgstr "Il permesso è stato negato."
+
+#: core/smb4kpasswordhandler.cpp:401
+msgid "An authentication error occurred. "
+msgstr "Si è verificato un errore di autenticazione."
+
+#: core/smb4kpasswordhandler.cpp:406
+msgid "The logon failed. "
+msgstr "L'accesso non è riuscito."
+
+#: core/smb4kpasswordhandler.cpp:417
+#, kde-format
+msgid "Please enter authentication data for server %1."
+msgstr "Inserire le informazioni di autenticazione per il server %1."
+
+#: core/smb4kpasswordhandler.cpp:421
+#, kde-format
+msgid "Please enter authentication data for share %1."
+msgstr "Inserire le informazioni di autenticazione per la condivisione %1."
+
+#: core/smb4kpasswordhandler.cpp:453 smb4k/configdlg/smb4kauthoptions.cpp:86
+msgid "Password:"
+msgstr "Password:"
+
+#: core/smb4kcoremessage.cpp:65
+#, fuzzy
+msgid ""
+"<qt><p>The list of workgroups and domains could not be retrieved.</"
+"p><p>Detailed information cannot be provided because there was no error "
+"message.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:69
+#, fuzzy
+msgid ""
+"<qt><p>The list of workgroups and domains could not be retrieved.</p><p>Read "
+"the error message under \"Details\" to find out more.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:78
+#, fuzzy
+msgid ""
+"<qt><p>The list of registered IP addresses within the given broadcast areas "
+"could not be retrieved.</p><p>Detailed information cannot be provided "
+"because there was no error message.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:82
+#, fuzzy
+msgid ""
+"<qt><p>The list of registered IP addresses within the given broadcast areas "
+"could not be retrieved.</p><p>Read the error message under \"Details\" to "
+"find out more.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:91
+#, fuzzy
+msgid ""
+"<qt><p>The list of servers could not be retrieved.</p><p>Detailed "
+"information cannot be provided because there was no error message.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:95
+#, fuzzy
+msgid ""
+"<qt><p>The list of servers could not be retrieved.</p><p>Read the error "
+"message under \"Details\" to find out more.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:104
+#, fuzzy
+msgid ""
+"<qt><p>The list of shares could not be retrieved.</p><p>Detailed information "
+"cannot be provided because there was no error message.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:108
+#, fuzzy
+msgid ""
+"<qt><p>The list of shares could not be retrieved.</p><p>Read the error "
+"message under \"Details\" to find out more.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:117
+#, fuzzy
+msgid ""
+"<qt><p>The preview could not be compiled.</p><p>Detailed information cannot "
+"be provided because there was no error message.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:121
+#, fuzzy
+msgid ""
+"<qt><p>The preview could not be compiled.</p><p>Read the error message under "
+"\"Details\" to find out more.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:128
+#, fuzzy
+msgid ""
+"<qt>You are not allowed to unmount this share. It is owned by another user.</"
+"qt>"
+msgstr "Non è consentito smontare questa condivisione."
+
+#: core/smb4kcoremessage.cpp:136
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>The share \"%1\" could not be mounted.</p><p>Detailed information "
+"cannot be provided because there was no error message.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:140
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>The share \"%1\" could not be mounted.</p><p>Read the error message "
+"under \"Details\" to find out more.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:149
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>The share \"%1\" could not be unmounted.</p><p>Detailed information "
+"cannot be provided because there was no error message.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:153
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>The share \"%1\" could not be unmounted.</p><p>Read the error message "
+"under \"Details\" to find out more.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:160
+#, fuzzy, kde-format
+msgid "<qt>The file \"%1\" could not be found.</qt>"
+msgstr "Non è stato possibile trovare il file \"%1\"."
+
+#: core/smb4kcoremessage.cpp:168
+#, fuzzy
+msgid ""
+"<qt><p>The name of your computer could not be determined by using the "
+"gethostname() system call.</p><p>Detailed information cannot be provided "
+"because there was no error message.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:172
+#, fuzzy
+msgid ""
+"<qt><p>The name of your computer could not be determined by using the "
+"gethostname() system call.</p><p>Read the error message under \"Details\" to "
+"find out more.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:179
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>Either your PATH environment variable is not set properly or there "
+"are the following programs missing on your system:</p><p>%1</p><p>Please "
+"correct this and restart Smb4K.</p></qt>"
+msgstr ""
+"La variabile di ambiente PATH non è impostata correttamente o i seguenti "
+"programmi non sono installati nel sistema:\n"
+"%1\n"
+"Per favore, risolvere il problema e riavviare Smb4K."
+
+#: core/smb4kcoremessage.cpp:185
+#, fuzzy, kde-format
+msgid "<qt>The directory \"%1\" could not be created.</qt>"
+msgstr "Non è stato possibile creare la cartella %1."
+
+#: core/smb4kcoremessage.cpp:191
+#, fuzzy
+msgid ""
+"<qt>The share could not be unmounted, because the mount point string was "
+"empty.</qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:197
+#, fuzzy
+msgid "<qt>This feature has not been enabled.</qt>"
+msgstr "Questa funzionalità non è stata attivata."
+
+#: core/smb4kcoremessage.cpp:203
+#, fuzzy
+msgid "<qt>Printers cannot be bookmarked.</qt>"
+msgstr "Le stampanti non possono essere aggiunte ai segnalibri."
+
+#: core/smb4kcoremessage.cpp:211
+#, fuzzy
+msgid ""
+"<qt><p>An error occurred while writing to the sudoers file.</p><p>Detailed "
+"information cannot be provided because there was no error message.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:215
+#, fuzzy
+msgid ""
+"<qt><p>An error occurred while writing to the sudoers file.</p><p>Read the "
+"error message under \"Details\" to find out more.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:224
+#, fuzzy
+msgid ""
+"<qt><p>The list of mounted shares could not be imported.</p><p>Detailed "
+"information cannot be provided because there was no error message.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:228
+#, fuzzy
+msgid ""
+"<qt><p>The list of mounted shares could not be imported.</p><p>Read the "
+"error message under \"Details\" to find out more.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:235
+#, fuzzy, kde-format
+msgid "<qt>The command \"%1\" could not be found.</qt>"
+msgstr "Non è stato possibile trovare il comando %1."
+
+#: core/smb4kcoremessage.cpp:243
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>The file \"%1\" could not be printed.</p></p>Detailed information "
+"cannot be provided because there was no error message.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:247
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>The file \"%1\" could not be printed.</p><p>Read the error message "
+"under \"Details\" to find out more.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:256
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>The temporary directory \"%1\" could not be created.</p><p>Detailed "
+"information cannot be provided because there was no error message.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:260
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>The temporary directory \"%1\" could not be created.</p><p>Read the "
+"error message under \"Details\" to find out more.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:269
+#, fuzzy
+msgid ""
+"<qt></p>The synchronization could not be finished successfully.</"
+"p><p>Detailed information cannot be provided because there was no error "
+"message.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:273
+#, fuzzy
+msgid ""
+"<qt><p>The synchronization could not be finished successfully.</p><p>Read "
+"the error message under \"Details\" to find out more.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:282
+#, fuzzy
+msgid ""
+"<qt><p>The search could not be finished successfully.</p><p>Detailed "
+"information cannot be provided because there was no error message.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:286
+#, fuzzy
+msgid ""
+"<qt><p>The search could not be finished successfully.</p><p>Read the error "
+"message under \"Details\" to find out more.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:295
+#, fuzzy, kde-format
+msgid "<qt>The file \"%1\" could not be opened.</qt>"
+msgstr "Non è stato possibile aprire il file %1."
+
+#: core/smb4kcoremessage.cpp:299
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>The file \"%1\" could not be opened.</p><p>Read the error message "
+"under \"Details\" to find out more.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:306
+#, fuzzy
+msgid ""
+"<qt>The list of arguments for the \"net\" command could not be assembled.</"
+"qt>"
+msgstr "Non è stato possibile determinare l'utilizzazione del disco."
+
+#: core/smb4kcoremessage.cpp:314
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>An error occurred while parsing the XML file \"%1\".</p><p>Detailed "
+"information cannot be provided because there was no error message.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:318
+#, fuzzy, kde-format
+msgid ""
+"<qt><p>An error occurred while parsing the XML file \"%1\".</p><p>Read the "
+"error message under \"Details\" to find out more.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:328
+#, fuzzy
+msgid ""
+"<qt><p>An unknown error occurred.</p><p>Detailed information cannot be "
+"provided because there was no error message.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:332
+#, fuzzy
+msgid ""
+"<qt><p>An unknown error occurred.</p><p>Read the error message under "
+"\"Details\" to find out more.</p></qt>"
+msgstr ""
+"Non è stato possibile smontare questa condivisione, la stringa del punto di "
+"montaggio è vuota."
+
+#: core/smb4kcoremessage.cpp:369
+#, kde-format
+msgid "<qt>The process failed to start (error code: %1).</qt>"
+msgstr ""
+
+#: core/smb4kcoremessage.cpp:375
+#, kde-format
+msgid "<qt>The process crashed (error code: %1).</qt>"
+msgstr ""
+
+#: core/smb4kcoremessage.cpp:381
+#, kde-format
+msgid "<qt>The process timed out (error code: %1).</qt>"
+msgstr ""
+
+#: core/smb4kcoremessage.cpp:387
+#, kde-format
+msgid "<qt>Could not write to the process (error code: %1).</qt>"
+msgstr ""
+
+#: core/smb4kcoremessage.cpp:393
+#, kde-format
+msgid "<qt>Could not read from the process (error code: %1).</qt>"
+msgstr ""
+
+#: core/smb4kcoremessage.cpp:400
+msgid "<qt>The process reported an unknown error.</qt>"
+msgstr ""
+
+#: core/smb4kcoremessage.cpp:410
+msgid "<qt>The process exited unexpectedly.</qt>"
+msgstr ""
+
+#: core/smb4kcoremessage.cpp:480
+#, fuzzy, kde-format
+msgid ""
+"<qt>The mimetype \"%1\" is not supported. Please convert the file to "
+"PostScript or PDF.</qt>"
+msgstr ""
+"Il tipo MIME \"%1\" non è supportato. Per favore, convertire il file in "
+"Postscript o PDF."
+
+#: core/smb4kcoremessage.cpp:486
+#, fuzzy, kde-format
+msgid ""
+"<qt>You previously chose to use \"%1\", but now it is missing on your "
+"system. Smb4K will disable this feature.</qt>"
+msgstr ""
+"E' stato precedentemente scelto di utilizzare il programma %1 ma questo non "
+"risulta installato sul sistema. Smb4K disabiliterà questa funzionalità."
+
+#: core/smb4kcoremessage.cpp:492
+#, kde-format
+msgid ""
+"<qt>The label \"%1\" is used more than once. It will automatically be "
+"renamed for bookmark \"%2\" to avoid confusion.</qt>"
+msgstr ""
+
+#: core/smb4kcoremessage.cpp:498
+#, fuzzy, kde-format
+msgid ""
+"<qt>The wallet \"%1\" could not be opened. KWallet support will be disabled "
+"for this session.</qt>"
+msgstr ""
+"Il portafogli \"%1\" non può essere aperto. Il supporto a KWallet verrà "
+"disabilitato."
+
+#: core/smb4kshare.cpp:250
+msgid "Disk"
+msgstr "Disco"
+
+#: core/smb4kshare.cpp:255 smb4k/dialogs/smb4kprintdialog.cpp:79
+msgid "Printer"
+msgstr "Stampante"
+
+#: core/smb4kmounter.cpp:896 core/smb4kmounter.cpp:961
+#, fuzzy
+msgid "<qt>Do you really want to force the unmounting of this share?</qt>"
+msgstr "Si desidera forzare lo smontaggio della condivisione?"
+
+#: plugin/smb4k_konqplugin.cpp:70
+msgid "Scan Network"
+msgstr "Analizza Rete"
+
+#. i18n: tag text
+#. i18n: file ./smb4k/searchdlg/smb4ksearchdialog_part.rc line 4
+#: plugin/smb4k_konqplugin.cpp:71 rc.cpp:1145
+msgid "Search"
+msgstr "Cerca"
+
+#: plugin/smb4k_konqplugin.cpp:72
+msgid "Configure"
+msgstr ""
+
+#: plugin/smb4k_konqplugin.cpp:122
+msgid "Samba Browser"
+msgstr "Browser Samba"
+
+#: plugin/smb4k_konqplugin.cpp:149
+msgid "Search Dialog"
+msgstr "Finestra di Ricerca"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 15
+#: rc.cpp:3
+msgid "The path to the program \"grep\""
+msgstr "Percorso del programma \"grep\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 20
+#: rc.cpp:7
+msgid "The path to the program \"awk\""
+msgstr "Percorso del programma \"awk\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 25
+#: rc.cpp:11
+msgid "The path to the program \"sed\""
+msgstr "Percorso del programma \"sed\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 30
+#: rc.cpp:15
+msgid "The path to the program \"xargs\""
+msgstr "Percorso del programma \"xargs\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 35
+#: rc.cpp:19
+msgid "The path to the program \"rmdir\""
+msgstr "Percorso del programma \"rmdir\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 40
+#: rc.cpp:23
+msgid "The path to the program \"nmblookup\""
+msgstr "Percorso del programma \"nmblookup\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 45
+#: rc.cpp:27
+msgid "The path to the program \"smbclient\""
+msgstr "Percorso del programma \"smbclient\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 50
+#: rc.cpp:31
+msgid "The path to the program \"smbspool\""
+msgstr "Percorso del programma \"smbspool\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 55
+#: rc.cpp:35
+#, fuzzy
+msgid "The path to the program \"smbtree\""
+msgstr "Percorso del programma \"sed\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 60
+#: rc.cpp:39
+msgid "The path to the program \"net\""
+msgstr "Percorso del programma \"net\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 65
+#: rc.cpp:43
+msgid "The path to the program \"mount.cifs\""
+msgstr "Percorso del programma \"mount.cifs\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 70
+#: rc.cpp:47
+msgid "The path to the program \"umount.cifs\""
+msgstr "Percorso del programma \"umount.cifs\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 75
+#: rc.cpp:51
+msgid "The path to the program \"smbmount\""
+msgstr "Percorso del programma \"smbmount\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 80
+#: rc.cpp:55
+msgid "The path to the program \"smbumount\""
+msgstr "Percorso del programma \"smbumount\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 85
+#: rc.cpp:59
+msgid "The path to the program \"mount\""
+msgstr "Percorso del programma \"mount\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 90
+#: rc.cpp:63
+msgid "The path to the program \"mount_smbfs\" (FreeBSD only)"
+msgstr "Percorso del programma \"mount_smbfs\" (solo FreeBSD)"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 94
+#: rc.cpp:67
+msgid "The path to the program \"smbutil\" (FreeBSD only)"
+msgstr "Percorso del programma \"smbutil\" (solo FreeBSD)"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 99
+#: rc.cpp:71
+msgid "The path to the program \"umount\""
+msgstr "Percorso del programma \"umount\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 104
+#: rc.cpp:75
+msgid "The path to the program \"smb4k_mount\""
+msgstr "Percorso del programma \"smb4k_mount\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 109
+#: rc.cpp:79
+msgid "The path to the program \"smb4k_umount\""
+msgstr "Percorso del programma \"smb4k_umount\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 114
+#: rc.cpp:83
+msgid "The path to the program \"smb4k_kill\""
+msgstr "Percorso del programma \"smb4k_kill\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 119
+#: rc.cpp:87
+#, fuzzy
+msgid "The path to the program \"smb4k_sudowriter\""
+msgstr "Percorso del programma \"smb4k_umount\""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 124
+#: rc.cpp:91
+#, fuzzy
+msgid "The path to the program \"kdesu\" (optional)"
+msgstr "Percorso del programma \"sudo\" (opzionale)"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 129
+#: rc.cpp:95
+msgid "The path to the program \"sudo\" (optional)"
+msgstr "Percorso del programma \"sudo\" (opzionale)"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 134
+#: rc.cpp:99
+msgid "The path to the program \"dvips\" (optional)"
+msgstr "Percorso del programma \"dvips\" (opzionale)"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 139
+#: rc.cpp:103
+msgid "The path to the program \"enscript\" (optional)"
+msgstr "Percorso del programma \"enscript\" (opzionale)"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 144
+#: rc.cpp:107
+msgid "The path to the program \"rsync\" (optional)"
+msgstr "Percorso del programma \"rsync\" (opzionale)"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 149
+#: rc.cpp:111
+msgid "The path to the program \"konsole\" (optional)"
+msgstr "Percorso del programma \"konsole\" (opzionale)"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 159
+#: rc.cpp:115
+msgid "Show custom bookmark label if available"
+msgstr "Mostra etichetta personalizzata del segnalibro se disponibile"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 160
+#: rc.cpp:118
+msgid ""
+"Do not show the name of the share that is represented by the bookmark but "
+"the custom label that was defined in the bookmark editor."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 164
+#: rc.cpp:121
+msgid "Embed application into the system tray"
+msgstr "Includi l'applicazione nella barra di sistema"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 165
+#: rc.cpp:124
+msgid ""
+"Embed the application into the system tray. The system tray widget provides "
+"a popup menu with several commonly used tasks so that you do not need to "
+"bring up the main window everytime. If this setting is chosen you have to "
+"use \"Quit\" from the \"File\" menu or the system tray widget to exit the "
+"application."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 169
+#: rc.cpp:127
+msgid "Start docked"
+msgstr ""
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 170
+#: rc.cpp:130
+msgid ""
+"Start the application docked to the system tray, i.e. only the system tray "
+"widget is shown and the main window is hidden. You can bring the main window "
+"up by clicking on the system tray widget or by choosing \"Restore\" from its "
+"popup menu."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 174
+#: rc.cpp:133
+msgid "Show mounted shares in an icon view"
+msgstr "Mostra le condivisioni montate come icone"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 175
+#: rc.cpp:136
+#, fuzzy
+msgid "The mounted shares will be displayed in an icon view."
+msgstr "Mostra le condivisioni montate come icone"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 179
+#: rc.cpp:139
+msgid "Show mounted shares in a list view"
+msgstr "Mostra le condivisioni montate come elenco"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 180
+#: rc.cpp:142
+#, fuzzy
+msgid "The mounted shares will be displayed in a list view."
+msgstr "Mostra le condivisioni montate come elenco"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 184
+#: rc.cpp:145
+msgid "Show printer shares"
+msgstr "Mostra le stampanti condivise"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 185
+#: rc.cpp:148
+msgid "Printer shares will be displayed in the network browser."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 189
+#: rc.cpp:151
+msgid "Show hidden shares"
+msgstr "Mostra le condivisioni nascoste"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 190
+#: rc.cpp:154
+msgid ""
+"Hidden shares will be displayed in the network browser. Hidden shares are "
+"ending with a $ sign, e.g. Musik$ or IPC$."
+msgstr ""
+"Le condivisioni nascoste verranno visualizzate nel browser di rete. Le "
+"condivisioni nascoste terminano con $, es. Music$ o IPC$"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 194
+#: rc.cpp:157
+msgid "Show hidden IPC$ shares"
+msgstr "Mostra le condivisioni IPC$ nascoste"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 195
+#: rc.cpp:160
+msgid "Hidden IPC$ shares will be displayed in the network browser."
+msgstr ""
+"Le condivisioni IPC$ nascoste verranno visualizzate nel browser di rete"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 199
+#: rc.cpp:163
+msgid "Show hidden ADMIN$ shares"
+msgstr "Mostra le condivisioni ADMIN$ nascoste"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 200
+#: rc.cpp:166
+msgid "Hidden ADMIN$ shares will be displayed in the network browser."
+msgstr ""
+"Le condivisioni ADMIN$ nascoste verranno visualizzate nel browser di rete"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 204
+#: rc.cpp:169
+#, fuzzy
+msgid "Show the type of the share"
+msgstr "Mostra il tipo di condivisione"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 205
+#: rc.cpp:172
+msgid ""
+"The type of a share will be displayed in a separate column in the network "
+"browser. It can either be Disk, Print or IPC."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 209
+#: rc.cpp:175
+#, fuzzy
+msgid "Show the IP address of the server"
+msgstr "Mostra l'indirizzo IP del server"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 210
+#: rc.cpp:178
+msgid ""
+"The IP address of the server will be displayed in a separate column in the "
+"network browser."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 214
+#: rc.cpp:181
+#, fuzzy
+msgid "Show the comment"
+msgstr "Mostra il commento"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 215
+#: rc.cpp:184
+msgid ""
+"The comment describing the server or share will be displayed in a separate "
+"column in the network browser."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 219
+#: rc.cpp:187
+msgid "Show a tooltip with information about the network item"
+msgstr "Mostra i suggerimenti circa gli elementi della rete"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 220
+#: rc.cpp:190
+#, fuzzy
+msgid "The tooltip shows various information about the current network item."
+msgstr "Mostra i suggerimenti circa gli elementi della rete"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 224
+#: rc.cpp:193
+#, fuzzy
+msgid "Show the mount point instead of the share name"
+msgstr "Mostra il punto di montaggio anziché il nome della condivisione"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 225
+#: rc.cpp:196
+msgid ""
+"A share is normally displayed with its name in the shares view. Choosing "
+"this feature will cause the exchange of the share name by the mount point."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 229
+#: rc.cpp:199
+msgid "Show all shares that are mounted on the system"
+msgstr "Mostra tutte le condivisioni montate nel sistema"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 230
+#: rc.cpp:202
+msgid ""
+"You will not only see the shares that were mounted and are owned by you, but "
+"also all other mounts using the SMBFS and CIFS file system that are present "
+"on the system."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 234
+#: rc.cpp:205
+#, fuzzy
+msgid "Show a tooltip with information about the share"
+msgstr "Mostra i suggerimenti circa le condivisioni"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 235
+#: rc.cpp:208
+#, fuzzy
+msgid "The tooltip shows various information about the current share."
+msgstr "Mostra i suggerimenti circa le condivisioni"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 239
+#: rc.cpp:211
+#, fuzzy
+msgid "Show the owner and group"
+msgstr "Mostra utente e gruppo"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 240
+#: rc.cpp:214
+msgid "Show the UID and GID that own all files on the mounted file system."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 244
+#: rc.cpp:217
+#, fuzzy
+msgid "Show the login"
+msgstr "Mostra il commento"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 245
+#: rc.cpp:220
+msgid ""
+"Show the login that was used to authenticate to the server. The column will "
+"only contain an entry if the share was mounted with the CIFS file system."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 249
+#: rc.cpp:223
+#, fuzzy
+msgid "Show the file system"
+msgstr "Mostra file system"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 250
+#: rc.cpp:226
+#, fuzzy
+msgid "Show the file system that was used for mounting the share."
+msgstr "Utilizza il seguente file system per montare le condivisioni remote:"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 254
+#: rc.cpp:229
+#, fuzzy
+msgid "Show the free disk space"
+msgstr "Mostra spazio libero su disco"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 255
+#: rc.cpp:232
+msgid "Show the free disk space that is left on the share."
+msgstr "Mostra lo spazio libero che è rimasto nel disco della condivisione."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 259
+#: rc.cpp:235
+#, fuzzy
+msgid "Show the used disk space"
+msgstr "Mostra spazio libero su disco"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 260
+#: rc.cpp:238
+#, fuzzy
+msgid "Show the disk space that is already used on the share."
+msgstr "Mostra tutte le condivisioni montate nel sistema"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 264
+#: rc.cpp:241
+#, fuzzy
+msgid "Show the total disk space"
+msgstr "Mostra spazio totale sul disco"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 265
+#: rc.cpp:244
+msgid "Show the total disk space of the share."
+msgstr "Mostra spazio totale sul disco della condivisione"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 269
+#: rc.cpp:247
+#, fuzzy
+msgid "Show the disk usage"
+msgstr "Mostra spazio del disco utilizzato"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 270
+#: rc.cpp:250
+msgid "Show the space that is used on the share in percent."
+msgstr ""
+"Mostra lo spazio del disco in percentuale utilizzato nella condivisione"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 274
+#: rc.cpp:253
+msgid "Preview hidden files and directories"
+msgstr "Anteprima di file e directory nascosti"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 275
+#: rc.cpp:256
+msgid ""
+"Display hidden files and directories in the preview dialog. The names of "
+"hidden files and directories are beginning with a period and are usually "
+"needed for very specific purposes (configuration file of an application, "
+"etc.). Since they are not of any importance for your regular work, you "
+"normally do not need to enable this feature."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 284
+#: rc.cpp:259
+msgid "Scan the network neighborhood for available workgroups and domains"
+msgstr "Analizza la rete per gruppi e domini disponibili"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 285
+#: rc.cpp:262
+msgid ""
+"This is the default method to retrieve the initial browse list. It discovers "
+"all workgroups and domains by looking for all known master browsers on your "
+"network neighborhood."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 289
+#: rc.cpp:265
+msgid "Query the current workgroup master browser"
+msgstr "Interroga il master browser del gruppo di lavoro corrente"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 290
+#: rc.cpp:268
+msgid ""
+"This method queries the current master browser of your workgroup or domain "
+"to retrieve the initial browse list."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 294
+#: rc.cpp:271
+#, fuzzy
+msgid "Query this custom master browser:"
+msgstr "Interroga questo master browser:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 295
+#: rc.cpp:274
+#, fuzzy
+msgid ""
+"This method queries a custom master browser to retrieve the initial browse "
+"list."
+msgstr "Esamina la rete e recupera l'elenco degli host"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 299
+#: rc.cpp:277
+msgid "A custom master browser that is to be queried"
+msgstr "Il master browser da interrogare"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 300
+#: rc.cpp:280
+msgid ""
+"Enter the name or IP address of a master browser here that should be queried "
+"to compile the initial browse list."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 304
+#: rc.cpp:283
+#, fuzzy
+msgid "Scan these broadcast areas:"
+msgstr "Interroga indirizzo di broadcast:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 305
+#: rc.cpp:286
+msgid ""
+"This method will scan the given broadcast areas and look for all registered "
+"hosts."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 309
+#: rc.cpp:289
+msgid "A custom list of broadcast addresses"
+msgstr "Una lista personalizzata di indirizzi di broadcast"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 310
+#: rc.cpp:292
+msgid ""
+"Enter a comma-separated list of broadcast addresses here (e.g. "
+"192.168.0.255, 192.168.1.255). It is used to scan for all known hosts in the "
+"respective broadcast areas."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 314
+#: rc.cpp:295
+msgid "The master browsers require authentication to return the browse list"
+msgstr ""
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 315
+#: rc.cpp:298
+msgid ""
+"The master browsers in your network neighborhood require a login and "
+"password to return the browse list. This setting is rarely needed and might "
+"even cause a master browser to return an empty browse list. It will not have "
+"any effect when you let Smb4K scan broadcast areas."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 324
+#: rc.cpp:301
+msgid "Mount prefix:"
+msgstr "Prefisso di montaggio:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 325
+#: rc.cpp:304
+msgid ""
+"This is the prefix where Smb4K will create the mount points and mount the "
+"remote shares."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 329
+#: rc.cpp:307
+msgid "Force generated subdirectories to be lower case"
+msgstr "Forza l'uso di caratteri minuscoli nei nomi delle sottocartelle"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 330
+#: rc.cpp:310
+#, fuzzy
+msgid ""
+"All names of the subdirectories created by Smb4K below the mount prefix will "
+"be lowercase."
+msgstr "Forza l'uso di caratteri minuscoli nei nomi delle sottocartelle"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 334
+#: rc.cpp:313
+#, fuzzy
+msgid "Unmount all personal shares on exit"
+msgstr "Smonta tutte le condivisioni dell'utente %1 quando esci"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 335
+#: rc.cpp:316
+msgid ""
+"Unmount all shares that belong to you when the program exits. Shares that "
+"are owned by other users are ignored."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 339
+#: rc.cpp:319
+msgid "Remount recently used shares on program start"
+msgstr "Monta le condivisioni usate di recente all'avvio"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 340
+#: rc.cpp:322
+msgid ""
+"Remount all your shares that were mounted when you exited the program. If a "
+"remount fails, Smb4K will retry the next time it is started. Shares that "
+"were mounted by other users are ignored."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 344
+#: rc.cpp:325
+msgid "Allow the unmounting of shares that are owned by other users"
+msgstr "Consenti lo smontaggio di condivisioni di altri utenti"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 345
+#: rc.cpp:328
+msgid ""
+"Allow the unmounting of shares that were mounted by other users. In most "
+"cases you need super user privileges for this. Please think before you "
+"enable this option!"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 349
+#: rc.cpp:331
+msgid "Interval between checks:"
+msgstr "Intervallo fra i controlli:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 350
+#: rc.cpp:334
+msgid ""
+"This is the time that elapses until Smb4K checks again for new mounts and "
+"unmounts. The lower limit is 500 ms, the upper one 300000 ms. Please note "
+"that the smaller the interval gets the higher is your system load."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 361
+#: rc.cpp:337
+#, fuzzy
+msgid "Save logins in a wallet"
+msgstr "Salva le informazioni di autenticazione in un portafogli"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 362
+#: rc.cpp:340
+msgid ""
+"Use a wallet to store the authentication data. The login name and the "
+"password name are stored encrypted on your hard drive. If this setting is "
+"disabled, the authentication data is not stored permanently but only "
+"temporarily."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 366
+#: rc.cpp:343
+msgid "Remember logins during program run"
+msgstr ""
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 367
+#: rc.cpp:346
+msgid ""
+"If you decided to store your logins only temporarily, Smb4K will remember "
+"them until the program exits. If you disable this setting, you will have to "
+"provide the authentication data everytime it is needed."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 371
+#: rc.cpp:349
+#, fuzzy
+msgid "Use a default login"
+msgstr "Usa il nome utente predefinito"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 372
+#: rc.cpp:352
+msgid ""
+"Enable the usage of a default login name and password. The authentication "
+"data provided below is then used by default to authenticate to a remote "
+"server. This is very useful e.g. if you are working in an Active Directory "
+"environment or an NT domain."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 381
+#: rc.cpp:355
+msgid "NetBIOS name:"
+msgstr "Nome NetBIOS:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 382
+#: rc.cpp:358
+msgid ""
+"This is the NetBIOS name of this computer that is used by Smb4K. By default, "
+"it is either the NetBIOS name that is defined in the smb.conf file or the "
+"host name."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 386
+#: rc.cpp:361
+#, fuzzy
+msgid "Domain:"
+msgstr "Collocazione:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 387
+#: rc.cpp:364
+msgid ""
+"This is the workgroup or domain this computer is or should be in. By "
+"default, it is the workgroup that is defined in the smb.conf file."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 391
+#: rc.cpp:367
+msgid "Socket options:"
+msgstr "Opzioni del socket:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 392
+#: rc.cpp:370
+msgid ""
+"These are the TCP socket options that are used by nmblookup, smbmount and "
+"smbclient. Socket options are controls on the networking layer of the "
+"operating systems which allow the connection to be tuned. See the manual "
+"page of smb.conf for more information."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 396
+#: rc.cpp:373
+#, fuzzy
+msgid "NetBIOS scope:"
+msgstr "Nome NetBIOS:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 397
+#: rc.cpp:376
+msgid ""
+"This sets the NetBIOS scope that nmblookup, smbmount and smbclient will "
+"operate under. It should not be set unless every machine on your network "
+"neighborhood sets this value."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 401
+#: rc.cpp:379
+#, fuzzy
+msgid "SMB port:"
+msgstr "Porta SMB remota:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 402
+#: rc.cpp:382
+msgid ""
+"This is the port that is used for connecting to remote servers with the "
+"client programs net, smbclient and smbtree. The default value is 139 "
+"(NetBIOS). This setting is not used for mounting."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 408
+#: rc.cpp:385
+#, fuzzy
+msgid "File system port:"
+msgstr "File System:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 409
+#: rc.cpp:388
+msgid ""
+"This is the port that is exclusively used to mount shares from remote "
+"servers. The default value is 445 (CIFS file system)."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 415
+#: rc.cpp:391
+msgid "Try to authenticate with Kerberos"
+msgstr "Tenta l'autenticazione con Kerberos"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 416
+#: rc.cpp:394
+msgid ""
+"Try to authenticate with Kerberos. This is only useful in an Active "
+"Directory environment. The setting affects the smbclient and smbtree command."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 420
+#: rc.cpp:397
+#, fuzzy
+msgid "Authenticate with local machine account"
+msgstr "Autentica come account del sistema"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 421
+#: rc.cpp:400
+msgid ""
+"Make queries to the remote server using the machine account of the local "
+"server. The setting affects the net, smbclient, and smbtree command."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 425
+#: rc.cpp:403
+msgid "Signing state:"
+msgstr ""
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 426
+#: rc.cpp:406
+msgid ""
+"Set the signing state. This setting affects the smbclient and smbtree "
+"command."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 429
+#: rc.cpp:409
+#, fuzzy
+msgid "none"
+msgstr "Nessuno"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 432
+#: rc.cpp:412
+msgid "on"
+msgstr "attivo"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 435
+#: rc.cpp:415
+msgid "off"
+msgstr "disattivo"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 438
+#: rc.cpp:418
+msgid "required"
+msgstr "richiesto"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 444
+#: rc.cpp:421
+#, fuzzy
+msgid "Client character set:"
+msgstr "Set di caratteri Linux:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 445
+#: rc.cpp:424
+msgid ""
+"This is the character set that is used by the client side (i.e. your side) "
+"either to convert local path names to and from Unicode (CIFS, Linux) or for "
+"codepage to charset translations (SMBFS, FreeBSD). If you keep the default "
+"setting, Smb4K will try to automatically determine the charset by looking up "
+"the \"unix charset\" option in the smb.conf."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 448
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 524
+#: rc.cpp:427 rc.cpp:502
+msgid "default"
+msgstr "predefinito"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 451
+#: rc.cpp:430
+msgid "iso8859-1"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 454
+#: rc.cpp:433
+msgid "iso8859-2"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 457
+#: rc.cpp:436
+msgid "iso8859-3"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 460
+#: rc.cpp:439
+msgid "iso8859-4"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 463
+#: rc.cpp:442
+msgid "iso8859-5"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 466
+#: rc.cpp:445
+msgid "iso8859-6"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 469
+#: rc.cpp:448
+msgid "iso8859-7"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 472
+#: rc.cpp:451
+msgid "iso8859-8"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 475
+#: rc.cpp:454
+msgid "iso8859-9"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 478
+#: rc.cpp:457
+msgid "iso8859-13"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 481
+#: rc.cpp:460
+msgid "iso8859-14"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 484
+#: rc.cpp:463
+msgid "iso8859-15"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 487
+#: rc.cpp:466
+msgid "utf8"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 490
+#: rc.cpp:469
+msgid "koi8-r"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 493
+#: rc.cpp:472
+msgid "koi8-u"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 496
+#: rc.cpp:475
+msgid "koi8-ru"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 499
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 596
+#: rc.cpp:478 rc.cpp:574
+msgid "cp1251"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 502
+#: rc.cpp:481
+msgid "gb2312"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 505
+#: rc.cpp:484
+msgid "big5"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 508
+#: rc.cpp:487
+msgid "euc-jp"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 511
+#: rc.cpp:490
+msgid "euc-kr"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 514
+#: rc.cpp:493
+msgid "tis-620"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 520
+#: rc.cpp:496
+msgid "Server codepage:"
+msgstr "Codice di pagina del server:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 521
+#: rc.cpp:499
+msgid ""
+"This is the codepage that is used by the server. The setting is only "
+"available with the SMBFS file system. If you keep the default setting, Smb4K "
+"will try to automatically determine the codepage by looking up the \"dos "
+"charset\" option in the smb.conf file."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 527
+#: rc.cpp:505
+msgid "cp437"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 530
+#: rc.cpp:508
+msgid "cp720"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 533
+#: rc.cpp:511
+msgid "cp737"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 536
+#: rc.cpp:514
+msgid "cp775"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 539
+#: rc.cpp:517
+msgid "cp850"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 542
+#: rc.cpp:520
+msgid "cp852"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 545
+#: rc.cpp:523
+msgid "cp855"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 548
+#: rc.cpp:526
+msgid "cp857"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 551
+#: rc.cpp:529
+msgid "cp858"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 554
+#: rc.cpp:532
+msgid "cp860"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 557
+#: rc.cpp:535
+msgid "cp861"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 560
+#: rc.cpp:538
+msgid "cp862"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 563
+#: rc.cpp:541
+msgid "cp863"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 566
+#: rc.cpp:544
+msgid "cp864"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 569
+#: rc.cpp:547
+msgid "cp865"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 572
+#: rc.cpp:550
+msgid "cp866"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 575
+#: rc.cpp:553
+msgid "cp869"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 578
+#: rc.cpp:556
+msgid "cp874"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 581
+#: rc.cpp:559
+msgid "cp932"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 584
+#: rc.cpp:562
+msgid "cp936"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 587
+#: rc.cpp:565
+msgid "cp949"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 590
+#: rc.cpp:568
+msgid "cp950"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 593
+#: rc.cpp:571
+msgid "cp1250"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 599
+#: rc.cpp:577
+msgid "cp1252"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 602
+#: rc.cpp:580
+msgid "cp1253"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 605
+#: rc.cpp:583
+msgid "cp1254"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 608
+#: rc.cpp:586
+msgid "cp1255"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 611
+#: rc.cpp:589
+msgid "cp1256"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 614
+#: rc.cpp:592
+msgid "cp1257"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 617
+#: rc.cpp:595
+msgid "cp1258"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 620
+#: rc.cpp:598
+msgid "unicode"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 626
+#: rc.cpp:601 smb4k/dialogs/smb4kcustomoptionsdialog.cpp:398
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:443
+msgid "User ID:"
+msgstr "ID Utente:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 627
+#: rc.cpp:604
+msgid ""
+"This is the user ID (a number) that the files and directories of the mounted "
+"share will have. If you are using the CIFS file system and the remote server "
+"supports the CIFS Unix Extentions, this setting will be ignored."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 631
+#: rc.cpp:607 smb4k/dialogs/smb4kcustomoptionsdialog.cpp:415
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:460
+msgid "Group ID:"
+msgstr "ID Gruppo:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 632
+#: rc.cpp:610
+msgid ""
+"This is the group ID (a number) that the files and directories of the "
+"mounted share will have. If you are using the CIFS file system and the "
+"remote server supports the CIFS Unix Extentions, this setting will be "
+"ignored."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 636
+#: rc.cpp:613
+msgid "File mask:"
+msgstr "Maschera file:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 637
+#: rc.cpp:616
+msgid ""
+"This is the mask that will be used for creating files. It must be defined in "
+"octal. In case the CIFS file system is used, this setting only takes effect "
+"if the server does not support the CIFS Unix Extensions."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 641
+#: rc.cpp:619
+msgid "Directory mask:"
+msgstr "Directory mask:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 642
+#: rc.cpp:622
+msgid ""
+"This is the mask that will be used for creating directories. It must be "
+"defined in octal. In case the CIFS file system is used, this setting only "
+"takes effect if the server does not support the CIFS Unix Extensions."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 646
+#: rc.cpp:625 smb4k/dialogs/smb4kcustomoptionsdialog.cpp:388
+msgid "Write access:"
+msgstr "Accesso in scrittura:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 647
+#: rc.cpp:628
+msgid ""
+"Here you can choose if the shares should be mounted in read and write mode "
+"or only read-only."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 650
+#: rc.cpp:631 smb4k/dialogs/smb4kcustomoptionsdialog.cpp:393
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:576
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:770
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:998
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:1095
+#: smb4k/configdlg/smb4ksambaoptions.cpp:904
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1056
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1150
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1357
+msgid "read-write"
+msgstr "lettura-scrittura"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 653
+#: rc.cpp:634 smb4k/dialogs/smb4kcustomoptionsdialog.cpp:394
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:577
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:1002
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:1095
+#: smb4k/configdlg/smb4ksambaoptions.cpp:910
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1062
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1154
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1358
+msgid "read-only"
+msgstr "solo lettura"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 659
+#: rc.cpp:637
+msgid "Do permission checks"
+msgstr "Esegui controllo sui permessi"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 660
+#: rc.cpp:640
+msgid ""
+"The client side (i.e. your side) will check if you have the right UID/GID to "
+"manipulate a file or directory. You might want to switch this feature off if "
+"the server(s) support the CIFS Unix Extensions and you are not allowed to "
+"access the files and directories. This setting does not affect the normal "
+"ACL check."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 664
+#: rc.cpp:643
+msgid "Attempt to set UID and GID"
+msgstr "Tenta l'impstazione di UID e GID"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 665
+#: rc.cpp:646
+msgid ""
+"In case the server supports the CIFS Unix Extensions, the client side (i.e. "
+"your side) attempts to set the effective UID and GID of the current process "
+"on newly created files, directories and devices. If this feature is turned "
+"off, the default UID and GID defined for the share will be used. It is "
+"recommended that you read the manual page of mount.cifs before you change "
+"this setting."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 669
+#: rc.cpp:649
+msgid "Use server inode numbers"
+msgstr ""
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 670
+#: rc.cpp:652
+msgid ""
+"Use inode numbers (unique persistent file identifiers) returned by the "
+"server instead of automatically generating temporary inode numbers on the "
+"client side."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 674
+#: rc.cpp:655
+msgid "Do not cache inode data"
+msgstr ""
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 675
+#: rc.cpp:658
+msgid ""
+"Directly read from and write to files opened on the share. In some cases "
+"this can provide better performance than the default behavior which caches "
+"reads and writes."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 679
+#: rc.cpp:661
+msgid "Translate reserved characters"
+msgstr ""
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 680
+#: rc.cpp:664
+msgid ""
+"Translate six of the seven reserved characters (including the colon, "
+"question mark, pipe, asterisk, greater than and less than characters but not "
+"the backslash) to remap range (above 0xF000). This allows you to open files "
+"that were created with such characters. This has no effect if the server "
+"does not support Unicode."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 684
+#: rc.cpp:667
+msgid "Do not use locking"
+msgstr ""
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 685
+#: rc.cpp:670
+msgid "Do not use locking. Do not start lockd."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 689
+#: rc.cpp:673
+msgid "Additional options:"
+msgstr "Opzioni addizionali:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 690
+#: rc.cpp:676
+msgid ""
+"Here you can enter advanced options for the CIFS file system in a comma-"
+"separated list (refer to the manual page of mount.cifs to learn more). The "
+"list will be added AS IS to the \"-o\" argument of mount.cifs. Please do not "
+"enter options that have already been defined in the configuration dialog."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 694
+#: rc.cpp:679
+#, fuzzy
+msgid "Protocol hint:"
+msgstr "Suggerimento Protocollo"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 695
+#: rc.cpp:682
+msgid ""
+"Here you can choose the protocol that will be used by the net command for "
+"the communication with remote servers if appropriate. In most cases the "
+"automatic detection will work fine and you should not need to change the "
+"default setting. However, if you experience problems, use the RPC protocol "
+"for newer operating systems (Windows NT4 and above) and the RAP protocol for "
+"older ones (Windows 98/NT3 and below). Functions that need the ADS protocol "
+"(for Active Directory environments) have not been implemented yet, so you "
+"can ignore that one for now."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 698
+#: rc.cpp:685
+msgid "Automatic detection"
+msgstr "Decisione automatica"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 701
+#: rc.cpp:688
+msgid "RPC: Modern operating systems"
+msgstr "RPC: Sistema Operativo moderno"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 704
+#: rc.cpp:691
+msgid "RAP: Older operating systems"
+msgstr "RAP: Sistema Operativo vecchio"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 707
+#: rc.cpp:694
+#, fuzzy
+msgid "ADS: Active Directory environment (LDAP/Kerberos)"
+msgstr "ADS: Ambiente Active Directory (LDAP/Kerberos)"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 713
+#: rc.cpp:697
+#, fuzzy
+msgid "Name resolve order:"
+msgstr "Ordine di risoluzione:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 714
+#: rc.cpp:700
+msgid ""
+"This option is used to determine what naming services and in what order are "
+"used to resolve host names and IP addresses. It takes a space-separated list "
+"of up to four different name resolution options. Those are: lmhost, host, "
+"wins, bcast. See the manual page of smbclient for further information."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 718
+#: rc.cpp:703
+msgid "Buffer size:"
+msgstr "Dimensione del buffer:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 719
+#: rc.cpp:706
+msgid ""
+"This option changes the transmit/send buffer size when getting or putting a "
+"file from/to the server. The default is 65520 bytes. Setting this value "
+"smaller has been observed to speed up file transfers to and from Windows 9x "
+"servers."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 724
+#: rc.cpp:709
+msgid "Broadcast address:"
+msgstr "Indirizzo broadcast:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 725
+#: rc.cpp:712
+msgid ""
+"Queries performed with nmblookup will be send to the given broadcast "
+"address. Without this option the default behavior is to send the queries to "
+"the broadcast address of the network interface that was either auto-detected "
+"or defined in the \"interfaces\" parameter of the smb.conf file."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 729
+#: rc.cpp:715
+#, fuzzy
+msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
+msgstr ""
+"Tenta di connetterti alla porta UDP 137 per l'invio e la ricezione di "
+"datagrammi UDP"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 730
+#: rc.cpp:718
+msgid ""
+"Try and bind to UDP port 137 to send and receive UDP datagrams. The reason "
+"for this option is a bug in Windows 95 where it ignores the source port of "
+"the requesting packet and only replies to UDP port 137. Unfortunately, on "
+"most Unix systems super user privileges are needed to bind to this port. "
+"Please read the manual page of nmblookup for more information."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 734
+#: rc.cpp:721
+msgid "Send requests as broadcasts"
+msgstr ""
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 735
+#: rc.cpp:724
+msgid ""
+"Let smbtree query the network nodes by sending requests as broadcasts "
+"instead of querying the local master browser."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 748
+#: rc.cpp:728
+#, fuzzy
+msgid "Synchronization prefix:"
+msgstr "Sincronizzazione"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 749
+#: rc.cpp:731
+msgid ""
+"This is the path where Smb4K will store the files and directories during "
+"synchronization. If you plan to synchronize only with one remote share, then "
+"you can put the data directly in this directory. If you want to synchronize "
+"with several remote shares, then you should create a subdirectory for each "
+"share and choose the appropriate one in the synchronization dialog."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 753
+#: rc.cpp:734
+msgid "Archive mode"
+msgstr "Modalità Archivio"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 754
+#: rc.cpp:737
+msgid "Use archive mode (-a, --archive). This is a short form of -rlptgoD."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 758
+#: rc.cpp:740
+msgid "Recurse into subdirectories"
+msgstr "Ricorsione selle sottodirectory"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 759
+#: rc.cpp:743
+msgid "Recurse into directories (-r, --recursive)."
+msgstr "Ricorsione nelle directory (-r, --recursive)."
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 763
+#: rc.cpp:746
+msgid "Update files"
+msgstr ""
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 764
+#: rc.cpp:749
+msgid ""
+"Update files in the destination directory that are older than in the source "
+"directory (-u, --update)."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 768
+#: rc.cpp:752
+#, fuzzy
+msgid "Update files in place"
+msgstr "Aggiorna i file di destinazione sul posto"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 769
+#: rc.cpp:755
+msgid ""
+"Update destination files in-place (--inplace). By default, rsync first "
+"creates a new copy of a file and moves it into place after its transfer "
+"finished. If you enable this feature, no copy will be created but the "
+"destination file will immediately be overwritten instead. An exception to "
+"this is if you combine this option with --backup."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 773
+#: rc.cpp:758
+msgid "Use relative path names"
+msgstr "Usa nomi percorsi relativi"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 774
+#: rc.cpp:761
+msgid ""
+"Use relative paths (-R, --relative). This means that the full path names "
+"specified on the command line are sent to the server rather than just the "
+"last parts of the file names."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 778
+#: rc.cpp:764
+msgid "Don't send implied directories"
+msgstr "Non inviare le directory sottintese"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 779
+#: rc.cpp:767
+msgid ""
+"Don't send implied directories with --relative (--no-implied-dirs). This "
+"means that the corresponding path elements on the destination system are "
+"left unchanged if they exist, and any missing implied directories are "
+"created with default attributes. This even allows these implied path "
+"elements to have big differences, such as being a symlink to a directory on "
+"one side of the transfer, and a real directory on the other side."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 783
+#: rc.cpp:770
+msgid "Transfer directories without recursing"
+msgstr "Trasferisci le directory senza ricorsione"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 784
+#: rc.cpp:773
+msgid ""
+"Transfer directories without recursing (-d, --dirs). This means that all top-"
+"level subdirectories are transferred but without their contents."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 789
+#: rc.cpp:776
+msgid "Compress data during transfer"
+msgstr "Comprimi i dati durante il trasferimento"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 790
+#: rc.cpp:779
+msgid ""
+"Compress data during transfer (-z, --compress). This significantly reduces "
+"the amount of data that is being transferred. You may want to use this "
+"option, if you have a slow connection."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 794
+#: rc.cpp:782
+msgid "Preserve symlinks"
+msgstr "Preserva i collegamenti simbolici"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 795
+#: rc.cpp:785
+msgid "Copy symlinks as symlinks (-l, --links)."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 799
+#: rc.cpp:788
+msgid "Transform symlinks"
+msgstr "Trasforma i collegamenti simbolici"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 800
+#: rc.cpp:791
+msgid ""
+"Transform symlinks into the items they are pointing to (-L, --copy-links)."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 804
+#: rc.cpp:794
+msgid "Only transform unsafe symlinks"
+msgstr "Trasforma solo i collegamenti non sicuri"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 805
+#: rc.cpp:797
+msgid ""
+"Transform unsafe symlinks into the items they are pointing to (--copy-unsafe-"
+"links). This means that only those symlinks are transformed that point to "
+"items that are outside the copied tree. Absolute symlinks are treated the "
+"same way. This option has no additional effect if --copy-links has also been "
+"specified."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 809
+#: rc.cpp:800
+msgid "Ignore unsafe symlinks"
+msgstr "Ignora i collegamenti simbolici non sicuri"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 810
+#: rc.cpp:803
+msgid ""
+"Ignore symlinks that point outside the copied tree (--safe-links). All "
+"absolute symlinks are also ignored. If you use this option in conjunction "
+"with --relative you might get unexpected results."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 814
+#: rc.cpp:806
+msgid "Preserve hard links"
+msgstr "Preserva gli hard link"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 815
+#: rc.cpp:809
+msgid ""
+"Preserve hard links (-H, --hard-links). This options causes rsync to "
+"preserve the hard links that are found during the transfer. Without it, hard "
+"links are treated as though they were separate files."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 819
+#: rc.cpp:812
+msgid "Keep directory symlinks"
+msgstr "Mantieni i collegamenti alle directory"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 820
+#: rc.cpp:815
+msgid ""
+"Treat symlinked directories on the receiving side as though they were real "
+"ones (-K, --keep-dirlinks). This only works if the symlink matches a real "
+"directory from the sending side. Without this option, the receiver's symlink "
+"will be deleted and replaced with a real directory."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 824
+#: rc.cpp:818
+msgid "Preserve permissions"
+msgstr "Mantieni i permessi"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 825
+#: rc.cpp:821
+msgid ""
+"Preserve permissions (-p, --perms). The permissions of the destination file "
+"will be same as the source file. For what happens if this option is switched "
+"off, please read rsync's manual page."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 829
+#: rc.cpp:824
+msgid "Preserve group"
+msgstr "Mantieni il gruppo"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 830
+#: rc.cpp:827
+msgid ""
+"Preserve the group (-g, --group). The group of the destination file will be "
+"set to the same value as the source file."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 834
+#: rc.cpp:830
+#, fuzzy
+msgid "Preserve owner"
+msgstr "Mantieni il gruppo"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 835
+#: rc.cpp:833
+msgid ""
+"Preserve the owner (-o, --owner). The owner of the destination file will be "
+"set to the same value as the source file, but only if the receiving rsync is "
+"run as the super user. Without this option, the owner is set to the invoking "
+"user on the receiving side."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 839
+#: rc.cpp:836
+msgid "Preserve device and special files"
+msgstr "Preserva le device e i file speciali"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 840
+#: rc.cpp:839
+msgid ""
+"Preserve device and special files (-D, --devices --specials). This option "
+"causes rsync to transfer character and block devices as well as special "
+"files such as named sockets and fifos. It works only partially if rsync is "
+"not run as super user and the --super option is not specified."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 844
+#: rc.cpp:842
+msgid "Preserve times"
+msgstr "Mantieni gli orari"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 845
+#: rc.cpp:845
+msgid ""
+"Preserve times (-t, --times). The modification times are transferred along "
+"with the files. For what happens if this option is switched off, please read "
+"rsync's manual page."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 849
+#: rc.cpp:848
+msgid "Omit directories when preserving times"
+msgstr "Ometti le directory quando mantieni gli orari"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 850
+#: rc.cpp:851
+msgid ""
+"Omit directories when preserving times (-O, --omit-dir-times). This means "
+"that directories are omitted when modification times are being preserved. "
+"Thus, this feature only works in conjunction with --times."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 854
+#: rc.cpp:854
+msgid "Remove synchronized source files"
+msgstr ""
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 855
+#: rc.cpp:857
+msgid ""
+"Remove all synchronized source files (--remove-source-files). This tells "
+"rsync to remove from the sending side the non-directory items that are a "
+"part of the transfer and have been successfully duplicated on the receiving "
+"side."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 859
+#: rc.cpp:860
+msgid "Delete extraneous files"
+msgstr "Cancella file estranei"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 860
+#: rc.cpp:863
+msgid ""
+"Delete extraneous files from destination (--delete). This tells rsync to "
+"delete all files from the receiving side that are not present on the sending "
+"side, but only for the directories that are being synchronized."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 864
+#: rc.cpp:866
+msgid "Delete files before transfer"
+msgstr "Elimina i file prima del trasferimento"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 865
+#: rc.cpp:869
+msgid ""
+"Delete files on the receiving side before the transfer starts (--delete-"
+"before). This is the default behavior if --delete or --delete-excluded is "
+"specified without one of the --delete-WHEN options."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 869
+#: rc.cpp:872
+msgid "Delete files after transfer"
+msgstr "Elimina i file dopo il trasferimento"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 870
+#: rc.cpp:875
+msgid ""
+"Delete files on the receiving side after the transfer has completed (--"
+"delete-after, --del)."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 874
+#: rc.cpp:878
+msgid "Delete files during transfer"
+msgstr "Elimina i file durante il trasferimento"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 875
+#: rc.cpp:881
+msgid ""
+"Delete files on the receiving side during the transfer (--delete-during). "
+"This method is faster than --delete-before or --delete-after, but it is only "
+"supported with rsync 2.6.4 or later."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 879
+#: rc.cpp:884
+#, fuzzy
+msgid "Also delete excluded files"
+msgstr "Elimina anche i file nella destinazione esclusi"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 880
+#: rc.cpp:887
+msgid ""
+"Also delete excluded files from destination directory (--delete-excluded). "
+"In addition to deleting the files on the receiving side that are not on the "
+"sending side, this tells rsync to also delete any files on the receiving "
+"side that are excluded. Refer to rsync's manual page for further information."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 884
+#: rc.cpp:890
+msgid "Delete even if I/O errors occur"
+msgstr "Elimina anche in caso di errori di I/O"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 885
+#: rc.cpp:893
+msgid ""
+"Delete even if I/O errors occur (--ignore-errors). This option has to be "
+"specified in conjunction with --delete to take effect."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 889
+#: rc.cpp:896
+msgid "Force deletion of non-void directories"
+msgstr "Forza l'eliminazione delle directory non nulle"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 890
+#: rc.cpp:899
+msgid ""
+"Force deletion of directories even if they are not empty (--force). This "
+"option tells rsync to delete a non-empty directory when it is to be replaced "
+"by a non-directory. This is only relevant if deletions are not active."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 894
+#: rc.cpp:902
+msgid "Don't delete more than this many files:"
+msgstr "Non eliminare più di # file:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 895
+#: rc.cpp:905
+msgid ""
+"Only delete as many files as defined here (--max-delete=NUM). This tells "
+"rsync not to delete more than NUM files or directories (NUM must be non-"
+"zero). This is useful when mirroring very large trees to prevent disasters."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 899
+#: rc.cpp:908
+msgid "Value for DeleteMaximum config entry"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 905
+#: rc.cpp:912
+#, fuzzy
+msgid "Don't transfer any file smaller than:"
+msgstr "Non trasferire file più piccoli di"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 906
+#: rc.cpp:915
+msgid ""
+"This option causes rsync to not transfer any file that is smaller than the "
+"specified size (--min-size=SIZE)."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 910
+#: rc.cpp:918
+msgid "Value for MinimalTransferSize config entry"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 916
+#: rc.cpp:922
+#, fuzzy
+msgid "Don't transfer any file larger than:"
+msgstr "Non trasferire file più grandi di"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 917
+#: rc.cpp:925
+msgid ""
+"This option causes rsync to not transfer any file that is larger than the "
+"specified size (--max-size=SIZE)."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 921
+#: rc.cpp:928
+msgid "Value for MamximalTransferSize config entry"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 927
+#: rc.cpp:932
+msgid "Keep partially transferred files"
+msgstr "Mantieni i file parzialmente trasferiti"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 928
+#: rc.cpp:935
+msgid ""
+"Keep partially transferred files (--partial). The default behavor is that "
+"any partially transferred file is deleted if the transfer is interrupted."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 932
+#: rc.cpp:938
+#, fuzzy
+msgid "Put partially transferred files into:"
+msgstr "Conserva i file parzialmente trasferiti in"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 933
+#: rc.cpp:941
+msgid ""
+"Put a partially transferred file into this directory (--partial-dir=DIR). "
+"This is a better way than the --partial option to keep partial files, "
+"because the partially transferred file is kept in a different directory and "
+"the destination file is not overwritten."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 937
+#: rc.cpp:944
+msgid "The data for the UsePartialDirectory option"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 942
+#: rc.cpp:948
+msgid "Auto-ignore files in the same way CVS does"
+msgstr "Ignora automaticamente i file come accade in CVS"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 943
+#: rc.cpp:951
+msgid ""
+"Auto-ignore files in the same way CVS does (-C, --cvs-exclude). This is a "
+"useful shorthand for excluding a broad range of files that you often do not "
+"want to transfer between systems. This option uses the same algorithm that "
+"CVS uses to determine if a file should be ignored."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 947
+#: rc.cpp:954
+msgid "Exclude files matching this pattern:"
+msgstr "Escludi i file che corrispondono a questo schema:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 948
+#: rc.cpp:957
+msgid ""
+"Exclude files that match a certain pattern (--exclude=PATTERN). This is a "
+"special filter rule. For further information on filter rules see rsync's "
+"manual page."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 952
+#: rc.cpp:960
+msgid "Pattern that is used for file exclusion"
+msgstr "Schema usato per l'esclusione di file"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 957
+#: rc.cpp:964
+#, fuzzy
+msgid "Read exclude patterns from:"
+msgstr "Preleva gli schemi di esclusione da"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 958
+#: rc.cpp:967
+msgid ""
+"Read exclude patterns from a file (--exclude-from=FILE). This option is "
+"similar to the --exclude=PATTERN option except that the exclude patterns are "
+"read from a file. This is a special filter rule. For further information on "
+"filter rules see rsync's manual page."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 962
+#: rc.cpp:970
+msgid "The file from which the exclude patterns are read"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 967
+#: rc.cpp:974
+msgid "Don't exclude files matching this pattern:"
+msgstr "NOn escludere i file che corrispondono a questo schema:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 968
+#: rc.cpp:977
+msgid ""
+"Do not exclude files matching a certain pattern (--include=PATTERN). This is "
+"a special filter rule. For further information on filter rules see rsync's "
+"manual page."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 972
+#: rc.cpp:980
+msgid "Pattern that is used for file inclusion"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 977
+#: rc.cpp:984
+#, fuzzy
+msgid "Read include patterns from:"
+msgstr "Preleva gli schemi di inclusione da"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 978
+#: rc.cpp:987
+msgid ""
+"Read include patterns from a file (--include-from=FILE). This option is "
+"similar to the --include=PATTERN option except that the include patterns are "
+"read from a file. This is a special filter rule. For further information on "
+"filter rules see rsync's manual page."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 982
+#: rc.cpp:990
+msgid "The file from which the include patterns are read"
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 987
+#: rc.cpp:994
+#, fuzzy
+msgid "Custom filter rules:"
+msgstr "Usa la regola di filtraggio -F"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 988
+#: rc.cpp:997
+msgid ""
+"Add custom file-filtering rules (-f, --filter=RULE). This option allows you "
+"to add rules to selectively exclude certain files from the list of files to "
+"be transferred. These rules will be added to the rsync command as they are. "
+"Thus, each rule has to start with the --filter=... argument."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 992
+#: rc.cpp:1000
+#, fuzzy
+msgid "Use --filter='dir-merge /.rsync-filter' filter rule"
+msgstr "Usa la regola \"--filter='- .rsync-filter'\""
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 993
+#: rc.cpp:1003
+msgid ""
+"This filter rule tells rsync to look for per-directory .rsync-filter files "
+"that have been sprinkled through the hierarchy and use their rules to filter "
+"the files in the transfer. It has no effect, if you also choose to use the --"
+"filter='exclude .rsync-filter' rule."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 997
+#: rc.cpp:1006
+#, fuzzy
+msgid "Use --filter='exclude .rsync-filter' filter rule"
+msgstr "Usa la regola \"--filter='- .rsync-filter'\""
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 998
+#: rc.cpp:1009
+msgid ""
+"This rule filters out the .rsync-filter files from the transfer. These files "
+"normally contain filter rules that can be activated by choosing the --"
+"filter='dir-merge /.rsync-filter' rule and deselecting this one."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1002
+#: rc.cpp:1012
+msgid "Handle sparse files efficiently"
+msgstr "Gestisci in maniera efficiente i file scarsi"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1003
+#: rc.cpp:1015
+msgid ""
+"Handle sparse files efficiently (-S, --sparse) so that they take up less "
+"space on the destination. This option conflicts with --inplace. For further "
+"information read rsync's manual page."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1007
+#: rc.cpp:1018
+msgid "Copy files whole (no rsync algorithm)"
+msgstr "Copia i file per intero (non usare l'algoritmo rsync)"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1008
+#: rc.cpp:1021
+msgid ""
+"Copy files whole (-W, --whole-file). With this option the incremental rsync "
+"algorithm is not used and the whole file is sent as-is instead."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1012
+#: rc.cpp:1024
+msgid "Don't cross file system boundaries"
+msgstr "Non attraversare i limiti del file system"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1013
+#: rc.cpp:1027
+msgid ""
+"Do not cross file system boundaries (-x, --one-file-system). This tells "
+"rsync to avoid crossing a filesystem boundary when recursing. For further "
+"information on this option, read the manual page."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1017
+#: rc.cpp:1030
+msgid "Only update files that already exist"
+msgstr "Aggiorna solo i file già esistenti"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1018
+#: rc.cpp:1033
+msgid ""
+"Skip creating new files on the receiving side (--existing). This tells rsync "
+"to skip creating files (including directories) that do not exist yet on the "
+"destination. If this option is combined with the --ignore-existing option, "
+"no files will be updated (which can be useful if all you want to do is to "
+"delete extraneous files)."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1022
+#: rc.cpp:1036
+msgid "Ignore files that already exist"
+msgstr "Ignora i file già esistenti"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1023
+#: rc.cpp:1039
+msgid ""
+"Skip updating files that already exist on the receiving side (--ignore-"
+"existing). Existing directories are not ignored."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1027
+#: rc.cpp:1042
+#, fuzzy
+msgid "Delay updates until the end of transfer"
+msgstr "Elimina i file nella destinazione dopo il trasferimento"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1028
+#: rc.cpp:1045
+msgid ""
+"Delay updates until the end of the transfer (--delay-updates). This option "
+"puts the temporary file from each updated file into a holding directory "
+"until the end of the transfer, at which time all the files are renamed and "
+"copied into place in rapid succession."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1032
+#: rc.cpp:1048
+msgid "Make backups"
+msgstr "Crea backup"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1033
+#: rc.cpp:1051
+msgid ""
+"Make backups (-b, --backup). With this option, preexisting destination files "
+"are renamed as each file is transferred or deleted. You can control where "
+"the backup file goes and what (if any) suffix gets appended using the --"
+"backup-dir=DIR and --suffix=SUFFIX options."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1037
+#: rc.cpp:1054
+msgid "Backup suffix:"
+msgstr "Suffisso di backup:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1038
+#: rc.cpp:1057
+msgid "Use this suffix for backups (--suffix=SUFFIX)."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1042
+#: rc.cpp:1060
+msgid "Backup suffix"
+msgstr "Suffisso di backup"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1047
+#: rc.cpp:1064
+msgid "Backup directory:"
+msgstr "Directory di Backup:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1048
+#: rc.cpp:1067
+msgid "Store backups in this directory (--backup-dir=DIR)."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1052
+#: rc.cpp:1070
+msgid "Backup directory"
+msgstr "Directory di Backup"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1057
+#: rc.cpp:1074
+msgid "Force fixed checksum block size:"
+msgstr "Dimensione fissata dei blocchi per il checksum:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1058
+#: rc.cpp:1077
+msgid ""
+"Force a fixed checksum block-size (-B, --block-size=SIZE). This forces the "
+"block size used in the rsync algorithm to a fixed value."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1062
+#: rc.cpp:1080
+msgid "The block size"
+msgstr "Dimensione del blocco"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1068
+#: rc.cpp:1084
+msgid "Set block/file checksum seed:"
+msgstr "Imposta il seme per il checksum del blocco/file:"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1069
+#: rc.cpp:1087
+msgid ""
+"Set block/file checksum seed (--checksum-seed=NUM). Set the MD4 checksum "
+"seed to this integer. This 4 byte checksum seed is included in each block "
+"and file MD4 checksum calculation. By default the checksum seed is generated "
+"by the server and defaults to the current time."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1073
+#: rc.cpp:1090
+msgid "The checksum seed"
+msgstr "Seme per il checksum"
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1079
+#: rc.cpp:1094
+#, fuzzy
+msgid "Skip files based on checksum"
+msgstr "Salta basandoti sul checksum"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1080
+#: rc.cpp:1097
+msgid ""
+"Skip files based on a checksum and not based on modification time and size (-"
+"c, --checksum). For further information on how this feature works read "
+"rsync's manual page."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1090
+#: rc.cpp:1100
+msgid ""
+"Use super user privileges to force the unmounting of (inaccessible) shares"
+msgstr ""
+"Usa i privilegi di Amministratore per smontare le condivisioni "
+"(inaccessibili)"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1091
+#: rc.cpp:1103
+msgid ""
+"Unmount a share under Linux by force. This even works if the file system is "
+"\"busy\", because it is immediately detached from the file system hierarchy "
+"and all references to it are cleaned up later when it is not busy anymore. "
+"Linux kernel 2.4.11 or later is needed to take advantage of this feature. "
+"Use with case! Note, that you will need the root password to write the "
+"necessary changes to the configuration file."
+msgstr ""
+
+#. i18n: tag label
+#. i18n: file ./core/smb4k.kcfg line 1095
+#: rc.cpp:1106
+msgid "Use super user privileges to mount and unmount shares"
+msgstr ""
+"Usa i privilegi di Amministratore per montare e smontare le condivisioni"
+
+#. i18n: tag whatsthis
+#. i18n: file ./core/smb4k.kcfg line 1096
+#: rc.cpp:1109
+msgid ""
+"Use super user privileges for mounting and unmounting remote shares. This "
+"feature is only needed, if you are not allowed to use smbmount, smbumount, "
+"mount.cifs and umount.cifs as normal user. Note, that you will need the root "
+"password to write the necessary changes to the configuration file."
+msgstr ""
+
+#. i18n: tag text
+#. i18n: file ./smb4k/smb4k_shell.rc line 4
+#: rc.cpp:1112
+#, fuzzy
+msgid "&File"
+msgstr "File:"
+
+#. i18n: tag text
+#. i18n: file ./smb4k/smb4k_shell.rc line 7
+#. i18n: tag text
+#. i18n: file ./smb4k/browser/smb4knetworkbrowser_part.rc line 4
+#: rc.cpp:1115 rc.cpp:1142
+msgid "&Network"
+msgstr "&Rete"
+
+#. i18n: tag text
+#. i18n: file ./smb4k/smb4k_shell.rc line 9
+#: rc.cpp:1118 smb4k/searchdlg/smb4ksearchdialog_part.cpp:112
+#, fuzzy
+msgid "&Search"
+msgstr "Cerca"
+
+#. i18n: tag text
+#. i18n: file ./smb4k/smb4k_shell.rc line 11
+#: rc.cpp:1121
+msgid "Sh&ares"
+msgstr "Co&ndivisioni"
+
+#. i18n: tag text
+#. i18n: file ./smb4k/smb4k_shell.rc line 13
+#: rc.cpp:1124
+#, fuzzy
+msgid "&Bookmarks"
+msgstr "Segnalibro"
+
+#. i18n: tag text
+#. i18n: file ./smb4k/smb4k_shell.rc line 19
+#: rc.cpp:1127
+#, fuzzy
+msgid "&Settings"
+msgstr "Opzioni generali"
+
+#. i18n: tag text
+#. i18n: file ./smb4k/smb4k_shell.rc line 31
+#: rc.cpp:1130
+#, fuzzy
+msgid "Network Toolbar"
+msgstr "Barra strumenti di rete"
+
+#. i18n: tag text
+#. i18n: file ./smb4k/smb4k_shell.rc line 33
+#: rc.cpp:1133
+#, fuzzy
+msgid "Search Toolbar"
+msgstr "Barra principale"
+
+#. i18n: tag text
+#. i18n: file ./smb4k/smb4k_shell.rc line 35
+#: rc.cpp:1136
+#, fuzzy
+msgid "Shares Toolbar"
+msgstr "Barra visualizzazione condivisioni"
+
+#. i18n: tag text
+#. i18n: file ./smb4k/smb4k_shell.rc line 37
+#: rc.cpp:1139
+#, fuzzy
+msgid "Main Toolbar"
+msgstr "Barra principale"
+
+#. i18n: tag text
+#. i18n: file ./smb4k/sharesview/smb4ksharesview_part.rc line 4
+#: rc.cpp:1148
+msgid "&Shares"
+msgstr "Condivi&sioni"
+
+#: smb4k/dialogs/smb4kbookmarkeditor.cpp:56
+msgid "Bookmark Editor"
+msgstr "Gestore dei segnalibri"
+
+#: smb4k/dialogs/smb4kbookmarkeditor.cpp:74
+msgid "Bookmark"
+msgstr "Segnalibro"
+
+#: smb4k/dialogs/smb4kbookmarkeditor.cpp:75
+msgid "Workgroup"
+msgstr "Gruppo di lavoro"
+
+#: smb4k/dialogs/smb4kbookmarkeditor.cpp:76
+#: smb4k/browser/smb4knetworkbrowser.cpp:66
+msgid "IP Address"
+msgstr "Indirizzo IP"
+
+#: smb4k/dialogs/smb4kbookmarkeditor.cpp:77
+msgid "Label"
+msgstr "Etichetta"
+
+#: smb4k/dialogs/smb4kbookmarkeditor.cpp:91
+#: smb4k/configdlg/smb4ksambaoptions.cpp:690
+msgid "Edit"
+msgstr ""
+
+#: smb4k/dialogs/smb4kbookmarkeditor.cpp:96
+msgid "Delete"
+msgstr ""
+
+#: smb4k/dialogs/smb4ksynchronizationdialog.cpp:47
+#: smb4k/configdlg/smb4kconfigdialog.cpp:148
+msgid "Synchronization"
+msgstr "Sincronizzazione"
+
+#: smb4k/dialogs/smb4ksynchronizationdialog.cpp:51
+msgid "Synchronize"
+msgstr "Sincronizza"
+
+#: smb4k/dialogs/smb4ksynchronizationdialog.cpp:52
+msgid "Synchronize the destination with the source"
+msgstr "Sincronizza destinazione con sorgente"
+
+#: smb4k/dialogs/smb4ksynchronizationdialog.cpp:53
+msgid "Swap Paths"
+msgstr "Scambia i percorsi"
+
+#: smb4k/dialogs/smb4ksynchronizationdialog.cpp:54
+msgid "Swap source and destination"
+msgstr "Scambia l'origine con la destinazione"
+
+#: smb4k/dialogs/smb4ksynchronizationdialog.cpp:63
+msgid "Source:"
+msgstr "Sorgente:"
+
+#: smb4k/dialogs/smb4ksynchronizationdialog.cpp:69
+msgid "Destination:"
+msgstr "Destinazione:"
+
+#: smb4k/dialogs/smb4ksynchronizationdialog.cpp:93
+msgid "Files transferred:"
+msgstr "File trasferiti:"
+
+#: smb4k/dialogs/smb4ksynchronizationdialog.cpp:96
+msgid "Transfer rate:"
+msgstr "Velocità di trasferimento:"
+
+#: smb4k/dialogs/smb4kmountdialog.cpp:51
+msgid "Mount Share"
+msgstr "Monta condivisione"
+
+#: smb4k/dialogs/smb4kmountdialog.cpp:89
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:187
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:204
+#: smb4k/sharesview/smb4ksharesviewtooltip.cpp:111
+msgid "Share:"
+msgstr "Condivisione:"
+
+#: smb4k/dialogs/smb4kmountdialog.cpp:94 smb4k/dialogs/smb4kprintdialog.cpp:91
+msgid "IP Address:"
+msgstr "Indirizzo IP:"
+
+#: smb4k/dialogs/smb4kmountdialog.cpp:98 smb4k/dialogs/smb4kprintdialog.cpp:95
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:119
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:174
+msgid "Workgroup:"
+msgstr "Gruppo di lavoro:"
+
+#: smb4k/dialogs/smb4kmountdialog.cpp:102
+msgid "Add this share to the bookmarks"
+msgstr "Aggiungi questa condivisione ai segnalibri"
+
+#: smb4k/dialogs/smb4kmountdialog.cpp:161
+msgid ""
+"The format of the share you entered is not correct. It must have the form //"
+"HOST/SHARE."
+msgstr ""
+"La condivisione inserita non è valida. È necessario usare la forma //HOST/"
+"CONDIVISIONE."
+
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:97
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:120
+#: smb4k/configdlg/smb4ksambaoptions.cpp:706
+msgid "Custom Options"
+msgstr "Opzioni Personalizzate"
+
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:187
+#: smb4k/dialogs/smb4kprintdialog.cpp:89
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:145
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:233
+msgid "Host:"
+msgstr "Host:"
+
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:207
+msgid "Protocol:"
+msgstr "Protocollo:"
+
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:212
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:356
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:935
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:1071
+#: smb4k/configdlg/smb4ksambaoptions.cpp:868
+#: smb4k/configdlg/smb4ksambaoptions.cpp:949
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1127
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1274
+#, fuzzy
+msgid "automatic"
+msgstr "auto"
+
+#: smb4k/dialogs/smb4kcustomoptionsdialog.cpp:219
+msgid "Try to authenticate with Kerberos (Active Directory)"
+msgstr "Tenta l'autenticazione con Kerberos (Active Directory)"
+
+#: smb4k/dialogs/smb4kpreviewdialog.cpp:58
+msgid "Preview"
+msgstr "Anteprima"
+
+#: smb4k/dialogs/smb4kpreviewdialog.cpp:114
+#, fuzzy
+msgid "Reload"
+msgstr "Pronto."
+
+#: smb4k/dialogs/smb4kpreviewdialog.cpp:115
+#, fuzzy
+msgid "Back"
+msgstr "Backup"
+
+#: smb4k/dialogs/smb4kpreviewdialog.cpp:116
+msgid "Forward"
+msgstr "Avanti"
+
+#: smb4k/dialogs/smb4kpreviewdialog.cpp:117
+msgid "Up"
+msgstr "Su"
+
+#: smb4k/dialogs/smb4kprintdialog.cpp:56
+msgid "Print File"
+msgstr "Stampa il file"
+
+#: smb4k/dialogs/smb4kprintdialog.cpp:61
+#: smb4k/dialogs/smb4kprintdialog.cpp:125
+#, fuzzy
+msgid "Options"
+msgstr "Azioni"
+
+#: smb4k/dialogs/smb4kprintdialog.cpp:84
+msgid "Name:"
+msgstr "Nome:"
+
+#: smb4k/dialogs/smb4kprintdialog.cpp:93
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:130
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:153
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:159
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:164
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:182
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:239
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:473
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:483
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:493
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:507
+#, fuzzy
+msgid "unknown"
+msgstr "Sconosciuto"
+
+#: smb4k/dialogs/smb4kprintdialog.cpp:108
+#, fuzzy
+msgid "File"
+msgstr "File:"
+
+#: smb4k/dialogs/smb4kprintdialog.cpp:116
+msgid "File:"
+msgstr "File:"
+
+#: smb4k/dialogs/smb4kprintdialog.cpp:131
+msgid "Copies:"
+msgstr "Copie:"
+
+#: smb4k/dialogs/smb4kprintdialog.cpp:192
+msgid "You haven't specified a file."
+msgstr "Non è stato specificato alcun file."
+
+#: smb4k/browser/smb4knetworkbrowser.cpp:64
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:237
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:402
+#: smb4k/configdlg/smb4kconfigdialog.cpp:144
+msgid "Network"
+msgstr "Rete"
+
+#: smb4k/browser/smb4knetworkbrowser.cpp:65
+msgid "Type"
+msgstr "Tipo"
+
+#: smb4k/browser/smb4knetworkbrowser.cpp:67
+msgid "Comment"
+msgstr "Commento"
+
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:123
+msgid "Pseudo master browser:"
+msgstr "Pseudo master browser:"
+
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:124
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:179
+msgid "Master browser:"
+msgstr "Master browser:"
+
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:148
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:207
+msgid "Comment:"
+msgstr "Commento:"
+
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:151
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:236
+msgid "IP address:"
+msgstr "Indirizzo IP:"
+
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:157
+msgid "Operating system:"
+msgstr "Sistema Operativo:"
+
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:162
+msgid "Server string:"
+msgstr "Stringa del server:"
+
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:210
+msgid "Type:"
+msgstr "Tipo:"
+
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:215
+msgid "Mounted:"
+msgstr "Montata:"
+
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:218
+#: smb4k/configdlg/smb4ksambaoptions.cpp:924
+#: smb4k/configdlg/smb4ksambaoptions.cpp:999
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1164
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1300
+msgid "yes"
+msgstr "si"
+
+#: smb4k/browser/smb4knetworkbrowsertooltip.cpp:219
+#: smb4k/configdlg/smb4ksambaoptions.cpp:928
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1005
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1168
+#: smb4k/configdlg/smb4ksambaoptions.cpp:1301
+msgid "no"
+msgstr "no"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:169
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:663
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:683
+msgid "Scan Netwo&rk"
+msgstr "Analizza &Rete"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:174
+msgid "&Abort"
+msgstr "&Annulla"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:179 smb4k/smb4ksystemtray.cpp:74
+msgid "M&ount Manually"
+msgstr "M&onta Manualmente"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:184
+msgid "Au&thentication"
+msgstr "Au&tenticazione"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:189
+#, fuzzy
+msgid "&Custom Options"
+msgstr "Opzioni Personalizzate"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:194
+msgid "Add &Bookmark"
+msgstr "Aggiungi un segnali&bro"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:199
+msgid "Pre&view"
+msgstr "A&nteprima"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:204
+msgid "&Print File"
+msgstr "Stam&pa il file"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:209
+msgid "&Mount"
+msgstr "&Monta"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:254
+#: smb4k/smb4ksystemtray.cpp:741 smb4k/sharesview/smb4ksharesview_part.cpp:276
+msgid "&Unmount"
+msgstr "&Smonta"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:323
+#, fuzzy
+msgid "Smb4KNetworkBrowserPart"
+msgstr "Browser di rete"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:325
+msgid "The network browser KPart of Smb4K"
+msgstr ""
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:327
+#: smb4k/searchdlg/smb4ksearchdialog_part.cpp:159
+#: smb4k/sharesview/smb4ksharesview_part.cpp:488
+msgid "(c) 2007-2008, Alexander Reinholdt"
+msgstr ""
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:430
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:445
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:494
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:526
+msgid "Scan Compute&r"
+msgstr "Analizza Compute&r"
+
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:472
+#: smb4k/browser/smb4knetworkbrowser_part.cpp:602
+msgid "Scan Wo&rkgroup"
+msgstr "Analizza G&ruppo di lavoro"
+
+#: smb4k/smb4ksystemtray.cpp:60 smb4k/main.cpp:62
+msgid "Smb4K"
+msgstr "Smb4K"
+
+#: smb4k/smb4ksystemtray.cpp:71 smb4k/smb4kmainwindow.cpp:277
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:249
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:284
+#, fuzzy
+msgid "Mounted Shares"
+msgstr "Condivi&sioni montate"
+
+#: smb4k/smb4ksystemtray.cpp:72
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:55
+#, fuzzy
+msgid "Bookmarks"
+msgstr "Segnalibro"
+
+#: smb4k/smb4ksystemtray.cpp:272 smb4k/smb4kmainwindow.cpp:367
+msgid "&Edit Bookmarks"
+msgstr "Gestione dei s&egnalibri"
+
+#: smb4k/smb4ksystemtray.cpp:459 smb4k/sharesview/smb4ksharesview_part.cpp:288
+#, fuzzy
+msgid "U&nmount All"
+msgstr "Smonta tutto"
+
+#: smb4k/smb4ksystemtray.cpp:748 smb4k/sharesview/smb4ksharesview_part.cpp:282
+msgid "&Force Unmounting"
+msgstr "&Forza smontaggio"
+
+#: smb4k/smb4ksystemtray.cpp:756 smb4k/sharesview/smb4ksharesview_part.cpp:293
+msgid "S&ynchronize"
+msgstr "S&incronizza"
+
+#: smb4k/smb4ksystemtray.cpp:762 smb4k/sharesview/smb4ksharesview_part.cpp:298
+msgid "Open with Konso&le"
+msgstr "Apri con Konso&le"
+
+#: smb4k/smb4ksystemtray.cpp:768 smb4k/sharesview/smb4ksharesview_part.cpp:303
+#, fuzzy
+msgid "Open with F&ile Manager"
+msgstr "Apri con &Konqueror"
+
+#: smb4k/searchdlg/smb4ksearchdialogitem.cpp:109
+msgid "The search returned no results."
+msgstr ""
+
+#: smb4k/searchdlg/smb4ksearchdialog.cpp:46
+#, fuzzy
+msgid "Search item:"
+msgstr "Cerca"
+
+#: smb4k/searchdlg/smb4ksearchdialog.cpp:49
+msgid "Enter the search string here."
+msgstr "Inserire qui l'host da cercare."
+
+#: smb4k/searchdlg/smb4ksearchdialog_part.cpp:117
+#, fuzzy
+msgid "&Clear"
+msgstr "Cancella"
+
+#: smb4k/searchdlg/smb4ksearchdialog_part.cpp:122
+#: smb4k/searchdlg/smb4ksearchdialog_part.cpp:338
+msgid "A&dd"
+msgstr ""
+
+#: smb4k/searchdlg/smb4ksearchdialog_part.cpp:127
+#, fuzzy
+msgid "Abort"
+msgstr "&Annulla"
+
+#: smb4k/searchdlg/smb4ksearchdialog_part.cpp:145
+#: smb4k/searchdlg/smb4ksearchdialog_part.cpp:400
+#: smb4k/searchdlg/smb4ksearchdialog_part.cpp:410
+msgid "Search Results"
+msgstr "Risultati della ricerca."
+
+#: smb4k/searchdlg/smb4ksearchdialog_part.cpp:155
+#, fuzzy
+msgid "Smb4KSearchDialogPart"
+msgstr "Finestra di Ricerca"
+
+#: smb4k/searchdlg/smb4ksearchdialog_part.cpp:157
+msgid "The search dialog KPart of Smb4K"
+msgstr ""
+
+#: smb4k/searchdlg/smb4ksearchdialog_part.cpp:346
+#, fuzzy
+msgid "Mount"
+msgstr "&Monta"
+
+#: smb4k/smb4kmainwindow.cpp:98
+#, fuzzy
+msgid "Dock Widgets"
+msgstr "&Pannelli"
+
+#: smb4k/smb4kmainwindow.cpp:105
+msgid "Shares View"
+msgstr "Visualizzazione delle Condivisioni"
+
+#: smb4k/smb4kmainwindow.cpp:112
+#, fuzzy
+msgid "Icon View"
+msgstr "Vista a &Icone"
+
+#: smb4k/smb4kmainwindow.cpp:117
+msgid "List View"
+msgstr "Visualizzazione a lista"
+
+#: smb4k/smb4kmainwindow.cpp:159 smb4k/smb4kmainwindow.cpp:924
+msgid "Wallet is not in use"
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:165 smb4k/smb4kmainwindow.cpp:954
+msgid "Wallet support is disabled"
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:196
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:163
+#, fuzzy
+msgid "Network Neighborhood"
+msgstr "Ricerca in rete"
+
+#: smb4k/smb4kmainwindow.cpp:212
+#, fuzzy
+msgid "The network browser could not be created."
+msgstr "Non è stato possibile creare la cartella %1."
+
+#: smb4k/smb4kmainwindow.cpp:237
+msgid "Network Search"
+msgstr "Ricerca in rete"
+
+#: smb4k/smb4kmainwindow.cpp:253
+#, fuzzy
+msgid "The search dialog could not be created."
+msgstr "Non è stato possibile creare la cartella %1."
+
+#: smb4k/smb4kmainwindow.cpp:293
+#, fuzzy
+msgid "The shares view could not be created."
+msgstr "Non è stato possibile creare la cartella %1."
+
+#: smb4k/smb4kmainwindow.cpp:469
+#, fuzzy
+msgid ""
+"<qt>Closing the main window will keep Smb4K running in the system tray. Use "
+"'Quit' from the 'File' menu to quit the application.</qt>"
+msgstr ""
+"Smb4K è ancora attivo nella barra di sistema anche se è stata chiusa la sua "
+"finestra principale. Per uscire completamente dal programma selezionare "
+"'Esci' nel menù 'File'."
+
+#: smb4k/smb4kmainwindow.cpp:471
+#, fuzzy
+msgid "Docking"
+msgstr "&Pannelli"
+
+#: smb4k/smb4kmainwindow.cpp:824
+#, fuzzy
+msgid "Looking for workgroups and domains..."
+msgstr "Ricerca gruppi e domini..."
+
+#: smb4k/smb4kmainwindow.cpp:830
+#, fuzzy
+msgid "Querying master browser for workgroups and domains..."
+msgstr "Ricerca gruppi e domini..."
+
+#: smb4k/smb4kmainwindow.cpp:836
+#, fuzzy
+msgid "Scanning broadcast areas for workgroups and domains..."
+msgstr "Ricerca gruppi e domini..."
+
+#: smb4k/smb4kmainwindow.cpp:842
+#, fuzzy
+msgid "Looking for workgroup members..."
+msgstr "Ricerca gruppi e domini..."
+
+#: smb4k/smb4kmainwindow.cpp:848
+#, fuzzy
+msgid "Querying host for list of shares..."
+msgstr "Ritento la ricezione dell'elenco delle condivisioni..."
+
+#: smb4k/smb4kmainwindow.cpp:854
+#, fuzzy
+msgid "Querying host for additional information..."
+msgstr "Ricezione informazioni aggiuntive..."
+
+#: smb4k/smb4kmainwindow.cpp:860
+msgid "Mounting share..."
+msgstr "Montaggio della condivisione..."
+
+#: smb4k/smb4kmainwindow.cpp:866
+msgid "Unmounting share..."
+msgstr "Smontaggio della condivisione..."
+
+#: smb4k/smb4kmainwindow.cpp:872
+msgid "Sending file to printer..."
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:878
+msgid "Synchronizing data..."
+msgstr "Sincronizzazione dei dati..."
+
+#: smb4k/smb4kmainwindow.cpp:884
+msgid "Generating preview..."
+msgstr "Generazione dell'anteprima..."
+
+#: smb4k/smb4kmainwindow.cpp:890
+msgid "Searching..."
+msgstr "Ricerca...."
+
+#: smb4k/smb4kmainwindow.cpp:896
+msgid "Done."
+msgstr "Fatto"
+
+#: smb4k/smb4kmainwindow.cpp:916
+msgid "Wallet is in use"
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:937
+msgid "Wallet support is temporarily disabled"
+msgstr ""
+
+#: smb4k/main.cpp:51
+msgid "The advanced network neighborhood browser for KDE."
+msgstr ""
+
+#: smb4k/main.cpp:54
+msgid ""
+"(c) 2003-2008, Alexander Reinholdt\n"
+"(c) 2004-2007, Massimo Callegari\n"
+"(c) 2004, Franck Babin"
+msgstr ""
+
+#: smb4k/main.cpp:72
+msgid "Alexander Reinholdt"
+msgstr ""
+
+#: smb4k/main.cpp:73 smb4k/main.cpp:76
+msgid "Developer"
+msgstr "Sviluppatore"
+
+#: smb4k/main.cpp:75
+msgid "Massimo Callegari"
+msgstr ""
+
+#: smb4k/main.cpp:80
+msgid "Leopold Palomo Avellaneda"
+msgstr ""
+
+#: smb4k/main.cpp:81
+msgid "Catalan translation"
+msgstr "Traduzione catalana"
+
+#: smb4k/main.cpp:83
+msgid "Radoslaw Zawartko"
+msgstr ""
+
+#: smb4k/main.cpp:84 smb4k/main.cpp:159
+msgid "Polish translation"
+msgstr "Traduzione polacca"
+
+#: smb4k/main.cpp:86
+msgid "Nick Chen"
+msgstr ""
+
+#: smb4k/main.cpp:87
+msgid "Chinese Simplified translation"
+msgstr "Traduzione cinese (semplificato)"
+
+#: smb4k/main.cpp:89
+msgid "Stanislav Yudin"
+msgstr ""
+
+#: smb4k/main.cpp:90
+msgid "Russian translation"
+msgstr "Traduzione russa"
+
+#: smb4k/main.cpp:92
+msgid "Marc Hansen"
+msgstr ""
+
+#: smb4k/main.cpp:93
+msgid "Swedish translation and intensive testing"
+msgstr "Traduzione svedese e testing intensivo"
+
+#: smb4k/main.cpp:95
+msgid "Giovanni Degani"
+msgstr ""
+
+#: smb4k/main.cpp:96 smb4k/main.cpp:147
+msgid "Brazilian Portuguese translation"
+msgstr "Traduzione portoghese-brasiliana"
+
+#: smb4k/main.cpp:98
+msgid "Ivan Petrouchtchak"
+msgstr ""
+
+#: smb4k/main.cpp:99
+msgid "Ukrainian translation"
+msgstr "Traduzione ucraina"
+
+#: smb4k/main.cpp:101
+msgid "Karoly Barcza"
+msgstr ""
+
+#: smb4k/main.cpp:102
+msgid "Hungarian translation"
+msgstr "Traduzione ungherese"
+
+#: smb4k/main.cpp:104
+msgid "Quique"
+msgstr ""
+
+#: smb4k/main.cpp:105 smb4k/main.cpp:129
+msgid "Spanish translation"
+msgstr "Traduzione spagnola"
+
+#: smb4k/main.cpp:107
+msgid "Michal Šulek"
+msgstr ""
+
+#: smb4k/main.cpp:108
+msgid "Slovak translation"
+msgstr "Traduzione slovacca"
+
+#: smb4k/main.cpp:110
+msgid "Nicolas Ternisien"
+msgstr ""
+
+#: smb4k/main.cpp:111
+msgid "French translation"
+msgstr "Traduzione francese"
+
+#: smb4k/main.cpp:113
+msgid "Toyohiro Asukai"
+msgstr ""
+
+#: smb4k/main.cpp:114
+msgid "Japanese translation"
+msgstr "Traduzione giapponese"
+
+#: smb4k/main.cpp:116
+msgid "Atanas Mavrov"
+msgstr ""
+
+#: smb4k/main.cpp:117
+msgid "Bulgarian translation"
+msgstr "Traduzione bulgara"
+
+#: smb4k/main.cpp:119
+msgid "Isidoro Russo"
+msgstr ""
+
+#: smb4k/main.cpp:120
+msgid "Italian translation"
+msgstr "Traduzione italiana"
+
+#: smb4k/main.cpp:122
+msgid "Nils Kristian Tomren"
+msgstr ""
+
+#: smb4k/main.cpp:123
+msgid "Norwegian translations"
+msgstr "Traduzione norvegese"
+
+#: smb4k/main.cpp:125
+msgid "Alois Nešpor"
+msgstr ""
+
+#: smb4k/main.cpp:126
+msgid "Czech translation"
+msgstr "Traduzione ceca"
+
+#: smb4k/main.cpp:128
+msgid "Martín Carr"
+msgstr ""
+
+#: smb4k/main.cpp:131
+msgid "Görkem Çetin"
+msgstr ""
+
+#: smb4k/main.cpp:132 smb4k/main.cpp:150
+msgid "Turkish translation"
+msgstr "Traduzione turca"
+
+#: smb4k/main.cpp:134
+msgid "Jack Liu"
+msgstr ""
+
+#: smb4k/main.cpp:135 smb4k/main.cpp:153
+msgid "Chinese Traditional translation"
+msgstr "Traduzione cinese tradizionale"
+
+#: smb4k/main.cpp:137
+msgid "Arnar Leósson"
+msgstr ""
+
+#: smb4k/main.cpp:138
+msgid "Icelandic translation"
+msgstr "Traduzione islandese"
+
+#: smb4k/main.cpp:140
+msgid "Michael Brinkloev"
+msgstr ""
+
+#: smb4k/main.cpp:141
+msgid "Danish translation"
+msgstr "Traduzione danese"
+
+#: smb4k/main.cpp:143
+msgid "Joop Beris"
+msgstr ""
+
+#: smb4k/main.cpp:144
+msgid "Dutch translation"
+msgstr "Traduzione olandese"
+
+#: smb4k/main.cpp:146
+msgid "Lamarque V. Souza"
+msgstr ""
+
+#: smb4k/main.cpp:149
+msgid "Serdar Soytetir"
+msgstr ""
+
+#: smb4k/main.cpp:152
+msgid "Wei-Lun Chao"
+msgstr ""
+
+#: smb4k/main.cpp:155
+msgid "Rashid N. Achilov"
+msgstr ""
+
+#: smb4k/main.cpp:156
+msgid "Testing of Smb4K under FreeBSD"
+msgstr "Testing di Smb4K con FreeBSD"
+
+#: smb4k/main.cpp:158
+msgid "Jerzy Trzeciak"
+msgstr ""
+
+#: smb4k/main.cpp:198
+msgid ""
+"<qt><p>Smb4K now uses a different configuration system. Thus, your old "
+"settings are obsolete and you have to reconfigure the application.</p><p>To "
+"assure a clean transition, the current configuration file will be removed.</"
+"p></qt>"
+msgstr ""
+
+#: smb4k/main.cpp:221
+msgid ""
+"<qt>Support for the program 'super' has been terminated. You have to "
+"reconfigure Smb4K.</qt>"
+msgstr ""
+
+#: smb4k/sharesview/smb4kshareslistview.cpp:66
+#: smb4k/configdlg/smb4ksambaoptions.cpp:676
+msgid "Item"
+msgstr "Elemento"
+
+#: smb4k/sharesview/smb4kshareslistview.cpp:68
+msgid "Login"
+msgstr "Login"
+
+#: smb4k/sharesview/smb4kshareslistview.cpp:70
+msgid "File System"
+msgstr "File System"
+
+#: smb4k/sharesview/smb4kshareslistview.cpp:71
+msgid "Owner"
+msgstr "Proprietario"
+
+#: smb4k/sharesview/smb4kshareslistview.cpp:72
+msgid "Free"
+msgstr "Libero"
+
+#: smb4k/sharesview/smb4kshareslistview.cpp:73
+msgid "Used"
+msgstr "Utilizzato"
+
+#: smb4k/sharesview/smb4kshareslistview.cpp:74
+msgid "Total"
+msgstr "Totale"
+
+#: smb4k/sharesview/smb4kshareslistview.cpp:75
+msgid "Usage"
+msgstr "Utilizzo"
+
+#: smb4k/sharesview/smb4ksharesviewtooltip.cpp:118
+msgid "Mount point:"
+msgstr "Punto di montaggio:"
+
+#: smb4k/sharesview/smb4ksharesviewtooltip.cpp:125
+#, fuzzy
+msgid "Owner:"
+msgstr "Proprietario"
+
+#: smb4k/sharesview/smb4ksharesviewtooltip.cpp:132
+#, fuzzy
+msgid "Login:"
+msgstr "Login"
+
+#: smb4k/sharesview/smb4ksharesviewtooltip.cpp:144
+msgid "File system:"
+msgstr "File System:"
+
+#: smb4k/sharesview/smb4ksharesviewtooltip.cpp:162
+msgid "Free:"
+msgstr "Libero:"
+
+#: smb4k/sharesview/smb4ksharesviewtooltip.cpp:168
+msgid "Used:"
+msgstr "Utilizzato:"
+
+#: smb4k/sharesview/smb4ksharesviewtooltip.cpp:174
+msgid "Total:"
+msgstr "Totale:"
+
+#: smb4k/sharesview/smb4ksharesviewtooltip.cpp:181
+msgid "Usage:"
+msgstr "Utilizzo:"
+
+#: smb4k/sharesview/smb4ksharesviewtooltip.cpp:189
+#: smb4k/sharesview/smb4ksharesviewtooltip.cpp:349
+msgid "This share is inaccessible."
+msgstr "Condivisione inaccessbile."
+
+#: smb4k/sharesview/smb4ksharesview_part.cpp:332
+#: smb4k/sharesview/smb4ksharesview_part.cpp:602
+#: smb4k/sharesview/smb4ksharesview_part.cpp:623
+#: smb4k/configdlg/smb4kconfigdialog.cpp:145
+msgid "Shares"
+msgstr "Condivisioni"
+
+#: smb4k/sharesview/smb4ksharesview_part.cpp:484
+#, fuzzy
+msgid "Smb4KSharesViewPart"
+msgstr "Visualizzazione delle Condivisioni"
+
+#: smb4k/sharesview/smb4ksharesview_part.cpp:486
+msgid "The shares view KPart of Smb4K"
+msgstr ""
+
+#: smb4k/configdlg/smb4kauthoptions.cpp:52
+msgid "Password Storage"
+msgstr "Archiviazione Password"
+
+#: smb4k/configdlg/smb4kauthoptions.cpp:69
+msgid "Default Login"
+msgstr "Nome utente predefinito"
+
+#: smb4k/configdlg/smb4kauthoptions.cpp:84
+#, fuzzy
+msgid "This user name is used by default to authenticate to a remote server."
+msgstr ""
+"Questo nome utente sarà utilizzato di default per l'autenticazione ad un "
+"server remoto"
+
+#: smb4k/configdlg/smb4kauthoptions.cpp:92
+msgid ""
+"This password is used by default to authenticate to a remote server. It may "
+"be empty."
+msgstr ""
+"Questa password sarà utilizzata di default per l'autenticazione ad un server "
+"remoto. Può essere vuota."
+
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:67
+#, fuzzy
+msgid "System Tray"
+msgstr "Ancoraggio nella barra di sistema"
+
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:84
+#, fuzzy
+msgid "Main Window & System Tray"
+msgstr "Finestra principale e barra di sistema"
+
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:96
+msgid "Remote Shares"
+msgstr "Condivisioni remote"
+
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:123
+msgid "Columns"
+msgstr "Colonne"
+
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:145
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:266
+msgid "Tooltips"
+msgstr "Suggerimenti"
+
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:175
+#, fuzzy
+msgid "View"
+msgstr "Vista a &Icone"
+
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:195
+msgid "Settings for the list view:"
+msgstr ""
+
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:296
+#, fuzzy
+msgid "Hidden Files && Directories"
+msgstr "File e directory nascosti"
+
+#: smb4k/configdlg/smb4kuserinterfaceoptions.cpp:312
+msgid "Preview Dialog"
+msgstr "Finestra Anteprima"
+
+#: smb4k/configdlg/smb4knetworkoptions.cpp:54
+msgid "Browse List"
+msgstr "Elenco degli host"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:143
+msgid "User Interface"
+msgstr "Interfaccia utente"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:147
+msgid "Samba"
+msgstr "Samba"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:149
+msgid "Super User"
+msgstr "Amministratore"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:342
+#, fuzzy
+msgid "[Network] The custom master browser has not been entered."
+msgstr "Il master browser da interrogare"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:357
+msgid "[Network] The broadcast areas have not been entered."
+msgstr ""
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:368
+#, fuzzy
+msgid "[Shares] The mount prefix is empty."
+msgstr "[Condivisioni] Il percorso di montaggio è vuoto.\n"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:383
+msgid "[Authentication] The default user name has not been entered."
+msgstr ""
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:394
+#, fuzzy
+msgid "[Samba] The file mask is empty."
+msgstr "[Condivisioni] Il percorso di montaggio è vuoto.\n"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:405
+msgid "[Samba] The directory mask is empty."
+msgstr ""
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:416
+#, fuzzy
+msgid "[Synchronization] The rsync prefix is empty."
+msgstr "[Condivisioni] Il percorso di montaggio è vuoto.\n"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:429
+#, fuzzy
+msgid ""
+"[Synchronization] The directory where partially transferred files should be "
+"stored is empty."
+msgstr "Conserva i file parzialmente trasferiti in"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:442
+msgid "[Synchronization] The exclude patterns have not been entered."
+msgstr ""
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:455
+#, fuzzy
+msgid "[Synchronization] The path of the exclude file is empty."
+msgstr "Conserva i file parzialmente trasferiti in"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:468
+msgid "[Synchronization] The include patterns have not been entered."
+msgstr ""
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:481
+#, fuzzy
+msgid "[Synchronization] The path of the include file is empty."
+msgstr "Conserva i file parzialmente trasferiti in"
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:500
+msgid "[Synchronization] The backup suffix has not been defined."
+msgstr ""
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:513
+msgid "[Synchronization] The backup directory is empty."
+msgstr ""
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:521
+#, kde-format
+msgid ""
+"<qt>The configuration could not be written, because one setting is "
+"incomplete:<ul>%1</ul>Please correct this issue.</qt>"
+msgstr ""
+
+#: smb4k/configdlg/smb4kconfigdialog.cpp:525
+#, kde-format
+msgid ""
+"<qt>The configuration could not be written, because %1 settings are "
+"incomplete:<ul>%2</ul>Please correct these issues.</qt>"
+msgstr ""
+
+#: smb4k/configdlg/smb4ksuperuseroptions.cpp:52
+msgid "Actions"
+msgstr "Azioni"
+
+#: smb4k/configdlg/smb4ksuperuseroptions.cpp:73
+msgid "Remove Entries"
+msgstr "Rimuovi le voci"
+
+#: smb4k/configdlg/smb4ksuperuseroptions.cpp:74
+msgid "Remove entries from the configuration file"
+msgstr ""
+
+#: smb4k/configdlg/smb4ksuperuseroptions.cpp:75
+msgid ""
+"Depending on your choice under \"Programs\", all entries that were written "
+"by Smb4K will be removed either from /etc/super.tab or /etc/sudoers. "
+"Additionally, all your choices under \"Actions\" will be cleared."
+msgstr ""
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:58
+msgid "Default Destination"
+msgstr "Destinazione Predefinita"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:74
+#: smb4k/configdlg/smb4krsyncoptions.cpp:337
+#: smb4k/configdlg/smb4krsyncoptions.cpp:432
+msgid "General"
+msgstr "Generale"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:121
+msgid "Links"
+msgstr "Collegamenti"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:158
+msgid "File Permissions, etc."
+msgstr "Permessi dei file, ecc."
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:202
+msgid "Copying"
+msgstr "Copia"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:214
+msgid "File Deletion"
+msgstr "Eliminazione del File"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:261
+msgid "Restrictions"
+msgstr "Restrizioni"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:277
+msgid "File Transfer"
+msgstr "Trasferimento dei File"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:325
+#, fuzzy
+msgid "File Deletion & Transfer"
+msgstr "Eliminazione && Trasferimento dei File"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:387
+msgid "Filter Rules"
+msgstr "Regole di filtraggio"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:398
+#, fuzzy
+msgid "Special filter rules:"
+msgstr "Regole di filtraggio"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:420
+msgid "Filtering"
+msgstr "Filtraggio"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:469
+msgid "Backup"
+msgstr "Backup"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:500
+msgid "Checksums"
+msgstr "Checksum"
+
+#: smb4k/configdlg/smb4krsyncoptions.cpp:536
+msgid "Advanced"
+msgstr "Avanzate"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:77
+msgid "General Options"
+msgstr "Opzioni generali"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:116
+#, fuzzy
+msgid "Remote Ports"
+msgstr "Condivisioni remote"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:154
+msgid "Signing State"
+msgstr ""
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:183
+#, fuzzy
+msgid "General Settings"
+msgstr "Opzioni generali"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:195
+#, fuzzy
+msgid "Common Options"
+msgstr "Opzioni Personalizzate"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:215
+msgid "Choose a different user"
+msgstr ""
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:257
+msgid "Choose a different group"
+msgstr ""
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:467
+#, fuzzy
+msgid "Advanced Options"
+msgstr "Opzioni CIFS avanzate"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:531
+msgid ""
+"<qt>If you experience problems due to insufficient privileges when mounting "
+"shares, you should enable the appropriate settings in the <b>Super User</b> "
+"configuration page.</qt>"
+msgstr ""
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:553
+#, fuzzy
+msgid "Mounting"
+msgstr "&Monta"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:565
+msgid "net"
+msgstr ""
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:588
+#, fuzzy
+msgid "smbclient"
+msgstr "Usa smbclient"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:604
+msgid " Bytes"
+msgstr "Bytes"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:612
+msgid "nmblookup"
+msgstr ""
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:632
+msgid "smbtree"
+msgstr ""
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:651
+#, fuzzy
+msgid "Client Programs"
+msgstr "Programmi"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:677
+msgid "Protocol"
+msgstr "Protocollo"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:679
+msgid "Write Access"
+msgstr "Accesso iin scrittura"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:681
+msgid "Kerberos"
+msgstr "Kerberos"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:682
+msgid "UID"
+msgstr "UID"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:683
+msgid "GID"
+msgstr "GID"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:684
+msgid "Port"
+msgstr "Porta"
+
+#: smb4k/configdlg/smb4ksambaoptions.cpp:694
+#, fuzzy
+msgid "Remove"
+msgstr "Rimuovi tutti"
+
+#: smb4k/configdlg/smb4kshareoptions.cpp:53
+msgid "Directories"
+msgstr "Cartelle"
+
+#: smb4k/configdlg/smb4kshareoptions.cpp:74
+#, fuzzy
+msgid "Mounting && Unmounting"
+msgstr "Montaggio e smontaggio"
+
+#: smb4k/configdlg/smb4kshareoptions.cpp:97
+msgid "Checks"
+msgstr "Controlli"
+
+#: utilities/smb4k_sudowriter.cpp:58
+msgid "This program writes to the sudoers file."
+msgstr ""
+
+#: utilities/smb4k_sudowriter.cpp:61
+msgid "(c) 2008, Alexander Reinholdt"
+msgstr ""
+
+#: utilities/smb4k_sudowriter.cpp:306
+msgid "smb4k_sudowriter"
+msgstr ""
+
+#: utilities/smb4k_sudowriter.cpp:319
+msgid "Adds an user to the sudoers file"
+msgstr ""
+
+#: utilities/smb4k_sudowriter.cpp:322
+msgid "Removes an user from the sudoers file"
+msgstr ""
+
+#: utilities/smb4k_sudowriter.cpp:338
+#, fuzzy
+msgid "The lock file could not be created."
+msgstr "Non è stato possibile creare la cartella %1."
+
+#: utilities/smb4k_sudowriter.cpp:343
+msgid "Another user is currently editing the sudoers file."
+msgstr ""
+
+#: utilities/smb4k_sudowriter.cpp:353 utilities/smb4k_sudowriter.cpp:383
+#: utilities/smb4k_sudowriter.cpp:398 utilities/smb4k_sudowriter.cpp:429
+#: utilities/smb4k_sudowriter.cpp:442 utilities/smb4k_sudowriter.cpp:572
+#: utilities/smb4k_sudowriter.cpp:668
+#, fuzzy
+msgid "Aborting."
+msgstr "&Annulla"
+
+#: utilities/smb4k_sudowriter.cpp:370
+msgid "No arguments given."
+msgstr ""
+
+#: utilities/smb4k_sudowriter.cpp:382
+msgid "An invalid user name has been provided."
+msgstr ""
+
+#: utilities/smb4k_sudowriter.cpp:397
+msgid "The sudoers file was not found."
+msgstr ""
+
+#: utilities/smb4k_sudowriter.cpp:414
+msgid "The sudoers file is irregular."
+msgstr ""
+
+#: utilities/smb4k_sudowriter.cpp:419
+msgid "Cannot access sudoers file."
+msgstr ""
+
+#: utilities/smb4k_sudowriter.cpp:441
+msgid "One or more utility programs could not be found."
+msgstr ""
+
+#: utilities/smb4k_sudowriter.cpp:571 utilities/smb4k_sudowriter.cpp:667
+msgid "The Smb4K section does not conform with the required format."
+msgstr ""
+
+#~ msgid "Buffer size exceeded"
+#~ msgstr "Dimensione del buffer superata"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>Some file permissions could not be determined.\n"
+#~ "Detailed information cannot be provided because there was no error "
+#~ "message.</qt>"
+#~ msgstr ""
+#~ "Non è stato possibile smontare questa condivisione, la stringa del punto "
+#~ "di montaggio è vuota."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>Some file permissions could not be determined.\n"
+#~ "Read the error message under \"Details\" to find out more.</qt>"
+#~ msgstr ""
+#~ "Non è stato possibile smontare questa condivisione, la stringa del punto "
+#~ "di montaggio è vuota."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The file \"%1\" is currently being edited by user %2. To avoid any "
+#~ "problems, access to this file is denied at the moment. Please try again "
+#~ "later.</qt>"
+#~ msgstr ""
+#~ "Il file %1 è in questo momento aperto dall'utente %2. Riprovare più tardi."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The temporary file \"%1\" could not be created.\n"
+#~ "Detailed information cannot be provided because there was no error "
+#~ "message.</qt>"
+#~ msgstr ""
+#~ "Non è stato possibile smontare questa condivisione, la stringa del punto "
+#~ "di montaggio è vuota."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The temporary file \"%1\" could not be created.\n"
+#~ "Read the error message under \"Details\" to find out more.</qt>"
+#~ msgstr ""
+#~ "Non è stato possibile smontare questa condivisione, la stringa del punto "
+#~ "di montaggio è vuota."
+
+#, fuzzy
+#~ msgid "<qt>The directory \"%1\" could not be found.</qt>"
+#~ msgstr "Non è stato possibile trovare la directory %1."
+
+#, fuzzy
+#~ msgid "<qt>The file \"%1\" could not be closed.</qt>"
+#~ msgstr "Non è stato possibile aprire il file %1."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The file \"%1\" could not be closed.\n"
+#~ "Read the error message under \"Details\" to find out more.</qt>"
+#~ msgstr ""
+#~ "Non è stato possibile smontare questa condivisione, la stringa del punto "
+#~ "di montaggio è vuota."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The list of supplementary group IDs could not be determined.</qt>"
+#~ msgstr "Non è stato possibile determinare l'utilizzazione del disco."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The list of supplementary group IDs could not be determined.\n"
+#~ "Read the error message under \"Details\" to find out more.</qt>"
+#~ msgstr ""
+#~ "Non è stato possibile smontare questa condivisione, la stringa del punto "
+#~ "di montaggio è vuota."
+
+#~ msgid "The path to the program \"smb4k_cat\""
+#~ msgstr "Percorso del programma \"smb4k_cat\""
+
+#~ msgid "The path to the program \"smb4k_mv\""
+#~ msgstr "Percorso del programma \"smb4k_mv\""
+
+#~ msgid "The path to the program \"super\" (optional)"
+#~ msgstr "Percorso del programma \"super\" (opzionale)"
+
+#~ msgid "Use the following program to gain super user privileges:"
+#~ msgstr ""
+#~ "Utilizza il seguente programma per ottenere i privilegi di amministratore:"
+
+#, fuzzy
+#~ msgid "super"
+#~ msgstr "Utente:"
+
+#~ msgid "Programs"
+#~ msgstr "Programmi"
+
+#~ msgid "Network Browser"
+#~ msgstr "Browser di rete"
+
+#~ msgid "Port:"
+#~ msgstr "Porta:"
+
+#~ msgid "Caching time of directory listings:"
+#~ msgstr "Tempo di caching degli elenchi delle cartelle:"
+
+#~ msgid "Use Unicode when communicating with the server"
+#~ msgstr "Usa Unicode per comunicare con il server"
+
+#, fuzzy
+#~ msgid "Use large file support"
+#~ msgstr "Attiva il supporto ai filesystem estesi"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>NOTE: You might need to enable support for either <i>sudo</i> or "
+#~ "<i>super</i> in the Super User page.</qt>"
+#~ msgstr ""
+#~ "Scegliendo il file system CIFS, potrebbe essere necessario abilitare il "
+#~ "supporto a <i>super</i> o <i>sudo</i> nella scheda Amministratore."
+
+#, fuzzy
+#~ msgid "User && Group"
+#~ msgstr "Utente e Gruppo"
+
+#, fuzzy
+#~ msgid "Charset && Codepage"
+#~ msgstr "Set di caratteri e Codici di pagina"
+
+#~ msgid "Permissions"
+#~ msgstr "Permessi"
+
+#~ msgid "Advanced SMBFS Options"
+#~ msgstr "Opzioni avanzate di SMBFS"
+
+#~ msgid "Allow dropping of files and directories onto shares"
+#~ msgstr "Consenti trascinamento di file e directory sulle condivisioni"
+
+#~ msgid "Allow dragging of shares"
+#~ msgstr "Consenti trascinamento delle condivisioni"
+
+#, fuzzy
+#~ msgid "Drag && Drop"
+#~ msgstr "Trascinamento"
+
+#~ msgid "auto"
+#~ msgstr "auto"
+
+#~ msgid "Open with &Konqueror"
+#~ msgstr "Apri con &Konqueror"
+
+#~ msgid ""
+#~ "_: NAME OF TRANSLATORS\n"
+#~ "Your names"
+#~ msgstr "Massimo Callegari"
+
+#~ msgid ""
+#~ "_: EMAIL OF TRANSLATORS\n"
+#~ "Your emails"
+#~ msgstr "massimocallegari@yahoo.it"
+
+#~ msgid "Remove &All"
+#~ msgstr "Rimuovi tutti"
+
+#~ msgid ""
+#~ "Up to KDE 3.3.x, KIO and Konqueror cannot handle CIFS shares. Konqueror "
+#~ "will hang if you try to access it.\n"
+#~ "Do you want to continue?"
+#~ msgstr ""
+#~ "Fino alla versione 3.3.x di KDE, KIO e Konqueror non supportano le "
+#~ "condivisioni CIFS. Konqueror andrà in blocco se si tenta di accedere ad "
+#~ "una di esse.\n"
+#~ "Si desidera continuare?"
+
+#~ msgid "Show the comment of a share"
+#~ msgstr "Mostra il commento di una condivisioni"
+
+#, fuzzy
+#~ msgid "Show the mount point of a share instead of its name"
+#~ msgstr "Mostra il punto di montaggio anziché il nome della condivisione"
+
+#, fuzzy
+#~ msgid "Allow the dropping of files and directories onto share icons"
+#~ msgstr "Mostra le stampanti condivise"
+
+#, fuzzy
+#~ msgid "Allow the dragging of share icons"
+#~ msgstr "Mostra le stampanti condivise"
+
+#, fuzzy
+#~ msgid "Show hidden files and directories when previewing a share"
+#~ msgstr "Forza l'eliminazione delle directory non nulle"
+
+#~ msgid "Show owner and group (SMBFS only)"
+#~ msgstr "Mostra proprietario e gruppo (solo SMBFS)"
+
+#~ msgid "Show login (CIFS only)"
+#~ msgstr "Mostra login (solo CIFS)"
+
+#~ msgid "Method for searching for remote hosts"
+#~ msgstr "Metodo per la ricerca degli host"
+
+#~ msgid "The mount prefix"
+#~ msgstr "Prefisso di montaggio"
+
+#~ msgid "Force the subdirectories created by Smb4K to be lowercase"
+#~ msgstr ""
+#~ "Forza l'uso di caratteri minuscoli nei nomi delle sottocartelle create da "
+#~ "Smb4K"
+
+#~ msgid "Unmount the shares owned by the user on exit"
+#~ msgstr "Smonta tutte le condivisioni dell'utente quando esci"
+
+#~ msgid "Remount shares"
+#~ msgstr "Condivisioni montate"
+
+#, fuzzy
+#~ msgid "Allow the unmounting of shares owned by other users"
+#~ msgstr "Consenti lo smontaggio di condivisioni di altri utenti"
+
+#~ msgid "Use a wallet to store authentication data"
+#~ msgstr "Usa un portafogli per salvare le informazioni di autenticazione."
+
+#~ msgid "Remember passwords if no wallet is used"
+#~ msgstr "Ricorda la password se non viene usato un portafogli"
+
+#~ msgid "The NetBIOS name of this computer"
+#~ msgstr "Nome NetBIOS di questo computer"
+
+#~ msgid "The socket options"
+#~ msgstr "Opzioni del socket"
+
+#~ msgid "The NetBIOS scope"
+#~ msgstr "Scope di NetBIOS"
+
+#~ msgid "The remote SMB port"
+#~ msgstr "Porta SMB remota"
+
+#~ msgid "Use Kerberos for authentication"
+#~ msgstr "Usa Kerberos per l'autenticazione"
+
+#, fuzzy
+#~ msgid "Use machine account for login"
+#~ msgstr "Usa il nome utente predefinito"
+
+#, fuzzy
+#~ msgid "The file system that is used for mounting remote shares"
+#~ msgstr ""
+#~ "Utilizza il seguente file system per montare le condivisioni remote:"
+
+#~ msgid "The charset used by the client"
+#~ msgstr "Set di caratteri usato dal client"
+
+#, fuzzy
+#~ msgid "The user ID that is to be used for mounting"
+#~ msgstr ""
+#~ "Utilizza il seguente file system per montare le condivisioni remote:"
+
+#, fuzzy
+#~ msgid "The group ID that is to be used for mounting"
+#~ msgstr ""
+#~ "Utilizza il seguente file system per montare le condivisioni remote:"
+
+#~ msgid "Unicode support"
+#~ msgstr "Supporto Unicode"
+
+#~ msgid "Long file support"
+#~ msgstr "Supporto file lunghi"
+
+#, fuzzy
+#~ msgid "Name resolve order used by smbclient"
+#~ msgstr "Ordine di risoluzione:"
+
+#~ msgid "Prefix for synchronization"
+#~ msgstr "Prefisso per la sincronizzazione"
+
+#~ msgid "Use archive mode"
+#~ msgstr "Utilizza modalità archivio"
+
+#, fuzzy
+#~ msgid "Skip files that are newer in the target directory"
+#~ msgstr "Salta i file che sono più recenti nella destinazione"
+
+#~ msgid "Don't send implied directories with --relative"
+#~ msgstr "Non inviare le directory sottintese con --relative"
+
+#~ msgid "Preserve owner (super user only)"
+#~ msgstr "Mantieni il proprietario (solo Amministratore)"
+
+#, fuzzy
+#~ msgid "Also delete excluded files from destination directory"
+#~ msgstr "Elimina anche i file nella destinazione esclusi"
+
+#~ msgid "Only delete a maximum number of files"
+#~ msgstr "Cancella solo un numero massimo di file"
+
+#~ msgid "Don't transfer any file smaller than SIZE"
+#~ msgstr "Non trasferire file più piccoli di SIZE"
+
+#, fuzzy
+#~ msgid "The directory where to put a partially transferred file into."
+#~ msgstr "Conserva i file parzialmente trasferiti in"
+
+#~ msgid "Exclude files that match a certain pattern"
+#~ msgstr "Escludi i file che corrispondono a questo schema"
+
+#~ msgid "Read exclude patterns from a file"
+#~ msgstr "Preleva gli schemi di esclusione da un file"
+
+#~ msgid "Do not exclude files matching a certain pattern"
+#~ msgstr "Non escludere i file che corrispondono a questo schema"
+
+#~ msgid "Read include patterns from a file"
+#~ msgstr "Preleva gli schemi di inclusione da un file"
+
+#~ msgid "Use -FF filter rule"
+#~ msgstr "Usa la regola di filtraggio -FF"
+
+#~ msgid "Do not cross file system boundaries"
+#~ msgstr "Non oltrepassare i limiti del file system"
+
+#~ msgid "Delay updates until the end of the transfer"
+#~ msgstr "Ritarda l'aggiornamento alla fine del trasferimento"
+
+#~ msgid "Use a suffix for backups"
+#~ msgstr "Usa un suffisso per i backup"
+
+#~ msgid "Force a fixed checksum block-size"
+#~ msgstr "Forza una dimensione fissa dei blocchi per il checksum"
+
+#~ msgid "Set block/file checksum seed"
+#~ msgstr "Imposta il seme per il checksum del blocco/file"
+
+#~ msgid "Skip files based on a checksum"
+#~ msgstr "Salta file basati su un checksum"
+
+#~ msgid "The program that should be used to gain super user privileges"
+#~ msgstr "Programma utilizzato per ottenere i privilegi di amministratore"
+
+#~ msgid "Use super user privileges to unmount inaccessible shares"
+#~ msgstr ""
+#~ "Usa i privilegi di Amministratore per smontare le condivisioni "
+#~ "inaccessibili"
+
+#, fuzzy
+#~ msgid ""
+#~ "The browse list could not be retrieved.\n"
+#~ "Read the error message under \"Details\" to find out more."
+#~ msgstr ""
+#~ "Non è stato possibile smontare questa condivisione, la stringa del punto "
+#~ "di montaggio è vuota."
+
+#~ msgid "The file \"%1\" could not be read."
+#~ msgstr "Non è stato possibile leggere il file \"%1\"."
+
+#, fuzzy
+#~ msgid ""
+#~ "The file \"%1\" could not be read.\n"
+#~ "Read the error message under \"Details\" to find out more."
+#~ msgstr ""
+#~ "Non è stato possibile smontare questa condivisione, la stringa del punto "
+#~ "di montaggio è vuota."
+
+#, fuzzy
+#~ msgid "The file \"%1\" could not be written."
+#~ msgstr "Non è stato possibile leggere il file %1."
+
+#, fuzzy
+#~ msgid ""
+#~ "IP addresses are not supported with this search method. Please choose "
+#~ "\"Use nmblookup\" in the configuration dialog and try again."
+#~ msgstr ""
+#~ "Il metodo di ricerca selezionato (smbclient) non può gestire "
+#~ "correttamente gli indirizzi IP. Per favore, scegliere \"Usa nmblookup\" "
+#~ "nella finestra di configurazione e ritentare."
+
+#~ msgid "Shares Vie&w"
+#~ msgstr "Visualizzazion&e delle Condivisioni"
+
+#~ msgid "List Vie&w"
+#~ msgstr "Vista a &Lista"
+
+#, fuzzy
+#~ msgid "Jump to shares view"
+#~ msgstr "Passa alla Visualizzazione delle Condivisioni"
+
+#, fuzzy
+#~ msgid "Jump to network browser"
+#~ msgstr "Passa al Browser di Rete"
+
+#, fuzzy
+#~ msgid "Jump to search dialog"
+#~ msgstr "Passa alla Finestra di Ricerca"
+
+#~ msgid "Docking in System Tray"
+#~ msgstr "Ancoraggio nella barra di sistema"
+
+#~ msgid "Exiting..."
+#~ msgstr "Uscita...."
+
+#~ msgid "Querying current master browser..."
+#~ msgstr "Interrogazione master browser corrente..."
+
+#~ msgid "Querying master browser %1..."
+#~ msgstr "Interrogazione master browser %1..."
+
+#~ msgid "Scanning broadcast areas..."
+#~ msgstr "Scansione indirizzi di broadcast..."
+
+#~ msgid "Opening workgroup..."
+#~ msgstr "Apertura del gruppo di lavoro...."
+
+#~ msgid "Retrieving list of shares..."
+#~ msgstr "Ricezione elenco delle condivisioni..."
+
+#~ msgid "Printing file..."
+#~ msgstr "Stampa del file..."
+
+#~ msgid "The search failed."
+#~ msgstr "La ricerca è fallita."
+
+#~ msgid ""
+#~ "Smb4K is an advanced network neighborhood browser and a\n"
+#~ "front end to the programs of the Samba software suite."
+#~ msgstr ""
+#~ "Smb4K è un browser di rete avanzato e un'interfaccia alle applicazioni "
+#~ "del pacchetto software Samba."
+
+#~ msgid "If no wallet is used, remember authentication data during run time"
+#~ msgstr ""
+#~ "Se non si utilizza alcun portafogli, conserva le password durante "
+#~ "l'esecuzione"
+
+#~ msgid "Use default login"
+#~ msgstr "Usa il nome utente predefinito"
+
+#~ msgid "Show IPC$ shares"
+#~ msgstr "Mostra le condivisioni IPC$"
+
+#~ msgid "Show ADMIN$ shares"
+#~ msgstr "Mostra le condivisioni ADMIN$"
+
+#~ msgid "Show type"
+#~ msgstr "Mostra il tipo"
+
+#~ msgid "Show IP address"
+#~ msgstr "Mostra l'indirizzo IP"
+
+#~ msgid "Show tooltip with information about a network item"
+#~ msgstr "Mostra i suggerimenti circa gli elementi della rete"
+
+#~ msgid "Show tooltip with information about a share"
+#~ msgstr "Mostra i suggerimenti circa le condivisioni"
+
+#~ msgid ""
+#~ "Smb4K uses \"nmblookup\" by default to search for remote hosts. This "
+#~ "method is very reliable but fails sometimes if your network neighborhood "
+#~ "is configured uncommonly. In this case you should try to use \"smbclient"
+#~ "\"."
+#~ msgstr ""
+#~ "Smb4K utilizza  \"nmblookup\" come impostazione predefinita per le "
+#~ "ricerche in rete. Questo metodo, solitamente affidabile, può non "
+#~ "funzionare se alcune macchine nella rete hanno configurazioni non comuni. "
+#~ "In questo caso, utilizzare il metodo \"smbclient\"."
+
+#~ msgid "Use nmblookup (recommended)"
+#~ msgstr "Usa nmblookup (raccomandato)"
+
+#, fuzzy
+#~ msgid "Smb4KConfigDialog"
+#~ msgstr "Smb4KMontaggio"
+
+#~ msgid "Rsync prefix:"
+#~ msgstr "Prefisso Rsync:"
+
+#~ msgid "Recurse into directories"
+#~ msgstr "Ricorsione delle directory"
+
+#~ msgid "Skip files that are newer in target directory"
+#~ msgstr "Salta i file che sono più recenti nella destinazione"
+
+#, fuzzy
+#~ msgid ""
+#~ "The rules defined below will be added to the \"rsync\" command as they "
+#~ "are. Thus, you have to start with the --filter=... argument."
+#~ msgstr ""
+#~ "Le regole definite sopra saranno aggiunte al comando <i>rsync</i> così "
+#~ "come appaiono. Per questo motivo, è necessario iniziare con l'argomento "
+#~ "'--filter'. Per maggiori informazioni, leggere la prima pagina del "
+#~ "manuale di rsync."
+
+#~ msgid "Kerberos:"
+#~ msgstr "Kerberos:"
+
+#~ msgid "Custom"
+#~ msgstr "Personalizzato"

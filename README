@@ -1,0 +1,168 @@
+Smb4K README (version 0.10.x)
+============================
+
+Smb4K is an SMB/CIFS share browser for KDE. It uses the Samba software suite to
+access the SMB/CIFS shares of the local network neighborhood. Its purpose is to
+provide a program that's easy to use and has as many features as possible.
+
+What's new?
+-----------
+- Smb4K is a KDE 4.x-only application now.
+- It has a cmake build system.
+- The support of Solaris and IRIX has been removed. If you want to have them 
+  back, please join the Smb4K team and help with development.
+- Support of the deprecated SMBFS file system under Linux has been terminated.
+- Support of the suid program 'super' has been terminated.
+- The network search through the search dialog has been improved. You can now 
+  search for shares (and mount them).
+- The Konqueror plugin has not been ported yet.
+
+Features
+--------
+- Scanning for (active) workgroups, hosts, and shares
+- Mounting and unmounting of remote shares, including unmounting all shares
+  at once
+- Access to the files of a mounted share using Konqueror
+- Auto-detection of external mounts/unmounts
+- Mounting of recently used shares on start-up
+- Miscellaneous infos about the remote shares
+- Network search
+- WINS server support
+- Preview of SMB/CIFS shares
+- Selectable look-up and search methods
+- Default login
+- Ability to execute mount and umount SUID root
+- Special handling of homes shares
+- Ability to bookmark favorite shares
+- System tray icon
+- Support of advanced Samba options
+- Support of printer shares
+(- Konqueror plugin) *** not ported yet ***
+- KWallet support
+- Synchronization of a remote share with a local copy and vice versa
+- Ability to define custom options for individual servers and shares
+
+Translations
+------------
+For the list of currently supported translations please visit Smb4K's home page
+at http://smb4k.berlios.de/information.html.
+
+Supported operating systems
+---------------------------
+Smb4K officially supports Linux (kernel >= 2.2.x) and since version 0.4.1 also
+FreeBSD (>= 4.10-RELEASE). Smb4K might also run on other operating system.
+
+Requirements
+------------
+This version of Smb4K depends on the development files of the following
+libraries:
+- kdelibs & kdebase-runtime (>= 4.0.0): The powerful Open Source graphical
+  desktop environment for Unix workstations [http://www.kde.org]
+- Qt (>= 4.3.0): A multiplatform C++ application development framework.
+  [http://www.trolltech.com]
+- X.org or XFree86 - Freely redistributable implementations of the X Window
+  System [http://www.x.org or http://www.xfree86.org]
+- An implementation of the C library
+
+Make sure that you also have installed all header files of the libraries Qt
+and KDE are depending on. Recent versions of automake and autoconf are also
+needed.
+
+For a proper operation, you implicitly need:
+- Support of the /proc filesystem compiled into your kernel if you are using
+  Linux
+- A sh-compatible shell (bash, dash, ash, etc.) with an existing link /bin/sh
+  or the sh shell itself.
+- Samba (3.x) including mount.cifs and umount.cifs (preferably >= 1.10)
+  [http://www.samba.org]
+- GNU grep [http://www.gnu.org/directory/grep.html]
+- GNU awk (GAWK) or similar [http://www.gnu.org/directory/gawk.html]
+- GNU sed [http://www.gnu.org/directory/sed.html]
+- GNU findutils (xargs) [http://www.gnu.org/directory/findutils.html]
+
+To enable full functionality, you may also want to install these packages:
+- sudo [http://www.sudo.ws/sudo/]
+- Tex Live or similar (dvips) [http://www.tug.org/texlive/]
+- GNU enscript [http://www.gnu.org/directory/enscript.html]
+- rsync [http://rsync.samba.org/]
+
+Compilation and Installation
+----------------------------
+1. Extract the source tarball:
+
+   $ tar xvfj smb4k-0.10.0alpha.tar.bz2
+
+2. Create a build directory:
+
+   $ mkdir smb4k_build
+
+   At the moment this is not yet mandatory, but strongly adviced.
+
+3. Change into the build directory:
+
+   $ cd smb4k_build
+
+4. Configure the source:
+
+   $ cmake -DCMAKE_INSTALL_PREFIX=$(kde4-config --prefix) \
+     -DCMAKE_BUILD_TYPE=Release . [path_to_source]
+
+   Replace [path_to_source] with the path to the source code.
+
+5. Now compile and install Smb4K:
+
+   $ make && sudo make install
+
+   If you want to be able to remove Smb4K with your package manager later on,
+   use checkinstall instead of make install. Its package should be present in
+   your distribution's repository.
+
+   $ make && sudo checkinstall
+
+Debugging the Source Code
+-------------------------
+If you experience crashes or similar and want to debug the source code yourself,
+compile the source code with debugging symbols. The procedure is similar to the
+one described in the "Compilation and Installation" section above except that
+you need to modify the configure command slightly:
+
+    $ cmake -DCMAKE_INSTALL_PREFIX=$(kde4-config --prefix) \
+      -DCMAKE_BUILD_TYPE=Debug . [path_to_source]
+
+If you found the cause for a bug, please let us know. A backtrace or a patch
+will be much appreciated.
+
+Help and Support
+----------------
+If you encounter problems when using Smb4K and need help or support, please
+read the 'Trouble Shooting' section of the handbook first. You can access the
+handbook from the 'Help' menu by selecting the 'Smb4K Handbook' entry or by
+pressing the F1 key. An online version of the handbook is also available at
+http://smb4k.berlios.de/handbook/index.html. Most of the common problems that
+arise when working with Smb4K are already covered there. If that's not the
+case, we recommend that you contact the Smb4K-general mailing list at
+https://lists.berlios.de/mailman/listinfo/smb4k-general to get help. Some of
+the developers and many users are subscribed and can help.
+
+Bugs
+----
+You are strongly encouraged to send a bug report to
+http://developer.berlios.de/bugs/?group_id=769, if you find a problem. Please
+do not forget to include information about the version of Smb4K and the
+operating system you are using (Linux or FreeBSD). It might also help if you
+mention the distribution you have installed (Linux).
+If you experienced a crash, we would appreciate if you sent us the backtrace,
+i.e. the output provided by KDE's crash dialog. Please see the section
+"Debugging the Source Code" for a description how to make sure useful
+debugging output is returned.
+
+Copyright
+---------
+Smb4K is released under the terms of the GNU General Public License (GPL),
+version 2. A copy of the license is available in the file COPYING.
+
+Latest Version
+--------------
+The latest stable version of Smb4K is always available from the Smb4K home page
+at http://smb4k.berlios.de.
+

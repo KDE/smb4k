@@ -1,0 +1,29 @@
+<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
+<kpartgui name="smb4knetworkbrowser_part" version="1">
+<MenuBar>
+  <Menu name="network"><text>&amp;Network</text>
+    <Action name="rescan_action"/>
+    <Action name="abort_action"/>
+    <Separator/>
+    <Action name="mount_manually_action"/>
+    <Separator/>
+    <Action name="authentication_action"/>
+    <Action name="custom_action"/>
+    <Action name="preview_action"/>
+    <Action name="print_action"/>
+    <Action name="mount_action"/>
+  </Menu>
+</MenuBar>
+<ToolBar name="networkToolBar">
+  <Action name="rescan_action"/>
+  <Action name="abort_action"/>
+  <Separator/>
+  <Action name="mount_manually_action"/>
+  <Separator/>
+  <Action name="authentication_action"/>
+  <Action name="custom_action"/>
+  <Action name="preview_action"/>
+  <Action name="print_action"/>
+  <Action name="mount_action"/>
+</ToolBar>
+</kpartgui>

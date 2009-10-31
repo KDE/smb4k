@@ -1,0 +1,10 @@
+You are strongly encouraged to commit a bug report to
+http://developer.berlios.de/bugs/?group_id=769, if you find a problem. 
+Please do not forget to include:
+(a) a detailed description of what you did to receive the issue you are 
+    reporting
+(b) the error message or backtrace.
+(c) the version of Smb4K you are using
+(d) the operating system and distribution (in case of Linux) you are using
+(e) all additional information that might be helpful to reproduce and 
+    fix the bug
