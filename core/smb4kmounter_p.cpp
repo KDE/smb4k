@@ -35,93 +35,93 @@
 #include <smb4kdefs.h>
 
 
-CheckThread::CheckThread() : QThread()
+CheckThread::CheckThread( Smb4KShare *share, QObject *parent )
+: QThread( parent ), m_share( share )
 {
+  Q_ASSERT( m_share );
 }
 
 
 CheckThread::~CheckThread()
 {
-  // Do not delete the share here, because it's not
+  // Do not delete the m_share here, because it's not
   // owned by this class!
 }
 
 
-void CheckThread::check( Smb4KShare *share )
+void CheckThread::check()
 {
-  Q_ASSERT( share );
-
   struct statvfs vfs;
 
-  if ( statvfs( share->canonicalPath(), &vfs ) == -1 )
+  if ( statvfs( m_share->canonicalPath(), &vfs ) == -1 )
   {
-    share->setInaccessible( true );
-    share->setFreeDiskSpace( -1 );
-    share->setTotalDiskSpace( -1 );
+    m_share->setInaccessible( true );
+    m_share->setFreeDiskSpace( -1 );
+    m_share->setTotalDiskSpace( -1 );
   }
   else
   {
-    share->setInaccessible( false );
+    m_share->setInaccessible( false );
 
     double kB_block = (double)(vfs.f_bsize / 1000);
     double total = (double)(vfs.f_blocks*kB_block);
     double free = (double)(vfs.f_bfree*kB_block);
 
-    share->setFreeDiskSpace( free );
-    share->setTotalDiskSpace( total );
+    m_share->setFreeDiskSpace( free );
+    m_share->setTotalDiskSpace( total );
   }
 
   // Determine the file system. Expect under Solaris, we need
   // to use statfs for that.
   struct statfs fs;
 
-  if ( statfs( share->canonicalPath(), &fs ) == -1 )
+  if ( statfs( m_share->canonicalPath(), &fs ) == -1 )
   {
-    share->setFileSystem( Smb4KShare::Unknown );
+    m_share->setFileSystem( Smb4KShare::Unknown );
   }
   else
   {
 #ifndef __FreeBSD__
     if ( (uint)fs.f_type == 0xFF534D42 )
     {
-      share->setFileSystem( Smb4KShare::CIFS );
+      m_share->setFileSystem( Smb4KShare::CIFS );
     }
     else if ( (uint)fs.f_type == 0x517B )
     {
-      share->setFileSystem( Smb4KShare::SMBFS );
+      m_share->setFileSystem( Smb4KShare::SMBFS );
     }
     else
     {
-      share->setFileSystem( Smb4KShare::Unknown );
+      m_share->setFileSystem( Smb4KShare::Unknown );
     }
 #else
     // FIXME: Can we also use f_type??
     if ( !strncmp( fs.f_fstypename, "smbfs", strlen( fs.f_fstypename ) ) )
     {
-      share->setFileSystem( Smb4KShare::SMBFS );
+      m_share->setFileSystem( Smb4KShare::SMBFS );
     }
     else
     {
-      share->setFileSystem( Smb4KShare::Unknown );
+      m_share->setFileSystem( Smb4KShare::Unknown );
     }
 #endif
   }
 
-  // Determine the owner and the group of the share if
+  // Determine the owner and the group of the m_share if
   // necessary.
-  if ( !share->uidIsSet() || !share->gidIsSet() )
+  if ( !m_share->uidIsSet() || !m_share->gidIsSet() )
   {
     struct stat buf;
 
-    if ( lstat( share->canonicalPath(), &buf ) == -1 )
+    if ( lstat( m_share->canonicalPath(), &buf ) == -1 )
     {
-      share->setUID( (uid_t)-1 );
-      share->setGID( (gid_t)-1 );
+      m_share->setUID( (uid_t)-1 );
+      m_share->setGID( (gid_t)-1 );
     }
     else
     {
-      share->setUID( buf.st_uid );
-      share->setGID( buf.st_gid );
+      m_share->setUID( buf.st_uid );
+      m_share->setGID( buf.st_gid );
     }
   }
   else

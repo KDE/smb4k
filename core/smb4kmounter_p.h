@@ -64,9 +64,13 @@ class CheckThread : public QThread
   Q_OBJECT
 
   public:
-    CheckThread();
+    CheckThread( Smb4KShare *share,
+                 QObject *parent = 0 );
     ~CheckThread();
-    void check( Smb4KShare *share );
+    void check();
+
+  private:
+    Smb4KShare *m_share;
 };
 
 

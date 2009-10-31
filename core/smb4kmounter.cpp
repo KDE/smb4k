@@ -1341,9 +1341,9 @@ void Smb4KMounter::check( Smb4KShare *share )
 {
   if ( share )
   {
-    CheckThread thread;
+    CheckThread thread( share, this );
     thread.start();
-    thread.check( share );
+    thread.check();
     thread.wait( 100 );
   }
   else
