@@ -68,25 +68,12 @@ K_EXPORT_COMPONENT_FACTORY( libsmb4knetworkbrowser, Smb4KNetworkBrowserPartFacto
 
 
 Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject *parent, const QStringList &args )
-: KParts::Part( parent ), m_mode( Normal ), m_bookmark_shortcut( true )
+: KParts::Part( parent ), m_bookmark_shortcut( true )
 {
   // Parse arguments:
   for ( int i = 0; i < args.size(); ++i )
   {
-    if ( args.at( i ).startsWith( "konqplugin" ) )
-    {
-      if ( QString::compare( args.at( i ).section( "=", 1, 1 ).trimmed(), "\"true\"" ) == 0 )
-      {
-        m_mode = KonqPlugin;
-      }
-      else
-      {
-        m_mode = Normal;
-      }
-
-      continue;
-    }
-    else if ( args.at( i ).startsWith( "bookmark_shortcut" ) )
+    if ( args.at( i ).startsWith( "bookmark_shortcut" ) )
     {
       if ( QString::compare( args.at( i ).section( "=", 1, 1 ).trimmed(), "\"false\"" ) == 0 )
       {
@@ -160,9 +147,6 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject
   connect( Smb4KCore::scanner(),   SIGNAL( hostInserted( Smb4KHost * ) ),
            this,                   SLOT( slotInsertHost( Smb4KHost * ) ) );
 
-  connect( Smb4KCore::mounter(),   SIGNAL( updated() ),
-           this,                   SLOT( slotMarkMountedShares() ) );
-
   connect( Smb4KCore::ipScanner(), SIGNAL( ipAddress( Smb4KHost * ) ),
            this,                   SLOT( slotAddIPAddress( Smb4KHost * ) ) );
 
@@ -177,6 +161,12 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject
 
   connect( Smb4KCore::mounter(),   SIGNAL( finished( Smb4KShare *, int ) ),
            this,                   SLOT( slotMounterFinished( Smb4KShare *, int ) ) );
+
+  connect( Smb4KMounter::self(),   SIGNAL( mounted( Smb4KShare * ) ),
+           this,                   SLOT( slotShareMounted( Smb4KShare * ) ) );
+
+  connect( Smb4KMounter::self(),   SIGNAL( unmounted( Smb4KShare * ) ),
+           this,                   SLOT( slotShareUnmounted( Smb4KShare * ) ) );
 
   connect( kapp,                   SIGNAL( aboutToQuit() ),
            this,                   SLOT( slotAboutToQuit() ) );
@@ -284,24 +274,6 @@ void Smb4KNetworkBrowserPart::setupActions()
   m_menu->addAction( preview_action );
   m_menu->addAction( print_action );
   m_menu->addAction( mount_action );
-
-  // If we are in Konqueror plugin mode, an unmount action
-  // is also needed:
-  if ( m_mode == KonqPlugin )
-  {
-    KAction *umount_action = new KAction( KIcon( "media-eject" ), i18n( "&Unmount" ),
-                             actionCollection() );
-    umount_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_U ) );
-    connect( umount_action, SIGNAL( triggered( bool ) ), this, SLOT( slotUnmount( bool ) ) );
-
-    actionCollection()->addAction( "konq_umount_action", umount_action );
-
-    umount_action->setEnabled( false );
-  }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -337,7 +309,14 @@ void Smb4KNetworkBrowserPart::loadSettings()
     ++it;
   }
 
-  // The rest of the settings will be applied on the fly.
+  // Does anything has to be changed with the marked shares?
+  for ( int i = 0; i < mountedSharesList()->size(); ++i )
+  {
+    // We do not need to use slotShareUnmounted() here, too,
+    // because slotShareMounted() will take care of everything
+    // we need here.
+    slotShareMounted( mountedSharesList()->at( i ) );
+  }
 }
 
 
@@ -450,225 +429,64 @@ void Smb4KNetworkBrowserPart::slotItemSelectionChanged()
 
     if ( browser_item )
     {
-      switch ( m_mode )
+      switch ( browser_item->type() )
       {
-        case Normal:
+        case Smb4KNetworkBrowserItem::Host:
         {
-          switch ( browser_item->type() )
-          {
-            case Smb4KNetworkBrowserItem::Host:
-            {
-              // Change the text of the rescan action:
-              actionCollection()->action( "rescan_action" )->setText( i18n( "Scan Compute&r" ) );
+          // Change the text of the rescan action:
+          actionCollection()->action( "rescan_action" )->setText( i18n( "Scan Compute&r" ) );
 
-              // Enable/disable the actions:
-              actionCollection()->action( "bookmark_action" )->setEnabled( false );
-              actionCollection()->action( "authentication_action" )->setEnabled( true );
-              actionCollection()->action( "preview_action" )->setEnabled( false );
-              actionCollection()->action( "mount_action" )->setEnabled( false );
-              actionCollection()->action( "print_action" )->setEnabled( false );
-              actionCollection()->action( "custom_action" )->setEnabled( true );
-
-              break;
-            }
-            case Smb4KNetworkBrowserItem::Share:
-            {
-              // Change the text of the rescan action:
-              actionCollection()->action( "rescan_action" )->setText( i18n( "Scan Compute&r" ) );
-
-              // Enable/disable the actions:
-              actionCollection()->action( "authentication_action" )->setEnabled( true );
-
-              if ( !browser_item->shareItem()->isPrinter() )
-              {
-                actionCollection()->action( "bookmark_action" )->setEnabled( true );
-                actionCollection()->action( "preview_action" )->setEnabled( true );
-                actionCollection()->action( "mount_action" )->setEnabled( true );
-                actionCollection()->action( "print_action" )->setEnabled( false );
-                actionCollection()->action( "custom_action" )->setEnabled( true );
-              }
-              else
-              {
-                Smb4KPrintDialog *dlg = m_widget->findChild<Smb4KPrintDialog *>( "PrintDialog_"+browser_item->shareItem()->unc() );
-
-                actionCollection()->action( "bookmark_action" )->setEnabled( false );
-                actionCollection()->action( "preview_action" )->setEnabled( false );
-                actionCollection()->action( "mount_action" )->setEnabled( false );
-                actionCollection()->action( "print_action" )->setEnabled( !dlg );
-                actionCollection()->action( "custom_action" )->setEnabled( false );
-              }
-
-              break;
-            }
-            default:
-            {
-              // Change the text of the rescan action:
-              actionCollection()->action( "rescan_action" )->setText( i18n( "Scan Wo&rkgroup" ) );
-
-              actionCollection()->action( "bookmark_action" )->setEnabled( false );
-              actionCollection()->action( "authentication_action" )->setEnabled( false );
-              actionCollection()->action( "preview_action" )->setEnabled( false );
-              actionCollection()->action( "mount_action" )->setEnabled( false );
-              actionCollection()->action( "print_action" )->setEnabled( false );
-              actionCollection()->action( "custom_action" )->setEnabled( false );
-
-              break;
-            }
-          }
+          // Enable/disable the actions:
+          actionCollection()->action( "bookmark_action" )->setEnabled( false );
+          actionCollection()->action( "authentication_action" )->setEnabled( true );
+          actionCollection()->action( "preview_action" )->setEnabled( false );
+          actionCollection()->action( "mount_action" )->setEnabled( false );
+          actionCollection()->action( "print_action" )->setEnabled( false );
+          actionCollection()->action( "custom_action" )->setEnabled( true );
 
           break;
         }
-        case KonqPlugin:
+        case Smb4KNetworkBrowserItem::Share:
         {
-          switch ( browser_item->type() )
+          // Change the text of the rescan action:
+          actionCollection()->action( "rescan_action" )->setText( i18n( "Scan Compute&r" ) );
+
+          // Enable/disable the actions:
+          actionCollection()->action( "authentication_action" )->setEnabled( true );
+
+          if ( !browser_item->shareItem()->isPrinter() )
           {
-            case Smb4KNetworkBrowserItem::Host:
-            {
-              // Change the text of the rescan action:
-              actionCollection()->action( "rescan_action" )->setText( i18n( "Scan Compute&r" ) );
+            actionCollection()->action( "bookmark_action" )->setEnabled( true );
+            actionCollection()->action( "preview_action" )->setEnabled( true );
+            actionCollection()->action( "mount_action" )->setEnabled( true );
+            actionCollection()->action( "print_action" )->setEnabled( false );
+            actionCollection()->action( "custom_action" )->setEnabled( true );
+          }
+          else
+          {
+            Smb4KPrintDialog *dlg = m_widget->findChild<Smb4KPrintDialog *>( "PrintDialog_"+browser_item->shareItem()->unc() );
 
-              // Enable/disable the actions:
-              actionCollection()->action( "bookmark_action" )->setEnabled( false );
-              actionCollection()->action( "authentication_action" )->setEnabled( true );
-              actionCollection()->action( "preview_action" )->setEnabled( false );
-              actionCollection()->action( "mount_action" )->setEnabled( false );
-              actionCollection()->action( "konq_umount_action" )->setEnabled( false );
-              actionCollection()->action( "print_action" )->setEnabled( false );
-              actionCollection()->action( "custom_action" )->setEnabled( true );
-
-              kDebug() << "Does the exchange of actions work?" << endl;
-
-              // Get the action in the menu.
-              QList<QAction *> actions = m_menu->menu()->actions();
-
-              if ( actions.contains( actionCollection()->action( "konq_umount_action" ) ) )
-              {
-                m_menu->removeAction( actionCollection()->action( "konq_umount_action" ) );
-                m_menu->insertAction( actionCollection()->action( "print_action" ),
-                                      actionCollection()->action( "mount_action" ) );
-              }
-              else
-              {
-                // Nothing to do
-              }
-
-              break;
-            }
-            case Smb4KNetworkBrowserItem::Share:
-            {
-              // Change the text of the rescan action:
-              actionCollection()->action( "rescan_action" )->setText( i18n( "Scan Compute&r" ) );
-
-              // Enable/disable the actions:
-              actionCollection()->action( "authentication_action" )->setEnabled( true );
-
-              // Get the action in the menu.
-              QList<QAction *> actions = m_menu->menu()->actions();
-
-              if ( !browser_item->shareItem()->isPrinter() )
-              {
-                actionCollection()->action( "bookmark_action" )->setEnabled( true );
-                actionCollection()->action( "preview_action" )->setEnabled( true );
-                actionCollection()->action( "mount_action" )->setEnabled( true );
-                actionCollection()->action( "konq_umount_action" )->setEnabled( true );
-                actionCollection()->action( "print_action" )->setEnabled( false );
-                actionCollection()->action( "custom_action" )->setEnabled( true );
-
-                if ( !browser_item->shareItem()->isMounted() )
-                {
-                  kDebug() << "Does the exchange of actions work?" << endl;
-
-                  if ( actions.contains( actionCollection()->action( "konq_umount_action" ) ) )
-                  {
-                    m_menu->removeAction( actionCollection()->action( "konq_umount_action" ) );
-                    m_menu->insertAction( actionCollection()->action( "print_action" ),
-                                          actionCollection()->action( "mount_action" ) );
-                  }
-                  else
-                  {
-                    // Nothing to do
-                  }
-                }
-                else
-                {
-                  kDebug() << "Does the exchange of actions work?" << endl;
-
-                  if ( actions.contains( actionCollection()->action( "mount_action" ) ) )
-                  {
-                    m_menu->removeAction( actionCollection()->action( "mount_action" ) );
-                    m_menu->insertAction( actionCollection()->action( "print_action" ),
-                                          actionCollection()->action( "konq_umount_action" ) );
-                  }
-                  else
-                  {
-                    // Nothing to do
-                  }
-                }
-              }
-              else
-              {
-                Smb4KPrintDialog *dlg = m_widget->findChild<Smb4KPrintDialog *>( "PrintDialog_"+browser_item->shareItem()->unc() );
-
-                actionCollection()->action( "bookmark_action" )->setEnabled( false );
-                actionCollection()->action( "preview_action" )->setEnabled( false );
-                actionCollection()->action( "mount_action" )->setEnabled( false );
-                actionCollection()->action( "konq_umount_action" )->setEnabled( false );
-                actionCollection()->action( "print_action" )->setEnabled( !dlg );
-                actionCollection()->action( "custom_action" )->setEnabled( false );
-
-                kDebug() << "Does the exchange of actions work?" << endl;
-
-                if ( actions.contains( actionCollection()->action( "konq_umount_action" ) ) )
-                {
-                  m_menu->removeAction( actionCollection()->action( "konq_umount_action" ) );
-                  m_menu->insertAction( actionCollection()->action( "print_action" ),
-                                        actionCollection()->action( "mount_action" ) );
-                }
-                else
-                {
-                  // Nothing to do
-                }
-              }
-
-              break;
-            }
-            default:
-            {
-              // Change the text of the rescan action:
-              actionCollection()->action( "rescan_action" )->setText( i18n( "Scan Wo&rkgroup" ) );
-
-              actionCollection()->action( "bookmark_action" )->setEnabled( false );
-              actionCollection()->action( "authentication_action" )->setEnabled( false );
-              actionCollection()->action( "preview_action" )->setEnabled( false );
-              actionCollection()->action( "mount_action" )->setEnabled( false );
-              actionCollection()->action( "konq_umount_action" )->setEnabled( false );
-              actionCollection()->action( "print_action" )->setEnabled( false );
-              actionCollection()->action( "custom_action" )->setEnabled( false );
-
-              // Get the action in the menu.
-              QList<QAction *> actions = m_menu->menu()->actions();
-
-              kDebug() << "Does the exchange of actions work?" << endl;
-
-              if ( actions.contains( actionCollection()->action( "konq_umount_action" ) ) )
-              {
-                m_menu->removeAction( actionCollection()->action( "konq_umount_action" ) );
-                m_menu->insertAction( actionCollection()->action( "print_action" ),
-                                      actionCollection()->action( "mount_action" ) );
-              }
-              else
-              {
-                // Nothing to do
-              }
-
-              break;
-            }
+            actionCollection()->action( "bookmark_action" )->setEnabled( false );
+            actionCollection()->action( "preview_action" )->setEnabled( false );
+            actionCollection()->action( "mount_action" )->setEnabled( false );
+            actionCollection()->action( "print_action" )->setEnabled( !dlg );
+            actionCollection()->action( "custom_action" )->setEnabled( false );
           }
 
           break;
         }
         default:
         {
+          // Change the text of the rescan action:
+          actionCollection()->action( "rescan_action" )->setText( i18n( "Scan Wo&rkgroup" ) );
+
+          actionCollection()->action( "bookmark_action" )->setEnabled( false );
+          actionCollection()->action( "authentication_action" )->setEnabled( false );
+          actionCollection()->action( "preview_action" )->setEnabled( false );
+          actionCollection()->action( "mount_action" )->setEnabled( false );
+          actionCollection()->action( "print_action" )->setEnabled( false );
+          actionCollection()->action( "custom_action" )->setEnabled( false );
+
           break;
         }
       }
@@ -690,119 +508,48 @@ void Smb4KNetworkBrowserPart::slotItemPressed( QTreeWidgetItem *item, int /*colu
   // Enable/disable the actions.
   Smb4KNetworkBrowserItem *browser_item = static_cast<Smb4KNetworkBrowserItem *>( item );
 
-  switch ( m_mode )
+  if ( browser_item )
   {
-    case Normal:
+    if ( !browser_item && m_widget->selectedItems().size() == 0 )
     {
-      if ( !browser_item && m_widget->selectedItems().size() == 0 )
-      {
-        actionCollection()->action( "rescan_action" )->setText( i18n( "Scan Netwo&rk" ) );
-        actionCollection()->action( "bookmark_action" )->setEnabled( false );
-        actionCollection()->action( "authentication_action" )->setEnabled( false );
-        actionCollection()->action( "preview_action" )->setEnabled( false );
-        actionCollection()->action( "mount_action" )->setEnabled( false );
-        actionCollection()->action( "print_action" )->setEnabled( false );
-        actionCollection()->action( "custom_action" )->setEnabled( false );
-      }
-      else
-      {
-        if ( browser_item )
-        {
-          switch ( browser_item->type() )
-          {
-            case Smb4KNetworkBrowserItem::Share:
-            {
-              if ( browser_item->shareItem()->isPrinter() )
-              {
-                Smb4KPrintDialog *dlg = m_widget->findChild<Smb4KPrintDialog *>( "PrintDialog_"+browser_item->shareItem()->unc() );
-                actionCollection()->action( "print_action" )->setEnabled( !dlg );
-              }
-              else
-              {
-                // Do nothing
-              }
-
-              break;
-            }
-            default:
-            {
-              break;
-            }
-          }
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-
-      break;
+      actionCollection()->action( "rescan_action" )->setText( i18n( "Scan Netwo&rk" ) );
+      actionCollection()->action( "bookmark_action" )->setEnabled( false );
+      actionCollection()->action( "authentication_action" )->setEnabled( false );
+      actionCollection()->action( "preview_action" )->setEnabled( false );
+      actionCollection()->action( "mount_action" )->setEnabled( false );
+      actionCollection()->action( "print_action" )->setEnabled( false );
+      actionCollection()->action( "custom_action" )->setEnabled( false );
     }
-    case KonqPlugin:
+    else
     {
-      if ( !browser_item && m_widget->selectedItems().size() ==  0 )
+      if ( browser_item )
       {
-        actionCollection()->action( "rescan_action" )->setText( i18n( "Scan Netwo&rk" ) );
-        actionCollection()->action( "bookmark_action" )->setEnabled( false );
-        actionCollection()->action( "authentication_action" )->setEnabled( false );
-        actionCollection()->action( "preview_action" )->setEnabled( false );
-        actionCollection()->action( "mount_action" )->setEnabled( false );
-        actionCollection()->action( "konq_umount_action" )->setEnabled( false );
-        actionCollection()->action( "print_action" )->setEnabled( false );
-        actionCollection()->action( "custom_action" )->setEnabled( false );
-
-        QList<QAction *> actions = m_menu->menu()->actions();
-
-        kDebug() << "Does the exchange of actions work?" << endl;
-
-        if ( actions.contains( actionCollection()->action( "konq_umount_action" ) ) )
+        switch ( browser_item->type() )
         {
-          m_menu->removeAction( actionCollection()->action( "konq_umount_action" ) );
-          m_menu->insertAction( actionCollection()->action( "print_action" ),
-                                actionCollection()->action( "mount_action" ) );
-        }
-        else
-        {
-          // Nothing to do
+          case Smb4KNetworkBrowserItem::Share:
+          {
+            if ( browser_item->shareItem()->isPrinter() )
+            {
+              Smb4KPrintDialog *dlg = m_widget->findChild<Smb4KPrintDialog *>( "PrintDialog_"+browser_item->shareItem()->unc() );
+              actionCollection()->action( "print_action" )->setEnabled( !dlg );
+            }
+            else
+            {
+              // Do nothing
+            }
+
+            break;
+          }
+          default:
+          {
+            break;
+          }
         }
       }
       else
       {
-        if ( browser_item )
-        {
-          switch ( browser_item->type() )
-          {
-            case Smb4KNetworkBrowserItem::Share:
-            {
-              if ( browser_item->shareItem()->isPrinter() )
-              {
-                Smb4KPrintDialog *dlg = m_widget->findChild<Smb4KPrintDialog *>( "PrintDialog_"+browser_item->shareItem()->unc() );
-                actionCollection()->action( "print_action" )->setEnabled( !dlg );
-              }
-              else
-              {
-                // Do nothing
-              }
-
-              break;
-            }
-            default:
-            {
-              break;
-            }
-          }
-        }
-        else
-        {
-          // Do nothing
-        }
+        // Do nothing
       }
-
-      break;
-    }
-    default:
-    {
-      break;
     }
   }
 }
@@ -2120,117 +1867,6 @@ void Smb4KNetworkBrowserPart::slotMount( bool /*checked*/ )
 }
 
 
-void Smb4KNetworkBrowserPart::slotUnmount( bool /*checked*/ )
-{
-  switch ( m_mode )
-  {
-    case KonqPlugin:
-    {
-      Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( m_widget->currentItem() );
-
-      if ( item )
-      {
-        switch ( item->type() )
-        {
-          case Smb4KNetworkBrowserItem::Share:
-          {
-            if ( item->shareItem()->isMounted() )
-            {
-              // FIXME: Implement forced unmounting?
-              Smb4KCore::mounter()->unmountShare( item->shareItem(), false, false );
-            }
-            else
-            {
-              // Do nothing
-            }
-
-            break;
-          }
-          default:
-          {
-            break;
-          }
-        }
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-}
-
-
-void Smb4KNetworkBrowserPart::slotMarkMountedShares()
-{
-  QTreeWidgetItemIterator it( m_widget );
-
-  while ( *it )
-  {
-    Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( *it );
-
-    switch ( item->type() )
-    {
-      case Smb4KNetworkBrowserItem::Share:
-      {
-        // Get the list of shares with the same UNC.
-        QList<Smb4KShare *> list = findShareByUNC( item->shareItem()->unc( QUrl::None ) );
-
-        if ( !list.isEmpty() )
-        {
-          for ( int i = 0; i < list.size(); ++i )
-          {
-            // Find the right share.
-            if ( (!list.at( i )->isForeign() || Smb4KSettings::showAllShares()) && !item->shareItem()->isMounted() )
-            {
-              item->setMounted( list.at( i ), Smb4KNetworkBrowserItem::Mounted );
-              break;
-            }
-            else if ( (list.at( i )->isForeign() && !Smb4KSettings::showAllShares()) && item->shareItem()->isMounted() )
-            {
-              item->setMounted( item->shareItem(), Smb4KNetworkBrowserItem::NotMounted );
-
-              // This is a change due to a foreign share. Continue until
-              // we hit the share owned by the user (if it exists).
-              continue;
-            }
-            else
-            {
-              continue;
-            }
-          }
-        }
-        else
-        {
-          if ( item->shareItem()->isMounted() )
-          {
-            item->setMounted( item->shareItem(), Smb4KNetworkBrowserItem::NotMounted );
-          }
-          else
-          {
-            // Do nothing
-          }
-        }
-
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-
-    ++it;
-  }
-}
-
-
 void Smb4KNetworkBrowserPart::slotScannerAboutToStart( Smb4KBasicNetworkItem *item, int process )
 {
   switch ( process )
@@ -2250,6 +1886,12 @@ void Smb4KNetworkBrowserPart::slotScannerAboutToStart( Smb4KBasicNetworkItem *it
     {
       Smb4KHost *host = static_cast<Smb4KHost *>( item );
       emit setStatusBarText( i18n( "Looking for shares provided by host %1..." ).arg( host->hostName() ) );
+      break;
+    }
+    case Smb4KScanner::LookupInfo:
+    {
+      Smb4KHost *host = static_cast<Smb4KHost *>( item );
+      emit setStatusBarText( i18n( "Looking for more information about host %1..." ).arg( host->hostName() ) );
       break;
     }
     default:
@@ -2285,6 +1927,112 @@ void Smb4KNetworkBrowserPart::slotMounterFinished( Smb4KShare */*share*/, int /*
   // Do not change the state of the rescan action here, because it has
   // nothing to do with the mounter.
   actionCollection()->action( "abort_action" )->setEnabled( false );
+}
+
+
+void Smb4KNetworkBrowserPart::slotShareMounted( Smb4KShare *share )
+{
+  QList<QTreeWidgetItem *> list = m_widget->findItems( share->shareName(), Qt::MatchFixedString|Qt::MatchRecursive, Smb4KNetworkBrowser::Network );
+
+  if ( !list.isEmpty() )
+  {
+    for ( int i = 0; i < list.size(); ++i )
+    {
+      Smb4KNetworkBrowserItem *browser_item = static_cast<Smb4KNetworkBrowserItem *>( list.at( i ) );
+
+      if ( browser_item->type() == Smb4KNetworkBrowserItem::Share &&
+           QString::compare( browser_item->shareItem()->workgroupName(), share->workgroupName(), Qt::CaseInsensitive ) == 0 &&
+           QString::compare( browser_item->shareItem()->hostName(), share->hostName(), Qt::CaseInsensitive ) == 0 )
+      {
+        if ( !share->isForeign() || Smb4KSettings::showAllShares() )
+        {
+          browser_item->setMounted( share, Smb4KNetworkBrowserItem::Mounted );
+          break;
+        }
+        else if ( share->isForeign() && !Smb4KSettings::showAllShares() )
+        {
+          browser_item->setMounted( browser_item->shareItem(), Smb4KNetworkBrowserItem::NotMounted );
+          break;
+        }
+        else
+        {
+          continue;
+        }
+      }
+      else
+      {
+        continue;
+      }
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KNetworkBrowserPart::slotShareUnmounted( Smb4KShare *share )
+{
+  QList<QTreeWidgetItem *> list = m_widget->findItems( share->shareName(), Qt::MatchFixedString|Qt::MatchRecursive, Smb4KNetworkBrowser::Network );
+
+  if ( !list.isEmpty() )
+  {
+    for ( int i = 0; i < list.size(); ++i )
+    {
+      Smb4KNetworkBrowserItem *browser_item = static_cast<Smb4KNetworkBrowserItem *>( list.at( i ) );
+
+      if ( browser_item->type() == Smb4KNetworkBrowserItem::Share &&
+           QString::compare( browser_item->shareItem()->workgroupName(), share->workgroupName(), Qt::CaseInsensitive ) == 0 &&
+           QString::compare( browser_item->shareItem()->hostName(), share->hostName(), Qt::CaseInsensitive ) == 0 )
+      {
+        // Check if we really have to unmark the share.
+        QList<Smb4KShare *> mounted_shares = findShareByUNC( browser_item->shareItem()->unc() );
+
+        if ( !mounted_shares.isEmpty() )
+        {
+          bool have_only_foreign = true;
+
+          for ( int j = 0; j < mounted_shares.size(); ++j )
+          {
+            if ( !mounted_shares.at( j )->isForeign() )
+            {
+              have_only_foreign = false;
+              break;
+            }
+            else
+            {
+              continue;
+            }
+          }
+
+          if ( have_only_foreign && !Smb4KSettings::showAllShares() )
+          {
+            browser_item->setMounted( browser_item->shareItem(), Smb4KNetworkBrowserItem::NotMounted );
+          }
+          else
+          {
+            // Do nothing
+          }
+
+          break;
+        }
+        else
+        {
+          browser_item->setMounted( browser_item->shareItem(), Smb4KNetworkBrowserItem::NotMounted );
+          break;
+        }
+      }
+      else
+      {
+        continue;
+      }
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
