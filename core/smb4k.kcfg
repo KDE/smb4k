@@ -774,7 +774,7 @@
       <default>false</default>
     </entry>
     <entry name="MaximalTransferSize" type="Int">
-      <label>Value for MamximalTransferSize config entry</label>
+      <label>Value for MaximalTransferSize config entry</label>
       <whatsthis></whatsthis>
       <min>0</min>
       <default>0</default>
@@ -944,7 +944,7 @@
   <group name="SuperUser">
     <entry name="UseForceUnmount" type="Bool">
       <label>Use super user privileges to force the unmounting of (inaccessible) shares</label>
-      <whatsthis>Unmount a share under Linux by force. This even works if the file system is "busy", because it is immediately detached from the file system hierarchy and all references to it are cleaned up later when it is not busy anymore. Linux kernel 2.4.11 or later is needed to take advantage of this feature. Use with case! Note, that you will need the root password to write the necessary changes to the configuration file.</whatsthis>
+      <whatsthis>Unmount a share under Linux by force. This even works if the file system is "busy", because it is immediately detached from the file system hierarchy and all references to it are cleaned up later when it is not busy anymore. Linux kernel 2.4.11 or later is needed to take advantage of this feature. Use with care! Note, that you will need the root password to write the necessary changes to the configuration file.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="AlwaysUseSuperUser" type="Bool">
