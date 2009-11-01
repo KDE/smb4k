@@ -33,8 +33,6 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/config.h.cmake
 add_subdirectory( core )
 add_subdirectory( smb4k )
 add_subdirectory( utilities )
-add_subdirectory( po )
-add_subdirectory( doc )
 add_subdirectory( data )
 
 ########### KIO slave ###################
