@@ -80,7 +80,7 @@ void SearchThread::slotProcessOutput()
     // Process output from smbtree.
     QString workgroup_name;
 
-    foreach ( QString line, stdout )
+    foreach ( const QString &line, stdout )
     {
       if ( !line.contains( "added interface", Qt::CaseInsensitive ) &&
            !line.contains( "tdb(", Qt::CaseInsensitive ) &&

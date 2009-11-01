@@ -193,7 +193,7 @@ void Smb4KIPAddressScanner::slotAboutToQuit()
   // Stop all processes.
   QStringList keys = m_cache.keys();
 
-  foreach ( QString key, keys )
+  foreach ( const QString &key, keys )
   {
     IPScanThread *thread = m_cache.object( key );
 
@@ -243,7 +243,7 @@ void Smb4KIPAddressScanner::slotThreadFinished()
 {
   QStringList keys = m_cache.keys();
 
-  foreach ( QString key, keys )
+  foreach ( const QString &key, keys )
   {
     IPScanThread *thread = m_cache.object( key );
 

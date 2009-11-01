@@ -102,7 +102,7 @@ void Smb4KScanner::abort( Smb4KBasicNetworkItem *item, int process )
   {
     QStringList keys = m_cache.keys();
 
-    foreach ( QString key, keys )
+    foreach ( const QString &key, keys )
     {
       BasicScanThread *thread = m_cache.object( key );
 
@@ -186,7 +186,7 @@ bool Smb4KScanner::isAborted( Smb4KBasicNetworkItem *item, int process )
   {
     QStringList keys = m_cache.keys();
 
-    foreach ( QString key, keys )
+    foreach ( const QString &key, keys )
     {
       if ( !aborted )
       {
@@ -272,7 +272,7 @@ void Smb4KScanner::abortAll()
   {
     QStringList keys = m_cache.keys();
 
-    foreach ( QString key, keys )
+    foreach ( const QString &key, keys )
     {
       BasicScanThread *thread = m_cache.object( key );
 
@@ -314,7 +314,7 @@ bool Smb4KScanner::isRunning( Smb4KBasicNetworkItem *item, int process )
   {
     QStringList keys = m_cache.keys();
 
-    foreach ( QString key, keys )
+    foreach ( const QString &key, keys )
     {
       if ( !running )
       {
@@ -1037,7 +1037,7 @@ void Smb4KScanner::slotThreadFinished()
 {
   QStringList keys = m_cache.keys();
 
-  foreach ( QString key, keys )
+  foreach ( const QString &key, keys )
   {
     BasicScanThread *thread = m_cache.object( key );
 

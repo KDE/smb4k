@@ -75,7 +75,7 @@ void PreviewThread::slotProcessOutput()
 
   QStringList list = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( "\n", QString::SkipEmptyParts );
 
-  foreach ( QString line, list )
+  foreach ( const QString &line, list )
   {
     if ( line.contains( "blocks of size" ) || line.contains( "Domain=[" ) )
     {

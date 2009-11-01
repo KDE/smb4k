@@ -79,11 +79,11 @@ void Smb4KSolidInterface::init()
   // Get the buttons
   QList<Solid::Device> list_btn = Solid::Device::listFromType( Solid::DeviceInterface::Button, QString() );
 
-  foreach ( Solid::Device device_btn, list_btn )
+  foreach ( const Solid::Device &device_btn, list_btn )
   {
     if ( device_btn.isValid() )
     {
-      Solid::Button *button = device_btn.as<Solid::Button>();
+      const Solid::Button *button = device_btn.as<Solid::Button>();
       connect( button, SIGNAL( pressed( Solid::Button::ButtonType, const QString & ) ),
                this,   SLOT( slotButtonPressed( Solid::Button::ButtonType, const QString & ) ) );
 
@@ -101,11 +101,11 @@ void Smb4KSolidInterface::init()
   // Get the AC adapter(s)
   QList<Solid::Device> list_ac = Solid::Device::listFromType( Solid::DeviceInterface::AcAdapter, QString() );
 
-  foreach ( Solid::Device device_ac, list_ac )
+  foreach ( const Solid::Device &device_ac, list_ac )
   {
     if ( device_ac.isValid() )
     {
-      Solid::AcAdapter *acadapter = device_ac.as<Solid::AcAdapter>();
+      const Solid::AcAdapter *acadapter = device_ac.as<Solid::AcAdapter>();
       connect( acadapter, SIGNAL( plugStateChanged( bool, const QString & ) ),
                this,     SLOT( slotAcPlugStateChanged( bool, const QString & ) ) );
 
@@ -122,11 +122,11 @@ void Smb4KSolidInterface::init()
   // Get the primary batteries
   QList<Solid::Device> list_bat = Solid::Device::listFromType( Solid::DeviceInterface::Battery, QString() );
 
-  foreach ( Solid::Device device_bat, list_bat )
+  foreach ( const Solid::Device &device_bat, list_bat )
   {
     if ( device_bat.isValid() )
     {
-      Solid::Battery *battery = device_bat.as<Solid::Battery>();
+      const Solid::Battery *battery = device_bat.as<Solid::Battery>();
 
       switch ( battery->type() )
       {

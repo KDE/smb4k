@@ -248,7 +248,7 @@ void Smb4KSynchronizer::abortAll()
   {
     QStringList keys = m_cache.keys();
 
-    foreach ( QString key, keys )
+    foreach ( const QString &key, keys )
     {
       SynchronizationThread *thread = m_cache.object( key );
 
@@ -283,7 +283,7 @@ void Smb4KSynchronizer::slotThreadFinished()
 {
   QStringList keys = m_cache.keys();
 
-  foreach ( QString key, keys )
+  foreach ( const QString &key, keys )
   {
     SynchronizationThread *thread = m_cache.object( key );
 

@@ -1202,7 +1202,7 @@ bool Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool noMessage )
         QStringList before = stderr.split( "\n" );
         QStringList after;
 
-        foreach ( QString str, before )
+        foreach ( const QString &str, before )
         {
           if ( !str.trimmed().startsWith( "smb4k_umount(" ) &&
                !str.trimmed().startsWith( "sudo: unable to resolve host" ) )

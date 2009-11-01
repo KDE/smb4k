@@ -85,7 +85,7 @@ void LookupDomainsThread::processLookupDomains()
   {
     Smb4KWorkgroup workgroup;
 
-    foreach ( QString line, stdout )
+    foreach ( const QString &line, stdout )
     {
       if ( line.startsWith( "Looking up status of" ) )
       {
@@ -184,7 +184,7 @@ void LookupDomainsThread::processQueryMaster()
   {
     Smb4KWorkgroup workgroup;
 
-    foreach ( QString line, stdout )
+    foreach ( const QString &line, stdout )
     {
       if ( line.trimmed().startsWith( "Enumerating" ) )
       {
@@ -232,7 +232,7 @@ void LookupDomainsThread::processScanBroadcastAreas()
   Smb4KWorkgroup workgroup;
   Smb4KHost host;
 
-  foreach ( QString line, stdout )
+  foreach ( const QString &line, stdout )
   {
     if ( line.startsWith( "Looking up status of" ) )
     {
@@ -491,7 +491,7 @@ void LookupMembersThread::slotProcessFinished( int exitCode, QProcess::ExitStatu
       Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>( m_item );
       Smb4KHost host;
 
-      foreach ( QString line, stdout )
+      foreach ( const QString &line, stdout )
       {
         if ( line.trimmed().startsWith( "Enumerating" ) )
         {
@@ -640,7 +640,7 @@ void LookupSharesThread::slotProcessFinished( int exitCode, QProcess::ExitStatus
         Smb4KHost *host = static_cast<Smb4KHost *>( m_item );
         Smb4KShare share;
 
-        foreach ( QString line, stdout )
+        foreach ( const QString &line, stdout )
         {
           if ( line.trimmed().startsWith( "Enumerating" ) )
           {

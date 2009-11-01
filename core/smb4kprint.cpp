@@ -267,7 +267,7 @@ void Smb4KPrint::abortAll()
   {
     QStringList keys = m_cache.keys();
 
-    foreach ( QString key, keys )
+    foreach ( const QString &key, keys )
     {
       PrintThread *thread = m_cache.object( key );
 
@@ -328,7 +328,7 @@ void Smb4KPrint::slotThreadFinished()
 {
   QStringList keys = m_cache.keys();
 
-  foreach ( QString key, keys )
+  foreach ( const QString &key, keys )
   {
     PrintThread *thread = m_cache.object( key );
 

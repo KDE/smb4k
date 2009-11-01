@@ -204,7 +204,7 @@ void Smb4KPreviewer::abortAll()
   {
     QStringList keys = m_cache.keys();
 
-    foreach ( QString key, keys )
+    foreach ( const QString &key, keys )
     {
       PreviewThread *thread = m_cache.object( key );
 
@@ -278,7 +278,7 @@ void Smb4KPreviewer::slotThreadFinished()
 {
   QStringList keys = m_cache.keys();
 
-  foreach ( QString key, keys )
+  foreach ( const QString &key, keys )
   {
     PreviewThread *thread = m_cache.object( key );
 

@@ -263,7 +263,7 @@ void Smb4KSearch::abortAll()
   {
     QStringList keys = m_cache.keys();
 
-    foreach ( QString key, keys )
+    foreach ( const QString &key, keys )
     {
       SearchThread *thread = m_cache.object( key );
 
@@ -435,7 +435,7 @@ void Smb4KSearch::slotThreadFinished()
 {
   QStringList keys = m_cache.keys();
 
-  foreach ( QString key, keys )
+  foreach ( const QString &key, keys )
   {
     SearchThread *thread = m_cache.object( key );
 
