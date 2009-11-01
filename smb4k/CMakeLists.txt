@@ -3,8 +3,8 @@ include_directories(
   ${KDE4_INCLUDES}
   ${KDE4_INCLUDE_DIR}
   ${QT_INCLUDES}
-  ${CMAKE_SOURCE_DIR}/core
-  ${CMAKE_BINARY_DIR}/core )
+  ${CMAKE_CURRENT_SOURCE_DIR}/../core
+  ${CMAKE_CURRENT_BINARY_DIR}/../core )
 
 add_subdirectory( icons )
 add_subdirectory( configdlg )
