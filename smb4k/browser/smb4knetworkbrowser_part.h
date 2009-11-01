@@ -69,7 +69,6 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param args                A list of arguments. At the moment the following
      *                            arguments are recognized:
-     *                            konqplugin="true"|"false"
      *                            bookmark_shortcut="true"|"false"
      */
     Smb4KNetworkBrowserPart( QWidget *parentWidget = 0,
@@ -297,20 +296,6 @@ class Smb4KNetworkBrowserPart : public KParts::Part
     void slotMount( bool checked );
 
     /**
-     * Unmount a share. This slot is only relevant in the Konqueror plugin
-     * mode.
-     *
-     * @param checked             Is TRUE if the action is checked (not used here).
-     */
-    void slotUnmount( bool checked );
-
-    /**
-     * This slot is invoked by the Smb4KMounter::updated() signal and changes
-     * the text and icon of all shares that are already mounted.
-     */
-    void slotMarkMountedShares();
-
-    /**
      * This slot is connected to the Smb4KScanner::aboutToStart() signal.
      *
      * @param item                The Smb4KBasicNetworkItem object
@@ -351,6 +336,22 @@ class Smb4KNetworkBrowserPart : public KParts::Part
                               int process );
 
     /**
+     * This slot is called whenever a share has been mounted. It marks the
+     * respective share in the tree widget as mounted.
+     *
+     * @param share               The Smb4KShare object
+     */
+    void slotShareMounted( Smb4KShare *share );
+
+    /**
+     * This slot is called whenever a share has been unmounted. It marks the
+     * respective share in the tree widget as not mounted.
+     *
+     * @param share               The Smb4KShare object
+     */
+    void slotShareUnmounted( Smb4KShare *share );
+
+    /**
      * This slot is invoked shortly before the application quits. It is used
      * to save widget related settings.
      */
@@ -381,16 +382,6 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      * The network browser widget
      */
     Smb4KNetworkBrowser *m_widget;
-
-    /**
-     * The modus
-     */
-    enum Mode { Normal, KonqPlugin };
-
-    /**
-     * The list of arguments
-     */
-    Mode m_mode;
 
     /**
      * The bookmark action has got a shortcut
