@@ -1,7 +1,15 @@
 # KDE Config File
 [Desktop Entry]
 Name=Smb4K
+Name[pt]=Smb4K
+Name[sv]=Smb4K
+Name[uk]=Smb4K
+Name[x-test]=xxSmb4Kxx
 Comment=Advanced Network Neighborhood Browser
+Comment[pt]=Navegador da Vizinhança da Rede Avançado
+Comment[sv]=Avancerad bläddrare för nätverksgrannskapet
+Comment[uk]=Переглядач мережевого оточення з додатковими можливостями
+Comment[x-test]=xxAdvanced Network Neighborhood Browserxx
 Exec=smb4k
 Icon=smb4k
 X-DocPath=smb4k/index.html

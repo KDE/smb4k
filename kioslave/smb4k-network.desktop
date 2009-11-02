@@ -1,6 +1,10 @@
 [Desktop Entry]
 Icon=smb4k
 Name=Network Neighborhood
+Name[pt]=Vizinhança na Rede
+Name[sv]=Nätverksgrannskap
+Name[uk]=Мережеве оточення
+Name[x-test]=xxNetwork Neighborhoodxx
 Open=false
 Type=Link
 URL=smb4k:/
