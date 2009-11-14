@@ -94,15 +94,21 @@ class KDE_EXPORT Smb4KMountDialog : public KDialog
      * This slot is connected to the Smb4KMounter::aboutToStart() signal.
      * 
      * @param share               The Smb4KShare object
+     * 
+     * @param process             The process that is about to start
      */
-    void slotMounterAboutToStart( Smb4KShare *share );
+    void slotMounterAboutToStart( Smb4KShare *share,
+                                  int process );
     
     /**
      * This slot is connected to the Smb4KMounter::finished() signal.
      * 
      * @param share               The Smb4KShare object
+     * 
+     * @param process             The process that finished
      */
-    void slotMounterFinished( Smb4KShare *share );
+    void slotMounterFinished( Smb4KShare *share,
+                              int process );
 
   private:
     /**

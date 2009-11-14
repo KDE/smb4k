@@ -63,11 +63,11 @@ Smb4KMountDialog::Smb4KMountDialog( QWidget *parent )
   connect( this,                 SIGNAL( cancelClicked() ),
            this,                 SLOT( slotCancelClicked() ) );
            
-  connect( Smb4KCore::mounter(), SIGNAL( aboutToStart( Smb4KShare * ) ),
-           this,                 SLOT( slotMounterAboutToStart( Smb4KShare * ) ) );
+  connect( Smb4KCore::mounter(), SIGNAL( aboutToStart( Smb4KShare *, int ) ),
+           this,                 SLOT( slotMounterAboutToStart( Smb4KShare *, int ) ) );
 
-  connect( Smb4KCore::mounter(), SIGNAL( finished( Smb4KShare * ) ),
-           this,                 SLOT( slotMounterFinished( Smb4KShare * ) ) );
+  connect( Smb4KCore::mounter(), SIGNAL( finished( Smb4KShare *, int ) ),
+           this,                 SLOT( slotMounterFinished( Smb4KShare *, int ) ) );
 
   setMinimumWidth( sizeHint().width() > 350 ? sizeHint().width() : 350 );
 
@@ -188,7 +188,7 @@ void Smb4KMountDialog::slotShareMounted( Smb4KShare *share )
 }
 
 
-void Smb4KMountDialog::slotMounterAboutToStart( Smb4KShare *share )
+void Smb4KMountDialog::slotMounterAboutToStart( Smb4KShare *share, int /*process*/ )
 {
   Q_ASSERT( share );
   
@@ -207,7 +207,7 @@ void Smb4KMountDialog::slotMounterAboutToStart( Smb4KShare *share )
 }
 
 
-void Smb4KMountDialog::slotMounterFinished( Smb4KShare *share )
+void Smb4KMountDialog::slotMounterFinished( Smb4KShare *share, int /*process*/ )
 {
   Q_ASSERT( share );
   
