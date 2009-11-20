@@ -18,7 +18,7 @@
     </entry>
     <entry name="EmbedIntoSystemTray" type="Bool">
       <label>Embed application into the system tray</label>
-      <whatsthis>Embed the application into the system tray. The system tray widget provides a popup menu with several commonly used tasks so that you do not need to bring up the main window everytime. If this setting is chosen you have to use "Quit" from the "File" menu or the system tray widget to exit the application.</whatsthis>
+      <whatsthis>Embed the application into the system tray. The system tray widget provides a popup menu with several commonly used tasks, so you do not need to bring up the main window every time. If this setting is chosen, you have to use "Quit" from the "File" menu or the system tray widget to exit the application.</whatsthis>
       <default>true</default>
     </entry>
     <entry name="StartMainWindowDocked" type="Bool">
@@ -123,12 +123,12 @@
     </entry>
     <entry name="ShowDiskUsage" type="Bool">
       <label>Show the disk usage</label>
-      <whatsthis>Show the space that is used on the share in percent.</whatsthis>
+      <whatsthis>Show the space that is used on the share (as a percentage.)</whatsthis>
       <default>true</default>
     </entry>
     <entry name="PreviewHiddenItems" type="Bool">
       <label>Preview hidden files and directories</label>
-      <whatsthis>Display hidden files and directories in the preview dialog. The names of hidden files and directories are beginning with a period and are usually needed for very specific purposes (configuration file of an application, etc.). Since they are not of any importance for your regular work, you normally do not need to enable this feature.</whatsthis>
+      <whatsthis>Display hidden files and directories in the preview dialog. The hidden files and directories are those whose names begin with a period.  They are usually needed for very specific purposes (storing the configuration information for an application, etc.). Since they are not of any importance for your regular work, you normally do not need to enable this feature.</whatsthis>
       <default>false</default>
     </entry>
   </group>
@@ -198,7 +198,7 @@
     </entry>
     <entry name="UnmountForeignShares" type="Bool">
       <label>Allow the unmounting of shares that are owned by other users</label>
-      <whatsthis>Allow the unmounting of shares that were mounted by other users. In most cases you need super user privileges for this. Please think before you enable this option!</whatsthis>
+      <whatsthis>Allow the unmounting of shares that were mounted by other users. In most cases you need super user privileges for this. Please think before you enable this option.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="CheckInterval" type="Int">
@@ -220,7 +220,7 @@
     </entry>
     <entry name="RememberLogins" type="Bool">
       <label>Remember logins during program run</label>
-      <whatsthis>If you decided to store your logins only temporarily, Smb4K will remember them until the program exits. If you disable this setting, you will have to provide the authentication data everytime it is needed.</whatsthis>
+      <whatsthis>If you decided to store your logins temporarily, Smb4K will remember them only until the program exits. If you disable this setting, you will have to provide the authentication data every time it is needed.</whatsthis>
       <default>true</default>
     </entry>
     <entry name="UseDefaultLogin" type="Bool">
@@ -480,12 +480,12 @@
     </entry>
     <entry name="UserID" type="String">
       <label>User ID:</label>
-      <whatsthis>This is the user ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS file system and the remote server supports the CIFS Unix Extentions, this setting will be ignored.</whatsthis>
+      <whatsthis>This is the user ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS file system and the remote server supports the CIFS Unix Extensions, this setting will be ignored.</whatsthis>
       <default code="true">QString( "%1" ).arg( (int)getuid() )</default>
     </entry>
     <entry name="GroupID" type="String">
       <label>Group ID:</label>
-      <whatsthis>This is the group ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS file system and the remote server supports the CIFS Unix Extentions, this setting will be ignored.</whatsthis>
+      <whatsthis>This is the group ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS file system and the remote server supports the CIFS Unix Extensions, this setting will be ignored.</whatsthis>
       <default code="true">QString( "%1" ).arg( (int)getgid() )</default>
     </entry>
     <entry name="FileMask" type="String">
@@ -631,8 +631,8 @@
       <default>false</default>
     </entry>
     <entry name="NoImpliedDirectories" type="Bool">
-      <label>Don't send implied directories</label>
-      <whatsthis>Don't send implied directories with --relative (--no-implied-dirs). This means that the corresponding path elements on the destination system are left unchanged if they exist, and any missing implied directories are created with default attributes. This even allows these implied path elements to have big differences, such as being a symlink to a directory on one side of the transfer, and a real directory on the other side.</whatsthis>
+      <label>Do not send implied directories</label>
+      <whatsthis>Do not send implied directories with --relative (--no-implied-dirs). This means that the corresponding path elements on the destination system are left unchanged if they exist, and any missing implied directories are created with default attributes. This even allows these implied path elements to have big differences, such as being a symlink to a directory on one side of the transfer, and a real directory on the other side.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="TransferDirectories" type="Bool">
@@ -747,7 +747,7 @@
       <default>false</default>
     </entry>
     <entry name="UseMaximumDelete" type="Bool">
-      <label>Don't delete more than this many files:</label>
+      <label>Do not delete more than this many files:</label>
       <whatsthis>Only delete as many files as defined here (--max-delete=NUM). This tells rsync not to delete more than NUM files or directories (NUM must be non-zero). This is useful when mirroring very large trees to prevent disasters.</whatsthis>
       <default>false</default>
     </entry>
@@ -758,7 +758,7 @@
       <default>0</default>
     </entry>
     <entry name="UseMinimalTransferSize" type="Bool">
-      <label>Don't transfer any file smaller than:</label>
+      <label>Do not transfer any file smaller than:</label>
       <whatsthis>This option causes rsync to not transfer any file that is smaller than the specified size (--min-size=SIZE).</whatsthis>
       <default>false</default>
     </entry>
@@ -769,7 +769,7 @@
       <default>0</default>
     </entry>
     <entry name="UseMaximalTransferSize" type="Bool">
-      <label>Don't transfer any file larger than:</label>
+      <label>Do not transfer any file larger than:</label>
       <whatsthis>This option causes rsync to not transfer any file that is larger than the specified size (--max-size=SIZE).</whatsthis>
       <default>false</default>
     </entry>
@@ -781,7 +781,7 @@
     </entry>
     <entry name="KeepPartial" type="Bool">
       <label>Keep partially transferred files</label>
-      <whatsthis>Keep partially transferred files (--partial). The default behavor is that any partially transferred file is deleted if the transfer is interrupted.</whatsthis>
+      <whatsthis>Keep partially transferred files (--partial). The default behavior is that any partially transferred file is deleted if the transfer is interrupted.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="UsePartialDirectory" type="Bool">
@@ -820,7 +820,7 @@
       <default code="true">KUrl::fromPath( QDir::homePath()+"/exclude.txt" )</default>
     </entry>
     <entry name="UseIncludePattern" type="Bool">
-      <label>Don't exclude files matching this pattern:</label>
+      <label>Do not exclude files matching this pattern:</label>
       <whatsthis>Do not exclude files matching a certain pattern (--include=PATTERN). This is a special filter rule. For further information on filter rules see rsync's manual page.</whatsthis>
       <default>false</default>
     </entry>
@@ -865,7 +865,7 @@
       <default>false</default>
     </entry>
     <entry name="OneFileSystem" type="Bool">
-      <label>Don't cross file system boundaries</label>
+      <label>Do not cross file system boundaries</label>
       <whatsthis>Do not cross file system boundaries (-x, --one-file-system). This tells rsync to avoid crossing a filesystem boundary when recursing. For further information on this option, read the manual page.</whatsthis>
       <default>false</default>
     </entry>
@@ -944,7 +944,7 @@
   <group name="SuperUser">
     <entry name="UseForceUnmount" type="Bool">
       <label>Use super user privileges to force the unmounting of (inaccessible) shares</label>
-      <whatsthis>Unmount a share under Linux by force. This even works if the file system is "busy", because it is immediately detached from the file system hierarchy and all references to it are cleaned up later when it is not busy anymore. Linux kernel 2.4.11 or later is needed to take advantage of this feature. Use with care! Note, that you will need the root password to write the necessary changes to the configuration file.</whatsthis>
+      <whatsthis>Unmount a share under Linux by force. This even works if the file system is "busy", because it is immediately detached from the file system hierarchy and all references to it are cleaned up later when it is not busy anymore. Linux kernel 2.4.11 or later is needed to take advantage of this feature. Use with care. Note, that you will need the root password to write the necessary changes to the configuration file.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="AlwaysUseSuperUser" type="Bool">
@@ -958,23 +958,23 @@
 
   <group name="LaptopSupport">
     <entry name="UnmountWhenSleepButtonPressed" type="Bool">
-      <label>Unmount all shares when the sleep button was pressed</label>
-     <whatsthis>Unmount all mounted shares after the hardware sleep button was pressed. The shares will automatically be remounted after the computer woke up again.</whatsthis>
+      <label>Unmount all shares when the sleep button is pressed</label>
+     <whatsthis>Unmount all mounted shares after the hardware sleep button is pressed. The shares will automatically be remounted after the computer wakes up again.</whatsthis>
       <default>true</default>
     </entry>
     <entry name="UnmountWhenLidButtonPressed" type="Bool">
-      <label>Unmount all shares when the lid was closed</label>
-     <whatsthis>Unmount all mounted shares after the lid of the laptop was being closed. The shares will automatically be remounted after the computer woke up again.</whatsthis>
+      <label>Unmount all shares when the lid is closed</label>
+     <whatsthis>Unmount all mounted shares after the lid of the laptop is closed. The shares will automatically be remounted after the computer wakes up again.</whatsthis>
       <default>true</default>
     </entry>
     <entry name="UnmountWhenPowerButtonPressed" type="Bool">
-      <label>Unmount all shares when the power button was pressed</label>
-     <whatsthis>Unmount all mounted shares after the hardware power button was pressed. The shares will automatically be remounted after the computer woke up again.</whatsthis>
+      <label>Unmount all shares when the power button is pressed</label>
+     <whatsthis>Unmount all mounted shares after the hardware power button is pressed. The shares will automatically be remounted after the computer wakes up again.</whatsthis>
       <default>true</default>
     </entry>
     <entry name="UnmountWhenNetworkDisconnected" type="Bool">
-      <label>Unmount all shares when the network was disconnected</label>
-      <whatsthis>Unmount all shares when the user disconnected the network or the connection got lost due to a different reason. Using this option in combination with software suspend and hibernation might lead to unwanted side effects. In this case you should better unmount the shares manually before you suspend the computer.</whatsthis>
+      <label>Unmount all shares when the network is disconnected</label>
+      <whatsthis>Unmount all shares when the user disconnects from the network or the connection is lost due to a different reason. Using this option in combination software suspend and hibernation might lead to unwanted side effects. In this case you should unmount the shares manually before you suspend the computer.</whatsthis>
       <default>true</default>
     </entry>
   </group>

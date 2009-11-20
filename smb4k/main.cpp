@@ -195,7 +195,7 @@ int main( int argc, char *argv[] )
         config.groupList().contains( "User Interface" ) != 0 ||
         config.groupList().contains( "System" ) != 0) )
   {
-    int return_value = KMessageBox::warningContinueCancel( 0, i18n( "<qt><p>Smb4K now uses a different configuration system. Thus, your old settings are obsolete and you have to reconfigure the application.</p><p>To assure a clean transition, the current configuration file will be removed.</p></qt>" ) );
+    int return_value = KMessageBox::warningContinueCancel( 0, i18n( "<qt><p>Smb4K now uses a different configuration system. Thus, your old settings are obsolete and you have to reconfigure the application.</p><p>To ensure a clean transition, the current configuration file will be removed.</p></qt>" ) );
 
     if ( return_value == KMessageBox::Continue )
     {

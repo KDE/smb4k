@@ -457,7 +457,7 @@ bool Smb4KConfigDialog::checkSettings()
     ok = false;
     index++;
 
-    issues.append( "<li>"+i18n( "[Authentication] The default user name has not been entered." )+"</li>" );
+    issues.append( "<li>"+i18n( "[Authentication] The default username has not been entered." )+"</li>" );
   }
 
   // The file mask must not be empty.
@@ -593,14 +593,9 @@ bool Smb4KConfigDialog::checkSettings()
 
   if ( !ok )
   {
-    if ( index == 1 )
-    {
-      KMessageBox::error( this, i18n( "<qt>The configuration could not be written, because one setting is incomplete:<ul>%1</ul>Please correct this issue.</qt>" ).arg( issues ) );
-    }
-    else
-    {
-      KMessageBox::error( this, i18n( "<qt>The configuration could not be written, because %1 settings are incomplete:<ul>%2</ul>Please correct these issues.</qt>" ).arg( index ).arg( issues ) );
-    }
+    KMessageBox::error( this, i18np( "<qt>The configuration could not be written, because one setting is incomplete:<ul>%2</ul>Please correct this issue.</qt>",
+                                     "<qt>The configuration could not be written, because %1 settings are incomplete:<ul>%2</ul>Please correct these issues.</qt>",
+                                     index, issues ) );
   }
 
   return ok;

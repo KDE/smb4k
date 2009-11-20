@@ -81,7 +81,7 @@ Smb4KAuthOptions::Smb4KAuthOptions( QWidget *parent )
   KLineEdit *default_user  = new KLineEdit( default_box );
   default_user->setObjectName( "DefaultUserName" );
   default_user->setMinimumWidth( 150 );
-  default_user->setWhatsThis( i18n( "This user name is used by default to authenticate to a remote server." ) );
+  default_user->setWhatsThis( i18n( "This username is used by default to authenticate to a remote server." ) );
 
   QLabel *password         = new QLabel( i18n( "Password:" ), default_box );
   password->setObjectName( "DefaultPasswordLabel" );

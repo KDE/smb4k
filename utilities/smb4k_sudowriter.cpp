@@ -379,7 +379,7 @@ int main ( int argc, char *argv[] )
   // Check that the given users are all valid.
   if ( !checkUsers( adduser ) || !checkUsers( removeuser ) )
   {
-    cerr << argv[0] << ": " << I18N_NOOP( "An invalid user name has been provided." ) << endl;
+    cerr << argv[0] << ": " << I18N_NOOP( "An invalid username has been provided." ) << endl;
     cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
     removeLockFile();
     exit( EXIT_FAILURE );

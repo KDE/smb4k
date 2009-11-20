@@ -555,17 +555,17 @@ bool Smb4KWalletManager::showPasswordDialog( Smb4KAuthInfo *authInfo, QWidget *p
   {
     case Smb4KAuthInfo::Host:
     {
-      prompt = i18n( "<qt>Please enter a user name and a password for the host %1.</qt>" ).arg( authInfo->hostName() );
+      prompt = i18n( "<qt>Please enter a username and a password for the host %1.</qt>" ).arg( authInfo->hostName() );
       break;
     }
     case Smb4KAuthInfo::Share:
     {
-      prompt = i18n( "<qt>Please enter a user name and a password for the share %1.</qt>" ).arg( authInfo->unc() );
+      prompt = i18n( "<qt>Please enter a username and a password for the share %1.</qt>" ).arg( authInfo->unc() );
       break;
     }
     default:
     {
-      prompt = i18n( "<qt>Please enter a user name and a password below.</qt>" );
+      prompt = i18n( "<qt>Please enter a username and a password below.</qt>" );
       break;
     }
   }
