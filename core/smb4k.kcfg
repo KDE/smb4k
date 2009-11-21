@@ -974,7 +974,7 @@
     </entry>
     <entry name="UnmountWhenNetworkDisconnected" type="Bool">
       <label>Unmount all shares when the network is disconnected</label>
-      <whatsthis>Unmount all shares when the user disconnects from the network or the connection is lost due to a different reason. Using this option in combination software suspend and hibernation might lead to unwanted side effects. In this case you should unmount the shares manually before you suspend the computer.</whatsthis>
+      <whatsthis>Unmount all shares when the user disconnects from the network or the connection is lost due to a different reason. Using this option in combination with sleep and/or hibernation might lead to unwanted side effects. In this case you should unmount the shares manually before you suspend the computer.</whatsthis>
       <default>true</default>
     </entry>
   </group>
