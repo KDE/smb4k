@@ -87,6 +87,10 @@ Smb4KMainWindow::Smb4KMainWindow()
   setupStatusBar();
   setupSystemTrayWidget();
   setupBookmarksMenu();
+  
+  // Initialize the core classes.
+  Smb4KScanner::self()->init();
+  Smb4KMounter::self()->init();
 
   // Apply the main window settings.
   setAutoSaveSettings( KConfigGroup( Smb4KSettings::self()->config(), "MainWindow" ), true );
@@ -213,26 +217,26 @@ void Smb4KMainWindow::setupStatusBar()
   connect( Smb4KWalletManager::self(), SIGNAL( initialized() ),
            this,                       SLOT( slotWalletManagerInitialized() ) );
 
-  connect( Smb4KMounter::self(), SIGNAL( finished( Smb4KShare *, int ) ),
-           this,                 SLOT( slotVisualMountFeedback( Smb4KShare *, int ) ) );
+  connect( Smb4KMounter::self(),       SIGNAL( finished( Smb4KShare *, int ) ),
+           this,                       SLOT( slotVisualMountFeedback( Smb4KShare *, int ) ) );
 
-  connect( Smb4KPrint::self(),   SIGNAL( aboutToStart( Smb4KPrintInfo * ) ),
-           this,                 SLOT( slotPrintStartMessages( Smb4KPrintInfo * ) ) );
+  connect( Smb4KPrint::self(),         SIGNAL( aboutToStart( Smb4KPrintInfo * ) ),
+           this,                       SLOT( slotPrintStartMessages( Smb4KPrintInfo * ) ) );
 
-  connect( Smb4KPrint::self(),   SIGNAL( finished( Smb4KPrintInfo * ) ),
-           this,                 SLOT( slotPrintFinishMessages( Smb4KPrintInfo * ) ) );
+  connect( Smb4KPrint::self(),         SIGNAL( finished( Smb4KPrintInfo * ) ),
+           this,                       SLOT( slotPrintFinishMessages( Smb4KPrintInfo * ) ) );
 
-  connect( Smb4KSynchronizer::self(), SIGNAL( aboutToStart( Smb4KSynchronizationInfo * ) ),
-           this,                      SLOT( slotSynchronizerStartMessages( Smb4KSynchronizationInfo * ) ) );
+  connect( Smb4KSynchronizer::self(),  SIGNAL( aboutToStart( Smb4KSynchronizationInfo * ) ),
+           this,                       SLOT( slotSynchronizerStartMessages( Smb4KSynchronizationInfo * ) ) );
 
-  connect( Smb4KSynchronizer::self(), SIGNAL( finished( Smb4KSynchronizationInfo* ) ),
-           this,                      SLOT( slotSynchronizerFinishMessages( Smb4KSynchronizationInfo * ) ) );
+  connect( Smb4KSynchronizer::self(),  SIGNAL( finished( Smb4KSynchronizationInfo* ) ),
+           this,                       SLOT( slotSynchronizerFinishMessages( Smb4KSynchronizationInfo * ) ) );
 
-  connect( Smb4KPreviewer::self(), SIGNAL( aboutToStart( Smb4KPreviewItem * ) ),
-           this,                   SLOT( slotPreviewerStartMessages( Smb4KPreviewItem * ) ) );
+  connect( Smb4KPreviewer::self(),     SIGNAL( aboutToStart( Smb4KPreviewItem * ) ),
+           this,                       SLOT( slotPreviewerStartMessages( Smb4KPreviewItem * ) ) );
 
-  connect( Smb4KPreviewer::self(), SIGNAL( finished( Smb4KPreviewItem * ) ),
-           this,                   SLOT( slotPreviewerFinishMessages( Smb4KPreviewItem * ) ) );
+  connect( Smb4KPreviewer::self(),     SIGNAL( finished( Smb4KPreviewItem * ) ),
+           this,                       SLOT( slotPreviewerFinishMessages( Smb4KPreviewItem * ) ) );
 }
 
 
@@ -456,9 +460,15 @@ void Smb4KMainWindow::setupBookmarksMenu()
 
   connect( Smb4KCore::bookmarkHandler(), SIGNAL( updated() ),
            this,                         SLOT( slotBookmarksUpdated() ) );
+           
+  connect( Smb4KMounter::self(),         SIGNAL( mounted( Smb4KShare * ) ),
+           this,                         SLOT( slotEnableBookmarks( Smb4KShare * ) ) );
+           
+  connect( Smb4KMounter::self(),         SIGNAL( unmounted( Smb4KShare * ) ),
+           this,                         SLOT( slotEnableBookmarks( Smb4KShare * ) ) );
 
-  connect( Smb4KCore::mounter(),         SIGNAL( updated() ),
-           this,                         SLOT( slotEnableBookmarks() ) );
+  connect( Smb4KMounter::self(),         SIGNAL( updated( Smb4KShare * ) ),
+           this,                         SLOT( slotEnableBookmarks( Smb4KShare * ) ) );
 
   connect( m_bookmarks,                  SIGNAL( triggered( QAction * ) ),
            this,                         SLOT( slotBookmarkTriggered( QAction * ) ) );
@@ -744,30 +754,21 @@ void Smb4KMainWindow::slotBookmarksUpdated()
 }
 
 
-void Smb4KMainWindow::slotEnableBookmarks()
+void Smb4KMainWindow::slotEnableBookmarks( Smb4KShare *share )
 {
   // Enable/disable the bookmark actions.
   for ( int i = 0; i < m_bookmarks->actions().size(); ++i )
   {
-    QList<Smb4KShare *> shares_list = findShareByUNC( m_bookmarks->actions().at( i )->data().toString() );
-
-    bool enable = true;
-
-    for ( int j = 0; j < shares_list.size(); ++j )
+    if ( QString::compare( share->unc(), m_bookmarks->actions().at( i )->data().toString(), Qt::CaseInsensitive ) == 0 &&
+         !share->isForeign() )
     {
-      if ( !shares_list.at( j )->isForeign() )
-      {
-        enable = false;
-
-        break;
-      }
-      else
-      {
-        continue;
-      }
+      m_bookmarks->actions().at( i )->setEnabled( !share->isMounted() );
+      break;
     }
-
-    m_bookmarks->actions().at( i )->setEnabled( enable );
+    else
+    {
+      // Do nothing
+    }
   }
 }
 

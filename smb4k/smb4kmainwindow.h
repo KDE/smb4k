@@ -119,9 +119,11 @@ class Smb4KMainWindow : public KParts::MainWindow
     void slotBookmarksUpdated();
 
     /**
-     * This slot enables/disables the bookmarks due to a mount event.
+     * This slot enables/disables the bookmarks due to mount events.
+     * 
+     * @param share           The share item that changed
      */
-    void slotEnableBookmarks();
+    void slotEnableBookmarks( Smb4KShare *share );
 
     /**
      * This slot is called when a bookmark action has been triggered. It initializes the
