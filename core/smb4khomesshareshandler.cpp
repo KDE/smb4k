@@ -214,7 +214,7 @@ bool Smb4KHomesSharesHandler::specifyUser( Smb4KShare *share, QWidget *parent )
     users.sort();
 
     share->setHomesUsers( users );
-    share->setShareName( userCombo->currentText() );
+    share->setLogin( userCombo->currentText() );
 
     internal->setHomesUsers( users );
 
