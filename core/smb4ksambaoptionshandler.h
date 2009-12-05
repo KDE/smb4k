@@ -206,17 +206,6 @@ class KDE_EXPORT Smb4KSambaOptionsHandler : public QObject
     const QString netOptions( NetCommand command );
 
     /**
-     * This function returns the list of common options for mount.cifs under Linux
-     * and similar operating systems or for mount_smbfs under FreeBSD.
-     *
-     * Note: Under Linux etc. this is a comma-separated list that does *not* end with
-     * a comma, so remember this when you build up the command line.
-     *
-     * @param share             The share that is to be mounted.
-     */
-    const QString mountOptions( Smb4KShare *share );
-
-    /**
      * Find a share in the list.
      *
      * If you provide @p exactMatch, NULL will be returned if item is not in the list.
