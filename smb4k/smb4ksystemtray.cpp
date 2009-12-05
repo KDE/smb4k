@@ -99,11 +99,17 @@ Smb4KSystemTray::Smb4KSystemTray( QWidget *parent )
 
   connect( Smb4KCore::bookmarkHandler(), SIGNAL( updated() ),
            this,                         SLOT( slotSetupBookmarksMenu() ) );
-
-  connect( Smb4KCore::mounter(),         SIGNAL( updated() ),
-           this,                         SLOT( slotEnableBookmarks() ) );
-
-  connect( Smb4KCore::mounter(),         SIGNAL( updated() ),
+           
+  connect( Smb4KMounter::self(),         SIGNAL( mounted( Smb4KShare * ) ),
+           this,                         SLOT( slotEnableBookmarks( Smb4KShare * ) ) );
+           
+  connect( Smb4KMounter::self(),         SIGNAL( unmounted( Smb4KShare * ) ),
+           this,                         SLOT( slotEnableBookmarks( Smb4KShare * ) ) );
+           
+  connect( Smb4KMounter::self(),         SIGNAL( mounted( Smb4KShare * ) ),
+           this,                         SLOT( slotSetupSharesMenu() ) );
+           
+  connect( Smb4KMounter::self(),         SIGNAL( unmounted( Smb4KShare * ) ),
            this,                         SLOT( slotSetupSharesMenu() ) );
 
   // Connection to quitSelected() signal must be done in parent widget.
@@ -408,21 +414,16 @@ void Smb4KSystemTray::slotBookmarkTriggered( QAction *action )
 }
 
 
-void Smb4KSystemTray::slotEnableBookmarks()
+void Smb4KSystemTray::slotEnableBookmarks( Smb4KShare *share )
 {
-  // Enable/disable the bookmark actions.
-  for ( int i = 0; i < m_bookmarks->actions().size(); ++i )
+  if ( !share->isForeign() )
   {
-    QList<Smb4KShare *> shares_list = findShareByUNC( m_bookmarks->actions().at( i )->data().toString() );
-
-    bool enable = true;
-
-    for ( int j = 0; j < shares_list.size(); ++j )
+    // Enable/disable the bookmark actions.
+    for ( int i = 0; i < m_bookmarks->actions().size(); ++i )
     {
-      if ( !shares_list.at( j )->isForeign() )
+      if ( QString::compare( m_bookmarks->actions().at( i )->data().toString(), share->unc(), Qt::CaseInsensitive ) == 0 )
       {
-        enable = false;
-
+        m_bookmarks->actions().at( i )->setEnabled( !share->isMounted() );
         break;
       }
       else
@@ -430,8 +431,10 @@ void Smb4KSystemTray::slotEnableBookmarks()
         continue;
       }
     }
-
-    m_bookmarks->actions().at( i )->setEnabled( enable );
+  }
+  else
+  {
+    // Do nothing
   }
 }
 

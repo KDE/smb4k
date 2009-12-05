@@ -38,6 +38,9 @@
 #include <ksystemtrayicon.h>
 #include <kactionmenu.h>
 
+// forward declarations
+class Smb4KShare;
+
 class Smb4KSystemTray : public KSystemTrayIcon
 {
   Q_OBJECT
@@ -139,11 +142,13 @@ class Smb4KSystemTray : public KSystemTrayIcon
     void slotBookmarkTriggered( QAction *action );
 
     /**
-     * This slot enables and disables the bookmarks. If a share that's represented
-     * by the bookmark is mounted, the bookmark will be disabled. It will be
-     * enabled, when it is unmounted again.
+     * This slot enables or disables bookmarks. If a @p share is mounted that is represented
+     * by a bookmark, the bookmark will be disabled. It will be enabled, when the @p share is 
+     * unmounted again.
+     * 
+     * @param share         The share item
      */
-    void slotEnableBookmarks();
+    void slotEnableBookmarks( Smb4KShare *share );
 
     /**
      * This slot is activated when the list of mounted shares has been updated.
