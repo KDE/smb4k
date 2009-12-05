@@ -68,6 +68,9 @@ class KDE_EXPORT Smb4KAuthInfo
 
     /**
      * Constructor for a share item.
+     * 
+     * In case the share is a 'homes' share, this constructor will automatically
+     * use the Smb4KShare::homeUNC() function to set the UNC.
      *
      * @param share     The Smb4KShare item.
      */
@@ -101,6 +104,9 @@ class KDE_EXPORT Smb4KAuthInfo
     /**
      * Set the share item. This overwrites all previous data that this object
      * might have carried including the password.
+     * 
+     * In case the share is a 'homes' share, this function will automatically
+     * use the Smb4KShare::homeUNC() function to set the UNC.
      *
      * @param share     The Smb4KShare item
      */
@@ -172,6 +178,9 @@ class KDE_EXPORT Smb4KAuthInfo
 
     /**
      * Sets the login.
+     * 
+     * In case of a 'homes' share, this function will also set the share
+     * name to @p login.
      *
      * @param login     The login for the server/share
      */
@@ -210,15 +219,6 @@ class KDE_EXPORT Smb4KAuthInfo
      * @returns TRUE if the item is a homes share.
      */
     bool isHomesShare() const { return m_homes_share; }
-
-    /**
-     * This function is needed to change a 'homes' share to a 'user' share.
-     * It does only something if this item is of type 'Share' and is a
-     * 'homes' share.
-     *
-     * @param user      The user name that is replacing the 'homes' string
-     */
-    void setHomesUser( const QString &user );
 
     /**
      * This function sets the type of this authentication information to
