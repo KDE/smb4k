@@ -2,7 +2,7 @@
     smb4ksharesview_part  -  This Part includes the shares view of Smb4K.
                              -------------------
     begin                : Sa Jun 30 2007
-    copyright            : (C) 2007-2008 by Alexander Reinholdt
+    copyright            : (C) 2007-2009 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -121,15 +121,18 @@ Smb4KSharesViewPart::Smb4KSharesViewPart( QWidget *parentWidget, QObject *parent
   // will not be shown.
   setupActions();
 
-  // Import the shares:
-  slotMountedShares();
-
   // Load settings:
   loadSettings();
 
   // Add some connections:
-  connect( Smb4KCore::mounter(), SIGNAL( updated() ),
-           this,                 SLOT( slotMountedShares() ) );
+  connect( Smb4KMounter::self(), SIGNAL( mounted( Smb4KShare * ) ),
+           this,                 SLOT( slotShareMounted( Smb4KShare * ) ) );
+           
+  connect( Smb4KMounter::self(), SIGNAL( unmounted( Smb4KShare * ) ),
+           this,                 SLOT( slotShareUnmounted( Smb4KShare * ) ) );
+           
+  connect( Smb4KMounter::self(), SIGNAL( updated( Smb4KShare *) ),
+           this,                 SLOT( slotShareUpdated( Smb4KShare * ) ) );
 
   connect( Smb4KCore::mounter(), SIGNAL( aboutToStart( Smb4KShare *, int ) ),
            this,                 SLOT( slotMounterAboutToStart( Smb4KShare *, int ) ) );
@@ -139,9 +142,6 @@ Smb4KSharesViewPart::Smb4KSharesViewPart( QWidget *parentWidget, QObject *parent
 
   connect( kapp,                 SIGNAL( aboutToQuit() ),
            this,                 SLOT( slotAboutToQuit() ) );
-
-  // Initialize the mounter.
-  Smb4KMounter::self()->init();
 }
 
 
@@ -544,7 +544,36 @@ void Smb4KSharesViewPart::customEvent( QEvent *e )
       loadSettings();
 
       // (Re-)load the list of shares.
-      slotMountedShares();
+      switch ( m_mode )
+      {
+        case IconMode:
+        {
+          while ( m_icon_view->count() != 0 )
+          {
+            delete m_icon_view->takeItem( 0 );
+          }
+          
+          break;
+        }
+        case ListMode:
+        {
+          while ( m_list_view->topLevelItemCount() != 0 )
+          {
+            delete m_list_view->takeTopLevelItem( 0 );
+          }
+          
+          break;
+        }
+        default:
+        {
+          break;
+        }
+      }
+      
+      for ( int i = 0; i < mountedSharesList()->size(); ++i )
+      {
+        slotShareMounted( mountedSharesList()->at( i ) );
+      }
 
       break;
     }
@@ -1021,212 +1050,46 @@ void Smb4KSharesViewPart::slotIconViewDropEvent( Smb4KSharesIconViewItem *item, 
 }
 
 
-void Smb4KSharesViewPart::slotMountedShares()
+void Smb4KSharesViewPart::slotShareMounted( Smb4KShare *share )
 {
+  Q_ASSERT( share );
+  
   switch ( m_mode )
   {
     case IconMode:
     {
-      if ( !mountedSharesList()->isEmpty() )
+      if ( !share->isForeign() || Smb4KSettings::showAllShares() )
       {
-        // Remove obsolete items and unset the current item
-        // if we remove it so that we won't get an unwanted
-        // selected item.
-        Smb4KSharesIconViewItem *item = NULL;
-
-        for ( int i = 0; i < m_icon_view->count(); ++i )
-        {
-          item = static_cast<Smb4KSharesIconViewItem *>( m_icon_view->item( i ) );
-
-          Smb4KShare *share = findShareByPath( item->itemData()->share()->path() );
-
-          if ( !share || (share->isForeign() && !Smb4KSettings::showAllShares()) )
-          {
-            if ( item == m_icon_view->currentItem() )
-            {
-              m_icon_view->setCurrentItem( NULL );
-            }
-            else
-            {
-              // Do nothing
-            }
-
-            delete item;
-            item = NULL;
-          }
-          else
-          {
-            // Do nothing
-          }
-        }
-
-        // Insert the new items and update the existing ones.
-        Smb4KSharesIconViewItem *shareItem = NULL;
-
-        for ( int i = 0; i < mountedSharesList()->size(); ++i )
-        {
-          // Search for the item in the tree widget. Use the
-          // path for this.
-          Smb4KSharesIconViewItem *tmp = NULL;
-
-          for ( int j = 0; j < m_icon_view->count(); ++j )
-          {
-            tmp = static_cast<Smb4KSharesIconViewItem *>( m_icon_view->item( j ) );
-
-            if ( QString::compare( tmp->itemData()->share()->path(),
-                                   mountedSharesList()->at( i )->path() ) == 0 ||
-                 QString::compare( tmp->itemData()->share()->canonicalPath(),
-                                   mountedSharesList()->at( i )->canonicalPath() ) == 0 )
-            {
-              shareItem = tmp;
-            }
-            else
-            {
-              // Do nothing
-            }
-          }
-
-          if ( shareItem )
-          {
-            if ( !shareItem->sameShareObject( mountedSharesList()->at( i ) ) )
-            {
-              shareItem->replaceShareObject( mountedSharesList()->at( i ) );
-            }
-            else
-            {
-              // Do nothing
-            }
-
-            m_icon_view->updateToolTip();
-          }
-          else
-          {
-            if ( !mountedSharesList()->at( i )->isForeign() || Smb4KSettings::showAllShares() )
-            {
-              shareItem = new Smb4KSharesIconViewItem( mountedSharesList()->at( i ), m_icon_view );
-              shareItem->setShowMountPoint( Smb4KSettings::showMountPoint() );
-            }
-            else
-            {
-              // Do nothing
-            }
-          }
-
-          shareItem = NULL;
-        }
+        Smb4KSharesIconViewItem *item = new Smb4KSharesIconViewItem( share, m_icon_view );
+        item->setShowMountPoint( Smb4KSettings::showMountPoint() );
+        
+        m_icon_view->sortItems( Qt::AscendingOrder );
       }
       else
       {
-        m_icon_view->clear();
+        // Do nothing
       }
-
-      // Sort the items:
-      m_icon_view->sortItems( Qt::AscendingOrder );
-
+      
+      actionCollection()->action( "unmount_all_action" )->setEnabled( (m_icon_view->count() != 0) );
+      
       break;
     }
     case ListMode:
     {
-      if ( !mountedSharesList()->isEmpty() )
+      if ( !share->isForeign() || Smb4KSettings::showAllShares() )
       {
-        // Remove obsolete items.
-        QTreeWidgetItemIterator it( m_list_view );
-        Smb4KSharesListViewItem *item = NULL;
-
-        while ( *it )
-        {
-          item = static_cast<Smb4KSharesListViewItem *>( *it );
-
-          Smb4KShare *share = findShareByPath( item->itemData()->share()->path() );
-
-          if ( !share || (share->isForeign() && !Smb4KSettings::showAllShares()) )
-          {
-            if ( item == m_list_view->currentItem() )
-            {
-              m_list_view->setCurrentItem( NULL );
-            }
-            else
-            {
-              // Do nothing
-            }
-
-            delete item;
-            item = NULL;
-          }
-          else
-          {
-            // Do nothing
-          }
-
-          ++it;
-        }
-
-        // Insert the new items and update the existing ones.
-        Smb4KSharesListViewItem *shareItem = NULL;
-
-        for ( int i = 0; i < mountedSharesList()->size(); ++i )
-        {
-          // Search for the item in the tree widget. Use the
-          // path for this.
-          it = QTreeWidgetItemIterator( m_list_view );
-          Smb4KSharesListViewItem *tmp = NULL;
-
-          while ( *it )
-          {
-            tmp = static_cast<Smb4KSharesListViewItem *>( *it );
-
-            if ( QString::compare( tmp->itemData()->share()->path(),
-                                   mountedSharesList()->at( i )->path() ) == 0 ||
-                 QString::compare( tmp->itemData()->share()->canonicalPath(),
-                                   mountedSharesList()->at( i )->canonicalPath() ) == 0 )
-            {
-              shareItem = tmp;
-            }
-            else
-            {
-              // Do nothing
-            }
-
-            ++it;
-          }
-
-          if ( shareItem )
-          {
-            if ( !shareItem->sameShareObject( mountedSharesList()->at( i ) ) )
-            {
-              shareItem->replaceShareObject( mountedSharesList()->at( i ) );
-            }
-            else
-            {
-              // Do nothing
-            }
-
-            m_list_view->updateToolTip();
-          }
-          else
-          {
-            if ( !mountedSharesList()->at( i )->isForeign() || Smb4KSettings::showAllShares() )
-            {
-              shareItem = new Smb4KSharesListViewItem( mountedSharesList()->at( i ), m_list_view );
-              shareItem->setShowMountPoint( Smb4KSettings::showMountPoint() );
-            }
-            else
-            {
-              // Do nothing
-            }
-          }
-
-          shareItem = NULL;
-        }
+        Smb4KSharesListViewItem *item = new Smb4KSharesListViewItem( share, m_list_view );
+        item->setShowMountPoint( Smb4KSettings::showMountPoint() );
+        
+        m_list_view->sortItems( Smb4KSharesListView::Item, Qt::AscendingOrder );
       }
       else
       {
-        m_list_view->clear();
+        // Do nothing
       }
-
-      // Sort the items:
-      m_list_view->sortItems( Smb4KSharesListView::Item, Qt::AscendingOrder );
-
+      
+      actionCollection()->action( "unmount_all_action" )->setEnabled( (m_list_view->topLevelItemCount() != 0) );
+      
       break;
     }
     default:
@@ -1234,9 +1097,158 @@ void Smb4KSharesViewPart::slotMountedShares()
       break;
     }
   }
+}
 
-  // Enable the "Unmount All" action.
-  actionCollection()->action( "unmount_all_action" )->setEnabled( !mountedSharesList()->isEmpty() );
+
+void Smb4KSharesViewPart::slotShareUnmounted( Smb4KShare *share )
+{
+  Q_ASSERT( share );
+  
+  switch ( m_mode )
+  {
+    case IconMode:
+    {
+      Smb4KSharesIconViewItem *item = NULL;
+      
+      for ( int i = 0; i < m_icon_view->count(); ++i )
+      {
+        item = static_cast<Smb4KSharesIconViewItem *>( m_icon_view->item( i ) );
+        
+        if ( item && (QString::compare( item->itemData()->share()->path(), share->path() ) == 0 ||
+             QString::compare( item->itemData()->share()->canonicalPath(), share->canonicalPath() ) == 0) )
+        {
+          if ( item == m_icon_view->currentItem() )
+          {
+            m_icon_view->setCurrentItem( NULL );
+          }
+          else
+          {
+            // Do nothing
+          }
+          
+          delete m_icon_view->takeItem( i );
+          break;
+        }
+        else
+        {
+          continue;
+        }
+      }
+      
+      actionCollection()->action( "unmount_all_action" )->setEnabled( (m_icon_view->count() != 0) );
+      
+      break;
+    }
+    case ListMode:
+    {
+      Smb4KSharesListViewItem *item = NULL;
+      
+      for ( int i = 0; i < m_list_view->topLevelItemCount(); ++i )
+      {
+        item = static_cast<Smb4KSharesListViewItem *>( m_list_view->topLevelItem( i ) );
+        
+        if ( item && (QString::compare( item->itemData()->share()->path(), share->path() ) == 0 ||
+             QString::compare( item->itemData()->share()->canonicalPath(), share->canonicalPath() ) == 0) )
+        {
+          if ( item == m_list_view->currentItem() )
+          {
+            m_list_view->setCurrentItem( NULL );
+          }
+          else
+          {
+            // Do nothing
+          }
+          
+          delete m_list_view->takeTopLevelItem( i );
+          break;
+        }
+        else
+        {
+          continue;
+        }
+      }
+      
+      actionCollection()->action( "unmount_all_action" )->setEnabled( (m_list_view->topLevelItemCount() != 0) );
+      
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+}
+
+
+void Smb4KSharesViewPart::slotShareUpdated( Smb4KShare *share )
+{
+  switch ( m_mode )
+  {
+    case IconMode:
+    {
+      Smb4KSharesIconViewItem *item = NULL;
+      
+      for ( int i = 0; i < m_icon_view->count(); ++i )
+      {
+        item = static_cast<Smb4KSharesIconViewItem *>( m_icon_view->item( i ) );
+        
+        if ( item && (QString::compare( item->itemData()->share()->path(), share->path() ) == 0 ||
+             QString::compare( item->itemData()->share()->canonicalPath(), share->canonicalPath() ) == 0) )
+        {
+          if ( !item->sameShareObject( share ) )
+          {
+            item->replaceShareObject( share );
+          }
+          else
+          {
+            // Do nothing
+          }
+          
+          m_icon_view->updateToolTip();
+          break;
+        }
+        else
+        {
+          continue;
+        }
+      }
+      break;
+    }
+    case ListMode:
+    {
+      Smb4KSharesListViewItem *item = NULL;
+      
+      for ( int i = 0; i < m_list_view->topLevelItemCount(); ++i )
+      {
+        item = static_cast<Smb4KSharesListViewItem *>( m_list_view->topLevelItem( i ) );
+        
+        if ( item && (QString::compare( item->itemData()->share()->path(), share->path() ) == 0 ||
+             QString::compare( item->itemData()->share()->canonicalPath(), share->canonicalPath() ) == 0) )
+        {
+          if ( !item->sameShareObject( share ) )
+          {
+            item->replaceShareObject( share );
+          }
+          else
+          {
+            // Do nothing
+          }
+          
+          m_list_view->updateToolTip();
+          break;
+        }
+        else
+        {
+          continue;
+        }
+      }
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
 }
 
 

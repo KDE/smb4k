@@ -2,7 +2,7 @@
     smb4ksharesview_part  -This Part includes the shares view of Smb4K.
                              -------------------
     begin                : Sa Jun 30 2007
-    copyright            : (C) 2007-2008 by Alexander Reinholdt
+    copyright            : (C) 2007-2009 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -169,12 +169,33 @@ class Smb4KSharesViewPart : public KParts::Part
      */
     void slotIconViewDropEvent( Smb4KSharesIconViewItem *item,
                                 QDropEvent *e );
-
+                                
     /**
-     * This slot is called by the Smb4KMounter::updated() signal and updates
-     * the list view according to the list that is returned by Smb4KMounter::getShares().
+     * This slot is connected to the Smb4KMounter::mounted() signal and adds the 
+     * mounted share @p share to the shares view.
+     * 
+     * @param share               The Smb4KShare item
      */
-    void slotMountedShares();
+    void slotShareMounted( Smb4KShare *share );
+    
+    /**
+     * This slot is connected to the Smb4KMounter::unmounted() signal and removes
+     * the share @p share from the share view.
+     * 
+     * @param share               The Smb4KShare item
+     */
+    void slotShareUnmounted( Smb4KShare *share );
+    
+    /**
+     * This slot is connected to the Smb4KMounter::updated() signal and updates
+     * the item in the shares view corresponding to @p share.
+     * 
+     * This slot does not remove or add any share, it only updates the present 
+     * items.
+     * 
+     * @param share               The Smb4KShare item
+     */
+    void slotShareUpdated( Smb4KShare *share );
 
     /**
      * This slot is connected to the 'Unmount action'. You will be able to
