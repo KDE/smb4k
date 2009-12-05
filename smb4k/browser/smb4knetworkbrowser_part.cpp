@@ -170,10 +170,6 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject
 
   connect( kapp,                   SIGNAL( aboutToQuit() ),
            this,                   SLOT( slotAboutToQuit() ) );
-
-  // Initialize the scanner and the mounter.
-  Smb4KScanner::self()->init();
-  Smb4KMounter::self()->init();
 }
 
 
