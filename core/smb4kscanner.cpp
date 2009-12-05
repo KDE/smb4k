@@ -887,7 +887,7 @@ void Smb4KScanner::lookupShares( Smb4KHost *host )
            this,   SLOT( slotShares( Smb4KHost *, QList<Smb4KShare> & ) ) );
   connect( thread, SIGNAL( authError( Smb4KBasicNetworkItem * ) ),
            this,   SLOT( slotAuthError( Smb4KBasicNetworkItem * ) ) );
-
+           
   thread->start();
   thread->lookup( &authInfo, command );
 }
