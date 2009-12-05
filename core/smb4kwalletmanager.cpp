@@ -180,7 +180,7 @@ void Smb4KWalletManager::readAuthInfo( Smb4KAuthInfo *authInfo )
   Q_ASSERT( authInfo );
 
   // Initialize the wallet manager. In case the wallet is already
-  // set up, init() will just do nothing.
+  // set up, init() will do nothing.
   init( 0 );
 
   if ( m_wallet )
@@ -208,7 +208,7 @@ void Smb4KWalletManager::readAuthInfo( Smb4KAuthInfo *authInfo )
           // Do nothing
         }
 
-        // Only set the authentication information the map is not empty and if
+        // Only set the authentication information if the map is not empty and if
         // either the login was not set in authInfo or it is equal to map["Login"].
         if ( !map.isEmpty() &&
              (authInfo->login().isEmpty() || QString::compare( QString::fromUtf8( authInfo->login() ), map["Login"] ) == 0) )
@@ -514,21 +514,14 @@ bool Smb4KWalletManager::showPasswordDialog( Smb4KAuthInfo *authInfo, QWidget *p
     for ( int i = 0; i < authInfo->homesUsers().size(); ++i )
     {
       Smb4KAuthInfo user_auth_info( *authInfo );
-      user_auth_info.setHomesUser( authInfo->homesUsers().at( i ) );
+      user_auth_info.setLogin( authInfo->homesUsers().at( i ) );
 
       // Read the authentication data for the share. If it does not
       // exist yet, user() and password() will be empty.
       readAuthInfo( &user_auth_info );
 
-      if ( user_auth_info.login().isEmpty() )
-      {
-        logins.insert( authInfo->homesUsers().at( i ), QString() );
-      }
-      else
-      {
-        logins.insert( QString::fromUtf8( user_auth_info.login() ),
-                       QString::fromUtf8( user_auth_info.password() ) );
-      }
+      logins.insert( QString::fromUtf8( user_auth_info.login() ),
+                     QString::fromUtf8( user_auth_info.password() ) );
     }
   }
   else
