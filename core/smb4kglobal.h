@@ -299,18 +299,6 @@ namespace Smb4KGlobal
    * @returns TRUE if the share was removed and FALSE otherwise.
    */
   KDE_EXPORT bool removeMountedShare( Smb4KShare *share );
-
-  /**
-   * This function replaces the current mounted shares list with a new one.
-   * The current entries in the list will first be deleted and then replaced
-   * by the onces from @p list.
-   *
-   * Please prefer this function over per class solutions.
-   *
-   * @param list        The new list of mounted shares that should replace the
-   *                    current one.
-   */
-  KDE_EXPORT void replaceMountedSharesList( const QList<Smb4KShare *> &list );
 };
 
 #endif
