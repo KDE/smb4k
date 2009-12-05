@@ -40,6 +40,7 @@
 // forward declarations
 class Smb4KSearchDialog;
 class Smb4KBasicNetworkItem;
+class Smb4KShare;
 
 
 /**
@@ -97,7 +98,7 @@ class Smb4KSearchDialogPart : public KParts::Part
                                    bool known );
     /**
      * This slot is connected to the Smb4KSearch::aboutToStart() signal.
-     * 
+     *
      * @param string              The search string for that the search is to
      *                            be performed.
      */
@@ -105,8 +106,8 @@ class Smb4KSearchDialogPart : public KParts::Part
 
     /**
      * This slot is connected to the Smb4KSearch::finished() signal.
-     * 
-     * @param string              The search string for that the search was 
+     *
+     * @param string              The search string for that the search was
      *                            performed.
      */
     void slotSearchFinished( const QString &string );
@@ -120,12 +121,13 @@ class Smb4KSearchDialogPart : public KParts::Part
     void slotCheckItemIsKnown();
 
     /**
-     * This slot is connected to the Smb4KMounter::updated() signal and checks
-     * whether a share is already mounted or not. If it is mounted this slot
-     * will change the icon of the shares item from the default one to the
-     * one that indecates that the item is mounted.
+     * This slot is connected to the Smb4KMounter::updated() signal and will 
+     * change the icon of the share item from the default one to the one that 
+     * indicates that the item is mounted.
+     * 
+     * @param share               The share item
      */
-    void slotCheckItemIsMounted();
+    void slotMarkMountedShare( Smb4KShare *share );
 
     /**
      * This slot is invoked, when a user double clicks an item. It adds the item

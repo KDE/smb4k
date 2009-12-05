@@ -84,9 +84,15 @@ Smb4KSearchDialogPart::Smb4KSearchDialogPart( QWidget *parentWidget, QObject *pa
 
   connect( Smb4KCore::scanner(),   SIGNAL( hostListChanged() ),
            this,                   SLOT( slotCheckItemIsKnown() ) );
+           
+  connect( Smb4KMounter::self(),   SIGNAL( mounted( Smb4KShare * ) ),
+           this,                   SLOT( slotMarkMountedShare( Smb4KShare * ) ) );
+           
+  connect( Smb4KMounter::self(),   SIGNAL( unmounted( Smb4KShare * ) ),
+           this,                   SLOT( slotMarkMountedShare( Smb4KShare * ) ) );
 
-  connect( Smb4KCore::mounter(),   SIGNAL( updated() ),
-           this,                   SLOT( slotCheckItemIsMounted() ) );
+  connect( Smb4KMounter::self(),   SIGNAL( updated( Smb4KShare * ) ),
+           this,                   SLOT( slotMarkMountedShare( Smb4KShare * ) ) );
 
   connect( Smb4KCore::search(),    SIGNAL( result( Smb4KBasicNetworkItem *, bool ) ),
            this,                   SLOT( slotReceivedSearchResult( Smb4KBasicNetworkItem *, bool ) ) );
@@ -537,65 +543,72 @@ void Smb4KSearchDialogPart::slotCheckItemIsKnown()
 }
 
 
-void Smb4KSearchDialogPart::slotCheckItemIsMounted()
+void Smb4KSearchDialogPart::slotMarkMountedShare( Smb4KShare *share )
 {
-  for ( int i = 0; i < m_widget->listWidget()->count(); ++i )
+  if ( share )
   {
-    Smb4KSearchDialogItem *item = static_cast<Smb4KSearchDialogItem *>( m_widget->listWidget()->item( i ) );
-
-    switch ( item->type() )
+    for ( int i = 0; i < m_widget->listWidget()->count(); ++i )
     {
-      case Smb4KSearchDialogItem::Share:
+      Smb4KSearchDialogItem *item = static_cast<Smb4KSearchDialogItem *>( m_widget->listWidget()->item( i ) );
+
+      switch ( item->type() )
       {
-        // Get the list of shares with the same UNC.
-        QList<Smb4KShare *> list = findShareByUNC( item->shareItem()->unc() );
-
-        if ( !list.isEmpty() )
+        case Smb4KSearchDialogItem::Share:
         {
-          for ( int j = 0; j < list.size(); ++j )
-          {
-            // Find the right share.
-            if ( (!list.at( j )->isForeign() || Smb4KSettings::showAllShares()) &&
-                 !item->isMounted() )
-            {
-              item->setMounted( true );
+          // Get the list of shares with the same UNC.
+          QList<Smb4KShare *> list = findShareByUNC( share->unc() );
 
-              break;
-            }
-            else if ( (list.at( j )->isForeign() && !Smb4KSettings::showAllShares()) &&
-                      item->isMounted() )
-            {
-              item->setMounted( false );
-
-              // This is a change due to a foreign share. Continue until
-              // we hit the share owned by the user (if it exists).
-              continue;
-            }
-            else
-            {
-              continue;
-            }
-          }
-        }
-        else
-        {
-          if ( item->isMounted() )
+          if ( !list.isEmpty() )
           {
-            item->setMounted( false );
+            for ( int j = 0; j < list.size(); ++j )
+            {
+              // Find the right share.
+              if ( (!list.at( j )->isForeign() || Smb4KSettings::showAllShares()) &&
+                  !item->isMounted() )
+              {
+                item->setMounted( true );
+
+                break;
+              }
+              else if ( (list.at( j )->isForeign() && !Smb4KSettings::showAllShares()) &&
+                        item->isMounted() )
+              {
+                item->setMounted( false );
+
+                // This is a change due to a foreign share. Continue until
+                // we hit the share owned by the user (if it exists).
+                continue;
+              }
+              else
+              {
+                continue;
+              }
+            }
           }
           else
           {
-            // Do nothing
+            if ( item->isMounted() )
+            {
+              item->setMounted( false );
+            }
+            else
+            {
+              // Do nothing
+            }
           }
-        }
 
-        break;
-      }
-      default:
-      {
-        break;
+          break;
+        }
+        default:
+        {
+          break;
+        }
       }
     }
+  }
+  else
+  {
+    // Do nothing
   }
 }
 
