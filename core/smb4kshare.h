@@ -142,6 +142,19 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     QString unc( QUrl::FormattingOptions options = QUrl::RemoveScheme|
                                                    QUrl::RemoveUserInfo|
                                                    QUrl::RemovePort ) const;
+                                                   
+    /**
+     * In case of a 'homes' share, this function returns the UNC of the user's 
+     * home repository in the form [smb:]//[USER@]HOST[:PORT]/USER depending 
+     * on the format specified by @p options.
+     * 
+     * If the share is not a 'homes' share, this function returns an empty string.
+     *
+     * @returns the UNC.
+     */
+    QString homeUNC( QUrl::FormattingOptions options = QUrl::RemoveScheme|
+                                                       QUrl::RemoveUserInfo|
+                                                       QUrl::RemovePort ) const;
 
     /**
      * Returns the host's UNC in the form [smb:]//[USER@]HOST[:PORT] depending on

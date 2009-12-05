@@ -176,6 +176,23 @@ QString Smb4KShare::unc( QUrl::FormattingOptions options ) const
 }
 
 
+QString Smb4KShare::homeUNC( QUrl::FormattingOptions options ) const
+{
+  QString unc;
+  
+  if ( isHomesShare() )
+  {
+    unc = m_url.toString( options ).replace( "//"+m_url.host(), "//"+hostName() ).replace( m_url.path(), "/"+m_url.userName() );
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  return unc;
+}
+
+
 QString Smb4KShare::hostUNC( QUrl::FormattingOptions options ) const
 {
   return m_url.toString( options|QUrl::RemovePath ).replace( "//"+m_url.host(), "//"+hostName() );
