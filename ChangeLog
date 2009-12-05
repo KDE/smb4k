@@ -11,9 +11,12 @@ Smb4K CVS_HEAD (????-??-??):
   + Added two new constructors.
   + Added type enumeration and function.
   + Added setUNC() and unc() functions.
-  + Added setHomesUser() and homesUser() functions so that homes user
+  + Added setHomesUsers() and homesUsers() functions so that homes user
     entries can be handled.
   + Renamed user() and setUser() functions login() and setLogin().
+  + Removed the setHomesUser() function. Use setLogin() instead.
+  + setShare() now automatically uses Smb4KShare::homeUNC() to set the UNC,
+    if you pass a homes share.
 - Replaced the Smb4KPasswordHandler class with the new Smb4KWalletManager
   class. It offers a much cleaner implementation.
 - Revised Smb4KWorkgroup class:
@@ -38,7 +41,9 @@ Smb4K CVS_HEAD (????-??-??):
   + The login is now empty by default.
   + Added setAuthInfo() function. You can set the user info of the UNC/URL with
     it.
-  + Added hasHostIp() function.
+  + Added hasHostIP() function.
+  + Added homeUNC() function that returns the UNC of the user's home repository
+    in case of a 'homes' share.
 - Revised Smb4KCore class:
   + Removed all *State() convenience functions. You need to use the new
     Smb4KCore::xxx()->currentState() functions to read the current state of
@@ -73,10 +78,14 @@ Smb4K CVS_HEAD (????-??-??):
   + Rewrote import() function. Shares with the obsolete SMBFS file system are
     not supported anymore and we now use /etc/mtab as fall back solution under
     non-FreeBSD operating systems.
+  + Replaced old updated() signal with one that emits the share that was updated.
+  + Before the mounted() and unmounted() signals are emitted, we check /etc/mtab
+    if the (un)mounting was successful.
 - Revised Smb4KSambaOptionsHandler class:
   + Replaced remount() function with addRemount() and removeRemount() functions.
   + Replaced findItem( const QString &, bool ) with findItem( Smb4KShare *, bool )
     and findItem( Smb4KHost *, bool ).
+  + Removed mountOptions() function.
   + smbclientOptions() now takes a pointer instead of a reference.
   + The netOptions() classes now take pointers instead of references.
 - Revised Smb4KSynchronizationInfo class:
@@ -203,6 +212,7 @@ Smb4K CVS_HEAD (????-??-??):
   + Functions that manipulate the lists have now mutexes to serialize the
     access.
   + All functions that add or remove items to the global lists return a boolean.
+  + Removed all replaceXXX() functions.
 - Revised Smb4KSudoWriterInterface class:
   + Removed failed() signal.
   + Removed finished() signal.
@@ -228,6 +238,9 @@ Smb4K CVS_HEAD (????-??-??):
   + Multiple shares can now be selected.
   + The tool tips are now shown when the QEvent::ToolTip event occurrs and
     not by our own implementation.
+  + Replaced slotMountedShares() by three slots: slotShareMounted(), 
+    slotShareUnmounted() and slotShareUpdated().
+  + Moved initialization of the mounter to the main window.
 - Revised network browser:
   + Adjusted the code so that the new possibilities that the reworked
     print code offers can be used.
@@ -238,6 +251,7 @@ Smb4K CVS_HEAD (????-??-??):
   + If during an IP scan no workgroup master browsers could be found, all
     discovered hosts of that workgroup will be shown nontheless.
   + The default short cut for rescanning is now F5. CTRL+R is still valid.
+  + Moved initialization of the mounter and scanner to the main window.
 - Revised mount dialog:
   + The input lines and the bookmark checkbox are disabled when the mount
     process is running.
@@ -254,6 +268,7 @@ Smb4K CVS_HEAD (????-??-??):
   + Improved visual feedback (closes #15899).
   + Fixed saving and restoring of the dock widgets (closes #15899).
   + Improved status messages.
+  + Added initialization of the core classes to the constructor.
 - Revised bookmark editor:
   + The login name is shown and can be edited.
 - Revised preview dialog:
