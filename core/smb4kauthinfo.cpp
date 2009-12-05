@@ -43,7 +43,14 @@ Smb4KAuthInfo::Smb4KAuthInfo( const Smb4KShare *share )
 : m_url( QUrl() ), m_type( Share ), m_workgroup( share->workgroupName() ), m_homes_share( share->isHomesShare() ),
   m_homes_users( share->homesUsers() )
 {
-  setUNC( share->unc( QUrl::None ) );
+  if ( !m_homes_share )
+  {
+    setUNC( share->unc( QUrl::None ) );
+  }
+  else
+  {
+    setUNC( share->homeUNC( QUrl::None ) );
+  }
 }
 
 
@@ -89,7 +96,14 @@ void Smb4KAuthInfo::setShare( Smb4KShare *share )
   m_homes_share = share->isHomesShare();
   m_homes_users = share->homesUsers();
 
-  setUNC( share->unc( QUrl::None ) );
+  if ( !share->isHomesShare() )
+  {
+    setUNC( share->unc( QUrl::None ) );
+  }
+  else
+  {
+    setUNC( share->homeUNC( QUrl::None ) );
+  }
 }
 
 
@@ -185,25 +199,21 @@ QString Smb4KAuthInfo::shareName() const
 void Smb4KAuthInfo::setLogin( const QString &login )
 {
   m_url.setUserName( login );
+
+  if ( m_homes_share )
+  {
+    m_url.setPath( login );
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
 void Smb4KAuthInfo::setPassword( const QString &passwd )
 {
   m_url.setPassword( passwd );
-}
-
-
-void Smb4KAuthInfo::setHomesUser( const QString &user )
-{
-  if ( m_homes_share )
-  {
-    m_url.setPath( user );
-  }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
