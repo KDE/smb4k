@@ -34,6 +34,7 @@
 #include <QObject>
 #include <QFile>
 #include <QString>
+#include <QCache>
 
 // KDE includes
 #include <kdemacros.h>
@@ -44,6 +45,7 @@
 // forward declarations
 class Smb4KShare;
 class Smb4KAuthInfo;
+class BasicMountThread;
 
 /**
  * This is one of the core classes of Smb4K. It manages the mounting
@@ -96,41 +98,34 @@ class KDE_EXPORT Smb4KMounter : public QObject
     void abortAll();
 
     /**
-     * This function attempts to mount a share and returns TRUE if it was
-     * successful.
+     * This function attempts to mount a share.
      *
      * @param share       The Smb4KShare object that is representing the share.
-     *
-     * @returns TRUE on success.
      */
-    bool mountShare( Smb4KShare *share );
+    void mountShare( Smb4KShare *share );
 
     /**
      * This function attempts to unmount a share. This can either be done the "normal"
-     * way, or you may force it. If you decide the force the unmounting by setting
+     * way, or you may force it. If you decide to force the unmounting by setting
      * @p force to TRUE, under Linux a lazy unmount will be initiated. With the parameter
-     * @p noMessage you can suppress any error messages.
+     * @p silent you can suppress any error messages.
      *
      * @param share       The share object that should be unmounted.
      *
      * @param force       Force the unmounting of the share.
      *
-     * @param noMessage   Determines whether this function should emit an error code in
+     * @param silent      Determines whether this function should emit an error code in
      *                    case of an error. The default value is FALSE.
-     *
-     * @returns TRUE on success.
      */
-    bool unmountShare( Smb4KShare *share,
+    void unmountShare( Smb4KShare *share,
                        bool force = false,
-                       bool noMessage = false );
+                       bool silent = false );
 
     /**
      * Unmounts all shares at once. It invokes unmountShare() on each share
      * in the global list of mounted shares.
-     *
-     * @returns TRUE on success and FALSE if at least one unmount failed.
      */
-    bool unmountAllShares();
+    void unmountAllShares();
 
     /**
      * This function reports if the mount process for @p share is running.
@@ -178,14 +173,15 @@ class KDE_EXPORT Smb4KMounter : public QObject
     void stateChanged();
 
     /**
-     * This signal ist emitted whenever the global list of mounted shares
-     * was modified by the mounter.
-     */
-    void updated();
+     * This signal is emitted whenever a share item was updated. This mainly happens
+     * from within the import() function.
+     * 
+     * @param share             The share item that was just updated.
+     */ 
+    void updated( Smb4KShare *share );
 
     /**
-     * This signal is emitted when a share has successfully been mounted or
-     * if it has already been mounted.
+     * This signal is emitted when a share has successfully been mounted.
      *
      * @param share             The share that was just mounted.
      */
@@ -236,6 +232,41 @@ class KDE_EXPORT Smb4KMounter : public QObject
      * really exits.
      */
     void slotAboutToQuit();
+
+    /**
+     * This slot is called when a thread finished.
+     */
+    void slotThreadFinished();
+    
+    /**
+     * This slot is called whenever a share was successfully mounted by the 
+     * mount thread.
+     * 
+     * @param share           The Smb4KShare object
+     */
+    void slotShareMounted( Smb4KShare *share );
+    
+    /**
+     * This slot is called whenever a share was successfully unmounted by the
+     * unmount thread.
+     * 
+     * @param share           The Smb4KShare object
+     */
+    void slotShareUnmounted( Smb4KShare *share );
+    
+    /**
+     * This slot is called whenever an authentication error occurred.
+     *
+     * @param share           The Smb4KShare object
+     */
+    void slotAuthError( Smb4KShare *share );
+    
+    /**
+     * This slot is called whenever a "bad name" error occurred.
+     *
+     * @param share           The Smb4KShare object
+     */
+    void slotBadShareNameError( Smb4KShare *share );
 
     /**
      * This slot is called by the Solid interface when a hardware button was
@@ -315,6 +346,11 @@ class KDE_EXPORT Smb4KMounter : public QObject
      * Time out
      */
     int m_timeout;
+
+    /**
+     * The cache that holds the threads
+     */
+    QCache<QString,BasicMountThread> m_cache;
 };
 
 #endif

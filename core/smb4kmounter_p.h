@@ -34,11 +34,9 @@
 // Qt includes
 #include <QThread>
 #include <QString>
-#include <QList>
 
 // KDE includes
 #include <kdebug.h>
-#include <kprocess.h>
 
 // system includes
 #include <sys/statvfs.h>
@@ -54,9 +52,80 @@
 #include <errno.h>
 
 // application specific includes
-#include <smb4kshare.h>
 #include <smb4kmounter.h>
-#include <smb4kauthinfo.h>
+#include <smb4kprocess.h>
+#include <smb4kshare.h>
+
+class Smb4KAuthInfo;
+class Smb4KShare;
+
+class BasicMountThread : public QThread
+{
+  Q_OBJECT
+
+  friend class MountThread;
+  friend class UnmountThread;
+
+  public:
+    enum Type { MountThread,
+                UnmountThread };
+
+    BasicMountThread( Type type,
+                      Smb4KShare *share,
+                      QObject *parent = 0 );
+    ~BasicMountThread();
+    Type type() { return m_type; }
+    Smb4KProcess *process() { return m_proc; }
+    Smb4KShare *share() { return &m_share; }
+
+  private:
+    Type m_type;
+    Smb4KShare m_share;
+    Smb4KProcess *m_proc;
+};
+
+
+class MountThread : public BasicMountThread
+{
+  Q_OBJECT
+
+  public:
+    MountThread( Smb4KShare *share,
+                 QObject *parent = 0 );
+    ~MountThread();
+    void mount( Smb4KAuthInfo *authInfo,
+                const QString &command );
+                
+  signals:
+    void mounted( Smb4KShare *share );
+    void authError( Smb4KShare *share );
+    void badShareName( Smb4KShare *share );
+
+  protected slots:
+    void slotProcessError();
+    void slotProcessFinished( int exitCode,
+                              QProcess::ExitStatus exitStatus );
+};
+
+
+class UnmountThread : public BasicMountThread
+{
+  Q_OBJECT
+  
+  public:
+    UnmountThread( Smb4KShare *share,
+                   QObject *parent = 0 );
+    ~UnmountThread();
+    void unmount( const QString &command );
+    
+  signals:
+    void unmounted( Smb4KShare *share );
+    
+  protected slots:
+    void slotProcessError();
+    void slotProcessFinished( int exitCode,
+                              QProcess::ExitStatus exitStatus );
+};
 
 
 class CheckThread : public QThread
