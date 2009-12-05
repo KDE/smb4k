@@ -627,18 +627,3 @@ bool Smb4KGlobal::removeMountedShare( Smb4KShare *share )
   return removed;
 }
 
-
-void Smb4KGlobal::replaceMountedSharesList( const QList<Smb4KShare *> &list )
-{
-  mutex.lock();
-
-  while ( !p.mountedSharesList.isEmpty() )
-  {
-    delete p.mountedSharesList.takeFirst();
-  }
-
-  p.mountedSharesList += list;
-
-  mutex.unlock();
-}
-
