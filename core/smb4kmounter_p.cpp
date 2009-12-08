@@ -41,7 +41,6 @@
 BasicMountThread::BasicMountThread( Type type, Smb4KShare *share, QObject *parent )
 : QThread( parent ), m_type( type ), m_share( *share )
 {
-  Q_ASSERT( share );
 }
 
 
