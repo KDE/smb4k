@@ -51,7 +51,7 @@ static const char description[] =
   I18N_NOOP( "The advanced network neighborhood browser for KDE." );
 
 static const char authors[] =
-  I18N_NOOP( "(c) 2003-2008, Alexander Reinholdt\n(c) 2004-2007, "
+  I18N_NOOP( "\u00A9 2003-2008, Alexander Reinholdt\n\u00A9 2004-2007, "
              "Massimo Callegari" );
 
 
