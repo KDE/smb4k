@@ -161,7 +161,7 @@ KAboutData *Smb4KSearchDialogPart::createAboutData()
                           "2.0",
                           ki18n( "The search dialog KPart of Smb4K" ),
                           KAboutData::License_GPL_V2,
-                          ki18n( "(c) 2007-2008, Alexander Reinholdt" ),
+                          ki18n( "\u00A9 2007-2009, Alexander Reinholdt" ),
                           KLocalizedString(),
                           "http://smb4k.berlios.de",
                           "smb4k-bugs@lists.berlios.de" );
