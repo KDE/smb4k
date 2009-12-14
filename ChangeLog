@@ -86,8 +86,10 @@ Smb4K CVS_HEAD (????-??-??):
   + Replaced findItem( const QString &, bool ) with findItem( Smb4KShare *, bool )
     and findItem( Smb4KHost *, bool ).
   + Removed mountOptions() function.
-  + smbclientOptions() now takes a pointer instead of a reference.
-  + The netOptions() classes now take pointers instead of references.
+  + Removed smbtreeOptions() function.
+  + Removed smbclientOptions() function.
+  + Removed nmblookupOptions() function.
+  + Removed netOptions() function.
 - Revised Smb4KSynchronizationInfo class:
   + Added functions to set and return the source directory.
   + Added functions to set and return the destination directory.
@@ -162,6 +164,8 @@ Smb4K CVS_HEAD (????-??-??):
   + Added aboutToStart() signal that is emitted when a scan process is about to
     start.
   + Added finished() signal that is emitted when a scan process finished.
+  + When looking up shares, the port defined for the host passed to the scanner
+    is honored.
 - Revised Smb4KPreviewItem class:
   + Renamed shareItem() function to share().
   + Added setAuthInfo() function.

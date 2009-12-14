@@ -2,7 +2,7 @@
     smb4ksambaoptionshandler  -  This class handles the Samba options.
                              -------------------
     begin                : So Mai 14 2006
-    copyright            : (C) 2006-2008 by Alexander Reinholdt
+    copyright            : (C) 2006-2009 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -110,27 +110,6 @@ class KDE_EXPORT Smb4KSambaOptionsHandler : public QObject
     void sync();
 
     /**
-     * This function returns the line of arguments for the 'smbclient' program.
-     * The arguments are spcific to the share that is defined by @p share. You have
-     * to provide the name of the shares - as always - in the form //HOST/SHARE.
-     *
-     * @param share             The name of the share.
-     *
-     * @returns a list of arguments for use with the 'smbclient' program.
-     */
-    const QString smbclientOptions( Smb4KShare *share = NULL );
-
-    /**
-     * This function returns the "global" options for nmblookup, i.e. the domain
-     * the client is in, if Kerberos should be used, etc.
-     *
-     * @param with_broadcast    Return the global broadcast address if defined.
-     *
-     * @returns a string with the "global" options for nmblookup
-     */
-    const QString nmblookupOptions( bool with_broadcast = true );
-
-    /**
      * This function returns the options defined in the global section of the smb.conf
      * file. All option names have been converted to lower case and you can find each
      * entry by providing the option name in lowercase (!) as key.
@@ -145,65 +124,6 @@ class KDE_EXPORT Smb4KSambaOptionsHandler : public QObject
      * @returns the name or IP of the WINS server
      */
     const QString &winsServer();
-
-    /**
-     * This enumeration is for use with the netOptions() function. It tells which
-     * command to use.
-     */
-    enum NetCommand { Share,
-                      ServerDomain,
-                      LookupHost,
-                      LookupMaster,
-                      Domain };
-
-    /**
-     * This function returns the options for the net command. It only knows
-     * host related actions. If you need to scan for workgroup masters, etc.,
-     * use the function below.
-     *
-     * Known values for @p command: Share, LookupHost, LookupMaster
-     *
-     * @param command           One of the entries of the NetCommand enumeration.
-     *
-     * @param host              The Smb4KHost item.
-     *
-     * @returns the list of arguments for the net command or an empty string if
-     * an error occurred.
-     */
-    const QString netOptions( NetCommand command,
-                              Smb4KHost *host );
-
-    /**
-     * This is an overloaded function and behaves essentially the same way as the
-     * one above. It returns the options for the net command and only knows
-     * workgroup related actions. If you need to scan for shares, etc.,use the
-     * function above.
-     *
-     * Known values for @p command: LookupHost, LookupMaster
-     *
-     * @param command           One of the entries of the NetCommand enumeration.
-     *
-     * @param workgroup         The Smb4KWorkgroup item.
-     *
-     * @returns the list of arguments for the net command or an empty string if
-     * an error occurred.
-     */
-    const QString netOptions( NetCommand command,
-                              Smb4KWorkgroup *workgroup );
-
-    /**
-     * This is an overloaded function and behaves essentially the same way as the
-     * others above. It returns the options for the net command. In contrast to the
-     * other functions it only takes one argument.
-     *
-     * Known values for @p command: ServerDomain, Domain
-     *
-     * @param command          One of the entries of the NetCommand enumeration.
-     *
-     * @returns the list of arguments for the net command or an empty string if
-     * an error occurred.
-     */
-    const QString netOptions( NetCommand command );
 
     /**
      * Find a share in the list.
@@ -267,18 +187,6 @@ class KDE_EXPORT Smb4KSambaOptionsHandler : public QObject
                      bool sync );
 
     /**
-     * This function returns the options for the smbtree program. Optionally,
-     * you can provide the workgroup item that contains the current workgroup
-     * master browser, so that options defined for it can be used instead of
-     * the global ones.
-     *
-     * @param workgroup         The name of the local workgroup master browser.
-     *
-     * @returns the options for smbtree.
-     */
-    const QString smbtreeOptions( Smb4KWorkgroup *workgroup = NULL );
-
-    /**
      * This function updates the list of custom options.
      *
      * @param list              The list that is used for the update.
@@ -310,22 +218,6 @@ class KDE_EXPORT Smb4KSambaOptionsHandler : public QObject
      * Write the options to the configuration file.
      */
     void writeCustomOptions();
-
-    /**
-     * This function searches a particular UNC in the list. If this item is a share
-     * and it is not found, @p exactMatch determines if NULL or the values of the item that
-     * matches @p item closest are returned (i.e. the host, or another share that's located
-     * on the host). In most cases you want @p exactMatch to be FALSE.
-     * Please note: Do not delete the pointer that's returned by this function or you will
-     * remove an item from the list!
-     *
-     * @param unc               The name of the network item.
-     *
-     * @param exactMatch        The name has to match exactly the result that's returned.
-     *
-     * @returns                 The Smb4KSambaOptionsInfo object associated with the network item.
-     */
-//     Smb4KSambaOptionsInfo *find_item( const QString &item, bool exactMatch = false );
 
     /**
      * This function reads the entries of the global section of Samba's configuration

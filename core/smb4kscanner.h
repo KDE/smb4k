@@ -103,6 +103,10 @@ class KDE_EXPORT Smb4KScanner : public QObject
      *
      * You need to connect to the shares() signal to retrieve the results of
      * the search.
+     * 
+     * @note If set, Smb4KHost::protocol() and Smb4KHost::port() will overwrite 
+     * the other prossible protocol or port options (e.g. default protocol/port
+     * or custom protocol/port).
      *
      * @param host        The Smb4KHost item representing the host
      */

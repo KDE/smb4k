@@ -26,6 +26,7 @@
 // Qt includes
 #include <QApplication>
 #include <QMutableListIterator>
+#include <QHostAddress>
 
 // KDE includes
 #include <kapplication.h>
@@ -50,6 +51,7 @@
 #include <smb4kwalletmanager.h>
 #include <smb4kprocess.h>
 #include <smb4ksambaoptionshandler.h>
+#include <smb4ksambaoptionsinfo.h>
 
 using namespace Smb4KGlobal;
 
@@ -455,10 +457,44 @@ void Smb4KScanner::lookupDomains()
     {
       // Go ahead
     }
-
+    
+    // Global Samba options
+    QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
+    
+    // Assemble command
     command += nmblookup;
+
+    // Domain
+    command += (!Smb4KSettings::domainName().isEmpty() &&
+               QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0) ?
+               " -W "+KShell::quoteArg( Smb4KSettings::domainName() ) : "";
+    
+    // NetBIOS name
+    command += (!Smb4KSettings::netBIOSName().isEmpty() &&
+               QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0) ?
+               " -n "+KShell::quoteArg( Smb4KSettings::netBIOSName() ) : "";
+               
+    // NetBIOS scope
+    command += (!Smb4KSettings::netBIOSScope().isEmpty() &&
+               QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0) ?
+               " -i "+KShell::quoteArg( Smb4KSettings::netBIOSScope() ) : "";
+               
+    // Socket options
+    command += (!Smb4KSettings::socketOptions().isEmpty() &&
+               QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0) ?
+               " -O "+KShell::quoteArg( Smb4KSettings::socketOptions() ) : "";
+               
+    // Port 137
+    command += Smb4KSettings::usePort137() ? " -r" : "";
+    
+    // Broadcast address
+    QHostAddress address( Smb4KSettings::broadcastAddress() );
+    
+    command += (!Smb4KSettings::broadcastAddress().isEmpty() &&
+               address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol) ?
+               " -B "+Smb4KSettings::broadcastAddress() : "";
+    
     command += " -M";
-    command += " "+Smb4KSambaOptionsHandler::self()->nmblookupOptions();
     command += " --";
     command += " - | ";
     command += grep+" '<01>' | ";
@@ -479,7 +515,28 @@ void Smb4KScanner::lookupDomains()
       command += " -A ips";
     }
 
-    command += " "+Smb4KSambaOptionsHandler::self()->nmblookupOptions();
+    // Domain
+    command += (!Smb4KSettings::domainName().isEmpty() &&
+               QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0) ?
+               " -W "+KShell::quoteArg( Smb4KSettings::domainName() ) : "";
+    
+    // NetBIOS name
+    command += (!Smb4KSettings::netBIOSName().isEmpty() &&
+               QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0) ?
+               " -n "+KShell::quoteArg( Smb4KSettings::netBIOSName() ) : "";
+               
+    // NetBIOS scope
+    command += (!Smb4KSettings::netBIOSScope().isEmpty() &&
+               QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0) ?
+               " -i "+KShell::quoteArg( Smb4KSettings::netBIOSScope() ) : "";
+               
+    // Socket options
+    command += (!Smb4KSettings::socketOptions().isEmpty() &&
+               QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0) ?
+               " -O "+KShell::quoteArg( Smb4KSettings::socketOptions() ) : "";
+               
+    // Port 137
+    command += Smb4KSettings::usePort137() ? " -r" : "";
 
     m_state = SCANNER_LOOKUP_DOMAINS;
     mode = LookupDomainsThread::LookupDomains;
@@ -522,13 +579,78 @@ void Smb4KScanner::lookupDomains()
     {
       workgroup.setWorkgroupName( Smb4KSambaOptionsHandler::self()->globalSambaOptions()["workgroup"] );
     }
+    
+    // Global Samba options
+    QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
+    
+    // The Samba options for the master browser.
+    Smb4KHost master_browser;
+    master_browser.setWorkgroupName( workgroup.workgroupName() );
+    master_browser.setHostName( workgroup.masterBrowserName() );
+    master_browser.setIP( workgroup.masterBrowserIP() );
+    
+    Smb4KSambaOptionsInfo *info = Smb4KSambaOptionsHandler::self()->findItem( &master_browser );
 
+    // Assemble the command
+    
+    // Master lookup
     command += net;
-    command += " "+Smb4KSambaOptionsHandler::self()->netOptions( Smb4KSambaOptionsHandler::LookupMaster, &workgroup );
-    command += " -U % | ";
+    
+    // Command. No protocol.
+    command += " lookup master";
+    
+    // Name of the workgroup/domain in which the master browser 
+    // is to be determined.
+    command += " ";
+    command += KShell::quoteArg( workgroup.workgroupName() );
+    command += " ";
+    
+    // The user's workgroup/domain name
+    command += (!Smb4KSettings::domainName().isEmpty() &&
+               QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0) ?
+               " -W "+KShell::quoteArg( Smb4KSettings::domainName() ) : "";
+               
+    // The user's NetBIOS name
+    command += (!Smb4KSettings::netBIOSName().isEmpty() &&
+               QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0) ?
+               " -n "+KShell::quoteArg( Smb4KSettings::netBIOSName() ) : "";
+               
+    // Machine account
+    command += Smb4KSettings::machineAccount() ? " -P" : "";
+    
+    // Port
+    command += (info && info->port() != -1) ? 
+               " -p "+QString( "%1" ).arg( info->port() ) : 
+               " -p "+QString( "%1" ).arg( Smb4KSettings::remoteSMBPort() );
+    
+    // User name and password (not used)
+    command += " -U %";
+    
+    // Domain lookup (via xargs)
+    command += " | ";
     command += xargs+" -Imaster ";
     command += net;
-    command += " "+Smb4KSambaOptionsHandler::self()->netOptions( Smb4KSambaOptionsHandler::Domain );
+    
+    // Protocol & command. Since the domain lookup only work with the RAP
+    // protocol, there is no point in using the 'Automatic' feature.
+    command += " rap domain";
+    
+    // The user's workgroup/domain name
+    command += (!Smb4KSettings::domainName().isEmpty() &&
+               QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0) ?
+               " -W "+KShell::quoteArg( Smb4KSettings::domainName() ) : "";
+               
+    // The user's NetBIOS name
+    command += (!Smb4KSettings::netBIOSName().isEmpty() &&
+               QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0) ?
+               " -n "+KShell::quoteArg( Smb4KSettings::netBIOSName() ) : "";
+               
+    // Machine account
+    command += Smb4KSettings::machineAccount() ? " -P" : "";
+    
+    // Remote SMB port
+    command += " -p "+QString( "%1" ).arg( Smb4KSettings::remoteSMBPort() );
+    
     command += " -U %";
     command += " -S master";
 
@@ -564,16 +686,74 @@ void Smb4KScanner::lookupDomains()
     }
 
     Smb4KHost host( Smb4KSettings::customMasterBrowser() );
-
+    
+    // Global Samba and custom options
+    QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
+    Smb4KSambaOptionsInfo *info = Smb4KSambaOptionsHandler::self()->findItem( &host );
+    
+    // Assemble the command
+    
+    // Host lookup.
     command += net;
-    command += " "+Smb4KSambaOptionsHandler::self()->netOptions( Smb4KSambaOptionsHandler::LookupHost, &host );
+    
+    // Command. No protocol.
+    command += " lookup host";
+    
+    // The name of the host that is to be looked up.
+    command += " ";
+    command += KShell::quoteArg( host.hostName() );
+    command += " ";
+    
+    // The user's workgroup/domain name
+    command += (!Smb4KSettings::domainName().isEmpty() &&
+               QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0) ?
+               " -W "+KShell::quoteArg( Smb4KSettings::domainName() ) : "";
+               
+    // The user's NetBIOS name
+    command += (!Smb4KSettings::netBIOSName().isEmpty() &&
+               QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0) ?
+               " -n "+KShell::quoteArg( Smb4KSettings::netBIOSName() ) : "";
+               
+    // Machine account
+    command += Smb4KSettings::machineAccount() ? " -P" : "";
+    
+    // Port
+    command += (info && info->port() != -1) ? 
+               " -p "+QString( "%1" ).arg( info->port() ) : 
+               " -p "+QString( "%1" ).arg( Smb4KSettings::remoteSMBPort() );
+    
+    // User name and password (not used)
     command += " -U %";
-    command += " -S "+KShell::quoteArg( host.hostName() );
+    
+    // Workgroup/domain lookup (via xargs)
     command += " | ";
     command += xargs+" -Iip ";
     command += net;
-    command += " "+Smb4KSambaOptionsHandler::self()->netOptions( Smb4KSambaOptionsHandler::Domain );
+
+    // Protocol & command. Since the domain lookup only work with the RAP
+    // protocol, there is no point in using the 'Automatic' feature.
+    command += " rap domain";
+    
+    // Domain or workgroup
+    command += (!Smb4KSettings::domainName().isEmpty() &&
+               QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0) ?
+               " -W "+KShell::quoteArg( Smb4KSettings::domainName() ) : "";
+               
+    // NetBIOS name
+    command += (!Smb4KSettings::netBIOSName().isEmpty() &&
+               QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0) ?
+               " -n "+KShell::quoteArg( Smb4KSettings::netBIOSName() ) : "";
+               
+    // Machine account
+    command += Smb4KSettings::machineAccount() ? " -P" : "";
+    
+    // Remote SMB port
+    command += QString( " -p %1" ).arg( Smb4KSettings::remoteSMBPort() );
+    
+    // User name and password (not used)
     command += " -U %";
+    
+    // The host to query and its IP address
     command += " -S "+KShell::quoteArg( host.hostName() );
     command += " -I ip";
 
@@ -633,16 +813,44 @@ void Smb4KScanner::lookupDomains()
     {
       // Go ahead
     }
+    
+    // Global Samba options
+    QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
 
+    // Broadcast areas/addresses
     QStringList addresses = Smb4KSettings::broadcastAreas().split( ",", QString::SkipEmptyParts );
 
+    // Assemble the command
     for ( int i = 0; i < addresses.size(); ++i )
     {
       command += nmblookup;
-      // We want all globally defined options for nmblookup, except
-      // the broadcast address, because that is needed for the IP
-      // scan:
-      command += " "+Smb4KSambaOptionsHandler::self()->nmblookupOptions( false );
+
+      // Domain
+      command += (!Smb4KSettings::domainName().isEmpty() &&
+                 QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0) ?
+                 " -W "+KShell::quoteArg( Smb4KSettings::domainName() ) : "";
+    
+      // NetBIOS name
+      command += (!Smb4KSettings::netBIOSName().isEmpty() &&
+                 QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0) ?
+                 " -n "+KShell::quoteArg( Smb4KSettings::netBIOSName() ) : "";
+               
+      // NetBIOS scope
+      command += (!Smb4KSettings::netBIOSScope().isEmpty() &&
+                 QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0) ?
+                 " -i "+KShell::quoteArg( Smb4KSettings::netBIOSScope() ) : "";
+               
+      // Socket options
+      command += (!Smb4KSettings::socketOptions().isEmpty() &&
+                 QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0) ?
+                 " -O "+KShell::quoteArg( Smb4KSettings::socketOptions() ) : "";
+               
+      // Port 137
+      command += Smb4KSettings::usePort137() ? " -r" : "";
+      
+      // We do not want the globally defined broadcast address here, because the 
+      // broadcast address option is needed for the IP scan.
+
       command += " -B "+addresses.at( i );
       command += " --";
       command += " '*' | ";
@@ -650,9 +858,38 @@ void Smb4KScanner::lookupDomains()
       command += awk+" '{print $1}' | ";
       command += xargs+" -Iip ";
       command += nmblookup;
-      // This time we want to have the globally defined broadcast
-      // address:
-      command += " "+Smb4KSambaOptionsHandler::self()->nmblookupOptions();
+
+      // Domain
+      command += (!Smb4KSettings::domainName().isEmpty() &&
+                 QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0) ?
+                 " -W "+KShell::quoteArg( Smb4KSettings::domainName() ) : "";
+    
+      // NetBIOS name
+      command += (!Smb4KSettings::netBIOSName().isEmpty() &&
+                 QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0) ?
+                 " -n "+KShell::quoteArg( Smb4KSettings::netBIOSName() ) : "";
+               
+      // NetBIOS scope
+      command += (!Smb4KSettings::netBIOSScope().isEmpty() &&
+                 QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0) ?
+                 " -i "+KShell::quoteArg( Smb4KSettings::netBIOSScope() ) : "";
+               
+      // Socket options
+      command += (!Smb4KSettings::socketOptions().isEmpty() &&
+                 QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0) ?
+                 " -O "+KShell::quoteArg( Smb4KSettings::socketOptions() ) : "";
+               
+      // Port 137
+      command += Smb4KSettings::usePort137() ? " -r" : "";
+    
+      // Broadcast address
+      // Note: This time we want to have the it!
+      QHostAddress address( Smb4KSettings::broadcastAddress() );
+    
+      command += (!Smb4KSettings::broadcastAddress().isEmpty() &&
+                 address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol) ?
+                 " -B "+Smb4KSettings::broadcastAddress() : "";
+
       // Include the WINS server:
       if ( !Smb4KSambaOptionsHandler::self()->winsServer().isEmpty() )
       {
@@ -740,12 +977,34 @@ void Smb4KScanner::lookupDomainMembers( Smb4KWorkgroup *workgroup )
     {
       // Do nothing
     }
+    
+    // Global Samba options
+    QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
 
-    // Compile the command.
+    // Assemble the command.
     QString command;
     command += net;
-    command += " "+Smb4KSambaOptionsHandler::self()->netOptions( Smb4KSambaOptionsHandler::ServerDomain );
 
+    // Protocol & command. Since the domain member lookup only works with 
+    // the RAP protocol, there is no point in using the 'Automatic' feature.
+    command += " rap server domain";
+    
+    // The user's domain or workgroup
+    command += (!Smb4KSettings::domainName().isEmpty() &&
+               QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0) ?
+               " -W "+KShell::quoteArg( Smb4KSettings::domainName() ) : "";
+               
+    // The user's NetBIOS name
+    command += (!Smb4KSettings::netBIOSName().isEmpty() &&
+               QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0) ?
+               " -n "+KShell::quoteArg( Smb4KSettings::netBIOSName() ) : "";
+               
+    // Machine account
+    command += Smb4KSettings::machineAccount() ? " -P" : "";
+    
+    // Remote SMB port
+    command += QString( " -p %1" ).arg( Smb4KSettings::remoteSMBPort() );
+    
     if ( workgroup->hasMasterBrowserIP() )
     {
       command += " -I "+workgroup->masterBrowserIP();
@@ -836,14 +1095,130 @@ void Smb4KScanner::lookupShares( Smb4KHost *host )
   // Authentication information.
   Smb4KAuthInfo authInfo( host );
   Smb4KWalletManager::self()->readAuthInfo( &authInfo );
+  
+  // Global Samba and custom options
+  QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
+  Smb4KSambaOptionsInfo *info = Smb4KSambaOptionsHandler::self()->findItem( host );
 
-  // Compile the command.
+  // Assemble the command.
   QString command;
+  
+  // List shares
   command += net;
-  command += " "+Smb4KSambaOptionsHandler::self()->netOptions( Smb4KSambaOptionsHandler::Share, host );
+  
+  // Protocol hint.
+  // If the host item should carry a protocol (e.g. if a "access denied" error occurred),
+  // it will overwrite all other option. If none is defined, we check if the one returned
+  // by the Samba options info or the default one is to be used.
+  if ( host->protocol() != Smb4KHost::Automatic &&
+       host->protocol() != Smb4KHost::ADS /* not used with this command */ )
+  {
+    switch ( host->protocol() )
+    {
+      case Smb4KHost::RPC:
+      {
+        command +=  " rpc";
+        break;
+      }
+      case Smb4KHost::RAP:
+      {
+        command += " rap";
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
+  else
+  {
+    if ( info &&
+         info->protocol() != Smb4KSambaOptionsInfo::Automatic &&
+         info->protocol() != Smb4KSambaOptionsInfo::ADS )
+    {
+      switch ( info->protocol() )
+      {
+        case Smb4KSambaOptionsInfo::RPC:
+        {
+          command += " rpc";
+          break;
+        }
+        case Smb4KSambaOptionsInfo::RAP:
+        {
+          command += "rap";
+          break;
+        }
+        default:
+        {
+          break;
+        }
+      }
+    }
+    else
+    {
+      switch ( Smb4KSettings::protocolHint() )
+      {
+        case Smb4KSettings::EnumProtocolHint::RPC:
+        {
+          command += " rpc";
+          break;
+        }
+        case Smb4KSettings::EnumProtocolHint::RAP:
+        {
+          command += " rap";
+          break;
+        }
+        default:
+        {
+          // Leave it to the net command to choose the right
+          // protocol.
+          break;
+        }
+      }
+    }
+  }
+  
+  // Command
+  command += " share list";
+  
+  // Long output
+  command += " -l";
+  
+  // The user's domain or workgroup
+  command += (!Smb4KSettings::domainName().isEmpty() &&
+             QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0) ?
+             " -W "+KShell::quoteArg( Smb4KSettings::domainName() ) : "";
+               
+  // The user's NetBIOS name
+  command += (!Smb4KSettings::netBIOSName().isEmpty() &&
+             QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0) ?
+             " -n "+KShell::quoteArg( Smb4KSettings::netBIOSName() ) : "";
+               
+  // Machine account
+  command += Smb4KSettings::machineAccount() ? " -P" : "";
+  
+  // Port
+  // If a port was defined for the host via Smb4KHost::port(), it will 
+  // overwrite the other options.
+  if ( host->port() != -1 )
+  {
+    command += " -p "+QString( "%1" ).arg( host->port() );
+  }
+  else
+  {
+    command += (info && info->port() != -1) ?
+               " -p "+QString( "%1" ).arg( info->port() ) :
+               " -p "+QString( "%1" ).arg( Smb4KSettings::remoteSMBPort() );
+  }
+  
+  // Remote domain/workgroup name
   command += " -w "+KShell::quoteArg( host->workgroupName() );
+  
+  // Remote host name
   command += " -S "+KShell::quoteArg( host->hostName() );
 
+  // IP address
   if ( host->hasIP() )
   {
     command += " -I " +KShell::quoteArg( host->ip() );
@@ -852,7 +1227,8 @@ void Smb4KScanner::lookupShares( Smb4KHost *host )
   {
     // Do nothing
   }
-
+  
+  // Authentication data
   if ( !authInfo.login().isEmpty() )
   {
     command += " -U " +KShell::quoteArg( authInfo.login() );
@@ -940,8 +1316,98 @@ void Smb4KScanner::lookupInfo( Smb4KHost *host )
     // Do nothing
   }
 
-  // Common options
-  command += Smb4KSambaOptionsHandler::self()->smbclientOptions();
+  // Machine account
+  command += Smb4KSettings::machineAccount() ? " -P" : "";
+  
+  // Signing state
+  switch ( Smb4KSettings::signingState() )
+  {
+    case Smb4KSettings::EnumSigningState::None:
+    {
+      break;
+    }
+    case Smb4KSettings::EnumSigningState::On:
+    {
+      command += " -S on";
+      break;
+    }
+    case Smb4KSettings::EnumSigningState::Off:
+    {
+      command += " -S off";
+      break;
+    }
+    case Smb4KSettings::EnumSigningState::Required:
+    {
+      command += " -S required";
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+  
+  // Buffer size
+  command += Smb4KSettings::bufferSize() != 65520 ? QString( " -b %1" ).arg( Smb4KSettings::bufferSize() ) : "";
+  
+  // Get global Samba and custom options
+  QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
+  Smb4KSambaOptionsInfo *info = Smb4KSambaOptionsHandler::self()->findItem( host );
+  
+  // Port
+  command += (info && info->port() != -1) ? QString( " -p %1" ).arg( info->port() ) : 
+             QString( " -p %1" ).arg( Smb4KSettings::remoteSMBPort() );
+             
+  // Kerberos
+  if ( info )
+  {
+    switch ( info->useKerberos() )
+    {
+      case Smb4KSambaOptionsInfo::UseKerberos:
+      {
+        command += " -k";
+        break;
+      }
+      case Smb4KSambaOptionsInfo::NoKerberos:
+      {
+        // No kerberos 
+        break;
+      }
+      case Smb4KSambaOptionsInfo::UndefinedKerberos:
+      {
+        command += Smb4KSettings::useKerberos() ? " -k" : "";
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
+  else
+  {
+    command += Smb4KSettings::useKerberos() ? " -k" : "";
+  }
+  
+  // Resolve order
+  command += (!Smb4KSettings::nameResolveOrder().isEmpty() &&
+             QString::compare( Smb4KSettings::nameResolveOrder(), samba_options["name resolve order"] ) != 0) ?
+             " -R "+KShell::quoteArg( Smb4KSettings::nameResolveOrder() ) : "";
+             
+  // NetBIOS name
+  command += (!Smb4KSettings::netBIOSName().isEmpty() &&
+             QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0) ?
+             " -n "+KShell::quoteArg( Smb4KSettings::netBIOSName() ) : "";
+             
+  // NetBIOS scope
+  command += (!Smb4KSettings::netBIOSScope().isEmpty() &&
+             QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0) ?
+             " -i "+KShell::quoteArg( Smb4KSettings::netBIOSScope() ) : "";
+  
+  // Socket options
+  command += (!Smb4KSettings::socketOptions().isEmpty() &&
+             QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0) ?
+             " -O "+KShell::quoteArg( Smb4KSettings::socketOptions() ) : "";
 
   m_state = SCANNER_QUERY_INFO;
 

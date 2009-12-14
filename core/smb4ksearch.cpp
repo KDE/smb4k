@@ -38,6 +38,7 @@
 #include <smb4ksearch.h>
 #include <smb4kdefs.h>
 #include <smb4ksambaoptionshandler.h>
+#include <smb4ksambaoptionsinfo.h>
 #include <smb4kglobal.h>
 #include <smb4kauthinfo.h>
 #include <smb4kworkgroup.h>
@@ -106,19 +107,85 @@ void Smb4KSearch::search( const QString &string )
     {
       // Go ahead
     }
+    
+    // Lookup the workgroup the user is in.
+    Smb4KWorkgroup *workgroup = findWorkgroup( Smb4KSettings::domainName() );
+    Smb4KHost *master_browser = findHost( workgroup->masterBrowserName(), workgroup->workgroupName() );
+    Smb4KSambaOptionsInfo *info = Smb4KSambaOptionsHandler::self()->findItem( master_browser );
+    
     // This is not an IP address. Use the smbtree program.
     command += smbtree;
     command += " -d2";
-    command += " "+Smb4KSambaOptionsHandler::self()->smbtreeOptions();
-
-    // We need to authenticate to the master browser of the domain
-    // the user's computer is in. Get the authentication information.
-    Smb4KWorkgroup *workgroup = findWorkgroup( Smb4KSettings::domainName() );
-
-    if ( workgroup )
+    
+    // Kerberos
+    if ( info )
     {
-      authInfo.setWorkgroupName( workgroup->workgroupName() );
-      authInfo.setUNC( "//"+workgroup->masterBrowserName() );
+      switch ( info->useKerberos() )
+      {
+        case Smb4KSambaOptionsInfo::UseKerberos:
+        {
+          command += " -k";
+          break;
+        }
+        case Smb4KSambaOptionsInfo::NoKerberos:
+        {
+          // No kerberos 
+          break;
+        }
+        case Smb4KSambaOptionsInfo::UndefinedKerberos:
+        {
+          command += Smb4KSettings::useKerberos() ? " -k" : "";
+          break;
+        }
+        default:
+        {
+          break;
+        }
+      }
+    }
+    else
+    {
+      command += Smb4KSettings::useKerberos() ? " -k" : "";
+    }
+    
+    // Machine account
+    command += Smb4KSettings::machineAccount() ? " -P" : "";
+    
+    // Signing state
+    switch ( Smb4KSettings::signingState() )
+    {
+      case Smb4KSettings::EnumSigningState::None:
+      {
+        break;
+      }
+      case Smb4KSettings::EnumSigningState::On:
+      {
+        command += " -S on";
+        break;
+      }
+      case Smb4KSettings::EnumSigningState::Off:
+      {
+        command += " -S off";
+        break;
+      }
+      case Smb4KSettings::EnumSigningState::Required:
+      {
+        command += " -S required";
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+    
+    // Send broadcasts
+    command += Smb4KSettings::smbtreeSendBroadcasts() ? " -b" : "";
+
+    // Authentication information
+    if ( master_browser )
+    {
+      authInfo = Smb4KAuthInfo( master_browser );
 
       if ( Smb4KSettings::masterBrowsersRequireAuth() )
       {
@@ -145,6 +212,8 @@ void Smb4KSearch::search( const QString &string )
   }
   else
   {
+    // This is an IP address. Use the nmblookup program.
+    
     // Find nmblookup program.
     QString nmblookup = KStandardDirs::findExe( "nmblookup" );
 
@@ -183,11 +252,44 @@ void Smb4KSearch::search( const QString &string )
     {
       // Go ahead
     }
+    
+    // Global Samba options
+    QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
 
-    // This is an IP address. Use the nmblookup program.
+    // Assemble the command
     command += nmblookup;
-    command += " "+Smb4KSambaOptionsHandler::self()->nmblookupOptions();
 
+    // Domain
+    command += (!Smb4KSettings::domainName().isEmpty() &&
+               QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0) ?
+               QString( " -W %1" ).arg( KShell::quoteArg( Smb4KSettings::domainName() ) ) : "";
+    
+    // NetBIOS name
+    command += (!Smb4KSettings::netBIOSName().isEmpty() &&
+               QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0) ?
+               QString( " -n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) ) : "";
+               
+    // NetBIOS scope
+    command += (!Smb4KSettings::netBIOSScope().isEmpty() &&
+               QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0) ?
+               QString( " -i %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSScope() ) ) : "";
+               
+    // Socket options
+    command += (!Smb4KSettings::socketOptions().isEmpty() &&
+               QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0) ?
+               QString( " -O %1" ).arg( KShell::quoteArg( Smb4KSettings::socketOptions() ) ) : "";
+               
+    // Port 137
+    command += Smb4KSettings::usePort137() ? " -r" : "";
+    
+    // Broadcast address
+    QHostAddress address( Smb4KSettings::broadcastAddress() );
+    
+    command += (!Smb4KSettings::broadcastAddress().isEmpty() &&
+               address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol) ?
+               QString( " -B %1" ).arg( Smb4KSettings::broadcastAddress() ) : "";
+    
+    // WINS server
     if ( !Smb4KSambaOptionsHandler::self()->winsServer().isEmpty() )
     {
       command += " -R -U "+KShell::quoteArg( Smb4KSambaOptionsHandler::self()->winsServer() );

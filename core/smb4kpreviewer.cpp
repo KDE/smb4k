@@ -40,6 +40,7 @@
 #include <smb4kglobal.h>
 #include <smb4kauthinfo.h>
 #include <smb4ksambaoptionshandler.h>
+#include <smb4ksambaoptionsinfo.h>
 #include <smb4kcoremessage.h>
 #include <smb4kshare.h>
 #include <smb4khomesshareshandler.h>
@@ -150,8 +151,99 @@ void Smb4KPreviewer::preview( Smb4KPreviewItem *item )
   {
     // Do nothing
   }
-
-  command += Smb4KSambaOptionsHandler::self()->smbclientOptions( item->share() );
+  
+  // Machine account
+  command += Smb4KSettings::machineAccount() ? " -P" : "";
+  
+  // Signing state
+  switch ( Smb4KSettings::signingState() )
+  {
+    case Smb4KSettings::EnumSigningState::None:
+    {
+      break;
+    }
+    case Smb4KSettings::EnumSigningState::On:
+    {
+      command += " -S on";
+      break;
+    }
+    case Smb4KSettings::EnumSigningState::Off:
+    {
+      command += " -S off";
+      break;
+    }
+    case Smb4KSettings::EnumSigningState::Required:
+    {
+      command += " -S required";
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+  
+  // Buffer size
+  command += Smb4KSettings::bufferSize() != 65520 ? QString( " -b %1" ).arg( Smb4KSettings::bufferSize() ) : "";
+  
+  // Get global Samba and custom options
+  QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
+  Smb4KSambaOptionsInfo *info = Smb4KSambaOptionsHandler::self()->findItem( item->share() );
+  
+  // Port
+  command += (info && info->port() != -1) ? QString( " -p %1" ).arg( info->port() ) : 
+             QString( " -p %1" ).arg( Smb4KSettings::remoteSMBPort() );
+             
+  // Kerberos
+  if ( info )
+  {
+    switch ( info->useKerberos() )
+    {
+      case Smb4KSambaOptionsInfo::UseKerberos:
+      {
+        command += " -k";
+        break;
+      }
+      case Smb4KSambaOptionsInfo::NoKerberos:
+      {
+        // No kerberos 
+        break;
+      }
+      case Smb4KSambaOptionsInfo::UndefinedKerberos:
+      {
+        command += Smb4KSettings::useKerberos() ? " -k" : "";
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
+  else
+  {
+    command += Smb4KSettings::useKerberos() ? " -k" : "";
+  }
+  
+  // Resolve order
+  command += (!Smb4KSettings::nameResolveOrder().isEmpty() &&
+             QString::compare( Smb4KSettings::nameResolveOrder(), samba_options["name resolve order"] ) != 0) ?
+             QString( " -R %1" ).arg( KShell::quoteArg( Smb4KSettings::nameResolveOrder() ) ) : "";
+             
+  // NetBIOS name
+  command += (!Smb4KSettings::netBIOSName().isEmpty() &&
+             QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0) ?
+             QString( " -n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) ) : "";
+             
+  // NetBIOS scope
+  command += (!Smb4KSettings::netBIOSScope().isEmpty() &&
+             QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0) ?
+             QString( " -i %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSScope() ) ) : "";
+  
+  // Socket options
+  command += (!Smb4KSettings::socketOptions().isEmpty() &&
+             QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0) ?
+             QString( " -O %1" ).arg( KShell::quoteArg( Smb4KSettings::socketOptions() ) ) : "";
 
   if ( !authInfo.login().isEmpty() )
   {

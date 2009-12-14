@@ -27,6 +27,7 @@
 // Qt includes
 #include <QCoreApplication>
 #include <QTimer>
+#include <QHostAddress>
 
 // KDE includes
 #include <kglobal.h>
@@ -132,12 +133,46 @@ void Smb4KIPAddressScanner::lookup( Smb4KHost *host, bool wait )
     {
       // Go ahead
     }
+    
+    // Global Samba options
+    QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
 
+    // Assemble the command
     QString command;
     command += nmblookup;
     command += " ";
-    command += Smb4KSambaOptionsHandler::self()->nmblookupOptions();
-
+    
+    // Domain
+    command += (!Smb4KSettings::domainName().isEmpty() &&
+               QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0) ?
+               QString( " -W %1" ).arg( KShell::quoteArg( Smb4KSettings::domainName() ) ) : "";
+    
+    // NetBIOS name
+    command += (!Smb4KSettings::netBIOSName().isEmpty() &&
+               QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0) ?
+               QString( " -n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) ) : "";
+               
+    // NetBIOS scope
+    command += (!Smb4KSettings::netBIOSScope().isEmpty() &&
+               QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0) ?
+               QString( " -i %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSScope() ) ) : "";
+               
+    // Socket options
+    command += (!Smb4KSettings::socketOptions().isEmpty() &&
+               QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0) ?
+               QString( " -O %1" ).arg( KShell::quoteArg( Smb4KSettings::socketOptions() ) ) : "";
+               
+    // Port 137
+    command += Smb4KSettings::usePort137() ? " -r" : "";
+    
+    // Broadcast address
+    QHostAddress address( Smb4KSettings::broadcastAddress() );
+    
+    command += (!Smb4KSettings::broadcastAddress().isEmpty() &&
+               address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol) ?
+               QString( " -B %1" ).arg( Smb4KSettings::broadcastAddress() ) : "";
+    
+    // WINS server
     if ( !Smb4KSambaOptionsHandler::self()->winsServer().isEmpty() )
     {
       command += " -R -U "+KShell::quoteArg( Smb4KSambaOptionsHandler::self()->winsServer() );
@@ -150,8 +185,10 @@ void Smb4KIPAddressScanner::lookup( Smb4KHost *host, bool wait )
     command += " -- ";
     command += KShell::quoteArg( host->hostName() );
     command += " | ";
-    command += grep+" '<00>' | ";
-    command += awk+" {'print $1'}";
+    command += grep;
+    command += " '<00>' | ";
+    command += awk;
+    command += " {'print $1'}";
 
     IPScanThread *thread = new IPScanThread( host, this );
     m_cache.insert( host->hostName(), thread );
