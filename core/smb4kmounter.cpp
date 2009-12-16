@@ -1079,7 +1079,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   {
     // Already running
   }
-
+  
   emit aboutToStart( share, MountShare );
 
   MountThread *thread = new MountThread( share, this );

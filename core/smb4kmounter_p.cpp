@@ -72,7 +72,7 @@ void MountThread::mount( Smb4KAuthInfo *authInfo, const QString &command )
   connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), this, SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
 
   m_proc->setShellCommand( command );
-  m_proc->setOutputChannelMode( KProcess::SeparateChannels );
+  m_proc->setOutputChannelMode( KProcess::MergedChannels ); // see below
 #ifndef __FreeBSD__
   m_proc->setEnv( "PASSWD", !authInfo->password().isEmpty() ? authInfo->password() : "", true );
 #endif
@@ -171,7 +171,7 @@ void UnmountThread::unmount( const QString &command )
   connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), this, SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
 
   m_proc->setShellCommand( command );
-  m_proc->setOutputChannelMode( KProcess::SeparateChannels );
+  m_proc->setOutputChannelMode( KProcess::MergedChannels );  // see below
   m_proc->start();
 }
 
