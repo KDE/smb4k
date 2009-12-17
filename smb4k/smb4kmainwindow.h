@@ -160,16 +160,33 @@ class Smb4KMainWindow : public KParts::MainWindow
      * Reimplemented from KParts::MainWindow.
      */
     void slotSetStatusBarText( const QString &text );
+    
+    /**
+     * This slot gives the visual mount feedback in the status bar. It is 
+     * connected to the Smb4KMounter::mounted() signal.
+     * 
+     * @param share         The Smb4KShare object
+     */
+    void slotVisualMountFeedback( Smb4KShare *share );
+    
+    /**
+     * This slot gives the visual unmount feedback in the status bar. It is 
+     * connected to the Smb4KMounter::unmounted() signal.
+     * 
+     * @param share         The Smb4KShare object
+     */
+    void slotVisualUnmountFeedback( Smb4KShare *share );
 
     /**
-     * This slot sets up the visual mount feedback in the status bar. It is
+     * This slot sets up the visual feedback in the status bar in case a mount
+     * or unmount failed. Otherwise it will only exit silently. This slot is
      * connected to the Smb4KMounter::finished() signal.
      *
      * @param share         The Smb4KShare object
      *
      * @param process       The process
      */
-    void slotVisualMountFeedback( Smb4KShare *share,
+    void slotMountActionFinished( Smb4KShare *share,
                                   int process );
 
     /**
