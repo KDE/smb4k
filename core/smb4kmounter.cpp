@@ -1500,7 +1500,8 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
     {
       QString name( entry->mnt_fsname );
           
-      if ( QString::compare( share->unc(), name, Qt::CaseInsensitive ) == 0 )
+      if ( QString::compare( share->unc(), name, Qt::CaseInsensitive ) == 0 ||
+           QString::compare( share->homeUNC(), name, Qt::CaseInsensitive ) == 0 )
       {
         share_mounted = true;
         break;
@@ -1515,7 +1516,10 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
       continue;
     }
   }
-  
+
+  // Set the mount flag.
+  share->setIsMounted( share_mounted );
+
   if ( share_mounted )
   {
     // Remove the remount flag and write the options
@@ -1589,6 +1593,9 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
       continue;
     }
   }
+  
+  // Set the mount flag.
+  share->setIsMounted( !share_unmounted );
   
   if ( share_unmounted )
   {
