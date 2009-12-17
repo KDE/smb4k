@@ -1141,7 +1141,6 @@ void Smb4KSambaOptionsHandler::updateCustomOptions( const QList<Smb4KSambaOption
         if ( QString::compare( m_list.at( i )->unc(), list.at( j )->unc(), Qt::CaseInsensitive ) == 0 )
         {
           found = true;
-
           break;
         }
         else
