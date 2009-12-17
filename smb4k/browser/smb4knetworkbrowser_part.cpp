@@ -2001,16 +2001,22 @@ void Smb4KNetworkBrowserPart::slotShareUnmounted( Smb4KShare *share )
               continue;
             }
           }
-
-          if ( have_only_foreign && !Smb4KSettings::showAllShares() )
+          
+          if ( !have_only_foreign )
           {
             browser_item->setMounted( browser_item->shareItem(), Smb4KNetworkBrowserItem::NotMounted );
           }
           else
           {
-            // Do nothing
+            if ( !Smb4KSettings::showAllShares() )
+            {
+              browser_item->setMounted( browser_item->shareItem(), Smb4KNetworkBrowserItem::NotMounted );
+            }
+            else
+            {
+              // Do nothing
+            }
           }
-
           break;
         }
         else
