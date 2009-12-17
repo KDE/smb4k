@@ -216,9 +216,15 @@ void Smb4KMainWindow::setupStatusBar()
 
   connect( Smb4KWalletManager::self(), SIGNAL( initialized() ),
            this,                       SLOT( slotWalletManagerInitialized() ) );
-
+           
+  connect( Smb4KMounter::self(),       SIGNAL( mounted( Smb4KShare * ) ),
+           this,                       SLOT( slotVisualMountFeedback( Smb4KShare * ) ) );
+           
+  connect( Smb4KMounter::self(),       SIGNAL( unmounted( Smb4KShare * ) ),
+           this,                       SLOT( slotVisualUnmountFeedback( Smb4KShare * ) ) );
+           
   connect( Smb4KMounter::self(),       SIGNAL( finished( Smb4KShare *, int ) ),
-           this,                       SLOT( slotVisualMountFeedback( Smb4KShare *, int ) ) );
+           this,                       SLOT( slotMountActionFinished( Smb4KShare *, int ) ) );
 
   connect( Smb4KPrint::self(),         SIGNAL( aboutToStart( Smb4KPrintInfo * ) ),
            this,                       SLOT( slotPrintStartMessages( Smb4KPrintInfo * ) ) );
@@ -927,89 +933,89 @@ void Smb4KMainWindow::slotSetStatusBarText( const QString &text )
 }
 
 
-void Smb4KMainWindow::slotVisualMountFeedback( Smb4KShare *share, int process )
+void Smb4KMainWindow::slotVisualMountFeedback( Smb4KShare *share )
 {
-  bool successful = true;
+  Q_ASSERT( share );
+  
+  m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "dialog-ok",
+                              KIconLoader::Small, 0, KIconLoader::DefaultState ) );
+  m_feedback_icon->setToolTip( i18n( "%1 has been mounted successfully." ).arg( share->unc() ) );
+    
+  QList<QTabBar *> list = findChildren<QTabBar *>();
+  QDockWidget *shares_dock = findChild<QDockWidget *>( "SharesViewDockWidget" );
 
-  // Visual feedback.
-  switch ( process )
+  if ( shares_dock )
   {
-    case Smb4KMounter::MountShare:
+    for ( int i = 0; i < list.size(); ++i )
     {
-      if ( share && share->isMounted() )
+      if ( list.at( i )->count() != 0 )
       {
-        m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "dialog-ok",
-                                    KIconLoader::Small, 0, KIconLoader::DefaultState ) );
-        m_feedback_icon->setToolTip( i18n( "The share was successfully mounted." ) );
+        for ( int j = 0; j < list.at( i )->count(); ++j )
+        {
+          if ( QString::compare( shares_dock->windowTitle(), list.at( i )->tabText( j ) ) == 0 &&
+               list.at( i )->currentIndex() != j )
+          {
+            list.at( i )->setTabTextColor( j, palette().highlightedText().color() ) ;
+            break;
+          }
+          else
+          {
+            continue;
+          }
+        }
+        continue;
       }
       else
       {
-        m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "dialog-cancel",
-                                    KIconLoader::Small, 0, KIconLoader::DefaultState ) );
-        m_feedback_icon->setToolTip( i18n( "The share could not be mounted." ) );
-        successful = false;
+        continue;
       }
-      break;
-    }
-    case Smb4KMounter::UnmountShare:
-    {
-      if ( share && share->isMounted() )
-      {
-        m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "dialog-cancel",
-                                    KIconLoader::Small, 0, KIconLoader::DefaultState ) );
-        m_feedback_icon->setToolTip( i18n( "The share could not be unmounted." ) );
-        successful = false;
-      }
-      else
-      {
-        m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "dialog-ok",
-                                    KIconLoader::Small, 0, KIconLoader::DefaultState ) );
-        m_feedback_icon->setToolTip( i18n( "The share was successfully unmounted." ) );
-      }
-      break;
-    }
-    default:
-    {
-      break;
     }
   }
-
-  if ( successful )
+  else
   {
-    QList<QTabBar *> list = findChildren<QTabBar *>();
-    QDockWidget *shares_dock = findChild<QDockWidget *>( "SharesViewDockWidget" );
+    // Do nothing
+  }
+  
+  QTimer::singleShot( 2000, this, SLOT( slotEndVisualFeedback() ) );
+}
 
-    if ( shares_dock )
+
+void Smb4KMainWindow::slotVisualUnmountFeedback( Smb4KShare *share )
+{
+  Q_ASSERT( share );
+  
+  m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "dialog-ok",
+                              KIconLoader::Small, 0, KIconLoader::DefaultState ) );
+  m_feedback_icon->setToolTip( i18n( "%1 has been unmounted successfully." ).arg( share->unc() ) );
+    
+  QList<QTabBar *> list = findChildren<QTabBar *>();
+  QDockWidget *shares_dock = findChild<QDockWidget *>( "SharesViewDockWidget" );
+
+  if ( shares_dock )
+  {
+    for ( int i = 0; i < list.size(); ++i )
     {
-      for ( int i = 0; i < list.size(); ++i )
+      if ( list.at( i )->count() != 0 )
       {
-        if ( list.at( i )->count() != 0 )
+        for ( int j = 0; j < list.at( i )->count(); ++j )
         {
-          for ( int j = 0; j < list.at( i )->count(); ++j )
+          if ( QString::compare( shares_dock->windowTitle(), list.at( i )->tabText( j ) ) == 0 &&
+               list.at( i )->currentIndex() != j )
           {
-            if ( QString::compare( shares_dock->windowTitle(), list.at( i )->tabText( j ) ) == 0 &&
-                list.at( i )->currentIndex() != j )
-            {
-              list.at( i )->setTabTextColor( j, palette().highlightedText().color() ) ;
-              break;
-            }
-            else
-            {
-              continue;
-            }
+            list.at( i )->setTabTextColor( j, palette().highlightedText().color() ) ;
+            break;
           }
-
-          continue;
+          else
+          {
+            continue;
+          }
         }
-        else
-        {
-          continue;
-        }
+        continue;
       }
-    }
-    else
-    {
-      // Do nothing
+      else
+      {
+        continue;
+      }
     }
   }
   else
@@ -1018,6 +1024,54 @@ void Smb4KMainWindow::slotVisualMountFeedback( Smb4KShare *share, int process )
   }
 
   QTimer::singleShot( 2000, this, SLOT( slotEndVisualFeedback() ) );
+}
+
+
+void Smb4KMainWindow::slotMountActionFinished( Smb4KShare *share, int process )
+{
+  // This slot shows the failure of an action.
+
+  Q_ASSERT( share );
+  
+  switch( process )
+  {
+    case Smb4KMounter::MountShare:
+    {
+      if ( !share->isMounted() )
+      {
+        m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "dialog-cancel",
+                                    KIconLoader::Small, 0, KIconLoader::DefaultState ) );
+        m_feedback_icon->setToolTip( i18n( "Mounting %1 failed." ).arg( share->unc() ) );
+        
+        QTimer::singleShot( 2000, this, SLOT( slotEndVisualFeedback() ) );
+      }
+      else
+      {
+        // Do nothing
+      }
+      break;
+    }
+    case Smb4KMounter::UnmountShare:
+    {
+      if ( share->isMounted() )
+      {
+        m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "dialog-cancel",
+                                    KIconLoader::Small, 0, KIconLoader::DefaultState ) );
+        m_feedback_icon->setToolTip( i18n( "Unmounting %1 failed." ).arg( share->unc() ) );
+        
+        QTimer::singleShot( 2000, this, SLOT( slotEndVisualFeedback() ) );
+      }
+      else
+      {
+        // Do nothing
+      }
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
 }
 
 
