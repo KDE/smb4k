@@ -51,7 +51,7 @@ static const char description[] =
   I18N_NOOP( "The advanced network neighborhood browser for KDE." );
 
 static const char authors[] =
-  I18N_NOOP( "\u00A9 2003-2008, Alexander Reinholdt\n\u00A9 2004-2007, "
+  I18N_NOOP( "\u00A9 2003-2009 Alexander Reinholdt\n\u00A9 2004-2007 "
              "Massimo Callegari" );
 
 
@@ -75,89 +75,6 @@ int main( int argc, char *argv[] )
   aboutData.addAuthor( ki18n( "Massimo Callegari" ),
                        ki18n( "Developer" ),
                        "massimocallegari@yahoo.it" );
-
-  // All our credits:
-  aboutData.addCredit( ki18n( "Leopold Palomo Avellaneda" ),
-                       ki18n( "Catalan translation" ),
-                       "lepalom@wol.es" );
-  aboutData.addCredit( ki18n( "Radoslaw Zawartko" ),
-                       ki18n( "Polish translation" ),
-                       "radzaw@lnet.szn.pl" );
-  aboutData.addCredit( ki18n( "Nick Chen" ),
-                       ki18n( "Chinese Simplified translation" ),
-                       "nick_chen75@hotmail.com" );
-  aboutData.addCredit( ki18n( "Stanislav Yudin" ),
-                       ki18n( "Russian translation" ),
-                       "decvar@mail.berlios.de" );
-  aboutData.addCredit( ki18n( "Marc Hansen" ),
-                       ki18n( "Swedish translation and intensive testing" ),
-                       "marc.hansen@gmx.de" );
-  aboutData.addCredit( ki18n( "Giovanni Degani" ),
-                       ki18n( "Brazilian Portuguese translation" ),
-                       "tiefox@terra.com.br" );
-  aboutData.addCredit( ki18n( "Ivan Petrouchtchak" ),
-                       ki18n( "Ukrainian translation" ),
-                       "iip@telus.net" );
-  aboutData.addCredit( ki18n( "Karoly Barcza" ),
-                       ki18n( "Hungarian translation" ),
-                       "kbarcza@blackpanther.hu" );
-  aboutData.addCredit( ki18n( "Quique" ),
-                       ki18n( "Spanish translation" ),
-                       "quique@sindominio.net" );
-  aboutData.addCredit( ki18n( "Michal Šulek" ),
-                       ki18n( "Slovak translation" ),
-                       "reloadshot@atlas.sk" );
-  aboutData.addCredit( ki18n( "Nicolas Ternisien" ),
-                       ki18n( "French translation" ),
-                       "nicolast@libertysurf.fr" );
-  aboutData.addCredit( ki18n( "Toyohiro Asukai" ),
-                       ki18n( "Japanese translation" ),
-                       "toyohiro@ksmplus.com" );
-  aboutData.addCredit( ki18n( "Atanas Mavrov" ),
-                       ki18n( "Bulgarian translation" ),
-                       "bugar@developer.bg" );
-  aboutData.addCredit( ki18n( "Isidoro Russo" ),
-                       ki18n( "Italian translation" ),
-                       "risidoro@aliceposta.it" );
-  aboutData.addCredit( ki18n( "Nils Kristian Tomren" ),
-                       ki18n( "Norwegian translations" ),
-                       "project@nilsk.net" );
-  aboutData.addCredit( ki18n( "Alois Nešpor" ),
-                       ki18n( "Czech translation" ),
-                       "alois.nespor@seznam.cz" );
-  aboutData.addCredit( ki18n( "Martín Carr" ),
-                       ki18n( "Spanish translation" ),
-                       "tincarr@gmail.com" );
-  aboutData.addCredit( ki18n( "Görkem Çetin" ),
-                       ki18n( "Turkish translation" ),
-                       "gorkem@gorkemcetin.com" );
-  aboutData.addCredit( ki18n( "Jack Liu" ),
-                       ki18n( "Chinese Traditional translation" ),
-                       "chuany@chuany.net" );
-  aboutData.addCredit( ki18n( "Arnar Leósson" ),
-                       ki18n( "Icelandic translation" ),
-                       "leosson@frisurf.no" );
-  aboutData.addCredit( ki18n( "Michael Brinkloev" ),
-                       ki18n( "Danish translation" ),
-                       "mhb@qxp.dk" );
-  aboutData.addCredit( ki18n( "Joop Beris" ),
-                       ki18n( "Dutch translation" ),
-                       "jberis@risse.nl" );
-  aboutData.addCredit( ki18n( "Lamarque V. Souza" ),
-                       ki18n( "Brazilian Portuguese translation" ),
-                       "lamarque_souza@hotmail.com" );
-  aboutData.addCredit( ki18n( "Serdar Soytetir" ),
-                       ki18n( "Turkish translation" ),
-                       "sendirom@gmail.com" );
-  aboutData.addCredit( ki18n( "Wei-Lun Chao" ),
-                       ki18n( "Chinese Traditional translation" ),
-                       "chaoweilun@users.berlios.de" );
-  aboutData.addCredit( ki18n( "Rashid N. Achilov" ),
-                       ki18n( "Testing of Smb4K under FreeBSD" ),
-                       "achilov-rn@askd.ru" );
-  aboutData.addCredit( ki18n( "Jerzy Trzeciak" ),
-                       ki18n( "Polish translation" ),
-                       "artusek@wp.pl" );
 
   KCmdLineArgs::init( argc, argv, &aboutData );
 

@@ -1,4 +1,4 @@
-Smb4K CVS_HEAD (????-??-??):
+Smb4K SVN_HEAD (????-??-??):
 - We now use Utf8 throughout the whole application (closes #14674).
 - Unified the function names of the core classes that set and return the
   workgroup name, host name, and share name.

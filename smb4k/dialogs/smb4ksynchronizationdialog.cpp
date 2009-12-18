@@ -54,7 +54,7 @@ Smb4KSynchronizationDialog::Smb4KSynchronizationDialog( Smb4KShare *share, QWidg
   setButtonGuiItem( User1, KStandardGuiItem::close() );
   setButtonGuiItem( User2, KGuiItem( i18n( "Synchronize" ), "go-bottom",
                     i18n( "Synchronize the destination with the source" ) ) );
-  setButtonGuiItem( User3, KGuiItem( i18n( "Swap Paths" ), QString(),
+  setButtonGuiItem( User3, KGuiItem( i18n( "Swap Paths" ), "document-swap",
                     i18n( "Swap source and destination" ) ) );
 
   QWidget *main_widget      = new QWidget( this );

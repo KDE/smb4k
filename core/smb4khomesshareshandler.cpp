@@ -114,7 +114,7 @@ bool Smb4KHomesSharesHandler::specifyUser( Smb4KShare *share, QWidget *parent )
   m_dlg->setCaption( i18n( "Specify User" ) );
   m_dlg->setButtons( KDialog::User1|KDialog::Ok|KDialog::Cancel );
   m_dlg->setDefaultButton( KDialog::Ok );
-  m_dlg->setButtonGuiItem( KDialog::User1, KGuiItem( i18n( "Clear List" ), "editdelete", 0, 0 ) );
+  m_dlg->setButtonGuiItem( KDialog::User1, KGuiItem( i18n( "Clear List" ), "edit-clear", 0, 0 ) );
   m_dlg->enableButton( KDialog::Ok, false );
   m_dlg->enableButton( KDialog::User1, false );
 
@@ -127,7 +127,7 @@ bool Smb4KHomesSharesHandler::specifyUser( Smb4KShare *share, QWidget *parent )
   m_dlg->setMainWidget( frame );
 
   QLabel *pic = new QLabel( frame );
-  pic->setPixmap( DesktopIcon( "personal" ) );
+  pic->setPixmap( DesktopIcon( "user-identity" ) );
   pic->setMargin( 10 );
 
   QLabel *text = new QLabel( i18n( "Please specify a user name." ), frame );
