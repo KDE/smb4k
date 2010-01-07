@@ -58,7 +58,6 @@ K_GLOBAL_STATIC( Smb4KSearchPrivate, priv );
 
 Smb4KSearch::Smb4KSearch() : QObject()
 {
-  m_working = false;
   m_state = SEARCH_STOP;
 
   connect( kapp,   SIGNAL( aboutToQuit() ),
@@ -310,7 +309,6 @@ void Smb4KSearch::search( const QString &string )
   if ( m_cache.size() == 0 )
   {
     QApplication::setOverrideCursor( Qt::WaitCursor );
-    m_working = true;
     m_state = SEARCH_START;
     emit stateChanged();
   }
@@ -543,8 +541,9 @@ void Smb4KSearch::slotThreadFinished()
 
     if ( thread->isFinished() )
     {
+      (void) m_cache.take( key );
       emit finished( thread->searchItem() );
-      m_cache.remove( key );
+      delete thread;
     }
     else
     {
@@ -554,7 +553,6 @@ void Smb4KSearch::slotThreadFinished()
 
   if ( m_cache.size() == 0 )
   {
-    m_working = false;
     m_state = SEARCH_STOP;
     emit stateChanged();
     QApplication::restoreOverrideCursor();
