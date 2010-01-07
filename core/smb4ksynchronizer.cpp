@@ -46,7 +46,6 @@ K_GLOBAL_STATIC( Smb4KSynchronizerPrivate, priv );
 
 Smb4KSynchronizer::Smb4KSynchronizer() : QObject()
 {
-  m_working = false;
   m_state = SYNCHRONIZER_STOP;
 
   connect( kapp,   SIGNAL( aboutToQuit() ),
@@ -184,7 +183,6 @@ void Smb4KSynchronizer::synchronize( Smb4KSynchronizationInfo *info )
   // Start the synchronization.
   if ( m_cache.size() == 0 )
   {
-    m_working = true;
     m_state = SYNCHRONIZER_START;
     emit stateChanged();
   }
@@ -289,8 +287,9 @@ void Smb4KSynchronizer::slotThreadFinished()
 
     if ( thread->isFinished() )
     {
+      (void) m_cache.take( key );
       emit finished( thread->synchronizationInfo() );
-      m_cache.remove( key );
+      delete thread;
     }
     else
     {
@@ -300,7 +299,6 @@ void Smb4KSynchronizer::slotThreadFinished()
 
   if ( m_cache.size() == 0 )
   {
-    m_working = false;
     m_state = SYNCHRONIZER_STOP;
     emit stateChanged();
   }
