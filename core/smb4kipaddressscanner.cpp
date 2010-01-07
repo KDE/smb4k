@@ -221,6 +221,15 @@ void Smb4KIPAddressScanner::lookup( const QList<Smb4KHost *> &list, bool wait )
 }
 
 
+bool Smb4KIPAddressScanner::isRunning( Smb4KHost *host )
+{
+  Q_ASSERT( host );
+  
+  IPScanThread *thread = m_cache.object( host->hostName() );
+  return (thread && thread->process() && thread->process()->state() == KProcess::Running);
+}
+
+
 /////////////////////////////////////////////////////////////////////////////
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////

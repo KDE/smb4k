@@ -102,6 +102,24 @@ class KDE_EXPORT Smb4KIPAddressScanner : public QObject
      */
     void lookup( const QList<Smb4KHost *> &list,
                  bool wait = false );
+                 
+    /**
+     * This function returns TRUE if a thread is running that looks up the IP address
+     * for @p host.
+     *
+     * @param host          The host item
+     *
+     * @returns             TRUE if the IP address for @p host is currently being
+     *                      looked up.
+     */
+    bool isRunning( Smb4KHost *host );
+                 
+    /**
+     * This function reports if the IP scanner is running or not.
+     *
+     * @returns             TRUE if the scanner is running and FALSE otherwise.
+     */
+    bool isRunning() { return !m_cache.isEmpty(); }
 
   signals:
     /**
