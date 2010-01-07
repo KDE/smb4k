@@ -70,6 +70,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      * @param args                A list of arguments. At the moment the following
      *                            arguments are recognized:
      *                            bookmark_shortcut="true"|"false"
+     *                            silent="true"|"false"
      */
     Smb4KNetworkBrowserPart( QWidget *parentWidget = 0,
                              QObject *parent = 0,
@@ -387,6 +388,11 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      * The bookmark action has got a shortcut
      */
     bool m_bookmark_shortcut;
+    
+    /**
+     * Emit status messages
+     */
+    bool m_silent;
 
     /**
      * The menu title

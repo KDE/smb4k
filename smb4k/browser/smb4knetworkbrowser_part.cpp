@@ -68,7 +68,7 @@ K_EXPORT_COMPONENT_FACTORY( libsmb4knetworkbrowser, Smb4KNetworkBrowserPartFacto
 
 
 Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject *parent, const QStringList &args )
-: KParts::Part( parent ), m_bookmark_shortcut( true )
+: KParts::Part( parent ), m_bookmark_shortcut( true ), m_silent( false )
 {
   // Parse arguments:
   for ( int i = 0; i < args.size(); ++i )
@@ -85,6 +85,17 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject
       }
 
       continue;
+    }
+    else if ( args.at( i ).startsWith( "silent" ) )
+    {
+      if ( QString::compare( args.at( i ).section( "=", 1, 1 ).trimmed(), "\"true\"" ) == 0 )
+      {
+        m_silent = true;
+      }
+      else
+      {
+        // Do nothing
+      }
     }
     else
     {
@@ -1869,25 +1880,53 @@ void Smb4KNetworkBrowserPart::slotScannerAboutToStart( Smb4KBasicNetworkItem *it
   {
     case Smb4KScanner::LookupDomains:
     {
-      emit setStatusBarText( i18n( "Looking for workgroups and domains..." ) );
+      if ( !m_silent )
+      {
+        emit setStatusBarText( i18n( "Looking for workgroups and domains..." ) );
+      }
+      else
+      {
+        // Do nothing
+      }
       break;
     }
     case Smb4KScanner::LookupDomainMembers:
     {
-      Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>( item );
-      emit setStatusBarText( i18n( "Looking for hosts in domain %1..." ).arg( workgroup->workgroupName() ) );
+      if ( !m_silent )
+      {
+        Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>( item );
+        emit setStatusBarText( i18n( "Looking for hosts in domain %1..." ).arg( workgroup->workgroupName() ) );
+      }
+      else
+      {
+        // Do nothing
+      }
       break;
     }
     case Smb4KScanner::LookupShares:
     {
-      Smb4KHost *host = static_cast<Smb4KHost *>( item );
-      emit setStatusBarText( i18n( "Looking for shares provided by host %1..." ).arg( host->hostName() ) );
+      if ( !m_silent )
+      {
+        Smb4KHost *host = static_cast<Smb4KHost *>( item );
+        emit setStatusBarText( i18n( "Looking for shares provided by host %1..." ).arg( host->hostName() ) );
+      }
+      else
+      {
+        // Do nothing
+      }
       break;
     }
     case Smb4KScanner::LookupInfo:
     {
-      Smb4KHost *host = static_cast<Smb4KHost *>( item );
-      emit setStatusBarText( i18n( "Looking for more information about host %1..." ).arg( host->hostName() ) );
+      if ( !m_silent )
+      {
+        Smb4KHost *host = static_cast<Smb4KHost *>( item );
+        emit setStatusBarText( i18n( "Looking for more information about host %1..." ).arg( host->hostName() ) );
+      }
+      else
+      {
+        // Do nothing
+      }
       break;
     }
     default:
@@ -1903,7 +1942,14 @@ void Smb4KNetworkBrowserPart::slotScannerAboutToStart( Smb4KBasicNetworkItem *it
 
 void Smb4KNetworkBrowserPart::slotScannerFinished( Smb4KBasicNetworkItem */*item*/, int /*process*/ )
 {
-  emit setStatusBarText( i18n( "Done." ) );
+  if ( !m_silent )
+  {
+    emit setStatusBarText( i18n( "Done." ) );
+  }
+  else
+  {
+    // Do nothing
+  }
 
   actionCollection()->action( "rescan_action" )->setEnabled( true );
   actionCollection()->action( "abort_action" )->setEnabled( false );
