@@ -53,7 +53,6 @@ K_GLOBAL_STATIC( Smb4KPrintPrivate, priv );
 Smb4KPrint::Smb4KPrint()
 : QObject()
 {
-  m_working = false;
   m_state = PRINT_STOP;
 
   connect( kapp, SIGNAL( aboutToQuit() ),
@@ -198,7 +197,6 @@ void Smb4KPrint::print( Smb4KPrintInfo *printInfo )
     if ( m_cache.size() == 0 )
     {
       QApplication::setOverrideCursor( Qt::WaitCursor );
-      m_working = true;
       m_state = PRINT_START;
       emit stateChanged();
     }
@@ -334,8 +332,9 @@ void Smb4KPrint::slotThreadFinished()
 
     if ( thread->isFinished() )
     {
+      (void) m_cache.take( key );
       emit finished( thread->printInfo() );
-      m_cache.remove( key );
+      delete thread;
     }
     else
     {
@@ -345,7 +344,6 @@ void Smb4KPrint::slotThreadFinished()
 
   if ( m_cache.size() == 0 )
   {
-    m_working = false;
     m_state = PRINT_STOP;
     emit stateChanged();
     QApplication::restoreOverrideCursor();

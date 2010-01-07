@@ -109,7 +109,7 @@ class KDE_EXPORT Smb4KPrint : public QObject
      *
      * @returns           TRUE is the printer handler is running and FALSE otherwise.
      */
-    bool isRunning() { return m_working; }
+    bool isRunning() { return !m_cache.isEmpty(); }
 
     /**
      * This function returns the current state of the print interface. The state
@@ -176,12 +176,6 @@ class KDE_EXPORT Smb4KPrint : public QObject
      * The cache that holds the threads.
      */
     QCache<QString, PrintThread> m_cache;
-
-    /**
-     * This boolean is TRUE if the printer handler is running and
-     * FALSE otherwise.
-     */
-    bool m_working;
 
     /**
      * The state
