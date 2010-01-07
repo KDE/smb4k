@@ -75,21 +75,20 @@ K_GLOBAL_STATIC( Smb4KMounterPrivate, priv );
 
 Smb4KMounter::Smb4KMounter() : QObject()
 {
-  m_working = false;
   m_timer_id = -1;
   m_timeout = 0;
 
-  connect( kapp, SIGNAL( aboutToQuit() ),
-           this,                         SLOT( slotAboutToQuit() ) );
+  connect( kapp,                        SIGNAL( aboutToQuit() ),
+           this,                        SLOT( slotAboutToQuit() ) );
 
   connect( Smb4KSolidInterface::self(), SIGNAL( buttonPressed( Smb4KSolidInterface::ButtonType ) ),
-           this, SLOT( slotHardwareButtonPressed( Smb4KSolidInterface::ButtonType ) ) );
+           this,                        SLOT( slotHardwareButtonPressed( Smb4KSolidInterface::ButtonType ) ) );
 
   connect( Smb4KSolidInterface::self(), SIGNAL( wokeUp() ),
-           this, SLOT( slotComputerWokeUp() ) );
+           this,                        SLOT( slotComputerWokeUp() ) );
 
   connect( Smb4KSolidInterface::self(), SIGNAL( networkStatusChanged( Smb4KSolidInterface::ConnectionStatus ) ),
-           this, SLOT( slotNetworkStatusChanged( Smb4KSolidInterface::ConnectionStatus ) ) );
+           this,                        SLOT( slotNetworkStatusChanged( Smb4KSolidInterface::ConnectionStatus ) ) );
 }
 
 
@@ -1071,7 +1070,6 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   if ( m_cache.size() == 0 )
   {
     QApplication::setOverrideCursor( Qt::WaitCursor );
-    m_working = true;
     // State was set above.
     emit stateChanged();
   }
@@ -1249,7 +1247,6 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
   if ( m_cache.size() == 0 )
   {
     QApplication::setOverrideCursor( Qt::WaitCursor );
-    m_working = true;
     // State was set above.
     emit stateChanged();
   }
@@ -1343,7 +1340,7 @@ void Smb4KMounter::saveSharesForRemount()
 
 void Smb4KMounter::timerEvent( QTimerEvent * )
 {
-  if ( !kapp->startingUp() && !m_working )
+  if ( !kapp->startingUp() && !isRunning() )
   {
     // Import the mounted shares.
     import();
@@ -1444,6 +1441,8 @@ void Smb4KMounter::slotThreadFinished()
 
     if ( thread->isFinished() )
     {
+      (void) m_cache.take( key );
+      
       switch ( thread->process()->type() )
       {
         case Smb4KProcess::Mount:
@@ -1461,8 +1460,8 @@ void Smb4KMounter::slotThreadFinished()
           break;
         }
       }
-
-      m_cache.remove( key );
+      
+      delete thread;
     }
     else
     {
@@ -1472,7 +1471,6 @@ void Smb4KMounter::slotThreadFinished()
 
   if ( m_cache.size() == 0 )
   {
-    m_working = false;
     m_state = MOUNTER_STOP;
     emit stateChanged();
     QApplication::restoreOverrideCursor();

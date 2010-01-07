@@ -141,7 +141,7 @@ class KDE_EXPORT Smb4KMounter : public QObject
      *
      * @returns TRUE if the mounter is running and FALSE otherwise.
      */
-    bool isRunning() { return m_working; }
+    bool isRunning() { return !m_cache.isEmpty(); }
 
     /**
      * This function executes Smb4KMounter::slotAboutToQuit(). Under normal circumstances,
@@ -190,6 +190,9 @@ class KDE_EXPORT Smb4KMounter : public QObject
     /**
      * This signal is emitted after a share was unmounted and directly before
      * it is removed from the global list of mounted shares.
+     * 
+     * Please note that this signal may be emitted BEFORE a share is actually
+     * removed from the global list of shares! 
      *
      * @param share            The share that is going to be unmounted.
      */
@@ -326,11 +329,6 @@ class KDE_EXPORT Smb4KMounter : public QObject
      * Save all shares that need to be remounted.
      */
     void saveSharesForRemount();
-
-    /**
-     * Determines, whether the mounter is running or not.
-     */
-    bool m_working;
 
     /**
      * The current state.
