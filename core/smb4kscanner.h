@@ -180,7 +180,7 @@ class KDE_EXPORT Smb4KScanner : public QObject
      *
      * @returns             TRUE if the scanner is running and FALSE otherwise.
      */
-    bool isRunning() { return m_working; }
+    bool isRunning() { return !m_cache.isEmpty(); }
 
     /**
      * This function inserts a @p host into the list of known servers. If it belongs to
@@ -368,11 +368,6 @@ class KDE_EXPORT Smb4KScanner : public QObject
      * The destructor.
      */
     ~Smb4KScanner();
-
-    /**
-     * Is set to true, if the scanner is running.
-     */
-    bool m_working;
 
     /**
      * The current state.

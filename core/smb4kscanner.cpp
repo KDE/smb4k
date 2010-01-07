@@ -61,7 +61,6 @@ K_GLOBAL_STATIC( Smb4KScannerPrivate, priv );
 
 Smb4KScanner::Smb4KScanner() : QObject()
 {
-  m_working = false;
   m_state = SCANNER_STOP;
 }
 
@@ -919,7 +918,6 @@ void Smb4KScanner::lookupDomains()
   if ( m_cache.size() == 0 )
   {
     QApplication::setOverrideCursor( Qt::WaitCursor );
-    m_working = true;
     // State was set above.
     emit stateChanged();
   }
@@ -1040,7 +1038,6 @@ void Smb4KScanner::lookupDomainMembers( Smb4KWorkgroup *workgroup )
     if ( m_cache.size() == 0 )
     {
       QApplication::setOverrideCursor( Qt::WaitCursor );
-      m_working = true;
       emit stateChanged();
     }
     else
@@ -1244,7 +1241,6 @@ void Smb4KScanner::lookupShares( Smb4KHost *host )
   if ( m_cache.size() == 0 )
   {
     QApplication::setOverrideCursor( Qt::WaitCursor );
-    m_working = true;
     emit stateChanged();
   }
   else
@@ -1415,7 +1411,6 @@ void Smb4KScanner::lookupInfo( Smb4KHost *host )
   if ( m_cache.size() == 0 )
   {
     QApplication::setOverrideCursor( Qt::WaitCursor );
-    m_working = true;
     emit stateChanged();
   }
   else
@@ -1509,6 +1504,8 @@ void Smb4KScanner::slotThreadFinished()
 
     if ( thread->isFinished() )
     {
+      (void) m_cache.take( key );
+      
       switch ( thread->process()->type() )
       {
         case Smb4KProcess::LookupDomains:
@@ -1536,8 +1533,8 @@ void Smb4KScanner::slotThreadFinished()
           break;
         }
       }
-
-      m_cache.remove( key );
+      
+      delete thread;
     }
     else
     {
@@ -1547,7 +1544,6 @@ void Smb4KScanner::slotThreadFinished()
 
   if ( m_cache.size() == 0 )
   {
-    m_working = false;
     m_state = SCANNER_STOP;
     emit stateChanged();
     QApplication::restoreOverrideCursor();
