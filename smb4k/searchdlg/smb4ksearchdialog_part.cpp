@@ -53,9 +53,29 @@ using namespace Smb4KGlobal;
 typedef KParts::GenericFactory<Smb4KSearchDialogPart> Smb4KSearchDialogPartFactory;
 K_EXPORT_COMPONENT_FACTORY( libsmb4ksearchdialog, Smb4KSearchDialogPartFactory )
 
-Smb4KSearchDialogPart::Smb4KSearchDialogPart( QWidget *parentWidget, QObject *parent, const QStringList & /*args*/ )
-: KParts::Part( parent )
+Smb4KSearchDialogPart::Smb4KSearchDialogPart( QWidget *parentWidget, QObject *parent, const QStringList &args )
+: KParts::Part( parent ), m_silent( false )
 {
+  // Parse arguments:
+  for ( int i = 0; i < args.size(); ++i )
+  {
+    if ( args.at( i ).startsWith( "silent" ) )
+    {
+      if ( QString::compare( args.at( i ).section( "=", 1, 1 ).trimmed(), "\"true\"" ) == 0 )
+      {
+        m_silent = true;
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      continue;
+    }
+  }
+      
   // Set the XML file:
   setXMLFile( "smb4ksearchdialog_part.rc" );
 
@@ -86,13 +106,10 @@ Smb4KSearchDialogPart::Smb4KSearchDialogPart( QWidget *parentWidget, QObject *pa
            this,                   SLOT( slotCheckItemIsKnown() ) );
            
   connect( Smb4KMounter::self(),   SIGNAL( mounted( Smb4KShare * ) ),
-           this,                   SLOT( slotMarkMountedShare( Smb4KShare * ) ) );
+           this,                   SLOT( slotShareMounted( Smb4KShare * ) ) );
            
   connect( Smb4KMounter::self(),   SIGNAL( unmounted( Smb4KShare * ) ),
-           this,                   SLOT( slotMarkMountedShare( Smb4KShare * ) ) );
-
-  connect( Smb4KMounter::self(),   SIGNAL( updated( Smb4KShare * ) ),
-           this,                   SLOT( slotMarkMountedShare( Smb4KShare * ) ) );
+           this,                   SLOT( slotShareUnmounted( Smb4KShare * ) ) );
 
   connect( Smb4KCore::search(),    SIGNAL( result( Smb4KBasicNetworkItem *, bool ) ),
            this,                   SLOT( slotReceivedSearchResult( Smb4KBasicNetworkItem *, bool ) ) );
@@ -176,7 +193,48 @@ void Smb4KSearchDialogPart::customEvent( QEvent *e )
   {
     case EVENT_LOAD_SETTINGS:
     {
-      // Not needed at the moment.
+      // The only changes may concern the marking of the shares.
+      for ( int i = 0; i < m_widget->listWidget()->count(); ++i )
+      {
+        Smb4KSearchDialogItem *item = static_cast<Smb4KSearchDialogItem *>( m_widget->listWidget()->item( i ) );
+    
+        switch ( item->type() )
+        {
+          case Smb4KSearchDialogItem::Share:
+          {
+            // First unmark the share.
+            item->setMounted( false );
+            
+            // Now either mark it again or leave it unmarked.
+            QList<Smb4KShare *> list = findShareByUNC( item->shareItem()->unc() );
+            
+            for ( int j = 0; j < list.size(); ++j )
+            {
+              if ( list.at( j )->isMounted() )
+              {
+                slotShareMounted( list.at( j ) );
+                
+                if ( !list.at( j )->isForeign() )
+                {
+                  break;
+                }
+                else
+                {
+                  continue;
+                }
+              }
+              else
+              {
+                continue;
+              }
+            }
+          }
+          default:
+          {
+            break;
+          }
+        }        
+      }
       break;
     }
     case EVENT_SET_FOCUS:
@@ -488,7 +546,14 @@ void Smb4KSearchDialogPart::slotReceivedSearchResult( Smb4KBasicNetworkItem *ite
 
 void Smb4KSearchDialogPart::slotSearchAboutToStart( const QString &string )
 {
-  emit setStatusBarText( i18n( "Searching for \"%1\"..." ).arg( string ) );
+  if ( !m_silent )
+  {
+    emit setStatusBarText( i18n( "Searching for \"%1\"..." ).arg( string ) );
+  }
+  else
+  {
+    // Do nothing
+  }
 
   m_widget->comboBox()->setEnabled( false );
   actionCollection()->action( "abort_search_action" )->setEnabled( true );
@@ -500,7 +565,14 @@ void Smb4KSearchDialogPart::slotSearchAboutToStart( const QString &string )
 
 void Smb4KSearchDialogPart::slotSearchFinished( const QString &/*string*/ )
 {
-  emit setStatusBarText( i18n( "Done." ) );
+  if ( !m_silent )
+  {
+    emit setStatusBarText( i18n( "Done." ) );
+  }
+  else
+  {
+    // Do nothing
+  }
 
   m_widget->comboBox()->setEnabled( true );
   actionCollection()->action( "abort_search_action" )->setEnabled( false );
@@ -543,72 +615,101 @@ void Smb4KSearchDialogPart::slotCheckItemIsKnown()
 }
 
 
-void Smb4KSearchDialogPart::slotMarkMountedShare( Smb4KShare *share )
+void Smb4KSearchDialogPart::slotShareMounted( Smb4KShare *share )
 {
-  if ( share )
+  Q_ASSERT( share );
+  
+  for ( int i = 0; i < m_widget->listWidget()->count(); ++i )
   {
-    for ( int i = 0; i < m_widget->listWidget()->count(); ++i )
+    Smb4KSearchDialogItem *item = static_cast<Smb4KSearchDialogItem *>( m_widget->listWidget()->item( i ) );
+    
+    switch ( item->type() )
     {
-      Smb4KSearchDialogItem *item = static_cast<Smb4KSearchDialogItem *>( m_widget->listWidget()->item( i ) );
-
-      switch ( item->type() )
+      case Smb4KSearchDialogItem::Share:
       {
-        case Smb4KSearchDialogItem::Share:
+        if ( QString::compare( item->shareItem()->unc(), share->unc(), Qt::CaseInsensitive ) == 0 )
         {
-          // Get the list of shares with the same UNC.
-          QList<Smb4KShare *> list = findShareByUNC( share->unc() );
-
-          if ( !list.isEmpty() )
+          if ( !share->isForeign() || Smb4KSettings::showAllShares() )
           {
+            item->setMounted( share->isMounted() );
+          }
+          else
+          {
+            // Do nothing
+          }
+        }
+        else
+        {
+          // Do nothing
+        }
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
+}
+
+
+void Smb4KSearchDialogPart::slotShareUnmounted( Smb4KShare *share )
+{
+  Q_ASSERT( share );
+  
+  for ( int i = 0; i < m_widget->listWidget()->count(); ++i )
+  {
+    Smb4KSearchDialogItem *item = static_cast<Smb4KSearchDialogItem *>( m_widget->listWidget()->item( i ) );
+    
+    switch ( item->type() )
+    {
+      case Smb4KSearchDialogItem::Share:
+      {
+        if ( QString::compare( item->shareItem()->unc(), share->unc(), Qt::CaseInsensitive ) == 0 )
+        {
+          if ( share->isForeign() )
+          {
+            QList<Smb4KShare *> list = findShareByUNC( share->unc() );
+            bool own_share_mounted = false;
+          
             for ( int j = 0; j < list.size(); ++j )
             {
-              // Find the right share.
-              if ( (!list.at( j )->isForeign() || Smb4KSettings::showAllShares()) &&
-                  !item->isMounted() )
+              if ( !list.at( j )->isForeign() )
               {
-                item->setMounted( true );
-
+                own_share_mounted = true;
                 break;
-              }
-              else if ( (list.at( j )->isForeign() && !Smb4KSettings::showAllShares()) &&
-                        item->isMounted() )
-              {
-                item->setMounted( false );
-
-                // This is a change due to a foreign share. Continue until
-                // we hit the share owned by the user (if it exists).
-                continue;
               }
               else
               {
                 continue;
               }
             }
-          }
-          else
-          {
-            if ( item->isMounted() )
+            
+            if ( !own_share_mounted && (list.size() <= 1 || !Smb4KSettings::showAllShares()) )
             {
-              item->setMounted( false );
+              item->setMounted( share->isMounted() );
             }
             else
             {
               // Do nothing
             }
           }
-
-          break;
+          else
+          {
+            item->setMounted( share->isMounted() );
+          }
         }
-        default:
+        else
         {
-          break;
+          // Do nothing
         }
+        break;
+      }
+      default:
+      {
+        break;
       }
     }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

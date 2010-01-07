@@ -61,7 +61,9 @@ class Smb4KSearchDialogPart : public KParts::Part
      *
      * @param parent              The parent object
      *
-     * @param name                The name this object should have
+     * @param args                A list of arguments. At the moment the following
+     *                            arguments are recognized:
+     *                            silent="true"|"false"
      */
     Smb4KSearchDialogPart( QWidget *parentWidget = 0,
                            QObject *parent = 0,
@@ -119,15 +121,22 @@ class Smb4KSearchDialogPart : public KParts::Part
      * of the host item from the default one to one with a tick layed over.
      */
     void slotCheckItemIsKnown();
-
+    
     /**
-     * This slot is connected to the Smb4KMounter::updated() signal and will 
-     * change the icon of the share item from the default one to the one that 
-     * indicates that the item is mounted.
+     * This slot is connected to the Smb4KMounter::mounted() signal and marks
+     * a share as mounted.
      * 
      * @param share               The share item
      */
-    void slotMarkMountedShare( Smb4KShare *share );
+    void slotShareMounted( Smb4KShare *share );
+    
+    /**
+     * This slot is connected to the Smb4KMounter::unmounted() signal and unmarks
+     * a share that was just unmounted.
+     * 
+     * @param share               The share item
+     */
+    void slotShareUnmounted( Smb4KShare *share );
 
     /**
      * This slot is invoked, when a user double clicks an item. It adds the item
@@ -219,6 +228,11 @@ class Smb4KSearchDialogPart : public KParts::Part
      * The menu title action
      */
     QAction *m_menu_title;
+    
+    /**
+     * Emit status messages
+     */
+    bool m_silent;
 };
 
 #endif
