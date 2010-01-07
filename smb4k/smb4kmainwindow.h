@@ -157,10 +157,41 @@ class Smb4KMainWindow : public KParts::MainWindow
     void slotWalletManagerInitialized();
 
     /**
-     * Reimplemented from KParts::MainWindow.
+     * This slot shows a status message according to the action performed by the 
+     * scanner as well as a busy bar. It is connected to the Smb4KScanner::aboutToStart() 
+     * signal.
+     *
+     * @param item          The network item
+     *
+     * @param process       The process
      */
-    void slotSetStatusBarText( const QString &text );
-    
+    void slotScannerAboutToStart( Smb4KBasicNetworkItem *item,
+                                  int process );
+                                  
+    /**
+     * This shows a status message according to the action that was just finished by
+     * the scanner and hides the busy bar if appropriate. It is connected to the 
+     * Smb4KScanner::finished() signal.
+     * 
+     * @param item          The network item
+     * 
+     * @param process       The process
+     */
+    void slotScannerFinished( Smb4KBasicNetworkItem *item,
+                              int process );
+                                   
+    /**
+     * This slot shows a status message according to the action performed by the 
+     * mounter as well as a busy bar. It is connected to the Smb4KMounter::aboutToStart() 
+     * signal.
+     * 
+     * @param share         The share item
+     *
+     * @param process       The process
+     */
+    void slotMounterAboutToStart( Smb4KShare *share,
+                                  int process );
+                                  
     /**
      * This slot gives the visual mount feedback in the status bar. It is 
      * connected to the Smb4KMounter::mounted() signal.
@@ -176,34 +207,50 @@ class Smb4KMainWindow : public KParts::MainWindow
      * @param share         The Smb4KShare object
      */
     void slotVisualUnmountFeedback( Smb4KShare *share );
-
+                                  
     /**
-     * This slot sets up the visual feedback in the status bar in case a mount
-     * or unmount failed. Otherwise it will only exit silently. This slot is
-     * connected to the Smb4KMounter::finished() signal.
-     *
-     * @param share         The Smb4KShare object
-     *
+     * This shows a status message according to the action that was just finished by
+     * the mounter and hides the busy bar if appropriate. It is connected to the 
+     * Smb4KMounter::finished() signal.
+     * 
+     * @param share         The share item
+     * 
      * @param process       The process
      */
-    void slotMountActionFinished( Smb4KShare *share,
-                                  int process );
-
+    void slotMounterFinished( Smb4KShare *share,
+                              int process );
+                              
     /**
-     * This slot shows a message according the to actions performed by the print
-     * manager. It is connected to the Smb4KPrint::aboutToStart() signal.
+     * This slot shows a status message as well as a busy bar. It is connected to the 
+     * Smb4KSearch::aboutToStart() signal.
+     *
+     * @param string        The search string
+     */
+    void slotSearchAboutToStart( const QString &string );
+    
+    /**
+     * This shows a status message and hides the busy bar if appropriate. It is 
+     * connected to the Smb4KSearch::finished() signal.
+     * 
+     * @param string        The search string
+     */
+   void slotSearchFinished( const QString &string );
+     
+    /**
+     * This slot shows a status message as well as a busy bar. It is connected to the 
+     * Smb4KPrint::aboutToStart() signal.
      *
      * @param info          The Smb4KPrintInfo object
      */
-    void slotPrintStartMessages( Smb4KPrintInfo *info );
+    void slotPrintingAboutToStart( Smb4KPrintInfo *info );
 
     /**
-     * This slot shows a message according to the finished actions that were reported
-     * by the print manager. It is connected to the Smb4KPrint::finished() signal.
+     * This shows a status message and hides the busy bar if appropriate. It is 
+     * connected to the Smb4KPrint::finished() signal.
      *
      * @param info          The Smb4KPrintInfo object
      */
-    void slotPrintFinishMessages( Smb4KPrintInfo *info );
+    void slotPrintingFinished( Smb4KPrintInfo *info );
 
     /**
      * This slot shows a message according to the action performed by the synchronizer.
@@ -211,7 +258,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param info          The Smb4KSynchronizationInfo object
      */
-    void slotSynchronizerStartMessages( Smb4KSynchronizationInfo *info );
+    void slotSynchronizerAboutToStart( Smb4KSynchronizationInfo *info );
 
     /**
      * This slot shows a message according to the finished action that were reported
@@ -219,7 +266,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param info          The Smb4KSynchronizationInfo object
      */
-    void slotSynchronizerFinishMessages( Smb4KSynchronizationInfo *info );
+    void slotSynchronizerFinished( Smb4KSynchronizationInfo *info );
 
     /**
      * This slot shows a message according to the action performed by the previewer.
@@ -227,7 +274,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param info          The Smb4KPreviewItem item
      */
-    void slotPreviewerStartMessages( Smb4KPreviewItem *item );
+    void slotPreviewerAboutToStart( Smb4KPreviewItem *item );
 
     /**
      * This slot shows a message according to the finished action that was reported
@@ -235,7 +282,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param item          The Smb4KPreviewItem item
      */
-    void slotPreviewerFinishMessages( Smb4KPreviewItem *item );
+    void slotPreviewerFinished( Smb4KPreviewItem *item );
 
     /**
      * This slot hides the feedback icon in the status bar. It is connected to
@@ -278,7 +325,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      * Saves the settings
      */
     void saveSettings();
-
+    
     /**
      * This is the progress bar in the status bar.
      */

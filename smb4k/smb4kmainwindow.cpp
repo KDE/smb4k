@@ -160,6 +160,8 @@ void Smb4KMainWindow::setupStatusBar()
   // Set up the progress bar.
   m_progress_bar = new QProgressBar( statusBar() );
   m_progress_bar->setFixedWidth( 100 );
+  m_progress_bar->setMaximum( 0 );
+  m_progress_bar->setMinimum( 0 );
   m_progress_bar->setFixedHeight( statusBar()->fontMetrics().height() );
   m_progress_bar->setAlignment( Qt::AlignCenter );
   m_progress_bar->setVisible( false );
@@ -174,45 +176,12 @@ void Smb4KMainWindow::setupStatusBar()
   m_feedback_icon = new QLabel( statusBar() );
   m_feedback_icon->setContentsMargins( 0, 0, 0, 0 );
   m_feedback_icon->setAlignment( Qt::AlignCenter );
-
+  
   statusBar()->addPermanentWidget( m_progress_bar );
   statusBar()->addPermanentWidget( m_feedback_icon );
   statusBar()->addPermanentWidget( m_pass_icon );
 
   slotWalletManagerInitialized();
-
-  // Since we have an uncommon main window, connect the status
-  // bar text signals to the respective slot.
-  if ( m_browser_part )
-  {
-    connect( m_browser_part, SIGNAL( setStatusBarText( const QString & ) ),
-             this,           SLOT( slotSetStatusBarText( const QString & ) ) );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( m_shares_part )
-  {
-    connect( m_shares_part, SIGNAL( setStatusBarText( const QString & ) ),
-             this,          SLOT( slotSetStatusBarText( const QString & ) ) );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( m_search_part )
-  {
-    connect( m_search_part, SIGNAL( setStatusBarText( const QString & ) ),
-             this,          SLOT( slotSetStatusBarText( const QString & ) ) );
-  }
-  else
-  {
-    // Do nothing
-  }
-
 
   connect( Smb4KWalletManager::self(), SIGNAL( initialized() ),
            this,                       SLOT( slotWalletManagerInitialized() ) );
@@ -223,26 +192,41 @@ void Smb4KMainWindow::setupStatusBar()
   connect( Smb4KMounter::self(),       SIGNAL( unmounted( Smb4KShare * ) ),
            this,                       SLOT( slotVisualUnmountFeedback( Smb4KShare * ) ) );
            
+  connect( Smb4KScanner::self(),       SIGNAL( aboutToStart( Smb4KBasicNetworkItem *, int ) ),
+           this,                       SLOT( slotScannerAboutToStart( Smb4KBasicNetworkItem *, int ) ) );
+      
+  connect( Smb4KScanner::self(),       SIGNAL( finished( Smb4KBasicNetworkItem *, int ) ),
+           this,                       SLOT( slotScannerFinished( Smb4KBasicNetworkItem *, int ) ) );
+           
+  connect( Smb4KMounter::self(),       SIGNAL( aboutToStart( Smb4KShare *, int ) ),
+           this,                       SLOT( slotMounterAboutToStart( Smb4KShare *, int ) ) );
+  
   connect( Smb4KMounter::self(),       SIGNAL( finished( Smb4KShare *, int ) ),
-           this,                       SLOT( slotMountActionFinished( Smb4KShare *, int ) ) );
-
+           this,                       SLOT( slotMounterFinished( Smb4KShare *, int ) ) );
+           
+  connect( Smb4KSearch::self(),        SIGNAL( aboutToStart( const QString & ) ),
+           this,                       SLOT( slotSearchAboutToStart( const QString & ) ) );
+           
+  connect( Smb4KSearch::self(),        SIGNAL( finished( const QString & ) ),
+           this,                       SLOT( slotSearchFinished( const QString & ) ) );
+           
   connect( Smb4KPrint::self(),         SIGNAL( aboutToStart( Smb4KPrintInfo * ) ),
-           this,                       SLOT( slotPrintStartMessages( Smb4KPrintInfo * ) ) );
+           this,                       SLOT( slotPrintingAboutToStart( Smb4KPrintInfo * ) ) );
 
   connect( Smb4KPrint::self(),         SIGNAL( finished( Smb4KPrintInfo * ) ),
-           this,                       SLOT( slotPrintFinishMessages( Smb4KPrintInfo * ) ) );
+           this,                       SLOT( slotPrintingFinished( Smb4KPrintInfo * ) ) );
 
   connect( Smb4KSynchronizer::self(),  SIGNAL( aboutToStart( Smb4KSynchronizationInfo * ) ),
-           this,                       SLOT( slotSynchronizerStartMessages( Smb4KSynchronizationInfo * ) ) );
+           this,                       SLOT( slotSynchronizerAboutToStart( Smb4KSynchronizationInfo * ) ) );
 
   connect( Smb4KSynchronizer::self(),  SIGNAL( finished( Smb4KSynchronizationInfo* ) ),
-           this,                       SLOT( slotSynchronizerFinishMessages( Smb4KSynchronizationInfo * ) ) );
+           this,                       SLOT( slotSynchronizerFinished( Smb4KSynchronizationInfo * ) ) );
 
   connect( Smb4KPreviewer::self(),     SIGNAL( aboutToStart( Smb4KPreviewItem * ) ),
-           this,                       SLOT( slotPreviewerStartMessages( Smb4KPreviewItem * ) ) );
+           this,                       SLOT( slotPreviewerAboutToStart( Smb4KPreviewItem * ) ) );
 
   connect( Smb4KPreviewer::self(),     SIGNAL( finished( Smb4KPreviewItem * ) ),
-           this,                       SLOT( slotPreviewerFinishMessages( Smb4KPreviewItem * ) ) );
+           this,                       SLOT( slotPreviewerFinished( Smb4KPreviewItem * ) ) );
 }
 
 
@@ -265,6 +249,7 @@ void Smb4KMainWindow::setupView()
   {
     QVariantList args;
     args << QString( "bookmark_shortcut=\"false\"" );
+    args << QString( "silent=\"true\"" );
 
     m_browser_part = browser_factory->create<KParts::Part>( this, args );
 
@@ -305,7 +290,10 @@ void Smb4KMainWindow::setupView()
 
   if ( search_factory )
   {
-    m_search_part = search_factory->create<KParts::Part>( this, QVariantList() );
+    QVariantList args;
+    args << QString( "silent=\"true\"" );
+    
+    m_search_part = search_factory->create<KParts::Part>( this, args );
 
     if ( m_search_part )
     {
@@ -345,6 +333,7 @@ void Smb4KMainWindow::setupView()
   {
     QVariantList args;
     args << QString( "bookmark_shortcut=\"false\"" );
+    args << QString( "silent=\"true\"" );
 
     m_shares_part = shares_factory->create<KParts::Part>( this, args );
 
@@ -927,9 +916,96 @@ void Smb4KMainWindow::slotWalletManagerInitialized()
 }
 
 
-void Smb4KMainWindow::slotSetStatusBarText( const QString &text )
+void Smb4KMainWindow::slotScannerAboutToStart( Smb4KBasicNetworkItem *item, int process )
 {
-  statusBar()->showMessage( text, 2000 );
+  Q_ASSERT( item );
+  
+  switch ( process )
+  {
+    case Smb4KScanner::LookupDomains:
+    {
+      statusBar()->showMessage( i18n( "Looking for workgroups and domains..." ), 0 );
+      break;
+    }
+    case Smb4KScanner::LookupDomainMembers:
+    {
+      Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>( item );
+      statusBar()->showMessage( i18n( "Looking for hosts in domain %1..." ).arg( workgroup->workgroupName() ), 0 );
+      break;
+    }
+    case Smb4KScanner::LookupShares:
+    {
+      Smb4KHost *host = static_cast<Smb4KHost *>( item );
+      statusBar()->showMessage( i18n( "Looking for shares provided by host %1..." ).arg( host->hostName() ), 0 );
+      break;
+    }
+    case Smb4KScanner::LookupInfo:
+    {
+      Smb4KHost *host = static_cast<Smb4KHost *>( item );
+      statusBar()->showMessage( i18n( "Looking for more information about host %1..." ).arg( host->hostName() ), 0 );
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+  
+  if ( !m_progress_bar->isVisible() )
+  {
+    m_progress_bar->setVisible( true );
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KMainWindow::slotScannerFinished( Smb4KBasicNetworkItem */*item*/, int /*process*/ )
+{
+  if ( !Smb4KCore::self()->isRunning() )
+  {
+    m_progress_bar->setVisible( false );
+    statusBar()->showMessage( i18n( "Done." ), 2000 );
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KMainWindow::slotMounterAboutToStart( Smb4KShare *share, int process )
+{
+  Q_ASSERT( share );
+  
+  switch ( process )
+  {
+    case Smb4KMounter::MountShare:
+    {
+      statusBar()->showMessage( i18n( "Mounting share %1..." ).arg( share->unc() ), 0 );
+      break;
+    }
+    case Smb4KMounter::UnmountShare:
+    {
+      statusBar()->showMessage( i18n( "Unmounting share %1..." ).arg( share->unc() ), 0 );
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+  
+  if ( !m_progress_bar->isVisible() )
+  {
+    m_progress_bar->setVisible( true );
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
@@ -1027,12 +1103,11 @@ void Smb4KMainWindow::slotVisualUnmountFeedback( Smb4KShare *share )
 }
 
 
-void Smb4KMainWindow::slotMountActionFinished( Smb4KShare *share, int process )
+void Smb4KMainWindow::slotMounterFinished( Smb4KShare *share, int process )
 {
-  // This slot shows the failure of an action.
-
   Q_ASSERT( share );
   
+  // Give visual feedback if the mounting/unmounting failed.
   switch( process )
   {
     case Smb4KMounter::MountShare:
@@ -1072,45 +1147,138 @@ void Smb4KMainWindow::slotMountActionFinished( Smb4KShare *share, int process )
       break;
     }
   }
+  
+  if ( !Smb4KCore::self()->isRunning()  )
+  {
+    m_progress_bar->setVisible( false );
+    statusBar()->showMessage( i18n( "Done." ), 2000 );
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
-void Smb4KMainWindow::slotPrintStartMessages( Smb4KPrintInfo *info )
+void Smb4KMainWindow::slotSearchAboutToStart( const QString &string )
+{
+  Q_ASSERT( !string.isEmpty() );
+  
+  statusBar()->showMessage( i18n( "Searching for \"%1\"..." ).arg( string ) );
+  
+  if ( !m_progress_bar->isVisible() )
+  {
+    m_progress_bar->setVisible( true );
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KMainWindow::slotSearchFinished( const QString &/*string*/ )
+{
+  if ( !Smb4KCore::self()->isRunning()  )
+  {
+    m_progress_bar->setVisible( false );
+    statusBar()->showMessage( i18n( "Done." ), 2000 );
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KMainWindow::slotPrintingAboutToStart( Smb4KPrintInfo *info )
 {
   statusBar()->showMessage( i18n( "Sending file to printer %1..." ).arg( info->printer()->unc() ), 0 );
+  
+  if ( !m_progress_bar->isVisible() )
+  {
+    m_progress_bar->setVisible( true );
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
-void Smb4KMainWindow::slotPrintFinishMessages( Smb4KPrintInfo */*info*/ )
+void Smb4KMainWindow::slotPrintingFinished( Smb4KPrintInfo */*info*/ )
 {
-  statusBar()->showMessage( i18n( "Done." ), 2000 );
+  if ( !Smb4KCore::self()->isRunning()  )
+  {
+    m_progress_bar->setVisible( false );
+    statusBar()->showMessage( i18n( "Done." ), 2000 );
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
-void Smb4KMainWindow::slotSynchronizerStartMessages( Smb4KSynchronizationInfo */*info*/ )
+void Smb4KMainWindow::slotSynchronizerAboutToStart( Smb4KSynchronizationInfo *info )
 {
-  // We do not need to be very verbose here, because the
-  // user can see what he/she is synchronizing in the
-  // synchronization dialog.
-  statusBar()->showMessage( i18n( "Synchronizing..." ), 0 );
+  Q_ASSERT( info );
+  
+  statusBar()->showMessage( i18n( "Synchronizing %1" ).arg( info->destinationPath() ), 0 );
+  
+  if ( !m_progress_bar->isVisible() )
+  {
+    m_progress_bar->setVisible( true );
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
-void Smb4KMainWindow::slotSynchronizerFinishMessages( Smb4KSynchronizationInfo */*info*/ )
+void Smb4KMainWindow::slotSynchronizerFinished( Smb4KSynchronizationInfo */*info*/ )
 {
-  statusBar()->showMessage( i18n( "Done." ), 2000 );
+  if ( !Smb4KCore::self()->isRunning()  )
+  {
+    m_progress_bar->setVisible( false );
+    statusBar()->showMessage( i18n( "Done." ), 2000 );
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
-void Smb4KMainWindow::slotPreviewerStartMessages( Smb4KPreviewItem *item )
+void Smb4KMainWindow::slotPreviewerAboutToStart( Smb4KPreviewItem *item )
 {
+  Q_ASSERT( item );
+  
   statusBar()->showMessage( i18n( "Retrieving preview from %1..." ).arg( item->share()->unc() ), 0 );
+  
+  if ( !m_progress_bar->isVisible() )
+  {
+    m_progress_bar->setVisible( true );
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
-void Smb4KMainWindow::slotPreviewerFinishMessages( Smb4KPreviewItem */*item*/ )
+void Smb4KMainWindow::slotPreviewerFinished( Smb4KPreviewItem */*item*/ )
 {
-  statusBar()->showMessage( i18n( "Done." ), 2000 );
+  if ( !Smb4KCore::self()->isRunning()  )
+  {
+    m_progress_bar->setVisible( false );
+    statusBar()->showMessage( i18n( "Done." ), 2000 );
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
