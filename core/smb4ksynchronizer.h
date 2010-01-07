@@ -99,7 +99,7 @@ class KDE_EXPORT Smb4KSynchronizer : public QObject
      *
      * @returns TRUE if the synchronizer is running and FALSE otherwise.
      */
-    bool isRunning() { return m_working; }
+    bool isRunning() { return !m_cache.isEmpty(); }
 
     /**
      * This function aborts the synchronization process that is represented by a
@@ -196,11 +196,6 @@ class KDE_EXPORT Smb4KSynchronizer : public QObject
      * The cache that stores the threads.
      */
     QCache<QString, SynchronizationThread> m_cache;
-
-    /**
-     * This boolean is TRUE if the synchronizer is working and FALSE otherwise.
-     */
-    bool m_working;
 
     /**
      * The state.
