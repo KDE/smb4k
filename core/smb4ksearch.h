@@ -110,7 +110,7 @@ class KDE_EXPORT Smb4KSearch : public QObject
      *
      * @returns TRUE if at least one search is running and FALSE otherwise.
      */
-    bool isRunning() { return m_working; }
+    bool isRunning() { return !m_cache.isEmpty(); }
 
     /**
      * This function returns the current state of the previewer. The state is
@@ -195,11 +195,6 @@ class KDE_EXPORT Smb4KSearch : public QObject
      * The destructor.
      */
     ~Smb4KSearch();
-
-    /**
-     * Already working
-     */
-    bool m_working;
 
     /**
      * The state
