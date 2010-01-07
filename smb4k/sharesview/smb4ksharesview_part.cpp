@@ -61,7 +61,7 @@ K_EXPORT_COMPONENT_FACTORY( libsmb4ksharesview, Smb4KSharesViewPartFactory )
 
 
 Smb4KSharesViewPart::Smb4KSharesViewPart( QWidget *parentWidget, QObject *parent, const QStringList &args )
-: KParts::Part( parent ), m_mode( IconMode )
+: KParts::Part( parent ), m_mode( IconMode ), m_bookmark_shortcut( true ), m_silent( false )
 {
   // Parse the arguments.
   for ( int i = 0; i < args.size(); ++i )
@@ -84,6 +84,19 @@ Smb4KSharesViewPart::Smb4KSharesViewPart( QWidget *parentWidget, QObject *parent
       if ( QString::compare( args.at( i ).section( "=", 1, 1 ).trimmed(), "\"false\"" ) == 0 )
       {
         m_bookmark_shortcut = false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      continue;
+    }
+    else if ( args.at( i ).startsWith( "silent" ) )
+    {
+      if ( QString::compare( args.at( i ).section( "=", 1, 1 ).trimmed(), "\"true\"" ) == 0 )
+      {
+        m_silent = true;
       }
       else
       {
@@ -1627,12 +1640,26 @@ void Smb4KSharesViewPart::slotMounterAboutToStart( Smb4KShare *share, int proces
   {
     case Smb4KMounter::MountShare:
     {
-      emit setStatusBarText( i18n( "Mounting share %1..." ).arg( share->unc() ) );
+      if ( !m_silent )
+      {
+        emit setStatusBarText( i18n( "Mounting share %1..." ).arg( share->unc() ) );
+      }
+      else
+      {
+        // Do nothing
+      }
       break;
     }
     case Smb4KMounter::UnmountShare:
     {
-      emit setStatusBarText( i18n( "Unmounting share %1..." ).arg( share->unc() ) );
+      if ( !m_silent )
+      {
+        emit setStatusBarText( i18n( "Unmounting share %1..." ).arg( share->unc() ) );
+      }
+      else
+      {
+        // Do nothing
+      }
       break;
     }
     default:
@@ -1645,7 +1672,14 @@ void Smb4KSharesViewPart::slotMounterAboutToStart( Smb4KShare *share, int proces
 
 void Smb4KSharesViewPart::slotMounterFinished( Smb4KShare */*share*/, int /*process*/ )
 {
-  emit setStatusBarText( i18n( "Done." ) );
+  if ( !m_silent )
+  {
+    emit setStatusBarText( i18n( "Done." ) );
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 

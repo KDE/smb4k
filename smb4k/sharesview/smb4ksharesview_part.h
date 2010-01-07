@@ -66,6 +66,8 @@ class Smb4KSharesViewPart : public KParts::Part
      * @param args                A list of arguments. At the moment there are
      *                            the following arguments defined:
      *                            viewmode="icon"|"list"
+     *                            bookmark_shortcut="true"|"false"
+     *                            silent="true"|"false"
      */
     Smb4KSharesViewPart( QWidget *parentWidget = 0,
                          QObject *parent = 0,
@@ -299,6 +301,11 @@ class Smb4KSharesViewPart : public KParts::Part
      * The bookmark action has got a shortcut
      */
     bool m_bookmark_shortcut;
+    
+    /**
+     * Emit status messages
+     */
+    bool m_silent;
 
     /**
      * This is the container widget for the
