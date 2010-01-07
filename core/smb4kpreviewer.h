@@ -91,7 +91,7 @@ class KDE_EXPORT Smb4KPreviewer : public QObject
      *
      * @returns TRUE if the previewer is running or FALSE otherwise.
      */
-    bool isRunning() { return m_working; }
+    bool isRunning() { return !m_cache.isEmpty(); }
 
     /**
      * Abort any action the previewer is performing at the moment.
@@ -184,11 +184,6 @@ class KDE_EXPORT Smb4KPreviewer : public QObject
      * The cache that holds the threads
      */
     QCache<QString, PreviewThread> m_cache;
-
-    /**
-     * Indicates whether the previewer is running or not.
-     */
-    bool m_working;
 
     /**
      * The current state

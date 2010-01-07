@@ -56,7 +56,6 @@ K_GLOBAL_STATIC( Smb4KPreviewerPrivate, priv );
 
 Smb4KPreviewer::Smb4KPreviewer() : QObject()
 {
-  m_working = false;
 }
 
 
@@ -258,7 +257,6 @@ void Smb4KPreviewer::preview( Smb4KPreviewItem *item )
   if ( m_cache.size() == 0 )
   {
     QApplication::setOverrideCursor( Qt::WaitCursor );
-    m_working = true;
     m_state = SYNCHRONIZER_START;
     emit stateChanged();
   }
@@ -376,8 +374,9 @@ void Smb4KPreviewer::slotThreadFinished()
 
     if ( thread->isFinished() )
     {
+      (void) m_cache.take( key );
       emit finished( thread->previewItem() );
-      m_cache.remove( key );
+      delete thread;
     }
     else
     {
@@ -387,7 +386,6 @@ void Smb4KPreviewer::slotThreadFinished()
 
   if ( m_cache.size() == 0 )
   {
-    m_working = false;
     m_state = PREVIEWER_STOP;
     emit stateChanged();
     QApplication::restoreOverrideCursor();
