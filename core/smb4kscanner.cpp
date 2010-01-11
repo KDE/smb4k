@@ -926,7 +926,7 @@ void Smb4KScanner::lookupDomains()
     // Already running
   }
 
-  emit aboutToStart( NULL, LookupDomains );
+  emit aboutToStart( new Smb4KBasicNetworkItem(), LookupDomains );
 
   LookupDomainsThread *thread = new LookupDomainsThread( mode, this );
   m_cache.insert( QString( "%1" ).arg( rand() ), thread );
