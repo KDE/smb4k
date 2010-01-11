@@ -40,6 +40,7 @@
 #include <kmessagebox.h>
 #include <kshell.h>
 #include <kstandarddirs.h>
+#include <kmountpoint.h>
 
 // system includes
 #ifdef __FreeBSD__
@@ -364,182 +365,47 @@ void Smb4KMounter::triggerRemounts()
 
 void Smb4KMounter::import()
 {
+  KMountPoint::List mount_points = KMountPoint::currentMountPoints( KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions );
   QList<Smb4KShare> mounted_shares;
   
-#ifndef __FreeBSD__
-
-  // Prefer reading from /proc/mounts, because it carries more information.
-  // If /proc/mounts does not exist, fall back to using the getmntent() system
-  // call.
-  if ( !QFile::exists( "/proc/mounts" ) )
+  for ( int i = 0; i < mount_points.size(); ++i )
   {
-    // FIXME: Implement check if we need to import something at all.
-    // This seems to be more complicate than I initially thought. I tried
-    // KDirWatch and QFileInfo, but they did nothing, because the modification
-    // time of the symlink target of /proc/mounts does not change.
-    
-    QFile file( "/proc/mounts" );
-    
-    // Read /proc/mounts.
-    if ( file.open( QIODevice::ReadOnly | QIODevice::Text ) )
+#ifndef __FreeBSD__
+    if ( QString::compare( mount_points.at( i )->mountType(), "cifs" ) == 0 )
+#else
+    if ( QString::compare( mount_points.at( i )->mountType(), "smbfs" ) == 0 )
+#endif
     {
-      QTextStream ts( &file );
-      // Note: With Qt 4.3 this seems to be obsolete, but we'll
-      // keep it for now.
-      ts.setCodec( "UTF-8" );
-      ts.setAutoDetectUnicode( true );
-
-      QString line;
-
-      // Since we are operating on a symlink, we need to read
-      // the file this way. Using ts.atEnd() won't work, because
-      // it would immediately return TRUE.
-      while ( 1 )
-      {
-        line = ts.readLine( 0 );
-
-        if ( !line.isEmpty() )
-        {
-          if ( line.contains( " cifs ", Qt::CaseSensitive ) )
-          {
-            // Create a new share object and put all available
-            // information into it.
-            Smb4KShare share;
-            share.setUNC( line.section( " cifs ", 0, 0 ).trimmed().section( " ", 0, 0 ).trimmed() );
-            share.setPath( line.section( " cifs ", 0, 0 ).trimmed().section( " ", 1, 1 ).trimmed() );
-            share.setWorkgroupName( line.section( "domain=", 1, 1 ).section( ",", 0, 0 ).trimmed() );
-            share.setHostIP( line.section( "addr=", 1, 1 ).section( ",", 0, 0 ).trimmed() );
-            share.setFileSystem( Smb4KShare::CIFS );
-            share.setIsMounted( true );
-            QString login = line.section( "username=", 1, 1 ).section( ",", 0, 0 ).trimmed();
-            share.setLogin( !login.isEmpty() ? login : "guest" ); // Work around empty 'username=' entries
-            
-            mounted_shares += share;
-            continue;
-          }
-          else
-          {
-            continue;
-          }
-        }
-        else
-        {
-          break;
-        }
-      }
-
-      file.close();
+      Smb4KShare share;
+      share.setUNC( mount_points.at( i )->mountedFrom() );
+      share.setPath( mount_points.at( i )->mountPoint() );
+#ifndef __FreeBSD__
+      share.setFileSystem( Smb4KShare::CIFS );
+      QString login = mount_points.at( i )->mountOptions().join( "," ).section( "user=", 1, 1 ).section( ",", 0, 0 ).trimmed();
+      share.setLogin( !login.isEmpty() ? login : "guest" ); // Work around empty 'user=' entries
+#else
+      share.setFileSystem( Smb4KShare::SMBFS );
+      QString login = mount_points.at( i )->mountOptions().join( "," ).section( "username=", 1, 1 ).section( ",", 0, 0 ).trimmed();
+      share.setLogin( !login.isEmpty() ? login : "guest" ); // Work around empty 'username=' entries
+#endif
+      share.setIsMounted( true );
+      
+      // FIXME: Get domain and host IP address if available. Under Linux, 
+      // /etc/mtab and thus KMountPoint do not carry this information (yet).
+      
+      mounted_shares += share;
     }
     else
     {
-      Smb4KCoreMessage::error( ERROR_OPENING_FILE, file.fileName() );
-      return;
-    }    
-  }
-  else
-  {
-    FILE *file = setmntent( "/etc/mtab", "r" );
-    struct mntent *entry = NULL;
-    
-    while ( (entry = getmntent( file )) != NULL )
-    {
-      if ( !strncmp( entry->mnt_type, "cifs", strlen( entry->mnt_type ) + 1 ) )
-      {
-        Smb4KShare share;
-        share.setUNC( QString( entry->mnt_fsname ) );
-        share.setPath( QString( entry->mnt_dir ) );
-        share.setFileSystem( Smb4KShare::CIFS );
-        share.setIsMounted( true );
-        QString login( hasmntopt( entry, "user" ) );
-        share.setLogin( !login.isEmpty() ? login : "guest" ); // Work around empty 'user=' entries
-       
-        mounted_shares += share;
-      }
-      else
-      {
-        continue;
-      }
+      continue;
     }
   }
-
-#else
-
-//   struct statfs *buf;
-//   int count = getmntinfo( &buf, 0 );
-// 
-//   if ( count == 0 )
-//   {
-//     int err_code = errno;
-//     Smb4KCoreMessage::error( ERROR_IMPORTING_SHARES, QString::null, strerror( err_code ) );
-//     return;
-//   }
-// 
-//   for ( int i = 0; i < count; ++i )
-//   {
-//     if ( !strcmp( buf[i].f_fstypename, "smbfs" ) )
-//     {
-//       QByteArray path( buf[i].f_mntonname );
-// 
-//       Smb4KShare *existing_share = findShareByPath( path );
-//       Smb4KShare *share = NULL;
-// 
-//       if ( existing_share )
-//       {
-//         share = new Smb4KShare( *existing_share );
-// 
-//         if ( share->fileSystem() != Smb4KShare::SMBFS )
-//         {
-//           QFileInfo info( QString( buf[i].f_mntonname )+"/." );
-// 
-//           share->setFileSystem( Smb4KShare::SMBFS );
-//           share->setUID( info.ownerId() );
-//           share->setGID( info.groupId() );
-//         }
-//         else
-//         {
-//           // Do nothing
-//         }
-// 
-//       }
-//       else
-//       {
-//         QString share_name( buf[i].f_mntfromname );
-// 
-//         QFileInfo info( QString( buf[i].f_mntonname )+"/." );
-// 
-//         share = new Smb4KShare( share_name );
-//         share->setPath( path );
-//         share->setFileSystem ( !strcmp( buf[i].f_fstypename, "smbfs" ) ?
-//                                Smb4KShare::SMBFS :
-//                                Smb4KShare::Unknown );
-//         share->setUID( info.ownerId() );
-//         share->setGID( info.groupId() );
-//         share->setIsMounted( true );
-//       }
-// 
-//       // Test if share is broken
-//       if ( (existing_share && !existing_share->isInaccessible()) || !existing_share )
-//       {
-//         check( share );
-//       }
-//       else
-//       {
-//         // Since new_share is a copy of existing_share, we do not need to do
-//         // anything here.
-//       }
-// 
-//       shares.append( share );
-//     }
-//   }
-// 
-//   // Apparently, under FreeBSD we do not need to delete
-//   // the pointer (see manual page).
-
-#endif
 
   // Check which shares were unmounted, emit the unmounted() signal
   // on each of the unmounted shares and remove them from the global
   // list.
+  // NOTE: The unmount() signal is emitted *BEFORE* the share is removed
+  // from the global list! You need to account for that in your application.
   bool found = false;
   
   for ( int i = 0; i < mountedSharesList()->size(); ++i )
