@@ -32,11 +32,10 @@
 #include <smb4kcoremessage.h>
 
 
-PreviewThread::PreviewThread( QObject *parent )
-: QThread( parent )
+PreviewThread::PreviewThread( Smb4KPreviewItem *item, QObject *parent )
+: QThread( parent ), m_item( item )
 {
   m_proc = NULL;
-  m_item = NULL;
 }
 
 
@@ -45,12 +44,9 @@ PreviewThread::~PreviewThread()
 }
 
 
-void PreviewThread::preview( Smb4KPreviewItem *item, Smb4KAuthInfo *authInfo, const QString &command )
+void PreviewThread::preview( Smb4KAuthInfo *authInfo, const QString &command )
 {
-  Q_ASSERT( item );
   Q_ASSERT( !command.isEmpty() );
-
-  m_item = item;
 
   // Make sure there is no old contents left.
   m_item->clearContents();

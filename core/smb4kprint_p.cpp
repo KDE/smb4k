@@ -34,11 +34,10 @@
 #include <smb4kauthinfo.h>
 
 
-PrintThread::PrintThread( QObject *parent )
-: QThread( parent )
+PrintThread::PrintThread( Smb4KPrintInfo *info, QObject *parent )
+: QThread( parent ), m_info( info )
 {
   m_proc = NULL;
-  m_info = NULL;
 }
 
 
@@ -47,16 +46,13 @@ PrintThread::~PrintThread()
 }
 
 
-void PrintThread::print( Smb4KPrintInfo *info, Smb4KAuthInfo *authInfo, const QString &command )
+void PrintThread::print( Smb4KAuthInfo *authInfo, const QString &command )
 {
-  Q_ASSERT( info );
   Q_ASSERT( !command.isEmpty() );
-
-  m_info = info;
 
   m_proc = new Smb4KProcess( Smb4KProcess::Print, this );
   m_proc->setShellCommand( command );
-  m_proc->setEnv( "DEVICE_URI", info->deviceURI(), true );
+  m_proc->setEnv( "DEVICE_URI", m_info->deviceURI(), true );
   m_proc->setEnv( "PASSWD", !authInfo->password().isEmpty() ? authInfo->password() : "", true );
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
 
@@ -112,7 +108,7 @@ void PrintThread::print( Smb4KPrintInfo *info, Smb4KAuthInfo *authInfo, const QS
 
         if ( !stderr_list.isEmpty() )
         {
-          Smb4KCoreMessage::error( ERROR_PRINTING, info->filePath(), stderr );
+          Smb4KCoreMessage::error( ERROR_PRINTING, m_info->filePath(), stderr );
         }
         else
         {

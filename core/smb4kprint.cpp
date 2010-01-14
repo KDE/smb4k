@@ -207,7 +207,7 @@ void Smb4KPrint::print( Smb4KPrintInfo *printInfo )
 
     emit aboutToStart( printInfo );
 
-    PrintThread *thread = new PrintThread( this );
+    PrintThread *thread = new PrintThread( printInfo, this );
     m_cache.insert( printInfo->filePath(), thread );
 
     connect( thread, SIGNAL( finished() ), this, SLOT( slotThreadFinished() ) );
@@ -223,7 +223,7 @@ void Smb4KPrint::print( Smb4KPrintInfo *printInfo )
     }
 
     thread->start();
-    thread->print( printInfo, &authInfo, command );
+    thread->print( &authInfo, command );
   }
   else
   {

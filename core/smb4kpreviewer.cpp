@@ -267,7 +267,7 @@ void Smb4KPreviewer::preview( Smb4KPreviewItem *item )
 
   emit aboutToStart( item );
 
-  PreviewThread *thread = new PreviewThread( this );
+  PreviewThread *thread = new PreviewThread( item, this );
   m_cache.insert( item->location(), thread );
 
   connect( thread, SIGNAL( finished() ), this, SLOT( slotThreadFinished() ) );
@@ -275,7 +275,7 @@ void Smb4KPreviewer::preview( Smb4KPreviewItem *item )
   connect( thread, SIGNAL( authError( Smb4KPreviewItem * ) ), this, SLOT( slotAuthError( Smb4KPreviewItem* ) ) );
 
   thread->start();
-  thread->preview( item, &authInfo, command );
+  thread->preview( &authInfo, command );
 }
 
 

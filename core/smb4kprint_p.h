@@ -46,10 +46,10 @@ class PrintThread : public QThread
   Q_OBJECT
 
   public:
-    PrintThread( QObject *parent = 0 );
+    PrintThread( Smb4KPrintInfo *info,
+                 QObject *parent = 0 );
     ~PrintThread();
-    void print( Smb4KPrintInfo *info,
-                Smb4KAuthInfo *authInfo,
+    void print( Smb4KAuthInfo *authInfo,
                 const QString &command );
     Smb4KPrintInfo *printInfo() { return m_info; }
     Smb4KProcess *process() { return m_proc; }

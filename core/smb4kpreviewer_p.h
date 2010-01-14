@@ -46,10 +46,10 @@ class PreviewThread : public QThread
   Q_OBJECT
 
   public:
-    PreviewThread( QObject *parent = 0 );
+    PreviewThread( Smb4KPreviewItem *item,
+                   QObject *parent = 0 );
     ~PreviewThread();
-    void preview( Smb4KPreviewItem *item,
-                  Smb4KAuthInfo *authInfo,
+    void preview( Smb4KAuthInfo *authInfo,
                   const QString &command );
     Smb4KProcess *process() { return m_proc; }
     Smb4KPreviewItem *previewItem() { return m_item; }
