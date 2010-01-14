@@ -67,7 +67,10 @@ Smb4K SVN_HEAD (????-??-??):
     are scheduled for remount is cleared when the application exits.
   + Incoming mount and unmount requests can now be processed in parallel.
   + Rewrote slotAboutToQuit() slot.
-  + The import function now sets the host's IP address if necessary.
+  + The import function has been rewritten. It uses KMountPoint class and the 
+    implementation is much simpler than the previous one. Since we do not read 
+    /proc/mounts under Linux anymore, some capabilities are lost. The user won't
+    notice this, though.
   + Introduced new currentState() function.
   + Replaced state( int ) signal by stateChanged() signal.
   + Added 'servern' and 'netbiosname' mount options. They are only used, when a
