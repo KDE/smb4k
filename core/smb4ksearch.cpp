@@ -436,7 +436,7 @@ void Smb4KSearch::slotAuthError( const QString &string )
 
 void Smb4KSearch::slotProcessSearchResult( Smb4KBasicNetworkItem *item )
 {
-  switch ( item->itemType() )
+  switch ( item->type() )
   {
     case Smb4KBasicNetworkItem::Host:
     {

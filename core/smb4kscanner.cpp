@@ -1557,7 +1557,7 @@ void Smb4KScanner::slotThreadFinished()
 
 void Smb4KScanner::slotAuthError( Smb4KBasicNetworkItem *item )
 {
-  switch ( item->itemType() )
+  switch ( item->type() )
   {
     case Smb4KBasicNetworkItem::Workgroup:
     {

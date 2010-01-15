@@ -659,7 +659,7 @@ void LookupSharesThread::slotProcessFinished( int exitCode, QProcess::ExitStatus
             share.setShareName( line.section( " Disk     ", 0, 0 ).trimmed() );
             share.setHostName( host->hostName() );
             share.setWorkgroupName( host->workgroupName() );
-            share.setType( "Disk" );
+            share.setTypeString( "Disk" );
             share.setComment( line.section( " Disk     ", 1, 1 ).trimmed() );
             share.setLogin( m_auth_info.login() );
 
@@ -681,7 +681,7 @@ void LookupSharesThread::slotProcessFinished( int exitCode, QProcess::ExitStatus
             share.setShareName( line.section( " IPC      ", 0, 0 ).trimmed() );
             share.setHostName( host->hostName() );
             share.setWorkgroupName( host->workgroupName() );
-            share.setType( "IPC" );
+            share.setTypeString( "IPC" );
             share.setComment( line.section( " IPC      ", 1, 1 ).trimmed() );
             share.setLogin( m_auth_info.login() );
 
@@ -703,7 +703,7 @@ void LookupSharesThread::slotProcessFinished( int exitCode, QProcess::ExitStatus
             share.setShareName( line.section( " Print    ", 0, 0 ).trimmed() );
             share.setHostName( host->hostName() );
             share.setWorkgroupName( host->workgroupName() );
-            share.setType( "Printer" );
+            share.setTypeString( "Printer" );
             share.setComment( line.section( " Print    ", 1, 1 ).trimmed() );
             share.setLogin( m_auth_info.login() );
 
