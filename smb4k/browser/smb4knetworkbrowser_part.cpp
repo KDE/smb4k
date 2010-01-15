@@ -661,7 +661,7 @@ void Smb4KNetworkBrowserPart::slotItemExecuted( QTreeWidgetItem *item, int /*col
   }
 }
 
-#include <kmessagebox.h>
+
 void Smb4KNetworkBrowserPart::slotAboutToShowToolTip( Smb4KNetworkBrowserItem *item )
 {
   if ( item )

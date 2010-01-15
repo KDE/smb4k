@@ -73,7 +73,7 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem( QTreeWidgetItem *parent, Smb4K
 : QTreeWidgetItem( parent, Share ), m_share( *share )
 {
   setText( Network, m_share.shareName() );
-  setText( Type, m_share.translatedType() );
+  setText( Type, m_share.translatedTypeString() );
   setText( Comment, m_share.comment() );
 
   if ( !m_share.isPrinter() )

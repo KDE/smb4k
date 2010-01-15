@@ -208,7 +208,7 @@ void Smb4KNetworkBrowserToolTip::setupToolTip( Smb4KNetworkBrowserItem *item )
         m_comment =             new QLabel( m_item->shareItem()->comment(), this );
 
         m_type_label =          new QLabel( i18n( "Type:" ), this );
-        m_type =                new QLabel( m_item->shareItem()->translatedType(), this );
+        m_type =                new QLabel( m_item->shareItem()->translatedTypeString(), this );
 
         if ( !m_item->shareItem()->isPrinter() )
         {

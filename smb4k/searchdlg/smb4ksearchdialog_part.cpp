@@ -489,7 +489,7 @@ void Smb4KSearchDialogPart::slotReceivedSearchResult( Smb4KBasicNetworkItem *ite
 {
   if ( item )
   {
-    switch ( item->itemType() )
+    switch ( item->type() )
     {
       case Smb4KBasicNetworkItem::Host:
       {
