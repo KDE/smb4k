@@ -41,7 +41,7 @@
 #include <smb4kauthinfo.h>
 
 Smb4KShare::Smb4KShare( const QString &host, const QString &name ) : Smb4KBasicNetworkItem( Share ),
-  m_url( QUrl() ), m_workgroup( QString() ), m_type( QString() ), m_comment( QString() ),
+  m_url( QUrl() ), m_workgroup( QString() ), m_type_string( QString() ), m_comment( QString() ),
   m_host_ip( QString() ), m_path( QByteArray() ), m_inaccessible( false ), m_foreign( false ),
   m_filesystem( Unknown ), m_user( getuid() ), m_group( getgid() ), m_total( -1 ), m_free( -1 ),
   m_uid_set( false ), m_gid_set( false ), m_login_set( false ), m_is_mounted( false ),
@@ -56,7 +56,7 @@ Smb4KShare::Smb4KShare( const QString &host, const QString &name ) : Smb4KBasicN
 
 
 Smb4KShare::Smb4KShare( const QString &unc ) : Smb4KBasicNetworkItem( Share ),
-  m_url( QUrl() ), m_workgroup( QString() ), m_type( QString() ), m_comment( QString() ),
+  m_url( QUrl() ), m_workgroup( QString() ), m_type_string( QString() ), m_comment( QString() ),
   m_host_ip( QString() ), m_path( QByteArray() ), m_inaccessible( false ), m_foreign( false ),
   m_filesystem( Unknown ), m_user( getuid() ), m_group( getgid() ), m_total( -1 ), m_free( -1 ),
   m_uid_set( false ), m_gid_set( false ), m_login_set( false ), m_is_mounted( false ),
@@ -67,7 +67,7 @@ Smb4KShare::Smb4KShare( const QString &unc ) : Smb4KBasicNetworkItem( Share ),
 
 
 Smb4KShare::Smb4KShare( const Smb4KShare &s ) : Smb4KBasicNetworkItem( Share ),
-  m_url( QUrl() ), m_workgroup( s.workgroupName() ), m_type( s.type() ), m_comment( s.comment() ),
+  m_url( QUrl() ), m_workgroup( s.workgroupName() ), m_type_string( s.typeString() ), m_comment( s.comment() ),
   m_host_ip( s.hostIP() ), m_path( s.path() ), m_inaccessible( s.isInaccessible() ),
   m_foreign( s.isForeign() ), m_filesystem( s.fileSystem() ), m_user( s.uid() ), m_group( s.gid() ),
   m_total( s.totalDiskSpace() ), m_free( s.freeDiskSpace() ), m_uid_set( s.uidIsSet() ), m_gid_set( s.gidIsSet() ),
@@ -80,7 +80,7 @@ Smb4KShare::Smb4KShare( const Smb4KShare &s ) : Smb4KBasicNetworkItem( Share ),
 
 
 Smb4KShare::Smb4KShare() : Smb4KBasicNetworkItem( Share ),
-  m_url( QUrl() ), m_workgroup( QString() ), m_type( QString() ), m_comment( QString() ),
+  m_url( QUrl() ), m_workgroup( QString() ), m_type_string( QString() ), m_comment( QString() ),
   m_host_ip( QString() ), m_path( QByteArray() ), m_inaccessible( false ), m_foreign( false ),
   m_filesystem( Unknown ), m_user( getuid() ), m_group( getgid() ), m_total( -1 ), m_free( -1 ),
   m_uid_set( false ), m_gid_set( false ), m_login_set( false ), m_is_mounted( false ),
@@ -205,20 +205,20 @@ void Smb4KShare::setWorkgroupName( const QString &workgroup )
 }
 
 
-void Smb4KShare::setType( const QString &type )
+void Smb4KShare::setTypeString( const QString &typeString )
 {
-  m_type = type;
+  m_type_string = typeString;
 }
 
 
-const QString Smb4KShare::translatedType() const
+const QString Smb4KShare::translatedTypeString() const
 {
-  if ( QString::compare( m_type, "Disk" ) == 0 )
+  if ( QString::compare( m_type_string, "Disk" ) == 0 )
   {
     return i18n( "Disk" );
   }
-  else if ( QString::compare( m_type, "Print" ) == 0 ||
-            QString::compare( m_type, "Printer" ) == 0 )
+  else if ( QString::compare( m_type_string, "Print" ) == 0 ||
+            QString::compare( m_type_string, "Printer" ) == 0 )
   {
     return i18n( "Printer" );
   }
@@ -227,7 +227,7 @@ const QString Smb4KShare::translatedType() const
     // Do nothing
   }
 
-  return m_type;
+  return m_type_string;
 }
 
 
@@ -251,8 +251,8 @@ bool Smb4KShare::isHidden() const
 
 bool Smb4KShare::isPrinter() const
 {
-  return (QString::compare( m_type, "Print" ) == 0 ||
-          QString::compare( m_type, "Printer" ) == 0);
+  return (QString::compare( m_type_string, "Print" ) == 0 ||
+          QString::compare( m_type_string, "Printer" ) == 0);
 }
 
 
@@ -601,7 +601,7 @@ bool Smb4KShare::equals( Smb4KShare *share, CheckFlags flag )
     {
       if ( QString::compare( unc( QUrl::RemovePassword ), share->unc( QUrl::RemovePassword ) ) == 0 &&
            QString::compare( m_workgroup, share->workgroupName() ) == 0 &&
-           QString::compare( m_type, share->type() ) == 0 &&
+           QString::compare( m_type_string, share->typeString() ) == 0 &&
            QString::compare( m_comment, share->comment() ) == 0 &&
            QString::compare( m_host_ip, share->hostIP() ) == 0 &&
            QString::compare( m_path, share->path() ) == 0 &&
@@ -627,7 +627,7 @@ bool Smb4KShare::equals( Smb4KShare *share, CheckFlags flag )
     {
       if ( QString::compare( unc( QUrl::RemovePassword ), share->unc( QUrl::RemovePassword ) ) == 0 &&
            QString::compare( m_workgroup, share->workgroupName() ) == 0 &&
-           QString::compare( m_type, share->type() ) == 0 &&
+           QString::compare( m_type_string, share->typeString() ) == 0 &&
            QString::compare( m_comment, share->comment() ) == 0 &&
            QString::compare( m_host_ip, share->hostIP() ) == 0 &&
            m_homes_users == share->homesUsers() )
@@ -688,7 +688,7 @@ bool Smb4KShare::isEmpty( CheckFlags flag ) const
         return false;
       }
 
-      if ( !m_type.isEmpty() )
+      if ( !m_type_string.isEmpty() )
       {
         return false;
       }
@@ -752,7 +752,7 @@ bool Smb4KShare::isEmpty( CheckFlags flag ) const
         return false;
       }
 
-      if ( !m_type.isEmpty() )
+      if ( !m_type_string.isEmpty() )
       {
         return false;
       }

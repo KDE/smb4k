@@ -182,28 +182,28 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     const QString &workgroupName() const { return m_workgroup; }
 
     /**
-     * Sets the type of the share.
+     * Sets the type string (Disk, Print, IPC) of the share.
      *
      * @param type          The string defining the type of the share
      */
-    void setType( const QString &type );
+    void setTypeString( const QString &typeString );
 
     /**
-     * Returns the type of the share as reported by the server. If you are
-     * looking for a translated type string, then use the translatedType()
+     * Returns the type string of the share as reported by the server. If you are
+     * looking for a translated type string, then use the translatedTypeString()
      * function.
      *
      * @returns the type of the share.
      */
-    const QString &type() const { return m_type; }
+    const QString &typeString() const { return m_type_string; }
 
     /**
-     * Returns the type of the share as translated string. You can use this
+     * Returns the translated type string of the share. You can use this
      * in the GUI.
      *
      * @returns a translated type string.
      */
-    const QString translatedType() const;
+    const QString translatedTypeString() const;
 
     /**
      * Sets the comment that was defined for the share.
@@ -669,7 +669,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     /**
      * The type of the share
      */
-    QString m_type;
+    QString m_type_string;
 
     /**
      * The comment
