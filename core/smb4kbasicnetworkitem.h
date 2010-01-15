@@ -49,7 +49,7 @@ class KDE_EXPORT Smb4KBasicNetworkItem
      * @enum Share          The network item is a share.
      * @enum Unknown        The network item type is unknown.
      */
-    enum ItemType { Workgroup,
+    enum Type { Workgroup,
                     Host,
                     Share,
                     Unknown };
@@ -57,7 +57,7 @@ class KDE_EXPORT Smb4KBasicNetworkItem
     /**
      * The constructor
      */
-    Smb4KBasicNetworkItem( Smb4KBasicNetworkItem::ItemType type = Unknown );
+    Smb4KBasicNetworkItem( Smb4KBasicNetworkItem::Type type = Unknown );
 
     /**
      * The copy constructor
@@ -75,7 +75,7 @@ class KDE_EXPORT Smb4KBasicNetworkItem
      *
      * @returns the type.
      */
-    ItemType itemType() const { return m_type; }
+    Type type() const { return m_type; }
 
     /**
      * With this function you can set a key, that can be used to identify
@@ -97,7 +97,7 @@ class KDE_EXPORT Smb4KBasicNetworkItem
     /**
      * The type
      */
-    ItemType m_type;
+    Type m_type;
 
     /**
      * The key

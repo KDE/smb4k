@@ -34,13 +34,13 @@
 #include <smb4kbasicnetworkitem.h>
 
 
-Smb4KBasicNetworkItem::Smb4KBasicNetworkItem( Smb4KBasicNetworkItem::ItemType type )
+Smb4KBasicNetworkItem::Smb4KBasicNetworkItem( Smb4KBasicNetworkItem::Type type )
 : m_type( type ), m_key( QString( rand() ) )
 {
 }
 
 Smb4KBasicNetworkItem::Smb4KBasicNetworkItem( const Smb4KBasicNetworkItem &item )
-: m_type( item.itemType() ), m_key( item.key() )
+: m_type( item.type() ), m_key( item.key() )
 {
 }
 
