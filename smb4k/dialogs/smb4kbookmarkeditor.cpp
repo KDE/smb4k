@@ -143,8 +143,7 @@ void Smb4KBookmarkEditor::slotContextMenuRequested( const QPoint &pos )
 {
   if ( m_widget->itemAt( pos ) )
   {
-    if ( m_widget->indexAt( pos ).column() != Bookmark &&
-         m_widget->indexAt( pos ).column() != Workgroup )
+    if ( m_widget->indexAt( pos ).column() != Bookmark )
     {
       m_collection->action( "edit_action" )->setEnabled( true );
     }
@@ -181,8 +180,7 @@ void Smb4KBookmarkEditor::slotContextMenuRequested( const QPoint &pos )
 
 void Smb4KBookmarkEditor::slotEditActionTriggered( bool /* checked */ )
 {
-  if ( m_widget->currentItem() && (m_widget->currentIndex().column() != Bookmark &&
-       m_widget->currentIndex().column() != Workgroup) )
+  if ( m_widget->currentItem() && m_widget->currentIndex().column() != Bookmark )
   {
     m_widget->editItem( m_widget->currentItem(), m_widget->currentIndex().column() );
   }
@@ -218,6 +216,7 @@ void Smb4KBookmarkEditor::slotItemDoubleClicked( QTreeWidgetItem *item, int colu
   {
     switch( column )
     {
+      case Workgroup:
       case Login:
       case IPAddress:
       case Label:
