@@ -76,7 +76,7 @@ void Smb4KSlave::listDir( const KUrl &url )
 
   m_current_item = currentNetworkItem( u );
 
-  switch ( m_current_item.itemType() )
+  switch ( m_current_item.type() )
   {
     case Smb4KBasicNetworkItem::Unknown:
     {
@@ -178,7 +178,7 @@ void Smb4KSlave::stat( const KUrl &url )
 
   m_current_item = currentNetworkItem( u );
 
-  switch ( m_current_item.itemType() )
+  switch ( m_current_item.type() )
   {
     case Smb4KBasicNetworkItem::Unknown:
     case Smb4KBasicNetworkItem::Workgroup:
