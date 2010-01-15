@@ -44,6 +44,8 @@ Smb4K SVN_HEAD (????-??-??):
   + Added hasHostIP() function.
   + Added homeUNC() function that returns the UNC of the user's home repository
     in case of a 'homes' share.
+  + Renamed type() to typeString(), setType() to setTypeString() and 
+    translatedType() to translatedTypeString().
 - Revised Smb4KCore class:
   + Removed all *State() convenience functions. You need to use the new
     Smb4KCore::xxx()->currentState() functions to read the current state of
@@ -277,6 +279,7 @@ Smb4K SVN_HEAD (????-??-??):
   + Added initialization of the core classes to the constructor.
 - Revised bookmark editor:
   + The login name is shown and can be edited.
+  + The workgroup entry can be edited.
 - Revised preview dialog:
   + Added abort button.
   + Connected to the aboutToStart() and finished() signals of the previewer to
