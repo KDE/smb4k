@@ -967,6 +967,7 @@ void Smb4KMainWindow::slotScannerFinished( Smb4KBasicNetworkItem */*item*/, int 
   if ( !Smb4KCore::self()->isRunning() )
   {
     m_progress_bar->setVisible( false );
+    m_progress_bar->reset();
     statusBar()->showMessage( i18n( "Done." ), 2000 );
   }
   else
@@ -1151,6 +1152,7 @@ void Smb4KMainWindow::slotMounterFinished( Smb4KShare *share, int process )
   if ( !Smb4KCore::self()->isRunning()  )
   {
     m_progress_bar->setVisible( false );
+    m_progress_bar->reset();
     statusBar()->showMessage( i18n( "Done." ), 2000 );
   }
   else
@@ -1182,6 +1184,7 @@ void Smb4KMainWindow::slotSearchFinished( const QString &/*string*/ )
   if ( !Smb4KCore::self()->isRunning()  )
   {
     m_progress_bar->setVisible( false );
+    m_progress_bar->reset();
     statusBar()->showMessage( i18n( "Done." ), 2000 );
   }
   else
@@ -1211,6 +1214,7 @@ void Smb4KMainWindow::slotPrintingFinished( Smb4KPrintInfo */*info*/ )
   if ( !Smb4KCore::self()->isRunning()  )
   {
     m_progress_bar->setVisible( false );
+    m_progress_bar->reset();
     statusBar()->showMessage( i18n( "Done." ), 2000 );
   }
   else
@@ -1242,6 +1246,7 @@ void Smb4KMainWindow::slotSynchronizerFinished( Smb4KSynchronizationInfo */*info
   if ( !Smb4KCore::self()->isRunning()  )
   {
     m_progress_bar->setVisible( false );
+    m_progress_bar->reset();
     statusBar()->showMessage( i18n( "Done." ), 2000 );
   }
   else
@@ -1273,6 +1278,7 @@ void Smb4KMainWindow::slotPreviewerFinished( Smb4KPreviewItem */*item*/ )
   if ( !Smb4KCore::self()->isRunning()  )
   {
     m_progress_bar->setVisible( false );
+    m_progress_bar->reset();
     statusBar()->showMessage( i18n( "Done." ), 2000 );
   }
   else
