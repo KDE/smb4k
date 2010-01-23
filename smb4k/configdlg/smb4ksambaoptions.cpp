@@ -698,12 +698,18 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
   KAction *remove_action    = new KAction( KIcon( "edit-delete" ), i18n( "Remove" ),
                                m_collection );
   remove_action->setEnabled( false );
+  
+  KAction *clear_action     = new KAction( KIcon( "edit-clear-list" ), i18n( "Clear List" ),
+                              m_collection );
+  clear_action->setEnabled( false );
 
   m_collection->addAction( "edit_action", edit_action );
   m_collection->addAction( "remove_action", remove_action );
+  m_collection->addAction( "clear_action", clear_action );
 
   m_menu->addAction( edit_action );
   m_menu->addAction( remove_action );
+  m_menu->addAction( clear_action );
 
   custom_layout->addWidget( m_custom_options, 0, 0, 0 );
 
@@ -726,9 +732,15 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
 
   connect( m_custom_options, SIGNAL( customContextMenuRequested( const QPoint & ) ),
            this,             SLOT( slotCustomContextMenuRequested( const QPoint & ) ) );
-
-  connect( m_menu->menu(),   SIGNAL( triggered( QAction * ) ),
-           this,             SLOT( slotMenuActionTriggered( QAction * ) ) );
+           
+  connect( edit_action,      SIGNAL( triggered( bool ) ),
+           this,             SLOT( slotEditActionTriggered( bool ) ) );
+           
+  connect( remove_action,    SIGNAL( triggered( bool ) ),
+           this,             SLOT( slotRemoveActionTriggered( bool ) ) );
+           
+  connect( clear_action,     SIGNAL( triggered( bool ) ),
+           this,             SLOT( slotClearActionTriggered( bool ) ) );
 }
 
 
@@ -1534,8 +1546,7 @@ void Smb4KSambaOptions::slotCustomContextMenuRequested( const QPoint &pos )
   QTreeWidgetItem *item = m_custom_options->itemAt( pos );
   int column            = m_custom_options->columnAt( pos.x() );
 
-  if ( m_edit_item &&
-       (m_edit_item != item || m_edit_column != column) )
+  if ( m_edit_item && (m_edit_item != item || m_edit_column != column) )
   {
     // When the user clicks somewhere in the viewport,
     // in 99.9% that means he/she wants to get rid of
@@ -1624,49 +1635,58 @@ void Smb4KSambaOptions::slotCustomContextMenuRequested( const QPoint &pos )
   {
     m_collection->action( "edit_action" )->setEnabled( false );
   }
+  
+  m_collection->action( "clear_action" )->setEnabled( (m_custom_options->topLevelItemCount() != 0) );
 
   m_menu->menu()->popup( m_custom_options->viewport()->mapToGlobal( pos ) );
 }
 
 
-void Smb4KSambaOptions::slotMenuActionTriggered( QAction *action )
+void Smb4KSambaOptions::slotEditActionTriggered( bool /*checked*/ )
 {
-  if ( QString::compare( action->objectName(), "edit_action" ) == 0 )
+  slotEditCustomItem( m_edit_item, m_edit_column );
+}
+
+
+void Smb4KSambaOptions::slotRemoveActionTriggered( bool /*checked*/ )
+{
+  // Clear the edit item.
+  m_edit_item = NULL;
+
+  // Remove the selected items.
+  if ( !m_custom_options->selectedItems().isEmpty() )
   {
-    slotEditCustomItem( m_edit_item, m_edit_column );
-  }
-  else if ( QString::compare( action->objectName(), "remove_action" ) == 0 )
-  {
-    // Clear the edit item.
-    m_edit_item = NULL;
-
-    // Remove the selected items.
-    if ( !m_custom_options->selectedItems().isEmpty() )
+    while ( !m_custom_options->selectedItems().isEmpty() )
     {
-      while ( !m_custom_options->selectedItems().isEmpty() )
-      {
-        delete m_custom_options->selectedItems().takeFirst();
-      }
-
-      emit customSettingsModified();
-    }
-    else
-    {
-      // Do nothing
+      delete m_custom_options->selectedItems().takeFirst();
     }
 
-    // Adjust the rows and columns.
-    for ( int i = 0; i < m_custom_options->columnCount(); ++i )
-    {
-      m_custom_options->resizeColumnToContents( i );
-    }
-
-    m_custom_options->sortItems( ItemName, Qt::AscendingOrder );
+    emit customSettingsModified();
   }
   else
   {
     // Do nothing
   }
+
+  // Adjust the rows and columns.
+  for ( int i = 0; i < m_custom_options->columnCount(); ++i )
+  {
+    m_custom_options->resizeColumnToContents( i );
+  }
+
+  m_custom_options->sortItems( ItemName, Qt::AscendingOrder );
+}
+
+
+void Smb4KSambaOptions::slotClearActionTriggered( bool /*checked*/ )
+{
+  // Clear the edit item.
+  m_edit_item = NULL;
+    
+  // Clear the list of custom options and emit the
+  // customSettingsModified() signal.
+  m_custom_options->clear();
+  emit customSettingsModified();
 }
 
 

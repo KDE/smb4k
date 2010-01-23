@@ -195,12 +195,28 @@ class Smb4KSambaOptions : public KTabWidget
     void slotCustomContextMenuRequested( const QPoint &pos );
 
     /**
-     * This slot is connected to the context menu and is called when an
-     * action is activated.
-     *
-     * @param action          The action that was triggered.
+     * This slot is connected to the "Edit" action found in the context menu of
+     * the custom options tab. It is called when this action is triggered.
+     * 
+     * @param checked         TRUE if the action is checked and FALSE otherwise.
      */
-    void slotMenuActionTriggered( QAction * );
+    void slotEditActionTriggered( bool );
+    
+    /**
+     * This slot is connected to the "Remove" action found in the context menu
+     * of the custom options tab. It is called when this action is triggered.
+     *
+     * @param checked         TRUE if the action is checked and FALSE otherwise.
+     */
+    void slotRemoveActionTriggered( bool );
+    
+    /**
+     * This slot is connected to the "Clear List" action found in the context
+     * menu of the custom options tab. It is called when this action is triggered.
+     * 
+     * @param checked         TRUE if the action is checked and FALSE otherwise.
+     */
+    void slotClearActionTriggered( bool );
 
   private:
     /**
