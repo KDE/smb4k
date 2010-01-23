@@ -3,7 +3,7 @@
     custom Samba options for hosts or shares.
                              -------------------
     begin                : So Jun 25 2006
-    copyright            : (C) 2006-2008 by Alexander Reinholdt
+    copyright            : (C) 2006-2009 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -140,6 +140,24 @@ class KDE_EXPORT Smb4KCustomOptionsDialog : public KDialog
     void slotGIDChanged( const QString &gid );
 
   private:
+    /**
+     * Checks if all entries in the dialog correspond to the default 
+     * settings or not. If one setting deviates from the default, this 
+     * function returns FALSE.
+     * 
+     * @returns TRUE if all settings in the dialog correspond to the 
+     * default settings.
+     */
+    bool hasDefaultSettings();
+    
+    /**
+     * Checks if at least one of the entries in the dialog deviates from
+     * the initial setting. In such a case, this function returns FALSE.
+     *
+     * @returns TRUE if all entries coincide with the initial settings.
+     */
+    bool hasInitialSettings();
+    
     /**
      * Enumeration
      */
