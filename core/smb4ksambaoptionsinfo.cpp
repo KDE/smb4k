@@ -40,12 +40,12 @@
 
 Smb4KSambaOptionsInfo::Smb4KSambaOptionsInfo( Smb4KHost *host )
 : m_url( QUrl() ), m_type( Host ), m_remount( UndefinedRemount ),
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
   m_write_access( UndefinedWriteAccess ),
 #endif
   m_protocol( UndefinedProtocol ), m_kerberos( UndefinedKerberos ),
-  m_uid( getuid() ), m_uid_set( false ), m_gid( getgid() ), m_gid_set( false ),
-  m_workgroup( host->workgroupName() ), m_ip( host->ip() ), m_profile( QString() )
+  m_uid( getuid() ), m_gid( getgid() ), m_workgroup( host->workgroupName() ), 
+  m_ip( host->ip() ), m_profile( QString() )
 {
   setUNC( host->unc( QUrl::None ) );
 }
@@ -54,12 +54,12 @@ Smb4KSambaOptionsInfo::Smb4KSambaOptionsInfo( Smb4KHost *host )
 
 Smb4KSambaOptionsInfo::Smb4KSambaOptionsInfo( Smb4KShare *share )
 : m_url( QUrl() ), m_type( Share ), m_remount( UndefinedRemount ),
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
   m_write_access( UndefinedWriteAccess ),
 #endif
   m_protocol( UndefinedProtocol ), m_kerberos( UndefinedKerberos ),
-  m_uid( share->uid() ), m_uid_set( true ), m_gid( share->gid() ), m_gid_set( true ),
-  m_workgroup( share->workgroupName() ), m_ip( share->hostIP() ), m_profile( QString() )
+  m_uid( share->uid() ), m_gid( share->gid() ), m_workgroup( share->workgroupName() ), 
+  m_ip( share->hostIP() ), m_profile( QString() )
 {
   setUNC( share->unc( QUrl::None ) );
 }
@@ -68,12 +68,12 @@ Smb4KSambaOptionsInfo::Smb4KSambaOptionsInfo( Smb4KShare *share )
 
 Smb4KSambaOptionsInfo::Smb4KSambaOptionsInfo( const Smb4KSambaOptionsInfo &info )
 : m_url( QUrl() ), m_type( info.type() ), m_remount( info.remount() ),
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
   m_write_access( info.writeAccess() ),
 #endif
   m_protocol( info.protocol() ), m_kerberos( info.useKerberos() ),
-  m_uid( info.uid() ), m_uid_set( true ), m_gid( info.gid() ), m_gid_set( true ),
-  m_workgroup( info.workgroupName() ), m_ip( info.ip() ), m_profile( info.profile() )
+  m_uid( info.uid() ), m_gid( info.gid() ), m_workgroup( info.workgroupName() ), 
+  m_ip( info.ip() ), m_profile( info.profile() )
 {
   setUNC( info.unc( QUrl::None ) );
 }
@@ -81,12 +81,12 @@ Smb4KSambaOptionsInfo::Smb4KSambaOptionsInfo( const Smb4KSambaOptionsInfo &info 
 
 Smb4KSambaOptionsInfo::Smb4KSambaOptionsInfo()
 : m_url( QUrl() ), m_type( Unknown ), m_remount( UndefinedRemount ),
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSDs
   m_write_access( UndefinedWriteAccess ),
 #endif
   m_protocol( UndefinedProtocol ), m_kerberos( UndefinedKerberos ),
-  m_uid( getuid() ), m_uid_set( false ), m_gid( getgid() ), m_gid_set( false ),
-  m_workgroup( QString() ), m_ip( QString() ), m_profile( QString() )
+  m_uid( getuid() ), m_gid( getgid() ), m_workgroup( QString() ), 
+  m_ip( QString() ), m_profile( QString() )
 {
 }
 
@@ -120,26 +120,24 @@ QString Smb4KSambaOptionsInfo::shareName() const
 void Smb4KSambaOptionsInfo::setUNC( const QString &unc )
 {
   // Check that a valid UNC was passed to this function.
-  if ( !unc.startsWith( "//" ) && !unc.startsWith( "smb:" ) &&
-       !(unc.count( "/" ) == 2 || unc.count( "/" ) == 3) )
+  if ( !unc.startsWith( "//" ) && !unc.startsWith( "smb:" ) && !(unc.count( "/" ) == 2 || unc.count( "/" ) == 3) )
   {
     // The UNC is malformatted.
     return;
   }
   else
   {
-    // Do nothing
+    // Set the type.
+    if ( unc.count( "/" ) == 3 )
+    {
+      m_type = Share;
+    }
+    else
+    {
+      m_type = Host;
+    }
   }
-
-  // Set the type.
-  if ( unc.count( "/" ) == 3 )
-  {
-    m_type = Share;
-  }
-  else
-  {
-    m_type = Host;
-  }
+  
 
   m_url.setUrl( unc );
 
@@ -200,58 +198,18 @@ void Smb4KSambaOptionsInfo::setUseKerberos( Smb4KSambaOptionsInfo::Kerberos kerb
 }
 
 
-void Smb4KSambaOptionsInfo::setUID( uid_t uid )
+void Smb4KSambaOptionsInfo::setUID( K_UID uid )
 {
   m_uid = uid;
-
-  switch ( type() )
-  {
-    case Host:
-    {
-      m_uid_set = false;
-
-      break;
-    }
-    case Share:
-    {
-      m_uid_set = true;
-
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
 }
 
 
-void Smb4KSambaOptionsInfo::setGID( gid_t gid )
+void Smb4KSambaOptionsInfo::setGID( K_GID gid )
 {
   m_gid = gid;
-
-  switch ( type() )
-  {
-    case Host:
-    {
-      m_gid_set = false;
-
-      break;
-    }
-    case Share:
-    {
-      m_gid_set = true;
-
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
 }
 
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
 
 void Smb4KSambaOptionsInfo::setWriteAccess( Smb4KSambaOptionsInfo::WriteAccess write_access )
 {
@@ -259,12 +217,6 @@ void Smb4KSambaOptionsInfo::setWriteAccess( Smb4KSambaOptionsInfo::WriteAccess w
 }
 
 #endif
-
-
-void Smb4KSambaOptionsInfo::setHasCustomOptions( bool has_options )
-{
-  m_has_custom_options = has_options;
-}
 
 
 void Smb4KSambaOptionsInfo::setWorkgroupName( const QString &workgroup )
@@ -297,7 +249,7 @@ void Smb4KSambaOptionsInfo::update( Smb4KSambaOptionsInfo *info )
   m_url.setPort( info->port() );
 
   m_remount      = info->remount();
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
   m_write_access = info->writeAccess();
 #endif
   m_protocol     = info->protocol();
@@ -316,19 +268,16 @@ QMap<QString,QString> Smb4KSambaOptionsInfo::entries()
     case DoRemount:
     {
       entries.insert( "remount", "true" );
-
       break;
     }
     case NoRemount:
     {
       entries.insert( "remount", "false" );
-
       break;
     }
     case UndefinedRemount:
     {
       entries.insert( "remount", QString() );
-
       break;
     }
     default:
@@ -346,25 +295,21 @@ QMap<QString,QString> Smb4KSambaOptionsInfo::entries()
     case Automatic:
     {
       entries.insert( "protocol", "auto" );
-
       break;
     }
     case RPC:
     {
       entries.insert( "protocol", "rpc" );
-
       break;
     }
     case RAP:
     {
       entries.insert( "protocol", "rap" );
-
       break;
     }
     case ADS:
     {
       entries.insert( "protocol", "ads" );
-
       break;
     }
     case UndefinedProtocol:
@@ -379,25 +324,22 @@ QMap<QString,QString> Smb4KSambaOptionsInfo::entries()
     }
   }
 
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
   switch ( m_write_access )
   {
     case ReadWrite:
     {
       entries.insert( "write_access", "true" );
-
       break;
     }
     case ReadOnly:
     {
       entries.insert( "write_access", "false" );
-
       break;
     }
     case UndefinedWriteAccess:
     {
       entries.insert( "write_access", QString() );
-
       break;
     }
     default:
@@ -412,19 +354,16 @@ QMap<QString,QString> Smb4KSambaOptionsInfo::entries()
     case UseKerberos:
     {
       entries.insert( "kerberos", "true" );
-
       break;
     }
     case NoKerberos:
     {
       entries.insert( "kerberos", "false" );
-
       break;
     }
     case UndefinedKerberos:
     {
       entries.insert( "kerberos", QString() );
-
       break;
     }
     default:
@@ -432,36 +371,24 @@ QMap<QString,QString> Smb4KSambaOptionsInfo::entries()
       break;
     }
   }
-
-  if ( type() == Host )
+  
+  switch ( m_type )
   {
-    entries.insert( "uid", QString() );
-  }
-  else
-  {
-    if ( m_uid_set )
-    {
-      entries.insert( "uid", QString( "%1" ).arg( m_uid ) );
-    }
-    else
+    case Host:
     {
       entries.insert( "uid", QString() );
-    }
-  }
-
-  if ( type() == Host )
-  {
-    entries.insert( "gid", QString() );
-  }
-  else
-  {
-    if ( m_gid_set )
-    {
-      entries.insert( "gid", QString( "%1" ).arg( m_gid ) );
-    }
-    else
-    {
       entries.insert( "gid", QString() );
+      break;
+    }
+    case Share:
+    {
+      entries.insert( "uid", QString( "%1" ).arg( m_uid ) );
+      entries.insert( "gid", QString( "%1" ).arg( m_gid ) );
+      break;
+    }
+    default:
+    {
+      break;
     }
   }
 

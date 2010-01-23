@@ -3,7 +3,7 @@
     various information of extra options for a specific host.
                              -------------------
     begin                : Mi Okt 18 2006
-    copyright            : (C) 2006-2008 by Alexander Reinholdt
+    copyright            : (C) 2006-2009 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -38,6 +38,7 @@
 
 // KDE includes
 #include <kdemacros.h>
+#include <kuser.h>
 
 // forward declarations
 class Smb4KHost;
@@ -244,7 +245,7 @@ class KDE_EXPORT Smb4KSambaOptionsInfo
      *
      * @param uid               The UID
      */
-    void setUID( uid_t uid );
+    void setUID( K_UID uid );
 
     /**
      * This functions returns the UID defined for this item.
@@ -254,14 +255,7 @@ class KDE_EXPORT Smb4KSambaOptionsInfo
      *
      * @returns                 the UID.
      */
-    uid_t uid() const { return m_uid; }
-
-    /**
-     * This function returns TRUE if the UID was set.
-     *
-     * @returns TRUE if the UID was set.
-     */
-    bool uidIsSet() const { return m_uid_set; }
+    K_UID uid() const { return m_uid; }
 
     /**
      * With this function you can set the GID you want to use for this item.
@@ -269,7 +263,7 @@ class KDE_EXPORT Smb4KSambaOptionsInfo
      *
      * @param gid               The GID
      */
-    void setGID( gid_t gid );
+    void setGID( K_GID gid );
 
     /**
      * This functions returns the GID defined for this item.
@@ -279,14 +273,7 @@ class KDE_EXPORT Smb4KSambaOptionsInfo
      *
      * @returns                 the GID.
      */
-    gid_t gid() const { return m_gid; }
-
-    /**
-     * This function returns TRUE if the GID was set.
-     *
-     * @returns TRUE if the GID was set.
-     */
-    bool gidIsSet() const { return m_uid_set; }
+    K_GID gid() const { return m_gid; }
 
     /**
      * This function returns the type of the network item for which the options
@@ -296,7 +283,7 @@ class KDE_EXPORT Smb4KSambaOptionsInfo
      */
     Type type() const { return m_type; }
 
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
     /**
      * Set if the share is to be mounted read-write or read-only.
      *
@@ -316,36 +303,6 @@ class KDE_EXPORT Smb4KSambaOptionsInfo
      */
     Smb4KSambaOptionsInfo::WriteAccess writeAccess() const { return m_write_access; }
 #endif
-
-    /**
-     * Set if this item has custom options. Please note that @p has_options
-     * should even be set to FALSE if you have a share that is scheduled for
-     * remount, but all other options have default values.
-     *
-     * @param has_options       Should be TRUE if this option has custom
-     *                          options and otherwise FALSE.
-     */
-    void setHasCustomOptions( bool has_options );
-
-    /**
-     * This function returns TRUE if the item has custom options. Please note
-     * that it will even return FALSE if the item represents a share that is scheduled
-     * for remount, but all other options have default values. So, to check if this
-     * item has no custom options and is also not scheduled for remount, you need
-     * to do a check like this:
-     *
-     * @code
-     *  ...
-     *  if ( item->remount() && item->hasCustomOptions() )
-     *  {
-     *    // do something
-     *  }
-     *  ...
-     * @endcode
-     *
-     * @returns                 TRUE if the item has custom options and FALSE otherwise.
-     */
-    bool hasCustomOptions() const { return m_has_custom_options; }
 
     /**
      * Set the workgroup for this item.
@@ -390,10 +347,11 @@ class KDE_EXPORT Smb4KSambaOptionsInfo
      * This function returns all custom options in a sorted map. The UNC,
      * workgroup and IP address must be retrieved separately if needed.
      *
-     * Note that all entries that are not defined for a certain item have
-     * empty values.
+     * Note that all entries that are set and valid are returned here. This
+     * also comprises default values. If you need to check if a certain value
+     * is a custom option or not, you need to implement this check.
      *
-     * @returns all custom entries.
+     * @returns all valid entries.
      */
     QMap<QString,QString> entries();
 
@@ -429,7 +387,7 @@ class KDE_EXPORT Smb4KSambaOptionsInfo
      */
     Remount m_remount;
 
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSDs
     /**
      * Mount read-write or read-only?
      */
@@ -449,22 +407,12 @@ class KDE_EXPORT Smb4KSambaOptionsInfo
     /**
      * The UID
      */
-    uid_t m_uid;
-
-    /**
-     * Is UID set?
-     */
-    bool m_uid_set;
+    K_UID m_uid;
 
     /**
      * The GID
      */
-    gid_t m_gid;
-
-    /**
-     * Is GID set?
-     */
-    bool m_gid_set;
+    K_GID m_gid;
 
     /**
      * Carries this item custom options?
