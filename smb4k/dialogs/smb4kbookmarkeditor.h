@@ -2,7 +2,7 @@
     smb4kbookmarkeditor  -  The bookmark editor of Smb4K
                              -------------------
     begin                : Di Okt 5 2004
-    copyright            : (C) 2004-2007 by Alexander Reinholdt
+    copyright            : (C) 2004-2009 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -79,13 +79,22 @@ class KDE_EXPORT Smb4KBookmarkEditor : public KDialog
     void slotEditActionTriggered( bool checked );
 
     /**
-     * This slot is activated whenever the "Delete" action is triggered.
+     * This slot is activated whenever the "Remove" action is triggered.
      * It removes all selected items from the bookmark editor.
      *
      * @param checked Is TRUE if the action is checkable and checked
      *                and otherwise FALSE.
      */
-    void slotDeleteActionTriggered( bool checked );
+    void slotRemoveActionTriggered( bool checked );
+    
+    /**
+     * This slot is activated whenever the "Clear List" action is triggered.
+     * It removes all items from the bookmark editor.
+     * 
+     * @param checked Is TRUE if the action is checkable and checked
+     *                and otherwise FALSE.
+     */
+    void slotClearActionTriggered( bool );
 
     /**
      * This slot initiates the editing of an item, if the user double

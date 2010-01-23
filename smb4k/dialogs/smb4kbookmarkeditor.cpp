@@ -2,7 +2,7 @@
     smb4kbookmarkeditor  -  The bookmark editor of Smb4K
                              -------------------
     begin                : Di Okt 5 2004
-    copyright            : (C) 2004-2007 by Alexander Reinholdt
+    copyright            : (C) 2004-2009 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -89,16 +89,25 @@ Smb4KBookmarkEditor::Smb4KBookmarkEditor( QWidget *parent )
   // Edit action
   KAction *edit_action       = new KAction( KIcon( "edit-rename" ), i18n( "Edit" ),
                                m_collection );
+  edit_action->setEnabled( false );
   connect( edit_action, SIGNAL( triggered( bool ) ), this, SLOT( slotEditActionTriggered( bool ) ) );
 
   // Delete action
-  KAction *delete_action     = new KAction( KIcon( "edit-delete" ), i18n( "Delete" ),
+  KAction *remove_action     = new KAction( KIcon( "edit-delete" ), i18n( "Remove" ),
                                m_collection );
-  connect( delete_action, SIGNAL( triggered( bool ) ), this, SLOT( slotDeleteActionTriggered( bool ) ) );
+  remove_action->setEnabled( false );
+  connect( remove_action, SIGNAL( triggered( bool ) ), this, SLOT( slotRemoveActionTriggered( bool ) ) );
+  
+  // Clear action
+  KAction *clear_action      = new KAction( KIcon( "edit-clear-list" ), i18n( "Clear List" ),
+                               m_collection );
+  clear_action->setEnabled( false );
+  connect( clear_action, SIGNAL( triggered( bool ) ), this, SLOT( slotClearActionTriggered( bool ) ) );
 
   // Add action to collection
   m_collection->addAction( "edit_action", edit_action );
-  m_collection->addAction( "delete_action", delete_action );
+  m_collection->addAction( "remove_action", remove_action );
+  m_collection->addAction( "clear_action", clear_action );
 
   slotLoadBookmarks();
 
@@ -151,14 +160,14 @@ void Smb4KBookmarkEditor::slotContextMenuRequested( const QPoint &pos )
     {
       m_collection->action( "edit_action" )->setEnabled( false );
     }
-
-    m_collection->action( "delete_action" )->setEnabled( true );
   }
   else
   {
     m_collection->action( "edit_action" )->setEnabled( false );
-    m_collection->action( "delete_action" )->setEnabled( false );
   }
+  
+  m_collection->action( "remove_action" )->setEnabled( !m_widget->selectedItems().isEmpty() );
+  m_collection->action( "clear_action" )->setEnabled( (m_widget->topLevelItemCount() != 0) );
 
   KActionMenu *menu = findChild<KActionMenu *>( "Smb4KBookmarkEditorMenu" );
 
@@ -167,7 +176,8 @@ void Smb4KBookmarkEditor::slotContextMenuRequested( const QPoint &pos )
     menu = new KActionMenu( this );
     menu->setObjectName( "Smb4KBookmarkEditorMenu" );
     menu->addAction( m_collection->action( "edit_action" ) );
-    menu->addAction( m_collection->action( "delete_action" ) );
+    menu->addAction( m_collection->action( "remove_action" ) );
+    menu->addAction( m_collection->action( "clear_action" ) );
   }
   else
   {
@@ -194,7 +204,7 @@ void Smb4KBookmarkEditor::slotEditActionTriggered( bool /* checked */ )
 }
 
 
-void Smb4KBookmarkEditor::slotDeleteActionTriggered( bool /* checked */ )
+void Smb4KBookmarkEditor::slotRemoveActionTriggered( bool /* checked */ )
 {
   // Remove the selected items.
   while ( !m_widget->selectedItems().isEmpty() )
@@ -202,6 +212,19 @@ void Smb4KBookmarkEditor::slotDeleteActionTriggered( bool /* checked */ )
     delete m_widget->selectedItems().takeFirst();
   }
 
+  // Adjust the columns.
+  for ( int col = 0; col < m_widget->columnCount(); col++ )
+  {
+    m_widget->resizeColumnToContents( col );
+  }
+}
+
+
+void Smb4KBookmarkEditor::slotClearActionTriggered( bool /* checked */ )
+{
+  // Clear the list of bookmarks.
+  m_widget->clear();
+  
   // Adjust the columns.
   for ( int col = 0; col < m_widget->columnCount(); col++ )
   {
