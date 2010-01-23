@@ -87,6 +87,7 @@ Smb4K SVN_HEAD (????-??-??):
   + Before the mounted() and unmounted() signals are emitted, we check /etc/mtab
     if the (un)mounting was successful.
 - Revised Smb4KSambaOptionsHandler class:
+  + Introduced public hasCustomOptions() function.
   + Replaced remount() function with addRemount() and removeRemount() functions.
   + Replaced findItem( const QString &, bool ) with findItem( Smb4KShare *, bool )
     and findItem( Smb4KHost *, bool ).
@@ -95,6 +96,9 @@ Smb4K SVN_HEAD (????-??-??):
   + Removed smbclientOptions() function.
   + Removed nmblookupOptions() function.
   + Removed netOptions() function.
+  + Removed code that handled obsolete formats and files.
+- Revised Smb4KSambaOptionsInfo class:
+  + Removed uidIsSet() and gidIsSet() functions.
 - Revised Smb4KSynchronizationInfo class:
   + Added functions to set and return the source directory.
   + Added functions to set and return the destination directory.
@@ -280,11 +284,14 @@ Smb4K SVN_HEAD (????-??-??):
 - Revised bookmark editor:
   + The login name is shown and can be edited.
   + The workgroup entry can be edited.
+  + Renamed "Delete" to "Remove".
+  + Added "Clear List" action.
 - Revised preview dialog:
   + Added abort button.
   + Connected to the aboutToStart() and finished() signals of the previewer to
     enabled/disable the reload and abort button.
   + Removed old cruft.
+- Refactored custom options dialog.
 - Revised utility programs:
   + Did some housekeeping.
   + smb4k_umount now only supports the CIFS file system under Linux. So, the
