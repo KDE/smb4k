@@ -192,6 +192,17 @@ class KDE_EXPORT Smb4KSambaOptionsHandler : public QObject
      * @param list              The list that is used for the update.
      */
     void updateCustomOptions( const QList<Smb4KSambaOptionsInfo *> &list );
+    
+    /**
+     * Check whether the item has entries that deviate from the global settings and return
+     * TRUE if this is the case. Please note that this function ignores the remount flag.
+     *
+     * @param info              The options info item that is to be checked.
+     *
+     * @returns TRUE if the item contains entries that deviate from the global settings and
+     * FALSE otherwise.
+     */
+    bool hasCustomOptions( Smb4KSambaOptionsInfo *info );
 
   private:
     /**
@@ -236,17 +247,6 @@ class KDE_EXPORT Smb4KSambaOptionsHandler : public QObject
      * The WINS server
      */
     QString m_wins_server;
-
-    /**
-     * Check whether the item has entries that deviate from the global settings and return
-     * TRUE if this is the case. Please note that this function ignores the remount flag.
-     *
-     * @param item              The item that is to be checked.
-     *
-     * @returns TRUE if the item contains entries that deviate from the global settings and
-     * FALSE otherwise.
-     */
-    void has_custom_options( Smb4KSambaOptionsInfo *item );
 };
 
 

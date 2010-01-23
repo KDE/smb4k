@@ -126,205 +126,6 @@ QList<Smb4KSambaOptionsInfo *> Smb4KSambaOptionsHandler::sharesToRemount()
 
 void Smb4KSambaOptionsHandler::readCustomOptions()
 {
-  // Check if an old custom_options file is present and load the options
-  // from there. Remove the file afterwards.
-  QFile file( KGlobal::dirs()->locateLocal( "data", "smb4k/custom_options", KGlobal::mainComponent() ) );
-
-  if ( file.exists() )
-  {
-    QStringList contents;
-
-    if ( file.open( QIODevice::ReadOnly | QIODevice::Text ) )
-    {
-      QTextStream ts( &file );
-      // Note: With Qt 4.3 this seems to be obsolete, we'll keep
-      // it for now.
-      ts.setCodec( QTextCodec::codecForLocale() );
-
-      while ( !ts.atEnd() )
-      {
-        contents.append( ts.readLine( 0 ) );
-      }
-
-      file.close();
-    }
-    else
-    {
-      if ( file.exists() )
-      {
-        Smb4KCoreMessage::error( ERROR_OPENING_FILE, file.fileName() );
-      }
-
-      return;
-    }
-
-    if ( !contents.isEmpty() )
-    {
-      for ( int i = 0; i < contents.size(); ++i )
-      {
-        if ( contents.at( i ).startsWith( "[" ) )
-        {
-          Smb4KSambaOptionsInfo *info = new Smb4KSambaOptionsInfo();
-          info->setUNC( contents.at( i ).section( "[", 1, -1 ).section( "]", -2, 0 ) );
-
-          for ( int j = ++i; j < contents.size(); ++j )
-          {
-            if ( contents.at( j ).startsWith( "workgroup=" ) )
-            {
-              info->setWorkgroupName( contents.at( j ).section( "=", 1, 1 ).trimmed() );
-
-              continue;
-            }
-            else if ( contents.at( j ).startsWith( "ip=" ) )
-            {
-              info->setIP( contents.at( j ).section( "=", 1, 1 ).trimmed() );
-
-              continue;
-            }
-            else if ( contents.at( j ).startsWith( "remount=" ) )
-            {
-              QString remount = contents.at( j ).section( "=", 1, 1 ).trimmed();
-
-              if ( QString::compare( remount, "true", Qt::CaseInsensitive ) == 0 )
-              {
-                info->setRemount( Smb4KSambaOptionsInfo::DoRemount );
-              }
-              else if ( QString::compare( remount, "true", Qt::CaseInsensitive ) == 0 )
-              {
-                info->setRemount( Smb4KSambaOptionsInfo::NoRemount );
-              }
-              else
-              {
-                info->setRemount( Smb4KSambaOptionsInfo::UndefinedRemount );
-              }
-
-              continue;
-            }
-            else if ( contents.at( j ).startsWith( "port=" ) )
-            {
-              int port = contents.at( j ).section( "=", 1, 1 ).trimmed().toInt();
-
-              info->setPort( port );
-
-              continue;
-            }
-#ifndef __FreeBSD__
-            else if ( contents.at( j ).startsWith( "write access=" ) )
-            {
-              QString write_access = contents.at( j ).section( "=", 1, 1 ).trimmed();
-
-              if ( QString::compare( write_access, "true", Qt::CaseInsensitive ) == 0 )
-              {
-                info->setWriteAccess( Smb4KSambaOptionsInfo::ReadWrite );
-              }
-              else if ( QString::compare( write_access, "false", Qt::CaseInsensitive ) == 0 )
-              {
-                info->setWriteAccess( Smb4KSambaOptionsInfo::ReadOnly );
-              }
-              else
-              {
-                info->setWriteAccess( Smb4KSambaOptionsInfo::UndefinedWriteAccess );
-              }
-
-              continue;
-            }
-#endif
-            else if ( contents.at( j ).startsWith( "protocol=" ) )
-            {
-              QString protocol = contents.at( j ).section( "=", 1, 1 ).trimmed();
-
-              if ( QString::compare( protocol, "auto" ) == 0 )
-              {
-                info->setProtocol( Smb4KSambaOptionsInfo::Automatic );
-              }
-              else if ( QString::compare( protocol, "rpc" ) == 0 )
-              {
-                info->setProtocol( Smb4KSambaOptionsInfo::RPC );
-              }
-              else if ( QString::compare( protocol, "rap" ) == 0 )
-              {
-                info->setProtocol( Smb4KSambaOptionsInfo::RAP );
-              }
-              else if ( QString::compare( protocol, "ads" ) == 0 )
-              {
-                info->setProtocol( Smb4KSambaOptionsInfo::ADS );
-              }
-              else
-              {
-                info->setProtocol( Smb4KSambaOptionsInfo::UndefinedProtocol );
-              }
-
-              continue;
-            }
-            else if ( contents.at( j ).startsWith( "kerberos=" ) )
-            {
-              QString use_kerberos = contents.at( j ).section( "=", 1, 1 ).trimmed();
-
-              if ( QString::compare( use_kerberos, "true", Qt::CaseInsensitive ) == 0 )
-              {
-                info->setUseKerberos( Smb4KSambaOptionsInfo::UseKerberos );
-              }
-              else if ( QString::compare( use_kerberos, "false", Qt::CaseInsensitive ) == 0 )
-              {
-                info->setUseKerberos( Smb4KSambaOptionsInfo::NoKerberos );
-              }
-              else
-              {
-                info->setUseKerberos( Smb4KSambaOptionsInfo::UndefinedKerberos );
-              }
-
-              continue;
-            }
-            else if ( contents.at( j ).startsWith( "uid=" ) )
-            {
-              info->setUID( (uid_t)contents.at( j ).section( "=", 1, 1 ).trimmed().toInt() );
-
-              continue;
-            }
-            else if ( contents.at( j ).startsWith( "gid=" ) )
-            {
-              info->setGID( (gid_t)contents.at( j ).section( "=", 1, 1 ).trimmed().toInt() );
-
-              continue;
-            }
-            else if ( contents.at( j ).isEmpty() || contents.at( j ).trimmed().startsWith( "[" ) )
-            {
-              i = j;
-
-              break;
-            }
-            else
-            {
-              continue;
-            }
-          }
-
-          has_custom_options( info );
-
-          m_list.append( info );
-        }
-        else
-        {
-          continue;
-        }
-      }
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    file.remove();
-
-    writeCustomOptions();
-
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-
   // Locate the XML file.
   QFile xmlFile( KGlobal::dirs()->locateLocal( "data", "smb4k/custom_options.xml", KGlobal::mainComponent() ) );
 
@@ -426,7 +227,7 @@ void Smb4KSambaOptionsHandler::readCustomOptions()
                           info->setProtocol( Smb4KSambaOptionsInfo::UndefinedProtocol );
                         }
                       }
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
                       else if ( xmlReader.name() == "write_access" )
                       {
                         QString write_access = xmlReader.readElementText();
@@ -554,9 +355,9 @@ void Smb4KSambaOptionsHandler::writeCustomOptions()
 
       for ( int i = 0; i < m_list.size(); ++i )
       {
-        has_custom_options( m_list[i] );
-
-        if ( m_list.at( i )->hasCustomOptions() ||
+        Q_ASSERT( m_list.at( i ) );
+        
+        if ( hasCustomOptions( m_list.at( i ) ) ||
              m_list.at( i )->remount() == Smb4KSambaOptionsInfo::DoRemount )
         {
           xmlWriter.writeStartElement( "options" );
@@ -661,7 +462,7 @@ void Smb4KSambaOptionsHandler::clearRemounts()
 
     if ( info->remount() == Smb4KSambaOptionsInfo::DoRemount )
     {
-      if ( info->hasCustomOptions() )
+      if ( hasCustomOptions( info ) )
       {
         info->setRemount( Smb4KSambaOptionsInfo::NoRemount );
       }
@@ -902,21 +703,6 @@ Smb4KSambaOptionsInfo *Smb4KSambaOptionsHandler::findItem( Smb4KShare *share, bo
       }
       continue;
     }
-    else if ( QString::compare( share->hostUNC().section( "/", 2, 2 ).trimmed(),
-              m_list.at( i )->unc(), Qt::CaseInsensitive ) == 0 )
-    {
-      // For conversion purposes only. Remove later.
-      if ( !info && !exactMatch )
-      {
-        info = m_list.at( i );
-        info->setUNC( "//"+info->unc() );
-      }
-      else
-      {
-        // Do nothing
-      }
-      continue;
-    }
     else
     {
       continue;
@@ -940,20 +726,6 @@ Smb4KSambaOptionsInfo *Smb4KSambaOptionsHandler::findItem( Smb4KHost *host, bool
       // Exact match.
       info = m_list.at( i );
       break;
-    }
-    else if ( QString::compare( host->hostName(), m_list.at( i )->unc(), Qt::CaseInsensitive ) == 0 )
-    {
-      // For conversion purposes only. Remove later.
-      if ( !info )
-      {
-        info = m_list.at( i );
-        info->setUNC( "//"+info->unc() );
-      }
-      else
-      {
-        // Do nothing
-      }
-      continue;
     }
     else if ( m_list.at( i )->unc().startsWith( host->unc(), Qt::CaseInsensitive ) )
     {
@@ -980,46 +752,33 @@ Smb4KSambaOptionsInfo *Smb4KSambaOptionsHandler::findItem( Smb4KHost *host, bool
 void Smb4KSambaOptionsHandler::addItem( Smb4KSambaOptionsInfo *info, bool s )
 {
   Q_ASSERT( info );
-
-  has_custom_options( info );
-
-  if ( info->hasCustomOptions() ||
-       info->remount() == Smb4KSambaOptionsInfo::DoRemount )
+  
+  if ( hasCustomOptions( info ) || info->remount() == Smb4KSambaOptionsInfo::DoRemount )
   {
-    Smb4KSambaOptionsInfo *item = NULL;
-
+    Smb4KSambaOptionsInfo *known_info = NULL;
+    
     switch ( info->type() )
     {
       case Smb4KSambaOptionsInfo::Host:
       {
         Smb4KHost host;
+        host.setUNC( info->unc( QUrl::None ) );
         host.setWorkgroupName( info->workgroupName() );
-
-        // For conversion purposes only. Remove later.
-        if ( !info->unc().startsWith( "//" ) )
-        {
-          host.setHostName( info->unc() );
-        }
-        else
-        {
-          host.setUNC( info->unc() );
-        }
-
         host.setIP( info->ip() );
-
-        item = findItem( &host );
-
+        
+        known_info = findItem( &host, true );
+        
         break;
       }
       case Smb4KSambaOptionsInfo::Share:
       {
         Smb4KShare share;
-        share.setUNC( info->unc() );
+        share.setUNC( info->unc( QUrl::None ) );
         share.setWorkgroupName( info->workgroupName() );
         share.setHostIP( info->ip() );
 
-        item = findItem( &share );
-
+        known_info = findItem( &share, true );
+        
         break;
       }
       default:
@@ -1027,21 +786,14 @@ void Smb4KSambaOptionsHandler::addItem( Smb4KSambaOptionsInfo *info, bool s )
         break;
       }
     }
-
-    if ( item && QString::compare( item->unc(), info->unc(), Qt::CaseInsensitive ) == 0 )
+    
+    if ( known_info )
     {
-      item->update( info );
-
-      delete info;
+      known_info->update( info );
     }
     else
     {
       m_list.append( info );
-    }
-
-    if ( s )
-    {
-      sync();
     }
   }
   else
@@ -1051,33 +803,23 @@ void Smb4KSambaOptionsHandler::addItem( Smb4KSambaOptionsInfo *info, bool s )
       case Smb4KSambaOptionsInfo::Host:
       {
         Smb4KHost host;
+        host.setUNC( info->unc( QUrl::None ) );
         host.setWorkgroupName( info->workgroupName() );
-
-        // For conversion purposes only. Remove later.
-        if ( !info->unc().startsWith( "//" ) )
-        {
-          host.setHostName( info->unc() );
-        }
-        else
-        {
-          host.setUNC( info->unc() );
-        }
-
         host.setIP( info->ip() );
-
+        
         removeItem( &host, false );
-
+        
         break;
       }
       case Smb4KSambaOptionsInfo::Share:
       {
         Smb4KShare share;
-        share.setUNC( info->unc() );
+        share.setUNC( info->unc( QUrl::None ) );
         share.setWorkgroupName( info->workgroupName() );
         share.setHostIP( info->ip() );
 
         removeItem( &share, false );
-
+        
         break;
       }
       default:
@@ -1085,6 +827,16 @@ void Smb4KSambaOptionsHandler::addItem( Smb4KSambaOptionsInfo *info, bool s )
         break;
       }
     }
+  }
+  
+  // Write the list to the hard drive.
+  if ( s )
+  {
+    sync();
+  }
+  else
+  {
+    // Do nothing
   }
 }
 
@@ -1229,189 +981,254 @@ void Smb4KSambaOptionsHandler::updateCustomOptions( const QList<Smb4KSambaOption
 }
 
 
-void Smb4KSambaOptionsHandler::has_custom_options( Smb4KSambaOptionsInfo *item )
+bool Smb4KSambaOptionsHandler::hasCustomOptions( Smb4KSambaOptionsInfo *info )
 {
-  if ( item )
+  Q_ASSERT( info );
+  
+  bool has_custom_options = false;
+  
+  switch ( info->type() )
   {
-    switch ( item->type() )
+    case Smb4KSambaOptionsInfo::Host:
     {
-      case Smb4KSambaOptionsInfo::Host:
+      // Protocol.
+      if ( info->protocol() != Smb4KSambaOptionsInfo::UndefinedProtocol )
       {
-        Smb4KSambaOptionsInfo::Protocol protocol_hint;
-
         switch ( Smb4KSettings::protocolHint() )
         {
           case Smb4KSettings::EnumProtocolHint::Automatic:
           {
-            protocol_hint = Smb4KSambaOptionsInfo::Automatic;
-
+            if ( info->protocol() != Smb4KSambaOptionsInfo::Automatic )
+            {
+              has_custom_options = true;
+            }
+            else
+            {
+              // Do nothing
+            }
+            
             break;
           }
           case Smb4KSettings::EnumProtocolHint::RPC:
           {
-            protocol_hint = Smb4KSambaOptionsInfo::RPC;
-
+            if ( info->protocol() != Smb4KSambaOptionsInfo::RPC )
+            {
+              has_custom_options = true;
+            }
+            else
+            {
+              // Do nothing
+            }
+            
             break;
           }
           case Smb4KSettings::EnumProtocolHint::RAP:
           {
-            protocol_hint = Smb4KSambaOptionsInfo::RAP;
-
+            if ( info->protocol() != Smb4KSambaOptionsInfo::RAP )
+            {
+              has_custom_options = true;
+            }
+            else
+            {
+              // Do nothing
+            }
+            
             break;
           }
           case Smb4KSettings::EnumProtocolHint::ADS:
           {
-            protocol_hint = Smb4KSambaOptionsInfo::ADS;
-
+            if ( info->protocol() != Smb4KSambaOptionsInfo::ADS )
+            {
+              has_custom_options = true;
+            }
+            else
+            {
+              // Do nothing
+            }
+            
             break;
           }
           default:
           {
-            protocol_hint = Smb4KSambaOptionsInfo::UndefinedProtocol;
-
             break;
           }
         }
-
-        Smb4KSambaOptionsInfo::Kerberos default_kerberos = Smb4KSambaOptionsInfo::UndefinedKerberos;
-
-        if ( Smb4KSettings::useKerberos() )
-        {
-          default_kerberos = Smb4KSambaOptionsInfo::UseKerberos;
-        }
-        else
-        {
-          default_kerberos = Smb4KSambaOptionsInfo::NoKerberos;
-        }
-
-        if ( item->protocol() != Smb4KSambaOptionsInfo::UndefinedProtocol &&
-             item->protocol() != protocol_hint )
-        {
-          item->setHasCustomOptions( true );
-
-          break;
-        }
-        else if ( item->port() != -1 &&
-                  item->port() != Smb4KSettings::remoteSMBPort() )
-        {
-          item->setHasCustomOptions( true );
-
-          break;
-        }
-        else if ( item->useKerberos() != Smb4KSambaOptionsInfo::UndefinedKerberos &&
-                  item->useKerberos() != default_kerberos )
-        {
-          item->setHasCustomOptions( true );
-
-          break;
-        }
-        else
-        {
-          break;
-        }
-
-        break;
       }
-      case Smb4KSambaOptionsInfo::Share:
+      else
       {
-#ifndef __FreeBSD__
-        Smb4KSambaOptionsInfo::WriteAccess write_access;
-
-        switch( Smb4KSettings::writeAccess() )
+        // Do nothing
+      }
+      
+      // Kerberos.
+      if ( info->useKerberos() != Smb4KSambaOptionsInfo::UndefinedKerberos )
+      {
+        if ( Smb4KSettings::useKerberos() && info->useKerberos() != Smb4KSambaOptionsInfo::UseKerberos )
+        {
+          has_custom_options = true;
+        }
+        else if ( !Smb4KSettings::useKerberos() && info->useKerberos() != Smb4KSambaOptionsInfo::NoKerberos )
+        {
+          has_custom_options = true;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      // Port.
+      if ( info->port() != -1 )
+      {
+        if ( info->port() != Smb4KSettings::remoteSMBPort() )
+        {
+          has_custom_options = true;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      break;
+    }
+    case Smb4KSambaOptionsInfo::Share:
+    {
+#ifndef Q_OS_FREEBSD
+      // Write access.
+      if ( info->writeAccess() != Smb4KSambaOptionsInfo::UndefinedWriteAccess )
+      {
+        switch ( Smb4KSettings::writeAccess() )
         {
           case Smb4KSettings::EnumWriteAccess::ReadWrite:
           {
-            write_access = Smb4KSambaOptionsInfo::ReadWrite;
-
+            if ( info->writeAccess() != Smb4KSambaOptionsInfo::ReadWrite )
+            {
+              has_custom_options = true;
+            }
+            else
+            {
+              // Do nothing
+            }
+            
             break;
           }
           case Smb4KSettings::EnumWriteAccess::ReadOnly:
           {
-            write_access = Smb4KSambaOptionsInfo::ReadOnly;
-
+            if ( info->writeAccess() != Smb4KSambaOptionsInfo::ReadOnly )
+            {
+              has_custom_options = true;
+            }
+            else
+            {
+              // Do nothing
+            }
+            
             break;
           }
           default:
           {
-            write_access = Smb4KSambaOptionsInfo::UndefinedWriteAccess;
-
             break;
           }
         }
-#endif
-
-        Smb4KSambaOptionsInfo::Kerberos default_kerberos = Smb4KSambaOptionsInfo::UndefinedKerberos;
-
-        if ( Smb4KSettings::useKerberos() )
-        {
-          default_kerberos = Smb4KSambaOptionsInfo::UseKerberos;
-        }
-        else
-        {
-          default_kerberos = Smb4KSambaOptionsInfo::NoKerberos;
-        }
-
-#ifndef __FreeBSD__
-
-        if ( item->port() != -1 &&
-             item->port() != Smb4KSettings::remoteFileSystemPort() )
-        {
-          item->setHasCustomOptions( true );
-
-          break;
-        }
-        else if ( item->writeAccess() != Smb4KSambaOptionsInfo::UndefinedWriteAccess &&
-                  item->writeAccess() != write_access )
-        {
-          item->setHasCustomOptions( true );
-
-          break;
-        }
-        else if ( item->useKerberos() != Smb4KSambaOptionsInfo::UndefinedKerberos &&
-                  item->useKerberos() != default_kerberos )
-        {
-          item->setHasCustomOptions( true );
-
-          break;
-        }
-#else
-        if ( item->port() != -1 &&
-             item->port() != Smb4KSettings::remoteSMBPort() )
-        {
-          item->setHasCustomOptions( true );
-
-          break;
-        }
-#endif
-        else if ( item->uidIsSet() && (item->uid() != (uid_t)Smb4KSettings::userID().toInt()) )
-        {
-          item->setHasCustomOptions( true );
-
-          break;
-        }
-        else if ( item->gidIsSet() && (item->gid() != (gid_t)Smb4KSettings::groupID().toInt()) )
-        {
-          item->setHasCustomOptions( true );
-
-          break;
-        }
-        else
-        {
-          break;
-        }
-
-        break;
       }
-      default:
+      else
       {
-        break;
+        // Do nothing
       }
+      
+      // Port.
+      if ( info->port() != -1 )
+      {
+        if ( info->port() != Smb4KSettings::remoteFileSystemPort() )
+        {
+          has_custom_options = true;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      // Kerberos.
+      if ( info->useKerberos() != Smb4KSambaOptionsInfo::UndefinedKerberos )
+      {
+        if ( Smb4KSettings::useKerberos() && info->useKerberos() != Smb4KSambaOptionsInfo::UseKerberos )
+        {
+          has_custom_options = true;
+        }
+        else if ( !Smb4KSettings::useKerberos() && info->useKerberos() != Smb4KSambaOptionsInfo::NoKerberos )
+        {
+          has_custom_options = true;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }      
+#else
+      // Port.
+      if ( info->port() != -1 )
+      {
+        if ( info->port() != Smb4KSettings::remoteSMBPort() )
+        {
+          has_custom_options = true;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+#endif
+      
+      // User ID.
+      if ( info->uid() != (K_UID)Smb4KSettings::userID().toInt() )
+      {
+        has_custom_options = true;
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      // Group ID.
+      if ( info->gid() != (K_GID)Smb4KSettings::groupID().toInt() )
+      {
+        has_custom_options = true;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      break;
+    }
+    default:
+    {
+      break;
     }
   }
-  else
-  {
-    // Nothing to do
-  }
+  
+  return has_custom_options;
 }
 
 
