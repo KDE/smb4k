@@ -1,5 +1,8 @@
 
-include_directories( ${KDE4_INCLUDES} ${KDE4_INCLUDE_DIR} ${QT_INCLUDES}  )
+include_directories(
+  ${KDE4_INCLUDES}
+  ${KDE4_INCLUDE_DIR}
+  ${QT_INCLUDES} )
 
 
 ########### next target ###############
@@ -41,17 +44,17 @@ set( smb4kcore_LIB_SRCS
   smb4kwalletmanager.cpp
   smb4kworkgroup.cpp )
 
-kde4_add_kcfg_files(smb4kcore_LIB_SRCS smb4ksettings.kcfgc )
+kde4_add_kcfg_files( smb4kcore_LIB_SRCS smb4ksettings.kcfgc )
 
-kde4_add_library(smb4kcore SHARED ${smb4kcore_LIB_SRCS})
+kde4_add_library( smb4kcore SHARED ${smb4kcore_LIB_SRCS} )
 
 target_link_libraries( smb4kcore
-   ${QT_QTCORE_LIBRARY}
-   ${QT_QTGUI_LIBRARY}
-   ${KDE4_KDECORE_LIBS}
-   ${KDE4_KDEUI_LIBS}
-   ${KDE4_KIO_LIBS}
-   ${KDE4_SOLID_LIBS} )
+  ${QT_QTCORE_LIBRARY}
+  ${QT_QTGUI_LIBRARY}
+  ${KDE4_KDECORE_LIBS}
+  ${KDE4_KDEUI_LIBS}
+  ${KDE4_KIO_LIBS}
+  ${KDE4_SOLID_LIBS} )
 
 set_target_properties( smb4kcore PROPERTIES VERSION 4.0.0 SOVERSION 4 )
 install( TARGETS smb4kcore DESTINATION ${LIB_INSTALL_DIR} )
