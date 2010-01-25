@@ -40,6 +40,7 @@
 #include <klocale.h>
 #ifdef __FreeBSD__
 #include <kprocess.h>
+#include <kstandarddirs.h>
 #endif
 
 // application specific includes
@@ -769,7 +770,7 @@ void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
     }
     default:
     {
-      password = QString::fromUft8( proc.readAllStandardOutput(), -1 ).trimmed();
+      password = QString::fromUtf8( proc.readAllStandardOutput(), -1 ).trimmed();
       break;
     }
   }
