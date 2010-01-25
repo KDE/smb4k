@@ -67,7 +67,7 @@ using namespace Smb4KGlobal;
 
 // Variables we need to determine if super user entries
 // have to be written to /etc/sudoers
-#ifdef __linux__
+#ifdef Q_OS_LINUX
 bool force_unmount = false;
 #endif
 bool always_use_su = false;
@@ -172,7 +172,7 @@ void Smb4KConfigDialog::setupDialog()
 
   // There are a few settings we need to the initial values of.
   // Initialize them here:
-#ifdef __linux__
+#ifdef Q_OS_LINUX
   force_unmount = Smb4KSettings::useForceUnmount();
 #endif
   always_use_su = Smb4KSettings::alwaysUseSuperUser();
@@ -307,17 +307,16 @@ void Smb4KConfigDialog::saveAuthenticationData()
 void Smb4KConfigDialog::writeSuperUserEntries()
 {
   // Get the checkboxes in the "Super User" page.
-#ifdef __linux__
+#ifdef Q_OS_LINUX
   QCheckBox *force_button = findChild<QCheckBox *>( "kcfg_UseForceUnmount" );
+  Q_ASSERT( force_button );
 #endif
   QCheckBox *always_button = findChild<QCheckBox *>( "kcfg_AlwaysUseSuperUser" );
-
-  Q_ASSERT( force_button );
   Q_ASSERT( always_button );
 
   // Check if we have to write anything and initiate the writing
   // if necessary.
-#ifdef __linux__
+#ifdef Q_OS_LINUX
   if ( (!force_unmount && !always_use_su) &&
        ((force_button->isChecked() && !force_unmount) ||
        (always_button->isChecked() && !always_use_su)) )
@@ -330,7 +329,7 @@ void Smb4KConfigDialog::writeSuperUserEntries()
     if ( !Smb4KCore::sudoWriter()->addUser() )
     {
       // The write process failed. Reset the values.
-#ifdef __linux__
+#ifdef Q_OS_LINUX
       force_button->setChecked( force_unmount );
       Smb4KSettings::setUseForceUnmount( force_unmount );
 #endif
@@ -350,7 +349,7 @@ void Smb4KConfigDialog::writeSuperUserEntries()
   }
 
   // Set the variables.
-#ifdef __linux__
+#ifdef Q_OS_LINUX
   force_unmount = force_button->isChecked();
 #endif
   always_use_su = always_button->isChecked();
@@ -360,16 +359,15 @@ void Smb4KConfigDialog::writeSuperUserEntries()
 void Smb4KConfigDialog::removeSuperUserEntries()
 {
   // Get the checkboxes in the "Super User" page.
-#ifdef __linux__
+#ifdef Q_OS_LINUX
   QCheckBox *force_button = findChild<QCheckBox *>( "kcfg_UseForceUnmount" );
+  Q_ASSERT( force_button );
 #endif
   QCheckBox *always_button = findChild<QCheckBox *>( "kcfg_AlwaysUseSuperUser" );
-
-  Q_ASSERT( force_button );
   Q_ASSERT( always_button );
 
   // Uncheck both buttons.
-#ifdef __linux__
+#ifdef Q_OS_LINUX
   force_button->setChecked( false );
   Smb4KSettings::setUseForceUnmount( false );
 #endif
@@ -391,7 +389,7 @@ void Smb4KConfigDialog::removeSuperUserEntries()
   setEnabled( true );
 
   // Set the variables.
-#ifdef __linux__
+#ifdef Q_OS_LINUX
   force_unmount = force_button->isChecked();
 #endif
   always_use_su = always_button->isChecked();
@@ -704,7 +702,7 @@ void Smb4KConfigDialog::slotCustomSambaSettingsModified()
               // Do nothing
             }
 
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
             if ( old_list.at( i )->writeAccess() != new_list.at( j )->writeAccess() )
             {
               enable_apply = true;
