@@ -31,6 +31,7 @@ Smb4K SVN_HEAD (????-??-??):
   + Added setPort() and port() function.
   + Added equals() function.
   + Added hasIP() function.
+  + Removed the protocol functions.
 - Revised Smb4KShare class:
   + Replaced setCIFSLogin(), cifsLogin(), and cifsLoginIsSet() with setLogin()
     login(), and loginIsSet().
