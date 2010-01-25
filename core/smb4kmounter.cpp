@@ -847,7 +847,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
 #else
   // Workgroup
   command += !share->workgroupName().isEmpty() ?
-             QString( " -W %1" ).arg( KShell::quoteArg( share->workgroupName() ) :
+             QString( " -W %1" ).arg( KShell::quoteArg( share->workgroupName() ) ) :
              "";
   
   // Host IP
@@ -899,7 +899,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   command += !Smb4KSettings::fileMask().isEmpty() ? QString( " -f %1" ).arg( Smb4KSettings::fileMask() ) : "";
 
   // Directory mask
-  command += !Smb4KSettings::directoryMask().isEmpty() : QString( " -d %1" ).arg( Smb4KSettings::directoryMask() ) : "";
+  command += !Smb4KSettings::directoryMask().isEmpty() ? QString( " -d %1" ).arg( Smb4KSettings::directoryMask() ) : "";
 #endif
   command += " --";
 #ifndef __FreeBSD__
@@ -1354,38 +1354,14 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
   
   // Check that we actually mounted the share and emit 
   // the mounted() signal if we found it.
-  FILE *file = setmntent( "/etc/mtab", "r" );
-  struct mntent *entry = NULL;
-  bool share_mounted = false;
-
-  while ( (entry = getmntent( file )) != NULL )
+  KMountPoint::List mount_points = KMountPoint::currentMountPoints( KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions );
+  
+  if ( !mount_points.findByPath( share->path() ).isNull() ||
+       !mount_points.findByPath( share->canonicalPath() ).isNull() )
   {
-    if ( !strncmp( entry->mnt_type, "cifs", strlen( entry->mnt_type ) + 1 ) )
-    {
-      QString name( entry->mnt_fsname );
-          
-      if ( QString::compare( share->unc(), name, Qt::CaseInsensitive ) == 0 ||
-           QString::compare( share->homeUNC(), name, Qt::CaseInsensitive ) == 0 )
-      {
-        share_mounted = true;
-        break;
-      }
-      else
-      {
-        continue;
-      }
-    }
-    else
-    {
-      continue;
-    }
-  }
-
-  // Set the mount flag.
-  share->setIsMounted( share_mounted );
-
-  if ( share_mounted )
-  {
+    // Set the share as mounted.
+    share->setIsMounted( true );
+    
     // Remove the remount flag and write the options
     // to the disk.
     if ( Smb4KSambaOptionsHandler::self()->findItem( share ) != NULL )
@@ -1397,10 +1373,10 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
     {
       // Do nothing
     }
-
+    
     // Check the usage, etc.
     check( share );
-
+    
     // Create a new share object and add it to the list
     // of mounted shares.
     Smb4KShare *new_share = new Smb4KShare( *share );
@@ -1421,7 +1397,9 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
   }
   else
   {
-    // Do nothing. Mounting failed.
+    // Set the share as not mounted and clear the mountpoint/path,
+    share->setIsMounted( false );
+    share->setPath( QString() );
   }
 }
 
@@ -1432,41 +1410,19 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
   
   // Check that we actually unmounted the share and emit 
   // the mounted() signal if it is really gone.
-  FILE *file = setmntent( "/etc/mtab", "r" );
-  struct mntent *entry = NULL;
-  bool share_unmounted = true;
-
-  while ( (entry = getmntent( file )) != NULL )
-  {
-    if ( !strncmp( entry->mnt_type, "cifs", strlen( entry->mnt_type ) + 1 ) )
-    {
-      QString name( entry->mnt_fsname );
-          
-      if ( QString::compare( share->unc(), name, Qt::CaseInsensitive ) == 0 )
-      {
-        share_unmounted = false;
-        break;
-      }
-      else
-      {
-        continue;
-      }
-    }
-    else
-    {
-      continue;
-    }
-  }
+  KMountPoint::List mount_points = KMountPoint::currentMountPoints( KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions );
   
-  // Set the mount flag.
-  share->setIsMounted( !share_unmounted );
-  
-  if ( share_unmounted )
+  if ( mount_points.findByPath( share->path() ).isNull() &&
+       mount_points.findByPath( share->canonicalPath() ).isNull() )
   {
+    // Set the share as not mounted and clear the mountpoint/path.
+    share->setIsMounted( false );
+    share->setPath( QString() );
+    
     // Clean up the mount prefix.
     if ( qstrncmp( share->canonicalPath(),
-        QDir( Smb4KSettings::mountPrefix().path() ).canonicalPath().toUtf8(),
-        QDir( Smb4KSettings::mountPrefix().path() ).canonicalPath().toUtf8().length() ) == 0 )
+         QDir( Smb4KSettings::mountPrefix().path() ).canonicalPath().toUtf8(),
+         QDir( Smb4KSettings::mountPrefix().path() ).canonicalPath().toUtf8().length() ) == 0 )
     {
       QDir dir( share->canonicalPath() );
 
@@ -1503,7 +1459,7 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
   }
   else
   {
-    // Do nothing. The unmounting failed.
+    // Do nothing.
   }
 }
 
