@@ -1104,74 +1104,38 @@ void Smb4KScanner::lookupShares( Smb4KHost *host )
   command += net;
   
   // Protocol hint.
-  // If the host item should carry a protocol (e.g. if a "access denied" error occurred),
-  // it will overwrite all other option. If none is defined, we check if the one returned
-  // by the Samba options info or the default one is to be used.
-  if ( host->protocol() != Smb4KHost::Automatic &&
-       host->protocol() != Smb4KHost::ADS /* not used with this command */ )
+  // Only the RPC protocol may be set here, because the 'net share list' 
+  // command either takes the RPC protocol or none (in this case the protocol is 
+  // automatically set to RPC).
+  if ( info && info->protocol() != Smb4KSambaOptionsInfo::UndefinedProtocol )
   {
-    switch ( host->protocol() )
+    switch ( info->protocol() )
     {
-      case Smb4KHost::RPC:
+      case Smb4KSambaOptionsInfo::RPC:
       {
-        command +=  " rpc";
-        break;
-      }
-      case Smb4KHost::RAP:
-      {
-        command += " rap";
+        command += " rpc";
         break;
       }
       default:
       {
+        // Auto-detection
         break;
       }
     }
   }
   else
   {
-    if ( info &&
-         info->protocol() != Smb4KSambaOptionsInfo::Automatic &&
-         info->protocol() != Smb4KSambaOptionsInfo::ADS )
+    switch ( Smb4KSettings::protocolHint() )
     {
-      switch ( info->protocol() )
+      case Smb4KSettings::EnumProtocolHint::RPC:
       {
-        case Smb4KSambaOptionsInfo::RPC:
-        {
-          command += " rpc";
-          break;
-        }
-        case Smb4KSambaOptionsInfo::RAP:
-        {
-          command += "rap";
-          break;
-        }
-        default:
-        {
-          break;
-        }
+        command += " rpc";
+        break;
       }
-    }
-    else
-    {
-      switch ( Smb4KSettings::protocolHint() )
+      default:
       {
-        case Smb4KSettings::EnumProtocolHint::RPC:
-        {
-          command += " rpc";
-          break;
-        }
-        case Smb4KSettings::EnumProtocolHint::RAP:
-        {
-          command += " rap";
-          break;
-        }
-        default:
-        {
-          // Leave it to the net command to choose the right
-          // protocol.
-          break;
-        }
+        // Auto-detection
+        break;
       }
     }
   }
@@ -1812,16 +1776,6 @@ void Smb4KScanner::slotHosts( Smb4KWorkgroup *workgroup, QList<Smb4KHost> &hosts
         if ( hosts_list.at( i ).comment().isEmpty() && !host->comment().isEmpty() )
         {
           hosts_list[i].setComment( host->comment() );
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        // Set protocol
-        if ( hosts_list.at( i ).protocol() != host->protocol() )
-        {
-          hosts_list[i].setProtocol( host->protocol() );
         }
         else
         {
