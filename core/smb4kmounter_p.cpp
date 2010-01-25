@@ -28,10 +28,6 @@
 #include <kshell.h>
 #include <kmessagebox.h>
 
-// system includes
-#include <stdio.h>
-#include <mntent.h>
-
 // application specific includes
 #include <smb4kmounter_p.h>
 #include <smb4kauthinfo.h>
