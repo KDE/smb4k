@@ -2,7 +2,7 @@
     smb4khost  -  Smb4K's container class for information about a host.
                              -------------------
     begin                : Sa Jan 26 2008
-    copyright            : (C) 2008-2009 by Alexander Reinholdt
+    copyright            : (C) 2008-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -39,7 +39,7 @@
 Smb4KHost::Smb4KHost( const QString &name ) : Smb4KBasicNetworkItem( Host ),
   m_url( QUrl() ), m_workgroup( QString() ), m_ip( QString() ), m_comment( QString() ),
   m_server_string( QString() ), m_os_string( QString() ), m_info_checked( false ),
-  m_ip_checked( false ), m_is_master( false ), m_protocol( Automatic )
+  m_ip_checked( false ), m_is_master( false )
 {
   m_url.setHost( name );
   m_url.setScheme( "smb" );
@@ -49,7 +49,7 @@ Smb4KHost::Smb4KHost( const QString &name ) : Smb4KBasicNetworkItem( Host ),
 Smb4KHost::Smb4KHost( const Smb4KHost &h ) : Smb4KBasicNetworkItem( Host ),
   m_url( QUrl() ), m_workgroup( h.workgroupName() ), m_ip( h.ip() ), m_comment( h.comment() ),
   m_server_string( h.serverString() ), m_os_string( h.osString() ), m_info_checked( h.infoChecked() ),
-  m_ip_checked( h.ipChecked() ), m_is_master( h.isMasterBrowser() ), m_protocol( h.protocol() )
+  m_ip_checked( h.ipChecked() ), m_is_master( h.isMasterBrowser() )
 {
   setUNC( h.unc( QUrl::None ) );
 }
@@ -58,7 +58,7 @@ Smb4KHost::Smb4KHost( const Smb4KHost &h ) : Smb4KBasicNetworkItem( Host ),
 Smb4KHost::Smb4KHost() : Smb4KBasicNetworkItem( Host ),
   m_url( QUrl() ), m_workgroup( QString() ), m_ip( QString() ), m_comment( QString() ),
   m_server_string( QString() ), m_os_string( QString() ), m_info_checked( false ),
-  m_ip_checked( false ), m_is_master( false ), m_protocol( Automatic )
+  m_ip_checked( false ), m_is_master( false )
 {
 }
 
@@ -124,7 +124,6 @@ void Smb4KHost::setWorkgroupName( const QString &workgroup )
 void Smb4KHost::setIP( const QString &ip )
 {
   m_ip         = ipIsValid( ip );
-
   m_ip_checked = true;
 }
 
@@ -139,7 +138,6 @@ void Smb4KHost::setInfo( const QString &serverString, const QString &osString )
 {
   m_server_string = serverString;
   m_os_string     = osString;
-
   m_info_checked  = true;
 }
 
@@ -147,7 +145,6 @@ void Smb4KHost::setInfo( const QString &serverString, const QString &osString )
 void Smb4KHost::resetInfo()
 {
   m_info_checked = false;
-
   m_server_string.clear();
   m_os_string.clear();
 }
@@ -159,47 +156,60 @@ void Smb4KHost::setIsMasterBrowser( bool master )
 }
 
 
-void Smb4KHost::setProtocol( Smb4KHost::Protocol protocol )
-{
-  m_protocol = protocol;
-}
-
-
 bool Smb4KHost::isEmpty() const
 {
   if ( !m_url.isEmpty() )
   {
     return false;
   }
+  else
+  {
+    // Do nothing
+  }
 
   if ( !m_workgroup.isEmpty() )
   {
     return false;
+  }
+  else
+  {
+    // Do nothing
   }
 
   if ( !m_ip.isEmpty() )
   {
     return false;
   }
+  else
+  {
+    // Do nothing
+  }
 
   if ( !m_comment.isEmpty() )
   {
     return false;
+  }
+  else
+  {
+    // Do nothing
   }
 
   if ( !m_server_string.isEmpty() )
   {
     return false;
   }
+  else
+  {
+    // Do nothing
+  }
 
   if ( !m_os_string.isEmpty() )
   {
     return false;
   }
-
-  if ( m_protocol != Automatic )
+  else
   {
-    return false;
+    // Do nothing
   }
 
   return true;
@@ -268,15 +278,6 @@ bool Smb4KHost::equals( Smb4KHost *host )
   }
 
   if ( QString::compare( m_os_string, host->osString() ) != 0 )
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( m_protocol != host->protocol() )
   {
     return false;
   }

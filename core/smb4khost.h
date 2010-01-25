@@ -2,7 +2,7 @@
     smb4khost  -  Smb4K's container class for information about a host.
                              -------------------
     begin                : Sa Jan 26 2008
-    copyright            : (C) 2008-2009 by Alexander Reinholdt
+    copyright            : (C) 2008-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -239,30 +239,6 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
     bool isMasterBrowser() const { return m_is_master; }
 
     /**
-     * Enumeration for the protocol that should be used with this host.
-     */
-    enum Protocol{ Automatic,
-                   RPC,
-                   RAP,
-                   ADS };
-
-    /**
-     * Set the protocol that should be used with this host. The default
-     * is "Automatic".
-     *
-     * @param protocol            The protocol that should be used.
-     */
-    void setProtocol( Smb4KHost::Protocol protocol );
-
-    /**
-     * Returns the protocol that should be used with this host. The default
-     * is "Automatic".
-     *
-     * @returns the protocol that should be used with this host.
-     */
-    Smb4KHost::Protocol protocol() const { return m_protocol; }
-
-    /**
      * Returns TRUE if the item is empty and FALSE otherwise. An item is not
      * empty if at least one string (workgroup name, master name, etc.) has been
      * set. A modified boolean will not be considered.
@@ -372,11 +348,6 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      * Determines if the host is a master browser
      */
     bool m_is_master;
-
-    /**
-     * The protocol that should be used
-     */
-    Protocol m_protocol;
 
     /**
      * This function checks if the given IP address is either
