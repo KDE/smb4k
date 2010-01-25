@@ -61,7 +61,7 @@ Smb4KAuthInfo::Smb4KAuthInfo()
 }
 
 
-Smb4KAuthInfo::Smb4KAuthInfo( Smb4KAuthInfo &i )
+Smb4KAuthInfo::Smb4KAuthInfo( const Smb4KAuthInfo &i )
 : m_url( QUrl() ), m_type( i.type() ), m_workgroup( i.workgroupName() ), m_homes_share( i.isHomesShare() ),
   m_homes_users( i.homesUsers() )
 {

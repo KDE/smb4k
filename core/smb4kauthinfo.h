@@ -86,7 +86,7 @@ class KDE_EXPORT Smb4KAuthInfo
      *
      * @param info      The Smb4KAuthInfo object that will be copied.
      */
-    Smb4KAuthInfo( Smb4KAuthInfo &info );
+    Smb4KAuthInfo( const Smb4KAuthInfo &info );
 
     /**
      * The destructor
