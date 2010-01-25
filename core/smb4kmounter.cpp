@@ -2,7 +2,7 @@
     smb4kmounter.cpp  -  The core class that mounts the shares.
                              -------------------
     begin                : Die Jun 10 2003
-    copyright            : (C) 2003-2009 by Alexander Reinholdt
+    copyright            : (C) 2003-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -1006,10 +1006,9 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
     // Do nothing
   }
 
-  // Copy the share to avoid problems with 'homes' shares.
-  Smb4KShare internal_share( *share );
-
-  if ( internal_share.isForeign() && !Smb4KSettings::unmountForeignShares() )
+  // Complain if the share is a foreign one and unmounting those
+  // is prohibited.
+  if ( share->isForeign() && !Smb4KSettings::unmountForeignShares() )
   {
     if ( !silent )
     {
@@ -1355,9 +1354,23 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
   // Check that we actually mounted the share and emit 
   // the mounted() signal if we found it.
   KMountPoint::List mount_points = KMountPoint::currentMountPoints( KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions );
+  bool mountpoint_found = false;
   
-  if ( !mount_points.findByPath( share->path() ).isNull() ||
-       !mount_points.findByPath( share->canonicalPath() ).isNull() )
+  for ( int i = 0; i < mount_points.size(); ++i )
+  {
+    if ( QString::compare( mount_points.at( i )->mountPoint(), share->path() ) == 0 ||
+         QString::compare( mount_points.at( i )->mountPoint(), share->canonicalPath() ) == 0 )
+    {
+      mountpoint_found = true;
+      break;
+    }
+    else
+    {
+      continue;
+    }
+  }
+  
+  if ( mountpoint_found )
   {
     // Set the share as mounted.
     share->setIsMounted( true );
@@ -1411,14 +1424,24 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
   // Check that we actually unmounted the share and emit 
   // the mounted() signal if it is really gone.
   KMountPoint::List mount_points = KMountPoint::currentMountPoints( KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions );
+  bool mountpoint_found = false;
   
-  if ( mount_points.findByPath( share->path() ).isNull() &&
-       mount_points.findByPath( share->canonicalPath() ).isNull() )
+  for ( int i = 0; i < mount_points.size(); ++i )
   {
-    // Set the share as not mounted and clear the mountpoint/path.
-    share->setIsMounted( false );
-    share->setPath( QString() );
-    
+    if ( QString::compare( mount_points.at( i )->mountPoint(), share->path() ) == 0 ||
+         QString::compare( mount_points.at( i )->mountPoint(), share->canonicalPath() ) == 0 )
+    {
+      mountpoint_found = true;
+      break;
+    }
+    else
+    {
+      continue;
+    }
+  }
+  
+  if ( !mountpoint_found )
+  {
     // Clean up the mount prefix.
     if ( qstrncmp( share->canonicalPath(),
          QDir( Smb4KSettings::mountPrefix().path() ).canonicalPath().toUtf8(),

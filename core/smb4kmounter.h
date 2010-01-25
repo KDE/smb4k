@@ -2,7 +2,7 @@
     smb4kmounter.h  -  The core class that mounts the shares.
                              -------------------
     begin                : Die Jun 10 2003
-    copyright            : (C) 2003-2009 by Alexander Reinholdt
+    copyright            : (C) 2003-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
