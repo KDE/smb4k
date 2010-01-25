@@ -96,9 +96,10 @@ Smb4K SVN_HEAD (????-??-??):
   + Removed smbclientOptions() function.
   + Removed nmblookupOptions() function.
   + Removed netOptions() function.
-  + Removed code that handled obsolete formats and files.
+  + Removed code that handled obsolete files and file formats.
 - Revised Smb4KSambaOptionsInfo class:
   + Removed uidIsSet() and gidIsSet() functions.
+  + Removed hasCustomOptions() and setHasCustomOptions() functions.
 - Revised Smb4KSynchronizationInfo class:
   + Added functions to set and return the source directory.
   + Added functions to set and return the destination directory.
