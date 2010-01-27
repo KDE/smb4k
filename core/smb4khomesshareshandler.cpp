@@ -2,7 +2,7 @@
     smb4khomesshareshandler  -  This class handles the homes shares.
                              -------------------
     begin                : Do Aug 10 2006
-    copyright            : (C) 2006-2008 by Alexander Reinholdt
+    copyright            : (C) 2006-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -543,6 +543,8 @@ void Smb4KHomesSharesHandler::writeUserNames()
 
 Smb4KShare *Smb4KHomesSharesHandler::findShare( Smb4KShare *share )
 {
+  Q_ASSERT( share );
+  
   Smb4KShare *internal = NULL;
 
   for ( int i = 0; i < m_list.size(); ++i )

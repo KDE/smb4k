@@ -1491,11 +1491,15 @@ void Smb4KMounter::slotAuthError( Smb4KShare *share )
 {
   Q_ASSERT( share );
   
-  Smb4KAuthInfo authInfo( share );
+  // Copy the incoming share, because while the password dialog
+  // is shown, the share might already be deleted together with the 
+  // parent thread. This would lead to crashes.
+  Smb4KShare internal_share( *share );
+  Smb4KAuthInfo authInfo( &internal_share );
 
   if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
   {
-    mountShare( share );
+    mountShare( &internal_share );
   }
   else
   {
