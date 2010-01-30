@@ -1161,8 +1161,7 @@ void Smb4KMounter::check( Smb4KShare *share )
   {
     CheckThread thread( share, this );
     thread.start();
-    thread.check();
-    thread.wait( 100 );
+    thread.wait();
   }
   else
   {
@@ -1512,12 +1511,15 @@ void Smb4KMounter::slotBadShareNameError( Smb4KShare *share )
 {
   Q_ASSERT( share );
   
+  // Copy the incoming share to be on the save side.
+  Smb4KShare internal_share( *share );
+  
   // Since we are working on a copy of the initial share, we
   // can change the share name without changing the original
   // share object in any way.
-  QString name = static_cast<QString>( share->shareName() ).replace( "_", " " );
-  share->setShareName( name );
-  mountShare( share );  
+  QString name = static_cast<QString>( internal_share.shareName() ).replace( "_", " " );
+  internal_share.setShareName( name );
+  mountShare( &internal_share );  
 }
 
 
