@@ -2,7 +2,7 @@
     smb4kwalletmanager  -  This is the wallet manager of Smb4K.
                              -------------------
     begin                : Sa Dez 27 2008
-    copyright            : (C) 2008-2009 by Alexander Reinholdt
+    copyright            : (C) 2008-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -202,7 +202,7 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
      */
     QList<Smb4KAuthInfo *> m_list;
 
-#ifdef __FreeBSD__
+#ifdef Q_OS_FREEBSD
     /**
      * This function invokes s shell, encrypts the password using the
      * smbutil utility and writes it to the ~/.nsmbrc file.
