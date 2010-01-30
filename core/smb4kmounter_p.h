@@ -37,19 +37,7 @@
 
 // KDE includes
 #include <kdebug.h>
-
-// system includes
-#include <sys/statvfs.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#ifndef __FreeBSD__
-#include <sys/statfs.h>
-#include <unistd.h>
-#else
-#include <sys/param.h>
-#include <sys/mount.h>
-#endif
-#include <errno.h>
+#include <kjob.h>
 
 // application specific includes
 #include <smb4kmounter.h>
@@ -136,8 +124,11 @@ class CheckThread : public QThread
     CheckThread( Smb4KShare *share,
                  QObject *parent = 0 );
     ~CheckThread();
-    void check();
+//     void check();
 
+  protected:
+    void run();
+    
   private:
     Smb4KShare *m_share;
 };
