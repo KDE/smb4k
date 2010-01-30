@@ -24,9 +24,13 @@
  *   MA  02111-1307 USA                                                    *
  ***************************************************************************/
 
+// Qt includes
+#include <QFileInfo>
+
 // KDE includes
 #include <kshell.h>
 #include <kmessagebox.h>
+#include <kdiskfreespaceinfo.h>
 
 // application specific includes
 #include <smb4kmounter_p.h>
@@ -69,7 +73,7 @@ void MountThread::mount( Smb4KAuthInfo *authInfo, const QString &command )
 
   m_proc->setShellCommand( command );
   m_proc->setOutputChannelMode( KProcess::MergedChannels ); // see below
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
   m_proc->setEnv( "PASSWD", !authInfo->password().isEmpty() ? authInfo->password() : "", true );
 #endif
   m_proc->start();
@@ -85,7 +89,7 @@ void MountThread::slotProcessError()
 
   if ( !stdout.isEmpty() )
   {
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
     if ( stdout.contains( "mount error 13", Qt::CaseSensitive ) || stdout.contains( "mount error(13)" )
          /* authentication error */ )
     {
@@ -98,7 +102,7 @@ void MountThread::slotProcessError()
     }
     else if ( stdout.contains( "mount error 101" ) || stdout.contains( "mount error(101)" ) /* network unreachable */ )
     {
-      kDebug() << "Network unreachable ..." << endl;
+      qDebug() << "Network unreachable ..." << endl;
     }
 #else
     if ( stdout.contains( "Authentication error" ) )
@@ -259,87 +263,55 @@ CheckThread::~CheckThread()
 }
 
 
-void CheckThread::check()
+void CheckThread::run()
 {
-  struct statvfs vfs;
-
-  if ( statvfs( m_share->canonicalPath(), &vfs ) == -1 )
-  {
-    m_share->setInaccessible( true );
-    m_share->setFreeDiskSpace( -1 );
-    m_share->setTotalDiskSpace( -1 );
-  }
-  else
+  // Get the info about the usage, etc.
+  KDiskFreeSpaceInfo space_info = KDiskFreeSpaceInfo::freeSpaceInfo( m_share->canonicalPath() );
+  
+  if ( space_info.isValid() )
   {
     m_share->setInaccessible( false );
-
-    double kB_block = (double)(vfs.f_bsize / 1000);
-    double total = (double)(vfs.f_blocks*kB_block);
-    double free = (double)(vfs.f_bfree*kB_block);
-
-    m_share->setFreeDiskSpace( free );
-    m_share->setTotalDiskSpace( total );
-  }
-
-  // Determine the file system. Expect under Solaris, we need
-  // to use statfs for that.
-  struct statfs fs;
-
-  if ( statfs( m_share->canonicalPath(), &fs ) == -1 )
-  {
-    m_share->setFileSystem( Smb4KShare::Unknown );
+    m_share->setFreeDiskSpace( space_info.available() );
+    m_share->setTotalDiskSpace( space_info.size() );
+    m_share->setUsedDiskSpace( space_info.used() );
   }
   else
   {
-#ifndef __FreeBSD__
-    if ( (uint)fs.f_type == 0xFF534D42 )
-    {
-      m_share->setFileSystem( Smb4KShare::CIFS );
-    }
-    else if ( (uint)fs.f_type == 0x517B )
-    {
-      m_share->setFileSystem( Smb4KShare::SMBFS );
-    }
-    else
-    {
-      m_share->setFileSystem( Smb4KShare::Unknown );
-    }
-#else
-    // FIXME: Can we also use f_type??
-    if ( !strncmp( fs.f_fstypename, "smbfs", strlen( fs.f_fstypename ) ) )
-    {
-      m_share->setFileSystem( Smb4KShare::SMBFS );
-    }
-    else
-    {
-      m_share->setFileSystem( Smb4KShare::Unknown );
-    }
-#endif
+    m_share->setInaccessible( true );
+    m_share->setFreeDiskSpace( 0 );
+    m_share->setTotalDiskSpace( 0 );
+    m_share->setUsedDiskSpace( 0 );
   }
-
-  // Determine the owner and the group of the m_share if
-  // necessary.
-  if ( !m_share->uidIsSet() || !m_share->gidIsSet() )
+  
+  // Get the owner and group. Check also if we can
+  // really access the mount point.
+  QFileInfo file_info( m_share->canonicalPath() );
+  file_info.setCaching( false );
+  
+  if ( file_info.exists() )
   {
-    struct stat buf;
-
-    if ( lstat( m_share->canonicalPath(), &buf ) == -1 )
+    m_share->setUID( (K_UID)file_info.ownerId() );
+    m_share->setGID( (K_GID)file_info.groupId() );
+    
+    if ( !m_share->isInaccessible() )
     {
-      m_share->setUID( (uid_t)-1 );
-      m_share->setGID( (gid_t)-1 );
+      m_share->setInaccessible( !(file_info.isDir() && file_info.isExecutable()) );
     }
     else
     {
-      m_share->setUID( buf.st_uid );
-      m_share->setGID( buf.st_gid );
+      // Do nothing
     }
   }
   else
   {
-    // Do nothing
+    m_share->setUID( (K_UID)-1 );
+    m_share->setGID( (K_GID)-1 );
+    m_share->setInaccessible( true );
   }
-
-  quit();
+  
+  // NOTE: We do not need to check the file system here, because
+  // it has either already been checked by the import() function or 
+  // a proper file system was used by the mountShare() function.
 }
 
 
