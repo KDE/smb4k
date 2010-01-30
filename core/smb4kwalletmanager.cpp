@@ -2,7 +2,7 @@
     smb4kwalletmanager  -  This is the wallet manager of Smb4K.
                              -------------------
     begin                : Sa Dez 27 2008
-    copyright            : (C) 2008-2009 by Alexander Reinholdt
+    copyright            : (C) 2008-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -25,7 +25,7 @@
 
 // Qt includes
 #include <QDesktopWidget>
-#ifdef __FreeBSD__
+#ifdef Q_OS_FREEBSD
 #include <QFile>
 #include <QDir>
 #include <QTextCodec>
@@ -38,7 +38,7 @@
 #include <kapplication.h>
 #include <kpassworddialog.h>
 #include <klocale.h>
-#ifdef __FreeBSD__
+#ifdef Q_OS_FREEBSD
 #include <kprocess.h>
 #include <kstandarddirs.h>
 #endif
@@ -48,7 +48,7 @@
 #include <smb4ksettings.h>
 #include <smb4kauthinfo.h>
 #include <smb4khomesshareshandler.h>
-#ifdef __FreeBSD__
+#ifdef Q_OS_FREEBSD
 #include <smb4kcoremessage.h>
 #include <smb4ksambaoptionshandler.h>
 #endif
@@ -94,8 +94,23 @@ void Smb4KWalletManager::init( QWidget *parent, bool async )
     // so try to get the wallet.
     if ( !m_wallet )
     {
-      int window_id = (parent ? parent->winId() : (kapp->activeWindow() ?
-                      kapp->activeWindow()->winId() : kapp->desktop()->winId()));
+      int window_id = 0;
+      
+      if ( parent )
+      {
+        window_id = parent->winId();
+      }
+      else
+      {
+        if ( kapp->activeWindow() )
+        {
+          window_id = kapp->activeWindow()->winId();
+        }
+        else
+        {
+          kapp->desktop()->winId();
+        }
+      }
 
       if ( async )
       {
@@ -122,7 +137,7 @@ void Smb4KWalletManager::init( QWidget *parent, bool async )
         }
         else
         {
-          kDebug() << "Opening the wallet failed ..." << endl;
+          kWarning() << "Opening the wallet failed ..." << endl;
           m_state = Unknown;
         }
 
@@ -171,7 +186,7 @@ void Smb4KWalletManager::setupFolder()
   }
   else
   {
-    kDebug() << "No wallet or wallet not open ..." << endl;
+    kWarning() << "No wallet or wallet not open ..." << endl;
   }
 }
 
@@ -398,9 +413,9 @@ void Smb4KWalletManager::readAuthInfo( Smb4KAuthInfo *authInfo )
       // Do nothing
     }
   }
-#ifdef __FreeBSD__
-  writeToConfigFile( authInfo );
-#endif
+// #ifdef Q_OS_FREEBSD
+//   writeToConfigFile( authInfo );
+// #endif
 }
 
 
@@ -437,16 +452,25 @@ void Smb4KWalletManager::writeAuthInfo( Smb4KAuthInfo *authInfo )
       }
       default:
       {
-        if ( !authInfo->workgroupName().isEmpty() )
-        {
-          map["Workgroup"] = authInfo->workgroupName().toUpper();
+        // Take care that no empty UNC is written to the wallet.
+        // We test the host name here.
+        if ( !authInfo->hostName().isEmpty() )
+          {
+          if ( !authInfo->workgroupName().isEmpty() )
+          {
+            map["Workgroup"] = authInfo->workgroupName().toUpper();
+          }
+          else
+          {
+            // Do nothing
+          }
+
+          m_wallet->writeMap( authInfo->unc().toUpper(), map );
         }
         else
         {
           // Do nothing
         }
-
-        m_wallet->writeMap( authInfo->unc().toUpper(), map );
         break;
       }
     }
@@ -480,7 +504,7 @@ void Smb4KWalletManager::writeAuthInfo( Smb4KAuthInfo *authInfo )
     }
   }
 
-#ifdef __FreeBSD__
+#ifdef Q_OS_FREEBSD
   writeToConfigFile( authInfo );
 #endif
 }
@@ -497,7 +521,7 @@ bool Smb4KWalletManager::showPasswordDialog( Smb4KAuthInfo *authInfo, QWidget *p
 
   // Get known logins in case we have a 'homes' share and the share
   // name has not yet been changed.
-  QMap<QString, QString> logins;
+  QMap<QString,QString> logins;
 
   if ( authInfo->isHomesShare() && QString::compare( authInfo->shareName(), "homes" ) == 0 )
   {
@@ -590,7 +614,7 @@ bool Smb4KWalletManager::useWalletSystem()
 }
 
 
-#ifdef __FreeBSD__
+#ifdef Q_OS_FREEBSD
 
 void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
 {
@@ -765,8 +789,9 @@ void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
     case -2:
     case -1:
     {
+      // Show an error and return.
       Smb4KCoreMessage::processError( ERROR_PROCESS_ERROR, proc.error() );
-      break;
+      return;
     }
     default:
     {
@@ -1062,7 +1087,7 @@ void Smb4KWalletManager::slotWalletOpened( bool success )
   }
   else
   {
-    kDebug() << "Opening the wallet failed ..." << endl;
+    kWarning() << "Opening the wallet failed ..." << endl;
     m_state = Unknown;
   }
 
