@@ -35,6 +35,7 @@
 #include <QByteArray>
 #include <QStringList>
 #include <QUrl>
+#include <QtGlobal>
 
 // KDE includes
 #include <kuser.h>
@@ -440,80 +441,89 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     bool loginIsSet() const { return m_login_set; }
 
     /**
-     * Sets the value of the total disk space that is available on the share. The
-     * value has to be provided in KiloBytes. If the disk usage could not be
-     * determined, @p total has to be set to -1.
+     * Sets the value of the total disk space that is available on the share. If 
+     * the disk usage could not be determined, @p size has to be set to 0.
      *
      * @param total           The total disk space that is available on the share
      */
-    void setTotalDiskSpace( double total );
+    void setTotalDiskSpace( qulonglong size );
 
     /**
-     * Returns the total disk space that is available on the share or -1 if the
-     * disk space was not set or could not be determined.
+     * Returns the total disk space that is available on the share or 0 if the
+     * total disk space was not set or could not be determined.
      *
-     * @returns the total disk space or -1.
+     * @returns the total disk space or 0.
      */
-    double totalDiskSpace() const { return m_total; }
+    qulonglong totalDiskSpace() const { return m_total; }
 
     /**
-     * Returns the total disk space in a human readable form with value and unit,
-     * for example 10 KiB, 25 MiB, etc. If the total disk space was not set or
-     * could not be determined, this funtion returns an empty string.
+     * Returns the total disk space in a human readable form with value and unit
+     * (e.g. 10 KiB, 25 MiB, etc.) even if the total disk space was not set or could
+     * not be determined. If the value is a valid one, you have to check by evaluating
+     * the return value of the isInaccessible() function.
      *
-     * @returns the total disk space in a human readable form or an empty string.
+     * @returns the total disk space in a human readable form.
      */
     QString totalDiskSpaceString() const;
 
     /**
-     * Sets the value of the free disk space that is available on the share. The
-     * value has to be provided in KiloBytes. If the free disk space could not be
-     * determined, @p free has to be set to -1.
+     * Sets the value of the free disk space that is available on the share. If 
+     * the free disk space could not be determined, @p size has to be set to 0.
      *
      * @param free            The free disk space that is available on the share
      */
-    void setFreeDiskSpace( double free );
+    void setFreeDiskSpace( qulonglong size );
 
     /**
-     * Returns the free disk space that is available on the share or -1 if the disk
-     * space was not set or could not be determined.
+     * Returns the free disk space that is available on the share or 0 if the
+     * free disk space was not set or could not be determined.
      *
-     * @returns the free disk space or -1.
+     * @returns the free disk space or 0.
      */
-    double freeDiskSpace() const { return m_free; }
+    qulonglong freeDiskSpace() const { return m_free; }
 
     /**
-     * Returns the free disk space in a human readable form with value and unit,
-     * for example 10 KiB, 25 MiB, etc. If the free disk space was not set or
-     * could not be determined, this funtion returns an empty string.
+     * Returns the free disk space in a human readable form with value and unit
+     * (e.g. 10 KiB, 25 MiB, etc.) even if the free disk space was not set or could
+     * not be determined. If the value is a valid one, you have to check by evaluating
+     * the return value of the isInaccessible() function.
      *
-     * @returns the free disk space in a human readable form or an empty string.
+     * @returns the free disk space in a human readable form.
      */
     QString freeDiskSpaceString() const;
-
+    
     /**
-     * Returns the used disk space that is used on the share or -1 if it
-     * could not be determined.
+     * Sets the value of the disk space that is used on the share. If the used 
+     * disk space could not be determined, @p size has to be set to 0.
      *
-     * @returns the used disk space or -1.
+     * @param free            The free disk space that is available on the share
      */
-    double usedDiskSpace() const;
+    void setUsedDiskSpace( qulonglong size );
 
     /**
-     * Returns the used disk space in a human readable form with value and unit,
-     * for example 10 KiB, 25 MiB, etc. If the used disk space was not set or
-     * could not be determined, this funtion returns an empty string.
+     * Returns the used disk space that is used on the share or 0 if the
+     * used disk space was not set or could not be determined.
      *
-     * @returns the used disk space in a human readable form or an empty string.
+     * @returns the used disk space or 0.
+     */
+    qulonglong usedDiskSpace() const { return m_used; }
+
+    /**
+     * Returns the used disk space in a human readable form with value and unit
+     * (e.g. 10 KiB, 25 MiB, etc.) even if the used disk space was not set or could
+     * not be determined. If the value is a valid one, you have to check by evaluating
+     * the return value of the isInaccessible() function.
+     *
+     * @returns the used disk space in a human readable form.
      */
     QString usedDiskSpaceString() const;
 
     /**
-     * Returns the disk usage in percent or, if it could not be determined -1.
-     *
-     * @returns the disk usage in percent or -1.
+     * Returns the disk usage in percent.
+     
+     * @returns the disk usage in percent.
      */
-    double diskUsage() const;
+    qreal diskUsage() const;
 
     /**
      * Returns the disk usage in a human readable form with value and unit,
@@ -714,12 +724,17 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     /**
      * The total disk space
      */
-    double m_total;
+    qulonglong m_total;
 
     /**
      * The free disk space
      */
-    double m_free;
+    qulonglong m_free;
+    
+    /**
+     * The used disk space
+     */
+    qulonglong m_used;
 
     /**
      * UID was set

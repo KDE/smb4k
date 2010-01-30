@@ -43,7 +43,7 @@
 Smb4KShare::Smb4KShare( const QString &host, const QString &name ) : Smb4KBasicNetworkItem( Share ),
   m_url( QUrl() ), m_workgroup( QString() ), m_type_string( QString() ), m_comment( QString() ),
   m_host_ip( QString() ), m_path( QByteArray() ), m_inaccessible( false ), m_foreign( false ),
-  m_filesystem( Unknown ), m_user( getuid() ), m_group( getgid() ), m_total( -1 ), m_free( -1 ),
+  m_filesystem( Unknown ), m_user( getuid() ), m_group( getgid() ), m_total( 0 ), m_free( 0 ), m_used( 0 ),
   m_uid_set( false ), m_gid_set( false ), m_login_set( false ), m_is_mounted( false ),
   m_homes_share( false ), m_homes_users( QStringList() )
 {
@@ -58,7 +58,7 @@ Smb4KShare::Smb4KShare( const QString &host, const QString &name ) : Smb4KBasicN
 Smb4KShare::Smb4KShare( const QString &unc ) : Smb4KBasicNetworkItem( Share ),
   m_url( QUrl() ), m_workgroup( QString() ), m_type_string( QString() ), m_comment( QString() ),
   m_host_ip( QString() ), m_path( QByteArray() ), m_inaccessible( false ), m_foreign( false ),
-  m_filesystem( Unknown ), m_user( getuid() ), m_group( getgid() ), m_total( -1 ), m_free( -1 ),
+  m_filesystem( Unknown ), m_user( getuid() ), m_group( getgid() ), m_total( 0 ), m_free( 0 ), m_used( 0 ),
   m_uid_set( false ), m_gid_set( false ), m_login_set( false ), m_is_mounted( false ),
   m_homes_share( false ), m_homes_users( QStringList() )
 {
@@ -70,7 +70,7 @@ Smb4KShare::Smb4KShare( const Smb4KShare &s ) : Smb4KBasicNetworkItem( Share ),
   m_url( QUrl() ), m_workgroup( s.workgroupName() ), m_type_string( s.typeString() ), m_comment( s.comment() ),
   m_host_ip( s.hostIP() ), m_path( s.path() ), m_inaccessible( s.isInaccessible() ),
   m_foreign( s.isForeign() ), m_filesystem( s.fileSystem() ), m_user( s.uid() ), m_group( s.gid() ),
-  m_total( s.totalDiskSpace() ), m_free( s.freeDiskSpace() ), m_uid_set( s.uidIsSet() ), m_gid_set( s.gidIsSet() ),
+  m_total( s.totalDiskSpace() ), m_free( s.freeDiskSpace() ), m_used( s.usedDiskSpace() ), m_uid_set( s.uidIsSet() ), m_gid_set( s.gidIsSet() ),
   m_login_set( s.loginIsSet() ), m_is_mounted( s.isMounted() ), m_homes_share( s.isHomesShare() ),
   m_homes_users( s.homesUsers() )
 {
@@ -82,7 +82,7 @@ Smb4KShare::Smb4KShare( const Smb4KShare &s ) : Smb4KBasicNetworkItem( Share ),
 Smb4KShare::Smb4KShare() : Smb4KBasicNetworkItem( Share ),
   m_url( QUrl() ), m_workgroup( QString() ), m_type_string( QString() ), m_comment( QString() ),
   m_host_ip( QString() ), m_path( QByteArray() ), m_inaccessible( false ), m_foreign( false ),
-  m_filesystem( Unknown ), m_user( getuid() ), m_group( getgid() ), m_total( -1 ), m_free( -1 ),
+  m_filesystem( Unknown ), m_user( getuid() ), m_group( getgid() ), m_total( 0 ), m_free( 0 ), m_used( 0 ),
   m_uid_set( false ), m_gid_set( false ), m_login_set( false ), m_is_mounted( false ),
   m_homes_share( false ), m_homes_users( QStringList() )
 {
@@ -354,240 +354,194 @@ void Smb4KShare::setIsMounted( bool mounted )
 }
 
 
-void Smb4KShare::setTotalDiskSpace( double total )
+void Smb4KShare::setTotalDiskSpace( qulonglong size )
 {
-  m_total = total;
+  m_total = size;
 }
 
 
 QString Smb4KShare::totalDiskSpaceString() const
 {
-  if ( m_total != -1 )
+  QString total, total_dim = QString();
+
+  int exponent = 0;
+  qreal tmp_factor = 0;
+  qulonglong factor = 0;
+
+  (void) frexp( m_total * 1024, &exponent );
+  (void) modf( (exponent - 10) / 10, &tmp_factor );
+  factor = tmp_factor;
+  qreal tmp_total = m_total / pow( 1024, factor );
+  total = QString( "%1" ).arg( tmp_total, 0, 'f', 1 );
+
+  switch ( factor )
   {
-    QString total, total_dim = QString();
-
-    int exponent = 0;
-    double tmp_factor = 0;
-    int factor = 0;
-
-    (void) frexp( m_total * 1024 /*bytes*/, &exponent );
-    (void) modf( (exponent - 10) / 10, &tmp_factor );
-    factor = tmp_factor;
-    double tmp_total = m_total / pow( 1024, factor );
-    total = QString( "%1" ).arg( tmp_total, 0, 'f', 1 );
-
-    switch ( factor )
+    case 0:
     {
-      case 0:
-      {
-        total_dim = "KiB";
-
-        break;
-      }
-      case 1:
-      {
-        total_dim = "MiB";
-
-        break;
-      }
-      case 2:
-      {
-        total_dim = "GiB";
-
-        break;
-      }
-      case 3:
-      {
-        total_dim = "TiB";
-
-        break;
-      }
-      default:
-      {
-        break;
-      }
+      total_dim = "B";
+      break;
     }
-
-    return total+" "+total_dim;
+    case 1:
+    {
+      total_dim = "KiB";
+      break;
+    }
+    case 2:
+    {
+      total_dim = "MiB";
+      break;
+    }
+    case 3:
+    {
+      total_dim = "GiB";
+      break;
+    }
+    case 4:
+    {
+      total_dim = "TiB";
+      break;
+    }
+    default:
+    {
+      break;
+    }
   }
-  else
-  {
-    // Do nothing
-  }
 
-  return QString();
+  return total+" "+total_dim;
 }
 
 
-void Smb4KShare::setFreeDiskSpace( double free )
+void Smb4KShare::setFreeDiskSpace( qulonglong size )
 {
-  m_free = free;
+  m_free = size;
 }
 
 
 QString Smb4KShare::freeDiskSpaceString() const
 {
-  if ( m_free != -1 )
+  QString free, free_dim = QString();
+
+  int exponent = 0;
+  qreal tmp_factor = 0;
+  qulonglong factor = 0;
+
+  (void) frexp( m_free * 1024, &exponent );
+  (void) modf( (exponent - 10) / 10, &tmp_factor );
+  factor = tmp_factor;
+  qreal tmp_free = m_free / pow( 1024, factor );
+  free = QString( "%1" ).arg( tmp_free, 0, 'f', 1 );
+
+  switch ( factor )
   {
-    QString free, free_dim = QString();
-
-    int exponent = 0;
-    double tmp_factor = 0;
-    int factor = 0;
-
-    (void) frexp( m_free * 1024 /*bytes*/, &exponent );
-    (void) modf( (exponent - 10) / 10, &tmp_factor );
-    factor = tmp_factor;
-    double tmp_free = m_free / pow( 1024, factor );
-    free = QString( "%1" ).arg( tmp_free, 0, 'f', 1 );
-
-    switch ( factor )
+    case 0:
     {
-      case 0:
-      {
-        free_dim = "KiB";
-
-        break;
-      }
-      case 1:
-      {
-        free_dim = "MiB";
-
-        break;
-      }
-      case 2:
-      {
-        free_dim = "GiB";
-
-        break;
-      }
-      case 3:
-      {
-        free_dim = "TiB";
-
-        break;
-      }
-      default:
-      {
-        break;
-      }
+      free_dim = "B";
+      break;
     }
-
-    return free+" "+free_dim;
+    case 1:
+    {
+      free_dim = "KiB";
+      break;
+    }
+    case 2:
+    {
+      free_dim = "MiB";
+      break;
+    }
+    case 3:
+    {
+      free_dim = "GiB";
+      break;
+    }
+    case 4:
+    {
+      free_dim = "TiB";
+      break;
+    }
+    default:
+    {
+      break;
+    }
   }
-  else
-  {
-    // Do nothing
-  }
 
-  return QString();
+  return free+" "+free_dim;
 }
 
 
-double Smb4KShare::usedDiskSpace() const
+void Smb4KShare::setUsedDiskSpace( qulonglong size )
 {
-  double used;
-
-  if ( m_free != -1 && m_total != -1 )
-  {
-    used = m_total - m_free;
-  }
-  else
-  {
-    used = -1;
-  }
-
-  return used;
+  m_used = size;
 }
 
 
 QString Smb4KShare::usedDiskSpaceString() const
 {
-  if ( usedDiskSpace() != -1 )
+  QString used, used_dim = QString();
+
+  int exponent = 0;
+  qreal tmp_factor = 0;
+  qulonglong factor = 0;
+
+  (void) frexp( m_used * 1024, &exponent );
+  (void) modf( (exponent - 10) / 10, &tmp_factor );
+  factor = tmp_factor;
+  qreal tmp_used = m_used / pow( 1024, factor );
+  used = QString( "%1" ).arg( tmp_used, 0, 'f', 1 );
+
+  switch ( factor )
   {
-    QString used, used_dim = QString();
-
-    int exponent = 0;
-    double tmp_factor = 0;
-    int factor = 0;
-    double used_space = usedDiskSpace();
-
-    (void) frexp( used_space * 1024 /*bytes*/, &exponent );
-    (void) modf( (exponent - 10) / 10, &tmp_factor );
-    factor = tmp_factor;
-    double tmp_used = used_space / pow( 1024, factor );
-    used = QString( "%1" ).arg( tmp_used, 0, 'f', 1 );
-
-    switch ( factor )
+    case 0:
     {
-      case 0:
-      {
-        used_dim = "KiB";
-
-        break;
-      }
-      case 1:
-      {
-        used_dim = "MiB";
-
-        break;
-      }
-      case 2:
-      {
-        used_dim = "GiB";
-
-        break;
-      }
-      case 3:
-      {
-        used_dim = "TiB";
-
-        break;
-      }
-      default:
-      {
-        break;
-      }
+      used_dim = "B";
+      break;
     }
-
-    return used+" "+used_dim;
+    case 1:
+    {
+      used_dim = "KiB";
+      break;
+    }
+    case 2:
+    {
+      used_dim = "MiB";
+      break;
+    }
+    case 3:
+    {
+      used_dim = "GiB";
+      break;
+    }
+    case 4:
+    {
+      used_dim = "TiB";
+      break;
+    }
+    default:
+    {
+      break;
+    }
   }
-  else
-  {
-    // Do nothing
-  }
 
-  return QString();
+  return used+" "+used_dim;
 }
 
 
-double Smb4KShare::diskUsage() const
+qreal Smb4KShare::diskUsage() const
 {
-  if ( m_total != -1 && m_free != -1 )
-  {
-    return (m_total - m_free) / m_total * 100;
-  }
-  else
-  {
-    // Do nothing
-  }
+  qreal used( usedDiskSpace() );
+  qreal total( totalDiskSpace() );
 
-  return -1;
+  if ( total > 0 )
+  {
+    return used * 100 / total;
+  }
+  
+  return 0;
 }
 
 
 QString Smb4KShare::diskUsageString() const
 {
-  if ( diskUsage() != -1 )
-  {
-    return QString( "%1 %" ).arg( diskUsage(), 0, 'f', 1 );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  return QString();
+  return QString( "%1 %" ).arg( diskUsage(), 0, 'f', 1 );
 }
 
 
@@ -713,12 +667,17 @@ bool Smb4KShare::isEmpty( CheckFlags flag ) const
         return false;
       }
 
-      if ( m_total != -1 )
+      if ( m_total > 0 )
       {
         return false;
       }
 
-      if ( m_free != -1 )
+      if ( m_free > 0 )
+      {
+        return false;
+      }
+      
+      if ( m_used > 0 )
       {
         return false;
       }
@@ -781,12 +740,17 @@ bool Smb4KShare::isEmpty( CheckFlags flag ) const
         return false;
       }
 
-      if ( m_total != -1 )
+      if ( m_total > 0 )
       {
         return false;
       }
 
-      if ( m_free != -1 )
+      if ( m_free > 0 )
+      {
+        return false;
+      }
+      
+      if ( m_used > 0 )
       {
         return false;
       }
