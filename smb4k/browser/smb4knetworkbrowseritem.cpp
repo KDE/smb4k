@@ -2,7 +2,7 @@
     smb4knetworkbrowseritem  -  Smb4K's network browser list item.
                              -------------------
     begin                : Mo Jan 8 2007
-    copyright            : (C) 2007-2008 by Alexander Reinholdt
+    copyright            : (C) 2007-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -240,9 +240,6 @@ void Smb4KNetworkBrowserItem::update( Smb4KShare *share )
 {
   if ( share )
   {
-    // Adjust the item's font and its icon if necessary.
-    setMounted( share );
-
     // Set the comment if necessary.
     if ( !share->comment().isEmpty() )
     {
@@ -266,7 +263,11 @@ void Smb4KNetworkBrowserItem::update( Smb4KShare *share )
         // Do nothing
       }
     }
+    
+    // Adjust the item's font and its icon if necessary.
+    setMounted( share );
 
+    // Exchange share item.
     m_share = *share;
   }
   else

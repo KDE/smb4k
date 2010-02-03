@@ -2,7 +2,7 @@
     smb4knetworkbrowseritem  -  Smb4K's network browser list item.
                              -------------------
     begin                : Mo Jan 8 2007
-    copyright            : (C) 2007-2009 by Alexander Reinholdt
+    copyright            : (C) 2007-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
