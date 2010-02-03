@@ -3,7 +3,7 @@
     browser of Smb4K.
                              -------------------
     begin                : Fr Jan 5 2007
-    copyright            : (C) 2007-2009 by Alexander Reinholdt
+    copyright            : (C) 2007-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -465,7 +465,8 @@ void Smb4KNetworkBrowserPart::slotItemSelectionChanged()
           {
             actionCollection()->action( "bookmark_action" )->setEnabled( true );
             actionCollection()->action( "preview_action" )->setEnabled( true );
-            actionCollection()->action( "mount_action" )->setEnabled( true );
+            actionCollection()->action( "mount_action" )->setEnabled( !browser_item->shareItem()->isMounted() ||
+                                (browser_item->shareItem()->isMounted() && browser_item->shareItem()->isForeign()) );
             actionCollection()->action( "print_action" )->setEnabled( false );
             actionCollection()->action( "custom_action" )->setEnabled( true );
           }
@@ -515,48 +516,47 @@ void Smb4KNetworkBrowserPart::slotItemPressed( QTreeWidgetItem *item, int /*colu
   // Enable/disable the actions.
   Smb4KNetworkBrowserItem *browser_item = static_cast<Smb4KNetworkBrowserItem *>( item );
 
-  if ( browser_item )
+  if ( !browser_item && m_widget->selectedItems().size() == 0 )
   {
-    if ( !browser_item && m_widget->selectedItems().size() == 0 )
+    actionCollection()->action( "rescan_action" )->setText( i18n( "Scan Netwo&rk" ) );
+    actionCollection()->action( "bookmark_action" )->setEnabled( false );
+    actionCollection()->action( "authentication_action" )->setEnabled( false );
+    actionCollection()->action( "preview_action" )->setEnabled( false );
+    actionCollection()->action( "mount_action" )->setEnabled( false );
+    actionCollection()->action( "print_action" )->setEnabled( false );
+    actionCollection()->action( "custom_action" )->setEnabled( false );
+  }
+  else
+  {
+    if ( browser_item )
     {
-      actionCollection()->action( "rescan_action" )->setText( i18n( "Scan Netwo&rk" ) );
-      actionCollection()->action( "bookmark_action" )->setEnabled( false );
-      actionCollection()->action( "authentication_action" )->setEnabled( false );
-      actionCollection()->action( "preview_action" )->setEnabled( false );
-      actionCollection()->action( "mount_action" )->setEnabled( false );
-      actionCollection()->action( "print_action" )->setEnabled( false );
-      actionCollection()->action( "custom_action" )->setEnabled( false );
+      switch ( browser_item->type() )
+      {
+        case Smb4KNetworkBrowserItem::Share:
+        {
+          if ( browser_item->shareItem()->isPrinter() )
+          {
+            Smb4KPrintDialog *dlg = m_widget->findChild<Smb4KPrintDialog *>( "PrintDialog_"+browser_item->shareItem()->unc() );
+            actionCollection()->action( "print_action" )->setEnabled( !dlg );
+            actionCollection()->action( "mount_action" )->setEnabled( false );
+          }
+          else
+          {
+            actionCollection()->action( "mount_action" )->setEnabled( !browser_item->shareItem()->isMounted() ||
+                                (browser_item->shareItem()->isMounted() && browser_item->shareItem()->isForeign()) );
+          }
+
+          break;
+        }
+        default:
+        {
+          break;
+        }
+      }
     }
     else
     {
-      if ( browser_item )
-      {
-        switch ( browser_item->type() )
-        {
-          case Smb4KNetworkBrowserItem::Share:
-          {
-            if ( browser_item->shareItem()->isPrinter() )
-            {
-              Smb4KPrintDialog *dlg = m_widget->findChild<Smb4KPrintDialog *>( "PrintDialog_"+browser_item->shareItem()->unc() );
-              actionCollection()->action( "print_action" )->setEnabled( !dlg );
-            }
-            else
-            {
-              // Do nothing
-            }
-
-            break;
-          }
-          default:
-          {
-            break;
-          }
-        }
-      }
-      else
-      {
-        // Do nothing
-      }
+      // Do nothing
     }
   }
 }
