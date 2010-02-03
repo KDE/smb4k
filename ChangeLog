@@ -46,7 +46,11 @@ Smb4K SVN_HEAD (????-??-??):
   + Added homeUNC() function that returns the UNC of the user's home repository
     in case of a 'homes' share.
   + Renamed type() to typeString(), setType() to setTypeString() and 
-    translatedType() to translatedTypeString().
+    translatedType() to translatedTypeString() to avoid problems with 
+    Smb4KBasicNatworkItem::type().
+  + Removed uidIsSet() function.
+  + Removed gidIsSet() function.
+  + Removed loginIsSet() function.
 - Revised Smb4KCore class:
   + Removed all *State() convenience functions. You need to use the new
     Smb4KCore::xxx()->currentState() functions to read the current state of
@@ -279,7 +283,7 @@ Smb4K SVN_HEAD (????-??-??):
     system now shows a key if the wallet system is not used, i.e. we are in
     password dialog mode.
   + Added an improved "Add Bookmark" action.
-  + Improved visual feedback (closes #15899).
+  + Improved visual (mount) feedback (closes #15899).
   + Fixed saving and restoring of the dock widgets (closes #15899).
   + Improved status messages.
   + Added initialization of the core classes to the constructor.
@@ -302,6 +306,25 @@ Smb4K SVN_HEAD (????-??-??):
   + smb4k_mount now only supports the CIFS file system under Linux. So, the
     obsolete -t <filesystem>, -s and -n options were removed. Under FreeBSD the
     (undocumented) option -U <user> was added. The version number is now 0.11.
+
+Smb4K 0.9.10 (2010-01-30):
+- Prevent the scanner from trying to do something before the application
+  has completely started up.
+- Replaced Smb4KPasswordHandler class with the backported Smb4KWalletManager
+  class (should close #14703).
+- Smb4KHomesSharesHandler class has to be accessed via a static pointer
+  now.
+- Fixed problems with Samba 3.3 (among others closes #15276).
+- Revised Smb4KGlobal namespace:
+  + Removed passwordHandler() function. Use Smb4KWalletManager::self()
+    instead.
+  + Removed homesHandler() function. Use Smb4KHomesSharesHandler::self()
+    instead.
+  + Removed timer() function. It was long deprecated and not used 
+    anymore.
+- Adjusted code to use the new infrastructure.
+- Fixed compilation errors under CentOS 4.8.
+- Bumped version of the core library to 2.1.0.
 
 Smb4K 0.10.4 (2009-10-01):
 - Fixed crash in the main window that made Smb4K unusable when no bookmarks
