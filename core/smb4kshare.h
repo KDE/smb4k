@@ -379,14 +379,6 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     const QString owner() const { return m_user.loginName(); }
 
     /**
-     * Returns TRUE if the UID was set by invoking the setUID() function and
-     * FALSE otherwise.
-     *
-     * @returns TRUE if the UID was set.
-     */
-    bool uidIsSet() const { return m_uid_set; }
-
-    /**
      * Set the owning GID of this share.
      *
      * @param gid             The owning GID
@@ -410,14 +402,6 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     const QString group() const { return m_group.name(); }
 
     /**
-     * Returns TRUE if the GID was set by invoking the setGID() function and
-     * FALSE otherwise.
-     *
-     * @returns TRUE if the GID was set.
-     */
-    bool gidIsSet() const { return m_gid_set; }
-
-    /**
      * Sets the login that is used to mount a share. Under FreeBSD the UNC is also adjusted
      * accordings to the value of @p login.
      *
@@ -431,14 +415,6 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * @returns the login.
      */
     QString login() const { return m_url.userName(); }
-
-    /**
-     * Returns TRUE if the login was set by invoking the setLogin() function and
-     * FALSE otherwise.
-     *
-     * @returns TRUE if the login was set.
-     */
-    bool loginIsSet() const { return m_login_set; }
 
     /**
      * Sets the value of the total disk space that is available on the share. If 
@@ -735,21 +711,6 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * The used disk space
      */
     qulonglong m_used;
-
-    /**
-     * UID was set
-     */
-    bool m_uid_set;
-
-    /**
-     * GID was set
-     */
-    bool m_gid_set;
-
-    /**
-     * Login was set
-     */
-    bool m_login_set;
 
     /**
      * Is mounted

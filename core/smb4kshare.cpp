@@ -44,8 +44,7 @@ Smb4KShare::Smb4KShare( const QString &host, const QString &name ) : Smb4KBasicN
   m_url( QUrl() ), m_workgroup( QString() ), m_type_string( QString() ), m_comment( QString() ),
   m_host_ip( QString() ), m_path( QByteArray() ), m_inaccessible( false ), m_foreign( false ),
   m_filesystem( Unknown ), m_user( getuid() ), m_group( getgid() ), m_total( 0 ), m_free( 0 ), m_used( 0 ),
-  m_uid_set( false ), m_gid_set( false ), m_login_set( false ), m_is_mounted( false ),
-  m_homes_share( false ), m_homes_users( QStringList() )
+  m_is_mounted( false ), m_homes_share( false ), m_homes_users( QStringList() )
 {
   m_url.setHost( host );
   m_url.setPath( name );
@@ -59,8 +58,7 @@ Smb4KShare::Smb4KShare( const QString &unc ) : Smb4KBasicNetworkItem( Share ),
   m_url( QUrl() ), m_workgroup( QString() ), m_type_string( QString() ), m_comment( QString() ),
   m_host_ip( QString() ), m_path( QByteArray() ), m_inaccessible( false ), m_foreign( false ),
   m_filesystem( Unknown ), m_user( getuid() ), m_group( getgid() ), m_total( 0 ), m_free( 0 ), m_used( 0 ),
-  m_uid_set( false ), m_gid_set( false ), m_login_set( false ), m_is_mounted( false ),
-  m_homes_share( false ), m_homes_users( QStringList() )
+  m_is_mounted( false ), m_homes_share( false ), m_homes_users( QStringList() )
 {
   setUNC( unc );
 }
@@ -70,9 +68,8 @@ Smb4KShare::Smb4KShare( const Smb4KShare &s ) : Smb4KBasicNetworkItem( Share ),
   m_url( QUrl() ), m_workgroup( s.workgroupName() ), m_type_string( s.typeString() ), m_comment( s.comment() ),
   m_host_ip( s.hostIP() ), m_path( s.path() ), m_inaccessible( s.isInaccessible() ),
   m_foreign( s.isForeign() ), m_filesystem( s.fileSystem() ), m_user( s.uid() ), m_group( s.gid() ),
-  m_total( s.totalDiskSpace() ), m_free( s.freeDiskSpace() ), m_used( s.usedDiskSpace() ), m_uid_set( s.uidIsSet() ), m_gid_set( s.gidIsSet() ),
-  m_login_set( s.loginIsSet() ), m_is_mounted( s.isMounted() ), m_homes_share( s.isHomesShare() ),
-  m_homes_users( s.homesUsers() )
+  m_total( s.totalDiskSpace() ), m_free( s.freeDiskSpace() ), m_used( s.usedDiskSpace() ),
+  m_is_mounted( s.isMounted() ), m_homes_share( s.isHomesShare() ), m_homes_users( s.homesUsers() )
 {
   setUNC( s.unc( QUrl::None ) );
 }
@@ -83,8 +80,7 @@ Smb4KShare::Smb4KShare() : Smb4KBasicNetworkItem( Share ),
   m_url( QUrl() ), m_workgroup( QString() ), m_type_string( QString() ), m_comment( QString() ),
   m_host_ip( QString() ), m_path( QByteArray() ), m_inaccessible( false ), m_foreign( false ),
   m_filesystem( Unknown ), m_user( getuid() ), m_group( getgid() ), m_total( 0 ), m_free( 0 ), m_used( 0 ),
-  m_uid_set( false ), m_gid_set( false ), m_login_set( false ), m_is_mounted( false ),
-  m_homes_share( false ), m_homes_users( QStringList() )
+  m_is_mounted( false ), m_homes_share( false ), m_homes_users( QStringList() )
 {
 }
 
@@ -323,21 +319,18 @@ const QString Smb4KShare::fileSystemString() const
 void Smb4KShare::setUID( uid_t uid )
 {
   m_user = KUser( uid );
-  m_uid_set = true;
 }
 
 
 void Smb4KShare::setGID( gid_t gid )
 {
   m_group = KUserGroup( gid );
-  m_gid_set = true;
 }
 
 
 void Smb4KShare::setLogin( const QString &login )
 {
   m_url.setUserName( login );
-  m_login_set = true;
 }
 
 
@@ -682,21 +675,6 @@ bool Smb4KShare::isEmpty( CheckFlags flag ) const
         return false;
       }
 
-      if ( m_uid_set )
-      {
-        return false;
-      }
-
-      if ( m_gid_set )
-      {
-        return false;
-      }
-
-      if ( m_login_set )
-      {
-        return false;
-      }
-
       break;
     }
     case NetworkOnly:
@@ -755,21 +733,6 @@ bool Smb4KShare::isEmpty( CheckFlags flag ) const
         return false;
       }
 
-      if ( m_uid_set )
-      {
-        return false;
-      }
-
-      if ( m_gid_set )
-      {
-        return false;
-      }
-
-      if ( m_login_set )
-      {
-        return false;
-      }
-
       break;
     }
     default:
@@ -792,11 +755,8 @@ void Smb4KShare::setMountData( Smb4KShare *share )
     m_filesystem = share->fileSystem();
     m_user = KUser( share->uid() );
     m_group = KUserGroup( share->gid() );
-    m_login_set = share->loginIsSet();
     m_total = share->totalDiskSpace();
     m_free = share->freeDiskSpace();
-    m_uid_set = share->uidIsSet();
-    m_gid_set = share->gidIsSet();
     m_is_mounted = share->isMounted();
   }
   else
@@ -818,9 +778,6 @@ void Smb4KShare::resetMountData()
   m_group = KUserGroup( getgid() );
   m_total = -1;
   m_free = -1;
-  m_uid_set = false;
-  m_gid_set = false;
-  m_login_set = false;
   m_is_mounted = false;
 }
 
