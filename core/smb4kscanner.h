@@ -2,7 +2,7 @@
     smb4kscanner.h  -  The network scan core class of Smb4K.
                              -------------------
     begin                : Sam Mai 31 2003
-    copyright            : (C) 2003-2009 by Alexander Reinholdt
+    copyright            : (C) 2003-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 

@@ -2,7 +2,7 @@
     smb4kscanner.cpp  -  The network scan core class of Smb4K.
                              -------------------
     begin                : Sam Mai 31 2003
-    copyright            : (C) 2003-2009 by Alexander Reinholdt
+    copyright            : (C) 2003-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -1051,11 +1051,11 @@ void Smb4KScanner::lookupDomainMembers( Smb4KWorkgroup *workgroup )
     m_cache.insert( workgroup->key(), thread );
 
     connect( thread, SIGNAL( finished() ),
-            this,   SLOT( slotThreadFinished() ) );
+             this,   SLOT( slotThreadFinished() ) );
     connect( thread, SIGNAL( hosts( Smb4KWorkgroup *, QList<Smb4KHost> & ) ),
-            this,   SLOT( slotHosts( Smb4KWorkgroup *, QList<Smb4KHost> & ) ) );
+             this,   SLOT( slotHosts( Smb4KWorkgroup *, QList<Smb4KHost> & ) ) );
     connect( thread, SIGNAL( authError( Smb4KBasicNetworkItem * ) ),
-            this,   SLOT( slotAuthError( Smb4KBasicNetworkItem * ) ) );
+             this,   SLOT( slotAuthError( Smb4KBasicNetworkItem * ) ) );
 
     thread->start();
     thread->lookup( Smb4KSettings::masterBrowsersRequireAuth(), &authInfo, command );
@@ -1103,22 +1103,27 @@ void Smb4KScanner::lookupShares( Smb4KHost *host )
   // List shares
   command += net;
   
-  // Protocol hint.
-  // Only the RPC protocol may be set here, because the 'net share list' 
-  // command either takes the RPC protocol or none (in this case the protocol is 
-  // automatically set to RPC).
+  // Protocol hint & command.
   if ( info && info->protocol() != Smb4KSambaOptionsInfo::UndefinedProtocol )
   {
     switch ( info->protocol() )
     {
       case Smb4KSambaOptionsInfo::RPC:
       {
-        command += " rpc";
+        command += " rpc share list";
+        break;
+      }
+      case Smb4KSambaOptionsInfo::RAP:
+      {
+        qDebug() << "'net rap share' is used";
+        command += " rap share";
         break;
       }
       default:
       {
-        // Auto-detection
+        // Auto-detection. This only work with 'net share list' and 
+        // *NOT* with 'net share'.
+        command += " share list";
         break;
       }
     }
@@ -1129,19 +1134,24 @@ void Smb4KScanner::lookupShares( Smb4KHost *host )
     {
       case Smb4KSettings::EnumProtocolHint::RPC:
       {
-        command += " rpc";
+        command += " rpc share list";
+        break;
+      }
+      case Smb4KSettings::EnumProtocolHint::RAP:
+      {
+        qDebug() << "'net rap share' is used";
+        command += " rap share";
         break;
       }
       default:
       {
-        // Auto-detection
+        // Auto-detection. This only work with 'net share list' and 
+        // *NOT* with 'net share'.
+        command += " share list";
         break;
       }
     }
   }
-  
-  // Command
-  command += " share list";
   
   // Long output
   command += " -l";
