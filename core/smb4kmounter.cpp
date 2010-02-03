@@ -1441,6 +1441,9 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
   
   if ( !mountpoint_found )
   {
+    // Set the incoming share as unmounted.
+    share->setIsMounted( false );
+    
     // Clean up the mount prefix.
     if ( qstrncmp( share->canonicalPath(),
          QDir( Smb4KSettings::mountPrefix().path() ).canonicalPath().toUtf8(),
