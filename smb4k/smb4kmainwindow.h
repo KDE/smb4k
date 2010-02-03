@@ -2,7 +2,7 @@
     smb4kmainwindow  -  The main window of Smb4K.
                              -------------------
     begin                : Di Jan 1 2008
-    copyright            : (C) 2008-2009 by Alexander Reinholdt
+    copyright            : (C) 2008-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -80,11 +80,6 @@ class Smb4KMainWindow : public KParts::MainWindow
      * Reimplemented from KMainWindow.
      */
     bool queryExit();
-
-    /**
-     * Reimplemented from QObject.
-     */
-    void timerEvent( QTimerEvent *e );
 
   protected slots:
     /**
@@ -325,6 +320,11 @@ class Smb4KMainWindow : public KParts::MainWindow
      * Saves the settings
      */
     void saveSettings();
+    
+    /**
+     * Set up the mount indicator
+     */
+    void setupMountIndicator();
     
     /**
      * This is the progress bar in the status bar.

@@ -2,7 +2,7 @@
     smb4kmainwindow  -  The main window of Smb4K.
                              -------------------
     begin                : Di Jan 1 2008
-    copyright            : (C) 2008-2009 by Alexander Reinholdt
+    copyright            : (C) 2008-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -169,7 +169,7 @@ void Smb4KMainWindow::setupStatusBar()
   // Set the icon on the right side that represents the initial
   // state of the wallet manager.
   m_pass_icon = new QLabel( statusBar() );
-  m_pass_icon->setContentsMargins( 0, 0, 4, 0 );
+  m_pass_icon->setContentsMargins( 0, 0, 0, 0 );
   m_pass_icon->setAlignment( Qt::AlignCenter );
 
   // The feedback icon.
@@ -182,6 +182,7 @@ void Smb4KMainWindow::setupStatusBar()
   statusBar()->addPermanentWidget( m_pass_icon );
 
   slotWalletManagerInitialized();
+  setupMountIndicator();
 
   connect( Smb4KWalletManager::self(), SIGNAL( initialized() ),
            this,                       SLOT( slotWalletManagerInitialized() ) );
@@ -527,6 +528,9 @@ void Smb4KMainWindow::loadSettings()
   // Check the state of the password handler and the wallet settings and
   // set the pixmap in the status bar accordingly.
   slotWalletManagerInitialized();
+  
+  // Set up the mount indicator icon.
+  setupMountIndicator();
 }
 
 
@@ -563,9 +567,48 @@ bool Smb4KMainWindow::queryExit()
 }
 
 
-void Smb4KMainWindow::timerEvent( QTimerEvent */*e*/ )
+void Smb4KMainWindow::setupMountIndicator()
 {
-  m_progress_bar->setValue( m_progress_bar->value() + 1 );
+  int number = 0;
+                              
+  if ( !mountedSharesList()->isEmpty() )
+  {
+    for ( int i = 0; i < mountedSharesList()->size(); ++i )
+    {
+      if ( !mountedSharesList()->at( i )->isForeign() || Smb4KSettings::showAllShares() )
+      {
+        number++;
+        continue;
+      }
+      else
+      {
+        continue;
+      }
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  QStringList overlays;
+  
+  if ( number == 0 )
+  {
+    m_feedback_icon->setToolTip( i18n( "There are currently no shares mounted." ) );
+  }
+  else if ( number == 1 )
+  {
+    overlays.append( "emblem-mounted" );
+    m_feedback_icon->setToolTip( i18n( "There is currently %1 share mounted." ).arg( number ) );
+  }
+  else
+  {
+    overlays.append( "emblem-mounted" );
+    m_feedback_icon->setToolTip( i18n( "There are currently %1 shares mounted." ).arg( number ) );
+  }
+  
+  m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::Small, 0, KIconLoader::DefaultState, overlays ) );
 }
 
 
@@ -887,14 +930,14 @@ void Smb4KMainWindow::slotWalletManagerInitialized()
       {
         m_pass_icon->setPixmap( KIconLoader::global()->loadIcon( "wallet-open",
                                 KIconLoader::Small, 0, KIconLoader::DefaultState ) );
-        m_pass_icon->setToolTip( i18n( "Wallet is in use." ) );
+        m_pass_icon->setToolTip( i18n( "The wallet is in use." ) );
         break;
       }
       default:
       {
         m_pass_icon->setPixmap( KIconLoader::global()->loadIcon( "wallet-closed",
                                 KIconLoader::Small, 0, KIconLoader::DefaultState ) );
-        m_pass_icon->setToolTip( i18n( "Wallet is not in use." ) );
+        m_pass_icon->setToolTip( i18n( "The wallet is not in use." ) );
         break;
       }
     }
@@ -906,11 +949,11 @@ void Smb4KMainWindow::slotWalletManagerInitialized()
 
     if ( Smb4KSettings::rememberLogins() )
     {
-      m_pass_icon->setToolTip( i18n( "Password dialog mode is used and logins are remembered." ) );
+      m_pass_icon->setToolTip( i18n( "The password dialog mode is used and logins are remembered." ) );
     }
     else
     {
-      m_pass_icon->setToolTip( i18n( "Password dialog mode is used and logins are not remembered." ) );
+      m_pass_icon->setToolTip( i18n( "The password dialog mode is used and logins are not remembered." ) );
     }
   }
 }
@@ -1290,8 +1333,6 @@ void Smb4KMainWindow::slotPreviewerFinished( Smb4KPreviewItem */*item*/ )
 
 void Smb4KMainWindow::slotEndVisualFeedback()
 {
-  m_feedback_icon->setPixmap( QPixmap() );
-
   QList<QTabBar *> list = findChildren<QTabBar *>();
   QDockWidget *shares_dock = findChild<QDockWidget *>( "SharesViewDockWidget" );
 
@@ -1322,6 +1363,8 @@ void Smb4KMainWindow::slotEndVisualFeedback()
       }
     }
   }
+
+  setupMountIndicator();
 }
 
 #include "smb4kmainwindow.moc"
