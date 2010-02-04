@@ -83,8 +83,6 @@ Smb4KCore::Smb4KCore() : QObject()
   // Search for the programs that are needed by Smb4K:
   searchPrograms();
 
-  m_bookmarkHandler = new Smb4KBookmarkHandler( this );
-
   // Connections:
   connect( scanner(),      SIGNAL( stateChanged() ),
            this,           SLOT( slotSetCurrentState() ) );

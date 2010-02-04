@@ -104,7 +104,7 @@ class KDE_EXPORT Smb4KCore : public QObject
     /**
      * Returns a pointer to the bookmark handler object.
      */
-    static Smb4KBookmarkHandler *bookmarkHandler() { return self()->m_bookmarkHandler; }
+    static Smb4KBookmarkHandler *bookmarkHandler() { return Smb4KBookmarkHandler::self(); }
 
     /**
      * Returns a pointer to the printer handler object.
@@ -193,11 +193,6 @@ class KDE_EXPORT Smb4KCore : public QObject
      * The destructor.
      */
     ~Smb4KCore();
-
-    /**
-     * The bookmark handler object.
-     */
-    Smb4KBookmarkHandler *m_bookmarkHandler;
 
     /**
      * Holds the current state.
