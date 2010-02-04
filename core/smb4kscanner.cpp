@@ -85,29 +85,95 @@ void Smb4KScanner::init()
 
 void Smb4KScanner::abort( Smb4KBasicNetworkItem *item, int process )
 {
-  if ( item )
-  {
-    BasicScanThread *thread = m_cache.object( item->key() );
+  QStringList keys = m_cache.keys();
 
-    if ( thread && thread->process() &&
-         (thread->process()->state() == KProcess::Running || thread->process()->state() == KProcess::Starting) )
+  foreach ( const QString &key, keys )
+  {
+    BasicScanThread *thread = m_cache.object( key );
+
+    if ( thread->process() && (!item || QString::compare( item->key()+QString( "-%1" ).arg( process ), key ) == 0) )
     {
-      thread->process()->abort();
+      switch ( thread->process()->type() )
+      {
+        case Smb4KProcess::LookupDomains:
+        {
+          if ( process == LookupDomains )
+          {
+            thread->process()->abort();
+          }
+          else
+          {
+            // Do nothing
+          }
+
+          break;
+        }
+        case Smb4KProcess::LookupDomainMembers:
+        {
+          if ( process == LookupDomainMembers )
+          {
+            thread->process()->abort();
+          }
+          else
+          {
+            // Do nothing
+          }
+
+          break;
+        }
+        case Smb4KProcess::LookupShares:
+        {
+          if ( process == LookupShares )
+          {
+            thread->process()->abort();
+          }
+          else
+          {
+            // Do nothing
+          }
+          
+          break;
+        }
+        case Smb4KProcess::LookupInfo:
+        {
+          if ( process == LookupInfo )
+          {
+            thread->process()->abort();
+          }
+          else
+          {
+            // Do nothing
+          }
+          
+          break;
+        }
+        default:
+        {
+          break;
+        }
+      }
     }
     else
     {
-      // Do nothing
+      continue;
     }
   }
-  else
-  {
-    QStringList keys = m_cache.keys();
+}
 
-    foreach ( const QString &key, keys )
+
+bool Smb4KScanner::isAborted( Smb4KBasicNetworkItem *item, int process )
+{
+  bool aborted = false;
+
+  QStringList keys = m_cache.keys();
+
+  foreach ( const QString &key, keys )
+  {
+    if ( !aborted )
     {
       BasicScanThread *thread = m_cache.object( key );
 
-      if ( thread->process() )
+      if ( thread->process() && (!item || QString::compare( item->key()+QString( "-%1" ).arg( process ), key ) == 0) )
       {
         switch ( thread->process()->type() )
         {
@@ -115,7 +181,7 @@ void Smb4KScanner::abort( Smb4KBasicNetworkItem *item, int process )
           {
             if ( process == LookupDomains )
             {
-              thread->process()->abort();
+              aborted = thread->process()->isAborted();
             }
             else
             {
@@ -128,7 +194,7 @@ void Smb4KScanner::abort( Smb4KBasicNetworkItem *item, int process )
           {
             if ( process == LookupDomainMembers )
             {
-              thread->process()->abort();
+              aborted = thread->process()->isAborted();
             }
             else
             {
@@ -141,27 +207,31 @@ void Smb4KScanner::abort( Smb4KBasicNetworkItem *item, int process )
           {
             if ( process == LookupShares )
             {
-              thread->process()->abort();
+              aborted = thread->process()->isAborted();
             }
             else
             {
               // Do nothing
             }
+            
+            break;
           }
           case Smb4KProcess::LookupInfo:
           {
             if ( process == LookupInfo )
             {
-              thread->process()->abort();
+              aborted = thread->process()->isAborted();
             }
             else
             {
               // Do nothing
             }
+            
+            break;
           }
           default:
           {
-            break;
+              break;
           }
         }
       }
@@ -170,96 +240,9 @@ void Smb4KScanner::abort( Smb4KBasicNetworkItem *item, int process )
         continue;
       }
     }
-  }
-}
-
-
-bool Smb4KScanner::isAborted( Smb4KBasicNetworkItem *item, int process )
-{
-  bool aborted = false;
-
-  if ( item )
-  {
-    BasicScanThread *thread = m_cache.object( item->key() );
-    aborted = (thread && thread->process() && thread->process()->isAborted());
-  }
-  else
-  {
-    QStringList keys = m_cache.keys();
-
-    foreach ( const QString &key, keys )
+    else
     {
-      if ( !aborted )
-      {
-        BasicScanThread *thread = m_cache.object( key );
-
-        if ( thread->process() )
-        {
-          switch ( thread->process()->type() )
-          {
-            case Smb4KProcess::LookupDomains:
-            {
-              if ( process == LookupDomains )
-              {
-                aborted = thread->process()->isAborted();
-              }
-              else
-              {
-                // Do nothing
-              }
-
-              break;
-            }
-            case Smb4KProcess::LookupDomainMembers:
-            {
-              if ( process == LookupDomainMembers )
-              {
-                aborted = thread->process()->isAborted();
-              }
-              else
-              {
-                // Do nothing
-              }
-
-              break;
-            }
-            case Smb4KProcess::LookupShares:
-            {
-              if ( process == LookupShares )
-              {
-                aborted = thread->process()->isAborted();
-              }
-              else
-              {
-                // Do nothing
-              }
-            }
-            case Smb4KProcess::LookupInfo:
-            {
-              if ( process == LookupInfo )
-              {
-                aborted = thread->process()->isAborted();
-              }
-              else
-              {
-                // Do nothing
-              }
-            }
-            default:
-            {
-              break;
-            }
-          }
-        }
-        else
-        {
-          continue;
-        }
-      }
-      else
-      {
-        break;
-      }
+      break;
     }
   }
 
@@ -305,92 +288,88 @@ void Smb4KScanner::abortAll()
 bool Smb4KScanner::isRunning( Smb4KBasicNetworkItem *item, int process )
 {
   bool running = false;
+  
+  QStringList keys = m_cache.keys();
 
-  if ( item )
+  foreach ( const QString &key, keys )
   {
-    BasicScanThread *thread = m_cache.object( item->key() );
-    running = (thread && thread->process() && thread->process()->state() == KProcess::Running);
-  }
-  else
-  {
-    QStringList keys = m_cache.keys();
-
-    foreach ( const QString &key, keys )
+    if ( !running )
     {
-      if ( !running )
+      BasicScanThread *thread = m_cache.object( key );
+
+      if ( thread->process() && (!item || QString::compare( item->key()+QString( "-%1" ).arg( process ), key ) == 0) )
       {
-        BasicScanThread *thread = m_cache.object( key );
-
-        if ( thread->process() )
+        switch ( thread->process()->type() )
         {
-          switch ( thread->process()->type() )
+          case Smb4KProcess::LookupDomains:
           {
-            case Smb4KProcess::LookupDomains:
+            if ( process == LookupDomains )
             {
-              if ( process == LookupDomains )
-              {
-                running = (thread->process()->state() == KProcess::Running);
-              }
-              else
-              {
-                // Do nothing
-              }
+              running = (thread->process()->state() == KProcess::Running);
+            }
+            else
+            {
+              // Do nothing
+            }
 
-              break;
-            }
-            case Smb4KProcess::LookupDomainMembers:
-            {
-              if ( process == LookupDomainMembers )
-              {
-                running = (thread->process()->state() == KProcess::Running);
-              }
-              else
-              {
-                // Do nothing
-              }
-
-              break;
-            }
-            case Smb4KProcess::LookupShares:
-            {
-              if ( process == LookupShares )
-              {
-                running = (thread->process()->state() == KProcess::Running);
-              }
-              else
-              {
-                // Do nothing
-              }
-            }
-            case Smb4KProcess::LookupInfo:
-            {
-              if ( process == LookupInfo )
-              {
-                running = (thread->process()->state() == KProcess::Running);
-              }
-              else
-              {
-                // Do nothing
-              }
-            }
-            default:
-            {
-              break;
-            }
+            break;
           }
-        }
-        else
-        {
-          continue;
+          case Smb4KProcess::LookupDomainMembers:
+          {
+            if ( process == LookupDomainMembers )
+            {
+              running = (thread->process()->state() == KProcess::Running);
+            }
+            else
+            {
+              // Do nothing
+            }
+
+            break;
+          }
+          case Smb4KProcess::LookupShares:
+          {
+            if ( process == LookupShares )
+            {
+              running = (thread->process()->state() == KProcess::Running);
+            }
+            else
+            {
+              // Do nothing
+            }
+            
+            break;
+          }
+          case Smb4KProcess::LookupInfo:
+          {
+            if ( process == LookupInfo )
+            {
+              running = (thread->process()->state() == KProcess::Running);
+            }
+            else
+            {
+              // Do nothing
+            }
+            
+            break;
+          }
+          default:
+          {
+            break;
+          }
         }
       }
       else
       {
-        break;
+        continue;
       }
     }
+    else
+    {
+      break;
+    }
   }
-
+  
   return running;
 }
 
@@ -1048,7 +1027,7 @@ void Smb4KScanner::lookupDomainMembers( Smb4KWorkgroup *workgroup )
     emit aboutToStart( workgroup, LookupDomainMembers );
 
     LookupMembersThread *thread = new LookupMembersThread( workgroup, this );
-    m_cache.insert( workgroup->key(), thread );
+    m_cache.insert( workgroup->key()+QString( "-%1" ).arg( LookupDomainMembers ), thread );
 
     connect( thread, SIGNAL( finished() ),
              this,   SLOT( slotThreadFinished() ) );
@@ -1225,7 +1204,7 @@ void Smb4KScanner::lookupShares( Smb4KHost *host )
   emit aboutToStart( host, LookupShares );
 
   LookupSharesThread *thread = new LookupSharesThread( host, this );
-  m_cache.insert( host->key(), thread );
+  m_cache.insert( host->key()+QString( "-%1" ).arg( LookupShares ), thread );
 
   connect( thread, SIGNAL( finished() ),
            this,   SLOT( slotThreadFinished() ) );
@@ -1395,7 +1374,7 @@ void Smb4KScanner::lookupInfo( Smb4KHost *host )
   emit aboutToStart( host, LookupInfo );
 
   LookupInfoThread *thread = new LookupInfoThread( host, this );
-  m_cache.insert( host->key(), thread );
+  m_cache.insert( host->key()+QString( "-%1" ).arg( LookupInfo ), thread );
 
   connect( thread, SIGNAL( finished() ),
            this,   SLOT( slotThreadFinished() ) );
