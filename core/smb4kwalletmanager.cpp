@@ -137,7 +137,7 @@ void Smb4KWalletManager::init( QWidget *parent, bool async )
         }
         else
         {
-          kWarning() << "Opening the wallet failed ..." << endl;
+          qWarning() << "Opening the wallet failed ..." << endl;
           m_state = Unknown;
         }
 
@@ -186,7 +186,7 @@ void Smb4KWalletManager::setupFolder()
   }
   else
   {
-    kWarning() << "No wallet or wallet not open ..." << endl;
+    qWarning() << "No wallet or wallet not open ..." << endl;
   }
 }
 
@@ -1087,7 +1087,7 @@ void Smb4KWalletManager::slotWalletOpened( bool success )
   }
   else
   {
-    kWarning() << "Opening the wallet failed ..." << endl;
+    qWarning() << "Opening the wallet failed ..." << endl;
     m_state = Unknown;
   }
 
