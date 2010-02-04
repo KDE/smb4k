@@ -2,7 +2,7 @@
     smb4knetworkbrowsertooltip  -  Tool tip for the network browser.
                              -------------------
     begin                : Sa Jan 20 2007
-    copyright            : (C) 2007-2008 by Alexander Reinholdt
+    copyright            : (C) 2007-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -549,7 +549,7 @@ void Smb4KNetworkBrowserToolTip::showEvent( QShowEvent *e )
 
 void Smb4KNetworkBrowserToolTip::hideEvent( QHideEvent *e )
 {
-  emit aboutToHide();
+  emit aboutToHide( m_item );
   QLabel::hideEvent( e );
 }
 

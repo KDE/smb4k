@@ -2,7 +2,7 @@
     smb4knetworkbrowsertooltip  -  Tool tip for the network browser.
                              -------------------
     begin                : Sa Jan 20 2007
-    copyright            : (C) 2007-2008 by Alexander Reinholdt
+    copyright            : (C) 2007-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -106,15 +106,16 @@ class Smb4KNetworkBrowserToolTip : public QLabel
     /**
      * This signal is emitted when the tool tip is about to be shown.
      *
-     * @param item            The network item that carries the data that
-     *                        is about to be shown.
+     * @param item            The network browser item
      */
     void aboutToShow( Smb4KNetworkBrowserItem *item );
 
     /**
      * This signal is emitted when the tool tip is about to be hidden.
+     * 
+     * @param item            The network browser item
      */
-    void aboutToHide();
+    void aboutToHide( Smb4KNetworkBrowserItem *item );
 
   protected:
     /**
