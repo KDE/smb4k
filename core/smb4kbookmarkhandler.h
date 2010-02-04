@@ -52,20 +52,17 @@ class Smb4KShare;
 class KDE_EXPORT Smb4KBookmarkHandler : public QObject
 {
   Q_OBJECT
+  
+  friend class Smb4KBookmarkHandlerPrivate;
 
   public:
     /**
-     * The constructor.
+     * This function returns a static pointer to this class.
      *
-     * @param parent        The parent of this object
+     * @returns a static pointer to the Smb4KSynchronizer class.
      */
-    Smb4KBookmarkHandler( QObject *parent = 0 );
-
-    /**
-     * The destructor.
-     */
-    ~Smb4KBookmarkHandler();
-
+    static Smb4KBookmarkHandler *self();
+    
     /**
      * This function adds a new bookmark.
      *
@@ -139,6 +136,18 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
     void updated();
 
   private:
+    /**
+     * The constructor.
+     *
+     * @param parent        The parent of this object
+     */
+    Smb4KBookmarkHandler();
+
+    /**
+     * The destructor.
+     */
+    ~Smb4KBookmarkHandler();
+    
     /**
      * The list of bookmarks.
      */

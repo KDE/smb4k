@@ -56,8 +56,17 @@
 using namespace Smb4KGlobal;
 
 
-Smb4KBookmarkHandler::Smb4KBookmarkHandler( QObject *parent )
-: QObject( parent )
+class Smb4KBookmarkHandlerPrivate
+{
+  public:
+    Smb4KBookmarkHandler instance;
+};
+
+K_GLOBAL_STATIC( Smb4KBookmarkHandlerPrivate, priv );
+
+
+
+Smb4KBookmarkHandler::Smb4KBookmarkHandler() : QObject()
 {
   // First we need the directory.
   QString dir = KGlobal::dirs()->locateLocal( "data", "smb4k", KGlobal::mainComponent() );
@@ -79,6 +88,11 @@ Smb4KBookmarkHandler::~Smb4KBookmarkHandler()
   }
 }
 
+
+Smb4KBookmarkHandler *Smb4KBookmarkHandler::self()
+{
+  return &priv->instance;
+}
 
 
 void Smb4KBookmarkHandler::addBookmark( Smb4KShare *share, bool overwrite )
