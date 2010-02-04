@@ -166,8 +166,10 @@ class Smb4KNetworkBrowserPart : public KParts::Part
     /**
      * This slot is called when the tool tip is about to be closed. It stops the
      * search for addtitional information if necessary.
+     * 
+     * @param item                The network browser item
      */
-    void slotAboutToHideToolTip();
+    void slotAboutToHideToolTip( Smb4KNetworkBrowserItem *item );
 
     /**
      * This slot receives the workgroups/domains found by the scanner. It takes

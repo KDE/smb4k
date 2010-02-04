@@ -140,8 +140,8 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject
   connect( m_widget->tooltip(),    SIGNAL( aboutToShow( Smb4KNetworkBrowserItem * ) ),
            this,                   SLOT( slotAboutToShowToolTip( Smb4KNetworkBrowserItem * ) ) );
 
-  connect( m_widget->tooltip(),    SIGNAL( aboutToHide() ),
-           this,                   SLOT( slotAboutToHideToolTip() ) );
+  connect( m_widget->tooltip(),    SIGNAL( aboutToHide( Smb4KNetworkBrowserItem * ) ),
+           this,                   SLOT( slotAboutToHideToolTip( Smb4KNetworkBrowserItem * ) ) );
 
   connect( Smb4KCore::scanner(),   SIGNAL( workgroups( const QList<Smb4KWorkgroup *> & ) ),
            this,                   SLOT( slotWorkgroups( const QList<Smb4KWorkgroup *> & ) ) );
@@ -674,7 +674,7 @@ void Smb4KNetworkBrowserPart::slotAboutToShowToolTip( Smb4KNetworkBrowserItem *i
         // if necessary.
         if ( !item->hostItem()->infoChecked() )
         {
-          Smb4KCore::scanner()->lookupInfo( item->hostItem() );
+          Smb4KScanner::self()->lookupInfo( item->hostItem() );
         }
         else
         {
@@ -696,17 +696,35 @@ void Smb4KNetworkBrowserPart::slotAboutToShowToolTip( Smb4KNetworkBrowserItem *i
 }
 
 
-void Smb4KNetworkBrowserPart::slotAboutToHideToolTip()
+void Smb4KNetworkBrowserPart::slotAboutToHideToolTip( Smb4KNetworkBrowserItem *item )
 {
-  if ( Smb4KCore::scanner()->isRunning() &&
-       Smb4KCore::scanner()->currentState() == SCANNER_QUERY_INFO )
+  if ( item )
   {
-    kDebug() << "Only abort the scan for this tooltip ..." << endl;
-    Smb4KCore::scanner()->abortAll();
+    switch ( item->type() )
+    {
+      case Smb4KNetworkBrowserItem::Host:
+      {
+        // Kill the lookup process for the additional information
+        // and nothing else.
+        if ( Smb4KScanner::self()->isRunning( item->hostItem(), Smb4KScanner::LookupInfo ) )
+        {
+          Smb4KScanner::self()->abort( item->hostItem(), Smb4KScanner::LookupInfo );
+        }
+        else
+        {
+          // Do nothing
+        }
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
   }
   else
   {
-    // Do nothing
+    // Do nothing --- BTW: Will this case occur at all?
   }
 }
 
