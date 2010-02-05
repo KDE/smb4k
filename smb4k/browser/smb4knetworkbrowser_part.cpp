@@ -2001,7 +2001,8 @@ void Smb4KNetworkBrowserPart::slotShareMounted( Smb4KShare *share )
       Smb4KNetworkBrowserItem *browser_item = static_cast<Smb4KNetworkBrowserItem *>( list.at( i ) );
 
       if ( browser_item->type() == Smb4KNetworkBrowserItem::Share &&
-           QString::compare( browser_item->shareItem()->workgroupName(), share->workgroupName(), Qt::CaseInsensitive ) == 0 &&
+           (share->workgroupName().isEmpty() ||
+            QString::compare( browser_item->shareItem()->workgroupName(), share->workgroupName(), Qt::CaseInsensitive ) == 0) &&
            QString::compare( browser_item->shareItem()->hostName(), share->hostName(), Qt::CaseInsensitive ) == 0 )
       {
         if ( !share->isForeign() || Smb4KSettings::showAllShares() )
@@ -2043,7 +2044,8 @@ void Smb4KNetworkBrowserPart::slotShareUnmounted( Smb4KShare *share )
       Smb4KNetworkBrowserItem *browser_item = static_cast<Smb4KNetworkBrowserItem *>( list.at( i ) );
 
       if ( browser_item->type() == Smb4KNetworkBrowserItem::Share &&
-           QString::compare( browser_item->shareItem()->workgroupName(), share->workgroupName(), Qt::CaseInsensitive ) == 0 &&
+           (share->workgroupName().isEmpty() ||
+            QString::compare( browser_item->shareItem()->workgroupName(), share->workgroupName(), Qt::CaseInsensitive ) == 0) &&
            QString::compare( browser_item->shareItem()->hostName(), share->hostName(), Qt::CaseInsensitive ) == 0 )
       {
         // Check if we really have to unmark the share.

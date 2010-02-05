@@ -592,6 +592,34 @@
       <default>false</default>
     </entry>
     <!-- The custom tab is filled by the core -->
+    <entry name="SecurityMode" type="Enum">
+      <label>Security mode:</label>
+      <whatsthis>Security mode for mount.cifs. To be able to use this mode, the CIFS kernel module 1.40 or later is required.</whatsthis>
+      <choices>
+        <choice name="None">
+          <label>Attempt to connect as a null user (no name)</label>
+        </choice>
+        <choice name="Krb5">
+          <label>Use Kerberos authentication</label>
+        </choice>
+        <choice name="Krb5i">
+          <label>Use Kerberos authentication and packet signing</label>
+        </choice>
+        <choice name="Ntlm">
+          <label>Use NTLM password hashing (default)</label>
+        </choice>
+        <choice name="Ntlmi">
+          <label>Use NTLM password hashing with packet signing</label>
+        </choice>
+        <choice name="Ntlmv2">
+          <label>Use NTLMv2 password hashing</label>
+        </choice>
+        <choice name="Ntlmv2i">
+          <label>Use NTLMv2 password hashing with packet signing</label>
+        </choice>
+      </choices>
+      <default>Ntlm</default>
+    </entry>
   </group>
 
 <!-- Synchronization -->

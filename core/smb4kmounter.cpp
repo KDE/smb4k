@@ -831,9 +831,53 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   
   // Locking
   command += Smb4KSettings::noLocking() ? ",nolock" : "";
+  
+  // Security mode
+  switch ( Smb4KSettings::securityMode() )
+  {
+    case Smb4KSettings::EnumSecurityMode::None:
+    {
+      command += ",sec=none";
+      break;
+    }
+    case Smb4KSettings::EnumSecurityMode::Krb5:
+    {
+      command += ",sec=krb5";
+      break;
+    }
+    case Smb4KSettings::EnumSecurityMode::Krb5i:
+    {
+      command += ",sec=krb5i";
+      break;
+    }
+    case Smb4KSettings::EnumSecurityMode::Ntlm:
+    {
+      command += ",sec=ntlm";
+      break;
+    }
+    case Smb4KSettings::EnumSecurityMode::Ntlmi:
+    {
+      command += ",sec=ntlmi";
+      break;
+    }
+    case Smb4KSettings::EnumSecurityMode::Ntlmv2:
+    {
+      command += ",sec=ntlmv2";
+      break;
+    }
+    case Smb4KSettings::EnumSecurityMode::Ntlmv2i:
+    {
+      command += ",sec=ntlmv2i";
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
 
   // Global custom options provided by the user
-  command += !Smb4KSettings::customCIFSOptions().isEmpty() ? Smb4KSettings::customCIFSOptions() : "";
+  command += !Smb4KSettings::customCIFSOptions().isEmpty() ? ","+Smb4KSettings::customCIFSOptions() : "";
   
   // Fix existing comma, if necessary.
   if ( command.endsWith( "," ) )

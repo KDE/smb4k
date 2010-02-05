@@ -3,7 +3,7 @@
     Samba settings of Smb4K
                              -------------------
     begin                : Mo Jan 26 2004
-    copyright            : (C) 2004-2008 by Alexander Reinholdt
+    copyright            : (C) 2004-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -502,6 +502,26 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
   QGridLayout *c_extra_layout  = new QGridLayout( c_extra_widget );
   c_extra_layout->setSpacing( 5 );
   c_extra_layout->setMargin( 0 );
+  
+  QLabel *security_label       = new QLabel( Smb4KSettings::self()->securityModeItem()->label(),
+                                 c_extra_widget );
+                                 
+  KComboBox *security_box      = new KComboBox( c_extra_widget );
+  security_box->setObjectName( "kcfg_SecurityMode" );
+  security_box->insertItem( Smb4KSettings::EnumSecurityMode::None,
+                            Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::None ).label );
+  security_box->insertItem( Smb4KSettings::EnumSecurityMode::Krb5,
+                            Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Krb5 ).label );
+  security_box->insertItem( Smb4KSettings::EnumSecurityMode::Krb5i,
+                            Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Krb5i ).label );
+  security_box->insertItem( Smb4KSettings::EnumSecurityMode::Ntlm,
+                            Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlm ).label );
+  security_box->insertItem( Smb4KSettings::EnumSecurityMode::Ntlmi,
+                            Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmi ).label );
+  security_box->insertItem( Smb4KSettings::EnumSecurityMode::Ntlmv2,
+                            Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmv2 ).label );
+  security_box->insertItem( Smb4KSettings::EnumSecurityMode::Ntlmv2i,
+                            Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmv2i ).label );
 
   QLabel *add_options_label    = new QLabel( Smb4KSettings::self()->customCIFSOptionsItem()->label(),
                                  c_extra_widget );
@@ -509,8 +529,10 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
   KLineEdit *additional_opts   = new KLineEdit( c_extra_widget );
   additional_opts->setObjectName( "kcfg_CustomCIFSOptions" );
 
-  c_extra_layout->addWidget( add_options_label, 0, 0, 0 );
-  c_extra_layout->addWidget( additional_opts, 0, 1, 0 );
+  c_extra_layout->addWidget( security_label, 0, 0, 0 );
+  c_extra_layout->addWidget( security_box, 0, 1, 0 );
+  c_extra_layout->addWidget( add_options_label, 1, 0, 0 );
+  c_extra_layout->addWidget( additional_opts, 1, 1, 0 );
 
   advanced_layout->addWidget( permission_checks, 0, 0, 0 );
   advanced_layout->addWidget( client_controls, 0, 1, 0 );

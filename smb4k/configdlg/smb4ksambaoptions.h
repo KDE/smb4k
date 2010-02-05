@@ -3,7 +3,7 @@
     Samba settings of Smb4K
                              -------------------
     begin                : Mo Jan 26 2004
-    copyright            : (C) 2004-2008 by Alexander Reinholdt
+    copyright            : (C) 2004-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
