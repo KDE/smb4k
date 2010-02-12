@@ -89,8 +89,9 @@ Smb4K SVN_HEAD (????-??-??):
     not supported anymore and we now use /etc/mtab as fall back solution under
     non-FreeBSD operating systems.
   + Replaced old updated() signal with one that emits the share that was updated.
-  + Before the mounted() and unmounted() signals are emitted, we check /etc/mtab
-    if the (un)mounting was successful.
+  + Before the mounted() and unmounted() signals are emitted, we check if the 
+    (un)mounting was successful.
+  + Added 'sec' argument for mount.cifs under non-FreeBSD operating systems.
 - Revised Smb4KSambaOptionsHandler class:
   + Introduced public hasCustomOptions() function.
   + Replaced remount() function with addRemount() and removeRemount() functions.
@@ -278,6 +279,13 @@ Smb4K SVN_HEAD (????-??-??):
     when you use a laptop.
   + Reintroduced scroll capabilities to the pages of the configuration dialog, so
     that the configuration dialog is fully visible also with small screens.
+  + Added ability to define the security mode for mounting to the Samba page.
+  + Removed the edit lines for the default username and password. If you choose
+    to use a default login, a password dialog will pop up where you can enter the
+    needed information. This way, the password dialog for the wallet will only be
+    shown when it is actually needed.
+  + Added editor for the entries in the wallet. There is no need for KWalletManager
+    anymore to edit or remove logins.
 - Revised main window:
   + The icon in the status bar, that indicates the status of the authentication
     system now shows a key if the wallet system is not used, i.e. we are in
