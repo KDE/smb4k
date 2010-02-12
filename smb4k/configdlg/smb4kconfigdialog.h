@@ -2,7 +2,7 @@
     smb4kconfigdialog  -  The configuration dialog of Smb4K
                              -------------------
     begin                : Sa Apr 14 2007
-    copyright            : (C) 2007-2009 by Alexander Reinholdt
+    copyright            : (C) 2007-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -108,6 +108,26 @@ class Smb4KConfigDialog : public KConfigDialog
      * from the configuration file of the currently chosen program.
      */
     void slotRemoveSuperUserEntries();
+    
+    /**
+     * This slot is connected to the "Load" button of the "Wallet Entries" tab
+     * of the "Authentication" configuration page. It loads the authentication
+     * information and puts it into the list view.
+     */
+    void slotLoadAuthenticationInformation();
+    
+    /**
+     * This slot is connected to the "Save" button of the "Wallet Entries" tab
+     * of the "Authentication" configuration page. It saves the authentication
+     * information.
+     */
+    void slotSaveAuthenticationInformation();
+    
+    /**
+     * This slot is connected to the Smb4KAuthOptions::setDefaultLogin() signal.
+     * It defines the default login.
+     */
+    void slotSetDefaultLogin();
 
     /**
      * This slot is activated if the Smb4KSudoWriterInterface::failed()
@@ -140,16 +160,6 @@ class Smb4KConfigDialog : public KConfigDialog
      * Save the custom Samba options
      */
     void saveCustomSambaOptions();
-
-    /**
-     * Load the authentication data
-     */
-    void loadAuthenticationData();
-
-    /**
-     * Save the authentication data
-     */
-    void saveAuthenticationData();
 
     /**
      * Write super user configuration entries to configuration file.

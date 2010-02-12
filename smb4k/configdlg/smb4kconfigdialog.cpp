@@ -2,7 +2,7 @@
     smb4kconfigdialog  -  The configuration dialog of Smb4K
                              -------------------
     begin                : Sa Apr 14 2007
-    copyright            : (C) 2007-2009 by Alexander Reinholdt
+    copyright            : (C) 2007-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -40,6 +40,7 @@
 #include <kgenericfactory.h>
 #include <kconfiggroup.h>
 #include <kstandarddirs.h>
+#include <kpassworddialog.h>
 
 // system specific includes
 #include <unistd.h>
@@ -191,11 +192,20 @@ void Smb4KConfigDialog::setupDialog()
   // Smb4KConfigDialog::showEvent()!
 
   // Connections
-  connect( samba_options,           SIGNAL( customSettingsModified() ),
-           this,                    SLOT( slotCustomSambaSettingsModified() ) );
+  connect( samba_options,      SIGNAL( customSettingsModified() ),
+           this,               SLOT( slotCustomSambaSettingsModified() ) );
 
-  connect( super_user_options,      SIGNAL( removeEntries() ),
-           this,                    SLOT( slotRemoveSuperUserEntries() ) );
+  connect( super_user_options, SIGNAL( removeEntries() ),
+           this,               SLOT( slotRemoveSuperUserEntries() ) );
+          
+  connect( auth_options,       SIGNAL( loadWalletEntries() ),
+           this,               SLOT( slotLoadAuthenticationInformation() ) );
+           
+  connect( auth_options,       SIGNAL( saveWalletEntries() ),
+           this,               SLOT( slotSaveAuthenticationInformation() ) );
+           
+  connect( auth_options,       SIGNAL( setDefaultLogin() ),
+           this,               SLOT( slotSetDefaultLogin() ) );
 
   setInitialSize( QSize( 800, 600 ) );
 
@@ -237,70 +247,6 @@ void Smb4KConfigDialog::saveCustomSambaOptions()
   }
 
   Smb4KSambaOptionsHandler::self()->updateCustomOptions( list );
-}
-
-
-void Smb4KConfigDialog::loadAuthenticationData()
-{
-  // Read the default authentication information.
-  Smb4KAuthInfo authInfo;
-  authInfo.setDefaultAuthInfo();
-
-  Smb4KWalletManager::self()->readAuthInfo( &authInfo );
-
-  KLineEdit *default_user = findChild<KLineEdit *>( "DefaultUserName" );
-
-  if ( default_user )
-  {
-    default_user->setText( authInfo.login() );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  KLineEdit *default_pass = findChild<KLineEdit *>( "DefaultPassword" );
-
-  if ( default_pass )
-  {
-    default_pass->setText( authInfo.password() );
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KConfigDialog::saveAuthenticationData()
-{
-  // Write the default authentication information.
-  Smb4KAuthInfo authInfo;
-  authInfo.setDefaultAuthInfo();
-
-  KLineEdit *default_user = findChild<KLineEdit *>( "DefaultUserName" );
-
-  if ( default_user )
-  {
-    authInfo.setLogin( default_user->text() );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  KLineEdit *default_pass = findChild<KLineEdit *>( "DefaultPassword" );
-
-  if ( default_pass )
-  {
-    authInfo.setPassword( default_pass->text() );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  Smb4KWalletManager::self()->writeAuthInfo( &authInfo );
 }
 
 
@@ -607,7 +553,6 @@ void Smb4KConfigDialog::showEvent( QShowEvent *e )
   if ( !e->spontaneous() )
   {
     loadCustomSambaOptions();
-    loadAuthenticationData();
   }
   else
   {
@@ -635,7 +580,6 @@ void Smb4KConfigDialog::slotButtonClicked( int button )
       }
 
       saveCustomSambaOptions();
-      saveAuthenticationData();
       writeSuperUserEntries();
 
       break;
@@ -650,7 +594,6 @@ void Smb4KConfigDialog::slotButtonClicked( int button )
       }
 
       saveCustomSambaOptions();
-      saveAuthenticationData();
       writeSuperUserEntries();
 
       KConfigGroup group( Smb4KSettings::self()->config(), "ConfigDialog" );
@@ -794,6 +737,106 @@ void Smb4KConfigDialog::slotCustomSambaSettingsModified()
 void Smb4KConfigDialog::slotRemoveSuperUserEntries()
 {
   removeSuperUserEntries();
+}
+
+
+void Smb4KConfigDialog::slotLoadAuthenticationInformation()
+{
+  Smb4KWalletManager::self()->init( this );
+  QList<Smb4KAuthInfo *> entries = Smb4KWalletManager::self()->entries();
+  Smb4KAuthOptions *auth_options = findChild<Smb4KAuthOptions *>();
+  
+  if ( auth_options )
+  {
+    auth_options->setEntries( entries );
+    auth_options->displayEntries();
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KConfigDialog::slotSaveAuthenticationInformation()
+{
+  Smb4KWalletManager::self()->init( this );
+  Smb4KAuthOptions *auth_options = findChild<Smb4KAuthOptions *>();
+  
+  if ( auth_options )
+  {
+    QList<Smb4KAuthInfo *> entries = auth_options->getEntries();
+    
+    // Check if we have to uncheck the "Use default login" check box.
+    bool have_default = false;
+    
+    for ( int i = 0; i < entries.size(); ++i )
+    {
+      if ( entries.at( i )->type() == Smb4KAuthInfo::Default )
+      {
+        have_default = true;
+        break;
+      }
+      else
+      {
+        continue;
+      }
+    }
+    
+    if ( !have_default && findChild<QCheckBox *>( "kcfg_UseDefaultLogin" )->isChecked() )
+    {
+      findChild<QCheckBox *>( "kcfg_UseDefaultLogin" )->setChecked( false );
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    Smb4KWalletManager::self()->writeEntries( entries );
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KConfigDialog::slotSetDefaultLogin()
+{
+  Smb4KWalletManager::self()->init( this );
+ 
+  Smb4KAuthInfo authInfo;
+  authInfo.setDefaultAuthInfo();
+  
+  Smb4KWalletManager::self()->readAuthInfo( &authInfo );
+  
+  KPasswordDialog dlg( this, KPasswordDialog::ShowUsernameLine );
+  dlg.setPrompt( i18n( "Enter the default login information." ) );
+  dlg.setUsername( authInfo.login() );
+  dlg.setPassword( authInfo.password() );
+  
+  if ( dlg.exec() == KPasswordDialog::Accepted )
+  {
+    authInfo.setLogin( dlg.username() );
+    authInfo.setPassword( dlg.password() );
+    
+    Smb4KWalletManager::self()->writeAuthInfo( &authInfo );
+    
+    Smb4KAuthOptions *auth_options = findChild<Smb4KAuthOptions *>();
+    
+    if ( auth_options && auth_options->entriesDisplayed() )
+    {
+      slotLoadAuthenticationInformation();
+    }
+    else
+    {
+      // Do nothing
+    }    
+  }
+  else
+  {
+    // Do nothing. The user canceled.
+  }
 }
 
 
