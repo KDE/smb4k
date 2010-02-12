@@ -597,15 +597,10 @@ void Smb4KMainWindow::setupMountIndicator()
   {
     m_feedback_icon->setToolTip( i18n( "There are currently no shares mounted." ) );
   }
-  else if ( number == 1 )
-  {
-    overlays.append( "emblem-mounted" );
-    m_feedback_icon->setToolTip( i18n( "There is currently %1 share mounted." ).arg( number ) );
-  }
   else
   {
     overlays.append( "emblem-mounted" );
-    m_feedback_icon->setToolTip( i18n( "There are currently %1 shares mounted." ).arg( number ) );
+    m_feedback_icon->setToolTip( i18np( "There is currently %1 share mounted.", "There are currently %1 shares mounted.", number ) );
   }
   
   m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::Small, 0, KIconLoader::DefaultState, overlays ) );
