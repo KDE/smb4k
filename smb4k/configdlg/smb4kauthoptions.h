@@ -3,7 +3,7 @@
     settings of Smb4K
                              -------------------
     begin                : Sa Nov 15 2003
-    copyright            : (C) 2003-2008 by Alexander Reinholdt
+    copyright            : (C) 2003-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -32,8 +32,19 @@
 #endif
 
 // Qt includes
-#include <QWidget>
+#include <QTableWidget>
+#include <QList>
+#include <QCheckBox>
 
+// KDE includes
+#include <ktabwidget.h>
+#include <klistwidget.h>
+#include <kpushbutton.h>
+#include <kactioncollection.h>
+#include <kactionmenu.h>
+
+// Application specific includes
+#include <core/smb4kauthinfo.h>
 
 /**
  * This is the configuration tab for the authentication settings
@@ -43,7 +54,7 @@
  */
 
 
-class Smb4KAuthOptions : public QWidget
+class Smb4KAuthOptions : public KTabWidget
 {
   Q_OBJECT
 
@@ -59,7 +70,57 @@ class Smb4KAuthOptions : public QWidget
      * The destructor.
      */
     ~Smb4KAuthOptions();
-
+    
+    /**
+     * Set the list of authentication information entries.
+     * 
+     * @param entries       The list of entries
+     */
+    void setEntries( const QList<Smb4KAuthInfo *> &entries );
+    
+    /**
+     * Get the - maybe modified - entries.
+     * 
+     * @returns the list of entries.
+     */
+    const QList<Smb4KAuthInfo *> &getEntries() { return m_entries_list; }
+    
+    /**
+     * Display the autentication information in the list widget.
+     * Use this function AFTER setEntries() if necessary.
+     */
+    void displayEntries();
+    
+    /**
+     * Returns TRUE if the wallet entries are displayed and FALSE otherwise.
+     * 
+     * @returns TRUE if the wallet entries are displayed
+     */
+    bool entriesDisplayed() { return m_entries_displayed; }
+    
+  signals:
+    /**
+     * Emitted when the "Load" button is clicked.
+     */
+    void loadWalletEntries();
+    
+    /**
+     * Emitted when the "Save" button is clicked.
+     */
+    void saveWalletEntries();
+    
+    /**
+     * Emitted when the default login should be (re-)defined.
+     */
+    void setDefaultLogin();
+    
+  protected:
+    /**
+     * Reimplemented.
+     */
+    bool eventFilter( QObject *object,
+                      QEvent *event );
+    
   protected slots:
     /**
      * This slot is called when the "Use wallet" check box is toggled.
@@ -76,6 +137,103 @@ class Smb4KAuthOptions : public QWidget
      *                      FALSE.
      */
     void slotDefaultLoginToggled( bool checked );
+    
+    /**
+     * This slot is connected to the "Details" button and shows the details
+     * of the selected wallet entry.
+     * 
+     * @param checked       TRUE if the button is checked
+     */
+    void slotDetailsClicked( bool checked );
+    
+    /**
+     * This slot is connected to the KListWidget::itemSelectionChanged() signal.
+     * It unmarks and enables/disables the "Show details" checkbox and clears the
+     * the details widget.
+     */
+    void slotItemSelectionChanged();
+    
+    /**
+     * This slot is connected to the QTableWidget::cellChanged() signal and commits
+     * changes the user applied to the entries to the internal list and enables the
+     * "Undo" action. 
+     *
+     * @param row             The row of the cell that was changed
+     * 
+     * @param column          The column of the cell that was changed
+     */
+    void slotDetailsChanged( int row,
+                             int column );
+    
+    /**
+     * This slot is connected to the KListWidget::customContextMenuRequested()
+     * signal and shows the menu in the list widget.
+     */
+    void slotShowListWidgetContextMenu( const QPoint &pos );
+    
+    /**
+     * This slot is connected to the QTableWidget::customContextMenuRequested()
+     * signal and shows the menu in the table widget.
+     */
+    void slotShowTableWidgetContextMenu( const QPoint &pos );
+    
+    /**
+     * This slot is connected to the "Remove" action
+     * 
+     * @param checked         TRUE if the action is checked
+     */
+    void slotRemoveActionTriggered( bool checked );
+    
+    /**
+     * This slot is connected to the "Clear List" action
+     * 
+     * @param checked         TRUE if the action is checked
+     */
+    void slotClearActionTriggered( bool checked );
+    
+    /**
+     * This slot is connected to the "Undo" action in the list widget.
+     * 
+     * @param checked         TRUE if the action is checked
+     */
+    void slotUndoListActionTriggered( bool checked );
+    
+    /**
+     * This slot is connected to the "Edit" action in the table widget.
+     * 
+     * @param checked         TRUE if the action is checked
+     */
+    void slotEditActionTriggered( bool checked );
+    
+    /**
+     * This slot is connected to the "Undo" action in the table widget.
+     * 
+     * @param checked         TRUE if the action is checked
+     */
+    void slotUndoDetailsActionTriggered( bool checked );
+    
+    /**
+     * This slot is connected to the "Save" button and resets all actions.
+     * 
+     * @param checked         TRUE if the action is checked
+     */
+    void slotSaveClicked( bool checked );
+    
+  private:
+    void showDetails( Smb4KAuthInfo *authInfo );
+    void clearDetails();
+    KListWidget *m_entries_widget;
+    KPushButton *m_load_button;
+    KPushButton *m_save_button;
+    QCheckBox *m_details_box;
+    QTableWidget *m_details_widget;
+    QList<Smb4KAuthInfo *> m_entries_list;
+    bool m_entries_displayed;
+    KActionCollection *m_collection;
+    KActionMenu *m_entries_menu;
+    KActionMenu *m_details_menu;
+    Smb4KAuthInfo m_auth_info;
+    bool m_loading_details;
 };
 
 #endif
