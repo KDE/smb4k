@@ -72,7 +72,7 @@ Smb4KSuperUserOptions::Smb4KSuperUserOptions( QWidget *parent )
 
   KGuiItem remove_item          = KGuiItem(  i18n( "Remove Entries" ), "edit-clear",
                                   i18n( "Remove entries from the configuration file" ),
-                                  i18n( "Depending on your choice under \"Programs\", all entries that were written by Smb4K will be removed either from /etc/super.tab or /etc/sudoers. Additionally, all your choices under \"Actions\" will be cleared." ) );
+                                  i18n( "All entries that were written by Smb4K will be removed from /etc/sudoers. Additionally, all your choices under \"Actions\" will be cleared." ) );
 
   KPushButton *remove           = new KPushButton( remove_item, this );
 
