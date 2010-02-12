@@ -614,6 +614,73 @@ bool Smb4KWalletManager::useWalletSystem()
 }
 
 
+QList<Smb4KAuthInfo *> Smb4KWalletManager::entries()
+{
+  QList<Smb4KAuthInfo *> list;
+  
+  if ( useWalletSystem() && m_wallet )
+  {
+    QStringList entries = m_wallet->entryList();
+    
+    if ( !entries.isEmpty() )
+    {
+      for ( int i = 0; i < entries.size(); ++i )
+      {
+        Smb4KAuthInfo *authInfo = new Smb4KAuthInfo();
+        
+        if ( QString::compare( entries.at( i ), "DEFAULT_LOGIN" ) == 0 )
+        {
+          // Default login
+          authInfo->setDefaultAuthInfo();
+        }
+        else
+        {
+          authInfo->setUNC( entries.at( i ) );
+        }
+        
+        readAuthInfo( authInfo );
+        list << authInfo;
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  return list;
+}
+
+
+void Smb4KWalletManager::writeEntries( const QList<Smb4KAuthInfo *> &entries )
+{
+  if ( useWalletSystem() && m_wallet )
+  {
+    // Clear the wallet.
+    QStringList entry_list = m_wallet->entryList();
+    
+    for ( int i = 0; i < entry_list.size(); ++i )
+    {
+      m_wallet->removeEntry( entry_list.at( i ) );
+    }
+    
+    // Write the new entries to the wallet.
+    for ( int i = 0; i < entries.size(); ++i )
+    {
+      writeAuthInfo( entries.at( i ) );
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
 #ifdef Q_OS_FREEBSD
 
 void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
