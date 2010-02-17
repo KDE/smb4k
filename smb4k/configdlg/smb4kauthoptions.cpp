@@ -49,6 +49,8 @@ Smb4KAuthOptions::Smb4KAuthOptions( QWidget *parent ) : KTabWidget( parent )
 {
   m_entries_displayed = false;
   m_loading_details = false;
+  m_default_login = false;
+  m_undo_removal = false;
   
   //
   // General tab
@@ -630,6 +632,21 @@ void Smb4KAuthOptions::slotRemoveActionTriggered( bool /*checked*/ )
          (QString::compare( m_entries_widget->currentItem()->text(), i18n( "Default Login" ) ) == 0 &&
          m_entries_list.at( i )->type() == Smb4KAuthInfo::Default) )
     {
+      switch ( m_entries_list.at( i )->type() )
+      {
+        case Smb4KAuthInfo::Default:
+        {
+          QCheckBox *default_login = findChild<QCheckBox *>( "kcfg_UseDefaultLogin" );
+          m_default_login = default_login->isChecked();
+          default_login->setChecked( false );
+          break;
+        }
+        default:
+        {
+          break;
+        }
+      }
+      
       delete m_entries_list.takeAt( i );
       break;
     }
@@ -662,12 +679,19 @@ void Smb4KAuthOptions::slotClearActionTriggered( bool /*checked*/ )
   
   m_collection->action( "undo_list_action" )->setEnabled( true );
   m_collection->action( "clear_action" )->setEnabled( false );
+  
+  QCheckBox *default_login = findChild<QCheckBox *>( "kcfg_UseDefaultLogin" );
+  m_default_login = default_login->isChecked();
+  default_login->setChecked( false );
 }
 
 
 void Smb4KAuthOptions::slotUndoListActionTriggered( bool /*checked*/ )
 {
+  m_undo_removal = true;
   emit loadWalletEntries();
+  findChild<QCheckBox *>( "kcfg_UseDefaultLogin" )->setChecked( m_default_login );
+  m_undo_removal = false;
 }
 
 
