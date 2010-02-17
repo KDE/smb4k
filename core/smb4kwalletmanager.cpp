@@ -614,7 +614,7 @@ bool Smb4KWalletManager::useWalletSystem()
 }
 
 
-QList<Smb4KAuthInfo *> Smb4KWalletManager::entries()
+QList<Smb4KAuthInfo *> Smb4KWalletManager::walletEntries()
 {
   QList<Smb4KAuthInfo *> list;
   
@@ -656,7 +656,7 @@ QList<Smb4KAuthInfo *> Smb4KWalletManager::entries()
 }
 
 
-void Smb4KWalletManager::writeEntries( const QList<Smb4KAuthInfo *> &entries )
+void Smb4KWalletManager::writeWalletEntries( const QList<Smb4KAuthInfo *> &entries )
 {
   if ( useWalletSystem() && m_wallet )
   {

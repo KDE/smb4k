@@ -149,14 +149,16 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
      * 
      * @returns a list of all wallet entries.
      */
-    QList<Smb4KAuthInfo *> entries();
+    QList<Smb4KAuthInfo *> walletEntries();
     
     /**
-     * Writes a list of authentication informations to the wallet.
+     * Writes a list of authentication informations to the wallet. If the 
+     * wallet system is disabled or the wallet is not open, this function 
+     * will do nothing.
      * 
      * @param entries       The list of authentication informations
      */
-    void writeEntries( const QList<Smb4KAuthInfo *> &entries );
+    void writeWalletEntries( const QList<Smb4KAuthInfo *> &entries );
 
   signals:
     /**
