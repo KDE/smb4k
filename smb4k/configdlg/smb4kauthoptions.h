@@ -98,6 +98,14 @@ class Smb4KAuthOptions : public KTabWidget
      */
     bool entriesDisplayed() { return m_entries_displayed; }
     
+    /**
+     * Returns TRUE if a removal in the list widget is undone and FALSE
+     * otherwise.
+     * 
+     * @returns TRUE a removal is undown.
+     */
+    bool undoRemoval() { return m_undo_removal; }
+    
   signals:
     /**
      * Emitted when the "Load" button is clicked.
@@ -234,6 +242,8 @@ class Smb4KAuthOptions : public KTabWidget
     KActionMenu *m_details_menu;
     Smb4KAuthInfo m_auth_info;
     bool m_loading_details;
+    bool m_default_login;
+    bool m_undo_removal;
 };
 
 #endif
