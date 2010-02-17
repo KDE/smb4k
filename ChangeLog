@@ -47,7 +47,8 @@ Smb4K SVN_HEAD (????-??-??):
     in case of a 'homes' share.
   + Renamed type() to typeString(), setType() to setTypeString() and 
     translatedType() to translatedTypeString() to avoid problems with 
-    Smb4KBasicNatworkItem::type().
+    Smb4KBasicNetworkItem::type(). 
+  + The default value for typeString() is now "Disk".
   + Removed uidIsSet() function.
   + Removed gidIsSet() function.
   + Removed loginIsSet() function.
@@ -222,6 +223,8 @@ Smb4K SVN_HEAD (????-??-??):
   + Added setLogin() and login() function.
 - Revised Smb4KBookmarkHandler class:
   + The login is now stored in the bookmark.xml file.
+  + Removed code that dealt with old bookmark files.
+  + Added check if the UNC is valid. If it is not, the bookmark will be ignored.
 - Revised Smb4KGlobal namespace:
   + Removed tempDir() function, since we do not need it anymore.
   + Added addWorkgroup(), removeWorkgroup() and clearWorkgroupsList()
