@@ -102,7 +102,7 @@ Smb4KSearchDialogPart::Smb4KSearchDialogPart( QWidget *parentWidget, QObject *pa
   connect( m_widget->listWidget(), SIGNAL( customContextMenuRequested( const QPoint & ) ),
            this,                   SLOT( slotContextMenuRequested( const QPoint & ) ) );
 
-  connect( Smb4KCore::scanner(),   SIGNAL( hostListChanged() ),
+  connect( Smb4KScanner::self(),   SIGNAL( hostListChanged() ),
            this,                   SLOT( slotCheckItemIsKnown() ) );
            
   connect( Smb4KMounter::self(),   SIGNAL( mounted( Smb4KShare * ) ),
