@@ -389,21 +389,6 @@ bool Smb4KConfigDialog::checkSettings()
     issues.append( "<li>"+i18n( "[Shares] The mount prefix is empty." )+"</li>" );
   }
 
-  // If the user wants to use a default login, the user
-  // name must not be empty.
-  QCheckBox *use_default_login      = findChild<QCheckBox *>( "kcfg_UseDefaultLogin" );
-  KLineEdit *default_user_name      = findChild<KLineEdit *>( "DefaultUserName" );
-
-  if ( use_default_login && default_user_name &&
-       use_default_login->isChecked() &&
-       default_user_name->text().trimmed().isEmpty() )
-  {
-    ok = false;
-    index++;
-
-    issues.append( "<li>"+i18n( "[Authentication] The default username has not been entered." )+"</li>" );
-  }
-
   // The file mask must not be empty.
   KLineEdit *file_mask              = findChild<KLineEdit *>( "kcfg_FileMask" );
 
@@ -581,6 +566,7 @@ void Smb4KConfigDialog::slotButtonClicked( int button )
 
       saveCustomSambaOptions();
       writeSuperUserEntries();
+      slotSaveAuthenticationInformation();
 
       break;
     }
@@ -595,6 +581,7 @@ void Smb4KConfigDialog::slotButtonClicked( int button )
 
       saveCustomSambaOptions();
       writeSuperUserEntries();
+      slotSaveAuthenticationInformation();
 
       KConfigGroup group( Smb4KSettings::self()->config(), "ConfigDialog" );
       saveDialogSize( group, KConfigGroup::Normal );
@@ -743,7 +730,7 @@ void Smb4KConfigDialog::slotRemoveSuperUserEntries()
 void Smb4KConfigDialog::slotLoadAuthenticationInformation()
 {
   Smb4KWalletManager::self()->init( this );
-  QList<Smb4KAuthInfo *> entries = Smb4KWalletManager::self()->entries();
+  QList<Smb4KAuthInfo *> entries = Smb4KWalletManager::self()->walletEntries();
   Smb4KAuthOptions *auth_options = findChild<Smb4KAuthOptions *>();
   
   if ( auth_options )
@@ -763,36 +750,10 @@ void Smb4KConfigDialog::slotSaveAuthenticationInformation()
   Smb4KWalletManager::self()->init( this );
   Smb4KAuthOptions *auth_options = findChild<Smb4KAuthOptions *>();
   
-  if ( auth_options )
+  if ( auth_options && auth_options->entriesDisplayed() )
   {
     QList<Smb4KAuthInfo *> entries = auth_options->getEntries();
-    
-    // Check if we have to uncheck the "Use default login" check box.
-    bool have_default = false;
-    
-    for ( int i = 0; i < entries.size(); ++i )
-    {
-      if ( entries.at( i )->type() == Smb4KAuthInfo::Default )
-      {
-        have_default = true;
-        break;
-      }
-      else
-      {
-        continue;
-      }
-    }
-    
-    if ( !have_default && findChild<QCheckBox *>( "kcfg_UseDefaultLogin" )->isChecked() )
-    {
-      findChild<QCheckBox *>( "kcfg_UseDefaultLogin" )->setChecked( false );
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    Smb4KWalletManager::self()->writeEntries( entries );
+    Smb4KWalletManager::self()->writeWalletEntries( entries );
   }
   else
   {
@@ -803,113 +764,49 @@ void Smb4KConfigDialog::slotSaveAuthenticationInformation()
 
 void Smb4KConfigDialog::slotSetDefaultLogin()
 {
-  Smb4KWalletManager::self()->init( this );
- 
-  Smb4KAuthInfo authInfo;
-  authInfo.setDefaultAuthInfo();
+  Smb4KAuthOptions *auth_options = findChild<Smb4KAuthOptions *>();
   
-  Smb4KWalletManager::self()->readAuthInfo( &authInfo );
-  
-  KPasswordDialog dlg( this, KPasswordDialog::ShowUsernameLine );
-  dlg.setPrompt( i18n( "Enter the default login information." ) );
-  dlg.setUsername( authInfo.login() );
-  dlg.setPassword( authInfo.password() );
-  
-  if ( dlg.exec() == KPasswordDialog::Accepted )
+  if ( auth_options && !auth_options->undoRemoval() )
   {
-    authInfo.setLogin( dlg.username() );
-    authInfo.setPassword( dlg.password() );
+    Smb4KWalletManager::self()->init( this );
+  
+    Smb4KAuthInfo authInfo;
+    authInfo.setDefaultAuthInfo();
     
-    Smb4KWalletManager::self()->writeAuthInfo( &authInfo );
+    Smb4KWalletManager::self()->readAuthInfo( &authInfo );
     
-    Smb4KAuthOptions *auth_options = findChild<Smb4KAuthOptions *>();
+    KPasswordDialog dlg( this, KPasswordDialog::ShowUsernameLine );
+    dlg.setPrompt( i18n( "Enter the default login information." ) );
+    dlg.setUsername( authInfo.login() );
+    dlg.setPassword( authInfo.password() );
     
-    if ( auth_options && auth_options->entriesDisplayed() )
+    if ( dlg.exec() == KPasswordDialog::Accepted )
     {
-      slotLoadAuthenticationInformation();
+      authInfo.setLogin( dlg.username() );
+      authInfo.setPassword( dlg.password() );
+      
+      Smb4KWalletManager::self()->writeAuthInfo( &authInfo );
+      
+      Smb4KAuthOptions *auth_options = findChild<Smb4KAuthOptions *>();
+      
+      if ( auth_options && auth_options->entriesDisplayed() )
+      {
+        slotLoadAuthenticationInformation();
+      }
+      else
+      {
+        // Do nothing
+      }    
     }
     else
     {
-      // Do nothing
-    }    
+      // Do nothing. The user canceled.
+    }
   }
   else
   {
-    // Do nothing. The user canceled.
+    // Do nothing
   }
 }
-
-
-// void Smb4KConfigDialog::slotReceivedSudoWriterFailed( Smb4KSudoWriterInterface::Operation operation )
-// {
-//   switch ( operation )
-//   {
-//     case Smb4KSudoWriterInterface::AddUser:
-//     {
-// #ifdef __linux__
-//       QCheckBox *force    = findChild<QCheckBox *>( "kcfg_UseForceUnmount" );
-// #endif
-//       QCheckBox *full_use = findChild<QCheckBox *>( "kcfg_AlwaysUseSuperUser" );
-//
-// #ifdef __linux__
-//       if ( force && full_use )
-//       {
-//         force->setChecked( force_unmount );
-//         Smb4KSettings::setUseForceUnmount( force_unmount );
-// #else
-//       if ( full_use )
-//       {
-// #endif
-//         full_use->setChecked( always_use_su );
-//         Smb4KSettings::setAlwaysUseSuperUser( always_use_su );
-//       }
-//       else
-//       {
-//         // Do nothing
-//       }
-//
-//       break;
-//     }
-//     default:
-//     {
-//       break;
-//     }
-//   }
-// }
-//
-//
-// void Smb4KConfigDialog::slotReceivedSudoWriterFinished( Smb4KSudoWriterInterface::Operation operation )
-// {
-//   // Set the variables.
-// #ifdef __linux__
-//   force_unmount = Smb4KSettings::useForceUnmount();
-// #endif
-//   always_use_su = Smb4KSettings::alwaysUseSuperUser();
-//
-//   // Enable the widget again.
-//   setEnabled( true );
-//
-// //   switch ( operation )
-// //   {
-// //     case Smb4KSudoWriterInterface::RemoveUser:
-// //     {
-// //       slotButtonClicked( KConfigDialog::Apply );
-// //       break;
-// //     }
-// //     default:
-// //     {
-// //       break;
-// //     }
-// //   }
-//
-//   if ( close_dialog )
-//   {
-//     KConfigDialog::slotButtonClicked( KConfigDialog::Ok );
-//   }
-//   else
-//   {
-//     KConfigDialog::slotButtonClicked( KConfigDialog::Apply );
-//   }
-// }
 
 #include "smb4kconfigdialog.moc"
