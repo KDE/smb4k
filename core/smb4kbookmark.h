@@ -140,14 +140,14 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @param type            The type of the share.
      */
-    void setType( const QString &type );
+    void setTypeString( const QString &type );
 
     /**
      * Returns the share's type.
      *
      * @returns the type of the share.
      */
-    const QString &type() const { return m_type; }
+    const QString &typeString() const { return m_type; }
 
     /**
      * This function sets the UNC (Uniform Naming Convention string). This

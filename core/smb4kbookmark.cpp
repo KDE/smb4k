@@ -38,14 +38,21 @@
 
 Smb4KBookmark::Smb4KBookmark( Smb4KShare *share, const QString &label )
 : m_url( QUrl() ), m_workgroup( share->workgroupName() ), m_ip( share->hostIP() ),
-  m_type( share->type() ), m_label( label ), m_profile( QString() )
+  m_type( share->typeString() ), m_label( label ), m_profile( QString() )
 {
-  setUNC( share->unc( QUrl::None ) );
+  if ( !share->isHomesShare() )
+  {
+    setUNC( share->unc( QUrl::None ) );
+  }
+  else
+  {
+    setUNC( share->homeUNC( QUrl::None ) );
+  }
 }
 
 
 Smb4KBookmark::Smb4KBookmark( const Smb4KBookmark &b )
-: m_url( QUrl() ), m_workgroup( b.workgroupName() ), m_ip( b.hostIP() ), m_type( b.type() ),
+: m_url( QUrl() ), m_workgroup( b.workgroupName() ), m_ip( b.hostIP() ), m_type( b.typeString() ),
   m_label( b.label() ), m_profile( b.profile() )
 {
   setUNC( b.unc( QUrl::None ) );
@@ -103,7 +110,7 @@ void Smb4KBookmark::setHostIP( const QString &ip )
 }
 
 
-void Smb4KBookmark::setType( const QString &type )
+void Smb4KBookmark::setTypeString( const QString &type )
 {
   m_type = type;
 }
