@@ -41,7 +41,7 @@
 #include <smb4kauthinfo.h>
 
 Smb4KShare::Smb4KShare( const QString &host, const QString &name ) : Smb4KBasicNetworkItem( Share ),
-  m_url( QUrl() ), m_workgroup( QString() ), m_type_string( QString() ), m_comment( QString() ),
+  m_url( QUrl() ), m_workgroup( QString() ), m_type_string( "Disk" ), m_comment( QString() ),
   m_host_ip( QString() ), m_path( QByteArray() ), m_inaccessible( false ), m_foreign( false ),
   m_filesystem( Unknown ), m_user( getuid() ), m_group( getgid() ), m_total( 0 ), m_free( 0 ), m_used( 0 ),
   m_is_mounted( false ), m_homes_share( false ), m_homes_users( QStringList() )
@@ -55,7 +55,7 @@ Smb4KShare::Smb4KShare( const QString &host, const QString &name ) : Smb4KBasicN
 
 
 Smb4KShare::Smb4KShare( const QString &unc ) : Smb4KBasicNetworkItem( Share ),
-  m_url( QUrl() ), m_workgroup( QString() ), m_type_string( QString() ), m_comment( QString() ),
+  m_url( QUrl() ), m_workgroup( QString() ), m_type_string( "Disk" ), m_comment( QString() ),
   m_host_ip( QString() ), m_path( QByteArray() ), m_inaccessible( false ), m_foreign( false ),
   m_filesystem( Unknown ), m_user( getuid() ), m_group( getgid() ), m_total( 0 ), m_free( 0 ), m_used( 0 ),
   m_is_mounted( false ), m_homes_share( false ), m_homes_users( QStringList() )
@@ -77,7 +77,7 @@ Smb4KShare::Smb4KShare( const Smb4KShare &s ) : Smb4KBasicNetworkItem( Share ),
 
 
 Smb4KShare::Smb4KShare() : Smb4KBasicNetworkItem( Share ),
-  m_url( QUrl() ), m_workgroup( QString() ), m_type_string( QString() ), m_comment( QString() ),
+  m_url( QUrl() ), m_workgroup( QString() ), m_type_string( "Disk" ), m_comment( QString() ),
   m_host_ip( QString() ), m_path( QByteArray() ), m_inaccessible( false ), m_foreign( false ),
   m_filesystem( Unknown ), m_user( getuid() ), m_group( getgid() ), m_total( 0 ), m_free( 0 ), m_used( 0 ),
   m_is_mounted( false ), m_homes_share( false ), m_homes_users( QStringList() )
