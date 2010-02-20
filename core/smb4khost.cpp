@@ -86,7 +86,9 @@ void Smb4KHost::setHostName( const QString &name )
 void Smb4KHost::setUNC( const QString &unc )
 {
   // Check that a valid UNC was passed to this function.
-  if ( !unc.startsWith( "//" ) && !unc.startsWith( "smb:" ) && unc.count( "/" ) != 2 )
+  QUrl url( unc );
+  
+  if ( !url.isValid() || !url.path().isEmpty() )
   {
     // The UNC is malformatted.
     return;
@@ -96,7 +98,7 @@ void Smb4KHost::setUNC( const QString &unc )
     // Do nothing
   }
 
-  m_url.setUrl( unc );
+  m_url = url;
 
   if ( m_url.scheme().isEmpty() )
   {
@@ -111,7 +113,18 @@ void Smb4KHost::setUNC( const QString &unc )
 
 QString Smb4KHost::unc( QUrl::FormattingOptions options ) const
 {
-  return m_url.toString( options|QUrl::RemovePath ).replace( "//"+m_url.host(), "//"+hostName() );
+  QString unc;
+  
+  if ( (options & QUrl::RemoveUserInfo) || m_url.userName().isEmpty() )
+  {
+    unc = m_url.toString( options|QUrl::RemovePath ).replace( "//"+m_url.host(), "//"+hostName() );
+  }
+  else
+  {
+    unc = m_url.toString( options|QUrl::RemovePath ).replace( "@"+m_url.host(), "@"+hostName() );
+  }
+  
+  return unc;
 }
 
 
