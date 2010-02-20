@@ -119,27 +119,30 @@ QString Smb4KSambaOptionsInfo::shareName() const
 
 void Smb4KSambaOptionsInfo::setUNC( const QString &unc )
 {
-  // Check that a valid UNC was passed to this function.
-  if ( !unc.startsWith( "//" ) && !unc.startsWith( "smb:" ) && !(unc.count( "/" ) == 2 || unc.count( "/" ) == 3) )
+  // Check that the UNC is valid.
+  QUrl url( unc );
+  
+  if ( !url.isValid() && !(url.path().isEmpty() /*host*/ || url.path().contains( "/" ) == 1 /*share*/) )
   {
     // The UNC is malformatted.
     return;
   }
   else
   {
-    // Set the type.
-    if ( unc.count( "/" ) == 3 )
-    {
-      m_type = Share;
-    }
-    else
-    {
-      m_type = Host;
-    }
+    // Do nothing
   }
-  
 
-  m_url.setUrl( unc );
+  // Set the type.
+  if ( url.path().contains( "/" ) == 1 )
+  {
+    m_type = Share;
+  }
+  else
+  {
+    m_type = Host;
+  }
+
+  m_url = url;
 
   if ( m_url.scheme().isEmpty() )
   {
@@ -154,15 +157,33 @@ void Smb4KSambaOptionsInfo::setUNC( const QString &unc )
 
 QString Smb4KSambaOptionsInfo::unc( QUrl::FormattingOptions options ) const
 {
+  QString unc;
+  
   switch ( m_type )
   {
     case Host:
     {
-      return m_url.toString( options|QUrl::RemovePath ).replace( "//"+m_url.host(), "//"+hostName() );
+      if ( (options & QUrl::RemoveUserInfo) || m_url.userName().isEmpty() )
+      {
+        unc = m_url.toString( options|QUrl::RemovePath ).replace( "//"+m_url.host(), "//"+hostName() );
+      }
+      else
+      {
+        unc = m_url.toString( options|QUrl::RemovePath ).replace( "@"+m_url.host(), "@"+hostName() );
+      }
+      break;
     }
     case Share:
     {
-      return m_url.toString( options ).replace( "//"+m_url.host(), "//"+hostName() );
+      if ( (options & QUrl::RemoveUserInfo) || m_url.userName().isEmpty() )
+      {
+        unc = m_url.toString( options ).replace( "//"+m_url.host(), "//"+hostName() );
+      }
+      else
+      {
+        unc = m_url.toString( options ).replace( "@"+m_url.host(), "@"+hostName() );
+      }
+      break;
     }
     default:
     {
@@ -170,13 +191,24 @@ QString Smb4KSambaOptionsInfo::unc( QUrl::FormattingOptions options ) const
     }
   }
 
-  return QString();
+  return unc;
 }
 
 
 QString Smb4KSambaOptionsInfo::hostUNC( QUrl::FormattingOptions options ) const
 {
-  return m_url.toString( options|QUrl::RemovePath ).replace( "//"+m_url.host(), "//"+hostName() );
+  QString unc;
+  
+  if ( (options & QUrl::RemoveUserInfo) || m_url.userName().isEmpty() )
+  {
+    unc = m_url.toString( options|QUrl::RemovePath ).replace( "//"+m_url.host(), "//"+hostName() );
+  }
+  else
+  {
+    unc = m_url.toString( options|QUrl::RemovePath ).replace( "@"+m_url.host(), "@"+hostName() );
+  }
+  
+  return unc;
 }
 
 
