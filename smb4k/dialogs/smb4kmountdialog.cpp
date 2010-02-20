@@ -42,6 +42,7 @@
 #include <core/smb4kcore.h>
 #include <core/smb4ksettings.h>
 #include <core/smb4kdefs.h>
+#include <core/smb4khomesshareshandler.h>
 
 Smb4KMountDialog::Smb4KMountDialog( QWidget *parent )
 : KDialog( parent )
@@ -129,20 +130,39 @@ void Smb4KMountDialog::slotChangeInputValue( const QString& _test)
 
 void Smb4KMountDialog::slotOkClicked()
 {
-  // FIXME: Leave the decision if the share is not formatted
-  // correctly up to the mounter. Just pass the string to
-  // Smb4KCore::mounter()->mountShare().
-
   if ( !m_share_input->text().trimmed().isEmpty() )
   {
-    if ( m_share_input->text().contains( "/" ) == 3 &&
-         m_share_input->text().contains( '@' ) == 0 )
+    QUrl url( m_share_input->text().trimmed() );
+    
+    if ( url.isValid() && url.path().length() > 1 /* share name length */ && !url.path().endsWith( "/" ) )
     {
-      m_share = Smb4KShare( m_share_input->text().trimmed() /* UNC */ );
+      if ( QString::compare( url.path(), "/homes" ) == 0 )
+      {
+        Smb4KShare internal = Smb4KShare( url.toString( QUrl::None ) );
+        
+        if ( QString::compare( url.userName(), "guest" ) == 0 || url.userName().isEmpty() )
+        {
+          if ( Smb4KHomesSharesHandler::self()->specifyUser( &internal, this ) )
+          {
+            m_share = Smb4KShare( internal.homeUNC( QUrl::None ) );
+          }
+          else
+          {
+            return;
+          }
+        }
+        else
+        {
+          m_share = Smb4KShare( internal.homeUNC( QUrl::None ) );
+        }
+      }
+      else
+      {
+        m_share = Smb4KShare( url.toString( QUrl::None ) );
+      }
+      
       m_share.setWorkgroupName( m_workgroup_input->text().trimmed() );
       m_share.setHostIP( m_ip_input->text().trimmed() );
-
-      Smb4KCore::mounter()->mountShare( &m_share );
 
       if ( m_bookmark->isChecked() )
       {
@@ -152,13 +172,15 @@ void Smb4KMountDialog::slotOkClicked()
       {
         // Do nothing
       }
-
+      
+      Smb4KCore::mounter()->mountShare( &m_share );
+      
       connect( Smb4KCore::mounter(), SIGNAL( mounted( Smb4KShare * ) ),
                this,                 SLOT( slotShareMounted( Smb4KShare * ) ) );
     }
     else
     {
-      KMessageBox::error( this, i18n( "The format of the share you entered is not correct. It must have the form //HOST/SHARE." ) );
+      KMessageBox::error( this, i18n( "The format of the share you entered is not correct. It must have the form //[USER@]HOST/SHARE. The user name is optional." ) );
     }
   }
 
