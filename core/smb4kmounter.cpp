@@ -534,6 +534,21 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
 {
   Q_ASSERT( share );
 
+  // Check if the UNC is valid. Otherwise, we can just return here
+  // with an error message.
+  QUrl url( share->unc( QUrl::None ) );
+  
+  if ( !url.isValid() )
+  {
+    // FIXME: Throw an error.
+    qDebug() << "Invalid UNC";
+    return;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
   // Find smb4k_mount program
   QString smb4k_mount = KGlobal::dirs()->findResource( "exe", "smb4k_mount" );
 
@@ -1000,6 +1015,8 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   {
     m_cache.insert( share->homeUNC( QUrl::None ), thread );
   }
+  
+  
 
   connect( thread, SIGNAL( finished() ),
            this,   SLOT( slotThreadFinished() ) );
@@ -1017,10 +1034,22 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
 
 void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
 {
-  // FIXME: Do not forget to set share->setMounted( false ) in slotShareUnmounted()
-  // before the unmounted() signal is emitted!
-  
   Q_ASSERT( share );
+  
+  // Check if the UNC is valid. Otherwise, we can just return here
+  // with an error message.
+  QUrl url( share->unc( QUrl::None ) );
+  
+  if ( !url.isValid() )
+  {
+    // FIXME: Throw an error.
+    qDebug() << "Invalid UNC";
+    return;
+  }
+  else
+  {
+    // Do nothing
+  }
 
   // Find the smb4k_umount program
   QString smb4k_umount = KGlobal::dirs()->findResource( "exe", "smb4k_umount" );
