@@ -94,155 +94,164 @@ Smb4KHomesSharesHandler *Smb4KHomesSharesHandler::self()
 
 bool Smb4KHomesSharesHandler::specifyUser( Smb4KShare *share, QWidget *parent )
 {
-  if ( kapp )
-  {
-    if ( kapp->activeWindow() )
-    {
-      parent = kapp->activeWindow();
-    }
-    else
-    {
-      parent = kapp->desktop();
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  m_dlg = new KDialog( parent );
-  m_dlg->setCaption( i18n( "Specify User" ) );
-  m_dlg->setButtons( KDialog::User1|KDialog::Ok|KDialog::Cancel );
-  m_dlg->setDefaultButton( KDialog::Ok );
-  m_dlg->setButtonGuiItem( KDialog::User1, KGuiItem( i18n( "Clear List" ), "edit-clear", 0, 0 ) );
-  m_dlg->enableButton( KDialog::Ok, false );
-  m_dlg->enableButton( KDialog::User1, false );
-
-  // Set up the ask pass dialog.
-  QWidget *frame = new QWidget( m_dlg );
-  QGridLayout *layout = new QGridLayout( frame );
-  layout->setSpacing( 5 );
-  layout->setMargin( 0 );
-
-  m_dlg->setMainWidget( frame );
-
-  QLabel *pic = new QLabel( frame );
-  pic->setPixmap( DesktopIcon( "user-identity" ) );
-  pic->setMargin( 10 );
-
-  QLabel *text = new QLabel( i18n( "Please specify a user name." ), frame );
-
-  QLabel *userLabel = new QLabel( i18n( "User:" ), frame );
-  KComboBox *userCombo = new KComboBox( true, frame );
-  userCombo->setObjectName( "UserComboBox" );
-  userCombo->setDuplicatesEnabled( false );
-
-  QSpacerItem *spacer1 = new QSpacerItem( 10, 10, QSizePolicy::Expanding, QSizePolicy::Preferred );
-
-  layout->addWidget( pic, 0, 0, 0 );
-  layout->addWidget( text, 0, 1, 1, 2, 0 );
-  layout->addWidget( userLabel, 1, 0, 0 );
-  layout->addWidget( userCombo, 1, 1, 1, 2, 0 );
-  layout->addItem( spacer1, 0, 2 );
-
-  connect( userCombo, SIGNAL( textChanged( const QString &) ),
-           this,      SLOT( slotTextChanged( const QString & ) ) );
-  connect( m_dlg,     SIGNAL( user1Clicked() ),
-           this,      SLOT( slotClearClicked() ) );
-
-  Smb4KShare *internal = findShare( share );
-
-  if ( internal )
-  {
-    internal->setWorkgroupName( share->workgroupName() );
-    internal->setHostIP( share->hostIP() );
-  }
-  else
-  {
-    m_list.append( *share );
-    internal = &m_list.last();
-  }
-
-  if ( !internal->homesUsers().isEmpty() )
-  {
-    userCombo->addItems( internal->homesUsers() );
-    m_dlg->enableButton( KDialog::User1, true );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Do the last things before showing.
-  userCombo->setFocus();
-  m_dlg->setFixedSize( m_dlg->sizeHint() );
-
+  Q_ASSERT( share );
+  
   // Return value.
   bool success = false;
-
-  if ( m_dlg->exec() == KDialog::Accepted )
+  
+  if ( share->isHomesShare() )
   {
-    QStringList users;
-
-    // Write the new list of logins to the config file.
-    if ( !userCombo->lineEdit()->text().isEmpty() )
+    if ( kapp )
     {
-      users.append( userCombo->lineEdit()->text() );
+      if ( kapp->activeWindow() )
+      {
+        parent = kapp->activeWindow();
+      }
+      else
+      {
+        parent = kapp->desktop();
+      }
     }
     else
     {
       // Do nothing
     }
 
-    int index = 0;
+    m_dlg = new KDialog( parent );
+    m_dlg->setCaption( i18n( "Specify User" ) );
+    m_dlg->setButtons( KDialog::User1|KDialog::Ok|KDialog::Cancel );
+    m_dlg->setDefaultButton( KDialog::Ok );
+    m_dlg->setButtonGuiItem( KDialog::User1, KGuiItem( i18n( "Clear List" ), "edit-clear", 0, 0 ) );
+    m_dlg->enableButton( KDialog::Ok, false );
+    m_dlg->enableButton( KDialog::User1, false );
 
-    while ( index < userCombo->count() )
+    // Set up the ask pass dialog.
+    QWidget *frame = new QWidget( m_dlg );
+    QGridLayout *layout = new QGridLayout( frame );
+    layout->setSpacing( 5 );
+    layout->setMargin( 0 );
+
+    m_dlg->setMainWidget( frame );
+
+    QLabel *pic = new QLabel( frame );
+    pic->setPixmap( DesktopIcon( "user-identity" ) );
+    pic->setMargin( 10 );
+
+    QLabel *text = new QLabel( i18n( "Please specify a user name." ), frame );
+
+    QLabel *userLabel = new QLabel( i18n( "User:" ), frame );
+    KComboBox *userCombo = new KComboBox( true, frame );
+    userCombo->setObjectName( "UserComboBox" );
+    userCombo->setDuplicatesEnabled( false );
+
+    QSpacerItem *spacer1 = new QSpacerItem( 10, 10, QSizePolicy::Expanding, QSizePolicy::Preferred );
+
+    layout->addWidget( pic, 0, 0, 0 );
+    layout->addWidget( text, 0, 1, 1, 2, 0 );
+    layout->addWidget( userLabel, 1, 0, 0 );
+    layout->addWidget( userCombo, 1, 1, 1, 2, 0 );
+    layout->addItem( spacer1, 0, 2 );
+
+    connect( userCombo, SIGNAL( textChanged( const QString &) ),
+            this,      SLOT( slotTextChanged( const QString & ) ) );
+    connect( m_dlg,     SIGNAL( user1Clicked() ),
+            this,      SLOT( slotClearClicked() ) );
+
+    Smb4KShare *internal = findShare( share );
+
+    if ( internal )
     {
-      if ( users.indexOf( userCombo->itemText( index ), 0 ) == -1 )
+      internal->setWorkgroupName( share->workgroupName() );
+      internal->setHostIP( share->hostIP() );
+    }
+    else
+    {
+      m_list.append( *share );
+      internal = &m_list.last();
+    }
+
+    if ( !internal->homesUsers().isEmpty() )
+    {
+      userCombo->addItems( internal->homesUsers() );
+      m_dlg->enableButton( KDialog::User1, true );
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // Do the last things before showing.
+    userCombo->setFocus();
+    m_dlg->setFixedSize( m_dlg->sizeHint() );
+
+    if ( m_dlg->exec() == KDialog::Accepted )
+    {
+      QStringList users;
+
+      // Write the new list of logins to the config file.
+      if ( !userCombo->lineEdit()->text().isEmpty() )
       {
-        users.append( userCombo->itemText( index ) );
+        users.append( userCombo->lineEdit()->text() );
       }
       else
       {
         // Do nothing
       }
 
-      index++;
-    }
+      int index = 0;
 
-    users.removeAll( QString() );
-    users.sort();
+      while ( index < userCombo->count() )
+      {
+        if ( users.indexOf( userCombo->itemText( index ), 0 ) == -1 )
+        {
+          users.append( userCombo->itemText( index ) );
+        }
+        else
+        {
+          // Do nothing
+        }
 
-    share->setHomesUsers( users );
-    share->setLogin( userCombo->currentText() );
+        index++;
+      }
 
-    internal->setHomesUsers( users );
+      users.removeAll( QString() );
+      users.sort();
 
-    writeUserNames();
+      share->setHomesUsers( users );
+      share->setLogin( userCombo->currentText() );
 
-    success = !userCombo->currentText().trimmed().isEmpty();
-  }
-  else
-  {
-    // When the user cleared the list of homes users, we will clear
-    // the respective lists here, too.
-    if ( userCombo->count() < internal->homesUsers().size() )
-    {
-      share->setHomesUsers( QStringList() );
-      internal->setHomesUsers( QStringList() );
+      internal->setHomesUsers( users );
 
       writeUserNames();
+
+      success = !userCombo->currentText().trimmed().isEmpty();
     }
     else
     {
-      // Do nothing
+      // When the user cleared the list of homes users, we will clear
+      // the respective lists here, too.
+      if ( userCombo->count() < internal->homesUsers().size() )
+      {
+        share->setHomesUsers( QStringList() );
+        internal->setHomesUsers( QStringList() );
+
+        writeUserNames();
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      success = false;
     }
 
-    success = false;
+    delete m_dlg;
+    m_dlg = NULL;
   }
-
-  delete m_dlg;
-  m_dlg = NULL;
+  else
+  {
+    // Do nothing
+  }
 
   return success;
 }

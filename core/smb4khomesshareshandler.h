@@ -67,7 +67,7 @@ class KDE_EXPORT Smb4KHomesSharesHandler : public QObject
 
     /**
      * This function will open a dialog where the user has to define a
-     * user name to access a 'homes' share. The name of @p share will be set accordingly.
+     * user name to access a 'homes' share.
      *
      * @param share       The share that is representing the homes share
      *
