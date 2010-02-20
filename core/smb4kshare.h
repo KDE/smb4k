@@ -402,8 +402,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     const QString group() const { return m_group.name(); }
 
     /**
-     * Sets the login that is used to mount a share. Under FreeBSD the UNC is also adjusted
-     * accordings to the value of @p login.
+     * Sets the login that is used to mount a share. The UNC is adjusted accordingly.
      *
      * @param login           The login
      */
