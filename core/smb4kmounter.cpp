@@ -370,7 +370,7 @@ void Smb4KMounter::import()
   
   for ( int i = 0; i < mount_points.size(); ++i )
   {
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
     if ( QString::compare( mount_points.at( i )->mountType(), "cifs" ) == 0 )
 #else
     if ( QString::compare( mount_points.at( i )->mountType(), "smbfs" ) == 0 )
@@ -379,21 +379,181 @@ void Smb4KMounter::import()
       Smb4KShare share;
       share.setUNC( mount_points.at( i )->mountedFrom() );
       share.setPath( mount_points.at( i )->mountPoint() );
-#ifndef __FreeBSD__
+
+#ifndef Q_OS_FREEBSD
       share.setFileSystem( Smb4KShare::CIFS );
-      QString login = mount_points.at( i )->mountOptions().join( "," ).section( "user=", 1, 1 ).section( ",", 0, 0 ).trimmed();
-      share.setLogin( !login.isEmpty() ? login : "guest" ); // Work around empty 'user=' entries
+      
+      // Check if the share is new and we have to open /proc/mounts (if it exists) 
+      // to acquire all needed information.
+      if ( findShareByPath( mount_points.at( i )->mountPoint().toUtf8() ) == NULL && QFile::exists( "/proc/mounts" ) )
+      {
+        QStringList contents;
+        QFile proc_mounts( "/proc/mounts" );
+          
+        if ( proc_mounts.open( QIODevice::ReadOnly | QIODevice::Text ) )
+        {
+          QTextStream ts( &proc_mounts );
+          // Note: With Qt 4.3 this seems to be obsolete, but we'll
+          // keep it for now.
+          ts.setCodec( "UTF-8" );
+          ts.setAutoDetectUnicode( true );
+            
+          while ( 1 )
+          {
+            // Only import CIFS shares.
+            QString line = ts.readLine( 0 );
+              
+            if ( !line.isNull() )
+            {
+              if ( line.contains( " cifs " ) )
+              {
+                contents << line;
+                continue;
+              }
+              else
+              {
+                continue;
+              }
+            }
+            else
+            {
+              break;
+            }
+          }
+            
+          proc_mounts.close();
+        }
+        else
+        {
+          Smb4KCoreMessage::error( ERROR_OPENING_FILE, proc_mounts.fileName() );
+          return;
+        }
+        
+        // Now find the share entry and extract to needed data.
+        for ( int j = 0; j < contents.size(); ++j )
+        {
+          QString entry = contents.at( j );
+          
+          if ( entry.contains( mount_points.at( i )->mountPoint() ) )
+          {
+            // Get the options string. Since the string ends with something
+            // like " 0 0", we need to remove the last four characters.
+            QString mount_options = entry.section( " cifs ", 1, 1 ).remove( entry.length() - 4, 4 ).trimmed();
+            
+            // Domain
+            if ( mount_options.contains( "domain=" ) )
+            {
+              QString tmp = mount_options.section( "domain=", 1, 1 );
+              
+              if ( tmp.contains( "," ) )
+              {
+                // The domain entry is somewhere in the middle of the options
+                // string.
+                share.setWorkgroupName( tmp.section( ",", 0, 0 ) );
+              }
+              else
+              {
+                // The domain entry is at the end of the options string.
+                share.setWorkgroupName( tmp );
+              }
+            }
+            else
+            {
+              // Do nothing
+            }
+            
+            // IP address
+            if ( mount_options.contains( "addr=" ) )
+            {
+              QString tmp = mount_options.section( "addr=", 1, 1 );
+              
+              if ( tmp.contains( "," ) )
+              {
+                // The IP address entry is somewhere in the middle of the options
+                // string.
+                share.setHostIP( tmp.section( ",", 0, 0 ) );
+              }
+              else
+              {
+                // The IP address entry is at the end of the options string.
+                share.setHostIP( tmp );
+              }
+            }
+            else
+            {
+              // Do nothing
+            }
+            
+            // Login
+            if ( mount_options.contains( "username=" ) )
+            {
+              QString tmp = mount_options.section( "username=", 1, 1 );
+              
+              if ( tmp.contains( "," ) )
+              {
+                // The user name entry is somewhere in the middle of the options
+                // string.
+                QString user = tmp.section( ",", 0, 0 );
+                share.setLogin( user.isEmpty() ? "guest" : user );
+              }
+              else
+              {
+                // The user name entry is at the end of the options string.
+                share.setLogin( tmp.isEmpty() ? "guest" : tmp );
+              }
+            }
+            else if ( mount_options.contains( "user=" ) )
+            {
+              QString tmp = mount_options.section( "user=", 1, 1 );
+              
+              if ( tmp.contains( "," ) )
+              {
+                // The user name entry is somewhere in the middle of the options
+                // string.
+                QString user = tmp.section( ",", 0, 0 );
+                share.setLogin( user.isEmpty() ? "guest" : user );
+              }
+              else
+              {
+                // The user name entry is at the end of the options string.
+                share.setLogin( tmp.isEmpty() ? "guest" : tmp );
+              }
+            }
+            else
+            {
+              // Do nothing
+            }
+            
+            break;
+          }
+          else
+          {
+            continue;
+          }
+        }
+        
+        mounted_shares += share;
+      }
+      else
+      {
+        // The share is either already known or the user disabled support for
+        // the proc file system in the kernel. Either way, just populate all 
+        // possible entries. The rest will be added/updated by the code below.
+        QString login = mount_points.at( i )->mountOptions().join( "," ).section( "user=", 1, 1 ).section( ",", 0, 0 ).trimmed();
+        share.setLogin( !login.isEmpty() ? login : "guest" ); // Work around empty 'user=' entries
+        share.setIsMounted( true );
+        
+        mounted_shares += share;
+      }
 #else
       share.setFileSystem( Smb4KShare::SMBFS );
       QString login = mount_points.at( i )->mountOptions().join( "," ).section( "username=", 1, 1 ).section( ",", 0, 0 ).trimmed();
       share.setLogin( !login.isEmpty() ? login : "guest" ); // Work around empty 'username=' entries
-#endif
       share.setIsMounted( true );
-      
-      // FIXME: Get domain and host IP address if available. Under Linux, 
-      // /etc/mtab and thus KMountPoint do not carry this information (yet).
+      qDebug() << "Domain and ip address?";
       
       mounted_shares += share;
+#endif
     }
     else
     {
@@ -447,18 +607,57 @@ void Smb4KMounter::import()
   {
     Smb4KShare *mounted_share = findShareByPath( mounted_shares.at( i ).canonicalPath() );
     
-    // Check the share.
-    if ( !mounted_share || (mounted_share && !mounted_share->isInaccessible()) )
+    if ( mounted_share )
     {
-      check( &mounted_shares[i] );
+      // Check share.
+      if ( !mounted_share->isInaccessible() )
+      {
+        check( &mounted_shares[i] );
+      }
+      else
+      {
+        mounted_shares[i].setInaccessible( true );
+      }
+      
+      // Copy data.
+      if ( !mounted_share->login().isEmpty() &&
+           QString::compare( mounted_share->login(), mounted_shares.at( i ).login() ) != 0 )
+      {
+        mounted_shares[i].setLogin( mounted_share->login() );
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      if ( !mounted_share->workgroupName().isEmpty() &&
+           QString::compare( mounted_share->workgroupName(), mounted_shares.at( i ).workgroupName() ) != 0 )
+      {
+        mounted_shares[i].setWorkgroupName( mounted_share->workgroupName() );
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      if ( !mounted_share->hostIP().isEmpty() &&
+           QString::compare( mounted_share->hostIP(), mounted_shares.at( i ).hostIP() ) != 0 )
+      {
+        mounted_shares[i].setHostIP( mounted_share->hostIP() );
+      }
+      else
+      {
+        // Do nothing
+      }
     }
     else
     {
-      mounted_shares[i].setInaccessible( true );
+      // Check share.
+      check( &mounted_shares[i] );
     }
     
     // Is this a mount that was done by the user or by
-    // someone else (or the system).
+    // someone else (or the system)?
     if ( (mounted_shares.at( i ).uid() == getuid() && mounted_shares.at( i ).gid() == getgid()) ||
          (!mounted_shares.at( i ).isInaccessible() &&
           (QString::fromUtf8( mounted_shares.at( i ).path() ).startsWith( Smb4KSettings::mountPrefix().path() ) ||
