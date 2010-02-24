@@ -41,19 +41,191 @@
 #include <core/smb4kworkgroup.h>
 #include <core/smb4khost.h>
 #include <core/smb4kshare.h>
-#include <core/smb4kglobal.h>
+
+
+class Smb4KSlavePrivate
+{
+  public:
+    Smb4KSlavePrivate( QObject *parent ) : eventLoop( parent ) {}
+    ~Smb4KSlavePrivate() {}
+    Smb4KSlave *slave;
+    QEventLoop eventLoop;
+    
+    Smb4KBasicNetworkItem currentItem;
+    
+    void addWorkgroup( Smb4KWorkgroup *workgroup );
+    void addHost( Smb4KHost *host );
+    void addShare( Smb4KShare *share );
+    
+    // FIXME: Add clear functions!?
+    
+    Smb4KWorkgroup *findWorkgroup( const QString &name );
+    Smb4KHost *findHost( const QString &name, const QString &workgroup = QString() );
+    Smb4KShare *findShare( const QString &name, const QString &host, const QString &workgroup = QString() );
+    
+    void slotWorkgroups( const QList<Smb4KWorkgroup *> &list );
+    void slotHosts( Smb4KWorkgroup *workgroup, const QList<Smb4KHost *> &list );
+    void slotShares( Smb4KHost *host, const QList<Smb4KShare *> &list );
+    void slotScannerFinished( Smb4KBasicNetworkItem *item, int process );
+    
+  private:
+    QList<Smb4KWorkgroup *> m_workgroups;
+    QList<Smb4KHost *> m_hosts;
+    QList<Smb4KShare *> m_shares;
+};
+
+
+void Smb4KSlavePrivate::addWorkgroup( Smb4KWorkgroup *workgroup )
+{
+  if ( m_workgroups.isEmpty() )
+  {
+    m_workgroups += workgroup;
+  }
+  else
+  {
+    // FIXME
+  }
+}
+
+
+void Smb4KSlavePrivate::addHost( Smb4KHost *host )
+{
+  if ( m_hosts.isEmpty() )
+  {
+    m_hosts += host;
+  }
+  else
+  {
+    // FIXME
+  }
+}
+
+
+void Smb4KSlavePrivate::addShare( Smb4KShare *share )
+{
+  if ( m_shares.isEmpty() )
+  {
+    m_shares += share;
+  }
+  else
+  {
+    // FIXME
+  }
+}
+
+
+Smb4KWorkgroup *Smb4KSlavePrivate::findWorkgroup( const QString &name )
+{
+  // FIXME
+}
+
+
+Smb4KHost *Smb4KSlavePrivate::findHost( const QString &name, const QString &workgroup )
+{
+  // FIXME
+}
+
+
+Smb4KShare *Smb4KSlavePrivate::findShare( const QString &name, const QString &host, const QString &workgroup )
+{
+  // FIXME
+}
+
+
+void Smb4KSlavePrivate::slotWorkgroups( const QList<Smb4KWorkgroup *> &list )
+{
+  KIO::UDSEntry entry;
+  
+  for ( int i = 0; i < list.size(); ++i )
+  {
+    entry.insert( KIO::UDSEntry::UDS_NAME, list.at( i )->workgroupName() );
+    entry.insert( KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR );
+    entry.insert( KIO::UDSEntry::UDS_ACCESS, (S_IRUSR | S_IRGRP | S_IROTH | S_IXUSR | S_IXGRP | S_IXOTH) );
+    entry.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString::fromLatin1( "application/x-smb-workgroup" ) );
+
+    slave->listEntry( entry, false );
+    entry.clear();
+  }
+  
+  slave->listEntry( entry, true );
+  slave->finished();
+}
+
+
+void Smb4KSlavePrivate::slotHosts( Smb4KWorkgroup */*workgroup*/, const QList<Smb4KHost *> &list )
+{
+  KIO::UDSEntry entry;
+  
+  for ( int i = 0; i < list.size(); ++i )
+  {
+    entry.insert( KIO::UDSEntry::UDS_NAME, list.at( i )->hostName() );
+    entry.insert( KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR );
+    entry.insert( KIO::UDSEntry::UDS_ACCESS, (S_IRUSR | S_IRGRP | S_IROTH | S_IXUSR | S_IXGRP | S_IXOTH) );
+    entry.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString::fromLatin1( "application/x-smb-server" ) );
+
+    slave->listEntry( entry, false );
+    entry.clear();
+  }
+  
+  slave->listEntry( entry, true );
+  slave->finished();
+}
+
+
+void Smb4KSlavePrivate::slotShares( Smb4KHost */*host*/, const QList<Smb4KShare *> &list )
+{
+  // FIXME: Copy the list of shares to the private list used by
+  // Smb4KSlave::findShare().
+  
+  KIO::UDSEntry entry;
+
+  for ( int i = 0; i < list.size(); ++i )
+  {
+    entry.insert( KIO::UDSEntry::UDS_NAME, list.at( i )->shareName() );
+
+    // Discriminate between normal shares and printers.
+    if ( !list.at( i )->isPrinter() )
+    {
+      entry.insert( KIO::UDSEntry::UDS_FILE_TYPE, S_IFBLK );
+      entry.insert( KIO::UDSEntry::UDS_ACCESS, (S_IRUSR | S_IRGRP | S_IROTH | S_IXUSR | S_IXGRP | S_IXOTH) );
+      entry.insert( KIO::UDSEntry::UDS_ICON_NAME, "folder" );
+    }
+    else
+    {
+      entry.insert( KIO::UDSEntry::UDS_FILE_TYPE, S_IFCHR );
+      entry.insert( KIO::UDSEntry::UDS_ACCESS, (S_IRUSR | S_IRGRP | S_IROTH | S_IWUSR | S_IWGRP | S_IWOTH) );
+      entry.insert( KIO::UDSEntry::UDS_ICON_NAME, "printer" );
+    }
+
+    slave->listEntry( entry, false );
+    entry.clear();
+  }
+  
+  slave->listEntry( entry, true );
+  slave->finished();
+}
+
+
+void Smb4KSlavePrivate::slotScannerFinished( Smb4KBasicNetworkItem *item, int process )
+{
+  slave->messageBox( KIO::SlaveBase::Information, "Scanner finished" );
+  
+  eventLoop.exit();
+}
 
 
 
 Smb4KSlave::Smb4KSlave::Smb4KSlave( const QByteArray &pool, const QByteArray &app )
-: SlaveBase( "smb4k", pool, app )
+: QObject(), SlaveBase( "smb4k", pool, app ), m_priv( new Smb4KSlavePrivate( this ) )
 {
-  m_current_item = Smb4KBasicNetworkItem( Smb4KBasicNetworkItem::Unknown );
+  m_priv->slave = this;
+  m_priv->currentItem = Smb4KBasicNetworkItem( Smb4KBasicNetworkItem::Unknown );
 }
 
 
 Smb4KSlave::~Smb4KSlave()
 {
+  delete m_priv;
 }
 
 
@@ -72,74 +244,40 @@ void Smb4KSlave::listDir( const KUrl &url )
     // Go ahead
   }
 
-  KIO::UDSEntry entry;
+  m_priv->currentItem = currentNetworkItem( u );
 
-  m_current_item = currentNetworkItem( u );
-
-  switch ( m_current_item.type() )
+  switch ( m_priv->currentItem.type() )
   {
     case Smb4KBasicNetworkItem::Unknown:
     {
-//       // The user called "smb4k:/". Get the workgroups/domains.
-//       QList<Smb4KWorkgroup *> workgroups = Smb4KScanner::self()->lookupDomains();
-//
-//       for ( int i = 0; i < workgroups.size(); ++i )
-//       {
-//         entry.insert( KIO::UDSEntry::UDS_NAME, workgroups.at( i )->workgroupName() );
-//         entry.insert( KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR );
-//         entry.insert( KIO::UDSEntry::UDS_ACCESS, (S_IRUSR | S_IRGRP | S_IROTH | S_IXUSR | S_IXGRP | S_IXOTH) );
-//         entry.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString::fromLatin1( "application/x-smb-workgroup" ) );
-//
-//         listEntry( entry, false );
-//         entry.clear();
-//       }
+      Smb4KScanner::self()->lookupDomains();
+      m_priv->slave->connect( Smb4KScanner::self(), SIGNAL( workgroups( const QList<Smb4KWorkgroup *> & ) ),
+                              SLOT( slotWorkgroups( const QList<Smb4KWorkgroup *> & ) ) );
+      m_priv->slave->connect( Smb4KScanner::self(), SIGNAL( finished( Smb4KBasicNetworkItem *, int ) ),
+                              SLOT( slotScannerFinished( Smb4KBasicNetworkItem *, int ) ) );
+      m_priv->eventLoop.exec();
       break;
     }
     case Smb4KBasicNetworkItem::Workgroup:
     {
-//       // The URL is a domain. Get the domain members.
-//       Smb4KWorkgroup *workgroup = findWorkgroup( url.host() );
-//       QList<Smb4KHost *> hosts = Smb4KScanner::self()->lookupDomainMembers( workgroup );
-//
-//       for ( int i = 0; i < hosts.size(); ++i )
-//       {
-//         entry.insert( KIO::UDSEntry::UDS_NAME, hosts.at( i )->hostName() );
-//         entry.insert( KIO::UDSEntry::UDS_FILE_TYPE, S_IFDIR );
-//         entry.insert( KIO::UDSEntry::UDS_ACCESS, (S_IRUSR | S_IRGRP | S_IROTH | S_IXUSR | S_IXGRP | S_IXOTH) );
-//         entry.insert( KIO::UDSEntry::UDS_MIME_TYPE, QString::fromLatin1( "application/x-smb-server" ) );
-//
-//         listEntry( entry, false );
-//         entry.clear();
-//       }
+      Smb4KWorkgroup *workgroup = m_priv->findWorkgroup( url.host() );
+      Smb4KScanner::self()->lookupDomainMembers( workgroup );
+      m_priv->slave->connect( Smb4KScanner::self(), SIGNAL( hosts( Smb4KWorkgroup *, const QList<Smb4KHost *> & ) ),
+                              SLOT( slotHosts( Smb4KWorkgroup *, const QList<Smb4KHost *> & ) ) );
+      m_priv->slave->connect( Smb4KScanner::self(), SIGNAL( finished( Smb4KBasicNetworkItem *, int ) ),
+                              SLOT( slotScannerFinished( Smb4KBasicNetworkItem *, int ) ) );
+      m_priv->eventLoop.exec();
       break;
     }
     case Smb4KBasicNetworkItem::Host:
     {
-//       // FIXME: Also use the workgroup to search for the host.
-//       Smb4KHost *host = findHost( u.host() );
-//       m_shares = Smb4KScanner::self()->lookupShares( host );
-//
-//       for ( int i = 0; i < m_shares.size(); ++i )
-//       {
-//         entry.insert( KIO::UDSEntry::UDS_NAME, m_shares.at( i )->shareName() );
-//
-//         // Discriminate between normal shares and printers.
-//         if ( !m_shares.at( i )->isPrinter() )
-//         {
-//           entry.insert( KIO::UDSEntry::UDS_FILE_TYPE, S_IFBLK );
-//           entry.insert( KIO::UDSEntry::UDS_ACCESS, (S_IRUSR | S_IRGRP | S_IROTH | S_IXUSR | S_IXGRP | S_IXOTH) );
-//           entry.insert( KIO::UDSEntry::UDS_ICON_NAME, "folder" );
-//         }
-//         else
-//         {
-//           entry.insert( KIO::UDSEntry::UDS_FILE_TYPE, S_IFCHR );
-//           entry.insert( KIO::UDSEntry::UDS_ACCESS, (S_IRUSR | S_IRGRP | S_IROTH | S_IWUSR | S_IWGRP | S_IWOTH) );
-//           entry.insert( KIO::UDSEntry::UDS_ICON_NAME, "printer" );
-//         }
-//
-//         listEntry( entry, false );
-//         entry.clear();
-//       }
+      // FIXME: Also use the workgroup to search for the host.
+      Smb4KHost *host = m_priv->findHost( u.host() );
+      Smb4KScanner::self()->lookupShares( host );
+      m_priv->slave->connect( Smb4KScanner::self(), SIGNAL( shares( Smb4KHost *, const QList<Smb4KShare *> & ) ),
+                              SLOT( slotShares( Smb4KHost *, const QList<Smb4KShare *> & ) ) );
+      m_priv->slave->connect( Smb4KScanner::self(), SIGNAL( finished( Smb4KBasicNetworkItem *, int ) ),
+                              SLOT( slotScannerFinished( Smb4KBasicNetworkItem *, int ) ) );
       break;
     }
     case Smb4KBasicNetworkItem::Share:
@@ -153,9 +291,6 @@ void Smb4KSlave::listDir( const KUrl &url )
       break;
     }
   }
-
-  listEntry( entry, true );
-  finished();
 }
 
 
@@ -176,9 +311,9 @@ void Smb4KSlave::stat( const KUrl &url )
 
   KIO::UDSEntry entry;
 
-  m_current_item = currentNetworkItem( u );
+  m_priv->currentItem = currentNetworkItem( u );
 
-  switch ( m_current_item.type() )
+  switch ( m_priv->currentItem.type() )
   {
     case Smb4KBasicNetworkItem::Unknown:
     case Smb4KBasicNetworkItem::Workgroup:
@@ -193,7 +328,7 @@ void Smb4KSlave::stat( const KUrl &url )
     case Smb4KBasicNetworkItem::Share:
     {
       QString share_name = u.path().section( "/", 1, 1 );
-      Smb4KShare *share = findShare( share_name, u.host() );
+      Smb4KShare *share = m_priv->findShare( share_name, u.host() );
 
       if ( share )
       {
@@ -229,69 +364,6 @@ void Smb4KSlave::stat( const KUrl &url )
 }
 
 
-void Smb4KSlave::get( const KUrl &url )
-{
-//   QString share_name = url.path().section( "/", 1, 1 ).trimmed();
-//   Smb4KShare *share = findShare( share_name, url.host() );
-//
-//   // Do NOT use mimeType() here. The slave will then try to
-//   // open the shares by itself. This fails and it shows the
-//   // Open with... dialog.
-//
-//   if ( share )
-//   {
-//     if ( share->isPrinter() )
-//     {
-//     }
-//     else
-//     {
-//       // Mount or unmount the share.
-//       QList<Smb4KShare *> mounted_shares = Smb4KGlobal::findShareByUNC( share->unc() );
-//       bool found = false;
-//
-//       for ( int i = 0; i < mounted_shares.size(); ++i )
-//       {
-//         if ( !mounted_shares.at( i )->isForeign() )
-//         {
-//           Smb4KMounter::self()->unmountShare( mounted_shares.at( i ) );
-//           found = true;
-//           break;
-//         }
-//         else
-//         {
-//           continue;
-//         }
-//       }
-//
-//       if ( !found )
-//       {
-//         Smb4KMounter::self()->mountShare( share );
-//       }
-//       else
-//       {
-//         // Do nothing
-//       }
-//
-//       // FIXME: Relist the directory so that the new icons can be
-//       // shown.
-//     }
-//   }
-//   else
-//   {
-//     messageBox( KIO::SlaveBase::Information, "No share found" );
-//   }
-
-  data( QByteArray() );
-  finished();
-}
-
-
-void Smb4KSlave::special( const QByteArray &data )
-{
-  kDebug(2400) << "special()" << endl;
-}
-
-
 KUrl Smb4KSlave::checkURL( const KUrl &url )
 {
   // FIXME: If url.host() contains a space, redirect to the
@@ -323,7 +395,7 @@ KUrl Smb4KSlave::checkURL( const KUrl &url )
       {
         // If u.path() represents a host, replace the workgroup
         // entry (url.host()) with it.
-        Smb4KHost *host = findHost( u.path().mid( 1 ).toUpper(), u.host().toUpper() );
+        Smb4KHost *host = m_priv->findHost( u.path().mid( 1 ).toUpper(), u.host().toUpper() );
 
         if ( host )
         {
@@ -366,7 +438,7 @@ Smb4KBasicNetworkItem Smb4KSlave::currentNetworkItem( const KUrl &url )
     if ( !url.hasPath() || QString::compare( url.path(), "/" ) == 0 )
     {
       // Check if the host entry is a host or a workgroup/domain.
-      Smb4KHost *host = findHost( url.host() );
+      Smb4KHost *host = m_priv->findHost( url.host() );
 
       if ( host )
       {
@@ -374,7 +446,7 @@ Smb4KBasicNetworkItem Smb4KSlave::currentNetworkItem( const KUrl &url )
       }
       else
       {
-        Smb4KWorkgroup *workgroup = findWorkgroup( url.host() );
+        Smb4KWorkgroup *workgroup = m_priv->findWorkgroup( url.host() );
 
         if ( workgroup )
         {
@@ -390,7 +462,7 @@ Smb4KBasicNetworkItem Smb4KSlave::currentNetworkItem( const KUrl &url )
     {
       // FIXME: Discriminate between share and path.
       QString share_name = url.path().section( "/", 1, 1 ).trimmed();
-      Smb4KShare *share = findShare( share_name, url.host() );
+      Smb4KShare *share = m_priv->findShare( share_name, url.host() );
 
       if ( share )
       {
@@ -408,105 +480,6 @@ Smb4KBasicNetworkItem Smb4KSlave::currentNetworkItem( const KUrl &url )
   }
 
   return Smb4KBasicNetworkItem( Smb4KBasicNetworkItem::Unknown );
-}
-
-
-Smb4KWorkgroup *Smb4KSlave::findWorkgroup( const QString &name )
-{
-  if ( Smb4KGlobal::workgroupsList()->isEmpty() )
-  {
-    Smb4KScanner::self()->lookupDomains();
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  return Smb4KGlobal::findWorkgroup( name );
-}
-
-
-Smb4KHost *Smb4KSlave::findHost( const QString &name, const QString &workgroup )
-{
-  if ( Smb4KGlobal::workgroupsList()->isEmpty() )
-  {
-    Smb4KScanner::self()->lookupDomains();
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KGlobal::hostsList()->isEmpty() )
-  {
-    Smb4KWorkgroup *w = findWorkgroup( workgroup );
-
-    if ( w )
-    {
-      Smb4KScanner::self()->lookupDomainMembers( w );
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  return Smb4KGlobal::findHost( name, workgroup );
-}
-
-
-Smb4KShare *Smb4KSlave::findShare( const QString &name, const QString &host, const QString &workgroup )
-{
-//   if ( m_shares.isEmpty() )
-//   {
-//     // Lookup the shares.
-//     Smb4KHost *h = findHost( host, workgroup );
-//
-//     if ( h )
-//     {
-//       m_shares = Smb4KScanner::self()->lookupShares( h );
-//     }
-//     else
-//     {
-//       // Do nothing
-//     }
-//   }
-//   else
-//   {
-//     // Do nothing
-//   }
-
-  Smb4KShare *share = NULL;
-
-  for ( int i = 0; i < m_shares.size(); ++i )
-  {
-    if ( !workgroup.isEmpty() &&
-         QString::compare( m_shares.at( i )->workgroupName(), workgroup, Qt::CaseInsensitive ) != 0 )
-    {
-      continue;
-    }
-    else
-    {
-      // Go ahead
-    }
-
-    if ( QString::compare( m_shares.at( i )->shareName(), name, Qt::CaseInsensitive ) == 0 &&
-         QString::compare( m_shares.at( i )->hostName(), host, Qt::CaseInsensitive ) == 0 )
-    {
-      share = m_shares[i];
-      break;
-    }
-    else
-    {
-      continue;
-    }
-  }
-
-  return share;
 }
 
 
@@ -534,3 +507,5 @@ extern "C"
     return 0;
   }
 }
+
+#include "kio_smb4k.moc"

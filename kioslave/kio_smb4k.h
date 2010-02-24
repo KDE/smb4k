@@ -28,6 +28,7 @@
 
 // Qt includes
 #include <QString>
+#include <QObject>
 
 // KDE includes
 #include <kio/global.h>
@@ -39,10 +40,15 @@
 class Smb4KWorkgroup;
 class Smb4KHost;
 class Smb4KShare;
+class Smb4KSlavePrivate;
 
 
-class Smb4KSlave : public KIO::SlaveBase
+class KIO_EXPORT Smb4KSlave : public QObject, public KIO::SlaveBase
 {
+  Q_OBJECT
+  
+  friend class Smb4KSlavePrivate;
+  
   public:
     /**
      * Constructor
@@ -65,20 +71,12 @@ class Smb4KSlave : public KIO::SlaveBase
      */
     void stat( const KUrl &url );
 
-    void get( const KUrl &url );
-    void special( const QByteArray &data );
-
   private:
-    /**
-     * The current network item
-     */
-    Smb4KBasicNetworkItem m_current_item;
-
-    /**
-     * The list of shares
-     */
-    QList<Smb4KShare *> m_shares;
-
+    Q_PRIVATE_SLOT( m_priv, void slotWorkgroups( const QList<Smb4KWorkgroup *> & ) )
+    Q_PRIVATE_SLOT( m_priv, void slotHosts( Smb4KWorkgroup *, const QList<Smb4KHost *> & ) )
+    Q_PRIVATE_SLOT( m_priv, void slotShares( Smb4KHost *, const QList<Smb4KShare *> & ) )
+    Q_PRIVATE_SLOT( m_priv, void slotScannerFinished( Smb4KBasicNetworkItem *, int ) )
+    
     /**
      * Check the URL.
      *
@@ -100,46 +98,9 @@ class Smb4KSlave : public KIO::SlaveBase
     Smb4KBasicNetworkItem currentNetworkItem( const KUrl &url );
 
     /**
-     * Find an entry in the list of workgroups.
-     *
-     * Note: This function is needed, because we cannot use the global
-     * workgroups list past a redirection.
-     *
-     * @param name        The name of the workgroup
-     *
-     * @returns the workgroup entry from the list.
+     * Pointer to the private helper class.
      */
-    Smb4KWorkgroup *findWorkgroup( const QString &name );
-
-    /**
-     * Find an entry in the list of hosts.
-     *
-     * Note: This function is needed, because we cannot use the global
-     * hosts list past a redirection.
-     *
-     * @param name        The name of the host
-     *
-     * @param workgroup   The name of the host's workgroup/domain
-     *
-     * @returns the host entry from the list.
-     */
-    Smb4KHost *findHost( const QString &name,
-                         const QString &workgroup = QString() );
-
-    /**
-     * Find an entry in the list of shares.
-     *
-     * @param name        The name of the share
-     *
-     * @param host        The name of the host
-     *
-     * @param workgroup   The name of the workgroup
-     *
-     * @returns the share entry from the list or NULL if it was not found.
-     */
-    Smb4KShare *findShare( const QString &name,
-                           const QString &host,
-                           const QString &workgroup = QString() );
+    Smb4KSlavePrivate *const m_priv;
 };
 
 #endif
