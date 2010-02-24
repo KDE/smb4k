@@ -61,9 +61,10 @@ set( CPACK_SOURCE_PACKAGE_FILE_NAME smb4k-${VERSION}
 set( CPACK_SOURCE_GENERATOR TBZ2 )
 set( CPACK_SOURCE_IGNORE_FILES
      "~$"
-     "^${PROJECT_SOURCE_DIR}.*/CVS/"
      "^${PROJECT_SOURCE_DIR}/Messages.sh"
      "^${PROJECT_SOURCE_DIR}/po/scripts/"
-     "^${PROJECT_SOURCE_DIR}.*kdevelop*" )
+     "^${PROJECT_SOURCE_DIR}.*kdevelop*" 
+     "^${PROJECT_SOURCE_DIR}.*/.svn/" 
+     "^${PROJECT_SOURCE_DIR}/build/" )
 
 include( CPack )
