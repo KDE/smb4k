@@ -63,33 +63,33 @@ install( TARGETS smb4kcore DESTINATION ${LIB_INSTALL_DIR} )
 ########### install files ###############
 
 install( FILES smb4k.kcfg DESTINATION ${KCFG_INSTALL_DIR} )
-install( FILES
-  smb4kauthinfo.h
-  smb4kbasicnetworkitem.h
-  smb4kbookmark.h
-  smb4kbookmarkhandler.h
-  smb4kcore.h
-  smb4kcoremessage.h
-  smb4kdefs.h
-  smb4kglobal.h
-  smb4khomesshareshandler.h
-  smb4khost.h
-  smb4kipaddressscanner.h
-  smb4kmounter.h
-  smb4kpreviewer.h
-  smb4kpreviewitem.h
-  smb4kprint.h
-  smb4kprintinfo.h
-  smb4kprocess.h
-  smb4ksambaoptionshandler.h
-  smb4ksambaoptionsinfo.h
-  smb4kscanner.h
-  smb4ksearch.h
-  smb4kshare.h
-  smb4ksolidinterface.h
-  smb4ksudowriterinterface.h
-  smb4ksynchronizationinfo.h
-  smb4ksynchronizer.h
-  smb4kwalletmanager.h
-  smb4kworkgroup.h
-  DESTINATION ${INCLUDE_INSTALL_DIR} )
+#install( FILES
+#  smb4kauthinfo.h
+#  smb4kbasicnetworkitem.h
+#  smb4kbookmark.h
+#  smb4kbookmarkhandler.h
+#  smb4kcore.h
+#  smb4kcoremessage.h
+#  smb4kdefs.h
+#  smb4kglobal.h
+#  smb4khomesshareshandler.h
+#  smb4khost.h
+#  smb4kipaddressscanner.h
+#  smb4kmounter.h
+#  smb4kpreviewer.h
+#  smb4kpreviewitem.h
+#  smb4kprint.h
+#  smb4kprintinfo.h
+#  smb4kprocess.h
+#  smb4ksambaoptionshandler.h
+#  smb4ksambaoptionsinfo.h
+#  smb4kscanner.h
+#  smb4ksearch.h
+#  smb4kshare.h
+#  smb4ksolidinterface.h
+#  smb4ksudowriterinterface.h
+#  smb4ksynchronizationinfo.h
+#  smb4ksynchronizer.h
+#  smb4kwalletmanager.h
+#  smb4kworkgroup.h
+#  DESTINATION ${INCLUDE_INSTALL_DIR} )
