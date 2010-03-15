@@ -23,6 +23,8 @@
  *   MA  02111-1307 USA                                                    *
  ***************************************************************************/
 
+#include <config.h>
+
 // Qt includes
 #include <QStringList>
 #include <QFile>
@@ -44,7 +46,8 @@
 // application specific includes
 #include <smb4kmainwindow.h>
 #include <core/smb4ksettings.h>
-#include <core/smb4kcore.h>
+#include <core/smb4kscanner.h>
+#include <core/smb4kmounter.h>
 
 
 static const char description[] =
@@ -100,52 +103,6 @@ int main( int argc, char *argv[] )
   // tray is closed.
   app.setQuitOnLastWindowClosed( false );
 
-  // Check the current config file and remove it if it belongs to
-  // a version < 0.9.0.
-  KConfig config( "smb4krc" );
-
-  if ( !config.groupList().isEmpty() &&
-       (config.groupList().contains( "Browse Options" ) != 0 ||
-        config.groupList().contains( "Mount Options" ) != 0 ||
-        config.groupList().contains( "Rsync" ) != 0 ||
-        config.groupList().contains( "Super User Privileges") != 0 ||
-        config.groupList().contains( "User Interface" ) != 0 ||
-        config.groupList().contains( "System" ) != 0) )
-  {
-    int return_value = KMessageBox::warningContinueCancel( 0, i18n( "<qt><p>Smb4K now uses a different configuration system. Thus, your old settings are obsolete and you have to reconfigure the application.</p><p>To ensure a clean transition, the current configuration file will be removed.</p></qt>" ) );
-
-    if ( return_value == KMessageBox::Continue )
-    {
-      QString file_name = KGlobal::dirs()->locateLocal( "config", "smb4krc", KGlobal::mainComponent() );
-
-      if ( !file_name.isEmpty() && QFile::exists( file_name ) )
-      {
-        QFile::remove( file_name );
-      }
-    }
-    else
-    {
-      exit( 0 );
-    }
-  }
-
-  // Warn the user that support for the "super" program has been terminated.
-  KConfigGroup su_group( &config, "SuperUser" );
-
-  if ( su_group.hasKey( "SuperUserProgram" ) &&
-       QString::compare( su_group.readEntry( "SuperUserProgram" ), "Super" ) == 0 )
-  {
-    KMessageBox::information( 0, i18n( "<qt>Support for the program 'super' has been terminated. You have to reconfigure Smb4K.</qt>" ) );
-
-    su_group.deleteEntry( "SuperUserProgram" );
-
-    su_group.sync();
-  }
-  else
-  {
-    // Do nothing
-  }
-
   // Launch the application:
   Smb4KMainWindow *main_window = new Smb4KMainWindow();
 
@@ -154,8 +111,9 @@ int main( int argc, char *argv[] )
     main_window->show();
   }
 
-  // Initialize the core.
-//   Smb4KCore::self()->init();
+  // Initialize the necessary core classes.
+  Smb4KScanner::self()->init();
+  Smb4KMounter::self()->init();
 
   return app.exec();
 }
