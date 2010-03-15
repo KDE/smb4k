@@ -3,7 +3,7 @@
     settings of Smb4K
                              -------------------
     begin                : Sa Okt 30 2004
-    copyright            : (C) 2004-2008 by Alexander Reinholdt
+    copyright            : (C) 2004-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -54,7 +54,7 @@ Smb4KSuperUserOptions::Smb4KSuperUserOptions( QWidget *parent )
   QGridLayout *actions_layout   = new QGridLayout( actions_box );
   actions_layout->setSpacing( 5 );
 
-#ifdef __linux__
+#ifdef Q_OS_LINUX
   QCheckBox *force_unmounting   = new QCheckBox( Smb4KSettings::self()->useForceUnmountItem()->label(),
                                   actions_box );
   force_unmounting->setObjectName( "kcfg_UseForceUnmount" );
@@ -63,7 +63,7 @@ Smb4KSuperUserOptions::Smb4KSuperUserOptions( QWidget *parent )
                                   actions_box );
   use_privileges->setObjectName( "kcfg_AlwaysUseSuperUser" );
 
-#ifdef __linux__
+#ifdef Q_OS_LINUX
   actions_layout->addWidget( force_unmounting, 0, 0, 0 );
   actions_layout->addWidget( use_privileges, 1, 0, 0 );
 #else
@@ -81,7 +81,7 @@ Smb4KSuperUserOptions::Smb4KSuperUserOptions( QWidget *parent )
   layout->addWidget( actions_box, 0, 0, 1, 6, 0 );
   layout->addWidget( remove, 1, 5, 0 );
   layout->addItem( spacer, 2, 0, 1, 6, 0 );
-
+  
   connect( remove, SIGNAL( clicked( bool ) ),
            this,   SLOT( slotRemoveClicked( bool ) ) );
 }
@@ -92,14 +92,48 @@ Smb4KSuperUserOptions::~Smb4KSuperUserOptions()
 }
 
 
+bool Smb4KSuperUserOptions::writeSuperUserEntries()
+{
+  return (
+#ifdef Q_OS_LINUX
+          (forceUnmountingStateChanged() && 
+           findChild<QCheckBox *>( "kcfg_UseForceUnmount" ) ->isChecked()) ||
+#endif
+          (alwaysUseSuperUserStateChanged() && 
+           findChild<QCheckBox *>( "kcfg_AlwaysUseSuperUser" )->isChecked()));
+}
+
+
+void Smb4KSuperUserOptions::resetSuperUserSettings()
+{
+#ifdef Q_OS_LINUX
+  findChild<QCheckBox *>( "kcfg_UseForceUnmount" )->setChecked( false );
+#endif
+  findChild<QCheckBox *>( "kcfg_AlwaysUseSuperUser" )->setChecked( false );
+}
+
+
+#ifdef Q_OS_LINUX
+bool Smb4KSuperUserOptions::forceUnmountingStateChanged()
+{
+  return (findChild<QCheckBox *>( "kcfg_UseForceUnmount" )->isChecked() != Smb4KSettings::useForceUnmount());
+}
+#endif
+
+
+bool Smb4KSuperUserOptions::alwaysUseSuperUserStateChanged()
+{
+  return (findChild<QCheckBox *>( "kcfg_AlwaysUseSuperUser" )->isChecked() != Smb4KSettings::alwaysUseSuperUser());
+}
+
+
 /////////////////////////////////////////////////////////////////////////////
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
 
 void Smb4KSuperUserOptions::slotRemoveClicked( bool /*checked*/ )
 {
-  // Emit the signal that the removal of the super user
-  // entries has been requested.
+  resetSuperUserSettings();  
   emit removeEntries();
 }
 

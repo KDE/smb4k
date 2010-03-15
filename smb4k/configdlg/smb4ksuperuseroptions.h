@@ -3,7 +3,7 @@
     settings of Smb4K
                              -------------------
     begin                : Sa Okt 30 2004
-    copyright            : (C) 2004-2008 by Alexander Reinholdt
+    copyright            : (C) 2004-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -58,6 +58,20 @@ class Smb4KSuperUserOptions : public QWidget
      * The destructor
      */
     ~Smb4KSuperUserOptions();
+    
+    /**
+     * Returns TRUE if the settings changed and the super user entries
+     * need to be written to the sudoers file.
+     * 
+     * @returns TRUE if entries need to be written.
+     */
+    bool writeSuperUserEntries();
+    
+    /**
+     * Resets the settings, i.e. the "Force unmounting" and "Always use" buttons
+     * are unchecked.
+     */
+    void resetSuperUserSettings();
 
   signals:
     /**
@@ -76,6 +90,19 @@ class Smb4KSuperUserOptions : public QWidget
      *                   (not used here).
      */
     void slotRemoveClicked( bool checked );
+    
+  private:
+#ifdef Q_OS_LINUX
+    /**
+     * Did the state of the "Force Unmounting" button change?
+     */
+    bool forceUnmountingStateChanged();
+#endif
+    
+    /**
+     * Did the state of the "Always use ..." button change?
+     */
+    bool alwaysUseSuperUserStateChanged();
 };
 
 #endif
