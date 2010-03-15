@@ -72,31 +72,33 @@ class Smb4KAuthOptions : public KTabWidget
     ~Smb4KAuthOptions();
     
     /**
-     * Set the list of authentication information entries.
+     * Insert the list of authentication information entries into the internal
+     * list of wallet entries. This function will not display the entries. You
+     * need to call displayWalletEntries() for this.
      * 
      * @param entries       The list of entries
      */
-    void setEntries( const QList<Smb4KAuthInfo *> &entries );
+    void insertWalletEntries( const QList<Smb4KAuthInfo *> &entries );
     
     /**
      * Get the - maybe modified - entries.
      * 
      * @returns the list of entries.
      */
-    const QList<Smb4KAuthInfo *> &getEntries() { return m_entries_list; }
+    const QList<Smb4KAuthInfo *> &getWalletEntries() { return m_entries_list; }
     
     /**
      * Display the autentication information in the list widget.
      * Use this function AFTER setEntries() if necessary.
      */
-    void displayEntries();
+    void displayWalletEntries();
     
     /**
      * Returns TRUE if the wallet entries are displayed and FALSE otherwise.
      * 
      * @returns TRUE if the wallet entries are displayed
      */
-    bool entriesDisplayed() { return m_entries_displayed; }
+    bool walletEntriesDisplayed() { return m_entries_displayed; }
     
     /**
      * Returns TRUE if a removal in the list widget is undone and FALSE
@@ -105,6 +107,14 @@ class Smb4KAuthOptions : public KTabWidget
      * @returns TRUE a removal is undown.
      */
     bool undoRemoval() { return m_undo_removal; }
+    
+    /**
+     * Returns TRUE in the case the wallet entries might have changed. You need
+     * to check this outside this widget, whether a change indeed occurred.
+     * 
+     * @returns TRUE if the wallet entries might have changed.
+     */
+    bool walletEntriesMaybeChanged() { return m_maybe_changed; }
     
   signals:
     /**
@@ -121,6 +131,14 @@ class Smb4KAuthOptions : public KTabWidget
      * Emitted when the default login should be (re-)defined.
      */
     void setDefaultLogin();
+    
+    /**
+     * This signal is emitted everytime the wallet entries potentially were 
+     * modified by the user. When this signal is emitted, it does not necessarily 
+     * mean that any wallet entry indeed changed. It only means that the user 
+     * edited one.
+     */
+    void walletEntriesModified();
     
   protected:
     /**
@@ -244,6 +262,7 @@ class Smb4KAuthOptions : public KTabWidget
     bool m_loading_details;
     bool m_default_login;
     bool m_undo_removal;
+    bool m_maybe_changed;
 };
 
 #endif

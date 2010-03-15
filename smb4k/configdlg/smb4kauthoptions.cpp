@@ -51,6 +51,7 @@ Smb4KAuthOptions::Smb4KAuthOptions( QWidget *parent ) : KTabWidget( parent )
   m_loading_details = false;
   m_default_login = false;
   m_undo_removal = false;
+  m_maybe_changed = false;
   
   //
   // General tab
@@ -233,13 +234,15 @@ Smb4KAuthOptions::~Smb4KAuthOptions()
 }
 
 
-void Smb4KAuthOptions::setEntries( const QList<Smb4KAuthInfo *> &list )
+void Smb4KAuthOptions::insertWalletEntries( const QList<Smb4KAuthInfo *> &list )
 {
   m_entries_list = list;
+  m_maybe_changed = false;
+  emit walletEntriesModified();
 }
 
 
-void Smb4KAuthOptions::displayEntries()
+void Smb4KAuthOptions::displayWalletEntries()
 {
   // Clear the list widget if necessary
   if ( m_entries_widget->count() != 0 )
@@ -594,6 +597,8 @@ void Smb4KAuthOptions::slotDetailsChanged( int row, int column )
     }
     
     m_collection->action( "undo_details_action" )->setEnabled( true );
+    m_maybe_changed = true;
+    emit walletEntriesModified();
   }
   else
   {
@@ -660,6 +665,9 @@ void Smb4KAuthOptions::slotRemoveActionTriggered( bool /*checked*/ )
   
   m_collection->action( "undo_list_action" )->setEnabled( true );
   m_collection->action( "clear_action" )->setEnabled( (m_entries_widget->count() != 0) );
+  
+  m_maybe_changed = true;
+  emit walletEntriesModified();
 }
 
 
@@ -683,6 +691,9 @@ void Smb4KAuthOptions::slotClearActionTriggered( bool /*checked*/ )
   QCheckBox *default_login = findChild<QCheckBox *>( "kcfg_UseDefaultLogin" );
   m_default_login = default_login->isChecked();
   default_login->setChecked( false );
+  
+  m_maybe_changed = true;
+  emit walletEntriesModified();
 }
 
 
@@ -750,6 +761,11 @@ void Smb4KAuthOptions::slotUndoDetailsActionTriggered( bool /*checked*/ )
   }
   
   m_collection->action( "undo_details_action" )->setEnabled( false );
+  
+  // Do not set m_dirty = false here, because we do not known whether another
+  // entry in the list as not already been altered.
+  
+  emit walletEntriesModified();
 }
 
 
@@ -760,6 +776,9 @@ void Smb4KAuthOptions::slotSaveClicked( bool /*checked*/ )
   m_collection->action( "undo_list_action" )->setEnabled( false );
   m_collection->action( "edit_action" )->setEnabled( false );
   m_collection->action( "undo_details_action" )->setEnabled( false );
+  
+  m_maybe_changed = false;
+  emit walletEntriesModified();
   
   m_auth_info = Smb4KAuthInfo();
 }
