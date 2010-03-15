@@ -60,6 +60,9 @@
 #include <core/smb4kdefs.h>
 #include <core/smb4kwalletmanager.h>
 #include <core/smb4kauthinfo.h>
+#include <core/smb4kscanner.h>
+#include <core/smb4kmounter.h>
+#include <core/smb4kipaddressscanner.h>
 
 using namespace Smb4KGlobal;
 
@@ -143,34 +146,34 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject
   connect( m_widget->tooltip(),    SIGNAL( aboutToHide( Smb4KNetworkBrowserItem * ) ),
            this,                   SLOT( slotAboutToHideToolTip( Smb4KNetworkBrowserItem * ) ) );
 
-  connect( Smb4KCore::scanner(),   SIGNAL( workgroups( const QList<Smb4KWorkgroup *> & ) ),
+  connect( Smb4KScanner::self(),   SIGNAL( workgroups( const QList<Smb4KWorkgroup *> & ) ),
            this,                   SLOT( slotWorkgroups( const QList<Smb4KWorkgroup *> & ) ) );
 
-  connect( Smb4KCore::scanner(),   SIGNAL( hosts( Smb4KWorkgroup *, const QList<Smb4KHost *> & ) ),
+  connect( Smb4KScanner::self(),   SIGNAL( hosts( Smb4KWorkgroup *, const QList<Smb4KHost *> & ) ),
            this,                   SLOT( slotWorkgroupMembers( Smb4KWorkgroup *, const QList<Smb4KHost *> & ) ) );
 
-  connect( Smb4KCore::scanner(),   SIGNAL( shares( Smb4KHost *, const QList<Smb4KShare *> & ) ),
+  connect( Smb4KScanner::self(),   SIGNAL( shares( Smb4KHost *, const QList<Smb4KShare *> & ) ),
            this,                   SLOT( slotShares( Smb4KHost *, const QList<Smb4KShare *> & ) ) );
 
-  connect( Smb4KCore::scanner(),   SIGNAL( info( Smb4KHost * ) ),
+  connect( Smb4KScanner::self(),   SIGNAL( info( Smb4KHost * ) ),
            this,                   SLOT( slotAddInformation( Smb4KHost * ) ) );
 
-  connect( Smb4KCore::scanner(),   SIGNAL( hostInserted( Smb4KHost * ) ),
+  connect( Smb4KScanner::self(),   SIGNAL( hostInserted( Smb4KHost * ) ),
            this,                   SLOT( slotInsertHost( Smb4KHost * ) ) );
 
-  connect( Smb4KCore::ipScanner(), SIGNAL( ipAddress( Smb4KHost * ) ),
-           this,                   SLOT( slotAddIPAddress( Smb4KHost * ) ) );
-
-  connect( Smb4KCore::scanner(),   SIGNAL( aboutToStart( Smb4KBasicNetworkItem *, int ) ),
+  connect( Smb4KScanner::self(),   SIGNAL( aboutToStart( Smb4KBasicNetworkItem *, int ) ),
            this,                   SLOT( slotScannerAboutToStart( Smb4KBasicNetworkItem *, int ) ) );
 
-  connect( Smb4KCore::scanner(),   SIGNAL( finished( Smb4KBasicNetworkItem *, int ) ),
+  connect( Smb4KScanner::self(),   SIGNAL( finished( Smb4KBasicNetworkItem *, int ) ),
            this,                   SLOT( slotScannerFinished( Smb4KBasicNetworkItem *, int ) ) );
 
-  connect( Smb4KCore::mounter(),   SIGNAL( aboutToStart( Smb4KShare *, int ) ),
+  connect( Smb4KIPAddressScanner::self(), SIGNAL( ipAddress( Smb4KHost * ) ),
+           this,                   SLOT( slotAddIPAddress( Smb4KHost * ) ) );
+
+  connect( Smb4KMounter::self(),   SIGNAL( aboutToStart( Smb4KShare *, int ) ),
            this,                   SLOT( slotMounterAboutToStart( Smb4KShare *, int ) ) );
 
-  connect( Smb4KCore::mounter(),   SIGNAL( finished( Smb4KShare *, int ) ),
+  connect( Smb4KMounter::self(),   SIGNAL( finished( Smb4KShare *, int ) ),
            this,                   SLOT( slotMounterFinished( Smb4KShare *, int ) ) );
 
   connect( Smb4KMounter::self(),   SIGNAL( mounted( Smb4KShare * ) ),
@@ -572,12 +575,12 @@ void Smb4KNetworkBrowserPart::slotItemExpanded( QTreeWidgetItem *item )
     {
       case Smb4KNetworkBrowserItem::Workgroup:
       {
-        Smb4KCore::scanner()->lookupDomainMembers( browserItem->workgroupItem() );
+        Smb4KScanner::self()->lookupDomainMembers( browserItem->workgroupItem() );
         break;
       }
       case Smb4KNetworkBrowserItem::Host:
       {
-        Smb4KCore::scanner()->lookupShares( browserItem->hostItem() );
+        Smb4KScanner::self()->lookupShares( browserItem->hostItem() );
         break;
       }
       default:
@@ -1585,18 +1588,18 @@ void Smb4KNetworkBrowserPart::slotRescan( bool /* checked */)
     {
       case Smb4KNetworkBrowserItem::Workgroup:
       {
-        Smb4KCore::scanner()->lookupDomainMembers( item->workgroupItem() );
+        Smb4KScanner::self()->lookupDomainMembers( item->workgroupItem() );
         break;
       }
       case Smb4KNetworkBrowserItem::Host:
       {
-        Smb4KCore::scanner()->lookupShares( item->hostItem() );
+        Smb4KScanner::self()->lookupShares( item->hostItem() );
         break;
       }
       case Smb4KNetworkBrowserItem::Share:
       {
         Smb4KNetworkBrowserItem *parentItem = static_cast<Smb4KNetworkBrowserItem *>( item->parent() );
-        Smb4KCore::scanner()->lookupShares( parentItem->hostItem() );
+        Smb4KScanner::self()->lookupShares( parentItem->hostItem() );
         break;
       }
       default:
@@ -1607,26 +1610,26 @@ void Smb4KNetworkBrowserPart::slotRescan( bool /* checked */)
   }
   else
   {
-    Smb4KCore::scanner()->lookupDomains();
+    Smb4KScanner::self()->lookupDomains();
   }
 }
 
 
 void Smb4KNetworkBrowserPart::slotAbort( bool /*checked*/ )
 {
-  if ( Smb4KCore::scanner()->isRunning() )
+  if ( Smb4KScanner::self()->isRunning() )
   {
-    Smb4KCore::scanner()->abortAll();
+    Smb4KScanner::self()->abortAll();
   }
   else
   {
     // Do nothing
   }
 
-  if ( Smb4KCore::mounter()->isRunning() &&
-       Smb4KCore::mounter()->currentState() != MOUNTER_UNMOUNT )
+  if ( Smb4KMounter::self()->isRunning() &&
+       Smb4KMounter::self()->currentState() != MOUNTER_UNMOUNT )
   {
-    Smb4KCore::mounter()->abortAll();
+    Smb4KMounter::self()->abortAll();
   }
   else
   {
@@ -1875,7 +1878,7 @@ void Smb4KNetworkBrowserPart::slotMount( bool /*checked*/ )
     {
       case Smb4KNetworkBrowserItem::Share:
       {
-        Smb4KCore::mounter()->mountShare( item->shareItem() );
+        Smb4KMounter::self()->mountShare( item->shareItem() );
 
         break;
       }
