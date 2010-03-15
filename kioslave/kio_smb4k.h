@@ -2,7 +2,7 @@
     kio_smb4k  -  Main file for the KIO slave Smb4K provides.
                              -------------------
     begin                : Tue 12 Mai 2009
-    copyright            : (C) 2009 by Alexander Reinholdt
+    copyright            : (C) 2009-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 

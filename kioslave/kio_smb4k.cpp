@@ -2,7 +2,7 @@
     kio_smb4k  -  Main file for the KIO slave Smb4K provides.
                              -------------------
     begin                : Tue 12 Mai 2009
-    copyright            : (C) 2009 by Alexander Reinholdt
+    copyright            : (C) 2009-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -77,58 +77,150 @@ class Smb4KSlavePrivate
 
 void Smb4KSlavePrivate::addWorkgroup( Smb4KWorkgroup *workgroup )
 {
-  if ( m_workgroups.isEmpty() )
+  if ( !m_workgroups.isEmpty() )
   {
-    m_workgroups += workgroup;
+    for ( int i = 0; i < m_workgroups.size(); ++i )
+    {
+      if ( QString::compare( m_workgroups.at( i )->workgroupName(), workgroup->workgroupName(), Qt::CaseInsensitive ) == 0 )
+      {
+        delete m_workgroups.takeAt( i );
+        break;
+      }
+      else
+      {
+        continue;
+      }
+    }
   }
   else
   {
-    // FIXME
+    // Do nothing
   }
+  
+  m_workgroups += workgroup;
 }
 
 
 void Smb4KSlavePrivate::addHost( Smb4KHost *host )
 {
-  if ( m_hosts.isEmpty() )
+  if ( !m_hosts.isEmpty() )
   {
-    m_hosts += host;
+    for ( int i = 0; i < m_hosts.size(); ++i )
+    {
+      if ( QString::compare( m_hosts.at( i )->hostName(), host->hostName(), Qt::CaseInsensitive ) == 0 &&
+           QString::compare( m_hosts.at( i )->workgroupName(), host->workgroupName(), Qt::CaseInsensitive ) == 0 )
+      {
+        delete m_hosts.takeAt( i );
+        break;
+      }
+      else
+      {
+        continue;
+      }
+    }
   }
   else
   {
-    // FIXME
+    // Do nothing
   }
+  
+  m_hosts += host;
 }
 
 
 void Smb4KSlavePrivate::addShare( Smb4KShare *share )
 {
-  if ( m_shares.isEmpty() )
+  if ( !m_shares.isEmpty() )
   {
-    m_shares += share;
+    for ( int i = 0; i < m_shares.size(); ++i )
+    {
+      if ( QString::compare( m_shares.at( i )->shareName(), share->shareName(), Qt::CaseInsensitive ) == 0 &&
+           QString::compare( m_shares.at( i )->hostName(), share->hostName(), Qt::CaseInsensitive ) == 0 &&
+           QString::compare( m_shares.at( i )->workgroupName(), share->workgroupName(), Qt::CaseInsensitive ) == 0 )
+      {
+        delete m_shares.takeAt( i );
+        break;
+      }
+      else
+      {
+        continue;
+      }
+    }
   }
   else
   {
-    // FIXME
+    // Do nothing
   }
+  
+  m_shares += share;
 }
 
 
 Smb4KWorkgroup *Smb4KSlavePrivate::findWorkgroup( const QString &name )
 {
-  // FIXME
+  Smb4KWorkgroup *workgroup = NULL;
+  
+  for ( int i = 0; i < m_workgroups.size(); ++i )
+  {
+    if ( QString::compare( m_workgroups.at( i )->workgroupName(), name, Qt::CaseInsensitive ) == 0 )
+    {
+      workgroup = m_workgroups[i];
+      break;
+    }
+    else
+    {
+      continue;
+    }
+  }
+  
+  return workgroup;
 }
 
 
 Smb4KHost *Smb4KSlavePrivate::findHost( const QString &name, const QString &workgroup )
 {
-  // FIXME
+  Smb4KHost *host = NULL;
+  
+  for ( int i = 0; i < m_hosts.size(); ++i )
+  {
+    if ( QString::compare( m_hosts.at( i )->hostName(), name, Qt::CaseInsensitive ) == 0 &&
+         (workgroup.isEmpty() || 
+         QString::compare( m_hosts.at( i )->workgroupName(), workgroup, Qt::CaseInsensitive ) == 0) )
+    {
+      host = m_hosts[i];
+      break;
+    }
+    else
+    {
+      continue;
+    }
+  }
+  
+  return host;
 }
 
 
 Smb4KShare *Smb4KSlavePrivate::findShare( const QString &name, const QString &host, const QString &workgroup )
 {
-  // FIXME
+  Smb4KShare *share = NULL;
+  
+  for ( int i = 0; i < m_shares.size(); ++i )
+  {
+    if ( QString::compare( m_shares.at( i )->shareName(), name, Qt::CaseInsensitive ) == 0 &&
+         QString::compare( m_shares.at( i )->hostName(), host, Qt::CaseInsensitive ) == 0 &&
+         (workgroup.isEmpty() ||
+         QString::compare( m_shares.at( i )->workgroupName(), workgroup, Qt::CaseInsensitive ) == 0) )
+    {
+      share = m_shares[i];
+      break;
+    }
+    else
+    {
+      continue;
+    }
+  }
+  
+  return share;
 }
 
 
