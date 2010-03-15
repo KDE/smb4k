@@ -3,7 +3,7 @@
     of all settings concerning the user interface of Smb4K
                              -------------------
     begin                : Mi Aug 30 2006
-    copyright            : (C) 2006-2008 by Alexander Reinholdt
+    copyright            : (C) 2006-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -81,7 +81,7 @@ Smb4KUserInterfaceOptions::Smb4KUserInterfaceOptions( QWidget *parent )
   main_window_layout->addWidget( system_tray_box, 1, 0, 0 );
   main_window_layout->addItem( spacer1, 2, 0 );
 
-  addTab( main_window_tab, i18n( "Main Window & System Tray" ) );
+  addTab( main_window_tab, i18n( "Main Window && System Tray" ) );
 
   //
   // Network browser
