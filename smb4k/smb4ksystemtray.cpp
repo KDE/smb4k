@@ -2,7 +2,7 @@
     smb4ksystemtray  -  This is the system tray window class of Smb4K.
                              -------------------
     begin                : Mi Jun 13 2007
-    copyright            : (C) 2007-2009 by Alexander Reinholdt
+    copyright            : (C) 2007-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -51,6 +51,8 @@
 #include <core/smb4kshare.h>
 #include <core/smb4ksettings.h>
 #include <core/smb4kglobal.h>
+#include <core/smb4kbookmarkhandler.h>
+#include <core/smb4kmounter.h>
 
 using namespace Smb4KGlobal;
 
@@ -97,7 +99,7 @@ Smb4KSystemTray::Smb4KSystemTray( QWidget *parent )
   connect( m_shares_actions,             SIGNAL( triggered( QAction * ) ),
            this,                         SLOT( slotShareActionTriggered( QAction * ) ) );
 
-  connect( Smb4KCore::bookmarkHandler(), SIGNAL( updated() ),
+  connect( Smb4KBookmarkHandler::self(), SIGNAL( updated() ),
            this,                         SLOT( slotSetupBookmarksMenu() ) );
            
   connect( Smb4KMounter::self(),         SIGNAL( mounted( Smb4KShare * ) ),
@@ -297,7 +299,7 @@ void Smb4KSystemTray::slotSetupBookmarksMenu()
   }
 
   // Get the list of bookmarks:
-  QList<Smb4KBookmark *> bookmarks = Smb4KCore::bookmarkHandler()->getBookmarks();
+  QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->getBookmarks();
   QMap<QString, bool> actions;
 
   // Prepare the list of bookmarks for display:
@@ -396,7 +398,7 @@ void Smb4KSystemTray::slotBookmarkTriggered( QAction *action )
 {
   if ( action )
   {
-    Smb4KBookmark *bookmark = Smb4KCore::bookmarkHandler()->findBookmarkByUNC( action->data().toString() );
+    Smb4KBookmark *bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC( action->data().toString() );
 
     if ( bookmark )
     {
@@ -404,7 +406,7 @@ void Smb4KSystemTray::slotBookmarkTriggered( QAction *action )
       share.setWorkgroupName( bookmark->workgroupName() );
       share.setHostIP( bookmark->hostIP() );
 
-      Smb4KCore::mounter()->mountShare( &share );
+      Smb4KMounter::self()->mountShare( &share );
     }
   }
   else
@@ -809,7 +811,7 @@ void Smb4KSystemTray::slotSetupSharesMenu()
 
 void Smb4KSystemTray::slotUnmountAllTriggered( bool /* checked */ )
 {
-  Smb4KCore::mounter()->unmountAllShares();
+  Smb4KMounter::self()->unmountAllShares();
 }
 
 
@@ -825,7 +827,7 @@ void Smb4KSystemTray::slotShareActionTriggered( QAction *action )
 
       if ( share )
       {
-        Smb4KCore::mounter()->unmountShare( share, false, false );
+        Smb4KMounter::self()->unmountShare( share, false, false );
       }
       else
       {
@@ -841,7 +843,7 @@ void Smb4KSystemTray::slotShareActionTriggered( QAction *action )
 
       if ( share )
       {
-        Smb4KCore::mounter()->unmountShare( share, true, false );
+        Smb4KMounter::self()->unmountShare( share, true, false );
       }
       else
       {
