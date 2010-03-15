@@ -37,9 +37,8 @@
 
 // application specific includes
 #include <smb4kbookmarkdialog.h>
-#include <core/smb4kcore.h>
 #include <core/smb4ksettings.h>
-
+#include <core/smb4kbookmarkhandler.h>
 
 Smb4KBookmarkDialog::Smb4KBookmarkDialog( QWidget *parent )
 : KDialog( parent )
@@ -127,7 +126,7 @@ void Smb4KBookmarkDialog::setBookmarks( const QList<Smb4KBookmark *> &list )
     item->setIcon( 1, SmallIcon( "folder-remote" ) );
     item->setFlags( Qt::ItemIsEditable | item->flags() );
     item->setCheckState( 0, Qt::Checked );
-    item->setDisabled( (Smb4KCore::bookmarkHandler()->findBookmarkByUNC( m_bookmarks.at( i )->unc() ) != NULL) );
+    item->setDisabled( (Smb4KBookmarkHandler::self()->findBookmarkByUNC( m_bookmarks.at( i )->unc() ) != NULL) );
   }
 
   // Adjust the columns.
@@ -159,7 +158,7 @@ void Smb4KBookmarkDialog::slotUserClickedButton( ButtonCode button_code )
             if ( QString::compare( m_widget->topLevelItem( i )->text( 1 ), m_bookmarks.at( j )->unc() ) == 0 )
             {
               m_bookmarks.at( j )->setLabel( m_widget->topLevelItem( i )->text( 2 ) );
-              Smb4KCore::bookmarkHandler()->addBookmark( m_bookmarks.at( j ), true );
+              Smb4KBookmarkHandler::self()->addBookmark( m_bookmarks.at( j ), true );
               break;
             }
             else
