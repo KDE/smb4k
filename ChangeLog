@@ -108,6 +108,8 @@ Smb4K SVN_HEAD (????-??-??):
 - Revised Smb4KSambaOptionsInfo class:
   + Removed uidIsSet() and gidIsSet() functions.
   + Removed hasCustomOptions() and setHasCustomOptions() functions.
+  + Added owner() and group() functions.
+  + Added equals() function.
 - Revised Smb4KSynchronizationInfo class:
   + Added functions to set and return the source directory.
   + Added functions to set and return the destination directory.
@@ -301,7 +303,6 @@ Smb4K SVN_HEAD (????-??-??):
   + Improved visual (mount) feedback (closes #15899).
   + Fixed saving and restoring of the dock widgets (closes #15899).
   + Improved status messages.
-  + Added initialization of the core classes to the constructor.
 - Revised bookmark editor:
   + The login name is shown and can be edited.
   + The workgroup entry can be edited.
