@@ -41,9 +41,9 @@
 // application specific includes
 #include <smb4kbookmarkeditor.h>
 #include <core/smb4kbookmark.h>
-#include <core/smb4kcore.h>
 #include <core/smb4kglobal.h>
 #include <core/smb4ksettings.h>
+#include <core/smb4kbookmarkhandler.h>
 
 using namespace Smb4KGlobal;
 
@@ -124,7 +124,7 @@ Smb4KBookmarkEditor::Smb4KBookmarkEditor( QWidget *parent )
   connect( this,                         SIGNAL( cancelClicked() ),
            this,                         SLOT( slotCancelClicked() ) );
 
-  connect( Smb4KCore::bookmarkHandler(), SIGNAL( updated() ),
+  connect( Smb4KBookmarkHandler::self(), SIGNAL( updated() ),
            this,                         SLOT( slotLoadBookmarks() ) );
 
   setMinimumWidth( sizeHint().width() > 350 ? sizeHint().width() : 350 );
@@ -294,7 +294,7 @@ void Smb4KBookmarkEditor::slotOkClicked()
     }
   }
 
-  Smb4KCore::bookmarkHandler()->writeBookmarkList( bookmarks );
+  Smb4KBookmarkHandler::self()->writeBookmarkList( bookmarks );
 
   KConfigGroup group( Smb4KSettings::self()->config(), "BookmarkEditor" );
   saveDialogSize( group, KConfigGroup::Normal );
@@ -311,7 +311,7 @@ void Smb4KBookmarkEditor::slotLoadBookmarks()
 {
   m_widget->clear();
 
-  QList<Smb4KBookmark *> bookmarks = Smb4KCore::bookmarkHandler()->getBookmarks();
+  QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->getBookmarks();
 
   for ( int i = 0; i < bookmarks.size(); ++i )
   {
