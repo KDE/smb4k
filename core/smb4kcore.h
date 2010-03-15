@@ -37,21 +37,6 @@
 // KDE includes
 #include <kdemacros.h>
 
-// application specific includes
-#include <smb4kscanner.h>
-#include <smb4kmounter.h>
-#include <smb4kbookmarkhandler.h>
-#include <smb4kprint.h>
-#include <smb4ksynchronizer.h>
-#include <smb4kpreviewer.h>
-#include <smb4ksearch.h>
-#include <smb4ksudowriterinterface.h>
-#include <smb4ksolidinterface.h>
-#include <smb4kipaddressscanner.h>
-
-// forward declarations
-class Smb4KWorkgroup;
-class Smb4KHost;
 class Smb4KShare;
 class Smb4KCorePrivate;
 
@@ -87,61 +72,6 @@ class KDE_EXPORT Smb4KCore : public QObject
     static bool isRunning();
 
     /**
-     * Returns the current state the core is in.
-     */
-    static int currentState() { return self()->m_current_state; }
-
-    /**
-     * Returns a pointer to the scanner object.
-     */
-    static Smb4KScanner *scanner() { return Smb4KScanner::self(); }
-
-    /**
-     * Returns a pointer to the mounter object.
-     */
-    static Smb4KMounter *mounter() { return Smb4KMounter::self(); }
-
-    /**
-     * Returns a pointer to the bookmark handler object.
-     */
-    static Smb4KBookmarkHandler *bookmarkHandler() { return Smb4KBookmarkHandler::self(); }
-
-    /**
-     * Returns a pointer to the printer handler object.
-     */
-    static Smb4KPrint *print() { return Smb4KPrint::self(); }
-
-    /**
-     * Returns a pointer to the synchronizer object.
-     */
-    static Smb4KSynchronizer *synchronizer() { return Smb4KSynchronizer::self(); }
-
-    /**
-     * Returns a pointer to the previewer object.
-     */
-    static Smb4KPreviewer *previewer() { return Smb4KPreviewer::self(); }
-
-    /**
-     * Returns a pointer to the search object.
-     */
-    static Smb4KSearch *search() { return Smb4KSearch::self(); }
-
-    /**
-     * Returns a pointer to the Smb4KSudoWriterInterface object.
-     */
-    static Smb4KSudoWriterInterface *sudoWriter() { return Smb4KSudoWriterInterface::self(); }
-
-    /**
-     * Returns a pointer to the Smb4KSolidInterface object.
-     */
-    static Smb4KSolidInterface *solidInterface() { return Smb4KSolidInterface::self(); }
-
-    /**
-     * Returns a pointer to the Smb4KIPAddressScanner object.
-     */
-    static Smb4KIPAddressScanner *ipScanner() { return Smb4KIPAddressScanner::self(); }
-
-    /**
      * Aborts any action of the core.
      */
     static void abort();
@@ -164,24 +94,12 @@ class KDE_EXPORT Smb4KCore : public QObject
      */
     void init();
 
-  signals:
-    /**
-     * This signal is emitted, if one of the core objects
-     * starts or stops running.
-     */
-    void runStateChanged();
-
   protected slots:
     /**
      * This slot is connected to the QApplication::aboutToQuit() signal. It is invoked
      * when the application is shut down by the KDE logout or by pressing CTRL+Q, etc.
      */
     void slotAboutToQuit();
-
-    /**
-     * This slot sets the current state of the core.
-     */
-    void slotSetCurrentState();
 
   private:
     /**
@@ -193,11 +111,6 @@ class KDE_EXPORT Smb4KCore : public QObject
      * The destructor.
      */
     ~Smb4KCore();
-
-    /**
-     * Holds the current state.
-     */
-    int m_current_state;
 
     /**
      * Searches for the needed programs and emits an error

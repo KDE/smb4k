@@ -49,14 +49,18 @@
 
 // application specific includes
 #include <smb4kcore.h>
-#include <smb4kdefs.h>
-#include <smb4kcoremessage.h>
 #include <smb4kglobal.h>
-#include <smb4ksambaoptionshandler.h>
+#include <smb4kcoremessage.h>
 #include <smb4ksettings.h>
-#include <smb4kworkgroup.h>
-#include <smb4khost.h>
 #include <smb4kshare.h>
+#include <smb4kscanner.h>
+#include <smb4kmounter.h>
+#include <smb4kprint.h>
+#include <smb4ksynchronizer.h>
+#include <smb4kpreviewer.h>
+#include <smb4ksearch.h>
+#include <smb4ksambaoptionshandler.h>
+
 
 using namespace Smb4KGlobal;
 
@@ -83,25 +87,6 @@ Smb4KCore::Smb4KCore() : QObject()
   // Search for the programs that are needed by Smb4K:
   searchPrograms();
 
-  // Connections:
-  connect( scanner(),      SIGNAL( stateChanged() ),
-           this,           SLOT( slotSetCurrentState() ) );
-
-  connect( mounter(),      SIGNAL( stateChanged() ),
-           this,           SLOT( slotSetCurrentState() ) );
-
-  connect( print(),        SIGNAL( stateChanged() ),
-           this,           SLOT( slotSetCurrentState() ) );
-
-  connect( synchronizer(), SIGNAL( stateChanged() ),
-           this,           SLOT( slotSetCurrentState() ) );
-
-  connect( previewer(),    SIGNAL( stateChanged() ),
-           this,           SLOT( slotSetCurrentState() ) );
-
-  connect( search(),       SIGNAL( stateChanged() ),
-           this,           SLOT( slotSetCurrentState() ) );
-
   connect( kapp,           SIGNAL( aboutToQuit() ),
            this,           SLOT( slotAboutToQuit() ) );
 }
@@ -126,12 +111,12 @@ Smb4KCore *Smb4KCore::self()
 
 bool Smb4KCore::isRunning()
 {
-  return (scanner()->isRunning() ||
-          mounter()->isRunning() ||
-          print()->isRunning() ||
-          synchronizer()->isRunning() ||
-          previewer()->isRunning() ||
-          search()->isRunning());
+  return (Smb4KScanner::self()->isRunning() ||
+          Smb4KMounter::self()->isRunning() ||
+          Smb4KPrint::self()->isRunning() ||
+          Smb4KSynchronizer::self()->isRunning() ||
+          Smb4KPreviewer::self()->isRunning() ||
+          Smb4KSearch::self()->isRunning());
 }
 
 
@@ -141,12 +126,12 @@ bool Smb4KCore::isRunning()
 
 void Smb4KCore::abort()
 {
-  scanner()->abortAll();
-  mounter()->abortAll();
-  print()->abortAll();
-  synchronizer()->abortAll();
-  previewer()->abortAll();
-  search()->abortAll();
+  Smb4KScanner::self()->abortAll();
+  Smb4KMounter::self()->abortAll();
+  Smb4KPrint::self()->abortAll();
+  Smb4KSynchronizer::self()->abortAll();
+  Smb4KPreviewer::self()->abortAll();
+  Smb4KSearch::self()->abortAll();
 }
 
 
@@ -197,8 +182,8 @@ void Smb4KCore::open( Smb4KShare *share, OpenWith openWith )
 
 void Smb4KCore::init()
 {
-  scanner()->init();
-  mounter()->init();
+  Smb4KScanner::self()->init();
+  Smb4KMounter::self()->init();
 }
 
 
@@ -457,48 +442,6 @@ void Smb4KCore::setDefaultSettings()
 /////////////////////////////////////////////////////////////////////////////
 //  SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
-
-void Smb4KCore::slotSetCurrentState()
-{
-  if ( isRunning() )
-  {
-    if ( scanner()->isRunning() )
-    {
-      m_current_state = scanner()->currentState();
-    }
-    else if ( print()->isRunning() )
-    {
-      m_current_state = print()->currentState();
-    }
-    else if ( mounter()->isRunning() )
-    {
-      m_current_state = mounter()->currentState();
-    }
-    else if ( synchronizer()->isRunning() )
-    {
-      m_current_state = synchronizer()->currentState();
-    }
-    else if ( previewer()->isRunning() )
-    {
-      m_current_state = previewer()->currentState();
-    }
-    else if ( search()->isRunning() )
-    {
-      m_current_state = search()->currentState();
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    m_current_state = CORE_STOP;
-  }
-
-  emit runStateChanged();
-}
-
 
 void Smb4KCore::slotAboutToQuit()
 {
