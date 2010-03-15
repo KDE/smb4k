@@ -4,6 +4,5 @@
 /* Version of Smb4K */
 #define VERSION "${VERSION}"
 
-#cmakedefine COMPILE_KONQPLUGIN
-
 #endif
+
