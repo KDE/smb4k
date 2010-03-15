@@ -68,6 +68,7 @@
 #include <core/smb4kpreviewitem.h>
 #include <core/smb4kpreviewer.h>
 #include <core/smb4ksearch.h>
+#include <core/smb4kbookmarkhandler.h>
 #include <dialogs/smb4kbookmarkeditor.h>
 
 
@@ -88,10 +89,6 @@ Smb4KMainWindow::Smb4KMainWindow()
   setupSystemTrayWidget();
   setupBookmarksMenu();
   
-  // Initialize the core classes.
-  Smb4KScanner::self()->init();
-  Smb4KMounter::self()->init();
-
   // Apply the main window settings.
   setAutoSaveSettings( KConfigGroup( Smb4KSettings::self()->config(), "MainWindow" ), true );
 }
@@ -454,7 +451,7 @@ void Smb4KMainWindow::setupBookmarksMenu()
   connect( add_bookmark,                 SIGNAL( triggered( bool ) ),
            this,                         SLOT( slotAddBookmark( bool ) ) );
 
-  connect( Smb4KCore::bookmarkHandler(), SIGNAL( updated() ),
+  connect( Smb4KBookmarkHandler::self(), SIGNAL( updated() ),
            this,                         SLOT( slotBookmarksUpdated() ) );
            
   connect( Smb4KMounter::self(),         SIGNAL( mounted( Smb4KShare * ) ),
@@ -723,7 +720,7 @@ void Smb4KMainWindow::slotBookmarksUpdated()
   }
 
   // Get the list of bookmarks:
-  QList<Smb4KBookmark *> bookmarks = Smb4KCore::bookmarkHandler()->getBookmarks();
+  QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->getBookmarks();
   QMap<QString, bool> actions;
 
   // Prepare the list of bookmarks for display:
@@ -810,7 +807,7 @@ void Smb4KMainWindow::slotBookmarkTriggered( QAction *action )
 {
   if ( action )
   {
-    Smb4KBookmark *bookmark = Smb4KCore::bookmarkHandler()->findBookmarkByUNC( action->data().toString() );
+    Smb4KBookmark *bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC( action->data().toString() );
 
     if ( bookmark )
     {
@@ -819,7 +816,7 @@ void Smb4KMainWindow::slotBookmarkTriggered( QAction *action )
       share.setHostIP( bookmark->hostIP() );
       share.setLogin( bookmark->login() );
 
-      Smb4KCore::mounter()->mountShare( &share );
+      Smb4KMounter::self()->mountShare( &share );
     }
   }
   else
