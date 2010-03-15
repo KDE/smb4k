@@ -50,7 +50,8 @@
 #include <smb4ksambaoptions.h>
 #include <core/smb4kglobal.h>
 #include <core/smb4ksettings.h>
-#include <core/smb4ksambaoptionsinfo.h>
+#include <core/smb4khost.h>
+#include <core/smb4kshare.h>
 
 using namespace Smb4KGlobal;
 
@@ -58,11 +59,8 @@ using namespace Smb4KGlobal;
 Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
 : KTabWidget( parent )
 {
-  m_edit_column = -1;
-  m_edit_value = -1;
-  m_edit_widget = NULL;
-  m_edit_item = NULL;
   m_collection = new KActionCollection( this );
+  m_maybe_changed = false;
 
   //
   // General
@@ -124,7 +122,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
   KIntNumInput *remote_smb_port = new KIntNumInput( ports_box );
   remote_smb_port->setObjectName( "kcfg_RemoteSMBPort" );
 
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
   QLabel *remote_fs_port_label  = new QLabel( Smb4KSettings::self()->remoteFileSystemPortItem()->label(),
                                   ports_box );
 
@@ -134,7 +132,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
 
   ports_layout->addWidget( remote_smb_port_label, 0, 0, 0 );
   ports_layout->addWidget( remote_smb_port, 0, 1, 0 );
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
   ports_layout->addWidget( remote_fs_port_label, 1, 0, 0 );
   ports_layout->addWidget( remote_fs_port, 1, 1, 0 );
 #endif
@@ -299,7 +297,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
   dmask->setObjectName( "kcfg_DirectoryMask" );
   dmask->setAlignment( Qt::AlignRight );
 
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
   QLabel *write_access_label   = new QLabel( Smb4KSettings::self()->writeAccessItem()->label(),
                                  common_options );
 
@@ -363,7 +361,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
   charset->insertItem( Smb4KSettings::EnumClientCharset::tis_620,
                        Smb4KSettings::self()->clientCharsetItem()->choices().value( Smb4KSettings::EnumClientCharset::tis_620 ).label );
 
-#ifdef __FreeBSD__
+#ifdef Q_OS_FREEBSD
   QLabel *codepage_label       = new QLabel( Smb4KSettings::self()->serverCodepageItem()->label(),
                                  common_options );
   codepage_label->setObjectName( "CodepageLabel" );
@@ -438,7 +436,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
                         Smb4KSettings::self()->serverCodepageItem()->choices().value( Smb4KSettings::EnumServerCodepage::unicode ).label );
 #endif
 
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
   common_layout->addWidget( user_id_label, 0, 0, 0 );
   common_layout->addWidget( user_widget, 0, 1, 0 );
   common_layout->addWidget( group_id_label, 1, 0, 0 );
@@ -466,7 +464,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
   common_layout->addWidget( codepage, 5, 1, 0 );
 #endif
 
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
   // Advanced CIFS options
   QGroupBox *advanced_options  = new QGroupBox( i18n( "Advanced Options" ), mount_tab );
 
@@ -567,7 +565,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
   QSpacerItem *spacer2 = new QSpacerItem( 10, 10, QSizePolicy::Preferred, QSizePolicy::Expanding );
 
   mount_layout->addWidget( common_options, 0, 0, 0 );
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
   mount_layout->addWidget( advanced_options, 1, 0, 0 );
     mount_layout->addWidget( note, 2, 0, 0 );
   mount_layout->addItem( spacer2, 3, 0 );
@@ -692,7 +690,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
   m_custom_options->setRootIsDecorated( false );
   m_custom_options->setEditTriggers( QTreeWidget::NoEditTriggers );
   m_custom_options->setContextMenuPolicy( Qt::CustomContextMenu );
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
   m_custom_options->setColumnCount( 7 );
 #else
   m_custom_options->setColumnCount( 6 );
@@ -701,7 +699,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
   QStringList header_labels;
   header_labels.append( i18n( "Item" ) );
   header_labels.append( i18n( "Protocol" ) );
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
   header_labels.append( i18n( "Write Access" ) );
 #endif
   header_labels.append( i18n( "Kerberos" ) );
@@ -724,7 +722,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
   KAction *clear_action     = new KAction( KIcon( "edit-clear-list" ), i18n( "Clear List" ),
                               m_collection );
   clear_action->setEnabled( false );
-
+  
   m_collection->addAction( "edit_action", edit_action );
   m_collection->addAction( "remove_action", remove_action );
   m_collection->addAction( "clear_action", clear_action );
@@ -762,9 +760,8 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
            this,             SLOT( slotRemoveActionTriggered( bool ) ) );
            
   connect( clear_action,     SIGNAL( triggered( bool ) ),
-           this,             SLOT( slotClearActionTriggered( bool ) ) );
+           this,             SLOT( slotClearActionTriggered( bool ) ) );          
 }
-
 
 Smb4KSambaOptions::~Smb4KSambaOptions()
 {
@@ -774,7 +771,7 @@ Smb4KSambaOptions::~Smb4KSambaOptions()
 bool Smb4KSambaOptions::eventFilter( QObject *obj, QEvent *e )
 {
   bool eat_event = false;
-
+  
   if ( obj == m_custom_options->viewport() )
   {
     switch ( e->type() )
@@ -782,81 +779,212 @@ bool Smb4KSambaOptions::eventFilter( QObject *obj, QEvent *e )
       case QEvent::MouseButtonPress:
       {
         QMouseEvent *mouse_event = static_cast<QMouseEvent *>( e );
-
+        
         QTreeWidgetItem *item = m_custom_options->itemAt( m_custom_options->viewport()->mapFromGlobal( mouse_event->globalPos() ) );
 
-        if ( (m_edit_item && m_edit_item != item) )
+        if ( !item )
         {
-          // When the user clicks somewhere in the viewport,
-          // in 99.9% that means he/she wants to get rid of
-          // the edit widget without modifying anything. Thus,
-          // we will just remove it here.
-          m_custom_options->removeItemWidget( m_edit_item, m_edit_column );
-
-          m_edit_column = -1;
-          m_edit_value = -1;
-          m_edit_item = NULL;
-
+          // Remove all edit widgets.
+          removeEditWidgets();
+          
+          // Resize the columns to the contents.          
           for ( int i = 0; i < m_custom_options->columnCount(); ++i )
           {
             m_custom_options->resizeColumnToContents( i );
           }
 
+          // Sort items.
           m_custom_options->sortItems( ItemName, Qt::AscendingOrder );
+          
+          // Enable/disable actions.
+          m_collection->action( "edit_action" )->setEnabled( false );
+          m_collection->action( "remove_action" )->setEnabled( false );
+          m_collection->action( "clear_action" )->setEnabled( (m_custom_options->topLevelItemCount() != 0) );
         }
         else
         {
-          // Do nothing
+          // We only need to enable/disable actions here. Everything else is
+          // managed elsewhere.
+          int col = m_custom_options->columnAt( m_custom_options->viewport()->mapFromGlobal( mouse_event->globalPos() ).x() );
+          
+          switch ( col )
+          {
+            case ItemName:
+            {
+              m_collection->action( "edit_action" )->setEnabled( false );
+              break;
+            }
+            case Protocol:
+            {
+              switch ( item->type() )
+              {
+                case Host:
+                {
+                  m_collection->action( "edit_action" )->setEnabled( true );
+                  break;
+                }
+                case Share:
+                {
+                  m_collection->action( "edit_action" )->setEnabled( false );
+                  break;
+                }
+                default:
+                {
+                  break;
+                }
+              }
+              break;
+            }
+#ifndef Q_OS_FREEBSD
+            case WriteAccess:
+            {
+              switch ( item->type() )
+              {
+                case Host:
+                {
+                  m_collection->action( "edit_action" )->setEnabled( false );
+                  break;
+                }
+                case Share:
+                {
+                  m_collection->action( "edit_action" )->setEnabled( true );
+                  break;
+                }
+                default:
+                {
+                  break;
+                }
+              }
+              break;
+            }
+#endif
+            case Kerberos:
+            {
+              switch ( item->type() )
+              {
+                case Host:
+                {
+                  m_collection->action( "edit_action" )->setEnabled( true );
+                  break;
+                }
+                case Share:
+                {
+                  m_collection->action( "edit_action" )->setEnabled( false );
+                  break;
+                }
+                default:
+                {
+                  break;
+                }
+              }
+              break;
+            }
+            case UID:
+            {
+              switch ( item->type() )
+              {
+                case Host:
+                {
+                  m_collection->action( "edit_action" )->setEnabled( false );
+                  break;
+                }
+                case Share:
+                {
+                  m_collection->action( "edit_action" )->setEnabled( true );
+                  break;
+                }
+                default:
+                {
+                  break;
+                }
+              }
+              break;              
+            }
+            case GID:
+            {
+              switch ( item->type() )
+              {
+                case Host:
+                {
+                  m_collection->action( "edit_action" )->setEnabled( false );
+                  break;
+                }
+                case Share:
+                {
+                  m_collection->action( "edit_action" )->setEnabled( true );
+                  break;
+                }
+                default:
+                {
+                  break;
+                }
+              }
+              break;
+            }
+            case Port:
+            {
+              m_collection->action( "edit_action" )->setEnabled( true );
+              break;
+            }
+            default:
+            {
+              break;
+            }
+          }
+          
+          m_collection->action( "remove_action" )->setEnabled( true );
+          m_collection->action( "clear_action" )->setEnabled( true );
         }
-
+          
         break;
       }
       case QEvent::KeyPress:
       {
         QKeyEvent *key_event = static_cast<QKeyEvent *>( e );
-
+        
         switch ( key_event->key() )
         {
           case Qt::Key_Return:
           case Qt::Key_Enter:
           {
-            switch ( m_edit_column )
+            switch ( m_custom_options->currentColumn() )
             {
               case Port:
               {
-                KIntNumInput *input = static_cast<KIntNumInput *>( m_edit_widget );
-
-                if ( input )
+                for ( int i = 0; i < m_custom_options->topLevelItemCount(); ++i )
                 {
-                  disconnect( input, SIGNAL( valueChanged( int ) ),
-                              this,  SLOT( slotCustomIntValueChanged( int ) ) );
-
-                  input->clearFocus();
-                  input->unsetCursor();
-
-                  m_custom_options->removeItemWidget( m_edit_item, m_edit_column );
-                  m_edit_item->setText( m_edit_column, QString( "%1" ).arg( m_edit_value ) );
-
-                  m_edit_column = -1;
-                  m_edit_value = -1;
-                  m_edit_item = NULL;
-
-                  for ( int i = 0; i < m_custom_options->columnCount(); ++i )
+                  KIntNumInput *input = static_cast<KIntNumInput *>( m_custom_options->itemWidget( m_custom_options->topLevelItem( i ), Port ) );
+                  
+                  if ( input )
                   {
-                    m_custom_options->resizeColumnToContents( i );
+                    input->clearFocus();
+                    input->unsetCursor();
+                    m_custom_options->topLevelItem( i )->setText( Port, QString( "%1" ).arg( input->value() ) );
+                    
+                    removeEditWidgets();
+                    
+                    for ( int i = 0; i < m_custom_options->columnCount(); ++i )
+                    {
+                      m_custom_options->resizeColumnToContents( i );
+                    }
+
+                    m_custom_options->sortItems( ItemName, Qt::AscendingOrder );
+
+                    eat_event = true;
+                    
+                    // A value changed. Set m_maybe_changed to TRUE and emit 
+                    // customSettingsModified
+                    m_maybe_changed = true;
+                    emit customSettingsModified();
+                    
+                    break;
                   }
-
-                  m_custom_options->sortItems( ItemName, Qt::AscendingOrder );
-
-                  eat_event = true;
+                  else
+                  {
+                    continue;
+                  }
                 }
-                else
-                {
-                  // Do nothing
-                }
-
-                emit customSettingsModified();
-
+                
                 break;
               }
               default:
@@ -864,12 +992,15 @@ bool Smb4KSambaOptions::eventFilter( QObject *obj, QEvent *e )
                 break;
               }
             }
+            
+            break;
           }
           default:
           {
             break;
           }
         }
+        break;
       }
       default:
       {
@@ -888,135 +1019,87 @@ bool Smb4KSambaOptions::eventFilter( QObject *obj, QEvent *e )
 
 void Smb4KSambaOptions::insertCustomOptions( const QList<Smb4KSambaOptionsInfo *> &list )
 {
-  // Default values
-  QString protocol_hint;
-#ifndef __FreeBSD__
-  QString default_file_system;
-  QString default_write_access;
-#endif
-  QString default_kerberos;
-
-  // Protocol hint
-  switch ( Smb4KSettings::protocolHint() )
-  {
-    case Smb4KSettings::EnumProtocolHint::Automatic:
-    {
-      // In this case the user leaves it to the net
-      // command to determine the right protocol.
-      protocol_hint = i18n( "automatic" );
-
-      break;
-    }
-    case Smb4KSettings::EnumProtocolHint::RPC:
-    {
-      protocol_hint = "RPC";
-
-      break;
-    }
-    case Smb4KSettings::EnumProtocolHint::RAP:
-    {
-      protocol_hint = "RAP";
-
-      break;
-    }
-    case Smb4KSettings::EnumProtocolHint::ADS:
-    {
-      protocol_hint = "ADS";
-
-      break;
-    }
-    default:
-    {
-      protocol_hint = QString();
-
-      break;
-    }
-  }
-
-#ifndef __FreeBSD__
-  // Default write access
-  switch ( Smb4KSettings::writeAccess() )
-  {
-    case Smb4KSettings::EnumWriteAccess::ReadWrite:
-    {
-      default_write_access = i18n( "read-write" );
-
-      break;
-    }
-    case Smb4KSettings::EnumWriteAccess::ReadOnly:
-    {
-      default_write_access = i18n( "read-only" );
-
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-#endif
-
-  // Default Kerberos
-  if ( Smb4KSettings::useKerberos() )
-  {
-    default_kerberos = i18n( "yes" );
-  }
-  else
-  {
-    default_kerberos = i18n( "no" );
-  }
-
-  // Put the items into the tree widget.
+  // Populate the internal list.
+  m_options_list.clear();
+  
   for ( int i = 0; i < list.size(); ++i )
   {
+    m_options_list << Smb4KSambaOptionsInfo( *list.at( i ) );
+  }
+  
+  // Clear the tree widget if necessary.
+  while ( m_custom_options->topLevelItemCount() != 0 )
+  {
+    delete m_custom_options->topLevelItem( 0 );
+  }
+  
+  // Display the list.
+  for ( int i = 0; i < list.size(); ++i )
+  {
+    QTreeWidgetItem *item = NULL;
+  
     switch ( list.at( i )->type() )
     {
       case Smb4KSambaOptionsInfo::Host:
       {
-        QTreeWidgetItem *item = new QTreeWidgetItem( m_custom_options, Host );
-        item->setIcon( ItemName, KIcon( "network-server" ) );
-
-        // UNC
+        item = new QTreeWidgetItem( m_custom_options, Host );
+        
+        // UNC & icon
         item->setText( ItemName, list.at( i )->unc() );
-
+        item->setIcon( ItemName, KIcon( "preferences-other" ) );
+        
         // Protocol
         switch ( list.at( i )->protocol() )
         {
           case Smb4KSambaOptionsInfo::Automatic:
           {
-            item->setText( Protocol, i18n( "automatic" ) );
-
+            item->setText( Protocol, i18n( "Automatic" ) );
             break;
           }
           case Smb4KSambaOptionsInfo::RPC:
           {
             item->setText( Protocol, "RPC" );
-
             break;
           }
           case Smb4KSambaOptionsInfo::RAP:
           {
             item->setText( Protocol, "RAP" );
-
             break;
           }
           case Smb4KSambaOptionsInfo::ADS:
           {
             item->setText( Protocol, "ADS" );
-
             break;
           }
           case Smb4KSambaOptionsInfo::UndefinedProtocol:
           {
-            if ( !protocol_hint.isEmpty() )
+            switch ( Smb4KSettings::protocolHint() )
             {
-              item->setText( Protocol, protocol_hint );
+              case Smb4KSettings::EnumProtocolHint::Automatic:
+              {
+                item->setText( Protocol, i18n( "Automatic" ) );
+                break;
+              }
+              case Smb4KSettings::EnumProtocolHint::RPC:
+              {
+                item->setText( Protocol, "RPC" );
+                break;
+              }
+              case Smb4KSettings::EnumProtocolHint::RAP:
+              {
+                item->setText( Protocol, "RAP" );
+                break;
+              }
+              case Smb4KSettings::EnumProtocolHint::ADS:
+              {
+                item->setText( Protocol, "ADS" );
+                break;
+              }
+              default:
+              {
+                item->setText( Protocol, "-" );
+              }
             }
-            else
-            {
-              item->setText( Protocol, "-" );
-            }
-
             break;
           }
           default:
@@ -1024,30 +1107,28 @@ void Smb4KSambaOptions::insertCustomOptions( const QList<Smb4KSambaOptionsInfo *
             break;
           }
         }
-
-#ifndef __FreeBSD__
+        
+#ifndef Q_OS_FREEBSD
         // Write access
         item->setText( WriteAccess, "-" );
 #endif
+      
         // Kerberos
         switch ( list.at( i )->useKerberos() )
         {
           case Smb4KSambaOptionsInfo::UseKerberos:
           {
             item->setText( Kerberos, i18n( "yes" ) );
-
             break;
           }
           case Smb4KSambaOptionsInfo::NoKerberos:
           {
             item->setText( Kerberos, i18n( "no" ) );
-
             break;
           }
           case Smb4KSambaOptionsInfo::UndefinedKerberos:
           {
-            item->setText( Kerberos, default_kerberos );
-
+            item->setText( Kerberos, Smb4KSettings::self()->useKerberos() ? i18n( "yes" ) : i18n( "no" ) );
             break;
           }
           default:
@@ -1055,13 +1136,13 @@ void Smb4KSambaOptions::insertCustomOptions( const QList<Smb4KSambaOptionsInfo *
             break;
           }
         }
-
+        
         // UID
         item->setText( UID, "-" );
-
+        
         // GID
         item->setText( GID, "-" );
-
+        
         // Port
         if ( list.at( i )->port() != -1 )
         {
@@ -1071,54 +1152,68 @@ void Smb4KSambaOptions::insertCustomOptions( const QList<Smb4KSambaOptionsInfo *
         {
           item->setText( Port, QString( "%1" ).arg( Smb4KSettings::remoteSMBPort() ) );
         }
-
+        
         break;
       }
       case Smb4KSambaOptionsInfo::Share:
       {
-        QTreeWidgetItem *item = new QTreeWidgetItem( m_custom_options, Share );
-        item->setIcon( ItemName, KIcon( "folder-remote" ) );
-
-        // UNC
+        item = new QTreeWidgetItem( m_custom_options, Share );
+        
+        // UNC & icon
         item->setText( ItemName, list.at( i )->unc() );
-
+        item->setIcon( ItemName, KIcon( "preferences-other" ) );
+        
         // Protocol
         item->setText( Protocol, "-" );
-
-#ifndef __FreeBSD__
-        // Write access
+        
+#ifndef Q_OS_FREEBSD
         switch ( list.at( i )->writeAccess() )
         {
           case Smb4KSambaOptionsInfo::ReadWrite:
           {
             item->setText( WriteAccess, i18n( "read-write" ) );
-
             break;
           }
           case Smb4KSambaOptionsInfo::ReadOnly:
           {
             item->setText( WriteAccess, i18n( "read-only" ) );
-
+            break;
+          }
+          case Smb4KSambaOptionsInfo::UndefinedWriteAccess:
+          {
+            switch ( Smb4KSettings::writeAccess() )
+            {
+              case Smb4KSettings::EnumWriteAccess::ReadWrite:
+              {
+                item->setText( WriteAccess, i18n( "read-write" ) );
+                break;
+              }
+              case Smb4KSettings::EnumWriteAccess::ReadOnly:
+              {
+                item->setText( WriteAccess, i18n( "read-only" ) );
+                break;
+              }
+              default:
+              {
+                break;
+              }
+            }
             break;
           }
           default:
           {
-            item->setText( WriteAccess, default_write_access );
-
             break;
           }
         }
-
+#endif
         // Kerberos
         item->setText( Kerberos, "-" );
-#endif
+        
         // UID
-        KUser user( list.at( i )->uid() );
-        item->setText( UID, QString( "%1 (%2)" ).arg( user.loginName() ).arg( user.uid() ) );
+        item->setText( UID, QString( "%1 (%2)" ).arg( list.at( i )->owner() ).arg( list.at( i )->uid() ) );
 
         // GID
-        KUserGroup group( list.at( i )->gid() );
-        item->setText( GID, QString( "%1 (%2)" ).arg( group.name() ).arg( group.gid() ) );
+        item->setText( GID, QString( "%1 (%2)" ).arg( list.at( i )->group() ).arg( list.at( i )->gid() ) );
 
         // Port
         if ( list.at( i )->port() != -1 )
@@ -1129,7 +1224,7 @@ void Smb4KSambaOptions::insertCustomOptions( const QList<Smb4KSambaOptionsInfo *
         {
           item->setText( Port, QString( "%1" ).arg( Smb4KSettings::remoteFileSystemPort() ) );
         }
-
+        
         break;
       }
       default:
@@ -1148,100 +1243,47 @@ void Smb4KSambaOptions::insertCustomOptions( const QList<Smb4KSambaOptionsInfo *
 }
 
 
-QList<Smb4KSambaOptionsInfo *> Smb4KSambaOptions::getCustomOptions()
+Smb4KSambaOptionsInfo *Smb4KSambaOptions::findInfo( const QString &unc )
 {
-  QList<Smb4KSambaOptionsInfo *> list;
-
-  QTreeWidgetItemIterator it( m_custom_options );
-
-  while ( *it )
+  Smb4KSambaOptionsInfo *info = NULL;
+  
+  for ( int i = 0; i < m_options_list.size(); ++i )
   {
-    Smb4KSambaOptionsInfo *info = new Smb4KSambaOptionsInfo();
-
-    // UNC
-    info->setUNC( (*it)->text( ItemName ) );
-
-    // Protocol
-    if ( QString::compare( (*it)->text( Protocol ), i18n( "automatic" ), Qt::CaseInsensitive ) == 0 )
+    if ( QString::compare( m_options_list.at( i ).unc(), unc ) == 0 )
     {
-      info->setProtocol( Smb4KSambaOptionsInfo::Automatic );
-    }
-    else if ( QString::compare( (*it)->text( Protocol ), "RPC", Qt::CaseInsensitive ) == 0 )
-    {
-      info->setProtocol( Smb4KSambaOptionsInfo::RPC );
-    }
-    else if ( QString::compare( (*it)->text( Protocol ), "RAP", Qt::CaseInsensitive ) == 0 )
-    {
-      info->setProtocol( Smb4KSambaOptionsInfo::RAP );
-    }
-    else if ( QString::compare( (*it)->text( Protocol ), "ADS", Qt::CaseInsensitive ) == 0 )
-    {
-      info->setProtocol( Smb4KSambaOptionsInfo::ADS );
+      info = &m_options_list[i];
     }
     else
     {
-      info->setProtocol( Smb4KSambaOptionsInfo::UndefinedProtocol );
+      continue;
     }
-
-#ifndef __FreeBSD__
-    // Write access
-    if ( QString::compare( (*it)->text( WriteAccess ), i18n( "read-write" ), Qt::CaseInsensitive ) == 0 )
-    {
-      info->setWriteAccess( Smb4KSambaOptionsInfo::ReadWrite );
-    }
-    else if ( QString::compare( (*it)->text( WriteAccess ), i18n( "read-only" ), Qt::CaseInsensitive ) == 0 )
-    {
-      info->setWriteAccess( Smb4KSambaOptionsInfo::ReadOnly );
-    }
-    else
-    {
-      info->setWriteAccess( Smb4KSambaOptionsInfo::UndefinedWriteAccess );
-    }
-#endif
-    // Kerberos
-    if ( QString::compare( (*it)->text( Kerberos ), i18n( "yes" ), Qt::CaseInsensitive ) == 0 )
-    {
-      info->setUseKerberos( Smb4KSambaOptionsInfo::UseKerberos );
-    }
-    else if ( QString::compare( (*it)->text( Kerberos ), i18n( "no" ), Qt::CaseInsensitive ) == 0 )
-    {
-      info->setUseKerberos( Smb4KSambaOptionsInfo::NoKerberos );
-    }
-    else
-    {
-      info->setUseKerberos( Smb4KSambaOptionsInfo::UndefinedKerberos );
-    }
-
-    // UID
-    if ( (*it)->type() == Share )
-    {
-      info->setUID( (uid_t)(*it)->text( UID ).section( "(", 1, 1 ).section( ")", 0, 0 ).toInt() );
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    // GID
-    if ( (*it)->type() == Share )
-    {
-      info->setGID( (gid_t)(*it)->text( GID ).section( "(", 1, 1 ).section( ")", 0, 0 ).toInt() );
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    // Port
-    info->setPort( (*it)->text( Port ).toInt() );
-
-    // Put info object into the list.
-    list.append( info );
-
-    ++it;
   }
+  
+  return info;
+}
 
-  return list;
+
+void Smb4KSambaOptions::removeEditWidgets()
+{
+  for ( int i = 0; i < m_custom_options->topLevelItemCount(); ++i )
+  {
+    QTreeWidgetItem *top_level_item = m_custom_options->topLevelItem( i );
+      
+    for ( int j = 0; j < m_custom_options->columnCount(); ++j )
+    {
+      QWidget *edit_widget = m_custom_options->itemWidget( top_level_item, j );
+        
+      if ( edit_widget )
+      {
+        m_custom_options->removeItemWidget( top_level_item, j );
+        delete edit_widget;
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+  }
 }
 
 
@@ -1280,26 +1322,13 @@ void Smb4KSambaOptions::slotNewGroupTriggered( QAction *action )
 
 
 void Smb4KSambaOptions::slotEditCustomItem( QTreeWidgetItem *item, int column )
-{
+{  
+  // First of all, get rid of all open edit widgets, because we
+  // only want to have one open at a time.
+  removeEditWidgets();
+
   if ( item )
   {
-    if ( m_edit_item != item || m_edit_column != column )
-    {
-      // When the user clicks somewhere in the viewport,
-      // in 99.9% that means he/she wants to get rid of
-      // the edit widget without modifying anything. Thus,
-      // we will just remove it here.
-      m_custom_options->removeItemWidget( m_edit_item, m_edit_column );
-
-      m_edit_column = -1;
-      m_edit_value = -1;
-      m_edit_item = NULL;
-    }
-    else
-    {
-      // Do nothing
-    }
-
     switch ( item->type() )
     {
       case Host:
@@ -1319,17 +1348,11 @@ void Smb4KSambaOptions::slotEditCustomItem( QTreeWidgetItem *item, int column )
             combo->addItems( choices );
             int index = combo->findText( item->text( column ) );
             combo->setCurrentIndex( index );
-
             m_custom_options->setItemWidget( item, column, combo );
             combo->adjustSize();
 
-            m_edit_widget = combo;
-            m_edit_column = column;
-            m_edit_item = item;
-
             connect( combo, SIGNAL( activated( const QString & ) ),
                      this,  SLOT( slotCustomTextChanged( const QString & ) ) );
-
             break;
           }
           case Kerberos:
@@ -1343,17 +1366,11 @@ void Smb4KSambaOptions::slotEditCustomItem( QTreeWidgetItem *item, int column )
             combo->addItems( choices );
             int index = combo->findText( item->text( column ) );
             combo->setCurrentIndex( index );
-
             m_custom_options->setItemWidget( item, column, combo );
             combo->adjustSize();
 
-            m_edit_widget = combo;
-            m_edit_column = column;
-            m_edit_item = item;
-
             connect( combo, SIGNAL( activated( const QString & ) ),
                      this,  SLOT( slotCustomTextChanged( const QString & ) ) );
-
             break;
           }
           case Port:
@@ -1363,17 +1380,11 @@ void Smb4KSambaOptions::slotEditCustomItem( QTreeWidgetItem *item, int column )
             input->setMinimum( 0 );
             input->setMaximum( 65535 );
             input->setValue( item->text( column ).toInt() );
-
             m_custom_options->setItemWidget( item, column, input );
             input->adjustSize();
 
-            m_edit_widget = input;
-            m_edit_column = column;
-            m_edit_item = item;
-
             connect( input, SIGNAL( valueChanged( int ) ),
                      this,  SLOT( slotCustomIntValueChanged( int ) ) );
-
             break;
           }
           default:
@@ -1388,7 +1399,7 @@ void Smb4KSambaOptions::slotEditCustomItem( QTreeWidgetItem *item, int column )
       {
         switch ( column )
         {
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
           case WriteAccess:
           {
             QStringList choices;
@@ -1400,17 +1411,11 @@ void Smb4KSambaOptions::slotEditCustomItem( QTreeWidgetItem *item, int column )
             combo->addItems( choices );
             int index = combo->findText( item->text( column ) );
             combo->setCurrentIndex( index );
-
             m_custom_options->setItemWidget( item, column, combo );
             combo->adjustSize();
 
-            m_edit_widget = combo;
-            m_edit_column = column;
-            m_edit_item = item;
-
             connect( combo, SIGNAL( activated( const QString & ) ),
                      this,  SLOT( slotCustomTextChanged( const QString & ) ) );
-
             break;
           }
 #endif
@@ -1421,17 +1426,11 @@ void Smb4KSambaOptions::slotEditCustomItem( QTreeWidgetItem *item, int column )
             input->setMinimum( 0 );
             input->setMaximum( 65535 );
             input->setValue( item->text( column ).toInt() );
-
             m_custom_options->setItemWidget( item, column, input );
             input->adjustSize();
 
-            m_edit_widget = input;
-            m_edit_column = column;
-            m_edit_item = item;
-
             connect( input, SIGNAL( valueChanged( int ) ),
                      this,  SLOT( slotCustomIntValueChanged( int ) ) );
-
             break;
           }
           case UID:
@@ -1452,17 +1451,11 @@ void Smb4KSambaOptions::slotEditCustomItem( QTreeWidgetItem *item, int column )
             combo->addItems( choices );
             int index = combo->findText( item->text( column ) );
             combo->setCurrentIndex( index );
-
             m_custom_options->setItemWidget( item, column, combo );
             combo->adjustSize();
 
-            m_edit_widget = combo;
-            m_edit_column = column;
-            m_edit_item = item;
-
             connect( combo, SIGNAL( activated( const QString & ) ),
                      this,  SLOT( slotCustomTextChanged( const QString & ) ) );
-
             break;
           }
           case GID:
@@ -1483,17 +1476,11 @@ void Smb4KSambaOptions::slotEditCustomItem( QTreeWidgetItem *item, int column )
             combo->addItems( choices );
             int index = combo->findText( item->text( column ) );
             combo->setCurrentIndex( index );
-
             m_custom_options->setItemWidget( item, column, combo );
             combo->adjustSize();
 
-            m_edit_widget = combo;
-            m_edit_column = column;
-            m_edit_item = item;
-
             connect( combo, SIGNAL( activated( const QString & ) ),
                      this,  SLOT( slotCustomTextChanged( const QString & ) ) );
-
             break;
           }
           default:
@@ -1526,18 +1513,139 @@ void Smb4KSambaOptions::slotEditCustomItem( QTreeWidgetItem *item, int column )
 
 void Smb4KSambaOptions::slotCustomTextChanged( const QString &text )
 {
-  KComboBox *combo = static_cast<KComboBox *>( m_edit_widget );
-
-  disconnect( combo, SIGNAL( activated( const QString & ) ),
-              this,  SLOT( slotCustomTextChanged( const QString & ) ) );
-
-  m_custom_options->removeItemWidget( m_edit_item, m_edit_column );
-  m_edit_item->setText( m_edit_column, text );
-
-  m_edit_column = -1;
-  m_edit_value = -1;
-  m_edit_item = NULL;
-
+  // A value changed. Set m_maybe_changed to TRUE.
+  m_maybe_changed = true;
+  
+  // Since only one edit widget will be open at a time, we can just 
+  // loop through all entries and get the combo box.
+  for ( int i = 0; i < m_custom_options->topLevelItemCount(); ++i )
+  {
+    QTreeWidgetItem *top_level_item = m_custom_options->topLevelItem( i );
+    KComboBox *combo = NULL;
+      
+    for ( int j = 0; j < m_custom_options->columnCount(); ++j )
+    {
+      combo = static_cast<KComboBox *>( m_custom_options->itemWidget( top_level_item, j ) );
+        
+      if ( combo )
+      {
+        if ( QString::compare( combo->currentText(), text, Qt::CaseSensitive ) == 0 )
+        {
+          top_level_item->setText( j, text );
+          m_custom_options->removeItemWidget( top_level_item, j );
+          
+          Smb4KSambaOptionsInfo *info = findInfo( top_level_item->text( ItemName ) );
+          
+          if ( info )
+          {
+            // Now update the info.
+            switch ( j )
+            {
+              case Protocol:
+              {
+                if ( QString::compare( text, i18n( "automatic" ) ) == 0 )
+                {
+                  info->setProtocol( Smb4KSambaOptionsInfo::Automatic );
+                }
+                else if ( QString::compare( text, "RPC" ) == 0 )
+                {
+                  info->setProtocol( Smb4KSambaOptionsInfo::RPC );
+                }
+                else if ( QString::compare( text, "RAP" ) == 0 )
+                {
+                  info->setProtocol( Smb4KSambaOptionsInfo::RAP );
+                }
+                else if ( QString::compare( text, "ADS" ) == 0 )
+                {
+                  info->setProtocol( Smb4KSambaOptionsInfo::ADS );
+                }
+                else
+                {
+                  info->setProtocol( Smb4KSambaOptionsInfo::UndefinedProtocol );
+                }
+                break;
+              }
+#ifndef Q_OS_FREEBSD
+              case WriteAccess:
+              {
+                if ( QString::compare( text, i18n( "read-write" ) ) == 0 )
+                {
+                  info->setWriteAccess( Smb4KSambaOptionsInfo::ReadWrite );
+                }
+                else if ( QString::compare( text, i18n( "read-only" ) ) == 0 )
+                {
+                  info->setWriteAccess( Smb4KSambaOptionsInfo::ReadOnly );
+                }
+                else
+                {
+                  info->setWriteAccess( Smb4KSambaOptionsInfo::UndefinedWriteAccess );
+                }
+                break;
+              }
+#endif
+              case Kerberos:
+              {
+                if ( QString::compare( text, i18n( "yes" ) ) == 0 )
+                {
+                  info->setUseKerberos( Smb4KSambaOptionsInfo::UseKerberos );
+                }
+                else if ( QString::compare( text, i18n( "no" ) ) == 0 )
+                {
+                  info->setUseKerberos( Smb4KSambaOptionsInfo::NoKerberos );
+                }
+                else
+                {
+                  info->setUseKerberos( Smb4KSambaOptionsInfo::UndefinedKerberos );
+                }
+                break;
+              }
+              case UID:
+              {
+                QString uid = text.section( "(", 1, 1 ).section( ")", 0, 0 ).trimmed();
+                info->setUID( (K_UID)uid.toInt() );
+                break;
+              }
+              case GID:
+              {
+                QString gid = text.section( "(", 1, 1 ).section( ")", 0, 0 ).trimmed();
+                info->setGID( (K_GID)gid.toInt() );
+                break;
+              }
+              default:
+              {
+                break;
+              }
+            }
+          }
+          else
+          {
+            // Do nothing
+          }
+          
+          break;
+        }
+        else
+        {
+          continue;
+        }
+      }
+      else
+      {
+        continue;
+      }
+    }
+    
+    if ( combo )
+    {
+      delete combo;
+      break;
+    }
+    else
+    {
+      continue;
+    }
+  }  
+  
   for ( int i = 0; i < m_custom_options->columnCount(); ++i )
   {
     m_custom_options->resizeColumnToContents( i );
@@ -1545,6 +1653,9 @@ void Smb4KSambaOptions::slotCustomTextChanged( const QString &text )
 
   m_custom_options->sortItems( ItemName, Qt::AscendingOrder );
 
+  // A value changed. Set m_maybe_changed to TRUE and emit 
+  // customSettingsModified().
+  m_maybe_changed = true;
   emit customSettingsModified();
 }
 
@@ -1553,143 +1664,106 @@ void Smb4KSambaOptions::slotCustomIntValueChanged( int value )
 {
   // The edit widget will be removed by the eventFilter()
   // function when the user presses Return (or Enter).
-  m_edit_value = value;
+
+  // Find the KIntNumInput widget. Since only one edit widget 
+  // will be open at a time, we can just loop through all 
+  // entries and get the combo box.
+  for ( int i = 0; i < m_custom_options->topLevelItemCount(); ++i )
+  {
+    QTreeWidgetItem *top_level_item = m_custom_options->topLevelItem( i );
+    KIntNumInput *input = NULL;
+      
+    for ( int j = 0; j < m_custom_options->columnCount(); ++j )
+    {
+      input = static_cast<KIntNumInput *>( m_custom_options->itemWidget( top_level_item, j ) );
+      
+      if ( input )
+      {
+        if ( input->value() == value )
+        {
+          top_level_item->setText( j, QString( "%1" ).arg( value ) );
+
+          Smb4KSambaOptionsInfo *info = findInfo( top_level_item->text( ItemName ) );
+          
+          if ( info )
+          {
+            // Now update the info.
+            switch ( j )
+            {
+              case Port:
+              {
+                info->setPort( value );
+                break;
+              }
+              default:
+              {
+                break;
+              }
+            }
+          }
+          else
+          {
+            // Do nothing
+          }
+          break;
+        }
+        else
+        {
+          continue;
+        }
+      }
+      else
+      {
+        continue;
+      }
+    }
+  }
 }
 
 
 void Smb4KSambaOptions::slotItemSelectionChanged()
 {
-  m_collection->action( "remove_action" )->setEnabled( !m_custom_options->selectedItems().isEmpty() );
+  // First of all, get rid of all open edit widgets, because we
+  // only want to have one open at a time.
+  removeEditWidgets();
 }
 
 
 void Smb4KSambaOptions::slotCustomContextMenuRequested( const QPoint &pos )
 {
-  QTreeWidgetItem *item = m_custom_options->itemAt( pos );
-  int column            = m_custom_options->columnAt( pos.x() );
-
-  if ( m_edit_item && (m_edit_item != item || m_edit_column != column) )
-  {
-    // When the user clicks somewhere in the viewport,
-    // in 99.9% that means he/she wants to get rid of
-    // the edit widget without modifying anything. Thus,
-    // we will just remove it here.
-    m_custom_options->removeItemWidget( m_edit_item, m_edit_column );
-
-    m_edit_column = -1;
-    m_edit_value = -1;
-    m_edit_item = NULL;
-
-    for ( int i = 0; i < m_custom_options->columnCount(); ++i )
-    {
-      m_custom_options->resizeColumnToContents( i );
-    }
-
-    m_custom_options->sortItems( ItemName, Qt::AscendingOrder );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( item )
-  {
-    m_edit_item = item;
-    m_edit_column = column;
-
-    // Enable/disable the edit action.
-    switch ( item->type() )
-    {
-      case Host:
-      {
-        switch ( column )
-        {
-          case Protocol:
-          case Kerberos:
-          case Port:
-          {
-            m_collection->action( "edit_action" )->setEnabled( true );
-
-            break;
-          }
-          default:
-          {
-            m_collection->action( "edit_action" )->setEnabled( false );
-
-            break;
-          }
-        }
-
-        break;
-      }
-      case Share:
-      {
-        switch ( column )
-        {
-#ifndef __FreeBSD__
-          case WriteAccess:
-#endif
-          case UID:
-          case GID:
-          case Port:
-          {
-            m_collection->action( "edit_action" )->setEnabled( true );
-
-            break;
-          }
-          default:
-          {
-            m_collection->action( "edit_action" )->setEnabled( false );
-
-            break;
-          }
-        }
-
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-  else
-  {
-    m_collection->action( "edit_action" )->setEnabled( false );
-  }
-  
-  m_collection->action( "clear_action" )->setEnabled( (m_custom_options->topLevelItemCount() != 0) );
-
   m_menu->menu()->popup( m_custom_options->viewport()->mapToGlobal( pos ) );
 }
 
 
 void Smb4KSambaOptions::slotEditActionTriggered( bool /*checked*/ )
 {
-  slotEditCustomItem( m_edit_item, m_edit_column );
+  slotEditCustomItem( m_custom_options->currentItem(), m_custom_options->currentColumn() );
 }
 
 
 void Smb4KSambaOptions::slotRemoveActionTriggered( bool /*checked*/ )
 {
-  // Clear the edit item.
-  m_edit_item = NULL;
-
-  // Remove the selected items.
-  if ( !m_custom_options->selectedItems().isEmpty() )
+  // Delete selected items.
+  QList<QTreeWidgetItem *> selected_items = m_custom_options->selectedItems();
+  
+  while ( !selected_items.isEmpty() )
   {
-    while ( !m_custom_options->selectedItems().isEmpty() )
+    Smb4KSambaOptionsInfo *info = findInfo( selected_items.first()->text( ItemName ) );
+    
+    if ( info )
     {
-      delete m_custom_options->selectedItems().takeFirst();
+      qDebug() << "Have info";
+      int index = m_options_list.indexOf( *info );
+      m_options_list.removeAt( index );
     }
-
-    emit customSettingsModified();
+    else
+    {
+      // Do nothing
+    }
+    
+    delete selected_items.takeFirst();
   }
-  else
-  {
-    // Do nothing
-  }
-
+  
   // Adjust the rows and columns.
   for ( int i = 0; i < m_custom_options->columnCount(); ++i )
   {
@@ -1697,17 +1771,26 @@ void Smb4KSambaOptions::slotRemoveActionTriggered( bool /*checked*/ )
   }
 
   m_custom_options->sortItems( ItemName, Qt::AscendingOrder );
+
+  // An item has been removed. Set m_maybe_changed to TRUE and
+  // emit customSettingsModified().
+  m_maybe_changed = true;
+  emit customSettingsModified();
 }
 
 
 void Smb4KSambaOptions::slotClearActionTriggered( bool /*checked*/ )
 {
-  // Clear the edit item.
-  m_edit_item = NULL;
-    
-  // Clear the list of custom options and emit the
-  // customSettingsModified() signal.
+  while ( !m_options_list.isEmpty() )
+  {
+    m_options_list.removeFirst();
+  }
+  
   m_custom_options->clear();
+
+  // The list of items has been cleared. Set m_maybe_changed to TRUE
+  // and emit customSettingsModified().
+  m_maybe_changed = true;
   emit customSettingsModified();
 }
 
