@@ -3,7 +3,7 @@
     various information of extra options for a specific host.
                              -------------------
     begin                : Mi Okt 18 2006
-    copyright            : (C) 2006-2009 by Alexander Reinholdt
+    copyright            : (C) 2006-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -255,7 +255,14 @@ class KDE_EXPORT Smb4KSambaOptionsInfo
      *
      * @returns                 the UID.
      */
-    K_UID uid() const { return m_uid; }
+    K_UID uid() const { return m_user.uid(); }
+    
+    /**
+     * Returns the user name belonging to the UID passed via setUID().
+     * 
+     * @returns the user name.
+     */
+    const QString owner() { return m_user.loginName(); }
 
     /**
      * With this function you can set the GID you want to use for this item.
@@ -273,7 +280,14 @@ class KDE_EXPORT Smb4KSambaOptionsInfo
      *
      * @returns                 the GID.
      */
-    K_GID gid() const { return m_gid; }
+    K_GID gid() const { return m_group.gid(); }
+    
+    /**
+     * Returns the group name belonging to the GID passed via setGID().
+     * 
+     * @returns the group name.
+     */
+    const QString group() { return m_group.name(); }
 
     /**
      * This function returns the type of the network item for which the options
@@ -370,6 +384,15 @@ class KDE_EXPORT Smb4KSambaOptionsInfo
      * used.
      */
     const QString &profile() const { return m_profile; }
+    
+    /**
+     * This function determines whether this options information is equal 
+     * to @p info. It returns TRUE if @p info is equal and FALSE otherwise.
+     * 
+     * @param info              The Smb4KSambaOptionsInfo object that is to 
+     *                          be checked.
+     */
+    bool equals( Smb4KSambaOptionsInfo *info );
 
   private:
     /**
@@ -405,14 +428,14 @@ class KDE_EXPORT Smb4KSambaOptionsInfo
     Kerberos m_kerberos;
 
     /**
-     * The UID
+     * The user
      */
-    K_UID m_uid;
+    KUser m_user;
 
     /**
      * The GID
      */
-    K_GID m_gid;
+    KUserGroup m_group;
 
     /**
      * Carries this item custom options?

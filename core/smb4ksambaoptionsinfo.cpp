@@ -3,7 +3,7 @@
     various information of extra options for a specific host.
                              -------------------
     begin                : Mi Okt 18 2006
-    copyright            : (C) 2006-2009 by Alexander Reinholdt
+    copyright            : (C) 2006-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -44,7 +44,7 @@ Smb4KSambaOptionsInfo::Smb4KSambaOptionsInfo( Smb4KHost *host )
   m_write_access( UndefinedWriteAccess ),
 #endif
   m_protocol( UndefinedProtocol ), m_kerberos( UndefinedKerberos ),
-  m_uid( getuid() ), m_gid( getgid() ), m_workgroup( host->workgroupName() ), 
+  m_user( getuid() ), m_group( getgid() ), m_workgroup( host->workgroupName() ), 
   m_ip( host->ip() ), m_profile( QString() )
 {
   setUNC( host->unc( QUrl::None ) );
@@ -58,7 +58,7 @@ Smb4KSambaOptionsInfo::Smb4KSambaOptionsInfo( Smb4KShare *share )
   m_write_access( UndefinedWriteAccess ),
 #endif
   m_protocol( UndefinedProtocol ), m_kerberos( UndefinedKerberos ),
-  m_uid( share->uid() ), m_gid( share->gid() ), m_workgroup( share->workgroupName() ), 
+  m_user( share->uid() ), m_group( share->gid() ), m_workgroup( share->workgroupName() ), 
   m_ip( share->hostIP() ), m_profile( QString() )
 {
   setUNC( share->unc( QUrl::None ) );
@@ -72,7 +72,7 @@ Smb4KSambaOptionsInfo::Smb4KSambaOptionsInfo( const Smb4KSambaOptionsInfo &info 
   m_write_access( info.writeAccess() ),
 #endif
   m_protocol( info.protocol() ), m_kerberos( info.useKerberos() ),
-  m_uid( info.uid() ), m_gid( info.gid() ), m_workgroup( info.workgroupName() ), 
+  m_user( info.uid() ), m_group( info.gid() ), m_workgroup( info.workgroupName() ), 
   m_ip( info.ip() ), m_profile( info.profile() )
 {
   setUNC( info.unc( QUrl::None ) );
@@ -85,7 +85,7 @@ Smb4KSambaOptionsInfo::Smb4KSambaOptionsInfo()
   m_write_access( UndefinedWriteAccess ),
 #endif
   m_protocol( UndefinedProtocol ), m_kerberos( UndefinedKerberos ),
-  m_uid( getuid() ), m_gid( getgid() ), m_workgroup( QString() ), 
+  m_user( getuid() ), m_group( getgid() ), m_workgroup( QString() ), 
   m_ip( QString() ), m_profile( QString() )
 {
 }
@@ -232,13 +232,13 @@ void Smb4KSambaOptionsInfo::setUseKerberos( Smb4KSambaOptionsInfo::Kerberos kerb
 
 void Smb4KSambaOptionsInfo::setUID( K_UID uid )
 {
-  m_uid = uid;
+  m_user = KUser( uid );
 }
 
 
 void Smb4KSambaOptionsInfo::setGID( K_GID gid )
 {
-  m_gid = gid;
+  m_group = KUserGroup( gid );
 }
 
 #ifndef Q_OS_FREEBSD
@@ -286,8 +286,8 @@ void Smb4KSambaOptionsInfo::update( Smb4KSambaOptionsInfo *info )
 #endif
   m_protocol     = info->protocol();
   m_kerberos     = info->useKerberos();
-  m_uid          = info->uid();
-  m_gid          = info->gid();
+  m_user         = KUser( info->uid() );
+  m_group        = KUserGroup( info->gid() );
 }
 
 
@@ -409,13 +409,17 @@ QMap<QString,QString> Smb4KSambaOptionsInfo::entries()
     case Host:
     {
       entries.insert( "uid", QString() );
+      entries.insert( "owner", QString() );
       entries.insert( "gid", QString() );
+      entries.insert( "group", QString() );
       break;
     }
     case Share:
     {
-      entries.insert( "uid", QString( "%1" ).arg( m_uid ) );
-      entries.insert( "gid", QString( "%1" ).arg( m_gid ) );
+      entries.insert( "uid", QString( "%1" ).arg( m_user.uid() ) );
+      entries.insert( "owner", m_user.loginName() );
+      entries.insert( "gid", QString( "%1" ).arg( m_group.gid() ) );
+      entries.insert( "group", m_group.name() );
       break;
     }
     default:
@@ -432,4 +436,112 @@ void Smb4KSambaOptionsInfo::setProfile( const QString &name )
 {
   m_profile = name;
 }
+
+
+bool Smb4KSambaOptionsInfo::equals( Smb4KSambaOptionsInfo* info )
+{
+  if ( QString::compare( unc( QUrl::None ), info->unc( QUrl::None ), Qt::CaseInsensitive ) != 0 )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  if ( QString::compare( workgroupName(), info->workgroupName(), Qt::CaseInsensitive ) != 0 )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  if ( QString::compare( ip(), info->ip() ) != 0 )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  if ( QString::compare( profile(), info->profile() ) != 0 )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  if ( QString::compare( owner(), info->owner() ) != 0 || uid() != info->uid() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  if ( QString::compare( group(), info->group() ) != 0 || gid() != info->gid() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  if ( type() != info->type() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  if ( remount() != info->remount() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+#ifndef Q_OS_FREEBSD
+  if ( writeAccess() != info->writeAccess() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+#endif
+
+  if ( protocol() != info->protocol() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  if ( useKerberos() != info->useKerberos() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  return true;
+}
+
 
