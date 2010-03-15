@@ -53,6 +53,7 @@
 #include <core/smb4ksettings.h>
 #include <core/smb4kglobal.h>
 #include <core/smb4kdefs.h>
+#include <core/smb4kmounter.h>
 
 using namespace Smb4KGlobal;
 
@@ -147,10 +148,10 @@ Smb4KSharesViewPart::Smb4KSharesViewPart( QWidget *parentWidget, QObject *parent
   connect( Smb4KMounter::self(), SIGNAL( updated( Smb4KShare *) ),
            this,                 SLOT( slotShareUpdated( Smb4KShare * ) ) );
 
-  connect( Smb4KCore::mounter(), SIGNAL( aboutToStart( Smb4KShare *, int ) ),
+  connect( Smb4KMounter::self(), SIGNAL( aboutToStart( Smb4KShare *, int ) ),
            this,                 SLOT( slotMounterAboutToStart( Smb4KShare *, int ) ) );
 
-  connect( Smb4KCore::mounter(), SIGNAL( finished( Smb4KShare *, int ) ),
+  connect( Smb4KMounter::self(), SIGNAL( finished( Smb4KShare *, int ) ),
            this,                 SLOT( slotMounterFinished( Smb4KShare *, int ) ) );
 
   connect( kapp,                 SIGNAL( aboutToQuit() ),
@@ -1279,7 +1280,7 @@ void Smb4KSharesViewPart::slotUnmountShare( bool /*checked*/ )
 
         if ( item )
         {
-          Smb4KCore::mounter()->unmountShare( item->itemData()->share(), false );
+          Smb4KMounter::self()->unmountShare( item->itemData()->share(), false );
         }
         else
         {
@@ -1299,7 +1300,7 @@ void Smb4KSharesViewPart::slotUnmountShare( bool /*checked*/ )
 
         if ( item )
         {
-          Smb4KCore::mounter()->unmountShare( item->itemData()->share(), false );
+          Smb4KMounter::self()->unmountShare( item->itemData()->share(), false );
         }
         else
         {
@@ -1331,7 +1332,7 @@ void Smb4KSharesViewPart::slotForceUnmountShare( bool /*checked*/ )
 
         if ( item )
         {
-          Smb4KCore::mounter()->unmountShare( item->itemData()->share(), true );
+          Smb4KMounter::self()->unmountShare( item->itemData()->share(), true );
         }
         else
         {
@@ -1351,7 +1352,7 @@ void Smb4KSharesViewPart::slotForceUnmountShare( bool /*checked*/ )
 
         if ( item )
         {
-          Smb4KCore::mounter()->unmountShare( item->itemData()->share(), true );
+          Smb4KMounter::self()->unmountShare( item->itemData()->share(), true );
         }
         else
         {
@@ -1371,7 +1372,7 @@ void Smb4KSharesViewPart::slotForceUnmountShare( bool /*checked*/ )
 
 void Smb4KSharesViewPart::slotUnmountAllShares( bool /*checked*/ )
 {
-  Smb4KCore::mounter()->unmountAllShares();
+  Smb4KMounter::self()->unmountAllShares();
 }
 
 
