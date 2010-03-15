@@ -36,9 +36,9 @@
 // application specific includes
 #include "smb4ksynchronizationdialog.h"
 #include <core/smb4kshare.h>
-#include <core/smb4kcore.h>
 #include <core/smb4ksynchronizationinfo.h>
 #include <core/smb4ksettings.h>
+#include <core/smb4ksynchronizer.h>
 
 Smb4KSynchronizationDialog::Smb4KSynchronizationDialog( Smb4KShare *share, QWidget *parent )
 : KDialog( parent ), m_share( share )
@@ -126,13 +126,13 @@ Smb4KSynchronizationDialog::Smb4KSynchronizationDialog( Smb4KShare *share, QWidg
   connect( this,                      SIGNAL( user3Clicked() ),
            this,                      SLOT( slotUser3Clicked() ) );
 
-  connect( Smb4KCore::synchronizer(), SIGNAL( progress( Smb4KSynchronizationInfo * ) ),
+  connect( Smb4KSynchronizer::self(), SIGNAL( progress( Smb4KSynchronizationInfo * ) ),
            this,                      SLOT( slotProgress( Smb4KSynchronizationInfo * ) ) );
 
-  connect( Smb4KCore::synchronizer(), SIGNAL( aboutToStart( Smb4KSynchronizationInfo * ) ),
+  connect( Smb4KSynchronizer::self(), SIGNAL( aboutToStart( Smb4KSynchronizationInfo * ) ),
            this,                      SLOT( slotSynchronizationAboutToStart( Smb4KSynchronizationInfo * ) ) );
 
-  connect( Smb4KCore::synchronizer(), SIGNAL( finished( Smb4KSynchronizationInfo * ) ),
+  connect( Smb4KSynchronizer::self(), SIGNAL( finished( Smb4KSynchronizationInfo * ) ),
            this,                      SLOT( slotSynchronizationFinished( Smb4KSynchronizationInfo * ) ) );
 
   setMinimumSize( (sizeHint().width() > 350 ? sizeHint().width() : 350), sizeHint().height() );
@@ -160,9 +160,9 @@ Smb4KSynchronizationDialog::~Smb4KSynchronizationDialog()
 void Smb4KSynchronizationDialog::slotUser1Clicked()
 {
   // Abort or exit.
-  if ( Smb4KCore::synchronizer()->isRunning( m_info ) )
+  if ( Smb4KSynchronizer::self()->isRunning( m_info ) )
   {
-    Smb4KCore::synchronizer()->abort( m_info );
+    Smb4KSynchronizer::self()->abort( m_info );
   }
   else
   {
@@ -182,7 +182,7 @@ void Smb4KSynchronizationDialog::slotUser2Clicked()
   m_info->setSourcePath( m_source->url().path() );
   m_info->setDestinationPath( m_destination->url().path() );
 
-  Smb4KCore::synchronizer()->synchronize( m_info );
+  Smb4KSynchronizer::self()->synchronize( m_info );
 }
 
 
@@ -285,7 +285,7 @@ void Smb4KSynchronizationDialog::slotSynchronizationFinished( Smb4KSynchronizati
 {
   if ( m_info->equals( info ) )
   {
-    if ( !Smb4KCore::synchronizer()->isAborted( m_info ) )
+    if ( !Smb4KSynchronizer::self()->isAborted( m_info ) )
     {
       if ( m_current_progress->value() != 100 )
       {
