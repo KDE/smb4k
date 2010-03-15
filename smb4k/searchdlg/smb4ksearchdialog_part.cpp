@@ -47,6 +47,9 @@
 #include <core/smb4kshare.h>
 #include <core/smb4ksettings.h>
 #include <core/smb4kglobal.h>
+#include <core/smb4kscanner.h>
+#include <core/smb4kmounter.h>
+#include <core/smb4ksearch.h>
 
 using namespace Smb4KGlobal;
 
@@ -111,13 +114,13 @@ Smb4KSearchDialogPart::Smb4KSearchDialogPart( QWidget *parentWidget, QObject *pa
   connect( Smb4KMounter::self(),   SIGNAL( unmounted( Smb4KShare * ) ),
            this,                   SLOT( slotShareUnmounted( Smb4KShare * ) ) );
 
-  connect( Smb4KCore::search(),    SIGNAL( result( Smb4KBasicNetworkItem *, bool ) ),
+  connect( Smb4KSearch::self(),    SIGNAL( result( Smb4KBasicNetworkItem *, bool ) ),
            this,                   SLOT( slotReceivedSearchResult( Smb4KBasicNetworkItem *, bool ) ) );
 
-  connect( Smb4KCore::search(),    SIGNAL( aboutToStart( const QString & ) ),
+  connect( Smb4KSearch::self(),    SIGNAL( aboutToStart( const QString & ) ),
            this,                   SLOT( slotSearchAboutToStart( const QString & ) ) );
 
-  connect( Smb4KCore::search(),    SIGNAL( finished( const QString & ) ),
+  connect( Smb4KSearch::self(),    SIGNAL( finished( const QString & ) ),
            this,                   SLOT( slotSearchFinished( const QString & ) ) );
 }
 
@@ -279,7 +282,7 @@ void Smb4KSearchDialogPart::slotSearchActionTriggered( bool /*checked*/ )
 
   if ( !search_item.isEmpty() )
   {
-    Smb4KCore::search()->search( m_widget->comboBox()->currentText() );
+    Smb4KSearch::self()->search( m_widget->comboBox()->currentText() );
   }
   else
   {
@@ -312,13 +315,13 @@ void Smb4KSearchDialogPart::slotAddActionTriggered( bool /*checked*/ )
   {
     case Smb4KSearchDialogItem::Host:
     {
-      Smb4KCore::scanner()->insertHost( item->hostItem() );
+      Smb4KScanner::self()->insertHost( item->hostItem() );
 
       break;
     }
     case Smb4KSearchDialogItem::Share:
     {
-      Smb4KCore::mounter()->mountShare( item->shareItem() );
+      Smb4KMounter::self()->mountShare( item->shareItem() );
 
       break;
     }
@@ -336,7 +339,7 @@ void Smb4KSearchDialogPart::slotAbortActionTriggered( bool /*checked*/ )
 
   if ( !search_item.isEmpty() )
   {
-    Smb4KCore::search()->abort( m_widget->comboBox()->currentText() );
+    Smb4KSearch::self()->abort( m_widget->comboBox()->currentText() );
   }
   else
   {
@@ -366,13 +369,13 @@ void Smb4KSearchDialogPart::slotItemDoubleClicked( QListWidgetItem *item )
       {
         // The scanner will check if this host is already in the
         // list.
-        Smb4KCore::scanner()->insertHost( searchItem->hostItem() );
+        Smb4KScanner::self()->insertHost( searchItem->hostItem() );
 
         break;
       }
       case Smb4KSearchDialogItem::Share:
       {
-        Smb4KCore::mounter()->mountShare( searchItem->shareItem() );
+        Smb4KMounter::self()->mountShare( searchItem->shareItem() );
 
         break;
       }
