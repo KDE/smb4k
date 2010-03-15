@@ -66,13 +66,6 @@
 
 using namespace Smb4KGlobal;
 
-// Variables we need to determine if super user entries
-// have to be written to /etc/sudoers
-#ifdef Q_OS_LINUX
-bool force_unmount = false;
-#endif
-bool always_use_su = false;
-
 K_EXPORT_COMPONENT_FACTORY( libsmb4kconfigdialog, KGenericFactory<Smb4KConfigDialog> )
 
 
@@ -171,29 +164,22 @@ void Smb4KConfigDialog::setupDialog()
     // Do nothing
   }
 
-  // There are a few settings we need to the initial values of.
-  // Initialize them here:
-#ifdef Q_OS_LINUX
-  force_unmount = Smb4KSettings::useForceUnmount();
-#endif
-  always_use_su = Smb4KSettings::alwaysUseSuperUser();
-
   // Now add the pages to the configuration dialog
-  addPage( interface_area, i18n( "User Interface" ), "view-choose" );
-  addPage( network_area, i18n( "Network" ), "network-workgroup" );
-  addPage( share_area, i18n( "Shares" ), "folder-remote" );
-  addPage( auth_area, i18n( "Authentication" ), "dialog-password" );
-  addPage( samba_area, i18n( "Samba" ), "preferences-system-network" );
-  addPage( rsync_area, i18n( "Synchronization" ), "go-bottom" );
-  addPage( super_user_area, i18n( "Super User" ), "user-identity" );
-  addPage( laptop_area, i18n( "Laptop Support" ), "computer-laptop" );
+  m_user_interface  = addPage( interface_area, i18n( "User Interface" ), "view-choose" );
+  m_network         = addPage( network_area, i18n( "Network" ), "network-workgroup" );
+  m_shares          = addPage( share_area, i18n( "Shares" ), "folder-remote" );
+  m_authentication  = addPage( auth_area, i18n( "Authentication" ), "dialog-password" );
+  m_samba           = addPage( samba_area, i18n( "Samba" ), "preferences-system-network" );
+  m_synchronization = addPage( rsync_area, i18n( "Synchronization" ), "go-bottom" );
+  m_super_user      = addPage( super_user_area, i18n( "Super User" ), "user-identity" );
+  m_laptop_support  = addPage( laptop_area, i18n( "Laptop Support" ), "computer-laptop" );
 
   // Stuff that's not managed by KConfig XT is loaded by
   // Smb4KConfigDialog::showEvent()!
 
   // Connections
   connect( samba_options,      SIGNAL( customSettingsModified() ),
-           this,               SLOT( slotCustomSambaSettingsModified() ) );
+           this,               SLOT( slotEnableApplyButton() ) );
 
   connect( super_user_options, SIGNAL( removeEntries() ),
            this,               SLOT( slotRemoveSuperUserEntries() ) );
@@ -206,6 +192,9 @@ void Smb4KConfigDialog::setupDialog()
            
   connect( auth_options,       SIGNAL( setDefaultLogin() ),
            this,               SLOT( slotSetDefaultLogin() ) );
+           
+  connect( auth_options,       SIGNAL( walletEntriesModified() ),
+           this,               SLOT( slotEnableApplyButton() ) );
 
   setInitialSize( QSize( 800, 600 ) );
 
@@ -216,13 +205,10 @@ void Smb4KConfigDialog::setupDialog()
 
 void Smb4KConfigDialog::loadCustomSambaOptions()
 {
-  QList<Smb4KSambaOptionsInfo *> list = Smb4KSambaOptionsHandler::self()->customOptionsList();
-
-  Smb4KSambaOptions *samba_options = findChild<Smb4KSambaOptions *>();
-
-  if ( samba_options )
+  if ( m_samba )
   {
-    samba_options->insertCustomOptions( list );
+    QList<Smb4KSambaOptionsInfo *> list = Smb4KSambaOptionsHandler::self()->customOptionsList();
+    m_samba->widget()->findChild<Smb4KSambaOptions *>()->insertCustomOptions( list );
   }
   else
   {
@@ -233,112 +219,67 @@ void Smb4KConfigDialog::loadCustomSambaOptions()
 
 void Smb4KConfigDialog::saveCustomSambaOptions()
 {
-  QList<Smb4KSambaOptionsInfo *> list;
-
-  Smb4KSambaOptions *samba_options = findChild<Smb4KSambaOptions *>();
-
-  if ( samba_options )
+  if ( m_samba )
   {
-    list = samba_options->getCustomOptions();
+    QList<Smb4KSambaOptionsInfo> list;
+    list = m_samba->widget()->findChild<Smb4KSambaOptions *>()->getCustomOptions();
+    
+    for ( int i = 0; i < list.size(); ++i )
+    {
+      Smb4KSambaOptionsHandler::self()->addItem( &list[i], false );
+    }
+    
+    Smb4KSambaOptionsHandler::self()->sync();
   }
   else
   {
     return;
   }
-
-  Smb4KSambaOptionsHandler::self()->updateCustomOptions( list );
 }
 
 
 void Smb4KConfigDialog::writeSuperUserEntries()
 {
-  // Get the checkboxes in the "Super User" page.
-#ifdef Q_OS_LINUX
-  QCheckBox *force_button = findChild<QCheckBox *>( "kcfg_UseForceUnmount" );
-  Q_ASSERT( force_button );
-#endif
-  QCheckBox *always_button = findChild<QCheckBox *>( "kcfg_AlwaysUseSuperUser" );
-  Q_ASSERT( always_button );
-
-  // Check if we have to write anything and initiate the writing
-  // if necessary.
-#ifdef Q_OS_LINUX
-  if ( (!force_unmount && !always_use_su) &&
-       ((force_button->isChecked() && !force_unmount) ||
-       (always_button->isChecked() && !always_use_su)) )
-#else
-  if ( always_button->isChecked() && !always_use_su )
-#endif
+  if ( m_super_user )
   {
-    setEnabled( false );
-
-    if ( !Smb4KCore::sudoWriter()->addUser() )
+    if ( m_super_user->widget()->findChild<Smb4KSuperUserOptions *>()->writeSuperUserEntries() )
     {
-      // The write process failed. Reset the values.
-#ifdef Q_OS_LINUX
-      force_button->setChecked( force_unmount );
-      Smb4KSettings::setUseForceUnmount( force_unmount );
-#endif
-      always_button->setChecked( always_use_su );
-      Smb4KSettings::setAlwaysUseSuperUser( always_use_su );
+      setEnabled( false );
+      
+      // Write to the /etc/sudoers file.      
+      if ( !Smb4KSudoWriterInterface::self()->addUser() )
+      {
+        // The writing failed. Reset the settings in the "Super User"
+        // page.
+        m_super_user->widget()->findChild<Smb4KSuperUserOptions *>()->resetSuperUserSettings();
+        
+        // Set super user settings to FALSE
+        Smb4KSettings::setUseForceUnmount( false );
+        Smb4KSettings::setAlwaysUseSuperUser( false );
+      }
+      else
+      {
+        // Set super user setting according to the state of the check boxes
+        Smb4KSettings::setUseForceUnmount( 
+          m_super_user->widget()->findChild<QCheckBox *>( "kcfg_UseForceUnmount" )->isChecked() 
+        );
+        
+        Smb4KSettings::setAlwaysUseSuperUser( 
+          m_super_user->widget()->findChild<QCheckBox *>( "kcfg_AlwaysUseSuperUser" )->isChecked() 
+        );
+      }
+      
+      setEnabled( true );
     }
     else
     {
       // Do nothing
     }
-
-    setEnabled( true );
   }
   else
   {
     // Do nothing
   }
-
-  // Set the variables.
-#ifdef Q_OS_LINUX
-  force_unmount = force_button->isChecked();
-#endif
-  always_use_su = always_button->isChecked();
-}
-
-
-void Smb4KConfigDialog::removeSuperUserEntries()
-{
-  // Get the checkboxes in the "Super User" page.
-#ifdef Q_OS_LINUX
-  QCheckBox *force_button = findChild<QCheckBox *>( "kcfg_UseForceUnmount" );
-  Q_ASSERT( force_button );
-#endif
-  QCheckBox *always_button = findChild<QCheckBox *>( "kcfg_AlwaysUseSuperUser" );
-  Q_ASSERT( always_button );
-
-  // Uncheck both buttons.
-#ifdef Q_OS_LINUX
-  force_button->setChecked( false );
-  Smb4KSettings::setUseForceUnmount( false );
-#endif
-  always_button->setChecked( false );
-  Smb4KSettings::setAlwaysUseSuperUser( false );
-
-  setEnabled( false );
-
-  // Remove the entries.
-  if ( !Smb4KCore::sudoWriter()->removeUser() )
-  {
-    // Actually, we do not need to care about failed removals.
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  setEnabled( true );
-
-  // Set the variables.
-#ifdef Q_OS_LINUX
-  force_unmount = force_button->isChecked();
-#endif
-  always_use_su = always_button->isChecked();
 }
 
 
@@ -598,161 +539,166 @@ void Smb4KConfigDialog::slotButtonClicked( int button )
 }
 
 
-void Smb4KConfigDialog::slotCustomSambaSettingsModified()
+// void Smb4KConfigDialog::slotCustomSambaSettingsModified()
+// {
+//   qDebug() << "Modified";
+//   // Get the list view and all other input widgets:
+//   QTreeWidget *view = findChild<QTreeWidget *>( "CustomOptionsList" );
+//   bool enable_apply = false;
+// 
+//   if ( view )
+//   {
+//     // Get the old list of custom options from the options handler.
+//     QList<Smb4KSambaOptionsInfo *> old_list = Smb4KSambaOptionsHandler::self()->customOptionsList();
+// 
+//     // Get the new list of custom options from the Samba options tab.
+//     QList<Smb4KSambaOptionsInfo *> new_list = static_cast<Smb4KSambaOptions *>( findChild<Smb4KSambaOptions *>() )->getCustomOptions();
+// 
+//     if ( old_list.size() == new_list.size() )
+//     {
+//       for ( int i = 0; i < old_list.size(); ++i )
+//       {
+//         for ( int j = 0; j < new_list.size(); ++j )
+//         {
+//           if ( QString::compare( old_list.at( i )->unc(), new_list.at( j )->unc(),
+//                Qt::CaseInsensitive ) == 0 )
+//           {
+//             if ( old_list.at( i )->protocol() != new_list.at( j )->protocol() )
+//             {
+//               enable_apply = true;
+// 
+//               break;
+//             }
+//             else
+//             {
+//               // Do nothing
+//             }
+// 
+// #ifndef Q_OS_FREEBSD
+//             if ( old_list.at( i )->writeAccess() != new_list.at( j )->writeAccess() )
+//             {
+//               enable_apply = true;
+// 
+//               break;
+//             }
+//             else
+//             {
+//               // Do nothing
+//             }
+// #endif
+// 
+//             if ( old_list.at( i )->useKerberos() != new_list.at( j )->useKerberos() )
+//             {
+//               enable_apply = true;
+// 
+//               break;
+//             }
+//             else
+//             {
+//               // Do nothing
+//             }
+// 
+//             if ( old_list.at( i )->uid() != new_list.at( j )->uid() )
+//             {
+//               enable_apply = true;
+// 
+//               break;
+//             }
+//             else
+//             {
+//               // Do nothing
+//             }
+// 
+//             if ( old_list.at( i )->gid() != new_list.at( j )->gid() )
+//             {
+//               enable_apply = true;
+// 
+//               break;
+//             }
+//             else
+//             {
+//               // Do nothing
+//             }
+// 
+//             if ( old_list.at( i )->port() != new_list.at( j )->port() )
+//             {
+//               enable_apply = true;
+// 
+//               break;
+//             }
+//             else
+//             {
+//               // Do nothing
+//             }
+// 
+//             break;
+//           }
+//           else
+//           {
+//             continue;
+//           }
+//         }
+// 
+//         if ( enable_apply )
+//         {
+//           break;
+//         }
+//         else
+//         {
+//           continue;
+//         }
+//       }
+//     }
+//     else
+//     {
+//       enable_apply = true;
+//     }
+//   }
+//   else
+//   {
+//     // Do nothing
+//   }
+// 
+//   enableButtonApply( enable_apply );
+// }
+
+
+void Smb4KConfigDialog::slotRemoveSuperUserEntries()
 {
-  // Get the list view and all other input widgets:
-  QTreeWidget *view = findChild<QTreeWidget *>( "CustomOptionsList" );
-  bool enable_apply = false;
+  setEnabled( false );
 
-  if ( view )
+  // Remove the entries.
+  if ( !Smb4KSudoWriterInterface::self()->removeUser() )
   {
-    // Get the old list of custom options from the options handler.
-    QList<Smb4KSambaOptionsInfo *> old_list = Smb4KSambaOptionsHandler::self()->customOptionsList();
-
-    // Get the new list of custom options from the Samba options tab.
-    QList<Smb4KSambaOptionsInfo *> new_list = static_cast<Smb4KSambaOptions *>( findChild<Smb4KSambaOptions *>() )->getCustomOptions();
-
-    if ( old_list.size() == new_list.size() )
-    {
-      for ( int i = 0; i < old_list.size(); ++i )
-      {
-        for ( int j = 0; j < new_list.size(); ++j )
-        {
-          if ( QString::compare( old_list.at( i )->unc(), new_list.at( j )->unc(),
-               Qt::CaseInsensitive ) == 0 )
-          {
-            if ( old_list.at( i )->protocol() != new_list.at( j )->protocol() )
-            {
-              enable_apply = true;
-
-              break;
-            }
-            else
-            {
-              // Do nothing
-            }
-
-#ifndef Q_OS_FREEBSD
-            if ( old_list.at( i )->writeAccess() != new_list.at( j )->writeAccess() )
-            {
-              enable_apply = true;
-
-              break;
-            }
-            else
-            {
-              // Do nothing
-            }
-#endif
-
-            if ( old_list.at( i )->useKerberos() != new_list.at( j )->useKerberos() )
-            {
-              enable_apply = true;
-
-              break;
-            }
-            else
-            {
-              // Do nothing
-            }
-
-            if ( old_list.at( i )->uid() != new_list.at( j )->uid() )
-            {
-              enable_apply = true;
-
-              break;
-            }
-            else
-            {
-              // Do nothing
-            }
-
-            if ( old_list.at( i )->gid() != new_list.at( j )->gid() )
-            {
-              enable_apply = true;
-
-              break;
-            }
-            else
-            {
-              // Do nothing
-            }
-
-            if ( old_list.at( i )->port() != new_list.at( j )->port() )
-            {
-              enable_apply = true;
-
-              break;
-            }
-            else
-            {
-              // Do nothing
-            }
-
-            break;
-          }
-          else
-          {
-            continue;
-          }
-        }
-
-        if ( enable_apply )
-        {
-          break;
-        }
-        else
-        {
-          continue;
-        }
-      }
-    }
-    else
-    {
-      enable_apply = true;
-    }
+    // Actually, we do not need to care about failed removals.
   }
   else
   {
     // Do nothing
   }
 
-  enableButtonApply( enable_apply );
-}
-
-
-void Smb4KConfigDialog::slotRemoveSuperUserEntries()
-{
-  removeSuperUserEntries();
+  setEnabled( true );
 }
 
 
 void Smb4KConfigDialog::slotLoadAuthenticationInformation()
 {
+  Smb4KAuthOptions *auth_options = m_authentication->widget()->findChild<Smb4KAuthOptions *>();
   Smb4KWalletManager::self()->init( this );
   QList<Smb4KAuthInfo *> entries = Smb4KWalletManager::self()->walletEntries();
-  Smb4KAuthOptions *auth_options = findChild<Smb4KAuthOptions *>();
-  
-  if ( auth_options )
-  {
-    auth_options->setEntries( entries );
-    auth_options->displayEntries();
-  }
-  else
-  {
-    // Do nothing
-  }
+  auth_options->insertWalletEntries( entries );
+  auth_options->displayWalletEntries();
 }
 
 
 void Smb4KConfigDialog::slotSaveAuthenticationInformation()
 {
-  Smb4KWalletManager::self()->init( this );
-  Smb4KAuthOptions *auth_options = findChild<Smb4KAuthOptions *>();
+  Smb4KAuthOptions *auth_options = m_authentication->widget()->findChild<Smb4KAuthOptions *>();
   
-  if ( auth_options && auth_options->entriesDisplayed() )
+  if ( auth_options->walletEntriesDisplayed() )
   {
-    QList<Smb4KAuthInfo *> entries = auth_options->getEntries();
+    Smb4KWalletManager::self()->init( this );
+    QList<Smb4KAuthInfo *> entries = auth_options->getWalletEntries();
     Smb4KWalletManager::self()->writeWalletEntries( entries );
   }
   else
@@ -764,9 +710,9 @@ void Smb4KConfigDialog::slotSaveAuthenticationInformation()
 
 void Smb4KConfigDialog::slotSetDefaultLogin()
 {
-  Smb4KAuthOptions *auth_options = findChild<Smb4KAuthOptions *>();
+  Smb4KAuthOptions *auth_options = m_authentication->widget()->findChild<Smb4KAuthOptions *>();
   
-  if ( auth_options && !auth_options->undoRemoval() )
+  if ( !auth_options->undoRemoval() )
   {
     Smb4KWalletManager::self()->init( this );
   
@@ -787,9 +733,7 @@ void Smb4KConfigDialog::slotSetDefaultLogin()
       
       Smb4KWalletManager::self()->writeAuthInfo( &authInfo );
       
-      Smb4KAuthOptions *auth_options = findChild<Smb4KAuthOptions *>();
-      
-      if ( auth_options && auth_options->entriesDisplayed() )
+      if ( auth_options->walletEntriesDisplayed() )
       {
         slotLoadAuthenticationInformation();
       }
@@ -807,6 +751,109 @@ void Smb4KConfigDialog::slotSetDefaultLogin()
   {
     // Do nothing
   }
+}
+
+
+void Smb4KConfigDialog::slotEnableApplyButton()
+{
+  // Check if we need to enable the Apply button.
+  bool enable = false;
+  
+  // Check the wallet entries.
+  Smb4KAuthOptions *auth_options = m_authentication->widget()->findChild<Smb4KAuthOptions *>();
+
+  if ( auth_options->walletEntriesMaybeChanged() )
+  {
+    QList<Smb4KAuthInfo *> old_wallet_entries = Smb4KWalletManager::self()->walletEntries();
+    QList<Smb4KAuthInfo *> new_wallet_entries = auth_options->getWalletEntries();
+    
+    for ( int i = 0; i < old_wallet_entries.size(); ++i )
+    {
+      for ( int j = 0; j < new_wallet_entries.size(); ++j )
+      {
+        if ( QString::compare( old_wallet_entries.at( i )->unc(),
+                               new_wallet_entries.at( j )->unc(),
+                               Qt::CaseInsensitive ) == 0 &&
+             (QString::compare( old_wallet_entries.at( i )->workgroupName(),
+                                new_wallet_entries.at( j )->workgroupName(),
+                                Qt::CaseInsensitive ) != 0 ||
+              QString::compare( old_wallet_entries.at( i )->login(),
+                                new_wallet_entries.at( j )->login(),
+                                Qt::CaseInsensitive ) != 0 ||
+              QString::compare( old_wallet_entries.at( i )->password(),
+                                new_wallet_entries.at( j )->password(),
+                                Qt::CaseInsensitive ) != 0) )
+        {
+          enable = true;
+          break;
+        }
+        else
+        {
+          continue;
+        }
+      }
+      
+      if ( enable )
+      {
+        break;
+      }
+      else
+      {
+        continue;
+      }
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Check the custom settings.
+  Smb4KSambaOptions *samba_options = m_samba->widget()->findChild<Smb4KSambaOptions *>();
+  
+  if ( !enable && samba_options->customSettingsMaybeChanged() )
+  {
+    QList<Smb4KSambaOptionsInfo> new_list = samba_options->getCustomOptions();
+    QList<Smb4KSambaOptionsInfo *> old_list = Smb4KSambaOptionsHandler::self()->customOptionsList();
+    
+    if ( new_list.size() == old_list.size() )
+    {
+      for ( int i = 0; i < new_list.size(); ++i )
+      {
+        for ( int j = 0; j < old_list.size(); ++j )
+        {
+          if ( !new_list[i].equals( old_list.at( j ) ) )
+          {
+            enable = true;
+            break;
+          }
+          else
+          {
+            continue;
+          }
+        }
+        
+        if ( enable )
+        {
+          break;
+        }
+        else
+        {
+          continue;
+        }
+      }
+    }
+    else
+    {
+      enable = true;
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  enableButtonApply( enable );
 }
 
 #include "smb4kconfigdialog.moc"

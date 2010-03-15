@@ -97,12 +97,6 @@ class Smb4KConfigDialog : public KConfigDialog
     void slotButtonClicked( int button );
 
     /**
-     * The custom Samba settings changed. Decide if we have to
-     * enable the 'Apply' button or not.
-     */
-    void slotCustomSambaSettingsModified();
-
-    /**
      * The 'Remove Entries' button in the 'Super User' page has been
      * clicked. Initialize the removal of Smb4K's configuration entries
      * from the configuration file of the currently chosen program.
@@ -128,24 +122,54 @@ class Smb4KConfigDialog : public KConfigDialog
      * It defines the default login.
      */
     void slotSetDefaultLogin();
-
+    
     /**
-     * This slot is activated if the Smb4KSudoWriterInterface::failed()
-     * signal is received.
-     *
-     * @param operation     The operation that failed.
+     * Enable/disbale the "Apply" button if settings that are not managed by
+     * KConfig XT have changed.
      */
-//     void slotReceivedSudoWriterFailed( Smb4KSudoWriterInterface::Operation operation );
-
-    /**
-     * This slot is activated if the Smb4KSudoWriterInterface::finished()
-     * signal is received.
-     *
-     * @param operation     The operation that finished.
-     */
-//     void slotReceivedSudoWriterFinished( Smb4KSudoWriterInterface::Operation operation );
+    void slotEnableApplyButton();
 
   private:
+    /**
+     * "User Interface" page
+     */
+    KPageWidgetItem *m_user_interface;
+    
+    /**
+     * "Network" page
+     */
+    KPageWidgetItem *m_network;
+    
+    /**
+     * "Shares" page
+     */
+    KPageWidgetItem *m_shares;
+    
+    /**
+     * "Authentication" page
+     */
+    KPageWidgetItem *m_authentication;
+    
+    /**
+     * "Samba" page
+     */
+    KPageWidgetItem *m_samba;
+    
+    /**
+     * "Synchronization" page
+     */
+    KPageWidgetItem *m_synchronization;
+    
+    /**
+     * "Super User" page
+     */
+    KPageWidgetItem *m_super_user;
+    
+    /**
+     * "Laptop Support" page 
+     */
+    KPageWidgetItem *m_laptop_support;
+    
     /**
      * Set up the config dialog.
      */
@@ -165,11 +189,6 @@ class Smb4KConfigDialog : public KConfigDialog
      * Write super user configuration entries to configuration file.
      */
     void writeSuperUserEntries();
-
-    /**
-     * Remove super user configuration entries from the configuration file.
-     */
-    void removeSuperUserEntries();
 
     /**
      * Checks that mandatorily needed input is provided for settings that
