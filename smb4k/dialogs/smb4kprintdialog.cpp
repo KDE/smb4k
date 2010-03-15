@@ -42,10 +42,10 @@
 // application specific includes
 #include <smb4kprintdialog.h>
 #include <core/smb4kprintinfo.h>
-#include <core/smb4kcore.h>
 #include <core/smb4khost.h>
 #include <core/smb4ksettings.h>
 #include <core/smb4kglobal.h>
+#include <core/smb4kprint.h>
 
 using namespace Smb4KGlobal;
 
@@ -78,6 +78,12 @@ Smb4KPrintDialog::Smb4KPrintDialog( Smb4KShare *share, QWidget *parent )
 
   connect( m_file, SIGNAL( textChanged( const QString & ) ),
            this,   SLOT( slotInputValueChanged( const QString & ) ) );
+           
+  connect( Smb4KPrint::self(), SIGNAL( aboutToStart( Smb4KPrintInfo * ) ),
+           this,               SLOT( slotAboutToStart( Smb4KPrintInfo * ) ) );
+
+  connect( Smb4KPrint::self(), SIGNAL( finished( Smb4KPrintInfo * ) ),
+           this,               SLOT( slotFinished( Smb4KPrintInfo * ) ) );
 
   setMinimumWidth( sizeHint().width() > 350 ? sizeHint().width() : 350 );
 
@@ -173,9 +179,9 @@ void Smb4KPrintDialog::setupView()
 void Smb4KPrintDialog::slotUser1Clicked()
 {
   // Abort or exit.
-  if ( Smb4KCore::print()->isRunning( m_info ) )
+  if ( Smb4KPrint::self()->isRunning( m_info ) )
   {
-    Smb4KCore::print()->abort( m_info );
+    Smb4KPrint::self()->abort( m_info );
   }
   else
   {
@@ -193,13 +199,7 @@ void Smb4KPrintDialog::slotUser2Clicked()
     m_info->setFilePath( m_file->url().path().trimmed() );
     m_info->setCopies( m_copies->value() );
 
-    connect( Smb4KCore::print(), SIGNAL( aboutToStart( Smb4KPrintInfo * ) ),
-             this,               SLOT( slotAboutToStart( Smb4KPrintInfo * ) ) );
-
-    connect( Smb4KCore::print(), SIGNAL( finished( Smb4KPrintInfo * ) ),
-             this,               SLOT( slotFinished( Smb4KPrintInfo * ) ) );
-
-    Smb4KCore::print()->print( m_info );
+    Smb4KPrint::self()->print( m_info );
   }
   else
   {
