@@ -64,10 +64,10 @@ Smb4KMountDialog::Smb4KMountDialog( QWidget *parent )
   connect( this,                 SIGNAL( cancelClicked() ),
            this,                 SLOT( slotCancelClicked() ) );
            
-  connect( Smb4KCore::mounter(), SIGNAL( aboutToStart( Smb4KShare *, int ) ),
+  connect( Smb4KMounter::self(), SIGNAL( aboutToStart( Smb4KShare *, int ) ),
            this,                 SLOT( slotMounterAboutToStart( Smb4KShare *, int ) ) );
 
-  connect( Smb4KCore::mounter(), SIGNAL( finished( Smb4KShare *, int ) ),
+  connect( Smb4KMounter::self(), SIGNAL( finished( Smb4KShare *, int ) ),
            this,                 SLOT( slotMounterFinished( Smb4KShare *, int ) ) );
 
   setMinimumWidth( sizeHint().width() > 350 ? sizeHint().width() : 350 );
@@ -166,16 +166,16 @@ void Smb4KMountDialog::slotOkClicked()
 
       if ( m_bookmark->isChecked() )
       {
-        Smb4KCore::bookmarkHandler()->addBookmark( &m_share );
+        Smb4KBookmarkHandler::self()->addBookmark( &m_share );
       }
       else
       {
         // Do nothing
       }
       
-      Smb4KCore::mounter()->mountShare( &m_share );
+      Smb4KMounter::self()->mountShare( &m_share );
       
-      connect( Smb4KCore::mounter(), SIGNAL( mounted( Smb4KShare * ) ),
+      connect( Smb4KMounter::self(), SIGNAL( mounted( Smb4KShare * ) ),
                this,                 SLOT( slotShareMounted( Smb4KShare * ) ) );
     }
     else
@@ -191,7 +191,7 @@ void Smb4KMountDialog::slotOkClicked()
 
 void Smb4KMountDialog::slotCancelClicked()
 {
-  Smb4KCore::mounter()->abort( &m_share );
+  Smb4KMounter::self()->abort( &m_share );
 }
 
 
