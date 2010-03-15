@@ -2,7 +2,7 @@
     smb4ksynchronizeoptions  -  The configuration page for the rsync options
                              -------------------
     begin                : So Nov 20 2005
-    copyright            : (C) 2005-2008 by Alexander Reinholdt
+    copyright            : (C) 2005-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -322,7 +322,7 @@ Smb4KRsyncOptions::Smb4KRsyncOptions( QWidget *parent )
   deltrans_layout->addWidget( transfer_box, 2, 0, 0 );
   deltrans_layout->addItem( spacer2, 3, 0, 1, 1, 0 );
 
-  addTab( deltrans_tab, i18n( "File Deletion & Transfer" ) );
+  addTab( deltrans_tab, i18n( "File Deletion && Transfer" ) );
 
   //
   // The Filter tab
