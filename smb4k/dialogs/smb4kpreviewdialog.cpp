@@ -40,13 +40,13 @@
 
 // application specific includes
 #include <smb4kpreviewdialog.h>
-#include <core/smb4kcore.h>
 #include <core/smb4kpreviewitem.h>
 #include <core/smb4ksettings.h>
 #include <core/smb4khost.h>
 #include <core/smb4kshare.h>
 #include <core/smb4kglobal.h>
 #include <core/smb4khomesshareshandler.h>
+#include <core/smb4kpreviewer.h>
 
 using namespace Smb4KGlobal;
 
@@ -80,13 +80,13 @@ Smb4KPreviewDialog::Smb4KPreviewDialog( Smb4KShare *share, QWidget *parent )
   connect( this,                   SIGNAL( closeClicked() ),
            this,                   SLOT( slotCloseClicked() ) );
 
-  connect( Smb4KCore::previewer(), SIGNAL( result( Smb4KPreviewItem * ) ),
+  connect( Smb4KPreviewer::self(), SIGNAL( result( Smb4KPreviewItem * ) ),
            this,                   SLOT( slotReceivedData( Smb4KPreviewItem * ) ) );
 
-  connect( Smb4KCore::previewer(), SIGNAL( aboutToStart( Smb4KPreviewItem * ) ),
+  connect( Smb4KPreviewer::self(), SIGNAL( aboutToStart( Smb4KPreviewItem * ) ),
            this,                   SLOT( slotAboutToStart( Smb4KPreviewItem * ) ) );
 
-  connect( Smb4KCore::previewer(), SIGNAL( finished( Smb4KPreviewItem * ) ),
+  connect( Smb4KPreviewer::self(), SIGNAL( finished( Smb4KPreviewItem * ) ),
            this,                   SLOT( slotFinished( Smb4KPreviewItem * ) ) );
 
   setMinimumWidth( sizeHint().width() > 350 ? sizeHint().width() : 350 );
@@ -161,7 +161,7 @@ void Smb4KPreviewDialog::setupView()
 
 void Smb4KPreviewDialog::getPreview()
 {
-  Smb4KCore::previewer()->preview( m_item );
+  Smb4KPreviewer::self()->preview( m_item );
 }
 
 
@@ -341,10 +341,10 @@ void Smb4KPreviewDialog::slotItemExecuted( QListWidgetItem *item )
       {
         m_button_id = None;
 
-        if ( !Smb4KCore::previewer()->isRunning() )
+        if ( !Smb4KPreviewer::self()->isRunning() )
         {
           m_item->setPath( m_item->path()+item->data( Qt::UserRole ).toString() );
-          Smb4KCore::previewer()->preview( m_item );
+          Smb4KPreviewer::self()->preview( m_item );
         }
         else
         {
@@ -370,7 +370,7 @@ void Smb4KPreviewDialog::slotReloadActionTriggered( bool /*checked*/ )
 {
   m_button_id = Reload;
   m_item->clearContents();
-  Smb4KCore::previewer()->preview( m_item );
+  Smb4KPreviewer::self()->preview( m_item );
 }
 
 
@@ -378,7 +378,7 @@ void Smb4KPreviewDialog::slotAbortActionTriggered( bool /*checked*/ )
 {
   m_button_id = Abort;
   m_item->clearContents(); /* Is it a problem to clear the contents here? */
-  Smb4KCore::previewer()->abort( m_item );
+  Smb4KPreviewer::self()->abort( m_item );
 }
 
 
@@ -409,7 +409,7 @@ void Smb4KPreviewDialog::slotBackActionTriggered( bool /*checked*/ )
     m_item->setPath( path.section( "/", 4, -1 ) );
   }
 
-  Smb4KCore::previewer()->preview( m_item );
+  Smb4KPreviewer::self()->preview( m_item );
 }
 
 
@@ -440,7 +440,7 @@ void Smb4KPreviewDialog::slotForwardActionTriggered( bool /*checked*/ )
     m_item->setPath( path.section( "/", 4, -1 ) );
   }
 
-  Smb4KCore::previewer()->preview( m_item );
+  Smb4KPreviewer::self()->preview( m_item );
 }
 
 
@@ -460,7 +460,7 @@ void Smb4KPreviewDialog::slotUpActionTriggered( bool /*checked*/ )
       m_item->setPath( "/" );
     }
 
-    Smb4KCore::previewer()->preview( m_item );
+    Smb4KPreviewer::self()->preview( m_item );
   }
   else
   {
@@ -475,7 +475,7 @@ void Smb4KPreviewDialog::slotItemActivated( const QString &item )
 
   // First we have to strip the address:
   m_item->setPath( item.section( m_item->share()->unc(), 1, 1 ).trimmed() );
-  Smb4KCore::previewer()->preview( m_item );
+  Smb4KPreviewer::self()->preview( m_item );
 }
 
 
