@@ -540,6 +540,11 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      */
     bool equals( Smb4KShare *share,
                  CheckFlags flag );
+                 
+    /**
+     * Operator to check if two shares are equal. This operator performs a full check.
+     */
+    bool operator==( Smb4KShare share ) { return equals( &share, Full ); }
 
     /**
      * Returns TRUE if values that were checked according to @p flag are empty.

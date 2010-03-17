@@ -178,7 +178,12 @@ class KDE_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      *
      * @returns TRUE if the data that was compared is the same.
      */
-    bool equals( Smb4KWorkgroup *workgroup );
+    bool equals( Smb4KWorkgroup *workgroup ) const;
+    
+    /**
+     * Operator to check if two items are equal.
+     */
+    bool operator==( Smb4KWorkgroup workgroup ) { return equals( &workgroup ); }
     
     /**
      * Returns TRUE if the workgroup/domain master browsers IP address is set and 

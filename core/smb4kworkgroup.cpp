@@ -110,7 +110,7 @@ bool Smb4KWorkgroup::isEmpty() const
 }
 
 
-bool Smb4KWorkgroup::equals( Smb4KWorkgroup *workgroup )
+bool Smb4KWorkgroup::equals( Smb4KWorkgroup *workgroup ) const
 {
   Q_ASSERT( workgroup );
 

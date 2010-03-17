@@ -175,6 +175,11 @@ class KDE_EXPORT Smb4KPreviewItem
      * @returns TRUE if @p item is equal to this object.
      */
     bool equals( Smb4KPreviewItem *item );
+    
+    /**
+     * Operator to check if two items are equal.
+     */
+    bool operator==( Smb4KPreviewItem item ) { return equals( &item ); }
 
     /**
      * Set the authentication information for the share that is to be previewed.

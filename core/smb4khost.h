@@ -285,7 +285,12 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns TRUE if the data that was compared is the same.
      */
-    bool equals( Smb4KHost *host );
+    bool equals( Smb4KHost *host ) const;
+    
+    /**
+     * Operator to check if two hosts are equal.
+     */
+    bool operator==( Smb4KHost host ) { return equals( &host ); }
 
     /**
      * Set the authentication information for the host. This function will add

@@ -125,6 +125,11 @@ class KDE_EXPORT Smb4KPrintInfo
      * @returns TRUE is @p info equals this object.
      */
     bool equals( Smb4KPrintInfo *info ) const;
+    
+    /**
+     * Operator to check if two infos are equal.
+     */
+    bool operator==( Smb4KPrintInfo info ) { return equals( &info ); }
 
     /**
      * Set the authentication information for the printer. This function will add

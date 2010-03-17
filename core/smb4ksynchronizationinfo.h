@@ -186,6 +186,11 @@ class KDE_EXPORT Smb4KSynchronizationInfo
      * @returns TRUE is @p info equals this object.
      */
     bool equals( Smb4KSynchronizationInfo *info ) const;
+    
+    /**
+     * Operator to check if two infos are equal.
+     */
+    bool operator==( Smb4KSynchronizationInfo info ) { return equals( &info ); }
 
   private:
     /**

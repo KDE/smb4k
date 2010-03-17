@@ -241,7 +241,7 @@ void Smb4KHost::setPort( int port )
 }
 
 
-bool Smb4KHost::equals( Smb4KHost *host )
+bool Smb4KHost::equals( Smb4KHost *host ) const
 {
   Q_ASSERT( host );
 

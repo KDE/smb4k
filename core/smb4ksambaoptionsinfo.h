@@ -262,7 +262,7 @@ class KDE_EXPORT Smb4KSambaOptionsInfo
      * 
      * @returns the user name.
      */
-    const QString owner() { return m_user.loginName(); }
+    const QString owner() const { return m_user.loginName(); }
 
     /**
      * With this function you can set the GID you want to use for this item.
@@ -287,7 +287,7 @@ class KDE_EXPORT Smb4KSambaOptionsInfo
      * 
      * @returns the group name.
      */
-    const QString group() { return m_group.name(); }
+    const QString group() const { return m_group.name(); }
 
     /**
      * This function returns the type of the network item for which the options
@@ -392,7 +392,12 @@ class KDE_EXPORT Smb4KSambaOptionsInfo
      * @param info              The Smb4KSambaOptionsInfo object that is to 
      *                          be checked.
      */
-    bool equals( Smb4KSambaOptionsInfo *info );
+    bool equals( Smb4KSambaOptionsInfo *info ) const;
+    
+    /**
+     * Operator to check if two infos are equal.
+     */
+    bool operator==( Smb4KSambaOptionsInfo info ) { return equals( &info ); }
 
   private:
     /**

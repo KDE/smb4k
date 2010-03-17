@@ -438,7 +438,7 @@ void Smb4KSambaOptionsInfo::setProfile( const QString &name )
 }
 
 
-bool Smb4KSambaOptionsInfo::equals( Smb4KSambaOptionsInfo* info )
+bool Smb4KSambaOptionsInfo::equals( Smb4KSambaOptionsInfo* info ) const
 {
   if ( QString::compare( unc( QUrl::None ), info->unc( QUrl::None ), Qt::CaseInsensitive ) != 0 )
   {

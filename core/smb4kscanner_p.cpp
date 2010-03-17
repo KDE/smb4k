@@ -596,7 +596,7 @@ void LookupSharesThread::slotProcessError()
     else if ( stderr.contains( "could not obtain sid for domain", Qt::CaseSensitive ) )
     {
       // FIXME
-      kDebug() << "FIXME: Wrong protocol used for host " << static_cast<Smb4KHost *>( m_item )->hostName() << "..." << endl;
+      qDebug() << "FIXME: Wrong protocol used for host " << static_cast<Smb4KHost *>( m_item )->hostName() << "..." << endl;
     }
     else
     {
@@ -654,13 +654,24 @@ void LookupSharesThread::slotProcessFinished( int exitCode, QProcess::ExitStatus
           {
             continue;
           }
-          else if ( line.contains( " Disk     ", Qt::CaseSensitive ) )
+          else if ( line.contains( " Disk     ", Qt::CaseSensitive ) /* line has comment */ ||
+                    (!line.contains( " Disk     ", Qt::CaseSensitive ) &&
+                     line.trimmed().endsWith( " Disk", Qt::CaseSensitive ) /* line has no comment */) )
           {
-            share.setShareName( line.section( " Disk     ", 0, 0 ).trimmed() );
+            if ( !line.trimmed().endsWith( " Disk", Qt::CaseSensitive ) )
+            {
+              share.setShareName( line.section( " Disk     ", 0, 0 ).trimmed() );
+              share.setComment( line.section( " Disk     ", 1, 1 ).trimmed() );
+            }
+            else
+            {
+              share.setShareName( line.section( " Disk", 0, 0 ).trimmed() );
+              share.setComment( "" );
+            }
+            
             share.setHostName( host->hostName() );
             share.setWorkgroupName( host->workgroupName() );
             share.setTypeString( "Disk" );
-            share.setComment( line.section( " Disk     ", 1, 1 ).trimmed() );
             share.setLogin( m_auth_info.login() );
 
             if ( host->ipChecked() && host->hasIP() )
@@ -676,13 +687,24 @@ void LookupSharesThread::slotProcessFinished( int exitCode, QProcess::ExitStatus
             share = Smb4KShare();
             continue;
           }
-          else if ( line.contains( " IPC      ", Qt::CaseSensitive ) )
+          else if ( line.contains( " IPC      ", Qt::CaseSensitive ) /* line has comment */ ||
+                    (!line.contains( " IPC      ", Qt::CaseSensitive ) &&
+                     line.trimmed().endsWith( " IPC", Qt::CaseSensitive ) /* line has no comment */) )
           {
-            share.setShareName( line.section( " IPC      ", 0, 0 ).trimmed() );
+            if ( !line.trimmed().endsWith( " IPC", Qt::CaseSensitive ) )
+            {
+              share.setShareName( line.section( " IPC      ", 0, 0 ).trimmed() );
+              share.setComment( line.section( " IPC      ", 1, 1 ).trimmed() );
+            }
+            else
+            {
+              share.setShareName( line.section( " IPC", 0, 0 ).trimmed() );
+              share.setComment( "" );
+            }
+            
             share.setHostName( host->hostName() );
             share.setWorkgroupName( host->workgroupName() );
             share.setTypeString( "IPC" );
-            share.setComment( line.section( " IPC      ", 1, 1 ).trimmed() );
             share.setLogin( m_auth_info.login() );
 
             if ( host->ipChecked() && host->hasIP() )
@@ -698,13 +720,24 @@ void LookupSharesThread::slotProcessFinished( int exitCode, QProcess::ExitStatus
             share = Smb4KShare();
             continue;
           }
-          else if ( line.contains( " Print    ", Qt::CaseSensitive ) )
+          else if ( line.contains( " Print    ", Qt::CaseSensitive ) /* line has comment */ ||
+                    (!line.contains( " Print    ", Qt::CaseSensitive ) &&
+                     line.trimmed().endsWith( " Print", Qt::CaseSensitive ) /* line has no comment */) )
           {
-            share.setShareName( line.section( " Print    ", 0, 0 ).trimmed() );
+            if ( !line.trimmed().endsWith( " Print", Qt::CaseSensitive ) )
+            {
+              share.setShareName( line.section( " Print    ", 0, 0 ).trimmed() );
+              share.setComment( line.section( " Print    ", 1, 1 ).trimmed() );
+            }
+            else
+            {
+              share.setShareName( line.section( " Print", 0, 0 ).trimmed() );
+              share.setComment( "" );
+            }
+            
             share.setHostName( host->hostName() );
             share.setWorkgroupName( host->workgroupName() );
             share.setTypeString( "Printer" );
-            share.setComment( line.section( " Print    ", 1, 1 ).trimmed() );
             share.setLogin( m_auth_info.login() );
 
             if ( host->ipChecked() && host->hasIP() )
