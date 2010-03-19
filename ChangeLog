@@ -17,11 +17,14 @@ Smb4K SVN_HEAD (????-??-??):
   + Removed the setHomesUser() function. Use setLogin() instead.
   + setShare() now automatically uses Smb4KShare::homeUNC() to set the UNC,
     if you pass a homes share.
+  + Added equals() function.
+  + Added "==" operator.
 - Replaced the Smb4KPasswordHandler class with the new Smb4KWalletManager
   class. It offers a much cleaner implementation.
 - Revised Smb4KWorkgroup class:
   + Added equals() function.
   + Added hasMasterBrowserIP() function.
+  + Added "==" operator.
 - Revised Smb4KHost class:
   + Added setAuthInfo() function. You can set the user info of the UNC/URL with
     it.
@@ -32,6 +35,7 @@ Smb4K SVN_HEAD (????-??-??):
   + Added equals() function.
   + Added hasIP() function.
   + Removed the protocol functions.
+  + Added "==" operator.
 - Revised Smb4KShare class:
   + Replaced setCIFSLogin(), cifsLogin(), and cifsLoginIsSet() with setLogin()
     login(), and loginIsSet().
@@ -52,6 +56,7 @@ Smb4K SVN_HEAD (????-??-??):
   + Removed uidIsSet() function.
   + Removed gidIsSet() function.
   + Removed loginIsSet() function.
+  + Added "==" operator.
 - Revised Smb4KCore class:
   + Removed all *State() convenience functions. You need to use the new
     Smb4KCore::xxx()->currentState() functions to read the current state of
@@ -110,10 +115,12 @@ Smb4K SVN_HEAD (????-??-??):
   + Removed hasCustomOptions() and setHasCustomOptions() functions.
   + Added owner() and group() functions.
   + Added equals() function.
+  + Added "==" operator.
 - Revised Smb4KSynchronizationInfo class:
   + Added functions to set and return the source directory.
   + Added functions to set and return the destination directory.
   + Added an equals() function.
+  + Added "==" operator.
 - Revised Smb4KSynchronizer class:
   + Introduced Smb4KSynchronizer::self().
   + Made constructor and destructor private. Use self() function to create
@@ -138,6 +145,7 @@ Smb4K SVN_HEAD (????-??-??):
   + Replaced setPath() by setFilePath().
   + Replaced path() by filePath().
   + Added equals() function.
+  + Added "==" operator.
 - Revised Smb4KPrint class:
   + Introduced Smb4KPrint::self().
   + Made constructor and destructor private.
@@ -189,6 +197,7 @@ Smb4K SVN_HEAD (????-??-??):
 - Revised Smb4KPreviewItem class:
   + Renamed shareItem() function to share().
   + Added setAuthInfo() function.
+  + Added "==" operator.
 - Revised Smb4KPreviewer class:
   + Introduced Smb4KPreviewer::self() class.
   + Made constructor and destructor private.
@@ -224,6 +233,8 @@ Smb4K SVN_HEAD (????-??-??):
   + Added setHomesUsers( Smb4KAuthInfo * ) function.
 - Revised Smb4KBookmark class:
   + Added setLogin() and login() function.
+  + Added equals() function.
+  + Added "==" operator.
 - Revised Smb4KBookmarkHandler class:
   + The login is now stored in the bookmark.xml file.
   + Removed code that dealt with old bookmark files.
@@ -316,12 +327,21 @@ Smb4K SVN_HEAD (????-??-??):
 - Refactored custom options dialog.
 - Revised utility programs:
   + Did some housekeeping.
-  + smb4k_umount now only supports the CIFS file system under Linux. So, the
-    obsolete -t <filesystem>, -s and -n options were removed. The version
-    number is now 0.16.
-  + smb4k_mount now only supports the CIFS file system under Linux. So, the
-    obsolete -t <filesystem>, -s and -n options were removed. Under FreeBSD the
-    (undocumented) option -U <user> was added. The version number is now 0.11.
+  + smb4k_umount:
+    o It now only supports the CIFS file system under Linux. So, the
+      obsolete -t <filesystem>, -s and -n options were removed.
+    o Fall back to umount binary if umount.cifs could not be found. This is
+      needed when using CIFS utils from Samba 4.0.
+    o The version number is now 0.16.
+  + smb4k_mount:
+    o It now only supports the CIFS file system under Linux. So, the
+      obsolete -t <filesystem>, -s and -n options were removed. 
+    o Under FreeBSD the (undocumented) option -U <user> was added. 
+    o The version number is now 0.11.
+
+Smb4K 0.10.5 (2010-02-13):
+- Fixed a crash in Smb4KSambaOptionsHandler::addItem().
+- The copy constructor of Smb4KAuthInfo class now takes a constant reference.
 
 Smb4K 0.9.10 (2010-01-30):
 - Prevent the scanner from trying to do something before the application
