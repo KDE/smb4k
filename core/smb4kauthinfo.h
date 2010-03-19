@@ -244,6 +244,22 @@ class KDE_EXPORT Smb4KAuthInfo
      * @returns a list of users for a homes share.
      */
     const QStringList &homesUsers() const { return m_homes_users; }
+    
+    /**
+     * Compare another Smb4KAuthInfo object with this one an return TRUE if both carry
+     * the same data.
+     *
+     * @param info            The Smb4KAuthInfo object that should be compared with this
+     *                        one.
+     *
+     * @returns TRUE if the data that was compared is the same.
+     */
+    bool equals( Smb4KAuthInfo *info ) const;
+    
+    /**
+     * Operator to check if two authentication informations are equal.
+     */
+    bool operator==( Smb4KAuthInfo info ) { return equals( &info ); }
 
   private:
     /**

@@ -264,3 +264,60 @@ void Smb4KAuthInfo::setHomesUsers( const QStringList &users )
     // Do nothing
   }
 }
+
+
+bool Smb4KAuthInfo::equals( Smb4KAuthInfo *info ) const
+{
+  // URL
+  QUrl url( info->unc( QUrl::None ) );
+  
+  if ( m_url != url )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Type
+  if ( m_type != info->type() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Workgroup
+  if ( QString::compare( m_workgroup, info->workgroupName(), Qt::CaseInsensitive ) != 0 )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Homes share?
+  if ( m_homes_share != info->isHomesShare() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  if ( m_homes_users != info->homesUsers() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  return true;
+}
