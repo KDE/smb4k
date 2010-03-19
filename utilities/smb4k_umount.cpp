@@ -2,7 +2,7 @@
     smb4k_umount  -  This is the unmount utility of Smb4K.
                              -------------------
     begin                : Sa Sep 25 2004
-    copyright            : (C) 2004-2009 by Alexander Reinholdt
+    copyright            : (C) 2004-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -53,7 +53,7 @@ using namespace std;
 void info()
 {
   cout << "This is smb4k_umount (version " << SMB4K_UMOUNT_VERSION << "), the unmount utility of Smb4K" << endl;
-  cout << "Copyright (C) 2004-2009, Alexander Reinholdt" << endl;
+  cout << "Copyright (C) 2004-2010, Alexander Reinholdt" << endl;
   cout << endl;
   cout << "Usage:" << endl;
 #ifndef __FreeBSD__
@@ -85,7 +85,7 @@ void version()
 }
 
 
-bool find_program( const char *name, char *path )
+bool find_program( const char *name, char *path, bool verbose )
 {
   const char *paths[] = { "/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/", "/usr/local/bin/", "/usr/local/sbin/" };
   string file = "";
@@ -104,8 +104,10 @@ bool find_program( const char *name, char *path )
 
   if ( !strcmp( file.c_str(), "" ) )
   {
-    cerr << "smb4k_umount: Could not find " << name << " binary" << endl;
-
+    if ( verbose )
+    {
+      cerr << "smb4k_umount: Could not find " << name << " binary" << endl;
+    }
     return false;
   }
 
@@ -134,12 +136,12 @@ bool check_filesystem( const char *path )
     }
     else
     {
-    ok = true;  // Bypass the check below, because it would yield ok == FALSE
-                // and we want to be able to unmount broken shares as well.
-		}
+      ok = true;  // Bypass the check below, because it would yield ok == FALSE
+                  // and we want to be able to unmount broken shares as well.
+    }
 
-		return ok;
-	}
+    return ok;
+  }
 
 #ifndef __FreeBSD__
   // First entry is for CIFS, the second for SMBFS.
@@ -259,9 +261,14 @@ int main( int argc, char *argv[], char *envp[] )
   }
 
 #ifndef __FreeBSD__
-  if ( !find_program( "umount.cifs", path ) )
+  if ( !find_program( "umount.cifs", path, false ) )
   {
-    exit( EXIT_FAILURE );
+    // Fall back to umount binary if we cannot find umount.cifs.
+    // This is needed when dealing with CIFS utils from Samba 4.0.
+    if ( !find_program( "umount", path, true ) )
+    {
+      exit( EXIT_FAILURE );
+    }
   }
 
   int len = strlen( path ) + 1;
@@ -290,7 +297,7 @@ int main( int argc, char *argv[], char *envp[] )
   // We do not need to care about the user mode and
   // we also need not to check for the file system,
   // since there is only one.
-  if ( !find_program( "umount", path ) )
+  if ( !find_program( "umount", path, true ) )
   {
     exit( EXIT_FAILURE );
   }
