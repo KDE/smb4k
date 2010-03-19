@@ -2,7 +2,7 @@
     smb4k_mount  -  This is the mount utility for Smb4K.
                              -------------------
     begin                : Di Sep 21 2004
-    copyright            : (C) 2004-2009 by Alexander Reinholdt
+    copyright            : (C) 2004-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -41,7 +41,7 @@ using namespace std;
 void info()
 {
   cout << "This is smb4k_mount (version " << SMB4K_MOUNT_VERSION << "), the mount utility of Smb4K" << endl;
-  cout << "Copyright (C) 2004-2009, Alexander Reinholdt" << endl;
+  cout << "Copyright (C) 2004-2010, Alexander Reinholdt" << endl;
   cout << endl;
   cout << "Usage:" << endl;
   cout << "  smb4k_mount {options} {share} {mountpoint}" << endl;
@@ -53,7 +53,7 @@ void info()
   cout << "  {options}" << endl;
   cout << "    -o <list>\tWith this argument you define the options that should be passed" << endl;
   cout << "\t\tto the actual mount binary in a comma-separated list. See the" << endl;
-  cout << "\t\tmanual page of smbmount, mount.cifs, and mount for more"<< endl;
+  cout << "\t\tmanual page of mount.cifs and mount for more"<< endl;
   cout << "\t\tinformation." << endl;
 #else
   cout << "  {options}\tAll options that can be passed to mount_smbfs. Please refer to" << endl;
