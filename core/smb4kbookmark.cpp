@@ -196,6 +196,74 @@ void Smb4KBookmark::setLogin( const QString &login )
 }
 
 
+bool Smb4KBookmark::equals( Smb4KBookmark *bookmark ) const
+{
+  // URL
+  QUrl url( bookmark->unc( QUrl::None ) );
+  
+  if ( m_url != url )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Workgroup
+  if ( QString::compare( m_workgroup, bookmark->workgroupName(), Qt::CaseInsensitive ) != 0 )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // IP address
+  if ( QString::compare( m_ip, bookmark->hostIP() ) != 0 )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Type string
+  if ( QString::compare( m_type, bookmark->typeString() ) != 0 )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Label
+  if ( QString::compare( m_label, bookmark->label() ) != 0 )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Profile
+  if ( QString::compare( m_profile, bookmark->profile() ) != 0 )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  return true;
+}
+
+
 const QString &Smb4KBookmark::ipIsValid( const QString &ip )
 {
   QHostAddress ip_address( ip );

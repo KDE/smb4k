@@ -224,6 +224,22 @@ class KDE_EXPORT Smb4KBookmark
      * @returns the login.
      */
     QString login() const { return m_url.userName(); }
+    
+    /**
+     * Compare another Smb4KBookmark object with this one an return TRUE if both carry
+     * the same data.
+     *
+     * @param bookmark        The Smb4KBookmark object that should be compared with this
+     *                        one.
+     *
+     * @returns TRUE if the data that was compared is the same.
+     */
+    bool equals( Smb4KBookmark *bookmark ) const;
+    
+    /**
+     * Operator to check if two authentication informations are equal.
+     */
+    bool operator==( Smb4KBookmark bookmark ) { return equals( &bookmark ); }
 
   private:
     /**
