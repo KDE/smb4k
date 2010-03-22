@@ -35,6 +35,7 @@
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 #include <QList>
+#include <QEvent>
 
 // KDE includes
 #include <ktabwidget.h>
@@ -59,20 +60,6 @@ class Smb4KSambaOptions : public KTabWidget
 
   public:
     /**
-     * The constructor.
-     *
-     * @param parent            The parent widget
-     *
-     * @param name              This widget's name
-     */
-    Smb4KSambaOptions( QWidget *parent = 0 );
-
-    /**
-     * The destructor.
-     */
-    ~Smb4KSambaOptions();
-
-    /**
      * This enumeration is used for the list view in the "Custom" tab.
      */
 #ifndef Q_OS_FREEBSD
@@ -91,6 +78,25 @@ class Smb4KSambaOptions : public KTabWidget
                   GID = 4,
                   Port = 5 };
 #endif
+
+    enum Tabs{ GeneralTab = 0,
+               MountingTab = 1,
+               ClientProgramsTab = 2,
+               CustomOptionsTab = 3 };
+
+    /**
+     * The constructor.
+     *
+     * @param parent            The parent widget
+     *
+     * @param name              This widget's name
+     */
+    Smb4KSambaOptions( QWidget *parent = 0 );
+
+    /**
+     * The destructor.
+     */
+    ~Smb4KSambaOptions();
 
     /**
      * This enumeration marks the type of the custom options item
@@ -122,7 +128,7 @@ class Smb4KSambaOptions : public KTabWidget
      * @returns TRUE if custom settings may have changed.
      */
     bool customSettingsMaybeChanged() { return m_maybe_changed; }
-
+    
   signals:
     /**
      * This signal is emitted everytime the custom settings potentially were 

@@ -3,7 +3,7 @@
     settings of Smb4K
                              -------------------
     begin                : Sa Nov 15 2003
-    copyright            : (C) 2003-2008 by Alexander Reinholdt
+    copyright            : (C) 2003-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 

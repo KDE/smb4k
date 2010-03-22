@@ -60,6 +60,12 @@ class Smb4KAuthOptions : public KTabWidget
 
   public:
     /**
+     * Tabs enumeration
+     */
+    enum Tabs{ GeneralTab = 0,
+               WalletEntriesTab = 1 };
+               
+    /**
      * The constructor.
      *
      * @param parent          The parent widget

@@ -41,6 +41,7 @@
 #include <kconfiggroup.h>
 #include <kstandarddirs.h>
 #include <kpassworddialog.h>
+#include <kapplication.h>
 
 // system specific includes
 #include <unistd.h>
@@ -285,190 +286,281 @@ void Smb4KConfigDialog::writeSuperUserEntries()
 
 bool Smb4KConfigDialog::checkSettings()
 {
-  bool ok = true;
-  QString issues;
-  int index = 0;
+  //
+  // Network page
+  //
+  QRadioButton *query_custom_master = m_network->widget()->findChild<QRadioButton *>( "kcfg_QueryCustomMaster" );
+  KLineEdit *custom_master_input    = m_network->widget()->findChild<KLineEdit *>( "kcfg_CustomMasterBrowser" );
 
-  // If the user chose "Query custom master browser" in the
-  // "Network" tab, there must be a master browser present:
-  QRadioButton *query_custom_master = findChild<QRadioButton *>( "kcfg_QueryCustomMaster" );
-  KLineEdit *custom_master_input    = findChild<KLineEdit *>( "kcfg_CustomMasterBrowser" );
-
-  if ( query_custom_master && custom_master_input &&
-       query_custom_master->isChecked() &&
-       custom_master_input->text().trimmed().isEmpty() )
+  if ( (query_custom_master && query_custom_master->isChecked()) &&
+       (custom_master_input && custom_master_input->text().trimmed().isEmpty()) )
   {
-    ok = false;
-    index++;
-
-    issues.append( "<li>"+i18n( "[Network] The custom master browser has not been entered." )+"</li>" );
+    KMessageBox::sorry( this, i18n( "The custom master browser that is to be queried has not been filled in.\nPlease enter it now." ) );
+    setCurrentPage( m_network );
+    custom_master_input->setFocus();
+    return false;
   }
-
-  // If the user chose "Scan broadcast areas" in the
-  // "Network" tab, there must broadcast areas present:
-  QRadioButton *scan_bcast_areas    = findChild<QRadioButton *>( "kcfg_ScanBroadcastAreas" );
-  KLineEdit *bcast_areas_input      = findChild<KLineEdit *>( "kcfg_BroadcastAreas" );
-
-  if ( scan_bcast_areas && bcast_areas_input &&
-       scan_bcast_areas->isChecked() &&
-       bcast_areas_input->text().trimmed().isEmpty() )
+  else
   {
-    ok = false;
-    index++;
-
-    issues.append( "<li>"+i18n( "[Network] The broadcast areas have not been entered." )+"</li>" );
+    // Do nothing
   }
-
-  // The mount prefix must not be empty:
-  KUrlRequester *mount_prefix       = findChild<KUrlRequester *>( "kcfg_MountPrefix" );
-
+  
+  QRadioButton *scan_bcast_areas = m_network->widget()->findChild<QRadioButton *>( "kcfg_ScanBroadcastAreas" );
+  KLineEdit *bcast_areas_input   = m_network->widget()->findChild<KLineEdit *>( "kcfg_BroadcastAreas" );
+  
+  if ( (scan_bcast_areas && scan_bcast_areas->isChecked()) &&
+       (bcast_areas_input && bcast_areas_input->text().trimmed().isEmpty()) )
+  {
+    KMessageBox::sorry( this, i18n( "The broadcast areas that are to be scanned have not been filled in.\nPlease enter them now." ) );
+    setCurrentPage( m_network );
+    bcast_areas_input->setFocus();
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // Shares page
+  //
+  KUrlRequester *mount_prefix = m_shares->widget()->findChild<KUrlRequester *>( "kcfg_MountPrefix" );
+  
   if ( mount_prefix && mount_prefix->url().path().trimmed().isEmpty() )
   {
-    ok = false;
-    index++;
-
-    issues.append( "<li>"+i18n( "[Shares] The mount prefix is empty." )+"</li>" );
+    KMessageBox::sorry( this, i18n( "The mount prefix has not been filled in.\nPlease enter it now." ) );
+    setCurrentPage( m_shares );
+    mount_prefix->setFocus();
+    return false;
   }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // Authentication page
+  //
+  // FIXME: Should we check the presence of the default login here? A 
+  // disadvantage would be that we need to open the wallet even if it 
+  // wasn't open until now.
 
-  // The file mask must not be empty.
-  KLineEdit *file_mask              = findChild<KLineEdit *>( "kcfg_FileMask" );
-
+  //
+  // Samba page
+  //
+  KLineEdit *file_mask = m_samba->widget()->findChild<KLineEdit *>( "kcfg_FileMask" );
+  
   if ( file_mask && file_mask->text().trimmed().isEmpty() )
   {
-    ok = false;
-    index++;
-
-    issues.append( "<li>"+i18n( "[Samba] The file mask is empty." )+"</li>" );
+    KMessageBox::sorry( this, i18n( "The file mask has not been filled in.\nPlease enter it now." ) );
+    setCurrentPage( m_samba );
+    
+    Smb4KSambaOptions *samba_options = m_samba->widget()->findChild<Smb4KSambaOptions *>();
+    samba_options->setCurrentIndex( Smb4KSambaOptions::MountingTab );
+    
+    file_mask->setFocus();
+    return false;
   }
-
-  // The directory mask must not be empty.
-  KLineEdit *directory_mask         = findChild<KLineEdit *>( "kcfg_DirectoryMask" );
-
+  else
+  {
+    // Do nothing
+  }
+  
+  KLineEdit *directory_mask = m_samba->widget()->findChild<KLineEdit *>( "kcfg_DirectoryMask" );
+  
   if ( directory_mask && directory_mask->text().trimmed().isEmpty() )
   {
-    ok = false;
-    index++;
-
-    issues.append( "<li>"+i18n( "[Samba] The directory mask is empty." )+"</li>" );
+    KMessageBox::sorry( this, i18n( "The directory mask has not been filled in.\nPlease enter it now." ) );
+    setCurrentPage( m_samba );
+    
+    Smb4KSambaOptions *samba_options = m_samba->widget()->findChild<Smb4KSambaOptions *>();
+    samba_options->setCurrentIndex( Smb4KSambaOptions::MountingTab );
+    
+    directory_mask->setFocus();
+    return false;
   }
-
-  // The rsync prefix must not be empty.
-  KUrlRequester *rsync_prefix       = findChild<KUrlRequester *>( "kcfg_RsyncPrefix" );
-
-  if ( rsync_prefix && rsync_prefix->url().path().trimmed().isEmpty() )
+  else
   {
-    ok = false;
-    index++;
-
-    issues.append( "<li>"+i18n( "[Synchronization] The rsync prefix is empty." )+"</li>" );
+    // Do nothing
   }
-
-  // The path where to store partial files must not be empty.
-  QCheckBox *use_partical_directory = findChild<QCheckBox *>( "kcfg_UsePartialDirectory" );
-  KUrlRequester *partial_directory  = findChild<KUrlRequester *>( "kcfg_PartialDirectory" );
-
-  if ( use_partical_directory && use_partical_directory->isChecked() &&
-       partial_directory && partial_directory->url().path().trimmed().isEmpty() )
+  
+  //
+  // Synchronization page
+  // 
+  KUrlRequester *sync_prefix = m_synchronization->widget()->findChild<KUrlRequester *>( "kcfg_RsyncPrefix" );
+  
+  if ( sync_prefix && sync_prefix->url().path().trimmed().isEmpty() )
   {
-    ok = false;
-    index++;
-
-    issues.append( "<li>"+i18n( "[Synchronization] The directory where partially transferred files should be stored is empty." )+"</li>" );
+    KMessageBox::sorry( this, i18n( "The synchronization prefix has not been filled in.\nPlease enter it now." ) );
+    setCurrentPage( m_synchronization );
+    
+    Smb4KRsyncOptions *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptions *>();
+    sync_options->setCurrentIndex( Smb4KRsyncOptions::CopyingTab );
+    
+    sync_prefix->setFocus();
+    return false;
   }
-
-  // The the exclude patterns must not be empty.
-  QCheckBox *use_exclude_pattern    = findChild<QCheckBox *>( "kcfg_UseExcludePattern" );
-  KLineEdit *exclude_pattern        = findChild<KLineEdit *>( "kcfg_ExcludePattern" );
-
-  if ( use_exclude_pattern && use_exclude_pattern->isChecked() &&
-       exclude_pattern && exclude_pattern->text().trimmed().isEmpty() )
+  else
   {
-    ok = false;
-    index++;
-
-    issues.append( "<li>"+i18n( "[Synchronization] The exclude patterns have not been entered." )+"</li>" );
+    // Do nothing
   }
-
-  // The the path of the exclude file must not be empty.
-  QCheckBox *use_exclude_file       = findChild<QCheckBox *>( "kcfg_UseExcludeFrom" );
-  KUrlRequester *exclude_file       = findChild<KUrlRequester *>( "kcfg_ExcludeFrom" );
-
-  if ( use_exclude_file && use_exclude_file->isChecked() &&
-       exclude_file && exclude_file->url().path().trimmed().isEmpty() )
+  
+  QCheckBox *use_partial_directory = m_synchronization->widget()->findChild<QCheckBox *>( "kcfg_UsePartialDirectory" );
+  KUrlRequester *partial_directory = m_synchronization->widget()->findChild<KUrlRequester *>( "kcfg_PartialDirectory" );
+  
+  if ( (use_partial_directory && use_partial_directory->isChecked()) &&
+       (partial_directory && partial_directory->url().path().trimmed().isEmpty()) )
   {
-    ok = false;
-    index++;
-
-    issues.append( "<li>"+i18n( "[Synchronization] The path of the exclude file is empty." )+"</li>" );
+    KMessageBox::sorry( this, i18n( "The directory where partially transferred files should\n"
+                                    "be stored has not been filled in.\n"
+                                    "Please enter it now." ) );
+    setCurrentPage( m_synchronization );
+    
+    Smb4KRsyncOptions *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptions *>();
+    sync_options->setCurrentIndex( Smb4KRsyncOptions::DelTransTab );
+    
+    partial_directory->setFocus();
+    return false;
   }
-
-  // The the include patterns must not be empty.
-  QCheckBox *use_include_pattern    = findChild<QCheckBox *>( "kcfg_UseIncludePattern" );
-  KLineEdit *include_pattern        = findChild<KLineEdit *>( "kcfg_IncludePattern" );
-
-  if ( use_include_pattern && use_include_pattern->isChecked() &&
-       include_pattern && include_pattern->text().trimmed().isEmpty() )
+  else
   {
-    ok = false;
-    index++;
-
-    issues.append( "<li>"+i18n( "[Synchronization] The include patterns have not been entered." )+"</li>" );
+    // Do nothing
   }
-
-  // The the path of the exclude file must not be empty.
-  QCheckBox *use_include_file       = findChild<QCheckBox *>( "kcfg_UseIncludeFrom" );
-  KUrlRequester *include_file       = findChild<KUrlRequester *>( "kcfg_IncludeFrom" );
-
-  if ( use_include_file && use_include_file->isChecked() &&
-       include_file && include_file->url().path().trimmed().isEmpty() )
+  
+  QCheckBox *use_exclude_pattern = m_synchronization->widget()->findChild<QCheckBox *>( "kcfg_UseExcludePattern" );
+  KLineEdit *exclude_pattern     = m_synchronization->widget()->findChild<KLineEdit *>( "kcfg_ExcludePattern" );
+  
+  if ( (use_exclude_pattern && use_exclude_pattern->isChecked()) &&
+       (exclude_pattern && exclude_pattern->text().trimmed().isEmpty()) )
   {
-    ok = false;
-    index++;
-
-    issues.append( "<li>"+i18n( "[Synchronization] The path of the include file is empty." )+"</li>" );
+    KMessageBox::sorry( this, i18n( "The exclude pattern for synchronization has not been filled in.\n"
+                                    "Please enter it now." ) );
+    setCurrentPage( m_synchronization );
+    
+    Smb4KRsyncOptions *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptions *>();
+    sync_options->setCurrentIndex( Smb4KRsyncOptions::FilteringTab );
+    
+    exclude_pattern->setFocus();
+    return false;
   }
-
-  // If you make backups, check that the suffix and that the
-  // backup directory is not empty.
-  QCheckBox *make_backups           = findChild<QCheckBox *>( "kcfg_MakeBackups" );
-
+  else
+  {
+    // Do nothing
+  }
+  
+  QCheckBox *use_exclude_file = m_synchronization->widget()->findChild<QCheckBox *>( "kcfg_UseExcludeFrom" );
+  KUrlRequester *exclude_file = m_synchronization->widget()->findChild<KUrlRequester *>( "kcfg_ExcludeFrom" );
+  
+  if ( (use_exclude_file && use_exclude_file->isChecked()) &&
+       (exclude_file && exclude_file->url().path().trimmed().isEmpty()) )
+  {
+    KMessageBox::sorry( this, i18n( "The file from which the exclude pattern for synchronization are to be read\n"
+                                    "has not been filled in.\nPlease enter it now." ) );
+    setCurrentPage( m_synchronization );
+    
+    Smb4KRsyncOptions *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptions *>();
+    sync_options->setCurrentIndex( Smb4KRsyncOptions::FilteringTab );
+    
+    exclude_file->setFocus();
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  QCheckBox *use_include_pattern = m_synchronization->widget()->findChild<QCheckBox *>( "kcfg_UseIncludePattern" );
+  KLineEdit *include_pattern     = m_synchronization->widget()->findChild<KLineEdit *>( "kcfg_IncludePattern" );
+  
+  if ( (use_include_pattern && use_include_pattern->isChecked()) &&
+       (include_pattern && include_pattern->text().trimmed().isEmpty()) )
+  {
+    KMessageBox::sorry( this, i18n( "The include pattern for synchronization has not been filled in.\n"
+                                    "Please enter it now." ) );
+    setCurrentPage( m_synchronization );
+    
+    Smb4KRsyncOptions *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptions *>();
+    sync_options->setCurrentIndex( Smb4KRsyncOptions::FilteringTab );
+    
+    include_pattern->setFocus();
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  QCheckBox *use_include_file = m_synchronization->widget()->findChild<QCheckBox *>( "kcfg_UseIncludeFrom" );
+  KUrlRequester *include_file = m_synchronization->widget()->findChild<KUrlRequester *>( "kcfg_IncludeFrom" );
+  
+  if ( (use_include_file && use_include_file->isChecked()) &&
+       (include_file && include_file->url().path().trimmed().isEmpty()) )
+  {
+    KMessageBox::sorry( this, i18n( "The file from which the include pattern for synchronization are to be read\n"
+                                    "has not been filled in.\nPlease enter it now." ) );
+    setCurrentPage( m_synchronization );
+    
+    Smb4KRsyncOptions *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptions *>();
+    sync_options->setCurrentIndex( Smb4KRsyncOptions::FilteringTab );
+    
+    include_file->setFocus();
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  QCheckBox *make_backups = m_synchronization->widget()->findChild<QCheckBox *>( "kcfg_MakeBackups" );
+  
   if ( make_backups && make_backups->isChecked() )
   {
-    // The backup suffix must not be empty.
-    QCheckBox *use_backup_suffix    = findChild<QCheckBox *>( "kcfg_UseBackupSuffix" );
-    KLineEdit *backup_suffix        = findChild<KLineEdit *>( "kcfg_BackupSuffix" );
-
-    if ( use_backup_suffix && use_backup_suffix->isChecked() &&
-         backup_suffix && backup_suffix->text().trimmed().isEmpty() )
+    QCheckBox *use_backup_suffix = m_synchronization->widget()->findChild<QCheckBox *>( "kcfg_UseBackupSuffix" );
+    KLineEdit *backup_suffix     = m_synchronization->widget()->findChild<KLineEdit *>( "kcfg_BackupSuffix" );
+    
+    if ( (use_backup_suffix && use_backup_suffix->isChecked()) &&
+         (backup_suffix && backup_suffix->text().trimmed().isEmpty()) )
     {
-      ok = false;
-      index++;
-
-      issues.append( "<li>"+i18n( "[Synchronization] The backup suffix has not been defined." )+"</li>" );
+      KMessageBox::sorry( this, i18n( "The backup suffix for synchronization has not been filled in.\nPlease enter it now." ) );
+      setCurrentPage( m_synchronization );
+      
+      Smb4KRsyncOptions *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptions *>();
+      sync_options->setCurrentIndex( Smb4KRsyncOptions::AdvancedTab );
+      
+      backup_suffix->setFocus();
+      return false;
     }
-
-    // The the path for backups must not be empty.
-    QCheckBox *use_backup_dir       = findChild<QCheckBox *>( "kcfg_UseBackupDirectory" );
-    KUrlRequester *backup_dir       = findChild<KUrlRequester *>( "kcfg_BackupDirectory" );
-
-    if ( use_backup_dir && use_backup_dir->isChecked() &&
-         backup_dir && backup_dir->url().path().trimmed().isEmpty() )
+    else
     {
-      ok = false;
-      index++;
-
-      issues.append( "<li>"+i18n( "[Synchronization] The backup directory is empty." )+"</li>" );
+      // Do nothing
+    }
+    
+    QCheckBox *use_backup_dir = m_synchronization->widget()->findChild<QCheckBox *>( "kcfg_UseBackupDirectory" );
+    KUrlRequester *backup_dir = m_synchronization->widget()->findChild<KUrlRequester *>( "kcfg_BackupDirectory" );
+    
+    if ( (use_backup_dir && use_backup_dir->isChecked()) &&
+         (backup_dir && backup_dir->url().path().trimmed().isEmpty()) )
+    {
+      KMessageBox::sorry( this, i18n( "The backup directory for synchronization has not been filled in.\nPlease enter it now." ) );
+      setCurrentPage( m_synchronization );
+      
+      Smb4KRsyncOptions *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptions *>();
+      sync_options->setCurrentIndex( Smb4KRsyncOptions::AdvancedTab );
+      
+      backup_dir->setFocus();
+      return false;
+    }
+    else
+    {
+      // Do nothing
     }
   }
-
-  if ( !ok )
+  else
   {
-    KMessageBox::error( this, i18np( "<qt>The configuration could not be written, because one setting is incomplete:<ul>%2</ul>Please correct this issue.</qt>",
-                                     "<qt>The configuration could not be written, because %1 settings are incomplete:<ul>%2</ul>Please correct these issues.</qt>",
-                                     index, issues ) );
+    // Do nothing
   }
-
-  return ok;
+  
+  return true;
 }
 
 
@@ -537,130 +629,6 @@ void Smb4KConfigDialog::slotButtonClicked( int button )
 
   KConfigDialog::slotButtonClicked( button );
 }
-
-
-// void Smb4KConfigDialog::slotCustomSambaSettingsModified()
-// {
-//   qDebug() << "Modified";
-//   // Get the list view and all other input widgets:
-//   QTreeWidget *view = findChild<QTreeWidget *>( "CustomOptionsList" );
-//   bool enable_apply = false;
-// 
-//   if ( view )
-//   {
-//     // Get the old list of custom options from the options handler.
-//     QList<Smb4KSambaOptionsInfo *> old_list = Smb4KSambaOptionsHandler::self()->customOptionsList();
-// 
-//     // Get the new list of custom options from the Samba options tab.
-//     QList<Smb4KSambaOptionsInfo *> new_list = static_cast<Smb4KSambaOptions *>( findChild<Smb4KSambaOptions *>() )->getCustomOptions();
-// 
-//     if ( old_list.size() == new_list.size() )
-//     {
-//       for ( int i = 0; i < old_list.size(); ++i )
-//       {
-//         for ( int j = 0; j < new_list.size(); ++j )
-//         {
-//           if ( QString::compare( old_list.at( i )->unc(), new_list.at( j )->unc(),
-//                Qt::CaseInsensitive ) == 0 )
-//           {
-//             if ( old_list.at( i )->protocol() != new_list.at( j )->protocol() )
-//             {
-//               enable_apply = true;
-// 
-//               break;
-//             }
-//             else
-//             {
-//               // Do nothing
-//             }
-// 
-// #ifndef Q_OS_FREEBSD
-//             if ( old_list.at( i )->writeAccess() != new_list.at( j )->writeAccess() )
-//             {
-//               enable_apply = true;
-// 
-//               break;
-//             }
-//             else
-//             {
-//               // Do nothing
-//             }
-// #endif
-// 
-//             if ( old_list.at( i )->useKerberos() != new_list.at( j )->useKerberos() )
-//             {
-//               enable_apply = true;
-// 
-//               break;
-//             }
-//             else
-//             {
-//               // Do nothing
-//             }
-// 
-//             if ( old_list.at( i )->uid() != new_list.at( j )->uid() )
-//             {
-//               enable_apply = true;
-// 
-//               break;
-//             }
-//             else
-//             {
-//               // Do nothing
-//             }
-// 
-//             if ( old_list.at( i )->gid() != new_list.at( j )->gid() )
-//             {
-//               enable_apply = true;
-// 
-//               break;
-//             }
-//             else
-//             {
-//               // Do nothing
-//             }
-// 
-//             if ( old_list.at( i )->port() != new_list.at( j )->port() )
-//             {
-//               enable_apply = true;
-// 
-//               break;
-//             }
-//             else
-//             {
-//               // Do nothing
-//             }
-// 
-//             break;
-//           }
-//           else
-//           {
-//             continue;
-//           }
-//         }
-// 
-//         if ( enable_apply )
-//         {
-//           break;
-//         }
-//         else
-//         {
-//           continue;
-//         }
-//       }
-//     }
-//     else
-//     {
-//       enable_apply = true;
-//     }
-//   }
-//   else
-//   {
-//     // Do nothing
-//   }
-// 
-//   enableButtonApply( enable_apply );
-// }
 
 
 void Smb4KConfigDialog::slotRemoveSuperUserEntries()

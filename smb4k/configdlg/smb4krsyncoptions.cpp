@@ -199,7 +199,7 @@ Smb4KRsyncOptions::Smb4KRsyncOptions( QWidget *parent )
   copying_layout->addWidget( perm_box, 3, 0, 0 );
   copying_layout->addItem( spacer1, 4, 0, 1, 1, 0 );
 
-  addTab( copying_tab, i18n( "Copying" ) );
+  insertTab( CopyingTab, copying_tab, i18n( "Copying" ) );
 
   //
   // The File Deletion & Transfer tab
@@ -322,7 +322,7 @@ Smb4KRsyncOptions::Smb4KRsyncOptions( QWidget *parent )
   deltrans_layout->addWidget( transfer_box, 2, 0, 0 );
   deltrans_layout->addItem( spacer2, 3, 0, 1, 1, 0 );
 
-  addTab( deltrans_tab, i18n( "File Deletion && Transfer" ) );
+  insertTab( DelTransTab, deltrans_tab, i18n( "File Deletion && Transfer" ) );
 
   //
   // The Filter tab
@@ -417,7 +417,7 @@ Smb4KRsyncOptions::Smb4KRsyncOptions( QWidget *parent )
   filter_layout->addWidget( filter_rules_box, 1, 0, 0 );
   filter_layout->addItem( spacer3, 2, 0, 1, 1, 0 );
 
-  addTab( filter_tab, i18n( "Filtering" ) );
+  insertTab( FilteringTab, filter_tab, i18n( "Filtering" ) );
 
   //
   // The Advanced tab
@@ -533,7 +533,7 @@ Smb4KRsyncOptions::Smb4KRsyncOptions( QWidget *parent )
   advanced_layout->addWidget( checksum_box, 2, 0, 0 );
   advanced_layout->addItem( spacer4, 3, 0, 1, 1, 0 );
 
-  addTab( advanced_tab, i18n( "Advanced" ) );
+  insertTab( AdvancedTab, advanced_tab, i18n( "Advanced" ) );
 
   connect( archive_mode,     SIGNAL( toggled( bool ) ),
            this,             SLOT( slotArchiveToggled( bool ) ) );

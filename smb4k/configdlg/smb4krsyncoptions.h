@@ -2,7 +2,7 @@
     smb4krsyncoptions  -  The configuration page for the rsync options
                              -------------------
     begin                : So Nov 20 2005
-    copyright            : (C) 2005-2008 by Alexander Reinholdt
+    copyright            : (C) 2005-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -47,6 +47,14 @@ class Smb4KRsyncOptions : public KTabWidget
 
   public:
     /**
+     * Tab enumeration
+     */
+    enum Tabs{ CopyingTab = 0,
+               DelTransTab = 1,
+               FilteringTab = 2,
+               AdvancedTab = 3 };
+    
+    /**
      * The constructor.
      *
      * @param parent        The parent widget
@@ -57,7 +65,7 @@ class Smb4KRsyncOptions : public KTabWidget
      * The destructor
      */
     ~Smb4KRsyncOptions();
-
+    
   protected slots:
     /**
      * This slot is invoked if the "Archive mode" checkbox has been

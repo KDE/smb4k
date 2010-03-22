@@ -45,14 +45,14 @@ Smb4KUserInterfaceOptions::Smb4KUserInterfaceOptions( QWidget *parent )
   //
   // Main window and system tray widget
   //
-  QWidget *main_window_tab        = new QWidget( this );
+  QWidget *mainwindow_tab         = new QWidget( this );
 
-  QGridLayout *main_window_layout = new QGridLayout( main_window_tab );
+  QGridLayout *main_window_layout = new QGridLayout( mainwindow_tab );
   main_window_layout->setSpacing( 5 );
   main_window_layout->setMargin( 0 );
 
   // Bookmarks
-  QGroupBox *bookmarks_box        = new QGroupBox( i18n( "Bookmarks" ), main_window_tab );
+  QGroupBox *bookmarks_box        = new QGroupBox( i18n( "Bookmarks" ), mainwindow_tab );
 
   QGridLayout *bookmarks_layout   = new QGridLayout( bookmarks_box );
   bookmarks_layout->setSpacing( 5 );
@@ -64,7 +64,7 @@ Smb4KUserInterfaceOptions::Smb4KUserInterfaceOptions( QWidget *parent )
   bookmarks_layout->addWidget( show_bookmark_label, 0, 0, 0 );
 
   // System Tray Widget
-  QGroupBox *system_tray_box      = new QGroupBox( i18n( "System Tray" ), main_window_tab );
+  QGroupBox *system_tray_box      = new QGroupBox( i18n( "System Tray" ), mainwindow_tab );
 
   QGridLayout *system_tray_layout = new QGridLayout( system_tray_box );
   system_tray_layout->setSpacing( 5 );
@@ -81,7 +81,7 @@ Smb4KUserInterfaceOptions::Smb4KUserInterfaceOptions( QWidget *parent )
   main_window_layout->addWidget( system_tray_box, 1, 0, 0 );
   main_window_layout->addItem( spacer1, 2, 0 );
 
-  addTab( main_window_tab, i18n( "Main Window && System Tray" ) );
+  insertTab( MainWindowSystemTrayTab, mainwindow_tab, i18n( "Main Window && System Tray" ) );
 
   //
   // Network browser
@@ -160,7 +160,7 @@ Smb4KUserInterfaceOptions::Smb4KUserInterfaceOptions( QWidget *parent )
   net_browser_layout->addWidget( network_tooltips_box, 2, 0, 0 );
   net_browser_layout->addItem( spacer2, 3, 0, 1, 1, 0 );
 
-  addTab( network_browser_tab, i18n( "Network Neighborhood" ) );
+  insertTab( NetworkNeighborhoodTab, network_browser_tab, i18n( "Network Neighborhood" ) );
 
   //
   // Shares view
@@ -281,7 +281,7 @@ Smb4KUserInterfaceOptions::Smb4KUserInterfaceOptions( QWidget *parent )
   shares_view_layout->addWidget( share_tooltips_box, 2, 0, 0 );
   shares_view_layout->addItem( spacer4, 3, 0 );
 
-  addTab( shares_view_tab, i18n( "Mounted Shares" ) );
+  insertTab( MountedSharesTab, shares_view_tab, i18n( "Mounted Shares" ) );
 
   //
   // Preview dialog
@@ -309,7 +309,7 @@ Smb4KUserInterfaceOptions::Smb4KUserInterfaceOptions( QWidget *parent )
   preview_layout->addWidget( preview_files_box, 0, 0, 0 );
   preview_layout->addItem( spacer5, 1, 0, 1, 1, 0 );
 
-  addTab( preview_tab, i18n( "Preview Dialog" ) );
+  insertTab( PreviewDialogTab, preview_tab, i18n( "Preview Dialog" ) );
 
   // Add connections:
   connect( show_hidden, SIGNAL( clicked( bool ) ),

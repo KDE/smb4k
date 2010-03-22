@@ -106,12 +106,12 @@ Smb4KAuthOptions::Smb4KAuthOptions( QWidget *parent ) : KTabWidget( parent )
   slotKWalletButtonToggled( use_wallet->isChecked() );
   slotDefaultLoginToggled( default_auth->isChecked() );
   
-  addTab( general_tab, i18n( "General Settings" ) );
+  insertTab( GeneralTab, general_tab, i18n( "General Settings" ) );
   
   //
   // Logins tab
   //
-  QWidget *logins_tab = new QWidget( this );
+  QWidget *logins_tab        = new QWidget( this );
   
   QGridLayout *logins_layout = new QGridLayout( logins_tab );
   logins_layout->setSpacing( 5 );
@@ -225,7 +225,7 @@ Smb4KAuthOptions::Smb4KAuthOptions( QWidget *parent ) : KTabWidget( parent )
            
   m_load_button->setFocus();
   
-  addTab( logins_tab, i18n( "Wallet Entries" ) );
+  insertTab( WalletEntriesTab, logins_tab, i18n( "Wallet Entries" ) );
 }
 
 

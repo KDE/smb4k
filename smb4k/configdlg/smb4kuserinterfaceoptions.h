@@ -3,7 +3,7 @@
     of all settings concerning the user interface of Smb4K
                              -------------------
     begin                : Mi Aug 30 2006
-    copyright            : (C) 2006-2008 by Alexander Reinholdt
+    copyright            : (C) 2006-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -31,6 +31,9 @@
 #include <config.h>
 #endif
 
+// Qt includes
+#include <QWidget>
+
 // KDE includes
 #include <ktabwidget.h>
 
@@ -47,6 +50,13 @@ class Smb4KUserInterfaceOptions : public KTabWidget
 
   public:
     /**
+     * Tabs enumeration
+     */
+    enum Tabs{ MainWindowSystemTrayTab = 0,
+               NetworkNeighborhoodTab = 1,
+               MountedSharesTab = 2,
+               PreviewDialogTab = 3 };
+    /**
      * The constructor
      *
      * @param parent          The parent widget of this class.
@@ -57,7 +67,7 @@ class Smb4KUserInterfaceOptions : public KTabWidget
      * The destructor
      */
     ~Smb4KUserInterfaceOptions();
-
+    
   protected slots:
     /**
      * Enables/disables buttons according to the toggle state of the

@@ -56,8 +56,7 @@
 using namespace Smb4KGlobal;
 
 
-Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
-: KTabWidget( parent )
+Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
 {
   m_collection = new KActionCollection( this );
   m_maybe_changed = false;
@@ -182,7 +181,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
   general_layout->addWidget( signing_box, 3, 0, 0 );
   general_layout->addItem( spacer1, 4, 0 );
 
-  addTab( general_tab, i18n( "General Settings" ) );
+  insertTab( GeneralTab, general_tab, i18n( "General Settings" ) );
 
   //
   // Options for the mount commands
@@ -574,19 +573,19 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
   mount_layout->addItem( spacer2, 2, 0 );
 #endif
 
-  addTab( mount_tab, i18n( "Mounting" ) );
+  insertTab( MountingTab, mount_tab, i18n( "Mounting" ) );
 
   //
   // Options for the client programs
   //
-  QWidget *client_programs_tab  = new QWidget( this );
+  QWidget *clients_tab          = new QWidget( this );
 
-  QGridLayout *client_layout    = new QGridLayout( client_programs_tab );
+  QGridLayout *client_layout    = new QGridLayout( clients_tab );
   client_layout->setSpacing( 5 );
   client_layout->setMargin( 0 );
 
   // 'net' program
-  QGroupBox *net_box            = new QGroupBox( i18n( "net" ), client_programs_tab );
+  QGroupBox *net_box            = new QGroupBox( i18n( "net" ), clients_tab );
 
   QGridLayout *net_layout       = new QGridLayout( net_box );
   net_layout->setSpacing( 5 );
@@ -609,7 +608,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
   net_layout->addWidget( protocol_hint, 0, 1, 0 );
 
   // 'smbclient' program
-  QGroupBox *smbclient_box      = new QGroupBox( i18n( "smbclient" ), client_programs_tab );
+  QGroupBox *smbclient_box      = new QGroupBox( i18n( "smbclient" ), clients_tab );
 
   QGridLayout *smbclient_layout = new QGridLayout( smbclient_box );
   smbclient_layout->setSpacing( 5 );
@@ -633,7 +632,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
   smbclient_layout->addWidget( buffer_size, 2, 1, 0 );
 
   // 'nmblookup' program
-  QGroupBox *nmblookup_box     = new QGroupBox( i18n( "nmblookup" ), client_programs_tab );
+  QGroupBox *nmblookup_box     = new QGroupBox( i18n( "nmblookup" ), clients_tab );
 
   QGridLayout *nmblookup_layout = new QGridLayout( nmblookup_box );
   nmblookup_layout->setSpacing( 5 );
@@ -653,7 +652,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
   nmblookup_layout->addWidget( port_137, 1, 0, 1, 2, 0 );
 
   // 'smbtree' program
-  QGroupBox *smbtree_box       = new QGroupBox( i18n( "smbtree" ), client_programs_tab );
+  QGroupBox *smbtree_box       = new QGroupBox( i18n( "smbtree" ), clients_tab );
 
   QGridLayout *smbtree_layout  = new QGridLayout( smbtree_box );
   smbtree_layout->setSpacing( 5 );
@@ -672,7 +671,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
   client_layout->addWidget( smbtree_box, 3, 0, 0 );
   client_layout->addItem( spacer3, 4, 0 );
 
-  addTab( client_programs_tab, i18n( "Client Programs" ) );
+  insertTab( ClientProgramsTab, clients_tab, i18n( "Client Programs" ) );
 
   //
   // Custom options
@@ -733,7 +732,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
 
   custom_layout->addWidget( m_custom_options, 0, 0, 0 );
 
-  addTab( custom_tab, i18n( "Custom Options" ) );
+  insertTab( CustomOptionsTab, custom_tab, i18n( "Custom Options" ) );
 
   //
   // Connections
@@ -762,6 +761,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent )
   connect( clear_action,     SIGNAL( triggered( bool ) ),
            this,             SLOT( slotClearActionTriggered( bool ) ) );          
 }
+
 
 Smb4KSambaOptions::~Smb4KSambaOptions()
 {
