@@ -3,7 +3,7 @@
     custom Samba options for hosts or shares.
                              -------------------
     begin                : So Jun 25 2006
-    copyright            : (C) 2006-2009 by Alexander Reinholdt
+    copyright            : (C) 2006-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -82,7 +82,7 @@ Smb4KCustomOptionsDialog::Smb4KCustomOptionsDialog( Smb4KShare *share, QWidget *
   setDefaultButton( Ok );
   setButtonGuiItem( User1, KStandardGuiItem::defaults() );
 
-  if ( QString::compare( m_share->shareName(), "homes" ) != 0 )
+  if ( !m_share->isHomesShare() )
   {
     m_initialized = true;
   }
@@ -97,8 +97,7 @@ Smb4KCustomOptionsDialog::Smb4KCustomOptionsDialog( Smb4KShare *share, QWidget *
       p = kapp->activeWindow();
     }
 
-    (void) Smb4KHomesSharesHandler::self()->specifyUser( m_share, p );
-    m_initialized = (QString::compare( m_share->shareName(), "homes" ) != 0);
+    m_initialized = Smb4KHomesSharesHandler::self()->specifyUser( m_share, p );
   }
 
   setupDialog();

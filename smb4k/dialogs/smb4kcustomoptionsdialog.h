@@ -3,7 +3,7 @@
     custom Samba options for hosts or shares.
                              -------------------
     begin                : So Jun 25 2006
-    copyright            : (C) 2006-2009 by Alexander Reinholdt
+    copyright            : (C) 2006-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
