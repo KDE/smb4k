@@ -600,7 +600,14 @@ void LookupSharesThread::slotProcessError()
     }
     else
     {
-      Smb4KCoreMessage::error( ERROR_GETTING_SHARES, QString(), stderr );
+      if ( !stderr.contains( "creating lame", Qt::CaseSensitive ) )
+      {
+        Smb4KCoreMessage::error( ERROR_GETTING_SHARES, QString(), stderr );
+      }
+      else
+      {
+        // Do nothing
+      }
     }
   }
   else
