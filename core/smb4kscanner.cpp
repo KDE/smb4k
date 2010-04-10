@@ -597,8 +597,8 @@ void Smb4KScanner::lookupDomains()
     command += Smb4KSettings::machineAccount() ? " -P" : "";
     
     // Port
-    command += (info && info->port() != -1) ? 
-               " -p "+QString( "%1" ).arg( info->port() ) : 
+    command += (info && info->smbPort() != -1) ? 
+               " -p "+QString( "%1" ).arg( info->smbPort() ) : 
                " -p "+QString( "%1" ).arg( Smb4KSettings::remoteSMBPort() );
     
     // User name and password (not used)
@@ -696,8 +696,8 @@ void Smb4KScanner::lookupDomains()
     command += Smb4KSettings::machineAccount() ? " -P" : "";
     
     // Port
-    command += (info && info->port() != -1) ? 
-               " -p "+QString( "%1" ).arg( info->port() ) : 
+    command += (info && info->smbPort() != -1) ? 
+               " -p "+QString( "%1" ).arg( info->smbPort() ) : 
                " -p "+QString( "%1" ).arg( Smb4KSettings::remoteSMBPort() );
     
     // User name and password (not used)
@@ -1157,8 +1157,8 @@ void Smb4KScanner::lookupShares( Smb4KHost *host )
   }
   else
   {
-    command += (info && info->port() != -1) ?
-               " -p "+QString( "%1" ).arg( info->port() ) :
+    command += (info && info->smbPort() != -1) ?
+               " -p "+QString( "%1" ).arg( info->smbPort() ) :
                " -p "+QString( "%1" ).arg( Smb4KSettings::remoteSMBPort() );
   }
   
@@ -1304,7 +1304,8 @@ void Smb4KScanner::lookupInfo( Smb4KHost *host )
   Smb4KSambaOptionsInfo *info = Smb4KSambaOptionsHandler::self()->findItem( host );
   
   // Port
-  command += (info && info->port() != -1) ? QString( " -p %1" ).arg( info->port() ) : 
+  command += (info && info->smbPort() != -1) ? 
+             QString( " -p %1" ).arg( info->smbPort() ) : 
              QString( " -p %1" ).arg( Smb4KSettings::remoteSMBPort() );
              
   // Kerberos
