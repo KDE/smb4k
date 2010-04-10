@@ -110,6 +110,8 @@ Smb4K SVN_HEAD (????-??-??):
   + Removed nmblookupOptions() function.
   + Removed netOptions() function.
   + Removed code that handled obsolete files and file formats.
+  + Modified findItem() function for hosts. It always only returns exact matches
+    now.
 - Revised Smb4KSambaOptionsInfo class:
   + Removed uidIsSet() and gidIsSet() functions.
   + Removed hasCustomOptions() and setHasCustomOptions() functions.
@@ -306,6 +308,7 @@ Smb4K SVN_HEAD (????-??-??):
     shown when it is actually needed.
   + Added editor for the entries in the wallet. There is no need for KWalletManager
     anymore to edit or remove logins.
+  + Improved checks for empty entries.
 - Revised main window:
   + The icon in the status bar, that indicates the status of the authentication
     system now shows a key if the wallet system is not used, i.e. we are in
@@ -324,7 +327,9 @@ Smb4K SVN_HEAD (????-??-??):
   + Connected to the aboutToStart() and finished() signals of the previewer to
     enabled/disable the reload and abort button.
   + Removed old cruft.
-- Refactored custom options dialog.
+- Revised custom options dialog:
+  + Did some refactoring.
+  + Added file system port to dialog that is shown for a host.
 - Revised utility programs:
   + Did some housekeeping.
   + smb4k_umount:
