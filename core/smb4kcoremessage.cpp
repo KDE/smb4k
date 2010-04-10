@@ -133,11 +133,11 @@ void Smb4KCoreMessage::error( int code, const QString &text, const QString &deta
     {
       if ( details.trimmed().isEmpty() )
       {
-        KMessageBox::error( parent, i18n( "<qt><p>The share \"%1\" could not be mounted.</p><p>Detailed information cannot be provided because there was no error message.</p></qt>" ).arg( text ) );
+        KMessageBox::error( parent, i18n( "<qt><p>The share %1 could not be mounted.</p><p>Detailed information cannot be provided because there was no error message.</p></qt>" ).arg( text ) );
       }
       else
       {
-        KMessageBox::detailedError( parent, i18n( "<qt><p>The share \"%1\" could not be mounted.</p><p>Read the error message under \"Details\" to find out more.</p></qt>" ).arg( text ), details );
+        KMessageBox::detailedError( parent, i18n( "<qt><p>The share %1 could not be mounted.</p><p>Read the error message under \"Details\" to find out more.</p></qt>" ).arg( text ), details );
       }
 
       break;
@@ -146,11 +146,11 @@ void Smb4KCoreMessage::error( int code, const QString &text, const QString &deta
     {
       if ( details.trimmed().isEmpty() )
       {
-        KMessageBox::error( parent, i18n( "<qt><p>The share \"%1\" could not be unmounted.</p><p>Detailed information cannot be provided because there was no error message.</p></qt>" ).arg( text ) );
+        KMessageBox::error( parent, i18n( "<qt><p>The share %1 could not be unmounted.</p><p>Detailed information cannot be provided because there was no error message.</p></qt>" ).arg( text ) );
       }
       else
       {
-        KMessageBox::detailedError( parent, i18n( "<qt><p>The share \"%1\" could not be unmounted.</p><p>Read the error message under \"Details\" to find out more.</p></qt>" ).arg( text ), details );
+        KMessageBox::detailedError( parent, i18n( "<qt><p>The share %1 could not be unmounted.</p><p>Read the error message under \"Details\" to find out more.</p></qt>" ).arg( text ), details );
       }
 
       break;
