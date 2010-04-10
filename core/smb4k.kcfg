@@ -168,7 +168,7 @@
     </entry>
     <entry name="MasterBrowsersRequireAuth" type="Bool">
       <label>The master browsers require authentication to return the browse list</label>
-      <whatsthis>The master browsers in your network neighborhood require a login and password to return the browse list. This setting is rarely needed and might even cause a master browser to return an empty browse list. It will not have any effect when you let Smb4K scan broadcast areas.</whatsthis>
+      <whatsthis>The master browsers in your network neighborhood require a login to return the browse list. This setting is rarely needed and might even cause a master browser to return an empty browse list. It will not have any effect when you let Smb4K scan broadcast areas.</whatsthis>
       <default>false</default>
     </entry>
   </group>
@@ -215,17 +215,17 @@
   <group name="Authentication">
     <entry name="UseWallet" type="Bool">
       <label>Save logins in a wallet</label>
-      <whatsthis>Use a wallet to store the authentication data. The login name and the password name are stored encrypted on your hard drive. If this setting is disabled, the authentication data is not stored permanently but only temporarily.</whatsthis>
+      <whatsthis>Use a wallet to store the login. The username and password are stored encrypted on your hard drive. If this setting is disabled, the login is not stored permanently but only temporarily.</whatsthis>
       <default>true</default>
     </entry>
     <entry name="RememberLogins" type="Bool">
       <label>Remember logins during program run</label>
-      <whatsthis>If you decided to store your logins temporarily, Smb4K will remember them only until the program exits. If you disable this setting, you will have to provide the authentication data every time it is needed.</whatsthis>
+      <whatsthis>If you decide to store your logins temporarily, Smb4K will remember them only until the program exits. If you disable this setting, you will have to provide the login every time it is needed.</whatsthis>
       <default>true</default>
     </entry>
     <entry name="UseDefaultLogin" type="Bool">
       <label>Use a default login</label>
-      <whatsthis>Enable the usage of a default login name and password. The authentication data provided below is then used by default to authenticate to a remote server. This is very useful e.g. if you are working in an Active Directory environment or an NT domain.</whatsthis>
+      <whatsthis>Enable the usage of a default login. The provided data is used by default to authenticate to a remote server. This is very useful e.g. if you are working in an Active Directory environment or an NT domain.</whatsthis>
       <default>false</default>
     </entry>
   </group>
@@ -977,7 +977,7 @@
     </entry>
     <entry name="AlwaysUseSuperUser" type="Bool">
       <label>Use super user privileges to mount and unmount shares</label>
-      <whatsthis>Use super user privileges for mounting and unmounting remote shares. This feature is only needed, if you are not allowed to use smbmount, smbumount, mount.cifs and umount.cifs as normal user. Note, that you will need the root password to write the necessary changes to the configuration file.</whatsthis>
+      <whatsthis>Use super user privileges for mounting and unmounting remote shares. This feature is only needed, if you are not allowed to do this as normal user. Note, that you will need the root password to write the necessary changes to the configuration file.</whatsthis>
       <default>false</default>
     </entry>
   </group>
@@ -1002,7 +1002,7 @@
     </entry>
     <entry name="UnmountWhenNetworkDisconnected" type="Bool">
       <label>Unmount all shares when the network is disconnected</label>
-      <whatsthis>Unmount all shares when the user disconnects from the network or the connection is lost due to a different reason. Using this option in combination with sleep and/or hibernation might lead to unwanted side effects. In this case you should unmount the shares manually before you suspend the computer.</whatsthis>
+      <whatsthis>Unmount all mounted shares when the user disconnects from the network or the connection is lost due to a different reason. Using this option in combination with sleep and/or hibernation might lead to unwanted side effects. In this case you should unmount the shares manually before you suspend the computer.</whatsthis>
       <default>true</default>
     </entry>
   </group>
