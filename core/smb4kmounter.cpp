@@ -904,7 +904,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   // Client's and server's NetBIOS name
   // According to the manual page, this is only needed when port 139
   // is used. So, we only pass the NetBIOS name in that case.  
-  if ( Smb4KSettings::remoteFileSystemPort() == 139 || (options_info && options_info->port() == 139) )
+  if ( Smb4KSettings::remoteFileSystemPort() == 139 || (options_info && options_info->fileSystemPort() == 139) )
   {
     // The client's NetBIOS name.
     if ( !Smb4KSettings::netBIOSName().isEmpty() )
@@ -960,8 +960,8 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   }
   
   // Port
-  command += QString( ",port=%1" ).arg( (options_info && options_info->port() != -1) ?
-                                        options_info->port() : Smb4KSettings::remoteFileSystemPort() );
+  command += QString( ",port=%1" ).arg( (options_info && options_info->fileSystemPort() != -1) ?
+                                        options_info->fileSystemPort() : Smb4KSettings::remoteFileSystemPort() );
                                         
   // Write access
   if ( options_info )
