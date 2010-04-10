@@ -2,7 +2,7 @@
     smb4ksambaoptionshandler  -  This class handles the Samba options.
                              -------------------
     begin                : So Mai 14 2006
-    copyright            : (C) 2006-2009 by Alexander Reinholdt
+    copyright            : (C) 2006-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -126,7 +126,8 @@ class KDE_EXPORT Smb4KSambaOptionsHandler : public QObject
     const QString &winsServer();
 
     /**
-     * Find a share in the list.
+     * Find a share in the list. If custom options for that share are not defined, but
+     * for the host that carries the share, the options for the host are returned.
      *
      * If you provide @p exactMatch, NULL will be returned if item is not in the list.
      * Otherwise this function returns the closest match (the host) if available.
@@ -143,17 +144,11 @@ class KDE_EXPORT Smb4KSambaOptionsHandler : public QObject
     /**
      * Find a host in the list.
      *
-     * If you provide @p exactMatch, NULL will be returned if item is not in the list.
-     * Otherwise this function returns the closest match if available.
-     *
-     * @param share             The share
-     *
-     * @param exactMatch        The UNC of the share is matched exactly.
+     * @param host              The share
      *
      * @returns                 the network item.
      */
-    Smb4KSambaOptionsInfo *findItem( Smb4KHost *share,
-                                     bool exactMatch = false );
+    Smb4KSambaOptionsInfo *findItem( Smb4KHost *host );
 
     /**
      * Add a new Smb4KSambaOptionsInfo object to the list of custom options. If the item already exists,

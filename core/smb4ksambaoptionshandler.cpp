@@ -2,7 +2,7 @@
     smb4ksambaoptionshandler  -  This class handles the Samba options.
                              -------------------
     begin                : So Mai 14 2006
-    copyright            : (C) 2006-2009 by Alexander Reinholdt
+    copyright            : (C) 2006-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -200,7 +200,27 @@ void Smb4KSambaOptionsHandler::readCustomOptions()
                       }
                       else if ( xmlReader.name() == "port" )
                       {
-                        info->setPort( xmlReader.readElementText().toInt() );
+                        // FIXME: For backward compatibility. Remove with versions >> 1.0.x.
+#ifndef Q_OS_FREEBSD
+                        if ( info->type() == Smb4KSambaOptionsInfo::Host )
+                        {
+                          info->setSMBPort( xmlReader.readElementText().toInt() );
+                        }
+                        else if ( info->type() == Smb4KSambaOptionsInfo::Share )
+                        {
+                          info->setFileSystemPort( xmlReader.readElementText().toInt() );
+                        }
+                        else
+                        {
+                          // Do nothing
+                        }
+#else
+                        info->setSMBPort( xmlReader.readElementText().toInt() );
+#endif
+                      }
+                      else if ( xmlReader.name() == "smb_port" )
+                      {
+                        info->setSMBPort( xmlReader.readElementText().toInt() );
                       }
                       else if ( xmlReader.name() == "protocol" )
                       {
@@ -228,6 +248,10 @@ void Smb4KSambaOptionsHandler::readCustomOptions()
                         }
                       }
 #ifndef Q_OS_FREEBSD
+                      else if ( xmlReader.name() == "filesystem_port" )
+                      {
+                        info->setFileSystemPort( xmlReader.readElementText().toInt() );
+                      }
                       else if ( xmlReader.name() == "write_access" )
                       {
                         QString write_access = xmlReader.readElementText();
@@ -419,7 +443,7 @@ void Smb4KSambaOptionsHandler::addRemount( Smb4KShare *share )
 
   Smb4KSambaOptionsInfo *info = NULL;
 
-  if ( (info = findItem( share )) )
+  if ( (info = findItem( share, true )) )
   {
     info->setRemount( Smb4KSambaOptionsInfo::DoRemount );
   }
@@ -439,7 +463,7 @@ void Smb4KSambaOptionsHandler::removeRemount( Smb4KShare *share )
 
   Smb4KSambaOptionsInfo *info = NULL;
 
-  if ( (info = findItem( share )) )
+  if ( (info = findItem( share, true )) )
   {
     info->setRemount( Smb4KSambaOptionsInfo::NoRemount );
   }
@@ -691,8 +715,9 @@ Smb4KSambaOptionsInfo *Smb4KSambaOptionsHandler::findItem( Smb4KShare *share, bo
       info = m_list.at( i );
       break;
     }
-    else if ( m_list.at( i )->unc().startsWith( share->hostUNC(), Qt::CaseInsensitive ) )
+    else if ( QString::compare( share->hostUNC(), m_list.at( i )->unc(), Qt::CaseInsensitive ) == 0 )
     {
+      // The host that provides the share.
       if ( !info && !exactMatch )
       {
         info = m_list.at( i );
@@ -713,7 +738,7 @@ Smb4KSambaOptionsInfo *Smb4KSambaOptionsHandler::findItem( Smb4KShare *share, bo
 }
 
 
-Smb4KSambaOptionsInfo *Smb4KSambaOptionsHandler::findItem( Smb4KHost *host, bool exactMatch )
+Smb4KSambaOptionsInfo *Smb4KSambaOptionsHandler::findItem( Smb4KHost *host )
 {
   Q_ASSERT( host );
 
@@ -723,21 +748,8 @@ Smb4KSambaOptionsInfo *Smb4KSambaOptionsHandler::findItem( Smb4KHost *host, bool
   {
     if ( QString::compare( host->unc(), m_list.at( i )->unc(), Qt::CaseInsensitive ) == 0 )
     {
-      // Exact match.
       info = m_list.at( i );
       break;
-    }
-    else if ( m_list.at( i )->unc().startsWith( host->unc(), Qt::CaseInsensitive ) )
-    {
-      if ( !info && !exactMatch )
-      {
-        info = m_list.at( i );
-      }
-      else
-      {
-        // Do nothing
-      }
-      continue;
     }
     else
     {
@@ -766,7 +778,7 @@ void Smb4KSambaOptionsHandler::addItem( Smb4KSambaOptionsInfo *info, bool s )
         host.setWorkgroupName( info->workgroupName() );
         host.setIP( info->ip() );
         
-        known_info = findItem( &host, true );
+        known_info = findItem( &host );
         
         break;
       }
@@ -845,7 +857,7 @@ void Smb4KSambaOptionsHandler::removeItem( Smb4KHost *host, bool s )
 {
   Q_ASSERT( host );
 
-  Smb4KSambaOptionsInfo *item = findItem( host, true );
+  Smb4KSambaOptionsInfo *item = findItem( host );
 
   if ( item )
   {
@@ -936,7 +948,7 @@ void Smb4KSambaOptionsHandler::updateCustomOptions( const QList<Smb4KSambaOption
 
           host.setIP( list.at( i )->ip() );
 
-          info = findItem( &host, true );
+          info = findItem( &host );
 
           break;
         }
@@ -985,8 +997,6 @@ bool Smb4KSambaOptionsHandler::hasCustomOptions( Smb4KSambaOptionsInfo *info )
 {
   Q_ASSERT( info );
   
-  bool has_custom_options = false;
-  
   switch ( info->type() )
   {
     case Smb4KSambaOptionsInfo::Host:
@@ -1000,7 +1010,7 @@ bool Smb4KSambaOptionsHandler::hasCustomOptions( Smb4KSambaOptionsInfo *info )
           {
             if ( info->protocol() != Smb4KSambaOptionsInfo::Automatic )
             {
-              has_custom_options = true;
+              return true;
             }
             else
             {
@@ -1013,7 +1023,7 @@ bool Smb4KSambaOptionsHandler::hasCustomOptions( Smb4KSambaOptionsInfo *info )
           {
             if ( info->protocol() != Smb4KSambaOptionsInfo::RPC )
             {
-              has_custom_options = true;
+              return true;
             }
             else
             {
@@ -1026,7 +1036,7 @@ bool Smb4KSambaOptionsHandler::hasCustomOptions( Smb4KSambaOptionsInfo *info )
           {
             if ( info->protocol() != Smb4KSambaOptionsInfo::RAP )
             {
-              has_custom_options = true;
+              return true;
             }
             else
             {
@@ -1039,7 +1049,7 @@ bool Smb4KSambaOptionsHandler::hasCustomOptions( Smb4KSambaOptionsInfo *info )
           {
             if ( info->protocol() != Smb4KSambaOptionsInfo::ADS )
             {
-              has_custom_options = true;
+              return true;
             }
             else
             {
@@ -1064,11 +1074,11 @@ bool Smb4KSambaOptionsHandler::hasCustomOptions( Smb4KSambaOptionsInfo *info )
       {
         if ( Smb4KSettings::useKerberos() && info->useKerberos() != Smb4KSambaOptionsInfo::UseKerberos )
         {
-          has_custom_options = true;
+          return true;
         }
         else if ( !Smb4KSettings::useKerberos() && info->useKerberos() != Smb4KSambaOptionsInfo::NoKerberos )
         {
-          has_custom_options = true;
+          return true;
         }
         else
         {
@@ -1080,12 +1090,12 @@ bool Smb4KSambaOptionsHandler::hasCustomOptions( Smb4KSambaOptionsInfo *info )
         // Do nothing
       }
       
-      // Port.
-      if ( info->port() != -1 )
+      // Ports.
+      if ( info->smbPort() != -1 )
       {
-        if ( info->port() != Smb4KSettings::remoteSMBPort() )
+        if ( info->smbPort() != Smb4KSettings::remoteSMBPort() )
         {
-          has_custom_options = true;
+          return true;
         }
         else
         {
@@ -1096,6 +1106,24 @@ bool Smb4KSambaOptionsHandler::hasCustomOptions( Smb4KSambaOptionsInfo *info )
       {
         // Do nothing
       }
+
+#ifndef Q_OS_FREEBSD
+      if ( info->fileSystemPort() != -1 )
+      {
+        if ( info->fileSystemPort() != Smb4KSettings::remoteFileSystemPort() )
+        {
+          return true;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+#endif
       
       break;
     }
@@ -1111,7 +1139,7 @@ bool Smb4KSambaOptionsHandler::hasCustomOptions( Smb4KSambaOptionsInfo *info )
           {
             if ( info->writeAccess() != Smb4KSambaOptionsInfo::ReadWrite )
             {
-              has_custom_options = true;
+              return true;
             }
             else
             {
@@ -1124,7 +1152,7 @@ bool Smb4KSambaOptionsHandler::hasCustomOptions( Smb4KSambaOptionsInfo *info )
           {
             if ( info->writeAccess() != Smb4KSambaOptionsInfo::ReadOnly )
             {
-              has_custom_options = true;
+              return true;
             }
             else
             {
@@ -1145,11 +1173,11 @@ bool Smb4KSambaOptionsHandler::hasCustomOptions( Smb4KSambaOptionsInfo *info )
       }
       
       // Port.
-      if ( info->port() != -1 )
+      if ( info->fileSystemPort() != -1 )
       {
-        if ( info->port() != Smb4KSettings::remoteFileSystemPort() )
+        if ( info->fileSystemPort() != Smb4KSettings::remoteFileSystemPort() )
         {
-          has_custom_options = true;
+          return true;
         }
         else
         {
@@ -1166,11 +1194,11 @@ bool Smb4KSambaOptionsHandler::hasCustomOptions( Smb4KSambaOptionsInfo *info )
       {
         if ( Smb4KSettings::useKerberos() && info->useKerberos() != Smb4KSambaOptionsInfo::UseKerberos )
         {
-          has_custom_options = true;
+          return true;
         }
         else if ( !Smb4KSettings::useKerberos() && info->useKerberos() != Smb4KSambaOptionsInfo::NoKerberos )
         {
-          has_custom_options = true;
+          return true;
         }
         else
         {
@@ -1183,11 +1211,11 @@ bool Smb4KSambaOptionsHandler::hasCustomOptions( Smb4KSambaOptionsInfo *info )
       }      
 #else
       // Port.
-      if ( info->port() != -1 )
+      if ( info->smbPort() != -1 )
       {
-        if ( info->port() != Smb4KSettings::remoteSMBPort() )
+        if ( info->smbPort() != Smb4KSettings::remoteSMBPort() )
         {
-          has_custom_options = true;
+          return true;
         }
         else
         {
@@ -1203,7 +1231,7 @@ bool Smb4KSambaOptionsHandler::hasCustomOptions( Smb4KSambaOptionsInfo *info )
       // User ID.
       if ( info->uid() != (K_UID)Smb4KSettings::userID().toInt() )
       {
-        has_custom_options = true;
+        return true;
       }
       else
       {
@@ -1213,7 +1241,7 @@ bool Smb4KSambaOptionsHandler::hasCustomOptions( Smb4KSambaOptionsInfo *info )
       // Group ID.
       if ( info->gid() != (K_GID)Smb4KSettings::groupID().toInt() )
       {
-        has_custom_options = true;
+        return true;
       }
       else
       {
@@ -1228,7 +1256,7 @@ bool Smb4KSambaOptionsHandler::hasCustomOptions( Smb4KSambaOptionsInfo *info )
     }
   }
   
-  return has_custom_options;
+  return false;
 }
 
 
