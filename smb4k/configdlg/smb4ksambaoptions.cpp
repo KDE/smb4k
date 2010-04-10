@@ -696,15 +696,18 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
 #endif
 
   QStringList header_labels;
-  header_labels.append( i18n( "Item" ) );
+  header_labels.append( i18n( "UNC" ) );
   header_labels.append( i18n( "Protocol" ) );
 #ifndef Q_OS_FREEBSD
   header_labels.append( i18n( "Write Access" ) );
 #endif
   header_labels.append( i18n( "Kerberos" ) );
-  header_labels.append( i18n( "UID" ) );
-  header_labels.append( i18n( "GID" ) );
-  header_labels.append( i18n( "Port" ) );
+  header_labels.append( i18n( "User ID" ) );
+  header_labels.append( i18n( "Group ID" ) );
+  header_labels.append( i18n( "SMB Port" ) );
+#ifndef Q_OS_FREEBSD
+  header_labels.append( i18n( "File System Port" ) );
+#endif
 
   m_custom_options->setHeaderLabels( header_labels );
 
@@ -921,11 +924,38 @@ bool Smb4KSambaOptions::eventFilter( QObject *obj, QEvent *e )
               }
               break;
             }
-            case Port:
+            case SMBPort:
+            {
+#ifndef Q_OS_FREEBSD
+              switch ( item->type() )
+              {
+                case Host:
+                {
+                  m_collection->action( "edit_action" )->setEnabled( true );
+                  break;
+                }
+                case Share:
+                {
+                  m_collection->action( "edit_action" )->setEnabled( false );
+                  break;
+                }
+                default:
+                {
+                  break;
+                }
+              }
+#else
+              m_collection->action( "edit_action" )->setEnabled( true );
+#endif
+              break;
+            }
+#ifndef Q_OS_FREEBSD
+            case FileSystemPort:
             {
               m_collection->action( "edit_action" )->setEnabled( true );
               break;
             }
+#endif
             default:
             {
               break;
@@ -949,17 +979,17 @@ bool Smb4KSambaOptions::eventFilter( QObject *obj, QEvent *e )
           {
             switch ( m_custom_options->currentColumn() )
             {
-              case Port:
+              case SMBPort:
               {
                 for ( int i = 0; i < m_custom_options->topLevelItemCount(); ++i )
                 {
-                  KIntNumInput *input = static_cast<KIntNumInput *>( m_custom_options->itemWidget( m_custom_options->topLevelItem( i ), Port ) );
+                  KIntNumInput *input = static_cast<KIntNumInput *>( m_custom_options->itemWidget( m_custom_options->topLevelItem( i ), SMBPort ) );
                   
                   if ( input )
                   {
                     input->clearFocus();
                     input->unsetCursor();
-                    m_custom_options->topLevelItem( i )->setText( Port, QString( "%1" ).arg( input->value() ) );
+                    m_custom_options->topLevelItem( i )->setText( SMBPort, QString( "%1" ).arg( input->value() ) );
                     
                     removeEditWidgets();
                     
@@ -987,6 +1017,46 @@ bool Smb4KSambaOptions::eventFilter( QObject *obj, QEvent *e )
                 
                 break;
               }
+#ifndef Q_OS_FREEBSD
+              case FileSystemPort:
+              {
+                for ( int i = 0; i < m_custom_options->topLevelItemCount(); ++i )
+                {
+                  KIntNumInput *input = static_cast<KIntNumInput *>( m_custom_options->itemWidget( m_custom_options->topLevelItem( i ), FileSystemPort ) );
+                  
+                  if ( input )
+                  {
+                    input->clearFocus();
+                    input->unsetCursor();
+                    m_custom_options->topLevelItem( i )->setText( FileSystemPort, QString( "%1" ).arg( input->value() ) );
+                    
+                    removeEditWidgets();
+                    
+                    for ( int i = 0; i < m_custom_options->columnCount(); ++i )
+                    {
+                      m_custom_options->resizeColumnToContents( i );
+                    }
+
+                    m_custom_options->sortItems( ItemName, Qt::AscendingOrder );
+
+                    eat_event = true;
+                    
+                    // A value changed. Set m_maybe_changed to TRUE and emit 
+                    // customSettingsModified
+                    m_maybe_changed = true;
+                    emit customSettingsModified();
+                    
+                    break;
+                  }
+                  else
+                  {
+                    continue;
+                  }
+                }
+                
+                break;
+              }
+#endif
               default:
               {
                 break;
@@ -1143,15 +1213,27 @@ void Smb4KSambaOptions::insertCustomOptions( const QList<Smb4KSambaOptionsInfo *
         // GID
         item->setText( GID, "-" );
         
-        // Port
-        if ( list.at( i )->port() != -1 )
+        // SMB Port
+        if ( list.at( i )->smbPort() != -1 )
         {
-          item->setText( Port, QString( "%1" ).arg( list.at( i )->port() ) );
+          item->setText( SMBPort, QString( "%1" ).arg( list.at( i )->smbPort() ) );
         }
         else
         {
-          item->setText( Port, QString( "%1" ).arg( Smb4KSettings::remoteSMBPort() ) );
+          item->setText( SMBPort, QString( "%1" ).arg( Smb4KSettings::remoteSMBPort() ) );
         }
+        
+#ifndef Q_OS_FREEBSD
+        // File System Port
+        if ( list.at( i )->fileSystemPort() != -1 )
+        {
+          item->setText( FileSystemPort, QString( "%1" ).arg( list.at( i )->fileSystemPort() ) );
+        }
+        else
+        {
+          item->setText( FileSystemPort, QString( "%1" ).arg( Smb4KSettings::remoteFileSystemPort() ) );
+        }
+#endif
         
         break;
       }
@@ -1215,15 +1297,28 @@ void Smb4KSambaOptions::insertCustomOptions( const QList<Smb4KSambaOptionsInfo *
         // GID
         item->setText( GID, QString( "%1 (%2)" ).arg( list.at( i )->group() ).arg( list.at( i )->gid() ) );
 
-        // Port
-        if ( list.at( i )->port() != -1 )
+        // Ports
+#ifndef Q_OS_FREEBSD
+        item->setText( SMBPort, "-" );
+        
+        if ( list.at( i )->fileSystemPort() != -1 )
         {
-          item->setText( Port, QString( "%1" ).arg( list.at( i )->port() ) );
+          item->setText( FileSystemPort, QString( "%1" ).arg( list.at( i )->fileSystemPort() ) );
         }
         else
         {
-          item->setText( Port, QString( "%1" ).arg( Smb4KSettings::remoteFileSystemPort() ) );
+          item->setText( FileSystemPort, QString( "%1" ).arg( Smb4KSettings::remoteFileSystemPort() ) );
         }
+#else
+        if ( list.at( i )->smbPort() != -1 )
+        {
+          item->setText( SMBPort, QString( "%1" ).arg( list.at( i )->smbPort() ) );
+        }
+        else
+        {
+          item->setText( SMBPort, QString( "%1" ).arg( Smb4KSettings::remoteSMBPort() ) );
+        }
+#endif
         
         break;
       }
@@ -1373,7 +1468,7 @@ void Smb4KSambaOptions::slotEditCustomItem( QTreeWidgetItem *item, int column )
                      this,  SLOT( slotCustomTextChanged( const QString & ) ) );
             break;
           }
-          case Port:
+          case SMBPort:
           {
             KIntNumInput *input = new KIntNumInput( m_custom_options );
             input->setAutoFillBackground( true );
@@ -1387,6 +1482,22 @@ void Smb4KSambaOptions::slotEditCustomItem( QTreeWidgetItem *item, int column )
                      this,  SLOT( slotCustomIntValueChanged( int ) ) );
             break;
           }
+#ifndef Q_OS_FREEBSD
+          case FileSystemPort:
+          {
+            KIntNumInput *input = new KIntNumInput( m_custom_options );
+            input->setAutoFillBackground( true );
+            input->setMinimum( 0 );
+            input->setMaximum( 65535 );
+            input->setValue( item->text( column ).toInt() );
+            m_custom_options->setItemWidget( item, column, input );
+            input->adjustSize();
+
+            connect( input, SIGNAL( valueChanged( int ) ),
+                     this,  SLOT( slotCustomIntValueChanged( int ) ) );
+            break;
+          }
+#endif
           default:
           {
             break;
@@ -1418,8 +1529,7 @@ void Smb4KSambaOptions::slotEditCustomItem( QTreeWidgetItem *item, int column )
                      this,  SLOT( slotCustomTextChanged( const QString & ) ) );
             break;
           }
-#endif
-          case Port:
+          case FileSystemPort:
           {
             KIntNumInput *input = new KIntNumInput( m_custom_options );
             input->setAutoFillBackground( true );
@@ -1433,6 +1543,22 @@ void Smb4KSambaOptions::slotEditCustomItem( QTreeWidgetItem *item, int column )
                      this,  SLOT( slotCustomIntValueChanged( int ) ) );
             break;
           }
+#else
+          case SMBPort:
+          {
+            KIntNumInput *input = new KIntNumInput( m_custom_options );
+            input->setAutoFillBackground( true );
+            input->setMinimum( 0 );
+            input->setMaximum( 65535 );
+            input->setValue( item->text( column ).toInt() );
+            m_custom_options->setItemWidget( item, column, input );
+            input->adjustSize();
+
+            connect( input, SIGNAL( valueChanged( int ) ),
+                     this,  SLOT( slotCustomIntValueChanged( int ) ) );
+            break;
+          }
+#endif
           case UID:
           {
             QList<KUser> user_list = KUser::allUsers();
@@ -1690,11 +1816,18 @@ void Smb4KSambaOptions::slotCustomIntValueChanged( int value )
             // Now update the info.
             switch ( j )
             {
-              case Port:
+              case SMBPort:
               {
-                info->setPort( value );
+                info->setSMBPort( value );
                 break;
               }
+#ifndef Q_OS_FREEBSD
+              case FileSystemPort:
+              {
+                info->setFileSystemPort( value );
+                break;
+              }
+#endif
               default:
               {
                 break;

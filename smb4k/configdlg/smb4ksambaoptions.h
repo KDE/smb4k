@@ -69,14 +69,15 @@ class Smb4KSambaOptions : public KTabWidget
                   Kerberos = 3,
                   UID = 4,
                   GID = 5,
-                  Port = 6 };
+                  SMBPort = 6,
+                  FileSystemPort = 7 };
 #else
     enum Columns{ ItemName = 0,
                   Protocol = 1,
                   Kerberos = 2,
                   UID = 3,
                   GID = 4,
-                  Port = 5 };
+                  SMBPort = 5 };
 #endif
 
     enum Tabs{ GeneralTab = 0,
