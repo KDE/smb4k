@@ -150,7 +150,7 @@ class KDE_EXPORT Smb4KSambaOptionsInfo
      *
      * @returns the host name.
      */
-    QString hostName() const { return m_url.host().toUpper(); }
+    QString hostName() const { return m_host_url.host().toUpper(); }
 
     /**
      * This function returns the share name if the item represents a share or an
@@ -192,20 +192,36 @@ class KDE_EXPORT Smb4KSambaOptionsInfo
                                                        QUrl::RemovePort ) const;
 
     /**
-     * This function sets the port that should be used when querying this share.
-     *
+     * Set the SMB port that should be used to communicate with the server.
+     * 
+     * @param port              The port numer
+     */
+    void setSMBPort( int port );
+    
+    /**
+     * Returns the SMB port that is used to communicate with the server. If
+     * the port is undefined, -1 is returned.
+     * 
+     * @returns the SMB port
+     */
+    int smbPort() const;
+    
+#ifndef Q_OS_FREEBSD
+    /**
+     * Set the file system port that should be used to mount shares.
+     * 
      * @param port              The port number
      */
-    void setPort( int port );
-
+    void setFileSystemPort( int port );
+    
     /**
-     * This function returns the port that should be used when working with this
-     * share. Please note, that it will be returned as an integer. If no port has been
-     * defined, -1 will be returned.
-     *
-     * @returns                 the port number
+     * Returns the file system port that is used to mount shares. If the 
+     * port is undefined, -1 is returned.
+     * 
+     * @returns the file system port
      */
-    int port() const { return m_url.port(); }
+    int fileSystemPort() const;
+#endif
 
     /**
      * Set the protocol that is to be used with the net command.
@@ -403,8 +419,13 @@ class KDE_EXPORT Smb4KSambaOptionsInfo
     /**
      * The URL
      */
-    QUrl m_url;
-
+    QUrl m_this_url;
+    
+    /**
+     * The host URL
+     */
+    QUrl m_host_url;
+    
     /**
      * The type of this item
      */
@@ -420,6 +441,11 @@ class KDE_EXPORT Smb4KSambaOptionsInfo
      * Mount read-write or read-only?
      */
     WriteAccess m_write_access;
+
+    /**
+     * The file system port
+     */
+    int m_fs_port;
 #endif
 
     /**

@@ -39,9 +39,9 @@
 
 
 Smb4KSambaOptionsInfo::Smb4KSambaOptionsInfo( Smb4KHost *host )
-: m_url( QUrl() ), m_type( Host ), m_remount( UndefinedRemount ),
+: m_this_url( QUrl() ), m_host_url( QUrl() ), m_type( Host ), m_remount( UndefinedRemount ),
 #ifndef Q_OS_FREEBSD
-  m_write_access( UndefinedWriteAccess ),
+  m_write_access( UndefinedWriteAccess ), m_fs_port( -1 ),
 #endif
   m_protocol( UndefinedProtocol ), m_kerberos( UndefinedKerberos ),
   m_user( getuid() ), m_group( getgid() ), m_workgroup( host->workgroupName() ), 
@@ -53,9 +53,9 @@ Smb4KSambaOptionsInfo::Smb4KSambaOptionsInfo( Smb4KHost *host )
 
 
 Smb4KSambaOptionsInfo::Smb4KSambaOptionsInfo( Smb4KShare *share )
-: m_url( QUrl() ), m_type( Share ), m_remount( UndefinedRemount ),
+: m_this_url( QUrl() ), m_host_url( QUrl() ), m_type( Share ), m_remount( UndefinedRemount ),
 #ifndef Q_OS_FREEBSD
-  m_write_access( UndefinedWriteAccess ),
+  m_write_access( UndefinedWriteAccess ), m_fs_port( share->port() ),
 #endif
   m_protocol( UndefinedProtocol ), m_kerberos( UndefinedKerberos ),
   m_user( share->uid() ), m_group( share->gid() ), m_workgroup( share->workgroupName() ), 
@@ -67,9 +67,9 @@ Smb4KSambaOptionsInfo::Smb4KSambaOptionsInfo( Smb4KShare *share )
 
 
 Smb4KSambaOptionsInfo::Smb4KSambaOptionsInfo( const Smb4KSambaOptionsInfo &info )
-: m_url( QUrl() ), m_type( info.type() ), m_remount( info.remount() ),
+: m_this_url( QUrl() ), m_host_url( QUrl() ), m_type( info.type() ), m_remount( info.remount() ),
 #ifndef Q_OS_FREEBSD
-  m_write_access( info.writeAccess() ),
+  m_write_access( info.writeAccess() ), m_fs_port( info.fileSystemPort() ),
 #endif
   m_protocol( info.protocol() ), m_kerberos( info.useKerberos() ),
   m_user( info.uid() ), m_group( info.gid() ), m_workgroup( info.workgroupName() ), 
@@ -80,9 +80,9 @@ Smb4KSambaOptionsInfo::Smb4KSambaOptionsInfo( const Smb4KSambaOptionsInfo &info 
 
 
 Smb4KSambaOptionsInfo::Smb4KSambaOptionsInfo()
-: m_url( QUrl() ), m_type( Unknown ), m_remount( UndefinedRemount ),
+: m_this_url( QUrl() ), m_host_url( QUrl() ), m_type( Unknown ), m_remount( UndefinedRemount ),
 #ifndef Q_OS_FREEBSDs
-  m_write_access( UndefinedWriteAccess ),
+  m_write_access( UndefinedWriteAccess ), m_fs_port( -1 ),
 #endif
   m_protocol( UndefinedProtocol ), m_kerberos( UndefinedKerberos ),
   m_user( getuid() ), m_group( getgid() ), m_workgroup( QString() ), 
@@ -104,16 +104,25 @@ void Smb4KSambaOptionsInfo::setRemount( Smb4KSambaOptionsInfo::Remount remount )
 
 QString Smb4KSambaOptionsInfo::shareName() const
 {
-  if ( m_url.path().startsWith( "/" ) )
+  if ( m_type == Share )
   {
-    return m_url.path().remove( 0, 1 );
+    if ( m_this_url.path().startsWith( "/" ) )
+    {
+      return m_this_url.path().remove( 0, 1 );
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    return m_this_url.path();
   }
   else
   {
     // Do nothing
   }
-
-  return m_url.path();
+  
+  return QString();
 }
 
 
@@ -131,26 +140,29 @@ void Smb4KSambaOptionsInfo::setUNC( const QString &unc )
   {
     // Do nothing
   }
-
-  // Set the type.
-  if ( url.path().contains( "/" ) == 1 )
+  
+  if ( url.scheme().isEmpty() )
   {
-    m_type = Share;
-  }
-  else
-  {
-    m_type = Host;
-  }
-
-  m_url = url;
-
-  if ( m_url.scheme().isEmpty() )
-  {
-    m_url.setScheme( "smb" );
+    url.setScheme( "smb" );
   }
   else
   {
     // Do nothing
+  }
+
+  if ( url.path().contains( "/" ) == 1 )
+  {
+    m_type = Share;
+    m_this_url = url;
+    m_host_url = url;
+    m_host_url.setPort( -1 );
+    m_host_url.setPath( QString() );
+  }
+  else
+  {
+    m_type = Host;
+    m_this_url = url;
+    m_host_url = url;
   }
 }
 
@@ -163,25 +175,25 @@ QString Smb4KSambaOptionsInfo::unc( QUrl::FormattingOptions options ) const
   {
     case Host:
     {
-      if ( (options & QUrl::RemoveUserInfo) || m_url.userName().isEmpty() )
+      if ( (options & QUrl::RemoveUserInfo) || m_this_url.userName().isEmpty() )
       {
-        unc = m_url.toString( options|QUrl::RemovePath ).replace( "//"+m_url.host(), "//"+hostName() );
+        unc = m_this_url.toString( options|QUrl::RemovePath ).replace( "//"+m_this_url.host(), "//"+hostName() );
       }
       else
       {
-        unc = m_url.toString( options|QUrl::RemovePath ).replace( "@"+m_url.host(), "@"+hostName() );
+        unc = m_this_url.toString( options|QUrl::RemovePath ).replace( "@"+m_this_url.host(), "@"+hostName() );
       }
       break;
     }
     case Share:
     {
-      if ( (options & QUrl::RemoveUserInfo) || m_url.userName().isEmpty() )
+      if ( (options & QUrl::RemoveUserInfo) || m_host_url.userName().isEmpty() )
       {
-        unc = m_url.toString( options ).replace( "//"+m_url.host(), "//"+hostName() );
+        unc = m_this_url.toString( options ).replace( "//"+m_this_url.host(), "//"+hostName() );
       }
       else
       {
-        unc = m_url.toString( options ).replace( "@"+m_url.host(), "@"+hostName() );
+        unc = m_this_url.toString( options ).replace( "@"+m_this_url.host(), "@"+hostName() );
       }
       break;
     }
@@ -199,23 +211,61 @@ QString Smb4KSambaOptionsInfo::hostUNC( QUrl::FormattingOptions options ) const
 {
   QString unc;
   
-  if ( (options & QUrl::RemoveUserInfo) || m_url.userName().isEmpty() )
+  if ( (options & QUrl::RemoveUserInfo) || m_host_url.userName().isEmpty() )
   {
-    unc = m_url.toString( options|QUrl::RemovePath ).replace( "//"+m_url.host(), "//"+hostName() );
+    unc = m_host_url.toString( options|QUrl::RemovePath ).replace( "//"+m_host_url.host(), "//"+hostName() );
   }
   else
   {
-    unc = m_url.toString( options|QUrl::RemovePath ).replace( "@"+m_url.host(), "@"+hostName() );
+    unc = m_host_url.toString( options|QUrl::RemovePath ).replace( "@"+m_host_url.host(), "@"+hostName() );
   }
   
   return unc;
 }
 
 
-void Smb4KSambaOptionsInfo::setPort( int port )
+void Smb4KSambaOptionsInfo::setSMBPort( int port )
 {
-  m_url.setPort( port );
+  m_host_url.setPort( port );
 }
+
+
+int Smb4KSambaOptionsInfo::smbPort() const
+{
+  // Under FreeBSD we could also return m_this_url.port() here,
+  // because the two ports are equal.
+  return m_host_url.port();
+}
+
+
+#ifndef Q_OS_FREEBSD
+void Smb4KSambaOptionsInfo::setFileSystemPort( int port )
+{
+  switch ( m_type )
+  {
+    case Share:
+    {
+      m_this_url.setPort( port );
+      break;
+    }
+    case Host:
+    {
+      m_fs_port = port;
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+}
+
+
+int Smb4KSambaOptionsInfo::fileSystemPort() const
+{
+  return m_type == Share ? m_this_url.port() : m_fs_port;
+}
+#endif
 
 
 void Smb4KSambaOptionsInfo::setProtocol( Smb4KSambaOptionsInfo::Protocol protocol )
@@ -277,8 +327,28 @@ void Smb4KSambaOptionsInfo::setIP( const QString &ip )
 void Smb4KSambaOptionsInfo::update( Smb4KSambaOptionsInfo *info )
 {
   // UNC, workgroup and IP address are not updated.
-
-  m_url.setPort( info->port() );
+  switch ( info->type() )
+  {
+    case Host:
+    {
+      m_this_url.setPort( info->smbPort() );
+      m_host_url.setPort( info->smbPort() );
+#ifndef Q_OS_FREEBSD
+      m_fs_port = info->fileSystemPort();
+#endif
+      break;
+    }
+    case Share:
+    {
+      m_this_url.setPort( info->fileSystemPort() );
+      m_host_url.setPort( info->smbPort() );
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
 
   m_remount      = info->remount();
 #ifndef Q_OS_FREEBSD
@@ -318,9 +388,10 @@ QMap<QString,QString> Smb4KSambaOptionsInfo::entries()
     }
   }
 
-  entries.insert( "port", m_url.port() != -1 ?
-                          QString( "%1" ).arg( m_url.port() ) :
-                          QString() );
+  entries.insert( "smb_port", smbPort() != -1 ? QString( "%1" ).arg( smbPort() ) : QString() );
+#ifndef Q_OS_FREEBSD
+  entries.insert( "filesystem_port", fileSystemPort() != -1 ? QString( "%1" ).arg( fileSystemPort() ) : QString() );
+#endif
 
   switch ( m_protocol )
   {
@@ -448,6 +519,17 @@ bool Smb4KSambaOptionsInfo::equals( Smb4KSambaOptionsInfo* info ) const
   {
     // Do nothing
   }
+  
+#ifndef Q_OS_FREEBSD
+  if ( fileSystemPort() != info->fileSystemPort() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+#endif
   
   if ( QString::compare( workgroupName(), info->workgroupName(), Qt::CaseInsensitive ) != 0 )
   {
