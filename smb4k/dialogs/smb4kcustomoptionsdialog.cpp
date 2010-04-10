@@ -122,7 +122,8 @@ void Smb4KCustomOptionsDialog::setupDialog()
   Smb4KSambaOptionsInfo *info = NULL;
 
   // These are the input widgets we need below:
-  m_port_input = NULL;
+  m_smb_port_input = NULL;
+  m_fs_port_input = NULL;
   m_kerberos = NULL;
   m_proto_input = NULL;
   m_uid_input = NULL;
@@ -153,11 +154,19 @@ void Smb4KCustomOptionsDialog::setupDialog()
   {
     case Host:
     {
-      QLabel *port_label = new QLabel( Smb4KSettings::self()->remoteSMBPortItem()->label(), main_widget );
-      m_port_input = new KIntNumInput( -1, main_widget );
-      m_port_input->setMinimumWidth( 200 );
-      m_port_input->setMinimum( Smb4KSettings::self()->remoteSMBPortItem()->minValue().toInt() );
-      m_port_input->setMaximum( Smb4KSettings::self()->remoteSMBPortItem()->maxValue().toInt() );
+      QLabel *smb_port_label = new QLabel( Smb4KSettings::self()->remoteSMBPortItem()->label(), main_widget );
+      m_smb_port_input = new KIntNumInput( -1, main_widget );
+      m_smb_port_input->setMinimumWidth( 200 );
+      m_smb_port_input->setMinimum( Smb4KSettings::self()->remoteSMBPortItem()->minValue().toInt() );
+      m_smb_port_input->setMaximum( Smb4KSettings::self()->remoteSMBPortItem()->maxValue().toInt() );
+
+#ifndef Q_OS_FREEBSD
+      QLabel *fs_port_label = new QLabel( Smb4KSettings::self()->remoteFileSystemPortItem()->label(), main_widget );
+      m_fs_port_input = new KIntNumInput( -1, main_widget );
+      m_fs_port_input->setMinimumWidth( 200 );
+      m_fs_port_input->setMinimum( Smb4KSettings::self()->remoteFileSystemPortItem()->minValue().toInt() );
+      m_fs_port_input->setMaximum( Smb4KSettings::self()->remoteFileSystemPortItem()->maxValue().toInt() );
+#endif
 
       QLabel *protocol_label = new QLabel( i18n( "Protocol:" ), main_widget );
       m_proto_input = new KComboBox( false, main_widget );
@@ -175,23 +184,42 @@ void Smb4KCustomOptionsDialog::setupDialog()
 
       layout->addWidget( location_label, 0, 0, 0 );
       layout->addWidget( location, 0, 1, 0 );
-      layout->addWidget( port_label, 1, 0, 0 );
-      layout->addWidget( m_port_input, 1, 1, 0 );
+      layout->addWidget( smb_port_label, 1, 0, 0 );
+      layout->addWidget( m_smb_port_input, 1, 1, 0 );
+#ifndef Q_OS_FREEBSD
+      layout->addWidget( fs_port_label, 2, 0, 0 );
+      layout->addWidget( m_fs_port_input, 2, 1, 0 );
+      layout->addWidget( protocol_label, 3, 0, 0 );
+      layout->addWidget( m_proto_input, 3, 1, 0 );
+      layout->addWidget( m_kerberos, 4, 0, 1, 2, 0 );
+#else
       layout->addWidget( protocol_label, 2, 0, 0 );
       layout->addWidget( m_proto_input, 2, 1, 0 );
       layout->addWidget( m_kerberos, 3, 0, 1, 2, 0 );
+#endif
 
       info = Smb4KSambaOptionsHandler::self()->findItem( m_host );
       
-      // Set the port.
-      if ( info && info->port() != -1 )
+      // Set the ports.
+      if ( info && info->smbPort() != -1 )
       {
-        m_port_input->setValue( info->port() );
+        m_smb_port_input->setValue( info->smbPort() );
       }
       else
       {
-        m_port_input->setValue( Smb4KSettings::remoteSMBPort() );
+        m_smb_port_input->setValue( Smb4KSettings::remoteSMBPort() );
       }
+      
+#ifndef Q_OS_FREEBSD
+      if ( info && info->fileSystemPort() != -1 )
+      {
+        m_fs_port_input->setValue( info->fileSystemPort() );
+      }
+      else
+      {
+        m_fs_port_input->setValue( Smb4KSettings::remoteFileSystemPort() );
+      }
+#endif
       
       // Set the protocol.
       if ( info && info->protocol() != Smb4KSambaOptionsInfo::UndefinedProtocol )
@@ -285,8 +313,13 @@ void Smb4KCustomOptionsDialog::setupDialog()
       }
 
       // Connections:
-      connect( m_port_input,  SIGNAL( valueChanged( int ) ),
-               this,          SLOT( slotPortChanged( int ) ) );
+      connect( m_smb_port_input,  SIGNAL( valueChanged( int ) ),
+               this,          SLOT( slotSMBPortChanged( int ) ) );
+
+#ifndef Q_OS_FREEBSD
+      connect( m_fs_port_input, SIGNAL( valueChanged( int ) ),
+               this,          SLOT( slotFileSystemPortChanged( int ) ) );
+#endif
 
       connect( m_kerberos,    SIGNAL( toggled( bool ) ),
                this,          SLOT( slotKerberosToggled( bool ) ) );
@@ -300,10 +333,10 @@ void Smb4KCustomOptionsDialog::setupDialog()
     {
 #ifndef Q_OS_FREEBSD
       QLabel *port_label = new QLabel( Smb4KSettings::self()->remoteFileSystemPortItem()->label(), main_widget );
-      m_port_input = new KIntNumInput( -1, main_widget );
-      m_port_input->setMinimumWidth( 200 );
-      m_port_input->setMinimum( Smb4KSettings::self()->remoteFileSystemPortItem()->minValue().toInt() );
-      m_port_input->setMaximum( Smb4KSettings::self()->remoteFileSystemPortItem()->maxValue().toInt() );
+      m_fs_port_input = new KIntNumInput( -1, main_widget );
+      m_fs_port_input->setMinimumWidth( 200 );
+      m_fs_port_input->setMinimum( Smb4KSettings::self()->remoteFileSystemPortItem()->minValue().toInt() );
+      m_fs_port_input->setMaximum( Smb4KSettings::self()->remoteFileSystemPortItem()->maxValue().toInt() );
 
       QLabel *permission_label = new QLabel( i18n( "Write access:" ), main_widget );
       m_rw_input = new KComboBox( false, main_widget );
@@ -352,7 +385,7 @@ void Smb4KCustomOptionsDialog::setupDialog()
       layout->addWidget( location_label, 0, 0, 0 );
       layout->addWidget( location, 0, 1, 0 );
       layout->addWidget( port_label, 1, 0, 0 );
-      layout->addWidget( m_port_input, 1, 1, 0 );
+      layout->addWidget( m_fs_port_input, 1, 1, 0 );
       layout->addWidget( uid_label, 2, 0, 0 );
       layout->addWidget( m_uid_input, 2, 1, 0 );
       layout->addWidget( gid_label, 3, 0, 0 );
@@ -361,10 +394,10 @@ void Smb4KCustomOptionsDialog::setupDialog()
       layout->addWidget( m_rw_input, 4, 1, 0 );
 #else
       QLabel *port_label = new QLabel( Smb4KSettings::self()->remoteSMBPortItem()->label(), main_widget );
-      m_port_input = new KIntNumInput( -1, main_widget );
-      m_port_input->setMinimumWidth( 200 );
-      m_port_input->setMinimum( Smb4KSettings::self()->remoteSMBPortItem()->minValue().toInt() );
-      m_port_input->setMaximum( Smb4KSettings::self()->remoteSMBPortItem()->maxValue().toInt() );
+      m_smb_port_input = new KIntNumInput( -1, main_widget );
+      m_smb_port_input->setMinimumWidth( 200 );
+      m_smb_port_input->setMinimum( Smb4KSettings::self()->remoteSMBPortItem()->minValue().toInt() );
+      m_smb_port_input->setMaximum( Smb4KSettings::self()->remoteSMBPortItem()->maxValue().toInt() );
 
       QLabel *uid_label = new QLabel( i18n( "User ID:" ), main_widget );
       m_uid_input = new KComboBox( main_widget );
@@ -403,7 +436,7 @@ void Smb4KCustomOptionsDialog::setupDialog()
       layout->addWidget( location_label, 0, 0, 0 );
       layout->addWidget( location, 0, 1, 0 );
       layout->addWidget( port_label, 1, 0, 0 );
-      layout->addWidget( m_port_input, 1, 1, 0 );
+      layout->addWidget( m_smb_port_input, 1, 1, 0 );
       layout->addWidget( uid_label, 2, 0, 0 );
       layout->addWidget( m_uid_input, 2, 1, 0 );
       layout->addWidget( gid_label, 3, 0, 0 );
@@ -413,18 +446,25 @@ void Smb4KCustomOptionsDialog::setupDialog()
       info = Smb4KSambaOptionsHandler::self()->findItem( m_share );
       
       // Set the port.
-      if ( info && info->port() != -1 )
+#ifndef Q_OS_FREEBSD
+      if ( info && info->fileSystemPort() != -1 )
       {
-        m_port_input->setValue( info->port() );
+        m_fs_port_input->setValue( info->fileSystemPort() );
       }
       else
       {
-#ifndef Q_OS_FREEBSD
-        m_port_input->setValue( Smb4KSettings::remoteFileSystemPort() );
-#else
-        m_port_input->setValue( Smb4KSettings::remoteSMBPort() );
-#endif
+        m_fs_port_input->setValue( Smb4KSettings::remoteFileSystemPort() );
       }
+#else
+      if ( info && info->smbPort() != -1 )
+      {
+        m_smb_port_input->setValue( info->smbPort() );
+      }
+      else
+      {
+        m_smb_port_input->setValue( Smb4KSettings::remoteSMBPort();
+      }
+#endif
       
       // Set the user ID.
       QString user_text;
@@ -506,8 +546,13 @@ void Smb4KCustomOptionsDialog::setupDialog()
 #endif
 
       // Connections:
-      connect( m_port_input,  SIGNAL( valueChanged( int ) ),
-               this,          SLOT( slotPortChanged( int ) ) );
+#ifndef Q_OS_FREEBSD
+      connect( m_fs_port_input,  SIGNAL( valueChanged( int ) ),
+               this,          SLOT( slotFileSystemPortChanged( int ) ) );
+#else
+      connect( m_smb_port_input, SIGNAL( valueChanged( int ) ),
+               this,             SLOT( slotSMBPortChanged( int ) ) );
+#endif
 
       connect( m_uid_input,   SIGNAL( activated( const QString & ) ),
                this,          SLOT( slotUIDChanged( const QString & ) ) );
@@ -550,8 +595,25 @@ bool Smb4KCustomOptionsDialog::hasDefaultSettings()
   {
     case Host:
     {
-      // Port
-      if ( m_port_input->value() != Smb4KSettings::remoteSMBPort() )
+      // SMB port
+      if ( m_smb_port_input->value() != Smb4KSettings::remoteSMBPort() )
+      {
+        if ( has_default_settings )
+        {
+          has_default_settings = false;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      // File system port
+      if ( m_fs_port_input->value() != Smb4KSettings::remoteFileSystemPort() )
       {
         if ( has_default_settings )
         {
@@ -675,9 +737,9 @@ bool Smb4KCustomOptionsDialog::hasDefaultSettings()
     {
       // Port
 #ifndef Q_OS_FREEBSD
-      if ( m_port_input->value() != Smb4KSettings::remoteFileSystemPort() )
+      if ( m_fs_port_input->value() != Smb4KSettings::remoteFileSystemPort() )
 #else
-      if ( m_port_input->value() != Smb4KSettings::remoteSMBPort() )
+      if ( m_smb_port_input->value() != Smb4KSettings::remoteSMBPort() )
 #endif
       {
         if ( has_default_settings )
@@ -791,27 +853,18 @@ bool Smb4KCustomOptionsDialog::hasDefaultSettings()
 
 bool Smb4KCustomOptionsDialog::hasInitialSettings()
 {
-  bool has_initial_settings = true;
-  
   switch ( m_type )
   {
     case Host:
     {
       Smb4KSambaOptionsInfo *info = Smb4KSambaOptionsHandler::self()->findItem( m_host );
       
-      // Port
-      if ( info && info->port() != -1 )
+      // Ports
+      if ( info && info->smbPort() != -1 )
       {
-        if ( m_port_input->value() != info->port() )
+        if ( m_smb_port_input->value() != info->smbPort() )
         {
-          if ( has_initial_settings )
-          {
-            has_initial_settings = false;
-          }
-          else
-          {
-            // Do nothing
-          }
+          return false;
         }
         else
         {
@@ -820,22 +873,40 @@ bool Smb4KCustomOptionsDialog::hasInitialSettings()
       }
       else
       {
-        if ( m_port_input->value() != Smb4KSettings::remoteSMBPort() )
+        if ( m_smb_port_input->value() != Smb4KSettings::remoteSMBPort() )
         {
-          if ( has_initial_settings )
-          {
-            has_initial_settings = false;
-          }
-          else
-          {
-            // Do nothing
-          }
+          return false;
         }
         else
         {
           // Do nothing
         }
       }
+
+#ifndef Q_OS_FREEBSD
+      if ( info && info->fileSystemPort() != -1 )
+      {
+        if ( m_fs_port_input->value() != info->fileSystemPort() )
+        {
+          return false;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        if ( m_fs_port_input->value() != Smb4KSettings::remoteFileSystemPort() )
+        {
+          return false;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+#endif
       
       // Protocol.
       if ( info && info->protocol() != Smb4KSambaOptionsInfo::UndefinedProtocol )
@@ -846,14 +917,7 @@ bool Smb4KCustomOptionsDialog::hasInitialSettings()
           {
             if ( QString::compare( m_proto_input->currentText(), i18n( "automatic" ), Qt::CaseInsensitive ) != 0 )
             {
-              if ( has_initial_settings )
-              {
-                has_initial_settings = false;
-              }
-              else
-              {
-                // Do nothing
-              }
+              return false;
             }
             else
             {
@@ -865,14 +929,7 @@ bool Smb4KCustomOptionsDialog::hasInitialSettings()
           {
             if ( QString::compare( m_proto_input->currentText(), "RPC", Qt::CaseInsensitive ) != 0 )
             {
-              if ( has_initial_settings )
-              {
-                has_initial_settings = false;
-              }
-              else
-              {
-                // Do nothing
-              }
+              return false;
             }
             else
             {
@@ -884,14 +941,7 @@ bool Smb4KCustomOptionsDialog::hasInitialSettings()
           {
             if ( QString::compare( m_proto_input->currentText(), "RAP", Qt::CaseInsensitive ) != 0 )
             {
-              if ( has_initial_settings )
-              {
-                has_initial_settings = false;
-              }
-              else
-              {
-                // Do nothing
-              }
+              return false;
             }
             else
             {
@@ -903,14 +953,7 @@ bool Smb4KCustomOptionsDialog::hasInitialSettings()
           {
             if ( QString::compare( m_proto_input->currentText(), "ADS", Qt::CaseInsensitive ) != 0 )
             {
-              if ( has_initial_settings )
-              {
-                has_initial_settings = false;
-              }
-              else
-              {
-                // Do nothing
-              }
+              return false;
             }
             else
             {
@@ -932,14 +975,7 @@ bool Smb4KCustomOptionsDialog::hasInitialSettings()
           {
             if ( QString::compare( m_proto_input->currentText(), i18n( "automatic" ), Qt::CaseInsensitive ) != 0 )
             {
-              if ( has_initial_settings )
-              {
-                has_initial_settings = false;
-              }
-              else
-              {
-                // Do nothing
-              }
+              return false;
             }
             else
             {
@@ -951,14 +987,7 @@ bool Smb4KCustomOptionsDialog::hasInitialSettings()
           {
             if ( QString::compare( m_proto_input->currentText(), "RPC", Qt::CaseInsensitive ) != 0 )
             {
-              if ( has_initial_settings )
-              {
-                has_initial_settings = false;
-              }
-              else
-              {
-                // Do nothing
-              }
+              return false;
             }
             else
             {
@@ -970,14 +999,7 @@ bool Smb4KCustomOptionsDialog::hasInitialSettings()
           {
             if ( QString::compare( m_proto_input->currentText(), "RAP", Qt::CaseInsensitive ) != 0 )
             {
-              if ( has_initial_settings )
-              {
-                has_initial_settings = false;
-              }
-              else
-              {
-                // Do nothing
-              }
+              return false;
             }
             else
             {
@@ -989,14 +1011,7 @@ bool Smb4KCustomOptionsDialog::hasInitialSettings()
           {
             if ( QString::compare( m_proto_input->currentText(), "ADS", Qt::CaseInsensitive ) != 0 )
             {
-              if ( has_initial_settings )
-              {
-                has_initial_settings = false;
-              }
-              else
-              {
-                // Do nothing
-              }
+              return false;
             }
             else
             {
@@ -1020,14 +1035,7 @@ bool Smb4KCustomOptionsDialog::hasInitialSettings()
           {
             if ( !m_kerberos->isChecked() )
             {
-              if ( has_initial_settings )
-              {
-                has_initial_settings = false;
-              }
-              else
-              {
-                // Do nothing
-              }
+              return false;
             }
             else
             {
@@ -1039,14 +1047,7 @@ bool Smb4KCustomOptionsDialog::hasInitialSettings()
           {
             if ( m_kerberos->isChecked() )
             {
-              if ( has_initial_settings )
-              {
-                has_initial_settings = false;
-              }
-              else
-              {
-                // Do nothing
-              }
+              return false;
             }
             else
             {
@@ -1064,14 +1065,7 @@ bool Smb4KCustomOptionsDialog::hasInitialSettings()
       {
         if ( m_kerberos->isChecked() != Smb4KSettings::useKerberos() )
         {
-          if ( has_initial_settings )
-          {
-            has_initial_settings = false;
-          }
-          else
-          {
-            // Do nothing
-          }
+          return false;
         }
         else
         {
@@ -1084,19 +1078,12 @@ bool Smb4KCustomOptionsDialog::hasInitialSettings()
     {
       Smb4KSambaOptionsInfo *info = Smb4KSambaOptionsHandler::self()->findItem( m_share );
       
-      // Set the port.
-      if ( info && info->port() != -1 )
+#ifndef Q_OS_FREEBSD
+      if ( info && info->fileSystemPort() != -1 )
       {
-        if ( m_port_input->value() != info->port() )
+        if ( m_fs_port_input->value() != info->fileSystemPort() )
         {
-          if ( has_initial_settings )
-          {
-            has_initial_settings = false;
-          }
-          else
-          {
-            // Do nothing
-          }
+          return false;
         }
         else
         {
@@ -1105,40 +1092,46 @@ bool Smb4KCustomOptionsDialog::hasInitialSettings()
       }
       else
       {
-#ifndef Q_OS_FREEBSD
-        if ( m_port_input->value() != Smb4KSettings::remoteFileSystemPort() )
-#else
-        if ( m_port_input->value() != Smb4KSettings::remoteSMBPort() )
-#endif
+        if ( m_fs_port_input->value() != Smb4KSettings::remoteFileSystemPort() )
         {
-          if ( has_initial_settings )
-          {
-            has_initial_settings = false;
-          }
-          else
-          {
-            // Do nothing
-          }
+          return false;
         }
         else
         {
           // Do nothing
         }
       }
+#else
+      if ( info && info->smbPort() != -1 )
+      {
+        if ( m_smb_port_input->value() != info->smbPort() )
+        {
+          return false;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        if ( m_smb_port_input->value() != Smb4KSettings::smbPort() )
+        {
+          return false;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+#endif
       
       // User ID
       if ( info && info->uid() != (K_UID)Smb4KSettings::userID().toInt() )
       {
         if ( (K_UID)m_uid_input->currentText().section( "(", 1, 1 ).section( ")", 0, 0 ).toInt() != info->uid() )
         {
-          if ( has_initial_settings )
-          {
-            has_initial_settings = false;
-          }
-          else
-          {
-            // Do nothing
-          }
+          return false;
         }
         else
         {
@@ -1149,14 +1142,7 @@ bool Smb4KCustomOptionsDialog::hasInitialSettings()
       {
         if ( (K_UID)m_uid_input->currentText().section( "(", 1, 1 ).section( ")", 0, 0 ).toInt() != (K_UID)Smb4KSettings::userID().toInt() )
         {
-          if ( has_initial_settings )
-          {
-            has_initial_settings = false;
-          }
-          else
-          {
-            // Do nothing
-          }
+          return false;
         }
         else
         {
@@ -1169,14 +1155,7 @@ bool Smb4KCustomOptionsDialog::hasInitialSettings()
       {
         if ( (K_GID)m_gid_input->currentText().section( "(", 1, 1 ).section( ")", 0, 0 ).toInt() != (K_GID)info->uid() )
         {
-          if ( has_initial_settings )
-          {
-            has_initial_settings = false;
-          }
-          else
-          {
-            // Do nothing
-          }
+          return false;
         }
         else
         {
@@ -1187,14 +1166,7 @@ bool Smb4KCustomOptionsDialog::hasInitialSettings()
       {
         if ( (K_GID)m_gid_input->currentText().section( "(", 1, 1 ).section( ")", 0, 0 ).toInt() != (K_GID)Smb4KSettings::groupID().toInt() )
         {
-          if ( has_initial_settings )
-          {
-            has_initial_settings = false;
-          }
-          else
-          {
-            // Do nothing
-          }
+          return false;
         }
         else
         {
@@ -1212,14 +1184,7 @@ bool Smb4KCustomOptionsDialog::hasInitialSettings()
           {
             if ( QString::compare( m_rw_input->currentText(), i18n( "read-write" ), Qt::CaseInsensitive ) != 0 )
             {
-              if ( has_initial_settings )
-              {
-                has_initial_settings = false;
-              }
-              else
-              {
-                // Do nothing
-              }
+              return false;
             }
             else
             {
@@ -1231,14 +1196,7 @@ bool Smb4KCustomOptionsDialog::hasInitialSettings()
           {
             if ( QString::compare( m_rw_input->currentText(), i18n( "read-only" ), Qt::CaseInsensitive ) != 0 )
             {
-              if ( has_initial_settings )
-              {
-                has_initial_settings = false;
-              }
-              else
-              {
-                // Do nothing
-              }
+              return false;
             }
             else
             {
@@ -1260,14 +1218,7 @@ bool Smb4KCustomOptionsDialog::hasInitialSettings()
           {
             if ( QString::compare( m_rw_input->currentText(), i18n( "read-write" ), Qt::CaseInsensitive ) != 0 )
             {
-              if ( has_initial_settings )
-              {
-                has_initial_settings = false;
-              }
-              else
-              {
-                // Do nothing
-              }
+              return false;
             }
             else
             {
@@ -1279,14 +1230,7 @@ bool Smb4KCustomOptionsDialog::hasInitialSettings()
           {
             if ( QString::compare( m_rw_input->currentText(), i18n( "read-only" ), Qt::CaseInsensitive ) != 0 )
             {
-              if ( has_initial_settings )
-              {
-                has_initial_settings = false;
-              }
-              else
-              {
-                // Do nothing
-              }
+              return false;
             }
             else
             {
@@ -1310,14 +1254,21 @@ bool Smb4KCustomOptionsDialog::hasInitialSettings()
     }
   }
   
-  return has_initial_settings;
+  return true;
 }
 
 /////////////////////////////////////////////////////////////////////////////
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
 
-void Smb4KCustomOptionsDialog::slotPortChanged( int /*val*/ )
+void Smb4KCustomOptionsDialog::slotSMBPortChanged( int /*val*/ )
+{
+  enableButton( User1, !hasDefaultSettings() );
+  enableButton( Ok, !hasInitialSettings() );
+}
+
+
+void Smb4KCustomOptionsDialog::slotFileSystemPortChanged( int /*val*/ )
 {
   enableButton( User1, !hasDefaultSettings() );
   enableButton( Ok, !hasInitialSettings() );
@@ -1389,7 +1340,7 @@ void Smb4KCustomOptionsDialog::slotOKButtonClicked()
     {
       case Host:
       {
-        Smb4KSambaOptionsInfo *info = Smb4KSambaOptionsHandler::self()->findItem( m_host, true );
+        Smb4KSambaOptionsInfo *info = Smb4KSambaOptionsHandler::self()->findItem( m_host );
         
         if ( !info )
         {
@@ -1402,7 +1353,10 @@ void Smb4KCustomOptionsDialog::slotOKButtonClicked()
         }
         
         // Put in the information.
-        info->setPort( m_port_input->value() );
+        info->setSMBPort( m_smb_port_input->value() );
+#ifndef Q_OS_FREEBSD
+        info->setFileSystemPort( m_fs_port_input->value() );
+#endif
 
         if ( QString::compare( m_proto_input->currentText(), i18n( "automatic" ), Qt::CaseInsensitive ) == 0 )
         {
@@ -1454,7 +1408,11 @@ void Smb4KCustomOptionsDialog::slotOKButtonClicked()
         }
         
         // Put in the information.
-        info->setPort( m_port_input->value() );
+#ifndef Q_OS_FREEBSD
+        info->setFileSystemPort( m_fs_port_input->value() );
+#else
+        info->setFileSystemPort( m_smb_port_input->value() );
+#endif
         info->setUID( (K_UID)m_uid_input->currentText().section( "(", 1, 1 ).section( ")", 0, 0 ).toInt() );
         info->setGID( (K_GID)m_gid_input->currentText().section( "(", 1, 1 ).section( ")", 0, 0 ).toInt() );
         
@@ -1496,7 +1454,10 @@ void Smb4KCustomOptionsDialog::slotDefaultButtonClicked()
   {
     case Host:
     {
-      m_port_input->setValue( Smb4KSettings::remoteSMBPort() );
+      m_smb_port_input->setValue( Smb4KSettings::remoteSMBPort() );
+#ifndef Q_OS_FREEBSD
+      m_fs_port_input->setValue( Smb4KSettings::remoteFileSystemPort() );
+#endif
       m_kerberos->setChecked( Smb4KSettings::useKerberos() );
       
       switch ( Smb4KSettings::protocolHint() )
@@ -1532,9 +1493,9 @@ void Smb4KCustomOptionsDialog::slotDefaultButtonClicked()
     case Share:
     {
 #ifndef Q_OS_FREEBSD
-      m_port_input->setValue( Smb4KSettings::remoteFileSystemPort() );
+      m_fs_port_input->setValue( Smb4KSettings::remoteFileSystemPort() );
 #else
-      m_port_input->setValue( Smb4KSettings::remoteSMBPort() );
+      m_smb_port_input->setValue( Smb4KSettings::remoteSMBPort() );
 #endif
 
       KUser user( (K_UID)Smb4KSettings::userID().toInt() );

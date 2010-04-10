@@ -85,11 +85,18 @@ class KDE_EXPORT Smb4KCustomOptionsDialog : public KDialog
 
   protected slots:
     /**
-     * Is invoked when the port value changed
+     * Is invoked when the SMB port value changed
      *
      * @param int             The port number
      */
-    void slotPortChanged( int value );
+    void slotSMBPortChanged( int value );
+    
+    /**
+     * Is invoked when the file system port value changed
+     *
+     * @param int             The port number
+     */
+    void slotFileSystemPortChanged( int value );
 
     /**
      * Is invoked when the protocol value changed
@@ -184,11 +191,16 @@ class KDE_EXPORT Smb4KCustomOptionsDialog : public KDialog
     Smb4KShare *m_share;
 
     /**
-     * Port input
+     * SMB port input
      */
-    KIntNumInput *m_port_input;
+    KIntNumInput *m_smb_port_input;
 
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
+    /**
+     * File system port input
+     */
+    KIntNumInput *m_fs_port_input;
+    
     /**
      * This combo box determines if the user wants to mount a share
      * readwrite or readonly.
