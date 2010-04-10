@@ -190,7 +190,7 @@ void Smb4KPreviewer::preview( Smb4KPreviewItem *item )
   Smb4KSambaOptionsInfo *info = Smb4KSambaOptionsHandler::self()->findItem( item->share() );
   
   // Port
-  command += (info && info->port() != -1) ? QString( " -p %1" ).arg( info->port() ) : 
+  command += (info && info->smbPort() != -1) ? QString( " -p %1" ).arg( info->smbPort() ) : 
              QString( " -p %1" ).arg( Smb4KSettings::remoteSMBPort() );
              
   // Kerberos
