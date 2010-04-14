@@ -137,7 +137,7 @@ bool Smb4KHomesSharesHandler::specifyUser( Smb4KShare *share, QWidget *parent )
     pic->setPixmap( DesktopIcon( "user-identity" ) );
     pic->setMargin( 10 );
 
-    QLabel *text = new QLabel( i18n( "Please specify a user name." ), frame );
+    QLabel *text = new QLabel( i18n( "Please specify a username." ), frame );
 
     QLabel *userLabel = new QLabel( i18n( "User:" ), frame );
     KComboBox *userCombo = new KComboBox( true, frame );
