@@ -583,7 +583,7 @@ bool Smb4KWalletManager::showPasswordDialog( Smb4KAuthInfo *authInfo, QWidget *p
     }
     default:
     {
-      prompt = i18n( "<qt>Please enter a username and a password below.</qt>" );
+      prompt = i18n( "<qt>Please enter a username and a password.</qt>" );
       break;
     }
   }
