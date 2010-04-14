@@ -381,8 +381,7 @@ void Smb4KSambaOptionsHandler::writeCustomOptions()
       {
         Q_ASSERT( m_list.at( i ) );
         
-        if ( hasCustomOptions( m_list.at( i ) ) ||
-             m_list.at( i )->remount() == Smb4KSambaOptionsInfo::DoRemount )
+        if ( hasCustomOptions( m_list.at( i ) ) || m_list.at( i )->remount() == Smb4KSambaOptionsInfo::DoRemount )
         {
           xmlWriter.writeStartElement( "options" );
           xmlWriter.writeAttribute( "type", m_list.at( i )->type() == Smb4KSambaOptionsInfo::Host ? "Host" : "Share" );
@@ -1123,7 +1122,69 @@ bool Smb4KSambaOptionsHandler::hasCustomOptions( Smb4KSambaOptionsInfo *info )
       {
         // Do nothing
       }
+      
+      // Write access.
+      if ( info->writeAccess() != Smb4KSambaOptionsInfo::UndefinedWriteAccess )
+      {
+        switch ( Smb4KSettings::writeAccess() )
+        {
+          case Smb4KSettings::EnumWriteAccess::ReadWrite:
+          {
+            if ( info->writeAccess() != Smb4KSambaOptionsInfo::ReadWrite )
+            {
+              return true;
+            }
+            else
+            {
+              // Do nothing
+            }
+            
+            break;
+          }
+          case Smb4KSettings::EnumWriteAccess::ReadOnly:
+          {
+            if ( info->writeAccess() != Smb4KSambaOptionsInfo::ReadOnly )
+            {
+              return true;
+            }
+            else
+            {
+              // Do nothing
+            }
+            
+            break;
+          }
+          default:
+          {
+            break;
+          }
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
 #endif
+
+      // User ID.
+      if ( info->uid() != (K_UID)Smb4KSettings::userID().toInt() )
+      {
+        return true;
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      // Group ID.
+      if ( info->gid() != (K_GID)Smb4KSettings::groupID().toInt() )
+      {
+        return true;
+      }
+      else
+      {
+        // Do nothing
+      }
       
       break;
     }
@@ -1188,27 +1249,6 @@ bool Smb4KSambaOptionsHandler::hasCustomOptions( Smb4KSambaOptionsInfo *info )
       {
         // Do nothing
       }
-      
-      // Kerberos.
-      if ( info->useKerberos() != Smb4KSambaOptionsInfo::UndefinedKerberos )
-      {
-        if ( Smb4KSettings::useKerberos() && info->useKerberos() != Smb4KSambaOptionsInfo::UseKerberos )
-        {
-          return true;
-        }
-        else if ( !Smb4KSettings::useKerberos() && info->useKerberos() != Smb4KSambaOptionsInfo::NoKerberos )
-        {
-          return true;
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
-      }      
 #else
       // Port.
       if ( info->smbPort() != -1 )
