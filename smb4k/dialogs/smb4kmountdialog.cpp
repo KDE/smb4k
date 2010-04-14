@@ -180,7 +180,7 @@ void Smb4KMountDialog::slotOkClicked()
     }
     else
     {
-      KMessageBox::error( this, i18n( "The format of the share you entered is not correct. It must have the form //[USER@]HOST/SHARE. The user name is optional." ) );
+      KMessageBox::error( this, i18n( "The format of the share you entered is not correct. It must have the form //[USER@]HOST/SHARE. The username is optional." ) );
     }
   }
 
