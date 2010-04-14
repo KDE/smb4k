@@ -234,7 +234,7 @@ void Smb4KConfigDialog::saveCustomSambaOptions()
   }
   else
   {
-    return;
+    // Do nothing
   }
 }
 
