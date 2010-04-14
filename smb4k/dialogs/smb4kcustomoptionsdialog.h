@@ -73,16 +73,6 @@ class KDE_EXPORT Smb4KCustomOptionsDialog : public KDialog
      */
     ~Smb4KCustomOptionsDialog();
 
-    /**
-     * This function returns TRUE if the dialog has been initialized correctly
-     * and may be shown now. It will always return TRUE if you want to set options
-     * for a server or for a share, that is not a 'homes' share. Only in the case
-     * of a homes share it may return FALSE, if you didn't choose a user name.
-     *
-     * @returns               TRUE if the dialog has been set up correctly.
-     */
-    bool isInitialized() { return m_initialized; }
-
   protected slots:
     /**
      * Is invoked when the SMB port value changed
@@ -148,6 +138,16 @@ class KDE_EXPORT Smb4KCustomOptionsDialog : public KDialog
 
   private:
     /**
+     * Sets up the dialog for use with a host.
+     */
+    void setupHostDialog();
+    
+    /**
+     * Sets up the dialog for use with a share.
+     */
+    void setupShareDialog();
+    
+    /**
      * Checks if all entries in the dialog correspond to the default 
      * settings or not. If one setting deviates from the default, this 
      * function returns FALSE.
@@ -174,11 +174,6 @@ class KDE_EXPORT Smb4KCustomOptionsDialog : public KDialog
      * The item type
      */
     int m_type;
-
-    /**
-     * Sets up the dialog
-     */
-    void setupDialog();
 
     /**
      * The host item (is NULL if you process a share).
@@ -212,12 +207,6 @@ class KDE_EXPORT Smb4KCustomOptionsDialog : public KDialog
      * The protocol
      */
     KComboBox *m_proto_input;
-
-    /**
-     * Boolean that is TRUE if the dialog has been initialized
-     * correctly and my be shown now.
-     */
-    bool m_initialized;
 
     /**
      * This check box will determine if the user wants to try to
