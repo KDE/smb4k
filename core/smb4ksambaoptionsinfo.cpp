@@ -475,29 +475,10 @@ QMap<QString,QString> Smb4KSambaOptionsInfo::entries()
     }
   }
   
-  switch ( m_type )
-  {
-    case Host:
-    {
-      entries.insert( "uid", QString() );
-      entries.insert( "owner", QString() );
-      entries.insert( "gid", QString() );
-      entries.insert( "group", QString() );
-      break;
-    }
-    case Share:
-    {
-      entries.insert( "uid", QString( "%1" ).arg( m_user.uid() ) );
-      entries.insert( "owner", m_user.loginName() );
-      entries.insert( "gid", QString( "%1" ).arg( m_group.gid() ) );
-      entries.insert( "group", m_group.name() );
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
+  entries.insert( "uid", QString( "%1" ).arg( m_user.uid() ) );
+  entries.insert( "owner", m_user.loginName() );
+  entries.insert( "gid", QString( "%1" ).arg( m_group.gid() ) );
+  entries.insert( "group", m_group.name() );
 
   return entries;
 }
