@@ -1721,14 +1721,11 @@ void Smb4KNetworkBrowserPart::slotCustomOptions( bool /*checked*/ )
 
   if ( dlg && !dlg->isVisible() )
   {
-    if ( dlg->isInitialized() )
-    {
-      dlg->setVisible( true );
-    }
-    else
-    {
-      delete dlg;
-    }
+    dlg->setVisible( true );
+  }
+  else
+  {
+    // Do nothing
   }
 }
 
