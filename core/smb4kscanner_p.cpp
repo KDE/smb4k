@@ -507,7 +507,7 @@ void LookupMembersThread::slotProcessFinished( int exitCode, QProcess::ExitStatu
         }
         else
         {
-          host.setHostName( line.section( "   ", 0, 0 ).trimmed() );
+          host.setHostName( line.section( "   ", 0, 0 ).trimmed().replace( " ", "%20" ) );
           host.setWorkgroupName( workgroup->workgroupName() );
           host.setComment( line.section( "   ", 1, -1 ).trimmed() );
 
