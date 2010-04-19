@@ -299,6 +299,7 @@ Smb4K SVN_HEAD (????-??-??):
   + "homes" shares are now handled directly in the mount dialog. Thus, no multiple
     "Specify User" dialogs are shown, if you want to mount and bookmark a "homes"
     share.
+  + Added text completion.
 - Revised configuration dialog:
   + Added "Laptop Support" page where the user can set options that are important
     when you use a laptop.
