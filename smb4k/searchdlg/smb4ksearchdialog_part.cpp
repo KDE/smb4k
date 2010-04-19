@@ -3,7 +3,7 @@
     of Smb4K.
                              -------------------
     begin                : Fr Jun 1 2007
-    copyright            : (C) 2007-2009 by Alexander Reinholdt
+    copyright            : (C) 2007-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -36,6 +36,7 @@
 #include <kicon.h>
 #include <kactioncollection.h>
 #include <kmenu.h>
+#include <kapplication.h>
 
 // application specific includes
 #include <smb4ksearchdialog_part.h>
@@ -88,6 +89,10 @@ Smb4KSearchDialogPart::Smb4KSearchDialogPart( QWidget *parentWidget, QObject *pa
 
   // Set up actions:
   setupActions();
+  
+  // Load the completion items.
+  KConfigGroup group( Smb4KSettings::self()->config(), "SearchDialog" );
+  m_widget->comboBox()->completionObject()->setItems( group.readEntry( "SearchItemCompletion", QStringList() ) );
 
   // Connections:
   connect( m_widget->comboBox(),   SIGNAL( returnPressed() ),
@@ -122,6 +127,9 @@ Smb4KSearchDialogPart::Smb4KSearchDialogPart( QWidget *parentWidget, QObject *pa
 
   connect( Smb4KSearch::self(),    SIGNAL( finished( const QString & ) ),
            this,                   SLOT( slotSearchFinished( const QString & ) ) );
+           
+  connect( kapp,                   SIGNAL( aboutToQuit() ),
+           this,                   SLOT( slotAboutToQuit() ) );
 }
 
 
@@ -283,6 +291,9 @@ void Smb4KSearchDialogPart::slotSearchActionTriggered( bool /*checked*/ )
   if ( !search_item.isEmpty() )
   {
     Smb4KSearch::self()->search( m_widget->comboBox()->currentText() );
+    
+    KCompletion *completion = m_widget->comboBox()->completionObject();
+    completion->addItem( search_item );
   }
   else
   {
@@ -715,6 +726,14 @@ void Smb4KSearchDialogPart::slotShareUnmounted( Smb4KShare *share )
     }
   }
 }
+
+
+void Smb4KSearchDialogPart::slotAboutToQuit()
+{
+  KConfigGroup group( Smb4KSettings::self()->config(), "SearchDialog" );
+  group.writeEntry( "SearchItemCompletion", m_widget->comboBox()->completionObject()->items() );
+}
+
 
 
 #include "smb4ksearchdialog_part.moc"

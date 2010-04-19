@@ -3,7 +3,7 @@
     of Smb4K.
                              -------------------
     begin                : Fr Jun 1 2007
-    copyright            : (C) 2007-2009 by Alexander Reinholdt
+    copyright            : (C) 2007-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -207,6 +207,11 @@ class Smb4KSearchDialogPart : public KParts::Part
      *                            be opened.
      */
     void slotContextMenuRequested( const QPoint &pos );
+    
+    /**
+     * This slot is called when the application is about to quit.
+     */
+    void slotAboutToQuit();
 
   private:
     /**

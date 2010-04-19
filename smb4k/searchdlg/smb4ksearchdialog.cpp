@@ -2,7 +2,7 @@
     smb4ksearchdialog  -  The search dialog widget of Smb4K.
                              -------------------
     begin                : Sa Jun 2 2007
-    copyright            : (C) 2007-2008 by Alexander Reinholdt
+    copyright            : (C) 2007-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -48,6 +48,7 @@ Smb4KSearchDialog::Smb4KSearchDialog( QWidget *parent )
   m_combo = new KComboBox( true, this );
   m_combo->setToolTip( i18n( "Enter the search string here." ) );
   m_combo->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Preferred );
+  m_combo->setCompletionMode( KGlobalSettings::CompletionPopupAuto );
 
   // List view
   m_list_widget = new KListWidget( this );

@@ -2,7 +2,7 @@
     smb4ksearchdialog  -  The search dialog widget of Smb4K.
                              -------------------
     begin                : Sa Jun 2 2007
-    copyright            : (C) 2007-2008 by Alexander Reinholdt
+    copyright            : (C) 2007-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
