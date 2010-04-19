@@ -266,6 +266,7 @@ Smb4K SVN_HEAD (????-??-??):
   + If the synchronization was aborted, the progress bars are not set to 100%.
   + Several small improvements.
   + Replaced deprecated functions.
+  + Added path completion.
 - Revised the print dialog:
   + Adjusted code so that the new features of the print code can be used.
   + The file that should be printed is now checked if it is valid and existing.

@@ -32,6 +32,7 @@
 #include <kdebug.h>
 #include <kstandardguiitem.h>
 #include <kurl.h>
+#include <kurlcompletion.h>
 
 // application specific includes
 #include "smb4ksynchronizationdialog.h"
@@ -69,12 +70,16 @@ Smb4KSynchronizationDialog::Smb4KSynchronizationDialog( Smb4KShare *share, QWidg
   m_source->setUrl( KUrl( QString::fromUtf8( m_share->path() )+"/" ) );
   m_source->setMode( KFile::Directory | KFile::LocalOnly );
   m_source->lineEdit()->setSqueezedTextEnabled( true );
+  m_source->completionObject()->setCompletionMode( KGlobalSettings::CompletionPopupAuto );
+  m_source->completionObject()->setMode( KUrlCompletion::FileCompletion );
 
   QLabel *destination_label = new QLabel( i18n( "Destination:" ), main_widget );
   m_destination             = new KUrlRequester( main_widget );
   m_destination->setUrl( Smb4KSettings::rsyncPrefix() );
   m_destination->setMode( KFile::Directory | KFile::LocalOnly );
   m_destination->lineEdit()->setSqueezedTextEnabled( true );
+  m_destination->completionObject()->setCompletionMode( KGlobalSettings::CompletionPopupAuto );
+  m_destination->completionObject()->setMode( KUrlCompletion::FileCompletion );
 
   m_current_file            = new KLineEdit( main_widget );
   m_current_file->setSqueezedTextEnabled( true );
