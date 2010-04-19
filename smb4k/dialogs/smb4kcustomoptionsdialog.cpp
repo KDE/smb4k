@@ -136,7 +136,7 @@ void Smb4KCustomOptionsDialog::setupHostDialog()
   layout->setMargin( 0 );
   
   // UNC
-  QLabel *unc_label = new QLabel( i18n( "Host:" ), main_widget );
+  QLabel *unc_label = new QLabel( i18n( "UNC:" ), main_widget );
   KLineEdit *unc    = new KLineEdit( m_host->unc(), main_widget );
   unc->setReadOnly( true );
   
@@ -502,7 +502,7 @@ void Smb4KCustomOptionsDialog::setupShareDialog()
   layout->setMargin( 0 );
   
   // UNC
-  QLabel *unc_label = new QLabel( i18n( "Share:" ), main_widget );
+  QLabel *unc_label = new QLabel( i18n( "UNC:" ), main_widget );
   KLineEdit *unc    = new KLineEdit( m_share->unc(), main_widget );
   unc->setReadOnly( true );
   
@@ -1684,7 +1684,7 @@ void Smb4KCustomOptionsDialog::slotOKButtonClicked()
     }
   }
   
-  KConfigGroup group( Smb4KSettings::self()->config(), "Dialogs" );
+  KConfigGroup group( Smb4KSettings::self()->config(), "CustomOptionsDialog" );
   saveDialogSize( group, KConfigGroup::Normal );
 }
 
