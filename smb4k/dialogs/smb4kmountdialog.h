@@ -109,6 +109,24 @@ class KDE_EXPORT Smb4KMountDialog : public KDialog
      */
     void slotMounterFinished( Smb4KShare *share,
                               int process );
+                              
+    /**
+     * This slot is used for making text completion for the share edit line
+     * work.
+     */
+    void slotShareNameEntered();
+    
+    /**
+     * This slot is used for making text completion for the IP edit line 
+     * work.
+     */
+    void slotIPEntered();
+    
+    /**
+     * This slot is used for making text completion for the workgroup edit 
+     * line work.
+     */
+    void slotWorkgroupEntered();
 
   private:
     /**

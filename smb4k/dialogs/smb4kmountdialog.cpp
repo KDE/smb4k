@@ -55,9 +55,6 @@ Smb4KMountDialog::Smb4KMountDialog( QWidget *parent )
 
   setupView();
 
-  connect( m_share_input,        SIGNAL( textChanged ( const QString & ) ) ,
-           this,                 SLOT( slotChangeInputValue( const QString & ) ) );
-
   connect( this,                 SIGNAL( okClicked() ),
            this,                 SLOT( slotOkClicked() ) );
 
@@ -74,6 +71,9 @@ Smb4KMountDialog::Smb4KMountDialog( QWidget *parent )
 
   KConfigGroup group( Smb4KSettings::self()->config(), "MountDialog" );
   restoreDialogSize( group );
+  m_share_input->completionObject()->setItems( group.readEntry( "ShareNameCompletion", QStringList() ) );
+  m_ip_input->completionObject()->setItems( group.readEntry( "IPAddressCompletion", QStringList() ) );
+  m_workgroup_input->completionObject()->setItems( group.readEntry( "WorkgroupCompletion", QStringList() ) );
 }
 
 
@@ -91,17 +91,23 @@ void Smb4KMountDialog::setupView()
   layout->setSpacing( 5 );
   layout->setMargin( 0 );
 
-  QLabel *shareLabel = new QLabel( i18n( "Share:" ), main_widget );
+  QLabel *shareLabel = new QLabel( i18n( "UNC:" ), main_widget );
   m_share_input = new KLineEdit( main_widget );
+  m_share_input->setCompletionMode( KGlobalSettings::CompletionPopupAuto );
+//   m_share_input->setClearButtonShown( true );
   m_share_input->setMinimumWidth( 200 );
   m_share_input->setFocus();
-
+  
   QLabel *addressLabel = new QLabel( i18n( "IP Address:" ), main_widget );
   m_ip_input = new KLineEdit( main_widget);
+  m_ip_input->setCompletionMode( KGlobalSettings::CompletionPopupAuto );
+//   m_ip_input->setClearButtonShown( true );
   m_ip_input->setMinimumWidth( 200 );
 
   QLabel *workgroupLabel = new QLabel( i18n( "Workgroup:" ), main_widget );
   m_workgroup_input = new KLineEdit( main_widget );
+  m_workgroup_input->setCompletionMode( KGlobalSettings::CompletionPopupAuto );
+//   m_workgroup_input->setClearButtonShown( true );
   m_workgroup_input->setMinimumWidth( 200 );
 
   m_bookmark = new QCheckBox( i18n( "Add this share to the bookmarks" ), main_widget );
@@ -115,6 +121,19 @@ void Smb4KMountDialog::setupView()
   layout->addWidget( m_bookmark, 3, 0, 1, 2, 0 );
 
   slotChangeInputValue( m_share_input->text() );
+
+  // Connections
+  connect( m_share_input,     SIGNAL( textChanged ( const QString & ) ) ,
+           this,              SLOT( slotChangeInputValue( const QString & ) ) );
+  
+  connect( m_share_input,     SIGNAL( editingFinished() ), 
+           this,              SLOT( slotShareNameEntered() ) );
+           
+  connect( m_ip_input,        SIGNAL( editingFinished() ), 
+           this,              SLOT( slotIPEntered() ) );
+  
+  connect( m_workgroup_input, SIGNAL( editingFinished() ),
+           this,              SLOT( slotWorkgroupEntered() ) );
 }
 
 
@@ -186,6 +205,9 @@ void Smb4KMountDialog::slotOkClicked()
 
   KConfigGroup group( Smb4KSettings::self()->config(), "MountDialog" );
   saveDialogSize( group, KConfigGroup::Normal );
+  group.writeEntry( "ShareNameCompletion", m_share_input->completionObject()->items() );
+  group.writeEntry( "IPAddressCompletion", m_ip_input->completionObject()->items() );
+  group.writeEntry( "WorkgroupCompletion", m_workgroup_input->completionObject()->items() );
 }
 
 
@@ -246,6 +268,52 @@ void Smb4KMountDialog::slotMounterFinished( Smb4KShare *share, int /*process*/ )
     // Do nothing
   }
 }
+
+
+void Smb4KMountDialog::slotShareNameEntered()
+{
+  KCompletion *completion = m_share_input->completionObject();
+  
+  if ( !m_share_input->userText().isEmpty() )
+  {
+    completion->addItem( m_share_input->userText() );
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KMountDialog::slotIPEntered()
+{
+  KCompletion *completion = m_ip_input->completionObject();
+  
+  if ( !m_ip_input->userText().isEmpty() )
+  {
+    completion->addItem( m_ip_input->userText() );
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KMountDialog::slotWorkgroupEntered()
+{
+  KCompletion *completion = m_workgroup_input->completionObject();
+  
+  if ( !m_workgroup_input->userText().isEmpty() )
+  {
+    completion->addItem( m_workgroup_input->userText() );
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
 
 #include "smb4kmountdialog.moc"
 
