@@ -1573,6 +1573,8 @@ void Smb4KMounter::slotThreadFinished()
 
     if ( thread->isFinished() )
     {
+      (void) m_cache.take( key );
+      
       switch ( thread->process()->type() )
       {
         case Smb4KProcess::Mount:
@@ -1623,7 +1625,7 @@ void Smb4KMounter::slotThreadFinished()
         }
       }
       
-      m_cache.remove( key );
+      delete thread;
     }
     else
     {
