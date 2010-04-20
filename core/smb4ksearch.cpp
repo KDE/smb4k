@@ -2,7 +2,7 @@
     smb4ksearch  -  This class searches for custom search strings.
                              -------------------
     begin                : So Apr 27 2008
-    copyright            : (C) 2008-2009 by Alexander Reinholdt
+    copyright            : (C) 2008-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -323,7 +323,6 @@ void Smb4KSearch::search( const QString &string )
   m_cache.insert( string, thread );
 
   connect( thread, SIGNAL( finished() ), this, SLOT( slotThreadFinished() ) );
-  connect( thread, SIGNAL( authError( const QString & ) ), this, SLOT( slotAuthError( const QString & ) ) );
   connect( thread, SIGNAL( result( Smb4KBasicNetworkItem * ) ), this, SLOT( slotProcessSearchResult( Smb4KBasicNetworkItem * ) ) );
 
   thread->start();
@@ -400,37 +399,6 @@ bool Smb4KSearch::isRunning( const QString &string )
 void Smb4KSearch::slotAboutToQuit()
 {
   abortAll();
-}
-
-
-void Smb4KSearch::slotAuthError( const QString &string )
-{
-  Smb4KAuthInfo authInfo;
-
-  // We need to authenticate to the master browser of the domain
-  // the user's computer is in. Get the authentication information.
-  Smb4KWorkgroup *workgroup = findWorkgroup( Smb4KSettings::domainName() );
-
-  if ( workgroup )
-  {
-    authInfo.setWorkgroupName( workgroup->workgroupName() );
-    authInfo.setUNC( "//"+workgroup->masterBrowserName() );
-
-    if ( Smb4KSettings::masterBrowsersRequireAuth() &&
-         Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
-    {
-      // Retry the search.
-      search( string );
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -542,6 +510,44 @@ void Smb4KSearch::slotThreadFinished()
     if ( thread->isFinished() )
     {
       (void) m_cache.take( key );
+      
+      if ( thread->authenticationError() )
+      {
+        Smb4KAuthInfo authInfo;
+
+        // We need to authenticate to the master browser of the domain
+        // the user's computer is in. Get the authentication information.
+        Smb4KWorkgroup *workgroup = findWorkgroup( Smb4KSettings::domainName() );
+
+        if ( workgroup )
+        {
+          authInfo.setWorkgroupName( workgroup->workgroupName() );
+          authInfo.setUNC( "//"+workgroup->masterBrowserName() );
+
+          if ( Smb4KSettings::masterBrowsersRequireAuth() &&
+               Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
+          {
+            // Restore the currently active override cursor. Another one
+            // will be set by search() in an instance.
+            QApplication::restoreOverrideCursor();
+            // Retry the search.
+            search( thread->searchItem() );
+          }
+          else
+          {
+            // Do nothing
+          }
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+      
       emit finished( thread->searchItem() );
       delete thread;
     }

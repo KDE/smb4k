@@ -1033,8 +1033,6 @@ void Smb4KScanner::lookupDomainMembers( Smb4KWorkgroup *workgroup )
              this,   SLOT( slotThreadFinished() ) );
     connect( thread, SIGNAL( hosts( Smb4KWorkgroup *, QList<Smb4KHost> & ) ),
              this,   SLOT( slotHosts( Smb4KWorkgroup *, QList<Smb4KHost> & ) ) );
-    connect( thread, SIGNAL( authError( Smb4KBasicNetworkItem * ) ),
-             this,   SLOT( slotAuthError( Smb4KBasicNetworkItem * ) ) );
 
     thread->start();
     thread->lookup( Smb4KSettings::masterBrowsersRequireAuth(), &authInfo, command );
@@ -1210,8 +1208,6 @@ void Smb4KScanner::lookupShares( Smb4KHost *host )
            this,   SLOT( slotThreadFinished() ) );
   connect( thread, SIGNAL( shares( Smb4KHost *, QList<Smb4KShare> & ) ),
            this,   SLOT( slotShares( Smb4KHost *, QList<Smb4KShare> & ) ) );
-  connect( thread, SIGNAL( authError( Smb4KBasicNetworkItem * ) ),
-           this,   SLOT( slotAuthError( Smb4KBasicNetworkItem * ) ) );
            
   thread->start();
   thread->lookup( &authInfo, command );
@@ -1451,6 +1447,7 @@ void Smb4KScanner::slotAboutToQuit()
 void Smb4KScanner::slotThreadFinished()
 {
   QStringList keys = m_cache.keys();
+  
 
   foreach ( const QString &key, keys )
   {
@@ -1469,11 +1466,76 @@ void Smb4KScanner::slotThreadFinished()
         }
         case Smb4KProcess::LookupDomainMembers:
         {
+          // Check if an authentication error occurred.
+          if ( thread->authenticationError() )
+          {
+            Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>( thread->networkItem() );
+
+            if ( workgroup )
+            {
+              Smb4KHost *master_browser = findHost( workgroup->masterBrowserName(), workgroup->workgroupName() );
+              Smb4KAuthInfo authInfo( master_browser );
+
+              if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
+              {
+                // Kill the currently active override cursor. Another one 
+                // will be set by lookupDomainMembers() in an instant.
+                QApplication::restoreOverrideCursor();
+                lookupDomainMembers( workgroup );
+              }
+              else
+              {
+                // Do nothing
+              }
+            }
+            else
+            {
+              // Do nothing
+            }
+          }
+          else
+          {
+            // Do nothing
+          }
+          
+          // Emit the finished() signal 
           emit finished( thread->networkItem(), LookupDomainMembers );
           break;
         }
         case Smb4KProcess::LookupShares:
         {
+          // Check if an authentication error occurred.
+          if ( thread->authenticationError() )
+          {
+            Smb4KHost *host = static_cast<Smb4KHost *>( thread->networkItem() );
+
+            if ( host )
+            {
+              Smb4KAuthInfo authInfo( host );
+
+              if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
+              {
+                // Kill the currently active override cursor. Another one
+                // will be set by lookupShares() in an instant.
+                QApplication::restoreOverrideCursor();
+                lookupShares( host );
+              }
+              else
+              {
+                // Do nothing
+              }
+            }
+            else
+            {
+              // Do nothing
+            }
+          }
+          else
+          {
+            // Do nothing
+          }
+          
+          // Emit the finished() signal 
           emit finished( thread->networkItem(), LookupShares );
           break;
         }
@@ -1504,66 +1566,7 @@ void Smb4KScanner::slotThreadFinished()
   }
   else
   {
-    // Still running
-  }
-}
-
-
-void Smb4KScanner::slotAuthError( Smb4KBasicNetworkItem *item )
-{
-  switch ( item->type() )
-  {
-    case Smb4KBasicNetworkItem::Workgroup:
-    {
-      Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>( item );
-
-      if ( workgroup )
-      {
-        Smb4KHost *master_browser = findHost( workgroup->masterBrowserName(), workgroup->workgroupName() );
-        Smb4KAuthInfo authInfo( master_browser );
-
-        if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
-        {
-          lookupDomainMembers( workgroup );
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
-      }
-      break;
-    }
-    case Smb4KBasicNetworkItem::Host:
-    {
-      Smb4KHost *host = static_cast<Smb4KHost *>( item );
-
-      if ( host )
-      {
-        Smb4KAuthInfo authInfo( host );
-
-        if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
-        {
-          lookupShares( host );
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
-      }
-      break;
-    }
-    default:
-    {
-      break;
-    }
+    // Do nothing
   }
 }
 

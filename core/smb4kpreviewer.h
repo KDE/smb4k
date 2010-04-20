@@ -2,7 +2,7 @@
     smb4kpreviewer  -  This class queries a remote share for a preview
                              -------------------
     begin                : Mo Mai 28 2007
-    copyright            : (C) 2007-2009 by Alexander Reinholdt
+    copyright            : (C) 2007-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -157,13 +157,6 @@ class KDE_EXPORT Smb4KPreviewer : public QObject
     void finished( Smb4KPreviewItem *item );
 
   protected slots:
-    /**
-     * This slot is called if an authentication error occurred.
-     *
-     * @param item              The Smb4KPreviewItem object
-     */
-    void slotAuthError( Smb4KPreviewItem *item );
-
     /**
      * This slot is called when a thread finished.
      */

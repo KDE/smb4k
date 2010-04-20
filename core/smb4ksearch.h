@@ -2,7 +2,7 @@
     smb4ksearch  -  This class searches for custom search strings.
                              -------------------
     begin                : So Apr 27 2008
-    copyright            : (C) 2008-2009 by Alexander Reinholdt
+    copyright            : (C) 2008-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -162,14 +162,6 @@ class KDE_EXPORT Smb4KSearch : public QObject
      * It aborts all running processes.
      */
     void slotAboutToQuit();
-
-    /**
-     * This slot is called if an authentication error occurred. The @p string
-     * argument contains the search item.
-     *
-     * @param string        The search string
-     */
-    void slotAuthError( const QString &string );
 
     /**
      * This slot is called whenever a search result is emitted by a thread.

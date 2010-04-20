@@ -2,7 +2,7 @@
     smb4kprint  -  The printing core class.
                              -------------------
     begin                : Tue Mar 30 2004
-    copyright            : (C) 2004-2009 by Alexander Reinholdt
+    copyright            : (C) 2004-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -147,14 +147,6 @@ class KDE_EXPORT Smb4KPrint : public QObject
      * It aborts all running processes.
      */
     void slotAboutToQuit();
-
-    /**
-     * This slot is called if an authentication error occurred. The @p authInfo
-     * argument contains the print info.
-     *
-     * @param printInfo   THe Smb4KPrintInfo object
-     */
-    void slotAuthError( Smb4KPrintInfo *printInfo );
 
     /**
      * This slot is called when a thread finished.

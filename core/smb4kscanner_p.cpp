@@ -2,7 +2,7 @@
     smb4kscanner_p  -  This is a private helper class for Smb4KScanner.
                              -------------------
     begin                : Do Jul 19 2007
-    copyright            : (C) 2007-2009 by Alexander Reinholdt
+    copyright            : (C) 2007-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -36,7 +36,7 @@
 
 
 BasicScanThread::BasicScanThread( Type type, Smb4KBasicNetworkItem *item, QObject *parent )
-: QThread( parent ), m_item( item ), m_type( type )
+: QThread( parent ), m_item( item ), m_type( type ), m_auth_error( false )
 {
   m_proc = NULL;
 }
@@ -454,7 +454,7 @@ void LookupMembersThread::slotProcessError()
          stderr.contains( "NT_STATUS_ACCESS_DENIED" ) ||
          stderr.contains( "NT_STATUS_LOGON_FAILURE" ) )
     {
-      emit authError( m_item );
+      m_auth_error = true;
     }
     else
     {
@@ -507,7 +507,7 @@ void LookupMembersThread::slotProcessFinished( int exitCode, QProcess::ExitStatu
         }
         else
         {
-          host.setHostName( line.section( "   ", 0, 0 ).trimmed().replace( " ", "%20" ) );
+          host.setHostName( line.section( "   ", 0, 0 ).trimmed() );
           host.setWorkgroupName( workgroup->workgroupName() );
           host.setComment( line.section( "   ", 1, -1 ).trimmed() );
 
@@ -591,7 +591,7 @@ void LookupSharesThread::slotProcessError()
          stderr.contains( "NT_STATUS_ACCESS_DENIED" ) ||
          stderr.contains( "NT_STATUS_LOGON_FAILURE" ) )
     {
-      emit authError( m_item );
+      m_auth_error = true;
     }
     else if ( stderr.contains( "could not obtain sid for domain", Qt::CaseSensitive ) )
     {
@@ -639,7 +639,7 @@ void LookupSharesThread::slotProcessFinished( int exitCode, QProcess::ExitStatus
       if ( exitCode == 104 /* access denied in W2k3 domain */ ||
            exitCode == 235 /* wrong password in W2k3 domain */ )
       {
-        emit authError( m_item );
+        m_auth_error = true;
       }
       else
       {

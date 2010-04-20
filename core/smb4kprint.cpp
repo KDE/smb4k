@@ -2,7 +2,7 @@
     smb4kprint  -  The printing core class.
                              -------------------
     begin                : Tue Mar 30 2004
-    copyright            : (C) 2004-2009 by Alexander Reinholdt
+    copyright            : (C) 2004-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -211,7 +211,6 @@ void Smb4KPrint::print( Smb4KPrintInfo *printInfo )
     m_cache.insert( printInfo->filePath(), thread );
 
     connect( thread, SIGNAL( finished() ), this, SLOT( slotThreadFinished() ) );
-    connect( thread, SIGNAL( authError( Smb4KPrintInfo * ) ), this, SLOT( slotAuthError( Smb4KPrintInfo* ) ) );
 
     if ( temp_file.exists() )
     {
@@ -304,24 +303,6 @@ void Smb4KPrint::slotAboutToQuit()
 }
 
 
-void Smb4KPrint::slotAuthError( Smb4KPrintInfo *printInfo )
-{
-  Smb4KAuthInfo authInfo;
-  authInfo.setWorkgroupName( printInfo->printer()->workgroupName() );
-  authInfo.setUNC( printInfo->printer()->unc( QUrl::None ) );
-
-  if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
-  {
-    // Retry the search.
-    print( printInfo );
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
 void Smb4KPrint::slotThreadFinished()
 {
   QStringList keys = m_cache.keys();
@@ -333,6 +314,31 @@ void Smb4KPrint::slotThreadFinished()
     if ( thread->isFinished() )
     {
       (void) m_cache.take( key );
+      
+      if ( thread->authenticationError() )
+      {
+        Smb4KAuthInfo authInfo;
+        authInfo.setWorkgroupName( thread->printInfo()->printer()->workgroupName() );
+        authInfo.setUNC( thread->printInfo()->printer()->unc( QUrl::None ) );
+
+        if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
+        {
+          // Restore the currently active override cursor. Another one 
+          // will be set by print() in an instance.
+          QApplication::restoreOverrideCursor();
+          // Retry the printing.
+          print( thread->printInfo() );
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+      
       emit finished( thread->printInfo() );
       delete thread;
     }

@@ -2,7 +2,7 @@
     smb4ksearch_p  -  Private helper classes for Smb4KSearch class.
                              -------------------
     begin                : Mo Dez 22 2008
-    copyright            : (C) 2008-2009 by Alexander Reinholdt
+    copyright            : (C) 2008-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -55,9 +55,9 @@ class SearchThread : public QThread
                  Smb4KAuthInfo *authInfo,
                  const QString &command );
     const QString &searchItem() { return m_string; }
+    bool authenticationError() { return m_auth_error; }
 
   signals:
-    void authError( const QString &searchItem );
     void result( Smb4KBasicNetworkItem *item );
 
   protected slots:
@@ -69,6 +69,7 @@ class SearchThread : public QThread
   private:
     Smb4KProcess *m_proc;
     QString m_string;
+    bool m_auth_error;
 };
 
 

@@ -2,7 +2,7 @@
     smb4kscanner_p  -  This is a private helper class for Smb4KScanner.
                              -------------------
     begin                : Do Jul 19 2007
-    copyright            : (C) 2007-2009 by Alexander Reinholdt
+    copyright            : (C) 2007-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -66,6 +66,7 @@ class BasicScanThread : public QThread
     Smb4KProcess *process() { return m_proc; }
     Smb4KBasicNetworkItem *networkItem() { return m_item; }
     Type type() { return m_type; }
+    bool authenticationError()  { return m_auth_error; }
 
   signals:
     void workgroups( QList<Smb4KWorkgroup> &list );
@@ -73,7 +74,6 @@ class BasicScanThread : public QThread
                 QList<Smb4KHost> &list );
     void shares( Smb4KHost *host,
                  QList<Smb4KShare> &list );
-    void authError( Smb4KBasicNetworkItem *item );
     void info( Smb4KHost *host );
 
   private:
@@ -84,6 +84,7 @@ class BasicScanThread : public QThread
     QList<Smb4KHost> m_hosts;
     QList<Smb4KShare> m_shares;
     Smb4KAuthInfo m_auth_info;
+    bool m_auth_error;
 };
 
 

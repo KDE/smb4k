@@ -2,7 +2,7 @@
     smb4kpreviewer_p  -  Private helper classes for Smb4KPreviewer class.
                              -------------------
     begin                : So Dez 21 2008
-    copyright            : (C) 2008-2009 by Alexander Reinholdt
+    copyright            : (C) 2008-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -53,9 +53,9 @@ class PreviewThread : public QThread
                   const QString &command );
     Smb4KProcess *process() { return m_proc; }
     Smb4KPreviewItem *previewItem() { return m_item; }
+    bool authenticationError() { return m_auth_error; }
 
   signals:
-    void authError( Smb4KPreviewItem *item );
     void result( Smb4KPreviewItem *item );
 
   protected slots:
@@ -67,6 +67,7 @@ class PreviewThread : public QThread
   private:
     Smb4KProcess *m_proc;
     Smb4KPreviewItem *m_item;
+    bool m_auth_error;
 };
 
 class Smb4KPreviewerPrivate

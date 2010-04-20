@@ -2,7 +2,7 @@
     smb4kpreviewer_p  -  Private helper classes for Smb4KPreviewer class.
                              -------------------
     begin                : So Dez 21 2008
-    copyright            : (C) 2008-2009 by Alexander Reinholdt
+    copyright            : (C) 2008-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -33,7 +33,7 @@
 
 
 PreviewThread::PreviewThread( Smb4KPreviewItem *item, QObject *parent )
-: QThread( parent ), m_item( item )
+: QThread( parent ), m_item( item ), m_auth_error( false )
 {
   m_proc = NULL;
 }
@@ -145,7 +145,7 @@ void PreviewThread::slotProcessError()
            stderr.contains( "NT_STATUS_LOGON_FAILURE", Qt::CaseSensitive ) )
       {
         // Authentication error.
-        emit authError( m_item );
+        m_auth_error = true;
       }
       else
       {

@@ -1221,10 +1221,6 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
            this,   SLOT( slotThreadFinished() ) );
   connect( thread, SIGNAL( mounted( Smb4KShare * ) ),
            this,   SLOT( slotShareMounted( Smb4KShare * ) ) );
-  connect( thread, SIGNAL( authError( Smb4KShare * ) ),
-           this,   SLOT( slotAuthError( Smb4KShare * ) ) );
-  connect( thread, SIGNAL( badShareName( Smb4KShare * ) ),
-           this,   SLOT( slotBadShareNameError( Smb4KShare * ) ) );
            
   thread->start();
   thread->mount( &authInfo, command );
@@ -1577,12 +1573,42 @@ void Smb4KMounter::slotThreadFinished()
 
     if ( thread->isFinished() )
     {
-      (void) m_cache.take( key );
-      
       switch ( thread->process()->type() )
       {
         case Smb4KProcess::Mount:
         {
+          if ( thread->badShareNameError() )
+          {
+            Smb4KShare share( *thread->share() );
+            share.setShareName( static_cast<QString>( thread->share()->shareName() ).replace( "_", " " ) );
+            mountShare( &share );
+          }
+          else
+          {
+            // Do nothing
+          }
+          
+          if ( thread->authenticationError() )
+          {
+            Smb4KAuthInfo authInfo( thread->share() );
+
+            if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
+            {
+              // Kill the currently active override cursor. Another 
+              // one will be set in an instant by mountShare().
+              QApplication::restoreOverrideCursor();
+              mountShare( thread->share() );
+            }
+            else
+            {
+              // Do nothing
+            }
+          }
+          else
+          {
+            // Do nothing
+          }
+          
           emit finished( thread->share(), MountShare );
           break;
         }
@@ -1597,7 +1623,7 @@ void Smb4KMounter::slotThreadFinished()
         }
       }
       
-      delete thread;
+      m_cache.remove( key );
     }
     else
     {
@@ -1613,7 +1639,7 @@ void Smb4KMounter::slotThreadFinished()
   }
   else
   {
-    // Still running
+    // Do nothing
   }
 }
 
@@ -1758,43 +1784,6 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
   {
     // Do nothing.
   }
-}
-
-
-void Smb4KMounter::slotAuthError( Smb4KShare *share )
-{
-  Q_ASSERT( share );
-  
-  // Copy the incoming share, because while the password dialog
-  // is shown, the share might already be deleted together with the 
-  // parent thread. This would lead to crashes.
-  Smb4KShare internal_share( *share );
-  Smb4KAuthInfo authInfo( &internal_share );
-
-  if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
-  {
-    mountShare( &internal_share );
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KMounter::slotBadShareNameError( Smb4KShare *share )
-{
-  Q_ASSERT( share );
-  
-  // Copy the incoming share to be on the save side.
-  Smb4KShare internal_share( *share );
-  
-  // Since we are working on a copy of the initial share, we
-  // can change the share name without changing the original
-  // share object in any way.
-  QString name = static_cast<QString>( internal_share.shareName() ).replace( "_", " " );
-  internal_share.setShareName( name );
-  mountShare( &internal_share );  
 }
 
 

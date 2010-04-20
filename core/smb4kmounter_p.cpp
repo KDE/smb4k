@@ -39,7 +39,8 @@
 
 
 BasicMountThread::BasicMountThread( Type type, Smb4KShare *share, QObject *parent )
-: QThread( parent ), m_type( type ), m_share( *share )
+: QThread( parent ), m_type( type ), m_share( *share ), m_auth_error( false ),
+  m_bad_name_error( false )
 {
 }
 
@@ -93,12 +94,12 @@ void MountThread::slotProcessError()
     if ( stdout.contains( "mount error 13", Qt::CaseSensitive ) || stdout.contains( "mount error(13)" )
          /* authentication error */ )
     {
-      emit authError( &m_share );
+      m_auth_error = true;
     }
     else if ( (stdout.contains( "mount error 6" ) || stdout.contains( "mount error(6)" )) /* bad share name */ &&
               m_share.shareName().contains( "_", Qt::CaseSensitive ) )
     {
-      emit badShareName( &m_share );
+      m_bad_name_error = true;
     }
     else if ( stdout.contains( "mount error 101" ) || stdout.contains( "mount error(101)" ) /* network unreachable */ )
     {
@@ -107,7 +108,7 @@ void MountThread::slotProcessError()
 #else
     if ( stdout.contains( "Authentication error" ) )
     {
-      emit authError( &m_share );
+      m_auth_error = true;
     }
 #endif
     else

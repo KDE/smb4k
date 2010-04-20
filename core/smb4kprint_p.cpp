@@ -3,7 +3,7 @@
     Smb4KPrint class
                              -------------------
     begin                : Fr Okt 31 2008
-    copyright            : (C) 2008-2009 by Alexander Reinholdt
+    copyright            : (C) 2008-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -35,7 +35,7 @@
 
 
 PrintThread::PrintThread( Smb4KPrintInfo *info, QObject *parent )
-: QThread( parent ), m_info( info )
+: QThread( parent ), m_info( info ), m_auth_error( false )
 {
   m_proc = NULL;
 }
@@ -83,7 +83,7 @@ void PrintThread::print( Smb4KAuthInfo *authInfo, const QString &command )
            stderr.contains( "NT_STATUS_LOGON_FAILURE", Qt::CaseSensitive ) )
       {
         // An authentication error occurred.
-        emit authError( m_info );
+        m_auth_error = true;
       }
       else
       {

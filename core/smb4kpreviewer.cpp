@@ -2,7 +2,7 @@
     smb4kpreviewer  -  This class queries a remote share for a preview
                              -------------------
     begin                : Mo Mai 28 2007
-    copyright            : (C) 2007-2009 by Alexander Reinholdt
+    copyright            : (C) 2007-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -272,7 +272,6 @@ void Smb4KPreviewer::preview( Smb4KPreviewItem *item )
 
   connect( thread, SIGNAL( finished() ), this, SLOT( slotThreadFinished() ) );
   connect( thread, SIGNAL( result( Smb4KPreviewItem * ) ), this, SIGNAL( result( Smb4KPreviewItem * ) ) );
-  connect( thread, SIGNAL( authError( Smb4KPreviewItem * ) ), this, SLOT( slotAuthError( Smb4KPreviewItem* ) ) );
 
   thread->start();
   thread->preview( &authInfo, command );
@@ -346,24 +345,6 @@ bool Smb4KPreviewer::isAborted( Smb4KPreviewItem *item )
 //   SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
 
-void Smb4KPreviewer::slotAuthError( Smb4KPreviewItem *item )
-{
-  Smb4KAuthInfo authInfo;
-  authInfo.setWorkgroupName( item->share()->workgroupName() );
-  authInfo.setUNC( item->share()->unc( QUrl::None ) );
-
-  if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
-  {
-    // Retry the preview.
-    preview( item );
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
 void Smb4KPreviewer::slotThreadFinished()
 {
   QStringList keys = m_cache.keys();
@@ -375,6 +356,31 @@ void Smb4KPreviewer::slotThreadFinished()
     if ( thread->isFinished() )
     {
       (void) m_cache.take( key );
+      
+      if ( thread->authenticationError() )
+      {
+        Smb4KAuthInfo authInfo;
+        authInfo.setWorkgroupName( thread->previewItem()->share()->workgroupName() );
+        authInfo.setUNC( thread->previewItem()->share()->unc( QUrl::None ) );
+
+        if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
+        {
+          // Restore the currently active override cursor. Another one
+          // will be set by preview() in an instance.
+          QApplication::restoreOverrideCursor();
+          // Retry the preview.
+          preview( thread->previewItem() );
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+      
       emit finished( thread->previewItem() );
       delete thread;
     }

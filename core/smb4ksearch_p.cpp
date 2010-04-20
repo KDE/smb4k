@@ -2,7 +2,7 @@
     smb4ksearch_p  -  Private helper classes for Smb4KSearch class.
                              -------------------
     begin                : Mo Dez 22 2008
-    copyright            : (C) 2008-2009 by Alexander Reinholdt
+    copyright            : (C) 2008-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -39,7 +39,7 @@
 
 
 SearchThread::SearchThread( QObject *parent )
-: QThread( parent )
+: QThread( parent ), m_auth_error( false )
 {
   m_proc = NULL;
 }
@@ -180,9 +180,9 @@ void SearchThread::slotProcessError()
          stderr.contains( "NT_STATUS_ACCESS_DENIED" ) ||
          stderr.contains( "NT_STATUS_LOGON_FAILURE" ) )
     {
+      m_auth_error = true;
       // Abort the process.
       m_proc->abort();
-      emit authError( m_string );
     }
     else
     {

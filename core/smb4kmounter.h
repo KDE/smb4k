@@ -258,20 +258,6 @@ class KDE_EXPORT Smb4KMounter : public QObject
     void slotShareUnmounted( Smb4KShare *share );
     
     /**
-     * This slot is called whenever an authentication error occurred.
-     *
-     * @param share           The Smb4KShare object
-     */
-    void slotAuthError( Smb4KShare *share );
-    
-    /**
-     * This slot is called whenever a "bad name" error occurred.
-     *
-     * @param share           The Smb4KShare object
-     */
-    void slotBadShareNameError( Smb4KShare *share );
-
-    /**
      * This slot is called by the Solid interface when a hardware button was
      * pressed. It is used to unmount shares according to the wishes of the
      * user.

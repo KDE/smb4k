@@ -3,7 +3,7 @@
     Smb4KPrint class
                              -------------------
     begin                : Fr Okt 31 2008
-    copyright            : (C) 2008-2009 by Alexander Reinholdt
+    copyright            : (C) 2008-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -55,14 +55,13 @@ class PrintThread : public QThread
     Smb4KProcess *process() { return m_proc; }
     void setTempFilePath( const QString &path );
     const QString &tempFilePath() { return m_temp; }
-
-  signals:
-    void authError( Smb4KPrintInfo *info );
+    bool authenticationError() { return m_auth_error; }
 
   private:
     Smb4KPrintInfo *m_info;
     Smb4KProcess *m_proc;
     QString m_temp;
+    bool m_auth_error;
 };
 
 class Smb4KPrintPrivate

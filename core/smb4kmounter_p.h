@@ -65,11 +65,15 @@ class BasicMountThread : public QThread
     Type type() { return m_type; }
     Smb4KProcess *process() { return m_proc; }
     Smb4KShare *share() { return &m_share; }
+    bool authenticationError() { return m_auth_error; }
+    bool badShareNameError() { return m_bad_name_error; }
 
   private:
     Type m_type;
     Smb4KShare m_share;
     Smb4KProcess *m_proc;
+    bool m_auth_error;
+    bool m_bad_name_error;
 };
 
 
@@ -86,8 +90,6 @@ class MountThread : public BasicMountThread
                 
   signals:
     void mounted( Smb4KShare *share );
-    void authError( Smb4KShare *share );
-    void badShareName( Smb4KShare *share );
 
   protected slots:
     void slotProcessError();

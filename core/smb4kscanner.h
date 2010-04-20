@@ -307,13 +307,6 @@ class KDE_EXPORT Smb4KScanner : public QObject
     void slotThreadFinished();
 
     /**
-     * This slot is called if an authentication error occurred.
-     *
-     * @param item          The network item
-     */
-    void slotAuthError( Smb4KBasicNetworkItem *item );
-
-    /**
      * This slot takes a list of discovered workgroups and puts them into the global
      * list. Obsolete entries will be deleted and new ones created.
      *
