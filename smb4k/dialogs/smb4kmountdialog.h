@@ -3,7 +3,7 @@
     manually.
                              -------------------
     begin                : Mo Nov 29 2004
-    copyright            : (C) 2004-2007 by Alexander Reinholdt
+    copyright            : (C) 2004-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 

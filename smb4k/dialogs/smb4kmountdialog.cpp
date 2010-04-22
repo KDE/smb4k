@@ -3,7 +3,7 @@
     manually.
                              -------------------
     begin                : Mo Nov 29 2004
-    copyright            : (C) 2004-2007 by Alexander Reinholdt
+    copyright            : (C) 2004-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -91,26 +91,41 @@ void Smb4KMountDialog::setupView()
   layout->setSpacing( 5 );
   layout->setMargin( 0 );
 
-  QLabel *shareLabel = new QLabel( i18n( "UNC:" ), main_widget );
+  QLabel *shareLabel = new QLabel( i18n( "UNC Address:" ), main_widget );
   m_share_input = new KLineEdit( main_widget );
+  m_share_input->setWhatsThis( i18n( "The Uniform Naming Convention (UNC) address "
+    "describes the location of the share. It has the following syntax: "
+    "//[USER:PASS@]HOST[:PORT]/SHARE). The username, password and port are optional." ) );
+  m_share_input->setToolTip( i18n( "The address of the share\nin UNC syntax" ) );
   m_share_input->setCompletionMode( KGlobalSettings::CompletionPopupAuto );
-//   m_share_input->setClearButtonShown( true );
+  m_share_input->setClearButtonShown( true );
   m_share_input->setMinimumWidth( 200 );
   m_share_input->setFocus();
   
   QLabel *addressLabel = new QLabel( i18n( "IP Address:" ), main_widget );
   m_ip_input = new KLineEdit( main_widget);
+  m_ip_input->setWhatsThis( i18n( "The Internet Protocol (IP) address identifies the "
+    "host in the network and indicates where it is. It has two valid formats, the one "
+    "known as IP version 4 (e.g. 192.168.2.11) and the version 6 format "
+    "(e.g. 2001:0db8:85a3:08d3:1319:8a2e:0370:7334)." ) );
+  m_ip_input->setToolTip( i18n( "The IPv4 or IPv6 address" ) );
   m_ip_input->setCompletionMode( KGlobalSettings::CompletionPopupAuto );
-//   m_ip_input->setClearButtonShown( true );
+  m_ip_input->setClearButtonShown( true );
   m_ip_input->setMinimumWidth( 200 );
 
   QLabel *workgroupLabel = new QLabel( i18n( "Workgroup:" ), main_widget );
   m_workgroup_input = new KLineEdit( main_widget );
+  m_workgroup_input->setWhatsThis( i18n( "The workgroup or domain identifies the "
+    "peer-to-peer computer network the host is located in." ) );
+  m_workgroup_input->setToolTip( i18n( "The workgroup name" ) );
   m_workgroup_input->setCompletionMode( KGlobalSettings::CompletionPopupAuto );
-//   m_workgroup_input->setClearButtonShown( true );
+  m_workgroup_input->setClearButtonShown( true );
   m_workgroup_input->setMinimumWidth( 200 );
 
   m_bookmark = new QCheckBox( i18n( "Add this share to the bookmarks" ), main_widget );
+  m_bookmark->setWhatsThis( i18n( "If you tick this checkbox, the share will be bookmarked "
+    "and you can access it e.g. through the \"Bookmarks\" menu entry in the main window." ) );
+  m_bookmark->setToolTip( i18n( "Bookmark this share" ) );
 
   layout->addWidget( shareLabel, 0, 0, 0 );
   layout->addWidget( m_share_input, 0, 1, 0 );
