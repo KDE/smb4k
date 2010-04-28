@@ -507,30 +507,40 @@ void LookupMembersThread::slotProcessFinished( int exitCode, QProcess::ExitStatu
         }
         else
         {
-          host.setHostName( line.section( "   ", 0, 0 ).trimmed() );
-          host.setWorkgroupName( workgroup->workgroupName() );
-          host.setComment( line.section( "   ", 1, -1 ).trimmed() );
-
-          if ( QString::compare( host.hostName(), workgroup->masterBrowserName() ) == 0 )
+          // FIXME: Work around QUrl problems with hosts that contain spaces.
+          // If you try to set a host name containing a space, you'll end up
+          // with an empty host name in the QUrl object.
+          if ( !line.section( "   ", 0, 0 ).trimmed().contains( " " ) )
           {
-            host.setLogin( m_auth_info.login() );
-            host.setIsMasterBrowser( true );
+            host.setHostName( line.section( "   ", 0, 0 ).trimmed() );
+            host.setWorkgroupName( workgroup->workgroupName() );
+            host.setComment( line.section( "   ", 1, -1 ).trimmed() );
 
-            if ( workgroup->hasMasterBrowserIP() )
+            if ( QString::compare( host.hostName(), workgroup->masterBrowserName() ) == 0 )
             {
-              host.setIP( workgroup->masterBrowserIP() );
+              host.setLogin( m_auth_info.login() );
+              host.setIsMasterBrowser( true );
+
+              if ( workgroup->hasMasterBrowserIP() )
+              {
+                host.setIP( workgroup->masterBrowserIP() );
+              }
+              else
+              {
+                // Do nothing
+              }
             }
             else
             {
-              // Do nothing
+              host.setIsMasterBrowser( false );
             }
+
+            m_hosts.append( host );
           }
           else
           {
-            host.setIsMasterBrowser( false );
+            qDebug() << "Cannot handle host names containing spaces. Omitting.";
           }
-
-          m_hosts.append( host );
           host = Smb4KHost();
           continue;
         }

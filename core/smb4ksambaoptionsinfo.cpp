@@ -128,41 +128,28 @@ QString Smb4KSambaOptionsInfo::shareName() const
 
 void Smb4KSambaOptionsInfo::setUNC( const QString &unc )
 {
-  // Check that the UNC is valid.
-  QUrl url( unc );
+  m_this_url.setUrl( unc, QUrl::TolerantMode );
   
-  if ( !url.isValid() && !(url.path().isEmpty() /*host*/ || url.path().contains( "/" ) == 1 /*share*/) )
+  if ( m_this_url.scheme().isEmpty() )
   {
-    // The UNC is malformatted.
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  if ( url.scheme().isEmpty() )
-  {
-    url.setScheme( "smb" );
+    m_this_url.setScheme( "smb" );
   }
   else
   {
     // Do nothing
   }
 
-  if ( url.path().contains( "/" ) == 1 )
+  if ( m_this_url.path().contains( "/" ) == 1 )
   {
     m_type = Share;
-    m_this_url = url;
-    m_host_url = url;
+    m_host_url = m_this_url;
     m_host_url.setPort( -1 );
     m_host_url.setPath( QString() );
   }
   else
   {
     m_type = Host;
-    m_this_url = url;
-    m_host_url = url;
+    m_host_url = m_this_url;
   }
 }
 

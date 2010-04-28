@@ -139,20 +139,7 @@ void Smb4KShare::setHostName( const QString &hostName )
 
 void Smb4KShare::setUNC( const QString &unc )
 {
-  // Check that a valid UNC was passed to this function.
-  QUrl url( unc );
-  
-  if ( !url.isValid() || !(url.path().length() > 1 && !url.path().endsWith( "/" )) )
-  {
-    // The UNC is malformatted.
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  m_url = url;
+  m_url.setUrl( unc, QUrl::TolerantMode );
 
   if ( m_url.scheme().isEmpty() )
   {

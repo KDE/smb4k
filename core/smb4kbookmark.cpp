@@ -80,6 +80,15 @@ void Smb4KBookmark::setWorkgroupName( const QString &workgroup )
 void Smb4KBookmark::setHostName( const QString &host )
 {
   m_url.setHost( host );
+  
+  if ( m_url.scheme().isEmpty() )
+  {
+    m_url.setScheme( "smb" );
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
@@ -118,20 +127,8 @@ void Smb4KBookmark::setTypeString( const QString &type )
 
 void Smb4KBookmark::setUNC( const QString &unc )
 {
-  // Check that a valid UNC was passed to this function.
-  QUrl url( unc );
-  
-  if ( !url.isValid() || !(url.path().length() > 1 && !url.path().endsWith( "/" )) )
-  {
-    // The UNC is malformatted.
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  m_url = url;
+  // Set the UNC.
+  m_url.setUrl( unc, QUrl::TolerantMode );
 
   if ( m_url.scheme().isEmpty() )
   {

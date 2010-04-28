@@ -41,8 +41,7 @@ Smb4KHost::Smb4KHost( const QString &name ) : Smb4KBasicNetworkItem( Host ),
   m_server_string( QString() ), m_os_string( QString() ), m_info_checked( false ),
   m_ip_checked( false ), m_is_master( false )
 {
-  m_url.setHost( name );
-  m_url.setScheme( "smb" );
+  setHostName( name );
 }
 
 
@@ -71,7 +70,7 @@ Smb4KHost::~Smb4KHost()
 void Smb4KHost::setHostName( const QString &name )
 {
   m_url.setHost( name );
-
+  
   if ( m_url.scheme().isEmpty() )
   {
     m_url.setScheme( "smb" );
@@ -85,21 +84,10 @@ void Smb4KHost::setHostName( const QString &name )
 
 void Smb4KHost::setUNC( const QString &unc )
 {
-  // Check that a valid UNC was passed to this function.
-  QUrl url( unc );
-  
-  if ( !url.isValid() || !url.path().isEmpty() )
-  {
-    // The UNC is malformatted.
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
+  // Set the UNC.
+  m_url.setUrl( unc, QUrl::TolerantMode );
 
-  m_url = url;
-
+  // Set the scheme.
   if ( m_url.scheme().isEmpty() )
   {
     m_url.setScheme( "smb" );

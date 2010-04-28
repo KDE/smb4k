@@ -115,21 +115,11 @@ void Smb4KAuthInfo::setWorkgroupName( const QString &workgroup )
 
 void Smb4KAuthInfo::setUNC( const QString &unc )
 {
-  // Check that the UNC is valid.
-  QUrl url( unc );
+  // Set the UNC.
+  m_url.setUrl( unc, QUrl::TolerantMode );
   
-  if ( !url.isValid() && !(url.path().isEmpty() /*host*/ || url.path().contains( "/" ) == 1 /*share*/) )
-  {
-    // The UNC is malformatted.
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-
   // Set the type.
-  if ( url.path().contains( "/" ) == 1 )
+  if ( m_url.path().contains( "/" ) == 1 )
   {
     m_type = Share;
   }
@@ -137,9 +127,8 @@ void Smb4KAuthInfo::setUNC( const QString &unc )
   {
     m_type = Host;
   }
-
-  m_url = url;
-
+  
+  // Set the scheme.
   if ( m_url.scheme().isEmpty() )
   {
     m_url.setScheme( "smb" );
