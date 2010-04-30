@@ -500,7 +500,7 @@
     </entry>
     <entry name="WriteAccess" type="Enum">
       <label>Write access:</label>
-      <whatsthis>Here you can choose if the shares should be mounted in read and write mode or only read-only.</whatsthis>
+      <whatsthis>Here you can choose if the shares should be mounted in read-write or read-only mode.</whatsthis>
       <choices>
         <choice name="ReadWrite">
           <label>read-write</label>
