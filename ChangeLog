@@ -267,12 +267,14 @@ Smb4K SVN_HEAD (????-??-??):
   + Several small improvements.
   + Replaced deprecated functions.
   + Added path completion.
+  + Added "What's this" help and tool tips.
 - Revised the print dialog:
   + Adjusted code so that the new features of the print code can be used.
   + The file that should be printed is now checked if it is valid and existing.
     If one of the conditions is not met, the file will not be printed.
   + No path is predefined in the url requester, because some users were confused
     by this before. Opening the file dialog will lead you to the home directory.
+  + Added "What's this" help and tool tips.
 - Added Smb4KBookmarkDialog class, a dialog to add bookmarks.
 - Revised shares view:
   + Adjusted the code so that the new possibilities that the reworked
@@ -300,6 +302,7 @@ Smb4K SVN_HEAD (????-??-??):
     "Specify User" dialogs are shown, if you want to mount and bookmark a "homes"
     share.
   + Added text completion.
+  + Added "What's this" help and tool tips.
 - Revised configuration dialog:
   + Added "Laptop Support" page where the user can set options that are important
     when you use a laptop.
@@ -331,10 +334,12 @@ Smb4K SVN_HEAD (????-??-??):
   + Connected to the aboutToStart() and finished() signals of the previewer to
     enabled/disable the reload and abort button.
   + Removed old cruft.
+  + Added "What's this" help and tool tips.
 - Revised custom options dialog:
   + Did some refactoring.
   + Added all settings available for shares to the host dialog. This way you can 
     set general settings for a host.
+  + Added "What's this" help and tool tips.
 - Revised utility programs:
   + Did some housekeeping.
   + smb4k_umount:
@@ -348,6 +353,23 @@ Smb4K SVN_HEAD (????-??-??):
       obsolete -t <filesystem>, -s and -n options were removed. 
     o Under FreeBSD the (undocumented) option -U <user> was added. 
     o The version number is now 0.11.
+
+Smb4K 0.10.7 (2010-04-07):
+- Replace broken backported smb4k_umount binary with a fixed one from the 
+  0.10 branch. This way you won't get the "unknown argument" errors anymore.
+
+Smb4K 0.10.6 (2010-03-24):
+- Include files are no longer installed.
+- Added updated portugese translation. Thanks to Fathi Boudra for sending the
+  link and Américo Monteiro for the translation.
+- Fixed missing of shares that have no comment (closes #16837 and presumably 
+  also #3009 and #7949).
+- Fixed listing of shares when a "creating lame ..." message appears on stderr
+  (closes #16849).
+- Backported smb4k_umount from SVN HEAD. Under non-FreeBSD operating systems
+  it falls back to use umount directly if umount.cifs could not be found.
+- Removed check for mount and umount binaries from Smb4KCore::searchPrograms().
+  smb4k_mount and smb4k_umount will complain if they do not find them.
 
 Smb4K 0.10.5 (2010-02-13):
 - Fixed a crash in Smb4KSambaOptionsHandler::addItem().
