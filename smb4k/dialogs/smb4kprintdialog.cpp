@@ -2,7 +2,7 @@
     smb4kprintdialog  -  The print dialog for Smb4K
                              -------------------
     begin                : So Apr 11 2004
-    copyright            : (C) 2004-2008 by Alexander Reinholdt
+    copyright            : (C) 2004-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -114,13 +114,8 @@ void Smb4KPrintDialog::setupView()
   QGridLayout *printer_box_layout = new QGridLayout( printer_box );
   printer_box_layout->setSpacing( 5 );
 
-  QLabel *name_label = new QLabel( i18n( "Name:" ), printer_box );
-  QLabel *name       = new QLabel( m_info->printer()->shareName()+
-                                   (!m_info->printer()->comment().trimmed().isEmpty() ?
-                                   " ("+m_info->printer()->comment()+")" :
-                                   ""), printer_box );
-  QLabel *host_label = new QLabel( i18n( "Host:" ), printer_box );
-  QLabel *host       = new QLabel( m_info->printer()->hostName(), printer_box );
+  QLabel *unc_label  = new QLabel( i18n( "UNC Address:" ), printer_box );
+  QLabel *unc        = new QLabel( m_info->printer()->unc(), printer_box );
   QLabel *ip_label   = new QLabel( i18n( "IP Address:" ), printer_box );
   QLabel *ip         = new QLabel( m_info->printer()->hostIP().trimmed().isEmpty() ?
                                    i18n( "unknown" ) :
@@ -128,14 +123,12 @@ void Smb4KPrintDialog::setupView()
   QLabel *wg_label   = new QLabel( i18n( "Workgroup:" ), printer_box );
   QLabel *workgroup  = new QLabel( m_info->printer()->workgroupName(), printer_box );
 
-  printer_box_layout->addWidget( name_label, 0, 0, 0 );
-  printer_box_layout->addWidget( name, 0, 1, 0 );
-  printer_box_layout->addWidget( host_label, 1, 0, 0 );
-  printer_box_layout->addWidget( host, 1, 1, 0 );
-  printer_box_layout->addWidget( ip_label, 2, 0, 0 );
-  printer_box_layout->addWidget( ip, 2, 1, 0 );
-  printer_box_layout->addWidget( wg_label, 3, 0, 0 );
-  printer_box_layout->addWidget( workgroup, 3, 1, 0 );
+  printer_box_layout->addWidget( unc_label, 0, 0, 0 );
+  printer_box_layout->addWidget( unc, 0, 1, 0 );
+  printer_box_layout->addWidget( ip_label, 1, 0, 0 );
+  printer_box_layout->addWidget( ip, 1, 1, 0 );
+  printer_box_layout->addWidget( wg_label, 2, 0, 0 );
+  printer_box_layout->addWidget( workgroup, 2, 1, 0 );
 
   // File requester box
   QGroupBox *file_box = new QGroupBox( i18n( "File" ), main_widget );
@@ -146,6 +139,10 @@ void Smb4KPrintDialog::setupView()
   QLabel *file_label  = new QLabel( i18n( "File:" ), file_box );
   m_file              = new KUrlRequester( file_box );
   m_file->setMode( KFile::File | KFile::LocalOnly | KFile::ExistingOnly );
+  m_file->setWhatsThis( i18n( "This is the file you want to print on the remote printer. " 
+    "Currently only a few mimetypes are supported such as PDF, Postscript, plain text, and " 
+    "images. If the file's mimetype is not supported, you need to convert it." ) );
+  m_file->setToolTip( i18n( "The file that is to be printed" ) );
 
   file_box_layout->addWidget( file_label, 0, 0, 0 );
   file_box_layout->addWidget( m_file, 0, 1, 0 );
@@ -160,6 +157,8 @@ void Smb4KPrintDialog::setupView()
   QLabel *copies_label = new QLabel( i18n( "Copies:" ), options_box );
   m_copies             = new KIntNumInput( 1, options_box, 10 );
   m_copies->setMinimum( 1 );
+  m_copies->setWhatsThis( i18n( "This is the number of copies you want to print." ) );
+  m_copies->setToolTip( i18n( "The number of copies" ) );
 
   options_box_layout->addWidget( copies_label, 0, 0, 0 );
   options_box_layout->addWidget( m_copies, 0, 1, 0 );

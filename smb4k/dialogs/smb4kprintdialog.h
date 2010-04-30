@@ -2,7 +2,7 @@
     smb4kprintdialog  -  The print dialog for Smb4K
                              -------------------
     begin                : So Apr 11 2004
-    copyright            : (C) 2004-2008 by Alexander Reinholdt
+    copyright            : (C) 2004-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
