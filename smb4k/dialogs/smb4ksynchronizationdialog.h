@@ -2,7 +2,7 @@
     smb4ksynchronizationdialog  -  The synchronization dialog of Smb4K
                              -------------------
     begin                : Sa Mai 19 2007
-    copyright            : (C) 2007-2009 by Alexander Reinholdt
+    copyright            : (C) 2007-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
