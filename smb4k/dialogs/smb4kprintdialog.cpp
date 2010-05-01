@@ -142,7 +142,7 @@ void Smb4KPrintDialog::setupView()
   m_file->setWhatsThis( i18n( "This is the file you want to print on the remote printer. " 
     "Currently only a few mimetypes are supported such as PDF, Postscript, plain text, and " 
     "images. If the file's mimetype is not supported, you need to convert it." ) );
-  m_file->setToolTip( i18n( "The file that is to be printed" ) );
+//   m_file->setToolTip( i18n( "The file that is to be printed" ) );
 
   file_box_layout->addWidget( file_label, 0, 0, 0 );
   file_box_layout->addWidget( m_file, 0, 1, 0 );
@@ -158,7 +158,7 @@ void Smb4KPrintDialog::setupView()
   m_copies             = new KIntNumInput( 1, options_box, 10 );
   m_copies->setMinimum( 1 );
   m_copies->setWhatsThis( i18n( "This is the number of copies you want to print." ) );
-  m_copies->setToolTip( i18n( "The number of copies" ) );
+//   m_copies->setToolTip( i18n( "The number of copies" ) );
 
   options_box_layout->addWidget( copies_label, 0, 0, 0 );
   options_box_layout->addWidget( m_copies, 0, 1, 0 );

@@ -142,7 +142,7 @@ void Smb4KCustomOptionsDialog::setupHostDialog()
   unc->setWhatsThis( i18n( "The Uniform Naming Convention (UNC) address "
     "describes the location of the host. It has the following syntax: "
     "//HOST." ) );
-  unc->setToolTip( i18n( "The UNC address of the host" ) );
+//   unc->setToolTip( i18n( "The UNC address of the host" ) );
   
   // SMB port
   QLabel *smb_port_label = new QLabel( Smb4KSettings::self()->remoteSMBPortItem()->label(), main_widget );
@@ -151,7 +151,7 @@ void Smb4KCustomOptionsDialog::setupHostDialog()
   m_smb_port_input->setMinimum( Smb4KSettings::self()->remoteSMBPortItem()->minValue().toInt() );
   m_smb_port_input->setMaximum( Smb4KSettings::self()->remoteSMBPortItem()->maxValue().toInt() );
   m_smb_port_input->setWhatsThis( Smb4KSettings::self()->remoteSMBPortItem()->whatsThis() );
-  m_smb_port_input->setToolTip( i18n( "The port used for communicating with servers" ) );
+//   m_smb_port_input->setToolTip( i18n( "The port used for communicating with servers" ) );
   
   // Protocol hint
   QLabel *protocol_label = new QLabel( Smb4KSettings::self()->protocolHintItem()->label(), main_widget );
@@ -166,12 +166,12 @@ void Smb4KCustomOptionsDialog::setupHostDialog()
 
   m_proto_input->insertItems( 0, protocol_items );
   m_proto_input->setWhatsThis( Smb4KSettings::self()->protocolHintItem()->whatsThis() );
-  m_proto_input->setToolTip( i18n( "The protocol hint" ) );
+//   m_proto_input->setToolTip( i18n( "The protocol hint" ) );
   
   // Kerberos
   m_kerberos = new QCheckBox( Smb4KSettings::self()->useKerberosItem()->label(), main_widget );
   m_kerberos->setWhatsThis( Smb4KSettings::self()->useKerberosItem()->whatsThis() );
-  m_kerberos->setToolTip( i18n( "Use Kerberos for authentication" ) );
+//   m_kerberos->setToolTip( i18n( "Use Kerberos for authentication" ) );
   
   // Line
   QFrame *line = new QFrame( main_widget );
@@ -185,7 +185,7 @@ void Smb4KCustomOptionsDialog::setupHostDialog()
   m_fs_port_input->setMinimum( Smb4KSettings::self()->remoteFileSystemPortItem()->minValue().toInt() );
   m_fs_port_input->setMaximum( Smb4KSettings::self()->remoteFileSystemPortItem()->maxValue().toInt() );
   m_fs_port_input->setWhatsThis( Smb4KSettings::self()->remoteFileSystemPortItem()->whatsThis() );
-  m_fs_port_input->setToolTip( i18n( "The port used for mounting shares" ) );
+//   m_fs_port_input->setToolTip( i18n( "The port used for mounting shares" ) );
   
   // Write access
   QLabel *permission_label = new QLabel( Smb4KSettings::self()->writeAccessItem()->label(), main_widget );
@@ -198,7 +198,7 @@ void Smb4KCustomOptionsDialog::setupHostDialog()
 
   m_rw_input->insertItems( 0, write_access_entries );
   m_rw_input->setWhatsThis( Smb4KSettings::self()->writeAccessItem()->whatsThis() );
-  m_rw_input->setToolTip( i18n( "The write access" ) );
+//   m_rw_input->setToolTip( i18n( "The write access" ) );
 #endif
 
   // User ID
@@ -219,7 +219,7 @@ void Smb4KCustomOptionsDialog::setupHostDialog()
 
   m_uid_input->addItems( uids );
   m_uid_input->setWhatsThis( Smb4KSettings::self()->userIDItem()->whatsThis() );
-  m_uid_input->setToolTip( i18n( "The user ID" ) );
+//   m_uid_input->setToolTip( i18n( "The user ID" ) );
 
   // Group ID
   QLabel *gid_label = new QLabel( Smb4KSettings::self()->groupIDItem()->label(), main_widget );
@@ -239,7 +239,7 @@ void Smb4KCustomOptionsDialog::setupHostDialog()
 
   m_gid_input->addItems( gids );
   m_gid_input->setWhatsThis( Smb4KSettings::self()->groupIDItem()->whatsThis() );
-  m_gid_input->setToolTip( i18n( "The group ID" ) );
+//   m_gid_input->setToolTip( i18n( "The group ID" ) );
   
   // Put everything in the layout.
   layout->addWidget( unc_label, 0, 0, 0 );
@@ -526,7 +526,7 @@ void Smb4KCustomOptionsDialog::setupShareDialog()
   unc->setWhatsThis( i18n( "The Uniform Naming Convention (UNC) address "
     "describes the location of the share. It has the following syntax: "
     "//HOST/SHARE" ) );
-  unc->setToolTip( i18n( "The UNC address of the share" ) );
+//   unc->setToolTip( i18n( "The UNC address of the share" ) );
   
 #ifndef Q_OS_FREEBSD
   // File system port
@@ -536,7 +536,7 @@ void Smb4KCustomOptionsDialog::setupShareDialog()
   m_fs_port_input->setMinimum( Smb4KSettings::self()->remoteFileSystemPortItem()->minValue().toInt() );
   m_fs_port_input->setMaximum( Smb4KSettings::self()->remoteFileSystemPortItem()->maxValue().toInt() );
   m_fs_port_input->setWhatsThis( Smb4KSettings::self()->remoteFileSystemPortItem()->whatsThis() );
-  m_fs_port_input->setToolTip( i18n( "The port used for mounting shares" ) );
+//   m_fs_port_input->setToolTip( i18n( "The port used for mounting shares" ) );
 
   // Write access
   QLabel *permission_label = new QLabel( Smb4KSettings::self()->writeAccessItem()->label(), main_widget );
@@ -549,7 +549,7 @@ void Smb4KCustomOptionsDialog::setupShareDialog()
 
   m_rw_input->insertItems( 0, write_access_entries );
   m_rw_input->setWhatsThis( Smb4KSettings::self()->writeAccessItem()->whatsThis() );
-  m_rw_input->setToolTip( i18n( "The write access" ) );
+//   m_rw_input->setToolTip( i18n( "The write access" ) );
 #else
   // SMB port
   QLabel *smb_port_label = new QLabel( Smb4KSettings::self()->remoteSMBPortItem()->label(), main_widget );
@@ -558,7 +558,7 @@ void Smb4KCustomOptionsDialog::setupShareDialog()
   m_smb_port_input->setMinimum( Smb4KSettings::self()->remoteSMBPortItem()->minValue().toInt() );
   m_smb_port_input->setMaximum( Smb4KSettings::self()->remoteSMBPortItem()->maxValue().toInt() );
   m_smb_port_input->setWhatsThis( Smb4KSettings::self()->remoteSMBPortItem()->whatsThis() );
-  m_smb_port_input->setToolTip( i18n( "The port used for mounting shares" ) );
+//   m_smb_port_input->setToolTip( i18n( "The port used for mounting shares" ) );
 #endif
 
   // User ID
@@ -579,7 +579,7 @@ void Smb4KCustomOptionsDialog::setupShareDialog()
 
   m_uid_input->addItems( uids );
   m_uid_input->setWhatsThis( Smb4KSettings::self()->userIDItem()->whatsThis() );
-  m_uid_input->setToolTip( i18n( "The user ID" ) );
+//   m_uid_input->setToolTip( i18n( "The user ID" ) );
 
   // Group ID
   QLabel *gid_label = new QLabel( Smb4KSettings::self()->groupIDItem()->label(), main_widget );
@@ -599,7 +599,7 @@ void Smb4KCustomOptionsDialog::setupShareDialog()
 
   m_gid_input->addItems( gids );
   m_gid_input->setWhatsThis( Smb4KSettings::self()->groupIDItem()->whatsThis() );
-  m_gid_input->setToolTip( i18n( "The group ID" ) );
+//   m_gid_input->setToolTip( i18n( "The group ID" ) );
   
   // Put everything in the layout.
   layout->addWidget( unc_label, 0, 0, 0 );

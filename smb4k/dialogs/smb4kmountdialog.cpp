@@ -96,7 +96,7 @@ void Smb4KMountDialog::setupView()
   m_share_input->setWhatsThis( i18n( "The Uniform Naming Convention (UNC) address "
     "describes the location of the share. It has the following syntax: "
     "//[USER@]HOST/SHARE. The username is optional." ) );
-  m_share_input->setToolTip( i18n( "The UNC address of the share" ) );
+//   m_share_input->setToolTip( i18n( "The UNC address of the share" ) );
   m_share_input->setCompletionMode( KGlobalSettings::CompletionPopupAuto );
   m_share_input->setClearButtonShown( true );
   m_share_input->setMinimumWidth( 200 );
@@ -108,7 +108,7 @@ void Smb4KMountDialog::setupView()
     "host in the network and indicates where it is. It has two valid formats, the one "
     "known as IP version 4 (e.g. 192.168.2.11) and the version 6 format "
     "(e.g. 2001:0db8:85a3:08d3:1319:8a2e:0370:7334)." ) );
-  m_ip_input->setToolTip( i18n( "The IP of the host where the share is located" ) );
+//   m_ip_input->setToolTip( i18n( "The IP of the host where the share is located" ) );
   m_ip_input->setCompletionMode( KGlobalSettings::CompletionPopupAuto );
   m_ip_input->setClearButtonShown( true );
   m_ip_input->setMinimumWidth( 200 );
@@ -117,7 +117,7 @@ void Smb4KMountDialog::setupView()
   m_workgroup_input = new KLineEdit( main_widget );
   m_workgroup_input->setWhatsThis( i18n( "The workgroup or domain identifies the "
     "peer-to-peer computer network the host is located in." ) );
-  m_workgroup_input->setToolTip( i18n( "The workgroup where the host is located" ) );
+//   m_workgroup_input->setToolTip( i18n( "The workgroup where the host is located" ) );
   m_workgroup_input->setCompletionMode( KGlobalSettings::CompletionPopupAuto );
   m_workgroup_input->setClearButtonShown( true );
   m_workgroup_input->setMinimumWidth( 200 );
@@ -125,7 +125,7 @@ void Smb4KMountDialog::setupView()
   m_bookmark = new QCheckBox( i18n( "Add this share to the bookmarks" ), main_widget );
   m_bookmark->setWhatsThis( i18n( "If you tick this checkbox, the share will be bookmarked "
     "and you can access it e.g. through the \"Bookmarks\" menu entry in the main window." ) );
-  m_bookmark->setToolTip( i18n( "Add this share to the bookmarks" ) );
+//   m_bookmark->setToolTip( i18n( "Add this share to the bookmarks" ) );
 
   layout->addWidget( shareLabel, 0, 0, 0 );
   layout->addWidget( m_share_input, 0, 1, 0 );

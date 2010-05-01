@@ -117,7 +117,7 @@ void Smb4KPreviewDialog::setupView()
   m_view->setWrapping( true );
   m_view->setSortingEnabled( true );
   m_view->setWhatsThis( i18n( "This is the view where the contents of the share is displayed." ) );
-  m_view->setToolTip( i18n( "The preview" ) );
+//   m_view->setToolTip( i18n( "The preview" ) );
 
   m_toolbar = new KToolBar( main_widget, true, false );
 
@@ -133,7 +133,7 @@ void Smb4KPreviewDialog::setupView()
   m_combo->setWhatsThis( i18n( "The current UNC address is shown here. You can also choose one of " 
     "the previously visited locations from the drop-down menu that will then be displayed in the "
     "view above." ) );
-  m_combo->setToolTip( i18n( "The current UNC address" ) );
+//   m_combo->setToolTip( i18n( "The current UNC address" ) );
 
   m_toolbar->addAction( m_reload );
   m_toolbar->addAction( m_abort );

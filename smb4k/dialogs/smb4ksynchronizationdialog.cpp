@@ -73,7 +73,7 @@ Smb4KSynchronizationDialog::Smb4KSynchronizationDialog( Smb4KShare *share, QWidg
   m_source->completionObject()->setCompletionMode( KGlobalSettings::CompletionPopupAuto );
   m_source->completionObject()->setMode( KUrlCompletion::FileCompletion );
   m_source->setWhatsThis( i18n( "This is the source directory. It is synchronized with the destination." ) );
-  m_source->setToolTip( i18n( "The source directory" ) );
+//   m_source->setToolTip( i18n( "The source directory" ) );
 
   QLabel *destination_label = new QLabel( i18n( "Destination:" ), main_widget );
   m_destination             = new KUrlRequester( main_widget );
@@ -84,25 +84,25 @@ Smb4KSynchronizationDialog::Smb4KSynchronizationDialog( Smb4KShare *share, QWidg
   m_destination->completionObject()->setMode( KUrlCompletion::FileCompletion );
   m_destination->setWhatsThis( i18n( "This is the destination directory. It will be updated with the data "
     "from the source directory." ) );
-  m_destination->setToolTip( i18n( "The destination directory" ) );
+//   m_destination->setToolTip( i18n( "The destination directory" ) );
 
   m_current_file            = new KLineEdit( main_widget );
   m_current_file->setSqueezedTextEnabled( true );
   m_current_file->setReadOnly( true );
   m_current_file->setWhatsThis( i18n( "The file that is currently transferred is shown here." ) );
-  m_current_file->setToolTip( i18n( "The currently transferred file" ) );
+//   m_current_file->setToolTip( i18n( "The currently transferred file" ) );
 
   m_current_progress        = new QProgressBar( main_widget );
   m_current_progress->setRange( 0, 100 );
   m_current_progress->setEnabled( false );
   m_current_progress->setWhatsThis( i18n( "The progress of the current file transfer is shown here." ) );
-  m_current_progress->setToolTip( i18n( "The progress of the current file transfer" ) );
+//   m_current_progress->setToolTip( i18n( "The progress of the current file transfer" ) );
 
   m_total_progress          = new QProgressBar( main_widget );
   m_total_progress->setRange( 0, 100 );
   m_total_progress->setEnabled( false );
   m_total_progress->setWhatsThis( i18n( "The overall progress of the synchronization is shown here." ) );
-  m_total_progress->setToolTip( i18n( "The overall progress" ) );
+//   m_total_progress->setToolTip( i18n( "The overall progress" ) );
 
   m_transfer_widget         = new QWidget( main_widget );
 
