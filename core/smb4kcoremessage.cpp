@@ -31,6 +31,7 @@
 #include <kmessagebox.h>
 #include <klocale.h>
 #include <kapplication.h>
+#include <kdebug.h>
 
 // application specific includes
 #include "smb4kcoremessage.h"
@@ -133,11 +134,10 @@ void Smb4KCoreMessage::error( int code, const QString &text, const QString &deta
     {
       if ( details.trimmed().isEmpty() )
       {
-        KMessageBox::error( parent, i18n( "<qt><p>The share %1 could not be mounted.</p><p>Detailed information cannot be provided because there was no error message.</p></qt>" ).arg( text ) );
+        KMessageBox::error( parent, i18n( "<qt><p>The share %1 could not be mounted.</p><p>Detailed information cannot be provided because there was no error message.</p></qt>", text ) );
       }
-      else
-      {
-        KMessageBox::detailedError( parent, i18n( "<qt><p>The share %1 could not be mounted.</p><p>Read the error message under \"Details\" to find out more.</p></qt>" ).arg( text ), details );
+      else {
+        KMessageBox::detailedError( parent, i18n( "<qt><p>The share %1 could not be mounted.</p><p>Read the error message under \"Details\" to find out more.</p></qt>", text ), details );
       }
 
       break;
@@ -146,18 +146,18 @@ void Smb4KCoreMessage::error( int code, const QString &text, const QString &deta
     {
       if ( details.trimmed().isEmpty() )
       {
-        KMessageBox::error( parent, i18n( "<qt><p>The share %1 could not be unmounted.</p><p>Detailed information cannot be provided because there was no error message.</p></qt>" ).arg( text ) );
+        KMessageBox::error( parent, i18n( "<qt><p>The share %1 could not be unmounted.</p><p>Detailed information cannot be provided because there was no error message.</p></qt>", text ) );
       }
       else
       {
-        KMessageBox::detailedError( parent, i18n( "<qt><p>The share %1 could not be unmounted.</p><p>Read the error message under \"Details\" to find out more.</p></qt>" ).arg( text ), details );
+        KMessageBox::detailedError( parent, i18n( "<qt><p>The share %1 could not be unmounted.</p><p>Read the error message under \"Details\" to find out more.</p></qt>", text ), details );
       }
 
       break;
     }
     case ERROR_FILE_NOT_FOUND:
     {
-      KMessageBox::error( parent, i18n( "<qt>The file \"%1\" could not be found.</qt>" ).arg( text ) );
+      KMessageBox::error( parent, i18n( "<qt>The file \"%1\" could not be found.</qt>", text ) );
 
       break;
     }
@@ -176,13 +176,13 @@ void Smb4KCoreMessage::error( int code, const QString &text, const QString &deta
     }
     case ERROR_MISSING_PROGRAMS:
     {
-      KMessageBox::error( parent, i18n( "<qt><p>Either your PATH environment variable is not set properly or there are the following programs missing on your system:</p><p>%1</p><p>Please correct this and restart Smb4K.</p></qt>" ).arg( text ) );
+      KMessageBox::error( parent, i18n( "<qt><p>Either your PATH environment variable is not set properly or there are the following programs missing on your system:</p><p>%1</p><p>Please correct this and restart Smb4K.</p></qt>", text ) );
 
       break;
     }
     case ERROR_MKDIR_FAILED:
     {
-      KMessageBox::error( parent, i18n( "<qt>The directory \"%1\" could not be created.</qt>" ).arg( text ) );
+      KMessageBox::error( parent, i18n( "<qt>The directory \"%1\" could not be created.</qt>", text ) );
 
       break;
     }
@@ -232,7 +232,7 @@ void Smb4KCoreMessage::error( int code, const QString &text, const QString &deta
     }
     case ERROR_COMMAND_NOT_FOUND:
     {
-      KMessageBox::error( parent, i18n( "<qt>The command \"%1\" could not be found.</qt>" ).arg( text ) );
+      KMessageBox::error( parent, i18n( "<qt>The command \"%1\" could not be found.</qt>", text ) );
 
       break;
     }
@@ -240,11 +240,11 @@ void Smb4KCoreMessage::error( int code, const QString &text, const QString &deta
     {
       if ( details.trimmed().isEmpty() )
       {
-        KMessageBox::error( parent, i18n( "<qt><p>The file \"%1\" could not be printed.</p></p>Detailed information cannot be provided because there was no error message.</p></qt>" ).arg( text ) );
+        KMessageBox::error( parent, i18n( "<qt><p>The file \"%1\" could not be printed.</p></p>Detailed information cannot be provided because there was no error message.</p></qt>", text ) );
       }
       else
       {
-        KMessageBox::detailedError( parent, i18n( "<qt><p>The file \"%1\" could not be printed.</p><p>Read the error message under \"Details\" to find out more.</p></qt>" ).arg( text ), details );
+        KMessageBox::detailedError( parent, i18n( "<qt><p>The file \"%1\" could not be printed.</p><p>Read the error message under \"Details\" to find out more.</p></qt>", text ), details );
       }
 
       break;
@@ -292,11 +292,11 @@ void Smb4KCoreMessage::error( int code, const QString &text, const QString &deta
     {
       if ( details.trimmed().isEmpty() )
       {
-        KMessageBox::error( parent, i18n( "<qt>The file \"%1\" could not be opened.</qt>" ).arg( text ) );
+        KMessageBox::error( parent, i18n( "<qt>The file \"%1\" could not be opened.</qt>", text ) );
       }
       else
       {
-        KMessageBox::detailedError( parent, i18n( "<qt><p>The file \"%1\" could not be opened.</p><p>Read the error message under \"Details\" to find out more.</p></qt>" ).arg( text ), details );
+        KMessageBox::detailedError( parent, i18n( "<qt><p>The file \"%1\" could not be opened.</p><p>Read the error message under \"Details\" to find out more.</p></qt>", text ), details );
       }
 
       break;
@@ -311,11 +311,11 @@ void Smb4KCoreMessage::error( int code, const QString &text, const QString &deta
     {
       if ( details.trimmed().isEmpty() )
       {
-        KMessageBox::error( parent, i18n( "<qt><p>An error occurred while parsing the XML file \"%1\".</p><p>Detailed information cannot be provided because there was no error message.</p></qt>" ).arg( text ) );
+        KMessageBox::error( parent, i18n( "<qt><p>An error occurred while parsing the XML file \"%1\".</p><p>Detailed information cannot be provided because there was no error message.</p></qt>", text ) );
       }
       else
       {
-        KMessageBox::detailedError( parent, i18n( "<qt><p>An error occurred while parsing the XML file \"%1\".</p><p>Read the error message under \"Details\" to find out more.</p></qt>" ).arg( text ), details );
+        KMessageBox::detailedError( parent, i18n( "<qt><p>An error occurred while parsing the XML file \"%1\".</p><p>Read the error message under \"Details\" to find out more.</p></qt>", text ), details );
       }
 
       break;
@@ -366,31 +366,31 @@ void Smb4KCoreMessage::processError( int code, QProcess::ProcessError error )
       {
         case QProcess::FailedToStart:
         {
-          KMessageBox::error( parent, i18n( "<qt>The process failed to start (error code: %1).</qt>" ).arg( error ) );
+          KMessageBox::error( parent, i18n( "<qt>The process failed to start (error code: %1).</qt>", error ) );
 
           break;
         }
         case QProcess::Crashed:
         {
-          KMessageBox::error( parent, i18n( "<qt>The process crashed (error code: %1).</qt>" ).arg( error ) );
+          KMessageBox::error( parent, i18n( "<qt>The process crashed (error code: %1).</qt>", error ) );
 
           break;
         }
         case QProcess::Timedout:
         {
-          KMessageBox::error( parent, i18n( "<qt>The process timed out (error code: %1).</qt>" ).arg( error ) );
+          KMessageBox::error( parent, i18n( "<qt>The process timed out (error code: %1).</qt>", error ) );
 
           break;
         }
         case QProcess::WriteError:
         {
-          KMessageBox::error( parent, i18n( "<qt>Could not write to the process (error code: %1).</qt>" ).arg( error ) );
+          KMessageBox::error( parent, i18n( "<qt>Could not write to the process (error code: %1).</qt>", error ) );
 
           break;
         }
         case QProcess::ReadError:
         {
-          KMessageBox::error( parent, i18n( "<qt>Could not read from the process (error code: %1).</qt>" ).arg( error ) );
+          KMessageBox::error( parent, i18n( "<qt>Could not read from the process (error code: %1).</qt>", error ) );
 
           break;
         }
@@ -477,25 +477,25 @@ void Smb4KCoreMessage::information( int code, const QString &text, const QString
   {
     case INFO_MIMETYPE_NOT_SUPPORTED:
     {
-      KMessageBox::information( parent, i18n( "<qt>The mimetype \"%1\" is not supported. Please convert the file to PostScript or PDF.</qt>" ).arg( text ) );
+      KMessageBox::information( parent, i18n( "<qt>The mimetype \"%1\" is not supported. Please convert the file to PostScript or PDF.</qt>", text ) );
 
       break;
     }
     case INFO_DISABLE_SUID_FEATURE:
     {
-      KMessageBox::information( parent, i18n( "<qt>You previously chose to use \"%1\", but now it is missing on your system. Smb4K will disable this feature.</qt>" ).arg( text ) );
+      KMessageBox::information( parent, i18n( "<qt>You previously chose to use \"%1\", but now it is missing on your system. Smb4K will disable this feature.</qt>", text ) );
 
       break;
     }
     case INFO_BOOKMARK_LABEL_IN_USE:
     {
-      KMessageBox::information( parent, i18n( "<qt>The label \"%1\" is used more than once. It will automatically be renamed for bookmark \"%2\" to avoid confusion.</qt>" ).arg( text, details ) );
+      KMessageBox::information( parent, i18n( "<qt>The label \"%1\" is used more than once. It will automatically be renamed for bookmark \"%2\" to avoid confusion.</qt>", text, details ) );
 
       break;
     }
     case INFO_OPENING_WALLET_FAILED:
     {
-      KMessageBox::information( parent, i18n( "<qt>The wallet \"%1\" could not be opened. KWallet support will be disabled for this session.</qt>" ).arg( text ) );
+      KMessageBox::information( parent, i18n( "<qt>The wallet \"%1\" could not be opened. KWallet support will be disabled for this session.</qt>", text ) );
 
       break;
     }
