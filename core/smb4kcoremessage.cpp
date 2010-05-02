@@ -31,7 +31,6 @@
 #include <kmessagebox.h>
 #include <klocale.h>
 #include <kapplication.h>
-#include <kdebug.h>
 
 // application specific includes
 #include "smb4kcoremessage.h"
