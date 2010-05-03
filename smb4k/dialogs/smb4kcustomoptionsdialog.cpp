@@ -1372,7 +1372,7 @@ bool Smb4KCustomOptionsDialog::hasInitialSettings()
       }
       else
       {
-        if ( m_smb_port_input->value() != Smb4KSettings::smbPort() )
+        if ( m_smb_port_input->value() != Smb4KSettings::remoteSMBPort() )
         {
           return false;
         }

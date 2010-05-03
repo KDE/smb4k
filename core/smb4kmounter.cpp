@@ -1172,7 +1172,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
 #else
   if ( options_info )
   {
-    share->setPort( options_info->port() != -1 ? options_info->port() : Smb4KSettings::remoteSMBPort() );
+    share->setPort( options_info->smbPort() != -1 ? options_info->smbPort() : Smb4KSettings::remoteSMBPort() );
   }
   else
   {

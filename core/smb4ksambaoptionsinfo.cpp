@@ -327,7 +327,11 @@ void Smb4KSambaOptionsInfo::update( Smb4KSambaOptionsInfo *info )
     }
     case Share:
     {
+#ifndef Q_OS_FREEBSD
       m_this_url.setPort( info->fileSystemPort() );
+#else
+      m_this_url.setPort( info->smbPort() );
+#endif
       m_host_url.setPort( info->smbPort() );
       break;
     }
