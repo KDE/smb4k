@@ -33,3 +33,9 @@ File=smb4krc
 Group=Samba
 Options=overwrite
 Script=samba2.sh,sh
+
+Id=userinterface2
+File=smb4krc
+Group=UserInterface
+Options=overwrite
+Script=userinterface2.sh,sh
