@@ -96,9 +96,9 @@
       <whatsthis>Show the UID and GID that own all files on the mounted file system.</whatsthis>
       <default>false</default>
     </entry>
-    <entry name="ShowLogin" type="Bool">
-      <label>Show the login</label>
-      <whatsthis>Show the login that was used to authenticate to the server. The column will only contain an entry if the share was mounted with the CIFS file system.</whatsthis>
+    <entry name="ShowLoginName" type="Bool">
+      <label>Show the login name</label>
+      <whatsthis>Show the login name that was used to authenticate to the server. The column will only contain an entry if the share was mounted with the CIFS file system.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="ShowFileSystem" type="Bool">
