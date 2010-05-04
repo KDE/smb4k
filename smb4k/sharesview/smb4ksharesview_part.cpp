@@ -419,7 +419,7 @@ void Smb4KSharesViewPart::loadSettings()
 
     m_list_view->setColumnHidden( Smb4KSharesListView::Owner, !Smb4KSettings::showOwner() );
 #ifndef __FreeBSD__
-    m_list_view->setColumnHidden( Smb4KSharesListView::Login, !Smb4KSettings::showLogin() );
+    m_list_view->setColumnHidden( Smb4KSharesListView::Login, !Smb4KSettings::showLoginName() );
 #endif
     m_list_view->setColumnHidden( Smb4KSharesListView::FileSystem, !Smb4KSettings::showFileSystem() );
     m_list_view->setColumnHidden( Smb4KSharesListView::Free, !Smb4KSettings::showFreeDiskSpace() );
