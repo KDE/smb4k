@@ -696,7 +696,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
 #endif
 
   QStringList header_labels;
-  header_labels.append( i18n( "UNC" ) );
+  header_labels.append( i18n( "UNC Address" ) );
   header_labels.append( i18n( "Protocol" ) );
 #ifndef Q_OS_FREEBSD
   header_labels.append( i18n( "Write Access" ) );
