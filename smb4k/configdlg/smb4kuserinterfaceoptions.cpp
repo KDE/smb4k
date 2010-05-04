@@ -199,9 +199,9 @@ Smb4KUserInterfaceOptions::Smb4KUserInterfaceOptions( QWidget *parent )
   show_owner->setObjectName( "kcfg_ShowOwner" );
 
 #ifndef __FreeBSD__
-  QCheckBox *show_login           = new QCheckBox( Smb4KSettings::self()->showLoginItem()->label(),
+  QCheckBox *show_login           = new QCheckBox( Smb4KSettings::self()->showLoginNameItem()->label(),
                                     view_box );
-  show_login->setObjectName( "kcfg_ShowLogin" );
+  show_login->setObjectName( "kcfg_ShowLoginName" );
 #endif
 
   QCheckBox *show_filesystem      = new QCheckBox( Smb4KSettings::self()->showFileSystemItem()->label(),
