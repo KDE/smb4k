@@ -72,7 +72,8 @@ Smb4KSynchronizationDialog::Smb4KSynchronizationDialog( Smb4KShare *share, QWidg
   m_source->lineEdit()->setSqueezedTextEnabled( true );
   m_source->completionObject()->setCompletionMode( KGlobalSettings::CompletionPopupAuto );
   m_source->completionObject()->setMode( KUrlCompletion::FileCompletion );
-  m_source->setWhatsThis( i18n( "This is the source directory. It is synchronized with the destination directory." ) );
+  m_source->setWhatsThis( i18n( "This is the source directory. The data that it contains is to be written "
+    "to the destination directory." ) );
 //   m_source->setToolTip( i18n( "The source directory" ) );
 
   QLabel *destination_label = new QLabel( i18n( "Destination:" ), main_widget );

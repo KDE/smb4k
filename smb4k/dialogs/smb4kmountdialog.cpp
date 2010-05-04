@@ -108,7 +108,7 @@ void Smb4KMountDialog::setupView()
     "host in the network and indicates where it is. It has two valid formats, the one "
     "known as IP version 4 (e.g. 192.168.2.11) and the version 6 format "
     "(e.g. 2001:0db8:85a3:08d3:1319:8a2e:0370:7334)." ) );
-//   m_ip_input->setToolTip( i18n( "The IP of the host where the share is located" ) );
+//   m_ip_input->setToolTip( i18n( "The IP address of the host where the share is located" ) );
   m_ip_input->setCompletionMode( KGlobalSettings::CompletionPopupAuto );
   m_ip_input->setClearButtonShown( true );
   m_ip_input->setMinimumWidth( 200 );
