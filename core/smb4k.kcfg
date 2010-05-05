@@ -282,16 +282,16 @@
       <whatsthis>Set the signing state. This setting affects the smbclient and smbtree command.</whatsthis>
       <choices>
         <choice name="None">
-          <label>none</label>
+          <label>None</label>
         </choice>
         <choice name="On">
-          <label>on</label>
+          <label>On</label>
         </choice>
         <choice name="Off">
-          <label>off</label>
+          <label>Off</label>
         </choice>
         <choice name="Required">
-          <label>required</label>
+          <label>Required</label>
         </choice>
       </choices>
       <default>None</default>
