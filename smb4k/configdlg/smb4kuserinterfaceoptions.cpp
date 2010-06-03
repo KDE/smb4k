@@ -50,7 +50,7 @@ Smb4KUserInterfaceOptions::Smb4KUserInterfaceOptions( QWidget *parent )
   QGridLayout *main_window_layout = new QGridLayout( mainwindow_tab );
   main_window_layout->setSpacing( 5 );
   main_window_layout->setMargin( 0 );
-
+  
   // Bookmarks
   QGroupBox *bookmarks_box        = new QGroupBox( i18n( "Bookmarks" ), mainwindow_tab );
 
@@ -63,25 +63,24 @@ Smb4KUserInterfaceOptions::Smb4KUserInterfaceOptions( QWidget *parent )
 
   bookmarks_layout->addWidget( show_bookmark_label, 0, 0, 0 );
 
-  // System Tray Widget
-  QGroupBox *system_tray_box      = new QGroupBox( i18n( "System Tray" ), mainwindow_tab );
-
-  QGridLayout *system_tray_layout = new QGridLayout( system_tray_box );
-  system_tray_layout->setSpacing( 5 );
-
-  QCheckBox *embed_application    = new QCheckBox( Smb4KSettings::self()->embedIntoSystemTrayItem()->label(),
-                                    system_tray_box );
-  embed_application->setObjectName( "kcfg_EmbedIntoSystemTray" );
-
-  system_tray_layout->addWidget( embed_application, 0, 0, 0 );
+//   // System Tray Widget
+//   QGroupBox *system_tray_box      = new QGroupBox( i18n( "System Tray" ), mainwindow_tab );
+// 
+//   QGridLayout *system_tray_layout = new QGridLayout( system_tray_box );
+//   system_tray_layout->setSpacing( 5 );
+// 
+//   QCheckBox *embed_application    = new QCheckBox( Smb4KSettings::self()->embedIntoSystemTrayItem()->label(),
+//                                     system_tray_box );
+//   embed_application->setObjectName( "kcfg_EmbedIntoSystemTray" );
+// 
+//   system_tray_layout->addWidget( embed_application, 0, 0, 0 );
 
   QSpacerItem *spacer1 = new QSpacerItem( 10, 10, QSizePolicy::Preferred, QSizePolicy::Expanding );
 
   main_window_layout->addWidget( bookmarks_box, 0, 0, 0 );
-  main_window_layout->addWidget( system_tray_box, 1, 0, 0 );
-  main_window_layout->addItem( spacer1, 2, 0 );
+  main_window_layout->addItem( spacer1, 1, 0 );
 
-  insertTab( MainWindowSystemTrayTab, mainwindow_tab, i18n( "Main Window && System Tray" ) );
+  insertTab( MainWindowSystemTrayTab, mainwindow_tab, i18n( "Main Window" ) );
 
   //
   // Network browser
