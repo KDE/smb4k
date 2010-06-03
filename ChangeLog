@@ -267,14 +267,14 @@ Smb4K SVN_HEAD (????-??-??):
   + Several small improvements.
   + Replaced deprecated functions.
   + Added path completion.
-  + Added "What's this" help and tool tips.
+  + Added "What's this" help.
 - Revised the print dialog:
   + Adjusted code so that the new features of the print code can be used.
   + The file that should be printed is now checked if it is valid and existing.
     If one of the conditions is not met, the file will not be printed.
   + No path is predefined in the url requester, because some users were confused
     by this before. Opening the file dialog will lead you to the home directory.
-  + Added "What's this" help and tool tips.
+  + Added "What's this" help.
 - Added Smb4KBookmarkDialog class, a dialog to add bookmarks.
 - Revised shares view:
   + Adjusted the code so that the new possibilities that the reworked
@@ -302,7 +302,7 @@ Smb4K SVN_HEAD (????-??-??):
     "Specify User" dialogs are shown, if you want to mount and bookmark a "homes"
     share.
   + Added text completion.
-  + Added "What's this" help and tool tips.
+  + Added "What's this" help.
 - Revised configuration dialog:
   + Added "Laptop Support" page where the user can set options that are important
     when you use a laptop.
@@ -316,6 +316,7 @@ Smb4K SVN_HEAD (????-??-??):
   + Added editor for the entries in the wallet. There is no need for KWalletManager
     anymore to edit or remove logins.
   + Improved checks for empty entries.
+  + Removed settings related to the system tray icon.
 - Revised main window:
   + The icon in the status bar, that indicates the status of the authentication
     system now shows a key if the wallet system is not used, i.e. we are in
@@ -324,6 +325,12 @@ Smb4K SVN_HEAD (????-??-??):
   + Improved visual (mount) feedback (closes #15899).
   + Fixed saving and restoring of the dock widgets (closes #15899).
   + Improved status messages.
+- Revised system tray icon:
+  + Smb4KSystemTray inherits KStatusNotifierItem class.
+  + Removed functions for embedding the system tray window. The icon will now always 
+    reside in the tray.
+  + The system tray icon will be set passive (will be hidden) if no workgroups could
+    be found and no shares were mounted.
 - Revised bookmark editor:
   + The login name is shown and can be edited.
   + The workgroup entry can be edited.
@@ -334,12 +341,12 @@ Smb4K SVN_HEAD (????-??-??):
   + Connected to the aboutToStart() and finished() signals of the previewer to
     enabled/disable the reload and abort button.
   + Removed old cruft.
-  + Added "What's this" help and tool tips.
+  + Added "What's this" help.
 - Revised custom options dialog:
   + Did some refactoring.
   + Added all settings available for shares to the host dialog. This way you can 
     set general settings for a host.
-  + Added "What's this" help and tool tips.
+  + Added "What's this" help.
 - Revised utility programs:
   + Did some housekeeping.
   + smb4k_umount:
