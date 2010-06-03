@@ -635,16 +635,10 @@ void Smb4KConfigDialog::slotRemoveSuperUserEntries()
 {
   setEnabled( false );
 
-  // Remove the entries.
-  if ( !Smb4KSudoWriterInterface::self()->removeUser() )
-  {
-    // Actually, we do not need to care about failed removals.
-  }
-  else
-  {
-    // Do nothing
-  }
-
+  (void) Smb4KSudoWriterInterface::self()->removeUser();
+  
+  qDebug() << "FIXME: Make the configuration dialog aware of the changes applied just now";
+  
   setEnabled( true );
 }
 
@@ -823,5 +817,6 @@ void Smb4KConfigDialog::slotEnableApplyButton()
   
   enableButtonApply( enable );
 }
+
 
 #include "smb4kconfigdialog.moc"

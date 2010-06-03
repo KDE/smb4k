@@ -128,7 +128,7 @@ class Smb4KConfigDialog : public KConfigDialog
      * KConfig XT have changed.
      */
     void slotEnableApplyButton();
-
+    
   private:
     /**
      * "User Interface" page
