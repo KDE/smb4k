@@ -410,13 +410,8 @@ void Smb4KMainWindow::setupSystemTrayWidget()
     // Do nothing
   }
 
-  connect( m_system_tray_widget, SIGNAL( quitSelected() ),
-           this,                 SLOT( slotQuit() ) );
-
   connect( m_system_tray_widget, SIGNAL( settingsChanged( const QString & ) ),
            this,                 SLOT( slotSettingsChanged( const QString & ) ) );
-
-  m_system_tray_widget->embed( Smb4KSettings::embedIntoSystemTray() );
 }
 
 
@@ -538,8 +533,7 @@ void Smb4KMainWindow::saveSettings()
 
 bool Smb4KMainWindow::queryClose()
 {
-  if ( !kapp->sessionSaving() && isVisible() && m_system_tray_widget->isEmbedded() &&
-       Smb4KSettings::embedIntoSystemTray() )
+  if ( !kapp->sessionSaving() && isVisible() )
   {
     // This part has been 'stolen' from JuK application.
     KMessageBox::information(this,
