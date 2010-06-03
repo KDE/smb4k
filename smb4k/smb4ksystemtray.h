@@ -35,13 +35,14 @@
 #include <QActionGroup>
 
 // KDE includes
-#include <ksystemtrayicon.h>
+#include <kstatusnotifieritem.h>
 #include <kactionmenu.h>
 
 // forward declarations
 class Smb4KShare;
+class Smb4KWorkgroup;
 
-class Smb4KSystemTray : public KSystemTrayIcon
+class Smb4KSystemTray : public KStatusNotifierItem
 {
   Q_OBJECT
 
@@ -57,24 +58,6 @@ class Smb4KSystemTray : public KSystemTrayIcon
      * The destructor.
      */
     ~Smb4KSystemTray();
-
-    /**
-     * Embeds the system tray window into the system tray, if @p ebd is
-     * TRUE. Otherwise, it removes it from there. Note, that the system tray
-     * icon won't be deleted but only hidden!
-     *
-     * @param ebd           If TRUE the system tray icon will be embedded into
-     *                      the system tray.
-     */
-    void embed( bool ebd );
-
-    /**
-     * This function returns TRUE if the system tray window is embedded into
-     * the system tray, i.e. it is visible, and FALSE otherwise.
-     *
-     * @returns TRUE if the system tray window is embedded.
-     */
-    bool isEmbedded() { return isVisible(); }
 
     /**
      * This function (re-)loads the settings for this widget. It basically just
@@ -121,7 +104,7 @@ class Smb4KSystemTray : public KSystemTrayIcon
     /**
      * This slot is invoked when the bookmarks have been updated. It sets up the
      * bookmark menu, inserts the bookmark actions into it and automatically
-     * disables them if they were already mounted (@see slotSetupSharesMenu() as well).
+     * disables them if they were already mounted (see slotSetupSharesMenu() as well).
      */
     void slotSetupBookmarksMenu();
 
@@ -151,14 +134,6 @@ class Smb4KSystemTray : public KSystemTrayIcon
     void slotEnableBookmarks( Smb4KShare *share );
 
     /**
-     * This slot is activated when the list of mounted shares has been updated.
-     * It setus up the "Mounted Shares" menu and also enables/disables the
-     * bookmarks in the "Bookmarks" menu. It is connected to the
-     * Smb4KMounter::updated() signal.
-     */
-    void slotSetupSharesMenu();
-
-    /**
      * This slot initializes the umounting of all shares. It is connected to the
      * "Unmount All" action of the "Mounted Shares" menu.
      *
@@ -175,8 +150,28 @@ class Smb4KSystemTray : public KSystemTrayIcon
      * @param action        The action that has been triggered.
      */
     void slotShareActionTriggered( QAction *action );
+    
+    /**
+     * React on the mounting/unmounting of shares.
+     * 
+     * @param share         The share that was mounted or unmounted
+     */
+    void slotMountEvent();
+    
+    /**
+     * React on the finding of workgroups/domains.
+     * 
+     * @param workgroups    The list of workgroups that was found
+     */
+    void slotNetworkEvent();
 
   private:
+    /**
+     * This function sets up the "Mounted Shares" menu and also enables/disables 
+     * the bookmarks in the "Bookmarks" menu.
+     */
+    void setupSharesMenu();
+    
     /**
      * The action menu for the bookmarks.
      */

@@ -49,18 +49,25 @@
 #include <core/smb4kcore.h>
 #include <core/smb4kbookmark.h>
 #include <core/smb4kshare.h>
+#include <core/smb4kworkgroup.h>
 #include <core/smb4ksettings.h>
 #include <core/smb4kglobal.h>
 #include <core/smb4kbookmarkhandler.h>
 #include <core/smb4kmounter.h>
+#include <core/smb4kscanner.h>
 
 using namespace Smb4KGlobal;
 
 
 Smb4KSystemTray::Smb4KSystemTray( QWidget *parent )
-: KSystemTrayIcon( "smb4k", parent )
+: KStatusNotifierItem( "smb4k_systemtray", parent )
 {
-  setToolTip( i18n( "Smb4K" ) );
+  setIconByName( "smb4k" );
+  setToolTip( iconPixmap(), i18n( "Smb4K" ), i18n( "Advanced Network Neighborhood Browser" ) );
+  
+  // Show the icon to the user. It will become passive, if the scanner
+  // could not find something and no shares were mounted.
+  setStatus( KStatusNotifierItem::Active );
 
   m_bookmarks      = new QActionGroup( actionCollection() );
   m_share_menus    = new QActionGroup( actionCollection() );
@@ -87,7 +94,7 @@ Smb4KSystemTray::Smb4KSystemTray( QWidget *parent )
 
   // Set up the menus:
   slotSetupBookmarksMenu();
-  slotSetupSharesMenu();
+  setupSharesMenu();
 
   // Connections:
   connect( manual_mount,                 SIGNAL( triggered( bool ) ),
@@ -109,23 +116,18 @@ Smb4KSystemTray::Smb4KSystemTray( QWidget *parent )
            this,                         SLOT( slotEnableBookmarks( Smb4KShare * ) ) );
            
   connect( Smb4KMounter::self(),         SIGNAL( mounted( Smb4KShare * ) ),
-           this,                         SLOT( slotSetupSharesMenu() ) );
+           this,                         SLOT( slotMountEvent() ) );
            
   connect( Smb4KMounter::self(),         SIGNAL( unmounted( Smb4KShare * ) ),
-           this,                         SLOT( slotSetupSharesMenu() ) );
-
-  // Connection to quitSelected() signal must be done in parent widget.
+           this,                         SLOT( slotMountEvent() ) );
+           
+  connect( Smb4KScanner::self(),         SIGNAL( workgroups( const QList<Smb4KWorkgroup *> & ) ),
+           this,                         SLOT( slotNetworkEvent() ) );
 }
 
 
 Smb4KSystemTray::~Smb4KSystemTray()
 {
-}
-
-
-void Smb4KSystemTray::embed( bool ebd )
-{
-  setVisible( ebd );
 }
 
 
@@ -138,310 +140,11 @@ void Smb4KSystemTray::loadSettings()
 
   // Adjust the shares menu.
   // slotSetupSharesMenu() is doing everything for us, so just call it.
-  slotSetupSharesMenu();
+  setupSharesMenu();
 }
 
 
-/////////////////////////////////////////////////////////////////////////////
-// SLOT IMPLEMENTATIONS
-/////////////////////////////////////////////////////////////////////////////
-
-void Smb4KSystemTray::slotMountDialog( bool /* checked */ )
-{
-  Smb4KMountDialog *dlg = NULL;
-
-  // Do not open the mount dialog twice. So, look
-  // if there is already one.
-  if ( parentWidget() )
-  {
-    dlg = parentWidget()->findChild<Smb4KMountDialog *>();
-  }
-  else
-  {
-    dlg = contextMenu()->findChild<Smb4KMountDialog *>();
-  }
-
-  // If there is no dialog yet, create one.
-  if ( !dlg )
-  {
-    if ( parentWidget() )
-    {
-      dlg = new Smb4KMountDialog( parentWidget() );
-    }
-    else
-    {
-      // This is a bit strange, but we need a QWidget object.
-      // Since KSystemTrayIcon class inherits QObject, we do
-      // it this way. 0 as parent would make the check above
-      // fail.
-      dlg = new Smb4KMountDialog( contextMenu() );
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( !dlg->isVisible() )
-  {
-    dlg->show();
-  }
-  else
-  {
-    if ( dlg->isMinimized() )
-    {
-      dlg->showNormal();
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-}
-
-
-void Smb4KSystemTray::slotConfigDialog()
-{
-  // If the config dialog is already created and cached,
-  // we do not create a new one but show the old instead:
-  KConfigDialog *dlg = NULL;
-
-  if ( (dlg = KConfigDialog::exists( "ConfigDialog" )) && KConfigDialog::showDialog( "ConfigDialog" ) )
-  {
-    // To make sure we do not connect the config dialog several times
-    // to slotSettingsChanged(), we break the connection first and re-
-    // establish it afterwards:
-    disconnect( dlg,  SIGNAL( settingsChanged( const QString & ) ),
-                this, SLOT( slotSettingsChanged( const QString & ) ) );
-
-    connect( dlg,  SIGNAL( settingsChanged( const QString & ) ),
-             this, SLOT( slotSettingsChanged( const QString & ) ) );
-
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Load the configuration dialog:
-  KPluginLoader loader( "libsmb4kconfigdialog" );
-  KPluginFactory *config_factory = loader.factory();
-
-  if ( config_factory )
-  {
-    if ( parentWidget() )
-    {
-      dlg = config_factory->create<KConfigDialog>( parentWidget() );
-      dlg->setObjectName( "ConfigDialog" );
-    }
-    else
-    {
-      dlg = config_factory->create<KConfigDialog>( contextMenu() );
-      dlg->setObjectName( "ConfigDialog" );
-    }
-
-    // ... and show it.
-    if ( dlg )
-    {
-      connect( dlg,  SIGNAL( settingsChanged( const QString & ) ),
-               this, SLOT( slotSettingsChanged( const QString & ) ) );
-
-      connect( dlg,  SIGNAL( settingsChanged( const QString & ) ),
-               this, SIGNAL( settingsChanged( const QString & ) ) );
-
-      dlg->show();
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    KMessageBox::error( 0, "<qt>"+loader.errorString()+"</qt>" );
-
-    return;
-  }
-}
-
-void Smb4KSystemTray::slotSettingsChanged( const QString & )
-{
-  // Execute loadSettings():
-  loadSettings();
-}
-
-
-void Smb4KSystemTray::slotSetupBookmarksMenu()
-{
-  // First check if we have to set up the menu completely:
-  if ( !actionCollection()->action( "st_edit_bookmarks_action" ) )
-  {
-    // OK, build the menu from ground up:
-    KAction *edit_bookmarks = new KAction( KIcon( "bookmarks-organize" ), i18n( "&Edit Bookmarks" ),
-                              actionCollection() );
-    actionCollection()->addAction( "st_edit_bookmarks_action", edit_bookmarks );
-
-    connect( edit_bookmarks, SIGNAL( triggered( bool ) ), this, SLOT( slotBookmarkEditor( bool ) ) );
-
-    m_bookmarks_menu->addAction( edit_bookmarks );
-    m_bookmarks_menu->addSeparator();
-  }
-
-  // Get the list of bookmark actions and delete all entries. We could
-  // also try to keep those actions that are not obsolete, but I think
-  // this is the cleanest way.
-  while ( !m_bookmarks->actions().isEmpty() )
-  {
-    m_bookmarks_menu->removeAction( m_bookmarks->actions().first() );
-    actionCollection()->removeAction( m_bookmarks->actions().first() );
-    delete m_bookmarks->actions().takeFirst();
-  }
-
-  // Get the list of bookmarks:
-  QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->getBookmarks();
-  QMap<QString, bool> actions;
-
-  // Prepare the list of bookmarks for display:
-  if ( !bookmarks.isEmpty() )
-  {
-    // Enable the "Edit Bookmarks" action:
-    actionCollection()->action( "st_edit_bookmarks_action" )->setEnabled( true );
-
-    // Work around sorting problems:
-    for ( int i = 0; i < bookmarks.size(); ++i )
-    {
-      QList<Smb4KShare *> shares_list = findShareByUNC( bookmarks.at( i )->unc() );
-      bool enable = true;
-
-      for ( int j = 0; j < shares_list.size(); ++j )
-      {
-        if ( !shares_list.at( j )->isForeign() )
-        {
-          enable = false;
-          break;
-        }
-        else
-        {
-          continue;
-        }
-      }
-
-      if ( !bookmarks.at( i )->label().isEmpty() && Smb4KSettings::showCustomBookmarkLabel() )
-      {
-        actions.insert( bookmarks.at( i )->label(), enable );
-      }
-      else
-      {
-        actions.insert( bookmarks.at( i )->unc(), enable );
-      }
-    }
-  }
-  else
-  {
-    // Disable the "Edit Bookmarks" action:
-    actionCollection()->action( "st_edit_bookmarks_action" )->setEnabled( false );
-  }
-
-  // Now create the actions and put them into the action group
-  // and the menu.
-  QMapIterator<QString, bool> it( actions );
-
-  while ( it.hasNext() )
-  {
-    it.next();
-
-    KAction *bm_action = new KAction( KIcon( "folder-remote" ), it.key(), m_bookmarks );
-    bm_action->setData( it.key() );
-    bm_action->setEnabled( it.value() );
-    m_bookmarks_menu->addAction( bm_action );
-  }
-}
-
-
-void Smb4KSystemTray::slotBookmarkEditor( bool /* checked */ )
-{
-  Smb4KBookmarkEditor *dlg = NULL;
-
-  // Do not open the bookmark editor twice. So, look
-  // if there is already one.
-  if ( parentWidget() )
-  {
-    dlg = parentWidget()->findChild<Smb4KBookmarkEditor *>();
-  }
-  else
-  {
-    dlg = contextMenu()->findChild<Smb4KBookmarkEditor *>();
-  }
-
-  if ( !dlg )
-  {
-    if ( parentWidget() && parentWidget()->isVisible() )
-    {
-      dlg = new Smb4KBookmarkEditor( parentWidget() );
-    }
-    else
-    {
-      // This is a bit strange, but we need a QWidget object.
-      // Since KSystemTrayIcon class inherits QObject, we do
-      // it this way. 0 as parent would make the check above
-      // fail.
-      dlg = new Smb4KBookmarkEditor( contextMenu() );
-    }
-  }
-
-  dlg->setVisible( true );
-}
-
-
-void Smb4KSystemTray::slotBookmarkTriggered( QAction *action )
-{
-  if ( action )
-  {
-    Smb4KBookmark *bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC( action->data().toString() );
-
-    if ( bookmark )
-    {
-      Smb4KShare share( bookmark->hostName(), bookmark->shareName() );
-      share.setWorkgroupName( bookmark->workgroupName() );
-      share.setHostIP( bookmark->hostIP() );
-
-      Smb4KMounter::self()->mountShare( &share );
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KSystemTray::slotEnableBookmarks( Smb4KShare *share )
-{
-  if ( !share->isForeign() )
-  {
-    // Enable/disable the bookmark actions.
-    for ( int i = 0; i < m_bookmarks->actions().size(); ++i )
-    {
-      if ( QString::compare( m_bookmarks->actions().at( i )->data().toString(), share->unc(), Qt::CaseInsensitive ) == 0 )
-      {
-        m_bookmarks->actions().at( i )->setEnabled( !share->isMounted() );
-        break;
-      }
-      else
-      {
-        continue;
-      }
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KSystemTray::slotSetupSharesMenu()
+void Smb4KSystemTray::setupSharesMenu()
 {
   // First check if we have to set up the menu completely:
   if ( !actionCollection()->action( "st_unmount_all_action" ) )
@@ -805,7 +508,305 @@ void Smb4KSystemTray::slotSetupSharesMenu()
     // Disable the "Unmount All" action.
     actionCollection()->action( "st_unmount_all_action" )->setEnabled( false );
   }
+}
 
+
+/////////////////////////////////////////////////////////////////////////////
+// SLOT IMPLEMENTATIONS
+/////////////////////////////////////////////////////////////////////////////
+
+void Smb4KSystemTray::slotMountDialog( bool /* checked */ )
+{
+  Smb4KMountDialog *dlg = NULL;
+
+  // Do not open the mount dialog twice. So, look
+  // if there is already one.
+  if ( associatedWidget() )
+  {
+    dlg = associatedWidget()->findChild<Smb4KMountDialog *>();
+  }
+  else
+  {
+    dlg = contextMenu()->findChild<Smb4KMountDialog *>();
+  }
+
+  // If there is no dialog yet, create one.
+  if ( !dlg )
+  {
+    if ( associatedWidget() )
+    {
+      dlg = new Smb4KMountDialog( associatedWidget() );
+    }
+    else
+    {
+      // This is a bit strange, but we need a QWidget object.
+      // Since KSystemTrayIcon class inherits QObject, we do
+      // it this way. 0 as parent would make the check above
+      // fail.
+      dlg = new Smb4KMountDialog( contextMenu() );
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  if ( !dlg->isVisible() )
+  {
+    dlg->show();
+  }
+  else
+  {
+    if ( dlg->isMinimized() )
+    {
+      dlg->showNormal();
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+}
+
+
+void Smb4KSystemTray::slotConfigDialog()
+{
+  // If the config dialog is already created and cached,
+  // we do not create a new one but show the old instead:
+  KConfigDialog *dlg = NULL;
+
+  if ( (dlg = KConfigDialog::exists( "ConfigDialog" )) && KConfigDialog::showDialog( "ConfigDialog" ) )
+  {
+    // To make sure we do not connect the config dialog several times
+    // to slotSettingsChanged(), we break the connection first and re-
+    // establish it afterwards:
+    disconnect( dlg,  SIGNAL( settingsChanged( const QString & ) ),
+                this, SLOT( slotSettingsChanged( const QString & ) ) );
+
+    connect( dlg,  SIGNAL( settingsChanged( const QString & ) ),
+             this, SLOT( slotSettingsChanged( const QString & ) ) );
+
+    return;
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // Load the configuration dialog:
+  KPluginLoader loader( "libsmb4kconfigdialog" );
+  KPluginFactory *config_factory = loader.factory();
+
+  if ( config_factory )
+  {
+    if ( associatedWidget() )
+    {
+      dlg = config_factory->create<KConfigDialog>( associatedWidget() );
+      dlg->setObjectName( "ConfigDialog" );
+    }
+    else
+    {
+      dlg = config_factory->create<KConfigDialog>( contextMenu() );
+      dlg->setObjectName( "ConfigDialog" );
+    }
+
+    // ... and show it.
+    if ( dlg )
+    {
+      connect( dlg,  SIGNAL( settingsChanged( const QString & ) ),
+               this, SLOT( slotSettingsChanged( const QString & ) ) );
+
+      connect( dlg,  SIGNAL( settingsChanged( const QString & ) ),
+               this, SIGNAL( settingsChanged( const QString & ) ) );
+
+      dlg->show();
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    KMessageBox::error( 0, "<qt>"+loader.errorString()+"</qt>" );
+
+    return;
+  }
+}
+
+void Smb4KSystemTray::slotSettingsChanged( const QString & )
+{
+  // Execute loadSettings():
+  loadSettings();
+}
+
+
+void Smb4KSystemTray::slotSetupBookmarksMenu()
+{
+  // First check if we have to set up the menu completely:
+  if ( !actionCollection()->action( "st_edit_bookmarks_action" ) )
+  {
+    // OK, build the menu from ground up:
+    KAction *edit_bookmarks = new KAction( KIcon( "bookmarks-organize" ), i18n( "&Edit Bookmarks" ),
+                              actionCollection() );
+    actionCollection()->addAction( "st_edit_bookmarks_action", edit_bookmarks );
+
+    connect( edit_bookmarks, SIGNAL( triggered( bool ) ), this, SLOT( slotBookmarkEditor( bool ) ) );
+
+    m_bookmarks_menu->addAction( edit_bookmarks );
+    m_bookmarks_menu->addSeparator();
+  }
+
+  // Get the list of bookmark actions and delete all entries. We could
+  // also try to keep those actions that are not obsolete, but I think
+  // this is the cleanest way.
+  while ( !m_bookmarks->actions().isEmpty() )
+  {
+    m_bookmarks_menu->removeAction( m_bookmarks->actions().first() );
+    actionCollection()->removeAction( m_bookmarks->actions().first() );
+    delete m_bookmarks->actions().takeFirst();
+  }
+
+  // Get the list of bookmarks:
+  QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->getBookmarks();
+  QMap<QString, bool> actions;
+
+  // Prepare the list of bookmarks for display:
+  if ( !bookmarks.isEmpty() )
+  {
+    // Enable the "Edit Bookmarks" action:
+    actionCollection()->action( "st_edit_bookmarks_action" )->setEnabled( true );
+
+    // Work around sorting problems:
+    for ( int i = 0; i < bookmarks.size(); ++i )
+    {
+      QList<Smb4KShare *> shares_list = findShareByUNC( bookmarks.at( i )->unc() );
+      bool enable = true;
+
+      for ( int j = 0; j < shares_list.size(); ++j )
+      {
+        if ( !shares_list.at( j )->isForeign() )
+        {
+          enable = false;
+          break;
+        }
+        else
+        {
+          continue;
+        }
+      }
+
+      if ( !bookmarks.at( i )->label().isEmpty() && Smb4KSettings::showCustomBookmarkLabel() )
+      {
+        actions.insert( bookmarks.at( i )->label(), enable );
+      }
+      else
+      {
+        actions.insert( bookmarks.at( i )->unc(), enable );
+      }
+    }
+  }
+  else
+  {
+    // Disable the "Edit Bookmarks" action:
+    actionCollection()->action( "st_edit_bookmarks_action" )->setEnabled( false );
+  }
+
+  // Now create the actions and put them into the action group
+  // and the menu.
+  QMapIterator<QString, bool> it( actions );
+
+  while ( it.hasNext() )
+  {
+    it.next();
+
+    KAction *bm_action = new KAction( KIcon( "folder-remote" ), it.key(), m_bookmarks );
+    bm_action->setData( it.key() );
+    bm_action->setEnabled( it.value() );
+    m_bookmarks_menu->addAction( bm_action );
+  }
+}
+
+
+void Smb4KSystemTray::slotBookmarkEditor( bool /* checked */ )
+{
+  Smb4KBookmarkEditor *dlg = NULL;
+
+  // Do not open the bookmark editor twice. So, look
+  // if there is already one.
+  if ( associatedWidget() )
+  {
+    dlg = associatedWidget()->findChild<Smb4KBookmarkEditor *>();
+  }
+  else
+  {
+    dlg = contextMenu()->findChild<Smb4KBookmarkEditor *>();
+  }
+
+  if ( !dlg )
+  {
+    if ( associatedWidget() && associatedWidget()->isVisible() )
+    {
+      dlg = new Smb4KBookmarkEditor( associatedWidget() );
+    }
+    else
+    {
+      // This is a bit strange, but we need a QWidget object.
+      // Since KSystemTrayIcon class inherits QObject, we do
+      // it this way. 0 as parent would make the check above
+      // fail.
+      dlg = new Smb4KBookmarkEditor( contextMenu() );
+    }
+  }
+
+  dlg->setVisible( true );
+}
+
+
+void Smb4KSystemTray::slotBookmarkTriggered( QAction *action )
+{
+  if ( action )
+  {
+    Smb4KBookmark *bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC( action->data().toString() );
+
+    if ( bookmark )
+    {
+      Smb4KShare share( bookmark->hostName(), bookmark->shareName() );
+      share.setWorkgroupName( bookmark->workgroupName() );
+      share.setHostIP( bookmark->hostIP() );
+
+      Smb4KMounter::self()->mountShare( &share );
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KSystemTray::slotEnableBookmarks( Smb4KShare *share )
+{
+  if ( !share->isForeign() )
+  {
+    // Enable/disable the bookmark actions.
+    for ( int i = 0; i < m_bookmarks->actions().size(); ++i )
+    {
+      if ( QString::compare( m_bookmarks->actions().at( i )->data().toString(), share->unc(), Qt::CaseInsensitive ) == 0 )
+      {
+        m_bookmarks->actions().at( i )->setEnabled( !share->isMounted() );
+        break;
+      }
+      else
+      {
+        continue;
+      }
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
@@ -863,9 +864,9 @@ void Smb4KSystemTray::slotShareActionTriggered( QAction *action )
 
         // Do not open the synchronization dialog twice. So, look
         // if there is already one.
-        if ( parentWidget() )
+        if ( associatedWidget() )
         {
-          dlg = parentWidget()->findChild<Smb4KSynchronizationDialog *>();
+          dlg = associatedWidget()->findChild<Smb4KSynchronizationDialog *>();
         }
         else
         {
@@ -875,9 +876,9 @@ void Smb4KSystemTray::slotShareActionTriggered( QAction *action )
         // If there is no dialog yet, create one.
         if ( !dlg )
         {
-          if ( parentWidget() && parentWidget()->isVisible() )
+          if ( associatedWidget() && associatedWidget()->isVisible() )
           {
-            dlg = new Smb4KSynchronizationDialog( share, parentWidget() );
+            dlg = new Smb4KSynchronizationDialog( share, associatedWidget() );
           }
           else
           {
@@ -934,6 +935,37 @@ void Smb4KSystemTray::slotShareActionTriggered( QAction *action )
   else
   {
     // Do nothing
+  }
+}
+
+
+void Smb4KSystemTray::slotMountEvent()
+{
+  // Set the status of the system tray icon.
+  if ( !mountedSharesList()->isEmpty() || !workgroupsList()->isEmpty() )
+  {
+    setStatus( KStatusNotifierItem::Active );
+  }
+  else
+  {
+    setStatus( KStatusNotifierItem::Passive );
+  }
+  
+  // Set up the shares menu.
+  setupSharesMenu();
+}
+
+
+void Smb4KSystemTray::slotNetworkEvent()
+{
+  // Set the status of the system tray icon.
+  if ( !mountedSharesList()->isEmpty() || !workgroupsList()->isEmpty() )
+  {
+    setStatus( KStatusNotifierItem::Active );
+  }
+  else
+  {
+    setStatus( KStatusNotifierItem::Passive );
   }
 }
 
