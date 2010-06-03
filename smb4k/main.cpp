@@ -103,13 +103,9 @@ int main( int argc, char *argv[] )
   // tray is closed.
   app.setQuitOnLastWindowClosed( false );
 
-  // Launch the application:
+  // Launch the application.
   Smb4KMainWindow *main_window = new Smb4KMainWindow();
-
-  if ( !Smb4KSettings::embedIntoSystemTray() || !Smb4KSettings::startMainWindowDocked() )
-  {
-    main_window->show();
-  }
+  main_window->setVisible( !Smb4KSettings::startMainWindowDocked() );
 
   // Initialize the necessary core classes.
   Smb4KScanner::self()->init();
