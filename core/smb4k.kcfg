@@ -16,12 +16,7 @@
       <whatsthis>Do not show the name of the share that is represented by the bookmark but the custom label that was defined in the bookmark editor.</whatsthis>
       <default>true</default>
     </entry>
-    <entry name="EmbedIntoSystemTray" type="Bool">
-      <label>Embed application into the system tray</label>
-      <whatsthis>Embed the application into the system tray. The system tray widget provides a popup menu with several commonly used tasks, so you do not need to bring up the main window every time. If this setting is chosen, you have to use "Quit" from the "File" menu or the system tray widget to exit the application.</whatsthis>
-      <default>true</default>
-    </entry>
-    <entry name="StartMainWindowDocked" type="Bool">
+   <entry name="StartMainWindowDocked" type="Bool">
       <label>Start docked</label>
       <whatsthis>Start the application docked to the system tray, i.e. only the system tray widget is shown and the main window is hidden. You can bring the main window up by clicking on the system tray widget or by choosing "Restore" from its popup menu.</whatsthis>
       <default>false</default>
