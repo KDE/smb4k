@@ -42,6 +42,7 @@
 #include <kstandarddirs.h>
 #include <kpassworddialog.h>
 #include <kapplication.h>
+#include <kconfigdialogmanager.h>
 
 // system specific includes
 #include <unistd.h>
@@ -635,9 +636,13 @@ void Smb4KConfigDialog::slotRemoveSuperUserEntries()
 {
   setEnabled( false );
 
+  // Remove the super user entries.
   (void) Smb4KSudoWriterInterface::self()->removeUser();
   
-  qDebug() << "FIXME: Make the configuration dialog aware of the changes applied just now";
+  // Save *ALL* changed settings. This is a bit brutal, but I could
+  // not find any way to only save the super user settings and disable
+  // the apply button (if appropriate).
+  findChild<KConfigDialogManager *>()->updateSettings();
   
   setEnabled( true );
 }
