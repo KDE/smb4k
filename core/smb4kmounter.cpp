@@ -41,6 +41,7 @@
 #include <kshell.h>
 #include <kstandarddirs.h>
 #include <kmountpoint.h>
+#include <kiconloader.h>
 
 // system includes
 #ifdef __FreeBSD__
@@ -67,6 +68,7 @@
 #include <smb4kmounter_p.h>
 #include <smb4kwalletmanager.h>
 #include <smb4kprocess.h>
+#include <smb4knotification.h>
 
 using namespace Smb4KGlobal;
 
@@ -715,6 +717,20 @@ void Smb4KMounter::import()
       removeMountedShare( mounted_share );
 
       Smb4KShare *new_share = new Smb4KShare( mounted_shares[i] );
+      
+      // To avoid incompatibilities, we remove a trailing slash from
+      // the UNC now, if it is present.
+      if ( new_share->unc( QUrl::None ).endsWith( "/" ) )
+      {
+        QString u = new_share->unc( QUrl::None );
+        u.chop( 1 );
+        new_share->setUNC( u );
+      }
+      else
+      {
+        // Do nothing
+      }
+      
       addMountedShare( new_share );
       emit updated( new_share );
     }
@@ -722,6 +738,20 @@ void Smb4KMounter::import()
     {
       // This is a new share.
       Smb4KShare *new_share = new Smb4KShare( mounted_shares[i] );
+      
+      // To avoid incompatibilities, we remove a trailing slash from
+      // the UNC now, if it is present.
+      if ( new_share->unc( QUrl::None ).endsWith( "/" ) )
+      {
+        QString u = new_share->unc( QUrl::None );
+        u.chop( 1 );
+        new_share->setUNC( u );
+      }
+      else
+      {
+        // Do nothing
+      }
+      
       addMountedShare( new_share );
       emit mounted( new_share );
     }
@@ -1215,8 +1245,6 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
     m_cache.insert( share->homeUNC( QUrl::None ), thread );
   }
   
-  
-
   connect( thread, SIGNAL( finished() ),
            this,   SLOT( slotThreadFinished() ) );
   connect( thread, SIGNAL( mounted( Smb4KShare * ) ),
@@ -1387,19 +1415,33 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
   {
     // Already running
   }
-
-  emit aboutToStart( share, UnmountShare );
   
-  UnmountThread *thread = new UnmountThread( share, this );
-  m_cache.insert( share->unc( QUrl::None ), thread );
+  if ( !priv->aboutToQuit() )
+  {
+    emit aboutToStart( share, UnmountShare );
+    
+    UnmountThread *thread = new UnmountThread( share, this );
+    m_cache.insert( share->unc( QUrl::None ), thread );
   
-  connect( thread, SIGNAL( finished() ),
-           this,   SLOT( slotThreadFinished() ) );
-  connect( thread, SIGNAL( unmounted( Smb4KShare * ) ),
-           this,   SLOT( slotShareUnmounted( Smb4KShare * ) ) );
+    connect( thread, SIGNAL( finished() ),
+             this,   SLOT( slotThreadFinished() ) );
+    connect( thread, SIGNAL( unmounted( Smb4KShare * ) ),
+             this,   SLOT( slotShareUnmounted( Smb4KShare * ) ) );
   
-  thread->start();
-  thread->unmount( command );
+    thread->start();
+    thread->unmount( command );
+  }
+  else
+  {
+    // We only unmount the shares and do not need to connect
+    // to any signals. Also, we will not enter the threads into
+    // the cache.
+    UnmountThread thread( share, this );
+    thread.setStartDetached( true );
+    thread.start();
+    thread.unmount( command );
+    thread.wait();
+  }
 }
 
 
@@ -1703,6 +1745,9 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
     }
   
     addMountedShare( new_share );
+    
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->shareMounted( new_share );
   
     // Finally, emit the mounted() signal.
     emit mounted( new_share );
@@ -1774,6 +1819,10 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
     if ( mounted_share )
     {
       mounted_share->setIsMounted( false );
+      
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->shareUnmounted( share );
+      
       emit unmounted( mounted_share );
       removeMountedShare( mounted_share );
     }

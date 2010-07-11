@@ -22,6 +22,7 @@ set( smb4kcore_LIB_SRCS
   smb4kipaddressscanner_p.cpp
   smb4kmounter.cpp
   smb4kmounter_p.cpp
+  smb4knotification.cpp
   smb4kpreviewer.cpp
   smb4kpreviewer_p.cpp
   smb4kpreviewitem.cpp
@@ -63,6 +64,7 @@ install( TARGETS smb4kcore DESTINATION ${LIB_INSTALL_DIR} )
 ########### install files ###############
 
 install( FILES smb4k.kcfg DESTINATION ${KCFG_INSTALL_DIR} )
+install( FILES smb4k.notifyrc  DESTINATION ${DATA_INSTALL_DIR}/smb4k )
 #install( FILES
 #  smb4kauthinfo.h
 #  smb4kbasicnetworkitem.h

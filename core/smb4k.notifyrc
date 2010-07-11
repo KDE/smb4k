@@ -1,0 +1,21 @@
+[Global]
+IconName=smb4k
+Name=Smb4K
+Comment=Advanced Network Neighborhood Browser
+Version=1
+
+[Context/Notification]
+Name=Notifications
+Comment=The user is notified about an action
+
+[Event/shareMounted]
+Name=Mounted share
+Comment=A share has been mounted
+Contexts=Notification
+Action=Popup
+
+[Event/shareUnmounted]
+Name=Unmounted share
+Comment=A share has been unmounted
+Contexts=Notification
+Action=Popup

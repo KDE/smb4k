@@ -67,6 +67,7 @@ class BasicMountThread : public QThread
     Smb4KShare *share() { return &m_share; }
     bool authenticationError() { return m_auth_error; }
     bool badShareNameError() { return m_bad_name_error; }
+    void setStartDetached( bool on );
 
   private:
     Type m_type;
@@ -74,6 +75,7 @@ class BasicMountThread : public QThread
     Smb4KProcess *m_proc;
     bool m_auth_error;
     bool m_bad_name_error;
+    bool m_start_detached;
 };
 
 
@@ -126,7 +128,6 @@ class CheckThread : public QThread
     CheckThread( Smb4KShare *share,
                  QObject *parent = 0 );
     ~CheckThread();
-//     void check();
 
   protected:
     void run();

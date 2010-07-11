@@ -40,7 +40,7 @@
 
 BasicMountThread::BasicMountThread( Type type, Smb4KShare *share, QObject *parent )
 : QThread( parent ), m_type( type ), m_share( *share ), m_auth_error( false ),
-  m_bad_name_error( false )
+  m_bad_name_error( false ), m_start_detached( false )
 {
 }
 
@@ -48,6 +48,13 @@ BasicMountThread::BasicMountThread( Type type, Smb4KShare *share, QObject *paren
 BasicMountThread::~BasicMountThread()
 {
 }
+
+
+void BasicMountThread::setStartDetached( bool on )
+{
+  m_start_detached = on;
+}
+
 
 
 MountThread::MountThread( Smb4KShare *share, QObject *parent )
@@ -68,16 +75,24 @@ void MountThread::mount( Smb4KAuthInfo *authInfo, const QString &command )
 
   m_proc = new Smb4KProcess( Smb4KProcess::Mount, this );
 
-  connect( m_proc, SIGNAL( readyReadStandardError() ), this, SLOT( slotProcessError() ) );
-  connect( m_proc, SIGNAL( readyReadStandardOutput() ), this, SLOT( slotProcessError() ) );
-  connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), this, SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
-
   m_proc->setShellCommand( command );
   m_proc->setOutputChannelMode( KProcess::MergedChannels ); // see below
 #ifndef Q_OS_FREEBSD
   m_proc->setEnv( "PASSWD", !authInfo->password().isEmpty() ? authInfo->password() : "", true );
 #endif
-  m_proc->start();
+  if ( !m_start_detached )
+  {
+    connect( m_proc, SIGNAL( readyReadStandardError() ), this, SLOT( slotProcessError() ) );
+    connect( m_proc, SIGNAL( readyReadStandardOutput() ), this, SLOT( slotProcessError() ) );
+    connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), this, SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
+    
+    m_proc->start();    
+  }
+  else
+  {
+    m_proc->startDetached();
+    quit();
+  }
 }
 
 
@@ -167,13 +182,22 @@ void UnmountThread::unmount( const QString &command )
 
   m_proc = new Smb4KProcess( Smb4KProcess::Unmount, this );
 
-  connect( m_proc, SIGNAL( readyReadStandardError() ), this, SLOT( slotProcessError() ) );
-  connect( m_proc, SIGNAL( readyReadStandardOutput() ), this, SLOT( slotProcessError() ) );
-  connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), this, SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
-
   m_proc->setShellCommand( command );
   m_proc->setOutputChannelMode( KProcess::MergedChannels );  // see below
-  m_proc->start();
+  
+  if ( !m_start_detached )
+  {
+    connect( m_proc, SIGNAL( readyReadStandardError() ), this, SLOT( slotProcessError() ) );
+    connect( m_proc, SIGNAL( readyReadStandardOutput() ), this, SLOT( slotProcessError() ) );
+    connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), this, SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
+    
+    m_proc->start();
+  }
+  else
+  {
+    m_proc->startDetached();
+    quit();
+  }
 }
 
 
