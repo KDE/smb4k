@@ -32,22 +32,46 @@ Version=1
 
 [Context/Notification]
 Name=Notifications
+Name[pt]=Notificações
+Name[pt_BR]=Notificações
+Name[sv]=Underrättelser
+Name[uk]=Сповіщення
 Name[x-test]=xxNotificationsxx
 Comment=The user is notified about an action
+Comment[pt]=O utilizador é notificado sobre uma acção
+Comment[pt_BR]=O usuário é notificado sobre uma ação
+Comment[sv]=Användaren blir underrättad om en åtgärd
+Comment[uk]=Користувачеві повідомлено про дію
 Comment[x-test]=xxThe user is notified about an actionxx
 
 [Event/shareMounted]
 Name=Mounted share
+Name[pt]=Partilha montada
+Name[pt_BR]=Compartilhamento montado
+Name[sv]=Monterad delad katalog
+Name[uk]=Змонтовано ресурс
 Name[x-test]=xxMounted sharexx
 Comment=A share has been mounted
+Comment[pt]=Foi montada uma partilha
+Comment[pt_BR]=Um compartilhamento foi montado
+Comment[sv]=En delad katalog har monterats
+Comment[uk]=Спільний ресурс було змонтовано
 Comment[x-test]=xxA share has been mountedxx
 Contexts=Notification
 Action=Popup
 
 [Event/shareUnmounted]
 Name=Unmounted share
+Name[pt]=Partilha desmontada
+Name[pt_BR]=Compartilhamento desmontado
+Name[sv]=Avmonterad delad katalog
+Name[uk]=Демонтовано ресурс
 Name[x-test]=xxUnmounted sharexx
 Comment=A share has been unmounted
+Comment[pt]=Foi desmontada uma partilha
+Comment[pt_BR]=Um compartilhamento foi desmontado
+Comment[sv]=En delad katalog har avmonterats
+Comment[uk]=Спільний ресурс було демонтовано
 Comment[x-test]=xxA share has been unmountedxx
 Contexts=Notification
 Action=Popup
