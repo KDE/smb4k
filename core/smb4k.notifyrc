@@ -75,3 +75,15 @@ Comment[uk]=Спільний ресурс було демонтовано
 Comment[x-test]=xxA share has been unmountedxx
 Contexts=Notification
 Action=Popup
+
+[Event/sharesRemounted]
+Name=Remounted shares
+Comment=Shares have been remounted
+Contexts=Notification
+Action=Popup
+
+[Event/allSharesUnmounted]
+Name=Unmounted all shares
+Comment=All shares have been unmounted
+Contexts=Notification
+Action=Popup|Sound

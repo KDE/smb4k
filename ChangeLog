@@ -6,6 +6,7 @@ Smb4K SVN_HEAD (????-??-??):
 - Revised Smb4KSettings class:
   + Removed the program entries from this class. Each core class that needs
     an external program searches for itself.
+  + Added entries for handling notifications.
 - Revised Smb4KAuthInfo class:
   + Removed old constructor.
   + Added two new constructors.
@@ -260,6 +261,7 @@ Smb4K SVN_HEAD (????-??-??):
   + Removed finished() signal.
   + addUser() now returns a boolean.
   + removeUser() now returns a boolean.
+- Added Smb4KNotification class. It shows notifications to the user.
 - Revised synchronization dialog:
   + Adjusted code so that the new features of the synchronizer can be used.
   + The dialog does not close when you press "Cancel" during a synchronization.
@@ -317,6 +319,7 @@ Smb4K SVN_HEAD (????-??-??):
     anymore to edit or remove logins.
   + Improved checks for empty entries.
   + Removed settings related to the system tray icon.
+  + Added settings related to notifications.
 - Revised main window:
   + The icon in the status bar, that indicates the status of the authentication
     system now shows a key if the wallet system is not used, i.e. we are in

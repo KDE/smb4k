@@ -305,7 +305,7 @@ void Smb4KMounter::triggerRemounts()
   if ( Smb4KSettings::remountShares() || priv->hardwareReason() )
   {
     QList<Smb4KSambaOptionsInfo *> list = Smb4KSambaOptionsHandler::self()->sharesToRemount();
-
+    
     for ( int i = 0; i < list.size(); ++i )
     {
       QList<Smb4KShare *> mounted_shares = findShareByUNC( list.at( i )->unc() );
@@ -336,6 +336,8 @@ void Smb4KMounter::triggerRemounts()
           Smb4KShare share( list.at( i )->unc() );
           share.setWorkgroupName( list.at( i )->workgroupName() );
           share.setHostIP( list.at( i )->ip() );
+          
+          priv->addRemount();
 
           mountShare( &share );
         }
@@ -353,6 +355,8 @@ void Smb4KMounter::triggerRemounts()
         Smb4KShare share( list.at( i )->unc() );
         share.setWorkgroupName( list.at( i )->workgroupName() );
         share.setHostIP( list.at( i )->ip() );
+        
+        priv->addRemount();
 
         mountShare( &share );
       }
@@ -1436,25 +1440,29 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
     // We only unmount the shares and do not need to connect
     // to any signals. Also, we will not enter the threads into
     // the cache.
-    UnmountThread thread( share, this );
-    thread.setStartDetached( true );
-    thread.start();
-    thread.unmount( command );
-    thread.wait();
+    UnmountThread *thread = new UnmountThread( share, this );
+    thread->setStartDetached( true );
+    thread->start();
+    thread->unmount( command );
+    thread->wait();
   }
 }
 
 
 void Smb4KMounter::unmountAllShares()
 {
-  // Never use while( !mountedSharesList().isEmpty() ) {} here,
-  // because then the mounter will loop indefinitely when the
+  // Never use 
+  // 
+  //    while ( !mountedSharesList().isEmpty() ) { ... } 
+  // 
+  // here, because then the mounter will loop indefinitely when the
   // unmounting of a share fails.
   QListIterator<Smb4KShare *> it( *mountedSharesList() );
 
   while ( it.hasNext() )
   {
     unmountShare( it.next(), false, true );
+    priv->addUnmount();
   }
 }
 
@@ -1716,18 +1724,6 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
     // Set the share as mounted.
     share->setIsMounted( true );
     
-    // Remove the remount flag and write the options
-    // to the disk.
-    if ( Smb4KSambaOptionsHandler::self()->findItem( share ) != NULL )
-    {
-      Smb4KSambaOptionsHandler::self()->removeRemount( share );
-      Smb4KSambaOptionsHandler::self()->sync();
-    }
-    else
-    {
-      // Do nothing
-    }
-    
     // Check the usage, etc.
     check( share );
     
@@ -1746,8 +1742,68 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
   
     addMountedShare( new_share );
     
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->shareMounted( new_share );
+    // Check whether this was a remount or not, do the necessary 
+    // things and notify the user.
+    if ( priv->pendingRemounts() != 0 && Smb4KSambaOptionsHandler::self()->findItem( share ) != NULL )
+    {
+      Smb4KSambaOptionsHandler::self()->removeRemount( share );
+      Smb4KSambaOptionsHandler::self()->sync();
+      priv->removeRemount();
+      
+      if ( priv->pendingRemounts() == 0 )
+      {
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->sharesRemounted( priv->initialRemounts(), priv->initialRemounts() );
+        priv->clearRemounts();
+      }
+      else
+      {
+        if ( !m_cache.isEmpty() )
+        {
+          bool still_mounting = false;
+          
+          QStringList keys = m_cache.keys();
+
+          foreach ( const QString &key, keys )
+          {
+            BasicMountThread *thread = m_cache.object( key );
+            
+            if ( thread->type() == BasicMountThread::MountThread &&
+                 Smb4KSambaOptionsHandler::self()->findItem( thread->share() ) != NULL )
+            {
+              still_mounting = true;
+              break;
+            }
+            else
+            {
+              continue;
+            }
+          }
+          
+          if ( !still_mounting )
+          {
+            Smb4KNotification *notification = new Smb4KNotification();
+            notification->sharesRemounted( priv->initialRemounts(), (priv->initialRemounts() - priv->pendingRemounts()) );
+            priv->clearRemounts();
+          }
+          else
+          {
+            // Do nothing
+          }
+        }
+        else
+        {
+          Smb4KNotification *notification = new Smb4KNotification();
+          notification->sharesRemounted( priv->initialRemounts(), (priv->initialRemounts() - priv->pendingRemounts()) );
+          priv->clearRemounts();
+        }
+      }
+    }
+    else
+    {
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->shareMounted( new_share );
+    }
   
     // Finally, emit the mounted() signal.
     emit mounted( new_share );
@@ -1819,9 +1875,64 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
     if ( mounted_share )
     {
       mounted_share->setIsMounted( false );
-      
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->shareUnmounted( share );
+
+      if ( priv->pendingUnmounts() != 0 )
+      {
+        priv->removeUnmount();
+        
+        if ( priv->pendingUnmounts() == 0 )
+        {
+          Smb4KNotification *notification = new Smb4KNotification();
+          notification->allSharesUnmounted( priv->initialUnmounts(), priv->initialUnmounts() );
+          priv->clearUnmounts();
+        }
+        else
+        {
+          if ( !m_cache.isEmpty() )
+          {
+            bool still_unmounting = false;
+            
+            QStringList keys = m_cache.keys();
+
+            foreach ( const QString &key, keys )
+            {
+              BasicMountThread *thread = m_cache.object( key );
+              
+              if ( thread->type() == BasicMountThread::UnmountThread )
+              {
+                still_unmounting = true;
+                break;
+              }
+              else
+              {
+                continue;
+              }
+            }
+            
+            if ( !still_unmounting )
+            {
+              Smb4KNotification *notification = new Smb4KNotification();
+              notification->allSharesUnmounted( priv->initialUnmounts(), (priv->initialUnmounts() - priv->pendingUnmounts()) );
+              priv->clearUnmounts();
+            }
+            else
+            {
+              // Do nothing
+            }
+          }
+          else
+          {
+            Smb4KNotification *notification = new Smb4KNotification();
+            notification->allSharesUnmounted( priv->initialUnmounts(), (priv->initialUnmounts() - priv->pendingUnmounts()) );
+            priv->clearUnmounts();
+          }
+        }
+      }
+      else
+      {
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->shareUnmounted( share );
+      }
       
       emit unmounted( mounted_share );
       removeMountedShare( mounted_share );

@@ -147,10 +147,24 @@ class Smb4KMounterPrivate
     bool aboutToQuit() { return m_quit; }
     void setHardwareReason( bool hardware );
     bool hardwareReason() { return m_hardware; }
+    void addRemount();
+    void removeRemount();
+    void clearRemounts();
+    int pendingRemounts() { return m_pending_remounts; }
+    int initialRemounts() { return m_initial_remounts; }
+    void addUnmount();
+    void removeUnmount();
+    void clearUnmounts();
+    int pendingUnmounts() { return m_pending_unmounts; }
+    int initialUnmounts() { return m_initial_unmounts; }
 
   private:
     bool m_quit;
     bool m_hardware;
+    int m_pending_remounts;
+    int m_initial_remounts;
+    int m_pending_unmounts;
+    int m_initial_unmounts;
 };
 
 #endif

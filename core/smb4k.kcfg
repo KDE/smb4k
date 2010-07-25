@@ -21,6 +21,11 @@
       <whatsthis>Start the application docked to the system tray, i.e. only the system tray widget is shown and the main window is hidden. You can bring the main window up by clicking on the system tray widget or by choosing "Restore" from its popup menu.</whatsthis>
       <default>false</default>
     </entry>
+    <entry name="ShowNotifications" type="Bool">
+      <label>Show notifications</label>
+      <whatsthis>Notify the user about actions that were performed by Smb4K, i.e. the mounting or unmounting of a share. If you do not want to be disturbed too often, you might want to switch this option off.</whatsthis>
+      <default>true</default>
+    </entry>
     <entry name="SharesIconView" type="Bool">
       <label>Show mounted shares in an icon view</label>
       <whatsthis>The mounted shares will be displayed in an icon view.</whatsthis>

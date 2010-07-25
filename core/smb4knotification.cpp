@@ -33,6 +33,7 @@
 // application specific includes
 #include <smb4knotification.h>
 #include <smb4kshare.h>
+#include <smb4ksettings.h>
 
 
 Smb4KNotification::Smb4KNotification()
@@ -50,17 +51,24 @@ void Smb4KNotification::shareMounted( Smb4KShare* share )
 {
   Q_ASSERT( share );
   
-  m_share = *share;
+  if ( Smb4KSettings::self()->showNotifications() )
+  {
+    m_share = *share;
   
-  KNotification *notification = new KNotification( "shareMounted", KNotification::CloseOnTimeout );
-  notification->setText( i18n( "The share <b>%1</b> has been mounted to <tt>%2</tt>." ).arg( share->unc() )
-                         .arg( QString::fromUtf8( share->canonicalPath() ) ) );
-  notification->setActions( QStringList( i18n( "Open" ) ) );
-  notification->setPixmap( KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "emblem-mounted" ) ) );
-  
-  connect( notification, SIGNAL( activated( unsigned int ) ), this, SLOT( slotOpenShare() ) );
+    KNotification *notification = new KNotification( "shareMounted", KNotification::CloseOnTimeout );
+    notification->setText( i18n( "The share <b>%1</b> has been mounted to <tt>%2</tt>." ).arg( share->unc() )
+                          .arg( QString::fromUtf8( share->canonicalPath() ) ) );
+    notification->setActions( QStringList( i18n( "Open" ) ) );
+    notification->setPixmap( KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "emblem-mounted" ) ) );
+    
+    connect( notification, SIGNAL( activated( unsigned int ) ), this, SLOT( slotOpenShare() ) );
 
-  notification->sendEvent();
+    notification->sendEvent();
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
@@ -68,11 +76,61 @@ void Smb4KNotification::shareUnmounted( Smb4KShare* share )
 {
   Q_ASSERT( share );
   
-  KNotification::event( "shareUnmounted", i18n( "The share <b>%1</b> has been unmounted from <tt>%2</tt>." ).arg( share->unc() )
-                        .arg( QString::fromUtf8( share->path() ) ),
-                        KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "emblem-unmounted" ) ) );
+  if ( Smb4KSettings::self()->showNotifications() )
+  {  
+    KNotification::event( "shareUnmounted", i18n( "The share <b>%1</b> has been unmounted from <tt>%2</tt>." ).arg( share->unc() )
+                          .arg( QString::fromUtf8( share->path() ) ),
+                          KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "emblem-unmounted" ) ) );
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
+
+void Smb4KNotification::sharesRemounted( int total, int actual )
+{
+  if ( Smb4KSettings::self()->showNotifications() )
+  {
+    if ( total != actual )
+    {
+      KNotification::event( "sharesRemounted", i18np( "%1 share out of %2 has been remounted.", "%1 shares out of %2 have been remounted.", actual, total ),
+                            KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "emblem-mounted" ) ) );
+    }
+    else
+    {
+      KNotification::event( "sharesRemounted", i18n( "All shares have been remounted." ),
+                            KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "emblem-mounted" ) ) );
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KNotification::allSharesUnmounted( int total, int actual )
+{
+  if ( Smb4KSettings::self()->showNotifications() )
+  {
+    if ( total != actual )
+    {
+      KNotification::event( "allSharesUnmounted", i18np( "%1 share out of %2 has been unmounted.", "%1 shares out of %2 have been unmounted.", actual, total ),
+                            KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "emblem-unmounted" ) ) );
+    }
+    else
+    {
+      KNotification::event( "allSharesUnmounted", i18n( "All shares have been unmounted." ),
+                            KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "emblem-unmounted" ) ) );
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+}
 
 
 /////////////////////////////////////////////////////////////////////////////

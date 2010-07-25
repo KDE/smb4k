@@ -341,7 +341,8 @@ void CheckThread::run()
 
 
 Smb4KMounterPrivate::Smb4KMounterPrivate()
-: m_quit( false ), m_hardware( false )
+: m_quit( false ), m_hardware( false ), m_pending_remounts( 0 ), m_initial_remounts( 0 ),
+  m_pending_unmounts( 0 ), m_initial_unmounts( 0 )
 {
 }
 
@@ -362,5 +363,44 @@ void Smb4KMounterPrivate::setHardwareReason( bool hardware )
   m_hardware = hardware;
 }
 
+
+void Smb4KMounterPrivate::addRemount()
+{
+  m_initial_remounts++;
+  m_pending_remounts++;
+}
+
+
+void Smb4KMounterPrivate::removeRemount()
+{
+  m_pending_remounts--;
+}
+
+
+void Smb4KMounterPrivate::clearRemounts()
+{
+  m_initial_remounts = 0;
+  m_pending_remounts = 0;
+}
+
+
+void Smb4KMounterPrivate::addUnmount()
+{
+  m_initial_unmounts++;
+  m_pending_unmounts++;
+}
+
+
+void Smb4KMounterPrivate::removeUnmount()
+{
+  m_pending_unmounts--;
+}
+
+
+void Smb4KMounterPrivate::clearUnmounts()
+{
+  m_initial_unmounts = 0;
+  m_pending_unmounts = 0;
+}
 
 #include "smb4kmounter_p.moc"

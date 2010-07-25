@@ -63,11 +63,31 @@ class KDE_EXPORT Smb4KNotification : public QObject
     void shareMounted( Smb4KShare *share );
     
     /**
-     * Notify a user that a share has been unmounted.
+     * Notify the user that a share has been unmounted.
      *
      * @param share     The share that has been unmounted
      */
     void shareUnmounted( Smb4KShare *share );
+    
+    /**
+     * Notify the user that shares have been remounted.
+     * 
+     * @param total     The number of remounts that were scheduled
+     * 
+     * @param actual    The number of remounts that were actually 
+     *                  mounted.
+     */
+    void sharesRemounted( int total, int actual );
+    
+    /**
+     * Notify the user that all shares have been unmounted at once.
+     * 
+     * @param total     The number of unmounts that were scheduled
+     * 
+     * @param actual    The number of unmounts that actually finished 
+     *                  successfully.
+     */
+    void allSharesUnmounted( int total, int actual );
     
   protected slots:
     /**
