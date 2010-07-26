@@ -78,12 +78,16 @@ Action=Popup
 
 [Event/sharesRemounted]
 Name=Remounted shares
+Name[x-test]=xxRemounted sharesxx
 Comment=Shares have been remounted
+Comment[x-test]=xxShares have been remountedxx
 Contexts=Notification
 Action=Popup
 
 [Event/allSharesUnmounted]
 Name=Unmounted all shares
+Name[x-test]=xxUnmounted all sharesxx
 Comment=All shares have been unmounted
+Comment[x-test]=xxAll shares have been unmountedxx
 Contexts=Notification
 Action=Popup|Sound
