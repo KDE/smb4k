@@ -78,16 +78,32 @@ Action=Popup
 
 [Event/sharesRemounted]
 Name=Remounted shares
+Name[pt]=Partilhas montadas de novo
+Name[pt_BR]=Compartilhamentos remontados
+Name[sv]=Monterad delade kataloger igen
+Name[uk]=Повторно змонтовані ресурси
 Name[x-test]=xxRemounted sharesxx
 Comment=Shares have been remounted
+Comment[pt]=As partilhas foram montadas de novo
+Comment[pt_BR]=Os compartilhamentos foram remontados
+Comment[sv]=Delade kataloger har monterats igen
+Comment[uk]=Спільні ресурси було повторно змонтовано
 Comment[x-test]=xxShares have been remountedxx
 Contexts=Notification
 Action=Popup
 
 [Event/allSharesUnmounted]
 Name=Unmounted all shares
+Name[pt]=Foram desmontadas todas as partilhas
+Name[pt_BR]=Todos os compartilhamentos desmontados
+Name[sv]=Avmonterade alla delade kataloger
+Name[uk]=Демонтовано всі ресурси
 Name[x-test]=xxUnmounted all sharesxx
 Comment=All shares have been unmounted
+Comment[pt]=Todas as partilhas foram desmontadas
+Comment[pt_BR]=Todos os compartilhamentos foram desmontados
+Comment[sv]=Alla delade kataloger har avmonterats
+Comment[uk]=Всі спільні ресурси було демонтовано
 Comment[x-test]=xxAll shares have been unmountedxx
 Contexts=Notification
 Action=Popup|Sound
