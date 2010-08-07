@@ -1752,7 +1752,7 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
       
       if ( priv->pendingRemounts() == 0 )
       {
-        Smb4KNotification *notification = new Smb4KNotification();
+        Smb4KNotification *notification = new Smb4KNotification( this );
         notification->sharesRemounted( priv->initialRemounts(), priv->initialRemounts() );
         priv->clearRemounts();
       }
@@ -1782,7 +1782,7 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
           
           if ( !still_mounting )
           {
-            Smb4KNotification *notification = new Smb4KNotification();
+            Smb4KNotification *notification = new Smb4KNotification( this );
             notification->sharesRemounted( priv->initialRemounts(), (priv->initialRemounts() - priv->pendingRemounts()) );
             priv->clearRemounts();
           }
@@ -1793,7 +1793,7 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
         }
         else
         {
-          Smb4KNotification *notification = new Smb4KNotification();
+          Smb4KNotification *notification = new Smb4KNotification( this );
           notification->sharesRemounted( priv->initialRemounts(), (priv->initialRemounts() - priv->pendingRemounts()) );
           priv->clearRemounts();
         }
@@ -1801,7 +1801,7 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
     }
     else
     {
-      Smb4KNotification *notification = new Smb4KNotification();
+      Smb4KNotification *notification = new Smb4KNotification( this );
       notification->shareMounted( new_share );
     }
   
@@ -1882,7 +1882,7 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
         
         if ( priv->pendingUnmounts() == 0 )
         {
-          Smb4KNotification *notification = new Smb4KNotification();
+          Smb4KNotification *notification = new Smb4KNotification( this );
           notification->allSharesUnmounted( priv->initialUnmounts(), priv->initialUnmounts() );
           priv->clearUnmounts();
         }
@@ -1911,7 +1911,7 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
             
             if ( !still_unmounting )
             {
-              Smb4KNotification *notification = new Smb4KNotification();
+              Smb4KNotification *notification = new Smb4KNotification( this );
               notification->allSharesUnmounted( priv->initialUnmounts(), (priv->initialUnmounts() - priv->pendingUnmounts()) );
               priv->clearUnmounts();
             }
@@ -1922,7 +1922,7 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
           }
           else
           {
-            Smb4KNotification *notification = new Smb4KNotification();
+            Smb4KNotification *notification = new Smb4KNotification( this );
             notification->allSharesUnmounted( priv->initialUnmounts(), (priv->initialUnmounts() - priv->pendingUnmounts()) );
             priv->clearUnmounts();
           }
@@ -1930,7 +1930,7 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
       }
       else
       {
-        Smb4KNotification *notification = new Smb4KNotification();
+        Smb4KNotification *notification = new Smb4KNotification( this );
         notification->shareUnmounted( share );
       }
       
