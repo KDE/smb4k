@@ -48,12 +48,16 @@ class KDE_EXPORT Smb4KNotification : public QObject
     /**
      * The constructor
      */
-    Smb4KNotification();
+    Smb4KNotification( QObject *parent = 0 );
     
     /**
      * The destructor
      */
     ~Smb4KNotification();
+    
+    //
+    // Notifications
+    // 
     
     /**
      * Notify the user that a share has been mounted.
@@ -89,7 +93,29 @@ class KDE_EXPORT Smb4KNotification : public QObject
      */
     void allSharesUnmounted( int total, int actual );
     
+    //
+    // Warnings
+    //
+    
+    /**
+     * Warn the user that the wallet could not be opened.
+     * 
+     * @param name      The name of the wallet
+     */
+    void openingWalletFailed( const QString &name );
+    
+    /**
+     * Warn the user that the logins stored in the wallet could not
+     * be accessed.
+     */
+    void loginsNotAccessible();
+    
   protected slots:
+    /**
+     * This slot is invoked when the notification is closed or ignored.
+     */
+    void slotNotificationClosed();
+    
     /**
      * Opens the contents of a share in a file manager
      */

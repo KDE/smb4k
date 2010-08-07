@@ -36,14 +36,14 @@
 #include <smb4ksettings.h>
 
 
-Smb4KNotification::Smb4KNotification()
+Smb4KNotification::Smb4KNotification( QObject *parent )
+: QObject( parent )
 {
 }
 
 
 Smb4KNotification::~Smb4KNotification()
 {
-
 }
 
 
@@ -62,6 +62,7 @@ void Smb4KNotification::shareMounted( Smb4KShare* share )
     notification->setPixmap( KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "emblem-mounted" ) ) );
     
     connect( notification, SIGNAL( activated( unsigned int ) ), this, SLOT( slotOpenShare() ) );
+    connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
 
     notification->sendEvent();
   }
@@ -78,9 +79,10 @@ void Smb4KNotification::shareUnmounted( Smb4KShare* share )
   
   if ( Smb4KSettings::self()->showNotifications() )
   {  
-    KNotification::event( "shareUnmounted", i18n( "The share <b>%1</b> has been unmounted from <tt>%2</tt>." ).arg( share->unc() )
-                          .arg( QString::fromUtf8( share->path() ) ),
-                          KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "emblem-unmounted" ) ) );
+    KNotification *notification = KNotification::event( "shareUnmounted", 
+                                  i18n( "The share <b>%1</b> has been unmounted from <tt>%2</tt>." ).arg( share->unc() ).arg( QString::fromUtf8( share->path() ) ),
+                                  KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "emblem-unmounted" ) ) );
+    connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
   }
   else
   {
@@ -95,13 +97,16 @@ void Smb4KNotification::sharesRemounted( int total, int actual )
   {
     if ( total != actual )
     {
-      KNotification::event( "sharesRemounted", i18np( "%1 share out of %2 has been remounted.", "%1 shares out of %2 have been remounted.", actual, total ),
-                            KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "emblem-mounted" ) ) );
+      KNotification *notification = KNotification::event( "sharesRemounted", 
+                                    i18np( "%1 share out of %2 has been remounted.", "%1 shares out of %2 have been remounted.", actual, total ),
+                                    KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "emblem-mounted" ) ) );
+      connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
     }
     else
     {
-      KNotification::event( "sharesRemounted", i18n( "All shares have been remounted." ),
-                            KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "emblem-mounted" ) ) );
+      KNotification *notification = KNotification::event( "sharesRemounted", i18n( "All shares have been remounted." ),
+                                    KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "emblem-mounted" ) ) );
+      connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
     }
   }
   else
@@ -117,13 +122,16 @@ void Smb4KNotification::allSharesUnmounted( int total, int actual )
   {
     if ( total != actual )
     {
-      KNotification::event( "allSharesUnmounted", i18np( "%1 share out of %2 has been unmounted.", "%1 shares out of %2 have been unmounted.", actual, total ),
-                            KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "emblem-unmounted" ) ) );
+      KNotification *notification = KNotification::event( "allSharesUnmounted", 
+                                    i18np( "%1 share out of %2 has been unmounted.", "%1 shares out of %2 have been unmounted.", actual, total ),
+                                    KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "emblem-unmounted" ) ) );
+      connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
     }
     else
     {
-      KNotification::event( "allSharesUnmounted", i18n( "All shares have been unmounted." ),
-                            KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "emblem-unmounted" ) ) );
+      KNotification *notification = KNotification::event( "allSharesUnmounted", i18n( "All shares have been unmounted." ),
+                                    KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "emblem-unmounted" ) ) );
+      connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
     }
   }
   else
@@ -133,9 +141,33 @@ void Smb4KNotification::allSharesUnmounted( int total, int actual )
 }
 
 
+void Smb4KNotification::openingWalletFailed( const QString &name )
+{
+  KNotification *notification = KNotification::event( "openingWalletFailed", 
+                                i18n( "Opening the wallet <tt>%1</tt> failed." ).arg( name ),
+                                KIconLoader::global()->loadIcon( "wallet-open", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "dialog-warning" ) ) );
+  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+}
+
+
+void Smb4KNotification::loginsNotAccessible()
+{
+  KNotification *notification = KNotification::event( "loginsNotAccessible", 
+                                i18n( "The logins stored in the wallet could not be accessed. There is either no wallet available or it could not be opened." ),
+                                KIconLoader::global()->loadIcon( "dialog-password", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "dialog-warning" ) ) );
+  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+}
+
+
 /////////////////////////////////////////////////////////////////////////////
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
+
+void Smb4KNotification::slotNotificationClosed()
+{
+  delete this;
+}
+
 
 void Smb4KNotification::slotOpenShare()
 {
