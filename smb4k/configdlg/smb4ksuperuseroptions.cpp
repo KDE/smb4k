@@ -70,20 +70,37 @@ Smb4KSuperUserOptions::Smb4KSuperUserOptions( QWidget *parent )
   actions_layout->addWidget( use_privileges, 0, 0, 0 );
 #endif
 
+  // Other settings
+  QGroupBox *advanced_box       = new QGroupBox( i18n( "Advanced" ), this );
+  
+  QGridLayout *advanced_layout  = new QGridLayout( advanced_box );
+  advanced_layout->setSpacing( 5 );
+  
+  QCheckBox *dont_modify        = new QCheckBox( Smb4KSettings::self()->doNotModifySudoersItem()->label(),
+                                  advanced_box );
+  dont_modify->setObjectName( "kcfg_DoNotModifySudoers" );
+  
+  advanced_layout->addWidget( dont_modify, 0, 0, 0 );
+
   KGuiItem remove_item          = KGuiItem(  i18n( "Remove Entries" ), "edit-clear",
                                   i18n( "Remove entries from the configuration file" ),
                                   i18n( "All entries that were written by Smb4K will be removed from /etc/sudoers. Additionally, all your choices under \"Actions\" will be cleared." ) );
 
   KPushButton *remove           = new KPushButton( remove_item, this );
+  remove->setObjectName( "RemoveButton" );
 
   QSpacerItem *spacer = new QSpacerItem( 10, 10, QSizePolicy::Preferred, QSizePolicy::Expanding );
 
   layout->addWidget( actions_box, 0, 0, 1, 6, 0 );
-  layout->addWidget( remove, 1, 5, 0 );
-  layout->addItem( spacer, 2, 0, 1, 6, 0 );
+  layout->addWidget( advanced_box, 1, 0, 1, 6, 0 );
+  layout->addWidget( remove, 2, 5, 0 );
+  layout->addItem( spacer, 3, 0, 1, 6, 0 );
   
   connect( remove, SIGNAL( clicked( bool ) ),
            this,   SLOT( slotRemoveClicked( bool ) ) );
+           
+  connect( dont_modify, SIGNAL( toggled( bool ) ),
+           this,        SLOT( slotDontModifyToggled( bool ) ) );
 }
 
 
@@ -136,5 +153,21 @@ void Smb4KSuperUserOptions::slotRemoveClicked( bool /*checked*/ )
   resetSuperUserSettings();  
   emit removeEntries();
 }
+
+
+void Smb4KSuperUserOptions::slotDontModifyToggled( bool checked )
+{
+  KPushButton *remove = findChild<KPushButton *>( "RemoveButton" );
+  
+  if ( remove )
+  {
+    remove->setEnabled( !checked );
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
 
 #include "smb4ksuperuseroptions.moc"
