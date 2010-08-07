@@ -109,7 +109,7 @@
 #define INFO_MIMETYPE_NOT_SUPPORTED         300
 #define INFO_DISABLE_SUID_FEATURE           301
 #define INFO_BOOKMARK_LABEL_IN_USE          302
-#define INFO_OPENING_WALLET_FAILED          303
+// #define INFO_OPENING_WALLET_FAILED          303
 
 /**
  * This class provides messages for use with the core classes of Smb4K.

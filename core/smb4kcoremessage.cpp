@@ -492,12 +492,12 @@ void Smb4KCoreMessage::information( int code, const QString &text, const QString
 
       break;
     }
-    case INFO_OPENING_WALLET_FAILED:
-    {
-      KMessageBox::information( parent, i18n( "<qt>The wallet \"%1\" could not be opened. KWallet support will be disabled for this session.</qt>", text ) );
-
-      break;
-    }
+//     case INFO_OPENING_WALLET_FAILED:
+//     {
+//       KMessageBox::information( parent, i18n( "<qt>The wallet \"%1\" could not be opened. KWallet support will be disabled for this session.</qt>", text ) );
+// 
+//       break;
+//     }
     default:
     {
       break;
