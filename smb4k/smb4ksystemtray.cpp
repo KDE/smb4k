@@ -63,7 +63,7 @@ Smb4KSystemTray::Smb4KSystemTray( QWidget *parent )
 : KStatusNotifierItem( "smb4k_systemtray", parent )
 {
   setIconByName( "smb4k" );
-  setToolTip( iconPixmap(), i18n( "Smb4K" ), i18n( "Advanced Network Neighborhood Browser" ) );
+  setToolTip( KIconLoader::global()->loadIcon( "smb4k", KIconLoader::NoGroup ), i18n( "Smb4K" ), i18n( "Advanced Network Neighborhood Browser" ) );
   
   // Show the icon to the user. It will become passive, if the scanner
   // could not find something and no shares were mounted.
