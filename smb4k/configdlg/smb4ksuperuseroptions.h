@@ -86,10 +86,17 @@ class Smb4KSuperUserOptions : public QWidget
      * This slot is activated when the "Remove Entries" button has been
      * clicked.
      *
-     * @param checked    TRUE if the button is checked and FALSE otherwise
-     *                   (not used here).
+     * @param checked   TRUE if the button is checked and FALSE otherwise
+     *                  (not used here).
      */
     void slotRemoveClicked( bool checked );
+    
+    /**
+     * This slot is invoked when the "Do not modify..." button is toggled
+     * 
+     * @param checked   TRUE if the check box is checked and false otherwise
+     */
+    void slotDontModifyToggled( bool checked );
     
   private:
 #ifdef Q_OS_LINUX
