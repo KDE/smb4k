@@ -980,6 +980,11 @@
       <whatsthis>Use super user privileges for mounting and unmounting remote shares. This feature is only needed, if you are not allowed to do this as normal user. Note, that you will need the root password to write the necessary changes to the configuration file.</whatsthis>
       <default>false</default>
     </entry>
+    <entry name="DoNotModifySudoers" type="Bool">
+      <label>Do not modify sudo's configuration file</label>
+      <whatsthis>Do not modify the configuration file of the program sudo. You might want to enable this feature, if you are already allowed to execute arbitrary programs with super user privileges without the need of giving a password. Please note that during mounting the PASSWD environment variable is evaluated, so you have to make sure that it is preserved when sudo is run. This can be accomplished e.g. by setting the 'env_keep' option in the sudoers file. See the sudoers(5) manual page for further information.</whatsthis>
+      <default>false</default>
+    </entry>
   </group>
 
 <!-- Laptop support -->
