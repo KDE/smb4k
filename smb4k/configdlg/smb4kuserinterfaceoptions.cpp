@@ -61,6 +61,8 @@ Smb4KUserInterfaceOptions::Smb4KUserInterfaceOptions( QWidget *parent )
                                     notifications_box );
   show_notifications->setObjectName( "kcfg_ShowNotifications" );
   
+  notifications_layout->addWidget( show_notifications, 0, 0, 0 );
+  
   // Bookmarks
   QGroupBox *bookmarks_box        = new QGroupBox( i18n( "Bookmarks" ), mainwindow_tab );
 
@@ -79,7 +81,7 @@ Smb4KUserInterfaceOptions::Smb4KUserInterfaceOptions( QWidget *parent )
   main_window_layout->addWidget( bookmarks_box, 1, 0, 0 );
   main_window_layout->addItem( spacer1, 2, 0 );
 
-  insertTab( MainWindowSystemTrayTab, mainwindow_tab, i18n( "Main Window" ) );
+  insertTab( MainWindowSystemTrayTab, mainwindow_tab, i18n( "General" ) );
 
   //
   // Network browser
