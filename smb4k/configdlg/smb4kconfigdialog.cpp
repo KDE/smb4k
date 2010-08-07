@@ -244,38 +244,55 @@ void Smb4KConfigDialog::writeSuperUserEntries()
 {
   if ( m_super_user )
   {
-    if ( m_super_user->widget()->findChild<Smb4KSuperUserOptions *>()->writeSuperUserEntries() )
+    Smb4KSuperUserOptions *super_user = m_super_user->widget()->findChild<Smb4KSuperUserOptions *>();
+    Smb4KSettings::setDoNotModifySudoers( super_user->findChild<QCheckBox *>( "kcfg_DoNotModifySudoers" )->isChecked() );
+    
+    if ( !super_user->findChild<QCheckBox *>( "kcfg_DoNotModifySudoers" )->isChecked() )
     {
-      setEnabled( false );
-      
-      // Write to the /etc/sudoers file.      
-      if ( !Smb4KSudoWriterInterface::self()->addUser() )
+      if ( super_user->writeSuperUserEntries() )
       {
-        // The writing failed. Reset the settings in the "Super User"
-        // page.
-        m_super_user->widget()->findChild<Smb4KSuperUserOptions *>()->resetSuperUserSettings();
+        setEnabled( false );
         
-        // Set super user settings to FALSE
-        Smb4KSettings::setUseForceUnmount( false );
-        Smb4KSettings::setAlwaysUseSuperUser( false );
+        // Write to the /etc/sudoers file.      
+        if ( !Smb4KSudoWriterInterface::self()->addUser() )
+        {
+          // The writing failed. Reset the settings in the "Super User"
+          // page.
+          super_user->resetSuperUserSettings();
+          
+          // Set super user settings to FALSE
+          Smb4KSettings::setUseForceUnmount( false );
+          Smb4KSettings::setAlwaysUseSuperUser( false );
+        }
+        else
+        {
+          // Set super user setting according to the state of the check boxes
+          Smb4KSettings::setUseForceUnmount( 
+            super_user->findChild<QCheckBox *>( "kcfg_UseForceUnmount" )->isChecked() 
+          );
+          
+          Smb4KSettings::setAlwaysUseSuperUser( 
+            super_user->findChild<QCheckBox *>( "kcfg_AlwaysUseSuperUser" )->isChecked() 
+          );
+        }
+        
+        setEnabled( true );
       }
       else
       {
-        // Set super user setting according to the state of the check boxes
-        Smb4KSettings::setUseForceUnmount( 
-          m_super_user->widget()->findChild<QCheckBox *>( "kcfg_UseForceUnmount" )->isChecked() 
-        );
-        
-        Smb4KSettings::setAlwaysUseSuperUser( 
-          m_super_user->widget()->findChild<QCheckBox *>( "kcfg_AlwaysUseSuperUser" )->isChecked() 
-        );
+        // Do nothing
       }
-      
-      setEnabled( true );
     }
     else
     {
-      // Do nothing
+      // Set super user setting according to the state of the check boxes
+      Smb4KSettings::setUseForceUnmount( 
+        super_user->findChild<QCheckBox *>( "kcfg_UseForceUnmount" )->isChecked() 
+      );
+          
+      Smb4KSettings::setAlwaysUseSuperUser( 
+        super_user->findChild<QCheckBox *>( "kcfg_AlwaysUseSuperUser" )->isChecked() 
+      );
     }
   }
   else
@@ -634,17 +651,35 @@ void Smb4KConfigDialog::slotButtonClicked( int button )
 
 void Smb4KConfigDialog::slotRemoveSuperUserEntries()
 {
-  setEnabled( false );
+  if ( m_super_user )
+  {
+    Smb4KSuperUserOptions *super_user = m_super_user->widget()->findChild<Smb4KSuperUserOptions *>();
+    Smb4KSettings::setDoNotModifySudoers( super_user->findChild<QCheckBox *>( "kcfg_DoNotModifySudoers" )->isChecked() );
+    
+    if ( !super_user->findChild<QCheckBox *>( "kcfg_DoNotModifySudoers" )->isChecked() )
+    {
+      setEnabled( false );
 
-  // Remove the super user entries.
-  (void) Smb4KSudoWriterInterface::self()->removeUser();
-  
-  // Save *ALL* changed settings. This is a bit brutal, but I could
-  // not find any way to only save the super user settings and disable
-  // the apply button (if appropriate).
-  findChild<KConfigDialogManager *>()->updateSettings();
-  
-  setEnabled( true );
+      // Remove the super user entries.
+      (void) Smb4KSudoWriterInterface::self()->removeUser();
+      
+      // FIXME
+      // Save *ALL* changed settings. This is a bit brutal, but I could
+      // not find any way to only save the super user settings and disable
+      // the apply button (if appropriate).
+      findChild<KConfigDialogManager *>()->updateSettings();
+      
+      setEnabled( true );
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
