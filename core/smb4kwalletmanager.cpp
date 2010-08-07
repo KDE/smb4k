@@ -53,6 +53,7 @@
 #include <smb4ksambaoptionshandler.h>
 #endif
 #include <smb4kglobal.h>
+#include <smb4knotification.h>
 
 using namespace Smb4KGlobal;
 
@@ -86,7 +87,7 @@ Smb4KWalletManager *Smb4KWalletManager::self()
 }
 
 
-void Smb4KWalletManager::init( QWidget *parent, bool async )
+void Smb4KWalletManager::init( QWidget *parent )
 {
   if ( KWallet::Wallet::isEnabled() && Smb4KSettings::useWallet() )
   {
@@ -112,37 +113,24 @@ void Smb4KWalletManager::init( QWidget *parent, bool async )
         }
       }
 
-      if ( async )
+      m_wallet = KWallet::Wallet::openWallet( KWallet::Wallet::NetworkWallet(),
+                                              window_id,
+                                              KWallet::Wallet::Synchronous );
+
+      if ( m_wallet )
       {
-        m_wallet = KWallet::Wallet::openWallet( KWallet::Wallet::NetworkWallet(),
-                                                window_id,
-                                                KWallet::Wallet::Asynchronous );
-
-        connect( m_wallet, SIGNAL( walletOpened( bool ) ),
-                 this,     SIGNAL( walletOpened( bool ) ) );
-
-        connect( m_wallet, SIGNAL( walletOpened( bool ) ),
-                 this,     SLOT( slotWalletOpened( bool ) ) );
+        setupFolder();
+        m_state = UseWallet;
       }
       else
       {
-        m_wallet = KWallet::Wallet::openWallet( KWallet::Wallet::NetworkWallet(),
-                                                window_id,
-                                                KWallet::Wallet::Synchronous );
-
-        if ( m_wallet )
-        {
-          setupFolder();
-          m_state = UseWallet;
-        }
-        else
-        {
-          qWarning() << "Opening the wallet failed ..." << endl;
-          m_state = Unknown;
-        }
-
-        emit initialized();
+        Smb4KNotification *notification = new Smb4KNotification( this );
+        notification->openingWalletFailed( KWallet::Wallet::NetworkWallet() );
+        
+        m_state = Unknown;
       }
+
+      emit initialized();
     }
     else
     {
@@ -186,7 +174,8 @@ void Smb4KWalletManager::setupFolder()
   }
   else
   {
-    qWarning() << "No wallet or wallet not open ..." << endl;
+    Smb4KNotification *notification = new Smb4KNotification( this );
+    notification->loginsNotAccessible();
   }
 }
 
@@ -1139,27 +1128,6 @@ void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
 }
 
 #endif
-
-
-/////////////////////////////////////////////////////////////////////////////
-//  SLOT IMPLEMENTATIONS
-/////////////////////////////////////////////////////////////////////////////
-
-void Smb4KWalletManager::slotWalletOpened( bool success )
-{
-  if ( success )
-  {
-    setupFolder();
-    m_state = UseWallet;
-  }
-  else
-  {
-    qWarning() << "Opening the wallet failed ..." << endl;
-    m_state = Unknown;
-  }
-
-  emit initialized();
-}
 
 
 #include "smb4kwalletmanager.moc"

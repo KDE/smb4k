@@ -65,24 +65,14 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
     static Smb4KWalletManager *self();
 
     /**
-     * Initialize the wallet manager. It will try to open the wallet
-     * synchronously - except @p async is TRUE - and set up the appropriate
-     * folder.
+     * Initialize the wallet manager.
      *
      * Normally, you do not need to call this function, because it will be
      * invoked by the read and write functions of this class if needed.
      *
      * @param parent          The optional parent widget for the wallet
-     *
-     * @param async           If this value is set to TRUE, the wallet will
-     *                        be opened asynchronously. You need to connect
-     *                        to the walletOpened() signal immediately to find
-     *                        out, if the wallet could be opened.
-     *
-     *                        The default value is FALSE.
      */
-    void init( QWidget *parent,
-               bool async = false );
+    void init( QWidget *parent );
 
     /**
      * Read the authentication information for a a certain host or share.
@@ -178,16 +168,6 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
      * be opened), you have to use the currentState() function.
      */
     void initialized();
-
-  protected slots:
-    /**
-     * This slot is called if the wallet was opened asynchronously. It
-     * is used to set up the right folder.
-     *
-     * @param success         TRUE if the wallet could be opened
-     *                        successfully.
-     */
-    void slotWalletOpened( bool success );
 
   private:
     /**
