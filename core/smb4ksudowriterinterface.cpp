@@ -72,77 +72,84 @@ Smb4KSudoWriterInterface *Smb4KSudoWriterInterface::self()
 
 bool Smb4KSudoWriterInterface::addUser()
 {
-  // Find smb4k_sudowriter program
-  QString smb4k_sudowriter = KGlobal::dirs()->findResource( "exe", "smb4k_sudowriter" );
-
-  if ( smb4k_sudowriter.isEmpty() )
+  if ( !Smb4KSettings::doNotModifySudoers() )
   {
-    Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "smb4k_sudowriter" );
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
+    // Find smb4k_sudowriter program
+    QString smb4k_sudowriter = KGlobal::dirs()->findResource( "exe", "smb4k_sudowriter" );
 
-  // Find kdesu program
-  QString kdesu = KGlobal::dirs()->findResource( "exe", "kdesu" );
-
-  if ( kdesu.isEmpty() )
-  {
-    Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "kdesu" );
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Get the name of the current user.
-  uid_t user_id = getuid();
-  struct passwd *pw = getpwuid( user_id );
-  QString user( pw->pw_name );
-
-  QString command;
-  command += kdesu;
-  command += " -t -c ";
-  command += KShell::quoteArg( smb4k_sudowriter+" --adduser="+user );
-
-  Smb4KProcess p( Smb4KProcess::WriteSudoers, this );
-  p.setShellCommand( command );
-  p.setOutputChannelMode( KProcess::SeparateChannels );
-
-  switch ( p.execute() )
-  {
-    case -2:
-    case -1:
+    if ( smb4k_sudowriter.isEmpty() )
     {
-      Smb4KCoreMessage::processError( ERROR_PROCESS_ERROR, p.error() );
+      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "smb4k_sudowriter" );
       return false;
-      break;
     }
-    default:
+    else
     {
-      // smb4k_sudowriter won't generate any output if it successfully could
-      // write to the sudoers file. So, just check stderr for output.
-
-      QString stderr = QString::fromUtf8( p.readAllStandardError(), -1 ).trimmed();
-
-      // Only report an error if smb4k_sudowriter complained.
-      // Note: If kdesu is not installed or could not be found, Smb4K won't
-      // start up, so we do not need to test for it here.
-      if ( !stderr.isEmpty() && stderr.contains( "smb4k_sudowriter" ) )
-      {
-        Smb4KCoreMessage::error( ERROR_SUDOWRITER, QString(), stderr );
-        return false;
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      break;
+      // Do nothing
     }
+
+    // Find kdesu program
+    QString kdesu = KGlobal::dirs()->findResource( "exe", "kdesu" );
+
+    if ( kdesu.isEmpty() )
+    {
+      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "kdesu" );
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // Get the name of the current user.
+    uid_t user_id = getuid();
+    struct passwd *pw = getpwuid( user_id );
+    QString user( pw->pw_name );
+
+    QString command;
+    command += kdesu;
+    command += " -t -c ";
+    command += KShell::quoteArg( smb4k_sudowriter+" --adduser="+user );
+
+    Smb4KProcess p( Smb4KProcess::WriteSudoers, this );
+    p.setShellCommand( command );
+    p.setOutputChannelMode( KProcess::SeparateChannels );
+
+    switch ( p.execute() )
+    {
+      case -2:
+      case -1:
+      {
+        Smb4KCoreMessage::processError( ERROR_PROCESS_ERROR, p.error() );
+        return false;
+        break;
+      }
+      default:
+      {
+        // smb4k_sudowriter won't generate any output if it successfully could
+        // write to the sudoers file. So, just check stderr for output.
+
+        QString stderr = QString::fromUtf8( p.readAllStandardError(), -1 ).trimmed();
+
+        // Only report an error if smb4k_sudowriter complained.
+        // Note: If kdesu is not installed or could not be found, Smb4K won't
+        // start up, so we do not need to test for it here.
+        if ( !stderr.isEmpty() && stderr.contains( "smb4k_sudowriter" ) )
+        {
+          Smb4KCoreMessage::error( ERROR_SUDOWRITER, QString(), stderr );
+          return false;
+        }
+        else
+        {
+          // Do nothing
+        }
+
+        break;
+      }
+    }
+  }
+  else
+  {
+    // Do nothing
   }
 
   return true;
@@ -151,76 +158,83 @@ bool Smb4KSudoWriterInterface::addUser()
 
 bool Smb4KSudoWriterInterface::removeUser()
 {
-  // Find smb4k_sudowriter program
-  QString smb4k_sudowriter = KGlobal::dirs()->findResource( "exe", "smb4k_sudowriter" );
-
-  if ( smb4k_sudowriter.isEmpty() )
+  if ( !Smb4KSettings::doNotModifySudoers() )
   {
-    Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "smb4k_sudowriter" );
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
+    // Find smb4k_sudowriter program
+    QString smb4k_sudowriter = KGlobal::dirs()->findResource( "exe", "smb4k_sudowriter" );
 
-  // Find kdesu program
-  QString kdesu = KGlobal::dirs()->findResource( "exe", "kdesu" );
-
-  if ( kdesu.isEmpty() )
-  {
-    Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "kdesu" );
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Get the name of the current user.
-  uid_t user_id = getuid();
-  struct passwd *pw = getpwuid( user_id );
-  QString user( pw->pw_name );
-
-  QString command;
-  command += kdesu;
-  command += " -t -c ";
-  command += KShell::quoteArg( smb4k_sudowriter+" --removeuser="+user );
-
-  Smb4KProcess p( Smb4KProcess::WriteSudoers, this );
-  p.setShellCommand( command );
-  p.setOutputChannelMode( KProcess::SeparateChannels );
-
-  switch ( p.execute() )
-  {
-    case -2:
-    case -1:
+    if ( smb4k_sudowriter.isEmpty() )
     {
-      Smb4KCoreMessage::processError( ERROR_PROCESS_ERROR, p.error() );
+      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "smb4k_sudowriter" );
       return false;
     }
-    default:
+    else
     {
-      // smb4k_sudowriter won't generate any output if it successfully could
-      // write to the sudoers file. So, just check stderr for output.
+      // Do nothing
+    }
 
-      QString stderr = QString::fromUtf8( p.readAllStandardError(), -1 ).trimmed();
+    // Find kdesu program
+    QString kdesu = KGlobal::dirs()->findResource( "exe", "kdesu" );
 
-      // Only report an error if smb4k_sudowriter complained.
-      // Note: If kdesu is not installed or could not be found, Smb4K won't
-      // start up, so we do not need to test for it here.
-      if ( !stderr.isEmpty() && stderr.contains( "smb4k_sudowriter" ) )
+    if ( kdesu.isEmpty() )
+    {
+      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "kdesu" );
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // Get the name of the current user.
+    uid_t user_id = getuid();
+    struct passwd *pw = getpwuid( user_id );
+    QString user( pw->pw_name );
+
+    QString command;
+    command += kdesu;
+    command += " -t -c ";
+    command += KShell::quoteArg( smb4k_sudowriter+" --removeuser="+user );
+
+    Smb4KProcess p( Smb4KProcess::WriteSudoers, this );
+    p.setShellCommand( command );
+    p.setOutputChannelMode( KProcess::SeparateChannels );
+
+    switch ( p.execute() )
+    {
+      case -2:
+      case -1:
       {
-        Smb4KCoreMessage::error( ERROR_SUDOWRITER, QString(), stderr );
+        Smb4KCoreMessage::processError( ERROR_PROCESS_ERROR, p.error() );
         return false;
       }
-      else
+      default:
       {
-        // Do nothing
-      }
+        // smb4k_sudowriter won't generate any output if it successfully could
+        // write to the sudoers file. So, just check stderr for output.
 
-      break;
+        QString stderr = QString::fromUtf8( p.readAllStandardError(), -1 ).trimmed();
+
+        // Only report an error if smb4k_sudowriter complained.
+        // Note: If kdesu is not installed or could not be found, Smb4K won't
+        // start up, so we do not need to test for it here.
+        if ( !stderr.isEmpty() && stderr.contains( "smb4k_sudowriter" ) )
+        {
+          Smb4KCoreMessage::error( ERROR_SUDOWRITER, QString(), stderr );
+          return false;
+        }
+        else
+        {
+          // Do nothing
+        }
+
+        break;
+      }
     }
+  }
+  else
+  {
+    // Do nothing
   }
 
   return true;
