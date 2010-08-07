@@ -31,7 +31,7 @@ Comment[zh_CN]=高级网上邻居浏览器
 Version=1
 
 [Context/Notification]
-Name=Notifications
+Name=Notification
 Name[pt]=Notificações
 Name[pt_BR]=Notificações
 Name[sv]=Underrättelser
@@ -43,6 +43,10 @@ Comment[pt_BR]=O usuário é notificado sobre uma ação
 Comment[sv]=Användaren blir underrättad om en åtgärd
 Comment[uk]=Користувачеві повідомлено про дію
 Comment[x-test]=xxThe user is notified about an actionxx
+
+[Context/Warning]
+Name=Warning
+Comment=A warning is shown to the user
 
 [Event/shareMounted]
 Name=Mounted share
@@ -106,4 +110,17 @@ Comment[sv]=Alla delade kataloger har avmonterats
 Comment[uk]=Всі спільні ресурси було демонтовано
 Comment[x-test]=xxAll shares have been unmountedxx
 Contexts=Notification
-Action=Popup|Sound
+Action=Popup
+
+[Event/openingWalletFailed]
+Name=Opening wallet failed
+Comment=The wallet could not be opened
+Contexts=Warning
+Action=Popup
+
+[Event/loginsNotAccessible]
+Name=Logins not accessible
+Comment=The logins stored in the wallet could not be accessed
+Contexts=Warning
+Action=Popup
+
