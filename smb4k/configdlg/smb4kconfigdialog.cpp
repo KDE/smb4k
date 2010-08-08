@@ -223,15 +223,9 @@ void Smb4KConfigDialog::saveCustomSambaOptions()
 {
   if ( m_samba )
   {
-    QList<Smb4KSambaOptionsInfo> list;
+    QList<Smb4KSambaOptionsInfo *> list;
     list = m_samba->widget()->findChild<Smb4KSambaOptions *>()->getCustomOptions();
-    
-    for ( int i = 0; i < list.size(); ++i )
-    {
-      Smb4KSambaOptionsHandler::self()->addItem( &list[i], false );
-    }
-    
-    Smb4KSambaOptionsHandler::self()->sync();
+    Smb4KSambaOptionsHandler::self()->updateCustomOptions( list );
   }
   else
   {
@@ -815,7 +809,7 @@ void Smb4KConfigDialog::slotEnableApplyButton()
   
   if ( !enable && samba_options->customSettingsMaybeChanged() )
   {
-    QList<Smb4KSambaOptionsInfo> new_list = samba_options->getCustomOptions();
+    QList<Smb4KSambaOptionsInfo *> new_list = samba_options->getCustomOptions();
     QList<Smb4KSambaOptionsInfo *> old_list = Smb4KSambaOptionsHandler::self()->customOptionsList();
     
     if ( new_list.size() == old_list.size() )
@@ -824,7 +818,7 @@ void Smb4KConfigDialog::slotEnableApplyButton()
       {
         for ( int j = 0; j < old_list.size(); ++j )
         {
-          if ( !new_list[i].equals( old_list.at( j ) ) )
+          if ( !new_list[i]->equals( old_list.at( j ) ) )
           {
             enable = true;
             break;
