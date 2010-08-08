@@ -38,6 +38,7 @@
 #include <klocale.h>
 #include <kshell.h>
 #include <kglobal.h>
+#include <kapplication.h>
 
 // system specific includes
 #include <unistd.h>
@@ -84,6 +85,8 @@ Smb4KSambaOptionsHandler::Smb4KSambaOptionsHandler()
   m_wins_server.clear();
 
   readCustomOptions();
+  
+  connect( kapp, SIGNAL( aboutToQuit() ), this, SLOT( slotAboutToQuit() ) );
 }
 
 
@@ -362,9 +365,32 @@ void Smb4KSambaOptionsHandler::readCustomOptions()
 
 void Smb4KSambaOptionsHandler::writeCustomOptions()
 {
+  bool write = false;
+  
+  if ( !m_list.isEmpty() )
+  {
+    for ( int i = 0; i < m_list.size(); ++i )
+    {
+      if ( hasCustomOptions( m_list.at( i ) ) || 
+          m_list.at( i )->remount() == Smb4KSambaOptionsInfo::DoRemount )
+      {
+        write = true;
+        break;
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+  
   QFile xmlFile( KGlobal::dirs()->locateLocal( "data", "smb4k/custom_options.xml", KGlobal::mainComponent() ) );
 
-  if ( !m_list.isEmpty() )
+  if ( write )
   {
     if ( xmlFile.open( QIODevice::WriteOnly | QIODevice::Text ) )
     {
@@ -460,11 +486,19 @@ void Smb4KSambaOptionsHandler::removeRemount( Smb4KShare *share )
 {
   Q_ASSERT( share );
 
-  Smb4KSambaOptionsInfo *info = NULL;
-
-  if ( (info = findItem( share, true )) )
+  Smb4KSambaOptionsInfo *info = findItem( share, true );
+  
+  if ( info )
   {
-    info->setRemount( Smb4KSambaOptionsInfo::NoRemount );
+    if ( hasCustomOptions( info ) )
+    {
+      info->setRemount( Smb4KSambaOptionsInfo::NoRemount );
+    }
+    else
+    {
+      int index = m_list.indexOf( info );
+      delete m_list.takeAt( index );
+    }
   }
   else
   {
@@ -502,14 +536,6 @@ void Smb4KSambaOptionsHandler::clearRemounts()
       continue;
     }
   }
-
-  sync();
-}
-
-
-void Smb4KSambaOptionsHandler::sync()
-{
-  writeCustomOptions();
 }
 
 
@@ -1298,6 +1324,17 @@ bool Smb4KSambaOptionsHandler::hasCustomOptions( Smb4KSambaOptionsInfo *info )
   
   return false;
 }
+
+
+/////////////////////////////////////////////////////////////////////////////
+// SLOT IMPLEMENTATIONS
+/////////////////////////////////////////////////////////////////////////////
+
+void Smb4KSambaOptionsHandler::slotAboutToQuit()
+{
+  writeCustomOptions();
+}
+
 
 
 #include "smb4ksambaoptionshandler.moc"

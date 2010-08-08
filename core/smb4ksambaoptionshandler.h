@@ -104,12 +104,6 @@ class KDE_EXPORT Smb4KSambaOptionsHandler : public QObject
     void clearRemounts();
 
     /**
-     * Commit the whole list of shares with custom options to the configuration
-     * file. You should call this if you exit the application.
-     */
-    void sync();
-
-    /**
      * This function returns the options defined in the global section of the smb.conf
      * file. All option names have been converted to lower case and you can find each
      * entry by providing the option name in lowercase (!) as key.
@@ -198,6 +192,12 @@ class KDE_EXPORT Smb4KSambaOptionsHandler : public QObject
      * FALSE otherwise.
      */
     bool hasCustomOptions( Smb4KSambaOptionsInfo *info );
+    
+  protected slots:
+    /**
+     * This slot is invoked when the application is about to quit.
+     */
+    void slotAboutToQuit();
 
   private:
     /**
