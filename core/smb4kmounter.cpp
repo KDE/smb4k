@@ -1503,8 +1503,6 @@ void Smb4KMounter::saveSharesForRemount()
         Smb4KSambaOptionsHandler::self()->removeRemount( mountedSharesList()->at( i ) );
       }
     }
-
-    Smb4KSambaOptionsHandler::self()->sync();
   }
   else
   {
@@ -1747,7 +1745,6 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
     if ( priv->pendingRemounts() != 0 && Smb4KSambaOptionsHandler::self()->findItem( share ) != NULL )
     {
       Smb4KSambaOptionsHandler::self()->removeRemount( share );
-      Smb4KSambaOptionsHandler::self()->sync();
       priv->removeRemount();
       
       if ( priv->pendingRemounts() == 0 )
