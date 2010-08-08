@@ -1327,6 +1327,19 @@ void Smb4KSambaOptions::insertCustomOptions( const QList<Smb4KSambaOptionsInfo *
 }
 
 
+const QList<Smb4KSambaOptionsInfo *> Smb4KSambaOptions::getCustomOptions()
+{
+  QList<Smb4KSambaOptionsInfo *> list;
+  
+  for ( int i = 0; i < m_options_list.size(); ++i )
+  {
+    list << &m_options_list[i];
+  }
+  
+  return list;
+}
+
+
 Smb4KSambaOptionsInfo *Smb4KSambaOptions::findInfo( const QString &unc )
 {
   Smb4KSambaOptionsInfo *info = NULL;

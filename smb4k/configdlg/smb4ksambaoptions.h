@@ -120,7 +120,7 @@ class Smb4KSambaOptions : public KTabWidget
      *
      * @returns the list of custom option items.
      */
-    const QList<Smb4KSambaOptionsInfo> &getCustomOptions() { return m_options_list; }
+    const QList<Smb4KSambaOptionsInfo *> getCustomOptions();
     
     /**
      * Returns TRUE if there may be changed custom settings. You must check if
