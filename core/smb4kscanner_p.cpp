@@ -801,7 +801,7 @@ LookupInfoThread::~LookupInfoThread()
 void LookupInfoThread::lookup( const QString &command )
 {
   Q_ASSERT( !command.isEmpty() );
-
+  
   m_proc = new Smb4KProcess( Smb4KProcess::LookupInfo, this );
 
   connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), this, SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
@@ -830,29 +830,54 @@ void LookupInfoThread::slotProcessFinished( int exitCode, QProcess::ExitStatus e
     }
     default:
     {
-      // The information we want to extract is debug info and is
-      // sent to stderr. It should only be one line, so we do not
-      // need to loop through the data, but only read the first
-      // entry.
-      QStringList stderr = QString::fromUtf8( m_proc->readAllStandardError(), -1 ).split( "\n", QString::SkipEmptyParts );
-
-      if ( !stderr.isEmpty() )
+      // First evaluate stdout and if we cannot find the appropriate 
+      // information also evaluate stderr.
+      QString info_line;
+      QStringList stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( "\n", QString::SkipEmptyParts );
+      
+      for ( int i = 0; i < stdout.size(); ++i )
       {
-        if ( stderr.first().contains( "OS=" ) || stderr.first().contains( "Server=" ) )
+        if ( stdout.at( i ).contains( "OS=" ) || stdout.at( i ).contains( "Server=" ) )
         {
+          info_line = stdout.at( i );
+          
           Smb4KHost *host = static_cast<Smb4KHost *>( m_item );
-          host->setInfo( stderr.first().section( "Server=[", 1, 1 ).section( "]", 0, 0 ).trimmed(),
-                         stderr.first().section( "OS=[", 1, 1 ).section( "]", 0, 0 ).trimmed() );
+          host->setInfo( info_line.section( "Server=[", 1, 1 ).section( "]", 0, 0 ).trimmed(),
+                         info_line.section( "OS=[", 1, 1 ).section( "]", 0, 0 ).trimmed() );
           emit info( host );
+          break;
         }
         else
         {
-          kDebug() << "Failed to aquire additional information..." << endl;
+          // Do nothing
+        }
+      }
+      
+      if ( info_line.isEmpty() )
+      {
+        QStringList stderr = QString::fromUtf8( m_proc->readAllStandardError(), -1 ).split( "\n", QString::SkipEmptyParts );
+        
+        for ( int i = 0; i < stderr.size(); ++i )
+        {
+          if ( stderr.at( i ).contains( "OS=" ) || stderr.at( i ).contains( "Server=" ) )
+          {
+            info_line = stderr.at( i );
+            
+            Smb4KHost *host = static_cast<Smb4KHost *>( m_item );
+            host->setInfo( info_line.section( "Server=[", 1, 1 ).section( "]", 0, 0 ).trimmed(),
+                           info_line.section( "OS=[", 1, 1 ).section( "]", 0, 0 ).trimmed() );
+            emit info( host );
+            break;
+          }
+          else
+          {
+            // Do nothing
+          }
         }
       }
       else
       {
-        kDebug() << "Failed to aquire additional information..." << endl;
+        // Do nothing
       }
       break;
     }
