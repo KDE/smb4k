@@ -609,7 +609,7 @@ void Smb4KScanner::lookupDomains()
     command += xargs+" -Imaster ";
     command += net;
     
-    // Protocol & command. Since the domain lookup only work with the RAP
+    // Protocol & command. Since the domain lookup only works with the RAP
     // protocol, there is no point in using the 'Automatic' feature.
     command += " rap domain";
     
