@@ -33,6 +33,8 @@ Version=1
 [Context/Notification]
 Name=Notification
 Name[pt]=Notificação
+Name[pt_BR]=Notificação
+Name[sv]=Underrättelse
 Name[uk]=Сповіщення
 Name[x-test]=xxNotificationxx
 Comment=The user is notified about an action
@@ -45,10 +47,14 @@ Comment[x-test]=xxThe user is notified about an actionxx
 [Context/Warning]
 Name=Warning
 Name[pt]=Aviso
+Name[pt_BR]=Aviso
+Name[sv]=Varning
 Name[uk]=Попередження
 Name[x-test]=xxWarningxx
 Comment=A warning is shown to the user
 Comment[pt]=É mostrado um aviso ao utilizador
+Comment[pt_BR]=Um aviso é exibido ao usuário
+Comment[sv]=En varning visas för användaren
 Comment[uk]=Користувачеві показано попередження
 Comment[x-test]=xxA warning is shown to the userxx
 
@@ -119,10 +125,14 @@ Action=Popup
 [Event/openingWalletFailed]
 Name=Opening wallet failed
 Name[pt]=A abertura da carteira foi mal-sucedida
+Name[pt_BR]=Falha ao abrir a carteira
+Name[sv]=Misslyckades öppna plånboken
 Name[uk]=Спроба відкриття торбинки зазнала невдачі
 Name[x-test]=xxOpening wallet failedxx
 Comment=The wallet could not be opened
 Comment[pt]=Não foi possível abrir a carteira
+Comment[pt_BR]=A carteira não pôde ser aberta
+Comment[sv]=Plånboken kunde inte öppnas
 Comment[uk]=Не вдалося відкрити торбинку
 Comment[x-test]=xxThe wallet could not be openedxx
 Contexts=Warning
@@ -131,10 +141,14 @@ Action=Popup
 [Event/loginsNotAccessible]
 Name=Logins not accessible
 Name[pt]=Contas inacessíveis
+Name[pt_BR]=O login não está acessível
+Name[sv]=Inloggningsinformation ej tillgänglig
 Name[uk]=Реєстраційні дані недоступні
 Name[x-test]=xxLogins not accessiblexx
 Comment=The logins stored in the wallet could not be accessed
 Comment[pt]=Não foi possível aceder às contas guardadas na carteira
+Comment[pt_BR]=Os logins armazenados na carteira não puderam ser acessados
+Comment[sv]=Inloggningsinformationen lagrad i plånboken kunde inte kommas åt
 Comment[uk]=Не вдалося отримати доступ до реєстраційних даних, що зберігаються у торбинці
 Comment[x-test]=xxThe logins stored in the wallet could not be accessedxx
 Contexts=Warning
