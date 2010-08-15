@@ -134,37 +134,23 @@ void Smb4KConfigDialog::setupDialog()
   rsync_area->setWidget( rsync_options );
   rsync_area->setWidgetResizable( true );
   rsync_area->setFrameStyle( QFrame::NoFrame );
+  
+  rsync_options->setEnabled( !KStandardDirs::findExe( "rsync" ).isEmpty() );
 
   Smb4KSuperUserOptions *super_user_options = new Smb4KSuperUserOptions( this );
   QScrollArea *super_user_area = new QScrollArea( this );
   super_user_area->setWidget( super_user_options );
   super_user_area->setWidgetResizable( true );
   super_user_area->setFrameStyle( QFrame::NoFrame );
+  
+  super_user_options->setEnabled( !KStandardDirs::findExe( "sudo" ).isEmpty() );
+  super_user_options->findChild<QCheckBox *>( "kcfg_UseKdeSudo" )->setEnabled( !KStandardDirs::findExe( "kdesudo" ).isEmpty() );
 
   Smb4KLaptopSupportOptions *laptop_options = new Smb4KLaptopSupportOptions( this );
   QScrollArea *laptop_area = new QScrollArea( this );
   laptop_area->setWidget( laptop_options );
   laptop_area->setWidgetResizable( true );
   laptop_area->setFrameStyle( QFrame::NoFrame );
-
-  // Disable widgets if the respective programs are not installed.
-  if ( KStandardDirs::findExe( "rsync" ).isEmpty() )
-  {
-    rsync_options->setEnabled( false );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( KStandardDirs::findExe( "sudo" ).isEmpty() )
-  {
-    super_user_options->setEnabled( false );
-  }
-  else
-  {
-    // Do nothing
-  }
 
   // Now add the pages to the configuration dialog
   m_user_interface  = addPage( interface_area, i18n( "User Interface" ), "view-choose" );
