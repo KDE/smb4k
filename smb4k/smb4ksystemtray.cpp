@@ -3,7 +3,7 @@
                              -------------------
     begin                : Mi Jun 13 2007
     copyright            : (C) 2007-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -324,11 +324,10 @@ void Smb4KSystemTray::setupSharesMenu()
       it.next();
 
       KActionMenu *action_menu = NULL;
+      QAction *menu = actionCollection()->action( QVariant( it.value().canonicalPath() ).toString() );
 
-      if ( (action_menu = static_cast<KActionMenu *>( actionCollection()->action( QString::fromUtf8( it.value().canonicalPath() ) ) )) )
+      if ( (action_menu = static_cast<KActionMenu *>( menu )) )
       {
-        QString canonical_path = QString::fromUtf8( it.value().canonicalPath() );
-
         // The action already exists. Have a look whether we have
         // to change anything.
         if ( it.value().isInaccessible() )
@@ -353,9 +352,38 @@ void Smb4KSystemTray::setupSharesMenu()
 
           // Disable actions that should not be performed on an inaccessible
           // share:
-          actionCollection()->action( "st_synchronize_"+canonical_path )->setEnabled( false );
-          actionCollection()->action( "st_konsole_"+canonical_path )->setEnabled( false );
-          actionCollection()->action( "st_filemanager_"+canonical_path )->setEnabled( false );
+          QAction *synchronize = actionCollection()->action( QVariant( "st_synchronize_"+it.value().canonicalPath() ).toString() );
+          
+          if ( synchronize )
+          {
+            synchronize->setEnabled( false );
+          }
+          else
+          {
+            // Do nothing
+          }
+          
+          QAction *konsole = actionCollection()->action( QVariant( "st_konsole_"+it.value().canonicalPath() ).toString() );
+          
+          if ( konsole )
+          {
+            konsole->setEnabled( false );
+          }
+          else
+          {
+            // Do nothing
+          }
+          
+          QAction *filemanager = actionCollection()->action( QVariant( "st_filemanager_"+it.value().canonicalPath() ).toString() );
+          
+          if ( filemanager )
+          {
+            filemanager->setEnabled( false );
+          }
+          else
+          {
+            // Do nothing
+          }
         }
         else
         {
@@ -382,12 +410,29 @@ void Smb4KSystemTray::setupSharesMenu()
 
         // If we have a foreign share, check if we have to enable/disable the
         // unmount actions.
-        actionCollection()->action( "st_unmount_"+canonical_path )->setEnabled(
-                            !(it.value().isForeign() && !Smb4KSettings::unmountForeignShares()) );
+        QAction *unmount = actionCollection()->action( QVariant( "st_unmount_"+it.value().canonicalPath() ).toString() );
+        
+        if ( unmount )
+        {
+          unmount->setEnabled( !(it.value().isForeign() && !Smb4KSettings::unmountForeignShares()) );
+        }
+        else
+        {
+          // Do nothing
+        }
+        
 #ifdef __linux__
-        actionCollection()->action( "st_force_"+canonical_path )->setEnabled(
-                            !(it.value().isForeign() && !Smb4KSettings::unmountForeignShares()) &&
-                            Smb4KSettings::useForceUnmount() );
+        QAction *force = actionCollection()->action( QVariant( "st_force_"+it.value().canonicalPath() ).toString() );
+        
+        if ( force )
+        {
+          force->setEnabled( !(it.value().isForeign() && !Smb4KSettings::unmountForeignShares()) &&
+                             Smb4KSettings::useForceUnmount() );
+        }
+        else
+        {
+          // Do nothing
+        }
 #endif
 
         continue;
