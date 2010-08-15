@@ -44,6 +44,10 @@ Comment[sv]=Användaren blir underrättad om en åtgärd
 Comment[uk]=Користувачеві повідомлено про дію
 Comment[x-test]=xxThe user is notified about an actionxx
 
+[Context/Sorry]
+Name=Sorry
+Comment=A sorry message is shown to the user
+
 [Context/Warning]
 Name=Warning
 Name[pt]=Aviso
@@ -57,6 +61,10 @@ Comment[pt_BR]=Um aviso é exibido ao usuário
 Comment[sv]=En varning visas för användaren
 Comment[uk]=Користувачеві показано попередження
 Comment[x-test]=xxA warning is shown to the userxx
+
+[Context/Error]
+Name=Error
+Comment=An error is shown to the user
 
 [Event/shareMounted]
 Name=Mounted share
@@ -154,3 +162,21 @@ Comment[x-test]=xxThe logins stored in the wallet could not be accessedxx
 Contexts=Warning
 Action=Popup
 
+[Event/sudoNotFound]
+Name=sudo not found
+Comment=The program sudo could not be found
+Contexts=Warning
+Action=Popup
+
+[Event/kdesudoNotFound]
+Name=kdesudo not found
+Comment=The program kdesudo could not be found
+Contexts=Warning
+Action=Popup
+
+[Event/retrievingDomainsFailed]
+Name=Retrieving domains failed
+Comment=The list of domains could not be retrieved
+Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
+Action=Popup|Sound
