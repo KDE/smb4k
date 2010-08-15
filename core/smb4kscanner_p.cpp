@@ -33,6 +33,7 @@
 #include <smb4kworkgroup.h>
 #include <smb4khost.h>
 #include <smb4kshare.h>
+#include <smb4knotification.h>
 
 
 BasicScanThread::BasicScanThread( Type type, Smb4KBasicNetworkItem *item, QObject *parent )
@@ -342,7 +343,8 @@ void LookupDomainsThread::slotProcessError()
       case LookupDomainsThread::LookupDomains:
       case LookupDomainsThread::QueryMaster:
       {
-        Smb4KCoreMessage::error( ERROR_GETTING_WORKGROUPS, QString(), stderr );
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->retrievingDomainsFailed( stderr );
         break;
       }
       case LookupDomainsThread::ScanBroadcastAreas:
