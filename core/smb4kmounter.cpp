@@ -161,11 +161,27 @@ void Smb4KMounter::abort( Smb4KShare *share )
       }
 
       // Find sudo program
-      QString sudo = KStandardDirs::findExe( "sudo" );
+      QString sudo;
+      
+      if ( Smb4KSettings::useKdeSudo() && !KStandardDirs::findExe( "kdesudo" ).isEmpty() )
+      {
+        sudo = KStandardDirs::findExe( "kdesudo" );
+      }
+      else
+      {
+        sudo = KStandardDirs::findExe( "sudo" );
+      }
 
       if ( sudo.isEmpty() )
       {
-        Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "sudo" );
+        if ( Smb4KSettings::useKdeSudo() )
+        {
+          Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "kdesudo" );
+        }
+        else
+        {
+          Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "sudo" );
+        }
         return;
       }
       else
@@ -243,11 +259,27 @@ void Smb4KMounter::abortAll()
           }
 
           // Find sudo program
-          QString sudo = KStandardDirs::findExe( "sudo" );
+          QString sudo;
+      
+          if ( Smb4KSettings::useKdeSudo() && !KStandardDirs::findExe( "kdesudo" ).isEmpty() )
+          {
+            sudo = KStandardDirs::findExe( "kdesudo" );
+          }
+          else
+          {
+            sudo = KStandardDirs::findExe( "sudo" );
+          }
 
           if ( sudo.isEmpty() )
           {
-            Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "sudo" );
+            if ( Smb4KSettings::useKdeSudo() )
+            {
+              Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "kdesudo" );
+            }
+            else
+            {
+              Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "sudo" );
+            }
             return;
           }
           else
@@ -795,13 +827,29 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
     // Do nothing
   }
 
-  // Find the sudo program
-  QString sudo = KStandardDirs::findExe( "sudo" );
+  // Find sudo program
+  QString sudo;
+      
+  if ( Smb4KSettings::useKdeSudo() && !KStandardDirs::findExe( "kdesudo" ).isEmpty() )
+  {
+    sudo = KStandardDirs::findExe( "kdesudo" );
+  }
+  else
+  {
+    sudo = KStandardDirs::findExe( "sudo" );
+  }
 
   // Check that sudo is installed in the case it is needed.
   if ( Smb4KSettings::alwaysUseSuperUser() && sudo.isEmpty() )
   {
-    Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "sudo" );
+    if ( Smb4KSettings::useKdeSudo() )
+    {
+      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "kdesudo" );
+    }
+    else
+    {
+      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "sudo" );
+    }
     return;
   }
   else
@@ -909,6 +957,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   if ( Smb4KSettings::alwaysUseSuperUser() )
   {
     command += sudo;
+    command += " --";    
     command += " "+smb4k_mount;
   }
   else
@@ -1291,14 +1340,30 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
     // Do nothing
   }
 
-  // Find the sudo program
-  QString sudo = KStandardDirs::findExe( "sudo" );
+  // Find sudo program
+  QString sudo;
+    
+  if ( Smb4KSettings::useKdeSudo() && !KStandardDirs::findExe( "kdesudo" ).isEmpty() )
+  {
+    sudo = KStandardDirs::findExe( "kdesudo" );
+  }
+  else
+  {
+    sudo = KStandardDirs::findExe( "sudo" );
+  }
 
   // Check that sudo is installed in the case it is needed.
   if ( ((force && Smb4KSettings::useForceUnmount()) || Smb4KSettings::alwaysUseSuperUser()) &&
        sudo.isEmpty() )
   {
-    Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "sudo" );
+    if ( Smb4KSettings::useKdeSudo() )
+    {
+      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "kdesudo" );
+    }
+    else
+    {
+      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "sudo" );
+    }
     return;
   }
   else
@@ -1387,6 +1452,7 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
   if ( (force && Smb4KSettings::useForceUnmount()) || Smb4KSettings::alwaysUseSuperUser() )
   {
     command += sudo;
+    command += " --";
     command += " "+smb4k_umount;
   }
   else
@@ -1438,13 +1504,13 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
   else
   {
     // We only unmount the shares and do not need to connect
-    // to any signals. Also, we will not enter the threads into
+    // to any signals. Also, we will not enter the thread into
     // the cache.
-    UnmountThread *thread = new UnmountThread( share, this );
-    thread->setStartDetached( true );
-    thread->start();
-    thread->unmount( command );
-    thread->wait();
+    UnmountThread thread( share, this );
+    thread.setStartDetached( true );
+    thread.start();
+    thread.unmount( command );
+    thread.wait();
   }
 }
 
