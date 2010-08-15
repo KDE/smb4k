@@ -58,19 +58,6 @@ void Smb4KCoreMessage::error( int code, const QString &text, const QString &deta
 
   switch ( code )
   {
-    case ERROR_GETTING_WORKGROUPS:
-    {
-      if ( details.trimmed().isEmpty() )
-      {
-        KMessageBox::error( parent, i18n( "<qt><p>The list of workgroups and domains could not be retrieved.</p><p>Detailed information cannot be provided because there was no error message.</p></qt>" ) );
-      }
-      else
-      {
-        KMessageBox::detailedError( parent, i18n( "<qt><p>The list of workgroups and domains could not be retrieved.</p><p>Read the error message under \"Details\" to find out more.</p></qt>" ), details );
-      }
-
-      break;
-    }
     case ERROR_PERFORMING_IPSCAN:
     {
       if ( details.trimmed().isEmpty() )
@@ -480,24 +467,18 @@ void Smb4KCoreMessage::information( int code, const QString &text, const QString
 
       break;
     }
-    case INFO_DISABLE_SUID_FEATURE:
-    {
-      KMessageBox::information( parent, i18n( "<qt>You previously chose to use \"%1\", but now it is missing on your system. Smb4K will disable this feature.</qt>", text ) );
-
-      break;
-    }
+//     case INFO_DISABLE_SUID_FEATURE:
+//     {
+//       KMessageBox::information( parent, i18n( "<qt>You previously chose to use \"%1\", but now it is missing on your system. Smb4K will disable this feature.</qt>", text ) );
+// 
+//       break;
+//     }
     case INFO_BOOKMARK_LABEL_IN_USE:
     {
       KMessageBox::information( parent, i18n( "<qt>The label \"%1\" is used more than once. It will automatically be renamed for bookmark \"%2\" to avoid confusion.</qt>", text, details ) );
 
       break;
     }
-//     case INFO_OPENING_WALLET_FAILED:
-//     {
-//       KMessageBox::information( parent, i18n( "<qt>The wallet \"%1\" could not be opened. KWallet support will be disabled for this session.</qt>", text ) );
-// 
-//       break;
-//     }
     default:
     {
       break;

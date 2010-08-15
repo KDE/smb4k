@@ -43,7 +43,6 @@
 //
 
 // (1) Network related errors.
-#define ERROR_GETTING_WORKGROUPS            100
 #define ERROR_PERFORMING_IPSCAN             101
 #define ERROR_GETTING_MEMBERS               102
 #define ERROR_GETTING_SHARES                103
@@ -107,9 +106,8 @@
 //
 
 #define INFO_MIMETYPE_NOT_SUPPORTED         300
-#define INFO_DISABLE_SUID_FEATURE           301
+// #define INFO_DISABLE_SUID_FEATURE           301
 #define INFO_BOOKMARK_LABEL_IN_USE          302
-// #define INFO_OPENING_WALLET_FAILED          303
 
 /**
  * This class provides messages for use with the core classes of Smb4K.
