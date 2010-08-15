@@ -110,6 +110,30 @@ class KDE_EXPORT Smb4KNotification : public QObject
      */
     void loginsNotAccessible();
     
+    /**
+     * Tell the user that the program sudo could not be found and the 
+     * the feature will be disabled.
+     */
+    void sudoNotFound();
+    
+    /**
+     * Tell the user that the program kdesudo could not be found and the 
+     * the feature will be disabled.
+     */
+    void kdesudoNotFound();
+    
+    //
+    // Errors
+    //
+    
+    /**
+     * This error message is shown if the list of workgroups could not 
+     * be retrieved.
+     *
+     * @param err_msg   The error message
+     */
+    void retrievingDomainsFailed( const QString &err_msg );
+    
   protected slots:
     /**
      * This slot is invoked when the notification is closed or ignored.
@@ -121,8 +145,14 @@ class KDE_EXPORT Smb4KNotification : public QObject
      */
     void slotOpenShare();
     
+    /**
+     * Shows an error message
+     */
+    void slotShowErrorMessage();
+    
   private:
     Smb4KShare m_share;
+    QStringList m_err_msg;
 };
 
 #endif
