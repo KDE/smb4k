@@ -320,8 +320,9 @@ Smb4K SVN_HEAD (????-??-??):
   + Improved checks for empty entries.
   + Removed settings related to the system tray icon.
   + Added settings related to notifications.
-  + Added possibility to leave the sudoers file unchanged if the user needs super
+  + Added setting to leave the sudoers file unchanged if the user needs super
     user privileges for mounting.
+  + Added setting to use kdesudo.
 - Revised main window:
   + The icon in the status bar, that indicates the status of the authentication
     system now shows a key if the wallet system is not used, i.e. we are in
