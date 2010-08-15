@@ -60,6 +60,7 @@
 #include <smb4kpreviewer.h>
 #include <smb4ksearch.h>
 #include <smb4ksambaoptionshandler.h>
+#include <smb4knotification.h>
 
 
 using namespace Smb4KGlobal;
@@ -353,15 +354,28 @@ void Smb4KCore::searchPrograms()
     if ( KStandardDirs::findExe( "sudo" ).isEmpty() &&
          (Smb4KSettings::useForceUnmount() || Smb4KSettings::alwaysUseSuperUser()) )
     {
-      Smb4KCoreMessage::information( INFO_DISABLE_SUID_FEATURE, "sudo" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->sudoNotFound();
 
       // Reset the super user settings:
       Smb4KSettings::self()->useForceUnmountItem()->setDefault();
       Smb4KSettings::self()->alwaysUseSuperUserItem()->setDefault();
+      Smb4KSettings::self()->useKdeSudoItem()->setDefault();
     }
     else
     {
-      // Do nothing
+      if ( KStandardDirs::findExe( "kdesudo" ).isEmpty() && Smb4KSettings::useKdeSudo() )
+      {
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->kdesudoNotFound();
+        
+        // Disable feature
+        Smb4KSettings::self()->useKdeSudoItem()->setDefault();
+      }
+      else
+      {
+        // Do nothing
+      }
     }
 
     // Write the configuration to disk:
