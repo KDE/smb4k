@@ -35,10 +35,12 @@
 #include <kpushbutton.h>
 #include <kguiitem.h>
 #include <kcombobox.h>
+#include <kstandarddirs.h>
 
 // application specific includes
 #include "smb4ksuperuseroptions.h"
 #include <core/smb4ksettings.h>
+
 
 
 Smb4KSuperUserOptions::Smb4KSuperUserOptions( QWidget *parent )
@@ -80,7 +82,12 @@ Smb4KSuperUserOptions::Smb4KSuperUserOptions( QWidget *parent )
                                   advanced_box );
   dont_modify->setObjectName( "kcfg_DoNotModifySudoers" );
   
+  QCheckBox *use_kdesudo        = new QCheckBox( Smb4KSettings::self()->useKdeSudoItem()->label(),
+                                  advanced_box );
+  use_kdesudo->setObjectName( "kcfg_UseKdeSudo" );
+  
   advanced_layout->addWidget( dont_modify, 0, 0, 0 );
+  advanced_layout->addWidget( use_kdesudo, 1, 0, 0 );
 
   KGuiItem remove_item          = KGuiItem(  i18n( "Remove Entries" ), "edit-clear",
                                   i18n( "Remove entries from the configuration file" ),
