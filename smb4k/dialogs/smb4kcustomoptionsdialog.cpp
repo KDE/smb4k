@@ -65,7 +65,7 @@ Smb4KCustomOptionsDialog::Smb4KCustomOptionsDialog( Smb4KHost *host, QWidget *pa
 
   setMinimumWidth( sizeHint().width() > 350 ? sizeHint().width() : 350 );
 
-  KConfigGroup group( Smb4KSettings::self()->config(), "CustomOptionsDialog" );
+  KConfigGroup group( Smb4KSettings::self()->config(), "CustomOptionsDialog-Host" );
   restoreDialogSize( group );
 }
 
@@ -100,11 +100,9 @@ Smb4KCustomOptionsDialog::Smb4KCustomOptionsDialog( Smb4KShare *share, QWidget *
   
   setupShareDialog();
 
-  setMinimumSize( (sizeHint().width() > 350 ? sizeHint().width() : 350), sizeHint().height() );
+  setMinimumWidth( (sizeHint().width() > 350 ? sizeHint().width() : 350) );
 
-  setInitialSize( QSize( minimumWidth(), minimumHeight() ) );
-
-  KConfigGroup group( Smb4KSettings::self()->config(), "CustomOptionsDialog" );
+  KConfigGroup group( Smb4KSettings::self()->config(), "CustomOptionsDialog-Share" );
   restoreDialogSize( group );
 }
 
@@ -491,7 +489,7 @@ void Smb4KCustomOptionsDialog::setupHostDialog()
 
   connect( this, SIGNAL( user1Clicked() ),
            this, SLOT( slotDefaultButtonClicked() ) );
-
+           
   // Enable the buttons.
   enableButton( Ok, false );
   enableButton( User1, !hasDefaultSettings() );
@@ -748,7 +746,7 @@ void Smb4KCustomOptionsDialog::setupShareDialog()
 
   connect( this, SIGNAL( user1Clicked() ),
            this, SLOT( slotDefaultButtonClicked() ) );
-
+           
   // Enable the buttons.
   enableButton( Ok, false );
   enableButton( User1, !hasDefaultSettings() );
@@ -1716,8 +1714,25 @@ void Smb4KCustomOptionsDialog::slotOKButtonClicked()
     }
   }
   
-  KConfigGroup group( Smb4KSettings::self()->config(), "CustomOptionsDialog" );
-  saveDialogSize( group, KConfigGroup::Normal );
+  switch ( m_type )
+  {
+    case Host:
+    {
+      KConfigGroup group( Smb4KSettings::self()->config(), "CustomOptionsDialog-Host" );
+      saveDialogSize( group, KConfigGroup::Normal );
+      break;
+    }
+    case Share:
+    {
+      KConfigGroup group( Smb4KSettings::self()->config(), "CustomOptionsDialog-Share" );
+      saveDialogSize( group, KConfigGroup::Normal );
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  } 
 }
 
 
