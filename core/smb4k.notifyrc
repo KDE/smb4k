@@ -46,7 +46,9 @@ Comment[x-test]=xxThe user is notified about an actionxx
 
 [Context/Sorry]
 Name=Sorry
+Name[x-test]=xxSorryxx
 Comment=A sorry message is shown to the user
+Comment[x-test]=xxA sorry message is shown to the userxx
 
 [Context/Warning]
 Name=Warning
@@ -64,7 +66,9 @@ Comment[x-test]=xxA warning is shown to the userxx
 
 [Context/Error]
 Name=Error
+Name[x-test]=xxErrorxx
 Comment=An error is shown to the user
+Comment[x-test]=xxAn error is shown to the userxx
 
 [Event/shareMounted]
 Name=Mounted share
@@ -164,19 +168,25 @@ Action=Popup
 
 [Event/sudoNotFound]
 Name=sudo not found
+Name[x-test]=xxsudo not foundxx
 Comment=The program sudo could not be found
+Comment[x-test]=xxThe program sudo could not be foundxx
 Contexts=Warning
 Action=Popup
 
 [Event/kdesudoNotFound]
 Name=kdesudo not found
+Name[x-test]=xxkdesudo not foundxx
 Comment=The program kdesudo could not be found
+Comment[x-test]=xxThe program kdesudo could not be foundxx
 Contexts=Warning
 Action=Popup
 
 [Event/retrievingDomainsFailed]
 Name=Retrieving domains failed
+Name[x-test]=xxRetrieving domains failedxx
 Comment=The list of domains could not be retrieved
+Comment[x-test]=xxThe list of domains could not be retrievedxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
