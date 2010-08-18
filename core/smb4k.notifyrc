@@ -46,11 +46,13 @@ Comment[x-test]=xxThe user is notified about an actionxx
 
 [Context/Sorry]
 Name=Sorry
+Name[pt]=Desculpe
 Name[pt_BR]=Desculpe
 Name[sv]=Tyvärr
 Name[uk]=Вибачення
 Name[x-test]=xxSorryxx
 Comment=A sorry message is shown to the user
+Comment[pt]=Foi mostrado um pedido de desculpas ao utilizador
 Comment[pt_BR]=Uma mensagem de desculpas é exibida ao usuário
 Comment[sv]=En tyvärr-meddelande visas för användaren
 Comment[uk]=Користувачеві показано повідомлення з вибаченням
@@ -72,11 +74,13 @@ Comment[x-test]=xxA warning is shown to the userxx
 
 [Context/Error]
 Name=Error
+Name[pt]=Erro
 Name[pt_BR]=Erro
 Name[sv]=Fel
 Name[uk]=Помилка
 Name[x-test]=xxErrorxx
 Comment=An error is shown to the user
+Comment[pt]=Foi mostrado um erro ao utilizador
 Comment[pt_BR]=Um erro é exibido ao usuário
 Comment[sv]=Ett fel visas för användaren
 Comment[uk]=Користувачеві показано повідомлення про помилку
@@ -180,11 +184,13 @@ Action=Popup
 
 [Event/sudoNotFound]
 Name=sudo not found
+Name[pt]=O 'sudo' não foi encontrado
 Name[pt_BR]=sudo não encontrado
 Name[sv]=Hittade inte sudo
 Name[uk]=sudo не знайдено
 Name[x-test]=xxsudo not foundxx
 Comment=The program sudo could not be found
+Comment[pt]=Não foi possível encontrar o programa 'sudo'
 Comment[pt_BR]=O programa sudo não pode ser encontrado
 Comment[sv]=Programmet sudo kunde inte hittas
 Comment[uk]=Не вдалося виявити програму sudo
@@ -194,11 +200,13 @@ Action=Popup
 
 [Event/kdesudoNotFound]
 Name=kdesudo not found
+Name[pt]=O 'kdesudo' não foi encontrado
 Name[pt_BR]=kdesudo não encontrado
 Name[sv]=Hittade inte kdesudo
 Name[uk]=kdesudo не знайдено
 Name[x-test]=xxkdesudo not foundxx
 Comment=The program kdesudo could not be found
+Comment[pt]=Não foi possível encontrar o programa 'kdesudo'
 Comment[pt_BR]=O programa kdesudo não pode ser encontrado
 Comment[sv]=Programmet kdesudo kunde inte hittas
 Comment[uk]=Не вдалося виявити програму kdesudo
@@ -208,11 +216,13 @@ Action=Popup
 
 [Event/retrievingDomainsFailed]
 Name=Retrieving domains failed
+Name[pt]=Não foi possível obter os domínios
 Name[pt_BR]=A obtenção de domínios foi mal-sucedida
 Name[sv]=Misslyckades hämta domäner
 Name[uk]=Невдала спроба отримання списку доменів
 Name[x-test]=xxRetrieving domains failedxx
 Comment=The list of domains could not be retrieved
+Comment[pt]=Não foi possível obter a lista de domínios
 Comment[pt_BR]=A lista de domínios não pode ser obtida
 Comment[sv]=Listan med domäner kunde inte hämtas
 Comment[uk]=Не вдалося отримати список доменів
