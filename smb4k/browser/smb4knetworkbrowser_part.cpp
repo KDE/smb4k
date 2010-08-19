@@ -320,12 +320,12 @@ void Smb4KNetworkBrowserPart::loadSettings()
   }
 
   // Does anything has to be changed with the marked shares?
-  for ( int i = 0; i < mountedSharesList()->size(); ++i )
+  for ( int i = 0; i < mountedSharesList().size(); ++i )
   {
     // We do not need to use slotShareUnmounted() here, too,
     // because slotShareMounted() will take care of everything
     // we need here.
-    slotShareMounted( mountedSharesList()->at( i ) );
+    slotShareMounted( mountedSharesList().at( i ) );
   }
 }
 
@@ -876,7 +876,7 @@ void Smb4KNetworkBrowserPart::slotWorkgroups( const QList<Smb4KWorkgroup *> &lis
     }
     else
     {
-      if ( hostsList()->isEmpty() )
+      if ( hostsList().isEmpty() )
       {
         // Clear the tree widget.
         m_widget->clear();
