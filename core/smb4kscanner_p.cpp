@@ -174,6 +174,19 @@ void LookupDomainsThread::processLookupDomains()
   }
 
   emit workgroups( m_workgroups );
+  
+  for ( int i = 0; i < m_workgroups.size(); ++i )
+  {
+    Smb4KHost host;
+    host.setHostName( m_workgroups.at( i ).masterBrowserName() );
+    host.setWorkgroupName( m_workgroups.at( i ).workgroupName() );
+    host.setIP( m_workgroups.at( i ).masterBrowserIP() );
+    
+    QList<Smb4KHost> masters;
+    masters << host;
+    
+    emit hosts( &m_workgroups[i], masters );
+  }
 }
 
 
@@ -223,6 +236,19 @@ void LookupDomainsThread::processQueryMaster()
   }
 
   emit workgroups( m_workgroups );
+  
+  for ( int i = 0; i < m_workgroups.size(); ++i )
+  {
+    Smb4KHost host;
+    host.setHostName( m_workgroups.at( i ).masterBrowserName() );
+    host.setWorkgroupName( m_workgroups.at( i ).workgroupName() );
+    host.setIP( m_workgroups.at( i ).masterBrowserIP() );
+    
+    QList<Smb4KHost> masters;
+    masters << host;
+    
+    emit hosts( &m_workgroups[i], masters );
+  }
 }
 
 
@@ -656,9 +682,9 @@ void LookupSharesThread::slotProcessFinished( int exitCode, QProcess::ExitStatus
       else
       {
         QStringList stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( "\n", QString::SkipEmptyParts );
-        Smb4KHost *host = static_cast<Smb4KHost *>( m_item );
         Smb4KShare share;
-
+        Smb4KHost *host = static_cast<Smb4KHost *>( m_item );
+        
         foreach ( const QString &line, stdout )
         {
           if ( line.trimmed().startsWith( "Enumerating" ) )
