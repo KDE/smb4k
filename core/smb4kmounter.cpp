@@ -606,13 +606,13 @@ void Smb4KMounter::import()
   // from the global list! You need to account for that in your application.
   bool found = false;
   
-  for ( int i = 0; i < mountedSharesList()->size(); ++i )
+  for ( int i = 0; i < mountedSharesList().size(); ++i )
   {
     for ( int j = 0; j < mounted_shares.size(); ++j )
     {
       // Check the mount point, since that is unique.
-      if ( QString::compare( mountedSharesList()->at( i )->canonicalPath(), mounted_shares.at( j ).canonicalPath() ) == 0 ||
-           QString::compare( mountedSharesList()->at( i )->path(), mounted_shares.at( j ).path() ) == 0 )
+      if ( QString::compare( mountedSharesList().at( i )->canonicalPath(), mounted_shares.at( j ).canonicalPath() ) == 0 ||
+           QString::compare( mountedSharesList().at( i )->path(), mounted_shares.at( j ).path() ) == 0 )
       {
         found = true;
         break;
@@ -625,9 +625,9 @@ void Smb4KMounter::import()
     
     if ( !found )
     {
-      mountedSharesList()->at( i )->setIsMounted( false );
-      emit unmounted( mountedSharesList()->at( i ) );
-      removeMountedShare( mountedSharesList()->at( i ) );
+      mountedSharesList()[i]->setIsMounted( false );
+      emit unmounted( mountedSharesList().at( i ) );
+      removeMountedShare( mountedSharesList().at( i ) );
     }
     else
     {
@@ -1523,7 +1523,7 @@ void Smb4KMounter::unmountAllShares()
   // 
   // here, because then the mounter will loop indefinitely when the
   // unmounting of a share fails.
-  QListIterator<Smb4KShare *> it( *mountedSharesList() );
+  QListIterator<Smb4KShare *> it( mountedSharesList() );
 
   while ( it.hasNext() )
   {
@@ -1558,15 +1558,15 @@ void Smb4KMounter::saveSharesForRemount()
 {
   if ( (Smb4KSettings::remountShares() && priv->aboutToQuit()) || priv->hardwareReason() )
   {
-    for ( int i = 0; i < mountedSharesList()->size(); ++i )
+    for ( int i = 0; i < mountedSharesList().size(); ++i )
     {
-      if ( !mountedSharesList()->at( i )->isForeign() )
+      if ( !mountedSharesList().at( i )->isForeign() )
       {
-        Smb4KSambaOptionsHandler::self()->addRemount( mountedSharesList()->at( i ) );
+        Smb4KSambaOptionsHandler::self()->addRemount( mountedSharesList().at( i ) );
       }
       else
       {
-        Smb4KSambaOptionsHandler::self()->removeRemount( mountedSharesList()->at( i ) );
+        Smb4KSambaOptionsHandler::self()->removeRemount( mountedSharesList().at( i ) );
       }
     }
   }
