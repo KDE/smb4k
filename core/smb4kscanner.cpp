@@ -1405,7 +1405,7 @@ void Smb4KScanner::insertHost( Smb4KHost *host )
 
       new_host->setIsMasterBrowser( true );  // pseudo master
 
-      emit workgroups( *workgroupsList() );
+      emit workgroups( workgroupsList() );
     }
     else
     {
@@ -1693,9 +1693,9 @@ void Smb4KScanner::slotWorkgroups( QList<Smb4KWorkgroup> &workgroups_list )
   // The global workgroup list only contains obsolete workgroups now.
   // Remove all hosts belonging to those obsolete workgroups from the
   // host list.
-  while ( !workgroupsList()->isEmpty() )
+  while ( !workgroupsList().isEmpty() )
   {
-    Smb4KWorkgroup *workgroup = workgroupsList()->first();
+    Smb4KWorkgroup *workgroup = workgroupsList().first();
 
     QList<Smb4KHost *> obsolete_hosts = workgroupMembers( workgroup );
     QMutableListIterator<Smb4KHost *> it( obsolete_hosts );
@@ -1717,12 +1717,12 @@ void Smb4KScanner::slotWorkgroups( QList<Smb4KWorkgroup> &workgroups_list )
 
   // Check that the workgroup master browsers have an IP address and
   // acquire it if not present.
-  for ( int i = 0; i < workgroupsList()->size(); ++i )
+  for ( int i = 0; i < workgroupsList().size(); ++i )
   {
-    if ( !workgroupsList()->at( i )->hasMasterBrowserIP() )
+    if ( !workgroupsList().at( i )->hasMasterBrowserIP() )
     {
       // The master browser is in the global host list. Find it.
-      Smb4KHost *master_browser = findHost( workgroupsList()->at( i )->masterBrowserName(), workgroupsList()->at( i )->workgroupName() );
+      Smb4KHost *master_browser = findHost( workgroupsList().at( i )->masterBrowserName(), workgroupsList().at( i )->workgroupName() );
 
       if ( master_browser )
       {
@@ -1735,7 +1735,7 @@ void Smb4KScanner::slotWorkgroups( QList<Smb4KWorkgroup> &workgroups_list )
           // Do nothing
         }
 
-        workgroupsList()->at( i )->setMasterBrowserIP( master_browser->ip() );
+        workgroupsList()[i]->setMasterBrowserIP( master_browser->ip() );
       }
       else
       {
@@ -1749,7 +1749,7 @@ void Smb4KScanner::slotWorkgroups( QList<Smb4KWorkgroup> &workgroups_list )
   }
 
   emit hostListChanged();
-  emit workgroups( *workgroupsList() );
+  emit workgroups( workgroupsList() );
 }
 
 
@@ -1846,7 +1846,7 @@ void Smb4KScanner::slotHosts( Smb4KWorkgroup *workgroup, QList<Smb4KHost> &hosts
     }
 
     // Lookup the IP addresses of the hosts.
-    Smb4KIPAddressScanner::self()->lookup( *hostsList() );
+    Smb4KIPAddressScanner::self()->lookup( hostsList() );
 
     // Get the list of workgroup members.
     QList<Smb4KHost *> workgroup_members = workgroupMembers( workgroup );
@@ -1867,7 +1867,7 @@ void Smb4KScanner::slotHosts( Smb4KWorkgroup *workgroup, QList<Smb4KHost> &hosts
     }
 
     // Emit the hosts list.
-    emit hosts( NULL, *hostsList() );
+    emit hosts( NULL, hostsList() );
     emit hostListChanged();
   }
 }
