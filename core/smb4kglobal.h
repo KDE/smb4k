@@ -59,7 +59,7 @@ namespace Smb4KGlobal
    *
    * @returns the global list of known workgroups.
    */
-  KDE_EXPORT QList<Smb4KWorkgroup *> *workgroupsList();
+  KDE_EXPORT const QList<Smb4KWorkgroup *> &workgroupsList();
 
   /**
    * This function returns the workgroup or domain that matches the name @p name or
@@ -107,7 +107,7 @@ namespace Smb4KGlobal
    *
    * @returns the global list of known hosts.
    */
-  KDE_EXPORT QList<Smb4KHost *> *hostsList();
+  KDE_EXPORT const QList<Smb4KHost *> &hostsList();
 
   /**
    * This function returns the host matching the name @p name or NULL if there is no
@@ -173,7 +173,7 @@ namespace Smb4KGlobal
    *
    * @returns the global list of known shares.
    */
-  KDE_EXPORT QList<Smb4KShare *> *sharesList();
+  KDE_EXPORT const QList<Smb4KShare *> &sharesList();
 
   /**
    * This function returns the share located at host @p host matching the name
@@ -243,7 +243,7 @@ namespace Smb4KGlobal
    *
    * @returns the global list of known mounted shares.
    */
-  KDE_EXPORT QList<Smb4KShare *> *mountedSharesList();
+  KDE_EXPORT const QList<Smb4KShare *> &mountedSharesList();
 
   /**
    * Find a mounted share by its path (i.e. mount point).

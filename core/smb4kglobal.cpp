@@ -46,9 +46,9 @@ int Smb4KGlobal::timerInterval()
 }
 
 
-QList<Smb4KWorkgroup *> *Smb4KGlobal::workgroupsList()
+const QList<Smb4KWorkgroup *> &Smb4KGlobal::workgroupsList()
 {
-  return &p.workgroupsList;
+  return p.workgroupsList;
 }
 
 
@@ -164,9 +164,9 @@ void Smb4KGlobal::clearWorkgroupsList()
 }
 
 
-QList<Smb4KHost *> *Smb4KGlobal::hostsList()
+const QList<Smb4KHost *> &Smb4KGlobal::hostsList()
 {
-  return &p.hostsList;
+  return p.hostsList;
 }
 
 
@@ -310,9 +310,9 @@ QList<Smb4KHost *> Smb4KGlobal::workgroupMembers( Smb4KWorkgroup *workgroup )
 }
 
 
-QList<Smb4KShare *> *Smb4KGlobal::sharesList()
+const QList<Smb4KShare *> &Smb4KGlobal::sharesList()
 {
-  return &p.sharesList;
+  return p.sharesList;
 }
 
 
@@ -455,9 +455,9 @@ QList<Smb4KShare *> Smb4KGlobal::sharedResources( Smb4KHost *host )
 }
 
 
-QList<Smb4KShare *> *Smb4KGlobal::mountedSharesList()
+const QList<Smb4KShare *> &Smb4KGlobal::mountedSharesList()
 {
-  return &p.mountedSharesList;
+  return p.mountedSharesList;
 }
 
 
