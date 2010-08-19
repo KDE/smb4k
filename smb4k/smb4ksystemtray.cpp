@@ -164,9 +164,9 @@ void Smb4KSystemTray::setupSharesMenu()
   // not delete all entries in the menu, but look for changes.
 
   // Get the list of mounted shares:
-  QList<Smb4KShare *> *shares_list = mountedSharesList();
+  const QList<Smb4KShare *> &shares_list = mountedSharesList();
 
-  if ( !shares_list->isEmpty() )
+  if ( !shares_list.isEmpty() )
   {
     // Enable the "Unmount All" action.
     actionCollection()->action( "st_unmount_all_action" )->setEnabled( true );
@@ -286,24 +286,23 @@ void Smb4KSystemTray::setupSharesMenu()
     // Smb4KShare items properly...
     QMap<QString, Smb4KShare> shares_map;
 
-    for ( int i = 0; i < shares_list->size(); ++i )
+    for ( int i = 0; i < shares_list.size(); ++i )
     {
-      if ( !shares_list->at( i )->isForeign() || Smb4KSettings::showAllShares() )
+      if ( !shares_list.at( i )->isForeign() || Smb4KSettings::showAllShares() )
       {
         // ATTENTION: If the user chose to see the mount points
         // rather than the share name, the mount point is the key,
         // otherwise it is the share name.
         if ( Smb4KSettings::showMountPoint() )
         {
-          shares_map.insert( QString::fromUtf8( shares_list->at( i )->canonicalPath() ),
-                             *shares_list->at( i ) );
+          shares_map.insert( QString::fromUtf8( shares_list.at( i )->canonicalPath() ),
+                             *shares_list.at( i ) );
 
           continue;
         }
         else
         {
-          shares_map.insert( shares_list->at( i )->unc(),
-                             *shares_list->at( i ) );
+          shares_map.insert( shares_list.at( i )->unc(), *shares_list.at( i ) );
 
           continue;
         }
@@ -987,7 +986,7 @@ void Smb4KSystemTray::slotShareActionTriggered( QAction *action )
 void Smb4KSystemTray::slotMountEvent()
 {
   // Set the status of the system tray icon.
-  if ( !mountedSharesList()->isEmpty() || !workgroupsList()->isEmpty() )
+  if ( !mountedSharesList().isEmpty() || !workgroupsList().isEmpty() )
   {
     setStatus( KStatusNotifierItem::Active );
   }
@@ -1004,7 +1003,7 @@ void Smb4KSystemTray::slotMountEvent()
 void Smb4KSystemTray::slotNetworkEvent()
 {
   // Set the status of the system tray icon.
-  if ( !mountedSharesList()->isEmpty() || !workgroupsList()->isEmpty() )
+  if ( !mountedSharesList().isEmpty() || !workgroupsList().isEmpty() )
   {
     setStatus( KStatusNotifierItem::Active );
   }
