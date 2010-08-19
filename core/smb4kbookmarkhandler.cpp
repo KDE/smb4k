@@ -508,37 +508,26 @@ const QList<Smb4KBookmark *> &Smb4KBookmarkHandler::getBookmarks()
 
 void Smb4KBookmarkHandler::update()
 {
-  // Search the list of hosts for new IP addresses:
+  // Get new IP addresses.
   for ( int i = 0; i < m_bookmarks.size(); ++i )
   {
-    for ( int j = 0; j < hostsList()->size(); ++j )
+    Smb4KHost *host = findHost( m_bookmarks.at( i )->hostName(), m_bookmarks.at( i )->workgroupName() );
+    
+    if ( host )
     {
-      if ( QString::compare( m_bookmarks.at( i )->workgroupName().toUpper(),
-                             hostsList()->at( j )->workgroupName().toUpper() ) != 0 )
+      if ( !host->ip().trimmed().isEmpty() &&
+           QString::compare( m_bookmarks.at( i )->hostIP(), host->ip() ) != 0 )
       {
-        // Continue, if the workgroup is not the same:
-        continue;
+        m_bookmarks[i]->setHostIP( host->ip() );
       }
       else
       {
-        if ( QString::compare( m_bookmarks.at( i )->hostName().toUpper(),
-                               hostsList()->at( j )->hostName().toUpper() ) != 0 )
-        {
-          // Continue if the host name is not the same:
-          continue;
-        }
-        else
-        {
-          // Set the IP address if it changed:
-          if ( !hostsList()->at( j )->ip().trimmed().isEmpty() &&
-               QString::compare( m_bookmarks.at( i )->hostIP(), hostsList()->at( j )->ip() ) != 0 )
-          {
-            m_bookmarks.at( i )->setHostIP( hostsList()->at( j )->ip() );
-          }
-
-          break;
-        }
+        // Do nothing
       }
+    }
+    else
+    {
+      // Do nothing
     }
   }
 }
