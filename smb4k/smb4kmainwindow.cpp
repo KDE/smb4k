@@ -562,11 +562,11 @@ void Smb4KMainWindow::setupMountIndicator()
 {
   int number = 0;
                               
-  if ( !mountedSharesList()->isEmpty() )
+  if ( !mountedSharesList().isEmpty() )
   {
-    for ( int i = 0; i < mountedSharesList()->size(); ++i )
+    for ( int i = 0; i < mountedSharesList().size(); ++i )
     {
-      if ( !mountedSharesList()->at( i )->isForeign() || Smb4KSettings::showAllShares() )
+      if ( !mountedSharesList().at( i )->isForeign() || Smb4KSettings::showAllShares() )
       {
         number++;
         continue;
