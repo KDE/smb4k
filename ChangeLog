@@ -256,6 +256,8 @@ Smb4K SVN_HEAD (????-??-??):
     access.
   + All functions that add or remove items to the global lists return a boolean.
   + Removed all replaceXXX() functions.
+  + All functions returning one of the global lists return constant references
+    instead of pointers.
 - Revised Smb4KSudoWriterInterface class:
   + Removed failed() signal.
   + Removed finished() signal.
