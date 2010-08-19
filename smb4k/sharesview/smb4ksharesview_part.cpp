@@ -584,9 +584,9 @@ void Smb4KSharesViewPart::customEvent( QEvent *e )
         }
       }
       
-      for ( int i = 0; i < mountedSharesList()->size(); ++i )
+      for ( int i = 0; i < mountedSharesList().size(); ++i )
       {
-        slotShareMounted( mountedSharesList()->at( i ) );
+        slotShareMounted( mountedSharesList().at( i ) );
       }
 
       break;
