@@ -44,20 +44,6 @@ Comment[sv]=Användaren blir underrättad om en åtgärd
 Comment[uk]=Користувачеві повідомлено про дію
 Comment[x-test]=xxThe user is notified about an actionxx
 
-[Context/Sorry]
-Name=Sorry
-Name[pt]=Desculpe
-Name[pt_BR]=Desculpe
-Name[sv]=Tyvärr
-Name[uk]=Вибачення
-Name[x-test]=xxSorryxx
-Comment=A sorry message is shown to the user
-Comment[pt]=Foi mostrado um pedido de desculpas ao utilizador
-Comment[pt_BR]=Uma mensagem de desculpas é exibida ao usuário
-Comment[sv]=En tyvärr-meddelande visas för användaren
-Comment[uk]=Користувачеві показано повідомлення з вибаченням
-Comment[x-test]=xxA sorry message is shown to the userxx
-
 [Context/Warning]
 Name=Warning
 Name[pt]=Aviso
