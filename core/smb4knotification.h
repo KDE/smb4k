@@ -1,5 +1,5 @@
 /***************************************************************************
-    smb4knotification  -  This class provides notifications for Smb4K.
+    smb4knotification  -  This class provides notifications for Smb4K.static_cast<Smb4KHost *>( m_item )
                              -------------------
     begin                : Son Jun 27 2010
     copyright            : (C) 2010 by Alexander Reinholdt
@@ -39,6 +39,12 @@
 
 // application specific includes
 #include <smb4kshare.h>
+
+// forward declarations
+class Smb4KBookmark;
+class Smb4KWorkgroup;
+class Smb4KHost;
+
 
 class KDE_EXPORT Smb4KNotification : public QObject
 {
@@ -122,6 +128,22 @@ class KDE_EXPORT Smb4KNotification : public QObject
      */
     void kdesudoNotFound();
     
+    /**
+     * Tell the user that the mimetype is not supported and that he/she 
+     * should convert the file.
+     * 
+     * @param mimetype  The mimetype
+     */
+    void mimetypeNotSupported( const QString &mimetype );
+    
+    /**
+     * Tell the user that the label he/she chose for the bookmark is already 
+     * being used and that it will be changed automatically.
+     * 
+     * @param bookmark  The bookmark object
+     */
+    void bookmarkLabelInUse( Smb4KBookmark *bookmark );
+    
     //
     // Errors
     //
@@ -133,6 +155,50 @@ class KDE_EXPORT Smb4KNotification : public QObject
      * @param err_msg   The error message
      */
     void retrievingDomainsFailed( const QString &err_msg );
+    
+    /**
+     * This error message is shown if the scanning of the broadcast 
+     * areas failed.
+     *
+     * @param err_msg   The error message
+     */
+    void scanningBroadcastAreaFailed( const QString &err_msg );
+    
+    /**
+     * This error message is shown if the list of servers could not 
+     * be retrieved.
+     * 
+     * @param err_msg   The error message
+     */
+    void retrievingServersFailed( Smb4KWorkgroup *workgroup, const QString &err_msg );
+    
+    /**
+     * This error message is shown if the list of shares could not
+     * be retrieved.
+     * 
+     * @param host      The host object
+     * 
+     * @param err_msg   The error message
+     */
+    void retrievingSharesFailed( Smb4KHost *host, const QString &err_msg );
+    
+    /**
+     * This error message is shown if the preview could not be
+     * retrieved.
+     * 
+     * @param err_meg   The error message
+     */
+    void retrievingPreviewFailed( Smb4KShare *share, const QString &err_msg );
+    
+    /**
+     * This error message is shown if the mounting of a share failed.
+     * 
+     * @param share     The share that was to be mounted
+     * 
+     * @param err_msg   The error message
+     */
+    void mountingFailed( Smb4KShare *share, const QString &err_msg );
+    
     
   protected slots:
     /**

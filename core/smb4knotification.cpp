@@ -33,8 +33,10 @@
 
 // application specific includes
 #include <smb4knotification.h>
-#include <smb4kshare.h>
 #include <smb4ksettings.h>
+#include <smb4kbookmark.h>
+#include <smb4kworkgroup.h>
+#include <smb4khost.h>
 
 
 Smb4KNotification::Smb4KNotification( QObject *parent )
@@ -177,7 +179,29 @@ void Smb4KNotification::sudoNotFound()
 void Smb4KNotification::kdesudoNotFound()
 {
   KNotification *notification = KNotification::event( "kdesudoNotFound",
-                                i18n( "The program <b>kdesudo</b> could not be found. Smb4K will continue with using <b>sudo</b> instead." ),
+                                i18n( "The program <b>kdesudo</b> could not be found. "
+                                      "Smb4K will continue with using <b>sudo</b> instead." ),
+                                KIconLoader::global()->loadIcon( "dialog-warning", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
+  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+}
+
+
+void Smb4KNotification::mimetypeNotSupported( const QString &mt )
+{
+  KNotification *notification = KNotification::event( "mimetypeNotSupported",
+                                i18n( "The mimetype <b>%1</b> is not supported for printing. "
+                                      "Please convert the file to PDF or Postscript and try again." ).arg( mt ),
+                                KIconLoader::global()->loadIcon( "dialog-warning", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
+  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+}
+
+
+void Smb4KNotification::bookmarkLabelInUse( Smb4KBookmark *bookmark )
+{
+  KNotification *notification = KNotification::event( "bookmarkLabelInUse",
+                                i18n( "The label <b>%1</b> of the bookmark for the share <b>%2</b> "
+                                      "is already being used and will automatically be renamed." )
+                                .arg( bookmark->label() ).arg( bookmark->unc() ),
                                 KIconLoader::global()->loadIcon( "dialog-warning", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
   connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
 }
@@ -194,14 +218,144 @@ void Smb4KNotification::retrievingDomainsFailed( const QString &err_msg )
   
   KNotification *notification = new KNotification( "retrievingDomainsFailed", KNotification::Persistent );
   notification->setText( i18n( "Retrieving the list of domains and workgroups failed." ) );
-  notification->setActions( QStringList( i18n( "Error Message" ) ) );
   notification->setPixmap( KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
   
-  connect( notification, SIGNAL( activated( unsigned int ) ), this, SLOT( slotShowErrorMessage() ) );
+  if ( !m_err_msg.isEmpty() )
+  {
+    notification->setActions( QStringList( i18n( "Error Message" ) ) );
+    connect( notification, SIGNAL( activated( unsigned int ) ), this, SLOT( slotShowErrorMessage() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
+  
   connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
   
   notification->sendEvent();
 }
+
+
+void Smb4KNotification::scanningBroadcastAreaFailed( const QString &err_msg )
+{
+  m_err_msg = err_msg.split( "\n" );
+  
+  KNotification *notification = new KNotification( "scanningBroadcastAreaFailed", KNotification::Persistent );
+  notification->setText( i18n( "Scanning the defined broadcast area(s) failed." ) );
+  notification->setPixmap( KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
+  
+  if ( !m_err_msg.isEmpty() )
+  {
+    notification->setActions( QStringList( i18n( "Error Message" ) ) );
+    connect( notification, SIGNAL( activated( unsigned int ) ), this, SLOT( slotShowErrorMessage() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  
+  notification->sendEvent(); 
+}
+
+
+void Smb4KNotification::retrievingServersFailed( Smb4KWorkgroup* workgroup, const QString &err_msg )
+{
+  m_err_msg = err_msg.split( "\n" );
+  
+  KNotification *notification = new KNotification( "retrievingServersFailed", KNotification::Persistent );
+  notification->setText( i18n( "Retrieving the list of servers from workgroup <b>%1</b> failed." )
+                         .arg( workgroup->workgroupName() ) );
+  notification->setPixmap( KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
+  
+  if ( !m_err_msg.isEmpty() )
+  {
+    notification->setActions( QStringList( i18n( "Error Message" ) ) );
+    connect( notification, SIGNAL( activated( unsigned int ) ), this, SLOT( slotShowErrorMessage() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  
+  notification->sendEvent();  
+}
+
+
+void Smb4KNotification::retrievingSharesFailed( Smb4KHost *host, const QString &err_msg )
+{
+  m_err_msg = err_msg.split( "\n" );
+  
+  KNotification *notification = new KNotification( "retrievingSharesFailed", KNotification::Persistent );
+  notification->setText( i18n( "Retrieving the list of shares from <b>%1</b> failed." ).arg( host->hostName() ) );
+  notification->setPixmap( KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
+  
+  if ( !m_err_msg.isEmpty() )
+  {
+    notification->setActions( QStringList( i18n( "Error Message" ) ) );
+    connect( notification, SIGNAL( activated( unsigned int ) ), this, SLOT( slotShowErrorMessage() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  
+  notification->sendEvent();  
+}
+
+
+void Smb4KNotification::retrievingPreviewFailed( Smb4KShare *share, const QString &err_msg )
+{
+  m_err_msg = err_msg.split( "\n" );
+  
+  KNotification *notification = new KNotification( "retrievingPreviewFailed", KNotification::Persistent );
+  notification->setText( i18n( "Retrieving the preview of <b>%1</b> failed." ).arg( share->unc() ) );
+  notification->setPixmap( KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
+  
+  if ( !m_err_msg.isEmpty() )
+  {
+    notification->setActions( QStringList( i18n( "Error Message" ) ) );
+    connect( notification, SIGNAL( activated( unsigned int ) ), this, SLOT( slotShowErrorMessage() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  
+  notification->sendEvent();  
+}
+
+
+void Smb4KNotification::mountingFailed( Smb4KShare *share, const QString &err_msg )
+{
+  m_err_msg = err_msg.split( "\n" );
+  
+  KNotification *notification = new KNotification( "mountingFailed", KNotification::Persistent );
+  notification->setText( i18n( "Mounting the share <b>%1</b> failed." ).arg( share->unc() ) );
+  notification->setPixmap( KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
+  
+  if ( !m_err_msg.isEmpty() )
+  {
+    notification->setActions( QStringList( i18n( "Error Message" ) ) );
+    connect( notification, SIGNAL( activated( unsigned int ) ), this, SLOT( slotShowErrorMessage() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  
+  notification->sendEvent();  
+}
+
 
 
 /////////////////////////////////////////////////////////////////////////////
