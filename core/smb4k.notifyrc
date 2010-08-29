@@ -200,6 +200,18 @@ Comment[x-test]=xxThe program kdesudo could not be foundxx
 Contexts=Warning
 Action=Popup
 
+[Event/mimetypeNotSupported]
+Name=Mimetype not supported
+Comment=The mimetype of the file is not supported for printing
+Contexts=Warning
+Action=Popup
+
+[Event/bookmarkLabelInUse]
+Name=Bookmark label in use
+Comment=The label of the bookmark is already being used
+Contexts=Warning
+Action=Popup
+
 [Event/retrievingDomainsFailed]
 Name=Retrieving domains failed
 Name[pt]=Não foi possível obter os domínios
@@ -213,6 +225,41 @@ Comment[pt_BR]=A lista de domínios não pode ser obtida
 Comment[sv]=Listan med domäner kunde inte hämtas
 Comment[uk]=Не вдалося отримати список доменів
 Comment[x-test]=xxThe list of domains could not be retrievedxx
+Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
+Action=Popup|Sound
+
+[Event/scanningBroadcastAreaFailed]
+Name=Scanning broadcast area(s) failed
+Comment=The scanning of the defined broadcast area(s) failed
+Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
+Action=Popup|Sound
+
+[Event/retrievingServersFailed]
+Name=Retrieving servers failed
+Comment=The list of servers could not be retrieved
+Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
+Action=Popup|Sound
+
+[Event/retrievingSharesFailed]
+Name=Retrieving shares failed
+Comment=The list of shares could not be retrieved
+Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
+Action=Popup|Sound
+
+[Event/retrievingPreviewFailed]
+Name=Retrieving preview failed
+Comment=The preview could not be retrieved
+Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
+Action=Popup|Sound
+
+[Event/mountingFailed]
+Name=Mounting failed
+Comment=Mounting a share failed
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
