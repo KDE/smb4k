@@ -30,6 +30,7 @@
 #include <smb4kpreviewer_p.h>
 #include <smb4kauthinfo.h>
 #include <smb4kcoremessage.h>
+#include <smb4knotification.h>
 
 
 PreviewThread::PreviewThread( Smb4KPreviewItem *item, QObject *parent )
@@ -149,7 +150,8 @@ void PreviewThread::slotProcessError()
       }
       else
       {
-        Smb4KCoreMessage::error( ERROR_GETTING_PREVIEW, m_item->location(), stderr );
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->retrievingPreviewFailed( m_item->share(), stderr );
       }
     }
   }
