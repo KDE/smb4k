@@ -52,6 +52,7 @@
 #include <smb4khost.h>
 #include <smb4kshare.h>
 #include <smb4ksettings.h>
+#include <smb4knotification.h>
 
 using namespace Smb4KGlobal;
 
@@ -280,9 +281,8 @@ void Smb4KBookmarkHandler::writeBookmarkList( const QList<Smb4KBookmark *> &list
                (QString::compare( result->unc().toUpper(), m_bookmarks.at( i )->unc().toUpper() ) != 0 ||
                 QString::compare( result->workgroupName().toUpper(), m_bookmarks.at( i )->workgroupName().toUpper() ) != 0) )
           {
-            Smb4KCoreMessage::information( INFO_BOOKMARK_LABEL_IN_USE,
-                                           m_bookmarks.at( i )->label(),
-                                           m_bookmarks.at( i )->unc() );
+            Smb4KNotification *notification = new Smb4KNotification();
+            notification->bookmarkLabelInUse( m_bookmarks.at( i ) );
 
             m_bookmarks.at( i )->setLabel( QString( "%1 (%2)" ).arg( m_bookmarks.at( i )->label() ).arg( serial_number++ ) );
           }
