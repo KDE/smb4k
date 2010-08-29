@@ -264,6 +264,7 @@ Smb4K SVN_HEAD (????-??-??):
   + addUser() now returns a boolean.
   + removeUser() now returns a boolean.
 - Added Smb4KNotification class. It shows notifications to the user.
+- Removed Smb4KCoreMessage class in favor of Smb4KNotification.
 - Revised synchronization dialog:
   + Adjusted code so that the new features of the synchronizer can be used.
   + The dialog does not close when you press "Cancel" during a synchronization.
