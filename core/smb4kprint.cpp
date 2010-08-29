@@ -36,7 +36,6 @@
 // application specific includes
 #include <smb4kprint.h>
 #include <smb4kdefs.h>
-#include <smb4kcoremessage.h>
 #include <smb4kglobal.h>
 #include <smb4kauthinfo.h>
 #include <smb4ksettings.h>
@@ -44,6 +43,9 @@
 #include <smb4kprint_p.h>
 #include <smb4kwalletmanager.h>
 #include <smb4kprintinfo.h>
+#include <smb4knotification.h>
+
+#include <smb4kcoremessage.h>
 
 using namespace Smb4KGlobal;
 
@@ -173,7 +175,8 @@ void Smb4KPrint::print( Smb4KPrintInfo *printInfo )
     }
     else
     {
-      Smb4KCoreMessage::information( INFO_MIMETYPE_NOT_SUPPORTED, file_item.mimetype(), QString() );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->mimetypeNotSupported( file_item.mimetype() );
       return;
     }
 
