@@ -36,6 +36,7 @@
 #include <smb4kmounter_p.h>
 #include <smb4kauthinfo.h>
 #include <smb4kcoremessage.h>
+#include <smb4knotification.h>
 
 
 BasicMountThread::BasicMountThread( Type type, Smb4KShare *share, QObject *parent )
@@ -128,7 +129,8 @@ void MountThread::slotProcessError()
 #endif
     else
     {
-      Smb4KCoreMessage::error( ERROR_MOUNTING_SHARE, m_share.unc(), stdout );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->mountingFailed( &m_share, stdout ); 
     }
   }
   else
