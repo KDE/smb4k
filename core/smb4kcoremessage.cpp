@@ -58,76 +58,24 @@ void Smb4KCoreMessage::error( int code, const QString &text, const QString &deta
 
   switch ( code )
   {
-    case ERROR_PERFORMING_IPSCAN:
-    {
-      if ( details.trimmed().isEmpty() )
-      {
-        KMessageBox::error( parent, i18n( "<qt><p>The list of registered IP addresses within the given broadcast areas could not be retrieved.</p><p>Detailed information cannot be provided because there was no error message.</p></qt>" ) );
-      }
-      else
-      {
-        KMessageBox::detailedError( parent, i18n( "<qt><p>The list of registered IP addresses within the given broadcast areas could not be retrieved.</p><p>Read the error message under \"Details\" to find out more.</p></qt>" ), details );
-      }
-
-      break;
-    }
-    case ERROR_GETTING_MEMBERS:
-    {
-      if ( details.trimmed().isEmpty() )
-      {
-        KMessageBox::error( parent, i18n( "<qt><p>The list of servers could not be retrieved.</p><p>Detailed information cannot be provided because there was no error message.</p></qt>" ) );
-      }
-      else
-      {
-        KMessageBox::detailedError( parent, i18n( "<qt><p>The list of servers could not be retrieved.</p><p>Read the error message under \"Details\" to find out more.</p></qt>" ), details );
-      }
-
-      break;
-    }
-    case ERROR_GETTING_SHARES:
-    {
-      if ( details.trimmed().isEmpty() )
-      {
-        KMessageBox::error( parent, i18n( "<qt><p>The list of shares could not be retrieved.</p><p>Detailed information cannot be provided because there was no error message.</p></qt>" ) );
-      }
-      else
-      {
-        KMessageBox::detailedError( parent, i18n( "<qt><p>The list of shares could not be retrieved.</p><p>Read the error message under \"Details\" to find out more.</p></qt>" ), details );
-      }
-
-      break;
-    }
-    case ERROR_GETTING_PREVIEW:
-    {
-      if ( details.trimmed().isEmpty() )
-      {
-        KMessageBox::error( parent, i18n( "<qt><p>The preview could not be compiled.</p><p>Detailed information cannot be provided because there was no error message.</p></qt>" ) );
-      }
-      else
-      {
-        KMessageBox::detailedError( parent, i18n( "<qt><p>The preview could not be compiled.</p><p>Read the error message under \"Details\" to find out more.</p></qt>" ), details );
-      }
-
-      break;
-    }
     case ERROR_UNMOUNTING_NOT_ALLOWED:
     {
       KMessageBox::error( parent, i18n( "<qt>You are not allowed to unmount this share. It is owned by another user.</qt>" ) );
 
       break;
     }
-    case ERROR_MOUNTING_SHARE:
-    {
-      if ( details.trimmed().isEmpty() )
-      {
-        KMessageBox::error( parent, i18n( "<qt><p>The share %1 could not be mounted.</p><p>Detailed information cannot be provided because there was no error message.</p></qt>", text ) );
-      }
-      else {
-        KMessageBox::detailedError( parent, i18n( "<qt><p>The share %1 could not be mounted.</p><p>Read the error message under \"Details\" to find out more.</p></qt>", text ), details );
-      }
-
-      break;
-    }
+//     case ERROR_MOUNTING_SHARE:
+//     {
+//       if ( details.trimmed().isEmpty() )
+//       {
+//         KMessageBox::error( parent, i18n( "<qt><p>The share %1 could not be mounted.</p><p>Detailed information cannot be provided because there was no error message.</p></qt>", text ) );
+//       }
+//       else {
+//         KMessageBox::detailedError( parent, i18n( "<qt><p>The share %1 could not be mounted.</p><p>Read the error message under \"Details\" to find out more.</p></qt>", text ), details );
+//       }
+// 
+//       break;
+//     }
     case ERROR_UNMOUNTING_SHARE:
     {
       if ( details.trimmed().isEmpty() )
@@ -172,12 +120,6 @@ void Smb4KCoreMessage::error( int code, const QString &text, const QString &deta
 
       break;
     }
-    case ERROR_MOUNTPOINT_EMPTY:
-    {
-      KMessageBox::error( parent, i18n( "<qt>The share could not be unmounted, because the mount point string was empty.</qt>" ) );
-
-      break;
-    }
     case ERROR_FEATURE_NOT_ENABLED:
     {
       KMessageBox::error( parent, i18n( "<qt>This feature has not been enabled.</qt>" ) );
@@ -199,19 +141,6 @@ void Smb4KCoreMessage::error( int code, const QString &text, const QString &deta
       else
       {
         KMessageBox::detailedError( parent, i18n( "<qt><p>An error occurred while writing to the sudoers file.</p><p>Read the error message under \"Details\" to find out more.</p></qt>" ), details );
-      }
-
-      break;
-    }
-    case ERROR_IMPORTING_SHARES:
-    {
-      if ( details.trimmed().isEmpty() )
-      {
-        KMessageBox::error( parent, i18n( "<qt><p>The list of mounted shares could not be imported.</p><p>Detailed information cannot be provided because there was no error message.</p></qt>" ) );
-      }
-      else
-      {
-        KMessageBox::detailedError( parent, i18n( "<qt><p>The list of mounted shares could not be imported.</p><p>Read the error message under \"Details\" to find out more.</p></qt>" ), details );
       }
 
       break;
@@ -284,12 +213,6 @@ void Smb4KCoreMessage::error( int code, const QString &text, const QString &deta
       {
         KMessageBox::detailedError( parent, i18n( "<qt><p>The file \"%1\" could not be opened.</p><p>Read the error message under \"Details\" to find out more.</p></qt>", text ), details );
       }
-
-      break;
-    }
-    case ERROR_NET_COMMAND:
-    {
-      KMessageBox::error( parent, i18n( "<qt>The list of arguments for the \"net\" command could not be assembled.</qt>" ) );
 
       break;
     }
@@ -436,53 +359,5 @@ int Smb4KCoreMessage::warning( int code, const QString &/*text*/, const QString 
   }
 
   return result;
-}
-
-
-void Smb4KCoreMessage::information( int code, const QString &text, const QString &details )
-{
-  QWidget *parent = 0;
-
-  if ( kapp )
-  {
-    if ( kapp->activeWindow() )
-    {
-      parent = kapp->activeWindow();
-    }
-    else
-    {
-      parent = kapp->desktop();
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  switch ( code )
-  {
-    case INFO_MIMETYPE_NOT_SUPPORTED:
-    {
-      KMessageBox::information( parent, i18n( "<qt>The mimetype \"%1\" is not supported. Please convert the file to PostScript or PDF.</qt>", text ) );
-
-      break;
-    }
-//     case INFO_DISABLE_SUID_FEATURE:
-//     {
-//       KMessageBox::information( parent, i18n( "<qt>You previously chose to use \"%1\", but now it is missing on your system. Smb4K will disable this feature.</qt>", text ) );
-// 
-//       break;
-//     }
-    case INFO_BOOKMARK_LABEL_IN_USE:
-    {
-      KMessageBox::information( parent, i18n( "<qt>The label \"%1\" is used more than once. It will automatically be renamed for bookmark \"%2\" to avoid confusion.</qt>", text, details ) );
-
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
 }
 

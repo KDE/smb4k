@@ -42,20 +42,10 @@
 // Error codes:
 //
 
-// (1) Network related errors.
-#define ERROR_PERFORMING_IPSCAN             101
-#define ERROR_GETTING_MEMBERS               102
-#define ERROR_GETTING_SHARES                103
-#define ERROR_GETTING_PREVIEW               104
-#define ERROR_NET_COMMAND                   105
-
 // (2) Errors involving mounting, unmounting
 // and importing shares.
-#define ERROR_MOUNTING_SHARE                106
 #define ERROR_UNMOUNTING_SHARE              107
 #define ERROR_UNMOUNTING_NOT_ALLOWED        108
-#define ERROR_MOUNTPOINT_EMPTY              109
-#define ERROR_IMPORTING_SHARES              110
 
 // (3) Errors that are connected to printing
 #define ERROR_PRINTING                      111
@@ -95,19 +85,6 @@
 #define ERROR_GETTING_HOSTNAME              125
 #define ERROR_FEATURE_NOT_ENABLED           126
 #define ERROR_XML_ERROR                     127
-
-//
-// Warning codes:
-//
-/* None defined yet. use 200 ff. for that */
-
-//
-// Information codes:
-//
-
-#define INFO_MIMETYPE_NOT_SUPPORTED         300
-// #define INFO_DISABLE_SUID_FEATURE           301
-#define INFO_BOOKMARK_LABEL_IN_USE          302
 
 /**
  * This class provides messages for use with the core classes of Smb4K.
@@ -170,23 +147,6 @@ class KDE_EXPORT Smb4KCoreMessage
     static int warning( int code,
                         const QString &text = QString(),
                         const QString &details = QString() );
-
-    /**
-     * Show an information.
-     *
-     * @param code        The code as defined in smb4kdefs.h
-     *
-     * @param text        Short text which will be included in the message that's shown
-     *                    to the user. Normally, a file name or similar is entered here.
-     *                    May be left blank if you do not need to fill text into the error
-     *                    message. Please note, that this text is not used to show details.
-     *
-     * @param details     The text passed here is used to show details. Please note, that
-     *                    it depends on the kind of error if it is indeed shown.
-     */
-    static void information( int code,
-                             const QString &text = QString(),
-                             const QString &details = QString() );
 };
 
 #endif
