@@ -175,6 +175,8 @@ void LookupDomainsThread::processLookupDomains()
 
   emit workgroups( m_workgroups );
   
+  
+  
   for ( int i = 0; i < m_workgroups.size(); ++i )
   {
     Smb4KHost host;
@@ -375,7 +377,8 @@ void LookupDomainsThread::slotProcessError()
       }
       case LookupDomainsThread::ScanBroadcastAreas:
       {
-        Smb4KCoreMessage::error( ERROR_PERFORMING_IPSCAN, QString(), stderr );
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->scanningBroadcastAreaFailed( stderr );
         break;
       }
       default:
@@ -487,7 +490,8 @@ void LookupMembersThread::slotProcessError()
     else
     {
       // Notify the user that an error occurred.
-      Smb4KCoreMessage::error( ERROR_GETTING_MEMBERS, QString(), stderr );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->retrievingServersFailed( static_cast<Smb4KWorkgroup *>( m_item ), stderr );
     }
   }
   else
@@ -640,7 +644,8 @@ void LookupSharesThread::slotProcessError()
     {
       if ( !stderr.contains( "creating lame", Qt::CaseSensitive ) )
       {
-        Smb4KCoreMessage::error( ERROR_GETTING_SHARES, QString(), stderr );
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->retrievingSharesFailed( static_cast<Smb4KHost *>( m_item ), stderr );
       }
       else
       {
