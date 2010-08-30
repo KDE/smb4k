@@ -202,13 +202,17 @@ Action=Popup
 
 [Event/mimetypeNotSupported]
 Name=Mimetype not supported
+Name[x-test]=xxMimetype not supportedxx
 Comment=The mimetype of the file is not supported for printing
+Comment[x-test]=xxThe mimetype of the file is not supported for printingxx
 Contexts=Warning
 Action=Popup
 
 [Event/bookmarkLabelInUse]
 Name=Bookmark label in use
+Name[x-test]=xxBookmark label in usexx
 Comment=The label of the bookmark is already being used
+Comment[x-test]=xxThe label of the bookmark is already being usedxx
 Contexts=Warning
 Action=Popup
 
@@ -231,35 +235,45 @@ Action=Popup|Sound
 
 [Event/scanningBroadcastAreaFailed]
 Name=Scanning broadcast area(s) failed
+Name[x-test]=xxScanning broadcast area(s) failedxx
 Comment=The scanning of the defined broadcast area(s) failed
+Comment[x-test]=xxThe scanning of the defined broadcast area(s) failedxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/retrievingServersFailed]
 Name=Retrieving servers failed
+Name[x-test]=xxRetrieving servers failedxx
 Comment=The list of servers could not be retrieved
+Comment[x-test]=xxThe list of servers could not be retrievedxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/retrievingSharesFailed]
 Name=Retrieving shares failed
+Name[x-test]=xxRetrieving shares failedxx
 Comment=The list of shares could not be retrieved
+Comment[x-test]=xxThe list of shares could not be retrievedxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/retrievingPreviewFailed]
 Name=Retrieving preview failed
+Name[x-test]=xxRetrieving preview failedxx
 Comment=The preview could not be retrieved
+Comment[x-test]=xxThe preview could not be retrievedxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/mountingFailed]
 Name=Mounting failed
+Name[x-test]=xxMounting failedxx
 Comment=Mounting a share failed
+Comment[x-test]=xxMounting a share failedxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
