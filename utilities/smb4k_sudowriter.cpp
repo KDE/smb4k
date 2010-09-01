@@ -58,7 +58,7 @@ static const char description[] =
   I18N_NOOP( "This program writes to the sudoers file." );
 
 static const char authors[] =
-  I18N_NOOP( "(c) 2008, Alexander Reinholdt" );
+  I18N_NOOP( "(C) 2008-2010, Alexander Reinholdt" );
 
 int createLockFile()
 {
@@ -202,14 +202,14 @@ const QByteArray findFile( const QString &filename )
     }
   }
 
-  return canonical_path.toLocal8Bit();
+  return canonical_path.toUtf8();
 }
 
 bool checkUsers( const QStringList &list )
 {
   for ( int i = 0; i < list.size(); ++i )
   {
-    if ( getpwnam( list.at( i ).toLocal8Bit() ) == NULL )
+    if ( getpwnam( list.at( i ).toUtf8() ) == NULL )
     {
       return false;
     }
@@ -304,7 +304,7 @@ int main ( int argc, char *argv[] )
   KAboutData aboutData( "smb4k_sudowriter",
                         "smb4k",
                         ki18n( "smb4k_sudowriter" ),
-                        "0.2",
+                        "0.3",
                         ki18n( description ),
                         KAboutData::License_GPL_V2,
                         ki18n( authors ),
@@ -452,11 +452,22 @@ int main ( int argc, char *argv[] )
   QFile file( path );
 
   // Save the original permissions for later.
-  QFile::Permissions perms = file.permissions();
+  const QFile::Permissions perms = file.permissions();
 
   // Temporarily give the *owner* the permission to
   // write to the file.
-  file.setPermissions( QFile::WriteOwner | QFile::ReadOwner );
+  if ( !file.setPermissions( QFile::WriteOwner | QFile::ReadOwner ) )
+  {
+    cerr << argv[0] << ": " << I18N_NOOP( "Could not change permissions of sudoers file." ) << endl;
+    cerr << argv[0] << ": " << I18N_NOOP( "The sudoers file will not be changed." ) << endl;
+    cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+    removeLockFile();
+    exit( EXIT_FAILURE );
+  }
+  else
+  {
+    // Do nothing
+  }
 
   QStringList contents;
 
@@ -473,12 +484,32 @@ int main ( int argc, char *argv[] )
     }
 
     file.close();
-    file.setPermissions( perms );
+    
+    if ( !file.setPermissions( perms ) )
+    {
+      cerr << argv[0] << ": " << I18N_NOOP( "FATAL: Could not restore initial permissions of sudoers file." ) << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Please inform your system administrator." ) << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+      removeLockFile();
+      exit( EXIT_FAILURE );
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
-    file.setPermissions( perms );
-    cerr << argv[0] << ": " << file.errorString().toLocal8Bit().data() << endl;
+    if ( !file.setPermissions( perms ) )
+    {
+      cerr << argv[0] << ": " << I18N_NOOP( "FATAL: Could not restore initial permissions of sudoers file." ) << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Please inform your system administrator." ) << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+    }
+    else
+    {
+      cerr << argv[0] << ": " << file.errorString().toUtf8().data() << endl;
+    }
     removeLockFile();
     exit( EXIT_FAILURE );
   }
@@ -679,7 +710,18 @@ int main ( int argc, char *argv[] )
   {
     // Temporarily give the *owner* the permission to
     // write to the file.
-    file.setPermissions( QFile::WriteOwner | QFile::ReadOwner );
+    if ( !file.setPermissions( QFile::WriteOwner | QFile::ReadOwner ) )
+    {
+      cerr << argv[0] << ": " << I18N_NOOP( "Could not change permissions of sudoers file." ) << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "The sudoers file will not be changed." ) << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+      removeLockFile();
+      exit( EXIT_FAILURE );
+    }
+    else
+    {
+      // Do nothing
+    }
 
     if ( file.open( QIODevice::WriteOnly | QIODevice::Text ) )
     {
@@ -691,12 +733,32 @@ int main ( int argc, char *argv[] )
       ts << contents.join( "\n" ) << endl;
 
       file.close();
-      file.setPermissions( perms );
+      
+      if ( !file.setPermissions( perms ) )
+      {
+        cerr << argv[0] << ": " << I18N_NOOP( "FATAL: Could not restore initial permissions of sudoers file." ) << endl;
+        cerr << argv[0] << ": " << I18N_NOOP( "Please inform your system administrator." ) << endl;
+        cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+        removeLockFile();
+        exit( EXIT_FAILURE );
+      }
+      else
+      {
+        // Do nothing
+      }
     }
     else
     {
-      file.setPermissions( perms );
-      cerr << argv[0] << ": " << file.errorString().toLocal8Bit().data() << endl;
+      if ( !file.setPermissions( perms ) )
+      {
+        cerr << argv[0] << ": " << I18N_NOOP( "FATAL: Could not restore initial permissions of sudoers file." ) << endl;
+        cerr << argv[0] << ": " << I18N_NOOP( "Please inform your system administrator." ) << endl;
+        cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+      }
+      else
+      {
+        cerr << argv[0] << ": " << file.errorString().toUtf8().data() << endl;
+      }
       removeLockFile();
       exit( EXIT_FAILURE );
     }
