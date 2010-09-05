@@ -3,7 +3,7 @@
     belongs to the utility programs of Smb4K.
                              -------------------
     begin                : Di Jul 29 2008
-    copyright            : (C) 2008 by Alexander Reinholdt
+    copyright            : (C) 2008-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -52,91 +52,65 @@
 
 using namespace std;
 
-static QFile lock_file;
 
 static const char description[] =
   I18N_NOOP( "This program writes to the sudoers file." );
 
+
 static const char authors[] =
   I18N_NOOP( "(C) 2008-2010, Alexander Reinholdt" );
 
-int createLockFile()
+
+int createLockFile( QFile *file )
 {
-  // Determine the directory where to write the lock file. First, try
-  // /var/lock and than /var/tmp. If that does not work either, fall
-  // back to /tmp.
-  QList<QByteArray> dirs;
+  // Return values:
+  // 0 -- OK
+  // 1 -- Could not create lock file
+  // 2 -- Lock file exists
+  
+  file->setFileName( QString() );
+  
+  QStringList dirs;
   dirs << "/var/lock";
   dirs << "/var/tmp";
   dirs << "/tmp";
-
-  struct stat buf;
-
+  
+  // Check whether the file exists and set the file path
+  // to the first one the user can write to.
   for ( int i = 0; i < dirs.size(); ++i )
   {
-    // First check if the directory is available and writable
-    if ( lstat( dirs.at( i ), &buf ) == -1 )
+    QFileInfo info_file( dirs.at( i ), "smb4k.lock" );
+    info_file.setCaching( false );
+    
+    QFileInfo info_dir( dirs.at( i ) );
+    info_dir.setCaching( false );
+    
+    if ( !info_file.exists() )
     {
-      int error_number = errno;
-
-      if ( error_number != EACCES && error_number != ENOENT )
+      if ( info_dir.permission( QFile::WriteUser ) && file->fileName().isEmpty() )
       {
-        return error_number;
-      }
-    }
-    else
-    {
-      // Continue
-    }
-
-    // Get the ids of the groups the user is in and check if
-    // on of them matches buf.st_gid.
-    KUser user( geteuid() );
-    QList<KUserGroup> gids = user.groups();
-    gid_t sup_gid = 65534; // set this to gid 'nobody' for initialization
-    bool found_gid = false;
-
-    for ( int j = 0; j < gids.size(); ++j )
-    {
-      if ( gids.at( j ).gid() == buf.st_gid )
-      {
-        sup_gid = gids.at( j ).gid();
-        found_gid = false;
-
-        break;
+        file->setFileName( info_file.absoluteFilePath() );
       }
       else
       {
-        continue;
+        // Do nothing
       }
-    }
-
-    // Check whether we are stat'ing a directory and that the
-    // user has read/write permissions.
-    if ( S_ISDIR( buf.st_mode ) /* is directory */ &&
-        ((buf.st_uid == getuid() && (buf.st_mode & 00600) == (S_IWUSR | S_IRUSR)) /* user */ ||
-        (found_gid && buf.st_gid == sup_gid && (buf.st_mode & 00060) == (S_IWGRP | S_IRGRP)) /* group */ ||
-        ((buf.st_mode & 00006) == (S_IWOTH | S_IROTH)) /* others */) )
-    {
-      lock_file.setFileName( dirs.at( i )+"/smb4k.lock" );
-
-      break;
     }
     else
     {
-      continue;
+      return 2;
     }
   }
-
-  if ( !lock_file.exists() )
+  
+  if ( !file->fileName().isEmpty() )
   {
-    if ( lock_file.open( QIODevice::WriteOnly | QIODevice::Text ) )
+    if ( file->open( QIODevice::WriteOnly|QIODevice::Text ) )
     {
-      QTextStream ts( &lock_file );
+      QTextStream ts( file );
       // Note: With Qt 4.3 this seems to be obsolete, we'll keep
       // it for now.
       ts.setCodec( QTextCodec::codecForLocale() );
-
+      
 #if QT_VERSION >= 0x040400
       if ( kapp )
       {
@@ -149,8 +123,7 @@ int createLockFile()
 #else
       ts << "0" << endl;
 #endif
-
-      lock_file.close();
+      file->close();
     }
     else
     {
@@ -159,18 +132,19 @@ int createLockFile()
   }
   else
   {
-    return 2;
+    return 1;
   }
-
+  
   return 0;
 }
-
-void removeLockFile()
+  
+  
+void removeLockFile( QFile *file )
 {
   // Just remove the lock file. No further checking is needed.
-  if ( lock_file.exists() )
+  if ( file->exists() )
   {
-    lock_file.remove();
+    file->remove();
   }
   else
   {
@@ -178,80 +152,105 @@ void removeLockFile()
   }
 }
 
-const QByteArray findFile( const QString &filename )
-{
-  QStringList paths;
-  paths << "/etc";
-  paths << "/usr/local/etc";
-
-  QString canonical_path;
-
-  for ( int i = 0; i < paths.size(); ++i )
-  {
-    QDir::setCurrent( paths.at( i ) );
-
-    if ( QFile::exists( filename ) )
-    {
-      canonical_path = QDir::current().canonicalPath()+QDir::separator()+filename;
-
-      break;
-    }
-    else
-    {
-      continue;
-    }
-  }
-
-  return canonical_path.toUtf8();
-}
 
 bool checkUsers( const QStringList &list )
 {
   for ( int i = 0; i < list.size(); ++i )
   {
-    if ( getpwnam( list.at( i ).toUtf8() ) == NULL )
+    KUser user( list.at( i ) );
+    
+    if ( !user.isValid() )
     {
       return false;
     }
     else
     {
-      continue;
+      // Do nothing
     }
   }
 
   return true;
 }
 
-int checkFile( const QByteArray &path )
+
+int findSudoers( QFile &file, mode_t &perms )
 {
-  // Stat the file, so that we know that it is safe to
-  // read from and write to it and whether we need to
-  // ask for the super user's password:
-  struct stat buf;
-
-  if ( lstat( path, &buf ) == -1 )
+  // Return values 
+  // 0 -- OK
+  // 1 -- Not found
+  // 2 -- Irregular file
+  // 3 -- Not accessible
+  // * -- error number
+  
+  file.setFileName( QString() );
+  
+  QStringList paths;
+  paths << "/etc";
+  paths << "/usr/local/etc";
+  
+  for ( int i = 0; i < paths.size(); ++i )
   {
-    return errno;
-  }
-  else
-  {
-    // Do nothing
-  }
+    QFileInfo info( paths.at( i ), "sudoers" );
+    info.setCaching( false );
 
-  // Get the ids of the groups the user is in and check if
-  // on of them matches buf.st_gid.
-  KUser user( geteuid() );
-  QList<KUserGroup> gids = user.groups();
-  gid_t sup_gid = 65534; // set this to gid 'nobody' for initialization
-  bool found_gid = false;
-
-  for ( int i = 0; i < gids.size(); ++i )
-  {
-    if ( gids.at( i ).gid() == buf.st_gid )
+    if ( info.exists() )
     {
-      sup_gid = gids.at( i ).gid();
-      found_gid = false;
+      // Stat the file.
+      struct stat buf;
+      
+      if ( lstat( info.absoluteFilePath().toUtf8().data(), &buf ) == -1 )
+      {
+        return errno;
+      }
+      else
+      {
+        // Do nothing
+      }
 
+      // Get the ids of the groups the user is in and check if
+      // one of them matches buf.st_gid.
+      KUser user( geteuid() );
+      QList<KUserGroup> gids = user.groups();
+      gid_t sup_gid = 65534; // set this to gid 'nobody' for initialization
+      bool found_gid = false;
+
+      for ( int i = 0; i < gids.size(); ++i )
+      {
+        if ( gids.at( i ).gid() == buf.st_gid )
+        {
+          sup_gid = gids.at( i ).gid();
+          found_gid = true;
+          break;
+        }
+        else
+        {
+          continue;
+        }
+      }
+
+      if ( !S_ISREG( buf.st_mode ) || S_ISFIFO( buf.st_mode ) || S_ISLNK( buf.st_mode ) )
+      {
+        return 2;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Check the access rights. We need to read the file.
+      if ( buf.st_uid != geteuid() && !found_gid &&
+          (buf.st_mode & 00004) != (S_IWOTH | S_IROTH) /* others */ )
+      {
+        return 3;
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      perms = buf.st_mode;
+      
+      file.setFileName( info.absoluteFilePath() );
       break;
     }
     else
@@ -259,45 +258,259 @@ int checkFile( const QByteArray &path )
       continue;
     }
   }
-
-  if ( !S_ISREG( buf.st_mode ) || S_ISFIFO( buf.st_mode ) || S_ISLNK( buf.st_mode ) )
-  {
-    return 1;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Check the access rights. We need to read the file.
-  if ( buf.st_uid != geteuid() && !found_gid &&
-       (buf.st_mode & 00004) != (S_IWOTH | S_IROTH) /* others */ )
-  {
-    return 2;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  return 0;
+  
+  // This is correct!
+  // false == 0
+  // true == 1
+  return file.fileName().isEmpty();
 }
 
-bool findUtilityPrograms()
+
+int readSudoers( QFile &file, const mode_t &perms, QStringList &contents )
 {
-  if ( KGlobal::dirs()->findResource( "exe", "smb4k_kill" ).isEmpty() ||
-       KGlobal::dirs()->findResource( "exe", "smb4k_umount" ).isEmpty() ||
-       KGlobal::dirs()->findResource( "exe", "smb4k_mount" ).isEmpty() )
+  // Return values:
+  // 0 -- OK
+  // 1 -- Could not read file
+  // * -- Error code
+  
+  int return_value = 0;
+  
+  // Now set the permissions, so that we can read and write the file.
+  if ( chmod( file.fileName().toUtf8().data(), S_IRUSR ) == -1 )
   {
-    return false;
+    return_value = errno;
   }
   else
   {
-    // Do nothing
+    if ( file.open( QIODevice::ReadOnly | QIODevice::Text ) )
+    {
+      QTextStream ts( &file);
+      // Note: With Qt 4.3 this seems to be obsolete, we'll keep
+      // it for now.
+      ts.setCodec( QTextCodec::codecForLocale() );
+
+      while ( !ts.atEnd() )
+      {
+        contents.append( ts.readLine( 0 ) );
+      }
+
+      file.close();
+    }
+    else
+    {
+      return_value = 1;
+    }
+    
+    // Reset the permissions.
+    if ( chmod( file.fileName().toUtf8().data(), perms ) == -1 )
+    {
+      return_value = errno;
+    }
+    else
+    {
+      // Do nothing
+    }
   }
 
-  return true;
+  return return_value;
 }
+
+
+int writeSudoers( QFile &file, const mode_t &perms, const QStringList &contents )
+{
+  // Return values:
+  // 0 -- OK
+  // 1 -- Could not read file
+  // * -- Error code
+  
+  int return_value = 0;
+  
+  // Now set the permissions, so that we can read and write the file.
+  if ( chmod( file.fileName().toUtf8().data(), S_IWUSR ) == -1 )
+  {
+    return_value = errno;
+  }
+  else
+  {
+    if ( file.open( QIODevice::WriteOnly | QIODevice::Text ) )
+    {
+      QTextStream ts( &file );
+      // Note: With Qt 4.3 this seems to be obsolete, we'll keep
+      // it for now.
+      ts.setCodec( QTextCodec::codecForLocale() );
+
+      ts << contents.join( "\n" ) << endl;
+
+      file.close();
+    }
+    else
+    {
+      return_value = 1;
+    }
+    
+    // Reset the permissions.
+    if ( chmod( file.fileName().toUtf8().data(), perms ) == -1 )
+    {
+      return_value = errno;
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+
+  return return_value;
+}
+
+
+int modifyContents( QStringList &contents, const QStringList &add, const QStringList &remove )
+{
+  // Return value
+  // 0 -- OK
+  // 1 -- Could not find utility programs
+  // 2 -- Wrong format
+  // * -- Error code
+
+  int return_value = 0;
+  
+  // Find the beginning and the end of the entries in
+  // the sudoers file:
+  int begin = contents.indexOf( "# Entries for Smb4K users.", 0 );
+  int end = contents.lastIndexOf( "# End of Smb4K user entries.", -1 );
+  
+  if ( begin == -1 && end == -1 )
+  {
+    if ( !add.isEmpty() )
+    {
+      QString smb4k_kill   = KGlobal::dirs()->findResource( "exe", "smb4k_kill" );
+      QString smb4k_mount  = KGlobal::dirs()->findResource( "exe", "smb4k_mount" );
+      QString smb4k_umount = KGlobal::dirs()->findResource( "exe", "smb4k_umount" );
+      
+      if ( !smb4k_kill.isEmpty() && !smb4k_mount.isEmpty() && !smb4k_umount.isEmpty() )
+      {
+        // Get the hostname.
+        size_t hostnamelen = 255;
+        char *hn = new char[hostnamelen];
+
+        if ( gethostname( hn, hostnamelen ) == -1 )
+        {
+          return_value = errno;
+        }
+        else
+        {
+          QString hostname( hn );
+          delete [] hn;
+
+          // Add the new entries.
+          if ( !contents.last().trimmed().isEmpty() )
+          {
+            contents.append( "" );
+          }
+          else
+          {
+            // Do not add empty line to the end.
+          }
+
+          contents.append( "# Entries for Smb4K users." );
+          contents.append( "# Generated by Smb4K. Please do not modify!" );
+          contents.append( "User_Alias\tSMB4KUSERS = "+QString( "%1" ).arg( add.join( "," ) ) );
+          contents.append( "Defaults:SMB4KUSERS\tenv_keep += \"PASSWD USER\"" );
+          contents.append( "SMB4KUSERS\t"+hostname+" = NOPASSWD: "+smb4k_kill );
+          contents.append( "SMB4KUSERS\t"+hostname+" = NOPASSWD: "+smb4k_umount );
+          contents.append( "SMB4KUSERS\t"+hostname+" = NOPASSWD: "+smb4k_mount );
+          contents.append( "# End of Smb4K user entries." );
+        }
+      }
+      else
+      {
+        return_value = 1;
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else if ( begin != -1 && end != -1 )
+  {
+    // Modify list of users
+    QStringList users;
+    int index = 0;
+    
+    for ( int i = begin; i != end; ++i )
+    {
+      if ( contents.at( i ).startsWith( "User_Alias\tSMB4KUSERS" ) )
+      {
+        index = i;
+        users = contents.at( i ).section( "=", 1, 1 ).trimmed().split( ",", QString::SkipEmptyParts );
+        
+        // Add users
+        for ( int j = 0; j < add.size(); ++j )
+        {
+          if ( !users.contains( add.at( j ) ) )
+          {
+            users << add.at( j );
+          }
+          else
+          {
+            // Do nothing
+          }
+        }
+        
+        // Remove users
+        for ( int j = 0; j < remove.size(); ++j )
+        {
+          if ( users.contains( remove.at( j ) ) )
+          {
+            users.removeAll( remove.at( j ) );
+          }
+          else
+          {
+            // Do nothing
+          }
+        }
+        
+        break;
+      }
+      else
+      {
+        continue;
+      }
+    }
+    
+    if ( !users.isEmpty() )
+    {
+      contents.replace( index, "User_Alias\tSMB4KUSERS = "+QString( "%1" ).arg( users.join( "," ) ) );
+    }
+    else
+    {
+      int lines = end - begin + 1;
+      int count = 0;
+      
+      while ( count != lines )
+      {
+        contents.removeAt( begin );
+        count++;
+      }
+      
+      if ( contents.last().trimmed().isEmpty() )
+      {
+        contents.removeLast();
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+  }
+  else
+  {
+    return_value = 2;
+  }
+  
+  return return_value;
+}
+
 
 int main ( int argc, char *argv[] )
 {
@@ -325,50 +538,71 @@ int main ( int argc, char *argv[] )
   KCmdLineArgs::addCmdLineOptions( options );
 
   KApplication app( false /* no GUI */ );
-
-  // Before doing anything else, create the lock file.
-  int return_value = 0;
-
-  if ( (return_value = createLockFile()) != 0 )
+  
+  // Create the lock file.
+  QFile lock_file;
+  QFile sudoers;
+  
+  switch( createLockFile( &lock_file ) )
   {
-    switch ( return_value )
+    case 1:
     {
-      case 1:
-      {
-        cerr << argv[0] << ": " << I18N_NOOP( "The lock file could not be created." ) << endl;
-        break;
-      }
-      case 2:
-      {
-        cerr << argv[0] << ": " << I18N_NOOP( "Another user is currently editing the sudoers file." ) << endl;
-        break;
-      }
-      default:
-      {
-        cerr << argv[0] << ": " << strerror( return_value ) << endl;
-        break;
-      }
+      cerr << argv[0] << ": " << I18N_NOOP( "The lock file could not be created." ) << endl;
+      cerr << argv[0] << ": " << lock_file.errorString().toUtf8().data() << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+      exit( EXIT_FAILURE );
+      break;
     }
-
-    cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
-    exit( EXIT_FAILURE );
+    case 2:
+    {
+      cerr << argv[0] << ": " << I18N_NOOP( "The sudoers file is currently being edited." ) << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+      exit( EXIT_FAILURE );
+      break;
+    }
+    default:
+    {
+      break;
+    }
   }
-  else
-  {
-    // Do nothing
-  }
-
+  
+  // Get the command line arguments.
   KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
 
   // Check that everything is OK.
-  QStringList adduser    = args->getOptionList( "adduser" );
-  QStringList removeuser = args->getOptionList( "removeuser" );
-
+  QStringList adduser, removeuser;
+  QStringList adduser_list    = args->getOptionList( "adduser" );
+  QStringList removeuser_list = args->getOptionList( "removeuser" );
+  
+  for ( int i = 0; i < adduser_list.size(); ++i )
+  {
+    if ( adduser_list.at( i ).contains( "," ) )
+    {
+      adduser += adduser_list.at( i ).split( ",", QString::SkipEmptyParts );
+    }
+    else
+    {
+      adduser << adduser_list.at( i );
+    }
+  }
+  
+  for ( int i = 0; i < removeuser_list.size(); ++i )
+  {
+    if ( removeuser_list.at( i ).contains( "," ) )
+    {
+      removeuser += removeuser_list.at( i ).split( ",", QString::SkipEmptyParts );
+    }
+    else
+    {
+      removeuser << removeuser_list.at( i );
+    }
+  }
+  
   // Throw an error if no argument was provided.
   if ( adduser.isEmpty() && removeuser.isEmpty() )
   {
     KCmdLineArgs::usageError( i18n( "No arguments given." ) );
-    removeLockFile();
+    removeLockFile( &lock_file );
     exit( EXIT_FAILURE );
   }
   else
@@ -381,398 +615,157 @@ int main ( int argc, char *argv[] )
   {
     cerr << argv[0] << ": " << I18N_NOOP( "An invalid username has been provided." ) << endl;
     cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
-    removeLockFile();
+    removeLockFile( &lock_file );
     exit( EXIT_FAILURE );
   }
   else
   {
     // Do nothing
   }
-
+  
   // Find the sudoers file.
-  QByteArray path = findFile( "sudoers" );
-
-  if ( path.isEmpty() )
+  int return_value;
+  mode_t permissions;
+  
+  switch ( (return_value = findSudoers( sudoers, permissions )) )
   {
-    cerr << argv[0] << ": " << I18N_NOOP( "The sudoers file was not found." ) << endl;
-    cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
-    removeLockFile();
-    exit( EXIT_FAILURE );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Check that the file is regular.
-  if ( (return_value = checkFile( path )) != 0 )
-  {
-    switch ( return_value )
+    case 0:
     {
-      case 1:
-      {
-        cerr << argv[0] << ": " << I18N_NOOP( "The sudoers file is irregular." ) << endl;
-        break;
-      }
-      case 2:
-      {
-        cerr << argv[0] << ": " << I18N_NOOP( "Cannot access sudoers file." ) << endl;
-        break;
-      }
-      default:
-      {
-        cerr << argv[0] << ": " << strerror( return_value ) << endl;
-        break;
-      }
+      // OK
+      break;
     }
-
-    cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
-    removeLockFile();
-    exit( EXIT_FAILURE );
+    case 1:
+    {
+      // Not found
+      cerr << argv[0] << ": " << I18N_NOOP( "The sudoers file was not found." ) << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+      removeLockFile( &lock_file );
+      exit( EXIT_FAILURE );
+      break;
+    }
+    case 2:
+    {
+      // File irregular
+      cerr << argv[0] << ": " << I18N_NOOP( "The sudoers file is irregular." ) << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+      removeLockFile( &lock_file );
+      exit( EXIT_FAILURE );
+      break;
+    }
+    case 3:   
+    {
+      // File not accessible
+      cerr << argv[0] << ": " << I18N_NOOP( "Cannot access sudoers file." ) << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+      removeLockFile( &lock_file );
+      exit( EXIT_FAILURE );
+      break;
+    }
+    default:
+    {
+      cerr << argv[0] << ": " << strerror( return_value ) << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+      removeLockFile( &lock_file );
+      exit( EXIT_FAILURE );
+      break;      
+    }
   }
-  else
-  {
-    // Do nothing
-  }
-
-  // Check that the utility programs can actually be found.
-  if ( !findUtilityPrograms() )
-  {
-    cerr << argv[0] << ": " << I18N_NOOP( "One or more utility programs could not be found." ) << endl;
-    cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
-    removeLockFile();
-    exit( EXIT_FAILURE );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Now work with the sudoers file.
-  QFile file( path );
-
-  // Save the original permissions for later.
-  const QFile::Permissions perms = file.permissions();
-
-  // Temporarily give the *owner* the permission to
-  // write to the file.
-  if ( !file.setPermissions( QFile::WriteOwner | QFile::ReadOwner ) )
-  {
-    cerr << argv[0] << ": " << I18N_NOOP( "Could not change permissions of sudoers file." ) << endl;
-    cerr << argv[0] << ": " << I18N_NOOP( "The sudoers file will not be changed." ) << endl;
-    cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
-    removeLockFile();
-    exit( EXIT_FAILURE );
-  }
-  else
-  {
-    // Do nothing
-  }
-
+  
+  // Read the sudoers file.
   QStringList contents;
-
-  if ( file.open( QIODevice::ReadOnly | QIODevice::Text ) )
+  
+  switch ( ( return_value = readSudoers( sudoers, permissions, contents )) )
   {
-    QTextStream ts( &file );
-    // Note: With Qt 4.3 this seems to be obsolete, we'll keep
-    // it for now.
-    ts.setCodec( QTextCodec::codecForLocale() );
-
-    while ( !ts.atEnd() )
+    case 0:
     {
-      contents.append( ts.readLine( 0 ) );
+      break;
     }
-
-    file.close();
-    
-    if ( !file.setPermissions( perms ) )
+    case 1:
     {
-      cerr << argv[0] << ": " << I18N_NOOP( "FATAL: Could not restore initial permissions of sudoers file." ) << endl;
-      cerr << argv[0] << ": " << I18N_NOOP( "Please inform your system administrator." ) << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Could not read from sudoers file." ) << endl;
+      cerr << argv[0] << ": " << sudoers.errorString().toUtf8().data();
       cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
-      removeLockFile();
+      removeLockFile( &lock_file );
       exit( EXIT_FAILURE );
+      break;
     }
-    else
+    default:
     {
-      // Do nothing
-    }
-  }
-  else
-  {
-    if ( !file.setPermissions( perms ) )
-    {
-      cerr << argv[0] << ": " << I18N_NOOP( "FATAL: Could not restore initial permissions of sudoers file." ) << endl;
-      cerr << argv[0] << ": " << I18N_NOOP( "Please inform your system administrator." ) << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Could not set file permissions for sudoers file." ) << endl;
+      cerr << argv[0] << ": " << strerror( return_value ) << endl;
       cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+      removeLockFile( &lock_file );
+      exit( EXIT_FAILURE );
+      break;
     }
-    else
-    {
-      cerr << argv[0] << ": " << file.errorString().toUtf8().data() << endl;
-    }
-    removeLockFile();
-    exit( EXIT_FAILURE );
   }
-
-  // Find the beginning and the end of the entries in
-  // the sudoers file:
-  int begin = contents.indexOf( "# Entries for Smb4K users.", 0 );
-  int end = contents.lastIndexOf( "# End of Smb4K user entries.", -1 );
-
-  bool write = false;
-
-  // Add user(s).
-  if ( !adduser.isEmpty() )
+  
+  // Modify the contents of the sudoers file.
+  switch ( (return_value = modifyContents( contents, adduser, removeuser )) )
   {
-    if ( begin == -1 && end == -1 )
+    case 0:
     {
-      // Get the hostname.
-      size_t hostnamelen = 255;
-      char *hn = new char[hostnamelen];
-
-      if ( gethostname( hn, hostnamelen ) == -1 )
-      {
-        int error_number = errno;
-        cerr << argv[0] << ": " << strerror( error_number ) << endl;
-        removeLockFile();
-        exit( EXIT_FAILURE );
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      QString hostname( hn );
-      delete [] hn;
-
-      // Add the new entries.
-      if ( !contents.last().trimmed().isEmpty() )
-      {
-        contents.append( "" );
-      }
-      else
-      {
-        // Do not add empty line to the end.
-      }
-
-      contents.append( "# Entries for Smb4K users." );
-      contents.append( "# Generated by Smb4K. Please do not modify!" );
-      contents.append( "User_Alias\tSMB4KUSERS = "+QString( "%1" ).arg( adduser.join( "," ) ) );
-      contents.append( "Defaults:SMB4KUSERS\tenv_keep += \"PASSWD USER\"" );
-      contents.append( "SMB4KUSERS\t"+hostname+" = NOPASSWD: "
-                       +KGlobal::dirs()->findResource( "exe", "smb4k_kill" ) );
-      contents.append( "SMB4KUSERS\t"+hostname+" = NOPASSWD: "
-                       +KGlobal::dirs()->findResource( "exe", "smb4k_umount" ) );
-      contents.append( "SMB4KUSERS\t"+hostname+" = NOPASSWD: "
-                       +KGlobal::dirs()->findResource( "exe", "smb4k_mount" ) );
-      contents.append( "# End of Smb4K user entries." );
-
-      write = true;
+      break;
     }
-    else if ( begin != -1 && end != -1 )
+    case 1:
     {
-      for ( int i = begin; i != end; ++i )
-      {
-        if ( contents.at( i ).startsWith( "User_Alias\tSMB4KUSERS" ) )
-        {
-          for ( int j = 0; j < adduser.size(); ++j )
-          {
-            if ( !contents.at( i ).contains( adduser.at( j ) ) )
-            {
-              contents[i].append( ","+adduser.at( j ) );
-              continue;
-            }
-            else
-            {
-              continue;
-            }
-          }
-
-          write = true;
-          break;
-        }
-        else
-        {
-          continue;
-        }
-      }
-    }
-    else
-    {
-      cerr << argv[0] << ": " << I18N_NOOP( "The Smb4K section does not conform with the required format." ) << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Could not find utility programs (smb4k_kill, smb4k_umount, smb4k_mount)." ) << endl;
       cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
-      removeLockFile();
+      removeLockFile( &lock_file );
       exit( EXIT_FAILURE );
+      break;
     }
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Remove user(s).
-  if ( !removeuser.isEmpty() )
-  {
-    if ( begin != -1 && end != -1 )
+    case 2:
     {
-      for ( int i = begin; i != end; ++i )
-      {
-        if ( contents.at( i ).startsWith( "User_Alias\tSMB4KUSERS" ) )
-        {
-          QString users = contents.at( i ).section( "=", 1, 1 ).trimmed();
-
-          if ( !users.contains( "," ) )
-          {
-            // In this case, there is only one user in the list. Check if
-            // it is the user who requested the removal:
-            for ( int j = 0; j < removeuser.size(); ++j )
-            {
-              if ( QString::compare( users, removeuser.at( j ) ) == 0 )
-              {
-                // They are equal. Remove all entries:
-                int k = begin;
-
-                while ( k != end + 1 ) // We want to remove line 'end' as well.
-                {
-                  contents.removeAt( begin );
-
-                  k++;
-                }
-
-                write = true;
-
-                break;
-              }
-              else
-              {
-                // They are not equal: Do nothing.
-                break;
-              }
-            }
-
-            break;
-          }
-          else
-          {
-            // In this case there is more than one user in the list.
-            // Remove the user who requested the removal:
-            QStringList list = users.split( ",", QString::SkipEmptyParts );
-            int index = 0;
-
-            for ( int j = 0; j < removeuser.size(); ++j )
-            {
-              index = list.indexOf( removeuser.at( j ), 0 );
-
-              if ( index != -1 )
-              {
-                list.removeAt( index );
-                contents[i].replace( users, list.join( "," ) );
-
-                write = true;
-
-                continue;
-              }
-              else
-              {
-                continue;
-              }
-            }
-
-            break;
-          }
-
-          break;
-        }
-        else
-        {
-          continue;
-        }
-      }
-    }
-    else if ( begin == -1 && end == -1 )
-    {
-      // Do nothing
-    }
-    else
-    {
-      cerr << argv[0] << ": " << I18N_NOOP( "The Smb4K section does not conform with the required format." ) << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Wrong format of Smb4K section in sudoers file detected." ) << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Please fix this manually." ) << endl;
       cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
-      removeLockFile();
+      removeLockFile( &lock_file );
       exit( EXIT_FAILURE );
+      break;
     }
-  }
-  else
-  {
-    // Nothing to do.
-  }
-
-  if ( write )
-  {
-    // Temporarily give the *owner* the permission to
-    // write to the file.
-    if ( !file.setPermissions( QFile::WriteOwner | QFile::ReadOwner ) )
+    default:
     {
-      cerr << argv[0] << ": " << I18N_NOOP( "Could not change permissions of sudoers file." ) << endl;
-      cerr << argv[0] << ": " << I18N_NOOP( "The sudoers file will not be changed." ) << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Could not compile Smb4K section for sudoers file." ) << endl;
+      cerr << argv[0] << ": " << strerror( return_value ) << endl;
       cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
-      removeLockFile();
+      removeLockFile( &lock_file );
       exit( EXIT_FAILURE );
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    if ( file.open( QIODevice::WriteOnly | QIODevice::Text ) )
-    {
-      QTextStream ts( &file );
-      // Note: With Qt 4.3 this seems to be obsolete, we'll keep
-      // it for now.
-      ts.setCodec( QTextCodec::codecForLocale() );
-
-      ts << contents.join( "\n" ) << endl;
-
-      file.close();
-      
-      if ( !file.setPermissions( perms ) )
-      {
-        cerr << argv[0] << ": " << I18N_NOOP( "FATAL: Could not restore initial permissions of sudoers file." ) << endl;
-        cerr << argv[0] << ": " << I18N_NOOP( "Please inform your system administrator." ) << endl;
-        cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
-        removeLockFile();
-        exit( EXIT_FAILURE );
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      if ( !file.setPermissions( perms ) )
-      {
-        cerr << argv[0] << ": " << I18N_NOOP( "FATAL: Could not restore initial permissions of sudoers file." ) << endl;
-        cerr << argv[0] << ": " << I18N_NOOP( "Please inform your system administrator." ) << endl;
-        cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
-      }
-      else
-      {
-        cerr << argv[0] << ": " << file.errorString().toUtf8().data() << endl;
-      }
-      removeLockFile();
-      exit( EXIT_FAILURE );
+      break;
     }
   }
-  else
+  
+  // Write the sudoers file.
+  switch ( ( return_value = writeSudoers( sudoers, permissions, contents )) )
   {
-    // No modifications are needed.
+    case 0:
+    {
+      break;
+    }
+    case 1:
+    {
+      cerr << argv[0] << ": " << I18N_NOOP( "Could not write to sudoers file." ) << endl;
+      cerr << argv[0] << ": " << sudoers.errorString().toUtf8().data();
+      cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+      removeLockFile( &lock_file );
+      exit( EXIT_FAILURE );
+      break;
+    }
+    default:
+    {
+      cerr << argv[0] << ": " << I18N_NOOP( "Could not set file permissions for sudoers file." ) << endl;
+      cerr << argv[0] << ": " << strerror( return_value ) << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+      removeLockFile( &lock_file );
+      exit( EXIT_FAILURE );
+      break;
+    }
   }
-
-  // File permissions were fixed above.
-
+  
+  contents.clear();
   args->clear();
-
-  removeLockFile();
+  
+  removeLockFile( &lock_file );
 
   app.exit( EXIT_SUCCESS );
 }
