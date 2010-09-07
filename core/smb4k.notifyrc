@@ -32,12 +32,14 @@ Version=1
 
 [Context/Notification]
 Name=Notification
+Name[da]=Bekendtgørelse
 Name[pt]=Notificação
 Name[pt_BR]=Notificação
 Name[sv]=Underrättelse
 Name[uk]=Сповіщення
 Name[x-test]=xxNotificationxx
 Comment=The user is notified about an action
+Comment[da]=Brugeren bekendtgøres om en handling
 Comment[pt]=O utilizador é notificado sobre uma acção
 Comment[pt_BR]=O usuário é notificado sobre uma ação
 Comment[sv]=Användaren blir underrättad om en åtgärd
@@ -46,12 +48,14 @@ Comment[x-test]=xxThe user is notified about an actionxx
 
 [Context/Warning]
 Name=Warning
+Name[da]=Advarsel
 Name[pt]=Aviso
 Name[pt_BR]=Aviso
 Name[sv]=Varning
 Name[uk]=Попередження
 Name[x-test]=xxWarningxx
 Comment=A warning is shown to the user
+Comment[da]=En advarsel vises for brugeren
 Comment[pt]=É mostrado um aviso ao utilizador
 Comment[pt_BR]=Um aviso é exibido ao usuário
 Comment[sv]=En varning visas för användaren
@@ -60,12 +64,14 @@ Comment[x-test]=xxA warning is shown to the userxx
 
 [Context/Error]
 Name=Error
+Name[da]=Fejl
 Name[pt]=Erro
 Name[pt_BR]=Erro
 Name[sv]=Fel
 Name[uk]=Помилка
 Name[x-test]=xxErrorxx
 Comment=An error is shown to the user
+Comment[da]=En fejl vises for brugeren
 Comment[pt]=Foi mostrado um erro ao utilizador
 Comment[pt_BR]=Um erro é exibido ao usuário
 Comment[sv]=Ett fel visas för användaren
@@ -74,12 +80,14 @@ Comment[x-test]=xxAn error is shown to the userxx
 
 [Event/shareMounted]
 Name=Mounted share
+Name[da]=Ressource monteret
 Name[pt]=Partilha montada
 Name[pt_BR]=Compartilhamento montado
 Name[sv]=Monterad delad katalog
 Name[uk]=Змонтовано ресурс
 Name[x-test]=xxMounted sharexx
 Comment=A share has been mounted
+Comment[da]=En ressource er blevet monteret
 Comment[pt]=Foi montada uma partilha
 Comment[pt_BR]=Um compartilhamento foi montado
 Comment[sv]=En delad katalog har monterats
@@ -90,12 +98,14 @@ Action=Popup
 
 [Event/shareUnmounted]
 Name=Unmounted share
+Name[da]=Ressource afmonteret
 Name[pt]=Partilha desmontada
 Name[pt_BR]=Compartilhamento desmontado
 Name[sv]=Avmonterad delad katalog
 Name[uk]=Демонтовано ресурс
 Name[x-test]=xxUnmounted sharexx
 Comment=A share has been unmounted
+Comment[da]=En ressource er blevet afmonteret
 Comment[pt]=Foi desmontada uma partilha
 Comment[pt_BR]=Um compartilhamento foi desmontado
 Comment[sv]=En delad katalog har avmonterats
@@ -106,12 +116,14 @@ Action=Popup
 
 [Event/sharesRemounted]
 Name=Remounted shares
+Name[da]=Ressourcer genmonteret
 Name[pt]=Partilhas montadas de novo
 Name[pt_BR]=Compartilhamentos remontados
 Name[sv]=Monterad delade kataloger igen
 Name[uk]=Повторно змонтовані ресурси
 Name[x-test]=xxRemounted sharesxx
 Comment=Shares have been remounted
+Comment[da]=Ressourcer er blevet genmonteret
 Comment[pt]=As partilhas foram montadas de novo
 Comment[pt_BR]=Os compartilhamentos foram remontados
 Comment[sv]=Delade kataloger har monterats igen
@@ -122,12 +134,14 @@ Action=Popup
 
 [Event/allSharesUnmounted]
 Name=Unmounted all shares
+Name[da]=Alle ressourcer afmonteret
 Name[pt]=Foram desmontadas todas as partilhas
 Name[pt_BR]=Todos os compartilhamentos desmontados
 Name[sv]=Avmonterade alla delade kataloger
 Name[uk]=Демонтовано всі ресурси
 Name[x-test]=xxUnmounted all sharesxx
 Comment=All shares have been unmounted
+Comment[da]=Alle ressourcer er blevet afmonteret
 Comment[pt]=Todas as partilhas foram desmontadas
 Comment[pt_BR]=Todos os compartilhamentos foram desmontados
 Comment[sv]=Alla delade kataloger har avmonterats
@@ -138,12 +152,14 @@ Action=Popup
 
 [Event/openingWalletFailed]
 Name=Opening wallet failed
+Name[da]=Åbning af tegnebogen mislykkedes
 Name[pt]=A abertura da carteira foi mal-sucedida
 Name[pt_BR]=Falha ao abrir a carteira
 Name[sv]=Misslyckades öppna plånboken
 Name[uk]=Спроба відкриття торбинки зазнала невдачі
 Name[x-test]=xxOpening wallet failedxx
 Comment=The wallet could not be opened
+Comment[da]=Tegnebogen kunne ikke åbnes
 Comment[pt]=Não foi possível abrir a carteira
 Comment[pt_BR]=A carteira não pôde ser aberta
 Comment[sv]=Plånboken kunde inte öppnas
@@ -154,12 +170,14 @@ Action=Popup
 
 [Event/loginsNotAccessible]
 Name=Logins not accessible
+Name[da]=Logins er ikke tilgængelige
 Name[pt]=Contas inacessíveis
 Name[pt_BR]=O login não está acessível
 Name[sv]=Inloggningsinformation ej tillgänglig
 Name[uk]=Реєстраційні дані недоступні
 Name[x-test]=xxLogins not accessiblexx
 Comment=The logins stored in the wallet could not be accessed
+Comment[da]=De logins der opbevares i tegnebogen kunne ikke tilgås
 Comment[pt]=Não foi possível aceder às contas guardadas na carteira
 Comment[pt_BR]=Os logins armazenados na carteira não puderam ser acessados
 Comment[sv]=Inloggningsinformationen lagrad i plånboken kunde inte kommas åt
@@ -170,12 +188,14 @@ Action=Popup
 
 [Event/sudoNotFound]
 Name=sudo not found
+Name[da]=sudo ikke fundet
 Name[pt]=O 'sudo' não foi encontrado
 Name[pt_BR]=sudo não encontrado
 Name[sv]=Hittade inte sudo
 Name[uk]=sudo не знайдено
 Name[x-test]=xxsudo not foundxx
 Comment=The program sudo could not be found
+Comment[da]=Programmet sudo blev ikke fundet
 Comment[pt]=Não foi possível encontrar o programa 'sudo'
 Comment[pt_BR]=O programa sudo não pode ser encontrado
 Comment[sv]=Programmet sudo kunde inte hittas
@@ -186,12 +206,14 @@ Action=Popup
 
 [Event/kdesudoNotFound]
 Name=kdesudo not found
+Name[da]=kdesudo ikke fundet
 Name[pt]=O 'kdesudo' não foi encontrado
 Name[pt_BR]=kdesudo não encontrado
 Name[sv]=Hittade inte kdesudo
 Name[uk]=kdesudo не знайдено
 Name[x-test]=xxkdesudo not foundxx
 Comment=The program kdesudo could not be found
+Comment[da]=Programmet kdesudo blev ikke fundet
 Comment[pt]=Não foi possível encontrar o programa 'kdesudo'
 Comment[pt_BR]=O programa kdesudo não pode ser encontrado
 Comment[sv]=Programmet kdesudo kunde inte hittas
@@ -202,12 +224,14 @@ Action=Popup
 
 [Event/mimetypeNotSupported]
 Name=Mimetype not supported
+Name[da]=MIME-type ikke understøttet
 Name[pt]=O tipo MIME não é suportado
 Name[pt_BR]=O tipo MIME não é suportado
 Name[sv]=Mime-typ stöds inte
 Name[uk]=Тип MIME не підтримується
 Name[x-test]=xxMimetype not supportedxx
 Comment=The mimetype of the file is not supported for printing
+Comment[da]=MIME-type for filen der ikke er understøttet til udskrift
 Comment[pt]=O tipo MIME do ficheiro não é suportado para a impressão
 Comment[pt_BR]=O tipo MIME do arquivo não é suportado para impressão
 Comment[sv]=Filens Mime-typ stöds inte för utskrift
@@ -218,12 +242,14 @@ Action=Popup
 
 [Event/bookmarkLabelInUse]
 Name=Bookmark label in use
+Name[da]=Bogmærke-etiket i brug
 Name[pt]=A legenda do favorito já está em uso
 Name[pt_BR]=A etiqueta do favorito já está em uso
 Name[sv]=Bokmärkets beteckning används
 Name[uk]=Мітку закладки вже використано
 Name[x-test]=xxBookmark label in usexx
 Comment=The label of the bookmark is already being used
+Comment[da]=Bogmærkets etiket bruges allerede.
 Comment[pt]=A legenda do favorito já está a ser usada
 Comment[pt_BR]=A etiqueta do favorito já está sendo usada
 Comment[sv]=Bokmärkets beteckning används redan
@@ -234,12 +260,14 @@ Action=Popup
 
 [Event/retrievingDomainsFailed]
 Name=Retrieving domains failed
+Name[da]=Hentning af domæner mislykkedes
 Name[pt]=Não foi possível obter os domínios
 Name[pt_BR]=A obtenção de domínios foi mal-sucedida
 Name[sv]=Misslyckades hämta domäner
 Name[uk]=Невдала спроба отримання списку доменів
 Name[x-test]=xxRetrieving domains failedxx
 Comment=The list of domains could not be retrieved
+Comment[da]=Listen over domæner kunne ikke hentes
 Comment[pt]=Não foi possível obter a lista de domínios
 Comment[pt_BR]=A lista de domínios não pode ser obtida
 Comment[sv]=Listan med domäner kunde inte hämtas
@@ -251,12 +279,14 @@ Action=Popup|Sound
 
 [Event/scanningBroadcastAreaFailed]
 Name=Scanning broadcast area(s) failed
+Name[da]=Scanning af broadcast-områder mislykkedes
 Name[pt]=A sondagem das áreas de difusão foi mal-sucedida
 Name[pt_BR]=Falha na procura das áreas de difusão
 Name[sv]=Sökning av utsändningsområden misslyckades
 Name[uk]=Спроба сканування діапазонів трансляцій зазнала невдачі
 Name[x-test]=xxScanning broadcast area(s) failedxx
 Comment=The scanning of the defined broadcast area(s) failed
+Comment[da]=Scanning af de definerede broadcast-områder mislykkedes
 Comment[pt]=A sondagem das áreas de difusão definidas foi mal-sucedida
 Comment[pt_BR]=Falha na procura das áreas de difusão definidas
 Comment[sv]=Sökning av definierade utsändningsområden misslyckades
@@ -268,12 +298,14 @@ Action=Popup|Sound
 
 [Event/retrievingServersFailed]
 Name=Retrieving servers failed
+Name[da]=Hentning af servere mislykkedes
 Name[pt]=A obtenção dos servidores foi mal-sucedida
 Name[pt_BR]=A obtenção de servidores falhou
 Name[sv]=Misslyckades hämta servrar
 Name[uk]=Невдала спроба отримання списку серверів
 Name[x-test]=xxRetrieving servers failedxx
 Comment=The list of servers could not be retrieved
+Comment[da]=Listen over servere kunne ikke hentes
 Comment[pt]=Não foi possível obter a lista dos servidores
 Comment[pt_BR]=A lista de servidores não pode ser obtida
 Comment[sv]=Listan med servrar kunde inte hämtas
@@ -285,12 +317,14 @@ Action=Popup|Sound
 
 [Event/retrievingSharesFailed]
 Name=Retrieving shares failed
+Name[da]=Hentning af ressourcer mislykkedes
 Name[pt]=Não foi possível obter as partilhas
 Name[pt_BR]=Falha na obtenção dos compartilhamentos
 Name[sv]=Misslyckades hämta delade kataloger
 Name[uk]=Невдала спроба отримання списку спільних ресурсів
 Name[x-test]=xxRetrieving shares failedxx
 Comment=The list of shares could not be retrieved
+Comment[da]=Listen over ressourcer kunne ikke hentes
 Comment[pt]=Não foi possível obter a lista das partilhas
 Comment[pt_BR]=A lista de compartilhamentos não pode ser obtida
 Comment[sv]=Listan med delade kataloger kunde inte hämtas
@@ -302,12 +336,14 @@ Action=Popup|Sound
 
 [Event/retrievingPreviewFailed]
 Name=Retrieving preview failed
+Name[da]=Hentning af forhåndsvisning mislykkedes
 Name[pt]=Não foi possível obter a antevisão
 Name[pt_BR]=Falha na obtenção de visualização
 Name[sv]=Misslyckades hämta förhandsgranskning
 Name[uk]=Невдала спроба отримання попереднього перегляду
 Name[x-test]=xxRetrieving preview failedxx
 Comment=The preview could not be retrieved
+Comment[da]=Forhåndsvisningen kunne ikke hentes
 Comment[pt]=Não foi possível obter a antevisão
 Comment[pt_BR]=A visualização não pode ser obtida
 Comment[sv]=Förhandsgranskningen kunde inte hämtas
@@ -319,12 +355,14 @@ Action=Popup|Sound
 
 [Event/mountingFailed]
 Name=Mounting failed
+Name[da]=Montering mislykkedes
 Name[pt]=A montagem foi mal-sucedida
 Name[pt_BR]=A montagem falhou
 Name[sv]=Montering misslyckades
 Name[uk]=Невдала спроба монтування
 Name[x-test]=xxMounting failedxx
 Comment=Mounting a share failed
+Comment[da]=Montering af en ressource mislykkedes
 Comment[pt]=Não foi possível montar uma dada partilha
 Comment[pt_BR]=Falha ao montar um compartilhamento
 Comment[sv]=Misslyckades montera en delad katalog
