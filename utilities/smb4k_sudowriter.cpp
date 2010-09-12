@@ -598,10 +598,10 @@ int main ( int argc, char *argv[] )
     }
   }
   
-  // Throw an error if no argument was provided.
+  // Show usage if no argument was provided.
   if ( adduser.isEmpty() && removeuser.isEmpty() )
   {
-    KCmdLineArgs::usageError( i18n( "No arguments given." ) );
+    KCmdLineArgs::usage();
     removeLockFile( &lock_file );
     exit( EXIT_FAILURE );
   }
