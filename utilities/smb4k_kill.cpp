@@ -1,10 +1,10 @@
 /***************************************************************************
-    smb4k_kill  -  This is the kill utility for Smb4K.
+    smb4k_kill  -  This is the (new) kill utility for Smb4K.
                              -------------------
-    begin                : So Sep 26 2004
-    copyright            : (C) 2004-2009 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
- ***************************************************************************/
+    begin                : So Sep 12 2010
+    copyright            : (C) 2010 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
+***************************************************************************/
 
 /***************************************************************************
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,46 +23,30 @@
  *   MA  02111-1307 USA                                                    *
  ***************************************************************************/
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
+// Qt includes
+#include <QDebug>
 
-#include <locale.h>
-#include <unistd.h>
-#include <getopt.h>
-#include <errno.h>
-#include <string.h>
+// KDE includes
+#include <kaboutdata.h>
+#include <kcmdlineargs.h>
+#include <kapplication.h>
+#include <kprocess.h>
+
+// system includes
 #include <stdlib.h>
 #include <iostream>
 using namespace std;
 
-#define SMB4K_KILL_VERSION "0.7"
+#define VERSION 0.8
 
-void info()
-{
-	cout << "This is smb4k_kill (version " << SMB4K_KILL_VERSION << "), the kill utility of Smb4K" << endl;
-	cout << "Copyright (C) 2004-2007, Alexander Reinholdt" << endl;
-	cout << endl;
-	cout << "Usage:" << endl;
-	cout << "  smb4k_kill {pid}" << endl;
-	cout << "  smb4k_kill --help" << endl;
-	cout << "  smb4k_kill --version" << endl;
-	cout << endl;
-	cout << "Arguments:" << endl;
-	cout << "  {pid}\t\tThe ID of the process that should be terminated." << endl;
-	cout << endl;
-	cout << "  --help\tDisplay this help screen and exit." << endl;
-	cout << "  --version\tDisplay the version information and exit." << endl;
-	cout << endl;
-}
+static const char description[] =
+  I18N_NOOP( "This program kills processes invoked by Smb4K." );
 
 
-void version()
-{
-	cout << "Version: " << SMB4K_KILL_VERSION << endl;
-}
-
-
+static const char authors[] =
+  I18N_NOOP( "(C) 2010, Alexander Reinholdt" );
+  
+  
 bool find_program( const char *name, char *path )
 {
   const char *paths[] = { "/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/", "/usr/local/bin/", "/usr/local/sbin/" };
@@ -82,7 +66,6 @@ bool find_program( const char *name, char *path )
 
   if ( !strcmp( file.c_str(), "" ) )
   {
-    cerr << "smb4k_kill: Could not find " << name << " binary" << endl;
     return false;
   }
 
@@ -93,134 +76,113 @@ bool find_program( const char *name, char *path )
 
   return true;
 }
+  
 
-
-int main( int argc, char *argv[], char *envp[] )
+int main( int argc, char *argv[] )
 {
-  // Set the locale:
-  (void) setlocale( LC_ALL, "" );
+  KAboutData aboutData( "smb4k_sudowriter",
+                        "smb4k",
+                        ki18n( "smb4k_sudowriter" ),
+                        "0.3",
+                        ki18n( description ),
+                        KAboutData::License_GPL_V2,
+                        ki18n( authors ),
+                        KLocalizedString(),
+                        "http://smb4k.berlios.de",
+                        "smb4k-bugs@lists.berlios.de" );
 
-  if ( argc < 2 )
+  KCmdLineArgs::init( argc, argv, &aboutData );
+
+  KCmdLineOptions options;
+  options.add( "+pid", ki18n( "The PID of the process that is to be killed" ) );
+
+  KCmdLineArgs::addCmdLineOptions( options );
+
+  KApplication app( false /* no GUI */ );
+  
+  // Get the command line argument.
+  KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+  QString pid;
+  
+  if ( args->count() == 1 )
   {
-    info();
+    pid = args->arg( args->count() - 1 );
+  }
+  else
+  {
+    KCmdLineArgs::usage();
     exit( EXIT_FAILURE );
   }
-
-  int new_argc = argc + 1;
-  char *new_argv[new_argc];
-  int index = 0;
+  
+  // Find the kill binary.
   char path[255];
-  path[0] = '\0';
-
-  // Get the options that were passed.
-  int c;
-
-  while ( 1 )
-  {
-    int option_index = 0;
-
-    static struct option long_options[] =
-    {
-      { "help", 0, 0, 0 },
-      { "version", 0, 0, 0 },
-      { 0, 0, 0, 0 }
-    };
-
-    c = getopt_long( argc, argv, "", long_options, &option_index );
-
-    if ( c == -1 )
-    {
-      break;
-    }
-
-    switch ( c )
-    {
-      case 0:
-      {
-        // Copy the option:
-        int len = strlen( long_options[option_index].name ) + 1;
-        char opt[len];
-        opt[0] = '\0';
-        (void) strncpy( opt, long_options[option_index].name, len );
-        opt[len-1] = '\0';
-
-        // Now check which option has been provided:
-        if ( !strncmp( opt, "help", len ) )
-        {
-          info();
-          exit( EXIT_SUCCESS );
-        }
-        else if ( !strncmp( opt, "version", len ) )
-        {
-          version();
-          exit( EXIT_SUCCESS );
-        }
-        else
-        {
-          break;
-        }
-
-        break;
-      }
-      case '?':
-      {
-        // Abort the program if an unknown option
-        // is encountered:
-        exit( EXIT_FAILURE );
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-
+  
   if ( !find_program( "kill", path ) )
   {
+    cerr << argv[0] << ": " << I18N_NOOP( "Could not find kill binary." ) << endl;
+    cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
     exit( EXIT_FAILURE );
   }
-
-  int len = strlen( path ) + 1;
-
-  new_argv[index] = new char[len];
-  new_argv[index][0] = '\0';
-  (void) strncpy( new_argv[index], path, len );
-  new_argv[index][len-1] = '\0';
-
-  index++;
-
-  if ( optind < argc )
+  else
   {
-    while ( optind < argc )
+    // Do nothing
+  }
+  
+  QString kill = QString( path );
+  
+  // Set up the process.
+  KProcess proc;
+  proc.setProcessEnvironment( QProcessEnvironment::systemEnvironment() );
+  proc.setShellCommand( kill+" "+pid );
+  proc.setOutputChannelMode( KProcess::SeparateChannels );
+  
+  switch ( proc.execute() )
+  {
+    case -2:
     {
-      len = strlen( argv[optind] ) + 1;
-
-      new_argv[index] = new char[len];
-      new_argv[index][0] = '\0';
-      (void) strncpy( new_argv[index], argv[optind], len );
-      new_argv[index][len-1] = '\0';
-
-      optind++;
-      index++;
+      cerr << argv[0] << ": " << I18N_NOOP( "The internal process could not be started." ) << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+      exit( EXIT_FAILURE );
+      break;
+    }
+    case -1:
+    {
+      cerr << argv[0] << ": " << I18N_NOOP( "The internal process crashed with exit code " ) << proc.exitCode() << "." << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+      exit( EXIT_FAILURE );
+      break;
+    }
+    default:
+    {
+      // Check if there is output on stderr.
+      QString stderr = QString::fromUtf8( proc.readAllStandardError() );
+      
+      if ( !stderr.isEmpty() )
+      {
+        cerr << argv[0] << ": " << stderr.toUtf8().data(); // Output ends with newline
+        cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+        exit( EXIT_FAILURE );
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      // Check if there is output on stdout.
+      QString stdout = QString::fromUtf8( proc.readAllStandardOutput() );
+      
+      if ( !stdout.isEmpty() )
+      {
+        cerr << argv[0] << ": " << stdout.toUtf8().data(); // Output ends with newline
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      break;
     }
   }
-
-  if ( index >= new_argc )
-  {
-    cerr << "smb4k_kill: There are too many arguments" << endl;
-    exit( EXIT_FAILURE );
-  }
-
-  // Terminate the new argv:
-  new_argv[index] = NULL;
-
-  // Execute command:
-  if ( execve( new_argv[0], new_argv, envp ) == -1 )
-  {
-    int err = errno;
-    cerr << "smb4k_kill: " << strerror( err ) << endl;
-    exit( EXIT_FAILURE );
-  }
-
-  return EXIT_SUCCESS;
+  
+  app.exit( EXIT_SUCCESS );
 }
