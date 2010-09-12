@@ -37,7 +37,7 @@
 #include <iostream>
 using namespace std;
 
-#define VERSION 0.8
+#define VERSION "0.8"
 
 static const char description[] =
   I18N_NOOP( "This program kills processes invoked by Smb4K." );
@@ -80,10 +80,10 @@ bool find_program( const char *name, char *path )
 
 int main( int argc, char *argv[] )
 {
-  KAboutData aboutData( "smb4k_sudowriter",
+  KAboutData aboutData( "smb4k_kill",
                         "smb4k",
-                        ki18n( "smb4k_sudowriter" ),
-                        "0.3",
+                        ki18n( "smb4k_kill" ),
+                        VERSION,
                         ki18n( description ),
                         KAboutData::License_GPL_V2,
                         ki18n( authors ),

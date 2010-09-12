@@ -48,9 +48,10 @@
 #include <errno.h>
 #include <pwd.h>
 #include <iostream>
-#include <cstdlib>
-
+#include <stdlib.h>
 using namespace std;
+
+#define VERSION "0.3"
 
 
 static const char description[] =
@@ -517,7 +518,7 @@ int main ( int argc, char *argv[] )
   KAboutData aboutData( "smb4k_sudowriter",
                         "smb4k",
                         ki18n( "smb4k_sudowriter" ),
-                        "0.3",
+                        VERSION,
                         ki18n( description ),
                         KAboutData::License_GPL_V2,
                         ki18n( authors ),
