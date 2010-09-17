@@ -50,6 +50,7 @@
 #include <smb4khomesshareshandler.h>
 #include <smb4ksearch_p.h>
 #include <smb4kwalletmanager.h>
+#include <smb4knotification.h>
 
 using namespace Smb4KGlobal;
 
@@ -99,7 +100,8 @@ void Smb4KSearch::search( const QString &string )
 
     if ( smbtree.isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "smbtree" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "smbtree" );
       return;
     }
     else
@@ -218,7 +220,8 @@ void Smb4KSearch::search( const QString &string )
 
     if ( nmblookup.isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "nmblookup" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "nmblookup" );
       return;
     }
     else
@@ -231,7 +234,8 @@ void Smb4KSearch::search( const QString &string )
 
     if ( grep.isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "grep" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "grep" );
       return;
     }
     else
@@ -244,7 +248,8 @@ void Smb4KSearch::search( const QString &string )
 
     if ( sed.isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "sed" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "sed" );
       return;
     }
     else
