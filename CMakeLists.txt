@@ -8,6 +8,7 @@ set( VERSION_PATCH 65 )
 cmake_minimum_required( VERSION 2.6 )
 
 find_package( KDE4 REQUIRED )
+set( KDE_MIN_VERSION 4.4.0 )
 
 include(KDE4Defaults)
 include(MacroLibrary)
