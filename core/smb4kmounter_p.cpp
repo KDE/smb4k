@@ -235,7 +235,8 @@ void UnmountThread::slotProcessError()
 
     if ( !stderr.trimmed().isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_UNMOUNTING_SHARE, m_share.unc(), stderr );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->unmountingFailed( &m_share, stderr );
     }
     else
     {
