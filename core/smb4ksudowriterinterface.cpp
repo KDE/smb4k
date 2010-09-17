@@ -40,6 +40,7 @@
 #include <smb4kcoremessage.h>
 #include <smb4ksettings.h>
 #include <smb4kprocess.h>
+#include <smb4knotification.h>
 
 class Smb4KSudoWriterInterfacePrivate
 {
@@ -79,7 +80,8 @@ bool Smb4KSudoWriterInterface::addUser()
 
     if ( smb4k_sudowriter.isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "smb4k_sudowriter" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "smb4k_sudowriter" );
       return false;
     }
     else
@@ -92,7 +94,8 @@ bool Smb4KSudoWriterInterface::addUser()
 
     if ( kdesu.isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "kdesu" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "kdesu" );
       return false;
     }
     else
@@ -165,7 +168,8 @@ bool Smb4KSudoWriterInterface::removeUser()
 
     if ( smb4k_sudowriter.isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "smb4k_sudowriter" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "smb4k_sudowriter" );
       return false;
     }
     else
@@ -178,7 +182,8 @@ bool Smb4KSudoWriterInterface::removeUser()
 
     if ( kdesu.isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "kdesu" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "kdesu" );
       return false;
     }
     else
