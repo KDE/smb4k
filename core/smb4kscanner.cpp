@@ -52,6 +52,7 @@
 #include <smb4kprocess.h>
 #include <smb4ksambaoptionshandler.h>
 #include <smb4ksambaoptionsinfo.h>
+#include <smb4knotification.h>
 
 using namespace Smb4KGlobal;
 
@@ -389,7 +390,8 @@ void Smb4KScanner::lookupDomains()
 
     if ( nmblookup.isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "nmblookup" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "nmblookup" );
       return;
     }
     else
@@ -402,7 +404,8 @@ void Smb4KScanner::lookupDomains()
 
     if ( grep.isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "grep" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "grep" );
       return;
     }
     else
@@ -415,7 +418,8 @@ void Smb4KScanner::lookupDomains()
 
     if ( awk.isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "awk" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "awk" );
       return;
     }
     else
@@ -428,7 +432,8 @@ void Smb4KScanner::lookupDomains()
 
     if ( xargs.isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "xargs" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "xargs" );
       return;
     }
     else
@@ -526,7 +531,8 @@ void Smb4KScanner::lookupDomains()
 
     if ( net.isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "net" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "net" );
       return;
     }
     else
@@ -539,7 +545,8 @@ void Smb4KScanner::lookupDomains()
 
     if ( xargs.isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "xargs" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "xargs" );
       return;
     }
     else
@@ -642,7 +649,8 @@ void Smb4KScanner::lookupDomains()
 
     if ( net.isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "net" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "net" );
       return;
     }
     else
@@ -655,7 +663,8 @@ void Smb4KScanner::lookupDomains()
 
     if ( xargs.isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "xargs" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "xargs" );
       return;
     }
     else
@@ -745,7 +754,8 @@ void Smb4KScanner::lookupDomains()
 
     if ( nmblookup.isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "nmblookup" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "nmblookup" );
       return;
     }
     else
@@ -758,7 +768,8 @@ void Smb4KScanner::lookupDomains()
 
     if ( awk.isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "awk" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "awk" );
       return;
     }
     else
@@ -771,7 +782,8 @@ void Smb4KScanner::lookupDomains()
 
     if ( sed.isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "sed" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "sed" );
       return;
     }
     else
@@ -784,7 +796,8 @@ void Smb4KScanner::lookupDomains()
 
     if ( xargs.isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "xargs" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "xargs" );
       return;
     }
     else
@@ -931,7 +944,8 @@ void Smb4KScanner::lookupDomainMembers( Smb4KWorkgroup *workgroup )
 
   if ( net.isEmpty() )
   {
-    Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "net" );
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->commandNotFound( "net" );
     return;
   }
   else
@@ -1058,7 +1072,8 @@ void Smb4KScanner::lookupShares( Smb4KHost *host )
 
   if ( net.isEmpty() )
   {
-    Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "net" );
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->commandNotFound( "net" );
     return;
   }
   else
@@ -1236,7 +1251,8 @@ void Smb4KScanner::lookupInfo( Smb4KHost *host )
 
   if ( smbclient.isEmpty() )
   {
-    Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "smbclient" );
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->commandNotFound( "smbclient" );
     return;
   }
   else
