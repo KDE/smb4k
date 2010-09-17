@@ -37,6 +37,7 @@
 #include <smb4ksynchronizationinfo.h>
 #include <smb4ksynchronizer_p.h>
 #include <smb4ksettings.h>
+#include <smb4knotification.h>
 
 using namespace Smb4KGlobal;
 
@@ -73,7 +74,8 @@ void Smb4KSynchronizer::synchronize( Smb4KSynchronizationInfo *info )
 
   if ( rsync.isEmpty() )
   {
-    Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "rsync" );
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->commandNotFound( "rsync" );
     return;
   }
   else
