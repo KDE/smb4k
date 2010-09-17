@@ -369,6 +369,20 @@ Smb4K SVN_HEAD (????-??-??):
       obsolete -t <filesystem>, -s and -n options were removed. 
     o Under FreeBSD the (undocumented) option -U <user> was added. 
     o The version number is now 0.11.
+  + smb4k_sudowriter:
+    o Show usage instead of an error message when no valid arguments are
+      given.
+  + smb4k_kill:
+    o Transformed smb4k_kill into a KDE program. It's a drop-in replacement.
+
+Smb4K 0.10.9 (2010-09-11):
+- Fixed restoring of wrong file permissions for sudoers file (closes #17481).
+
+Smb4K 0.10.8 (2010-08-21):
+- Cope with trailing slashes in the UNC. Needed for cifs-utils package under
+  Linux.
+- Fixed crashes in Smb4KSystemTray::slotSetupSharesMenu().
+- Fixed crashes in Smb4KScanner::scanForWorkgroupMembers().
 
 Smb4K 0.10.7 (2010-04-07):
 - Replace broken backported smb4k_umount binary with a fixed one from the 
