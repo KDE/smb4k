@@ -544,29 +544,6 @@ int main ( int argc, char *argv[] )
   QFile lock_file;
   QFile sudoers;
   
-  switch( createLockFile( &lock_file ) )
-  {
-    case 1:
-    {
-      cerr << argv[0] << ": " << I18N_NOOP( "The lock file could not be created." ) << endl;
-      cerr << argv[0] << ": " << lock_file.errorString().toUtf8().data() << endl;
-      cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
-      exit( EXIT_FAILURE );
-      break;
-    }
-    case 2:
-    {
-      cerr << argv[0] << ": " << I18N_NOOP( "The sudoers file is currently being edited." ) << endl;
-      cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
-      exit( EXIT_FAILURE );
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-  
   // Get the command line arguments.
   KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
 
@@ -602,13 +579,33 @@ int main ( int argc, char *argv[] )
   // Show usage if no argument was provided.
   if ( adduser.isEmpty() && removeuser.isEmpty() )
   {
-    KCmdLineArgs::usage();
-    removeLockFile( &lock_file );
+    KCmdLineArgs::usageError( i18n( "No valid arguments provided." ) );
     exit( EXIT_FAILURE );
   }
   else
   {
-    // Do nothing
+    switch( createLockFile( &lock_file ) )
+    {
+      case 1:
+      {
+        cerr << argv[0] << ": " << I18N_NOOP( "The lock file could not be created." ) << endl;
+        cerr << argv[0] << ": " << lock_file.errorString().toUtf8().data() << endl;
+        cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+        exit( EXIT_FAILURE );
+        break;
+      }
+      case 2:
+      {
+        cerr << argv[0] << ": " << I18N_NOOP( "The sudoers file is currently being edited." ) << endl;
+        cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+        exit( EXIT_FAILURE );
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
   }
 
   // Check that the given users are all valid.
