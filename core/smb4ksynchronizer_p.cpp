@@ -30,6 +30,7 @@
 // application specific includes
 #include <smb4ksynchronizer_p.h>
 #include <smb4kcoremessage.h>
+#include <smb4knotification.h>
 
 
 SynchronizationThread::SynchronizationThread( QObject *parent )
@@ -145,7 +146,9 @@ void SynchronizationThread::slotProcessError()
        /*ignore "some files were not transferred" error*/) )
   {
     m_proc->abort();
-    Smb4KCoreMessage::error( ERROR_SYNCHRONIZING, QString(), m_stderr );
+    
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->synchronizationFailed( m_info, m_stderr );
   }
   else
   {
