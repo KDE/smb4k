@@ -82,7 +82,8 @@ void Smb4KPrint::print( Smb4KPrintInfo *printInfo )
 
   if ( smbspool.isEmpty() )
   {
-    Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "smbspool" );
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->commandNotFound( "smbspool" );
     return;
   }
   else
