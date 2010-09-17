@@ -152,7 +152,8 @@ void Smb4KMounter::abort( Smb4KShare *share )
 
       if ( smb4k_kill.isEmpty() )
       {
-        Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "smb4k_kill" );
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->commandNotFound( "smb4k_kill" );
         return;
       }
       else
@@ -176,11 +177,13 @@ void Smb4KMounter::abort( Smb4KShare *share )
       {
         if ( Smb4KSettings::useKdeSudo() )
         {
-          Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "kdesudo" );
+          Smb4KNotification *notification = new Smb4KNotification();
+          notification->commandNotFound( "kdesudo" );
         }
         else
         {
-          Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "sudo" );
+          Smb4KNotification *notification = new Smb4KNotification();
+          notification->commandNotFound( "sudo" );
         }
         return;
       }
@@ -250,7 +253,8 @@ void Smb4KMounter::abortAll()
 
           if ( smb4k_kill.isEmpty() )
           {
-            Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "smb4k_kill" );
+            Smb4KNotification *notification = new Smb4KNotification();
+            notification->commandNotFound( "smb4k_kill" );
             return;
           }
           else
@@ -274,11 +278,13 @@ void Smb4KMounter::abortAll()
           {
             if ( Smb4KSettings::useKdeSudo() )
             {
-              Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "kdesudo" );
+              Smb4KNotification *notification = new Smb4KNotification();
+              notification->commandNotFound( "kdesudo" );
             }
             else
             {
-              Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "sudo" );
+              Smb4KNotification *notification = new Smb4KNotification();
+              notification->commandNotFound( "sudo" );
             }
             return;
           }
@@ -819,7 +825,8 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
 
   if ( smb4k_mount.isEmpty() )
   {
-    Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "smb4k_mount" );
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->commandNotFound( "smb4k_mount" );
     return;
   }
   else
@@ -844,11 +851,13 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   {
     if ( Smb4KSettings::useKdeSudo() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "kdesudo" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "kdesudo" );
     }
     else
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "sudo" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "sudo" );
     }
     return;
   }
@@ -1332,7 +1341,8 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
 
   if ( smb4k_umount.isEmpty() )
   {
-    Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "smb4k_umount" );
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->commandNotFound( "smb4k_umount" );
     return;
   }
   else
@@ -1358,11 +1368,13 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
   {
     if ( Smb4KSettings::useKdeSudo() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "kdesudo" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "kdesudo" );
     }
     else
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "sudo" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "sudo" );
     }
     return;
   }
@@ -1377,7 +1389,8 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
   {
     if ( !silent )
     {
-      Smb4KCoreMessage::error( ERROR_UNMOUNTING_NOT_ALLOWED );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->unmountingNotAllowed( share );
     }
     else
     {
