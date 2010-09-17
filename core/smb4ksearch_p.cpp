@@ -36,6 +36,7 @@
 #include <smb4kshare.h>
 #include <smb4kbasicnetworkitem.h>
 #include <smb4kauthinfo.h>
+#include <smb4knotification.h>
 
 
 SearchThread::SearchThread( QObject *parent )
@@ -186,12 +187,14 @@ void SearchThread::slotProcessError()
     }
     else
     {
-      Smb4KCoreMessage::error( ERROR_SEARCHING, QString(), stderr );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->searchingFailed( m_string, stderr );
     }
   }
   else
   {
-    Smb4KCoreMessage::error( ERROR_SEARCHING, QString(), stderr );
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->searchingFailed( m_string, stderr );
   }
 }
 
