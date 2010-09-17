@@ -51,14 +51,14 @@ class PrintThread : public QThread
     ~PrintThread();
     void print( Smb4KAuthInfo *authInfo,
                 const QString &command );
-    Smb4KPrintInfo *printInfo() { return m_info; }
+    Smb4KPrintInfo *printInfo() { return &m_info; }
     Smb4KProcess *process() { return m_proc; }
     void setTempFilePath( const QString &path );
     const QString &tempFilePath() { return m_temp; }
     bool authenticationError() { return m_auth_error; }
 
   private:
-    Smb4KPrintInfo *m_info;
+    Smb4KPrintInfo m_info;
     Smb4KProcess *m_proc;
     QString m_temp;
     bool m_auth_error;
