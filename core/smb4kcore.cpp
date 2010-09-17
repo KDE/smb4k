@@ -164,7 +164,8 @@ void Smb4KCore::open( Smb4KShare *share, OpenWith openWith )
 
       if ( konsole.isEmpty() )
       {
-        Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "konsole" );
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->commandNotFound( "konsole" );
       }
       else
       {
