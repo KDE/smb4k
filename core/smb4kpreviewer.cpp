@@ -48,6 +48,7 @@
 #include <smb4kwalletmanager.h>
 #include <smb4kprocess.h>
 #include <smb4ksettings.h>
+#include <smb4knotification.h>
 
 using namespace Smb4KGlobal;
 
@@ -81,7 +82,8 @@ void Smb4KPreviewer::preview( Smb4KPreviewItem *item )
 
   if ( smbclient.isEmpty() )
   {
-    Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "smbclient" );
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->commandNotFound( "smbclient" );
     return;
   }
   else
