@@ -44,6 +44,7 @@
 #include <smb4kipaddressscanner_p.h>
 #include <smb4ksettings.h>
 #include <smb4kprocess.h>
+#include <smb4knotification.h>
 
 using namespace Smb4KGlobal;
 
@@ -100,7 +101,8 @@ void Smb4KIPAddressScanner::lookup( Smb4KHost *host, bool wait )
 
     if ( nmblookup.isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "nmblookup" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "nmblookup" );
       return;
     }
     else
@@ -113,7 +115,8 @@ void Smb4KIPAddressScanner::lookup( Smb4KHost *host, bool wait )
 
     if ( grep.isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "grep" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "grep" );
       return;
     }
     else
@@ -126,7 +129,8 @@ void Smb4KIPAddressScanner::lookup( Smb4KHost *host, bool wait )
 
     if ( awk.isEmpty() )
     {
-      Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "awk" );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "awk" );
       return;
     }
     else
