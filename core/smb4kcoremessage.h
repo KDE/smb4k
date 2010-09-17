@@ -42,21 +42,6 @@
 // Error codes:
 //
 
-// (2) Errors involving mounting, unmounting
-// and importing shares.
-#define ERROR_UNMOUNTING_SHARE              107
-#define ERROR_UNMOUNTING_NOT_ALLOWED        108
-
-// (3) Errors that are connected to printing
-#define ERROR_PRINTING                      111
-
-// (4) Errors that are connected to
-// synchronization
-#define ERROR_SYNCHRONIZING                 112
-
-// (5) Search errors
-#define ERROR_SEARCHING                     113
-
 // (5) Errors that occur when handling
 // bookmarks
 #define ERROR_BOOKMARK_PRINTER              114
@@ -74,14 +59,12 @@
 
 // (8) Errors that occur when working with programs
 #define ERROR_MISSING_PROGRAMS              120
-#define ERROR_COMMAND_NOT_FOUND             121
 
 // (9) Process errors
 #define ERROR_PROCESS_EXIT                  122
 #define ERROR_PROCESS_ERROR                 123
 
 // (10) Other errors
-#define ERROR_UNKNOWN                       124
 #define ERROR_GETTING_HOSTNAME              125
 #define ERROR_FEATURE_NOT_ENABLED           126
 #define ERROR_XML_ERROR                     127

@@ -58,37 +58,6 @@ void Smb4KCoreMessage::error( int code, const QString &text, const QString &deta
 
   switch ( code )
   {
-    case ERROR_UNMOUNTING_NOT_ALLOWED:
-    {
-      KMessageBox::error( parent, i18n( "<qt>You are not allowed to unmount this share. It is owned by another user.</qt>" ) );
-
-      break;
-    }
-//     case ERROR_MOUNTING_SHARE:
-//     {
-//       if ( details.trimmed().isEmpty() )
-//       {
-//         KMessageBox::error( parent, i18n( "<qt><p>The share %1 could not be mounted.</p><p>Detailed information cannot be provided because there was no error message.</p></qt>", text ) );
-//       }
-//       else {
-//         KMessageBox::detailedError( parent, i18n( "<qt><p>The share %1 could not be mounted.</p><p>Read the error message under \"Details\" to find out more.</p></qt>", text ), details );
-//       }
-// 
-//       break;
-//     }
-    case ERROR_UNMOUNTING_SHARE:
-    {
-      if ( details.trimmed().isEmpty() )
-      {
-        KMessageBox::error( parent, i18n( "<qt><p>The share %1 could not be unmounted.</p><p>Detailed information cannot be provided because there was no error message.</p></qt>", text ) );
-      }
-      else
-      {
-        KMessageBox::detailedError( parent, i18n( "<qt><p>The share %1 could not be unmounted.</p><p>Read the error message under \"Details\" to find out more.</p></qt>", text ), details );
-      }
-
-      break;
-    }
     case ERROR_FILE_NOT_FOUND:
     {
       KMessageBox::error( parent, i18n( "<qt>The file \"%1\" could not be found.</qt>", text ) );
@@ -145,25 +114,6 @@ void Smb4KCoreMessage::error( int code, const QString &text, const QString &deta
 
       break;
     }
-    case ERROR_COMMAND_NOT_FOUND:
-    {
-      KMessageBox::error( parent, i18n( "<qt>The command \"%1\" could not be found.</qt>", text ) );
-
-      break;
-    }
-    case ERROR_PRINTING:
-    {
-      if ( details.trimmed().isEmpty() )
-      {
-        KMessageBox::error( parent, i18n( "<qt><p>The file \"%1\" could not be printed.</p></p>Detailed information cannot be provided because there was no error message.</p></qt>", text ) );
-      }
-      else
-      {
-        KMessageBox::detailedError( parent, i18n( "<qt><p>The file \"%1\" could not be printed.</p><p>Read the error message under \"Details\" to find out more.</p></qt>", text ), details );
-      }
-
-      break;
-    }
     case ERROR_CREATING_TEMP_FILE:
     {
       if ( details.trimmed().isEmpty() )
@@ -173,32 +123,6 @@ void Smb4KCoreMessage::error( int code, const QString &text, const QString &deta
       else
       {
         KMessageBox::detailedError( parent, i18n( "<qt><p>The temporary file could not be created.</p><p>Read the error message under \"Details\" to find out more.</p></qt>" ), details );
-      }
-
-      break;
-    }
-    case ERROR_SYNCHRONIZING:
-    {
-      if ( details.trimmed().isEmpty() )
-      {
-        KMessageBox::error( parent, i18n( "<qt></p>The synchronization could not be finished successfully.</p><p>Detailed information cannot be provided because there was no error message.</p></qt>" ) );
-      }
-      else
-      {
-        KMessageBox::detailedError( parent, i18n( "<qt><p>The synchronization could not be finished successfully.</p><p>Read the error message under \"Details\" to find out more.</p></qt>" ), details );
-      }
-
-      break;
-    }
-    case ERROR_SEARCHING:
-    {
-      if ( details.trimmed().isEmpty() )
-      {
-        KMessageBox::error( parent, i18n( "<qt><p>The search could not be finished successfully.</p><p>Detailed information cannot be provided because there was no error message.</p></qt>" ) );
-      }
-      else
-      {
-        KMessageBox::detailedError( parent, i18n( "<qt><p>The search could not be finished successfully.</p><p>Read the error message under \"Details\" to find out more.</p></qt>" ), details );
       }
 
       break;
@@ -229,7 +153,6 @@ void Smb4KCoreMessage::error( int code, const QString &text, const QString &deta
 
       break;
     }
-    case ERROR_UNKNOWN:
     default:
     {
       if ( details.trimmed().isEmpty() )
