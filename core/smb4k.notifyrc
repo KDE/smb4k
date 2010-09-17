@@ -371,3 +371,45 @@ Comment[x-test]=xxMounting a share failedxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
+
+[Event/unmountingFailed]
+Name=Unmounting failed
+Comment=Unmounting a share failed
+Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
+Action=Popup|Sound
+
+[Event/unmountingNotAllowed]
+Name=Unmounting not allowed
+Comment=The user is not allowed to umount the share
+Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
+Action=Popup|Sound
+
+[Event/printingFailed]
+Name=Printing failed
+Comment=Printing a file failed
+Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
+Action=Popup|Sound
+
+[Event/synchronizationFailed]
+Name=Synchronization failed
+Comment=The synchronization failed
+Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
+Action=Popup|Sound
+
+[Event/searchingFailed]
+Name=Searching failed
+Comment=Searching the network neighborhood failed
+Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
+Action=Popup|Sound
+
+[Event/commandNotFound]
+Name=Command not found
+Comment=The command could not be found
+Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
+Action=Popup|Sound
