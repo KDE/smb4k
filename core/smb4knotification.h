@@ -44,6 +44,8 @@
 class Smb4KBookmark;
 class Smb4KWorkgroup;
 class Smb4KHost;
+class Smb4KPrintInfo;
+class Smb4KSynchronizationInfo;
 
 
 class KDE_EXPORT Smb4KNotification : public QObject
@@ -199,6 +201,57 @@ class KDE_EXPORT Smb4KNotification : public QObject
      */
     void mountingFailed( Smb4KShare *share, const QString &err_msg );
     
+    /**
+     * This error message is shown if the unmounting of a share failed.
+     * 
+     * @param share     The share that was to be unmounted
+     * 
+     * @param err_msg   The error message
+     */
+    void unmountingFailed( Smb4KShare *share, const QString &err_msg );
+    
+    /**
+     * This error message is shown if the unmounting of a certain share
+     * is not allowed for the user.
+     * 
+     * @param share     The share that was to be unmounted
+     */
+    void unmountingNotAllowed( Smb4KShare *share );
+    
+    /**
+     * This error message is shown if printing failed.
+     * 
+     * @param info      The print info object
+     *
+     * @param err_msg   The error message
+     */
+    void printingFailed( Smb4KPrintInfo *info, const QString &err_msg );
+    
+    /**
+     * This error message is shown if the synchronization failed.
+     *
+     * @param info      The synchronization info object
+     *
+     * @param err_msg   The error message
+     */
+    void synchronizationFailed( Smb4KSynchronizationInfo *info, const QString &err_msg );
+    
+    /**
+     * This error message is shown if the searching of the network
+     * neighborhood failed.
+     *
+     * @param item      The search item
+     *
+     * @param err_msg   The error message
+     */
+    void searchingFailed( const QString &item, const QString &err_msg );
+    
+    /**
+     * This error message is shown if a command could not be found.
+     * 
+     * @param command   The command that could not be found
+     */
+    void commandNotFound( const QString &command );
     
   protected slots:
     /**
