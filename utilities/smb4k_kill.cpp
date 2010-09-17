@@ -39,6 +39,7 @@ using namespace std;
 
 #define VERSION "0.8"
 
+
 static const char description[] =
   I18N_NOOP( "This program kills processes invoked by Smb4K." );
 
@@ -110,7 +111,7 @@ int main( int argc, char *argv[] )
   }
   else
   {
-    KCmdLineArgs::usage();
+    KCmdLineArgs::usageError( "No argument provided." );
     exit( EXIT_FAILURE );
   }
   
