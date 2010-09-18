@@ -374,42 +374,54 @@ Action=Popup|Sound
 
 [Event/unmountingFailed]
 Name=Unmounting failed
+Name[x-test]=xxUnmounting failedxx
 Comment=Unmounting a share failed
+Comment[x-test]=xxUnmounting a share failedxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/unmountingNotAllowed]
 Name=Unmounting not allowed
+Name[x-test]=xxUnmounting not allowedxx
 Comment=The user is not allowed to umount the share
+Comment[x-test]=xxThe user is not allowed to umount the sharexx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/printingFailed]
 Name=Printing failed
+Name[x-test]=xxPrinting failedxx
 Comment=Printing a file failed
+Comment[x-test]=xxPrinting a file failedxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/synchronizationFailed]
 Name=Synchronization failed
+Name[x-test]=xxSynchronization failedxx
 Comment=The synchronization failed
+Comment[x-test]=xxThe synchronization failedxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/searchingFailed]
 Name=Searching failed
+Name[x-test]=xxSearching failedxx
 Comment=Searching the network neighborhood failed
+Comment[x-test]=xxSearching the network neighborhood failedxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/commandNotFound]
 Name=Command not found
+Name[x-test]=xxCommand not foundxx
 Comment=The command could not be found
+Comment[x-test]=xxThe command could not be foundxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
