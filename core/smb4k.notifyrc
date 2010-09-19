@@ -374,8 +374,12 @@ Action=Popup|Sound
 
 [Event/unmountingFailed]
 Name=Unmounting failed
+Name[pt]=A desmontagem foi mal-sucedida
+Name[uk]=Помилка демонтування
 Name[x-test]=xxUnmounting failedxx
 Comment=Unmounting a share failed
+Comment[pt]=Não foi possível desmontar uma dada partilha
+Comment[uk]=Помилка демонтування ресурсу
 Comment[x-test]=xxUnmounting a share failedxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
@@ -383,8 +387,12 @@ Action=Popup|Sound
 
 [Event/unmountingNotAllowed]
 Name=Unmounting not allowed
+Name[pt]=Montagem não permitida
+Name[uk]=Демонтування заборонено
 Name[x-test]=xxUnmounting not allowedxx
 Comment=The user is not allowed to umount the share
+Comment[pt]=O utilizador não tem permissões para desmontar a partilha
+Comment[uk]=У користувача недостатньо прав для демонтування ресурсу
 Comment[x-test]=xxThe user is not allowed to umount the sharexx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
@@ -392,8 +400,12 @@ Action=Popup|Sound
 
 [Event/printingFailed]
 Name=Printing failed
+Name[pt]=Impressão mal sucedida
+Name[uk]=Помилка друку
 Name[x-test]=xxPrinting failedxx
 Comment=Printing a file failed
+Comment[pt]=Não foi possível imprimir um dado ficheiro
+Comment[uk]=Помилка під час друку до файла
 Comment[x-test]=xxPrinting a file failedxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
@@ -401,8 +413,12 @@ Action=Popup|Sound
 
 [Event/synchronizationFailed]
 Name=Synchronization failed
+Name[pt]=Sincronização mal-sucedida
+Name[uk]=Невдала спроба синхронізації
 Name[x-test]=xxSynchronization failedxx
 Comment=The synchronization failed
+Comment[pt]=A sincronização foi mal-sucedida
+Comment[uk]=Спроба синхронізації зазнала невдачі
 Comment[x-test]=xxThe synchronization failedxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
@@ -410,8 +426,12 @@ Action=Popup|Sound
 
 [Event/searchingFailed]
 Name=Searching failed
+Name[pt]=Pesquisa mal-sucedida
+Name[uk]=Помилка пошуку
 Name[x-test]=xxSearching failedxx
 Comment=Searching the network neighborhood failed
+Comment[pt]=Não foi possível pesquisar na vizinhança da rede
+Comment[uk]=Спроба пошуку у мережевому оточенні зазнала невдачі
 Comment[x-test]=xxSearching the network neighborhood failedxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
@@ -419,8 +439,12 @@ Action=Popup|Sound
 
 [Event/commandNotFound]
 Name=Command not found
+Name[pt]=Comando não encontrado
+Name[uk]=Команду не знайдено
 Name[x-test]=xxCommand not foundxx
 Comment=The command could not be found
+Comment[pt]=Não foi possível encontrar o comando
+Comment[uk]=Не вдалося знайти відповідну програму
 Comment[x-test]=xxThe command could not be foundxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
