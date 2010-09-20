@@ -153,6 +153,7 @@ Action=Popup
 [Event/openingWalletFailed]
 Name=Opening wallet failed
 Name[da]=Åbning af tegnebogen mislykkedes
+Name[de]=Öffnen der digitalen Brieftasche fehlgeschlagen
 Name[pt]=A abertura da carteira foi mal-sucedida
 Name[pt_BR]=Falha ao abrir a carteira
 Name[sv]=Misslyckades öppna plånboken
@@ -299,6 +300,7 @@ Action=Popup|Sound
 [Event/retrievingServersFailed]
 Name=Retrieving servers failed
 Name[da]=Hentning af servere mislykkedes
+Name[de]=Abrufen der Server fehlgeschlagen
 Name[pt]=A obtenção dos servidores foi mal-sucedida
 Name[pt_BR]=A obtenção de servidores falhou
 Name[sv]=Misslyckades hämta servrar
@@ -306,6 +308,7 @@ Name[uk]=Невдала спроба отримання списку серве�
 Name[x-test]=xxRetrieving servers failedxx
 Comment=The list of servers could not be retrieved
 Comment[da]=Listen over servere kunne ikke hentes
+Comment[de]=Die Liste der Server kann nicht abgerufen werden
 Comment[pt]=Não foi possível obter a lista dos servidores
 Comment[pt_BR]=A lista de servidores não pode ser obtida
 Comment[sv]=Listan med servrar kunde inte hämtas
@@ -318,6 +321,7 @@ Action=Popup|Sound
 [Event/retrievingSharesFailed]
 Name=Retrieving shares failed
 Name[da]=Hentning af ressourcer mislykkedes
+Name[de]=Abrufen der Freigaben fehlgeschlagen
 Name[pt]=Não foi possível obter as partilhas
 Name[pt_BR]=Falha na obtenção dos compartilhamentos
 Name[sv]=Misslyckades hämta delade kataloger
@@ -325,6 +329,7 @@ Name[uk]=Невдала спроба отримання списку спіль�
 Name[x-test]=xxRetrieving shares failedxx
 Comment=The list of shares could not be retrieved
 Comment[da]=Listen over ressourcer kunne ikke hentes
+Comment[de]=Die Freigabenliste kann nicht abgerufen werden
 Comment[pt]=Não foi possível obter a lista das partilhas
 Comment[pt_BR]=A lista de compartilhamentos não pode ser obtida
 Comment[sv]=Listan med delade kataloger kunde inte hämtas
@@ -337,6 +342,7 @@ Action=Popup|Sound
 [Event/retrievingPreviewFailed]
 Name=Retrieving preview failed
 Name[da]=Hentning af forhåndsvisning mislykkedes
+Name[de]=Abrufen der Vorschau fehlgeschlagen
 Name[pt]=Não foi possível obter a antevisão
 Name[pt_BR]=Falha na obtenção de visualização
 Name[sv]=Misslyckades hämta förhandsgranskning
@@ -344,6 +350,7 @@ Name[uk]=Невдала спроба отримання попереднього
 Name[x-test]=xxRetrieving preview failedxx
 Comment=The preview could not be retrieved
 Comment[da]=Forhåndsvisningen kunne ikke hentes
+Comment[de]=Die Vorschau kann nicht abgerufen werden
 Comment[pt]=Não foi possível obter a antevisão
 Comment[pt_BR]=A visualização não pode ser obtida
 Comment[sv]=Förhandsgranskningen kunde inte hämtas
@@ -356,6 +363,7 @@ Action=Popup|Sound
 [Event/mountingFailed]
 Name=Mounting failed
 Name[da]=Montering mislykkedes
+Name[de]=Einbinden fehlgeschlagen
 Name[pt]=A montagem foi mal-sucedida
 Name[pt_BR]=A montagem falhou
 Name[sv]=Montering misslyckades
@@ -363,6 +371,7 @@ Name[uk]=Невдала спроба монтування
 Name[x-test]=xxMounting failedxx
 Comment=Mounting a share failed
 Comment[da]=Montering af en ressource mislykkedes
+Comment[de]=Einbinden einer Freigabe fehlgeschlagen
 Comment[pt]=Não foi possível montar uma dada partilha
 Comment[pt_BR]=Falha ao montar um compartilhamento
 Comment[sv]=Misslyckades montera en delad katalog
@@ -374,11 +383,15 @@ Action=Popup|Sound
 
 [Event/unmountingFailed]
 Name=Unmounting failed
+Name[de]=Trennen fehlgeschlagen
 Name[pt]=A desmontagem foi mal-sucedida
+Name[sv]=Avmontering misslyckades
 Name[uk]=Помилка демонтування
 Name[x-test]=xxUnmounting failedxx
 Comment=Unmounting a share failed
+Comment[de]=Trennen einer Freigabe fehlgeschlagen
 Comment[pt]=Não foi possível desmontar uma dada partilha
+Comment[sv]=Misslyckades avmontera en delad katalog
 Comment[uk]=Помилка демонтування ресурсу
 Comment[x-test]=xxUnmounting a share failedxx
 Contexts=Error
@@ -387,11 +400,15 @@ Action=Popup|Sound
 
 [Event/unmountingNotAllowed]
 Name=Unmounting not allowed
+Name[de]=Trennen nicht erlaubt
 Name[pt]=Montagem não permitida
+Name[sv]=Avmontering inte tillåten
 Name[uk]=Демонтування заборонено
 Name[x-test]=xxUnmounting not allowedxx
 Comment=The user is not allowed to umount the share
+Comment[de]=Der Benutzer darf die Freigabe nicht trennen
 Comment[pt]=O utilizador não tem permissões para desmontar a partilha
+Comment[sv]=Användaren tillåts inte avmontera den delade katalogen
 Comment[uk]=У користувача недостатньо прав для демонтування ресурсу
 Comment[x-test]=xxThe user is not allowed to umount the sharexx
 Contexts=Error
@@ -400,11 +417,15 @@ Action=Popup|Sound
 
 [Event/printingFailed]
 Name=Printing failed
+Name[de]=Drucken fehlgeschlagen
 Name[pt]=Impressão mal sucedida
+Name[sv]=Utskrift misslyckades
 Name[uk]=Помилка друку
 Name[x-test]=xxPrinting failedxx
 Comment=Printing a file failed
+Comment[de]=Das Drucken einer Datei ist fehlgeschlagen
 Comment[pt]=Não foi possível imprimir um dado ficheiro
+Comment[sv]=Misslyckades skriva ut en fil
 Comment[uk]=Помилка під час друку до файла
 Comment[x-test]=xxPrinting a file failedxx
 Contexts=Error
@@ -413,11 +434,15 @@ Action=Popup|Sound
 
 [Event/synchronizationFailed]
 Name=Synchronization failed
+Name[de]=Synchronisation fehlgeschlagen
 Name[pt]=Sincronização mal-sucedida
+Name[sv]=Synkronisering misslyckades
 Name[uk]=Невдала спроба синхронізації
 Name[x-test]=xxSynchronization failedxx
 Comment=The synchronization failed
+Comment[de]=Die Synchronisation ist fehlgeschlagen
 Comment[pt]=A sincronização foi mal-sucedida
+Comment[sv]=Synkroniseringen misslyckades
 Comment[uk]=Спроба синхронізації зазнала невдачі
 Comment[x-test]=xxThe synchronization failedxx
 Contexts=Error
@@ -426,11 +451,15 @@ Action=Popup|Sound
 
 [Event/searchingFailed]
 Name=Searching failed
+Name[de]=Suche fehlgeschlagen
 Name[pt]=Pesquisa mal-sucedida
+Name[sv]=Sökning misslyckades
 Name[uk]=Помилка пошуку
 Name[x-test]=xxSearching failedxx
 Comment=Searching the network neighborhood failed
+Comment[de]=Das Durchsuchen der Netzwerkumgebung ist fehlgeschlagen
 Comment[pt]=Não foi possível pesquisar na vizinhança da rede
+Comment[sv]=Misslyckades söka i nätverksgrannskapet
 Comment[uk]=Спроба пошуку у мережевому оточенні зазнала невдачі
 Comment[x-test]=xxSearching the network neighborhood failedxx
 Contexts=Error
@@ -439,11 +468,15 @@ Action=Popup|Sound
 
 [Event/commandNotFound]
 Name=Command not found
+Name[de]=Befehl nicht gefunden
 Name[pt]=Comando não encontrado
+Name[sv]=Kommando hittades inte
 Name[uk]=Команду не знайдено
 Name[x-test]=xxCommand not foundxx
 Comment=The command could not be found
+Comment[de]=Der Befehl kann nicht gefunden werden
 Comment[pt]=Não foi possível encontrar o comando
+Comment[sv]=Kommandot kunde inte hittas
 Comment[uk]=Не вдалося знайти відповідну програму
 Comment[x-test]=xxThe command could not be foundxx
 Contexts=Error
