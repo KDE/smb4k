@@ -67,7 +67,7 @@
 using namespace Smb4KGlobal;
 
 typedef KParts::GenericFactory<Smb4KNetworkBrowserPart> Smb4KNetworkBrowserPartFactory;
-K_EXPORT_COMPONENT_FACTORY( libsmb4knetworkbrowser, Smb4KNetworkBrowserPartFactory )
+K_EXPORT_COMPONENT_FACTORY( smb4knetworkbrowser, Smb4KNetworkBrowserPartFactory )
 
 
 Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject *parent, const QStringList &args )
@@ -2108,5 +2108,6 @@ void Smb4KNetworkBrowserPart::slotAboutToQuit()
 {
   saveSettings();
 }
+
 
 #include "smb4knetworkbrowser_part.moc"

@@ -58,7 +58,7 @@
 using namespace Smb4KGlobal;
 
 typedef KParts::GenericFactory<Smb4KSharesViewPart> Smb4KSharesViewPartFactory;
-K_EXPORT_COMPONENT_FACTORY( libsmb4ksharesview, Smb4KSharesViewPartFactory )
+K_EXPORT_COMPONENT_FACTORY( smb4ksharesview, Smb4KSharesViewPartFactory )
 
 
 Smb4KSharesViewPart::Smb4KSharesViewPart( QWidget *parentWidget, QObject *parent, const QStringList &args )

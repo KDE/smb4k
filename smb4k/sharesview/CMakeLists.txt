@@ -13,7 +13,7 @@ set(smb4ksharesview_PART_SRCS
    smb4ksharesviewtooltip.cpp
    smb4ksharesviewitemdata.cpp )
 
-kde4_add_plugin( smb4ksharesview WITH_PREFIX ${smb4ksharesview_PART_SRCS})
+kde4_add_plugin( smb4ksharesview ${smb4ksharesview_PART_SRCS})
 
 target_link_libraries( smb4ksharesview  ${KDE4_KDECORE_LIBS} smb4kdialogs smb4kcore ${KDE4_KPARTS_LIBS} )
 

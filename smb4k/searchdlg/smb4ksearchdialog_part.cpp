@@ -55,7 +55,7 @@
 using namespace Smb4KGlobal;
 
 typedef KParts::GenericFactory<Smb4KSearchDialogPart> Smb4KSearchDialogPartFactory;
-K_EXPORT_COMPONENT_FACTORY( libsmb4ksearchdialog, Smb4KSearchDialogPartFactory )
+K_EXPORT_COMPONENT_FACTORY( smb4ksearchdialog, Smb4KSearchDialogPartFactory )
 
 Smb4KSearchDialogPart::Smb4KSearchDialogPart( QWidget *parentWidget, QObject *parent, const QStringList &args )
 : KParts::Part( parent ), m_silent( false )
@@ -733,7 +733,6 @@ void Smb4KSearchDialogPart::slotAboutToQuit()
   KConfigGroup group( Smb4KSettings::self()->config(), "SearchDialog" );
   group.writeEntry( "SearchItemCompletion", m_widget->comboBox()->completionObject()->items() );
 }
-
 
 
 #include "smb4ksearchdialog_part.moc"

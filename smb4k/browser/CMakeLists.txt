@@ -10,7 +10,7 @@ set(smb4knetworkbrowser_PART_SRCS
   smb4knetworkbrowseritem.cpp
   smb4knetworkbrowsertooltip.cpp )
 
-kde4_add_plugin(smb4knetworkbrowser WITH_PREFIX ${smb4knetworkbrowser_PART_SRCS})
+kde4_add_plugin(smb4knetworkbrowser ${smb4knetworkbrowser_PART_SRCS})
 
 target_link_libraries(smb4knetworkbrowser  ${KDE4_KDECORE_LIBS} smb4kcore smb4kdialogs ${KDE4_KPARTS_LIBS} )
 

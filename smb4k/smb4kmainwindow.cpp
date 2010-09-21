@@ -240,7 +240,7 @@ void Smb4KMainWindow::setupView()
   QDockWidget *shares_dock = NULL;
 
   // Load the network browser.
-  KPluginLoader browser_loader( "libsmb4knetworkbrowser" );
+  KPluginLoader browser_loader( "smb4knetworkbrowser" );
   KPluginFactory *browser_factory = browser_loader.factory();
 
   if ( browser_factory )
@@ -283,7 +283,7 @@ void Smb4KMainWindow::setupView()
   }
 
   // Load the search dialog.
-  KPluginLoader search_loader( "libsmb4ksearchdialog" );
+  KPluginLoader search_loader( "smb4ksearchdialog" );
   KPluginFactory *search_factory = search_loader.factory();
 
   if ( search_factory )
@@ -324,7 +324,7 @@ void Smb4KMainWindow::setupView()
     return;
   }
 
-  KPluginLoader shares_loader( "libsmb4ksharesview" );
+  KPluginLoader shares_loader( "smb4ksharesview" );
   KPluginFactory *shares_factory = shares_loader.factory();
 
   if ( shares_factory )
