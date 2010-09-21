@@ -344,10 +344,9 @@ void Smb4KCore::searchPrograms()
 
   if ( !missing.isEmpty() )
   {
-    // Error out if one of the mandatory programs is
-    // missing:
-
-    Smb4KCoreMessage::error( ERROR_MISSING_PROGRAMS, missing.join( ", " ) );
+    // Error out if one of the mandatory programs is missing:
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->missingPrograms( missing );
     exit( EXIT_FAILURE );
   }
   else

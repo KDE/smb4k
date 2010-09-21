@@ -32,6 +32,8 @@
 
 // Qt includes
 #include <QObject>
+#include <QFile>
+#include <QDir>
 
 // KDE includes
 #include <knotification.h>
@@ -46,6 +48,12 @@ class Smb4KWorkgroup;
 class Smb4KHost;
 class Smb4KPrintInfo;
 class Smb4KSynchronizationInfo;
+
+/**
+ * This class provides notifications used thoughout Smb4K.
+ * 
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ */
 
 
 class KDE_EXPORT Smb4KNotification : public QObject
@@ -252,6 +260,50 @@ class KDE_EXPORT Smb4KNotification : public QObject
      * @param command   The command that could not be found
      */
     void commandNotFound( const QString &command );
+    
+    /**
+     * This error message is shown if the user tried to bookmark a printer.
+     * 
+     * @param share     The Smb4KShare object
+     */
+    void cannotBookmarkPrinter( Smb4KShare *share );
+    
+    /**
+     * This error message is shown if smb4k_sudowriter reported an error.
+     * 
+     * @param err_msg   The error message
+     */
+    void sudowriterFailed( const QString &err_msg );
+    
+    /**
+     * This error message is shown if a file could not be found.
+     * 
+     * @param fileName  The file name
+     */
+    void fileNotFound( const QString &fileName );
+    
+    /**
+     * This error message is shown if a file could not be opened.
+     *
+     * @param file      The QFile object
+     */
+    void openingFileFailed( const QFile &file );
+    
+    /**
+     * This error message is shown if the creation of a directory 
+     * failed.
+     *
+     * @param path      The path
+     */
+    void mkdirFailed( const QDir &dir );
+    
+    /**
+     * This error message is shown if there are mandatorily needed 
+     * programs missing.
+     * 
+     * @param programs  The list of missing programs
+     */
+    void missingPrograms( const QStringList &programs );
     
   protected slots:
     /**

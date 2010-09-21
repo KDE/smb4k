@@ -58,12 +58,6 @@ void Smb4KCoreMessage::error( int code, const QString &text, const QString &deta
 
   switch ( code )
   {
-    case ERROR_FILE_NOT_FOUND:
-    {
-      KMessageBox::error( parent, i18n( "<qt>The file \"%1\" could not be found.</qt>", text ) );
-
-      break;
-    }
     case ERROR_GETTING_HOSTNAME:
     {
       if ( details.trimmed().isEmpty() )
@@ -77,66 +71,15 @@ void Smb4KCoreMessage::error( int code, const QString &text, const QString &deta
 
       break;
     }
-    case ERROR_MISSING_PROGRAMS:
-    {
-      KMessageBox::error( parent, i18n( "<qt><p>Either your PATH environment variable is not set properly or there are the following programs missing on your system:</p><p>%1</p><p>Please correct this and restart Smb4K.</p></qt>", text ) );
-
-      break;
-    }
-    case ERROR_MKDIR_FAILED:
-    {
-      KMessageBox::error( parent, i18n( "<qt>The directory \"%1\" could not be created.</qt>", text ) );
-
-      break;
-    }
+//     case ERROR_MISSING_PROGRAMS:
+//     {
+//       KMessageBox::error( parent, i18n( "<qt><p>Either your PATH environment variable is not set properly or there are the following programs missing on your system:</p><p>%1</p><p>Please correct this and restart Smb4K.</p></qt>", text ) );
+// 
+//       break;
+//     }
     case ERROR_FEATURE_NOT_ENABLED:
     {
       KMessageBox::error( parent, i18n( "<qt>This feature has not been enabled.</qt>" ) );
-
-      break;
-    }
-    case ERROR_BOOKMARK_PRINTER:
-    {
-      KMessageBox::error( parent, i18n( "<qt>Printers cannot be bookmarked.</qt>" ) );
-
-      break;
-    }
-    case ERROR_SUDOWRITER:
-    {
-      if ( details.trimmed().isEmpty() )
-      {
-        KMessageBox::error( parent, i18n( "<qt><p>An error occurred while writing to the sudoers file.</p><p>Detailed information cannot be provided because there was no error message.</p></qt>" ) );
-      }
-      else
-      {
-        KMessageBox::detailedError( parent, i18n( "<qt><p>An error occurred while writing to the sudoers file.</p><p>Read the error message under \"Details\" to find out more.</p></qt>" ), details );
-      }
-
-      break;
-    }
-    case ERROR_CREATING_TEMP_FILE:
-    {
-      if ( details.trimmed().isEmpty() )
-      {
-        KMessageBox::error( parent, i18n( "<qt><p>The temporary file could not be created.</p><p>Detailed information cannot be provided because there was no error message.</p></qt>" ) );
-      }
-      else
-      {
-        KMessageBox::detailedError( parent, i18n( "<qt><p>The temporary file could not be created.</p><p>Read the error message under \"Details\" to find out more.</p></qt>" ), details );
-      }
-
-      break;
-    }
-    case ERROR_OPENING_FILE:
-    {
-      if ( details.trimmed().isEmpty() )
-      {
-        KMessageBox::error( parent, i18n( "<qt>The file \"%1\" could not be opened.</qt>", text ) );
-      }
-      else
-      {
-        KMessageBox::detailedError( parent, i18n( "<qt><p>The file \"%1\" could not be opened.</p><p>Read the error message under \"Details\" to find out more.</p></qt>", text ), details );
-      }
 
       break;
     }
@@ -248,39 +191,5 @@ void Smb4KCoreMessage::processError( int code, QProcess::ProcessError error )
       break;
     }
   }
-}
-
-
-int Smb4KCoreMessage::warning( int code, const QString &/*text*/, const QString &/*details*/ )
-{
-  QWidget *parent = 0;
-
-  if ( kapp )
-  {
-    if ( kapp->activeWindow() )
-    {
-      parent = kapp->activeWindow();
-    }
-    else
-    {
-      parent = kapp->desktop();
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  int result = 0;
-
-  switch ( code )
-  {
-    default:
-    {
-      break;
-    }
-  }
-
-  return result;
 }
 

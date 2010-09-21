@@ -55,6 +55,7 @@
 #include <smb4ksettings.h>
 #include <smb4kworkgroup.h>
 #include <smb4khost.h>
+#include <smb4knotification.h>
 
 using namespace Smb4KGlobal;
 
@@ -351,7 +352,8 @@ void Smb4KSambaOptionsHandler::readCustomOptions()
   {
     if ( xmlFile.exists() )
     {
-      Smb4KCoreMessage::error( ERROR_OPENING_FILE, xmlFile.fileName() );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->openingFileFailed( xmlFile );
     }
     else
     {
@@ -451,7 +453,8 @@ void Smb4KSambaOptionsHandler::writeCustomOptions()
     }
     else
     {
-      Smb4KCoreMessage::error( ERROR_OPENING_FILE, xmlFile.fileName() );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->openingFileFailed( xmlFile );
       return;
     }
   }
@@ -577,9 +580,8 @@ void Smb4KSambaOptionsHandler::read_smb_conf()
       }
       else
       {
-        Smb4KCoreMessage::error( ERROR_OPENING_FILE, paths.at( i )+QDir::separator()+file.fileName() );
-
-        // Stop here
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->openingFileFailed( file );
         return;
       }
 
@@ -638,9 +640,8 @@ void Smb4KSambaOptionsHandler::read_smb_conf()
           }
           else
           {
-            Smb4KCoreMessage::error( ERROR_OPENING_FILE, file.fileName() );
-
-            // Continue reading the smb.conf file.
+            Smb4KNotification *notification = new Smb4KNotification();
+            notification->openingFileFailed( file );
             continue;
           }
         }

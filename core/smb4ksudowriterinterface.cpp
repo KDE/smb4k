@@ -138,7 +138,8 @@ bool Smb4KSudoWriterInterface::addUser()
         // start up, so we do not need to test for it here.
         if ( !stderr.isEmpty() && stderr.contains( "smb4k_sudowriter" ) )
         {
-          Smb4KCoreMessage::error( ERROR_SUDOWRITER, QString(), stderr );
+          Smb4KNotification *notification = new Smb4KNotification();
+          notification->sudowriterFailed( stderr );
           return false;
         }
         else
@@ -225,7 +226,8 @@ bool Smb4KSudoWriterInterface::removeUser()
         // start up, so we do not need to test for it here.
         if ( !stderr.isEmpty() && stderr.contains( "smb4k_sudowriter" ) )
         {
-          Smb4KCoreMessage::error( ERROR_SUDOWRITER, QString(), stderr );
+          Smb4KNotification *notification = new Smb4KNotification();
+          notification->sudowriterFailed( stderr );
           return false;
         }
         else

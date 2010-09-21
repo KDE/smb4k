@@ -479,6 +479,115 @@ void Smb4KNotification::commandNotFound( const QString &command )
 }
 
 
+void Smb4KNotification::cannotBookmarkPrinter( Smb4KShare *share )
+{
+  if ( share->isPrinter() )
+  {
+    KNotification *notification = KNotification::event( "cannotBookmarkPrinter",
+                                  i18n( "The share <b>%1</b> is a printer and cannot be bookmarked." )
+                                  .arg( share->unc() ),
+                                  KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
+    connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KNotification::sudowriterFailed( const QString &err_msg )
+{
+  m_err_msg = err_msg.split( "\n" );
+  
+  KNotification *notification = new KNotification( "sudowriterFailed", KNotification::Persistent );
+  notification->setText( i18n( "Writing to the <b>sudoers</b> file failed." ) );
+  notification->setPixmap( KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
+  
+  if ( !m_err_msg.isEmpty() )
+  {
+    notification->setActions( QStringList( i18n( "Error Message" ) ) );
+    connect( notification, SIGNAL( activated( unsigned int ) ), this, SLOT( slotShowErrorMessage() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  
+  notification->sendEvent();  
+}
+
+
+void Smb4KNotification::fileNotFound( const QString &fileName )
+{
+  KNotification *notification = KNotification::event( "fileNotFound",
+                                i18n( "The file <b>%1</b> could not be found." )
+                                .arg( fileName ),
+                                KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
+  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+}
+
+
+void Smb4KNotification::openingFileFailed( const QFile &file )
+{
+  m_err_msg = file.errorString().split( "\n" );
+  
+  KNotification *notification = new KNotification( "openingFileFailed", KNotification::Persistent );
+  notification->setText( i18n( "Opening the file <b>%1</b> failed." ).arg( file.fileName() ) );
+  notification->setPixmap( KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
+  
+  if ( !m_err_msg.isEmpty() )
+  {
+    notification->setActions( QStringList( i18n( "Error Message" ) ) );
+    connect( notification, SIGNAL( activated( unsigned int ) ), this, SLOT( slotShowErrorMessage() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  
+  notification->sendEvent();  
+}
+
+
+void Smb4KNotification::mkdirFailed( const QDir &dir )
+{
+  KNotification *notification = KNotification::event( "mkdirFailed",
+                                i18n( "The directory <b>%1</b> could not be created." )
+                                .arg( dir.absolutePath() ),
+                                KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
+  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+}
+
+
+void Smb4KNotification::missingPrograms( const QStringList &programs )
+{
+  m_err_msg = programs;
+  
+  KNotification *notification = new KNotification( "missingPrograms", KNotification::Persistent );
+  notification->setText( i18n( "Some mandatorily needed programs could not be found." ) );
+  notification->setPixmap( KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
+  
+  if ( !m_err_msg.isEmpty() )
+  {
+    notification->setActions( QStringList( i18n( "List" ) ) );
+    connect( notification, SIGNAL( activated( unsigned int ) ), this, SLOT( slotShowErrorMessage() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  
+  notification->sendEvent();  
+}
+
+
 /////////////////////////////////////////////////////////////////////////////
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////

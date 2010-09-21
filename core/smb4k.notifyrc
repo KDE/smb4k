@@ -482,3 +482,45 @@ Comment[x-test]=xxThe command could not be foundxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
+
+[Event/cannotBookmarkPrinter]
+Name=Cannot bookmark printer
+Comment=Printers cannot be bookmarked
+Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
+Action=Popup|Sound
+
+[Event/sudowriterFailed]
+Name=Writing to sudoers file failed
+Comment=The writing to the sudoers file failed
+Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
+Action=Popup|Sound
+
+[Event/fileNotFound]
+Name=File not found
+Comment=The file could not be found
+Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
+Action=Popup|Sound
+
+[Event/openingFileFailed]
+Name=Opening file failed
+Comment=The file could not be opened
+Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
+Action=Popup|Sound
+
+[Event/mkdirFailed]
+Name=Creating directory failed
+Comment=Creating the directory failed
+Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
+Action=Popup|Sound
+
+[Event/missingPrograms]
+Name=Mandatory programs missing
+Comment=Programs mandatorily needed by Smb4K are missing
+Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
+Action=Popup|Sound

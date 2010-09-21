@@ -116,7 +116,8 @@ void Smb4KBookmarkHandler::addBookmark( Smb4KShare *share, bool overwrite )
   
   if ( share->isPrinter() )
   {
-    Smb4KCoreMessage::error( ERROR_BOOKMARK_PRINTER );
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->cannotBookmarkPrinter( share );
     return;
   }
   else
@@ -315,7 +316,8 @@ void Smb4KBookmarkHandler::writeBookmarkList( const QList<Smb4KBookmark *> &list
     }
     else
     {
-      Smb4KCoreMessage::error( ERROR_OPENING_FILE, xmlFile.fileName() );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->openingFileFailed( xmlFile );
       return;
     }
   }
@@ -432,7 +434,8 @@ void Smb4KBookmarkHandler::loadBookmarks()
   {
     if ( xmlFile.exists() )
     {
-      Smb4KCoreMessage::error( ERROR_OPENING_FILE, xmlFile.fileName() );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->openingFileFailed( xmlFile );
     }
     else
     {

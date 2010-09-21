@@ -42,23 +42,8 @@
 // Error codes:
 //
 
-// (5) Errors that occur when handling
-// bookmarks
-#define ERROR_BOOKMARK_PRINTER              114
-
-// (6) Errors that occur when writing to the
-// sudoers file.
-#define ERROR_SUDOWRITER                    115
-
-// (7) Errors that occur when handling files
-// and directories.
-#define ERROR_FILE_NOT_FOUND                116
-#define ERROR_OPENING_FILE                  117
-#define ERROR_CREATING_TEMP_FILE            118
-#define ERROR_MKDIR_FAILED                  119
-
 // (8) Errors that occur when working with programs
-#define ERROR_MISSING_PROGRAMS              120
+// #define ERROR_MISSING_PROGRAMS              120
 
 // (9) Process errors
 #define ERROR_PROCESS_EXIT                  122
@@ -110,26 +95,6 @@ class KDE_EXPORT Smb4KCoreMessage
      */
     static void processError( int code,
                               QProcess::ProcessError error );
-
-    /**
-     * Show a warning.
-     *
-     * @param code        The code as defined in smb4kdefs.h
-     *
-     * @param text        Short text which will be included in the message that's shown
-     *                    to the user. Normally, a file name or similar is entered here.
-     *                    May be left blank if you do not need to fill text into the error
-     *                    message. Please note, that this text is not used to show details.
-     *
-     * @param details     The text passed here is used to show details. Please note, that
-     *                    it depends on the kind of error if it is indeed shown.
-     *
-     * @returns an integer value according to KMessageBox::ButtonCode or 0 if the warning code
-     * is unknown.
-     */
-    static int warning( int code,
-                        const QString &text = QString(),
-                        const QString &details = QString() );
 };
 
 #endif

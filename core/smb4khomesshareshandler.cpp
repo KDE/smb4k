@@ -49,7 +49,7 @@
 #include <smb4kshare.h>
 #include <smb4ksettings.h>
 #include <smb4kauthinfo.h>
-
+#include <smb4knotification.h>
 
 class Smb4KHomesSharesHandlerPrivate
 {
@@ -486,7 +486,8 @@ void Smb4KHomesSharesHandler::readUserNames()
   {
     if ( xmlFile.exists() )
     {
-      Smb4KCoreMessage::error( ERROR_OPENING_FILE, xmlFile.fileName() );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->openingFileFailed( xmlFile );
     }
     else
     {
@@ -539,7 +540,8 @@ void Smb4KHomesSharesHandler::writeUserNames()
     }
     else
     {
-      Smb4KCoreMessage::error( ERROR_OPENING_FILE, xmlFile.fileName() );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->openingFileFailed( xmlFile );
       return;
     }
   }

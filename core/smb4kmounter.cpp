@@ -469,7 +469,8 @@ void Smb4KMounter::import()
         }
         else
         {
-          Smb4KCoreMessage::error( ERROR_OPENING_FILE, proc_mounts.fileName() );
+          Smb4KNotification *notification = new Smb4KNotification();
+          notification->openingFileFailed( proc_mounts );
           return;
         }
         
@@ -938,7 +939,8 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
 
   if ( !dir.mkpath( dir.path() ) )
   {
-    Smb4KCoreMessage::error( ERROR_MKDIR_FAILED, dir.path() );
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->mkdirFailed( dir );
     return;
   }
   else

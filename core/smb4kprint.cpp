@@ -133,7 +133,8 @@ void Smb4KPrint::print( Smb4KPrintInfo *printInfo )
       // Create the temporary file.
       if ( !temp_file.open() )
       {
-        Smb4KCoreMessage::error( ERROR_CREATING_TEMP_FILE, QString(), temp_file.errorString() );
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->openingFileFailed( temp_file );
         return;
       }
       else
@@ -157,7 +158,8 @@ void Smb4KPrint::print( Smb4KPrintInfo *printInfo )
       // Create the temporary file.
       if ( !temp_file.open() )
       {
-        Smb4KCoreMessage::error( ERROR_CREATING_TEMP_FILE, QString(), temp_file.errorString() );
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->openingFileFailed( temp_file );
         return;
       }
       else
@@ -231,7 +233,8 @@ void Smb4KPrint::print( Smb4KPrintInfo *printInfo )
   else
   {
     // Show error message an exit.
-    Smb4KCoreMessage::error( ERROR_FILE_NOT_FOUND, printInfo->filePath(), QString() );
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->fileNotFound( printInfo->filePath() );
   }
 }
 
