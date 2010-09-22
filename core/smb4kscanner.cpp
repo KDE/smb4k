@@ -1107,7 +1107,6 @@ void Smb4KScanner::lookupShares( Smb4KHost *host )
       }
       case Smb4KSambaOptionsInfo::RAP:
       {
-        qDebug() << "'net rap share' is used";
         command += " rap share";
         break;
       }
@@ -1131,7 +1130,6 @@ void Smb4KScanner::lookupShares( Smb4KHost *host )
       }
       case Smb4KSettings::EnumProtocolHint::RAP:
       {
-        qDebug() << "'net rap share' is used";
         command += " rap share";
         break;
       }
