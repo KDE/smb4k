@@ -51,7 +51,7 @@
 #include <stdlib.h>
 using namespace std;
 
-#define VERSION "0.3"
+#define VERSION "0.4"
 
 
 static const char description[] =
