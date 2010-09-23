@@ -497,8 +497,16 @@ Action=Popup|Sound
 
 [Event/cannotBookmarkPrinter]
 Name=Cannot bookmark printer
+Name[pt]=Não é possível adicionar a impressora aos favoritos
+Name[pt_BR]=Não foi possível adicionar a impressora aos favoritos
+Name[sv]=Kan inte lägga till bokmärke för skrivare
+Name[uk]=Не можна створювати закладки для принтерів
 Name[x-test]=xxCannot bookmark printerxx
 Comment=Printers cannot be bookmarked
+Comment[pt]=Não poderá adicionar impressoras aos favoritos
+Comment[pt_BR]=As impressoras não podem ser adicionadas aos favoritos
+Comment[sv]=Skrivare kan inte vara bokmärken
+Comment[uk]=Створювати закладки для принтерів не можна
 Comment[x-test]=xxPrinters cannot be bookmarkedxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
@@ -506,8 +514,16 @@ Action=Popup|Sound
 
 [Event/sudowriterFailed]
 Name=Writing to sudoers file failed
+Name[pt]=Não foi possível gravar o ficheiro 'sudoers'
+Name[pt_BR]=Não foi possível gravar o arquivo sudoers
+Name[sv]=Misslyckades skriva till filen sudoers
+Name[uk]=Невдала спроба запису до файла sudoers
 Name[x-test]=xxWriting to sudoers file failedxx
 Comment=The writing to the sudoers file failed
+Comment[pt]=Não foi possível a gravação do ficheiro 'sudoers'
+Comment[pt_BR]=Não foi possível a gravação do arquivo sudoers
+Comment[sv]=Misslyckades skriva till filen sudoers
+Comment[uk]=Спроба запису до файла sudoers зазнала невдачі
 Comment[x-test]=xxThe writing to the sudoers file failedxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
@@ -515,8 +531,16 @@ Action=Popup|Sound
 
 [Event/fileNotFound]
 Name=File not found
+Name[pt]=O ficheiro não foi encontrado
+Name[pt_BR]=Arquivo não encontrado
+Name[sv]=Filen hittades inte
+Name[uk]=Файл не знайдено
 Name[x-test]=xxFile not foundxx
 Comment=The file could not be found
+Comment[pt]=Não foi possível encontrar o ficheiro
+Comment[pt_BR]=Não foi possível encontrar o arquivo
+Comment[sv]=Filen kunde inte hittas
+Comment[uk]=Не вдалося виявити файл
 Comment[x-test]=xxThe file could not be foundxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
@@ -524,8 +548,16 @@ Action=Popup|Sound
 
 [Event/openingFileFailed]
 Name=Opening file failed
+Name[pt]=A abertura do ficheiro foi mal-sucedida
+Name[pt_BR]=Falha na abertura do arquivo
+Name[sv]=Misslyckades öppna fil
+Name[uk]=Спроба відкриття файла зазнала невдачі
 Name[x-test]=xxOpening file failedxx
 Comment=The file could not be opened
+Comment[pt]=Não foi possível abrir o ficheiro
+Comment[pt_BR]=Não foi possível abrir o arquivo
+Comment[sv]=Filen  kunde inte öppnas
+Comment[uk]=Не вдалося відкрити файл
 Comment[x-test]=xxThe file could not be openedxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
@@ -533,8 +565,16 @@ Action=Popup|Sound
 
 [Event/mkdirFailed]
 Name=Creating directory failed
+Name[pt]=A criação da pasta foi mal-sucedida
+Name[pt_BR]=Falha na criação da pasta
+Name[sv]=Misslyckades skapa katalog
+Name[uk]=Створення каталогу зазнало невдачі
 Name[x-test]=xxCreating directory failedxx
 Comment=Creating the directory failed
+Comment[pt]=A criação da pasta foi mal-sucedida
+Comment[pt_BR]=Falha na criação da pasta
+Comment[sv]=Misslyckades skapa katalogen
+Comment[uk]=Створення каталогу зазнало невдачі
 Comment[x-test]=xxCreating the directory failedxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
@@ -542,8 +582,16 @@ Action=Popup|Sound
 
 [Event/missingPrograms]
 Name=Mandatory programs missing
+Name[pt]=Faltam programas obrigatórios
+Name[pt_BR]=Faltam os programas obrigatórios
+Name[sv]=Nödvändigt program saknas
+Name[uk]=Не виявлено обов’язкових програм
 Name[x-test]=xxMandatory programs missingxx
 Comment=Programs mandatorily needed by Smb4K are missing
+Comment[pt]=Faltam programas necessários pelo Smb4K
+Comment[pt_BR]=Faltam os programas necessários pelo Smb4K
+Comment[sv]=Program som är nödvändiga för Smb4K saknas
+Comment[uk]=Не виявлено програм, критичних для роботи Smb4K
 Comment[x-test]=xxPrograms mandatorily needed by Smb4K are missingxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
