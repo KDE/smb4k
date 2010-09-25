@@ -29,7 +29,6 @@
 
 // application specific includes
 #include <smb4kscanner_p.h>
-#include <smb4kcoremessage.h>
 #include <smb4kworkgroup.h>
 #include <smb4khost.h>
 #include <smb4kshare.h>
@@ -402,7 +401,8 @@ void LookupDomainsThread::slotProcessFinished( int exitCode, QProcess::ExitStatu
     {
       if ( !m_proc->isAborted() )
       {
-        Smb4KCoreMessage::processError( ERROR_PROCESS_ERROR, m_proc->error() );
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->processError( m_proc->error() );
       }
       else
       {
@@ -509,7 +509,8 @@ void LookupMembersThread::slotProcessFinished( int exitCode, QProcess::ExitStatu
     {
       if ( !m_proc->isAborted() )
       {
-        Smb4KCoreMessage::processError( ERROR_PROCESS_ERROR, m_proc->error() );
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->processError( m_proc->error() );
       }
       else
       {
@@ -668,7 +669,8 @@ void LookupSharesThread::slotProcessFinished( int exitCode, QProcess::ExitStatus
     {
       if ( !m_proc->isAborted() )
       {
-        Smb4KCoreMessage::processError( ERROR_PROCESS_ERROR, m_proc->error() );
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->processError( m_proc->error() );
       }
       else
       {
@@ -853,7 +855,8 @@ void LookupInfoThread::slotProcessFinished( int exitCode, QProcess::ExitStatus e
     {
       if ( !m_proc->isAborted() )
       {
-        Smb4KCoreMessage::processError( ERROR_PROCESS_ERROR, m_proc->error() );
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->processError( m_proc->error() );
       }
       else
       {
