@@ -563,6 +563,13 @@ Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
+[Event/readingFileFailed]
+Name=Reading file failed
+Comment=The file could not be read
+Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
+Action=Popup|Sound
+
 [Event/mkdirFailed]
 Name=Creating directory failed
 Name[pt]=A criação da pasta foi mal-sucedida
@@ -593,6 +600,20 @@ Comment[pt_BR]=Faltam os programas necessários pelo Smb4K
 Comment[sv]=Program som är nödvändiga för Smb4K saknas
 Comment[uk]=Не виявлено програм, критичних для роботи Smb4K
 Comment[x-test]=xxPrograms mandatorily needed by Smb4K are missingxx
+Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
+Action=Popup|Sound
+
+[Event/processError]
+Name=Process error occurred
+Comment=An error occurred while a process was running
+Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
+Action=Popup|Sound
+
+[Event/systemCallFailed]
+Name=System call failed
+Comment=A system call failed and threw an error
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
