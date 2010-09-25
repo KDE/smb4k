@@ -45,7 +45,6 @@
 // application specific includes
 #include <smb4khomesshareshandler.h>
 #include <smb4kdefs.h>
-#include <smb4kcoremessage.h>
 #include <smb4kshare.h>
 #include <smb4ksettings.h>
 #include <smb4kauthinfo.h>
@@ -475,7 +474,8 @@ void Smb4KHomesSharesHandler::readUserNames()
 
     if ( xmlReader.hasError() )
     {
-      Smb4KCoreMessage::error( ERROR_XML_ERROR, xmlFile.fileName(), xmlReader.errorString() );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->readingFileFailed( xmlFile, xmlReader.errorString() );
     }
     else
     {
