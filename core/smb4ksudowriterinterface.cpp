@@ -37,7 +37,6 @@
 
 // application specific includes
 #include <smb4ksudowriterinterface.h>
-#include <smb4kcoremessage.h>
 #include <smb4ksettings.h>
 #include <smb4kprocess.h>
 #include <smb4knotification.h>
@@ -122,7 +121,8 @@ bool Smb4KSudoWriterInterface::addUser()
       case -2:
       case -1:
       {
-        Smb4KCoreMessage::processError( ERROR_PROCESS_ERROR, p.error() );
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->processError( p.error() );
         return false;
         break;
       }
@@ -211,7 +211,8 @@ bool Smb4KSudoWriterInterface::removeUser()
       case -2:
       case -1:
       {
-        Smb4KCoreMessage::processError( ERROR_PROCESS_ERROR, p.error() );
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->processError( p.error() );
         return false;
       }
       default:
