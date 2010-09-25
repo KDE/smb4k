@@ -41,7 +41,6 @@
 #include <smb4kauthinfo.h>
 #include <smb4ksambaoptionshandler.h>
 #include <smb4ksambaoptionsinfo.h>
-#include <smb4kcoremessage.h>
 #include <smb4kshare.h>
 #include <smb4khomesshareshandler.h>
 #include <smb4kpreviewer_p.h>

@@ -45,8 +45,6 @@
 #include <smb4kprintinfo.h>
 #include <smb4knotification.h>
 
-#include <smb4kcoremessage.h>
-
 using namespace Smb4KGlobal;
 
 K_GLOBAL_STATIC( Smb4KPrintPrivate, priv );
