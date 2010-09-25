@@ -45,7 +45,6 @@
 #include <smb4khost.h>
 #include <smb4kshare.h>
 #include <smb4ksettings.h>
-#include <smb4kcoremessage.h>
 #include <smb4kipaddressscanner.h>
 #include <smb4khomesshareshandler.h>
 #include <smb4ksearch_p.h>
