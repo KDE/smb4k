@@ -31,6 +31,9 @@
 #include <kurl.h>
 #include <kmessagebox.h>
 
+// system includes
+#include <string.h>
+
 // application specific includes
 #include <smb4knotification.h>
 #include <smb4ksettings.h>
@@ -554,6 +557,38 @@ void Smb4KNotification::openingFileFailed( const QFile &file )
 }
 
 
+void Smb4KNotification::readingFileFailed( const QFile& file, const QString& err_msg )
+{
+  if ( !err_msg.isEmpty() )
+  {
+    m_err_msg = err_msg.split( "\n" );
+  }
+  else
+  {
+    m_err_msg = file.errorString().split( "\n" );
+  }
+  
+  KNotification *notification = new KNotification( "readingFileFailed", KNotification::Persistent );
+  notification->setText( i18n( "Reading from file <b>%1</b> failed." ).arg( file.fileName() ) );
+  notification->setPixmap( KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
+  
+  if ( !m_err_msg.isEmpty() )
+  {
+    notification->setActions( QStringList( i18n( "Error Message" ) ) );
+    connect( notification, SIGNAL( activated( unsigned int ) ), this, SLOT( slotShowErrorMessage() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  
+  notification->sendEvent();  
+}
+
+
+
 void Smb4KNotification::mkdirFailed( const QDir &dir )
 {
   KNotification *notification = KNotification::event( "mkdirFailed",
@@ -575,6 +610,101 @@ void Smb4KNotification::missingPrograms( const QStringList &programs )
   if ( !m_err_msg.isEmpty() )
   {
     notification->setActions( QStringList( i18n( "List" ) ) );
+    connect( notification, SIGNAL( activated( unsigned int ) ), this, SLOT( slotShowErrorMessage() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  
+  notification->sendEvent();  
+}
+
+
+void Smb4KNotification::processError( QProcess::ProcessError error )
+{
+  KNotification *notification = new KNotification( "processError", KNotification::Persistent );
+  
+  switch ( error )
+  {
+    case QProcess::FailedToStart:
+    {
+      notification->setText( i18n( "The process failed to start (error code: %1).", error ) );
+      break;
+    }
+    case QProcess::Crashed:
+    {
+      notification->setText( i18n( "The process crashed (error code: %1).", error ) );
+      break;
+    }
+    case QProcess::Timedout:
+    {
+      notification->setText( i18n( "The process timed out (error code: %1).", error ) );
+      break;
+    }
+    case QProcess::WriteError:
+    {
+      notification->setText( i18n( "Could not write to the process (error code: %1).", error ) );
+      break;
+    }
+    case QProcess::ReadError:
+    {
+      notification->setText( i18n( "Could not read from the process (error code: %1).", error ) );
+      break;
+    }
+    case QProcess::UnknownError:
+    default:
+    {
+      notification->setText( i18n( "The process reported an unknown error." ) );
+      break;
+    }
+  }
+
+  notification->setPixmap( KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
+  
+  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  
+  notification->sendEvent();  
+}
+
+
+void Smb4KNotification::systemCallFailed( const QString& sys_call, int err_no )
+{
+  int len = 100;
+  char buf[100];
+  buf[0] = '\0';
+  const char *msg;
+  
+  msg = strerror_r( err_no, buf, len );
+  
+  if ( buf[0] == '\0' )
+  {
+    // Buffer was not used
+    m_err_msg += QString( msg );
+  }
+  else
+  {
+    m_err_msg += QString( buf );
+  }
+  
+  KNotification *notification = new KNotification( "systemCallFailed", KNotification::Persistent );
+  
+  if ( !sys_call.isEmpty() )
+  {
+    notification->setText( i18n( "The system call <b>%1</b> failed.", sys_call ) );
+  }
+  else
+  {
+    notification->setText( i18n( "A system call failed." ) );
+  }
+  
+  notification->setPixmap( KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
+  
+  if ( !m_err_msg.isEmpty() )
+  {
+    notification->setActions( QStringList( i18n( "Error Message" ) ) );
     connect( notification, SIGNAL( activated( unsigned int ) ), this, SLOT( slotShowErrorMessage() ) );
   }
   else

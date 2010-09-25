@@ -34,6 +34,7 @@
 #include <QObject>
 #include <QFile>
 #include <QDir>
+#include <QProcess>
 
 // KDE includes
 #include <knotification.h>
@@ -290,6 +291,15 @@ class KDE_EXPORT Smb4KNotification : public QObject
     void openingFileFailed( const QFile &file );
     
     /**
+     * This error message is shown if a file could not be read.
+     *
+     * @param file      The QFile object
+     *
+     * @param err_msg   The error message (optional)
+     */
+    void readingFileFailed( const QFile &file, const QString &err_msg );
+    
+    /**
      * This error message is shown if the creation of a directory 
      * failed.
      *
@@ -304,6 +314,22 @@ class KDE_EXPORT Smb4KNotification : public QObject
      * @param programs  The list of missing programs
      */
     void missingPrograms( const QStringList &programs );
+    
+    /**
+     * This error message is shown if a process threw an error.
+     * 
+     * @param proc_err  The code describing the process error
+     */
+    void processError( QProcess::ProcessError error );
+    
+    /**
+     * This error message is shown if a system call returned an error.
+     * 
+     * @param sys_call  The system call as string, e.g. "gethostname()"
+     * 
+     * @param errno     The error number
+     */
+    void systemCallFailed( const QString &sys_call, int err_no );
     
   protected slots:
     /**
