@@ -57,19 +57,19 @@
 
 using namespace Smb4KGlobal;
 
-typedef KParts::GenericFactory<Smb4KSharesViewPart> Smb4KSharesViewPartFactory;
-K_EXPORT_COMPONENT_FACTORY( smb4ksharesview, Smb4KSharesViewPartFactory )
+K_PLUGIN_FACTORY( Smb4KSharesViewPartFactory, registerPlugin<Smb4KSharesViewPart>(); )
+K_EXPORT_PLUGIN( Smb4KSharesViewPartFactory( "Smb4KSharesViewPart" ) );
 
 
-Smb4KSharesViewPart::Smb4KSharesViewPart( QWidget *parentWidget, QObject *parent, const QStringList &args )
+Smb4KSharesViewPart::Smb4KSharesViewPart( QWidget *parentWidget, QObject *parent, const QList<QVariant> &args )
 : KParts::Part( parent ), m_mode( IconMode ), m_bookmark_shortcut( true ), m_silent( false )
 {
   // Parse the arguments.
   for ( int i = 0; i < args.size(); ++i )
   {
-    if ( args.at( i ).startsWith( "viewmode" ) )
+    if ( args.at( i ).toString().startsWith( "viewmode" ) )
     {
-      if ( QString::compare( args.at( i ).section( "=", 1, 1 ).trimmed(), "list" ) == 0 )
+      if ( QString::compare( args.at( i ).toString().section( "=", 1, 1 ).trimmed(), "list" ) == 0 )
       {
         m_mode = ListMode;
       }
@@ -80,9 +80,9 @@ Smb4KSharesViewPart::Smb4KSharesViewPart( QWidget *parentWidget, QObject *parent
 
       continue;
     }
-    else if ( args.at( i ).startsWith( "bookmark_shortcut" ) )
+    else if ( args.at( i ).toString().startsWith( "bookmark_shortcut" ) )
     {
-      if ( QString::compare( args.at( i ).section( "=", 1, 1 ).trimmed(), "\"false\"" ) == 0 )
+      if ( QString::compare( args.at( i ).toString().section( "=", 1, 1 ).trimmed(), "\"false\"" ) == 0 )
       {
         m_bookmark_shortcut = false;
       }
@@ -93,9 +93,9 @@ Smb4KSharesViewPart::Smb4KSharesViewPart( QWidget *parentWidget, QObject *parent
 
       continue;
     }
-    else if ( args.at( i ).startsWith( "silent" ) )
+    else if ( args.at( i ).toString().startsWith( "silent" ) )
     {
-      if ( QString::compare( args.at( i ).section( "=", 1, 1 ).trimmed(), "\"true\"" ) == 0 )
+      if ( QString::compare( args.at( i ).toString().section( "=", 1, 1 ).trimmed(), "\"true\"" ) == 0 )
       {
         m_silent = true;
       }

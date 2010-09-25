@@ -71,7 +71,7 @@ class Smb4KSharesViewPart : public KParts::Part
      */
     Smb4KSharesViewPart( QWidget *parentWidget = 0,
                          QObject *parent = 0,
-                         const QStringList &args = QStringList() );
+                         const QList<QVariant> &args = QList<QVariant>() );
 
     /**
      * The destructor.
