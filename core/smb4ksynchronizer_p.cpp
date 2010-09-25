@@ -29,7 +29,6 @@
 
 // application specific includes
 #include <smb4ksynchronizer_p.h>
-#include <smb4kcoremessage.h>
 #include <smb4knotification.h>
 
 
@@ -165,7 +164,8 @@ void SynchronizationThread::slotProcessFinished( int exitCode, QProcess::ExitSta
     {
       if ( !m_proc->isAborted() && m_stderr.contains( "rsync error:" ) )
       {
-        Smb4KCoreMessage::processError( ERROR_PROCESS_ERROR, m_proc->error() );
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->processError( m_proc->error() );
       }
       else
       {
