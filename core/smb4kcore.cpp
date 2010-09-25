@@ -50,7 +50,6 @@
 // application specific includes
 #include <smb4kcore.h>
 #include <smb4kglobal.h>
-#include <smb4kcoremessage.h>
 #include <smb4ksettings.h>
 #include <smb4kshare.h>
 #include <smb4kscanner.h>

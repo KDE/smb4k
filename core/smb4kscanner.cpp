@@ -39,7 +39,6 @@
 #include <smb4kscanner.h>
 #include <smb4kscanner_p.h>
 #include <smb4kauthinfo.h>
-#include <smb4kcoremessage.h>
 #include <smb4kglobal.h>
 #include <smb4ksettings.h>
 #include <smb4kworkgroup.h>
