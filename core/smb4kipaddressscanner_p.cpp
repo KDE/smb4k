@@ -29,8 +29,8 @@
 
 // application specific includes
 #include <smb4kipaddressscanner_p.h>
-#include <smb4kcoremessage.h>
 #include <smb4khost.h>
+#include <smb4knotification.h>
 
 
 IPScanThread::IPScanThread( Smb4KHost *host, QObject *parent )
@@ -90,7 +90,8 @@ void IPScanThread::slotProcessFinished( int exitCode, QProcess::ExitStatus exitS
     {
       if ( !m_proc->isAborted() )
       {
-        Smb4KCoreMessage::processError( ERROR_PROCESS_ERROR, m_proc->error() );
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->processError( m_proc->error() );
       }
       else
       {
