@@ -58,7 +58,6 @@
 #include <smb4kmounter.h>
 #include <smb4kauthinfo.h>
 #include <smb4ksambaoptionsinfo.h>
-#include <smb4kcoremessage.h>
 #include <smb4kglobal.h>
 #include <smb4ksambaoptionshandler.h>
 #include <smb4kshare.h>
@@ -1323,21 +1322,6 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
 {
   Q_ASSERT( share );
   
-  // Check if the UNC is valid. Otherwise, we can just return here
-  // with an error message.
-  QUrl url( share->unc( QUrl::None ) );
-  
-  if ( !url.isValid() )
-  {
-    // FIXME: Throw an error.
-    qDebug() << "Invalid UNC";
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-
   // Find the smb4k_umount program
   QString smb4k_umount = KGlobal::dirs()->findResource( "exe", "smb4k_umount" );
 
@@ -1429,26 +1413,6 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
     // Ask the user, if he/she really wants to force the unmounting.
     if ( KMessageBox::questionYesNo( parent, i18n( "<qt>Do you really want to force the unmounting of this share?</qt>" ), QString(), KStandardGuiItem::yes(), KStandardGuiItem::no(), "Dont Ask Forced", KMessageBox::Notify ) == KMessageBox::No )
     {
-      return;
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    // If 'force' is TRUE but the user choose to not force
-    // unmounts, throw an error here and exit.
-    if ( !Smb4KSettings::useForceUnmount() )
-    {
-      if ( !silent )
-      {
-        Smb4KCoreMessage::error( ERROR_FEATURE_NOT_ENABLED );
-      }
-      else
-      {
-        // Do nothing
-      }
-
       return;
     }
     else
