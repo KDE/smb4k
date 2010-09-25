@@ -8,6 +8,7 @@ Name[en_GB]=Smb4K
 Name[eo]=Smb4K
 Name[es]=Smb4K
 Name[km]=Smb4K
+Name[mai]=Smb4K
 Name[pa]=Smb4K
 Name[pt]=Smb4K
 Name[pt_BR]=Smb4K
@@ -33,6 +34,7 @@ Version=1
 [Context/Notification]
 Name=Notification
 Name[da]=Bekendtgørelse
+Name[mai]=अधिसूचना
 Name[pt]=Notificação
 Name[pt_BR]=Notificação
 Name[sv]=Underrättelse
@@ -49,6 +51,7 @@ Comment[x-test]=xxThe user is notified about an actionxx
 [Context/Warning]
 Name=Warning
 Name[da]=Advarsel
+Name[mai]=चेतावनी
 Name[pt]=Aviso
 Name[pt_BR]=Aviso
 Name[sv]=Varning
@@ -65,6 +68,7 @@ Comment[x-test]=xxA warning is shown to the userxx
 [Context/Error]
 Name=Error
 Name[da]=Fejl
+Name[mai]=त्रुटि
 Name[pt]=Erro
 Name[pt_BR]=Erro
 Name[sv]=Fel
@@ -531,6 +535,7 @@ Action=Popup|Sound
 
 [Event/fileNotFound]
 Name=File not found
+Name[mai]=फाइल नहि भेटल
 Name[pt]=O ficheiro não foi encontrado
 Name[pt_BR]=Arquivo não encontrado
 Name[sv]=Filen hittades inte
