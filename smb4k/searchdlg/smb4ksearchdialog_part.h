@@ -67,7 +67,7 @@ class Smb4KSearchDialogPart : public KParts::Part
      */
     Smb4KSearchDialogPart( QWidget *parentWidget = 0,
                            QObject *parent = 0,
-                           const QStringList &args = QStringList() );
+                           const QList<QVariant> &args = QList<QVariant>() );
 
     /**
      * The destructor.

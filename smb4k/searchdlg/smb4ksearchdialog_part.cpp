@@ -54,18 +54,19 @@
 
 using namespace Smb4KGlobal;
 
-typedef KParts::GenericFactory<Smb4KSearchDialogPart> Smb4KSearchDialogPartFactory;
-K_EXPORT_COMPONENT_FACTORY( smb4ksearchdialog, Smb4KSearchDialogPartFactory )
+K_PLUGIN_FACTORY( Smb4KSearchDialogPartFactory, registerPlugin<Smb4KSearchDialogPart>(); )
+K_EXPORT_PLUGIN( Smb4KSearchDialogPartFactory( "Smb4KSearchDialogPart" ) );
 
-Smb4KSearchDialogPart::Smb4KSearchDialogPart( QWidget *parentWidget, QObject *parent, const QStringList &args )
+
+Smb4KSearchDialogPart::Smb4KSearchDialogPart( QWidget *parentWidget, QObject *parent, const QList<QVariant> &args )
 : KParts::Part( parent ), m_silent( false )
 {
   // Parse arguments:
   for ( int i = 0; i < args.size(); ++i )
   {
-    if ( args.at( i ).startsWith( "silent" ) )
+    if ( args.at( i ).toString().startsWith( "silent" ) )
     {
-      if ( QString::compare( args.at( i ).section( "=", 1, 1 ).trimmed(), "\"true\"" ) == 0 )
+      if ( QString::compare( args.at( i ).toString().section( "=", 1, 1 ).trimmed(), "\"true\"" ) == 0 )
       {
         m_silent = true;
       }
