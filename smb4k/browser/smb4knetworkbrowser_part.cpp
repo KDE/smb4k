@@ -66,19 +66,19 @@
 
 using namespace Smb4KGlobal;
 
-typedef KParts::GenericFactory<Smb4KNetworkBrowserPart> Smb4KNetworkBrowserPartFactory;
-K_EXPORT_COMPONENT_FACTORY( smb4knetworkbrowser, Smb4KNetworkBrowserPartFactory )
+K_PLUGIN_FACTORY( Smb4KNetworkBrowserPartFactory, registerPlugin<Smb4KNetworkBrowserPart>(); )
+K_EXPORT_PLUGIN( Smb4KNetworkBrowserPartFactory( "Smb4KNetworkBrowserPart" ) );
 
 
-Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject *parent, const QStringList &args )
+Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject *parent, const QList<QVariant> &args )
 : KParts::Part( parent ), m_bookmark_shortcut( true ), m_silent( false )
 {
   // Parse arguments:
   for ( int i = 0; i < args.size(); ++i )
   {
-    if ( args.at( i ).startsWith( "bookmark_shortcut" ) )
+    if ( args.at( i ).toString().startsWith( "bookmark_shortcut" ) )
     {
-      if ( QString::compare( args.at( i ).section( "=", 1, 1 ).trimmed(), "\"false\"" ) == 0 )
+      if ( QString::compare( args.at( i ).toString().section( "=", 1, 1 ).trimmed(), "\"false\"" ) == 0 )
       {
         m_bookmark_shortcut = false;
       }
@@ -89,9 +89,9 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject
 
       continue;
     }
-    else if ( args.at( i ).startsWith( "silent" ) )
+    else if ( args.at( i ).toString().startsWith( "silent" ) )
     {
-      if ( QString::compare( args.at( i ).section( "=", 1, 1 ).trimmed(), "\"true\"" ) == 0 )
+      if ( QString::compare( args.at( i ).toString().section( "=", 1, 1 ).trimmed(), "\"true\"" ) == 0 )
       {
         m_silent = true;
       }

@@ -74,7 +74,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      */
     Smb4KNetworkBrowserPart( QWidget *parentWidget = 0,
                              QObject *parent = 0,
-                             const QStringList &args = QStringList() );
+                             const QList<QVariant> &args = QList<QVariant>() );
 
     /**
      * The destructor.
