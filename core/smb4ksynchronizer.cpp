@@ -32,7 +32,6 @@
 // application specific includes
 #include <smb4ksynchronizer.h>
 #include <smb4kdefs.h>
-#include <smb4kcoremessage.h>
 #include <smb4kglobal.h>
 #include <smb4ksynchronizationinfo.h>
 #include <smb4ksynchronizer_p.h>
