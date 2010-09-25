@@ -48,7 +48,6 @@
 // application specific includes
 #include <smb4ksambaoptionshandler.h>
 #include <smb4kdefs.h>
-#include <smb4kcoremessage.h>
 #include <smb4kglobal.h>
 #include <smb4ksambaoptionsinfo.h>
 #include <smb4kshare.h>
@@ -341,7 +340,8 @@ void Smb4KSambaOptionsHandler::readCustomOptions()
 
     if ( xmlReader.hasError() )
     {
-      Smb4KCoreMessage::error( ERROR_XML_ERROR, xmlFile.fileName(), xmlReader.errorString() );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->readingFileFailed( xmlFile, xmlReader.errorString() );
     }
     else
     {
@@ -676,7 +676,8 @@ void Smb4KSambaOptionsHandler::read_smb_conf()
     if ( gethostname( hostname, hostnamelen ) == -1 )
     {
       int error = errno;
-      Smb4KCoreMessage::error( ERROR_GETTING_HOSTNAME, QString(), strerror( error ) );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->systemCallFailed( "gethostname()", error );
     }
     else
     {
