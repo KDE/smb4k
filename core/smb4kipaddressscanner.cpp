@@ -40,7 +40,6 @@
 #include <smb4kglobal.h>
 #include <smb4ksambaoptionshandler.h>
 #include <smb4khost.h>
-#include <smb4kcoremessage.h>
 #include <smb4kipaddressscanner_p.h>
 #include <smb4ksettings.h>
 #include <smb4kprocess.h>
