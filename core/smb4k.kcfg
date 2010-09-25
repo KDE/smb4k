@@ -23,7 +23,7 @@
     </entry>
     <entry name="ShowNotifications" type="Bool">
       <label>Show notifications</label>
-      <whatsthis>Notify the user about actions that were performed by Smb4K, i.e. the mounting or unmounting of a share. If you do not want to be disturbed too often, you might want to switch this option off.</whatsthis>
+      <whatsthis>Notify the user about actions that were performed, e.g. the mounting or unmounting of a share. If you do not want to be disturbed too often, you might want to switch this option off. Warnings and error messages are not affected by this option.</whatsthis>
       <default>true</default>
     </entry>
     <entry name="SharesIconView" type="Bool">
