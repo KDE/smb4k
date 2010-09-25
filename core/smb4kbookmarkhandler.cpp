@@ -46,7 +46,6 @@
 #include <smb4khomesshareshandler.h>
 #include <smb4kbookmarkhandler.h>
 #include <smb4kdefs.h>
-#include <smb4kcoremessage.h>
 #include <smb4kglobal.h>
 #include <smb4kbookmark.h>
 #include <smb4khost.h>
@@ -423,7 +422,8 @@ void Smb4KBookmarkHandler::loadBookmarks()
 
     if ( xmlReader.hasError() )
     {
-      Smb4KCoreMessage::error( ERROR_XML_ERROR, xmlFile.fileName(), xmlReader.errorString() );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->readingFileFailed( xmlFile, xmlReader.errorString() );
     }
     else
     {
