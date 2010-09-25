@@ -31,7 +31,6 @@
 
 // application specific includes
 #include <smb4ksearch_p.h>
-#include <smb4kcoremessage.h>
 #include <smb4khost.h>
 #include <smb4kshare.h>
 #include <smb4kbasicnetworkitem.h>
@@ -207,7 +206,8 @@ void SearchThread::slotProcessFinished( int exitCode, QProcess::ExitStatus exitS
     {
       if ( !m_proc->isAborted() )
       {
-        Smb4KCoreMessage::processError( ERROR_PROCESS_ERROR, m_proc->error() );
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->processError( m_proc->error() );
       }
       else
       {
