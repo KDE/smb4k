@@ -729,7 +729,8 @@ void Smb4KConfigDialog::slotSetDefaultLogin()
     }
     else
     {
-      // Do nothing. The user canceled.
+      // Reset the checkbox.
+      auth_options->findChild<QCheckBox *>( "kcfg_UseDefaultLogin" )->setChecked( false );
     }
   }
   else
