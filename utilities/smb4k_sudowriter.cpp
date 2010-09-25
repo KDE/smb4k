@@ -716,7 +716,7 @@ int main ( int argc, char *argv[] )
     case 2:
     {
       cerr << argv[0] << ": " << I18N_NOOP( "Wrong format of Smb4K section in sudoers file detected." ) << endl;
-      cerr << argv[0] << ": " << I18N_NOOP( "Please fix this manually." ) << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Please correct this manually." ) << endl;
       cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
       removeLockFile( &lock_file );
       exit( EXIT_FAILURE );

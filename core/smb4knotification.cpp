@@ -222,7 +222,7 @@ void Smb4KNotification::retrievingDomainsFailed( const QString &err_msg )
   m_err_msg = err_msg.split( "\n" );
   
   KNotification *notification = new KNotification( "retrievingDomainsFailed", KNotification::Persistent );
-  notification->setText( i18n( "Retrieving the list of domains and workgroups failed." ) );
+  notification->setText( i18n( "Retrieving the list of domains failed." ) );
   notification->setPixmap( KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
   
   if ( !m_err_msg.isEmpty() )
@@ -270,7 +270,7 @@ void Smb4KNotification::retrievingServersFailed( Smb4KWorkgroup* workgroup, cons
   m_err_msg = err_msg.split( "\n" );
   
   KNotification *notification = new KNotification( "retrievingServersFailed", KNotification::Persistent );
-  notification->setText( i18n( "Retrieving the list of servers from workgroup <b>%1</b> failed." )
+  notification->setText( i18n( "Retrieving the list of servers belonging to domain <b>%1</b> failed." )
                          .arg( workgroup->workgroupName() ) );
   notification->setPixmap( KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
   
