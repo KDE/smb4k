@@ -68,7 +68,10 @@
 
 using namespace Smb4KGlobal;
 
-K_EXPORT_COMPONENT_FACTORY( libsmb4kconfigdialog, KGenericFactory<Smb4KConfigDialog> )
+// K_EXPORT_COMPONENT_FACTORY( libsmb4kconfigdialog, KGenericFactory<Smb4KConfigDialog> )
+
+K_PLUGIN_FACTORY( Smb4KConfigDialogFactory, registerPlugin<Smb4KConfigDialog>(); )
+K_EXPORT_PLUGIN( Smb4KConfigDialogFactory( "Smb4KConfigDialog" ) );
 
 
 Smb4KConfigDialog::Smb4KConfigDialog( QWidget *parent, const char *name, Smb4KSettings *settings )
@@ -78,7 +81,7 @@ Smb4KConfigDialog::Smb4KConfigDialog( QWidget *parent, const char *name, Smb4KSe
 }
 
 
-Smb4KConfigDialog::Smb4KConfigDialog( QWidget *parent, const QStringList &/*args*/ )
+Smb4KConfigDialog::Smb4KConfigDialog( QWidget *parent, const QList<QVariant> &/*args*/ )
 : KConfigDialog( parent, "ConfigDialog", Smb4KSettings::self() )
 {
   setupDialog();

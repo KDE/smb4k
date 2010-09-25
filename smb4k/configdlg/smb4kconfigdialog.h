@@ -69,7 +69,7 @@ class Smb4KConfigDialog : public KConfigDialog
      *
      * @param args          The argument list
      */
-    Smb4KConfigDialog( QWidget *parent, const QStringList &args );
+    Smb4KConfigDialog( QWidget *parent, const QList<QVariant> &args );
 
     /**
      * The destructor
