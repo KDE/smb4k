@@ -49,7 +49,6 @@
 #include <smb4kauthinfo.h>
 #include <smb4khomesshareshandler.h>
 #ifdef Q_OS_FREEBSD
-#include <smb4kcoremessage.h>
 #include <smb4ksambaoptionshandler.h>
 #endif
 #include <smb4kglobal.h>
@@ -691,7 +690,8 @@ void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
 
   if ( smbutil.isEmpty() )
   {
-    Smb4KCoreMessage::error( ERROR_COMMAND_NOT_FOUND, "smbutil" );
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->commandNotFound( "smbutil" );
     return;
   }
   else
@@ -722,7 +722,8 @@ void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
     }
     else
     {
-      Smb4KCoreMessage::error( ERROR_OPENING_FILE, file.fileName(), file.errorString() );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->openingFileFailed( file );
       return;
     }
   }
@@ -845,8 +846,8 @@ void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
     case -2:
     case -1:
     {
-      // Show an error and return.
-      Smb4KCoreMessage::processError( ERROR_PROCESS_ERROR, proc.error() );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->processError( proc.error() );
       return;
     }
     default:
@@ -1117,7 +1118,8 @@ void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
     }
     else
     {
-      Smb4KCoreMessage::error( ERROR_OPENING_FILE, file.fileName(), file.errorString() );
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->openingFileFailed( file );
       return;
     }
   }
