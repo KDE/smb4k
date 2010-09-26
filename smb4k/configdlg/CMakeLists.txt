@@ -15,7 +15,7 @@ set(smb4kconfigdialog_LIB_SRCS
    smb4ksuperuseroptions.cpp
    smb4kuserinterfaceoptions.cpp )
 
-kde4_add_plugin(smb4kconfigdialog WITH_PREFIX ${smb4kconfigdialog_LIB_SRCS})
+kde4_add_plugin( smb4kconfigdialog ${smb4kconfigdialog_LIB_SRCS} )
 
 target_link_libraries( smb4kconfigdialog
   ${KDE4_KDECORE_LIBS}

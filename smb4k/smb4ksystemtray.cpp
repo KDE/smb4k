@@ -638,7 +638,7 @@ void Smb4KSystemTray::slotConfigDialog()
   }
 
   // Load the configuration dialog:
-  KPluginLoader loader( "libsmb4kconfigdialog" );
+  KPluginLoader loader( "smb4kconfigdialog" );
   KPluginFactory *config_factory = loader.factory();
 
   if ( config_factory )
