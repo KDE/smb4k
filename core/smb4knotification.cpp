@@ -30,6 +30,8 @@
 #include <krun.h>
 #include <kurl.h>
 #include <kmessagebox.h>
+#include <knotification.h>
+#include <kdemacros.h>
 
 // system includes
 #include <string.h>
@@ -670,11 +672,13 @@ void Smb4KNotification::processError( QProcess::ProcessError error )
 }
 
 
-void Smb4KNotification::systemCallFailed( const QString& sys_call, int err_no )
+void Smb4KNotification::systemCallFailed( const QString &sys_call, int err_no )
 {
   int len = 100;
   char buf[100];
   buf[0] = '\0';
+#ifndef Q_OS_FREEBSD
+  // This is thread safe.
   const char *msg;
   
   msg = strerror_r( err_no, buf, len );
@@ -688,6 +692,16 @@ void Smb4KNotification::systemCallFailed( const QString& sys_call, int err_no )
   {
     m_err_msg += QString( buf );
   }
+#else
+  if ( strerror_r( err_no, buf, len ) == 0 )
+  {
+    m_err_msg += QString( buf );
+  }
+  else
+  {
+    // Do nothing
+  }
+#endif
   
   KNotification *notification = new KNotification( "systemCallFailed", KNotification::Persistent );
   

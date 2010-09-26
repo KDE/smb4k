@@ -36,10 +36,6 @@
 #include <QDir>
 #include <QProcess>
 
-// KDE includes
-#include <knotification.h>
-#include <kdemacros.h>
-
 // application specific includes
 #include <smb4kshare.h>
 
