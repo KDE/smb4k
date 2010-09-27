@@ -80,6 +80,10 @@ Name[sv]=Fel
 Name[uk]=Помилка
 Name[x-test]=xxErrorxx
 Comment=An error message is shown to the user
+Comment[pt]=Foi mostrada uma mensagem de erro ao utilizador
+Comment[pt_BR]=Uma mensagem de erro é exibida ao usuário
+Comment[sv]=Ett felmeddelande visas för användaren
+Comment[uk]=Користувачеві показано повідомлення про помилку
 Comment[x-test]=xxAn error message is shown to the userxx
 
 [Event/shareMounted]
@@ -601,8 +605,16 @@ Action=Popup|Sound
 
 [Event/readingFileFailed]
 Name=Reading file failed
+Name[pt]=A leitura do ficheiro foi mal-sucedida
+Name[pt_BR]=Falha na leitura do arquivo
+Name[sv]=Misslyckades läsa fil
+Name[uk]=Помилка читання файла
 Name[x-test]=xxReading file failedxx
 Comment=The file could not be read
+Comment[pt]=Não foi possível ler o ficheiro
+Comment[pt_BR]=Não foi possível ler o arquivo
+Comment[sv]=Filen kunde inte läsas
+Comment[uk]=Не вдалося прочитати файл
 Comment[x-test]=xxThe file could not be readxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
@@ -648,8 +660,16 @@ Action=Popup|Sound
 
 [Event/processError]
 Name=Process error occurred
+Name[pt]=Ocorreu um erro do processo
+Name[pt_BR]=Ocorreu um erro com o processo
+Name[sv]=Processfel uppstod
+Name[uk]=Помилка під час роботи процесу
 Name[x-test]=xxProcess error occurredxx
 Comment=An error occurred while a process was running
+Comment[pt]=Ocorreu um erro com um processo em execução
+Comment[pt_BR]=Ocorreu um erro com um processo em execução
+Comment[sv]=Ett fel uppstod medan en process körde
+Comment[uk]=Під час роботи процесу сталася помилка
 Comment[x-test]=xxAn error occurred while a process was runningxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
@@ -657,8 +677,16 @@ Action=Popup|Sound
 
 [Event/systemCallFailed]
 Name=System call failed
+Name[pt]=Uma chamada do sistema foi mal-sucedida
+Name[pt_BR]=Falha na chamada do sistema
+Name[sv]=Systemanrop misslyckades
+Name[uk]=Помилка системного виклику
 Name[x-test]=xxSystem call failedxx
 Comment=A system call failed and threw an error
+Comment[pt]=Uma chamada do sistema foi mal-sucedida e emitiu um erro
+Comment[pt_BR]=Uma chamada do sistema falhou e emitiu um erro
+Comment[sv]=Ett systemanrop misslyckades och orsakade ett fel
+Comment[uk]=Спроба виконання системного виклику призвела до помилки
 Comment[x-test]=xxA system call failed and threw an errorxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
