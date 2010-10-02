@@ -982,12 +982,12 @@
     </entry>
     <entry name="DoNotModifySudoers" type="Bool">
       <label>Do not modify sudo's configuration file</label>
-      <whatsthis>Do not modify the configuration file of the program sudo. You might want to enable this feature, if you are already allowed to execute arbitrary programs with super user privileges without the need of giving a password. Please note that during mounting the PASSWD environment variable is evaluated, so you have to make sure that it is preserved when sudo is run. This can be accomplished e.g. by setting the 'env_keep' option in the sudoers file. See the sudoers(5) manual page for further information.</whatsthis>
+      <whatsthis>Do not modify the configuration file of the program sudo. You might want to enable this feature, if you are already allowed to execute arbitrary programs with super user privileges without the need of giving a password. Please note that during mounting the PASSWD environment variable is evaluated, so you have to make sure that it is preserved when sudo is run. This can be accomplished e.g. by setting the 'env_keep' option in the sudoers file. See the sudoers manual page for further information.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="UseKdeSudo" type="Bool">
       <label>Use kdesudo instead of sudo</label>
-      <whatsthis>Use the graphical frontend kdesudo instead of sudo itself. To enable this option, kdesudo must be installed on your computer. This option enables you to provide a password each time it is needed. You should enable this feature, if you are allowed to execute arbitrary programs but need to provide a password.</whatsthis>
+      <whatsthis>Use the graphical frontend kdesudo instead of sudo itself. To enable this option, kdesudo must be installed on your computer. This option enables you to provide a password each time it is needed. You should enable this feature, if you are allowed to execute arbitrary programs with super user privileges but need to provide a password.</whatsthis>
       <default>false</default>
     </entry>
   </group>
