@@ -166,6 +166,9 @@ void Smb4KMounter::abort( Smb4KShare *share )
       if ( Smb4KSettings::useKdeSudo() && !KStandardDirs::findExe( "kdesudo" ).isEmpty() )
       {
         sudo = KStandardDirs::findExe( "kdesudo" );
+        sudo += " -d";
+        sudo += QString( " --comment \"%1\"" ).arg( i18n( "<b>smb4k_kill</b> needs administrative privileges. "
+                                                          "Please enter your password." ) );
       }
       else
       {
@@ -267,6 +270,9 @@ void Smb4KMounter::abortAll()
           if ( Smb4KSettings::useKdeSudo() && !KStandardDirs::findExe( "kdesudo" ).isEmpty() )
           {
             sudo = KStandardDirs::findExe( "kdesudo" );
+            sudo += " -d";
+            sudo += QString( " --comment \"%1\"" ).arg( i18n( "<b>smb4k_kill</b> needs administrative privileges. "
+                                                              "Please enter your password." ) );
           }
           else
           {
@@ -840,6 +846,9 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   if ( Smb4KSettings::useKdeSudo() && !KStandardDirs::findExe( "kdesudo" ).isEmpty() )
   {
     sudo = KStandardDirs::findExe( "kdesudo" );
+    sudo += " -d";
+    sudo += QString( " --comment \"%1\"" ).arg( i18n( "<b>smb4k_mount</b> needs administrative privileges. "
+                                                      "Please enter your password." ) );
   }
   else
   {
@@ -1342,6 +1351,9 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
   if ( Smb4KSettings::useKdeSudo() && !KStandardDirs::findExe( "kdesudo" ).isEmpty() )
   {
     sudo = KStandardDirs::findExe( "kdesudo" );
+    sudo += " -d";
+    sudo += QString( " --comment \"%1\"" ).arg( i18n( "<b>smb4k_umount</b> needs administrative privileges. "
+                                                      "Please enter your password." ) );
   }
   else
   {
