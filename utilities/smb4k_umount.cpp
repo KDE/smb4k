@@ -1,9 +1,9 @@
 /***************************************************************************
-    smb4k_umount  -  This is the unmount utility of Smb4K.
+    smb4k_umount.cpp  -  The (new) unmount utility for Smb4K.
                              -------------------
-    begin                : Sa Sep 25 2004
-    copyright            : (C) 2004-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    begin                : So Okt 03 2010
+    copyright            : (C) 2010 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -23,69 +23,33 @@
  *   MA  02111-1307 USA                                                    *
  ***************************************************************************/
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
+// Qt includes
+#include <QDebug>
 
-#ifndef __FreeBSD__
-#include <sys/statfs.h>
-#else
-#include <sys/param.h>
-#include <sys/mount.h>
-#endif
+// KDE includes
+#include <kaboutdata.h>
+#include <kcmdlineargs.h>
+#include <kapplication.h>
+#include <kprocess.h>
+#include <kurl.h>
+#include <kmountpoint.h>
 
-#ifdef __linux__
-#include <sys/utsname.h>
-#endif
-
-#include <locale.h>
-#include <unistd.h>
-#include <getopt.h>
-#include <errno.h>
-#include <string.h>
+// system includes
 #include <stdlib.h>
 #include <iostream>
 using namespace std;
 
-#define SMB4K_UMOUNT_VERSION "0.16"
+#define VERSION "0.17"
 
 
-void info()
-{
-  cout << "This is smb4k_umount (version " << SMB4K_UMOUNT_VERSION << "), the unmount utility of Smb4K" << endl;
-  cout << "Copyright (C) 2004-2010, Alexander Reinholdt" << endl;
-  cout << endl;
-  cout << "Usage:" << endl;
-#ifndef __FreeBSD__
-  cout << "  smb4k_umount {options} {mountpoint}" << endl;
-#else
-  cout << "  smb4k_umount {mountpoint}" << endl;
-#endif
-  cout << "  smb4k_umount --help" << endl;
-  cout << "  smb4k_umount --version" << endl;
-  cout << endl;
-  cout << "Arguments:" << endl;
-#ifdef __linux__
-  cout << "  {options}" << endl;
-  cout << "    -l\t\tPerform a lazy unmount. See the manual page of umount for" << endl;
-  cout << "\t\tmore information. You need kernel version 2.4.11 or later." << endl;
-#endif
-  cout << endl;
-  cout << "  {mountpoint}\tThe path where the share is mounted." << endl;
-  cout << endl;
-  cout << "  --help\tDisplay this help screen and exit." << endl;
-  cout << "  --version\tDisplay the version information and exit." << endl;
-  cout << endl;
-}
+static const char description[] =
+  I18N_NOOP( "This program umounts SMBFS/CIFS shares." );
 
 
-void version()
-{
-  cout << "Version " << SMB4K_UMOUNT_VERSION << endl;
-}
-
-
-bool find_program( const char *name, char *path, bool verbose )
+static const char authors[] =
+  I18N_NOOP( "(C) 2010, Alexander Reinholdt" );
+  
+bool find_program( const char *name, char *path )
 {
   const char *paths[] = { "/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/", "/usr/local/bin/", "/usr/local/sbin/" };
   string file = "";
@@ -104,285 +68,196 @@ bool find_program( const char *name, char *path, bool verbose )
 
   if ( !strcmp( file.c_str(), "" ) )
   {
-    if ( verbose )
-    {
-      cerr << "smb4k_umount: Could not find " << name << " binary" << endl;
-    }
     return false;
   }
 
   int len = strlen( file.c_str() ) + 1;
-  strncpy( path, file.c_str(), len );
+
+  (void) strncpy( path, file.c_str(), len );
   path[len-1] = '\0';
 
   return true;
 }
-
-
-bool check_filesystem( const char *path )
+  
+int main( int argc, char *argv[] )
 {
-  bool ok = false;
+  KAboutData aboutData( "smb4k_umount",
+                        "smb4k",
+                        ki18n( "smb4k_umount" ),
+                        VERSION,
+                        ki18n( description ),
+                        KAboutData::License_GPL_V2,
+                        ki18n( authors ),
+                        KLocalizedString(),
+                        "http://smb4k.berlios.de",
+                        "smb4k-bugs@lists.berlios.de" );
 
-  struct statfs filesystem;
+  KCmdLineArgs::init( argc, argv, &aboutData );
 
-  if ( statfs( path, &filesystem ) == -1 )
+  KCmdLineOptions options;
+#ifdef Q_OS_LINUX
+  options.add( "l", ki18n( "Perform a lazy unmount" ) );
+#endif
+  options.add( "+mountpoint", ki18n( "The mountpoint of the share" ) );
+
+  KCmdLineArgs::addCmdLineOptions( options );
+
+  KApplication app( false /* no GUI */ );
+  
+  // Get the command line argument.
+  KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+#ifdef Q_OS_LINUX
+  bool lazy_unmount = false;
+#endif
+  KUrl url;
+  
+  if ( args->count() == 0 )
   {
-    int err_code = errno;
-
-    if ( err_code != EIO && err_code != EACCES )
+    KCmdLineArgs::usageError( "No arguments provided." );
+    exit( EXIT_FAILURE );
+  }
+  else
+  {
+#ifdef Q_OS_LINUX
+    if ( args->isSet( "l" ) )
     {
-      // ok is still FALSE
-      cerr << "smb4k_umount: " << strerror( err_code ) << endl;
+      lazy_unmount = true;
     }
     else
     {
-      ok = true;  // Bypass the check below, because it would yield ok == FALSE
-                  // and we want to be able to unmount broken shares as well.
+      // Do nothing
     }
-
-    return ok;
-  }
-
-#ifndef __FreeBSD__
-  // First entry is for CIFS, the second for SMBFS.
-  if ( (uint)filesystem.f_type == 0xFF534D42 /* CIFS */ ||
-       (uint)filesystem.f_type == 0x517B /* SMBFS */ )
-  {
-    ok = true;
-  }
-#else
-  if ( !strncmp( filesystem.f_fstypename, "smbfs", strlen( "smbfs" ) ) )
-  {
-    ok = true;
-  }
-#endif
-  else
-  {
-    // ok is still FALSE.
-    cerr << "smb4k_umount: File system not supported" << endl;
-  }
-
-  return ok;
-}
-
-
-int main( int argc, char *argv[], char *envp[] )
-{
-  // First of all, set the locale
-  (void) setlocale( LC_ALL, "" );
-
-  if ( argc < 2 )
-  {
-    info();
-    exit( EXIT_FAILURE );
-  }
-
-  int new_argc = argc + 1;
-  char *new_argv[new_argc];
-  int index = 0;
-  char path[255];
-  path[0] = '\0';
-  char *mountpoint = NULL;
-#ifdef __linux__
-  bool lazy_unmount = false;
 #endif
 
-  // Get the options that were passed:
-  int c;
-
-  while ( 1 )
-  {
-    int option_index = 0;
-
-    static struct option long_options[] =
+    for ( int i = 0; i < args->count(); i++ )
     {
-      { "help", 0, 0, 0 },
-      { "version", 0, 0, 0 },
-      { 0, 0, 0, 0 }
-    };
-#ifdef __linux__
-    c = getopt_long( argc, argv, "l", long_options, &option_index );
-#else
-    c = getopt_long( argc, argv, "", long_options, &option_index );
-#endif
-
-    if ( c == -1 )
-    {
-      break;
-    }
-
-    switch ( c )
-    {
-      case 0:
+      if ( args->url( i ).isValid() )
       {
-        int len = strlen( long_options[option_index].name ) + 1;
-        char opt[len];
-        opt[0] = '\0';
-        (void) strncpy( opt, long_options[option_index].name, len );
-        opt[len-1] = '\0';
-
-        if ( !strncmp( opt, "help", len ) )
-        {
-          info();
-          exit( EXIT_SUCCESS );
-        }
-        else if ( !strncmp( opt, "version", len ) )
-        {
-          version();
-          exit( EXIT_SUCCESS );
+        // Check if the mountpoint is valid and the file system is
+        // also correct.
+        KMountPoint::List mountpoints = KMountPoint::currentMountPoints( KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions );
+        
+        if ( mountpoints.findByPath( args->url( i ).toLocalFile() ) &&
+#ifndef Q_S_FREEBSD
+             QString::compare( mountpoints.findByPath( args->url( i ).toLocalFile() )->mountType(), "cifs" ) == 0 )
+#else
+             QString::compare( mountpoints.findByPath( args->url( i ).toLocalFile() )->mountType(), "smbfs" ) == 0 )
+#endif
+        {              
+          url = args->url( i );
         }
         else
         {
-          break;
+          // Do nothing
         }
-
+        
         break;
-      }
-#ifdef __linux__
-      case 'l':
-      {
-        // Initiate a lazy unmount. The umount binary
-        // will complain, if '-l' is not supported.
-        lazy_unmount = true;
-        break;
-      }
-#endif
-      case '?':
-      {
-        // Abort the program if an unknown option
-        // is encountered:
-        exit( EXIT_FAILURE );
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-
-#ifndef __FreeBSD__
-  if ( !find_program( "umount.cifs", path, false ) )
-  {
-    // Fall back to umount binary if we cannot find umount.cifs.
-    // This is needed when dealing with CIFS utils from Samba 4.0.
-    if ( !find_program( "umount", path, true ) )
-    {
-      exit( EXIT_FAILURE );
-    }
-  }
-
-  int len = strlen( path ) + 1;
-  new_argv[index] = new char[len];
-  new_argv[index][0] = '\0';
-  (void) strncpy( new_argv[index], path, len );
-  new_argv[index][len-1] = '\0';
-
-  index++;
-
-#ifdef __linux__
-  // Lazy unmount?
-  if ( lazy_unmount )
-  {
-    len = strlen( "-l" ) + 1;
-
-    new_argv[index] = new char[len];
-    new_argv[index][0] = '\0';
-    (void) strncpy( new_argv[index], "-l", len );
-    new_argv[index][len-1] = '\0';
-
-    index++;
-  }
-#endif
-#else
-  // We do not need to care about the user mode and
-  // we also need not to check for the file system,
-  // since there is only one.
-  if ( !find_program( "umount", path, true ) )
-  {
-    exit( EXIT_FAILURE );
-  }
-
-  int length = strlen( path ) + 1;
-  new_argv[index] = new char[length];
-  new_argv[index][0] = '\0';
-  (void) strncpy( new_argv[index], path, length );
-  new_argv[index][length-1] = '\0';
-
-  index++;
-#endif
-
-  // Add the mount point:
-  if ( optind < argc )
-  {
-    while ( optind < argc )
-    {
-      if ( !mountpoint )
-      {
-        if ( argv[optind][0] != '\057' )
-        {
-          cerr << "smb4k_umount: Argument " << optind << " is not a mount point" << endl;
-          exit( EXIT_FAILURE );
-        }
-#ifndef __FreeBSD__
-        if ( !check_filesystem( argv[optind] ) )
-#else
-        if ( !check_filesystem( argv[optind] ) )
-#endif
-        {
-          // Error message is given by check_filesystem()
-          exit( EXIT_FAILURE );
-        }
-
-        int len = strlen( argv[optind] ) + 1;
-
-        mountpoint = new char[len];
-        mountpoint[0] = '\0';
-        (void) strncpy( mountpoint, argv[optind], len );
-        mountpoint[len-1] = '\0';
-
-        optind++;
       }
       else
       {
-        break;
+        // Do nothing
       }
+    }
+
+    if ( url.isEmpty() )
+    {
+      cerr << argv[0] << ": " << I18N_NOOP( "Invalid mountpoint specified." ) << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+      exit( EXIT_FAILURE );
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  // Find the kill binary.
+  char path[255];
+  
+#ifndef Q_OS_FREEBSD
+  if ( !find_program( "umount.cifs", path ) )
+  {
+    if ( !find_program( "umount", path ) )
+    {
+      cerr << argv[0] << ": " << I18N_NOOP( "Could not find umount binary." ) << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+      exit( EXIT_FAILURE );
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+#else
+  if ( !find_program( "umount", path ) )
+  {
+    cerr << argv[0] << ": " << I18N_NOOP( "Could not find umount binary." ) << endl;
+    cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+    exit( EXIT_FAILURE );
+  }
+#endif
+  else
+  {
+    // Do nothing
+  }
+  
+  QString command = QString( "%1 %2 %3" ).arg( path )
+                                         .arg( lazy_unmount ? "-l" : "" )
+                                         .arg( url.toLocalFile() );
+  
+  
+  KProcess proc;
+  proc.setProcessEnvironment( QProcessEnvironment::systemEnvironment() );
+  proc.setShellCommand( command );
+  proc.setOutputChannelMode( KProcess::SeparateChannels );
+ 
+  switch ( proc.execute() )
+  {
+    case -2:
+    {
+      cerr << argv[0] << ": " << I18N_NOOP( "The internal process could not be started." ) << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+      exit( EXIT_FAILURE );
+      break;
+    }
+    case -1:
+    {
+      cerr << argv[0] << ": " << I18N_NOOP( "The internal process crashed with exit code " ) << proc.exitCode() << "." << endl;
+      cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+      exit( EXIT_FAILURE );
+      break;
+    }
+    default:
+    {
+      // Check if there is output on stderr.
+      QString stderr = QString::fromUtf8( proc.readAllStandardError() );
+      
+      if ( !stderr.isEmpty() )
+      {
+        cerr << argv[0] << ": " << stderr.toUtf8().data(); // Output ends with newline
+        cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+        exit( EXIT_FAILURE );
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      // Check if there is output on stdout.
+      QString stdout = QString::fromUtf8( proc.readAllStandardOutput() );
+      
+      if ( !stdout.isEmpty() )
+      {
+        cerr << argv[0] << ": " << stdout.toUtf8().data(); // Output ends with newline
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      break;
     }
   }
 
-  if ( !mountpoint )
-  {
-    cerr << "smb4k_umount: No mount point was specified" << endl;
-    exit( EXIT_FAILURE );
-  }
-  else
-  {
-    int len = strlen( mountpoint ) + 1;
-    new_argv[index] = new char[len];
-    new_argv[index][0] = '\0';
-    (void) strncpy( new_argv[index], mountpoint, len );
-    new_argv[index][len-1] = '\0';
-
-    index++;
-  }
-
-
-  if ( index >= new_argc )
-  {
-    cerr << "smb4k_umount: There are too many arguments" << endl;
-    exit( EXIT_FAILURE );
-  }
-
-  // Terminate new_argv:
-  new_argv[index] = NULL;
-
-  // Execute command:
-  if ( execve( new_argv[0], new_argv, envp ) == -1 )
-  {
-    int err = errno;
-    cerr << "smb4k_umount: " <<  strerror( err ) << endl;
-    exit( EXIT_FAILURE );
-  }
-
-  return EXIT_SUCCESS;
+  app.exit( EXIT_SUCCESS );
 }
-
