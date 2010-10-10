@@ -1,5 +1,5 @@
 /***************************************************************************
-    smb4k_kill  -  This is the (new) kill utility for Smb4K.
+    smb4k_kill  -   The (new) kill utility for Smb4K.
                              -------------------
     begin                : So Sep 12 2010
     copyright            : (C) 2010 by Alexander Reinholdt
