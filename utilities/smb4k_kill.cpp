@@ -31,6 +31,7 @@
 #include <kcmdlineargs.h>
 #include <kapplication.h>
 #include <kprocess.h>
+#include <kstandarddirs.h>
 
 // system includes
 #include <stdlib.h>
@@ -48,37 +49,6 @@ static const char authors[] =
   I18N_NOOP( "(C) 2010, Alexander Reinholdt" );
   
   
-bool find_program( const char *name, char *path )
-{
-  const char *paths[] = { "/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/", "/usr/local/bin/", "/usr/local/sbin/" };
-  string file = "";
-
-  for ( uint i = 0; i < sizeof( paths ) / sizeof( char * ); i++ )
-  {
-    string p( paths[i] );
-    p.append( name );
-
-    if ( access( p.c_str(), X_OK ) == 0 )
-    {
-      file.assign( p );
-      break;
-    }
-  }
-
-  if ( !strcmp( file.c_str(), "" ) )
-  {
-    return false;
-  }
-
-  int len = strlen( file.c_str() ) + 1;
-
-  (void) strncpy( path, file.c_str(), len );
-  path[len-1] = '\0';
-
-  return true;
-}
-  
-
 int main( int argc, char *argv[] )
 {
   KAboutData aboutData( "smb4k_kill",
@@ -92,15 +62,16 @@ int main( int argc, char *argv[] )
                         "http://smb4k.berlios.de",
                         "smb4k-bugs@lists.berlios.de" );
 
-  KCmdLineArgs::init( argc, argv, &aboutData );
+  QCoreApplication app( argc, argv );
+  KComponentData componentData( aboutData );
+                        
+  KCmdLineArgs::init( argc, argv, componentData.aboutData() );
 
   KCmdLineOptions options;
   options.add( "+pid", ki18n( "The PID of the process that is to be killed" ) );
 
   KCmdLineArgs::addCmdLineOptions( options );
 
-  KApplication app( false /* no GUI */ );
-  
   // Get the command line argument.
   KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
   QString pid;
@@ -116,9 +87,31 @@ int main( int argc, char *argv[] )
   }
   
   // Find the kill binary.
-  char path[255];
+  QStringList paths;
+  paths << "/bin/";
+  paths << "/sbin/";
+  paths << "/usr/bin/";
+  paths << "/usr/sbin/";
+  paths << "/usr/local/bin/";
+  paths << "/usr/local/sbin/";
   
-  if ( !find_program( "kill", path ) )
+  QString kill;
+  
+  for ( int i = 0; i < paths.size(); i++ )
+  {
+    kill = componentData.dirs()->findExe( "kill", paths.at( i ) );
+    
+    if ( !kill.isEmpty() )
+    {
+      break;
+    }
+    else
+    {
+      continue;
+    }
+  }
+  
+  if ( kill.isEmpty() )
   {
     cerr << argv[0] << ": " << I18N_NOOP( "Could not find kill binary." ) << endl;
     cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
@@ -128,8 +121,6 @@ int main( int argc, char *argv[] )
   {
     // Do nothing
   }
-  
-  QString kill = QString( path );
   
   // Set up the process.
   KProcess proc;

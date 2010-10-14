@@ -25,21 +25,23 @@
 
 // Qt includes
 #include <QDebug>
+#include <QCoreApplication>
 
 // KDE includes
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
-#include <kapplication.h>
 #include <kprocess.h>
 #include <kurl.h>
 #include <kmountpoint.h>
+#include <kcomponentdata.h>
+#include <kstandarddirs.h>
 
 // system includes
 #include <stdlib.h>
 #include <iostream>
 using namespace std;
 
-#define VERSION "0.17"
+#define VERSION "0.16"
 
 
 static const char description[] =
@@ -49,35 +51,6 @@ static const char description[] =
 static const char authors[] =
   I18N_NOOP( "(C) 2010, Alexander Reinholdt" );
   
-bool find_program( const char *name, char *path )
-{
-  const char *paths[] = { "/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/", "/usr/local/bin/", "/usr/local/sbin/" };
-  string file = "";
-
-  for ( uint i = 0; i < sizeof( paths ) / sizeof( char * ); i++ )
-  {
-    string p( paths[i] );
-    p.append( name );
-
-    if ( access( p.c_str(), X_OK ) == 0 )
-    {
-      file.assign( p );
-      break;
-    }
-  }
-
-  if ( !strcmp( file.c_str(), "" ) )
-  {
-    return false;
-  }
-
-  int len = strlen( file.c_str() ) + 1;
-
-  (void) strncpy( path, file.c_str(), len );
-  path[len-1] = '\0';
-
-  return true;
-}
   
 int main( int argc, char *argv[] )
 {
@@ -92,7 +65,10 @@ int main( int argc, char *argv[] )
                         "http://smb4k.berlios.de",
                         "smb4k-bugs@lists.berlios.de" );
 
-  KCmdLineArgs::init( argc, argv, &aboutData );
+  QCoreApplication app( argc, argv );
+  KComponentData componentData( aboutData );
+                        
+  KCmdLineArgs::init( argc, argv, componentData.aboutData() );
 
   KCmdLineOptions options;
 #ifdef Q_OS_LINUX
@@ -101,8 +77,6 @@ int main( int argc, char *argv[] )
   options.add( "+mountpoint", ki18n( "The mountpoint of the share" ) );
 
   KCmdLineArgs::addCmdLineOptions( options );
-
-  KApplication app( false /* no GUI */ );
   
   // Get the command line argument.
   KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
@@ -138,7 +112,7 @@ int main( int argc, char *argv[] )
         KMountPoint::List mountpoints = KMountPoint::currentMountPoints( KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions );
         
         if ( mountpoints.findByPath( args->url( i ).toLocalFile() ) &&
-#ifndef Q_S_FREEBSD
+#ifndef Q_OS_FREEBSD
              QString::compare( mountpoints.findByPath( args->url( i ).toLocalFile() )->mountType(), "cifs" ) == 0 )
 #else
              QString::compare( mountpoints.findByPath( args->url( i ).toLocalFile() )->mountType(), "smbfs" ) == 0 )
@@ -171,41 +145,83 @@ int main( int argc, char *argv[] )
     }
   }
   
-  // Find the kill binary.
-  char path[255];
+  // Find the umount binary.
+  QStringList paths;
+  paths << "/bin/";
+  paths << "/sbin/";
+  paths << "/usr/bin/";
+  paths << "/usr/sbin/";
+  paths << "/usr/local/bin/";
+  paths << "/usr/local/sbin/";
+  
+  QString umount;
   
 #ifndef Q_OS_FREEBSD
-  if ( !find_program( "umount.cifs", path ) )
+  for ( int i = 0; i < paths.size(); i++ )
   {
-    if ( !find_program( "umount", path ) )
+    umount = componentData.dirs()->findExe( "umount.cifs", paths.at( i ) );
+    
+    if ( !umount.isEmpty() )
     {
-      cerr << argv[0] << ": " << I18N_NOOP( "Could not find umount binary." ) << endl;
-      cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
-      exit( EXIT_FAILURE );
+      break;
     }
     else
     {
-      // Do nothing
+      continue;
     }
   }
+  
+  if ( umount.isEmpty() )
+  {
+    for ( int i = 0; i < paths.size(); i++ )
+    {
+      umount = componentData.dirs()->findExe( "umount", paths.at( i ) );
+      
+      if ( !umount.isEmpty() )
+      {
+        break;
+      }
+      else
+      {
+        continue;
+      }
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
 #else
-  if ( !find_program( "umount", path ) )
+  for ( int i = 0; i < paths.size(); i++ )
+  {
+    umount = componentData.dirs()->findExe( "umount", paths.at( i ) );
+    
+    if ( !umount.isEmpty() )
+    {
+      break;
+    }
+    else
+    {
+      continue;
+    }
+  }
+#endif
+  
+  if ( umount.isEmpty() )
   {
     cerr << argv[0] << ": " << I18N_NOOP( "Could not find umount binary." ) << endl;
     cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
     exit( EXIT_FAILURE );
   }
-#endif
   else
   {
     // Do nothing
   }
   
-  QString command = QString( "%1 %2 %3" ).arg( path )
+  QString command = QString( "%1 %2 %3" ).arg( umount )
                                          .arg( lazy_unmount ? "-l" : "" )
                                          .arg( url.toLocalFile() );
-  
-  
+                                         
   KProcess proc;
   proc.setProcessEnvironment( QProcessEnvironment::systemEnvironment() );
   proc.setShellCommand( command );
