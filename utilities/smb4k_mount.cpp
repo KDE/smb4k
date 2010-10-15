@@ -81,7 +81,7 @@ int main( int argc, char *argv[] )
   options.add( "M <cr:sr>",     ki18n( "Assign access rights to the newly created connection" ) );
   options.add( "N",             ki18n( "Do not ask for a password" ) );
   options.add( "O <co:cg/so:sg> ", ki18n( "Assign owner/group attributes to the newly created connection" );
-  options.add( "R <count>",     ki18n( "How many retries should be done before the SMB requester decides"
+  options.add( "R <count>",     ki18n( "How many retries should be done before the SMB requester decides "
                                        "to drop the connection" ) );
   options.add( "T <timeout>",   ki18n( "Timeout in seconds for each request" ) );
   options.add( "U <user>",      ki18n( "Username to authenticate with" ) );
@@ -96,7 +96,7 @@ int main( int argc, char *argv[] )
   options.add( "",              ki18n( "For further information see the manual page of mount_smbfs." ) );
 #endif
   options.add( "+unc", ki18n( "The UNC of the remote share" ) );
-  options.add( "+mountpoint", ki18n( "The mounpoint for the remote share" ) );
+  options.add( "+mountpoint", ki18n( "The mountpoint for the remote share" ) );
   
   KCmdLineArgs::addCmdLineOptions( options );
   
