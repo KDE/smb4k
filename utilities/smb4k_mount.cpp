@@ -36,6 +36,7 @@
 #include <kstandarddirs.h>
 #include <kurl.h>
 #include <kprocess.h>
+#include <kmountpoint.h>
 
 // system includes
 #include <iostream>
@@ -102,7 +103,7 @@ int main( int argc, char *argv[] )
   
   // Get the command line argument.
   KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-  QStringList options_list;
+  QStringList args_list;
   KUrl local;
   KUrl remote;
   
@@ -116,7 +117,7 @@ int main( int argc, char *argv[] )
 #ifndef Q_OS_FREEBSD
     if ( args->isSet( "o" ) )
     {
-      options_list += QString( "-o %1" ).arg( args->getOption( "o" ) );
+      args_list += QString( "-o %1" ).arg( args->getOption( "o" ) );
     }
     else
     {
@@ -125,7 +126,7 @@ int main( int argc, char *argv[] )
 #else
     if ( args->isSet( "E" ) )
     {
-      options_list += QString( "-E %1" ).arg( args->getOption( "E" ) );
+      args_list += QString( "-E %1" ).arg( args->getOption( "E" ) );
     }
     else
     {
@@ -134,7 +135,7 @@ int main( int argc, char *argv[] )
     
     if ( args->isSet( "I" ) )
     {
-      options_list += QString( "-I %1" ).arg( args->getOption( "I" ) );
+      args_list += QString( "-I %1" ).arg( args->getOption( "I" ) );
     }
     else
     {
@@ -143,7 +144,7 @@ int main( int argc, char *argv[] )
     
     if ( args->isSet( "L" ) )
     {
-      options_list += QString( "-L %1" ).arg( args->getOption( "L" ) );
+      args_list += QString( "-L %1" ).arg( args->getOption( "L" ) );
     }
     else
     {
@@ -152,7 +153,7 @@ int main( int argc, char *argv[] )
     
     if ( args->isSet( "M" ) )
     {
-      options_list += QString( "-M %1" ).arg( args->getOption( "M" ) );
+      args_list += QString( "-M %1" ).arg( args->getOption( "M" ) );
     }
     else
     {
@@ -161,7 +162,7 @@ int main( int argc, char *argv[] )
     
     if ( args->isSet( "N" ) )
     {
-      options_list += "-N";
+      args_list += "-N";
     }
     else
     {
@@ -170,7 +171,7 @@ int main( int argc, char *argv[] )
     
     if ( args->isSet( "O" ) )
     {
-      options_list += QString( "-O %1" ).arg( args->getOption( "O" ) );
+      args_list += QString( "-O %1" ).arg( args->getOption( "O" ) );
     }
     else
     {
@@ -179,7 +180,7 @@ int main( int argc, char *argv[] )
     
     if ( args->isSet( "R" ) )
     {
-      options_list += QString( "-R %1" ).arg( args->getOption( "R" ) );
+      args_list += QString( "-R %1" ).arg( args->getOption( "R" ) );
     }
     else
     {
@@ -188,7 +189,7 @@ int main( int argc, char *argv[] )
     
     if ( args->isSet( "T" ) )
     {
-      options_list += QString( "-T %1" ).arg( args->getOption( "T" ) );
+      args_list += QString( "-T %1" ).arg( args->getOption( "T" ) );
     }
     else
     {
@@ -197,7 +198,7 @@ int main( int argc, char *argv[] )
     
     if ( args->isSet( "U" ) )
     {
-      options_list += QString( "-U %1" ).arg( args->getOption( "U" ) );
+      args_list += QString( "-U %1" ).arg( args->getOption( "U" ) );
     }
     else
     {
@@ -206,7 +207,7 @@ int main( int argc, char *argv[] )
     
     if ( args->isSet( "W" ) )
     {
-      options_list += QString( "-W %1" ).arg( args->getOption( "W" ) );
+      args_list += QString( "-W %1" ).arg( args->getOption( "W" ) );
     }
     else
     {
@@ -215,7 +216,7 @@ int main( int argc, char *argv[] )
     
     if ( args->isSet( "c" ) )
     {
-      options_list += QString( "-c %1" ).arg( args->getOption( "c" ) );
+      args_list += QString( "-c %1" ).arg( args->getOption( "c" ) );
     }
     else
     {
@@ -224,7 +225,7 @@ int main( int argc, char *argv[] )
     
      if ( args->isSet( "f" ) )
     {
-      options_list += QString( "-f %1" ).arg( args->getOption( "f" ) );
+      args_list += QString( "-f %1" ).arg( args->getOption( "f" ) );
     }
     else
     {
@@ -233,7 +234,7 @@ int main( int argc, char *argv[] )
     
     if ( args->isSet( "d" ) )
     {
-      options_list += QString( "-d %1" ).arg( args->getOption( "d" ) );
+      args_list += QString( "-d %1" ).arg( args->getOption( "d" ) );
     }
     else
     {
@@ -242,7 +243,7 @@ int main( int argc, char *argv[] )
     
     if ( args->isSet( "u" ) )
     {
-      options_list += QString( "-u %1" ).arg( args->getOption( "u" ) );
+      args_list += QString( "-u %1" ).arg( args->getOption( "u" ) );
     }
     else
     {
@@ -251,7 +252,7 @@ int main( int argc, char *argv[] )
     
     if ( args->isSet( "g" ) )
     {
-      options_list += QString( "-g %1" ).arg( args->getOption( "g" ) );
+      args_list += QString( "-g %1" ).arg( args->getOption( "g" ) );
     }
     else
     {
@@ -264,9 +265,31 @@ int main( int argc, char *argv[] )
       // Check whether the argument is a local path.
       if ( args->url( i ).isValid() )
       {
+        // This is the local one
         if ( QDir( args->url( i ).toLocalFile() ).exists() )
         {
-          // This is the local URL
+          // Check that the mountpoint is not already in use.
+          KMountPoint::List mountpoints = KMountPoint::currentMountPoints( KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions );
+          
+          for( int j = 0; j < mountpoints.size(); j++ )
+          {
+#ifndef Q_OS_FREEBSD
+            if ( QString::compare( args->url( i ).toLocalFile(), mountpoints.at( j )->mountPoint(), Qt::CaseInsensitive ) == 0 )
+#else
+            if ( QString::compare( args->url( i ).toLocalFile(), mountpoints.at( j )->mountPoint(), Qt::CaseInsensitive ) == 0 )
+#endif
+            {
+              cerr << argv[0] << ": " << I18N_NOOP( "The mountpoint is already in use." ) << endl;
+              cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
+              exit( EXIT_FAILURE );
+              break;
+            }
+            else
+            {
+              continue;
+            }
+          }          
+          
           local = args->url( i );
         }
         else
@@ -282,7 +305,7 @@ int main( int argc, char *argv[] )
     }
   }
   
-  // Find the umount binary.
+  // Find the mount binary.
   QStringList paths;
   paths << "/bin/";
   paths << "/sbin/";
@@ -323,20 +346,16 @@ int main( int argc, char *argv[] )
   }
   
 #ifndef Q_OS_FREEBSD
-  QString command = QString( "%1 %2 %3 %4" ).arg( mount )
-                                            .arg( remote.pathOrUrl() )
-                                            .arg( local.pathOrUrl() )
-                                            .arg( options_list.join( " " ) );
+  args_list.prepend( local.pathOrUrl() );
+  args_list.prepend( remote.pathOrUrl() );
 #else
-  QString command = QString( "%1 %2 %3 %4" ).arg( mount )
-                                            .arg( options_list.join( " " ) )
-                                            .arg( remote.pathOrUrl() )
-                                            .arg( local.pathOrUrl() );
+  args_list += remote.pathOrUrl();
+  args_list += local.pathOrUrl();
 #endif
                                             
   KProcess proc;
   proc.setProcessEnvironment( QProcessEnvironment::systemEnvironment() );
-  proc.setShellCommand( command );
+  proc.setProgram( mount, args_list );
   proc.setOutputChannelMode( KProcess::SeparateChannels );
  
   switch ( proc.execute() )
@@ -362,7 +381,8 @@ int main( int argc, char *argv[] )
       
       if ( !stderr.isEmpty() )
       {
-        cerr << argv[0] << ": " << stderr.toUtf8().data(); // Output ends with newline
+        cerr << argv[0] << ": " << I18N_NOOP( "An error occurred:") << endl;
+        cerr << stderr.toUtf8().data(); // Output ends with newline
         cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
         exit( EXIT_FAILURE );
       }

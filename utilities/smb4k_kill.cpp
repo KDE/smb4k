@@ -74,11 +74,11 @@ int main( int argc, char *argv[] )
 
   // Get the command line argument.
   KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-  QString pid;
+  QStringList args_list;
   
   if ( args->count() == 1 )
   {
-    pid = args->arg( args->count() - 1 );
+    args_list += args->arg( args->count() - 1 );
   }
   else
   {
@@ -125,7 +125,7 @@ int main( int argc, char *argv[] )
   // Set up the process.
   KProcess proc;
   proc.setProcessEnvironment( QProcessEnvironment::systemEnvironment() );
-  proc.setShellCommand( kill+" "+pid );
+  proc.setProgram( kill, args_list );
   proc.setOutputChannelMode( KProcess::SeparateChannels );
   
   switch ( proc.execute() )
@@ -151,7 +151,8 @@ int main( int argc, char *argv[] )
       
       if ( !stderr.isEmpty() )
       {
-        cerr << argv[0] << ": " << stderr.toUtf8().data(); // Output ends with newline
+        cerr << argv[0] << ": " << I18N_NOOP( "An error occurred:") << endl;
+        cerr << stderr.toUtf8().data(); // Output ends with newline
         cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
         exit( EXIT_FAILURE );
       }

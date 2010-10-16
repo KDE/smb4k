@@ -8,7 +8,7 @@ set( smb4k_mount_SRCS smb4k_mount.cpp )
 
 kde4_add_executable( smb4k_mount ${smb4k_mount_SRCS} )
 
-target_link_libraries( smb4k_mount  ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} )
+target_link_libraries( smb4k_mount  ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS} )
 
 install( TARGETS smb4k_mount DESTINATION ${BIN_INSTALL_DIR} )
 

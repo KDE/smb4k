@@ -80,9 +80,7 @@ int main( int argc, char *argv[] )
   
   // Get the command line argument.
   KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-#ifdef Q_OS_LINUX
-  bool lazy_unmount = false;
-#endif
+  QStringList args_list;
   KUrl url;
   
   if ( args->count() == 0 )
@@ -95,7 +93,7 @@ int main( int argc, char *argv[] )
 #ifdef Q_OS_LINUX
     if ( args->isSet( "l" ) )
     {
-      lazy_unmount = true;
+      args_list += "-l";
     }
     else
     {
@@ -111,18 +109,23 @@ int main( int argc, char *argv[] )
         // also correct.
         KMountPoint::List mountpoints = KMountPoint::currentMountPoints( KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions );
         
-        if ( mountpoints.findByPath( args->url( i ).toLocalFile() ) &&
-#ifndef Q_OS_FREEBSD
-             QString::compare( mountpoints.findByPath( args->url( i ).toLocalFile() )->mountType(), "cifs" ) == 0 )
-#else
-             QString::compare( mountpoints.findByPath( args->url( i ).toLocalFile() )->mountType(), "smbfs" ) == 0 )
-#endif
-        {              
-          url = args->url( i );
-        }
-        else
+        for( int j = 0; j < mountpoints.size(); j++ )
         {
-          // Do nothing
+#ifndef Q_OS_FREEBSD
+          if ( QString::compare( args->url( i ).toLocalFile(), mountpoints.at( j )->mountPoint(), Qt::CaseInsensitive ) == 0 &&
+               QString::compare( mountpoints.at( j )->mountType(), "cifs", Qt::CaseInsensitive ) == 0 )
+#else
+          if ( QString::compare( args->url( i ).toLocalFile(), mountpoints.at( j )->mountPoint(), Qt::CaseInsensitive ) == 0 &&
+               QString::compare( mountpoints->at( j ).mountType(), "smbfs", Qt::CaseInsensitive ) == 0 )
+#endif
+          {
+            url = args->url( i );
+            break;
+          }
+          else
+          {
+            continue;
+          }
         }
         
         break;
@@ -144,6 +147,8 @@ int main( int argc, char *argv[] )
       // Do nothing
     }
   }
+  
+  args_list += url.toLocalFile();
   
   // Find the umount binary.
   QStringList paths;
@@ -217,14 +222,10 @@ int main( int argc, char *argv[] )
   {
     // Do nothing
   }
-  
-  QString command = QString( "%1 %2 %3" ).arg( umount )
-                                         .arg( lazy_unmount ? "-l" : "" )
-                                         .arg( url.toLocalFile() );
                                          
   KProcess proc;
   proc.setProcessEnvironment( QProcessEnvironment::systemEnvironment() );
-  proc.setShellCommand( command );
+  proc.setProgram( umount, args_list );
   proc.setOutputChannelMode( KProcess::SeparateChannels );
  
   switch ( proc.execute() )
@@ -250,7 +251,8 @@ int main( int argc, char *argv[] )
       
       if ( !stderr.isEmpty() )
       {
-        cerr << argv[0] << ": " << stderr.toUtf8().data(); // Output ends with newline
+        cerr << argv[0] << ": " << I18N_NOOP( "An error occurred:") << endl;
+        cerr << stderr.toUtf8().data(); // Output ends with newline
         cerr << argv[0] << ": " << I18N_NOOP( "Aborting." ) << endl;
         exit( EXIT_FAILURE );
       }
