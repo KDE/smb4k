@@ -87,6 +87,7 @@ Name[sv]=Fel
 Name[uk]=Помилка
 Name[x-test]=xxErrorxx
 Comment=An error message is shown to the user
+Comment[da]=En fejlmeddelelse vises for brugeren
 Comment[it]=Si mostra un messaggio di errore all'utente
 Comment[pt]=Foi mostrada uma mensagem de erro ao utilizador
 Comment[pt_BR]=Uma mensagem de erro é exibida ao usuário
@@ -432,6 +433,7 @@ Action=Popup|Sound
 
 [Event/unmountingFailed]
 Name=Unmounting failed
+Name[da]=Afmontering mislykkedes
 Name[de]=Trennen fehlgeschlagen
 Name[it]=Smontaggio non riuscito
 Name[pa]=ਅਣ-ਮਾਊਂਟ ਕਰਨਾ ਫੇਲ੍ਹ
@@ -441,6 +443,7 @@ Name[sv]=Avmontering misslyckades
 Name[uk]=Помилка демонтування
 Name[x-test]=xxUnmounting failedxx
 Comment=Unmounting a share failed
+Comment[da]=Afmontering af en ressource mislykkedes
 Comment[de]=Trennen einer Freigabe fehlgeschlagen
 Comment[it]=Smontaggio di una condivisione non riuscito
 Comment[pa]=ਸ਼ੇਅਰ ਅਣ-ਮਾਊਂਟ ਕਰਨ ਲਈ ਫੇਲ੍ਹ
@@ -455,6 +458,7 @@ Action=Popup|Sound
 
 [Event/unmountingNotAllowed]
 Name=Unmounting not allowed
+Name[da]=Afmontering ikke tilladt
 Name[de]=Trennen nicht erlaubt
 Name[it]=Smontaggio non permesso
 Name[pa]=ਅਣ-ਮਾਊਂਟ ਕਰਨਾ ਮਨਜ਼ੂਰ ਨਹੀਂ
@@ -464,6 +468,7 @@ Name[sv]=Avmontering inte tillåten
 Name[uk]=Демонтування заборонено
 Name[x-test]=xxUnmounting not allowedxx
 Comment=The user is not allowed to umount the share
+Comment[da]=Brugeren har ikke tilladelse til at afmontere ressourcen
 Comment[de]=Der Benutzer darf die Freigabe nicht trennen
 Comment[it]=L'utente non ha i permessi per smontare una condivisione
 Comment[pt]=O utilizador não tem permissões para desmontar a partilha
@@ -477,6 +482,7 @@ Action=Popup|Sound
 
 [Event/printingFailed]
 Name=Printing failed
+Name[da]=Udskrift mislykkedes
 Name[de]=Drucken fehlgeschlagen
 Name[it]=Stampa non riuscita
 Name[pa]=ਪਰਿੰਟ ਕਰਨ ਲਈ ਫੇਲ੍ਹ
@@ -486,6 +492,7 @@ Name[sv]=Utskrift misslyckades
 Name[uk]=Помилка друку
 Name[x-test]=xxPrinting failedxx
 Comment=Printing a file failed
+Comment[da]=Udskrift af en fil mislykkedes
 Comment[de]=Das Drucken einer Datei ist fehlgeschlagen
 Comment[it]=Stampa di un file non riuscita
 Comment[pa]=ਫਾਇਲ ਪਰਿੰਟ ਕਰਨ ਲਈ ਫੇਲ੍ਹ
@@ -500,6 +507,7 @@ Action=Popup|Sound
 
 [Event/synchronizationFailed]
 Name=Synchronization failed
+Name[da]=Synkronisering mislykkedes
 Name[de]=Synchronisation fehlgeschlagen
 Name[it]=Sincronizzazione non riuscita
 Name[pa]=ਸੈਕਰੋਨਾਈਜ਼ੇਸ਼ਨ ਫੇਲ੍ਹ ਹੋਈ
@@ -509,6 +517,7 @@ Name[sv]=Synkronisering misslyckades
 Name[uk]=Невдала спроба синхронізації
 Name[x-test]=xxSynchronization failedxx
 Comment=The synchronization failed
+Comment[da]=Synkroniseringen mislykkedes
 Comment[de]=Die Synchronisation ist fehlgeschlagen
 Comment[it]=La sincronizzazione non è riuscita
 Comment[pa]=ਸੈਕਰੋਨਾਈਜ਼ੇਸ਼ਨ ਫੇਲ੍ਹ ਹੋਈ
@@ -523,6 +532,7 @@ Action=Popup|Sound
 
 [Event/searchingFailed]
 Name=Searching failed
+Name[da]=Søgningen mislykkedes
 Name[de]=Suche fehlgeschlagen
 Name[it]=Ricerca non riuscita
 Name[pa]=ਖੋਜ ਕਰਨ ਲਈ ਫੇਲ੍ਹ
@@ -532,6 +542,7 @@ Name[sv]=Sökning misslyckades
 Name[uk]=Помилка пошуку
 Name[x-test]=xxSearching failedxx
 Comment=Searching the network neighborhood failed
+Comment[da]=Søgning i netværksnabolaget mislykkedes
 Comment[de]=Das Durchsuchen der Netzwerkumgebung ist fehlgeschlagen
 Comment[pt]=Não foi possível pesquisar na vizinhança da rede
 Comment[pt_BR]=A busca na vizinhança da rede falhou
@@ -544,6 +555,7 @@ Action=Popup|Sound
 
 [Event/commandNotFound]
 Name=Command not found
+Name[da]=Kommando ikke fundet
 Name[de]=Befehl nicht gefunden
 Name[pa]=ਕਮਾਂਡ ਨਹੀਂ ਲੱਭੀ।
 Name[pt]=Comando não encontrado
@@ -552,6 +564,7 @@ Name[sv]=Kommando hittades inte
 Name[uk]=Команду не знайдено
 Name[x-test]=xxCommand not foundxx
 Comment=The command could not be found
+Comment[da]=Kommandoen kunne ikke findes
 Comment[de]=Der Befehl kann nicht gefunden werden
 Comment[pt]=Não foi possível encontrar o comando
 Comment[pt_BR]=Não foi possível encontrar o comando
@@ -564,6 +577,7 @@ Action=Popup|Sound
 
 [Event/cannotBookmarkPrinter]
 Name=Cannot bookmark printer
+Name[da]=Kan ikke sætte bogmærke ved printer
 Name[de]=Kann Drucker nicht mit Lesezeichen versehen
 Name[pt]=Não é possível adicionar a impressora aos favoritos
 Name[pt_BR]=Não foi possível adicionar a impressora aos favoritos
@@ -571,6 +585,7 @@ Name[sv]=Kan inte lägga till bokmärke för skrivare
 Name[uk]=Не можна створювати закладки для принтерів
 Name[x-test]=xxCannot bookmark printerxx
 Comment=Printers cannot be bookmarked
+Comment[da]=Printere kan ikke bogmærkes
 Comment[de]=Drucker können nicht mit einem Lesezeichen versehen werden
 Comment[pt]=Não poderá adicionar impressoras aos favoritos
 Comment[pt_BR]=As impressoras não podem ser adicionadas aos favoritos
@@ -583,6 +598,7 @@ Action=Popup|Sound
 
 [Event/sudowriterFailed]
 Name=Writing to sudoers file failed
+Name[da]=Skrivning til sudoers-filen mislykkedes
 Name[de]=Schreiben der sudoers-Datei fehlgeschlagen
 Name[it]=Scrittura nel file sudoers non riuscita
 Name[pt]=Não foi possível gravar o ficheiro 'sudoers'
@@ -591,6 +607,7 @@ Name[sv]=Misslyckades skriva till filen sudoers
 Name[uk]=Невдала спроба запису до файла sudoers
 Name[x-test]=xxWriting to sudoers file failedxx
 Comment=The writing to the sudoers file failed
+Comment[da]=Skrivning til sudoers-filen mislykkedes
 Comment[de]=Das Schreiben der sudoers-Datei ist fehlgeschlagen
 Comment[it]=La scrittura nel file sudoers non è riuscita
 Comment[pt]=Não foi possível a gravação do ficheiro 'sudoers'
@@ -604,6 +621,7 @@ Action=Popup|Sound
 
 [Event/fileNotFound]
 Name=File not found
+Name[da]=Fil ikke fundet
 Name[de]=Datei nicht gefunden
 Name[mai]=फाइल नहि भेटल
 Name[pt]=O ficheiro não foi encontrado
@@ -612,6 +630,7 @@ Name[sv]=Filen hittades inte
 Name[uk]=Файл не знайдено
 Name[x-test]=xxFile not foundxx
 Comment=The file could not be found
+Comment[da]=Filen kunne ikke findes
 Comment[de]=Die Datei kann nicht gefunden werden
 Comment[pt]=Não foi possível encontrar o ficheiro
 Comment[pt_BR]=Não foi possível encontrar o arquivo
@@ -624,6 +643,7 @@ Action=Popup|Sound
 
 [Event/openingFileFailed]
 Name=Opening file failed
+Name[da]=Åbning af fil mislykkedes
 Name[de]=Öffnen der Datei fehlgeschlagen
 Name[pa]=ਫਾਇਲ ਖੋਲ੍ਹਣ ਲਈ ਫੇਲ੍ਹ
 Name[pt]=A abertura do ficheiro foi mal-sucedida
@@ -632,6 +652,7 @@ Name[sv]=Misslyckades öppna fil
 Name[uk]=Спроба відкриття файла зазнала невдачі
 Name[x-test]=xxOpening file failedxx
 Comment=The file could not be opened
+Comment[da]=Filen kunne ikke åbnes
 Comment[de]=Die Datei kann nicht geöffnet werden
 Comment[pt]=Não foi possível abrir o ficheiro
 Comment[pt_BR]=Não foi possível abrir o arquivo
@@ -644,6 +665,7 @@ Action=Popup|Sound
 
 [Event/readingFileFailed]
 Name=Reading file failed
+Name[da]=Læsning af filen mislykkedes
 Name[pa]=ਫਾਇਲ ਪੜ੍ਹਨ ਲਈ ਫੇਲ੍ਹ
 Name[pt]=A leitura do ficheiro foi mal-sucedida
 Name[pt_BR]=Falha na leitura do arquivo
@@ -651,6 +673,7 @@ Name[sv]=Misslyckades läsa fil
 Name[uk]=Помилка читання файла
 Name[x-test]=xxReading file failedxx
 Comment=The file could not be read
+Comment[da]=Filen kunne ikke læses
 Comment[pt]=Não foi possível ler o ficheiro
 Comment[pt_BR]=Não foi possível ler o arquivo
 Comment[sv]=Filen kunde inte läsas
@@ -662,6 +685,7 @@ Action=Popup|Sound
 
 [Event/mkdirFailed]
 Name=Creating directory failed
+Name[da]=Oprettelse af mappe mislykkedes
 Name[de]=Erstellen des Verzeichnisses fehlgeschlagen
 Name[pa]=ਡਾਇਰੈਕਟਰੀ ਬਣਾਉਣ ਲਈ ਫੇਲ੍ਹ
 Name[pt]=A criação da pasta foi mal-sucedida
@@ -670,6 +694,7 @@ Name[sv]=Misslyckades skapa katalog
 Name[uk]=Створення каталогу зазнало невдачі
 Name[x-test]=xxCreating directory failedxx
 Comment=Creating the directory failed
+Comment[da]=Oprettelse af mappen mislykkedes
 Comment[de]=Das Erstellen des Verzeichnisses ist fehlgeschlagen
 Comment[pa]=ਡਾਇਰੈਕਟਰੀ ਬਣਾਉਣ ਲਈ ਫੇਲ੍ਹ
 Comment[pt]=A criação da pasta foi mal-sucedida
@@ -683,6 +708,7 @@ Action=Popup|Sound
 
 [Event/missingPrograms]
 Name=Mandatory programs missing
+Name[da]=Obligatoriske programmer mangler
 Name[de]=Benötigte Programme fehlen
 Name[pt]=Faltam programas obrigatórios
 Name[pt_BR]=Faltam os programas obrigatórios
@@ -690,6 +716,7 @@ Name[sv]=Nödvändigt program saknas
 Name[uk]=Не виявлено обов’язкових програм
 Name[x-test]=xxMandatory programs missingxx
 Comment=Programs mandatorily needed by Smb4K are missing
+Comment[da]=Programmer som er obligatorisk nødvendige for Smb4K mangler
 Comment[de]=Von Smb4K unbedingt benötigte Programme fehlen
 Comment[pt]=Faltam programas necessários pelo Smb4K
 Comment[pt_BR]=Faltam os programas necessários pelo Smb4K
@@ -702,12 +729,14 @@ Action=Popup|Sound
 
 [Event/processError]
 Name=Process error occurred
+Name[da]=Procesfejl opstod
 Name[pt]=Ocorreu um erro do processo
 Name[pt_BR]=Ocorreu um erro com o processo
 Name[sv]=Processfel uppstod
 Name[uk]=Помилка під час роботи процесу
 Name[x-test]=xxProcess error occurredxx
 Comment=An error occurred while a process was running
+Comment[da]=En fejl opstod mens en proces kørte
 Comment[pt]=Ocorreu um erro com um processo em execução
 Comment[pt_BR]=Ocorreu um erro com um processo em execução
 Comment[sv]=Ett fel uppstod medan en process körde
@@ -719,6 +748,7 @@ Action=Popup|Sound
 
 [Event/systemCallFailed]
 Name=System call failed
+Name[da]=Et systemkald mislykkedes
 Name[pa]=ਸਿਸਟਮ ਕਾਲ ਫੇਲ੍ਹ ਹੋਈ
 Name[pt]=Uma chamada do sistema foi mal-sucedida
 Name[pt_BR]=Falha na chamada do sistema
@@ -726,6 +756,7 @@ Name[sv]=Systemanrop misslyckades
 Name[uk]=Помилка системного виклику
 Name[x-test]=xxSystem call failedxx
 Comment=A system call failed and threw an error
+Comment[da]=Et systemkald mislykkedes og gav en fejl
 Comment[pt]=Uma chamada do sistema foi mal-sucedida e emitiu um erro
 Comment[pt_BR]=Uma chamada do sistema falhou e emitiu um erro
 Comment[sv]=Ett systemanrop misslyckades och orsakade ett fel
