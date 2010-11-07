@@ -1,4 +1,5 @@
 Smb4K SVN_HEAD (????-??-??):
+- KDE SC 4.4.0 or later are required.
 - We now use Utf8 throughout the whole application (closes #14674).
 - Unified the function names of the core classes that set and return the
   workgroup name, host name, and share name.
@@ -79,13 +80,12 @@ Smb4K SVN_HEAD (????-??-??):
     shares.
   + If the user chose to not remount shares anymore, the list of shares that
     are scheduled for remount is cleared when the application exits.
-  + Incoming mount and unmount requests can now be processed in parallel.
+  + Mounting and unmounting is now done by a KAuth implementation. So, there
+    is no need for the utility programs anymore!
   + Rewrote slotAboutToQuit() slot.
-  + The import function has been rewritten. It uses KMountPoint to discover the
-    mount points. The mount options are acquired either by reading /proc/mounts
-    on initial import only (Linux and similar operating systems) or by evaluating 
-    KMountPoint::mountOptions() (FreeBSD). Especially under Linux the CPU load
-    could be reduced by this approach.
+  + The import() function has been rewritten. Among other things, shares that 
+    were mounted under Linux with the obsolete SMBFS file system are no longer
+    imported.
   + Introduced new currentState() function.
   + Replaced state( int ) signal by stateChanged() signal.
   + Added 'servern' and 'netbiosname' mount options. They are only used, when a
@@ -93,9 +93,6 @@ Smb4K SVN_HEAD (????-??-??):
   + Added aboutToStart() signal that is emitted when a mount process is about
     to start.
   + Added finished() signal that is emitted when a mount process finished.
-  + Rewrote import() function. Shares with the obsolete SMBFS file system are
-    not supported anymore and we now use /etc/mtab as fall back solution under
-    non-FreeBSD operating systems.
   + Replaced old updated() signal with one that emits the share that was updated.
   + Before the mounted() and unmounted() signals are emitted, we check if the 
     (un)mounting was successful.
@@ -356,24 +353,7 @@ Smb4K SVN_HEAD (????-??-??):
   + Added all settings available for shares to the host dialog. This way you can 
     set general settings for a host.
   + Added "What's this" help.
-- Revised utility programs:
-  + Did some housekeeping.
-  + smb4k_umount:
-    o It now only supports the CIFS file system under Linux. So, the
-      obsolete -t <filesystem>, -s and -n options were removed.
-    o Fall back to umount binary if umount.cifs could not be found. This is
-      needed when using CIFS utils from Samba 4.0.
-    o The version number is now 0.16.
-  + smb4k_mount:
-    o It now only supports the CIFS file system under Linux. So, the
-      obsolete -t <filesystem>, -s and -n options were removed. 
-    o Under FreeBSD the (undocumented) option -U <user> was added. 
-    o The version number is now 0.11.
-  + smb4k_sudowriter:
-    o Show usage instead of an error message when no valid arguments are
-      given.
-  + smb4k_kill:
-    o Transformed smb4k_kill into a KDE program. It's a drop-in replacement.
+- Removed utility programs in favor of the new KAuth implementation.
 
 Smb4K 0.10.9 (2010-09-11):
 - Fixed restoring of wrong file permissions for sudoers file (closes #17481).

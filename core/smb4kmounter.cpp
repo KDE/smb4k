@@ -41,7 +41,6 @@
 #include <kshell.h>
 #include <kstandarddirs.h>
 #include <kmountpoint.h>
-#include <kiconloader.h>
 
 // system includes
 #ifdef __FreeBSD__
@@ -129,84 +128,20 @@ void Smb4KMounter::abort( Smb4KShare *share )
 {
   Q_ASSERT( share );
 
-  BasicMountThread *thread = NULL;
+  Action *action = NULL;
   
   if ( !share->isHomesShare() )
   {
-    thread = m_cache.object( share->unc( QUrl::None ) );
+    action = m_cache.object( share->unc( QUrl::None ) );
   }
   else
   {
-    thread = m_cache.object( share->homeUNC( QUrl::None ) );
+    action = m_cache.object( share->homeUNC( QUrl::None ) );
   }
   
-  if ( thread && thread->process() &&
-       (thread->process()->state() == KProcess::Running || thread->process()->state() == KProcess::Starting) )
+  if ( action )
   {
-    if ( Smb4KSettings::alwaysUseSuperUser() ||
-         (Smb4KSettings::useForceUnmount() && thread->process()->type() == Smb4KProcess::Unmount) )
-    {
-      // Find smb4k_kill program
-      QString smb4k_kill = KGlobal::dirs()->findResource( "exe", "smb4k_kill" );
-
-      if ( smb4k_kill.isEmpty() )
-      {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->commandNotFound( "smb4k_kill" );
-        return;
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      // Find sudo program
-      QString sudo;
-      
-      if ( Smb4KSettings::useKdeSudo() && !KStandardDirs::findExe( "kdesudo" ).isEmpty() )
-      {
-        sudo = KStandardDirs::findExe( "kdesudo" );
-        sudo += " -d";
-        sudo += QString( " --comment \"%1\"" ).arg( i18n( "<b>smb4k_kill</b> needs administrative privileges. "
-                                                          "Please enter your password." ) );
-      }
-      else
-      {
-        sudo = KStandardDirs::findExe( "sudo" );
-      }
-
-      if ( sudo.isEmpty() )
-      {
-        if ( Smb4KSettings::useKdeSudo() )
-        {
-          Smb4KNotification *notification = new Smb4KNotification();
-          notification->commandNotFound( "kdesudo" );
-        }
-        else
-        {
-          Smb4KNotification *notification = new Smb4KNotification();
-          notification->commandNotFound( "sudo" );
-        }
-        return;
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      Smb4KProcess kill_proc( Smb4KProcess::Kill, this );
-      kill_proc.setShellCommand( sudo+" "+smb4k_kill+" "+QString( thread->process()->pid() ) );
-      kill_proc.setOutputChannelMode( KProcess::MergedChannels );
-      kill_proc.start();
-      kill_proc.waitForFinished( -1 );
-
-      // Tell the process that it was just killed/aborted.
-      thread->process()->abort();
-    }
-    else
-    {
-      thread->process()->abort();
-    }
+    action->stop();
   }
   else
   {
@@ -215,23 +150,32 @@ void Smb4KMounter::abort( Smb4KShare *share )
 }
 
 
-bool Smb4KMounter::isAborted( Smb4KShare *share )
-{
-  Q_ASSERT( share );
-  
-  BasicMountThread *thread = NULL;
-  
-  if ( !share->isHomesShare() )
-  {
-    thread = m_cache.object( share->unc( QUrl::None ) );
-  }
-  else
-  {
-    thread = m_cache.object( share->homeUNC( QUrl::None ) );
-  }
-  
-  return (thread && thread->process() && thread->process()->isAborted());
-}
+// bool Smb4KMounter::isAborted( Smb4KShare *share )
+// {
+//   Q_ASSERT( share );
+//   
+//   Action *action = NULL;
+//   
+//   if ( !share->isHomesShare() )
+//   {
+//     action = m_cache.object( share->unc( QUrl::None ) );
+//   }
+//   else
+//   {
+//     action = m_cache.object( share->homeUNC( QUrl::None ) );
+//   }
+//   
+//   if ( action )
+//   {
+//     return false;
+//   }
+//   else
+//   {
+//     // Do nothing
+//   }
+//   
+//   return true;
+// }
 
 
 void Smb4KMounter::abortAll()
@@ -242,74 +186,11 @@ void Smb4KMounter::abortAll()
     
     foreach ( const QString &key, keys )
     {
-      BasicMountThread *thread = m_cache.object( key );
+      Action *action = m_cache.object( key );
       
-      if ( thread && thread->process() &&
-            (thread->process()->state() == KProcess::Running || thread->process()->state() == KProcess::Starting) )
+      if ( action )
       {
-        if ( Smb4KSettings::alwaysUseSuperUser() ||
-            (Smb4KSettings::useForceUnmount() && thread->process()->type() == Smb4KProcess::Unmount) )
-        {
-          // Find smb4k_kill program
-          QString smb4k_kill = KGlobal::dirs()->findResource( "exe", "smb4k_kill" );
-
-          if ( smb4k_kill.isEmpty() )
-          {
-            Smb4KNotification *notification = new Smb4KNotification();
-            notification->commandNotFound( "smb4k_kill" );
-            return;
-          }
-          else
-          {
-            // Do nothing
-          }
-
-          // Find sudo program
-          QString sudo;
-      
-          if ( Smb4KSettings::useKdeSudo() && !KStandardDirs::findExe( "kdesudo" ).isEmpty() )
-          {
-            sudo = KStandardDirs::findExe( "kdesudo" );
-            sudo += " -d";
-            sudo += QString( " --comment \"%1\"" ).arg( i18n( "<b>smb4k_kill</b> needs administrative privileges. "
-                                                              "Please enter your password." ) );
-          }
-          else
-          {
-            sudo = KStandardDirs::findExe( "sudo" );
-          }
-
-          if ( sudo.isEmpty() )
-          {
-            if ( Smb4KSettings::useKdeSudo() )
-            {
-              Smb4KNotification *notification = new Smb4KNotification();
-              notification->commandNotFound( "kdesudo" );
-            }
-            else
-            {
-              Smb4KNotification *notification = new Smb4KNotification();
-              notification->commandNotFound( "sudo" );
-            }
-            return;
-          }
-          else
-          {
-            // Do nothing
-          }
-
-          Smb4KProcess kill_proc( Smb4KProcess::Kill, this );
-          kill_proc.setShellCommand( sudo+" "+smb4k_kill+" "+QString( thread->process()->pid() ) );
-          kill_proc.setOutputChannelMode( KProcess::MergedChannels );
-          kill_proc.start();
-          kill_proc.waitForFinished( -1 );
-        }
-        else
-        {
-          // Do nothing
-        }
-        
-        thread->process()->abort();
+        action->stop();
       }
       else
       {
@@ -328,18 +209,27 @@ bool Smb4KMounter::isRunning( Smb4KShare *share )
 {
   Q_ASSERT( share );
   
-  BasicMountThread *thread = NULL;
+  Action *action = NULL;
   
   if ( !share->isHomesShare() )
   {
-    thread = m_cache.object( share->unc( QUrl::None ) );
+    action = m_cache.object( share->unc( QUrl::None ) );
   }
   else
   {
-    thread = m_cache.object( share->homeUNC( QUrl::None ) );
+    action = m_cache.object( share->homeUNC( QUrl::None ) );
   }
   
-  return (thread && thread->process() && thread->process()->state() == KProcess::Running);
+  if ( action )
+  {
+    return true;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  return false;
 }
 
 
@@ -826,48 +716,38 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
     // Do nothing
   }
   
-  // Find smb4k_mount program
-  QString smb4k_mount = KGlobal::dirs()->findResource( "exe", "smb4k_mount" );
-
-  if ( smb4k_mount.isEmpty() )
+  // Find the mount program.
+  QString mount;
+  QStringList paths;
+  paths << "/bin/";
+  paths << "/sbin/";
+  paths << "/usr/bin/";
+  paths << "/usr/sbin/";
+  paths << "/usr/local/bin/";
+  paths << "/usr/local/sbin/";
+  
+  for ( int i = 0; i < paths.size(); i++ )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "smb4k_mount" );
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Find sudo program
-  QString sudo;
-      
-  if ( Smb4KSettings::useKdeSudo() && !KStandardDirs::findExe( "kdesudo" ).isEmpty() )
-  {
-    sudo = KStandardDirs::findExe( "kdesudo" );
-    sudo += " -d";
-    sudo += QString( " --comment \"%1\"" ).arg( i18n( "<b>smb4k_mount</b> needs administrative privileges. "
-                                                      "Please enter your password." ) );
-  }
-  else
-  {
-    sudo = KStandardDirs::findExe( "sudo" );
-  }
-
-  // Check that sudo is installed in the case it is needed.
-  if ( Smb4KSettings::alwaysUseSuperUser() && sudo.isEmpty() )
-  {
-    if ( Smb4KSettings::useKdeSudo() )
+#ifndef Q_OS_FREEBSD
+    mount = KGlobal::dirs()->findExe( "mount.cifs", paths.at( i ) );
+#else
+    mount = KGlobal::dirs()->findExe( "mount_smbfs", paths.at( i ) );
+#endif
+    
+    if ( !mount.isEmpty() )
     {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->commandNotFound( "kdesudo" );
+      break;
     }
     else
     {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->commandNotFound( "sudo" );
+      continue;
     }
+  }
+  
+  if ( mount.isEmpty() )
+  {
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->commandNotFound( mount );
     return;
   }
   else
@@ -875,6 +755,8 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
     // Do nothing
   }
   
+  // Check if the share has already been mounted or a mount 
+  // is currently in progress.
   QList<Smb4KShare *> list;
 
   if ( share->isHomesShare() )
@@ -913,8 +795,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
     list = findShareByUNC( share->unc( QUrl::None ) );
   }
   
-  // Before doing anything else let's check that the
-  // share has not already been mounted by the user:
+  // Check if it is already mounted:
   for ( int i = 0; i != list.size(); ++i )
   {
     if ( !list.at( i )->isForeign() )
@@ -927,23 +808,45 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
     }
   }
   
-  // Assemble the mount point and create it.
-  QString path;
-  path += Smb4KSettings::mountPrefix().path();
-  path += QDir::separator();
-  path += (Smb4KSettings::forceLowerCaseSubdirs() ? share->hostName().toLower() : share->hostName());
-  path += QDir::separator();
+  // Check if the mount process is in progress.  
+  QString key;
   
   if ( !share->isHomesShare() )
   {
-    path += (Smb4KSettings::forceLowerCaseSubdirs() ? share->shareName().toLower() : share->shareName());
+    key = "mount_"+share->unc();
   }
   else
   {
-    path += (Smb4KSettings::forceLowerCaseSubdirs() ? share->login().toLower() : share->login());
+    key = "mount_"+share->homeUNC();
+  } 
+  
+  if ( m_cache.contains( key ) && 
+       QString::compare( m_cache.object( key )->name(), "de.berlios.smb4k.mounthelper.mount" ) == 0 )
+  {
+    return;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Assemble the mount point and create it.
+  QString mountpoint;
+  mountpoint += Smb4KSettings::mountPrefix().path();
+  mountpoint += QDir::separator();
+  mountpoint += (Smb4KSettings::forceLowerCaseSubdirs() ? share->hostName().toLower() : share->hostName());
+  mountpoint += QDir::separator();
+  
+  if ( !share->isHomesShare() )
+  {
+    mountpoint += (Smb4KSettings::forceLowerCaseSubdirs() ? share->shareName().toLower() : share->shareName());
+  }
+  else
+  {
+    mountpoint += (Smb4KSettings::forceLowerCaseSubdirs() ? share->login().toLower() : share->login());
   }
 
-  QDir dir( QDir::cleanPath( path ) );
+  QDir dir( QDir::cleanPath( mountpoint ) );
 
   if ( !dir.mkpath( dir.path() ) )
   {
@@ -955,7 +858,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   {
     share->setPath( dir.path() );
   }
-
+  
   // Get the authentication information.
   Smb4KAuthInfo authInfo( share );
   Smb4KWalletManager::self()->readAuthInfo( &authInfo );
@@ -968,40 +871,40 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
 #endif
   share->setLogin( QString::fromUtf8( authInfo.login() ) );
 
-  // Compile the command
-  QString command;
-  Smb4KSambaOptionsInfo *options_info  = Smb4KSambaOptionsHandler::self()->findItem( share, true );
+  // Compile the arguments
+  QString arguments;
   QMap<QString, QString> global_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
-
-  if ( Smb4KSettings::alwaysUseSuperUser() )
+  Smb4KSambaOptionsInfo *options_info  = Smb4KSambaOptionsHandler::self()->findItem( share, true );
+  
+  // Set the port before passing the full UNC. This is mainly
+  // needed for FreeBSD.
+  if ( options_info )
   {
-    command += sudo;
-    command += " --";    
-    command += " "+smb4k_mount;
+    share->setPort( options_info->smbPort() != -1 ? options_info->smbPort() : Smb4KSettings::remoteSMBPort() );
   }
   else
   {
-    command += smb4k_mount;
+    share->setPort( Smb4KSettings::remoteSMBPort() );
   }
 
 #ifndef __FreeBSD__
-  command += " -o";
-  command += " ";
+  arguments += "-o";
+  arguments += " ";
 
   // Workgroup
-  command += !share->workgroupName().trimmed().isEmpty() ?
-             QString( "domain=%1" ).arg( KShell::quoteArg( share->workgroupName() ) ) :
-             "";
+  arguments += !share->workgroupName().trimmed().isEmpty() ?
+               QString( "domain=%1" ).arg( KShell::quoteArg( share->workgroupName() ) ) :
+               "";
   
   // Host IP
-  command += !share->hostIP().trimmed().isEmpty() ?
-             QString( ",ip=%1" ).arg( share->hostIP() ) :
-             "";
+  arguments += !share->hostIP().trimmed().isEmpty() ?
+               QString( ",ip=%1" ).arg( share->hostIP() ) :
+               "";
 
   // User
-  command += !authInfo.login().isEmpty() ?
-             QString( ",user=%1" ).arg( QString::fromUtf8( authInfo.login() ) ) :
-             ",guest";
+  arguments += !authInfo.login().isEmpty() ?
+               QString( ",user=%1" ).arg( QString::fromUtf8( authInfo.login() ) ) :
+               ",guest";
              
   // Client's and server's NetBIOS name
   // According to the manual page, this is only needed when port 139
@@ -1011,13 +914,13 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
     // The client's NetBIOS name.
     if ( !Smb4KSettings::netBIOSName().isEmpty() )
     {
-      command += QString( ",netbiosname=%1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) );
+      arguments += QString( ",netbiosname=%1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) );
     }
     else
     {
       if ( !global_options["netbios name"].isEmpty() )
       {
-        command += QString( ",netbiosname=%1" ).arg( KShell::quoteArg( global_options["netbios name"] ) );
+        arguments += QString( ",netbiosname=%1" ).arg( KShell::quoteArg( global_options["netbios name"] ) );
       }
       else
       {
@@ -1026,7 +929,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
     }
 
     // The server's NetBIOS name.
-    command += ",servern="+KShell::quoteArg( share->hostName() );
+    arguments += ",servern="+KShell::quoteArg( share->hostName() );
   }
   else
   {
@@ -1034,10 +937,10 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   }
   
   // UID
-  command += QString( ",uid=%1" ).arg( options_info ? options_info->uid() : (uid_t)Smb4KSettings::userID().toInt() );
+  arguments += QString( ",uid=%1" ).arg( options_info ? options_info->uid() : (uid_t)Smb4KSettings::userID().toInt() );
   
   // GID
-  command += QString( ",gid=%1" ).arg( options_info ? options_info->gid() : (gid_t)Smb4KSettings::groupID().toInt() );
+  arguments += QString( ",gid=%1" ).arg( options_info ? options_info->gid() : (gid_t)Smb4KSettings::groupID().toInt() );
   
   // Client character set
   switch ( Smb4KSettings::clientCharset() )
@@ -1046,7 +949,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
     {
       if ( !global_options["unix charset"].isEmpty() )
       {
-        command += QString( ",iocharset=%1" ).arg( global_options["unix charset"].toLower() );
+        arguments += QString( ",iocharset=%1" ).arg( global_options["unix charset"].toLower() );
       }
       else
       {
@@ -1056,14 +959,14 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
     }
     default:
     {
-      command += QString( ",iocharset=%1" ).arg( Smb4KSettings::self()->clientCharsetItem()->label() );
+      arguments += QString( ",iocharset=%1" ).arg( Smb4KSettings::self()->clientCharsetItem()->label() );
       break;
     }
   }
   
   // Port
-  command += QString( ",port=%1" ).arg( (options_info && options_info->fileSystemPort() != -1) ?
-                                        options_info->fileSystemPort() : Smb4KSettings::remoteFileSystemPort() );
+  arguments += QString( ",port=%1" ).arg( (options_info && options_info->fileSystemPort() != -1) ?
+               options_info->fileSystemPort() : Smb4KSettings::remoteFileSystemPort() );
                                         
   // Write access
   if ( options_info )
@@ -1072,12 +975,12 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
     {
       case Smb4KSambaOptionsInfo::ReadWrite:
       {
-        command += ",rw";
+        arguments += ",rw";
         break;
       }
       case Smb4KSambaOptionsInfo::ReadOnly:
       {
-        command += ",ro";
+        arguments += ",ro";
         break;
       }
       default:
@@ -1086,12 +989,12 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
         {
           case Smb4KSettings::EnumWriteAccess::ReadWrite:
           {
-            command += ",rw";
+            arguments += ",rw";
             break;
           }
           case Smb4KSettings::EnumWriteAccess::ReadOnly:
           {
-            command += ",ro";
+            arguments += ",ro";
             break;
           }
           default:
@@ -1109,12 +1012,12 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
     {
       case Smb4KSettings::EnumWriteAccess::ReadWrite:
       {
-        command += ",rw";
+        arguments += ",rw";
         break;
       }
       case Smb4KSettings::EnumWriteAccess::ReadOnly:
       {
-        command += ",ro";
+        arguments += ",ro";
         break;
       }
       default:
@@ -1125,65 +1028,65 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   }
   
   // File mask
-  command += !Smb4KSettings::fileMask().isEmpty() ? QString( ",file_mode=%1" ).arg( Smb4KSettings::fileMask() ) : "";
+  arguments += !Smb4KSettings::fileMask().isEmpty() ? QString( ",file_mode=%1" ).arg( Smb4KSettings::fileMask() ) : "";
 
   // Directory mask
-  command += !Smb4KSettings::directoryMask().isEmpty() ? QString( ",dir_mode=%1" ).arg( Smb4KSettings::directoryMask() ) : "";
+  arguments += !Smb4KSettings::directoryMask().isEmpty() ? QString( ",dir_mode=%1" ).arg( Smb4KSettings::directoryMask() ) : "";
 
   // Permission checks
-  command += Smb4KSettings::permissionChecks() ? ",perm" : ",noperm";
+  arguments += Smb4KSettings::permissionChecks() ? ",perm" : ",noperm";
 
   // Client controls IDs
-  command += Smb4KSettings::clientControlsIDs() ? ",setuids" : ",nosetuids";
+  arguments += Smb4KSettings::clientControlsIDs() ? ",setuids" : ",nosetuids";
   
   // Server inode numbers
-  command += Smb4KSettings::serverInodeNumbers() ? ",serverino" : ",noserverino";
+  arguments += Smb4KSettings::serverInodeNumbers() ? ",serverino" : ",noserverino";
 
   // Inode data caching
-  command += Smb4KSettings::noInodeDataCaching() ? ",directio" : "";
+  arguments += Smb4KSettings::noInodeDataCaching() ? ",directio" : "";
   
   // Translate reserved characters
-  command += Smb4KSettings::translateReservedChars() ? ",mapchars" : ",nomapchars";
+  arguments += Smb4KSettings::translateReservedChars() ? ",mapchars" : ",nomapchars";
   
   // Locking
-  command += Smb4KSettings::noLocking() ? ",nolock" : "";
+  arguments += Smb4KSettings::noLocking() ? ",nolock" : "";
   
   // Security mode
   switch ( Smb4KSettings::securityMode() )
   {
     case Smb4KSettings::EnumSecurityMode::None:
     {
-      command += ",sec=none";
+      arguments += ",sec=none";
       break;
     }
     case Smb4KSettings::EnumSecurityMode::Krb5:
     {
-      command += ",sec=krb5";
+      arguments += ",sec=krb5";
       break;
     }
     case Smb4KSettings::EnumSecurityMode::Krb5i:
     {
-      command += ",sec=krb5i";
+      arguments += ",sec=krb5i";
       break;
     }
     case Smb4KSettings::EnumSecurityMode::Ntlm:
     {
-      command += ",sec=ntlm";
+      arguments += ",sec=ntlm";
       break;
     }
     case Smb4KSettings::EnumSecurityMode::Ntlmi:
     {
-      command += ",sec=ntlmi";
+      arguments += ",sec=ntlmi";
       break;
     }
     case Smb4KSettings::EnumSecurityMode::Ntlmv2:
     {
-      command += ",sec=ntlmv2";
+      arguments += ",sec=ntlmv2";
       break;
     }
     case Smb4KSettings::EnumSecurityMode::Ntlmv2i:
     {
-      command += ",sec=ntlmv2i";
+      arguments += ",sec=ntlmv2i";
       break;
     }
     default:
@@ -1193,12 +1096,12 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   }
 
   // Global custom options provided by the user
-  command += !Smb4KSettings::customCIFSOptions().isEmpty() ? ","+Smb4KSettings::customCIFSOptions() : "";
+  arguments += !Smb4KSettings::customCIFSOptions().isEmpty() ? ","+Smb4KSettings::customCIFSOptions() : "";
   
   // Fix existing comma, if necessary.
-  if ( command.endsWith( "," ) )
+  if ( arguments.endsWith( "," ) )
   {
-    command.truncate( command.length() - 1 );
+    arguments.truncate( arguments.length() - 1 );
   }
   else
   {
@@ -1206,21 +1109,21 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   }
 #else
   // Workgroup
-  command += !share->workgroupName().isEmpty() ?
-             QString( " -W %1" ).arg( KShell::quoteArg( share->workgroupName() ) ) :
-             "";
+  arguments += !share->workgroupName().isEmpty() ?
+               QString( " -W %1" ).arg( KShell::quoteArg( share->workgroupName() ) ) :
+               "";
   
   // Host IP
-  command += !share->hostIP().isEmpty() ? QString( " -I %1" ).arg( share->hostIP() ) : "";
+  arguments += !share->hostIP().isEmpty() ? QString( " -I %1" ).arg( share->hostIP() ) : "";
 
   // Do not ask for a password. Use ~/.nsmbrc instead.
-  command += " -N";
+  arguments += " -N";
   
   // UID
-  command += QString( " -u %1" ).arg( options_info ? options_info->uid() : (uid_t)Smb4KSettings::userID().toInt() );
+  arguments += QString( " -u %1" ).arg( options_info ? options_info->uid() : (uid_t)Smb4KSettings::userID().toInt() );
 
   // GID
-  command += QString( " -g %1" ).arg( options_info ?  options_info->gid() : (uid_t)Smb4KSettings::groupID().toInt() );
+  arguments += QString( " -g %1" ).arg( options_info ?  options_info->gid() : (uid_t)Smb4KSettings::groupID().toInt() );
   
   // Client character set and server codepage
   QString charset, codepage;
@@ -1253,50 +1156,51 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
     }
   }
   
-  command += (!charset.isEmpty() && !codepage.isEmpty()) ? QString( " -E %1:%2" ).arg( charset, codepage ) : "";
+  arguments += (!charset.isEmpty() && !codepage.isEmpty()) ? QString( " -E %1:%2" ).arg( charset, codepage ) : "";
 
   // File mask
-  command += !Smb4KSettings::fileMask().isEmpty() ? QString( " -f %1" ).arg( Smb4KSettings::fileMask() ) : "";
+  arguments += !Smb4KSettings::fileMask().isEmpty() ? QString( " -f %1" ).arg( Smb4KSettings::fileMask() ) : "";
 
   // Directory mask
-  command += !Smb4KSettings::directoryMask().isEmpty() ? QString( " -d %1" ).arg( Smb4KSettings::directoryMask() ) : "";
+  arguments += !Smb4KSettings::directoryMask().isEmpty() ? QString( " -d %1" ).arg( Smb4KSettings::directoryMask() ) : "";
 #endif
-  command += " --";
-#ifndef __FreeBSD__
+
+  // Start the mounting.
+  Action *mountAction = new Action( "de.berlios.smb4k.mounthelper.mount" );
+  
+  m_cache.insert( key, mountAction );
+  
+  mountAction->setHelperID( "de.berlios.smb4k.mounthelper" );
+  mountAction->addArgument( "mount_binary", mount );
+  mountAction->addArgument( "mount_arguments", arguments );
+  mountAction->addArgument( "password", authInfo.password() );
+  mountAction->addArgument( "key", key );
+  
+  // Now add everything we need to create an Smb4KShare object in slotShareMounted().
   if ( !share->isHomesShare() )
   {
-    command += " "+KShell::quoteArg( share->unc() );
+    mountAction->addArgument( "unc", share->unc() );
   }
   else
   {
-    command += " "+KShell::quoteArg( share->homeUNC() );
+    mountAction->addArgument( "unc", share->homeUNC() );
   }
-#else
-  if ( options_info )
-  {
-    share->setPort( options_info->smbPort() != -1 ? options_info->smbPort() : Smb4KSettings::remoteSMBPort() );
-  }
-  else
-  {
-    share->setPort( Smb4KSettings::remoteSMBPort() );
-  }
-
-  if ( !share->isHomesShare() )
-  {
-    command += " "+KShell::quoteArg( share->unc( QUrl::RemoveScheme|QUrl::RemovePassword ) );
-  }
-  else
-  {
-    command += " "+KShell::quoteArg( share->homeUNC( QUrl::RemoveScheme|QUrl::RemovePassword ) );
-  }
-#endif
-  command += " "+KShell::quoteArg( share->path() );
-
-  // Start mounting the share.
+  mountAction->addArgument( "workgroup", share->workgroupName() );
+  mountAction->addArgument( "comment", share->comment() );  
+  mountAction->addArgument( "host_ip", share->hostIP() );
+  mountAction->addArgument( "mountpoint", share->canonicalPath() );
+  
+  mountAction->setExecutesAsync( true );
+  
+  connect( mountAction->watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+           this, SLOT( slotShareMounted( ActionReply ) ) );
+  connect( mountAction->watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+           this, SLOT( slotActionFinished( ActionReply ) ) );
+           
   if ( m_cache.size() == 0 )
   {
     QApplication::setOverrideCursor( Qt::WaitCursor );
-    // State was set above.
+    m_state = MOUNTER_MOUNT;
     emit stateChanged();
   }
   else
@@ -1305,25 +1209,8 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   }
   
   emit aboutToStart( share, MountShare );
-
-  MountThread *thread = new MountThread( share, this );
   
-  if ( !share->isHomesShare() )
-  {
-    m_cache.insert( share->unc( QUrl::None ), thread );
-  }
-  else
-  {
-    m_cache.insert( share->homeUNC( QUrl::None ), thread );
-  }
-  
-  connect( thread, SIGNAL( finished() ),
-           this,   SLOT( slotThreadFinished() ) );
-  connect( thread, SIGNAL( mounted( Smb4KShare * ) ),
-           this,   SLOT( slotShareMounted( Smb4KShare * ) ) );
-           
-  thread->start();
-  thread->mount( &authInfo, command );
+  mountAction->execute();
 }
 
 
@@ -1331,56 +1218,63 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
 {
   Q_ASSERT( share );
   
-  // Find the smb4k_umount program
-  QString smb4k_umount = KGlobal::dirs()->findResource( "exe", "smb4k_umount" );
-
-  if ( smb4k_umount.isEmpty() )
+  // Find the umount program.
+  QString umount;
+  QStringList paths;
+  paths << "/bin/";
+  paths << "/sbin/";
+  paths << "/usr/bin/";
+  paths << "/usr/sbin/";
+  paths << "/usr/local/bin/";
+  paths << "/usr/local/sbin/";
+  
+  for ( int i = 0; i < paths.size(); i++ )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "smb4k_umount" );
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Find sudo program
-  QString sudo;
+    umount = KGlobal::dirs()->findExe( "umount", paths.at( i ) );
     
-  if ( Smb4KSettings::useKdeSudo() && !KStandardDirs::findExe( "kdesudo" ).isEmpty() )
-  {
-    sudo = KStandardDirs::findExe( "kdesudo" );
-    sudo += " -d";
-    sudo += QString( " --comment \"%1\"" ).arg( i18n( "<b>smb4k_umount</b> needs administrative privileges. "
-                                                      "Please enter your password." ) );
-  }
-  else
-  {
-    sudo = KStandardDirs::findExe( "sudo" );
-  }
-
-  // Check that sudo is installed in the case it is needed.
-  if ( ((force && Smb4KSettings::useForceUnmount()) || Smb4KSettings::alwaysUseSuperUser()) &&
-       sudo.isEmpty() )
-  {
-    if ( Smb4KSettings::useKdeSudo() )
+    if ( !umount.isEmpty() )
     {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->commandNotFound( "kdesudo" );
+      break;
     }
     else
     {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->commandNotFound( "sudo" );
+      continue;
     }
+  }
+  
+  if ( umount.isEmpty() )
+  {
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->commandNotFound( umount );
     return;
   }
   else
   {
     // Do nothing
   }
-
+  
+  // Check if the mount process is in progress.  
+  QString key;
+  
+  if ( !share->isHomesShare() )
+  {
+    key = "unmount_"+share->unc();
+  }
+  else
+  {
+    key = "unmount_"+share->homeUNC();
+  } 
+  
+  if ( m_cache.contains( key ) && 
+       QString::compare( m_cache.object( key )->name(), "de.berlios.smb4k.mounthelper.unmount" ) == 0 )
+  {
+    return;
+  }
+  else
+  {
+    // Do nothing
+  }  
+  
   // Complain if the share is a foreign one and unmounting those
   // is prohibited.
   if ( share->isForeign() && !Smb4KSettings::unmountForeignShares() )
@@ -1438,23 +1332,12 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
   }
 
   // Compile the command.
-  QString command;
-
-  if ( (force && Smb4KSettings::useForceUnmount()) || Smb4KSettings::alwaysUseSuperUser() )
-  {
-    command += sudo;
-    command += " --";
-    command += " "+smb4k_umount;
-  }
-  else
-  {
-    command += smb4k_umount;
-  }
+  QString arguments;
 
 #ifdef __linux__
-  if ( force && Smb4KSettings::useForceUnmount() )
+  if ( force )
   {
-    command += " -l"; // lazy unmount
+    arguments += "-l"; // lazy unmount
   }
   else
   {
@@ -1462,46 +1345,57 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
   }
 #endif
 
-  command += " --";
-  command += " "+KShell::quoteArg( share->canonicalPath() );
-  
-  // Start unmounting the share.
-  if ( m_cache.size() == 0 )
-  {
-    QApplication::setOverrideCursor( Qt::WaitCursor );
-    // State was set above.
-    emit stateChanged();
-  }
-  else
-  {
-    // Already running
-  }
-  
   if ( !priv->aboutToQuit() )
   {
+    // Execute asynchronously
+    Action *unmountAction = new Action( "de.berlios.smb4k.mounthelper.unmount" );
+    
+    m_cache.insert( key, unmountAction );
+    
+    unmountAction->setHelperID( "de.berlios.smb4k.mounthelper" );
+    unmountAction->addArgument( "umount_binary", umount );
+    unmountAction->addArgument( "umount_arguments", arguments );
+    unmountAction->addArgument( "key", key );
+    
+    // Now add everything we need.
+    unmountAction->addArgument( "unc", share->unc( QUrl::None ) );
+    unmountAction->addArgument( "mountpoint", share->canonicalPath() );
+    
+    unmountAction->setExecutesAsync( true );
+    
+    connect( unmountAction->watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+            this, SLOT( slotShareUnmounted( ActionReply ) ) );
+    connect( unmountAction->watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+            this, SLOT( slotActionFinished( ActionReply ) ) );
+            
+    if ( m_cache.size() == 0 )
+    {
+      QApplication::setOverrideCursor( Qt::WaitCursor );
+      m_state = MOUNTER_UNMOUNT;
+      emit stateChanged();
+    }
+    else
+    {
+      // Already running
+    }
+    
     emit aboutToStart( share, UnmountShare );
     
-    UnmountThread *thread = new UnmountThread( share, this );
-    m_cache.insert( share->unc( QUrl::None ), thread );
-  
-    connect( thread, SIGNAL( finished() ),
-             this,   SLOT( slotThreadFinished() ) );
-    connect( thread, SIGNAL( unmounted( Smb4KShare * ) ),
-             this,   SLOT( slotShareUnmounted( Smb4KShare * ) ) );
-  
-    thread->start();
-    thread->unmount( command );
+    unmountAction->execute();
   }
   else
   {
-    // We only unmount the shares and do not need to connect
-    // to any signals. Also, we will not enter the thread into
-    // the cache.
-    UnmountThread thread( share, this );
-    thread.setStartDetached( true );
-    thread.start();
-    thread.unmount( command );
-    thread.wait();
+    // Execute synchronously.
+    // In this case we do not care about a return value.
+    Action unmountAction( "de.berlios.smb4k.mounthelper.unmount" );
+    unmountAction.setHelperID( "de.berlios.smb4k.mounthelper" );
+    unmountAction.addArgument( "umount_binary", umount );
+    unmountAction.addArgument( "umount_arguments", arguments );
+    unmountAction.addArgument( "mountpoint", share->canonicalPath() );
+    
+    emit aboutToStart( share, UnmountShare );
+    unmountAction.execute();
+    emit finished( share, UnmountShare );
   }
 }
 
@@ -1515,6 +1409,8 @@ void Smb4KMounter::unmountAllShares()
   // here, because then the mounter will loop indefinitely when the
   // unmounting of a share fails.
   QListIterator<Smb4KShare *> it( mountedSharesList() );
+  
+  qDebug() << "Implement batch processing of shares, so that the mounthelper does not choke.";
 
   while ( it.hasNext() )
   {
@@ -1668,76 +1564,126 @@ void Smb4KMounter::slotAboutToQuit()
 }
 
 
-void Smb4KMounter::slotThreadFinished()
+void Smb4KMounter::slotActionFinished( ActionReply reply )
 {
-  QStringList keys = m_cache.keys();
-
-  foreach ( const QString &key, keys )
+  Action *action = m_cache.take( reply.data()["key"].toString() );
+  
+  if ( action )
   {
-    BasicMountThread *thread = m_cache.object( key );
-
-    if ( thread->isFinished() )
+    if ( !reply.failed() )
     {
-      (void) m_cache.take( key );
+      // Create a share object for emitting signals.
+      Smb4KShare share;
+      share.setUNC( reply.data()["unc"].toString() );
+      share.setWorkgroupName( reply.data()["workgroup"].toString() );
+      share.setHostIP( reply.data()["host_ip"].toString() );
+      share.setComment( reply.data()["comment"].toString() );
+      share.setPath( reply.data()["mountpoint"].toString() );
       
-      switch ( thread->process()->type() )
+      if ( QString::compare( action->name(), "de.berlios.smb4k.mounthelper.mount" ) == 0 )
       {
-        case Smb4KProcess::Mount:
+        // Check if an error occurred.
+        QString stderr( reply.data()["stderr"].toString() );
+        
+        if ( !stderr.isEmpty() )
         {
-          if ( thread->badShareNameError() )
+#ifndef Q_OS_FREEBSD
+          if ( stderr.contains( "mount error 13", Qt::CaseSensitive ) || stderr.contains( "mount error(13)" )
+              /* authentication error */ )
           {
-            Smb4KShare share( *thread->share() );
-            share.setShareName( static_cast<QString>( thread->share()->shareName() ).replace( "_", " " ) );
-            mountShare( &share );
-          }
-          else
-          {
-            // Do nothing
-          }
-          
-          if ( thread->authenticationError() )
-          {
-            Smb4KAuthInfo authInfo( thread->share() );
+            Smb4KAuthInfo authInfo( &share );
 
             if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
             {
               // Kill the currently active override cursor. Another 
               // one will be set in an instant by mountShare().
               QApplication::restoreOverrideCursor();
-              mountShare( thread->share() );
+              mountShare( &share );
             }
             else
             {
               // Do nothing
             }
           }
+          else if ( (stderr.contains( "mount error 6" ) || stderr.contains( "mount error(6)" )) /* bad share name */ &&
+                    share.shareName().contains( "_", Qt::CaseSensitive ) )
+          {
+            // Kill the currently active override cursor. Another 
+            // one will be set in an instant by mountShare().
+            QApplication::restoreOverrideCursor();
+            share.setShareName( static_cast<QString>( share.shareName() ).replace( "_", " " ) );
+            mountShare( &share );
+          }
+          else if ( stderr.contains( "mount error 101" ) || stderr.contains( "mount error(101)" ) /* network unreachable */ )
+          {
+            qDebug() << "Network unreachable ..." << endl;
+          }
+ #else
+          if ( stderr.contains( "Authentication error" ) )
+          {
+            Smb4KAuthInfo authInfo( &share );
+
+            if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
+            {
+              // Kill the currently active override cursor. Another 
+              // one will be set in an instant by mountShare().
+              QApplication::restoreOverrideCursor();
+              mountShare( &share );
+            }
+            else
+            {
+              // Do nothing
+            }
+          }
+ #endif
           else
           {
-            // Do nothing
+            Smb4KNotification *notification = new Smb4KNotification();
+            notification->mountingFailed( &share, stderr ); 
           }
-          
-          emit finished( thread->share(), MountShare );
-          break;
         }
-        case Smb4KProcess::Unmount:
+        else
         {
-          emit finished( thread->share(), UnmountShare );
-          break;
+          // Do nothing
         }
-        default:
-        {
-          break;
-        }
+        
+        emit finished( &share, MountShare );
       }
-      
-      delete thread;
+      else if ( QString::compare( action->name(), "de.berlios.smb4k.mounthelper.unmount" ) == 0 )
+      {
+        // Check if an error occurred.
+        QString stderr( reply.data()["stderr"].toString() );
+        
+        if ( !stderr.isEmpty() )
+        {
+          Smb4KNotification *notification = new Smb4KNotification();
+          notification->unmountingFailed( &share, stderr ); 
+        }
+        else
+        {
+          // Do nothing
+        }
+        
+        emit finished( &share, UnmountShare );
+      }
+      else
+      {
+        // Do nothing
+      }
     }
     else
     {
-      // Do nothing
+      // If the action failed, show an error message.
+      qDebug() << "Show an error message";
     }
-  }
 
+    delete action;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
   if ( m_cache.size() == 0 )
   {
     m_state = MOUNTER_STOP;
@@ -1751,94 +1697,170 @@ void Smb4KMounter::slotThreadFinished()
 }
 
 
-void Smb4KMounter::slotShareMounted( Smb4KShare *share )
+void Smb4KMounter::slotShareMounted( ActionReply reply )
 {
-  Q_ASSERT( share );
-  
-  // Check that we actually mounted the share and emit 
-  // the mounted() signal if we found it.
-  KMountPoint::List mount_points = KMountPoint::currentMountPoints( KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions );
-  bool mountpoint_found = false;
-  
-  for ( int i = 0; i < mount_points.size(); ++i )
+  if ( !reply.failed() )
   {
-    if ( QString::compare( mount_points.at( i )->mountPoint(), share->path() ) == 0 ||
-         QString::compare( mount_points.at( i )->mountPoint(), share->canonicalPath() ) == 0 )
-    {
-      mountpoint_found = true;
-      break;
-    }
-    else
-    {
-      continue;
-    }
-  }
-  
-  if ( mountpoint_found )
-  {
-    // Set the share as mounted.
-    share->setIsMounted( true );
+    // Check that the share has not already been entered into the list.
+    Smb4KShare *share = findShareByPath( reply.data()["mountpoint"].toByteArray() );
     
-    // Check the usage, etc.
-    check( share );
-    
-    // Create a new share object and add it to the list
-    // of mounted shares.
-    Smb4KShare *new_share = new Smb4KShare( *share );
-  
-    if ( share->isHomesShare() )
+    if ( !share )
     {
-      new_share->setUNC( share->homeUNC( QUrl::None ) );
+      // Create a Smb4KShare object from the information returned
+      // by 'reply'.
+      share = new Smb4KShare( reply.data()["unc"].toString() );
+      share->setWorkgroupName( reply.data()["workgroup"].toString() );
+      share->setComment( reply.data()["comment"].toString() );
+      share->setHostIP( reply.data()["host_ip"].toString() );
+      share->setPath( reply.data()["mountpoint"].toString() );
+      
+      // Check that we actually mounted the share and emit 
+      // the mounted() signal if we found it.
+      KMountPoint::List mount_points = KMountPoint::currentMountPoints( KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions );
+      bool mountpoint_found = false;
+      
+      for ( int i = 0; i < mount_points.size(); ++i )
+      {
+        if ( QString::compare( mount_points.at( i )->mountPoint(), share->path() ) == 0 ||
+            QString::compare( mount_points.at( i )->mountPoint(), share->canonicalPath() ) == 0 )
+        {
+          mountpoint_found = true;
+          break;
+        }
+        else
+        {
+          continue;
+        }
+      }
+      
+      if ( mountpoint_found )
+      {
+        // Set the share as mounted.
+        share->setIsMounted( true );
+        
+        // Check the usage, etc.
+        check( share );
+        
+        addMountedShare( share );
+        
+        // Check whether this was a remount or not, do the necessary 
+        // things and notify the user.
+        if ( priv->pendingRemounts() != 0 && Smb4KSambaOptionsHandler::self()->findItem( share ) != NULL )
+        {
+          Smb4KSambaOptionsHandler::self()->removeRemount( share );
+          priv->removeRemount();
+          
+          if ( priv->pendingRemounts() == 0 )
+          {
+            Smb4KNotification *notification = new Smb4KNotification( this );
+            notification->sharesRemounted( priv->initialRemounts(), priv->initialRemounts() );
+            priv->clearRemounts();
+          }
+          else
+          {
+            if ( !m_cache.isEmpty() )
+            {
+              bool still_mounting = false;
+              
+              Action *action = m_cache.object( reply.data()["unc"].toString() );
+              
+              if ( action && 
+                  QString::compare( action->name(), "de.berlios.smb4k.mounthelper.mount" ) == 0 &&
+                  Smb4KSambaOptionsHandler::self()->findItem( share ) != NULL )
+              {
+                still_mounting = true;
+              }
+              else
+              {
+                // Do nothing
+              }
+
+              if ( !still_mounting )
+              {
+                Smb4KNotification *notification = new Smb4KNotification( this );
+                notification->sharesRemounted( priv->initialRemounts(), (priv->initialRemounts() - priv->pendingRemounts()) );
+                priv->clearRemounts();
+              }
+              else
+              {
+                // Do nothing
+              }
+            }
+            else
+            {
+              Smb4KNotification *notification = new Smb4KNotification( this );
+              notification->sharesRemounted( priv->initialRemounts(), (priv->initialRemounts() - priv->pendingRemounts()) );
+              priv->clearRemounts();
+            }
+          }
+        }
+        else
+        {
+          Smb4KNotification *notification = new Smb4KNotification( this );
+          notification->shareMounted( share );
+        }
+      
+        // Finally, emit the mounted() signal.
+        emit mounted( share );
+      }
+      else
+      {
+        delete share;
+      }
     }
     else
     {
       // Do nothing
     }
-  
-    addMountedShare( new_share );
-    
-    // Check whether this was a remount or not, do the necessary 
-    // things and notify the user.
-    if ( priv->pendingRemounts() != 0 && Smb4KSambaOptionsHandler::self()->findItem( share ) != NULL )
-    {
-      Smb4KSambaOptionsHandler::self()->removeRemount( share );
-      priv->removeRemount();
-      
-      if ( priv->pendingRemounts() == 0 )
-      {
-        Smb4KNotification *notification = new Smb4KNotification( this );
-        notification->sharesRemounted( priv->initialRemounts(), priv->initialRemounts() );
-        priv->clearRemounts();
-      }
-      else
-      {
-        if ( !m_cache.isEmpty() )
-        {
-          bool still_mounting = false;
-          
-          QStringList keys = m_cache.keys();
+  }
+  else
+  {
+    // Do nothing. Errors are reported by slotActionFinished().
+  }
+}
 
-          foreach ( const QString &key, keys )
+
+void Smb4KMounter::slotShareUnmounted( ActionReply reply )
+{
+  if ( !reply.failed() )
+  {
+    // Get the share that was unmounted.
+    Smb4KShare *share = findShareByPath( reply.data()["mountpoint"].toByteArray() );
+    
+    if ( share )
+    {
+      // Check that we actually unmounted the share and emit 
+      // the unmounted() signal if it is really gone.
+      KMountPoint::List mount_points = KMountPoint::currentMountPoints( KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions );
+      bool mountpoint_found = false;
+      
+      for ( int i = 0; i < mount_points.size(); ++i )
+      {
+        if ( QString::compare( mount_points.at( i )->mountPoint(), share->path() ) == 0 ||
+             QString::compare( mount_points.at( i )->mountPoint(), share->canonicalPath() ) == 0 )
+        {
+          mountpoint_found = true;
+          break;
+        }
+        else
+        {
+          continue;
+        }
+      }
+      
+      if ( !mountpoint_found )
+      {
+        // Clean up the mount prefix.
+        if ( qstrncmp( reply.data()["mountpoint"].toString().toUtf8(),
+             QDir( Smb4KSettings::mountPrefix().path() ).canonicalPath().toUtf8(),
+             QDir( Smb4KSettings::mountPrefix().path() ).canonicalPath().toUtf8().length() ) == 0 )
+        {
+          QDir dir( reply.data()["mountpoint"].toString() );
+
+          if ( dir.rmdir( dir.canonicalPath() ) )
           {
-            BasicMountThread *thread = m_cache.object( key );
-            
-            if ( thread->type() == BasicMountThread::MountThread &&
-                 Smb4KSambaOptionsHandler::self()->findItem( thread->share() ) != NULL )
-            {
-              still_mounting = true;
-              break;
-            }
-            else
-            {
-              continue;
-            }
-          }
-          
-          if ( !still_mounting )
-          {
-            Smb4KNotification *notification = new Smb4KNotification( this );
-            notification->sharesRemounted( priv->initialRemounts(), (priv->initialRemounts() - priv->pendingRemounts()) );
-            priv->clearRemounts();
+            dir.cdUp();
+            dir.rmdir( dir.canonicalPath() );
           }
           else
           {
@@ -1847,69 +1869,73 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
         }
         else
         {
-          Smb4KNotification *notification = new Smb4KNotification( this );
-          notification->sharesRemounted( priv->initialRemounts(), (priv->initialRemounts() - priv->pendingRemounts()) );
-          priv->clearRemounts();
+          // Do nothing here. Do not remove any paths that are outside the
+          // mount prefix.
         }
-      }
-    }
-    else
-    {
-      Smb4KNotification *notification = new Smb4KNotification( this );
-      notification->shareMounted( new_share );
-    }
-  
-    // Finally, emit the mounted() signal.
-    emit mounted( new_share );
-  }
-  else
-  {
-    // Set the share as not mounted and clear the mountpoint/path,
-    share->setIsMounted( false );
-    share->setPath( QString() );
-  }
-}
+        
+        // Set the share as unmounted.
+        share->setIsMounted( false );
 
+        if ( priv->pendingUnmounts() != 0 )
+        {
+          priv->removeUnmount();
+        
+          if ( priv->pendingUnmounts() == 0 )
+          {
+            Smb4KNotification *notification = new Smb4KNotification( this );
+            notification->allSharesUnmounted( priv->initialUnmounts(), priv->initialUnmounts() );
+            priv->clearUnmounts();
+          }
+          else
+          {
+            if ( !m_cache.isEmpty() )
+            {
+              bool still_unmounting = false;
+            
+              QStringList keys = m_cache.keys();
 
-void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
-{
-  Q_ASSERT( share );
-  
-  // Check that we actually unmounted the share and emit 
-  // the mounted() signal if it is really gone.
-  KMountPoint::List mount_points = KMountPoint::currentMountPoints( KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions );
-  bool mountpoint_found = false;
-  
-  for ( int i = 0; i < mount_points.size(); ++i )
-  {
-    if ( QString::compare( mount_points.at( i )->mountPoint(), share->path() ) == 0 ||
-         QString::compare( mount_points.at( i )->mountPoint(), share->canonicalPath() ) == 0 )
-    {
-      mountpoint_found = true;
-      break;
-    }
-    else
-    {
-      continue;
-    }
-  }
-  
-  if ( !mountpoint_found )
-  {
-    // Set the incoming share as unmounted.
-    share->setIsMounted( false );
-    
-    // Clean up the mount prefix.
-    if ( qstrncmp( share->canonicalPath(),
-         QDir( Smb4KSettings::mountPrefix().path() ).canonicalPath().toUtf8(),
-         QDir( Smb4KSettings::mountPrefix().path() ).canonicalPath().toUtf8().length() ) == 0 )
-    {
-      QDir dir( share->canonicalPath() );
-
-      if ( dir.rmdir( dir.canonicalPath() ) )
-      {
-        dir.cdUp();
-        dir.rmdir( dir.canonicalPath() );
+              foreach ( const QString &key, keys )
+              {
+                Action *action = m_cache.object( key );
+              
+                if ( QString::compare( action->name(), "de.berlios.smb4k.mounthelper.unmount" ) == 0 )
+                {
+                  still_unmounting = true;
+                  break;
+                }
+                else
+                {
+                  continue;
+                }
+              }
+            
+              if ( !still_unmounting )
+              {
+                Smb4KNotification *notification = new Smb4KNotification( this );
+                notification->allSharesUnmounted( priv->initialUnmounts(), (priv->initialUnmounts() - priv->pendingUnmounts()) );
+                priv->clearUnmounts();
+              }
+              else
+              {
+                // Do nothing
+              }
+            }
+            else
+            {
+              Smb4KNotification *notification = new Smb4KNotification( this );
+              notification->allSharesUnmounted( priv->initialUnmounts(), (priv->initialUnmounts() - priv->pendingUnmounts()) );
+              priv->clearUnmounts();
+            }
+          }
+        }
+        else
+        {
+          Smb4KNotification *notification = new Smb4KNotification( this );
+          notification->shareUnmounted( share );
+        }
+      
+        emit unmounted( share );
+        removeMountedShare( share );
       }
       else
       {
@@ -1918,87 +1944,12 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
     }
     else
     {
-      // Do nothing here. Do not remove any paths that are outside the
-      // mount prefix.
-    }
-    
-    // Find the share in the list, emit the unmounted() signal and finally
-    // remove the share from the list of mounted shares.
-    Smb4KShare *mounted_share = findShareByPath( share->path() );
-    
-    if ( mounted_share )
-    {
-      mounted_share->setIsMounted( false );
-
-      if ( priv->pendingUnmounts() != 0 )
-      {
-        priv->removeUnmount();
-        
-        if ( priv->pendingUnmounts() == 0 )
-        {
-          Smb4KNotification *notification = new Smb4KNotification( this );
-          notification->allSharesUnmounted( priv->initialUnmounts(), priv->initialUnmounts() );
-          priv->clearUnmounts();
-        }
-        else
-        {
-          if ( !m_cache.isEmpty() )
-          {
-            bool still_unmounting = false;
-            
-            QStringList keys = m_cache.keys();
-
-            foreach ( const QString &key, keys )
-            {
-              BasicMountThread *thread = m_cache.object( key );
-              
-              if ( thread->type() == BasicMountThread::UnmountThread )
-              {
-                still_unmounting = true;
-                break;
-              }
-              else
-              {
-                continue;
-              }
-            }
-            
-            if ( !still_unmounting )
-            {
-              Smb4KNotification *notification = new Smb4KNotification( this );
-              notification->allSharesUnmounted( priv->initialUnmounts(), (priv->initialUnmounts() - priv->pendingUnmounts()) );
-              priv->clearUnmounts();
-            }
-            else
-            {
-              // Do nothing
-            }
-          }
-          else
-          {
-            Smb4KNotification *notification = new Smb4KNotification( this );
-            notification->allSharesUnmounted( priv->initialUnmounts(), (priv->initialUnmounts() - priv->pendingUnmounts()) );
-            priv->clearUnmounts();
-          }
-        }
-      }
-      else
-      {
-        Smb4KNotification *notification = new Smb4KNotification( this );
-        notification->shareUnmounted( share );
-      }
-      
-      emit unmounted( mounted_share );
-      removeMountedShare( mounted_share );
-    }
-    else
-    {
-      // Do nothing
+      // Do nothing. The share is already gone.
     }
   }
   else
   {
-    // Do nothing.
+    // Do nothing. Error are reported by slotActionFinished()
   }
 }
 

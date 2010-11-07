@@ -1,9 +1,8 @@
 /***************************************************************************
-    smb4kmounter_p  -  This file contains private helper classes for the
-    Smb4KMounter class.
+    smb4kmounthelper  -  The helper that mounts and unmounts shares.
                              -------------------
-    begin                : Do Jul 19 2007
-    copyright            : (C) 2007-2010 by Alexander Reinholdt
+    begin                : Sa Dez 27 2008
+    copyright            : (C) 2008-2010 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -24,71 +23,24 @@
  *   MA  02111-1307 USA                                                    *
  ***************************************************************************/
 
-#ifndef SMB4KMOUNTER_P_H
-#define SMB4KMOUNTER_P_H
-
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
+#ifndef SMB4KMOUNTHELPER_H
+#define SMB4KMOUNTHELPER_H
 
 // Qt includes
-#include <QThread>
-#include <QString>
+#include <QObject>
 
 // KDE includes
-#include <kdebug.h>
+#include <kauth.h>
 
-// application specific includes
-#include <smb4kmounter.h>
-#include <smb4kshare.h>
+using namespace KAuth;
 
-class Smb4KShare;
-
-class CheckThread : public QThread
+class Smb4KMountHelper : public QObject
 {
   Q_OBJECT
-
-  public:
-    CheckThread( Smb4KShare *share,
-                 QObject *parent = 0 );
-    ~CheckThread();
-
-  protected:
-    void run();
-    
-  private:
-    Smb4KShare *m_share;
-};
-
-
-class Smb4KMounterPrivate
-{
-  public:
-    Smb4KMounterPrivate();
-    ~Smb4KMounterPrivate();
-    Smb4KMounter instance;
-    void setAboutToQuit();
-    bool aboutToQuit() { return m_quit; }
-    void setHardwareReason( bool hardware );
-    bool hardwareReason() { return m_hardware; }
-    void addRemount();
-    void removeRemount();
-    void clearRemounts();
-    int pendingRemounts() { return m_pending_remounts; }
-    int initialRemounts() { return m_initial_remounts; }
-    void addUnmount();
-    void removeUnmount();
-    void clearUnmounts();
-    int pendingUnmounts() { return m_pending_unmounts; }
-    int initialUnmounts() { return m_initial_unmounts; }
-
-  private:
-    bool m_quit;
-    bool m_hardware;
-    int m_pending_remounts;
-    int m_initial_remounts;
-    int m_pending_unmounts;
-    int m_initial_unmounts;
+  
+  public slots:
+    ActionReply mount( QVariantMap args );
+    ActionReply unmount( QVariantMap args );
 };
 
 #endif

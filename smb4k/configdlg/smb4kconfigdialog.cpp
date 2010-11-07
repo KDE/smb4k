@@ -54,7 +54,6 @@
 #include <smb4knetworkoptions.h>
 #include <smb4kshareoptions.h>
 #include <smb4kauthoptions.h>
-#include <smb4ksuperuseroptions.h>
 #include <smb4ksambaoptions.h>
 #include <smb4krsyncoptions.h>
 #include <smb4klaptopsupportoptions.h>
@@ -138,15 +137,6 @@ void Smb4KConfigDialog::setupDialog()
   
   rsync_options->setEnabled( !KStandardDirs::findExe( "rsync" ).isEmpty() );
 
-  Smb4KSuperUserOptions *super_user_options = new Smb4KSuperUserOptions( this );
-  QScrollArea *super_user_area = new QScrollArea( this );
-  super_user_area->setWidget( super_user_options );
-  super_user_area->setWidgetResizable( true );
-  super_user_area->setFrameStyle( QFrame::NoFrame );
-  
-  super_user_options->setEnabled( !KStandardDirs::findExe( "sudo" ).isEmpty() );
-  super_user_options->findChild<QCheckBox *>( "kcfg_UseKdeSudo" )->setEnabled( !KStandardDirs::findExe( "kdesudo" ).isEmpty() );
-
   Smb4KLaptopSupportOptions *laptop_options = new Smb4KLaptopSupportOptions( this );
   QScrollArea *laptop_area = new QScrollArea( this );
   laptop_area->setWidget( laptop_options );
@@ -160,7 +150,6 @@ void Smb4KConfigDialog::setupDialog()
   m_authentication  = addPage( auth_area, i18n( "Authentication" ), "dialog-password" );
   m_samba           = addPage( samba_area, i18n( "Samba" ), "preferences-system-network" );
   m_synchronization = addPage( rsync_area, i18n( "Synchronization" ), "go-bottom" );
-  m_super_user      = addPage( super_user_area, i18n( "Super User" ), "user-identity" );
   m_laptop_support  = addPage( laptop_area, i18n( "Laptop Support" ), "computer-laptop" );
 
   // Stuff that's not managed by KConfig XT is loaded by
@@ -170,9 +159,6 @@ void Smb4KConfigDialog::setupDialog()
   connect( samba_options,      SIGNAL( customSettingsModified() ),
            this,               SLOT( slotEnableApplyButton() ) );
 
-  connect( super_user_options, SIGNAL( removeEntries() ),
-           this,               SLOT( slotRemoveSuperUserEntries() ) );
-          
   connect( auth_options,       SIGNAL( loadWalletEntries() ),
            this,               SLOT( slotLoadAuthenticationInformation() ) );
            
@@ -213,68 +199,6 @@ void Smb4KConfigDialog::saveCustomSambaOptions()
     QList<Smb4KSambaOptionsInfo *> list;
     list = m_samba->widget()->findChild<Smb4KSambaOptions *>()->getCustomOptions();
     Smb4KSambaOptionsHandler::self()->updateCustomOptions( list );
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KConfigDialog::writeSuperUserEntries()
-{
-  if ( m_super_user )
-  {
-    Smb4KSuperUserOptions *super_user = m_super_user->widget()->findChild<Smb4KSuperUserOptions *>();
-    Smb4KSettings::setDoNotModifySudoers( super_user->findChild<QCheckBox *>( "kcfg_DoNotModifySudoers" )->isChecked() );
-    
-    if ( !super_user->findChild<QCheckBox *>( "kcfg_DoNotModifySudoers" )->isChecked() )
-    {
-      if ( super_user->writeSuperUserEntries() )
-      {
-        setEnabled( false );
-        
-        // Write to the /etc/sudoers file.      
-        if ( !Smb4KSudoWriterInterface::self()->addUser() )
-        {
-          // The writing failed. Reset the settings in the "Super User"
-          // page.
-          super_user->resetSuperUserSettings();
-          
-          // Set super user settings to FALSE
-          Smb4KSettings::setUseForceUnmount( false );
-          Smb4KSettings::setAlwaysUseSuperUser( false );
-        }
-        else
-        {
-          // Set super user setting according to the state of the check boxes
-          Smb4KSettings::setUseForceUnmount( 
-            super_user->findChild<QCheckBox *>( "kcfg_UseForceUnmount" )->isChecked() 
-          );
-          
-          Smb4KSettings::setAlwaysUseSuperUser( 
-            super_user->findChild<QCheckBox *>( "kcfg_AlwaysUseSuperUser" )->isChecked() 
-          );
-        }
-        
-        setEnabled( true );
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Set super user setting according to the state of the check boxes
-      Smb4KSettings::setUseForceUnmount( 
-        super_user->findChild<QCheckBox *>( "kcfg_UseForceUnmount" )->isChecked() 
-      );
-          
-      Smb4KSettings::setAlwaysUseSuperUser( 
-        super_user->findChild<QCheckBox *>( "kcfg_AlwaysUseSuperUser" )->isChecked() 
-      );
-    }
   }
   else
   {
@@ -597,7 +521,6 @@ void Smb4KConfigDialog::slotButtonClicked( int button )
       }
 
       saveCustomSambaOptions();
-      writeSuperUserEntries();
       slotSaveAuthenticationInformation();
 
       break;
@@ -612,7 +535,6 @@ void Smb4KConfigDialog::slotButtonClicked( int button )
       }
 
       saveCustomSambaOptions();
-      writeSuperUserEntries();
       slotSaveAuthenticationInformation();
 
       KConfigGroup group( Smb4KSettings::self()->config(), "ConfigDialog" );
@@ -627,40 +549,6 @@ void Smb4KConfigDialog::slotButtonClicked( int button )
   }
 
   KConfigDialog::slotButtonClicked( button );
-}
-
-
-void Smb4KConfigDialog::slotRemoveSuperUserEntries()
-{
-  if ( m_super_user )
-  {
-    Smb4KSuperUserOptions *super_user = m_super_user->widget()->findChild<Smb4KSuperUserOptions *>();
-    Smb4KSettings::setDoNotModifySudoers( super_user->findChild<QCheckBox *>( "kcfg_DoNotModifySudoers" )->isChecked() );
-    
-    if ( !super_user->findChild<QCheckBox *>( "kcfg_DoNotModifySudoers" )->isChecked() )
-    {
-      setEnabled( false );
-
-      // Remove the super user entries.
-      (void) Smb4KSudoWriterInterface::self()->removeUser();
-      
-      // FIXME
-      // Save *ALL* changed settings. This is a bit brutal, but I could
-      // not find any way to only save the super user settings and disable
-      // the apply button (if appropriate).
-      findChild<KConfigDialogManager *>()->updateSettings();
-      
-      setEnabled( true );
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
 }
 
 

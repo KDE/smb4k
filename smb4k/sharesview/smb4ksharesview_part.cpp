@@ -474,14 +474,14 @@ void Smb4KSharesViewPart::loadSettings()
   {
     Smb4KSharesIconViewItem *item = static_cast<Smb4KSharesIconViewItem *>( m_icon_view->currentItem() );
 
-    actionCollection()->action( "force_unmount_action" )->setEnabled( Smb4KSettings::useForceUnmount() &&
+    actionCollection()->action( "force_unmount_action" )->setEnabled( 
     (item && (!item->itemData()->share()->isForeign() || Smb4KSettings::unmountForeignShares())) );
   }
   else
   {
     Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>( m_list_view->currentItem() );
 
-    actionCollection()->action( "force_unmount_action" )->setEnabled( Smb4KSettings::useForceUnmount() &&
+    actionCollection()->action( "force_unmount_action" )->setEnabled( 
     (item && (!item->itemData()->share()->isForeign() || Smb4KSettings::unmountForeignShares())) );
   }
 #endif
@@ -737,8 +737,7 @@ void Smb4KSharesViewPart::slotItemSelectionChanged()
         actionCollection()->action( "unmount_action" )->setEnabled( (!item->itemData()->share()->isForeign() ||
                                                                     Smb4KSettings::unmountForeignShares()) );
 #ifdef __linux__
-        actionCollection()->action( "force_unmount_action" )->setEnabled( Smb4KSettings::useForceUnmount() &&
-                                                                          (!item->itemData()->share()->isForeign() ||
+        actionCollection()->action( "force_unmount_action" )->setEnabled( (!item->itemData()->share()->isForeign() ||
                                                                           Smb4KSettings::unmountForeignShares()) );
 #endif
         actionCollection()->action( "bookmark_action" )->setEnabled( true );
@@ -783,8 +782,7 @@ void Smb4KSharesViewPart::slotItemSelectionChanged()
         actionCollection()->action( "unmount_action" )->setEnabled( (!item->itemData()->share()->isForeign() ||
                                                                     Smb4KSettings::unmountForeignShares()) );
 #ifdef __linux__
-        actionCollection()->action( "force_unmount_action" )->setEnabled( Smb4KSettings::useForceUnmount() &&
-                                                                          (!item->itemData()->share()->isForeign() ||
+        actionCollection()->action( "force_unmount_action" )->setEnabled( (!item->itemData()->share()->isForeign() ||
                                                                           Smb4KSettings::unmountForeignShares()) );
 #endif
         actionCollection()->action( "bookmark_action" )->setEnabled( true );

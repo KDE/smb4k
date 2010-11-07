@@ -38,6 +38,7 @@
 
 // KDE includes
 #include <kdemacros.h>
+#include <kauth.h>
 
 // application specific includes
 #include <smb4ksolidinterface.h>
@@ -46,6 +47,8 @@
 class Smb4KShare;
 class Smb4KAuthInfo;
 class BasicMountThread;
+
+using namespace KAuth;
 
 /**
  * This is one of the core classes of Smb4K. It manages the mounting
@@ -83,14 +86,13 @@ class KDE_EXPORT Smb4KMounter : public QObject
 
     /**
      * With this function you can check if the mount process for the share
-     * @p share was aborted. It will return TRUE only if it was forcibly ended
-     * using the @see abort( Smb4KShare * ) function.
+     * @p share was aborted.
      *
      * @param share           The Smb4KShare object
      *
      * @returns TRUE if the process was aborted.
      */
-    bool isAborted( Smb4KShare *share );
+//     bool isAborted( Smb4KShare *share );
 
     /**
      * Aborts all running processes at once.
@@ -237,25 +239,27 @@ class KDE_EXPORT Smb4KMounter : public QObject
     void slotAboutToQuit();
 
     /**
-     * This slot is called when a thread finished.
+     * This slot is called when an action finished.
+     * 
+     * @param reply       The KAuth::ActionReply object
      */
-    void slotThreadFinished();
+    void slotActionFinished( ActionReply reply );
     
     /**
      * This slot is called whenever a share was successfully mounted by the 
-     * mount thread.
-     * 
-     * @param share           The Smb4KShare object
+     * mount action.
+     *
+     * @param reply       The KAuth::ActionReply object
      */
-    void slotShareMounted( Smb4KShare *share );
+    void slotShareMounted( ActionReply reply );
     
     /**
      * This slot is called whenever a share was successfully unmounted by the
-     * unmount thread.
+     * unmount action.
      * 
-     * @param share           The Smb4KShare object
+     * @param reply       The KAuth::ActionReply object
      */
-    void slotShareUnmounted( Smb4KShare *share );
+    void slotShareUnmounted( ActionReply reply );
     
     /**
      * This slot is called by the Solid interface when a hardware button was
@@ -332,9 +336,10 @@ class KDE_EXPORT Smb4KMounter : public QObject
     int m_timeout;
 
     /**
-     * The cache that holds the threads
+     * The cache that holds the currently performed
+     * actions
      */
-    QCache<QString,BasicMountThread> m_cache;
+    QCache<QString,Action> m_cache;
 };
 
 #endif

@@ -282,7 +282,55 @@ void Smb4KCore::searchPrograms()
     // Do nothing
   }
 
-#ifdef __FreeBSD__
+#ifndef Q_OS_FREEBSD
+  if ( KStandardDirs::findExe( "mount.cifs" ).isEmpty() &&
+       KStandardDirs::findExe( "mount.cifs", "/sbin" ).isEmpty() &&
+       KStandardDirs::findExe( "mount.cifs", "/usr/sbin" ).isEmpty() &&
+       KStandardDirs::findExe( "mount.cifs", "/usr/local/sbin" ).isEmpty() )
+  {
+    missing << "mount.cifs";
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  if ( KStandardDirs::findExe( "umount" ).isEmpty() &&
+       KStandardDirs::findExe( "umount", "/sbin" ).isEmpty() &&
+       KStandardDirs::findExe( "umount", "/usr/sbin" ).isEmpty() &&
+       KStandardDirs::findExe( "umount", "/usr/local/sbin" ).isEmpty() )
+  {
+    missing << "umount";
+  }
+  else
+  {
+    // Do nothing
+  }  
+#else
+  if ( KStandardDirs::findExe( "mount_smbfs" ).isEmpty() &&
+       KStandardDirs::findExe( "mount_smbfs", "/sbin" ).isEmpty() &&
+       KStandardDirs::findExe( "mount_smbfs", "/usr/sbin" ).isEmpty() &&
+       KStandardDirs::findExe( "mount_smbfs", "/usr/local/sbin" ).isEmpty() )
+  {
+    missing << "mount_smbfs";
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  if ( KStandardDirs::findExe( "umount" ).isEmpty() &&
+       KStandardDirs::findExe( "umount", "/sbin" ).isEmpty() &&
+       KStandardDirs::findExe( "umount", "/usr/sbin" ).isEmpty() &&
+       KStandardDirs::findExe( "umount", "/usr/local/sbin" ).isEmpty() )
+  {
+    missing << "umount";
+  }
+  else
+  {
+    // Do nothing
+  }  
+
   if ( KStandardDirs::findExe( "smbutil" ).isEmpty() &&
        KStandardDirs::findExe( "smbutil", "/sbin" ).isEmpty() &&
        KStandardDirs::findExe( "smbutil", "/usr/sbin" ).isEmpty() &&
@@ -296,51 +344,6 @@ void Smb4KCore::searchPrograms()
   }
 #endif
 
-  if ( KGlobal::dirs()->findResource( "exe", "smb4k_mount" ).isEmpty() )
-  {
-    missing << "smb4k_mount";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( KGlobal::dirs()->findResource( "exe", "smb4k_umount" ).isEmpty() )
-  {
-    missing << "smb4k_umount";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( KGlobal::dirs()->findResource( "exe", "smb4k_kill" ).isEmpty() )
-  {
-    missing << "smb4k_kill";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( KGlobal::dirs()->findResource( "exe", "smb4k_sudowriter" ).isEmpty() )
-  {
-    missing << "smb4k_sudowriter";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( KGlobal::dirs()->findResource( "exe", "kdesu" ).isEmpty() )
-  {
-    missing << "kdesu";
-  }
-  else
-  {
-    // Do nothing
-  }
-
   if ( !missing.isEmpty() )
   {
     // Error out if one of the mandatory programs is missing:
@@ -350,33 +353,6 @@ void Smb4KCore::searchPrograms()
   }
   else
   {
-    if ( KStandardDirs::findExe( "sudo" ).isEmpty() &&
-         (Smb4KSettings::useForceUnmount() || Smb4KSettings::alwaysUseSuperUser()) )
-    {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->sudoNotFound();
-
-      // Reset the super user settings:
-      Smb4KSettings::self()->useForceUnmountItem()->setDefault();
-      Smb4KSettings::self()->alwaysUseSuperUserItem()->setDefault();
-      Smb4KSettings::self()->useKdeSudoItem()->setDefault();
-    }
-    else
-    {
-      if ( KStandardDirs::findExe( "kdesudo" ).isEmpty() && Smb4KSettings::useKdeSudo() )
-      {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->kdesudoNotFound();
-        
-        // Disable feature
-        Smb4KSettings::self()->useKdeSudoItem()->setDefault();
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-
     // Write the configuration to disk:
     Smb4KSettings::self()->writeConfig();
   }

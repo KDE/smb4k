@@ -1,0 +1,9 @@
+[de.berlios.smb4k.mounthelper.mount]
+Name=Mount action
+Description=Mounts a share
+Policy=yes
+
+[de.berlios.smb4k.mounthelper.unmount]
+Name=Unmount action
+Description=Unmounts a share
+Policy=yes

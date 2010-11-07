@@ -591,7 +591,7 @@ bool Smb4KGlobal::removeMountedShare( Smb4KShare *share )
 
   if ( index != -1 )
   {
-    // The host was found. Remove it.
+    // The share was found. Remove it.
     delete p.mountedSharesList.takeAt( index );
     removed = true;
   }

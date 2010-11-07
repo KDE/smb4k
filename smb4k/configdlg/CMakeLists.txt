@@ -12,7 +12,6 @@ set(smb4kconfigdialog_LIB_SRCS
    smb4krsyncoptions.cpp
    smb4ksambaoptions.cpp
    smb4kshareoptions.cpp
-   smb4ksuperuseroptions.cpp
    smb4kuserinterfaceoptions.cpp )
 
 kde4_add_plugin( smb4kconfigdialog ${smb4kconfigdialog_LIB_SRCS} )

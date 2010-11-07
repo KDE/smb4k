@@ -33,9 +33,6 @@
 // KDE includes
 #include <kconfigdialog.h>
 
-// application specific includes
-#include <core/smb4ksudowriterinterface.h>
-
 // forward declarations
 class Smb4KSettings;
 
@@ -96,13 +93,6 @@ class Smb4KConfigDialog : public KConfigDialog
      */
     void slotButtonClicked( int button );
 
-    /**
-     * The 'Remove Entries' button in the 'Super User' page has been
-     * clicked. Initialize the removal of Smb4K's configuration entries
-     * from the configuration file of the currently chosen program.
-     */
-    void slotRemoveSuperUserEntries();
-    
     /**
      * This slot is connected to the "Load" button of the "Wallet Entries" tab
      * of the "Authentication" configuration page. It loads the authentication
@@ -184,11 +174,6 @@ class Smb4KConfigDialog : public KConfigDialog
      * Save the custom Samba options
      */
     void saveCustomSambaOptions();
-
-    /**
-     * Write super user configuration entries to configuration file.
-     */
-    void writeSuperUserEntries();
 
     /**
      * Checks that mandatorily needed input is provided for settings that

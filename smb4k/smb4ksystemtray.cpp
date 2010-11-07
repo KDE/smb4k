@@ -197,10 +197,14 @@ void Smb4KSystemTray::setupSharesMenu()
             // Find the "Force Unmount" action and decide if it needs to be
             // enabled/disabled:
             QAction *force = actionCollection()->action( "st_force_"+canonical_path );
-
+            
             if ( force )
             {
-              force->setEnabled( Smb4KSettings::useForceUnmount() );
+              force->setEnabled( true );
+            }
+            else
+            {
+              // Do nothing
             }
 #endif
 
@@ -425,8 +429,7 @@ void Smb4KSystemTray::setupSharesMenu()
         
         if ( force )
         {
-          force->setEnabled( !(it.value().isForeign() && !Smb4KSettings::unmountForeignShares()) &&
-                             Smb4KSettings::useForceUnmount() );
+          force->setEnabled( !(it.value().isForeign() && !Smb4KSettings::unmountForeignShares()) );
         }
         else
         {
@@ -486,8 +489,7 @@ void Smb4KSystemTray::setupSharesMenu()
         KAction *force       = new KAction( KIcon( "media-eject" ), i18n( "&Force Unmounting" ),
                                m_shares_actions );
         force->setData( "st_force_"+it.value().canonicalPath() );
-        force->setEnabled( !(it.value().isForeign() && !Smb4KSettings::unmountForeignShares()) &&
-                           Smb4KSettings::useForceUnmount() );
+        force->setEnabled( !(it.value().isForeign() && !Smb4KSettings::unmountForeignShares()) );
         actionCollection()->addAction( force->data().toString(), force );
 #endif
         KAction *synchronize = new KAction( KIcon( "go-bottom" ), i18n( "S&ynchronize" ),
