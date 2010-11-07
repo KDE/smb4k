@@ -124,18 +124,6 @@ class KDE_EXPORT Smb4KNotification : public QObject
     void loginsNotAccessible();
     
     /**
-     * Tell the user that the program sudo could not be found and the 
-     * the feature will be disabled.
-     */
-    void sudoNotFound();
-    
-    /**
-     * Tell the user that the program kdesudo could not be found and the 
-     * the feature will be disabled.
-     */
-    void kdesudoNotFound();
-    
-    /**
      * Tell the user that the mimetype is not supported and that he/she 
      * should convert the file.
      * 
@@ -264,13 +252,6 @@ class KDE_EXPORT Smb4KNotification : public QObject
      * @param share     The Smb4KShare object
      */
     void cannotBookmarkPrinter( Smb4KShare *share );
-    
-    /**
-     * This error message is shown if smb4k_sudowriter reported an error.
-     * 
-     * @param err_msg   The error message
-     */
-    void sudowriterFailed( const QString &err_msg );
     
     /**
      * This error message is shown if a file could not be found.

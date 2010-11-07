@@ -174,25 +174,6 @@ void Smb4KNotification::loginsNotAccessible()
 }
 
 
-void Smb4KNotification::sudoNotFound()
-{
-  KNotification *notification = KNotification::event( "sudoNotFound",
-                                i18n( "The program <b>sudo</b> could not be found. Smb4K will continue without using it." ),
-                                KIconLoader::global()->loadIcon( "dialog-warning", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
-}
-
-
-void Smb4KNotification::kdesudoNotFound()
-{
-  KNotification *notification = KNotification::event( "kdesudoNotFound",
-                                i18n( "The program <b>kdesudo</b> could not be found. "
-                                      "Smb4K will continue with using <b>sudo</b> instead." ),
-                                KIconLoader::global()->loadIcon( "dialog-warning", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
-}
-
-
 void Smb4KNotification::mimetypeNotSupported( const QString &mt )
 {
   KNotification *notification = KNotification::event( "mimetypeNotSupported",
@@ -501,30 +482,6 @@ void Smb4KNotification::cannotBookmarkPrinter( Smb4KShare *share )
 }
 
 
-void Smb4KNotification::sudowriterFailed( const QString &err_msg )
-{
-  m_err_msg = err_msg.split( "\n" );
-  
-  KNotification *notification = new KNotification( "sudowriterFailed", KNotification::Persistent );
-  notification->setText( i18n( "Writing to the <b>sudoers</b> file failed." ) );
-  notification->setPixmap( KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
-  
-  if ( !m_err_msg.isEmpty() )
-  {
-    notification->setActions( QStringList( i18n( "Error Message" ) ) );
-    connect( notification, SIGNAL( activated( unsigned int ) ), this, SLOT( slotShowErrorMessage() ) );
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
-  
-  notification->sendEvent();  
-}
-
-
 void Smb4KNotification::fileNotFound( const QString &fileName )
 {
   KNotification *notification = KNotification::event( "fileNotFound",
@@ -606,7 +563,7 @@ void Smb4KNotification::missingPrograms( const QStringList &programs )
   m_err_msg = programs;
   
   KNotification *notification = new KNotification( "missingPrograms", KNotification::Persistent );
-  notification->setText( i18n( "Some mandatorily needed programs could not be found." ) );
+  notification->setText( i18n( "Some required programs could not be found." ) );
   notification->setPixmap( KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
   
   if ( !m_err_msg.isEmpty() )
