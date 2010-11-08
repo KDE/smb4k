@@ -1,9 +1,13 @@
 [de.berlios.smb4k.mounthelper.mount]
 Name=Mount action
+Name[x-test]=xxMount actionxx
 Description=Mounts a share
+Description[x-test]=xxMounts a sharexx
 Policy=yes
 
 [de.berlios.smb4k.mounthelper.unmount]
 Name=Unmount action
+Name[x-test]=xxUnmount actionxx
 Description=Unmounts a share
+Description[x-test]=xxUnmounts a sharexx
 Policy=yes
