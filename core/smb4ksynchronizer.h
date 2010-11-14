@@ -110,17 +110,6 @@ class KDE_EXPORT Smb4KSynchronizer : public QObject
     void abort( Smb4KSynchronizationInfo *info );
 
     /**
-     * With this function you can check if the synchronization process represented
-     * by @p info was aborted. It will return TRUE only if it was forcibly ended
-     * using the @see abort( Smb4KSynchronizationInfo *info ) function.
-     *
-     * @param info        The Smb4KSynchronizationInfo object
-     *
-     * @returns TRUE if the process was aborted.
-     */
-    bool isAborted( Smb4KSynchronizationInfo *info );
-
-    /**
      * This function aborts all synchronization processes that are currently
      * running.
      */

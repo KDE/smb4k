@@ -232,15 +232,6 @@ void Smb4KSynchronizer::abort( Smb4KSynchronizationInfo *info )
 }
 
 
-bool Smb4KSynchronizer::isAborted( Smb4KSynchronizationInfo *info )
-{
-  Q_ASSERT( info );
-
-  SynchronizationThread *thread = m_cache.object( info->sourcePath() );
-  return (thread && thread->process() && thread->process()->isAborted());
-}
-
-
 void Smb4KSynchronizer::abortAll()
 {
   if ( !kapp->closingDown() )
