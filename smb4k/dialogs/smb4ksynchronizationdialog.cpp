@@ -302,30 +302,8 @@ void Smb4KSynchronizationDialog::slotSynchronizationFinished( Smb4KSynchronizati
 {
   if ( m_info->equals( info ) )
   {
-    if ( !Smb4KSynchronizer::self()->isAborted( m_info ) )
-    {
-      if ( m_current_progress->value() != 100 )
-      {
-        m_current_progress->setValue( 100 );
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      if ( m_total_progress->value() != 100 )
-      {
-        m_total_progress->setValue( 100 );
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Do nothing
-    }
+    m_current_progress->setValue( 100 );
+    m_total_progress->setValue( 100 );
 
     setButtonGuiItem( User1, KStandardGuiItem::close() );
   }
