@@ -70,7 +70,8 @@ class KDE_EXPORT Smb4KMounter : public QObject
      * This enumeration denotes the process
      */
     enum Process { MountShare,
-                   UnmountShare };
+                   UnmountShare,
+                   UnmountAllShares };
 
     /**
      * Returns a static pointer to this class.
@@ -83,16 +84,6 @@ class KDE_EXPORT Smb4KMounter : public QObject
      * @param share           The Smb4KShare object
      */
     void abort( Smb4KShare *share );
-
-    /**
-     * With this function you can check if the mount process for the share
-     * @p share was aborted.
-     *
-     * @param share           The Smb4KShare object
-     *
-     * @returns TRUE if the process was aborted.
-     */
-//     bool isAborted( Smb4KShare *share );
 
     /**
      * Aborts all running processes at once.
@@ -319,7 +310,39 @@ class KDE_EXPORT Smb4KMounter : public QObject
      * Save all shares that need to be remounted.
      */
     void saveSharesForRemount();
+    
+    /**
+     * Create a mount action.
+     *
+     * @param share           The share object from which a KAuth::Action is to be
+     *                        created
+     *
+     * @param action          The KAuth::Action object
+     * 
+     * @returns TRUE if the cration was successful.
+     */
+    bool createMountAction( Smb4KShare *share,
+                            Action *action );
 
+    /**
+     * Create an unmount action.
+     *
+     * @param share           The share object from which a KAuth::Action is to be
+     *                        created
+     *
+     * @param force           Force the unmounting
+     * 
+     * @param silent          Do not report any errors
+     *
+     * @param action          The KAuth::Action object
+     * 
+     * @returns TRUE if the cration was successful.
+     */
+    bool createUnmountAction( Smb4KShare *share,
+                              bool force,
+                              bool silent,
+                              Action *action );
+                            
     /**
      * The current state.
      */

@@ -150,34 +150,6 @@ void Smb4KMounter::abort( Smb4KShare *share )
 }
 
 
-// bool Smb4KMounter::isAborted( Smb4KShare *share )
-// {
-//   Q_ASSERT( share );
-//   
-//   Action *action = NULL;
-//   
-//   if ( !share->isHomesShare() )
-//   {
-//     action = m_cache.object( share->unc( QUrl::None ) );
-//   }
-//   else
-//   {
-//     action = m_cache.object( share->homeUNC( QUrl::None ) );
-//   }
-//   
-//   if ( action )
-//   {
-//     return false;
-//   }
-//   else
-//   {
-//     // Do nothing
-//   }
-//   
-//   return true;
-// }
-
-
 void Smb4KMounter::abortAll()
 {
   if ( !kapp->closingDown() )
@@ -237,6 +209,7 @@ void Smb4KMounter::triggerRemounts()
 {
   if ( Smb4KSettings::remountShares() || priv->hardwareReason() )
   {
+    QList<Action> actions;
     QList<Smb4KSambaOptionsInfo *> list = Smb4KSambaOptionsHandler::self()->sharesToRemount();
     
     for ( int i = 0; i < list.size(); ++i )
@@ -270,9 +243,27 @@ void Smb4KMounter::triggerRemounts()
           share.setWorkgroupName( list.at( i )->workgroupName() );
           share.setHostIP( list.at( i )->ip() );
           
-          priv->addRemount();
-
-          mountShare( &share );
+          Action mountAction;
+          
+          if ( createMountAction( &share, &mountAction ) )
+          {
+            connect( mountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+                     this, SLOT( slotShareMounted( ActionReply ) ) );
+            connect( mountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+                     this, SLOT( slotActionFinished( ActionReply ) ) );
+                    
+            actions << mountAction;
+            
+            m_cache.insert( mountAction.arguments().value( "key" ).toString(), new Action( mountAction ) );
+            
+            emit aboutToStart( &share, MountShare );
+            
+            priv->addRemount();
+          }
+          else
+          {
+            // Do nothing
+          }
         }
         else
         {
@@ -289,10 +280,54 @@ void Smb4KMounter::triggerRemounts()
         share.setWorkgroupName( list.at( i )->workgroupName() );
         share.setHostIP( list.at( i )->ip() );
         
-        priv->addRemount();
-
-        mountShare( &share );
+        Action mountAction;
+        
+        if ( createMountAction( &share, &mountAction ) )
+        {
+          connect( mountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+                   this, SLOT( slotShareMounted( ActionReply ) ) );
+          connect( mountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+                   this, SLOT( slotActionFinished( ActionReply ) ) );
+                  
+          actions << mountAction;
+          
+          m_cache.insert( mountAction.arguments().value( "key" ).toString(), new Action( mountAction ) );
+          
+          emit aboutToStart( &share, MountShare );
+          
+          priv->addRemount();
+        }
+        else
+        {
+          // Do nothing
+        }
       }
+    }
+    
+    if ( !actions.isEmpty() )
+    {
+      QList<Action> denied;
+      Action::executeActions( actions, &denied, "de.berlios.smb4k.mounthelper" );
+      
+      if ( !denied.isEmpty() )
+      {
+        for ( int i = 0; i < denied.size(); i++ )
+        {
+          Smb4KShare share( denied.at( i ).arguments().value( "unc" ).toString() );
+          share.setWorkgroupName( denied.at( i ).arguments().value( "workgroup" ).toString() );
+          
+          Smb4KNotification *notification = new Smb4KNotification();
+          notification->unmountingFailed( &share, i18n( "The authentication action was denied." ) );
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      // Do nothing
     }
   }
   else
@@ -716,15 +751,187 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
     // Do nothing
   }
   
+  Action *mountAction = new Action();
+  
+  if ( createMountAction( share, mountAction ) )
+  {
+    m_cache.insert( mountAction->arguments().value( "key" ).toString(), mountAction );
+      
+    mountAction->setExecutesAsync( true );
+      
+    connect( mountAction->watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+             this, SLOT( slotShareMounted( ActionReply ) ) );
+    connect( mountAction->watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+             this, SLOT( slotActionFinished( ActionReply ) ) );
+               
+    if ( m_cache.size() == 0 )
+    {
+      QApplication::setOverrideCursor( Qt::WaitCursor );
+      m_state = MOUNTER_MOUNT;
+      emit stateChanged();
+    }
+    else
+    {
+      // Already running
+    }
+      
+    emit aboutToStart( share, MountShare );
+    
+    mountAction->execute();
+  }
+  else
+  {
+    delete mountAction;
+  }
+}
+
+
+void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
+{
+  Q_ASSERT( share );
+  
+  if ( !priv->aboutToQuit() )
+  {
+    // Execute asynchroneously.
+    Action *unmountAction = new Action();
+    
+    if ( createUnmountAction( share, force, silent, unmountAction ) )
+    {
+      m_cache.insert( unmountAction->arguments().value( "key" ).toString(), unmountAction );
+      
+      unmountAction->setExecutesAsync( true );
+      
+      connect( unmountAction->watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+               this, SLOT( slotShareUnmounted( ActionReply ) ) );
+      connect( unmountAction->watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+               this, SLOT( slotActionFinished( ActionReply ) ) );
+               
+      if ( m_cache.size() == 0 )
+      {
+        QApplication::setOverrideCursor( Qt::WaitCursor );
+        m_state = MOUNTER_UNMOUNT;
+        emit stateChanged();
+      }
+      else
+      {
+        // Already running
+      }
+      
+      emit aboutToStart( share, UnmountShare );
+    
+      unmountAction->execute();
+    }
+    else
+    {
+      delete unmountAction;
+    }
+  }
+  else
+  {
+    Action unmountAction;
+    
+    if ( createUnmountAction( share, force, true, &unmountAction ) )
+    {
+      emit aboutToStart( share, UnmountShare );
+      unmountAction.execute();
+      emit finished( share, UnmountShare );
+    }
+    else
+    {
+      // Do nothing.
+    }
+  }
+}
+
+
+void Smb4KMounter::unmountAllShares()
+{
+  // Never use 
+  // 
+  //    while ( !mountedSharesList().isEmpty() ) { ... } 
+  // 
+  // here, because then the mounter will loop indefinitely when the
+  // unmounting of a share fails.
+  
+  QList<Action> actions;
+  
+  QListIterator<Smb4KShare *> it( mountedSharesList() );
+  
+  while ( it.hasNext() )
+  {
+    Smb4KShare *share = it.next();
+    
+    Action unmountAction;
+    
+    if ( createUnmountAction( share, false, false, &unmountAction ) )
+    {
+      connect( unmountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+               this, SLOT( slotShareUnmounted( ActionReply ) ) );
+      connect( unmountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+               this, SLOT( slotActionFinished( ActionReply ) ) );
+               
+      actions << unmountAction;
+      
+      m_cache.insert( unmountAction.arguments().value( "key" ).toString(), new Action( unmountAction ) );
+      
+      emit aboutToStart( share, UnmountShare );
+      
+      priv->addUnmount();
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  if ( !actions.isEmpty() )
+  {
+    QList<Action> denied;
+    Action::executeActions( actions, &denied, "de.berlios.smb4k.mounthelper" );
+    
+    if ( !denied.isEmpty() )
+    {
+      for ( int i = 0; i < denied.size(); i++ )
+      {
+        Smb4KShare *share = findShareByPath( actions.at( i ).arguments().value( "mountpoint" ).toByteArray() );
+        
+        if ( share )
+        {
+          Smb4KNotification *notification = new Smb4KNotification();
+          notification->unmountingFailed( share, i18n( "The authentication action was denied." ) );
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+bool Smb4KMounter::createMountAction( Smb4KShare *share, Action *action )
+{
+  Q_ASSERT( share );
+  Q_ASSERT( action );
+  
   // Find the mount program.
   QString mount;
   QStringList paths;
-  paths << "/bin/";
-  paths << "/sbin/";
-  paths << "/usr/bin/";
-  paths << "/usr/sbin/";
-  paths << "/usr/local/bin/";
-  paths << "/usr/local/sbin/";
+  paths << "/bin";
+  paths << "/sbin";
+  paths << "/usr/bin";
+  paths << "/usr/sbin";
+  paths << "/usr/local/bin";
+  paths << "/usr/local/sbin";
   
   for ( int i = 0; i < paths.size(); i++ )
   {
@@ -748,7 +955,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   {
     Smb4KNotification *notification = new Smb4KNotification();
     notification->commandNotFound( mount );
-    return;
+    return false;
   }
   else
   {
@@ -781,7 +988,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
 
     if ( !Smb4KHomesSharesHandler::self()->specifyUser( share, parent ) )
     {
-      return;
+      return false;
     }
     else
     {
@@ -800,7 +1007,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   {
     if ( !list.at( i )->isForeign() )
     {
-      return;
+      return false;
     }
     else
     {
@@ -823,7 +1030,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   if ( m_cache.contains( key ) && 
        QString::compare( m_cache.object( key )->name(), "de.berlios.smb4k.mounthelper.mount" ) == 0 )
   {
-    return;
+    return false;
   }
   else
   {
@@ -852,7 +1059,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   {
     Smb4KNotification *notification = new Smb4KNotification();
     notification->mkdirFailed( dir );
-    return;
+    return false;
   }
   else
   {
@@ -864,13 +1071,13 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   Smb4KWalletManager::self()->readAuthInfo( &authInfo );
 
   // Set the login and the file system for the share.
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
   share->setFileSystem( Smb4KShare::CIFS );
 #else
   share->setFileSystem( Smb4KShare::SMBFS );
 #endif
   share->setLogin( QString::fromUtf8( authInfo.login() ) );
-
+  
   // Compile the arguments
   QString arguments;
   QMap<QString, QString> global_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
@@ -886,8 +1093,8 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   {
     share->setPort( Smb4KSettings::remoteSMBPort() );
   }
-
-#ifndef __FreeBSD__
+  
+#ifndef Q_OS_FREEBSD
   arguments += "-o";
   arguments += " ";
 
@@ -905,7 +1112,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   arguments += !authInfo.login().isEmpty() ?
                QString( ",user=%1" ).arg( QString::fromUtf8( authInfo.login() ) ) :
                ",guest";
-             
+               
   // Client's and server's NetBIOS name
   // According to the manual page, this is only needed when port 139
   // is used. So, we only pass the NetBIOS name in that case.  
@@ -1094,7 +1301,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
       break;
     }
   }
-
+  
   // Global custom options provided by the user
   arguments += !Smb4KSettings::customCIFSOptions().isEmpty() ? ","+Smb4KSettings::customCIFSOptions() : "";
   
@@ -1165,68 +1372,45 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   arguments += !Smb4KSettings::directoryMask().isEmpty() ? QString( " -d %1" ).arg( Smb4KSettings::directoryMask() ) : "";
 #endif
 
-  // Start the mounting.
-  Action *mountAction = new Action( "de.berlios.smb4k.mounthelper.mount" );
-  
-  m_cache.insert( key, mountAction );
-  
-  mountAction->setHelperID( "de.berlios.smb4k.mounthelper" );
-  mountAction->addArgument( "mount_binary", mount );
-  mountAction->addArgument( "mount_arguments", arguments );
-  mountAction->addArgument( "password", authInfo.password() );
-  mountAction->addArgument( "key", key );
+  action->setName( "de.berlios.smb4k.mounthelper.mount" );
+  action->setHelperID( "de.berlios.smb4k.mounthelper" );
+  action->addArgument( "mount_binary", mount );
+  action->addArgument( "mount_arguments", arguments );
+  action->addArgument( "password", authInfo.password() );
+  action->addArgument( "key", key );
   
   // Now add everything we need to create an Smb4KShare object in slotShareMounted().
   if ( !share->isHomesShare() )
   {
-    mountAction->addArgument( "unc", share->unc() );
+    action->addArgument( "unc", share->unc() );
   }
   else
   {
-    mountAction->addArgument( "unc", share->homeUNC() );
+    action->addArgument( "unc", share->homeUNC() );
   }
-  mountAction->addArgument( "workgroup", share->workgroupName() );
-  mountAction->addArgument( "comment", share->comment() );  
-  mountAction->addArgument( "host_ip", share->hostIP() );
-  mountAction->addArgument( "mountpoint", share->canonicalPath() );
+  action->addArgument( "workgroup", share->workgroupName() );
+  action->addArgument( "comment", share->comment() );  
+  action->addArgument( "host_ip", share->hostIP() );
+  action->addArgument( "mountpoint", share->canonicalPath() );
   
-  mountAction->setExecutesAsync( true );
-  
-  connect( mountAction->watcher(), SIGNAL( actionPerformed( ActionReply ) ),
-           this, SLOT( slotShareMounted( ActionReply ) ) );
-  connect( mountAction->watcher(), SIGNAL( actionPerformed( ActionReply ) ),
-           this, SLOT( slotActionFinished( ActionReply ) ) );
-           
-  if ( m_cache.size() == 0 )
-  {
-    QApplication::setOverrideCursor( Qt::WaitCursor );
-    m_state = MOUNTER_MOUNT;
-    emit stateChanged();
-  }
-  else
-  {
-    // Already running
-  }
-  
-  emit aboutToStart( share, MountShare );
-  
-  mountAction->execute();
+  return true;
 }
 
 
-void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
+bool Smb4KMounter::createUnmountAction( Smb4KShare *share, bool force, bool silent, Action *action )
 {
   Q_ASSERT( share );
+  Q_ASSERT( action );
   
   // Find the umount program.
   QString umount;
   QStringList paths;
-  paths << "/bin/";
-  paths << "/sbin/";
-  paths << "/usr/bin/";
-  paths << "/usr/sbin/";
-  paths << "/usr/local/bin/";
-  paths << "/usr/local/sbin/";
+  paths << "/bin";
+  paths << "/sbin";
+  paths << "/usr/bin";
+  paths << "/usr/sbin";
+  paths << "/usr/local/bin";
+  paths << "/usr/local/sbin";
   
   for ( int i = 0; i < paths.size(); i++ )
   {
@@ -1242,18 +1426,18 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
     }
   }
   
-  if ( umount.isEmpty() )
+  if ( umount.isEmpty() && !silent )
   {
     Smb4KNotification *notification = new Smb4KNotification();
     notification->commandNotFound( umount );
-    return;
+    return false;
   }
   else
   {
     // Do nothing
   }
   
-  // Check if the mount process is in progress.  
+ // Check if the umount process is in progress.  
   QString key;
   
   if ( !share->isHomesShare() )
@@ -1268,12 +1452,12 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
   if ( m_cache.contains( key ) && 
        QString::compare( m_cache.object( key )->name(), "de.berlios.smb4k.mounthelper.unmount" ) == 0 )
   {
-    return;
+    return false;
   }
   else
   {
     // Do nothing
-  }  
+  }
   
   // Complain if the share is a foreign one and unmounting those
   // is prohibited.
@@ -1289,13 +1473,14 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
       // Do nothing
     }
 
-    return;
+    return false;
   }
   else
   {
     // Do nothing
   }
-
+  
+  // Ask whether the user indeed wishes to force the unmounting.
   if ( force )
   {
     QWidget *parent = 0;
@@ -1319,7 +1504,7 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
     // Ask the user, if he/she really wants to force the unmounting.
     if ( KMessageBox::questionYesNo( parent, i18n( "<qt>Do you really want to force the unmounting of this share?</qt>" ), QString(), KStandardGuiItem::yes(), KStandardGuiItem::no(), "Dont Ask Forced", KMessageBox::Notify ) == KMessageBox::No )
     {
-      return;
+      return false;
     }
     else
     {
@@ -1330,8 +1515,8 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
   {
     // Do nothing
   }
-
-  // Compile the command.
+  
+  // Compile the arguments.
   QString arguments;
 
 #ifdef __linux__
@@ -1345,78 +1530,17 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
   }
 #endif
 
-  if ( !priv->aboutToQuit() )
-  {
-    // Execute asynchronously
-    Action *unmountAction = new Action( "de.berlios.smb4k.mounthelper.unmount" );
+  action->setName( "de.berlios.smb4k.mounthelper.unmount" );
+  action->setHelperID( "de.berlios.smb4k.mounthelper" );
+  action->addArgument( "umount_binary", umount );
+  action->addArgument( "umount_arguments", arguments );
+  action->addArgument( "key", key );
     
-    m_cache.insert( key, unmountAction );
-    
-    unmountAction->setHelperID( "de.berlios.smb4k.mounthelper" );
-    unmountAction->addArgument( "umount_binary", umount );
-    unmountAction->addArgument( "umount_arguments", arguments );
-    unmountAction->addArgument( "key", key );
-    
-    // Now add everything we need.
-    unmountAction->addArgument( "unc", share->unc( QUrl::None ) );
-    unmountAction->addArgument( "mountpoint", share->canonicalPath() );
-    
-    unmountAction->setExecutesAsync( true );
-    
-    connect( unmountAction->watcher(), SIGNAL( actionPerformed( ActionReply ) ),
-            this, SLOT( slotShareUnmounted( ActionReply ) ) );
-    connect( unmountAction->watcher(), SIGNAL( actionPerformed( ActionReply ) ),
-            this, SLOT( slotActionFinished( ActionReply ) ) );
-            
-    if ( m_cache.size() == 0 )
-    {
-      QApplication::setOverrideCursor( Qt::WaitCursor );
-      m_state = MOUNTER_UNMOUNT;
-      emit stateChanged();
-    }
-    else
-    {
-      // Already running
-    }
-    
-    emit aboutToStart( share, UnmountShare );
-    
-    unmountAction->execute();
-  }
-  else
-  {
-    // Execute synchronously.
-    // In this case we do not care about a return value.
-    Action unmountAction( "de.berlios.smb4k.mounthelper.unmount" );
-    unmountAction.setHelperID( "de.berlios.smb4k.mounthelper" );
-    unmountAction.addArgument( "umount_binary", umount );
-    unmountAction.addArgument( "umount_arguments", arguments );
-    unmountAction.addArgument( "mountpoint", share->canonicalPath() );
-    
-    emit aboutToStart( share, UnmountShare );
-    unmountAction.execute();
-    emit finished( share, UnmountShare );
-  }
-}
+  // Now add everything we need.
+  action->addArgument( "unc", share->unc( QUrl::None ) );
+  action->addArgument( "mountpoint", share->canonicalPath() );
 
-
-void Smb4KMounter::unmountAllShares()
-{
-  // Never use 
-  // 
-  //    while ( !mountedSharesList().isEmpty() ) { ... } 
-  // 
-  // here, because then the mounter will loop indefinitely when the
-  // unmounting of a share fails.
-  QListIterator<Smb4KShare *> it( mountedSharesList() );
-  
-  qDebug() << "Implement batch processing of shares, so that the mounthelper does not choke.";
-
-  while ( it.hasNext() )
-  {
-    unmountShare( it.next(), false, true );
-    priv->addUnmount();
-  }
+  return true;
 }
 
 
