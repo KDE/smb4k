@@ -220,46 +220,6 @@ Comment[x-test]=xxThe logins stored in the wallet could not be accessedxx
 Contexts=Warning
 Action=Popup
 
-[Event/sudoNotFound]
-Name=sudo not found
-Name[da]=sudo ikke fundet
-Name[de]=sudo nicht gefunden
-Name[pt]=O 'sudo' não foi encontrado
-Name[pt_BR]=sudo não encontrado
-Name[sv]=Hittade inte sudo
-Name[uk]=sudo не знайдено
-Name[x-test]=xxsudo not foundxx
-Comment=The program sudo could not be found
-Comment[da]=Programmet sudo blev ikke fundet
-Comment[de]=Das Programm sudo kann nicht gefunden werden
-Comment[pt]=Não foi possível encontrar o programa 'sudo'
-Comment[pt_BR]=O programa sudo não pode ser encontrado
-Comment[sv]=Programmet sudo kunde inte hittas
-Comment[uk]=Не вдалося виявити програму sudo
-Comment[x-test]=xxThe program sudo could not be foundxx
-Contexts=Warning
-Action=Popup
-
-[Event/kdesudoNotFound]
-Name=kdesudo not found
-Name[da]=kdesudo ikke fundet
-Name[de]=kdesudo nicht gefunden
-Name[pt]=O 'kdesudo' não foi encontrado
-Name[pt_BR]=kdesudo não encontrado
-Name[sv]=Hittade inte kdesudo
-Name[uk]=kdesudo не знайдено
-Name[x-test]=xxkdesudo not foundxx
-Comment=The program kdesudo could not be found
-Comment[da]=Programmet kdesudo blev ikke fundet
-Comment[de]=Das Programm kdesudo kann nicht gefunden werden
-Comment[pt]=Não foi possível encontrar o programa 'kdesudo'
-Comment[pt_BR]=O programa kdesudo não pode ser encontrado
-Comment[sv]=Programmet kdesudo kunde inte hittas
-Comment[uk]=Не вдалося виявити програму kdesudo
-Comment[x-test]=xxThe program kdesudo could not be foundxx
-Contexts=Warning
-Action=Popup
-
 [Event/mimetypeNotSupported]
 Name=Mimetype not supported
 Name[da]=MIME-type ikke understøttet
@@ -592,29 +552,6 @@ Comment[pt_BR]=As impressoras não podem ser adicionadas aos favoritos
 Comment[sv]=Skrivare kan inte vara bokmärken
 Comment[uk]=Створювати закладки для принтерів не можна
 Comment[x-test]=xxPrinters cannot be bookmarkedxx
-Contexts=Error
-Sound=KDE-Sys-App-Error.ogg
-Action=Popup|Sound
-
-[Event/sudowriterFailed]
-Name=Writing to sudoers file failed
-Name[da]=Skrivning til sudoers-filen mislykkedes
-Name[de]=Schreiben der sudoers-Datei fehlgeschlagen
-Name[it]=Scrittura nel file sudoers non riuscita
-Name[pt]=Não foi possível gravar o ficheiro 'sudoers'
-Name[pt_BR]=Não foi possível gravar o arquivo sudoers
-Name[sv]=Misslyckades skriva till filen sudoers
-Name[uk]=Невдала спроба запису до файла sudoers
-Name[x-test]=xxWriting to sudoers file failedxx
-Comment=The writing to the sudoers file failed
-Comment[da]=Skrivning til sudoers-filen mislykkedes
-Comment[de]=Das Schreiben der sudoers-Datei ist fehlgeschlagen
-Comment[it]=La scrittura nel file sudoers non è riuscita
-Comment[pt]=Não foi possível a gravação do ficheiro 'sudoers'
-Comment[pt_BR]=Não foi possível a gravação do arquivo sudoers
-Comment[sv]=Misslyckades skriva till filen sudoers
-Comment[uk]=Спроба запису до файла sudoers зазнала невдачі
-Comment[x-test]=xxThe writing to the sudoers file failedxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
