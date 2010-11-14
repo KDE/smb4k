@@ -254,15 +254,6 @@ void Smb4KPrint::abort( Smb4KPrintInfo *printInfo )
 }
 
 
-bool Smb4KPrint::isAborted( Smb4KPrintInfo *printInfo )
-{
-  Q_ASSERT( printInfo );
-
-  PrintThread *thread = m_cache.object( printInfo->filePath() );
-  return (thread && thread->process() && thread->process()->isAborted());
-}
-
-
 void Smb4KPrint::abortAll()
 {
   if ( !kapp->closingDown() )

@@ -78,17 +78,6 @@ class KDE_EXPORT Smb4KPrint : public QObject
     void abort( Smb4KPrintInfo *printInfo );
 
     /**
-     * With this function you can check if the print process represented by @p info
-     * was aborted. It will return TRUE only if it was forcibly ended using the
-     * @see abort( Smb4KPrintInfo * ) function.
-     *
-     * @param printInfo   The Smb4KPrintInfo object
-     *
-     * @returns TRUE if the process was aborted.
-     */
-    bool isAborted( Smb4KPrintInfo *printInfo );
-
-    /**
      * Aborts all print processes at once.
      */
     void abortAll();
