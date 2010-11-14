@@ -144,23 +144,6 @@ class KDE_EXPORT Smb4KScanner : public QObject
     /**
      * With this function you can check if a process for a single network
      * item @p item or all processes of a certain kind denoted by @p process
-     * has/have been aborted.
-     *
-     * If you provide a non-null @p item object, it will always be favored over
-     * the @p process entry.
-     *
-     * @param item            The network item object
-     *
-     * @param process         The process that is used
-     *
-     * @returns TRUE if the process was/the processes were aborted.
-     */
-    bool isAborted( Smb4KBasicNetworkItem *item,
-                    int process );
-
-    /**
-     * With this function you can check if a process for a single network
-     * item @p item or all processes of a certain kind denoted by @p process
      * is/are (still) running.
      *
      * If you provide a non-null @p item object, it will always be favored over
