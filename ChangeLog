@@ -8,9 +8,10 @@ Smb4K SVN_HEAD (????-??-??):
   + Removed the program entries from this class. Each core class that needs
     an external program searches for itself.
   + Added entries for handling notifications.
+  + Removed all entries related to the old mounting/unmounting implementation.
 - Revised Smb4KAuthInfo class:
   + Removed old constructor.
-  + Added two new constructors.
+  + Added two new constructors.<
   + Added type enumeration and function.
   + Added setUNC() and unc() functions.
   + Added setHomesUsers() and homesUsers() functions so that homes user
@@ -254,11 +255,6 @@ Smb4K SVN_HEAD (????-??-??):
   + Removed all replaceXXX() functions.
   + All functions returning one of the global lists return constant references
     instead of pointers.
-- Revised Smb4KSudoWriterInterface class:
-  + Removed failed() signal.
-  + Removed finished() signal.
-  + addUser() now returns a boolean.
-  + removeUser() now returns a boolean.
 - Added Smb4KNotification class. It shows notifications to the user.
 - Removed Smb4KCoreMessage class in favor of Smb4KNotification.
 - Revised synchronization dialog:
@@ -319,9 +315,7 @@ Smb4K SVN_HEAD (????-??-??):
   + Improved checks for empty entries.
   + Removed settings related to the system tray icon.
   + Added settings related to notifications.
-  + Added setting to leave the sudoers file unchanged if the user needs super
-    user privileges for mounting.
-  + Added setting to use kdesudo.
+  + Removed obsolete "Super User" settings page.
 - Revised main window:
   + The icon in the status bar, that indicates the status of the authentication
     system now shows a key if the wallet system is not used, i.e. we are in
