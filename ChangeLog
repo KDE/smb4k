@@ -172,7 +172,6 @@ Smb4K SVN_HEAD (????-??-??):
   + Added new abort() function. You can abort a certain process or process group
     with it.
   + Added new isRunning() function.
-  + Added new isAborted() function.
   + Renamed all public functions that retrieve information from the network
     neighborhood. Have a look at the class documentation to find out more.
   + When the user chose the "scan broadcast areas" mode, new hosts that were
