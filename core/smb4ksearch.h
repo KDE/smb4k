@@ -79,17 +79,6 @@ class KDE_EXPORT Smb4KSearch : public QObject
     void abort( const QString &string );
 
     /**
-     * With this function you can check if the search process represented
-     * by @p string was aborted. It will return TRUE only if it was forcibly ended
-     * using the @see abort( const QString &string ) function.
-     *
-     * @param info        The search string
-     *
-     * @returns TRUE if the process was aborted.
-     */
-    bool isAborted( const QString &string );
-
-    /**
      * Aborts all running search processes.
      */
     void abortAll();

@@ -351,15 +351,6 @@ void Smb4KSearch::abort( const QString &string )
 }
 
 
-bool Smb4KSearch::isAborted( const QString &string )
-{
-  Q_ASSERT( !string.isEmpty() );
-
-  SearchThread *thread = m_cache.object( string );
-  return (thread && thread->process() && thread->process()->isAborted());
-}
-
-
 void Smb4KSearch::abortAll()
 {
   if ( !kapp->closingDown() )
