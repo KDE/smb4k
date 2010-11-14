@@ -107,17 +107,6 @@ class KDE_EXPORT Smb4KPreviewer : public QObject
     void abort( Smb4KPreviewItem *item );
 
     /**
-     * With this function you can check if the preview process for the share
-     * represented by @p item was aborted. It will return TRUE only if it was
-     * forcibly ended using the @see abort( Smb4KPreviewItem * ) function.
-     *
-     * @param item              The Smb4KPreviewItem object
-     *
-     * @returns TRUE if the process was aborted.
-     */
-    bool isAborted( Smb4KPreviewItem *item );
-
-    /**
      * This function returns the current state of the previewer. The state is
      * defined in the smb4kdefs.h file.
      *

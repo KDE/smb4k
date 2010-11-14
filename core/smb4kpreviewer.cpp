@@ -333,15 +333,6 @@ void Smb4KPreviewer::abort( Smb4KPreviewItem *item )
 }
 
 
-bool Smb4KPreviewer::isAborted( Smb4KPreviewItem *item )
-{
-  Q_ASSERT( item );
-
-  PreviewThread *thread = m_cache.object( item->location() );
-  return (thread && thread->process() && thread->process()->isAborted());
-}
-
-
 /////////////////////////////////////////////////////////////////////////////
 //   SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
