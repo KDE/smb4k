@@ -11,7 +11,7 @@ add_subdirectory( configdlg )
 add_subdirectory( dialogs )
 add_subdirectory( browser )
 add_subdirectory( sharesview )
-add_subdirectory( searchdlg )
+add_subdirectory( search )
 
 
 ########### next target ###############
