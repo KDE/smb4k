@@ -32,7 +32,6 @@
 
 // Qt includes
 #include <QObject>
-#include <QList>
 
 // KDE includes
 #include <kdemacros.h>
@@ -55,13 +54,6 @@ class KDE_EXPORT Smb4KCore : public QObject
 
   public:
     /**
-     * This enumeration determines with which application the mount point
-     * of the current mounted share is to be opened.
-     */
-    enum OpenWith { FileManager,
-                    Konsole };
-
-    /**
      * Returns a static pointer to this class.
      */
     static Smb4KCore *self();
@@ -75,19 +67,6 @@ class KDE_EXPORT Smb4KCore : public QObject
      * Aborts any action of the core.
      */
     static void abort();
-
-    /**
-     * Open the mount point of a share. Which application is used is determined by
-     * the value of @p openWith and - maybe - by settings that were defined by the
-     * user.
-     *
-     * @param share         The share that is to be opened.
-     *
-     * @param openWith      Integer of type Smb4KCore::OpenWith. Determines with which
-     *                      application the share should be opened.
-     */
-    static void open( Smb4KShare *share,
-                      OpenWith openWith = FileManager );
 
     /**
      * This function initializes the core classes.

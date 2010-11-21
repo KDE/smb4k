@@ -27,8 +27,6 @@
 #include <QDir>
 #include <QMap>
 #include <QStringList>
-#include <QDBusConnection>
-#include <QDBusConnectionInterface>
 #include <QDesktopWidget>
 #include <QHostAddress>
 
@@ -132,52 +130,6 @@ void Smb4KCore::abort()
   Smb4KSynchronizer::self()->abortAll();
   Smb4KPreviewer::self()->abortAll();
   Smb4KSearch::self()->abortAll();
-}
-
-
-/****************************************************************************
-   Opens the given URL.
-****************************************************************************/
-
-void Smb4KCore::open( Smb4KShare *share, OpenWith openWith )
-{
-  if ( !share || share->isInaccessible() )
-  {
-    return;
-  }
-
-  switch ( openWith )
-  {
-    case FileManager:
-    {
-      KUrl url;
-      url.setPath( share->canonicalPath() );
-
-      (void) new KRun( url, 0, 0, true );
-
-      break;
-    }
-    case Konsole:
-    {
-      QString konsole = KGlobal::dirs()->findResource( "exe", "konsole" );
-
-      if ( konsole.isEmpty() )
-      {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->commandNotFound( "konsole" );
-      }
-      else
-      {
-        KRun::runCommand( konsole+" --workdir "+KShell::quoteArg( share->canonicalPath() ), 0 );
-      }
-
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
 }
 
 
