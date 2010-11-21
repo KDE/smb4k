@@ -1445,7 +1445,7 @@ void Smb4KSharesViewPart::slotKonsole( bool /*checked*/ )
 
         if ( item && !item->itemData()->share()->isInaccessible() )
         {
-          Smb4KCore::open( item->itemData()->share(), Smb4KCore::Konsole );
+          open( item->itemData()->share(), Konsole );
         }
         else
         {
@@ -1465,7 +1465,7 @@ void Smb4KSharesViewPart::slotKonsole( bool /*checked*/ )
 
         if ( item && !item->itemData()->share()->isInaccessible() )
         {
-          Smb4KCore::open( item->itemData()->share(), Smb4KCore::Konsole );
+          open( item->itemData()->share(), Konsole );
         }
         else
         {
@@ -1497,7 +1497,7 @@ void Smb4KSharesViewPart::slotFileManager( bool /*checked*/ )
 
         if ( item && !item->itemData()->share()->isInaccessible() )
         {
-          Smb4KCore::open( item->itemData()->share(), Smb4KCore::FileManager );
+          open( item->itemData()->share(), FileManager );
         }
         else
         {
@@ -1517,7 +1517,7 @@ void Smb4KSharesViewPart::slotFileManager( bool /*checked*/ )
 
         if ( item && !item->itemData()->share()->isInaccessible() )
         {
-          Smb4KCore::open( item->itemData()->share(), Smb4KCore::FileManager );
+          open( item->itemData()->share(), FileManager );
         }
         else
         {
