@@ -29,11 +29,17 @@
 // KDE includes
 #include <kconfig.h>
 #include <kdebug.h>
+#include <kurl.h>
+#include <krun.h>
+#include <kglobal.h>
+#include <kstandarddirs.h>
+#include <kshell.h>
 
 // application specific includes
 #include <smb4kglobal.h>
 #include <smb4kglobal_p.h>
 #include <smb4kdefs.h>
+#include <smb4knotification.h>
 
 
 static Smb4KGlobalPrivate p;
@@ -625,5 +631,47 @@ bool Smb4KGlobal::removeMountedShare( Smb4KShare *share )
   mutex.unlock();
 
   return removed;
+}
+
+
+void Smb4KGlobal::open( Smb4KShare *share, OpenWith openWith )
+{
+  if ( !share || share->isInaccessible() )
+  {
+    return;
+  }
+
+  switch ( openWith )
+  {
+    case FileManager:
+    {
+      KUrl url;
+      url.setPath( share->canonicalPath() );
+
+      (void) new KRun( url, 0, 0, true );
+
+      break;
+    }
+    case Konsole:
+    {
+      QString konsole = KGlobal::dirs()->findResource( "exe", "konsole" );
+
+      if ( konsole.isEmpty() )
+      {
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->commandNotFound( "konsole" );
+      }
+      else
+      {
+        KRun::runCommand( konsole+" --workdir "+KShell::quoteArg( share->canonicalPath() ), 0 );
+      }
+
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
 }
 

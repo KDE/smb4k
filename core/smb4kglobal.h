@@ -300,6 +300,25 @@ namespace Smb4KGlobal
    * @returns TRUE if the share was removed and FALSE otherwise.
    */
   KDE_EXPORT bool removeMountedShare( Smb4KShare *share );
+  
+  /**
+   * This enumeration determines with which application the mount point
+   * of the current mounted share is to be opened.
+   */
+  enum OpenWith { FileManager,
+                  Konsole };
+  
+  /**
+   * Open the mount point of a share. Which application is used is determined by
+   * the value of @p openWith and - maybe - by settings that were defined by the
+   * user.
+   *
+   * @param share         The share that is to be opened.
+   *
+   * @param openWith      Integer of type Smb4KCore::OpenWith. Determines with which
+   *                      application the share should be opened.
+   */
+  KDE_EXPORT void open( Smb4KShare *share, OpenWith openWith = FileManager );
 };
 
 #endif
