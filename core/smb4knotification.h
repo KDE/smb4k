@@ -308,6 +308,16 @@ class KDE_EXPORT Smb4KNotification : public QObject
      */
     void systemCallFailed( const QString &sys_call, int err_no );
     
+    /**
+     * This error message is shown if a KAuth action could not be
+     * executed and KAuth::ActionReply::failed() reported true.
+     *
+     * @param name      The name of the action
+     *
+     * @param err_msg   The error message
+     */
+    void actionFailed( const QString &name, const QString &err_msg );
+    
   protected slots:
     /**
      * This slot is invoked when the notification is closed or ignored.

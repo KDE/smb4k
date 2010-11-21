@@ -702,3 +702,10 @@ Comment[x-test]=xxA system call failed and threw an errorxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
+
+[Event/actionFailed]
+Name=Action failed
+Comment=An action could not be performed
+Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
+Action=Popup|Sound

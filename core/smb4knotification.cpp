@@ -689,6 +689,46 @@ void Smb4KNotification::systemCallFailed( const QString &sys_call, int err_no )
 }
 
 
+void Smb4KNotification::actionFailed( const QString &name, const QString &err_msg )
+{
+  if ( !err_msg.isEmpty() )
+  {
+    m_err_msg = err_msg.split( "\n" );
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  KNotification *notification = new KNotification( "actionFailed", KNotification::Persistent );
+  
+  if ( QString::compare( name, "de.berlios.smb4k.mounthelper.mount" ) == 0 )
+  {
+    notification->setText( i18n( "The execution of the mount action failed." ) );
+  }
+  else if ( QString::compare( name, "de.berlios.smb4k.mounthelper.unmount" ) == 0 )
+  {
+    notification->setText( i18n( "The execution of the unmount action failed." ) );
+  }
+  
+  notification->setPixmap( KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ) );
+  
+  if ( !m_err_msg.isEmpty() )
+  {
+    notification->setActions( QStringList( i18n( "Error Message" ) ) );
+    connect( notification, SIGNAL( activated( unsigned int ) ), this, SLOT( slotShowErrorMessage() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  
+  notification->sendEvent();  
+}
+
+
 /////////////////////////////////////////////////////////////////////////////
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
