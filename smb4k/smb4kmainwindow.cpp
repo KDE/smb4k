@@ -283,7 +283,7 @@ void Smb4KMainWindow::setupView()
   }
 
   // Load the search dialog.
-  KPluginLoader search_loader( "smb4ksearchdialog" );
+  KPluginLoader search_loader( "smb4knetworksearch" );
   KPluginFactory *search_factory = search_loader.factory();
 
   if ( search_factory )
