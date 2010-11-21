@@ -951,7 +951,7 @@ void Smb4KSystemTray::slotShareActionTriggered( QAction *action )
 
       if ( share && !share->isInaccessible() )
       {
-        Smb4KCore::open( share, Smb4KCore::Konsole );
+        open( share, Konsole );
       }
       else
       {
@@ -966,7 +966,7 @@ void Smb4KSystemTray::slotShareActionTriggered( QAction *action )
 
       if ( share && !share->isInaccessible() )
       {
-        Smb4KCore::open( share, Smb4KCore::FileManager );
+        open( share, FileManager );
       }
       else
       {
