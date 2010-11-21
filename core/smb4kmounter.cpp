@@ -1798,7 +1798,8 @@ void Smb4KMounter::slotActionFinished( ActionReply reply )
     else
     {
       // If the action failed, show an error message.
-      qDebug() << "Show an error message";
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->actionFailed( action->name(), reply.errorDescription() );
     }
 
     delete action;
