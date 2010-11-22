@@ -705,7 +705,9 @@ Action=Popup|Sound
 
 [Event/actionFailed]
 Name=Action failed
+Name[x-test]=xxAction failedxx
 Comment=An action could not be performed
+Comment[x-test]=xxAn action could not be performedxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
