@@ -705,8 +705,14 @@ Action=Popup|Sound
 
 [Event/actionFailed]
 Name=Action failed
+Name[pt]=Acção mal-sucedida
+Name[sv]=Åtgärd misslyckades
+Name[uk]=Спроба виконання дії зазнала невдачі
 Name[x-test]=xxAction failedxx
 Comment=An action could not be performed
+Comment[pt]=Não foi possível efectuar uma dada acção
+Comment[sv]=En åtgärd kunde inte utföras
+Comment[uk]=Дію не вдалося виконати належним чином
 Comment[x-test]=xxAn action could not be performedxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
