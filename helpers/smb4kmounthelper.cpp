@@ -1,9 +1,9 @@
 /***************************************************************************
     smb4kmounthelper  -  The helper that mounts and unmounts shares.
                              -------------------
-    begin                : Sa Dez 27 2008
-    copyright            : (C) 2008-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    begin                : Sa Okt 16 2010
+    copyright            : (C) 2010 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
