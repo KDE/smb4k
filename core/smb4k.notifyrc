@@ -706,11 +706,13 @@ Action=Popup|Sound
 [Event/actionFailed]
 Name=Action failed
 Name[pt]=Acção mal-sucedida
+Name[pt_BR]=Ação falhou
 Name[sv]=Åtgärd misslyckades
 Name[uk]=Спроба виконання дії зазнала невдачі
 Name[x-test]=xxAction failedxx
 Comment=An action could not be performed
 Comment[pt]=Não foi possível efectuar uma dada acção
+Comment[pt_BR]=Uma ação não pode ser realizada
 Comment[sv]=En åtgärd kunde inte utföras
 Comment[uk]=Дію не вдалося виконати належним чином
 Comment[x-test]=xxAn action could not be performedxx
