@@ -540,37 +540,14 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   advanced_layout->addWidget( c_extra_widget, 3, 0, 1, 2, 0 );
 #endif
 
-  QFrame *note                 = new QFrame( mount_tab );
-
-  QGridLayout *note_layout     = new QGridLayout( note );
-  note_layout->setSpacing( 10 );
-  note_layout->setMargin( 5 );
-
-  QLabel *important_pix        = new QLabel( note );
-  important_pix->setPixmap( KIconLoader::global()->loadIcon( "emblem-important", KIconLoader::Desktop, KIconLoader::SizeMedium ) );
-  important_pix->adjustSize();
-
-  QLabel *message              = new QLabel( note );
-  message->setText( i18n( "<qt>If you experience problems due to insufficient privileges when mounting shares, you should enable the appropriate settings in the <b>Super User</b> configuration page.</qt>" ) );
-  message->setTextFormat( Qt::AutoText );
-  message->setWordWrap( true );
-  message->setAlignment( Qt::AlignJustify );
-
-  note_layout->addWidget( important_pix, 0, 0, Qt::AlignCenter );
-  note_layout->addWidget( message, 0, 1, Qt::AlignVCenter );
-
-  note_layout->setColumnStretch( 1, 1 );
-
   QSpacerItem *spacer2 = new QSpacerItem( 10, 10, QSizePolicy::Preferred, QSizePolicy::Expanding );
 
   mount_layout->addWidget( common_options, 0, 0, 0 );
 #ifndef Q_OS_FREEBSD
   mount_layout->addWidget( advanced_options, 1, 0, 0 );
-    mount_layout->addWidget( note, 2, 0, 0 );
-  mount_layout->addItem( spacer2, 3, 0 );
-#else
-  mount_layout->addWidget( note, 1, 0, 0 );
   mount_layout->addItem( spacer2, 2, 0 );
+#else
+  mount_layout->addItem( spacer2, 1, 0 );
 #endif
 
   insertTab( MountingTab, mount_tab, i18n( "Mounting" ) );
