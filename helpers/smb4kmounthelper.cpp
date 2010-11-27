@@ -174,7 +174,7 @@ ActionReply Smb4KMountHelper::unmount( QVariantMap args )
 #else
     if ( QString::compare( args["mountpoint"].toString(), 
                            mountpoints.at( j )->mountPoint(), Qt::CaseInsensitive ) == 0 &&
-         QString::compare( mountpoints->at( j ).mountType(), "smbfs", Qt::CaseInsensitive ) == 0 )
+         QString::compare( mountpoints.at( j )->mountType(), "smbfs", Qt::CaseInsensitive ) == 0 )
 #endif
     {
       mountpoint_ok = true;
