@@ -401,9 +401,10 @@ void Smb4KWalletManager::readAuthInfo( Smb4KAuthInfo *authInfo )
       // Do nothing
     }
   }
-// #ifdef Q_OS_FREEBSD
-//   writeToConfigFile( authInfo );
-// #endif
+  
+#ifdef Q_OS_FREEBSD
+  writeToConfigFile( authInfo );
+#endif
 }
 
 
