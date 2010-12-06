@@ -251,6 +251,8 @@ void Smb4KMounter::triggerRemounts()
                      this, SLOT( slotShareMounted( ActionReply ) ) );
             connect( mountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
                      this, SLOT( slotActionFinished( ActionReply ) ) );
+            connect( mountAction.watcher(), SIGNAL( statusChanged( int ) ),
+                     this, SLOT( slotActionStatusChanged( int ) ) );
                     
             actions << mountAction;
             
@@ -288,6 +290,8 @@ void Smb4KMounter::triggerRemounts()
                    this, SLOT( slotShareMounted( ActionReply ) ) );
           connect( mountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
                    this, SLOT( slotActionFinished( ActionReply ) ) );
+          connect( mountAction.watcher(), SIGNAL( statusChanged( int ) ),
+                   this, SLOT( slotActionStatusChanged( int ) ) );
                   
           actions << mountAction;
           
@@ -763,6 +767,8 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
              this, SLOT( slotShareMounted( ActionReply ) ) );
     connect( mountAction->watcher(), SIGNAL( actionPerformed( ActionReply ) ),
              this, SLOT( slotActionFinished( ActionReply ) ) );
+    connect( mountAction->watcher(), SIGNAL( statusChanged( int ) ),
+             this, SLOT( slotActionStatusChanged( int ) ) );
                
     if ( m_cache.size() == 0 )
     {
@@ -777,7 +783,71 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
       
     emit aboutToStart( share, MountShare );
     
-    mountAction->execute();
+    ActionReply reply = mountAction->execute();
+    
+    if ( reply.failed() )
+    {
+      // If the action failed, show an error message.
+      Smb4KNotification *notification = new Smb4KNotification();
+      
+      if ( reply.type() == ActionReply::KAuthError )
+      {
+        switch ( reply.errorCode() )
+        {
+          case ActionReply::NoResponder:
+          {
+            notification->actionFailed( mountAction->name(), i18n( "No responder" ) );
+            break;
+          }
+          case ActionReply::NoSuchAction:
+          {
+            notification->actionFailed( mountAction->name(), i18n( "No such action" ) );
+            break;
+          }
+          case ActionReply::InvalidAction:
+          {
+            notification->actionFailed( mountAction->name(), i18n( "Invalid action" ) );
+            break;
+          }
+          case ActionReply::AuthorizationDenied:
+          {
+            notification->actionFailed( mountAction->name(), i18n( "Authorization denied" ) );
+            break;
+          }
+//           case ActionReply::UserCancelled:
+//           {
+//             notification->actionFailed( mountAction->name(), i18n( "User canceled" ) );
+//             break;
+//           }
+          case ActionReply::HelperBusy:
+          {
+            notification->actionFailed( mountAction->name(), i18n( "Helper busy" ) );
+            break;
+          }
+          case ActionReply::DBusError:
+          {
+            notification->actionFailed( mountAction->name(), i18n( "DBus error" ) );
+            break;
+          }
+          default:
+          {
+            break;
+          }
+        }
+      }
+      else
+      {
+        notification->actionFailed( mountAction->name(), QString() );
+      }
+      
+      delete m_cache.take( mountAction->arguments().value( "key" ).toString() );
+      
+      emit finished( share, MountShare );
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
@@ -805,6 +875,8 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
                this, SLOT( slotShareUnmounted( ActionReply ) ) );
       connect( unmountAction->watcher(), SIGNAL( actionPerformed( ActionReply ) ),
                this, SLOT( slotActionFinished( ActionReply ) ) );
+      connect( unmountAction->watcher(), SIGNAL( statusChanged( int ) ),
+               this, SLOT( slotActionStatusChanged( int ) ) );
                
       if ( m_cache.size() == 0 )
       {
@@ -818,8 +890,72 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
       }
       
       emit aboutToStart( share, UnmountShare );
+
+      ActionReply reply = unmountAction->execute();
     
-      unmountAction->execute();
+      if ( reply.failed() )
+      {
+        // If the action failed, show an error message.
+        Smb4KNotification *notification = new Smb4KNotification();
+      
+        if ( reply.type() == ActionReply::KAuthError )
+        {
+          switch ( reply.errorCode() )
+          {
+            case ActionReply::NoResponder:
+            {
+              notification->actionFailed( unmountAction->name(), i18n( "No responder" ) );
+              break;
+            }
+            case ActionReply::NoSuchAction:
+            {
+              notification->actionFailed( unmountAction->name(), i18n( "No such action" ) );
+              break;
+            }
+            case ActionReply::InvalidAction:
+            {
+              notification->actionFailed( unmountAction->name(), i18n( "Invalid action" ) );
+              break;
+            }
+            case ActionReply::AuthorizationDenied:
+            {
+              notification->actionFailed( unmountAction->name(), i18n( "Authorization denied" ) );
+              break;
+            }
+//            case ActionReply::UserCancelled:
+//            {
+//              notification->actionFailed( mountAction->name(), i18n( "User canceled" ) );
+//              break;
+//            }
+            case ActionReply::HelperBusy:
+            {
+              notification->actionFailed( unmountAction->name(), i18n( "Helper busy" ) );
+              break;
+            }
+            case ActionReply::DBusError:
+            {
+              notification->actionFailed( unmountAction->name(), i18n( "DBus error" ) );
+              break;
+            }
+            default:
+            {
+              break;
+            }
+          }
+        }
+        else
+        {
+          notification->actionFailed( unmountAction->name(), QString() );
+        }
+      
+        delete m_cache.take( unmountAction->arguments().value( "key" ).toString() );
+      
+        emit finished( share, MountShare );
+      }
+      else
+      {
+        // Do nothing
+      }      
     }
     else
     {
@@ -841,6 +977,8 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
       // Do nothing.
     }
   }
+  
+  qDebug() << "unmountShare() finished";
 }
 
 
@@ -869,6 +1007,8 @@ void Smb4KMounter::unmountAllShares()
                this, SLOT( slotShareUnmounted( ActionReply ) ) );
       connect( unmountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
                this, SLOT( slotActionFinished( ActionReply ) ) );
+      connect( unmountAction.watcher(), SIGNAL( statusChanged( int ) ),
+               this, SLOT( slotActionStatusChanged( int ) ) );
                
       actions << unmountAction;
       
@@ -1818,6 +1958,48 @@ void Smb4KMounter::slotActionFinished( ActionReply reply )
   else
   {
     // Do nothing
+  }
+}
+
+
+void Smb4KMounter::slotActionStatusChanged( int status )
+{
+  switch ( status )
+  {
+    case Action::Denied:
+    {
+      qDebug() << "Denied";
+      break;
+    }
+    case Action::Error:
+    {
+      qDebug() << "Error";
+      break;
+    }
+    case Action::Invalid:
+    {
+      qDebug() << "Invalid";
+      break;
+    }
+    case Action::Authorized:
+    {
+      qDebug() << "Authorized";
+      break;
+    }
+    case Action::AuthRequired:
+    {
+      qDebug() << "AuthRequired";
+      break;
+    }
+    case Action::UserCancelled:
+    {
+      qDebug() << "UserCancelled";
+      break;
+    }
+    default:
+    {
+      break;
+    }
   }
 }
 
