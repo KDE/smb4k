@@ -1,12 +1,13 @@
 [de.berlios.smb4k.mounthelper.mount]
 Name=Mount action
+Name[km]=ម៉ោន​សកម្មភាព
 Name[pt]=Acção de montagem
 Name[pt_BR]=Ação de montagem
 Name[sv]=Monteringsåtgärd
 Name[uk]=Дія з монтування
 Name[x-test]=xxMount actionxx
 Description=Mounts a share
-Description[km]=ម៉ោន​កា​រចែករំលែក
+Description[km]=ម៉ោន​កា​រ​ចែករំលែក
 Description[pt]=Monta uma partilha
 Description[pt_BR]=Monta um compartilhamento
 Description[sv]=Monterar en delad katalog
