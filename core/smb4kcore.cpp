@@ -301,7 +301,6 @@ void Smb4KCore::searchPrograms()
     // Error out if one of the mandatory programs is missing:
     Smb4KNotification *notification = new Smb4KNotification();
     notification->missingPrograms( missing );
-    exit( EXIT_FAILURE );
   }
   else
   {
