@@ -127,16 +127,33 @@ void Smb4KMounter::init()
 void Smb4KMounter::abort( Smb4KShare *share )
 {
   Q_ASSERT( share );
-
-  Action *action = NULL;
+  
+  QString key1, key2;
   
   if ( !share->isHomesShare() )
   {
-    action = m_cache.object( share->unc( QUrl::None ) );
+    key1 = "mount_"+share->unc();
+    key2 = "unmount_"+share->unc();
   }
   else
   {
-    action = m_cache.object( share->homeUNC( QUrl::None ) );
+    key1 = "mount_"+share->homeUNC();
+    key2 = "unmount_"+share->homeUNC();
+  } 
+
+  Action *action = NULL;
+
+  if ( m_cache.contains( key1 ) )
+  {
+    action = m_cache.object( key1 );
+  }
+  else if ( m_cache.contains( key2 ) )
+  {
+    action = m_cache.object( key2 );
+  }
+  else
+  {
+    return;
   }
   
   if ( action )
@@ -181,27 +198,20 @@ bool Smb4KMounter::isRunning( Smb4KShare *share )
 {
   Q_ASSERT( share );
   
-  Action *action = NULL;
+  QString key1, key2;
   
   if ( !share->isHomesShare() )
   {
-    action = m_cache.object( share->unc( QUrl::None ) );
+    key1 = "mount_"+share->unc();
+    key2 = "unmount_"+share->unc();
   }
   else
   {
-    action = m_cache.object( share->homeUNC( QUrl::None ) );
-  }
-  
-  if ( action )
-  {
-    return true;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  return false;
+    key1 = "mount_"+share->homeUNC();
+    key2 = "unmount_"+share->homeUNC();
+  } 
+
+  return (m_cache.contains( key1 ) || m_cache.contains( key2 ));
 }
 
 
@@ -251,8 +261,6 @@ void Smb4KMounter::triggerRemounts()
                      this, SLOT( slotShareMounted( ActionReply ) ) );
             connect( mountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
                      this, SLOT( slotActionFinished( ActionReply ) ) );
-            connect( mountAction.watcher(), SIGNAL( statusChanged( int ) ),
-                     this, SLOT( slotActionStatusChanged( int ) ) );
                     
             actions << mountAction;
             
@@ -290,8 +298,6 @@ void Smb4KMounter::triggerRemounts()
                    this, SLOT( slotShareMounted( ActionReply ) ) );
           connect( mountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
                    this, SLOT( slotActionFinished( ActionReply ) ) );
-          connect( mountAction.watcher(), SIGNAL( statusChanged( int ) ),
-                   this, SLOT( slotActionStatusChanged( int ) ) );
                   
           actions << mountAction;
           
@@ -755,20 +761,16 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
     // Do nothing
   }
   
-  Action *mountAction = new Action();
+  Action mountAction;
   
-  if ( createMountAction( share, mountAction ) )
+  if ( createMountAction( share, &mountAction ) )
   {
-    m_cache.insert( mountAction->arguments().value( "key" ).toString(), mountAction );
+    m_cache.insert( mountAction.arguments().value( "key" ).toString(), &mountAction );
       
-    mountAction->setExecutesAsync( true );
-      
-    connect( mountAction->watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+    connect( mountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
              this, SLOT( slotShareMounted( ActionReply ) ) );
-    connect( mountAction->watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+    connect( mountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
              this, SLOT( slotActionFinished( ActionReply ) ) );
-    connect( mountAction->watcher(), SIGNAL( statusChanged( int ) ),
-             this, SLOT( slotActionStatusChanged( int ) ) );
                
     if ( m_cache.size() == 0 )
     {
@@ -782,8 +784,8 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
     }
       
     emit aboutToStart( share, MountShare );
-    
-    ActionReply reply = mountAction->execute();
+ 
+    ActionReply reply = mountAction.execute();
     
     if ( reply.failed() )
     {
@@ -796,22 +798,23 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
         {
           case ActionReply::NoResponder:
           {
-            notification->actionFailed( mountAction->name(), i18n( "No responder" ) );
+            notification->actionFailed( mountAction.name(), i18n( "No responder" ) );
             break;
           }
           case ActionReply::NoSuchAction:
           {
-            notification->actionFailed( mountAction->name(), i18n( "No such action" ) );
+            notification->actionFailed( mountAction.name(), i18n( "No such action" ) );
+            qDebug() << reply.errorDescription();
             break;
           }
           case ActionReply::InvalidAction:
           {
-            notification->actionFailed( mountAction->name(), i18n( "Invalid action" ) );
+            notification->actionFailed( mountAction.name(), i18n( "Invalid action" ) );
             break;
           }
           case ActionReply::AuthorizationDenied:
           {
-            notification->actionFailed( mountAction->name(), i18n( "Authorization denied" ) );
+            notification->actionFailed( mountAction.name(), i18n( "Authorization denied" ) );
             break;
           }
 //           case ActionReply::UserCancelled:
@@ -821,12 +824,12 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
 //           }
           case ActionReply::HelperBusy:
           {
-            notification->actionFailed( mountAction->name(), i18n( "Helper busy" ) );
+            notification->actionFailed( mountAction.name(), i18n( "Helper busy" ) );
             break;
           }
           case ActionReply::DBusError:
           {
-            notification->actionFailed( mountAction->name(), i18n( "DBus error" ) );
+            notification->actionFailed( mountAction.name(), i18n( "DBus error" ) );
             break;
           }
           default:
@@ -837,10 +840,10 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
       }
       else
       {
-        notification->actionFailed( mountAction->name(), QString() );
+        notification->actionFailed( mountAction.name(), QString() );
       }
       
-      delete m_cache.take( mountAction->arguments().value( "key" ).toString() );
+      delete m_cache.take( mountAction.arguments().value( "key" ).toString() );
       
       emit finished( share, MountShare );
     }
@@ -851,7 +854,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
   }
   else
   {
-    delete mountAction;
+    // Do nothing
   }
 }
 
@@ -863,20 +866,16 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
   if ( !priv->aboutToQuit() )
   {
     // Execute asynchroneously.
-    Action *unmountAction = new Action();
+    Action unmountAction;
     
-    if ( createUnmountAction( share, force, silent, unmountAction ) )
+    if ( createUnmountAction( share, force, silent, &unmountAction ) )
     {
-      m_cache.insert( unmountAction->arguments().value( "key" ).toString(), unmountAction );
+      m_cache.insert( unmountAction.arguments().value( "key" ).toString(), &unmountAction );
       
-      unmountAction->setExecutesAsync( true );
-      
-      connect( unmountAction->watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+      connect( unmountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
                this, SLOT( slotShareUnmounted( ActionReply ) ) );
-      connect( unmountAction->watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+      connect( unmountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
                this, SLOT( slotActionFinished( ActionReply ) ) );
-      connect( unmountAction->watcher(), SIGNAL( statusChanged( int ) ),
-               this, SLOT( slotActionStatusChanged( int ) ) );
                
       if ( m_cache.size() == 0 )
       {
@@ -891,7 +890,7 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
       
       emit aboutToStart( share, UnmountShare );
 
-      ActionReply reply = unmountAction->execute();
+      ActionReply reply = unmountAction.execute();
     
       if ( reply.failed() )
       {
@@ -904,22 +903,22 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
           {
             case ActionReply::NoResponder:
             {
-              notification->actionFailed( unmountAction->name(), i18n( "No responder" ) );
+              notification->actionFailed( unmountAction.name(), i18n( "No responder" ) );
               break;
             }
             case ActionReply::NoSuchAction:
             {
-              notification->actionFailed( unmountAction->name(), i18n( "No such action" ) );
+              notification->actionFailed( unmountAction.name(), i18n( "No such action" ) );
               break;
             }
             case ActionReply::InvalidAction:
             {
-              notification->actionFailed( unmountAction->name(), i18n( "Invalid action" ) );
+              notification->actionFailed( unmountAction.name(), i18n( "Invalid action" ) );
               break;
             }
             case ActionReply::AuthorizationDenied:
             {
-              notification->actionFailed( unmountAction->name(), i18n( "Authorization denied" ) );
+              notification->actionFailed( unmountAction.name(), i18n( "Authorization denied" ) );
               break;
             }
 //            case ActionReply::UserCancelled:
@@ -929,12 +928,12 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
 //            }
             case ActionReply::HelperBusy:
             {
-              notification->actionFailed( unmountAction->name(), i18n( "Helper busy" ) );
+              notification->actionFailed( unmountAction.name(), i18n( "Helper busy" ) );
               break;
             }
             case ActionReply::DBusError:
             {
-              notification->actionFailed( unmountAction->name(), i18n( "DBus error" ) );
+              notification->actionFailed( unmountAction.name(), i18n( "DBus error" ) );
               break;
             }
             default:
@@ -945,10 +944,10 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
         }
         else
         {
-          notification->actionFailed( unmountAction->name(), QString() );
+          notification->actionFailed( unmountAction.name(), QString() );
         }
       
-        delete m_cache.take( unmountAction->arguments().value( "key" ).toString() );
+        delete m_cache.take( unmountAction.arguments().value( "key" ).toString() );
       
         emit finished( share, MountShare );
       }
@@ -959,7 +958,7 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
     }
     else
     {
-      delete unmountAction;
+      // Do nothing
     }
   }
   else
@@ -977,8 +976,6 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
       // Do nothing.
     }
   }
-  
-  qDebug() << "unmountShare() finished";
 }
 
 
@@ -1007,8 +1004,6 @@ void Smb4KMounter::unmountAllShares()
                this, SLOT( slotShareUnmounted( ActionReply ) ) );
       connect( unmountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
                this, SLOT( slotActionFinished( ActionReply ) ) );
-      connect( unmountAction.watcher(), SIGNAL( statusChanged( int ) ),
-               this, SLOT( slotActionStatusChanged( int ) ) );
                
       actions << unmountAction;
       
@@ -1830,123 +1825,118 @@ void Smb4KMounter::slotAboutToQuit()
 
 void Smb4KMounter::slotActionFinished( ActionReply reply )
 {
+  // Remove the action from the cache. We must not delete it, since 
+  // this is automatically done if mountShare() and unmountShare(),
+  // respectively, exit.
   Action *action = m_cache.take( reply.data()["key"].toString() );
-  
-  if ( action )
-  {
-    if ( !reply.failed() )
-    {
-      // Create a share object for emitting signals.
-      Smb4KShare share;
-      share.setUNC( reply.data()["unc"].toString() );
-      share.setWorkgroupName( reply.data()["workgroup"].toString() );
-      share.setHostIP( reply.data()["host_ip"].toString() );
-      share.setComment( reply.data()["comment"].toString() );
-      share.setPath( reply.data()["mountpoint"].toString() );
-      
-      if ( QString::compare( action->name(), "de.berlios.smb4k.mounthelper.mount" ) == 0 )
-      {
-        // Check if an error occurred.
-        QString stderr( reply.data()["stderr"].toString() );
-        
-        if ( !stderr.isEmpty() )
-        {
-#ifndef Q_OS_FREEBSD
-          if ( stderr.contains( "mount error 13", Qt::CaseSensitive ) || stderr.contains( "mount error(13)" )
-              /* authentication error */ )
-          {
-            Smb4KAuthInfo authInfo( &share );
 
-            if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
-            {
-              // Kill the currently active override cursor. Another 
-              // one will be set in an instant by mountShare().
-              QApplication::restoreOverrideCursor();
-              mountShare( &share );
-            }
-            else
-            {
-              // Do nothing
-            }
-          }
-          else if ( (stderr.contains( "mount error 6" ) || stderr.contains( "mount error(6)" )) /* bad share name */ &&
-                    share.shareName().contains( "_", Qt::CaseSensitive ) )
+  // Now process the action.
+  if ( !reply.failed() )
+  {
+    // Create a share object for emitting signals.
+    Smb4KShare share;
+    share.setUNC( reply.data()["unc"].toString() );
+    share.setWorkgroupName( reply.data()["workgroup"].toString() );
+    share.setHostIP( reply.data()["host_ip"].toString() );
+    share.setComment( reply.data()["comment"].toString() );
+    share.setPath( reply.data()["mountpoint"].toString() );
+      
+    if ( reply.data().value( "key" ).toString().startsWith( "mount_" ) )
+    {
+      // Check if an error occurred.
+      QString stderr( reply.data()["stderr"].toString() );
+        
+      if ( !stderr.isEmpty() )
+      {
+#ifndef Q_OS_FREEBSD
+        if ( stderr.contains( "mount error 13", Qt::CaseSensitive ) || stderr.contains( "mount error(13)" )
+            /* authentication error */ )
+        {
+          Smb4KAuthInfo authInfo( &share );
+
+          if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
           {
             // Kill the currently active override cursor. Another 
             // one will be set in an instant by mountShare().
             QApplication::restoreOverrideCursor();
-            share.setShareName( static_cast<QString>( share.shareName() ).replace( "_", " " ) );
             mountShare( &share );
           }
-          else if ( stderr.contains( "mount error 101" ) || stderr.contains( "mount error(101)" ) /* network unreachable */ )
-          {
-            qDebug() << "Network unreachable ..." << endl;
-          }
- #else
-          if ( stderr.contains( "Authentication error" ) )
-          {
-            Smb4KAuthInfo authInfo( &share );
-
-            if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
-            {
-              // Kill the currently active override cursor. Another 
-              // one will be set in an instant by mountShare().
-              QApplication::restoreOverrideCursor();
-              mountShare( &share );
-            }
-            else
-            {
-              // Do nothing
-            }
-          }
- #endif
           else
           {
-            Smb4KNotification *notification = new Smb4KNotification();
-            notification->mountingFailed( &share, stderr ); 
+            // Do nothing
           }
         }
-        else
+        else if ( (stderr.contains( "mount error 6" ) || stderr.contains( "mount error(6)" )) /* bad share name */ &&
+                  share.shareName().contains( "_", Qt::CaseSensitive ) )
         {
-          // Do nothing
+          // Kill the currently active override cursor. Another 
+          // one will be set in an instant by mountShare().
+          QApplication::restoreOverrideCursor();
+          share.setShareName( static_cast<QString>( share.shareName() ).replace( "_", " " ) );
+          mountShare( &share );
         }
-        
-        emit finished( &share, MountShare );
-      }
-      else if ( QString::compare( action->name(), "de.berlios.smb4k.mounthelper.unmount" ) == 0 )
-      {
-        // Check if an error occurred.
-        QString stderr( reply.data()["stderr"].toString() );
-        
-        if ( !stderr.isEmpty() )
+        else if ( stderr.contains( "mount error 101" ) || stderr.contains( "mount error(101)" ) /* network unreachable */ )
+        {
+          qDebug() << "Network unreachable ..." << endl;
+        }
+ #else
+        if ( stderr.contains( "Authentication error" ) )
+        {
+          Smb4KAuthInfo authInfo( &share );
+
+          if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
+          {
+            // Kill the currently active override cursor. Another 
+            // one will be set in an instant by mountShare().
+            QApplication::restoreOverrideCursor();
+            mountShare( &share );
+          }
+          else
+          {
+            // Do nothing
+          }
+        }
+ #endif
+        else
         {
           Smb4KNotification *notification = new Smb4KNotification();
-          notification->unmountingFailed( &share, stderr ); 
+          notification->mountingFailed( &share, stderr ); 
         }
-        else
-        {
-          // Do nothing
-        }
-        
-        emit finished( &share, UnmountShare );
       }
       else
       {
         // Do nothing
       }
+        
+      emit finished( &share, MountShare );
+    }
+    else if ( reply.data().value( "key" ).toString().startsWith( "unmount_" ) )
+    {
+      // Check if an error occurred.
+      QString stderr( reply.data()["stderr"].toString() );
+        
+      if ( !stderr.isEmpty() )
+      {
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->unmountingFailed( &share, stderr ); 
+      }
+      else
+      {
+        // Do nothing
+      }
+        
+      emit finished( &share, UnmountShare );
     }
     else
     {
-      // If the action failed, show an error message.
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->actionFailed( action->name(), reply.errorDescription() );
+      // Do nothing
     }
-
-    delete action;
   }
   else
   {
-    // Do nothing
+    // If the action failed, show an error message.
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->actionFailed( action->name(), reply.errorDescription() );
   }
   
   if ( m_cache.size() == 0 )
@@ -1958,48 +1948,6 @@ void Smb4KMounter::slotActionFinished( ActionReply reply )
   else
   {
     // Do nothing
-  }
-}
-
-
-void Smb4KMounter::slotActionStatusChanged( int status )
-{
-  switch ( status )
-  {
-    case Action::Denied:
-    {
-      qDebug() << "Denied";
-      break;
-    }
-    case Action::Error:
-    {
-      qDebug() << "Error";
-      break;
-    }
-    case Action::Invalid:
-    {
-      qDebug() << "Invalid";
-      break;
-    }
-    case Action::Authorized:
-    {
-      qDebug() << "Authorized";
-      break;
-    }
-    case Action::AuthRequired:
-    {
-      qDebug() << "AuthRequired";
-      break;
-    }
-    case Action::UserCancelled:
-    {
-      qDebug() << "UserCancelled";
-      break;
-    }
-    default:
-    {
-      break;
-    }
   }
 }
 
