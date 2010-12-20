@@ -237,13 +237,6 @@ class KDE_EXPORT Smb4KMounter : public QObject
     void slotActionFinished( ActionReply reply );
     
     /**
-     * This slot is called when the action status changed
-     * 
-     * @param status      The status
-     */
-    void slotActionStatusChanged( int status );
-    
-    /**
      * This slot is called whenever a share was successfully mounted by the 
      * mount action.
      *
