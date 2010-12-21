@@ -508,7 +508,7 @@ Action=Popup|Sound
 [Event/synchronizationFailed]
 Name=Synchronization failed
 Name[da]=Synkronisering mislykkedes
-Name[de]=Synchronisation fehlgeschlagen
+Name[de]=Abgleich fehlgeschlagen
 Name[it]=Sincronizzazione non riuscita
 Name[km]=បាន​បរាជ័យ​ក្នុង​ការ​ធ្វើ​សមកាលកម្ម
 Name[pa]=ਸੈਕਰੋਨਾਈਜ਼ੇਸ਼ਨ ਫੇਲ੍ਹ ਹੋਈ
@@ -519,7 +519,7 @@ Name[uk]=Невдала спроба синхронізації
 Name[x-test]=xxSynchronization failedxx
 Comment=The synchronization failed
 Comment[da]=Synkroniseringen mislykkedes
-Comment[de]=Die Synchronisation ist fehlgeschlagen
+Comment[de]=Der Abgleich ist fehlgeschlagen
 Comment[it]=La sincronizzazione non è riuscita
 Comment[km]=បាន​បរាជ័យ​ក្នុង​ការ​ធ្វើ​សមកាលកម្ម
 Comment[pa]=ਸੈਕਰੋਨਾਈਜ਼ੇਸ਼ਨ ਫੇਲ੍ਹ ਹੋਈ
