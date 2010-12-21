@@ -39,8 +39,8 @@ class Smb4KMountHelper : public QObject
   Q_OBJECT
   
   public slots:
-    ActionReply mount( QVariantMap args );
-    ActionReply unmount( QVariantMap args );
+    ActionReply mount( const QVariantMap &args );
+    ActionReply unmount( const QVariantMap &args );
 };
 
 #endif

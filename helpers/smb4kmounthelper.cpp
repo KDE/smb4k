@@ -42,7 +42,7 @@
 KDE4_AUTH_HELPER_MAIN( "de.berlios.smb4k.mounthelper", Smb4KMountHelper )
 
 
-ActionReply Smb4KMountHelper::mount( QVariantMap args )
+ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
 {
   ActionReply reply;
   reply.addData( "unc", args["unc"].toString() );
@@ -51,12 +51,12 @@ ActionReply Smb4KMountHelper::mount( QVariantMap args )
   reply.addData( "host_ip", args["host_ip"].toString() );
   reply.addData( "mountpoint", args["mountpoint"].toString() );
   reply.addData( "key", args["key"].toString() );
-  
+
   KProcess proc( this );
   proc.setOutputChannelMode( KProcess::SeparateChannels );
   proc.setProcessEnvironment( QProcessEnvironment::systemEnvironment() );
   proc.setEnv( "PASSWD", args["password"].toString(), true );
-  
+
   QUrl full_unc = args["unc"].toString();
 #ifndef Q_OS_FREEBSD
   QString unc = full_unc.toString( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort )
@@ -65,7 +65,7 @@ ActionReply Smb4KMountHelper::mount( QVariantMap args )
   QString unc = full_unc.toString( QUrl::RemoveScheme|QUrl::RemovePassword )
                         .replace( "@"+full_unc.host(), "@"+full_unc.host().toUpper() );
 #endif
-  
+
   QStringList arguments;
 #ifndef Q_OS_FREEBSD
   arguments << KShell::quoteArg( unc );
@@ -92,17 +92,17 @@ ActionReply Smb4KMountHelper::mount( QVariantMap args )
 #endif
 
   proc.setProgram( args["mount_binary"].toString(), arguments );
-  
+
   // Run the mount process.
   proc.start();
-  
+
   if ( proc.waitForStarted( -1 ) )
-  {  
-    // We want to be able to terminate the process from outside. 
-    // Thus, we implement a loop that checks periodically, if we 
+  {
+    // We want to be able to terminate the process from outside.
+    // Thus, we implement a loop that checks periodically, if we
     // need to kill the process.
     bool user_kill = false;
-  
+
     while ( !proc.waitForFinished( 10 ) )
     {
       if ( HelperSupport::isStopped() )
@@ -116,7 +116,7 @@ ActionReply Smb4KMountHelper::mount( QVariantMap args )
         // Do nothing
       }
     }
-    
+
     if ( proc.exitStatus() == KProcess::CrashExit )
     {
       if ( !user_kill )
@@ -135,7 +135,7 @@ ActionReply Smb4KMountHelper::mount( QVariantMap args )
       // Check if there is output on stderr.
       QString stderr = QString::fromUtf8( proc.readAllStandardError() );
       reply.addData( "stderr", stderr );
-      
+
       // Check if there is output on stdout.
       QString stdout = QString::fromUtf8( proc.readAllStandardOutput() );
       reply.addData( "stdout", stdout );
@@ -147,32 +147,32 @@ ActionReply Smb4KMountHelper::mount( QVariantMap args )
     reply.setErrorDescription( i18n( "The mount process could not be started." ) );
     return reply;
   }
-  
+
   return reply;
 }
 
 
 
-ActionReply Smb4KMountHelper::unmount( QVariantMap args )
+ActionReply Smb4KMountHelper::unmount( const QVariantMap &args )
 {
   ActionReply reply;
   reply.addData( "unc", args["unc"].toString() );
   reply.addData( "mountpoint", args["mountpoint"].toString() );
   reply.addData( "key", args["key"].toString() );
-  
+
   // Check if the mountpoint is valid and the file system is
   // also correct.
   bool mountpoint_ok = false;
   KMountPoint::List mountpoints = KMountPoint::currentMountPoints( KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions );
-        
+
   for( int j = 0; j < mountpoints.size(); j++ )
   {
 #ifndef Q_OS_FREEBSD
-    if ( QString::compare( args["mountpoint"].toString(), 
+    if ( QString::compare( args["mountpoint"].toString(),
                            mountpoints.at( j )->mountPoint(), Qt::CaseInsensitive ) == 0 &&
          QString::compare( mountpoints.at( j )->mountType(), "cifs", Qt::CaseInsensitive ) == 0 )
 #else
-    if ( QString::compare( args["mountpoint"].toString(), 
+    if ( QString::compare( args["mountpoint"].toString(),
                            mountpoints.at( j )->mountPoint(), Qt::CaseInsensitive ) == 0 &&
          QString::compare( mountpoints.at( j )->mountType(), "smbfs", Qt::CaseInsensitive ) == 0 )
 #endif
@@ -185,7 +185,7 @@ ActionReply Smb4KMountHelper::unmount( QVariantMap args )
       continue;
     }
   }
-  
+
   if ( !mountpoint_ok )
   {
     reply.setErrorCode( ActionReply::HelperError );
@@ -196,7 +196,7 @@ ActionReply Smb4KMountHelper::unmount( QVariantMap args )
   {
     // Do nothing
   }
-  
+
   KProcess proc( this );
   proc.setOutputChannelMode( KProcess::SeparateChannels );
   proc.setProcessEnvironment( QProcessEnvironment::systemEnvironment() );
@@ -211,19 +211,19 @@ ActionReply Smb4KMountHelper::unmount( QVariantMap args )
     // Do nothing
   }
   arguments << KShell::quoteArg( args["mountpoint"].toString() );
-  
+
   proc.setProgram( args["umount_binary"].toString(), arguments );
-  
+
   // Run the unmount process.
   proc.start();
-  
+
   if ( proc.waitForStarted( -1 ) )
-  {  
-    // We want to be able to terminate the process from outside. 
-    // Thus, we implement a loop that checks periodically, if we 
+  {
+    // We want to be able to terminate the process from outside.
+    // Thus, we implement a loop that checks periodically, if we
     // need to kill the process.
     bool user_kill = false;
-  
+
     while ( !proc.waitForFinished( 10 ) )
     {
       if ( HelperSupport::isStopped() )
@@ -237,7 +237,7 @@ ActionReply Smb4KMountHelper::unmount( QVariantMap args )
         // Do nothing
       }
     }
-    
+
     if ( proc.exitStatus() == KProcess::CrashExit )
     {
       if ( !user_kill )
@@ -256,7 +256,7 @@ ActionReply Smb4KMountHelper::unmount( QVariantMap args )
       // Check if there is output on stderr.
       QString stderr = QString::fromUtf8( proc.readAllStandardError() );
       reply.addData( "stderr", stderr );
-      
+
       // Check if there is output on stdout.
       QString stdout = QString::fromUtf8( proc.readAllStandardOutput() );
       reply.addData( "stdout", stdout );
@@ -268,9 +268,8 @@ ActionReply Smb4KMountHelper::unmount( QVariantMap args )
     reply.setErrorDescription( i18n( "The unmount process could not be started." ) );
     return reply;
   }
-  
+
   return reply;
 }
-
 
 #include "smb4kmounthelper.moc"
