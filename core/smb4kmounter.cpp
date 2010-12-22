@@ -141,24 +141,13 @@ void Smb4KMounter::abort( Smb4KShare *share )
     key2 = "unmount_"+share->homeUNC();
   }
 
-  Action *action = NULL;
-
   if ( m_cache.contains( key1 ) )
   {
-    action = m_cache.object( key1 );
+    Action( "de.berlios.smb4k.mounthelper.mount" ).stop();
   }
   else if ( m_cache.contains( key2 ) )
   {
-    action = m_cache.object( key2 );
-  }
-  else
-  {
-    return;
-  }
-
-  if ( action )
-  {
-    action->stop();
+    Action( "de.berlios.smb4k.mounthelper.unmount" ).stop();
   }
   else
   {
@@ -171,15 +160,15 @@ void Smb4KMounter::abortAll()
 {
   if ( !kapp->closingDown() )
   {
-    QStringList keys = m_cache.keys();
-
-    foreach ( const QString &key, keys )
+    foreach ( const QString &key, m_cache )
     {
-      Action *action = m_cache.object( key );
-
-      if ( action )
+      if ( key.startsWith( "mount_" ) )
       {
-        action->stop();
+        Action( "de.berlios.smb4k.mounthelper.mount" ).stop();
+      }
+      else if ( key.startsWith( "unmount_" ) )
+      {
+        Action( "de.berlios.smb4k.mounthelper.unmount" ).stop();
       }
       else
       {
@@ -264,7 +253,7 @@ void Smb4KMounter::triggerRemounts()
 
             actions << mountAction;
 
-            m_cache.insert( mountAction.arguments().value( "key" ).toString(), &mountAction );
+            m_cache << mountAction.arguments().value( "key" ).toString();
 
             emit aboutToStart( &share, MountShare );
 
@@ -301,7 +290,7 @@ void Smb4KMounter::triggerRemounts()
 
           actions << mountAction;
 
-          m_cache.insert( mountAction.arguments().value( "key" ).toString(), &mountAction );
+          m_cache << mountAction.arguments().value( "key" ).toString();
 
           emit aboutToStart( &share, MountShare );
 
@@ -765,7 +754,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
 
   if ( createMountAction( share, &mountAction ) )
   {
-    m_cache.insert( mountAction.arguments().value( "key" ).toString(), &mountAction );
+    m_cache << mountAction.arguments().value( "key" ).toString();
 
     connect( mountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
              this, SLOT( slotShareMounted( ActionReply ) ) );
@@ -842,7 +831,8 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
         notification->actionFailed( Smb4KNotification::MountAction, QString() );
       }
 
-      (void) m_cache.take( mountAction.arguments().value( "key" ).toString() );
+      int index = m_cache.indexOf( mountAction.arguments().value( "key" ).toString() );
+      m_cache.removeAt( index );
 
       emit finished( share, MountShare );
     }
@@ -869,7 +859,7 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
 
     if ( createUnmountAction( share, force, silent, &unmountAction ) )
     {
-      m_cache.insert( unmountAction.arguments().value( "key" ).toString(), &unmountAction );
+      m_cache << unmountAction.arguments().value( "key" ).toString();
 
       connect( unmountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
                this, SLOT( slotShareUnmounted( ActionReply ) ) );
@@ -946,7 +936,8 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
           notification->actionFailed( Smb4KNotification::UnmountAction, QString() );
         }
 
-        (void) m_cache.take( unmountAction.arguments().value( "key" ).toString() );
+        int index = m_cache.indexOf( unmountAction.arguments().value( "key" ).toString() );
+        m_cache.removeAt( index );
 
         emit finished( share, MountShare );
       }
@@ -1006,7 +997,7 @@ void Smb4KMounter::unmountAllShares()
 
       actions << unmountAction;
 
-      m_cache.insert( unmountAction.arguments().value( "key" ).toString(), &unmountAction );
+      m_cache << unmountAction.arguments().value( "key" ).toString();
 
       emit aboutToStart( share, UnmountShare );
 
@@ -1825,7 +1816,8 @@ void Smb4KMounter::slotActionFinished( ActionReply reply )
   // Remove the action from the cache. We must not delete it, since
   // this is automatically done if mountShare() and unmountShare(),
   // respectively, exit.
-  (void) m_cache.take( reply.data().value( "key" ).toString() );
+  int index = m_cache.indexOf( reply.data().value( "key" ).toString() );
+  m_cache.removeAt( index );
 
   // Now process the action.
   if ( !reply.failed() )
@@ -2145,9 +2137,7 @@ void Smb4KMounter::slotShareUnmounted( ActionReply reply )
             {
               bool still_unmounting = false;
 
-              QStringList keys = m_cache.keys();
-
-              foreach ( const QString &key, keys )
+              foreach ( const QString &key, m_cache )
               {
                 if ( key.startsWith( "unmount_" ) )
                 {

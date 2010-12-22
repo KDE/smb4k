@@ -34,7 +34,7 @@
 #include <QObject>
 #include <QFile>
 #include <QString>
-#include <QCache>
+#include <QStringList>
 
 // KDE includes
 #include <kdemacros.h>
@@ -359,10 +359,9 @@ class KDE_EXPORT Smb4KMounter : public QObject
     int m_timeout;
 
     /**
-     * The cache that holds the currently performed
-     * actions
+     * This list contains a key for any action that is currently run.
      */
-    QCache<QString,Action> m_cache;
+    QStringList m_cache;
 };
 
 #endif
