@@ -644,14 +644,7 @@ void Smb4KNetworkSearchPart::slotShareMounted( Smb4KShare *share )
       {
         if ( QString::compare( item->shareItem()->unc(), share->unc(), Qt::CaseInsensitive ) == 0 )
         {
-          if ( !share->isForeign() || Smb4KSettings::showAllShares() )
-          {
-            item->setMounted( share->isMounted() );
-          }
-          else
-          {
-            // Do nothing
-          }
+          item->setMounted( share->isMounted() );
         }
         else
         {
@@ -682,37 +675,7 @@ void Smb4KNetworkSearchPart::slotShareUnmounted( Smb4KShare *share )
       {
         if ( QString::compare( item->shareItem()->unc(), share->unc(), Qt::CaseInsensitive ) == 0 )
         {
-          if ( share->isForeign() )
-          {
-            QList<Smb4KShare *> list = findShareByUNC( share->unc() );
-            bool own_share_mounted = false;
-          
-            for ( int j = 0; j < list.size(); ++j )
-            {
-              if ( !list.at( j )->isForeign() )
-              {
-                own_share_mounted = true;
-                break;
-              }
-              else
-              {
-                continue;
-              }
-            }
-            
-            if ( !own_share_mounted && (list.size() <= 1 || !Smb4KSettings::showAllShares()) )
-            {
-              item->setMounted( share->isMounted() );
-            }
-            else
-            {
-              // Do nothing
-            }
-          }
-          else
-          {
-            item->setMounted( share->isMounted() );
-          }
+          item->setMounted( share->isMounted() );
         }
         else
         {

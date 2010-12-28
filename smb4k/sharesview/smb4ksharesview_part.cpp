@@ -1070,38 +1070,18 @@ void Smb4KSharesViewPart::slotShareMounted( Smb4KShare *share )
   {
     case IconMode:
     {
-      if ( !share->isForeign() || Smb4KSettings::showAllShares() )
-      {
-        Smb4KSharesIconViewItem *item = new Smb4KSharesIconViewItem( share, m_icon_view );
-        item->setShowMountPoint( Smb4KSettings::showMountPoint() );
-        
-        m_icon_view->sortItems( Qt::AscendingOrder );
-      }
-      else
-      {
-        // Do nothing
-      }
-      
+      Smb4KSharesIconViewItem *item = new Smb4KSharesIconViewItem( share, m_icon_view );
+      item->setShowMountPoint( Smb4KSettings::showMountPoint() );
+      m_icon_view->sortItems( Qt::AscendingOrder );
       actionCollection()->action( "unmount_all_action" )->setEnabled( (m_icon_view->count() != 0) );
-      
       break;
     }
     case ListMode:
     {
-      if ( !share->isForeign() || Smb4KSettings::showAllShares() )
-      {
-        Smb4KSharesListViewItem *item = new Smb4KSharesListViewItem( share, m_list_view );
-        item->setShowMountPoint( Smb4KSettings::showMountPoint() );
-        
-        m_list_view->sortItems( Smb4KSharesListView::Item, Qt::AscendingOrder );
-      }
-      else
-      {
-        // Do nothing
-      }
-      
+      Smb4KSharesListViewItem *item = new Smb4KSharesListViewItem( share, m_list_view );
+      item->setShowMountPoint( Smb4KSettings::showMountPoint() );
+      m_list_view->sortItems( Smb4KSharesListView::Item, Qt::AscendingOrder );
       actionCollection()->action( "unmount_all_action" )->setEnabled( (m_list_view->topLevelItemCount() != 0) );
-      
       break;
     }
     default:

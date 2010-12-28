@@ -11,7 +11,7 @@ Smb4K SVN_HEAD (????-??-??):
   + Removed all entries related to the old mounting/unmounting implementation.
 - Revised Smb4KAuthInfo class:
   + Removed old constructor.
-  + Added two new constructors.<
+  + Added two new constructors.
   + Added type enumeration and function.
   + Added setUNC() and unc() functions.
   + Added setHomesUsers() and homesUsers() functions so that homes user

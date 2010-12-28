@@ -560,38 +560,16 @@ bool Smb4KMainWindow::queryExit()
 
 void Smb4KMainWindow::setupMountIndicator()
 {
-  int number = 0;
-                              
-  if ( !mountedSharesList().isEmpty() )
-  {
-    for ( int i = 0; i < mountedSharesList().size(); ++i )
-    {
-      if ( !mountedSharesList().at( i )->isForeign() || Smb4KSettings::showAllShares() )
-      {
-        number++;
-        continue;
-      }
-      else
-      {
-        continue;
-      }
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-  
   QStringList overlays;
   
-  if ( number == 0 )
+  if ( mountedSharesList().size() == 0 )
   {
     m_feedback_icon->setToolTip( i18n( "There are currently no shares mounted." ) );
   }
   else
   {
     overlays.append( "emblem-mounted" );
-    m_feedback_icon->setToolTip( i18np( "There is currently %1 share mounted.", "There are currently %1 shares mounted.", number ) );
+    m_feedback_icon->setToolTip( i18np( "There is currently %1 share mounted.", "There are currently %1 shares mounted.", mountedSharesList().size() ) );
   }
   
   m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::Small, 0, KIconLoader::DefaultState, overlays ) );

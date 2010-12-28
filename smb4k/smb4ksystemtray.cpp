@@ -180,64 +180,35 @@ void Smb4KSystemTray::setupSharesMenu()
 
       if ( share )
       {
-        // Check what to do with the share.
-        if ( !share->isForeign() || Smb4KSettings::showAllShares() )
+        // To avoid sorting problems later, we remove *all* actions that
+        // have data entries (displayed texts) that do not match the current
+        // criterions.
+        if ( (!Smb4KSettings::showMountPoint() &&
+             QString::compare( m_share_menus->actions().at( i )->data().toString(),
+             share->unc() ) == 0) ||
+             (Smb4KSettings::showMountPoint() &&
+             QString::compare( m_share_menus->actions().at( i )->data().toString(),
+             share->canonicalPath() ) == 0) )
         {
-          // To avoid sorting problems later, we remove *all* actions that
-          // have data entries (displayed texts) that do not match the current
-          // criterions.
-          if ( (!Smb4KSettings::showMountPoint() &&
-               QString::compare( m_share_menus->actions().at( i )->data().toString(),
-               share->unc() ) == 0) ||
-               (Smb4KSettings::showMountPoint() &&
-               QString::compare( m_share_menus->actions().at( i )->data().toString(),
-               share->canonicalPath() ) == 0) )
-          {
 #ifdef __linux__
-            // Find the "Force Unmount" action and decide if it needs to be
-            // enabled/disabled:
-            QAction *force = actionCollection()->action( "st_force_"+canonical_path );
+          // Find the "Force Unmount" action and decide if it needs to be
+          // enabled/disabled:
+          QAction *force = actionCollection()->action( "st_force_"+canonical_path );
             
-            if ( force )
-            {
-              force->setEnabled( true );
-            }
-            else
-            {
-              // Do nothing
-            }
-#endif
-
-            continue;
+          if ( force )
+          {
+            force->setEnabled( true );
           }
           else
           {
-            // Remove all actions associated with this share.
-            KActionMenu *menu = static_cast<KActionMenu *>( m_share_menus->actions().at( i ) );
-            QAction *action = NULL;
-
-            while ( !menu->menu()->actions().isEmpty() )
-            {
-              // Remove the action from the menu.
-              action = menu->menu()->actions().takeFirst();
-              // Remove the action from the action group.
-              m_shares_actions->removeAction( action );
-              // Delete it.
-              delete action;
-            }
-
-            // Now remove the menu itself.
-            m_shares_menu->removeAction( menu );
-            m_share_menus->removeAction( menu );
-            delete menu;
-
-            continue;
+            // Do nothing
           }
+#endif
+          continue;
         }
         else
         {
-          // The user does not want to see foreign shares. Remove all
-          // actions associated with this share.
+          // Remove all actions associated with this share.
           KActionMenu *menu = static_cast<KActionMenu *>( m_share_menus->actions().at( i ) );
           QAction *action = NULL;
 
@@ -255,7 +226,6 @@ void Smb4KSystemTray::setupSharesMenu()
           m_shares_menu->removeAction( menu );
           m_share_menus->removeAction( menu );
           delete menu;
-
           continue;
         }
       }
@@ -292,27 +262,18 @@ void Smb4KSystemTray::setupSharesMenu()
 
     for ( int i = 0; i < shares_list.size(); ++i )
     {
-      if ( !shares_list.at( i )->isForeign() || Smb4KSettings::showAllShares() )
+      // ATTENTION: If the user chose to see the mount points
+      // rather than the share name, the mount point is the key,
+      // otherwise it is the share name.
+      if ( Smb4KSettings::showMountPoint() )
       {
-        // ATTENTION: If the user chose to see the mount points
-        // rather than the share name, the mount point is the key,
-        // otherwise it is the share name.
-        if ( Smb4KSettings::showMountPoint() )
-        {
-          shares_map.insert( QString::fromUtf8( shares_list.at( i )->canonicalPath() ),
-                             *shares_list.at( i ) );
-
-          continue;
-        }
-        else
-        {
-          shares_map.insert( shares_list.at( i )->unc(), *shares_list.at( i ) );
-
-          continue;
-        }
+        shares_map.insert( QString::fromUtf8( shares_list.at( i )->canonicalPath() ),
+                           *shares_list.at( i ) );
+        continue;
       }
       else
       {
+        shares_map.insert( shares_list.at( i )->unc(), *shares_list.at( i ) );
         continue;
       }
     }

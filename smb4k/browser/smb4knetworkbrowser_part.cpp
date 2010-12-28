@@ -2005,20 +2005,8 @@ void Smb4KNetworkBrowserPart::slotShareMounted( Smb4KShare *share )
             QString::compare( browser_item->shareItem()->workgroupName(), share->workgroupName(), Qt::CaseInsensitive ) == 0) &&
            QString::compare( browser_item->shareItem()->hostName(), share->hostName(), Qt::CaseInsensitive ) == 0 )
       {
-        if ( !share->isForeign() || Smb4KSettings::showAllShares() )
-        {
-          browser_item->setMounted( share, Smb4KNetworkBrowserItem::Mounted );
-          break;
-        }
-        else if ( share->isForeign() && !Smb4KSettings::showAllShares() )
-        {
-          browser_item->setMounted( browser_item->shareItem(), Smb4KNetworkBrowserItem::NotMounted );
-          break;
-        }
-        else
-        {
-          continue;
-        }
+        browser_item->update( share );
+        break;
       }
       else
       {
@@ -2048,48 +2036,8 @@ void Smb4KNetworkBrowserPart::slotShareUnmounted( Smb4KShare *share )
             QString::compare( browser_item->shareItem()->workgroupName(), share->workgroupName(), Qt::CaseInsensitive ) == 0) &&
            QString::compare( browser_item->shareItem()->hostName(), share->hostName(), Qt::CaseInsensitive ) == 0 )
       {
-        // Check if we really have to unmark the share.
-        QList<Smb4KShare *> mounted_shares = findShareByUNC( browser_item->shareItem()->unc() );
-
-        if ( !mounted_shares.isEmpty() )
-        {
-          bool have_only_foreign = true;
-
-          for ( int j = 0; j < mounted_shares.size(); ++j )
-          {
-            if ( !mounted_shares.at( j )->isForeign() )
-            {
-              have_only_foreign = false;
-              break;
-            }
-            else
-            {
-              continue;
-            }
-          }
-          
-          if ( !have_only_foreign )
-          {
-            browser_item->setMounted( browser_item->shareItem(), Smb4KNetworkBrowserItem::NotMounted );
-          }
-          else
-          {
-            if ( !Smb4KSettings::showAllShares() )
-            {
-              browser_item->setMounted( browser_item->shareItem(), Smb4KNetworkBrowserItem::NotMounted );
-            }
-            else
-            {
-              // Do nothing
-            }
-          }
-          break;
-        }
-        else
-        {
-          browser_item->setMounted( browser_item->shareItem(), Smb4KNetworkBrowserItem::NotMounted );
-          break;
-        }
+        browser_item->update( share );
+        break;
       }
       else
       {

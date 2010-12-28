@@ -505,8 +505,6 @@ void Smb4KMounter::import()
             continue;
           }
         }
-
-        mounted_shares += share;
       }
       else
       {
@@ -516,8 +514,6 @@ void Smb4KMounter::import()
         QString login = mount_points.at( i )->mountOptions().join( "," ).section( "user=", 1, 1 ).section( ",", 0, 0 ).trimmed();
         share.setLogin( !login.isEmpty() ? login : "guest" ); // Work around empty 'user=' entries
         share.setIsMounted( true );
-
-        mounted_shares += share;
       }
 #else
       share.setFileSystem( Smb4KShare::SMBFS );
@@ -525,9 +521,8 @@ void Smb4KMounter::import()
       share.setLogin( !login.isEmpty() ? login : "guest" ); // Work around empty 'username=' entries
       share.setIsMounted( true );
       qDebug() << "Domain and ip address?";
-
-      mounted_shares += share;
 #endif
+      mounted_shares += share;
     }
     else
     {
@@ -678,54 +673,71 @@ void Smb4KMounter::import()
       // Do nothing
     }
 
-    // Now we decide whether we need to emit the update() or the mounted()
-    // signal.
-    // It is important for the later processing of the shares that have
-    // been unmounted in the meantime that we remove all shares from
-    // the global list that have been processed.
+    // Now we add the new shares to the global list of shares. We
+    // also honor Smb4KSettings::showAllShares() here.
+    // 
+    // Emit the appropriate signals after the share was processed.
     if ( mounted_share )
     {
-      // This share was previouly mounted.
-      removeMountedShare( mounted_share );
-
-      Smb4KShare *new_share = new Smb4KShare( mounted_shares[i] );
-
-      // To avoid incompatibilities, we remove a trailing slash from
-      // the UNC now, if it is present.
-      if ( new_share->unc( QUrl::None ).endsWith( "/" ) )
+      // Honor Smb4KSettings::showAllShares() here.
+      if ( !mounted_shares.at( i ).isForeign() || Smb4KSettings::showAllShares() )
       {
-        QString u = new_share->unc( QUrl::None );
-        u.chop( 1 );
-        new_share->setUNC( u );
+        // This share was previouly mounted.
+        removeMountedShare( mounted_share );
+
+        Smb4KShare *new_share = new Smb4KShare( mounted_shares[i] );
+
+        // To avoid incompatibilities, we remove a trailing slash from
+        // the UNC now, if it is present.
+        if ( new_share->unc( QUrl::None ).endsWith( "/" ) )
+        {
+          QString u = new_share->unc( QUrl::None );
+          u.chop( 1 );
+          new_share->setUNC( u );
+        }
+        else
+        {
+          // Do nothing
+        }
+
+        addMountedShare( new_share );
+        emit updated( new_share );
       }
       else
       {
-        // Do nothing
+        mounted_share->setIsMounted( false );
+        emit unmounted( mounted_share );
+        removeMountedShare( mounted_share );
       }
-
-      addMountedShare( new_share );
-      emit updated( new_share );
     }
     else
     {
-      // This is a new share.
-      Smb4KShare *new_share = new Smb4KShare( mounted_shares[i] );
-
-      // To avoid incompatibilities, we remove a trailing slash from
-      // the UNC now, if it is present.
-      if ( new_share->unc( QUrl::None ).endsWith( "/" ) )
+      // Honor Smb4KSettings::showAllShares() here.
+      if ( !mounted_shares.at( i ).isForeign() || Smb4KSettings::showAllShares() )
       {
-        QString u = new_share->unc( QUrl::None );
-        u.chop( 1 );
-        new_share->setUNC( u );
+        // This is a new share.
+        Smb4KShare *new_share = new Smb4KShare( mounted_shares[i] );
+
+        // To avoid incompatibilities, we remove a trailing slash from
+        // the UNC now, if it is present.
+        if ( new_share->unc( QUrl::None ).endsWith( "/" ) )
+        {
+          QString u = new_share->unc( QUrl::None );
+          u.chop( 1 );
+          new_share->setUNC( u );
+        }
+        else
+        {
+          // Do nothing
+        }
+
+        addMountedShare( new_share );
+        emit mounted( new_share );
       }
       else
       {
         // Do nothing
       }
-
-      addMountedShare( new_share );
-      emit mounted( new_share );
     }
   }
 }
