@@ -47,12 +47,12 @@
 #include <smb4knetworkbrowser_part.h>
 #include <smb4knetworkbrowser.h>
 #include <smb4knetworkbrowseritem.h>
-#include <smb4knetworkbrowsertooltip.h>
 #include <../dialogs/smb4kcustomoptionsdialog.h>
 #include <../dialogs/smb4kmountdialog.h>
 #include <../dialogs/smb4kprintdialog.h>
 #include <../dialogs/smb4kpreviewdialog.h>
 #include <../dialogs/smb4kbookmarkdialog.h>
+#include <../tooltips/smb4ktooltip.h>
 #include <core/smb4kcore.h>
 #include <core/smb4kglobal.h>
 #include <core/smb4ksettings.h>
@@ -140,11 +140,11 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject
   connect( m_widget,               SIGNAL( itemExecuted( QTreeWidgetItem *, int ) ),
            this,                   SLOT( slotItemExecuted( QTreeWidgetItem *, int ) ) );
 
-  connect( m_widget->tooltip(),    SIGNAL( aboutToShow( Smb4KNetworkBrowserItem * ) ),
-           this,                   SLOT( slotAboutToShowToolTip( Smb4KNetworkBrowserItem * ) ) );
+  connect( m_widget->tooltip(),    SIGNAL( aboutToShow( Smb4KBasicNetworkItem * ) ),
+           this,                   SLOT( slotAboutToShowToolTip( Smb4KBasicNetworkItem * ) ) );
 
-  connect( m_widget->tooltip(),    SIGNAL( aboutToHide( Smb4KNetworkBrowserItem * ) ),
-           this,                   SLOT( slotAboutToHideToolTip( Smb4KNetworkBrowserItem * ) ) );
+  connect( m_widget->tooltip(),    SIGNAL( aboutToHide( Smb4KBasicNetworkItem * ) ),
+           this,                   SLOT( slotAboutToHideToolTip( Smb4KBasicNetworkItem * ) ) );
 
   connect( Smb4KScanner::self(),   SIGNAL( workgroups( const QList<Smb4KWorkgroup *> & ) ),
            this,                   SLOT( slotWorkgroups( const QList<Smb4KWorkgroup *> & ) ) );
@@ -665,19 +665,21 @@ void Smb4KNetworkBrowserPart::slotItemExecuted( QTreeWidgetItem *item, int /*col
 }
 
 
-void Smb4KNetworkBrowserPart::slotAboutToShowToolTip( Smb4KNetworkBrowserItem *item )
+void Smb4KNetworkBrowserPart::slotAboutToShowToolTip( Smb4KBasicNetworkItem *item )
 {
   if ( item )
   {
     switch ( item->type() )
     {
-      case Smb4KNetworkBrowserItem::Host:
+      case Smb4KBasicNetworkItem::Host:
       {
         // Check if additional information is needed and send a request to the scanner,
         // if necessary.
-        if ( !item->hostItem()->infoChecked() )
+        Smb4KHost *host = static_cast<Smb4KHost *>( item );
+        
+        if ( !host->infoChecked() )
         {
-          Smb4KScanner::self()->lookupInfo( item->hostItem() );
+          Smb4KScanner::self()->lookupInfo( host );
         }
         else
         {
@@ -699,19 +701,21 @@ void Smb4KNetworkBrowserPart::slotAboutToShowToolTip( Smb4KNetworkBrowserItem *i
 }
 
 
-void Smb4KNetworkBrowserPart::slotAboutToHideToolTip( Smb4KNetworkBrowserItem *item )
+void Smb4KNetworkBrowserPart::slotAboutToHideToolTip( Smb4KBasicNetworkItem *item )
 {
   if ( item )
   {
     switch ( item->type() )
     {
-      case Smb4KNetworkBrowserItem::Host:
+      case Smb4KBasicNetworkItem::Host:
       {
         // Kill the lookup process for the additional information
         // and nothing else.
-        if ( Smb4KScanner::self()->isRunning( item->hostItem(), Smb4KScanner::LookupInfo ) )
+        Smb4KHost *host = static_cast<Smb4KHost *>( item );
+        
+        if ( Smb4KScanner::self()->isRunning( host, Smb4KScanner::LookupInfo ) )
         {
-          Smb4KScanner::self()->abort( item->hostItem(), Smb4KScanner::LookupInfo );
+          Smb4KScanner::self()->abort( host, Smb4KScanner::LookupInfo );
         }
         else
         {
@@ -1413,10 +1417,10 @@ void Smb4KNetworkBrowserPart::slotAddIPAddress( Smb4KHost *host )
           {
             // Do nothing
           }
-
-            // If the tool tip is currently shown, update it.
+          
           if ( m_widget->tooltip() && m_widget->tooltip()->isVisible() &&
-               (m_widget->tooltip()->item() == hostItem || m_widget->tooltip()->item() == workgroupItem) )
+               (QString::compare( m_widget->tooltip()->networkItem()->key(), hostItem->networkItem()->key() ) == 0 ||
+                QString::compare( m_widget->tooltip()->networkItem()->key(), workgroupItem->networkItem()->key() ) == 0) )
           {
             m_widget->tooltip()->update();
           }
@@ -1424,7 +1428,6 @@ void Smb4KNetworkBrowserPart::slotAddIPAddress( Smb4KHost *host )
           {
             // Do nothing
           }
-
           break;
         }
         else
@@ -1459,7 +1462,7 @@ void Smb4KNetworkBrowserPart::slotAddInformation( Smb4KHost *host )
 
         // Now update the tool tip in case it is shown:
         if ( m_widget->tooltip() && m_widget->tooltip()->isVisible() &&
-             m_widget->tooltip()->item() == hostItem )
+             QString::compare( m_widget->tooltip()->networkItem()->key(), hostItem->networkItem()->key() ) == 0 )
         {
           m_widget->tooltip()->update();
         }

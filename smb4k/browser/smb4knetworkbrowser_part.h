@@ -158,18 +158,19 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      * actions that have to be taken by the scanner to complete the information
      * on the network items shown in the browser.
      *
-     * @param item                The item for which the additional info should
+     * @param item                The item for which the additional info is to
      *                            be retrieved
      */
-    void slotAboutToShowToolTip( Smb4KNetworkBrowserItem *item );
+    void slotAboutToShowToolTip( Smb4KBasicNetworkItem *item );
 
     /**
      * This slot is called when the tool tip is about to be closed. It stops the
      * search for addtitional information if necessary.
      * 
-     * @param item                The network browser item
+     * @param item                The item for which the additional info was to
+     *                            be retrieved
      */
-    void slotAboutToHideToolTip( Smb4KNetworkBrowserItem *item );
+    void slotAboutToHideToolTip( Smb4KBasicNetworkItem *item );
 
     /**
      * This slot receives the workgroups/domains found by the scanner. It takes

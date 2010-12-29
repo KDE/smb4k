@@ -39,8 +39,7 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem( QTreeWidget *parent, Smb4KWork
 : QTreeWidgetItem( parent, Workgroup ), m_workgroup( *workgroup )
 {
   setText( Network, m_workgroup.workgroupName() );
-  m_icon = KIcon( "network-workgroup" );
-  setIcon( Network, m_icon );
+  setIcon( Network, m_workgroup.icon() );
 }
 
 
@@ -64,8 +63,7 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem( QTreeWidgetItem *parent, Smb4K
     // Do nothing
   }
 
-  m_icon = KIcon( "network-server" );
-  setIcon( Network, m_icon );
+  setIcon( Network, m_host.icon() );
 }
 
 
@@ -76,34 +74,21 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem( QTreeWidgetItem *parent, Smb4K
   setText( Type, m_share.translatedTypeString() );
   setText( Comment, m_share.comment() );
 
-  if ( !m_share.isPrinter() )
+  if ( !m_share.isPrinter() && m_share.isMounted() )
   {
-    QStringList overlays;
-
-    if ( m_share.isMounted() )
+    for ( int i = 0; i < columnCount(); ++i )
     {
-      overlays.append( "emblem-mounted" );
-
-      for ( int i = 0; i < columnCount(); ++i )
-      {
-        QFont f = font( i );
-        f.setItalic( true );
-        setFont( i, f );
-      }
+      QFont f = font( i );
+      f.setItalic( true );
+      setFont( i, f );
     }
-    else
-    {
-      // Do nothing
-    }
-
-    m_icon = KIcon( "folder-remote", KIconLoader::global(), overlays );
-    setIcon( Network, m_icon );
   }
   else
   {
-    m_icon = KIcon( "printer" );
-    setIcon( Network, m_icon );
+    // Do nothing
   }
+  
+  setIcon( Network, m_share.icon() );
 }
 
 
@@ -130,238 +115,121 @@ Smb4KShare *Smb4KNetworkBrowserItem::shareItem()
 }
 
 
-void Smb4KNetworkBrowserItem::update( Smb4KWorkgroup *workgroup )
+Smb4KBasicNetworkItem* Smb4KNetworkBrowserItem::networkItem()
 {
-  if ( workgroup )
+  switch ( type() )
   {
-    m_workgroup = *workgroup;
+    case Workgroup:
+    {
+      return &m_workgroup;
+    }
+    case Host:
+    {
+      return &m_host;
+    }
+    case Share:
+    {
+      return &m_share;
+    }
+    default:
+    {
+      break;
+    }
   }
-  else
-  {
-    // Do nothing
-  }
+  
+  return NULL;
 }
 
 
-void Smb4KNetworkBrowserItem::update( Smb4KHost *host )
+void Smb4KNetworkBrowserItem::update( Smb4KBasicNetworkItem *item )
 {
-  if ( host )
+  if ( item )
   {
-    // Adjust the item's color if necessary.
-    if ( host->isMasterBrowser() )
+    switch ( item->type() )
     {
-      if ( !m_host.isMasterBrowser() )
+      case Smb4KBasicNetworkItem::Workgroup:
       {
-        for ( int i = 0; i < columnCount(); ++i )
+        if ( type() != Workgroup )
         {
-          QBrush brush( Qt::darkBlue );
-          setForeground( i, brush );
+          return;
         }
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      if ( m_host.isMasterBrowser() )
-      {
-        for ( int i = 0; i < columnCount(); ++i )
+        else
         {
-          QBrush brush = QApplication::palette().text();
-          setForeground( i, brush );
+          // Do nothing
         }
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-
-    // Set the IP address if necessary.
-    if ( !host->ip().isEmpty() )
-    {
-      if ( QString::compare( host->ip(), m_host.ip() ) != 0 )
-      {
-        setText( IP, host->ip() );
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      if ( !m_host.ip().isEmpty() )
-      {
-        setText( IP, host->ip() );
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-
-    // Set the comment if necessary.
-    if ( !host->comment().isEmpty() )
-    {
-      if ( QString::compare( host->comment(), m_host.comment() ) != 0 )
-      {
-        setText( Comment, host->comment() );
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      if ( !m_host.comment().isEmpty() )
-      {
-        setText( Comment, host->comment() );
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-
-    m_host = *host;
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KNetworkBrowserItem::update( Smb4KShare *share )
-{
-  if ( share )
-  {
-    // Set the comment if necessary.
-    if ( !share->comment().isEmpty() )
-    {
-      if ( QString::compare( share->comment(), m_share.comment() ) != 0 )
-      {
-        setText( Comment, share->comment() );
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      if ( !m_share.comment().isEmpty() )
-      {
-        setText( Comment, share->comment() );
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    
-    // Adjust the item's font and its icon if necessary.
-    setMounted( share );
-
-    // Exchange share item.
-    m_share = *share;
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KNetworkBrowserItem::setMounted( Smb4KShare *share, MountFlag flag )
-{
-  if ( share )
-  {
-    switch ( flag )
-    {
-      case Mounted:
-      {
-        // Set the font
-        for ( int i = 0; i < columnCount(); ++i )
-        {
-          QFont f = font( i );
-          f.setItalic( true );
-          setFont( i, f );
-        }
-
-        // Set the icon
-        QStringList overlays;
-        overlays.append( "emblem-mounted" );
-        m_icon = KIcon( "folder-remote", KIconLoader::global(), overlays );
-        setIcon( Network, m_icon );
-
-        // Set the mount releated data of the share.
-        m_share.setMountData( share );
-
+        
+        m_workgroup = *(static_cast<Smb4KWorkgroup *>( item ));
         break;
       }
-      case NotMounted:
+      case Smb4KBasicNetworkItem::Host:
       {
+        if ( type() != Host )
+        {
+          return;
+        }
+        else
+        {
+          // Do nothing
+        }
+        
+        m_host = *(static_cast<Smb4KHost *>( item ));
+        
+        // Adjust the item's color.
+        if ( m_host.isMasterBrowser() )
+        {
+          for ( int i = 0; i < columnCount(); ++i )
+          {
+            QBrush brush( Qt::darkBlue );
+            setForeground( i, brush );
+          }
+        }
+        else
+        {
+          for ( int i = 0; i < columnCount(); ++i )
+          {
+            QBrush brush = QApplication::palette().text();
+            setForeground( i, brush );
+          }          
+        }
+        
+        // Set the IP address
+        setText( IP, m_host.ip() );
+
+        // Set the comment 
+        setText( Comment, m_host.comment() );
+        break;
+      }
+      case Smb4KBasicNetworkItem::Share:
+      {
+        if ( type() != Share )
+        {
+          return;
+        }
+        else
+        {
+          // Do nothing
+        }
+        
+        m_share = *(static_cast<Smb4KShare *>( item ));
+
+        // Set the comment.
+        setText( Comment, m_share.comment() );
+    
+        // Set the icon
+        setIcon( Network, m_share.icon() );
+            
         // Set the font
         for ( int i = 0; i < columnCount(); ++i )
         {
           QFont f = font( i );
-          f.setItalic( false );
+          f.setItalic( m_share.isMounted() );
           setFont( i, f );
         }
-
-        // Set the icon
-        m_icon = KIcon( "folder-remote" );
-        setIcon( Network, m_icon );
-
-        // Reset the mount related data of the share.
-        m_share.resetMountData();
-
+        
         break;
       }
       default:
       {
-        if ( share->isMounted() )
-        {
-          // Set the font
-          for ( int i = 0; i < columnCount(); ++i )
-          {
-            QFont f = font( i );
-            f.setItalic( true );
-            setFont( i, f );
-          }
-
-          // Set the icon
-          QStringList overlays;
-          overlays.append( "emblem-mounted" );
-          m_icon = KIcon( "folder-remote", KIconLoader::global(), overlays );
-          setIcon( Network, m_icon );
-
-          // Set the mount releated data of the share.
-          m_share.setMountData( share );
-        }
-        else
-        {
-          // Set the font
-          for ( int i = 0; i < columnCount(); ++i )
-          {
-            QFont f = font( i );
-            f.setItalic( false );
-            setFont( i, f );
-          }
-
-          // Set the icon
-          m_icon = KIcon( "folder-remote" );
-          setIcon( Network, m_icon );
-
-          // Reset the mount related data of the share.
-          m_share.resetMountData();
-        }
-
         break;
       }
     }
@@ -372,8 +240,3 @@ void Smb4KNetworkBrowserItem::setMounted( Smb4KShare *share, MountFlag flag )
   }
 }
 
-
-QPixmap Smb4KNetworkBrowserItem::desktopIcon() const
-{
-  return m_icon.pixmap( KIconLoader::global()->currentSize( KIconLoader::Desktop ) );
-}

@@ -98,13 +98,6 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
                   Comment = 3 };
 
     /**
-     * The mount flags
-     */
-    enum MountFlag{ UseShare,
-                    Mounted,
-                    NotMounted };
-
-    /**
      * This function returns a pointer to the Smb4KWorkgroupItem object if it
      * is present or NULL if it is not.
      *
@@ -127,50 +120,21 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
      * @returns a pointer to the share item or NULL.
      */
     Smb4KShare *shareItem();
-
+    
     /**
-     * This function updates the internal Smb4KWorkgroup object.
-     *
-     * @param workgroup     A Smb4KWorkgroup object
+     * This function returns the encapsulated Smb4KBasicNetworkItem object.
+     * 
+     * @returns a pointer to the encapsulated Smb4KBasicNetworkItem object
+     * or NULL if there is no item defined (this should never happen).
      */
-    void update( Smb4KWorkgroup *workgroup );
-
+    Smb4KBasicNetworkItem *networkItem();
+    
     /**
-     * This function updates the internal Smb4KHost object and
-     * changes the text that's being displayed in the browser. Use this,
-     * if you have to alter the item in the browser.
-     *
-     * @param host          A Smb4KHost object
+     * This function updates the internal network item.
+     * 
+     * @param item          A Smb4KBasicNetworkItem object
      */
-    void update( Smb4KHost *host );
-
-    /**
-     * This function updates the internal Smb4KShare object and
-     * changes the text that's being displayed in the browser. Use this,
-     * if you have to alter the item in the browser.
-     *
-     * @param share         A Smb4KShare object
-     */
-    void update( Smb4KShare *share );
-
-    /**
-     * This function marks the share item as mounted. It copies the mount related
-     * data from @p share and marks the item according to @p flag. If @p flag is
-     * equal to Smb4KNetworkBrowserItem::UseShare (the default), Smb4KShare::isMounted()
-     * is used to determine if the share is mounted. Using Smb4KNetworkBrowserItem::NotMounted
-     * or Smb4KNetworkBrowserItem::Mounted will force the item to be set either not mounted
-     * or mounted.
-     */
-    void setMounted( Smb4KShare *share,
-                     MountFlag flag = UseShare );
-
-    /**
-     * This function returns the pixmap representing the item for use with the tool tips.
-     * The pixmap has the size of a desktop icon.
-     *
-     * @returns the icon of this item in desktop icon size.
-     */
-    QPixmap desktopIcon() const;
+    void update( Smb4KBasicNetworkItem *item );
 
   private:
     /**
@@ -187,11 +151,6 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
      * The share item
      */
     Smb4KShare m_share;
-
-    /**
-     * The icon of this item.
-     */
-    KIcon m_icon;
 };
 
 #endif

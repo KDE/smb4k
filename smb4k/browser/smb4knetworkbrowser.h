@@ -2,8 +2,8 @@
     smb4knetworkbrowser  -  The network browser widget of Smb4K.
                              -------------------
     begin                : Mo Jan 8 2007
-    copyright            : (C) 2007-2009 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2007-2010 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -32,11 +32,10 @@
 
 // Qt includes
 #include <QTreeWidget>
-#include <QTimer>
 
 // forward declarations
 class Smb4KNetworkBrowserItem;
-class Smb4KNetworkBrowserToolTip;
+class Smb4KToolTip;
 
 class Smb4KNetworkBrowser : public QTreeWidget
 {
@@ -70,7 +69,7 @@ class Smb4KNetworkBrowser : public QTreeWidget
      *
      * @returns a pointer to the current tool tip.
      */
-    Smb4KNetworkBrowserToolTip *tooltip() { return m_tooltip; }
+    Smb4KToolTip *tooltip() const { return m_tooltip; }
 
     /**
      * This function returns TRUE if the mouse is inside the network
@@ -190,16 +189,6 @@ class Smb4KNetworkBrowser : public QTreeWidget
                            int column );
 
     /**
-     * This slot shows the tool tip.
-     */
-    void slotShowToolTip();
-
-    /**
-     * This slot hides and clears the tool tip.
-     */
-    void slotHideToolTip();
-
-    /**
      * This slot is used to adjust to KDE's settings.
      *
      * @param category      The category where the settings changed.
@@ -215,12 +204,7 @@ class Smb4KNetworkBrowser : public QTreeWidget
     /**
      * The tool tip for the network browser
      */
-    Smb4KNetworkBrowserToolTip *m_tooltip;
-
-    /**
-     * The tool tip timer
-     */
-    QTimer *m_tooltip_timer;
+    Smb4KToolTip *m_tooltip;
 
     /**
      * Block tool tips
