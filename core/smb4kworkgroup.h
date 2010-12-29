@@ -3,8 +3,8 @@
     workgroup.
                              -------------------
     begin                : Sa Jan 26 2008
-    copyright            : (C) 2008-2009 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2008-2010 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************

@@ -3,7 +3,7 @@
                              -------------------
     begin                : Mo Jan 28 2008
     copyright            : (C) 2008-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -31,6 +31,8 @@
 // KDE includes
 #include <klocale.h>
 #include <kdebug.h>
+#include <kicon.h>
+#include <kiconloader.h>
 
 // system includes
 #include <unistd.h>
@@ -51,6 +53,8 @@ Smb4KShare::Smb4KShare( const QString &host, const QString &name ) : Smb4KBasicN
   m_url.setScheme( "smb" );
 
   m_homes_share = (QString::compare( name, "homes", Qt::CaseSensitive ) == 0);
+  
+  setIcon( KIcon( "folder-remote" ) );
 }
 
 
@@ -61,6 +65,7 @@ Smb4KShare::Smb4KShare( const QString &unc ) : Smb4KBasicNetworkItem( Share ),
   m_is_mounted( false ), m_homes_share( false ), m_homes_users( QStringList() )
 {
   setUNC( unc );
+  setIcon( KIcon( "folder-remote" ) );
 }
 
 
@@ -72,6 +77,22 @@ Smb4KShare::Smb4KShare( const Smb4KShare &s ) : Smb4KBasicNetworkItem( Share ),
   m_is_mounted( s.isMounted() ), m_homes_share( s.isHomesShare() ), m_homes_users( s.homesUsers() )
 {
   setUNC( s.unc( QUrl::None ) );
+  
+  if ( icon().isNull() )
+  {
+    if ( !isPrinter() )
+    {
+      setIcon( KIcon( "folder-remote" ) );
+    }
+    else
+    {
+      setIcon( KIcon( "printer" ) );
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
@@ -222,6 +243,15 @@ void Smb4KShare::setWorkgroupName( const QString &workgroup )
 void Smb4KShare::setTypeString( const QString &typeString )
 {
   m_type_string = typeString;
+  
+  if ( !isPrinter() )
+  {
+    setIcon( KIcon( "folder-remote" ) );
+  }
+  else
+  {
+    setIcon( KIcon( "printer" ) );
+  }
 }
 
 
@@ -357,6 +387,16 @@ void Smb4KShare::setIsMounted( bool mounted )
   if ( !isPrinter() )
   {
     m_is_mounted = mounted;
+    
+    if ( m_is_mounted )
+    {
+      QStringList overlays( "emblem-mounted" );
+      setIcon( KIcon( "folder-remote", KIconLoader::global(), overlays ) );
+    }
+    else
+    {
+      setIcon( KIcon( "folder-remote" ) );
+    }
   }
   else
   {
@@ -776,6 +816,28 @@ void Smb4KShare::setMountData( Smb4KShare *share )
     m_total = share->totalDiskSpace();
     m_free = share->freeDiskSpace();
     m_is_mounted = share->isMounted();
+    m_type_string = share->typeString();
+    
+    if ( !isPrinter() )
+    {
+      KIcon icon;
+      
+      if ( m_is_mounted )
+      {
+        QStringList overlays( "emblem-mounted" );
+        icon = KIcon( KIcon( "folder-remote", KIconLoader::global(), overlays ) );
+      }
+      else
+      {
+        icon = KIcon( "folder-remote" );
+      }
+      
+      setIcon( icon );
+    }
+    else
+    {
+      setIcon( KIcon( "printer" ) );
+    }
   }
   else
   {
@@ -797,6 +859,9 @@ void Smb4KShare::resetMountData()
   m_total = -1;
   m_free = -1;
   m_is_mounted = false;
+  m_type_string = "Disk";
+  
+  setIcon( KIcon( "folder-remote" ) );
 }
 
 

@@ -3,7 +3,7 @@
                              -------------------
     begin                : Mo Jan 28 2008
     copyright            : (C) 2008-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************

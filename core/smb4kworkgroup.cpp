@@ -3,8 +3,8 @@
     workgroup.
                              -------------------
     begin                : Sa Jan 26 2008
-    copyright            : (C) 2008-2009 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2008-2010 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -28,12 +28,16 @@
 #include <QHostAddress>
 #include <QAbstractSocket>
 
-// application specific includes
+// KDE includes
+#include <kicon.h>
+
+// application specific includesustpuppy@users.berlios.de
 #include <smb4kworkgroup.h>
 
 Smb4KWorkgroup::Smb4KWorkgroup( const QString &name ) : Smb4KBasicNetworkItem( Workgroup ),
   m_name( name ), m_master_name( QString() ), m_master_ip( QString() ), m_pseudo_master( false )
 {
+  setIcon( KIcon( "network-workgroup" ) );
 }
 
 
@@ -41,6 +45,14 @@ Smb4KWorkgroup::Smb4KWorkgroup( const Smb4KWorkgroup &w ) : Smb4KBasicNetworkIte
   m_name( w.workgroupName() ), m_master_name( w.masterBrowserName() ), m_master_ip( w.masterBrowserIP() ),
   m_pseudo_master( w.hasPseudoMasterBrowser() )
 {
+  if ( icon().isNull() )
+  {
+    setIcon( KIcon( "network-workgroup" ) );
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
@@ -105,6 +117,8 @@ bool Smb4KWorkgroup::isEmpty() const
   {
     return false;
   }
+  
+  // Do not include the icon here.
 
   return true;
 }
@@ -149,6 +163,8 @@ bool Smb4KWorkgroup::equals( Smb4KWorkgroup *workgroup ) const
   {
     // Do nothing
   }
+  
+  // Do not include the icon here.
 
   return true;
 }

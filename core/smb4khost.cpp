@@ -3,7 +3,7 @@
                              -------------------
     begin                : Sa Jan 26 2008
     copyright            : (C) 2008-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -30,6 +30,7 @@
 
 // KDE includes
 #include <kdebug.h>
+#include <kicon.h>
 
 // application specific includes
 #include <smb4khost.h>
@@ -42,6 +43,7 @@ Smb4KHost::Smb4KHost( const QString &name ) : Smb4KBasicNetworkItem( Host ),
   m_ip_checked( false ), m_is_master( false )
 {
   setHostName( name );
+  setIcon( KIcon( "network-server" ) );
 }
 
 
@@ -51,6 +53,15 @@ Smb4KHost::Smb4KHost( const Smb4KHost &h ) : Smb4KBasicNetworkItem( Host ),
   m_ip_checked( h.ipChecked() ), m_is_master( h.isMasterBrowser() )
 {
   setUNC( h.unc( QUrl::None ) );
+  
+  if ( icon().isNull() )
+  {
+    setIcon( KIcon( "network-server" ) );
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
@@ -212,6 +223,8 @@ bool Smb4KHost::isEmpty() const
   {
     // Do nothing
   }
+  
+  // Do not include icon here.
 
   return true;
 }
@@ -286,6 +299,8 @@ bool Smb4KHost::equals( Smb4KHost *host ) const
   {
     // Do nothing
   }
+  
+  // Do not include icon here.
 
   return true;
 }
