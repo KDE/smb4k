@@ -105,6 +105,9 @@ Smb4KShareOptions::Smb4KShareOptions( QWidget *parent )
   KIntNumInput *check_interval  = new KIntNumInput( checks_box );
   check_interval->setObjectName( "kcfg_CheckInterval" );
   check_interval->setSuffix( " ms" );
+  // Set the step width. If you change this, also change the TIMEOUT definition
+  // in Smb4KMounter!
+  check_interval->setSingleStep( 50 );
 
   checks_layout->addWidget( check_interval_label, 0, 0, 0 );
   checks_layout->addWidget( check_interval, 0, 1, 0 );
