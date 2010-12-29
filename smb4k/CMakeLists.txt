@@ -9,6 +9,7 @@ include_directories(
 add_subdirectory( icons )
 add_subdirectory( configdlg )
 add_subdirectory( dialogs )
+add_subdirectory( tooltips )
 add_subdirectory( browser )
 add_subdirectory( sharesview )
 add_subdirectory( search )
