@@ -349,11 +349,6 @@ class KDE_EXPORT Smb4KMounter : public QObject
     int m_state;
 
     /**
-     * Timer ID
-     */
-    int m_timer_id;
-
-    /**
      * Time out
      */
     int m_timeout;
@@ -362,6 +357,11 @@ class KDE_EXPORT Smb4KMounter : public QObject
      * This list contains a key for any action that is currently run.
      */
     QStringList m_cache;
+    
+    /**
+     * Retries
+     */
+    QList<Smb4KShare> m_retries;
 };
 
 #endif

@@ -70,13 +70,14 @@
 
 using namespace Smb4KGlobal;
 
+#define TIMEOUT 50
+
 K_GLOBAL_STATIC( Smb4KMounterPrivate, priv );
 
 
 
 Smb4KMounter::Smb4KMounter() : QObject()
 {
-  m_timer_id = -1;
   m_timeout = 0;
 
   connect( kapp,                        SIGNAL( aboutToQuit() ),
@@ -106,8 +107,7 @@ Smb4KMounter *Smb4KMounter::self()
 
 void Smb4KMounter::init()
 {
-  m_timeout = Smb4KSettings::checkInterval();
-  m_timer_id = startTimer( m_timeout );
+  startTimer( TIMEOUT );
 
   import();
 
@@ -1734,24 +1734,33 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
 {
   if ( !kapp->startingUp() && !isRunning() )
   {
-    // Import the mounted shares.
-    import();
+    if ( !m_retries.isEmpty() )
+    {
+      mountShare( &m_retries.first() );
+      m_retries.removeFirst();
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    if ( m_timeout == Smb4KSettings::checkInterval() )
+    {
+      // Import the mounted shares.
+      import();
+      m_timeout = 0;
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
     // Do nothing and wait until the application started up.
   }
-
-  if ( m_timeout != Smb4KSettings::checkInterval() )
-  {
-    m_timeout = Smb4KSettings::checkInterval();
-    killTimer( m_timer_id );
-    m_timer_id = startTimer( m_timeout );
-  }
-  else
-  {
-    // Do nothing
-  }
+  
+  m_timeout += TIMEOUT;
 }
 
 
@@ -1825,11 +1834,15 @@ void Smb4KMounter::slotAboutToQuit()
 
 void Smb4KMounter::slotActionFinished( ActionReply reply )
 {
-  // Remove the action from the cache. We must not delete it, since
-  // this is automatically done if mountShare() and unmountShare(),
-  // respectively, exit.
   int index = m_cache.indexOf( reply.data().value( "key" ).toString() );
-  m_cache.removeAt( index );
+  if ( index != -1 )
+  {
+    m_cache.removeAt( index );
+  }
+  else
+  {
+    // Do nothing
+  }
 
   // Now process the action.
   if ( !reply.failed() )
@@ -1838,14 +1851,20 @@ void Smb4KMounter::slotActionFinished( ActionReply reply )
 
     if ( reply.data().value( "key" ).toString().startsWith( "mount_" ) )
     {
-      // Find the mounted share for emitting the signals.
-      share = *(findShareByPath( reply.data().value( "mountpoint" ).toByteArray() ));
-
-      // Check if an error occurred.
+      // Check if a mount error occurred.
       QString stderr( reply.data()["stderr"].toString() );
 
       if ( !stderr.isEmpty() )
       {
+        // Ooops, something went wrong. We do not check for the mounted share
+        // but create a share from the values provided by reply, so that we
+        // can emit signals etc.
+        share.setUNC( reply.data()["unc"].toString() );
+        share.setWorkgroupName( reply.data()["workgroup"].toString() );
+        share.setHostIP( reply.data()["host_ip"].toString() );
+        share.setComment( reply.data()["comment"].toString() );
+        share.setPath( reply.data()["mountpoint"].toString() );
+        
 #ifndef Q_OS_FREEBSD
         if ( stderr.contains( "mount error 13", Qt::CaseSensitive ) || stderr.contains( "mount error(13)" )
             /* authentication error */ )
@@ -1857,7 +1876,7 @@ void Smb4KMounter::slotActionFinished( ActionReply reply )
             // Kill the currently active override cursor. Another
             // one will be set in an instant by mountShare().
             QApplication::restoreOverrideCursor();
-            mountShare( &share );
+            m_retries << share;
           }
           else
           {
@@ -1871,7 +1890,7 @@ void Smb4KMounter::slotActionFinished( ActionReply reply )
           // one will be set in an instant by mountShare().
           QApplication::restoreOverrideCursor();
           share.setShareName( static_cast<QString>( share.shareName() ).replace( "_", " " ) );
-          mountShare( &share );
+          m_retries << share;
         }
         else if ( stderr.contains( "mount error 101" ) || stderr.contains( "mount error(101)" ) /* network unreachable */ )
         {
@@ -1887,7 +1906,7 @@ void Smb4KMounter::slotActionFinished( ActionReply reply )
             // Kill the currently active override cursor. Another
             // one will be set in an instant by mountShare().
             QApplication::restoreOverrideCursor();
-            mountShare( &share );
+            m_retries << share;
           }
           else
           {
@@ -1903,7 +1922,8 @@ void Smb4KMounter::slotActionFinished( ActionReply reply )
       }
       else
       {
-        // Do nothing
+        // Everything is fine, we can check for the mounted share.
+        share = *(findShareByPath( reply.data().value( "mountpoint" ).toByteArray() ));
       }
 
       emit finished( &share, MountShare );
