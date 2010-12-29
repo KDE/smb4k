@@ -273,6 +273,7 @@ Smb4K SVN_HEAD (????-??-??):
     by this before. Opening the file dialog will lead you to the home directory.
   + Added "What's this" help.
 - Added Smb4KBookmarkDialog class, a dialog to add bookmarks.
+- Added Smb4KToolTip class that is to replace all other tooltip implementations.
 - Revised shares view:
   + Adjusted the code so that the new possibilities that the reworked
     synchronizer offers can be used.
@@ -292,6 +293,8 @@ Smb4K SVN_HEAD (????-??-??):
   + If during an IP scan no workgroup master browsers could be found, all
     discovered hosts of that workgroup will be shown nontheless.
   + The default short cut for rescanning is now F5. CTRL+R is still valid.
+  + Revised Smb4KNetworkBrowserItem class.
+  + Removed Smb4KNetworkBrowserToolTip class. We are now using Smb4KToolTip.
 - Revised mount dialog:
   + The input lines and the bookmark checkbox are disabled when the mount
     process is running.
