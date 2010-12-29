@@ -33,6 +33,7 @@
 
 // Qt includes
 #include <QString>
+#include <QIcon>
 
 // KDE includes
 #include <kdemacros.h>
@@ -49,10 +50,11 @@ class KDE_EXPORT Smb4KBasicNetworkItem
      * @enum Share          The network item is a share.
      * @enum Unknown        The network item type is unknown.
      */
-    enum Type { Workgroup,
-                    Host,
-                    Share,
-                    Unknown };
+    enum Type { 
+      Workgroup,
+      Host,
+      Share,
+      Unknown };
 
     /**
      * The constructor
@@ -92,6 +94,22 @@ class KDE_EXPORT Smb4KBasicNetworkItem
      * @returns the identifying string for this item.
      */
     const QString &key() const { return m_key; }
+    
+    /**
+     * This function sets the icon of the network item.
+     * 
+     * @param icon          The icon
+     */
+    void setIcon( const QIcon &icon );
+    
+    /**
+     * This function returns the icon of the network item. By default, it
+     * is the null icon. You must set the appropriate icon either in
+     * a class that inherits this one or from somewhere else.
+     * 
+     * @returns the network item's icon.
+     */
+    const QIcon &icon() const { return m_icon; }
 
   private:
     /**
@@ -103,6 +121,11 @@ class KDE_EXPORT Smb4KBasicNetworkItem
      * The key
      */
     QString m_key;
+    
+    /**
+     * The icon
+     */
+    QIcon m_icon;
 };
 
 #endif

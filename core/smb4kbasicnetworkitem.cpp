@@ -35,12 +35,12 @@
 
 
 Smb4KBasicNetworkItem::Smb4KBasicNetworkItem( Smb4KBasicNetworkItem::Type type )
-: m_type( type ), m_key( QString( rand() ) )
+: m_type( type ), m_key( QString( rand() ) ), m_icon( QIcon() )
 {
 }
 
 Smb4KBasicNetworkItem::Smb4KBasicNetworkItem( const Smb4KBasicNetworkItem &item )
-: m_type( item.type() ), m_key( item.key() )
+: m_type( item.type() ), m_key( item.key() ), m_icon( item.icon() )
 {
 }
 
@@ -53,4 +53,10 @@ Smb4KBasicNetworkItem::~Smb4KBasicNetworkItem()
 void Smb4KBasicNetworkItem::setKey( const QString &key )
 {
   m_key = key;
+}
+
+
+void Smb4KBasicNetworkItem::setIcon( const QIcon &icon )
+{
+  m_icon = icon;
 }
