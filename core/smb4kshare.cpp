@@ -54,7 +54,7 @@ Smb4KShare::Smb4KShare( const QString &host, const QString &name ) : Smb4KBasicN
 
   m_homes_share = (QString::compare( name, "homes", Qt::CaseSensitive ) == 0);
   
-  setIcon( KIcon( "folder-remote" ) );
+  setShareIcon();
 }
 
 
@@ -65,7 +65,7 @@ Smb4KShare::Smb4KShare( const QString &unc ) : Smb4KBasicNetworkItem( Share ),
   m_is_mounted( false ), m_homes_share( false ), m_homes_users( QStringList() )
 {
   setUNC( unc );
-  setIcon( KIcon( "folder-remote" ) );
+  setShareIcon();
 }
 
 
@@ -80,14 +80,7 @@ Smb4KShare::Smb4KShare( const Smb4KShare &s ) : Smb4KBasicNetworkItem( Share ),
   
   if ( icon().isNull() )
   {
-    if ( !isPrinter() )
-    {
-      setIcon( KIcon( "folder-remote" ) );
-    }
-    else
-    {
-      setIcon( KIcon( "printer" ) );
-    }
+    setShareIcon();
   }
   else
   {
@@ -244,14 +237,7 @@ void Smb4KShare::setTypeString( const QString &typeString )
 {
   m_type_string = typeString;
   
-  if ( !isPrinter() )
-  {
-    setIcon( KIcon( "folder-remote" ) );
-  }
-  else
-  {
-    setIcon( KIcon( "printer" ) );
-  }
+  setShareIcon();
 }
 
 
@@ -327,12 +313,14 @@ const QByteArray Smb4KShare::canonicalPath() const
 void Smb4KShare::setInaccessible( bool in )
 {
   m_inaccessible = in;
+  setShareIcon();
 }
 
 
 void Smb4KShare::setForeign( bool foreign )
 {
   m_foreign = foreign;
+  setShareIcon();
 }
 
 
@@ -387,16 +375,8 @@ void Smb4KShare::setIsMounted( bool mounted )
   if ( !isPrinter() )
   {
     m_is_mounted = mounted;
-    
-    if ( m_is_mounted )
-    {
-      QStringList overlays( "emblem-mounted" );
-      setIcon( KIcon( "folder-remote", KIconLoader::global(), overlays ) );
-    }
-    else
-    {
-      setIcon( KIcon( "folder-remote" ) );
-    }
+   
+    setShareIcon();
   }
   else
   {
@@ -818,26 +798,7 @@ void Smb4KShare::setMountData( Smb4KShare *share )
     m_is_mounted = share->isMounted();
     m_type_string = share->typeString();
     
-    if ( !isPrinter() )
-    {
-      KIcon icon;
-      
-      if ( m_is_mounted )
-      {
-        QStringList overlays( "emblem-mounted" );
-        icon = KIcon( KIcon( "folder-remote", KIconLoader::global(), overlays ) );
-      }
-      else
-      {
-        icon = KIcon( "folder-remote" );
-      }
-      
-      setIcon( icon );
-    }
-    else
-    {
-      setIcon( KIcon( "printer" ) );
-    }
+    setShareIcon();
   }
   else
   {
@@ -861,7 +822,7 @@ void Smb4KShare::resetMountData()
   m_is_mounted = false;
   m_type_string = "Disk";
   
-  setIcon( KIcon( "folder-remote" ) );
+  setShareIcon();
 }
 
 
@@ -888,6 +849,43 @@ void Smb4KShare::setAuthInfo( Smb4KAuthInfo *authInfo )
 {
   m_url.setUserName( authInfo->login() );
   m_url.setPassword( authInfo->password() );
+}
+
+
+void Smb4KShare::setShareIcon()
+{
+  // We have three base icons: The remote folder, the locked folder
+  // and the printer icon.
+  if ( !isPrinter() )
+  {
+    // Overlays
+    QStringList overlays;
+    
+    if ( isMounted() )
+    {
+      overlays << "emblem-mounted";
+    }
+    else
+    {
+      overlays << "";
+    }
+    
+    // Icon name
+    if ( isInaccessible() )
+    {
+      overlays << "enblem-locked";
+    }
+    else
+    {
+      overlays << "";
+    }
+    
+    setIcon( KIcon( "folder-remote", KIconLoader::global(), overlays ) );
+  }
+  else
+  {
+    setIcon( KIcon( "printer" ) );
+  }
 }
 
 

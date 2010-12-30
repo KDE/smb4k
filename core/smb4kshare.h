@@ -647,6 +647,11 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
 
   private:
     /**
+     * Set up the shares icon.
+     */
+    void setShareIcon();
+    
+    /**
      * The URL
      */
     QUrl m_url;
