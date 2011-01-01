@@ -513,15 +513,14 @@ void Smb4KMounter::import()
         // possible entries. The rest will be added/updated by the code below.
         QString login = mount_points.at( i )->mountOptions().join( "," ).section( "user=", 1, 1 ).section( ",", 0, 0 ).trimmed();
         share.setLogin( !login.isEmpty() ? login : "guest" ); // Work around empty 'user=' entries
-        share.setIsMounted( true );
       }
 #else
       share.setFileSystem( Smb4KShare::SMBFS );
       QString login = mount_points.at( i )->mountOptions().join( "," ).section( "username=", 1, 1 ).section( ",", 0, 0 ).trimmed();
       share.setLogin( !login.isEmpty() ? login : "guest" ); // Work around empty 'username=' entries
-      share.setIsMounted( true );
       qDebug() << "Domain and ip address?";
 #endif
+      share.setIsMounted( true );
       mounted_shares += share;
     }
     else
