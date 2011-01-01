@@ -98,24 +98,24 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
                   Comment = 3 };
 
     /**
-     * This function returns a pointer to the Smb4KWorkgroupItem object if it
-     * is present or NULL if it is not.
+     * This function is provided for convenience. It returns a pointer to 
+     * the Smb4KWorkgroup object if it is present or NULL if it is not.
      *
      * @returns a pointer to the workgroup item or NULL.
      */
     Smb4KWorkgroup *workgroupItem();
 
     /**
-     * This function returns a pointer to the Smb4KHostItem object if it
-     * is present or NULL if it is not.
+     * This function is provided for convenience. It returns a pointer to 
+     * the Smb4KHost object if it is present or NULL if it is not.
      *
      * @returns a pointer to the host item or NULL.
      */
     Smb4KHost *hostItem();
 
     /**
-     * This function returns a pointer to the Smb4KShareItem object if it
-     * is present or NULL if it is not.
+     * This function is provided for convenience. It returns a pointer to 
+     * the Smb4KShare object if it is present or NULL if it is not.
      *
      * @returns a pointer to the share item or NULL.
      */

@@ -348,10 +348,10 @@ KAboutData *Smb4KNetworkBrowserPart::createAboutData()
   KAboutData *aboutData = new KAboutData( "smb4knetworkbrowserpart",
                           "smb4k",
                           ki18n( "Smb4KNetworkBrowserPart" ),
-                          "2.0",
+                          "2.1",
                           ki18n( "The network browser KPart of Smb4K" ),
                           KAboutData::License_GPL_V2,
-                          ki18n( "\u00A9 2007-2009, Alexander Reinholdt" ),
+                          ki18n( "\u00A9 2007-2010, Alexander Reinholdt" ),
                           KLocalizedString(),
                           "http://smb4k.berlios.de",
                           "smb4k-bugs@lists.berlios.de" );

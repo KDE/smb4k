@@ -144,43 +144,35 @@ bool Smb4KNetworkBrowser::event( QEvent *e )
           }
           else
           {
-            if ( Smb4KSettings::showNetworkItemToolTip() )
+            if ( !m_tooltip->isVisible() || (m_tooltip->networkItem() && 
+                QString::compare( item->networkItem()->key(), m_tooltip->networkItem()->key() ) != 0) )
             {
-              if ( !m_tooltip->isVisible() || 
-                  (m_tooltip->networkItem() && 
-                  QString::compare( item->networkItem()->key(), m_tooltip->networkItem()->key() ) != 0) )
+              switch ( item->type() )
               {
-                switch ( item->type() )
+                case Smb4KNetworkBrowserItem::Workgroup:
                 {
-                  case Smb4KNetworkBrowserItem::Workgroup:
-                  {
-                    m_tooltip->show( item->workgroupItem(), pos );
-                    break;
-                  }
-                  case Smb4KNetworkBrowserItem::Host:
-                  {
-                    m_tooltip->show( item->hostItem(), pos );
-                    break;
-                  }
-                  case Smb4KNetworkBrowserItem::Share:
-                  {
-                    m_tooltip->show( item->shareItem(), pos );
-                    break;
-                  }
-                  default:
-                  {
-                    break;
-                  }
+                  m_tooltip->show( item->workgroupItem(), pos );
+                  break;
                 }
-              }
-              else
-              {
-                // Do nothing
+                case Smb4KNetworkBrowserItem::Host:
+                {
+                  m_tooltip->show( item->hostItem(), pos );
+                  break;
+                }
+                case Smb4KNetworkBrowserItem::Share:
+                {
+                  m_tooltip->show( item->shareItem(), pos );
+                  break;
+                }
+                default:
+                {
+                  break;
+                }
               }
             }
             else
             {
-              m_tooltip->hide();
+              // Do nothing
             }
           }
         }
@@ -193,6 +185,8 @@ bool Smb4KNetworkBrowser::event( QEvent *e )
       {
         m_tooltip->hide();
       }
+      
+      break;
     }
     default:
     {
