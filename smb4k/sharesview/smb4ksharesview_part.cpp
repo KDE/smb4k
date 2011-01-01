@@ -48,6 +48,7 @@
 #include <smb4ksharesiconviewitem.h>
 #include <../dialogs/smb4ksynchronizationdialog.h>
 #include <../dialogs/smb4kbookmarkdialog.h>
+#include <../tooltips/smb4ktooltip.h>
 #include <core/smb4kshare.h>
 #include <core/smb4kcore.h>
 #include <core/smb4ksettings.h>
@@ -475,14 +476,14 @@ void Smb4KSharesViewPart::loadSettings()
     Smb4KSharesIconViewItem *item = static_cast<Smb4KSharesIconViewItem *>( m_icon_view->currentItem() );
 
     actionCollection()->action( "force_unmount_action" )->setEnabled( 
-    (item && (!item->itemData()->share()->isForeign() || Smb4KSettings::unmountForeignShares())) );
+    (item && (!item->shareItem()->isForeign() || Smb4KSettings::unmountForeignShares())) );
   }
   else
   {
     Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>( m_list_view->currentItem() );
 
     actionCollection()->action( "force_unmount_action" )->setEnabled( 
-    (item && (!item->itemData()->share()->isForeign() || Smb4KSettings::unmountForeignShares())) );
+    (item && (!item->shareItem()->isForeign() || Smb4KSettings::unmountForeignShares())) );
   }
 #endif
 
@@ -532,10 +533,10 @@ KAboutData *Smb4KSharesViewPart::createAboutData()
   KAboutData *aboutData = new KAboutData( "smb4ksharesviewpart",
                           "smb4k",
                           ki18n( "Smb4KSharesViewPart" ),
-                          "2.0",
+                          "2.1",
                           ki18n( "The shares view KPart of Smb4K" ),
                           KAboutData::License_GPL_V2,
-                          ki18n( "\u00A9 2007-2009, Alexander Reinholdt" ),
+                          ki18n( "\u00A9 2007-2010, Alexander Reinholdt" ),
                           KLocalizedString(),
                           "http://smb4k.berlios.de",
                           "smb4k-bugs@lists.berlios.de" );
@@ -732,17 +733,17 @@ void Smb4KSharesViewPart::slotItemSelectionChanged()
       if ( !items.isEmpty() )
       {
         Smb4KSharesIconViewItem *item = static_cast<Smb4KSharesIconViewItem *>( items.first() );
-        Smb4KSynchronizationDialog *dlg = m_icon_view->findChild<Smb4KSynchronizationDialog *>( "SynchronizationDialog_"+item->itemData()->share()->canonicalPath() );
+        Smb4KSynchronizationDialog *dlg = m_icon_view->findChild<Smb4KSynchronizationDialog *>( "SynchronizationDialog_"+item->shareItem()->canonicalPath() );
 
-        actionCollection()->action( "unmount_action" )->setEnabled( (!item->itemData()->share()->isForeign() ||
+        actionCollection()->action( "unmount_action" )->setEnabled( (!item->shareItem()->isForeign() ||
                                                                     Smb4KSettings::unmountForeignShares()) );
 #ifdef __linux__
-        actionCollection()->action( "force_unmount_action" )->setEnabled( (!item->itemData()->share()->isForeign() ||
+        actionCollection()->action( "force_unmount_action" )->setEnabled( (!item->shareItem()->isForeign() ||
                                                                           Smb4KSettings::unmountForeignShares()) );
 #endif
         actionCollection()->action( "bookmark_action" )->setEnabled( true );
 
-        if ( !item->itemData()->share()->isInaccessible() )
+        if ( !item->shareItem()->isInaccessible() )
         {
           actionCollection()->action( "synchronize_action" )->setEnabled( !KStandardDirs::findExe( "rsync" ).isEmpty() && !dlg );
           actionCollection()->action( "konsole_action" )->setEnabled( !KGlobal::dirs()->findResource( "exe", "konsole" ).isEmpty() );
@@ -777,17 +778,17 @@ void Smb4KSharesViewPart::slotItemSelectionChanged()
       if ( !items.isEmpty() )
       {
         Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>( items.first() );
-        Smb4KSynchronizationDialog *dlg = m_list_view->findChild<Smb4KSynchronizationDialog *>( "SynchronizationDialog_"+item->itemData()->share()->canonicalPath() );
+        Smb4KSynchronizationDialog *dlg = m_list_view->findChild<Smb4KSynchronizationDialog *>( "SynchronizationDialog_"+item->shareItem()->canonicalPath() );
 
-        actionCollection()->action( "unmount_action" )->setEnabled( (!item->itemData()->share()->isForeign() ||
+        actionCollection()->action( "unmount_action" )->setEnabled( (!item->shareItem()->isForeign() ||
                                                                     Smb4KSettings::unmountForeignShares()) );
 #ifdef __linux__
-        actionCollection()->action( "force_unmount_action" )->setEnabled( (!item->itemData()->share()->isForeign() ||
+        actionCollection()->action( "force_unmount_action" )->setEnabled( (!item->shareItem()->isForeign() ||
                                                                           Smb4KSettings::unmountForeignShares()) );
 #endif
         actionCollection()->action( "bookmark_action" )->setEnabled( true );
 
-        if ( !item->itemData()->share()->isInaccessible() )
+        if ( !item->shareItem()->isInaccessible() )
         {
           actionCollection()->action( "synchronize_action" )->setEnabled( !KStandardDirs::findExe( "rsync" ).isEmpty() && !dlg );
           actionCollection()->action( "konsole_action" )->setEnabled( !KGlobal::dirs()->findResource( "exe", "konsole" ).isEmpty() );
@@ -841,11 +842,11 @@ void Smb4KSharesViewPart::slotItemPressed( QTreeWidgetItem *item, int /*column*/
   {
     if ( shareItem )
     {
-      Smb4KSynchronizationDialog *dlg = m_list_view->findChild<Smb4KSynchronizationDialog *>( "SynchronizationDialog_"+shareItem->itemData()->share()->canonicalPath() );
+      Smb4KSynchronizationDialog *dlg = m_list_view->findChild<Smb4KSynchronizationDialog *>( "SynchronizationDialog_"+shareItem->shareItem()->canonicalPath() );
 
       actionCollection()->action( "synchronize_action" )->setEnabled( !KStandardDirs::findExe( "rsync" ).isEmpty() &&
                                                                       !dlg &&
-                                                                      !shareItem->itemData()->share()->isInaccessible() );
+                                                                      !shareItem->shareItem()->isInaccessible() );
     }
     else
     {
@@ -876,11 +877,11 @@ void Smb4KSharesViewPart::slotItemPressed( QListWidgetItem *item )
   {
     if ( shareItem )
     {
-      Smb4KSynchronizationDialog *dlg = m_icon_view->findChild<Smb4KSynchronizationDialog *>( "SynchronizationDialog_"+shareItem->itemData()->share()->canonicalPath() );
+      Smb4KSynchronizationDialog *dlg = m_icon_view->findChild<Smb4KSynchronizationDialog *>( "SynchronizationDialog_"+shareItem->shareItem()->canonicalPath() );
 
       actionCollection()->action( "synchronize_action" )->setEnabled( !KStandardDirs::findExe( "rsync" ).isEmpty() &&
                                                                       !dlg &&
-                                                                      !shareItem->itemData()->share()->isInaccessible() );
+                                                                      !shareItem->shareItem()->isInaccessible() );
     }
     else
     {
@@ -953,7 +954,7 @@ void Smb4KSharesViewPart::slotListViewDropEvent( Smb4KSharesListViewItem *item, 
           KUrl::List urlList = KUrl::List::fromMimeData( e->mimeData() );
 
           KUrl dest;
-          dest.setPath( item->itemData()->share()->path() );
+          dest.setPath( item->shareItem()->path() );
 
           KIO::CopyJob *job = KIO::copy( urlList, dest, KIO::DefaultFlags );
 
@@ -974,7 +975,7 @@ void Smb4KSharesViewPart::slotListViewDropEvent( Smb4KSharesListViewItem *item, 
           KUrl::List urlList = KUrl::List::fromMimeData( e->mimeData() );
 
           KUrl dest;
-          dest.setPath( item->itemData()->share()->path() );
+          dest.setPath( item->shareItem()->path() );
 
           KIO::CopyJob *job = KIO::move( urlList, dest, KIO::DefaultFlags );
 
@@ -1014,7 +1015,7 @@ void Smb4KSharesViewPart::slotIconViewDropEvent( Smb4KSharesIconViewItem *item, 
           KUrl::List urlList = KUrl::List::fromMimeData( e->mimeData() );
 
           KUrl dest;
-          dest.setPath( item->itemData()->share()->path() );
+          dest.setPath( item->shareItem()->path() );
 
           KIO::CopyJob *job = KIO::copy( urlList, dest, KIO::DefaultFlags );
 
@@ -1035,7 +1036,7 @@ void Smb4KSharesViewPart::slotIconViewDropEvent( Smb4KSharesIconViewItem *item, 
           KUrl::List urlList = KUrl::List::fromMimeData( e->mimeData() );
 
           KUrl dest;
-          dest.setPath( item->itemData()->share()->path() );
+          dest.setPath( item->shareItem()->path() );
 
           KIO::CopyJob *job = KIO::move( urlList, dest, KIO::DefaultFlags );
 
@@ -1070,16 +1071,14 @@ void Smb4KSharesViewPart::slotShareMounted( Smb4KShare *share )
   {
     case IconMode:
     {
-      Smb4KSharesIconViewItem *item = new Smb4KSharesIconViewItem( share, m_icon_view );
-      item->setShowMountPoint( Smb4KSettings::showMountPoint() );
+      (void) new Smb4KSharesIconViewItem( m_icon_view, share, Smb4KSettings::showMountPoint() );
       m_icon_view->sortItems( Qt::AscendingOrder );
       actionCollection()->action( "unmount_all_action" )->setEnabled( (m_icon_view->count() != 0) );
       break;
     }
     case ListMode:
     {
-      Smb4KSharesListViewItem *item = new Smb4KSharesListViewItem( share, m_list_view );
-      item->setShowMountPoint( Smb4KSettings::showMountPoint() );
+      (void) new Smb4KSharesListViewItem( m_list_view, share, Smb4KSettings::showMountPoint() );
       m_list_view->sortItems( Smb4KSharesListView::Item, Qt::AscendingOrder );
       actionCollection()->action( "unmount_all_action" )->setEnabled( (m_list_view->topLevelItemCount() != 0) );
       break;
@@ -1106,8 +1105,8 @@ void Smb4KSharesViewPart::slotShareUnmounted( Smb4KShare *share )
       {
         item = static_cast<Smb4KSharesIconViewItem *>( m_icon_view->item( i ) );
         
-        if ( item && (QString::compare( item->itemData()->share()->path(), share->path() ) == 0 ||
-             QString::compare( item->itemData()->share()->canonicalPath(), share->canonicalPath() ) == 0) )
+        if ( item && (QString::compare( item->shareItem()->path(), share->path() ) == 0 ||
+             QString::compare( item->shareItem()->canonicalPath(), share->canonicalPath() ) == 0) )
         {
           if ( item == m_icon_view->currentItem() )
           {
@@ -1139,8 +1138,8 @@ void Smb4KSharesViewPart::slotShareUnmounted( Smb4KShare *share )
       {
         item = static_cast<Smb4KSharesListViewItem *>( m_list_view->topLevelItem( i ) );
         
-        if ( item && (QString::compare( item->itemData()->share()->path(), share->path() ) == 0 ||
-             QString::compare( item->itemData()->share()->canonicalPath(), share->canonicalPath() ) == 0) )
+        if ( item && (QString::compare( item->shareItem()->path(), share->path() ) == 0 ||
+             QString::compare( item->shareItem()->canonicalPath(), share->canonicalPath() ) == 0) )
         {
           if ( item == m_list_view->currentItem() )
           {
@@ -1184,19 +1183,11 @@ void Smb4KSharesViewPart::slotShareUpdated( Smb4KShare *share )
       {
         item = static_cast<Smb4KSharesIconViewItem *>( m_icon_view->item( i ) );
         
-        if ( item && (QString::compare( item->itemData()->share()->path(), share->path() ) == 0 ||
-             QString::compare( item->itemData()->share()->canonicalPath(), share->canonicalPath() ) == 0) )
+        if ( item && (QString::compare( item->shareItem()->path(), share->path() ) == 0 ||
+             QString::compare( item->shareItem()->canonicalPath(), share->canonicalPath() ) == 0) )
         {
-          if ( !item->sameShareObject( share ) )
-          {
-            item->replaceShareObject( share );
-          }
-          else
-          {
-            // Do nothing
-          }
-          
-          m_icon_view->updateToolTip();
+          item->update( share );
+          m_icon_view->tooltip()->update();
           break;
         }
         else
@@ -1214,19 +1205,11 @@ void Smb4KSharesViewPart::slotShareUpdated( Smb4KShare *share )
       {
         item = static_cast<Smb4KSharesListViewItem *>( m_list_view->topLevelItem( i ) );
         
-        if ( item && (QString::compare( item->itemData()->share()->path(), share->path() ) == 0 ||
-             QString::compare( item->itemData()->share()->canonicalPath(), share->canonicalPath() ) == 0) )
+        if ( item && (QString::compare( item->shareItem()->path(), share->path() ) == 0 ||
+             QString::compare( item->shareItem()->canonicalPath(), share->canonicalPath() ) == 0) )
         {
-          if ( !item->sameShareObject( share ) )
-          {
-            item->replaceShareObject( share );
-          }
-          else
-          {
-            // Do nothing
-          }
-          
-          m_list_view->updateToolTip();
+          item->update( share );
+          m_list_view->tooltip()->update();
           break;
         }
         else
@@ -1258,7 +1241,7 @@ void Smb4KSharesViewPart::slotUnmountShare( bool /*checked*/ )
 
         if ( item )
         {
-          Smb4KMounter::self()->unmountShare( item->itemData()->share(), false );
+          Smb4KMounter::self()->unmountShare( item->shareItem(), false );
         }
         else
         {
@@ -1278,7 +1261,7 @@ void Smb4KSharesViewPart::slotUnmountShare( bool /*checked*/ )
 
         if ( item )
         {
-          Smb4KMounter::self()->unmountShare( item->itemData()->share(), false );
+          Smb4KMounter::self()->unmountShare( item->shareItem(), false );
         }
         else
         {
@@ -1310,7 +1293,7 @@ void Smb4KSharesViewPart::slotForceUnmountShare( bool /*checked*/ )
 
         if ( item )
         {
-          Smb4KMounter::self()->unmountShare( item->itemData()->share(), true );
+          Smb4KMounter::self()->unmountShare( item->shareItem(), true );
         }
         else
         {
@@ -1330,7 +1313,7 @@ void Smb4KSharesViewPart::slotForceUnmountShare( bool /*checked*/ )
 
         if ( item )
         {
-          Smb4KMounter::self()->unmountShare( item->itemData()->share(), true );
+          Smb4KMounter::self()->unmountShare( item->shareItem(), true );
         }
         else
         {
@@ -1365,12 +1348,12 @@ void Smb4KSharesViewPart::slotSynchronize( bool /*checked*/ )
       for ( int i = 0; i < selected_items.size(); ++i )
       {
         Smb4KSharesIconViewItem *item = static_cast<Smb4KSharesIconViewItem *>( selected_items.at( i ) );
-        Smb4KSynchronizationDialog *dlg = m_icon_view->findChild<Smb4KSynchronizationDialog *>( "SynchronizationDialog_"+item->itemData()->share()->canonicalPath() );
+        Smb4KSynchronizationDialog *dlg = m_icon_view->findChild<Smb4KSynchronizationDialog *>( "SynchronizationDialog_"+item->shareItem()->canonicalPath() );
 
-        if ( item && !item->itemData()->share()->isInaccessible() && !dlg )
+        if ( item && !item->shareItem()->isInaccessible() && !dlg )
         {
-          dlg = new Smb4KSynchronizationDialog( item->itemData()->share(), m_icon_view );
-          dlg->setObjectName( "SynchronizationDialog_"+item->itemData()->share()->canonicalPath() );
+          dlg = new Smb4KSynchronizationDialog( item->shareItem(), m_icon_view );
+          dlg->setObjectName( "SynchronizationDialog_"+item->shareItem()->canonicalPath() );
           dlg->setVisible( true );
         }
         else
@@ -1388,12 +1371,12 @@ void Smb4KSharesViewPart::slotSynchronize( bool /*checked*/ )
       for ( int i = 0; i < selected_items.size(); ++i )
       {
         Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>( selected_items.at( i ) );
-        Smb4KSynchronizationDialog *dlg = m_list_view->findChild<Smb4KSynchronizationDialog *>( "SynchronizationDialog_"+item->itemData()->share()->canonicalPath() );
+        Smb4KSynchronizationDialog *dlg = m_list_view->findChild<Smb4KSynchronizationDialog *>( "SynchronizationDialog_"+item->shareItem()->canonicalPath() );
 
-        if ( item && !item->itemData()->share()->isInaccessible() && !dlg )
+        if ( item && !item->shareItem()->isInaccessible() && !dlg )
         {
-          dlg = new Smb4KSynchronizationDialog( item->itemData()->share(), m_list_view );
-          dlg->setObjectName( "SynchronizationDialog_"+item->itemData()->share()->canonicalPath() );
+          dlg = new Smb4KSynchronizationDialog( item->shareItem(), m_list_view );
+          dlg->setObjectName( "SynchronizationDialog_"+item->shareItem()->canonicalPath() );
           dlg->setVisible( true );
         }
         else
@@ -1423,9 +1406,9 @@ void Smb4KSharesViewPart::slotKonsole( bool /*checked*/ )
       {
         Smb4KSharesIconViewItem *item = static_cast<Smb4KSharesIconViewItem *>( selected_items.at( i ) );
 
-        if ( item && !item->itemData()->share()->isInaccessible() )
+        if ( item && !item->shareItem()->isInaccessible() )
         {
-          open( item->itemData()->share(), Konsole );
+          open( item->shareItem(), Konsole );
         }
         else
         {
@@ -1443,9 +1426,9 @@ void Smb4KSharesViewPart::slotKonsole( bool /*checked*/ )
       {
         Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>( selected_items.at( i ) );
 
-        if ( item && !item->itemData()->share()->isInaccessible() )
+        if ( item && !item->shareItem()->isInaccessible() )
         {
-          open( item->itemData()->share(), Konsole );
+          open( item->shareItem(), Konsole );
         }
         else
         {
@@ -1475,9 +1458,9 @@ void Smb4KSharesViewPart::slotFileManager( bool /*checked*/ )
       {
         Smb4KSharesIconViewItem *item = static_cast<Smb4KSharesIconViewItem *>( selected_items.at( i ) );
 
-        if ( item && !item->itemData()->share()->isInaccessible() )
+        if ( item && !item->shareItem()->isInaccessible() )
         {
-          open( item->itemData()->share(), FileManager );
+          open( item->shareItem(), FileManager );
         }
         else
         {
@@ -1495,9 +1478,9 @@ void Smb4KSharesViewPart::slotFileManager( bool /*checked*/ )
       {
         Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>( selected_items.at( i ) );
 
-        if ( item && !item->itemData()->share()->isInaccessible() )
+        if ( item && !item->shareItem()->isInaccessible() )
         {
-          open( item->itemData()->share(), FileManager );
+          open( item->shareItem(), FileManager );
         }
         else
         {
@@ -1530,7 +1513,7 @@ void Smb4KSharesViewPart::slotAddBookmark( bool /*checked */)
         for ( int i = 0; i < selected_items.size(); ++i )
         {
           Smb4KSharesIconViewItem *item = static_cast<Smb4KSharesIconViewItem *>( selected_items.at( i ) );
-          bookmarks << new Smb4KBookmark( item->itemData()->share() );
+          bookmarks << new Smb4KBookmark( item->shareItem() );
 
           continue;
         }
@@ -1573,7 +1556,7 @@ void Smb4KSharesViewPart::slotAddBookmark( bool /*checked */)
         for ( int i = 0; i < selected_items.size(); ++i )
         {
           Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>( selected_items.at( i ) );
-          bookmarks << new Smb4KBookmark( item->itemData()->share() );
+          bookmarks << new Smb4KBookmark( item->shareItem() );
 
           continue;
         }

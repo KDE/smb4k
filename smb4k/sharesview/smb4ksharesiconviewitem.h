@@ -2,8 +2,8 @@
     smb4ksharesiconviewitem  -  The items for Smb4K's shares icon view.
                              -------------------
     begin                : Di Dez 5 2006
-    copyright            : (C) 2006-2008 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2006-2010 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -35,7 +35,6 @@
 
 // application specific includes
 #include <core/smb4kshare.h>
-#include <smb4ksharesviewitemdata.h>
 
 // forward declarations
 class Smb4KSharesIconView;
@@ -57,21 +56,21 @@ class Smb4KSharesIconViewItem : public QListWidgetItem
      *
      * @param parent        The parent widget of this item.
      */
-    Smb4KSharesIconViewItem( Smb4KShare *share,
-                             Smb4KSharesIconView *parent = 0 );
+    Smb4KSharesIconViewItem( Smb4KSharesIconView *parent,
+                             Smb4KShare *share,
+                             bool mountpoint = false );
 
     /**
      * The destructor
      */
     ~Smb4KSharesIconViewItem();
-
+    
     /**
-     * Returns the data object that carries all information that is needed to
-     * set up the item.
-     *
-     * @returns the Smb4KSharesViewItemData object.
+     * This function returns the encapsulated Smb4KShare item.
+     * 
+     * @returns the encapsulated Smb4KShare item.
      */
-    Smb4KSharesViewItemData *itemData() { return &m_data; }
+    Smb4KShare *shareItem() { return &m_share; }
 
     /**
      * This function tells the item to show the mount point instead of the
@@ -83,40 +82,22 @@ class Smb4KSharesIconViewItem : public QListWidgetItem
     void setShowMountPoint( bool show );
 
     /**
-     * This function compares the encapsulated Smb4KShare object with @p item
-     * and returns TRUE if they contain equal values.
-     *
-     * @param item          A Smb4KShare object that should be compared
-     *
-     * @returns             TRUE if @p item has the same values stored as the
-     *                      encapsulated Smb4KShare object.
+     * This function updates the encapsulated Smb4KShare object.
+     * 
+     * @param share         The Smb4KShare item that is used for the update
      */
-    bool sameShareObject( Smb4KShare *share );
-
-    /**
-     * Replace the encapsulated Smb4KShare object. This function just passes
-     * the share object to setupItem() which does all the work.
-     *
-     * @param share         The new Smb4KShare object
-     */
-    void replaceShareObject( Smb4KShare *share );
-
+    void update( Smb4KShare *share );
+    
   private:
     /**
-     * The item data object
+     * The Smb4KShare item
      */
-    Smb4KSharesViewItemData m_data;
-
+    Smb4KShare m_share;
+    
     /**
-     * Set up the icon and text of the item with respect to @p share and @p mountpoint.
-     *
-     * @param share         The Smb4KShare object.
-     *
-     * @param mountpoint    If TRUE, the mount point will be shown instead of the
-     *                      share name.
+     * Show the mountpoint
      */
-    void setupItem( Smb4KShare *share,
-                    bool mountpoint = false );
+    bool m_mountpoint;  
 };
 
 #endif

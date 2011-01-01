@@ -1,5 +1,10 @@
 
-include_directories( ${KDE4_INCLUDES} ${KDE4_INCLUDE_DIR} ${QT_INCLUDES}  )
+include_directories( 
+  ${KDE4_INCLUDES} 
+  ${KDE4_INCLUDE_DIR} 
+  ${QT_INCLUDES} 
+  ${CMAKE_CURRENT_SOURCE_DIR}/smb4k 
+  ${CMAKE_CURRENT_BINARY_DIR}/smb4k )
 
 
 ########### next target ###############
@@ -9,13 +14,16 @@ set(smb4ksharesview_PART_SRCS
    smb4ksharesiconview.cpp
    smb4ksharesview_part.cpp
    smb4kshareslistviewitem.cpp
-   smb4ksharesiconviewitem.cpp
-   smb4ksharesviewtooltip.cpp
-   smb4ksharesviewitemdata.cpp )
+   smb4ksharesiconviewitem.cpp )
 
 kde4_add_plugin( smb4ksharesview ${smb4ksharesview_PART_SRCS})
 
-target_link_libraries( smb4ksharesview  ${KDE4_KDECORE_LIBS} smb4kdialogs smb4kcore ${KDE4_KPARTS_LIBS} )
+target_link_libraries( smb4ksharesview  
+  ${KDE4_KDECORE_LIBS} 
+  smb4kdialogs 
+  smb4kcore 
+  smb4ktooltips
+  ${KDE4_KPARTS_LIBS} )
 
 install(TARGETS smb4ksharesview DESTINATION ${PLUGIN_INSTALL_DIR} )
 

@@ -2,8 +2,8 @@
     smb4kshareslistview  -  This is the shares list view of Smb4K.
                              -------------------
     begin                : Sa Jun 30 2007
-    copyright            : (C) 2007-2008 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2007-2010 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -37,11 +37,12 @@
 #include <kapplication.h>
 #include <kglobalsettings.h>
 #include <kiconloader.h>
+#include <kicon.h>
 
 // application specific includes
 #include <smb4kshareslistview.h>
 #include <smb4kshareslistviewitem.h>
-#include <smb4ksharesviewtooltip.h>
+#include <../tooltips/smb4ktooltip.h>
 #include <core/smb4ksettings.h>
 
 Smb4KSharesListView::Smb4KSharesListView( QWidget *parent )
@@ -57,10 +58,9 @@ Smb4KSharesListView::Smb4KSharesListView( QWidget *parent )
 
   setContextMenuPolicy( Qt::CustomContextMenu );
 
-  m_tooltip_timer = new QTimer( this );
   m_auto_select_timer = new QTimer( this );
   m_mouse_inside = false;
-  m_tooltip = new Smb4KSharesViewToolTip( this );
+  m_tooltip = new Smb4KToolTip( this );
 
   QStringList header_labels;
   header_labels.append( i18n( "Item" ) );
@@ -103,17 +103,6 @@ Smb4KSharesListView::~Smb4KSharesListView()
 }
 
 
-void Smb4KSharesListView::updateToolTip()
-{
-  if ( !m_tooltip )
-  {
-    return;
-  }
-
-  m_tooltip->update();
-}
-
-
 bool Smb4KSharesListView::event( QEvent *e )
 {
   switch ( e->type() )
@@ -123,54 +112,30 @@ bool Smb4KSharesListView::event( QEvent *e )
       // Intercept the tool tip event and show our own tool tip.
       QPoint pos = viewport()->mapFromGlobal( cursor().pos() );
       Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>( itemAt( pos ) );
-
+      
       if ( item )
       {
         if ( Smb4KSettings::showShareToolTip() )
         {
-          if ( m_tooltip->data() == NULL || m_tooltip->data() != item->itemData() )
+          if ( !m_tooltip->isVisible() || (m_tooltip->networkItem() && 
+               QString::compare( item->shareItem()->key(), m_tooltip->networkItem()->key() ) != 0) )
           {
-            if ( m_tooltip->isVisible() )
-            {
-              slotHideToolTip();
-            }
-            else
-            {
-              // Do nothing
-            }
-
-            m_tooltip->setupToolTip( item->itemData() );
-            slotShowToolTip();
-          }
-          else
-          {
-            // Do nothing.
-          }
-        }
-        else
-        {
-          if ( m_tooltip->isVisible() )
-          {
-            slotHideToolTip();
+            m_tooltip->show( item->shareItem(), pos );
           }
           else
           {
             // Do nothing
           }
         }
+        else
+        {
+          m_tooltip->hide();
+        }
       }
       else
       {
-        if ( m_tooltip->isVisible() )
-        {
-          slotHideToolTip();
-        }
-        else
-        {
-          // Do nothing
-        }
+        m_tooltip->hide();
       }
-
       break;
     }
     default:
@@ -205,7 +170,7 @@ void Smb4KSharesListView::mouseMoveEvent( QMouseEvent *e )
 
 void Smb4KSharesListView::leaveEvent( QEvent *e )
 {
-  slotHideToolTip();
+  m_tooltip->hide();
   m_auto_select_timer->stop();
   m_mouse_inside = false;
   QTreeWidget::leaveEvent( e );
@@ -222,14 +187,7 @@ void Smb4KSharesListView::enterEvent( QEvent *e )
 void Smb4KSharesListView::mousePressEvent( QMouseEvent *e )
 {
   // Hide the current tool tip so that it is not in the way.
-  if ( !m_tooltip->isCleared() )
-  {
-    slotHideToolTip();
-  }
-  else
-  {
-    // Do nothing
-  }
+  m_tooltip->hide();
 
   // Get the item that is under the mouse. If there is no
   // item, unselect the current item.
@@ -259,7 +217,7 @@ void Smb4KSharesListView::focusOutEvent( QFocusEvent *e )
 
 void Smb4KSharesListView::wheelEvent( QWheelEvent *e )
 {
-  slotHideToolTip();
+  m_tooltip->hide();
   QTreeWidget::wheelEvent( e );
 }
 
@@ -288,7 +246,7 @@ void Smb4KSharesListView::dragMoveEvent( QDragMoveEvent *e )
   if ( item && (item->flags() & Qt::ItemIsDropEnabled) &&
        (e->proposedAction() & (Qt::CopyAction | Qt::MoveAction)) )
   {
-    QUrl url = QUrl::fromLocalFile( item->itemData()->share()->path() );
+    QUrl url = QUrl::fromLocalFile( item->shareItem()->path() );
 
     if ( e->source() == this && e->mimeData()->urls().first() == url )
     {
@@ -313,7 +271,7 @@ void Smb4KSharesListView::dropEvent( QDropEvent *e )
 
   if ( item && (e->proposedAction() & (Qt::CopyAction | Qt::MoveAction)) )
   {
-    QUrl url = QUrl::fromLocalFile( item->itemData()->share()->path() );
+    QUrl url = QUrl::fromLocalFile( item->shareItem()->path() );
 
     if ( e->source() == this && e->mimeData()->urls().first() == url )
     {
@@ -349,7 +307,7 @@ QMimeData *Smb4KSharesListView::mimeData( const QList<QTreeWidgetItem *> list ) 
   {
     Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>( list.at( i ) );
 
-    urls.append( QUrl::fromLocalFile( item->itemData()->share()->path() ) );
+    urls.append( QUrl::fromLocalFile( item->shareItem()->path() ) );
   }
 
   mimeData->setUrls( urls );
@@ -360,7 +318,7 @@ QMimeData *Smb4KSharesListView::mimeData( const QList<QTreeWidgetItem *> list ) 
 
 void Smb4KSharesListView::startDrag( Qt::DropActions supported )
 {
-  slotHideToolTip();
+  m_tooltip->hide();
 
   QList<QTreeWidgetItem *> list = selectedItems();
 
@@ -380,8 +338,7 @@ void Smb4KSharesListView::startDrag( Qt::DropActions supported )
     if ( list.count() == 1 )
     {
       Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>( list.first() );
-
-      pixmap = item->itemData()->pixmap( KIconLoader::SizeMedium );
+      pixmap = item->shareItem()->icon().pixmap( KIconLoader::SizeMedium );
     }
     else
     {
@@ -427,10 +384,11 @@ void Smb4KSharesListView::slotItemEntered( QTreeWidgetItem *item, int /*column*/
   }
 
   Smb4KSharesListViewItem *share_item = static_cast<Smb4KSharesListViewItem *>( item );
-
-  if ( share_item && m_tooltip->data() != share_item->itemData() )
+  
+  if ( share_item && m_tooltip->networkItem() &&
+       QString::compare( share_item->shareItem()->key(), m_tooltip->networkItem()->key() ) != 0 )
   {
-    slotHideToolTip();
+    m_tooltip->hide();
   }
   else
   {
@@ -454,81 +412,7 @@ void Smb4KSharesListView::slotViewportEntered()
   m_auto_select_timer->stop();
   m_auto_select_item = 0;
 
-  // Hide the tool tip.
-  if ( m_tooltip->isVisible() )
-  {
-    slotHideToolTip();
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KSharesListView::slotShowToolTip()
-{
-  if ( Smb4KSettings::showShareToolTip() )
-  {
-    QPoint pos = viewport()->mapFromGlobal( cursor().pos() );
-    Smb4KSharesListViewItem *shareItem = static_cast<Smb4KSharesListViewItem *>( itemAt( pos ) );
-
-    if ( shareItem && !m_tooltip->isCleared() )
-    {
-      if ( !m_tooltip->isVisible() )
-      {
-        QPoint p( viewport()->mapToGlobal( pos ) );
-
-        QDesktopWidget *d = QApplication::desktop();
-
-        if ( p.x() + m_tooltip->width() > d->width() )
-        {
-          p.setX( p.x() - m_tooltip->width() - 5 );
-        }
-        else
-        {
-          p.setX( p.x() + 5 );
-        }
-
-        if ( p.y() + m_tooltip->height() > d->height() )
-        {
-          p.setY( p.y() - m_tooltip->height() - 5 );
-        }
-        else
-        {
-          p.setY( p.y() + 5 );
-        }
-
-        m_tooltip->setGeometry( p.x(), p.y(), m_tooltip->width(), m_tooltip->height() );
-        m_tooltip->setVisible( true );
-
-        m_tooltip_timer->setSingleShot( true );
-        connect( m_tooltip_timer, SIGNAL( timeout() ), this, SLOT( slotHideToolTip() ) );
-
-        m_tooltip_timer->start( 10000 );
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      slotHideToolTip();
-    }
-  }
-  else
-  {
-    slotHideToolTip();
-  }
-}
-
-
-void Smb4KSharesListView::slotHideToolTip()
-{
-  m_tooltip_timer->stop();
-  m_tooltip->setVisible( false );
-  m_tooltip->clearToolTip();
+  m_tooltip->hide();
 }
 
 

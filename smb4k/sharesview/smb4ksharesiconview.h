@@ -2,8 +2,8 @@
     smb4ksharesiconview  -  This is the shares icon view of Smb4K.
                              -------------------
     begin                : Mo Dez 4 2006
-    copyright            : (C) 2006-2008 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2006-2010 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -36,7 +36,7 @@
 
 // forward declarations
 class Smb4KSharesIconViewItem;
-class Smb4KSharesViewToolTip;
+class Smb4KToolTip;
 
 
 /**
@@ -63,10 +63,11 @@ class Smb4KSharesIconView : public QListWidget
     ~Smb4KSharesIconView();
 
     /**
-     * Update the tool tip if it exists. This function just executes
-     * Smb4KSharesListViewToolTip::update().
+     * Returns a pointer to the tooltip.
+     * 
+     * @returns a pointer to the tooltip.
      */
-    void updateToolTip();
+    Smb4KToolTip *tooltip() { return m_tooltip; }
 
   signals:
     /**
@@ -185,16 +186,6 @@ class Smb4KSharesIconView : public QListWidget
     void slotViewportEntered();
 
     /**
-     * This slot shows the tool tip.
-     */
-    void slotShowToolTip();
-
-    /**
-     * This slot hides and clears the tool tip.
-     */
-    void slotHideToolTip();
-
-    /**
      * This slot is used to adjust to KDE's settings.
      *
      * @param category      The category where the settings changed.
@@ -211,7 +202,7 @@ class Smb4KSharesIconView : public QListWidget
     /**
      * The tool tip
      */
-    Smb4KSharesViewToolTip *m_tooltip;
+    Smb4KToolTip *m_tooltip;
 
     /**
      * The tool tip timer

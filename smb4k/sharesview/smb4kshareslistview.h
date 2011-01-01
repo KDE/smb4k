@@ -2,8 +2,8 @@
     smb4kshareslistview  -  This is the shares list view of Smb4K.
                              -------------------
     begin                : Sa Jun 30 2007
-    copyright            : (C) 2007-2008 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2007-2010 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -38,7 +38,7 @@
 
 // forward declarations
 class Smb4KSharesListViewItem;
-class Smb4KSharesViewToolTip;
+class Smb4KToolTip;
 
 /**
  * This widget class provides the shares list view of Smb4K.
@@ -85,12 +85,13 @@ class Smb4KSharesListView : public QTreeWidget
                    Usage = 6 };
 #endif
 
-    /**
-     * Update the tool tip if it exists. This function just executes
-     * Smb4KSharesListViewToolTip::update().
-     */
-    void updateToolTip();
-
+  /**
+   * Returns a pointer to the tooltip.
+   * 
+   * @returns a pointer to the tooltip.
+   */
+  Smb4KToolTip *tooltip() { return m_tooltip; }
+  
   signals:
     /**
      * This signal is emitted when an item has been executed.
@@ -220,16 +221,6 @@ class Smb4KSharesListView : public QTreeWidget
     void slotViewportEntered();
 
     /**
-     * This slot shows the tool tip.
-     */
-    void slotShowToolTip();
-
-    /**
-     * This slot hides and clears the tool tip.
-     */
-    void slotHideToolTip();
-
-    /**
      * This slot is used to adjust to KDE's settings.
      *
      * @param category      The category where the settings changed.
@@ -245,12 +236,7 @@ class Smb4KSharesListView : public QTreeWidget
     /**
      * The tool tip
      */
-    Smb4KSharesViewToolTip *m_tooltip;
-
-    /**
-     * The tool tip timer
-     */
-    QTimer *m_tooltip_timer;
+    Smb4KToolTip *m_tooltip;
 
     /**
      * Auto-selection timer

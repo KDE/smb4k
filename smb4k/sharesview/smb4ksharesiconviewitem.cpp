@@ -2,8 +2,8 @@
     smb4ksharesiconviewitem  -  The items for Smb4K's shares icon view.
                              -------------------
     begin                : Di Dez 5 2006
-    copyright            : (C) 2006-2008 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2006-2010 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -35,12 +35,21 @@
 #include <smb4ksharesiconviewitem.h>
 #include <smb4ksharesiconview.h>
 
-Smb4KSharesIconViewItem::Smb4KSharesIconViewItem( Smb4KShare *share, Smb4KSharesIconView *parent )
-: QListWidgetItem( parent )
+Smb4KSharesIconViewItem::Smb4KSharesIconViewItem( Smb4KSharesIconView *parent, Smb4KShare *share, bool mountpoint )
+: QListWidgetItem( parent ), m_share( *share ), m_mountpoint( mountpoint )
 {
   setFlags( flags() | Qt::ItemIsDropEnabled );
-  m_data.setShare( share );
-  setupItem( m_data.share(), m_data.showMountPoint() );
+
+  if ( !m_mountpoint )
+  {
+    setText( m_share.unc() );
+  }
+  else
+  {
+    setText( m_share.path() );
+  }
+
+  setIcon( m_share.icon() );
 }
 
 
@@ -50,57 +59,25 @@ Smb4KSharesIconViewItem::~Smb4KSharesIconViewItem()
 }
 
 
-void Smb4KSharesIconViewItem::setupItem( Smb4KShare *share, bool mountpoint )
-{
-  // Set up the icon.
-  KIcon icon;
-
-  QStringList overlays;
-  overlays.append( "emblem-mounted" );
-
-  if ( m_data.share()->isInaccessible() )
-  {
-    icon = KIcon( "folder-locked", KIconLoader::global(), overlays );
-  }
-  else
-  {
-    icon = KIcon( "folder-remote", KIconLoader::global(), overlays );
-  }
-
-  if ( m_data.share()->isForeign() )
-  {
-    m_data.setIcon( icon, QIcon::Disabled );
-  }
-  else
-  {
-    m_data.setIcon( icon );
-  }
-
-  setIcon( KIcon( m_data.pixmap( KIconLoader::SizeMedium ) ) );
-
-  // Set up the text.
-  setText( (mountpoint ? m_data.share()->path() : m_data.share()->unc()) );
-
-  m_data.setShare( share );
-  m_data.setShowMountPoint( mountpoint );
-}
-
-
 void Smb4KSharesIconViewItem::setShowMountPoint( bool show )
 {
-  setupItem( m_data.share(), show );
+  m_mountpoint = show;
+  update( &m_share );
 }
 
 
-bool Smb4KSharesIconViewItem::sameShareObject( Smb4KShare *share )
+void Smb4KSharesIconViewItem::update( Smb4KShare *share )
 {
-  Q_ASSERT( share );
+  m_share = *share;
+  
+  if ( !m_mountpoint )
+  {
+    setText( m_share.unc() );
+  }
+  else
+  {
+    setText( m_share.path() );
+  }
 
-  return m_data.share()->equals( share, Smb4KShare::LocalOnly );
-}
-
-
-void Smb4KSharesIconViewItem::replaceShareObject( Smb4KShare *share )
-{
-  setupItem( share, m_data.showMountPoint() );
+  setIcon( m_share.icon() );
 }
