@@ -24,6 +24,8 @@ Smb4K SVN_HEAD (????-??-??):
   + Added "==" operator.
 - Replaced the Smb4KPasswordHandler class with the new Smb4KWalletManager
   class. It offers a much cleaner implementation.
+- Introduced Smb4KBasicNetworkItem class. Smb4KWorkgroup, Smb4KHost and 
+  Smb4KShare inherit this class now.
 - Revised Smb4KWorkgroup class:
   + Added equals() function.
   + Added hasMasterBrowserIP() function.
@@ -283,6 +285,9 @@ Smb4K SVN_HEAD (????-??-??):
     not by our own implementation.
   + Replaced slotMountedShares() by three slots: slotShareMounted(), 
     slotShareUnmounted() and slotShareUpdated().
+  + Revised Smb4KShares*ViewItem classes. This includes the removal of the 
+    Smb4KSharesViewItemData class.
+  + Removed Smb4KSharesViewToolTip class. We are now using Smb4KToolTip.
 - Revised network browser:
   + Adjusted the code so that the new possibilities that the reworked
     print code offers can be used.
