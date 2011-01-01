@@ -110,11 +110,12 @@ void Smb4KToolTip::show( Smb4KBasicNetworkItem *item, const QPoint &pos )
   {
     case NetworkBrowser:
     {
-      setupNetworkBrowserToolTip( item );
+      setupNetworkBrowserToolTip();
       break;
     }
     case SharesView:
     {
+      setupSharesViewToolTip();
       break;
     }
     default:
@@ -162,7 +163,7 @@ void Smb4KToolTip::hide()
 }
 
 
-void Smb4KToolTip::setupNetworkBrowserToolTip( Smb4KBasicNetworkItem* item )
+void Smb4KToolTip::setupNetworkBrowserToolTip()
 {
   // NOTE: If you change the layout here, adjust also the update function!
   
@@ -173,7 +174,7 @@ void Smb4KToolTip::setupNetworkBrowserToolTip( Smb4KBasicNetworkItem* item )
 
   // Set the icon
   QLabel *icon_label = new QLabel( this );
-  icon_label->setPixmap( item->icon().pixmap( KIconLoader::SizeEnormous ) );
+  icon_label->setPixmap( m_item->icon().pixmap( KIconLoader::SizeEnormous ) );
   
   m_tip_layout->addWidget( icon_label, Qt::AlignHCenter );
   m_tip_layout->addLayout( m_info_layout );
@@ -189,11 +190,11 @@ void Smb4KToolTip::setupNetworkBrowserToolTip( Smb4KBasicNetworkItem* item )
   // FIXME: Use smaller font for the information. Get the current 
   // point size of the window system with QFontInfo::pointSize().
   
-  switch ( item->type() )
+  switch ( m_item->type() )
   {
     case Smb4KBasicNetworkItem::Workgroup:
     {
-      Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>( item );
+      Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>( m_item );
       
       QLabel *caption = new QLabel( workgroup->workgroupName(), this );
       caption->setAlignment( Qt::AlignHCenter );
@@ -233,7 +234,7 @@ void Smb4KToolTip::setupNetworkBrowserToolTip( Smb4KBasicNetworkItem* item )
     }
     case Smb4KBasicNetworkItem::Host:
     {
-      Smb4KHost *host = static_cast<Smb4KHost *>( item );
+      Smb4KHost *host = static_cast<Smb4KHost *>( m_item );
       
       QLabel *caption = new QLabel( host->hostName(), this );
       caption->setAlignment( Qt::AlignHCenter );
@@ -320,7 +321,7 @@ void Smb4KToolTip::setupNetworkBrowserToolTip( Smb4KBasicNetworkItem* item )
     }
     case Smb4KBasicNetworkItem::Share:
     {
-      Smb4KShare *share = static_cast<Smb4KShare *>( item );
+      Smb4KShare *share = static_cast<Smb4KShare *>( m_item );
       
       QLabel *caption = new QLabel( share->shareName(), this );
       caption->setAlignment( Qt::AlignHCenter );
@@ -374,26 +375,26 @@ void Smb4KToolTip::setupNetworkBrowserToolTip( Smb4KBasicNetworkItem* item )
         m_text_layout->addWidget( new QLabel( "-", this ), 2, 1, 0 );
       }
       
-      QLabel *ip_label = new QLabel( i18n( "IP Address" ), this );
-      ip_label->setPalette( p );
-      
-      m_text_layout->addWidget( ip_label, 3, 0, Qt::AlignRight );
-      
-      if ( !share->hostIP().isEmpty() )
-      {
-        m_text_layout->addWidget( new QLabel( share->hostIP(), this ), 3, 1, 0 );
-      }
-      else
-      {
-        m_text_layout->addWidget( new QLabel( "-", this ), 3, 1, 0 );
-      }
-      
       QLabel *h_label = new QLabel( i18n( "Host" ), this );
       h_label->setPalette( p );
       
-      m_text_layout->addWidget( h_label, 4, 0, Qt::AlignRight );
-      m_text_layout->addWidget( new QLabel( share->hostName() ), 4, 1, 0 );
+      m_text_layout->addWidget( h_label, 3, 0, Qt::AlignRight );
+      m_text_layout->addWidget( new QLabel( share->hostName() ), 3, 1, 0 );
 
+      QLabel *ip_label = new QLabel( i18n( "IP Address" ), this );
+      ip_label->setPalette( p );
+      
+      m_text_layout->addWidget( ip_label, 4, 0, Qt::AlignRight );
+      
+      if ( !share->hostIP().isEmpty() )
+      {
+        m_text_layout->addWidget( new QLabel( share->hostIP(), this ), 4, 1, 0 );
+      }
+      else
+      {
+        m_text_layout->addWidget( new QLabel( "-", this ), 4, 1, 0 );
+      }
+      
       QLabel *unc_label = new QLabel( i18n( "UNC" ), this );
       unc_label->setPalette( p );
       
@@ -414,6 +415,124 @@ void Smb4KToolTip::setupNetworkBrowserToolTip( Smb4KBasicNetworkItem* item )
 }
 
 
+void Smb4KToolTip::setupSharesViewToolTip()
+{
+  // NOTE: If you change the layout here, adjust also the update function!
+  
+  m_tip_layout = new QHBoxLayout( this );
+  m_tip_layout->setAlignment( Qt::AlignTop );
+  m_info_layout = new QVBoxLayout();
+  m_info_layout->setAlignment( Qt::AlignTop );
+
+  // Set the icon
+  QLabel *icon_label = new QLabel( this );
+  icon_label->setPixmap( m_item->icon().pixmap( KIconLoader::SizeEnormous ) );
+  
+  m_tip_layout->addWidget( icon_label, Qt::AlignHCenter );
+  m_tip_layout->addLayout( m_info_layout );
+  
+  // Use a brighter color for the left label. This was copied from
+  // KFileMetaDataWidget class.
+  QPalette p = palette();
+  const QPalette::ColorRole role = foregroundRole();
+  QColor textColor = p.color( role );
+  textColor.setAlpha( 128 );
+  p.setColor( role, textColor );
+  
+  // FIXME: Use smaller font for the information. Get the current 
+  // point size of the window system with QFontInfo::pointSize().
+  
+  Smb4KShare *share = static_cast<Smb4KShare *>( m_item );
+      
+  QLabel *caption = new QLabel( share->shareName(), this );
+  caption->setAlignment( Qt::AlignHCenter );
+  QFont caption_font = caption->font();
+  caption_font.setBold( true );
+  caption->setFont( caption_font );
+      
+  m_info_layout->addWidget( caption );
+  m_info_layout->addWidget( new KSeparator( this ), Qt::AlignHCenter );
+      
+  m_text_layout = new QGridLayout();
+      
+  QLabel *unc_label = new QLabel( i18n( "UNC" ), this );
+  unc_label->setPalette( p );
+      
+  m_text_layout->addWidget( unc_label, 0, 0, Qt::AlignRight );
+  m_text_layout->addWidget( new QLabel( share->unc(), this ), 0, 1, 0 );
+      
+  QLabel *mp_label = new QLabel( i18n( "Mountpoint" ), this );
+  mp_label->setPalette( p );
+      
+  m_text_layout->addWidget( mp_label, 1, 0, Qt::AlignRight );
+  m_text_layout->addWidget( new QLabel( share->path(), this ), 1, 1, 0 );
+
+#ifndef Q_OS_FREEBSD
+  QLabel *log_label = new QLabel( i18n( "Login" ), this );
+  log_label->setPalette( p );
+      
+  m_text_layout->addWidget( log_label, 2, 0, Qt::AlignRight );
+      
+  switch ( share->fileSystem() )
+  {
+    case Smb4KShare::CIFS:
+    {
+      if ( !share->login().isEmpty() )
+      {
+        m_text_layout->addWidget( new QLabel( share->login(), this ), 2, 1, 0 );
+      }
+      else
+      {
+        m_text_layout->addWidget( new QLabel( i18n( "unknown" ), this ), 2, 1, 0 );
+      }
+      break;
+    }
+    default:
+    {
+      m_text_layout->addWidget( new QLabel( "-", this ), 2, 1, 0 );
+      break;
+    }
+  }
+  
+  QLabel *own_label = new QLabel( i18n( "Owner" ), this );
+  own_label->setPalette( p );
+      
+  m_text_layout->addWidget( own_label, 3, 0, Qt::AlignRight );
+  m_text_layout->addWidget( new QLabel( QString( "%1 - %2" )
+                            .arg( share->owner() ).arg( share->group() ), this ), 3, 1, 0 );
+      
+  QLabel *fs_label = new QLabel( i18n( "File system" ), this );
+  fs_label->setPalette( p );
+      
+  m_text_layout->addWidget( fs_label, 4, 0, Qt::AlignRight );
+  m_text_layout->addWidget( new QLabel( share->fileSystemString().toUpper() ), 4, 1, 0 );
+  
+  QLabel *s_label = new QLabel( i18n( "Size" ), this );
+  s_label->setPalette( p );
+  
+  m_text_layout->addWidget( s_label, 5, 0, Qt::AlignRight );
+  
+  if ( share->totalDiskSpace() != 0 && share->freeDiskSpace() != 0 )
+  {
+    m_text_layout->addWidget( new QLabel( i18n( "%1 out of %2 free (%3 used)" )
+                              .arg( share->freeDiskSpaceString() )
+                              .arg( share->totalDiskSpaceString() )
+                              .arg( share->diskUsageString() ) ), 5, 1, 0 );
+  }
+  else
+  {
+    m_text_layout->addWidget( new QLabel( i18n( "unknown" ) ), 5, 1, 0 );
+  }
+#else
+  // FIXME
+#endif
+      
+      m_info_layout->addLayout( m_text_layout );
+      m_info_layout->addSpacerItem( new QSpacerItem( 0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding ) );
+
+}
+
+
 void Smb4KToolTip::update()
 {
   switch ( m_parent )
@@ -425,7 +544,7 @@ void Smb4KToolTip::update()
     }
     case SharesView:
     {
-      // FIXME
+      updateSharesViewToolTip();
       break;
     }
     default:
@@ -627,6 +746,12 @@ void Smb4KToolTip::updateNetworkBrowserToolTip()
 }
 
 
+void Smb4KToolTip::updateSharesViewToolTip()
+{
+
+}
+
+
 void Smb4KToolTip::paintEvent( QPaintEvent *e )
 {
   // Copied from QToolTip
@@ -689,6 +814,5 @@ void Smb4KToolTip::slotHideToolTip()
   m_info_layout = NULL;
   m_tip_layout = NULL;
 }
-
 
 #include "smb4ktooltip.moc"

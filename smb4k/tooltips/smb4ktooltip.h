@@ -73,8 +73,10 @@ class KDE_EXPORT Smb4KToolTip : public QWidget
     QHBoxLayout *m_tip_layout;
     QVBoxLayout *m_info_layout;
     QGridLayout *m_text_layout;
-    void setupNetworkBrowserToolTip( Smb4KBasicNetworkItem *item );
+    void setupNetworkBrowserToolTip();
     void updateNetworkBrowserToolTip();
+    void setupSharesViewToolTip();
+    void updateSharesViewToolTip();
 };
 
 #endif
