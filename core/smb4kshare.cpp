@@ -871,16 +871,18 @@ void Smb4KShare::setShareIcon()
     }
     
     // Icon name
-    if ( isInaccessible() )
+    QString icon_name;
+    
+    if ( !isInaccessible() )
     {
-      overlays << "enblem-locked";
+      icon_name = "folder-remote";
     }
     else
     {
-      overlays << "";
+      icon_name = "folder-locked";
     }
     
-    setIcon( KIcon( "folder-remote", KIconLoader::global(), overlays ) );
+    setIcon( KIcon( icon_name, KIconLoader::global(), overlays ) );
   }
   else
   {
