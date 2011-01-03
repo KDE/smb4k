@@ -129,12 +129,26 @@ bool Smb4KSharesListView::event( QEvent *e )
         }
         else
         {
-          m_tooltip->hide();
+          if ( m_tooltip->isVisible() )
+          {
+            m_tooltip->hide();
+          }
+          else
+          {
+            // Do nothing
+          }
         }
       }
       else
       {
-        m_tooltip->hide();
+        if ( m_tooltip->isVisible() )
+        {
+          m_tooltip->hide();
+        }
+        else
+        {
+          // Do nothing
+        }
       }
       break;
     }
@@ -170,7 +184,15 @@ void Smb4KSharesListView::mouseMoveEvent( QMouseEvent *e )
 
 void Smb4KSharesListView::leaveEvent( QEvent *e )
 {
-  m_tooltip->hide();
+  if ( m_tooltip->isVisible() )
+  {
+    m_tooltip->hide();
+  }
+  else
+  {
+    // Do nothing
+  }
+  
   m_auto_select_timer->stop();
   m_mouse_inside = false;
   QTreeWidget::leaveEvent( e );
@@ -187,7 +209,14 @@ void Smb4KSharesListView::enterEvent( QEvent *e )
 void Smb4KSharesListView::mousePressEvent( QMouseEvent *e )
 {
   // Hide the current tool tip so that it is not in the way.
-  m_tooltip->hide();
+  if ( m_tooltip->isVisible() )
+  {
+    m_tooltip->hide();
+  }
+  else
+  {
+    // Do nothing
+  }
 
   // Get the item that is under the mouse. If there is no
   // item, unselect the current item.
@@ -217,7 +246,15 @@ void Smb4KSharesListView::focusOutEvent( QFocusEvent *e )
 
 void Smb4KSharesListView::wheelEvent( QWheelEvent *e )
 {
-  m_tooltip->hide();
+  if ( m_tooltip->isVisible() )
+  {
+    m_tooltip->hide();
+  }
+  else
+  {
+    // Do nothing
+  }
+  
   QTreeWidget::wheelEvent( e );
 }
 
@@ -318,7 +355,14 @@ QMimeData *Smb4KSharesListView::mimeData( const QList<QTreeWidgetItem *> list ) 
 
 void Smb4KSharesListView::startDrag( Qt::DropActions supported )
 {
-  m_tooltip->hide();
+  if ( m_tooltip->isVisible() )
+  {
+    m_tooltip->hide();
+  }
+  else
+  {
+    // Do nothing
+  }
 
   QList<QTreeWidgetItem *> list = selectedItems();
 
@@ -382,13 +426,20 @@ void Smb4KSharesListView::slotItemEntered( QTreeWidgetItem *item, int /*column*/
   {
     // Do nothing
   }
-
-  Smb4KSharesListViewItem *share_item = static_cast<Smb4KSharesListViewItem *>( item );
   
-  if ( share_item && m_tooltip->networkItem() &&
-       QString::compare( share_item->shareItem()->key(), m_tooltip->networkItem()->key() ) != 0 )
+  if ( m_tooltip->isVisible() )
   {
-    m_tooltip->hide();
+    Smb4KSharesListViewItem *share_item = static_cast<Smb4KSharesListViewItem *>( item );
+      
+    if ( share_item && m_tooltip->networkItem() && 
+         QString::compare( share_item->shareItem()->key(), m_tooltip->networkItem()->key() ) != 0 )
+    {
+      m_tooltip->hide();
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
@@ -412,7 +463,14 @@ void Smb4KSharesListView::slotViewportEntered()
   m_auto_select_timer->stop();
   m_auto_select_item = 0;
 
-  m_tooltip->hide();
+  if ( m_tooltip->isVisible() )
+  {
+    m_tooltip->hide();
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 

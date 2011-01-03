@@ -284,6 +284,13 @@ class Smb4KSharesViewPart : public KParts::Part
      * to save widget related settings.
      */
     void slotAboutToQuit();
+    
+    /**
+     * This slot is called if the icon size was changed.
+     *
+     * @param group               The icon group
+     */
+    void slotIconSizeChanged( int group );
 
   private:
     /**

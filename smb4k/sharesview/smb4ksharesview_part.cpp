@@ -157,6 +157,9 @@ Smb4KSharesViewPart::Smb4KSharesViewPart( QWidget *parentWidget, QObject *parent
 
   connect( kapp,                 SIGNAL( aboutToQuit() ),
            this,                 SLOT( slotAboutToQuit() ) );
+           
+  connect( KGlobalSettings::self(), SIGNAL( iconChanged( int ) ),
+           this,                    SLOT( slotIconSizeChanged( int ) ) );
 }
 
 
@@ -239,6 +242,10 @@ void Smb4KSharesViewPart::setupView()
       {
         // Do nothing
       }
+      
+      // Set the icon size
+      int icon_size = KIconLoader::global()->currentSize( KIconLoader::Desktop );
+      m_icon_view->setIconSize( QSize( icon_size, icon_size ) );
 
       connect( m_icon_view, SIGNAL( customContextMenuRequested( const QPoint & ) ),
                this,        SLOT( slotContextMenuRequested( const QPoint & ) ) );
@@ -280,6 +287,10 @@ void Smb4KSharesViewPart::setupView()
       {
         // Do nothing
       }
+      
+      // Set the icon size
+      int icon_size = KIconLoader::global()->currentSize( KIconLoader::Small );
+      m_list_view->setIconSize( QSize( icon_size, icon_size ) );
 
       connect( m_list_view, SIGNAL( customContextMenuRequested( const QPoint & ) ),
                this,        SLOT( slotContextMenuRequested( const QPoint & ) ) );
@@ -1648,6 +1659,44 @@ void Smb4KSharesViewPart::slotMounterFinished( Smb4KShare */*share*/, int /*proc
 void Smb4KSharesViewPart::slotAboutToQuit()
 {
   saveSettings();
+}
+
+
+void Smb4KSharesViewPart::slotIconSizeChanged( int group )
+{
+  switch ( group )
+  {
+    case KIconLoader::Desktop:
+    {
+      if ( m_icon_view )
+      {
+        int icon_size = KIconLoader::global()->currentSize( KIconLoader::Desktop );
+        m_icon_view->setIconSize( QSize( icon_size, icon_size ) );
+      }
+      else
+      {
+        // Do nothing
+      }
+      break;
+    }
+    case KIconLoader::Small:
+    {
+      if ( m_list_view )
+      {
+        int icon_size = KIconLoader::global()->currentSize( KIconLoader::Small );
+        m_list_view->setIconSize( QSize( icon_size, icon_size ) );
+      }
+      else
+      {
+        // Do nothing
+      }
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
 }
 
 

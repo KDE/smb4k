@@ -59,7 +59,7 @@ Smb4KSharesIconView::Smb4KSharesIconView( QWidget *parent )
   setAcceptDrops( true );
   setDragEnabled( true );
   setDropIndicatorShown( true );
-
+  
   setContextMenuPolicy( Qt::CustomContextMenu );
 
   m_tooltip_timer = new QTimer( this );
@@ -117,12 +117,26 @@ bool Smb4KSharesIconView::event( QEvent *e )
         }
         else
         {
-          m_tooltip->hide();
+          if ( m_tooltip->isVisible() )
+          {
+            m_tooltip->hide();
+          }
+          else
+          {
+            // Do nothing
+          }
         }
       }
       else
       {
-        m_tooltip->hide();
+        if ( m_tooltip->isVisible() )
+        {
+          m_tooltip->hide();
+        }
+        else
+        {
+          // Do nothing
+        }
       }
 
 break;
@@ -139,7 +153,15 @@ break;
 
 void Smb4KSharesIconView::leaveEvent( QEvent *e )
 {
-  m_tooltip->hide();
+  if ( m_tooltip->isVisible() )
+  {
+    m_tooltip->hide();
+  }
+  else
+  {
+    // Do nothing
+  }
+  
   m_auto_select_timer->stop();
   m_mouse_inside = false;
   QListWidget::leaveEvent( e );
@@ -156,7 +178,14 @@ void Smb4KSharesIconView::enterEvent( QEvent *e )
 void Smb4KSharesIconView::mousePressEvent( QMouseEvent *e )
 {
   // Hide the current tool tip so that it is not in the way.
-  m_tooltip->hide();
+  if ( m_tooltip->isVisible() )
+  {
+    m_tooltip->hide();
+  }
+  else
+  {
+    // Do nothing
+  }
 
   // Get the item that is under the mouse. If there is no
   // item, unselect the current item.
@@ -186,7 +215,15 @@ void Smb4KSharesIconView::focusOutEvent( QFocusEvent *e )
 
 void Smb4KSharesIconView::wheelEvent( QWheelEvent *e )
 {
-  m_tooltip->hide();
+  if ( m_tooltip->isVisible() )
+  {
+    m_tooltip->hide();
+  }
+  else
+  {
+    // Do nothing
+  }
+  
   QListWidget::wheelEvent( e );
 }
 
@@ -286,7 +323,14 @@ QMimeData *Smb4KSharesIconView::mimeData( const QList<QListWidgetItem *> list ) 
 
 void Smb4KSharesIconView::startDrag( Qt::DropActions supported )
 {
-  m_tooltip->hide();
+  if ( m_tooltip->isVisible() )
+  {
+    m_tooltip->hide();
+  }
+  else
+  {
+    // Do nothing
+  }
 
   QList<QListWidgetItem *> list = selectedItems();
 
@@ -351,12 +395,19 @@ void Smb4KSharesIconView::slotItemEntered( QListWidgetItem *item )
     // Do nothing
   }
 
-  Smb4KSharesIconViewItem *share_item = static_cast<Smb4KSharesIconViewItem *>( item );
-
-  if ( share_item && m_tooltip->networkItem() &&
-       QString::compare( share_item->shareItem()->key(), m_tooltip->networkItem()->key() ) != 0 )
+  if ( m_tooltip->isVisible() )
   {
-    m_tooltip->hide();
+    Smb4KSharesIconViewItem *share_item = static_cast<Smb4KSharesIconViewItem *>( item );
+      
+    if ( share_item && m_tooltip->networkItem() &&
+         QString::compare( share_item->shareItem()->key(), m_tooltip->networkItem()->key() ) != 0 )
+    {
+      m_tooltip->hide();
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
@@ -381,7 +432,14 @@ void Smb4KSharesIconView::slotViewportEntered()
   m_auto_select_item = 0;
 
   // Hide the tool tip.
-  m_tooltip->hide();  
+  if ( m_tooltip->isVisible() )
+  {
+    m_tooltip->hide();  
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
