@@ -212,6 +212,13 @@ class Smb4KNetworkSearchPart : public KParts::Part
      * This slot is called when the application is about to quit.
      */
     void slotAboutToQuit();
+    
+    /**
+     * This slot is called if the icon size was changed.
+     *
+     * @param group               The icon group
+     */
+    void slotIconSizeChanged( int group );
 
   private:
     /**

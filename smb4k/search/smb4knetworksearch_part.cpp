@@ -86,6 +86,10 @@ Smb4KNetworkSearchPart::Smb4KNetworkSearchPart( QWidget *parentWidget, QObject *
 
   // Set the widget of this part:
   m_widget = new Smb4KNetworkSearch( parentWidget );
+  
+  int icon_size = KIconLoader::global()->currentSize( KIconLoader::Small );
+  m_widget->listWidget()->setIconSize( QSize( icon_size, icon_size ) );
+  
   setWidget( m_widget );
 
   // Set up actions:
@@ -131,6 +135,9 @@ Smb4KNetworkSearchPart::Smb4KNetworkSearchPart( QWidget *parentWidget, QObject *
            
   connect( kapp,                   SIGNAL( aboutToQuit() ),
            this,                   SLOT( slotAboutToQuit() ) );
+           
+  connect( KGlobalSettings::self(), SIGNAL( iconChanged( int ) ),
+           this,                    SLOT( slotIconSizeChanged( int ) ) );
 }
 
 
@@ -696,6 +703,24 @@ void Smb4KNetworkSearchPart::slotAboutToQuit()
 {
   KConfigGroup group( Smb4KSettings::self()->config(), "SearchDialog" );
   group.writeEntry( "SearchItemCompletion", m_widget->comboBox()->completionObject()->items() );
+}
+
+
+void Smb4KNetworkSearchPart::slotIconSizeChanged( int group )
+{
+  switch ( group )
+  {
+    case KIconLoader::Small:
+    {
+      int icon_size = KIconLoader::global()->currentSize( KIconLoader::Small );
+      m_widget->listWidget()->setIconSize( QSize( icon_size, icon_size ) );
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
 }
 
 
