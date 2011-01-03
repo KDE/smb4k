@@ -288,6 +288,7 @@ Smb4K SVN_HEAD (????-??-??):
   + Revised Smb4KShares*ViewItem classes. This includes the removal of the 
     Smb4KSharesViewItemData class.
   + Removed Smb4KSharesViewToolTip class. We are now using Smb4KToolTip.
+  + Honor KDE's icon size settings.
 - Revised network browser:
   + Adjusted the code so that the new possibilities that the reworked
     print code offers can be used.
@@ -300,6 +301,10 @@ Smb4K SVN_HEAD (????-??-??):
   + The default short cut for rescanning is now F5. CTRL+R is still valid.
   + Revised Smb4KNetworkBrowserItem class.
   + Removed Smb4KNetworkBrowserToolTip class. We are now using Smb4KToolTip.
+  + Honor KDE's icon size settings.
+- Revised search widget:
+  + Renamed widget class to Smb4KNetworkSearch.
+  + Honor KDE's icon size settings.
 - Revised mount dialog:
   + The input lines and the bookmark checkbox are disabled when the mount
     process is running.
