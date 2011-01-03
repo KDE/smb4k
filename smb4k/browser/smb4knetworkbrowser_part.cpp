@@ -111,6 +111,10 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject
 
   // Set the widget of this part:
   m_widget = new Smb4KNetworkBrowser( parentWidget );
+  
+  int icon_size = KIconLoader::global()->currentSize( KIconLoader::Small );
+  m_widget->setIconSize( QSize( icon_size, icon_size ) );
+  
   setWidget( m_widget );
 
   // Set up the actions.
@@ -184,6 +188,9 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject
 
   connect( kapp,                   SIGNAL( aboutToQuit() ),
            this,                   SLOT( slotAboutToQuit() ) );
+           
+  connect( KGlobalSettings::self(), SIGNAL( iconChanged( int ) ),
+           this,                    SLOT( slotIconSizeChanged( int ) ) );
 }
 
 
@@ -2058,6 +2065,24 @@ void Smb4KNetworkBrowserPart::slotShareUnmounted( Smb4KShare *share )
 void Smb4KNetworkBrowserPart::slotAboutToQuit()
 {
   saveSettings();
+}
+
+
+void Smb4KNetworkBrowserPart::slotIconSizeChanged( int group )
+{
+  switch ( group )
+  {
+    case KIconLoader::Small:
+    {
+      int icon_size = KIconLoader::global()->currentSize( KIconLoader::Small );
+      m_widget->setIconSize( QSize( icon_size, icon_size ) );
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
 }
 
 

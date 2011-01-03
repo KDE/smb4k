@@ -37,6 +37,7 @@
 #include <klocale.h>
 #include <kglobalsettings.h>
 #include <kapplication.h>
+#include <kiconloader.h>
 
 // application specific includes
 #include <smb4knetworkbrowser.h>
@@ -52,7 +53,7 @@ Smb4KNetworkBrowser::Smb4KNetworkBrowser( QWidget *parent )
   setAllColumnsShowFocus( false );
   setMouseTracking( true );
   setSelectionMode( SingleSelection );
-
+  
   setContextMenuPolicy( Qt::CustomContextMenu );
 
   m_tooltip = new Smb4KToolTip( this );
@@ -140,7 +141,14 @@ bool Smb4KNetworkBrowser::event( QEvent *e )
           // If it is, hide it.
           if ( pos.x() <= ind * indentation() )
           {
-            m_tooltip->hide();
+            if ( m_tooltip->isVisible() )
+            {
+              m_tooltip->hide();
+            }
+            else
+            {
+              // Do nothing
+            }
           }
           else
           {
@@ -178,12 +186,26 @@ bool Smb4KNetworkBrowser::event( QEvent *e )
         }
         else
         {
-          m_tooltip->hide();
+          if ( m_tooltip->isVisible() )
+          {
+            m_tooltip->hide();
+          }
+          else
+          {
+            // Do nothing
+          }
         }
       }
       else
       {
-        m_tooltip->hide();
+        if ( m_tooltip->isVisible() )
+        {
+          m_tooltip->hide();
+        }
+        else
+        {
+          // Do nothing
+        }
       }
       
       break;
@@ -218,7 +240,15 @@ void Smb4KNetworkBrowser::mouseMoveEvent( QMouseEvent *e )
 
 void Smb4KNetworkBrowser::leaveEvent( QEvent *e )
 {
-  m_tooltip->hide();
+  if ( m_tooltip->isVisible() )
+  {
+    m_tooltip->hide();
+  }
+  else
+  {
+    // Do nothing
+  }
+  
   m_auto_select_timer->stop();
   m_mouse_inside = false;
 
@@ -237,7 +267,14 @@ void Smb4KNetworkBrowser::enterEvent( QEvent *e )
 void Smb4KNetworkBrowser::mousePressEvent( QMouseEvent *e )
 {
   // Hide the current tool tip so that it is not in the way.
-  m_tooltip->hide();
+  if ( m_tooltip->isVisible() )
+  {
+    m_tooltip->hide();
+  }
+  else
+  {
+    // Do nothing
+  }
 
   // Get the item that is under the mouse. If there is no
   // item, unselect the current item.
@@ -267,7 +304,15 @@ void Smb4KNetworkBrowser::focusOutEvent( QFocusEvent *e )
 
 void Smb4KNetworkBrowser::wheelEvent( QWheelEvent *e )
 {
-  m_tooltip->hide();
+  if ( m_tooltip->isVisible() )
+  {
+    m_tooltip->hide();
+  }
+  else
+  {
+    // Do nothing
+  }
+  
   QTreeWidget::wheelEvent( e );
 }
 
@@ -310,12 +355,19 @@ void Smb4KNetworkBrowser::slotItemEntered( QTreeWidgetItem *item, int /*column*/
     // Do nothing
   }
 
-  Smb4KNetworkBrowserItem *browser_item = static_cast<Smb4KNetworkBrowserItem *>( item );
-  
-  if ( browser_item && m_tooltip->networkItem() &&
-       QString::compare( browser_item->networkItem()->key(), m_tooltip->networkItem()->key() ) != 0 )
+  if ( m_tooltip->isVisible() )
   {
-    m_tooltip->hide();
+    Smb4KNetworkBrowserItem *browser_item = static_cast<Smb4KNetworkBrowserItem *>( item );
+  
+    if ( browser_item && m_tooltip->networkItem() &&
+         QString::compare( browser_item->networkItem()->key(), m_tooltip->networkItem()->key() ) != 0 )
+    {
+      m_tooltip->hide();
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
@@ -338,13 +390,28 @@ void Smb4KNetworkBrowser::slotViewportEntered()
 
   m_auto_select_timer->stop();
   m_auto_select_item = 0;
-  m_tooltip->hide();
+  
+  if ( m_tooltip->isVisible() )
+  {
+    m_tooltip->hide();
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
 void Smb4KNetworkBrowser::slotItemExecuted( QTreeWidgetItem *item, int /*column*/ )
 {
-  m_tooltip->hide();
+  if ( m_tooltip->isVisible() )
+  {
+    m_tooltip->hide();
+  }
+  else
+  {
+    // Do nothing
+  }
 
   if ( item )
   {
