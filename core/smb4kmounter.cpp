@@ -1034,7 +1034,7 @@ void Smb4KMounter::unmountAllShares()
         if ( share )
         {
           Smb4KNotification *notification = new Smb4KNotification();
-          notification->unmountingFailed( share, i18n( "The authentication action was denied." ) );
+          notification->unmountingFailed( share, i18n( "The authentication was denied." ) );
         }
         else
         {
