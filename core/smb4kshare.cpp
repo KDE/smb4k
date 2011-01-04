@@ -154,8 +154,6 @@ void Smb4KShare::setHostName( const QString &hostName )
 void Smb4KShare::setUNC( const QString &unc )
 {
   item_url.setUrl( unc, QUrl::TolerantMode );
-  
-  qDebug() << "setUNC(): " << item_url.toString( QUrl::None );
 
   if ( item_url.scheme().isEmpty() )
   {
