@@ -45,19 +45,20 @@ KDE4_AUTH_HELPER_MAIN( "de.berlios.smb4k.mounthelper", Smb4KMountHelper )
 ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
 {
   ActionReply reply;
-  reply.addData( "unc", args["unc"].toString() );
+  reply.addData( "unc", args["unc"].toUrl() );
   reply.addData( "workgroup", args["workgroup"].toString() );
   reply.addData( "comment", args["comment"].toString() );
   reply.addData( "host_ip", args["host_ip"].toString() );
   reply.addData( "mountpoint", args["mountpoint"].toString() );
   reply.addData( "key", args["key"].toString() );
 
+  QUrl full_unc = args["unc"].toUrl();
+  
   KProcess proc( this );
   proc.setOutputChannelMode( KProcess::SeparateChannels );
   proc.setProcessEnvironment( QProcessEnvironment::systemEnvironment() );
-  proc.setEnv( "PASSWD", args["password"].toString(), true );
+  proc.setEnv( "PASSWD", full_unc.password(), true );
 
-  QUrl full_unc = args["unc"].toString();
 #ifndef Q_OS_FREEBSD
   QString unc = full_unc.toString( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort )
                         .replace( "//"+full_unc.host(), "//"+full_unc.host().toUpper() );
@@ -70,7 +71,7 @@ ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
 #ifndef Q_OS_FREEBSD
   arguments << KShell::quoteArg( unc );
   arguments << KShell::quoteArg( args["mountpoint"].toString() );
-  if ( !args["mount_arguments"].toStringList().join( " ").isEmpty() )
+  if ( !args["mount_arguments"].toStringList().join( " " ).isEmpty() )
   {
     arguments << args["mount_arguments"].toStringList().join( " " );
   }
@@ -156,7 +157,7 @@ ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
 ActionReply Smb4KMountHelper::unmount( const QVariantMap &args )
 {
   ActionReply reply;
-  reply.addData( "unc", args["unc"].toString() );
+  reply.addData( "unc", args["unc"].toUrl() );
   reply.addData( "mountpoint", args["mountpoint"].toString() );
   reply.addData( "key", args["key"].toString() );
 
