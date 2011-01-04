@@ -1989,7 +1989,9 @@ void Smb4KMounter::slotShareMounted( ActionReply reply )
     {
       // Create a Smb4KShare object from the information returned
       // by 'reply'.
-      share = new Smb4KShare( reply.data()["unc"].toUrl().toString( QUrl::None ) );
+      // NOTE: Remove the password from the URL/UNC to avoid empty user info
+      // in the new share object if the password contains special characters!
+      share = new Smb4KShare( reply.data()["unc"].toUrl().toString( QUrl::RemovePassword ) );
       share->setWorkgroupName( reply.data()["workgroup"].toString() );
       share->setComment( reply.data()["comment"].toString() );
       share->setHostIP( reply.data()["host_ip"].toString() );
