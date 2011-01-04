@@ -32,7 +32,6 @@
 
 // Qt includes
 #include <QString>
-#include <QUrl>
 
 // KDE includes
 #include <kdemacros.h>
@@ -94,7 +93,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns the host's name.
      */
-    QString hostName() const { return m_url.host().toUpper(); }
+    QString hostName() const { return item_url.host().toUpper(); }
 
     /**
      * This function sets the UNC (Uniform Naming Convention string). This
@@ -260,7 +259,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns the login name.
      */
-    QString login() const { return m_url.userName(); }
+    QString login() const { return item_url.userName(); }
 
     /**
      * Set the port for the use in the UNC.
@@ -274,7 +273,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns the port.
      */
-    int port() const { return m_url.port(); }
+    int port() const { return item_url.port(); }
 
     /**
      * Compare another Smb4KHost object with this one an return TRUE if both carry
@@ -309,11 +308,6 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
     bool hasIP() const { return !m_ip.isEmpty(); }
 
   private:
-    /**
-     * The URL
-     */
-    QUrl m_url;
-
     /**
      * The workgroup the host is in
      */

@@ -34,6 +34,7 @@
 // Qt includes
 #include <QString>
 #include <QIcon>
+#include <QUrl>
 
 // KDE includes
 #include <kdemacros.h>
@@ -110,6 +111,24 @@ class KDE_EXPORT Smb4KBasicNetworkItem
      * @returns the network item's icon.
      */
     const QIcon &icon() const { return m_icon; }
+    
+    /**
+     * Returns the URL (the full UNC) of the network item or an empty URL
+     * if the network item does not have an URL (like a workgroup).
+     * 
+     * There is no setURL() function, because only derived classes should
+     * be able to set the URL. Use the protected item_url object to set the 
+     * URL in your derived class.
+     * 
+     * @returns the URL of the network item.
+     */
+    const QUrl &url() const { return item_url; }
+    
+  protected:
+    /**
+     * The URL
+     */
+    QUrl item_url;
 
   private:
     /**

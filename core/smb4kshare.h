@@ -34,7 +34,6 @@
 #include <QString>
 #include <QByteArray>
 #include <QStringList>
-#include <QUrl>
 #include <QtGlobal>
 
 // KDE includes
@@ -120,7 +119,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the host name
      */
-    QString hostName() const { return m_url.host().toUpper(); }
+    QString hostName() const { return item_url.host().toUpper(); }
 
     /**
      * This function sets the UNC (Uniform Naming Convention string). This
@@ -156,6 +155,16 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     QString homeUNC( QUrl::FormattingOptions options = QUrl::RemoveScheme|
                                                        QUrl::RemoveUserInfo|
                                                        QUrl::RemovePort ) const;
+                                                       
+    /**
+     * In case of a 'homes' share, this function returns the URL of the user's 
+     * home repository.
+     * 
+     * If the share is not a 'homes' share, this function returns an empty URL.
+     * 
+     * @returns the user's home repository's URL.
+     */
+    QUrl homeURL() const;
 
     /**
      * Returns the host's UNC in the form [smb:]//[USER@]HOST[:PORT] depending on
@@ -413,7 +422,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the login.
      */
-    QString login() const { return m_url.userName(); }
+    QString login() const { return item_url.userName(); }
 
     /**
      * Sets the value of the total disk space that is available on the share. If 
@@ -627,7 +636,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the port.
      */
-    int port() const { return m_url.port(); }
+    int port() const { return item_url.port(); }
 
     /**
      * Set the authentication information for the share. This function will add
@@ -651,11 +660,6 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      */
     void setShareIcon();
     
-    /**
-     * The URL
-     */
-    QUrl m_url;
-
     /**
      * The workgroup
      */
