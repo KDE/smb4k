@@ -312,7 +312,7 @@ void Smb4KMounter::triggerRemounts()
       {
         for ( int i = 0; i < denied.size(); i++ )
         {
-          Smb4KShare share( denied.at( i ).arguments().value( "unc" ).toString() );
+          Smb4KShare share( denied.at( i ).arguments().value( "unc" ).toUrl().toString( QUrl::None ) );
           share.setWorkgroupName( denied.at( i ).arguments().value( "workgroup" ).toString() );
 
           Smb4KNotification *notification = new Smb4KNotification();
@@ -1205,13 +1205,16 @@ bool Smb4KMounter::createMountAction( Smb4KShare *share, Action *action )
   Smb4KAuthInfo authInfo( share );
   Smb4KWalletManager::self()->readAuthInfo( &authInfo );
 
-  // Set the login and the file system for the share.
+  // Set the authentication information
+  share->setAuthInfo( &authInfo );
+  
+  // Set the file system
 #ifndef Q_OS_FREEBSD
   share->setFileSystem( Smb4KShare::CIFS );
 #else
   share->setFileSystem( Smb4KShare::SMBFS );
 #endif
-  share->setLogin( QString::fromUtf8( authInfo.login() ) );
+//   share->setLogin( QString::fromUtf8( authInfo.login() ) );
 
   // Compile the arguments
   QString arguments;
@@ -1245,7 +1248,7 @@ bool Smb4KMounter::createMountAction( Smb4KShare *share, Action *action )
 
   // User
   arguments += !authInfo.login().isEmpty() ?
-               QString( ",user=%1" ).arg( QString::fromUtf8( authInfo.login() ) ) :
+               QString( ",user=%1" ).arg( authInfo.login() ) :
                ",guest";
 
   // Client's and server's NetBIOS name
@@ -1511,17 +1514,16 @@ bool Smb4KMounter::createMountAction( Smb4KShare *share, Action *action )
   action->setHelperID( "de.berlios.smb4k.mounthelper" );
   action->addArgument( "mount_binary", mount );
   action->addArgument( "mount_arguments", arguments );
-  action->addArgument( "password", authInfo.password() );
   action->addArgument( "key", key );
 
   // Now add everything we need to create an Smb4KShare object in slotShareMounted().
   if ( !share->isHomesShare() )
   {
-    action->addArgument( "unc", share->unc() );
+    action->addArgument( "unc", share->url() );
   }
   else
   {
-    action->addArgument( "unc", share->homeUNC() );
+    action->addArgument( "unc", share->homeURL() );
   }
   action->addArgument( "workgroup", share->workgroupName() );
   action->addArgument( "comment", share->comment() );
@@ -1671,7 +1673,7 @@ bool Smb4KMounter::createUnmountAction( Smb4KShare *share, bool force, bool sile
   action->addArgument( "key", key );
 
   // Now add everything we need.
-  action->addArgument( "unc", share->unc( QUrl::None ) );
+  action->addArgument( "unc", share->url() );
   action->addArgument( "mountpoint", share->canonicalPath() );
 
   return true;
@@ -1858,7 +1860,7 @@ void Smb4KMounter::slotActionFinished( ActionReply reply )
         // Ooops, something went wrong. We do not check for the mounted share
         // but create a share from the values provided by reply, so that we
         // can emit signals etc.
-        share.setUNC( reply.data()["unc"].toString() );
+        share.setUNC( reply.data()["unc"].toUrl().toString( QUrl::None ) );
         share.setWorkgroupName( reply.data()["workgroup"].toString() );
         share.setHostIP( reply.data()["host_ip"].toString() );
         share.setComment( reply.data()["comment"].toString() );
@@ -1930,7 +1932,7 @@ void Smb4KMounter::slotActionFinished( ActionReply reply )
     else if ( reply.data().value( "key" ).toString().startsWith( "unmount_" ) )
     {
       // Create a share for emitting the signals.
-      share.setUNC( reply.data()["unc"].toString() );
+      share.setUNC( reply.data()["unc"].toUrl().toString( QUrl::None ) );
       share.setWorkgroupName( reply.data()["workgroup"].toString() );
       share.setHostIP( reply.data()["host_ip"].toString() );
       share.setComment( reply.data()["comment"].toString() );
@@ -1987,7 +1989,7 @@ void Smb4KMounter::slotShareMounted( ActionReply reply )
     {
       // Create a Smb4KShare object from the information returned
       // by 'reply'.
-      share = new Smb4KShare( reply.data()["unc"].toString() );
+      share = new Smb4KShare( reply.data()["unc"].toUrl().toString( QUrl::None ) );
       share->setWorkgroupName( reply.data()["workgroup"].toString() );
       share->setComment( reply.data()["comment"].toString() );
       share->setHostIP( reply.data()["host_ip"].toString() );
