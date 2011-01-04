@@ -1398,14 +1398,22 @@ void Smb4KScanner::slotThreadFinished()
             if ( workgroup )
             {
               Smb4KHost *master_browser = findHost( workgroup->masterBrowserName(), workgroup->workgroupName() );
-              Smb4KAuthInfo authInfo( master_browser );
-
-              if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
+              
+              if ( master_browser )
               {
-                // Kill the currently active override cursor. Another one 
-                // will be set by lookupDomainMembers() in an instant.
-                QApplication::restoreOverrideCursor();
-                lookupDomainMembers( workgroup );
+                Smb4KAuthInfo authInfo( master_browser );
+
+                if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
+                {
+                  // Kill the currently active override cursor. Another one 
+                  // will be set by lookupDomainMembers() in an instant.
+                  QApplication::restoreOverrideCursor();
+                  lookupDomainMembers( workgroup );
+                }
+                else
+                {
+                  // Do nothing
+                }
               }
               else
               {
