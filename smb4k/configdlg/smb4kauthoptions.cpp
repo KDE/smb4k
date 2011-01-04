@@ -379,9 +379,9 @@ void Smb4KAuthOptions::showDetails( Smb4KAuthInfo *authInfo )
       m_details_widget->setItem( 1, 0, workgroup_label );
       m_details_widget->setItem( 1, 1, new QTableWidgetItem( authInfo->workgroupName() ) );
       m_details_widget->setItem( 2, 0, login_label );
-      m_details_widget->setItem( 2, 1, new QTableWidgetItem( QString::fromUtf8( authInfo->login() ) ) );
+      m_details_widget->setItem( 2, 1, new QTableWidgetItem( authInfo->login() ) );
       m_details_widget->setItem( 3, 0, password_label );
-      m_details_widget->setItem( 3, 1, new QTableWidgetItem( QString::fromUtf8( authInfo->password() ) ) );
+      m_details_widget->setItem( 3, 1, new QTableWidgetItem( authInfo->password() ) );
           
       break;
     }
@@ -409,9 +409,9 @@ void Smb4KAuthOptions::showDetails( Smb4KAuthInfo *authInfo )
       m_details_widget->setItem( 0, 0, entry_label );
       m_details_widget->setItem( 0, 1, entry );
       m_details_widget->setItem( 1, 0, login_label );
-      m_details_widget->setItem( 1, 1, new QTableWidgetItem( QString::fromUtf8( authInfo->login() ) ) );
+      m_details_widget->setItem( 1, 1, new QTableWidgetItem( authInfo->login() ) );
       m_details_widget->setItem( 2, 0, password_label );
-      m_details_widget->setItem( 2, 1, new QTableWidgetItem( QString::fromUtf8( authInfo->password() ) ) );
+      m_details_widget->setItem( 2, 1, new QTableWidgetItem( authInfo->password() ) );
           
       break;
     }
