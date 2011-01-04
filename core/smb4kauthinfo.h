@@ -3,8 +3,8 @@
     authentication data.
                              -------------------
     begin                : Sa Feb 28 2004
-    copyright            : (C) 2004-2009 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2004-2010 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -191,7 +191,7 @@ class KDE_EXPORT Smb4KAuthInfo
      *
      * @returns         The login
      */
-    QByteArray login() const { return m_url.userName().toUtf8(); } // Do not use encodedUserName()
+    QString login() const { return m_url.userName(); }
 
     /**
      * Sets the password.
@@ -203,7 +203,7 @@ class KDE_EXPORT Smb4KAuthInfo
     /**
      * Returns the password.
      */
-    QByteArray password() const { return m_url.password().toUtf8(); } // Do not use encodedPassword()
+    QString password() const { return m_url.password(); }
 
     /**
      * Returns the type.
