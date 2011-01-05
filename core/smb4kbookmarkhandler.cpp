@@ -100,9 +100,7 @@ void Smb4KBookmarkHandler::addBookmark( Smb4KShare *share, bool overwrite )
   Q_ASSERT( share );
   
   // Check the validity of the UNC.
-  QUrl url( share->unc( QUrl::None ) );
-  
-  if ( !url.isValid() )
+  if ( !share->url().isValid() )
   {
     // FIXME: Throw an error!!!
     qDebug() << "Invalid UNC";
