@@ -335,14 +335,8 @@ class KDE_EXPORT Smb4KNotification : public QObject
      */
     void slotOpenShare();
 
-    /**
-     * Shows an error message
-     */
-    void slotShowErrorMessage();
-
   private:
     Smb4KShare m_share;
-    QStringList m_err_msg;
 };
 
 #endif
