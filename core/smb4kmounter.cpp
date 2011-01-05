@@ -748,9 +748,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
 
   // Check if the UNC is valid. Otherwise, we can just return here
   // with an error message.
-  QUrl url( share->unc( QUrl::None ) );
-
-  if ( !url.isValid() )
+  if ( !share->url().isValid() )
   {
     // FIXME: Throw an error.
     qDebug() << "Invalid UNC";
