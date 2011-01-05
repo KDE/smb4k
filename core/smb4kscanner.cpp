@@ -463,7 +463,11 @@ void Smb4KScanner::lookupDomains()
     {
       // Go ahead
     }
+    
+    // Global Samba options
+    QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
 
+    // Workgroup
     Smb4KWorkgroup workgroup;
 
     if ( !Smb4KSettings::domainName().isEmpty() )
@@ -472,11 +476,8 @@ void Smb4KScanner::lookupDomains()
     }
     else
     {
-      workgroup.setWorkgroupName( Smb4KSambaOptionsHandler::self()->globalSambaOptions()["workgroup"] );
+      workgroup.setWorkgroupName( samba_options["workgroup"] );
     }
-    
-    // Global Samba options
-    QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
     
     // The Samba options for the master browser.
     Smb4KHost master_browser;
