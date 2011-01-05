@@ -246,18 +246,6 @@ void Smb4KCore::searchPrograms()
   {
     // Do nothing
   }
-  
-  if ( KStandardDirs::findExe( "umount" ).isEmpty() &&
-       KStandardDirs::findExe( "umount", "/sbin" ).isEmpty() &&
-       KStandardDirs::findExe( "umount", "/usr/sbin" ).isEmpty() &&
-       KStandardDirs::findExe( "umount", "/usr/local/sbin" ).isEmpty() )
-  {
-    missing << "umount";
-  }
-  else
-  {
-    // Do nothing
-  }  
 #else
   if ( KStandardDirs::findExe( "mount_smbfs" ).isEmpty() &&
        KStandardDirs::findExe( "mount_smbfs", "/sbin" ).isEmpty() &&
@@ -271,18 +259,6 @@ void Smb4KCore::searchPrograms()
     // Do nothing
   }
   
-  if ( KStandardDirs::findExe( "umount" ).isEmpty() &&
-       KStandardDirs::findExe( "umount", "/sbin" ).isEmpty() &&
-       KStandardDirs::findExe( "umount", "/usr/sbin" ).isEmpty() &&
-       KStandardDirs::findExe( "umount", "/usr/local/sbin" ).isEmpty() )
-  {
-    missing << "umount";
-  }
-  else
-  {
-    // Do nothing
-  }  
-
   if ( KStandardDirs::findExe( "smbutil" ).isEmpty() &&
        KStandardDirs::findExe( "smbutil", "/sbin" ).isEmpty() &&
        KStandardDirs::findExe( "smbutil", "/usr/sbin" ).isEmpty() &&
@@ -295,6 +271,18 @@ void Smb4KCore::searchPrograms()
     // Do nothing
   }
 #endif
+  
+  if ( KStandardDirs::findExe( "umount" ).isEmpty() &&
+       KStandardDirs::findExe( "umount", "/sbin" ).isEmpty() &&
+       KStandardDirs::findExe( "umount", "/usr/sbin" ).isEmpty() &&
+       KStandardDirs::findExe( "umount", "/usr/local/sbin" ).isEmpty() )
+  {
+    missing << "umount";
+  }
+  else
+  {
+    // Do nothing
+  }  
 
   if ( !missing.isEmpty() )
   {
