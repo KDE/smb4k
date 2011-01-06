@@ -537,12 +537,11 @@ bool Smb4KMainWindow::queryClose()
   {
     // This part has been 'stolen' from JuK application.
     KMessageBox::information(this,
-            i18n( "<qt>Closing the main window will keep Smb4K running in the system tray. "
-                  "Use 'Quit' from the 'File' menu to quit the application.</qt>"),
+            i18n( "<p>Closing the main window will keep Smb4K running in the system tray. "
+                  "Use 'Quit' from the 'File' menu to quit the application.</p>"),
             i18n( "Docking" ), "DockToSystemTrayInfo" );
     setVisible( false );
     return false;
-
   }
   else
   {

@@ -663,12 +663,12 @@ void Smb4KNotification::actionFailed( AuthActions action, const QString &err_msg
   {
     case MountAction:
     {
-      text = i18n( "The execution of the mount action failed (error code: <tt>%1</tt>).", err_msg );
+      text = i18n( "<p>The execution of the mount action failed (error code: <tt>%1</tt>).</p>", err_msg );
       break;
     }
     case UnmountAction:
     {
-      text = i18n( "The execution of the unmount action failed (error code: <tt>%1</tt>)",err_msg );
+      text = i18n( "<p>The execution of the unmount action failed (error code: <tt>%1</tt>).</p>", err_msg );
     }
     default:
     {
