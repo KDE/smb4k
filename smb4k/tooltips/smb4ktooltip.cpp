@@ -467,7 +467,6 @@ void Smb4KToolTip::setupSharesViewToolTip()
   m_text_layout->addWidget( mp_label, 1, 0, Qt::AlignRight );
   m_text_layout->addWidget( new QLabel( share->path(), this ), 1, 1, 0 );
 
-#ifndef Q_OS_FREEBSD
   QLabel *log_label = new QLabel( i18n( "Login" ), this );
   log_label->setPalette( p );
       
@@ -476,6 +475,7 @@ void Smb4KToolTip::setupSharesViewToolTip()
   switch ( share->fileSystem() )
   {
     case Smb4KShare::CIFS:
+    case Smb4KShare::SMBFS:
     {
       if ( !share->login().isEmpty() )
       {
@@ -523,41 +523,9 @@ void Smb4KToolTip::setupSharesViewToolTip()
   {
     m_text_layout->addWidget( new QLabel( i18n( "unknown" ) ), 5, 1, 0 );
   }
-#else
-  QLabel *own_label = new QLabel( i18n( "Owner" ), this );
-  own_label->setPalette( p );
-      
-  m_text_layout->addWidget( own_label, 2, 0, Qt::AlignRight );
-  m_text_layout->addWidget( new QLabel( QString( "%1 - %2" )
-                            .arg( share->owner() ).arg( share->group() ), this ), 2, 1, 0 );
-      
-  QLabel *fs_label = new QLabel( i18n( "File system" ), this );
-  fs_label->setPalette( p );
-      
-  m_text_layout->addWidget( fs_label, 3, 0, Qt::AlignRight );
-  m_text_layout->addWidget( new QLabel( share->fileSystemString().toUpper() ), 3, 1, 0 );
-  
-  QLabel *s_label = new QLabel( i18n( "Size" ), this );
-  s_label->setPalette( p );
-  
-  m_text_layout->addWidget( s_label, 4, 0, Qt::AlignRight );
-  
-  if ( share->totalDiskSpace() != 0 && share->freeDiskSpace() != 0 )
-  {
-    m_text_layout->addWidget( new QLabel( i18n( "%1 free of %2 (%3 used)" )
-                              .arg( share->freeDiskSpaceString() )
-                              .arg( share->totalDiskSpaceString() )
-                              .arg( share->diskUsageString() ) ), 4, 1, 0 );
-  }
-  else
-  {
-    m_text_layout->addWidget( new QLabel( i18n( "unknown" ) ), 4, 1, 0 );
-  }
-#endif
       
   m_info_layout->addLayout( m_text_layout );
   m_info_layout->addSpacerItem( new QSpacerItem( 0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding ) );
-
 }
 
 
