@@ -307,22 +307,6 @@ void Smb4KMounter::triggerRemounts()
     {
       QList<Action> denied;
       Action::executeActions( actions, &denied, "de.berlios.smb4k.mounthelper" );
-
-      if ( !denied.isEmpty() )
-      {
-        for ( int i = 0; i < denied.size(); i++ )
-        {
-          Smb4KShare share( denied.at( i ).arguments().value( "unc" ).toUrl().toString( QUrl::None ) );
-          share.setWorkgroupName( denied.at( i ).arguments().value( "workgroup" ).toString() );
-
-          Smb4KNotification *notification = new Smb4KNotification();
-          notification->unmountingFailed( &share, i18n( "The authentication action was denied." ) );
-        }
-      }
-      else
-      {
-        // Do nothing
-      }
     }
     else
     {
@@ -1021,29 +1005,7 @@ void Smb4KMounter::unmountAllShares()
   if ( !actions.isEmpty() )
   {
     QList<Action> denied;
-    Action::executeActions( actions, &denied, "de.berlios.smb4k.mounthelper" );
-
-    if ( !denied.isEmpty() )
-    {
-      for ( int i = 0; i < denied.size(); i++ )
-      {
-        Smb4KShare *share = findShareByPath( actions.at( i ).arguments().value( "mountpoint" ).toByteArray() );
-
-        if ( share )
-        {
-          Smb4KNotification *notification = new Smb4KNotification();
-          notification->unmountingFailed( share, i18n( "The authentication was denied." ) );
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-    }
-    else
-    {
-      // Do nothing
-    }
+    Action::executeActions( actions, NULL, "de.berlios.smb4k.mounthelper" );
   }
   else
   {
