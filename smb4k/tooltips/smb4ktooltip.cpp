@@ -419,6 +419,8 @@ void Smb4KToolTip::setupSharesViewToolTip()
 {
   // NOTE: If you change the layout here, adjust also the update function!
   
+  Smb4KShare *share = static_cast<Smb4KShare *>( m_item );
+  
   m_tip_layout = new QHBoxLayout( this );
   m_tip_layout->setAlignment( Qt::AlignTop );
   m_info_layout = new QVBoxLayout();
@@ -426,7 +428,7 @@ void Smb4KToolTip::setupSharesViewToolTip()
 
   // Set the icon
   QLabel *icon_label = new QLabel( this );
-  icon_label->setPixmap( m_item->icon().pixmap( KIconLoader::SizeEnormous ) );
+  icon_label->setPixmap( share->icon().pixmap( KIconLoader::SizeEnormous ) );
   
   m_tip_layout->addWidget( icon_label, Qt::AlignHCenter );
   m_tip_layout->addLayout( m_info_layout );
@@ -441,8 +443,6 @@ void Smb4KToolTip::setupSharesViewToolTip()
   
   // FIXME: Use smaller font for the information. Get the current 
   // point size of the window system with QFontInfo::pointSize().
-  
-  Smb4KShare *share = static_cast<Smb4KShare *>( m_item );
       
   QLabel *caption = new QLabel( share->shareName(), this );
   caption->setAlignment( Qt::AlignHCenter );
@@ -514,10 +514,10 @@ void Smb4KToolTip::setupSharesViewToolTip()
   
   if ( share->totalDiskSpace() != 0 && share->freeDiskSpace() != 0 )
   {
-    m_text_layout->addWidget( new QLabel( i18n( "%1 free of %2 (%3 used)" )
-                              .arg( share->freeDiskSpaceString() )
-                              .arg( share->totalDiskSpaceString() )
-                              .arg( share->diskUsageString() ) ), 5, 1, 0 );
+    m_text_layout->addWidget( new QLabel( i18n( "%1 free of %2 (%3 used)",
+                              share->freeDiskSpaceString(),
+                              share->totalDiskSpaceString(),
+                              share->diskUsageString() ) ), 5, 1, 0 );
   }
   else
   {
@@ -744,7 +744,61 @@ void Smb4KToolTip::updateNetworkBrowserToolTip()
 
 void Smb4KToolTip::updateSharesViewToolTip()
 {
-
+  if ( m_item && m_text_layout && m_tip_layout )
+  {
+    Smb4KShare *share = static_cast<Smb4KShare *>( m_item );
+    
+    // Set the icon
+    QLayoutItem *icon_item = m_tip_layout->itemAt( 0 );
+    QLabel *icon_label = static_cast<QLabel *>( icon_item->widget() );
+    icon_label->setPixmap( m_item->icon().pixmap( KIconLoader::SizeEnormous ) );
+    
+    QLayoutItem *log_item = m_text_layout->itemAtPosition( 2, 1 );
+    QLabel *log_label = static_cast<QLabel *>( log_item->widget() );
+    
+    switch ( share->fileSystem() )
+    {
+      case Smb4KShare::CIFS:
+      case Smb4KShare::SMBFS:
+      {
+        if ( !share->login().isEmpty() )
+        {
+          log_label->setText( share->login() );
+        }
+        else
+        {
+          log_label->setText( i18n( "unknown" ) );
+        }
+        break;
+      }
+      default:
+      {
+        log_label->setText( "-" );
+        break;
+      }
+    }
+    
+    QLayoutItem *s_item = m_text_layout->itemAtPosition( 5, 1 );
+    QLabel *s_label = static_cast<QLabel *>( s_item->widget() );
+  
+    if ( share->totalDiskSpace() != 0 && share->freeDiskSpace() != 0 )
+    {
+      s_label->setText( i18n( "%1 free of %2 (%3 used)", 
+                              share->freeDiskSpaceString(),
+                              share->totalDiskSpaceString(),
+                              share->diskUsageString() ) );
+    }
+    else
+    {
+      s_label->setText( i18n( "unknown" ) );
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // The rest won't change while the tool tip is shown.
 }
 
 
