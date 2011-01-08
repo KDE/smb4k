@@ -785,52 +785,11 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
 
       if ( reply.type() == ActionReply::KAuthError )
       {
-        switch ( reply.errorCode() )
-        {
-          case ActionReply::NoResponder:
-          {
-            notification->actionFailed( Smb4KNotification::MountAction, "NoResponder" );
-            break;
-          }
-          case ActionReply::NoSuchAction:
-          {
-            notification->actionFailed( Smb4KNotification::MountAction, "NoSuchAction" );
-            break;
-          }
-          case ActionReply::InvalidAction:
-          {
-            notification->actionFailed( Smb4KNotification::MountAction, "InvalidAction" );
-            break;
-          }
-          case ActionReply::AuthorizationDenied:
-          {
-            notification->actionFailed( Smb4KNotification::MountAction, "AuthorizationDenied" );
-            break;
-          }
-//           case ActionReply::UserCancelled:
-//           {
-//             notification->actionFailed( Smb4KNotification::MountAction, "UserCancelled" );
-//             break;
-//           }
-          case ActionReply::HelperBusy:
-          {
-            notification->actionFailed( Smb4KNotification::MountAction, "HelperBusy" );
-            break;
-          }
-          case ActionReply::DBusError:
-          {
-            notification->actionFailed( Smb4KNotification::MountAction, "DBusError" );
-            break;
-          }
-          default:
-          {
-            break;
-          }
-        }
+        notification->actionFailed( reply.errorCode() );
       }
       else
       {
-        notification->actionFailed( Smb4KNotification::MountAction, QString() );
+        notification->actionFailed();
       }
 
       int index = m_cache.indexOf( mountAction.arguments().value( "key" ).toString() );
@@ -890,52 +849,11 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
 
         if ( reply.type() == ActionReply::KAuthError )
         {
-          switch ( reply.errorCode() )
-          {
-            case ActionReply::NoResponder:
-            {
-              notification->actionFailed( Smb4KNotification::UnmountAction, "NoResponder" );
-              break;
-            }
-            case ActionReply::NoSuchAction:
-            {
-              notification->actionFailed( Smb4KNotification::UnmountAction, i18n( "NoSuchAction" ) );
-              break;
-            }
-            case ActionReply::InvalidAction:
-            {
-              notification->actionFailed( Smb4KNotification::UnmountAction, "InvalidAction" );
-              break;
-            }
-            case ActionReply::AuthorizationDenied:
-            {
-              notification->actionFailed( Smb4KNotification::UnmountAction, "AuthorizationDenied" );
-              break;
-            }
-//            case ActionReply::UserCancelled:
-//            {
-//              notification->actionFailed( Smb4KNotification::UnmountAction, "UserCanceled" );
-//              break;
-//            }
-            case ActionReply::HelperBusy:
-            {
-              notification->actionFailed( Smb4KNotification::UnmountAction, "HelperBusy" );
-              break;
-            }
-            case ActionReply::DBusError:
-            {
-              notification->actionFailed( Smb4KNotification::UnmountAction, "DBusError" );
-              break;
-            }
-            default:
-            {
-              break;
-            }
-          }
+          notification->actionFailed( reply.errorCode() );
         }
         else
         {
-          notification->actionFailed( Smb4KNotification::UnmountAction, QString() );
+          notification->actionFailed();
         }
 
         int index = m_cache.indexOf( unmountAction.arguments().value( "key" ).toString() );
@@ -1931,7 +1849,7 @@ void Smb4KMounter::slotActionFinished( ActionReply reply )
   {
     // If the action failed, show an error message.
     Smb4KNotification *notification = new Smb4KNotification();
-    notification->actionFailed( Smb4KNotification::UnmountAction, QString() );
+    notification->actionFailed();
   }
 
   if ( m_cache.size() == 0 )

@@ -32,6 +32,7 @@
 #include <kmessagebox.h>
 #include <knotification.h>
 #include <kdemacros.h>
+#include <kauthactionreply.h>
 
 // system includes
 #include <string.h>
@@ -44,6 +45,8 @@
 #include <smb4khost.h>
 #include <smb4kprintinfo.h>
 #include <smb4ksynchronizationinfo.h>
+
+using namespace KAuth;
 
 
 Smb4KNotification::Smb4KNotification( QObject *parent )
@@ -439,7 +442,7 @@ void Smb4KNotification::searchingFailed( const QString &item, const QString &err
   }
   else
   {
-    text = i18n( "Searching the network neighborhood for the search item <b>%1</b> failed.", item );
+    text = i18n( "<p>Searching the network neighborhood for the search item <b>%1</b> failed.</p>", item );
   }
   
   KNotification *notification = KNotification::event( "searchingFailed",
@@ -501,7 +504,7 @@ void Smb4KNotification::openingFileFailed( const QFile &file )
   }
   else
   {
-    text = i18n( "<p>Opening the file <b>%1</b> failed.", file.fileName() );
+    text = i18n( "<p>Opening the file <b>%1</b> failed.</p>", file.fileName() );
   }
   
   KNotification *notification = KNotification::event( "openingFileFailed",
@@ -529,7 +532,7 @@ void Smb4KNotification::readingFileFailed( const QFile &file, const QString &err
     }
     else
     {
-      text = i18n( "<p>Reading from file <b>%1</b> failed.", file.fileName() );
+      text = i18n( "<p>Reading from file <b>%1</b> failed.</p>", file.fileName() );
     }
   }
   
@@ -655,25 +658,60 @@ void Smb4KNotification::systemCallFailed( const QString &sys_call, int err_no )
 }
 
 
-void Smb4KNotification::actionFailed( AuthActions action, const QString &err_msg )
+void Smb4KNotification::actionFailed( int err_code )
 {
-  QString text;
-
-  switch ( action )
+  QString text, err_msg;
+  
+  switch ( err_code )
   {
-    case MountAction:
+    case ActionReply::NoResponder:
     {
-      text = i18n( "<p>The execution of the mount action failed (error code: <tt>%1</tt>).</p>", err_msg );
+      err_msg = "NoResponder";
       break;
     }
-    case UnmountAction:
+    case ActionReply::NoSuchAction:
     {
-      text = i18n( "<p>The execution of the unmount action failed (error code: <tt>%1</tt>).</p>", err_msg );
+      err_msg = "NoSuchAction";
+      break;
+    }
+    case ActionReply::InvalidAction:
+    {
+      err_msg = "InvalidAction";
+      break;
+    }
+    case ActionReply::AuthorizationDenied:
+    {
+      err_msg = "AuthorizationDenied";
+      break;
+    }
+    case ActionReply::UserCancelled:
+    {
+      err_msg = "UserCancelled";
+      break;
+    }
+    case ActionReply::HelperBusy:
+    {
+      err_msg = "HelperBusy";
+      break;
+    }
+    case ActionReply::DBusError:
+    {
+      err_msg = "DBusError";
+      break;
     }
     default:
     {
       break;
     }
+  }
+
+  if ( !err_msg.isEmpty() )
+  {
+    text = i18n( "<p>Executing an action with root privileges failed (error code:<tt>%1</tt>).</p>", err_msg );
+  }
+  else
+  {
+    text = i18n( "<p>Executing an action with root privileges failed.</p>", err_msg );
   }
   
   KNotification *notification = KNotification::event( "actionFailed", 

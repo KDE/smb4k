@@ -59,12 +59,6 @@ class KDE_EXPORT Smb4KNotification : public QObject
 
   public:
     /**
-     * KAuth::Action enumeration
-     */
-    enum AuthActions { MountAction,
-                       UnmountAction };
-
-    /**
      * The constructor
      */
     Smb4KNotification( QObject *parent = 0 );
@@ -316,13 +310,13 @@ class KDE_EXPORT Smb4KNotification : public QObject
 
     /**
      * This error message is shown if a KAuth action could not be
-     * executed and KAuth::ActionReply::failed() reported true.
+     * executed and KAuth::ActionReply::failed() reported true. Pass
+     * the error code supplied by KAuth::ActionReply::errorCode() to
+     * this function if available.
      *
-     * @param action    Action enumeration
-     *
-     * @param err_msg   The error message
+     * @param err_code  The error code
      */
-    void actionFailed( AuthActions action, const QString &err_msg );
+    void actionFailed( int err_code = -1 );
 
   protected slots:
     /**
