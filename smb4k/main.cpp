@@ -54,7 +54,7 @@ static const char description[] =
   I18N_NOOP( "The advanced network neighborhood browser for KDE." );
 
 static const char authors[] =
-  I18N_NOOP( "\u00A9 2003-2009 Alexander Reinholdt\n\u00A9 2004-2007 "
+  I18N_NOOP( "\u00A9 2003-2011 Alexander Reinholdt\n\u00A9 2004-2007 "
              "Massimo Callegari" );
 
 
@@ -74,7 +74,7 @@ int main( int argc, char *argv[] )
   // Authors:
   aboutData.addAuthor( ki18n( "Alexander Reinholdt" ),
                        ki18n( "Developer" ),
-                       "dustpuppy@users.berlios.de" );
+                       "alexander.reinholdt@kdemail.net" );
   aboutData.addAuthor( ki18n( "Massimo Callegari" ),
                        ki18n( "Developer" ),
                        "massimocallegari@yahoo.it" );
