@@ -3,7 +3,7 @@
     Samba settings of Smb4K
                              -------------------
     begin                : Mo Jan 26 2004
-    copyright            : (C) 2004-2010 by Alexander Reinholdt
+    copyright            : (C) 2004-2011 by Alexander Reinholdt
     email                : dustpuppy@users.berlios.de
  ***************************************************************************/
 
@@ -32,6 +32,7 @@
 #include <QMouseEvent>
 #include <QKeyEvent>
 #include <QTreeWidgetItemIterator>
+#include <QToolButton>
 
 // KDE includes
 #include <klocale.h>
@@ -39,7 +40,7 @@
 #include <knuminput.h>
 #include <kcombobox.h>
 #include <kuser.h>
-#include <kpushbutton.h>
+// #include <kpushbutton.h>
 #include <kmenu.h>
 
 // System includes
@@ -212,8 +213,12 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   user_id->setAlignment( Qt::AlignRight );
   user_id->setReadOnly( true );
 
-  KPushButton *user_chooser    = new KPushButton( KGuiItem( QString(), "edit-find-user",
-                                 i18n( "Choose a different user" ) ), user_widget );
+  QToolButton *user_chooser    = new QToolButton( user_widget );
+  user_chooser->setIcon( KIcon( "edit-find-user" ) );
+  user_chooser->setToolTip( i18n( "Choose a different user" ) );
+  
+//   KPushButton *user_chooser    = new KPushButton( KGuiItem( QString(), "edit-find-user",
+//                                  i18n( "Choose a different user" ) ), user_widget );
   QMenu *user_menu             = new QMenu( user_chooser );
   user_chooser->setMenu( user_menu );
 
@@ -253,9 +258,13 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   group_id->setObjectName( "kcfg_GroupID" );
   group_id->setAlignment( Qt::AlignRight );
   group_id->setReadOnly( true );
+  
+  QToolButton *group_chooser   = new QToolButton( group_widget );
+  group_chooser->setIcon( KIcon( "edit-find-user" ) );
+  group_chooser->setToolTip( i18n( "Choose a different group" ) );
 
-  KPushButton *group_chooser   = new KPushButton( KGuiItem( QString(), "edit-find-user",
-                                 i18n( "Choose a different group" ) ), group_widget );
+//   KPushButton *group_chooser   = new KPushButton( KGuiItem( QString(), "edit-find-user",
+//                                  i18n( "Choose a different group" ) ), group_widget );
   QMenu *group_menu            = new QMenu( group_chooser );
   group_chooser->setMenu( group_menu );
 
@@ -648,7 +657,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   client_layout->addWidget( smbtree_box, 3, 0, 0 );
   client_layout->addItem( spacer3, 4, 0 );
 
-  insertTab( ClientProgramsTab, clients_tab, i18n( "Client Programs" ) );
+  insertTab( ClientProgramsTab, clients_tab, i18n( "Utility Programs" ) );
 
   //
   // Custom options
