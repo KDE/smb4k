@@ -216,7 +216,7 @@ void Smb4KSynchronizationDialog::slotUser3Clicked()
 
 void Smb4KSynchronizationDialog::slotProgress( Smb4KSynchronizationInfo *info )
 {
-  if ( m_info->equals( info ) )
+  if ( m_info == info )
   {
     if ( !info->text().isEmpty() )
     {
@@ -229,6 +229,19 @@ void Smb4KSynchronizationDialog::slotProgress( Smb4KSynchronizationInfo *info )
 
     if ( info->currentProgress() != -1 )
     {
+      // If the current progress is smaller than the one that is
+      // currently indicated, we can assume that the file has been
+      // transferred. So, set the value of the progress bar to 100 
+      // before setting it to the current progress value.
+      if ( info->currentProgress() < m_current_progress->value() )
+      {
+        m_current_progress->setValue( 100 );
+      }
+      else
+      {
+        // Do nothing
+      }
+      
       m_current_progress->setValue( info->currentProgress() );
     }
     else
