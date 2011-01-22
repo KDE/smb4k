@@ -329,6 +329,8 @@ Smb4K SVN_HEAD (????-??-??):
   + Removed settings related to the system tray icon.
   + Added settings related to notifications.
   + Removed obsolete "Super User" settings page.
+  + Improved buttons of the user and group input widgets of the Samba page.
+  + Renamed "Client Programs" tab to "Utility Programs".
 - Revised main window:
   + The icon in the status bar, that indicates the status of the authentication
     system now shows a key if the wallet system is not used, i.e. we are in
