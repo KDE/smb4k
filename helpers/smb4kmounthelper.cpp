@@ -33,7 +33,6 @@
 #include <kstandarddirs.h>
 #include <klocale.h>
 #include <kprocess.h>
-#include <kshell.h>
 #include <kmountpoint.h>
 
 // application specific includes
@@ -69,8 +68,8 @@ ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
 
   QStringList arguments;
 #ifndef Q_OS_FREEBSD
-  arguments << KShell::quoteArg( unc );
-  arguments << KShell::quoteArg( args["mountpoint"].toString() );
+  arguments << unc;
+  arguments << args["mountpoint"].toString();
   if ( !args["mount_arguments"].toStringList().join( " " ).isEmpty() )
   {
     arguments << args["mount_arguments"].toStringList().join( " " );
@@ -80,7 +79,7 @@ ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
     // Do nothing
   }
 #else
-  if ( !args["mount_arguments"].toStringList().join( " ").isEmpty() )
+  if ( !args["mount_arguments"].toStringList().join( " " ).isEmpty() )
   {
     arguments << args["mount_arguments"].toStringList().join( " " );
   }
@@ -88,8 +87,8 @@ ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
   {
     // Do nothing
   }
-  arguments << KShell::quoteArg( unc );
-  arguments << KShell::quoteArg( args["mountpoint"].toString() );
+  arguments << unc;
+  arguments << args["mountpoint"].toString();
 #endif
 
   proc.setProgram( args["mount_binary"].toString(), arguments );
@@ -211,7 +210,7 @@ ActionReply Smb4KMountHelper::unmount( const QVariantMap &args )
   {
     // Do nothing
   }
-  arguments << KShell::quoteArg( args["mountpoint"].toString() );
+  arguments << args["mountpoint"].toString();
 
   proc.setProgram( args["umount_binary"].toString(), arguments );
 
