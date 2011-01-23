@@ -1,9 +1,9 @@
 project( smb4k )
 
-set( VERSION 0.10.67 )
+set( VERSION 0.10.68 )
 set( VERSION_MAJOR 0 )
 set( VERSION_MINOR 10 )
-set( VERSION_PATCH 67 )
+set( VERSION_PATCH 68 )
 
 cmake_minimum_required( VERSION 2.6 )
 
