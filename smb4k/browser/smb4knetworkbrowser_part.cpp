@@ -1804,7 +1804,6 @@ void Smb4KNetworkBrowserPart::slotPreview( bool /*checked*/ )
       case Smb4KNetworkBrowserItem::Share:
       {
         dlg = new Smb4KPreviewDialog( item->shareItem(), m_widget );
-
         break;
       }
       default:
