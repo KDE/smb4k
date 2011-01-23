@@ -77,6 +77,10 @@ class KDE_EXPORT Smb4KToolTip : public QWidget
     void updateNetworkBrowserToolTip();
     void setupSharesViewToolTip();
     void updateSharesViewToolTip();
+    static void arc( QPainterPath& path,
+                     qreal cx, qreal cy,
+                     qreal radius, qreal angle,
+                     qreal sweepLength );
 };
 
 #endif

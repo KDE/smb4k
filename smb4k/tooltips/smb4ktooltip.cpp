@@ -40,6 +40,8 @@
 #include <kiconloader.h>
 #include <klocale.h>
 #include <kseparator.h>
+#include <kwindowsystem.h>
+#include <kcolorscheme.h>
 
 // application specific includes
 #include <core/smb4kbasicnetworkitem.h>
@@ -804,14 +806,64 @@ void Smb4KToolTip::updateSharesViewToolTip()
 
 void Smb4KToolTip::paintEvent( QPaintEvent *e )
 {
-  // Copied from QToolTip
-  QStylePainter p( this );
-  QStyleOptionFrame opt;
-  opt.init( this );
-  p.drawPrimitive( QStyle::PE_PanelTipLabel, opt );
-  p.end();
+  // Copied from Dolphin's meta data tool tips.
+  Q_UNUSED( e );
+
+  QPainter painter( this );
+
+  QColor toColor = palette().brush( QPalette::ToolTipBase).color();
+  QColor fromColor = KColorScheme::shade(toColor, KColorScheme::LightShade, 0.2);
+
+  const bool haveAlphaChannel = KWindowSystem::compositingActive();
+  
+  if ( haveAlphaChannel )
+  {
+    painter.setRenderHint( QPainter::Antialiasing );
+    painter.translate( 0.5, 0.5 );
+    toColor.setAlpha( 220 );
+    fromColor.setAlpha( 220 );
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  QLinearGradient gradient( QPointF( 0.0, 0.0 ), QPointF( 0.0, height() ) );
+  gradient.setColorAt( 0.0, fromColor );
+  gradient.setColorAt( 1.0, toColor );
+  painter.setPen( Qt::NoPen );
+  painter.setBrush( gradient );
+
+  const QRect rect( 0, 0, width(), height() );
     
-  QWidget::paintEvent(e);
+  if (haveAlphaChannel) 
+  {
+    const qreal radius = 5.0;
+
+    QPainterPath path;
+    path.moveTo( rect.left(), rect.top() + radius );
+    arc( path, rect.left() + radius, rect.top() + radius, radius, 180, -90 );
+    arc( path, rect.right() - radius, rect.top() + radius, radius, 90, -90 );
+    arc( path, rect.right() - radius, rect.bottom() - radius, radius, 0, -90);
+    arc( path, rect.left() + radius, rect.bottom() - radius, radius, 270, -90);
+    path.closeSubpath();
+
+    painter.drawPath( path );
+  } 
+  else 
+  {
+    painter.drawRect( rect );
+  }
+}
+
+
+void Smb4KToolTip::arc(QPainterPath& path,
+                              qreal cx, qreal cy,
+                              qreal radius, qreal angle,
+                              qreal sweepLength)
+{
+  // Copied from Dolphin's meta data tool tips.
+  path.arcTo( cx-radius, cy-radius, radius * 2, radius * 2, angle, sweepLength );
 }
 
 
