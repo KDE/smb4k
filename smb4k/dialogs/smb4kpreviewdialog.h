@@ -155,6 +155,13 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
      * This slot is called when the close button was clicked.
      */
     void slotCloseClicked();
+    
+    /**
+     * This slot is called if the icon size was changed.
+     *
+     * @param group               The icon group
+     */
+    void slotIconSizeChanged( int group );
 
   private:
     /**

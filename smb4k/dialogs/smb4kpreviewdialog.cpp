@@ -117,6 +117,9 @@ void Smb4KPreviewDialog::setupView()
   m_view->setWrapping( true );
   m_view->setSortingEnabled( true );
   m_view->setWhatsThis( i18n( "This is the view where the contents of the share is displayed." ) );
+  int icon_size = KIconLoader::global()->currentSize( KIconLoader::Small );
+  m_view->setIconSize( QSize( icon_size, icon_size ) );
+  
 //   m_view->setToolTip( i18n( "The preview" ) );
 
   m_toolbar = new KToolBar( main_widget, true, false );
@@ -162,6 +165,9 @@ void Smb4KPreviewDialog::setupView()
 
   connect( m_view,    SIGNAL( executed( QListWidgetItem * ) ),
            this,      SLOT( slotItemExecuted( QListWidgetItem * ) ) );
+  
+  connect( KGlobalSettings::self(), SIGNAL( iconChanged( int ) ),
+           this,                    SLOT( slotIconSizeChanged( int ) ) );
 }
 
 
@@ -489,6 +495,24 @@ void Smb4KPreviewDialog::slotCloseClicked()
 {
   KConfigGroup group( Smb4KSettings::self()->config(), "PreviewDialog" );
   saveDialogSize( group, KConfigGroup::Normal );
+}
+
+
+void Smb4KPreviewDialog::slotIconSizeChanged( int group )
+{
+  switch ( group )
+  {
+    case KIconLoader::Small:
+    {
+      int icon_size = KIconLoader::global()->currentSize( KIconLoader::Small );
+      m_view->setIconSize( QSize( icon_size, icon_size ) );
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
 }
 
 
