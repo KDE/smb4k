@@ -75,7 +75,7 @@ Smb4KPreviewer *Smb4KPreviewer::self()
 void Smb4KPreviewer::preview( Smb4KPreviewItem *item )
 {
   Q_ASSERT( item );
-
+  
   // Find the smbclient program
   QString smbclient = KStandardDirs::findExe( "smbclient" );
 
