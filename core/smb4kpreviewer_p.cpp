@@ -70,13 +70,21 @@ void PreviewThread::slotProcessOutput()
   Q_ASSERT( m_item );
 
   QStringList list = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( "\n", QString::SkipEmptyParts );
-
+  
   foreach ( const QString &line, list )
   {
     if ( line.contains( "blocks of size" ) || line.contains( "Domain=[" ) )
     {
       // FIXME: Do we need this at all?
       continue;
+    }
+    else if ( line.contains( "NT_STATUS_ACCESS_DENIED", Qt::CaseSensitive ) ||
+              line.contains( "NT_STATUS_LOGON_FAILURE", Qt::CaseSensitive ) )
+    {
+      // This might happen if a directory cannot be accessed due to missing
+      // read permissions.
+      m_auth_error = true;
+      break;
     }
     else
     {

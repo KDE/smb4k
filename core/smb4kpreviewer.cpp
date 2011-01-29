@@ -360,6 +360,11 @@ void Smb4KPreviewer::slotThreadFinished()
           // Restore the currently active override cursor. Another one
           // will be set by preview() in an instance.
           QApplication::restoreOverrideCursor();
+
+          // Obviously we need authentication for the share or parts of it.
+          // So, feed the share item with it.
+          thread->previewItem()->share()->setAuthInfo( &authInfo );
+          
           // Retry the preview.
           preview( thread->previewItem() );
         }
