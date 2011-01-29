@@ -34,6 +34,7 @@
 #include <kiconloader.h>
 #include <kdebug.h>
 #include <kconfiggroup.h>
+#include <kpassivepopup.h>
 
 #include <kmimetype.h>
 #include <kurl.h>
@@ -292,21 +293,21 @@ void Smb4KPreviewDialog::slotReceivedData( Smb4KPreviewItem *item )
         }
       }
     }
-
-    // Now activate or deactivate the buttons:
-
-    // Activate the 'Up' button if the current address is
-    // not equal to the base address.
-    m_up->setEnabled( !item->isRootDirectory() );
-
-    // Activate/Deactivate 'Back' and 'Forward' buttons.
-    m_back->setEnabled( m_current_index != m_history.size() - 1 );
-    m_forward->setEnabled( m_current_index != 0 );
   }
   else
   {
     // Do nothing
   }
+
+  // Now activate or deactivate the buttons:
+
+  // Activate the 'Up' button if the current address is
+  // not equal to the base address.
+  m_up->setEnabled( !item->isRootDirectory() );
+
+  // Activate/Deactivate 'Back' and 'Forward' buttons.
+  m_back->setEnabled( m_current_index != m_history.size() - 1 );
+  m_forward->setEnabled( m_current_index != 0 );
 }
 
 
