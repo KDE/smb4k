@@ -198,37 +198,36 @@ void Smb4KPreviewDialog::slotReceivedData( Smb4KPreviewItem *item )
   // The item should be equal to m_item, so we can use either of those
   // pointers.
 
+  // Generate the history
+  switch ( m_button_id )
+  {
+    case Reload: /* Really? */
+    case Abort:
+    case Back:
+    case Forward:
+    {
+      // Do not insert anything into the history if
+      // one of these three buttons was clicked.
+      break;
+    }
+    default:
+    {
+      // Prepend the newest item to the list.
+      m_history.prepend( item->location() );
+      m_current_index = 0; /* first entry */
+      break;
+    }
+  }
+
+  // Clear the combo box, put the new history there and set the
+  // current item:
+  m_combo->clear();
+  m_combo->insertItems( 0, m_history );
+  m_combo->setCurrentItem( m_history.at( m_current_index ) );
+
   // Process the data:
   if ( !item->contents().isEmpty() )
   {
-    // Generate the history.
-    switch ( m_button_id )
-    {
-      case Reload: /* Really? */
-      case Abort:
-      case Back:
-      case Forward:
-      {
-        // Do not insert anything into the history if
-        // one of these three buttons was clicked.
-
-        break;
-      }
-      default:
-      {
-        m_history.append( item->location() );
-        m_current_index = m_history.size() - 1; /* index of the last item */
-
-        break;
-      }
-    }
-
-    // Clear the combo box, put the new history there and set the
-    // current item:
-    m_combo->clear();
-    m_combo->insertItems( 0, m_history );
-    m_combo->setCurrentItem( m_history.at( m_current_index ) );
-
     // Now put the contents in the icon view:
     for ( int i = 0; i < item->contents().size(); ++i )
     {
@@ -239,7 +238,6 @@ void Smb4KPreviewDialog::slotReceivedData( Smb4KPreviewItem *item )
           KUrl url( item->contents().at( i ).second );
           QListWidgetItem *listItem = new QListWidgetItem( KIcon( KMimeType::iconNameForUrl( url, 0 ) ), item->contents().at( i ).second, m_view, File );
           listItem->setData( Qt::UserRole, item->contents().at( i ).second );
-
           break;
         }
         case Smb4KPreviewItem::Directory:
@@ -255,7 +253,6 @@ void Smb4KPreviewDialog::slotReceivedData( Smb4KPreviewItem *item )
           {
             // Do nothing
           }
-
           break;
         }
         case Smb4KPreviewItem::HiddenFile:
@@ -272,7 +269,6 @@ void Smb4KPreviewDialog::slotReceivedData( Smb4KPreviewItem *item )
           {
             // Do nothing
           }
-
           break;
         }
         case Smb4KPreviewItem::HiddenDirectory:
@@ -288,7 +284,6 @@ void Smb4KPreviewDialog::slotReceivedData( Smb4KPreviewItem *item )
           {
             // Do nothing
           }
-
           break;
         }
         default:
@@ -305,12 +300,12 @@ void Smb4KPreviewDialog::slotReceivedData( Smb4KPreviewItem *item )
     m_up->setEnabled( !item->isRootDirectory() );
 
     // Activate/Deactivate 'Back' and 'Forward' buttons.
-    m_back->setEnabled( m_current_index != 0 );
-    m_forward->setEnabled( m_current_index != m_history.size() - 1 );
+    m_back->setEnabled( m_current_index != m_history.size() - 1 );
+    m_forward->setEnabled( m_current_index != 0 );
   }
   else
   {
-    return;
+    // Do nothing
   }
 }
 
@@ -400,9 +395,9 @@ void Smb4KPreviewDialog::slotBackActionTriggered( bool /*checked*/ )
   m_item->clearContents();
 
   // Move one item back in the list:
-  if ( m_current_index != 0 )
+  if ( m_current_index != m_history.size() - 1 )
   {
-    --m_current_index;
+    m_current_index++;
   }
   else
   {
@@ -431,9 +426,9 @@ void Smb4KPreviewDialog::slotForwardActionTriggered( bool /*checked*/ )
   m_item->clearContents();
 
   // Move one item forward in the list:
-  if ( m_current_index != m_history.size() - 1 )
+  if ( m_current_index != 0 )
   {
-    ++m_current_index;
+    m_current_index--;
   }
   else
   {
