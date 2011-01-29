@@ -356,6 +356,8 @@ Smb4K SVN_HEAD (????-??-??):
     enabled/disable the reload and abort button.
   + Removed old cruft.
   + Added "What's this" help.
+  + Display location correctly even if you do not have read access to the 
+    directory.
 - Revised custom options dialog:
   + Did some refactoring.
   + Added all settings available for shares to the host dialog. This way you can 
