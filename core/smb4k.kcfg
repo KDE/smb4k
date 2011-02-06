@@ -245,12 +245,12 @@
     </entry>
     <entry name="SocketOptions" type="String">
       <label>Socket options:</label>
-      <whatsthis>These are the TCP socket options that are used by nmblookup, smbmount and smbclient. Socket options are controls on the networking layer of the operating systems which allow the connection to be tuned. See the manual page of smb.conf for more information.</whatsthis>
+      <whatsthis>These are the TCP socket options that are used by nmblookup and smbclient. Socket options are controls on the networking layer of the operating systems which allow the connection to be tuned. See the manual page of smb.conf for more information.</whatsthis>
       <!-- Will be filled by Smb4KCore::setDefaultConfigValues() -->
     </entry>
     <entry name="NetBIOSScope" type="String">
       <label>NetBIOS scope:</label>
-      <whatsthis>This sets the NetBIOS scope that nmblookup, smbmount and smbclient will operate under. It should not be set unless every machine on your network neighborhood sets this value.</whatsthis>
+      <whatsthis>This sets the NetBIOS scope that nmblookup and smbclient will operate under. It should not be set unless every machine on your network neighborhood sets this value.</whatsthis>
       <!-- Will be filled by Smb4KCore::setDefaultConfigValues() -->
     </entry>
     <entry name="RemoteSMBPort" type="Int">
