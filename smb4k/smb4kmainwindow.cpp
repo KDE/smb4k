@@ -63,7 +63,6 @@
 #include <core/smb4kmounter.h>
 #include <core/smb4kprintinfo.h>
 #include <core/smb4kprint.h>
-#include <core/smb4ksynchronizationinfo.h>
 #include <core/smb4ksynchronizer.h>
 #include <core/smb4kpreviewitem.h>
 #include <core/smb4kpreviewer.h>
@@ -214,11 +213,11 @@ void Smb4KMainWindow::setupStatusBar()
   connect( Smb4KPrint::self(),         SIGNAL( finished( Smb4KPrintInfo * ) ),
            this,                       SLOT( slotPrintingFinished( Smb4KPrintInfo * ) ) );
 
-  connect( Smb4KSynchronizer::self(),  SIGNAL( aboutToStart( Smb4KSynchronizationInfo * ) ),
-           this,                       SLOT( slotSynchronizerAboutToStart( Smb4KSynchronizationInfo * ) ) );
+  connect( Smb4KSynchronizer::self(),  SIGNAL( aboutToStart( const QString & ) ),
+           this,                       SLOT( slotSynchronizerAboutToStart( const QString & ) ) );
 
-  connect( Smb4KSynchronizer::self(),  SIGNAL( finished( Smb4KSynchronizationInfo* ) ),
-           this,                       SLOT( slotSynchronizerFinished( Smb4KSynchronizationInfo * ) ) );
+  connect( Smb4KSynchronizer::self(),  SIGNAL( finished( const QString & ) ),
+           this,                       SLOT( slotSynchronizerFinished( const QString & ) ) );
 
   connect( Smb4KPreviewer::self(),     SIGNAL( aboutToStart( Smb4KPreviewItem * ) ),
            this,                       SLOT( slotPreviewerAboutToStart( Smb4KPreviewItem * ) ) );
@@ -1230,11 +1229,9 @@ void Smb4KMainWindow::slotPrintingFinished( Smb4KPrintInfo */*info*/ )
 }
 
 
-void Smb4KMainWindow::slotSynchronizerAboutToStart( Smb4KSynchronizationInfo *info )
+void Smb4KMainWindow::slotSynchronizerAboutToStart( const QString &dest )
 {
-  Q_ASSERT( info );
-  
-  statusBar()->showMessage( i18n( "Synchronizing %1" ).arg( info->destinationPath() ), 0 );
+  statusBar()->showMessage( i18n( "Synchronizing %1", dest ), 0 );
   
   if ( !m_progress_bar->isVisible() )
   {
@@ -1247,7 +1244,7 @@ void Smb4KMainWindow::slotSynchronizerAboutToStart( Smb4KSynchronizationInfo *in
 }
 
 
-void Smb4KMainWindow::slotSynchronizerFinished( Smb4KSynchronizationInfo */*info*/ )
+void Smb4KMainWindow::slotSynchronizerFinished( const QString &/*dest*/ )
 {
   if ( !Smb4KCore::self()->isRunning()  )
   {

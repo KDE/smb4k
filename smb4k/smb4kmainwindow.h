@@ -251,17 +251,17 @@ class Smb4KMainWindow : public KParts::MainWindow
      * This slot shows a message according to the action performed by the synchronizer.
      * It is connected to the Smb4KSynchronizer::aboutToStart() signal.
      *
-     * @param info          The Smb4KSynchronizationInfo object
+     * @param dest          The path of the destination
      */
-    void slotSynchronizerAboutToStart( Smb4KSynchronizationInfo *info );
+    void slotSynchronizerAboutToStart( const QString &dest );
 
     /**
      * This slot shows a message according to the finished action that were reported
      * by the synchronizer. It is connected to the Smb4KSynchronizer::finished() signal.
      *
-     * @param info          The Smb4KSynchronizationInfo object
+     * @param dest          The path of the destination
      */
-    void slotSynchronizerFinished( Smb4KSynchronizationInfo *info );
+    void slotSynchronizerFinished( const QString &dest );
 
     /**
      * This slot shows a message according to the action performed by the previewer.
