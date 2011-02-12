@@ -41,12 +41,12 @@
 #include <kio/copyjob.h>
 #include <kjobuidelegate.h>
 #include <kstandarddirs.h>
+#include <kglobalsettings.h>
 
 // application specific includes
 #include <smb4ksharesview_part.h>
 #include <smb4kshareslistviewitem.h>
 #include <smb4ksharesiconviewitem.h>
-#include <../dialogs/smb4ksynchronizationdialog.h>
 #include <../dialogs/smb4kbookmarkdialog.h>
 #include <../tooltips/smb4ktooltip.h>
 #include <core/smb4kshare.h>
@@ -55,6 +55,7 @@
 #include <core/smb4kglobal.h>
 #include <core/smb4kdefs.h>
 #include <core/smb4kmounter.h>
+#include <core/smb4ksynchronizer.h>
 
 using namespace Smb4KGlobal;
 
@@ -744,7 +745,7 @@ void Smb4KSharesViewPart::slotItemSelectionChanged()
       if ( !items.isEmpty() )
       {
         Smb4KSharesIconViewItem *item = static_cast<Smb4KSharesIconViewItem *>( items.first() );
-        Smb4KSynchronizationDialog *dlg = m_icon_view->findChild<Smb4KSynchronizationDialog *>( "SynchronizationDialog_"+item->shareItem()->canonicalPath() );
+        bool sync_running = Smb4KSynchronizer::self()->isRunning( item->shareItem() );
 
         actionCollection()->action( "unmount_action" )->setEnabled( (!item->shareItem()->isForeign() ||
                                                                     Smb4KSettings::unmountForeignShares()) );
@@ -756,7 +757,7 @@ void Smb4KSharesViewPart::slotItemSelectionChanged()
 
         if ( !item->shareItem()->isInaccessible() )
         {
-          actionCollection()->action( "synchronize_action" )->setEnabled( !KStandardDirs::findExe( "rsync" ).isEmpty() && !dlg );
+          actionCollection()->action( "synchronize_action" )->setEnabled( !KStandardDirs::findExe( "rsync" ).isEmpty() && !sync_running );
           actionCollection()->action( "konsole_action" )->setEnabled( !KGlobal::dirs()->findResource( "exe", "konsole" ).isEmpty() );
           actionCollection()->action( "filemanager_action" )->setEnabled( true );
         }
@@ -789,7 +790,7 @@ void Smb4KSharesViewPart::slotItemSelectionChanged()
       if ( !items.isEmpty() )
       {
         Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>( items.first() );
-        Smb4KSynchronizationDialog *dlg = m_list_view->findChild<Smb4KSynchronizationDialog *>( "SynchronizationDialog_"+item->shareItem()->canonicalPath() );
+        bool sync_running = Smb4KSynchronizer::self()->isRunning( item->shareItem() );
 
         actionCollection()->action( "unmount_action" )->setEnabled( (!item->shareItem()->isForeign() ||
                                                                     Smb4KSettings::unmountForeignShares()) );
@@ -801,7 +802,7 @@ void Smb4KSharesViewPart::slotItemSelectionChanged()
 
         if ( !item->shareItem()->isInaccessible() )
         {
-          actionCollection()->action( "synchronize_action" )->setEnabled( !KStandardDirs::findExe( "rsync" ).isEmpty() && !dlg );
+          actionCollection()->action( "synchronize_action" )->setEnabled( !KStandardDirs::findExe( "rsync" ).isEmpty() && !sync_running );
           actionCollection()->action( "konsole_action" )->setEnabled( !KGlobal::dirs()->findResource( "exe", "konsole" ).isEmpty() );
           actionCollection()->action( "filemanager_action" )->setEnabled( true );
         }
@@ -853,10 +854,10 @@ void Smb4KSharesViewPart::slotItemPressed( QTreeWidgetItem *item, int /*column*/
   {
     if ( shareItem )
     {
-      Smb4KSynchronizationDialog *dlg = m_list_view->findChild<Smb4KSynchronizationDialog *>( "SynchronizationDialog_"+shareItem->shareItem()->canonicalPath() );
+      bool sync_running = Smb4KSynchronizer::self()->isRunning( shareItem->shareItem() );
 
       actionCollection()->action( "synchronize_action" )->setEnabled( !KStandardDirs::findExe( "rsync" ).isEmpty() &&
-                                                                      !dlg &&
+                                                                      !sync_running &&
                                                                       !shareItem->shareItem()->isInaccessible() );
     }
     else
@@ -888,10 +889,10 @@ void Smb4KSharesViewPart::slotItemPressed( QListWidgetItem *item )
   {
     if ( shareItem )
     {
-      Smb4KSynchronizationDialog *dlg = m_icon_view->findChild<Smb4KSynchronizationDialog *>( "SynchronizationDialog_"+shareItem->shareItem()->canonicalPath() );
+      bool sync_running = Smb4KSynchronizer::self()->isRunning( shareItem->shareItem() );
 
       actionCollection()->action( "synchronize_action" )->setEnabled( !KStandardDirs::findExe( "rsync" ).isEmpty() &&
-                                                                      !dlg &&
+                                                                      !sync_running &&
                                                                       !shareItem->shareItem()->isInaccessible() );
     }
     else
@@ -1359,13 +1360,10 @@ void Smb4KSharesViewPart::slotSynchronize( bool /*checked*/ )
       for ( int i = 0; i < selected_items.size(); ++i )
       {
         Smb4KSharesIconViewItem *item = static_cast<Smb4KSharesIconViewItem *>( selected_items.at( i ) );
-        Smb4KSynchronizationDialog *dlg = m_icon_view->findChild<Smb4KSynchronizationDialog *>( "SynchronizationDialog_"+item->shareItem()->canonicalPath() );
 
-        if ( item && !item->shareItem()->isInaccessible() && !dlg )
+        if ( item && !item->shareItem()->isInaccessible() )
         {
-          dlg = new Smb4KSynchronizationDialog( item->shareItem(), m_icon_view );
-          dlg->setObjectName( "SynchronizationDialog_"+item->shareItem()->canonicalPath() );
-          dlg->setVisible( true );
+          Smb4KSynchronizer::self()->synchronize( item->shareItem(), m_icon_view );
         }
         else
         {
@@ -1382,13 +1380,10 @@ void Smb4KSharesViewPart::slotSynchronize( bool /*checked*/ )
       for ( int i = 0; i < selected_items.size(); ++i )
       {
         Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>( selected_items.at( i ) );
-        Smb4KSynchronizationDialog *dlg = m_list_view->findChild<Smb4KSynchronizationDialog *>( "SynchronizationDialog_"+item->shareItem()->canonicalPath() );
 
-        if ( item && !item->shareItem()->isInaccessible() && !dlg )
+        if ( item && !item->shareItem()->isInaccessible() )
         {
-          dlg = new Smb4KSynchronizationDialog( item->shareItem(), m_list_view );
-          dlg->setObjectName( "SynchronizationDialog_"+item->shareItem()->canonicalPath() );
-          dlg->setVisible( true );
+          Smb4KSynchronizer::self()->synchronize( item->shareItem(), m_list_view );
         }
         else
         {
