@@ -121,28 +121,28 @@ Smb4K SVN_HEAD (????-??-??):
   + Added equals() function.
   + Added "==" operator.
   + UID/owner and GID/group entries are now also returned for host items.
-- Revised Smb4KSynchronizationInfo class:
-  + Added functions to set and return the source directory.
-  + Added functions to set and return the destination directory.
-  + Added an equals() function.
-  + Added "==" operator.
 - Revised Smb4KSynchronizer class:
+  + Completely rewrote this class.
   + Introduced Smb4KSynchronizer::self().
   + Made constructor and destructor private. Use self() function to create
     a pointer to this class.
-  + Smb4KSynchronizer::synchronize() now takes a pointer as argument.
+  + Smb4KSynchronizer::synchronize() now takes a pointer to an Smb4KShare object
+    as argument.
   + Incoming synchronization request are now executed in parallel, because we
-    are using threads.
-  + Improved abort() function. It takes a Smb4KSynchronization object and you
-    can abort the corresponding synchronization process with it.
+    are using KJobs.
+  + Removed abort() function, because the KJob class provides all means to do it.
   + Added abortAll() function that aborts all running synchronization processes
     at once.
-  + Added isRunning( Smb4KSynchronizationInfo * ) function. You can test with it
-    if a certain synchronization process is running.
-  + Added aboutToStart( Smb4KSynchronizationInfo * ) signal that is emitted when
-    a synchronization process is about to start.
-  + Added finished( Smb4KSynchronizationInfo * ) signal that is emitted when a
+  + Added isRunning( Smb4KShare * ) function. You can test with it if a certain 
+    synchronization process is running.
+  + Added aboutToStart( const QString & ) signal that is emitted when a
+    synchronization process is about to start.
+  + Added finished( const QString & ) signal that is emitted when a
     synchronization process finished.
+  + The synchronization dialog is now a private helper class.
+  + By default, the destination directory offered by the synchronization dialog
+    is now RSYNC_PREFIX/HOST/Share.
+- Removed Smb4KSynchronizationInfo class. It is not needed anymore.
 - Revised Smb4KPrintInfo class:
   + The default value for the number of copies is now 1 instead of 0.
   + Replaced setShare() by setPrinter().
@@ -259,14 +259,6 @@ Smb4K SVN_HEAD (????-??-??):
     instead of pointers.
 - Added Smb4KNotification class. It shows notifications to the user.
 - Removed Smb4KCoreMessage class in favor of Smb4KNotification.
-- Revised synchronization dialog:
-  + Adjusted code so that the new features of the synchronizer can be used.
-  + The dialog does not close when you press "Cancel" during a synchronization.
-  + If the synchronization was aborted, the progress bars are not set to 100%.
-  + Several small improvements.
-  + Replaced deprecated functions.
-  + Added path completion.
-  + Added "What's this" help.
 - Revised the print dialog:
   + Adjusted code so that the new features of the print code can be used.
   + The file that should be printed is now checked if it is valid and existing.
