@@ -630,7 +630,7 @@
   <group name="Synchronization">
     <entry name="RsyncPrefix" type="Url">
       <label>Synchronization prefix:</label>
-      <whatsthis>This is the path where Smb4K will store the files and directories during synchronization. If you plan to synchronize only with one remote share, then you can put the data directly in this directory. If you want to synchronize with several remote shares, then you should create a subdirectory for each share and choose the appropriate one in the synchronization dialog.</whatsthis>
+      <whatsthis>Under this prefix the destination directory for the synchronization will be created. However, if you want to store the data of a particular share elsewhere, you will be able to choose a different path before the actual synchronization begins.</whatsthis>
       <default code="true">KUrl::fromPath( QDir::homePath()+"/smb4k_sync/" )</default>
     </entry>
     <entry name="ArchiveMode" type="Bool">
