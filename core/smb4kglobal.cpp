@@ -2,8 +2,8 @@
     smb4kglobal  -  This is the global namespace for Smb4K.
                              -------------------
     begin                : Sa Apr 2 2005
-    copyright            : (C) 2005-2009 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2005-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -674,4 +674,11 @@ void Smb4KGlobal::open( Smb4KShare *share, OpenWith openWith )
     }
   }
 }
+
+
+KUiServerJobTracker *Smb4KGlobal::jobTracker()
+{
+  return &p.jobTracker;
+}
+
 

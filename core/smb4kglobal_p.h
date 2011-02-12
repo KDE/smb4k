@@ -3,8 +3,8 @@
     namespace.
                              -------------------
     begin                : Di Jul 24 2007
-    copyright            : (C) 2007-2008 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2007-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -30,6 +30,9 @@
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
+
+// KDE includes
+#include <kuiserverjobtracker.h>
 
 // Qt includes
 #include <QList>
@@ -78,6 +81,11 @@ class Smb4KGlobalPrivate
      * This is the global list of shares.
      */
     QList<Smb4KShare *> sharesList;
+
+    /**
+     * The job tracker for KJobs
+     */
+    KUiServerJobTracker jobTracker;
 };
 
 #endif

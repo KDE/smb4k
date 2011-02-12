@@ -2,8 +2,8 @@
     smb4kglobal  -  This is the global namespace for Smb4K.
                              -------------------
     begin                : Sa Apr 2 2005
-    copyright            : (C) 2005-2009 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2005-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -32,6 +32,7 @@
 
 // KDE includes
 #include <kdemacros.h>
+#include <kuiserverjobtracker.h>
 
 // forward declarations
 class Smb4KWorkgroup;
@@ -319,6 +320,12 @@ namespace Smb4KGlobal
    *                      application the share should be opened.
    */
   KDE_EXPORT void open( Smb4KShare *share, OpenWith openWith = FileManager );
+
+  /**
+   * This is Smb4K's global tracker for classes that inherit KJob and need a
+   * possibility to show their progress.
+   */
+  KDE_EXPORT KUiServerJobTracker *jobTracker();
 };
 
 #endif

@@ -3,8 +3,8 @@
     namespace.
                              -------------------
     begin                : Di Jul 24 2007
-    copyright            : (C) 2007-2008 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2007-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
