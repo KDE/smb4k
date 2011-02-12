@@ -45,7 +45,6 @@
 #include <smb4ksystemtray.h>
 #include <dialogs/smb4kmountdialog.h>
 #include <dialogs/smb4kbookmarkeditor.h>
-#include <dialogs/smb4ksynchronizationdialog.h>
 #include <core/smb4kcore.h>
 #include <core/smb4kbookmark.h>
 #include <core/smb4kshare.h>
@@ -55,6 +54,7 @@
 #include <core/smb4kbookmarkhandler.h>
 #include <core/smb4kmounter.h>
 #include <core/smb4kscanner.h>
+#include <core/smb4ksynchronizer.h>
 
 using namespace Smb4KGlobal;
 
@@ -867,37 +867,18 @@ void Smb4KSystemTray::slotShareActionTriggered( QAction *action )
 
       if ( share && !share->isInaccessible() )
       {
-        Smb4KSynchronizationDialog *dlg = NULL;
-
-        // Do not open the synchronization dialog twice. So, look
-        // if there is already one.
-        if ( associatedWidget() )
+        if ( associatedWidget() && associatedWidget()->isVisible() )
         {
-          dlg = associatedWidget()->findChild<Smb4KSynchronizationDialog *>();
+          Smb4KSynchronizer::self()->synchronize( share, associatedWidget() );
         }
         else
         {
-          dlg = contextMenu()->findChild<Smb4KSynchronizationDialog *>();
+          // This is a bit strange, but we need a QWidget object.
+          // Since KSystemTrayIcon class inherits QObject, we do
+          // it this way. 0 as parent witll make the check above
+          // fail.
+          Smb4KSynchronizer::self()->synchronize( share, contextMenu() );
         }
-
-        // If there is no dialog yet, create one.
-        if ( !dlg )
-        {
-          if ( associatedWidget() && associatedWidget()->isVisible() )
-          {
-            dlg = new Smb4KSynchronizationDialog( share, associatedWidget() );
-          }
-          else
-          {
-            // This is a bit strange, but we need a QWidget object.
-            // Since KSystemTrayIcon class inherits QObject, we do
-            // it this way. 0 as parent witll make the check above
-            // fail.
-            dlg = new Smb4KSynchronizationDialog( share, contextMenu() );
-          }
-        }
-
-        dlg->setVisible( true );
       }
       else
       {
