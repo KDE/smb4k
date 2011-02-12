@@ -2,7 +2,7 @@
     smb4knotification  -  This class provides notifications for Smb4K.
                              -------------------
     begin                : Son Jun 27 2010
-    copyright            : (C) 2010 by Alexander Reinholdt
+    copyright            : (C) 2010-2011 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.org
  ***************************************************************************/
 
@@ -44,7 +44,6 @@
 #include <smb4kworkgroup.h>
 #include <smb4khost.h>
 #include <smb4kprintinfo.h>
-#include <smb4ksynchronizationinfo.h>
 
 using namespace KAuth;
 
@@ -410,17 +409,17 @@ void Smb4KNotification::printingFailed( Smb4KPrintInfo *info, const QString &err
 }
 
 
-void Smb4KNotification::synchronizationFailed( Smb4KSynchronizationInfo *info, const QString &err_msg )
+void Smb4KNotification::synchronizationFailed( const KUrl &src, const KUrl &dest, const QString &err_msg )
 {
   QString text;
   
   if ( !err_msg.isEmpty() )
   {
-    text = i18n( "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>", info->destinationPath(), info->sourcePath(), err_msg );
+    text = i18n( "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>", dest.path(), src.path(), err_msg );
   }
   else
   {
-    text = i18n( "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>", info->destinationPath(), info->sourcePath() );
+    text = i18n( "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>", dest.path(), src.path() );
   }
   
   KNotification *notification = KNotification::event( "synchronizationFailed",

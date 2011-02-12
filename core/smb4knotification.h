@@ -1,8 +1,8 @@
 /***************************************************************************
-    smb4knotification  -  This class provides notifications for Smb4K.static_cast<Smb4KHost *>( m_item )
+    smb4knotification  -  This class provides notifications for Smb4K.
                              -------------------
     begin                : Son Jun 27 2010
-    copyright            : (C) 2010 by Alexander Reinholdt
+    copyright            : (C) 2010-2011 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.org
  ***************************************************************************/
 
@@ -36,6 +36,9 @@
 #include <QDir>
 #include <QProcess>
 
+// KDE includes
+#include <kurl.h>
+
 // application specific includes
 #include <smb4kshare.h>
 
@@ -44,7 +47,6 @@ class Smb4KBookmark;
 class Smb4KWorkgroup;
 class Smb4KHost;
 class Smb4KPrintInfo;
-class Smb4KSynchronizationInfo;
 
 /**
  * This class provides notifications used thoughout Smb4K.
@@ -223,11 +225,15 @@ class KDE_EXPORT Smb4KNotification : public QObject
     /**
      * This error message is shown if the synchronization failed.
      *
-     * @param info      The synchronization info object
+     * @param src       The source URL
+     *
+     * @param dest      The destination URL
      *
      * @param err_msg   The error message
      */
-    void synchronizationFailed( Smb4KSynchronizationInfo *info, const QString &err_msg );
+    void synchronizationFailed( const KUrl &src,
+                                const KUrl &dest,
+                                const QString &err_msg );
 
     /**
      * This error message is shown if the searching of the network
