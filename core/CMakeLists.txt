@@ -37,8 +37,6 @@ set( smb4kcore_LIB_SRCS
   smb4ksearch_p.cpp
   smb4kshare.cpp
   smb4ksolidinterface.cpp
- 
-  smb4ksynchronizationinfo.cpp
   smb4ksynchronizer.cpp
   smb4ksynchronizer_p.cpp
   smb4kwalletmanager.cpp
