@@ -1,5 +1,6 @@
 [de.berlios.smb4k.mounthelper.mount]
 Name=Mount action
+Name[da]=Monteringshandling
 Name[km]=ម៉ោន​សកម្មភាព
 Name[pt]=Acção de montagem
 Name[pt_BR]=Ação de montagem
@@ -7,6 +8,7 @@ Name[sv]=Monteringsåtgärd
 Name[uk]=Дія з монтування
 Name[x-test]=xxMount actionxx
 Description=Mounts a share
+Description[da]=Monterer en ressource
 Description[km]=ម៉ោន​កា​រ​ចែករំលែក
 Description[pt]=Monta uma partilha
 Description[pt_BR]=Monta um compartilhamento
@@ -17,6 +19,7 @@ Policy=yes
 
 [de.berlios.smb4k.mounthelper.unmount]
 Name=Unmount action
+Name[da]=Afmonteringshandling
 Name[km]=អាន់ម៉ោន​សកម្មភាព
 Name[pt]=Acção de desmontagem
 Name[pt_BR]=Ação de desmontagem
@@ -24,6 +27,7 @@ Name[sv]=Avmonteringsåtgärd
 Name[uk]=Дія з демонтування
 Name[x-test]=xxUnmount actionxx
 Description=Unmounts a share
+Description[da]=afmonterer en ressource
 Description[km]=អាន់ម៉ោន​ការ​ចែករំលែក
 Description[pt]=Desmonta uma partilha
 Description[pt_BR]=Desmonta um compartilhamento

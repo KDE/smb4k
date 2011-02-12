@@ -767,6 +767,7 @@ Action=Popup|Sound
 
 [Event/actionFailed]
 Name=Action failed
+Name[da]=Handlingen mislykkedes
 Name[km]=បាន​បរាជ័យ​ក្នុង​សកម្មភាព
 Name[pt]=Acção mal-sucedida
 Name[pt_BR]=Ação falhou
@@ -774,6 +775,7 @@ Name[sv]=Åtgärd misslyckades
 Name[uk]=Спроба виконання дії зазнала невдачі
 Name[x-test]=xxAction failedxx
 Comment=An action could not be performed
+Comment[da]=En handling kunne ikke udføres
 Comment[km]=មិន​អាច​អនុវត្ត​សកម្មភាព​បាន​ទេ
 Comment[pt]=Não foi possível efectuar uma dada acção
 Comment[pt_BR]=Uma ação não pode ser realizada
