@@ -46,7 +46,6 @@
 // forward declarations
 class Smb4KShare;
 class Smb4KAuthInfo;
-class BasicMountThread;
 
 using namespace KAuth;
 

@@ -44,54 +44,18 @@ KDE4_AUTH_HELPER_MAIN( "de.berlios.smb4k.mounthelper", Smb4KMountHelper )
 ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
 {
   ActionReply reply;
-  reply.addData( "unc", args["unc"].toUrl() );
-  reply.addData( "workgroup", args["workgroup"].toString() );
-  reply.addData( "comment", args["comment"].toString() );
-  reply.addData( "host_ip", args["host_ip"].toString() );
-  reply.addData( "mountpoint", args["mountpoint"].toString() );
-  reply.addData( "key", args["key"].toString() );
+  reply.addData( "share_url", args["share_url"] );
+  reply.addData( "share_workgroup", args["share_workgroup"] );
+  reply.addData( "share_comment", args["share_comment"] );
+  reply.addData( "share_ip", args["share_ip"] );
+  reply.addData( "share_mountpoint", args["share_mountpoint"] );
+  reply.addData( "key", args["key"] );
 
-  QUrl full_unc = args["unc"].toUrl();
-  
   KProcess proc( this );
   proc.setOutputChannelMode( KProcess::SeparateChannels );
   proc.setProcessEnvironment( QProcessEnvironment::systemEnvironment() );
-  proc.setEnv( "PASSWD", full_unc.password(), true );
-
-#ifndef Q_OS_FREEBSD
-  QString unc = full_unc.toString( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort )
-                        .replace( "//"+full_unc.host(), "//"+full_unc.host().toUpper() );
-#else
-  QString unc = full_unc.toString( QUrl::RemoveScheme|QUrl::RemovePassword )
-                        .replace( "@"+full_unc.host(), "@"+full_unc.host().toUpper() );
-#endif
-
-  QStringList arguments;
-#ifndef Q_OS_FREEBSD
-  arguments << unc;
-  arguments << args["mountpoint"].toString();
-  if ( !args["mount_arguments"].toStringList().join( " " ).isEmpty() )
-  {
-    arguments << args["mount_arguments"].toStringList().join( " " );
-  }
-  else
-  {
-    // Do nothing
-  }
-#else
-  if ( !args["mount_arguments"].toStringList().join( " " ).isEmpty() )
-  {
-    arguments << args["mount_arguments"].toStringList().join( " " );
-  }
-  else
-  {
-    // Do nothing
-  }
-  arguments << unc;
-  arguments << args["mountpoint"].toString();
-#endif
-
-  proc.setProgram( args["mount_binary"].toString(), arguments );
+  proc.setEnv( "PASSWD", args["share_url"].toUrl().password(), true );
+  proc.setProgram( args["mount_command"].toStringList() );
 
   // Run the mount process.
   proc.start();
@@ -156,9 +120,9 @@ ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
 ActionReply Smb4KMountHelper::unmount( const QVariantMap &args )
 {
   ActionReply reply;
-  reply.addData( "unc", args["unc"].toUrl() );
-  reply.addData( "mountpoint", args["mountpoint"].toString() );
-  reply.addData( "key", args["key"].toString() );
+  reply.addData( "share_url", args["share_url"] );
+  reply.addData( "share_mountpoint", args["share_mountpoint"] );
+  reply.addData( "key", args["key"] );
 
   // Check if the mountpoint is valid and the file system is
   // also correct.
@@ -168,11 +132,11 @@ ActionReply Smb4KMountHelper::unmount( const QVariantMap &args )
   for( int j = 0; j < mountpoints.size(); j++ )
   {
 #ifndef Q_OS_FREEBSD
-    if ( QString::compare( args["mountpoint"].toString(),
+    if ( QString::compare( args["share_mountpoint"].toString(),
                            mountpoints.at( j )->mountPoint(), Qt::CaseInsensitive ) == 0 &&
          QString::compare( mountpoints.at( j )->mountType(), "cifs", Qt::CaseInsensitive ) == 0 )
 #else
-    if ( QString::compare( args["mountpoint"].toString(),
+    if ( QString::compare( args["share_mountpoint"].toString(),
                            mountpoints.at( j )->mountPoint(), Qt::CaseInsensitive ) == 0 &&
          QString::compare( mountpoints.at( j )->mountType(), "smbfs", Qt::CaseInsensitive ) == 0 )
 #endif
@@ -200,19 +164,7 @@ ActionReply Smb4KMountHelper::unmount( const QVariantMap &args )
   KProcess proc( this );
   proc.setOutputChannelMode( KProcess::SeparateChannels );
   proc.setProcessEnvironment( QProcessEnvironment::systemEnvironment() );
-
-  QStringList arguments;
-  if ( !args["umount_arguments"].toStringList().join( " " ).isEmpty() )
-  {
-    arguments << args["umount_arguments"].toStringList().join( " " );
-  }
-  else
-  {
-    // Do nothing
-  }
-  arguments << args["mountpoint"].toString();
-
-  proc.setProgram( args["umount_binary"].toString(), arguments );
+  proc.setProgram( args["umount_command"].toStringList() );
 
   // Run the unmount process.
   proc.start();

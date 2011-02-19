@@ -111,6 +111,13 @@ class KDE_EXPORT Smb4KBasicNetworkItem
      * @returns the network item's icon.
      */
     const QIcon &icon() const { return m_icon; }
+
+    /**
+     * Sets the URL of the network item after some checks are passed.
+     * 
+     * @param url             The URL of the network item
+     */
+    void setURL( const QUrl &url );
     
     /**
      * Returns the URL (the full UNC) of the network item or an empty URL

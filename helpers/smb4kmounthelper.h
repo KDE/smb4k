@@ -39,7 +39,28 @@ class Smb4KMountHelper : public QObject
   Q_OBJECT
   
   public slots:
+    /**
+     * Mounts a CIFS/SMBFS share.
+     * 
+     * The following arguments are recognized:
+     * mount_command      The full mount command (mandatory)
+     * share_url          The URL of the share (mandatory)
+     * share_mountpoint   The mountpoint of the share (mandatory)
+     * share_workgroup    The workgroup of the share (optional)
+     * share_comment      The comment of the share (optional)
+     * key                The key of this action (optional, mandatory for Smb4K)
+     */
     ActionReply mount( const QVariantMap &args );
+
+    /**
+     * Unmounts a CIFS/SMBFS share.
+     *
+     * The following arguments are recognized:
+     * unmount_command    The full unmount command (mandatory)
+     * share_url          The URL of the share (optional, mandatory for Smb4K)
+     * share_mountpoint   The mountpoint of the share (mandatory)
+     * key                The key of this action (optional, mandatory for Smb4K)
+     */
     ActionReply unmount( const QVariantMap &args );
 };
 

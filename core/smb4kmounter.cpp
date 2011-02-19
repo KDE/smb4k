@@ -1101,10 +1101,8 @@ bool Smb4KMounter::createMountAction( Smb4KShare *share, Action *action )
 #else
   share->setFileSystem( Smb4KShare::SMBFS );
 #endif
-//   share->setLogin( QString::fromUtf8( authInfo.login() ) );
 
-  // Compile the arguments
-  QString arguments;
+  QStringList arguments;
   QMap<QString, QString> global_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
   Smb4KSambaOptionsInfo *options_info  = Smb4KSambaOptionsHandler::self()->findItem( share, true );
 
@@ -1119,24 +1117,39 @@ bool Smb4KMounter::createMountAction( Smb4KShare *share, Action *action )
     share->setPort( Smb4KSettings::remoteSMBPort() );
   }
 
+  // Compile the arguments
 #ifndef Q_OS_FREEBSD
-  arguments += "-o";
-  arguments += " ";
-
+  QStringList args_list;
+  
   // Workgroup
-  arguments += !share->workgroupName().trimmed().isEmpty() ?
-               QString( "domain=%1" ).arg( KShell::quoteArg( share->workgroupName() ) ) :
-               "";
+  if ( !share->workgroupName().trimmed().isEmpty() )
+  {
+    args_list << QString( "domain=%1" ).arg( KShell::quoteArg( share->workgroupName() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
 
   // Host IP
-  arguments += !share->hostIP().trimmed().isEmpty() ?
-               QString( ",ip=%1" ).arg( share->hostIP() ) :
-               "";
+  if ( !share->hostIP().trimmed().isEmpty() )
+  {
+    args_list << QString( "ip=%1" ).arg( share->hostIP() );
+  }
+  else
+  {
+    // Do nothing
+  }
 
   // User
-  arguments += !authInfo.login().isEmpty() ?
-               QString( ",user=%1" ).arg( authInfo.login() ) :
-               ",guest";
+  if ( !authInfo.login().isEmpty() )
+  {
+    args_list << QString( "user=%1" ).arg( authInfo.login() );
+  }
+  else
+  {
+    args_list << "guest";
+  }
 
   // Client's and server's NetBIOS name
   // According to the manual page, this is only needed when port 139
@@ -1146,13 +1159,13 @@ bool Smb4KMounter::createMountAction( Smb4KShare *share, Action *action )
     // The client's NetBIOS name.
     if ( !Smb4KSettings::netBIOSName().isEmpty() )
     {
-      arguments += QString( ",netbiosname=%1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) );
+      args_list << QString( "netbiosname=%1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) );
     }
     else
     {
       if ( !global_options["netbios name"].isEmpty() )
       {
-        arguments += QString( ",netbiosname=%1" ).arg( KShell::quoteArg( global_options["netbios name"] ) );
+        args_list << QString( "netbiosname=%1" ).arg( KShell::quoteArg( global_options["netbios name"] ) );
       }
       else
       {
@@ -1161,7 +1174,7 @@ bool Smb4KMounter::createMountAction( Smb4KShare *share, Action *action )
     }
 
     // The server's NetBIOS name.
-    arguments += ",servern="+KShell::quoteArg( share->hostName() );
+    args_list << QString( "servern=%1" ).arg( KShell::quoteArg( share->hostName() ) );
   }
   else
   {
@@ -1169,10 +1182,10 @@ bool Smb4KMounter::createMountAction( Smb4KShare *share, Action *action )
   }
 
   // UID
-  arguments += QString( ",uid=%1" ).arg( options_info ? options_info->uid() : (uid_t)Smb4KSettings::userID().toInt() );
+  args_list << QString( "uid=%1" ).arg( options_info ? options_info->uid() : (uid_t)Smb4KSettings::userID().toInt() );
 
   // GID
-  arguments += QString( ",gid=%1" ).arg( options_info ? options_info->gid() : (gid_t)Smb4KSettings::groupID().toInt() );
+  args_list << QString( "gid=%1" ).arg( options_info ? options_info->gid() : (gid_t)Smb4KSettings::groupID().toInt() );
 
   // Client character set
   switch ( Smb4KSettings::clientCharset() )
@@ -1181,7 +1194,7 @@ bool Smb4KMounter::createMountAction( Smb4KShare *share, Action *action )
     {
       if ( !global_options["unix charset"].isEmpty() )
       {
-        arguments += QString( ",iocharset=%1" ).arg( global_options["unix charset"].toLower() );
+        args_list << QString( "iocharset=%1" ).arg( global_options["unix charset"].toLower() );
       }
       else
       {
@@ -1191,14 +1204,14 @@ bool Smb4KMounter::createMountAction( Smb4KShare *share, Action *action )
     }
     default:
     {
-      arguments += QString( ",iocharset=%1" ).arg( Smb4KSettings::self()->clientCharsetItem()->label() );
+      args_list << QString( "iocharset=%1" ).arg( Smb4KSettings::self()->clientCharsetItem()->label() );
       break;
     }
   }
 
   // Port
-  arguments += QString( ",port=%1" ).arg( (options_info && options_info->fileSystemPort() != -1) ?
-               options_info->fileSystemPort() : Smb4KSettings::remoteFileSystemPort() );
+  args_list << QString( "port=%1" ).arg( (options_info && options_info->fileSystemPort() != -1) ?
+                                          options_info->fileSystemPort() : Smb4KSettings::remoteFileSystemPort() );
 
   // Write access
   if ( options_info )
@@ -1207,12 +1220,12 @@ bool Smb4KMounter::createMountAction( Smb4KShare *share, Action *action )
     {
       case Smb4KSambaOptionsInfo::ReadWrite:
       {
-        arguments += ",rw";
+        args_list << "rw";
         break;
       }
       case Smb4KSambaOptionsInfo::ReadOnly:
       {
-        arguments += ",ro";
+        args_list << "ro";
         break;
       }
       default:
@@ -1221,12 +1234,12 @@ bool Smb4KMounter::createMountAction( Smb4KShare *share, Action *action )
         {
           case Smb4KSettings::EnumWriteAccess::ReadWrite:
           {
-            arguments += ",rw";
+            args_list << "rw";
             break;
           }
           case Smb4KSettings::EnumWriteAccess::ReadOnly:
           {
-            arguments += ",ro";
+            args_list << "ro";
             break;
           }
           default:
@@ -1244,12 +1257,12 @@ bool Smb4KMounter::createMountAction( Smb4KShare *share, Action *action )
     {
       case Smb4KSettings::EnumWriteAccess::ReadWrite:
       {
-        arguments += ",rw";
+        args_list << "rw";
         break;
       }
       case Smb4KSettings::EnumWriteAccess::ReadOnly:
       {
-        arguments += ",ro";
+        args_list << "ro";
         break;
       }
       default:
@@ -1260,65 +1273,121 @@ bool Smb4KMounter::createMountAction( Smb4KShare *share, Action *action )
   }
 
   // File mask
-  arguments += !Smb4KSettings::fileMask().isEmpty() ? QString( ",file_mode=%1" ).arg( Smb4KSettings::fileMask() ) : "";
+  if ( !Smb4KSettings::fileMask().isEmpty() )
+  {
+    args_list << QString( "file_mode=%1" ).arg( Smb4KSettings::fileMask() );
+  }
+  else
+  {
+    // Do nothing
+  }
 
   // Directory mask
-  arguments += !Smb4KSettings::directoryMask().isEmpty() ? QString( ",dir_mode=%1" ).arg( Smb4KSettings::directoryMask() ) : "";
+  if ( !Smb4KSettings::directoryMask().isEmpty() )
+  {
+    args_list << QString( "dir_mode=%1" ).arg( Smb4KSettings::directoryMask() );
+  }
+  else
+  {
+    // Do nothing
+  }
 
   // Permission checks
-  arguments += Smb4KSettings::permissionChecks() ? ",perm" : ",noperm";
+  if ( Smb4KSettings::permissionChecks() )
+  {
+    args_list << "perm";
+  }
+  else
+  {
+    args_list << "noperm";
+  }
 
   // Client controls IDs
-  arguments += Smb4KSettings::clientControlsIDs() ? ",setuids" : ",nosetuids";
+  if ( Smb4KSettings::clientControlsIDs() )
+  {
+    args_list << "setuids";
+  }
+  else
+  {
+    args_list << "nosetuids";
+  }
 
   // Server inode numbers
-  arguments += Smb4KSettings::serverInodeNumbers() ? ",serverino" : ",noserverino";
+  if ( Smb4KSettings::serverInodeNumbers() )
+  {
+    args_list << "serverino";
+  }
+  else
+  {
+    args_list << "noserverino";
+  }
 
   // Inode data caching
-  arguments += Smb4KSettings::noInodeDataCaching() ? ",directio" : "";
+  if ( Smb4KSettings::noInodeDataCaching() )
+  {
+    args_list << "directio";
+  }
+  else
+  {
+    // Do nothing
+  }
 
   // Translate reserved characters
-  arguments += Smb4KSettings::translateReservedChars() ? ",mapchars" : ",nomapchars";
+  if ( Smb4KSettings::translateReservedChars() )
+  {
+    args_list << "mapchars";
+  }
+  else
+  {
+    args_list << "nomapchars";
+  }
 
   // Locking
-  arguments += Smb4KSettings::noLocking() ? ",nolock" : "";
+  if ( Smb4KSettings::noLocking() )
+  {
+    args_list << "nolock";
+  }
+  else
+  {
+    // Do nothing
+  }
 
   // Security mode
   switch ( Smb4KSettings::securityMode() )
   {
     case Smb4KSettings::EnumSecurityMode::None:
     {
-      arguments += ",sec=none";
+      args_list << "sec=none";
       break;
     }
     case Smb4KSettings::EnumSecurityMode::Krb5:
     {
-      arguments += ",sec=krb5";
+      args_list << "sec=krb5";
       break;
     }
     case Smb4KSettings::EnumSecurityMode::Krb5i:
     {
-      arguments += ",sec=krb5i";
+      args_list << "sec=krb5i";
       break;
     }
     case Smb4KSettings::EnumSecurityMode::Ntlm:
     {
-      arguments += ",sec=ntlm";
+      args_list << "sec=ntlm";
       break;
     }
     case Smb4KSettings::EnumSecurityMode::Ntlmi:
     {
-      arguments += ",sec=ntlmi";
+      args_list << "sec=ntlmi";
       break;
     }
     case Smb4KSettings::EnumSecurityMode::Ntlmv2:
     {
-      arguments += ",sec=ntlmv2";
+      args_list << "sec=ntlmv2";
       break;
     }
     case Smb4KSettings::EnumSecurityMode::Ntlmv2i:
     {
-      arguments += ",sec=ntlmv2i";
+      args_list << "sec=ntlmv2i";
       break;
     }
     default:
@@ -1328,34 +1397,45 @@ bool Smb4KMounter::createMountAction( Smb4KShare *share, Action *action )
   }
 
   // Global custom options provided by the user
-  arguments += !Smb4KSettings::customCIFSOptions().isEmpty() ? ","+Smb4KSettings::customCIFSOptions() : "";
-
-  // Fix existing comma, if necessary.
-  if ( arguments.endsWith( "," ) )
+  if ( !Smb4KSettings::customCIFSOptions().isEmpty() )
   {
-    arguments.truncate( arguments.length() - 1 );
+    args_list += Smb4KSettings::customCIFSOptions().split( ",", QString::SkipEmptyParts );
   }
   else
   {
     // Do nothing
   }
+
+  arguments << QString( "-o %1" ).arg( args_list.join( "," ) );
 #else
   // Workgroup
-  arguments += !share->workgroupName().isEmpty() ?
-               QString( " -W %1" ).arg( KShell::quoteArg( share->workgroupName() ) ) :
-               "";
+  if ( !share->workgroupName().isEmpty() )
+  {
+    arguments << QString( "-W %1" ).arg( KShell::quoteArg( share->workgroupName() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
 
   // Host IP
-  arguments += !share->hostIP().isEmpty() ? QString( " -I %1" ).arg( share->hostIP() ) : "";
+  if ( !share->hostIP().isEmpty() )
+  {
+    arguments << QString( "-I %1" ).arg( share->hostIP() );
+  }
+  else
+  {
+    // Do nothing
+  }
 
   // Do not ask for a password. Use ~/.nsmbrc instead.
-  arguments += " -N";
+  arguments << "-N";
 
   // UID
-  arguments += QString( " -u %1" ).arg( options_info ? options_info->uid() : (uid_t)Smb4KSettings::userID().toInt() );
+  arguments << QString( "-u %1" ).arg( options_info ? options_info->uid() : (uid_t)Smb4KSettings::userID().toInt() );
 
   // GID
-  arguments += QString( " -g %1" ).arg( options_info ?  options_info->gid() : (uid_t)Smb4KSettings::groupID().toInt() );
+  arguments << QString( "-g %1" ).arg( options_info ?  options_info->gid() : (uid_t)Smb4KSettings::groupID().toInt() );
 
   // Client character set and server codepage
   QString charset, codepage;
@@ -1388,34 +1468,67 @@ bool Smb4KMounter::createMountAction( Smb4KShare *share, Action *action )
     }
   }
 
-  arguments += (!charset.isEmpty() && !codepage.isEmpty()) ? QString( " -E %1:%2" ).arg( charset, codepage ) : "";
+  if ( !charset.isEmpty() && !codepage.isEmpty() )
+  {
+    arguments << QString( "-E %1:%2" ).arg( charset, codepage );
+  }
+  else
+  {
+    // Do nothing
+  }
 
   // File mask
-  arguments += !Smb4KSettings::fileMask().isEmpty() ? QString( " -f %1" ).arg( Smb4KSettings::fileMask() ) : "";
+  if ( !Smb4KSettings::fileMask().isEmpty() )
+  {
+    arguments << QString( "-f %1" ).arg( Smb4KSettings::fileMask() );
+  }
+  else
+  {
+    // Do nothing
+  }
 
   // Directory mask
-  arguments += !Smb4KSettings::directoryMask().isEmpty() ? QString( " -d %1" ).arg( Smb4KSettings::directoryMask() ) : "";
+  if ( !Smb4KSettings::directoryMask().isEmpty() )
+  {
+    arguments << QString( "-d %1" ).arg( Smb4KSettings::directoryMask() );
+  }
+  else
+  {
+    // Do nothing
+  }
 #endif
 
+  // Compile the mount command.
+  QStringList mount_command;
+  mount_command << mount;
+#ifndef Q_OS_FREEBSD
+  mount_command << share->unc();
+  mount_command << share->canonicalPath();
+  mount_command += arguments;
+#else
+  mount_command += arguments;
+  mount_command << share->unc();
+  mount_command << share->canonicalPath();
+#endif
+  
   action->setName( "de.berlios.smb4k.mounthelper.mount" );
   action->setHelperID( "de.berlios.smb4k.mounthelper" );
-  action->addArgument( "mount_binary", mount );
-  action->addArgument( "mount_arguments", arguments );
+  action->addArgument( "mount_command", mount_command );
   action->addArgument( "key", key );
 
   // Now add everything we need to create an Smb4KShare object in slotShareMounted().
   if ( !share->isHomesShare() )
   {
-    action->addArgument( "unc", share->url() );
+    action->addArgument( "share_url", share->url() );
   }
   else
   {
-    action->addArgument( "unc", share->homeURL() );
+    action->addArgument( "share_url", share->homeURL() );
   }
-  action->addArgument( "workgroup", share->workgroupName() );
-  action->addArgument( "comment", share->comment() );
-  action->addArgument( "host_ip", share->hostIP() );
-  action->addArgument( "mountpoint", share->canonicalPath() );
+  action->addArgument( "share_workgroup", share->workgroupName() );
+  action->addArgument( "share_comment", share->comment() );
+  action->addArgument( "share_ip", share->hostIP() );
+  action->addArgument( "share_mountpoint", share->canonicalPath() );
 
   return true;
 }
@@ -1539,13 +1652,14 @@ bool Smb4KMounter::createUnmountAction( Smb4KShare *share, bool force, bool sile
     // Do nothing
   }
 
-  // Compile the arguments.
-  QString arguments;
+  // Compile the command
+  QStringList unmount_command;
+  unmount_command << umount;
 
 #ifdef __linux__
   if ( force )
   {
-    arguments += "-l"; // lazy unmount
+    unmount_command << "-l"; // lazy unmount
   }
   else
   {
@@ -1553,15 +1667,16 @@ bool Smb4KMounter::createUnmountAction( Smb4KShare *share, bool force, bool sile
   }
 #endif
 
+  unmount_command << share->canonicalPath();
+
   action->setName( "de.berlios.smb4k.mounthelper.unmount" );
   action->setHelperID( "de.berlios.smb4k.mounthelper" );
-  action->addArgument( "umount_binary", umount );
-  action->addArgument( "umount_arguments", arguments );
+  action->addArgument( "umount_command", unmount_command );
   action->addArgument( "key", key );
 
   // Now add everything we need.
-  action->addArgument( "unc", share->url() );
-  action->addArgument( "mountpoint", share->canonicalPath() );
+  action->addArgument( "share_url", share->url() );
+  action->addArgument( "share_mountpoint", share->canonicalPath() );
 
   return true;
 }
@@ -1723,6 +1838,7 @@ void Smb4KMounter::slotAboutToQuit()
 void Smb4KMounter::slotActionFinished( ActionReply reply )
 {
   int index = m_cache.indexOf( reply.data().value( "key" ).toString() );
+  
   if ( index != -1 )
   {
     m_cache.removeAt( index );
@@ -1747,11 +1863,11 @@ void Smb4KMounter::slotActionFinished( ActionReply reply )
         // Ooops, something went wrong. We do not check for the mounted share
         // but create a share from the values provided by reply, so that we
         // can emit signals etc.
-        share.setUNC( reply.data()["unc"].toUrl().toString( QUrl::None ) );
-        share.setWorkgroupName( reply.data()["workgroup"].toString() );
-        share.setHostIP( reply.data()["host_ip"].toString() );
-        share.setComment( reply.data()["comment"].toString() );
-        share.setPath( reply.data()["mountpoint"].toString() );
+        share.setURL( reply.data()["share_url"].toUrl() );
+        share.setWorkgroupName( reply.data()["share_workgroup"].toString() );
+        share.setHostIP( reply.data()["share_ip"].toString() );
+        share.setComment( reply.data()["share_comment"].toString() );
+        share.setPath( reply.data()["share_mountpoint"].toString() );
         
 #ifndef Q_OS_FREEBSD
         if ( stderr.contains( "mount error 13", Qt::CaseSensitive ) || stderr.contains( "mount error(13)" )
@@ -1811,7 +1927,7 @@ void Smb4KMounter::slotActionFinished( ActionReply reply )
       else
       {
         // Everything is fine, we can check for the mounted share.
-        share = *(findShareByPath( reply.data().value( "mountpoint" ).toByteArray() ));
+        share = *(findShareByPath( reply.data().value( "share_mountpoint" ).toByteArray() ));
       }
 
       emit finished( &share, MountShare );
@@ -1819,11 +1935,8 @@ void Smb4KMounter::slotActionFinished( ActionReply reply )
     else if ( reply.data().value( "key" ).toString().startsWith( "unmount_" ) )
     {
       // Create a share for emitting the signals.
-      share.setUNC( reply.data()["unc"].toUrl().toString( QUrl::None ) );
-      share.setWorkgroupName( reply.data()["workgroup"].toString() );
-      share.setHostIP( reply.data()["host_ip"].toString() );
-      share.setComment( reply.data()["comment"].toString() );
-      share.setPath( reply.data()["mountpoint"].toString() );
+      share.setURL( reply.data()["share_url"].toUrl() );
+      share.setPath( reply.data()["share_mountpoint"].toString() );
 
       // Check if an error occurred.
       QString stderr( reply.data().value( "stderr" ).toString() );
@@ -1870,7 +1983,7 @@ void Smb4KMounter::slotShareMounted( ActionReply reply )
   if ( !reply.failed() )
   {
     // Check that the share has not already been entered into the list.
-    Smb4KShare *share = findShareByPath( reply.data()["mountpoint"].toByteArray() );
+    Smb4KShare *share = findShareByPath( reply.data()["share_mountpoint"].toByteArray() );
 
     if ( !share )
     {
@@ -1878,11 +1991,12 @@ void Smb4KMounter::slotShareMounted( ActionReply reply )
       // by 'reply'.
       // NOTE: Remove the password from the URL/UNC to avoid empty user info
       // in the new share object if the password contains special characters!
-      share = new Smb4KShare( reply.data()["unc"].toUrl().toString( QUrl::RemovePassword ) );
-      share->setWorkgroupName( reply.data()["workgroup"].toString() );
-      share->setComment( reply.data()["comment"].toString() );
-      share->setHostIP( reply.data()["host_ip"].toString() );
-      share->setPath( reply.data()["mountpoint"].toString() );
+      share = new Smb4KShare();
+      share->setURL( reply.data()["share_url"].toUrl() );
+      share->setWorkgroupName( reply.data()["share_workgroup"].toString() );
+      share->setComment( reply.data()["share_comment"].toString() );
+      share->setHostIP( reply.data()["share_ip"].toString() );
+      share->setPath( reply.data()["share_mountpoint"].toString() );
 
       // Check that we actually mounted the share and emit
       // the mounted() signal if we found it.
@@ -1992,7 +2106,7 @@ void Smb4KMounter::slotShareUnmounted( ActionReply reply )
   if ( !reply.failed() )
   {
     // Get the share that was unmounted.
-    Smb4KShare *share = findShareByPath( reply.data()["mountpoint"].toByteArray() );
+    Smb4KShare *share = findShareByPath( reply.data()["share_mountpoint"].toByteArray() );
 
     if ( share )
     {
@@ -2018,11 +2132,11 @@ void Smb4KMounter::slotShareUnmounted( ActionReply reply )
       if ( !mountpoint_found )
       {
         // Clean up the mount prefix.
-        if ( qstrncmp( reply.data()["mountpoint"].toString().toUtf8(),
+        if ( qstrncmp( reply.data()["share_mountpoint"].toString().toUtf8(),
              QDir( Smb4KSettings::mountPrefix().path() ).canonicalPath().toUtf8(),
              QDir( Smb4KSettings::mountPrefix().path() ).canonicalPath().toUtf8().length() ) == 0 )
         {
-          QDir dir( reply.data()["mountpoint"].toString() );
+          QDir dir( reply.data()["share_mountpoint"].toString() );
 
           if ( dir.rmdir( dir.canonicalPath() ) )
           {
