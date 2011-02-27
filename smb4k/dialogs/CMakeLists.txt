@@ -12,8 +12,7 @@ set( smb4kdialogs_LIB_SRCS
   smb4kbookmarkeditor.cpp
   smb4kcustomoptionsdialog.cpp
   smb4kmountdialog.cpp
-  smb4kpreviewdialog.cpp
-  smb4kprintdialog.cpp )
+  smb4kpreviewdialog.cpp )
 
 kde4_add_library( smb4kdialogs SHARED ${smb4kdialogs_LIB_SRCS} )
 
