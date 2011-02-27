@@ -27,7 +27,6 @@ set( smb4kcore_LIB_SRCS
   smb4kpreviewitem.cpp
   smb4kprint.cpp
   smb4kprint_p.cpp
-  smb4kprintinfo.cpp
   smb4kprocess.cpp
   smb4ksambaoptionshandler.cpp
   smb4ksambaoptionsinfo.cpp
