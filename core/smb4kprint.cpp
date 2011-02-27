@@ -1,9 +1,9 @@
 /***************************************************************************
-    smb4kprint  -  The printing core class.
+    smb4kprint  -  The (new) printing core class.
                              -------------------
-    begin                : Tue Mar 30 2004
-    copyright            : (C) 2004-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    begin                : Son Feb 20 2011
+    copyright            : (C) 2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -23,40 +23,27 @@
  *   MA  02111-1307 USA                                                    *
  ***************************************************************************/
 
-// KDE includes
-#include <kurl.h>
-#include <kfileitem.h>
-#include <kdebug.h>
-#include <kshell.h>
-#include <kapplication.h>
-#include <ktemporaryfile.h>
+// Qt includes
+#include <QTimer>
+#include <QDebug>
+
+// KDE specific includes
+#include <kglobal.h>
 #include <kstandarddirs.h>
-#include <kmessagebox.h>
 
 // application specific includes
 #include <smb4kprint.h>
-#include <smb4kdefs.h>
-#include <smb4kglobal.h>
-#include <smb4kauthinfo.h>
-#include <smb4ksettings.h>
-#include <smb4kshare.h>
 #include <smb4kprint_p.h>
-#include <smb4kwalletmanager.h>
-#include <smb4kprintinfo.h>
+#include <smb4kshare.h>
 #include <smb4knotification.h>
+#include <smb4kauthinfo.h>
+#include <smb4kwalletmanager.h>
 
-using namespace Smb4KGlobal;
-
-K_GLOBAL_STATIC( Smb4KPrintPrivate, priv );
+K_GLOBAL_STATIC( Smb4KPrintPrivate, p );
 
 
 Smb4KPrint::Smb4KPrint()
-: QObject()
 {
-  m_state = PRINT_STOP;
-
-  connect( kapp, SIGNAL( aboutToQuit() ),
-           this, SLOT( slotAboutToQuit() ) );
 }
 
 
@@ -67,292 +54,124 @@ Smb4KPrint::~Smb4KPrint()
 
 Smb4KPrint *Smb4KPrint::self()
 {
-  return &priv->instance;
+  return &p->instance;
 }
 
 
-void Smb4KPrint::print( Smb4KPrintInfo *printInfo )
+void Smb4KPrint::print( Smb4KShare *printer, QWidget *parent )
 {
-  Q_ASSERT( printInfo );
-
-  // Find the smbspool program
-  QString smbspool = KStandardDirs::findExe( "smbspool" );
-
-  if ( smbspool.isEmpty() )
+  // Check that we actually have a printer share
+  if ( !printer->isPrinter() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "smbspool" );
     return;
-  }
-  else
-  {
-    // Go ahead
-  }
-
-  // Find the dvips program
-  QString dvips = KStandardDirs::findExe( "dvips" );
-
-  // Find the enscript program
-  QString enscript = KStandardDirs::findExe( "enscript" );
-
-  if ( QFile::exists( printInfo->filePath() ) )
-  {
-    // Get the authentication information.
-    Smb4KAuthInfo authInfo( printInfo->printer() );
-    Smb4KWalletManager::self()->readAuthInfo( &authInfo );
-
-    // Set the authentication information for the printer.
-    printInfo->setAuthInfo( &authInfo );
-
-    // Set the temporary file for conversion purposes.
-    KTemporaryFile temp_file;
-    temp_file.setAutoRemove( true );
-    temp_file.setSuffix( ".ps" );
-
-    // Set up a KFileItem object to get the mimetype later on. It is
-    // needed to be able to compile the command.
-    KUrl url;
-    url.setPath( printInfo->filePath() );
-    KFileItem file_item = KFileItem( KFileItem::Unknown, KFileItem::Unknown, url, false );
-
-    // Compile the command.
-    QString command;
-
-    if ( QString::compare( file_item.mimetype(), "application/postscript" ) == 0 ||
-         QString::compare( file_item.mimetype(), "application/pdf" ) == 0 ||
-         file_item.mimetype().startsWith( "image" ) )
-    {
-      // Nothing to do here. These mimetypes can be directly
-      // printed.
-    }
-    else if ( QString::compare( file_item.mimetype(), "application/x-dvi" ) == 0 &&
-              !dvips.isEmpty() )
-    {
-      // Create the temporary file.
-      if ( !temp_file.open() )
-      {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->openingFileFailed( temp_file );
-        return;
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      temp_file.close();
-
-      command += dvips;
-      command += " -Ppdf";
-      command += " -o "+KShell::quoteArg( temp_file.fileName() );
-      command += " "+KShell::quoteArg( printInfo->filePath() );
-      command += " && ";
-    }
-    else if ( (file_item.mimetype().startsWith( "text" ) ||
-              file_item.mimetype().startsWith( "message" ) ||
-              QString::compare( file_item.mimetype(), "application/x-shellscript" ) == 0) &&
-              !enscript.isEmpty() )
-    {
-      // Create the temporary file.
-      if ( !temp_file.open() )
-      {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->openingFileFailed( temp_file );
-        return;
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      temp_file.close();
-
-      command += enscript;
-      command += " --quiet";
-      command += " --columns=1 --no-header --ps-level=2";
-      command += " -o "+KShell::quoteArg( temp_file.fileName() );
-      command += " "+KShell::quoteArg( printInfo->filePath() );
-      command += " && ";
-    }
-    else
-    {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->mimetypeNotSupported( file_item.mimetype() );
-      return;
-    }
-
-    command += smbspool;
-    command += " 111";
-    command += " "+KUser( getuid() ).loginName();
-    command += " \"Smb4K print job\"";
-    command += " "+QString( "%1" ).arg( printInfo->copies() );
-    command += " \"\"";
-
-    if ( temp_file.exists() )
-    {
-      command += " "+KShell::quoteArg( temp_file.fileName() );
-    }
-    else
-    {
-      command += " "+KShell::quoteArg( printInfo->filePath() );
-    }
-
-    // Start printing the file.
-    if ( m_cache.size() == 0 )
-    {
-      QApplication::setOverrideCursor( Qt::WaitCursor );
-      m_state = PRINT_START;
-      emit stateChanged();
-    }
-    else
-    {
-      // Already running
-    }
-
-    emit aboutToStart( printInfo );
-
-    PrintThread *thread = new PrintThread( printInfo, this );
-    m_cache.insert( printInfo->filePath(), thread );
-
-    connect( thread, SIGNAL( finished() ), this, SLOT( slotThreadFinished() ) );
-
-    if ( temp_file.exists() )
-    {
-      thread->setTempFilePath( temp_file.fileName() );
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    thread->start();
-    thread->print( &authInfo, command );
-  }
-  else
-  {
-    // Show error message an exit.
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->fileNotFound( printInfo->filePath() );
-  }
-}
-
-
-void Smb4KPrint::abort( Smb4KPrintInfo *printInfo )
-{
-  Q_ASSERT( printInfo );
-
-  PrintThread *thread = m_cache.object( printInfo->filePath() );
-
-  if ( thread && thread->process() && (thread->process()->state() == KProcess::Running || thread->process()->state() == KProcess::Starting) )
-  {
-    thread->process()->abort();
   }
   else
   {
     // Do nothing
   }
+  
+  // Get the authentication information.
+  Smb4KAuthInfo authInfo( printer );
+  Smb4KWalletManager::self()->readAuthInfo( &authInfo );
+  printer->setAuthInfo( &authInfo );
+  
+  // Create a new job and add it to the subjobs 
+  Smb4KPrintJob *job = new Smb4KPrintJob( this );
+  job->setObjectName( QString( "PrintJob_%1" ).arg( printer->unc() ) );
+  job->setupPrinting( printer, parent );
+  
+  connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
+  connect( job, SIGNAL( authError( Smb4KPrintJob * ) ), SLOT( slotAuthError( Smb4KPrintJob * ) ) );
+  connect( job, SIGNAL( aboutToStart( Smb4KShare * ) ), SIGNAL( aboutToStart( Smb4KShare * ) ) );
+  connect( job, SIGNAL( finished( Smb4KShare * ) ), SIGNAL( finished( Smb4KShare * ) ) );
+  
+  addSubjob( job );
+  
+  job->start();
+}
+
+
+bool Smb4KPrint::isRunning()
+{
+  return !subjobs().isEmpty();
+}
+
+
+bool Smb4KPrint::isRunning( Smb4KShare *share )
+{
+  bool running = false;
+
+  for ( int i = 0; i < subjobs().size(); i++ )
+  {
+    if ( QString::compare( QString( "PrintJob_%1" ).arg( share->unc() ), subjobs().at( i )->objectName() ) == 0 )
+    {
+      running = true;
+      break;
+    }
+    else
+    {
+      continue;
+    }
+  }
+  
+  return running;
 }
 
 
 void Smb4KPrint::abortAll()
 {
-  if ( !kapp->closingDown() )
+  for ( int i = 0; i < subjobs().size(); i++ )
   {
-    QStringList keys = m_cache.keys();
+    subjobs().at( i )->kill( KJob::EmitResult );
+  }
+}
 
-    foreach ( const QString &key, keys )
-    {
-      PrintThread *thread = m_cache.object( key );
 
-      if ( thread->process() && (thread->process()->state() == KProcess::Running || thread->process()->state() == KProcess::Starting) )
-      {
-        thread->process()->abort();
-      }
-      else
-      {
-        continue;
-      }
-    }
+void Smb4KPrint::start()
+{
+  QTimer::singleShot( 0, this, SLOT( slotStartJobs() ) );
+}
+
+
+/////////////////////////////////////////////////////////////////////////////
+//   SLOT IMPLEMENTATIONS
+/////////////////////////////////////////////////////////////////////////////
+
+void Smb4KPrint::slotStartJobs()
+{
+  // FIXME: Not implemented yet. I do not see a use case at the moment.
+}
+
+
+void Smb4KPrint::slotJobFinished( KJob *job )
+{
+  Smb4KPrintJob *print_job = static_cast<Smb4KPrintJob *>( job );
+  Smb4KShare printer;
+  
+  if ( print_job )
+  {
+    printer = Smb4KShare( *print_job->printer() );
   }
   else
   {
-    // priv has already been deleted
+    // Do nothing
   }
+  
+  removeSubjob( job );
 }
 
 
-bool Smb4KPrint::isRunning( Smb4KPrintInfo *printInfo )
+void Smb4KPrint::slotAuthError( Smb4KPrintJob *job )
 {
-  Q_ASSERT( printInfo );
-
-  PrintThread *thread = m_cache.object( printInfo->filePath() );
-  return (thread && thread->process() && thread->process()->state() == KProcess::Running);
-}
-
-/////////////////////////////////////////////////////////////////////////////
-// SLOT IMPLEMENTATIONS
-/////////////////////////////////////////////////////////////////////////////
-
-void Smb4KPrint::slotAboutToQuit()
-{
-  abortAll();
-}
-
-
-void Smb4KPrint::slotThreadFinished()
-{
-  QStringList keys = m_cache.keys();
-
-  foreach ( const QString &key, keys )
+  Smb4KAuthInfo authInfo( job->printer() );
+  
+  if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, job->parentWidget() ) )
   {
-    PrintThread *thread = m_cache.object( key );
-
-    if ( thread->isFinished() )
-    {
-      (void) m_cache.take( key );
-      
-      if ( thread->authenticationError() )
-      {
-        Smb4KAuthInfo authInfo;
-        authInfo.setWorkgroupName( thread->printInfo()->printer()->workgroupName() );
-        authInfo.setUNC( thread->printInfo()->printer()->unc( QUrl::None ) );
-
-        if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
-        {
-          // Restore the currently active override cursor. Another one 
-          // will be set by print() in an instance.
-          QApplication::restoreOverrideCursor();
-          // Retry the printing.
-          print( thread->printInfo() );
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
-      }
-      
-      emit finished( thread->printInfo() );
-      delete thread;
-    }
-    else
-    {
-      // Do not touch the thread
-    }
-  }
-
-  if ( m_cache.size() == 0 )
-  {
-    m_state = PRINT_STOP;
-    emit stateChanged();
-    QApplication::restoreOverrideCursor();
+    print( job->printer(), job->parentWidget() );
   }
   else
   {
-    // Still running
+    // Do nothing
   }
 }
 

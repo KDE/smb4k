@@ -1,9 +1,9 @@
 /***************************************************************************
-    smb4kprint  -  The printing core class.
+    smb4kprint  -  The (new) printing core class.
                              -------------------
-    begin                : Tue Mar 30 2004
-    copyright            : (C) 2004-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    begin                : Son Feb 20 2011
+    copyright            : (C) 2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -31,137 +31,112 @@
 #endif
 
 // Qt includes
-#include <QObject>
-#include <QString>
-#include <QCache>
+#include <QWidget>
 
-// KDE includes
+// KDE specific includes
+#include <kcompositejob.h>
 #include <kdemacros.h>
 
 // forward declarations
-class Smb4KPrintInfo;
-class Smb4KAuthInfo;
-class PrintThread;
+class Smb4KPrintPrivate;
+class Smb4KShare;
+class Smb4KPrintJob;
 
 
-/**
- * This is a core class. It provides the interface for printing documents over
- * the network neighborhood.
- *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
- */
-
-class KDE_EXPORT Smb4KPrint : public QObject
+class KDE_EXPORT Smb4KPrint : public KCompositeJob
 {
   Q_OBJECT
-
+  
   friend class Smb4KPrintPrivate;
-
+  
   public:
     /**
-     * Returns a static pointer to this class.
+     * This function returns a static pointer to this class.
+     *
+     * @returns a static pointer to the Smb4KPrint class.
      */
     static Smb4KPrint *self();
-
+    
     /**
-     * This function starts the printing of a file.
-     *
-     * @param printInfo   The Smb4KPrintInfo object
+     * Prints a file on a remote printer. All you need to do is to pass 
+     * the Smb4KShare object that represents the printer to this function.
+     * The print dialog will then be shown to determine the file you want
+     * to be printed.
+     * 
+     * This function will just return if the share is not a printer.
+     * 
+     * @param printer      The Smb4KShare object representing the printer
      */
-    void print( Smb4KPrintInfo *printInfo );
-
+    void print( Smb4KShare *printer,
+                QWidget *parent = 0 );
+    
     /**
-     * Aborts the print process that is represented by @p info.
+     * This function tells you whether print jobs are running
+     * or not.
      *
-     * @param printInfo   The Smb4KPrintInfo object
+     * @returns TRUE if at least one print process is running
      */
-    void abort( Smb4KPrintInfo *printInfo );
-
+    bool isRunning();
+    
     /**
-     * Aborts all print processes at once.
+     * With this function you can test whether a print job for a certain 
+     * share @param share is already running.
+     * 
+     * @returns TRUE if a synchronization process is already running
+     */
+    bool isRunning( Smb4KShare *share );
+    
+    /**
+     * This function aborts all print jobs at once.
      */
     void abortAll();
-
+    
     /**
-     * This function reports if a certain process that is represented by @p info
-     * is running.
-     *
-     * @param printInfo   The Smb4KPrintInfo object
-     *
-     * @returns TRUE if the process is running.
+     * This function starts the composite job
      */
-    bool isRunning( Smb4KPrintInfo *printInfo );
-
-    /**
-     * This function returns TRUE if the printer handler is running and
-     * FALSE otherwise.
-     *
-     * @returns           TRUE is the printer handler is running and FALSE otherwise.
-     */
-    bool isRunning() { return !m_cache.isEmpty(); }
-
-    /**
-     * This function returns the current state of the print interface. The state
-     * is defined in the smb4kdefs.h file.
-     *
-     * @returns the current state of the print interface.
-     */
-    int currentState() { return m_state; }
-
+    void start();
+    
   signals:
     /**
-     * This signal is emitted when the current run state changed. Use the currentState()
-     * function to read the current run state.
+     * This signal is emitted when a job is started.
+     *
+     * @param printer      The remote printer
      */
-    void stateChanged();
+    void aboutToStart( Smb4KShare *printer );
 
     /**
-     * This signal is emitted when a print process represented by @p info is about to
-     * be started.
+     * This signal is emitted when a job has finished.
      *
-     * @param printInfo   The Smb4KPrintInfo object
+     * @param printer      The remote printer
      */
-    void aboutToStart( Smb4KPrintInfo *printInfo );
-
-    /**
-     * This signal is emitted when the print process represented by @p info finished.
-     *
-     * @param printInfo   The Smb4KPrintInfo object
-     */
-    void finished( Smb4KPrintInfo *printInfo );
-
+    void finished( Smb4KShare *printer );
+    
   protected slots:
     /**
-     * This slot is connected to QCoreApplication::aboutToQuit() signal.
-     * It aborts all running processes.
+     * Invoked by start() function
      */
-    void slotAboutToQuit();
-
+    void slotStartJobs();
+    
     /**
-     * This slot is called when a thread finished.
+     * Called when a job finished
      */
-    void slotThreadFinished();
-
+    void slotJobFinished( KJob *job );
+    
+    /**
+     * Called when an authentication error occurred
+     */
+    void slotAuthError( Smb4KPrintJob *job );
+    
   private:
     /**
-     * The constructor.
+     * The constructor
      */
     Smb4KPrint();
-
+    
     /**
-     * The destructor.
+     * The destructor
      */
     ~Smb4KPrint();
-
-    /**
-     * The cache that holds the threads.
-     */
-    QCache<QString, PrintThread> m_cache;
-
-    /**
-     * The state
-     */
-    int m_state;
 };
 
 #endif
