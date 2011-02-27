@@ -19,9 +19,9 @@ add_subdirectory( search )
 
 set(smb4k_SRCS main.cpp smb4kmainwindow.cpp smb4ksystemtray.cpp )
 
-kde4_add_executable(smb4k ${smb4k_SRCS})
+kde4_add_executable( smb4k ${smb4k_SRCS} )
 
-target_link_libraries(smb4k
+target_link_libraries( smb4k
   ${KDE4_KDECORE_LIBS}
   smb4kcore
   smb4kdialogs

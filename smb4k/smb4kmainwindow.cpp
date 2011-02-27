@@ -61,7 +61,6 @@
 #include <core/smb4kshare.h>
 #include <core/smb4kscanner.h>
 #include <core/smb4kmounter.h>
-#include <core/smb4kprintinfo.h>
 #include <core/smb4kprint.h>
 #include <core/smb4ksynchronizer.h>
 #include <core/smb4kpreviewitem.h>
@@ -207,11 +206,11 @@ void Smb4KMainWindow::setupStatusBar()
   connect( Smb4KSearch::self(),        SIGNAL( finished( const QString & ) ),
            this,                       SLOT( slotSearchFinished( const QString & ) ) );
            
-  connect( Smb4KPrint::self(),         SIGNAL( aboutToStart( Smb4KPrintInfo * ) ),
-           this,                       SLOT( slotPrintingAboutToStart( Smb4KPrintInfo * ) ) );
+  connect( Smb4KPrint::self(),         SIGNAL( aboutToStart( Smb4KShare * ) ),
+           this,                       SLOT( slotPrintingAboutToStart( Smb4KShare * ) ) );
 
-  connect( Smb4KPrint::self(),         SIGNAL( finished( Smb4KPrintInfo * ) ),
-           this,                       SLOT( slotPrintingFinished( Smb4KPrintInfo * ) ) );
+  connect( Smb4KPrint::self(),         SIGNAL( finished( Smb4KShare * ) ),
+           this,                       SLOT( slotPrintingFinished( Smb4KShare * ) ) );
 
   connect( Smb4KSynchronizer::self(),  SIGNAL( aboutToStart( const QString & ) ),
            this,                       SLOT( slotSynchronizerAboutToStart( const QString & ) ) );
@@ -1199,9 +1198,9 @@ void Smb4KMainWindow::slotSearchFinished( const QString &/*string*/ )
 }
 
 
-void Smb4KMainWindow::slotPrintingAboutToStart( Smb4KPrintInfo *info )
+void Smb4KMainWindow::slotPrintingAboutToStart( Smb4KShare *printer )
 {
-  statusBar()->showMessage( i18n( "Sending file to printer %1..." ).arg( info->printer()->unc() ), 0 );
+  statusBar()->showMessage( i18n( "Sending file to printer %1..." ).arg( printer->unc() ), 0 );
   
   if ( !m_progress_bar->isVisible() )
   {
@@ -1214,7 +1213,7 @@ void Smb4KMainWindow::slotPrintingAboutToStart( Smb4KPrintInfo *info )
 }
 
 
-void Smb4KMainWindow::slotPrintingFinished( Smb4KPrintInfo */*info*/ )
+void Smb4KMainWindow::slotPrintingFinished( Smb4KShare */*printer*/ )
 {
   if ( !Smb4KCore::self()->isRunning()  )
   {

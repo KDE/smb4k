@@ -235,17 +235,17 @@ class Smb4KMainWindow : public KParts::MainWindow
      * This slot shows a status message as well as a busy bar. It is connected to the 
      * Smb4KPrint::aboutToStart() signal.
      *
-     * @param info          The Smb4KPrintInfo object
+     * @param printer       The remote printer
      */
-    void slotPrintingAboutToStart( Smb4KPrintInfo *info );
+    void slotPrintingAboutToStart( Smb4KShare *printer );
 
     /**
      * This shows a status message and hides the busy bar if appropriate. It is 
      * connected to the Smb4KPrint::finished() signal.
      *
-     * @param info          The Smb4KPrintInfo object
+     * @param printer       The remote printer
      */
-    void slotPrintingFinished( Smb4KPrintInfo *info );
+    void slotPrintingFinished( Smb4KShare *printer );
 
     /**
      * This slot shows a message according to the action performed by the synchronizer.
