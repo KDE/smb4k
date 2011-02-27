@@ -40,7 +40,6 @@
 #include <kcompositejob.h>
 
 class Smb4KSynchronizerPrivate;
-class Smb4KSyncJob;
 class Smb4KShare;
 
 class KDE_EXPORT Smb4KSynchronizer : public KCompositeJob
