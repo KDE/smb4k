@@ -3,8 +3,8 @@
     browser of Smb4K.
                              -------------------
     begin                : Fr Jan 5 2007
-    copyright            : (C) 2007-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2007-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -49,7 +49,6 @@
 #include <smb4knetworkbrowseritem.h>
 #include <../dialogs/smb4kcustomoptionsdialog.h>
 #include <../dialogs/smb4kmountdialog.h>
-#include <../dialogs/smb4kprintdialog.h>
 #include <../dialogs/smb4kpreviewdialog.h>
 #include <../dialogs/smb4kbookmarkdialog.h>
 #include <../tooltips/smb4ktooltip.h>
@@ -63,6 +62,7 @@
 #include <core/smb4kscanner.h>
 #include <core/smb4kmounter.h>
 #include <core/smb4kipaddressscanner.h>
+#include <core/smb4kprint.h>
 
 using namespace Smb4KGlobal;
 
@@ -482,12 +482,11 @@ void Smb4KNetworkBrowserPart::slotItemSelectionChanged()
           }
           else
           {
-            Smb4KPrintDialog *dlg = m_widget->findChild<Smb4KPrintDialog *>( "PrintDialog_"+browser_item->shareItem()->unc() );
-
             actionCollection()->action( "bookmark_action" )->setEnabled( false );
             actionCollection()->action( "preview_action" )->setEnabled( false );
             actionCollection()->action( "mount_action" )->setEnabled( false );
-            actionCollection()->action( "print_action" )->setEnabled( !dlg );
+            actionCollection()->action( "print_action" )->setEnabled( 
+              !Smb4KPrint::self()->isRunning( browser_item->shareItem() ) );
             actionCollection()->action( "custom_action" )->setEnabled( false );
           }
 
@@ -546,8 +545,8 @@ void Smb4KNetworkBrowserPart::slotItemPressed( QTreeWidgetItem *item, int /*colu
         {
           if ( browser_item->shareItem()->isPrinter() )
           {
-            Smb4KPrintDialog *dlg = m_widget->findChild<Smb4KPrintDialog *>( "PrintDialog_"+browser_item->shareItem()->unc() );
-            actionCollection()->action( "print_action" )->setEnabled( !dlg );
+            actionCollection()->action( "print_action" )->setEnabled( 
+              !Smb4KPrint::self()->isRunning( browser_item->shareItem() ) );
             actionCollection()->action( "mount_action" )->setEnabled( false );
           }
           else
@@ -1832,40 +1831,10 @@ void Smb4KNetworkBrowserPart::slotPreview( bool /*checked*/ )
 void Smb4KNetworkBrowserPart::slotPrint( bool /*checked*/ )
 {
   Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( m_widget->currentItem() );
-  Smb4KPrintDialog *dlg = m_widget->findChild<Smb4KPrintDialog *>( "PrintDialog_"+item->shareItem()->unc() );
-
-  if ( !dlg && item )
+  
+  if ( item->shareItem()->isPrinter() )
   {
-    switch( item->type() )
-    {
-      case Smb4KNetworkBrowserItem::Share:
-      {
-        if ( item->shareItem()->isPrinter() )
-        {
-          dlg = new Smb4KPrintDialog( item->shareItem(), m_widget );
-          dlg->setObjectName( "PrintDialog_"+item->shareItem()->unc() );
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( dlg && !dlg->isVisible() )
-  {
-    dlg->setVisible( true );
+    Smb4KPrint::self()->print( item->shareItem(), m_widget );
   }
   else
   {
@@ -1885,7 +1854,6 @@ void Smb4KNetworkBrowserPart::slotMount( bool /*checked*/ )
       case Smb4KNetworkBrowserItem::Share:
       {
         Smb4KMounter::self()->mountShare( item->shareItem() );
-
         break;
       }
       default:
