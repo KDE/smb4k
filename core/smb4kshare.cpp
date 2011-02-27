@@ -382,12 +382,6 @@ void Smb4KShare::setGID( gid_t gid )
 }
 
 
-void Smb4KShare::setLogin( const QString &login )
-{
-  item_url.setUserName( login );
-}
-
-
 void Smb4KShare::setIsMounted( bool mounted )
 {
   if ( !isPrinter() )
@@ -867,6 +861,12 @@ void Smb4KShare::setAuthInfo( Smb4KAuthInfo *authInfo )
 {
   item_url.setUserName( authInfo->login() );
   item_url.setPassword( authInfo->password() );
+}
+
+
+void Smb4KShare::setLogin( const QString &login )
+{
+  item_url.setUserName( login );
 }
 
 

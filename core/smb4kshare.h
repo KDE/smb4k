@@ -411,20 +411,6 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     const QString group() const { return m_group.name(); }
 
     /**
-     * Sets the login that is used to mount a share. The UNC is adjusted accordingly.
-     *
-     * @param login           The login
-     */
-    void setLogin( const QString &login );
-
-    /**
-     * Returns the login that was used to mount a share.
-     *
-     * @returns the login.
-     */
-    QString login() const { return item_url.userName(); }
-
-    /**
      * Sets the value of the total disk space that is available on the share. If 
      * the disk usage could not be determined, @p size has to be set to 0.
      *
@@ -646,6 +632,28 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * @param authInfo    The authentication information
      */
     void setAuthInfo( Smb4KAuthInfo *authInfo );
+    
+    /**
+     * Set the login for the share. This function will add the login name
+     * to the URL of the share.
+     * 
+     * @param login       The login name
+     */
+    void setLogin( const QString &login );
+    
+    /**
+     * Returns the login.
+     *
+     * @returns the login.
+     */
+    QString login() const { return item_url.userName(); }
+    
+    /**
+     * Returns the password.
+     * 
+     * @returns the password.
+     */
+    QString password() const { return item_url.password(); }
     
     /**
      * Returns TRUE if the host's IP address is set and FALSE otherwise.

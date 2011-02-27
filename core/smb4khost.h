@@ -247,21 +247,6 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
     bool isEmpty() const;
 
     /**
-     * Set the login name that was used for authentication.
-     *
-     * @param login               The login name
-     */
-    void setLogin( const QString &login );
-
-    /**
-     * Returns the login name that was used for authentiction. If the login has not
-     * been set, an empty string will be returned.
-     *
-     * @returns the login name.
-     */
-    QString login() const { return item_url.userName(); }
-
-    /**
      * Set the port for the use in the UNC.
      *
      * @param port            The port
@@ -299,6 +284,27 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      * @param authInfo    The authentication information
      */
     void setAuthInfo( Smb4KAuthInfo *authInfo );
+    
+    /**
+     * Set the login name for the host.
+     *
+     * @param login               The login name
+     */
+    void setLogin( const QString &login );
+
+    /**
+     * Returns the login name.
+     *
+     * @returns the login name.
+     */
+    QString login() const { return item_url.userName(); }
+    
+    /**
+     * Returns the password.
+     * 
+     * @returns the password.
+     */
+    QString password() const { return item_url.password(); }
     
     /**
      * Returns TRUE if the host's IP address is set and FALSE otherwise.
