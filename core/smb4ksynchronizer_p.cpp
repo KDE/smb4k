@@ -3,8 +3,8 @@
     the Smb4KSynchronizer class.
                              -------------------
     begin                : Fr Okt 24 2008
-    copyright            : (C) 2008-2009 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2008-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -752,8 +752,6 @@ void Smb4KSyncJob::slotProcessFinished( int, QProcess::ExitStatus status )
 Smb4KSynchronizationDialog::Smb4KSynchronizationDialog( Smb4KShare *share, QWidget *parent )
 : KDialog( parent ), m_share( share )
 {
-//   setAttribute( Qt::WA_DeleteOnClose, true );
-
   setCaption( i18n( "Synchronization" ) );
   setButtons( User3|User2|User1 );
   setDefaultButton( User2 );
@@ -772,7 +770,7 @@ Smb4KSynchronizationDialog::Smb4KSynchronizationDialog( Smb4KShare *share, QWidg
   layout->setMargin( 0 );
 
   QLabel *pixmap            = new QLabel( main_widget );
-  QPixmap sync_pix         = KIcon( "folder-sync" ).pixmap( KIconLoader::SizeHuge );
+  QPixmap sync_pix          = KIcon( "folder-sync" ).pixmap( KIconLoader::SizeHuge );
   pixmap->setPixmap( sync_pix );
 
   QLabel *description       = new QLabel( i18n( "Please provide the source and destination "
