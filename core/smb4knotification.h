@@ -46,7 +46,6 @@
 class Smb4KBookmark;
 class Smb4KWorkgroup;
 class Smb4KHost;
-class Smb4KPrintInfo;
 
 /**
  * This class provides notifications used thoughout Smb4K.
@@ -216,11 +215,11 @@ class KDE_EXPORT Smb4KNotification : public QObject
     /**
      * This error message is shown if printing failed.
      *
-     * @param info      The print info object
+     * @param printer   The printer share
      *
      * @param err_msg   The error message
      */
-    void printingFailed( Smb4KPrintInfo *info, const QString &err_msg );
+    void printingFailed( Smb4KShare *printer, const QString &err_msg );
 
     /**
      * This error message is shown if the synchronization failed.

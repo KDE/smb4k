@@ -43,7 +43,6 @@
 #include <smb4kbookmark.h>
 #include <smb4kworkgroup.h>
 #include <smb4khost.h>
-#include <smb4kprintinfo.h>
 
 using namespace KAuth;
 
@@ -387,17 +386,17 @@ void Smb4KNotification::unmountingNotAllowed( Smb4KShare *share )
 }
 
 
-void Smb4KNotification::printingFailed( Smb4KPrintInfo *info, const QString &err_msg )
+void Smb4KNotification::printingFailed( Smb4KShare *printer, const QString &err_msg )
 {
   QString text;
   
   if ( !err_msg.isEmpty() )
   {
-    text = i18n( "<p>Printing file <b>%1</b> on printer <b>%2</b> failed:</p><p><tt>%3</tt></p>", info->filePath(), info->printer()->unc(), err_msg );
+    text = i18n( "<p>Printing on printer <b>%1</b> failed:</p><p><tt>%2</tt></p>", printer->unc(), err_msg );
   }
   else
   {
-    text = i18n( "<p>Printing file <b>%1</b> on printer <b>%2</b> failed.</p>", info->filePath(), info->printer()->unc() );
+    text = i18n( "<p>Printing on printer <b>%1</b> failed.</p>", printer->unc() );
   }
   
   KNotification *notification = KNotification::event( "printingFailed",
