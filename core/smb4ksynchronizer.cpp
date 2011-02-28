@@ -67,51 +67,19 @@ void Smb4KSynchronizer::synchronize( Smb4KShare *share, QWidget *parent )
 {
   if ( !isRunning( share ) )
   {
-    // Show the user an URL input dialog.
-    Smb4KSynchronizationDialog dlg( share, parent );
-
-    if ( dlg.exec() == KDialog::Accepted )
-    {
-      // Create the destination directory if it does not already exits.
-      if ( !QFile::exists( dlg.destination().path() ) )
-      {
-        QDir sync_dir( dlg.destination().path() );
-
-        if ( !sync_dir.mkpath( dlg.destination().path() ) )
-        {
-          Smb4KNotification *notification = new Smb4KNotification();
-          notification->mkdirFailed( sync_dir );
-          return;
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
-      }
-      
-      // Create a new job, add it to the subjobs and register it
-      // with the job tracker.
-      Smb4KSyncJob *job = new Smb4KSyncJob( this );
-      job->setObjectName( QString( "SyncJob_%1" ).arg( QString::fromUtf8( share->canonicalPath() ) ) );
-      job->setPaths( dlg.source(), dlg.destination() );
+    // Create a new job, add it to the subjobs and register it
+    // with the job tracker.
+    Smb4KSyncJob *job = new Smb4KSyncJob( this );
+    job->setObjectName( QString( "SyncJob_%1" ).arg( QString::fromUtf8( share->canonicalPath() ) ) );
+    job->setupSynchronization( share, parent );
     
-      connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
-    
-      jobTracker()->registerJob( job );
-      addSubjob( job );
+    connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
+    connect( job, SIGNAL( aboutToStart( const QString & ) ), SIGNAL( aboutToStart( const QString & ) ) );
+    connect( job, SIGNAL( finished( const QString & ) ), SIGNAL( finished( const QString & ) ) );
 
-      emit aboutToStart( job->destination().path() );
+    addSubjob( job );
     
-      job->start();
-    }
-    else
-    {
-      // Do nothing
-    }
+    job->start();
   }
   else
   {
@@ -173,28 +141,8 @@ void Smb4KSynchronizer::slotStartJobs()
 
 void Smb4KSynchronizer::slotJobFinished( KJob *job )
 {
-  // Errors are handled in Smb4KSyncJob class.
-
-  // Get the canonical path
-  Smb4KSyncJob *sync_job = static_cast<Smb4KSyncJob *>( job );
-  QString dest_path;
-  
-  if ( sync_job )
-  {
-    dest_path = sync_job->destination().path();
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Unregister job and remove it.
-  jobTracker()->unregisterJob( job );
+  // Remove the job.
   removeSubjob( job );
-
-  // Emit the finished() signal. This MUST be emitted after
-  // the job was removed, else isRunning() will return TRUE.
-  emit finished( dest_path );
 }
 
 
