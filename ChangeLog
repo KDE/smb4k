@@ -143,29 +143,20 @@ Smb4K SVN_HEAD (????-??-??):
   + By default, the destination directory offered by the synchronization dialog
     is now RSYNC_PREFIX/HOST/Share.
 - Removed Smb4KSynchronizationInfo class. It is not needed anymore.
-- Revised Smb4KPrintInfo class:
-  + The default value for the number of copies is now 1 instead of 0.
-  + Replaced setShare() by setPrinter().
-  + Replaced share() by printer(). The return value was made non-constant.
-  + Replaced setPath() by setFilePath().
-  + Replaced path() by filePath().
-  + Added equals() function.
-  + Added "==" operator.
+- Removed Smb4KPrintInfo class. It is not needed anymore.
 - Revised Smb4KPrint class:
   + Introduced Smb4KPrint::self().
   + Made constructor and destructor private.
-  + Improved abort() function. It takes a Smb4KPrintInfo object and you
-    can abort the corresponding print process with it.
+  + + Removed abort() function, because the KJob class provides all means to do it.
   + Incoming print requests can now be processed in parallel, because we are
-    using threads.
+    using KJobs.
   + Added abortAll() function that aborts all running print processes at once.
   + Added new isRunning() function. You can test with it if a certain print
     process is running.
-  + Introduced new currentState() function.
-  + Replaced state( int ) signal by stateChanged() signal.
   + Added aboutToStart() signal that is emitted when a print process is about to
     be started.
   + Added finished() signal that is emitted when a print process finished.
+  + The print dialog is now a private helper class.
 - Revised Smb4KScanner class:
   + Introduced Smb4KScanner::self().
   + Made constructor and destructor private.
