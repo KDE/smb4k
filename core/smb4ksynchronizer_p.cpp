@@ -41,10 +41,13 @@
 #include <smb4ksynchronizer_p.h>
 #include <smb4knotification.h>
 #include <smb4ksettings.h>
+#include <smb4kglobal.h>
+
+using namespace Smb4KGlobal;
 
 
 Smb4KSyncJob::Smb4KSyncJob( QObject *parent ) : KJob( parent ),
-  m_started( false ), m_proc( NULL )
+  m_started( false ), m_share( NULL ), m_parent_widget( NULL ), m_proc( NULL )
 {
   setCapabilities( KJob::Killable );
 }
@@ -62,10 +65,11 @@ void Smb4KSyncJob::start()
 }
 
 
-void Smb4KSyncJob::setPaths( const KUrl &src, const KUrl &dest )
+void Smb4KSyncJob::setupSynchronization( Smb4KShare *share, QWidget *parent )
 {
-  m_src = src;
-  m_dest = dest;  
+  Q_ASSERT( share );
+  m_share = share;
+  m_parent_widget = parent;
 }
 
 
@@ -94,514 +98,564 @@ void Smb4KSyncJob::slotStartSynchronization()
     Smb4KNotification *notification = new Smb4KNotification();
     notification->commandNotFound( "rsync" );
     emitResult();
+    return;
   }
   else
   {
     // Go ahead
   }
 
-  // Get the list of arguments
-  QStringList arguments;
-  arguments << "--progress";
+  if ( m_share )
+  {
+    // Show the user an URL input dialog.
+    Smb4KSynchronizationDialog dlg( m_share, m_parent_widget );
 
-  if ( Smb4KSettings::archiveMode() )
-  {
-    arguments << "--archive";
-  }
-  else
-  {
-    if ( Smb4KSettings::recurseIntoDirectories() )
+    if ( dlg.exec() == KDialog::Accepted )
     {
-      arguments << "--recursive";
+      // Create the destination directory if it does not already exits.
+      if ( !QFile::exists( dlg.destination().path() ) )
+      {
+        QDir sync_dir( dlg.destination().path() );
+
+        if ( !sync_dir.mkpath( dlg.destination().path() ) )
+        {
+          Smb4KNotification *notification = new Smb4KNotification();
+          notification->mkdirFailed( sync_dir );
+          emitResult();
+          return;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      m_src = dlg.source().path();
+      m_dest = dlg.destination().path();
+    }
+    else
+    {
+      emitResult();
+      return;
+    }
+    
+    // Get the list of arguments
+    QStringList arguments;
+    arguments << "--progress";
+
+    if ( Smb4KSettings::archiveMode() )
+    {
+      arguments << "--archive";
+    }
+    else
+    {
+      if ( Smb4KSettings::recurseIntoDirectories() )
+      {
+        arguments << "--recursive";
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      if ( Smb4KSettings::preserveSymlinks() )
+      {
+        arguments << "--links";
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      if ( Smb4KSettings::preservePermissions() )
+      {
+        arguments << "--perms";
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      if ( Smb4KSettings::preserveTimes() )
+      {
+        arguments << "--times";
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      if ( Smb4KSettings::preserveGroup() )
+      {
+        arguments << "--group";
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      if ( Smb4KSettings::preserveOwner() )
+      {
+        arguments << "--owner";
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      if ( Smb4KSettings::preserveDevicesAndSpecials() )
+      {
+        // Alias -D
+        arguments << "--devices";
+        arguments << "--specials";
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+
+    if ( Smb4KSettings::relativePathNames() )
+    {
+      arguments << "--relative";
     }
     else
     {
       // Do nothing
     }
 
-    if ( Smb4KSettings::preserveSymlinks() )
+    if ( Smb4KSettings::omitDirectoryTimes() )
     {
-      arguments << "--links";
+      arguments << "--omit-dir-times";
     }
     else
     {
       // Do nothing
     }
 
-    if ( Smb4KSettings::preservePermissions() )
+    if ( Smb4KSettings::noImpliedDirectories() )
     {
-      arguments << "--perms";
+      arguments << "--no-implied-dirs";
     }
     else
     {
       // Do nothing
     }
 
-    if ( Smb4KSettings::preserveTimes() )
+    if ( Smb4KSettings::updateTarget() )
     {
-      arguments << "--times";
+      arguments << "--update";
     }
     else
     {
       // Do nothing
     }
 
-    if ( Smb4KSettings::preserveGroup() )
+    if ( Smb4KSettings::updateInPlace() )
     {
-      arguments << "--group";
+      arguments << "--inplace";
     }
     else
     {
       // Do nothing
     }
 
-    if ( Smb4KSettings::preserveOwner() )
+    if ( Smb4KSettings::transferDirectories() )
     {
-      arguments << "--owner";
+      arguments << "--dirs";
     }
     else
     {
       // Do nothing
     }
 
-    if ( Smb4KSettings::preserveDevicesAndSpecials() )
+    if ( Smb4KSettings::transformSymlinks() )
     {
-      // Alias -D
-      arguments << "--devices";
-      arguments << "--specials";
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-
-  if ( Smb4KSettings::relativePathNames() )
-  {
-    arguments << "--relative";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::omitDirectoryTimes() )
-  {
-    arguments << "--omit-dir-times";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::noImpliedDirectories() )
-  {
-    arguments << "--no-implied-dirs";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::updateTarget() )
-  {
-    arguments << "--update";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::updateInPlace() )
-  {
-    arguments << "--inplace";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::transferDirectories() )
-  {
-    arguments << "--dirs";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::transformSymlinks() )
-  {
-    arguments << "--copy-links";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::transformUnsafeSymlinks() )
-  {
-    arguments << "--copy-unsafe-links";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::ignoreUnsafeSymlinks() )
-  {
-    arguments << "--safe-links";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::preserveHardLinks() )
-  {
-    arguments << "--hard-links";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::keepDirectorySymlinks() )
-  {
-    arguments << "--keep-dirlinks";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::deleteExtraneous() )
-  {
-    arguments << "--delete";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::removeSourceFiles() )
-  {
-    arguments << "--remove-source-files";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::deleteBefore() )
-  {
-    arguments << "--delete-before";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::deleteDuring() )
-  {
-    arguments << "--delete-during";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::deleteAfter() )
-  {
-    arguments << "--delete-after";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::deleteExcluded() )
-  {
-    arguments << "--delete-excluded";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::ignoreErrors() )
-  {
-    arguments << "--ignore-errors";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::forceDirectoryDeletion() )
-  {
-    arguments << "--force";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::copyFilesWhole() )
-  {
-    arguments << "--whole-file";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::efficientSparseFileHandling() )
-  {
-    arguments << "--sparse";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::oneFileSystem() )
-  {
-    arguments << "--one-file-system";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::updateExisting() )
-  {
-    arguments << "--existing";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::ignoreExisting() )
-  {
-    arguments << "--ignore-existing";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::delayUpdates() )
-  {
-    arguments << "--delay-updates";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::compressData() )
-  {
-    arguments << "--compress";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::makeBackups() )
-  {
-    arguments << "--backup";
-
-    if ( Smb4KSettings::useBackupDirectory() )
-    {
-      arguments << QString( "--backup-dir=%1" ).arg( Smb4KSettings::backupDirectory().path() );
+      arguments << "--copy-links";
     }
     else
     {
       // Do nothing
     }
 
-    if ( Smb4KSettings::useBackupSuffix() )
+    if ( Smb4KSettings::transformUnsafeSymlinks() )
     {
-      arguments << QString( "--suffix=%1" ).arg( Smb4KSettings::backupSuffix() );
+      arguments << "--copy-unsafe-links";
     }
     else
     {
       // Do nothing
     }
-  }
-  else
-  {
-    // Do nothing
-  }
 
-  if ( Smb4KSettings::useMaximumDelete() )
-  {
-    arguments << QString( "--max-delete=%1" ).arg( Smb4KSettings::maximumDeleteValue() );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::useChecksum() )
-  {
-    arguments << "--checksum";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::useBlockSize() )
-  {
-    arguments << QString( "--block-size=%1" ).arg( Smb4KSettings::blockSize() );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::useChecksumSeed() )
-  {
-    arguments << QString( "--checksum-seed=%1" ).arg( Smb4KSettings::checksumSeed() );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( !Smb4KSettings::customFilteringRules().isEmpty() )
-  {
-    arguments << Smb4KSettings::customFilteringRules().split( " " );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::useMinimalTransferSize() )
-  {
-    arguments << QString( "--min-size=%1K" ).arg( Smb4KSettings::minimalTransferSize() );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::useMaximalTransferSize() )
-  {
-    arguments << QString( "--max-size=%1K" ).arg( Smb4KSettings::maximalTransferSize() );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::keepPartial() )
-  {
-    arguments << " --partial";
-
-    if ( Smb4KSettings::usePartialDirectory() )
+    if ( Smb4KSettings::ignoreUnsafeSymlinks() )
     {
-      arguments << QString( "--partial-dir=%1" ).arg( Smb4KSettings::partialDirectory().path() );
+      arguments << "--safe-links";
     }
     else
     {
       // Do nothing
     }
+
+    if ( Smb4KSettings::preserveHardLinks() )
+    {
+      arguments << "--hard-links";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::keepDirectorySymlinks() )
+    {
+      arguments << "--keep-dirlinks";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::deleteExtraneous() )
+    {
+      arguments << "--delete";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::removeSourceFiles() )
+    {
+      arguments << "--remove-source-files";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::deleteBefore() )
+    {
+      arguments << "--delete-before";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::deleteDuring() )
+    {
+      arguments << "--delete-during";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::deleteAfter() )
+    {
+      arguments << "--delete-after";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::deleteExcluded() )
+    {
+      arguments << "--delete-excluded";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::ignoreErrors() )
+    {
+      arguments << "--ignore-errors";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::forceDirectoryDeletion() )
+    {
+      arguments << "--force";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::copyFilesWhole() )
+    {
+      arguments << "--whole-file";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::efficientSparseFileHandling() )
+    {
+      arguments << "--sparse";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::oneFileSystem() )
+    {
+      arguments << "--one-file-system";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::updateExisting() )
+    {
+      arguments << "--existing";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::ignoreExisting() )
+    {
+      arguments << "--ignore-existing";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::delayUpdates() )
+    {
+      arguments << "--delay-updates";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::compressData() )
+    {
+      arguments << "--compress";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::makeBackups() )
+    {
+      arguments << "--backup";
+
+      if ( Smb4KSettings::useBackupDirectory() )
+      {
+        arguments << QString( "--backup-dir=%1" ).arg( Smb4KSettings::backupDirectory().path() );
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      if ( Smb4KSettings::useBackupSuffix() )
+      {
+        arguments << QString( "--suffix=%1" ).arg( Smb4KSettings::backupSuffix() );
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::useMaximumDelete() )
+    {
+      arguments << QString( "--max-delete=%1" ).arg( Smb4KSettings::maximumDeleteValue() );
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::useChecksum() )
+    {
+      arguments << "--checksum";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::useBlockSize() )
+    {
+      arguments << QString( "--block-size=%1" ).arg( Smb4KSettings::blockSize() );
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::useChecksumSeed() )
+    {
+      arguments << QString( "--checksum-seed=%1" ).arg( Smb4KSettings::checksumSeed() );
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( !Smb4KSettings::customFilteringRules().isEmpty() )
+    {
+      arguments << Smb4KSettings::customFilteringRules().split( " " );
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::useMinimalTransferSize() )
+    {
+      arguments << QString( "--min-size=%1K" ).arg( Smb4KSettings::minimalTransferSize() );
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::useMaximalTransferSize() )
+    {
+      arguments << QString( "--max-size=%1K" ).arg( Smb4KSettings::maximalTransferSize() );
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::keepPartial() )
+    {
+      arguments << " --partial";
+
+      if ( Smb4KSettings::usePartialDirectory() )
+      {
+        arguments << QString( "--partial-dir=%1" ).arg( Smb4KSettings::partialDirectory().path() );
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::useCVSExclude() )
+    {
+      arguments << "--cvs-exclude";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::useFFilterRule() )
+    {
+      arguments << "-F";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::useFFFilterRule() )
+    {
+      arguments << "-F";
+      arguments << "-F";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::useExcludePattern() )
+    {
+      arguments << QString( "--exclude=%1" ).arg( Smb4KSettings::excludePattern() );
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::useExcludeFrom() )
+    {
+      arguments << QString( "--exclude-from=%1" ).arg( Smb4KSettings::excludeFrom().path() );
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::useIncludePattern() )
+    {
+      arguments << QString( "--include=%1" ).arg( Smb4KSettings::includePattern() );
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( Smb4KSettings::useIncludeFrom() )
+    {
+      arguments << QString( "--include-from=%1" ).arg( Smb4KSettings::includeFrom().path() );
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    arguments << m_src.path();
+    arguments << m_dest.path();
+
+    emit aboutToStart( m_dest.path() );
+
+    // Register the job with the job tracker
+    jobTracker()->registerJob( this );
+    connect( this, SIGNAL( result( KJob * ) ), jobTracker(), SLOT( unregisterJob( KJob * ) ) );
+
+    // Send description to the GUI
+    emit description( this, i18n( "Synchronizing" ),
+                      qMakePair( i18n( "Source" ), m_src.path() ),
+                      qMakePair( i18n( "Destination" ), m_dest.path() ) );
+    
+    // Dummy to show 0 %
+    emitPercent( 0, 100 );
+
+    m_proc = new Smb4KProcess( Smb4KProcess::Synchronize, this );
+    m_proc->setOutputChannelMode( KProcess::SeparateChannels );
+    m_proc->setProgram( rsync, arguments );
+
+    connect( m_proc, SIGNAL( readyReadStandardOutput() ), SLOT( slotReadStandardOutput() ) );
+    connect( m_proc, SIGNAL( readyReadStandardError() ),  SLOT( slotReadStandardError() ) );
+    connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
+
+    m_proc->start();
   }
   else
   {
     // Do nothing
   }
-
-  if ( Smb4KSettings::useCVSExclude() )
-  {
-    arguments << "--cvs-exclude";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::useFFilterRule() )
-  {
-    arguments << "-F";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::useFFFilterRule() )
-  {
-    arguments << "-F";
-    arguments << "-F";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::useExcludePattern() )
-  {
-    arguments << QString( "--exclude=%1" ).arg( Smb4KSettings::excludePattern() );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::useExcludeFrom() )
-  {
-    arguments << QString( "--exclude-from=%1" ).arg( Smb4KSettings::excludeFrom().path() );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::useIncludePattern() )
-  {
-    arguments << QString( "--include=%1" ).arg( Smb4KSettings::includePattern() );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( Smb4KSettings::useIncludeFrom() )
-  {
-    arguments << QString( "--include-from=%1" ).arg( Smb4KSettings::includeFrom().path() );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  arguments << m_src.path();
-  arguments << m_dest.path();
-  
-  // Send description to the GUI
-  emit description( this, i18n( "Synchronizing" ),
-                    qMakePair( i18n( "Source" ), m_src.path() ),
-                    qMakePair( i18n( "Destination" ), m_dest.path() ) );
-
-  // Dummy to show 0 %
-  emitPercent( 0, 100 );
-  
-  m_proc = new Smb4KProcess( Smb4KProcess::Synchronize, this );
-  m_proc->setOutputChannelMode( KProcess::SeparateChannels );
-  m_proc->setProgram( rsync, arguments );
-
-  connect( m_proc, SIGNAL( readyReadStandardOutput() ), SLOT( slotReadStandardOutput() ) );
-  connect( m_proc, SIGNAL( readyReadStandardError() ),  SLOT( slotReadStandardError() ) );
-  connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
-
-  m_proc->start();
 }
 
 
@@ -745,6 +799,7 @@ void Smb4KSyncJob::slotProcessFinished( int, QProcess::ExitStatus status )
 
   // Finish job
   emitResult();
+  emit finished( m_dest.path() );
 }
 
 

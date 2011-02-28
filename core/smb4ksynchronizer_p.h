@@ -70,8 +70,8 @@ class Smb4KSyncJob : public KJob
     void start();
 
     /**
-     * Sets the path of the source @param src and of the destination
-     * @param dest.
+     * Setup the synchronization process. You need to set the share, the parent
+     * widget is optional.
      *
      * This function must be called before start() is run.
      *
@@ -79,8 +79,8 @@ class Smb4KSyncJob : public KJob
      *
      * @param dest      The destination
      */
-    void setPaths( const KUrl &src,
-                   const KUrl &dest );
+    void setupSynchronization( Smb4KShare *share,
+                               QWidget *parent = 0 );
 
     /**
      * Returns the source directory.
@@ -95,6 +95,23 @@ class Smb4KSyncJob : public KJob
      * @returns the destination directory.
      */
     const KUrl &destination() { return m_dest; }
+
+  signals:
+    /**
+     * This signal is emitted when a job is started. The emitted path
+     * is the one of the destination.
+     *
+     * @param dest        The destination's URL
+     */
+    void aboutToStart( const QString &dest );
+
+    /**
+     * This signal is emitted when a job has finished. The emitted
+     * URL is the one of the destination.
+     *
+     * @param dest        The destination's URL
+     */
+    void finished( const QString &dest );
      
   protected:
     /**
@@ -111,6 +128,8 @@ class Smb4KSyncJob : public KJob
 
   private:
     bool m_started;
+    Smb4KShare *m_share;
+    QWidget *m_parent_widget;
     KUrl m_src;
     KUrl m_dest;
     Smb4KProcess *m_proc;
