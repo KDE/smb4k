@@ -145,18 +145,6 @@ void Smb4KPrint::slotStartJobs()
 
 void Smb4KPrint::slotJobFinished( KJob *job )
 {
-  Smb4KPrintJob *print_job = static_cast<Smb4KPrintJob *>( job );
-  Smb4KShare printer;
-  
-  if ( print_job )
-  {
-    printer = Smb4KShare( *print_job->printer() );
-  }
-  else
-  {
-    // Do nothing
-  }
-  
   removeSubjob( job );
 }
 
