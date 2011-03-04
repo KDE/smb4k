@@ -152,6 +152,10 @@ void Smb4KPrintJob::slotStartPrinting()
     KFileItem file_item = KFileItem( KFileItem::Unknown, KFileItem::Unknown, fileURL, false );
     
     qDebug() << file_item.mimetype();
+
+    // Register the job with the job tracker
+    jobTracker()->registerJob( this );
+    connect( this, SIGNAL( result( KJob * ) ), jobTracker(), SLOT( unregisterJob( KJob * ) ) );
     
     // Check whether we can directly print or convert the file.
     if ( QString::compare( file_item.mimetype(), "application/postscript" ) == 0 ||
@@ -160,12 +164,31 @@ void Smb4KPrintJob::slotStartPrinting()
     {
       // Nothing to do here. These mimetypes can be directly
       // printed.
+
+      // Send description to the GUI
+      emit description( this, i18n( "Printing" ),
+                      qMakePair( i18n( "Printer" ), m_share->unc() ),
+                      qMakePair( i18n( "File" ), file_path ) );
+      
+      m_steps = 1;
+      m_done = 0;
+      emitPercent( m_done, m_steps );
+      
       file_path = fileURL.path();
     }
     else if ( file_item.mimetype().startsWith( "text" ) || 
               file_item.mimetype().startsWith( "message" ) ||
               QString::compare( file_item.mimetype(), "application/x-shellscript" ) == 0 )
     {
+      // Send description to the GUI
+      emit description( this, i18n( "Converting File to PostScript" ),
+                        qMakePair( i18n( "Input File" ), fileURL.path() ),
+                        qMakePair( i18n( "Output File" ), printer->outputFileName() ) );
+      
+      m_steps = 2;
+      m_done = 0;
+      emitPercent( m_done, m_steps );
+      
       QStringList contents;
       
       QFile file( fileURL.path() );
@@ -198,10 +221,20 @@ void Smb4KPrintJob::slotStartPrinting()
       
       doc.print( printer );
       file_path = printer->outputFileName();
+
+      emitPercent( m_done++, m_steps );
+
+      // Send description to the GUI
+      emit description( this, i18n( "Printing" ),
+                      qMakePair( i18n( "Printer" ), m_share->unc() ),
+                      qMakePair( i18n( "File" ), file_path ) );
     }
     else
     {
-      // Do nothing
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->mimetypeNotSupported( file_item.mimetype() );
+      emitResult();
+      return;
     }
     
     // Send the document to the printer.
@@ -322,6 +355,7 @@ void Smb4KPrintJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitStatus 
   }
 
   // Finish job
+  emitPercent( m_done++, m_steps );
   KTempDir::removeDir( m_temp_dir );
   emitResult();
   emit finished( m_share );
@@ -372,39 +406,46 @@ void Smb4KPrintDialog::setupView( Smb4KShare *share )
   // Build the view:
   QWidget *main_widget = new QWidget( this );
   setMainWidget( main_widget );
+  
+  QVBoxLayout *main_widget_layout = new QVBoxLayout( main_widget );
 
-  QGridLayout *main_widget_layout = new QGridLayout( main_widget );
-  main_widget_layout->setSpacing( 5 );
-  main_widget_layout->setMargin( 0 );
+  // Printer box
+  QGroupBox *printer_box = new QGroupBox( i18n( "Printer" ), main_widget );
+  QHBoxLayout *printer_box_layout = new QHBoxLayout( printer_box );
   
   // Icon 
-  QLabel *pixmap            = new QLabel( main_widget );
+  QLabel *pixmap            = new QLabel( printer_box );
   QPixmap print_pix         = share->icon().pixmap( KIconLoader::SizeHuge );
   pixmap->setPixmap( print_pix );
 
-  // Printer information
-  QWidget *printer_box = new QWidget( main_widget );
+  // Description
+  QWidget *desc_box = new QWidget( printer_box );
 
-  QGridLayout *printer_box_layout = new QGridLayout( printer_box );
-  printer_box_layout->setSpacing( 5 );
+  QGridLayout *desc_box_layout = new QGridLayout( desc_box );
+  desc_box_layout->setSpacing( 5 );
 
-  QLabel *unc_label  = new QLabel( i18n( "UNC Address:" ), printer_box );
-  QLabel *unc        = new QLabel( share->unc(), printer_box );
-  QLabel *ip_label   = new QLabel( i18n( "IP Address:" ), printer_box );
+  QLabel *unc_label  = new QLabel( i18n( "UNC Address:" ), desc_box );
+  QLabel *unc        = new QLabel( share->unc(), desc_box );
+  QLabel *ip_label   = new QLabel( i18n( "IP Address:" ), desc_box );
   QLabel *ip         = new QLabel( share->hostIP().trimmed().isEmpty() ?
                                    i18n( "unknown" ) :
-                                   share->hostIP(), printer_box );
-  QLabel *wg_label   = new QLabel( i18n( "Workgroup:" ), printer_box );
-  QLabel *workgroup  = new QLabel( share->workgroupName(), printer_box );
+                                   share->hostIP(), desc_box );
+  QLabel *wg_label   = new QLabel( i18n( "Workgroup:" ), desc_box );
+  QLabel *workgroup  = new QLabel( share->workgroupName(), desc_box );
 
-  printer_box_layout->addWidget( unc_label, 0, 0, 0 );
-  printer_box_layout->addWidget( unc, 0, 1, 0 );
-  printer_box_layout->addWidget( ip_label, 1, 0, 0 );
-  printer_box_layout->addWidget( ip, 1, 1, 0 );
-  printer_box_layout->addWidget( wg_label, 2, 0, 0 );
-  printer_box_layout->addWidget( workgroup, 2, 1, 0 );
-  printer_box_layout->setColumnMinimumWidth( 2, 0 );
-  printer_box_layout->setColumnStretch( 2, 1 );
+  desc_box_layout->addWidget( unc_label, 0, 0, 0 );
+  desc_box_layout->addWidget( unc, 0, 1, 0 );
+  desc_box_layout->addWidget( ip_label, 1, 0, 0 );
+  desc_box_layout->addWidget( ip, 1, 1, 0 );
+  desc_box_layout->addWidget( wg_label, 2, 0, 0 );
+  desc_box_layout->addWidget( workgroup, 2, 1, 0 );
+  desc_box_layout->setColumnMinimumWidth( 2, 0 );
+  desc_box_layout->setColumnStretch( 2, 1 );
+
+  desc_box->adjustSize();
+
+  printer_box_layout->addWidget( pixmap );
+  printer_box_layout->addWidget( desc_box, Qt::AlignBottom );
 
   // File requester box
   QGroupBox *file_box = new QGroupBox( i18n( "File" ), main_widget );
@@ -439,9 +480,8 @@ void Smb4KPrintDialog::setupView( Smb4KShare *share )
   options_box_layout->addWidget( copies_label, 0, 0, 0 );
   options_box_layout->addWidget( m_copies, 0, 1, 0 );
 
-  main_widget_layout->addWidget( pixmap, 0, 0, 0 ); 
-  main_widget_layout->addWidget( printer_box, 0, 1, Qt::AlignBottom );
-  main_widget_layout->addWidget( file_box, 1, 0, 1, 2, 0 );
+  main_widget_layout->addWidget( printer_box );
+  main_widget_layout->addWidget( file_box );
 
 //   printer_box->adjustSize();
   file_box->adjustSize();
