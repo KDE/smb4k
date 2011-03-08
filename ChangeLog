@@ -122,15 +122,13 @@ Smb4K SVN_HEAD (????-??-??):
   + Added "==" operator.
   + UID/owner and GID/group entries are now also returned for host items.
 - Revised Smb4KSynchronizer class:
-  + Completely rewrote this class.
+  + Completely rewrote this class and its private helpers.
   + Introduced Smb4KSynchronizer::self().
-  + Made constructor and destructor private. Use self() function to create
-    a pointer to this class.
-  + Smb4KSynchronizer::synchronize() now takes a pointer to an Smb4KShare object
-    as argument.
+  + Made constructor and destructor private.
+  + Improved abort() function. It takes a share item and you can abort the
+    corresponding synchronization process with it.
   + Incoming synchronization request are now executed in parallel, because we
     are using KJobs.
-  + Removed abort() function, because the KJob class provides all means to do it.
   + Added abortAll() function that aborts all running synchronization processes
     at once.
   + Added isRunning( Smb4KShare * ) function. You can test with it if a certain 
@@ -145,17 +143,21 @@ Smb4K SVN_HEAD (????-??-??):
 - Removed Smb4KSynchronizationInfo class. It is not needed anymore.
 - Removed Smb4KPrintInfo class. It is not needed anymore.
 - Revised Smb4KPrint class:
+  + Completely rewote this class and its private helpers.
+  + Dependencies on dvips and enscript are gone.
   + Introduced Smb4KPrint::self().
   + Made constructor and destructor private.
-  + + Removed abort() function, because the KJob class provides all means to do it.
+  + Improved abort() function. It takes a share item and you can abort the
+    corresponding print process with it.
   + Incoming print requests can now be processed in parallel, because we are
     using KJobs.
   + Added abortAll() function that aborts all running print processes at once.
-  + Added new isRunning() function. You can test with it if a certain print
-    process is running.
-  + Added aboutToStart() signal that is emitted when a print process is about to
-    be started.
-  + Added finished() signal that is emitted when a print process finished.
+  + Added new isRunning( Smb4KShare * ) function. You can test with it if a
+    print process using a certain printer is running.
+  + Added aboutToStart( Smb4KShare * ) signal that is emitted when a print
+    process is about to be started.
+  + Added finished( Smb4KShare * ) signal that is emitted when a print process
+    finished.
   + The print dialog is now a private helper class.
 - Revised Smb4KScanner class:
   + Introduced Smb4KScanner::self().
@@ -189,22 +191,20 @@ Smb4K SVN_HEAD (????-??-??):
   + Added finished() signal that is emitted when a scan process finished.
   + When looking up shares, the port defined for the host passed to the scanner
     is honored.
-- Revised Smb4KPreviewItem class:
-  + Renamed shareItem() function to share().
-  + Added setAuthInfo() function.
-  + Added "==" operator.
+- Removed Smb4KPreviewItem class. It is not needed anymore.
 - Revised Smb4KPreviewer class:
+  + Completely rewrote this class and its private helpers.
   + Introduced Smb4KPreviewer::self() class.
   + Made constructor and destructor private.
-  + Replaced state( int ) with stateChanged() signal.
-  + Introduced currentState() function.
-  + Improved abort() function. It takes the preview item and you can abort the
+  + Improved abort() function. It takes a share item and you can abort the
     corresponding preview process with it.
-  + Introduced isRunning( Smb4KPreviewItem * ) function.
-  + Added aboutToStart() signal.
-  + Added finished() signal.
+  + Introduced isRunning( Smb4KShare * ) function.
+  + Added aboutToStart( Smb4KShare *, const QUrl & ) signal.
+  + Added finished( Smb4KShare *, const QUrl & ) signal.
   + Incoming preview requests can now be processed in parallel, because we are
-    using threads.
+    using KJobs.
+  + The preview dialog is a private helper class now. During the transition it
+    was improved significantly.
 - Revised Smb4KSearch class:
   + Introduced Smb4KSearch::self() class.
   + Made constructor and destructor private.
