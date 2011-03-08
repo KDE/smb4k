@@ -124,6 +124,23 @@ void Smb4KSynchronizer::abortAll()
 }
 
 
+void Smb4KSynchronizer::abort( Smb4KShare *share )
+{
+  for ( int i = 0; i < subjobs().size(); i++ )
+  {
+    if ( QString::compare( QString( "SyncJob_%1" ).arg( QString::fromUtf8( share->canonicalPath() ) ), subjobs().at( i )->objectName() ) == 0 )
+    {
+      subjobs().at( i )->kill( KJob::EmitResult );
+      break;
+    }
+    else
+    {
+      continue;
+    }
+  }
+}
+
+
 void Smb4KSynchronizer::start()
 {
   QTimer::singleShot( 0, this, SLOT( slotStartJobs() ) );

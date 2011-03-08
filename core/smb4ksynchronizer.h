@@ -90,6 +90,17 @@ class KDE_EXPORT Smb4KSynchronizer : public KCompositeJob
     void abortAll();
 
     /**
+     * This function aborts the synchronization for a certain mounted
+     * share.
+     *
+     * Only use this function if you have no access to a widget, that
+     * tracks the job.
+     *
+     * @param share         The Smb4KShare object
+     */
+    void abort( Smb4KShare *share );
+
+    /**
      * This function starts the composite job
      */
     void start();
