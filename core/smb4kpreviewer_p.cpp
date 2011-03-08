@@ -43,7 +43,6 @@
 #include <smb4kshare.h>
 #include <smb4kglobal.h>
 #include <smb4ksettings.h>
-#include <smb4khomesshareshandler.h>
 #include <smb4ksambaoptionshandler.h>
 #include <smb4ksambaoptionsinfo.h>
 
@@ -107,23 +106,6 @@ void Smb4KPreviewJob::slotStartPreview()
   else
   {
     // Go ahead
-  }
-
-  // Process homes shares.
-  if( m_share->isHomesShare() )
-  {
-    if ( !Smb4KHomesSharesHandler::self()->specifyUser( m_share, m_parent_widget ) )
-    {
-      return;
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 
   // Start the preview process

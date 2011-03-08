@@ -37,6 +37,7 @@
 #include <smb4kwalletmanager.h>
 #include <smb4kshare.h>
 #include <smb4kauthinfo.h>
+#include <smb4khomesshareshandler.h>
 
 K_GLOBAL_STATIC( Smb4KPreviewerPrivate, p );
 
@@ -63,6 +64,23 @@ void Smb4KPreviewer::preview( Smb4KShare *share, QWidget *parent )
   if ( share->isPrinter() )
   {
     return;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Process homes shares.
+  if( share->isHomesShare() )
+  {
+    if ( !Smb4KHomesSharesHandler::self()->specifyUser( share, parent ) )
+    {
+      return;
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
