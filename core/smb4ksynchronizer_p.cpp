@@ -142,6 +142,13 @@ void Smb4KSyncJob::slotStartSynchronization()
       emitResult();
       return;
     }
+
+    // Start the synchronization process
+    emit aboutToStart( m_dest.path() );
+
+    // Register the job with the job tracker
+    jobTracker()->registerJob( this );
+    connect( this, SIGNAL( result( KJob * ) ), jobTracker(), SLOT( unregisterJob( KJob * ) ) );
     
     // Get the list of arguments
     QStringList arguments;
@@ -627,12 +634,6 @@ void Smb4KSyncJob::slotStartSynchronization()
 
     arguments << m_src.path();
     arguments << m_dest.path();
-
-    emit aboutToStart( m_dest.path() );
-
-    // Register the job with the job tracker
-    jobTracker()->registerJob( this );
-    connect( this, SIGNAL( result( KJob * ) ), jobTracker(), SLOT( unregisterJob( KJob * ) ) );
 
     // Send description to the GUI
     emit description( this, i18n( "Synchronizing" ),
