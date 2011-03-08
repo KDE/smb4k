@@ -32,10 +32,9 @@
 
 
 Smb4KAuthInfo::Smb4KAuthInfo( const Smb4KHost *host )
-: m_url( QUrl() ), m_type( Host ), m_workgroup( host->workgroupName() ), m_homes_share( false ),
+: m_url( host->url() ), m_type( Host ), m_workgroup( host->workgroupName() ), m_homes_share( false ),
   m_homes_users( QStringList() )
 {
-  setUNC( host->unc( QUrl::None ) );
 }
 
 
@@ -45,11 +44,11 @@ Smb4KAuthInfo::Smb4KAuthInfo( const Smb4KShare *share )
 {
   if ( !m_homes_share )
   {
-    setUNC( share->unc( QUrl::None ) );
+    m_url = share->url();
   }
   else
   {
-    setUNC( share->homeUNC( QUrl::None ) );
+    m_url = share->homeURL();
   }
 }
 
@@ -62,10 +61,9 @@ Smb4KAuthInfo::Smb4KAuthInfo()
 
 
 Smb4KAuthInfo::Smb4KAuthInfo( const Smb4KAuthInfo &i )
-: m_url( QUrl() ), m_type( i.type() ), m_workgroup( i.workgroupName() ), m_homes_share( i.isHomesShare() ),
+: m_url( i.url() ), m_type( i.type() ), m_workgroup( i.workgroupName() ), m_homes_share( i.isHomesShare() ),
   m_homes_users( i.homesUsers() )
 {
-  setUNC( i.unc( QUrl::None ) );
 }
 
 

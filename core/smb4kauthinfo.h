@@ -261,6 +261,13 @@ class KDE_EXPORT Smb4KAuthInfo
      */
     bool operator==( Smb4KAuthInfo info ) { return equals( &info ); }
 
+    /**
+     * Returns the URL of the network item
+     *
+     * @returns the URL
+     */
+    const QUrl &url() const { return m_url; }
+
   private:
     /**
      * The URL
