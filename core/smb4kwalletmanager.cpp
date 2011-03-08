@@ -2,8 +2,8 @@
     smb4kwalletmanager  -  This is the wallet manager of Smb4K.
                              -------------------
     begin                : Sa Dez 27 2008
-    copyright            : (C) 2008-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2008-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -269,7 +269,7 @@ void Smb4KWalletManager::readAuthInfo( Smb4KAuthInfo *authInfo )
              (authInfo->login().isEmpty() || QString::compare( authInfo->login(), map["Login"] ) == 0) )
         {
           if ( map["Workgroup"].isEmpty() || authInfo->workgroupName().isEmpty() ||
-              QString::compare( map["Workgroup"], authInfo->workgroupName().toUpper() ) == 0 )
+               QString::compare( map["Workgroup"], authInfo->workgroupName().toUpper() ) == 0 )
           {
             authInfo->setLogin( map["Login"] );
             authInfo->setPassword( map["Password"] );
