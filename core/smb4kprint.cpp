@@ -30,6 +30,7 @@
 // KDE specific includes
 #include <kglobal.h>
 #include <kstandarddirs.h>
+#include <kapplication.h>
 
 // application specific includes
 #include <smb4kprint.h>
@@ -42,8 +43,9 @@
 K_GLOBAL_STATIC( Smb4KPrintPrivate, p );
 
 
-Smb4KPrint::Smb4KPrint()
+Smb4KPrint::Smb4KPrint() : KCompositeJob( 0 )
 {
+  connect( kapp, SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
 }
 
 
@@ -127,6 +129,23 @@ void Smb4KPrint::abortAll()
 }
 
 
+void Smb4KPrint::abort( Smb4KShare *share )
+{
+  for ( int i = 0; i < subjobs().size(); i++ )
+  {
+    if ( QString::compare( QString( "PrintJob_%1" ).arg( share->unc() ), subjobs().at( i )->objectName() ) == 0 )
+    {
+      subjobs().at( i )->kill( KJob::EmitResult );
+      break;
+    }
+    else
+    {
+      continue;
+    }
+  }
+}
+
+
 void Smb4KPrint::start()
 {
   QTimer::singleShot( 0, this, SLOT( slotStartJobs() ) );
@@ -161,6 +180,12 @@ void Smb4KPrint::slotAuthError( Smb4KPrintJob *job )
   {
     // Do nothing
   }
+}
+
+
+void Smb4KPrint::slotAboutToQuit()
+{
+  abortAll();
 }
 
 #include "smb4kprint.moc"

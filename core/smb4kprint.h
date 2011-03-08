@@ -65,7 +65,9 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
      * 
      * This function will just return if the share is not a printer.
      * 
-     * @param printer      The Smb4KShare object representing the printer
+     * @param printer       The Smb4KShare object representing the printer
+     *
+     * @param parent        The parent widget
      */
     void print( Smb4KShare *printer,
                 QWidget *parent = 0 );
@@ -74,7 +76,7 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
      * This function tells you whether print jobs are running
      * or not.
      *
-     * @returns TRUE if at least one print process is running
+     * @returns TRUE if at least one print job is running
      */
     bool isRunning();
     
@@ -82,7 +84,7 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
      * With this function you can test whether a print job for a certain 
      * share @param share is already running.
      * 
-     * @returns TRUE if a synchronization process is already running
+     * @returns TRUE if a print job is already running
      */
     bool isRunning( Smb4KShare *share );
     
@@ -90,6 +92,16 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
      * This function aborts all print jobs at once.
      */
     void abortAll();
+
+    /**
+     * This function aborts the printing to a certain printer share.
+     *
+     * Only use this function if you have no access to a widget, that
+     * tracks the job.
+     *
+     * @param share         The Smb4KShare object
+     */
+    void abort( Smb4KShare *share );
     
     /**
      * This function starts the composite job
@@ -126,6 +138,11 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
      * Called when an authentication error occurred
      */
     void slotAuthError( Smb4KPrintJob *job );
+
+    /**
+     * Called when the application exits
+     */
+    void slotAboutToQuit();
     
   private:
     /**
