@@ -49,7 +49,6 @@
 #include <smb4knetworkbrowseritem.h>
 #include <../dialogs/smb4kcustomoptionsdialog.h>
 #include <../dialogs/smb4kmountdialog.h>
-#include <../dialogs/smb4kpreviewdialog.h>
 #include <../dialogs/smb4kbookmarkdialog.h>
 #include <../tooltips/smb4ktooltip.h>
 #include <core/smb4kcore.h>
@@ -63,6 +62,7 @@
 #include <core/smb4kmounter.h>
 #include <core/smb4kipaddressscanner.h>
 #include <core/smb4kprint.h>
+#include <core/smb4kpreviewer.h>
 
 using namespace Smb4KGlobal;
 
@@ -1791,35 +1791,13 @@ void Smb4KNetworkBrowserPart::slotAddBookmark( bool /*checked*/ )
 
 void Smb4KNetworkBrowserPart::slotPreview( bool /*checked*/ )
 {
-  // The user should be able to open several dialogs at a time, so
-  // do not check for existing dialogs and use show() here.
+  // Get the current item and pass the encapsulated Smb4KShare item
+  // to the preview job.
   Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( m_widget->currentItem() );
-  Smb4KPreviewDialog *dlg = NULL;
 
   if ( item && !item->shareItem()->isPrinter() )
   {
-    switch ( item->type() )
-    {
-      case Smb4KNetworkBrowserItem::Share:
-      {
-        dlg = new Smb4KPreviewDialog( item->shareItem(), m_widget );
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( dlg && !dlg->isVisible() )
-  {
-    dlg->getPreview();
-    dlg->setVisible( true );
+    Smb4KPreviewer::self()->preview( item->shareItem(), m_widget );
   }
   else
   {
