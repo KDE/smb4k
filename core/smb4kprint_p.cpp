@@ -146,16 +146,19 @@ void Smb4KPrintJob::slotStartPrinting()
       emitResult();
       return;
     }
+
+    // Start the print process
+    emit aboutToStart( m_share );
+
+    // Register the job with the job tracker
+    jobTracker()->registerJob( this );
+    connect( this, SIGNAL( result( KJob * ) ), jobTracker(), SLOT( unregisterJob( KJob * ) ) );
     
     // Get the file name.
     KUrl fileURL = dlg.fileURL();
     KFileItem file_item = KFileItem( KFileItem::Unknown, KFileItem::Unknown, fileURL, false );
     
     qDebug() << file_item.mimetype();
-
-    // Register the job with the job tracker
-    jobTracker()->registerJob( this );
-    connect( this, SIGNAL( result( KJob * ) ), jobTracker(), SLOT( unregisterJob( KJob * ) ) );
     
     // Check whether we can directly print or convert the file.
     if ( QString::compare( file_item.mimetype(), "application/postscript" ) == 0 ||
@@ -167,8 +170,8 @@ void Smb4KPrintJob::slotStartPrinting()
 
       // Send description to the GUI
       emit description( this, i18n( "Printing" ),
-                      qMakePair( i18n( "Printer" ), m_share->unc() ),
-                      qMakePair( i18n( "File" ), file_path ) );
+                        qMakePair( i18n( "Printer" ), m_share->unc() ),
+                        qMakePair( i18n( "File" ), file_path ) );
       
       m_steps = 1;
       m_done = 0;
@@ -247,8 +250,6 @@ void Smb4KPrintJob::slotStartPrinting()
     arguments << file_path;                                   // file to print
     
     delete printer;
-    
-    emit aboutToStart( m_share );
     
     m_proc = new Smb4KProcess( Smb4KProcess::Print, this );
     m_proc->setOutputChannelMode( KProcess::SeparateChannels );

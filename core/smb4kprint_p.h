@@ -140,8 +140,8 @@ class Smb4KPrintJob : public KJob
     Smb4KShare *m_share;
     QWidget *m_parent_widget;
     QString m_temp_dir;
-    int m_steps;
-    int m_done;
+    qulonglong m_steps;
+    qulonglong m_done;
 };
 
 
