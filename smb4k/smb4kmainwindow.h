@@ -267,17 +267,23 @@ class Smb4KMainWindow : public KParts::MainWindow
      * This slot shows a message according to the action performed by the previewer.
      * It is connected to the Smb4KPreviewer::aboutToStart() signal.
      *
-     * @param info          The Smb4KPreviewItem item
+     * @param share         The share
+     *
+     * @param url           The URL of the current location
      */
-    void slotPreviewerAboutToStart( Smb4KPreviewItem *item );
+    void slotPreviewerAboutToStart( Smb4KShare *share,
+                                    const QUrl &url );
 
     /**
      * This slot shows a message according to the finished action that was reported
      * by the previewer. It is connected to the Smb4KPreviewer::finished() signal.
      *
-     * @param item          The Smb4KPreviewItem item
+     * @param share         The share
+     *
+     * @param url           The URL of the current location
      */
-    void slotPreviewerFinished( Smb4KPreviewItem *item );
+    void slotPreviewerFinished( Smb4KShare *share,
+                                const QUrl &url );
 
     /**
      * This slot hides the feedback icon in the status bar. It is connected to

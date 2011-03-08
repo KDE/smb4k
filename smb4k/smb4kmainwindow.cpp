@@ -63,7 +63,6 @@
 #include <core/smb4kmounter.h>
 #include <core/smb4kprint.h>
 #include <core/smb4ksynchronizer.h>
-#include <core/smb4kpreviewitem.h>
 #include <core/smb4kpreviewer.h>
 #include <core/smb4ksearch.h>
 #include <core/smb4kbookmarkhandler.h>
@@ -218,11 +217,11 @@ void Smb4KMainWindow::setupStatusBar()
   connect( Smb4KSynchronizer::self(),  SIGNAL( finished( const QString & ) ),
            this,                       SLOT( slotSynchronizerFinished( const QString & ) ) );
 
-  connect( Smb4KPreviewer::self(),     SIGNAL( aboutToStart( Smb4KPreviewItem * ) ),
-           this,                       SLOT( slotPreviewerAboutToStart( Smb4KPreviewItem * ) ) );
+  connect( Smb4KPreviewer::self(),     SIGNAL( aboutToStart( Smb4KShare *, const QUrl & ) ),
+           this,                       SLOT( slotPreviewerAboutToStart( Smb4KShare *, const QUrl & ) ) );
 
-  connect( Smb4KPreviewer::self(),     SIGNAL( finished( Smb4KPreviewItem * ) ),
-           this,                       SLOT( slotPreviewerFinished( Smb4KPreviewItem * ) ) );
+  connect( Smb4KPreviewer::self(),     SIGNAL( finished( Smb4KShare *, const QUrl & ) ),
+           this,                       SLOT( slotPreviewerFinished( Smb4KShare *, const QUrl & ) ) );
 }
 
 
@@ -1258,11 +1257,11 @@ void Smb4KMainWindow::slotSynchronizerFinished( const QString &/*dest*/ )
 }
 
 
-void Smb4KMainWindow::slotPreviewerAboutToStart( Smb4KPreviewItem *item )
+void Smb4KMainWindow::slotPreviewerAboutToStart( Smb4KShare *share, const QUrl &/*url*/ )
 {
-  Q_ASSERT( item );
+  Q_ASSERT( share );
   
-  statusBar()->showMessage( i18n( "Retrieving preview from %1..." ).arg( item->share()->unc() ), 0 );
+  statusBar()->showMessage( i18n( "Retrieving preview from %1..." ).arg( share->unc() ), 0 );
   
   if ( !m_progress_bar->isVisible() )
   {
@@ -1275,7 +1274,7 @@ void Smb4KMainWindow::slotPreviewerAboutToStart( Smb4KPreviewItem *item )
 }
 
 
-void Smb4KMainWindow::slotPreviewerFinished( Smb4KPreviewItem */*item*/ )
+void Smb4KMainWindow::slotPreviewerFinished( Smb4KShare */*share*/, const QUrl &/*url*/ )
 {
   if ( !Smb4KCore::self()->isRunning()  )
   {
