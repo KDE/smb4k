@@ -1,9 +1,9 @@
 /***************************************************************************
     smb4kpreviewer  -  This class queries a remote share for a preview
                              -------------------
-    begin                : Mo Mai 28 2007
-    copyright            : (C) 2007-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    begin                : Sa Mär 05 2011
+    copyright            : (C) 2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -24,312 +24,155 @@
  ***************************************************************************/
 
 // Qt includes
-#include <QCoreApplication>
-#include <QDesktopWidget>
+#include <QTimer>
+#include <QDebug>
 
 // KDE includes
+#include <kglobal.h>
 #include <kapplication.h>
-#include <kdebug.h>
-#include <kshell.h>
-#include <kstandarddirs.h>
 
 // application specific includes
 #include <smb4kpreviewer.h>
-#include <smb4kpreviewitem.h>
-#include <smb4kdefs.h>
-#include <smb4kglobal.h>
-#include <smb4kauthinfo.h>
-#include <smb4ksambaoptionshandler.h>
-#include <smb4ksambaoptionsinfo.h>
-#include <smb4kshare.h>
-#include <smb4khomesshareshandler.h>
 #include <smb4kpreviewer_p.h>
 #include <smb4kwalletmanager.h>
-#include <smb4kprocess.h>
-#include <smb4ksettings.h>
-#include <smb4knotification.h>
+#include <smb4kshare.h>
+#include <smb4kauthinfo.h>
 
-using namespace Smb4KGlobal;
-
-K_GLOBAL_STATIC( Smb4KPreviewerPrivate, priv );
+K_GLOBAL_STATIC( Smb4KPreviewerPrivate, p );
 
 
-Smb4KPreviewer::Smb4KPreviewer() : QObject()
+Smb4KPreviewer::Smb4KPreviewer() : KCompositeJob( 0 )
 {
+  connect( kapp, SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
 }
 
 
 Smb4KPreviewer::~Smb4KPreviewer()
 {
-  // Do not delete m_item here, because it is owned
-  // by a different object.
 }
 
 
 Smb4KPreviewer *Smb4KPreviewer::self()
 {
-  return &priv->instance;
+  return &p->instance;
 }
 
 
-void Smb4KPreviewer::preview( Smb4KPreviewItem *item )
+void Smb4KPreviewer::preview( Smb4KShare *share, QWidget *parent )
 {
-  Q_ASSERT( item );
-  
-  // Find the smbclient program
-  QString smbclient = KStandardDirs::findExe( "smbclient" );
-
-  if ( smbclient.isEmpty() )
+  if ( share->isPrinter() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "smbclient" );
     return;
   }
   else
   {
-    // Go ahead
+    // Do nothing
   }
 
-  // Process homes shares.
-  if( item->share()->isHomesShare() )
+  // Check if a preview dialog has already been set up 
+  // for this share and reuse it, if appropriate.
+  Smb4KPreviewDialog *dlg = NULL;
+  
+  for ( int i = 0; i < m_dialogs.size(); i++ )
   {
-    QWidget *parent = 0;
-
-    if ( kapp )
+    if ( share == m_dialogs.at( i )->share() )
     {
-      if ( kapp->activeWindow() )
-      {
-        parent = kapp->activeWindow();
-      }
-      else
-      {
-        parent = kapp->desktop();
-      }
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    if ( !Smb4KHomesSharesHandler::self()->specifyUser( item->share(), parent ) )
-    {
-      return;
+      dlg = m_dialogs.at( i );
     }
     else
     {
       // Do nothing
     }
   }
-  else
+
+  if ( !dlg )
   {
-    // Do nothing
-  }
-
-  // Get the authentication information.
-  Smb4KAuthInfo authInfo( item->share() );
-  Smb4KWalletManager::self()->readAuthInfo( &authInfo );
-
-  // Compile the command.
-  //
-  // Here are some things to remember:
-  // (a) Do not convert the path to local 8 bit. It won't work with umlauts or other
-  //     special characters.
-  // (b) Do not pass the path unquoted, or you'll get a NT_STATUS_OBJECT_NAME_NOT_FOUND
-  //     error message in the case the path is empty.
-  QString command;
-  command += smbclient;
-  command += " "+KShell::quoteArg( item->share()->unc() );
-  command += " -W "+KShell::quoteArg( item->share()->workgroupName() );
-  command += " -D "+KShell::quoteArg( item->path() );
-  command += " -c "+KShell::quoteArg( "ls" );
-
-  if ( !item->share()->hostIP().isEmpty() )
-  {
-    command += " -I "+item->share()->hostIP();
+    // Create the preview dialog..
+    dlg = new Smb4KPreviewDialog( share, parent );
+    connect( dlg,  SIGNAL( aboutToClose( Smb4KPreviewDialog * ) ),
+             this, SLOT( slotDialogClosed( Smb4KPreviewDialog * ) ) );
+    connect( dlg,  SIGNAL( requestPreview( Smb4KShare *, const QUrl &, QWidget * ) ),
+             this, SLOT( slotAcquirePreview( Smb4KShare *, const QUrl &, QWidget * ) ) );
+    connect( this, SIGNAL( aboutToStart( Smb4KShare *, const QUrl & ) ),
+             dlg,  SLOT( slotAboutToStart( Smb4KShare *, const QUrl & ) ) );
+    connect( this, SIGNAL( finished( Smb4KShare *, const QUrl & ) ),
+             dlg,  SLOT( slotFinished( Smb4KShare *, const QUrl & ) ) );
+    connect( dlg,  SIGNAL( abortPreview( Smb4KShare * ) ),
+             this, SLOT( slotAbortPreview( Smb4KShare* ) ) );
+    m_dialogs.append( dlg );
   }
   else
   {
     // Do nothing
   }
   
-  // Machine account
-  command += Smb4KSettings::machineAccount() ? " -P" : "";
-  
-  // Signing state
-  switch ( Smb4KSettings::signingState() )
+  if ( !dlg->isVisible() )
   {
-    case Smb4KSettings::EnumSigningState::None:
-    {
-      break;
-    }
-    case Smb4KSettings::EnumSigningState::On:
-    {
-      command += " -S on";
-      break;
-    }
-    case Smb4KSettings::EnumSigningState::Off:
-    {
-      command += " -S off";
-      break;
-    }
-    case Smb4KSettings::EnumSigningState::Required:
-    {
-      command += " -S required";
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-  
-  // Buffer size
-  command += Smb4KSettings::bufferSize() != 65520 ? QString( " -b %1" ).arg( Smb4KSettings::bufferSize() ) : "";
-  
-  // Get global Samba and custom options
-  QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
-  Smb4KSambaOptionsInfo *info = Smb4KSambaOptionsHandler::self()->findItem( item->share() );
-  
-  // Port
-  command += (info && info->smbPort() != -1) ? QString( " -p %1" ).arg( info->smbPort() ) : 
-             QString( " -p %1" ).arg( Smb4KSettings::remoteSMBPort() );
-             
-  // Kerberos
-  if ( info )
-  {
-    switch ( info->useKerberos() )
-    {
-      case Smb4KSambaOptionsInfo::UseKerberos:
-      {
-        command += " -k";
-        break;
-      }
-      case Smb4KSambaOptionsInfo::NoKerberos:
-      {
-        // No kerberos 
-        break;
-      }
-      case Smb4KSambaOptionsInfo::UndefinedKerberos:
-      {
-        command += Smb4KSettings::useKerberos() ? " -k" : "";
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
+    dlg->setVisible( true );
   }
   else
   {
-    command += Smb4KSettings::useKerberos() ? " -k" : "";
+    // Do nothing
   }
-  
-  // Resolve order
-  command += (!Smb4KSettings::nameResolveOrder().isEmpty() &&
-             QString::compare( Smb4KSettings::nameResolveOrder(), samba_options["name resolve order"] ) != 0) ?
-             QString( " -R %1" ).arg( KShell::quoteArg( Smb4KSettings::nameResolveOrder() ) ) : "";
-             
-  // NetBIOS name
-  command += (!Smb4KSettings::netBIOSName().isEmpty() &&
-             QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0) ?
-             QString( " -n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) ) : "";
-             
-  // NetBIOS scope
-  command += (!Smb4KSettings::netBIOSScope().isEmpty() &&
-             QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0) ?
-             QString( " -i %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSScope() ) ) : "";
-  
-  // Socket options
-  command += (!Smb4KSettings::socketOptions().isEmpty() &&
-             QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0) ?
-             QString( " -O %1" ).arg( KShell::quoteArg( Smb4KSettings::socketOptions() ) ) : "";
-
-  if ( !authInfo.login().isEmpty() )
-  {
-    command += " -U "+KShell::quoteArg( authInfo.login() );
-  }
-  else
-  {
-    command += " -U %";
-  }
-
-  // Start the synchronization.
-  if ( m_cache.size() == 0 )
-  {
-    QApplication::setOverrideCursor( Qt::WaitCursor );
-    m_state = SYNCHRONIZER_START;
-    emit stateChanged();
-  }
-  else
-  {
-    // Already running
-  }
-
-  emit aboutToStart( item );
-
-  PreviewThread *thread = new PreviewThread( item, this );
-  m_cache.insert( item->location(), thread );
-
-  connect( thread, SIGNAL( finished() ), this, SLOT( slotThreadFinished() ) );
-  connect( thread, SIGNAL( result( Smb4KPreviewItem * ) ), this, SIGNAL( result( Smb4KPreviewItem * ) ) );
-
-  thread->start();
-  thread->preview( &authInfo, command );
 }
 
 
-bool Smb4KPreviewer::isRunning( Smb4KPreviewItem *item )
+bool Smb4KPreviewer::isRunning()
 {
-  Q_ASSERT( item );
+  return !subjobs().isEmpty();
+}
 
-  PreviewThread *thread = m_cache.object( item->location() );
-  return (thread && thread->process() && thread->process()->state() == KProcess::Running);
+
+bool Smb4KPreviewer::isRunning( Smb4KShare *share )
+{
+  bool running = false;
+
+  for ( int i = 0; i < subjobs().size(); i++ )
+  {
+    if ( QString::compare( QString( "PreviewJob_%1" ).arg( share->unc() ), subjobs().at( i )->objectName() ) == 0 )
+    {
+      running = true;
+      break;
+    }
+    else
+    {
+      continue;
+    }
+  }
+
+  return running;
 }
 
 
 void Smb4KPreviewer::abortAll()
 {
-  if ( !kapp->closingDown() )
+  for ( int i = 0; i < subjobs().size(); i++ )
   {
-    QStringList keys = m_cache.keys();
-
-    foreach ( const QString &key, keys )
-    {
-      PreviewThread *thread = m_cache.object( key );
-
-      if ( thread->process() && (thread->process()->state() == KProcess::Running || thread->process()->state() == KProcess::Starting) )
-      {
-        thread->process()->abort();
-      }
-      else
-      {
-        continue;
-      }
-    }
-  }
-  else
-  {
-    // priv has already been deleted
+    subjobs().at( i )->kill( KJob::EmitResult );
   }
 }
 
 
-void Smb4KPreviewer::abort( Smb4KPreviewItem *item )
+void Smb4KPreviewer::abort( Smb4KShare *share )
 {
-  Q_ASSERT( item );
-
-  PreviewThread *thread = m_cache.object( item->location() );
-
-  if ( thread && thread->process() &&
-       (thread->process()->state() == KProcess::Running || thread->process()->state() == KProcess::Starting) )
+  for ( int i = 0; i < subjobs().size(); i++ )
   {
-    thread->process()->abort();
+    if ( QString::compare( QString( "PreviewJob_%1" ).arg( share->unc() ), subjobs().at( i )->objectName() ) == 0 )
+    {
+      subjobs().at( i )->kill( KJob::EmitResult );
+      break;
+    }
+    else
+    {
+      continue;
+    }
   }
-  else
-  {
-    // Do nothing
-  }
+}
+
+
+void Smb4KPreviewer::start()
+{
+  QTimer::singleShot( 0, this, SLOT( slotStartJobs() ) );
 }
 
 
@@ -337,66 +180,114 @@ void Smb4KPreviewer::abort( Smb4KPreviewItem *item )
 //   SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
 
-void Smb4KPreviewer::slotThreadFinished()
+void Smb4KPreviewer::slotStartJobs()
 {
-  QStringList keys = m_cache.keys();
+  // FIXME: Not implemented yet. I do not see a use case at the moment.
+}
 
-  foreach ( const QString &key, keys )
+
+void Smb4KPreviewer::slotJobFinished( KJob *job )
+{
+  disconnect( job );
+  removeSubjob( job );
+}
+
+
+void Smb4KPreviewer::slotAuthError( Smb4KPreviewJob *job )
+{
+  Smb4KAuthInfo authInfo( job->share() );
+
+  if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, job->parentWidget() ) )
   {
-    PreviewThread *thread = m_cache.object( key );
-
-    if ( thread->isFinished() )
-    {
-      (void) m_cache.take( key );
-      
-      if ( thread->authenticationError() )
-      {
-        Smb4KAuthInfo authInfo;
-        authInfo.setWorkgroupName( thread->previewItem()->share()->workgroupName() );
-        authInfo.setUNC( thread->previewItem()->share()->unc( QUrl::None ) );
-
-        if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
-        {
-          // Restore the currently active override cursor. Another one
-          // will be set by preview() in an instance.
-          QApplication::restoreOverrideCursor();
-
-          // Obviously we need authentication for the share or parts of it.
-          // So, feed the share item with it.
-          thread->previewItem()->share()->setAuthInfo( &authInfo );
-          
-          // Retry the preview.
-          preview( thread->previewItem() );
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
-      }
-      
-      emit finished( thread->previewItem() );
-      delete thread;
-    }
-    else
-    {
-      // Do not touch the thread
-    }
-  }
-
-  if ( m_cache.size() == 0 )
-  {
-    m_state = PREVIEWER_STOP;
-    emit stateChanged();
-    QApplication::restoreOverrideCursor();
+    slotAcquirePreview( job->share(), job->location(), job->parentWidget() );
   }
   else
   {
-    // Still running
+    // Do nothing
   }
+}
+
+
+void Smb4KPreviewer::slotDialogClosed( Smb4KPreviewDialog *dialog )
+{
+  if ( dialog )
+  {
+    // Find the dialog in the list and take it from the list.
+    // It will automatically be deleted on close, so there is
+    // no need to delete the dialog here.
+    int i = m_dialogs.indexOf( dialog );
+    m_dialogs.takeAt( i );
+  }
+  else
+  {
+    qDebug() << "Dialog already gone.";
+  }
+}
+
+
+void Smb4KPreviewer::slotAcquirePreview( Smb4KShare *share, const QUrl &url, QWidget *parent )
+{
+  // Get the authentication information
+  Smb4KAuthInfo authInfo( share );
+  Smb4KWalletManager::self()->readAuthInfo( &authInfo );
+  share->setAuthInfo( &authInfo );
+  
+  // Create a new job and add it to the subjobs
+  Smb4KPreviewJob *job = new Smb4KPreviewJob( this );
+  job->setObjectName( QString( "PreviewJob_%1" ).arg( share->unc() ) );
+  job->setupPreview( share, url, parent );
+
+  connect( job,  SIGNAL( result( KJob * ) ),
+           this, SLOT( slotJobFinished( KJob * ) ) );
+  connect( job,  SIGNAL( authError( Smb4KPreviewJob * ) ),
+           this, SLOT( slotAuthError( Smb4KPreviewJob * ) ) );
+  connect( job,  SIGNAL( aboutToStart( Smb4KShare *, const QUrl & ) ),
+           this, SIGNAL( aboutToStart( Smb4KShare *, const QUrl & ) ) );
+  connect( job,  SIGNAL( finished( Smb4KShare *, const QUrl & ) ),
+           this, SIGNAL( finished( Smb4KShare *, const QUrl & ) ) );
+
+  // Get the preview dialog, so that the result of the query
+  // can be sent.
+  Smb4KPreviewDialog *dlg = NULL;
+
+  for ( int i = 0; i < m_dialogs.size(); i++ )
+  {
+    if ( m_dialogs.at( i ) && m_dialogs.at( i )->share() == share )
+    {
+      dlg = m_dialogs[i];
+      break;
+    }
+    else
+    {
+      continue;
+    }
+  }
+  
+  if ( dlg )
+  {
+    connect( job, SIGNAL( preview( const QUrl &, const QList<Item> & ) ),
+             dlg, SLOT( slotDisplayPreview( const QUrl &, const QList<Item> & ) ) );
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  addSubjob( job );
+
+  job->start();
+}
+
+
+void Smb4KPreviewer::slotAbortPreview( Smb4KShare *share )
+{
+  abort( share );
+}
+
+
+void Smb4KPreviewer::slotAboutToQuit()
+{
+  abortAll();
 }
 
 #include "smb4kpreviewer.moc"

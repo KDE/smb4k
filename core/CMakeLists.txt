@@ -24,7 +24,6 @@ set( smb4kcore_LIB_SRCS
   smb4knotification.cpp
   smb4kpreviewer.cpp
   smb4kpreviewer_p.cpp
-  smb4kpreviewitem.cpp
   smb4kprint.cpp
   smb4kprint_p.cpp
   smb4kprocess.cpp

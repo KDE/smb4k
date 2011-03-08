@@ -1,9 +1,9 @@
 /***************************************************************************
     smb4kpreviewer  -  This class queries a remote share for a preview
                              -------------------
-    begin                : Mo Mai 28 2007
-    copyright            : (C) 2007-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    begin                : Sa Mär 05 2011
+    copyright            : (C) 2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -31,25 +31,20 @@
 #endif
 
 // Qt includes
-#include <QObject>
-#include <QString>
-#include <QCache>
+#include <QWidget>
+#include <QUrl>
 
 // KDE includes
 #include <kdemacros.h>
+#include <kcompositejob.h>
 
 // forward declarations
-class Smb4KPreviewItem;
-class PreviewThread;
+class Smb4KPreviewerPrivate;
+class Smb4KShare;
+class Smb4KPreviewJob;
+class Smb4KPreviewDialog;
 
-/**
- * This class is part of the core of Smb4K. It queries a remote SMB share for
- * a preview and returns the result.
- *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
- */
-
-class KDE_EXPORT Smb4KPreviewer : public QObject
+class KDE_EXPORT Smb4KPreviewer : public KCompositeJob
 {
   Q_OBJECT
 
@@ -57,120 +52,148 @@ class KDE_EXPORT Smb4KPreviewer : public QObject
 
   public:
     /**
-     * Returns a static pointer to this class.
+     * This function returns a static pointer to this class.
+     *
+     * @returns a static pointer to the Smb4KPrint class.
      */
     static Smb4KPreviewer *self();
 
     /**
-     * Get a preview of the contents of @p item.
+     * Previews the contents of the given share @param share. This 
+     * function will just return if you pass a printer share.
      *
-     * In the case that @p item represents a 'homes' share, the user will be
-     * prompted for the user name with which he wants to log in and the share
-     * name of @p item will be set to the result.
+     * @param share       The share for which a preview should be
+     *                    generated
      *
-     * To retrieve the preview, you need to connect to the result() signal.
-     *
-     * @param item              The item for which a preview should be
-     *                          requested.
+     * @param parent      The parent widget
      */
-    void preview( Smb4KPreviewItem *item );
+    void preview( Smb4KShare *share,
+                  QWidget *parent = 0 );
 
     /**
-     * This function reports if the preview process for the share represented
-     * by @p item is running.
+     * This function tells you whether preview jobs are running
+     * or not.
      *
-     * @param item              The Smb4KPreviewItem object
-     *
-     * @returns TRUE if the process is running.
+     * @returns TRUE if at least one preview job is running
      */
-    bool isRunning( Smb4KPreviewItem *item );
+    bool isRunning();
 
     /**
-     * Using this function, you can find out whether the previewer is running
-     * at the moment.
+     * With this function you can test whether a preview job for a certain
+     * share @param share is already running.
      *
-     * @returns TRUE if the previewer is running or FALSE otherwise.
+     * @returns TRUE if a preview job is already running
      */
-    bool isRunning() { return !m_cache.isEmpty(); }
+    bool isRunning( Smb4KShare *share );
 
     /**
-     * Abort any action the previewer is performing at the moment.
+     * This function aborts all print jobs at once.
      */
     void abortAll();
 
     /**
-     * Aborts the preview process that is running for the share represented by
-     * @p item.
+     * This function aborts the acquisition of a preview for a certain
+     * remote share.
      *
-     * @param item              The Smb4KPreviewItem object
+     * Only use this function if you have no access to a widget, that
+     * tracks the job.
+     *
+     * @param share         The Smb4KShare object
      */
-    void abort( Smb4KPreviewItem *item );
+    void abort( Smb4KShare *share );
 
     /**
-     * This function returns the current state of the previewer. The state is
-     * defined in the smb4kdefs.h file.
-     *
-     * @returns the current state of the mounter.
+     * This function starts the composite job
      */
-    int currentState() { return m_state; }
+    void start();
 
   signals:
     /**
-     * This signal is emitted when the current run state changed. Use the currentState()
-     * function to read the current run state.
+     * Emitted when the acquistition process is about to begin.
+     * 
+     * @param item          The Smb4KShare item
+     *
+     * @param url           The location for which the preview should be
+     *                      acquired
      */
-    void stateChanged();
+    void aboutToStart( Smb4KShare *share,
+                       const QUrl &url );
 
     /**
-     * Emits the preview after the process exited successfully. Get the contents
-     * of the remote share by looping through the Smb4KPreviewItem::contents() list.
+     * Emitted after the acquisition process finished.
+     * 
+     * @param item          The Smb4KShare item
      *
-     * @param item              The item for which the preview was received.
+     * @param url           The location for which the preview should be
+     *                      acquired
      */
-    void result( Smb4KPreviewItem *item );
+    void finished( Smb4KShare *share,
+                   const QUrl &url );
 
-    /**
-     * This signal is emitted when a preview process for the share represented
-     * by the preview item @p item is about to be started.
-     *
-     * @param item              The Smb4KPreviewItem object
-     */
-    void aboutToStart( Smb4KPreviewItem *item );
-
-    /**
-     * This signal is emitted when the preview process for the share represented
-     * by the preview item @p item finished.
-     *
-     * @param item              The Smb4KPreviewItem object
-     */
-    void finished( Smb4KPreviewItem *item );
 
   protected slots:
     /**
-     * This slot is called when a thread finished.
+     * Invoked by start() function
      */
-    void slotThreadFinished();
+    void slotStartJobs();
+
+    /**
+     * Called when a job finished
+     */
+    void slotJobFinished( KJob *job );
+
+    /**
+     * Called when an authentication error occurred
+     */
+    void slotAuthError( Smb4KPreviewJob *job );
+
+    /**
+     * Called when a preview dialog is closed
+     */
+    void slotDialogClosed( Smb4KPreviewDialog *dialog );
+
+    /**
+     * This slot starts the acquisition of a preview. It is
+     * invoked by the preview dialog.
+     * 
+     * @param share       The remote share
+     *
+     * @param url         The location
+     *
+     * @param parent      The parent widget
+     */
+    void slotAcquirePreview( Smb4KShare *share,
+                             const QUrl &url,
+                             QWidget *parent );
+
+    /**
+     * This slot kills the acquisition of the preview for the
+     * share @p share.
+     *
+     * @param share       The remote share
+     */
+    void slotAbortPreview( Smb4KShare *share );
+
+    /**
+     * Called when the application exits
+     */
+    void slotAboutToQuit();
 
   private:
     /**
-     * The constructor
+     * Constructor
      */
     Smb4KPreviewer();
 
     /**
-     * The destructor
+     * Destructor
      */
     ~Smb4KPreviewer();
 
     /**
-     * The cache that holds the threads
+     * List of preview dialogs
      */
-    QCache<QString, PreviewThread> m_cache;
-
-    /**
-     * The current state
-     */
-    int m_state;
+    QList<Smb4KPreviewDialog *> m_dialogs;
 };
 
 #endif
