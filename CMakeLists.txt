@@ -1,11 +1,11 @@
 project( smb4k )
 
-set( VERSION 0.10.68 )
+set( VERSION 0.10.69 )
 set( VERSION_MAJOR 0 )
 set( VERSION_MINOR 10 )
-set( VERSION_PATCH 68 )
+set( VERSION_PATCH 69 )
 
-cmake_minimum_required( VERSION 2.6 )
+cmake_minimum_required( VERSION 2.8 )
 
 find_package( KDE4 REQUIRED )
 set( KDE_MIN_VERSION 4.4.0 )
