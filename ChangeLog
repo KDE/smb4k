@@ -206,18 +206,17 @@ Smb4K SVN_HEAD (????-??-??):
   + The preview dialog is a private helper class now. During the transition it
     was improved significantly.
 - Revised Smb4KSearch class:
+  + Completely rewrote this class and its private helpers.
   + Introduced Smb4KSearch::self() class.
   + Made constructor and destructor private.
-  + Replaced state() with stateChanged() signal.
-  + Introduced currentState() function.
   + Incoming search requests can now be processed in parallel, because we are
-    using threads.
+    using KJobs.
   + Improved abort() function. It takes the search item and you can abort the
     corresponding search process with it.
   + Introduced isRunning( const QString & ) function.
   + Introduced abortAll() function.
-  + Added aboutToStart() signal.
-  + Added finished() signal.
+  + Added aboutToStart( const QString & ) signal.
+  + Added finished( const QString & ) signal.
 - Revised Smb4KIPAddressScanner class:
   + Introduced lookup() functions.
   + Removed the auto scan ability, because it was not needed.
@@ -347,6 +346,10 @@ Smb4K SVN_HEAD (????-??-??):
     set general settings for a host.
   + Added "What's this" help.
 - Removed utility programs in favor of the new KAuth implementation.
+
+Smb4K 0.10.10 (2011-03-08):
+- Fixed "Invalid command: net rap share list" error.
+- Improved smb4k_sudowriter utility program. Version has been bumped to 0.4.
 
 Smb4K 0.10.9 (2010-09-11):
 - Fixed restoring of wrong file permissions for sudoers file (closes #17481).
