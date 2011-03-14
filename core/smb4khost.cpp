@@ -52,7 +52,7 @@ Smb4KHost::Smb4KHost( const Smb4KHost &h ) : Smb4KBasicNetworkItem( Host ),
   m_server_string( h.serverString() ), m_os_string( h.osString() ), m_info_checked( h.infoChecked() ),
   m_ip_checked( h.ipChecked() ), m_is_master( h.isMasterBrowser() )
 {
-  setUNC( h.unc( QUrl::None ) );
+  item_url = h.url();
   
   if ( icon().isNull() )
   {
