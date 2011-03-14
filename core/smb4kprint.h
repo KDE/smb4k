@@ -96,9 +96,6 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
     /**
      * This function aborts the printing to a certain printer share.
      *
-     * Only use this function if you have no access to a widget, that
-     * tracks the job.
-     *
      * @param share         The Smb4KShare object
      */
     void abort( Smb4KShare *share );
