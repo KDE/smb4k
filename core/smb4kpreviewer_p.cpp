@@ -111,15 +111,6 @@ void Smb4KPreviewJob::slotStartPreview()
   // Start the preview process
   emit aboutToStart( m_share, m_url );
 
-  // Register the job with the job tracker
-  jobTracker()->registerJob( this );
-  connect( this, SIGNAL( result( KJob * ) ), jobTracker(), SLOT( unregisterJob( KJob * ) ) );
-
-  emit description( this, i18n( "Acquiring Preview" ),
-                    qMakePair( i18n( "Location" ), m_url.toString( QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::RemoveScheme ) ) );
-
-  emitPercent( 0, 1 );
-
   // Get the path that has to be listed.
   QString path = m_url.toString( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort );
   path.remove( m_share->unc(), Qt::CaseInsensitive );
@@ -505,7 +496,6 @@ void Smb4KPreviewJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitStatu
     }
   }
 
-  emitPercent( 1, 1 );
   emitResult();
   emit finished( m_share, m_url );
 }
