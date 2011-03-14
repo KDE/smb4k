@@ -24,53 +24,381 @@
  ***************************************************************************/
 
 // Qt includes
+#include <QTimer>
 #include <QHostAddress>
+#include <QAbstractSocket>
 
 // KDE includes
-#include <kdebug.h>
+#include <kstandarddirs.h>
 
-// application specific includes
+// application specific inludes
 #include <smb4ksearch_p.h>
-#include <smb4khost.h>
-#include <smb4kshare.h>
-#include <smb4kbasicnetworkitem.h>
-#include <smb4kauthinfo.h>
 #include <smb4knotification.h>
+#include <smb4kglobal.h>
+#include <smb4ksambaoptionshandler.h>
+#include <smb4kworkgroup.h>
+#include <smb4khost.h>
+#include <smb4ksambaoptionsinfo.h>
+#include <smb4ksettings.h>
+#include <smb4kauthinfo.h>
+
+using namespace Smb4KGlobal;
 
 
-SearchThread::SearchThread( QObject *parent )
-: QThread( parent ), m_auth_error( false )
+Smb4KSearchJob::Smb4KSearchJob( QObject *parent ) : KJob( parent ),
+  m_started( false ), m_parent_widget( NULL ), m_proc( NULL )
 {
-  m_proc = NULL;
+  setCapabilities( KJob::Killable );
 }
 
 
-SearchThread::~SearchThread()
+Smb4KSearchJob::~Smb4KSearchJob()
 {
 }
 
 
-void SearchThread::search( const QString &searchItem, Smb4KAuthInfo *authInfo, const QString &command )
+void Smb4KSearchJob::start()
 {
-  Q_ASSERT( !searchItem.isEmpty() );
-  Q_ASSERT( !command.isEmpty() );
+  m_started = true;
+  QTimer::singleShot( 0, this, SLOT( slotStartSearch() ) );
+}
 
-  m_string = searchItem;
+
+void Smb4KSearchJob::setupSearch( const QString &string, Smb4KHost *master, QWidget *parentWidget )
+{
+  Q_ASSERT( !string.trimmed().isEmpty() );
+  m_string = string;
+  m_master = *master;
+  m_parent_widget = parentWidget;
+}
+
+
+bool Smb4KSearchJob::doKill()
+{
+  if ( m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting) )
+  {
+    m_proc->abort();
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  return KJob::doKill();
+}
+
+
+void Smb4KSearchJob::slotStartSearch()
+{
+  // Check the string if it is a IP address and compile the command accordingly.
+  QHostAddress address( m_string.trimmed() );
+  QStringList arguments;
+
+  emit aboutToStart( m_string );
+
+  if ( address.protocol() == QAbstractSocket::UnknownNetworkLayerProtocol )
+  {
+    // Find smbtree program.
+    QString smbtree = KStandardDirs::findExe( "smbtree" );
+
+    if ( smbtree.isEmpty() )
+    {
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "smbtree" );
+      return;
+    }
+    else
+    {
+      // Go ahead
+    }
+
+    // Lookup the custom options that are defined for the master browser.
+    Smb4KWorkgroup *workgroup = findWorkgroup( Smb4KSettings::domainName() );
+    Smb4KHost *master_browser = NULL;
+    Smb4KSambaOptionsInfo *info = NULL;
+    Smb4KAuthInfo authInfo;
+
+    if ( workgroup )
+    {
+      master_browser = findHost( workgroup->masterBrowserName(), workgroup->workgroupName() );
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( master_browser )
+    {
+      info = Smb4KSambaOptionsHandler::self()->findItem( master_browser );
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // Compile the command
+    arguments << smbtree;
+    arguments << "-d2";
+
+    // Kerberos
+    if ( info )
+    {
+      switch ( info->useKerberos() )
+      {
+        case Smb4KSambaOptionsInfo::UseKerberos:
+        {
+          arguments << "-k";
+          break;
+        }
+        case Smb4KSambaOptionsInfo::NoKerberos:
+        {
+          // No kerberos
+          break;
+        }
+        case Smb4KSambaOptionsInfo::UndefinedKerberos:
+        {
+          if ( Smb4KSettings::useKerberos() )
+          {
+            arguments << "-k";
+          }
+          else
+          {
+            // Do nothing
+          }
+          break;
+        }
+        default:
+        {
+          break;
+        }
+      }
+    }
+    else
+    {
+      if ( Smb4KSettings::useKerberos() )
+      {
+        arguments << "-k";
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+
+    // Machine account
+    if ( Smb4KSettings::machineAccount() )
+    {
+      arguments << "-P";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // Signing state
+    switch ( Smb4KSettings::signingState() )
+    {
+      case Smb4KSettings::EnumSigningState::None:
+      {
+        break;
+      }
+      case Smb4KSettings::EnumSigningState::On:
+      {
+        arguments << "-S on";
+        break;
+      }
+      case Smb4KSettings::EnumSigningState::Off:
+      {
+        arguments << "-S off";
+        break;
+      }
+      case Smb4KSettings::EnumSigningState::Required:
+      {
+        arguments << "-S required";
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+
+    // Send broadcasts
+    if ( Smb4KSettings::smbtreeSendBroadcasts() )
+    {
+      arguments << "-b";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( !authInfo.login().isEmpty() )
+    {
+      arguments << QString( "-U %1" ).arg( m_master.login() );
+    }
+    else
+    {
+      arguments << "-U %";
+    }
+  }
+  else
+  {
+    // Find nmblookup program.
+    QString nmblookup = KStandardDirs::findExe( "nmblookup" );
+
+    if ( nmblookup.isEmpty() )
+    {
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "nmblookup" );
+      return;
+    }
+    else
+    {
+      // Go ahead
+    }
+
+    // Find grep program.
+    QString grep = KStandardDirs::findExe( "grep" );
+
+    if ( grep.isEmpty() )
+    {
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "grep" );
+      return;
+    }
+    else
+    {
+      // Go ahead
+    }
+
+    // Find sed program.
+    QString sed = KStandardDirs::findExe( "sed" );
+
+    if ( sed.isEmpty() )
+    {
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->commandNotFound( "sed" );
+      return;
+    }
+    else
+    {
+      // Go ahead
+    }
+
+    QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
+
+    // Compile the command
+    arguments << nmblookup;
+
+    // Domain
+    if ( !Smb4KSettings::domainName().isEmpty() &&
+         QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0 )
+    {
+      arguments << QString( "-W '%1'" ).arg( Smb4KSettings::domainName() );
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // NetBIOS name
+    if ( !Smb4KSettings::netBIOSName().isEmpty() &&
+         QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0 )
+    {
+      arguments << QString( "-n '%1'" ).arg( Smb4KSettings::netBIOSName() );
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // NetBIOS scope
+    if ( !Smb4KSettings::netBIOSScope().isEmpty() &&
+         QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0 )
+    {
+      arguments << QString( "-i '%1'" ).arg( Smb4KSettings::netBIOSScope() );
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // Socket options
+    if ( !Smb4KSettings::socketOptions().isEmpty() &&
+         QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0 )
+    {
+      arguments << QString( "-O '%1'" ).arg( Smb4KSettings::socketOptions() );
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // Port 137
+    if ( Smb4KSettings::usePort137() )
+    {
+      arguments << "-r";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // Broadcast address
+    QHostAddress address( Smb4KSettings::broadcastAddress() );
+
+    if ( !Smb4KSettings::broadcastAddress().isEmpty() &&
+         address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol )
+    {
+      arguments << QString( "-B %1" ).arg( Smb4KSettings::broadcastAddress() );
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // WINS server
+    if ( !Smb4KSambaOptionsHandler::self()->winsServer().isEmpty() )
+    {
+      arguments << "-R";
+      arguments << QString( "-U '%1'" ).arg( Smb4KSambaOptionsHandler::self()->winsServer() );
+      arguments << QString( "'%1'" ).arg( m_string );
+      arguments << "-A";
+      arguments << "|";
+      arguments << grep;
+      arguments << "'<00>'";
+      arguments << "|";
+      arguments << sed;
+      arguments << "-e 's/<00>.*//'";
+    }
+    else
+    {
+      arguments << QString( "'%1'" ).arg( m_string );
+      arguments << "-A";
+      arguments << "|";
+      arguments << grep;
+      arguments << "'<00>'";
+      arguments << "|";
+      arguments << sed;
+      arguments << "-e 's/<00>.*//'";
+    }
+  }
 
   m_proc = new Smb4KProcess( Smb4KProcess::Search, this );
-
-  connect( m_proc, SIGNAL( readyReadStandardOutput() ), this, SLOT( slotProcessOutput() ) );
-  connect( m_proc, SIGNAL( readyReadStandardError() ), this, SLOT( slotProcessError() ) );
-  connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), this, SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
-
-  m_proc->setShellCommand( command );
-  m_proc->setEnv( "PASSWD", !authInfo->password().isEmpty() ? authInfo->password() : "", true );
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
+  m_proc->setEnv( "PASSWD", !m_master.password().isEmpty() ? m_master.password() : "", true );
+  m_proc->setProgram( arguments );
+  
+  connect( m_proc, SIGNAL( readyReadStandardOutput() ), this, SLOT( slotReadStandardOutput() ) );
+  connect( m_proc, SIGNAL( readyReadStandardError() ), this, SLOT( slotReadStandardError() ) );
+  connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), this, SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
+  
   m_proc->start();
 }
 
 
-void SearchThread::slotProcessOutput()
+void Smb4KSearchJob::slotReadStandardOutput()
 {
   QStringList stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( "\n", QString::SkipEmptyParts, Qt::CaseSensitive );
   QHostAddress address( m_string.trimmed() );
@@ -166,7 +494,7 @@ void SearchThread::slotProcessOutput()
 }
 
 
-void SearchThread::slotProcessError()
+void Smb4KSearchJob::slotReadStandardError()
 {
   QString stderr = QString::fromUtf8( m_proc->readAllStandardError(), -1 );
 
@@ -180,9 +508,8 @@ void SearchThread::slotProcessError()
          stderr.contains( "NT_STATUS_ACCESS_DENIED" ) ||
          stderr.contains( "NT_STATUS_LOGON_FAILURE" ) )
     {
-      m_auth_error = true;
-      // Abort the process.
       m_proc->abort();
+      emit authError( this );
     }
     else
     {
@@ -198,9 +525,9 @@ void SearchThread::slotProcessError()
 }
 
 
-void SearchThread::slotProcessFinished( int exitCode, QProcess::ExitStatus exitStatus )
+void Smb4KSearchJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitStatus status )
 {
-  switch ( exitStatus )
+  switch ( status )
   {
     case QProcess::CrashExit:
     {
@@ -220,9 +547,11 @@ void SearchThread::slotProcessFinished( int exitCode, QProcess::ExitStatus exitS
       break;
     }
   }
-
-  exit( exitCode );
+  
+  emitResult();
+  emit finished( m_string );
 }
+
 
 
 Smb4KSearchPrivate::Smb4KSearchPrivate()

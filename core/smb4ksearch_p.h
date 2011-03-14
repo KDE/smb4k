@@ -30,46 +30,119 @@
 #include <config.h>
 #endif
 
-// Qt includes
-#include <QThread>
-#include <QList>
+// KDE includes
+#include <kjob.h>
 
 // application specific includes
 #include <smb4ksearch.h>
 #include <smb4kprocess.h>
+#include <smb4khost.h>
 
 // forward declarations
 class Smb4KBasicNetworkItem;
-class Smb4KAuthInfo;
 
-
-class SearchThread : public QThread
+class Smb4KSearchJob : public KJob
 {
   Q_OBJECT
 
   public:
-    SearchThread( QObject *parent = 0 );
-    ~SearchThread();
-    Smb4KProcess *process() { return m_proc; }
-    void search( const QString &searchItem,
-                 Smb4KAuthInfo *authInfo,
-                 const QString &command );
-    const QString &searchItem() { return m_string; }
-    bool authenticationError() { return m_auth_error; }
+    /**
+     * The constructor
+     */
+    Smb4KSearchJob( QObject *parent = 0 );
+
+    /**
+     * The destructor
+     */
+    ~Smb4KSearchJob();
+
+    /**
+     * Returns TRUE if the job has been started and FALSE otherwise
+     *
+     * @returns TRUE if the job has been started
+     */
+    bool isStarted() { return m_started; }
+
+    /**
+     * Starts the job
+     */
+    void start();
+
+    /**
+     * Set up the search job. You need to set the search string, the
+     * master browser and the parent widget are optional.
+     *
+     * You must run this function before start() is called.
+     *
+     * @param string          The search string
+     *
+     * @param parent          The parent widget
+     */
+    void setupSearch( const QString &string,
+                      Smb4KHost *master = 0,
+                      QWidget *parentWidget = 0 );
+
+    /**
+     * Returns the search string.
+     *
+     * @returns the search string
+     */
+    const QString &searchString() { return m_string; }
+
+    /**
+     * Returns the master browser object.
+     *
+     * @returns the master browser
+     */
+    Smb4KHost *masterBrowser() { return &m_master; }
+
+    /**
+     * Returns that parent widget.
+     *
+     * @returns the parent widget
+     */
+    QWidget *parentWidget() { return m_parent_widget; }
 
   signals:
+    /**
+     * Emitted when the search is about to begin.
+     */
+    void aboutToStart( const QString &string );
+
+    /**
+     * Emitted after the search finished.
+     */
+    void finished( const QString &string );
+
+    /**
+     * Emitted when an authentication error happened.
+     */
+    void authError( Smb4KSearchJob *job );
+
+    /**
+     * Emitted with a search result
+     */
     void result( Smb4KBasicNetworkItem *item );
 
+  protected:
+    /**
+     * Reimplemented from KJob. Kills the internal process and
+     * then the job itself.
+     */
+    bool doKill();
+
   protected slots:
-    void slotProcessOutput();
-    void slotProcessError();
-    void slotProcessFinished( int exitCode,
-                              QProcess::ExitStatus );
+    void slotStartSearch();
+    void slotReadStandardOutput();
+    void slotReadStandardError();
+    void slotProcessFinished( int exitCode, QProcess::ExitStatus status );
 
   private:
-    Smb4KProcess *m_proc;
+    bool m_started;
     QString m_string;
-    bool m_auth_error;
+    Smb4KHost m_master;
+    QWidget *m_parent_widget;
+    Smb4KProcess *m_proc;
 };
 
 

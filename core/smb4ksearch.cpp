@@ -1,9 +1,9 @@
 /***************************************************************************
-    smb4ksearch  -  This class searches for custom search strings.
+    smb4ksearch  -  This class does custom searches
                              -------------------
-    begin                : So Apr 27 2008
-    copyright            : (C) 2008-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    begin                : Tue Mar 08 2011
+    copyright            : (C) 2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -24,44 +24,34 @@
  ***************************************************************************/
 
 // Qt includes
+#include <QTimer>
+#include <QDebug>
 #include <QHostAddress>
-#include <QDesktopWidget>
-#include <QCoreApplication>
+#include <QAbstractSocket>
 
 // KDE includes
-#include <kshell.h>
-#include <kdebug.h>
+#include <kglobal.h>
 #include <kapplication.h>
-#include <kstandarddirs.h>
 
 // application specific includes
 #include <smb4ksearch.h>
-#include <smb4kdefs.h>
-#include <smb4ksambaoptionshandler.h>
-#include <smb4ksambaoptionsinfo.h>
-#include <smb4kglobal.h>
-#include <smb4kauthinfo.h>
-#include <smb4kworkgroup.h>
-#include <smb4khost.h>
-#include <smb4kshare.h>
-#include <smb4ksettings.h>
-#include <smb4kipaddressscanner.h>
-#include <smb4khomesshareshandler.h>
 #include <smb4ksearch_p.h>
+#include <smb4kauthinfo.h>
+#include <smb4ksettings.h>
+#include <smb4kglobal.h>
+#include <smb4kworkgroup.h>
 #include <smb4kwalletmanager.h>
-#include <smb4knotification.h>
+#include <smb4khomesshareshandler.h>
+#include <smb4kipaddressscanner.h>
 
 using namespace Smb4KGlobal;
 
-K_GLOBAL_STATIC( Smb4KSearchPrivate, priv );
+K_GLOBAL_STATIC( Smb4KSearchPrivate, p );
 
 
-Smb4KSearch::Smb4KSearch() : QObject()
+Smb4KSearch::Smb4KSearch() : KCompositeJob( 0 )
 {
-  m_state = SEARCH_STOP;
-
-  connect( kapp,   SIGNAL( aboutToQuit() ),
-           this,   SLOT( slotAboutToQuit() ) );
+  connect( kapp, SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
 }
 
 
@@ -72,318 +62,134 @@ Smb4KSearch::~Smb4KSearch()
 
 Smb4KSearch *Smb4KSearch::self()
 {
-  return &priv->instance;
+  return &p->instance;
 }
 
 
-void Smb4KSearch::search( const QString &string )
+void Smb4KSearch::search( const QString &string, QWidget *parent )
 {
-  if ( string.isEmpty() )
+  if ( string.trimmed().isEmpty() )
   {
     return;
   }
   else
   {
-    // Go ahead
+    // Do nothing
   }
 
-  // Check the string if it is a IP address and compile the command accordingly.
+  // Get authentication information in case smbtree is to be used.
   QHostAddress address( string.trimmed() );
-  Smb4KAuthInfo authInfo;
-  QString command;
+  Smb4KHost master_browser;
 
-  if ( address.protocol() == QAbstractSocket::UnknownNetworkLayerProtocol )
+  if ( address.protocol() == QAbstractSocket::UnknownNetworkLayerProtocol &&
+       Smb4KSettings::masterBrowsersRequireAuth() )
   {
-    // Find smbtree program.
-    QString smbtree = KStandardDirs::findExe( "smbtree" );
-
-    if ( smbtree.isEmpty() )
-    {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->commandNotFound( "smbtree" );
-      return;
-    }
-    else
-    {
-      // Go ahead
-    }
-    
-    // Lookup the workgroup the user is in.
+    // smbtree will be used and the master browser requires authentication. 
+    // Lookup the authentication information for the master browser.
     Smb4KWorkgroup *workgroup = findWorkgroup( Smb4KSettings::domainName() );
-    Smb4KHost *master_browser = findHost( workgroup->masterBrowserName(), workgroup->workgroupName() );
-    Smb4KSambaOptionsInfo *info = Smb4KSambaOptionsHandler::self()->findItem( master_browser );
-    
-    // This is not an IP address. Use the smbtree program.
-    command += smbtree;
-    command += " -d2";
-    
-    // Kerberos
-    if ( info )
-    {
-      switch ( info->useKerberos() )
-      {
-        case Smb4KSambaOptionsInfo::UseKerberos:
-        {
-          command += " -k";
-          break;
-        }
-        case Smb4KSambaOptionsInfo::NoKerberos:
-        {
-          // No kerberos 
-          break;
-        }
-        case Smb4KSambaOptionsInfo::UndefinedKerberos:
-        {
-          command += Smb4KSettings::useKerberos() ? " -k" : "";
-          break;
-        }
-        default:
-        {
-          break;
-        }
-      }
-    }
-    else
-    {
-      command += Smb4KSettings::useKerberos() ? " -k" : "";
-    }
-    
-    // Machine account
-    command += Smb4KSettings::machineAccount() ? " -P" : "";
-    
-    // Signing state
-    switch ( Smb4KSettings::signingState() )
-    {
-      case Smb4KSettings::EnumSigningState::None:
-      {
-        break;
-      }
-      case Smb4KSettings::EnumSigningState::On:
-      {
-        command += " -S on";
-        break;
-      }
-      case Smb4KSettings::EnumSigningState::Off:
-      {
-        command += " -S off";
-        break;
-      }
-      case Smb4KSettings::EnumSigningState::Required:
-      {
-        command += " -S required";
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-    
-    // Send broadcasts
-    command += Smb4KSettings::smbtreeSendBroadcasts() ? " -b" : "";
+    Smb4KHost *master_browser = NULL;
+    Smb4KAuthInfo authInfo;
 
-    // Authentication information
-    if ( master_browser )
+    if ( workgroup )
     {
-      authInfo = Smb4KAuthInfo( master_browser );
-
-      if ( Smb4KSettings::masterBrowsersRequireAuth() )
-      {
-        Smb4KWalletManager::self()->readAuthInfo( &authInfo );
-      }
-      else
-      {
-        // Do nothing
-      }
+      master_browser = findHost( workgroup->masterBrowserName(), workgroup->workgroupName() );
     }
     else
     {
       // Do nothing
     }
 
-    if ( !authInfo.login().isEmpty() )
+    if ( master_browser )
     {
-      command += " -U "+KShell::quoteArg( authInfo.login() );
+      // Authentication information
+      authInfo = Smb4KAuthInfo( master_browser );
+      Smb4KWalletManager::self()->readAuthInfo( &authInfo );
+      master_browser->setAuthInfo( &authInfo );
     }
     else
     {
-      command += " -U %";
+      // Do nothing
     }
-  }
-  else
-  {
-    // This is an IP address. Use the nmblookup program.
-    
-    // Find nmblookup program.
-    QString nmblookup = KStandardDirs::findExe( "nmblookup" );
-
-    if ( nmblookup.isEmpty() )
-    {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->commandNotFound( "nmblookup" );
-      return;
-    }
-    else
-    {
-      // Go ahead
-    }
-
-    // Find grep program.
-    QString grep = KStandardDirs::findExe( "grep" );
-
-    if ( grep.isEmpty() )
-    {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->commandNotFound( "grep" );
-      return;
-    }
-    else
-    {
-      // Go ahead
-    }
-
-    // Find sed program.
-    QString sed = KStandardDirs::findExe( "sed" );
-
-    if ( sed.isEmpty() )
-    {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->commandNotFound( "sed" );
-      return;
-    }
-    else
-    {
-      // Go ahead
-    }
-    
-    // Global Samba options
-    QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
-
-    // Assemble the command
-    command += nmblookup;
-
-    // Domain
-    command += (!Smb4KSettings::domainName().isEmpty() &&
-               QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0) ?
-               QString( " -W %1" ).arg( KShell::quoteArg( Smb4KSettings::domainName() ) ) : "";
-    
-    // NetBIOS name
-    command += (!Smb4KSettings::netBIOSName().isEmpty() &&
-               QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0) ?
-               QString( " -n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) ) : "";
-               
-    // NetBIOS scope
-    command += (!Smb4KSettings::netBIOSScope().isEmpty() &&
-               QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0) ?
-               QString( " -i %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSScope() ) ) : "";
-               
-    // Socket options
-    command += (!Smb4KSettings::socketOptions().isEmpty() &&
-               QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0) ?
-               QString( " -O %1" ).arg( KShell::quoteArg( Smb4KSettings::socketOptions() ) ) : "";
-               
-    // Port 137
-    command += Smb4KSettings::usePort137() ? " -r" : "";
-    
-    // Broadcast address
-    QHostAddress address( Smb4KSettings::broadcastAddress() );
-    
-    command += (!Smb4KSettings::broadcastAddress().isEmpty() &&
-               address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol) ?
-               QString( " -B %1" ).arg( Smb4KSettings::broadcastAddress() ) : "";
-    
-    // WINS server
-    if ( !Smb4KSambaOptionsHandler::self()->winsServer().isEmpty() )
-    {
-      command += " -R -U "+KShell::quoteArg( Smb4KSambaOptionsHandler::self()->winsServer() );
-      command += " "+KShell::quoteArg( string );
-      command += " -A | ";
-      command += grep+" '<00>' | ";
-      command += sed+" -e 's/<00>.*//'";
-    }
-    else
-    {
-      command += " "+KShell::quoteArg( string );
-      command += " -A | ";
-      command += grep+" '<00>' | ";
-      command += sed+" -e 's/<00>.*//'";
-    }
-  }
-
-  if ( m_cache.size() == 0 )
-  {
-    QApplication::setOverrideCursor( Qt::WaitCursor );
-    m_state = SEARCH_START;
-    emit stateChanged();
-  }
-  else
-  {
-    // Already running
-  }
-
-  emit aboutToStart( string );
-
-  SearchThread *thread = new SearchThread( this );
-  m_cache.insert( string, thread );
-
-  connect( thread, SIGNAL( finished() ), this, SLOT( slotThreadFinished() ) );
-  connect( thread, SIGNAL( result( Smb4KBasicNetworkItem * ) ), this, SLOT( slotProcessSearchResult( Smb4KBasicNetworkItem * ) ) );
-
-  thread->start();
-  thread->search( string, &authInfo, command );
-}
-
-
-void Smb4KSearch::abort( const QString &string )
-{
-  Q_ASSERT( !string.isEmpty() );
-
-  SearchThread *thread = m_cache.object( string );
-
-  if ( thread && thread->process() && (thread->process()->state() == KProcess::Running || thread->process()->state() == KProcess::Starting) )
-  {
-    thread->process()->abort();
   }
   else
   {
     // Do nothing
   }
+
+  // Create a new job and add it to the subjobs
+  Smb4KSearchJob *job = new Smb4KSearchJob( this );
+  job->setObjectName( QString( "SearchJob_%1" ).arg( string ) );
+  job->setupSearch( string, &master_browser, parent );
+
+  connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
+  connect( job, SIGNAL( authError( Smb4KSearchJob * ) ), SLOT( slotAuthError( Smb4KSearchJob * ) ) );
+  connect( job, SIGNAL( result( Smb4KBasicNetworkItem * ) ), SLOT( slotProcessSearchResult( Smb4KBasicNetworkItem * ) ) );
+  connect( job, SIGNAL( aboutToStart( const QString & ) ), SIGNAL( aboutToStart( const QString & ) ) );
+  connect( job, SIGNAL( finished( const QString & ) ), SIGNAL( finished( const QString & ) ) );
+
+  addSubjob( job );
+
+  job->start();
 }
 
 
-void Smb4KSearch::abortAll()
+bool Smb4KSearch::isRunning()
 {
-  if ( !kapp->closingDown() )
-  {
-    QStringList keys = m_cache.keys();
-
-    foreach ( const QString &key, keys )
-    {
-      SearchThread *thread = m_cache.object( key );
-
-      if ( thread->process() && (thread->process()->state() == KProcess::Running || thread->process()->state() == KProcess::Starting) )
-      {
-        thread->process()->abort();
-      }
-      else
-      {
-        continue;
-      }
-    }
-  }
-  else
-  {
-    // priv has already been deleted
-  }
+  return !subjobs().isEmpty();
 }
 
 
 bool Smb4KSearch::isRunning( const QString &string )
 {
-  Q_ASSERT( !string.isEmpty() );
+  bool running = false;
 
-  SearchThread *thread = m_cache.object( string );
-  return (thread && thread->process() && thread->process()->state() == KProcess::Running);
+  for ( int i = 0; i < subjobs().size(); i++ )
+  {
+    if ( QString::compare( QString( "SearchJob_%1" ).arg( string ), subjobs().at( i )->objectName() ) == 0 )
+    {
+      running = true;
+      break;
+    }
+    else
+    {
+      continue;
+    }
+  }
+
+  return running;
+}
+
+
+
+void Smb4KSearch::abortAll()
+{
+  for ( int i = 0; i < subjobs().size(); i++ )
+  {
+    subjobs().at( i )->kill( KJob::EmitResult );
+  }
+}
+
+
+void Smb4KSearch::abort( const QString &string )
+{
+  for ( int i = 0; i < subjobs().size(); i++ )
+  {
+    if ( QString::compare( QString( "SearchJob_%1" ).arg( string ), subjobs().at( i )->objectName() ) == 0 )
+    {
+      subjobs().at( i )->kill( KJob::EmitResult );
+      break;
+    }
+    else
+    {
+      continue;
+    }
+  }
+}
+
+
+void Smb4KSearch::start()
+{
+  QTimer::singleShot( 0, this, SLOT( slotStartJobs() ) );
 }
 
 
@@ -391,9 +197,30 @@ bool Smb4KSearch::isRunning( const QString &string )
 //   SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
 
-void Smb4KSearch::slotAboutToQuit()
+void Smb4KSearch::slotStartJobs()
 {
-  abortAll();
+  // FIXME: Not implemented yet. I do not see a use case at the moment.
+}
+
+
+void Smb4KSearch::slotJobFinished( KJob *job )
+{
+  removeSubjob( job );
+}
+
+
+void Smb4KSearch::slotAuthError( Smb4KSearchJob *job )
+{
+  Smb4KAuthInfo authInfo( job->masterBrowser() );
+
+  if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, job->parentWidget() ) )
+  {
+    search( job->searchString(), job->parentWidget() );
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
@@ -494,74 +321,9 @@ void Smb4KSearch::slotProcessSearchResult( Smb4KBasicNetworkItem *item )
 }
 
 
-void Smb4KSearch::slotThreadFinished()
+void Smb4KSearch::slotAboutToQuit()
 {
-  QStringList keys = m_cache.keys();
-
-  foreach ( const QString &key, keys )
-  {
-    SearchThread *thread = m_cache.object( key );
-
-    if ( thread->isFinished() )
-    {
-      (void) m_cache.take( key );
-      
-      if ( thread->authenticationError() )
-      {
-        Smb4KAuthInfo authInfo;
-
-        // We need to authenticate to the master browser of the domain
-        // the user's computer is in. Get the authentication information.
-        Smb4KWorkgroup *workgroup = findWorkgroup( Smb4KSettings::domainName() );
-
-        if ( workgroup )
-        {
-          authInfo.setWorkgroupName( workgroup->workgroupName() );
-          authInfo.setUNC( "//"+workgroup->masterBrowserName() );
-
-          if ( Smb4KSettings::masterBrowsersRequireAuth() &&
-               Smb4KWalletManager::self()->showPasswordDialog( &authInfo, 0 ) )
-          {
-            // Restore the currently active override cursor. Another one
-            // will be set by search() in an instance.
-            QApplication::restoreOverrideCursor();
-            // Retry the search.
-            search( thread->searchItem() );
-          }
-          else
-          {
-            // Do nothing
-          }
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
-      }
-      
-      emit finished( thread->searchItem() );
-      delete thread;
-    }
-    else
-    {
-      // Do not touch the thread
-    }
-  }
-
-  if ( m_cache.size() == 0 )
-  {
-    m_state = SEARCH_STOP;
-    emit stateChanged();
-    QApplication::restoreOverrideCursor();
-  }
-  else
-  {
-    // Still running
-  }
+  abortAll();
 }
 
 

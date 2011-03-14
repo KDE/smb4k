@@ -1,9 +1,9 @@
 /***************************************************************************
-    smb4ksearch  -  This class searches for custom search strings.
+    smb4ksearch  -  This class does custom searches
                              -------------------
-    begin                : So Apr 27 2008
-    copyright            : (C) 2008-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    begin                : Tue Mar 08 2011
+    copyright            : (C) 2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -31,26 +31,19 @@
 #endif
 
 // Qt includes
-#include <QObject>
-#include <QCache>
+#include <QWidget>
 
 // KDE includes
+#include <kcompositejob.h>
 #include <kdemacros.h>
 
 // forward declarations
+class Smb4KSearchPrivate;
+class Smb4KSearchJob;
 class Smb4KBasicNetworkItem;
-class SearchThread;
-
-/**
- * This class searches for network items (hosts and shares) and returns them.
- *
- * This class belongs to the core of Smb4K.
- *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
- */
 
 
-class KDE_EXPORT Smb4KSearch : public QObject
+class KDE_EXPORT Smb4KSearch : public KCompositeJob
 {
   Q_OBJECT
 
@@ -58,77 +51,57 @@ class KDE_EXPORT Smb4KSearch : public QObject
 
   public:
     /**
-     * Returns a static pointer to this class.
+     * This function returns a static pointer to this class.
+     *
+     * @returns a static pointer to the Smb4KSynchronizer class.
      */
     static Smb4KSearch *self();
 
     /**
-     * Search for a given search item. This can either be a share or a host.
-     * The search will be done by default by using Samba's smbtree program.
-     * If you provided an IP address, nmblookup will be used automatically.
+     * Searches for specific search string in the network neighborhood.
      *
-     * @param string            The search item
+     * @param string          The search string
+     *
+     * @param parent          The parent widget
      */
-    void search( const QString &string );
+    void search( const QString &string,
+                 QWidget *parent = 0 );
 
     /**
-     * Aborts the scan process that looks for the search item @p string.
+     * This function tells you whether searches are running
+     * or not.
      *
-     * @param string            The search item
+     * @returns TRUE if at least one search is running
      */
-    void abort( const QString &string );
+    bool isRunning();
 
     /**
-     * Aborts all running search processes.
-     */
-    void abortAll();
-
-    /**
-     * With this function you can check if the process for the search item
-     * @p string is (still) running.
+     * With this function you can test whether a search is already/still
+     * running.
      *
-     * @param string            The search item
-     *
-     * @returns TRUE if the search for search item @p string is running and
-     * FALSE otherwise.
+     * @returns TRUE if a search is already/still running
      */
     bool isRunning( const QString &string );
 
     /**
-     * This function reports if the search is running or not.
-     *
-     * @returns TRUE if at least one search is running and FALSE otherwise.
+     * This function aborts all searches at once.
      */
-    bool isRunning() { return !m_cache.isEmpty(); }
+    void abortAll();
 
     /**
-     * This function returns the current state of the previewer. The state is
-     * defined in the smb4kdefs.h file.
+     * This function aborts the searching for a certain search string 
+     * in the network neighborhood.
      *
-     * @returns the current state of the mounter.
+     * @param string          The search string
      */
-    int currentState() { return m_state; }
+    void abort( const QString &string );
+
+    /**
+     * This function starts the composite job
+     */
+    void start();
 
   signals:
-    /**
-     * This signal is emitted when the current run state changed. Use the currentState()
-     * function to read the current run state.
-     */
-    void stateChanged();
-
-    /**
-     * This signal emits a network item that matches the search
-     * criterion.
-     *
-     * @param item              The Smb4KBasicNetworkItem object
-     *
-     * @param known             TRUE if the network item is known to the application
-     *                          and FALSE otherwise. In case of a share, "known" means
-     *                          mounted.
-     */
-    void result( Smb4KBasicNetworkItem *item,
-                 bool known );
-
     /**
      * This signal is emitted when a search process is about to be started. It passes
      * the search string to the receiver.
@@ -145,47 +118,52 @@ class KDE_EXPORT Smb4KSearch : public QObject
      */
     void finished( const QString &string );
 
+    /**
+     * This signal is emitted when the search returned a result.
+     *
+     * @param item          The network item
+     *
+     * @param known         Is the item already known?
+     */
+    void result( Smb4KBasicNetworkItem *item,
+                 bool known );
+
   protected slots:
     /**
-     * This slot is connected to QCoreApplication::aboutToQuit() signal.
-     * It aborts all running processes.
+     * Invoked by start() function
+     */
+    void slotStartJobs();
+
+    /**
+     * Called when a job finished
+     */
+    void slotJobFinished( KJob *job );
+
+    /**
+     * Called when an authentication error occurred
+     */
+    void slotAuthError( Smb4KSearchJob *job );
+
+    /**
+     * Called when an search result was found
+     */
+    void slotProcessSearchResult( Smb4KBasicNetworkItem * );
+
+    /**
+     * Called when the program is about to quit
      */
     void slotAboutToQuit();
 
-    /**
-     * This slot is called whenever a search result is emitted by a thread.
-     * It does the necessary last adjustments before the result is made
-     * available by emitting it.
-     *
-     * @param item          The network item that was discovered.
-     */
-    void slotProcessSearchResult( Smb4KBasicNetworkItem *item );
-
-    /**
-     * This slot is called when a thread finished.
-     */
-    void slotThreadFinished();
-
   private:
     /**
-     * The constructor.
+     * Constructor
      */
     Smb4KSearch();
 
     /**
-     * The destructor.
+     * Destructor
      */
     ~Smb4KSearch();
-
-    /**
-     * The state
-     */
-    int m_state;
-
-    /**
-     * The cache that holds the threads
-     */
-   QCache<QString,SearchThread> m_cache;
 };
 
 #endif
