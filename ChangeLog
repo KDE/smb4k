@@ -218,11 +218,15 @@ Smb4K SVN_HEAD (????-??-??):
   + Added aboutToStart( const QString & ) signal.
   + Added finished( const QString & ) signal.
 - Revised Smb4KIPAddressScanner class:
-  + Introduced lookup() functions.
+  + Completely rewrote this class and its helpers.
+  + Introduced lookup(), getHost() and getWorkgroup() functions.
   + Removed the auto scan ability, because it was not needed.
   + Incoming lookup requests can now be processed in parallel, because we are
-    using threads.
-  + Added isRunning() functions.
+    using KJobs.
+  + Added isRunning() function.
+  + Added abortAll() function.
+  + Added aboutToStart( Smb4KHost * ) signal.
+  + Added finished( Smb4KHost * ) signal.
 - Revised Smb4KHomesSharesHandler class:
   + Added setHomesUsers( Smb4KAuthInfo * ) function.
 - Revised Smb4KBookmark class:
