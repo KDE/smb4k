@@ -28,10 +28,10 @@
 #include <QDebug>
 #include <QHostAddress>
 #include <QAbstractSocket>
+#include <QCoreApplication>
 
 // KDE includes
 #include <kglobal.h>
-#include <kapplication.h>
 
 // application specific includes
 #include <smb4ksearch.h>
@@ -51,7 +51,7 @@ K_GLOBAL_STATIC( Smb4KSearchPrivate, p );
 
 Smb4KSearch::Smb4KSearch() : KCompositeJob( 0 )
 {
-  connect( kapp, SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
+  connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
 }
 
 
@@ -234,16 +234,9 @@ void Smb4KSearch::slotProcessSearchResult( Smb4KBasicNetworkItem *item )
       Smb4KHost *known_host = findHost( host->hostName(), host->workgroupName() );
 
       // Get the IP address if necessary.
-      if ( !host->ipChecked() )
+      if ( !host->hasIP() )
       {
-        if ( known_host && !known_host->ip().trimmed().isEmpty() )
-        {
-          host->setIP( known_host->ip() );
-        }
-        else
-        {
-          Smb4KIPAddressScanner::self()->lookup( host );
-        }
+        Smb4KIPAddressScanner::self()->getIPAddress( host );
       }
       else
       {
@@ -254,6 +247,7 @@ void Smb4KSearch::slotProcessSearchResult( Smb4KBasicNetworkItem *item )
       if ( !known_host )
       {
         addHost( host );
+        Smb4KIPAddressScanner::self()->lookup();
       }
       else
       {
