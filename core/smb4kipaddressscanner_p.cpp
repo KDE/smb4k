@@ -24,44 +24,221 @@
  *   MA  02111-1307 USA                                                    *
  ***************************************************************************/
 
+// Qt includes
+#include <QTimer>
+#include <QHostAddress>
+#include <QAbstractSocket>
+
 // KDE includes
 #include <kdebug.h>
+#include <kstandarddirs.h>
 
 // application specific includes
 #include <smb4kipaddressscanner_p.h>
 #include <smb4khost.h>
 #include <smb4knotification.h>
+#include <smb4ksambaoptionshandler.h>
+#include <smb4ksettings.h>
 
 
-IPScanThread::IPScanThread( Smb4KHost *host, QObject *parent )
-: QThread( parent ), m_host( host )
+Smb4KIPLookupJob::Smb4KIPLookupJob( QObject *parent ) : KJob( parent ),
+  m_started( false ), m_host( NULL ), m_parent_widget( NULL )
 {
-  Q_ASSERT( m_host );
-  m_proc = NULL;
+  setCapabilities( KJob::Killable );
 }
 
 
-IPScanThread::~IPScanThread()
+Smb4KIPLookupJob::~Smb4KIPLookupJob()
 {
 }
 
 
-void IPScanThread::lookup( const QString &command )
+void Smb4KIPLookupJob::start()
 {
-  Q_ASSERT( !command.isEmpty() );
+  m_started = true;
+  QTimer::singleShot( 0, this, SLOT( slotStartLookup() ) );
+}
+
+
+void Smb4KIPLookupJob::setupLookup( Smb4KHost *host, QWidget *parentWidget )
+{
+  Q_ASSERT( host );
+  m_host = host;
+  m_parent_widget = parentWidget;
+}
+
+
+bool Smb4KIPLookupJob::doKill()
+{
+  if ( m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting) )
+  {
+    m_proc->abort();
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  return KJob::doKill();
+}
+
+
+void Smb4KIPLookupJob::slotStartLookup()
+{
+  emit aboutToStart( m_host );
+
+  // Find nmblookup program.
+  QString nmblookup = KStandardDirs::findExe( "nmblookup" );
+
+  if ( nmblookup.isEmpty() )
+  {
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->commandNotFound( "nmblookup" );
+    emitResult();
+    return;
+  }
+  else
+  {
+    // Go ahead
+  }
+
+  // Find grep program.
+  QString grep = KStandardDirs::findExe( "grep" );
+
+  if ( grep.isEmpty() )
+  {
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->commandNotFound( "grep" );
+    emitResult();
+    return;
+  }
+  else
+  {
+    // Go ahead
+  }
+
+  // Find the awk program
+  QString awk = KStandardDirs::findExe( "awk" );
+
+  if ( awk.isEmpty() )
+  {
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->commandNotFound( "awk" );
+    emitResult();
+    return;
+  }
+  else
+  {
+    // Go ahead
+  }
+
+  // Global Samba options
+  QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
+
+  // Compile the arguments
+  QStringList arguments;
+  arguments << nmblookup;
+
+  // Domain
+  if ( !Smb4KSettings::domainName().isEmpty() &&
+       QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0 )
+  {
+    arguments << QString( "-W '%1'" ).arg( Smb4KSettings::domainName() );
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // NetBIOS name
+  if ( !Smb4KSettings::netBIOSName().isEmpty() &&
+       QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0 )
+  {
+    arguments << QString( "-n '%1'" ).arg( Smb4KSettings::netBIOSName() );
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // NetBIOS scope
+  if ( !Smb4KSettings::netBIOSScope().isEmpty() &&
+       QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0 )
+  {
+    arguments << QString( "-i '%1'" ).arg( Smb4KSettings::netBIOSScope() );
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // Socket options
+  if ( !Smb4KSettings::socketOptions().isEmpty() &&
+       QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0 )
+  {
+    arguments << QString( "-O '%1'" ).arg( Smb4KSettings::socketOptions() );
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // Port 137
+  if ( Smb4KSettings::usePort137() )
+  {
+    arguments << "-r";
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // Broadcast address
+  QHostAddress address( Smb4KSettings::broadcastAddress() );
+
+  if ( !Smb4KSettings::broadcastAddress().isEmpty() &&
+       address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol )
+  {
+    arguments << QString( "-B %1" ).arg( Smb4KSettings::broadcastAddress() );
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // WINS server
+  if ( !Smb4KSambaOptionsHandler::self()->winsServer().isEmpty() )
+  {
+    arguments << "-R";
+    arguments << QString( "-U '%1'" ).arg( Smb4KSambaOptionsHandler::self()->winsServer() );
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  arguments << "--";
+  arguments << QString( "'%1'" ).arg( m_host->hostName() );
+  arguments << "|";
+  arguments << grep;
+  arguments << "'<00>'";
+  arguments << "|";
+  arguments << awk;
+  arguments << "{'print $1'}";
 
   m_proc = new Smb4KProcess( Smb4KProcess::LookupIP, this );
+  m_proc->setOutputChannelMode( KProcess::SeparateChannels );
+  m_proc->setShellCommand( arguments.join( " " ) );
 
-  connect( m_proc, SIGNAL( readyReadStandardOutput() ), this, SLOT( slotProcessOutput() ) );
+  connect( m_proc, SIGNAL( readyReadStandardOutput() ), this, SLOT( slotReadStandardOutput() ) );
+  connect( m_proc, SIGNAL( readyReadStandardError() ), this, SLOT( slotReadStandardError() ) );
   connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), this, SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
 
-  m_proc->setShellCommand( command );
-  m_proc->setOutputChannelMode( KProcess::SeparateChannels );
   m_proc->start();
 }
 
 
-void IPScanThread::slotProcessOutput()
+void Smb4KIPLookupJob::slotReadStandardOutput()
 {
   // Normally, there should only be one IP address. However, there might
   // be more than one. So, split the incoming data and use the first entry
@@ -77,14 +254,20 @@ void IPScanThread::slotProcessOutput()
   {
     m_host->setIP( QString() );
   }
-  
+
   emit ipAddress( m_host );
 }
 
 
-void IPScanThread::slotProcessFinished( int exitCode, QProcess::ExitStatus exitStatus )
+void Smb4KIPLookupJob::slotReadStandardError()
 {
-  switch ( exitStatus )
+  qDebug() << m_proc->readAllStandardError();
+}
+
+
+void Smb4KIPLookupJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitStatus status )
+{
+  switch ( status )
   {
     case QProcess::CrashExit:
     {
@@ -104,8 +287,9 @@ void IPScanThread::slotProcessFinished( int exitCode, QProcess::ExitStatus exitS
       break;
     }
   }
-  
-  exit( exitCode );
+
+  emitResult();
+  emit finished( m_host );
 }
 
 

@@ -1,10 +1,9 @@
 /***************************************************************************
-    smb4kipaddressscanner  -  This class scans for IP addresses. It
-    belongs to the core classes of Smb4K.
+    smb4kipaddressscanner  -  This class scans for IP addresses.
                              -------------------
-    begin                : Di Apr 22 2008
-    copyright            : (C) 2008-2009 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    begin                : Fri Mar 18 2011
+    copyright            : (C) 2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -31,31 +30,18 @@
 #include <config.h>
 #endif
 
-// Qt includes
-#include <QObject>
-#include <QList>
-#include <QCache>
-
 // KDE includes
+#include <kcompositejob.h>
 #include <kdemacros.h>
 
+// application specific includes
+#include <smb4kworkgroup.h>
+#include <smb4khost.h>
+
 // forward declarations
-class Smb4KHost;
-class IPScanThread;
+class Smb4KIPAddressScannerPrivate;
 
-/**
- * This class scans for IP addresses of hosts found in the network.
- * It either takes a single host or a list of hosts and initiates
- * the scan by invoking private scan threads.
- *
- * This class is a very simple helper class. It does not have the
- * ability to stop a scan once it was started. But since this class
- * is supposed to run in the background, this is not needed.
- *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
- */
-
-class KDE_EXPORT Smb4KIPAddressScanner : public QObject
+class KDE_EXPORT Smb4KIPAddressScanner : public KCompositeJob
 {
   Q_OBJECT
 
@@ -63,108 +49,119 @@ class KDE_EXPORT Smb4KIPAddressScanner : public QObject
 
   public:
     /**
-     * Returns a static pointer to this class.
+     * This function returns a static pointer to this class.
+     *
+     * @returns a static pointer to the Smb4KPrint class.
      */
     static Smb4KIPAddressScanner *self();
 
     /**
-     * Lookup the IP address of a certain @p host. If @p host already has an
-     * IP address set, this function will do nothing. If the IP address is already
-     * known, it will set it. Otherwise the @p host will be processed. If @p wait
-     * is set to true, the function will wait until the IP address was determined
-     * and will return afterwards. The advantage it, that you can immediately work
-     * with the IP address. However, in most cases you do not want this function
-     * to block the rest of the program. By default, the function returns after the
-     * lookup process was started and you need to connect to the @see ipAddress()
-     * signal to retrieve the result.
+     * Starts a IP address lookup for all hosts currently present 
+     * in the global hosts list. If @p force is TRUE, the all IP 
+     * addresses will be looked up regardless whether the host already
+     * has got one.
+     * 
+     * @param force         Force the lookup
      *
-     * @param host            The Smb4KHost item for which the IP address is to be
-     *                        looked up.
-     *
-     * @param wait            Set to TRUE, the function will wait until the IP address
-     *                        was retrieved.
+     * @param parent        The parent widget
      */
-    void lookup( Smb4KHost *host,
-                 bool wait = false );
+    void lookup( bool force = false,
+                 QWidget *parent = 0 );
 
     /**
-     * Lookup the IP addresses of the hosts that are stored in @p list. This
-     * function loops through the list of hosts and passes each item to the
-     * @see lookup() function above. If you set @p wait to TRUE, you can immediately
-     * work with the IP addresses after the function returned. However, this might
-     * freeze your program for the time that is needed to find all IP addresses.
+     * Get the IP address for the master browser of @p workgroup. This is
+     * a convenience function and only searches Smb4KGlobal::hostList()
+     * for the right host and copies the IP address. If you want to do an
+     * IP address lookup, use the lookup() function.
      *
-     * @param list            The list of Smb4KHost items for which the IP address
-     *                        are to be looked up.
-     *
-     * @param wait            Set to TRUE, the IP addresses will immediately filled
-     *                        into the list.
+     * @param host          The Smb4KHost object
      */
-    void lookup( const QList<Smb4KHost *> &list,
-                 bool wait = false );
-                 
+    void getIPAddress( Smb4KWorkgroup *workgroup );
+    
     /**
-     * This function returns TRUE if a thread is running that looks up the IP address
-     * for @p host.
+     * Get the IP address for @p host. This is a convenience function and
+     * only searches  Smb4KGlobal::hostList() for the right host and copies
+     * the IP address to @p host. If you want to do an IP address lookup, use
+     * the lookup() function.
      *
-     * @param host          The host item
-     *
-     * @returns             TRUE if the IP address for @p host is currently being
-     *                      looked up.
+     * @param host          The Smb4KHost object
      */
-    bool isRunning( Smb4KHost *host );
-                 
+    void getIPAddress( Smb4KHost *host );
+
     /**
-     * This function reports if the IP scanner is running or not.
+     * This function tells you if at least one IP address lookup job is
+     * currently running.
      *
-     * @returns             TRUE if the scanner is running and FALSE otherwise.
+     * @returns TRUE if at least one lookup job is running
      */
-    bool isRunning() { return !m_cache.isEmpty(); }
+    bool isRunning();
+
+    /**
+     * This function aborts all searches at once.
+     */
+    void abortAll();
+
+    /**
+     * This function starts the composite job
+     */
+    void start();
 
   signals:
     /**
-     * This signal is emitted, when an IP address was found for a host. It passed
-     * the associated Smb4KHost object.
+     * This signal is emitted when a lookup process is about to be started.
+     * It passes the host to the receiver.
      *
-     * @param host            The Smb4KHost object that carries the discovered
-     *                        IP address.
+     * @param host          The host
+     */
+    void aboutToStart( Smb4KHost *host );
+
+    /**
+     * This signal is emitted when a lookup process has finished. It passes
+     * the host to the receiver.
+     *
+     * @param host          The host
+     */
+    void finished( Smb4KHost *host );
+
+    /**
+     * This signal is emitted when an IP address was successfully looked
+     * up.
+     *
+     * @param host          The host
      */
     void ipAddress( Smb4KHost *host );
 
   protected slots:
     /**
-     * This slot is called when the application is about to closed.
+     * Invoked by start() function
      */
-    void slotAboutToQuit();
-    
+    void slotStartJobs();
+
     /**
-     * This slot is called when an IP address was discovered and emitted by
-     * the lookup thread.
-     *
-     * @param host            The Smb4KHost item that carries the IP address
+     * Processes the host if it is a master browser.
      */
     void slotProcessIPAddress( Smb4KHost *host );
-    
+
     /**
-     * This slot is called when a thread finished.
+     * Invoked by KJob::result() signal
      */
-    void slotThreadFinished();
+    void slotJobFinished( KJob *job );
+
+    /**
+     * Called when the program is about to quit
+     */
+    void slotAboutToQuit();
 
   private:
     /**
-     * The constructor
+     * Constructor
      */
     Smb4KIPAddressScanner();
 
     /**
-     * The destructor
+     * Destructor
      */
     ~Smb4KIPAddressScanner();
-
-    /**
-     * The cache that holds the threads.
-     */
-    QCache<QString, IPScanThread> m_cache;
 };
 
 #endif

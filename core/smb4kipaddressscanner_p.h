@@ -32,37 +32,121 @@
 #endif
 
 // Qt includes
-#include <QThread>
+#include <QWidget>
+
+// KDE includes
+#include <kjob.h>
 
 // application specific includes
 #include <smb4kipaddressscanner.h>
-#include <smb4kbasicnetworkitem.h>
 #include <smb4kprocess.h>
 
-class IPScanThread : public QThread
+class Smb4KIPLookupJob : public KJob
 {
   Q_OBJECT
-  
+
   public:
-    IPScanThread( Smb4KHost *host, 
-                  QObject *parent = 0 );
-    ~IPScanThread();
-    void lookup( const QString &command );
-    Smb4KHost *host() { return m_host; };
-    Smb4KProcess *process() { return m_proc; }
-    
+    /**
+     * Constructor
+     */
+    Smb4KIPLookupJob( QObject *parent = 0 );
+
+    /**
+     * Destructor
+     */
+    ~Smb4KIPLookupJob();
+
+    /**
+     * Returns TRUE if the job has been started and FALSE otherwise
+     *
+     * @returns TRUE if the job has been started
+     */
+    bool isStarted() { return m_started; }
+
+    /**
+     * Starts the job
+     */
+    void start();
+
+    /**
+     * Set up the lookup job. You need to set the host, the
+     * parent widget is optional.
+     *
+     * You must run this function before start() is called.
+     *
+     * @param host            The host
+     *
+     * @param parent          The parent widget
+     */
+    void setupLookup( Smb4KHost *host,
+                      QWidget *parentWidget = 0 );
+
   signals:
+    /**
+     * This signal is emitted when a lookup process is about to be started.
+     * It passes the host to the receiver.
+     *
+     * @param host          The host
+     */
+    void aboutToStart( Smb4KHost *host );
+
+    /**
+     * This signal is emitted when a lookup process has finished. It passes
+     * the host to the receiver.
+     *
+     * @param host          The host
+     */
+    void finished( Smb4KHost *host );
+
+    /**
+     * This signal is emitted when an IP address was successfully looked
+     * up.
+     *
+     * @param host          The host
+     */
     void ipAddress( Smb4KHost *host );
-    
+
+  protected:
+    bool doKill();
+
   protected slots:
-    void slotProcessOutput();
-    void slotProcessFinished( int exitCode,
-                              QProcess::ExitStatus exitStatus );
-                 
+    void slotStartLookup();
+    void slotReadStandardOutput();
+    void slotReadStandardError();
+    void slotProcessFinished( int exitCode, QProcess::ExitStatus status );
+
   private:
+    bool m_started;
     Smb4KHost *m_host;
+    QWidget *m_parent_widget;
     Smb4KProcess *m_proc;
 };
+
+
+// class IPScanThread : public QThread
+// {
+//   Q_OBJECT
+//   
+//   public:
+//     IPScanThread( Smb4KHost *host, 
+//                   QObject *parent = 0 );
+//     ~IPScanThread();
+//     void lookup( const QString &command );
+//     Smb4KHost *host() { return m_host; };
+//     Smb4KProcess *process() { return m_proc; }
+//     
+//   signals:
+//     void ipAddress( Smb4KHost *host );
+//     
+//   protected slots:
+//     void slotProcessOutput();
+//     void slotProcessFinished( int exitCode,
+//                               QProcess::ExitStatus exitStatus );
+//                  
+//   private:
+//     Smb4KHost *m_host;
+//     Smb4KProcess *m_proc;
+// };
 
 
 class Smb4KIPAddressScannerPrivate

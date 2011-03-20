@@ -1,10 +1,9 @@
 /***************************************************************************
-    smb4kipaddressscanner  -  This class scans for IP addresses. It
-    belongs to the core classes of Smb4K.
+    smb4kipaddressscanner  -  This class scans for IP addresses.
                              -------------------
-    begin                : Di Apr 22 2008
-    copyright            : (C) 2008-2009 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    begin                : Fri Mar 18 2011
+    copyright            : (C) 2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -25,37 +24,27 @@
  ***************************************************************************/
 
 // Qt includes
-#include <QCoreApplication>
 #include <QTimer>
-#include <QHostAddress>
+#include <QDebug>
+#include <QCoreApplication>
 
 // KDE includes
 #include <kglobal.h>
-#include <kdebug.h>
-#include <kshell.h>
-#include <kstandarddirs.h>
 
 // application specific includes
 #include <smb4kipaddressscanner.h>
-#include <smb4kglobal.h>
-#include <smb4ksambaoptionshandler.h>
-#include <smb4khost.h>
 #include <smb4kipaddressscanner_p.h>
-#include <smb4ksettings.h>
-#include <smb4kprocess.h>
-#include <smb4knotification.h>
+#include <smb4kglobal.h>
 
 using namespace Smb4KGlobal;
 
-K_GLOBAL_STATIC( Smb4KIPAddressScannerPrivate, priv );
+
+K_GLOBAL_STATIC( Smb4KIPAddressScannerPrivate, p );
 
 
-Smb4KIPAddressScanner::Smb4KIPAddressScanner() : QObject()
+Smb4KIPAddressScanner::Smb4KIPAddressScanner() : KCompositeJob( 0 )
 {
-  startTimer( 50 );
-  
-  connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ),
-           this,                         SLOT( slotAboutToQuit() ) );
+  connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
 }
 
 
@@ -66,212 +55,196 @@ Smb4KIPAddressScanner::~Smb4KIPAddressScanner()
 
 Smb4KIPAddressScanner *Smb4KIPAddressScanner::self()
 {
-  return &priv->instance;
+  return &p->instance;
 }
 
 
-void Smb4KIPAddressScanner::lookup( Smb4KHost *host, bool wait )
+void Smb4KIPAddressScanner::lookup( bool force, QWidget *parent )
 {
-  Q_ASSERT( host );
-
-  // Return if the IP address has already been checked.
-  if ( host->ipChecked() )
+  if ( !hostsList().isEmpty() )
   {
-    return;
+    for ( int i = 0; i < hostsList().size(); i++ )
+    {
+      // We do not need to lookup the IP address for a
+      // host that already has got one except 'force' is 
+      // true.
+      if ( !hostsList().at( i )->ipChecked() || force )
+      {
+        // Create a new job and add it to the subjobs
+        Smb4KIPLookupJob *job = new Smb4KIPLookupJob( this );
+        job->setObjectName( QString( "IPLookupJob_%1" ).arg( hostsList().at( i )->unc() ) );
+        job->setupLookup( hostsList()[i], parent );
+
+        connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
+         connect( job, SIGNAL( ipAddress( Smb4KHost * ) ), SLOT( slotProcessIPAddress( Smb4KHost * ) ) );
+        connect( job, SIGNAL( aboutToStart( Smb4KHost * ) ), SIGNAL( aboutToStart( Smb4KHost * ) ) );
+        connect( job, SIGNAL( finished( Smb4KHost * ) ), SIGNAL( finished( Smb4KHost * ) ) );
+
+        addSubjob( job );
+
+        job->start();
+      }
+      else
+      {
+        emit ipAddress( hostsList()[i] );
+      }
+    }
   }
   else
   {
     // Do nothing
   }
-  
-  // Find the host in the global list and check if it already has an
-  // IP address. Copy it if available or initialize a lookup.
-  Smb4KHost *known_host = findHost( host->hostName(), host->workgroupName() );
+}
 
-  if ( known_host && known_host->ipChecked() )
+
+void Smb4KIPAddressScanner::getIPAddress( Smb4KWorkgroup *workgroup )
+{
+  for ( int i = 0; i < hostsList().size(); i++ )
   {
-    host->setIP( known_host->ip() );
-    emit ipAddress( host );
-  }
-  else
-  {
-    // Find nmblookup program.
-    QString nmblookup = KStandardDirs::findExe( "nmblookup" );
-
-    if ( nmblookup.isEmpty() )
+    if ( !hostsList().at( i )->workgroupName().isEmpty() )
     {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->commandNotFound( "nmblookup" );
-      return;
+      if ( QString::compare( hostsList().at( i )->workgroupName(),
+           workgroup->workgroupName(), Qt::CaseInsensitive ) == 0 &&
+           QString::compare( hostsList().at( i )->hostName(),
+           workgroup->masterBrowserName(), Qt::CaseInsensitive ) == 0 )
+      {
+        // Only set the IP address, if there is one. We can avoid erasing
+        // already existing IP addresses.
+        if ( hostsList().at( i )->hasIP() )
+        {
+          workgroup->setMasterBrowserIP( hostsList().at( i )->ip() );
+        }
+        else
+        {
+          continue;
+        }
+        break;
+      }
+      else
+      {
+        // Do nothing
+      }
     }
     else
     {
-      // Go ahead
-    }
-
-    // Find grep program.
-    QString grep = KStandardDirs::findExe( "grep" );
-
-    if ( grep.isEmpty() )
-    {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->commandNotFound( "grep" );
-      return;
-    }
-    else
-    {
-      // Go ahead
-    }
-
-    // Find the awk program
-    QString awk = KStandardDirs::findExe( "awk" );
-
-    if ( awk.isEmpty() )
-    {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->commandNotFound( "awk" );
-      return;
-    }
-    else
-    {
-      // Go ahead
-    }
-    
-    // Global Samba options
-    QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
-
-    // Assemble the command
-    QString command;
-    command += nmblookup;
-    command += " ";
-    
-    // Domain
-    command += (!Smb4KSettings::domainName().isEmpty() &&
-               QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0) ?
-               QString( " -W %1" ).arg( KShell::quoteArg( Smb4KSettings::domainName() ) ) : "";
-    
-    // NetBIOS name
-    command += (!Smb4KSettings::netBIOSName().isEmpty() &&
-               QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0) ?
-               QString( " -n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) ) : "";
-               
-    // NetBIOS scope
-    command += (!Smb4KSettings::netBIOSScope().isEmpty() &&
-               QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0) ?
-               QString( " -i %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSScope() ) ) : "";
-               
-    // Socket options
-    command += (!Smb4KSettings::socketOptions().isEmpty() &&
-               QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0) ?
-               QString( " -O %1" ).arg( KShell::quoteArg( Smb4KSettings::socketOptions() ) ) : "";
-               
-    // Port 137
-    command += Smb4KSettings::usePort137() ? " -r" : "";
-    
-    // Broadcast address
-    QHostAddress address( Smb4KSettings::broadcastAddress() );
-    
-    command += (!Smb4KSettings::broadcastAddress().isEmpty() &&
-               address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol) ?
-               QString( " -B %1" ).arg( Smb4KSettings::broadcastAddress() ) : "";
-    
-    // WINS server
-    if ( !Smb4KSambaOptionsHandler::self()->winsServer().isEmpty() )
-    {
-      command += " -R -U "+KShell::quoteArg( Smb4KSambaOptionsHandler::self()->winsServer() );
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    command += " -- ";
-    command += KShell::quoteArg( host->hostName() );
-    command += " | ";
-    command += grep;
-    command += " '<00>' | ";
-    command += awk;
-    command += " {'print $1'}";
-
-    IPScanThread *thread = new IPScanThread( host, this );
-    m_cache.insert( host->hostName(), thread );
-
-    connect( thread, SIGNAL( finished() ), this, SLOT( slotThreadFinished() ) );
-    connect( thread, SIGNAL( ipAddress( Smb4KHost * ) ), this, SIGNAL( ipAddress( Smb4KHost * ) ) );
-    connect( thread, SIGNAL( ipAddress( Smb4KHost * ) ), this, SLOT( slotProcessIPAddress( Smb4KHost * ) ) );
-
-    thread->start();
-    thread->lookup( command );
-
-    if ( wait )
-    {
-      thread->wait();
-    }
-    else
-    {
-      // Do nothing
+      if ( QString::compare( hostsList().at( i )->hostName(),
+           workgroup->masterBrowserName(), Qt::CaseInsensitive ) == 0 )
+      {
+        // Only set the IP address, if there is one. We can avoid erasing
+        // already existing IP addresses.
+        if ( hostsList().at( i )->hasIP() )
+        {
+          workgroup->setMasterBrowserIP( hostsList().at( i )->ip() );
+        }
+        else
+        {
+          // Do nothing
+        }
+        break;
+      }
+      else
+      {
+        continue;
+      }
     }
   }
 }
 
 
-void Smb4KIPAddressScanner::lookup( const QList<Smb4KHost *> &list, bool wait )
+void Smb4KIPAddressScanner::getIPAddress( Smb4KHost *host )
 {
-  for ( int i = 0; i < list.size(); ++i )
+  for ( int i = 0; i < hostsList().size(); i++ )
   {
-    lookup( list.at( i ), wait );
+    if ( !hostsList().at( i )->workgroupName().isEmpty() && host->workgroupName().isEmpty() )
+    {
+      if ( QString::compare( hostsList().at( i )->workgroupName(),
+           host->workgroupName(), Qt::CaseInsensitive ) == 0 &&
+           QString::compare( hostsList().at( i )->hostName(),
+           host->hostName(), Qt::CaseInsensitive ) == 0 )
+      {
+        // Only set the IP address, if there is one. We can avoid erasing
+        // already existing IP addresses.
+        if ( hostsList().at( i )->hasIP() )
+        {
+          host->setIP( hostsList().at( i )->ip() );
+        }
+        else
+        {
+          // Do nothing
+        }
+        break;
+      }
+      else
+      {
+        continue;
+      }
+    }
+    else
+    {
+      if ( QString::compare( hostsList().at( i )->hostName(),
+           host->hostName(), Qt::CaseInsensitive ) == 0 )
+      {
+        // Only set the IP address, if there is one. We can avoid erasing
+        // already existing IP addresses.
+        if ( hostsList().at( i )->hasIP() )
+        {
+          host->setIP( hostsList().at( i )->ip() );
+        }
+        else
+        {
+          // Do nothing
+        }
+        break;
+      }
+      else
+      {
+        continue;
+      }
+    }
   }
 }
 
 
-bool Smb4KIPAddressScanner::isRunning( Smb4KHost *host )
+bool Smb4KIPAddressScanner::isRunning()
 {
-  Q_ASSERT( host );
-  
-  IPScanThread *thread = m_cache.object( host->hostName() );
-  return (thread && thread->process() && thread->process()->state() == KProcess::Running);
+  return !subjobs().isEmpty();
+}
+
+
+void Smb4KIPAddressScanner::abortAll()
+{
+  for ( int i = 0; i < subjobs().size(); i++ )
+  {
+    subjobs().at( i )->kill( KJob::EmitResult );
+  }
+}
+
+
+void Smb4KIPAddressScanner::start()
+{
+  QTimer::singleShot( 0, this, SLOT( slotStartJobs() ) );
 }
 
 
 /////////////////////////////////////////////////////////////////////////////
-// SLOT IMPLEMENTATIONS
+//   SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
 
-void Smb4KIPAddressScanner::slotAboutToQuit()
+void Smb4KIPAddressScanner::slotStartJobs()
 {
-  // Stop all processes.
-  QStringList keys = m_cache.keys();
-
-  foreach ( const QString &key, keys )
-  {
-    IPScanThread *thread = m_cache.object( key );
-
-    if ( thread->process() && 
-         (thread->process()->state() == KProcess::Running || 
-         thread->process()->state() == KProcess::Starting) )
-    {
-      thread->process()->abort();
-    }
-    else
-    {
-      // Do not touch the thread
-    }
-  }
+  // FIXME: Not implemented yet. I do not see a use case at the moment.
 }
 
 
 void Smb4KIPAddressScanner::slotProcessIPAddress( Smb4KHost *host )
 {
-  // Find the host in the global list and update it as well,
-  // if appropriate.
-  Smb4KHost *known_host = findHost( host->hostName(), host->workgroupName() );
-  
-  if ( known_host )
+  if ( host->isMasterBrowser() )
   {
-    if ( host->hasIP() && 
-         QString::compare( host->ip(), known_host->ip() ) != 0 )
+    Smb4KWorkgroup *workgroup = findWorkgroup( host->workgroupName() );
+
+    if ( workgroup )
     {
-      known_host->setIP( host->ip() );
+      workgroup->setMasterBrowserIP( host->ip() );
     }
     else
     {
@@ -282,30 +255,20 @@ void Smb4KIPAddressScanner::slotProcessIPAddress( Smb4KHost *host )
   {
     // Do nothing
   }
-  
-  // Signal is forwarded from the ip scan thread. We do not need 
-  // to emit from it here.
+
+  emit ipAddress( host );
 }
 
 
-void Smb4KIPAddressScanner::slotThreadFinished()
+void Smb4KIPAddressScanner::slotJobFinished( KJob *job )
 {
-  QStringList keys = m_cache.keys();
-
-  foreach ( const QString &key, keys )
-  {
-    IPScanThread *thread = m_cache.object( key );
-
-    if ( thread->isFinished() )
-    {
-      m_cache.remove( key );
-    }
-    else
-    {
-      // Do not touch the thread
-    }
-  }
+  removeSubjob( job );
 }
 
+
+void Smb4KIPAddressScanner::slotAboutToQuit()
+{
+  abortAll();
+}
 
 #include "smb4kipaddressscanner.moc"
