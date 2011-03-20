@@ -28,12 +28,12 @@
 #include <QDebug>
 #include <QFile>
 #include <QDir>
+#include <QCoreApplication>
 
 // KDE includes
 #include <kglobal.h>
 #include <kstandarddirs.h>
 #include <kshell.h>
-#include <kapplication.h>
 
 // application specific includes
 #include <smb4ksynchronizer.h>
@@ -48,7 +48,7 @@ K_GLOBAL_STATIC( Smb4KSynchronizerPrivate, p );
 
 Smb4KSynchronizer::Smb4KSynchronizer() : KCompositeJob( 0 )
 {
-  connect( kapp, SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
+  connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
 }
 
 
