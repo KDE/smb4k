@@ -1337,16 +1337,9 @@ void Smb4KScanner::insertHost( Smb4KHost *host )
       // Do nothing
     }
 
-    // Lookup at least the IP address of this host, if necessary:
-    if ( !new_host->ipChecked() )
-    {
-      Smb4KIPAddressScanner::self()->lookup( new_host );
-    }
-    else
-    {
-      // Do nothing
-    }
-
+    // Lookup IP addresses
+    Smb4KIPAddressScanner::self()->lookup();
+    
     emit hostInserted( new_host );
     emit hostListChanged();
   }
@@ -1648,38 +1641,8 @@ void Smb4KScanner::slotWorkgroups( QList<Smb4KWorkgroup> &workgroups_list )
     addWorkgroup( new Smb4KWorkgroup( workgroups_list.at( i ) ) );
   }
 
-  // Check that the workgroup master browsers have an IP address and
-  // acquire it if not present.
-  for ( int i = 0; i < workgroupsList().size(); ++i )
-  {
-    if ( !workgroupsList().at( i )->hasMasterBrowserIP() )
-    {
-      // The master browser is in the global host list. Find it.
-      Smb4KHost *master_browser = findHost( workgroupsList().at( i )->masterBrowserName(), workgroupsList().at( i )->workgroupName() );
-
-      if ( master_browser )
-      {
-        if ( !master_browser->hasIP() )
-        {
-          Smb4KIPAddressScanner::self()->lookup( master_browser, true );
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        workgroupsList()[i]->setMasterBrowserIP( master_browser->ip() );
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      continue;
-    }
-  }
+  // Scan for IP addresses
+  Smb4KIPAddressScanner::self()->lookup();
 
   emit hostListChanged();
   emit workgroups( workgroupsList() );
@@ -1778,8 +1741,8 @@ void Smb4KScanner::slotHosts( Smb4KWorkgroup *workgroup, QList<Smb4KHost> &hosts
       }
     }
 
-    // Lookup the IP addresses of the hosts.
-    Smb4KIPAddressScanner::self()->lookup( hostsList() );
+    // Lookup the IP addresses
+    Smb4KIPAddressScanner::self()->lookup();
 
     // Get the list of workgroup members.
     QList<Smb4KHost *> workgroup_members = workgroupMembers( workgroup );
