@@ -105,6 +105,7 @@ void Smb4KSearchJob::slotStartSearch()
     {
       Smb4KNotification *notification = new Smb4KNotification();
       notification->commandNotFound( "smbtree" );
+      emitResult();
       return;
     }
     else
@@ -251,6 +252,7 @@ void Smb4KSearchJob::slotStartSearch()
     {
       Smb4KNotification *notification = new Smb4KNotification();
       notification->commandNotFound( "nmblookup" );
+      emitResult();
       return;
     }
     else
@@ -265,6 +267,7 @@ void Smb4KSearchJob::slotStartSearch()
     {
       Smb4KNotification *notification = new Smb4KNotification();
       notification->commandNotFound( "grep" );
+      emitResult();
       return;
     }
     else
@@ -279,6 +282,7 @@ void Smb4KSearchJob::slotStartSearch()
     {
       Smb4KNotification *notification = new Smb4KNotification();
       notification->commandNotFound( "sed" );
+      emitResult();
       return;
     }
     else
