@@ -26,10 +26,10 @@
 // Qt includes
 #include <QTimer>
 #include <QDebug>
+#include <QCoreApplication>
 
 // KDE includes
 #include <kglobal.h>
-#include <kapplication.h>
 
 // application specific includes
 #include <smb4kpreviewer.h>
@@ -44,7 +44,7 @@ K_GLOBAL_STATIC( Smb4KPreviewerPrivate, p );
 
 Smb4KPreviewer::Smb4KPreviewer() : KCompositeJob( 0 )
 {
-  connect( kapp, SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
+  connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
 }
 
 

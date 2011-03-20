@@ -26,11 +26,11 @@
 // Qt includes
 #include <QTimer>
 #include <QDebug>
+#include <QCoreApplication>
 
 // KDE specific includes
 #include <kglobal.h>
 #include <kstandarddirs.h>
-#include <kapplication.h>
 
 // application specific includes
 #include <smb4kprint.h>
@@ -45,7 +45,7 @@ K_GLOBAL_STATIC( Smb4KPrintPrivate, p );
 
 Smb4KPrint::Smb4KPrint() : KCompositeJob( 0 )
 {
-  connect( kapp, SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
+  connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
 }
 
 
