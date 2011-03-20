@@ -76,6 +76,8 @@ class Smb4KSearchJob : public KJob
      *
      * @param string          The search string
      *
+     * @param master          The master browser
+     *
      * @param parent          The parent widget
      */
     void setupSearch( const QString &string,
