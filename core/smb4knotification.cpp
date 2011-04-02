@@ -203,6 +203,17 @@ void Smb4KNotification::mimetypeNotSupported( const QString &mt )
 }
 
 
+void Smb4KNotification::bookmarkExists( Smb4KBookmark *bookmark )
+{
+  KNotification *notification = KNotification::event( "bookmarkExists",
+                                i18n( "<p>The bookmark for share <b>%1</b> already exists and will be skipped.", bookmark->unc() ),
+                                KIconLoader::global()->loadIcon( "dialog-warning", KIconLoader::NoGroup, 0, KIconLoader::DefaultState ),
+                                0L,
+                                KNotification::CloseOnTimeout );
+  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+}
+
+
 void Smb4KNotification::bookmarkLabelInUse( Smb4KBookmark *bookmark )
 {
   KNotification *notification = KNotification::event( "bookmarkLabelInUse",

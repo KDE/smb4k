@@ -133,10 +133,18 @@ class KDE_EXPORT Smb4KNotification : public QObject
     void mimetypeNotSupported( const QString &mimetype );
 
     /**
+     * Tell the user that this bookmark is already present and that it will
+     * thus be skipped.
+     *
+     * @param bookmark  The bookmark
+     */
+    void bookmarkExists( Smb4KBookmark *bookmark );
+
+    /**
      * Tell the user that the label he/she chose for the bookmark is already
      * being used and that it will be changed automatically.
      *
-     * @param bookmark  The bookmark object
+     * @param bookmark  The bookmark
      */
     void bookmarkLabelInUse( Smb4KBookmark *bookmark );
 
