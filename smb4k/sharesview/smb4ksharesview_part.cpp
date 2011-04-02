@@ -47,7 +47,6 @@
 #include <smb4ksharesview_part.h>
 #include <smb4kshareslistviewitem.h>
 #include <smb4ksharesiconviewitem.h>
-#include <../dialogs/smb4kbookmarkdialog.h>
 #include <../tooltips/smb4ktooltip.h>
 #include <core/smb4kshare.h>
 #include <core/smb4kcore.h>
@@ -56,6 +55,7 @@
 #include <core/smb4kdefs.h>
 #include <core/smb4kmounter.h>
 #include <core/smb4ksynchronizer.h>
+#include <core/smb4kbookmarkhandler.h>
 
 using namespace Smb4KGlobal;
 
@@ -1510,17 +1510,15 @@ void Smb4KSharesViewPart::slotAddBookmark( bool /*checked */)
   {
     case IconMode:
     {
-      Smb4KBookmarkDialog *dlg = m_icon_view->findChild<Smb4KBookmarkDialog *>();
       QList<QListWidgetItem *> selected_items = m_icon_view->selectedItems();
-      QList<Smb4KBookmark *> bookmarks;
+      QList<Smb4KShare *> shares;
 
       if ( !selected_items.isEmpty() )
       {
         for ( int i = 0; i < selected_items.size(); ++i )
         {
           Smb4KSharesIconViewItem *item = static_cast<Smb4KSharesIconViewItem *>( selected_items.at( i ) );
-          bookmarks << new Smb4KBookmark( item->shareItem() );
-
+          shares << item->shareItem();
           continue;
         }
       }
@@ -1530,19 +1528,9 @@ void Smb4KSharesViewPart::slotAddBookmark( bool /*checked */)
         return;
       }
 
-      if ( !bookmarks.isEmpty() )
+      if ( !shares.isEmpty() )
       {
-        if ( !dlg )
-        {
-          dlg = new Smb4KBookmarkDialog( m_icon_view );
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        dlg->setBookmarks( bookmarks );
-        dlg->setVisible( true );
+        Smb4KBookmarkHandler::self()->addBookmarks( shares, m_icon_view );
       }
       else
       {
@@ -1553,17 +1541,15 @@ void Smb4KSharesViewPart::slotAddBookmark( bool /*checked */)
     }
     case ListMode:
     {
-      Smb4KBookmarkDialog *dlg = m_list_view->findChild<Smb4KBookmarkDialog *>();
       QList<QTreeWidgetItem *> selected_items = m_list_view->selectedItems();
-      QList<Smb4KBookmark *> bookmarks;
+      QList<Smb4KShare *> shares;
 
       if ( !selected_items.isEmpty() )
       {
         for ( int i = 0; i < selected_items.size(); ++i )
         {
           Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>( selected_items.at( i ) );
-          bookmarks << new Smb4KBookmark( item->shareItem() );
-
+          shares << item->shareItem();
           continue;
         }
       }
@@ -1573,19 +1559,9 @@ void Smb4KSharesViewPart::slotAddBookmark( bool /*checked */)
         return;
       }
 
-      if ( !bookmarks.isEmpty() )
+      if ( !shares.isEmpty() )
       {
-        if ( !dlg )
-        {
-          dlg = new Smb4KBookmarkDialog( m_icon_view );
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        dlg->setBookmarks( bookmarks );
-        dlg->setVisible( true );
+        Smb4KBookmarkHandler::self()->addBookmarks( shares, m_list_view );
       }
       else
       {
