@@ -150,10 +150,6 @@ void Smb4KPrintJob::slotStartPrinting()
     // Start the print process
     emit aboutToStart( m_share );
 
-    // Register the job with the job tracker
-    jobTracker()->registerJob( this );
-    connect( this, SIGNAL( result( KJob * ) ), jobTracker(), SLOT( unregisterJob( KJob * ) ) );
-    
     // Get the file name.
     KUrl fileURL = dlg.fileURL();
     KFileItem file_item = KFileItem( KFileItem::Unknown, KFileItem::Unknown, fileURL, false );
@@ -167,31 +163,12 @@ void Smb4KPrintJob::slotStartPrinting()
     {
       // Nothing to do here. These mimetypes can be directly
       // printed.
-
-      // Send description to the GUI
-      emit description( this, i18n( "Printing" ),
-                        qMakePair( i18n( "Printer" ), m_share->unc() ),
-                        qMakePair( i18n( "File" ), file_path ) );
-      
-      m_steps = 1;
-      m_done = 0;
-      emitPercent( m_done, m_steps );
-      
       file_path = fileURL.path();
     }
     else if ( file_item.mimetype().startsWith( "text" ) || 
               file_item.mimetype().startsWith( "message" ) ||
               QString::compare( file_item.mimetype(), "application/x-shellscript" ) == 0 )
     {
-      // Send description to the GUI
-      emit description( this, i18n( "Converting File to PostScript" ),
-                        qMakePair( i18n( "Input File" ), fileURL.path() ),
-                        qMakePair( i18n( "Output File" ), printer->outputFileName() ) );
-      
-      m_steps = 2;
-      m_done = 0;
-      emitPercent( m_done, m_steps );
-      
       QStringList contents;
       
       QFile file( fileURL.path() );
@@ -224,13 +201,6 @@ void Smb4KPrintJob::slotStartPrinting()
       
       doc.print( printer );
       file_path = printer->outputFileName();
-
-      emitPercent( m_done++, m_steps );
-
-      // Send description to the GUI
-      emit description( this, i18n( "Printing" ),
-                      qMakePair( i18n( "Printer" ), m_share->unc() ),
-                      qMakePair( i18n( "File" ), file_path ) );
     }
     else
     {
@@ -356,7 +326,6 @@ void Smb4KPrintJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitStatus 
   }
 
   // Finish job
-  emitPercent( m_done++, m_steps );
   KTempDir::removeDir( m_temp_dir );
   emitResult();
   emit finished( m_share );
