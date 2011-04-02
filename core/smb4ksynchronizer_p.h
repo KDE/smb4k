@@ -35,6 +35,7 @@
 #include <kjob.h>
 #include <kurlrequester.h>
 #include <kdialog.h>
+#include <kuiserverjobtracker.h>
 
 // application specific includes
 #include <smb4ksynchronizer.h>
@@ -133,6 +134,7 @@ class Smb4KSyncJob : public KJob
     KUrl m_src;
     KUrl m_dest;
     Smb4KProcess *m_proc;
+    KUiServerJobTracker *m_job_tracker;
 };
 
 

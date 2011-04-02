@@ -50,6 +50,7 @@ Smb4KSyncJob::Smb4KSyncJob( QObject *parent ) : KJob( parent ),
   m_started( false ), m_share( NULL ), m_parent_widget( NULL ), m_proc( NULL )
 {
   setCapabilities( KJob::Killable );
+  m_job_tracker = new KUiServerJobTracker( this );
 }
 
 
@@ -147,8 +148,8 @@ void Smb4KSyncJob::slotStartSynchronization()
     emit aboutToStart( m_dest.path() );
 
     // Register the job with the job tracker
-    jobTracker()->registerJob( this );
-    connect( this, SIGNAL( result( KJob * ) ), jobTracker(), SLOT( unregisterJob( KJob * ) ) );
+    m_job_tracker->registerJob( this );
+    connect( this, SIGNAL( result( KJob * ) ), m_job_tracker, SLOT( unregisterJob( KJob * ) ) );
     
     // Get the list of arguments
     QStringList arguments;
