@@ -8,8 +8,6 @@ include_directories(
 ########### next target ###############
 
 set( smb4kdialogs_LIB_SRCS
-  smb4kbookmarkdialog.cpp
-  smb4kbookmarkeditor.cpp
   smb4kcustomoptionsdialog.cpp
   smb4kmountdialog.cpp )
 
