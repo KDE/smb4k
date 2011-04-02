@@ -123,32 +123,6 @@ class Smb4KIPLookupJob : public KJob
 };
 
 
-// class IPScanThread : public QThread
-// {
-//   Q_OBJECT
-//   
-//   public:
-//     IPScanThread( Smb4KHost *host, 
-//                   QObject *parent = 0 );
-//     ~IPScanThread();
-//     void lookup( const QString &command );
-//     Smb4KHost *host() { return m_host; };
-//     Smb4KProcess *process() { return m_proc; }
-//     
-//   signals:
-//     void ipAddress( Smb4KHost *host );
-//     
-//   protected slots:
-//     void slotProcessOutput();
-//     void slotProcessFinished( int exitCode,
-//                               QProcess::ExitStatus exitStatus );
-//                  
-//   private:
-//     Smb4KHost *m_host;
-//     Smb4KProcess *m_proc;
-// };
-
-
 class Smb4KIPAddressScannerPrivate
 {
   public:
