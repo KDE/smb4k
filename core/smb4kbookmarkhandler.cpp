@@ -2,8 +2,8 @@
     smb4kbookmarkhandler  -  This class handles the bookmarks.
                              -------------------
     begin                : Fr Jan 9 2004
-    copyright            : (C) 2004-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2004-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -35,8 +35,8 @@
 // KDE includes
 #include <kstandarddirs.h>
 #include <kdebug.h>
-#include <kapplication.h>
 #include <klocale.h>
+#include <kglobal.h>
 
 // system specific includes
 #include <stdlib.h>
@@ -44,6 +44,7 @@
 
 // application specific includes
 #include <smb4khomesshareshandler.h>
+#include <smb4kbookmarkhandler_p.h>
 #include <smb4kbookmarkhandler.h>
 #include <smb4kdefs.h>
 #include <smb4kglobal.h>
@@ -56,18 +57,15 @@
 using namespace Smb4KGlobal;
 
 
-class Smb4KBookmarkHandlerPrivate
-{
-  public:
-    Smb4KBookmarkHandler instance;
-};
-
-K_GLOBAL_STATIC( Smb4KBookmarkHandlerPrivate, priv );
+K_GLOBAL_STATIC( Smb4KBookmarkHandlerPrivate, p );
 
 
 
 Smb4KBookmarkHandler::Smb4KBookmarkHandler() : QObject()
 {
+  // Bookmark editor
+  m_editor = NULL;
+  
   // First we need the directory.
   QString dir = KGlobal::dirs()->locateLocal( "data", "smb4k", KGlobal::mainComponent() );
 
@@ -91,198 +89,98 @@ Smb4KBookmarkHandler::~Smb4KBookmarkHandler()
 
 Smb4KBookmarkHandler *Smb4KBookmarkHandler::self()
 {
-  return &priv->instance;
+  return &p->instance;
 }
 
 
-void Smb4KBookmarkHandler::addBookmark( Smb4KShare *share, bool overwrite )
+void Smb4KBookmarkHandler::addBookmark( Smb4KShare *share, QWidget *parent )
 {
   Q_ASSERT( share );
-  
-  // Check the validity of the UNC.
-  if ( !share->url().isValid() )
-  {
-    // FIXME: Throw an error!!!
-    qDebug() << "Invalid UNC";
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  if ( share->isPrinter() )
-  {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->cannotBookmarkPrinter( share );
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
+  QList<Smb4KShare *> shares;
+  shares << share;
+  addBookmarks( shares, parent );
+}
 
-  if ( share->isHomesShare() )
+
+void Smb4KBookmarkHandler::addBookmarks( const QList<Smb4KShare *> &list, QWidget *parent )
+{
+  // Prepare the list of bookmarks and show the save dialog.
+  QList<Smb4KBookmark *> new_bookmarks;
+  
+  for ( int i = 0; i < list.size(); i++ )
   {
-    QWidget *parent = 0;
-    
-    if ( kapp )
+    // Check if the share is a printer
+    if ( list.at( i )->isPrinter() )
     {
-      if ( kapp->activeWindow() )
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->cannotBookmarkPrinter( list.at( i ) );
+      continue;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // Process homes shares
+    if ( list.at( i )->isHomesShare() )
+    {
+      // If the user provides a valid user name we set it and continue.
+      // Otherwise the share will be skipped.
+      if ( !Smb4KHomesSharesHandler::self()->specifyUser( list.at( i ), parent ) )
       {
-        parent = kapp->activeWindow();
+        continue;
       }
       else
       {
-        parent = kapp->desktop();
+        // Do nothing
       }
     }
+
+    Smb4KBookmark *known_bookmark = NULL;
+    
+    if ( !list.at( i )->isHomesShare() )
+    {
+      known_bookmark = findBookmarkByUNC( list.at( i )->unc() );
+    }
+    else
+    {
+      known_bookmark = findBookmarkByUNC( list.at( i )->homeUNC() );
+    }
+
+    // Skip bookmarks already present
+    if ( known_bookmark )
+    {
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->bookmarkExists( known_bookmark );
+      continue;
+    }
     else
     {
       // Do nothing
     }
 
-    // If the user provides a valid user name we set it and continue.
-    // Otherwise the function will just return.
-    if ( !Smb4KHomesSharesHandler::self()->specifyUser( share, parent ) )
+    new_bookmarks << new Smb4KBookmark( list.at( i ) );
+  }
+
+  if ( !new_bookmarks.isEmpty() )
+  {
+    Smb4KBookmarkDialog dlg( new_bookmarks, groups(), parent );
+
+    if ( dlg.exec() == KDialog::Accepted )
     {
-      return;
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Search for the bookmark:
-  Smb4KBookmark *result = findBookmarkByUNC( share->unc() );
-
-  if ( result )
-  {
-    // Update the bookmark.
-    if ( overwrite &&
-         QString::compare( result->workgroupName(), share->workgroupName(), Qt::CaseInsensitive ) == 0 )
-    {
-      result->setHostIP( share->hostIP() );
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // The bookmark is new. Append it to the list:
-    m_bookmarks.append( new Smb4KBookmark( share ) );
-  }
-
-  writeBookmarkList( m_bookmarks );
-}
-
-
-void Smb4KBookmarkHandler::addBookmark( Smb4KBookmark *bookmark, bool overwrite )
-{
-  Q_ASSERT( bookmark );
- 
-  // Check the validity of the UNC.
-  QUrl url( bookmark->unc( QUrl::None ) );
-  
-  if ( !url.isValid() )
-  {
-    // FIXME: Throw an error!!!
-    qDebug() << "Invalid UNC";
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  Smb4KBookmark *internal = findBookmarkByUNC( bookmark->unc() );
-
-  if ( internal )
-  {
-    // Update the bookmark.
-    if ( overwrite &&
-         QString::compare( internal->workgroupName(), bookmark->workgroupName(), Qt::CaseInsensitive ) == 0 )
-    {
-      internal->setHostIP( bookmark->hostIP() );
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // The bookmark is new. Append it to the list:
-    m_bookmarks.append( new Smb4KBookmark( *bookmark ) );
-  }
-
-  writeBookmarkList( m_bookmarks );
-}
-
-
-void Smb4KBookmarkHandler::writeBookmarkList( const QList<Smb4KBookmark *> &list )
-{
-  if ( list != m_bookmarks )
-  {
-    m_bookmarks.clear();
-    m_bookmarks = list;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  QFile xmlFile( KGlobal::dirs()->locateLocal( "data", "smb4k/bookmarks.xml", KGlobal::mainComponent() ) );
-
-  if ( !m_bookmarks.isEmpty() )
-  {
-    if ( xmlFile.open( QIODevice::WriteOnly | QIODevice::Text ) )
-    {
-      QXmlStreamWriter xmlWriter( &xmlFile );
-#if QT_VERSION >= 0x040400
-      xmlWriter.setAutoFormatting( true );
-#endif
-
-      xmlWriter.writeStartDocument();
-      xmlWriter.writeStartElement( "bookmarks" );
-      xmlWriter.writeAttribute( "version", "1.0" );
-
-      int serial_number = 0;
-
-      for ( int i = 0; i < m_bookmarks.size(); ++i )
+      // Check the label of the new bookmarks.
+      for ( int i = 0; i < new_bookmarks.size(); i++ )
       {
-        // Check the validity of the UNC.
-        QUrl url( m_bookmarks.at( i )->unc( QUrl::None ) );
-        
-        if ( !url.isValid() )
+        if ( !new_bookmarks.at( i )->label().isEmpty() )
         {
-          qDebug() << "Invalid UNC";
-          continue;
-        }
-        else
-        {
-          // Do nothing
-        }
-        
-        if ( !m_bookmarks.at( i )->label().isEmpty() )
-        {
-          Smb4KBookmark *result = findBookmarkByLabel( m_bookmarks.at( i )->label() );
+          Smb4KBookmark *bookmark = findBookmarkByLabel( new_bookmarks.at( i )->label() );
 
-          if ( result &&
-               (QString::compare( result->unc().toUpper(), m_bookmarks.at( i )->unc().toUpper() ) != 0 ||
-                QString::compare( result->workgroupName().toUpper(), m_bookmarks.at( i )->workgroupName().toUpper() ) != 0) )
+          if ( bookmark )
           {
             Smb4KNotification *notification = new Smb4KNotification();
-            notification->bookmarkLabelInUse( m_bookmarks.at( i ) );
+            notification->bookmarkLabelInUse( new_bookmarks.at( i ) );
 
-            m_bookmarks.at( i )->setLabel( QString( "%1 (%2)" ).arg( m_bookmarks.at( i )->label() ).arg( serial_number++ ) );
+            new_bookmarks[i]->setLabel( QString( "%1 (1)" ).arg( new_bookmarks.at( i )->label() ) );
           }
           else
           {
@@ -293,9 +191,53 @@ void Smb4KBookmarkHandler::writeBookmarkList( const QList<Smb4KBookmark *> &list
         {
           // Do nothing
         }
+      }
+
+      // Append the new bookmarks to the internal list and
+      // save that list to the bookmark file.
+      m_bookmarks << new_bookmarks;
+      writeBookmarkList( m_bookmarks );
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KBookmarkHandler::writeBookmarkList( const QList<Smb4KBookmark *> &list )
+{
+  QFile xmlFile( KGlobal::dirs()->locateLocal( "data", "smb4k/bookmarks.xml", KGlobal::mainComponent() ) );
+
+  if ( !list.isEmpty() )
+  {
+    if ( xmlFile.open( QIODevice::WriteOnly | QIODevice::Text ) )
+    {
+      QXmlStreamWriter xmlWriter( &xmlFile );
+      xmlWriter.setAutoFormatting( true );
+      xmlWriter.writeStartDocument();
+      xmlWriter.writeStartElement( "bookmarks" );
+      xmlWriter.writeAttribute( "version", "1.1" );
+
+      for ( int i = 0; i < list.size(); ++i )
+      {
+        if ( !list.at( i )->url().isValid() )
+        {
+          qDebug() << "Invalid UNC";
+          continue;
+        }
+        else
+        {
+          // Do nothing
+        }
 
         xmlWriter.writeStartElement( "bookmark" );
-        xmlWriter.writeAttribute( "profile", m_bookmarks.at( i )->profile() );
+        xmlWriter.writeAttribute( "group", m_bookmarks.at( i )->group() );
 
         xmlWriter.writeTextElement( "workgroup", m_bookmarks.at( i )->workgroupName() );
         xmlWriter.writeTextElement( "unc", m_bookmarks.at( i )->unc() );
@@ -342,10 +284,10 @@ void Smb4KBookmarkHandler::loadBookmarks()
 
       if ( xmlReader.isStartElement() )
       {
-        if ( xmlReader.name() == "bookmarks" && xmlReader.attributes().value( "version" ) != "1.0" )
+        if ( xmlReader.name() == "bookmarks" &&
+             (xmlReader.attributes().value( "version" ) != "1.0" && xmlReader.attributes().value( "version" ) != "1.1") )
         {
-          xmlReader.raiseError( i18n( "%1 is not a version 1.0 file." ).arg( xmlFile.fileName() ) );
-
+          xmlReader.raiseError( i18n( "%1 has an unsupported format version." ).arg( xmlFile.fileName() ) );
           break;
         }
         else
@@ -354,7 +296,17 @@ void Smb4KBookmarkHandler::loadBookmarks()
           {
             Smb4KBookmark *bookmark = new Smb4KBookmark();
 
-            bookmark->setProfile( xmlReader.attributes().value( "profile" ).toString() );
+            // In version 1.0.0 the "profile" attribute was replaced by the "group" 
+            // attribute. To maintain backward compatibility, we take "profile" value 
+            // - that is always empty BTW, because we never used it - to be the group name.
+            if ( xmlReader.attributes().hasAttribute( "profile" ) )
+            {
+              bookmark->setGroup( xmlReader.attributes().value( "profile" ).toString() );
+            }
+            else
+            {
+              bookmark->setGroup(xmlReader.attributes().value( "group" ).toString() );
+            }
 
             while ( !(xmlReader.isEndElement() && xmlReader.name() == "bookmark") )
             {
@@ -368,9 +320,6 @@ void Smb4KBookmarkHandler::loadBookmarks()
                 }
                 else if ( xmlReader.name() == "unc" )
                 {
-                  // FIXME: Do we need to check for the validity of the
-                  // UNC here as well? Normally, no malformatted UNC should
-                  // be saved (see addBookmark() and writeBookmarkList()).
                   bookmark->setUNC( xmlReader.readElementText() );
                 }
                 else if ( xmlReader.name() == "login" )
@@ -497,13 +446,136 @@ Smb4KBookmark *Smb4KBookmarkHandler::findBookmarkByLabel( const QString &label )
 }
 
 
-const QList<Smb4KBookmark *> &Smb4KBookmarkHandler::getBookmarks()
+const QList<Smb4KBookmark *> &Smb4KBookmarkHandler::bookmarks()
 {
   // Update the bookmarks:
   update();
 
   // Return the list of bookmarks:
   return m_bookmarks;
+}
+
+
+QList<Smb4KBookmark *> Smb4KBookmarkHandler::bookmarks( const QString &group )
+{
+  // Update bookmarks
+  update();
+
+  // Get the list of bookmarks organized in the given group
+  QList<Smb4KBookmark *> bookmarks;
+
+  for ( int i = 0; i < m_bookmarks.size(); i++ )
+  {
+    if ( QString::compare( group, m_bookmarks.at( i )->group(), Qt::CaseInsensitive ) == 0 )
+    {
+      bookmarks << m_bookmarks[i];
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+
+  return bookmarks;
+}
+
+
+QStringList Smb4KBookmarkHandler::groups()
+{
+  QStringList groups;
+
+  for ( int i = 0; i < m_bookmarks.size(); i++ )
+  {
+    if ( !groups.contains( m_bookmarks.at( i )->group() ) )
+    {
+      groups << m_bookmarks.at( i )->group();
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+
+  return groups;
+}
+
+
+void Smb4KBookmarkHandler::editBookmarks( QWidget *parent )
+{
+  if ( !m_editor )
+  {
+    m_editor = new Smb4KBookmarkEditor( m_bookmarks, parent );
+
+    if ( m_editor->exec() == KDialog::Accepted )
+    {
+      QList<Smb4KBookmark *> bookmarks = m_editor->editedBookmarks();
+
+      // Update the list of bookmarks.
+      QMutableListIterator<Smb4KBookmark *> it( m_bookmarks );
+      Smb4KBookmark *bookmark = NULL;
+      
+      while ( it.hasNext() )
+      {
+        bookmark = it.next();
+        bool found = false;
+
+        for ( int i = 0; i < bookmarks.size(); i++ )
+        {
+          if ( QString::compare( bookmark->unc(), bookmarks.at( i )->unc() ) == 0 &&
+               QString::compare( bookmark->workgroupName(), bookmarks.at( i )->workgroupName() ) == 0 )
+          {
+            bookmark->setLabel( bookmarks.at( i )->label() );
+            bookmark->setLogin( bookmarks.at( i )->login() );
+            bookmark->setHostIP( bookmarks.at( i )->hostIP() );
+            bookmark->setGroup( bookmarks.at( i )->group() );
+            found = true;
+            break;
+          }
+          else
+          {
+            continue;
+          }
+        }
+
+        if ( !found )
+        {
+          it.remove();
+
+          if ( bookmark )
+          {
+            delete bookmark;
+            bookmark = NULL;
+          }
+          else
+          {
+            // Do nothing
+          }
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      
+      // Finally write the list to the file.
+      writeBookmarkList( m_bookmarks );
+
+      // Tell the program that the list of bookmarks has
+      // been updated.
+      emit updated();
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    delete m_editor;
+    m_editor = NULL;
+  }
+  else
+  {
+    m_editor->raise();
+  }
 }
 
 

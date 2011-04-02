@@ -2,8 +2,8 @@
     smb4kbookmarkhandler  -  This class handles the bookmarks.
                              -------------------
     begin                : Fr Jan 9 2004
-    copyright            : (C) 2004-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2004-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -33,6 +33,7 @@
 // Qt includes
 #include <QObject>
 #include <QList>
+#include <QWidget>
 
 // KDE includes
 #include <kdemacros.h>
@@ -40,6 +41,9 @@
 // forward declarations
 class Smb4KBookmark;
 class Smb4KShare;
+class Smb4KBookmarkHandlerPrivate;
+class Smb4KBookmarkDialog;
+class Smb4KBookmarkEditor;
 
 
 /**
@@ -67,37 +71,21 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      * This function adds a new bookmark.
      *
      * @param share         The share that is to be bookmarked.
-     *
-     * @param overwrite     Set this to FALSE if you do not want to overwrite
-     *                      (i.e. update) an existing bookmark with the data of
-     *                      this share. By default, @p overwrite is set to TRUE.
+     * 
+     * @param parent        The parent widget
      */
     void addBookmark( Smb4KShare *share,
-                      bool overwrite = true );
+                      QWidget *parent = 0 );
 
     /**
-     * This function adds a new bookmark. In contrast to the above function, it
-     * takes a Smb4KBookmark object as argument.
+     * This function adds several bookmarks at once.
      *
-     * @param list          The bookmark that is to be stored.
+     * @param list          The list of shares that are to be bookmarked
      *
-     * @param overwrite     Set this to FALSE if you do not want to overwrite
-     *                      (i.e. update) an existing bookmark with the data of
-     *                      this share. By default, @p overwrite is set to TRUE.
+     * @param parent        The parent widget
      */
-    void addBookmark( Smb4KBookmark *bookmark,
-                      bool overwrite = true );
-
-    /**
-     * This function writes a new list of bookmarks. The old list will be
-     * deleted. It should be used, if you manipulated the list of bookmarks
-     * i. e. by a bookmark editor. When this function finishes, the
-     * bookmarksUpdated() signal will be emitted.
-     *
-     * @param list          The (new) list of bookmarks that is to be written
-     *                      to the bookmark file
-     */
-    void writeBookmarkList( const QList<Smb4KBookmark *> &list );
+    void addBookmarks( const QList<Smb4KShare *> &list,
+                       QWidget *parent = 0 );
 
     /**
      * Get the list of bookmarks.
@@ -105,7 +93,16 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      * @returns             The current list of bookmarks stored in the
      *                      bookmark file.
      */
-    const QList<Smb4KBookmark *> &getBookmarks();
+    const QList<Smb4KBookmark *> &bookmarks();
+
+    /**
+     * Get the list of bookmarks belonging to a certain group.
+     *
+     * @param group         The name of the group the bookmarks are organized in
+     *
+     * @returns a list of bookmarks belonging to a certain group
+     */
+    QList<Smb4KBookmark *> bookmarks( const QString &group );
 
     /**
      * This function searches for a bookmark using its UNC and returns a pointer
@@ -128,6 +125,20 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      *                      wasn't found.
      */
     Smb4KBookmark *findBookmarkByLabel( const QString &label );
+
+    /**
+     * Returns the list of bookmark groups
+     *
+     * @returns the list of groups
+     */
+    QStringList groups();
+
+    /**
+     * Opens the bookmark editor
+     * 
+     * @param parent        The parent widget
+     */
+    void editBookmarks( QWidget *parent = 0 );
 
   signals:
     /**
@@ -167,5 +178,22 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      * necessary.
      */
     void update();
+
+    /**
+     * This function writes a new list of bookmarks. The old list will be
+     * deleted. It should be used, if you manipulated the list of bookmarks
+     * i. e. by a bookmark editor. When this function finishes, the
+     * bookmarksUpdated() signal will be emitted.
+     *
+     * @param list          The (new) list of bookmarks that is to be written
+     *                      to the bookmark file
+     */
+    void writeBookmarkList( const QList<Smb4KBookmark *> &list );
+
+    /**
+     * The bookmark editor
+     */
+    Smb4KBookmarkEditor *m_editor;
 };
+
 #endif
