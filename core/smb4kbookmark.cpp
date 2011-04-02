@@ -3,8 +3,8 @@
     generation).
                              -------------------
     begin                : So Jun 8 2008
-    copyright            : (C) 2008-2009 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2008-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -30,6 +30,7 @@
 
 // KDE includes
 #include <kdebug.h>
+#include <kicon.h>
 
 // application specific includes
 #include <smb4kbookmark.h>
@@ -38,30 +39,29 @@
 
 Smb4KBookmark::Smb4KBookmark( Smb4KShare *share, const QString &label )
 : m_url( QUrl() ), m_workgroup( share->workgroupName() ), m_ip( share->hostIP() ),
-  m_type( share->typeString() ), m_label( label ), m_profile( QString() )
+  m_type( share->typeString() ), m_label( label ), m_group( QString() ), m_icon( KIcon( "folder-remote" ) )
 {
   if ( !share->isHomesShare() )
   {
-    setUNC( share->unc( QUrl::None ) );
+    m_url = share->url();
   }
   else
   {
-    setUNC( share->homeUNC( QUrl::None ) );
+    m_url = share->homeURL();
   }
 }
 
 
 Smb4KBookmark::Smb4KBookmark( const Smb4KBookmark &b )
-: m_url( QUrl() ), m_workgroup( b.workgroupName() ), m_ip( b.hostIP() ), m_type( b.typeString() ),
-  m_label( b.label() ), m_profile( b.profile() )
+: m_url( b.url() ), m_workgroup( b.workgroupName() ), m_ip( b.hostIP() ), m_type( b.typeString() ),
+  m_label( b.label() ), m_group( b.group() ), m_icon( b.icon() )
 {
-  setUNC( b.unc( QUrl::None ) );
 }
 
 
 Smb4KBookmark::Smb4KBookmark()
 : m_url( QUrl() ), m_workgroup( QString() ), m_ip( QString() ), m_type( "Disk" ),
-  m_label( QString() ), m_profile( QString() )
+  m_label( QString() ), m_group( QString() ), m_icon( KIcon( "folder-remote" ) )
 {
 }
 
@@ -181,15 +181,15 @@ void Smb4KBookmark::setLabel( const QString &label )
 }
 
 
-void Smb4KBookmark::setProfile( const QString &profile )
-{
-  m_profile = profile;
-}
-
-
 void Smb4KBookmark::setLogin( const QString &login )
 {
   m_url.setUserName( login );
+}
+
+
+void Smb4KBookmark::setGroup( const QString &name )
+{
+  m_group = name;
 }
 
 
@@ -248,7 +248,7 @@ bool Smb4KBookmark::equals( Smb4KBookmark *bookmark ) const
   }
   
   // Profile
-  if ( QString::compare( m_profile, bookmark->profile() ) != 0 )
+  if ( QString::compare( m_group, bookmark->group() ) != 0 )
   {
     return false;
   }
@@ -258,6 +258,12 @@ bool Smb4KBookmark::equals( Smb4KBookmark *bookmark ) const
   }
   
   return true;
+}
+
+
+void Smb4KBookmark::setIcon( const QIcon &icon )
+{
+  m_icon = icon;
 }
 
 

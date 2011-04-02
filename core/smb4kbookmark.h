@@ -3,8 +3,8 @@
     generation).
                              -------------------
     begin                : So Jun 8 2008
-    copyright            : (C) 2008-2009 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2008-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -196,22 +196,6 @@ class KDE_EXPORT Smb4KBookmark
     const QString &label() const { return m_label; }
 
     /**
-     * Set the profile for which this custom options are to be used.
-     *
-     * @param name              The name of the profile.
-     */
-    void setProfile( const QString &name );
-
-    /**
-     * Return the name of the profile for which the options are to be
-     * used.
-     *
-     * @returns the name of the profile for which the options should be
-     * used.
-     */
-    const QString &profile() const { return m_profile; }
-
-    /**
      * Sets the login that is used to mount this share.
      *
      * @param login           The login
@@ -224,6 +208,27 @@ class KDE_EXPORT Smb4KBookmark
      * @returns the login.
      */
     QString login() const { return m_url.userName(); }
+
+    /**
+     * Returns the URL of this bookmark.
+     *
+     * @returns the URL
+     */
+    const QUrl &url() const { return m_url; }
+
+    /**
+     * Set the group this bookmark belongs to.
+     *
+     * @param name            The group name
+     */
+    void setGroup( const QString &name );
+
+    /**
+     * Returns the group name of this bookmark.
+     *
+     * @returns the group name
+     */
+    const QString &group() const { return m_group; }
     
     /**
      * Compare another Smb4KBookmark object with this one an return TRUE if both carry
@@ -240,6 +245,22 @@ class KDE_EXPORT Smb4KBookmark
      * Operator to check if two authentication informations are equal.
      */
     bool operator==( Smb4KBookmark bookmark ) { return equals( &bookmark ); }
+
+    /**
+     * This function sets the icon of the bookmark.
+     *
+     * @param icon          The icon
+     */
+    void setIcon( const QIcon &icon );
+
+    /**
+     * This function returns the icon of the network item. By default, it
+     * is the null icon. You must set the appropriate icon either in
+     * a class that inherits this one or from somewhere else.
+     *
+     * @returns the network item's icon.
+     */
+    const QIcon &icon() const { return m_icon; }
 
   private:
     /**
@@ -268,9 +289,9 @@ class KDE_EXPORT Smb4KBookmark
     QString m_label;
 
     /**
-     * Profile
+     * Group
      */
-    QString m_profile;
+    QString m_group;
 
     /**
      * This function checks if the given IP address is either
@@ -283,6 +304,11 @@ class KDE_EXPORT Smb4KBookmark
      * is not compatible with either IPv4 or IPv6.
      */
     const QString &ipIsValid( const QString &ip );
+
+    /**
+     * The icon
+     */
+    QIcon m_icon;
 };
 
 #endif
