@@ -40,11 +40,11 @@
 #include <kpluginfactory.h>
 #include <kmenu.h>
 #include <kstandarddirs.h>
+#include <kactioncollection.h>
 
 // application specific includes
 #include <smb4ksystemtray.h>
 #include <dialogs/smb4kmountdialog.h>
-#include <dialogs/smb4kbookmarkeditor.h>
 #include <core/smb4kcore.h>
 #include <core/smb4kbookmark.h>
 #include <core/smb4kshare.h>
@@ -675,7 +675,7 @@ void Smb4KSystemTray::slotSetupBookmarksMenu()
   }
 
   // Get the list of bookmarks:
-  QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->getBookmarks();
+  QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->bookmarks();
   QMap<QString, bool> actions;
 
   // Prepare the list of bookmarks for display:
@@ -737,36 +737,14 @@ void Smb4KSystemTray::slotSetupBookmarksMenu()
 
 void Smb4KSystemTray::slotBookmarkEditor( bool /* checked */ )
 {
-  Smb4KBookmarkEditor *dlg = NULL;
-
-  // Do not open the bookmark editor twice. So, look
-  // if there is already one.
   if ( associatedWidget() )
   {
-    dlg = associatedWidget()->findChild<Smb4KBookmarkEditor *>();
+    Smb4KBookmarkHandler::self()->editBookmarks( associatedWidget() );
   }
   else
   {
-    dlg = contextMenu()->findChild<Smb4KBookmarkEditor *>();
+    Smb4KBookmarkHandler::self()->editBookmarks( contextMenu() );
   }
-
-  if ( !dlg )
-  {
-    if ( associatedWidget() && associatedWidget()->isVisible() )
-    {
-      dlg = new Smb4KBookmarkEditor( associatedWidget() );
-    }
-    else
-    {
-      // This is a bit strange, but we need a QWidget object.
-      // Since KSystemTrayIcon class inherits QObject, we do
-      // it this way. 0 as parent would make the check above
-      // fail.
-      dlg = new Smb4KBookmarkEditor( contextMenu() );
-    }
-  }
-
-  dlg->setVisible( true );
 }
 
 

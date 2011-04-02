@@ -66,7 +66,6 @@
 #include <core/smb4kpreviewer.h>
 #include <core/smb4ksearch.h>
 #include <core/smb4kbookmarkhandler.h>
-#include <dialogs/smb4kbookmarkeditor.h>
 
 
 using namespace Smb4KGlobal;
@@ -645,31 +644,7 @@ void Smb4KMainWindow::slotSettingsChanged( const QString & )
 
 void Smb4KMainWindow::slotOpenBookmarkEditor( bool /*checked*/ )
 {
-  Smb4KBookmarkEditor *dlg = NULL;
-
-  // Do not open the bookmark editor twice. So, look if there
-  // is already one. (This will also catch a bookmark editor
-  // that was opened with m_system_tray->contextMenu() as
-  // parent).
-  dlg = findChild<Smb4KBookmarkEditor *>();
-
-  if ( !dlg )
-  {
-    dlg = new Smb4KBookmarkEditor( this );
-
-    dlg->show();
-  }
-  else
-  {
-    if ( dlg->isMinimized() )
-    {
-      dlg->showNormal();
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
+  Smb4KBookmarkHandler::self()->editBookmarks( this );
 }
 
 
@@ -688,7 +663,7 @@ void Smb4KMainWindow::slotBookmarksUpdated()
   }
 
   // Get the list of bookmarks:
-  QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->getBookmarks();
+  QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->bookmarks();
   QMap<QString, bool> actions;
 
   // Prepare the list of bookmarks for display:
