@@ -49,7 +49,6 @@
 #include <smb4knetworkbrowseritem.h>
 #include <../dialogs/smb4kcustomoptionsdialog.h>
 #include <../dialogs/smb4kmountdialog.h>
-#include <../dialogs/smb4kbookmarkdialog.h>
 #include <../tooltips/smb4ktooltip.h>
 #include <core/smb4kcore.h>
 #include <core/smb4kglobal.h>
@@ -63,6 +62,7 @@
 #include <core/smb4kipaddressscanner.h>
 #include <core/smb4kprint.h>
 #include <core/smb4kpreviewer.h>
+#include <core/smb4kbookmarkhandler.h>
 
 using namespace Smb4KGlobal;
 
@@ -1741,9 +1741,8 @@ void Smb4KNetworkBrowserPart::slotCustomOptions( bool /*checked*/ )
 
 void Smb4KNetworkBrowserPart::slotAddBookmark( bool /*checked*/ )
 {
-  Smb4KBookmarkDialog *dlg = m_widget->findChild<Smb4KBookmarkDialog *>();
   QList<QTreeWidgetItem *> selected_items = m_widget->selectedItems();
-  QList<Smb4KBookmark *> bookmarks;
+  QList<Smb4KShare *> shares;
 
   if ( !selected_items.isEmpty() )
   {
@@ -1753,7 +1752,7 @@ void Smb4KNetworkBrowserPart::slotAddBookmark( bool /*checked*/ )
 
       if ( item->type() == Smb4KNetworkBrowserItem::Share && !item->shareItem()->isPrinter() )
       {
-        bookmarks << new Smb4KBookmark( item->shareItem() );
+        shares << item->shareItem();
         continue;
       }
       else
@@ -1768,19 +1767,9 @@ void Smb4KNetworkBrowserPart::slotAddBookmark( bool /*checked*/ )
     return;
   }
 
-  if ( !bookmarks.isEmpty() )
+  if ( !shares.isEmpty() )
   {
-    if ( !dlg )
-    {
-      dlg = new Smb4KBookmarkDialog( m_widget );
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    dlg->setBookmarks( bookmarks );
-    dlg->setVisible( true );
+    Smb4KBookmarkHandler::self()->addBookmarks( shares, m_widget );
   }
   else
   {
