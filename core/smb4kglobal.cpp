@@ -676,9 +676,3 @@ void Smb4KGlobal::open( Smb4KShare *share, OpenWith openWith )
 }
 
 
-KUiServerJobTracker *Smb4KGlobal::jobTracker()
-{
-  return &p.jobTracker;
-}
-
-

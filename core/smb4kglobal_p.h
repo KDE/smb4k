@@ -31,9 +31,6 @@
 #include <config.h>
 #endif
 
-// KDE includes
-#include <kuiserverjobtracker.h>
-
 // Qt includes
 #include <QList>
 #include <QMap>
@@ -81,11 +78,6 @@ class Smb4KGlobalPrivate
      * This is the global list of shares.
      */
     QList<Smb4KShare *> sharesList;
-
-    /**
-     * The job tracker for KJobs
-     */
-    KUiServerJobTracker jobTracker;
 };
 
 #endif

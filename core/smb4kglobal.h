@@ -32,7 +32,6 @@
 
 // KDE includes
 #include <kdemacros.h>
-#include <kuiserverjobtracker.h>
 
 // forward declarations
 class Smb4KWorkgroup;
@@ -320,12 +319,6 @@ namespace Smb4KGlobal
    *                      application the share should be opened.
    */
   KDE_EXPORT void open( Smb4KShare *share, OpenWith openWith = FileManager );
-
-  /**
-   * This is Smb4K's global tracker for classes that inherit KJob and need a
-   * possibility to show their progress.
-   */
-  KDE_EXPORT KUiServerJobTracker *jobTracker();
 };
 
 #endif
