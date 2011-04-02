@@ -281,6 +281,12 @@ Comment[x-test]=xxThe mimetype of the file is not supported for printingxx
 Contexts=Warning
 Action=Popup
 
+[Event/bookmarkExists]
+Name=Bookmark exists
+Comment=The bookmark already exists
+Contexts=Warning
+Action=Popup
+
 [Event/bookmarkLabelInUse]
 Name=Bookmark label in use
 Name[da]=Bogmærke-etiket i brug
