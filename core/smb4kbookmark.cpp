@@ -247,7 +247,7 @@ bool Smb4KBookmark::equals( Smb4KBookmark *bookmark ) const
     // Do nothing
   }
   
-  // Profile
+  // Group
   if ( QString::compare( m_group, bookmark->group() ) != 0 )
   {
     return false;
@@ -256,7 +256,9 @@ bool Smb4KBookmark::equals( Smb4KBookmark *bookmark ) const
   {
     // Do nothing
   }
-  
+
+  // The icon is not used here.
+
   return true;
 }
 
