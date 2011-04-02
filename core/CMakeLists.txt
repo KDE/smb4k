@@ -12,6 +12,7 @@ set( smb4kcore_LIB_SRCS
   smb4kbasicnetworkitem.cpp
   smb4kbookmark.cpp
   smb4kbookmarkhandler.cpp
+  smb4kbookmarkhandler_p.cpp
   smb4kcore.cpp
   smb4kglobal.cpp
   smb4kglobal_p.cpp
