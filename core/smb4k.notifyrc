@@ -156,8 +156,8 @@ Comment[x-test]=xxA share has been unmountedxx
 Contexts=Notification
 Action=Popup
 
-[Event/sharesRemounted]
-Name=Remounted shares
+[Event/sharesMounted]
+Name=Mounted shares
 Name[da]=Ressourcer genmonteret
 Name[de]=Freigaben erneut eingebunden
 Name[es]=Recursos compartidos montados de nuevo
@@ -167,7 +167,7 @@ Name[pt_BR]=Compartilhamentos remontados
 Name[sv]=Monterad delade kataloger igen
 Name[uk]=Повторно змонтовані ресурси
 Name[x-test]=xxRemounted sharesxx
-Comment=Shares have been remounted
+Comment=Shares have been mounted
 Comment[da]=Ressourcer er blevet genmonteret
 Comment[de]=Freigaben ist erneut eingebunden worden
 Comment[es]=El recurso compartido se ha montado de nuevo
