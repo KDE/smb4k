@@ -404,7 +404,6 @@ bool Smb4KBookmarkEditor::eventFilter( QObject *obj, QEvent *e )
         
         if ( neighbor )
         {
-          qDebug() << neighbor->text( 0 );
           QTreeWidgetItem *parent = NULL;
           QString group_name;
           
