@@ -2,7 +2,7 @@
     smb4ksystemtray  -  This is the system tray window class of Smb4K.
                              -------------------
     begin                : Mi Jun 13 2007
-    copyright            : (C) 2007-2010 by Alexander Reinholdt
+    copyright            : (C) 2007-2011 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -44,6 +44,7 @@
 
 // application specific includes
 #include <smb4ksystemtray.h>
+#include <smb4kbookmarkmenu.h>
 #include <dialogs/smb4kmountdialog.h>
 #include <core/smb4kcore.h>
 #include <core/smb4kbookmark.h>
@@ -69,7 +70,6 @@ Smb4KSystemTray::Smb4KSystemTray( QWidget *parent )
   // could not find something and no shares were mounted.
   setStatus( KStatusNotifierItem::Active );
 
-  m_bookmarks      = new QActionGroup( actionCollection() );
   m_share_menus    = new QActionGroup( actionCollection() );
   m_shares_actions = new QActionGroup( actionCollection() );
 
@@ -79,29 +79,24 @@ Smb4KSystemTray::Smb4KSystemTray( QWidget *parent )
 
   m_shares_menu         = new KActionMenu( KIcon( "folder-remote", KIconLoader::global(), shares_overlay ),
                           i18n( "Mounted Shares" ), actionCollection() );
-  m_bookmarks_menu      = new KActionMenu( KIcon( "folder-bookmarks" ), i18n( "Bookmarks" ),
-                          actionCollection() );
   KAction *manual_mount = new KAction( KIcon( "list-add" ), i18n( "M&ount Manually" ),
                           actionCollection() );
   KAction *configure    = KStandardAction::preferences( this, SLOT( slotConfigDialog() ),
                           actionCollection() );
+  Smb4KBookmarkMenu *bookmark_menu = new Smb4KBookmarkMenu( Smb4KBookmarkMenu::SystemTray, associatedWidget(), this );
 
   contextMenu()->addAction( m_shares_menu );
-  contextMenu()->addAction( m_bookmarks_menu );
+  contextMenu()->addAction( bookmark_menu );
   contextMenu()->addSeparator();
   contextMenu()->addAction( manual_mount );
   contextMenu()->addAction( configure );
 
   // Set up the menus:
-  slotSetupBookmarksMenu();
   setupSharesMenu();
 
   // Connections:
   connect( manual_mount,                 SIGNAL( triggered( bool ) ),
            this,                         SLOT( slotMountDialog( bool ) ) );
-
-  connect( m_bookmarks,                  SIGNAL( triggered( QAction * ) ),
-           this,                         SLOT( slotBookmarkTriggered( QAction * ) ) );
 
   connect( m_shares_actions,             SIGNAL( triggered( QAction * ) ),
            this,                         SLOT( slotShareActionTriggered( QAction * ) ) );
@@ -134,10 +129,17 @@ Smb4KSystemTray::~Smb4KSystemTray()
 void Smb4KSystemTray::loadSettings()
 {
   // Adjust the bookmarks menu.
-  // Since the menu is rebuilt everytime slotSetupBookmarksMenu() is
-  // called, we just call it and are done.
-  slotSetupBookmarksMenu();
+  Smb4KBookmarkMenu *menu = findChild<Smb4KBookmarkMenu *>();
 
+  if ( menu )
+  {
+    menu->refreshMenu();
+  }
+  else
+  {
+    // Do nothing
+  }
+  
   // Adjust the shares menu.
   // slotSetupSharesMenu() is doing everything for us, so just call it.
   setupSharesMenu();
@@ -645,153 +647,6 @@ void Smb4KSystemTray::slotSettingsChanged( const QString & )
 {
   // Execute loadSettings():
   loadSettings();
-}
-
-
-void Smb4KSystemTray::slotSetupBookmarksMenu()
-{
-  // First check if we have to set up the menu completely:
-  if ( !actionCollection()->action( "st_edit_bookmarks_action" ) )
-  {
-    // OK, build the menu from ground up:
-    KAction *edit_bookmarks = new KAction( KIcon( "bookmarks-organize" ), i18n( "&Edit Bookmarks" ),
-                              actionCollection() );
-    actionCollection()->addAction( "st_edit_bookmarks_action", edit_bookmarks );
-
-    connect( edit_bookmarks, SIGNAL( triggered( bool ) ), this, SLOT( slotBookmarkEditor( bool ) ) );
-
-    m_bookmarks_menu->addAction( edit_bookmarks );
-    m_bookmarks_menu->addSeparator();
-  }
-
-  // Get the list of bookmark actions and delete all entries. We could
-  // also try to keep those actions that are not obsolete, but I think
-  // this is the cleanest way.
-  while ( !m_bookmarks->actions().isEmpty() )
-  {
-    m_bookmarks_menu->removeAction( m_bookmarks->actions().first() );
-    actionCollection()->removeAction( m_bookmarks->actions().first() );
-    delete m_bookmarks->actions().takeFirst();
-  }
-
-  // Get the list of bookmarks:
-  QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->bookmarks();
-  QMap<QString, bool> actions;
-
-  // Prepare the list of bookmarks for display:
-  if ( !bookmarks.isEmpty() )
-  {
-    // Enable the "Edit Bookmarks" action:
-    actionCollection()->action( "st_edit_bookmarks_action" )->setEnabled( true );
-
-    // Work around sorting problems:
-    for ( int i = 0; i < bookmarks.size(); ++i )
-    {
-      QList<Smb4KShare *> shares_list = findShareByUNC( bookmarks.at( i )->unc() );
-      bool enable = true;
-
-      for ( int j = 0; j < shares_list.size(); ++j )
-      {
-        if ( !shares_list.at( j )->isForeign() )
-        {
-          enable = false;
-          break;
-        }
-        else
-        {
-          continue;
-        }
-      }
-
-      if ( !bookmarks.at( i )->label().isEmpty() && Smb4KSettings::showCustomBookmarkLabel() )
-      {
-        actions.insert( bookmarks.at( i )->label(), enable );
-      }
-      else
-      {
-        actions.insert( bookmarks.at( i )->unc(), enable );
-      }
-    }
-  }
-  else
-  {
-    // Disable the "Edit Bookmarks" action:
-    actionCollection()->action( "st_edit_bookmarks_action" )->setEnabled( false );
-  }
-
-  // Now create the actions and put them into the action group
-  // and the menu.
-  QMapIterator<QString, bool> it( actions );
-
-  while ( it.hasNext() )
-  {
-    it.next();
-
-    KAction *bm_action = new KAction( KIcon( "folder-remote" ), it.key(), m_bookmarks );
-    bm_action->setData( it.key() );
-    bm_action->setEnabled( it.value() );
-    m_bookmarks_menu->addAction( bm_action );
-  }
-}
-
-
-void Smb4KSystemTray::slotBookmarkEditor( bool /* checked */ )
-{
-  if ( associatedWidget() )
-  {
-    Smb4KBookmarkHandler::self()->editBookmarks( associatedWidget() );
-  }
-  else
-  {
-    Smb4KBookmarkHandler::self()->editBookmarks( contextMenu() );
-  }
-}
-
-
-void Smb4KSystemTray::slotBookmarkTriggered( QAction *action )
-{
-  if ( action )
-  {
-    Smb4KBookmark *bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC( action->data().toString() );
-
-    if ( bookmark )
-    {
-      Smb4KShare share( bookmark->hostName(), bookmark->shareName() );
-      share.setWorkgroupName( bookmark->workgroupName() );
-      share.setHostIP( bookmark->hostIP() );
-
-      Smb4KMounter::self()->mountShare( &share );
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KSystemTray::slotEnableBookmarks( Smb4KShare *share )
-{
-  if ( !share->isForeign() )
-  {
-    // Enable/disable the bookmark actions.
-    for ( int i = 0; i < m_bookmarks->actions().size(); ++i )
-    {
-      if ( QString::compare( m_bookmarks->actions().at( i )->data().toString(), share->unc(), Qt::CaseInsensitive ) == 0 )
-      {
-        m_bookmarks->actions().at( i )->setEnabled( !share->isMounted() );
-        break;
-      }
-      else
-      {
-        continue;
-      }
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
 }
 
 

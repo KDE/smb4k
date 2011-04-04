@@ -2,7 +2,7 @@
     smb4ksystemtray  -  This is the system tray window class of Smb4K.
                              -------------------
     begin                : Mi Jun 13 2007
-    copyright            : (C) 2007-2010 by Alexander Reinholdt
+    copyright            : (C) 2007-2011 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -60,12 +60,7 @@ class Smb4KSystemTray : public KStatusNotifierItem
     ~Smb4KSystemTray();
 
     /**
-     * This function (re-)loads the settings for this widget. It basically just
-     * runs the slot slotSetupBookmarkMenu() and slotSetupSharesMenu(), that will
-     * do everything to properly set up the menus.
-     *
-     * This slot *does not* manage the appearance (or disappearance) of this widget
-     * in the system tray. You need to use embed() to do this.
+     * This function (re-)loads the settings for this widget.
      */
     void loadSettings();
 
@@ -100,38 +95,6 @@ class Smb4KSystemTray : public KStatusNotifierItem
      * @param dialogName      The name of the dialog.
      */
     void slotSettingsChanged( const QString &dialogName );
-
-    /**
-     * This slot is invoked when the bookmarks have been updated. It sets up the
-     * bookmark menu, inserts the bookmark actions into it and automatically
-     * disables them if they were already mounted (see slotSetupSharesMenu() as well).
-     */
-    void slotSetupBookmarksMenu();
-
-    /**
-     * This slot opens the bookmark editor.
-     *
-     * @param checked         TRUE if the action can be and is checked and FALSE
-     *                        otherwise.
-     */
-    void slotBookmarkEditor( bool checked );
-
-    /**
-     * This slot is called when a bookmark action has been triggered. It initializes the
-     * mounting of the represented share.
-     *
-     * @param action        The bookmark action.
-     */
-    void slotBookmarkTriggered( QAction *action );
-
-    /**
-     * This slot enables or disables bookmarks. If a @p share is mounted that is represented
-     * by a bookmark, the bookmark will be disabled. It will be enabled, when the @p share is 
-     * unmounted again.
-     * 
-     * @param share         The share item
-     */
-    void slotEnableBookmarks( Smb4KShare *share );
 
     /**
      * This slot initializes the umounting of all shares. It is connected to the
@@ -173,19 +136,9 @@ class Smb4KSystemTray : public KStatusNotifierItem
     void setupSharesMenu();
     
     /**
-     * The action menu for the bookmarks.
-     */
-    KActionMenu *m_bookmarks_menu;
-
-    /**
      * The action menu for the mounted shares.
      */
     KActionMenu *m_shares_menu;
-
-    /**
-     * This QActionGroup manages the bookmark actions.
-     */
-    QActionGroup *m_bookmarks;
 
     /**
      * This QActionGroup manages all menus representing a share.
