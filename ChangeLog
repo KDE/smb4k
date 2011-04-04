@@ -330,6 +330,7 @@ Smb4K SVN_HEAD (????-??-??):
   + Removed obsolete "Super User" settings page.
   + Improved buttons of the user and group input widgets of the Samba page.
   + Renamed "Client Programs" tab to "Utility Programs".
+- Added new bookmark menu.
 - Revised main window:
   + The icon in the status bar, that indicates the status of the authentication
     system now shows a key if the wallet system is not used, i.e. we are in
@@ -338,12 +339,14 @@ Smb4K SVN_HEAD (????-??-??):
   + Improved visual (mount) feedback (closes #15899).
   + Fixed saving and restoring of the dock widgets (closes #15899).
   + Improved status messages.
+  + Use new bookmark menu.
 - Revised system tray icon:
   + Smb4KSystemTray inherits KStatusNotifierItem class.
   + Removed functions for embedding the system tray window. The icon will now always 
     reside in the tray.
   + The system tray icon will be set passive (will be hidden) if no workgroups could
     be found and no shares were mounted.
+  + Use new bookmark menu.
 - Revised custom options dialog:
   + Did some refactoring.
   + Added all settings available for shares to the host dialog. This way you can 
