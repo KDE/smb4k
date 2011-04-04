@@ -208,56 +208,40 @@ void Smb4KMounter::triggerRemounts()
 {
   if ( Smb4KSettings::remountShares() || priv->hardwareReason() )
   {
-    QList<Action> actions;
+    // Get the shares that are to be remounted
     QList<Smb4KSambaOptionsInfo *> list = Smb4KSambaOptionsHandler::self()->sharesToRemount();
+    QList<Smb4KShare *> remounts;
 
-    for ( int i = 0; i < list.size(); ++i )
+    if ( !list.isEmpty() )
     {
-      QList<Smb4KShare *> mounted_shares = findShareByUNC( list.at( i )->unc() );
-
-      if ( !mounted_shares.isEmpty() )
+      // Check which ones actually need to be remounted.
+      for ( int i = 0; i < list.size(); i++ )
       {
-        bool mount = true;
+        QList<Smb4KShare *> mounted_shares = findShareByUNC( list.at( i )->unc() );
 
-        for ( int j = 0; j < mounted_shares.size(); ++j )
+        if ( !mounted_shares.isEmpty() )
         {
-          if ( !mounted_shares.at( j )->isForeign() )
+          bool mount = true;
+
+          for ( int j = 0; j < mounted_shares.size(); ++j )
           {
-            mount = false;
-            break;
+            if ( !mounted_shares.at( j )->isForeign() )
+            {
+              mount = false;
+              break;
+            }
+            else
+            {
+              continue;
+            }
           }
-          else
+
+          if ( mount )
           {
-            continue;
-          }
-        }
-
-        if ( mount )
-        {
-          // First of all initialize the wallet manager.
-          Smb4KWalletManager::self()->init( 0 );
-
-          // Mount the share.
-          Smb4KShare share( list.at( i )->unc() );
-          share.setWorkgroupName( list.at( i )->workgroupName() );
-          share.setHostIP( list.at( i )->ip() );
-
-          Action mountAction;
-
-          if ( createMountAction( &share, &mountAction ) )
-          {
-            connect( mountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
-                     this, SLOT( slotShareMounted( ActionReply ) ) );
-            connect( mountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
-                     this, SLOT( slotActionFinished( ActionReply ) ) );
-
-            actions << mountAction;
-
-            m_cache << mountAction.arguments().value( "key" ).toString();
-
-            emit aboutToStart( &share, MountShare );
-
-            priv->addRemount();
+            Smb4KShare *share = new Smb4KShare( list.at( i )->unc() );
+            share->setWorkgroupName( list.at( i )->workgroupName() );
+            share->setHostIP( list.at( i )->ip() );
+            remounts << share;
           }
           else
           {
@@ -266,47 +250,27 @@ void Smb4KMounter::triggerRemounts()
         }
         else
         {
-          // Do nothing
+          Smb4KShare *share = new Smb4KShare( list.at( i )->unc() );
+          share->setWorkgroupName( list.at( i )->workgroupName() );
+          share->setHostIP( list.at( i )->ip() );
+          remounts << share;
         }
+      }
+
+      if ( !remounts.isEmpty() )
+      {
+        mountShares( remounts );
       }
       else
       {
-        // First of all initialize the wallet manager.
-        Smb4KWalletManager::self()->init( 0 );
-
-        // Mount the share.
-        Smb4KShare share( list.at( i )->unc() );
-        share.setWorkgroupName( list.at( i )->workgroupName() );
-        share.setHostIP( list.at( i )->ip() );
-
-        Action mountAction;
-
-        if ( createMountAction( &share, &mountAction ) )
-        {
-          connect( mountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
-                   this, SLOT( slotShareMounted( ActionReply ) ) );
-          connect( mountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
-                   this, SLOT( slotActionFinished( ActionReply ) ) );
-
-          actions << mountAction;
-
-          m_cache << mountAction.arguments().value( "key" ).toString();
-
-          emit aboutToStart( &share, MountShare );
-
-          priv->addRemount();
-        }
-        else
-        {
-          // Do nothing
-        }
+        // Do nothing
       }
-    }
 
-    if ( !actions.isEmpty() )
-    {
-      QList<Action> denied;
-      Action::executeActions( actions, &denied, "de.berlios.smb4k.mounthelper" );
+      // Clear list
+      while ( !remounts.isEmpty() )
+      {
+        delete remounts.takeFirst();
+      }
     }
     else
     {
@@ -756,13 +720,6 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
 
   if ( createMountAction( share, &mountAction ) )
   {
-    m_cache << mountAction.arguments().value( "key" ).toString();
-
-    connect( mountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
-             this, SLOT( slotShareMounted( ActionReply ) ) );
-    connect( mountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
-             this, SLOT( slotActionFinished( ActionReply ) ) );
-
     if ( m_cache.size() == 0 )
     {
       QApplication::setOverrideCursor( Qt::WaitCursor );
@@ -773,6 +730,13 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
     {
       // Already running
     }
+    
+    m_cache << mountAction.arguments().value( "key" ).toString();
+
+    connect( mountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+             this, SLOT( slotShareMounted( ActionReply ) ) );
+    connect( mountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+             this, SLOT( slotActionFinished( ActionReply ) ) );
 
     emit aboutToStart( share, MountShare );
 
@@ -809,6 +773,61 @@ void Smb4KMounter::mountShare( Smb4KShare *share )
 }
 
 
+void Smb4KMounter::mountShares( const QList<Smb4KShare *> &shares )
+{
+  QList<Action> actions;
+  QListIterator<Smb4KShare *> it( shares );
+
+  while ( it.hasNext() )
+  {
+    Smb4KShare *share = it.next();
+
+    Action mountAction;
+
+    if ( createMountAction( share, &mountAction ) )
+    {
+      if ( m_cache.size() == 0 )
+      {
+        QApplication::setOverrideCursor( Qt::WaitCursor );
+        m_state = MOUNTER_MOUNT;
+        emit stateChanged();
+      }
+      else
+      {
+        // Already running
+      }
+      
+      connect( mountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+               this, SLOT( slotShareMounted( ActionReply ) ) );
+      connect( mountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+               this, SLOT( slotActionFinished( ActionReply ) ) );
+
+      actions << mountAction;
+
+      m_cache << mountAction.arguments().value( "key" ).toString();
+
+      emit aboutToStart( share, MountShare );
+
+      priv->addMount();
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+
+  if ( !actions.isEmpty() )
+  {
+    Action::executeActions( actions, NULL, "de.berlios.smb4k.mounthelper" );
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+
 void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
 {
   Q_ASSERT( share );
@@ -820,13 +839,6 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
 
     if ( createUnmountAction( share, force, silent, &unmountAction ) )
     {
-      m_cache << unmountAction.arguments().value( "key" ).toString();
-
-      connect( unmountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
-               this, SLOT( slotShareUnmounted( ActionReply ) ) );
-      connect( unmountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
-               this, SLOT( slotActionFinished( ActionReply ) ) );
-
       if ( m_cache.size() == 0 )
       {
         QApplication::setOverrideCursor( Qt::WaitCursor );
@@ -837,6 +849,13 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
       {
         // Already running
       }
+      
+      m_cache << unmountAction.arguments().value( "key" ).toString();
+
+      connect( unmountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+               this, SLOT( slotShareUnmounted( ActionReply ) ) );
+      connect( unmountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
+               this, SLOT( slotActionFinished( ActionReply ) ) );
 
       emit aboutToStart( share, UnmountShare );
 
@@ -891,15 +910,7 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent )
 
 void Smb4KMounter::unmountAllShares()
 {
-  // Never use
-  //
-  //    while ( !mountedSharesList().isEmpty() ) { ... }
-  //
-  // here, because then the mounter will loop indefinitely when the
-  // unmounting of a share fails.
-
   QList<Action> actions;
-
   QListIterator<Smb4KShare *> it( mountedSharesList() );
 
   while ( it.hasNext() )
@@ -910,6 +921,17 @@ void Smb4KMounter::unmountAllShares()
 
     if ( createUnmountAction( share, false, false, &unmountAction ) )
     {
+      if ( m_cache.size() == 0 )
+      {
+        QApplication::setOverrideCursor( Qt::WaitCursor );
+        m_state = MOUNTER_UNMOUNT;
+        emit stateChanged();
+      }
+      else
+      {
+        // Already running
+      }
+      
       connect( unmountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
                this, SLOT( slotShareUnmounted( ActionReply ) ) );
       connect( unmountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
@@ -931,7 +953,6 @@ void Smb4KMounter::unmountAllShares()
 
   if ( !actions.isEmpty() )
   {
-    QList<Action> denied;
     Action::executeActions( actions, NULL, "de.berlios.smb4k.mounthelper" );
   }
   else
@@ -2027,18 +2048,25 @@ void Smb4KMounter::slotShareMounted( ActionReply reply )
 
         addMountedShare( share );
 
-        // Check whether this was a remount or not, do the necessary
-        // things and notify the user.
-        if ( priv->pendingRemounts() != 0 && Smb4KSambaOptionsHandler::self()->findItem( share ) != NULL )
+        // Check whether the share stems from a bulk mount or not.
+        if ( priv->pendingMounts() != 0 )
         {
-          Smb4KSambaOptionsHandler::self()->removeRemount( share );
-          priv->removeRemount();
+          if ( Smb4KSettings::remountShares() )
+          {
+            Smb4KSambaOptionsHandler::self()->removeRemount( share );
+          }
+          else
+          {
+            // Do nothing
+          }
+          
+          priv->removeMount();
 
-          if ( priv->pendingRemounts() == 0 )
+          if ( priv->pendingMounts() == 0 )
           {
             Smb4KNotification *notification = new Smb4KNotification( this );
-            notification->sharesRemounted( priv->initialRemounts(), priv->initialRemounts() );
-            priv->clearRemounts();
+            notification->sharesMounted( priv->initialMounts(), priv->initialMounts() );
+            priv->clearMounts();
           }
           else
           {
@@ -2046,21 +2074,24 @@ void Smb4KMounter::slotShareMounted( ActionReply reply )
             {
               bool still_mounting = false;
 
-              if ( reply.data().value( "key" ).toString().startsWith( "mount_" ) &&
-                  Smb4KSambaOptionsHandler::self()->findItem( share ) != NULL )
+              foreach ( const QString &key, m_cache )
               {
-                still_mounting = true;
-              }
-              else
-              {
-                // Do nothing
+                if ( key.startsWith( "mount_" ) )
+                {
+                  still_mounting = true;
+                  break;
+                }
+                else
+                {
+                  continue;
+                }
               }
 
               if ( !still_mounting )
               {
                 Smb4KNotification *notification = new Smb4KNotification( this );
-                notification->sharesRemounted( priv->initialRemounts(), (priv->initialRemounts() - priv->pendingRemounts()) );
-                priv->clearRemounts();
+                notification->sharesMounted( priv->initialMounts(), (priv->initialMounts() - priv->pendingMounts()) );
+                priv->clearMounts();
               }
               else
               {
@@ -2070,8 +2101,8 @@ void Smb4KMounter::slotShareMounted( ActionReply reply )
             else
             {
               Smb4KNotification *notification = new Smb4KNotification( this );
-              notification->sharesRemounted( priv->initialRemounts(), (priv->initialRemounts() - priv->pendingRemounts()) );
-              priv->clearRemounts();
+              notification->sharesMounted( priv->initialMounts(), (priv->initialMounts() - priv->pendingMounts()) );
+              priv->clearMounts();
             }
           }
         }

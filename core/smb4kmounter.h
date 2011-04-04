@@ -97,6 +97,13 @@ class KDE_EXPORT Smb4KMounter : public QObject
     void mountShare( Smb4KShare *share );
 
     /**
+     * Mounts a list of shares at once.
+     *
+     * @param shares      The list of shares
+     */
+    void mountShares( const QList<Smb4KShare *> &shares );
+
+    /**
      * This function attempts to unmount a share. This can either be done the "normal"
      * way, or you may force it. If you decide to force the unmounting by setting
      * @p force to TRUE, under Linux a lazy unmount will be initiated. With the parameter
@@ -114,8 +121,7 @@ class KDE_EXPORT Smb4KMounter : public QObject
                        bool silent = false );
 
     /**
-     * Unmounts all shares at once. It invokes unmountShare() on each share
-     * in the global list of mounted shares.
+     * Unmounts all shares at once.
      */
     void unmountAllShares();
 
