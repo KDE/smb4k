@@ -17,7 +17,11 @@ add_subdirectory( search )
 
 ########### next target ###############
 
-set(smb4k_SRCS main.cpp smb4kmainwindow.cpp smb4ksystemtray.cpp )
+set( smb4k_SRCS
+  main.cpp
+  smb4kbookmarkmenu.cpp
+  smb4kmainwindow.cpp
+  smb4ksystemtray.cpp )
 
 kde4_add_executable( smb4k ${smb4k_SRCS} )
 
