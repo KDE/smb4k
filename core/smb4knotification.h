@@ -95,7 +95,7 @@ class KDE_EXPORT Smb4KNotification : public QObject
      * @param actual    The number of remounts that were actually
      *                  mounted.
      */
-    void sharesRemounted( int total, int actual );
+    void sharesMounted( int total, int actual );
 
     /**
      * Notify the user that all shares have been unmounted at once.

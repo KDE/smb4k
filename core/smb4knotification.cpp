@@ -103,14 +103,14 @@ void Smb4KNotification::shareUnmounted( Smb4KShare* share )
 }
 
 
-void Smb4KNotification::sharesRemounted( int total, int actual )
+void Smb4KNotification::sharesMounted( int total, int actual )
 {
   if ( Smb4KSettings::self()->showNotifications() )
   {
     if ( total != actual )
     {
-      KNotification *notification = KNotification::event( "sharesRemounted",
-                                    i18np( "<p>%1 share out of %2 has been remounted.</p>", "<p>%1 shares out of %2 have been remounted.</p>", actual, total ),
+      KNotification *notification = KNotification::event( "sharesMounted",
+                                    i18np( "<p>%1 share out of %2 has been mounted.</p>", "<p>%1 shares out of %2 have been mounted.</p>", actual, total ),
                                     KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "emblem-mounted" ) ),
                                     0L,
                                     KNotification::CloseOnTimeout );
@@ -118,8 +118,8 @@ void Smb4KNotification::sharesRemounted( int total, int actual )
     }
     else
     {
-      KNotification *notification = KNotification::event( "sharesRemounted",
-                                    i18n( "<p>All shares have been remounted.</p>" ),
+      KNotification *notification = KNotification::event( "sharesMounted",
+                                    i18n( "<p>All shares have been mounted.</p>" ),
                                     KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "emblem-mounted" ) ),
                                     0L,
                                     KNotification::CloseOnTimeout );
