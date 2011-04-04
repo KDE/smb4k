@@ -11,10 +11,6 @@
   <Menu noMerge="1" name="shares"><text>Sh&amp;ares</text>
   </Menu>
   <Menu noMerge="1" name="bookmarks"><text>&amp;Bookmarks</text>
-    <!-- This menu will dynamically be filled by Smb4KMainWindow. -->
-    <ActionList name="bookmark_actions"/>
-    <Separator/>
-    <ActionList name="bookmarks"/>
   </Menu>
   <Menu noMerge="1" name="settings"><text>&amp;Settings</text>
     <Merge name ="StandardToolBarMenuHandler"/>
