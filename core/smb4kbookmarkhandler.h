@@ -127,7 +127,7 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
     Smb4KBookmark *findBookmarkByLabel( const QString &label );
 
     /**
-     * Returns the list of bookmark groups
+     * Returns the sorted list of bookmark groups.
      *
      * @returns the list of groups
      */

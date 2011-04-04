@@ -496,6 +496,8 @@ QStringList Smb4KBookmarkHandler::groups()
     }
   }
 
+  groups.sort();
+  
   return groups;
 }
 
@@ -557,12 +559,10 @@ void Smb4KBookmarkHandler::editBookmarks( QWidget *parent )
         }
       }
       
-      // Finally write the list to the file.
+      // Finally write the list to the file. We do not
+      // need to emit the updated() signal here, because
+      // writeBookmarkList() is going to do this, anyway.
       writeBookmarkList( m_bookmarks );
-
-      // Tell the program that the list of bookmarks has
-      // been updated.
-      emit updated();
     }
     else
     {
