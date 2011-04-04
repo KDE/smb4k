@@ -283,7 +283,15 @@ Action=Popup
 
 [Event/bookmarkExists]
 Name=Bookmark exists
+Name[pt]=O favorito existe
+Name[sv]=Bokmärke finns
+Name[uk]=Така закладка вже існує
+Name[x-test]=xxBookmark existsxx
 Comment=The bookmark already exists
+Comment[pt]=O favorito já existe
+Comment[sv]=Bokmärket finns redan
+Comment[uk]=Закладка з такою назвою вже існує
+Comment[x-test]=xxThe bookmark already existsxx
 Contexts=Warning
 Action=Popup
 
