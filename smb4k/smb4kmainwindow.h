@@ -2,8 +2,8 @@
     smb4kmainwindow  -  The main window of Smb4K.
                              -------------------
     begin                : Di Jan 1 2008
-    copyright            : (C) 2008-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2008-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -101,40 +101,11 @@ class Smb4KMainWindow : public KParts::MainWindow
     void slotSettingsChanged( const QString &dialogName );
 
     /**
-     * This slot opens the bookmark editor.
-     *
-     * @param checked         TRUE when the action is checked and
-     *                        FALSE otherwise.
-     */
-    void slotOpenBookmarkEditor( bool checked );
-
-    /**
-     * This slot is called when the list of bookmarks was updated.
-     */
-    void slotBookmarksUpdated();
-
-    /**
-     * This slot enables/disables the bookmarks due to mount events.
-     * 
-     * @param share           The share item that changed
-     */
-    void slotEnableBookmarks( Smb4KShare *share );
-
-    /**
-     * This slot is called when a bookmark action has been triggered. It initializes the
-     * mounting of the represented share.
-     *
-     * @param action        The triggered bookmark action
-     */
-    void slotBookmarkTriggered( QAction *action );
-
-    /**
-     * This slot is called when a bookmark should be added and either the action in the
-     * "Bookmarks" menu has been triggered or the CTRL+B shortcut was pressed.
+     * This slot is called when a bookmark should be added.
      *
      * @param checked       TRUE if the action is checked
      */
-    void slotAddBookmark( bool checked );
+    void slotAddBookmark();
 
     /**
      * This slot is called when an action from the "Shares View" menu was triggered.
@@ -374,11 +345,6 @@ class Smb4KMainWindow : public KParts::MainWindow
      * The shares view
      */
     KParts::Part *m_shares_part;
-
-    /**
-     * Bookmarks action group
-     */
-    QActionGroup *m_bookmarks;
 
     /**
      * Dock widgets action group;

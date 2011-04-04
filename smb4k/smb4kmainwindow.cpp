@@ -2,8 +2,8 @@
     smb4kmainwindow  -  The main window of Smb4K.
                              -------------------
     begin                : Di Jan 1 2008
-    copyright            : (C) 2008-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2008-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -32,6 +32,7 @@
 #include <QLabel>
 #include <QTimer>
 #include <QTabBar>
+#include <QMenuBar>
 
 // KDE includes
 #include <kstandardaction.h>
@@ -46,14 +47,16 @@
 #include <kactionmenu.h>
 #include <kstatusbar.h>
 #include <kiconeffect.h>
+#include <kmenubar.h>
+#include <kmenu.h>
 
 // application specific includes
 #include <smb4kmainwindow.h>
 #include <smb4ksystemtray.h>
+#include <smb4kbookmarkmenu.h>
 #include <core/smb4ksettings.h>
 #include <core/smb4kdefs.h>
 #include <core/smb4kcore.h>
-#include <core/smb4kbookmark.h>
 #include <core/smb4kglobal.h>
 #include <core/smb4kwalletmanager.h>
 #include <core/smb4kworkgroup.h>
@@ -65,7 +68,6 @@
 #include <core/smb4ksynchronizer.h>
 #include <core/smb4kpreviewer.h>
 #include <core/smb4ksearch.h>
-#include <core/smb4kbookmarkhandler.h>
 
 
 using namespace Smb4KGlobal;
@@ -73,8 +75,6 @@ using namespace Smb4KGlobal;
 Smb4KMainWindow::Smb4KMainWindow()
 : KParts::MainWindow(), m_system_tray_widget( NULL )
 {
-  m_bookmarks = new QActionGroup( actionCollection() );
-
   setStandardToolBarMenuEnabled( true );
   createStandardStatusBarAction();
   setDockNestingEnabled( true );
@@ -413,52 +413,26 @@ void Smb4KMainWindow::setupSystemTrayWidget()
 
 void Smb4KMainWindow::setupBookmarksMenu()
 {
-  // Action to invoke the bookmark editor
-  KAction *edit_bookmarks = new KAction( KIcon( "bookmarks-organize" ), i18n( "&Edit Bookmarks" ),
-                            actionCollection() );
-  actionCollection()->addAction( "edit_bookmarks_action", edit_bookmarks );
-
-  // The enhanced bookmark action for the main window
-  KAction *add_bookmark = new KAction( KIcon( "bookmark-new" ), i18n( "Add &Bookmark" ),
-                          actionCollection() );
-  add_bookmark->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_B ) );
-  actionCollection()->addAction( "main_bookmark_action", add_bookmark );
-
-  // This is a workaround (see smb4k_shell.rc).
-  KAction *separator      = new KAction( actionCollection() );
-  separator->setSeparator( true );
-  actionCollection()->addAction( "bookmarks_menu_separator", separator );
-
-  QList<QAction *> bookmark_actions;
-  bookmark_actions.append( edit_bookmarks );
-  bookmark_actions.append( add_bookmark );
-  bookmark_actions.append( separator );
-
-  plugActionList( "bookmark_actions", bookmark_actions );
-
-  connect( edit_bookmarks,               SIGNAL( triggered( bool ) ),
-           this,                         SLOT( slotOpenBookmarkEditor( bool ) ) );
-
-  connect( add_bookmark,                 SIGNAL( triggered( bool ) ),
-           this,                         SLOT( slotAddBookmark( bool ) ) );
-
-  connect( Smb4KBookmarkHandler::self(), SIGNAL( updated() ),
-           this,                         SLOT( slotBookmarksUpdated() ) );
-           
-  connect( Smb4KMounter::self(),         SIGNAL( mounted( Smb4KShare * ) ),
-           this,                         SLOT( slotEnableBookmarks( Smb4KShare * ) ) );
-           
-  connect( Smb4KMounter::self(),         SIGNAL( unmounted( Smb4KShare * ) ),
-           this,                         SLOT( slotEnableBookmarks( Smb4KShare * ) ) );
-
-  connect( Smb4KMounter::self(),         SIGNAL( updated( Smb4KShare * ) ),
-           this,                         SLOT( slotEnableBookmarks( Smb4KShare * ) ) );
-
-  connect( m_bookmarks,                  SIGNAL( triggered( QAction * ) ),
-           this,                         SLOT( slotBookmarkTriggered( QAction * ) ) );
-
-  // Setup bookmarks.
-  slotBookmarksUpdated();
+  // Get the "Bookmarks" menu
+  QList<QAction *> actions = menuBar()->actions();
+  QListIterator<QAction *> it( actions );
+  
+  while ( it.hasNext() )
+  {
+    QAction *action = it.next();
+    
+    if ( QString::compare( "bookmarks", action->objectName() ) == 0 )
+    {
+      Smb4KBookmarkMenu *menu = new Smb4KBookmarkMenu( Smb4KBookmarkMenu::MainWindow, this, this );
+      action->setMenu( menu->menu() );
+      connect( menu->addBookmarkAction(), SIGNAL( triggered( bool ) ), SLOT( slotAddBookmark() ) );
+      break;
+    }
+    else
+    {
+      continue;
+    }
+  }
 }
 
 
@@ -511,7 +485,16 @@ void Smb4KMainWindow::loadSettings()
   }
 
   // Reload the list of bookmarks.
-  slotBookmarksUpdated();
+  Smb4KBookmarkMenu *bookmark_menu = findChild<Smb4KBookmarkMenu *>();
+
+  if ( bookmark_menu )
+  {
+    bookmark_menu->refreshMenu();
+  }
+  else
+  {
+    // Do nothing
+  }
 
   // Check the state of the password handler and the wallet settings and
   // set the pixmap in the status bar accordingly.
@@ -642,134 +625,7 @@ void Smb4KMainWindow::slotSettingsChanged( const QString & )
 }
 
 
-void Smb4KMainWindow::slotOpenBookmarkEditor( bool /*checked*/ )
-{
-  Smb4KBookmarkHandler::self()->editBookmarks( this );
-}
-
-
-void Smb4KMainWindow::slotBookmarksUpdated()
-{
-  // First of all, unplug the bookmarks.
-  unplugActionList( "bookmarks" );
-
-  // Get the list of bookmark actions and delete all entries. We could
-  // also try to keep those actions that are not obsolete, but I think
-  // this is the cleanest way.
-  while ( !m_bookmarks->actions().isEmpty() )
-  {
-    actionCollection()->removeAction( m_bookmarks->actions().first() );
-    delete m_bookmarks->actions().takeFirst();
-  }
-
-  // Get the list of bookmarks:
-  QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->bookmarks();
-  QMap<QString, bool> actions;
-
-  // Prepare the list of bookmarks for display:
-  if ( !bookmarks.isEmpty() )
-  {
-    // Enable the "Edit Bookmarks" action:
-    actionCollection()->action( "edit_bookmarks_action" )->setEnabled( true );
-
-    // Work around sorting problems:
-    for ( int i = 0; i < bookmarks.size(); ++i )
-    {
-      QList<Smb4KShare *> shares_list = findShareByUNC( bookmarks.at( i )->unc() );
-      bool enable = true;
-
-      for ( int j = 0; j < shares_list.size(); ++j )
-      {
-        if ( !shares_list.at( j )->isForeign() )
-        {
-          enable = false;
-          break;
-        }
-        else
-        {
-          continue;
-        }
-      }
-
-      if ( !bookmarks.at( i )->label().isEmpty() && Smb4KSettings::showCustomBookmarkLabel() )
-      {
-        actions.insert( bookmarks.at( i )->label(), enable );
-      }
-      else
-      {
-        actions.insert( bookmarks.at( i )->unc(), enable );
-      }
-    }
-  }
-  else
-  {
-    // Disable the "Edit Bookmarks" action:
-    actionCollection()->action( "edit_bookmarks_action" )->setEnabled( false );
-  }
-
-  // Now create the actions and put them into the action group
-  // and the menu.
-  QList<QAction *> bookmarks_list;
-
-  QMapIterator<QString, bool> it( actions );
-
-  while ( it.hasNext() )
-  {
-    it.next();
-
-    KAction *bm_action = new KAction( KIcon( "folder-remote" ), it.key(), m_bookmarks );
-    bm_action->setData( it.key() );
-    bm_action->setEnabled( it.value() );
-    bookmarks_list.append( bm_action );
-  }
-
-  plugActionList( "bookmarks", bookmarks_list );
-}
-
-
-void Smb4KMainWindow::slotEnableBookmarks( Smb4KShare *share )
-{
-  // Enable/disable the bookmark actions.
-  for ( int i = 0; i < m_bookmarks->actions().size(); ++i )
-  {
-    if ( QString::compare( share->unc(), m_bookmarks->actions().at( i )->data().toString(), Qt::CaseInsensitive ) == 0 &&
-         !share->isForeign() )
-    {
-      m_bookmarks->actions().at( i )->setEnabled( !share->isMounted() );
-      break;
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-}
-
-
-void Smb4KMainWindow::slotBookmarkTriggered( QAction *action )
-{
-  if ( action )
-  {
-    Smb4KBookmark *bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC( action->data().toString() );
-
-    if ( bookmark )
-    {
-      Smb4KShare share( bookmark->hostName(), bookmark->shareName() );
-      share.setWorkgroupName( bookmark->workgroupName() );
-      share.setHostIP( bookmark->hostIP() );
-      share.setLogin( bookmark->login() );
-
-      Smb4KMounter::self()->mountShare( &share );
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KMainWindow::slotAddBookmark( bool /*checked*/ )
+void Smb4KMainWindow::slotAddBookmark()
 {
   if ( m_browser_part )
   {
