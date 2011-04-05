@@ -410,12 +410,11 @@ void Smb4KBookmarkMenu::slotBookmarksUpdated()
 
 void Smb4KBookmarkMenu::slotEnableBookmark( Smb4KShare *share )
 {
-  qDebug() << "FIXME: Enable/disable mount actions";
-  
   if ( !share->isForeign() )
   {
     QList<QAction *> actions = m_action_collection->actions();
-
+    QString group_name;
+    
     for ( int i = 0; i < actions.size(); i++ )
     {
       QAction *action = actions.at( i );
@@ -427,6 +426,7 @@ void Smb4KBookmarkMenu::slotEnableBookmark( Smb4KShare *share )
         if ( QString::compare( unc, share->unc(), Qt::CaseInsensitive ) == 0 )
         {
           action->setEnabled( !share->isMounted() );
+          group_name = action->objectName().section( "[", 1, -1 ).section( "]_", 0, 0 ).trimmed();
           break;
         }
         else
@@ -438,6 +438,46 @@ void Smb4KBookmarkMenu::slotEnableBookmark( Smb4KShare *share )
       {
         continue;
       }
+    }
+
+    bool all_mounted = true;
+
+    for ( int i = 0; i < m_action_collection->count(); i++ )
+    {
+      if ( m_action_collection->actions().at( i )->objectName().startsWith( QString( "[%1]" ).arg( group_name ) ) &&
+           m_action_collection->actions().at( i )->isEnabled() )
+      {
+        all_mounted = false;
+        break;
+      }
+      else
+      {
+        continue;
+      }
+    }
+
+    if ( all_mounted )
+    {
+      if ( group_name.isEmpty() )
+      {
+        m_action_collection->action( "mount_toplevel" )->setEnabled( false );
+      }
+      else
+      {
+        m_action_collection->action( QString( "mount_%1" ).arg( group_name ) )->setEnabled( false );
+      }
+    }
+    else
+    {
+      if ( group_name.isEmpty() )
+      {
+        m_action_collection->action( "mount_toplevel" )->setEnabled( true );
+      }
+      else
+      {
+        m_action_collection->action( QString( "mount_%1" ).arg( group_name ) )->setEnabled( true );
+      }
+      
     }
   }
   else
