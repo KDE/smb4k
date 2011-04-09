@@ -148,7 +148,7 @@ void Smb4KBookmarkMenu::setupMenu()
   {
     if ( !groups.at( i ).isEmpty() )
     {
-      KAction *group = new KAction( KIcon( "folder-bookmark" ), groups.at( i ), m_groups );
+      KAction *group = new KAction( KIcon( "folder-favorites" ), groups.at( i ), m_groups );
       m_action_collection->addAction( groups.at( i ), group );
       addAction( group );
 
@@ -456,26 +456,62 @@ void Smb4KBookmarkMenu::slotEnableBookmark( Smb4KShare *share )
       }
     }
 
-    if ( all_mounted )
+    if ( all_mounted && !m_bookmarks->actions().isEmpty() )
     {
       if ( group_name.isEmpty() )
       {
-        m_action_collection->action( "mount_toplevel" )->setEnabled( false );
+        QAction *action = m_action_collection->action( "mount_toplevel" );
+
+        if ( action )
+        {
+          action->setEnabled( false );
+        }
+        else
+        {
+          // Do nothing
+        }
       }
       else
       {
-        m_action_collection->action( QString( "mount_%1" ).arg( group_name ) )->setEnabled( false );
+        QAction *action = m_action_collection->action( QString( "mount_%1" ).arg( group_name ) );
+
+        if ( action )
+        {
+          action->setEnabled( false );
+        }
+        else
+        {
+          // Do nothing
+        }
       }
     }
     else
     {
       if ( group_name.isEmpty() )
       {
-        m_action_collection->action( "mount_toplevel" )->setEnabled( true );
+        QAction *action = m_action_collection->action( "mount_toplevel" );
+
+        if ( action )
+        {
+          action->setEnabled( true );
+        }
+        else
+        {
+          // Do nothing
+        }
       }
       else
       {
-        m_action_collection->action( QString( "mount_%1" ).arg( group_name ) )->setEnabled( true );
+        QAction *action = m_action_collection->action( QString( "mount_%1" ).arg( group_name ) );
+
+        if ( action )
+        {
+          action->setEnabled( true );
+        }
+        else
+        {
+          // Do nothing
+        }
       }
       
     }
