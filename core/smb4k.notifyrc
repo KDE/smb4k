@@ -170,11 +170,13 @@ Action=Popup
 
 [Event/sharesMounted]
 Name=Mounted shares
+Name[et]=Ühendati jagatud ressursid
 Name[pt]=Partilhas montadas
 Name[sv]=Monterade delade kataloger
 Name[uk]=Змонтовані спільні ресурси
 Name[x-test]=xxMounted sharesxx
 Comment=Shares have been mounted
+Comment[et]=Jagatud ressursid on ühendatud
 Comment[pt]=As partilhas foram montadas
 Comment[sv]=Delade kataloger har monterats
 Comment[uk]=Змонтовано спільні ресурси
