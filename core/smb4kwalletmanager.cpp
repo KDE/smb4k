@@ -202,38 +202,38 @@ void Smb4KWalletManager::readAuthInfo( Smb4KAuthInfo *authInfo )
         {
           m_wallet->readMap( authInfo->unc().toUpper(), map );
         }
-        else if ( m_wallet->hasEntry( authInfo->hostName().toUpper() ) )
-        {
-          m_wallet->readMap( authInfo->hostName().toUpper(), map );
-          m_wallet->removeEntry( authInfo->hostName().toUpper() );
-        }
         else
         {
           // Do nothing
         }
-
-        // Only set the authentication information if the map is not empty and if
-        // either the login was not set in authInfo or it is equal to map["Login"].
-        if ( !map.isEmpty() &&
-             (authInfo->login().isEmpty() || QString::compare( authInfo->login(), map["Login"] ) == 0) )
+        
+        // Set the authentication information.
+        if ( !map.isEmpty() && (authInfo->workgroupName().isEmpty() || map["Workgroup"].isEmpty() ||
+             QString::compare( authInfo->workgroupName(), map.value( "Workgroup" ), Qt::CaseInsensitive ) == 0) )
         {
-          // Do not set the authentication, if the workgroup does not match.
-          if ( map["Workgroup"].isEmpty() || authInfo->workgroupName().isEmpty() ||
-              QString::compare( map["Workgroup"], authInfo->workgroupName().toUpper() ) == 0 )
+          if ( !authInfo->login().isEmpty() )
           {
-            authInfo->setLogin( map["Login"] );
-            authInfo->setPassword( map["Password"] );
-
-            if ( !map["Workgroup"].isEmpty() && authInfo->workgroupName().isEmpty() )
+            if ( QString::compare( authInfo->login(), map.value( "Login" ) ) == 0 )
             {
-              authInfo->setWorkgroupName( map["Workgroup"] );
+              authInfo->setLogin( map.value( "Login" ) );
+              authInfo->setPassword( map.value( "Password" ) );
+              set_auth_info = true;
             }
             else
             {
               // Do nothing
             }
-
+          }
+          else
+          {
+            authInfo->setLogin( map.value( "Login" ) );
+            authInfo->setPassword( map.value( "Password" ) );
             set_auth_info = true;
+          }
+          
+          if ( authInfo->workgroupName().isEmpty() && !map["Workgroup"].isEmpty() )
+          {
+            authInfo->setWorkgroupName( map.value( "Workgroup" ) );
           }
           else
           {
@@ -244,7 +244,6 @@ void Smb4KWalletManager::readAuthInfo( Smb4KAuthInfo *authInfo )
         {
           // Do nothing
         }
-
         break;
       }
       case Smb4KAuthInfo::Share:
@@ -252,38 +251,43 @@ void Smb4KWalletManager::readAuthInfo( Smb4KAuthInfo *authInfo )
         // Read the authentication information. Prefer the exact match,
         // but also look for an entry that was provided for the host.
         QMap<QString,QString> map;
-        m_wallet->readMap( authInfo->unc().toUpper(), map );
-
-        if ( map.isEmpty() )
+        
+        if ( m_wallet->hasEntry( authInfo->unc().toUpper() ) )
         {
-          m_wallet->readMap( authInfo->hostUNC().toUpper(), map );
+          m_wallet->readMap( authInfo->unc().toUpper(), map );
         }
         else
         {
-          // Do nothing
+          m_wallet->readMap( authInfo->hostUNC().toUpper(), map );
         }
 
-        // Only set the authentication information the map is not empty and if
-        // either the login was not set in authInfo or it is equal to map["Login"].
-        if ( !map.isEmpty() &&
-             (authInfo->login().isEmpty() || QString::compare( authInfo->login(), map["Login"] ) == 0) )
+        // Set the authentication information.
+        if ( !map.isEmpty() && (authInfo->workgroupName().isEmpty() || map["Workgroup"].isEmpty() ||
+             QString::compare( authInfo->workgroupName(), map.value( "Workgroup" ), Qt::CaseInsensitive ) == 0) )
         {
-          if ( map["Workgroup"].isEmpty() || authInfo->workgroupName().isEmpty() ||
-               QString::compare( map["Workgroup"], authInfo->workgroupName().toUpper() ) == 0 )
+          if ( !authInfo->login().isEmpty() )
           {
-            authInfo->setLogin( map["Login"] );
-            authInfo->setPassword( map["Password"] );
-
-            if ( !map["Workgroup"].isEmpty() && authInfo->workgroupName().isEmpty() )
+            if ( QString::compare( authInfo->login(), map.value( "Login" ) ) == 0 )
             {
-              authInfo->setWorkgroupName( map["Workgroup"] );
+              authInfo->setLogin( map.value( "Login" ) );
+              authInfo->setPassword( map.value( "Password" ) );
+              set_auth_info = true;
             }
             else
             {
               // Do nothing
             }
-
+          }
+          else
+          {
+            authInfo->setLogin( map.value( "Login" ) );
+            authInfo->setPassword( map.value( "Password" ) );
             set_auth_info = true;
+          }
+          
+          if ( authInfo->workgroupName().isEmpty() && !map["Workgroup"].isEmpty() )
+          {
+            authInfo->setWorkgroupName( map.value( "Workgroup" ) );
           }
           else
           {
@@ -294,7 +298,6 @@ void Smb4KWalletManager::readAuthInfo( Smb4KAuthInfo *authInfo )
         {
           // Do nothing
         }
-
         break;
       }
       case Smb4KAuthInfo::Default:
@@ -311,7 +314,6 @@ void Smb4KWalletManager::readAuthInfo( Smb4KAuthInfo *authInfo )
         {
           // Do nothing
         }
-
         break;
       }
       default:
@@ -322,8 +324,7 @@ void Smb4KWalletManager::readAuthInfo( Smb4KAuthInfo *authInfo )
 
     // If there was no matching authentication information, use the
     // default one, if it exists.
-    if ( !set_auth_info && Smb4KSettings::useDefaultLogin() &&
-         authInfo->type() != Smb4KAuthInfo::Default )
+    if ( !set_auth_info && Smb4KSettings::useDefaultLogin() && authInfo->type() != Smb4KAuthInfo::Default )
     {
       QMap<QString,QString> map;
       m_wallet->readMap( "DEFAULT_LOGIN", map );
@@ -514,26 +515,22 @@ bool Smb4KWalletManager::showPasswordDialog( Smb4KAuthInfo *authInfo, QWidget *p
 
   if ( authInfo->isHomesShare() && QString::compare( authInfo->shareName(), "homes" ) == 0 )
   {
-    if ( authInfo->homesUsers().isEmpty() )
-    {
-      // Normally, authInfo should already carry the homes users,
-      // but we will check once more.
-      Smb4KHomesSharesHandler::self()->setHomesUsers( authInfo );
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    for ( int i = 0; i < authInfo->homesUsers().size(); ++i )
+    Smb4KShare share;
+    share.setURL( authInfo->url() );
+    share.setWorkgroupName( authInfo->workgroupName() );
+    
+    QStringList users = Smb4KHomesSharesHandler::self()->homesUsers( &share );
+    
+    for ( int i = 0; i < users.size(); i++ )
     {
       Smb4KAuthInfo user_auth_info( *authInfo );
-      user_auth_info.setLogin( authInfo->homesUsers().at( i ) );
-
+      user_auth_info.setLogin( users.at( i ) );
+      
       // Read the authentication data for the share. If it does not
       // exist yet, user() and password() will be empty.
+      
       readAuthInfo( &user_auth_info );
-
+      
       logins.insert( user_auth_info.login(), user_auth_info.password() );
     }
   }
