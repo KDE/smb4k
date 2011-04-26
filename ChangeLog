@@ -14,16 +14,14 @@ Smb4K SVN_HEAD (????-??-??):
   + Added two new constructors.
   + Added type enumeration and function.
   + Added setUNC() and unc() functions.
-  + Added setHomesUsers() and homesUsers() functions so that homes user
-    entries can be handled.
   + Renamed user() and setUser() functions login() and setLogin().
   + Removed the setHomesUser() function. Use setLogin() instead.
+  + Removed setHomesUsers() and homesUsers() functions.
   + setShare() now automatically uses Smb4KShare::homeUNC() to set the UNC,
     if you pass a homes share.
   + Added equals() function.
   + Added "==" operator.
-- Replaced the Smb4KPasswordHandler class with the new Smb4KWalletManager
-  class. It offers a much cleaner implementation.
+- Fixed several bugs in Smb4KWalletManager.
 - Introduced Smb4KBasicNetworkItem class. Smb4KWorkgroup, Smb4KHost and 
   Smb4KShare inherit this class now.
 - Revised Smb4KWorkgroup class:
@@ -62,6 +60,7 @@ Smb4K SVN_HEAD (????-??-??):
   + Removed gidIsSet() function.
   + Removed loginIsSet() function.
   + Added "==" operator.
+  + Removed setHomesUsers() and homesUsers() functions.
 - Revised Smb4KCore class:
   + Removed all *State() convenience functions. You need to use the new
     Smb4KCore::xxx()->currentState() functions to read the current state of
@@ -74,6 +73,15 @@ Smb4K SVN_HEAD (????-??-??):
 - Added Smb4KProcess class that is used to execute all processes of the core.
   It inherits KProcess and comes with a few extensions.
 - Revised Smb4KMounter class:
+  + Completely rewrote this class.
+  + We are using KJobs and a KAuth inplementation. The utility programs are
+    no longer needed and were removed!
+  + Added mountShares() function that mounts a list of shares at once.
+  + Added openMountDialog() function that opens the mount dialog.
+  + The mount dialog is a private helper class now. It has been revised.
+  + Added unmountShares() function that unmounts a list of shares at once.
+    Made unmountAllShares() call this function with 
+    Smb4KGlobal::mountedSharesList() as one of the arguments.
   + Added slotHardwareButtonPressed() slot that initiates the unmounting of
     all shares when the computer enters one of the sleep states.
   + Added slotComputerWokeUp() slot that triggers the remounting of shares when
@@ -81,16 +89,10 @@ Smb4K SVN_HEAD (????-??-??):
   + Added saveSharesForRemount() function that is used when the application
     exits or when the computer goes to sleep to save the currently mounted
     shares.
-  + If the user chose to not remount shares anymore, the list of shares that
-    are scheduled for remount is cleared when the application exits.
-  + Mounting and unmounting is now done by a KAuth implementation. So, there
-    is no need for the utility programs anymore!
   + Rewrote slotAboutToQuit() slot.
   + The import() function has been rewritten. Among other things, shares that 
     were mounted under Linux with the obsolete SMBFS file system are no longer
     imported.
-  + Introduced new currentState() function.
-  + Replaced state( int ) signal by stateChanged() signal.
   + Added 'servern' and 'netbiosname' mount options. They are only used, when a
     connection to a remote host is attempted via port 139.
   + Added aboutToStart() signal that is emitted when a mount process is about
@@ -227,8 +229,12 @@ Smb4K SVN_HEAD (????-??-??):
   + Added abortAll() function.
   + Added aboutToStart( Smb4KHost * ) signal.
   + Added finished( Smb4KHost * ) signal.
-- Revised Smb4KHomesSharesHandler class:
-  + Added setHomesUsers( Smb4KAuthInfo * ) function.
+- Revised Smb4KHomesSharesHandler class.
+  + Moved homes user dialog to an own class.
+  + The dialog can now be resized and text completion has been added.
+  + Removed setHomesUsers() functions.
+  + Added homesUsers( Smb4KShare * ) class.
+  + Refactored code.
 - Revised Smb4KBookmark class:
   + Added setLogin() and login() function.
   + Added equals() function.
@@ -304,14 +310,6 @@ Smb4K SVN_HEAD (????-??-??):
 - Revised search widget:
   + Renamed widget class to Smb4KNetworkSearch.
   + Honor KDE's icon size settings.
-- Revised mount dialog:
-  + The input lines and the bookmark checkbox are disabled when the mount
-    process is running.
-  + "homes" shares are now handled directly in the mount dialog. Thus, no multiple
-    "Specify User" dialogs are shown, if you want to mount and bookmark a "homes"
-    share.
-  + Added text completion.
-  + Added "What's this" help.
 - Revised configuration dialog:
   + Added "Laptop Support" page where the user can set options that are important
     when you use a laptop.
