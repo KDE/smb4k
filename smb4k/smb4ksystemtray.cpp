@@ -45,7 +45,6 @@
 // application specific includes
 #include <smb4ksystemtray.h>
 #include <smb4kbookmarkmenu.h>
-#include <dialogs/smb4kmountdialog.h>
 #include <core/smb4kcore.h>
 #include <core/smb4kbookmark.h>
 #include <core/smb4kshare.h>
@@ -79,8 +78,8 @@ Smb4KSystemTray::Smb4KSystemTray( QWidget *parent )
 
   m_shares_menu         = new KActionMenu( KIcon( "folder-remote", KIconLoader::global(), shares_overlay ),
                           i18n( "Mounted Shares" ), actionCollection() );
-  KAction *manual_mount = new KAction( KIcon( "list-add" ), i18n( "M&ount Manually" ),
-                          actionCollection() );
+  KAction *manual_mount = new KAction( KIcon( "view-form", KIconLoader::global(), QStringList( "emblem-mounted" ) ),
+                          i18n( "&Open Mount Dialog" ), actionCollection() );
   KAction *configure    = KStandardAction::preferences( this, SLOT( slotConfigDialog() ),
                           actionCollection() );
   Smb4KBookmarkMenu *bookmark_menu = new Smb4KBookmarkMenu( Smb4KBookmarkMenu::SystemTray, associatedWidget(), this );
@@ -101,15 +100,6 @@ Smb4KSystemTray::Smb4KSystemTray( QWidget *parent )
   connect( m_shares_actions,             SIGNAL( triggered( QAction * ) ),
            this,                         SLOT( slotShareActionTriggered( QAction * ) ) );
 
-  connect( Smb4KBookmarkHandler::self(), SIGNAL( updated() ),
-           this,                         SLOT( slotSetupBookmarksMenu() ) );
-           
-  connect( Smb4KMounter::self(),         SIGNAL( mounted( Smb4KShare * ) ),
-           this,                         SLOT( slotEnableBookmarks( Smb4KShare * ) ) );
-           
-  connect( Smb4KMounter::self(),         SIGNAL( unmounted( Smb4KShare * ) ),
-           this,                         SLOT( slotEnableBookmarks( Smb4KShare * ) ) );
-           
   connect( Smb4KMounter::self(),         SIGNAL( mounted( Smb4KShare * ) ),
            this,                         SLOT( slotMountEvent() ) );
            
@@ -526,55 +516,7 @@ void Smb4KSystemTray::setupSharesMenu()
 
 void Smb4KSystemTray::slotMountDialog( bool /* checked */ )
 {
-  Smb4KMountDialog *dlg = NULL;
-
-  // Do not open the mount dialog twice. So, look
-  // if there is already one.
-  if ( associatedWidget() )
-  {
-    dlg = associatedWidget()->findChild<Smb4KMountDialog *>();
-  }
-  else
-  {
-    dlg = contextMenu()->findChild<Smb4KMountDialog *>();
-  }
-
-  // If there is no dialog yet, create one.
-  if ( !dlg )
-  {
-    if ( associatedWidget() )
-    {
-      dlg = new Smb4KMountDialog( associatedWidget() );
-    }
-    else
-    {
-      // This is a bit strange, but we need a QWidget object.
-      // Since KSystemTrayIcon class inherits QObject, we do
-      // it this way. 0 as parent would make the check above
-      // fail.
-      dlg = new Smb4KMountDialog( contextMenu() );
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( !dlg->isVisible() )
-  {
-    dlg->show();
-  }
-  else
-  {
-    if ( dlg->isMinimized() )
-    {
-      dlg->showNormal();
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
+  Smb4KMounter::self()->openMountDialog( associatedWidget() );
 }
 
 
