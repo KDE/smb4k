@@ -3,7 +3,7 @@
     authentication data.
                              -------------------
     begin                : Sa Feb 28 2004
-    copyright            : (C) 2004-2010 by Alexander Reinholdt
+    copyright            : (C) 2004-2011 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -227,25 +227,6 @@ class KDE_EXPORT Smb4KAuthInfo
     void setDefaultAuthInfo();
 
     /**
-     * Set the list of defined users in case this is a homes share.
-     *
-     * Note that this function will only set the list if this indead is a
-     * homes share. It will just return otherwise.
-     *
-     * @param users           The list of defined 'homes' share users.
-     */
-    void setHomesUsers( const QStringList &users );
-
-    /**
-     * Return the list of users that were defined for a homes share. If this
-     * authentication information represents a host or a share, that is not a
-     * 'homes' share, an empty list will be returned.
-     *
-     * @returns a list of users for a homes share.
-     */
-    const QStringList &homesUsers() const { return m_homes_users; }
-    
-    /**
      * Compare another Smb4KAuthInfo object with this one an return TRUE if both carry
      * the same data.
      *
@@ -288,11 +269,6 @@ class KDE_EXPORT Smb4KAuthInfo
      * Is this a homes share
      */
     bool m_homes_share;
-
-    /**
-     * List of users defined for a homes share.
-     */
-    QStringList m_homes_users;
 };
 
 #endif

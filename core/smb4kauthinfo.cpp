@@ -32,15 +32,13 @@
 
 
 Smb4KAuthInfo::Smb4KAuthInfo( const Smb4KHost *host )
-: m_url( host->url() ), m_type( Host ), m_workgroup( host->workgroupName() ), m_homes_share( false ),
-  m_homes_users( QStringList() )
+: m_url( host->url() ), m_type( Host ), m_workgroup( host->workgroupName() ), m_homes_share( false )
 {
 }
 
 
 Smb4KAuthInfo::Smb4KAuthInfo( const Smb4KShare *share )
-: m_url( QUrl() ), m_type( Share ), m_workgroup( share->workgroupName() ), m_homes_share( share->isHomesShare() ),
-  m_homes_users( share->homesUsers() )
+: m_url( QUrl() ), m_type( Share ), m_workgroup( share->workgroupName() ), m_homes_share( share->isHomesShare() )
 {
   if ( !m_homes_share )
   {
@@ -54,15 +52,13 @@ Smb4KAuthInfo::Smb4KAuthInfo( const Smb4KShare *share )
 
 
 Smb4KAuthInfo::Smb4KAuthInfo()
-: m_url( QUrl() ), m_type( Unknown ), m_workgroup( QString() ), m_homes_share( false ),
-  m_homes_users( QStringList() )
+: m_url( QUrl() ), m_type( Unknown ), m_workgroup( QString() ), m_homes_share( false )
 {
 }
 
 
 Smb4KAuthInfo::Smb4KAuthInfo( const Smb4KAuthInfo &i )
-: m_url( i.url() ), m_type( i.type() ), m_workgroup( i.workgroupName() ), m_homes_share( i.isHomesShare() ),
-  m_homes_users( i.homesUsers() )
+: m_url( i.url() ), m_type( i.type() ), m_workgroup( i.workgroupName() ), m_homes_share( i.isHomesShare() )
 {
 }
 
@@ -79,7 +75,6 @@ void Smb4KAuthInfo::setHost( Smb4KHost *host )
   m_type        = Host;
   m_workgroup   = host->workgroupName();
   m_homes_share = false;
-  m_homes_users = QStringList();
 
   setUNC( host->unc( QUrl::None ) );
 }
@@ -92,7 +87,6 @@ void Smb4KAuthInfo::setShare( Smb4KShare *share )
   m_type        = Share;
   m_workgroup   = share->workgroupName();
   m_homes_share = share->isHomesShare();
-  m_homes_users = share->homesUsers();
 
   if ( !share->isHomesShare() )
   {
@@ -240,19 +234,6 @@ void Smb4KAuthInfo::setDefaultAuthInfo()
 }
 
 
-void Smb4KAuthInfo::setHomesUsers( const QStringList &users )
-{
-  if ( m_homes_share )
-  {
-    m_homes_users = users;
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
 bool Smb4KAuthInfo::equals( Smb4KAuthInfo *info ) const
 {
   // URL
@@ -289,15 +270,6 @@ bool Smb4KAuthInfo::equals( Smb4KAuthInfo *info ) const
   
   // Homes share?
   if ( m_homes_share != info->isHomesShare() )
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  if ( m_homes_users != info->homesUsers() )
   {
     return false;
   }
