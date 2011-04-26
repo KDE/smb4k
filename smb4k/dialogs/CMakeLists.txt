@@ -8,8 +8,7 @@ include_directories(
 ########### next target ###############
 
 set( smb4kdialogs_LIB_SRCS
-  smb4kcustomoptionsdialog.cpp
-  smb4kmountdialog.cpp )
+  smb4kcustomoptionsdialog.cpp )
 
 kde4_add_library( smb4kdialogs SHARED ${smb4kdialogs_LIB_SRCS} )
 
