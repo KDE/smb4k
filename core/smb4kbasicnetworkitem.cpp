@@ -40,7 +40,7 @@ Smb4KBasicNetworkItem::Smb4KBasicNetworkItem( Smb4KBasicNetworkItem::Type type )
 }
 
 Smb4KBasicNetworkItem::Smb4KBasicNetworkItem( const Smb4KBasicNetworkItem &item )
-: item_url( item.url() ), m_type( item.type() ), m_key( item.key() ), m_icon( item.icon() )
+: item_url( QUrl() ), m_type( item.type() ), m_key( item.key() ), m_icon( item.icon() )
 {
 }
 
@@ -62,81 +62,81 @@ void Smb4KBasicNetworkItem::setIcon( const QIcon &icon )
 }
 
 
-void Smb4KBasicNetworkItem::setURL( const QUrl &url )
-{
-  // Check validity.
-  if ( !url.isValid() )
-  {
-    qDebug() << "Invalid URL provided";
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Check scheme
-  if ( !url.scheme().isEmpty() && QString::compare( "smb", url.scheme() ) != 0 )
-  {
-    qDebug() << "URL has wrong scheme";
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Check type specific stuff
-  switch ( m_type )
-  {
-    case Workgroup:
-    {
-      qDebug() << "This is a workgroup item. No URL set.";
-      return;
-    }
-    case Host:
-    {
-      if ( !url.path().isEmpty() )
-      {
-        qDebug() << "Not a host URL. No URL set.";
-        return;
-      }
-      else
-      {
-        // Do nothing
-      }
-      break;
-    }
-    case Share:
-    {
-      if ( url.path().count( "/" ) > 1 )
-      {
-        qDebug() << "Not a share URL. No URL set.";
-        return;
-      }
-      else
-      {
-        // Do nothing
-      }
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-
-  // Set the URL
-  item_url = url;
-
-  // Do some adjustments
-  if ( item_url.scheme().isEmpty() )
-  {
-    item_url.setScheme( "smb" );
-  }
-  else
-  {
-    // Do nothing
-  }
-}
+// void Smb4KBasicNetworkItem::setURL( const QUrl &url )
+// {
+//   // Check validity.
+//   if ( !url.isValid() )
+//   {
+//     qDebug() << "Invalid URL provided";
+//     return;
+//   }
+//   else
+//   {
+//     // Do nothing
+//   }
+// 
+//   // Check scheme
+//   if ( !url.scheme().isEmpty() && QString::compare( "smb", url.scheme() ) != 0 )
+//   {
+//     qDebug() << "URL has wrong scheme";
+//     return;
+//   }
+//   else
+//   {
+//     // Do nothing
+//   }
+// 
+//   // Check type specific stuff
+//   switch ( m_type )
+//   {
+//     case Workgroup:
+//     {
+//       qDebug() << "This is a workgroup item. No URL set.";
+//       return;
+//     }
+//     case Host:
+//     {
+//       if ( !url.path().isEmpty() )
+//       {
+//         qDebug() << "Not a host URL. No URL set.";
+//         return;
+//       }
+//       else
+//       {
+//         // Do nothing
+//       }
+//       break;
+//     }
+//     case Share:
+//     {
+//       if ( url.path().count( "/" ) > 1 )
+//       {
+//         qDebug() << "Not a share URL. No URL set.";
+//         return;
+//       }
+//       else
+//       {
+//         // Do nothing
+//       }
+//       break;
+//     }
+//     default:
+//     {
+//       break;
+//     }
+//   }
+// 
+//   // Set the URL
+//   item_url = url;
+// 
+//   // Do some adjustments
+//   if ( item_url.scheme().isEmpty() )
+//   {
+//     item_url.setScheme( "smb" );
+//   }
+//   else
+//   {
+//     // Do nothing
+//   }
+// }
 
