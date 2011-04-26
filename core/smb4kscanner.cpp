@@ -1778,15 +1778,15 @@ void Smb4KScanner::slotShares( Smb4KHost *host, QList<Smb4KShare> &shares_list )
   {
     for ( int i = 0; i < shares_list.size(); ++i )
     {
-      // Set homes users.
-      if ( shares_list.at( i ).isHomesShare() )
-      {
-        Smb4KHomesSharesHandler::self()->setHomesUsers( &shares_list[i] );
-      }
-      else
-      {
-        // Do nothing
-      }
+//       // Set homes users.
+//       if ( shares_list.at( i ).isHomesShare() )
+//       {
+//         Smb4KHomesSharesHandler::self()->setHomesUsers( &shares_list[i] );
+//       }
+//       else
+//       {
+//         // Do nothing
+//       }
 
       // Check if the share is mounted.
       QList<Smb4KShare *> mounted_shares = findShareByUNC( shares_list.at( i ).unc() );
