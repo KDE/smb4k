@@ -294,16 +294,6 @@ void Smb4KSearch::slotProcessSearchResult( Smb4KBasicNetworkItem *item )
         // Do nothing
       }
 
-      // In case this is a 'homes' share, set also the user names.
-      if ( QString::compare( share->shareName(), "homes" ) == 0 )
-      {
-        Smb4KHomesSharesHandler::self()->setHomesUsers( share );
-      }
-      else
-      {
-        // Do nothing
-      }
-
       emit result( share, share->isMounted() );
       break;
     }
