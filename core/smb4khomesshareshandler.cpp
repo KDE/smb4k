@@ -2,8 +2,8 @@
     smb4khomesshareshandler  -  This class handles the homes shares.
                              -------------------
     begin                : Do Aug 10 2006
-    copyright            : (C) 2006-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2006-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -19,48 +19,33 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335 USA                                                     *
  ***************************************************************************/
 
 // Qt includes
-#include <QGridLayout>
-#include <QLabel>
 #include <QFile>
-#include <QLineEdit>
 #include <QTextCodec>
-#include <QDesktopWidget>
 #include <QXmlStreamWriter>
 #include <QXmlStreamReader>
+#include <QCoreApplication>
 
 // KDE includes
 #include <kdebug.h>
 #include <kstandarddirs.h>
 #include <klocale.h>
-#include <kiconloader.h>
-#include <kcombobox.h>
-#include <kapplication.h>
 #include <kglobal.h>
 
 // application specific includes
 #include <smb4khomesshareshandler.h>
-#include <smb4kdefs.h>
+#include <smb4khomesshareshandler_p.h>
 #include <smb4kshare.h>
 #include <smb4ksettings.h>
 #include <smb4kauthinfo.h>
 #include <smb4knotification.h>
 
-class Smb4KHomesSharesHandlerPrivate
-{
-  public:
-    /**
-     * The Smb4KHomesShareHandler instance
-     */
-    Smb4KHomesSharesHandler instance;
-};
 
-
-K_GLOBAL_STATIC( Smb4KHomesSharesHandlerPrivate, m_priv );
+K_GLOBAL_STATIC( Smb4KHomesSharesHandlerPrivate, p );
 
 
 Smb4KHomesSharesHandler::Smb4KHomesSharesHandler() : QObject()
@@ -72,313 +57,82 @@ Smb4KHomesSharesHandler::Smb4KHomesSharesHandler() : QObject()
   {
     KGlobal::dirs()->makeDir( dir );
   }
-
+  
   readUserNames();
-
-  m_dlg = NULL;
+  
+  connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) ); 
 }
 
 
 Smb4KHomesSharesHandler::~Smb4KHomesSharesHandler()
 {
-  delete m_dlg;
 }
 
 
 Smb4KHomesSharesHandler *Smb4KHomesSharesHandler::self()
 {
-  return &m_priv->instance;
+  return &p->instance;
 }
 
 
 bool Smb4KHomesSharesHandler::specifyUser( Smb4KShare *share, QWidget *parent )
 {
   Q_ASSERT( share );
-  
-  // Return value.
   bool success = false;
   
-  if ( share->isHomesShare() )
+  // Avoid that the dialog is opened although the homes
+  // user name has already been defined.
+  if ( share->isHomesShare() && share->homeUNC().isEmpty() )
   {
-    if ( kapp )
+    QStringList users;
+    findHomesUsers( share, &users );
+    
+    Smb4KHomesUserDialog dlg( parent );
+    dlg.setUserNames( users );
+    
+    if ( dlg.exec() == KDialog::Accepted )
     {
-      if ( kapp->activeWindow() )
+      QString login = dlg.login();
+      users = dlg.userNames();
+      addHomesUsers( share, &users );
+      
+      if ( !login.isEmpty() )
       {
-        parent = kapp->activeWindow();
-      }
-      else
-      {
-        parent = kapp->desktop();
-      }
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    m_dlg = new KDialog( parent );
-    m_dlg->setCaption( i18n( "Specify User" ) );
-    m_dlg->setButtons( KDialog::User1|KDialog::Ok|KDialog::Cancel );
-    m_dlg->setDefaultButton( KDialog::Ok );
-    m_dlg->setButtonGuiItem( KDialog::User1, KGuiItem( i18n( "Clear List" ), "edit-clear", 0, 0 ) );
-    m_dlg->enableButton( KDialog::Ok, false );
-    m_dlg->enableButton( KDialog::User1, false );
-
-    // Set up the ask pass dialog.
-    QWidget *frame = new QWidget( m_dlg );
-    QGridLayout *layout = new QGridLayout( frame );
-    layout->setSpacing( 5 );
-    layout->setMargin( 0 );
-
-    m_dlg->setMainWidget( frame );
-
-    QLabel *pic = new QLabel( frame );
-    pic->setPixmap( DesktopIcon( "user-identity" ) );
-    pic->setMargin( 10 );
-
-    QLabel *text = new QLabel( i18n( "Please specify a username." ), frame );
-
-    QLabel *userLabel = new QLabel( i18n( "User:" ), frame );
-    KComboBox *userCombo = new KComboBox( true, frame );
-    userCombo->setObjectName( "UserComboBox" );
-    userCombo->setDuplicatesEnabled( false );
-
-    QSpacerItem *spacer1 = new QSpacerItem( 10, 10, QSizePolicy::Expanding, QSizePolicy::Preferred );
-
-    layout->addWidget( pic, 0, 0, 0 );
-    layout->addWidget( text, 0, 1, 1, 2, 0 );
-    layout->addWidget( userLabel, 1, 0, 0 );
-    layout->addWidget( userCombo, 1, 1, 1, 2, 0 );
-    layout->addItem( spacer1, 0, 2 );
-
-    connect( userCombo, SIGNAL( textChanged( const QString &) ),
-            this,      SLOT( slotTextChanged( const QString & ) ) );
-    connect( m_dlg,     SIGNAL( user1Clicked() ),
-            this,      SLOT( slotClearClicked() ) );
-
-    Smb4KShare *internal = findShare( share );
-
-    if ( internal )
-    {
-      internal->setWorkgroupName( share->workgroupName() );
-      internal->setHostIP( share->hostIP() );
-    }
-    else
-    {
-      m_list.append( *share );
-      internal = &m_list.last();
-    }
-
-    if ( !internal->homesUsers().isEmpty() )
-    {
-      userCombo->addItems( internal->homesUsers() );
-      m_dlg->enableButton( KDialog::User1, true );
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    // Do the last things before showing.
-    userCombo->setFocus();
-    m_dlg->setFixedSize( m_dlg->sizeHint() );
-
-    if ( m_dlg->exec() == KDialog::Accepted )
-    {
-      QStringList users;
-
-      // Write the new list of logins to the config file.
-      if ( !userCombo->lineEdit()->text().isEmpty() )
-      {
-        users.append( userCombo->lineEdit()->text() );
+        share->setLogin( login );
+        success = true;
       }
       else
       {
         // Do nothing
       }
-
-      int index = 0;
-
-      while ( index < userCombo->count() )
-      {
-        if ( users.indexOf( userCombo->itemText( index ), 0 ) == -1 )
-        {
-          users.append( userCombo->itemText( index ) );
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        index++;
-      }
-
-      users.removeAll( QString() );
-      users.sort();
-
-      share->setHomesUsers( users );
-      share->setLogin( userCombo->currentText() );
-
-      internal->setHomesUsers( users );
-
+      
       writeUserNames();
-
-      success = !userCombo->currentText().trimmed().isEmpty();
     }
     else
     {
-      // When the user cleared the list of homes users, we will clear
-      // the respective lists here, too.
-      if ( userCombo->count() < internal->homesUsers().size() )
-      {
-        share->setHomesUsers( QStringList() );
-        internal->setHomesUsers( QStringList() );
-
-        writeUserNames();
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      success = false;
+      // Do nothing
     }
-
-    delete m_dlg;
-    m_dlg = NULL;
   }
   else
   {
     // Do nothing
   }
-
+  
   return success;
 }
 
 
-void Smb4KHomesSharesHandler::setHomesUsers( Smb4KShare *share )
+QStringList Smb4KHomesSharesHandler::homesUsers( Smb4KShare *share )
 {
-  Smb4KShare *internal = findShare( share );
-
-  if ( internal )
-  {
-    share->setHomesUsers( internal->homesUsers() );
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KHomesSharesHandler::setHomesUsers( Smb4KAuthInfo *authInfo )
-{
-  Smb4KShare *internal = findShare( authInfo );
-
-  if ( internal )
-  {
-    authInfo->setHomesUsers( internal->homesUsers() );
-  }
-  else
-  {
-    // Do nothing
-  }
+  Q_ASSERT( share );
+  QStringList users;
+  findHomesUsers( share, &users );
+  return users;
 }
 
 
 void Smb4KHomesSharesHandler::readUserNames()
 {
-  // FIXME: Remove this as soon as possible.
-
-  // Check if we have an old file and import its data if it exists.
-  QFile file( KGlobal::dirs()->locateLocal( "data", "smb4k/homes_shares", KGlobal::mainComponent() ) );
-
-  if ( file.exists() )
-  {
-    if ( file.open( QIODevice::ReadOnly | QIODevice::Text ) )
-    {
-      QTextStream ts( &file );
-      // Note: With Qt 4.3 this seems to be obsolete, we'll keep
-      // it for now.
-      ts.setCodec( QTextCodec::codecForLocale() );
-
-      QString line;
-      bool get_names = false;
-      QString host;
-
-      while ( !ts.atEnd() )
-      {
-        line = ts.readLine( 0 );
-
-        if ( !get_names )
-        {
-          if ( line.contains( QRegExp( "\\[.*\\]" ) ) )
-          {
-            // Get the host name.
-            host = line.section( "[", 1, 1 ).section( "]", 0, 0 ).trimmed();
-
-            // Found the host:
-            get_names = true;
-
-            continue;
-          }
-          else
-          {
-            // No match yet...
-            continue;
-          }
-        }
-        else
-        {
-          if ( !line.trimmed().isEmpty() )
-          {
-            if ( !line.contains( QRegExp( "\\[.*\\]" ) ) )
-            {
-              // Write the names to the list:
-              QStringList users = line.split( ",", QString::SkipEmptyParts );
-
-              Smb4KShare share;
-              share.setHostName( host );
-              share.setHomesUsers( users );
-
-              m_list.append( share );
-            }
-            else
-            {
-              // Do nothing
-            }
-
-            get_names = false;
-
-            continue;
-          }
-          else
-          {
-            get_names = false;
-
-            continue;
-          }
-        }
-      }
-
-      file.close();
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    writeUserNames();
-
-    file.remove();
-
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-
   // Locate the XML file.
   QFile xmlFile( KGlobal::dirs()->locateLocal( "data", "smb4k/homes_shares.xml", KGlobal::mainComponent() ) );
 
@@ -395,15 +149,14 @@ void Smb4KHomesSharesHandler::readUserNames()
         if ( xmlReader.name() == "homes_shares" && xmlReader.attributes().value( "version" ) != "1.0" )
         {
           xmlReader.raiseError( i18n( "%1 is not a version 1.0 file." ).arg( xmlFile.fileName() ) );
-
           break;
         }
         else
         {
           if ( xmlReader.name() == "homes" )
           {
-            Smb4KShare share;
-            share.setShareName( xmlReader.name().toString() );
+            Smb4KHomesUsers users;
+            users.share.setShareName( xmlReader.name().toString() );
 
             while ( !(xmlReader.isEndElement() && xmlReader.name() == "homes") )
             {
@@ -413,35 +166,31 @@ void Smb4KHomesSharesHandler::readUserNames()
               {
                 if ( xmlReader.name() == "host" )
                 {
-                  share.setHostName( xmlReader.readElementText() );
+                  users.share.setHostName( xmlReader.readElementText() );
                 }
                 else if ( xmlReader.name() == "workgroup" )
                 {
-                  share.setWorkgroupName( xmlReader.readElementText() );
+                  users.share.setWorkgroupName( xmlReader.readElementText() );
                 }
                 else if ( xmlReader.name() == "ip" )
                 {
-                  share.setHostIP( xmlReader.readElementText() );
+                  users.share.setHostIP( xmlReader.readElementText() );
                 }
                 else if ( xmlReader.name() == "users" )
                 {
-                  QStringList users;
-
                   while ( !(xmlReader.isEndElement() && xmlReader.name() == "users") )
                   {
                     xmlReader.readNext();
 
                     if ( xmlReader.isStartElement() && xmlReader.name() == "user" )
                     {
-                      users.append( xmlReader.readElementText() );
+                      users.users << xmlReader.readElementText();
                     }
                     else
                     {
                       // Do nothing
                     }
                   }
-
-                  share.setHomesUsers( users );
                 }
                 else
                 {
@@ -456,7 +205,7 @@ void Smb4KHomesSharesHandler::readUserNames()
               }
             }
 
-            m_list.append( share );
+            m_homes_users << users;
           }
           else
           {
@@ -493,8 +242,6 @@ void Smb4KHomesSharesHandler::readUserNames()
     {
       // Do nothing
     }
-
-    return;
   }
 }
 
@@ -503,7 +250,7 @@ void Smb4KHomesSharesHandler::writeUserNames()
 {
   QFile xmlFile( KGlobal::dirs()->locateLocal( "data", "smb4k/homes_shares.xml", KGlobal::mainComponent() ) );
 
-  if ( !m_list.isEmpty() )
+  if ( !m_homes_users.isEmpty() )
   {
     if ( xmlFile.open( QIODevice::WriteOnly | QIODevice::Text ) )
     {
@@ -516,18 +263,18 @@ void Smb4KHomesSharesHandler::writeUserNames()
       xmlWriter.writeStartElement( "homes_shares" );
       xmlWriter.writeAttribute( "version", "1.0" );
 
-      for ( int i = 0; i < m_list.size(); ++i )
+      for ( int i = 0; i < m_homes_users.size(); ++i )
       {
         xmlWriter.writeStartElement( "homes" );
         xmlWriter.writeAttribute( "profile", "Default" );
-        xmlWriter.writeTextElement( "host", m_list.at( i ).hostName() );
-        xmlWriter.writeTextElement( "workgroup", m_list.at( i ).workgroupName() );
-        xmlWriter.writeTextElement( "ip", m_list.at( i ).hostIP() );
+        xmlWriter.writeTextElement( "host", m_homes_users.at( i ).share.hostName() );
+        xmlWriter.writeTextElement( "workgroup", m_homes_users.at( i ).share.workgroupName() );
+        xmlWriter.writeTextElement( "ip", m_homes_users.at( i ).share.hostIP() );
         xmlWriter.writeStartElement( "users" );
 
-        for ( int j = 0; j < m_list.at( i ).homesUsers().size(); ++j )
+        for ( int j = 0; j < m_homes_users.at( i ).users.size(); ++j )
         {
-          xmlWriter.writeTextElement( "user", m_list.at( i ).homesUsers().at( j ) );
+          xmlWriter.writeTextElement( "user", m_homes_users.at( i ).users.at( j ) );
         }
 
         xmlWriter.writeEndElement();
@@ -552,91 +299,70 @@ void Smb4KHomesSharesHandler::writeUserNames()
 }
 
 
-Smb4KShare *Smb4KHomesSharesHandler::findShare( Smb4KShare *share )
+void Smb4KHomesSharesHandler::findHomesUsers( Smb4KShare *share, QStringList *users )
 {
   Q_ASSERT( share );
+  Q_ASSERT( users );
   
-  Smb4KShare *internal = NULL;
-
-  for ( int i = 0; i < m_list.size(); ++i )
+  for ( int i = 0; i < m_homes_users.size(); i++ )
   {
-    if ( QString::compare( m_list.at( i ).hostName(), share->hostName(), Qt::CaseInsensitive ) == 0 &&
-         ((m_list.at( i ).workgroupName().isEmpty() || share->workgroupName().isEmpty()) ||
-         QString::compare( m_list.at( i ).workgroupName(), share->workgroupName(), Qt::CaseSensitive) == 0) )
+    if ( QString::compare( share->unc(), m_homes_users.at( i ).share.unc(), Qt::CaseInsensitive ) == 0 &&
+         ((m_homes_users.at( i ).share.workgroupName().isEmpty() || share->workgroupName().isEmpty()) ||
+         QString::compare( share->workgroupName(), m_homes_users.at( i ).share.workgroupName(), Qt::CaseInsensitive ) == 0) )
     {
-      internal = static_cast<Smb4KShare *>( &m_list[i] );
+      *users = m_homes_users.at( i ).users;
+      break;
     }
     else
     {
       continue;
     }
   }
-
-  return internal;
 }
 
 
-Smb4KShare *Smb4KHomesSharesHandler::findShare( Smb4KAuthInfo *authInfo )
+void Smb4KHomesSharesHandler::addHomesUsers( Smb4KShare *share, QStringList *users )
 {
-  Smb4KShare *internal = NULL;
-
-  for ( int i = 0; i < m_list.size(); ++i )
+  Q_ASSERT( share );
+  Q_ASSERT( users );
+  
+  bool found = false;
+  
+  for ( int i = 0; i < m_homes_users.size(); i++ )
   {
-    if ( QString::compare( m_list.at( i ).hostName(), authInfo->hostName(), Qt::CaseInsensitive ) == 0 &&
-         ((m_list.at( i ).workgroupName().isEmpty() || authInfo->workgroupName().isEmpty()) ||
-         QString::compare( m_list.at( i ).workgroupName(), authInfo->workgroupName(), Qt::CaseSensitive) == 0) )
+    if ( QString::compare( share->unc(), m_homes_users.at( i ).share.unc(), Qt::CaseInsensitive ) == 0 &&
+         ((m_homes_users.at( i ).share.workgroupName().isEmpty() || share->workgroupName().isEmpty()) ||
+         QString::compare( share->workgroupName(), m_homes_users.at( i ).share.workgroupName(), Qt::CaseInsensitive ) == 0) )
     {
-      internal = static_cast<Smb4KShare *>( &m_list[i] );
+      m_homes_users[i].users = *users;
+      found = true;
+      break;
     }
     else
     {
       continue;
     }
   }
-
-  return internal;
+  
+  if ( !found )
+  {
+    m_homes_users << Smb4KHomesUsers( *share, *users );
+  }
+  else
+  {
+    // Do nothing
+  }  
 }
+
 
 
 /////////////////////////////////////////////////////////////////////////////
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
 
-void Smb4KHomesSharesHandler::slotTextChanged( const QString &text )
+void Smb4KHomesSharesHandler::slotAboutToQuit()
 {
-  if ( !text.isEmpty() )
-  {
-    m_dlg->enableButtonOk( true );
-  }
-  else
-  {
-    m_dlg->enableButtonOk( false );
-  }
-}
-
-
-void Smb4KHomesSharesHandler::slotClearClicked()
-{
-  if ( m_dlg )
-  {
-    KComboBox *cb = m_dlg->findChild<KComboBox *>( "UserComboBox" );
-
-    if ( cb )
-    {
-      cb->clearEditText();
-      cb->clear();
-
-      m_dlg->enableButton( KDialog::User1, false );
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
+  writeUserNames();
 }
 
 #include "smb4khomesshareshandler.moc"
