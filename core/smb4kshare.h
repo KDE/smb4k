@@ -2,7 +2,7 @@
     smb4kshare  -  Smb4K's container class for information about a share.
                              -------------------
     begin                : Mo Jan 28 2008
-    copyright            : (C) 2008-2010 by Alexander Reinholdt
+    copyright            : (C) 2008-2011 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 #ifndef SMB4KSHARE_H
@@ -148,7 +148,8 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * home repository in the form [smb:]//[USER@]HOST[:PORT]/USER depending 
      * on the format specified by @p options.
      * 
-     * If the share is not a 'homes' share, this function returns an empty string.
+     * If the share is not a 'homes' share or no user name for the homes share
+     * has been defined, this function returns an empty string.
      *
      * @returns the UNC.
      */
@@ -157,10 +158,25 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
                                                        QUrl::RemovePort ) const;
                                                        
     /**
+     * Sets the URL of the share after some checks are passed.
+     * 
+     * @param url             The URL of the network item
+     */
+    void setURL( const QUrl &url );
+    
+    /**
+     * Returns the URL (the full UNC) of the share.
+     * 
+     * @returns the URL of the share.
+     */
+    const QUrl &url() const { return item_url; }
+                                                       
+    /**
      * In case of a 'homes' share, this function returns the URL of the user's 
      * home repository.
      * 
-     * If the share is not a 'homes' share, this function returns an empty URL.
+     * If the share is not a 'homes' share or no user name for the homes share
+     * has been defined, this function returns an empty string.
      * 
      * @returns the user's home repository's URL.
      */
@@ -591,24 +607,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns TRUE if this is or *was* a 'homes' share and FALSE otherwise.
      */
-    bool isHomesShare() const { return m_homes_share; }
-
-    /**
-     * Set the list of defined users in case this is a homes share.
-     *
-     * Note that this function will only set the list if this indead is a
-     * homes share. It will just return otherwise.
-     *
-     * @param users           The list of defined 'homes' share users.
-     */
-    void setHomesUsers( const QStringList &users );
-
-    /**
-     * Returns the list of defined 'homes' share users or an empty list.
-     *
-     * @returns the list of 'homes' share users.
-     */
-    const QStringList &homesUsers() const { return m_homes_users; }
+    bool isHomesShare() const;
 
     /**
      * Set the port for the use in the UNC.
@@ -737,16 +736,6 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * Is mounted
      */
     bool m_is_mounted;
-
-    /**
-     * 'homes' share?
-     */
-    bool m_homes_share;
-
-    /**
-     * The list of 'homes' users
-     */
-    QStringList m_homes_users;
 
     /**
      * This function checks if the given IP address is either
