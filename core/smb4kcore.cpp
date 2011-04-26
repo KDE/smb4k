@@ -136,7 +136,7 @@ void Smb4KCore::abort()
 void Smb4KCore::init()
 {
   Smb4KScanner::self()->init();
-  Smb4KMounter::self()->init();
+  Smb4KMounter::self()->start();
 }
 
 
