@@ -228,7 +228,8 @@ void Smb4KBookmarkHandler::writeBookmarkList( const QList<Smb4KBookmark *> &list
       {
         if ( !list.at( i )->url().isValid() )
         {
-          qDebug() << "Invalid UNC";
+          Smb4KNotification *notification = new Smb4KNotification();
+          notification->invalidURLPassed();
           continue;
         }
         else
