@@ -116,6 +116,20 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
     QString unc( QUrl::FormattingOptions options = QUrl::RemoveScheme|
                                                    QUrl::RemoveUserInfo|
                                                    QUrl::RemovePort ) const;
+                                                   
+    /**
+     * Sets the URL of the network item after some checks are passed.
+     * 
+     * @param url             The URL of the network item
+     */
+    void setURL( const QUrl &url );
+    
+    /**
+     * Returns the URL (the full UNC) of the host item.
+     * 
+     * @returns the URL of the network item.
+     */
+    const QUrl &url() const { return item_url; }
 
     /**
      * Set the workgroup where this host is located.

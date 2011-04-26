@@ -127,6 +127,56 @@ QString Smb4KHost::unc( QUrl::FormattingOptions options ) const
 }
 
 
+void Smb4KHost::setURL( const QUrl &url )
+{
+  // Check validity.
+  if ( !url.isValid() )
+  {
+    qDebug() << "Invalid URL provided";
+    return;
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // Check scheme
+  if ( !url.scheme().isEmpty() && QString::compare( "smb", url.scheme() ) != 0 )
+  {
+    qDebug() << "URL has wrong scheme";
+    return;
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // Check that this is a host item
+  if ( !url.path().isEmpty() )
+  {
+    qDebug() << "Not a host URL. No URL set.";
+    return;
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // Set the URL
+  item_url = url;
+
+  // Do some adjustments
+  if ( item_url.scheme().isEmpty() )
+  {
+    item_url.setScheme( "smb" );
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
 void Smb4KHost::setWorkgroupName( const QString &workgroup )
 {
   m_workgroup = workgroup;
