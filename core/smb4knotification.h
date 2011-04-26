@@ -330,6 +330,12 @@ class KDE_EXPORT Smb4KNotification : public QObject
      * @param err_code  The error code
      */
     void actionFailed( int err_code = -1 );
+    
+    /**
+    * This error message is shown when an invalid URL was passed to some core
+    * class that refuses to process it.
+    */
+    void invalidURLPassed();
 
   protected slots:
     /**
