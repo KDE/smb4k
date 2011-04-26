@@ -109,7 +109,7 @@ int main( int argc, char *argv[] )
 
   // Initialize the necessary core classes.
   Smb4KScanner::self()->init();
-  Smb4KMounter::self()->init();
+  Smb4KMounter::self()->start();
 
   return app.exec();
 }
