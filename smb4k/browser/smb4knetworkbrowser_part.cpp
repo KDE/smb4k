@@ -48,7 +48,6 @@
 #include <smb4knetworkbrowser.h>
 #include <smb4knetworkbrowseritem.h>
 #include <../dialogs/smb4kcustomoptionsdialog.h>
-#include <../dialogs/smb4kmountdialog.h>
 #include <../tooltips/smb4ktooltip.h>
 #include <core/smb4kcore.h>
 #include <core/smb4kglobal.h>
@@ -214,8 +213,8 @@ void Smb4KNetworkBrowserPart::setupActions()
   abort_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_A ) );
   connect( abort_action, SIGNAL( triggered( bool ) ), this, SLOT( slotAbort( bool ) ) );
 
-  KAction *manual_action   = new KAction( KIcon( "list-add" ), i18n( "M&ount Manually" ),
-                             actionCollection() );
+  KAction *manual_action   = new KAction( KIcon( "view-form", KIconLoader::global(), QStringList( "emblem-mounted" ) ),
+                             i18n( "&Open Mount Dialog" ), actionCollection() );
   manual_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_O ) );
   connect( manual_action, SIGNAL( triggered( bool ) ), this, SLOT( slotMountManually( bool ) ) );
 
@@ -251,7 +250,7 @@ void Smb4KNetworkBrowserPart::setupActions()
   print_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_P ) );
   connect( print_action, SIGNAL( triggered( bool ) ), this, SLOT( slotPrint( bool ) ) );
 
-  KAction *mount_action    = new KAction( KIcon( "folder-remote" ), i18n( "&Mount" ),
+  KAction *mount_action    = new KAction( KIcon( "emblem-mounted" ), i18n( "&Mount" ),
                              actionCollection() );
   mount_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_M ) );
   connect( mount_action, SIGNAL( triggered( bool ) ), this, SLOT( slotMount( bool ) ) );
@@ -1635,9 +1634,9 @@ void Smb4KNetworkBrowserPart::slotAbort( bool /*checked*/ )
     // Do nothing
   }
 
-  if ( Smb4KMounter::self()->isRunning() &&
-       Smb4KMounter::self()->currentState() != MOUNTER_UNMOUNT )
+  if ( Smb4KMounter::self()->isRunning() )
   {
+    qDebug() << "FIXME: Only abort mount processes";
     Smb4KMounter::self()->abortAll();
   }
   else
@@ -1649,21 +1648,7 @@ void Smb4KNetworkBrowserPart::slotAbort( bool /*checked*/ )
 
 void Smb4KNetworkBrowserPart::slotMountManually( bool /*checked*/ )
 {
-  Smb4KMountDialog *dlg = m_widget->findChild<Smb4KMountDialog *>();
-
-  if ( !dlg )
-  {
-    dlg = new Smb4KMountDialog( m_widget );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( !dlg->isVisible() )
-  {
-    dlg->setVisible( true );
-  }
+  Smb4KMounter::self()->openMountDialog( m_widget );
 }
 
 
