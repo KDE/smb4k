@@ -2,8 +2,8 @@
     smb4kmounter.h  -  The core class that mounts the shares.
                              -------------------
     begin                : Die Jun 10 2003
-    copyright            : (C) 2003-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2003-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 #ifndef SMB4KMOUNTER_H
@@ -39,6 +39,7 @@
 // KDE includes
 #include <kdemacros.h>
 #include <kauth.h>
+#include <kcompositejob.h>
 
 // application specific includes
 #include <smb4ksolidinterface.h>
@@ -46,6 +47,9 @@
 // forward declarations
 class Smb4KShare;
 class Smb4KAuthInfo;
+class Smb4KMountDialog;
+class Smb4KMountJob;
+class Smb4KUnmountJob;
 
 using namespace KAuth;
 
@@ -58,7 +62,7 @@ using namespace KAuth;
  * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
  */
 
-class KDE_EXPORT Smb4KMounter : public QObject
+class KDE_EXPORT Smb4KMounter : public KCompositeJob
 {
   Q_OBJECT
 
@@ -69,8 +73,7 @@ class KDE_EXPORT Smb4KMounter : public QObject
      * This enumeration denotes the process
      */
     enum Process { MountShare,
-                   UnmountShare,
-                   UnmountAllShares };
+                   UnmountShare };
 
     /**
      * Returns a static pointer to this class.
@@ -93,15 +96,29 @@ class KDE_EXPORT Smb4KMounter : public QObject
      * This function attempts to mount a share.
      *
      * @param share       The Smb4KShare object that is representing the share.
+     * 
+     * @param parent      The parent widget
      */
-    void mountShare( Smb4KShare *share );
+    void mountShare( Smb4KShare *share,
+                     QWidget *parent = 0 );
+
+    /**
+     * Mount a share via a mount dialog. The mount dialog is opened and you have
+     * to enter the UNC and optionally the workgroup and IP address.
+     *
+     * @param parent      The parent widget of this dialog
+     */
+    void openMountDialog( QWidget *parent = 0 );
 
     /**
      * Mounts a list of shares at once.
      *
      * @param shares      The list of shares
+     * 
+     * @param parent      The parent widget
      */
-    void mountShares( const QList<Smb4KShare *> &shares );
+    void mountShares( const QList<Smb4KShare *> &shares,
+                      QWidget *parent = 0 );
 
     /**
      * This function attempts to unmount a share. This can either be done the "normal"
@@ -115,15 +132,41 @@ class KDE_EXPORT Smb4KMounter : public QObject
      *
      * @param silent      Determines whether this function should emit an error code in
      *                    case of an error. The default value is FALSE.
+     * 
+     * @param parent      The parent widget
      */
     void unmountShare( Smb4KShare *share,
                        bool force = false,
-                       bool silent = false );
+                       bool silent = false,
+                       QWidget *parent = 0 );
+    
+    /**
+     * This function attempts to unmount a list of shares. This can either be done the "normal"
+     * way, or you may force it. If you decide to force the unmounting by setting
+     * @p force to TRUE, under Linux a lazy unmount will be initiated. With the parameter
+     * @p silent you can suppress any error messages.
+     * 
+     * @param shares      The list of shares that is to be unmounted
+     * 
+     * @param force       Force the unmounting of the share
+     * 
+     * @param silent      Determines whether this function should emit an error code in
+     *                    case of an error. The default value is FALSE.
+     * 
+     * @param parent      The parent widget
+     */
+    void unmountShares( const QList<Smb4KShare *> &shares,
+                        bool force = false,
+                        bool silent = false,
+                        QWidget *parent = 0 );
 
     /**
-     * Unmounts all shares at once.
+     * Unmounts all shares at once. This is a convenience function. It calls
+     * unmountShares() to unmount all currently mounted shares.
+     * 
+     * @param parent      The parent widget
      */
-    void unmountAllShares();
+    void unmountAllShares( QWidget *parent = 0 );
 
     /**
      * This function reports if the mount process for @p share is running.
@@ -139,37 +182,14 @@ class KDE_EXPORT Smb4KMounter : public QObject
      *
      * @returns TRUE if the mounter is running and FALSE otherwise.
      */
-    bool isRunning() { return !m_cache.isEmpty(); }
+    bool isRunning() { return hasSubjobs(); }
 
     /**
-     * This function executes Smb4KMounter::slotAboutToQuit(). Under normal circumstances,
-     * there is no need to use this function, because everything that is done here is
-     * also done when QApplication::aboutToQuit() is emitted. However, it comes in handy
-     * when you need to perform last actions in a plugin.
+     * This function starts the composite job
      */
-    void prepareForShutdown();
-
-    /**
-     * This function initializes import of mounted shares and the remounting of recently
-     * used shares.
-     */
-    void init();
-
-    /**
-     * This function returns the current state of the mounter. The state is defined in the
-     * smb4kdefs.h file.
-     *
-     * @returns the current state of the mounter.
-     */
-    int currentState() { return m_state; }
+    void start();
 
   signals:
-    /**
-     * This signal is emitted when the current run state changed. Use the currentState()
-     * function to read the current run state.
-     */
-    void stateChanged();
-
     /**
      * This signal is emitted whenever a share item was updated. This mainly happens
      * from within the import() function.
@@ -197,8 +217,8 @@ class KDE_EXPORT Smb4KMounter : public QObject
     void unmounted( Smb4KShare *share );
 
     /**
-     * This signal is emitted when a mount process for the share @p share is
-     * about to be started.
+     * This signal is emitted when a mount/unmount process for the share 
+     * @p share is about to be started.
      *
      * @param share             The Smb4KShare object
      *
@@ -208,8 +228,8 @@ class KDE_EXPORT Smb4KMounter : public QObject
                        int process );
 
     /**
-     * This signal is emitted when the mount process for the share @p share
-     * finished.
+     * This signal is emitted when the mount/unmount process for the share 
+     * @p share finished.
      *
      * @param share             The Smb4KShare object
      *
@@ -228,34 +248,49 @@ class KDE_EXPORT Smb4KMounter : public QObject
 
   protected slots:
     /**
+     * Starts the composite job
+     */
+    void slotStartJobs();
+    
+    /**
      * This slot is called by the QApplication::aboutToQuit() signal.
      * Is does everything that has to be done before the program
      * really exits.
      */
     void slotAboutToQuit();
-
-    /**
-     * This slot is called when an action finished.
-     * 
-     * @param reply       The KAuth::ActionReply object
-     */
-    void slotActionFinished( ActionReply reply );
     
     /**
-     * This slot is called whenever a share was successfully mounted by the 
-     * mount action.
-     *
-     * @param reply       The KAuth::ActionReply object
+     * This slot is called when a job finished
+     * 
+     * @param job         The job that finished
      */
-    void slotShareMounted( ActionReply reply );
+    void slotJobFinished( KJob *job );
+    
+    /**
+     * Called when an authentication error occurred
+     */
+    void slotAuthError( Smb4KMountJob *job );
+
+    /**
+     * Called when mounting for one or more shares should be retried
+     */
+    void slotRetryMounting( Smb4KMountJob *job );
+
+    /**
+     * This slot is called whenever a share was successfully mounted by the 
+     * mount job.
+     *
+     * @param share       The share object
+     */
+    void slotShareMounted( Smb4KShare *share );
     
     /**
      * This slot is called whenever a share was successfully unmounted by the
-     * unmount action.
+     * unmount job.
      * 
-     * @param reply       The KAuth::ActionReply object
+     * @param reply       The share object
      */
-    void slotShareUnmounted( ActionReply reply );
+    void slotShareUnmounted( Smb4KShare *share );
     
     /**
      * This slot is called by the Solid interface when a hardware button was
@@ -281,6 +316,42 @@ class KDE_EXPORT Smb4KMounter : public QObject
      * @param status          The new network status
      */
     void slotNetworkStatusChanged( Smb4KSolidInterface::ConnectionStatus status );
+
+    /**
+     * Called when a mount job started. It just emits the 
+     * aboutToStart( Smb4KShare *, MountShare ) signal for each share
+     * that is processed.
+     *
+     * @param shares          The list of shares that are going to be mounted
+     */
+    void slotAboutToStartMounting( const QList<Smb4KShare> &shares );
+
+    /**
+     * Called when a mount job has finished. It just emits the
+     * finished( Smb4KShare *, MountShare ) signal for each share that 
+     * was processed.
+     *
+     * @param shares          The shares that were mounted
+     */
+    void slotFinishedMounting( const QList<Smb4KShare> &shares );
+    
+    /**
+     * Called when an unmount job started. It just emits the 
+     * aboutToStart( Smb4KShare *, UnmountShare ) signal for each share
+     * that is processed.
+     *
+     * @param shares          The shares that are going to be unmounted
+     */
+    void slotAboutToStartUnmounting( const QList<Smb4KShare> &shares );
+
+    /**
+     * Called when an unmount job has finished. It just emits the
+     * finished( Smb4KShare *, UnmountShare ) signal for each share that
+     * was processed.
+     *
+     * @param shares          The shares that were unmounted
+     */
+    void slotFinishedUnmounting( const QList<Smb4KShare> &shares );
 
   private:
     /**
@@ -317,56 +388,19 @@ class KDE_EXPORT Smb4KMounter : public QObject
     void saveSharesForRemount();
     
     /**
-     * Create a mount action.
-     *
-     * @param share           The share object from which a KAuth::Action is to be
-     *                        created
-     *
-     * @param action          The KAuth::Action object
-     * 
-     * @returns TRUE if the cration was successful.
-     */
-    bool createMountAction( Smb4KShare *share,
-                            Action *action );
-
-    /**
-     * Create an unmount action.
-     *
-     * @param share           The share object from which a KAuth::Action is to be
-     *                        created
-     *
-     * @param force           Force the unmounting
-     * 
-     * @param silent          Do not report any errors
-     *
-     * @param action          The KAuth::Action object
-     * 
-     * @returns TRUE if the cration was successful.
-     */
-    bool createUnmountAction( Smb4KShare *share,
-                              bool force,
-                              bool silent,
-                              Action *action );
-                            
-    /**
-     * The current state.
-     */
-    int m_state;
-
-    /**
      * Time out
      */
     int m_timeout;
 
     /**
-     * This list contains a key for any action that is currently run.
-     */
-    QStringList m_cache;
-    
-    /**
      * Retries
      */
     QList<Smb4KShare> m_retries;
+
+    /**
+     * The mount dialog
+     */
+    Smb4KMountDialog *m_dialog;
 };
 
 #endif
