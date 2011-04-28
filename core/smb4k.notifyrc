@@ -735,7 +735,13 @@ Action=Popup|Sound
 
 [Event/invalidURLPassed]
 Name=Invalid URL passed
+Name[pt]=URL inválido indicado
+Name[uk]=Передано некоректну адресу
+Name[x-test]=xxInvalid URL passedxx
 Comment=An invalid URL was passed
+Comment[pt]=Foi indicado um URL inválido
+Comment[uk]=Було передано некоректну адресу
+Comment[x-test]=xxAn invalid URL was passedxx
 Contexts=Error
 Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
