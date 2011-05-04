@@ -735,12 +735,14 @@ Action=Popup|Sound
 
 [Event/invalidURLPassed]
 Name=Invalid URL passed
+Name[et]=Anti vigane URL
 Name[pt]=URL inválido indicado
 Name[pt_BR]=URL inválida indicada
 Name[sv]=Ogiltig webbadress angavs
 Name[uk]=Передано некоректну адресу
 Name[x-test]=xxInvalid URL passedxx
 Comment=An invalid URL was passed
+Comment[et]=Anti vigane URL
 Comment[pt]=Foi indicado um URL inválido
 Comment[pt_BR]=Foi indicada uma URL inválida
 Comment[sv]=En ogiltig webbadress angavs
