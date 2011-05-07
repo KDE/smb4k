@@ -5,7 +5,7 @@ set( VERSION_MAJOR 0 )
 set( VERSION_MINOR 10 )
 set( VERSION_PATCH 69 )
 
-cmake_minimum_required( VERSION 2.8 )
+cmake_minimum_required( VERSION 2.6 )
 
 find_package( KDE4 REQUIRED )
 set( KDE_MIN_VERSION 4.4.0 )
