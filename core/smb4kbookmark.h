@@ -231,6 +231,22 @@ class KDE_EXPORT Smb4KBookmark
     const QString &group() const { return m_group; }
     
     /**
+     * Sets the profile this bookmark belongs to. The profile is meant 
+     * to distinguish between several network environments, like home
+     * and work, and is not an alternative to the group functions.
+     * 
+     * @param profile         The profile name
+     */
+    void setProfile( const QString &profile );
+    
+    /**
+     * Returns the name of the profile this bookmark belongs to.
+     * 
+     * @returns the profile name
+     */
+    const QString &profile() const { return m_profile; }
+    
+    /**
      * Compare another Smb4KBookmark object with this one an return TRUE if both carry
      * the same data.
      *
@@ -292,6 +308,11 @@ class KDE_EXPORT Smb4KBookmark
      * Group
      */
     QString m_group;
+    
+    /**
+     * Profile
+     */
+    QString m_profile;
 
     /**
      * This function checks if the given IP address is either

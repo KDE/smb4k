@@ -39,7 +39,8 @@
 
 Smb4KBookmark::Smb4KBookmark( Smb4KShare *share, const QString &label )
 : m_url( QUrl() ), m_workgroup( share->workgroupName() ), m_ip( share->hostIP() ),
-  m_type( share->typeString() ), m_label( label ), m_group( QString() ), m_icon( KIcon( "folder-remote" ) )
+  m_type( share->typeString() ), m_label( label ), m_group( QString() ), m_profile( QString() ),
+  m_icon( KIcon( "folder-remote" ) )
 {
   if ( !share->isHomesShare() )
   {
@@ -54,14 +55,15 @@ Smb4KBookmark::Smb4KBookmark( Smb4KShare *share, const QString &label )
 
 Smb4KBookmark::Smb4KBookmark( const Smb4KBookmark &b )
 : m_url( b.url() ), m_workgroup( b.workgroupName() ), m_ip( b.hostIP() ), m_type( b.typeString() ),
-  m_label( b.label() ), m_group( b.group() ), m_icon( b.icon() )
+  m_label( b.label() ), m_group( b.group() ), m_profile( b.profile() ), m_icon( b.icon() )
 {
 }
 
 
 Smb4KBookmark::Smb4KBookmark()
 : m_url( QUrl() ), m_workgroup( QString() ), m_ip( QString() ), m_type( "Disk" ),
-  m_label( QString() ), m_group( QString() ), m_icon( KIcon( "folder-remote" ) )
+  m_label( QString() ), m_group( QString() ), m_profile( QString() ), 
+  m_icon( KIcon( "folder-remote" ) )
 {
 }
 
@@ -193,6 +195,12 @@ void Smb4KBookmark::setGroup( const QString &name )
 }
 
 
+void Smb4KBookmark::setProfile( const QString &profile )
+{
+  m_profile = profile;
+}
+
+
 bool Smb4KBookmark::equals( Smb4KBookmark *bookmark ) const
 {
   // URL
@@ -249,6 +257,16 @@ bool Smb4KBookmark::equals( Smb4KBookmark *bookmark ) const
   
   // Group
   if ( QString::compare( m_group, bookmark->group() ) != 0 )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Profile
+  if ( QString::compare( m_profile, bookmark->profile() ) != 0 )
   {
     return false;
   }

@@ -238,6 +238,7 @@ void Smb4KBookmarkHandler::writeBookmarkList( const QList<Smb4KBookmark *> &list
         }
 
         xmlWriter.writeStartElement( "bookmark" );
+        xmlWriter.writeAttribute( "profile", m_bookmarks.at( i )->profile() );
         xmlWriter.writeAttribute( "group", m_bookmarks.at( i )->group() );
 
         xmlWriter.writeTextElement( "workgroup", m_bookmarks.at( i )->workgroupName() );
@@ -288,7 +289,7 @@ void Smb4KBookmarkHandler::loadBookmarks()
         if ( xmlReader.name() == "bookmarks" &&
              (xmlReader.attributes().value( "version" ) != "1.0" && xmlReader.attributes().value( "version" ) != "1.1") )
         {
-          xmlReader.raiseError( i18n( "%1 has an unsupported format version." ).arg( xmlFile.fileName() ) );
+          xmlReader.raiseError( i18n( "The format of %1 is not supported." ).arg( xmlFile.fileName() ) );
           break;
         }
         else
@@ -297,17 +298,8 @@ void Smb4KBookmarkHandler::loadBookmarks()
           {
             Smb4KBookmark *bookmark = new Smb4KBookmark();
 
-            // In version 1.0.0 the "profile" attribute was replaced by the "group" 
-            // attribute. To maintain backward compatibility, we take "profile" value 
-            // - that is always empty BTW, because we never used it - to be the group name.
-            if ( xmlReader.attributes().hasAttribute( "profile" ) )
-            {
-              bookmark->setGroup( xmlReader.attributes().value( "profile" ).toString() );
-            }
-            else
-            {
-              bookmark->setGroup(xmlReader.attributes().value( "group" ).toString() );
-            }
+            bookmark->setGroup( xmlReader.attributes().value( "profile" ).toString() );
+            bookmark->setGroup(xmlReader.attributes().value( "group" ).toString() );
 
             while ( !(xmlReader.isEndElement() && xmlReader.name() == "bookmark") )
             {
