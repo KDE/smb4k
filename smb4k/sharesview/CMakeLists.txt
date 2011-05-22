@@ -20,7 +20,6 @@ kde4_add_plugin( smb4ksharesview ${smb4ksharesview_PART_SRCS})
 
 target_link_libraries( smb4ksharesview  
   ${KDE4_KDECORE_LIBS} 
-  smb4kdialogs 
   smb4kcore 
   smb4ktooltips
   ${KDE4_KPARTS_LIBS} )
