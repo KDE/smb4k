@@ -3,8 +3,8 @@
     for the core library of Smb4K.
                              -------------------
     begin                : Do Apr 2 2009
-    copyright            : (C) 2009 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2009-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -20,8 +20,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 // KDE includes
@@ -35,12 +35,12 @@
 
 
 Smb4KBasicNetworkItem::Smb4KBasicNetworkItem( Smb4KBasicNetworkItem::Type type )
-: item_url( QUrl() ), m_type( type ), m_key( QString( rand() ) ), m_icon( QIcon() )
+: m_type( type ), m_key( QString( rand() ) ), m_icon( QIcon() )
 {
 }
 
 Smb4KBasicNetworkItem::Smb4KBasicNetworkItem( const Smb4KBasicNetworkItem &item )
-: item_url( QUrl() ), m_type( item.type() ), m_key( item.key() ), m_icon( item.icon() )
+: m_type( item.type() ), m_key( item.key() ), m_icon( item.icon() )
 {
 }
 
@@ -60,83 +60,4 @@ void Smb4KBasicNetworkItem::setIcon( const QIcon &icon )
 {
   m_icon = icon;
 }
-
-
-// void Smb4KBasicNetworkItem::setURL( const QUrl &url )
-// {
-//   // Check validity.
-//   if ( !url.isValid() )
-//   {
-//     qDebug() << "Invalid URL provided";
-//     return;
-//   }
-//   else
-//   {
-//     // Do nothing
-//   }
-// 
-//   // Check scheme
-//   if ( !url.scheme().isEmpty() && QString::compare( "smb", url.scheme() ) != 0 )
-//   {
-//     qDebug() << "URL has wrong scheme";
-//     return;
-//   }
-//   else
-//   {
-//     // Do nothing
-//   }
-// 
-//   // Check type specific stuff
-//   switch ( m_type )
-//   {
-//     case Workgroup:
-//     {
-//       qDebug() << "This is a workgroup item. No URL set.";
-//       return;
-//     }
-//     case Host:
-//     {
-//       if ( !url.path().isEmpty() )
-//       {
-//         qDebug() << "Not a host URL. No URL set.";
-//         return;
-//       }
-//       else
-//       {
-//         // Do nothing
-//       }
-//       break;
-//     }
-//     case Share:
-//     {
-//       if ( url.path().count( "/" ) > 1 )
-//       {
-//         qDebug() << "Not a share URL. No URL set.";
-//         return;
-//       }
-//       else
-//       {
-//         // Do nothing
-//       }
-//       break;
-//     }
-//     default:
-//     {
-//       break;
-//     }
-//   }
-// 
-//   // Set the URL
-//   item_url = url;
-// 
-//   // Do some adjustments
-//   if ( item_url.scheme().isEmpty() )
-//   {
-//     item_url.setScheme( "smb" );
-//   }
-//   else
-//   {
-//     // Do nothing
-//   }
-// }
 

@@ -3,8 +3,8 @@
     for the core library of Smb4K.
                              -------------------
     begin                : Do Apr 2 2009
-    copyright            : (C) 2009 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2009-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -20,8 +20,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 #ifndef SMB4KBASICNETWORKITEM_H
@@ -34,7 +34,6 @@
 // Qt includes
 #include <QString>
 #include <QIcon>
-#include <QUrl>
 
 // KDE includes
 #include <kdemacros.h>
@@ -66,7 +65,7 @@ class KDE_EXPORT Smb4KBasicNetworkItem
      * The copy constructor
      */
     Smb4KBasicNetworkItem( const Smb4KBasicNetworkItem &item );
-
+    
     /**
      * The destructor
      */
@@ -112,12 +111,6 @@ class KDE_EXPORT Smb4KBasicNetworkItem
      */
     const QIcon &icon() const { return m_icon; }
     
-  protected:
-    /**
-     * The URL
-     */
-    QUrl item_url;
-
   private:
     /**
      * The type

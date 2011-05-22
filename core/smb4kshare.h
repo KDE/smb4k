@@ -35,6 +35,7 @@
 #include <QByteArray>
 #include <QStringList>
 #include <QtGlobal>
+#include <QUrl>
 
 // KDE includes
 #include <kuser.h>
@@ -119,23 +120,15 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the host name
      */
-    QString hostName() const { return item_url.host().toUpper(); }
+    QString hostName() const { return m_url.host().toUpper(); }
 
     /**
-     * This function sets the UNC (Uniform Naming Convention string). This
-     * has to conform to the following scheme: [smb:]//[USER@]HOST[:PORT]/SHARE.
-     *
-     * The UNC may contain the protocol, i.e. "smb://". If a wrong protocol or a mal-
-     * formatted UNC is passed, this function will return immediately without doing
-     * anything.
-     *
-     * @param unc           The UNC of the share
-     */
-    void setUNC( const QString &unc );
-
-    /**
-     * Returns the UNC in the form [smb:]//[USER@]HOST[:PORT]/SHARE depending on
-     * the format specified by @p options.
+     * Returns the UNC (Uniform Naming Convention string) address in the form 
+     * [smb:]//[USER:PASS@]HOST[:PORT]/SHARE depending on the format specified by 
+     * @p options.
+     * 
+     * Please note that this function returns a modified URL string (uppercase
+     * hostname, etc.) and automatically strips a trailing slash if one is present.
      *
      * @returns the UNC.
      */
@@ -150,6 +143,9 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * 
      * If the share is not a 'homes' share or no user name for the homes share
      * has been defined, this function returns an empty string.
+     * 
+     * Please note that this function returns a modified URL string (uppercase
+     * hostname, etc.) and automatically strips a trailing slash if one is present.
      *
      * @returns the UNC.
      */
@@ -165,11 +161,11 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     void setURL( const QUrl &url );
     
     /**
-     * Returns the URL (the full UNC) of the share.
+     * Returns the URL of the share.
      * 
      * @returns the URL of the share.
      */
-    const QUrl &url() const { return item_url; }
+    const QUrl &url() const { return m_url; }
                                                        
     /**
      * In case of a 'homes' share, this function returns the URL of the user's 
@@ -185,6 +181,9 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     /**
      * Returns the host's UNC in the form [smb:]//[USER@]HOST[:PORT] depending on
      * the format specified by @p options.
+     * 
+     * Please note that this function returns a modified URL string (uppercase
+     * hostname) and automatically strips a trailing slash if one is present.
      *
      * @returns the UNC of the host.
      */
@@ -621,7 +620,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the port.
      */
-    int port() const { return item_url.port(); }
+    int port() const { return m_url.port(); }
 
     /**
      * Set the authentication information for the share. This function will add
@@ -645,14 +644,14 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the login.
      */
-    QString login() const { return item_url.userName(); }
+    QString login() const { return m_url.userName(); }
     
     /**
      * Returns the password.
      * 
      * @returns the password.
      */
-    QString password() const { return item_url.password(); }
+    QString password() const { return m_url.password(); }
     
     /**
      * Returns TRUE if the host's IP address is set and FALSE otherwise.
@@ -662,6 +661,11 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     bool hasHostIP() const { return !m_host_ip.isEmpty(); }
 
   private:
+    /**
+     * The URL
+     */
+    QUrl m_url;
+    
     /**
      * Set up the shares icon.
      */

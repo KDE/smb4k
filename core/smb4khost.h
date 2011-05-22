@@ -2,7 +2,7 @@
     smb4khost  -  Smb4K's container class for information about a host.
                              -------------------
     begin                : Sa Jan 26 2008
-    copyright            : (C) 2008-2010 by Alexander Reinholdt
+    copyright            : (C) 2008-2011 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 #ifndef SMB4KHOST_H
@@ -32,6 +32,7 @@
 
 // Qt includes
 #include <QString>
+#include <QUrl>
 
 // KDE includes
 #include <kdemacros.h>
@@ -93,23 +94,14 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns the host's name.
      */
-    QString hostName() const { return item_url.host().toUpper(); }
+    QString hostName() const { return m_url.host().toUpper(); }
 
     /**
-     * This function sets the UNC (Uniform Naming Convention string). This
-     * has to conform to the following scheme: [smb:]//[USER@]HOST[:PORT].
-     *
-     * The UNC may contain the protocol, i.e. "smb://". If a wrong protocol or a
-     * mal-formatted UNC is passed, this function will return immediately without
-     * doing anything.
-     *
-     * @param unc           The UNC of the share
-     */
-    void setUNC( const QString &unc );
-
-    /**
-     * Returns the UNC of the server in the form [smb:]//[USER@]HOST[:PORT] depending on
+     * Returns the UNC of the server in the form [smb:]//[USER:PASS@]HOST[:PORT] depending on
      * the format specified by @p options.
+     * 
+     * Please note that this function returns a modified URL string (uppercase
+     * hostname, etc.) and automatically strips a trailing slash if one is present.
      *
      * @returns the UNC.
      */
@@ -129,7 +121,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      * 
      * @returns the URL of the network item.
      */
-    const QUrl &url() const { return item_url; }
+    const QUrl &url() const { return m_url; }
 
     /**
      * Set the workgroup where this host is located.
@@ -272,7 +264,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns the port.
      */
-    int port() const { return item_url.port(); }
+    int port() const { return m_url.port(); }
 
     /**
      * Compare another Smb4KHost object with this one an return TRUE if both carry
@@ -311,14 +303,14 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns the login name.
      */
-    QString login() const { return item_url.userName(); }
+    QString login() const { return m_url.userName(); }
     
     /**
      * Returns the password.
      * 
      * @returns the password.
      */
-    QString password() const { return item_url.password(); }
+    QString password() const { return m_url.password(); }
     
     /**
      * Returns TRUE if the host's IP address is set and FALSE otherwise.
@@ -328,6 +320,11 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
     bool hasIP() const { return !m_ip.isEmpty(); }
 
   private:
+    /**
+     * The URL
+     */
+    QUrl m_url;
+    
     /**
      * The workgroup the host is in
      */
