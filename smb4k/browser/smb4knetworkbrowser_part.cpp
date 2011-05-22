@@ -42,12 +42,12 @@
 #include <kmenu.h>
 #include <kapplication.h>
 #include <kconfiggroup.h>
+#include <kglobalsettings.h>
 
 // application specific includes
 #include <smb4knetworkbrowser_part.h>
 #include <smb4knetworkbrowser.h>
 #include <smb4knetworkbrowseritem.h>
-#include <../dialogs/smb4kcustomoptionsdialog.h>
 #include <../tooltips/smb4ktooltip.h>
 #include <core/smb4kcore.h>
 #include <core/smb4kglobal.h>
@@ -62,6 +62,8 @@
 #include <core/smb4kprint.h>
 #include <core/smb4kpreviewer.h>
 #include <core/smb4kbookmarkhandler.h>
+#include <core/smb4kcustomoptionsmanager.h>
+#include <core/smb4kcustomoptions.h>
 
 using namespace Smb4KGlobal;
 
@@ -1687,23 +1689,20 @@ void Smb4KNetworkBrowserPart::slotAuthentication( bool /*checked*/ )
 
 void Smb4KNetworkBrowserPart::slotCustomOptions( bool /*checked*/ )
 {
-  Smb4KCustomOptionsDialog *dlg = m_widget->findChild<Smb4KCustomOptionsDialog *>();
   Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( m_widget->currentItem() );
 
-  if ( !dlg && item )
+  if ( item )
   {
     switch ( item->type() )
     {
       case Smb4KNetworkBrowserItem::Host:
       {
-        dlg = new Smb4KCustomOptionsDialog( item->hostItem(), m_widget );
-
+        Smb4KCustomOptionsManager::self()->openCustomOptionsDialog( item->hostItem(), m_widget );
         break;
       }
       case Smb4KNetworkBrowserItem::Share:
       {
-        dlg = new Smb4KCustomOptionsDialog( item->shareItem(), m_widget );
-
+        Smb4KCustomOptionsManager::self()->openCustomOptionsDialog( item->shareItem(), m_widget );
         break;
       }
       default:
@@ -1711,11 +1710,6 @@ void Smb4KNetworkBrowserPart::slotCustomOptions( bool /*checked*/ )
         break;
       }
     }
-  }
-
-  if ( dlg && !dlg->isVisible() )
-  {
-    dlg->setVisible( true );
   }
   else
   {

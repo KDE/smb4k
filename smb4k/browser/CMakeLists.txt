@@ -21,7 +21,6 @@ target_link_libraries( smb4knetworkbrowser
   ${KDE4_KDECORE_LIBS} 
   smb4kcore 
   smb4ktooltips
-  smb4kdialogs
   ${KDE4_KPARTS_LIBS} )
 
 install(TARGETS smb4knetworkbrowser DESTINATION ${PLUGIN_INSTALL_DIR} )
