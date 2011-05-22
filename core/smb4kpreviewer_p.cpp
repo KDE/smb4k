@@ -43,8 +43,8 @@
 #include <smb4kshare.h>
 #include <smb4kglobal.h>
 #include <smb4ksettings.h>
-#include <smb4ksambaoptionshandler.h>
-#include <smb4ksambaoptionsinfo.h>
+#include <smb4kcustomoptionsmanager.h>
+#include <smb4kcustomoptions.h>
 
 using namespace Smb4KGlobal;
 
@@ -189,13 +189,13 @@ void Smb4KPreviewJob::slotStartPreview()
   }
 
   // Get global Samba and custom options
-  QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
-  Smb4KSambaOptionsInfo *info = Smb4KSambaOptionsHandler::self()->findItem( m_share );
+  QMap<QString,QString> samba_options = globalSambaOptions();
+  Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions( m_share );
 
   // Port
-  if ( info && info->smbPort() != -1 )
+  if ( options && options->smbPort() != Smb4KSettings::remoteSMBPort() )
   {
-    arguments << QString( "-p %1" ).arg( info->smbPort() );
+    arguments << QString( "-p %1" ).arg( options->smbPort() );
   }
   else
   {
@@ -203,21 +203,21 @@ void Smb4KPreviewJob::slotStartPreview()
   }
 
   // Kerberos
-  if ( info )
+  if ( options )
   {
-    switch ( info->useKerberos() )
+    switch ( options->useKerberos() )
     {
-      case Smb4KSambaOptionsInfo::UseKerberos:
+      case Smb4KCustomOptions::UseKerberos:
       {
         arguments << " -k";
         break;
       }
-      case Smb4KSambaOptionsInfo::NoKerberos:
+      case Smb4KCustomOptions::NoKerberos:
       {
         // No kerberos
         break;
       }
-      case Smb4KSambaOptionsInfo::UndefinedKerberos:
+      case Smb4KCustomOptions::UndefinedKerberos:
       {
         if ( Smb4KSettings::useKerberos() )
         {
