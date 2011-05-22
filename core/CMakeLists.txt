@@ -14,6 +14,9 @@ set( smb4kcore_LIB_SRCS
   smb4kbookmarkhandler.cpp
   smb4kbookmarkhandler_p.cpp
   smb4kcore.cpp
+  smb4kcustomoptions.cpp
+  smb4kcustomoptionsmanager.cpp
+  smb4kcustomoptionsmanager_p.cpp
   smb4kglobal.cpp
   smb4kglobal_p.cpp
   smb4khomesshareshandler.cpp
@@ -29,8 +32,6 @@ set( smb4kcore_LIB_SRCS
   smb4kprint.cpp
   smb4kprint_p.cpp
   smb4kprocess.cpp
-  smb4ksambaoptionshandler.cpp
-  smb4ksambaoptionsinfo.cpp
   smb4kscanner.cpp
   smb4kscanner_p.cpp
   smb4ksearch.cpp
