@@ -49,9 +49,9 @@
 #include <smb4kdefs.h>
 #include <smb4kwalletmanager.h>
 #include <smb4kprocess.h>
-#include <smb4ksambaoptionshandler.h>
-#include <smb4ksambaoptionsinfo.h>
 #include <smb4knotification.h>
+#include <smb4kcustomoptionsmanager.h>
+#include <smb4kcustomoptions.h>
 
 using namespace Smb4KGlobal;
 
@@ -352,7 +352,7 @@ void Smb4KScanner::lookupDomains()
     }
     
     // Global Samba options
-    QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
+    QMap<QString,QString> samba_options = globalSambaOptions();
     
     // Assemble command
     command += nmblookup;
@@ -393,12 +393,12 @@ void Smb4KScanner::lookupDomains()
     command += grep+" '<01>' | ";
     command += awk+" '{print $1}' | ";
 
-    if ( !Smb4KSambaOptionsHandler::self()->winsServer().isEmpty() )
+    if ( !winsServer().isEmpty() )
     {
       command += xargs+" -Iips ";
       command += nmblookup;
       command += " -R";
-      command += " -U "+Smb4KSambaOptionsHandler::self()->winsServer();
+      command += " -U "+winsServer();
       command += " -A ips";
     }
     else
@@ -465,7 +465,7 @@ void Smb4KScanner::lookupDomains()
     }
     
     // Global Samba options
-    QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
+    QMap<QString,QString> samba_options = globalSambaOptions();
 
     // Workgroup
     Smb4KWorkgroup workgroup;
@@ -485,7 +485,7 @@ void Smb4KScanner::lookupDomains()
     master_browser.setHostName( workgroup.masterBrowserName() );
     master_browser.setIP( workgroup.masterBrowserIP() );
     
-    Smb4KSambaOptionsInfo *info = Smb4KSambaOptionsHandler::self()->findItem( &master_browser );
+    Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions( &master_browser );
 
     // Assemble the command
     
@@ -515,9 +515,9 @@ void Smb4KScanner::lookupDomains()
     command += Smb4KSettings::machineAccount() ? " -P" : "";
     
     // Port
-    command += (info && info->smbPort() != -1) ? 
-               " -p "+QString( "%1" ).arg( info->smbPort() ) : 
-               " -p "+QString( "%1" ).arg( Smb4KSettings::remoteSMBPort() );
+    command += (options && options->smbPort() != Smb4KSettings::remoteSMBPort()) ? 
+               QString( " -p %1" ).arg( options->smbPort() ) : 
+               QString( " -p %1" ).arg( Smb4KSettings::remoteSMBPort() );
     
     // User name and password (not used)
     command += " -U %";
@@ -545,7 +545,7 @@ void Smb4KScanner::lookupDomains()
     command += Smb4KSettings::machineAccount() ? " -P" : "";
     
     // Remote SMB port
-    command += " -p "+QString( "%1" ).arg( Smb4KSettings::remoteSMBPort() );
+    command += QString( " -p %1" ).arg( Smb4KSettings::remoteSMBPort() );
     
     command += " -U %";
     command += " -S master";
@@ -586,8 +586,8 @@ void Smb4KScanner::lookupDomains()
     Smb4KHost host( Smb4KSettings::customMasterBrowser() );
     
     // Global Samba and custom options
-    QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
-    Smb4KSambaOptionsInfo *info = Smb4KSambaOptionsHandler::self()->findItem( &host );
+    QMap<QString,QString> samba_options = globalSambaOptions();
+    Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions( &host );
     
     // Assemble the command
     
@@ -616,9 +616,9 @@ void Smb4KScanner::lookupDomains()
     command += Smb4KSettings::machineAccount() ? " -P" : "";
     
     // Port
-    command += (info && info->smbPort() != -1) ? 
-               " -p "+QString( "%1" ).arg( info->smbPort() ) : 
-               " -p "+QString( "%1" ).arg( Smb4KSettings::remoteSMBPort() );
+    command += (options && options->smbPort() != Smb4KSettings::remoteSMBPort()) ? 
+               QString( " -p %1" ).arg( options->smbPort() ) : 
+               QString( " -p %1" ).arg( Smb4KSettings::remoteSMBPort() );
     
     // User name and password (not used)
     command += " -U %";
@@ -717,7 +717,7 @@ void Smb4KScanner::lookupDomains()
     }
     
     // Global Samba options
-    QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
+    QMap<QString,QString> samba_options = globalSambaOptions();
 
     // Broadcast areas/addresses
     QStringList addresses = Smb4KSettings::broadcastAreas().split( ",", QString::SkipEmptyParts );
@@ -793,9 +793,9 @@ void Smb4KScanner::lookupDomains()
                  " -B "+Smb4KSettings::broadcastAddress() : "";
 
       // Include the WINS server:
-      if ( !Smb4KSambaOptionsHandler::self()->winsServer().isEmpty() )
+      if ( !winsServer().isEmpty() )
       {
-        command += " -R -U "+Smb4KSambaOptionsHandler::self()->winsServer();
+        command += " -R -U "+winsServer();
       }
       else
       {
@@ -881,7 +881,7 @@ void Smb4KScanner::lookupDomainMembers( Smb4KWorkgroup *workgroup )
     }
     
     // Global Samba options
-    QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
+    QMap<QString,QString> samba_options = globalSambaOptions();
 
     // Assemble the command.
     QString command;
@@ -997,8 +997,8 @@ void Smb4KScanner::lookupShares( Smb4KHost *host )
   Smb4KWalletManager::self()->readAuthInfo( &authInfo );
   
   // Global Samba and custom options
-  QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
-  Smb4KSambaOptionsInfo *info = Smb4KSambaOptionsHandler::self()->findItem( host );
+  QMap<QString,QString> samba_options = globalSambaOptions();
+  Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions( host );
 
   // Assemble the command.
   QString command;
@@ -1007,16 +1007,16 @@ void Smb4KScanner::lookupShares( Smb4KHost *host )
   command += net;
   
   // Protocol hint & command.
-  if ( info && info->protocol() != Smb4KSambaOptionsInfo::UndefinedProtocol )
+  if ( options && options->protocolHint() != Smb4KCustomOptions::UndefinedProtocolHint )
   {
-    switch ( info->protocol() )
+    switch ( options->protocolHint() )
     {
-      case Smb4KSambaOptionsInfo::RPC:
+      case Smb4KCustomOptions::RPC:
       {
         command += " rpc share list";
         break;
       }
-      case Smb4KSambaOptionsInfo::RAP:
+      case Smb4KCustomOptions::RAP:
       {
         command += " rap share";
         break;
@@ -1079,9 +1079,9 @@ void Smb4KScanner::lookupShares( Smb4KHost *host )
   }
   else
   {
-    command += (info && info->smbPort() != -1) ?
-               " -p "+QString( "%1" ).arg( info->smbPort() ) :
-               " -p "+QString( "%1" ).arg( Smb4KSettings::remoteSMBPort() );
+    command += (options && options->smbPort() != Smb4KSettings::remoteSMBPort()) ?
+               QString( " -p %1" ).arg( options->smbPort() ) :
+               QString( " -p %1" ).arg( Smb4KSettings::remoteSMBPort() );
   }
   
   // Remote domain/workgroup name
@@ -1221,30 +1221,30 @@ void Smb4KScanner::lookupInfo( Smb4KHost *host )
   command += Smb4KSettings::bufferSize() != 65520 ? QString( " -b %1" ).arg( Smb4KSettings::bufferSize() ) : "";
   
   // Get global Samba and custom options
-  QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
-  Smb4KSambaOptionsInfo *info = Smb4KSambaOptionsHandler::self()->findItem( host );
+  QMap<QString,QString> samba_options = globalSambaOptions();
+  Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions( host );
   
   // Port
-  command += (info && info->smbPort() != -1) ? 
-             QString( " -p %1" ).arg( info->smbPort() ) : 
+  command += (options && options->smbPort() != Smb4KSettings::remoteSMBPort()) ? 
+             QString( " -p %1" ).arg( options->smbPort() ) : 
              QString( " -p %1" ).arg( Smb4KSettings::remoteSMBPort() );
              
   // Kerberos
-  if ( info )
+  if ( options )
   {
-    switch ( info->useKerberos() )
+    switch ( options->useKerberos() )
     {
-      case Smb4KSambaOptionsInfo::UseKerberos:
+      case Smb4KCustomOptions::UseKerberos:
       {
         command += " -k";
         break;
       }
-      case Smb4KSambaOptionsInfo::NoKerberos:
+      case Smb4KCustomOptions::NoKerberos:
       {
         // No kerberos 
         break;
       }
-      case Smb4KSambaOptionsInfo::UndefinedKerberos:
+      case Smb4KCustomOptions::UndefinedKerberos:
       {
         command += Smb4KSettings::useKerberos() ? " -k" : "";
         break;
