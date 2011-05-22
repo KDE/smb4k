@@ -56,9 +56,7 @@
 // Application specific includes
 #include <smb4kmounter.h>
 #include <smb4kauthinfo.h>
-#include <smb4ksambaoptionsinfo.h>
 #include <smb4kglobal.h>
-#include <smb4ksambaoptionshandler.h>
 #include <smb4kshare.h>
 #include <smb4ksettings.h>
 #include <smb4kdefs.h>
@@ -68,6 +66,8 @@
 #include <smb4kprocess.h>
 #include <smb4knotification.h>
 #include <smb4kbookmarkhandler.h>
+#include <smb4kcustomoptionsmanager.h>
+#include <smb4kcustomoptions.h>
 
 using namespace Smb4KGlobal;
 
@@ -209,7 +209,7 @@ void Smb4KMounter::triggerRemounts()
   if ( Smb4KSettings::remountShares() || p->hardwareReason() )
   {
     // Get the shares that are to be remounted
-    QList<Smb4KSambaOptionsInfo *> list = Smb4KSambaOptionsHandler::self()->sharesToRemount();
+    QList<Smb4KCustomOptions *> list = Smb4KCustomOptionsManager::self()->sharesToRemount();
     QList<Smb4KShare *> remounts;
 
     if ( !list.isEmpty() )
@@ -217,7 +217,7 @@ void Smb4KMounter::triggerRemounts()
       // Check which ones actually need to be remounted.
       for ( int i = 0; i < list.size(); i++ )
       {
-        QList<Smb4KShare *> mounted_shares = findShareByUNC( list.at( i )->unc() );
+        QList<Smb4KShare *> mounted_shares = findShareByUNC( list.at( i )->share()->unc() );
 
         if ( !mounted_shares.isEmpty() )
         {
@@ -238,9 +238,7 @@ void Smb4KMounter::triggerRemounts()
 
           if ( mount )
           {
-            Smb4KShare *share = new Smb4KShare( list.at( i )->unc() );
-            share->setWorkgroupName( list.at( i )->workgroupName() );
-            share->setHostIP( list.at( i )->ip() );
+            Smb4KShare *share = new Smb4KShare( *list.at( i )->share() );
             remounts << share;
           }
           else
@@ -250,9 +248,7 @@ void Smb4KMounter::triggerRemounts()
         }
         else
         {
-          Smb4KShare *share = new Smb4KShare( list.at( i )->unc() );
-          share->setWorkgroupName( list.at( i )->workgroupName() );
-          share->setHostIP( list.at( i )->ip() );
+          Smb4KShare *share = new Smb4KShare( *list.at( i )->share() );
           remounts << share;
         }
       }
@@ -297,8 +293,7 @@ void Smb4KMounter::import()
     if ( QString::compare( mount_points.at( i )->mountType(), "smbfs" ) == 0 )
 #endif
     {
-      Smb4KShare share;
-      share.setUNC( mount_points.at( i )->mountedFrom() );
+      Smb4KShare share( mount_points.at( i )->mountedFrom() );
       share.setPath( mount_points.at( i )->mountPoint() );
 
 #ifndef Q_OS_FREEBSD
@@ -645,16 +640,16 @@ void Smb4KMounter::import()
 
         // To avoid incompatibilities, we remove a trailing slash from
         // the UNC now, if it is present.
-        if ( new_share->unc( QUrl::None ).endsWith( "/" ) )
-        {
-          QString u = new_share->unc( QUrl::None );
-          u.chop( 1 );
-          new_share->setUNC( u );
-        }
-        else
-        {
-          // Do nothing
-        }
+//         if ( new_share->unc( QUrl::None ).endsWith( "/" ) )
+//         {
+//           QString u = new_share->unc( QUrl::None );
+//           u.chop( 1 );
+//           new_share->setUNC( u );
+//         }
+//         else
+//         {
+//           // Do nothing
+//         }
 
         addMountedShare( new_share );
         emit updated( new_share );
@@ -676,16 +671,16 @@ void Smb4KMounter::import()
 
         // To avoid incompatibilities, we remove a trailing slash from
         // the UNC now, if it is present.
-        if ( new_share->unc( QUrl::None ).endsWith( "/" ) )
-        {
-          QString u = new_share->unc( QUrl::None );
-          u.chop( 1 );
-          new_share->setUNC( u );
-        }
-        else
-        {
-          // Do nothing
-        }
+//         if ( new_share->unc( QUrl::None ).endsWith( "/" ) )
+//         {
+//           QString u = new_share->unc( QUrl::None );
+//           u.chop( 1 );
+//           new_share->setUNC( u );
+//         }
+//         else
+//         {
+//           // Do nothing
+//         }
 
         addMountedShare( new_share );
         emit mounted( new_share );
@@ -1160,11 +1155,11 @@ void Smb4KMounter::saveSharesForRemount()
     {
       if ( !mountedSharesList().at( i )->isForeign() )
       {
-        Smb4KSambaOptionsHandler::self()->addRemount( mountedSharesList().at( i ) );
+        Smb4KCustomOptionsManager::self()->addRemount( mountedSharesList().at( i ) );
       }
       else
       {
-        Smb4KSambaOptionsHandler::self()->removeRemount( mountedSharesList().at( i ) );
+        Smb4KCustomOptionsManager::self()->removeRemount( mountedSharesList().at( i ) );
       }
     }
   }
@@ -1172,7 +1167,7 @@ void Smb4KMounter::saveSharesForRemount()
   {
     if ( !Smb4KSettings::remountShares() )
     {
-      Smb4KSambaOptionsHandler::self()->clearRemounts();
+      Smb4KCustomOptionsManager::self()->clearRemounts();
     }
     else
     {
@@ -1400,7 +1395,7 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
     {
       if ( Smb4KSettings::remountShares() )
       {
-        Smb4KSambaOptionsHandler::self()->removeRemount( known_share );
+        Smb4KCustomOptionsManager::self()->removeRemount( known_share );
       }
       else
       {

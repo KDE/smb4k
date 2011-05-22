@@ -43,9 +43,9 @@
 #include <smb4ksettings.h>
 #include <smb4knotification.h>
 #include <smb4khomesshareshandler.h>
-#include <smb4ksambaoptionshandler.h>
-#include <smb4ksambaoptionsinfo.h>
 #include <smb4kglobal.h>
+#include <smb4kcustomoptionsmanager.h>
+#include <smb4kcustomoptions.h>
 
 using namespace Smb4KGlobal;
 
@@ -173,22 +173,21 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
 #endif
 
   QStringList arguments;
-  QMap<QString, QString> global_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
-  Smb4KSambaOptionsInfo *options_info  = Smb4KSambaOptionsHandler::self()->findItem( share, true );
+  QMap<QString, QString> global_options = globalSambaOptions();
+  Smb4KCustomOptions *options  = Smb4KCustomOptionsManager::self()->findOptions( share );
 
-  // Set the port before passing the full UNC. This is mainly
-  // needed for FreeBSD.
-  if ( options_info )
+#ifndef Q_OS_FREEBSD
+  // Set the port before passing the full UNC.
+  if ( options )
   {
-    share->setPort( options_info->smbPort() != -1 ? options_info->smbPort() : Smb4KSettings::remoteSMBPort() );
+    share->setPort( options->fileSystemPort() != Smb4KSettings::remoteFileSystemPort() ? 
+                    options->fileSystemPort() : Smb4KSettings::remoteFileSystemPort() );
   }
   else
   {
-    share->setPort( Smb4KSettings::remoteSMBPort() );
+    share->setPort( Smb4KSettings::remoteFileSystemPort() );
   }
-
-  // Compile the arguments
-#ifndef Q_OS_FREEBSD
+  
   QStringList args_list;
   
   // Workgroup
@@ -212,9 +211,9 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
   }
 
   // User
-  if ( !share->url().userName().isEmpty() )
+  if ( !share->login().isEmpty() )
   {
-    args_list << QString( "user=%1" ).arg( share->url().userName() );
+    args_list << QString( "user=%1" ).arg( share->login() );
   }
   else
   {
@@ -224,7 +223,7 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
   // Client's and server's NetBIOS name
   // According to the manual page, this is only needed when port 139
   // is used. So, we only pass the NetBIOS name in that case.
-  if ( Smb4KSettings::remoteFileSystemPort() == 139 || (options_info && options_info->fileSystemPort() == 139) )
+  if ( Smb4KSettings::remoteFileSystemPort() == 139 || (options && options->fileSystemPort() == 139) )
   {
     // The client's NetBIOS name.
     if ( !Smb4KSettings::netBIOSName().isEmpty() )
@@ -252,10 +251,10 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
   }
 
   // UID
-  args_list << QString( "uid=%1" ).arg( options_info ? options_info->uid() : (uid_t)Smb4KSettings::userID().toInt() );
+  args_list << QString( "uid=%1" ).arg( options ? options->uid() : (uid_t)Smb4KSettings::userID().toInt() );
 
   // GID
-  args_list << QString( "gid=%1" ).arg( options_info ? options_info->gid() : (gid_t)Smb4KSettings::groupID().toInt() );
+  args_list << QString( "gid=%1" ).arg( options ? options->gid() : (gid_t)Smb4KSettings::groupID().toInt() );
 
   // Client character set
   switch ( Smb4KSettings::clientCharset() )
@@ -280,20 +279,21 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
   }
 
   // Port
-  args_list << QString( "port=%1" ).arg( (options_info && options_info->fileSystemPort() != -1) ?
-                                          options_info->fileSystemPort() : Smb4KSettings::remoteFileSystemPort() );
+  args_list << QString( "port=%1" )
+               .arg( (options && options->fileSystemPort() != Smb4KSettings::remoteFileSystemPort()) ?
+                     options->fileSystemPort() : Smb4KSettings::remoteFileSystemPort() );
 
   // Write access
-  if ( options_info )
+  if ( options )
   {
-    switch ( options_info->writeAccess() )
+    switch ( options->writeAccess() )
     {
-      case Smb4KSambaOptionsInfo::ReadWrite:
+      case Smb4KCustomOptions::ReadWrite:
       {
         args_list << "rw";
         break;
       }
-      case Smb4KSambaOptionsInfo::ReadOnly:
+      case Smb4KCustomOptions::ReadOnly:
       {
         args_list << "ro";
         break;
@@ -478,6 +478,16 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
 
   arguments << QString( "-o %1" ).arg( args_list.join( "," ) );
 #else
+  if ( options )
+  {
+    share->setPort( options->smbPort() != Smb4KSettings::remoteSMBPort() ? 
+                    options->smbPort() : Smb4KSettings::remoteSMBPort() );
+  }
+  else
+  {
+    share->setPort( Smb4KSettings::remoteSMBPort() );
+  }
+  
   // Workgroup
   if ( !share->workgroupName().isEmpty() )
   {
