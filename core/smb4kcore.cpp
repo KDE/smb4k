@@ -56,7 +56,6 @@
 #include <smb4ksynchronizer.h>
 #include <smb4kpreviewer.h>
 #include <smb4ksearch.h>
-#include <smb4ksambaoptionshandler.h>
 #include <smb4knotification.h>
 
 
@@ -301,7 +300,7 @@ void Smb4KCore::searchPrograms()
 void Smb4KCore::setDefaultSettings()
 {
   // Samba options that have to be dynamically imported from smb.conf:
-  QMap<QString, QString> opts = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
+  QMap<QString, QString> opts = globalSambaOptions( true );
 
   if ( !opts["netbios name"].isEmpty() )
   {
