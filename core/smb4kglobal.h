@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 #ifndef SMB4KGLOBAL_H
@@ -319,6 +319,22 @@ namespace Smb4KGlobal
    *                      application the share should be opened.
    */
   KDE_EXPORT void open( Smb4KShare *share, OpenWith openWith = FileManager );
+  
+  /**
+   * Get the entries of the [global] section of the smb.conf file. By setting @p read 
+   * to TRUE you can force the smb.conf file to be reread.
+   * 
+   * @returns the entries of the [global] section of the smb.conf file
+   */
+  KDE_EXPORT const QMap<QString,QString> &globalSambaOptions( bool read = false );
+  
+  /**
+   * Get the WINS server's name or IP address. Returns an empty string if there is no
+   * WINS server is defined.
+   * 
+   * @returns the WINS server
+   */
+  KDE_EXPORT const QString winsServer();
 };
 
 #endif

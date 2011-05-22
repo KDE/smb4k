@@ -1,6 +1,6 @@
 /***************************************************************************
-    smb4kglobal_p  -  This is the private helper class of the Smb4KGlobal
-    namespace.
+    smb4kglobal_p  -  These are the private helper classes of the 
+    Smb4KGlobal namespace.
                              -------------------
     begin                : Di Jul 24 2007
     copyright            : (C) 2007-2011 by Alexander Reinholdt
@@ -20,8 +20,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 #ifndef SMB4KGLOBAL_P_H
@@ -78,6 +78,14 @@ class Smb4KGlobalPrivate
      * This is the global list of shares.
      */
     QList<Smb4KShare *> sharesList;
+    
+    /**
+     * The global options defined in smb.conf
+     */
+    const QMap<QString,QString> &globalSambaOptions( bool read );
+    
+  private:
+    QMap<QString,QString> m_samba_options;
 };
 
 #endif

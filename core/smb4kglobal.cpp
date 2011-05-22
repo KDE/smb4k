@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 // Qt includes
@@ -673,6 +673,39 @@ void Smb4KGlobal::open( Smb4KShare *share, OpenWith openWith )
       break;
     }
   }
+}
+
+
+const QMap<QString,QString> &Smb4KGlobal::globalSambaOptions( bool read )
+{
+  return p.globalSambaOptions( read );
+}
+
+
+const QString Smb4KGlobal::winsServer()
+{
+  QMap<QString,QString> global_opts = p.globalSambaOptions( false );
+  QString wins_server;
+  
+  if ( global_opts.contains( "wins server" ) )
+  {
+    wins_server = global_opts.value( "wins server" );
+  }
+  else
+  {
+    if ( global_opts.contains( "wins support" ) &&
+         (QString::compare( global_opts.value( "wins support" ), "yes", Qt::CaseInsensitive ) == 0 ||
+          QString::compare( global_opts.value( "wins support" ), "true", Qt::CaseInsensitive ) == 0) )
+    {
+      wins_server = "127.0.0.1";
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  return wins_server;
 }
 
 
