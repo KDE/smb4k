@@ -1,5 +1,5 @@
 Smb4K SVN_HEAD (????-??-??):
-- KDE SC 4.4.0 or later are required.
+- KDE SC 4.4.0 and Qt 4.7.0 or later are required.
 - We now use Utf8 throughout the whole application (closes #14674).
 - Unified the function names of the core classes that set and return the
   workgroup name, host name, and share name.
@@ -31,7 +31,8 @@ Smb4K SVN_HEAD (????-??-??):
 - Revised Smb4KHost class:
   + Added setAuthInfo() function. You can set the user info of the UNC/URL with
     it.
-  + Added setUNC() and unc() functions.
+  + Added setURL() and url() functions.
+  + Added unc() function.
   + Added setLogin() and login() function. They store the login that was used
     to authenticate to a host.
   + Added setPort() and port() function.
@@ -43,7 +44,7 @@ Smb4K SVN_HEAD (????-??-??):
   + Replaced setCIFSLogin(), cifsLogin(), and cifsLoginIsSet() with setLogin()
     login(), and loginIsSet().
   + The equals() function now takes a pointer instead of a reference.
-  + Rewrote UNC functions.
+  + Removed setUNC() function because it caused a lot trouble.
   + The setMountData() function does not set and the resetMountData() function
     does not reset the login anymore.
   + The login is now empty by default.
@@ -102,27 +103,13 @@ Smb4K SVN_HEAD (????-??-??):
   + Before the mounted() and unmounted() signals are emitted, we check if the 
     (un)mounting was successful.
   + Added 'sec' argument for mount.cifs under non-FreeBSD operating systems.
-- Revised Smb4KSambaOptionsHandler class:
-  + Introduced public hasCustomOptions() function.
-  + Replaced remount() function with addRemount() and removeRemount() functions.
-  + Replaced findItem( const QString &, bool ) with findItem( Smb4KShare *, bool )
-    and findItem( Smb4KHost *, bool ).
-  + Removed mountOptions() function.
-  + Removed smbtreeOptions() function.
-  + Removed smbclientOptions() function.
-  + Removed nmblookupOptions() function.
-  + Removed netOptions() function.
-  + Removed code that handled obsolete files and file formats.
-  + Modified findItem() function for hosts. It always only returns exact matches
-    now.
-  + Save all options if the item is a host.
-- Revised Smb4KSambaOptionsInfo class:
-  + Removed uidIsSet() and gidIsSet() functions.
-  + Removed hasCustomOptions() and setHasCustomOptions() functions.
-  + Added owner() and group() functions.
-  + Added equals() function.
-  + Added "==" operator.
-  + UID/owner and GID/group entries are now also returned for host items.
+  + Removed all state functions.
+- Removed Smb4KSambaOptionsInfo class.
+- Removed Smb4KSambaOptionsHandler class.
+- Added Smb4KCustomOptions class as a replacement for Smb4KSambaOptionsInfo class.
+- Added Smb4KCustomOptionsManager class as a replacement for Smb4KSambaOptionsHandler
+  class. Among other changes, the custom options dialog is now a private helper
+  class.
 - Revised Smb4KSynchronizer class:
   + Completely rewrote this class and its private helpers.
   + Introduced Smb4KSynchronizer::self().
@@ -271,15 +258,10 @@ Smb4K SVN_HEAD (????-??-??):
   + Removed all replaceXXX() functions.
   + All functions returning one of the global lists return constant references
     instead of pointers.
+  + Added globalSambaOptions() and winsServer() functions. They were moved from 
+    the removed Smb4KSambaOptionsHandler class.
 - Added Smb4KNotification class. It shows notifications to the user.
 - Removed Smb4KCoreMessage class in favor of Smb4KNotification.
-- Revised the print dialog:
-  + Adjusted code so that the new features of the print code can be used.
-  + The file that should be printed is now checked if it is valid and existing.
-    If one of the conditions is not met, the file will not be printed.
-  + No path is predefined in the url requester, because some users were confused
-    by this before. Opening the file dialog will lead you to the home directory.
-  + Added "What's this" help.
 - Added Smb4KToolTip class that is to replace all other tooltip implementations.
 - Revised shares view:
   + Adjusted the code so that the new possibilities that the reworked
@@ -345,11 +327,6 @@ Smb4K SVN_HEAD (????-??-??):
   + The system tray icon will be set passive (will be hidden) if no workgroups could
     be found and no shares were mounted.
   + Use new bookmark menu.
-- Revised custom options dialog:
-  + Did some refactoring.
-  + Added all settings available for shares to the host dialog. This way you can 
-    set general settings for a host.
-  + Added "What's this" help.
 - Removed utility programs in favor of the new KAuth implementation.
 
 Smb4K 0.10.10 (2011-03-08):
