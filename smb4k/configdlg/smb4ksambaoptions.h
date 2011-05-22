@@ -43,7 +43,7 @@
 #include <kactioncollection.h>
 
 // application specific includes
-#include <core/smb4ksambaoptionsinfo.h>
+#include <smb4kcustomoptions.h>
 
 /**
  * This class manages the configuration dialog of the options
@@ -112,7 +112,7 @@ class Smb4KSambaOptions : public KTabWidget
      *
      * @param list              The list with Smb4KSambaOptionsInfo objects
      */
-    void insertCustomOptions( const QList<Smb4KSambaOptionsInfo *> &list );
+    void insertCustomOptions( const QList<Smb4KCustomOptions *> &list );
 
     /**
      * This function returns the list of custom option items that are currently
@@ -120,7 +120,7 @@ class Smb4KSambaOptions : public KTabWidget
      *
      * @returns the list of custom option items.
      */
-    const QList<Smb4KSambaOptionsInfo *> getCustomOptions();
+    const QList<Smb4KCustomOptions *> getCustomOptions();
     
     /**
      * Returns TRUE if there may be changed custom settings. You must check if
@@ -241,7 +241,7 @@ class Smb4KSambaOptions : public KTabWidget
      * 
      * @param unc             The UNC of the custom options info object
      */
-    Smb4KSambaOptionsInfo *findInfo( const QString &unc );
+    Smb4KCustomOptions *findOptions( const QString &unc );
     
     /**
      * Removes all edit widgets in the custom options tree widget.
@@ -266,7 +266,7 @@ class Smb4KSambaOptions : public KTabWidget
     /**
      * The list of custom Samba options
      */
-    QList<Smb4KSambaOptionsInfo> m_options_list;
+    QList<Smb4KCustomOptions> m_options_list;
     
     /**
      * Is it possible that the custom settings changed?

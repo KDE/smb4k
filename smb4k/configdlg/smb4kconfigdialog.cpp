@@ -59,11 +59,10 @@
 #include <smb4klaptopsupportoptions.h>
 #include <core/smb4ksettings.h>
 #include <core/smb4kglobal.h>
-#include <core/smb4ksambaoptionsinfo.h>
-#include <core/smb4ksambaoptionshandler.h>
 #include <core/smb4kcore.h>
 #include <core/smb4kauthinfo.h>
 #include <core/smb4kwalletmanager.h>
+#include <core/smb4kcustomoptionsmanager.h>
 
 using namespace Smb4KGlobal;
 
@@ -182,8 +181,8 @@ void Smb4KConfigDialog::loadCustomSambaOptions()
 {
   if ( m_samba )
   {
-    QList<Smb4KSambaOptionsInfo *> list = Smb4KSambaOptionsHandler::self()->customOptionsList();
-    m_samba->widget()->findChild<Smb4KSambaOptions *>()->insertCustomOptions( list );
+    QList<Smb4KCustomOptions *> options = Smb4KCustomOptionsManager::self()->customOptions();
+    m_samba->widget()->findChild<Smb4KSambaOptions *>()->insertCustomOptions( options );
   }
   else
   {
@@ -196,9 +195,9 @@ void Smb4KConfigDialog::saveCustomSambaOptions()
 {
   if ( m_samba )
   {
-    QList<Smb4KSambaOptionsInfo *> list;
-    list = m_samba->widget()->findChild<Smb4KSambaOptions *>()->getCustomOptions();
-    Smb4KSambaOptionsHandler::self()->updateCustomOptions( list );
+    QList<Smb4KCustomOptions *> options;
+    options = m_samba->widget()->findChild<Smb4KSambaOptions *>()->getCustomOptions();
+    Smb4KCustomOptionsManager::self()->replaceCustomOptions( options );
   }
   else
   {
@@ -685,8 +684,8 @@ void Smb4KConfigDialog::slotEnableApplyButton()
   
   if ( !enable && samba_options->customSettingsMaybeChanged() )
   {
-    QList<Smb4KSambaOptionsInfo *> new_list = samba_options->getCustomOptions();
-    QList<Smb4KSambaOptionsInfo *> old_list = Smb4KSambaOptionsHandler::self()->customOptionsList();
+    QList<Smb4KCustomOptions *> new_list = samba_options->getCustomOptions();
+    QList<Smb4KCustomOptions *> old_list = Smb4KCustomOptionsManager::self()->customOptions();
     
     if ( new_list.size() == old_list.size() )
     {

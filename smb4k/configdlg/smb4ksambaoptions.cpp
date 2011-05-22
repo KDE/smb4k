@@ -1025,14 +1025,14 @@ bool Smb4KSambaOptions::eventFilter( QObject *obj, QEvent *e )
 }
 
 
-void Smb4KSambaOptions::insertCustomOptions( const QList<Smb4KSambaOptionsInfo *> &list )
+void Smb4KSambaOptions::insertCustomOptions( const QList<Smb4KCustomOptions *> &list )
 {
   // Populate the internal list.
   m_options_list.clear();
   
   for ( int i = 0; i < list.size(); ++i )
   {
-    m_options_list << Smb4KSambaOptionsInfo( *list.at( i ) );
+    m_options_list << *list[i];
   }
   
   // Clear the tree widget if necessary.
@@ -1048,38 +1048,38 @@ void Smb4KSambaOptions::insertCustomOptions( const QList<Smb4KSambaOptionsInfo *
   
     switch ( list.at( i )->type() )
     {
-      case Smb4KSambaOptionsInfo::Host:
+      case Smb4KCustomOptions::Host:
       {
         item = new QTreeWidgetItem( m_custom_options, Host );
         
         // UNC & icon
-        item->setText( ItemName, list.at( i )->unc() );
+        item->setText( ItemName, list.at( i )->host()->unc() );
         item->setIcon( ItemName, KIcon( "preferences-other" ) );
         
         // Protocol
-        switch ( list.at( i )->protocol() )
+        switch ( list.at( i )->protocolHint() )
         {
-          case Smb4KSambaOptionsInfo::Automatic:
+          case Smb4KCustomOptions::Automatic:
           {
             item->setText( Protocol, i18n( "Automatic" ) );
             break;
           }
-          case Smb4KSambaOptionsInfo::RPC:
+          case Smb4KCustomOptions::RPC:
           {
             item->setText( Protocol, "RPC" );
             break;
           }
-          case Smb4KSambaOptionsInfo::RAP:
+          case Smb4KCustomOptions::RAP:
           {
             item->setText( Protocol, "RAP" );
             break;
           }
-          case Smb4KSambaOptionsInfo::ADS:
+          case Smb4KCustomOptions::ADS:
           {
             item->setText( Protocol, "ADS" );
             break;
           }
-          case Smb4KSambaOptionsInfo::UndefinedProtocol:
+          case Smb4KCustomOptions::UndefinedProtocolHint:
           {
             switch ( Smb4KSettings::protocolHint() )
             {
@@ -1120,17 +1120,17 @@ void Smb4KSambaOptions::insertCustomOptions( const QList<Smb4KSambaOptionsInfo *
         // Write access
         switch ( list.at( i )->writeAccess() )
         {
-          case Smb4KSambaOptionsInfo::ReadWrite:
+          case Smb4KCustomOptions::ReadWrite:
           {
             item->setText( WriteAccess, i18n( "read-write" ) );
             break;
           }
-          case Smb4KSambaOptionsInfo::ReadOnly:
+          case Smb4KCustomOptions::ReadOnly:
           {
             item->setText( WriteAccess, i18n( "read-only" ) );
             break;
           }
-          case Smb4KSambaOptionsInfo::UndefinedWriteAccess:
+          case Smb4KCustomOptions::UndefinedWriteAccess:
           {
             switch ( Smb4KSettings::writeAccess() )
             {
@@ -1161,17 +1161,17 @@ void Smb4KSambaOptions::insertCustomOptions( const QList<Smb4KSambaOptionsInfo *
         // Kerberos
         switch ( list.at( i )->useKerberos() )
         {
-          case Smb4KSambaOptionsInfo::UseKerberos:
+          case Smb4KCustomOptions::UseKerberos:
           {
             item->setText( Kerberos, i18n( "yes" ) );
             break;
           }
-          case Smb4KSambaOptionsInfo::NoKerberos:
+          case Smb4KCustomOptions::NoKerberos:
           {
             item->setText( Kerberos, i18n( "no" ) );
             break;
           }
-          case Smb4KSambaOptionsInfo::UndefinedKerberos:
+          case Smb4KCustomOptions::UndefinedKerberos:
           {
             item->setText( Kerberos, Smb4KSettings::self()->useKerberos() ? i18n( "yes" ) : i18n( "no" ) );
             break;
@@ -1212,12 +1212,12 @@ void Smb4KSambaOptions::insertCustomOptions( const QList<Smb4KSambaOptionsInfo *
         
         break;
       }
-      case Smb4KSambaOptionsInfo::Share:
+      case Smb4KCustomOptions::Share:
       {
         item = new QTreeWidgetItem( m_custom_options, Share );
         
         // UNC & icon
-        item->setText( ItemName, list.at( i )->unc() );
+        item->setText( ItemName, list.at( i )->share()->unc() );
         item->setIcon( ItemName, KIcon( "preferences-other" ) );
         
         // Protocol
@@ -1226,17 +1226,17 @@ void Smb4KSambaOptions::insertCustomOptions( const QList<Smb4KSambaOptionsInfo *
 #ifndef Q_OS_FREEBSD
         switch ( list.at( i )->writeAccess() )
         {
-          case Smb4KSambaOptionsInfo::ReadWrite:
+          case Smb4KCustomOptions::ReadWrite:
           {
             item->setText( WriteAccess, i18n( "read-write" ) );
             break;
           }
-          case Smb4KSambaOptionsInfo::ReadOnly:
+          case Smb4KCustomOptions::ReadOnly:
           {
             item->setText( WriteAccess, i18n( "read-only" ) );
             break;
           }
-          case Smb4KSambaOptionsInfo::UndefinedWriteAccess:
+          case Smb4KCustomOptions::UndefinedWriteAccess:
           {
             switch ( Smb4KSettings::writeAccess() )
             {
@@ -1313,29 +1313,48 @@ void Smb4KSambaOptions::insertCustomOptions( const QList<Smb4KSambaOptionsInfo *
 }
 
 
-const QList<Smb4KSambaOptionsInfo *> Smb4KSambaOptions::getCustomOptions()
+const QList<Smb4KCustomOptions *> Smb4KSambaOptions::getCustomOptions()
 {
-  QList<Smb4KSambaOptionsInfo *> list;
+  QList<Smb4KCustomOptions *> options;
   
   for ( int i = 0; i < m_options_list.size(); ++i )
   {
-    list << &m_options_list[i];
+    options << &m_options_list[i];
   }
   
-  return list;
+  return options;
 }
 
 
-Smb4KSambaOptionsInfo *Smb4KSambaOptions::findInfo( const QString &unc )
+Smb4KCustomOptions *Smb4KSambaOptions::findOptions( const QString &unc )
 {
-  Smb4KSambaOptionsInfo *info = NULL;
+  Smb4KCustomOptions *options = NULL;
   
   for ( int i = 0; i < m_options_list.size(); ++i )
   {
-    if ( QString::compare( m_options_list.at( i ).unc(), unc ) == 0 )
+    if ( m_options_list.at( i ).type() == Smb4KCustomOptions::Host )
     {
-      info = &m_options_list[i];
-      break;
+      if ( QString::compare( m_options_list.at( i ).host()->unc(), unc ) == 0 )
+      {
+        options = &m_options_list[i];
+        break;
+      }
+      else
+      {
+        continue;
+      }
+    }
+    else if ( m_options_list.at( i ).type() == Smb4KCustomOptions::Share )
+    {
+      if ( QString::compare( m_options_list.at( i ).share()->unc(), unc ) == 0 )
+      {
+        options = &m_options_list[i];
+        break;
+      }
+      else
+      {
+        continue;
+      }
     }
     else
     {
@@ -1343,7 +1362,7 @@ Smb4KSambaOptionsInfo *Smb4KSambaOptions::findInfo( const QString &unc )
     }
   }
   
-  return info;
+  return options;
 }
 
 
@@ -1714,10 +1733,10 @@ void Smb4KSambaOptions::slotCustomTextChanged( const QString &text )
       {
         top_level_item->setText( j, text );
         m_custom_options->removeItemWidget( top_level_item, j );
-          
-        Smb4KSambaOptionsInfo *info = findInfo( top_level_item->text( ItemName ) );
+        
+        Smb4KCustomOptions *options = findOptions( top_level_item->text( ItemName ) );
          
-        if ( info )
+        if ( options )
         {
           // Now update the info.
           switch ( j )
@@ -1726,23 +1745,23 @@ void Smb4KSambaOptions::slotCustomTextChanged( const QString &text )
             {
               if ( QString::compare( text, i18n( "Automatic" ) ) == 0 )
               {
-                info->setProtocol( Smb4KSambaOptionsInfo::Automatic );
+                options->setProtocolHint( Smb4KCustomOptions::Automatic );
               }
               else if ( QString::compare( text, "RPC" ) == 0 )
               {
-                info->setProtocol( Smb4KSambaOptionsInfo::RPC );
+                options->setProtocolHint( Smb4KCustomOptions::RPC );
               }
               else if ( QString::compare( text, "RAP" ) == 0 )
               {
-                info->setProtocol( Smb4KSambaOptionsInfo::RAP );
+                options->setProtocolHint( Smb4KCustomOptions::RAP );
               }
               else if ( QString::compare( text, "ADS" ) == 0 )
               {
-                info->setProtocol( Smb4KSambaOptionsInfo::ADS );
+                options->setProtocolHint( Smb4KCustomOptions::ADS );
               }
               else
               {
-                info->setProtocol( Smb4KSambaOptionsInfo::UndefinedProtocol );
+                options->setProtocolHint( Smb4KCustomOptions::UndefinedProtocolHint );
               }
               break;
             }
@@ -1751,15 +1770,15 @@ void Smb4KSambaOptions::slotCustomTextChanged( const QString &text )
             {
               if ( QString::compare( text, i18n( "read-write" ) ) == 0 )
               {
-                info->setWriteAccess( Smb4KSambaOptionsInfo::ReadWrite );
+                options->setWriteAccess( Smb4KCustomOptions::ReadWrite );
               }
               else if ( QString::compare( text, i18n( "read-only" ) ) == 0 )
               {
-                info->setWriteAccess( Smb4KSambaOptionsInfo::ReadOnly );
+                options->setWriteAccess( Smb4KCustomOptions::ReadOnly );
               }
               else
               {
-                info->setWriteAccess( Smb4KSambaOptionsInfo::UndefinedWriteAccess );
+                options->setWriteAccess( Smb4KCustomOptions::UndefinedWriteAccess );
               }
               break;
             }
@@ -1768,28 +1787,28 @@ void Smb4KSambaOptions::slotCustomTextChanged( const QString &text )
             {
               if ( QString::compare( text, i18n( "yes" ) ) == 0 )
               {
-                info->setUseKerberos( Smb4KSambaOptionsInfo::UseKerberos );
+                options->setUseKerberos( Smb4KCustomOptions::UseKerberos );
               }
               else if ( QString::compare( text, i18n( "no" ) ) == 0 )
               {
-                info->setUseKerberos( Smb4KSambaOptionsInfo::NoKerberos );
+                options->setUseKerberos( Smb4KCustomOptions::NoKerberos );
               }
               else
               {
-                info->setUseKerberos( Smb4KSambaOptionsInfo::UndefinedKerberos );
+                options->setUseKerberos( Smb4KCustomOptions::UndefinedKerberos );
               }
               break;
             }
             case UID:
             {
               QString uid = text.section( "(", 1, 1 ).section( ")", 0, 0 ).trimmed();
-              info->setUID( (K_UID)uid.toInt() );
+              options->setUID( (K_UID)uid.toInt() );
               break;
             }
             case GID:
             {
               QString gid = text.section( "(", 1, 1 ).section( ")", 0, 0 ).trimmed();
-              info->setGID( (K_GID)gid.toInt() );
+              options->setGID( (K_GID)gid.toInt() );
               break;
             }
             default:
@@ -1857,22 +1876,22 @@ void Smb4KSambaOptions::slotCustomIntValueChanged( int value )
       {
         top_level_item->setText( j, QString( "%1" ).arg( value ) );
 
-        Smb4KSambaOptionsInfo *info = findInfo( top_level_item->text( ItemName ) );
+        Smb4KCustomOptions *options = findOptions( top_level_item->text( ItemName ) );
           
-        if ( info )
+        if ( options )
         {
           // Now update the info.
           switch ( j )
           {
             case SMBPort:
             {
-              info->setSMBPort( value );
+              options->setSMBPort( value );
               break;
             }
 #ifndef Q_OS_FREEBSD
             case FileSystemPort:
             {
-              info->setFileSystemPort( value );
+              options->setFileSystemPort( value );
               break;
             }
 #endif
@@ -1924,11 +1943,11 @@ void Smb4KSambaOptions::slotRemoveActionTriggered( bool /*checked*/ )
   
   while ( !selected_items.isEmpty() )
   {
-    Smb4KSambaOptionsInfo *info = findInfo( selected_items.first()->text( ItemName ) );
+    Smb4KCustomOptions *options = findOptions( selected_items.first()->text( ItemName ) );
     
-    if ( info )
+    if ( options )
     {
-      int index = m_options_list.indexOf( *info );
+      int index = m_options_list.indexOf( *options );
       m_options_list.removeAt( index );
     }
     else
