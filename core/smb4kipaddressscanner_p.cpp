@@ -37,8 +37,10 @@
 #include <smb4kipaddressscanner_p.h>
 #include <smb4khost.h>
 #include <smb4knotification.h>
-#include <smb4ksambaoptionshandler.h>
 #include <smb4ksettings.h>
+#include <smb4kglobal.h>
+
+using namespace Smb4KGlobal;
 
 
 Smb4KIPLookupJob::Smb4KIPLookupJob( QObject *parent ) : KJob( parent ),
@@ -133,7 +135,7 @@ void Smb4KIPLookupJob::slotStartLookup()
   }
 
   // Global Samba options
-  QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
+  QMap<QString,QString> samba_options = globalSambaOptions();
 
   // Compile the arguments
   QStringList arguments;
@@ -207,10 +209,10 @@ void Smb4KIPLookupJob::slotStartLookup()
   }
 
   // WINS server
-  if ( !Smb4KSambaOptionsHandler::self()->winsServer().isEmpty() )
+  if ( !winsServer().isEmpty() )
   {
     arguments << "-R";
-    arguments << QString( "-U '%1'" ).arg( Smb4KSambaOptionsHandler::self()->winsServer() );
+    arguments << QString( "-U '%1'" ).arg( winsServer() );
   }
   else
   {
