@@ -35,12 +35,12 @@
 #include <smb4ksearch_p.h>
 #include <smb4knotification.h>
 #include <smb4kglobal.h>
-#include <smb4ksambaoptionshandler.h>
 #include <smb4kworkgroup.h>
 #include <smb4khost.h>
-#include <smb4ksambaoptionsinfo.h>
 #include <smb4ksettings.h>
 #include <smb4kauthinfo.h>
+#include <smb4kcustomoptionsmanager.h>
+#include <smb4kcustomoptions.h>
 
 using namespace Smb4KGlobal;
 
@@ -116,7 +116,7 @@ void Smb4KSearchJob::slotStartSearch()
     // Lookup the custom options that are defined for the master browser.
     Smb4KWorkgroup *workgroup = findWorkgroup( Smb4KSettings::domainName() );
     Smb4KHost *master_browser = NULL;
-    Smb4KSambaOptionsInfo *info = NULL;
+    Smb4KCustomOptions *options = NULL;
     Smb4KAuthInfo authInfo;
 
     if ( workgroup )
@@ -130,7 +130,7 @@ void Smb4KSearchJob::slotStartSearch()
 
     if ( master_browser )
     {
-      info = Smb4KSambaOptionsHandler::self()->findItem( master_browser );
+      options = Smb4KCustomOptionsManager::self()->findOptions( master_browser );
     }
     else
     {
@@ -142,21 +142,21 @@ void Smb4KSearchJob::slotStartSearch()
     arguments << "-d2";
 
     // Kerberos
-    if ( info )
+    if ( options )
     {
-      switch ( info->useKerberos() )
+      switch ( options->useKerberos() )
       {
-        case Smb4KSambaOptionsInfo::UseKerberos:
+        case Smb4KCustomOptions::UseKerberos:
         {
           arguments << "-k";
           break;
         }
-        case Smb4KSambaOptionsInfo::NoKerberos:
+        case Smb4KCustomOptions::NoKerberos:
         {
           // No kerberos
           break;
         }
-        case Smb4KSambaOptionsInfo::UndefinedKerberos:
+        case Smb4KCustomOptions::UndefinedKerberos:
         {
           if ( Smb4KSettings::useKerberos() )
           {
@@ -290,7 +290,7 @@ void Smb4KSearchJob::slotStartSearch()
       // Go ahead
     }
 
-    QMap<QString,QString> samba_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
+    QMap<QString,QString> samba_options = globalSambaOptions();
 
     // Compile the command
     arguments << nmblookup;
@@ -363,10 +363,10 @@ void Smb4KSearchJob::slotStartSearch()
     }
 
     // WINS server
-    if ( !Smb4KSambaOptionsHandler::self()->winsServer().isEmpty() )
+    if ( !winsServer().isEmpty() )
     {
       arguments << "-R";
-      arguments << QString( "-U '%1'" ).arg( Smb4KSambaOptionsHandler::self()->winsServer() );
+      arguments << QString( "-U '%1'" ).arg( winsServer() );
       arguments << QString( "'%1'" ).arg( m_string );
       arguments << "-A";
       arguments << "|";
@@ -453,8 +453,7 @@ void Smb4KSearchJob::slotReadStandardOutput()
 
           if ( unc.contains( m_string, Qt::CaseInsensitive ) )
           {
-            Smb4KShare share;
-            share.setUNC( unc );
+            Smb4KShare share( unc );
             share.setComment( comment );
             share.setWorkgroupName( workgroup_name );
 
