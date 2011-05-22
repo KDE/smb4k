@@ -8,7 +8,6 @@ include_directories(
 
 add_subdirectory( icons )
 add_subdirectory( configdlg )
-add_subdirectory( dialogs )
 add_subdirectory( tooltips )
 add_subdirectory( browser )
 add_subdirectory( sharesview )
@@ -28,7 +27,6 @@ kde4_add_executable( smb4k ${smb4k_SRCS} )
 target_link_libraries( smb4k
   ${KDE4_KDECORE_LIBS}
   smb4kcore
-  smb4kdialogs
   ${KDE4_KDEUI_LIBS}
   ${KDE4_KPARTS_LIBS} )
 
