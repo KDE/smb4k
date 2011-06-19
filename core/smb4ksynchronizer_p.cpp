@@ -829,10 +829,12 @@ Smb4KSynchronizationDialog::Smb4KSynchronizationDialog( Smb4KShare *share, QWidg
   QLabel *pixmap            = new QLabel( main_widget );
   QPixmap sync_pix          = KIcon( "folder-sync" ).pixmap( KIconLoader::SizeHuge );
   pixmap->setPixmap( sync_pix );
+  pixmap->setAlignment( Qt::AlignBottom );
 
   QLabel *description       = new QLabel( i18n( "Please provide the source and destination "
                                                 "directory for the synchronization." ), main_widget );
   description->setWordWrap( true );
+  description->setAlignment( Qt::AlignBottom );
 
   KUrl src_url  = KUrl( QString::fromUtf8( m_share->path() )+"/" );
   src_url.cleanPath();
