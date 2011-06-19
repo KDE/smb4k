@@ -30,6 +30,7 @@
 
 // KDE includes
 #include <kstandarddirs.h>
+#include <kshell.h>
 
 // application specific inludes
 #include <smb4ksearch_p.h>
@@ -299,7 +300,7 @@ void Smb4KSearchJob::slotStartSearch()
     if ( !Smb4KSettings::domainName().isEmpty() &&
          QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0 )
     {
-      arguments << QString( "-W '%1'" ).arg( Smb4KSettings::domainName() );
+      arguments << QString( "-W %1" ).arg( KShell::quoteArg( Smb4KSettings::domainName() ) );
     }
     else
     {
@@ -310,7 +311,7 @@ void Smb4KSearchJob::slotStartSearch()
     if ( !Smb4KSettings::netBIOSName().isEmpty() &&
          QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0 )
     {
-      arguments << QString( "-n '%1'" ).arg( Smb4KSettings::netBIOSName() );
+      arguments << QString( "-n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) );
     }
     else
     {
@@ -321,7 +322,7 @@ void Smb4KSearchJob::slotStartSearch()
     if ( !Smb4KSettings::netBIOSScope().isEmpty() &&
          QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0 )
     {
-      arguments << QString( "-i '%1'" ).arg( Smb4KSettings::netBIOSScope() );
+      arguments << QString( "-i %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSScope() ) );
     }
     else
     {
@@ -332,7 +333,7 @@ void Smb4KSearchJob::slotStartSearch()
     if ( !Smb4KSettings::socketOptions().isEmpty() &&
          QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0 )
     {
-      arguments << QString( "-O '%1'" ).arg( Smb4KSettings::socketOptions() );
+      arguments << QString( "-O %1" ).arg( KShell::quoteArg( Smb4KSettings::socketOptions() ) );
     }
     else
     {
@@ -366,8 +367,8 @@ void Smb4KSearchJob::slotStartSearch()
     if ( !winsServer().isEmpty() )
     {
       arguments << "-R";
-      arguments << QString( "-U '%1'" ).arg( winsServer() );
-      arguments << QString( "'%1'" ).arg( m_string );
+      arguments << QString( "-U %1" ).arg( KShell::quoteArg( winsServer() ) );
+      arguments << KShell::quoteArg( m_string );
       arguments << "-A";
       arguments << "|";
       arguments << grep;
@@ -378,7 +379,7 @@ void Smb4KSearchJob::slotStartSearch()
     }
     else
     {
-      arguments << QString( "'%1'" ).arg( m_string );
+      arguments << KShell::quoteArg( m_string );
       arguments << "-A";
       arguments << "|";
       arguments << grep;
@@ -392,7 +393,7 @@ void Smb4KSearchJob::slotStartSearch()
   m_proc = new Smb4KProcess( Smb4KProcess::Search, this );
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
   m_proc->setEnv( "PASSWD", !m_master.password().isEmpty() ? m_master.password() : "", true );
-  m_proc->setProgram( arguments );
+  m_proc->setShellCommand( arguments.join( " " ) );
   
   connect( m_proc, SIGNAL( readyReadStandardOutput() ), this, SLOT( slotReadStandardOutput() ) );
   connect( m_proc, SIGNAL( readyReadStandardError() ), this, SLOT( slotReadStandardError() ) );
