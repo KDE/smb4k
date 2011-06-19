@@ -228,10 +228,21 @@ void Smb4KNetworkBrowser::mouseMoveEvent( QMouseEvent *e )
   if ( item )
   {
     emit itemEntered( item, columnAt( e->pos().x() ) );
+    
+    // Hide tool tip if the items diverge.
+    if ( m_tooltip->networkItem() && m_tooltip->networkItem() != item->networkItem() )
+    {
+      m_tooltip->hide();
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
-    // Do nothing
+    // Hide the tool tip
+    m_tooltip->hide();
   }
 
   QTreeWidget::mouseMoveEvent( e );
