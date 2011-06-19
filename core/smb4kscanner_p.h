@@ -633,6 +633,9 @@ class Smb4KLookupInfoJob : public KJob
      */
     void info( Smb4KHost *host );
     
+  protected:
+    bool doKill();
+    
   protected slots:
     void slotStartLookup();
     void slotProcessFinished( int exitCode,

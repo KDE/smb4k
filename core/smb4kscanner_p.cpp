@@ -2195,6 +2195,21 @@ void Smb4KLookupInfoJob::setupLookup( Smb4KHost *host, QWidget* parent )
 }
 
 
+bool Smb4KLookupInfoJob::doKill()
+{
+  if ( m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting) )
+  {
+    m_proc->abort();
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  return KJob::doKill();
+}
+
+
 void Smb4KLookupInfoJob::processInfo()
 {
   // First evaluate stdout and if we cannot find the appropriate 
