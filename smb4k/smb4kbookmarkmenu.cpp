@@ -144,7 +144,7 @@ void Smb4KBookmarkMenu::setupMenu()
   m_action_collection->addAction( "separator", separator );
 
   // Now add the groups and their bookmarks
-  for ( int i = 0; i < groups.size(); i++ )
+  for ( int i = 0; i < groups.size(); ++i )
   {
     if ( !groups.at( i ).isEmpty() )
     {
@@ -163,7 +163,7 @@ void Smb4KBookmarkMenu::setupMenu()
       QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->bookmarks( groups.at( i ) );
       QStringList sorted_bookmarks;
       
-      for ( int j = 0; j < bookmarks.size(); j++ )
+      for ( int j = 0; j < bookmarks.size(); ++j )
       {
         KAction *bookmark = NULL;
         QString item;
@@ -183,7 +183,7 @@ void Smb4KBookmarkMenu::setupMenu()
 
         if ( !mounted.isEmpty() )
         {
-          for ( int k = 0; k < mounted.size(); k++ )
+          for ( int k = 0; k < mounted.size(); ++k )
           {
             if ( !mounted.at( k )->isForeign() )
             {
@@ -208,7 +208,7 @@ void Smb4KBookmarkMenu::setupMenu()
 
       sorted_bookmarks.sort();
 
-      for ( int j = 0; j < sorted_bookmarks.size(); j++ )
+      for ( int j = 0; j < sorted_bookmarks.size(); ++j )
       {
         Smb4KBookmark *bookmark = Smb4KBookmarkHandler::self()->findBookmarkByLabel( sorted_bookmarks.at( j ) );
 
@@ -241,7 +241,7 @@ void Smb4KBookmarkMenu::setupMenu()
   QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->bookmarks( "" );
   QStringList sorted_bookmarks;
 
-  for ( int j = 0; j < bookmarks.size(); j++ )
+  for ( int j = 0; j < bookmarks.size(); ++j )
   {
     KAction *bookmark = NULL;
     QString item;
@@ -261,7 +261,7 @@ void Smb4KBookmarkMenu::setupMenu()
 
     if ( !mounted.isEmpty() )
     {
-      for ( int k = 0; k < mounted.size(); k++ )
+      for ( int k = 0; k < mounted.size(); ++k )
       {
         if ( !mounted.at( k )->isForeign() )
         {
@@ -286,7 +286,7 @@ void Smb4KBookmarkMenu::setupMenu()
 
   sorted_bookmarks.sort();
 
-  for ( int j = 0; j < sorted_bookmarks.size(); j++ )
+  for ( int j = 0; j < sorted_bookmarks.size(); ++j )
   {
     Smb4KBookmark *bookmark = Smb4KBookmarkHandler::self()->findBookmarkByLabel( sorted_bookmarks.at( j ) );
 
@@ -334,7 +334,7 @@ void Smb4KBookmarkMenu::slotActionTriggered( QAction *action )
     QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->bookmarks();
     QList<Smb4KShare *> mounts;
 
-    for ( int i = 0; i < bookmarks.size(); i++ )
+    for ( int i = 0; i < bookmarks.size(); ++i )
     {
       // FIXME: Check if the bookmarked share has already been mounted.
       Smb4KShare *share = new Smb4KShare( bookmarks.at( i )->hostName(), bookmarks.at( i )->shareName() );
@@ -358,7 +358,7 @@ void Smb4KBookmarkMenu::slotActionTriggered( QAction *action )
     QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->bookmarks( group_name );
     QList<Smb4KShare *> mounts;
 
-    for ( int i = 0; i < bookmarks.size(); i++ )
+    for ( int i = 0; i < bookmarks.size(); ++i )
     {
       Smb4KShare *share = new Smb4KShare( bookmarks.at( i )->hostName(), bookmarks.at( i )->shareName() );
       share->setWorkgroupName( bookmarks.at( i )->workgroupName() );
@@ -415,7 +415,7 @@ void Smb4KBookmarkMenu::slotDisableBookmark( Smb4KShare *share )
     QList<QAction *> bookmarks = m_bookmarks->actions();
     QString group_name;
     
-    for ( int i = 0; i < bookmarks.size(); i++ )
+    for ( int i = 0; i < bookmarks.size(); ++i )
     {
       QAction *bookmark = bookmarks.at( i );
       
@@ -442,7 +442,7 @@ void Smb4KBookmarkMenu::slotDisableBookmark( Smb4KShare *share )
     
     bool all_mounted = true;
     
-    for ( int i = 0; i < bookmarks.size(); i++ )
+    for ( int i = 0; i < bookmarks.size(); ++i )
     {
       QAction *bookmark = bookmarks.at( i );
       
@@ -505,7 +505,7 @@ void Smb4KBookmarkMenu::slotEnableBookmark( Smb4KShare *share )
     QList<QAction *> bookmarks = m_bookmarks->actions();
     QString group_name;
     
-    for ( int i = 0; i < bookmarks.size(); i++ )
+    for ( int i = 0; i < bookmarks.size(); ++i )
     {
       QAction *bookmark = bookmarks.at( i );
       
@@ -532,7 +532,7 @@ void Smb4KBookmarkMenu::slotEnableBookmark( Smb4KShare *share )
     
     bool all_mounted = true;
     
-    for ( int i = 0; i < bookmarks.size(); i++ )
+    for ( int i = 0; i < bookmarks.size(); ++i )
     {
       QAction *bookmark = bookmarks.at( i );
       
