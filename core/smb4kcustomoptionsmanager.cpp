@@ -110,7 +110,7 @@ void Smb4KCustomOptionsManager::removeRemount( Smb4KShare *share )
 
 void Smb4KCustomOptionsManager::clearRemounts()
 {
-  for ( int i = 0; i < m_options.size(); i++ )
+  for ( int i = 0; i < m_options.size(); ++i )
   {
     if ( m_options.at( i )->type() == Smb4KCustomOptions::Share &&
          m_options.at( i )->remount() == Smb4KCustomOptions::DoRemount )
@@ -129,7 +129,7 @@ QList<Smb4KCustomOptions *> Smb4KCustomOptionsManager::sharesToRemount()
 {
   QList<Smb4KCustomOptions *> remounts;
   
-  for ( int i = 0; i < m_options.size(); i++ )
+  for ( int i = 0; i < m_options.size(); ++i )
   {
     if ( m_options.at( i )->remount() == Smb4KCustomOptions::DoRemount )
     {
@@ -151,7 +151,7 @@ Smb4KCustomOptions *Smb4KCustomOptionsManager::findOptions( const Smb4KShare *sh
   
   Smb4KCustomOptions *options = NULL;
   
-  for ( int i = 0; i < m_options.size(); i++ )
+  for ( int i = 0; i < m_options.size(); ++i )
   {
     if ( m_options.at( i )->type() == Smb4KCustomOptions::Share )
     {
@@ -168,7 +168,8 @@ Smb4KCustomOptions *Smb4KCustomOptionsManager::findOptions( const Smb4KShare *sh
     }
     else if ( m_options.at( i )->type() == Smb4KCustomOptions::Host && !exactMatch )
     {
-      if ( QString::compare( m_options.at( i )->host()->unc(), share->hostUNC(), Qt::CaseInsensitive ) == 0 )
+      if ( QString::compare( m_options.at( i )->host()->unc(), share->hostUNC(), Qt::CaseInsensitive ) == 0 ||
+           QString::compare( m_options.at( i )->host()->ip(), share->hostIP() ) == 0 )
       {
         options = m_options[i];
       }
@@ -194,11 +195,12 @@ Smb4KCustomOptions* Smb4KCustomOptionsManager::findOptions( const Smb4KHost *hos
   
   Smb4KCustomOptions *options = NULL;
   
-  for ( int i = 0; i < m_options.size(); i++ )
+  for ( int i = 0; i < m_options.size(); ++i )
   {
     if ( m_options.at( i )->type() == Smb4KCustomOptions::Host )
     {
-      if ( QString::compare( m_options.at( i )->host()->unc(), host->unc(), Qt::CaseInsensitive ) == 0 )
+      if ( QString::compare( m_options.at( i )->host()->unc(), host->unc(), Qt::CaseInsensitive ) == 0 ||
+           QString::compare( m_options.at( i )->host()->ip(), host->ip() ) == 0 )
       {
         options = m_options[i];
         break;
@@ -553,7 +555,7 @@ const QList<Smb4KCustomOptions *> Smb4KCustomOptionsManager::customOptions()
 {
   QList<Smb4KCustomOptions *> custom_options;
   
-  for ( int i = 0; i < m_options.size(); i++ )
+  for ( int i = 0; i < m_options.size(); ++i )
   {
     Smb4KCustomOptions *options = m_options[i];
     
@@ -577,7 +579,7 @@ void Smb4KCustomOptionsManager::replaceCustomOptions( const QList<Smb4KCustomOpt
   
   if ( !options_list.isEmpty() )
   {
-    for ( int i = 0; i < options_list.size(); i++ )
+    for ( int i = 0; i < options_list.size(); ++i )
     {
       Smb4KCustomOptions *options = options_list[i];
       
