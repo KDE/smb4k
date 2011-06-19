@@ -21,13 +21,20 @@ Smb4K SVN_HEAD (????-??-??):
     if you pass a homes share.
   + Added equals() function.
   + Added "==" operator.
-- Fixed several bugs in Smb4KWalletManager.
+  + Added setIP() and ip() functions.
+  + Renamed setDefaultAuthInfo() to useDefaultAuthInfo().
+- Revised Smb4KWalletManager:
+  + Fixed several bugs.
+  + The IP address is now also saved to the wallet.
+  + Also return correct authentication information if only the IP address is
+    given (hosts only).
 - Introduced Smb4KBasicNetworkItem class. Smb4KWorkgroup, Smb4KHost and 
   Smb4KShare inherit this class now.
 - Revised Smb4KWorkgroup class:
   + Added equals() function.
   + Added hasMasterBrowserIP() function.
   + Added "==" operator.
+  + Remove setMasterBrowser() convenience function.
 - Revised Smb4KHost class:
   + Added setAuthInfo() function. You can set the user info of the UNC/URL with
     it.
@@ -149,28 +156,24 @@ Smb4K SVN_HEAD (????-??-??):
     finished.
   + The print dialog is now a private helper class.
 - Revised Smb4KScanner class:
+  + Completely rewrote this class and its private helpers.
   + Introduced Smb4KScanner::self().
   + Made constructor and destructor private.
   + Removed old abort() function.
-  + Incoming scan requests can now be processes in parallel.
+  + Incoming scan requests can now be processes in parallel, because we are 
+    using KJobs.
   + Added abortAll() function that aborts all running scanning processes at once.
   + Added new abort() function. You can abort a certain process or process group
     with it.
   + Added new isRunning() function.
   + Renamed all public functions that retrieve information from the network
     neighborhood. Have a look at the class documentation to find out more.
-  + When the user chose the "scan broadcast areas" mode, new hosts that were
-    discovered when querying the domain master browser will now be added to the
-    global hosts list.
   + Removed private appendWorkgroup() function.
-  + Introduced new currentState() function.
-  + Replaced state() signal by stateChanged() signal.
+  + Removed state() signal.
   + Renamed members() signal to hosts().
-  + The shares() signal now only emits the list of shares.
   + Removed deprecated ipAddress() signal.
   + Removed minor issues from the command lines. In some situations this should
     improve the accessibility.
-  + Cleaned up old cruft.
   + The login that was used to authenticate is now passed to each host object.
   + Misconfigured master browsers that do not belong to a workgroup are ignored.
   + The workgroup entry with id <1d> is recognized.
