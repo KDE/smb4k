@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 
@@ -35,36 +35,6 @@
 //
 // Run states
 //
-
-// (1) Scanner
-#define SCANNER_LOOKUP_DOMAINS                0
-#define SCANNER_QUERY_MASTER_BROWSER          1
-#define SCANNER_SCAN_BROADCAST_AREAS          2
-#define SCANNER_OPEN_WORKGROUP                3
-#define SCANNER_OPEN_HOST                     4
-#define SCANNER_QUERY_INFO                    5
-#define SCANNER_STOP                          6
-
-// (2) Mounter
-#define MOUNTER_MOUNT                         7
-#define MOUNTER_UNMOUNT                       8
-#define MOUNTER_STOP                          9
-
-// (3) Printing
-#define PRINT_START                          10
-#define PRINT_STOP                           11
-
-// (4) Synchronizer
-#define SYNCHRONIZER_START                   12
-#define SYNCHRONIZER_STOP                    13
-
-// (5) Previewer
-#define PREVIEWER_START                      14
-#define PREVIEWER_STOP                       15
-
-// (6) Search
-#define SEARCH_START                         16
-#define SEARCH_STOP                          17
 
 // (7) Core
 #define CORE_STOP                            18
