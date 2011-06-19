@@ -107,7 +107,7 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
   paths << "/usr/local/bin";
   paths << "/usr/local/sbin";
 
-  for ( int i = 0; i < paths.size(); i++ )
+  for ( int i = 0; i < paths.size(); ++i )
   {
 #ifndef Q_OS_FREEBSD
     mount = KGlobal::dirs()->findExe( "mount.cifs", paths.at( i ) );
@@ -769,7 +769,7 @@ void Smb4KMountJob::slotFinishJob()
     {
       KMountPoint::List mount_points = KMountPoint::currentMountPoints( KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions );
         
-      for ( int i = 0; i < mount_points.size(); i++ )
+      for ( int i = 0; i < mount_points.size(); ++i )
       {
         if ( QString::compare( mount_points.at( i )->mountPoint(), share->path() ) == 0 ||
              QString::compare( mount_points.at( i )->mountPoint(), share->canonicalPath() ) == 0 )
@@ -857,7 +857,7 @@ bool Smb4KUnmountJob::createUnmountAction( Smb4KShare *share, bool force, bool s
   paths << "/usr/local/bin";
   paths << "/usr/local/sbin";
 
-  for ( int i = 0; i < paths.size(); i++ )
+  for ( int i = 0; i < paths.size(); ++i )
   {
     umount = KGlobal::dirs()->findExe( "umount", paths.at( i ) );
 
@@ -1036,7 +1036,7 @@ void Smb4KUnmountJob::slotFinishJob()
       KMountPoint::List mount_points = KMountPoint::currentMountPoints( KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions );
       bool mountpoint_found = false;
         
-      for ( int i = 0; i < mount_points.size(); i++ )
+      for ( int i = 0; i < mount_points.size(); ++i )
       {
         if ( QString::compare( mount_points.at( i )->mountPoint(), share->path() ) == 0 ||
              QString::compare( mount_points.at( i )->mountPoint(), share->canonicalPath() ) == 0 )
