@@ -94,24 +94,6 @@ class KDE_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
     const QString &workgroupName() const { return m_name; }
 
     /**
-     * Set the master browser for the workgroup or domain. You have to
-     * provide at least its name. Additionally, you can pass its IP
-     * address if it's available. However, it will only be accepted
-     * if it is compatible with either IPv4 or IPv6. The @p pseudo
-     * parameter defines whether this is a real master browser or a
-     * faked one, i.e. a pseudo master.
-     *
-     * @param masterName      The name of the master browser
-     *
-     * @param masterIP        The IP address of the master browser
-     *
-     * @param pseudoMaster    Set this to TRUE if this is a pseudo master.
-     */
-    void setMasterBrowser( const QString &masterName,
-                           const QString &masterIP = QString(),
-                           bool pseudoMaster = false );
-
-    /**
      * Sets the name of the master browser of this workgroup or domain.
      *
      * @param masterName      The name of the master browser

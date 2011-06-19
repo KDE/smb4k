@@ -73,14 +73,6 @@ void Smb4KWorkgroup::setWorkgroupName( const QString &name )
 }
 
 
-void Smb4KWorkgroup::setMasterBrowser( const QString &name, const QString &ip, bool pseudo )
-{
-  m_master_name   = name;
-  m_master_ip     = ipIsValid( ip );
-  m_pseudo_master = pseudo;
-}
-
-
 void Smb4KWorkgroup::setMasterBrowserName( const QString &name )
 {
   m_master_name = name;
