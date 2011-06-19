@@ -204,7 +204,33 @@ void Smb4KWalletManager::readAuthInfo( Smb4KAuthInfo *authInfo )
         }
         else
         {
-          // Do nothing
+          // Use the IP address of the host, if present, to retrieve the 
+          // authentication information. Use the list of entries to check
+          // each entry for the IP address.
+          QStringList entries = m_wallet->entryList();
+
+          foreach ( const QString &entry, entries )
+          {
+            QMap<QString,QString> entry_map;
+            m_wallet->readMap( entry, entry_map );
+
+            if ( entry_map.contains( "IP Address" ) )
+            {
+              if ( QString::compare( entry_map.value( "IP Address" ), authInfo->ip() ) == 0 )
+              {
+                map = entry_map;
+                break;
+              }
+              else
+              {
+                continue;
+              }
+            }
+            else
+            {
+              continue;
+            }
+          }
         }
         
         // Set the authentication information.
@@ -234,6 +260,15 @@ void Smb4KWalletManager::readAuthInfo( Smb4KAuthInfo *authInfo )
           if ( authInfo->workgroupName().isEmpty() && !map["Workgroup"].isEmpty() )
           {
             authInfo->setWorkgroupName( map.value( "Workgroup" ) );
+          }
+          else
+          {
+            // Do nothing
+          }
+
+          if ( authInfo->ip().isEmpty() && !map["IP Address"].isEmpty() )
+          {
+            authInfo->setIP( map.value( "IP Address" ) );
           }
           else
           {
@@ -288,6 +323,15 @@ void Smb4KWalletManager::readAuthInfo( Smb4KAuthInfo *authInfo )
           if ( authInfo->workgroupName().isEmpty() && !map["Workgroup"].isEmpty() )
           {
             authInfo->setWorkgroupName( map.value( "Workgroup" ) );
+          }
+          else
+          {
+            // Do nothing
+          }
+
+          if ( authInfo->ip().isEmpty() && !map["IP Address"].isEmpty() )
+          {
+            authInfo->setIP( map.value( "IP Address" ) );
           }
           else
           {
@@ -348,7 +392,8 @@ void Smb4KWalletManager::readAuthInfo( Smb4KAuthInfo *authInfo )
   {
     for ( int i = 0; i < m_list.size(); ++i )
     {
-      if ( QString::compare( authInfo->unc().toUpper(), m_list.at( i )->unc().toUpper() ) == 0 )
+      if ( QString::compare( authInfo->unc().toUpper(), m_list.at( i )->unc().toUpper() ) == 0 ||
+           (authInfo->type() == Smb4KAuthInfo::Host && QString::compare( authInfo->ip(), m_list.at( i )->ip() ) == 0) )
       {
         // Exact match
         authInfo->setLogin( m_list.at( i )->login() );
@@ -363,9 +408,19 @@ void Smb4KWalletManager::readAuthInfo( Smb4KAuthInfo *authInfo )
           // Do nothing
         }
 
+        if ( authInfo->ip().isEmpty() )
+        {
+          authInfo->setIP( m_list.at( i )->ip() );
+        }
+        else
+        {
+          // Do nothing
+        }
+
         break;
       }
-      else if ( QString::compare( authInfo->hostUNC().toUpper(), m_list.at( i )->hostUNC().toUpper() ) == 0 )
+      else if ( QString::compare( authInfo->hostUNC().toUpper(), m_list.at( i )->hostUNC().toUpper() ) == 0 ||
+                (authInfo->type() == Smb4KAuthInfo::Share && QString::compare( authInfo->ip(), m_list.at( i )->ip() ) == 0) )
       {
         // The host is the same
         authInfo->setLogin( m_list.at( i )->login() );
@@ -374,6 +429,15 @@ void Smb4KWalletManager::readAuthInfo( Smb4KAuthInfo *authInfo )
         if ( authInfo->workgroupName().isEmpty() )
         {
           authInfo->setWorkgroupName( m_list.at( i )->workgroupName() );
+        }
+        else
+        {
+          // Do nothing
+        }
+
+        if ( authInfo->ip().isEmpty() )
+        {
+          authInfo->setIP( m_list.at( i )->ip() );
         }
         else
         {
@@ -445,10 +509,19 @@ void Smb4KWalletManager::writeAuthInfo( Smb4KAuthInfo *authInfo )
         // Take care that no empty UNC is written to the wallet.
         // We test the host name here.
         if ( !authInfo->hostName().isEmpty() )
-          {
+        {
           if ( !authInfo->workgroupName().isEmpty() )
           {
             map["Workgroup"] = authInfo->workgroupName().toUpper();
+          }
+          else
+          {
+            // Do nothing
+          }
+
+          if ( !authInfo->ip().isEmpty() )
+          {
+            map["IP Address"] = authInfo->ip();
           }
           else
           {
@@ -521,7 +594,7 @@ bool Smb4KWalletManager::showPasswordDialog( Smb4KAuthInfo *authInfo, QWidget *p
     
     QStringList users = Smb4KHomesSharesHandler::self()->homesUsers( &share );
     
-    for ( int i = 0; i < users.size(); i++ )
+    for ( int i = 0; i < users.size(); ++i )
     {
       Smb4KAuthInfo user_auth_info( *authInfo );
       user_auth_info.setLogin( users.at( i ) );
@@ -616,7 +689,7 @@ QList<Smb4KAuthInfo *> Smb4KWalletManager::walletEntries()
         if ( QString::compare( entries.at( i ), "DEFAULT_LOGIN" ) == 0 )
         {
           // Default login
-          authInfo->setDefaultAuthInfo();
+          authInfo->useDefaultAuthInfo();
         }
         else
         {
