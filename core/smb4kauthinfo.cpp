@@ -20,9 +20,13 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
+
+// Qt includes
+#include <QHostAddress>
+#include <QAbstractSocket>
 
 // KDE includes
 #include <kdebug.h>
@@ -32,13 +36,15 @@
 
 
 Smb4KAuthInfo::Smb4KAuthInfo( const Smb4KHost *host )
-: m_url( host->url() ), m_type( Host ), m_workgroup( host->workgroupName() ), m_homes_share( false )
+: m_url( host->url() ), m_type( Host ), m_workgroup( host->workgroupName() ), m_homes_share( false ),
+  m_ip( host->ip() )
 {
 }
 
 
 Smb4KAuthInfo::Smb4KAuthInfo( const Smb4KShare *share )
-: m_url( QUrl() ), m_type( Share ), m_workgroup( share->workgroupName() ), m_homes_share( share->isHomesShare() )
+: m_url( QUrl() ), m_type( Share ), m_workgroup( share->workgroupName() ), m_homes_share( share->isHomesShare() ),
+  m_ip( share->hostIP() )
 {
   if ( !m_homes_share )
   {
@@ -52,13 +58,14 @@ Smb4KAuthInfo::Smb4KAuthInfo( const Smb4KShare *share )
 
 
 Smb4KAuthInfo::Smb4KAuthInfo()
-: m_url( QUrl() ), m_type( Unknown ), m_workgroup( QString() ), m_homes_share( false )
+: m_url( QUrl() ), m_type( Unknown ), m_workgroup( QString() ), m_homes_share( false ), m_ip( QString() )
 {
 }
 
 
 Smb4KAuthInfo::Smb4KAuthInfo( const Smb4KAuthInfo &i )
-: m_url( i.url() ), m_type( i.type() ), m_workgroup( i.workgroupName() ), m_homes_share( i.isHomesShare() )
+: m_url( i.url() ), m_type( i.type() ), m_workgroup( i.workgroupName() ), m_homes_share( i.isHomesShare() ),
+  m_ip( i.ip() )
 {
 }
 
@@ -228,7 +235,7 @@ void Smb4KAuthInfo::setPassword( const QString &passwd )
 }
 
 
-void Smb4KAuthInfo::setDefaultAuthInfo()
+void Smb4KAuthInfo::useDefaultAuthInfo()
 {
   m_type = Default;
 }
@@ -277,6 +284,37 @@ bool Smb4KAuthInfo::equals( Smb4KAuthInfo *info ) const
   {
     // Do nothing
   }
+
+  // IP address
+  if ( QString::compare( m_ip, info->ip() ) != 0 )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
   
   return true;
 }
+
+
+void Smb4KAuthInfo::setIP( const QString &ip )
+{
+  m_ip = ipIsValid( ip );
+}
+
+
+const QString &Smb4KAuthInfo::ipIsValid( const QString &ip )
+{
+  QHostAddress ip_address( ip );
+
+  if ( ip_address.protocol() == QAbstractSocket::UnknownNetworkLayerProtocol )
+  {
+    // The IP address is invalid.
+    static_cast<QString>( ip ).clear();
+  }
+
+  return ip;
+}
+

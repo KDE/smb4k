@@ -20,8 +20,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 #ifndef SMB4KAUTHINFO_H
@@ -224,7 +224,7 @@ class KDE_EXPORT Smb4KAuthInfo
      * This function sets the type of this authentication information to
      * "Default", i.e. it carries the default authentication information.
      */
-    void setDefaultAuthInfo();
+    void useDefaultAuthInfo();
 
     /**
      * Compare another Smb4KAuthInfo object with this one an return TRUE if both carry
@@ -249,6 +249,20 @@ class KDE_EXPORT Smb4KAuthInfo
      */
     const QUrl &url() const { return m_url; }
 
+    /**
+     * Sets the IP address for this authentication information object
+     *
+     * @param ip          The IP address
+     */
+    void setIP( const QString &ip );
+
+    /**
+     * Returns the IP address
+     *
+     * @returns the IP address
+     */
+    const QString &ip() const { return m_ip; }
+
   private:
     /**
      * The URL
@@ -269,6 +283,23 @@ class KDE_EXPORT Smb4KAuthInfo
      * Is this a homes share
      */
     bool m_homes_share;
+
+    /**
+     * The IP address
+     */
+    QString m_ip;
+
+    /**
+     * This function checks if the given IP address is either
+     * compatible with IPv4 or IPv6. If it is not, an empty string
+     * is returned.
+     *
+     * @param ip              The IP address that needs to be checked.
+     *
+     * @returns the IP address or an empty string if the IP address
+     * is not compatible with either IPv4 or IPv6.
+     */
+    const QString &ipIsValid( const QString &ip );
 };
 
 #endif
