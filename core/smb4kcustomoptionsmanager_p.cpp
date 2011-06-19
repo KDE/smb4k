@@ -286,7 +286,7 @@ void Smb4KCustomOptionsDialog::setupView()
   QLabel *uid_label = new QLabel( i18n( "User ID:" ), editors );
   m_user_id         = new KComboBox( editors );
   
-  for ( int i = 0; i < KUser::allUsers().size(); i++ )
+  for ( int i = 0; i < KUser::allUsers().size(); ++i )
   {
     KUser user = KUser::allUsers().at( i );
     m_user_id->insertItem( i, QString( "%1 (%2)" ).arg( user.loginName() ).arg( user.uid() ), 
@@ -305,7 +305,7 @@ void Smb4KCustomOptionsDialog::setupView()
   QLabel *gid_label = new QLabel( i18n( "Group ID:" ), editors );
   m_group_id        = new KComboBox( editors );
   
-  for ( int i = 0; i < KUserGroup::allGroups().size(); i++ )
+  for ( int i = 0; i < KUserGroup::allGroups().size(); ++i )
   {
     KUserGroup group = KUserGroup::allGroups().at( i );
     m_group_id->insertItem( i, QString( "%1 (%2)" ).arg( group.name() ).arg( group.gid() ), 
@@ -499,7 +499,7 @@ void Smb4KCustomOptionsDialog::slotSetDefaultValues()
     }
   }
   
-  for ( int i = 0; i < m_user_id->count(); i++ )
+  for ( int i = 0; i < m_user_id->count(); ++i )
   {
     if ( m_user_id->itemData( i ).toInt() == Smb4KSettings::userID().toInt() )
     {
@@ -512,7 +512,7 @@ void Smb4KCustomOptionsDialog::slotSetDefaultValues()
     }
   }
   
-  for ( int i = 0; i < m_group_id->count(); i++ )
+  for ( int i = 0; i < m_group_id->count(); ++i )
   {
     if ( m_group_id->itemData( i ).toInt() == Smb4KSettings::groupID().toInt() )
     {
