@@ -3,8 +3,8 @@
     of Smb4K.
                              -------------------
     begin                : Fr Jun 1 2007
-    copyright            : (C) 2007-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2007-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -20,8 +20,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 // Qt includes
@@ -158,7 +158,7 @@ void Smb4KNetworkSearchPart::setupActions()
   // No shortcut.
   connect( clear_action, SIGNAL( triggered( bool ) ), this, SLOT( slotClearActionTriggered( bool ) ) );
 
-  KAction *item_action    = new KAction( KIcon( "list-add" ), i18n( "A&dd" ),
+  KAction *item_action    = new KAction( KIcon( "emblem-mounted" ), i18n( "Mount" ),
                            actionCollection() );
   item_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_D ) );
   connect( item_action, SIGNAL( triggered( bool ) ), this, SLOT( slotAddActionTriggered( bool ) ) );
@@ -332,16 +332,9 @@ void Smb4KNetworkSearchPart::slotAddActionTriggered( bool /*checked*/ )
 
   switch ( item->type() )
   {
-    case Smb4KNetworkSearchItem::Host:
-    {
-      Smb4KScanner::self()->insertHost( item->hostItem() );
-
-      break;
-    }
     case Smb4KNetworkSearchItem::Share:
     {
       Smb4KMounter::self()->mountShare( item->shareItem() );
-
       break;
     }
     default:
@@ -384,18 +377,9 @@ void Smb4KNetworkSearchPart::slotItemDoubleClicked( QListWidgetItem *item )
 
     switch ( searchItem->type() )
     {
-      case Smb4KNetworkSearchItem::Host:
-      {
-        // The scanner will check if this host is already in the
-        // list.
-        Smb4KScanner::self()->insertHost( searchItem->hostItem() );
-
-        break;
-      }
       case Smb4KNetworkSearchItem::Share:
       {
         Smb4KMounter::self()->mountShare( searchItem->shareItem() );
-
         break;
       }
       default:
@@ -425,18 +409,8 @@ void Smb4KNetworkSearchPart::slotItemSelectionChanged()
 
       switch ( item->type() )
       {
-        case Smb4KNetworkSearchItem::Host:
-        {
-          actionCollection()->action( "item_action" )->setText( i18n( "A&dd" ) );
-          actionCollection()->action( "item_action" )->setIcon( KIcon( "list-add" ) );
-          actionCollection()->action( "item_action" )->setEnabled( true );
-
-          break;
-        }
         case Smb4KNetworkSearchItem::Share:
         {
-          actionCollection()->action( "item_action" )->setText( i18n( "Mount" ) );
-          actionCollection()->action( "item_action" )->setIcon( KIcon( "folder-remote" ) );
           actionCollection()->action( "item_action" )->setEnabled( true );
 
           break;
@@ -444,7 +418,6 @@ void Smb4KNetworkSearchPart::slotItemSelectionChanged()
         default:
         {
           actionCollection()->action( "item_action" )->setEnabled( false );
-
           break;
         }
       }
@@ -566,16 +539,16 @@ void Smb4KNetworkSearchPart::slotReceivedSearchResult( Smb4KBasicNetworkItem *it
 }
 
 
-void Smb4KNetworkSearchPart::slotSearchAboutToStart( const QString &string )
+void Smb4KNetworkSearchPart::slotSearchAboutToStart( const QString &/*string*/ )
 {
-  if ( !m_silent )
-  {
-    emit setStatusBarText( i18n( "Searching for \"%1\"..." ).arg( string ) );
-  }
-  else
-  {
-    // Do nothing
-  }
+//   if ( !m_silent )
+//   {
+//     emit setStatusBarText( i18n( "Searching for \"%1\"..." ).arg( string ) );
+//   }
+//   else
+//   {
+//     // Do nothing
+//   }
 
   m_widget->comboBox()->setEnabled( false );
   actionCollection()->action( "abort_search_action" )->setEnabled( true );
@@ -587,14 +560,14 @@ void Smb4KNetworkSearchPart::slotSearchAboutToStart( const QString &string )
 
 void Smb4KNetworkSearchPart::slotSearchFinished( const QString &/*string*/ )
 {
-  if ( !m_silent )
-  {
-    emit setStatusBarText( i18n( "Done." ) );
-  }
-  else
-  {
-    // Do nothing
-  }
+//   if ( !m_silent )
+//   {
+//     emit setStatusBarText( i18n( "Done." ) );
+//   }
+//   else
+//   {
+//     // Do nothing
+//   }
 
   m_widget->comboBox()->setEnabled( true );
   actionCollection()->action( "abort_search_action" )->setEnabled( false );
@@ -624,7 +597,14 @@ void Smb4KNetworkSearchPart::slotCheckItemIsKnown()
       {
         Smb4KHost *host = findHost( item->hostItem()->hostName(), item->hostItem()->workgroupName() );
 
-        item->setKnown( (host ? true : false) );
+        if ( host )
+        {
+          item->setKnown( true );
+        }
+        else
+        {
+          item->setKnown( false );
+        }
 
         break;
       }
