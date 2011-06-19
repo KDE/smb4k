@@ -267,6 +267,12 @@ void Smb4KHost::setLogin( const QString &login )
 }
 
 
+void Smb4KHost::setPassword( const QString &passwd )
+{
+  m_url.setPassword( passwd );
+}
+
+
 void Smb4KHost::setPort( int port )
 {
   m_url.setPort( port );

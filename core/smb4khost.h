@@ -306,6 +306,13 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
     QString login() const { return m_url.userName(); }
     
     /**
+     * Set the password used for authentication.
+     * 
+     * @param passwd              The password
+     */
+    void setPassword( const QString &passwd );
+    
+    /**
      * Returns the password.
      * 
      * @returns the password.
