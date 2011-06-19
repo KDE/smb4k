@@ -3,8 +3,8 @@
     of Smb4K.
                              -------------------
     begin                : Mi Jan 28 2009
-    copyright            : (C) 2009 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2009-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -20,8 +20,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 // Qt includes
@@ -32,6 +32,7 @@
 // KDE includes
 #include <kdebug.h>
 #include <kstandarddirs.h>
+#include <kshell.h>
 
 // application specific includes
 #include <smb4kipaddressscanner_p.h>
@@ -145,7 +146,7 @@ void Smb4KIPLookupJob::slotStartLookup()
   if ( !Smb4KSettings::domainName().isEmpty() &&
        QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0 )
   {
-    arguments << QString( "-W '%1'" ).arg( Smb4KSettings::domainName() );
+    arguments << QString( "-W %1" ).arg( KShell::quoteArg( Smb4KSettings::domainName() ) );
   }
   else
   {
@@ -156,7 +157,7 @@ void Smb4KIPLookupJob::slotStartLookup()
   if ( !Smb4KSettings::netBIOSName().isEmpty() &&
        QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0 )
   {
-    arguments << QString( "-n '%1'" ).arg( Smb4KSettings::netBIOSName() );
+    arguments << QString( "-n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) );
   }
   else
   {
@@ -167,7 +168,7 @@ void Smb4KIPLookupJob::slotStartLookup()
   if ( !Smb4KSettings::netBIOSScope().isEmpty() &&
        QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0 )
   {
-    arguments << QString( "-i '%1'" ).arg( Smb4KSettings::netBIOSScope() );
+    arguments << QString( "-i %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSScope() ) );
   }
   else
   {
@@ -178,7 +179,7 @@ void Smb4KIPLookupJob::slotStartLookup()
   if ( !Smb4KSettings::socketOptions().isEmpty() &&
        QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0 )
   {
-    arguments << QString( "-O '%1'" ).arg( Smb4KSettings::socketOptions() );
+    arguments << QString( "-O %1" ).arg( KShell::quoteArg( Smb4KSettings::socketOptions() ) );
   }
   else
   {
@@ -212,7 +213,7 @@ void Smb4KIPLookupJob::slotStartLookup()
   if ( !winsServer().isEmpty() )
   {
     arguments << "-R";
-    arguments << QString( "-U '%1'" ).arg( winsServer() );
+    arguments << QString( "-U %1" ).arg( KShell::quoteArg( winsServer() ) );
   }
   else
   {
@@ -220,7 +221,7 @@ void Smb4KIPLookupJob::slotStartLookup()
   }
 
   arguments << "--";
-  arguments << QString( "'%1'" ).arg( m_host->hostName() );
+  arguments << KShell::quoteArg( m_host->hostName() );
   arguments << "|";
   arguments << grep;
   arguments << "'<00>'";
