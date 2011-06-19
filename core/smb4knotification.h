@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 #ifndef SMB4KNOTIFICATION_H
@@ -147,6 +147,12 @@ class KDE_EXPORT Smb4KNotification : public QObject
      * @param bookmark  The bookmark
      */
     void bookmarkLabelInUse( Smb4KBookmark *bookmark );
+
+    /**
+     * This warning is shown if the entry of the custom master browser
+     * is empty.
+     */
+    void emptyCustomMasterBrowser();
 
     //
     // Errors
@@ -336,6 +342,12 @@ class KDE_EXPORT Smb4KNotification : public QObject
     * class that refuses to process it.
     */
     void invalidURLPassed();
+
+    /**
+     * This error message is emitted if the entry of the broadcast areas
+     * is empty.
+     */
+    void emptyBroadcastAreas();
 
   protected slots:
     /**

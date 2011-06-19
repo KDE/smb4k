@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 // KDE includes
@@ -242,6 +242,20 @@ void Smb4KNotification::bookmarkLabelInUse( Smb4KBookmark *bookmark )
                                 i18n( "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> "
                                 "is already being used and will automatically be renamed.</p>", bookmark->label(), bookmark->unc() ),
                                 KIconLoader::global()->loadIcon( "dialog-warning", KIconLoader::NoGroup, 0, 
+                                KIconLoader::DefaultState ),
+                                0L,
+                                KNotification::CloseOnTimeout );
+  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+}
+
+
+void Smb4KNotification::emptyCustomMasterBrowser()
+{
+  KNotification *notification = KNotification::event( KNotification::Warning,
+                                "Smb4K",
+                                i18n( "The entry of the custom master browser is empty. Smb4K is going to "
+                                "try to query the current master browser of your workgroup or domain instead." ),
+                                KIconLoader::global()->loadIcon( "dialog-warning", KIconLoader::NoGroup, 0,
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::CloseOnTimeout );
@@ -768,6 +782,17 @@ void Smb4KNotification::invalidURLPassed()
 }
 
 
+void Smb4KNotification::emptyBroadcastAreas()
+{
+  KNotification *notification = KNotification::event( KNotification::Warning,
+                                "Smb4K",
+                                i18n( "There are no broadcast areas defined." ),
+                                KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0,
+                                KIconLoader::DefaultState ),
+                                0L,
+                                KNotification::Persistent );
+  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+}
 
 /////////////////////////////////////////////////////////////////////////////
 // SLOT IMPLEMENTATIONS
