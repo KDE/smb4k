@@ -28,7 +28,7 @@
 #include <QDebug>
 #include <QHostAddress>
 #include <QAbstractSocket>
-#include <QCoreApplication>
+#include <QApplication>
 
 // KDE includes
 #include <kglobal.h>
@@ -127,6 +127,15 @@ void Smb4KSearch::search( const QString &string, QWidget *parent )
   connect( job, SIGNAL( aboutToStart( const QString & ) ), SIGNAL( aboutToStart( const QString & ) ) );
   connect( job, SIGNAL( finished( const QString & ) ), SIGNAL( finished( const QString & ) ) );
 
+  if ( !hasSubjobs() )
+  {
+    QApplication::setOverrideCursor( Qt::BusyCursor );
+  }
+  else
+  {
+    // Do nothing
+  }
+
   addSubjob( job );
 
   job->start();
@@ -143,7 +152,7 @@ bool Smb4KSearch::isRunning( const QString &string )
 {
   bool running = false;
 
-  for ( int i = 0; i < subjobs().size(); i++ )
+  for ( int i = 0; i < subjobs().size(); ++i )
   {
     if ( QString::compare( QString( "SearchJob_%1" ).arg( string ), subjobs().at( i )->objectName() ) == 0 )
     {
@@ -163,7 +172,7 @@ bool Smb4KSearch::isRunning( const QString &string )
 
 void Smb4KSearch::abortAll()
 {
-  for ( int i = 0; i < subjobs().size(); i++ )
+  for ( int i = 0; i < subjobs().size(); ++i )
   {
     subjobs().at( i )->kill( KJob::EmitResult );
   }
@@ -172,7 +181,7 @@ void Smb4KSearch::abortAll()
 
 void Smb4KSearch::abort( const QString &string )
 {
-  for ( int i = 0; i < subjobs().size(); i++ )
+  for ( int i = 0; i < subjobs().size(); ++i )
   {
     if ( QString::compare( QString( "SearchJob_%1" ).arg( string ), subjobs().at( i )->objectName() ) == 0 )
     {
@@ -206,6 +215,15 @@ void Smb4KSearch::slotStartJobs()
 void Smb4KSearch::slotJobFinished( KJob *job )
 {
   removeSubjob( job );
+
+  if ( !hasSubjobs() )
+  {
+    QApplication::restoreOverrideCursor();
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
