@@ -107,7 +107,7 @@ void Smb4KBookmarkHandler::addBookmarks( const QList<Smb4KShare *> &list, QWidge
   // Prepare the list of bookmarks and show the save dialog.
   QList<Smb4KBookmark *> new_bookmarks;
   
-  for ( int i = 0; i < list.size(); i++ )
+  for ( int i = 0; i < list.size(); ++i )
   {
     // Check if the share is a printer
     if ( list.at( i )->isPrinter() )
@@ -169,7 +169,7 @@ void Smb4KBookmarkHandler::addBookmarks( const QList<Smb4KShare *> &list, QWidge
     if ( dlg.exec() == KDialog::Accepted )
     {
       // Check the label of the new bookmarks.
-      for ( int i = 0; i < new_bookmarks.size(); i++ )
+      for ( int i = 0; i < new_bookmarks.size(); ++i )
       {
         if ( !new_bookmarks.at( i )->label().isEmpty() )
         {
@@ -457,7 +457,7 @@ QList<Smb4KBookmark *> Smb4KBookmarkHandler::bookmarks( const QString &group )
   // Get the list of bookmarks organized in the given group
   QList<Smb4KBookmark *> bookmarks;
 
-  for ( int i = 0; i < m_bookmarks.size(); i++ )
+  for ( int i = 0; i < m_bookmarks.size(); ++i )
   {
     if ( QString::compare( group, m_bookmarks.at( i )->group(), Qt::CaseInsensitive ) == 0 )
     {
@@ -477,7 +477,7 @@ QStringList Smb4KBookmarkHandler::groups()
 {
   QStringList groups;
 
-  for ( int i = 0; i < m_bookmarks.size(); i++ )
+  for ( int i = 0; i < m_bookmarks.size(); ++i )
   {
     if ( !groups.contains( m_bookmarks.at( i )->group() ) )
     {
@@ -514,7 +514,7 @@ void Smb4KBookmarkHandler::editBookmarks( QWidget *parent )
         bookmark = it.next();
         bool found = false;
 
-        for ( int i = 0; i < bookmarks.size(); i++ )
+        for ( int i = 0; i < bookmarks.size(); ++i )
         {
           if ( QString::compare( bookmark->unc(), bookmarks.at( i )->unc() ) == 0 &&
                QString::compare( bookmark->workgroupName(), bookmarks.at( i )->workgroupName() ) == 0 )
