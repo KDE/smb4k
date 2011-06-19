@@ -587,7 +587,7 @@ void Smb4KConfigDialog::slotSetDefaultLogin()
     Smb4KWalletManager::self()->init( this );
   
     Smb4KAuthInfo authInfo;
-    authInfo.setDefaultAuthInfo();
+    authInfo.useDefaultAuthInfo();
     
     Smb4KWalletManager::self()->readAuthInfo( &authInfo );
     
