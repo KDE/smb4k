@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 // Qt includes
@@ -103,7 +103,7 @@ bool Smb4KPrint::isRunning( Smb4KShare *share )
 {
   bool running = false;
 
-  for ( int i = 0; i < subjobs().size(); i++ )
+  for ( int i = 0; i < subjobs().size(); ++i )
   {
     if ( QString::compare( QString( "PrintJob_%1" ).arg( share->unc() ), subjobs().at( i )->objectName() ) == 0 )
     {
@@ -122,7 +122,7 @@ bool Smb4KPrint::isRunning( Smb4KShare *share )
 
 void Smb4KPrint::abortAll()
 {
-  for ( int i = 0; i < subjobs().size(); i++ )
+  for ( int i = 0; i < subjobs().size(); ++i )
   {
     subjobs().at( i )->kill( KJob::EmitResult );
   }
@@ -131,7 +131,7 @@ void Smb4KPrint::abortAll()
 
 void Smb4KPrint::abort( Smb4KShare *share )
 {
-  for ( int i = 0; i < subjobs().size(); i++ )
+  for ( int i = 0; i < subjobs().size(); ++i )
   {
     if ( QString::compare( QString( "PrintJob_%1" ).arg( share->unc() ), subjobs().at( i )->objectName() ) == 0 )
     {
