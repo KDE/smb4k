@@ -98,7 +98,7 @@ bool Smb4KSynchronizer::isRunning( Smb4KShare *share )
 {
   bool running = false;
 
-  for ( int i = 0; i < subjobs().size(); i++ )
+  for ( int i = 0; i < subjobs().size(); ++i )
   {
     if ( QString::compare( QString( "SyncJob_%1" ).arg( QString::fromUtf8( share->canonicalPath() ) ), subjobs().at( i )->objectName() ) == 0 )
     {
@@ -117,7 +117,7 @@ bool Smb4KSynchronizer::isRunning( Smb4KShare *share )
 
 void Smb4KSynchronizer::abortAll()
 {
-  for ( int i = 0; i < subjobs().size(); i++ )
+  for ( int i = 0; i < subjobs().size(); ++i )
   {
     subjobs().at( i )->kill( KJob::EmitResult );
   }
@@ -126,7 +126,7 @@ void Smb4KSynchronizer::abortAll()
 
 void Smb4KSynchronizer::abort( Smb4KShare *share )
 {
-  for ( int i = 0; i < subjobs().size(); i++ )
+  for ( int i = 0; i < subjobs().size(); ++i )
   {
     if ( QString::compare( QString( "SyncJob_%1" ).arg( QString::fromUtf8( share->canonicalPath() ) ), subjobs().at( i )->objectName() ) == 0 )
     {
