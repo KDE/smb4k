@@ -304,7 +304,7 @@ void Smb4KHomesSharesHandler::findHomesUsers( Smb4KShare *share, QStringList *us
   Q_ASSERT( share );
   Q_ASSERT( users );
   
-  for ( int i = 0; i < m_homes_users.size(); i++ )
+  for ( int i = 0; i < m_homes_users.size(); ++i )
   {
     if ( QString::compare( share->unc(), m_homes_users.at( i ).share.unc(), Qt::CaseInsensitive ) == 0 &&
          ((m_homes_users.at( i ).share.workgroupName().isEmpty() || share->workgroupName().isEmpty()) ||
@@ -328,7 +328,7 @@ void Smb4KHomesSharesHandler::addHomesUsers( Smb4KShare *share, QStringList *use
   
   bool found = false;
   
-  for ( int i = 0; i < m_homes_users.size(); i++ )
+  for ( int i = 0; i < m_homes_users.size(); ++i )
   {
     if ( QString::compare( share->unc(), m_homes_users.at( i ).share.unc(), Qt::CaseInsensitive ) == 0 &&
          ((m_homes_users.at( i ).share.workgroupName().isEmpty() || share->workgroupName().isEmpty()) ||
