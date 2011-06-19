@@ -2,8 +2,8 @@
     smb4kpreviewer_p  -  Private helper classes for Smb4KPreviewer class.
                              -------------------
     begin                : So Dez 21 2008
-    copyright            : (C) 2008-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2008-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 // Qt includes
@@ -35,6 +35,7 @@
 #include <kmimetype.h>
 #include <ktoolbar.h>
 #include <kstatusbar.h>
+#include <kshell.h>
 
 // application specific includes
 #include <smb4kpreviewer_p.h>
@@ -117,18 +118,21 @@ void Smb4KPreviewJob::slotStartPreview()
 
   // Compile the command line arguments
   QStringList arguments;
+  
+  // smbclient command
+  arguments << smbclient;
 
   // UNC
   arguments << m_share->unc();
 
   // Workgroup
-  arguments << QString( "-W '%1'" ).arg( m_share->workgroupName() );
+  arguments << QString( "-W %1" ).arg( KShell::quoteArg( m_share->workgroupName() ) );
 
   // Directory
-  arguments << QString( "-D '%1'" ).arg( path.isEmpty() ? "/" : path );
+  arguments << QString( "-D %1" ).arg( KShell::quoteArg( path.isEmpty() ? "/" : path ) );
 
   // Command to perform (here: ls)
-  arguments << QString( "-c '%1'" ).arg( "ls" );
+  arguments << QString( "-c %1" ).arg( KShell::quoteArg( "ls" ) );
 
   // IP address
   if ( !m_share->hostIP().isEmpty() )
@@ -251,7 +255,7 @@ void Smb4KPreviewJob::slotStartPreview()
   if ( !Smb4KSettings::nameResolveOrder().isEmpty() &&
         QString::compare( Smb4KSettings::nameResolveOrder(), samba_options["name resolve order"] ) != 0 )
   {
-    arguments << QString( "-R %1" ).arg( Smb4KSettings::nameResolveOrder() );
+    arguments << QString( "-R %1" ).arg( KShell::quoteArg( Smb4KSettings::nameResolveOrder() ) );
   }
   else
   {
@@ -262,7 +266,7 @@ void Smb4KPreviewJob::slotStartPreview()
   if ( !Smb4KSettings::netBIOSName().isEmpty() &&
        QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0 )
   {
-    arguments << QString( "-n %1" ).arg( Smb4KSettings::netBIOSName() );
+    arguments << QString( "-n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) );
   }
   else
   {
@@ -273,7 +277,7 @@ void Smb4KPreviewJob::slotStartPreview()
   if ( !Smb4KSettings::netBIOSScope().isEmpty() &&
        QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0 )
   {
-    arguments << QString( "-i %1" ).arg( Smb4KSettings::netBIOSScope() );
+    arguments << QString( "-i %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSScope() ) );
   }
   else
   {
@@ -284,7 +288,7 @@ void Smb4KPreviewJob::slotStartPreview()
   if ( !Smb4KSettings::socketOptions().isEmpty() &&
        QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0 )
   {
-    arguments << QString( "-O %1" ).arg( Smb4KSettings::socketOptions() );
+    arguments << QString( "-O %1" ).arg( KShell::quoteArg( Smb4KSettings::socketOptions() ) );
   }
   else
   {
@@ -300,18 +304,10 @@ void Smb4KPreviewJob::slotStartPreview()
     arguments << "-U %";
   }
 
-  // For the time being, we need to use the shell command stuff here,
-  // because I haven't found out yet how to properly redirect the output
-  // of smbclient.
-  QString command;
-  command += smbclient;
-  command += " ";
-  command += arguments.join( " " );
-
   m_proc = new Smb4KProcess( Smb4KProcess::Preview, this );
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
   m_proc->setEnv( "PASSWD", m_share->password(), true );
-  m_proc->setShellCommand( command );
+  m_proc->setShellCommand( arguments.join( " " ) );
 
   connect( m_proc, SIGNAL( readyReadStandardOutput() ), SLOT( slotReadStandardOutput() ) );
   connect( m_proc, SIGNAL( readyReadStandardError() ),  SLOT( slotReadStandardError() ) );
@@ -763,7 +759,7 @@ void Smb4KPreviewDialog::slotDisplayPreview( const QUrl &url, const QList<Item> 
   }
 
   // Display the preview
-  for ( int i = 0; i < contents.size(); i++ )
+  for ( int i = 0; i < contents.size(); ++i )
   {
     switch ( contents.at( i ).first )
     {
