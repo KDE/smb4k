@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 // Qt includes
@@ -91,7 +91,7 @@ void Smb4KPreviewer::preview( Smb4KShare *share, QWidget *parent )
   // for this share and reuse it, if appropriate.
   Smb4KPreviewDialog *dlg = NULL;
   
-  for ( int i = 0; i < m_dialogs.size(); i++ )
+  for ( int i = 0; i < m_dialogs.size(); ++i )
   {
     if ( share == m_dialogs.at( i )->share() )
     {
@@ -145,7 +145,7 @@ bool Smb4KPreviewer::isRunning( Smb4KShare *share )
 {
   bool running = false;
 
-  for ( int i = 0; i < subjobs().size(); i++ )
+  for ( int i = 0; i < subjobs().size(); ++i )
   {
     if ( QString::compare( QString( "PreviewJob_%1" ).arg( share->unc() ), subjobs().at( i )->objectName() ) == 0 )
     {
@@ -164,7 +164,7 @@ bool Smb4KPreviewer::isRunning( Smb4KShare *share )
 
 void Smb4KPreviewer::abortAll()
 {
-  for ( int i = 0; i < subjobs().size(); i++ )
+  for ( int i = 0; i < subjobs().size(); ++i )
   {
     subjobs().at( i )->kill( KJob::EmitResult );
   }
@@ -173,7 +173,7 @@ void Smb4KPreviewer::abortAll()
 
 void Smb4KPreviewer::abort( Smb4KShare *share )
 {
-  for ( int i = 0; i < subjobs().size(); i++ )
+  for ( int i = 0; i < subjobs().size(); ++i )
   {
     if ( QString::compare( QString( "PreviewJob_%1" ).arg( share->unc() ), subjobs().at( i )->objectName() ) == 0 )
     {
@@ -268,7 +268,7 @@ void Smb4KPreviewer::slotAcquirePreview( Smb4KShare *share, const QUrl &url, QWi
   // can be sent.
   Smb4KPreviewDialog *dlg = NULL;
 
-  for ( int i = 0; i < m_dialogs.size(); i++ )
+  for ( int i = 0; i < m_dialogs.size(); ++i )
   {
     if ( m_dialogs.at( i ) && m_dialogs.at( i )->share() == share )
     {
