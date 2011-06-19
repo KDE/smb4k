@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 // Qt includes
@@ -63,7 +63,7 @@ void Smb4KIPAddressScanner::lookup( bool force, QWidget *parent )
 {
   if ( !hostsList().isEmpty() )
   {
-    for ( int i = 0; i < hostsList().size(); i++ )
+    for ( int i = 0; i < hostsList().size(); ++i )
     {
       // We do not need to lookup the IP address for a
       // host that already has got one except 'force' is 
@@ -99,7 +99,7 @@ void Smb4KIPAddressScanner::lookup( bool force, QWidget *parent )
 
 void Smb4KIPAddressScanner::getIPAddress( Smb4KWorkgroup *workgroup )
 {
-  for ( int i = 0; i < hostsList().size(); i++ )
+  for ( int i = 0; i < hostsList().size(); ++i )
   {
     if ( !hostsList().at( i )->workgroupName().isEmpty() )
     {
@@ -153,7 +153,7 @@ void Smb4KIPAddressScanner::getIPAddress( Smb4KWorkgroup *workgroup )
 
 void Smb4KIPAddressScanner::getIPAddress( Smb4KHost *host )
 {
-  for ( int i = 0; i < hostsList().size(); i++ )
+  for ( int i = 0; i < hostsList().size(); ++i )
   {
     if ( !hostsList().at( i )->workgroupName().isEmpty() && host->workgroupName().isEmpty() )
     {
@@ -213,7 +213,7 @@ bool Smb4KIPAddressScanner::isRunning()
 
 void Smb4KIPAddressScanner::abortAll()
 {
-  for ( int i = 0; i < subjobs().size(); i++ )
+  for ( int i = 0; i < subjobs().size(); ++i )
   {
     subjobs().at( i )->kill( KJob::EmitResult );
   }
