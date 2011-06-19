@@ -322,7 +322,7 @@ void Smb4KScanner::abort( Smb4KScanner::Process process, Smb4KBasicNetworkItem *
           if ( subjobs().at( i )->objectName().startsWith( "LookupDomainMembersJob" ) )
           {
             subjobs().at( i )->kill( KJob::EmitResult );
-            break;
+            continue;
           }
           else
           {
@@ -369,7 +369,7 @@ void Smb4KScanner::abort( Smb4KScanner::Process process, Smb4KBasicNetworkItem *
           if ( subjobs().at( i )->objectName().startsWith( "LookupSharesJob" ) )
           {
             subjobs().at( i )->kill( KJob::EmitResult );
-            break;
+            continue;
           }
           else
           {
@@ -417,7 +417,7 @@ void Smb4KScanner::abort( Smb4KScanner::Process process, Smb4KBasicNetworkItem *
           if ( subjobs().at( i )->objectName().startsWith( "LookupInfoJob" ) )
           {
             subjobs().at( i )->kill( KJob::EmitResult );
-            break;
+            continue;
           }
           else
           {
