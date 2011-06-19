@@ -923,6 +923,21 @@ void Smb4KShare::setLogin( const QString &login )
 }
 
 
+void Smb4KShare::setPassword( const QString &passwd )
+{
+  // Avoid that the password is overwritten with an empty 
+  // string if we have a homes share.
+  if ( !isHomesShare() || !passwd.isEmpty() )
+  {
+    m_url.setPassword( passwd );
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
 void Smb4KShare::setShareIcon()
 {
   // We have three base icons: The remote folder, the locked folder
