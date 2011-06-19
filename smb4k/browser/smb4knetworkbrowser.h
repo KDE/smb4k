@@ -207,11 +207,6 @@ class Smb4KNetworkBrowser : public QTreeWidget
     Smb4KToolTip *m_tooltip;
 
     /**
-     * Block tool tips
-     */
-    bool m_block_tooltip;
-
-    /**
      * Mouse inside the widget?
      */
     bool m_mouse_inside;
