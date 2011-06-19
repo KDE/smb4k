@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 // Qt includes
@@ -89,6 +89,7 @@ void Smb4KBookmarkDialog::setupView()
   QLabel *pixmap = new QLabel( description );
   QPixmap sync_pix = KIcon( "bookmark-new" ).pixmap( KIconLoader::SizeHuge );
   pixmap->setPixmap( sync_pix );
+  pixmap->setAlignment( Qt::AlignBottom );
 
   QLabel *label = new QLabel( i18n( "All listed shares will be bookmarked. To edit the label "
                                     "or group, click the respective bookmark entry." ), description );
@@ -138,7 +139,7 @@ void Smb4KBookmarkDialog::setupView()
 void Smb4KBookmarkDialog::loadLists()
 {
   // Add the bookmarks to the list widget
-  for ( int i = 0; i < m_bookmarks.size(); i++ )
+  for ( int i = 0; i < m_bookmarks.size(); ++i )
   {
     QListWidgetItem *item = new QListWidgetItem( m_bookmarks.at( i )->icon(), m_bookmarks.at( i )->unc(), m_widget );
     item->setData( Qt::UserRole, m_bookmarks.at( i )->url() );
@@ -152,7 +153,7 @@ Smb4KBookmark *Smb4KBookmarkDialog::findBookmark( const QUrl &url )
 {
   Smb4KBookmark *bookmark = NULL;
   
-  for ( int i = 0; i < m_bookmarks.size(); i++ )
+  for ( int i = 0; i < m_bookmarks.size(); ++i )
   {
     if ( m_bookmarks.at( i )->url() == url )
     {
@@ -350,7 +351,7 @@ QList<Smb4KBookmark *> Smb4KBookmarkEditor::editedBookmarks()
 {
   QList<Smb4KBookmark *> list;
 
-  for ( int i = 0; i < m_bookmarks.size(); i++ )
+  for ( int i = 0; i < m_bookmarks.size(); ++i )
   {
     list << &m_bookmarks[i];
   }
@@ -544,14 +545,14 @@ void Smb4KBookmarkEditor::setupView()
 
 void Smb4KBookmarkEditor::loadBookmarks( const QList<Smb4KBookmark *> &list )
 {
-  for ( int i = 0; i < list.size(); i++ )
+  for ( int i = 0; i < list.size(); ++i )
   {
     m_bookmarks << *list[i];
   }
   
   // Load the bookmarks into the tree view and compile 
   // the available groups in a list.
-  for ( int i = 0; i < m_bookmarks.size(); i++ )
+  for ( int i = 0; i < m_bookmarks.size(); ++i )
   {
     if ( !m_bookmarks.at( i ).group().isEmpty() )
     {
@@ -566,7 +567,7 @@ void Smb4KBookmarkEditor::loadBookmarks( const QList<Smb4KBookmark *> &list )
       else
       {
         group = new QTreeWidgetItem( QTreeWidgetItem::UserType );
-        group->setIcon( 0, KIcon( "folder-bookmark" ) );
+        group->setIcon( 0, KIcon( "folder-favorites" ) );
         group->setText( 0, m_bookmarks.at( i ).group() );
         group->setText( (m_tree_widget->columnCount() - 1), QString( "00_%1" ).arg( m_bookmarks.at( i ).group() ) );
         group->setFlags( Qt::ItemIsSelectable|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled|Qt::ItemIsDropEnabled ) ;
@@ -606,7 +607,7 @@ void Smb4KBookmarkEditor::loadBookmarks( const QList<Smb4KBookmark *> &list )
   }
 
   // Sort
-  for ( int i = 0; i < m_tree_widget->topLevelItemCount(); i++ )
+  for ( int i = 0; i < m_tree_widget->topLevelItemCount(); ++i )
   {
     m_tree_widget->topLevelItem( i )->sortChildren( (m_tree_widget->columnCount() - 1), Qt::AscendingOrder );
   }
@@ -633,7 +634,7 @@ Smb4KBookmark *Smb4KBookmarkEditor::findBookmark( const QUrl &url )
 {
   Smb4KBookmark *bookmark = NULL;
 
-  for ( int i = 0; i < m_bookmarks.size(); i++ )
+  for ( int i = 0; i < m_bookmarks.size(); ++i )
   {
     if ( m_bookmarks.at( i ).url() == url )
     {
