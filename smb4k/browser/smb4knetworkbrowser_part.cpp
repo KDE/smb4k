@@ -461,7 +461,6 @@ void Smb4KNetworkBrowserPart::slotItemSelectionChanged()
           actionCollection()->action( "mount_action" )->setEnabled( false );
           actionCollection()->action( "print_action" )->setEnabled( false );
           actionCollection()->action( "custom_action" )->setEnabled( true );
-
           break;
         }
         case Smb4KNetworkBrowserItem::Share:
@@ -490,21 +489,18 @@ void Smb4KNetworkBrowserPart::slotItemSelectionChanged()
               !Smb4KPrint::self()->isRunning( browser_item->shareItem() ) );
             actionCollection()->action( "custom_action" )->setEnabled( false );
           }
-
           break;
         }
         default:
         {
           // Change the text of the rescan action:
           actionCollection()->action( "rescan_action" )->setText( i18n( "Scan Wo&rkgroup" ) );
-
           actionCollection()->action( "bookmark_action" )->setEnabled( false );
           actionCollection()->action( "authentication_action" )->setEnabled( false );
           actionCollection()->action( "preview_action" )->setEnabled( false );
           actionCollection()->action( "mount_action" )->setEnabled( false );
           actionCollection()->action( "print_action" )->setEnabled( false );
           actionCollection()->action( "custom_action" )->setEnabled( false );
-
           break;
         }
       }
@@ -716,18 +712,9 @@ void Smb4KNetworkBrowserPart::slotAboutToHideToolTip( Smb4KBasicNetworkItem *ite
     {
       case Smb4KBasicNetworkItem::Host:
       {
-        // Kill the lookup process for the additional information
-        // and nothing else.
+        // Kill the lookup process for the additional information.
         Smb4KHost *host = static_cast<Smb4KHost *>( item );
-        
-        if ( Smb4KScanner::self()->isRunning( Smb4KScanner::LookupInfo, host ) )
-        {
-          Smb4KScanner::self()->abort( Smb4KScanner::LookupInfo, host );
-        }
-        else
-        {
-          // Do nothing
-        }
+        Smb4KScanner::self()->abort( Smb4KScanner::LookupInfo, host );
         break;
       }
       default:
