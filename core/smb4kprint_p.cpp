@@ -20,8 +20,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 // Qt includes
@@ -387,6 +387,7 @@ void Smb4KPrintDialog::setupView( Smb4KShare *share )
   QLabel *pixmap            = new QLabel( printer_box );
   QPixmap print_pix         = share->icon().pixmap( KIconLoader::SizeHuge );
   pixmap->setPixmap( print_pix );
+  pixmap->setAlignment( Qt::AlignBottom );
 
   // Description
   QWidget *desc_box = new QWidget( printer_box );
