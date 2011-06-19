@@ -75,9 +75,9 @@ int main( int argc, char *argv[] )
   aboutData.addAuthor( ki18n( "Alexander Reinholdt" ),
                        ki18n( "Developer" ),
                        "alexander.reinholdt@kdemail.net" );
-  aboutData.addAuthor( ki18n( "Massimo Callegari" ),
-                       ki18n( "Developer" ),
-                       "massimocallegari@yahoo.it" );
+//   aboutData.addAuthor( ki18n( "Massimo Callegari" ),
+//                        ki18n( "Developer" ),
+//                        "massimocallegari@yahoo.it" );
 
   KCmdLineArgs::init( argc, argv, &aboutData );
 
@@ -103,12 +103,12 @@ int main( int argc, char *argv[] )
   // tray is closed.
   app.setQuitOnLastWindowClosed( false );
 
-  // Launch the application.
+  // Launch the main window.
   Smb4KMainWindow *main_window = new Smb4KMainWindow();
   main_window->setVisible( !Smb4KSettings::startMainWindowDocked() );
 
   // Initialize the necessary core classes.
-  Smb4KScanner::self()->init();
+  Smb4KScanner::self()->start();
   Smb4KMounter::self()->start();
 
   return app.exec();
