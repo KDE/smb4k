@@ -162,7 +162,7 @@ QStringList Smb4KHomesUserDialog::userNames()
 {
   QStringList users;
   
-  for ( int i = 0; i < m_user_combo->count(); i++ )
+  for ( int i = 0; i < m_user_combo->count(); ++i )
   {
     users << m_user_combo->itemText( i );
   }
