@@ -1,9 +1,10 @@
 /***************************************************************************
-    smb4kscanner.h  -  The network scan core class of Smb4K.
+    smb4kscanner  -  This class retrieves all workgroups, servers and
+    shares found on the network neighborhood
                              -------------------
-    begin                : Sam Mai 31 2003
-    copyright            : (C) 2003-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    begin                : So Mai 22 2011
+    copyright            : (C) 2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -19,23 +20,22 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 #ifndef SMB4KSCANNER_H
 #define SMB4KSCANNER_H
 
-#ifndef HAVE_CONFIG_H
+#ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
 
 // Qt includes
-#include <QObject>
-#include <QCache>
-#include <QList>
+#include <QWidget>
 
 // KDE includes
+#include <kcompositejob.h>
 #include <kdemacros.h>
 
 // forward declarations
@@ -43,22 +43,11 @@ class Smb4KBasicNetworkItem;
 class Smb4KWorkgroup;
 class Smb4KHost;
 class Smb4KShare;
-class BasicScanThread;
+class Smb4KQueryMasterJob;
+class Smb4KLookupDomainMembersJob;
+class Smb4KLookupSharesJob;
 
-
-/**
- * This class generates upon request the list of workgroups/domains, the list
- * of members of a certain workgroup/domain or the list of shared resources
- * (shares) a host offers. Additionally, you can query a host for extra
- * information.
- *
- * The discovered workgroups and hosts are stored in the global workgroups
- * and hosts list, respectively (@see Smb4KGlobal).
- *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
- */
-
-class KDE_EXPORT Smb4KScanner : public QObject
+class KDE_EXPORT Smb4KScanner : public KCompositeJob
 {
   Q_OBJECT
 
@@ -66,194 +55,113 @@ class KDE_EXPORT Smb4KScanner : public QObject
 
   public:
     /**
-     * Defines the lookup method
+     * The process enumeration
      */
-    enum Method { LookupDomains,
-                  LookupDomainMembers,
-                  LookupShares,
-                  LookupInfo };
+    enum Process { LookupDomains,
+                   LookupDomainMembers,
+                   LookupShares,
+                   LookupInfo };
     /**
-     * Returns a static pointer to this class.
+     * This function returns a static pointer to this class.
+     *
+     * @returns a static pointer to the Smb4KScanner class.
      */
     static Smb4KScanner *self();
 
     /**
-     * Scan the network neighborhood for domains and workgroups. How this
-     * is done depends on the user's settings.
+     * This function tells you whether scan jobs are running
+     * or not.
      *
-     * You need to connect to the workgroups() signal to retrieve the results
-     * of the search.
+     * @returns TRUE if at least one preview job is running
      */
-    void lookupDomains();
+    bool isRunning();
 
     /**
-     * Query the domain/workgroup master browser for the domain/workgroup
-     * members.
+     * This function tests whether a process @p process is running. If you also
+     * define the network item, you can test if a certain process is running.
      *
-     * You need to connect to the hosts() signal to retrieve the results of
-     * the search.
+     * @param process         The group of processes
      *
-     * @param workgroup   The workgroup that contains the master browser
-     *                    that is to be queried.
+     * @param item            The network item for a more fine grained testing
      */
-    void lookupDomainMembers( Smb4KWorkgroup *workgroup );
+    bool isRunning( Process process,
+                    Smb4KBasicNetworkItem *item = NULL );
 
     /**
-     * Query the host represented by @p host for its list of shared resources.
-     *
-     * You need to connect to the shares() signal to retrieve the results of
-     * the search.
-     * 
-     * @note If set, Smb4KHost::protocol() and Smb4KHost::port() will overwrite 
-     * the other prossible protocol or port options (e.g. default protocol/port
-     * or custom protocol/port).
-     *
-     * @param host        The Smb4KHost item representing the host
-     */
-    void lookupShares( Smb4KHost *host );
-
-     /**
-     * Query a host for more info (i.e. server and OS string, etc.). If the
-     * information was already gathered, this function immediately emits the
-     * info() signal with the requested information and exits. If no information
-     * was requested before, a query is started.
-     *
-     * @param host            The Smb4KHost item representing the host
-     */
-    void lookupInfo( Smb4KHost *host );
-
-    /**
-     * Aborts either the scan process for the network item @p item or all scan
-     * processes of a specific kind of @p process.
-     *
-     * If you provide a non-null @p item object, it will always be favored over
-     * the @p process entry.
-     *
-     * @param item            The network item object
-     *
-     * @param process         The process that is used
-     */
-    void abort( Smb4KBasicNetworkItem *item,
-                int process );
-
-    /**
-     * Aborts all network scans at once.
+     * This function aborts all scan jobs at once.
      */
     void abortAll();
 
     /**
-     * With this function you can check if a process for a single network
-     * item @p item or all processes of a certain kind denoted by @p process
-     * is/are (still) running.
+     * This function aborts a scan jobs that match the combination
+     * of arguments passed. The network item entry may be NULL, the 
+     * process must always be defined.
      *
-     * If you provide a non-null @p item object, it will always be favored over
-     * the @p process entry.
+     * The @p item argument can be used to specifically define one single
+     * process to be killed. If you only define @p process, a whole group
+     * of processes is going to be killed.
      *
-     * @param item            The network item object
+     * @param process         The group of processes that are to be killed
      *
-     * @param process         The process that is used
-     *
-     * @returns TRUE if the process is/the processes are (still) running.
+     * @param item            The network item for a more fine grained killing
      */
-    bool isRunning( Smb4KBasicNetworkItem *item,
-                    int process );
+    void abort( Process process,
+                Smb4KBasicNetworkItem *item = NULL );
 
     /**
-     * This function reports if the scanner is running or not.
-     *
-     * @returns             TRUE if the scanner is running and FALSE otherwise.
+     * This function starts the composite job
      */
-    bool isRunning() { return !m_cache.isEmpty(); }
+    void start();
 
     /**
-     * This function inserts a @p host into the list of known servers. If it belongs to
-     * a workgroup that was not known until now, a new Smb4KWorkgroup item is also
-     * created and added to the list of known workgroups. @p host is then marked as
-     * pseudo master browser. On success, this function emits the hostAdded() and
-     * hostListChanged() signals. If the host is already known, nothing is done.
+     * This function looks up all domains and workgroups in the 
+     * network neighborhood. Hown this is done depends on the 
+     * settings the user chose.
      *
-     * @param host          The host that should be inserted
+     * @param parent          The parent widget
      */
-    void insertHost( Smb4KHost *host );
+    void lookupDomains( QWidget *parent = 0 );
 
     /**
-     * This function initializes the network the network browser. It starts the internal
-     * timer that is needed to process the incoming requests and also starts the initial
-     * network scan. You need to call this function before any other.
+     * This function looks up all hosts in a certain domain or
+     * workgroup.
+     * 
+     * @param workgroup       The workgroup object
+     *
+     * @param parent          The parent widget
      */
-    void init();
+    void lookupDomainMembers( Smb4KWorkgroup *workgroup,
+                              QWidget *parent = 0 );
 
     /**
-     * This function returns the current state of the scanner. The state is defined in the
-     * smb4kdefs.h file.
-     *
-     * @returns the current state of the scanner.
+     * This function looks up all shared resources a certain 
+     * @p host provides.
+     * 
+     * @param host            The host object
+     * 
+     * @param parent          The parent widget
      */
-    int currentState() { return m_state; }
+    void lookupShares( Smb4KHost *host,
+                       QWidget *parent = 0 );
+
+    /**
+     * This function looks up additional information from a
+     * certain @p host.
+     *
+     * @param host            The host object
+     * 
+     * @param parent          The parent widget
+     */
+    void lookupInfo( Smb4KHost *host,
+                     QWidget *parent = 0 );
 
   signals:
-    /**
-     * This signal is emitted when the current run state changed. Use the currentState()
-     * function to read the current run state.
-     */
-    void stateChanged();
-
-    /**
-     * This signal is emitted, when the workgroup list has been updated.
-     *
-     * @param list          The list of workgroups in the network neighborhood.
-     */
-    void workgroups( const QList<Smb4KWorkgroup *> &list );
-
-    /**
-     * Emits a @p list of hosts. If @p workgroup is non-zero, the list carries the members
-     * of that workgroup. Otherwise, it is the list of all hosts that are available on the
-     * network.
-     *
-     * @param workgroup     The workgroup the hosts belong to or NULL
-     *
-     * @param list          The list of hosts
-     */
-    void hosts( Smb4KWorkgroup *workgroup,
-                const QList<Smb4KHost *> &list );
-
-    /**
-     * Emits the list of shares.
-     *
-     * @param host          The host that shares the resources
-     *
-     * @param list          The list of shares
-     */
-    void shares( Smb4KHost *host,
-                 const QList<Smb4KShare *> &list );
-
-    /**
-     * This signal is emitted if addtional information for the host represented
-     * by @p host was requested and is available.
-     *
-     * @param host          The Smb4KHost item that carries the requested information.
-     */
-    void info( Smb4KHost *host );
-
-    /**
-     * This signal is emitted when the list of hosts is changed.
-     */
-    void hostListChanged();
-
-    /**
-     * This signal is emitted when a host has been added to the list of known
-     * hosts via the insertHost() function.
-     *
-     * @param host          The Smb4KHost that represents the host that was added.
-     */
-    void hostInserted( Smb4KHost *host );
-
     /**
      * This signal is emitted when a scan process is about to be started. It passes
      * the network @p item as well as the lookup method that is used to the receiver.
      *
-     * Please note that the network @p item may be NULL. The @p process, however,
-     * will always be valid.
+     * Please note that the network @p item may be empty, i.e. type() returns Unknown.
+     * The @p process, however, will always be meaningful.
      *
      * @param item          The Smb4KBasicNetworkItem object
      *
@@ -266,8 +174,8 @@ class KDE_EXPORT Smb4KScanner : public QObject
      * This signal is emitted when a scan process has finished. It passes the
      * network @p item as well as the lookup method that was used to the receiver.
      *
-     * Please note that the network @p item may be NULL. The @p process, however,
-     * will always be valid.
+     * Please note that the network @p item may be empty, i.e. type() returns Unknown.
+     * The @p process, however, will always be meaningful.
      *
      * @param item          The Smb4KBasicNetworkItem object
      *
@@ -276,83 +184,166 @@ class KDE_EXPORT Smb4KScanner : public QObject
     void finished( Smb4KBasicNetworkItem *item,
                    int process );
 
+    /**
+     * This signal emits the list of workgroups that were discovered.
+     *
+     * @param workgroups   The list of workgroups
+     */
+    void workgroups( const QList<Smb4KWorkgroup *> &workgroups );
+
+    /**
+     * This signal emits the list of hosts that were discovered.
+     *
+     * @param workgroup   The workgroup that was scanned. This argument
+     *                    is NULL in case several workgroups are present
+     *                    in the hosts list.
+     *
+     * @param hosts       The list of hosts
+     */
+    void hosts( Smb4KWorkgroup *workgroup,
+                const QList<Smb4KHost *> &hosts );
+
+    /**
+     * This signal is emitted when the list of hosts is changed. You
+     * need to check Smb4KGlobal::hostsList() yourself for changes if
+     * you connect to this signal.
+     */
+    void hostListChanged();
+    
+    /**
+     * This signal is emitted when the list of shares are certain host 
+     * offers has been acquired.
+     * 
+     * @param host        The host that was queried
+     * 
+     * @param shares      The list of shares belonging to @p host
+     */
+    void shares( Smb4KHost *host,
+                 const QList<Smb4KShare *> &shares );
+    
+    /**
+     * This signal is emitted when the additional information has been
+     * acquired from a certain host.
+     * 
+     * @param host        The host with the acquired information
+     */
+    void info( Smb4KHost *host );
+
   protected slots:
     /**
-     * This slot is called by the QApplication::aboutToQuit() signal.
-     * Is does everything that has to be done before the program
-     * really exits.
+     * Starts the composite job
+     */
+    void slotStartJobs();
+
+    /**
+     * Do last things before the application goes down
      */
     void slotAboutToQuit();
 
     /**
-     * This slot is called when a thread finished.
+     * Called when a job finished
      */
-    void slotThreadFinished();
+    void slotJobFinished( KJob *job );
 
     /**
-     * This slot takes a list of discovered workgroups and puts them into the global
-     * list. Obsolete entries will be deleted and new ones created.
-     *
-     * @param workgroups    The list of workgroups.
+     * Called when an authentication error occurred while a master 
+     * browser was queried for the list of workgroups/domains
      */
-    void slotWorkgroups( QList<Smb4KWorkgroup> &workgroups );
+    void slotAuthError( Smb4KQueryMasterJob *job );
+    
+    /**
+     * Called when an authentication error occurred while a master
+     * browser was queried for the list of workgroup/domain members
+     */
+    void slotAuthError( Smb4KLookupDomainMembersJob *job );
+    
+    /**
+     * Called when an authentication error occurred while a host
+     * was queried for the list of shares
+     */
+    void slotAuthError( Smb4KLookupSharesJob *job );
 
     /**
-     * This slot takes a list of discovered hosts @p hosts and puts them into the global
-     * list. Obsolete entries will be deleted and new ones created.
-     *
-     * The @p workgroup item represents the workgroup where the hosts belong to. If
-     * the @p workgroup is NULL, it is considered that the host list was retrieved
-     * via a broadcast area lookup and is the list of available hosts.
-     *
-     * @param workgroup     The workgroup that the hosts belong to.
-     *
-     * @param hosts         The list of hosts
+     * A lookup process for workgroups or domains is about to 
+     * be started
+     */
+    void slotAboutToStartDomainsLookup();
+
+    /**
+     * A lookup process for workgroups or domains has finished
+     */
+    void slotDomainsLookupFinished();
+
+    /**
+     * A lookup process for hosts (domain members) is about to
+     * be started
+     */
+    void slotAboutToStartHostsLookup( Smb4KWorkgroup *workgroup );
+
+    /**
+     * A lookup process for hosts has finished
+     */
+    void slotHostsLookupFinished( Smb4KWorkgroup *workgroup );
+    
+    /**
+     * A lookup process for shares is about to be started
+     */
+    void slotAboutToStartSharesLookup( Smb4KHost *host );
+
+    /**
+     * A lookup process for shares has finished
+     */
+    void slotSharesLookupFinished( Smb4KHost *host  );
+    
+    /**
+     * A lookup process for shares is about to be started
+     */
+    void slotAboutToStartInfoLookup( Smb4KHost *host );
+
+    /**
+     * A lookup process for shares has finished
+     */
+    void slotInfoLookupFinished( Smb4KHost *host  );
+
+    /**
+     * Is called when workgroups and domains have been looked
+     * up
+     */
+    void slotWorkgroups( const QList<Smb4KWorkgroup> &workgroups_list );
+
+    /**
+     * Is called when hosts have been looked up by the IP scan method
+     */
+    void slotHosts( const QList<Smb4KHost> &hosts_list );
+
+    /**
+     * Is called when hosts have been looked up by the normal lookup
+     * method
      */
     void slotHosts( Smb4KWorkgroup *workgroup,
-                    QList<Smb4KHost> &hosts );
-
+                    const QList<Smb4KHost> &hosts_list );
+    
     /**
-     * This slot takes a list of discovered shares @p shares and puts them into the global
-     * list. Obsolete entries will be deleted and new ones created.
-     *
-     * The @p host item represents the host where the shares are located.
-     *
-     * @param host          The host that shares the resources
-     *
-     * @param shares        The list of shares
+     * Is called when shares have been looked up
      */
     void slotShares( Smb4KHost *host,
-                     QList<Smb4KShare> &shares );
-
+                     const QList<Smb4KShare> &shares_list );
+    
     /**
-     * This slot takes a host and processes the additional information that was looked up
-     * by the lookup process. It will not only emit the host item but also update entries
-     * in the global list, if necessary.
-     *
-     * @param host          The host item that carries the additional information
+     * Is called when additional information has been acquired
      */
-    void slotInformation( Smb4KHost *host );
+    void slotInfo( Smb4KHost *host );
 
   private:
     /**
-     * The constructor.
+     * Constructor
      */
     Smb4KScanner();
 
     /**
-     * The destructor.
+     * Destructor
      */
     ~Smb4KScanner();
-
-    /**
-     * The current state.
-     */
-    int m_state;
-
-    /**
-     * The cache that holds the threads
-     */
-    QCache<QString,BasicScanThread> m_cache;
 };
+
 #endif
