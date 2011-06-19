@@ -215,7 +215,7 @@ void Smb4KMounter::triggerRemounts()
     if ( !list.isEmpty() )
     {
       // Check which ones actually need to be remounted.
-      for ( int i = 0; i < list.size(); i++ )
+      for ( int i = 0; i < list.size(); ++i )
       {
         QList<Smb4KShare *> mounted_shares = findShareByUNC( list.at( i )->share()->unc() );
 
@@ -637,20 +637,6 @@ void Smb4KMounter::import()
         removeMountedShare( mounted_share );
 
         Smb4KShare *new_share = new Smb4KShare( mounted_shares[i] );
-
-        // To avoid incompatibilities, we remove a trailing slash from
-        // the UNC now, if it is present.
-//         if ( new_share->unc( QUrl::None ).endsWith( "/" ) )
-//         {
-//           QString u = new_share->unc( QUrl::None );
-//           u.chop( 1 );
-//           new_share->setUNC( u );
-//         }
-//         else
-//         {
-//           // Do nothing
-//         }
-
         addMountedShare( new_share );
         emit updated( new_share );
       }
@@ -668,20 +654,6 @@ void Smb4KMounter::import()
       {
         // This is a new share.
         Smb4KShare *new_share = new Smb4KShare( mounted_shares[i] );
-
-        // To avoid incompatibilities, we remove a trailing slash from
-        // the UNC now, if it is present.
-//         if ( new_share->unc( QUrl::None ).endsWith( "/" ) )
-//         {
-//           QString u = new_share->unc( QUrl::None );
-//           u.chop( 1 );
-//           new_share->setUNC( u );
-//         }
-//         else
-//         {
-//           // Do nothing
-//         }
-
         addMountedShare( new_share );
         emit mounted( new_share );
       }
@@ -1037,8 +1009,8 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent, QWi
   job->setupUnmount( share, force, silent, parent );
 
   connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
-  connect( job, SIGNAL( aboutToStart( Smb4KShare * ) ), SLOT( slotAboutToStartUnmounting( Smb4KShare * ) ) );
-  connect( job, SIGNAL( finished( Smb4KShare * ) ), SLOT( slotFinishedUnmounting( Smb4KShare * ) ) );
+  connect( job, SIGNAL( aboutToStart( const QList<Smb4KShare> & ) ), SLOT( slotAboutToStartUnmounting( const QList<Smb4KShare> & ) ) );
+  connect( job, SIGNAL( finished( const QList<Smb4KShare> & ) ), SLOT( slotFinishedUnmounting( const QList<Smb4KShare> & ) ) );
   connect( job, SIGNAL( unmounted( Smb4KShare * ) ), SLOT( slotShareUnmounted( Smb4KShare * ) ) );
 
   if ( !hasSubjobs() )
@@ -1128,7 +1100,8 @@ void Smb4KMounter::unmountAllShares( QWidget *parent )
 
 void Smb4KMounter::start()
 {
-  QTimer::singleShot( 0, this, SLOT( slotStartJobs() ) );
+  // Avoid a race with QApplication and use 50 ms here.
+  QTimer::singleShot( 50, this, SLOT( slotStartJobs() ) );
 }
 
 
@@ -1185,7 +1158,7 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
     {
       QList<Smb4KShare *> shares;
       
-      for ( int i = 0; i < m_retries.size(); i++ )
+      for ( int i = 0; i < m_retries.size(); ++i )
       {
         shares << &m_retries[i];
       }
@@ -1324,7 +1297,7 @@ void Smb4KMounter::slotAuthError( Smb4KMountJob *job )
 {
   if ( job )
   {
-    for ( int i = 0; i < job->authErrors().size(); i++ )
+    for ( int i = 0; i < job->authErrors().size(); ++i )
     {
       Smb4KAuthInfo authInfo( &job->authErrors().at( i ) );
 
@@ -1349,7 +1322,7 @@ void Smb4KMounter::slotRetryMounting( Smb4KMountJob *job )
 {
   if ( job )
   {
-    for ( int i = 0; i < job->retries().size(); i++ )
+    for ( int i = 0; i < job->retries().size(); ++i )
     {
       m_retries << job->retries().at( i );
     }
@@ -1696,7 +1669,7 @@ void Smb4KMounter::slotAboutToStartMounting( const QList<Smb4KShare> &shares )
 {
   QList<Smb4KShare> list = shares;
   
-  for ( int i = 0; i < list.size(); i++ )
+  for ( int i = 0; i < list.size(); ++i )
   {
     emit aboutToStart( &list[i], MountShare );
   }
@@ -1707,7 +1680,7 @@ void Smb4KMounter::slotFinishedMounting( const QList<Smb4KShare> &shares )
 {
   QList<Smb4KShare> list = shares;
   
-  for ( int i = 0; i < list.size(); i++ )
+  for ( int i = 0; i < list.size(); ++i )
   {
     emit finished( &list[i], MountShare );
   }
@@ -1718,7 +1691,7 @@ void Smb4KMounter::slotAboutToStartUnmounting( const QList<Smb4KShare> &shares )
 {
   QList<Smb4KShare> list = shares;
   
-  for ( int i = 0; i < list.size(); i++ )
+  for ( int i = 0; i < list.size(); ++i )
   {
     emit aboutToStart( &list[i], UnmountShare );
   }
@@ -1729,7 +1702,7 @@ void Smb4KMounter::slotFinishedUnmounting( const QList<Smb4KShare> &shares )
 {
   QList<Smb4KShare> list = shares;
   
-  for ( int i = 0; i < list.size(); i++ )
+  for ( int i = 0; i < list.size(); ++i )
   {
     emit finished( &list[i], UnmountShare );
   }
