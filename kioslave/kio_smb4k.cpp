@@ -342,7 +342,7 @@ void Smb4KSlave::listDir( const KUrl &url )
   {
     case Smb4KBasicNetworkItem::Unknown:
     {
-      Smb4KScanner::self()->lookupDomains();
+      Smb4KScanner::self()->lookupDomains( 0 );
       m_priv->slave->connect( Smb4KScanner::self(), SIGNAL( workgroups( const QList<Smb4KWorkgroup *> & ) ),
                               SLOT( slotWorkgroups( const QList<Smb4KWorkgroup *> & ) ) );
       m_priv->slave->connect( Smb4KScanner::self(), SIGNAL( finished( Smb4KBasicNetworkItem *, int ) ),
