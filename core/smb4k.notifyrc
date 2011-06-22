@@ -769,6 +769,7 @@ Action=Popup|Sound
 [Event/invalidURLPassed]
 Name=Invalid URL passed
 Name[et]=Anti vigane URL
+Name[km]=បាន​ចម្លង​ URL មិន​ត្រឹមត្រូវ
 Name[nl]=Ongeldig URL-adres doorgegeven
 Name[pt]=URL inválido indicado
 Name[pt_BR]=URL inválida indicada
@@ -777,6 +778,7 @@ Name[uk]=Передано некоректну адресу
 Name[x-test]=xxInvalid URL passedxx
 Comment=An invalid URL was passed
 Comment[et]=Anti vigane URL
+Comment[km]=URL មិន​ត្រឹមត្រូវ​មួយ​ត្រូវ​បាន​ចម្លង
 Comment[nl]=Er is een ongeldig URL-adres doorgegeven
 Comment[pt]=Foi indicado um URL inválido
 Comment[pt_BR]=Foi indicada uma URL inválida
