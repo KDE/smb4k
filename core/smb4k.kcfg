@@ -573,7 +573,8 @@
     <entry name="BufferSize" type="Int">
       <label>Buffer size:</label>
       <whatsthis>This option changes the transmit/send buffer size when getting or putting a file from/to the server. The default is 65520 bytes. Setting this value smaller has been observed to speed up file transfers to and from Windows 9x servers.</whatsthis>
-      <min>0</min>
+      <min>1</min>
+      <max>250000</max>
       <default>65520</default>
     </entry>
     <entry name="BroadcastAddress" type="String">
