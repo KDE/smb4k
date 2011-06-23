@@ -4,7 +4,7 @@
                              -------------------
     begin                : Mo Jan 26 2004
     copyright            : (C) 2004-2011 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -20,12 +20,13 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 // Qt includes
 #include <QGridLayout>
+#include <QVBoxLayout>
 #include <QGroupBox>
 #include <QLabel>
 #include <QCheckBox>
@@ -40,7 +41,6 @@
 #include <knuminput.h>
 #include <kcombobox.h>
 #include <kuser.h>
-// #include <kpushbutton.h>
 #include <kmenu.h>
 
 // System includes
@@ -67,7 +67,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   //
   QWidget *general_tab          = new QWidget( this );
 
-  QGridLayout *general_layout   = new QGridLayout( general_tab );
+  QVBoxLayout *general_layout   = new QVBoxLayout( general_tab );
   general_layout->setSpacing( 5 );
   general_layout->setMargin( 0 );
 
@@ -121,6 +121,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
 
   KIntNumInput *remote_smb_port = new KIntNumInput( ports_box );
   remote_smb_port->setObjectName( "kcfg_RemoteSMBPort" );
+  remote_smb_port->setSliderEnabled( true );
 
 #ifndef Q_OS_FREEBSD
   QLabel *remote_fs_port_label  = new QLabel( Smb4KSettings::self()->remoteFileSystemPortItem()->label(),
@@ -128,6 +129,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
 
   KIntNumInput *remote_fs_port  = new KIntNumInput( ports_box );
   remote_fs_port->setObjectName( "kcfg_RemoteFileSystemPort" );
+  remote_fs_port->setSliderEnabled( true );
 #endif
 
   ports_layout->addWidget( remote_smb_port_label, 0, 0, 0 );
@@ -174,13 +176,11 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   signing_layout->addWidget( signing_state_label, 0, 0, 0 );
   signing_layout->addWidget( signing_state, 0, 1, 0 );
 
-  QSpacerItem *spacer1 = new QSpacerItem( 10, 10, QSizePolicy::Preferred, QSizePolicy::Expanding );
-
-  general_layout->addWidget( general_box, 0, 0, 0 );
-  general_layout->addWidget( ports_box, 1, 0, 0 );
-  general_layout->addWidget( auth_box, 2, 0, 0 );
-  general_layout->addWidget( signing_box, 3, 0, 0 );
-  general_layout->addItem( spacer1, 4, 0 );
+  general_layout->addWidget( general_box );
+  general_layout->addWidget( ports_box );
+  general_layout->addWidget( auth_box );
+  general_layout->addWidget( signing_box );
+  general_layout->addStretch( 100 );
 
   insertTab( GeneralTab, general_tab, i18n( "General Settings" ) );
 
@@ -189,7 +189,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   //
   QWidget *mount_tab            = new QWidget( this );
 
-  QGridLayout *mount_layout     = new QGridLayout( mount_tab );
+  QVBoxLayout *mount_layout     = new QVBoxLayout( mount_tab );
   mount_layout->setSpacing( 5 );
   mount_layout->setMargin( 0 );
 
@@ -217,8 +217,6 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   user_chooser->setIcon( KIcon( "edit-find-user" ) );
   user_chooser->setToolTip( i18n( "Choose a different user" ) );
   
-//   KPushButton *user_chooser    = new KPushButton( KGuiItem( QString(), "edit-find-user",
-//                                  i18n( "Choose a different user" ) ), user_widget );
   QMenu *user_menu             = new QMenu( user_chooser );
   user_chooser->setMenu( user_menu );
 
@@ -263,8 +261,6 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   group_chooser->setIcon( KIcon( "edit-find-user" ) );
   group_chooser->setToolTip( i18n( "Choose a different group" ) );
 
-//   KPushButton *group_chooser   = new KPushButton( KGuiItem( QString(), "edit-find-user",
-//                                  i18n( "Choose a different group" ) ), group_widget );
   QMenu *group_menu            = new QMenu( group_chooser );
   group_chooser->setMenu( group_menu );
 
@@ -549,15 +545,11 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   advanced_layout->addWidget( c_extra_widget, 3, 0, 1, 2, 0 );
 #endif
 
-  QSpacerItem *spacer2 = new QSpacerItem( 10, 10, QSizePolicy::Preferred, QSizePolicy::Expanding );
-
-  mount_layout->addWidget( common_options, 0, 0, 0 );
+  mount_layout->addWidget( common_options );
 #ifndef Q_OS_FREEBSD
-  mount_layout->addWidget( advanced_options, 1, 0, 0 );
-  mount_layout->addItem( spacer2, 2, 0 );
-#else
-  mount_layout->addItem( spacer2, 1, 0 );
+  mount_layout->addWidget( advanced_options );
 #endif
+  mount_layout->addStretch( 100 );
 
   insertTab( MountingTab, mount_tab, i18n( "Mounting" ) );
 
@@ -566,7 +558,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   //
   QWidget *clients_tab          = new QWidget( this );
 
-  QGridLayout *client_layout    = new QGridLayout( clients_tab );
+  QVBoxLayout *client_layout    = new QVBoxLayout( clients_tab );
   client_layout->setSpacing( 5 );
   client_layout->setMargin( 0 );
 
@@ -611,6 +603,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   KIntNumInput *buffer_size    = new KIntNumInput( smbclient_box );
   buffer_size->setObjectName( "kcfg_BufferSize" );
   buffer_size->setSuffix( i18n( " Bytes" ) );
+  buffer_size->setSliderEnabled( true );
 
   smbclient_layout->addWidget( name_resolve_label, 0, 0, 0 );
   smbclient_layout->addWidget( name_resolve, 0, 1, 0 );
@@ -649,13 +642,11 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
 
   smbtree_layout->addWidget( smbtree_bcasts, 0, 0, 0 );
 
-  QSpacerItem *spacer3 = new QSpacerItem( 10, 10, QSizePolicy::Expanding, QSizePolicy::Expanding );
-
-  client_layout->addWidget( net_box, 0, 0, 0 );
-  client_layout->addWidget( nmblookup_box, 1, 0, 0 );
-  client_layout->addWidget( smbclient_box, 2, 0, 0 );
-  client_layout->addWidget( smbtree_box, 3, 0, 0 );
-  client_layout->addItem( spacer3, 4, 0 );
+  client_layout->addWidget( net_box );
+  client_layout->addWidget( nmblookup_box );
+  client_layout->addWidget( smbclient_box );
+  client_layout->addWidget( smbtree_box );
+  client_layout->addStretch( 100 );
 
   insertTab( ClientProgramsTab, clients_tab, i18n( "Utility Programs" ) );
 
@@ -664,7 +655,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   //
   QWidget *custom_tab        = new QWidget( this );
 
-  QGridLayout *custom_layout = new QGridLayout( custom_tab );
+  QVBoxLayout *custom_layout = new QVBoxLayout( custom_tab );
   custom_layout->setSpacing( 5 );
   custom_layout->setMargin( 0 );
 
@@ -719,7 +710,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   m_menu->addAction( remove_action );
   m_menu->addAction( clear_action );
 
-  custom_layout->addWidget( m_custom_options, 0, 0, 0 );
+  custom_layout->addWidget( m_custom_options );
 
   insertTab( CustomOptionsTab, custom_tab, i18n( "Custom Options" ) );
 
