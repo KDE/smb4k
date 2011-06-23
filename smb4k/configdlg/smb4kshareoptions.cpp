@@ -25,6 +25,7 @@
  ***************************************************************************/
 
 // Qt includes
+#include <QVBoxLayout>
 #include <QGridLayout>
 #include <QGroupBox>
 #include <QLabel>
@@ -45,7 +46,7 @@
 Smb4KShareOptions::Smb4KShareOptions( QWidget *parent )
 : QWidget( parent )
 {
-  QGridLayout *layout           = new QGridLayout( this );
+  QVBoxLayout *layout = new QVBoxLayout( this );
   layout->setSpacing( 5 );
   layout->setMargin( 0 );
 
@@ -108,16 +109,15 @@ Smb4KShareOptions::Smb4KShareOptions( QWidget *parent )
   // Set the step width. If you change this, also change the TIMEOUT definition
   // in Smb4KMounter!
   check_interval->setSingleStep( 50 );
+  check_interval->setSliderEnabled( true );
 
   checks_layout->addWidget( check_interval_label, 0, 0, 0 );
   checks_layout->addWidget( check_interval, 0, 1, 0 );
 
-  QSpacerItem *spacer = new QSpacerItem( 10, 10, QSizePolicy::Preferred, QSizePolicy::Expanding );
-
-  layout->addWidget( directory_box, 0, 0, 0 );
-  layout->addWidget( mount_box, 1, 0, 0 );
-  layout->addWidget( checks_box, 2, 0, 0 );
-  layout->addItem( spacer, 3, 0, 1, 1, 0 );
+  layout->addWidget( directory_box, 0, 0 );
+  layout->addWidget( mount_box, 1, 0 );
+  layout->addWidget( checks_box, 2, 0 );
+  layout->addStretch( 100 );
 }
 
 Smb4KShareOptions::~Smb4KShareOptions()
