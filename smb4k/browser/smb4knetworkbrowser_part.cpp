@@ -163,9 +163,6 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject
   connect( Smb4KScanner::self(),   SIGNAL( info( Smb4KHost * ) ),
            this,                   SLOT( slotAddInformation( Smb4KHost * ) ) );
 
-  connect( Smb4KScanner::self(),   SIGNAL( hostInserted( Smb4KHost * ) ),
-           this,                   SLOT( slotInsertHost( Smb4KHost * ) ) );
-
   connect( Smb4KScanner::self(),   SIGNAL( aboutToStart( Smb4KBasicNetworkItem *, int ) ),
            this,                   SLOT( slotScannerAboutToStart( Smb4KBasicNetworkItem *, int ) ) );
 
@@ -1470,100 +1467,6 @@ void Smb4KNetworkBrowserPart::slotAddInformation( Smb4KHost *host )
       else
       {
         continue;
-      }
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KNetworkBrowserPart::slotInsertHost( Smb4KHost *host )
-{
-  if ( host )
-  {
-    Smb4KNetworkBrowserItem *workgroupItem = NULL;
-
-    // Get the correct workgroup.
-    QList<QTreeWidgetItem *> items = m_widget->findItems( host->workgroupName(), Qt::MatchFixedString,
-                                     Smb4KNetworkBrowser::Network );
-
-    for ( int i = 0; i < items.size(); ++i )
-    {
-      Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( items.at( i ) );
-
-      switch ( item->type() )
-      {
-        case Smb4KNetworkBrowserItem::Workgroup:
-        {
-          workgroupItem = item;
-          break;
-        }
-        default:
-        {
-          break;
-        }
-      }
-    }
-
-    if ( workgroupItem )
-    {
-      // Check all children of this workgroup if the host is already
-      // there.
-      Smb4KNetworkBrowserItem *hostItem = NULL;
-
-      for ( int i = 0; i < workgroupItem->childCount(); ++i )
-      {
-        Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( workgroupItem->child( i ) );
-
-        switch( item->type() )
-        {
-          case Smb4KNetworkBrowserItem::Host:
-          {
-            if ( QString::compare( host->hostName(), item->hostItem()->workgroupName() ) == 0 )
-            {
-              hostItem = item;
-            }
-            else
-            {
-              // Do nothing
-            }
-
-            break;
-          }
-          default:
-          {
-            break;
-          }
-        }
-      }
-
-      if ( !hostItem )
-      {
-        // The host item is not in the list. Add it.
-        (void) new Smb4KNetworkBrowserItem( workgroupItem, host );
-      }
-      else
-      {
-        // Do nothing. The host is already there.
-      }
-    }
-    else
-    {
-      // The workgroup is not present. Add it.
-      Smb4KWorkgroup *workgroup = findWorkgroup( host->workgroupName() );
-
-      if ( workgroup )
-      {
-        workgroupItem = new Smb4KNetworkBrowserItem( m_widget, workgroup );
-
-        (void) new Smb4KNetworkBrowserItem( workgroupItem, host );
-      }
-      else
-      {
-        // Do nothing (This should never happen...)
       }
     }
   }

@@ -222,16 +222,6 @@ class Smb4KNetworkBrowserPart : public KParts::Part
     void slotAddInformation( Smb4KHost *host );
 
     /**
-     * This slots is connected to the Smb4KScanner::hostAdded() signal and inserts
-     * a single host in the list view. If the host is already present, nothing is
-     * done.
-     *
-     * @param host                A Smb4KHost item that is to be added to the
-     *                            tree widget.
-     */
-    void slotInsertHost( Smb4KHost *host );
-
-    /**
      * Rescan the network. This slot is connected to the 'Rescan' action.
      *
      * @param checked             Is TRUE if the action is checked (not used here).
