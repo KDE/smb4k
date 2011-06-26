@@ -371,6 +371,13 @@ class KDE_EXPORT Smb4KCustomOptions
      * Operator to check if two infos are equal.
      */
     bool operator==( Smb4KCustomOptions options ) { return equals( &options ); }
+    
+    /**
+     * Check if the custom options are empty.
+     * 
+     * @returns TRUE if the custom options object is empty
+     */
+    bool isEmpty();
 
   private:
     Smb4KHost m_host;

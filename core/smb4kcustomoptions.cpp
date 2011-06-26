@@ -623,5 +623,131 @@ bool Smb4KCustomOptions::equals( Smb4KCustomOptions *options ) const
 }
 
 
+bool Smb4KCustomOptions::isEmpty()
+{
+  // Type
+  if ( m_type != Unknown )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Profile
+  if ( !profile().isEmpty() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Workgroup
+  if ( !workgroupName().isEmpty() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // URL
+  if ( !url().isEmpty() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // IP address
+  if ( !ip().isEmpty() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
 
+  // SMB port
+  if ( smbPort() != 139 )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+#ifndef Q_OS_FREEBSD
+  
+  // File system port (used for mounting)
+  if ( fileSystemPort() != 445 )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // Write access
+  if ( writeAccess() != UndefinedWriteAccess )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+#endif
+
+  // Protocol hint
+  if ( protocolHint() != UndefinedProtocolHint )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Kerberos
+  if ( useKerberos() != UndefinedKerberos )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // UID
+  if ( uid() != getuid() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // GID
+  if ( gid() != getgid() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  return true;
+}
 
