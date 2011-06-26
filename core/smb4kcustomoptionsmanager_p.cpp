@@ -322,6 +322,31 @@ void Smb4KCustomOptionsDialog::setupView()
   }
   
   m_kerberos = new QCheckBox( Smb4KSettings::self()->useKerberosItem()->label(), editors );
+    
+  if ( m_options->useKerberos() == Smb4KCustomOptions::UndefinedKerberos )
+  {
+    m_kerberos->setChecked( Smb4KSettings::useKerberos() );
+  }
+  else
+  {
+    switch ( m_options->useKerberos() )
+    {
+      case Smb4KCustomOptions::UseKerberos:
+      {
+        m_kerberos->setChecked( true );
+        break;
+      }
+      case Smb4KCustomOptions::NoKerberos:
+      {
+        m_kerberos->setChecked( false );
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
   
   editors_layout->addWidget( unc_label, 0, 0, 0 );
   editors_layout->addWidget( unc, 0, 1, 0 );
@@ -545,21 +570,14 @@ void Smb4KCustomOptionsDialog::slotOKClicked()
   m_options->setProtocolHint( (Smb4KCustomOptions::ProtocolHint)m_protocol_hint->itemData( m_protocol_hint->currentIndex() ).toInt() );
   m_options->setUID( m_user_id->itemData( m_user_id->currentIndex() ).toInt() );
   m_options->setGID( m_group_id->itemData( m_group_id->currentIndex() ).toInt() );
-  
-  if ( m_kerberos->isEnabled() )
+
+  if ( m_kerberos->isChecked() )
   {
-    if ( m_kerberos->isChecked() )
-    {
-      m_options->setUseKerberos( Smb4KCustomOptions::UseKerberos );
-    }
-    else
-    {
-      m_options->setUseKerberos( Smb4KCustomOptions::NoKerberos );
-    }
+    m_options->setUseKerberos( Smb4KCustomOptions::UseKerberos );
   }
   else
   {
-    m_options->setUseKerberos( Smb4KCustomOptions::UndefinedKerberos );
+    m_options->setUseKerberos( Smb4KCustomOptions::NoKerberos );
   }
   
   KConfigGroup group( Smb4KSettings::self()->config(), "CustomOptionsDialog" );
