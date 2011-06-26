@@ -2,8 +2,8 @@
     smb4kconfigdialog  -  The configuration dialog of Smb4K
                              -------------------
     begin                : Sa Apr 14 2007
-    copyright            : (C) 2007-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2004-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 // Qt includes
@@ -157,6 +157,9 @@ void Smb4KConfigDialog::setupDialog()
   // Connections
   connect( samba_options,      SIGNAL( customSettingsModified() ),
            this,               SLOT( slotEnableApplyButton() ) );
+  
+  connect( samba_options,      SIGNAL( reloadCustomSettings() ),
+           this,               SLOT( slotReloadCustomOptions() ) );
 
   connect( auth_options,       SIGNAL( loadWalletEntries() ),
            this,               SLOT( slotLoadAuthenticationInformation() ) );
@@ -195,8 +198,7 @@ void Smb4KConfigDialog::saveCustomSambaOptions()
 {
   if ( m_samba )
   {
-    QList<Smb4KCustomOptions *> options;
-    options = m_samba->widget()->findChild<Smb4KSambaOptions *>()->getCustomOptions();
+    QList<Smb4KCustomOptions *> options = m_samba->widget()->findChild<Smb4KSambaOptions *>()->getCustomOptions();
     Smb4KCustomOptionsManager::self()->replaceCustomOptions( options );
   }
   else
@@ -682,7 +684,7 @@ void Smb4KConfigDialog::slotEnableApplyButton()
   // Check the custom settings.
   Smb4KSambaOptions *samba_options = m_samba->widget()->findChild<Smb4KSambaOptions *>();
   
-  if ( !enable && samba_options->customSettingsMaybeChanged() )
+  if ( !enable && samba_options && samba_options->customSettingsMaybeChanged() )
   {
     QList<Smb4KCustomOptions *> new_list = samba_options->getCustomOptions();
     QList<Smb4KCustomOptions *> old_list = Smb4KCustomOptionsManager::self()->customOptions();
@@ -725,6 +727,12 @@ void Smb4KConfigDialog::slotEnableApplyButton()
   }
   
   enableButtonApply( enable );
+}
+
+
+void Smb4KConfigDialog::slotReloadCustomOptions()
+{
+  loadCustomSambaOptions();
 }
 
 
