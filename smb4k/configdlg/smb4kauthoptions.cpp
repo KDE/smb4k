@@ -149,6 +149,7 @@ Smb4KAuthOptions::Smb4KAuthOptions( QWidget *parent ) : KTabWidget( parent )
   m_details_widget->verticalHeader()->setVisible( false );
   m_details_widget->verticalHeader()->setResizeMode( QHeaderView::ResizeToContents );
   m_details_widget->viewport()->installEventFilter( this );
+  m_details_widget->setEnabled( false );
   
   logins_layout->addWidget( m_entries_widget, 0, 0, 4, 1, 0 );
   logins_layout->addWidget( m_load_button, 0, 2, 0 );
@@ -436,6 +437,7 @@ void Smb4KAuthOptions::clearDetails()
   m_details_widget->clear();
   m_details_widget->setRowCount( 0 );
   m_details_widget->setColumnCount( 0 );
+  m_details_widget->setEnabled( !m_entries_widget->selectedItems().isEmpty() );
   
   // Clear the auth info object and disable the "Undo" action
   m_auth_info = Smb4KAuthInfo();
