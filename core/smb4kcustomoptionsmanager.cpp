@@ -575,7 +575,10 @@ const QList<Smb4KCustomOptions *> Smb4KCustomOptionsManager::customOptions()
 
 void Smb4KCustomOptionsManager::replaceCustomOptions( const QList<Smb4KCustomOptions*> &options_list )
 {
-  m_options.clear();
+  while ( !m_options.isEmpty() )
+  {
+    delete m_options.takeFirst();
+  }
   
   if ( !options_list.isEmpty() )
   {
@@ -585,7 +588,7 @@ void Smb4KCustomOptionsManager::replaceCustomOptions( const QList<Smb4KCustomOpt
       
       if ( hasCustomOptions( options ) || options->remount() == Smb4KCustomOptions::DoRemount )
       {
-        m_options << options;
+        m_options << new Smb4KCustomOptions( *options );
       }
       else
       {
