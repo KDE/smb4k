@@ -32,15 +32,21 @@
 #endif
 
 // Qt includes
-#include <QTreeWidget>
-#include <QTreeWidgetItem>
 #include <QList>
 #include <QEvent>
+#include <QCloseEvent>
+#include <QListWidgetItem>
+#include <QLabel>
+#include <QCheckBox>
 
 // KDE includes
 #include <ktabwidget.h>
 #include <kactionmenu.h>
 #include <kactioncollection.h>
+#include <klistwidget.h>
+#include <knuminput.h>
+#include <klineedit.h>
+#include <kcombobox.h>
 
 // application specific includes
 #include <smb4kcustomoptions.h>
@@ -59,27 +65,6 @@ class Smb4KSambaOptions : public KTabWidget
   Q_OBJECT
 
   public:
-    /**
-     * This enumeration is used for the list view in the "Custom" tab.
-     */
-#ifndef Q_OS_FREEBSD
-    enum Columns{ ItemName = 0,
-                  Protocol = 1,
-                  WriteAccess = 2,
-                  Kerberos = 3,
-                  UID = 4,
-                  GID = 5,
-                  SMBPort = 6,
-                  FileSystemPort = 7 };
-#else
-    enum Columns{ ItemName = 0,
-                  Protocol = 1,
-                  Kerberos = 2,
-                  UID = 3,
-                  GID = 4,
-                  SMBPort = 5 };
-#endif
-
     enum Tabs{ GeneralTab = 0,
                MountingTab = 1,
                ClientProgramsTab = 2,
@@ -130,6 +115,13 @@ class Smb4KSambaOptions : public KTabWidget
      */
     bool customSettingsMaybeChanged() { return m_maybe_changed; }
     
+  protected:
+    /**
+     * Reimplemented from QObject
+     */
+    bool eventFilter( QObject *obj,
+                      QEvent *e );
+    
   signals:
     /**
      * This signal is emitted everytime the custom settings potentially were 
@@ -138,19 +130,11 @@ class Smb4KSambaOptions : public KTabWidget
      * one option.
      */
     void customSettingsModified();
-
-  protected:
+    
     /**
-     * Reimplemented from KTabWidget/QWidget. This function is used to close any edit
-     * widget in the list widget when the user pressed somewhere where no item is
-     * located.
-     *
-     * @param object              The object where the event occurred
-     *
-     * @param event               The event
+     * This signal is emitted when the settings should be reloaded.
      */
-    bool eventFilter( QObject *object,
-                      QEvent *e );
+    void reloadCustomSettings();
 
   protected slots:
     /**
@@ -169,31 +153,11 @@ class Smb4KSambaOptions : public KTabWidget
 
     /**
      * This slot is invoked when an item is double clicked. It is used
-     * to edit the column where the user double clicked.
+     * to edit the item the user double clicked.
      *
      * @param item            The item that was double clicked.
-     *
-     * @param column          The column where the user double clicked the item
-     *                        @p item.
      */
-    void slotEditCustomItem( QTreeWidgetItem *item,
-                             int column );
-
-    /**
-     * This slot is invoked when the text of a custom entry in the tree
-     * widget was changed by choosing from a combo box.
-     *
-     * @param text            The new text for the protocol.
-     */
-    void slotCustomTextChanged( const QString &text );
-
-    /**
-     * This slot is invoked when an integer of a custom entry in the tree
-     * widget was changed.
-     *
-     * @param value           The new value
-     */
-    void slotCustomIntValueChanged( int value );
+    void slotEditCustomItem( QListWidgetItem *item );
 
     /**
      * This slot is invoked when the selection in the custom tree widget
@@ -233,25 +197,95 @@ class Smb4KSambaOptions : public KTabWidget
      */
     void slotClearActionTriggered( bool );
     
+    /**
+     * This slot is connected to the "Undo" action found in the context
+     * menu of the custom options tab. It is called when this action is triggered.
+     * 
+     * @param checked         TRUE if the action is checked and FALSE otherwise.
+     */
+    void slotUndoActionTriggered( bool );
+    
+    /**
+     * This slot is called when a value was changed.
+     */
+    void slotEntryChanged();
+    
   private:
     /**
-     * Finds a custom options info in the private list. You need the @p unc
-     * for this to work. Note that this function performs a case sensitive 
-     * search.
+     * Finds a custom options info in the private list. You need the @p url
+     * for this to work. 
      * 
-     * @param unc             The UNC of the custom options info object
+     * @param url             The URL of the custom options info object
      */
-    Smb4KCustomOptions *findOptions( const QString &unc );
+    Smb4KCustomOptions *findOptions( const QUrl &url );
     
     /**
-     * Removes all edit widgets in the custom options tree widget.
+     * Populate the editors with the current settings and enable the
+     * widget.
      */
-    void removeEditWidgets();
+    void populateEditors( Smb4KCustomOptions *options );
     
     /**
-     * The tree widget for the custom options
+     * Clear the editors and disable the widget. 
      */
-    QTreeWidget *m_custom_options;
+    void clearEditors();
+    
+    /**
+     * Commit changes 
+     */
+    void commitChanges();
+    
+    /**
+     * The list widget for the custom options
+     */
+    KListWidget *m_custom_options;
+    
+    /**
+     * The edit widgets
+     */
+    QWidget *m_editors;
+    
+    /**
+     * The UNC of the item
+     */
+    KLineEdit *m_unc_address;
+    
+    /**
+     * SMB Port
+     */
+    KIntNumInput *m_smb_port;
+
+#ifndef Q_OS_FREEBSD
+    /**
+     * Filesystem port
+     */
+    KIntNumInput *m_fs_port;
+
+    /**
+     * Write access
+     */
+    KComboBox *m_write_access;
+#endif
+    
+    /**
+     * Protocol hint
+     */
+    KComboBox *m_protocol_hint;
+    
+    /**
+     * UID
+     */
+    KComboBox *m_user_id;
+    
+    /**
+     * GID
+     */
+    KComboBox *m_group_id;
+    
+    /**
+     * Kerberos
+     */
+    QCheckBox *m_kerberos;
 
     /**
      * The action menu
@@ -266,12 +300,22 @@ class Smb4KSambaOptions : public KTabWidget
     /**
      * The list of custom Samba options
      */
-    QList<Smb4KCustomOptions> m_options_list;
+    QList<Smb4KCustomOptions *> m_options_list;
+    
+    /**
+     * The current custom options object
+     */
+    Smb4KCustomOptions m_current_options;
     
     /**
      * Is it possible that the custom settings changed?
      */
     bool m_maybe_changed;
+    
+    /**
+     * List cleared or item removed?
+     */
+    bool m_removed;
 };
 
 #endif
