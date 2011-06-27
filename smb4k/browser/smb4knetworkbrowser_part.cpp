@@ -28,6 +28,7 @@
 #include <QKeySequence>
 #include <QEvent>
 #include <QTreeWidget>
+#include <QTreeWidgetItemIterator>
 #include <QHeaderView>
 
 // KDE includes
@@ -1805,60 +1806,60 @@ void Smb4KNetworkBrowserPart::slotMounterFinished( Smb4KShare */*share*/, int /*
 
 void Smb4KNetworkBrowserPart::slotShareMounted( Smb4KShare *share )
 {
-  QList<QTreeWidgetItem *> list = m_widget->findItems( share->shareName(), Qt::MatchFixedString|Qt::MatchRecursive, Smb4KNetworkBrowser::Network );
-
-  if ( !list.isEmpty() )
+  QTreeWidgetItemIterator it( m_widget );
+  
+  while ( *it )
   {
-    for ( int i = 0; i < list.size(); ++i )
+    Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( *it );
+    
+    if ( item->type() == Smb4KNetworkBrowserItem::Share )
     {
-      Smb4KNetworkBrowserItem *browser_item = static_cast<Smb4KNetworkBrowserItem *>( list.at( i ) );
-
-      if ( browser_item->type() == Smb4KNetworkBrowserItem::Share &&
-           QString::compare( browser_item->shareItem()->unc(), share->unc(), Qt::CaseInsensitive ) == 0 
-           /* FIXME: Do we need to check the workgroup here? */ )
+      if ( QString::compare( item->shareItem()->unc(), share->unc(), Qt::CaseInsensitive ) == 0 )
       {
-        browser_item->update( share );
+        item->update( share );
         break;
       }
       else
       {
-        continue;
+        // Do nothing
       }
     }
-  }
-  else
-  {
-    // Do nothing
+    else
+    {
+      // Do nothing
+    }
+    
+    ++it;
   }
 }
 
 
 void Smb4KNetworkBrowserPart::slotShareUnmounted( Smb4KShare *share )
 {
-  QList<QTreeWidgetItem *> list = m_widget->findItems( share->shareName(), Qt::MatchFixedString|Qt::MatchRecursive, Smb4KNetworkBrowser::Network );
-
-  if ( !list.isEmpty() )
+  QTreeWidgetItemIterator it( m_widget );
+  
+  while ( *it )
   {
-    for ( int i = 0; i < list.size(); ++i )
+    Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( *it );
+    
+    if ( item->type() == Smb4KNetworkBrowserItem::Share )
     {
-      Smb4KNetworkBrowserItem *browser_item = static_cast<Smb4KNetworkBrowserItem *>( list.at( i ) );
-
-      if ( browser_item->type() == Smb4KNetworkBrowserItem::Share &&
-           QString::compare( browser_item->shareItem()->unc(), share->unc(), Qt::CaseInsensitive ) == 0 
-           /* FIXME: Do we need to check the workgroup here? */ )
+      if ( QString::compare( item->shareItem()->unc(), share->unc(), Qt::CaseInsensitive ) == 0 )
       {
-        browser_item->update( share );
+        item->update( share );
         break;
       }
       else
       {
-        continue;
+        // Do nothing
       }
     }
-  }
-  else
-  {
-    // Do nothing
+    else
+    {
+      // Do nothing
+    }
+    
+    ++it;
   }
 }
 
