@@ -1,16 +1,15 @@
 project( smb4k )
 
-set( VERSION 0.10.69 )
+set( VERSION 0.10.70 )
 set( VERSION_MAJOR 0 )
 set( VERSION_MINOR 10 )
-set( VERSION_PATCH 69 )
+set( VERSION_PATCH 70 )
 
 cmake_minimum_required( VERSION 2.6 )
 
+set( QT_MIN_VERSION 4.7.0 )
+set( KDE_MIN_VERSION 4.4.0 ) 
 find_package( KDE4 REQUIRED )
-set( KDE_MIN_VERSION 4.4.0 )
-
-find_package( Qt4 4.7 REQUIRED )
 
 include(KDE4Defaults)
 include(MacroLibrary)
