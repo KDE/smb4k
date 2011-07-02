@@ -10,6 +10,8 @@ cmake_minimum_required( VERSION 2.6 )
 find_package( KDE4 REQUIRED )
 set( KDE_MIN_VERSION 4.4.0 )
 
+find_package( Qt4 4.7 REQUIRED )
+
 include(KDE4Defaults)
 include(MacroLibrary)
 include(FindGettext)
