@@ -491,7 +491,7 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
   // Workgroup
   if ( !share->workgroupName().isEmpty() )
   {
-    arguments << QString( "-W %1" ).arg( KShell::quoteArg( share->workgroupName() ) );
+    arguments << QString( "-W %1" ).arg( share->workgroupName() );
   }
   else
   {
@@ -512,10 +512,24 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
   arguments << "-N";
 
   // UID
-  arguments << QString( "-u %1" ).arg( options_info ? options_info->uid() : (uid_t)Smb4KSettings::userID().toInt() );
+  if ( options )
+  {
+    arguments << QString( "-u %1" ).arg( options->uid() );
+  }
+  else
+  {
+    arguments << QString( "-u %1" ).arg( (K_UID)Smb4KSettings::userID().toInt() );
+  }
 
   // GID
-  arguments << QString( "-g %1" ).arg( options_info ?  options_info->gid() : (uid_t)Smb4KSettings::groupID().toInt() );
+  if ( options )
+  {
+    arguments << QString( "-g %1" ).arg( options->gid() );
+  }
+  else
+  {
+    arguments << QString( "-g %1" ).arg( (K_GID)Smb4KSettings::groupID().toInt() );
+  }
 
   // Client character set and server codepage
   QString charset, codepage;

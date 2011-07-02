@@ -764,7 +764,7 @@ void Smb4KCustomOptionsManager::addCustomOptions( Smb4KCustomOptions *options )
     if ( known_options != options && !known_options->equals( options ) )
     {
       known_options->setSMBPort( options->smbPort() );
-#ifndef Q_S_FREEBSD
+#ifndef Q_OS_FREEBSD
       known_options->setFileSystemPort( options->fileSystemPort() );
       known_options->setWriteAccess( options->writeAccess() );
 #endif

@@ -48,9 +48,6 @@
 #include <smb4ksettings.h>
 #include <smb4kauthinfo.h>
 #include <smb4khomesshareshandler.h>
-#ifdef Q_OS_FREEBSD
-#include <smb4ksambaoptionshandler.h>
-#endif
 #include <smb4kglobal.h>
 #include <smb4knotification.h>
 
@@ -809,7 +806,7 @@ void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
   if ( !contents.contains( "[default]", Qt::CaseInsensitive ) )
   {
     // Get the global Samba options.
-    QMap<QString,QString> global_options = Smb4KSambaOptionsHandler::self()->globalSambaOptions();
+    QMap<QString,QString> global_options = globalSambaOptions();
 
     // Set up the default section.
     QStringList default_section;
@@ -858,7 +855,7 @@ void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
     }
 
     // WINS server
-    QString wins_server = Smb4KSambaOptionsHandler::self()->winsServer();
+    QString wins_server = winsServer();
 
     if ( !wins_server.isEmpty() )
     {
