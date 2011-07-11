@@ -49,11 +49,16 @@
 
 using namespace Smb4KGlobal;
 
+#define TIMER_INTERVAL 250
+
 K_GLOBAL_STATIC( Smb4KScannerPrivate, p );
 
 
 Smb4KScanner::Smb4KScanner() : KCompositeJob( 0 )
 {
+  m_interval = 0;
+  m_scanning_allowed = true;
+  
   connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
 }
 
@@ -671,6 +676,114 @@ void Smb4KScanner::lookupInfo( Smb4KHost *host, QWidget *parent )
 }
 
 
+void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
+{
+  if ( Smb4KSettings::periodicScanning() )
+  {
+    if ( m_interval == 0 )
+    {
+      if ( m_periodic_jobs.isEmpty() )
+      {
+        // This case occurs when the user enables periodic scanning during 
+        // runtime. We need to fill the list of periodic jobs here, so that
+        // we can immediately start periodic scanning.
+        m_periodic_jobs << LookupDomains;
+        m_periodic_jobs << LookupDomainMembers;
+        m_periodic_jobs << LookupShares;
+      }
+      else
+      {
+        // This is the regular case. We do not need to do anything.        
+      }
+      
+      Process p = m_periodic_jobs.takeFirst();
+      
+      switch ( p )
+      {
+        case LookupDomains:
+        {
+          m_scanning_allowed = false;
+          lookupDomains();
+          break;
+        }
+        default:
+        {
+          break;
+        }
+      }
+    }
+    else
+    {
+      if ( m_interval >= (Smb4KSettings::scanInterval() * 60000 /* milliseconds */) )
+      {
+        // Reset interval
+        m_interval = 0;
+        
+        // Fill list
+        m_periodic_jobs << LookupDomains;
+        m_periodic_jobs << LookupDomainMembers;
+        m_periodic_jobs << LookupShares;
+      }
+      else
+      {
+        // Check if we need to do something.
+        // Do not start any process before the previous has not finished.
+        if ( !m_periodic_jobs.isEmpty() && m_scanning_allowed )
+        {
+          Process p = m_periodic_jobs.takeFirst();
+          
+          switch ( p )
+          {
+            case LookupDomainMembers:
+            {
+              for ( int i = 0; i < workgroupsList().size(); ++i )
+              {
+                m_scanning_allowed = false;
+                lookupDomainMembers( workgroupsList()[i] );
+              }
+              break;
+            }
+            case LookupShares:
+            {
+              for ( int i = 0; i < hostsList().size(); ++i )
+              {
+                m_scanning_allowed = false;
+                lookupShares( hostsList()[i] );
+              }
+              break;
+            }
+            default:
+            {
+              break;
+            }
+          };
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+    }
+    
+    m_interval += TIMER_INTERVAL;
+  }
+  else
+  {
+    // Periodic scanning is not enabled or has been disabled
+    // during runtime. So, reset the interval, if necessary.
+    if ( m_interval != 0 )
+    {
+      m_interval = 0;
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+}
+
+
+
 /////////////////////////////////////////////////////////////////////////////
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
@@ -683,8 +796,23 @@ void Smb4KScanner::slotAboutToQuit()
 
 void Smb4KScanner::slotStartJobs()
 {
-  // Look up domains
-  lookupDomains( 0 );
+  // If the user wants to have periodic scanning of the network
+  // neighborhood, set it up here here.
+  if ( Smb4KSettings::periodicScanning() )
+  {
+    // Fill list
+    m_periodic_jobs << LookupDomains;
+    m_periodic_jobs << LookupDomainMembers;
+    m_periodic_jobs << LookupShares;
+  }
+  else
+  {
+    lookupDomains( 0 );
+  }
+  
+  // Start the timer in any case. Thus, we are able to switch
+  // to periodic scanning seamlessly in the timerEvent() function.
+  startTimer( 250 );
 }
 
 
@@ -819,6 +947,7 @@ void Smb4KScanner::slotDomainsLookupFinished()
 {
   Smb4KBasicNetworkItem item;
   emit finished( &item, LookupDomains );
+  m_scanning_allowed = true;
 }
 
 
@@ -831,6 +960,7 @@ void Smb4KScanner::slotAboutToStartHostsLookup( Smb4KWorkgroup *workgroup )
 void Smb4KScanner::slotHostsLookupFinished( Smb4KWorkgroup *workgroup )
 {
   emit finished( workgroup, LookupDomainMembers );
+  m_scanning_allowed = true;
 }
 
 
@@ -843,6 +973,7 @@ void Smb4KScanner::slotAboutToStartSharesLookup( Smb4KHost *host )
 void Smb4KScanner::slotSharesLookupFinished( Smb4KHost *host )
 {
   emit finished( host, LookupShares );
+  m_scanning_allowed = true;
 }
 
 
@@ -1155,6 +1286,7 @@ void Smb4KScanner::slotHosts( Smb4KWorkgroup *workgroup, const QList<Smb4KHost> 
     emit hosts( workgroup, hostsList() );
   }
   emit hostListChanged();
+  qDebug() << "slotHosts(): Finished";
 }
 
 

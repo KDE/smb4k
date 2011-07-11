@@ -33,6 +33,7 @@
 
 // Qt includes
 #include <QWidget>
+#include <QTimerEvent>
 
 // KDE includes
 #include <kcompositejob.h>
@@ -154,6 +155,12 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
      */
     void lookupInfo( Smb4KHost *host,
                      QWidget *parent = 0 );
+  
+  protected:
+    /**
+     * Reimplemented from QObject
+     */
+    void timerEvent( QTimerEvent *e );
 
   signals:
     /**
@@ -344,6 +351,22 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
      * Destructor
      */
     ~Smb4KScanner();
+    
+    /**
+     * Scan interval
+     */
+    int m_interval;
+    
+    /**
+     * List for periodic jobs
+     */
+    QList<Process> m_periodic_jobs;
+    
+    /**
+     * Allowance to process the next job when in
+     * periodic scanning mode
+     */
+    bool m_scanning_allowed;
 };
 
 #endif
