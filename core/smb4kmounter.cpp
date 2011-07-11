@@ -59,7 +59,6 @@
 #include <smb4kglobal.h>
 #include <smb4kshare.h>
 #include <smb4ksettings.h>
-#include <smb4kdefs.h>
 #include <smb4khomesshareshandler.h>
 #include <smb4kmounter_p.h>
 #include <smb4kwalletmanager.h>
