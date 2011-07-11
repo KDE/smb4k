@@ -55,7 +55,6 @@
 #include <smb4ksystemtray.h>
 #include <smb4kbookmarkmenu.h>
 #include <core/smb4ksettings.h>
-#include <core/smb4kdefs.h>
 #include <core/smb4kcore.h>
 #include <core/smb4kglobal.h>
 #include <core/smb4kwalletmanager.h>
@@ -69,8 +68,8 @@
 #include <core/smb4kpreviewer.h>
 #include <core/smb4ksearch.h>
 
-
 using namespace Smb4KGlobal;
+
 
 Smb4KMainWindow::Smb4KMainWindow()
 : KParts::MainWindow(), m_system_tray_widget( NULL )
