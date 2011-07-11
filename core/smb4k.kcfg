@@ -171,6 +171,18 @@
       <whatsthis>The master browsers in your network neighborhood require a login to return the browse list. This setting is rarely needed and might even cause a master browser to return an empty browse list. It will not have any effect when you let Smb4K scan broadcast areas.</whatsthis>
       <default>false</default>
     </entry>
+    <entry name="PeriodicScanning" type="Bool">
+      <label>Scan the network periodically</label>
+      <whatsthis>Lookup all workgroups, hosts and shares periodically.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="ScanInterval" type="Int">
+      <label>Interval between scans:</label>
+      <whatsthis>This is the time in minutes that elapses until Smb4K scans the network neighborhood for new workgroups, hosts and shares again.</whatsthis>
+      <min>1</min>
+      <max>60</max>
+      <default>5</default>
+    </entry>
   </group>
 
 <!-- Shares -->
@@ -203,7 +215,7 @@
     </entry>
     <entry name="CheckInterval" type="Int">
       <label>Interval between checks:</label>
-      <whatsthis>This is the time that elapses until Smb4K checks again for new mounts and unmounts. The lower limit is 500 ms, the upper one 300000 ms. Please note that the smaller the interval gets the higher is your system load.</whatsthis>
+      <whatsthis>This is the time in milliseconds that elapses until Smb4K checks again for new mounts and unmounts. The lower limit is 500 ms, the upper one 300000 ms. Please note that the smaller the interval gets the higher is your system load.</whatsthis>
       <min>500</min>
       <max>300000</max>
       <default>2500</default>
