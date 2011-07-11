@@ -2,7 +2,7 @@
     smb4knetworkbrowser  -  The network browser widget of Smb4K.
                              -------------------
     begin                : Mo Jan 8 2007
-    copyright            : (C) 2007-2010 by Alexander Reinholdt
+    copyright            : (C) 2007-2011 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 #ifndef SMB4KNETWORKBROWSER_H
@@ -145,22 +145,6 @@ class Smb4KNetworkBrowser : public QTreeWidget
     void wheelEvent( QWheelEvent *e );
 
   protected slots:
-    /**
-     * This slot is called whenever an item is expanded.
-     *
-     * @param item          The tree widget item that has been
-     *                      expanded.
-     */
-    void slotItemExpanded( QTreeWidgetItem *item );
-
-    /**
-     * This slot is called whenever an item is collapsed.
-     *
-     * @param item          The tree widget item that has been
-     *                      collapsed.
-     */
-    void slotItemCollapsed( QTreeWidgetItem *item );
-
    /**
      * This slot is used to change the cursor over an item if appropriate.
      *

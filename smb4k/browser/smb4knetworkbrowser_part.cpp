@@ -54,7 +54,6 @@
 #include <core/smb4kglobal.h>
 #include <core/smb4ksettings.h>
 #include <core/smb4kbookmark.h>
-#include <core/smb4kdefs.h>
 #include <core/smb4kwalletmanager.h>
 #include <core/smb4kauthinfo.h>
 #include <core/smb4kscanner.h>
@@ -568,6 +567,8 @@ void Smb4KNetworkBrowserPart::slotItemPressed( QTreeWidgetItem *item, int /*colu
 
 void Smb4KNetworkBrowserPart::slotItemExpanded( QTreeWidgetItem *item )
 {
+  qDebug() << "slotItemExpanded(): " << item->text( Smb4KNetworkBrowser::Network );
+  
   Smb4KNetworkBrowserItem *browserItem = static_cast<Smb4KNetworkBrowserItem *>( item );
 
   if ( browserItem )
@@ -599,6 +600,8 @@ void Smb4KNetworkBrowserPart::slotItemExpanded( QTreeWidgetItem *item )
 
 void Smb4KNetworkBrowserPart::slotItemCollapsed( QTreeWidgetItem *item )
 {
+  qDebug() << "slotItemCollapsed()";
+  
   Smb4KNetworkBrowserItem *browserItem = static_cast<Smb4KNetworkBrowserItem *>( item );
 
   // Remove all children if we have a host item, because we
@@ -895,12 +898,14 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
 
     if ( !list.isEmpty() )
     {
-      for ( int i = 0; i < workgroups.size(); ++i )
+      QMutableListIterator<QTreeWidgetItem *> it( workgroups );
+      
+      while ( it.hasNext() )
       {
-        Smb4KNetworkBrowserItem *workgroup_item = static_cast<Smb4KNetworkBrowserItem *>( workgroups.at( i ) );
-
+        Smb4KNetworkBrowserItem *workgroup_item = static_cast<Smb4KNetworkBrowserItem *>( it.next() );
+        
         // Remove obsolete hosts from the workgroup.
-        for ( int j = 0; j < workgroups.at( i )->childCount(); ++j )
+        for ( int j = 0; j < workgroup_item->childCount(); ++j )
         {
           Smb4KNetworkBrowserItem *host_item = static_cast<Smb4KNetworkBrowserItem *>( workgroup_item->child( j ) );
           bool found_host = false;
@@ -928,7 +933,7 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
             // Do nothing
           }
         }
-
+        
         // Add new hosts to the workgroup and update the existing ones.
         for ( int j = 0; j < list.size(); ++j )
         {
@@ -968,24 +973,33 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
             continue;
           }
         }
-
-        // If the workgroup item has children, expand it. Otherwise collapse it.
-        if ( workgroups.at( i )->childCount() != 0 )
+        
+        // If the workgroup item has children, expand it if necessary. 
+        // Otherwise there is no use in keeping it, so remove it.
+        if ( workgroup_item->childCount() != 0 )
         {
-          m_widget->expandItem( workgroups.at( i ) );
+          if ( !workgroup_item->isExpanded() )
+          {
+            m_widget->expandItem( workgroup_item );
+          }
+          else
+          {
+            // Do nothing
+          }
         }
         else
         {
-          m_widget->collapseItem( workgroups.at( i ) );
+          delete workgroup_item;
         }
 
         // Sort the items.
-        m_widget->sortItems( Smb4KNetworkBrowser::Network, Qt::AscendingOrder );
+        m_widget->sortItems( Smb4KNetworkBrowser::Network, Qt::AscendingOrder );     
       }
     }
     else
     {
-      // The workgroup(s) has/have no children (anymore).
+      // The workgroup(s) has/have no children (anymore). Remove
+      // it/them.
       while ( !workgroups.isEmpty() )
       {
         delete workgroups.takeFirst();
@@ -997,25 +1011,27 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
     // This is the list of all hosts available on the network.
     if ( !list.isEmpty() )
     {
-      // We will run through all items in the tree widget to find the
-      // obsolete hosts.
+      // Loop through the network neighborhood tree. Remove the obsolete host
+      // and update the still available ones.
       QTreeWidgetItemIterator it( m_widget );
-
+      
       while ( *it )
       {
         Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( *it );
-        bool found_host = false;
-
+        
         switch ( item->type() )
         {
           case Smb4KNetworkBrowserItem::Host:
           {
+            bool found = false;
+            
             for ( int i = 0; i < list.size(); ++i )
             {
-              if ( QString::compare( list.at( i )->workgroupName(), item->hostItem()->workgroupName() ) == 0 &&
-                   QString::compare( list.at( i )->hostName(), item->hostItem()->hostName() ) == 0 )
+              if ( QString::compare( list.at( i )->workgroupName(), item->hostItem()->workgroupName(), Qt::CaseInsensitive ) == 0 &&
+                   QString::compare( list.at( i )->unc(), item->hostItem()->unc(), Qt::CaseInsensitive ) == 0 )
               {
-                found_host = true;
+                item->update( list.at( i ) );
+                found = true;
                 break;
               }
               else
@@ -1023,15 +1039,15 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
                 continue;
               }
             }
-
-            if ( !found_host )
+            
+            if ( !found )
             {
               delete item;
             }
             else
             {
               // Do nothing
-            }
+            }            
             break;
           }
           default:
@@ -1039,24 +1055,32 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
             break;
           }
         }
+        
         ++it;
       }
-
-      // Find the hosts in the tree widget.
+      
+      // Now add the new hosts. For this we search the network neighborhood
+      // tree and add the host if either there is no match or the found host(s)
+      // belong(s) to another workgroup.
       for ( int i = 0; i < list.size(); ++i )
       {
-        QList<QTreeWidgetItem *> hosts = m_widget->findItems( list.at( i )->hostName(), Qt::MatchFixedString|Qt::MatchRecursive, Smb4KNetworkBrowser::Network );
-
+        QList<QTreeWidgetItem *> hosts = m_widget->findItems( list.at( i )->hostName(), 
+                                                              Qt::MatchFixedString|Qt::MatchRecursive, 
+                                                              Smb4KNetworkBrowser::Network );
+        
         if ( !hosts.isEmpty() )
         {
+          bool match = false;
+          
           for ( int j = 0; j < hosts.size(); ++j )
           {
-            Smb4KNetworkBrowserItem *host_item = static_cast<Smb4KNetworkBrowserItem *>( hosts.at( j ) );
-
-            if ( QString::compare( list.at( i )->workgroupName(), host_item->hostItem()->workgroupName(), Qt::CaseInsensitive ) == 0 )
+            Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( hosts.at( i ) );
+            
+            if ( item->type() == Smb4KNetworkBrowserItem::Host &&
+                 QString::compare( list.at( i )->workgroupName(), item->hostItem()->workgroupName(), Qt::CaseInsensitive ) == 0 &&
+                 QString::compare( list.at( i )->unc(), item->hostItem()->unc(), Qt::CaseInsensitive ) == 0 )
             {
-              // This is the host. Update it.
-              host_item->update( list.at( i ) );
+              match = true;
               break;
             }
             else
@@ -1064,13 +1088,85 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
               continue;
             }
           }
+          
+          if ( !match )
+          {
+            // This host is new. Add it to the list widget and create the
+            // workgroup item as well if needed.
+            QList<QTreeWidgetItem *> workgroups = m_widget->findItems( list.at( i )->workgroupName(), Qt::MatchFixedString, Smb4KNetworkBrowser::Network );
+            
+            if ( !workgroups.isEmpty() )
+            {
+              for ( int j = 0; j < workgroups.size(); ++j )
+              {
+                Smb4KNetworkBrowserItem *workgroup_item = static_cast<Smb4KNetworkBrowserItem *>( workgroups.at( j ) );
+
+                if ( workgroup_item )
+                {
+                  // FIXME: Do we need to change the (pseudo) master browser here?
+                  (void) new Smb4KNetworkBrowserItem( workgroup_item, list.at( i ) );
+                  
+                  if ( !workgroup_item->isExpanded() )
+                  {
+                    m_widget->expandItem( workgroup_item );
+                  }
+                  else
+                  {
+                    // Do nothing
+                  }
+                  continue;
+                }
+                else
+                {
+                  continue;
+                }
+              }
+            }
+            else
+            {
+              // We need to create the workgroup and the host item. Since the workgroup
+              // was not found in the browser, we can assume, that it is also not available
+              // in the global list. This may happen, if no master browser could be found
+              // during an IP scan. So, we will create a temporary workgroup item now.
+              Smb4KWorkgroup workgroup;
+              workgroup.setWorkgroupName( list.at( i )->workgroupName() );
+
+              if ( list.at( i )->isMasterBrowser() )
+              {
+                workgroup.setMasterBrowserName( list.at( i )->hostName() );
+                workgroup.setMasterBrowserIP( list.at( i )->ip() );
+                workgroup.setHasPseudoMasterBrowser( !list.at( i )->isMasterBrowser() );
+              }
+              else
+              {
+                // Do nothing
+              }
+
+              Smb4KNetworkBrowserItem *workgroup_item = new Smb4KNetworkBrowserItem( m_widget, &workgroup );
+              (void) new Smb4KNetworkBrowserItem( workgroup_item, list.at( i ) );
+              
+              if ( !workgroup_item->isExpanded() )
+              {
+                m_widget->expandItem( workgroup_item );
+              }
+              else
+              {
+                // Do nothing
+              }
+              continue;
+            }
+          }
+          else
+          {
+            // Do nothing
+          }
         }
         else
         {
-          // The host is new. Add it to the list widget and create the
+          // This host is new. Add it to the list widget and create the
           // workgroup item as well if needed.
           QList<QTreeWidgetItem *> workgroups = m_widget->findItems( list.at( i )->workgroupName(), Qt::MatchFixedString, Smb4KNetworkBrowser::Network );
-
+          
           if ( !workgroups.isEmpty() )
           {
             for ( int j = 0; j < workgroups.size(); ++j )
@@ -1079,8 +1175,17 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
 
               if ( workgroup_item )
               {
-                // FIXME: Do we need to change the (pseudo)  master browser here?
+                // FIXME: Do we need to change the (pseudo) master browser here?
                 (void) new Smb4KNetworkBrowserItem( workgroup_item, list.at( i ) );
+                
+                if ( !workgroup_item->isExpanded() )
+                {
+                  m_widget->expandItem( workgroup_item );
+                }
+                else
+                {
+                  // Do nothing
+                }                
                 continue;
               }
               else
@@ -1111,33 +1216,28 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
 
             Smb4KNetworkBrowserItem *workgroup_item = new Smb4KNetworkBrowserItem( m_widget, &workgroup );
             (void) new Smb4KNetworkBrowserItem( workgroup_item, list.at( i ) );
+            
+            if ( !workgroup_item->isExpanded() )
+            {
+              m_widget->expandItem( workgroup_item );
+            }
+            else
+            {
+              // Do nothing
+            }
             continue;
           }
         }
       }
-
-      // If the workgroup item has children, expand it. Otherwise collapse it.
-      for ( int i = 0; i < m_widget->topLevelItemCount(); ++i )
-      {
-        if ( m_widget->topLevelItem( i )->childCount() != 0 )
-        {
-          m_widget->expandItem( m_widget->topLevelItem( i ) );
-        }
-        else
-        {
-          m_widget->collapseItem( m_widget->topLevelItem( i ) );
-        }
-      }
-
+      
       // Sort the items.
       m_widget->sortItems( Smb4KNetworkBrowser::Network, Qt::AscendingOrder );
     }
     else
     {
-      while ( m_widget->topLevelItemCount() != 0 )
-      {
-        delete m_widget->takeTopLevelItem( 0 );
-      }
+      // If the list of hosts is empty, we can clear the whole 
+      // network neighborhood tree.
+      m_widget->clear();
     }
   }
 }

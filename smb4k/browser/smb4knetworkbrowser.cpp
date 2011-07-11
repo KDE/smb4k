@@ -2,7 +2,7 @@
     smb4knetworkbrowser  -  The network browser widget of Smb4K.
                              -------------------
     begin                : Mo Jan 8 2007
-    copyright            : (C) 2007-2010 by Alexander Reinholdt
+    copyright            : (C) 2007-2011 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 // Qt includes
@@ -70,12 +70,6 @@ Smb4KNetworkBrowser::Smb4KNetworkBrowser( QWidget *parent )
   header()->setResizeMode( QHeaderView::ResizeToContents );
 
   // Add some connections:
-  connect( this, SIGNAL( itemExpanded( QTreeWidgetItem * ) ),
-           this, SLOT( slotItemExpanded( QTreeWidgetItem * ) ) );
-
-  connect( this, SIGNAL( itemCollapsed( QTreeWidgetItem * ) ),
-           this, SLOT( slotItemCollapsed( QTreeWidgetItem * ) ) );
-
   connect( this, SIGNAL( itemExecuted( QTreeWidgetItem *, int ) ),
            this, SLOT( slotItemExecuted( QTreeWidgetItem *, int ) ) );
 
@@ -331,18 +325,6 @@ void Smb4KNetworkBrowser::wheelEvent( QWheelEvent *e )
 /////////////////////////////////////////////////////////////////////////////
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
-
-void Smb4KNetworkBrowser::slotItemExpanded( QTreeWidgetItem *item )
-{
-  item->setSelected( true );
-}
-
-
-void Smb4KNetworkBrowser::slotItemCollapsed( QTreeWidgetItem *item )
-{
-  item->setSelected( false );
-}
-
 
 void Smb4KNetworkBrowser::slotItemEntered( QTreeWidgetItem *item, int /*column*/ )
 {
