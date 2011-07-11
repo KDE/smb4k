@@ -3,8 +3,8 @@
     settings of Smb4K
                              -------------------
     begin                : Sa Nov 15 2003
-    copyright            : (C) 2003-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2003-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -20,11 +20,12 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 // Qt includes
+#include <QVBoxLayout>
 #include <QGridLayout>
 #include <QGroupBox>
 #include <QButtonGroup>
@@ -36,6 +37,7 @@
 #include <klocale.h>
 #include <klineedit.h>
 #include <kcombobox.h>
+#include <knuminput.h>
 
 // application specific includes
 #include "smb4knetworkoptions.h"
@@ -44,7 +46,7 @@
 Smb4KNetworkOptions::Smb4KNetworkOptions( QWidget *parent )
 : QWidget( parent )
 {
-  QGridLayout *layout               = new QGridLayout( this );
+  QVBoxLayout *layout = new QVBoxLayout( this );
   layout->setSpacing( 5 );
   layout->setMargin( 0 );
 
@@ -105,12 +107,34 @@ Smb4KNetworkOptions::Smb4KNetworkOptions( QWidget *parent )
   master_browser_auth->setObjectName( "kcfg_MasterBrowsersRequireAuth" );
 
   auth_box_layout->addWidget( master_browser_auth, 0, 0, 0 );
+  
+  // Periodic scaning
+  QGroupBox *periodic_box           = new QGroupBox( i18n( "Periodic Scanning" ), this );
+  
+  QGridLayout *periodic_layout      = new QGridLayout( periodic_box );
+  periodic_layout->setSpacing( 5 );
+  
+  QCheckBox *periodic_scanning      = new QCheckBox( Smb4KSettings::self()->periodicScanningItem()->label(),
+                                      periodic_box );
+  periodic_scanning->setObjectName( "kcfg_PeriodicScanning" );
+  
+  QLabel *interval_label            = new QLabel( Smb4KSettings::self()->scanIntervalItem()->label(),
+                                      periodic_box );
+  
+  KIntNumInput *scan_interval       = new KIntNumInput( periodic_box );
+  scan_interval->setObjectName( "kcfg_ScanInterval" );
+  scan_interval->setSuffix( " min" );
+  scan_interval->setSingleStep( 1 );
+  scan_interval->setSliderEnabled( true );
+  
+  periodic_layout->addWidget( periodic_scanning, 0, 0, 1, 2, 0 );
+  periodic_layout->addWidget( interval_label, 1, 0, 0 );
+  periodic_layout->addWidget( scan_interval, 1, 1, 0 );  
 
-  QSpacerItem *spacer = new QSpacerItem( 10, 10, QSizePolicy::Preferred, QSizePolicy::Expanding );
-
-  layout->addWidget( browse_list_box, 0, 0, 0 );
-  layout->addWidget( auth_box, 1, 0, 0 );
-  layout->addItem( spacer, 2, 0 );
+  layout->addWidget( browse_list_box, 0 );
+  layout->addWidget( auth_box, 0 );
+  layout->addWidget( periodic_box, 0 );
+  layout->addStretch( 100 );
 }
 
 
