@@ -183,6 +183,7 @@ Smb4K SVN_HEAD (????-??-??):
   + Added finished() signal that is emitted when a scan process finished.
   + When looking up shares, the port defined for the host passed to the scanner
     is honored.
+  + Added ability to scan the network neighborhood periodically (closes #15829).
 - Removed Smb4KPreviewItem class. It is not needed anymore.
 - Revised Smb4KPreviewer class:
   + Completely rewrote this class and its private helpers.
@@ -310,6 +311,7 @@ Smb4K SVN_HEAD (????-??-??):
     shown when it is actually needed.
   + Added editor for the entries in the wallet. There is no need for KWalletManager
     anymore to edit or remove logins.
+  + Improved editor for the custom options.
   + Improved checks for empty entries.
   + Removed settings related to the system tray icon.
   + Added settings related to notifications.
