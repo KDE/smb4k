@@ -46,7 +46,6 @@
 #include <smb4khomesshareshandler.h>
 #include <smb4kbookmarkhandler_p.h>
 #include <smb4kbookmarkhandler.h>
-#include <smb4kdefs.h>
 #include <smb4kglobal.h>
 #include <smb4kbookmark.h>
 #include <smb4khost.h>
