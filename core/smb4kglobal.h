@@ -29,6 +29,7 @@
 // Qt includes
 #include <QString>
 #include <QList>
+#include <QEvent>
 
 // KDE includes
 #include <kdemacros.h>
@@ -38,6 +39,11 @@ class Smb4KWorkgroup;
 class Smb4KHost;
 class Smb4KShare;
 
+#define EVENT_LOAD_SETTINGS                1001
+#define EVENT_SET_FOCUS                    1002
+#define EVENT_SCAN_NETWORK                 1003
+#define EVENT_ADD_BOOKMARK                 1004
+
 /**
  * This is the global namespace for the core classes of Smb4K.
  *
@@ -46,13 +52,6 @@ class Smb4KShare;
 
 namespace Smb4KGlobal
 {
-  /**
-   * This function returns the interval of the timer.
-   *
-   * @returns           The interval of the timer in msec.
-   */
-  KDE_EXPORT int timerInterval();
-
   /**
    * This function returns the global list of workgroups that were discovered by
    * Smb4K. Use this if you want to access and modify the list with your code.

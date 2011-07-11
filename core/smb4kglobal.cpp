@@ -38,18 +38,11 @@
 // application specific includes
 #include <smb4kglobal.h>
 #include <smb4kglobal_p.h>
-#include <smb4kdefs.h>
 #include <smb4knotification.h>
 
 
 static Smb4KGlobalPrivate p;
 QMutex mutex( QMutex::Recursive /* needed to avoid dead-locks */ );
-
-
-int Smb4KGlobal::timerInterval()
-{
-  return TIMER_INTERVAL;
-}
 
 
 const QList<Smb4KWorkgroup *> &Smb4KGlobal::workgroupsList()
