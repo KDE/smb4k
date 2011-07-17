@@ -812,7 +812,7 @@ void Smb4KScanner::slotStartJobs()
   
   // Start the timer in any case. Thus, we are able to switch
   // to periodic scanning seamlessly in the timerEvent() function.
-  startTimer( 250 );
+  startTimer( TIMER_INTERVAL );
 }
 
 
@@ -1321,9 +1321,9 @@ void Smb4KScanner::slotShares( Smb4KHost *host, const QList<Smb4KShare> &shares_
         
         for ( int j = 0; j < mounted_shares.size(); ++j )
         {
-          if ( !mounted_shares.at( i )->isForeign() )
+          if ( !mounted_shares.at( j )->isForeign() )
           {
-            mounted_share = mounted_shares[i];
+            mounted_share = mounted_shares[j];
             break;
           }
           else
