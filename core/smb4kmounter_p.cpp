@@ -37,6 +37,7 @@
 #include <klocale.h>
 #include <kstandarddirs.h>
 #include <kmountpoint.h>
+#include <kshell.h>
 
 // application specific includes
 #include <smb4kmounter_p.h>
@@ -193,7 +194,7 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
   // Workgroup
   if ( !share->workgroupName().trimmed().isEmpty() )
   {
-    args_list << QString( "domain='%1'" ).arg( share->workgroupName() );
+    args_list << QString( "domain=%1" ).arg( KShell::quoteArg( share->workgroupName() ) );
   }
   else
   {
@@ -228,13 +229,13 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
     // The client's NetBIOS name.
     if ( !Smb4KSettings::netBIOSName().isEmpty() )
     {
-      args_list << QString( "netbiosname='%1'" ).arg( Smb4KSettings::netBIOSName() );
+      args_list << QString( "netbiosname=%1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) );
     }
     else
     {
       if ( !global_options["netbios name"].isEmpty() )
       {
-        args_list << QString( "netbiosname='%1'" ).arg( global_options["netbios name"] );
+        args_list << QString( "netbiosname=%1" ).arg( KShell::quoteArg( global_options["netbios name"] ) );
       }
       else
       {
@@ -243,7 +244,7 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
     }
 
     // The server's NetBIOS name.
-    args_list << QString( "servern='%1'" ).arg( share->hostName() );
+    args_list << QString( "servern=%1" ).arg( KShell::quoteArg( share->hostName() ) );
   }
   else
   {
@@ -273,7 +274,8 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
     }
     default:
     {
-      args_list << QString( "iocharset=%1" ).arg( Smb4KSettings::self()->clientCharsetItem()->label() );
+      args_list << QString( "iocharset=%1" )
+                   .arg( Smb4KSettings::self()->clientCharsetItem()->choices().value( Smb4KSettings::clientCharset() ).label );
       break;
     }
   }
@@ -476,7 +478,8 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
     // Do nothing
   }
 
-  arguments << QString( "-o %1" ).arg( args_list.join( "," ) );
+  arguments << "-o";
+  arguments << args_list.join( "," );
 #else
   if ( options )
   {
@@ -543,7 +546,7 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
     }
     default:
     {
-      charset = Smb4KSettings::self()->clientCharsetItem()->label();
+      charset = Smb4KSettings::self()->clientCharsetItem()->choices().value( Smb4KSettings::clientCharset() ).label;
       break;
     }
   }
@@ -557,7 +560,7 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
     }
     default:
     {
-      codepage = Smb4KSettings::self()->serverCodepageItem()->label();
+      codepage = Smb4KSettings::self()->serverCodepageItem()->choices().value( Smb4KSettings::serverCodepage() ).label;
       break;
     }
   }
