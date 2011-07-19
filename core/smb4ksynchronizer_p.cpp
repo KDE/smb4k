@@ -644,7 +644,7 @@ void Smb4KSyncJob::slotStartSynchronization()
     // Dummy to show 0 %
     emitPercent( 0, 100 );
 
-    m_proc = new Smb4KProcess( Smb4KProcess::Synchronize, this );
+    m_proc = new Smb4KProcess( this );
     m_proc->setOutputChannelMode( KProcess::SeparateChannels );
     m_proc->setProgram( rsync, arguments );
 

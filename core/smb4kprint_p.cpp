@@ -221,7 +221,7 @@ void Smb4KPrintJob::slotStartPrinting()
     
     delete printer;
     
-    m_proc = new Smb4KProcess( Smb4KProcess::Print, this );
+    m_proc = new Smb4KProcess( this );
     m_proc->setOutputChannelMode( KProcess::SeparateChannels );
     m_proc->setEnv( "DEVICE_URI", m_share->unc( QUrl::None ), true );
     m_proc->setEnv( "PASSWD", m_share->password(), true );

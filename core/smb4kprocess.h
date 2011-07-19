@@ -2,8 +2,8 @@
     smb4kprocess  -  This class executes shell processes.
                              -------------------
     begin                : Mi Mär 4 2009
-    copyright            : (C) 2009 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2009-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -46,30 +46,11 @@ class Smb4KProcess : public KProcess
 
   public:
     /**
-     * The type enumeration
-     */
-    enum Type { LookupIP,
-                Mount,
-                Unmount,
-                Preview,
-                Print,
-                Synchronize,
-                LookupDomains,
-                LookupDomainMembers,
-                LookupShares,
-                LookupInfo,
-                Search,
-                Kill,
-                WriteSudoers,
-                Unknown };
-
-    /**
      * The constructor
      *
      * @param parent        The parent object
      */
-    Smb4KProcess( Type type,
-                  QObject *parent = 0 );
+    Smb4KProcess( QObject *parent = 0 );
 
     /**
      * The destructor
@@ -90,15 +71,7 @@ class Smb4KProcess : public KProcess
      */
     bool isAborted() { return m_aborted; }
 
-    /**
-     * This function returns the type of the process.
-     *
-     * @returns the type of the process.
-     */
-    Type type() const { return m_type; }
-
   private:
-    Type m_type;
     bool m_aborted;
 };
 

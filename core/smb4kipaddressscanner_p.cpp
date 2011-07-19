@@ -229,7 +229,7 @@ void Smb4KIPLookupJob::slotStartLookup()
   arguments << awk;
   arguments << "{'print $1'}";
 
-  m_proc = new Smb4KProcess( Smb4KProcess::LookupIP, this );
+  m_proc = new Smb4KProcess( this );
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
   m_proc->setShellCommand( arguments.join( " " ) );
 

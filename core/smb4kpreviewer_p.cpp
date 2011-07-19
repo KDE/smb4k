@@ -304,7 +304,7 @@ void Smb4KPreviewJob::slotStartPreview()
     arguments << "-U %";
   }
 
-  m_proc = new Smb4KProcess( Smb4KProcess::Preview, this );
+  m_proc = new Smb4KProcess( this );
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
   m_proc->setEnv( "PASSWD", m_share->password(), true );
   m_proc->setShellCommand( arguments.join( " " ) );

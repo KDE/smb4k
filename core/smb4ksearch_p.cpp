@@ -390,7 +390,7 @@ void Smb4KSearchJob::slotStartSearch()
     }
   }
 
-  m_proc = new Smb4KProcess( Smb4KProcess::Search, this );
+  m_proc = new Smb4KProcess( this );
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
   m_proc->setEnv( "PASSWD", !m_master.password().isEmpty() ? m_master.password() : "", true );
   m_proc->setShellCommand( arguments.join( " " ) );

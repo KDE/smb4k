@@ -406,7 +406,7 @@ void Smb4KLookupDomainsJob::slotStartLookup()
     // Do nothing
   }
 
-  m_proc = new Smb4KProcess( Smb4KProcess::LookupDomains, this );
+  m_proc = new Smb4KProcess( this );
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
   m_proc->setShellCommand( arguments.join( " " ) );
 
@@ -794,7 +794,7 @@ void Smb4KQueryMasterJob::slotStartLookup()
   // are connecting to.
   arguments << "-d3";
 
-  m_proc = new Smb4KProcess( Smb4KProcess::LookupDomains, this );
+  m_proc = new Smb4KProcess( this );
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
   m_proc->setShellCommand( arguments.join( " " ) );
 
@@ -1335,7 +1335,7 @@ void Smb4KScanBAreasJob::slotStartScan()
     arguments << "-A ip";
   }
 
-  m_proc = new Smb4KProcess( Smb4KProcess::LookupDomains, this );
+  m_proc = new Smb4KProcess( this );
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
   m_proc->setShellCommand( arguments.join( " " ) );
 
@@ -1638,7 +1638,7 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
       arguments << "-U %";
     }
 
-    m_proc = new Smb4KProcess( Smb4KProcess::LookupDomainMembers, this );
+    m_proc = new Smb4KProcess( this );
     m_proc->setShellCommand( arguments.join( " " ) );
     m_proc->setOutputChannelMode( KProcess::SeparateChannels );
 
@@ -2087,7 +2087,7 @@ void Smb4KLookupSharesJob::slotStartLookup()
   }
  
  
-  m_proc = new Smb4KProcess( Smb4KProcess::LookupShares, this );
+  m_proc = new Smb4KProcess( this );
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
   m_proc->setShellCommand( arguments.join( " " ) );
   m_proc->setEnv( "PASSWD", m_auth_info.password(), true );
@@ -2458,7 +2458,7 @@ void Smb4KLookupInfoJob::slotStartLookup()
     // Do nothing
   }
   
-  m_proc = new Smb4KProcess( Smb4KProcess::LookupInfo, this );
+  m_proc = new Smb4KProcess( this );
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
   m_proc->setShellCommand( arguments.join( " " ) );
 

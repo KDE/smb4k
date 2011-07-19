@@ -2,8 +2,8 @@
     smb4kprocess  -  This class executes shell processes.
                              -------------------
     begin                : Mi Mär 4 2009
-    copyright            : (C) 2009 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2009-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -27,7 +27,7 @@
 #include <smb4kprocess.h>
 
 
-Smb4KProcess::Smb4KProcess( Type type, QObject *parent ) : KProcess( parent ), m_type( type )
+Smb4KProcess::Smb4KProcess( QObject *parent ) : KProcess( parent )
 {
   m_aborted = false;
 }
