@@ -41,6 +41,7 @@ Version=1
 
 [Context/Notification]
 Name=Notification
+Name[bg]=Уведомление
 Name[da]=Bekendtgørelse
 Name[de]=Benachrichtigung
 Name[es]=Notificación
@@ -71,6 +72,7 @@ Comment[x-test]=xxThe user is notified about an actionxx
 
 [Context/Warning]
 Name=Warning
+Name[bg]=Предупреждение
 Name[da]=Advarsel
 Name[de]=Warnung
 Name[es]=Advertencia
@@ -101,6 +103,7 @@ Comment[x-test]=xxA warning is shown to the userxx
 
 [Context/Error]
 Name=Error
+Name[bg]=Грешка
 Name[da]=Fejl
 Name[de]=Fehler
 Name[es]=Error
