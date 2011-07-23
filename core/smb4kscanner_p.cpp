@@ -1681,6 +1681,11 @@ void Smb4KLookupDomainMembersJob::slotReadStandardError()
     {
       emit authError( this );
     }
+    else if ( stderr.contains( "tdb_transaction_recover:" ) )
+    {
+      // Suppress debug output/information sent to stderr
+      qDebug() << stderr;
+    }
     else
     {
       // Notify the user that an error occurred.
