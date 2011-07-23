@@ -462,12 +462,12 @@ void Smb4KMounter::import()
       // Try to get the login from the mount options.
       if ( share.login().isEmpty() )
       {
-	QString login = mount_points.at( i )->mountOptions().join( "," ).section( "username=", 1, 1 ).section( ",", 0, 0 ).trimmed();
-	share.setLogin( !login.isEmpty() ? login : "guest" ); // Work around empty 'username=' entries
+        QString login = mount_points.at( i )->mountOptions().join( "," ).section( "username=", 1, 1 ).section( ",", 0, 0 ).trimmed();
+        share.setLogin( !login.isEmpty() ? login : "guest" ); // Work around empty 'username=' entries
       }
       else
       {
-	// Do nothing
+        // Do nothing
       }
 //       qDebug() << "Domain and ip address?";
 #endif
@@ -1407,8 +1407,16 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
 
           if ( !still_mounting )
           {
-            Smb4KNotification *notification = new Smb4KNotification( this );
-            notification->sharesMounted( p->initialMounts(), (p->initialMounts() - p->pendingMounts()) );
+            if ( p->initialMounts() > 1 )
+            {
+              Smb4KNotification *notification = new Smb4KNotification( this );
+              notification->sharesMounted( p->initialMounts(), (p->initialMounts() - p->pendingMounts()) );
+            }
+            else
+            {
+              Smb4KNotification *notification = new Smb4KNotification( this );
+              notification->shareMounted( known_share );
+            }
             p->clearMounts();
           }
           else
@@ -1418,8 +1426,16 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
         }
         else
         {
-          Smb4KNotification *notification = new Smb4KNotification( this );
-          notification->sharesMounted( p->initialMounts(), (p->initialMounts() - p->pendingMounts()) );
+          if ( p->initialMounts() > 1 )
+          {
+            Smb4KNotification *notification = new Smb4KNotification( this );
+            notification->sharesMounted( p->initialMounts(), (p->initialMounts() - p->pendingMounts()) );
+          }
+          else
+          {
+            Smb4KNotification *notification = new Smb4KNotification( this );
+            notification->shareMounted( known_share );
+          }
           p->clearMounts();
         }
       }
@@ -1488,8 +1504,16 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
 
           if ( !still_unmounting )
           {
-            Smb4KNotification *notification = new Smb4KNotification( this );
-            notification->allSharesUnmounted( p->initialUnmounts(), (p->initialUnmounts() - p->pendingUnmounts()) );
+            if ( p->initialUnmounts() > 1 )
+            {
+              Smb4KNotification *notification = new Smb4KNotification( this );
+              notification->allSharesUnmounted( p->initialUnmounts(), (p->initialUnmounts() - p->pendingUnmounts()) );
+            }
+            else
+            {
+              Smb4KNotification *notification = new Smb4KNotification( this );
+              notification->shareUnmounted( known_share );
+            }
             p->clearUnmounts();
           }
           else
@@ -1499,8 +1523,16 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
         }
         else
         {
-          Smb4KNotification *notification = new Smb4KNotification( this );
-          notification->allSharesUnmounted( p->initialUnmounts(), (p->initialUnmounts() - p->pendingUnmounts()) );
+          if ( p->initialUnmounts() > 1 )
+          {
+            Smb4KNotification *notification = new Smb4KNotification( this );
+            notification->allSharesUnmounted( p->initialUnmounts(), (p->initialUnmounts() - p->pendingUnmounts()) );
+          }
+          else
+          {
+            Smb4KNotification *notification = new Smb4KNotification( this );
+            notification->shareUnmounted( known_share );
+          }
           p->clearUnmounts();
         }
       }
