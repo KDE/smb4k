@@ -293,6 +293,8 @@ Smb4K SVN_HEAD (????-??-??):
   + Revised Smb4KNetworkBrowserItem class.
   + Removed Smb4KNetworkBrowserToolTip class. We are now using Smb4KToolTip.
   + Honor KDE's icon size settings.
+  + Only rescan the network item if the user executes the item. Previously also
+    expanding the item had the same effect.
 - Revised search widget:
   + Renamed widget class to Smb4KNetworkSearch.
   + Honor KDE's icon size settings.
