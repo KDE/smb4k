@@ -115,7 +115,8 @@ bool Smb4KHomesSharesHandler::specifyUser( Smb4KShare *share, QWidget *parent )
   }
   else
   {
-    // Do nothing
+    // The user name has already been set.
+    success = true;
   }
   
   return success;
