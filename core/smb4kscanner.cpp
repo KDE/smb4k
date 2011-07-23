@@ -838,6 +838,7 @@ void Smb4KScanner::slotAuthError( Smb4KQueryMasterJob *job )
   if ( !job->masterBrowser().isEmpty() )
   {
     Smb4KHost master;
+    master.setIsMasterBrowser( true );
 
     if ( QHostAddress( job->masterBrowser() ).protocol() == QAbstractSocket::UnknownNetworkLayerProtocol )
     {
@@ -849,6 +850,7 @@ void Smb4KScanner::slotAuthError( Smb4KQueryMasterJob *job )
     }
     
     authInfo.setHost( &master );
+    emit authError ( &master, LookupDomains );
   }
   else
   {
@@ -894,6 +896,8 @@ void Smb4KScanner::slotAuthError( Smb4KLookupDomainMembersJob *job )
   
   if ( master )
   {
+    emit authError( master, LookupDomainMembers );
+    
     Smb4KAuthInfo authInfo( master );
    
     if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, job->parentWidget() ) )
@@ -918,6 +922,8 @@ void Smb4KScanner::slotAuthError( Smb4KLookupSharesJob *job )
   
   if ( host )
   {
+    emit authError( host, LookupShares );
+    
     Smb4KAuthInfo authInfo( host );
     
     if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, job->parentWidget() ) )
@@ -1286,7 +1292,6 @@ void Smb4KScanner::slotHosts( Smb4KWorkgroup *workgroup, const QList<Smb4KHost> 
     emit hosts( workgroup, hostsList() );
   }
   emit hostListChanged();
-  qDebug() << "slotHosts(): Finished";
 }
 
 

@@ -235,6 +235,14 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
      * @param host        The host with the acquired information
      */
     void info( Smb4KHost *host );
+    
+    /**
+     * This signal is emitted when an authentication error occurred.
+     * 
+     * @param host        The host that is affected
+     */
+    void authError( Smb4KHost *host,
+                    int process );
 
   protected slots:
     /**
