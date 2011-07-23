@@ -127,21 +127,6 @@ class Smb4KNetworkBrowserPart : public KParts::Part
                           int column );
 
     /**
-     * This slot is called when an item has been expanded. It is used to
-     * invoke the functions of the scanner that need to be run.
-     *
-     * @param item                The item that has been expanded.
-     */
-    void slotItemExpanded( QTreeWidgetItem *item );
-
-    /**
-     * This slot is called when an item has been collapsed.
-     *
-     * @param item                The item that has been collapsed.
-     */
-    void slotItemCollapsed( QTreeWidgetItem *item );
-
-    /**
      * This slot is invoked when the user executed an item. It is used to mount
      * shares.
      *
@@ -220,6 +205,17 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      * @param host                A Smb4KHost item with updated contents.
      */
     void slotAddInformation( Smb4KHost *host );
+    
+    /**
+     * This slot is called when an authentication error occurred. Depending on
+     * the @p process parameter it will take respective actions.
+     * 
+     * @param host                The host where the authentication error occurred
+     * 
+     * @param process             The process (action) that was running while the
+     *                            authentication error occurred
+     */
+    void slotAuthError( Smb4KHost *host, int process );
 
     /**
      * Rescan the network. This slot is connected to the 'Rescan' action.
