@@ -136,12 +136,6 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject
   connect( m_widget,               SIGNAL( itemPressed( QTreeWidgetItem *, int ) ),
            this,                   SLOT( slotItemPressed( QTreeWidgetItem *, int ) ) );
 
-  connect( m_widget,               SIGNAL( itemExpanded( QTreeWidgetItem * ) ),
-           this,                   SLOT( slotItemExpanded( QTreeWidgetItem * ) ) );
-
-  connect( m_widget,               SIGNAL( itemCollapsed( QTreeWidgetItem * ) ),
-           this,                   SLOT( slotItemCollapsed( QTreeWidgetItem * ) ) );
-
   connect( m_widget,               SIGNAL( itemExecuted( QTreeWidgetItem *, int ) ),
            this,                   SLOT( slotItemExecuted( QTreeWidgetItem *, int ) ) );
 
@@ -162,6 +156,9 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject
 
   connect( Smb4KScanner::self(),   SIGNAL( info( Smb4KHost * ) ),
            this,                   SLOT( slotAddInformation( Smb4KHost * ) ) );
+  
+  connect( Smb4KScanner::self(),   SIGNAL( authError( Smb4KHost *, int ) ),
+           this,                   SLOT( slotAuthError( Smb4KHost *, int ) ) );
 
   connect( Smb4KScanner::self(),   SIGNAL( aboutToStart( Smb4KBasicNetworkItem *, int ) ),
            this,                   SLOT( slotScannerAboutToStart( Smb4KBasicNetworkItem *, int ) ) );
@@ -565,12 +562,13 @@ void Smb4KNetworkBrowserPart::slotItemPressed( QTreeWidgetItem *item, int /*colu
 }
 
 
-void Smb4KNetworkBrowserPart::slotItemExpanded( QTreeWidgetItem *item )
+void Smb4KNetworkBrowserPart::slotItemExecuted( QTreeWidgetItem *item, int /*column*/ )
 {
-  qDebug() << "slotItemExpanded(): " << item->text( Smb4KNetworkBrowser::Network );
-  
   Smb4KNetworkBrowserItem *browserItem = static_cast<Smb4KNetworkBrowserItem *>( item );
 
+  // FIXME: Eat the click if it was done on the root decoration/if 
+  // the item was collapsed.
+  
   if ( browserItem )
   {
     switch ( browserItem->type() )
@@ -585,64 +583,6 @@ void Smb4KNetworkBrowserPart::slotItemExpanded( QTreeWidgetItem *item )
         Smb4KScanner::self()->lookupShares( browserItem->hostItem(), m_widget );
         break;
       }
-      default:
-      {
-        break;
-      }
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KNetworkBrowserPart::slotItemCollapsed( QTreeWidgetItem *item )
-{
-  qDebug() << "slotItemCollapsed()";
-  
-  Smb4KNetworkBrowserItem *browserItem = static_cast<Smb4KNetworkBrowserItem *>( item );
-
-  // Remove all children if we have a host item, because we
-  // do not want shares already displayed before the user provided
-  // the login data.
-  if ( browserItem )
-  {
-    switch ( browserItem->type() )
-    {
-      case Smb4KNetworkBrowserItem::Host:
-      {
-        QList<QTreeWidgetItem *> children = browserItem->takeChildren();
-
-        while ( children.size() != 0 )
-        {
-          delete children.takeFirst();
-        }
-
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KNetworkBrowserPart::slotItemExecuted( QTreeWidgetItem *item, int /*column*/ )
-{
-  Smb4KNetworkBrowserItem *browserItem = static_cast<Smb4KNetworkBrowserItem *>( item );
-
-  if ( browserItem )
-  {
-    switch ( browserItem->type() )
-    {
       case Smb4KNetworkBrowserItem::Share:
       {
         if ( !browserItem->shareItem()->isPrinter() )
@@ -653,7 +593,6 @@ void Smb4KNetworkBrowserPart::slotItemExecuted( QTreeWidgetItem *item, int /*col
         {
           slotPrint( false );  // boolean is ignored
         }
-
         break;
       }
       default:
@@ -1578,6 +1517,97 @@ void Smb4KNetworkBrowserPart::slotAddInformation( Smb4KHost *host )
 }
 
 
+void Smb4KNetworkBrowserPart::slotAuthError( Smb4KHost *host, int process )
+{
+  switch ( process )
+  {
+    case Smb4KScanner::LookupDomains:
+    {
+      // We queried a master browser from the list of domains and
+      // workgroup. So, we can clear the whole list of domains.
+      while ( m_widget->topLevelItemCount() != 0 )
+      {
+        delete m_widget->takeTopLevelItem( 0 );
+      }
+      break;
+    }
+    case Smb4KScanner::LookupDomainMembers:
+    {
+      // Get the workgroup where the master browser is not accessible 
+      // and clear the whole list of hosts. Then, reinsert the master 
+      // browser.
+      if ( !m_widget->topLevelItemCount() != 0 )
+      {
+        for ( int i = 0; i < m_widget->topLevelItemCount(); ++i )
+        {
+          Smb4KNetworkBrowserItem *workgroup = static_cast<Smb4KNetworkBrowserItem *>( m_widget->topLevelItem( i ) );
+          
+          if ( workgroup && workgroup->type() == Smb4KNetworkBrowserItem::Workgroup &&
+               QString::compare( host->workgroupName(), workgroup->workgroupItem()->workgroupName(), Qt::CaseInsensitive ) == 0 )
+          {
+            QList<QTreeWidgetItem *> hosts = workgroup->takeChildren();
+            
+            while ( !hosts.isEmpty() )
+            {
+              delete hosts.takeFirst();
+            }
+            break;
+          }
+          else
+          {
+            continue;
+          }
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+      break;
+    }
+    case Smb4KScanner::LookupShares:
+    {
+      // Get the host that could not be accessed.
+      QTreeWidgetItemIterator it( m_widget );
+      
+      while ( *it )
+      {
+        Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( *it );
+        
+        if ( item && item->type() == Smb4KNetworkBrowserItem::Host )
+        {
+          if ( QString::compare( host->hostName(), item->hostItem()->hostName(), Qt::CaseInsensitive ) == 0 &&
+               QString::compare( host->workgroupName(), item->hostItem()->workgroupName(), Qt::CaseInsensitive ) == 0 )
+          {
+            QList<QTreeWidgetItem *> shares = item->takeChildren();
+            
+            while ( !shares.isEmpty() )
+            {
+              delete shares.takeFirst();
+            }
+            break;
+          }
+          else
+          {
+            // Do nothing
+          }
+        }
+        else
+        {
+          // Do nothing
+        }
+        ++it;
+      }
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+}
+
+
 void Smb4KNetworkBrowserPart::slotRescan( bool /* checked */)
 {
   // The mouse is inside the viewport. Let's see what we have to do.
@@ -1629,7 +1659,6 @@ void Smb4KNetworkBrowserPart::slotAbort( bool /*checked*/ )
 
   if ( Smb4KMounter::self()->isRunning() )
   {
-    qDebug() << "FIXME: Only abort mount processes";
     Smb4KMounter::self()->abortAll();
   }
   else
