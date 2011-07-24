@@ -76,6 +76,11 @@
       <whatsthis>The tooltip shows various information about the current network item.</whatsthis>
       <default>true</default>
     </entry>
+    <entry name="AutoExpandNetworkItems" type="Bool">
+      <label>Automatically expand domains and hosts</label>
+      <whatsthis>Automatically expand domain and host items when a list of associated network items (domain members or shares) is added or updated. Please note that a domain or host item will always be expanded when you execute it.</whatsthis>
+      <default>true</default>
+    </entry>
     <entry name="ShowMountPoint" type="Bool">
       <label>Show the mount point instead of the share name</label>
       <whatsthis>A share is normally displayed with its name in the shares view. Choosing this feature will cause the exchange of the share name by the mount point.</whatsthis>
