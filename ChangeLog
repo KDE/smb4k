@@ -1,6 +1,7 @@
 Smb4K SVN_HEAD (????-??-??):
 - KDE SC 4.4.0 and Qt 4.7.0 or later are required.
-- We now use Utf8 throughout the whole application (closes #14674).
+- We now use Utf8 throughout the whole application (closes #14674 and
+  #17535).
 - Unified the function names of the core classes that set and return the
   workgroup name, host name, and share name.
 - Made the core container classes use QUrls internally where appropriate.
@@ -236,14 +237,14 @@ Smb4K SVN_HEAD (????-??-??):
   + Added setIcon() and icon() functions.
 - Revised Smb4KBookmarkHandler class:
   + Did a major revision.
-  + Added the ability to assign a group to the bookmark(s). 
+  + Added the ability to assign a group to the bookmark(s) (closes #18001). 
   + Modified the addBookmark() function that takes a Smb4KShare object and 
     removed the one that took a Smb4KBookmark object.
   + Added addBookmarks() function.
   + Made writeBookmarkList() private.
   + Removed getBookmarks() function and replaced it with bookmarks() and
     bookmarks( const QString & ) functions. The former one returns all
-    bookmarks, the latter one all beekmarks belonging to the specified group.
+    bookmarks, the latter one all bookmarks belonging to the specified group.
   + Added editBookmarks() function. All editing is now done by this core class.
     Thus the bookmark editor is now private helper functions.
   + Added a private dialog to add bookmarks.
