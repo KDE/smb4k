@@ -655,7 +655,7 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog( Smb4KBasicNetworkItem *
         
         if ( share->isHomesShare() )
         {
-          Smb4KHomesSharesHandler::self()->specifyUser( share, parent );
+          Smb4KHomesSharesHandler::self()->specifyUser( share, true, parent );
         }
         else
         {

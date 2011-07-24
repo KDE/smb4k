@@ -73,7 +73,7 @@ void Smb4KPreviewer::preview( Smb4KShare *share, QWidget *parent )
   // Process homes shares.
   if( share->isHomesShare() )
   {
-    if ( !Smb4KHomesSharesHandler::self()->specifyUser( share, parent ) )
+    if ( !Smb4KHomesSharesHandler::self()->specifyUser( share, true, parent ) )
     {
       return;
     }

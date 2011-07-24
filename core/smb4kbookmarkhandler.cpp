@@ -125,7 +125,7 @@ void Smb4KBookmarkHandler::addBookmarks( const QList<Smb4KShare *> &list, QWidge
     {
       // If the user provides a valid user name we set it and continue.
       // Otherwise the share will be skipped.
-      if ( !Smb4KHomesSharesHandler::self()->specifyUser( list.at( i ), parent ) )
+      if ( !Smb4KHomesSharesHandler::self()->specifyUser( list.at( i ), true, parent ) )
       {
         continue;
       }

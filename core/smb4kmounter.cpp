@@ -690,7 +690,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share, QWidget *parent )
 
   if ( share->isHomesShare() )
   {
-    if ( !Smb4KHomesSharesHandler::self()->specifyUser( share, parent ) )
+    if ( !Smb4KHomesSharesHandler::self()->specifyUser( share, true, parent ) )
     {
       return;
     }
@@ -845,7 +845,7 @@ void Smb4KMounter::mountShares( const QList<Smb4KShare *> &shares, QWidget *pare
 
     if ( share->isHomesShare() )
     {
-      if ( !Smb4KHomesSharesHandler::self()->specifyUser( share, parent ) )
+      if ( !Smb4KHomesSharesHandler::self()->specifyUser( share, false, parent ) )
       {
         continue;
       }
