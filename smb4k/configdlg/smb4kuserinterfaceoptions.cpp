@@ -26,6 +26,7 @@
 
 // Qt includes
 #include <QGridLayout>
+#include <QVBoxLayout>
 #include <QGroupBox>
 #include <QButtonGroup>
 #include <QRadioButton>
@@ -47,7 +48,7 @@ Smb4KUserInterfaceOptions::Smb4KUserInterfaceOptions( QWidget *parent )
   //
   QWidget *mainwindow_tab         = new QWidget( this );
 
-  QGridLayout *main_window_layout = new QGridLayout( mainwindow_tab );
+  QVBoxLayout *main_window_layout = new QVBoxLayout( mainwindow_tab );
   main_window_layout->setSpacing( 5 );
   main_window_layout->setMargin( 0 );
   
@@ -75,11 +76,9 @@ Smb4KUserInterfaceOptions::Smb4KUserInterfaceOptions( QWidget *parent )
 
   bookmarks_layout->addWidget( show_bookmark_label, 0, 0, 0 );
 
-  QSpacerItem *spacer1 = new QSpacerItem( 10, 10, QSizePolicy::Preferred, QSizePolicy::Expanding );
-
-  main_window_layout->addWidget( notifications_box, 0, 0, 0 );
-  main_window_layout->addWidget( bookmarks_box, 1, 0, 0 );
-  main_window_layout->addItem( spacer1, 2, 0 );
+  main_window_layout->addWidget( notifications_box );
+  main_window_layout->addWidget( bookmarks_box );
+  main_window_layout->addStretch( 100 );
 
   insertTab( MainWindowSystemTrayTab, mainwindow_tab, i18n( "General" ) );
 
@@ -88,9 +87,21 @@ Smb4KUserInterfaceOptions::Smb4KUserInterfaceOptions( QWidget *parent )
   //
   QWidget *network_browser_tab    = new QWidget( this );
 
-  QGridLayout *net_browser_layout = new QGridLayout( network_browser_tab );
+  QVBoxLayout *net_browser_layout = new QVBoxLayout( network_browser_tab );
   net_browser_layout->setSpacing( 5 );
   net_browser_layout->setMargin( 0 );
+  
+  // Behavior
+  QGroupBox *behavior_box         = new QGroupBox( i18n( "Behavior" ), network_browser_tab );
+  
+  QGridLayout *behavior_layout    = new QGridLayout( behavior_box );
+  behavior_layout->setSpacing( 5 );
+  
+  QCheckBox *auto_open            = new QCheckBox( Smb4KSettings::self()->autoExpandNetworkItemsItem()->label(),
+                                    behavior_box );
+  auto_open->setObjectName( "kcfg_AutoExpandNetworkItems" );
+  
+  behavior_layout->addWidget( auto_open, 0, 0, 0 );
 
   // Remote shares
   QGroupBox *remote_shares_box    = new QGroupBox( i18n( "Remote Shares" ), network_browser_tab );
@@ -153,12 +164,11 @@ Smb4KUserInterfaceOptions::Smb4KUserInterfaceOptions( QWidget *parent )
 
   n_tooltips_layout->addWidget( network_tooltip, 0, 0, 0 );
 
-  QSpacerItem *spacer2 = new QSpacerItem( 10, 10, QSizePolicy::Preferred, QSizePolicy::Expanding );
-
-  net_browser_layout->addWidget( remote_shares_box, 0, 0, 0 );
-  net_browser_layout->addWidget( columns_box, 1, 0, 0 );
-  net_browser_layout->addWidget( network_tooltips_box, 2, 0, 0 );
-  net_browser_layout->addItem( spacer2, 3, 0, 1, 1, 0 );
+  net_browser_layout->addWidget( behavior_box );
+  net_browser_layout->addWidget( remote_shares_box );
+  net_browser_layout->addWidget( columns_box );
+  net_browser_layout->addWidget( network_tooltips_box );
+  net_browser_layout->addStretch( 100 );
 
   insertTab( NetworkNeighborhoodTab, network_browser_tab, i18n( "Network Neighborhood" ) );
 
