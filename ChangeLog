@@ -226,6 +226,8 @@ Smb4K SVN_HEAD (????-??-??):
   + Removed setHomesUsers() functions.
   + Added homesUsers( Smb4KShare * ) class.
   + Refactored code.
+  + Added possibility to define whether a user name for a homes should
+    be overwritten or not.
 - Revised Smb4KBookmark class:
   + Added setLogin() and login() function.
   + Added equals() function.
@@ -320,6 +322,7 @@ Smb4K SVN_HEAD (????-??-??):
   + Removed obsolete "Super User" settings page.
   + Improved buttons of the user and group input widgets of the Samba page.
   + Renamed "Client Programs" tab to "Utility Programs".
+  + Added setting to automatically expand network items in the network browser.
 - Added new bookmark menu.
 - Revised main window:
   + The icon in the status bar, that indicates the status of the authentication
