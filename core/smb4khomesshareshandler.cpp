@@ -75,14 +75,14 @@ Smb4KHomesSharesHandler *Smb4KHomesSharesHandler::self()
 }
 
 
-bool Smb4KHomesSharesHandler::specifyUser( Smb4KShare *share, QWidget *parent )
+bool Smb4KHomesSharesHandler::specifyUser( Smb4KShare *share, bool overwrite, QWidget *parent )
 {
   Q_ASSERT( share );
   bool success = false;
   
   // Avoid that the dialog is opened although the homes
   // user name has already been defined.
-  if ( share->isHomesShare() && share->homeUNC().isEmpty() )
+  if ( share->isHomesShare() && (share->homeUNC().isEmpty() || overwrite) )
   {
     QStringList users;
     findHomesUsers( share, &users );

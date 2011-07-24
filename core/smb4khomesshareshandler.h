@@ -69,15 +69,20 @@ class KDE_EXPORT Smb4KHomesSharesHandler : public QObject
 
     /**
      * This function will open a dialog where the user has to define a
-     * user name to access a 'homes' share.
+     * user name to access a 'homes' share. You also can define if the 
+     * user name should be overwritten in case one has already been set
+     * (default is TRUE).
      *
      * @param share       The share that is representing the homes share
+     * 
+     * @param overwrite   Overwrite user name or not
      *
-     * @param parent      The parent widget.
+     * @param parent      The parent widget
      *
      * @returns TRUE if user has been chosen and FALSE otherwise.
      */
-    bool specifyUser( Smb4KShare *share,
+    bool specifyUser( Smb4KShare *share, 
+                      bool overwrite = true, 
                       QWidget *parent = 0 );
     
     /**
