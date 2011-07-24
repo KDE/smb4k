@@ -917,7 +917,7 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
         // Otherwise there is no use in keeping it, so remove it.
         if ( workgroup_item->childCount() != 0 )
         {
-          if ( !workgroup_item->isExpanded() )
+          if ( Smb4KSettings::autoExpandNetworkItems() && !workgroup_item->isExpanded() )
           {
             m_widget->expandItem( workgroup_item );
           }
@@ -1045,7 +1045,7 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
                   // FIXME: Do we need to change the (pseudo) master browser here?
                   (void) new Smb4KNetworkBrowserItem( workgroup_item, list.at( i ) );
                   
-                  if ( !workgroup_item->isExpanded() )
+                  if ( Smb4KSettings::autoExpandNetworkItems() && !workgroup_item->isExpanded() )
                   {
                     m_widget->expandItem( workgroup_item );
                   }
@@ -1084,7 +1084,7 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
               Smb4KNetworkBrowserItem *workgroup_item = new Smb4KNetworkBrowserItem( m_widget, &workgroup );
               (void) new Smb4KNetworkBrowserItem( workgroup_item, list.at( i ) );
               
-              if ( !workgroup_item->isExpanded() )
+              if ( Smb4KSettings::autoExpandNetworkItems() && !workgroup_item->isExpanded() )
               {
                 m_widget->expandItem( workgroup_item );
               }
@@ -1117,14 +1117,14 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
                 // FIXME: Do we need to change the (pseudo) master browser here?
                 (void) new Smb4KNetworkBrowserItem( workgroup_item, list.at( i ) );
                 
-                if ( !workgroup_item->isExpanded() )
+                if ( Smb4KSettings::autoExpandNetworkItems() && !workgroup_item->isExpanded() )
                 {
                   m_widget->expandItem( workgroup_item );
                 }
                 else
                 {
                   // Do nothing
-                }                
+                }
                 continue;
               }
               else
@@ -1156,7 +1156,7 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
             Smb4KNetworkBrowserItem *workgroup_item = new Smb4KNetworkBrowserItem( m_widget, &workgroup );
             (void) new Smb4KNetworkBrowserItem( workgroup_item, list.at( i ) );
             
-            if ( !workgroup_item->isExpanded() )
+            if ( Smb4KSettings::autoExpandNetworkItems() && !workgroup_item->isExpanded() )
             {
               m_widget->expandItem( workgroup_item );
             }
@@ -1198,8 +1198,7 @@ void Smb4KNetworkBrowserPart::slotShares( Smb4KHost *host, const QList<Smb4KShar
       {
         if ( !list.isEmpty() )
         {
-          // Expand the host item, if it is collapsed.
-          if ( !network_item->isExpanded() )
+          if ( Smb4KSettings::autoExpandNetworkItems() && !network_item->isExpanded() )
           {
             m_widget->expandItem( network_item );
           }
