@@ -39,11 +39,6 @@ class Smb4KWorkgroup;
 class Smb4KHost;
 class Smb4KShare;
 
-#define EVENT_LOAD_SETTINGS                1001
-#define EVENT_SET_FOCUS                    1002
-#define EVENT_SCAN_NETWORK                 1003
-#define EVENT_ADD_BOOKMARK                 1004
-
 /**
  * This is the global namespace for the core classes of Smb4K.
  *
@@ -52,6 +47,21 @@ class Smb4KShare;
 
 namespace Smb4KGlobal
 {
+  /**
+   * This class extends the QEvent class with Smb4K specific events
+   */
+  class KDE_EXPORT Smb4KEvent : public QEvent
+  {
+    public:
+      static const QEvent::Type LoadSettings;
+      static const QEvent::Type SetFocus;
+      static const QEvent::Type ScanNetwork;
+      static const QEvent::Type AddBookmark;
+      
+      Smb4KEvent( QEvent::Type type );
+      ~Smb4KEvent();
+  };
+  
   /**
    * This function returns the global list of workgroups that were discovered by
    * Smb4K. Use this if you want to access and modify the list with your code.
