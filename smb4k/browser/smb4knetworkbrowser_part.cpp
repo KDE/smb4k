@@ -364,38 +364,30 @@ KAboutData *Smb4KNetworkBrowserPart::createAboutData()
 
 void Smb4KNetworkBrowserPart::customEvent( QEvent *e )
 {
-  switch ( e->type() )
+  if ( e->type() == Smb4KEvent::LoadSettings )
   {
-    case EVENT_LOAD_SETTINGS:
+    loadSettings();
+  }
+  else if ( e->type() == Smb4KEvent::SetFocus )
+  {
+    if ( m_widget->topLevelItemCount() != 0 )
     {
-      loadSettings();
+      kDebug() << "Do we need to port the selection stuff?" << endl;
+    }
 
-      break;
-    }
-    case EVENT_SET_FOCUS:
-    {
-      if ( m_widget->topLevelItemCount() != 0 )
-      {
-        kDebug() << "Do we need to port the selection stuff?" << endl;
-      }
-
-      m_widget->setFocus( Qt::OtherFocusReason );
-      break;
-    }
-    case EVENT_SCAN_NETWORK:
-    {
-      slotRescan( false ); // boolean is ignored
-      break;
-    }
-    case EVENT_ADD_BOOKMARK:
-    {
-      slotAddBookmark( false );
-      break;
-    }
-    default:
-    {
-      break;
-    }
+    m_widget->setFocus( Qt::OtherFocusReason );
+  }
+  else if ( e->type() == Smb4KEvent::ScanNetwork )
+  {
+    slotRescan( false ); // boolean is ignored
+  }
+  else if ( e->type() == Smb4KEvent::AddBookmark )
+  {
+    slotAddBookmark( false );
+  }
+  else
+  {
+    // Do nothing
   }
 
   KParts::Part::customEvent( e );

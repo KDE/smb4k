@@ -441,7 +441,7 @@ void Smb4KMainWindow::loadSettings()
   // that they have to reload their settings.
   if ( m_browser_part )
   {
-    QEvent *customBrowserEvent = new QEvent( (QEvent::Type)EVENT_LOAD_SETTINGS );
+    Smb4KEvent *customBrowserEvent = new Smb4KEvent( Smb4KEvent::LoadSettings );
     KApplication::postEvent( m_browser_part, customBrowserEvent );
   }
   else
@@ -451,7 +451,7 @@ void Smb4KMainWindow::loadSettings()
 
   if ( m_search_part )
   {
-    QEvent *customSearchEvent = new QEvent( (QEvent::Type)EVENT_LOAD_SETTINGS );
+    Smb4KEvent *customSearchEvent = new Smb4KEvent( Smb4KEvent::LoadSettings );
     KApplication::postEvent( m_search_part, customSearchEvent );
   }
   else
@@ -461,7 +461,7 @@ void Smb4KMainWindow::loadSettings()
 
   if ( m_shares_part )
   {
-    QEvent *customSharesEvent = new QEvent( (QEvent::Type)EVENT_LOAD_SETTINGS );
+    Smb4KEvent *customSharesEvent = new Smb4KEvent( Smb4KEvent::LoadSettings );
     KApplication::postEvent( m_shares_part, customSharesEvent );
   }
   else
@@ -630,7 +630,7 @@ void Smb4KMainWindow::slotAddBookmark()
   {
     if ( m_browser_part->widget()->hasFocus() )
     {
-      QEvent *customBrowserEvent = new QEvent( (QEvent::Type)EVENT_ADD_BOOKMARK );
+      Smb4KEvent *customBrowserEvent = new Smb4KEvent( Smb4KEvent::AddBookmark );
       KApplication::postEvent( m_browser_part, customBrowserEvent );
     }
     else
@@ -647,7 +647,7 @@ void Smb4KMainWindow::slotAddBookmark()
   {
     if ( m_shares_part->widget()->hasFocus() )
     {
-      QEvent *customSharesEvent = new QEvent( (QEvent::Type)EVENT_ADD_BOOKMARK );
+      Smb4KEvent *customSharesEvent = new Smb4KEvent( Smb4KEvent::AddBookmark );
       KApplication::postEvent( m_shares_part, customSharesEvent );
     }
     else
@@ -700,7 +700,7 @@ void Smb4KMainWindow::slotViewModeTriggered( QAction *action )
   // Notify the part that it has to reload its settings.
   if ( m_shares_part )
   {
-    QEvent *customSharesEvent = new QEvent( (QEvent::Type)EVENT_LOAD_SETTINGS );
+    Smb4KEvent *customSharesEvent = new Smb4KEvent( Smb4KEvent::LoadSettings );
     KApplication::postEvent( m_shares_part, customSharesEvent );
   }
   else

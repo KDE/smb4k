@@ -207,63 +207,58 @@ KAboutData *Smb4KNetworkSearchPart::createAboutData()
 
 void Smb4KNetworkSearchPart::customEvent( QEvent *e )
 {
-  switch ( e->type() )
+  if ( e->type() == Smb4KEvent::LoadSettings )
   {
-    case EVENT_LOAD_SETTINGS:
+    // The only changes may concern the marking of the shares.
+    for ( int i = 0; i < m_widget->listWidget()->count(); ++i )
     {
-      // The only changes may concern the marking of the shares.
-      for ( int i = 0; i < m_widget->listWidget()->count(); ++i )
-      {
-        Smb4KNetworkSearchItem *item = static_cast<Smb4KNetworkSearchItem *>( m_widget->listWidget()->item( i ) );
+      Smb4KNetworkSearchItem *item = static_cast<Smb4KNetworkSearchItem *>( m_widget->listWidget()->item( i ) );
     
-        switch ( item->type() )
+      switch ( item->type() )
+      {
+        case Smb4KNetworkSearchItem::Share:
         {
-          case Smb4KNetworkSearchItem::Share:
+          // First unmark the share.
+          item->setMounted( false );
+            
+          // Now either mark it again or leave it unmarked.
+          QList<Smb4KShare *> list = findShareByUNC( item->shareItem()->unc() );
+            
+          for ( int j = 0; j < list.size(); ++j )
           {
-            // First unmark the share.
-            item->setMounted( false );
-            
-            // Now either mark it again or leave it unmarked.
-            QList<Smb4KShare *> list = findShareByUNC( item->shareItem()->unc() );
-            
-            for ( int j = 0; j < list.size(); ++j )
+            if ( list.at( j )->isMounted() )
             {
-              if ( list.at( j )->isMounted() )
+              slotShareMounted( list.at( j ) );
+               
+              if ( !list.at( j )->isForeign() )
               {
-                slotShareMounted( list.at( j ) );
-                
-                if ( !list.at( j )->isForeign() )
-                {
-                  break;
-                }
-                else
-                {
-                  continue;
-                }
+                break;
               }
               else
               {
                 continue;
               }
             }
+            else
+            {
+              continue;
+            }
           }
-          default:
-          {
-            break;
-          }
-        }        
-      }
-      break;
+        }
+        default:
+        {
+          break;
+        }
+      }        
     }
-    case EVENT_SET_FOCUS:
-    {
-      m_widget->comboBox()->lineEdit()->setFocus();
-      break;
-    }
-    default:
-    {
-      break;
-    }
+  }
+  else if ( e->type() == Smb4KEvent::SetFocus )
+  {
+    m_widget->comboBox()->lineEdit()->setFocus();
+  }
+  else
+  {
+    // Do nothing
   }
 
   KParts::Part::customEvent( e );

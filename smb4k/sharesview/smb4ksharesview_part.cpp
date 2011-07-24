@@ -558,90 +558,84 @@ KAboutData *Smb4KSharesViewPart::createAboutData()
 
 void Smb4KSharesViewPart::customEvent( QEvent *e )
 {
-  switch ( e->type() )
+  if ( e->type() == Smb4KEvent::LoadSettings )
   {
-    case EVENT_LOAD_SETTINGS:
+    // Before we reread the settings, let's save
+    // widget specific things.
+    saveSettings();
+
+    // Load settings.
+    loadSettings();
+
+    // (Re-)load the list of shares.
+    switch ( m_mode )
     {
-      // Before we reread the settings, let's save
-      // widget specific things.
-      saveSettings();
-
-      // Load settings.
-      loadSettings();
-
-      // (Re-)load the list of shares.
-      switch ( m_mode )
+      case IconMode:
       {
-        case IconMode:
+        while ( m_icon_view->count() != 0 )
         {
-          while ( m_icon_view->count() != 0 )
-          {
-            delete m_icon_view->takeItem( 0 );
-          }
+          delete m_icon_view->takeItem( 0 );
+        }
           
-          break;
-        }
-        case ListMode:
-        {
-          while ( m_list_view->topLevelItemCount() != 0 )
-          {
-            delete m_list_view->takeTopLevelItem( 0 );
-          }
-          
-          break;
-        }
-        default:
-        {
-          break;
-        }
+        break;
       }
-      
-      for ( int i = 0; i < mountedSharesList().size(); ++i )
+      case ListMode:
       {
-        slotShareMounted( mountedSharesList().at( i ) );
+        while ( m_list_view->topLevelItemCount() != 0 )
+        {
+          delete m_list_view->takeTopLevelItem( 0 );
+        }
+         
+        break;
       }
-
-      break;
+      default:
+      {
+        break;
+      }
     }
-    case EVENT_SET_FOCUS:
+      
+    for ( int i = 0; i < mountedSharesList().size(); ++i )
     {
-      switch ( m_mode )
+      slotShareMounted( mountedSharesList().at( i ) );
+    }
+  }
+  else if ( e->type() == Smb4KEvent::SetFocus )
+  {
+    switch ( m_mode )
+    {
+      case IconMode:
       {
-        case IconMode:
+        if ( m_icon_view->count() != 0 )
         {
-          if ( m_icon_view->count() != 0 )
-          {
-            kDebug() << "Do we need to port the selection stuff?" << endl;
-          }
-          else
-          {
-            // Do nothing
-          }
-
-          m_icon_view->setFocus( Qt::OtherFocusReason );
-
-          break;
+          kDebug() << "Do we need to port the selection stuff?" << endl;
         }
-        case ListMode:
+        else
         {
-          if ( m_list_view->topLevelItemCount() != 0 )
-          {
-            kDebug() << "Do we need to port the selection stuff?" << endl;
-          }
-          else
-          {
-            // Do nothing
-          }
-
-          m_list_view->setFocus( Qt::OtherFocusReason );
-
-          break;
+          // Do nothing
         }
-        default:
-        {
-          break;
-        }
+
+        m_icon_view->setFocus( Qt::OtherFocusReason );
+        break;
       }
+      case ListMode:
+      {
+        if ( m_list_view->topLevelItemCount() != 0 )
+        {
+          kDebug() << "Do we need to port the selection stuff?" << endl;
+        }
+        else
+        {
+          // Do nothing
+        }
+
+        m_list_view->setFocus( Qt::OtherFocusReason );
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
 
 //       KListView *view = static_cast<KListView *>( m_widget );
 //
@@ -653,19 +647,14 @@ void Smb4KSharesViewPart::customEvent( QEvent *e )
 //       }
 //
 //       view->setFocus();
-
-      break;
-    }
-    case EVENT_ADD_BOOKMARK:
-    {
-      slotAddBookmark( false );
-
-      break;
-    }
-    default:
-    {
-      break;
-    }
+  }
+  else if ( e->type() == Smb4KEvent::AddBookmark )
+  {
+    slotAddBookmark( false );
+  }
+  else
+  {
+    // Do nothing
   }
 
   KParts::Part::customEvent( e );
