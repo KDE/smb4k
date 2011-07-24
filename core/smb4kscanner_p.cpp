@@ -2074,7 +2074,7 @@ void Smb4KLookupSharesJob::slotStartLookup()
   // IP address
   if ( m_host.hasIP() )
   {
-    arguments << QString( "-I %1" ).arg( KShell::quoteArg( m_host.ip() ) );
+    arguments << QString( "-I %1" ).arg( m_host.ip() );
   }
   else
   {
@@ -2084,7 +2084,7 @@ void Smb4KLookupSharesJob::slotStartLookup()
   // Authentication data
   if ( !m_auth_info.login().isEmpty() )
   {
-    arguments << QString( "-U %1" ).arg( KShell::quoteArg( m_auth_info.login() ) );
+    arguments << QString( "-U %1" ).arg( m_auth_info.login() );
   }
   else
   {
