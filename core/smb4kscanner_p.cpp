@@ -2088,7 +2088,9 @@ void Smb4KLookupSharesJob::slotStartLookup()
   }
   else
   {
-    arguments << "-U %";
+    // Under some circumstances you need under Windows the 'guest'
+    // account to be able to retrieve the list of shared resources.
+    arguments << "-U guest%";
   }
  
  
