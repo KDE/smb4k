@@ -754,9 +754,11 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   QLabel *uid_label = new QLabel( i18n( "User ID:" ), m_editors );
   m_user_id         = new KComboBox( m_editors );
   
-  for ( int i = 0; i < KUser::allUsers().size(); ++i )
+  QList<KUser> all_users = KUser::allUsers();
+  
+  for ( int i = 0; i < all_users.size(); ++i )
   {
-    KUser user = KUser::allUsers().at( i );
+    KUser user = all_users.at( i );
     m_user_id->insertItem( i, QString( "%1 (%2)" ).arg( user.loginName() ).arg( user.uid() ), 
                            QVariant::fromValue<K_UID>( user.uid() ) );
   }
@@ -764,9 +766,11 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   QLabel *gid_label = new QLabel( i18n( "Group ID:" ), m_editors );
   m_group_id        = new KComboBox( m_editors );
   
-  for ( int i = 0; i < KUserGroup::allGroups().size(); ++i )
+  QList<KUserGroup> all_groups = KUserGroup::allGroups();
+  
+  for ( int i = 0; i < all_groups.size(); ++i )
   {
-    KUserGroup group = KUserGroup::allGroups().at( i );
+    KUserGroup group = all_groups.at( i );
     m_group_id->insertItem( i, QString( "%1 (%2)" ).arg( group.name() ).arg( group.gid() ), 
                            QVariant::fromValue<K_UID>( group.gid() ) );
   }
