@@ -1,1 +1,5 @@
 - Add ability to download files with smbget.
+- Implement profiles.
+- Allow several filemanagers.
+- Mount shares by drag and drop into the shares view.
+- Implement more 'net' commands.
