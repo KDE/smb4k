@@ -267,6 +267,7 @@ Smb4K SVN_HEAD (????-??-??):
     instead of pointers.
   + Added globalSambaOptions() and winsServer() functions. They were moved from 
     the removed Smb4KSambaOptionsHandler class.
+  + Added Smb4KEvent class that handles Smb4K specific events.
 - Added Smb4KNotification class. It shows notifications to the user.
 - Removed Smb4KCoreMessage class in favor of Smb4KNotification.
 - Added Smb4KToolTip class that is to replace all other tooltip implementations.
