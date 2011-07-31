@@ -177,13 +177,13 @@
       <default>false</default>
     </entry>
     <entry name="PeriodicScanning" type="Bool">
-      <label>Scan the network periodically</label>
-      <whatsthis>Lookup all workgroups, hosts and shares periodically.</whatsthis>
+      <label>Scan the network neighborhood periodically</label>
+      <whatsthis>Scan the network neighborhood periodically for all available workgroups, hosts and shares.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="ScanInterval" type="Int">
       <label>Interval between scans:</label>
-      <whatsthis>This is the time in minutes that elapses until Smb4K scans the network neighborhood for new workgroups, hosts and shares again.</whatsthis>
+      <whatsthis>This is the time in minutes that elapses until Smb4K rescans the network neighborhood for new workgroups, hosts and shares.</whatsthis>
       <min>1</min>
       <max>60</max>
       <default>5</default>
