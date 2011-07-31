@@ -227,7 +227,7 @@ Smb4K SVN_HEAD (????-??-??):
   + Removed setHomesUsers() functions.
   + Added homesUsers( Smb4KShare * ) class.
   + Refactored code.
-  + Added possibility to define whether a user name for a homes should
+  + Added possibility to define whether a user name for a homes share should
     be overwritten or not.
 - Revised Smb4KBookmark class:
   + Added setLogin() and login() function.
