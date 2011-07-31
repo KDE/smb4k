@@ -37,16 +37,26 @@ add_subdirectory( helpers )
 add_subdirectory( smb4k )
 add_subdirectory( data )
 
+########### Header files ################
+
+option( INSTALL_HEADER_FILES "Install header files" OFF )
+
+if ( INSTALL_HEADER_FILES )
+  message( STATUS "Installing Smb4K's core header files (-DINSTALL_HEADER_FILES=false to disable)" )
+elseif ( NOT INSTALL_HEADER_FILES )
+  message( STATUS "Not installing Smb4K's core header files (-DINSTALL_HEADER_FILES=true to enable)" )
+endif( INSTALL_HEADER_FILES )
+
 ########### KIO slave ###################
 
-option( COMPILE_KIOSLAVE "Compile Smb4K with KIO slave" OFF )
-
-if ( COMPILE_KIOSLAVE )
-  message( STATUS "Building with KIO slave (-DCOMPILE_KIOSLAVE=false to disable)" )
-  add_subdirectory( kioslave )
-elseif( NOT COMPILE_KIOSLAVE )
-  message( STATUS "Building without KIO slave (-DCOMPILE_KIOSLAVE=true to enable)" )
-endif( COMPILE_KIOSLAVE )
+#option( COMPILE_KIOSLAVE "Compile Smb4K with KIO slave" OFF )
+#
+#if ( COMPILE_KIOSLAVE )
+#  message( STATUS "Building with KIO slave (-DCOMPILE_KIOSLAVE=false to disable)" )
+#  add_subdirectory( kioslave )
+#elseif( NOT COMPILE_KIOSLAVE )
+#  message( STATUS "Building without KIO slave (-DCOMPILE_KIOSLAVE=true to enable)" )
+#endif( COMPILE_KIOSLAVE )
 
 ########### install files ###############
 

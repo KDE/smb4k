@@ -5,6 +5,9 @@ Smb4K SVN_HEAD (????-??-??):
 - Unified the function names of the core classes that set and return the
   workgroup name, host name, and share name.
 - Made the core container classes use QUrls internally where appropriate.
+- Added ability to install core header files by passing the new 
+  -DINSTALL_HEADER_FILES=true configuration option to cmake. By default,
+  no header files will be installed.
 - Revised Smb4KSettings class:
   + Removed the program entries from this class. Each core class that needs
     an external program searches for itself.
