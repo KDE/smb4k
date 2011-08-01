@@ -32,7 +32,6 @@
 
 // Qt includes
 #include <QString>
-#include <QByteArray>
 #include <QStringList>
 #include <QtGlobal>
 #include <QUrl>
@@ -305,7 +304,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the path to the mounted share.
      */
-    const QByteArray &path() const { return m_path; }
+    const QString &path() const { return m_path; }
 
     /**
      * Returns the canonical path to the mounted share. In contrast to the path()
@@ -315,7 +314,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the canonical path to the mounted share.
      */
-    const QByteArray canonicalPath() const;
+    const QString canonicalPath() const;
 
     /**
      * Set @p in to TRUE if the share cannot be accessed by the user. This may be
@@ -701,7 +700,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     /**
      * The path to the mounted share
      */
-    QByteArray m_path;
+    QString m_path;
 
     /**
      * Determines if the share is inaccessible

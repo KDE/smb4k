@@ -44,7 +44,7 @@
 
 Smb4KShare::Smb4KShare( const QString &host, const QString &name ) : Smb4KBasicNetworkItem( Share ),
   m_url( QUrl() ), m_workgroup( QString() ), m_type_string( "Disk" ), m_comment( QString() ),
-  m_host_ip( QString() ), m_path( QByteArray() ), m_inaccessible( false ), m_foreign( false ),
+  m_host_ip( QString() ), m_path( QString() ), m_inaccessible( false ), m_foreign( false ),
   m_filesystem( Unknown ), m_user( getuid() ), m_group( getgid() ), m_total( 0 ), m_free( 0 ), m_used( 0 ),
   m_is_mounted( false )
 {
@@ -57,7 +57,7 @@ Smb4KShare::Smb4KShare( const QString &host, const QString &name ) : Smb4KBasicN
 
 Smb4KShare::Smb4KShare( const QString &unc ) : Smb4KBasicNetworkItem( Share ),
   m_url( QUrl() ), m_workgroup( QString() ), m_type_string( "Disk" ), m_comment( QString() ),
-  m_host_ip( QString() ), m_path( QByteArray() ), m_inaccessible( false ), m_foreign( false ),
+  m_host_ip( QString() ), m_path( QString() ), m_inaccessible( false ), m_foreign( false ),
   m_filesystem( Unknown ), m_user( getuid() ), m_group( getgid() ), m_total( 0 ), m_free( 0 ), m_used( 0 ),
   m_is_mounted( false )
 {
@@ -87,7 +87,7 @@ Smb4KShare::Smb4KShare( const Smb4KShare &s ) : Smb4KBasicNetworkItem( Share ),
 
 Smb4KShare::Smb4KShare() : Smb4KBasicNetworkItem( Share ),
   m_url( QUrl() ), m_workgroup( QString() ), m_type_string( "Disk" ), m_comment( QString() ),
-  m_host_ip( QString() ), m_path( QByteArray() ), m_inaccessible( false ), m_foreign( false ),
+  m_host_ip( QString() ), m_path( QString() ), m_inaccessible( false ), m_foreign( false ),
   m_filesystem( Unknown ), m_user( getuid() ), m_group( getgid() ), m_total( 0 ), m_free( 0 ), m_used( 0 ),
   m_is_mounted( false )
 {
@@ -366,9 +366,9 @@ void Smb4KShare::setPath( const QString &mountpoint )
 }
 
 
-const QByteArray Smb4KShare::canonicalPath() const
+const QString Smb4KShare::canonicalPath() const
 {
-  return (m_inaccessible ? m_path : QDir( m_path ).canonicalPath().toUtf8());
+  return (m_inaccessible ? m_path : QDir( m_path ).canonicalPath());
 }
 
 
@@ -865,7 +865,7 @@ void Smb4KShare::resetMountData()
 {
   // The login name is not reset here, because it is also
   // needed for things that are not mount-releated.
-  m_path = QByteArray();
+  m_path = QString();
   m_inaccessible = false;
   m_foreign = false;
   m_filesystem = Unknown;
