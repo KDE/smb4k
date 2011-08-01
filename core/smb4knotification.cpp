@@ -69,7 +69,7 @@ void Smb4KNotification::shareMounted( Smb4KShare* share )
     KNotification *notification = KNotification::event( KNotification::Notification,
                                   "Smb4K",
                                   i18n( "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>", 
-                                  share->unc(), QString::fromUtf8( share->canonicalPath() ) ),
+                                  share->unc(), share->path() ),
                                   KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::NoGroup, 0, 
                                   KIconLoader::DefaultState, QStringList( "emblem-mounted" ) ),
                                   0L,
@@ -94,7 +94,7 @@ void Smb4KNotification::shareUnmounted( Smb4KShare* share )
     KNotification *notification = KNotification::event( KNotification::Notification,
                                   "Smb4K",
                                   i18n( "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>", 
-                                  share->unc(), QString::fromUtf8( share->path() ) ),
+                                  share->unc(), share->path() ),
                                   KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::NoGroup, 0, 
                                   KIconLoader::DefaultState, QStringList( "emblem-unmounted" ) ),
                                   0L,
@@ -418,11 +418,11 @@ void Smb4KNotification::unmountingFailed( Smb4KShare *share, const QString &err_
   
   if ( !err_msg.isEmpty() )
   {
-    text = i18n( "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></p>", share->unc(), QString::fromUtf8( share->path() ), err_msg );
+    text = i18n( "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></p>", share->unc(), share->path(), err_msg );
   }
   else
   {
-    text = i18n( "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.", share->unc(), QString::fromUtf8( share->path() ) );
+    text = i18n( "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.", share->unc(), share->path() );
   }
   
   KNotification *notification = KNotification::event( KNotification::Error,
@@ -441,7 +441,7 @@ void Smb4KNotification::unmountingNotAllowed( Smb4KShare *share )
   KNotification *notification = KNotification::event( KNotification::Error,
                                 "Smb4K",
                                 i18n( "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. "
-                                "It is owned by the user <b>%3</b>.</p>", share->unc(), QString::fromUtf8( share->path() ), share->owner() ),
+                                "It is owned by the user <b>%3</b>.</p>", share->unc(), share->path(), share->owner() ),
                                 KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0,
                                 KIconLoader::DefaultState ),
                                 0L,

@@ -77,13 +77,6 @@ K_GLOBAL_STATIC( Smb4KCorePrivate, m_priv );
 
 Smb4KCore::Smb4KCore() : QObject()
 {
-  // Set default values for settings that depend on the system
-  // Smb4K is running on:
-  setDefaultSettings();
-
-  // Search for the programs that are needed by Smb4K:
-  searchPrograms();
-
   connect( kapp,           SIGNAL( aboutToQuit() ),
            this,           SLOT( slotAboutToQuit() ) );
 }
@@ -134,6 +127,13 @@ void Smb4KCore::abort()
 
 void Smb4KCore::init()
 {
+  // Set default values for some settings.
+  setDefaultSettings();
+
+  // Search for mandatory and optional programs.
+  searchPrograms();
+  
+  // Initialize the necessary core classes
   Smb4KScanner::self()->start();
   Smb4KMounter::self()->start();
 }

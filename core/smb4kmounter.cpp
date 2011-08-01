@@ -132,8 +132,7 @@ void Smb4KMounter::abort( Smb4KShare *share )
       job->kill( KJob::EmitResult );
       continue;
     }
-    else if ( QString::compare( job->objectName(), QString( "UnmountJob_%1" )
-                 .arg( QString::fromUtf8( share->canonicalPath() ) ), Qt::CaseInsensitive ) == 0 )
+    else if ( QString::compare( job->objectName(), QString( "UnmountJob_%1" ).arg( share->canonicalPath() ), Qt::CaseInsensitive ) == 0 )
     {
       job->kill( KJob::EmitResult );
       continue;
@@ -579,11 +578,11 @@ void Smb4KMounter::import()
     // someone else (or the system)?
     if ( (mounted_shares.at( i ).uid() == getuid() && mounted_shares.at( i ).gid() == getgid()) ||
          (!mounted_shares.at( i ).isInaccessible() &&
-          (QString::fromUtf8( mounted_shares.at( i ).path() ).startsWith( Smb4KSettings::mountPrefix().path() ) ||
-           QString::fromUtf8( mounted_shares.at( i ).canonicalPath() ).startsWith( QDir::homePath() ))) ||
+          (mounted_shares.at( i ).path().startsWith( Smb4KSettings::mountPrefix().path() ) ||
+           mounted_shares.at( i ).canonicalPath().startsWith( QDir::homePath() ))) ||
          (!mounted_shares.at( i ).isInaccessible() &&
-          (QString::fromUtf8( mounted_shares.at( i ).canonicalPath() ).startsWith( QDir( Smb4KSettings::mountPrefix().path() ).canonicalPath() ) ||
-           QString::fromUtf8( mounted_shares.at( i ).canonicalPath() ).startsWith( QDir::home().canonicalPath() ))) )
+          (mounted_shares.at( i ).canonicalPath().startsWith( QDir( Smb4KSettings::mountPrefix().path() ).canonicalPath() ) ||
+           mounted_shares.at( i ).canonicalPath().startsWith( QDir::home().canonicalPath() ))) )
     {
       mounted_shares[i].setForeign( false );
     }
@@ -969,8 +968,7 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent, QWi
   {
     KJob *job = it.next();
       
-    if ( QString::compare( job->objectName(), QString( "UnmountJob_%1" )
-          .arg( QString::fromUtf8( share->canonicalPath() ) ), Qt::CaseInsensitive ) == 0 )
+    if ( QString::compare( job->objectName(), QString( "UnmountJob_%1" ).arg( share->canonicalPath() ), Qt::CaseInsensitive ) == 0 )
     {
       // Already running
       return;
@@ -1004,7 +1002,7 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent, QWi
   
   // Create a new job and add it to the subjobs
   Smb4KUnmountJob *job = new Smb4KUnmountJob( this );
-  job->setObjectName( QString( "UnmountJob_%1" ).arg( QString::fromUtf8( share->canonicalPath() ) ) );
+  job->setObjectName( QString( "UnmountJob_%1" ).arg( share->canonicalPath() ) );
   job->setupUnmount( share, force, silent, parent );
 
   connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
@@ -1043,8 +1041,7 @@ void Smb4KMounter::unmountShares( const QList<Smb4KShare *> &shares, bool force,
     {
       KJob *job = job_it.next();
       
-      if ( QString::compare( job->objectName(), QString( "UnmountJob_%1" )
-            .arg( QString::fromUtf8( share->canonicalPath() ) ), Qt::CaseInsensitive ) == 0 )
+      if ( QString::compare( job->objectName(), QString( "UnmountJob_%1" ).arg( share->canonicalPath() ), Qt::CaseInsensitive ) == 0 )
       {
         found = true;
         return;
@@ -1544,11 +1541,9 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
     }
     
     // Clean up the mount prefix.
-    if ( qstrncmp( known_share->canonicalPath(),
-         QDir( Smb4KSettings::mountPrefix().path() ).canonicalPath().toUtf8(),
-         QDir( Smb4KSettings::mountPrefix().path() ).canonicalPath().toUtf8().length() ) == 0 )
+    if ( known_share->canonicalPath().startsWith( Smb4KSettings::mountPrefix().path() ) )
     {
-      QDir dir( QString::fromUtf8( known_share->canonicalPath() ) );
+      QDir dir( known_share->canonicalPath() );
 
       if ( dir.rmdir( dir.canonicalPath() ) )
       {

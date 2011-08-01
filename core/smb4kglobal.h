@@ -259,7 +259,7 @@ namespace Smb4KGlobal
    *
    * @returns the share that is mounted to @p path.
    */
-  KDE_EXPORT Smb4KShare *findShareByPath( const QByteArray &path );
+  KDE_EXPORT Smb4KShare *findShareByPath( const QString &path );
 
   /**
    * Find all mounts of a particular share with UNC @p unc on the system.

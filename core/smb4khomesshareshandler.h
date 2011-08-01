@@ -73,6 +73,9 @@ class KDE_EXPORT Smb4KHomesSharesHandler : public QObject
      * user name should be overwritten in case one has already been set
      * (default is TRUE).
      *
+     * In case that a new username is set by this function, the password
+     * is cleared.
+     *
      * @param share       The share that is representing the homes share
      * 
      * @param overwrite   Overwrite user name or not

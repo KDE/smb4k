@@ -836,7 +836,7 @@ Smb4KSynchronizationDialog::Smb4KSynchronizationDialog( Smb4KShare *share, QWidg
   description->setWordWrap( true );
   description->setAlignment( Qt::AlignBottom );
 
-  KUrl src_url  = KUrl( QString::fromUtf8( m_share->path() )+"/" );
+  KUrl src_url  = KUrl( m_share->path()+"/" );
   src_url.cleanPath();
   KUrl dest_url = KUrl( QString( "%1/%2/%3" ).arg( Smb4KSettings::rsyncPrefix().path() )
                                              .arg( m_share->hostName() )

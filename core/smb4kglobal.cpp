@@ -477,29 +477,31 @@ const QList<Smb4KShare *> &Smb4KGlobal::mountedSharesList()
 }
 
 
-Smb4KShare* Smb4KGlobal::findShareByPath( const QByteArray &path )
+Smb4KShare* Smb4KGlobal::findShareByPath( const QString &path )
 {
-  if ( path.isEmpty() || p.mountedSharesList.isEmpty() )
-  {
-    return NULL;
-  }
-
   Smb4KShare *share = NULL;
 
   mutex.lock();
 
-  for ( int i = 0; i < p.mountedSharesList.size(); ++i )
+  if ( !path.isEmpty() && !p.mountedSharesList.isEmpty() )
   {
-    if ( path.toUpper() == p.mountedSharesList.at( i )->path().toUpper() ||
-         path.toUpper() == p.mountedSharesList.at( i )->canonicalPath().toUpper() )
+    for ( int i = 0; i < p.mountedSharesList.size(); ++i )
     {
-      share = p.mountedSharesList.at( i );
-      break;
+      if ( QString::compare( path, p.mountedSharesList.at( i )->path(), Qt::CaseInsensitive ) == 0 ||
+           QString::compare( path, p.mountedSharesList.at( i )->canonicalPath(), Qt::CaseInsensitive ) == 0 )
+      {
+        share = p.mountedSharesList.at( i );
+        break;
+      }
+      else
+      {
+        continue;
+      }
     }
-    else
-    {
-      continue;
-    }
+  }
+  else
+  {
+    // Do nothing
   }
 
   mutex.unlock();
@@ -511,32 +513,33 @@ Smb4KShare* Smb4KGlobal::findShareByPath( const QByteArray &path )
 QList<Smb4KShare *> Smb4KGlobal::findShareByUNC( const QString &unc )
 {
   QList<Smb4KShare *> list;
-
-  if ( unc.isEmpty() || p.mountedSharesList.isEmpty() )
-  {
-    return list;  // is empty
-  }
-
   QUrl u( unc );
 
   mutex.lock();
 
-  for ( int i = 0; i < p.mountedSharesList.size(); ++i )
+  if ( !unc.isEmpty() && !p.mountedSharesList.isEmpty() )
   {
-    if ( QString::compare( u.toString( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort ),
-                           p.mountedSharesList.at( i )->unc( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort ),
-                           Qt::CaseInsensitive ) == 0 ||
-         QString::compare( u.toString( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort ).replace( " ", "_" ),
-                           p.mountedSharesList.at( i )->unc( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort ),
-                           Qt::CaseInsensitive ) == 0  )
+    for ( int i = 0; i < p.mountedSharesList.size(); ++i )
     {
-      list.append( p.mountedSharesList.at( i ) );
-      continue;
+      if ( QString::compare( u.toString( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort ),
+                            p.mountedSharesList.at( i )->unc( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort ),
+                            Qt::CaseInsensitive ) == 0 ||
+          QString::compare( u.toString( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort ).replace( " ", "_" ),
+                            p.mountedSharesList.at( i )->unc( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort ),
+                            Qt::CaseInsensitive ) == 0  )
+      {
+        list.append( p.mountedSharesList.at( i ) );
+        continue;
+      }
+      else
+      {
+        continue;
+      }
     }
-    else
-    {
-      continue;
-    }
+  }
+  else
+  {
+    // Do nothing
   }
 
   mutex.unlock();

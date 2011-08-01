@@ -70,7 +70,7 @@ void Smb4KSynchronizer::synchronize( Smb4KShare *share, QWidget *parent )
     // Create a new job, add it to the subjobs and register it
     // with the job tracker.
     Smb4KSyncJob *job = new Smb4KSyncJob( this );
-    job->setObjectName( QString( "SyncJob_%1" ).arg( QString::fromUtf8( share->canonicalPath() ) ) );
+    job->setObjectName( QString( "SyncJob_%1" ).arg( share->canonicalPath() ) );
     job->setupSynchronization( share, parent );
     
     connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
@@ -100,7 +100,7 @@ bool Smb4KSynchronizer::isRunning( Smb4KShare *share )
 
   for ( int i = 0; i < subjobs().size(); ++i )
   {
-    if ( QString::compare( QString( "SyncJob_%1" ).arg( QString::fromUtf8( share->canonicalPath() ) ), subjobs().at( i )->objectName() ) == 0 )
+    if ( QString::compare( QString( "SyncJob_%1" ).arg( share->canonicalPath() ), subjobs().at( i )->objectName() ) == 0 )
     {
       running = true;
       break;
@@ -128,7 +128,7 @@ void Smb4KSynchronizer::abort( Smb4KShare *share )
 {
   for ( int i = 0; i < subjobs().size(); ++i )
   {
-    if ( QString::compare( QString( "SyncJob_%1" ).arg( QString::fromUtf8( share->canonicalPath() ) ), subjobs().at( i )->objectName() ) == 0 )
+    if ( QString::compare( QString( "SyncJob_%1" ).arg( share->canonicalPath() ), subjobs().at( i )->objectName() ) == 0 )
     {
       subjobs().at( i )->kill( KJob::EmitResult );
       break;

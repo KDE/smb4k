@@ -98,7 +98,18 @@ bool Smb4KHomesSharesHandler::specifyUser( Smb4KShare *share, bool overwrite, QW
       
       if ( !login.isEmpty() )
       {
-        share->setLogin( login );
+        // If the login names do not match, clear the password.
+        if ( !share->login().isEmpty() && QString::compare( share->login(), login ) != 0 )
+        {
+          share->setPassword( QString() );
+        }
+        else
+        {
+          // Do nothing
+        }
+        
+        // Set the login name.
+        share->setLogin( login );        
         success = true;
       }
       else

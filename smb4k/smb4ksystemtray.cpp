@@ -259,8 +259,7 @@ void Smb4KSystemTray::setupSharesMenu()
       // otherwise it is the share name.
       if ( Smb4KSettings::showMountPoint() )
       {
-        shares_map.insert( QString::fromUtf8( shares_list.at( i )->canonicalPath() ),
-                           *shares_list.at( i ) );
+        shares_map.insert( shares_list.at( i )->canonicalPath(), *shares_list.at( i ) );
         continue;
       }
       else
