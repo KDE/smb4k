@@ -46,8 +46,7 @@
 // application specific includes
 #include <smb4kmainwindow.h>
 #include <core/smb4ksettings.h>
-#include <core/smb4kscanner.h>
-#include <core/smb4kmounter.h>
+#include <core/smb4kcore.h>
 
 
 static const char description[] =
@@ -107,9 +106,8 @@ int main( int argc, char *argv[] )
   Smb4KMainWindow *main_window = new Smb4KMainWindow();
   main_window->setVisible( !Smb4KSettings::startMainWindowDocked() );
 
-  // Initialize the necessary core classes.
-  Smb4KScanner::self()->start();
-  Smb4KMounter::self()->start();
+  // Initialize the core.
+  Smb4KCore::self()->init();
 
   return app.exec();
 }
