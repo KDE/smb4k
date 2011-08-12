@@ -464,6 +464,7 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
     }
     default:
     {
+      // Smb4KSettings::EnumSecurityMode::Default,
       break;
     }
   }

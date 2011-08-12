@@ -614,6 +614,9 @@
       <label>Security mode:</label>
       <whatsthis>Security mode for mount.cifs. To be able to use this mode, the CIFS kernel module 1.40 or later is required.</whatsthis>
       <choices>
+        <choice name="Default">
+          <label>Use the default security mode</label>
+        </choice>
         <choice name="None">
           <label>Attempt to connect as a null user (no name)</label>
         </choice>
@@ -624,7 +627,7 @@
           <label>Use Kerberos authentication and packet signing</label>
         </choice>
         <choice name="Ntlm">
-          <label>Use NTLM password hashing (default)</label>
+          <label>Use NTLM password hashing</label>
         </choice>
         <choice name="Ntlmi">
           <label>Use NTLM password hashing with packet signing</label>
@@ -636,7 +639,7 @@
           <label>Use NTLMv2 password hashing with packet signing</label>
         </choice>
       </choices>
-      <default>Ntlm</default>
+      <default>Default</default>
     </entry>
   </group>
 
