@@ -615,7 +615,7 @@
       <whatsthis>Security mode for mount.cifs. To be able to use this mode, the CIFS kernel module 1.40 or later is required.</whatsthis>
       <choices>
         <choice name="Default">
-          <label>Use the default security mode</label>
+          <label>Use default security mode</label>
         </choice>
         <choice name="None">
           <label>Attempt to connect as a null user (no name)</label>
