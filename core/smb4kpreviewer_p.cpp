@@ -295,6 +295,26 @@ void Smb4KPreviewJob::slotStartPreview()
     // Do nothing
   }
 
+  // Use Winbind CCache
+  if ( Smb4KSettings::useWinbindCCache() )
+  {
+    arguments << "-C";
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // Use encryption
+  if ( Smb4KSettings::encryptSMBTransport() )
+  {
+    arguments << "-e";
+  }
+  else
+  {
+    // Do nothing
+  }
+
   if ( !m_share->login().isEmpty() )
   {
     arguments << QString( "-U %1" ).arg( m_share->login() );

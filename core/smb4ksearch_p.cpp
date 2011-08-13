@@ -235,6 +235,26 @@ void Smb4KSearchJob::slotStartSearch()
       // Do nothing
     }
 
+    // Use Winbind CCache
+    if ( Smb4KSettings::useWinbindCCache() )
+    {
+      arguments << "-C";
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // Use encryption
+    if ( Smb4KSettings::encryptSMBTransport() )
+    {
+      arguments << "-e";
+    }
+    else
+    {
+      // Do nothing
+    }
+
     if ( !authInfo.login().isEmpty() )
     {
       arguments << QString( "-U %1" ).arg( m_master.login() );

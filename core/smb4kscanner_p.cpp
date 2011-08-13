@@ -2464,6 +2464,26 @@ void Smb4KLookupInfoJob::slotStartLookup()
   {
     // Do nothing
   }
+
+  // Use Winbind CCache
+  if ( Smb4KSettings::useWinbindCCache() )
+  {
+    arguments << "-C";
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // Use encryption
+  if ( Smb4KSettings::encryptSMBTransport() )
+  {
+    arguments << "-e";
+  }
+  else
+  {
+    // Do nothing
+  }
   
   m_proc = new Smb4KProcess( this );
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );

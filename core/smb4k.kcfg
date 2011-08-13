@@ -294,6 +294,11 @@
       <whatsthis>Make queries to the remote server using the machine account of the local server. The setting affects the net, smbclient, and smbtree command.</whatsthis>
       <default>false</default>
     </entry>
+    <entry name="UseWinbindCCache" type="Bool">
+      <label>Use Winbind ccache for authentication</label>
+      <whatsthis>Use the Winbind ccache for authentication. This setting affects smbclient and smbtree command.</whatsthis>
+      <default>false</default>
+    </entry>
     <entry name="SigningState" type="Enum">
       <label>Signing state:</label>
       <whatsthis>Set the signing state. This setting affects the smbclient and smbtree command.</whatsthis>
@@ -313,6 +318,11 @@
       </choices>
       <default>None</default>
     </entry>
+    <entry name="EncryptSMBTransport" type="Bool">
+      <label>Encrypt SMB transport</label>
+      <whatsthis>Encrypt the SMB transport (Unix extended servers only). This setting affects the smbclient and smbtree command.</whatsthis>
+      <default>false</default>
+    </entry>  
     <entry name="ClientCharset" type="Enum">
       <label>Client character set:</label>
       <whatsthis>This is the character set that is used by the client side (i.e. your side) either to convert local path names to and from Unicode (CIFS, Linux) or for codepage to charset translations (SMBFS, FreeBSD). If you keep the default setting, Smb4K will try to automatically determine the charset by looking up the "unix charset" option in the smb.conf.</whatsthis>
@@ -609,7 +619,6 @@
       <whatsthis>Let smbtree query the network nodes by sending requests as broadcasts instead of querying the local master browser.</whatsthis>
       <default>false</default>
     </entry>
-    <!-- The custom tab is filled by the core -->
     <entry name="SecurityMode" type="Enum">
       <label>Security mode:</label>
       <whatsthis>Security mode for mount.cifs. To be able to use this mode, the CIFS kernel module 1.40 or later is required.</whatsthis>
@@ -641,7 +650,7 @@
       </choices>
       <default>Default</default>
     </entry>
-  </group>
+  </group>  
 
 <!-- Synchronization -->
 
