@@ -154,10 +154,15 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
                                   auth_box );
   auth_machine_acc->setObjectName( "kcfg_MachineAccount" );
 
+  QCheckBox *use_ccache         = new QCheckBox( Smb4KSettings::self()->useWinbindCCacheItem()->label(),
+                                  auth_box );
+  use_ccache->setObjectName( "kcfg_UseWinbindCCache" );
+
   auth_layout->addWidget( auth_kerberos, 0, 0, 0 );
   auth_layout->addWidget( auth_machine_acc, 0, 1, 0 );
+  auth_layout->addWidget( use_ccache, 1, 0, 0 );
 
-  QGroupBox *signing_box        = new QGroupBox( i18n( "Signing State" ), general_tab );
+  QGroupBox *signing_box        = new QGroupBox( i18n( "Security" ), general_tab );
 
   QGridLayout *signing_layout   = new QGridLayout( signing_box );
   signing_layout->setSpacing( 5 );
@@ -175,8 +180,13 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   signing_state->insertItem( Smb4KSettings::EnumSigningState::Required,
                              Smb4KSettings::self()->signingStateItem()->choices().value( Smb4KSettings::EnumSigningState::Required ).label );
 
+  QCheckBox *encrypt_transport  = new QCheckBox( Smb4KSettings::self()->encryptSMBTransportItem()->label(),
+                                  signing_box );
+  encrypt_transport->setObjectName( "kcfg_EncryptSMBTransport" );
+
   signing_layout->addWidget( signing_state_label, 0, 0, 0 );
   signing_layout->addWidget( signing_state, 0, 1, 0 );
+  signing_layout->addWidget( encrypt_transport, 1, 0, 1, 2, 0 );
 
   general_layout->addWidget( general_box );
   general_layout->addWidget( ports_box );
@@ -512,6 +522,8 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
                                  
   KComboBox *security_box      = new KComboBox( c_extra_widget );
   security_box->setObjectName( "kcfg_SecurityMode" );
+  security_box->insertItem( Smb4KSettings::EnumSecurityMode::Default,
+                            Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Default ).label );
   security_box->insertItem( Smb4KSettings::EnumSecurityMode::None,
                             Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::None ).label );
   security_box->insertItem( Smb4KSettings::EnumSecurityMode::Krb5,
