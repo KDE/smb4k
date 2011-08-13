@@ -649,7 +649,7 @@ void Smb4KPreviewDialog::slotActionTriggered( QAction *action )
     else if ( kaction == m_back )
     {
       // Get the current history if necessary,
-      // shift one item back an request a preview.
+      // shift one item back and request a preview.
       if ( m_history.isEmpty() )
       {
         m_history = m_combo->historyItems();
@@ -662,23 +662,49 @@ void Smb4KPreviewDialog::slotActionTriggered( QAction *action )
 
       if ( m_iterator.hasNext() )
       {
-        // Jump behind current item
-        (void) m_iterator.next();
-
+        // Jump behind the current item.
         QString location = m_iterator.next();
-        QString path = location.remove( m_share->unc(), Qt::CaseInsensitive );
 
-        if ( !path.isEmpty() )
+        if ( QString::compare( location, m_combo->currentText(), Qt::CaseInsensitive ) == 0 )
         {
-          m_url.setPath( QString( "%1%2" ).arg( m_share->shareName() ).arg( path ) );
+          if ( m_iterator.hasNext() )
+          {
+            location = m_iterator.next();
+            QString path = location.remove( m_share->unc(), Qt::CaseInsensitive );
+
+            if ( !path.isEmpty() )
+            {
+              m_url.setPath( QString( "%1%2" ).arg( m_share->shareName() ).arg( path ) );
+            }
+            else
+            {
+              m_url.setPath( m_share->shareName() );
+            }
+
+            // Request the preview.
+            slotRequestPreview();
+          }
+          else
+          {
+            m_back->setEnabled( false );
+          }
         }
         else
         {
-          m_url.setPath( m_share->shareName() );
-        }
+          QString path = location.remove( m_share->unc(), Qt::CaseInsensitive );
 
-        // Request the preview
-        slotRequestPreview();
+          if ( !path.isEmpty() )
+          {
+            m_url.setPath( QString( "%1%2" ).arg( m_share->shareName() ).arg( path ) );
+          }
+          else
+          {
+            m_url.setPath( m_share->shareName() );
+          }
+
+          // Request the preview.
+          slotRequestPreview();
+        }
       }
       else
       {
@@ -691,22 +717,49 @@ void Smb4KPreviewDialog::slotActionTriggered( QAction *action )
       if ( !m_history.isEmpty() && m_iterator.hasPrevious() )
       {
         // Jump in front of the current item
-        (void) m_iterator.previous();
-        
         QString location = m_iterator.previous();
-        QString path = location.remove( m_share->unc(), Qt::CaseInsensitive );
 
-        if ( !path.isEmpty() )
+        if ( QString::compare( location, m_combo->currentText(), Qt::CaseInsensitive ) == 0 )
         {
-          m_url.setPath( QString( "%1%2" ).arg( m_share->shareName() ).arg( path ) );
+          // Now get the next location.
+          if ( m_iterator.hasPrevious() )
+          {
+            location = m_iterator.previous();
+            QString path = location.remove( m_share->unc(), Qt::CaseInsensitive );
+
+            if ( !path.isEmpty() )
+            {
+              m_url.setPath( QString( "%1%2" ).arg( m_share->shareName() ).arg( path ) );
+            }
+            else
+            {
+              m_url.setPath( m_share->shareName() );
+            }
+
+            // Request the preview
+            slotRequestPreview();
+          }
+          else
+          {
+            m_forward->setEnabled( false );
+          }
         }
         else
         {
-          m_url.setPath( m_share->shareName() );
-        }
+          QString path = location.remove( m_share->unc(), Qt::CaseInsensitive );
 
-        // Request the preview
-        slotRequestPreview();
+          if ( !path.isEmpty() )
+          {
+            m_url.setPath( QString( "%1%2" ).arg( m_share->shareName() ).arg( path ) );
+          }
+          else
+          {
+            m_url.setPath( m_share->shareName() );
+          }
+
+          // Request the preview
+          slotRequestPreview();
+        }
       }
       else
       {
@@ -715,9 +768,7 @@ void Smb4KPreviewDialog::slotActionTriggered( QAction *action )
     }
     else if ( kaction == m_up )
     {
-      if ( QString::compare( m_share->unc(),
-                             m_url.toString( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort ),
-                             Qt::CaseInsensitive ) != 0 )
+      if ( QString::compare( m_share->unc(), m_url.toString( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort ), Qt::CaseInsensitive ) != 0 )
       {
         // Clear the history
         m_history.clear();
@@ -731,7 +782,7 @@ void Smb4KPreviewDialog::slotActionTriggered( QAction *action )
       }
       else
       {
-        // Do nothing
+        m_up->setEnabled( false );
       }
     }
     else
@@ -753,11 +804,21 @@ void Smb4KPreviewDialog::slotRequestPreview()
 
   // Set the history
   QStringList history;
-  history << current;
+
+  if ( m_combo->historyItems().isEmpty() ||
+       QString::compare( m_combo->historyItems().first(), current, Qt::CaseInsensitive ) != 0 )
+  {
+    history << current;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
   history << m_combo->historyItems();
 
   m_combo->setHistoryItems( history, true );
-  m_combo->setCurrentItem( current );
+  m_combo->setCurrentItem( current, false );
 
   // Clear the view
   m_view->clear();
