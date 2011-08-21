@@ -1675,14 +1675,12 @@ void Smb4KNetworkBrowserPart::slotAuthentication( bool /*checked*/ )
     {
       case Smb4KNetworkBrowserItem::Host:
       {
-        Smb4KAuthInfo authInfo( item->hostItem() );
-        Smb4KWalletManager::self()->showPasswordDialog( &authInfo, m_widget );
+        Smb4KWalletManager::self()->showPasswordDialog( item->hostItem(), m_widget );
         break;
       }
       case Smb4KNetworkBrowserItem::Share:
       {
-        Smb4KAuthInfo authInfo( item->shareItem() );
-        Smb4KWalletManager::self()->showPasswordDialog( &authInfo, m_widget );
+        Smb4KWalletManager::self()->showPasswordDialog( item->shareItem(), m_widget );
         break;
       }
       default:
