@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 #ifndef SMB4KWALLETMANAGER_H
@@ -40,6 +40,7 @@
 
 // forward declarations
 class Smb4KAuthInfo;
+class Smb4KBasicNetworkItem;
 
 /**
  * This class manages the access to the digital wallet where the authentication
@@ -65,47 +66,59 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
     static Smb4KWalletManager *self();
 
     /**
-     * Initialize the wallet manager.
+     * Read the authentication for a certain network item. This functions
+     * adds the login and password (if present) to the past @p item. A 
+     * pre-defined login name is honored.
      *
-     * Normally, you do not need to call this function, because it will be
-     * invoked by the read and write functions of this class if needed.
+     * If you pass an empty item, the default authentication information will
+     * be set or none at all, depending on the settings the user chose.
      *
-     * @param parent          The optional parent widget for the wallet
+     * @param networkItem     The network item for that the authentication
+     *                        information should be acquired
      */
-    void init( QWidget *parent );
+    void readAuthInfo( Smb4KBasicNetworkItem *networkItem );
 
     /**
-     * Read the authentication information for a a certain host or share.
-     * This function will fill @p authInfo with the required information if
-     * present.
+     * This function reads the default authentication information and enters it
+     * into @p authInfo. If no default authentication data is present or the user 
+     * disabled its use this function does nothing.
      *
+     * @param authInfo        The Smb4KAuthInfo object that will be populated
+     *                        with the default authentication information.
+     */
+    void readDefaultAuthInfo( Smb4KAuthInfo *authInfo );
+
+    /**
+     * Write the authentication information provided by the network item to 
+     * the wallet or to the internal list if no wallet should be used.
+     * 
+     * @param networkItem     The network item for that the authentication
+     *                        information should be saved
+     */
+    void writeAuthInfo( Smb4KBasicNetworkItem *networkItem );
+
+    /**
+     * This function writes the default authentication information to the
+     * wallet. If the wallet is not used, the authentication information is
+     * not of type Smb4KAuthInfo::Default or empty, this function does nothing.
+     * 
      * @param authInfo        The Smb4KAuthInfo object
      */
-    void readAuthInfo( Smb4KAuthInfo *authInfo );
+    void writeDefaultAuthInfo( Smb4KAuthInfo *authInfo );
 
     /**
-     * Write the authentication information provided by @p authInfo to the
-     * wallet.
+     * Show the password dialog. This function takes an Smb4KBasicNetworkItem
+     * object @p item, shows an authentication dialog and saves the data if
+     * it is new or updated.
      *
-     * If no wallet is used, authentication information that has type "Default"
-     * will not be stored.
+     * @param networkItem     The network item for that the authentication
+     *                        information should be entered
      *
-     * @param auhInfo         The Smb4KAuthInfo object
+     * @param parent          The optional parent widget of the password dialog
+     *
+     * @returns TRUE if successful and FALSE otherwise
      */
-    void writeAuthInfo( Smb4KAuthInfo *authInfo );
-
-    /**
-     * Show the password dialog. This function takes an Smb4KAuthInfo object
-     * @p authInfo, shows an authentication dialog and saves the data if it
-     * was updated or is new.
-     *
-     * @param authInfo        The Smb4KAuthInfo object
-     *
-     * @param parent          The optional parent of the password dialog
-     *
-     * @returns TRUE if successful and FALSE otherwise.
-     */
-    bool showPasswordDialog( Smb4KAuthInfo *authInfo,
+    bool showPasswordDialog( Smb4KBasicNetworkItem *networkItem,
                              QWidget *parent = 0 );
 
     /**
@@ -179,6 +192,11 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
      * The destructor
      */
     ~Smb4KWalletManager();
+
+    /**
+     * Initialize the wallet manager.
+     */
+    void init();
 
     /**
      * The wallet

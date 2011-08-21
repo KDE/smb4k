@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 // Qt includes
@@ -50,6 +50,8 @@
 #include <smb4khomesshareshandler.h>
 #include <smb4kglobal.h>
 #include <smb4knotification.h>
+#include <smb4khost.h>
+#include <smb4kshare.h>
 
 using namespace Smb4KGlobal;
 
@@ -83,7 +85,7 @@ Smb4KWalletManager *Smb4KWalletManager::self()
 }
 
 
-void Smb4KWalletManager::init( QWidget *parent )
+void Smb4KWalletManager::init()
 {
   if ( KWallet::Wallet::isEnabled() && Smb4KSettings::useWallet() )
   {
@@ -91,26 +93,8 @@ void Smb4KWalletManager::init( QWidget *parent )
     // so try to get the wallet.
     if ( !m_wallet )
     {
-      int window_id = 0;
-      
-      if ( parent )
-      {
-        window_id = parent->winId();
-      }
-      else
-      {
-        if ( kapp->activeWindow() )
-        {
-          window_id = kapp->activeWindow()->winId();
-        }
-        else
-        {
-          kapp->desktop()->winId();
-        }
-      }
-
       m_wallet = KWallet::Wallet::openWallet( KWallet::Wallet::NetworkWallet(),
-                                              window_id,
+                                              0,
                                               KWallet::Wallet::Synchronous );
 
       if ( m_wallet )
@@ -176,101 +160,251 @@ void Smb4KWalletManager::setupFolder()
 }
 
 
-void Smb4KWalletManager::readAuthInfo( Smb4KAuthInfo *authInfo )
+void Smb4KWalletManager::readAuthInfo( Smb4KBasicNetworkItem *networkItem )
 {
-  Q_ASSERT( authInfo );
+  Q_ASSERT( networkItem );
 
   // Initialize the wallet manager. In case the wallet is already
   // set up, init() will do nothing.
-  init( 0 );
+  init();
 
-  if ( m_wallet )
+  if ( useWalletSystem() && m_wallet )
   {
-    bool set_auth_info = false;
-
-    // Read the authentication information.
-    switch ( authInfo->type() )
+    bool auth_info_set = false;
+    
+    switch ( networkItem->type() )
     {
-      case Smb4KAuthInfo::Host:
+      case Smb4KBasicNetworkItem::Host:
       {
-        QMap<QString,QString> map;
+        Smb4KHost *host = static_cast<Smb4KHost *>( networkItem );
 
-        if ( m_wallet->hasEntry( authInfo->unc().toUpper() ) )
+        if ( host )
         {
-          m_wallet->readMap( authInfo->unc().toUpper(), map );
-        }
-        else
-        {
-          // Use the IP address of the host, if present, to retrieve the 
-          // authentication information. Use the list of entries to check
-          // each entry for the IP address.
-          QStringList entries = m_wallet->entryList();
+          QMap<QString,QString> map;
 
-          foreach ( const QString &entry, entries )
+          if ( m_wallet->hasEntry( host->unc().toUpper() ) )
           {
-            QMap<QString,QString> entry_map;
-            m_wallet->readMap( entry, entry_map );
+            m_wallet->readMap( host->unc().toUpper(), map );
+          }
+          else
+          {
+            // Do nothing
+          }
 
-            if ( entry_map.contains( "IP Address" ) )
+          // Set the authentication information.
+          if ( !map.isEmpty() && (host->workgroupName().isEmpty() || map["Workgroup"].isEmpty() ||
+               QString::compare( host->workgroupName(), map.value( "Workgroup" ), Qt::CaseInsensitive ) == 0) )
+          {
+            if ( !host->login().isEmpty() )
             {
-              if ( QString::compare( entry_map.value( "IP Address" ), authInfo->ip() ) == 0 )
+              if ( QString::compare( host->login(), map.value( "Login" ) ) == 0 )
               {
-                map = entry_map;
-                break;
+                host->setLogin( map.value( "Login" ) );
+                host->setPassword( map.value( "Password" ) );
+                auth_info_set = true;
               }
               else
               {
-                continue;
+                // Do nothing
               }
+            }
+            else
+            {
+              host->setLogin( map.value( "Login" ) );
+              host->setPassword( map.value( "Password" ) );
+              auth_info_set = true;
+            }
+
+            // In difference to the readAuthInfo() function that takes an Smb4KAuthInfo
+            // object, do not set the workgroup or IP address here.
+          }
+          else
+          {
+            // Do nothing
+          }
+
+          // If no authentication information was set until now, check if
+          // we have to set the default login then.
+          if ( !auth_info_set && Smb4KSettings::useDefaultLogin() )
+          {
+            QMap<QString,QString> map;
+            m_wallet->readMap( "DEFAULT_LOGIN", map );
+
+            if ( !map.isEmpty() )
+            {
+              host->setLogin( map["Login"] );
+              host->setPassword( map["Password"] );
+            }
+            else
+            {
+              // Do nothing
+            }
+          }
+          else
+          {
+            // Do nothing
+          }
+#ifdef Q_OS_FREEBSD
+          Smb4KAuthInfo authInfo( host );
+          writeToConfigFile( authInfo );
+#endif
+        }
+        else
+        {
+          // Do nothing
+        }
+        break;
+      }
+      case Smb4KBasicNetworkItem::Share:
+      {
+        Smb4KShare *share = static_cast<Smb4KShare *>( networkItem );
+
+        if ( share )
+        {
+          QMap<QString,QString> map;
+
+          if ( !share->isHomesShare() )
+          {
+            if ( m_wallet->hasEntry( share->unc().toUpper() ) )
+            {
+              m_wallet->readMap( share->unc().toUpper(), map );
+            }
+            else
+            {
+              m_wallet->readMap( share->hostUNC().toUpper(), map );
+            }
+          }
+          else
+          {
+            // Specify a user name if necessary. The overwrite argument
+            // is set to FALSE here, so that no dialog is shown if a user
+            // name has already been provided.
+            Smb4KHomesSharesHandler::self()->specifyUser( share, false );
+            
+            if ( m_wallet->hasEntry( share->homeUNC().toUpper() ) )
+            {
+              m_wallet->readMap( share->homeUNC().toUpper(), map );
+            }
+            else
+            {
+              m_wallet->readMap( share->hostUNC().toUpper(), map );
+            }
+          }
+
+          // Set the authentication information.
+          if ( !map.isEmpty() && (share->workgroupName().isEmpty() || map["Workgroup"].isEmpty() ||
+               QString::compare( share->workgroupName(), map.value( "Workgroup" ), Qt::CaseInsensitive ) == 0) )
+          {
+            if ( !share->login().isEmpty() )
+            {
+              if ( QString::compare( share->login(), map.value( "Login" ) ) == 0 )
+              {
+                share->setLogin( map.value( "Login" ) );
+                share->setPassword( map.value( "Password" ) );
+                auth_info_set = true;
+              }
+              else
+              {
+                // Do nothing
+              }
+            }
+            else
+            {
+              share->setLogin( map.value( "Login" ) );
+              share->setPassword( map.value( "Password" ) );
+              auth_info_set = true;
+            }
+
+            // In difference to the readAuthInfo() function that takes an Smb4KAuthInfo
+            // object, do not set the workgroup or IP address here.
+          }
+          else
+          {
+            // Do nothing
+          }
+
+          // If no authentication information was set until now, check if
+          // we have to set the default login then.
+          if ( !auth_info_set && Smb4KSettings::useDefaultLogin() )
+          {
+            QMap<QString,QString> map;
+            m_wallet->readMap( "DEFAULT_LOGIN", map );
+
+            if ( !map.isEmpty() )
+            {
+              share->setLogin( map["Login"] );
+              share->setPassword( map["Password"] );
+            }
+            else
+            {
+              // Do nothing
+            }
+          }
+          else
+          {
+            // Do nothing
+          }
+#ifdef Q_OS_FREEBSD
+          Smb4KAuthInfo authInfo( share );
+          writeToConfigFile( authInfo );
+#endif
+        }
+        else
+        {
+          // Do nothing
+        }
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
+  else
+  {
+    switch ( networkItem->type() )
+    {
+      case Smb4KBasicNetworkItem::Host:
+      {
+        Smb4KHost *host = static_cast<Smb4KHost *>( networkItem );
+
+        if ( host )
+        {
+          for ( int i = 0; i < m_list.size(); ++i )
+          {
+            if ( QString::compare( host->unc(), m_list.at( i )->unc(), Qt::CaseInsensitive ) == 0 &&
+                 (host->workgroupName().isEmpty() || m_list.at( i )->workgroupName().isEmpty() ||
+                 QString::compare( host->workgroupName(), m_list.at( i )->workgroupName(), Qt::CaseInsensitive ) == 0) )
+            {
+              if ( !host->login().isEmpty() )
+              {
+                if ( QString::compare( host->login(), m_list.at( i )->login() ) == 0 )
+                {
+                  host->setLogin( m_list.at( i )->login() );
+                  host->setPassword( m_list.at( i )->password() );
+                }
+                else
+                {
+                  // Do nothing
+                }
+              }
+              else
+              {
+                host->setLogin( m_list.at( i )->login() );
+                host->setPassword( m_list.at( i )->password() );
+              }
+              break;
             }
             else
             {
               continue;
             }
           }
-        }
-        
-        // Set the authentication information.
-        if ( !map.isEmpty() && (authInfo->workgroupName().isEmpty() || map["Workgroup"].isEmpty() ||
-             QString::compare( authInfo->workgroupName(), map.value( "Workgroup" ), Qt::CaseInsensitive ) == 0) )
-        {
-          if ( !authInfo->login().isEmpty() )
-          {
-            if ( QString::compare( authInfo->login(), map.value( "Login" ) ) == 0 )
-            {
-              authInfo->setLogin( map.value( "Login" ) );
-              authInfo->setPassword( map.value( "Password" ) );
-              set_auth_info = true;
-            }
-            else
-            {
-              // Do nothing
-            }
-          }
-          else
-          {
-            authInfo->setLogin( map.value( "Login" ) );
-            authInfo->setPassword( map.value( "Password" ) );
-            set_auth_info = true;
-          }
-          
-          if ( authInfo->workgroupName().isEmpty() && !map["Workgroup"].isEmpty() )
-          {
-            authInfo->setWorkgroupName( map.value( "Workgroup" ) );
-          }
-          else
-          {
-            // Do nothing
-          }
-
-          if ( authInfo->ip().isEmpty() && !map["IP Address"].isEmpty() )
-          {
-            authInfo->setIP( map.value( "IP Address" ) );
-          }
-          else
-          {
-            // Do nothing
-          }
+#ifdef Q_OS_FREEBSD
+          Smb4KAuthInfo authInfo( host );
+          writeToConfigFile( authInfo );
+#endif
         }
         else
         {
@@ -278,78 +412,87 @@ void Smb4KWalletManager::readAuthInfo( Smb4KAuthInfo *authInfo )
         }
         break;
       }
-      case Smb4KAuthInfo::Share:
+      case Smb4KBasicNetworkItem::Share:
       {
-        // Read the authentication information. Prefer the exact match,
-        // but also look for an entry that was provided for the host.
-        QMap<QString,QString> map;
-        
-        if ( m_wallet->hasEntry( authInfo->unc().toUpper() ) )
-        {
-          m_wallet->readMap( authInfo->unc().toUpper(), map );
-        }
-        else
-        {
-          m_wallet->readMap( authInfo->hostUNC().toUpper(), map );
-        }
+        Smb4KShare *share = static_cast<Smb4KShare *>( networkItem );
 
-        // Set the authentication information.
-        if ( !map.isEmpty() && (authInfo->workgroupName().isEmpty() || map["Workgroup"].isEmpty() ||
-             QString::compare( authInfo->workgroupName(), map.value( "Workgroup" ), Qt::CaseInsensitive ) == 0) )
+        if ( share )
         {
-          if ( !authInfo->login().isEmpty() )
+          QString unc;
+
+          if ( !share->isHomesShare() )
           {
-            if ( QString::compare( authInfo->login(), map.value( "Login" ) ) == 0 )
+            unc = share->unc();
+          }
+          else
+          {
+            // Specify a user name if necessary. The overwrite argument
+            // is set to FALSE here, so that no dialog is shown if a user
+            // name has already been provided.
+            Smb4KHomesSharesHandler::self()->specifyUser( share, false );
+
+            unc = share->homeUNC();
+          }
+          
+          for ( int i = 0; i < m_list.size(); ++i )
+          {
+            if ( QString::compare( unc, m_list.at( i )->unc(), Qt::CaseInsensitive ) == 0 &&
+                 (share->workgroupName().isEmpty() || m_list.at( i )->workgroupName().isEmpty() ||
+                 QString::compare( share->workgroupName(), m_list.at( i )->workgroupName(), Qt::CaseInsensitive ) == 0) )
             {
-              authInfo->setLogin( map.value( "Login" ) );
-              authInfo->setPassword( map.value( "Password" ) );
-              set_auth_info = true;
+              // Exact match
+              if ( !share->login().isEmpty() )
+              {
+                if ( QString::compare( share->login(), m_list.at( i )->login() ) == 0 )
+                {
+                  share->setLogin( m_list.at( i )->login() );
+                  share->setPassword( m_list.at( i )->password() );
+                }
+                else
+                {
+                  // Do nothing
+                }
+              }
+              else
+              {
+                share->setLogin( m_list.at( i )->login() );
+                share->setPassword( m_list.at( i )->password() );
+              }
+              break;
+            }
+            else if ( QString::compare( share->hostUNC(), m_list.at( i )->hostUNC(), Qt::CaseInsensitive ) == 0 &&
+                      (share->workgroupName().isEmpty() || m_list.at( i )->workgroupName().isEmpty() ||
+                      QString::compare( share->workgroupName(), m_list.at( i )->workgroupName(), Qt::CaseInsensitive ) == 0) )
+            {
+              // The host is the same
+              if ( !share->login().isEmpty() )
+              {
+                if ( QString::compare( share->login(), m_list.at( i )->login() ) == 0 )
+                {
+                  share->setLogin( m_list.at( i )->login() );
+                  share->setPassword( m_list.at( i )->password() );
+                }
+                else
+                {
+                  // Do nothing
+                }
+              }
+              else
+              {
+                share->setLogin( m_list.at( i )->login() );
+                share->setPassword( m_list.at( i )->password() );
+              }
+              continue;
             }
             else
             {
-              // Do nothing
+              continue;
             }
           }
-          else
-          {
-            authInfo->setLogin( map.value( "Login" ) );
-            authInfo->setPassword( map.value( "Password" ) );
-            set_auth_info = true;
-          }
-          
-          if ( authInfo->workgroupName().isEmpty() && !map["Workgroup"].isEmpty() )
-          {
-            authInfo->setWorkgroupName( map.value( "Workgroup" ) );
-          }
-          else
-          {
-            // Do nothing
-          }
-
-          if ( authInfo->ip().isEmpty() && !map["IP Address"].isEmpty() )
-          {
-            authInfo->setIP( map.value( "IP Address" ) );
-          }
-          else
-          {
-            // Do nothing
-          }
-        }
-        else
-        {
-          // Do nothing
-        }
-        break;
-      }
-      case Smb4KAuthInfo::Default:
-      {
-        QMap<QString,QString> map;
-        m_wallet->readMap( "DEFAULT_LOGIN", map );
-
-        if ( !map.isEmpty() )
-        {
-          authInfo->setLogin( map["Login"] );
-          authInfo->setPassword( map["Password"] );
+#ifdef Q_OS_FREEBSD
+          Smb4KAuthInfo authInfo( share );
+          writeToConfigFile( authInfo );
+#endif
         }
         else
         {
@@ -360,92 +503,6 @@ void Smb4KWalletManager::readAuthInfo( Smb4KAuthInfo *authInfo )
       default:
       {
         break;
-      }
-    }
-
-    // If there was no matching authentication information, use the
-    // default one, if it exists.
-    if ( !set_auth_info && Smb4KSettings::useDefaultLogin() && authInfo->type() != Smb4KAuthInfo::Default )
-    {
-      QMap<QString,QString> map;
-      m_wallet->readMap( "DEFAULT_LOGIN", map );
-
-      if ( !map.isEmpty() )
-      {
-        authInfo->setLogin( map["Login"] );
-        authInfo->setPassword( map["Password"] );
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    for ( int i = 0; i < m_list.size(); ++i )
-    {
-      if ( QString::compare( authInfo->unc().toUpper(), m_list.at( i )->unc().toUpper() ) == 0 ||
-           (authInfo->type() == Smb4KAuthInfo::Host && QString::compare( authInfo->ip(), m_list.at( i )->ip() ) == 0) )
-      {
-        // Exact match
-        authInfo->setLogin( m_list.at( i )->login() );
-        authInfo->setPassword( m_list.at( i )->password() );
-
-        if ( authInfo->workgroupName().isEmpty() )
-        {
-          authInfo->setWorkgroupName( m_list.at( i )->workgroupName() );
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        if ( authInfo->ip().isEmpty() )
-        {
-          authInfo->setIP( m_list.at( i )->ip() );
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        break;
-      }
-      else if ( QString::compare( authInfo->hostUNC().toUpper(), m_list.at( i )->hostUNC().toUpper() ) == 0 ||
-                (authInfo->type() == Smb4KAuthInfo::Share && QString::compare( authInfo->ip(), m_list.at( i )->ip() ) == 0) )
-      {
-        // The host is the same
-        authInfo->setLogin( m_list.at( i )->login() );
-        authInfo->setPassword( m_list.at( i )->password() );
-
-        if ( authInfo->workgroupName().isEmpty() )
-        {
-          authInfo->setWorkgroupName( m_list.at( i )->workgroupName() );
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        if ( authInfo->ip().isEmpty() )
-        {
-          authInfo->setIP( m_list.at( i )->ip() );
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        continue;
-      }
-      else
-      {
-        continue;
       }
     }
 
@@ -463,69 +520,103 @@ void Smb4KWalletManager::readAuthInfo( Smb4KAuthInfo *authInfo )
       // Do nothing
     }
   }
-  
-#ifdef Q_OS_FREEBSD
-  writeToConfigFile( authInfo );
-#endif
 }
 
 
-void Smb4KWalletManager::writeAuthInfo( Smb4KAuthInfo *authInfo )
+void Smb4KWalletManager::readDefaultAuthInfo( Smb4KAuthInfo *authInfo )
 {
   Q_ASSERT( authInfo );
 
   // Initialize the wallet manager. In case the wallet is already
   // set up, init() will just do nothing.
-  init( 0 );
+  init();
 
-  if ( m_wallet )
+  // Since we do not store default authentication information
+  // when no wallet is used, we only need to read from the wallet.
+  if ( useWalletSystem() && m_wallet )
   {
-    // Write the authentication information to the wallet, if it
-    // is not empty.
     QMap<QString,QString> map;
+    m_wallet->readMap( "DEFAULT_LOGIN", map );
 
-    if ( !authInfo->login().isEmpty() /* allow empty passwords */ )
+    if ( !map.isEmpty() && Smb4KSettings::useDefaultLogin() )
     {
-      map["Login"]    = authInfo->login();
-      map["Password"] = authInfo->password();
+      authInfo->setLogin( map["Login"] );
+      authInfo->setPassword( map["Password"] );
     }
     else
     {
-      return;
+      // Do nothing
     }
 
-    switch ( authInfo->type() )
+    authInfo->useDefaultAuthInfo();
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KWalletManager::writeAuthInfo( Smb4KBasicNetworkItem *networkItem )
+{
+  //
+  // FIXME: Use writeToConfigFile()
+  //
+  
+  Q_ASSERT( networkItem );
+
+  // Initialize the wallet manager. In case the wallet is already
+  // set up, init() will just do nothing.
+  init();
+
+  if ( useWalletSystem() && m_wallet )
+  {
+    switch ( networkItem->type() )
     {
-      case Smb4KAuthInfo::Default:
+      case Smb4KBasicNetworkItem::Host:
       {
-        m_wallet->writeMap( "DEFAULT_LOGIN", map );
-        break;
-      }
-      default:
-      {
-        // Take care that no empty UNC is written to the wallet.
-        // We test the host name here.
-        if ( !authInfo->hostName().isEmpty() )
+        Smb4KHost *host = static_cast<Smb4KHost *>( networkItem );
+
+        if ( host )
         {
-          if ( !authInfo->workgroupName().isEmpty() )
+          // Write the authentication information to the wallet, if it
+          // is not empty.
+          if ( !host->login().isEmpty() /* allow empty passwords */ && !host->hostName().isEmpty() )
           {
-            map["Workgroup"] = authInfo->workgroupName().toUpper();
+            QMap<QString,QString> map;
+            map["Login"]    = host->login();
+            map["Password"] = host->password();
+
+            if ( !host->workgroupName().isEmpty() )
+            {
+              map["Workgroup"] = host->workgroupName().toUpper();
+            }
+            else
+            {
+              // Do nothing
+            }
+
+            if ( !host->ip().isEmpty() )
+            {
+              map["IP Address"] = host->ip();
+            }
+            else
+            {
+              // Do nothing
+            }
+
+            m_wallet->writeMap( host->unc().toUpper(), map );
+            m_wallet->sync();
           }
           else
           {
             // Do nothing
           }
 
-          if ( !authInfo->ip().isEmpty() )
-          {
-            map["IP Address"] = authInfo->ip();
-          }
-          else
-          {
-            // Do nothing
-          }
-
-          m_wallet->writeMap( authInfo->unc().toUpper(), map );
+#ifdef Q_OS_FREEBSD
+          Smb4KAuthInfo authInfo( host );
+          writeToConfigFile( authInfo );
+#endif
         }
         else
         {
@@ -533,9 +624,69 @@ void Smb4KWalletManager::writeAuthInfo( Smb4KAuthInfo *authInfo )
         }
         break;
       }
-    }
+      case Smb4KBasicNetworkItem::Share:
+      {
+        Smb4KShare *share = static_cast<Smb4KShare *>( networkItem );
 
-    m_wallet->sync();
+        if ( share )
+        {
+          // Write the authentication information to the wallet, if it
+          // is not empty.
+          if ( !share->login().isEmpty() /* allow empty passwords */ && !share->hostName().isEmpty() )
+          {
+            QMap<QString,QString> map;
+            map["Login"]    = share->login();
+            map["Password"] = share->password();
+
+            if ( !share->workgroupName().isEmpty() )
+            {
+              map["Workgroup"] = share->workgroupName().toUpper();
+            }
+            else
+            {
+              // Do nothing
+            }
+
+            if ( !share->hostIP().isEmpty() )
+            {
+              map["IP Address"] = share->hostIP();
+            }
+            else
+            {
+              // Do nothing
+            }
+
+            if ( !share->isHomesShare() )
+            {
+              m_wallet->writeMap( share->unc().toUpper(), map );
+            }
+            else
+            {
+              m_wallet->writeMap( share->homeUNC().toUpper(), map );
+            }
+            m_wallet->sync();
+          }
+          else
+          {
+            // Do nothing
+          }
+
+#ifdef Q_OS_FREEBSD
+          Smb4KAuthInfo authInfo( share );
+          writeToConfigFile( authInfo );
+#endif
+        }
+        else
+        {
+          // Do nothing
+        }
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
   }
   else
   {
@@ -553,110 +704,232 @@ void Smb4KWalletManager::writeAuthInfo( Smb4KAuthInfo *authInfo )
       // Do nothing
     }
 
-    // We do not store a default login if no wallet is used.
-    if ( authInfo->type() != Smb4KAuthInfo::Default )
+    // FIXME: Use writeToConfigFile() below!!!
+
+    // Now insert the new authentication information. Before we 
+    // do this, remove the old one, if one is present.
+    switch ( networkItem->type() )
     {
-      m_list.append( new Smb4KAuthInfo( *authInfo ) );
+      case Smb4KBasicNetworkItem::Host:
+      {
+        Smb4KHost *host = static_cast<Smb4KHost *>( networkItem );
+
+        if ( host )
+        {
+          Smb4KAuthInfo authInfo( host );
+
+          QMutableListIterator<Smb4KAuthInfo *> it( m_list );
+
+          while ( it.hasNext() )
+          {
+            Smb4KAuthInfo *auth_info = it.next();
+
+            if ( QString::compare( auth_info->unc(), authInfo.unc(), Qt::CaseInsensitive ) == 0 &&
+                 (auth_info->workgroupName().isEmpty() || authInfo.workgroupName().isEmpty() ||
+                 QString::compare( auth_info->workgroupName(), authInfo.workgroupName(), Qt::CaseInsensitive ) == 0) )
+            {
+              it.remove();
+              break;
+            }
+            else
+            {
+              // Do nothing
+            }
+          }
+
+          m_list << new Smb4KAuthInfo( authInfo );
+
+#ifdef Q_OS_FREEBSD
+          writeToConfigFile( authInfo );
+#endif
+        }
+        else
+        {
+          // Do nothing
+        }
+        break;
+      }
+      case Smb4KBasicNetworkItem::Share:
+      {
+        Smb4KShare *share = static_cast<Smb4KShare *>( networkItem );
+
+        if ( share )
+        {
+          Smb4KAuthInfo authInfo( share );
+
+          QMutableListIterator<Smb4KAuthInfo *> it( m_list );
+
+          while ( it.hasNext() )
+          {
+            Smb4KAuthInfo *auth_info = it.next();
+
+            if ( QString::compare( auth_info->unc(), authInfo.unc(), Qt::CaseInsensitive ) == 0 &&
+                 (auth_info->workgroupName().isEmpty() || authInfo.workgroupName().isEmpty() ||
+                 QString::compare( auth_info->workgroupName(), authInfo.workgroupName(), Qt::CaseInsensitive ) == 0) )
+            {
+              it.remove();
+              break;
+            }
+            else
+            {
+              // Do nothing
+            }
+          }
+
+          m_list << new Smb4KAuthInfo( authInfo );
+
+#ifdef Q_OS_FREEBSD
+          writeToConfigFile( authInfo );
+#endif
+        }
+        else
+        {
+          // Do nothing
+        }
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
+}
+
+
+void Smb4KWalletManager::writeDefaultAuthInfo( Smb4KAuthInfo *authInfo )
+{
+  Q_ASSERT( authInfo );
+
+  if ( useWalletSystem() && m_wallet )
+  {
+    // Write the default authentication information to the wallet
+    if ( authInfo->type() == Smb4KAuthInfo::Default && !authInfo->login().isEmpty() /* allow empty passwords */ )
+    {
+      QMap<QString,QString> map;
+      map["Login"]    = authInfo->login();
+      map["Password"] = authInfo->password();
+      m_wallet->writeMap( "DEFAULT_LOGIN", map );
+      m_wallet->sync();
     }
     else
     {
       // Do nothing
     }
   }
-
-#ifdef Q_OS_FREEBSD
-  writeToConfigFile( authInfo );
-#endif
-}
-
-
-bool Smb4KWalletManager::showPasswordDialog( Smb4KAuthInfo *authInfo, QWidget *parent )
-{
-  Q_ASSERT( authInfo );
-
-  bool success = false;
-
-  // Read the authentication information.
-  readAuthInfo( authInfo );
-
-  // Get known logins in case we have a 'homes' share and the share
-  // name has not yet been changed.
-  QMap<QString,QString> logins;
-
-  if ( authInfo->isHomesShare() && QString::compare( authInfo->shareName(), "homes" ) == 0 )
-  {
-    Smb4KShare share;
-    share.setURL( authInfo->url() );
-    share.setWorkgroupName( authInfo->workgroupName() );
-    
-    QStringList users = Smb4KHomesSharesHandler::self()->homesUsers( &share );
-    
-    for ( int i = 0; i < users.size(); ++i )
-    {
-      Smb4KAuthInfo user_auth_info( *authInfo );
-      user_auth_info.setLogin( users.at( i ) );
-      
-      // Read the authentication data for the share. If it does not
-      // exist yet, user() and password() will be empty.
-      
-      readAuthInfo( &user_auth_info );
-      
-      logins.insert( user_auth_info.login(), user_auth_info.password() );
-    }
-  }
   else
   {
     // Do nothing
   }
+}
+
+
+bool Smb4KWalletManager::showPasswordDialog( Smb4KBasicNetworkItem *networkItem, QWidget *parent )
+{
+  Q_ASSERT( networkItem );
+
+  // Initialize the wallet manager. In case the wallet is already
+  // set up, init() will do nothing.
+  init();
+
+  // Return value
+  bool success = false;
+
+  // Read authentication information
+  readAuthInfo( networkItem );
 
   // Set up the password dialog.
   KPasswordDialog dlg( parent, KPasswordDialog::ShowUsernameLine );
 
-  if ( !logins.isEmpty() )
+  switch ( networkItem->type() )
   {
-    dlg.setKnownLogins( logins );
-  }
-  else
-  {
-    dlg.setUsername( authInfo->login() );
-    dlg.setPassword( authInfo->password() );
-  }
-
-  QString prompt;
-
-  switch ( authInfo->type() )
-  {
-    case Smb4KAuthInfo::Host:
+    case Smb4KBasicNetworkItem::Host:
     {
-      prompt = i18n( "<qt>Please enter a username and a password for the host %1.</qt>" ).arg( authInfo->hostName() );
+      Smb4KHost *host = static_cast<Smb4KHost *>( networkItem );
+
+      if ( host )
+      {
+        dlg.setUsername( host->login() );
+        dlg.setPassword( host->password() );
+        dlg.setPrompt( i18n( "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>", host->hostName() ) );
+
+        // Execute the password dialog, retrieve the new authentication
+        // information and save it.
+        if ( (success = dlg.exec()) )
+        {
+          host->setLogin( dlg.username() );
+          host->setPassword( dlg.password() );
+          writeAuthInfo( host );
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
       break;
     }
-    case Smb4KAuthInfo::Share:
+    case Smb4KBasicNetworkItem::Share:
     {
-      prompt = i18n( "<qt>Please enter a username and a password for the share %1.</qt>" ).arg( authInfo->unc() );
+      Smb4KShare *share = static_cast<Smb4KShare *>( networkItem );
+
+      if ( share )
+      {
+        // Get known logins in case we have a 'homes' share and the share
+        // name has not yet been changed.
+        QMap<QString,QString> logins;
+        QStringList users = Smb4KHomesSharesHandler::self()->homesUsers( share );
+
+        for ( int i = 0; i < users.size(); ++i )
+        {
+          Smb4KShare tmp_share( *share );
+          tmp_share.setLogin( users.at( i ) );
+
+          // Read the authentication data for the share. If it does not
+          // exist yet, login() and password() will be empty.
+          readAuthInfo( &tmp_share );
+          logins.insert( tmp_share.login(), tmp_share.password() );
+        }
+
+        // Enter authentication information into the dialog
+        if ( !logins.isEmpty() )
+        {
+          dlg.setKnownLogins( logins );
+        }
+        else
+        {
+          dlg.setUsername( share->login() );
+          dlg.setPassword( share->password() );
+        }
+
+        dlg.setPrompt( i18n( "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>", share->unc() ) );
+
+        // Execute the password dialog, retrieve the new authentication
+        // information and save it.
+        if ( (success = dlg.exec()) )
+        {
+          share->setLogin( dlg.username() );
+          share->setPassword( dlg.password() );
+          writeAuthInfo( share );
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
       break;
     }
     default:
     {
-      prompt = i18n( "<qt>Please enter a username and a password.</qt>" );
       break;
     }
-  }
-
-  dlg.setPrompt( prompt );
-
-  // Execute the password dialog, retrieve the new authentication
-  // information and save it.
-  if ( (success = dlg.exec()) )
-  {
-    authInfo->setLogin( dlg.username() );
-    authInfo->setPassword( dlg.password() );
-
-    writeAuthInfo( authInfo );
-  }
-  else
-  {
-    // Do nothing
   }
 
   return success;
@@ -671,6 +944,10 @@ bool Smb4KWalletManager::useWalletSystem()
 
 QList<Smb4KAuthInfo *> Smb4KWalletManager::walletEntries()
 {
+  // Initialize the wallet manager. In case the wallet is already
+  // set up, init() will just do nothing.
+  init();
+  
   QList<Smb4KAuthInfo *> list;
   
   if ( useWalletSystem() && m_wallet )
@@ -682,18 +959,26 @@ QList<Smb4KAuthInfo *> Smb4KWalletManager::walletEntries()
       for ( int i = 0; i < entries.size(); ++i )
       {
         Smb4KAuthInfo *authInfo = new Smb4KAuthInfo();
+
+        QMap<QString,QString> map;
+        m_wallet->readMap( entries.at( i ), map );
         
         if ( QString::compare( entries.at( i ), "DEFAULT_LOGIN" ) == 0 )
         {
           // Default login
           authInfo->useDefaultAuthInfo();
+          authInfo->setLogin( map["Login"] );
+          authInfo->setPassword( map["Password"] );
         }
         else
         {
           authInfo->setUNC( entries.at( i ) );
+          authInfo->setIP( map["IP Address"] );
+          authInfo->setWorkgroupName( map["Workgroup"] );
+          authInfo->setLogin( map["Login"] );
+          authInfo->setPassword( map["Password"] );
         }
-        
-        readAuthInfo( authInfo );
+
         list << authInfo;
       }
     }
@@ -713,6 +998,10 @@ QList<Smb4KAuthInfo *> Smb4KWalletManager::walletEntries()
 
 void Smb4KWalletManager::writeWalletEntries( const QList<Smb4KAuthInfo *> &entries )
 {
+  // Initialize the wallet manager. In case the wallet is already
+  // set up, init() will just do nothing.
+  init();
+  
   if ( useWalletSystem() && m_wallet )
   {
     // Clear the wallet.
@@ -726,8 +1015,26 @@ void Smb4KWalletManager::writeWalletEntries( const QList<Smb4KAuthInfo *> &entri
     // Write the new entries to the wallet.
     for ( int i = 0; i < entries.size(); ++i )
     {
-      writeAuthInfo( entries.at( i ) );
+      QMap<QString,QString> map;
+
+      if ( entries.at( i )->type() == Smb4KAuthInfo::Default )
+      {
+        // Default login
+        map["Login"] = entries.at( i )->login();
+        map["Password"] = entries.at( i )->password();
+        m_wallet->writeMap( "DEFAULT_LOGIN", map );
+      }
+      else
+      {
+        map["IP Address"] = entries.at( i )->ip();
+        map["Workgroup"] = entries.at( i )->workgroupName();
+        map["Login"] = entries.at( i )->login();
+        map["Password"] = entries.at( i )->password();
+        m_wallet->writeMap( entries.at( i )->unc(), map );
+      }
     }
+
+    m_wallet->sync();
   }
   else
   {
