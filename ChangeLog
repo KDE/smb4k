@@ -32,8 +32,13 @@ Smb4K SVN_HEAD (????-??-??):
   + The IP address is now also saved to the wallet.
   + Also return correct authentication information if only the IP address is
     given (hosts only).
+  + Introduced readDefaultAuthInfo() and writeDefaultAuthInfo() functions.
+  + Rewrote readAuthInfo() and writeAuthInfo() functions. Among other things,
+    they now take a Smb4KBasicNetworkItem object as argument.
+  + showPasswordDialog() function now takes a Smb4KBasicNetworkItem object
+    as argument.
 - Introduced Smb4KBasicNetworkItem class. Smb4KWorkgroup, Smb4KHost and 
-  Smb4KShare inherit this class now.
+  Smb4KShare inherit this class.
 - Revised Smb4KWorkgroup class:
   + Added equals() function.
   + Added hasMasterBrowserIP() function.
@@ -73,6 +78,7 @@ Smb4K SVN_HEAD (????-??-??):
   + Removed loginIsSet() function.
   + Added "==" operator.
   + Removed setHomesUsers() and homesUsers() functions.
+  + The path() and canonicalPath() functions return a string.
 - Revised Smb4KCore class:
   + Removed all *State() convenience functions. You need to use the new
     Smb4KCore::xxx()->currentState() functions to read the current state of
