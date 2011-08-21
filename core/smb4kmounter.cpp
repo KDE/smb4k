@@ -745,9 +745,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share, QWidget *parent )
     return;
   }
   
-  Smb4KAuthInfo authInfo( share );
-  Smb4KWalletManager::self()->readAuthInfo( &authInfo );
-  share->setAuthInfo( &authInfo );
+  Smb4KWalletManager::self()->readAuthInfo( share );
   
   // Create a new job and add it to the subjobs
   Smb4KMountJob *job = new Smb4KMountJob( this );
@@ -899,9 +897,7 @@ void Smb4KMounter::mountShares( const QList<Smb4KShare *> &shares, QWidget *pare
       
       if ( !running )
       {
-        Smb4KAuthInfo authInfo( share );
-        Smb4KWalletManager::self()->readAuthInfo( &authInfo );
-        share->setAuthInfo( &authInfo );
+        Smb4KWalletManager::self()->readAuthInfo( share );
         shares_to_mount << share;
         p->addMount();
       }
@@ -1295,9 +1291,7 @@ void Smb4KMounter::slotAuthError( Smb4KMountJob *job )
   {
     for ( int i = 0; i < job->authErrors().size(); ++i )
     {
-      Smb4KAuthInfo authInfo( &job->authErrors().at( i ) );
-
-      if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, job->parentWidget() ) )
+      if ( Smb4KWalletManager::self()->showPasswordDialog( &job->authErrors()[i], job->parentWidget() ) )
       {
         m_retries << job->authErrors().at( i );
       }
