@@ -3,3 +3,9 @@
 - Allow several filemanagers.
 - Mount shares by drag and drop into the shares view.
 - Implement more 'net' commands.
+- Use already existing authentication information for hosts
+  and shares (e.g. provided by Dolphin).
+- Save authentication information in such way, that other
+  programs can use it as well.
+- Introduce Plasma applet that can browse the network
+  neighborhood and shows the mounted shares.
