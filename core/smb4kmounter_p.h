@@ -110,7 +110,7 @@ class Smb4KMountJob : public KJob
      *
      * @returns a list of shares with authentication errors
      */
-    const QList<Smb4KShare> &authErrors() { return m_auth_errors; }
+    QList<Smb4KShare> &authErrors() { return m_auth_errors; }
 
     /**
      * Returns a list of shares for that a "bad share name" error
