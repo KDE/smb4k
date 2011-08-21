@@ -73,9 +73,7 @@ void Smb4KPrint::print( Smb4KShare *printer, QWidget *parent )
   }
   
   // Get the authentication information.
-  Smb4KAuthInfo authInfo( printer );
-  Smb4KWalletManager::self()->readAuthInfo( &authInfo );
-  printer->setAuthInfo( &authInfo );
+  Smb4KWalletManager::self()->readAuthInfo( printer );
   
   // Create a new job and add it to the subjobs 
   Smb4KPrintJob *job = new Smb4KPrintJob( this );
@@ -170,9 +168,7 @@ void Smb4KPrint::slotJobFinished( KJob *job )
 
 void Smb4KPrint::slotAuthError( Smb4KPrintJob *job )
 {
-  Smb4KAuthInfo authInfo( job->printer() );
-  
-  if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, job->parentWidget() ) )
+  if ( Smb4KWalletManager::self()->showPasswordDialog( job->printer(), job->parentWidget() ) )
   {
     print( job->printer(), job->parentWidget() );
   }
