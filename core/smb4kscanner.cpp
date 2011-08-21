@@ -833,31 +833,29 @@ void Smb4KScanner::slotJobFinished( KJob *job )
 
 void Smb4KScanner::slotAuthError( Smb4KQueryMasterJob *job )
 {
-  Smb4KAuthInfo authInfo;
+  Smb4KHost master_browser;
   
   if ( !job->masterBrowser().isEmpty() )
   {
-    Smb4KHost master;
-    master.setIsMasterBrowser( true );
+    master_browser.setIsMasterBrowser( true );
 
     if ( QHostAddress( job->masterBrowser() ).protocol() == QAbstractSocket::UnknownNetworkLayerProtocol )
     {
-      master.setHostName( job->masterBrowser() );
+      master_browser.setHostName( job->masterBrowser() );
     }
     else
     {
-      master.setIP( job->masterBrowser() );
+      master_browser.setIP( job->masterBrowser() );
     }
     
-    authInfo.setHost( &master );
-    emit authError ( &master, LookupDomains );
+    emit authError ( &master_browser, LookupDomains );
   }
   else
   {
-    authInfo.useDefaultAuthInfo();
+    // Do nothing
   }
 
-  if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, job->parentWidget() ) )
+  if ( Smb4KWalletManager::self()->showPasswordDialog( &master_browser, job->parentWidget() ) )
   {
     // Start a query job with the returned master browser.
     Smb4KQueryMasterJob *job = new Smb4KQueryMasterJob( this );
@@ -892,15 +890,13 @@ void Smb4KScanner::slotAuthError( Smb4KQueryMasterJob *job )
 
 void Smb4KScanner::slotAuthError( Smb4KLookupDomainMembersJob *job )
 {
-  Smb4KHost *master = findHost( job->workgroup()->masterBrowserName(), job->workgroup()->workgroupName() );
+  Smb4KHost *master_browser = findHost( job->workgroup()->masterBrowserName(), job->workgroup()->workgroupName() );
   
-  if ( master )
+  if ( master_browser )
   {
-    emit authError( master, LookupDomainMembers );
+    emit authError( master_browser, LookupDomainMembers );
     
-    Smb4KAuthInfo authInfo( master );
-   
-    if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, job->parentWidget() ) )
+    if ( Smb4KWalletManager::self()->showPasswordDialog( master_browser, job->parentWidget() ) )
     {
       lookupDomainMembers( job->workgroup(), job->parentWidget() );
     }
@@ -924,11 +920,9 @@ void Smb4KScanner::slotAuthError( Smb4KLookupSharesJob *job )
   {
     emit authError( host, LookupShares );
     
-    Smb4KAuthInfo authInfo( host );
-    
-    if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, job->parentWidget() ) )
+    if ( Smb4KWalletManager::self()->showPasswordDialog( host, job->parentWidget() ) )
     {
-      lookupShares( job->host(), job->parentWidget() );
+      lookupShares( host, job->parentWidget() );
     }
     else
     {
