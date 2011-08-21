@@ -236,7 +236,6 @@ class Smb4KQueryMasterJob : public KJob
     QString m_master_browser;
     Smb4KProcess *m_proc;
     QList<Smb4KWorkgroup> m_workgroups_list;
-    Smb4KAuthInfo m_auth_info;
 };
 
 
@@ -453,7 +452,7 @@ class Smb4KLookupDomainMembersJob : public KJob
     Smb4KWorkgroup m_workgroup;
     Smb4KProcess *m_proc;
     QList<Smb4KHost> m_hosts_list;
-    Smb4KAuthInfo m_auth_info;
+    Smb4KHost m_master_browser;
 };
 
 
@@ -558,7 +557,6 @@ class Smb4KLookupSharesJob : public KJob
     Smb4KHost m_host;
     QWidget *m_parent_widget;
     Smb4KProcess *m_proc;
-    Smb4KAuthInfo m_auth_info;
     QList<Smb4KShare> m_shares_list;
 };
 

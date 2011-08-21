@@ -604,10 +604,10 @@ void Smb4KQueryMasterJob::slotStartLookup()
 
   Smb4KCustomOptions *options = NULL;
   QStringList arguments;
-
+  Smb4KHost host;
+  
   if ( !m_master_browser.isEmpty() )
   {
-    Smb4KHost host;
     // We do not need to set the domain here, because neither
     // Smb4KCustomOptionsMangager nor Smb4KWalletManager need 
     // the domain entry to return correct data.    
@@ -626,9 +626,7 @@ void Smb4KQueryMasterJob::slotStartLookup()
     // Get authentication information for the host if needed
     if ( Smb4KSettings::masterBrowsersRequireAuth() )
     {
-      m_auth_info.setHost( &host );
-      Smb4KWalletManager::self()->readAuthInfo( &m_auth_info );
-      
+      Smb4KWalletManager::self()->readAuthInfo( &host );
     }
     else
     {
@@ -646,8 +644,7 @@ void Smb4KQueryMasterJob::slotStartLookup()
     // Get authentication information for the host if needed
     if ( Smb4KSettings::masterBrowsersRequireAuth() && Smb4KSettings::useDefaultLogin() )
     {
-      m_auth_info.useDefaultAuthInfo();
-      Smb4KWalletManager::self()->readAuthInfo( &m_auth_info );
+      Smb4KWalletManager::self()->readAuthInfo( &host );
     }
     else
     {
@@ -706,7 +703,7 @@ void Smb4KQueryMasterJob::slotStartLookup()
   // User name and password if needed
   if ( Smb4KSettings::masterBrowsersRequireAuth() )
   {
-    arguments << QString( "-U %1%" ).arg( m_auth_info.login() );
+    arguments << QString( "-U %1%" ).arg( host.login() );
   }
   else
   {
@@ -770,7 +767,7 @@ void Smb4KQueryMasterJob::slotStartLookup()
   // User name and password if needed
   if ( Smb4KSettings::masterBrowsersRequireAuth() )
   {
-    arguments << QString( "-U %1%" ).arg( m_auth_info.login() );
+    arguments << QString( "-U %1%" ).arg( host.login() );
   }
   else
   {
@@ -800,7 +797,7 @@ void Smb4KQueryMasterJob::slotStartLookup()
 
   if ( Smb4KSettings::masterBrowsersRequireAuth() )
   {
-    m_proc->setEnv( "PASSWD", m_auth_info.password() );
+    m_proc->setEnv( "PASSWD", host.password() );
   }
   else
   {
@@ -1469,7 +1466,8 @@ void Smb4KLookupDomainMembersJob::processHosts()
           
           if ( QString::compare( host.hostName(), m_workgroup.masterBrowserName() ) == 0 )
           {
-            host.setAuthInfo( &m_auth_info );
+            host.setLogin( m_master_browser.login() );
+            host.setPassword( m_master_browser.password() );
             host.setIsMasterBrowser( true );
 
             if ( m_workgroup.hasMasterBrowserIP() )
@@ -1526,17 +1524,17 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
 
   // Get the master browser of the defined workgroup, so that we
   // can connect to it.
-  Smb4KHost *master = findHost( m_workgroup.masterBrowserName(), m_workgroup.workgroupName() );
+  Smb4KHost *host = findHost( m_workgroup.masterBrowserName(), m_workgroup.workgroupName() );
 
-  if ( master )
+  if ( host )
   {
+    // Copy host entry to private variable.
+    m_master_browser = *host;
+    
     // If the master browsers need authentication, we read it now.
-    m_auth_info.setHost( master );
-
     if ( Smb4KSettings::masterBrowsersRequireAuth() )
     {
-      Smb4KWalletManager::self()->readAuthInfo( &m_auth_info );
-      master->setAuthInfo( &m_auth_info );
+      Smb4KWalletManager::self()->readAuthInfo( &m_master_browser );
     }
     else
     {
@@ -1547,7 +1545,7 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
     QMap<QString,QString> samba_options = globalSambaOptions();
 
     // Custom options
-    Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions( master );
+    Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions( &m_master_browser );
 
     // Assemble the command.
     QStringList arguments;
@@ -1623,9 +1621,9 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
     // Authentication, if needed
     if ( Smb4KSettings::masterBrowsersRequireAuth() )
     {
-      if ( !m_auth_info.login().isEmpty() )
+      if ( !m_master_browser.login().isEmpty() )
       {
-        arguments << QString( "-U %1" ).arg( m_auth_info.login() );
+        arguments << QString( "-U %1" ).arg( m_master_browser.login() );
         // Password will be set below.
       }
       else
@@ -1644,7 +1642,7 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
 
     if ( Smb4KSettings::self()->masterBrowsersRequireAuth() )
     {
-      m_proc->setEnv( "PASSWD", m_auth_info.password(), true );
+      m_proc->setEnv( "PASSWD", m_master_browser.password(), true );
     }
     else
     {
@@ -1826,7 +1824,8 @@ void Smb4KLookupSharesJob::processShares()
         share.setHostName( m_host.hostName() );
         share.setWorkgroupName( m_host.workgroupName() );
         share.setTypeString( "Disk" );
-        share.setAuthInfo( &m_auth_info );
+        share.setLogin( m_host.login() );
+        share.setPassword( m_host.password() );
 
         if ( m_host.hasIP() )
         {
@@ -1859,7 +1858,8 @@ void Smb4KLookupSharesJob::processShares()
         share.setHostName( m_host.hostName() );
         share.setWorkgroupName( m_host.workgroupName() );
         share.setTypeString( "IPC" );
-        share.setAuthInfo( &m_auth_info );
+        share.setLogin( m_host.login() );
+        share.setPassword( m_host.password() );
 
         if ( m_host.hasIP() )
         {
@@ -1892,7 +1892,8 @@ void Smb4KLookupSharesJob::processShares()
         share.setHostName( m_host.hostName() );
         share.setWorkgroupName( m_host.workgroupName() );
         share.setTypeString( "Printer" );
-        share.setAuthInfo( &m_auth_info );
+        share.setLogin( m_host.login() );
+        share.setPassword( m_host.password() );
 
         if ( m_host.hasIP() )
         {
@@ -1940,9 +1941,7 @@ void Smb4KLookupSharesJob::slotStartLookup()
   }
   
   // Authentication information.
-  m_auth_info.setHost( &m_host );
-  Smb4KWalletManager::self()->readAuthInfo( &m_auth_info );
-  m_host.setAuthInfo( &m_auth_info );
+  Smb4KWalletManager::self()->readAuthInfo( &m_host );
   
   // Global Samba and custom options
   QMap<QString,QString> samba_options = globalSambaOptions();
@@ -2082,9 +2081,9 @@ void Smb4KLookupSharesJob::slotStartLookup()
   }
   
   // Authentication data
-  if ( !m_auth_info.login().isEmpty() )
+  if ( !m_host.login().isEmpty() )
   {
-    arguments << QString( "-U %1" ).arg( m_auth_info.login() );
+    arguments << QString( "-U %1" ).arg( m_host.login() );
   }
   else
   {
@@ -2097,7 +2096,7 @@ void Smb4KLookupSharesJob::slotStartLookup()
   m_proc = new Smb4KProcess( this );
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
   m_proc->setShellCommand( arguments.join( " " ) );
-  m_proc->setEnv( "PASSWD", m_auth_info.password(), true );
+  m_proc->setEnv( "PASSWD", m_host.password(), true );
 
   connect( m_proc, SIGNAL( readyReadStandardError() ), this, SLOT( slotReadStandardError() ) );
   connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), this, SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
