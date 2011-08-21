@@ -558,21 +558,32 @@ void Smb4KNetworkBrowserPart::slotItemExecuted( QTreeWidgetItem *item, int /*col
 {
   Smb4KNetworkBrowserItem *browserItem = static_cast<Smb4KNetworkBrowserItem *>( item );
 
-  // FIXME: Eat the click if it was done on the root decoration/if 
-  // the item was collapsed.
-  
   if ( browserItem )
   {
     switch ( browserItem->type() )
     {
       case Smb4KNetworkBrowserItem::Workgroup:
       {
-        Smb4KScanner::self()->lookupDomainMembers( browserItem->workgroupItem(), m_widget );
+        if ( browserItem->isExpanded() )
+        {
+          Smb4KScanner::self()->lookupDomainMembers( browserItem->workgroupItem(), m_widget );
+        }
+        else
+        {
+          // Do nothing
+        }
         break;
       }
       case Smb4KNetworkBrowserItem::Host:
       {
-        Smb4KScanner::self()->lookupShares( browserItem->hostItem(), m_widget );
+        if ( browserItem->isExpanded() )
+        {
+          Smb4KScanner::self()->lookupShares( browserItem->hostItem(), m_widget );
+        }
+        else
+        {
+          // Do nothing
+        }
         break;
       }
       case Smb4KNetworkBrowserItem::Share:
