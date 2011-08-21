@@ -213,9 +213,7 @@ void Smb4KPreviewer::slotJobFinished( KJob *job )
 
 void Smb4KPreviewer::slotAuthError( Smb4KPreviewJob *job )
 {
-  Smb4KAuthInfo authInfo( job->share() );
-
-  if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, job->parentWidget() ) )
+  if ( Smb4KWalletManager::self()->showPasswordDialog( job->share(), job->parentWidget() ) )
   {
     slotAcquirePreview( job->share(), job->location(), job->parentWidget() );
   }
@@ -246,9 +244,7 @@ void Smb4KPreviewer::slotDialogClosed( Smb4KPreviewDialog *dialog )
 void Smb4KPreviewer::slotAcquirePreview( Smb4KShare *share, const QUrl &url, QWidget *parent )
 {
   // Get the authentication information
-  Smb4KAuthInfo authInfo( share );
-  Smb4KWalletManager::self()->readAuthInfo( &authInfo );
-  share->setAuthInfo( &authInfo );
+  Smb4KWalletManager::self()->readAuthInfo( share );
   
   // Create a new job and add it to the subjobs
   Smb4KPreviewJob *job = new Smb4KPreviewJob( this );
