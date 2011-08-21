@@ -556,7 +556,6 @@ void Smb4KConfigDialog::slotButtonClicked( int button )
 void Smb4KConfigDialog::slotLoadAuthenticationInformation()
 {
   Smb4KAuthOptions *auth_options = m_authentication->widget()->findChild<Smb4KAuthOptions *>();
-  Smb4KWalletManager::self()->init( this );
   QList<Smb4KAuthInfo *> entries = Smb4KWalletManager::self()->walletEntries();
   auth_options->insertWalletEntries( entries );
   auth_options->displayWalletEntries();
@@ -569,7 +568,6 @@ void Smb4KConfigDialog::slotSaveAuthenticationInformation()
   
   if ( auth_options->walletEntriesDisplayed() )
   {
-    Smb4KWalletManager::self()->init( this );
     QList<Smb4KAuthInfo *> entries = auth_options->getWalletEntries();
     Smb4KWalletManager::self()->writeWalletEntries( entries );
   }
@@ -586,12 +584,11 @@ void Smb4KConfigDialog::slotSetDefaultLogin()
   
   if ( !auth_options->undoRemoval() )
   {
-    Smb4KWalletManager::self()->init( this );
-  
     Smb4KAuthInfo authInfo;
-    authInfo.useDefaultAuthInfo();
-    
-    Smb4KWalletManager::self()->readAuthInfo( &authInfo );
+    // We do not need to call useDefaultAuthInfo(), because 
+    // Smb4KWalletManager::readDefaultAuthInfo() will do this
+    // for us.
+    Smb4KWalletManager::self()->readDefaultAuthInfo( &authInfo );
     
     KPasswordDialog dlg( this, KPasswordDialog::ShowUsernameLine );
     dlg.setPrompt( i18n( "Enter the default login information." ) );
@@ -603,7 +600,7 @@ void Smb4KConfigDialog::slotSetDefaultLogin()
       authInfo.setLogin( dlg.username() );
       authInfo.setPassword( dlg.password() );
       
-      Smb4KWalletManager::self()->writeAuthInfo( &authInfo );
+      Smb4KWalletManager::self()->writeDefaultAuthInfo( &authInfo );
       
       if ( auth_options->walletEntriesDisplayed() )
       {
