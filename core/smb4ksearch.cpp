@@ -87,24 +87,24 @@ void Smb4KSearch::search( const QString &string, QWidget *parent )
     // smbtree will be used and the master browser requires authentication. 
     // Lookup the authentication information for the master browser.
     Smb4KWorkgroup *workgroup = findWorkgroup( Smb4KSettings::domainName() );
-    Smb4KHost *master_browser = NULL;
-    Smb4KAuthInfo authInfo;
+    Smb4KHost *host = NULL;
 
     if ( workgroup )
     {
-      master_browser = findHost( workgroup->masterBrowserName(), workgroup->workgroupName() );
-    }
-    else
-    {
-      // Do nothing
-    }
+      host = findHost( workgroup->masterBrowserName(), workgroup->workgroupName() );
 
-    if ( master_browser )
-    {
-      // Authentication information
-      authInfo = Smb4KAuthInfo( master_browser );
-      Smb4KWalletManager::self()->readAuthInfo( &authInfo );
-      master_browser->setAuthInfo( &authInfo );
+      if ( host )
+      {
+        // Copy host item
+        master_browser = *host;
+        
+        // Authentication information
+        Smb4KWalletManager::self()->readAuthInfo( &master_browser );
+      }
+      else
+      {
+        // Do nothing
+      }
     }
     else
     {
@@ -229,9 +229,7 @@ void Smb4KSearch::slotJobFinished( KJob *job )
 
 void Smb4KSearch::slotAuthError( Smb4KSearchJob *job )
 {
-  Smb4KAuthInfo authInfo( job->masterBrowser() );
-
-  if ( Smb4KWalletManager::self()->showPasswordDialog( &authInfo, job->parentWidget() ) )
+  if ( Smb4KWalletManager::self()->showPasswordDialog( job->masterBrowser(), job->parentWidget() ) )
   {
     search( job->searchString(), job->parentWidget() );
   }
