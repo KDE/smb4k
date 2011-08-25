@@ -1032,8 +1032,10 @@ void Smb4KUnmountJob::slotActionFinished( ActionReply reply )
   if ( m_processed == m_shares.size() )
   {
     // Give the operating system some time to process the unmounts
-    // before we invoke KMountPoint::currentMountPoints().
-    QTimer::singleShot( 100, this, SLOT( slotFinishJob() ) );
+    // before we invoke KMountPoint::currentMountPoints(). It seems
+    // that we need at least 500 ms, so that even slow systems have 
+    // the opportunity to unregister the mounts.
+    QTimer::singleShot( 500, this, SLOT( slotFinishJob() ) );
   }
 }
 
