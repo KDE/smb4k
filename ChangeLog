@@ -314,6 +314,7 @@ Smb4K SVN_HEAD (????-??-??):
   + Removed ability to add hosts to the browser. The user will be given a complete
     list of shares when searching for the host name, so that there is no need to
     add the host to the browser.
+  + Added search and abort tool buttons next to the search item input.
 - Revised configuration dialog:
   + Added "Laptop Support" page where the user can set options that are important
     when you use a laptop.
