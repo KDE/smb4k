@@ -181,10 +181,14 @@ void Smb4KNetworkSearchPart::setupActions()
   // Put the actions in the context menu.
   m_menu = new KActionMenu( this );
   m_menu_title = m_menu->menu()->addTitle( KIcon( "system-search" ), i18n( "Search Results" ) );
-  m_menu->addAction( abort_action );
-  m_menu->addSeparator();
+//   m_menu->addAction( abort_action );
+//   m_menu->addSeparator();
   m_menu->addAction( clear_action );
   m_menu->addAction( item_action );
+  
+  // Put some actions in the tool bar of the search widget
+  m_widget->toolBar()->addAction( search_action );
+  m_widget->toolBar()->addAction( abort_action );
 }
 
 
