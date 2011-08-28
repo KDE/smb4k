@@ -37,7 +37,7 @@
 // KDE includes
 #include <klistwidget.h>
 #include <kcombobox.h>
-#include <kpushbutton.h>
+#include <ktoolbar.h>
 
 
 /**
@@ -58,6 +58,7 @@ class Smb4KNetworkSearch : public QWidget
      *
      * @param parent      The parent widget
      */
+    
     Smb4KNetworkSearch( QWidget *parent = 0 );
 
     /**
@@ -78,7 +79,15 @@ class Smb4KNetworkSearch : public QWidget
      * @returns a pointer to the combo box.
      */
     KComboBox *comboBox() { return m_combo; }
-
+    
+    /**
+     * This function returns a pointer to the tool bar right to the
+     * search line that can be populated with actions.
+     * 
+     * @returns a pointer to the tool bar.
+     */
+    KToolBar *toolBar() { return m_toolbar; }
+    
   private:
     /**
      * The list box of this widget
@@ -89,6 +98,11 @@ class Smb4KNetworkSearch : public QWidget
      * The search combo box.
      */
     KComboBox *m_combo;
+    
+    /**
+     * The tool bar that can be populated with actions
+     */
+    KToolBar *m_toolbar;
 };
 
 #endif
