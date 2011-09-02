@@ -579,7 +579,7 @@ void Smb4KMounter::import()
     if ( (mounted_shares.at( i ).uid() == getuid() && mounted_shares.at( i ).gid() == getgid()) ||
          (!mounted_shares.at( i ).isInaccessible() &&
           (mounted_shares.at( i ).path().startsWith( Smb4KSettings::mountPrefix().path() ) ||
-           mounted_shares.at( i ).canonicalPath().startsWith( QDir::homePath() ))) ||
+           mounted_shares.at( i ).path().startsWith( QDir::homePath() ))) ||
          (!mounted_shares.at( i ).isInaccessible() &&
           (mounted_shares.at( i ).canonicalPath().startsWith( QDir( Smb4KSettings::mountPrefix().path() ).canonicalPath() ) ||
            mounted_shares.at( i ).canonicalPath().startsWith( QDir::home().canonicalPath() ))) )
@@ -974,22 +974,46 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool force, bool silent, QWi
       continue;
     }
   }
-  
+
   // Complain if the share is a foreign one and unmounting those
   // is prohibited.
-  if ( share->isForeign() && !Smb4KSettings::unmountForeignShares() )
+  if ( share->isForeign() )
   {
-    if ( !silent )
+    if ( !Smb4KSettings::unmountForeignShares() )
     {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->unmountingNotAllowed( share );
+      if ( !silent )
+      {
+        Smb4KNotification *notification = new Smb4KNotification();
+        notification->unmountingNotAllowed( share );
+      }
+      else
+      {
+        // Do nothing
+      }
+      return;
     }
     else
     {
-      // Do nothing
+      if ( !silent )
+      {
+        if ( KMessageBox::warningYesNo( parent,
+             i18n( "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</b>.</p>"
+                   "<p>Do you really want to unmount it?</p></qt>",
+                   share->unc(), share->path(), share->owner() ),
+             i18n( "Foreign Share" ) ) == KMessageBox::No )
+        {
+          return;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
     }
-
-    return;
   }
   else
   {
@@ -1050,6 +1074,51 @@ void Smb4KMounter::unmountShares( const QList<Smb4KShare *> &shares, bool force,
     
     if ( !found )
     {
+      // Complain if the share is a foreign one and unmounting those
+      // is prohibited.
+      if ( share->isForeign() )
+      {
+        if ( !Smb4KSettings::unmountForeignShares() )
+        {
+          if ( !silent )
+          {
+            Smb4KNotification *notification = new Smb4KNotification();
+            notification->unmountingNotAllowed( share );
+          }
+          else
+          {
+            // Do nothing
+          }
+          continue;
+        }
+        else
+        {
+          if ( !silent )
+          {
+            if ( KMessageBox::warningYesNo( parent,
+                i18n( "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</b>.</p>"
+                      "<p>Do you really want to unmount it?</p></qt>",
+                      share->unc(), share->path(), share->owner() ),
+                i18n( "Foreign Share" ) ) == KMessageBox::No )
+            {
+              continue;
+            }
+            else
+            {
+              // Do nothing
+            }
+          }
+          else
+          {
+            // Do nothing
+          }
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+
       shares_to_unmount << share;
       p->addUnmount();
     }
