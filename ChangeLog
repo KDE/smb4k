@@ -121,6 +121,8 @@ Smb4K SVN_HEAD (????-??-??):
     (un)mounting was successful.
   + Added 'sec' argument for mount.cifs under non-FreeBSD operating systems.
   + Removed all state functions.
+  + A warning message is shown when the user attempts the unmounting of a share
+    that is owned by another user.
 - Removed Smb4KSambaOptionsInfo class.
 - Removed Smb4KSambaOptionsHandler class.
 - Added Smb4KCustomOptions class as a replacement for Smb4KSambaOptionsInfo class.
