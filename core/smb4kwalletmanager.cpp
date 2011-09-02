@@ -75,7 +75,14 @@ Smb4KWalletManager::Smb4KWalletManager() : QObject()
 
 Smb4KWalletManager::~Smb4KWalletManager()
 {
-  // FIXME: Do we have to delete the wallet here?
+  if ( m_wallet )
+  {
+    delete m_wallet;
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
@@ -559,10 +566,6 @@ void Smb4KWalletManager::readDefaultAuthInfo( Smb4KAuthInfo *authInfo )
 
 void Smb4KWalletManager::writeAuthInfo( Smb4KBasicNetworkItem *networkItem )
 {
-  //
-  // FIXME: Use writeToConfigFile()
-  //
-  
   Q_ASSERT( networkItem );
 
   // Initialize the wallet manager. In case the wallet is already
@@ -703,8 +706,6 @@ void Smb4KWalletManager::writeAuthInfo( Smb4KBasicNetworkItem *networkItem )
     {
       // Do nothing
     }
-
-    // FIXME: Use writeToConfigFile() below!!!
 
     // Now insert the new authentication information. Before we 
     // do this, remove the old one, if one is present.
@@ -972,7 +973,7 @@ QList<Smb4KAuthInfo *> Smb4KWalletManager::walletEntries()
         }
         else
         {
-          authInfo->setUNC( entries.at( i ) );
+          authInfo->setURL( QUrl( entries.at( i ) ) );
           authInfo->setIP( map["IP Address"] );
           authInfo->setWorkgroupName( map["Workgroup"] );
           authInfo->setLogin( map["Login"] );
