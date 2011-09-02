@@ -955,6 +955,16 @@ void Smb4KShare::setShareIcon()
     {
       overlays << "";
     }
+
+    if ( isForeign() )
+    {
+      overlays << "";
+      overlays << "flag-red";
+    }
+    else
+    {
+      // Do nothing
+    }
     
     // Icon name
     QString icon_name;
