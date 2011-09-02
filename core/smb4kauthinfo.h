@@ -128,20 +128,6 @@ class KDE_EXPORT Smb4KAuthInfo
     const QString &workgroupName() const { return m_workgroup; }
 
     /**
-     * Sets the UNC of this item. It has to conform to the following scheme:
-     * [smb:]//[USER@]HOST[:PORT]/SHARE.
-     *
-     * The UNC may contain the protocol, i.e. "smb://". If a wrong protocol or a mal-
-     * formatted UNC is passed, this function will return immediately without doing
-     * anything.
-     *
-     * This function should only be used if you neither can use setHost() nor setShare().
-     *
-     * @param unc       The UNC of the item
-     */
-    void setUNC( const QString &unc );
-
-    /**
      * Returns the UNC in the form [smb:]//[USER:PASSWORD@]HOST/SHARE depending on
      * the format specified by @p options.
      *
@@ -240,6 +226,13 @@ class KDE_EXPORT Smb4KAuthInfo
      * Operator to check if two authentication informations are equal.
      */
     bool operator==( Smb4KAuthInfo info ) { return equals( &info ); }
+
+    /**
+     * Sets the URL of the share after some checks are passed.
+     *
+     * @param url             The URL of the network item
+     */
+    void setURL( const QUrl &url );
 
     /**
      * Returns the URL of the network item

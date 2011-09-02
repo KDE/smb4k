@@ -82,8 +82,7 @@ void Smb4KAuthInfo::setHost( Smb4KHost *host )
   m_type        = Host;
   m_workgroup   = host->workgroupName();
   m_homes_share = false;
-
-  setUNC( host->unc( QUrl::None ) );
+  m_url         = host->url();
 }
 
 
@@ -97,11 +96,11 @@ void Smb4KAuthInfo::setShare( Smb4KShare *share )
 
   if ( !share->isHomesShare() )
   {
-    setUNC( share->unc( QUrl::None ) );
+    m_url       = share->url();
   }
   else
   {
-    setUNC( share->homeUNC( QUrl::None ) );
+    m_url       = share->homeURL();
   }
 }
 
@@ -109,36 +108,6 @@ void Smb4KAuthInfo::setShare( Smb4KShare *share )
 void Smb4KAuthInfo::setWorkgroupName( const QString &workgroup )
 {
   m_workgroup = workgroup;
-}
-
-
-void Smb4KAuthInfo::setUNC( const QString &unc )
-{
-  // Set the UNC.
-  m_url.setUrl( unc, QUrl::TolerantMode );
-  
-  // Set the type.
-  if ( m_url.path().contains( "/" ) == 1 )
-  {
-    m_type = Share;
-  }
-  else
-  {
-    m_type = Host;
-  }
-  
-  // Set the scheme.
-  if ( m_url.scheme().isEmpty() )
-  {
-    m_url.setScheme( "smb" );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Determine whether this is a homes share.
-  m_homes_share = (QString::compare( m_url.path().remove( 0, 1 ), "homes", Qt::CaseSensitive ) == 0);
 }
 
 
@@ -196,6 +165,35 @@ QString Smb4KAuthInfo::hostUNC( QUrl::FormattingOptions options ) const
   }
   
   return unc;
+}
+
+
+void Smb4KAuthInfo::setURL( const QUrl &url )
+{
+  m_url = url;
+
+  // Set the type.
+  if ( m_url.path().contains( "/" ) == 1 )
+  {
+    m_type = Share;
+  }
+  else
+  {
+    m_type = Host;
+  }
+  
+  // Set the scheme.
+  if ( m_url.scheme().isEmpty() )
+  {
+    m_url.setScheme( "smb" );
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // Determine whether this is a homes share.
+  m_homes_share = (QString::compare( m_url.path().remove( 0, 1 ), "homes", Qt::CaseSensitive ) == 0);
 }
 
 
