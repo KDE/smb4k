@@ -299,8 +299,8 @@ namespace Smb4KGlobal
   /**
    * This function removes a mounted share @p share from the list of mounted
    * shares. The pointer that is passed to this function will be deleted.
-   * You won't be able to use it afterwards. This function returns TRUE if the share was removed
-   * and FALSE otherwise.
+   * You won't be able to use it afterwards. This function returns TRUE if 
+   * the share was removed and FALSE otherwise.
    *
    * Please prefer this function over per class solutions.
    *
@@ -309,6 +309,14 @@ namespace Smb4KGlobal
    * @returns TRUE if the share was removed and FALSE otherwise.
    */
   KDE_EXPORT bool removeMountedShare( Smb4KShare *share );
+
+  /**
+   * This function returns TRUE if only shares are present that are owned by 
+   * other users and FALSE otherwise.
+   *
+   * @returns TRUE if there are only shares that are owned by other users.
+   */
+  KDE_EXPORT bool onlyForeignMountedShares();
   
   /**
    * This enumeration determines with which application the mount point

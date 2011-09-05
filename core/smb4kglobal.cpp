@@ -586,6 +586,21 @@ bool Smb4KGlobal::addMountedShare( Smb4KShare *share )
   {
     p.mountedSharesList.append( share );
     added = true;
+
+    p.onlyForeignShares = true;
+
+    for ( int i = 0; i < p.mountedSharesList.size(); ++i )
+    {
+      if ( !p.mountedSharesList.at( i )->isForeign() )
+      {
+        p.onlyForeignShares = false;
+        break;
+      }
+      else
+      {
+        continue;
+      }
+    }
   }
   else
   {
@@ -613,6 +628,21 @@ bool Smb4KGlobal::removeMountedShare( Smb4KShare *share )
     // The share was found. Remove it.
     delete p.mountedSharesList.takeAt( index );
     removed = true;
+
+    p.onlyForeignShares = true;
+
+    for ( int i = 0; i < p.mountedSharesList.size(); ++i )
+    {
+      if ( !p.mountedSharesList.at( i )->isForeign() )
+      {
+        p.onlyForeignShares = false;
+        break;
+      }
+      else
+      {
+        continue;
+      }
+    }
   }
   else
   {
@@ -627,6 +657,21 @@ bool Smb4KGlobal::removeMountedShare( Smb4KShare *share )
       {
         delete p.mountedSharesList.takeAt( index );
         removed = true;
+
+        p.onlyForeignShares = true;
+
+        for ( int i = 0; i < p.mountedSharesList.size(); ++i )
+        {
+          if ( !p.mountedSharesList.at( i )->isForeign() )
+          {
+            p.onlyForeignShares = false;
+            break;
+          }
+          else
+          {
+            continue;
+          }
+        }
       }
       else
       {
@@ -644,6 +689,12 @@ bool Smb4KGlobal::removeMountedShare( Smb4KShare *share )
   mutex.unlock();
 
   return removed;
+}
+
+
+bool Smb4KGlobal::onlyForeignMountedShares()
+{
+  return p.onlyForeignShares;
 }
 
 

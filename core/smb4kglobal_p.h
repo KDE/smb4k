@@ -83,6 +83,12 @@ class Smb4KGlobalPrivate
      * The global options defined in smb.conf
      */
     const QMap<QString,QString> &globalSambaOptions( bool read );
+
+    /**
+     * Boolean that is TRUE when only foreign shares
+     * are in the list of mounted shares
+     */
+    bool onlyForeignShares;
     
   private:
     QMap<QString,QString> m_samba_options;

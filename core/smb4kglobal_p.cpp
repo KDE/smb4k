@@ -42,6 +42,7 @@
 
 Smb4KGlobalPrivate::Smb4KGlobalPrivate()
 {
+  onlyForeignShares = false;
 }
 
 
