@@ -268,8 +268,8 @@ Smb4K SVN_HEAD (????-??-??):
     functions.
   + Added addHost(), removeHost(), clearHostsList() and workgroupMembers()
     functions.
-  + Added addMountedShare(), removeMountedShare() and clearMountedSharesList()
-    functions.
+  + Added addMountedShare(), removeMountedShare(), clearMountedSharesList()
+    and onlyForeignMountedShares() functions.
   + Functions that manipulate the lists have now mutexes to serialize the
     access.
   + All functions that add or remove items to the global lists return a boolean.
@@ -295,6 +295,10 @@ Smb4K SVN_HEAD (????-??-??):
     Smb4KSharesViewItemData class.
   + Removed Smb4KSharesViewToolTip class. We are now using Smb4KToolTip.
   + Honor KDE's icon size settings.
+  + Shares that are owned by other users are now marked with a red flag.
+  + The "Unmount All" action gets disabled when only shares are shown that
+    are owned by other users and the user is not allowed to unmount them
+    (i.e. Smb4KSettings::unmountForeignShares() returns false).
 - Revised network browser:
   + Adjusted the code so that the new possibilities that the reworked
     print code offers can be used.
