@@ -197,10 +197,10 @@ KAboutData *Smb4KNetworkSearchPart::createAboutData()
   KAboutData *aboutData = new KAboutData( "smb4knetworksearchpart",
                           "smb4k",
                           ki18n( "Smb4KNetworkSearchPart" ),
-                          "2.0",
+                          "3.0",
                           ki18n( "The network search KPart of Smb4K" ),
                           KAboutData::License_GPL_V2,
-                          ki18n( "\u00A9 2007-2010, Alexander Reinholdt" ),
+                          ki18n( "\u00A9 2007-2011, Alexander Reinholdt" ),
                           KLocalizedString(),
                           "http://smb4k.berlios.de",
                           "smb4k-bugs@lists.berlios.de" );
