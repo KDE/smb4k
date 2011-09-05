@@ -544,10 +544,10 @@ KAboutData *Smb4KSharesViewPart::createAboutData()
   KAboutData *aboutData = new KAboutData( "smb4ksharesviewpart",
                           "smb4k",
                           ki18n( "Smb4KSharesViewPart" ),
-                          "2.1",
+                          "3.0",
                           ki18n( "The shares view KPart of Smb4K" ),
                           KAboutData::License_GPL_V2,
-                          ki18n( "\u00A9 2007-2010, Alexander Reinholdt" ),
+                          ki18n( "\u00A9 2007-2011, Alexander Reinholdt" ),
                           KLocalizedString(),
                           "http://smb4k.berlios.de",
                           "smb4k-bugs@lists.berlios.de" );
@@ -1073,14 +1073,16 @@ void Smb4KSharesViewPart::slotShareMounted( Smb4KShare *share )
     {
       (void) new Smb4KSharesIconViewItem( m_icon_view, share, Smb4KSettings::showMountPoint() );
       m_icon_view->sortItems( Qt::AscendingOrder );
-      actionCollection()->action( "unmount_all_action" )->setEnabled( (m_icon_view->count() != 0) );
+      actionCollection()->action( "unmount_all_action" )->setEnabled(
+        ((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && m_icon_view->count() != 0) );
       break;
     }
     case ListMode:
     {
       (void) new Smb4KSharesListViewItem( m_list_view, share, Smb4KSettings::showMountPoint() );
       m_list_view->sortItems( Smb4KSharesListView::Item, Qt::AscendingOrder );
-      actionCollection()->action( "unmount_all_action" )->setEnabled( (m_list_view->topLevelItemCount() != 0) );
+      actionCollection()->action( "unmount_all_action" )->setEnabled(
+        ((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && m_list_view->topLevelItemCount() != 0) );
       break;
     }
     default:
@@ -1126,7 +1128,8 @@ void Smb4KSharesViewPart::slotShareUnmounted( Smb4KShare *share )
         }
       }
       
-      actionCollection()->action( "unmount_all_action" )->setEnabled( (m_icon_view->count() != 0) );
+      actionCollection()->action( "unmount_all_action" )->setEnabled(
+        ((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && m_icon_view->count() != 0) );
       
       break;
     }
@@ -1159,7 +1162,8 @@ void Smb4KSharesViewPart::slotShareUnmounted( Smb4KShare *share )
         }
       }
       
-      actionCollection()->action( "unmount_all_action" )->setEnabled( (m_list_view->topLevelItemCount() != 0) );
+      actionCollection()->action( "unmount_all_action" )->setEnabled(
+        ((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && m_list_view->topLevelItemCount() != 0) );
       
       break;
     }
