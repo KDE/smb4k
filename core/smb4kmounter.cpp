@@ -1602,6 +1602,11 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
       Smb4KNotification *notification = new Smb4KNotification( this );
       notification->shareUnmounted( known_share );
     }
+
+    // Emit the unmounted() signal. We do it here, because if we do it
+    // after the mount prefix was cleaned up, Smb4KShare::canonicalPath()
+    // would return an empty string.
+    emit unmounted( known_share );
     
     // Clean up the mount prefix.
     if ( known_share->canonicalPath().startsWith( Smb4KSettings::mountPrefix().path() ) )
@@ -1624,9 +1629,7 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
       // mount prefix.
     }
 
-    // Emit the unmounted() signal and remove the share from the
-    // list of mounted shares.
-    emit unmounted( known_share );
+    // Remove the share from the list of mounted shares.
     removeMountedShare( known_share );
   }
   else
