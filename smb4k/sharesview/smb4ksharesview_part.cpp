@@ -481,7 +481,7 @@ void Smb4KSharesViewPart::loadSettings()
     }
   }
 
-#ifdef __linux__
+#ifdef Q_OS_LINUX
   if ( Smb4KSettings::sharesIconView() )
   {
     Smb4KSharesIconViewItem *item = static_cast<Smb4KSharesIconViewItem *>( m_icon_view->currentItem() );
