@@ -19,6 +19,7 @@ add_subdirectory( search )
 set( smb4k_SRCS
   main.cpp
   smb4kbookmarkmenu.cpp
+  smb4ksharesmenu.cpp
   smb4kmainwindow.cpp
   smb4ksystemtray.cpp )
 
