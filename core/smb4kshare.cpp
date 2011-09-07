@@ -362,7 +362,7 @@ bool Smb4KShare::isADMIN() const
 
 void Smb4KShare::setPath( const QString &mountpoint )
 {
-  m_path = mountpoint.toUtf8();
+  m_path = mountpoint;
 }
 
 
