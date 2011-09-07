@@ -580,6 +580,13 @@ void Smb4KMainWindow::slotConfigDialog()
     connect( dlg,  SIGNAL( settingsChanged( const QString & ) ),
              this, SLOT( slotSettingsChanged( const QString & ) ) );
 
+    // Same procedure for the system tray widget:
+    disconnect( dlg, SIGNAL( settingsChanged( const QString & ) ),
+                m_system_tray_widget, SLOT( slotSettingsChanged( const QString & ) ) );
+
+    connect( dlg, SIGNAL( settingsChanged( const QString & ) ),
+             m_system_tray_widget, SLOT( slotSettingsChanged( const QString & ) ) );
+
     return;
   }
   else
@@ -602,6 +609,9 @@ void Smb4KMainWindow::slotConfigDialog()
       connect( dlg,  SIGNAL( settingsChanged( const QString & ) ),
                this, SLOT( slotSettingsChanged( const QString & ) ) );
 
+      connect( dlg, SIGNAL( settingsChanged( const QString & ) ),
+               m_system_tray_widget, SLOT( slotSettingsChanged( const QString & ) ) );
+
       dlg->show();
     }
     else
@@ -612,7 +622,6 @@ void Smb4KMainWindow::slotConfigDialog()
   else
   {
     KMessageBox::error( 0, "<qt>"+loader.errorString()+"</qt>" );
-
     return;
   }
 }
