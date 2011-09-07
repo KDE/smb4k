@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 #ifndef SMB4KSYSTEMTRAY_H
@@ -31,20 +31,18 @@
 #endif
 
 // Qt includes
-#include <QAction>
-#include <QActionGroup>
+#include <QWidget>
+#include <QString>
 
 // KDE includes
 #include <kstatusnotifieritem.h>
-#include <kactionmenu.h>
 
-// forward declarations
-class Smb4KShare;
-class Smb4KWorkgroup;
 
 class Smb4KSystemTray : public KStatusNotifierItem
 {
   Q_OBJECT
+
+  friend class Smb4KMainWindow;
 
   public:
     /**
@@ -97,59 +95,12 @@ class Smb4KSystemTray : public KStatusNotifierItem
     void slotSettingsChanged( const QString &dialogName );
 
     /**
-     * This slot initializes the umounting of all shares. It is connected to the
-     * "Unmount All" action of the "Mounted Shares" menu.
-     *
-     * @param checked         TRUE if the action can be and is checked and FALSE
-     *                        otherwise.
+     * Set the status of the system tray icon. This slot checks the global
+     * list of mounted shares and the global list of workgroups. If neither of
+     * them contains any item, the icon is set to passive state until one of 
+     * the lists is populated.
      */
-    void slotUnmountAllTriggered( bool checked );
-
-    /**
-     * This slot is called whan a share related action has been triggered. It
-     * executes all actions that can be performed: Unmounting, Synchronization,
-     * etc.
-     *
-     * @param action        The action that has been triggered.
-     */
-    void slotShareActionTriggered( QAction *action );
-    
-    /**
-     * React on the mounting/unmounting of shares.
-     * 
-     * @param share         The share that was mounted or unmounted
-     */
-    void slotMountEvent();
-    
-    /**
-     * React on the finding of workgroups/domains.
-     * 
-     * @param workgroups    The list of workgroups that was found
-     */
-    void slotNetworkEvent();
-
-  private:
-    /**
-     * This function sets up the "Mounted Shares" menu and also enables/disables 
-     * the bookmarks in the "Bookmarks" menu.
-     */
-    void setupSharesMenu();
-    
-    /**
-     * The action menu for the mounted shares.
-     */
-    KActionMenu *m_shares_menu;
-
-    /**
-     * This QActionGroup manages all menus representing a share.
-     */
-    QActionGroup *m_share_menus;
-
-    /**
-     * This QActionGoup manages all actions associated with
-     * shares.
-     */
-    QActionGroup *m_shares_actions;
+    void slotSetStatus();
 };
 
 #endif
