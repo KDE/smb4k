@@ -299,6 +299,9 @@ Smb4K SVN_HEAD (????-??-??):
   + The "Unmount All" action gets disabled when only shares are shown that
     are owned by other users and the user is not allowed to unmount them
     (i.e. Smb4KSettings::unmountForeignShares() returns false).
+  + Removed the "Force Unmounting" action. Instead, you can enable the
+    forced unmounting of inaccessible shares on the "Shares" page in the
+    configuration dialog.
 - Revised network browser:
   + Adjusted the code so that the new possibilities that the reworked
     print code offers can be used.
@@ -341,6 +344,8 @@ Smb4K SVN_HEAD (????-??-??):
   + Improved buttons of the user and group input widgets of the Samba page.
   + Renamed "Client Programs" tab to "Utility Programs".
   + Added setting to automatically expand network items in the network browser.
+  + Added setting to force the unmounting of inaccessible shares to "Shares"
+    configuration page. It is disabled by default.
 - Added new bookmark menu.
 - Revised main window:
   + The icon in the status bar, that indicates the status of the authentication
