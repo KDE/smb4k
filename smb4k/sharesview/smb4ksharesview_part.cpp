@@ -2,8 +2,8 @@
     smb4ksharesview_part  -  This Part includes the shares view of Smb4K.
                              -------------------
     begin                : Sa Jun 30 2007
-    copyright            : (C) 2007-2009 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2007-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -324,13 +324,6 @@ void Smb4KSharesViewPart::setupActions()
   unmount_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_U ) );
   connect( unmount_action, SIGNAL( triggered( bool ) ), this, SLOT( slotUnmountShare( bool ) ) );
 
-#ifdef __linux__
-  KAction *force_action       = new KAction( KIcon( "media-eject" ), i18n( "&Force Unmounting" ),
-                                actionCollection() );
-  force_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_F ) );
-  connect( force_action, SIGNAL( triggered( bool ) ), this, SLOT( slotForceUnmountShare( bool ) ) );
-#endif
-
   KAction *unmount_all_action = new KAction( KIcon( "system-run" ), i18n( "U&nmount All" ),
                                 actionCollection() );
   unmount_all_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_N ) );
@@ -368,9 +361,6 @@ void Smb4KSharesViewPart::setupActions()
   connect( bookmark_action, SIGNAL( triggered( bool ) ), this, SLOT( slotAddBookmark( bool ) ) );
 
   actionCollection()->addAction( "unmount_action", unmount_action );
-#ifdef __linux__
-  actionCollection()->addAction( "force_unmount_action", force_action );
-#endif
   actionCollection()->addAction( "unmount_all_action", unmount_all_action );
   actionCollection()->addAction( "bookmark_action", bookmark_action );
   actionCollection()->addAction( "synchronize_action", synchronize_action );
@@ -379,9 +369,6 @@ void Smb4KSharesViewPart::setupActions()
 
   // Disable all actions for now:
   unmount_action->setEnabled( false );
-#ifdef __linux__
-  force_action->setEnabled( false );
-#endif
   unmount_all_action->setEnabled( false );
   bookmark_action->setEnabled( false );
   synchronize_action->setEnabled( false );
@@ -392,9 +379,6 @@ void Smb4KSharesViewPart::setupActions()
   m_menu = new KActionMenu( this );
   m_menu_title = m_menu->menu()->addTitle( KIcon( "folder-remote" ), i18n( "Shares" ) );
   m_menu->addAction( unmount_action );
-#ifdef __linux__
-  m_menu->addAction( force_action );
-#endif
   m_menu->addAction( unmount_all_action );
   m_menu->addSeparator();
   m_menu->addAction( bookmark_action );
@@ -480,24 +464,6 @@ void Smb4KSharesViewPart::loadSettings()
       ++it;
     }
   }
-
-#ifdef Q_OS_LINUX
-  if ( Smb4KSettings::sharesIconView() )
-  {
-    Smb4KSharesIconViewItem *item = static_cast<Smb4KSharesIconViewItem *>( m_icon_view->currentItem() );
-
-    actionCollection()->action( "force_unmount_action" )->setEnabled( 
-    (item && (!item->shareItem()->isForeign() || Smb4KSettings::unmountForeignShares())) );
-  }
-  else
-  {
-    Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>( m_list_view->currentItem() );
-
-    actionCollection()->action( "force_unmount_action" )->setEnabled( 
-    (item && (!item->shareItem()->isForeign() || Smb4KSettings::unmountForeignShares())) );
-  }
-#endif
-
 
   // The rest of the settings will be applied on the fly.
 }
@@ -636,17 +602,6 @@ void Smb4KSharesViewPart::customEvent( QEvent *e )
         break;
       }
     }
-
-//       KListView *view = static_cast<KListView *>( m_widget );
-//
-//       if ( view->childCount() != 0 )
-//       {
-//         view->setSelected( !view->currentItem() ?
-//                            view->firstChild() :
-//                            view->currentItem(), true );
-//       }
-//
-//       view->setFocus();
   }
   else if ( e->type() == Smb4KEvent::AddBookmark )
   {
@@ -737,10 +692,6 @@ void Smb4KSharesViewPart::slotItemSelectionChanged()
 
         actionCollection()->action( "unmount_action" )->setEnabled( (!item->shareItem()->isForeign() ||
                                                                     Smb4KSettings::unmountForeignShares()) );
-#ifdef __linux__
-        actionCollection()->action( "force_unmount_action" )->setEnabled( (!item->shareItem()->isForeign() ||
-                                                                          Smb4KSettings::unmountForeignShares()) );
-#endif
         actionCollection()->action( "bookmark_action" )->setEnabled( true );
 
         if ( !item->shareItem()->isInaccessible() )
@@ -759,9 +710,6 @@ void Smb4KSharesViewPart::slotItemSelectionChanged()
       else
       {
         actionCollection()->action( "unmount_action" )->setEnabled( false );
-#ifdef __linux__
-        actionCollection()->action( "force_unmount_action" )->setEnabled( false );
-#endif
         actionCollection()->action( "bookmark_action" )->setEnabled( false );
         actionCollection()->action( "synchronize_action" )->setEnabled( false );
         actionCollection()->action( "konsole_action" )->setEnabled( false );
@@ -782,10 +730,6 @@ void Smb4KSharesViewPart::slotItemSelectionChanged()
 
         actionCollection()->action( "unmount_action" )->setEnabled( (!item->shareItem()->isForeign() ||
                                                                     Smb4KSettings::unmountForeignShares()) );
-#ifdef __linux__
-        actionCollection()->action( "force_unmount_action" )->setEnabled( (!item->shareItem()->isForeign() ||
-                                                                          Smb4KSettings::unmountForeignShares()) );
-#endif
         actionCollection()->action( "bookmark_action" )->setEnabled( true );
 
         if ( !item->shareItem()->isInaccessible() )
@@ -804,9 +748,6 @@ void Smb4KSharesViewPart::slotItemSelectionChanged()
       else
       {
         actionCollection()->action( "unmount_action" )->setEnabled( false );
-#ifdef __linux__
-        actionCollection()->action( "force_unmount_action" )->setEnabled( false );
-#endif
         actionCollection()->action( "bookmark_action" )->setEnabled( false );
         actionCollection()->action( "synchronize_action" )->setEnabled( false );
         actionCollection()->action( "konsole_action" )->setEnabled( false );
@@ -830,9 +771,6 @@ void Smb4KSharesViewPart::slotItemPressed( QTreeWidgetItem *item, int /*column*/
   if ( !shareItem && m_list_view->selectedItems().isEmpty() )
   {
     actionCollection()->action( "unmount_action" )->setEnabled( false );
-#ifndef __linux__
-    actionCollection()->action( "force_unmount_action" )->setEnabled( false );
-#endif
     actionCollection()->action( "bookmark_action" )->setEnabled( false );
     actionCollection()->action( "synchronize_action" )->setEnabled( false );
     actionCollection()->action( "konsole_action" )->setEnabled( false );
@@ -865,9 +803,6 @@ void Smb4KSharesViewPart::slotItemPressed( QListWidgetItem *item )
   if ( !shareItem && m_icon_view->selectedItems().isEmpty() )
   {
     actionCollection()->action( "unmount_action" )->setEnabled( false );
-#ifndef __linux__
-    actionCollection()->action( "force_unmount_action" )->setEnabled( false );
-#endif
     actionCollection()->action( "bookmark_action" )->setEnabled( false );
     actionCollection()->action( "synchronize_action" )->setEnabled( false );
     actionCollection()->action( "konsole_action" )->setEnabled( false );
@@ -1245,7 +1180,7 @@ void Smb4KSharesViewPart::slotUnmountShare( bool /*checked*/ )
 
         if ( item )
         {
-          Smb4KMounter::self()->unmountShare( item->shareItem(), false );
+          Smb4KMounter::self()->unmountShare( item->shareItem(), false, m_icon_view );
         }
         else
         {
@@ -1265,59 +1200,7 @@ void Smb4KSharesViewPart::slotUnmountShare( bool /*checked*/ )
 
         if ( item )
         {
-          Smb4KMounter::self()->unmountShare( item->shareItem(), false );
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-}
-
-
-void Smb4KSharesViewPart::slotForceUnmountShare( bool /*checked*/ )
-{
-  switch ( m_mode )
-  {
-    case IconMode:
-    {
-      QList<QListWidgetItem *> selected_items = m_icon_view->selectedItems();
-
-      for ( int i = 0; i < selected_items.size(); ++i )
-      {
-        Smb4KSharesIconViewItem *item = static_cast<Smb4KSharesIconViewItem *>( selected_items.at( i ) );
-
-        if ( item )
-        {
-          Smb4KMounter::self()->unmountShare( item->shareItem(), true );
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-
-      break;
-    }
-    case ListMode:
-    {
-      QList<QTreeWidgetItem *> selected_items = m_list_view->selectedItems();
-
-      for ( int i = 0; i < selected_items.size(); ++i )
-      {
-        Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>( selected_items.at( i ) );
-
-        if ( item )
-        {
-          Smb4KMounter::self()->unmountShare( item->shareItem(), true );
+          Smb4KMounter::self()->unmountShare( item->shareItem(), false, m_list_view );
         }
         else
         {
@@ -1337,7 +1220,23 @@ void Smb4KSharesViewPart::slotForceUnmountShare( bool /*checked*/ )
 
 void Smb4KSharesViewPart::slotUnmountAllShares( bool /*checked*/ )
 {
-  Smb4KMounter::self()->unmountAllShares();
+  switch ( m_mode )
+  {
+    case IconMode:
+    {
+      Smb4KMounter::self()->unmountAllShares( m_icon_view );
+      break;
+    }
+    case ListMode:
+    {
+      Smb4KMounter::self()->unmountAllShares( m_list_view );
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
 }
 
 

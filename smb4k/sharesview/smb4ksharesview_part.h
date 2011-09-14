@@ -2,8 +2,8 @@
     smb4ksharesview_part  -This Part includes the shares view of Smb4K.
                              -------------------
     begin                : Sa Jun 30 2007
-    copyright            : (C) 2007-2009 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2007-2011 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -206,18 +206,6 @@ class Smb4KSharesViewPart : public KParts::Part
      * @param checked             TRUE if the action is checked and FALSE otherwise.
      */
     void slotUnmountShare( bool checked );
-
-    /**
-     * This slot is connected to the 'Force Unmounting' action and is, thus,
-     * only useful under Linux, because only there the possibility for a forced
-     * (i.e. lazy) unmount exists.
-     *
-     * When activating this slot, the selected share will be unmounted, even if
-     * it is not accessible or the server already went offline.
-     *
-     * @param checked             TRUE if the action is checked and FALSE otherwise.
-     */
-    void slotForceUnmountShare( bool checked );
 
     /**
      * This slot is connected to the 'Unmount All' action. All shares - either of
