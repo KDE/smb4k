@@ -218,6 +218,11 @@
       <whatsthis>Allow the unmounting of shares that were mounted by other users. In most cases you need super user privileges for this. Please think before you enable this option.</whatsthis>
       <default>false</default>
     </entry>
+    <entry name="ForceUnmountInaccessible" type="Bool">
+      <label>Force the unmounting of inaccessible shares</label>
+      <whatsthis>Force the unmounting of inaccessible shares (Linux only). In case a share is inaccessible, a lazy unmount is performed. Before the actual unmount is performed, a warning dialog is shown asking to approve the unmount.</whatsthis>
+      <default>false</default>
+    </entry>
     <entry name="CheckInterval" type="Int">
       <label>Interval between checks:</label>
       <whatsthis>This is the time in milliseconds that elapses until Smb4K checks again for new mounts and unmounts. The lower limit is 500 ms, the upper one 300000 ms. Please note that the smaller the interval gets the higher is your system load.</whatsthis>
