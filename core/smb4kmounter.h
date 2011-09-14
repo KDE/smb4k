@@ -136,7 +136,6 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * @param parent      The parent widget
      */
     void unmountShare( Smb4KShare *share,
-                       bool force = false,
                        bool silent = false,
                        QWidget *parent = 0 );
     
@@ -156,7 +155,6 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * @param parent      The parent widget
      */
     void unmountShares( const QList<Smb4KShare *> &shares,
-                        bool force = false,
                         bool silent = false,
                         QWidget *parent = 0 );
 
