@@ -219,14 +219,6 @@ void Smb4KSharesMenu::slotShareMounted( Smb4KShare *share )
   unmount->setEnabled( !share->isForeign() || Smb4KSettings::unmountForeignShares() );
   share_menu->addAction( unmount );
   m_action_collection->addAction( unmount->objectName(), unmount );
-
-#ifdef Q_OS_LINUX
-  KAction *force_unmount = new KAction( KIcon( "media-eject" ), i18n( "Force Unmounting" ), m_actions );
-  force_unmount->setObjectName( QString( "[force]_%1" ).arg( share->canonicalPath() ) );
-  force_unmount->setEnabled( !share->isForeign() || Smb4KSettings::unmountForeignShares() );
-  share_menu->addAction( force_unmount );
-  m_action_collection->addAction( force_unmount->objectName(), force_unmount );
-#endif
   
   share_menu->addSeparator();
 
@@ -345,14 +337,8 @@ void Smb4KSharesMenu::slotShareAction( QAction *action )
   {
     if ( action->objectName().startsWith( "[unmount]" ) )
     {
-      Smb4KMounter::self()->unmountShare( share, false, false, m_parent_widget );
+      Smb4KMounter::self()->unmountShare( share, false, m_parent_widget );
     }
-#ifdef Q_OS_LINUX
-    else if ( action->objectName().startsWith( "[force]" ) )
-    {
-      Smb4KMounter::self()->unmountShare( share, true, false, m_parent_widget );
-    }
-#endif
     else if ( action->objectName().startsWith( "[bookmark]" ) )
     {
       Smb4KBookmarkHandler::self()->addBookmark( share, m_parent_widget );
