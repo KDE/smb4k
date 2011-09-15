@@ -447,21 +447,21 @@ void Smb4KNetworkSearchPart::slotContextMenuRequested( const QPoint &pos )
       {
         m_menu_title = m_menu->menu()->addTitle( item->icon(),
                                                  item->hostItem()->hostName(),
-                                                 actionCollection()->action( "abort_search_action" ) );
+                                                 actionCollection()->action( "clear_search_action" ) );
         break;
       }
       case Smb4KNetworkSearchItem::Share:
       {
         m_menu_title = m_menu->menu()->addTitle( item->icon(),
                                                  item->shareItem()->unc(),
-                                                 actionCollection()->action( "abort_search_action" ) );
+                                                 actionCollection()->action( "clear_search_action" ) );
         break;
       }
       default:
       {
         m_menu_title = m_menu->menu()->addTitle( KIcon( "system-search" ),
                                                  i18n( "Search Results" ),
-                                                 actionCollection()->action( "abort_search_action" ) );
+                                                 actionCollection()->action( "clear_search_action" ) );
 
         break;
       }
@@ -471,7 +471,7 @@ void Smb4KNetworkSearchPart::slotContextMenuRequested( const QPoint &pos )
   {
     m_menu_title = m_menu->menu()->addTitle( KIcon( "system-search" ),
                                              i18n( "Search Results" ),
-                                             actionCollection()->action( "abort_search_action" ) );
+                                             actionCollection()->action( "clear_search_action" ) );
   }
 
   m_menu->menu()->popup( m_widget->listWidget()->viewport()->mapToGlobal( pos ) );
