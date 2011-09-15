@@ -1021,9 +1021,10 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool silent, QWidget *parent
   }
 
   // Ask the user if he/she really wants to forcibly unmount an 
-  // inaccessible share
+  // inaccessible share (Linux only)
   bool force = false;
-  
+
+#ifdef Q_OS_LINUX
   if ( share->isInaccessible() && Smb4KSettings::forceUnmountInaccessible() )
   {
     if ( KMessageBox::warningYesNo( parent,
@@ -1042,6 +1043,7 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool silent, QWidget *parent
   {
     // Do nothing
   }
+#endif
   
   // Create a new job and add it to the subjobs
   Smb4KUnmountJob *job = new Smb4KUnmountJob( this );
