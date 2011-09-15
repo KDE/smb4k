@@ -87,6 +87,7 @@ Smb4KMainWindow::Smb4KMainWindow()
   setupActions();
   setupGUI( QSize( 800, 600 ), Default, "smb4k_shell.rc" );
   setupView();
+  setupMenuBar();
   setupStatusBar();
   setupSystemTrayWidget();
   
@@ -154,7 +155,7 @@ void Smb4KMainWindow::setupActions()
   // Bookmarks menu and action
   Smb4KBookmarkMenu *bookmarks = new Smb4KBookmarkMenu( Smb4KBookmarkMenu::MainWindow, this, this );
   bookmarks->addBookmarkAction()->setEnabled( false );
-  actionCollection()->addAction( "bookmarks", bookmarks );
+  actionCollection()->addAction( "bookmarks_menu", bookmarks );
   actionCollection()->addAction( "add_bookmark_action", bookmarks->addBookmarkAction() );
   connect( bookmarks->addBookmarkAction(), SIGNAL( triggered( bool ) ), SLOT( slotAddBookmark() ) );
 }
@@ -422,6 +423,30 @@ void Smb4KMainWindow::setupView()
 }
 
 
+void Smb4KMainWindow::setupMenuBar()
+{
+  // Get the "Bookmarks" menu
+  QList<QAction *> actions = menuBar()->actions();
+  QListIterator<QAction *> it( actions );
+
+  while ( it.hasNext() )
+  {
+    QAction *action = it.next();
+
+    if ( QString::compare( "bookmarks", action->objectName() ) == 0 )
+    {
+      Smb4KBookmarkMenu *menu = static_cast<Smb4KBookmarkMenu *>( actionCollection()->action( "bookmarks_menu" ) );
+      action->setMenu( menu->menu() );
+      break;
+    }
+    else
+    {
+      continue;
+    }
+  }
+}
+
+
 void Smb4KMainWindow::setupSystemTrayWidget()
 {
   if ( !m_system_tray_widget )
@@ -638,34 +663,10 @@ void Smb4KMainWindow::slotSettingsChanged( const QString & )
 
 void Smb4KMainWindow::slotAddBookmark()
 {
-  if ( m_browser_part )
+  if ( m_active_part )
   {
-    if ( m_browser_part->widget()->hasFocus() )
-    {
-      Smb4KEvent *customBrowserEvent = new Smb4KEvent( Smb4KEvent::AddBookmark );
-      KApplication::postEvent( m_browser_part, customBrowserEvent );
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( m_shares_part )
-  {
-    if ( m_shares_part->widget()->hasFocus() )
-    {
-      Smb4KEvent *customSharesEvent = new Smb4KEvent( Smb4KEvent::AddBookmark );
-      KApplication::postEvent( m_shares_part, customSharesEvent );
-    }
-    else
-    {
-      // Do nothing
-    }
+    Smb4KEvent *customBrowserEvent = new Smb4KEvent( Smb4KEvent::AddBookmark );
+    KApplication::postEvent( m_active_part, customBrowserEvent );
   }
   else
   {
@@ -1176,7 +1177,15 @@ void Smb4KMainWindow::slotActivePartChanged( KParts::Part *part )
   if ( m_active_part )
   {
     QAction *action = m_active_part->actionCollection()->action( "bookmark_action" );
-    disconnect( action, SIGNAL( changed() ), this, SLOT( slotEnableBookmarkAction() ) );
+
+    if ( action )
+    {
+      disconnect( action, SIGNAL( changed() ), this, SLOT( slotEnableBookmarkAction() ) );
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {

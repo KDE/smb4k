@@ -292,7 +292,12 @@ class Smb4KMainWindow : public KParts::MainWindow
      * Set up the main window's view
      */
     void setupView();
-
+    
+    /**
+     * Set up menu bar
+     */
+    void setupMenuBar();
+    
     /**
      * Set up the system tray widget
      */
