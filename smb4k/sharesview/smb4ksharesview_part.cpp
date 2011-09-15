@@ -118,6 +118,7 @@ Smb4KSharesViewPart::Smb4KSharesViewPart( QWidget *parentWidget, QObject *parent
 
   // Set the container widget and its layout.
   m_container = new QWidget( parentWidget );
+  m_container->setFocusPolicy( Qt::WheelFocus );
 
   m_layout = new QGridLayout( m_container );
   m_layout->setMargin( 0 );

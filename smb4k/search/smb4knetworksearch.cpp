@@ -39,6 +39,8 @@
 Smb4KNetworkSearch::Smb4KNetworkSearch( QWidget *parent )
 : QWidget( parent )
 {
+  setFocusPolicy( Qt::WheelFocus );
+  
   QGridLayout *layout = new QGridLayout( this );
   layout->setSpacing( 5 );
 

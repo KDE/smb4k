@@ -39,6 +39,7 @@
 #include <kxmlguiwindow.h>
 #include <kparts/mainwindow.h>
 #include <kparts/part.h>
+#include <kparts/partmanager.h>
 
 // forward declarations
 class Smb4KSystemTray;
@@ -262,6 +263,20 @@ class Smb4KMainWindow : public KParts::MainWindow
      */
     void slotEndVisualFeedback();
 
+    /**
+     * This slot is connected to the PartManager::activePartChanged() signal. It
+     * modifies the states of actions that are defined in the main window but 
+     * manage things in the parts.
+     *
+     * @param part          The now active KPart
+     */
+    void slotActivePartChanged( KParts::Part *part );
+
+    /**
+     * Enable/disable the "Add Bookmark" action
+     */
+    void slotEnableBookmarkAction();
+
   private:
     /**
      * Set up the main window actions
@@ -282,11 +297,6 @@ class Smb4KMainWindow : public KParts::MainWindow
      * Set up the system tray widget
      */
     void setupSystemTrayWidget();
-
-    /**
-     * Set up the bookmark menu
-     */
-    void setupBookmarksMenu();
 
     /**
      * Loads the settings
@@ -345,6 +355,16 @@ class Smb4KMainWindow : public KParts::MainWindow
      * The shares view
      */
     KParts::Part *m_shares_part;
+
+    /**
+     * The part manager
+     */
+    KParts::PartManager *m_manager;
+
+    /**
+     * The active part
+     */
+    KParts::Part *m_active_part;
 
     /**
      * Dock widgets action group;

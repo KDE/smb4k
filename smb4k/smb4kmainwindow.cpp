@@ -69,11 +69,18 @@
 #include <core/smb4ksearch.h>
 
 using namespace Smb4KGlobal;
+using namespace KParts;
 
 
 Smb4KMainWindow::Smb4KMainWindow()
 : KParts::MainWindow(), m_system_tray_widget( NULL )
 {
+  // Part manager
+  m_manager = new KParts::PartManager( this );
+  m_manager->setAllowNestedParts( true );
+  connect( m_manager, SIGNAL( activePartChanged( KParts::Part * ) ), SLOT( slotActivePartChanged( KParts::Part * ) ) );
+
+  // Set up main window
   setStandardToolBarMenuEnabled( true );
   createStandardStatusBarAction();
   setDockNestingEnabled( true );
@@ -82,9 +89,8 @@ Smb4KMainWindow::Smb4KMainWindow()
   setupView();
   setupStatusBar();
   setupSystemTrayWidget();
-  setupBookmarksMenu();
   
-  // Apply the main window settings.
+  // Apply the main window settings
   setAutoSaveSettings( KConfigGroup( Smb4KSettings::self()->config(), "MainWindow" ), true );
 }
 
@@ -104,14 +110,14 @@ void Smb4KMainWindow::setupActions()
   KAction *configure_action = KStandardAction::preferences( this, SLOT( slotConfigDialog() ), actionCollection() );
   actionCollection()->addAction( "configure_action", configure_action );
 
-  // Dock widgets menu
+  // Dock widgets action menu
   KActionMenu *dock_widgets_menu = new KActionMenu( KIcon( "tab-duplicate" ), i18n( "Dock Widgets" ), actionCollection() );
   actionCollection()->addAction( "dock_widgets_menu", dock_widgets_menu );
 
   m_dock_widgets = new QActionGroup( actionCollection() );
   m_dock_widgets->setExclusive( false );
 
-  // Shares view
+  // Shares view action menu
   KActionMenu *shares_view_menu = new KActionMenu( KIcon( "view-choose" ), i18n( "Shares View" ), actionCollection() );
   actionCollection()->addAction( "shares_view_menu", shares_view_menu );
 
@@ -144,6 +150,13 @@ void Smb4KMainWindow::setupActions()
   {
     // Do nothing
   }
+
+  // Bookmarks menu and action
+  Smb4KBookmarkMenu *bookmarks = new Smb4KBookmarkMenu( Smb4KBookmarkMenu::MainWindow, this, this );
+  bookmarks->addBookmarkAction()->setEnabled( false );
+  actionCollection()->addAction( "bookmarks", bookmarks );
+  actionCollection()->addAction( "add_bookmark_action", bookmarks->addBookmarkAction() );
+  connect( bookmarks->addBookmarkAction(), SIGNAL( triggered( bool ) ), SLOT( slotAddBookmark() ) );
 }
 
 
@@ -225,6 +238,9 @@ void Smb4KMainWindow::setupStatusBar()
 
 void Smb4KMainWindow::setupView()
 {
+  // There is no active part initially. Set it NULL.
+  m_active_part = NULL;
+  
   // We do not set a central widget, because it causes "problems"
   // with the dock widgets. We have the nested dock widget property
   // set to true, so we can arrange the dock widgets as we like,
@@ -245,6 +261,7 @@ void Smb4KMainWindow::setupView()
     args << QString( "silent=\"true\"" );
 
     m_browser_part = browser_factory->create<KParts::Part>( this, args );
+    m_browser_part->setObjectName( "NetworkBrowserPart" );
 
     if ( m_browser_part )
     {
@@ -262,6 +279,9 @@ void Smb4KMainWindow::setupView()
       // Insert the toggle view mode action to the action group.
       m_dock_widgets->addAction( browser_dock->toggleViewAction() );
       static_cast<KActionMenu *>( actionCollection()->action( "dock_widgets_menu" ) )->addAction( browser_dock->toggleViewAction() );
+
+      // Add the Part object to the manager
+      m_manager->addPart( m_browser_part );
     }
     else
     {
@@ -287,12 +307,13 @@ void Smb4KMainWindow::setupView()
     args << QString( "silent=\"true\"" );
     
     m_search_part = search_factory->create<KParts::Part>( this, args );
+    m_search_part->setObjectName( "NetworkSearchPart" );
 
     if ( m_search_part )
     {
       // Add dock widget to the main window.
       search_dock = new QDockWidget( i18n( "Network Search" ), this );
-      search_dock->setObjectName( "SearchDialogDockWidget" );
+      search_dock->setObjectName( "NetworkSearchDockWidget" );
       search_dock->setWidget( m_search_part->widget() );
       search_dock->setAllowedAreas( Qt::LeftDockWidgetArea );
 
@@ -304,6 +325,9 @@ void Smb4KMainWindow::setupView()
       // Insert the toggle view mode action to the action group.
       m_dock_widgets->addAction( search_dock->toggleViewAction() );
       static_cast<KActionMenu *>( actionCollection()->action( "dock_widgets_menu" ) )->addAction( search_dock->toggleViewAction() );
+
+      // Add the Part object to the manager
+      m_manager->addPart( m_search_part );
     }
     else
     {
@@ -329,6 +353,7 @@ void Smb4KMainWindow::setupView()
     args << QString( "silent=\"true\"" );
 
     m_shares_part = shares_factory->create<KParts::Part>( this, args );
+    m_shares_part->setObjectName( "SharesViewPart" );
 
     if ( m_shares_part )
     {
@@ -346,12 +371,15 @@ void Smb4KMainWindow::setupView()
       // Insert the toggle view mode action to the action group.
       m_dock_widgets->addAction( shares_dock->toggleViewAction() );
       static_cast<KActionMenu *>( actionCollection()->action( "dock_widgets_menu" ) )->addAction( shares_dock->toggleViewAction() );
+
+      // Add the Part object to the manager
+      m_manager->addPart( m_shares_part );
     }
     else
     {
       KMessageBox::error( this, i18n( "The shares view could not be created." ) );
 
-      // We will continue without the search dialog.
+      // We will continue without the shares view.
     }
   }
   else
@@ -407,31 +435,6 @@ void Smb4KMainWindow::setupSystemTrayWidget()
 
   connect( m_system_tray_widget, SIGNAL( settingsChanged( const QString & ) ),
            this,                 SLOT( slotSettingsChanged( const QString & ) ) );
-}
-
-
-void Smb4KMainWindow::setupBookmarksMenu()
-{
-  // Get the "Bookmarks" menu
-  QList<QAction *> actions = menuBar()->actions();
-  QListIterator<QAction *> it( actions );
-  
-  while ( it.hasNext() )
-  {
-    QAction *action = it.next();
-    
-    if ( QString::compare( "bookmarks", action->objectName() ) == 0 )
-    {
-      Smb4KBookmarkMenu *menu = new Smb4KBookmarkMenu( Smb4KBookmarkMenu::MainWindow, this, this );
-      action->setMenu( menu->menu() );
-      connect( menu->addBookmarkAction(), SIGNAL( triggered( bool ) ), SLOT( slotAddBookmark() ) );
-      break;
-    }
-    else
-    {
-      continue;
-    }
-  }
 }
 
 
@@ -1163,5 +1166,54 @@ void Smb4KMainWindow::slotEndVisualFeedback()
 
   setupMountIndicator();
 }
+
+
+void Smb4KMainWindow::slotActivePartChanged( KParts::Part *part )
+{
+  Q_ASSERT( part );
+
+  // First break the connection to the slotEnableBookmarkAction() slot.
+  if ( m_active_part )
+  {
+    QAction *action = m_active_part->actionCollection()->action( "bookmark_action" );
+    disconnect( action, SIGNAL( changed() ), this, SLOT( slotEnableBookmarkAction() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // Let m_active_part point to the new active part.
+  m_active_part = part;
+
+  // Connect the action.
+  QAction *action = m_active_part->actionCollection()->action( "bookmark_action" );
+
+  if ( action )
+  {
+    actionCollection()->action( "add_bookmark_action" )->setEnabled( action->isEnabled() );
+    connect( action, SIGNAL( changed() ), this, SLOT( slotEnableBookmarkAction() ) );
+  }
+  else
+  {
+    actionCollection()->action( "add_bookmark_action" )->setEnabled( false );
+  }
+}
+
+
+void Smb4KMainWindow::slotEnableBookmarkAction()
+{
+  QAction *action = m_active_part->actionCollection()->action( "bookmark_action" );
+  
+  if ( action )
+  {
+    actionCollection()->action( "add_bookmark_action" )->setEnabled( action->isEnabled() );
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
 
 #include "smb4kmainwindow.moc"

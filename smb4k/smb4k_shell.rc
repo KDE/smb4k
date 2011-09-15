@@ -31,6 +31,8 @@
 <ToolBar fullWidth="false" name="sharesViewToolBar" index="2"><text>Shares Toolbar</text>
 </ToolBar>
 <ToolBar fullWidth="true" name="mainToolBar" index="3"><text>Main Toolbar</text>
+  <Action name="add_bookmark_action"/>
+  <Separator/>
   <Action name="dock_widgets_menu"/>
   <Action name="shares_view_menu"/>
   <Action name="configure_action"/>
