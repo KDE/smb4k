@@ -90,14 +90,22 @@ Smb4KShareOptions::Smb4KShareOptions( QWidget *parent )
                                   mount_box );
   allow_foreign->setObjectName( "kcfg_UnmountForeignShares" );
 
+#ifdef Q_OS_LINUX
   QCheckBox *unmount_inaccessible = new QCheckBox( Smb4KSettings::self()->forceUnmountInaccessibleItem()->label(),
                                     mount_box );
   unmount_inaccessible->setObjectName( "kcfg_ForceUnmountInaccessible" );
+#endif
 
+#ifdef Q_OS_LINUX
   mount_layout->addWidget( remount_shares, 0, 0, 0 );
   mount_layout->addWidget( unmount_all_shares, 1, 0, 0 );
   mount_layout->addWidget( unmount_inaccessible, 2, 0, 0 );
   mount_layout->addWidget( allow_foreign, 3, 0, 0 );
+#else
+  mount_layout->addWidget( remount_shares, 0, 0, 0 );
+  mount_layout->addWidget( unmount_all_shares, 1, 0, 0 );
+  mount_layout->addWidget( allow_foreign, 2, 0, 0 );
+#endif
 
   // Checks
   QGroupBox *checks_box         = new QGroupBox( i18n( "Checks" ), this );
