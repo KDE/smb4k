@@ -537,16 +537,16 @@ void Smb4KNetworkSearchPart::slotReceivedSearchResult( Smb4KBasicNetworkItem *it
 }
 
 
-void Smb4KNetworkSearchPart::slotSearchAboutToStart( const QString &/*string*/ )
+void Smb4KNetworkSearchPart::slotSearchAboutToStart( const QString &string )
 {
-//   if ( !m_silent )
-//   {
-//     emit setStatusBarText( i18n( "Searching for \"%1\"..." ).arg( string ) );
-//   }
-//   else
-//   {
-//     // Do nothing
-//   }
+  if ( !m_silent )
+  {
+    emit setStatusBarText( i18n( "Searching for \"%1\"..." ).arg( string ) );
+  }
+  else
+  {
+    // Do nothing
+  }
 
   m_widget->comboBox()->setEnabled( false );
   actionCollection()->action( "abort_search_action" )->setEnabled( true );
@@ -558,14 +558,14 @@ void Smb4KNetworkSearchPart::slotSearchAboutToStart( const QString &/*string*/ )
 
 void Smb4KNetworkSearchPart::slotSearchFinished( const QString &/*string*/ )
 {
-//   if ( !m_silent )
-//   {
-//     emit setStatusBarText( i18n( "Done." ) );
-//   }
-//   else
-//   {
-//     // Do nothing
-//   }
+  if ( !m_silent )
+  {
+    emit setStatusBarText( i18n( "Done." ) );
+  }
+  else
+  {
+    // Do nothing
+  }
 
   m_widget->comboBox()->setEnabled( true );
   actionCollection()->action( "abort_search_action" )->setEnabled( false );
