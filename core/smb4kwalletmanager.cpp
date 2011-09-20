@@ -113,7 +113,7 @@ void Smb4KWalletManager::init()
       {
         Smb4KNotification *notification = new Smb4KNotification( this );
         notification->openingWalletFailed( KWallet::Wallet::NetworkWallet() );
-        
+
         m_state = Unknown;
       }
 
@@ -178,7 +178,7 @@ void Smb4KWalletManager::readAuthInfo( Smb4KBasicNetworkItem *networkItem )
   if ( useWalletSystem() && m_wallet )
   {
     bool auth_info_set = false;
-    
+
     switch ( networkItem->type() )
     {
       case Smb4KBasicNetworkItem::Host:
@@ -253,7 +253,7 @@ void Smb4KWalletManager::readAuthInfo( Smb4KBasicNetworkItem *networkItem )
           }
 #ifdef Q_OS_FREEBSD
           Smb4KAuthInfo authInfo( host );
-          writeToConfigFile( authInfo );
+          writeToConfigFile( &authInfo );
 #endif
         }
         else
@@ -287,7 +287,7 @@ void Smb4KWalletManager::readAuthInfo( Smb4KBasicNetworkItem *networkItem )
             // is set to FALSE here, so that no dialog is shown if a user
             // name has already been provided.
             Smb4KHomesSharesHandler::self()->specifyUser( share, false );
-            
+
             if ( m_wallet->hasEntry( share->homeUNC().toUpper() ) )
             {
               m_wallet->readMap( share->homeUNC().toUpper(), map );
@@ -353,7 +353,7 @@ void Smb4KWalletManager::readAuthInfo( Smb4KBasicNetworkItem *networkItem )
           }
 #ifdef Q_OS_FREEBSD
           Smb4KAuthInfo authInfo( share );
-          writeToConfigFile( authInfo );
+          writeToConfigFile( &authInfo );
 #endif
         }
         else
@@ -410,7 +410,7 @@ void Smb4KWalletManager::readAuthInfo( Smb4KBasicNetworkItem *networkItem )
           }
 #ifdef Q_OS_FREEBSD
           Smb4KAuthInfo authInfo( host );
-          writeToConfigFile( authInfo );
+          writeToConfigFile( &authInfo );
 #endif
         }
         else
@@ -440,7 +440,7 @@ void Smb4KWalletManager::readAuthInfo( Smb4KBasicNetworkItem *networkItem )
 
             unc = share->homeUNC();
           }
-          
+
           for ( int i = 0; i < m_list.size(); ++i )
           {
             if ( QString::compare( unc, m_list.at( i )->unc(), Qt::CaseInsensitive ) == 0 &&
@@ -498,7 +498,7 @@ void Smb4KWalletManager::readAuthInfo( Smb4KBasicNetworkItem *networkItem )
           }
 #ifdef Q_OS_FREEBSD
           Smb4KAuthInfo authInfo( share );
-          writeToConfigFile( authInfo );
+          writeToConfigFile( &authInfo );
 #endif
         }
         else
@@ -618,7 +618,7 @@ void Smb4KWalletManager::writeAuthInfo( Smb4KBasicNetworkItem *networkItem )
 
 #ifdef Q_OS_FREEBSD
           Smb4KAuthInfo authInfo( host );
-          writeToConfigFile( authInfo );
+          writeToConfigFile( &authInfo );
 #endif
         }
         else
@@ -676,7 +676,7 @@ void Smb4KWalletManager::writeAuthInfo( Smb4KBasicNetworkItem *networkItem )
 
 #ifdef Q_OS_FREEBSD
           Smb4KAuthInfo authInfo( share );
-          writeToConfigFile( authInfo );
+          writeToConfigFile( &authInfo );
 #endif
         }
         else
@@ -707,7 +707,7 @@ void Smb4KWalletManager::writeAuthInfo( Smb4KBasicNetworkItem *networkItem )
       // Do nothing
     }
 
-    // Now insert the new authentication information. Before we 
+    // Now insert the new authentication information. Before we
     // do this, remove the old one, if one is present.
     switch ( networkItem->type() )
     {
@@ -741,7 +741,7 @@ void Smb4KWalletManager::writeAuthInfo( Smb4KBasicNetworkItem *networkItem )
           m_list << new Smb4KAuthInfo( authInfo );
 
 #ifdef Q_OS_FREEBSD
-          writeToConfigFile( authInfo );
+          writeToConfigFile( &authInfo );
 #endif
         }
         else
@@ -780,7 +780,7 @@ void Smb4KWalletManager::writeAuthInfo( Smb4KBasicNetworkItem *networkItem )
           m_list << new Smb4KAuthInfo( authInfo );
 
 #ifdef Q_OS_FREEBSD
-          writeToConfigFile( authInfo );
+          writeToConfigFile( &authInfo );
 #endif
         }
         else
@@ -948,13 +948,13 @@ QList<Smb4KAuthInfo *> Smb4KWalletManager::walletEntries()
   // Initialize the wallet manager. In case the wallet is already
   // set up, init() will just do nothing.
   init();
-  
+
   QList<Smb4KAuthInfo *> list;
-  
+
   if ( useWalletSystem() && m_wallet )
   {
     QStringList entries = m_wallet->entryList();
-    
+
     if ( !entries.isEmpty() )
     {
       for ( int i = 0; i < entries.size(); ++i )
@@ -963,7 +963,7 @@ QList<Smb4KAuthInfo *> Smb4KWalletManager::walletEntries()
 
         QMap<QString,QString> map;
         m_wallet->readMap( entries.at( i ), map );
-        
+
         if ( QString::compare( entries.at( i ), "DEFAULT_LOGIN" ) == 0 )
         {
           // Default login
@@ -992,7 +992,7 @@ QList<Smb4KAuthInfo *> Smb4KWalletManager::walletEntries()
   {
     // Do nothing
   }
-  
+
   return list;
 }
 
@@ -1002,17 +1002,17 @@ void Smb4KWalletManager::writeWalletEntries( const QList<Smb4KAuthInfo *> &entri
   // Initialize the wallet manager. In case the wallet is already
   // set up, init() will just do nothing.
   init();
-  
+
   if ( useWalletSystem() && m_wallet )
   {
     // Clear the wallet.
     QStringList entry_list = m_wallet->entryList();
-    
+
     for ( int i = 0; i < entry_list.size(); ++i )
     {
       m_wallet->removeEntry( entry_list.at( i ) );
     }
-    
+
     // Write the new entries to the wallet.
     for ( int i = 0; i < entries.size(); ++i )
     {
