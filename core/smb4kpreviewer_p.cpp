@@ -114,7 +114,15 @@ void Smb4KPreviewJob::slotStartPreview()
 
   // Get the path that has to be listed.
   QString path = m_url.toString( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort );
-  path.remove( m_share->unc(), Qt::CaseInsensitive );
+  
+  if ( !m_share->isHomesShare() )
+  {
+    path.remove( m_share->unc(), Qt::CaseInsensitive );
+  }
+  else
+  {
+    path.remove( m_share->homeUNC(), Qt::CaseInsensitive );
+  }
 
   // Compile the command line arguments
   QStringList arguments;
@@ -519,8 +527,17 @@ void Smb4KPreviewJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitStatu
 
 
 Smb4KPreviewDialog::Smb4KPreviewDialog( Smb4KShare *share, QWidget *parent )
-: KDialog( parent ), m_share( share ), m_url( share->url() ), m_iterator( QStringList() )
+: KDialog( parent ), m_share( share ), m_iterator( QStringList() )
 {
+  if ( !share->isHomesShare() )
+  {
+    m_url = share->url();
+  }
+  else
+  {
+    m_url = share->homeURL();
+  }
+  
   setAttribute( Qt::WA_DeleteOnClose, true );
 
   setCaption( i18n( "Preview" ) );

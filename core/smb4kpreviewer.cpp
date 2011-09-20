@@ -144,10 +144,20 @@ bool Smb4KPreviewer::isRunning()
 bool Smb4KPreviewer::isRunning( Smb4KShare *share )
 {
   bool running = false;
+  QString unc;
+  
+  if ( !share->isHomesShare() )
+  {
+    unc = share->unc();
+  }
+  else
+  {
+    unc = share->homeUNC();
+  }
 
   for ( int i = 0; i < subjobs().size(); ++i )
   {
-    if ( QString::compare( QString( "PreviewJob_%1" ).arg( share->unc() ), subjobs().at( i )->objectName() ) == 0 )
+    if ( QString::compare( QString( "PreviewJob_%1" ).arg( unc ), subjobs().at( i )->objectName() ) == 0 )
     {
       running = true;
       break;
@@ -173,9 +183,20 @@ void Smb4KPreviewer::abortAll()
 
 void Smb4KPreviewer::abort( Smb4KShare *share )
 {
+  QString unc;
+  
+  if ( !share->isHomesShare() )
+  {
+    unc = share->unc();
+  }
+  else
+  {
+    unc = share->homeUNC();
+  }
+  
   for ( int i = 0; i < subjobs().size(); ++i )
   {
-    if ( QString::compare( QString( "PreviewJob_%1" ).arg( share->unc() ), subjobs().at( i )->objectName() ) == 0 )
+    if ( QString::compare( QString( "PreviewJob_%1" ).arg( unc ), subjobs().at( i )->objectName() ) == 0 )
     {
       subjobs().at( i )->kill( KJob::EmitResult );
       break;
@@ -248,7 +269,15 @@ void Smb4KPreviewer::slotAcquirePreview( Smb4KShare *share, const QUrl &url, QWi
   
   // Create a new job and add it to the subjobs
   Smb4KPreviewJob *job = new Smb4KPreviewJob( this );
-  job->setObjectName( QString( "PreviewJob_%1" ).arg( share->unc() ) );
+  
+  if ( !share->isHomesShare() )
+  {
+    job->setObjectName( QString( "PreviewJob_%1" ).arg( share->unc() ) );
+  }
+  else
+  {
+    job->setObjectName( QString( "PreviewJob_%1" ).arg( share->homeUNC() ) );
+  }
   job->setupPreview( share, url, parent );
 
   connect( job,  SIGNAL( result( KJob * ) ),
