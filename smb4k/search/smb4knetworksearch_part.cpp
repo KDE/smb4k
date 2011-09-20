@@ -160,7 +160,7 @@ void Smb4KNetworkSearchPart::setupActions()
   KAction *item_action    = new KAction( KIcon( "emblem-mounted" ), i18n( "Mount" ),
                            actionCollection() );
   item_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_D ) );
-  connect( item_action, SIGNAL( triggered( bool ) ), this, SLOT( slotAddActionTriggered( bool ) ) );
+  connect( item_action, SIGNAL( triggered( bool ) ), this, SLOT( slotMountActionTriggered( bool ) ) );
 
   KAction *abort_action  = new KAction( KIcon( "process-stop" ), i18n( "Abort" ),
                            actionCollection() );
@@ -323,7 +323,7 @@ void Smb4KNetworkSearchPart::slotClearActionTriggered( bool /*checked*/ )
 }
 
 
-void Smb4KNetworkSearchPart::slotAddActionTriggered( bool /*checked*/ )
+void Smb4KNetworkSearchPart::slotMountActionTriggered( bool /*checked*/ )
 {
   // Check if we need to add this host to the global list of hosts.
   Smb4KNetworkSearchItem *item = static_cast<Smb4KNetworkSearchItem *>( m_widget->listWidget()->currentItem() );

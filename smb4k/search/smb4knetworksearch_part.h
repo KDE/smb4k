@@ -169,13 +169,12 @@ class Smb4KNetworkSearchPart : public KParts::Part
     void slotClearActionTriggered( bool checked );
 
     /**
-     * This slot is invoked when the Add action is triggered. It checks whether
-     * the selected search item is valid and adds it to the global list of hosts
-     * if necessary.
+     * This slot is invoked when the Mount action is triggered. It mounts the
+     * selected share.
      *
      * @param checked             TRUE if the action is checked.
      */
-    void slotAddActionTriggered( bool checked );
+    void slotMountActionTriggered( bool checked );
 
     /**
      * This slot is invoked when the Abort action is triggered. It enables and
