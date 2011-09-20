@@ -86,7 +86,7 @@ class Smb4KSharesMenu : public KActionMenu
 
     /**
      * This slot is called when an action is triggered.
-     * 
+     *
      * @param action        The action that was triggered
      */
     void slotShareAction( QAction *action );
@@ -96,7 +96,7 @@ class Smb4KSharesMenu : public KActionMenu
      * Setup the menu
      */
     void setupMenu();
-    
+
     /**
      * Parent widget
      */

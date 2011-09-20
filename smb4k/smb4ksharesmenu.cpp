@@ -144,22 +144,22 @@ void Smb4KSharesMenu::slotShareMounted( Smb4KShare *share )
   // Put the share at the right position in the menu. For
   // this we get the object names of the share menus and
   // sort them.
-  
+
   // Get the list of share menus.
   QList<QAction *> share_menus = m_menus->actions();
-  
+
   // Insert the new action menu
   if ( share_menus.size() != 1 )
   {
     // NOTE: We do not need to add the new share to the QActionGroup
-    // here, because this was already done by the creation of the 
+    // here, because this was already done by the creation of the
     // menu above.
     QStringList names;
 
     for ( int i = 0; i < share_menus.size(); ++i )
     {
       QMap<QString,QVariant> share_data = share_menus.at( i )->data().toMap();
-      
+
       if ( !Smb4KSettings::showMountPoint() )
       {
         names << share_data.value( "unc" ).toString();
@@ -174,7 +174,7 @@ void Smb4KSharesMenu::slotShareMounted( Smb4KShare *share )
 
     QString name;
     int index = names.indexOf( (!Smb4KSettings::showMountPoint() ? share->unc() : share->path()) );
-    
+
     if ( index < names.size() - 1 )
     {
       index++;
@@ -219,7 +219,7 @@ void Smb4KSharesMenu::slotShareMounted( Smb4KShare *share )
   unmount->setEnabled( !share->isForeign() || Smb4KSettings::unmountForeignShares() );
   share_menu->addAction( unmount );
   m_action_collection->addAction( unmount->objectName(), unmount );
-  
+
   share_menu->addSeparator();
 
   KAction *add_bookmark = new KAction( KIcon( "bookmark-new" ), i18n( "Add Bookmark" ), m_actions );
