@@ -75,14 +75,6 @@ Smb4KWalletManager::Smb4KWalletManager() : QObject()
 
 Smb4KWalletManager::~Smb4KWalletManager()
 {
-  if ( m_wallet )
-  {
-    delete m_wallet;
-  }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -100,8 +92,25 @@ void Smb4KWalletManager::init()
     // so try to get the wallet.
     if ( !m_wallet )
     {
+      // Get the main window as parent of the wallet.
+      QWidget *parent = 0;
+      QWidgetList top_level = kapp->topLevelWidgets();
+
+      for ( int i = 0; i < top_level.size(); ++i )
+      {
+        if ( QString::compare( top_level.at( i )->metaObject()->className(), "Smb4KMainWindow" ) == 0 )
+        {
+          parent = top_level[i];
+          break;
+        }
+        else
+        {
+          continue;
+        }
+      }
+
       m_wallet = KWallet::Wallet::openWallet( KWallet::Wallet::NetworkWallet(),
-                                              0,
+                                              parent->winId(),
                                               KWallet::Wallet::Synchronous );
 
       if ( m_wallet )
