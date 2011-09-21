@@ -55,6 +55,10 @@ ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
   proc.setOutputChannelMode( KProcess::SeparateChannels );
   proc.setProcessEnvironment( QProcessEnvironment::systemEnvironment() );
   proc.setEnv( "PASSWD", args["share_url"].toUrl().password(), true );
+  // The $HOME environment variable is needed under FreeBSD to
+  // point the mount process to the right ~/.nsmbrc file. Under
+  // Linux it is not needed.
+  proc.setEnv( "HOME", args["home_dir"].toString() );
   proc.setProgram( args["mount_command"].toStringList() );
 
   // Run the mount process.
