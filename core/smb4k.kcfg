@@ -215,7 +215,7 @@
     </entry>
     <entry name="UnmountForeignShares" type="Bool">
       <label>Allow the unmounting of shares that are owned by other users</label>
-      <whatsthis>Allow the unmounting of shares that were mounted by other users. In most cases you need super user privileges for this. Please think before you enable this option.</whatsthis>
+      <whatsthis>Allow the unmounting of shares that were mounted by other users. Please think before you enable this option.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="ForceUnmountInaccessible" type="Bool">
