@@ -127,6 +127,7 @@ Name[uk]=Помилка
 Name[x-test]=xxErrorxx
 Comment=An error message is shown to the user
 Comment[da]=En fejlmeddelelse vises for brugeren
+Comment[de]=Dem Benutzer wird eine Fehlermeldung angezeigt
 Comment[es]=Se muestra un error al usuario
 Comment[et]=Kasutajale näidati tõrketeadet
 Comment[it]=Si mostra un messaggio di errore all'utente
