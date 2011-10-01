@@ -343,6 +343,15 @@ bool Smb4KShare::isHidden() const
 
 bool Smb4KShare::isPrinter() const
 {
+  if ( isInaccessible() || m_type_string.isEmpty() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
   return (QString::compare( m_type_string, "Print" ) == 0 ||
           QString::compare( m_type_string, "Printer" ) == 0);
 }
