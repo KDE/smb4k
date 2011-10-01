@@ -48,6 +48,7 @@ K_GLOBAL_STATIC( Smb4KSynchronizerPrivate, p );
 
 Smb4KSynchronizer::Smb4KSynchronizer() : KCompositeJob( 0 )
 {
+  setAutoDelete( false );
   connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
 }
 
