@@ -51,6 +51,8 @@ K_GLOBAL_STATIC( Smb4KSearchPrivate, p );
 
 Smb4KSearch::Smb4KSearch() : KCompositeJob( 0 )
 {
+  setAutoDelete( false );
+  
   connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
 }
 
