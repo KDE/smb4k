@@ -56,6 +56,8 @@ K_GLOBAL_STATIC( Smb4KScannerPrivate, p );
 
 Smb4KScanner::Smb4KScanner() : KCompositeJob( 0 )
 {
+  setAutoDelete( false );
+  
   m_interval = 0;
   m_scanning_allowed = true;
   
