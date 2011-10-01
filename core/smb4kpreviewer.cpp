@@ -44,6 +44,8 @@ K_GLOBAL_STATIC( Smb4KPreviewerPrivate, p );
 
 Smb4KPreviewer::Smb4KPreviewer() : KCompositeJob( 0 )
 {
+  setAutoDelete( false );
+  
   connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
 }
 
