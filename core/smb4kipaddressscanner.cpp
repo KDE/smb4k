@@ -44,6 +44,8 @@ K_GLOBAL_STATIC( Smb4KIPAddressScannerPrivate, p );
 
 Smb4KIPAddressScanner::Smb4KIPAddressScanner() : KCompositeJob( 0 )
 {
+  setAutoDelete( false );
+  
   connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
 }
 
