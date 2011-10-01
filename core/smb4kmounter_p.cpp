@@ -1254,7 +1254,20 @@ void Smb4KMountDialog::slotOkClicked()
 {
   if ( !m_share_input->text().trimmed().isEmpty() )
   {
-    QUrl url( m_share_input->text().trimmed() );
+    QUrl url;
+    
+    // Take care of Windows-like UNC addresses:
+    if ( m_share_input->text().trimmed().startsWith( "\\" ) )
+    {
+      QString unc = m_share_input->text();
+      unc.replace( "\\", "/" );
+      url = QUrl( unc );
+    }
+    else
+    {
+      url = QUrl( m_share_input->text().trimmed() );
+    }
+    
     url.setScheme( "smb" );
 
     if ( url.isValid() && !url.host().isEmpty() /* no invalid host name */ &&
