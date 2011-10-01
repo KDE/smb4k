@@ -78,6 +78,8 @@ K_GLOBAL_STATIC( Smb4KMounterPrivate, p );
 
 Smb4KMounter::Smb4KMounter() : KCompositeJob( 0 )
 {
+  setAutoDelete( false );
+  
   m_timeout = 0;
   m_dialog = NULL;
 
