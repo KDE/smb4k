@@ -1,3 +1,4 @@
+- Move actions to core classes or the new Smb4KActions class.
 - Add ability to download files with smbget.
 - Implement profiles.
 - Allow several filemanagers.
