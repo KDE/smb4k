@@ -545,8 +545,6 @@ void Smb4KMounter::import( bool check_inaccessible )
       // Do nothing
     }
     
-    qDebug() << "Checking share mounted on " << m_imported_shares.at( i ).path();
-    
     KUrl url;
     url.setPath( m_imported_shares.at( i ).path() );
     KIO::StatJob *job = KIO::stat( url, KIO::HideProgressInfo );
