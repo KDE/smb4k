@@ -500,8 +500,12 @@ void Smb4KToolTip::setupSharesViewToolTip()
   own_label->setPalette( p );
       
   m_text_layout->addWidget( own_label, 3, 0, Qt::AlignRight );
+  
+  QString owner = (!share->owner().isEmpty() ? share->owner() : i18n( "unknown" ));
+  QString group = (!share->group().isEmpty() ? share->group() : i18n( "unknown" ));
+  
   m_text_layout->addWidget( new QLabel( QString( "%1 - %2" )
-                            .arg( share->owner() ).arg( share->group() ), this ), 3, 1, 0 );
+                            .arg( owner ).arg( group ), this ), 3, 1, 0 );
       
   QLabel *fs_label = new QLabel( i18n( "File system" ), this );
   fs_label->setPalette( p );
