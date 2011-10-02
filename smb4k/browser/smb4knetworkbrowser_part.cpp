@@ -1408,67 +1408,126 @@ void Smb4KNetworkBrowserPart::slotShares( Smb4KHost *host, const QList<Smb4KShar
 
 void Smb4KNetworkBrowserPart::slotAddIPAddress( Smb4KHost *host )
 {
-  if ( host )
+  Q_ASSERT( host );
+  
+  // Find the host.
+  Smb4KNetworkBrowserItem *hostItem = NULL;
+  QTreeWidgetItemIterator it( m_widget );
+  
+  while( *it )
   {
-    // Get the workgroup item where the host is located.
-    Smb4KWorkgroup *workgroup = findWorkgroup( host->workgroupName() );
-
-    // Find the workgroup of the host in the tree widget.
-    QList<QTreeWidgetItem *> workgroups = m_widget->findItems( host->workgroupName(), Qt::MatchFixedString, Smb4KNetworkBrowser::Network );
-
-    // Update the workgroup and the host.
-    // This loop is most like absolutely unnecessary, because there should only
-    // be one single workgroup with host->workgroupName(), but we want to be
-    // prepared also for weird networks.
-    for ( int i = 0; i < workgroups.size(); ++i )
+    Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( *it );
+    
+    if ( item )
     {
-      Smb4KNetworkBrowserItem *workgroupItem = static_cast<Smb4KNetworkBrowserItem *>( workgroups.at( i ) );
-
-      for ( int j = 0; j < workgroupItem->childCount(); ++j )
+      if ( item->type() == Smb4KNetworkBrowserItem::Host )
       {
-        if ( QString::compare( host->hostName(), workgroupItem->child( j )->text( Smb4KNetworkBrowserItem::Network ) ) == 0 )
+        if ( QString::compare( host->unc(), item->hostItem()->unc(), Qt::CaseInsensitive ) == 0 &&
+             QString::compare( host->workgroupName(), item->hostItem()->workgroupName(), Qt::CaseInsensitive ) == 0 )
         {
-          Smb4KNetworkBrowserItem *hostItem = static_cast<Smb4KNetworkBrowserItem *>( workgroupItem->child( j ) );
-
-          if ( hostItem )
-          {
-            // Update host and workgroup.
-            hostItem->update( host );
-            workgroupItem->update( workgroup );
-
-            // Now adjust the IP address column, if it is not hidden.
-            if ( !m_widget->isColumnHidden( Smb4KNetworkBrowser::IP ) )
-            {
-              m_widget->resizeColumnToContents( Smb4KNetworkBrowser::IP );
-            }
-            else
-            {
-              // Do nothing
-            }
-          }
-          else
-          {
-            // Do nothing
-          }
-          
-          if ( m_widget->tooltip() && m_widget->tooltip()->isVisible() &&
-               (QString::compare( m_widget->tooltip()->networkItem()->key(), hostItem->networkItem()->key() ) == 0 ||
-                QString::compare( m_widget->tooltip()->networkItem()->key(), workgroupItem->networkItem()->key() ) == 0) )
-          {
-            m_widget->tooltip()->update();
-          }
-          else
-          {
-            // Do nothing
-          }
+          hostItem = item;
           break;
         }
         else
         {
-          continue;
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    ++it;
+  }
+  
+  if ( hostItem )
+  {
+    // If the host is a master browser, set the IP address of the
+    // workgroup item.
+    Smb4KNetworkBrowserItem *workgroupItem = NULL;
+    
+    if ( host->isMasterBrowser() )
+    {
+      workgroupItem = static_cast<Smb4KNetworkBrowserItem *>( hostItem->parent() );
+      
+      if ( workgroupItem )
+      {
+        Smb4KWorkgroup *workgroup = findWorkgroup( host->workgroupName() );
+        
+        if ( workgroup )
+        {
+          workgroupItem->update( workgroup );
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // If there are already shared resources added to the
+    // host item, update their IP address entry.
+    if ( hostItem->childCount() != 0 )
+    {
+      for ( int i = 0; i < hostItem->childCount(); ++i )
+      {
+        Smb4KNetworkBrowserItem *shareItem = static_cast<Smb4KNetworkBrowserItem *>( hostItem->child( i ) );
+        
+        if ( shareItem )
+        {
+          // We only need to update the IP address. No need to
+          // use Smb4KNetworkBrowserItem::update() here.
+          shareItem->shareItem()->setHostIP( host->ip() );
+        }
+        else
+        {
+          // Do nothing
         }
       }
     }
+    
+    // Now adjust the IP address column, if it is not hidden.
+    if ( !m_widget->isColumnHidden( Smb4KNetworkBrowser::IP ) )
+    {
+      m_widget->resizeColumnToContents( Smb4KNetworkBrowser::IP );
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // Update the tool tip, if there is one.
+    if ( m_widget->tooltip() && m_widget->tooltip()->isVisible() )
+    {
+      if ( QString::compare( m_widget->tooltip()->networkItem()->key(), hostItem->networkItem()->key() ) == 0 ||
+           (workgroupItem &&
+           QString::compare( m_widget->tooltip()->networkItem()->key(), workgroupItem->networkItem()->key() ) == 0) )
+      {
+        m_widget->tooltip()->update();
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      // Do nothing
+    }  
   }
   else
   {
