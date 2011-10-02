@@ -389,23 +389,6 @@ class Smb4KMountDialog : public KDialog
 };
 
 
-class CheckThread : public QThread
-{
-  Q_OBJECT
-
-  public:
-    CheckThread( Smb4KShare *share,
-                 QObject *parent = 0 );
-    ~CheckThread();
-
-  protected:
-    void run();
-    
-  private:
-    Smb4KShare *m_share;
-};
-
-
 class Smb4KMounterPrivate
 {
   public:

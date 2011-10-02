@@ -30,9 +30,7 @@
 #include <QTextCodec>
 #include <QDesktopWidget>
 #include <QTimer>
-#ifdef __FreeBSD__
 #include <QFileInfo>
-#endif
 
 // KDE includes
 #include <kapplication.h>
@@ -41,6 +39,9 @@
 #include <kmessagebox.h>
 #include <kstandarddirs.h>
 #include <kmountpoint.h>
+#include <kio/job.h>
+#include <kio/jobclasses.h>
+#include <kdiskfreespaceinfo.h>
 
 // system includes
 #ifdef __FreeBSD__
@@ -283,7 +284,6 @@ void Smb4KMounter::triggerRemounts()
 void Smb4KMounter::import()
 {
   KMountPoint::List mount_points = KMountPoint::currentMountPoints( KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions );
-  QList<Smb4KShare> mounted_shares;
 
   for ( int i = 0; i < mount_points.size(); ++i )
   {
@@ -473,14 +473,14 @@ void Smb4KMounter::import()
 //       qDebug() << "Domain and ip address?";
 #endif
       share.setIsMounted( true );
-      mounted_shares += share;
+      m_imported_shares += share;
     }
     else
     {
       continue;
     }
   }
-
+  
   // Check which shares were unmounted, emit the unmounted() signal
   // on each of the unmounted shares and remove them from the global
   // list.
@@ -490,11 +490,12 @@ void Smb4KMounter::import()
 
   for ( int i = 0; i < mountedSharesList().size(); ++i )
   {
-    for ( int j = 0; j < mounted_shares.size(); ++j )
+    for ( int j = 0; j < m_imported_shares.size(); ++j )
     {
-      // Check the mount point, since that is unique.
-      if ( QString::compare( mountedSharesList().at( i )->canonicalPath(), mounted_shares.at( j ).canonicalPath() ) == 0 ||
-           QString::compare( mountedSharesList().at( i )->path(), mounted_shares.at( j ).path() ) == 0 )
+      // Check the mount point, since that is unique. We will
+      // only use Smb4KShare::path(), so that we do not run into
+      // trouble if a share is inaccessible.
+      if ( QString::compare( mountedSharesList().at( i )->path(), m_imported_shares.at( j ).path() ) == 0 )
       {
         found = true;
         break;
@@ -518,150 +519,21 @@ void Smb4KMounter::import()
 
     found = false;
   }
-
-  // Now add additional information to the shares in the temporary
-  // list and insert them to the global list. At the same time, remove
-  // the old entry from the list. Also, emit either the updated() or
-  // the mounted() signal.
-  for ( int i = 0; i < mounted_shares.size(); ++i )
+  
+  // Now stat the imported shares to get information about them.
+  for ( int i = 0; i < m_imported_shares.size(); ++i )
   {
-    Smb4KShare *mounted_share = findShareByPath( mounted_shares.at( i ).canonicalPath() );
-
-    if ( mounted_share )
-    {
-      // Check share.
-      if ( !mounted_share->isInaccessible() )
-      {
-        check( &mounted_shares[i] );
-      }
-      else
-      {
-        mounted_shares[i].setInaccessible( true );
-      }
-
-      // Copy data.
-      if ( !mounted_share->login().isEmpty() &&
-           QString::compare( mounted_share->login(), mounted_shares.at( i ).login() ) != 0 )
-      {
-        mounted_shares[i].setLogin( mounted_share->login() );
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      if ( !mounted_share->workgroupName().isEmpty() &&
-           QString::compare( mounted_share->workgroupName(), mounted_shares.at( i ).workgroupName() ) != 0 )
-      {
-        mounted_shares[i].setWorkgroupName( mounted_share->workgroupName() );
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      if ( !mounted_share->hostIP().isEmpty() &&
-           QString::compare( mounted_share->hostIP(), mounted_shares.at( i ).hostIP() ) != 0 )
-      {
-        mounted_shares[i].setHostIP( mounted_share->hostIP() );
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Check share.
-      check( &mounted_shares[i] );
-    }
-
-    // Is this a mount that was done by the user or by
-    // someone else (or the system)?
-    if ( (mounted_shares.at( i ).uid() == getuid() && mounted_shares.at( i ).gid() == getgid()) ||
-         (!mounted_shares.at( i ).isInaccessible() &&
-          (mounted_shares.at( i ).path().startsWith( Smb4KSettings::mountPrefix().path() ) ||
-           mounted_shares.at( i ).path().startsWith( QDir::homePath() ))) ||
-         (!mounted_shares.at( i ).isInaccessible() &&
-          (mounted_shares.at( i ).canonicalPath().startsWith( QDir( Smb4KSettings::mountPrefix().path() ).canonicalPath() ) ||
-           mounted_shares.at( i ).canonicalPath().startsWith( QDir::home().canonicalPath() ))) )
-    {
-      mounted_shares[i].setForeign( false );
-    }
-    else
-    {
-      mounted_shares[i].setForeign( true );
-    }
-
-    // Get the host that shares this resource and check if we
-    // need to set the IP address or workgroup/domain.
-    Smb4KHost *host = findHost( mounted_shares.at( i ).hostName(), mounted_shares.at( i ).workgroupName() );
-
-    if ( host )
-    {
-      // Set the IP address if necessary.
-      if ( mounted_shares.at( i ).hostIP().isEmpty() || QString::compare( host->ip(), mounted_shares.at( i ).hostIP() ) != 0 )
-      {
-        mounted_shares[i].setHostIP( host->ip() );
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      // Set the workgroup/domain name if necessary.
-      if ( mounted_shares.at( i ).workgroupName().isEmpty() )
-      {
-        mounted_shares[i].setWorkgroupName( host->workgroupName() );
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    // Now we add the new shares to the global list of shares. We
-    // also honor Smb4KSettings::showAllShares() here.
-    // 
-    // Emit the appropriate signals after the share was processed.
-    if ( mounted_share )
-    {
-      // Honor Smb4KSettings::showAllShares() here.
-      if ( !mounted_shares.at( i ).isForeign() || Smb4KSettings::showAllShares() )
-      {
-        // This share was previouly mounted.
-        removeMountedShare( mounted_share );
-
-        Smb4KShare *new_share = new Smb4KShare( mounted_shares[i] );
-        addMountedShare( new_share );
-        emit updated( new_share );
-      }
-      else
-      {
-        mounted_share->setIsMounted( false );
-        emit unmounted( mounted_share );
-        removeMountedShare( mounted_share );
-      }
-    }
-    else
-    {
-      // Honor Smb4KSettings::showAllShares() here.
-      if ( !mounted_shares.at( i ).isForeign() || Smb4KSettings::showAllShares() )
-      {
-        // This is a new share.
-        Smb4KShare *new_share = new Smb4KShare( mounted_shares[i] );
-        addMountedShare( new_share );
-        emit mounted( new_share );
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
+    KUrl url;
+    
+    // Do not use Smb4KShare::canonicalPath() here, otherwise we might
+    // get lock-ups with inaccessible shares.
+    url.setPath( m_imported_shares.at( i ).path() );
+    KIO::StatJob *job = KIO::stat( url, KIO::HideProgressInfo );
+    job->setObjectName( QString( "KIO::StatJob_%1" ).arg( url.pathOrUrl() ) );
+    connect( job, SIGNAL( result( KJob * ) ), SLOT( slotStatResult( KJob * ) ) );
+    
+    // Do not use addSubJob(), because that would confuse isRunning, etc.
+    job->start();
   }
 }
 
@@ -1228,16 +1100,45 @@ void Smb4KMounter::start()
 
 void Smb4KMounter::check( Smb4KShare *share )
 {
-  if ( share )
+  // Get the info about the usage, etc.
+  KDiskFreeSpaceInfo space_info = KDiskFreeSpaceInfo::freeSpaceInfo( share->path() );
+
+  if ( space_info.isValid() )
   {
-    CheckThread thread( share, this );
-    thread.start();
-    thread.wait();
+    share->setInaccessible( false );
+    share->setFreeDiskSpace( space_info.available() );
+    share->setTotalDiskSpace( space_info.size() );
+    share->setUsedDiskSpace( space_info.used() );
+      
+    // Get the owner an group, if possible.
+    QFileInfo file_info( share->path() );
+    file_info.setCaching( false );
+
+    if ( file_info.exists() )
+    {
+      share->setUID( (K_UID)file_info.ownerId() );
+      share->setGID( (K_GID)file_info.groupId() );
+      share->setInaccessible( !(file_info.isDir() && file_info.isExecutable()) );
+    }
+    else
+    {
+      share->setInaccessible( true );
+      share->setFreeDiskSpace( 0 );
+      share->setTotalDiskSpace( 0 );
+      share->setUsedDiskSpace( 0 );
+      share->setUID( (K_UID)-1 );
+      share->setGID( (K_GID)-1 );
+    }
   }
   else
   {
-    // Do nothing
-  }
+    share->setInaccessible( true );
+    share->setFreeDiskSpace( 0 );
+    share->setTotalDiskSpace( 0 );
+    share->setUsedDiskSpace( 0 );
+    share->setUID( (K_UID)-1 );
+    share->setGID( (K_GID)-1 );
+  } 
 }
 
 
@@ -1292,7 +1193,7 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
       // Do nothing
     }
     
-    if ( m_timeout == Smb4KSettings::checkInterval() )
+    if ( m_timeout >= Smb4KSettings::checkInterval() && m_imported_shares.isEmpty() )
     {
       // Import the mounted shares.
       import();
@@ -1859,5 +1760,217 @@ void Smb4KMounter::slotFinishedUnmounting( const QList<Smb4KShare> &shares )
     emit finished( &list[i], UnmountShare );
   }
 }
+
+
+void Smb4KMounter::slotStatResult( KJob *job )
+{
+  Q_ASSERT( job );
+
+  KIO::StatJob *stat = static_cast<KIO::StatJob *>( job );
+  QString path = stat->objectName().section( "KIO::StatJob_", 1, -1 );
+  
+  qDebug() << "slotStatResult(): Stat'ed " << path;
+  
+  Smb4KShare share;
+  
+  for ( int i = 0; i < m_imported_shares.size(); ++i )
+  {
+    if ( QString::compare( m_imported_shares.at( i ).path(), path ) == 0 )
+    {
+      share = m_imported_shares.takeAt( i );
+      break;
+    }
+    else
+    {
+      continue;
+    }
+  }
+    
+  if ( stat->error() == 0 /* no error */ )
+  {
+    // We do not use KIO::StatJob::statResult(), because its 
+    // information is limited.
+    check( &share );
+  }
+  else
+  {
+    share.setInaccessible( true );
+    share.setFreeDiskSpace( 0 );
+    share.setTotalDiskSpace( 0 );
+    share.setUsedDiskSpace( 0 );
+    share.setUID( (K_UID)-1 );
+    share.setGID( (K_GID)-1 );
+  }
+  
+  // Is this a mount that was done by the user or by
+  // someone else (or the system)?
+  if ( (share.uid() == getuid() && share.gid() == getgid()) ||
+       (share.path().startsWith( Smb4KSettings::mountPrefix().path() ) ||
+        share.path().startsWith( QDir::homePath() )) ||
+       (share.canonicalPath().startsWith( QDir( Smb4KSettings::mountPrefix().path() ).canonicalPath() ) ||
+        share.canonicalPath().startsWith( QDir::home().canonicalPath() )) )
+  {
+    share.setForeign( false );
+  }
+  else
+  {
+    share.setForeign( true );
+  }
+  
+  // Copy data from the mounted share to the newly discovered
+  // one. We can use Smb4KShare::canonicalPath() here, because
+  // Smb4KShare::isInaccessibe() has already been set.
+  Smb4KShare *mounted_share = findShareByPath( share.canonicalPath() );
+
+  if ( mounted_share )
+  {
+    if ( !mounted_share->login().isEmpty() &&
+         QString::compare( mounted_share->login(), share.login() ) != 0 )
+    {
+      share.setLogin( mounted_share->login() );
+    }
+    else
+    {
+      // Do nothing
+    }    
+
+    if ( !mounted_share->workgroupName().isEmpty() && !mounted_share->hostIP().isEmpty() )
+    {
+      if ( share.workgroupName().isEmpty() )
+      {
+        share.setWorkgroupName( mounted_share->workgroupName() );
+      }
+      else
+      {
+        // Do nothing
+      }
+        
+      if ( share.hostIP().isEmpty() )
+      {
+        share.setHostIP( mounted_share->hostIP() );
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      // Get the host that shares this resource and check if we
+      // need to set the IP address or workgroup/domain.
+      Smb4KHost *host = findHost( share.hostName(), share.workgroupName() );
+        
+      if ( host )
+      {
+        // Set the IP address if necessary.
+        if ( share.hostIP().isEmpty() || QString::compare( host->ip(), share.hostIP() ) != 0 )
+        {
+          share.setHostIP( host->ip() );
+        }
+        else
+        {
+          // Do nothing
+        }
+          
+        // Set the workgroup/domain name if necessary.
+        if ( share.workgroupName().isEmpty() )
+        {
+          share.setWorkgroupName( host->workgroupName() );
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        if ( !mounted_share->hostIP().isEmpty() && share.hostIP().isEmpty() )
+        {
+          share.setHostIP( mounted_share->hostIP() );
+        }
+        else
+        {
+          // Do nothing
+        }
+          
+        if ( !mounted_share->workgroupName().isEmpty() && share.workgroupName().isEmpty() )
+        {
+          share.setWorkgroupName( mounted_share->workgroupName() );
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+    }
+    
+    // Now remove the obsolete share entry from the global list
+    // of shares and add the stat'ed one. Emit the appropriate 
+    // signal when done.
+    if ( !share.isForeign() || Smb4KSettings::showAllShares() )
+    {
+      // This share was previouly mounted.
+      removeMountedShare( mounted_share );
+
+      Smb4KShare *new_share = new Smb4KShare( share );
+      addMountedShare( new_share );
+      emit updated( new_share );
+    }
+    else
+    {
+      mounted_share->setIsMounted( false );
+      emit unmounted( mounted_share );
+      removeMountedShare( mounted_share );
+    }  
+  }
+  else
+  {
+    // Get the host that shares this resource and check if we
+    // need to set the IP address or workgroup/domain.
+    Smb4KHost *host = findHost( share.hostName(), share.workgroupName() );
+        
+    if ( host )
+    {
+      // Set the IP address if necessary.
+      if ( share.hostIP().isEmpty() || QString::compare( host->ip(), share.hostIP() ) != 0 )
+      {
+        share.setHostIP( host->ip() );
+      }
+      else
+      {
+        // Do nothing
+      }
+          
+      // Set the workgroup/domain name if necessary.
+      if ( share.workgroupName().isEmpty() )
+      {
+        share.setWorkgroupName( host->workgroupName() );
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // Now add the stat'ed share to the global list of shares.
+    // Emit the appropriate signal when done.
+    if ( !share.isForeign() || Smb4KSettings::showAllShares() )
+    {
+      // This is a new share.
+      Smb4KShare *new_share = new Smb4KShare( share );
+      addMountedShare( new_share );
+      emit mounted( new_share );
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+}
+
 
 #include "smb4kmounter.moc"

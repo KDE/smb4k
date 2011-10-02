@@ -350,6 +350,13 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * @param shares          The shares that were unmounted
      */
     void slotFinishedUnmounting( const QList<Smb4KShare> &shares );
+    
+    /**
+     * Called when a mounted share has been stat'ed.
+     * 
+     * @param job             The KIO::StatJob
+     */
+    void slotStatResult( KJob *job );
 
   private:
     /**
@@ -372,10 +379,14 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
     void import();
 
     /**
-     * Checks the file system of the share and its accessibility and set
-     * the appropriate values accordingly. Additionally, the free and total
-     * disk space are determined.
-     *
+     * Checks the accessibility, the UID and GID and the usage of
+     * a share.
+     * 
+     * Only use this function when you are absolutely sure that a 
+     * share did not vanish, i.e. the server was shut down. Otherwise
+     * you will provoke lock-ups that render the application at least
+     * temporarily useless.
+     * 
      * @param share           The share that should be checked.
      */
     void check( Smb4KShare *share );
@@ -394,6 +405,12 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * Retries
      */
     QList<Smb4KShare> m_retries;
+    
+    /**
+     * Shares that were imported from /proc/mounts or by reading
+     * KMountpoint stuff.
+     */
+    QList<Smb4KShare> m_imported_shares;
 
     /**
      * The mount dialog
