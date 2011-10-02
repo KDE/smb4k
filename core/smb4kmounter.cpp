@@ -1769,8 +1769,6 @@ void Smb4KMounter::slotStatResult( KJob *job )
   KIO::StatJob *stat = static_cast<KIO::StatJob *>( job );
   QString path = stat->objectName().section( "KIO::StatJob_", 1, -1 );
   
-  qDebug() << "slotStatResult(): Stat'ed " << path;
-  
   Smb4KShare share;
   
   for ( int i = 0; i < m_imported_shares.size(); ++i )
