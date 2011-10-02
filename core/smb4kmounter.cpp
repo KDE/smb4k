@@ -82,6 +82,7 @@ Smb4KMounter::Smb4KMounter() : KCompositeJob( 0 )
   setAutoDelete( false );
   
   m_timeout = 0;
+  m_checks = 0;
   m_dialog = NULL;
 
   connect( kapp,                        SIGNAL( aboutToQuit() ),
@@ -281,7 +282,7 @@ void Smb4KMounter::triggerRemounts()
 }
 
 
-void Smb4KMounter::import()
+void Smb4KMounter::import( bool check_inaccessible )
 {
   KMountPoint::List mount_points = KMountPoint::currentMountPoints( KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions );
 
@@ -521,15 +522,35 @@ void Smb4KMounter::import()
   }
   
   // Now stat the imported shares to get information about them.
+  // Do not use Smb4KShare::canonicalPath() here, otherwise we might
+  // get lock-ups with inaccessible shares.
   for ( int i = 0; i < m_imported_shares.size(); ++i )
   {
-    KUrl url;
+    // Check if the share is inaccessible and should be checked.
+    Smb4KShare *share = findShareByPath( m_imported_shares.at( i ).path() );
     
-    // Do not use Smb4KShare::canonicalPath() here, otherwise we might
-    // get lock-ups with inaccessible shares.
+    if ( share )
+    {
+      if ( share->isInaccessible() && !check_inaccessible )
+      {
+        continue;
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    qDebug() << "Checking share mounted on " << m_imported_shares.at( i ).path();
+    
+    KUrl url;
     url.setPath( m_imported_shares.at( i ).path() );
     KIO::StatJob *job = KIO::stat( url, KIO::HideProgressInfo );
-    job->setObjectName( QString( "KIO::StatJob_%1" ).arg( url.pathOrUrl() ) );
+    job->setDetails( 0 );
     connect( job, SIGNAL( result( KJob * ) ), SLOT( slotStatResult( KJob * ) ) );
     
     // Do not use addSubJob(), because that would confuse isRunning, etc.
@@ -1196,7 +1217,17 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
     if ( m_timeout >= Smb4KSettings::checkInterval() && m_imported_shares.isEmpty() )
     {
       // Import the mounted shares.
-      import();
+      if ( m_checks == 10 )
+      {
+        import( true );
+        m_checks = 0;
+      }
+      else
+      {
+        import( false );
+        m_checks += 1;
+      }
+      
       m_timeout = 0;
     }
     else
@@ -1222,7 +1253,7 @@ void Smb4KMounter::slotStartJobs()
 {
   startTimer( TIMEOUT );
 
-  import();
+  import( true );
 
   if ( Smb4KSolidInterface::self()->networkStatus() == Smb4KSolidInterface::Connected ||
        Smb4KSolidInterface::self()->networkStatus() == Smb4KSolidInterface::Unknown )
@@ -1767,7 +1798,7 @@ void Smb4KMounter::slotStatResult( KJob *job )
   Q_ASSERT( job );
 
   KIO::StatJob *stat = static_cast<KIO::StatJob *>( job );
-  QString path = stat->objectName().section( "KIO::StatJob_", 1, -1 );
+  QString path = stat->url().pathOrUrl();
   
   Smb4KShare share;
   

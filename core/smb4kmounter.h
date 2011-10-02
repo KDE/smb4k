@@ -376,7 +376,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
     /**
      * Imports mounted shares.
      */
-    void import();
+    void import( bool check_inaccessible );
 
     /**
      * Checks the accessibility, the UID and GID and the usage of
@@ -400,6 +400,12 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * Time out
      */
     int m_timeout;
+    
+    /**
+     * Number of checks. This is used to determine when inaccessible
+     * shares have to be checked again.
+     */
+    int m_checks;
 
     /**
      * Retries
