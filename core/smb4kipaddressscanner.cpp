@@ -35,6 +35,7 @@
 #include <smb4kipaddressscanner.h>
 #include <smb4kipaddressscanner_p.h>
 #include <smb4kglobal.h>
+#include <smb4kshare.h>
 
 using namespace Smb4KGlobal;
 
@@ -251,6 +252,20 @@ void Smb4KIPAddressScanner::slotProcessIPAddress( Smb4KHost *host )
     else
     {
       // Do nothing
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  QList<Smb4KShare *> shares = sharedResources( host );
+  
+  if ( !shares.isEmpty() )
+  {
+    for ( int i = 0; i < shares.size(); ++i )
+    {
+      shares[i]->setHostIP( host->ip() );
     }
   }
   else
