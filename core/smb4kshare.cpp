@@ -116,16 +116,30 @@ void Smb4KShare::setShareName( const QString &name )
 
 QString Smb4KShare::shareName() const
 {
-  if ( m_url.path().startsWith( "/" ) )
+  // Since users might come up with very weird share names,
+  // we are careful and do not use QString::remove( "/" ), but
+  // only remove preceding and trailing slashes.
+  QString share_name = m_url.path();
+  
+  if ( share_name.startsWith( "/" ) )
   {
-    return m_url.path().remove( 0, 1 );
+    share_name = share_name.remove( 0, 1 );
   }
   else
   {
     // Do nothing
   }
-
-  return m_url.path();
+  
+  if ( share_name.endsWith( "/" ) )
+  {
+    share_name = share_name.remove( share_name.size() - 1, 1 );
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  return share_name;
 }
 
 
