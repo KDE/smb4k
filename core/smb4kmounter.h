@@ -383,9 +383,9 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * a share.
      * 
      * Only use this function when you are absolutely sure that a 
-     * share did not vanish, i.e. the server was shut down. Otherwise
-     * you will provoke lock-ups that render the application at least
-     * temporarily useless.
+     * share did not vanish, i.e. the server was not shut down. 
+     * Otherwise you will provoke lock-ups that render the 
+     * application at least temporarily useless.
      * 
      * @param share           The share that should be checked.
      */
@@ -395,6 +395,11 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * Save all shares that need to be remounted.
      */
     void saveSharesForRemount();
+    
+    /**
+     * Clean up the mount prefix.
+     */
+    void cleanup();
     
     /**
      * Time out
@@ -417,6 +422,11 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * KMountpoint stuff.
      */
     QList<Smb4KShare> m_imported_shares;
+    
+    /**
+     * Obsolete mount points that need to be removed
+     */
+    QStringList m_obsolete_mountpoints;
 
     /**
      * The mount dialog

@@ -1191,6 +1191,42 @@ void Smb4KMounter::saveSharesForRemount()
 }
 
 
+void Smb4KMounter::cleanup()
+{
+  if ( !m_obsolete_mountpoints.isEmpty() )
+  {
+    while ( !m_obsolete_mountpoints.isEmpty() )
+    {
+      QString path = m_obsolete_mountpoints.takeFirst();
+      
+      if ( path.startsWith( Smb4KSettings::mountPrefix().path() ) )
+      {
+        QDir dir( path );
+
+        if ( dir.rmdir( dir.canonicalPath() ) )
+        {
+          dir.cdUp();
+          dir.rmdir( dir.canonicalPath() );
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing here. Do not remove any paths that are outside the
+        // mount prefix.
+      }
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
 void Smb4KMounter::timerEvent( QTimerEvent * )
 {
   if ( !kapp->startingUp() && !isRunning() )
@@ -1232,6 +1268,9 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
     {
       // Do nothing
     }
+    
+    // Clean up the mount prefix
+    cleanup();    
   }
   else
   {
@@ -1598,26 +1637,8 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
     // would return an empty string.
     emit unmounted( known_share );
     
-    // Clean up the mount prefix.
-    if ( known_share->canonicalPath().startsWith( Smb4KSettings::mountPrefix().path() ) )
-    {
-      QDir dir( known_share->canonicalPath() );
-
-      if ( dir.rmdir( dir.canonicalPath() ) )
-      {
-        dir.cdUp();
-        dir.rmdir( dir.canonicalPath() );
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Do nothing here. Do not remove any paths that are outside the
-      // mount prefix.
-    }
+    // Schedule the obsolete mountpoint for removal.
+    m_obsolete_mountpoints << known_share->canonicalPath();
 
     // Remove the share from the list of mounted shares.
     removeMountedShare( known_share );
