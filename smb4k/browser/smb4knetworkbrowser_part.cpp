@@ -1448,6 +1448,9 @@ void Smb4KNetworkBrowserPart::slotAddIPAddress( Smb4KHost *host )
   
   if ( hostItem )
   {
+    // Update host item
+    hostItem->update( host );
+    
     // If the host is a master browser, set the IP address of the
     // workgroup item.
     Smb4KNetworkBrowserItem *workgroupItem = NULL;
