@@ -1327,6 +1327,8 @@ void Smb4KMounter::slotAboutToQuit()
   }
 
   // Clean up the mount prefix.
+  // We do not use the cleanup() function here, because that
+  // would introduce more overhead.
   QDir dir;
   dir.cd( Smb4KSettings::mountPrefix().path() );
   QStringList dirs = dir.entryList( QDir::Dirs|QDir::NoDotAndDotDot, QDir::NoSort );
