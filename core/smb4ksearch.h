@@ -40,7 +40,7 @@
 // forward declarations
 class Smb4KSearchPrivate;
 class Smb4KSearchJob;
-class Smb4KBasicNetworkItem;
+class Smb4KShare;
 
 
 class KDE_EXPORT Smb4KSearch : public KCompositeJob
@@ -123,10 +123,9 @@ class KDE_EXPORT Smb4KSearch : public KCompositeJob
      *
      * @param item          The network item
      *
-     * @param known         Is the item already known?
+     * @param mounted       Is the item already known?
      */
-    void result( Smb4KBasicNetworkItem *item,
-                 bool known );
+    void result( Smb4KShare *share );
 
   protected slots:
     /**
@@ -147,7 +146,7 @@ class KDE_EXPORT Smb4KSearch : public KCompositeJob
     /**
      * Called when an search result was found
      */
-    void slotProcessSearchResult( Smb4KBasicNetworkItem * );
+    void slotProcessSearchResult( Smb4KShare *share );
 
     /**
      * Called when the program is about to quit

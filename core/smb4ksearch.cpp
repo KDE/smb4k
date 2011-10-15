@@ -79,12 +79,10 @@ void Smb4KSearch::search( const QString &string, QWidget *parent )
     // Do nothing
   }
 
-  // Get authentication information in case smbtree is to be used.
-  QHostAddress address( string.trimmed() );
+  // Get authentication information.
   Smb4KHost master_browser;
 
-  if ( address.protocol() == QAbstractSocket::UnknownNetworkLayerProtocol &&
-       Smb4KSettings::masterBrowsersRequireAuth() )
+  if ( Smb4KSettings::masterBrowsersRequireAuth() )
   {
     // smbtree will be used and the master browser requires authentication. 
     // Lookup the authentication information for the master browser.
@@ -125,7 +123,7 @@ void Smb4KSearch::search( const QString &string, QWidget *parent )
 
   connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
   connect( job, SIGNAL( authError( Smb4KSearchJob * ) ), SLOT( slotAuthError( Smb4KSearchJob * ) ) );
-  connect( job, SIGNAL( result( Smb4KBasicNetworkItem * ) ), SLOT( slotProcessSearchResult( Smb4KBasicNetworkItem * ) ) );
+  connect( job, SIGNAL( result( Smb4KShare * ) ), SLOT( slotProcessSearchResult( Smb4KShare * ) ) );
   connect( job, SIGNAL( aboutToStart( const QString & ) ), SIGNAL( aboutToStart( const QString & ) ) );
   connect( job, SIGNAL( finished( const QString & ) ), SIGNAL( finished( const QString & ) ) );
 
@@ -242,84 +240,45 @@ void Smb4KSearch::slotAuthError( Smb4KSearchJob *job )
 }
 
 
-void Smb4KSearch::slotProcessSearchResult( Smb4KBasicNetworkItem *item )
+void Smb4KSearch::slotProcessSearchResult( Smb4KShare *share )
 {
-  switch ( item->type() )
+  Q_ASSERT( share );
+
+  QList<Smb4KShare *> shares = findShareByUNC( share->unc() );
+
+  foreach ( Smb4KShare *s, shares )
   {
-    case Smb4KBasicNetworkItem::Host:
+    if ( (!s->isForeign() || Smb4KSettings::showAllShares()) && s->isMounted() )
     {
-      Smb4KHost *host = static_cast<Smb4KHost *>( item );
-      Smb4KHost *known_host = findHost( host->hostName(), host->workgroupName() );
-
-      // Get the IP address if necessary.
-      if ( !host->hasIP() )
-      {
-        Smb4KIPAddressScanner::self()->getIPAddress( host );
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      // Add the just discovered host if necessary.
-      if ( !known_host )
-      {
-        addHost( host );
-        Smb4KIPAddressScanner::self()->lookup();
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      emit result( host, (known_host) );
+      share->setIsMounted( true );
       break;
     }
-    case Smb4KBasicNetworkItem::Share:
+    else
     {
-      Smb4KShare *share = static_cast<Smb4KShare *>( item );
-      QList<Smb4KShare *> shares = findShareByUNC( share->unc() );
-
-      foreach ( Smb4KShare *s, shares )
-      {
-        if ( (!s->isForeign() || Smb4KSettings::showAllShares()) && s->isMounted() )
-        {
-          share->setIsMounted( true );
-          break;
-        }
-        else
-        {
-          continue;
-        }
-      }
-
-      // The host of this share should already be known. Set the IP address.
-      if ( share->hostIP().isEmpty() )
-      {
-        Smb4KHost *host = findHost( share->hostName(), share->workgroupName() );
-
-        if ( host )
-        {
-          share->setHostIP( host->ip() );
-        }
-        else
-        {
-          // Should not occur. Do nothing.
-        }
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      emit result( share, share->isMounted() );
-      break;
-    }
-    default:
-    {
-      break;
+      continue;
     }
   }
+
+  // The host of this share should already be known. Set the IP address.
+  if ( share->hostIP().isEmpty() )
+  {
+    Smb4KHost *host = findHost( share->hostName(), share->workgroupName() );
+
+    if ( host )
+    {
+      share->setHostIP( host->ip() );
+    }
+    else
+    {
+      // Should not occur. Do nothing.
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  emit result( share );
 }
 
 

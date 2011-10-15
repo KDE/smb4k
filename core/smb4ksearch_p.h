@@ -39,7 +39,7 @@
 #include <smb4khost.h>
 
 // forward declarations
-class Smb4KBasicNetworkItem;
+class Smb4KShare;
 
 class Smb4KSearchJob : public KJob
 {
@@ -124,7 +124,7 @@ class Smb4KSearchJob : public KJob
     /**
      * Emitted with a search result
      */
-    void result( Smb4KBasicNetworkItem *item );
+    void result( Smb4KShare *share );
 
   protected:
     /**
