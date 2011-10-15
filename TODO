@@ -3,7 +3,8 @@
 - Implement profiles.
 - Allow several filemanagers.
 - Mount shares by drag and drop into the shares view.
-- Implement more 'net' commands.
+- Implement more 'net' commands:
+  + 'rap printq' for info about and deletion of print jobs. 
 - Use already existing authentication information for hosts
   and shares (e.g. provided by Dolphin).
 - Save authentication information in such way, that other
