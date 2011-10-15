@@ -114,17 +114,14 @@ Smb4KNetworkSearchPart::Smb4KNetworkSearchPart( QWidget *parentWidget, QObject *
   connect( m_widget->listWidget(), SIGNAL( customContextMenuRequested( const QPoint & ) ),
            this,                   SLOT( slotContextMenuRequested( const QPoint & ) ) );
 
-  connect( Smb4KScanner::self(),   SIGNAL( hostListChanged() ),
-           this,                   SLOT( slotCheckItemIsKnown() ) );
-           
   connect( Smb4KMounter::self(),   SIGNAL( mounted( Smb4KShare * ) ),
            this,                   SLOT( slotShareMounted( Smb4KShare * ) ) );
            
   connect( Smb4KMounter::self(),   SIGNAL( unmounted( Smb4KShare * ) ),
            this,                   SLOT( slotShareUnmounted( Smb4KShare * ) ) );
 
-  connect( Smb4KSearch::self(),    SIGNAL( result( Smb4KBasicNetworkItem *, bool ) ),
-           this,                   SLOT( slotReceivedSearchResult( Smb4KBasicNetworkItem *, bool ) ) );
+  connect( Smb4KSearch::self(),    SIGNAL( result( Smb4KShare * ) ),
+           this,                   SLOT( slotReceivedSearchResult( Smb4KShare * ) ) );
 
   connect( Smb4KSearch::self(),    SIGNAL( aboutToStart( const QString & ) ),
            this,                   SLOT( slotSearchAboutToStart( const QString & ) ) );
@@ -443,13 +440,6 @@ void Smb4KNetworkSearchPart::slotContextMenuRequested( const QPoint &pos )
   {
     switch ( item->type() )
     {
-      case Smb4KNetworkSearchItem::Host:
-      {
-        m_menu_title = m_menu->menu()->addTitle( item->icon(),
-                                                 item->hostItem()->hostName(),
-                                                 actionCollection()->action( "clear_search_action" ) );
-        break;
-      }
       case Smb4KNetworkSearchItem::Share:
       {
         m_menu_title = m_menu->menu()->addTitle( item->icon(),
@@ -462,7 +452,6 @@ void Smb4KNetworkSearchPart::slotContextMenuRequested( const QPoint &pos )
         m_menu_title = m_menu->menu()->addTitle( KIcon( "system-search" ),
                                                  i18n( "Search Results" ),
                                                  actionCollection()->action( "clear_search_action" ) );
-
         break;
       }
     }
@@ -478,62 +467,22 @@ void Smb4KNetworkSearchPart::slotContextMenuRequested( const QPoint &pos )
 }
 
 
-void Smb4KNetworkSearchPart::slotReceivedSearchResult( Smb4KBasicNetworkItem *item, bool known )
+void Smb4KNetworkSearchPart::slotReceivedSearchResult( Smb4KShare *share )
 {
-  if ( item )
-  {
-    switch ( item->type() )
-    {
-      case Smb4KBasicNetworkItem::Host:
-      {
-        Smb4KHost *host = static_cast<Smb4KHost *>( item );
+  Q_ASSERT( share );
 
-        // Create a Smb4KNetworkSearchItem and add it to the first position.
-        Smb4KNetworkSearchItem *item = new Smb4KNetworkSearchItem( m_widget->listWidget(), host );
-        item->setKnown( known );
+  // Create a Smb4KNetworkSearchItem and add it to the first position.
+  (void) new Smb4KNetworkSearchItem( m_widget->listWidget(), share );
 
-        m_widget->listWidget()->sortItems();
+  m_widget->listWidget()->sortItems();
 
-        // Enable the combo box and set the focus:
-        m_widget->comboBox()->setEnabled( true );
-        m_widget->comboBox()->setFocus();
+  // Enable the combo box and set the focus:
+  m_widget->comboBox()->setEnabled( true );
+  m_widget->comboBox()->setFocus();
 
-        // Now select the text, so that the user can easily
-        // remove it.
-        m_widget->comboBox()->lineEdit()->selectAll();
-
-        break;
-      }
-      case Smb4KBasicNetworkItem::Share:
-      {
-        Smb4KShare *share = static_cast<Smb4KShare *>( item );
-
-        // Create a Smb4KNetworkSearchItem and add it to the first position.
-        Smb4KNetworkSearchItem *item = new Smb4KNetworkSearchItem( m_widget->listWidget(), share );
-        item->setMounted( known );
-
-        m_widget->listWidget()->sortItems();
-
-        // Enable the combo box and set the focus:
-        m_widget->comboBox()->setEnabled( true );
-        m_widget->comboBox()->setFocus();
-
-        // Now select the text, so that the user can easily
-        // remove it.
-        m_widget->comboBox()->lineEdit()->selectAll();
-
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
+  // Now select the text, so that the user can easily
+  // remove it.
+  m_widget->comboBox()->lineEdit()->selectAll();
 }
 
 
@@ -579,38 +528,6 @@ void Smb4KNetworkSearchPart::slotSearchFinished( const QString &/*string*/ )
   else
   {
     // Do nothing
-  }
-}
-
-
-void Smb4KNetworkSearchPart::slotCheckItemIsKnown()
-{
-  for ( int i = 0; i < m_widget->listWidget()->count(); ++i )
-  {
-    Smb4KNetworkSearchItem *item = static_cast<Smb4KNetworkSearchItem *>( m_widget->listWidget()->item( i ) );
-
-    switch ( item->type() )
-    {
-      case Smb4KNetworkSearchItem::Host:
-      {
-        Smb4KHost *host = findHost( item->hostItem()->hostName(), item->hostItem()->workgroupName() );
-
-        if ( host )
-        {
-          item->setKnown( true );
-        }
-        else
-        {
-          item->setKnown( false );
-        }
-
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
   }
 }
 

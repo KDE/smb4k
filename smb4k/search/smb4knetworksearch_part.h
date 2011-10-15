@@ -39,7 +39,6 @@
 
 // forward declarations
 class Smb4KNetworkSearch;
-class Smb4KBasicNetworkItem;
 class Smb4KShare;
 
 
@@ -96,8 +95,7 @@ class Smb4KNetworkSearchPart : public KParts::Part
      *
      * @param known               TRUE if item is known and FALSE otherwise
      */
-    void slotReceivedSearchResult( Smb4KBasicNetworkItem *item,
-                                   bool known );
+    void slotReceivedSearchResult( Smb4KShare *share );
     /**
      * This slot is connected to the Smb4KSearch::aboutToStart() signal.
      *
@@ -114,14 +112,6 @@ class Smb4KNetworkSearchPart : public KParts::Part
      */
     void slotSearchFinished( const QString &string );
 
-    /**
-     * This slot is connected to the Smb4KScanner::hostListChanged() signal
-     * and checks whether a host is already known, i.e. it is in the browser,
-     * or if it is "new". If it is already known, this slot will change the icon
-     * of the host item from the default one to one with a tick layed over.
-     */
-    void slotCheckItemIsKnown();
-    
     /**
      * This slot is connected to the Smb4KMounter::mounted() signal and marks
      * a share as mounted.
