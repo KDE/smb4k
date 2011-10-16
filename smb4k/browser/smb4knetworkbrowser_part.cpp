@@ -355,8 +355,8 @@ KAboutData *Smb4KNetworkBrowserPart::createAboutData()
                           KAboutData::License_GPL_V2,
                           ki18n( "\u00A9 2007-2011, Alexander Reinholdt" ),
                           KLocalizedString(),
-                          "http://smb4k.berlios.de",
-                          "smb4k-bugs@lists.berlios.de" );
+                          "http://smb4k.sourceforge.net",
+                          "smb4k-bugs@lists.sourceforge.net" );
 
   return aboutData;
 }
