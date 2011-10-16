@@ -53,8 +53,7 @@ static const char description[] =
   I18N_NOOP( "The advanced network neighborhood browser for KDE." );
 
 static const char authors[] =
-  I18N_NOOP( "\u00A9 2003-2011 Alexander Reinholdt\n\u00A9 2004-2007 "
-             "Massimo Callegari" );
+  I18N_NOOP( "\u00A9 2003-2011 Alexander Reinholdt" );
 
 
 int main( int argc, char *argv[] )
@@ -67,16 +66,13 @@ int main( int argc, char *argv[] )
                         KAboutData::License_GPL_V2,
                         ki18n( authors ),
                         KLocalizedString(),
-                        "http://smb4k.berlios.de",
-                        "smb4k-bugs@lists.berlios.de" );
+                        "http://smb4k.sourceforge.net",
+                        "smb4k-bugs@lists.sourceforge.net" );
 
   // Authors:
   aboutData.addAuthor( ki18n( "Alexander Reinholdt" ),
                        ki18n( "Developer" ),
                        "alexander.reinholdt@kdemail.net" );
-//   aboutData.addAuthor( ki18n( "Massimo Callegari" ),
-//                        ki18n( "Developer" ),
-//                        "massimocallegari@yahoo.it" );
 
   KCmdLineArgs::init( argc, argv, &aboutData );
 
