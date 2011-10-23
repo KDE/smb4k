@@ -81,47 +81,63 @@ QAction *Smb4KBookmarkMenu::addBookmarkAction()
 
 void Smb4KBookmarkMenu::refreshMenu()
 {
-  // Delete all actions.
-  while ( !m_action_collection->isEmpty() )
+  // Delete all bookmarks
+  while ( !m_bookmarks->actions().isEmpty() )
   {
-    QAction *action = m_action_collection->actions().first();
+    QAction *action = m_bookmarks->actions().first();
     m_action_collection->takeAction( action );
     removeAction( action );
     delete action;
   }
-
+  
+  // Delete all groups
+  while ( !m_groups->actions().isEmpty() )
+  {
+    QAction *action = m_groups->actions().first();
+    m_action_collection->takeAction( action );
+    removeAction( action );
+    delete action;
+  }  
+    
   // Set up menu again
-  setupMenu();
+  setupMenu( false );
 }
 
 
-void Smb4KBookmarkMenu::setupMenu()
+void Smb4KBookmarkMenu::setupMenu( bool setup_all )
 {
   // Set up the actions for managing the bookmarks.
-  switch ( m_type )
+  if ( setup_all )
   {
-    case MainWindow:
+    switch ( m_type )
     {
-      KAction *edit_action =  m_action_collection->addAction( "edit_action",
-                              new KAction( KIcon( "bookmarks-organize" ), i18n( "&Edit Bookmarks" ), m_action_collection ) );
-      KAction *add_action = m_action_collection->addAction( "add_action",
-                            new KAction( KIcon( "bookmark-new" ), i18n( "Add &Bookmark" ), m_action_collection ) );
-      add_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_B ) );
-      addAction( edit_action );
-      addAction( add_action );
-      break;
+      case MainWindow:
+      {
+        KAction *edit_action =  m_action_collection->addAction( "edit_action",
+                                new KAction( KIcon( "bookmarks-organize" ), i18n( "&Edit Bookmarks" ), m_action_collection ) );
+        KAction *add_action = m_action_collection->addAction( "add_action",
+                              new KAction( KIcon( "bookmark-new" ), i18n( "Add &Bookmark" ), m_action_collection ) );
+        add_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_B ) );
+        addAction( edit_action );
+        addAction( add_action );
+        break;
+      }
+      case SystemTray:
+      {
+        KAction *edit_action =  m_action_collection->addAction( "edit_action",
+                                new KAction( KIcon( "bookmarks-organize" ), i18n( "&Edit Bookmarks" ), m_action_collection ) );
+        addAction( edit_action );
+        break;
+      }
+      default:
+      {
+        break;
+      }
     }
-    case SystemTray:
-    {
-      KAction *edit_action =  m_action_collection->addAction( "edit_action",
-                              new KAction( KIcon( "bookmarks-organize" ), i18n( "&Edit Bookmarks" ), m_action_collection ) );
-      addAction( edit_action );
-      break;
-    }
-    default:
-    {
-      break;
-    }
+  }
+  else
+  {
+    // Do nothing
   }
 
   // Get the groups
