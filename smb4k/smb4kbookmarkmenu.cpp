@@ -97,7 +97,33 @@ void Smb4KBookmarkMenu::refreshMenu()
     m_action_collection->takeAction( action );
     removeAction( action );
     delete action;
-  }  
+  }
+  
+  QAction *mount_action = m_action_collection->action( "mount_toplevel" );
+  
+  if ( mount_action )
+  {
+    m_action_collection->takeAction( mount_action );
+    removeAction( mount_action );
+    delete mount_action;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  QAction *separator = m_action_collection->action( "separator" );
+  
+  if ( separator )
+  {
+    m_action_collection->takeAction( separator );
+    removeAction( separator );
+    delete separator;
+  }
+  else
+  {
+    // Do nothing
+  }
     
   // Set up menu again
   setupMenu( false );
