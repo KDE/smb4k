@@ -171,52 +171,6 @@ Smb4KSharesViewPart::~Smb4KSharesViewPart()
 
 void Smb4KSharesViewPart::setupView()
 {
-  // First disconnect the signals, so that we do not
-  // get multiple connections.
-  if ( m_icon_view )
-  {
-    disconnect( m_icon_view, SIGNAL( customContextMenuRequested( const QPoint & ) ),
-                this,        SLOT( slotContextMenuRequested( const QPoint & ) ) );
-
-    disconnect( m_icon_view, SIGNAL( itemSelectionChanged() ),
-                this,        SLOT( slotItemSelectionChanged() ) );
-
-    disconnect( m_icon_view, SIGNAL( itemPressed( QListWidgetItem * ) ),
-               this,        SLOT( slotItemPressed( QListWidgetItem * ) ) );
-
-    disconnect( m_icon_view, SIGNAL( itemExecuted( QListWidgetItem * ) ),
-                this,        SLOT( slotItemExecuted( QListWidgetItem * ) ) );
-
-    disconnect( m_icon_view, SIGNAL( acceptedDropEvent( Smb4KSharesIconViewItem *, QDropEvent * ) ),
-                this,        SLOT( slotIconViewDropEvent( Smb4KSharesIconViewItem *, QDropEvent * ) ) );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( m_list_view )
-  {
-    disconnect( m_list_view, SIGNAL( customContextMenuRequested( const QPoint & ) ),
-                this,        SLOT( slotContextMenuRequested( const QPoint & ) ) );
-
-    disconnect( m_list_view, SIGNAL( itemSelectionChanged() ),
-                this,        SLOT( slotItemSelectionChanged() ) );
-
-    disconnect( m_list_view, SIGNAL( itemPressed( QTreeWidgetItem *, int ) ),
-                this,        SLOT( slotItemPressed( QTreeWidgetItem *, int ) ) );
-
-    disconnect( m_list_view, SIGNAL( itemExecuted( QTreeWidgetItem *, int ) ),
-                this,        SLOT( slotItemExecuted( QTreeWidgetItem *, int ) ) );
-
-    disconnect( m_list_view, SIGNAL( acceptedDropEvent( Smb4KSharesListViewItem *, QDropEvent * ) ),
-                this,        SLOT( slotListViewDropEvent( Smb4KSharesListViewItem *, QDropEvent * ) ) );
-  }
-  else
-  {
-    // Do nothing
-  }
-
   // Set the widget of this part:
   switch ( m_mode )
   {
@@ -224,6 +178,21 @@ void Smb4KSharesViewPart::setupView()
     {
       if ( m_list_view )
       {
+        disconnect( m_list_view, SIGNAL( customContextMenuRequested( const QPoint & ) ),
+                    this,        SLOT( slotContextMenuRequested( const QPoint & ) ) );
+
+        disconnect( m_list_view, SIGNAL( itemSelectionChanged() ),
+                    this,        SLOT( slotItemSelectionChanged() ) );
+
+        disconnect( m_list_view, SIGNAL( itemPressed( QTreeWidgetItem *, int ) ),
+                    this,        SLOT( slotItemPressed( QTreeWidgetItem *, int ) ) );
+
+        disconnect( m_list_view, SIGNAL( itemExecuted( QTreeWidgetItem *, int ) ),
+                    this,        SLOT( slotItemExecuted( QTreeWidgetItem *, int ) ) );
+
+        disconnect( m_list_view, SIGNAL( acceptedDropEvent( Smb4KSharesListViewItem *, QDropEvent * ) ),
+                    this,        SLOT( slotListViewDropEvent( Smb4KSharesListViewItem *, QDropEvent * ) ) );
+    
         delete m_list_view;
         m_list_view = NULL;
       }
@@ -238,30 +207,30 @@ void Smb4KSharesViewPart::setupView()
         m_layout->addWidget( m_icon_view, 0, 0, 0 );
         m_icon_view->setVisible( true );
         m_container->setFocusProxy( m_icon_view );
+        
+        // Set the icon size
+        int icon_size = KIconLoader::global()->currentSize( KIconLoader::Desktop );
+        m_icon_view->setIconSize( QSize( icon_size, icon_size ) );
+
+        connect( m_icon_view, SIGNAL( customContextMenuRequested( const QPoint & ) ),
+                 this,        SLOT( slotContextMenuRequested( const QPoint & ) ) );
+
+        connect( m_icon_view, SIGNAL( itemSelectionChanged() ),
+                 this,        SLOT( slotItemSelectionChanged() ) );
+
+        connect( m_icon_view, SIGNAL( itemPressed( QListWidgetItem * ) ),
+                 this,        SLOT( slotItemPressed( QListWidgetItem * ) ) );
+
+        connect( m_icon_view, SIGNAL( itemExecuted( QListWidgetItem * ) ),
+                 this,        SLOT( slotItemExecuted( QListWidgetItem * ) ) );
+
+        connect( m_icon_view, SIGNAL( acceptedDropEvent( Smb4KSharesIconViewItem *, QDropEvent * ) ),
+                 this,        SLOT( slotIconViewDropEvent( Smb4KSharesIconViewItem *, QDropEvent * ) ) );
       }
       else
       {
         // Do nothing
       }
-      
-      // Set the icon size
-      int icon_size = KIconLoader::global()->currentSize( KIconLoader::Desktop );
-      m_icon_view->setIconSize( QSize( icon_size, icon_size ) );
-
-      connect( m_icon_view, SIGNAL( customContextMenuRequested( const QPoint & ) ),
-               this,        SLOT( slotContextMenuRequested( const QPoint & ) ) );
-
-      connect( m_icon_view, SIGNAL( itemSelectionChanged() ),
-               this,        SLOT( slotItemSelectionChanged() ) );
-
-      connect( m_icon_view, SIGNAL( itemPressed( QListWidgetItem * ) ),
-               this,        SLOT( slotItemPressed( QListWidgetItem * ) ) );
-
-      connect( m_icon_view, SIGNAL( itemExecuted( QListWidgetItem * ) ),
-               this,        SLOT( slotItemExecuted( QListWidgetItem * ) ) );
-
-      connect( m_icon_view, SIGNAL( acceptedDropEvent( Smb4KSharesIconViewItem *, QDropEvent * ) ),
-               this,        SLOT( slotIconViewDropEvent( Smb4KSharesIconViewItem *, QDropEvent * ) ) );
 
       break;
     }
@@ -269,6 +238,21 @@ void Smb4KSharesViewPart::setupView()
     {
       if ( m_icon_view )
       {
+        disconnect( m_icon_view, SIGNAL( customContextMenuRequested( const QPoint & ) ),
+                    this,        SLOT( slotContextMenuRequested( const QPoint & ) ) );
+
+        disconnect( m_icon_view, SIGNAL( itemSelectionChanged() ),
+                    this,        SLOT( slotItemSelectionChanged() ) );
+
+        disconnect( m_icon_view, SIGNAL( itemPressed( QListWidgetItem * ) ),
+                    this,        SLOT( slotItemPressed( QListWidgetItem * ) ) );
+
+        disconnect( m_icon_view, SIGNAL( itemExecuted( QListWidgetItem * ) ),
+                    this,        SLOT( slotItemExecuted( QListWidgetItem * ) ) );
+
+        disconnect( m_icon_view, SIGNAL( acceptedDropEvent( Smb4KSharesIconViewItem *, QDropEvent * ) ),
+                    this,        SLOT( slotIconViewDropEvent( Smb4KSharesIconViewItem *, QDropEvent * ) ) );
+        
         delete m_icon_view;
         m_icon_view = NULL;
       }
@@ -283,30 +267,30 @@ void Smb4KSharesViewPart::setupView()
         m_layout->addWidget( m_list_view, 0, 0, 0 );
         m_list_view->setVisible( true );
         m_container->setFocusProxy( m_list_view );
+        
+        // Set the icon size
+        int icon_size = KIconLoader::global()->currentSize( KIconLoader::Small );
+        m_list_view->setIconSize( QSize( icon_size, icon_size ) );
+
+        connect( m_list_view, SIGNAL( customContextMenuRequested( const QPoint & ) ),
+                 this,        SLOT( slotContextMenuRequested( const QPoint & ) ) );
+
+        connect( m_list_view, SIGNAL( itemSelectionChanged() ),
+                 this,        SLOT( slotItemSelectionChanged() ) );
+
+        connect( m_list_view, SIGNAL( itemPressed( QTreeWidgetItem *, int ) ),
+                 this,        SLOT( slotItemPressed( QTreeWidgetItem *, int ) ) );
+
+        connect( m_list_view, SIGNAL( itemExecuted( QTreeWidgetItem *, int ) ),
+                 this,        SLOT( slotItemExecuted( QTreeWidgetItem *, int ) ) );
+
+        connect( m_list_view, SIGNAL( acceptedDropEvent( Smb4KSharesListViewItem *, QDropEvent * ) ),
+                 this,        SLOT( slotListViewDropEvent( Smb4KSharesListViewItem *, QDropEvent * ) ) );
       }
       else
       {
         // Do nothing
       }
-      
-      // Set the icon size
-      int icon_size = KIconLoader::global()->currentSize( KIconLoader::Small );
-      m_list_view->setIconSize( QSize( icon_size, icon_size ) );
-
-      connect( m_list_view, SIGNAL( customContextMenuRequested( const QPoint & ) ),
-               this,        SLOT( slotContextMenuRequested( const QPoint & ) ) );
-
-      connect( m_list_view, SIGNAL( itemSelectionChanged() ),
-               this,        SLOT( slotItemSelectionChanged() ) );
-
-      connect( m_list_view, SIGNAL( itemPressed( QTreeWidgetItem *, int ) ),
-               this,        SLOT( slotItemPressed( QTreeWidgetItem *, int ) ) );
-
-      connect( m_list_view, SIGNAL( itemExecuted( QTreeWidgetItem *, int ) ),
-               this,        SLOT( slotItemExecuted( QTreeWidgetItem *, int ) ) );
-
-      connect( m_list_view, SIGNAL( acceptedDropEvent( Smb4KSharesListViewItem *, QDropEvent * ) ),
-               this,        SLOT( slotListViewDropEvent( Smb4KSharesListViewItem *, QDropEvent * ) ) );
 
       break;
     }
