@@ -904,7 +904,9 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool silent, QWidget *parent
       }
       else
       {
-        // Do nothing
+        // Without the confirmation of the user, we are not
+        // unmounting a foreign share!
+        return;
       }
     }
   }
@@ -918,19 +920,9 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool silent, QWidget *parent
   bool force = false;
 
 #ifdef Q_OS_LINUX
-  if ( share->isInaccessible() && Smb4KSettings::forceUnmountInaccessible() )
+  if ( share->isInaccessible() )
   {
-    if ( KMessageBox::warningYesNo( parent,
-             i18n( "<qt><p>Do you really want to force the unmounting of the share <b>%1</b> from <b>%2</b>?</p></qt>",
-                   share->unc(), share->path() ),
-             i18n( "Force Unmounting" ) ) == KMessageBox::Yes )
-    {
-      force = true;
-    }
-    else
-    {
-      // Do nothing
-    }
+    force = Smb4KSettings::forceUnmountInaccessible();
   }
   else
   {
@@ -1061,23 +1053,16 @@ void Smb4KMounter::unmountShares( const QList<Smb4KShare *> &shares, bool silent
   // inaccessible share
   bool force = false;
 
-  if ( have_inaccessible_shares && Smb4KSettings::forceUnmountInaccessible() )
+#ifdef Q_OS_LINUX
+  if ( have_inaccessible_shares )
   {
-    if ( KMessageBox::warningYesNo( parent,
-             i18n( "<qt><p>Do you really want to force the unmounting of all inaccessible shares?</p></qt>" ),
-             i18n( "Force Unmounting" ) ) == KMessageBox::Yes )
-    {
-      force = true;
-    }
-    else
-    {
-      // Do nothing
-    }
+    force = Smb4KSettings::forceUnmountInaccessible();
   }
   else
   {
     // Do nothing
   }
+#endif
   
   // Create a new job and add it to the subjobs
   Smb4KUnmountJob *job = new Smb4KUnmountJob( this );
