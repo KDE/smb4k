@@ -253,6 +253,8 @@ void Smb4KBookmarkHandler::writeBookmarkList( const QList<Smb4KBookmark *> &list
       xmlWriter.writeEndDocument();
 
       xmlFile.close();
+      
+      emit updated();
     }
     else
     {
@@ -265,8 +267,6 @@ void Smb4KBookmarkHandler::writeBookmarkList( const QList<Smb4KBookmark *> &list
   {
     xmlFile.remove();
   }
-
-  emit updated();
 }
 
 
@@ -499,75 +499,75 @@ void Smb4KBookmarkHandler::editBookmarks( QWidget *parent )
   if ( !m_editor )
   {
     m_editor = new Smb4KBookmarkEditor( m_bookmarks, parent );
+  }
+  else
+  {
+    m_editor->raise();
+  }
+  
+  if ( m_editor->exec() == KDialog::Accepted )
+  {
+    QList<Smb4KBookmark *> bookmarks = m_editor->editedBookmarks();
 
-    if ( m_editor->exec() == KDialog::Accepted )
-    {
-      QList<Smb4KBookmark *> bookmarks = m_editor->editedBookmarks();
-
-      // Update the list of bookmarks.
-      QMutableListIterator<Smb4KBookmark *> it( m_bookmarks );
-      Smb4KBookmark *bookmark = NULL;
+    // Update the list of bookmarks.
+    QMutableListIterator<Smb4KBookmark *> it( m_bookmarks );
+    Smb4KBookmark *bookmark = NULL;
       
-      while ( it.hasNext() )
+    while ( it.hasNext() )
+    {
+      bookmark = it.next();
+      bool found = false;
+
+      for ( int i = 0; i < bookmarks.size(); ++i )
       {
-        bookmark = it.next();
-        bool found = false;
-
-        for ( int i = 0; i < bookmarks.size(); ++i )
+        if ( QString::compare( bookmark->unc(), bookmarks.at( i )->unc() ) == 0 &&
+             QString::compare( bookmark->workgroupName(), bookmarks.at( i )->workgroupName() ) == 0 )
         {
-          if ( QString::compare( bookmark->unc(), bookmarks.at( i )->unc() ) == 0 &&
-               QString::compare( bookmark->workgroupName(), bookmarks.at( i )->workgroupName() ) == 0 )
-          {
-            bookmark->setLabel( bookmarks.at( i )->label() );
-            bookmark->setLogin( bookmarks.at( i )->login() );
-            bookmark->setHostIP( bookmarks.at( i )->hostIP() );
-            bookmark->setGroup( bookmarks.at( i )->group() );
-            found = true;
-            break;
-          }
-          else
-          {
-            continue;
-          }
+          bookmark->setLabel( bookmarks.at( i )->label() );
+          bookmark->setLogin( bookmarks.at( i )->login() );
+          bookmark->setHostIP( bookmarks.at( i )->hostIP() );
+          bookmark->setGroup( bookmarks.at( i )->group() );
+          found = true;
+          break;
         }
-
-        if ( !found )
+        else
         {
-          it.remove();
+          continue;
+        }
+      }
 
-          if ( bookmark )
-          {
-            delete bookmark;
-            bookmark = NULL;
-          }
-          else
-          {
-            // Do nothing
-          }
+      if ( !found )
+      {
+        it.remove();
+
+        if ( bookmark )
+        {
+          delete bookmark;
+          bookmark = NULL;
         }
         else
         {
           // Do nothing
         }
       }
+      else
+      {
+        // Do nothing
+      }
+    }
       
-      // Finally write the list to the file. We do not
-      // need to emit the updated() signal here, because
-      // writeBookmarkList() is going to do this, anyway.
-      writeBookmarkList( m_bookmarks );
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    delete m_editor;
-    m_editor = NULL;
+    // Finally write the list to the file. We do not
+    // need to emit the updated() signal here, because
+    // writeBookmarkList() is going to do this, anyway.
+    writeBookmarkList( m_bookmarks );
   }
   else
   {
-    m_editor->raise();
+    // Do nothing
   }
+
+  delete m_editor;
+  m_editor = NULL;
 }
 
 
