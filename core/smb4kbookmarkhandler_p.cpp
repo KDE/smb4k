@@ -850,6 +850,17 @@ void Smb4KBookmarkEditor::slotGroupEdited()
     // Do nothing
   }
   
+  Smb4KBookmark *bookmark = findBookmark( url );
+
+  if ( bookmark )
+  {
+    bookmark->setGroup( m_group_combo->currentText() );
+  }
+  else
+  {
+    // Do nothing
+  }
+  
   // Move the current item to the group
   QList<QTreeWidgetItem *> items = m_tree_widget->findItems( m_group_combo->currentText(), Qt::MatchFixedString|Qt::MatchCaseSensitive, 0 );
 
@@ -867,10 +878,10 @@ void Smb4KBookmarkEditor::slotGroupEdited()
     {
       // The current item is a top level item, so remove
       // it from the top level...
-      QTreeWidgetItem *bookmark = m_tree_widget->takeTopLevelItem( index );
+      QTreeWidgetItem *bookmark_item = m_tree_widget->takeTopLevelItem( index );
 
       // ... and add it to the group
-      items.at( 0 )->addChild( bookmark );
+      items.at( 0 )->addChild( bookmark_item );
     }
     else
     {
@@ -881,10 +892,10 @@ void Smb4KBookmarkEditor::slotGroupEdited()
         index = m_tree_widget->currentItem()->parent()->indexOfChild( m_tree_widget->currentItem() );
 
         // Remove the item from the current group...
-        QTreeWidgetItem *bookmark = m_tree_widget->currentItem()->parent()->takeChild( index );
+        QTreeWidgetItem *bookmark_item = m_tree_widget->currentItem()->parent()->takeChild( index );
 
         // ... and add it to the new one
-        items.at( 0 )->addChild( bookmark );
+        items.at( 0 )->addChild( bookmark_item );
 
         // Finally expand the group
         items.at( 0 )->setExpanded( true );
@@ -917,10 +928,10 @@ void Smb4KBookmarkEditor::slotGroupEdited()
       {
         // The current item is a top level item, so remove
         // it from the top level...
-        QTreeWidgetItem *bookmark = m_tree_widget->takeTopLevelItem( index );
+        QTreeWidgetItem *bookmark_item = m_tree_widget->takeTopLevelItem( index );
 
         // ... and add it to the group
-        group->addChild( bookmark );
+        group->addChild( bookmark_item );
       }
       else
       {
@@ -928,10 +939,10 @@ void Smb4KBookmarkEditor::slotGroupEdited()
         index = m_tree_widget->currentItem()->parent()->indexOfChild( m_tree_widget->currentItem() );
 
         // ... remove it from the current group...
-        QTreeWidgetItem *bookmark = m_tree_widget->currentItem()->parent()->takeChild( index );
+        QTreeWidgetItem *bookmark_item = m_tree_widget->currentItem()->parent()->takeChild( index );
 
         // ... and add it to the new one
-        group->addChild( bookmark );
+        group->addChild( bookmark_item );
 
         // Finally expand the group
         group->setExpanded( true );
@@ -952,10 +963,10 @@ void Smb4KBookmarkEditor::slotGroupEdited()
         index = m_tree_widget->currentItem()->parent()->indexOfChild( m_tree_widget->currentItem() );
 
         // ... remove it from the current group...
-        QTreeWidgetItem *bookmark = m_tree_widget->currentItem()->parent()->takeChild( index );
+        QTreeWidgetItem *bookmark_item = m_tree_widget->currentItem()->parent()->takeChild( index );
 
         // ... and add it to the top level
-        m_tree_widget->addTopLevelItem( bookmark );
+        m_tree_widget->addTopLevelItem( bookmark_item );
       }
       else
       {
@@ -973,17 +984,6 @@ void Smb4KBookmarkEditor::slotGroupEdited()
     m_ip_edit->clear();
     m_group_combo->clearEditText();
     m_editors->setEnabled( false );
-  }
-  else
-  {
-    // Do nothing
-  }    
-
-  Smb4KBookmark *bookmark = findBookmark( url );
-
-  if ( bookmark )
-  {
-    bookmark->setGroup( m_group_combo->currentText() );
   }
   else
   {
