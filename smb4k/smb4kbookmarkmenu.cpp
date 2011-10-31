@@ -171,11 +171,41 @@ void Smb4KBookmarkMenu::setupMenu( bool setup_all )
 
   // Add a mount action if there were no groups defined and
   // there are bookmarks present (i.e. there is one empty group).
-  if ( groups.size() == 1 && groups.first().isEmpty() )
+  if ( groups.size() == 0 || (groups.size() == 1 && groups.first().isEmpty()) )
   {
     KAction *mount_toplevel = new KAction( KIcon( "emblem-mounted" ), i18n( "Mount All Bookmarks" ), m_action_collection );
     m_action_collection->addAction( "mount_toplevel", mount_toplevel );
     addAction( mount_toplevel );
+    
+    QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->bookmarks();
+    int number = 0;
+    
+    for ( int i = 0; i < bookmarks.size(); ++i )
+    {
+      QList<Smb4KShare *> mounted = findShareByUNC( bookmarks.at( i )->unc() );
+      
+      if ( !mounted.isEmpty() )
+      {
+        for ( int j = 0; j < mounted.size(); ++j )
+        {
+          if ( !mounted.at( j )->isForeign() )
+          {
+            number++;
+            break;
+          }
+          else
+          {
+            continue;
+          }
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    
+    mount_toplevel->setEnabled( !(number == bookmarks.size()) );
   }
   else
   {
@@ -200,9 +230,39 @@ void Smb4KBookmarkMenu::setupMenu( bool setup_all )
       KAction *group_mount = new KAction( KIcon( "emblem-mounted" ), i18n( "Mount All Bookmarks" ), m_action_collection );
       m_action_collection->addAction( QString( "mount_%1" ).arg( groups.at( i ) ), group_mount );
       group_menu->addAction( group_mount );
+      
+      QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->bookmarks( groups.at( i ) );
+      int number = 0;
+    
+      for ( int i = 0; i < bookmarks.size(); ++i )
+      {
+        QList<Smb4KShare *> mounted = findShareByUNC( bookmarks.at( i )->unc() );
+      
+        if ( !mounted.isEmpty() )
+        {
+          for ( int j = 0; j < mounted.size(); ++j )
+          {
+            if ( !mounted.at( j )->isForeign() )
+            {
+              number++;
+              break;
+            }
+            else
+            {
+              continue;
+            }
+          }
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+    
+      group_mount->setEnabled( !(number == bookmarks.size()) );
+      
       group_menu->addSeparator();
 
-      QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->bookmarks( groups.at( i ) );
       QStringList sorted_bookmarks;
       
       for ( int j = 0; j < bookmarks.size(); ++j )
