@@ -448,7 +448,7 @@ const QList<Smb4KBookmark *> &Smb4KBookmarkHandler::bookmarks()
 }
 
 
-QList<Smb4KBookmark *> Smb4KBookmarkHandler::bookmarks( const QString &group )
+const QList<Smb4KBookmark *> Smb4KBookmarkHandler::bookmarks( const QString &group )
 {
   // Update bookmarks
   update();
@@ -472,7 +472,7 @@ QList<Smb4KBookmark *> Smb4KBookmarkHandler::bookmarks( const QString &group )
 }
 
 
-QStringList Smb4KBookmarkHandler::groups()
+const QStringList Smb4KBookmarkHandler::groups()
 {
   QStringList groups;
 

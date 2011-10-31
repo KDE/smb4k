@@ -102,7 +102,7 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      *
      * @returns a list of bookmarks belonging to a certain group
      */
-    QList<Smb4KBookmark *> bookmarks( const QString &group );
+    const QList<Smb4KBookmark *> bookmarks( const QString &group );
 
     /**
      * This function searches for a bookmark using its UNC and returns a pointer
@@ -131,7 +131,7 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      *
      * @returns the list of groups
      */
-    QStringList groups();
+    const QStringList groups();
 
     /**
      * Opens the bookmark editor
