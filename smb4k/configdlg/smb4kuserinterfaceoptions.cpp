@@ -80,7 +80,7 @@ Smb4KUserInterfaceOptions::Smb4KUserInterfaceOptions( QWidget *parent )
   main_window_layout->addWidget( bookmarks_box );
   main_window_layout->addStretch( 100 );
 
-  insertTab( MainWindowSystemTrayTab, mainwindow_tab, i18n( "General" ) );
+  insertTab( MainWindowSystemTrayTab, mainwindow_tab, i18n( "General Settings" ) );
 
   //
   // Network browser
