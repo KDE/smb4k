@@ -80,8 +80,11 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
 
     /**
      * This function reads the default authentication information and enters it
-     * into @p authInfo. If no default authentication data is present or the user 
-     * disabled its use this function does nothing.
+     * into @p authInfo. If no default authentication data is present this 
+     * function does nothing. 
+     * 
+     * Please note that this function does not check if the user disabled the use 
+     * of the default login. It is always returned.
      *
      * @param authInfo        The Smb4KAuthInfo object that will be populated
      *                        with the default authentication information.

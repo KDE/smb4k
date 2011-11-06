@@ -554,7 +554,7 @@ void Smb4KWalletManager::readDefaultAuthInfo( Smb4KAuthInfo *authInfo )
     QMap<QString,QString> map;
     m_wallet->readMap( "DEFAULT_LOGIN", map );
 
-    if ( !map.isEmpty() && Smb4KSettings::useDefaultLogin() )
+    if ( !map.isEmpty() )
     {
       authInfo->setLogin( map["Login"] );
       authInfo->setPassword( map["Password"] );
