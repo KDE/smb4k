@@ -533,7 +533,7 @@ Smb4KRsyncOptions::Smb4KRsyncOptions( QWidget *parent )
   advanced_layout->addWidget( checksum_box, 2, 0, 0 );
   advanced_layout->addItem( spacer4, 3, 0, 1, 1, 0 );
 
-  insertTab( AdvancedTab, advanced_tab, i18n( "Advanced" ) );
+  insertTab( AdvancedTab, advanced_tab, i18n( "Advanced Settings" ) );
 
   connect( archive_mode,     SIGNAL( toggled( bool ) ),
            this,             SLOT( slotArchiveToggled( bool ) ) );
