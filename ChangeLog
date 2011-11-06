@@ -108,9 +108,9 @@ Smb4K SVN_HEAD (????-??-??):
     exits or when the computer goes to sleep to save the currently mounted
     shares.
   + Rewrote slotAboutToQuit() slot.
-  + The import() function has been rewritten. Among other things, shares that 
-    were mounted under Linux with the obsolete SMBFS file system are no longer
-    imported.
+  + The import() function has been rewritten (closes #16169). Among other things, 
+    shares that were mounted under Linux with the obsolete SMBFS file system are 
+    no longer imported.
   + Added 'servern' and 'netbiosname' mount options. They are only used, when a
     connection to a remote host is attempted via port 139.
   + Added aboutToStart() signal that is emitted when a mount process is about
