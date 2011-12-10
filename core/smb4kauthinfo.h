@@ -20,8 +20,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
- *   MA 02110-1335, USA                                                    *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500,        *
+ *   Boston, MA 02110-1335, USA                                            *
  ***************************************************************************/
 
 #ifndef SMB4KAUTHINFO_H
