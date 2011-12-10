@@ -366,6 +366,22 @@ Smb4K SVN_HEAD (????-??-??):
     be found and no shares were mounted.
   + Use new bookmark menu.
 - Removed utility programs in favor of the new KAuth implementation.
+- Updated handbook.
+
+Smb4K 0.10.12 (2011-12-04):
+- Fixed wrong QString to char conversion in the mounter.
+- Adjusted author's e-mail address and the project's home page and bug 
+  report mailing list addresses due to the relocation of Smb4K to 
+  Sourceforge.net.
+
+Smb4K 0.10.11 (2011-11-13):
+- The application is using UTF8 now. This should fix the incompatibility
+  with non-Latin1 languages.
+- Smb4KAuthInfo::login() and Smb4KAuthInfo::password() return a QString.
+- Smb4KShare::path() and Smb4KShare::canonicalPath() return a QString.
+- Connect configuration dialog with system tray widget, so that changes
+  can directly be applied.
+- Fixed KLibrary warnings during runtime.
 
 Smb4K 0.10.10 (2011-03-08):
 - Fixed "Invalid command: net rap share list" error.
