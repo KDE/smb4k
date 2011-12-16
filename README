@@ -1,9 +1,10 @@
 Smb4K README (version 1.0.x)
 ============================
 
-Smb4K is an SMB/CIFS share browser for KDE. It uses the Samba software suite to
-access the SMB/CIFS shares of the local network neighborhood. Its purpose is to
-provide a program that's easy to use and has as many features as possible.
+Smb4K is an advanced network neighborhood browser for KDE. It uses the Samba 
+software suite to access the shares of the local network neighborhood. Its 
+purpose is to provide a program that's easy to use and has as many features 
+as possible.
 
 What's new?
 -----------
@@ -14,11 +15,11 @@ What's new?
 - automatic scanning of the network
 - support of more command line arguments of the Samba utility programs
 - improved search dialog
-- changed the way how you can force the unmounting of inaccessible shares
+- changed way how to force the unmounting of inaccessible shares
   (Linux only)
 - updated handbook
 - improved custom options dialog
-- ...
+- visual mount and unmount feedback
 
 Features
 --------
@@ -60,7 +61,7 @@ libraries:
 - kdelibs & kdebase-runtime (>= 4.4.0): The powerful Open Source graphical
   desktop environment for Unix workstations [http://www.kde.org]
 - Qt (>= 4.7.0): A multiplatform C++ application development framework.
-  [http://www.trolltech.com]
+  [http://qt.nokia.com]
 - X.org or XFree86 - Freely redistributable implementations of the X Window
   System [http://www.x.org or http://www.xfree86.org]
 - An implementation of the C library
@@ -72,8 +73,6 @@ version 2.6 or higher is also needed.
 For a proper operation, you implicitly need:
 - Support of the /proc filesystem compiled into your kernel if you are using
   Linux
-- A sh-compatible shell (bash, dash, ash, etc.) with an existing link /bin/sh
-  or the sh shell itself.
 - Samba (3.x, 3.4 or hiher recommended) [http://www.samba.org]
 - LinuxCIFS utils (>= 4.1 recommended, Linux only)
 - GNU grep [http://www.gnu.org/directory/grep.html]
