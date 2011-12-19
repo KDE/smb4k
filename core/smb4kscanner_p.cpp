@@ -1958,13 +1958,6 @@ void Smb4KLookupSharesJob::slotStartLookup()
   {
     switch ( options->protocolHint() )
     {
-      case Smb4KCustomOptions::RPC:
-      {
-        arguments << "rpc";
-        arguments << "share";
-        arguments << "list";
-        break;
-      }
       case Smb4KCustomOptions::RAP:
       {
         arguments << "rap";
@@ -1973,8 +1966,12 @@ void Smb4KLookupSharesJob::slotStartLookup()
       }
       default:
       {
-        // Auto-detection. This only work with 'net share list' and 
-        // *NOT* with 'net share'.
+        // Since version 1.0.0 we use the RPC protocol as a default
+        // when querying a server for its shares (ignoring the 'Automatic
+        // detection' choice of the user. Because this way we can avoid 
+        // the 'Invalid command: net rap share list' error, that occurred 
+        // under certain circumstances in earlier versions.
+        arguments << "rpc";
         arguments << "share";
         arguments << "list";
         break;
@@ -1985,13 +1982,6 @@ void Smb4KLookupSharesJob::slotStartLookup()
   {
     switch ( Smb4KSettings::protocolHint() )
     {
-      case Smb4KSettings::EnumProtocolHint::RPC:
-      {
-        arguments << "rpc";
-        arguments << "share";
-        arguments << "list";
-        break;
-      }
       case Smb4KSettings::EnumProtocolHint::RAP:
       {
         arguments << "rap";
@@ -2000,8 +1990,12 @@ void Smb4KLookupSharesJob::slotStartLookup()
       }
       default:
       {
-        // Auto-detection. This only work with 'net share list' and 
-        // *NOT* with 'net share'.
+        // Since version 1.0.0 we use the RPC protocol as a default
+        // when querying a server for its shares (ignoring the 'Automatic
+        // detection' choice of the user. Because this way we can avoid 
+        // the 'Invalid command: net rap share list' error, that occurred 
+        // under certain circumstances in earlier versions.
+        arguments << "rpc";
         arguments << "share";
         arguments << "list";
         break;
