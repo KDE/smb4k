@@ -196,6 +196,8 @@ Smb4K SVN_HEAD (????-??-??):
   + When looking up shares, the port defined for the host passed to the scanner
     is honored.
   + Added ability to scan the network neighborhood periodically (closes #15829).
+  + Fixed 'Invalid command: net rap share list' error by removing the ability
+    to auto detect the protocol when scanning a server for its shared resources.
 - Removed Smb4KPreviewItem class. It is not needed anymore.
 - Revised Smb4KPreviewer class:
   + Completely rewrote this class and its private helpers.
