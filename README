@@ -68,12 +68,12 @@ libraries:
 
 Make sure that you also have installed all header files of the libraries Qt
 and KDE are depending on. CMake, the cross-platform, open-source build system,
-version 2.6 or higher is also needed.
+version 2.6 or higher, is also needed.
 
 For a proper operation, you implicitly need:
 - Support of the /proc filesystem compiled into your kernel if you are using
   Linux
-- Samba (3.x, 3.4 or hiher recommended) [http://www.samba.org]
+- Samba (3.x, 3.4 or higher recommended) [http://www.samba.org]
 - LinuxCIFS utils (>= 4.1 recommended, Linux only)
 - GNU grep [http://www.gnu.org/directory/grep.html]
 - GNU awk (GAWK) or similar [http://www.gnu.org/directory/gawk.html]
