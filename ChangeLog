@@ -1,4 +1,4 @@
-Smb4K SVN_HEAD (????-??-??):
+Smb4K 1.0.0 (????-??-??):
 - KDE SC 4.4.0 and Qt 4.7.0 or later are required.
 - We now use Utf8 throughout the whole application (closes #14674 and
   #17535).
