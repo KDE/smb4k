@@ -57,10 +57,10 @@ Smb4K 1.0.0 (2012-02-01):
   + Removed the protocol functions.
   + Added "==" operator.
 - Revised Smb4KShare class:
-  + Replaced setCIFSLogin(), cifsLogin(), and cifsLoginIsSet() with setLogin()
-    login(), and loginIsSet().
+  + Replaced setCIFSLogin() and cifsLogin() with setLogin() and login().
+  + Removed cifsLoginIsSet() function.
   + The equals() function now takes a pointer instead of a reference.
-  + Removed setUNC() function because it caused a lot trouble.
+  + Removed setUNC() function because it caused a lot of trouble.
   + The setMountData() function does not set and the resetMountData() function
     does not reset the login anymore.
   + The login is now empty by default.
@@ -75,14 +75,11 @@ Smb4K 1.0.0 (2012-02-01):
   + The default value for typeString() is now "Disk".
   + Removed uidIsSet() function.
   + Removed gidIsSet() function.
-  + Removed loginIsSet() function.
   + Added "==" operator.
   + Removed setHomesUsers() and homesUsers() functions.
-  + The path() and canonicalPath() functions return a string.
+  + The path() and canonicalPath() functions return a QString.
 - Revised Smb4KCore class:
-  + Removed all *State() convenience functions. You need to use the new
-    Smb4KCore::xxx()->currentState() functions to read the current state of
-    each class.
+  + Removed all *State() convenience functions.
   + setDefaultSettings() will only set the first entry of the interfaces option
     from smb.conf as default broadcast address, if it is recognized as IP address.
     That means entries like "eth0", "192.168.2.10/24", etc. are neglected.
@@ -111,7 +108,7 @@ Smb4K 1.0.0 (2012-02-01):
   + The import() function has been rewritten (closes #16169). Among other things, 
     shares that were mounted under Linux with the obsolete SMBFS file system are 
     no longer imported.
-  + Added 'servern' and 'netbiosname' mount options. They are only used, when a
+  + Added 'servern' and 'netbiosname' mount options. They are only used, if a
     connection to a remote host is attempted via port 139.
   + Added aboutToStart() signal that is emitted when a mount process is about
     to start.
@@ -184,7 +181,7 @@ Smb4K 1.0.0 (2012-02-01):
   + Removed state() signal.
   + Renamed members() signal to hosts().
   + Removed deprecated ipAddress() signal.
-  + Removed minor issues from the command lines. In some situations this should
+  + Fixed minor issues on the command lines. In some situations this should
     improve the accessibility.
   + The login that was used to authenticate is now passed to each host object.
   + Misconfigured master browsers that do not belong to a workgroup are ignored.
@@ -234,13 +231,13 @@ Smb4K 1.0.0 (2012-02-01):
   + Added abortAll() function.
   + Added aboutToStart( Smb4KHost * ) signal.
   + Added finished( Smb4KHost * ) signal.
-- Revised Smb4KHomesSharesHandler class.
+- Revised Smb4KHomesSharesHandler class:
   + Moved homes user dialog to an own class.
   + The dialog can now be resized and text completion has been added.
   + Removed setHomesUsers() functions.
-  + Added homesUsers( Smb4KShare * ) class.
+  + Added homesUsers( Smb4KShare * ) function.
   + Refactored code.
-  + Added possibility to define whether a user name for a homes share should
+  + Added ability to define whether a user name for a homes share should
     be overwritten or not.
 - Revised Smb4KBookmark class:
   + Added setLogin() and login() function.
@@ -285,8 +282,8 @@ Smb4K 1.0.0 (2012-02-01):
 - Removed Smb4KCoreMessage class in favor of Smb4KNotification.
 - Added Smb4KToolTip class that is to replace all other tooltip implementations.
 - Revised shares view:
-  + Adjusted the code so that the new possibilities that the reworked
-    synchronizer offers can be used.
+  + Adjusted the code so that the new abilities that the reworked synchronizer 
+    offers can be used.
   + Added "Add Bookmark" action (closes #14217).
   + Multiple shares can now be selected.
   + The tool tips are now shown when the QEvent::ToolTip event occurrs and
@@ -305,8 +302,8 @@ Smb4K 1.0.0 (2012-02-01):
     forced unmounting of inaccessible shares on the "Shares" page in the
     configuration dialog.
 - Revised network browser:
-  + Adjusted the code so that the new possibilities that the reworked
-    print code offers can be used.
+  + Adjusted the code so that the new abilities that the reworked print code 
+    offers can be used.
   + Adjusted the code so that the new wallet manager can be used.
   + The type of the share is now translated.
   + The tool tips are now shown when the QEvent::ToolTip event occurrs and
@@ -322,11 +319,11 @@ Smb4K 1.0.0 (2012-02-01):
 - Revised search widget:
   + Renamed widget class to Smb4KNetworkSearch.
   + Honor KDE's icon size settings.
+  + Hosts are no longer displayed. Only shares are shown.
   + Removed ability to add hosts to the browser. The user will be given a complete
     list of shares when searching for the host name, so that there is no need to
     add the host to the browser.
   + Searches with IP addresses are no longer supported.
-  + Hosts are no longer displayed. Only shares are shown.
   + Added search and abort tool buttons next to the search item input.
 - Revised configuration dialog:
   + Added "Laptop Support" page where the user can set options that are important
@@ -338,7 +335,7 @@ Smb4K 1.0.0 (2012-02-01):
     to use a default login, a password dialog will pop up where you can enter the
     needed information. This way, the password dialog for the wallet will only be
     shown when it is actually needed.
-  + Added editor for the entries in the wallet. There is no need for KWalletManager
+  + Added editor for the wallet entries. There is no need for KWalletManager
     anymore to edit or remove logins.
   + Improved editor for the custom options.
   + Improved checks for empty entries.
@@ -369,6 +366,7 @@ Smb4K 1.0.0 (2012-02-01):
   + Use new bookmark menu.
 - Removed utility programs in favor of the new KAuth implementation.
 - Updated handbook.
+- ... and more ...
 
 Smb4K 0.10.12 (2011-12-04):
 - Fixed wrong QString to char conversion in the mounter.
