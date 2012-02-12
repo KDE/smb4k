@@ -707,7 +707,8 @@ void Smb4KQueryMasterJob::slotStartLookup()
   }
   else
   {
-    arguments << "-U guest%";
+    // Do *not* change this to "-U guest%". This won't work.
+    arguments << "-U %";
   }
   
   arguments << "|";
@@ -771,7 +772,8 @@ void Smb4KQueryMasterJob::slotStartLookup()
   }
   else
   {
-    arguments << "-U guest%";
+    // Do *not* change this to "-U guest%". This won't work.
+    arguments << "-U %";
   }
 
   // IP address (discovered by by previous net command)
@@ -1625,7 +1627,8 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
     }
     else
     {
-      arguments << "-U guest%";
+      // Do *not* change this to "-U guest%". This won't work.
+      arguments << "-U %";
     }
 
     m_proc = new Smb4KProcess( this );
