@@ -1,0 +1,21 @@
+[Desktop Entry]
+Name=Network Neighborhood
+Comment=Network neighborhood browser based on Smb4K
+Icon=smb4k
+ 
+X-Plasma-API=declarativeappletscript
+X-Plasma-MainScript=ui/main.qml
+X-Plasma-DefaultSize=300,200
+ 
+X-KDE-PluginInfo-Author=Alexander Reinholdt
+X-KDE-PluginInfo-Email=alexander.reinholdt@kdemail.net
+X-KDE-PluginInfo-Website=http://smb4k.sourceforge.net
+X-KDE-PluginInfo-Category=Examples
+X-KDE-PluginInfo-Name=smb4k-qml
+X-KDE-PluginInfo-Version=0.1
+ 
+X-KDE-PluginInfo-Depends=
+X-KDE-PluginInfo-License=GPL
+X-KDE-PluginInfo-EnabledByDefault=true
+X-KDE-ServiceTypes=Plasma/Applet,Plasma/PopupApplet
+Type=Service
