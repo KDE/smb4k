@@ -62,6 +62,17 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
                    LookupDomainMembers,
                    LookupShares,
                    LookupInfo };
+
+    /**
+     * Constructor
+     */
+    Smb4KScanner();
+
+    /**
+     * Destructor
+     */
+    ~Smb4KScanner();
+    
     /**
      * This function returns a static pointer to this class.
      *
@@ -350,16 +361,6 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
     void slotInfo( Smb4KHost *host );
 
   private:
-    /**
-     * Constructor
-     */
-    Smb4KScanner();
-
-    /**
-     * Destructor
-     */
-    ~Smb4KScanner();
-    
     /**
      * Scan interval
      */
