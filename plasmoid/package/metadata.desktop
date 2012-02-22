@@ -1,19 +1,41 @@
 [Desktop Entry]
 Name=Network Neighborhood
+Name[cs]=Síťové okolí
+Name[da]=Netværksnabolag
+Name[de]=Netzwerkumgebung
+Name[en_GB]=Network Neighbourhood
+Name[es]=Entorno de red
+Name[et]=Võrgunaabrus
+Name[hu]=Hálózati mappa
+Name[km]=បណ្ដាញ​ជិត​គ្នា
+Name[lt]=Tinklo kaimynai
+Name[nl]=Netwerkomgeving
+Name[pa]=ਨੈੱਟਵਰਕ ਗੁਆਂਢ
+Name[pl]=Otoczenie sieciowe
+Name[pt]=Vizinhança na Rede
+Name[pt_BR]=Vizinhança na Rede
+Name[sr]=Мрежно суседство
+Name[sr@ijekavian]=Мрежно суседство
+Name[sr@ijekavianlatin]=Mrežno susedstvo
+Name[sr@latin]=Mrežno susedstvo
+Name[sv]=Nätverksgrannskap
+Name[tr]=Ağ Komşuları
+Name[uk]=Мережеве оточення
+Name[x-test]=xxNetwork Neighborhoodxx
 Comment=Network neighborhood browser based on Smb4K
 Icon=smb4k
- 
+
 X-Plasma-API=declarativeappletscript
 X-Plasma-MainScript=ui/main.qml
 X-Plasma-DefaultSize=300,200
- 
+
 X-KDE-PluginInfo-Author=Alexander Reinholdt
 X-KDE-PluginInfo-Email=alexander.reinholdt@kdemail.net
 X-KDE-PluginInfo-Website=http://smb4k.sourceforge.net
 X-KDE-PluginInfo-Category=Examples
 X-KDE-PluginInfo-Name=smb4k-qml
 X-KDE-PluginInfo-Version=0.1
- 
+
 X-KDE-PluginInfo-Depends=
 X-KDE-PluginInfo-License=GPL
 X-KDE-PluginInfo-EnabledByDefault=true
