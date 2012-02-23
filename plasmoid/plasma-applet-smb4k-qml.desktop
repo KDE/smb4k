@@ -23,6 +23,10 @@ Name[tr]=Ağ Komşuları
 Name[uk]=Мережеве оточення
 Name[x-test]=xxNetwork Neighborhoodxx
 Comment=Network neighborhood browser based on Smb4K
+Comment[pt]=Navegador da vizinhança da rede baseado no Smb4K
+Comment[pt_BR]=Navegador da vizinhança da rede baseado no Smb4K
+Comment[uk]=Переглядач мережевого середовища на основі Smb4K
+Comment[x-test]=xxNetwork neighborhood browser based on Smb4Kxx
 Icon=smb4k
 
 X-Plasma-API=declarativeappletscript
