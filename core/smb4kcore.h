@@ -92,12 +92,6 @@ class KDE_EXPORT Smb4KCore : public QObject
     ~Smb4KCore();
 
     /**
-     * Searches for the needed programs and emits an error
-     * if mandatory ones are missing.
-     */
-    void searchPrograms();
-
-    /**
      * Set default values for settings that depend on the system Smb4K is
      * running on and that have to be set dynamically.
      */
