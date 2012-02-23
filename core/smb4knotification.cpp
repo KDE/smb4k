@@ -637,19 +637,6 @@ void Smb4KNotification::mkdirFailed( const QDir &dir )
 }
 
 
-void Smb4KNotification::missingPrograms( const QStringList &programs )
-{
-  KNotification *notification = KNotification::event( KNotification::Error,
-                                "Smb4K",
-                                i18n( "<p>Some required programs could not be found:</p><p><tt>%1</tt></p>", programs.join( ", " ) ),
-                                KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0,
-                                KIconLoader::DefaultState ),
-                                0L,
-                                KNotification::Persistent );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
-}
-
-
 void Smb4KNotification::processError( QProcess::ProcessError error )
 {
   QString text;

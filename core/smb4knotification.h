@@ -304,14 +304,6 @@ class KDE_EXPORT Smb4KNotification : public QObject
     void mkdirFailed( const QDir &dir );
 
     /**
-     * This error message is shown if there are mandatorily needed
-     * programs missing.
-     *
-     * @param programs  The list of missing programs
-     */
-    void missingPrograms( const QStringList &programs );
-
-    /**
      * This error message is shown if a process threw an error.
      *
      * @param proc_err  The code describing the process error
