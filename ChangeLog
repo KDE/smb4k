@@ -1,3 +1,7 @@
+Smb4K 1.1.0 (????-??-??):
+- Merged Smb4KCore class and Smb4KGlobal namespace. The Smb4KCore class
+  was removed.
+
 Smb4K 1.0.0 (2012-02-01):
 - KDE SC 4.4.0 and Qt 4.7.0 or later are required.
 - We now use Utf8 throughout the whole application (closes #14674 and
