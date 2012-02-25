@@ -1,9 +1,9 @@
 project( smb4k )
 
-set( VERSION 1.0.0 )
+set( VERSION 1.0.65 )
 set( VERSION_MAJOR 1 )
 set( VERSION_MINOR 0 )
-set( VERSION_PATCH 0 )
+set( VERSION_PATCH 65 )
 
 cmake_minimum_required( VERSION 2.6 )
 
@@ -35,6 +35,7 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/config.h.cmake
 add_subdirectory( core )
 add_subdirectory( helpers )
 add_subdirectory( smb4k )
+add_subdirectory( plasmoid )
 add_subdirectory( data )
 
 ########### Header files ################
