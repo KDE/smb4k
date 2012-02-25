@@ -59,7 +59,6 @@
 #include <smb4klaptopsupportoptions.h>
 #include <core/smb4ksettings.h>
 #include <core/smb4kglobal.h>
-#include <core/smb4kcore.h>
 #include <core/smb4kauthinfo.h>
 #include <core/smb4kwalletmanager.h>
 #include <core/smb4kcustomoptionsmanager.h>

@@ -42,7 +42,6 @@
 #include <smb4knetworksearch_part.h>
 #include <smb4knetworksearch.h>
 #include <smb4knetworksearchitem.h>
-#include <core/smb4kcore.h>
 #include <core/smb4khost.h>
 #include <core/smb4kshare.h>
 #include <core/smb4ksettings.h>

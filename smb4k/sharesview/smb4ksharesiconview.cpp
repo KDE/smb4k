@@ -43,7 +43,6 @@
 #include <../tooltips/smb4ktooltip.h>
 #include <core/smb4kshare.h>
 #include <core/smb4ksettings.h>
-#include <core/smb4kcore.h>
 
 
 Smb4KSharesIconView::Smb4KSharesIconView( QWidget *parent )

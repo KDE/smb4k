@@ -49,7 +49,6 @@
 #include <smb4ksharesiconviewitem.h>
 #include <../tooltips/smb4ktooltip.h>
 #include <core/smb4kshare.h>
-#include <core/smb4kcore.h>
 #include <core/smb4ksettings.h>
 #include <core/smb4kglobal.h>
 #include <core/smb4kmounter.h>

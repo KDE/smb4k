@@ -55,7 +55,6 @@
 #include <smb4ksystemtray.h>
 #include <smb4kbookmarkmenu.h>
 #include <core/smb4ksettings.h>
-#include <core/smb4kcore.h>
 #include <core/smb4kglobal.h>
 #include <core/smb4kwalletmanager.h>
 #include <core/smb4kworkgroup.h>
@@ -810,7 +809,7 @@ void Smb4KMainWindow::slotScannerAboutToStart( Smb4KBasicNetworkItem *item, int 
 
 void Smb4KMainWindow::slotScannerFinished( Smb4KBasicNetworkItem */*item*/, int /*process*/ )
 {
-  if ( !Smb4KCore::self()->isRunning() )
+  if ( !coreIsRunning() )
   {
     m_progress_bar->setVisible( false );
     m_progress_bar->reset();
@@ -995,7 +994,7 @@ void Smb4KMainWindow::slotMounterFinished( Smb4KShare *share, int process )
     }
   }
   
-  if ( !Smb4KCore::self()->isRunning()  )
+  if ( !coreIsRunning()  )
   {
     m_progress_bar->setVisible( false );
     m_progress_bar->reset();
@@ -1027,7 +1026,7 @@ void Smb4KMainWindow::slotSearchAboutToStart( const QString &string )
 
 void Smb4KMainWindow::slotSearchFinished( const QString &/*string*/ )
 {
-  if ( !Smb4KCore::self()->isRunning()  )
+  if ( !coreIsRunning()  )
   {
     m_progress_bar->setVisible( false );
     m_progress_bar->reset();
@@ -1057,7 +1056,7 @@ void Smb4KMainWindow::slotPrintingAboutToStart( Smb4KShare *printer )
 
 void Smb4KMainWindow::slotPrintingFinished( Smb4KShare */*printer*/ )
 {
-  if ( !Smb4KCore::self()->isRunning()  )
+  if ( !coreIsRunning()  )
   {
     m_progress_bar->setVisible( false );
     m_progress_bar->reset();
@@ -1087,7 +1086,7 @@ void Smb4KMainWindow::slotSynchronizerAboutToStart( const QString &dest )
 
 void Smb4KMainWindow::slotSynchronizerFinished( const QString &/*dest*/ )
 {
-  if ( !Smb4KCore::self()->isRunning()  )
+  if ( !coreIsRunning()  )
   {
     m_progress_bar->setVisible( false );
     m_progress_bar->reset();
@@ -1119,7 +1118,7 @@ void Smb4KMainWindow::slotPreviewerAboutToStart( Smb4KShare *share, const QUrl &
 
 void Smb4KMainWindow::slotPreviewerFinished( Smb4KShare */*share*/, const QUrl &/*url*/ )
 {
-  if ( !Smb4KCore::self()->isRunning()  )
+  if ( !coreIsRunning()  )
   {
     m_progress_bar->setVisible( false );
     m_progress_bar->reset();

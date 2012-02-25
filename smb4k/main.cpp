@@ -46,7 +46,9 @@
 // application specific includes
 #include <smb4kmainwindow.h>
 #include <core/smb4ksettings.h>
-#include <core/smb4kcore.h>
+#include <core/smb4kglobal.h>
+
+using namespace Smb4KGlobal;
 
 
 static const char description[] =
@@ -103,7 +105,7 @@ int main( int argc, char *argv[] )
   main_window->setVisible( !Smb4KSettings::startMainWindowDocked() );
 
   // Initialize the core.
-  Smb4KCore::self()->init();
+  initCore();
 
   return app.exec();
 }
