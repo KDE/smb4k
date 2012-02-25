@@ -19,7 +19,7 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
@@ -526,7 +526,7 @@ void Smb4KNotification::commandNotFound( const QString &command )
 {
   KNotification *notification = KNotification::event( KNotification::Error,
                                 "Smb4K",
-                                i18n( "<p>The command <b>%1</b> could not be found.</p>", command ),
+                                i18n( "<p>The command <b>%1</b> could not be found. Please check your installation.</p>", command ),
                                 KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0,
                                 KIconLoader::DefaultState ),
                                 0L,
