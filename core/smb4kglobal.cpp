@@ -19,7 +19,7 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
@@ -27,7 +27,6 @@
 #include <QMutex>
 
 // KDE includes
-#include <kconfig.h>
 #include <kdebug.h>
 #include <kurl.h>
 #include <krun.h>
@@ -39,6 +38,12 @@
 #include <smb4kglobal.h>
 #include <smb4kglobal_p.h>
 #include <smb4knotification.h>
+#include <smb4kscanner.h>
+#include <smb4kmounter.h>
+#include <smb4kprint.h>
+#include <smb4ksynchronizer.h>
+#include <smb4kpreviewer.h>
+#include <smb4ksearch.h>
 
 
 static Smb4KGlobalPrivate p;
@@ -60,6 +65,41 @@ Smb4KGlobal::Smb4KEvent::~Smb4KEvent()
 {
 }
 
+
+
+void Smb4KGlobal::initCore()
+{
+  // Set default values for some settings.
+  p.setDefaultSettings();
+  
+  // Initialize the necessary core classes
+  Smb4KScanner::self()->start();
+  Smb4KMounter::self()->start();
+
+  p.makeConnections();
+}
+
+
+void Smb4KGlobal::abortCore()
+{
+  Smb4KScanner::self()->abortAll();
+  Smb4KMounter::self()->abortAll();
+  Smb4KPrint::self()->abortAll();
+  Smb4KSynchronizer::self()->abortAll();
+  Smb4KPreviewer::self()->abortAll();
+  Smb4KSearch::self()->abortAll();
+}
+
+
+bool Smb4KGlobal::coreIsRunning()
+{
+  return (Smb4KScanner::self()->isRunning() ||
+          Smb4KMounter::self()->isRunning() ||
+          Smb4KPrint::self()->isRunning() ||
+          Smb4KSynchronizer::self()->isRunning() ||
+          Smb4KPreviewer::self()->isRunning() ||
+          Smb4KSearch::self()->isRunning());
+}
 
 
 const QList<Smb4KWorkgroup *> &Smb4KGlobal::workgroupsList()

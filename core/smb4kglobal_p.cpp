@@ -20,7 +20,7 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
@@ -29,6 +29,9 @@
 #include <QTextStream>
 #include <QTextCodec>
 #include <QFile>
+#include <QHostAddress>
+#include <QAbstractSocket>
+#include <QCoreApplication>
 
 // system specific includes
 #include <unistd.h>
@@ -38,6 +41,7 @@
 // application specific includes
 #include "smb4kglobal_p.h"
 #include <smb4knotification.h>
+#include <smb4ksettings.h>
 
 
 Smb4KGlobalPrivate::Smb4KGlobalPrivate()
@@ -229,5 +233,89 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions( bool read )
   
   return m_samba_options;
 }
+
+
+void Smb4KGlobalPrivate::setDefaultSettings()
+{
+  // Samba options that have to be dynamically imported from smb.conf:
+  QMap<QString, QString> opts = globalSambaOptions( true );
+
+  if ( !opts["netbios name"].isEmpty() )
+  {
+    Smb4KSettings::self()->netBIOSNameItem()->setDefaultValue( opts["netbios name"] );
+
+    if ( Smb4KSettings::netBIOSName().isEmpty() )
+    {
+      Smb4KSettings::self()->netBIOSNameItem()->setDefault();
+    }
+  }
+
+  if ( !opts["workgroup"].isEmpty() )
+  {
+    Smb4KSettings::self()->domainNameItem()->setDefaultValue( opts["workgroup"] );
+
+    if ( Smb4KSettings::domainName().isEmpty() )
+    {
+      Smb4KSettings::self()->domainNameItem()->setDefault();
+    }
+  }
+
+  if ( !opts["socket options"].isEmpty() )
+  {
+    Smb4KSettings::self()->socketOptionsItem()->setDefaultValue( opts["socket options"] );
+
+    if ( Smb4KSettings::socketOptions().isEmpty() )
+    {
+      Smb4KSettings::self()->socketOptionsItem()->setDefault();
+    }
+  }
+
+  if ( !opts["netbios scope"].isEmpty() )
+  {
+    Smb4KSettings::self()->netBIOSScopeItem()->setDefaultValue( opts["netbios scope"] );
+
+    if ( Smb4KSettings::netBIOSScope().isEmpty() )
+    {
+      Smb4KSettings::self()->netBIOSScopeItem()->setDefault();
+    }
+  }
+
+  if ( !opts["name resolve order"].isEmpty() )
+  {
+    Smb4KSettings::self()->nameResolveOrderItem()->setDefaultValue( opts["name resolve order"] );
+
+    if ( Smb4KSettings::nameResolveOrder().isEmpty() )
+    {
+      Smb4KSettings::self()->nameResolveOrderItem()->setDefault();
+    }
+  }
+
+  QHostAddress address( opts["interfaces"].section( " ", 0, 0 ) );
+
+  if ( address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol )
+  {
+    Smb4KSettings::self()->broadcastAddressItem()->setDefaultValue( address.toString() );
+
+    if ( Smb4KSettings::broadcastAddress().isEmpty() )
+    {
+      Smb4KSettings::self()->broadcastAddressItem()->setDefault();
+    }
+  }
+}
+
+
+void Smb4KGlobalPrivate::makeConnections()
+{
+  connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
+}
+
+
+void Smb4KGlobalPrivate::slotAboutToQuit()
+{
+  Smb4KSettings::self()->writeConfig();
+}
+
+
+#include "smb4kglobal_p.moc"
 
 

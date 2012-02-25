@@ -19,7 +19,7 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
@@ -61,6 +61,29 @@ namespace Smb4KGlobal
       Smb4KEvent( QEvent::Type type );
       ~Smb4KEvent();
   };
+
+  /**
+   * Use this function to initialize the core classes. Besides starting several
+   * core classes such as the scanner (for an initial browse list) and the mounter
+   * (for the import of all externally mounted shares), it also sets some default
+   * values for some of the settings used to browse the network.
+   *
+   * You should execute this function before starting your main application.
+   */
+  KDE_EXPORT void initCore();
+
+  /**
+   * Aborts all actions that are run by the core classes and that can be aborted.
+   */
+  KDE_EXPORT void abortCore();
+
+  /**
+   * Check if at least one of the core classes that use KJobs (scanner, mounter, etc.) 
+   * is running.
+   *
+   * @returns TRUE if at least one of the core classes is doing something.
+   */
+  KDE_EXPORT bool coreIsRunning();
   
   /**
    * This function returns the global list of workgroups that were discovered by

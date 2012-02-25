@@ -20,7 +20,7 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
@@ -34,6 +34,7 @@
 // Qt includes
 #include <QList>
 #include <QMap>
+#include <QObject>
 
 // application specific includes
 #include <smb4kworkgroup.h>
@@ -46,8 +47,10 @@
  * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
  */
 
-class Smb4KGlobalPrivate
+class Smb4KGlobalPrivate : public QObject
 {
+  Q_OBJECT
+  
   public:
     /**
      * Constructor
@@ -89,7 +92,23 @@ class Smb4KGlobalPrivate
      * are in the list of mounted shares
      */
     bool onlyForeignShares;
-    
+
+    /**
+     * Set default values for some settings
+     */
+    void setDefaultSettings();
+
+    /**
+     * Make connections
+     */
+    void makeConnections();
+
+  public slots:
+    /**
+     * This slot does last things before the application quits
+     */
+    void slotAboutToQuit();
+
   private:
     QMap<QString,QString> m_samba_options;
 };
