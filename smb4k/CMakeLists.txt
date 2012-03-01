@@ -23,20 +23,22 @@ set( smb4k_SRCS
   smb4kmainwindow.cpp
   smb4ksystemtray.cpp )
 
-kde4_add_executable( smb4k ${smb4k_SRCS} )
+kde4_add_app_icon( smb4k_SRCS "${KDE4_ICON_INSTALL_DIR}/oxygen/*/apps/smb4k.png" )
+kde4_add_kdeinit_executable( smb4k ${smb4k_SRCS} )
 
-target_link_libraries( smb4k
+target_link_libraries( kdeinit_smb4k
+  ${QT_QTCORE_LIBRARY}
   ${KDE4_KDECORE_LIBS}
   smb4kcore
   ${KDE4_KDEUI_LIBS}
   ${KDE4_KPARTS_LIBS} )
 
-install(TARGETS smb4k DESTINATION ${BIN_INSTALL_DIR})
-
+install( TARGETS kdeinit_smb4k ${INSTALL_TARGETS_DEFAULT_ARGS} )
+install( TARGETS smb4k ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 ########### install files ###############
 
-install( FILES  smb4k.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
+install( PROGRAMS  smb4k.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
 install( FILES  smb4k_shell.rc DESTINATION ${DATA_INSTALL_DIR}/smb4k )
 
 kde4_install_icons( ${ICON_INSTALL_DIR} )

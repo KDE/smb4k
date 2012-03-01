@@ -33,15 +33,8 @@
 #include <kcmdlineargs.h>
 #include <kaboutdata.h>
 #include <klocale.h>
-#include <kiconloader.h>
-#include <kconfig.h>
 #include <kuniqueapplication.h>
-#include <kmessagebox.h>
-#include <kstandarddirs.h>
 #include <kglobal.h>
-
-// system includes
-#include <stdlib.h>
 
 // application specific includes
 #include <smb4kmainwindow.h>
@@ -55,10 +48,10 @@ static const char description[] =
   I18N_NOOP( "The advanced network neighborhood browser for KDE." );
 
 static const char authors[] =
-  I18N_NOOP( "\u00A9 2003-2011 Alexander Reinholdt" );
+  I18N_NOOP( "\u00A9 2003-2012 Alexander Reinholdt" );
 
 
-int main( int argc, char *argv[] )
+extern "C" KDE_EXPORT int kdemain( int argc, char **argv )
 {
   KAboutData aboutData( "smb4k",
                         0,
