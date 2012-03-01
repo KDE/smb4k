@@ -1,6 +1,9 @@
 Smb4K 1.1.0 (????-??-??):
 - Merged Smb4KCore class and Smb4KGlobal namespace. The Smb4KCore class
   was removed.
+- Fixed KDEinit error when starting Smb4K through a desktop icon (closes
+  ticket #23).
+- Made Smb4K a kdeinit executable.
 
 Smb4K 1.0.0 (2012-02-01):
 - KDE SC 4.4.0 and Qt 4.7.0 or later are required.
