@@ -75,5 +75,4 @@ X-DocPath=smb4k/index.html
 Type=Application
 Terminal=false
 Categories=Qt;KDE;Utility;
-X-DBUS-StartupType=Unique
 X-DBUS-ServiceName=de.berlios.smb4k
