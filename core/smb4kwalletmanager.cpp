@@ -110,7 +110,7 @@ void Smb4KWalletManager::init()
       }
 
       m_wallet = KWallet::Wallet::openWallet( KWallet::Wallet::NetworkWallet(),
-                                              parent->winId(),
+                                              parent ? parent->winId() : 0,
                                               KWallet::Wallet::Synchronous );
 
       if ( m_wallet )
