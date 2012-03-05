@@ -103,6 +103,12 @@ class Smb4KGlobalPrivate : public QObject
      */
     void makeConnections();
 
+    /**
+     * Boolean that is TRUE if the core classes have
+     * been initialized
+     */
+    bool coreInitialized;
+
   public slots:
     /**
      * This slot does last things before the application quits
