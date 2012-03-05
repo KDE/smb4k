@@ -20,7 +20,7 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
@@ -34,10 +34,14 @@
 // Qt includes
 #include <QWidget>
 #include <QTimerEvent>
+#include <QDeclarativeListProperty>
 
 // KDE includes
 #include <kcompositejob.h>
 #include <kdemacros.h>
+
+// application specific includes
+#include "smb4knetworkobject.h"
 
 // forward declarations
 class Smb4KBasicNetworkItem;
@@ -47,10 +51,15 @@ class Smb4KShare;
 class Smb4KQueryMasterJob;
 class Smb4KLookupDomainMembersJob;
 class Smb4KLookupSharesJob;
+// class Smb4KNetworkObject;
 
 class KDE_EXPORT Smb4KScanner : public KCompositeJob
 {
   Q_OBJECT
+
+  Q_PROPERTY( QDeclarativeListProperty<Smb4KNetworkObject> workgroups READ workgroups NOTIFY workgroupsListChanged )
+  Q_PROPERTY( QDeclarativeListProperty<Smb4KNetworkObject> hosts READ hosts NOTIFY hostsListChanged )
+  Q_PROPERTY( QDeclarativeListProperty<Smb4KNetworkObject> shares READ shares NOTIFY sharesListChanged )
 
   friend class Smb4KScannerPrivate;
 
@@ -123,7 +132,7 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
     /**
      * This function starts the composite job
      */
-    void start();
+    Q_INVOKABLE void start();
 
     /**
      * This function looks up all domains and workgroups in the 
@@ -166,6 +175,33 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
      */
     void lookupInfo( Smb4KHost *host,
                      QWidget *parent = 0 );
+
+    /**
+     * This function returns the list of workgroups. Basically, this is the 
+     * Smb4KGlobal::workgroupsList() list converted into a list of Smb4KNetworkItem
+     * objects.
+     * 
+     * @returns the list of discovered workgroups.
+     */
+    QDeclarativeListProperty<Smb4KNetworkObject> workgroups();
+
+    /**
+     * This function returns the list of hosts. Basically, this is the
+     * Smb4KGlobal::hostsList() list converted into a list of Smb4KNetworkItem
+     * objects.
+     *
+     * @returns the list of discovered hosts.
+     */
+    QDeclarativeListProperty<Smb4KNetworkObject> hosts();
+
+    /**
+     * This function returns the list of shares. Basically, this is the
+     * Smb4KGlobal::sharesList() list converted into a list of Smb4KNetworkItem
+     * objects.
+     *
+     * @returns the list of discovered shares.
+     */
+    QDeclarativeListProperty<Smb4KNetworkObject> shares();
   
   protected:
     /**
@@ -210,6 +246,11 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
     void workgroups( const QList<Smb4KWorkgroup *> &workgroups );
 
     /**
+     * This signal is emitted when the list of workgroups changed.
+     */
+    void workgroupsListChanged();
+
+    /**
      * This signal emits the list of hosts that were discovered.
      *
      * @param workgroup   The workgroup that was scanned. This argument
@@ -222,11 +263,11 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
                 const QList<Smb4KHost *> &hosts );
 
     /**
-     * This signal is emitted when the list of hosts is changed. You
+     * This signal is emitted when the list of hosts changed. You
      * need to check Smb4KGlobal::hostsList() yourself for changes if
      * you connect to this signal.
      */
-    void hostListChanged();
+    void hostsListChanged();
     
     /**
      * This signal is emitted when the list of shares are certain host 
@@ -238,6 +279,11 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
      */
     void shares( Smb4KHost *host,
                  const QList<Smb4KShare *> &shares );
+
+    /**
+     * This signal is emitted when the list of shares changed.
+     */
+    void sharesListChanged();
     
     /**
      * This signal is emitted when the additional information has been
@@ -376,6 +422,21 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
      * periodic scanning mode
      */
     bool m_scanning_allowed;
+
+    /**
+     * A list with all workgroups encapsulated in Smb4KNetworkObjects
+     */
+    QList<Smb4KNetworkObject *> m_workgroup_objects;
+
+    /**
+     * A list with all hosts encapsulted in Smb4KNetworkObjects
+     */
+    QList<Smb4KNetworkObject *> m_host_objects;
+
+    /**
+     * A list with all shares encapsulted in Smb4KNetworkObjects
+     */
+    QList<Smb4KNetworkObject *> m_share_objects;
 };
 
 #endif
