@@ -84,6 +84,21 @@ namespace Smb4KGlobal
    * @returns TRUE if at least one of the core classes is doing something.
    */
   KDE_EXPORT bool coreIsRunning();
+
+  /**
+   * Set the necessary default values.
+   *
+   * You only need to run this function if you do not use the initCore() function.
+   * Check if the core has been initialized by the coreIsInitialized() function.
+   */
+  KDE_EXPORT void setDefaultSettings();
+
+  /**
+   * Check if the core has been initialized through the initCore() function.
+   *
+   * @returns TRUE if the core has already been initialized.
+   */
+  KDE_EXPORT bool coreIsInitialized();
   
   /**
    * This function returns the global list of workgroups that were discovered by

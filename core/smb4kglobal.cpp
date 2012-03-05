@@ -77,6 +77,8 @@ void Smb4KGlobal::initCore()
   Smb4KMounter::self()->start();
 
   p.makeConnections();
+
+  p.coreInitialized = true;
 }
 
 
@@ -99,6 +101,18 @@ bool Smb4KGlobal::coreIsRunning()
           Smb4KSynchronizer::self()->isRunning() ||
           Smb4KPreviewer::self()->isRunning() ||
           Smb4KSearch::self()->isRunning());
+}
+
+
+void Smb4KGlobal::setDefaultSettings()
+{
+  p.setDefaultSettings();
+}
+
+
+bool Smb4KGlobal::coreIsInitialized()
+{
+  return p.coreInitialized;
 }
 
 
