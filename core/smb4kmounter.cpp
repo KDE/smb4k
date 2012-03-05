@@ -80,6 +80,15 @@ K_GLOBAL_STATIC( Smb4KMounterPrivate, p );
 Smb4KMounter::Smb4KMounter() : KCompositeJob( 0 )
 {
   setAutoDelete( false );
+
+  if ( !coreIsInitialized() )
+  {
+    setDefaultSettings();
+  }
+  else
+  {
+    // Do nothing
+  }
   
   m_timeout = 0;
   m_checks = 0;

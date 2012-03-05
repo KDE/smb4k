@@ -42,7 +42,7 @@
 #include <kcompositejob.h>
 
 // application specific includes
-#include <smb4ksolidinterface.h>
+#include "smb4ksolidinterface.h"
 
 // forward declarations
 class Smb4KShare;
@@ -74,6 +74,15 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      */
     enum Process { MountShare,
                    UnmountShare };
+
+    /**
+     * The constructor.
+     */
+    Smb4KMounter();
+    /**
+     * The destructor.
+     */
+    ~Smb4KMounter();
 
     /**
      * Returns a static pointer to this class.
@@ -359,15 +368,6 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
     void slotStatResult( KJob *job );
 
   private:
-    /**
-     * The constructor.
-     */
-    Smb4KMounter();
-    /**
-     * The destructor.
-     */
-    ~Smb4KMounter();
-
     /**
      * Trigger the remounting of shares.
      */

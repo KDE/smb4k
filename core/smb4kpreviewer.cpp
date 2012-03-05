@@ -38,6 +38,9 @@
 #include <smb4kshare.h>
 #include <smb4kauthinfo.h>
 #include <smb4khomesshareshandler.h>
+#include <smb4kglobal.h>
+
+using namespace Smb4KGlobal;
 
 K_GLOBAL_STATIC( Smb4KPreviewerPrivate, p );
 
@@ -45,6 +48,15 @@ K_GLOBAL_STATIC( Smb4KPreviewerPrivate, p );
 Smb4KPreviewer::Smb4KPreviewer() : KCompositeJob( 0 )
 {
   setAutoDelete( false );
+
+  if ( !coreIsInitialized() )
+  {
+    setDefaultSettings();
+  }
+  else
+  {
+    // Do nothing
+  }
   
   connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
 }

@@ -41,7 +41,7 @@
 #include <kdemacros.h>
 
 // application specific includes
-#include <smb4kbasicnetworkitem.h>
+#include "smb4kbasicnetworkitem.h"
 
 // forward declarations
 class Smb4KAuthInfo;

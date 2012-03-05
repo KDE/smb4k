@@ -38,7 +38,7 @@
 #include <kdemacros.h>
 
 // application specific includes
-#include <smb4kbasicnetworkitem.h>
+#include "smb4kbasicnetworkitem.h"
 
 /**
  * This class is a container that carries information about a workgroup or

@@ -39,6 +39,10 @@
 #include <smb4knotification.h>
 #include <smb4kauthinfo.h>
 #include <smb4kwalletmanager.h>
+#include <smb4kglobal.h>
+
+using namespace Smb4KGlobal;
+
 
 K_GLOBAL_STATIC( Smb4KPrintPrivate, p );
 
@@ -46,6 +50,15 @@ K_GLOBAL_STATIC( Smb4KPrintPrivate, p );
 Smb4KPrint::Smb4KPrint() : KCompositeJob( 0 )
 {
   setAutoDelete( false );
+
+  if ( !coreIsInitialized() )
+  {
+    setDefaultSettings();
+  }
+  else
+  {
+    // Do nothing
+  }
   
   connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
 }
