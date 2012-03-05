@@ -1,4 +1,4 @@
-set ( smb4kqmlplugin_LIB_SRC smb4kqmlplugin.cpp )
+set( smb4kqmlplugin_LIB_SRC smb4kqmlplugin.cpp )
 
 kde4_add_library( smb4kqml SHARED ${smb4kqmlplugin_LIB_SRC} )
 

@@ -1,10 +1,34 @@
+/***************************************************************************
+    main.qml - The main file for Smb4K's plasmoid
+                             -------------------
+    begin                : Sa Feb 11 2012
+    copyright            : (C) 2012 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
+ ***************************************************************************/
+
+/***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful, but   *
+ *   WITHOUT ANY WARRANTY; without even the implied warranty of            *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU     *
+ *   General Public License for more details.                              *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
+ *   MA 02110-1335, USA                                                    *
+ ***************************************************************************/
+
 import QtQuick 1.1
 import org.kde.plasma.core 0.1 as PlasmaCore
 import org.kde.plasma.graphicswidgets 0.1 as PlasmaWidgets
 import org.kde.plasma.components 0.1 as PlasmaComponents
-import org.kde.plasma.graphicslayouts 4.7 as GraphicsLayouts
-
-import "plasmapackage:/plugin" as Smb4K
+// import org.kde.plasma.graphicslayouts 4.7 as GraphicsLayouts
+import org.kde.qtextracomponents 0.1
 
 
 Item {
@@ -12,19 +36,40 @@ Item {
   property int minimumWidth: 300
   property int minimumHeight: 200
   
+  Scanner {
+    id: scanner
+    onWorkgroupsChanged: {
+      getWorkgroups()
+    }
+    onHostsChanged: {
+      getHosts()
+    }
+    onSharesChanged: {
+      getShares()
+    }
+  }
+
+  Mounter {
+    id: mounter
+  }
+  
   Component {
-    id: browserItemDelegate
+    id: browserItemDelegate    
     Item {
       width: browserListView.width
-      height: 40
+      height: 30
       Row {
-        spacing: 10
+        spacing: 5
         Column {
-          Image { source: icon }
+          QIconItem {
+            icon: itemIcon
+            width: 22
+            height: 22
+          }
         }
         Column {
-          Text { text: "<b>"+name+"</b>" }
-          Text { text: "<font size=\"-1\">"+comment+"</font>" }
+          Text { text: "<b>"+itemName+"</b>" }
+          Text { text: "<font size=\"-1\">"+itemComment+"</font>" }
         }
       }
       MouseArea {
@@ -35,11 +80,11 @@ Item {
       }
     }
   }
-  
-  function itemClicked() {
-      Smb4K.Scanner
+
+  ListModel {
+    id: browserModel
   }
-  
+
   Item {
     id: browser
     anchors.fill: parent
@@ -65,8 +110,6 @@ Item {
           id: abortButton
           iconSource: "process-stop"
         }
-      
-        QGraphicsWidget {}
       }
       
       tools: toolBarLayout
@@ -82,9 +125,58 @@ Item {
         bottom: parent.bottom
       }
       anchors.topMargin: 10
-      model: BrowserItemModel {}
       delegate: browserItemDelegate
+      model: browserModel
       focus: true
+    }
+
+    Component.onCompleted: {
+      scanner.start()
+    }
+  }
+
+  function getWorkgroups() {
+    if ( scanner.workgroups.length != 0 )
+    {
+      for ( var i = 0; i < scanner.workgroups.length; i++ )
+      {
+        browserModel.append( { "itemIcon": scanner.workgroups[i].icon,
+                               "itemName": scanner.workgroups[i].workgroupName,
+                               "itemComment": "" } )
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+
+  function getHosts() {
+    if ( scanner.hosts.length != 0 )
+    {
+      for ( var i = 0; i < scanner.hosts.length; i++ )
+      {
+        print( scanner.hosts[i].hostName )
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+
+  function getShares() {
+    if ( scanner.shares.length != 0 )
+    {
+      for ( var i = 0; i < scanner.shares.length; i++ )
+      {
+        print( scanner.shares[i].shareName )
+      }
+    }
+    else
+    {
+      // Do nothing
     }
   }
 }
+
