@@ -25,6 +25,7 @@ set( smb4kcore_LIB_SRCS
   smb4kipaddressscanner_p.cpp
   smb4kmounter.cpp
   smb4kmounter_p.cpp
+  smb4knetworkobject.cpp
   smb4knotification.cpp
   smb4kpreviewer.cpp
   smb4kpreviewer_p.cpp
@@ -77,6 +78,7 @@ if ( INSTALL_HEADER_FILES )
     smb4khost.h
     smb4kipaddressscanner.h
     smb4kmounter.h
+    smb4knetworkobject.h
     smb4knotification.h
     smb4kpreviewer.h
     smb4kprint.h
