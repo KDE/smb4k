@@ -54,7 +54,7 @@ Item {
   }
   
   Component {
-    id: browserItemDelegate    
+    id: browserItemDelegate
     Item {
       width: browserListView.width
       height: 30
@@ -68,7 +68,7 @@ Item {
           }
         }
         Column {
-          Text { text: "<b>"+itemName+"</b>" }
+          Text { text: itemName }
           Text { text: "<font size=\"-1\">"+itemComment+"</font>" }
         }
       }
@@ -127,6 +127,7 @@ Item {
       anchors.topMargin: 10
       delegate: browserItemDelegate
       model: browserModel
+//       highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
       focus: true
     }
 
@@ -136,26 +137,68 @@ Item {
   }
 
   function getWorkgroups() {
-    if ( scanner.workgroups.length != 0 )
-    {
-      for ( var i = 0; i < scanner.workgroups.length; i++ )
-      {
-        browserModel.append( { "itemIcon": scanner.workgroups[i].icon,
-                               "itemName": scanner.workgroups[i].workgroupName,
-                               "itemComment": "" } )
+    if ( browserModel.count != 0 ) {
+      for ( var i = 0; i < browserModel.count; i++ ) {
+        var have_item = false
+        
+        for ( var j = 0; j < scanner.workgroups.length; j++ ) {
+          if ( scanner.workgroups[j].workgroupName == browserModel.get( i ).itemName ) {
+            have_item = true
+            break
+          }
+          else {
+            // Do nothing
+          }
+        }
+        
+        if ( !have_item ) {
+          // FIXME: Is this safe?
+          browserModel.remove( i )
+        }
+        else {
+          // Do nothing
+        }
       }
     }
-    else
-    {
+    else {
       // Do nothing
+    }
+    
+    if ( scanner.workgroups.length != 0 ) {
+      for ( var i = 0; i < scanner.workgroups.length; i++ ) {
+        var have_item = false
+        
+        if ( browserModel.count != 0 ) {
+          for ( var j = 0; j < browserModel.count; j++ ) {
+            if ( browserModel.get( j ).itemName == scanner.workgroups[i].workgroupName ) {
+              have_item = true
+              break
+            }
+            else {
+              // Do nothing
+            }
+          }
+        }
+        
+        if ( !have_item ) {
+          browserModel.append( { "itemName": scanner.workgroups[i].workgroupName,
+                                 "itemComment": scanner.workgroups[i].comment,
+                                 "itemIcon": scanner.workgroups[i].icon } )
+        }
+        else {
+          // Do nothing
+        }
+      }
+    }
+    else {
+      browserModel.clear
     }
   }
 
   function getHosts() {
     if ( scanner.hosts.length != 0 )
     {
-      for ( var i = 0; i < scanner.hosts.length; i++ )
-      {
+      for ( var i = 0; i < scanner.hosts.length; i++ ) {
         print( scanner.hosts[i].hostName )
       }
     }
@@ -166,8 +209,7 @@ Item {
   }
 
   function getShares() {
-    if ( scanner.shares.length != 0 )
-    {
+    if ( scanner.shares.length != 0 ) {
       for ( var i = 0; i < scanner.shares.length; i++ )
       {
         print( scanner.shares[i].shareName )
@@ -177,6 +219,10 @@ Item {
     {
       // Do nothing
     }
+  }
+  
+  function itemClicked() {
+    print( "Item clicked: "+browserModel.get( browserListView.currentIndex ).itemName )
   }
 }
 
