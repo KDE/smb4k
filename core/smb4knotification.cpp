@@ -422,7 +422,7 @@ void Smb4KNotification::unmountingFailed( Smb4KShare *share, const QString &err_
   }
   else
   {
-    text = i18n( "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.", share->unc(), share->path() );
+    text = i18n( "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>", share->unc(), share->path() );
   }
   
   KNotification *notification = KNotification::event( KNotification::Error,
