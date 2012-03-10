@@ -165,4 +165,30 @@ const QIcon Smb4KNetworkObject::icon()
   return icon;
 }
 
+
+const QString Smb4KNetworkObject::comment()
+{
+  QString comment;
+  
+  switch ( m_type )
+  {
+    case Host:
+    {
+      comment = m_host.comment();
+      break;
+    }
+    case Share:
+    {
+      comment = m_share.comment();
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+  
+  return comment;
+}
+
 #include "smb4knetworkobject.moc"

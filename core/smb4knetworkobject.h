@@ -51,21 +51,22 @@
 class KDE_EXPORT Smb4KNetworkObject : public QObject
 {
   Q_OBJECT
-
-  Q_PROPERTY( int type READ type CONSTANT )
+  Q_ENUMS( Type )
+  Q_PROPERTY( Type type READ type CONSTANT )
   Q_PROPERTY( QString workgroupName READ workgroupName CONSTANT )
   Q_PROPERTY( QString hostName READ hostName CONSTANT )
   Q_PROPERTY( QString shareName READ shareName CONSTANT )
   Q_PROPERTY( QIcon icon READ icon CONSTANT )
+  Q_PROPERTY( QString comment READ comment CONSTANT )
 
   public:
     /**
      * Type enumeration
      */
-    enum Type { Workgroup,
-                Host,
-                Share,
-                Unknown };
+    enum Type { Workgroup = 0,
+                Host = 1,
+                Share = 2,
+                Unknown = 3 };
                 
     /**
      * Constructor for a workgroup.
@@ -95,7 +96,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
     /**
      * This function returns the type
      */
-    int type() const { return m_type; }
+    Type type() const { return m_type; }
 
     /**
      * Returns the workgroup name
@@ -129,11 +130,19 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      */
     const QIcon icon();
     
+    /**
+     * This function returns the comment of a network item or an
+     * empty string if there is no comment defined.
+     * 
+     * @returns the comment
+     */
+    const QString comment();
+    
   private:
     Smb4KWorkgroup m_workgroup;
     Smb4KHost m_host;
     Smb4KShare m_share;
-    int m_type;
+    Type m_type;
 };
 
 #endif
