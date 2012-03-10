@@ -55,7 +55,7 @@ target_link_libraries( smb4kcore
   ${KDE4_KIO_LIBS}
   ${KDE4_SOLID_LIBS} )
 
-set_target_properties( smb4kcore PROPERTIES VERSION 4.0.0 SOVERSION 4 )
+set_target_properties( smb4kcore PROPERTIES VERSION 4.1.0 SOVERSION 4 )
 install( TARGETS smb4kcore DESTINATION ${LIB_INSTALL_DIR} )
 
 
