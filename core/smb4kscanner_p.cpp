@@ -701,12 +701,13 @@ void Smb4KQueryMasterJob::slotStartLookup()
   }
 
   // User name and password if needed
-  if ( Smb4KSettings::masterBrowsersRequireAuth() )
+  if ( Smb4KSettings::masterBrowsersRequireAuth() && !host.login().isEmpty() )
   {
     arguments << QString( "-U %1%" ).arg( host.login() );
   }
   else
   {
+    // Do *not* change this to "-U guest%". This won't work.
     arguments << "-U %";
   }
   
@@ -765,12 +766,13 @@ void Smb4KQueryMasterJob::slotStartLookup()
   }
 
   // User name and password if needed
-  if ( Smb4KSettings::masterBrowsersRequireAuth() )
+  if ( Smb4KSettings::masterBrowsersRequireAuth() && !host.login().isEmpty() )
   {
     arguments << QString( "-U %1%" ).arg( host.login() );
   }
   else
   {
+    // Do *not* change this to "-U guest%". This won't work.
     arguments << "-U %";
   }
 
@@ -795,13 +797,13 @@ void Smb4KQueryMasterJob::slotStartLookup()
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
   m_proc->setShellCommand( arguments.join( " " ) );
 
-  if ( Smb4KSettings::masterBrowsersRequireAuth() )
+  if ( Smb4KSettings::masterBrowsersRequireAuth() && !host.password().isEmpty() )
   {
-    m_proc->setEnv( "PASSWD", host.password() );
+    m_proc->setEnv( "PASSWD", host.password(), true );
   }
   else
   {
-    // Do nothing
+    m_proc->unsetEnv( "PASSWD" );
   }
 
   connect( m_proc, SIGNAL( readyReadStandardError() ), this, SLOT( slotReadStandardError() ) );
@@ -1619,20 +1621,13 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
     arguments << QString( "-S %1" ).arg( KShell::quoteArg( m_workgroup.masterBrowserName() ) );
 
     // Authentication, if needed
-    if ( Smb4KSettings::masterBrowsersRequireAuth() )
+    if ( Smb4KSettings::masterBrowsersRequireAuth() && !m_master_browser.login().isEmpty() )
     {
-      if ( !m_master_browser.login().isEmpty() )
-      {
-        arguments << QString( "-U %1" ).arg( m_master_browser.login() );
-        // Password will be set below.
-      }
-      else
-      {
-        arguments << "-U %";
-      }
+      arguments << QString( "-U %1" ).arg( m_master_browser.login() );
     }
     else
     {
+      // Do *not* change this to "-U guest%". This won't work.
       arguments << "-U %";
     }
 
@@ -1640,13 +1635,13 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
     m_proc->setShellCommand( arguments.join( " " ) );
     m_proc->setOutputChannelMode( KProcess::SeparateChannels );
 
-    if ( Smb4KSettings::self()->masterBrowsersRequireAuth() )
+    if ( Smb4KSettings::self()->masterBrowsersRequireAuth() && !m_master_browser.password().isEmpty() )
     {
       m_proc->setEnv( "PASSWD", m_master_browser.password(), true );
     }
     else
     {
-      // Do nothing
+      m_proc->unsetEnv( "PASSWD" );
     }
   
     connect( m_proc, SIGNAL( readyReadStandardError() ), SLOT( slotReadStandardError() ) );
@@ -2075,7 +2070,7 @@ void Smb4KLookupSharesJob::slotStartLookup()
   }
   
   // Authentication data
-  if ( !m_host.login().isEmpty() )
+  if ( !m_host.login().isEmpty() && !m_host.login().isEmpty() )
   {
     arguments << QString( "-U %1" ).arg( m_host.login() );
   }
@@ -2090,7 +2085,15 @@ void Smb4KLookupSharesJob::slotStartLookup()
   m_proc = new Smb4KProcess( this );
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
   m_proc->setShellCommand( arguments.join( " " ) );
-  m_proc->setEnv( "PASSWD", m_host.password(), true );
+  
+  if ( !m_host.password().isEmpty() )
+  {
+    m_proc->setEnv( "PASSWD", m_host.password(), true );
+  }
+  else
+  {
+    m_proc->unsetEnv( "PASSWD" );
+  }
 
   connect( m_proc, SIGNAL( readyReadStandardError() ), this, SLOT( slotReadStandardError() ) );
   connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), this, SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
