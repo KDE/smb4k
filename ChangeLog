@@ -1,4 +1,4 @@
-Smb4K 1.0.1 (????-??-??):
+Smb4K 1.0.1 (2012-03-11):
 - Fixed potential crash in Smb4KWalletManager::init().
 - Fixed KDEInit complaining when Smb4K is started from a desktop icon
   (closes SF ticket #23).
