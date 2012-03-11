@@ -686,7 +686,7 @@ void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
     {
       if ( m_periodic_jobs.isEmpty() )
       {
-        // This case occurs when the user enables periodic scanning during 
+        // This case occurs when the user enables periodic scanning during
         // runtime. We need to fill the list of periodic jobs here, so that
         // we can immediately start periodic scanning.
         m_periodic_jobs << LookupDomains;
@@ -695,11 +695,11 @@ void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
       }
       else
       {
-        // This is the regular case. We do not need to do anything.        
+        // This is the regular case. We do not need to do anything.
       }
-      
+
       Process p = m_periodic_jobs.takeFirst();
-      
+
       switch ( p )
       {
         case LookupDomains:
@@ -718,9 +718,9 @@ void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
     {
       if ( m_interval >= (Smb4KSettings::scanInterval() * 60000 /* milliseconds */) )
       {
-        // Reset interval
-        m_interval = 0;
-        
+        // Reset interval. Since the check above 
+        m_interval = -TIMER_INTERVAL;
+
         // Fill list
         m_periodic_jobs << LookupDomains;
         m_periodic_jobs << LookupDomainMembers;
@@ -733,7 +733,7 @@ void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
         if ( !m_periodic_jobs.isEmpty() && m_scanning_allowed )
         {
           Process p = m_periodic_jobs.takeFirst();
-          
+
           switch ( p )
           {
             case LookupDomainMembers:
@@ -766,7 +766,7 @@ void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
         }
       }
     }
-    
+
     m_interval += TIMER_INTERVAL;
   }
   else

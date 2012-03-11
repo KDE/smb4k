@@ -1,3 +1,9 @@
+Smb4K 1.0.1 (????-??-??):
+- Fixed potential crash in Smb4KWalletManager::init().
+- Fixed KDEInit complaining when Smb4K is started from a desktop icon
+  (closes SF ticket #23).
+- Fixed periodic scanning.
+
 Smb4K 1.0.0 (2012-02-01):
 - KDE SC 4.4.0 and Qt 4.7.0 or later are required.
 - We now use Utf8 throughout the whole application (closes #14674 and
