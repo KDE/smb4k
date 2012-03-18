@@ -35,6 +35,8 @@ Item {
   id: mainwindow
   property int minimumWidth: 300
   property int minimumHeight: 200
+  property string parent_item: ""
+  property int parent_type: 3 // Unknown
   
   Scanner {
     id: scanner
@@ -47,12 +49,18 @@ Item {
     onSharesChanged: {
       getShares()
     }
+    onAboutToStart: {
+      busy()
+    }
+    onFinished: {
+      idle()
+    }
   }
 
   Mounter {
     id: mounter
   }
-  
+
   Component {
     id: browserItemDelegate
     Item {
@@ -110,6 +118,13 @@ Item {
           id: abortButton
           iconSource: "process-stop"
         }
+        
+        PlasmaComponents.BusyIndicator {
+          id: busyIndicator
+          height: 22
+          width: 22
+          visible: false
+        }
       }
       
       tools: toolBarLayout
@@ -137,12 +152,24 @@ Item {
   }
 
   function getWorkgroups() {
-    if ( browserModel.count != 0 ) {
-      for ( var i = 0; i < browserModel.count; i++ ) {
+    
+    if ( parent_type != 3 /* unknown aka entire network */ ) {
+      print( "Parent is not the entire network" )
+      return
+    }
+    else {
+      // Do nothing
+    }
+
+    // Remove obsolete workgroups
+    if ( browserListView.model.count != 0 ) {
+      obsolete_items = new Array()
+      
+      for ( var i = 0; i < browserListView.model.count; i++ ) {
         var have_item = false
         
         for ( var j = 0; j < scanner.workgroups.length; j++ ) {
-          if ( scanner.workgroups[j].workgroupName == browserModel.get( i ).itemName ) {
+          if ( scanner.workgroups[j].workgroupName == browserListView.model.get( i ).itemName ) {
             have_item = true
             break
           }
@@ -152,25 +179,42 @@ Item {
         }
         
         if ( !have_item ) {
-          // FIXME: Is this safe?
-          browserModel.remove( i )
+          obsolete_items.push( browserListView.model.get( i ).itemName )
         }
         else {
           // Do nothing
         }
+      }
+      
+      if ( obsolete_items.length != 0 ) {
+        for ( var i = 0; i < obsolete_items.length; i++ ) {
+          for ( var j = 0; j < browserListView.model.count; j++ ) {
+            if ( obsolete_items[i].text == browserListView.model.get( j ).itemName ) {
+              browserListView.model.remove( j )
+              break
+            }
+            else {
+              continue
+            }
+          }
+        }
+      }
+      else {
+        // Do nothing
       }
     }
     else {
       // Do nothing
     }
     
+    // Add new workgroups
     if ( scanner.workgroups.length != 0 ) {
       for ( var i = 0; i < scanner.workgroups.length; i++ ) {
         var have_item = false
         
-        if ( browserModel.count != 0 ) {
-          for ( var j = 0; j < browserModel.count; j++ ) {
-            if ( browserModel.get( j ).itemName == scanner.workgroups[i].workgroupName ) {
+        if ( browserListView.model.count != 0 ) {
+          for ( var j = 0; j < browserListView.model.count; j++ ) {
+            if ( browserListView.model.get( j ).itemName == scanner.workgroups[i].workgroupName ) {
               have_item = true
               break
             }
@@ -181,9 +225,12 @@ Item {
         }
         
         if ( !have_item ) {
-          browserModel.append( { "itemName": scanner.workgroups[i].workgroupName,
+          browserListView.model.append( { 
+                                 "itemName": scanner.workgroups[i].workgroupName,
                                  "itemComment": scanner.workgroups[i].comment,
-                                 "itemIcon": scanner.workgroups[i].icon } )
+                                 "itemIcon": scanner.workgroups[i].icon, 
+                                 "itemURL": scanner.workgroups[i].url,
+                                 "itemType": scanner.workgroups[i].type } )
         }
         else {
           // Do nothing
@@ -191,38 +238,241 @@ Item {
       }
     }
     else {
-      browserModel.clear
+      while ( browserListView.model.count != 0 ) {
+        browserListView.model.remove( 0 )
+      }
     }
   }
 
   function getHosts() {
-    if ( scanner.hosts.length != 0 )
-    {
-      for ( var i = 0; i < scanner.hosts.length; i++ ) {
-        print( scanner.hosts[i].hostName )
+    
+    if ( parent_type != 0 /* workgroup */ ) {
+      print( "Parent is not a workgroup" )
+      return
+    }
+    else {
+      // Do nothing
+    }
+    
+    // Remove obsolete hosts
+    if ( browserListView.model.count != 0 ) {
+      obsolete_items = new Array()
+      
+      for ( var i = 0; i < browserListView.model.count; i++ ) {
+        var have_item = false
+        
+        for ( var j = 0; j < scanner.hosts.length; j++ ) {
+          if ( scanner.hosts[j].hostName == browserListView.model.get( i ).itemName ) {
+            have_item = true
+            break
+          }
+          else {
+            // Do nothing
+          }
+        }
+        
+        if ( !have_item ) {
+          obsolete_items.push( browserListView.model.get( i ).itemName )
+        }
+        else {
+          // Do nothing
+        }
+      }
+      
+      if ( obsolete_items.length != 0 ) {
+        for ( var i = 0; i < obsolete_items.length; i++ ) {
+          for ( var j = 0; j < browserListView.model.count; j++ ) {
+            if ( obsolete_items[i].text == browserListView.model.get( j ).itemName ) {
+              browserListView.model.remove( j )
+              break
+            }
+            else {
+              continue
+            }
+          }
+        }
+      }
+      else {
+        // Do nothing
       }
     }
-    else
-    {
+    else {
       // Do nothing
+    }
+    
+    // Add new hosts
+    if ( scanner.hosts.length != 0 ) {
+      for ( var i = 0; i < scanner.hosts.length; i++ ) {
+        
+        if ( scanner.hosts[i].workgroupName != parent_item ) {
+          continue
+        }
+        else {
+          // Do nothing
+        }
+        
+        var have_item = false
+        
+        if ( browserListView.model.count != 0 ) {
+          for ( var j = 0; j < browserListView.model.count; j++ ) {
+            if ( browserListView.model.get( j ).itemName == scanner.hosts[i].hostName ) {
+              have_item = true
+              break
+            }
+            else {
+              // Do nothing
+            }
+          }
+        }
+        
+        if ( !have_item ) {
+          browserListView.model.append( { 
+                                 "itemName": scanner.hosts[i].hostName,
+                                 "itemComment": scanner.hosts[i].comment,
+                                 "itemIcon": scanner.hosts[i].icon, 
+                                 "itemURL": scanner.hosts[i].url,
+                                 "itemType": scanner.hosts[i].type } )
+        }
+        else {
+          // Do nothing
+        }
+      }
+    }
+    else {
+      while ( browserListView.model.count != 0 ) {
+        browserListView.model.remove( 0 )
+      }
     }
   }
 
   function getShares() {
-    if ( scanner.shares.length != 0 ) {
-      for ( var i = 0; i < scanner.shares.length; i++ )
-      {
-        print( scanner.shares[i].shareName )
+    
+    if ( parent_type != 1 /* host */ ) {
+      print( "Parent is not a host" )
+      return
+    }
+    else {
+      // Do nothing
+    }
+    
+    // Remove obsolete shares
+    if ( browserListView.model.count != 0 ) {
+      obsolete_items = new Array()
+      
+      for ( var i = 0; i < browserListView.model.count; i++ ) {
+        var have_item = false
+        
+        for ( var j = 0; j < scanner.shares.length; j++ ) {
+          if ( scanner.shares[j].hostName == browserListView.model.get( i ).itemName ) {
+            have_item = true
+            break
+          }
+          else {
+            // Do nothing
+          }
+        }
+        
+        if ( !have_item ) {
+          obsolete_items.push( browserListView.model.get( i ).itemName )
+        }
+        else {
+          // Do nothing
+        }
+      }
+      
+      if ( obsolete_items.length != 0 ) {
+        for ( var i = 0; i < obsolete_items.length; i++ ) {
+          for ( var j = 0; j < browserListView.model.count; j++ ) {
+            if ( obsolete_items[i].text == browserListView.model.get( j ).itemName ) {
+              browserListView.model.remove( j )
+              break
+            }
+            else {
+              continue
+            }
+          }
+        }
+      }
+      else {
+        // Do nothing
       }
     }
-    else
-    {
+    else {
       // Do nothing
+    }
+    
+    // Add new shares
+    if ( scanner.shares.length != 0 ) {
+      for ( var i = 0; i < scanner.shares.length; i++ ) {
+        
+        if ( scanner.shares[i].hostName != parent_item ) {
+          continue
+        }
+        else {
+          // Do nothing
+        }
+        
+        var have_item = false
+        
+        if ( browserListView.model.count != 0 ) {
+          for ( var j = 0; j < browserListView.model.count; j++ ) {
+            if ( browserListView.model.get( j ).itemName == scanner.shares[i].shareName ) {
+              have_item = true
+              break
+            }
+            else {
+              // Do nothing
+            }
+          }
+        }
+        
+        if ( !have_item ) {
+          browserListView.model.append( { 
+                                 "itemName": scanner.shares[i].shareName,
+                                 "itemComment": scanner.shares[i].comment,
+                                 "itemIcon": scanner.shares[i].icon, 
+                                 "itemURL": scanner.shares[i].url,
+                                 "itemType": scanner.shares[i].type } )
+        }
+        else {
+          // Do nothing
+        }
+      }
+    }
+    else {
+      while ( browserListView.model.count != 0 ) {
+        browserListView.model.remove( 0 )
+      }
     }
   }
   
   function itemClicked() {
-    print( "Item clicked: "+browserModel.get( browserListView.currentIndex ).itemName )
+    parent_item = browserListView.model.get( browserListView.currentIndex ).itemName
+    parent_type = browserListView.model.get( browserListView.currentIndex ).itemType
+    
+    if ( parent_type < 2 /* 2 = share */ )
+    {
+      scanner.lookup( browserListView.model.get( browserListView.currentIndex ).itemURL,
+                      browserListView.model.get( browserListView.currentIndex ).itemType )
+      
+      while ( browserListView.model.count != 0 ) {
+        browserListView.model.remove( 0 )
+      }
+    }
+    else
+    {
+      // FIXME
+    }
+  }
+  
+  function busy() {
+    busyIndicator.visible = true
+    busyIndicator.running = true
+  }
+  
+  function idle() {
+    busyIndicator.running = false
+    busyIndicator.visible = false
   }
 }
 
