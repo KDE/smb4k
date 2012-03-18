@@ -136,7 +136,7 @@ void Smb4KSearch::search( const QString &string, QWidget *parent )
   connect( job, SIGNAL( aboutToStart( const QString & ) ), SIGNAL( aboutToStart( const QString & ) ) );
   connect( job, SIGNAL( finished( const QString & ) ), SIGNAL( finished( const QString & ) ) );
 
-  if ( !hasSubjobs() )
+  if ( !hasSubjobs() && modifyCursor() )
   {
     QApplication::setOverrideCursor( Qt::BusyCursor );
   }
@@ -225,7 +225,7 @@ void Smb4KSearch::slotJobFinished( KJob *job )
 {
   removeSubjob( job );
 
-  if ( !hasSubjobs() )
+  if ( !hasSubjobs() && modifyCursor() )
   {
     QApplication::restoreOverrideCursor();
   }
