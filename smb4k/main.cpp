@@ -97,8 +97,8 @@ extern "C" KDE_EXPORT int kdemain( int argc, char **argv )
   Smb4KMainWindow *main_window = new Smb4KMainWindow();
   main_window->setVisible( !Smb4KSettings::startMainWindowDocked() );
 
-  // Initialize the core.
-  initCore();
+  // Initialize the core. Use a busy cursor.
+  initCore( true );
 
   return app.exec();
 }
