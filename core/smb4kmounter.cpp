@@ -661,7 +661,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share, QWidget *parent )
   connect( job, SIGNAL( finished( const QList<Smb4KShare> & ) ), SLOT( slotFinishedMounting( const QList<Smb4KShare> & ) ) );
   connect( job, SIGNAL( mounted( Smb4KShare * ) ), SLOT( slotShareMounted( Smb4KShare * ) ) );
 
-  if ( !hasSubjobs() )
+  if ( !hasSubjobs() && modifyCursor() )
   {
     QApplication::setOverrideCursor( Qt::BusyCursor );
   }
@@ -826,7 +826,7 @@ void Smb4KMounter::mountShares( const QList<Smb4KShare *> &shares, QWidget *pare
   connect( job, SIGNAL( finished( const QList<Smb4KShare> & ) ), SLOT( slotFinishedMounting( const QList<Smb4KShare> & ) ) );
   connect( job, SIGNAL( mounted( Smb4KShare * ) ), SLOT( slotShareMounted( Smb4KShare * ) ) );
   
-  if ( !hasSubjobs() )
+  if ( !hasSubjobs() && modifyCursor() )
   {
     QApplication::setOverrideCursor( Qt::BusyCursor );
   }
@@ -949,7 +949,7 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool silent, QWidget *parent
   connect( job, SIGNAL( finished( const QList<Smb4KShare> & ) ), SLOT( slotFinishedUnmounting( const QList<Smb4KShare> & ) ) );
   connect( job, SIGNAL( unmounted( Smb4KShare * ) ), SLOT( slotShareUnmounted( Smb4KShare * ) ) );
 
-  if ( !hasSubjobs() )
+  if ( !hasSubjobs() && modifyCursor() )
   {
     QApplication::setOverrideCursor( Qt::BusyCursor );
   }
@@ -1083,7 +1083,7 @@ void Smb4KMounter::unmountShares( const QList<Smb4KShare *> &shares, bool silent
   connect( job, SIGNAL( finished( const QList<Smb4KShare> & ) ), SLOT( slotFinishedUnmounting( const QList<Smb4KShare> & ) ) );
   connect( job, SIGNAL( unmounted( Smb4KShare * ) ), SLOT( slotShareUnmounted( Smb4KShare * ) ) );
 
-  if ( !hasSubjobs() )
+  if ( !hasSubjobs() && modifyCursor() )
   {
     QApplication::setOverrideCursor( Qt::BusyCursor );
   }
@@ -1368,7 +1368,7 @@ void Smb4KMounter::slotJobFinished( KJob *job )
 {
   removeSubjob( job );
 
-  if ( !hasSubjobs() )
+  if ( !hasSubjobs() && modifyCursor() )
   {
     QApplication::restoreOverrideCursor();
   }
