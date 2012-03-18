@@ -486,7 +486,7 @@ void Smb4KScanner::lookupDomains( QWidget *parent )
     connect( job, SIGNAL( finished() ), SLOT( slotDomainsLookupFinished() ) );
     connect( job, SIGNAL( workgroups( const QList<Smb4KWorkgroup> & ) ), SLOT( slotWorkgroups( const QList<Smb4KWorkgroup> & ) ) );
 
-    if ( !hasSubjobs() )
+    if ( !hasSubjobs() && modifyCursor() )
     {
       QApplication::setOverrideCursor( Qt::BusyCursor );
     }
@@ -511,7 +511,7 @@ void Smb4KScanner::lookupDomains( QWidget *parent )
     connect( job, SIGNAL( workgroups( const QList<Smb4KWorkgroup> & ) ), SLOT( slotWorkgroups( const QList<Smb4KWorkgroup> & ) ) );
     connect( job, SIGNAL( authError( Smb4KQueryMasterJob * ) ), SLOT( slotAuthError( Smb4KQueryMasterJob * ) ) );
 
-    if ( !hasSubjobs() )
+    if ( !hasSubjobs() && modifyCursor() )
     {
       QApplication::setOverrideCursor( Qt::BusyCursor );
     }
@@ -549,7 +549,7 @@ void Smb4KScanner::lookupDomains( QWidget *parent )
     connect( job, SIGNAL( workgroups( const QList<Smb4KWorkgroup> & ) ), SLOT( slotWorkgroups( const QList<Smb4KWorkgroup> & ) ) );
     connect( job, SIGNAL( authError( Smb4KQueryMasterJob * ) ), SLOT( slotAuthError( Smb4KQueryMasterJob * ) ) );
 
-    if ( !hasSubjobs() )
+    if ( !hasSubjobs() && modifyCursor() )
     {
       QApplication::setOverrideCursor( Qt::BusyCursor );
     }
@@ -576,7 +576,7 @@ void Smb4KScanner::lookupDomains( QWidget *parent )
       connect( job, SIGNAL( workgroups( const QList<Smb4KWorkgroup> & ) ), SLOT( slotWorkgroups( const QList<Smb4KWorkgroup> & ) ) );
       connect( job, SIGNAL( hosts( const QList<Smb4KHost> & ) ), SLOT( slotHosts( const QList<Smb4KHost> & ) ) );
 
-      if ( !hasSubjobs() )
+      if ( !hasSubjobs() && modifyCursor() )
       {
         QApplication::setOverrideCursor( Qt::BusyCursor );
       }
@@ -616,7 +616,7 @@ void Smb4KScanner::lookupDomainMembers( Smb4KWorkgroup *workgroup, QWidget *pare
   connect( job, SIGNAL( hosts( Smb4KWorkgroup *, const QList<Smb4KHost> & ) ), SLOT( slotHosts( Smb4KWorkgroup *, const QList<Smb4KHost> & ) ) );
   connect( job, SIGNAL( authError( Smb4KLookupDomainMembersJob * ) ), SLOT( slotAuthError( Smb4KLookupDomainMembersJob * ) ) );
 
-  if ( !hasSubjobs() )
+  if ( !hasSubjobs() && modifyCursor() )
   {
     QApplication::setOverrideCursor( Qt::BusyCursor );
   }
@@ -645,7 +645,7 @@ void Smb4KScanner::lookupShares( Smb4KHost *host, QWidget *parent )
   connect( job, SIGNAL( shares( Smb4KHost *, const QList<Smb4KShare> & ) ), SLOT( slotShares( Smb4KHost *, const QList<Smb4KShare> &) ) );
   connect( job, SIGNAL( authError( Smb4KLookupSharesJob * ) ), SLOT( slotAuthError( Smb4KLookupSharesJob * ) ) );
   
-  if ( !hasSubjobs() )
+  if ( !hasSubjobs() && modifyCursor() )
   {
     QApplication::setOverrideCursor( Qt::BusyCursor );
   }
@@ -687,7 +687,7 @@ void Smb4KScanner::lookupInfo( Smb4KHost *host, QWidget *parent )
   connect( job, SIGNAL( finished( Smb4KHost * ) ), SLOT( slotSharesLookupFinished( Smb4KHost * ) ) );
   connect( job, SIGNAL( info( Smb4KHost * ) ), SLOT( slotInfo( Smb4KHost * ) ) );
     
-  if ( !hasSubjobs() )
+  if ( !hasSubjobs() && modifyCursor() )
   {
     QApplication::setOverrideCursor( Qt::BusyCursor );
   }
@@ -717,6 +717,54 @@ QDeclarativeListProperty<Smb4KNetworkObject> Smb4KScanner::hosts()
 QDeclarativeListProperty<Smb4KNetworkObject> Smb4KScanner::shares()
 {
   return QDeclarativeListProperty<Smb4KNetworkObject>( this, m_share_objects );
+}
+
+
+void Smb4KScanner::lookup( const QUrl& url, int type )
+{
+  switch ( type )
+  {
+    case Smb4KNetworkObject::Unknown:
+    {
+      lookupDomains();
+      break;
+    }
+    case Smb4KNetworkObject::Workgroup:
+    {
+      // Check if the workgroup is known.
+      Smb4KWorkgroup *workgroup = findWorkgroup( url.host().toUpper() );
+      
+      if ( workgroup )
+      {
+        lookupDomainMembers( workgroup );
+      }
+      else
+      {
+        // Do nothing
+      }
+      break;
+    }
+    case Smb4KNetworkObject::Host:
+    {
+      // Check if the host is known.
+      Smb4KHost *host = findHost( url.host().toUpper() );
+      
+      if ( host )
+      {
+        lookupShares( host );
+      }
+      else
+      {
+        // Do nothing
+      }
+      break;
+    }
+    default:
+    {
+      // Shares are ignored
+      break;
+    }
+  }
 }
 
 
@@ -865,7 +913,7 @@ void Smb4KScanner::slotJobFinished( KJob *job )
 {
   removeSubjob( job );
 
-  if ( !hasSubjobs() )
+  if ( !hasSubjobs() && modifyCursor() )
   {
     QApplication::restoreOverrideCursor();
   }
@@ -913,7 +961,7 @@ void Smb4KScanner::slotAuthError( Smb4KQueryMasterJob *job )
     connect( job, SIGNAL( workgroups( const QList<Smb4KWorkgroup> & ) ), SLOT( slotWorkgroups( const QList<Smb4KWorkgroup> & ) ) );
     connect( job, SIGNAL( authError( Smb4KQueryMasterJob * ) ), SLOT( slotAuthError( Smb4KQueryMasterJob * ) ) );
 
-    if ( !hasSubjobs() )
+    if ( !hasSubjobs() && modifyCursor() )
     {
       QApplication::setOverrideCursor( Qt::BusyCursor );
     }
