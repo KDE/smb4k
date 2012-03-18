@@ -108,6 +108,12 @@ class Smb4KGlobalPrivate : public QObject
      * been initialized
      */
     bool coreInitialized;
+    
+    /**
+     * Boolean that determines if the core classes should set
+     * a busy cursor when they are doing something or not.
+     */
+    bool modifyCursor;
 
   public slots:
     /**
