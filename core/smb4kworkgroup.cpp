@@ -35,14 +35,16 @@
 #include <smb4kworkgroup.h>
 
 Smb4KWorkgroup::Smb4KWorkgroup( const QString &name ) : Smb4KBasicNetworkItem( Workgroup ),
-  m_name( name ), m_master_name( QString() ), m_master_ip( QString() ), m_pseudo_master( false )
+  m_url( QUrl() ), m_master_name( QString() ), m_master_ip( QString() ), m_pseudo_master( false )
 {
+  m_url.setHost( name );
+  m_url.setScheme( "smb" );
   setIcon( KIcon( "network-workgroup" ) );
 }
 
 
 Smb4KWorkgroup::Smb4KWorkgroup( const Smb4KWorkgroup &w ) : Smb4KBasicNetworkItem( Workgroup ),
-  m_name( w.workgroupName() ), m_master_name( w.masterBrowserName() ), m_master_ip( w.masterBrowserIP() ),
+  m_url( w.url() ), m_master_name( w.masterBrowserName() ), m_master_ip( w.masterBrowserIP() ),
   m_pseudo_master( w.hasPseudoMasterBrowser() )
 {
   if ( icon().isNull() )
@@ -57,7 +59,7 @@ Smb4KWorkgroup::Smb4KWorkgroup( const Smb4KWorkgroup &w ) : Smb4KBasicNetworkIte
 
 
 Smb4KWorkgroup::Smb4KWorkgroup() : Smb4KBasicNetworkItem( Workgroup ),
-  m_name( QString() ), m_master_name( QString() ), m_master_ip( QString() ), m_pseudo_master( false )
+  m_url( QUrl() ), m_master_name( QString() ), m_master_ip( QString() ), m_pseudo_master( false )
 {
 }
 
@@ -69,7 +71,8 @@ Smb4KWorkgroup::~Smb4KWorkgroup()
 
 void Smb4KWorkgroup::setWorkgroupName( const QString &name )
 {
-  m_name = name;
+  m_url.setHost( name );
+  m_url.setScheme( "smb" );
 }
 
 
@@ -95,7 +98,7 @@ bool Smb4KWorkgroup::isEmpty() const
 {
   // Ignore all booleans.
 
-  if ( !m_name.isEmpty() )
+  if ( !m_url.host().isEmpty() )
   {
     return false;
   }
@@ -120,7 +123,7 @@ bool Smb4KWorkgroup::equals( Smb4KWorkgroup *workgroup ) const
 {
   Q_ASSERT( workgroup );
 
-  if ( QString::compare( m_name, workgroup->workgroupName() ) != 0 )
+  if ( QString::compare( workgroupName(), workgroup->workgroupName() ) != 0 )
   {
     return false;
   }

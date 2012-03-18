@@ -33,6 +33,7 @@
 
 // Qt includes
 #include <QString>
+#include <QUrl>
 
 // KDE includes
 #include <kdemacros.h>
@@ -91,7 +92,7 @@ class KDE_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      *
      * @returns the workgroup name.
      */
-    const QString &workgroupName() const { return m_name; }
+    const QString workgroupName() const { return m_url.host().toUpper(); }
 
     /**
      * Sets the name of the master browser of this workgroup or domain.
@@ -174,13 +175,20 @@ class KDE_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      * @returns TRUE if the master browsers IP address is known.
      */
     bool hasMasterBrowserIP() const { return !m_master_ip.isEmpty(); }
+    
+    /**
+     * Returns the URL (the full UNC) of the workgroup item.
+     * 
+     * @returns the URL of the network item.
+     */
+    const QUrl &url() const { return m_url; }
 
   private:
     /**
-     * The name of the workgroup.
+     * The URL of the workgroup
      */
-    QString m_name;
-
+    QUrl m_url;
+    
     /**
      * The master browser's name.
      */
