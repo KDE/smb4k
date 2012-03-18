@@ -67,8 +67,11 @@ Smb4KGlobal::Smb4KEvent::~Smb4KEvent()
 
 
 
-void Smb4KGlobal::initCore()
+void Smb4KGlobal::initCore( bool modifyCursor )
 {
+  // Should the core use a busy cursor?
+  p.modifyCursor = modifyCursor;
+  
   // Set default values for some settings.
   p.setDefaultSettings();
   
@@ -824,6 +827,12 @@ const QString Smb4KGlobal::winsServer()
   }
   
   return wins_server;
+}
+
+
+bool Smb4KGlobal::modifyCursor()
+{
+  return p.modifyCursor;
 }
 
 

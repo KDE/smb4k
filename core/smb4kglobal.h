@@ -67,10 +67,13 @@ namespace Smb4KGlobal
    * core classes such as the scanner (for an initial browse list) and the mounter
    * (for the import of all externally mounted shares), it also sets some default
    * values for some of the settings used to browse the network.
+   * 
+   * By setting the @p modifyCursor parameter to TRUE, you force the core classes
+   * to set a busy cursor when they do something. Default is FALSE.
    *
    * You should execute this function before starting your main application.
    */
-  KDE_EXPORT void initCore();
+  KDE_EXPORT void initCore( bool modifyCursor = false );
 
   /**
    * Aborts all actions that are run by the core classes and that can be aborted.
@@ -390,6 +393,14 @@ namespace Smb4KGlobal
    * @returns the WINS server
    */
   KDE_EXPORT const QString winsServer();
+  
+  /**
+   * This function returns TRUE if the core classes should set a busy cursor when 
+   * they are doing something.
+   * 
+   * @returns TRUE in case a busy cursor should be set.
+   */
+  KDE_EXPORT bool modifyCursor();
 };
 
 #endif
