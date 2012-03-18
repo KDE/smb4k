@@ -58,6 +58,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
   Q_PROPERTY( QString shareName READ shareName CONSTANT )
   Q_PROPERTY( QIcon icon READ icon CONSTANT )
   Q_PROPERTY( QString comment READ comment CONSTANT )
+  Q_PROPERTY( QUrl url READ url CONSTANT )
 
   public:
     /**
@@ -137,6 +138,15 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * @returns the comment
      */
     const QString comment();
+    
+    /**
+     * This function returns the UNC/URL of this item.
+     * 
+     * Please note that a workgroup will have a UNC like smb://WORKGROUP,
+     * so to discriminate it from a host, you need to check the type()
+     * function as well.
+     */
+    const QUrl url();
     
   private:
     Smb4KWorkgroup m_workgroup;

@@ -191,4 +191,35 @@ const QString Smb4KNetworkObject::comment()
   return comment;
 }
 
+
+const QUrl Smb4KNetworkObject::url()
+{
+  QUrl url;
+  
+  switch ( m_type )
+  {
+    case Workgroup:
+    {
+      url = m_workgroup.url();
+      break;
+    }
+    case Host:
+    {
+      url = m_host.url();
+      break;
+    }
+    case Share:
+    {
+      url = m_share.url();
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+  
+  return url;
+}
+
 #include "smb4knetworkobject.moc"
