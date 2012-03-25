@@ -521,6 +521,19 @@ void Smb4KMounter::import( bool check_inaccessible )
       mountedSharesList()[i]->setIsMounted( false );
       emit unmounted( mountedSharesList().at( i ) );
       removeMountedShare( mountedSharesList().at( i ) );
+      
+      // (Re)fill the list of share object.
+      while ( !m_share_objects.isEmpty() )
+      {
+        delete m_share_objects.takeFirst();
+      }
+
+      for ( int i = 0; i < mountedSharesList().size(); ++i )
+      {
+        m_share_objects << new Smb4KNetworkObject( mountedSharesList().at( i ) );
+      }
+      
+      emit mountedSharesListChanged();
     }
     else
     {
@@ -1111,6 +1124,44 @@ void Smb4KMounter::start()
 }
 
 
+QDeclarativeListProperty< Smb4KNetworkObject > Smb4KMounter::mountedShares()
+{
+  return QDeclarativeListProperty<Smb4KNetworkObject>( this, m_share_objects );
+}
+
+
+void Smb4KMounter::mount( const QUrl &url )
+{
+  Smb4KShare *share = NULL;
+  
+  qDebug() << url;
+  
+  for ( int i = 0; i < sharesList().size(); ++i )
+  {
+    if ( url == sharesList().at( i )->url() )
+    {
+      share = sharesList()[i];
+      break;
+    }
+    else
+    {
+      continue;
+    }
+  }
+  
+  if ( share )
+  {
+    mountShare( share );
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+
+
 void Smb4KMounter::check( Smb4KShare *share )
 {
   // Get the info about the usage, etc.
@@ -1531,8 +1582,20 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
       notification->shareMounted( known_share );
     }
     
+    // (Re)fill the list of share object.
+    while ( !m_share_objects.isEmpty() )
+    {
+      delete m_share_objects.takeFirst();
+    }
+
+    for ( int i = 0; i < mountedSharesList().size(); ++i )
+    {
+      m_share_objects << new Smb4KNetworkObject( mountedSharesList().at( i ) );
+    }
+    
     // Emit the mounted() signal.
     emit mounted( known_share );
+    emit mountedSharesListChanged();
   }
   else
   {
@@ -1638,6 +1701,19 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
 
     // Remove the share from the list of mounted shares.
     removeMountedShare( known_share );
+    
+    // (Re)fill the list of share object.
+    while ( !m_share_objects.isEmpty() )
+    {
+      delete m_share_objects.takeFirst();
+    }
+
+    for ( int i = 0; i < mountedSharesList().size(); ++i )
+    {
+      m_share_objects << new Smb4KNetworkObject( mountedSharesList().at( i ) );
+    }
+    
+    emit mountedSharesListChanged();
   }
   else
   {
@@ -1958,6 +2034,18 @@ void Smb4KMounter::slotStatResult( KJob *job )
 
       Smb4KShare *new_share = new Smb4KShare( share );
       addMountedShare( new_share );
+      
+      // (Re)fill the list of share object.
+      while ( !m_share_objects.isEmpty() )
+      {
+        delete m_share_objects.takeFirst();
+      }
+
+      for ( int i = 0; i < mountedSharesList().size(); ++i )
+      {
+        m_share_objects << new Smb4KNetworkObject( mountedSharesList().at( i ) );
+      }
+  
       emit updated( new_share );
     }
     else
@@ -1965,7 +2053,20 @@ void Smb4KMounter::slotStatResult( KJob *job )
       mounted_share->setIsMounted( false );
       emit unmounted( mounted_share );
       removeMountedShare( mounted_share );
-    }  
+      
+      // (Re)fill the list of share object.
+      while ( !m_share_objects.isEmpty() )
+      {
+        delete m_share_objects.takeFirst();
+      }
+
+      for ( int i = 0; i < mountedSharesList().size(); ++i )
+      {
+        m_share_objects << new Smb4KNetworkObject( mountedSharesList().at( i ) );
+      }
+    }
+    
+    emit mountedSharesListChanged();  
   }
   else
   {
@@ -2007,7 +2108,20 @@ void Smb4KMounter::slotStatResult( KJob *job )
       // This is a new share.
       Smb4KShare *new_share = new Smb4KShare( share );
       addMountedShare( new_share );
+      
+      // (Re)fill the list of share object.
+      while ( !m_share_objects.isEmpty() )
+      {
+        delete m_share_objects.takeFirst();
+      }
+
+      for ( int i = 0; i < mountedSharesList().size(); ++i )
+      {
+        m_share_objects << new Smb4KNetworkObject( mountedSharesList().at( i ) );
+      }
+      
       emit mounted( new_share );
+      emit mountedSharesListChanged();
     }
     else
     {

@@ -35,6 +35,7 @@
 #include <QFile>
 #include <QString>
 #include <QStringList>
+#include <QDeclarativeListProperty>
 
 // KDE includes
 #include <kdemacros.h>
@@ -43,6 +44,7 @@
 
 // application specific includes
 #include "smb4ksolidinterface.h"
+#include "smb4knetworkobject.h"
 
 // forward declarations
 class Smb4KShare;
@@ -65,6 +67,9 @@ using namespace KAuth;
 class KDE_EXPORT Smb4KMounter : public KCompositeJob
 {
   Q_OBJECT
+  
+  Q_PROPERTY( QDeclarativeListProperty<Smb4KNetworkObject> mountedShares READ mountedShares NOTIFY mountedSharesListChanged )
+  Q_PROPERTY( bool running READ isRunning )
 
   friend class Smb4KMounterPrivate;
 
@@ -99,7 +104,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
     /**
      * Aborts all running processes at once.
      */
-    void abortAll();
+    Q_INVOKABLE void abortAll();
 
     /**
      * This function attempts to mount a share.
@@ -194,8 +199,30 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
     /**
      * This function starts the composite job
      */
-    void start();
-
+    Q_INVOKABLE void start();
+    
+    /**
+     * This function returns the list of mounted shares. Basically, this is the
+     * Smb4KGlobal::mountedSharesList() list converted into a list of Smb4KNetworkItem
+     * objects.
+     *
+     * @returns the list of the mounted shares.
+     */
+    QDeclarativeListProperty<Smb4KNetworkObject> mountedShares();
+    
+    /**
+     * This function takes a QUrl object and initiates the mounting of a remote
+     * share. 
+     * 
+     * Please note that this function only works with share objects that are 
+     * already known. All others will be ignored.
+     * 
+     * @param url         The URL of the network item
+     * 
+     * @param type        The type of the network item
+     */
+    Q_INVOKABLE void mount( const QUrl &url );
+    
   signals:
     /**
      * This signal is emitted whenever a share item was updated. This mainly happens
@@ -244,6 +271,12 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      */
     void finished( Smb4KShare *share,
                    int process );
+    
+    /**
+     * This signal is emitted everytime the list of mounted shares is
+     * modified.
+     */
+    void mountedSharesListChanged();
 
   protected:
     /**
@@ -432,6 +465,11 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * The mount dialog
      */
     Smb4KMountDialog *m_dialog;
+    
+    /**
+     * A list with all mounted shares encapsulted in Smb4KNetworkObjects
+     */
+    QList<Smb4KNetworkObject *> m_share_objects;
 };
 
 #endif
