@@ -36,7 +36,8 @@ Item {
   property int minimumWidth: 300
   property int minimumHeight: 200
   property string parent_item: ""
-  property int parent_type: 3 // Unknown
+  property int parent_type: 0 // Unknown
+  property url parent_url
   
   Scanner {
     id: scanner
@@ -59,13 +60,16 @@ Item {
 
   Mounter {
     id: mounter
+    onMountedSharesChanged: {
+      getMountedShares()
+    }
   }
 
   Component {
     id: browserItemDelegate
-    Item {
+    PlasmaComponents.ListItem {
       width: browserListView.width
-      height: 30
+      height: 40
       Row {
         spacing: 5
         Column {
@@ -83,6 +87,7 @@ Item {
       MouseArea {
         anchors.fill: parent
         onClicked: {
+          browserListView.currentIndex = index
           itemClicked()
         }
       }
@@ -112,11 +117,28 @@ Item {
         PlasmaComponents.ToolButton {
           id: rescanButton
           iconSource: "view-refresh"
+          enabled: true
+          onClicked: {
+            rescan()
+          }
         }
       
         PlasmaComponents.ToolButton {
           id: abortButton
           iconSource: "process-stop"
+          enabled: false
+          onClicked: {
+            abort()
+          }
+        }
+        
+        PlasmaComponents.ToolButton {
+          id: upButton
+          iconSource: "go-up"
+          enabled: false
+          onClicked: {
+            up()
+          }
         }
         
         PlasmaComponents.BusyIndicator {
@@ -130,7 +152,7 @@ Item {
       tools: toolBarLayout
       transition: "set"
     }
-  
+    
     ListView {
       id: browserListView
       anchors {
@@ -142,23 +164,35 @@ Item {
       anchors.topMargin: 10
       delegate: browserItemDelegate
       model: browserModel
-//       highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
       focus: true
+      snapMode: ListView.SnapToItem
+    }
+    
+     PlasmaComponents.ScrollBar {
+       flickableItem: browserListView
+       anchors { 
+         right: browserListView.right 
+         top: browserListView.top
+         bottom: browserListView.bottom
+      }
     }
 
     Component.onCompleted: {
       scanner.start()
+      mounter.start()
     }
   }
 
+  //
+  // Get the workgroups and show them in the list view
+  //
   function getWorkgroups() {
     
-    if ( parent_type != 3 /* unknown aka entire network */ ) {
-      print( "Parent is not the entire network" )
+    if ( parent_type != 0 /* unknown aka entire network */ ) {
       return
     }
     else {
-      // Do nothing
+      upButton.enabled = false
     }
 
     // Remove obsolete workgroups
@@ -244,14 +278,16 @@ Item {
     }
   }
 
+  //
+  // Get the hosts and show them in the list view
+  //
   function getHosts() {
     
-    if ( parent_type != 0 /* workgroup */ ) {
-      print( "Parent is not a workgroup" )
+    if ( parent_type != 1 /* workgroup */ ) {
       return
     }
     else {
-      // Do nothing
+      upButton.enabled = true
     }
     
     // Remove obsolete hosts
@@ -345,14 +381,16 @@ Item {
     }
   }
 
+  //
+  // Get the shares and show them in the list view
+  //
   function getShares() {
     
-    if ( parent_type != 1 /* host */ ) {
-      print( "Parent is not a host" )
+    if ( parent_type != 2 /* host */ ) {
       return
     }
     else {
-      // Do nothing
+      upButton.enabled = true
     }
     
     // Remove obsolete shares
@@ -446,31 +484,114 @@ Item {
     }
   }
   
+  //
+  // Get the list of mounted shares
+  //
+  function getMountedShares() {
+    print( "Get the list of mounted shares" )
+  }
+  
+  //
+  // An item was clicked
+  //
   function itemClicked() {
-    parent_item = browserListView.model.get( browserListView.currentIndex ).itemName
-    parent_type = browserListView.model.get( browserListView.currentIndex ).itemType
     
-    if ( parent_type < 2 /* 2 = share */ )
-    {
-      scanner.lookup( browserListView.model.get( browserListView.currentIndex ).itemURL,
-                      browserListView.model.get( browserListView.currentIndex ).itemType )
+    if ( browserListView.model.get( browserListView.currentIndex ).itemType < 3 /* 3 == share */ ) {
+      parent_url = browserListView.model.get( browserListView.currentIndex ).itemURL
+      parent_item = browserListView.model.get( browserListView.currentIndex ).itemName
+      parent_type = browserListView.model.get( browserListView.currentIndex ).itemType
+      
+      scanner.lookup( parent_url, parent_type )
       
       while ( browserListView.model.count != 0 ) {
         browserListView.model.remove( 0 )
       }
     }
-    else
-    {
-      // FIXME
+    else {
+      mounter.mount( browserListView.model.get( browserListView.currentIndex ).itemURL )
     }
   }
   
+  //
+  // Rescan the network neighborhood
+  //
+  function rescan() {
+    if ( parent_type < 3 /* 3 == share */ ) {
+      scanner.lookup( parent_url, parent_type )
+    }
+    else {
+      // Do nothing
+    }   
+  }
+  
+  //
+  // Abort any actions performed by the core
+  //
+  function abort() {
+    scanner.abortAll
+    mounter.abortAll
+  }
+  
+  //
+  // Go one level up
+  //
+  function up() {
+    switch ( parent_type )
+    {
+      case 1: {
+        parent_url = "smb://"
+        parent_item = ""
+        parent_type--
+        rescan()
+        break
+      }
+      case 2: {
+        var object = scanner.find( parent_url, parent_type )
+        parent_url = "smb://"+object.workgroupName
+        parent_item = object.workgroupName
+        parent_type--
+        rescan()
+        break
+      }
+      default: {
+        break
+      }
+    }
+ 
+    while ( browserListView.model.count != 0 ) {
+      browserListView.model.remove( 0 )
+    }    
+  }
+  
+  //
+  // The application is busy
+  //
   function busy() {
+    if ( scanner.running ) {
+      rescanButton.enabled = false
+    }
+    else {
+      // Do nothing
+    }
+    abortButton.enabled = true
+      
     busyIndicator.visible = true
     busyIndicator.running = true
   }
   
+  //
+  // The application has become idle
+  //
   function idle() {
+    rescanButton.enabled = true
+    
+    if ( !scanner.running && !mounter.running ) {
+      abortButton.enabled = false
+    }
+    else {
+      // Do nothing
+    }
+    
     busyIndicator.running = false
     busyIndicator.visible = false
   }
