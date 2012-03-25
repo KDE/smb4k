@@ -60,6 +60,7 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
   Q_PROPERTY( QDeclarativeListProperty<Smb4KNetworkObject> workgroups READ workgroups NOTIFY workgroupsListChanged )
   Q_PROPERTY( QDeclarativeListProperty<Smb4KNetworkObject> hosts READ hosts NOTIFY hostsListChanged )
   Q_PROPERTY( QDeclarativeListProperty<Smb4KNetworkObject> shares READ shares NOTIFY sharesListChanged )
+  Q_PROPERTY( bool running READ isRunning )
 
   friend class Smb4KScannerPrivate;
 
@@ -93,7 +94,7 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
      * This function tells you whether scan jobs are running
      * or not.
      *
-     * @returns TRUE if at least one preview job is running
+     * @returns TRUE if at least one scan job is running
      */
     bool isRunning();
 
@@ -111,7 +112,7 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
     /**
      * This function aborts all scan jobs at once.
      */
-    void abortAll();
+    Q_INVOKABLE void abortAll();
 
     /**
      * This function aborts a scan jobs that match the combination
@@ -215,6 +216,21 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
      * @param type        The type of the network item
      */
     Q_INVOKABLE void lookup( const QUrl &url, int type );
+    
+    /**
+     * This function takes a QUrl object, looks up the respective network object
+     * and returns it. If there is not such an object, NULL is returned.
+     * 
+     * Please note that this function only works with network objects that are 
+     * already known. All others will be ignored.
+     * 
+     * @param url         The URL of the network item
+     * 
+     * @param type        The type of the network item
+     * 
+     * @returns The network item or NULL if it was not found.
+     */
+    Q_INVOKABLE Smb4KNetworkObject *find( const QUrl &url, int type );
     
   protected:
     /**

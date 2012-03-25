@@ -28,6 +28,7 @@
 #include <QTimer>
 #include <QHostAddress>
 #include <QAbstractSocket>
+#include <QDebug>
 
 // KDE includes
 #include <kglobal.h>
@@ -767,6 +768,69 @@ void Smb4KScanner::lookup( const QUrl& url, int type )
   }
 }
 
+
+Smb4KNetworkObject *Smb4KScanner::find( const QUrl &url, int type )
+{
+  Smb4KNetworkObject *object = NULL;
+  
+  switch ( type )
+  {
+    case Smb4KNetworkObject::Workgroup:
+    {
+      for ( int i = 0; i < m_workgroup_objects.size(); ++i )
+      {
+        if ( url == m_workgroup_objects.at( i )->url() )
+        {
+          object = m_workgroup_objects[i];
+          break;
+        }
+        else
+        {
+          continue;
+        }
+      }
+      break;
+    }
+    case Smb4KNetworkObject::Host:
+    {
+      for ( int i = 0; i < m_host_objects.size(); ++i )
+      {
+        if ( url == m_host_objects.at( i )->url() )
+        {
+          object = m_host_objects[i];
+          break;
+        }
+        else
+        {
+          continue;
+        }
+      }
+      break;
+    }
+    case Smb4KNetworkObject::Share:
+    {
+      for ( int i = 0; i < m_share_objects.size(); ++i )
+      {
+        if ( url == m_share_objects.at( i )->url() )
+        {
+          object = m_share_objects[i];
+          break;
+        }
+        else
+        {
+          continue;
+        }
+      }
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+  
+  return object;
+}
 
 
 void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
@@ -1526,7 +1590,7 @@ void Smb4KScanner::slotShares( Smb4KHost *host, const QList<Smb4KShare> &shares_
     addShare( new Smb4KShare( internal_shares_list.at( i ) ) );
   }
 
-  // (Re)fill the list of host object.
+  // (Re)fill the list of share object.
   while ( !m_share_objects.isEmpty() )
   {
     delete m_share_objects.takeFirst();
