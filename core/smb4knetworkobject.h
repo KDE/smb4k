@@ -64,10 +64,10 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
     /**
      * Type enumeration
      */
-    enum Type { Workgroup = 0,
-                Host = 1,
-                Share = 2,
-                Unknown = 3 };
+    enum Type { Unknown = 0,
+                Workgroup = 1,
+                Host = 2,
+                Share = 3 };
                 
     /**
      * Constructor for a workgroup.
