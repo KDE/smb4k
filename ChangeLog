@@ -6,12 +6,27 @@ Smb4K 1.1.0 (????-??-??):
 - Added Smb4KNetworkObject class that derives from QObject and encapsulates
   a network item (workgroup, host, or share).
 - Revised Smb4KScanner class:
-  + To use functions from the scanner in the plasmoid, Q_EXECUTABLE and
+  + To use functions from the scanner in the plasmoid, Q_INVOKABLE and
     Q_PROPERTY macros are used.
   + Added workgroups(), hosts(), and shares() functions that return lists
     of type QDeclarativeListProperty<Smb4KNetworkObject>.
   + Added workgroupsListChanged() and sharesListChanged() signals.
   + Renamed hostListChanged() signal to hostsListChanged().
+  + Added lookup() function that takes a QUrl as argument and initiates a
+    network lookup according to the URL. The URL must already be known to
+    Smb4K otherwise this function will not do anything.
+  + Added find() function that takes a QUrl as argument and searches for 
+    a network item with the given URL. The URL must already be known to
+    Smb4K otherwise this function will not do anything.
+- Revised Smb4KMounter class:
+  + To use functions from the mounter in the plasmoid, Q_INVOKABLE and
+    Q_PROPERTY macros are used.
+  + Added mountedShares() functions that returns a list of type 
+    QDeclarativeListProperty<Smb4KNetworkObject>.
+  + Added mountedSharesListChanged() signal.
+  + Added mount() function that takes a QUrl as argument and mounts the
+    corresponding share. The URL must already be known to Smb4K otherwise 
+    this function will not do anything.
 
 Smb4K 1.0.0 (2012-02-01):
 - KDE SC 4.4.0 and Qt 4.7.0 or later are required.
