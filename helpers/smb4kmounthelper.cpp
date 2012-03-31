@@ -38,7 +38,7 @@
 // application specific includes
 #include "smb4kmounthelper.h"
 
-KDE4_AUTH_HELPER_MAIN( "de.berlios.smb4k.mounthelper", Smb4KMountHelper )
+KDE4_AUTH_HELPER_MAIN( "net.sourceforge.smb4k.mounthelper", Smb4KMountHelper )
 
 
 ActionReply Smb4KMountHelper::mount( const QVariantMap &args )

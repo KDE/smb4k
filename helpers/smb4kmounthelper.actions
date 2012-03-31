@@ -1,4 +1,4 @@
-[de.berlios.smb4k.mounthelper.mount]
+[net.sourceforge.smb4k.mounthelper.mount]
 Name=Mount action
 Name[bg]=Монтиране
 Name[da]=Monteringshandling
@@ -39,7 +39,7 @@ Description[uk]=Монтування ресурсу
 Description[x-test]=xxMounts a sharexx
 Policy=yes
 
-[de.berlios.smb4k.mounthelper.unmount]
+[net.sourceforge.smb4k.mounthelper.unmount]
 Name=Unmount action
 Name[bg]=Демонтиране
 Name[da]=Afmonteringshandling

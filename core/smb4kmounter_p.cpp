@@ -646,8 +646,8 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
   mount_command << share->canonicalPath();
 #endif
 
-  action->setName( "de.berlios.smb4k.mounthelper.mount" );
-  action->setHelperID( "de.berlios.smb4k.mounthelper" );
+  action->setName( "net.sourceforge.smb4k.mounthelper.mount" );
+  action->setHelperID( "net.sourceforge.smb4k.mounthelper" );
   action->addArgument( "mount_command", mount_command );
   action->addArgument( "home_dir", QDir::homePath() );
 
@@ -671,7 +671,7 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
 
 bool Smb4KMountJob::doKill()
 {
-  Action( "de.berlios.smb4k.mounthelper.mount" ).stop();
+  Action( "net.sourceforge.smb4k.mounthelper.mount" ).stop();
   return KJob::doKill();
 }
 
@@ -702,7 +702,7 @@ void Smb4KMountJob::slotStartMount()
   if ( !actions.isEmpty() )
   {
     emit aboutToStart( m_shares );
-    Action::executeActions( actions, NULL, "de.berlios.smb4k.mounthelper" );
+    Action::executeActions( actions, NULL, "net.sourceforge.smb4k.mounthelper" );
   }
   else
   {
@@ -938,8 +938,8 @@ bool Smb4KUnmountJob::createUnmountAction( Smb4KShare *share, bool force, bool s
 
   unmount_command << share->canonicalPath();
 
-  action->setName( "de.berlios.smb4k.mounthelper.unmount" );
-  action->setHelperID( "de.berlios.smb4k.mounthelper" );
+  action->setName( "net.sourceforge.smb4k.mounthelper.unmount" );
+  action->setHelperID( "net.sourceforge.smb4k.mounthelper" );
   action->addArgument( "umount_command", unmount_command );
 
   // Now add everything we need.
@@ -952,7 +952,7 @@ bool Smb4KUnmountJob::createUnmountAction( Smb4KShare *share, bool force, bool s
 
 bool Smb4KUnmountJob::doKill()
 {
-  Action( "de.berlios.smb4k.mounthelper.unmount" ).stop();
+  Action( "net.sourceforge.smb4k.mounthelper.unmount" ).stop();
   return KJob::doKill();
 }
 
@@ -983,7 +983,7 @@ void Smb4KUnmountJob::slotStartUnmount()
   if ( !actions.isEmpty() )
   {
     emit aboutToStart( m_shares );
-    Action::executeActions( actions, NULL, "de.berlios.smb4k.mounthelper" );
+    Action::executeActions( actions, NULL, "net.sourceforge.smb4k.mounthelper" );
   }
   else
   {
