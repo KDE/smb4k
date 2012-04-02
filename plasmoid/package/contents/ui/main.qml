@@ -65,6 +65,9 @@ Item {
     }
   }
 
+  //
+  // Delegate for the list items in the browser
+  //
   Component {
     id: browserItemDelegate
     PlasmaComponents.ListItem {
@@ -73,6 +76,7 @@ Item {
       Row {
         spacing: 5
         Column {
+          anchors.verticalCenter: parent.verticalCenter
           QIconItem {
             icon: itemIcon
             width: 22
@@ -80,6 +84,7 @@ Item {
           }
         }
         Column {
+          anchors.verticalCenter: parent.verticalCenter
           Text { text: itemName }
           Text { text: "<font size=\"-1\">"+itemComment+"</font>" }
         }
@@ -88,99 +93,162 @@ Item {
         anchors.fill: parent
         onClicked: {
           browserListView.currentIndex = index
-          itemClicked()
+          networkItemClicked()
         }
       }
     }
   }
 
-  ListModel {
-    id: browserModel
+  //
+  // The delegate for the items in the shares view
+  //
+  Component {
+    id: sharesViewItemDelegate
+    Item {
+      width: sharesView.cellWidth
+      height: sharesView.cellHeight
+      Column {
+        QIconItem {
+          icon: itemIcon
+          width: 32
+          height: 32
+          anchors.horizontalCenter: parent.horizontalCenter
+        }
+        Text {
+          text: itemName
+          anchors.horizontalCenter: parent.horizontalCenter
+        }
+        Text {
+          text: i18n( "<font size=\"-1\">on %1</font>" ).arg( itemHost )
+          anchors.horizontalCenter: parent.horizontalCenter
+        }
+      }
+      MouseArea {
+        anchors.fill: parent
+        onClicked: {
+          sharesView.currentIndex = index
+          mountedShareClicked()
+        }
+      }
+    }
   }
 
-  Item {
-    id: browser
-    anchors.fill: parent
-    
-    PlasmaComponents.ToolBar {
-      id: toolBar
-      clip: true
+  //
+  // The tool bar
+  //
+  PlasmaComponents.ToolBar {
+    id: toolBar
+    clip: true
+    anchors {
+      top: parent.top
+      left: parent.left
+      right: parent.right
+    }
+
+    PlasmaComponents.ToolBarLayout {
+      id: toolBarLayout
+      
+      PlasmaComponents.ToolButton {
+        id: rescanButton
+        iconSource: "view-refresh"
+        enabled: true
+        onClicked: {
+          rescan()
+        }
+      }
+      
+      PlasmaComponents.ToolButton {
+        id: abortButton
+        iconSource: "process-stop"
+        enabled: false
+        onClicked: {
+          abort()
+        }
+      }
+        
+      PlasmaComponents.ToolButton {
+        id: upButton
+        iconSource: "go-up"
+        enabled: false
+        onClicked: {
+          up()
+        }
+      }
+        
+      PlasmaComponents.BusyIndicator {
+        id: busyIndicator
+        height: 22
+        width: 22
+        visible: false
+      }
+    }
+      
+    tools: toolBarLayout
+    transition: "set"
+  }
+
+  //
+  // The browser widget
+  //
+  ListView {
+    id: browserListView
+    anchors {
+      top: toolBar.bottom
+      left: parent.left
+//       right: sharesView.left
+      bottom: parent.bottom
+    }
+    anchors.topMargin: 2
+    anchors.rightMargin: 5
+    width: parent.width / 2
+    delegate: browserItemDelegate
+    model: ListModel {}
+    focus: true
+    snapMode: ListView.SnapToItem
+
+    PlasmaComponents.ScrollBar {
+      flickableItem: parent
       anchors {
+        right: parent.right
         top: parent.top
-        left: parent.left
-        right: parent.right
-      }
-
-      PlasmaComponents.ToolBarLayout {
-        id: toolBarLayout
-      
-        PlasmaComponents.ToolButton {
-          id: rescanButton
-          iconSource: "view-refresh"
-          enabled: true
-          onClicked: {
-            rescan()
-          }
-        }
-      
-        PlasmaComponents.ToolButton {
-          id: abortButton
-          iconSource: "process-stop"
-          enabled: false
-          onClicked: {
-            abort()
-          }
-        }
-        
-        PlasmaComponents.ToolButton {
-          id: upButton
-          iconSource: "go-up"
-          enabled: false
-          onClicked: {
-            up()
-          }
-        }
-        
-        PlasmaComponents.BusyIndicator {
-          id: busyIndicator
-          height: 22
-          width: 22
-          visible: false
-        }
-      }
-      
-      tools: toolBarLayout
-      transition: "set"
-    }
-    
-    ListView {
-      id: browserListView
-      anchors {
-        top: toolBar.bottom
-        left: parent.left
-        right: parent.right
         bottom: parent.bottom
       }
-      anchors.topMargin: 10
-      delegate: browserItemDelegate
-      model: browserModel
-      focus: true
-      snapMode: ListView.SnapToItem
     }
-    
-     PlasmaComponents.ScrollBar {
-       flickableItem: browserListView
-       anchors { 
-         right: browserListView.right 
-         top: browserListView.top
-         bottom: browserListView.bottom
+  }
+
+  //
+  // The mounted shares view
+  //
+  GridView {
+    id: sharesView
+    cellWidth: 80
+    cellHeight: 80
+    anchors {
+      top: toolBar.bottom
+      left: browserListView.right
+      right: parent.right
+      bottom: parent.bottom
+    }
+    anchors.topMargin: 5
+    anchors.leftMargin: 2
+    width: parent.width / 2
+    delegate: sharesViewItemDelegate
+    model: ListModel {}
+    focus: true
+
+    PlasmaComponents.ScrollBar {
+      flickableItem: parent
+      anchors {
+        right: parent.right
+        top: parent.top
+        bottom: parent.bottom
       }
     }
+  }
 
-    Component.onCompleted: {
-      scanner.start()
-      mounter.start()
-    }
+  Component.onCompleted: {
+    scanner.start()
+    mounter.start()
   }
 
   //
@@ -223,7 +291,7 @@ Item {
       if ( obsolete_items.length != 0 ) {
         for ( var i = 0; i < obsolete_items.length; i++ ) {
           for ( var j = 0; j < browserListView.model.count; j++ ) {
-            if ( obsolete_items[i].text == browserListView.model.get( j ).itemName ) {
+            if ( obsolete_items[i] == browserListView.model.get( j ).itemName ) {
               browserListView.model.remove( j )
               break
             }
@@ -318,7 +386,7 @@ Item {
       if ( obsolete_items.length != 0 ) {
         for ( var i = 0; i < obsolete_items.length; i++ ) {
           for ( var j = 0; j < browserListView.model.count; j++ ) {
-            if ( obsolete_items[i].text == browserListView.model.get( j ).itemName ) {
+            if ( obsolete_items[i] == browserListView.model.get( j ).itemName ) {
               browserListView.model.remove( j )
               break
             }
@@ -401,7 +469,7 @@ Item {
         var have_item = false
         
         for ( var j = 0; j < scanner.shares.length; j++ ) {
-          if ( scanner.shares[j].hostName == browserListView.model.get( i ).itemName ) {
+          if ( scanner.shares[j].shareName == browserListView.model.get( i ).itemName ) {
             have_item = true
             break
           }
@@ -421,7 +489,7 @@ Item {
       if ( obsolete_items.length != 0 ) {
         for ( var i = 0; i < obsolete_items.length; i++ ) {
           for ( var j = 0; j < browserListView.model.count; j++ ) {
-            if ( obsolete_items[i].text == browserListView.model.get( j ).itemName ) {
+            if ( obsolete_items[i] == browserListView.model.get( j ).itemName ) {
               browserListView.model.remove( j )
               break
             }
@@ -488,13 +556,97 @@ Item {
   // Get the list of mounted shares
   //
   function getMountedShares() {
-    print( "Get the list of mounted shares" )
+
+    // Remove obsolete shares.
+    if ( sharesView.model.count != 0 ) {
+      obsolete_shares = new Array()
+
+      for ( var i = 0; i < sharesView.model.count; i++ ) {
+        var have_item = false
+
+        for ( var j = 0; j < mounter.mountedShares.length; j++ ) {
+          if ( mounter.mountedShares[j].url == sharesView.model.get( i ).itemURL ) {
+            have_item = true
+            break
+          }
+          else {
+            // Do nothing
+          }
+        }
+
+        if ( !have_item ) {
+          obsolete_shares.push( sharesView.model.get( i ).itemURL.toString() )
+        }
+        else {
+          // Do nothing
+        }
+      }
+
+      if ( obsolete_shares.length != 0 ) {
+        for ( var i = 0; i < obsolete_shares.length; i++ ) {
+          for ( var j = 0; j < sharesView.model.count; j++ ) {
+            if ( obsolete_shares[i] == sharesView.model.get( j ).itemURL.toString() ) {
+              sharesView.model.remove( j )
+              break
+            }
+            else {
+              continue
+            }
+          }
+        }
+      }
+      else {
+        // Do nothing
+      }
+      
+    }
+    else {
+      // Do nothing
+    }
+    
+    // Add new shares
+    if ( mounter.mountedShares.length != 0 ) {
+      for ( var i = 0; i < mounter.mountedShares.length; i++ ) {
+
+        var have_item = false
+
+        if ( sharesView.model.count != 0 ) {
+          for ( var j = 0; j < sharesView.model.count; j++ ) {
+            if ( sharesView.model.get( j ).itemURL == mounter.mountedShares[i].url ) {
+              have_item = true
+              break
+            }
+            else {
+              // Do nothing
+            }
+          }
+        }
+
+        if ( !have_item ) {
+          sharesView.model.append( {
+                            "itemName": mounter.mountedShares[i].shareName,
+                            "itemHost": mounter.mountedShares[i].hostName,
+                            "itemIcon": mounter.mountedShares[i].icon,
+                            "itemURL": mounter.mountedShares[i].url } )
+        }
+        else {
+          // Do nothing
+        }
+      }
+    }
+    else {
+      while ( sharesView.model.count != 0 ) {
+        sharesView.model.remove( 0 )
+      }
+    }
+
+    // FIXME: Modify the image of the share in the browser
   }
   
   //
-  // An item was clicked
+  // An network item was clicked
   //
-  function itemClicked() {
+  function networkItemClicked() {
     
     if ( browserListView.model.get( browserListView.currentIndex ).itemType < 3 /* 3 == share */ ) {
       parent_url = browserListView.model.get( browserListView.currentIndex ).itemURL
@@ -510,6 +662,13 @@ Item {
     else {
       mounter.mount( browserListView.model.get( browserListView.currentIndex ).itemURL )
     }
+  }
+
+  //
+  // A mounted share was clicked
+  //
+  function mountedShareClicked() {
+    print( "Mounted share clicked" )
   }
   
   //
