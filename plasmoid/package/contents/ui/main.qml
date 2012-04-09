@@ -100,7 +100,7 @@ Item {
   }
 
   //
-  // The delegate for the items in the shares view
+  // Delegate for the items in the shares view
   //
   Component {
     id: sharesViewItemDelegate
@@ -640,7 +640,37 @@ Item {
       }
     }
 
-    // FIXME: Modify the image of the share in the browser
+    // Modify the image(s) of the share(s) in the browser
+    if ( mounter.mountedShares.length != 0 ) {
+      for ( var i = 0; i < mounter.mountedShares.length; i++ ) {
+        
+        if ( mounter.mountedShares[i].hostName != parent_item ) {
+          continue
+        }
+        else {
+          // Do nothing
+        }
+        
+        if ( browserListView.model.count != 0 ) {
+          for ( var j = 0; j < browserListView.model.count; j++ ) {
+            if ( browserListView.model.get( j ).itemName == mounter.mountedShares[i].shareName ) {
+              print( browserListView.model.get( j ).itemName )
+              browserListView.model.get( j ).itemIcon = mounter.mountedShares[i].icon
+              break
+            }
+            else {
+              // Do nothing
+            }
+          }
+        }
+        else {
+          // Do nothing
+        }
+      }
+    }
+    else {
+      // Do nothing
+    }
   }
   
   //

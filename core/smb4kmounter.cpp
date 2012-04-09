@@ -1134,8 +1134,6 @@ void Smb4KMounter::mount( const QUrl &url )
 {
   Smb4KShare *share = NULL;
   
-  qDebug() << url;
-  
   for ( int i = 0; i < sharesList().size(); ++i )
   {
     if ( url == sharesList().at( i )->url() )
