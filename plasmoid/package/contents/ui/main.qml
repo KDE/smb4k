@@ -60,8 +60,11 @@ Item {
 
   Mounter {
     id: mounter
-    onMountedSharesChanged: {
-      getMountedShares()
+    onMounted: {
+      addMountedShares()
+    }
+    onUnmounted: {
+      removeUnmountedShares()
     }
   }
 
@@ -108,11 +111,13 @@ Item {
       width: sharesView.cellWidth
       height: sharesView.cellHeight
       Column {
-        QIconItem {
-          icon: itemIcon
-          width: 32
-          height: 32
-          anchors.horizontalCenter: parent.horizontalCenter
+        Row {
+          QIconItem {
+            icon: itemIcon
+            width: 32
+            height: 32
+            anchors.horizontalCenter: parent.horizontalCenter
+          }
         }
         Text {
           text: itemName
@@ -190,12 +195,12 @@ Item {
   //
   // The browser widget
   //
+  // FIXME: With KDE SC 4.9 move to PlasmaComponents.ScrollArea
   ListView {
     id: browserListView
     anchors {
       top: toolBar.bottom
       left: parent.left
-//       right: sharesView.left
       bottom: parent.bottom
     }
     anchors.topMargin: 2
@@ -204,7 +209,9 @@ Item {
     delegate: browserItemDelegate
     model: ListModel {}
     focus: true
-    snapMode: ListView.SnapToItem
+    highlightFollowsCurrentItem: true
+    highlightRangeMode: ListView.StrictlyEnforceRange
+    highlight: PlasmaComponents.Highlight
 
     PlasmaComponents.ScrollBar {
       flickableItem: parent
@@ -221,7 +228,7 @@ Item {
   //
   GridView {
     id: sharesView
-    cellWidth: 80
+    cellWidth: 120
     cellHeight: 80
     anchors {
       top: toolBar.bottom
@@ -235,6 +242,9 @@ Item {
     delegate: sharesViewItemDelegate
     model: ListModel {}
     focus: true
+    highlightFollowsCurrentItem: true
+    highlightRangeMode: GridView.StrictlyEnforceRange
+    highlight: PlasmaComponents.Highlight
 
     PlasmaComponents.ScrollBar {
       flickableItem: parent
@@ -268,19 +278,9 @@ Item {
       obsolete_items = new Array()
       
       for ( var i = 0; i < browserListView.model.count; i++ ) {
-        var have_item = false
+        var object = scanner.find( browserListView.model.get( i ).itemURL, browserListView.model.get( i ).itemType )
         
-        for ( var j = 0; j < scanner.workgroups.length; j++ ) {
-          if ( scanner.workgroups[j].workgroupName == browserListView.model.get( i ).itemName ) {
-            have_item = true
-            break
-          }
-          else {
-            // Do nothing
-          }
-        }
-        
-        if ( !have_item ) {
+        if ( !object ) {
           obsolete_items.push( browserListView.model.get( i ).itemName )
         }
         else {
@@ -332,7 +332,8 @@ Item {
                                  "itemComment": scanner.workgroups[i].comment,
                                  "itemIcon": scanner.workgroups[i].icon, 
                                  "itemURL": scanner.workgroups[i].url,
-                                 "itemType": scanner.workgroups[i].type } )
+                                 "itemType": scanner.workgroups[i].type,
+                                 "itemIsMounted": scanner.workgroups[i].isMounted } )
         }
         else {
           // Do nothing
@@ -363,19 +364,9 @@ Item {
       obsolete_items = new Array()
       
       for ( var i = 0; i < browserListView.model.count; i++ ) {
-        var have_item = false
+        var object = scanner.find( browserListView.model.get( i ).itemURL, browserListView.model.get( i ).itemType )
         
-        for ( var j = 0; j < scanner.hosts.length; j++ ) {
-          if ( scanner.hosts[j].hostName == browserListView.model.get( i ).itemName ) {
-            have_item = true
-            break
-          }
-          else {
-            // Do nothing
-          }
-        }
-        
-        if ( !have_item ) {
+        if ( !object ) {
           obsolete_items.push( browserListView.model.get( i ).itemName )
         }
         else {
@@ -435,7 +426,8 @@ Item {
                                  "itemComment": scanner.hosts[i].comment,
                                  "itemIcon": scanner.hosts[i].icon, 
                                  "itemURL": scanner.hosts[i].url,
-                                 "itemType": scanner.hosts[i].type } )
+                                 "itemType": scanner.hosts[i].type,
+                                 "itemIsMounted": scanner.hosts[i].isMounted } )
         }
         else {
           // Do nothing
@@ -466,19 +458,9 @@ Item {
       obsolete_items = new Array()
       
       for ( var i = 0; i < browserListView.model.count; i++ ) {
-        var have_item = false
+        var object = scanner.find( browserListView.model.get( i ).itemURL, browserListView.model.get( i ).itemType )
         
-        for ( var j = 0; j < scanner.shares.length; j++ ) {
-          if ( scanner.shares[j].shareName == browserListView.model.get( i ).itemName ) {
-            have_item = true
-            break
-          }
-          else {
-            // Do nothing
-          }
-        }
-        
-        if ( !have_item ) {
+        if ( !object ) {
           obsolete_items.push( browserListView.model.get( i ).itemName )
         }
         else {
@@ -538,7 +520,8 @@ Item {
                                  "itemComment": scanner.shares[i].comment,
                                  "itemIcon": scanner.shares[i].icon, 
                                  "itemURL": scanner.shares[i].url,
-                                 "itemType": scanner.shares[i].type } )
+                                 "itemType": scanner.shares[i].type,
+                                 "itemIsMounted": scanner.shares[i].isMounted } )
         }
         else {
           // Do nothing
@@ -553,19 +536,18 @@ Item {
   }
   
   //
-  // Get the list of mounted shares
+  // Add mounted shares to the shares view
   //
-  function getMountedShares() {
+  function addMountedShares() {
+    // We know that at least one share is mounted, so we do not need 
+    // to check that the list of mounted shares is empty.
+    for ( var i = 0; i < mounter.mountedShares.length; i++ ) {
 
-    // Remove obsolete shares.
-    if ( sharesView.model.count != 0 ) {
-      obsolete_shares = new Array()
+      var have_item = false
 
-      for ( var i = 0; i < sharesView.model.count; i++ ) {
-        var have_item = false
-
-        for ( var j = 0; j < mounter.mountedShares.length; j++ ) {
-          if ( mounter.mountedShares[j].url == sharesView.model.get( i ).itemURL ) {
+      if ( sharesView.model.count != 0 ) {
+        for ( var j = 0; j < sharesView.model.count; j++ ) {
+          if ( sharesView.model.get( j ).itemURL == mounter.mountedShares[i].url ) {
             have_item = true
             break
           }
@@ -573,8 +555,50 @@ Item {
             // Do nothing
           }
         }
+      }
 
-        if ( !have_item ) {
+      if ( !have_item ) {
+        sharesView.model.append( {
+                          "itemName": mounter.mountedShares[i].shareName,
+                          "itemHost": mounter.mountedShares[i].hostName,
+                          "itemIcon": mounter.mountedShares[i].icon,
+                          "itemURL": mounter.mountedShares[i].url } )
+      }
+      else {
+        // Do nothing
+      }
+    }
+    
+    // Now modify the icon in the browser
+    if ( parent_type == 2 ) {
+      for ( var i = 0; i < browserListView.model.count; i++ ) {
+        var object = mounter.find( browserListView.model.get( i ).itemURL, false )
+        
+        if ( object && parent_item == object.hostName ) {
+          browserListView.model.get( i ).itemIcon = object.icon
+        }
+        else {
+          // Do nothing
+        }
+      }
+    }
+    else {
+      // Do nothing
+    }
+  }
+  
+  //
+  // Remove unmounted shares from the shares view
+  //
+  function removeUnmountedShares() {
+    // Remove obsolete shares.
+    if ( sharesView.model.count != 0 ) {
+      obsolete_shares = new Array()
+
+      for ( var i = 0; i < sharesView.model.count; i++ ) {
+        var object = mounter.find( sharesView.model.get( i ).itemURL )
+        
+        if ( !object || !object.isMounted ) {
           obsolete_shares.push( sharesView.model.get( i ).itemURL.toString() )
         }
         else {
@@ -598,73 +622,33 @@ Item {
       else {
         // Do nothing
       }
-      
     }
     else {
       // Do nothing
     }
     
-    // Add new shares
-    if ( mounter.mountedShares.length != 0 ) {
-      for ( var i = 0; i < mounter.mountedShares.length; i++ ) {
-
-        var have_item = false
-
-        if ( sharesView.model.count != 0 ) {
-          for ( var j = 0; j < sharesView.model.count; j++ ) {
-            if ( sharesView.model.get( j ).itemURL == mounter.mountedShares[i].url ) {
-              have_item = true
-              break
-            }
-            else {
-              // Do nothing
-            }
+    // Now modify the icon in the browser
+    if ( parent_type == 2 ) {
+      for ( var i = 0; i < browserListView.model.count; i++ ) {
+        var object = mounter.find( browserListView.model.get( i ).itemURL, false )
+        
+        if ( object ) {
+          if ( !object.isMounted && parent_item == object.hostName ) {
+            browserListView.model.get( i ).itemIcon = object.icon
           }
-        }
-
-        if ( !have_item ) {
-          sharesView.model.append( {
-                            "itemName": mounter.mountedShares[i].shareName,
-                            "itemHost": mounter.mountedShares[i].hostName,
-                            "itemIcon": mounter.mountedShares[i].icon,
-                            "itemURL": mounter.mountedShares[i].url } )
-        }
-        else {
-          // Do nothing
-        }
-      }
-    }
-    else {
-      while ( sharesView.model.count != 0 ) {
-        sharesView.model.remove( 0 )
-      }
-    }
-
-    // Modify the image(s) of the share(s) in the browser
-    if ( mounter.mountedShares.length != 0 ) {
-      for ( var i = 0; i < mounter.mountedShares.length; i++ ) {
-        
-        if ( mounter.mountedShares[i].hostName != parent_item ) {
-          continue
-        }
-        else {
-          // Do nothing
-        }
-        
-        if ( browserListView.model.count != 0 ) {
-          for ( var j = 0; j < browserListView.model.count; j++ ) {
-            if ( browserListView.model.get( j ).itemName == mounter.mountedShares[i].shareName ) {
-              print( browserListView.model.get( j ).itemName )
-              browserListView.model.get( j ).itemIcon = mounter.mountedShares[i].icon
-              break
-            }
-            else {
-              // Do nothing
-            }
+          else {
+            // Do nothing
           }
         }
         else {
-          // Do nothing
+          var obj = scanner.find( browserListView.model.get( i ).itemURL, browserListView.model.get( i ).itemType )
+          
+          if ( obj ) {
+            browserListView.model.get( i ).itemIcon = obj.icon
+          }
+          else {
+            // Do nothing
+          }
         }
       }
     }
