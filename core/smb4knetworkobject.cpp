@@ -222,4 +222,101 @@ const QUrl Smb4KNetworkObject::url()
   return url;
 }
 
+
+bool Smb4KNetworkObject::isMounted()
+{
+  bool mounted = false;
+  
+  switch ( m_type )
+  {
+    case Share:
+    {
+      mounted = m_share.isMounted();
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+  
+  return mounted;
+}
+
+
+void Smb4KNetworkObject::update( Smb4KBasicNetworkItem *networkItem )
+{
+  if ( m_type == Workgroup && networkItem->type() == Smb4KBasicNetworkItem::Workgroup )
+  {
+    Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>( networkItem );
+    
+    if ( workgroup )
+    {
+      // Check that we update with the correct item.
+      if ( QString::compare( m_workgroup.workgroupName(), workgroup->workgroupName(), Qt::CaseInsensitive ) == 0 )
+      {
+        m_workgroup = *workgroup;
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else if ( m_type == Host && networkItem->type() == Smb4KBasicNetworkItem::Host )
+  {
+    Smb4KHost *host = static_cast<Smb4KHost *>( networkItem );
+    
+    if ( host )
+    {
+      // Check that we update with the correct item.
+      if ( QString::compare( m_host.workgroupName(), host->workgroupName(), Qt::CaseInsensitive ) == 0 &&
+           QString::compare( m_host.hostName(), host->hostName(), Qt::CaseInsensitive ) == 0 )
+      {
+        m_host = *host;
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else if ( m_type == Share && networkItem->type() == Smb4KBasicNetworkItem::Share )
+  {
+    Smb4KShare *share = static_cast<Smb4KShare *>( networkItem );
+    
+    if ( share )
+    {
+      // Check that we update with the correct item.
+      if ( QString::compare( m_share.workgroupName(), share->workgroupName(), Qt::CaseInsensitive ) == 0 &&
+           QString::compare( m_share.hostName(), share->hostName(), Qt::CaseInsensitive ) == 0 &&
+           QString::compare( m_share.shareName(), share->shareName(), Qt::CaseInsensitive ) == 0 )
+      {
+        m_share = *share;
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    m_type = Unknown;
+  }
+}
+
+
 #include "smb4knetworkobject.moc"

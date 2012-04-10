@@ -59,6 +59,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
   Q_PROPERTY( QIcon icon READ icon CONSTANT )
   Q_PROPERTY( QString comment READ comment CONSTANT )
   Q_PROPERTY( QUrl url READ url CONSTANT )
+  Q_PROPERTY( bool isMounted READ isMounted CONSTANT )
 
   public:
     /**
@@ -147,6 +148,21 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * function as well.
      */
     const QUrl url();
+    
+    /**
+     * This function returns TRUE if the network item is a share and it is
+     * mounted. Otherwise it returns FALSE.
+     * 
+     * @returns TRUE if the network item is mounted.
+     */
+    bool isMounted();
+    
+    /**
+     * Updates the network item.
+     * 
+     * @param networkItem   The network item that needs to be updated
+     */
+    void update( Smb4KBasicNetworkItem *networkItem );
     
   private:
     Smb4KWorkgroup m_workgroup;
