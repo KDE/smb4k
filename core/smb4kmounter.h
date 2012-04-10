@@ -223,6 +223,20 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      */
     Q_INVOKABLE void mount( const QUrl &url );
     
+    /**
+     * This function takes a QUrl object, looks up the respective mounted share
+     * and returns it. If there is not such a share, NULL is returned.
+     * 
+     * @param url         The URL of the mounted share
+     * 
+     * @param exactMatch  Determines if the function should only search for the 
+     *                    exact match or if it may also except matches where the
+     *                    user info and port may differ.
+     * 
+     * @returns The mounted share or NULL if it was not found.
+     */
+    Q_INVOKABLE Smb4KNetworkObject *find( const QUrl &url, bool exactMatch = true );
+    
   signals:
     /**
      * This signal is emitted whenever a share item was updated. This mainly happens

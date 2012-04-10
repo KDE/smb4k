@@ -519,6 +519,20 @@ void Smb4KMounter::import( bool check_inaccessible )
     if ( !found )
     {
       mountedSharesList()[i]->setIsMounted( false );
+      
+      // Update the share object so that the return value of isMounted()
+      // is correct.
+      Smb4KNetworkObject *share_obj = find( mountedSharesList().at( i )->url() );
+      
+      if ( share_obj )
+      {
+        share_obj->update( mountedSharesList().at( i ) );
+      }
+      else
+      {
+        // Do nothing
+      }
+      
       emit unmounted( mountedSharesList().at( i ) );
       removeMountedShare( mountedSharesList().at( i ) );
       
@@ -1158,6 +1172,38 @@ void Smb4KMounter::mount( const QUrl &url )
 }
 
 
+Smb4KNetworkObject *Smb4KMounter::find( const QUrl &url, bool exactMatch )
+{
+  QUrl u1 = url;
+  u1.setUserInfo( QString() );
+  u1.setPort( -1 );
+
+  Smb4KNetworkObject *object = NULL;
+  
+  for ( int i = 0; i < m_share_objects.size(); ++i )
+  {
+    QUrl u2 =  m_share_objects.at( i )->url();
+    u2.setUserInfo( QString() );
+    u2.setPort( -1 );
+    
+    if ( url == m_share_objects.at( i )->url() )
+    {
+      object = m_share_objects[i];
+      break;
+    }
+    else if ( u1 == u2 && !exactMatch )
+    {
+      object = m_share_objects[i];
+      continue;
+    }
+    else
+    {
+      continue;
+    }
+  }
+  
+  return object;
+}
 
 
 void Smb4KMounter::check( Smb4KShare *share )
@@ -1688,6 +1734,19 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
       Smb4KNotification *notification = new Smb4KNotification( this );
       notification->shareUnmounted( known_share );
     }
+    
+    // Update the share object so that the return value of isMounted()
+    // is correct.
+    Smb4KNetworkObject *share_obj = find( known_share->url() );
+    
+    if ( share_obj )
+    {
+      share_obj->update( known_share );
+    }
+    else
+    {
+      // Do nothing
+    }
 
     // Emit the unmounted() signal. We do it here, because if we do it
     // after the mount prefix was cleaned up, Smb4KShare::canonicalPath()
@@ -2049,6 +2108,20 @@ void Smb4KMounter::slotStatResult( KJob *job )
     else
     {
       mounted_share->setIsMounted( false );
+      
+      // Update the share object so that the return value of isMounted()
+      // is correct.
+      Smb4KNetworkObject *share_obj = find( mounted_share->url() );
+      
+      if ( share_obj )
+      {
+        share_obj->update( mounted_share );
+      }
+      else
+      {
+        // Do nothing
+      }
+      
       emit unmounted( mounted_share );
       removeMountedShare( mounted_share );
       
