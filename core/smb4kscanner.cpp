@@ -723,48 +723,59 @@ QDeclarativeListProperty<Smb4KNetworkObject> Smb4KScanner::shares()
 
 void Smb4KScanner::lookup( const QUrl& url, int type )
 {
-  switch ( type )
+  if ( url.isValid() )
   {
-    case Smb4KNetworkObject::Unknown:
+    switch ( type )
     {
-      lookupDomains();
-      break;
-    }
-    case Smb4KNetworkObject::Workgroup:
-    {
-      // Check if the workgroup is known.
-      Smb4KWorkgroup *workgroup = findWorkgroup( url.host().toUpper() );
-      
-      if ( workgroup )
+      case Smb4KNetworkObject::Unknown:
       {
-        lookupDomainMembers( workgroup );
+        lookupDomains();
+        break;
       }
-      else
+      case Smb4KNetworkObject::Workgroup:
       {
-        // Do nothing
+        // Check if the workgroup is known.
+        Smb4KWorkgroup *workgroup = findWorkgroup( url.host().toUpper() );
+        
+        if ( workgroup )
+        {
+          lookupDomainMembers( workgroup );
+        }
+        else
+        {
+          // Do nothing
+        }
+        break;
       }
-      break;
-    }
-    case Smb4KNetworkObject::Host:
-    {
-      // Check if the host is known.
-      Smb4KHost *host = findHost( url.host().toUpper() );
-      
-      if ( host )
+      case Smb4KNetworkObject::Host:
       {
-        lookupShares( host );
+        // Check if the host is known.
+        Smb4KHost *host = findHost( url.host().toUpper() );
+        
+        if ( host )
+        {
+          lookupShares( host );
+        }
+        else
+        {
+          // Do nothing
+        }
+        break;
       }
-      else
+      case Smb4KNetworkObject::Share:
       {
-        // Do nothing
+        break;
       }
-      break;
+      default:
+      {
+        // Shares are ignored
+        break;
+      }
     }
-    default:
-    {
-      // Shares are ignored
-      break;
-    }
+  }
+  else
+  {
+    // Do nothing
   }
 }
 
@@ -773,60 +784,67 @@ Smb4KNetworkObject *Smb4KScanner::find( const QUrl &url, int type )
 {
   Smb4KNetworkObject *object = NULL;
   
-  switch ( type )
+  if ( url.isValid() )
+  {  
+    switch ( type )
+    {
+      case Smb4KNetworkObject::Workgroup:
+      {
+        for ( int i = 0; i < m_workgroup_objects.size(); ++i )
+        {
+          if ( url == m_workgroup_objects.at( i )->url() )
+          {
+            object = m_workgroup_objects[i];
+            break;
+          }
+          else
+          {
+            continue;
+          }
+        }
+        break;
+      }
+      case Smb4KNetworkObject::Host:
+      {
+        for ( int i = 0; i < m_host_objects.size(); ++i )
+        {
+          if ( url == m_host_objects.at( i )->url() )
+          {
+            object = m_host_objects[i];
+            break;
+          }
+          else
+          {
+            continue;
+          }
+        }
+        break;
+      }
+      case Smb4KNetworkObject::Share:
+      {
+        for ( int i = 0; i < m_share_objects.size(); ++i )
+        {
+          if ( url == m_share_objects.at( i )->url() )
+          {
+            object = m_share_objects[i];
+            break;
+          }
+          else
+          {
+            continue;
+          }
+        }
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
+  else
   {
-    case Smb4KNetworkObject::Workgroup:
-    {
-      for ( int i = 0; i < m_workgroup_objects.size(); ++i )
-      {
-        if ( url == m_workgroup_objects.at( i )->url() )
-        {
-          object = m_workgroup_objects[i];
-          break;
-        }
-        else
-        {
-          continue;
-        }
-      }
-      break;
-    }
-    case Smb4KNetworkObject::Host:
-    {
-      for ( int i = 0; i < m_host_objects.size(); ++i )
-      {
-        if ( url == m_host_objects.at( i )->url() )
-        {
-          object = m_host_objects[i];
-          break;
-        }
-        else
-        {
-          continue;
-        }
-      }
-      break;
-    }
-    case Smb4KNetworkObject::Share:
-    {
-      for ( int i = 0; i < m_share_objects.size(); ++i )
-      {
-        if ( url == m_share_objects.at( i )->url() )
-        {
-          object = m_share_objects[i];
-          break;
-        }
-        else
-        {
-          continue;
-        }
-      }
-      break;
-    }
-    default:
-    {
-      break;
-    }
+    // Do nothing
   }
   
   return object;
