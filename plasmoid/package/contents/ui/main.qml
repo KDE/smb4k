@@ -111,28 +111,88 @@ Item {
       width: sharesView.cellWidth
       height: sharesView.cellHeight
       Column {
+        anchors.horizontalCenter: parent.horizontalCenter
         Row {
+          anchors.horizontalCenter: parent.horizontalCenter
+          spacing: 10
           QIconItem {
             icon: itemIcon
             width: 32
             height: 32
-            anchors.horizontalCenter: parent.horizontalCenter
+            MouseArea {
+              anchors.fill: parent
+              onClicked: {
+                sharesView.currentIndex = index
+                mountedShareClicked()
+              }
+            }
+          }
+          Column {
+            QIconItem {
+              id: unmountButton
+              icon: "media-eject"
+              width: 16
+              height: 16
+              opacity: 0.2
+              MouseArea {
+                anchors.fill: parent
+                hoverEnabled: true
+                onEntered: {
+                  parent.opacity = 1.0
+                }
+                onExited: {
+                  parent.opacity = 0.2
+                }
+                onClicked: {
+                  sharesView.currentIndex = index
+                  unmountShare()
+                }
+              }
+            }
+            QIconItem {
+              id: openButton
+              icon: "folder-open"
+              width: 16
+              height: 16
+              opacity: 0.2
+              MouseArea {
+                anchors.fill: parent
+                hoverEnabled: true
+                onEntered: {
+                  parent.opacity = 1.0
+                }
+                onExited: {
+                  parent.opacity = 0.2
+                }
+                onClicked: {
+                  sharesView.currentIndex = index
+                  mountedShareClicked()
+                }
+              }
+            }
           }
         }
         Text {
           text: itemName
           anchors.horizontalCenter: parent.horizontalCenter
+          MouseArea {
+            anchors.fill: parent
+            onClicked: {
+              sharesView.currentIndex = index
+              mountedShareClicked()
+            }
+          }
         }
         Text {
           text: i18n( "<font size=\"-1\">on %1</font>" ).arg( itemHost )
           anchors.horizontalCenter: parent.horizontalCenter
-        }
-      }
-      MouseArea {
-        anchors.fill: parent
-        onClicked: {
-          sharesView.currentIndex = index
-          mountedShareClicked()
+          MouseArea {
+            anchors.fill: parent
+            onClicked: {
+              sharesView.currentIndex = index
+              mountedShareClicked()
+            }
+          }
         }
       }
     }
@@ -211,7 +271,7 @@ Item {
     focus: true
     highlightFollowsCurrentItem: true
     highlightRangeMode: ListView.StrictlyEnforceRange
-    highlight: PlasmaComponents.Highlight
+//     highlight: PlasmaComponents.Highlight {}
 
     PlasmaComponents.ScrollBar {
       flickableItem: parent
@@ -226,9 +286,10 @@ Item {
   //
   // The mounted shares view
   //
+  // FIXME: With KDE SC 4.9 move to PlasmaComponents.ScrollArea
   GridView {
     id: sharesView
-    cellWidth: 120
+    cellWidth: 80
     cellHeight: 80
     anchors {
       top: toolBar.bottom
@@ -237,14 +298,14 @@ Item {
       bottom: parent.bottom
     }
     anchors.topMargin: 5
-    anchors.leftMargin: 2
+    anchors.leftMargin: 5
     width: parent.width / 2
     delegate: sharesViewItemDelegate
     model: ListModel {}
     focus: true
     highlightFollowsCurrentItem: true
     highlightRangeMode: GridView.StrictlyEnforceRange
-    highlight: PlasmaComponents.Highlight
+//     highlight: PlasmaComponents.Highlight {}
 
     PlasmaComponents.ScrollBar {
       flickableItem: parent
@@ -333,7 +394,8 @@ Item {
                                  "itemIcon": scanner.workgroups[i].icon, 
                                  "itemURL": scanner.workgroups[i].url,
                                  "itemType": scanner.workgroups[i].type,
-                                 "itemIsMounted": scanner.workgroups[i].isMounted } )
+                                 "itemIsMounted": scanner.workgroups[i].isMounted,
+                                 "itemIsPrinter": scanner.workgroups[i].isPrinter } )
         }
         else {
           // Do nothing
@@ -427,7 +489,8 @@ Item {
                                  "itemIcon": scanner.hosts[i].icon, 
                                  "itemURL": scanner.hosts[i].url,
                                  "itemType": scanner.hosts[i].type,
-                                 "itemIsMounted": scanner.hosts[i].isMounted } )
+                                 "itemIsMounted": scanner.hosts[i].isMounted,
+                                 "itemIsPrinter": scanner.hosts[i].isPrinter } )
         }
         else {
           // Do nothing
@@ -521,7 +584,8 @@ Item {
                                  "itemIcon": scanner.shares[i].icon, 
                                  "itemURL": scanner.shares[i].url,
                                  "itemType": scanner.shares[i].type,
-                                 "itemIsMounted": scanner.shares[i].isMounted } )
+                                 "itemIsMounted": scanner.shares[i].isMounted,
+                                 "itemIsPrinter": scanner.shares[i].isPrinter } )
         }
         else {
           // Do nothing
@@ -562,7 +626,8 @@ Item {
                           "itemName": mounter.mountedShares[i].shareName,
                           "itemHost": mounter.mountedShares[i].hostName,
                           "itemIcon": mounter.mountedShares[i].icon,
-                          "itemURL": mounter.mountedShares[i].url } )
+                          "itemURL": mounter.mountedShares[i].url,
+                          "itemPath": mounter.mountedShares[i].mountpoint } )
       }
       else {
         // Do nothing
@@ -674,7 +739,12 @@ Item {
       }
     }
     else {
-      mounter.mount( browserListView.model.get( browserListView.currentIndex ).itemURL )
+      if ( !browserListView.model.get( browserListView.currentIndex ).itemIsPrinter ) {
+        mounter.mount( browserListView.model.get( browserListView.currentIndex ).itemURL )
+      }
+      else {
+        print( "FIXME: Print a file" );
+      }
     }
   }
 
@@ -682,7 +752,14 @@ Item {
   // A mounted share was clicked
   //
   function mountedShareClicked() {
-    print( "Mounted share clicked" )
+    Qt.openUrlExternally( sharesView.model.get( sharesView.currentIndex ).itemPath )
+  }
+  
+  //
+  // A mounted share is to be unmounted
+  //
+  function unmountShare() {
+    mounter.unmount( sharesView.model.get( sharesView.currentIndex ).itemPath )
   }
   
   //
