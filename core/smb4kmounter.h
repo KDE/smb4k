@@ -135,14 +135,10 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
                       QWidget *parent = 0 );
 
     /**
-     * This function attempts to unmount a share. This can either be done the "normal"
-     * way, or you may force it. If you decide to force the unmounting by setting
-     * @p force to TRUE, under Linux a lazy unmount will be initiated. With the parameter
-     * @p silent you can suppress any error messages.
+     * This function attempts to unmount a share. With the parameter @p silent you 
+     * can suppress any error messages.
      *
      * @param share       The share object that should be unmounted.
-     *
-     * @param force       Force the unmounting of the share.
      *
      * @param silent      Determines whether this function should emit an error code in
      *                    case of an error. The default value is FALSE.
@@ -154,14 +150,10 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
                        QWidget *parent = 0 );
     
     /**
-     * This function attempts to unmount a list of shares. This can either be done the "normal"
-     * way, or you may force it. If you decide to force the unmounting by setting
-     * @p force to TRUE, under Linux a lazy unmount will be initiated. With the parameter
-     * @p silent you can suppress any error messages.
+     * This function attempts to unmount a list of shares. With the parameter @p silent 
+     * you can suppress any error messages.
      * 
      * @param shares      The list of shares that is to be unmounted
-     * 
-     * @param force       Force the unmounting of the share
      * 
      * @param silent      Determines whether this function should emit an error code in
      *                    case of an error. The default value is FALSE.
@@ -217,11 +209,19 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * Please note that this function only works with share objects that are 
      * already known. All others will be ignored.
      * 
-     * @param url         The URL of the network item
-     * 
-     * @param type        The type of the network item
+     * @param url         The URL of the remote share
      */
     Q_INVOKABLE void mount( const QUrl &url );
+    
+    /**
+     * This function takes the @p path and initiates the unmounting of a share.
+     * 
+     * Please note that this function only works with share objects that are 
+     * already known. All others will be ignored.
+     * 
+     * @param path        The path of the mounted share
+     */
+    Q_INVOKABLE void unmount( const QUrl &path );
     
     /**
      * This function takes a QUrl object, looks up the respective mounted share

@@ -1146,24 +1146,18 @@ QDeclarativeListProperty< Smb4KNetworkObject > Smb4KMounter::mountedShares()
 
 void Smb4KMounter::mount( const QUrl &url )
 {
-  Smb4KShare *share = NULL;
-  
-  for ( int i = 0; i < sharesList().size(); ++i )
+  if ( url.isValid() && !url.path().isEmpty() )
   {
-    if ( url == sharesList().at( i )->url() )
+    Smb4KShare *share = findShare( url.path(), url.host() );
+  
+    if ( share )
     {
-      share = sharesList()[i];
-      break;
+      mountShare( share );
     }
     else
     {
-      continue;
+      // Do nothing
     }
-  }
-  
-  if ( share )
-  {
-    mountShare( share );
   }
   else
   {
@@ -1172,34 +1166,64 @@ void Smb4KMounter::mount( const QUrl &url )
 }
 
 
-Smb4KNetworkObject *Smb4KMounter::find( const QUrl &url, bool exactMatch )
+void Smb4KMounter::unmount( const QUrl &path )
 {
-  QUrl u1 = url;
-  u1.setUserInfo( QString() );
-  u1.setPort( -1 );
-
-  Smb4KNetworkObject *object = NULL;
-  
-  for ( int i = 0; i < m_share_objects.size(); ++i )
+  if ( path.isValid() )
   {
-    QUrl u2 =  m_share_objects.at( i )->url();
-    u2.setUserInfo( QString() );
-    u2.setPort( -1 );
-    
-    if ( url == m_share_objects.at( i )->url() )
+    Smb4KShare *share = findShareByPath( path.path() );
+  
+    if ( share )
     {
-      object = m_share_objects[i];
-      break;
-    }
-    else if ( u1 == u2 && !exactMatch )
-    {
-      object = m_share_objects[i];
-      continue;
+      unmountShare( share );
     }
     else
     {
-      continue;
+      // Do nothing
     }
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+
+Smb4KNetworkObject *Smb4KMounter::find( const QUrl &url, bool exactMatch )
+{
+  Smb4KNetworkObject *object = NULL;
+  
+  if ( url.isValid() )
+  {
+    QUrl u1 = url;
+    u1.setUserInfo( QString() );
+    u1.setPort( -1 );
+    
+    for ( int i = 0; i < m_share_objects.size(); ++i )
+    {
+      QUrl u2 =  m_share_objects.at( i )->url();
+      u2.setUserInfo( QString() );
+      u2.setPort( -1 );
+      
+      if ( url == m_share_objects.at( i )->url() )
+      {
+        object = m_share_objects[i];
+        break;
+      }
+      else if ( u1 == u2 && !exactMatch )
+      {
+        object = m_share_objects[i];
+        continue;
+      }
+      else
+      {
+        continue;
+      }
+    }
+  }
+  else
+  {
+    // Do nothing
   }
   
   return object;
