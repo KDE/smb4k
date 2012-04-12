@@ -27,6 +27,11 @@ Smb4K 1.1.0 (????-??-??):
   + Added mount() function that takes a QUrl as argument and mounts the
     corresponding share. The URL must already be known to Smb4K otherwise 
     this function will not do anything.
+  + Added unmount() function that takes a QUrl as argument (the path)
+    and unmounts the corresponding share. The mounted share must already 
+    be known to Smb4K otherwise this function will do nothing.
+  + Added find() function. It takes a QUrl and a boolean and returns the
+    mounted share, if it could be found.
 
 Smb4K 1.0.0 (2012-02-01):
 - KDE SC 4.4.0 and Qt 4.7.0 or later are required.
