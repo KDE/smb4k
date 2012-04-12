@@ -33,8 +33,8 @@ import org.kde.qtextracomponents 0.1
 
 Item {
   id: mainwindow
-  property int minimumWidth: 300
-  property int minimumHeight: 200
+  property int minimumWidth: 400
+  property int minimumHeight: 300
   property string parent_item: ""
   property int parent_type: 0 // Unknown
   property url parent_url
@@ -74,6 +74,7 @@ Item {
   Component {
     id: browserItemDelegate
     PlasmaComponents.ListItem {
+      id: browserListItem
       width: browserListView.width
       height: 40
       Row {
@@ -84,20 +85,66 @@ Item {
             icon: itemIcon
             width: 22
             height: 22
+            MouseArea {
+              anchors.fill: parent
+              onClicked: {
+                browserListView.currentIndex = index
+                networkItemClicked()
+              }
+            }
           }
         }
         Column {
           anchors.verticalCenter: parent.verticalCenter
-          Text { text: itemName }
-          Text { text: "<font size=\"-1\">"+itemComment+"</font>" }
+          Text { 
+            text: itemName 
+            clip: true
+            MouseArea {
+              anchors.fill: parent
+              onClicked: {
+                browserListView.currentIndex = index
+                networkItemClicked()
+              }
+            }
+          }
+          Text { 
+            text: "<font size=\"-1\">"+itemComment+"</font>" 
+            clip: true
+            MouseArea {
+              anchors.fill: parent
+              onClicked: {
+                browserListView.currentIndex = index
+                networkItemClicked()
+              }
+            }
+          }
         }
       }
-      MouseArea {
-        anchors.fill: parent
-        onClicked: {
-          browserListView.currentIndex = index
-          networkItemClicked()
-        }
+      QIconItem {
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.right: parent.right
+        anchors.rightMargin: 10
+        anchors.leftMargin: 10
+        icon: "go-up"
+        height: 16
+        width: 16
+        opacity: 0.2
+        visible: itemType > 1 ? true : false
+        enabled: itemType > 1 ? true : false
+        MouseArea {
+          anchors.fill: parent
+          hoverEnabled: true
+          onEntered: {
+            parent.opacity = 1.0
+          }
+          onExited: {
+            parent.opacity = 0.2
+          }
+          onClicked: {
+            browserListView.currentIndex = index
+            up()
+          }
+        }        
       }
     }
   }
@@ -110,6 +157,7 @@ Item {
     Item {
       width: sharesView.cellWidth
       height: sharesView.cellHeight
+      anchors.verticalCenter: parent.verticalCenter
       Column {
         anchors.horizontalCenter: parent.horizontalCenter
         Row {
@@ -199,67 +247,13 @@ Item {
   }
 
   //
-  // The tool bar
-  //
-  PlasmaComponents.ToolBar {
-    id: toolBar
-    clip: true
-    anchors {
-      top: parent.top
-      left: parent.left
-      right: parent.right
-    }
-
-    PlasmaComponents.ToolBarLayout {
-      id: toolBarLayout
-      
-      PlasmaComponents.ToolButton {
-        id: rescanButton
-        iconSource: "view-refresh"
-        enabled: true
-        onClicked: {
-          rescan()
-        }
-      }
-      
-      PlasmaComponents.ToolButton {
-        id: abortButton
-        iconSource: "process-stop"
-        enabled: false
-        onClicked: {
-          abort()
-        }
-      }
-        
-      PlasmaComponents.ToolButton {
-        id: upButton
-        iconSource: "go-up"
-        enabled: false
-        onClicked: {
-          up()
-        }
-      }
-        
-      PlasmaComponents.BusyIndicator {
-        id: busyIndicator
-        height: 22
-        width: 22
-        visible: false
-      }
-    }
-      
-    tools: toolBarLayout
-    transition: "set"
-  }
-
-  //
   // The browser widget
   //
   // FIXME: With KDE SC 4.9 move to PlasmaComponents.ScrollArea
   ListView {
     id: browserListView
     anchors {
-      top: toolBar.bottom
+      top: parent.top
       left: parent.left
       bottom: parent.bottom
     }
@@ -269,10 +263,7 @@ Item {
     delegate: browserItemDelegate
     model: ListModel {}
     focus: true
-    highlightFollowsCurrentItem: true
     highlightRangeMode: ListView.StrictlyEnforceRange
-//     highlight: PlasmaComponents.Highlight {}
-
     PlasmaComponents.ScrollBar {
       flickableItem: parent
       anchors {
@@ -289,10 +280,10 @@ Item {
   // FIXME: With KDE SC 4.9 move to PlasmaComponents.ScrollArea
   GridView {
     id: sharesView
-    cellWidth: 80
+    cellWidth: 120
     cellHeight: 80
     anchors {
-      top: toolBar.bottom
+      top: parent.top
       left: browserListView.right
       right: parent.right
       bottom: parent.bottom
@@ -303,9 +294,7 @@ Item {
     delegate: sharesViewItemDelegate
     model: ListModel {}
     focus: true
-    highlightFollowsCurrentItem: true
     highlightRangeMode: GridView.StrictlyEnforceRange
-//     highlight: PlasmaComponents.Highlight {}
 
     PlasmaComponents.ScrollBar {
       flickableItem: parent
@@ -331,7 +320,6 @@ Item {
       return
     }
     else {
-      upButton.enabled = false
     }
 
     // Remove obsolete workgroups
@@ -418,7 +406,6 @@ Item {
       return
     }
     else {
-      upButton.enabled = true
     }
     
     // Remove obsolete hosts
@@ -513,7 +500,6 @@ Item {
       return
     }
     else {
-      upButton.enabled = true
     }
     
     // Remove obsolete shares
@@ -817,33 +803,12 @@ Item {
   // The application is busy
   //
   function busy() {
-    if ( scanner.running ) {
-      rescanButton.enabled = false
-    }
-    else {
-      // Do nothing
-    }
-    abortButton.enabled = true
-      
-    busyIndicator.visible = true
-    busyIndicator.running = true
   }
   
   //
   // The application has become idle
   //
   function idle() {
-    rescanButton.enabled = true
-    
-    if ( !scanner.running && !mounter.running ) {
-      abortButton.enabled = false
-    }
-    else {
-      // Do nothing
-    }
-    
-    busyIndicator.running = false
-    busyIndicator.visible = false
   }
 }
 
