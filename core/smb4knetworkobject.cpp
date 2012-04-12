@@ -319,4 +319,48 @@ void Smb4KNetworkObject::update( Smb4KBasicNetworkItem *networkItem )
 }
 
 
+bool Smb4KNetworkObject::isPrinter()
+{
+  bool printer = false;
+  
+  switch ( m_type )
+  {
+    case Share:
+    {
+      printer = m_share.isPrinter();
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+  
+  return printer;
+}
+
+
+const QUrl Smb4KNetworkObject::mountpoint()
+{
+  QUrl path;
+  
+  switch ( m_type )
+  {
+    case Share:
+    {
+      path.setPath( m_share.path() );
+      path.setScheme( "file" );
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+  
+  return path;
+}
+
+
+
 #include "smb4knetworkobject.moc"

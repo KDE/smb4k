@@ -60,6 +60,8 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
   Q_PROPERTY( QString comment READ comment CONSTANT )
   Q_PROPERTY( QUrl url READ url CONSTANT )
   Q_PROPERTY( bool isMounted READ isMounted CONSTANT )
+  Q_PROPERTY( bool isPrinter READ isPrinter CONSTANT )
+  Q_PROPERTY( QUrl mountpoint READ mountpoint CONSTANT )
 
   public:
     /**
@@ -163,6 +165,22 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * @param networkItem   The network item that needs to be updated
      */
     void update( Smb4KBasicNetworkItem *networkItem );
+    
+    /**
+     * This function returns TRUE if the network item is a printer share.
+     * Otherwise it returns FALSE,
+     * 
+     * @returns TRUE if the network item is a printer.
+     */
+    bool isPrinter();
+    
+    /**
+     * This function returns the mountpoint of a mounted share or an empty 
+     * string if the network item is not a share or the share is not mounted.
+     * 
+     * @returns the mount point of a share.
+     */
+    const QUrl mountpoint();
     
   private:
     Smb4KWorkgroup m_workgroup;
