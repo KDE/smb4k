@@ -316,19 +316,26 @@ void Smb4KHomesSharesHandler::findHomesUsers( Smb4KShare *share, QStringList *us
   Q_ASSERT( share );
   Q_ASSERT( users );
   
-  for ( int i = 0; i < m_homes_users.size(); ++i )
+  if ( !m_homes_users.isEmpty() )
   {
-    if ( QString::compare( share->unc(), m_homes_users.at( i ).share.unc(), Qt::CaseInsensitive ) == 0 &&
-         ((m_homes_users.at( i ).share.workgroupName().isEmpty() || share->workgroupName().isEmpty()) ||
-         QString::compare( share->workgroupName(), m_homes_users.at( i ).share.workgroupName(), Qt::CaseInsensitive ) == 0) )
+    for ( int i = 0; i < m_homes_users.size(); ++i )
     {
-      *users = m_homes_users.at( i ).users;
-      break;
+      if ( QString::compare( share->unc(), m_homes_users.at( i ).share.unc(), Qt::CaseInsensitive ) == 0 &&
+           ((m_homes_users.at( i ).share.workgroupName().isEmpty() || share->workgroupName().isEmpty()) ||
+           QString::compare( share->workgroupName(), m_homes_users.at( i ).share.workgroupName(), Qt::CaseInsensitive ) == 0) )
+      {
+        *users = m_homes_users.at( i ).users;
+        break;
+      }
+      else
+      {
+        continue;
+      }
     }
-    else
-    {
-      continue;
-    }
+  }
+  else
+  {
+    // Do nothing
   }
 }
 
@@ -340,30 +347,37 @@ void Smb4KHomesSharesHandler::addHomesUsers( Smb4KShare *share, QStringList *use
   
   bool found = false;
   
-  for ( int i = 0; i < m_homes_users.size(); ++i )
+  if ( !m_homes_users.isEmpty() )
   {
-    if ( QString::compare( share->unc(), m_homes_users.at( i ).share.unc(), Qt::CaseInsensitive ) == 0 &&
-         ((m_homes_users.at( i ).share.workgroupName().isEmpty() || share->workgroupName().isEmpty()) ||
-         QString::compare( share->workgroupName(), m_homes_users.at( i ).share.workgroupName(), Qt::CaseInsensitive ) == 0) )
+    for ( int i = 0; i < m_homes_users.size(); ++i )
     {
-      m_homes_users[i].users = *users;
-      found = true;
-      break;
+      if ( QString::compare( share->unc(), m_homes_users.at( i ).share.unc(), Qt::CaseInsensitive ) == 0 &&
+           ((m_homes_users.at( i ).share.workgroupName().isEmpty() || share->workgroupName().isEmpty()) ||
+           QString::compare( share->workgroupName(), m_homes_users.at( i ).share.workgroupName(), Qt::CaseInsensitive ) == 0) )
+      {
+        m_homes_users[i].users = *users;
+        found = true;
+        break;
+      }
+      else
+      {
+        continue;
+      }
+    }
+  
+    if ( !found )
+    {
+      m_homes_users << Smb4KHomesUsers( *share, *users );
     }
     else
     {
-      continue;
+      // Do nothing
     }
-  }
-  
-  if ( !found )
-  {
-    m_homes_users << Smb4KHomesUsers( *share, *users );
   }
   else
   {
     // Do nothing
-  }  
+  }
 }
 
 
