@@ -27,7 +27,6 @@ import QtQuick 1.1
 import org.kde.plasma.core 0.1 as PlasmaCore
 import org.kde.plasma.graphicswidgets 0.1 as PlasmaWidgets
 import org.kde.plasma.components 0.1 as PlasmaComponents
-// import org.kde.plasma.graphicslayouts 4.7 as GraphicsLayouts
 import org.kde.qtextracomponents 0.1
 
 
@@ -69,184 +68,6 @@ Item {
   }
 
   //
-  // Delegate for the list items in the browser
-  //
-  Component {
-    id: browserItemDelegate
-    PlasmaComponents.ListItem {
-      id: browserListItem
-      width: browserListView.width
-      height: 40
-      Row {
-        spacing: 5
-        Column {
-          anchors.verticalCenter: parent.verticalCenter
-          QIconItem {
-            icon: itemIcon
-            width: 22
-            height: 22
-            MouseArea {
-              anchors.fill: parent
-              onClicked: {
-                browserListView.currentIndex = index
-                networkItemClicked()
-              }
-            }
-          }
-        }
-        Column {
-          anchors.verticalCenter: parent.verticalCenter
-          Text { 
-            text: itemName 
-            clip: true
-            MouseArea {
-              anchors.fill: parent
-              onClicked: {
-                browserListView.currentIndex = index
-                networkItemClicked()
-              }
-            }
-          }
-          Text { 
-            text: "<font size=\"-1\">"+itemComment+"</font>" 
-            clip: true
-            MouseArea {
-              anchors.fill: parent
-              onClicked: {
-                browserListView.currentIndex = index
-                networkItemClicked()
-              }
-            }
-          }
-        }
-      }
-      QIconItem {
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.right: parent.right
-        anchors.rightMargin: 10
-        anchors.leftMargin: 10
-        icon: "go-up"
-        height: 16
-        width: 16
-        opacity: 0.2
-        visible: itemType > 1 ? true : false
-        enabled: itemType > 1 ? true : false
-        MouseArea {
-          anchors.fill: parent
-          hoverEnabled: true
-          onEntered: {
-            parent.opacity = 1.0
-          }
-          onExited: {
-            parent.opacity = 0.2
-          }
-          onClicked: {
-            browserListView.currentIndex = index
-            up()
-          }
-        }        
-      }
-    }
-  }
-
-  //
-  // Delegate for the items in the shares view
-  //
-  Component {
-    id: sharesViewItemDelegate
-    Item {
-      width: sharesView.cellWidth
-      height: sharesView.cellHeight
-      anchors.verticalCenter: parent.verticalCenter
-      Column {
-        anchors.horizontalCenter: parent.horizontalCenter
-        Row {
-          anchors.horizontalCenter: parent.horizontalCenter
-          spacing: 10
-          QIconItem {
-            icon: itemIcon
-            width: 32
-            height: 32
-            MouseArea {
-              anchors.fill: parent
-              onClicked: {
-                sharesView.currentIndex = index
-                mountedShareClicked()
-              }
-            }
-          }
-          Column {
-            QIconItem {
-              id: unmountButton
-              icon: "media-eject"
-              width: 16
-              height: 16
-              opacity: 0.2
-              MouseArea {
-                anchors.fill: parent
-                hoverEnabled: true
-                onEntered: {
-                  parent.opacity = 1.0
-                }
-                onExited: {
-                  parent.opacity = 0.2
-                }
-                onClicked: {
-                  sharesView.currentIndex = index
-                  unmountShare()
-                }
-              }
-            }
-            QIconItem {
-              id: openButton
-              icon: "folder-open"
-              width: 16
-              height: 16
-              opacity: 0.2
-              MouseArea {
-                anchors.fill: parent
-                hoverEnabled: true
-                onEntered: {
-                  parent.opacity = 1.0
-                }
-                onExited: {
-                  parent.opacity = 0.2
-                }
-                onClicked: {
-                  sharesView.currentIndex = index
-                  mountedShareClicked()
-                }
-              }
-            }
-          }
-        }
-        Text {
-          text: itemName
-          anchors.horizontalCenter: parent.horizontalCenter
-          MouseArea {
-            anchors.fill: parent
-            onClicked: {
-              sharesView.currentIndex = index
-              mountedShareClicked()
-            }
-          }
-        }
-        Text {
-          text: i18n( "<font size=\"-1\">on %1</font>" ).arg( itemHost )
-          anchors.horizontalCenter: parent.horizontalCenter
-          MouseArea {
-            anchors.fill: parent
-            onClicked: {
-              sharesView.currentIndex = index
-              mountedShareClicked()
-            }
-          }
-        }
-      }
-    }
-  }
-
-  //
   // The browser widget
   //
   // FIXME: With KDE SC 4.9 move to PlasmaComponents.ScrollArea
@@ -260,7 +81,17 @@ Item {
     anchors.topMargin: 2
     anchors.rightMargin: 5
     width: parent.width / 2
-    delegate: browserItemDelegate
+    delegate: BrowserItemDelegate {
+      id: browserDelegate
+      onItemClicked: {
+        browserListView.currentIndex = index
+        networkItemClicked()
+      }
+      onUpClicked: {
+        browserListView.currentIndex = index
+        up()
+      }
+    }
     model: ListModel {}
     focus: true
     highlightRangeMode: ListView.StrictlyEnforceRange
@@ -273,7 +104,7 @@ Item {
       }
     }
   }
-
+  
   //
   // The mounted shares view
   //
@@ -284,14 +115,24 @@ Item {
     cellHeight: 80
     anchors {
       top: parent.top
-      left: browserListView.right
+      left: line.right
       right: parent.right
       bottom: parent.bottom
     }
     anchors.topMargin: 5
     anchors.leftMargin: 5
     width: parent.width / 2
-    delegate: sharesViewItemDelegate
+    delegate: SharesViewItemDelegate {
+      id: sharesViewDelegate
+      onOpenClicked: {
+        sharesView.currentIndex = index
+        mountedShareClicked()
+      }
+      onUnmountClicked: {
+        sharesView.currentIndex = index
+        unmountShare()
+      }
+    }
     model: ListModel {}
     focus: true
     highlightRangeMode: GridView.StrictlyEnforceRange
@@ -306,6 +147,15 @@ Item {
     }
   }
 
+  PlasmaComponents.BusyIndicator {
+    id: busyIndicator
+    running: false
+    visible: false
+    opacity: 0.5
+    anchors.verticalCenter: parent.verticalCenter
+    anchors.horizontalCenter: parent.horizontalCenter
+  }
+  
   Component.onCompleted: {
     scanner.start()
     mounter.start()
@@ -803,12 +653,16 @@ Item {
   // The application is busy
   //
   function busy() {
+    busyIndicator.visible = true
+    busyIndicator.running = true
   }
   
   //
   // The application has become idle
   //
   function idle() {
+    busyIndicator.running = false
+    busyIndicator.visible = false
   }
 }
 
