@@ -43,17 +43,6 @@
 #include <kio/jobclasses.h>
 #include <kdiskfreespaceinfo.h>
 
-// system includes
-#ifdef __FreeBSD__
-#include <pwd.h>
-#include <sys/param.h>
-#include <sys/ucred.h>
-#include <sys/mount.h>
-#else
-#include <stdio.h>
-#include <mntent.h>
-#endif
-
 // Application specific includes
 #include <smb4kmounter.h>
 #include <smb4kauthinfo.h>
