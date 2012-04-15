@@ -1,5 +1,9 @@
 Smb4K 1.0.2 (????-??-??):
 - Fixed two potential crashes in class Smb4KHomesSharesHandler.
+- Fixed a wrong comparision between QString and QByteArray in 
+  Smb4KMountJob::slotActionFinished().
+- Fixed a wrong comparision between QString and QByteArray and a double
+  declaration in Smb4KUnmountJob::slotActionFinished().
 
 Smb4K 1.0.1 (2012-03-11):
 - Fixed potential crash in Smb4KWalletManager::init().
