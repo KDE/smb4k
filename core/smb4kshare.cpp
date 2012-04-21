@@ -475,7 +475,7 @@ QString Smb4KShare::totalDiskSpaceString() const
   QString total, total_dim = QString();
 
   int exponent = 0;
-  qreal tmp_factor = 0;
+  double tmp_factor = 0;
   qulonglong factor = 0;
 
   (void) frexp( m_total * 1024, &exponent );
@@ -532,7 +532,7 @@ QString Smb4KShare::freeDiskSpaceString() const
   QString free, free_dim = QString();
 
   int exponent = 0;
-  qreal tmp_factor = 0;
+  double tmp_factor = 0;
   qulonglong factor = 0;
 
   (void) frexp( m_free * 1024, &exponent );
@@ -589,7 +589,7 @@ QString Smb4KShare::usedDiskSpaceString() const
   QString used, used_dim = QString();
 
   int exponent = 0;
-  qreal tmp_factor = 0;
+  double tmp_factor = 0;
   qulonglong factor = 0;
 
   (void) frexp( m_used * 1024, &exponent );

@@ -4,6 +4,8 @@ Smb4K 1.0.2 (????-??-??):
   Smb4KMountJob::slotActionFinished().
 - Fixed a wrong comparision between QString and QByteArray and a double
   declaration in Smb4KUnmountJob::slotActionFinished().
+- Fixed wrong assumption that qreal equals double in Smb4KShare class. 
+  Patch by Rex Dieter from the Fedora Project.
 
 Smb4K 1.0.1 (2012-03-11):
 - Fixed potential crash in Smb4KWalletManager::init().
