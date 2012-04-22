@@ -317,7 +317,7 @@ void Smb4KShare::setTypeString( const QString &typeString )
 }
 
 
-const QString Smb4KShare::translatedTypeString() const
+QString Smb4KShare::translatedTypeString() const
 {
   if ( QString::compare( m_type_string, "Disk" ) == 0 )
   {
@@ -389,7 +389,7 @@ void Smb4KShare::setPath( const QString &mountpoint )
 }
 
 
-const QString Smb4KShare::canonicalPath() const
+QString Smb4KShare::canonicalPath() const
 {
   return (m_inaccessible ? m_path : QDir( m_path ).canonicalPath());
 }
@@ -415,7 +415,7 @@ void Smb4KShare::setFileSystem( FileSystem filesystem )
 }
 
 
-const QString Smb4KShare::fileSystemString() const
+QString Smb4KShare::fileSystemString() const
 {
   switch ( m_filesystem )
   {

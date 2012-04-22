@@ -1,6 +1,7 @@
 Smb4K 1.1.0 (????-??-??):
 - Merged Smb4KCore class and Smb4KGlobal namespace. The Smb4KCore class
   was removed.
+- Fixed many issues reported by krazy2.
 - Made Smb4K a kdeinit executable.
 - Added a plasmoid.
 - Added Smb4KNetworkObject class that derives from QObject and encapsulates

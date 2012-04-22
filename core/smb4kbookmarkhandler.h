@@ -93,7 +93,7 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      * @returns             The current list of bookmarks stored in the
      *                      bookmark file.
      */
-    const QList<Smb4KBookmark *> &bookmarks();
+    QList<Smb4KBookmark *> bookmarks() const;
 
     /**
      * Get the list of bookmarks belonging to a certain group.
@@ -102,7 +102,7 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      *
      * @returns a list of bookmarks belonging to a certain group
      */
-    const QList<Smb4KBookmark *> bookmarks( const QString &group );
+    QList<Smb4KBookmark *> bookmarks( const QString &group ) const;
 
     /**
      * This function searches for a bookmark using its UNC and returns a pointer
@@ -131,7 +131,7 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      *
      * @returns the list of groups
      */
-    const QStringList groups();
+    QStringList groups() const;
 
     /**
      * Opens the bookmark editor
@@ -177,7 +177,7 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      * the host provided by m_hosts and sets the appropriate data, if
      * necessary.
      */
-    void update();
+    void update() const;
 
     /**
      * This function writes a new list of bookmarks. The old list will be

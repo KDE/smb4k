@@ -125,7 +125,7 @@ class KDE_EXPORT Smb4KAuthInfo
      * @returns         The workgroup of the server/share for which this
      *                  authentication data is for.
      */
-    const QString &workgroupName() const { return m_workgroup; }
+    QString workgroupName() const { return m_workgroup; }
 
     /**
      * Returns the UNC in the form [smb:]//[USER:PASSWORD@]HOST/SHARE depending on
@@ -239,7 +239,7 @@ class KDE_EXPORT Smb4KAuthInfo
      *
      * @returns the URL
      */
-    const QUrl &url() const { return m_url; }
+    QUrl url() const { return m_url; }
 
     /**
      * Sets the IP address for this authentication information object
@@ -253,7 +253,7 @@ class KDE_EXPORT Smb4KAuthInfo
      *
      * @returns the IP address
      */
-    const QString &ip() const { return m_ip; }
+    QString ip() const { return m_ip; }
 
   private:
     /**

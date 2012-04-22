@@ -164,7 +164,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * 
      * @returns the URL of the share.
      */
-    const QUrl &url() const { return m_url; }
+    QUrl url() const { return m_url; }
                                                        
     /**
      * In case of a 'homes' share, this function returns the URL of the user's 
@@ -203,7 +203,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the workgroup name
      */
-    const QString &workgroupName() const { return m_workgroup; }
+    QString workgroupName() const { return m_workgroup; }
 
     /**
      * Sets the type string (Disk, Print, IPC) of the share.
@@ -219,7 +219,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the type of the share.
      */
-    const QString &typeString() const { return m_type_string; }
+    QString typeString() const { return m_type_string; }
 
     /**
      * Returns the translated type string of the share. You can use this
@@ -227,7 +227,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns a translated type string.
      */
-    const QString translatedTypeString() const;
+    QString translatedTypeString() const;
 
     /**
      * Sets the comment that was defined for the share.
@@ -241,7 +241,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the comment.
      */
-    const QString &comment() const { return m_comment; }
+    QString comment() const { return m_comment; }
 
     /**
      * Set the IP address of the host where the share is located. @p ip will
@@ -258,7 +258,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the IP address of the host or an empty string.
      */
-    const QString &hostIP() const { return m_host_ip; }
+    QString hostIP() const { return m_host_ip; }
 
     /**
      * If the share is a hidden one, i.e. it ends with a '$', this function returns
@@ -304,7 +304,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the path to the mounted share.
      */
-    const QString &path() const { return m_path; }
+    QString path() const { return m_path; }
 
     /**
      * Returns the canonical path to the mounted share. In contrast to the path()
@@ -314,7 +314,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the canonical path to the mounted share.
      */
-    const QString canonicalPath() const;
+    QString canonicalPath() const;
 
     /**
      * Set @p in to TRUE if the share cannot be accessed by the user. This may be
@@ -376,7 +376,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the file system string or an empty string.
      */
-    const QString fileSystemString() const;
+    QString fileSystemString() const;
 
     /**
      * Sets the UID of the owner of this share.
@@ -399,7 +399,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the owner's login name.
      */
-    const QString owner() const { return m_user.loginName(); }
+    QString owner() const { return m_user.loginName(); }
 
     /**
      * Set the owning GID of this share.
@@ -422,7 +422,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the owning group name.
      */
-    const QString group() const { return m_group.name(); }
+    QString group() const { return m_group.name(); }
 
     /**
      * Sets the value of the total disk space that is available on the share. If 

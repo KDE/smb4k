@@ -92,7 +92,7 @@ class KDE_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      *
      * @returns the workgroup name.
      */
-    const QString workgroupName() const { return m_url.host().toUpper(); }
+    QString workgroupName() const { return m_url.host().toUpper(); }
 
     /**
      * Sets the name of the master browser of this workgroup or domain.
@@ -106,7 +106,7 @@ class KDE_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      *
      * @returns the name of the master browser.
      */
-    const QString &masterBrowserName() const { return m_master_name; }
+    QString masterBrowserName() const { return m_master_name; }
 
     /**
      * Set the IP address of the master browser. @p ip will only be accepted
@@ -123,7 +123,7 @@ class KDE_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      *
      * @returns the IP address of the master browser or an empty string.
      */
-    const QString &masterBrowserIP() const { return m_master_ip; }
+    QString masterBrowserIP() const { return m_master_ip; }
 
     /**
      * Set @p pseudo to TRUE if the master browser of this workgroup is a
@@ -181,7 +181,7 @@ class KDE_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      * 
      * @returns the URL of the network item.
      */
-    const QUrl &url() const { return m_url; }
+    QUrl url() const { return m_url; }
 
   private:
     /**

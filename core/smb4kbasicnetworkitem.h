@@ -3,7 +3,7 @@
     for the core library of Smb4K.
                              -------------------
     begin                : Do Apr 2 2009
-    copyright            : (C) 2009-2011 by Alexander Reinholdt
+    copyright            : (C) 2009-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -20,7 +20,7 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
@@ -93,7 +93,7 @@ class KDE_EXPORT Smb4KBasicNetworkItem
      *
      * @returns the identifying string for this item.
      */
-    const QString &key() const { return m_key; }
+    QString key() const { return m_key; }
     
     /**
      * This function sets the icon of the network item.
@@ -109,7 +109,7 @@ class KDE_EXPORT Smb4KBasicNetworkItem
      * 
      * @returns the network item's icon.
      */
-    const QIcon &icon() const { return m_icon; }
+    QIcon icon() const { return m_icon; }
     
   private:
     /**

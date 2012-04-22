@@ -185,7 +185,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @returns the profile name
      */
-    const QString &profile() const { return m_profile; }
+    QString profile() const { return m_profile; }
     
     /**
      * Sets the workgroup name.
@@ -199,7 +199,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @returns the workgroup name.
      */
-    const QString workgroupName() const;
+    QString workgroupName() const;
     
     /**
      * Sets the UNC/URL of the network item
@@ -213,7 +213,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @returns the URL
      */
-    const QUrl url() const;
+    QUrl url() const;
     
     /**
      * Sets the IP address for the network item
@@ -227,7 +227,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @returns the IP address
      */
-    const QString ip() const;
+    QString ip() const;
     
     /**
      * Set the SMB port to use with this host or share.
@@ -322,7 +322,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @returns the owner's name
      */
-    const QString owner() { return m_user.loginName(); }
+    QString owner() const { return m_user.loginName(); }
     
     /**
      * Set the group id you want to use.
@@ -344,7 +344,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @returns the owner's name
      */
-    const QString group() { return m_group.name(); }
+    QString group() const { return m_group.name(); }
     
     /**
      * This function returns all custom options in a sorted map. The UNC,
@@ -357,7 +357,7 @@ class KDE_EXPORT Smb4KCustomOptions
      *
      * @returns all valid entries.
      */
-    QMap<QString,QString> customOptions();
+    QMap<QString,QString> customOptions() const;
     
     /**
      * Check if the custom options @p options are equal to those defined here.

@@ -441,7 +441,7 @@ Smb4KBookmark *Smb4KBookmarkHandler::findBookmarkByLabel( const QString &label )
 }
 
 
-const QList<Smb4KBookmark *> &Smb4KBookmarkHandler::bookmarks()
+QList<Smb4KBookmark *> Smb4KBookmarkHandler::bookmarks() const
 {
   // Update the bookmarks:
   update();
@@ -451,7 +451,7 @@ const QList<Smb4KBookmark *> &Smb4KBookmarkHandler::bookmarks()
 }
 
 
-const QList<Smb4KBookmark *> Smb4KBookmarkHandler::bookmarks( const QString &group )
+QList<Smb4KBookmark *> Smb4KBookmarkHandler::bookmarks( const QString &group ) const
 {
   // Update bookmarks
   update();
@@ -475,7 +475,7 @@ const QList<Smb4KBookmark *> Smb4KBookmarkHandler::bookmarks( const QString &gro
 }
 
 
-const QStringList Smb4KBookmarkHandler::groups()
+QStringList Smb4KBookmarkHandler::groups() const
 {
   QStringList groups;
 
@@ -574,7 +574,7 @@ void Smb4KBookmarkHandler::editBookmarks( QWidget *parent )
 }
 
 
-void Smb4KBookmarkHandler::update()
+void Smb4KBookmarkHandler::update() const
 {
   // Get new IP addresses.
   for ( int i = 0; i < m_bookmarks.size(); ++i )

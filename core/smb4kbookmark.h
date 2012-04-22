@@ -91,7 +91,7 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @returns the workgroup/domain name.
      */
-    const QString &workgroupName() const { return m_workgroup; }
+    QString workgroupName() const { return m_workgroup; }
 
     /**
      * Set the host name.
@@ -133,7 +133,7 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @returns the host's IP address.
      */
-    const QString &hostIP() const { return m_ip; }
+    QString hostIP() const { return m_ip; }
 
     /**
      * Set the share's type.
@@ -147,7 +147,7 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @returns the type of the share.
      */
-    const QString &typeString() const { return m_type; }
+    QString typeString() const { return m_type; }
 
     /**
      * This function sets the UNC (Uniform Naming Convention string). This
@@ -193,7 +193,7 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @returns the bookmark's label.
      */
-    const QString &label() const { return m_label; }
+    QString label() const { return m_label; }
 
     /**
      * Sets the login that is used to mount this share.
@@ -214,7 +214,7 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @returns the URL
      */
-    const QUrl &url() const { return m_url; }
+    QUrl url() const { return m_url; }
 
     /**
      * Set the group this bookmark belongs to.
@@ -228,7 +228,7 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @returns the group name
      */
-    const QString &group() const { return m_group; }
+    QString group() const { return m_group; }
     
     /**
      * Sets the profile this bookmark belongs to. The profile is meant 
@@ -244,7 +244,7 @@ class KDE_EXPORT Smb4KBookmark
      * 
      * @returns the profile name
      */
-    const QString &profile() const { return m_profile; }
+    QString profile() const { return m_profile; }
     
     /**
      * Compare another Smb4KBookmark object with this one an return TRUE if both carry
@@ -276,7 +276,7 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @returns the network item's icon.
      */
-    const QIcon &icon() const { return m_icon; }
+    QIcon icon() const { return m_icon; }
 
   private:
     /**

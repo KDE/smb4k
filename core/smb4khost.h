@@ -121,7 +121,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      * 
      * @returns the URL of the network item.
      */
-    const QUrl &url() const { return m_url; }
+    QUrl url() const { return m_url; }
 
     /**
      * Set the workgroup where this host is located.
@@ -135,7 +135,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns the workgroup name.
      */
-    const QString &workgroupName() const { return m_workgroup; }
+    QString workgroupName() const { return m_workgroup; }
 
     /**
      * Set the IP address of this host. @p ip will only be accepted
@@ -155,7 +155,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns the host's IP address or an empty string.
      */
-    const QString &ip() const { return m_ip; }
+    QString ip() const { return m_ip; }
 
     /**
      * Returns TRUE if the IP address has already been checked (i.e. set)
@@ -180,7 +180,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns the comment or an empty string.
      */
-    const QString &comment() const { return m_comment; }
+    QString comment() const { return m_comment; }
 
     /**
      * Set the "Server" and the "OS" (operating system) strings as
@@ -218,7 +218,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns the "Server" string.
      */
-    const QString &serverString() const { return m_server_string; }
+    QString serverString() const { return m_server_string; }
 
     /**
      * Returns the "OS" (operating system) string as reported by the
@@ -226,7 +226,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns the OS string.
      */
-    const QString &osString() const { return m_os_string; }
+    QString osString() const { return m_os_string; }
 
     /**
      * Set this host to be a master browser.

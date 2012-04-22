@@ -186,7 +186,7 @@ void Smb4KCustomOptions::setWorkgroupName( const QString &workgroup )
   }
 }
 
-const QString Smb4KCustomOptions::workgroupName() const
+QString Smb4KCustomOptions::workgroupName() const
 {
   switch ( m_type )
   {
@@ -229,7 +229,7 @@ void Smb4KCustomOptions::setURL( const QUrl &url )
 }
 
 
-const QUrl Smb4KCustomOptions::url() const
+QUrl Smb4KCustomOptions::url() const
 {
   QUrl url;
   
@@ -277,7 +277,7 @@ void Smb4KCustomOptions::setIP( const QString &ip )
 }
 
 
-const QString Smb4KCustomOptions::ip() const
+QString Smb4KCustomOptions::ip() const
 {
   switch ( m_type )
   {
@@ -368,7 +368,7 @@ void Smb4KCustomOptions::setGID( K_GID gid )
 }
 
 
-QMap<QString, QString> Smb4KCustomOptions::customOptions()
+QMap<QString, QString> Smb4KCustomOptions::customOptions() const
 {
   QMap<QString, QString> options;
   
