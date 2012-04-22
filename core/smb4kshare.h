@@ -2,7 +2,7 @@
     smb4kshare  -  Smb4K's container class for information about a share.
                              -------------------
     begin                : Mo Jan 28 2008
-    copyright            : (C) 2008-2011 by Alexander Reinholdt
+    copyright            : (C) 2008-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -19,7 +19,7 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
@@ -553,7 +553,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     /**
      * Operator to check if two shares are equal. This operator performs a full check.
      */
-    bool operator==( Smb4KShare share ) { return equals( &share, Full ); }
+    bool operator==( Smb4KShare share ) const { return equals( &share, Full ); }
 
     /**
      * Returns TRUE if values that were checked according to @p flag are empty.

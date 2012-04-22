@@ -260,7 +260,7 @@ class KDE_EXPORT Smb4KBookmark
     /**
      * Operator to check if two authentication informations are equal.
      */
-    bool operator==( Smb4KBookmark bookmark ) { return equals( &bookmark ); }
+    bool operator==( Smb4KBookmark bookmark ) const { return equals( &bookmark ); }
 
     /**
      * This function sets the icon of the bookmark.

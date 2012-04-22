@@ -3,7 +3,7 @@
     workgroup.
                              -------------------
     begin                : Sa Jan 26 2008
-    copyright            : (C) 2008-2010 by Alexander Reinholdt
+    copyright            : (C) 2008-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -20,7 +20,7 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
@@ -166,7 +166,7 @@ class KDE_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
     /**
      * Operator to check if two items are equal.
      */
-    bool operator==( Smb4KWorkgroup workgroup ) { return equals( &workgroup ); }
+    bool operator==( Smb4KWorkgroup workgroup ) const { return equals( &workgroup ); }
     
     /**
      * Returns TRUE if the workgroup/domain master browsers IP address is set and 
