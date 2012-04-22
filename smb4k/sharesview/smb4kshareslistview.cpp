@@ -2,7 +2,7 @@
     smb4kshareslistview  -  This is the shares list view of Smb4K.
                              -------------------
     begin                : Sa Jun 30 2007
-    copyright            : (C) 2007-2010 by Alexander Reinholdt
+    copyright            : (C) 2007-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -64,7 +64,7 @@ Smb4KSharesListView::Smb4KSharesListView( QWidget *parent )
 
   QStringList header_labels;
   header_labels.append( i18n( "Item" ) );
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
   header_labels.append( i18n( "Login" ) );
 #endif
   header_labels.append( i18n( "File System" ) );

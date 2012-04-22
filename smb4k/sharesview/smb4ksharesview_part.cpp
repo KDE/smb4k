@@ -398,7 +398,7 @@ void Smb4KSharesViewPart::loadSettings()
     setupView();
 
     m_list_view->setColumnHidden( Smb4KSharesListView::Owner, !Smb4KSettings::showOwner() );
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
     m_list_view->setColumnHidden( Smb4KSharesListView::Login, !Smb4KSettings::showLoginName() );
 #endif
     m_list_view->setColumnHidden( Smb4KSharesListView::FileSystem, !Smb4KSettings::showFileSystem() );
@@ -422,7 +422,7 @@ void Smb4KSharesViewPart::loadSettings()
 
     QMap<int, int> map;
     map.insert( configGroup.readEntry( "ColumnPositionItem", (int)Smb4KSharesListView::Item ), Smb4KSharesListView::Item );
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
     map.insert( configGroup.readEntry( "ColumnPositionLogin", (int)Smb4KSharesListView::Login ), Smb4KSharesListView::Login );
 #endif
     map.insert( configGroup.readEntry( "ColumnPositionFileSystem", (int)Smb4KSharesListView::FileSystem ), Smb4KSharesListView::FileSystem );
@@ -467,7 +467,7 @@ void Smb4KSharesViewPart::saveSettings()
       KConfigGroup configGroup( Smb4KSettings::self()->config(), "SharesViewPart" );
 
       configGroup.writeEntry( "ColumnPositionItem", m_list_view->header()->visualIndex( Smb4KSharesListView::Item ) );
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
       configGroup.writeEntry( "ColumnPositionLogin", m_list_view->header()->visualIndex( Smb4KSharesListView::Login ) );
 #endif
       configGroup.writeEntry( "ColumnPositionFileSystem", m_list_view->header()->visualIndex( Smb4KSharesListView::FileSystem ) );

@@ -2,7 +2,7 @@
     smb4kshareslistviewitem  -  The shares list view item class of Smb4K.
                              -------------------
     begin                : Sa Jun 30 2007
-    copyright            : (C) 2007-2010 by Alexander Reinholdt
+    copyright            : (C) 2007-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -100,36 +100,6 @@ Smb4KSharesListViewItem::~Smb4KSharesListViewItem()
 }
 
 
-// void Smb4KSharesListViewItem::setupItem( Smb4KShare *share, bool mountpoint )
-// {
-// 
-//   // Set up the text.
-//   setText( Item, (mountpoint ? m_data.share()->path() : m_data.share()->unc()) );
-//   setText( Owner, QString( "%1 - %2" ).arg( m_data.share()->owner() ).arg( m_data.share()->group() ) );
-// 
-// #ifndef __FreeBSD__
-//   setText( Login, (m_data.share()->fileSystem() == Smb4KShare::CIFS) ?
-//            m_data.share()->login() :
-//            QString() );
-// #endif
-// 
-//   setText( FileSystem, m_data.share()->fileSystemString().toUpper() );
-//   setText( Used, m_data.share()->usedDiskSpaceString() );
-//   setText( Free, m_data.share()->freeDiskSpaceString() );
-//   setText( Total, m_data.share()->totalDiskSpaceString() );
-//   setText( Usage, m_data.share()->diskUsageString() );
-// 
-//   // Alignment
-//   setTextAlignment( Used, Qt::AlignRight|Qt::AlignVCenter );
-//   setTextAlignment( Free, Qt::AlignRight|Qt::AlignVCenter );
-//   setTextAlignment( Total, Qt::AlignRight|Qt::AlignVCenter );
-//   setTextAlignment( Usage, Qt::AlignRight|Qt::AlignVCenter );
-// 
-//   m_data.setShare( share );
-//   m_data.setShowMountPoint( mountpoint );
-// }
-
-
 void Smb4KSharesListViewItem::setShowMountPoint( bool show )
 {
   m_mountpoint = show;
@@ -153,7 +123,7 @@ void Smb4KSharesListViewItem::update( Smb4KShare *share )
 
   setText( Owner, QString( "%1 - %2" ).arg( m_share.owner() ).arg( m_share.group() ) );
 
-#ifndef __FreeBSD__
+#ifndef Q_OS_FREEBSD
   switch ( m_share.fileSystem() )
   {
     case Smb4KShare::CIFS:
