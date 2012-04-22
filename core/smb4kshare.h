@@ -548,7 +548,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * @returns TRUE if the data that was compared is the same.
      */
     bool equals( Smb4KShare *share,
-                 CheckFlags flag );
+                 CheckFlags flag ) const;
                  
     /**
      * Operator to check if two shares are equal. This operator performs a full check.

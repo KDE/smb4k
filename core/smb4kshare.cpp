@@ -472,7 +472,7 @@ void Smb4KShare::setTotalDiskSpace( qulonglong size )
 
 QString Smb4KShare::totalDiskSpaceString() const
 {
-  QString total, total_dim = QString();
+  QString total, total_dim;
 
   int exponent = 0;
   double tmp_factor = 0;
@@ -529,7 +529,7 @@ void Smb4KShare::setFreeDiskSpace( qulonglong size )
 
 QString Smb4KShare::freeDiskSpaceString() const
 {
-  QString free, free_dim = QString();
+  QString free, free_dim;
 
   int exponent = 0;
   double tmp_factor = 0;
@@ -586,7 +586,7 @@ void Smb4KShare::setUsedDiskSpace( qulonglong size )
 
 QString Smb4KShare::usedDiskSpaceString() const
 {
-  QString used, used_dim = QString();
+  QString used, used_dim;
 
   int exponent = 0;
   double tmp_factor = 0;
@@ -655,7 +655,7 @@ QString Smb4KShare::diskUsageString() const
 }
 
 
-bool Smb4KShare::equals( Smb4KShare *share, CheckFlags flag )
+bool Smb4KShare::equals( Smb4KShare *share, CheckFlags flag ) const
 {
   Q_ASSERT( share );
 
@@ -888,7 +888,7 @@ void Smb4KShare::resetMountData()
 {
   // The login name is not reset here, because it is also
   // needed for things that are not mount-releated.
-  m_path = QString();
+  m_path.clear();
   m_inaccessible = false;
   m_foreign = false;
   m_filesystem = Unknown;
