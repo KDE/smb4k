@@ -2,7 +2,7 @@
     smb4kconfigdialog  -  The configuration dialog of Smb4K
                              -------------------
     begin                : Sa Apr 14 2007
-    copyright            : (C) 2004-2011 by Alexander Reinholdt
+    copyright            : (C) 2004-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -19,7 +19,7 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
@@ -30,6 +30,7 @@
 #include <QShowEvent>
 #include <QSize>
 #include <QScrollArea>
+#include <QPointer>
 
 // KDE includes
 #include <klineedit.h>
@@ -45,8 +46,8 @@
 #include <kconfigdialogmanager.h>
 
 // system specific includes
-#include <unistd.h>
-#include <sys/types.h>
+// #include <unistd.h>
+// #include <sys/types.h>
 
 // application specific includes
 #include <smb4kconfigdialog.h>
@@ -589,15 +590,15 @@ void Smb4KConfigDialog::slotSetDefaultLogin()
     // for us.
     Smb4KWalletManager::self()->readDefaultAuthInfo( &authInfo );
     
-    KPasswordDialog dlg( this, KPasswordDialog::ShowUsernameLine );
-    dlg.setPrompt( i18n( "Enter the default login information." ) );
-    dlg.setUsername( authInfo.login() );
-    dlg.setPassword( authInfo.password() );
+    QPointer<KPasswordDialog> dlg = new KPasswordDialog( this, KPasswordDialog::ShowUsernameLine );
+    dlg->setPrompt( i18n( "Enter the default login information." ) );
+    dlg->setUsername( authInfo.login() );
+    dlg->setPassword( authInfo.password() );
     
-    if ( dlg.exec() == KPasswordDialog::Accepted )
+    if ( dlg->exec() == KPasswordDialog::Accepted )
     {
-      authInfo.setLogin( dlg.username() );
-      authInfo.setPassword( dlg.password() );
+      authInfo.setLogin( dlg->username() );
+      authInfo.setPassword( dlg->password() );
       
       Smb4KWalletManager::self()->writeDefaultAuthInfo( &authInfo );
       
@@ -615,6 +616,8 @@ void Smb4KConfigDialog::slotSetDefaultLogin()
       // Reset the checkbox.
       auth_options->findChild<QCheckBox *>( "kcfg_UseDefaultLogin" )->setChecked( false );
     }
+    
+    delete dlg;
   }
   else
   {
