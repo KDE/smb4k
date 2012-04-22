@@ -2,7 +2,7 @@
     smb4kwalletmanager  -  This is the wallet manager of Smb4K.
                              -------------------
     begin                : Sa Dez 27 2008
-    copyright            : (C) 2008-2011 by Alexander Reinholdt
+    copyright            : (C) 2008-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -19,12 +19,13 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 // Qt includes
 #include <QDesktopWidget>
+#include <QPointer>
 #ifdef Q_OS_FREEBSD
 #include <QFile>
 #include <QDir>
@@ -849,7 +850,7 @@ bool Smb4KWalletManager::showPasswordDialog( Smb4KBasicNetworkItem *networkItem,
   readAuthInfo( networkItem );
 
   // Set up the password dialog.
-  KPasswordDialog dlg( parent, KPasswordDialog::ShowUsernameLine );
+  QPointer<KPasswordDialog> dlg = new KPasswordDialog( parent, KPasswordDialog::ShowUsernameLine );
 
   switch ( networkItem->type() )
   {
@@ -859,16 +860,16 @@ bool Smb4KWalletManager::showPasswordDialog( Smb4KBasicNetworkItem *networkItem,
 
       if ( host )
       {
-        dlg.setUsername( host->login() );
-        dlg.setPassword( host->password() );
-        dlg.setPrompt( i18n( "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>", host->hostName() ) );
+        dlg->setUsername( host->login() );
+        dlg->setPassword( host->password() );
+        dlg->setPrompt( i18n( "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>", host->hostName() ) );
 
         // Execute the password dialog, retrieve the new authentication
         // information and save it.
-        if ( (success = dlg.exec()) )
+        if ( (success = dlg->exec()) )
         {
-          host->setLogin( dlg.username() );
-          host->setPassword( dlg.password() );
+          host->setLogin( dlg->username() );
+          host->setPassword( dlg->password() );
           writeAuthInfo( host );
         }
         else
@@ -907,22 +908,22 @@ bool Smb4KWalletManager::showPasswordDialog( Smb4KBasicNetworkItem *networkItem,
         // Enter authentication information into the dialog
         if ( !logins.isEmpty() )
         {
-          dlg.setKnownLogins( logins );
+          dlg->setKnownLogins( logins );
         }
         else
         {
-          dlg.setUsername( share->login() );
-          dlg.setPassword( share->password() );
+          dlg->setUsername( share->login() );
+          dlg->setPassword( share->password() );
         }
 
-        dlg.setPrompt( i18n( "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>", share->unc() ) );
+        dlg->setPrompt( i18n( "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>", share->unc() ) );
 
         // Execute the password dialog, retrieve the new authentication
         // information and save it.
-        if ( (success = dlg.exec()) )
+        if ( (success = dlg->exec()) )
         {
-          share->setLogin( dlg.username() );
-          share->setPassword( dlg.password() );
+          share->setLogin( dlg->username() );
+          share->setPassword( dlg->password() );
           writeAuthInfo( share );
         }
         else
@@ -941,6 +942,8 @@ bool Smb4KWalletManager::showPasswordDialog( Smb4KBasicNetworkItem *networkItem,
       break;
     }
   }
+  
+  delete dlg;
 
   return success;
 }

@@ -2,7 +2,7 @@
     smb4khomesshareshandler  -  This class handles the homes shares.
                              -------------------
     begin                : Do Aug 10 2006
-    copyright            : (C) 2006-2011 by Alexander Reinholdt
+    copyright            : (C) 2006-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -19,7 +19,7 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335 USA                                                     *
  ***************************************************************************/
 
@@ -29,6 +29,7 @@
 #include <QXmlStreamWriter>
 #include <QXmlStreamReader>
 #include <QCoreApplication>
+#include <QPointer>
 
 // KDE includes
 #include <kdebug.h>
@@ -87,13 +88,13 @@ bool Smb4KHomesSharesHandler::specifyUser( Smb4KShare *share, bool overwrite, QW
     QStringList users;
     findHomesUsers( share, &users );
     
-    Smb4KHomesUserDialog dlg( parent );
-    dlg.setUserNames( users );
+    QPointer<Smb4KHomesUserDialog> dlg = new Smb4KHomesUserDialog( parent );
+    dlg->setUserNames( users );
     
-    if ( dlg.exec() == KDialog::Accepted )
+    if ( dlg->exec() == KDialog::Accepted )
     {
-      QString login = dlg.login();
-      users = dlg.userNames();
+      QString login = dlg->login();
+      users = dlg->userNames();
       addHomesUsers( share, &users );
       
       if ( !login.isEmpty() )
@@ -123,6 +124,8 @@ bool Smb4KHomesSharesHandler::specifyUser( Smb4KShare *share, bool overwrite, QW
     {
       // Do nothing
     }
+    
+    delete dlg;
   }
   else
   {

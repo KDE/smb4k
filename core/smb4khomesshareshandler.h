@@ -2,7 +2,7 @@
     smb4khomesshareshandler  -  This class handles the homes shares.
                              -------------------
     begin                : Do Aug 10 2006
-    copyright            : (C) 2006-2011 by Alexander Reinholdt
+    copyright            : (C) 2006-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -19,7 +19,7 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335 USA                                                     *
  ***************************************************************************/
 

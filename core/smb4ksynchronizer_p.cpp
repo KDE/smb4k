@@ -28,6 +28,7 @@
 #include <QTimer>
 #include <QGridLayout>
 #include <QLabel>
+#include <QPointer>
 
 // KDE includes
 #include <kdebug.h>
@@ -109,16 +110,16 @@ void Smb4KSyncJob::slotStartSynchronization()
   if ( m_share )
   {
     // Show the user an URL input dialog.
-    Smb4KSynchronizationDialog dlg( m_share, m_parent_widget );
+    QPointer<Smb4KSynchronizationDialog> dlg = new Smb4KSynchronizationDialog( m_share, m_parent_widget );
 
-    if ( dlg.exec() == KDialog::Accepted )
+    if ( dlg->exec() == KDialog::Accepted )
     {
       // Create the destination directory if it does not already exits.
-      if ( !QFile::exists( dlg.destination().path() ) )
+      if ( !QFile::exists( dlg->destination().path() ) )
       {
-        QDir sync_dir( dlg.destination().path() );
+        QDir sync_dir( dlg->destination().path() );
 
-        if ( !sync_dir.mkpath( dlg.destination().path() ) )
+        if ( !sync_dir.mkpath( dlg->destination().path() ) )
         {
           Smb4KNotification *notification = new Smb4KNotification();
           notification->mkdirFailed( sync_dir );
@@ -135,14 +136,16 @@ void Smb4KSyncJob::slotStartSynchronization()
         // Do nothing
       }
 
-      m_src = dlg.source().path();
-      m_dest = dlg.destination().path();
+      m_src = dlg->source().path();
+      m_dest = dlg->destination().path();
     }
     else
     {
       emitResult();
       return;
     }
+    
+    delete dlg;
 
     // Start the synchronization process
     emit aboutToStart( m_dest.path() );

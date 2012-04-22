@@ -2,7 +2,7 @@
     smb4kcustomoptionsmanager - Manage custom options
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011 by Alexander Reinholdt
+    copyright            : (C) 2011-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -19,7 +19,7 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
@@ -28,6 +28,7 @@
 #include <QXmlStreamWriter>
 #include <QDebug>
 #include <QCoreApplication>
+#include <QPointer>
 
 // KDE includes
 #include <kglobal.h>
@@ -699,9 +700,9 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog( Smb4KBasicNetworkItem *
     }
   }
   
-  Smb4KCustomOptionsDialog dlg( options, parent );
+  QPointer<Smb4KCustomOptionsDialog> dlg = new Smb4KCustomOptionsDialog( options, parent );
     
-  if ( dlg.exec() == KDialog::Accepted )
+  if ( dlg->exec() == KDialog::Accepted )
   {
     if ( hasCustomOptions( options ) )
     {
@@ -718,6 +719,8 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog( Smb4KBasicNetworkItem *
   {
     // Do nothing
   }
+  
+  delete dlg;
   
   // Delete the options object if necessary. 
   if ( delete_options )

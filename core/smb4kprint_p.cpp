@@ -3,7 +3,7 @@
     Smb4KPrint class
                              -------------------
     begin                : Fr Okt 31 2008
-    copyright            : (C) 2008-2011 by Alexander Reinholdt
+    copyright            : (C) 2008-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -29,6 +29,7 @@
 #include <QLabel>
 #include <QTimer>
 #include <QTextDocument>
+#include <QPointer>
 
 // KDE includes
 #include <kdebug.h>
@@ -108,8 +109,8 @@ void Smb4KPrintJob::slotStartPrinting()
   
   if ( m_share )
   {
-    // The file path of the document that is going to be printed
-    QString file_path;
+    // The URL and path of the document that is going to be printed
+    KUrl fileURL;
     
     // Temporary directory
     KTempDir tmp_dir( KStandardDirs::locateLocal( "tmp", "smb4k" ) );
@@ -123,15 +124,17 @@ void Smb4KPrintJob::slotStartPrinting()
     printer->setOutputFileName( QString( "%1smb4k_print.ps" ).arg( m_temp_dir ) );
     
     // Open the print dialog
-    Smb4KPrintDialog dlg( m_share, printer, m_parent_widget );
+    QPointer<Smb4KPrintDialog> dlg = new Smb4KPrintDialog( m_share, printer, m_parent_widget );
     
-    if ( dlg.exec() == KDialog::Accepted )
+    if ( dlg->exec() == KDialog::Accepted )
     {
+      fileURL = dlg->fileURL();
+      
       // Check that the file exists
-      if ( !QFile::exists( dlg.fileURL().path() ) )
+      if ( !QFile::exists( fileURL.path() ) )
       {
         Smb4KNotification *notification = new Smb4KNotification();
-        notification->fileNotFound( dlg.fileURL().path() );
+        notification->fileNotFound( fileURL.path() );
         emitResult();
         return;
       }
@@ -146,12 +149,13 @@ void Smb4KPrintJob::slotStartPrinting()
       emitResult();
       return;
     }
+    
+    delete dlg;
 
     // Start the print process
     emit aboutToStart( m_share );
 
     // Get the file name.
-    KUrl fileURL = dlg.fileURL();
     KFileItem file_item = KFileItem( KFileItem::Unknown, KFileItem::Unknown, fileURL, false );
     
     qDebug() << file_item.mimetype();
@@ -163,7 +167,6 @@ void Smb4KPrintJob::slotStartPrinting()
     {
       // Nothing to do here. These mimetypes can be directly
       // printed.
-      file_path = fileURL.path();
     }
     else if ( file_item.mimetype().startsWith( "text" ) || 
               file_item.mimetype().startsWith( "message" ) ||
@@ -200,7 +203,11 @@ void Smb4KPrintJob::slotStartPrinting()
       }
       
       doc.print( printer );
-      file_path = printer->outputFileName();
+      
+      // Set the URL of the new file and make sure
+      // that the correct protocol is used.
+      fileURL.setUrl( printer->outputFileName() );
+      fileURL.setProtocol( "file" );
     }
     else
     {
@@ -217,7 +224,7 @@ void Smb4KPrintJob::slotStartPrinting()
     arguments << "Smb4K print job";                           // job name
     arguments << QString( "%1" ).arg( printer->copyCount() ); // number of copies
     arguments << "";                                          // options; not used at the moment
-    arguments << file_path;                                   // file to print
+    arguments << fileURL.path();                              // file to print
     
     delete printer;
     
