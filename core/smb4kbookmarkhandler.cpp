@@ -2,7 +2,7 @@
     smb4kbookmarkhandler  -  This class handles the bookmarks.
                              -------------------
     begin                : Fr Jan 9 2004
-    copyright            : (C) 2004-2011 by Alexander Reinholdt
+    copyright            : (C) 2004-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 // Qt includes
@@ -31,6 +31,7 @@
 #include <QDesktopWidget>
 #include <QXmlStreamWriter>
 #include <QXmlStreamReader>
+#include <QPointer>
 
 // KDE includes
 #include <kstandarddirs.h>
@@ -163,9 +164,9 @@ void Smb4KBookmarkHandler::addBookmarks( const QList<Smb4KShare *> &list, QWidge
 
   if ( !new_bookmarks.isEmpty() )
   {
-    Smb4KBookmarkDialog dlg( new_bookmarks, groups(), parent );
+    QPointer<Smb4KBookmarkDialog> dlg = new Smb4KBookmarkDialog( new_bookmarks, groups(), parent );
 
-    if ( dlg.exec() == KDialog::Accepted )
+    if ( dlg->exec() == KDialog::Accepted )
     {
       // Check the label of the new bookmarks.
       for ( int i = 0; i < new_bookmarks.size(); ++i )
@@ -201,6 +202,8 @@ void Smb4KBookmarkHandler::addBookmarks( const QList<Smb4KShare *> &list, QWidge
     {
       // Do nothing
     }
+    
+    delete dlg;
   }
   else
   {
