@@ -78,7 +78,6 @@ Item {
       left: parent.left
       bottom: parent.bottom
     }
-    anchors.topMargin: 2
     anchors.rightMargin: 5
     width: parent.width / 2
     delegate: BrowserItemDelegate {
@@ -115,11 +114,10 @@ Item {
     cellHeight: 80
     anchors {
       top: parent.top
-      left: line.right
+      left: browserListView.right
       right: parent.right
       bottom: parent.bottom
     }
-    anchors.topMargin: 5
     anchors.leftMargin: 5
     width: parent.width / 2
     delegate: SharesViewItemDelegate {

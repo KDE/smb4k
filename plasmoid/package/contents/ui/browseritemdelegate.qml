@@ -38,19 +38,19 @@ PlasmaComponents.ListItem {
     
   signal itemClicked()
   signal upClicked()
-    
+  
   width: browserListView.width
-  height: 40
+  height: theme.mediumIconSize + 8
 
   Row {
-    spacing: 5
+    spacing: 10
     Column {
       anchors.verticalCenter: parent.verticalCenter
       QIconItem {
         id: delegateItemIcon
         icon: itemIcon
-        width: 22
-        height: 22
+        width: theme.mediumIconSize
+        height: theme.mediumIconSize
         MouseArea {
           anchors.fill: parent
           onClicked: {
@@ -73,6 +73,7 @@ PlasmaComponents.ListItem {
       }
       Text { 
         text: "<font size=\"-1\">"+itemComment+"</font>" 
+        visible: itemComment.length != 0 ? true : false
         clip: true
         MouseArea {
           anchors.fill: parent
@@ -89,8 +90,8 @@ PlasmaComponents.ListItem {
     anchors.rightMargin: 10
     anchors.leftMargin: 10
     icon: "go-up"
-    height: 16
-    width: 16
+    height: theme.smallIconSize
+    width: theme.smallIconSize
     opacity: 0.2
     visible: itemType > 1 ? true : false
     enabled: itemType > 1 ? true : false

@@ -1,4 +1,4 @@
-BrowserItemDelegate 1.0 browseritemdelegate.qml
-SharesViewItemDelegate 1.0 sharesviewitemdelegate.qml
+BrowserItemDelegate 0.1 browseritemdelegate.qml
+SharesViewItemDelegate 0.1 sharesviewitemdelegate.qml
 
 plugin smb4kqml ../plugin

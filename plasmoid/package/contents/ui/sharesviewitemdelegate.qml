@@ -42,6 +42,7 @@ Item {
       
   width: sharesView.cellWidth
   height: sharesView.cellHeight
+  
   anchors.verticalCenter: parent.verticalCenter
 
   Column {
@@ -51,8 +52,8 @@ Item {
       spacing: 10
       QIconItem {
         icon: itemIcon
-        width: 48
-        height: 48
+        width: theme.largeIconSize
+        height: theme.largeIconSize
         MouseArea {
           anchors.fill: parent
           onClicked: {
@@ -60,47 +61,25 @@ Item {
           }
         }
       }
-      Column {
-        QIconItem {
-          id: unmountButton
-          icon: "media-eject"
-          width: 16
-          height: 16
-          opacity: 0.2
-          MouseArea {
-            anchors.fill: parent
-            hoverEnabled: true
-            onEntered: {
-              parent.opacity = 1.0
-            }
-            onExited: {
-              parent.opacity = 0.2
-            }
-            onClicked: {
-              delegate.unmountClicked()
-            }
+      QIconItem {
+        id: unmountButton
+        icon: "media-eject"
+        width: theme.smallIconSize
+        height: theme.smallIconSize
+        opacity: 0.2
+        MouseArea {
+          anchors.fill: parent
+          hoverEnabled: true
+          onEntered: {
+            parent.opacity = 1.0
+          }
+          onExited: {
+            parent.opacity = 0.2
+          }
+          onClicked: {
+            delegate.unmountClicked()
           }
         }
-//         QIconItem {
-//           id: openButton
-//           icon: "folder-open"
-//           width: 16
-//           height: 16
-//           opacity: 0.2
-//           MouseArea {
-//             anchors.fill: parent
-//             hoverEnabled: true
-//             onEntered: {
-//               parent.opacity = 1.0
-//             }
-//             onExited: {
-//               parent.opacity = 0.2
-//             }
-//             onClicked: {
-//               delegate.openClicked()
-//             }
-//           }
-//         }
       }
     }
     Text {
