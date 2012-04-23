@@ -273,7 +273,7 @@ void Smb4KSearchJob::slotStartSearch()
 
 void Smb4KSearchJob::slotReadStandardOutput()
 {
-  QStringList stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( "\n", QString::SkipEmptyParts, Qt::CaseSensitive );
+  QStringList stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts, Qt::CaseSensitive );
 
   // Process output from smbtree.
   QString workgroup_name;
@@ -293,8 +293,8 @@ void Smb4KSearchJob::slotReadStandardOutput()
       }
       else if ( line.count( "\\" ) == 3 )
       {
-        QString unc = line.trimmed().section( "\t", 0, 0 ).trimmed().replace( "\\", "/" );
-        QString comment = line.trimmed().section( "\t", 1, -1 ).trimmed();
+        QString unc = line.trimmed().section( '\t', 0, 0 ).trimmed().replace( "\\", "/" );
+        QString comment = line.trimmed().section( '\t', 1, -1 ).trimmed();
 
         if ( unc.contains( m_string, Qt::CaseInsensitive ) )
         {

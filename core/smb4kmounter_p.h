@@ -3,7 +3,7 @@
     Smb4KMounter class.
                              -------------------
     begin                : Do Jul 19 2007
-    copyright            : (C) 2007-2011 by Alexander Reinholdt
+    copyright            : (C) 2007-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -20,7 +20,7 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
@@ -293,8 +293,8 @@ class Smb4KMountDialog : public KDialog
      *
      * @param parent      The parent widget
      */
-    Smb4KMountDialog( Smb4KShare *share,
-                      QWidget *parent = 0 );
+    explicit Smb4KMountDialog( Smb4KShare *share,
+                               QWidget *parent = 0 );
     /**
      * The destructor.
      */

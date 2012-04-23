@@ -2,7 +2,7 @@
     smb4kmounter.cpp  -  The core class that mounts the shares.
                              -------------------
     begin                : Die Jun 10 2003
-    copyright            : (C) 2003-2011 by Alexander Reinholdt
+    copyright            : (C) 2003-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -19,7 +19,7 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
@@ -365,7 +365,7 @@ void Smb4KMounter::import( bool check_inaccessible )
               {
                 // The domain entry is somewhere in the middle of the options
                 // string.
-                share.setWorkgroupName( tmp.section( ",", 0, 0 ) );
+                share.setWorkgroupName( tmp.section( ',', 0, 0 ) );
               }
               else
               {
@@ -387,7 +387,7 @@ void Smb4KMounter::import( bool check_inaccessible )
               {
                 // The IP address entry is somewhere in the middle of the options
                 // string.
-                share.setHostIP( tmp.section( ",", 0, 0 ) );
+                share.setHostIP( tmp.section( ',', 0, 0 ) );
               }
               else
               {
@@ -409,7 +409,7 @@ void Smb4KMounter::import( bool check_inaccessible )
               {
                 // The user name entry is somewhere in the middle of the options
                 // string.
-                QString user = tmp.section( ",", 0, 0 );
+                QString user = tmp.section( ',', 0, 0 );
                 share.setLogin( user.isEmpty() ? "guest" : user );
               }
               else
@@ -426,7 +426,7 @@ void Smb4KMounter::import( bool check_inaccessible )
               {
                 // The user name entry is somewhere in the middle of the options
                 // string.
-                QString user = tmp.section( ",", 0, 0 );
+                QString user = tmp.section( ',', 0, 0 );
                 share.setLogin( user.isEmpty() ? "guest" : user );
               }
               else
@@ -453,7 +453,7 @@ void Smb4KMounter::import( bool check_inaccessible )
         // The share is either already known or the user disabled support for
         // the proc file system in the kernel. Either way, just populate all
         // possible entries. The rest will be added/updated by the code below.
-        QString login = mount_points.at( i )->mountOptions().join( "," ).section( "user=", 1, 1 ).section( ",", 0, 0 ).trimmed();
+        QString login = mount_points.at( i )->mountOptions().join( "," ).section( "user=", 1, 1 ).section( ',', 0, 0 ).trimmed();
         share.setLogin( !login.isEmpty() ? login : "guest" ); // Work around empty 'user=' entries
       }
 #else
@@ -462,7 +462,7 @@ void Smb4KMounter::import( bool check_inaccessible )
       // Try to get the login from the mount options.
       if ( share.login().isEmpty() )
       {
-        QString login = mount_points.at( i )->mountOptions().join( "," ).section( "username=", 1, 1 ).section( ",", 0, 0 ).trimmed();
+        QString login = mount_points.at( i )->mountOptions().join( "," ).section( "username=", 1, 1 ).section( ',', 0, 0 ).trimmed();
         share.setLogin( !login.isEmpty() ? login : "guest" ); // Work around empty 'username=' entries
       }
       else

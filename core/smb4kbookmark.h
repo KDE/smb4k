@@ -3,7 +3,7 @@
     generation).
                              -------------------
     begin                : So Jun 8 2008
-    copyright            : (C) 2008-2011 by Alexander Reinholdt
+    copyright            : (C) 2008-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -59,8 +59,8 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @param label           The optional bookmark label.
      */
-    Smb4KBookmark( Smb4KShare *share,
-                   const QString &label = QString() );
+    explicit Smb4KBookmark( Smb4KShare *share,
+                            const QString &label = QString() );
 
     /**
      * The copy constructor.

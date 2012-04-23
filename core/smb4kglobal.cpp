@@ -2,7 +2,7 @@
     smb4kglobal  -  This is the global namespace for Smb4K.
                              -------------------
     begin                : Sa Apr 2 2005
-    copyright            : (C) 2005-2011 by Alexander Reinholdt
+    copyright            : (C) 2005-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -581,7 +581,7 @@ QList<Smb4KShare *> Smb4KGlobal::findShareByUNC( const QString &unc )
       if ( QString::compare( u.toString( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort ),
                             p.mountedSharesList.at( i )->unc( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort ),
                             Qt::CaseInsensitive ) == 0 ||
-          QString::compare( u.toString( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort ).replace( " ", "_" ),
+          QString::compare( u.toString( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort ).replace( ' ', '_' ),
                             p.mountedSharesList.at( i )->unc( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort ),
                             Qt::CaseInsensitive ) == 0  )
       {
