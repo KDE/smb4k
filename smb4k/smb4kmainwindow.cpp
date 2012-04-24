@@ -2,7 +2,7 @@
     smb4kmainwindow  -  The main window of Smb4K.
                              -------------------
     begin                : Di Jan 1 2008
-    copyright            : (C) 2008-2011 by Alexander Reinholdt
+    copyright            : (C) 2008-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500,        *
- *   Boston, MA 02110-1335, USA                                            *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 // Qt includes

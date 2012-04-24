@@ -75,17 +75,17 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
     /**
      * Constructor for a workgroup.
      */
-    Smb4KNetworkObject( Smb4KWorkgroup *workgroup, QObject *parent = 0 );
+    explicit Smb4KNetworkObject( Smb4KWorkgroup *workgroup, QObject *parent = 0 );
 
     /**
      * Constructor for a host.
      */
-    Smb4KNetworkObject( Smb4KHost *host, QObject *parent = 0 );
+    explicit Smb4KNetworkObject( Smb4KHost *host, QObject *parent = 0 );
 
     /**
      * Constructor for a share.
      */
-    Smb4KNetworkObject( Smb4KShare *share, QObject *parent = 0 );
+    explicit Smb4KNetworkObject( Smb4KShare *share, QObject *parent = 0 );
 
     /**
      * Empty constructor

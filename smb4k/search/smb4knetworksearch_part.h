@@ -64,9 +64,9 @@ class Smb4KNetworkSearchPart : public KParts::Part
      *                            arguments are recognized:
      *                            silent="true"|"false"
      */
-    Smb4KNetworkSearchPart( QWidget *parentWidget = 0,
-                            QObject *parent = 0,
-                            const QList<QVariant> &args = QList<QVariant>() );
+    explicit Smb4KNetworkSearchPart( QWidget *parentWidget = 0,
+                                     QObject *parent = 0,
+                                     const QList<QVariant> &args = QList<QVariant>() );
 
     /**
      * The destructor.

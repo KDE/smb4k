@@ -154,8 +154,8 @@ class KDE_EXPORT Smb4KBookmarkEditor : public KDialog
      *
      * @param parent      The parent of this dialog.
      */
-    Smb4KBookmarkEditor( const QList<Smb4KBookmark *> &bookmarks,
-                         QWidget *parent = 0 );
+    explicit Smb4KBookmarkEditor( const QList<Smb4KBookmark *> &bookmarks,
+                                  QWidget *parent = 0 );
 
     /**
      * The destructor.

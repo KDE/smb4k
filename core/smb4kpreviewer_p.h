@@ -182,8 +182,8 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
      *
      * @param parent        The parent of this widget
      */
-    Smb4KPreviewDialog( Smb4KShare *share,
-                        QWidget *parent = 0 );
+    explicit Smb4KPreviewDialog( Smb4KShare *share,
+                                 QWidget *parent = 0 );
 
     /**
      * The destructor.

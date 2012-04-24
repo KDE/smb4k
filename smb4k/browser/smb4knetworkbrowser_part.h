@@ -72,9 +72,9 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *                            bookmark_shortcut="true"|"false"
      *                            silent="true"|"false"
      */
-    Smb4KNetworkBrowserPart( QWidget *parentWidget = 0,
-                             QObject *parent = 0,
-                             const QList<QVariant> &args = QList<QVariant>() );
+    explicit Smb4KNetworkBrowserPart( QWidget *parentWidget = 0,
+                                      QObject *parent = 0,
+                                      const QList<QVariant> &args = QList<QVariant>() );
 
     /**
      * The destructor.
