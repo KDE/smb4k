@@ -20,7 +20,7 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
@@ -272,7 +272,7 @@ void Smb4KPrintJob::slotReadStandardError()
     else
     {
       // Remove DEBUG messages.
-      QStringList err_msg = stderr.split( "\n", QString::SkipEmptyParts );
+      QStringList err_msg = stderr.split( '\n', QString::SkipEmptyParts );
       
       QMutableStringListIterator it( err_msg );
       

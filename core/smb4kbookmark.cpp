@@ -102,7 +102,7 @@ void Smb4KBookmark::setShareName( const QString &share )
 
 QString Smb4KBookmark::shareName() const
 {
-  if ( m_url.path().startsWith( "/" ) )
+  if ( m_url.path().startsWith( '/' ) )
   {
     return m_url.path().remove( 0, 1 );
   }
@@ -153,7 +153,7 @@ QString Smb4KBookmark::unc( QUrl::FormattingOptions options ) const
   }
   else
   {
-    unc = m_url.toString( options ).replace( "@"+m_url.host(), "@"+hostName() );
+    unc = m_url.toString( options ).replace( '@'+m_url.host(), '@'+hostName() );
   }
   
   return unc;
@@ -170,7 +170,7 @@ QString Smb4KBookmark::hostUNC( QUrl::FormattingOptions options ) const
   }
   else
   {
-    unc = m_url.toString( options|QUrl::RemovePath ).replace( "@"+m_url.host(), "@"+hostName() );
+    unc = m_url.toString( options|QUrl::RemovePath ).replace( '@'+m_url.host(), '@'+hostName() );
   }
   
   return unc;

@@ -2,7 +2,7 @@
     smb4kpreviewer_p  -  Private helper classes for Smb4KPreviewer class.
                              -------------------
     begin                : So Dez 21 2008
-    copyright            : (C) 2008-2011 by Alexander Reinholdt
+    copyright            : (C) 2008-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -19,7 +19,7 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
@@ -347,7 +347,7 @@ void Smb4KPreviewJob::slotStartPreview()
 
 void Smb4KPreviewJob::slotReadStandardOutput()
 {
-  QStringList list = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( "\n", QString::SkipEmptyParts );
+  QStringList list = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts );
   QList<Item> items;
 
   foreach ( const QString &line, list )
@@ -398,7 +398,7 @@ void Smb4KPreviewJob::slotReadStandardOutput()
 
         if ( is_dir )
         {
-          if ( name.startsWith( "." ) &&
+          if ( name.startsWith( '.' ) &&
               (QString::compare( name, "." ) != 0 && QString::compare( name, ".." ) != 0) )
           {
             item.first = HiddenDirectoryItem;
@@ -410,7 +410,7 @@ void Smb4KPreviewJob::slotReadStandardOutput()
         }
         else
         {
-          if ( name.startsWith( "." ) )
+          if ( name.startsWith( '.' ) )
           {
             item.first = HiddenFileItem;
           }
@@ -443,7 +443,7 @@ void Smb4KPreviewJob::slotReadStandardError()
 
   // Remove DEBUG messages and the additional information
   // that smbclient unfortunately reports to stderr.
-  QStringList err_msg = stderr.split( "\n", QString::SkipEmptyParts );
+  QStringList err_msg = stderr.split( '\n', QString::SkipEmptyParts );
 
   QMutableStringListIterator it( err_msg );
 
@@ -792,7 +792,7 @@ void Smb4KPreviewDialog::slotActionTriggered( QAction *action )
 
         // Adjust the path
         QString path = m_url.path();
-        m_url.setPath( path.section( "/", 0, -2 ) );
+        m_url.setPath( path.section( '/', 0, -2 ) );
 
         // Request the preview
         slotRequestPreview();

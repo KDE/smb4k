@@ -3,7 +3,7 @@
     namespace.
                              -------------------
     begin                : Di Jul 24 2007
-    copyright            : (C) 2007-2011 by Alexander Reinholdt
+    copyright            : (C) 2007-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -137,8 +137,8 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions( bool read )
       // Process the file contents.
       for ( int i = contents.indexOf( "[global]", 0 ); i < contents.size(); ++i )
       {
-        if ( contents.at( i ).trimmed().startsWith( "#" ) ||
-            contents.at( i ).trimmed().startsWith( ";" ) )
+        if ( contents.at( i ).trimmed().startsWith( '#' ) ||
+             contents.at( i ).trimmed().startsWith( ';' ) )
         {
           // This is a comment. We do not need it.
           continue;
@@ -147,7 +147,7 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions( bool read )
         {
           // Look for the include file and put its contents into the
           // m_samba_options map.
-          file.setFileName( contents.at( i ).section( "=", 1, 1 ).trimmed() );
+          file.setFileName( contents.at( i ).section( '=', 1, 1 ).trimmed() );
 
           if ( file.exists() )
           {
@@ -164,14 +164,14 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions( bool read )
               {
                 buffer = ts.readLine( 0 ).trimmed();
 
-                if ( buffer.startsWith( "#" ) || buffer.startsWith( ";" ) )
+                if ( buffer.startsWith( '#' ) || buffer.startsWith( ';' ) )
                 {
                   continue;
                 }
                 else
                 {
-                  QString key = buffer.section( "=", 0, 0 ).trimmed().toLower();
-                  m_samba_options[key] = buffer.section( "=", 1, 1 ).trimmed().toUpper();
+                  QString key = buffer.section( '=', 0, 0 ).trimmed().toLower();
+                  m_samba_options[key] = buffer.section( '=', 1, 1 ).trimmed().toUpper();
 
                   continue;
                 }
@@ -185,7 +185,7 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions( bool read )
             }
           }
         }
-        else if ( contents.at( i ).startsWith( "[" ) &&
+        else if ( contents.at( i ).startsWith( '[' ) &&
                   !contents.at( i ).contains( "[global]", Qt::CaseSensitive ) )
         {
           // We reached the end of the [global] section. Stop here.
@@ -195,8 +195,8 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions( bool read )
         {
           // Put the entries of the [global] section into the m_samba_options
           // map.
-          QString key = contents.at( i ).section( "=", 0, 0 ).trimmed().toLower();
-          m_samba_options[key] = contents.at( i ).section( "=", 1, 1 ).trimmed().toUpper();
+          QString key = contents.at( i ).section( '=', 0, 0 ).trimmed().toLower();
+          m_samba_options[key] = contents.at( i ).section( '=', 1, 1 ).trimmed().toUpper();
         }
       }
     }
@@ -291,7 +291,7 @@ void Smb4KGlobalPrivate::setDefaultSettings()
     }
   }
 
-  QHostAddress address( opts["interfaces"].section( " ", 0, 0 ) );
+  QHostAddress address( opts["interfaces"].section( ' ', 0, 0 ) );
 
   if ( address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol )
   {

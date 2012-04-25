@@ -2,7 +2,7 @@
     smb4kscanner_p  -  Private helper classes for the scanner
                              -------------------
     begin                : So Mai 22 2011
-    copyright            : (C) 2011 by Alexander Reinholdt
+    copyright            : (C) 2011-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -19,7 +19,7 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
@@ -89,7 +89,7 @@ bool Smb4KLookupDomainsJob::doKill()
 
 void Smb4KLookupDomainsJob::processWorkgroups()
 {
-  QStringList stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( "\n", QString::SkipEmptyParts );
+  QStringList stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts );
 
   if ( !stdout.isEmpty() )
   {
@@ -508,7 +508,7 @@ bool Smb4KQueryMasterJob::doKill()
 
 void Smb4KQueryMasterJob::processWorkgroups()
 {
-  QStringList stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( "\n", QString::SkipEmptyParts );
+  QStringList stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts );
 
   if ( !stdout.isEmpty() )
   {
@@ -830,13 +830,13 @@ void Smb4KQueryMasterJob::slotReadStandardError()
       if ( m_master_browser.isEmpty() )
       {
         // Figure out the current master browser's IP address.
-        QStringList stderr_list = stderr.split( "\n", QString::SkipEmptyParts );
+        QStringList stderr_list = stderr.split( '\n', QString::SkipEmptyParts );
 
         foreach ( const QString &line, stderr_list )
         {
           if ( line.contains( "Connecting to host=" ) )
           {
-            m_master_browser = line.section( "=", 1, 1 ).trimmed();
+            m_master_browser = line.section( '=', 1, 1 ).trimmed();
             break;
           }
           else
@@ -944,7 +944,7 @@ bool Smb4KScanBAreasJob::doKill()
 
 void Smb4KScanBAreasJob::processScan()
 {
-  QStringList stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).trimmed().split( "\n", QString::SkipEmptyParts );
+  QStringList stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).trimmed().split( '\n', QString::SkipEmptyParts );
 
   if ( !stdout.isEmpty() )
   {
@@ -1165,7 +1165,7 @@ void Smb4KScanBAreasJob::slotStartScan()
   // Broadcast areas/addresses
 
   // FIXME: Emit error message if the list is empty!!!
-  QStringList addresses = Smb4KSettings::broadcastAreas().split( ",", QString::SkipEmptyParts );
+  QStringList addresses = Smb4KSettings::broadcastAreas().split( ',', QString::SkipEmptyParts );
 
   // Assemble the command
   QStringList arguments;
@@ -1436,7 +1436,7 @@ bool Smb4KLookupDomainMembersJob::doKill()
 
 void Smb4KLookupDomainMembersJob::processHosts()
 {
-  QStringList stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( "\n", QString::SkipEmptyParts );
+  QStringList stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts );
 
   if ( !stdout.isEmpty() )
   {
@@ -1782,7 +1782,7 @@ void Smb4KLookupSharesJob::processShares()
     // Do nothing
   }
 
-  QStringList stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( "\n", QString::SkipEmptyParts );
+  QStringList stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts );
   
   if ( !stdout.isEmpty() )
   {
@@ -2222,14 +2222,14 @@ void Smb4KLookupInfoJob::processInfo()
   
   if ( stdout.contains( "OS=" ) || stdout.contains( "Server=" ) )
   {
-    QStringList stdout_list = stdout.split( "\n", QString::SkipEmptyParts );
+    QStringList stdout_list = stdout.split( '\n', QString::SkipEmptyParts );
     
     foreach ( const QString &line, stdout_list )
     {
       if ( line.contains( "OS=" ) || line.contains( "Server=" ) )
       {
-        QString server = line.section( "Server=[", 1, 1 ).section( "]", 0, 0 ).trimmed();
-        QString os = line.section( "OS=[", 1, 1 ).section( "]", 0, 0 ).trimmed();
+        QString server = line.section( "Server=[", 1, 1 ).section( ']', 0, 0 ).trimmed();
+        QString os = line.section( "OS=[", 1, 1 ).section( ']', 0, 0 ).trimmed();
         m_host.setInfo( server, os );
         emit info( &m_host );
         break;
@@ -2246,14 +2246,14 @@ void Smb4KLookupInfoJob::processInfo()
     
     if ( stderr.contains( "OS=" ) || stderr.contains( "Server=" ) )
     {
-      QStringList stderr_list = stderr.split( "\n", QString::SkipEmptyParts );
+      QStringList stderr_list = stderr.split( '\n', QString::SkipEmptyParts );
       
       foreach ( const QString &line, stderr_list )
       {
         if ( line.contains( "OS=" ) || line.contains( "Server=" ) )
         {
-          QString server = line.section( "Server=[", 1, 1 ).section( "]", 0, 0 ).trimmed();
-          QString os = line.section( "OS=[", 1, 1 ).section( "]", 0, 0 ).trimmed();
+          QString server = line.section( "Server=[", 1, 1 ).section( ']', 0, 0 ).trimmed();
+          QString os = line.section( "OS=[", 1, 1 ).section( ']', 0, 0 ).trimmed();
           m_host.setInfo( server, os );
           emit info( &m_host );
           break;
