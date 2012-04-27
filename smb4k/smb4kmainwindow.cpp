@@ -775,19 +775,19 @@ void Smb4KMainWindow::slotScannerAboutToStart( Smb4KBasicNetworkItem *item, int 
     case Smb4KScanner::LookupDomainMembers:
     {
       Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>( item );
-      statusBar()->showMessage( i18n( "Looking for hosts in domain %1..." ).arg( workgroup->workgroupName() ), 0 );
+      statusBar()->showMessage( i18n( "Looking for hosts in domain %1...", workgroup->workgroupName() ), 0 );
       break;
     }
     case Smb4KScanner::LookupShares:
     {
       Smb4KHost *host = static_cast<Smb4KHost *>( item );
-      statusBar()->showMessage( i18n( "Looking for shares provided by host %1..." ).arg( host->hostName() ), 0 );
+      statusBar()->showMessage( i18n( "Looking for shares provided by host %1...", host->hostName() ), 0 );
       break;
     }
     case Smb4KScanner::LookupInfo:
     {
       Smb4KHost *host = static_cast<Smb4KHost *>( item );
-      statusBar()->showMessage( i18n( "Looking for more information about host %1..." ).arg( host->hostName() ), 0 );
+      statusBar()->showMessage( i18n( "Looking for more information about host %1...", host->hostName() ), 0 );
       break;
     }
     default:
@@ -830,12 +830,12 @@ void Smb4KMainWindow::slotMounterAboutToStart( Smb4KShare *share, int process )
   {
     case Smb4KMounter::MountShare:
     {
-      statusBar()->showMessage( i18n( "Mounting share %1..." ).arg( share->unc() ), 0 );
+      statusBar()->showMessage( i18n( "Mounting share %1...", share->unc() ), 0 );
       break;
     }
     case Smb4KMounter::UnmountShare:
     {
-      statusBar()->showMessage( i18n( "Unmounting share %1..." ).arg( share->unc() ), 0 );
+      statusBar()->showMessage( i18n( "Unmounting share %1...", share->unc() ), 0 );
       break;
     }
     default:
@@ -861,7 +861,7 @@ void Smb4KMainWindow::slotVisualMountFeedback( Smb4KShare *share )
   
   m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "dialog-ok",
                               KIconLoader::Small, 0, KIconLoader::DefaultState ) );
-  m_feedback_icon->setToolTip( i18n( "%1 has been mounted successfully." ).arg( share->unc() ) );
+  m_feedback_icon->setToolTip( i18n( "%1 has been mounted successfully.", share->unc() ) );
     
   QList<QTabBar *> list = findChildren<QTabBar *>();
   QDockWidget *shares_dock = findChild<QDockWidget *>( "SharesViewDockWidget" );
@@ -908,7 +908,7 @@ void Smb4KMainWindow::slotVisualUnmountFeedback( Smb4KShare *share )
   
   m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "dialog-ok",
                               KIconLoader::Small, 0, KIconLoader::DefaultState ) );
-  m_feedback_icon->setToolTip( i18n( "%1 has been unmounted successfully." ).arg( share->unc() ) );
+  m_feedback_icon->setToolTip( i18n( "%1 has been unmounted successfully.", share->unc() ) );
     
   QList<QTabBar *> list = findChildren<QTabBar *>();
   QDockWidget *shares_dock = findChild<QDockWidget *>( "SharesViewDockWidget" );
@@ -962,7 +962,7 @@ void Smb4KMainWindow::slotMounterFinished( Smb4KShare *share, int process )
       {
         m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "dialog-cancel",
                                     KIconLoader::Small, 0, KIconLoader::DefaultState ) );
-        m_feedback_icon->setToolTip( i18n( "Mounting %1 failed." ).arg( share->unc() ) );
+        m_feedback_icon->setToolTip( i18n( "Mounting %1 failed.", share->unc() ) );
         
         QTimer::singleShot( 2000, this, SLOT( slotEndVisualFeedback() ) );
       }
@@ -978,7 +978,7 @@ void Smb4KMainWindow::slotMounterFinished( Smb4KShare *share, int process )
       {
         m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "dialog-cancel",
                                     KIconLoader::Small, 0, KIconLoader::DefaultState ) );
-        m_feedback_icon->setToolTip( i18n( "Unmounting %1 failed." ).arg( share->unc() ) );
+        m_feedback_icon->setToolTip( i18n( "Unmounting %1 failed.", share->unc() ) );
         
         QTimer::singleShot( 2000, this, SLOT( slotEndVisualFeedback() ) );
       }
@@ -1011,7 +1011,7 @@ void Smb4KMainWindow::slotSearchAboutToStart( const QString &string )
 {
   Q_ASSERT( !string.isEmpty() );
   
-  statusBar()->showMessage( i18n( "Searching for \"%1\"..." ).arg( string ) );
+  statusBar()->showMessage( i18n( "Searching for \"%1\"...", string ) );
   
   if ( !m_progress_bar->isVisible() )
   {
@@ -1041,7 +1041,7 @@ void Smb4KMainWindow::slotSearchFinished( const QString &/*string*/ )
 
 void Smb4KMainWindow::slotPrintingAboutToStart( Smb4KShare *printer )
 {
-  statusBar()->showMessage( i18n( "Sending file to printer %1..." ).arg( printer->unc() ), 0 );
+  statusBar()->showMessage( i18n( "Sending file to printer %1...", printer->unc() ), 0 );
   
   if ( !m_progress_bar->isVisible() )
   {
@@ -1103,7 +1103,7 @@ void Smb4KMainWindow::slotPreviewerAboutToStart( Smb4KShare *share, const QUrl &
 {
   Q_ASSERT( share );
   
-  statusBar()->showMessage( i18n( "Retrieving preview from %1..." ).arg( share->unc() ), 0 );
+  statusBar()->showMessage( i18n( "Retrieving preview from %1...", share->unc() ), 0 );
   
   if ( !m_progress_bar->isVisible() )
   {

@@ -1461,7 +1461,7 @@ void Smb4KSharesViewPart::slotMounterAboutToStart( Smb4KShare *share, int proces
     {
       if ( !m_silent )
       {
-        emit setStatusBarText( i18n( "Mounting share %1..." ).arg( share->unc() ) );
+        emit setStatusBarText( i18n( "Mounting share %1...", share->unc() ) );
       }
       else
       {
@@ -1473,7 +1473,7 @@ void Smb4KSharesViewPart::slotMounterAboutToStart( Smb4KShare *share, int proces
     {
       if ( !m_silent )
       {
-        emit setStatusBarText( i18n( "Unmounting share %1..." ).arg( share->unc() ) );
+        emit setStatusBarText( i18n( "Unmounting share %1...", share->unc() ) );
       }
       else
       {

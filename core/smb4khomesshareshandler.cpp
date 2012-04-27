@@ -163,7 +163,7 @@ void Smb4KHomesSharesHandler::readUserNames()
       {
         if ( xmlReader.name() == "homes_shares" && xmlReader.attributes().value( "version" ) != "1.0" )
         {
-          xmlReader.raiseError( i18n( "%1 is not a version 1.0 file." ).arg( xmlFile.fileName() ) );
+          xmlReader.raiseError( i18n( "%1 is not a version 1.0 file.", xmlFile.fileName() ) );
           break;
         }
         else

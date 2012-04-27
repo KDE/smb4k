@@ -3,7 +3,7 @@
     box item for Smb4K.
                              -------------------
     begin                : So Jun 3 2007
-    copyright            : (C) 2007-2011 by Alexander Reinholdt
+    copyright            : (C) 2007-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

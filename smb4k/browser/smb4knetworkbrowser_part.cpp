@@ -3,7 +3,7 @@
     browser of Smb4K.
                              -------------------
     begin                : Fr Jan 5 2007
-    copyright            : (C) 2007-2011 by Alexander Reinholdt
+    copyright            : (C) 2007-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -20,8 +20,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 // Qt includes
@@ -1917,7 +1917,7 @@ void Smb4KNetworkBrowserPart::slotScannerAboutToStart( Smb4KBasicNetworkItem *it
       if ( !m_silent )
       {
         Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>( item );
-        emit setStatusBarText( i18n( "Looking for hosts in domain %1..." ).arg( workgroup->workgroupName() ) );
+        emit setStatusBarText( i18n( "Looking for hosts in domain %1...", workgroup->workgroupName() ) );
       }
       else
       {
@@ -1930,7 +1930,7 @@ void Smb4KNetworkBrowserPart::slotScannerAboutToStart( Smb4KBasicNetworkItem *it
       if ( !m_silent )
       {
         Smb4KHost *host = static_cast<Smb4KHost *>( item );
-        emit setStatusBarText( i18n( "Looking for shares provided by host %1..." ).arg( host->hostName() ) );
+        emit setStatusBarText( i18n( "Looking for shares provided by host %1...", host->hostName() ) );
       }
       else
       {
@@ -1943,7 +1943,7 @@ void Smb4KNetworkBrowserPart::slotScannerAboutToStart( Smb4KBasicNetworkItem *it
       if ( !m_silent )
       {
         Smb4KHost *host = static_cast<Smb4KHost *>( item );
-        emit setStatusBarText( i18n( "Looking for more information about host %1..." ).arg( host->hostName() ) );
+        emit setStatusBarText( i18n( "Looking for more information about host %1...", host->hostName() ) );
       }
       else
       {

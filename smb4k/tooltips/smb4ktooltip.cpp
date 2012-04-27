@@ -340,7 +340,7 @@ void Smb4KToolTip::setupNetworkBrowserToolTip()
       type_label->setPalette( p );
       
       m_text_layout->addWidget( type_label, 0, 0, Qt::AlignRight );
-      m_text_layout->addWidget( new QLabel( i18n( "Share (%1)" ).arg( share->translatedTypeString() ), this ), 0, 1, 0 );
+      m_text_layout->addWidget( new QLabel( i18n( "Share (%1)", share->translatedTypeString() ), this ), 0, 1, 0 );
       
       QLabel *co_label = new QLabel( i18n( "Comment" ), this );
       co_label->setPalette( p );

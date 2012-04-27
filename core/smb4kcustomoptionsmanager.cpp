@@ -245,7 +245,7 @@ void Smb4KCustomOptionsManager::readCustomOptions()
         if ( xmlReader.name() == "custom_options" && 
              (xmlReader.attributes().value( "version" ) != "1.0" && xmlReader.attributes().value( "version" ) != "1.1") )
         {
-          xmlReader.raiseError( i18n( "The format of %1 is not supported." ).arg( xmlFile.fileName() ) );
+          xmlReader.raiseError( i18n( "The format of %1 is not supported.", xmlFile.fileName() ) );
           break;
         }
         else

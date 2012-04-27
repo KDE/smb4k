@@ -2,7 +2,7 @@
     smb4knotification  -  This class provides notifications for Smb4K.
                              -------------------
     begin                : Son Jun 27 2010
-    copyright            : (C) 2010-2011 by Alexander Reinholdt
+    copyright            : (C) 2010-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.org
  ***************************************************************************/
 
@@ -784,7 +784,7 @@ void Smb4KNotification::actionFailed( int err_code )
   }
   else
   {
-    text = i18n( "<p>Executing an action with root privileges failed.</p>", err_msg );
+    text = i18n( "<p>Executing an action with root privileges failed.</p>" );
   }
   
   KNotification *notification = KNotification::event( KNotification::Error,
