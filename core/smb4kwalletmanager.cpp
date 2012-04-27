@@ -1167,7 +1167,7 @@ void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
 
     if ( !client_charset.isEmpty() && !server_charset.isEmpty() )
     {
-      default_section << "charsets="+client_charset+":"+server_charset;
+      default_section << "charsets="+client_charset+':'+server_charset;
     }
     else
     {
@@ -1253,13 +1253,13 @@ void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
 
       if ( !authInfo->login().isEmpty() )
       {
-        if ( contents.contains( "["+authInfo->hostName().toUpper()+":"+authInfo->login().toUpper()+"]" ) )
+        if ( contents.contains( '['+authInfo->hostName().toUpper()+':'+authInfo->login().toUpper()+']' ) )
         {
-          index = contents.indexOf( "["+authInfo->hostName().toUpper()+":"+authInfo->login().toUpper()+"]" );
+          index = contents.indexOf( '['+authInfo->hostName().toUpper()+':'+authInfo->login().toUpper()+']' );
         }
-        else if ( contents.contains( "["+authInfo->hostName().toLower()+":"+authInfo->login().toLower()+"]" ) )
+        else if ( contents.contains( '['+authInfo->hostName().toLower()+':'+authInfo->login().toLower()+']' ) )
         {
-          index = contents.indexOf( "["+authInfo->hostName().toLower()+":"+authInfo->login().toLower()+"]" );
+          index = contents.indexOf( '['+authInfo->hostName().toLower()+':'+authInfo->login().toLower()+']' );
         }
         else
         {
@@ -1273,10 +1273,10 @@ void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
           {
             if ( contents.at( i ).startsWith( "password", Qt::CaseInsensitive ) )
             {
-              if ( QString::compare( contents.at( i ).section( "=", 1, 1 ).trimmed(), password ) != 0 &&
+              if ( QString::compare( contents.at( i ).section( '=', 1, 1 ).trimmed(), password ) != 0 &&
                    !authInfo->password().isEmpty() /* we do not want empty server passwords */ )
               {
-                contents[i].replace( contents.at( i ).section( "=", 1, 1 ).trimmed(), password );
+                contents[i].replace( contents.at( i ).section( '=', 1, 1 ).trimmed(), password );
                 write = true;
               }
               else
@@ -1311,7 +1311,7 @@ void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
               // Do nothing
             }
 
-            contents << "["+authInfo->hostName().toUpper()+":"+authInfo->login().toUpper()+"]";
+            contents << '['+authInfo->hostName().toUpper()+':'+authInfo->login().toUpper()+']';
             contents << "password="+password;
             contents << "workgroup="+authInfo->workgroupName();
             contents << "";
@@ -1326,13 +1326,13 @@ void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
       }
       else
       {
-        if ( contents.contains( "["+authInfo->hostName().toUpper()+"]" ) )
+        if ( contents.contains( '['+authInfo->hostName().toUpper()+']' ) )
         {
-          index = contents.indexOf( "["+authInfo->hostName().toUpper()+"]" );
+          index = contents.indexOf( '['+authInfo->hostName().toUpper()+']' );
         }
-        else if ( contents.contains( "["+authInfo->hostName().toLower()+"]" ) )
+        else if ( contents.contains( '['+authInfo->hostName().toLower()+']' ) )
         {
-          index = contents.indexOf( "["+authInfo->hostName().toLower()+"]" );
+          index = contents.indexOf( '['+authInfo->hostName().toLower()+']' );
         }
         else
         {
@@ -1346,10 +1346,10 @@ void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
           {
             if ( contents.at( i ).startsWith( "password", Qt::CaseInsensitive ) )
             {
-              if ( QString::compare( contents.at( i ).section( "=", 1, 1 ).trimmed(), password ) != 0 &&
+              if ( QString::compare( contents.at( i ).section( '=', 1, 1 ).trimmed(), password ) != 0 &&
                    !authInfo->password().isEmpty() /* we do not want empty server passwords */ )
               {
-                contents[i].replace( contents.at( i ).section( "=", 1, 1 ).trimmed(), password );
+                contents[i].replace( contents.at( i ).section( '=', 1, 1 ).trimmed(), password );
                 write = true;
               }
               else
@@ -1384,7 +1384,7 @@ void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
               // Do nothing
             }
 
-            contents << "["+authInfo->hostName().toUpper()+"]";
+            contents << '['+authInfo->hostName().toUpper()+']';
             contents << "password="+password;
             contents << "workgroup="+authInfo->workgroupName();
             contents << "";
@@ -1406,13 +1406,13 @@ void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
       if ( !authInfo->login().isEmpty() )
       {
         // The server is not in the file.
-        if ( contents.contains( "["+authInfo->hostName().toUpper()+":"+authInfo->login().toUpper()+":"+authInfo->shareName().toUpper()+"]" ) )
+        if ( contents.contains( '['+authInfo->hostName().toUpper()+':'+authInfo->login().toUpper()+':'+authInfo->shareName().toUpper()+']' ) )
         {
-          index = contents.indexOf( "["+authInfo->hostName().toUpper()+":"+authInfo->login().toUpper()+":"+authInfo->shareName().toUpper()+"]" );
+          index = contents.indexOf( '['+authInfo->hostName().toUpper()+':'+authInfo->login().toUpper()+':'+authInfo->shareName().toUpper()+']' );
         }
-        else if ( contents.contains( "["+authInfo->hostName().toLower()+":"+authInfo->login().toLower()+":"+authInfo->shareName().toLower()+"]" ) )
+        else if ( contents.contains( '['+authInfo->hostName().toLower()+':'+authInfo->login().toLower()+':'+authInfo->shareName().toLower()+']' ) )
         {
-          index = contents.indexOf( "["+authInfo->hostName().toLower()+":"+authInfo->login().toLower()+":"+authInfo->shareName().toLower()+"]" );
+          index = contents.indexOf( '['+authInfo->hostName().toLower()+':'+authInfo->login().toLower()+':'+authInfo->shareName().toLower()+']' );
         }
         else
         {
@@ -1426,10 +1426,10 @@ void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
           {
             if ( contents.at( i ).startsWith( "password", Qt::CaseInsensitive ) )
             {
-              if ( QString::compare( contents.at( i ).section( "=", 1, 1 ).trimmed(), password ) != 0 &&
+              if ( QString::compare( contents.at( i ).section( '=', 1, 1 ).trimmed(), password ) != 0 &&
                    !authInfo->password().isEmpty() )
               {
-                contents[i].replace( contents.at( i ).section( "=", 1, 1 ).trimmed(), password );
+                contents[i].replace( contents.at( i ).section( '=', 1, 1 ).trimmed(), password );
                 write = true;
               }
               else
@@ -1464,7 +1464,7 @@ void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
               // Do nothing
             }
 
-            contents << "["+authInfo->hostName().toUpper()+":"+authInfo->login().toUpper()+":"+authInfo->shareName().toUpper()+"]";
+            contents << '['+authInfo->hostName().toUpper()+':'+authInfo->login().toUpper()+':'+authInfo->shareName().toUpper()+']';
             contents << "password="+password;
             contents << "workgroup="+authInfo->workgroupName();
             contents << "";

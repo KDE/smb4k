@@ -121,7 +121,7 @@ QString Smb4KShare::shareName() const
   // only remove preceding and trailing slashes.
   QString share_name = m_url.path();
   
-  if ( share_name.startsWith( "/" ) )
+  if ( share_name.startsWith( '/' ) )
   {
     share_name = share_name.remove( 0, 1 );
   }
@@ -130,7 +130,7 @@ QString Smb4KShare::shareName() const
     // Do nothing
   }
   
-  if ( share_name.endsWith( "/" ) )
+  if ( share_name.endsWith( '/' ) )
   {
     share_name = share_name.remove( share_name.size() - 1, 1 );
   }
@@ -168,7 +168,7 @@ QString Smb4KShare::unc( QUrl::FormattingOptions options ) const
   }
   else
   {
-    unc = m_url.toString( options|QUrl::StripTrailingSlash ).replace( "@"+m_url.host(), "@"+hostName() );
+    unc = m_url.toString( options|QUrl::StripTrailingSlash ).replace( '@'+m_url.host(), '@'+hostName() );
   }
   
   return unc;
@@ -185,7 +185,7 @@ QString Smb4KShare::homeUNC( QUrl::FormattingOptions options ) const
     {
       unc = m_url.toString( options|QUrl::StripTrailingSlash );
       
-      if ( m_url.path().startsWith( "/" ) )
+      if ( m_url.path().startsWith( '/' ) )
       {
         unc = unc.replace( "//"+m_url.host(), "//"+hostName() ).replace( m_url.path(), "/"+m_url.userName() );
       }
@@ -198,13 +198,13 @@ QString Smb4KShare::homeUNC( QUrl::FormattingOptions options ) const
     {
       unc = m_url.toString( options|QUrl::StripTrailingSlash );
       
-      if ( m_url.path().startsWith( "/" ) )
+      if ( m_url.path().startsWith( '/' ) )
       {
-        unc = unc.replace( "@"+m_url.host(), "@"+hostName() ).replace( m_url.path(), "/"+m_url.userName() );
+        unc = unc.replace( '@'+m_url.host(), '@'+hostName() ).replace( m_url.path(), '/'+m_url.userName() );
       }
       else
       {
-        unc = unc.replace( "@"+m_url.host(), "@"+hostName() ).replace( m_url.path(), m_url.userName() );
+        unc = unc.replace( '@'+m_url.host(), '@'+hostName() ).replace( m_url.path(), m_url.userName() );
       }
     }
   }
@@ -222,7 +222,7 @@ void Smb4KShare::setURL( const QUrl &url )
   // Check validity.
   if ( !url.isValid() )
   {
-    qDebug() << "Invalid URL provided";
+    qDebug() << "Smb4KShare::setURL(): Invalid URL provided";
     return;
   }
   else
@@ -233,7 +233,7 @@ void Smb4KShare::setURL( const QUrl &url )
   // Check scheme
   if ( !url.scheme().isEmpty() && QString::compare( "smb", url.scheme() ) != 0 )
   {
-    qDebug() << "URL has wrong scheme";
+    qDebug() << "Smb4KShare::setURL(): URL has wrong scheme";
     return;
   }
   else
@@ -242,10 +242,10 @@ void Smb4KShare::setURL( const QUrl &url )
   }
 
   // Check that the share name is present
-  if ( (url.path().endsWith( "/" ) && url.path().count( "/" ) > 2) ||
-       (!url.path().endsWith( "/" ) && url.path().count( "/" ) > 1) )
+  if ( (url.path().endsWith( '/' ) && url.path().count( "/" ) > 2) ||
+       (!url.path().endsWith( '/' ) && url.path().count( "/" ) > 1) )
   {
-    qDebug() << "Not a URL of a share.";
+    qDebug() << "Smb4KShare::setURL(): Not an URL of a share.";
     return;
   }
   else
@@ -296,7 +296,7 @@ QString Smb4KShare::hostUNC( QUrl::FormattingOptions options ) const
   }
   else
   {
-    unc = m_url.toString( options|QUrl::RemovePath|QUrl::StripTrailingSlash ).replace( "@"+m_url.host(), "@"+hostName() );
+    unc = m_url.toString( options|QUrl::RemovePath|QUrl::StripTrailingSlash ).replace( '@'+m_url.host(), '@'+hostName() );
   }
   
   return unc;
@@ -351,7 +351,7 @@ void Smb4KShare::setHostIP( const QString &ip )
 
 bool Smb4KShare::isHidden() const
 {
-  return m_url.path().endsWith( "$" );
+  return m_url.path().endsWith( '$' );
 }
 
 
@@ -488,7 +488,7 @@ QString Smb4KShare::totalDiskSpaceString() const
   {
     case 0:
     {
-      total_dim = "B";
+      total_dim = 'B';
       break;
     }
     case 1:
@@ -517,7 +517,7 @@ QString Smb4KShare::totalDiskSpaceString() const
     }
   }
 
-  return total+" "+total_dim;
+  return total+' '+total_dim;
 }
 
 
@@ -545,7 +545,7 @@ QString Smb4KShare::freeDiskSpaceString() const
   {
     case 0:
     {
-      free_dim = "B";
+      free_dim = 'B';
       break;
     }
     case 1:
@@ -574,7 +574,7 @@ QString Smb4KShare::freeDiskSpaceString() const
     }
   }
 
-  return free+" "+free_dim;
+  return free+' '+free_dim;
 }
 
 
@@ -602,7 +602,7 @@ QString Smb4KShare::usedDiskSpaceString() const
   {
     case 0:
     {
-      used_dim = "B";
+      used_dim = 'B';
       break;
     }
     case 1:
@@ -631,7 +631,7 @@ QString Smb4KShare::usedDiskSpaceString() const
     }
   }
 
-  return used+" "+used_dim;
+  return used+' '+used_dim;
 }
 
 

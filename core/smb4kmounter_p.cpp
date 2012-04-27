@@ -473,7 +473,7 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
   // Global custom options provided by the user
   if ( !Smb4KSettings::customCIFSOptions().isEmpty() )
   {
-    args_list += Smb4KSettings::customCIFSOptions().split( ",", QString::SkipEmptyParts );
+    args_list += Smb4KSettings::customCIFSOptions().split( ',', QString::SkipEmptyParts );
   }
   else
   {
@@ -742,7 +742,7 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
                   share->shareName().contains( "_", Qt::CaseSensitive ) )
         {
           QString share_name = share->shareName();
-          share->setShareName( share_name.replace( "_", " " ) );
+          share->setShareName( share_name.replace( '_', ' ' ) );
           m_retries << *share;
           emit retry( this );
         }
@@ -1261,7 +1261,7 @@ void Smb4KMountDialog::slotOkClicked()
     url.setScheme( "smb" );
 
     if ( url.isValid() && !url.host().isEmpty() /* no invalid host name */ &&
-         url.path().length() > 1 /* share name length */ && !url.path().endsWith( "/" ) )
+         url.path().length() > 1 /* share name length */ && !url.path().endsWith( '/' ) )
     {
       m_share->setURL( url );
       m_share->setWorkgroupName( m_workgroup_input->text().trimmed() );

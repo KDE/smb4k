@@ -101,7 +101,7 @@ QString Smb4KHost::unc( QUrl::FormattingOptions options ) const
   }
   else
   {
-    unc = m_url.toString( options|QUrl::RemovePath|QUrl::StripTrailingSlash ).replace( "@"+m_url.host(), "@"+hostName() );
+    unc = m_url.toString( options|QUrl::RemovePath|QUrl::StripTrailingSlash ).replace( '@'+m_url.host(), '@'+hostName() );
   }
   
   return unc;

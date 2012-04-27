@@ -2,7 +2,7 @@
     smb4ktooltip  -  Provides tooltips for Smb4K
                              -------------------
     begin                : Sa Dez 23 2010
-    copyright            : (C) 2010 by Alexander Reinholdt
+    copyright            : (C) 2010-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 // Qt includes
@@ -223,7 +223,7 @@ void Smb4KToolTip::setupNetworkBrowserToolTip()
       if ( !workgroup->masterBrowserIP().isEmpty() )
       {
         m_text_layout->addWidget( new QLabel( workgroup->masterBrowserName()
-                                  +" ("+workgroup->masterBrowserIP()+")", this ), 1, 1, 0 );
+                                  +" ("+workgroup->masterBrowserIP()+')', this ), 1, 1, 0 );
       }
       else
       {
@@ -575,7 +575,7 @@ void Smb4KToolTip::updateNetworkBrowserToolTip()
         {
           if ( !workgroup->masterBrowserIP().isEmpty() )
           {
-            mb_label->setText( workgroup->masterBrowserName()+" ("+workgroup->masterBrowserIP()+")" );
+            mb_label->setText( workgroup->masterBrowserName()+" ("+workgroup->masterBrowserIP()+')' );
           }
           else
           {

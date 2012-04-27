@@ -529,7 +529,7 @@ void Smb4KSyncJob::slotStartSynchronization()
 
     if ( !Smb4KSettings::customFilteringRules().isEmpty() )
     {
-      arguments << Smb4KSettings::customFilteringRules().split( " " );
+      arguments << Smb4KSettings::customFilteringRules().split( ' ' );
     }
     else
     {
@@ -666,7 +666,7 @@ void Smb4KSyncJob::slotStartSynchronization()
 
 void Smb4KSyncJob::slotReadStandardOutput()
 {
-  QStringList stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( "\n", QString::SkipEmptyParts );
+  QStringList stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts );
 
   for ( int i = 0; i < stdout.size(); ++i )
   {
@@ -675,13 +675,13 @@ void Smb4KSyncJob::slotReadStandardOutput()
       // Get the overall transfer progress
       if ( stdout.at( i ).contains( " to-check=" ) )
       {
-        QString tmp = stdout.at( i ).section( " to-check=", 1, 1 ).section( ")", 0, 0 ).trimmed();
+        QString tmp = stdout.at( i ).section( " to-check=", 1, 1 ).section( ')', 0, 0 ).trimmed();
 
         bool success1 = true;
         bool success2 = true;
 
-        qulonglong files = tmp.section( "/", 0, 0 ).trimmed().toLongLong( &success1 );
-        qulonglong total = tmp.section( "/", 1, 1 ).trimmed().toLongLong( &success2 );
+        qulonglong files = tmp.section( '/', 0, 0 ).trimmed().toLongLong( &success1 );
+        qulonglong total = tmp.section( '/', 1, 1 ).trimmed().toLongLong( &success2 );
 
         if ( success1 && success2 )
         {
@@ -704,7 +704,7 @@ void Smb4KSyncJob::slotReadStandardOutput()
       {
         bool success = true;
         
-        double tmp_speed = stdout.at( i ).section( QRegExp( "../s" ), 0, 0 ).section( " ", -1 -1 ).trimmed().toDouble( &success );
+        double tmp_speed = stdout.at( i ).section( QRegExp( "../s" ), 0, 0 ).section( ' ', -1 -1 ).trimmed().toDouble( &success );
 
         if ( success )
         {
@@ -839,7 +839,7 @@ Smb4KSynchronizationDialog::Smb4KSynchronizationDialog( Smb4KShare *share, QWidg
   description->setWordWrap( true );
   description->setAlignment( Qt::AlignBottom );
 
-  KUrl src_url  = KUrl( m_share->path()+"/" );
+  KUrl src_url  = KUrl( m_share->path()+'/' );
   src_url.cleanPath();
   KUrl dest_url = KUrl( QString( "%1/%2/%3" ).arg( Smb4KSettings::rsyncPrefix().path() )
                                              .arg( m_share->hostName() )

@@ -3,7 +3,7 @@
     of Smb4K.
                              -------------------
     begin                : Mi Jan 28 2009
-    copyright            : (C) 2009-2011 by Alexander Reinholdt
+    copyright            : (C) 2009-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -20,7 +20,7 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
@@ -247,7 +247,7 @@ void Smb4KIPLookupJob::slotReadStandardOutput()
   // be more than one. So, split the incoming data and use the first entry
   // as IP address (it's most likely the correct one). If there is no data,
   // set the IP address to an empty string.
-  QStringList ip_address = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( "\n", QString::SkipEmptyParts );
+  QStringList ip_address = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts );
 
   if ( !ip_address.isEmpty() )
   {

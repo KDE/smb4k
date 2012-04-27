@@ -125,7 +125,7 @@ QString Smb4KAuthInfo::unc( QUrl::FormattingOptions options ) const
       }
       else
       {
-        unc = m_url.toString( options|QUrl::RemovePath ).replace( "@"+m_url.host(), "@"+hostName() );
+        unc = m_url.toString( options|QUrl::RemovePath ).replace( '@'+m_url.host(), '@'+hostName() );
       }
       break;
     }
@@ -137,7 +137,7 @@ QString Smb4KAuthInfo::unc( QUrl::FormattingOptions options ) const
       }
       else
       {
-        unc = m_url.toString( options ).replace( "@"+m_url.host(), "@"+hostName() );
+        unc = m_url.toString( options ).replace( '@'+m_url.host(), '@'+hostName() );
       }
       break;
     }
@@ -161,7 +161,7 @@ QString Smb4KAuthInfo::hostUNC( QUrl::FormattingOptions options ) const
   }
   else
   {
-    unc = m_url.toString( options|QUrl::RemovePath ).replace( "@"+m_url.host(), "@"+hostName() );
+    unc = m_url.toString( options|QUrl::RemovePath ).replace( '@'+m_url.host(), '@'+hostName() );
   }
   
   return unc;
@@ -199,7 +199,7 @@ void Smb4KAuthInfo::setURL( const QUrl &url )
 
 QString Smb4KAuthInfo::shareName() const
 {
-  if ( m_url.path().startsWith( "/" ) )
+  if ( m_url.path().startsWith( '/' ) )
   {
     return m_url.path().remove( 0, 1 );
   }
