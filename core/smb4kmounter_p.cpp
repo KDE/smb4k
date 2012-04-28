@@ -1341,66 +1341,12 @@ void Smb4KMountDialog::slotWorkgroupEntered()
 
 
 Smb4KMounterPrivate::Smb4KMounterPrivate()
-: m_quit( false ), m_hardware( false ), m_pending_unmounts( 0 ), m_initial_unmounts( 0 ),
-  m_pending_mounts( 0 ), m_initial_mounts( 0 )
 {
 }
 
 
 Smb4KMounterPrivate::~Smb4KMounterPrivate()
 {
-}
-
-
-void Smb4KMounterPrivate::setAboutToQuit()
-{
-  m_quit = true;
-}
-
-
-void Smb4KMounterPrivate::setHardwareReason( bool hardware )
-{
-  m_hardware = hardware;
-}
-
-
-void Smb4KMounterPrivate::addUnmount()
-{
-  m_initial_unmounts++;
-  m_pending_unmounts++;
-}
-
-
-void Smb4KMounterPrivate::removeUnmount()
-{
-  m_pending_unmounts--;
-}
-
-
-void Smb4KMounterPrivate::clearUnmounts()
-{
-  m_initial_unmounts = 0;
-  m_pending_unmounts = 0;
-}
-
-
-void Smb4KMounterPrivate::addMount()
-{
-  m_initial_mounts++;
-  m_pending_mounts++;
-}
-
-
-void Smb4KMounterPrivate::removeMount()
-{
-  m_pending_mounts--;
-}
-
-
-void Smb4KMounterPrivate::clearMounts()
-{
-  m_initial_mounts = 0;
-  m_pending_mounts = 0;
 }
 
 #include "smb4kmounter_p.moc"

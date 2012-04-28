@@ -30,21 +30,23 @@
 #include <config.h>
 #endif
 
+// application specific includes
+#include "smb4ksolidinterface.h"
+
 // Qt includes
 #include <QObject>
 #include <QFile>
 #include <QString>
 #include <QStringList>
 #include <QDeclarativeListProperty>
+#include <QScopedPointer>
 
 // KDE includes
 #include <kdemacros.h>
 #include <kauth.h>
 #include <kcompositejob.h>
 
-// application specific includes
-#include "smb4ksolidinterface.h"
-#include "smb4knetworkobject.h"
+using namespace KAuth;
 
 // forward declarations
 class Smb4KShare;
@@ -52,8 +54,8 @@ class Smb4KAuthInfo;
 class Smb4KMountDialog;
 class Smb4KMountJob;
 class Smb4KUnmountJob;
-
-using namespace KAuth;
+class Smb4KNetworkObject;
+class Smb4KMounterPrivate;
 
 /**
  * This is one of the core classes of Smb4K. It manages the mounting
@@ -61,7 +63,7 @@ using namespace KAuth;
  * list of all mounts with SMBFS and CIFS file system that are present
  * on the system.
  *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
 class KDE_EXPORT Smb4KMounter : public KCompositeJob
@@ -447,43 +449,11 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * Clean up the mount prefix.
      */
     void cleanup();
-    
-    /**
-     * Time out
-     */
-    int m_timeout;
-    
-    /**
-     * Number of checks. This is used to determine when inaccessible
-     * shares have to be checked again.
-     */
-    int m_checks;
 
     /**
-     * Retries
+     * Pointer to Smb4KMounterPrivate class.
      */
-    QList<Smb4KShare> m_retries;
-    
-    /**
-     * Shares that were imported from /proc/mounts or by reading
-     * KMountpoint stuff.
-     */
-    QList<Smb4KShare> m_imported_shares;
-    
-    /**
-     * Obsolete mount points that need to be removed
-     */
-    QStringList m_obsolete_mountpoints;
-
-    /**
-     * The mount dialog
-     */
-    Smb4KMountDialog *m_dialog;
-    
-    /**
-     * A list with all mounted shares encapsulted in Smb4KNetworkObjects
-     */
-    QList<Smb4KNetworkObject *> m_share_objects;
+    const QScopedPointer<Smb4KMounterPrivate> d;
 };
 
 #endif

@@ -31,6 +31,11 @@
 #include <config.h>
 #endif
 
+// application specific includes
+#include "smb4kmounter.h"
+#include "smb4kshare.h"
+#include "smb4knetworkobject.h"
+
 // Qt includes
 #include <QThread>
 #include <QString>
@@ -42,10 +47,6 @@
 #include <kdialog.h>
 #include <kjob.h>
 #include <kauth.h>
-
-// application specific includes
-#include <smb4kmounter.h>
-#include <smb4kshare.h>
 #include <kjob.h>
 
 class Smb4KShare;
@@ -394,29 +395,26 @@ class Smb4KMounterPrivate
   public:
     Smb4KMounterPrivate();
     ~Smb4KMounterPrivate();
-    Smb4KMounter instance;
-    void setAboutToQuit();
-    bool aboutToQuit() { return m_quit; }
-    void setHardwareReason( bool hardware );
-    bool hardwareReason() { return m_hardware; }
-    void addUnmount();
-    void removeUnmount();
-    void clearUnmounts();
-    int pendingUnmounts() { return m_pending_unmounts; }
-    int initialUnmounts() { return m_initial_unmounts; }
-    void addMount();
-    void removeMount();
-    void clearMounts();
-    int pendingMounts() { return m_pending_mounts; }
-    int initialMounts() { return m_initial_mounts; }
+    int timeout;
+    int checks;
+    Smb4KMountDialog *dialog;
+    QList<Smb4KShare> importedShares;
+    QList<Smb4KShare> retries;
+    QList<Smb4KNetworkObject *> shareObjects;
+    QStringList obsoleteMountpoints;
+    bool aboutToQuit;
+    bool hardwareReason;
+    int pendingUnmounts;
+    int initialUnmounts;
+    int pendingMounts;
+    int initialMounts;
+};
 
-  private:
-    bool m_quit;
-    bool m_hardware;
-    int m_pending_unmounts;
-    int m_initial_unmounts;
-    int m_pending_mounts;
-    int m_initial_mounts;
+
+class Private
+{
+  public:
+    Smb4KMounter instance;
 };
 
 #endif

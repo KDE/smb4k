@@ -456,7 +456,7 @@ void Smb4KBookmarkMenu::slotActionTriggered( QAction *action )
   else if ( action->objectName().startsWith( "mount_" ) && QString::compare( "mount_toplevel", action->objectName() ) != 0 )
   {
     // Mount all bookmarked share that belong to this group.
-    QString group_name = action->objectName().section( "_", 1, -1 ).trimmed();
+    QString group_name = action->objectName().section( '_', 1, -1 ).trimmed();
     QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->bookmarks( group_name );
     QList<Smb4KShare *> mounts;
 
@@ -476,10 +476,10 @@ void Smb4KBookmarkMenu::slotActionTriggered( QAction *action )
       delete mounts.takeFirst();
     }
   }
-  else if ( action->objectName().startsWith( "[" ) && action->objectName().contains( "]_//" ) )
+  else if ( action->objectName().startsWith( '[' ) && action->objectName().contains( "]_//" ) )
   {
     // Mount a single bookmarked share.
-    QString group_name = action->objectName().section( "[", 1, 1 ).section( "]_", 0, 0 ).trimmed();
+    QString group_name = action->objectName().section( '[', 1, 1 ).section( "]_", 0, 0 ).trimmed();
     QString unc = action->objectName().section( "]_", 1, -1 ).trimmed();
 
     Smb4KBookmark *bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC( unc );
@@ -521,14 +521,14 @@ void Smb4KBookmarkMenu::slotDisableBookmark( Smb4KShare *share )
     {
       QAction *bookmark = bookmarks.at( i );
       
-      if ( bookmark->isEnabled() && bookmark->objectName().startsWith( "[" ) && bookmark->objectName().contains( "]_//" ) )
+      if ( bookmark->isEnabled() && bookmark->objectName().startsWith( '[' ) && bookmark->objectName().contains( "]_//" ) )
       {
         QString unc = bookmark->objectName().section( "]_", 1, -1 ).trimmed();
         
         if ( QString::compare( unc, share->unc(), Qt::CaseInsensitive ) == 0 )
         {
           bookmark->setEnabled( !share->isMounted() );
-          group_name = bookmark->objectName().section( "[", 1, -1 ).section( "]_", 0, 0 ).trimmed();
+          group_name = bookmark->objectName().section( '[', 1, -1 ).section( "]_", 0, 0 ).trimmed();
           break;
         }
         else
@@ -611,14 +611,14 @@ void Smb4KBookmarkMenu::slotEnableBookmark( Smb4KShare *share )
     {
       QAction *bookmark = bookmarks.at( i );
       
-      if ( !bookmark->isEnabled() && bookmark->objectName().startsWith( "[" ) && bookmark->objectName().contains( "]_//" ) )
+      if ( !bookmark->isEnabled() && bookmark->objectName().startsWith( '[' ) && bookmark->objectName().contains( "]_//" ) )
       {
         QString unc = bookmark->objectName().section( "]_", 1, -1 ).trimmed();
         
         if ( QString::compare( unc, share->unc(), Qt::CaseInsensitive ) == 0 )
         {
           bookmark->setEnabled( !share->isMounted() );
-          group_name = bookmark->objectName().section( "[", 1, -1 ).section( "]_", 0, 0 ).trimmed();
+          group_name = bookmark->objectName().section( '[', 1, -1 ).section( "]_", 0, 0 ).trimmed();
           break;
         }
         else

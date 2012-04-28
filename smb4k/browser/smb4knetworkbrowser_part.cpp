@@ -78,7 +78,7 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject
   {
     if ( args.at( i ).toString().startsWith( "bookmark_shortcut" ) )
     {
-      if ( QString::compare( args.at( i ).toString().section( "=", 1, 1 ).trimmed(), "\"false\"" ) == 0 )
+      if ( QString::compare( args.at( i ).toString().section( '=', 1, 1 ).trimmed(), "\"false\"" ) == 0 )
       {
         m_bookmark_shortcut = false;
       }
@@ -91,7 +91,7 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject
     }
     else if ( args.at( i ).toString().startsWith( "silent" ) )
     {
-      if ( QString::compare( args.at( i ).toString().section( "=", 1, 1 ).trimmed(), "\"true\"" ) == 0 )
+      if ( QString::compare( args.at( i ).toString().section( '=', 1, 1 ).trimmed(), "\"true\"" ) == 0 )
       {
         m_silent = true;
       }
