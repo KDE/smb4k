@@ -34,22 +34,27 @@
 // Qt includes
 #include <QString>
 #include <QUrl>
+#include <QScopedPointer>
+#include <QIcon>
 
 // KDE includes
 #include <kdemacros.h>
 
 // forward declarations
 class Smb4KShare;
+class Smb4KBookmarkPrivate;
 
 /**
  * This is the container class for bookmarks in Smb4K. It is a complete
  * rewrite of the previous class and comes with several improvements.
  *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
 class KDE_EXPORT Smb4KBookmark
 {
+  friend class Smb4KBookmarkPrivate;
+  
   public:
     /**
      * The constructor.
@@ -91,7 +96,7 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @returns the workgroup/domain name.
      */
-    QString workgroupName() const { return m_workgroup; }
+    QString workgroupName() const;
 
     /**
      * Set the host name.
@@ -105,7 +110,7 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @returns the host name.
      */
-    QString hostName() const { return m_url.host().toUpper(); }
+    QString hostName() const;
 
     /**
      * Set the share name.
@@ -133,7 +138,7 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @returns the host's IP address.
      */
-    QString hostIP() const { return m_ip; }
+    QString hostIP() const;
 
     /**
      * Set the share's type.
@@ -147,7 +152,7 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @returns the type of the share.
      */
-    QString typeString() const { return m_type; }
+    QString typeString() const;
 
     /**
      * This function sets the UNC (Uniform Naming Convention string). This
@@ -193,7 +198,7 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @returns the bookmark's label.
      */
-    QString label() const { return m_label; }
+    QString label() const;
 
     /**
      * Sets the login that is used to mount this share.
@@ -207,14 +212,14 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @returns the login.
      */
-    QString login() const { return m_url.userName(); }
+    QString login() const;
 
     /**
      * Returns the URL of this bookmark.
      *
      * @returns the URL
      */
-    QUrl url() const { return m_url; }
+    QUrl url() const;
 
     /**
      * Set the group this bookmark belongs to.
@@ -228,7 +233,7 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @returns the group name
      */
-    QString group() const { return m_group; }
+    QString group() const;
     
     /**
      * Sets the profile this bookmark belongs to. The profile is meant 
@@ -244,7 +249,7 @@ class KDE_EXPORT Smb4KBookmark
      * 
      * @returns the profile name
      */
-    QString profile() const { return m_profile; }
+    QString profile() const;
     
     /**
      * Compare another Smb4KBookmark object with this one an return TRUE if both carry
@@ -276,60 +281,53 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @returns the network item's icon.
      */
-    QIcon icon() const { return m_icon; }
+    QIcon icon() const;
 
   private:
-    /**
-     * The URL
-     */
-    QUrl m_url;
+//     /**
+//      * The URL
+//      */
+//     QUrl m_url;
+// 
+//     /**
+//      * Workgroup
+//      */
+//     QString m_workgroup;
+// 
+//     /**
+//      * Host IP address
+//      */
+//     QString m_ip;
+// 
+//     /**
+//      * Type
+//      */
+//     QString m_type;
+// 
+//     /**
+//      * Label
+//      */
+//     QString m_label;
+// 
+//     /**
+//      * Group
+//      */
+//     QString m_group;
+//     
+//     /**
+//      * Profile
+//      */
+//     QString m_profile;
+
+//     /**
+//      * The icon
+//      */
+//     QIcon m_icon;
 
     /**
-     * Workgroup
+     * Pointer to the Smb4KBookmarkPrivate class.
      */
-    QString m_workgroup;
-
-    /**
-     * Host IP address
-     */
-    QString m_ip;
-
-    /**
-     * Type
-     */
-    QString m_type;
-
-    /**
-     * Label
-     */
-    QString m_label;
-
-    /**
-     * Group
-     */
-    QString m_group;
-    
-    /**
-     * Profile
-     */
-    QString m_profile;
-
-    /**
-     * This function checks if the given IP address is either
-     * compatible with IPv4 or IPv6. If it is not, an empty string
-     * is returned.
-     *
-     * @param ip              The IP address that needs to be checked.
-     *
-     * @returns the IP address or an empty string if the IP address
-     * is not compatible with either IPv4 or IPv6.
-     */
-    const QString &ipIsValid( const QString &ip );
-
-    /**
-     * The icon
-     */
-    QIcon m_icon;
+    const QScopedPointer<Smb4KBookmarkPrivate> d;
 };
 
 #endif

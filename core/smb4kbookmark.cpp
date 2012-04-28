@@ -24,6 +24,10 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4kbookmark.h"
+#include "smb4kshare.h"
+
 // Qt includes
 #include <QHostAddress>
 #include <QAbstractSocket>
@@ -32,39 +36,53 @@
 #include <kdebug.h>
 #include <kicon.h>
 
-// application specific includes
-#include <smb4kbookmark.h>
-#include <smb4kshare.h>
+
+class Smb4KBookmarkPrivate
+{
+  public:
+    QUrl url;
+    QString workgroup;
+    QHostAddress ip;
+    QString type;
+    QString label;
+    QString group;
+    QString profile;
+    QIcon icon;
+};
 
 
 Smb4KBookmark::Smb4KBookmark( Smb4KShare *share, const QString &label )
-: m_url( QUrl() ), m_workgroup( share->workgroupName() ), m_ip( share->hostIP() ),
-  m_type( share->typeString() ), m_label( label ), m_group( QString() ), m_profile( QString() ),
-  m_icon( KIcon( "folder-remote" ) )
+: d( new Smb4KBookmarkPrivate )
 {
   if ( !share->isHomesShare() )
   {
-    m_url = share->url();
+    d->url = share->url();
   }
   else
   {
-    m_url = share->homeURL();
+    d->url = share->homeURL();
   }
+
+  d->workgroup = share->workgroupName();
+  d->ip.setAddress( share->hostIP() );
+  d->type = share->typeString();
+  d->label = label;
+  d->icon = KIcon( "folder-remote" );
 }
 
 
 Smb4KBookmark::Smb4KBookmark( const Smb4KBookmark &b )
-: m_url( b.url() ), m_workgroup( b.workgroupName() ), m_ip( b.hostIP() ), m_type( b.typeString() ),
-  m_label( b.label() ), m_group( b.group() ), m_profile( b.profile() ), m_icon( b.icon() )
+: d( new Smb4KBookmarkPrivate )
 {
+  *d = *b.d;
 }
 
 
 Smb4KBookmark::Smb4KBookmark()
-: m_url( QUrl() ), m_workgroup( QString() ), m_ip( QString() ), m_type( "Disk" ),
-  m_label( QString() ), m_group( QString() ), m_profile( QString() ), 
-  m_icon( KIcon( "folder-remote" ) )
+: d( new Smb4KBookmarkPrivate )
 {
+  d->type = "Disk";
+  d->icon = KIcon( "folder-remote" );  
 }
 
 
@@ -75,66 +93,90 @@ Smb4KBookmark::~Smb4KBookmark()
 
 void Smb4KBookmark::setWorkgroupName( const QString &workgroup )
 {
-  m_workgroup = workgroup;
+  d->workgroup = workgroup;
+}
+
+
+QString Smb4KBookmark::workgroupName() const
+{
+  return d->workgroup;
 }
 
 
 void Smb4KBookmark::setHostName( const QString &host )
 {
-  m_url.setHost( host );
+  d->url.setHost( host );
   
-  if ( m_url.scheme().isEmpty() )
+  if ( d->url.scheme().isEmpty() )
   {
-    m_url.setScheme( "smb" );
+    d->url.setScheme( "smb" );
   }
   else
   {
     // Do nothing
   }
+}
+
+
+QString Smb4KBookmark::hostName() const
+{
+  return d->url.host().toUpper();
 }
 
 
 void Smb4KBookmark::setShareName( const QString &share )
 {
-  m_url.setPath( share );
+  d->url.setPath( share );
 }
 
 
 QString Smb4KBookmark::shareName() const
 {
-  if ( m_url.path().startsWith( '/' ) )
+  if ( d->url.path().startsWith( '/' ) )
   {
-    return m_url.path().remove( 0, 1 );
+    return d->url.path().remove( 0, 1 );
   }
   else
   {
     // Do nothing
   }
 
-  return m_url.path();
+  return d->url.path();
 }
 
 
 void Smb4KBookmark::setHostIP( const QString &ip )
 {
-  m_ip = ipIsValid( ip );
+  d->ip.setAddress( ip );
+}
+
+
+QString Smb4KBookmark::hostIP() const
+{
+  return d->ip.toString();
 }
 
 
 void Smb4KBookmark::setTypeString( const QString &type )
 {
-  m_type = type;
+  d->type = type;
+}
+
+
+QString Smb4KBookmark::typeString() const
+{
+  return d->type;
 }
 
 
 void Smb4KBookmark::setUNC( const QString &unc )
 {
   // Set the UNC.
-  m_url.setUrl( unc, QUrl::TolerantMode );
+  d->url.setUrl( unc, QUrl::TolerantMode );
 
-  if ( m_url.scheme().isEmpty() )
+  if ( d->url.scheme().isEmpty() )
   {
-    m_url.setScheme( "smb" );
+    d->url.setScheme( "smb" );
   }
   else
   {
@@ -147,13 +189,13 @@ QString Smb4KBookmark::unc( QUrl::FormattingOptions options ) const
 {
   QString unc;
   
-  if ( (options & QUrl::RemoveUserInfo) || m_url.userName().isEmpty() )
+  if ( (options & QUrl::RemoveUserInfo) || d->url.userName().isEmpty() )
   {
-    unc = m_url.toString( options ).replace( "//"+m_url.host(), "//"+hostName() );
+    unc = d->url.toString( options ).replace( "//"+d->url.host(), "//"+hostName() );
   }
   else
   {
-    unc = m_url.toString( options ).replace( '@'+m_url.host(), '@'+hostName() );
+    unc = d->url.toString( options ).replace( '@'+d->url.host(), '@'+hostName() );
   }
   
   return unc;
@@ -164,13 +206,13 @@ QString Smb4KBookmark::hostUNC( QUrl::FormattingOptions options ) const
 {
   QString unc;
   
-  if ( (options & QUrl::RemoveUserInfo) || m_url.userName().isEmpty() )
+  if ( (options & QUrl::RemoveUserInfo) || d->url.userName().isEmpty() )
   {
-    unc = m_url.toString( options|QUrl::RemovePath ).replace( "//"+m_url.host(), "//"+hostName() );
+    unc = d->url.toString( options|QUrl::RemovePath ).replace( "//"+d->url.host(), "//"+hostName() );
   }
   else
   {
-    unc = m_url.toString( options|QUrl::RemovePath ).replace( '@'+m_url.host(), '@'+hostName() );
+    unc = d->url.toString( options|QUrl::RemovePath ).replace( '@'+d->url.host(), '@'+hostName() );
   }
   
   return unc;
@@ -179,25 +221,55 @@ QString Smb4KBookmark::hostUNC( QUrl::FormattingOptions options ) const
 
 void Smb4KBookmark::setLabel( const QString &label )
 {
-  m_label = label;
+  d->label = label;
+}
+
+
+QString Smb4KBookmark::label() const
+{
+  return d->label;
 }
 
 
 void Smb4KBookmark::setLogin( const QString &login )
 {
-  m_url.setUserName( login );
+  d->url.setUserName( login );
+}
+
+
+QString Smb4KBookmark::login() const
+{
+  return d->url.userName();
+}
+
+
+QUrl Smb4KBookmark::url() const
+{
+  return d->url;
 }
 
 
 void Smb4KBookmark::setGroup( const QString &name )
 {
-  m_group = name;
+  d->group = name;
+}
+
+
+QString Smb4KBookmark::group() const
+{
+  return d->group;
 }
 
 
 void Smb4KBookmark::setProfile( const QString &profile )
 {
-  m_profile = profile;
+  d->profile = profile;
+}
+
+
+QString Smb4KBookmark::profile() const
+{
+  return d->profile;
 }
 
 
@@ -206,7 +278,7 @@ bool Smb4KBookmark::equals( Smb4KBookmark *bookmark ) const
   // URL
   QUrl url( bookmark->unc( QUrl::None ) );
   
-  if ( m_url != url )
+  if ( d->url != url )
   {
     return false;
   }
@@ -216,7 +288,7 @@ bool Smb4KBookmark::equals( Smb4KBookmark *bookmark ) const
   }
   
   // Workgroup
-  if ( QString::compare( m_workgroup, bookmark->workgroupName(), Qt::CaseInsensitive ) != 0 )
+  if ( QString::compare( d->workgroup, bookmark->workgroupName(), Qt::CaseInsensitive ) != 0 )
   {
     return false;
   }
@@ -226,7 +298,7 @@ bool Smb4KBookmark::equals( Smb4KBookmark *bookmark ) const
   }
   
   // IP address
-  if ( QString::compare( m_ip, bookmark->hostIP() ) != 0 )
+  if ( QString::compare( d->ip.toString(), bookmark->hostIP() ) != 0 )
   {
     return false;
   }
@@ -236,7 +308,7 @@ bool Smb4KBookmark::equals( Smb4KBookmark *bookmark ) const
   }
   
   // Type string
-  if ( QString::compare( m_type, bookmark->typeString() ) != 0 )
+  if ( QString::compare( d->type, bookmark->typeString() ) != 0 )
   {
     return false;
   }
@@ -246,7 +318,7 @@ bool Smb4KBookmark::equals( Smb4KBookmark *bookmark ) const
   }
   
   // Label
-  if ( QString::compare( m_label, bookmark->label() ) != 0 )
+  if ( QString::compare( d->label, bookmark->label() ) != 0 )
   {
     return false;
   }
@@ -256,7 +328,7 @@ bool Smb4KBookmark::equals( Smb4KBookmark *bookmark ) const
   }
   
   // Group
-  if ( QString::compare( m_group, bookmark->group() ) != 0 )
+  if ( QString::compare( d->group, bookmark->group() ) != 0 )
   {
     return false;
   }
@@ -266,7 +338,7 @@ bool Smb4KBookmark::equals( Smb4KBookmark *bookmark ) const
   }
   
   // Profile
-  if ( QString::compare( m_profile, bookmark->profile() ) != 0 )
+  if ( QString::compare( d->profile, bookmark->profile() ) != 0 )
   {
     return false;
   }
@@ -283,19 +355,12 @@ bool Smb4KBookmark::equals( Smb4KBookmark *bookmark ) const
 
 void Smb4KBookmark::setIcon( const QIcon &icon )
 {
-  m_icon = icon;
+  d->icon = icon;
 }
 
 
-const QString &Smb4KBookmark::ipIsValid( const QString &ip )
+QIcon Smb4KBookmark::icon() const
 {
-  QHostAddress ip_address( ip );
-
-  if ( ip_address.protocol() == QAbstractSocket::UnknownNetworkLayerProtocol )
-  {
-    // The IP address is invalid.
-    static_cast<QString>( ip ).clear();
-  }
-
-  return ip;
+  return d->icon;
 }
+
