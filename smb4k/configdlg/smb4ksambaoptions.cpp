@@ -3,7 +3,7 @@
     Samba settings of Smb4K
                              -------------------
     begin                : Mo Jan 26 2004
-    copyright            : (C) 2004-2011 by Alexander Reinholdt
+    copyright            : (C) 2004-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -20,9 +20,16 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
+
+// application specific includes
+#include "smb4ksambaoptions.h"
+#include "core/smb4kglobal.h"
+#include "core/smb4ksettings.h"
+#include "core/smb4khost.h"
+#include "core/smb4kshare.h"
 
 // Qt includes
 #include <QGridLayout>
@@ -48,13 +55,6 @@
 #include <unistd.h>
 #include <sys/types.h>
 
-// application specific includes
-#include <smb4ksambaoptions.h>
-#include <core/smb4kglobal.h>
-#include <core/smb4ksettings.h>
-#include <core/smb4khost.h>
-#include <core/smb4kshare.h>
-
 using namespace Smb4KGlobal;
 
 
@@ -63,6 +63,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   m_collection = new KActionCollection( this );
   m_maybe_changed = false;
   m_removed = false;
+  m_current_options = NULL;
 
   //
   // General
@@ -920,14 +921,12 @@ void Smb4KSambaOptions::insertCustomOptions( const QList<Smb4KCustomOptions *> &
   // Display the list.
   for ( int i = 0; i < m_options_list.size(); ++i )
   {
-    QString unc;
-    
     switch ( m_options_list.at( i )->type() )
     {
       case Smb4KCustomOptions::Host:
       {
         QListWidgetItem *item = new QListWidgetItem( KIcon( "network-server" ), 
-                                    m_options_list.at( i )->host()->unc(),
+                                    m_options_list.at( i )->unc(),
                                     m_custom_options, Host );
         item->setData( Qt::UserRole, m_options_list.at( i )->url() );
         break;
@@ -935,7 +934,7 @@ void Smb4KSambaOptions::insertCustomOptions( const QList<Smb4KCustomOptions *> &
       case Smb4KCustomOptions::Share:
       {
         QListWidgetItem *item = new QListWidgetItem( KIcon( "folder-remote" ), 
-                                    m_options_list.at( i )->share()->unc(),
+                                    m_options_list.at( i )->unc(),
                                     m_custom_options, Share );
         item->setData( Qt::UserRole, m_options_list.at( i )->url() );
         break;
@@ -986,19 +985,19 @@ void Smb4KSambaOptions::populateEditors( Smb4KCustomOptions *options )
   commitChanges();
   
   // Copy custom options object
-  m_current_options = *options;
+  m_current_options = options;
   
   // Populate the editors with the stored values.
-  switch ( m_current_options.type() )
+  switch ( m_current_options->type() )
   {
     case Smb4KCustomOptions::Host:
     {
-      m_unc_address->setText( m_current_options.host()->unc() );
+      m_unc_address->setText( m_current_options->unc() );
       break;
     }
     case Smb4KCustomOptions::Share:
     {
-      m_unc_address->setText( m_current_options.share()->unc() );
+      m_unc_address->setText( m_current_options->unc() );
       break;
     }
     default:
@@ -1007,9 +1006,9 @@ void Smb4KSambaOptions::populateEditors( Smb4KCustomOptions *options )
     }
   }
   
-  if ( m_current_options.smbPort() != -1 )
+  if ( m_current_options->smbPort() != -1 )
   {
-    m_smb_port->setValue( m_current_options.smbPort() );
+    m_smb_port->setValue( m_current_options->smbPort() );
   }
   else
   {
@@ -1017,16 +1016,16 @@ void Smb4KSambaOptions::populateEditors( Smb4KCustomOptions *options )
   }
   
 #ifndef Q_OS_FREEBSD
-  if ( m_current_options.fileSystemPort() != -1 )
+  if ( m_current_options->fileSystemPort() != -1 )
   {
-    m_fs_port->setValue( m_current_options.fileSystemPort() );
+    m_fs_port->setValue( m_current_options->fileSystemPort() );
   }
   else
   {
     m_fs_port->setValue( Smb4KSettings::remoteFileSystemPort() );
   }
   
-  if ( m_current_options.writeAccess() == Smb4KCustomOptions::UndefinedWriteAccess )
+  if ( m_current_options->writeAccess() == Smb4KCustomOptions::UndefinedWriteAccess )
   {
     switch ( Smb4KSettings::writeAccess() )
     {
@@ -1048,7 +1047,7 @@ void Smb4KSambaOptions::populateEditors( Smb4KCustomOptions *options )
   }
   else
   {
-    switch ( m_current_options.writeAccess() )
+    switch ( m_current_options->writeAccess() )
     {
       case Smb4KCustomOptions::ReadWrite:
       {
@@ -1068,7 +1067,7 @@ void Smb4KSambaOptions::populateEditors( Smb4KCustomOptions *options )
   }
 #endif
 
-  if ( m_current_options.protocolHint() == Smb4KCustomOptions::UndefinedProtocolHint )
+  if ( m_current_options->protocolHint() == Smb4KCustomOptions::UndefinedProtocolHint )
   {
     switch ( Smb4KSettings::protocolHint() )
     {
@@ -1100,7 +1099,7 @@ void Smb4KSambaOptions::populateEditors( Smb4KCustomOptions *options )
   }
   else
   {
-    switch ( m_current_options.protocolHint() )
+    switch ( m_current_options->protocolHint() )
     {
       case Smb4KCustomOptions::Automatic:
       {
@@ -1129,19 +1128,19 @@ void Smb4KSambaOptions::populateEditors( Smb4KCustomOptions *options )
     }
   }
   
-  KUser user( m_current_options.uid() );
+  KUser user( m_current_options->uid() );
   m_user_id->setCurrentItem( QString( "%1 (%2)" ).arg( user.loginName() ).arg( user.uid() ) );
   
-  KUserGroup group( m_current_options.gid() );
+  KUserGroup group( m_current_options->gid() );
   m_group_id->setCurrentItem( QString( "%1 (%2)" ).arg( group.name() ).arg( group.gid() ) );
   
-  if ( m_current_options.useKerberos() == Smb4KCustomOptions::UndefinedKerberos )
+  if ( m_current_options->useKerberos() == Smb4KCustomOptions::UndefinedKerberos )
   {
     m_kerberos->setChecked( Smb4KSettings::useKerberos() );
   }
   else
   {
-    switch ( m_current_options.useKerberos() )
+    switch ( m_current_options->useKerberos() )
     {
       case Smb4KCustomOptions::UseKerberos:
       {
@@ -1235,9 +1234,9 @@ void Smb4KSambaOptions::clearEditors()
 
 void Smb4KSambaOptions::commitChanges()
 {
-  if ( !m_current_options.isEmpty() && !m_options_list.isEmpty() && m_editors->isEnabled() )
+  if ( m_current_options && !m_options_list.isEmpty() && m_editors->isEnabled() )
   {
-    Smb4KCustomOptions *options = findOptions( m_current_options.url() );
+    Smb4KCustomOptions *options = findOptions( m_current_options->url() );
     
     options->setSMBPort( m_smb_port->value() );
 #ifndef Q_OS_FREEBSD
@@ -1372,7 +1371,7 @@ void Smb4KSambaOptions::slotCustomContextMenuRequested( const QPoint &pos )
   }
   
   m_collection->action( "clear_action" )->setEnabled( m_custom_options->count() != 0 );
-  m_collection->action( "undo_action" )->setEnabled( !m_current_options.isEmpty() || m_removed );
+  m_collection->action( "undo_action" )->setEnabled( m_current_options || m_removed );
   
   m_menu->menu()->popup( m_custom_options->viewport()->mapToGlobal( pos ) );
 }
@@ -1391,9 +1390,9 @@ void Smb4KSambaOptions::slotRemoveActionTriggered( bool /*checked*/ )
   
   if ( item && options )
   {
-    if ( m_current_options.url() == options->url() )
+    if ( m_current_options->url() == options->url() )
     {
-      m_current_options = Smb4KCustomOptions();
+      m_current_options = NULL;
     }
     else
     {
@@ -1447,7 +1446,7 @@ void Smb4KSambaOptions::slotClearActionTriggered( bool /*checked*/ )
     delete m_options_list.takeFirst();
   }
   
-  m_current_options = Smb4KCustomOptions();
+  m_current_options = NULL;
 
   m_removed = true;
   m_maybe_changed = true;
@@ -1463,32 +1462,32 @@ void Smb4KSambaOptions::slotUndoActionTriggered( bool /*checked*/ )
   }
   else
   {
-    if ( !m_current_options.isEmpty() )
+    if ( m_current_options )
     {
-      if ( m_custom_options->currentItem()->data( Qt::UserRole ).toUrl() == m_current_options.url() )
+      if ( m_custom_options->currentItem()->data( Qt::UserRole ).toUrl() == m_current_options->url() )
       {
         // Populate the editor with the original values and commit
         // the changes.
-        populateEditors( &m_current_options );
+        populateEditors( m_current_options );
         commitChanges();
       }
       else
       {
         // Copy the original values to the appropriate options object
         // in the list.
-        Smb4KCustomOptions *options = findOptions( m_current_options.url() );
+        Smb4KCustomOptions *options = findOptions( m_current_options->url() );
         
         if ( options )
         {
-          options->setSMBPort( m_current_options.smbPort() );
+          options->setSMBPort( m_current_options->smbPort() );
 #ifndef Q_OS_FREEBSD
-          options->setFileSystemPort( m_current_options.fileSystemPort() );
-          options->setWriteAccess( m_current_options.writeAccess() );
+          options->setFileSystemPort( m_current_options->fileSystemPort() );
+          options->setWriteAccess( m_current_options->writeAccess() );
 #endif
-          options->setProtocolHint( m_current_options.protocolHint() );
-          options->setUID( m_current_options.uid() );
-          options->setGID( m_current_options.gid() );
-          options->setUseKerberos( m_current_options.useKerberos() );
+          options->setProtocolHint( m_current_options->protocolHint() );
+          options->setUID( m_current_options->uid() );
+          options->setGID( m_current_options->gid() );
+          options->setUseKerberos( m_current_options->useKerberos() );
         }
         else
         {

@@ -3,8 +3,8 @@
     settings of Smb4K
                              -------------------
     begin                : Sa Nov 15 2003
-    copyright            : (C) 2003-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2003-2012 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -20,9 +20,13 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
+
+// application specific includes
+#include "smb4kauthoptions.h"
+#include "core/smb4ksettings.h"
 
 // Qt includes
 #include <QGridLayout>
@@ -41,9 +45,6 @@
 #include <kaction.h>
 #include <kmenu.h>
 
-// application specific includes
-#include "smb4kauthoptions.h"
-#include <core/smb4ksettings.h>
 
 Smb4KAuthOptions::Smb4KAuthOptions( QWidget *parent ) : KTabWidget( parent )
 {
@@ -52,6 +53,7 @@ Smb4KAuthOptions::Smb4KAuthOptions( QWidget *parent ) : KTabWidget( parent )
   m_default_login = false;
   m_undo_removal = false;
   m_maybe_changed = false;
+  m_auth_info = NULL;
   
   //
   // General tab
@@ -422,7 +424,7 @@ void Smb4KAuthOptions::showDetails( Smb4KAuthInfo *authInfo )
     }
   }
 
-  m_auth_info = *authInfo;
+  m_auth_info = authInfo;
   m_loading_details = false;
 }
 
@@ -440,7 +442,7 @@ void Smb4KAuthOptions::clearDetails()
   m_details_widget->setEnabled( !m_entries_widget->selectedItems().isEmpty() );
   
   // Clear the auth info object and disable the "Undo" action
-  m_auth_info = Smb4KAuthInfo();
+  m_auth_info = NULL;
   m_collection->action( "undo_details_action" )->setEnabled( false );
 }
 
@@ -725,27 +727,27 @@ void Smb4KAuthOptions::slotEditActionTriggered( bool /*checked*/ )
 
 void Smb4KAuthOptions::slotUndoDetailsActionTriggered( bool /*checked*/ )
 {
-  showDetails( &m_auth_info );
+  showDetails( m_auth_info );
   
   for ( int i = 0; i < m_entries_list.size(); ++i )
   {
-    if ( QString::compare( m_auth_info.unc(), m_entries_list.at( i )->unc() ) == 0 ||
-         (m_auth_info.type() == Smb4KAuthInfo::Default && m_auth_info.type() == m_entries_list.at( i )->type()) )
+    if ( QString::compare( m_auth_info->unc(), m_entries_list.at( i )->unc() ) == 0 ||
+         (m_auth_info->type() == Smb4KAuthInfo::Default && m_auth_info->type() == m_entries_list.at( i )->type()) )
     {
-      switch ( m_auth_info.type() )
+      switch ( m_auth_info->type() )
       {
         case Smb4KAuthInfo::Host:
         case Smb4KAuthInfo::Share:
         {
-          m_entries_list[i]->setWorkgroupName( m_auth_info.workgroupName() );
-          m_entries_list[i]->setLogin( m_auth_info.login() );
-          m_entries_list[i]->setPassword( m_auth_info.password() );
+          m_entries_list[i]->setWorkgroupName( m_auth_info->workgroupName() );
+          m_entries_list[i]->setLogin( m_auth_info->login() );
+          m_entries_list[i]->setPassword( m_auth_info->password() );
           break;
         }
         case Smb4KAuthInfo::Default:
         {
-          m_entries_list[i]->setLogin( m_auth_info.login() );
-          m_entries_list[i]->setPassword( m_auth_info.password() );          
+          m_entries_list[i]->setLogin( m_auth_info->login() );
+          m_entries_list[i]->setPassword( m_auth_info->password() );
           break;
         }
         default:
@@ -782,7 +784,7 @@ void Smb4KAuthOptions::slotSaveClicked( bool /*checked*/ )
   m_maybe_changed = false;
   emit walletEntriesModified();
   
-  m_auth_info = Smb4KAuthInfo();
+  m_auth_info = NULL;
 }
 
 #include "smb4kauthoptions.moc"

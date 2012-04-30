@@ -27,26 +27,32 @@
 #ifndef SMB4KAUTHINFO_H
 #define SMB4KAUTHINFO_H
 
+// application specific includes
+#include "smb4khost.h"
+#include "smb4kshare.h"
+
 // Qt includes
 #include <QString>
 #include <QUrl>
+#include <QSharedDataPointer>
 
 // KDE includes
 #include <kdemacros.h>
 
-// application specific includes
-#include <smb4khost.h>
-#include <smb4kshare.h>
+// forward declarations
+class Smb4KAuthInfoPrivate;
 
 /**
  * This class provides a container for the authentication data.
  *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
 
 class KDE_EXPORT Smb4KAuthInfo
 {
+  friend class Smb4KAuthInfoPrivate;
+  
   public:
     /**
      * Enumeration that determines the type of network item the
@@ -125,8 +131,8 @@ class KDE_EXPORT Smb4KAuthInfo
      * @returns         The workgroup of the server/share for which this
      *                  authentication data is for.
      */
-    QString workgroupName() const { return m_workgroup; }
-
+    QString workgroupName() const;
+    
     /**
      * Returns the UNC in the form [smb:]//[USER:PASSWORD@]HOST/SHARE depending on
      * the format specified by @p options.
@@ -152,7 +158,7 @@ class KDE_EXPORT Smb4KAuthInfo
      *
      * @returns the host name.
      */
-    QString hostName() const { return m_url.host().toUpper(); }
+    QString hostName() const;
 
     /**
      * Returns the share name.
@@ -176,7 +182,7 @@ class KDE_EXPORT Smb4KAuthInfo
      *
      * @returns         The login
      */
-    QString login() const { return m_url.userName(); }
+    QString login() const;
 
     /**
      * Sets the password.
@@ -188,14 +194,14 @@ class KDE_EXPORT Smb4KAuthInfo
     /**
      * Returns the password.
      */
-    QString password() const { return m_url.password(); }
+    QString password() const;
 
     /**
      * Returns the type.
      *
      * @returns the type.
      */
-    Type type() const { return m_type; }
+    int type() const;
 
     /**
      * If the item is a homes share, this function returns TRUE. In
@@ -203,7 +209,7 @@ class KDE_EXPORT Smb4KAuthInfo
      *
      * @returns TRUE if the item is a homes share.
      */
-    bool isHomesShare() const { return m_homes_share; }
+    bool isHomesShare() const;
 
     /**
      * This function sets the type of this authentication information to
@@ -239,7 +245,7 @@ class KDE_EXPORT Smb4KAuthInfo
      *
      * @returns the URL
      */
-    QUrl url() const { return m_url; }
+    QUrl url() const;
 
     /**
      * Sets the IP address for this authentication information object
@@ -253,45 +259,13 @@ class KDE_EXPORT Smb4KAuthInfo
      *
      * @returns the IP address
      */
-    QString ip() const { return m_ip; }
+    QString ip() const;
 
   private:
     /**
-     * The URL
+     * Pointer to the Smb4KAuthInfoPrivate class
      */
-    QUrl m_url;
-
-    /**
-     * The type
-     */
-    Type m_type;
-
-    /**
-     * The workgroup
-     */
-    QString m_workgroup;
-
-    /**
-     * Is this a homes share
-     */
-    bool m_homes_share;
-
-    /**
-     * The IP address
-     */
-    QString m_ip;
-
-    /**
-     * This function checks if the given IP address is either
-     * compatible with IPv4 or IPv6. If it is not, an empty string
-     * is returned.
-     *
-     * @param ip              The IP address that needs to be checked.
-     *
-     * @returns the IP address or an empty string if the IP address
-     * is not compatible with either IPv4 or IPv6.
-     */
-    const QString &ipIsValid( const QString &ip );
+    QScopedPointer<Smb4KAuthInfoPrivate> d;
 };
 
 #endif

@@ -284,50 +284,10 @@ class KDE_EXPORT Smb4KBookmark
     QIcon icon() const;
 
   private:
-//     /**
-//      * The URL
-//      */
-//     QUrl m_url;
-// 
-//     /**
-//      * Workgroup
-//      */
-//     QString m_workgroup;
-// 
-//     /**
-//      * Host IP address
-//      */
-//     QString m_ip;
-// 
-//     /**
-//      * Type
-//      */
-//     QString m_type;
-// 
-//     /**
-//      * Label
-//      */
-//     QString m_label;
-// 
-//     /**
-//      * Group
-//      */
-//     QString m_group;
-//     
-//     /**
-//      * Profile
-//      */
-//     QString m_profile;
-
-//     /**
-//      * The icon
-//      */
-//     QIcon m_icon;
-
     /**
      * Pointer to the Smb4KBookmarkPrivate class.
      */
-    const QScopedPointer<Smb4KBookmarkPrivate> d;
+    QScopedPointer<Smb4KBookmarkPrivate> d;
 };
 
 #endif

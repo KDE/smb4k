@@ -3,8 +3,8 @@
     settings of Smb4K
                              -------------------
     begin                : Sa Nov 15 2003
-    copyright            : (C) 2003-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2003-2012 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -20,8 +20,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 #ifndef SMB4KAUTHOPTIONS_H
@@ -30,6 +30,9 @@
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
+
+// Application specific includes
+#include "core/smb4kauthinfo.h"
 
 // Qt includes
 #include <QTableWidget>
@@ -42,9 +45,6 @@
 #include <kpushbutton.h>
 #include <kactioncollection.h>
 #include <kactionmenu.h>
-
-// Application specific includes
-#include <core/smb4kauthinfo.h>
 
 /**
  * This is the configuration tab for the authentication settings
@@ -264,7 +264,7 @@ class Smb4KAuthOptions : public KTabWidget
     KActionCollection *m_collection;
     KActionMenu *m_entries_menu;
     KActionMenu *m_details_menu;
-    Smb4KAuthInfo m_auth_info;
+    Smb4KAuthInfo *m_auth_info;
     bool m_loading_details;
     bool m_default_login;
     bool m_undo_removal;

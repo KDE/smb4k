@@ -51,7 +51,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
   public:
     /**
      * This constructor takes the host name @p hostName and the name of the
-     * shared resource @p name. All other information has to be set by the
+     * shared resource @p shareName. All other information has to be set by the
      * other functions this class provides.
      *
      * This constructor will also assemble the UNC from the provided arguments.
@@ -59,10 +59,10 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * @param hostName      The name of the host where the share is
      *                      located.
      *
-     * @param name          The name of the share.
+     * @param shareName     The name of the share.
      */
     Smb4KShare( const QString &hostName,
-                const QString &name );
+                const QString &shareName );
 
     /**
      * This constructor takes the UNC @p unc (in the form [smb:]//[USER@]HOST/SHARE) as

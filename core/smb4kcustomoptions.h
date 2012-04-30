@@ -30,19 +30,24 @@
 #include <config.h>
 #endif
 
+// application specific includes
+#include "smb4khost.h"
+#include "smb4kshare.h"
+
 // Qt includes
 #include <QUrl>
+#include <QScopedPointer>
 
 // KDE includes
-#include <kuser.h>
 #include <kdemacros.h>
 
-// application specific includes
-#include <smb4khost.h>
-#include <smb4kshare.h>
+// forward declarations
+class Smb4KCustomOptionsPrivate;
 
 class KDE_EXPORT Smb4KCustomOptions
 {
+  friend class Smb4KCustomOptionsPrivate;
+  
   public:
     /**
      * Type enumeration
@@ -117,17 +122,6 @@ class KDE_EXPORT Smb4KCustomOptions
     void setHost( Smb4KHost *host );
     
     /**
-     * Returns the host for which the custom options are defined or
-     * an empty host item if the network item is not of type Host.
-     * 
-     * If you need to discriminate between a host and a share, it is 
-     * mandatory that you use the type() function for that.
-     * 
-     * @returns the host
-     */
-    const Smb4KHost *host() const { return &m_host; }
-    
-    /**
      * Sets the share object. If you already set a host item before,
      * you can overwrite it with this function if the host names and
      * workgroup names match. This way you can propagate options that 
@@ -138,23 +132,12 @@ class KDE_EXPORT Smb4KCustomOptions
     void setShare( Smb4KShare *share );
     
     /**
-     * Returns the share for which the custom options are defined or
-     * an empty share item if the network item is not of type Share.
-     * 
-     * If you need to discriminate between a host and a share, it is 
-     * mandatory that you use the type() function for that.
-     * 
-     * @returns the share
-     */
-    const Smb4KShare *share() const { return &m_share; }
-    
-    /**
      * Returns the type of the network item for that the options
      * are defined
      * 
      * @returns the type of the network item
      */
-    Type type() const { return m_type; }
+    Type type() const;
     
     /**
      * If the network item is of type Share, set if it should be remounted.
@@ -169,7 +152,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @returns if the network item should be remounted.
      */
-    Remount remount() const { return m_remount; }
+    Remount remount() const;
     
     /**
      * Set the profile this custom options object belongs to. The profile is 
@@ -185,7 +168,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @returns the profile name
      */
-    QString profile() const { return m_profile; }
+    QString profile() const;
     
     /**
      * Sets the workgroup name.
@@ -200,7 +183,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * @returns the workgroup name.
      */
     QString workgroupName() const;
-    
+
     /**
      * Sets the UNC/URL of the network item
      * 
@@ -214,7 +197,31 @@ class KDE_EXPORT Smb4KCustomOptions
      * @returns the URL
      */
     QUrl url() const;
-    
+
+    /**
+     * Returns the UNC in the form [smb:]//[USER:PASSWORD@]HOST[/SHARE] depending on
+     * the format specified by @p options.
+     *
+     * @returns the UNC.
+     */
+    QString unc( QUrl::FormattingOptions options = QUrl::RemoveScheme|
+                                                   QUrl::RemoveUserInfo|
+                                                   QUrl::RemovePort ) const;
+
+    /**
+     * Returns the host name.
+     *
+     * @returns the host name.
+     */
+    QString hostName() const;
+
+    /**
+     * Returns the share name, if appropriate, or an empty string.
+     *
+     * @returns the share name
+     */
+    QString shareName() const;
+                                                   
     /**
      * Sets the IP address for the network item
      * 
@@ -241,7 +248,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @returns the SMB port
      */
-    int smbPort() const { return m_smb_port; }
+    int smbPort() const;
     
 #ifndef Q_OS_FREEBSD
     /**
@@ -257,7 +264,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @returns the file system port
      */
-    int fileSystemPort() const { return m_fs_port; }
+    int fileSystemPort() const;
     
     /**
      * Set the write access for either a single share or all shares of a host. 
@@ -271,7 +278,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @returns the write access
      */
-    WriteAccess writeAccess() const { return m_write_access; }
+    WriteAccess writeAccess() const;
 #endif
 
     /**
@@ -286,7 +293,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @returns the protocol hint
      */
-    ProtocolHint protocolHint() const { return m_protocol; }
+    ProtocolHint protocolHint() const;
     
     /**
      * Sets the useage of Kerberos for this network item.
@@ -300,7 +307,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @returns the usage of Kerberos
      */
-    Kerberos useKerberos() const { return m_kerberos; }
+    Kerberos useKerberos() const;
     
     /**
      * Set the user id you want to use.
@@ -314,7 +321,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @returns the user id
      */
-    K_UID uid() const { return m_user.uid(); }
+    K_UID uid() const;
     
     /**
      * This function returns the name of the owner as defined by the given
@@ -322,7 +329,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @returns the owner's name
      */
-    QString owner() const { return m_user.loginName(); }
+    QString owner() const; 
     
     /**
      * Set the group id you want to use.
@@ -336,7 +343,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @returns the group id
      */
-    K_GID gid() const { return m_group.gid(); }
+    K_GID gid() const;
     
     /**
      * This function returns the name of the group as defined by the given
@@ -344,7 +351,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @returns the owner's name
      */
-    QString group() const { return m_group.name(); }
+    QString group() const;
     
     /**
      * This function returns all custom options in a sorted map. The UNC,
@@ -380,20 +387,7 @@ class KDE_EXPORT Smb4KCustomOptions
     bool isEmpty();
 
   private:
-    Smb4KHost m_host;
-    Smb4KShare m_share;
-    Type m_type;
-    Remount m_remount;
-    QString m_profile;
-    int m_smb_port;
-#ifndef Q_OS_FREEBSD
-    int m_fs_port;
-    WriteAccess m_write_access;
-#endif
-    ProtocolHint m_protocol;
-    Kerberos m_kerberos;
-    KUser m_user;
-    KUserGroup m_group;
+    QScopedPointer<Smb4KCustomOptionsPrivate> d;
 };
 
 #endif

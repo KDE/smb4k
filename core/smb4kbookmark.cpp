@@ -30,7 +30,6 @@
 
 // Qt includes
 #include <QHostAddress>
-#include <QAbstractSocket>
 
 // KDE includes
 #include <kdebug.h>
@@ -64,10 +63,10 @@ Smb4KBookmark::Smb4KBookmark( Smb4KShare *share, const QString &label )
   }
 
   d->workgroup = share->workgroupName();
+  d->type      = share->typeString();
+  d->label     = label;
+  d->icon      = KIcon( "folder-remote" );
   d->ip.setAddress( share->hostIP() );
-  d->type = share->typeString();
-  d->label = label;
-  d->icon = KIcon( "folder-remote" );
 }
 
 

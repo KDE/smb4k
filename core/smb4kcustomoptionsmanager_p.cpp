@@ -90,13 +90,13 @@ void Smb4KCustomOptionsDialog::setupView()
     case Smb4KCustomOptions::Host:
     {
       label = new QLabel( i18n( "<p>Define custom options for host <b>%1</b> and all the shares it provides.</p>", 
-                          m_options->host()->hostName() ), description );
+                          m_options->hostName() ), description );
       break;
     }
     case Smb4KCustomOptions::Share:
     {
       label = new QLabel( i18n( "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>", 
-                          m_options->share()->shareName(), m_options->share()->hostName() ), 
+                          m_options->shareName(), m_options->hostName() ),
                           description );
       break;
     }
@@ -120,25 +120,7 @@ void Smb4KCustomOptionsDialog::setupView()
   editors_layout->setMargin( 0 );
  
   QLabel *unc_label = new QLabel( i18n( "UNC Address:" ), editors );
-  KLineEdit *unc    = NULL;
-  
-  switch ( m_options->type() )
-  {
-    case Smb4KCustomOptions::Host:
-    {
-      unc = new KLineEdit( m_options->host()->unc(), editors );
-      break;
-    }
-    case Smb4KCustomOptions::Share:
-    {
-      unc = new KLineEdit( m_options->share()->unc(), editors );
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
+  KLineEdit *unc    = new KLineEdit( m_options->unc(), editors );
   unc->setReadOnly( true );
       
   QLabel *smb_label = new QLabel( i18n( "SMB Port:" ), editors );

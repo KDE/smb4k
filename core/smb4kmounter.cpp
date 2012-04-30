@@ -222,7 +222,7 @@ void Smb4KMounter::triggerRemounts()
       // Check which ones actually need to be remounted.
       for ( int i = 0; i < list.size(); ++i )
       {
-        QList<Smb4KShare *> mounted_shares = findShareByUNC( list.at( i )->share()->unc() );
+        QList<Smb4KShare *> mounted_shares = findShareByUNC( list.at( i )->unc() );
 
         if ( !mounted_shares.isEmpty() )
         {
@@ -243,7 +243,11 @@ void Smb4KMounter::triggerRemounts()
 
           if ( mount )
           {
-            Smb4KShare *share = new Smb4KShare( *list.at( i )->share() );
+            Smb4KShare *share = new Smb4KShare();
+            share->setURL( list.at( i )->url() );
+            share->setWorkgroupName( list.at( i )->workgroupName() );
+            share->setHostIP( list.at( i )->ip() );
+
             remounts << share;
           }
           else
@@ -253,7 +257,11 @@ void Smb4KMounter::triggerRemounts()
         }
         else
         {
-          Smb4KShare *share = new Smb4KShare( *list.at( i )->share() );
+          Smb4KShare *share = new Smb4KShare();
+          share->setURL( list.at( i )->url() );
+          share->setWorkgroupName( list.at( i )->workgroupName() );
+          share->setHostIP( list.at( i )->ip() );
+            
           remounts << share;
         }
       }

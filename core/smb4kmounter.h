@@ -453,7 +453,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
     /**
      * Pointer to the Smb4KMounterPrivate class.
      */
-    const QScopedPointer<Smb4KMounterPrivate> d;
+    QScopedPointer<Smb4KMounterPrivate> d;
 };
 
 #endif

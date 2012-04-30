@@ -30,6 +30,9 @@
 #include <config.h>
 #endif
 
+// application specific includes
+#include "smb4kcustomoptions.h"
+
 // Qt includes
 #include <QObject>
 #include <QWidget>
@@ -37,12 +40,10 @@
 // KDE includes
 #include <kdemacros.h>
 
-// application specific includes
-#include <smb4kcustomoptions.h>
-
 // forward declarations
 class Smb4KCustomOptionsManagerPrivate;
 class Smb4KShare;
+class Smb4KBasicNetworkItem;
 
 class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
 {
@@ -85,29 +86,34 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
      * @returns the list of shares that are to be remounted
      */
     QList<Smb4KCustomOptions *> sharesToRemount();
-    
+
     /**
-     * Find custom options for the share @p share. If custom options for that share are not 
-     * defined, but for the host that provides the share, the options for the host are 
-     * returned. If neither is in the list, NULL is returned.
+     * Find custom options for the network item @p networkItem.
+     * 
+     * If the network item represents a share and custom options for it are not
+     * defined, but for the host that provides the share, the options for the host
+     * are returned. If neither is in the list, NULL is returned.
      *
-     * If you set @p exactMatch to TRUE, NULL will be returned if the share is not in 
-     * the list. Except in some special cases, you should not set @p exactMatch to true, 
+     * If you set @p exactMatch to TRUE, NULL will be returned if the URL is not found. 
+     * Except in some special cases, you should not set @p exactMatch to true,
      * because options that are defined for all shares provided by a certain host and
      * stored in a host-type custom options object are ignored then.
-     * 
-     * @returns the custom options for the share
+     *
+     * @returns the custom options for the network item
      */
-    Smb4KCustomOptions *findOptions( const Smb4KShare *share,
+    Smb4KCustomOptions *findOptions( Smb4KBasicNetworkItem *networkItem,
                                      bool exactMatch = false );
-    
+
     /**
-     * Find custom options for the host @p host. If no custom options for the host are
-     * defined. NULL is returned.
-     * 
-     * @returns the custom options for the host
+     * Find custom options for the provided @p url.
+     *
+     * This function searches the list of custom options and compares the host entry
+     * and, if applicable, the path (i.e. the share name). If an exact match was found, 
+     * the corresponding custom options are returned.
+     *
+     * @returns the custom options
      */
-    Smb4KCustomOptions *findOptions( const Smb4KHost *host );
+    Smb4KCustomOptions *findOptions( const QUrl &url );
     
     /**
      * Get the list of custom options. The list not only comprises of those items that

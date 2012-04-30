@@ -3,7 +3,7 @@
     Samba settings of Smb4K
                              -------------------
     begin                : Mo Jan 26 2004
-    copyright            : (C) 2004-2011 by Alexander Reinholdt
+    copyright            : (C) 2004-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -20,7 +20,7 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
@@ -30,6 +30,9 @@
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
+
+// application specific includes
+#include "core/smb4kcustomoptions.h"
 
 // Qt includes
 #include <QList>
@@ -48,15 +51,12 @@
 #include <klineedit.h>
 #include <kcombobox.h>
 
-// application specific includes
-#include <smb4kcustomoptions.h>
-
 /**
  * This class manages the configuration dialog of the options
  * that can be passed to smbmount and other programs of the
  * Samba software suite.
  *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
 
@@ -305,7 +305,7 @@ class Smb4KSambaOptions : public KTabWidget
     /**
      * The current custom options object
      */
-    Smb4KCustomOptions m_current_options;
+    Smb4KCustomOptions *m_current_options;
     
     /**
      * Is it possible that the custom settings changed?

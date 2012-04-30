@@ -23,6 +23,14 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4kcustomoptionsmanager.h"
+#include "smb4kcustomoptionsmanager_p.h"
+#include "smb4khomesshareshandler.h"
+#include "smb4knotification.h"
+#include "smb4khost.h"
+#include "smb4kshare.h"
+
 // Qt includes
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
@@ -34,14 +42,6 @@
 #include <kglobal.h>
 #include <kstandarddirs.h>
 #include <klocale.h>
-
-// application specific includes
-#include <smb4kcustomoptionsmanager.h>
-#include <smb4kcustomoptionsmanager_p.h>
-#include <smb4khomesshareshandler.h>
-#include <smb4knotification.h>
-#include <smb4khost.h>
-#include <smb4kshare.h>
 
 K_GLOBAL_STATIC( Smb4KCustomOptionsManagerPrivate, p );
 
@@ -146,43 +146,96 @@ QList<Smb4KCustomOptions *> Smb4KCustomOptionsManager::sharesToRemount()
 }
 
 
-Smb4KCustomOptions *Smb4KCustomOptionsManager::findOptions( const Smb4KShare *share, bool exactMatch )
+Smb4KCustomOptions *Smb4KCustomOptionsManager::findOptions( Smb4KBasicNetworkItem *networkItem, bool exactMatch )
 {
-  Q_ASSERT( share );
+  Q_ASSERT( networkItem );
   
   Smb4KCustomOptions *options = NULL;
-  
-  for ( int i = 0; i < m_options.size(); ++i )
+
+  switch ( networkItem->type() )
   {
-    if ( m_options.at( i )->type() == Smb4KCustomOptions::Share )
+    case Smb4KBasicNetworkItem::Host:
     {
-      if ( QString::compare( m_options.at( i )->share()->unc(), share->unc(), Qt::CaseInsensitive ) == 0 ||
-           QString::compare( m_options.at( i )->share()->unc(), share->homeUNC(), Qt::CaseInsensitive ) == 0 )
+      Smb4KHost *host = static_cast<Smb4KHost *>( networkItem );
+
+      if ( host )
       {
-        options = m_options[i];
-        break;
-      }
-      else
-      {
-        continue;
-      }
-    }
-    else if ( m_options.at( i )->type() == Smb4KCustomOptions::Host && !exactMatch )
-    {
-      if ( QString::compare( m_options.at( i )->host()->unc(), share->hostUNC(), Qt::CaseInsensitive ) == 0 ||
-           QString::compare( m_options.at( i )->host()->ip(), share->hostIP() ) == 0 )
-      {
-        options = m_options[i];
+        for ( int i = 0; i < m_options.size(); ++i )
+        {
+          if ( m_options.at( i )->type() == Smb4KCustomOptions::Host )
+          {
+            if ( QString::compare( m_options.at( i )->unc(), host->unc(), Qt::CaseInsensitive ) == 0 ||
+                 QString::compare( m_options.at( i )->ip(), host->ip() ) == 0 )
+            {
+              options = m_options[i];
+              break;
+            }
+            else
+            {
+              continue;
+            }
+          }
+          else
+          {
+            continue;
+          }
+        }
       }
       else
       {
         // Do nothing
       }
-      continue;
+      break;
     }
-    else
+    case Smb4KBasicNetworkItem::Share:
     {
-      continue;
+      Smb4KShare *share = static_cast<Smb4KShare *>( networkItem );
+
+      if ( share )
+      {
+        for ( int i = 0; i < m_options.size(); ++i )
+        {
+          if ( m_options.at( i )->type() == Smb4KCustomOptions::Share )
+          {
+            if ( QString::compare( m_options.at( i )->unc(), share->unc(), Qt::CaseInsensitive ) == 0 ||
+                 QString::compare( m_options.at( i )->unc(), share->homeUNC(), Qt::CaseInsensitive ) == 0 )
+            {
+              options = m_options[i];
+              break;
+            }
+            else
+            {
+              continue;
+            }
+          }
+          else if ( m_options.at( i )->type() == Smb4KCustomOptions::Host && !exactMatch )
+          {
+            if ( QString::compare( m_options.at( i )->unc(), share->hostUNC(), Qt::CaseInsensitive ) == 0 ||
+                 QString::compare( m_options.at( i )->ip(), share->hostIP() ) == 0 )
+            {
+              options = m_options[i];
+            }
+            else
+            {
+              // Do nothing
+            }
+            continue;
+          }
+          else
+          {
+            continue;
+          }
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+      break;
+    }
+    default:
+    {
+      break;
     }
   }
   
@@ -190,18 +243,16 @@ Smb4KCustomOptions *Smb4KCustomOptionsManager::findOptions( const Smb4KShare *sh
 }
 
 
-Smb4KCustomOptions* Smb4KCustomOptionsManager::findOptions( const Smb4KHost *host )
+Smb4KCustomOptions* Smb4KCustomOptionsManager::findOptions( const QUrl &url )
 {
-  Q_ASSERT( host );
-  
   Smb4KCustomOptions *options = NULL;
   
-  for ( int i = 0; i < m_options.size(); ++i )
+  if ( url.isValid() && QString::compare( url.scheme(), "smb" ) == 0 )
   {
-    if ( m_options.at( i )->type() == Smb4KCustomOptions::Host )
+    for ( int i = 0; i < m_options.size(); ++i )
     {
-      if ( QString::compare( m_options.at( i )->host()->unc(), host->unc(), Qt::CaseInsensitive ) == 0 ||
-           QString::compare( m_options.at( i )->host()->ip(), host->ip() ) == 0 )
+      if ( QString::compare( m_options.at( i )->url().host(), url.host(), Qt::CaseInsensitive ) == 0 &&
+           QString::compare( m_options.at( i )->url().path(), url.path(), Qt::CaseInsensitive ) == 0 )
       {
         options = m_options[i];
         break;
@@ -211,12 +262,12 @@ Smb4KCustomOptions* Smb4KCustomOptionsManager::findOptions( const Smb4KHost *hos
         continue;
       }
     }
-    else
-    {
-      continue;
-    }
   }
-  
+  else
+  {
+    // Do nothing
+  }
+
   return options;
 }
 
@@ -502,8 +553,7 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
           xmlWriter.writeAttribute( "profile", options->profile() );
 
           xmlWriter.writeTextElement( "workgroup", options->workgroupName() );
-          xmlWriter.writeTextElement( "unc", options->type() == Smb4KCustomOptions::Host ?
-                                      options->host()->unc() : options->share()->unc() );
+          xmlWriter.writeTextElement( "unc", options->unc() );
           xmlWriter.writeTextElement( "ip", options->ip() );
 
           xmlWriter.writeStartElement( "custom" );
@@ -744,12 +794,12 @@ void Smb4KCustomOptionsManager::addCustomOptions( Smb4KCustomOptions *options )
   {
     case Smb4KCustomOptions::Host:
     {
-      known_options = findOptions( options->host() );
+      known_options = findOptions( options->url() );
       break;
     }
     case Smb4KCustomOptions::Share:
     {
-      known_options = findOptions( options->share(), true );
+      known_options = findOptions( options->url() );
       break;
     }
     default:
@@ -794,12 +844,12 @@ void Smb4KCustomOptionsManager::removeCustomOptions( Smb4KCustomOptions *options
   {
     case Smb4KCustomOptions::Host:
     {
-      known_options = findOptions( options->host() );
+      known_options = findOptions( options->url() );
       break;
     }
     case Smb4KCustomOptions::Share:
     {
-      known_options = findOptions( options->share(), true );
+      known_options = findOptions( options->url() );
       break;
     }
     default:
