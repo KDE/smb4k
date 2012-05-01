@@ -23,6 +23,11 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4kbookmarkhandler_p.h"
+#include "smb4ksettings.h"
+#include "smb4kbookmark.h"
+
 // Qt includes
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -39,11 +44,6 @@
 // KDE includes
 #include <klocale.h>
 #include <kmenu.h>
-
-// application specific includes
-#include <smb4kbookmarkhandler_p.h>
-#include <smb4ksettings.h>
-#include <smb4kbookmark.h>
 
 
 Smb4KBookmarkDialog::Smb4KBookmarkDialog( const QList<Smb4KBookmark *> &bookmarks, const QStringList &groups, QWidget *parent )
@@ -344,19 +344,16 @@ Smb4KBookmarkEditor::Smb4KBookmarkEditor( const QList<Smb4KBookmark *> &bookmark
 
 Smb4KBookmarkEditor::~Smb4KBookmarkEditor()
 {
+  while ( !m_bookmarks.isEmpty() )
+  {
+    delete m_bookmarks.takeFirst();
+  }
 }
 
 
-QList<Smb4KBookmark *> Smb4KBookmarkEditor::editedBookmarks()
+QList<Smb4KBookmark *> Smb4KBookmarkEditor::editedBookmarks() const
 {
-  QList<Smb4KBookmark *> list;
-
-  for ( int i = 0; i < m_bookmarks.size(); ++i )
-  {
-    list << &m_bookmarks[i];
-  }
-
-  return list;
+  return m_bookmarks;
 }
 
 
@@ -547,17 +544,17 @@ void Smb4KBookmarkEditor::loadBookmarks( const QList<Smb4KBookmark *> &list )
 {
   for ( int i = 0; i < list.size(); ++i )
   {
-    m_bookmarks << *list[i];
+    m_bookmarks << new Smb4KBookmark( *list[i] );
   }
   
   // Load the bookmarks into the tree view and compile 
   // the available groups in a list.
   for ( int i = 0; i < m_bookmarks.size(); ++i )
   {
-    if ( !m_bookmarks.at( i ).group().isEmpty() )
+    if ( !m_bookmarks.at( i )->group().isEmpty() )
     {
       // Find the group and add the bookmark
-      QList<QTreeWidgetItem *> items = m_tree_widget->findItems( m_bookmarks.at( i ).group(), Qt::MatchFixedString|Qt::MatchCaseSensitive, 0 );
+      QList<QTreeWidgetItem *> items = m_tree_widget->findItems( m_bookmarks.at( i )->group(), Qt::MatchFixedString|Qt::MatchCaseSensitive, 0 );
       QTreeWidgetItem *group = NULL;
 
       if ( !items.isEmpty() )
@@ -568,17 +565,17 @@ void Smb4KBookmarkEditor::loadBookmarks( const QList<Smb4KBookmark *> &list )
       {
         group = new QTreeWidgetItem( QTreeWidgetItem::UserType );
         group->setIcon( 0, KIcon( "folder-favorites" ) );
-        group->setText( 0, m_bookmarks.at( i ).group() );
-        group->setText( (m_tree_widget->columnCount() - 1), QString( "00_%1" ).arg( m_bookmarks.at( i ).group() ) );
+        group->setText( 0, m_bookmarks.at( i )->group() );
+        group->setText( (m_tree_widget->columnCount() - 1), QString( "00_%1" ).arg( m_bookmarks.at( i )->group() ) );
         group->setFlags( Qt::ItemIsSelectable|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled|Qt::ItemIsDropEnabled ) ;
         m_tree_widget->addTopLevelItem( group );
       }
 
       QTreeWidgetItem *bookmark = new QTreeWidgetItem( QTreeWidgetItem::UserType );
-      bookmark->setData( 0, QTreeWidgetItem::UserType, m_bookmarks.at( i ).url() );
-      bookmark->setIcon( 0, m_bookmarks.at( i ).icon() );
-      bookmark->setText( 0, m_bookmarks.at( i ).unc() );
-      bookmark->setText( (m_tree_widget->columnCount() - 1), QString( "01_%1" ).arg( m_bookmarks.at( i ).unc() ) );
+      bookmark->setData( 0, QTreeWidgetItem::UserType, m_bookmarks.at( i )->url() );
+      bookmark->setIcon( 0, m_bookmarks.at( i )->icon() );
+      bookmark->setText( 0, m_bookmarks.at( i )->unc() );
+      bookmark->setText( (m_tree_widget->columnCount() - 1), QString( "01_%1" ).arg( m_bookmarks.at( i )->unc() ) );
       bookmark->setFlags( Qt::ItemIsSelectable|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled|Qt::ItemIsDragEnabled ) ;
       group->addChild( bookmark );
 
@@ -587,18 +584,18 @@ void Smb4KBookmarkEditor::loadBookmarks( const QList<Smb4KBookmark *> &list )
     else
     {
       QTreeWidgetItem *bookmark = new QTreeWidgetItem( QTreeWidgetItem::UserType );
-      bookmark->setData( 0, QTreeWidgetItem::UserType, m_bookmarks.at( i ).url() );
-      bookmark->setIcon( 0, m_bookmarks.at( i ).icon() );
-      bookmark->setText( 0, m_bookmarks.at( i ).unc() );
-      bookmark->setText( (m_tree_widget->columnCount() - 1), QString( "01_%1" ).arg( m_bookmarks.at( i ).unc() ) );
+      bookmark->setData( 0, QTreeWidgetItem::UserType, m_bookmarks.at( i )->url() );
+      bookmark->setIcon( 0, m_bookmarks.at( i )->icon() );
+      bookmark->setText( 0, m_bookmarks.at( i )->unc() );
+      bookmark->setText( (m_tree_widget->columnCount() - 1), QString( "01_%1" ).arg( m_bookmarks.at( i )->unc() ) );
       bookmark->setFlags( Qt::ItemIsSelectable|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled|Qt::ItemIsDragEnabled ) ;
       m_tree_widget->addTopLevelItem( bookmark );
     }
 
     // Add the group to the list
-    if ( !m_groups.contains( m_bookmarks.at( i ).group() ) )
+    if ( !m_groups.contains( m_bookmarks.at( i )->group() ) )
     {
-      m_groups << m_bookmarks.at( i ).group();
+      m_groups << m_bookmarks.at( i )->group();
     }
     else
     {
@@ -636,9 +633,9 @@ Smb4KBookmark *Smb4KBookmarkEditor::findBookmark( const QUrl &url )
 
   for ( int i = 0; i < m_bookmarks.size(); ++i )
   {
-    if ( m_bookmarks.at( i ).url() == url )
+    if ( m_bookmarks.at( i )->url() == url )
     {
-      bookmark = &m_bookmarks[i];
+      bookmark = m_bookmarks[i];
       break;
     }
     else
@@ -1072,13 +1069,13 @@ void Smb4KBookmarkEditor::slotUserClickedButton( KDialog::ButtonCode code )
       // Remove obsolete bookmarks.
       // We can assume that each server in the network has a unique 
       // name, so we only need to test for the UNC and are done.
-      QMutableListIterator<Smb4KBookmark> it( m_bookmarks );
+      QMutableListIterator<Smb4KBookmark *> it( m_bookmarks );
 
       while ( it.hasNext() )
       {
-        Smb4KBookmark bookmark = it.next();
+        Smb4KBookmark *bookmark = it.next();
         
-        QList<QTreeWidgetItem *> items = m_tree_widget->findItems( bookmark.unc(), Qt::MatchFixedString|Qt::MatchCaseSensitive|Qt::MatchRecursive, 0 );
+        QList<QTreeWidgetItem *> items = m_tree_widget->findItems( bookmark->unc(), Qt::MatchFixedString|Qt::MatchCaseSensitive|Qt::MatchRecursive, 0 );
 
         if ( items.isEmpty() )
         {

@@ -30,6 +30,9 @@
 #include <config.h>
 #endif
 
+// application specific includes
+#include "smb4kbookmarkhandler.h"
+
 // Qt includes
 #include <QTreeWidget>
 #include <QString>
@@ -40,9 +43,6 @@
 #include <klineedit.h>
 #include <kcombobox.h>
 #include <kactionmenu.h>
-
-// application specific includes
-#include <smb4kbookmarkhandler.h>
 
 
 class KDE_EXPORT Smb4KBookmarkDialog : public KDialog
@@ -169,7 +169,7 @@ class KDE_EXPORT Smb4KBookmarkEditor : public KDialog
      *
      * @returns the list of bookmarks
      */
-    QList<Smb4KBookmark *> editedBookmarks();
+    QList<Smb4KBookmark *> editedBookmarks() const;
 
   protected:
     /**
@@ -254,7 +254,7 @@ class KDE_EXPORT Smb4KBookmarkEditor : public KDialog
     /**
      * List of the bookmarks that are being processed
      */
-    QList<Smb4KBookmark> m_bookmarks;
+    QList<Smb4KBookmark *> m_bookmarks;
 
     /**
      * Tree widget
