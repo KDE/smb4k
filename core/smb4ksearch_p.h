@@ -2,8 +2,8 @@
     smb4ksearch_p  -  Private helper classes for Smb4KSearch class.
                              -------------------
     begin                : Mo Dez 22 2008
-    copyright            : (C) 2008-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2008-2012 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 #ifndef SMB4KSEARCH_P_H
@@ -30,13 +30,13 @@
 #include <config.h>
 #endif
 
+// application specific includes
+#include "smb4ksearch.h"
+#include "smb4kprocess.h"
+#include "smb4khost.h"
+
 // KDE includes
 #include <kjob.h>
-
-// application specific includes
-#include <smb4ksearch.h>
-#include <smb4kprocess.h>
-#include <smb4khost.h>
 
 // forward declarations
 class Smb4KShare;
@@ -96,7 +96,7 @@ class Smb4KSearchJob : public KJob
      *
      * @returns the master browser
      */
-    Smb4KHost *masterBrowser() { return &m_master; }
+    Smb4KHost *masterBrowser() { return m_master; }
 
     /**
      * Returns that parent widget.
@@ -142,7 +142,7 @@ class Smb4KSearchJob : public KJob
   private:
     bool m_started;
     QString m_string;
-    Smb4KHost m_master;
+    Smb4KHost *m_master;
     QWidget *m_parent_widget;
     Smb4KProcess *m_proc;
 };

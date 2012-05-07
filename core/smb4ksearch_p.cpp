@@ -2,8 +2,8 @@
     smb4ksearch_p  -  Private helper classes for Smb4KSearch class.
                              -------------------
     begin                : Mo Dez 22 2008
-    copyright            : (C) 2008-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2008-2012 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -19,9 +19,20 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
+
+// application specific inludes
+#include "smb4ksearch_p.h"
+#include "smb4knotification.h"
+#include "smb4kglobal.h"
+#include "smb4kworkgroup.h"
+#include "smb4khost.h"
+#include "smb4ksettings.h"
+#include "smb4kauthinfo.h"
+#include "smb4kcustomoptionsmanager.h"
+#include "smb4kcustomoptions.h"
 
 // Qt includes
 #include <QTimer>
@@ -30,22 +41,11 @@
 #include <kstandarddirs.h>
 #include <kshell.h>
 
-// application specific inludes
-#include <smb4ksearch_p.h>
-#include <smb4knotification.h>
-#include <smb4kglobal.h>
-#include <smb4kworkgroup.h>
-#include <smb4khost.h>
-#include <smb4ksettings.h>
-#include <smb4kauthinfo.h>
-#include <smb4kcustomoptionsmanager.h>
-#include <smb4kcustomoptions.h>
-
 using namespace Smb4KGlobal;
 
 
 Smb4KSearchJob::Smb4KSearchJob( QObject *parent ) : KJob( parent ),
-  m_started( false ), m_parent_widget( NULL ), m_proc( NULL )
+  m_started( false ), m_master( NULL ), m_parent_widget( NULL ), m_proc( NULL )
 {
   setCapabilities( KJob::Killable );
 }
@@ -53,6 +53,7 @@ Smb4KSearchJob::Smb4KSearchJob( QObject *parent ) : KJob( parent ),
 
 Smb4KSearchJob::~Smb4KSearchJob()
 {
+  delete m_master;
 }
 
 
@@ -67,7 +68,7 @@ void Smb4KSearchJob::setupSearch( const QString &string, Smb4KHost *master, QWid
 {
   Q_ASSERT( !string.trimmed().isEmpty() );
   m_string = string;
-  m_master = *master;
+  m_master = new Smb4KHost( *master );
   m_parent_widget = parentWidget;
 }
 
@@ -109,27 +110,17 @@ void Smb4KSearchJob::slotStartSearch()
   }
 
   // Lookup the custom options that are defined for the master browser.
-  Smb4KWorkgroup *workgroup = findWorkgroup( Smb4KSettings::domainName() );
-  Smb4KHost *master_browser = NULL;
   Smb4KCustomOptions *options = NULL;
   Smb4KAuthInfo authInfo;
 
-  if ( workgroup )
+  if ( m_master )
   {
-    master_browser = findHost( workgroup->masterBrowserName(), workgroup->workgroupName() );
+    options = Smb4KCustomOptionsManager::self()->findOptions( m_master );
   }
   else
   {
-    // Do nothing
-  }
-
-  if ( master_browser )
-  {
-    options = Smb4KCustomOptionsManager::self()->findOptions( master_browser );
-  }
-  else
-  {
-    // Do nothing
+    emitResult();
+    return;
   }
 
   // Compile the command
@@ -251,7 +242,7 @@ void Smb4KSearchJob::slotStartSearch()
 
   if ( !authInfo.login().isEmpty() )
   {
-    arguments << QString( "-U %1" ).arg( m_master.login() );
+    arguments << QString( "-U %1" ).arg( m_master->login() );
   }
   else
   {
@@ -260,7 +251,7 @@ void Smb4KSearchJob::slotStartSearch()
 
   m_proc = new Smb4KProcess( this );
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
-  m_proc->setEnv( "PASSWD", !m_master.password().isEmpty() ? m_master.password() : "", true );
+  m_proc->setEnv( "PASSWD", !m_master->password().isEmpty() ? m_master->password() : "", true );
   m_proc->setShellCommand( arguments.join( " " ) );
   
   connect( m_proc, SIGNAL( readyReadStandardOutput() ), this, SLOT( slotReadStandardOutput() ) );

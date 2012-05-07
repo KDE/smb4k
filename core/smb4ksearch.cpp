@@ -2,7 +2,7 @@
     smb4ksearch  -  This class does custom searches
                              -------------------
     begin                : Tue Mar 08 2011
-    copyright            : (C) 2011 by Alexander Reinholdt
+    copyright            : (C) 2011-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -19,9 +19,19 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
+
+// application specific includes
+#include "smb4ksearch.h"
+#include "smb4ksearch_p.h"
+#include "smb4kauthinfo.h"
+#include "smb4ksettings.h"
+#include "smb4kglobal.h"
+#include "smb4kworkgroup.h"
+#include "smb4kwalletmanager.h"
+#include "smb4khomesshareshandler.h"
 
 // Qt includes
 #include <QTimer>
@@ -32,17 +42,6 @@
 
 // KDE includes
 #include <kglobal.h>
-
-// application specific includes
-#include <smb4ksearch.h>
-#include <smb4ksearch_p.h>
-#include <smb4kauthinfo.h>
-#include <smb4ksettings.h>
-#include <smb4kglobal.h>
-#include <smb4kworkgroup.h>
-#include <smb4kwalletmanager.h>
-#include <smb4khomesshareshandler.h>
-#include <smb4kipaddressscanner.h>
 
 using namespace Smb4KGlobal;
 
@@ -89,7 +88,7 @@ void Smb4KSearch::search( const QString &string, QWidget *parent )
   }
 
   // Get authentication information.
-  Smb4KHost master_browser;
+  Smb4KHost *master_browser = NULL;
 
   if ( Smb4KSettings::masterBrowsersRequireAuth() )
   {
@@ -105,10 +104,10 @@ void Smb4KSearch::search( const QString &string, QWidget *parent )
       if ( host )
       {
         // Copy host item
-        master_browser = *host;
+        master_browser = new Smb4KHost( *host );
         
         // Authentication information
-        Smb4KWalletManager::self()->readAuthInfo( &master_browser );
+        Smb4KWalletManager::self()->readAuthInfo( master_browser );
       }
       else
       {
@@ -128,7 +127,9 @@ void Smb4KSearch::search( const QString &string, QWidget *parent )
   // Create a new job and add it to the subjobs
   Smb4KSearchJob *job = new Smb4KSearchJob( this );
   job->setObjectName( QString( "SearchJob_%1" ).arg( string ) );
-  job->setupSearch( string, &master_browser, parent );
+  job->setupSearch( string, master_browser, parent );
+
+  delete master_browser;
 
   connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
   connect( job, SIGNAL( authError( Smb4KSearchJob * ) ), SLOT( slotAuthError( Smb4KSearchJob * ) ) );
