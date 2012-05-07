@@ -33,6 +33,9 @@ Smb4K 1.1.0 (????-??-??):
     be known to Smb4K otherwise this function will do nothing.
   + Added find() function. It takes a QUrl and a boolean and returns the
     mounted share, if it could be found.
+- Removed Smb4KIPAddressScanner class. IP addresses are now looked up by
+  Smb4KScanner using a private job. It employs the 'net' command instead
+  of 'nmblookup' as Smb4KIPAddressScanner did.
 
 Smb4K 1.0.1 (2012-03-11):
 - Fixed potential crash in Smb4KWalletManager::init().

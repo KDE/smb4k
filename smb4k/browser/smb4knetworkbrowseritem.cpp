@@ -23,6 +23,9 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4knetworkbrowseritem.h"
+
 // Qt includes
 #include <QApplication>
 #include <QBrush>
@@ -31,26 +34,29 @@
 #include <kiconloader.h>
 #include <kdebug.h>
 
-// application specific includes
-#include <smb4knetworkbrowseritem.h>
-
 
 Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem( QTreeWidget *parent, Smb4KWorkgroup *workgroup )
-: QTreeWidgetItem( parent, Workgroup ), m_workgroup( *workgroup )
+: QTreeWidgetItem( parent, Workgroup )
 {
-  setText( Network, m_workgroup.workgroupName() );
-  setIcon( Network, m_workgroup.icon() );
+  m_workgroup = new Smb4KWorkgroup( *workgroup );
+  m_host      = NULL;
+  m_share     = NULL;
+  setText( Network, m_workgroup->workgroupName() );
+  setIcon( Network, m_workgroup->icon() );
 }
 
 
 Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem( QTreeWidgetItem *parent, Smb4KHost *host )
-: QTreeWidgetItem( parent, Host ), m_host( *host )
+: QTreeWidgetItem( parent, Host )
 {
-  setText( Network, m_host.hostName() );
-  setText( IP, m_host.ip() );
-  setText( Comment, m_host.comment() );
+  m_workgroup = NULL;
+  m_host      = new Smb4KHost( *host );
+  m_share     = NULL;
+  setText( Network, m_host->hostName() );
+  setText( IP, m_host->ip() );
+  setText( Comment, m_host->comment() );
 
-  if ( m_host.isMasterBrowser() )
+  if ( m_host->isMasterBrowser() )
   {
     for ( int i = 0; i < columnCount(); ++i )
     {
@@ -63,18 +69,21 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem( QTreeWidgetItem *parent, Smb4K
     // Do nothing
   }
 
-  setIcon( Network, m_host.icon() );
+  setIcon( Network, m_host->icon() );
 }
 
 
 Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem( QTreeWidgetItem *parent, Smb4KShare *share )
-: QTreeWidgetItem( parent, Share ), m_share( *share )
+: QTreeWidgetItem( parent, Share )
 {
-  setText( Network, m_share.shareName() );
-  setText( Type, m_share.translatedTypeString() );
-  setText( Comment, m_share.comment() );
+  m_workgroup = NULL;
+  m_host      = NULL;
+  m_share     = new Smb4KShare( *share );
+  setText( Network, m_share->shareName() );
+  setText( Type, m_share->translatedTypeString() );
+  setText( Comment, m_share->comment() );
 
-  if ( !m_share.isPrinter() && m_share.isMounted() )
+  if ( !m_share->isPrinter() && m_share->isMounted() )
   {
     for ( int i = 0; i < columnCount(); ++i )
     {
@@ -88,30 +97,33 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem( QTreeWidgetItem *parent, Smb4K
     // Do nothing
   }
   
-  setIcon( Network, m_share.icon() );
+  setIcon( Network, m_share->icon() );
 }
 
 
 Smb4KNetworkBrowserItem::~Smb4KNetworkBrowserItem()
 {
+  delete m_workgroup;
+  delete m_host;
+  delete m_share;
 }
 
 
 Smb4KWorkgroup *Smb4KNetworkBrowserItem::workgroupItem()
 {
-  return (type() == Workgroup ? &m_workgroup : NULL);
+  return m_workgroup;
 }
 
 
 Smb4KHost *Smb4KNetworkBrowserItem::hostItem()
 {
-  return (type() == Host ? &m_host : NULL);
+  return m_host;
 }
 
 
 Smb4KShare *Smb4KNetworkBrowserItem::shareItem()
 {
-  return (type() == Share ? &m_share : NULL);
+  return m_share;
 }
 
 
@@ -121,15 +133,15 @@ Smb4KBasicNetworkItem* Smb4KNetworkBrowserItem::networkItem()
   {
     case Workgroup:
     {
-      return &m_workgroup;
+      return m_workgroup;
     }
     case Host:
     {
-      return &m_host;
+      return m_host;
     }
     case Share:
     {
-      return &m_share;
+      return m_share;
     }
     default:
     {
@@ -158,7 +170,7 @@ void Smb4KNetworkBrowserItem::update( Smb4KBasicNetworkItem *item )
           // Do nothing
         }
         
-        m_workgroup = *(static_cast<Smb4KWorkgroup *>( item ));
+        m_workgroup = new Smb4KWorkgroup( *(static_cast<Smb4KWorkgroup *>( item )) );
         break;
       }
       case Smb4KBasicNetworkItem::Host:
@@ -172,10 +184,10 @@ void Smb4KNetworkBrowserItem::update( Smb4KBasicNetworkItem *item )
           // Do nothing
         }
         
-        m_host = *(static_cast<Smb4KHost *>( item ));
+        m_host = new Smb4KHost( *(static_cast<Smb4KHost *>( item )) );
         
         // Adjust the item's color.
-        if ( m_host.isMasterBrowser() )
+        if ( m_host->isMasterBrowser() )
         {
           for ( int i = 0; i < columnCount(); ++i )
           {
@@ -193,10 +205,10 @@ void Smb4KNetworkBrowserItem::update( Smb4KBasicNetworkItem *item )
         }
         
         // Set the IP address
-        setText( IP, m_host.ip() );
+        setText( IP, m_host->ip() );
 
         // Set the comment 
-        setText( Comment, m_host.comment() );
+        setText( Comment, m_host->comment() );
         break;
       }
       case Smb4KBasicNetworkItem::Share:
@@ -210,19 +222,19 @@ void Smb4KNetworkBrowserItem::update( Smb4KBasicNetworkItem *item )
           // Do nothing
         }
         
-        m_share = *(static_cast<Smb4KShare *>( item ));
+        m_share = new Smb4KShare( *(static_cast<Smb4KShare *>( item )) );
 
         // Set the comment.
-        setText( Comment, m_share.comment() );
+        setText( Comment, m_share->comment() );
     
         // Set the icon
-        setIcon( Network, m_share.icon() );
+        setIcon( Network, m_share->icon() );
             
         // Set the font
         for ( int i = 0; i < columnCount(); ++i )
         {
           QFont f = font( i );
-          f.setItalic( m_share.isMounted() );
+          f.setItalic( m_share->isMounted() );
           setFont( i, f );
         }
         

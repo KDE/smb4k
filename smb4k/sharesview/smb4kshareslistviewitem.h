@@ -30,11 +30,11 @@
 #include <config.h>
 #endif
 
+// application specific includes
+#include "core/smb4kshare.h"
+
 // Qt includes
 #include <QTreeWidgetItem>
-
-// application specific includes
-#include <core/smb4kshare.h>
 
 // forward declarations
 class Smb4KSharesListView;
@@ -94,7 +94,7 @@ class Smb4KSharesListViewItem : public QTreeWidgetItem
      * 
      * @returns the encapsulated Smb4KShare item.
      */
-    Smb4KShare *shareItem() { return &m_share; }
+    Smb4KShare *shareItem() { return m_share; }
 
     /**
      * This function tells the item to show the mount point instead of the
@@ -116,7 +116,7 @@ class Smb4KSharesListViewItem : public QTreeWidgetItem
     /**
      * The Smb4KShare item
      */
-    Smb4KShare m_share;
+    Smb4KShare *m_share;
     
     /**
      * Show the mountpoint

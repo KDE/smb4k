@@ -57,7 +57,6 @@
 #include <core/smb4kauthinfo.h>
 #include <core/smb4kscanner.h>
 #include <core/smb4kmounter.h>
-#include <core/smb4kipaddressscanner.h>
 #include <core/smb4kprint.h>
 #include <core/smb4kpreviewer.h>
 #include <core/smb4kbookmarkhandler.h>
@@ -165,7 +164,7 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject
   connect( Smb4KScanner::self(),   SIGNAL( finished( Smb4KBasicNetworkItem *, int ) ),
            this,                   SLOT( slotScannerFinished( Smb4KBasicNetworkItem *, int ) ) );
 
-  connect( Smb4KIPAddressScanner::self(), SIGNAL( ipAddress( Smb4KHost * ) ),
+  connect( Smb4KScanner::self(),   SIGNAL( ipAddress( Smb4KHost * ) ),
            this,                   SLOT( slotAddIPAddress( Smb4KHost * ) ) );
 
   connect( Smb4KMounter::self(),   SIGNAL( aboutToStart( Smb4KShare *, int ) ),

@@ -23,6 +23,10 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4kshareslistviewitem.h"
+#include "smb4kshareslistview.h"
+
 // Qt includes
 #include <QPixmap>
 #include <QBrush>
@@ -33,36 +37,35 @@
 #include <kiconloader.h>
 #include <klocale.h>
 
-// application specific includes
-#include <smb4kshareslistviewitem.h>
-#include <smb4kshareslistview.h>
-
 
 Smb4KSharesListViewItem::Smb4KSharesListViewItem( Smb4KSharesListView *parent, Smb4KShare *share, bool mountpoint )
-: QTreeWidgetItem( parent ), m_share( *share ), m_mountpoint( mountpoint )
+: QTreeWidgetItem( parent ), m_mountpoint( mountpoint )
 {
   setFlags( flags() | Qt::ItemIsDropEnabled );
+
+  // Copy share object
+  m_share = new Smb4KShare( *share );
   
   // Set up the text.
   if ( !m_mountpoint )
   {
-    setText( Item, m_share.unc() );
+    setText( Item, m_share->unc() );
   }
   else
   {
-    setText( Item, m_share.path() );
+    setText( Item, m_share->path() );
   }
 
-  setText( Owner, QString( "%1 - %2" ).arg( m_share.owner() ).arg( m_share.group() ) );
+  setText( Owner, QString( "%1 - %2" ).arg( m_share->owner() ).arg( m_share->group() ) );
 
 #ifndef Q_OS_FREEBSD
-  switch ( m_share.fileSystem() )
+  switch ( m_share->fileSystem() )
   {
     case Smb4KShare::CIFS:
     {
-      if ( !m_share.login().isEmpty() )
+      if ( !m_share->login().isEmpty() )
       {
-        setText( Login, m_share.login() );
+        setText( Login, m_share->login() );
       }
       else
       {
@@ -78,11 +81,11 @@ Smb4KSharesListViewItem::Smb4KSharesListViewItem( Smb4KSharesListView *parent, S
   }
 #endif
 
-  setText( FileSystem, m_share.fileSystemString().toUpper() );
-  setText( Used, m_share.usedDiskSpaceString() );
-  setText( Free, m_share.freeDiskSpaceString() );
-  setText( Total, m_share.totalDiskSpaceString() );
-  setText( Usage, m_share.diskUsageString() );
+  setText( FileSystem, m_share->fileSystemString().toUpper() );
+  setText( Used, m_share->usedDiskSpaceString() );
+  setText( Free, m_share->freeDiskSpaceString() );
+  setText( Total, m_share->totalDiskSpaceString() );
+  setText( Usage, m_share->diskUsageString() );
 
   // Alignment
   setTextAlignment( Used, Qt::AlignRight|Qt::AlignVCenter );
@@ -90,47 +93,48 @@ Smb4KSharesListViewItem::Smb4KSharesListViewItem( Smb4KSharesListView *parent, S
   setTextAlignment( Total, Qt::AlignRight|Qt::AlignVCenter );
   setTextAlignment( Usage, Qt::AlignRight|Qt::AlignVCenter );
 
-  setIcon( Item, m_share.icon() );
+  setIcon( Item, m_share->icon() );
 }
 
 
 Smb4KSharesListViewItem::~Smb4KSharesListViewItem()
 {
-  // Do not touch the Smb4KShare object!
+  delete m_share;
 }
 
 
 void Smb4KSharesListViewItem::setShowMountPoint( bool show )
 {
   m_mountpoint = show;
-  update( &m_share );
+  update( m_share );
 }
 
 
 void Smb4KSharesListViewItem::update( Smb4KShare *share )
 {
-  m_share = *share;
+  delete m_share;
+  m_share = new Smb4KShare( *share );
   
   // Set up the text.
   if ( !m_mountpoint )
   {
-    setText( Item, m_share.unc() );
+    setText( Item, m_share->unc() );
   }
   else
   {
-    setText( Item, m_share.path() );
+    setText( Item, m_share->path() );
   }
 
-  setText( Owner, QString( "%1 - %2" ).arg( m_share.owner() ).arg( m_share.group() ) );
+  setText( Owner, QString( "%1 - %2" ).arg( m_share->owner() ).arg( m_share->group() ) );
 
 #ifndef Q_OS_FREEBSD
-  switch ( m_share.fileSystem() )
+  switch ( m_share->fileSystem() )
   {
     case Smb4KShare::CIFS:
     {
-      if ( !m_share.login().isEmpty() )
+      if ( !m_share->login().isEmpty() )
       {
-        setText( Login, m_share.login() );
+        setText( Login, m_share->login() );
       }
       else
       {
@@ -146,12 +150,12 @@ void Smb4KSharesListViewItem::update( Smb4KShare *share )
   }
 #endif
 
-  setText( FileSystem, m_share.fileSystemString().toUpper() );
-  setText( Used, m_share.usedDiskSpaceString() );
-  setText( Free, m_share.freeDiskSpaceString() );
-  setText( Total, m_share.totalDiskSpaceString() );
-  setText( Usage, m_share.diskUsageString() );
+  setText( FileSystem, m_share->fileSystemString().toUpper() );
+  setText( Used, m_share->usedDiskSpaceString() );
+  setText( Free, m_share->freeDiskSpaceString() );
+  setText( Total, m_share->totalDiskSpaceString() );
+  setText( Usage, m_share->diskUsageString() );
 
-  setIcon( Item, m_share.icon() );
+  setIcon( Item, m_share->icon() );
 }
 

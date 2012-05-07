@@ -30,17 +30,17 @@
 #include <config.h>
 #endif
 
+// application specific includes
+#include "core/smb4kworkgroup.h"
+#include "core/smb4khost.h"
+#include "core/smb4kshare.h"
+
 // Qt includes
 #include <QTreeWidgetItem>
 #include <QTreeWidget>
 
 // KDE includes
 #include <kicon.h>
-
-// application specific includes
-#include <core/smb4kworkgroup.h>
-#include <core/smb4khost.h>
-#include <core/smb4kshare.h>
 
 class Smb4KNetworkBrowser;
 class Smb4KNetworkBrowserItem : public QTreeWidgetItem
@@ -140,17 +140,17 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
     /**
      * The workgroup item
      */
-    Smb4KWorkgroup m_workgroup;
+    Smb4KWorkgroup *m_workgroup;
 
     /**
      * The host item
      */
-    Smb4KHost m_host;
+    Smb4KHost *m_host;
 
     /**
      * The share item
      */
-    Smb4KShare m_share;
+    Smb4KShare *m_share;
 };
 
 #endif

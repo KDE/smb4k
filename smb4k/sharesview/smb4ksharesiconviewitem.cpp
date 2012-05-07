@@ -23,7 +23,9 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-// Qt includes
+// application specific includes
+#include "smb4ksharesiconviewitem.h"
+#include "smb4ksharesiconview.h"
 
 // KDE includes
 #include <kiconeffect.h>
@@ -31,53 +33,52 @@
 #include <kicon.h>
 #include <kiconloader.h>
 
-// application specific includes
-#include <smb4ksharesiconviewitem.h>
-#include <smb4ksharesiconview.h>
-
 Smb4KSharesIconViewItem::Smb4KSharesIconViewItem( Smb4KSharesIconView *parent, Smb4KShare *share, bool mountpoint )
-: QListWidgetItem( parent ), m_share( *share ), m_mountpoint( mountpoint )
+: QListWidgetItem( parent ), m_mountpoint( mountpoint )
 {
   setFlags( flags() | Qt::ItemIsDropEnabled );
 
+  m_share = new Smb4KShare( *share );
+  
   if ( !m_mountpoint )
   {
-    setText( m_share.unc() );
+    setText( m_share->unc() );
   }
   else
   {
-    setText( m_share.path() );
+    setText( m_share->path() );
   }
 
-  setIcon( m_share.icon() );
+  setIcon( m_share->icon() );
 }
 
 
 Smb4KSharesIconViewItem::~Smb4KSharesIconViewItem()
 {
-  // Do not touch the Smb4KShare object!
+  delete m_share;
 }
 
 
 void Smb4KSharesIconViewItem::setShowMountPoint( bool show )
 {
   m_mountpoint = show;
-  update( &m_share );
+  update( m_share );
 }
 
 
 void Smb4KSharesIconViewItem::update( Smb4KShare *share )
 {
-  m_share = *share;
+  delete m_share;
+  m_share = new Smb4KShare( *share );
   
   if ( !m_mountpoint )
   {
-    setText( m_share.unc() );
+    setText( m_share->unc() );
   }
   else
   {
-    setText( m_share.path() );
+    setText( m_share->path() );
   }
 
-  setIcon( m_share.icon() );
+  setIcon( m_share->icon() );
 }

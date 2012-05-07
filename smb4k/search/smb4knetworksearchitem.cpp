@@ -36,21 +36,24 @@
 
 
 Smb4KNetworkSearchItem::Smb4KNetworkSearchItem( KListWidget *listWidget, Smb4KShare *share )
-: QListWidgetItem( listWidget, Share ), m_share( *share )
+: QListWidgetItem( listWidget, Share )
 {
+  m_share = new Smb4KShare( *share );
   setupItem();
 }
 
 
 Smb4KNetworkSearchItem::Smb4KNetworkSearchItem( KListWidget *listWidget )
-: QListWidgetItem( listWidget, Failure ), m_share( 0 )
+: QListWidgetItem( listWidget, Failure )
 {
+  m_share = NULL;
   setupItem();
 }
 
 
 Smb4KNetworkSearchItem::~Smb4KNetworkSearchItem()
 {
+  delete m_share;
 }
 
 
@@ -60,9 +63,9 @@ void Smb4KNetworkSearchItem::setupItem()
   {
     case Share:
     {
-      setText( m_share.unc() );
+      setText( m_share->unc() );
 
-      if ( m_share.isMounted() )
+      if ( m_share->isMounted() )
       {
         QStringList overlays;
         overlays.append( "emblem-mounted" );
@@ -91,7 +94,7 @@ void Smb4KNetworkSearchItem::setupItem()
 
 void Smb4KNetworkSearchItem::setMounted( bool mounted )
 {
-  m_share.setIsMounted( mounted );
+  m_share->setIsMounted( mounted );
   setupItem();
 }
 

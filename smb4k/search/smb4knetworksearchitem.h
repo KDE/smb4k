@@ -92,7 +92,7 @@ class Smb4KNetworkSearchItem : public QListWidgetItem
      *
      * @returns the encapsulated Smb4KShare object.
      */
-    Smb4KShare *shareItem() { return &m_share; }
+    Smb4KShare *shareItem() { return m_share; }
 
     /**
      * This functions notifies the item that the share that it represents
@@ -108,13 +108,13 @@ class Smb4KNetworkSearchItem : public QListWidgetItem
      *
      * @returns TRUE if the item is already mounted.
      */
-    bool isMounted() const { return m_share.isMounted(); }
+    bool isMounted() const { return m_share->isMounted(); }
 
   private:
     /**
      * The Smb4KShare object
      */
-    Smb4KShare m_share;
+    Smb4KShare *m_share;
 
     /**
      * This function sets up the item.
