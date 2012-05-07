@@ -734,7 +734,7 @@ bool Smb4KCustomOptions::isEmpty()
   }
   
   // IP address
-  if ( !d->ip.toString().isEmpty() )
+  if ( !d->ip.isNull() )
   {
     return false;
   }

@@ -24,6 +24,15 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4kmounter_p.h"
+#include "smb4ksettings.h"
+#include "smb4knotification.h"
+#include "smb4khomesshareshandler.h"
+#include "smb4kglobal.h"
+#include "smb4kcustomoptionsmanager.h"
+#include "smb4kcustomoptions.h"
+
 // Qt includes
 #include <QFileInfo>
 #include <QHBoxLayout>
@@ -40,15 +49,6 @@
 #include <kmountpoint.h>
 #include <kshell.h>
 
-// application specific includes
-#include <smb4kmounter_p.h>
-#include <smb4ksettings.h>
-#include <smb4knotification.h>
-#include <smb4khomesshareshandler.h>
-#include <smb4kglobal.h>
-#include <smb4kcustomoptionsmanager.h>
-#include <smb4kcustomoptions.h>
-
 using namespace Smb4KGlobal;
 
 
@@ -61,6 +61,20 @@ Smb4KMountJob::Smb4KMountJob( QObject *parent ) : KJob( parent ),
 
 Smb4KMountJob::~Smb4KMountJob()
 {
+  while ( !m_shares.isEmpty() )
+  {
+    delete m_shares.takeFirst();
+  }
+
+  while ( !m_auth_errors.isEmpty() )
+  {
+    delete m_auth_errors.takeFirst();
+  }
+
+  while ( !m_retries.isEmpty() )
+  {
+    delete m_retries.takeFirst();
+  }
 }
 
 
@@ -74,7 +88,7 @@ void Smb4KMountJob::start()
 void Smb4KMountJob::setupMount( Smb4KShare *share, QWidget *parent )
 {
   Q_ASSERT( share );
-  m_shares << *share;
+  m_shares << new Smb4KShare( *share );
   m_parent_widget = parent;
 }
 
@@ -87,7 +101,7 @@ void Smb4KMountJob::setupMount( const QList<Smb4KShare*> &shares, QWidget *paren
   {
     Smb4KShare *share = it.next();
     Q_ASSERT( share );
-    m_shares << *share;
+    m_shares << new Smb4KShare( *share );
   }
 
   m_parent_widget = parent;
@@ -679,11 +693,11 @@ bool Smb4KMountJob::doKill()
 void Smb4KMountJob::slotStartMount()
 {
   QList<Action> actions;
-  QMutableListIterator<Smb4KShare> it( m_shares );
+  QMutableListIterator<Smb4KShare *> it( m_shares );
 
   while ( it.hasNext() )
   {
-    Smb4KShare *share = &it.next();
+    Smb4KShare *share = it.next();
     Action mountAction;
 
     if ( createMountAction( share, &mountAction ) )
@@ -720,11 +734,11 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
 
   if ( reply.succeeded() )
   {
-    QMutableListIterator<Smb4KShare> it( m_shares );
+    QMutableListIterator<Smb4KShare *> it( m_shares );
 
     while( it.hasNext() )
     {
-      Smb4KShare *share = &it.next();
+      Smb4KShare *share = it.next();
 
       // Check if the mount process reported an error
       QString stderr( reply.data()["stderr"].toString() );
@@ -735,7 +749,7 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
         if ( stderr.contains( "mount error 13", Qt::CaseSensitive ) || stderr.contains( "mount error(13)" )
             /* authentication error */ )
         {
-          m_auth_errors << *share;
+          m_auth_errors << new Smb4KShare( *share );
           emit authError( this );
         }
         else if ( (stderr.contains( "mount error 6" ) || stderr.contains( "mount error(6)" )) /* bad share name */ &&
@@ -743,7 +757,7 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
         {
           QString share_name = share->shareName();
           share->setShareName( share_name.replace( '_', ' ' ) );
-          m_retries << *share;
+          m_retries << new Smb4KShare( *share );
           emit retry( this );
         }
         else if ( stderr.contains( "mount error 101" ) || stderr.contains( "mount error(101)" ) /* network unreachable */ )
@@ -795,12 +809,12 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
 
 void Smb4KMountJob::slotFinishJob()
 {
-  QMutableListIterator<Smb4KShare> it( m_shares );
+  QMutableListIterator<Smb4KShare *> it( m_shares );
   Smb4KShare *share = NULL;
 
   while ( it.hasNext() )
   {
-    share = &it.next();
+    share = it.next();
 
     // Check which share has been mounted and emit the mounted() signal
     // if appropriate.
@@ -844,6 +858,10 @@ Smb4KUnmountJob::Smb4KUnmountJob( QObject *parent ) : KJob( parent ),
 
 Smb4KUnmountJob::~Smb4KUnmountJob()
 {
+  while ( !m_shares.isEmpty() )
+  {
+    delete m_shares.takeFirst();
+  }
 }
 
 
@@ -857,7 +875,7 @@ void Smb4KUnmountJob::start()
 void Smb4KUnmountJob::setupUnmount( Smb4KShare *share, bool force, bool silent, QWidget *parent )
 {
   Q_ASSERT( share );
-  m_shares << *share;
+  m_shares << new Smb4KShare( *share );
   m_force = force;
   m_silent = silent;
   m_parent_widget = parent;
@@ -872,7 +890,7 @@ void Smb4KUnmountJob::setupUnmount( const QList<Smb4KShare *> &shares, bool forc
   {
     Smb4KShare *share = it.next();
     Q_ASSERT( share );
-    m_shares << *share;
+    m_shares << new Smb4KShare( *share );
   }
 
   m_force = force;
@@ -960,11 +978,11 @@ bool Smb4KUnmountJob::doKill()
 void Smb4KUnmountJob::slotStartUnmount()
 {
   QList<Action> actions;
-  QMutableListIterator<Smb4KShare> it( m_shares );
+  QMutableListIterator<Smb4KShare *> it( m_shares );
 
   while ( it.hasNext() )
   {
-    Smb4KShare *share = &it.next();
+    Smb4KShare *share = it.next();
     Action unmountAction;
 
     if ( createUnmountAction( share, m_force, m_silent, &unmountAction ) )
@@ -1004,11 +1022,11 @@ void Smb4KUnmountJob::slotActionFinished( ActionReply reply )
     // return the right url, it seems that this is not the
     // case with bulk operations. So, we just check which of
     // the shares has been mounted and emit the mounted signal.
-    QMutableListIterator<Smb4KShare> it( m_shares );
+    QMutableListIterator<Smb4KShare *> it( m_shares );
 
     while( it.hasNext() )
     {
-      Smb4KShare *share = &it.next();
+      Smb4KShare *share = it.next();
 
       // Check if the unmount process reported an error
       QString stderr( reply.data()["stderr"].toString() );
@@ -1053,12 +1071,12 @@ void Smb4KUnmountJob::slotActionFinished( ActionReply reply )
 
 void Smb4KUnmountJob::slotFinishJob()
 {
-  QMutableListIterator<Smb4KShare> it( m_shares );
+  QMutableListIterator<Smb4KShare *> it( m_shares );
   Smb4KShare *share = NULL;
 
   while ( it.hasNext() )
   {
-    share = &it.next();
+    share = it.next();
 
     // Check if the share has been unmounted and emit the unmounted()
     // signal if appropriate.
@@ -1347,6 +1365,20 @@ Smb4KMounterPrivate::Smb4KMounterPrivate()
 
 Smb4KMounterPrivate::~Smb4KMounterPrivate()
 {
+  while ( !importedShares.isEmpty() )
+  {
+    delete importedShares.takeFirst();
+  }
+
+  while ( !retries.isEmpty() )
+  {
+    delete retries.takeFirst();
+  }
+
+  while ( !shareObjects.isEmpty() )
+  {
+    delete shareObjects.takeFirst();
+  }
 }
 
 #include "smb4kmounter_p.moc"

@@ -24,6 +24,13 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4ksynchronizer_p.h"
+#include "smb4knotification.h"
+#include "smb4ksettings.h"
+#include "smb4kglobal.h"
+#include "smb4kshare.h"
+
 // Qt includes
 #include <QTimer>
 #include <QGridLayout>
@@ -37,12 +44,6 @@
 #include <kstandarddirs.h>
 #include <klineedit.h>
 #include <kurlcompletion.h>
-
-// application specific includes
-#include <smb4ksynchronizer_p.h>
-#include <smb4knotification.h>
-#include <smb4ksettings.h>
-#include <smb4kglobal.h>
 
 using namespace Smb4KGlobal;
 

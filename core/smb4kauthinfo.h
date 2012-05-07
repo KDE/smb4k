@@ -34,7 +34,7 @@
 // Qt includes
 #include <QString>
 #include <QUrl>
-#include <QSharedDataPointer>
+#include <QScopedPointer>
 
 // KDE includes
 #include <kdemacros.h>
@@ -262,10 +262,7 @@ class KDE_EXPORT Smb4KAuthInfo
     QString ip() const;
 
   private:
-    /**
-     * Pointer to the Smb4KAuthInfoPrivate class
-     */
-    QScopedPointer<Smb4KAuthInfoPrivate> d;
+    const QScopedPointer<Smb4KAuthInfoPrivate> d;
 };
 
 #endif

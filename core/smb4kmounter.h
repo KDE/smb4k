@@ -86,6 +86,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * The constructor.
      */
     Smb4KMounter();
+    
     /**
      * The destructor.
      */
@@ -380,7 +381,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      *
      * @param shares          The list of shares that are going to be mounted
      */
-    void slotAboutToStartMounting( const QList<Smb4KShare> &shares );
+    void slotAboutToStartMounting( const QList<Smb4KShare *> &shares );
 
     /**
      * Called when a mount job has finished. It just emits the
@@ -389,7 +390,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      *
      * @param shares          The shares that were mounted
      */
-    void slotFinishedMounting( const QList<Smb4KShare> &shares );
+    void slotFinishedMounting( const QList<Smb4KShare *> &shares );
     
     /**
      * Called when an unmount job started. It just emits the 
@@ -398,7 +399,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      *
      * @param shares          The shares that are going to be unmounted
      */
-    void slotAboutToStartUnmounting( const QList<Smb4KShare> &shares );
+    void slotAboutToStartUnmounting( const QList<Smb4KShare *> &shares );
 
     /**
      * Called when an unmount job has finished. It just emits the
@@ -407,7 +408,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      *
      * @param shares          The shares that were unmounted
      */
-    void slotFinishedUnmounting( const QList<Smb4KShare> &shares );
+    void slotFinishedUnmounting( const QList<Smb4KShare *> &shares );
     
     /**
      * Called when a mounted share has been stat'ed.

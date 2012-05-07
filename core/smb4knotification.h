@@ -35,17 +35,17 @@
 #include <QFile>
 #include <QDir>
 #include <QProcess>
+#include <QScopedPointer>
 
 // KDE includes
 #include <kurl.h>
-
-// application specific includes
-#include <smb4kshare.h>
 
 // forward declarations
 class Smb4KBookmark;
 class Smb4KWorkgroup;
 class Smb4KHost;
+class Smb4KShare;
+class Smb4KNotificationPrivate;
 
 /**
  * This class provides notifications used thoughout Smb4K.
@@ -57,6 +57,8 @@ class Smb4KHost;
 class KDE_EXPORT Smb4KNotification : public QObject
 {
   Q_OBJECT
+
+  friend class Smb4KNotificationPrivate;
 
   public:
     /**
@@ -353,7 +355,7 @@ class KDE_EXPORT Smb4KNotification : public QObject
     void slotOpenShare();
 
   private:
-    Smb4KShare m_share;
+    QScopedPointer<Smb4KNotificationPrivate> d;
 };
 
 #endif

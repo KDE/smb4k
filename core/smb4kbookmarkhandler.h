@@ -50,7 +50,7 @@ class Smb4KBookmarkEditor;
  * This class belongs the to core classes of Smb4K and manages the
  * bookmarks.
  *
- * @author         Alexander Reinholdt <dustpuppy@mail.berlios.de>
+ * @author         Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
 class KDE_EXPORT Smb4KBookmarkHandler : public QObject
@@ -60,6 +60,16 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
   friend class Smb4KBookmarkHandlerPrivate;
 
   public:
+    /**
+     * The constructor.
+     */
+    Smb4KBookmarkHandler();
+
+    /**
+     * The destructor.
+     */
+    ~Smb4KBookmarkHandler();
+    
     /**
      * This function returns a static pointer to this class.
      *
@@ -147,18 +157,6 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
     void updated();
 
   private:
-    /**
-     * The constructor.
-     *
-     * @param parent        The parent of this object
-     */
-    Smb4KBookmarkHandler();
-
-    /**
-     * The destructor.
-     */
-    ~Smb4KBookmarkHandler();
-    
     /**
      * The list of bookmarks.
      */

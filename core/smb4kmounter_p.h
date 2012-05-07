@@ -111,7 +111,7 @@ class Smb4KMountJob : public KJob
      *
      * @returns a list of shares with authentication errors
      */
-    QList<Smb4KShare> &authErrors() { return m_auth_errors; }
+    QList<Smb4KShare *> &authErrors() { return m_auth_errors; }
 
     /**
      * Returns a list of shares for that a "bad share name" error
@@ -120,7 +120,7 @@ class Smb4KMountJob : public KJob
      *
      * @returns a list of shares for that mounting should be retried
      */
-    const QList<Smb4KShare> &retries() { return m_retries; }
+    const QList<Smb4KShare *> &retries() { return m_retries; }
 
     /**
      * Returns the parent widget
@@ -133,12 +133,12 @@ class Smb4KMountJob : public KJob
     /**
      * This signal is emitted when shares are about to be mounted
      */
-    void aboutToStart( const QList<Smb4KShare> &shares );
+    void aboutToStart( const QList<Smb4KShare *> &shares );
 
     /**
      * This signal is emitted when all shares have been mounted
      */
-    void finished( const QList<Smb4KShare> &shares );
+    void finished( const QList<Smb4KShare *> &shares );
 
     /**
      * Emitted when an authentication error occurred
@@ -169,9 +169,9 @@ class Smb4KMountJob : public KJob
     
   private:
     bool m_started;
-    QList<Smb4KShare> m_shares;
-    QList<Smb4KShare> m_auth_errors;
-    QList<Smb4KShare> m_retries;
+    QList<Smb4KShare *> m_shares;
+    QList<Smb4KShare *> m_auth_errors;
+    QList<Smb4KShare *> m_retries;
     QWidget *m_parent_widget;
     bool createMountAction( Smb4KShare *share,
                             Action *action );
@@ -246,12 +246,12 @@ class Smb4KUnmountJob : public KJob
     /**
      * This signal is emitted when shares are about to be unmounted
      */
-    void aboutToStart( const QList<Smb4KShare> &shares );
+    void aboutToStart( const QList<Smb4KShare *> &shares );
 
     /**
      * This signal is emitted when all shares have been unmounted
      */
-    void finished( const QList<Smb4KShare> &shares );
+    void finished( const QList<Smb4KShare *> &shares );
 
     /**
      * Emitted when the share was actually mounted
@@ -274,7 +274,7 @@ class Smb4KUnmountJob : public KJob
     bool m_started;
     bool m_force;
     bool m_silent;
-    QList<Smb4KShare> m_shares;
+    QList<Smb4KShare *> m_shares;
     QWidget *m_parent_widget;
     bool createUnmountAction( Smb4KShare *share,
                               bool force,
@@ -398,8 +398,8 @@ class Smb4KMounterPrivate
     int timeout;
     int checks;
     Smb4KMountDialog *dialog;
-    QList<Smb4KShare> importedShares;
-    QList<Smb4KShare> retries;
+    QList<Smb4KShare *> importedShares;
+    QList<Smb4KShare *> retries;
     QList<Smb4KNetworkObject *> shareObjects;
     QStringList obsoleteMountpoints;
     bool aboutToQuit;

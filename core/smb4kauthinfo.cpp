@@ -80,6 +80,9 @@ Smb4KAuthInfo::Smb4KAuthInfo()
 {
   d->type       = Unknown;
   d->homesShare = false;
+  d->url.clear();
+  d->workgroup.clear();
+  d->ip.clear();
 }
 
 

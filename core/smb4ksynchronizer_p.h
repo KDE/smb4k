@@ -31,16 +31,18 @@
 #include <config.h>
 #endif
 
+// application specific includes
+#include "smb4ksynchronizer.h"
+#include "smb4kprocess.h"
+
 // KDE includes
 #include <kjob.h>
 #include <kurlrequester.h>
 #include <kdialog.h>
 #include <kuiserverjobtracker.h>
 
-// application specific includes
-#include <smb4ksynchronizer.h>
-#include <smb4kprocess.h>
-
+// forward declarations
+class Smb4KShare;
 
 class Smb4KSyncJob : public KJob
 {

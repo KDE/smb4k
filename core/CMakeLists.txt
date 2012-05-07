@@ -21,8 +21,6 @@ set( smb4kcore_LIB_SRCS
   smb4khomesshareshandler.cpp
   smb4khomesshareshandler_p.cpp
   smb4khost.cpp
-  smb4kipaddressscanner.cpp
-  smb4kipaddressscanner_p.cpp
   smb4kmounter.cpp
   smb4kmounter_p.cpp
   smb4knetworkobject.cpp
@@ -76,7 +74,6 @@ if ( INSTALL_HEADER_FILES )
     smb4kglobal.h
     smb4khomesshareshandler.h
     smb4khost.h
-    smb4kipaddressscanner.h
     smb4kmounter.h
     smb4knetworkobject.h
     smb4knotification.h

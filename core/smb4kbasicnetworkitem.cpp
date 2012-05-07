@@ -24,24 +24,36 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4kbasicnetworkitem.h"
+
 // KDE includes
 #include <kdebug.h>
 
 // system specific includes
 #include <stdlib.h>
 
-// application specific includes
-#include <smb4kbasicnetworkitem.h>
+
+class Smb4KBasicNetworkItemPrivate
+{
+  public:
+    int type;
+    QString key;
+    QIcon icon;
+};
 
 
 Smb4KBasicNetworkItem::Smb4KBasicNetworkItem( Smb4KBasicNetworkItem::Type type )
-: m_type( type ), m_key( QString( rand() ) ), m_icon( QIcon() )
+: d( new Smb4KBasicNetworkItemPrivate )
 {
+  d->type = type;
+  d->key  = QString( rand() );
 }
 
 Smb4KBasicNetworkItem::Smb4KBasicNetworkItem( const Smb4KBasicNetworkItem &item )
-: m_type( item.type() ), m_key( item.key() ), m_icon( item.icon() )
+: d( new Smb4KBasicNetworkItemPrivate )
 {
+  *d = *item.d;
 }
 
 
@@ -50,14 +62,32 @@ Smb4KBasicNetworkItem::~Smb4KBasicNetworkItem()
 }
 
 
+Smb4KBasicNetworkItem::Type Smb4KBasicNetworkItem::type() const
+{
+  return static_cast<Type>( d->type );
+}
+
+
 void Smb4KBasicNetworkItem::setKey( const QString &key )
 {
-  m_key = key;
+  d->key = key;
+}
+
+
+QString Smb4KBasicNetworkItem::key() const
+{
+  return d->key;
 }
 
 
 void Smb4KBasicNetworkItem::setIcon( const QIcon &icon )
 {
-  m_icon = icon;
+  d->icon = icon;
+}
+
+
+QIcon Smb4KBasicNetworkItem::icon() const
+{
+  return d->icon;
 }
 

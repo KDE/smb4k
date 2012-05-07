@@ -27,16 +27,27 @@
 #ifndef SMB4KNETWORKOBJECT_H
 #define SMB4KNETWORKOBJECT_H
 
-// Qt includes
-#include <QObject>
-
-// KDE includes
-#include <kdemacros.h>
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 
 // application specific includes
 #include "smb4kworkgroup.h"
 #include "smb4khost.h"
 #include "smb4kshare.h"
+
+// Qt includes
+#include <QObject>
+#include <QUrl>
+#include <QString>
+#include <QIcon>
+#include <QScopedPointer>
+
+// KDE includes
+#include <kdemacros.h>
+
+// forward declaration
+class Smb4KNetworkObjectPrivate;
 
 /**
  * This class derives from QObject and makes the main functions of the 
@@ -51,6 +62,9 @@
 class KDE_EXPORT Smb4KNetworkObject : public QObject
 {
   Q_OBJECT
+
+  friend class Smb4KNetworkObjectPrivate;
+  
   Q_ENUMS( Type )
   Q_PROPERTY( Type type READ type CONSTANT )
   Q_PROPERTY( QString workgroupName READ workgroupName CONSTANT )
@@ -100,14 +114,14 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
     /**
      * This function returns the type
      */
-    Type type() const { return m_type; }
+    Type type() const;
 
     /**
      * Returns the workgroup name
      *
      * @returns the workgroup name
      */
-    const QString workgroupName();
+    QString workgroupName() const;
 
     /**
      * In case of a host or share, this function returns the name
@@ -116,7 +130,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      *
      * @returns the host name or an empty string
      */
-    const QString hostName();
+    QString hostName() const;
 
     /**
      * In case of a share, this function returns the name of the
@@ -125,14 +139,14 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      *
      * @returns the share name or an empty string
      */
-    const QString shareName();
+    QString shareName() const;
 
     /**
      * This function returns the icon of the network item.
      *
      * @returns the icon
      */
-    const QIcon icon();
+    QIcon icon() const;
     
     /**
      * This function returns the comment of a network item or an
@@ -140,7 +154,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * 
      * @returns the comment
      */
-    const QString comment();
+    QString comment() const;
     
     /**
      * This function returns the UNC/URL of this item.
@@ -149,7 +163,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * so to discriminate it from a host, you need to check the type()
      * function as well.
      */
-    const QUrl url();
+    QUrl url() const;
     
     /**
      * This function returns TRUE if the network item is a share and it is
@@ -157,7 +171,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * 
      * @returns TRUE if the network item is mounted.
      */
-    bool isMounted();
+    bool isMounted() const;
     
     /**
      * Updates the network item.
@@ -172,7 +186,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * 
      * @returns TRUE if the network item is a printer.
      */
-    bool isPrinter();
+    bool isPrinter() const;
     
     /**
      * This function returns the mountpoint of a mounted share or an empty 
@@ -180,13 +194,10 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * 
      * @returns the mount point of a share.
      */
-    const QUrl mountpoint();
+    QUrl mountpoint() const;
     
   private:
-    Smb4KWorkgroup m_workgroup;
-    Smb4KHost m_host;
-    Smb4KShare m_share;
-    Type m_type;
+    QScopedPointer<Smb4KNetworkObjectPrivate> d;
 };
 
 #endif

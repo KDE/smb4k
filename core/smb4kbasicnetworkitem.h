@@ -34,9 +34,13 @@
 // Qt includes
 #include <QString>
 #include <QIcon>
+#include <QScopedPointer>
 
 // KDE includes
 #include <kdemacros.h>
+
+// forward declarations
+class Smb4KBasicNetworkItemPrivate;
 
 class KDE_EXPORT Smb4KBasicNetworkItem
 {
@@ -77,7 +81,7 @@ class KDE_EXPORT Smb4KBasicNetworkItem
      *
      * @returns the type.
      */
-    Type type() const { return m_type; }
+    Type type() const;
 
     /**
      * With this function you can set a key, that can be used to identify
@@ -93,7 +97,7 @@ class KDE_EXPORT Smb4KBasicNetworkItem
      *
      * @returns the identifying string for this item.
      */
-    QString key() const { return m_key; }
+    QString key() const;
     
     /**
      * This function sets the icon of the network item.
@@ -109,23 +113,10 @@ class KDE_EXPORT Smb4KBasicNetworkItem
      * 
      * @returns the network item's icon.
      */
-    QIcon icon() const { return m_icon; }
+    QIcon icon() const;
     
   private:
-    /**
-     * The type
-     */
-    Type m_type;
-
-    /**
-     * The key
-     */
-    QString m_key;
-    
-    /**
-     * The icon
-     */
-    QIcon m_icon;
+    const QScopedPointer<Smb4KBasicNetworkItemPrivate> d;
 };
 
 #endif

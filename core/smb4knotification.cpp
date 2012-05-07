@@ -23,6 +23,14 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4knotification.h"
+#include "smb4ksettings.h"
+#include "smb4kbookmark.h"
+#include "smb4kworkgroup.h"
+#include "smb4khost.h"
+#include "smb4kshare.h"
+
 // KDE includes
 #include <kdebug.h>
 #include <klocale.h>
@@ -37,18 +45,18 @@
 // system includes
 #include <string.h>
 
-// application specific includes
-#include <smb4knotification.h>
-#include <smb4ksettings.h>
-#include <smb4kbookmark.h>
-#include <smb4kworkgroup.h>
-#include <smb4khost.h>
-
 using namespace KAuth;
 
 
+class Smb4KNotificationPrivate
+{
+  public:
+    KUrl mountpoint;
+};
+
+
 Smb4KNotification::Smb4KNotification( QObject *parent )
-: QObject( parent )
+: QObject( parent ), d( new Smb4KNotificationPrivate )
 {
 }
 
@@ -64,7 +72,7 @@ void Smb4KNotification::shareMounted( Smb4KShare* share )
 
   if ( Smb4KSettings::self()->showNotifications() )
   {
-    m_share = *share;
+    d->mountpoint = KUrl( share->canonicalPath() );
     
     KNotification *notification = KNotification::event( KNotification::Notification,
                                   "Smb4K",
@@ -835,7 +843,7 @@ void Smb4KNotification::slotNotificationClosed()
 
 void Smb4KNotification::slotOpenShare()
 {
-  KRun::runUrl( KUrl( m_share.canonicalPath() ), "inode/directory", 0 );
+  KRun::runUrl( d->mountpoint, "inode/directory", 0 );
 }
 
 

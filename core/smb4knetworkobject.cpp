@@ -25,30 +25,69 @@
  ***************************************************************************/
 
 // application specific includes
-#include <smb4knetworkobject.h>
+#include "smb4knetworkobject.h"
+
+
+class Smb4KNetworkObjectPrivate
+{
+  public:
+    QString workgroup;
+    QUrl url;
+    int type;
+    QIcon icon;
+    QString comment;
+    bool mounted;
+    QUrl mountpoint;
+    bool printer;
+};
 
 
 Smb4KNetworkObject::Smb4KNetworkObject( Smb4KWorkgroup *workgroup, QObject *parent )
-: QObject( parent ), m_workgroup( *workgroup ), m_type( Workgroup )
+: QObject( parent ), d( new Smb4KNetworkObjectPrivate )
 {
+  d->workgroup = workgroup->workgroupName();
+  d->url       = workgroup->url();
+  d->icon      = workgroup->icon();
+  d->type      = Workgroup;
+  d->mounted   = false;
+  d->printer   = false;
 }
 
 
 Smb4KNetworkObject::Smb4KNetworkObject( Smb4KHost *host, QObject *parent )
-: QObject( parent ), m_host( *host ), m_type( Host )
+: QObject( parent ), d( new Smb4KNetworkObjectPrivate )
 {
+  d->workgroup = host->workgroupName();
+  d->url       = host->url();
+  d->icon      = host->icon();
+  d->comment   = host->comment();
+  d->type      = Host;
+  d->mounted   = false;
+  d->printer   = false;
 }
 
 
 Smb4KNetworkObject::Smb4KNetworkObject( Smb4KShare *share, QObject *parent )
-: QObject( parent ), m_share( *share ), m_type( Share )
+: QObject( parent ), d( new Smb4KNetworkObjectPrivate )
 {
+  d->workgroup  = share->workgroupName();
+  d->url        = share->url();
+  d->icon       = share->icon();
+  d->comment    = share->comment();
+  d->type       = Share;
+  d->mounted    = share->isMounted();
+  d->printer    = share->isPrinter();
+  d->mountpoint = QUrl( share->path() );
+  d->mountpoint.setScheme( "file" );
 }
 
 
 Smb4KNetworkObject::Smb4KNetworkObject( QObject *parent )
-: QObject( parent ), m_type( Unknown )
+: QObject( parent ), d( new Smb4KNetworkObjectPrivate )
 {
+  d->type      = Unknown;
+  d->mounted   = false;
+  d->printer   = false;
 }
 
 
@@ -57,205 +96,94 @@ Smb4KNetworkObject::~Smb4KNetworkObject()
 }
 
 
-const QString Smb4KNetworkObject::workgroupName()
+Smb4KNetworkObject::Type Smb4KNetworkObject::type() const
 {
-  QString name;
-  
-  switch ( m_type )
-  {
-    case Workgroup:
-    {
-      name = m_workgroup.workgroupName();
-      break;
-    }
-    case Host:
-    {
-      name = m_host.workgroupName();
-      break;
-    }
-    case Share:
-    {
-      name = m_share.workgroupName();
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-
-  return name;
+  return static_cast<Type>( d->type );
 }
 
 
-const QString Smb4KNetworkObject::hostName()
+QString Smb4KNetworkObject::workgroupName() const
 {
-  QString name;
-
-  switch ( m_type )
-  {
-    case Host:
-    {
-      name = m_host.hostName();
-      break;
-    }
-    case Share:
-    {
-      name = m_share.hostName();
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-
-  return name;
+  return d->workgroup;
 }
 
 
-const QString Smb4KNetworkObject::shareName()
+QString Smb4KNetworkObject::hostName() const
 {
-  QString name;
-
-  switch ( m_type )
-  {
-    case Share:
-    {
-      name = m_share.shareName();
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-
-  return name;
+  return d->url.host().toUpper();
 }
 
 
-const QIcon Smb4KNetworkObject::icon()
+QString Smb4KNetworkObject::shareName() const
 {
-  QIcon icon;
+  // Since users might come up with very weird share names,
+  // we are careful and do not use QString::remove( "/" ), but
+  // only remove preceding and trailing slashes.
+  QString share_name = d->url.path();
 
-  switch ( m_type )
+  if ( share_name.startsWith( '/' ) )
   {
-    case Workgroup:
-    {
-      icon = m_workgroup.icon();
-      break;
-    }
-    case Host:
-    {
-      icon = m_host.icon();
-      break;
-    }
-    case Share:
-    {
-      icon = m_share.icon();
-      break;
-    }
-    default:
-    {
-      break;
-    }
+    share_name = share_name.remove( 0, 1 );
   }
-  
-  return icon;
+  else
+  {
+    // Do nothing
+  }
+
+  if ( share_name.endsWith( '/' ) )
+  {
+    share_name = share_name.remove( share_name.size() - 1, 1 );
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  return share_name;
 }
 
 
-const QString Smb4KNetworkObject::comment()
+QIcon Smb4KNetworkObject::icon() const
 {
-  QString comment;
-  
-  switch ( m_type )
-  {
-    case Host:
-    {
-      comment = m_host.comment();
-      break;
-    }
-    case Share:
-    {
-      comment = m_share.comment();
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-  
-  return comment;
+  return d->icon;
 }
 
 
-const QUrl Smb4KNetworkObject::url()
+QString Smb4KNetworkObject::comment() const
 {
-  QUrl url;
-  
-  switch ( m_type )
-  {
-    case Workgroup:
-    {
-      url = m_workgroup.url();
-      break;
-    }
-    case Host:
-    {
-      url = m_host.url();
-      break;
-    }
-    case Share:
-    {
-      url = m_share.url();
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-  
-  return url;
+  return d->comment;
 }
 
 
-bool Smb4KNetworkObject::isMounted()
+QUrl Smb4KNetworkObject::url() const
 {
-  bool mounted = false;
-  
-  switch ( m_type )
-  {
-    case Share:
-    {
-      mounted = m_share.isMounted();
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-  
-  return mounted;
+  return d->url;
+}
+
+
+bool Smb4KNetworkObject::isMounted() const
+{
+  return d->mounted;
 }
 
 
 void Smb4KNetworkObject::update( Smb4KBasicNetworkItem *networkItem )
 {
-  if ( m_type == Workgroup && networkItem->type() == Smb4KBasicNetworkItem::Workgroup )
+  if ( d->type == Workgroup && networkItem->type() == Smb4KBasicNetworkItem::Workgroup )
   {
     Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>( networkItem );
     
     if ( workgroup )
     {
       // Check that we update with the correct item.
-      if ( QString::compare( m_workgroup.workgroupName(), workgroup->workgroupName(), Qt::CaseInsensitive ) == 0 )
+      if ( QString::compare( workgroupName(), workgroup->workgroupName(), Qt::CaseInsensitive ) == 0 )
       {
-        m_workgroup = *workgroup;
+        d->workgroup = workgroup->workgroupName();
+        d->url       = workgroup->url();
+        d->icon      = workgroup->icon();
+        d->type      = Workgroup;
+        d->mounted   = false;
+        d->printer   = false;
       }
       else
       {
@@ -267,17 +195,23 @@ void Smb4KNetworkObject::update( Smb4KBasicNetworkItem *networkItem )
       // Do nothing
     }
   }
-  else if ( m_type == Host && networkItem->type() == Smb4KBasicNetworkItem::Host )
+  else if ( d->type == Host && networkItem->type() == Smb4KBasicNetworkItem::Host )
   {
     Smb4KHost *host = static_cast<Smb4KHost *>( networkItem );
     
     if ( host )
     {
       // Check that we update with the correct item.
-      if ( QString::compare( m_host.workgroupName(), host->workgroupName(), Qt::CaseInsensitive ) == 0 &&
-           QString::compare( m_host.hostName(), host->hostName(), Qt::CaseInsensitive ) == 0 )
+      if ( QString::compare( workgroupName(), host->workgroupName(), Qt::CaseInsensitive ) == 0 &&
+           QString::compare( hostName(), host->hostName(), Qt::CaseInsensitive ) == 0 )
       {
-        m_host = *host;
+        d->workgroup = host->workgroupName();
+        d->url       = host->url();
+        d->icon      = host->icon();
+        d->comment   = host->comment();
+        d->type      = Host;
+        d->mounted   = false;
+        d->printer   = false;
       }
       else
       {
@@ -289,18 +223,26 @@ void Smb4KNetworkObject::update( Smb4KBasicNetworkItem *networkItem )
       // Do nothing
     }
   }
-  else if ( m_type == Share && networkItem->type() == Smb4KBasicNetworkItem::Share )
+  else if ( d->type == Share && networkItem->type() == Smb4KBasicNetworkItem::Share )
   {
     Smb4KShare *share = static_cast<Smb4KShare *>( networkItem );
     
     if ( share )
     {
       // Check that we update with the correct item.
-      if ( QString::compare( m_share.workgroupName(), share->workgroupName(), Qt::CaseInsensitive ) == 0 &&
-           QString::compare( m_share.hostName(), share->hostName(), Qt::CaseInsensitive ) == 0 &&
-           QString::compare( m_share.shareName(), share->shareName(), Qt::CaseInsensitive ) == 0 )
+      if ( QString::compare( workgroupName(), share->workgroupName(), Qt::CaseInsensitive ) == 0 &&
+           QString::compare( hostName(), share->hostName(), Qt::CaseInsensitive ) == 0 &&
+           QString::compare( shareName(), share->shareName(), Qt::CaseInsensitive ) == 0 )
       {
-        m_share = *share;
+        d->workgroup  = share->workgroupName();
+        d->url        = share->url();
+        d->icon       = share->icon();
+        d->comment    = share->comment();
+        d->type       = Share;
+        d->mounted    = share->isMounted();
+        d->printer    = share->isPrinter();
+        d->mountpoint = QUrl( share->path() );
+        d->mountpoint.setScheme( "file" );
       }
       else
       {
@@ -314,51 +256,20 @@ void Smb4KNetworkObject::update( Smb4KBasicNetworkItem *networkItem )
   }
   else
   {
-    m_type = Unknown;
+    d->type = Unknown;
   }
 }
 
 
-bool Smb4KNetworkObject::isPrinter()
+bool Smb4KNetworkObject::isPrinter() const
 {
-  bool printer = false;
-  
-  switch ( m_type )
-  {
-    case Share:
-    {
-      printer = m_share.isPrinter();
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-  
-  return printer;
+  return d->printer;
 }
 
 
-const QUrl Smb4KNetworkObject::mountpoint()
+QUrl Smb4KNetworkObject::mountpoint() const
 {
-  QUrl path;
-  
-  switch ( m_type )
-  {
-    case Share:
-    {
-      path.setPath( m_share.path() );
-      path.setScheme( "file" );
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-  
-  return path;
+  return d->mountpoint;
 }
 
 
