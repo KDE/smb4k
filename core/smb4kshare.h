@@ -30,24 +30,28 @@
 #include <config.h>
 #endif
 
+// application specific includes
+#include "smb4kbasicnetworkitem.h"
+
 // Qt includes
 #include <QString>
 #include <QStringList>
 #include <QtGlobal>
 #include <QUrl>
+#include <QScopedPointer>
 
 // KDE includes
 #include <kuser.h>
 #include <kdemacros.h>
 
-// application specific includes
-#include "smb4kbasicnetworkitem.h"
-
 // forward declarations
 class Smb4KAuthInfo;
+class Smb4KSharePrivate;
 
 class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
 {
+  friend class Smb4KSharePrivate;
+  
   public:
     /**
      * This constructor takes the host name @p hostName and the name of the
@@ -66,7 +70,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
 
     /**
      * This constructor takes the UNC @p unc (in the form [smb:]//[USER@]HOST/SHARE) as
-     * only argument. It feeds the internal QUrl object with the string, that extracts
+     * only argument. It feeds the internal url object with the string, that extracts
      * all parts from it. All other information has to be set by the other functions
      * this class provides.
      *
@@ -119,7 +123,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the host name
      */
-    QString hostName() const { return m_url.host().toUpper(); }
+    QString hostName() const;
 
     /**
      * Returns the UNC (Uniform Naming Convention string) address in the form 
@@ -164,7 +168,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * 
      * @returns the URL of the share.
      */
-    QUrl url() const { return m_url; }
+    QUrl url() const;
                                                        
     /**
      * In case of a 'homes' share, this function returns the URL of the user's 
@@ -203,7 +207,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the workgroup name
      */
-    QString workgroupName() const { return m_workgroup; }
+    QString workgroupName() const;
 
     /**
      * Sets the type string (Disk, Print, IPC) of the share.
@@ -219,7 +223,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the type of the share.
      */
-    QString typeString() const { return m_type_string; }
+    QString typeString() const;
 
     /**
      * Returns the translated type string of the share. You can use this
@@ -241,7 +245,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the comment.
      */
-    QString comment() const { return m_comment; }
+    QString comment() const;
 
     /**
      * Set the IP address of the host where the share is located. @p ip will
@@ -258,7 +262,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the IP address of the host or an empty string.
      */
-    QString hostIP() const { return m_host_ip; }
+    QString hostIP() const;
 
     /**
      * If the share is a hidden one, i.e. it ends with a '$', this function returns
@@ -304,7 +308,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the path to the mounted share.
      */
-    QString path() const { return m_path; }
+    QString path() const;
 
     /**
      * Returns the canonical path to the mounted share. In contrast to the path()
@@ -330,7 +334,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns TRUE if the share is inaccessible.
      */
-    bool isInaccessible() const { return m_inaccessible; }
+    bool isInaccessible() const;
 
     /**
      * If the share was mounted by another user, @p foreign should be set to TRUE.
@@ -346,7 +350,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns TRUE if this is a foreign share.
      */
-    bool isForeign() const { return m_foreign; }
+    bool isForeign() const;
 
     /**
      * Enumeration for the file system
@@ -368,7 +372,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the file system of the share.
      */
-    FileSystem fileSystem() const { return m_filesystem; }
+    FileSystem fileSystem() const;
 
     /**
      * Returns the file system as string in capital letters. If no file system
@@ -383,7 +387,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param uid             The UID of the owner
      */
-    void setUID( uid_t uid );
+    void setUID( K_UID uid );
 
     /**
      * Returns the UID of the owner of this share or the UID of the user, if
@@ -391,22 +395,22 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the UID of the owner.
      */
-    uid_t uid() const { return m_user.uid(); }
-
+    K_UID uid() const;
+    
     /**
      * Returns the owner's login name. If the owner's UID was not set, the login
      * name of the user is returned.
      *
      * @returns the owner's login name.
      */
-    QString owner() const { return m_user.loginName(); }
+    QString owner() const;
 
     /**
      * Set the owning GID of this share.
      *
      * @param gid             The owning GID
      */
-    void setGID( gid_t gid );
+    void setGID( K_GID gid );
 
     /**
      * Returns the GID of the owner of this share or the GID of the user, if
@@ -414,7 +418,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the GID of the owner.
      */
-    gid_t gid() const { return m_group.gid(); }
+    K_GID gid() const;
 
     /**
      * Returns the owning group name. If the owning GID was not set, the group
@@ -422,7 +426,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the owning group name.
      */
-    QString group() const { return m_group.name(); }
+    QString group() const;
 
     /**
      * Sets the value of the total disk space that is available on the share. If 
@@ -438,7 +442,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the total disk space or 0.
      */
-    qulonglong totalDiskSpace() const { return m_total; }
+    qulonglong totalDiskSpace() const;
 
     /**
      * Returns the total disk space in a human readable form with value and unit
@@ -464,8 +468,8 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the free disk space or 0.
      */
-    qulonglong freeDiskSpace() const { return m_free; }
-
+    qulonglong freeDiskSpace() const;
+    
     /**
      * Returns the free disk space in a human readable form with value and unit
      * (e.g. 10 KiB, 25 MiB, etc.) even if the free disk space was not set or could
@@ -490,7 +494,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the used disk space or 0.
      */
-    qulonglong usedDiskSpace() const { return m_used; }
+    qulonglong usedDiskSpace() const;
 
     /**
      * Returns the used disk space in a human readable form with value and unit
@@ -582,7 +586,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns TRUE if this share was mounted.
      */
-    bool isMounted() const { return m_is_mounted; }
+    bool isMounted() const;
 
     /**
      * This convenience function sets the mount related data. It is copied
@@ -619,7 +623,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the port.
      */
-    int port() const { return m_url.port(); }
+    int port() const;
 
     /**
      * Set the authentication information for the share. This function will add
@@ -643,7 +647,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the login.
      */
-    QString login() const { return m_url.userName(); }
+    QString login() const;
     
     /**
      * Set the password used for authentication.
@@ -657,107 +661,22 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * 
      * @returns the password.
      */
-    QString password() const { return m_url.password(); }
+    QString password() const;
     
     /**
      * Returns TRUE if the host's IP address is set and FALSE otherwise.
      * 
      * @returns TRUE if the host's IP address is set and FALSE otherwise.
      */
-    bool hasHostIP() const { return !m_host_ip.isEmpty(); }
+    bool hasHostIP() const;
 
   private:
-    /**
-     * The URL
-     */
-    QUrl m_url;
-    
     /**
      * Set up the shares icon.
      */
     void setShareIcon();
-    
-    /**
-     * The workgroup
-     */
-    QString m_workgroup;
 
-    /**
-     * The type of the share
-     */
-    QString m_type_string;
-
-    /**
-     * The comment
-     */
-    QString m_comment;
-
-    /**
-     * The host's IP address
-     */
-    QString m_host_ip;
-
-    /**
-     * The path to the mounted share
-     */
-    QString m_path;
-
-    /**
-     * Determines if the share is inaccessible
-     */
-    bool m_inaccessible;
-
-    /**
-     * Determines if the share is foreign
-     */
-    bool m_foreign;
-
-    /**
-     * The file system
-     */
-    FileSystem m_filesystem;
-
-    /**
-     * The UID of the owner
-     */
-    KUser m_user;
-
-    /**
-     * The owning GID
-     */
-    KUserGroup m_group;
-
-    /**
-     * The total disk space
-     */
-    qulonglong m_total;
-
-    /**
-     * The free disk space
-     */
-    qulonglong m_free;
-    
-    /**
-     * The used disk space
-     */
-    qulonglong m_used;
-
-    /**
-     * Is mounted
-     */
-    bool m_is_mounted;
-
-    /**
-     * This function checks if the given IP address is either
-     * compatible with IPv4 or IPv6. If it is not, an empty string
-     * is returned.
-     *
-     * @param ip              The IP address that needs to be checked.
-     *
-     * @returns the IP address or an empty string if the IP address
-     * is not compatible with either IPv4 or IPv6.
-     */
-    const QString &ipIsValid( const QString &ip );
+    const QScopedPointer<Smb4KSharePrivate> d;
 };
 
 #endif

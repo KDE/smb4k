@@ -23,9 +23,12 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4kshare.h"
+#include "smb4kauthinfo.h"
+
 // Qt include
 #include <QHostAddress>
-#include <QAbstractSocket>
 #include <QDir>
 
 // KDE includes
@@ -38,41 +41,71 @@
 #include <unistd.h>
 #include <math.h>
 
-// application specific includes
-#include <smb4kshare.h>
-#include <smb4kauthinfo.h>
-
-Smb4KShare::Smb4KShare( const QString &host, const QString &name ) : Smb4KBasicNetworkItem( Share ),
-  m_url( QUrl() ), m_workgroup( QString() ), m_type_string( "Disk" ), m_comment( QString() ),
-  m_host_ip( QString() ), m_path( QString() ), m_inaccessible( false ), m_foreign( false ),
-  m_filesystem( Unknown ), m_user( getuid() ), m_group( getgid() ), m_total( 0 ), m_free( 0 ), m_used( 0 ),
-  m_is_mounted( false )
+class Smb4KSharePrivate
 {
-  m_url.setHost( host );
-  m_url.setPath( name );
-  m_url.setScheme( "smb" );
+  public:
+    QUrl url;
+    QString workgroup;
+    QString typeString;
+    QString comment;
+    QHostAddress ip;
+    QString path;
+    bool inaccessible;
+    bool foreign;
+    int filesystem;
+    KUser user;
+    KUserGroup group;
+    qulonglong totalSpace;
+    qulonglong freeSpace;
+    qulonglong usedSpace;
+    bool mounted;
+};
+
+
+Smb4KShare::Smb4KShare( const QString &host, const QString &name )
+: Smb4KBasicNetworkItem( Share ), d( new Smb4KSharePrivate )
+{
+  d->typeString   = "Disk";
+  d->inaccessible = false;
+  d->foreign      = false;
+  d->filesystem   = Unknown;
+  d->user         = KUser( getuid() );
+  d->group        = KUserGroup( getgid() );
+  d->totalSpace   = -1;
+  d->freeSpace    = -1;
+  d->usedSpace    = -1;
+  d->mounted      = false;
+  d->url.setHost( host );
+  d->url.setPath( name );
+  d->url.setScheme( "smb" );
   setShareIcon();
 }
 
 
-Smb4KShare::Smb4KShare( const QString &unc ) : Smb4KBasicNetworkItem( Share ),
-  m_url( QUrl() ), m_workgroup( QString() ), m_type_string( "Disk" ), m_comment( QString() ),
-  m_host_ip( QString() ), m_path( QString() ), m_inaccessible( false ), m_foreign( false ),
-  m_filesystem( Unknown ), m_user( getuid() ), m_group( getgid() ), m_total( 0 ), m_free( 0 ), m_used( 0 ),
-  m_is_mounted( false )
+Smb4KShare::Smb4KShare( const QString &unc )
+: Smb4KBasicNetworkItem( Share ), d( new Smb4KSharePrivate )
 {
-  setURL( QUrl( unc ) );
+  d->typeString   = "Disk";
+  d->inaccessible = false;
+  d->foreign      = false;
+  d->filesystem   = Unknown;
+  d->user         = KUser( getuid() );
+  d->group        = KUserGroup( getgid() );
+  d->totalSpace   = -1;
+  d->freeSpace    = -1;
+  d->usedSpace    = -1;
+  d->mounted      = false;
+  d->url.setUrl( unc );
+  d->url.setScheme( "smb" );
   setShareIcon();
 }
 
 
-Smb4KShare::Smb4KShare( const Smb4KShare &s ) : Smb4KBasicNetworkItem( Share ),
-  m_url( s.url() ), m_workgroup( s.workgroupName() ), m_type_string( s.typeString() ), m_comment( s.comment() ),
-  m_host_ip( s.hostIP() ), m_path( s.path() ), m_inaccessible( s.isInaccessible() ),
-  m_foreign( s.isForeign() ), m_filesystem( s.fileSystem() ), m_user( s.uid() ), m_group( s.gid() ),
-  m_total( s.totalDiskSpace() ), m_free( s.freeDiskSpace() ), m_used( s.usedDiskSpace() ),
-  m_is_mounted( s.isMounted() )
+Smb4KShare::Smb4KShare( const Smb4KShare &s )
+: Smb4KBasicNetworkItem( Share ), d( new Smb4KSharePrivate )
 {
+  *d = *s.d;
+
   if ( icon().isNull() )
   {
     setShareIcon();
@@ -85,12 +118,19 @@ Smb4KShare::Smb4KShare( const Smb4KShare &s ) : Smb4KBasicNetworkItem( Share ),
 
 
 
-Smb4KShare::Smb4KShare() : Smb4KBasicNetworkItem( Share ),
-  m_url( QUrl() ), m_workgroup( QString() ), m_type_string( "Disk" ), m_comment( QString() ),
-  m_host_ip( QString() ), m_path( QString() ), m_inaccessible( false ), m_foreign( false ),
-  m_filesystem( Unknown ), m_user( getuid() ), m_group( getgid() ), m_total( 0 ), m_free( 0 ), m_used( 0 ),
-  m_is_mounted( false )
+Smb4KShare::Smb4KShare()
+: Smb4KBasicNetworkItem( Share ), d( new Smb4KSharePrivate )
 {
+  d->typeString   = "Disk";
+  d->inaccessible = false;
+  d->foreign      = false;
+  d->filesystem   = Unknown;
+  d->user         = KUser( getuid() );
+  d->group        = KUserGroup( getgid() );
+  d->totalSpace   = -1;
+  d->freeSpace    = -1;
+  d->usedSpace    = -1;
+  d->mounted      = false;
 }
 
 
@@ -101,11 +141,11 @@ Smb4KShare::~Smb4KShare()
 
 void Smb4KShare::setShareName( const QString &name )
 {
-  m_url.setPath( name.trimmed() );
+  d->url.setPath( name.trimmed() );
 
-  if ( m_url.scheme().isEmpty() )
+  if ( d->url.scheme().isEmpty() )
   {
-    m_url.setScheme( "smb" );
+    d->url.setScheme( "smb" );
   }
   else
   {
@@ -119,7 +159,7 @@ QString Smb4KShare::shareName() const
   // Since users might come up with very weird share names,
   // we are careful and do not use QString::remove( "/" ), but
   // only remove preceding and trailing slashes.
-  QString share_name = m_url.path();
+  QString share_name = d->url.path();
   
   if ( share_name.startsWith( '/' ) )
   {
@@ -145,11 +185,11 @@ QString Smb4KShare::shareName() const
 
 void Smb4KShare::setHostName( const QString &hostName )
 {
-  m_url.setHost( hostName.trimmed() );
+  d->url.setHost( hostName.trimmed() );
 
-  if ( m_url.scheme().isEmpty() )
+  if ( d->url.scheme().isEmpty() )
   {
-    m_url.setScheme( "smb" );
+    d->url.setScheme( "smb" );
   }
   else
   {
@@ -158,17 +198,23 @@ void Smb4KShare::setHostName( const QString &hostName )
 }
 
 
+QString Smb4KShare::hostName() const
+{
+  return d->url.host().toUpper();
+}
+
+
 QString Smb4KShare::unc( QUrl::FormattingOptions options ) const
 {
   QString unc;
   
-  if ( (options & QUrl::RemoveUserInfo) || m_url.userName().isEmpty() )
+  if ( (options & QUrl::RemoveUserInfo) || d->url.userName().isEmpty() )
   {
-    unc = m_url.toString( options|QUrl::StripTrailingSlash ).replace( "//"+m_url.host(), "//"+hostName() );
+    unc = d->url.toString( options|QUrl::StripTrailingSlash ).replace( "//"+d->url.host(), "//"+hostName() );
   }
   else
   {
-    unc = m_url.toString( options|QUrl::StripTrailingSlash ).replace( '@'+m_url.host(), '@'+hostName() );
+    unc = d->url.toString( options|QUrl::StripTrailingSlash ).replace( '@'+d->url.host(), '@'+hostName() );
   }
   
   return unc;
@@ -178,33 +224,33 @@ QString Smb4KShare::unc( QUrl::FormattingOptions options ) const
 QString Smb4KShare::homeUNC( QUrl::FormattingOptions options ) const
 {
   QString unc;
-  
-  if ( isHomesShare() && !m_url.userName().isEmpty() )
+
+  if ( isHomesShare() && !d->url.userName().isEmpty() )
   {
     if ( (options & QUrl::RemoveUserInfo) )
     {
-      unc = m_url.toString( options|QUrl::StripTrailingSlash );
-      
-      if ( m_url.path().startsWith( '/' ) )
+      unc = d->url.toString( options|QUrl::StripTrailingSlash );
+
+      if ( d->url.path().startsWith( '/' ) )
       {
-        unc = unc.replace( "//"+m_url.host(), "//"+hostName() ).replace( m_url.path(), "/"+m_url.userName() );
+        unc = unc.replace( "//"+d->url.host(), "//"+hostName() ).replace( d->url.path(), '/'+d->url.userName() );
       }
       else
       {
-        unc = unc.replace( "//"+m_url.host(), "//"+hostName() ).replace( m_url.path(), m_url.userName() );
+        unc = unc.replace( "//"+d->url.host(), "//"+hostName() ).replace( d->url.path(), '/'+d->url.userName() );
       }
     }
     else
     {
-      unc = m_url.toString( options|QUrl::StripTrailingSlash );
-      
-      if ( m_url.path().startsWith( '/' ) )
+      unc = d->url.toString( options|QUrl::StripTrailingSlash );
+
+      if ( d->url.path().startsWith( '/' ) )
       {
-        unc = unc.replace( '@'+m_url.host(), '@'+hostName() ).replace( m_url.path(), '/'+m_url.userName() );
+        unc = unc.replace( '@'+d->url.host(), '@'+hostName() ).replace( d->url.path(), '/'+d->url.userName() );
       }
       else
       {
-        unc = unc.replace( '@'+m_url.host(), '@'+hostName() ).replace( m_url.path(), m_url.userName() );
+        unc = unc.replace( '@'+d->url.host(), '@'+hostName() ).replace( d->url.path(), '/'+d->url.userName() );
       }
     }
   }
@@ -222,7 +268,6 @@ void Smb4KShare::setURL( const QUrl &url )
   // Check validity.
   if ( !url.isValid() )
   {
-    qDebug() << "Smb4KShare::setURL(): Invalid URL provided";
     return;
   }
   else
@@ -233,7 +278,6 @@ void Smb4KShare::setURL( const QUrl &url )
   // Check scheme
   if ( !url.scheme().isEmpty() && QString::compare( "smb", url.scheme() ) != 0 )
   {
-    qDebug() << "Smb4KShare::setURL(): URL has wrong scheme";
     return;
   }
   else
@@ -245,7 +289,6 @@ void Smb4KShare::setURL( const QUrl &url )
   if ( (url.path().endsWith( '/' ) && url.path().count( "/" ) > 2) ||
        (!url.path().endsWith( '/' ) && url.path().count( "/" ) > 1) )
   {
-    qDebug() << "Smb4KShare::setURL(): Not an URL of a share.";
     return;
   }
   else
@@ -254,12 +297,12 @@ void Smb4KShare::setURL( const QUrl &url )
   }
 
   // Set the URL
-  m_url = url;
+  d->url = url;
 
   // Do some adjustments
-  if ( m_url.scheme().isEmpty() )
+  if ( d->url.scheme().isEmpty() )
   {
-    m_url.setScheme( "smb" );
+    d->url.setScheme( "smb" );
   }
   else
   {
@@ -268,14 +311,20 @@ void Smb4KShare::setURL( const QUrl &url )
 }
 
 
+QUrl Smb4KShare::url() const
+{
+  return d->url;
+}
+
+
 QUrl Smb4KShare::homeURL() const
 {
   QUrl url;
   
-  if ( isHomesShare() && !m_url.userName().isEmpty() )
+  if ( isHomesShare() && !d->url.userName().isEmpty() )
   {
-    url = m_url;
-    url.setPath( m_url.userName() );
+    url = d->url;
+    url.setPath( d->url.userName() );
   }
   else
   {
@@ -289,14 +338,14 @@ QUrl Smb4KShare::homeURL() const
 QString Smb4KShare::hostUNC( QUrl::FormattingOptions options ) const
 {
   QString unc;
-  
-  if ( (options & QUrl::RemoveUserInfo) || m_url.userName().isEmpty() )
+
+  if ( (options & QUrl::RemoveUserInfo) || d->url.userName().isEmpty() )
   {
-    unc = m_url.toString( options|QUrl::RemovePath|QUrl::StripTrailingSlash ).replace( "//"+m_url.host(), "//"+hostName() );
+    unc = d->url.toString( options|QUrl::RemovePath|QUrl::StripTrailingSlash ).replace( "//"+d->url.host(), "//"+hostName() );
   }
   else
   {
-    unc = m_url.toString( options|QUrl::RemovePath|QUrl::StripTrailingSlash ).replace( '@'+m_url.host(), '@'+hostName() );
+    unc = d->url.toString( options|QUrl::RemovePath|QUrl::StripTrailingSlash ).replace( '@'+d->url.host(), '@'+hostName() );
   }
   
   return unc;
@@ -305,26 +354,37 @@ QString Smb4KShare::hostUNC( QUrl::FormattingOptions options ) const
 
 void Smb4KShare::setWorkgroupName( const QString &workgroup )
 {
-  m_workgroup = workgroup;
+  d->workgroup = workgroup;
+}
+
+
+QString Smb4KShare::workgroupName() const
+{
+  return d->workgroup;
 }
 
 
 void Smb4KShare::setTypeString( const QString &typeString )
 {
-  m_type_string = typeString;
-  
+  d->typeString = typeString;
   setShareIcon();
+}
+
+
+QString Smb4KShare::typeString() const
+{
+  return d->typeString;
 }
 
 
 QString Smb4KShare::translatedTypeString() const
 {
-  if ( QString::compare( m_type_string, "Disk" ) == 0 )
+  if ( QString::compare( d->typeString, "Disk" ) == 0 )
   {
     return i18n( "Disk" );
   }
-  else if ( QString::compare( m_type_string, "Print" ) == 0 ||
-            QString::compare( m_type_string, "Printer" ) == 0 )
+  else if ( QString::compare( d->typeString, "Print" ) == 0 ||
+            QString::compare( d->typeString, "Printer" ) == 0 )
   {
     return i18n( "Printer" );
   }
@@ -333,31 +393,43 @@ QString Smb4KShare::translatedTypeString() const
     // Do nothing
   }
 
-  return m_type_string;
+  return d->typeString;
 }
 
 
 void Smb4KShare::setComment( const QString &comment )
 {
-  m_comment = comment;
+  d->comment = comment;
+}
+
+
+QString Smb4KShare::comment() const
+{
+  return d->comment;
 }
 
 
 void Smb4KShare::setHostIP( const QString &ip )
 {
-  m_host_ip = ipIsValid( ip );
+  d->ip.setAddress( ip );
+}
+
+
+QString Smb4KShare::hostIP() const
+{
+  return d->ip.toString();
 }
 
 
 bool Smb4KShare::isHidden() const
 {
-  return m_url.path().endsWith( '$' );
+  return d->url.path().endsWith( '$' );
 }
 
 
 bool Smb4KShare::isPrinter() const
 {
-  if ( isInaccessible() || m_type_string.isEmpty() )
+  if ( d->inaccessible || d->typeString.isEmpty() )
   {
     return false;
   }
@@ -366,58 +438,82 @@ bool Smb4KShare::isPrinter() const
     // Do nothing
   }
   
-  return (QString::compare( m_type_string, "Print" ) == 0 ||
-          QString::compare( m_type_string, "Printer" ) == 0);
+  return (QString::compare( d->typeString, "Print" ) == 0 ||
+          QString::compare( d->typeString, "Printer" ) == 0);
 }
 
 
 bool Smb4KShare::isIPC() const
 {
-  return (QString::compare( m_url.path(), "IPC$" ) == 0);
+  return (QString::compare( d->url.path(), "IPC$" ) == 0);
 }
 
 
 bool Smb4KShare::isADMIN() const
 {
-  return (QString::compare( m_url.path(), "ADMIN$" ) == 0);
+  return (QString::compare( d->url.path(), "ADMIN$" ) == 0);
 }
 
 
 void Smb4KShare::setPath( const QString &mountpoint )
 {
-  m_path = mountpoint;
+  d->path = mountpoint;
+}
+
+
+QString Smb4KShare::path() const
+{
+  return d->path;
 }
 
 
 QString Smb4KShare::canonicalPath() const
 {
-  return (m_inaccessible ? m_path : QDir( m_path ).canonicalPath());
+  return (d->inaccessible ? d->path : QDir( d->path ).canonicalPath());
 }
 
 
 void Smb4KShare::setInaccessible( bool in )
 {
-  m_inaccessible = in;
+  d->inaccessible = in;
   setShareIcon();
+}
+
+
+bool Smb4KShare::isInaccessible() const
+{
+  return d->inaccessible;
 }
 
 
 void Smb4KShare::setForeign( bool foreign )
 {
-  m_foreign = foreign;
+  d->foreign = foreign;
   setShareIcon();
+}
+
+
+bool Smb4KShare::isForeign() const
+{
+  return d->foreign;
 }
 
 
 void Smb4KShare::setFileSystem( FileSystem filesystem )
 {
-  m_filesystem = filesystem;
+  d->filesystem = filesystem;
+}
+
+
+Smb4KShare::FileSystem Smb4KShare::fileSystem() const
+{
+  return static_cast<FileSystem>( d->filesystem );
 }
 
 
 QString Smb4KShare::fileSystemString() const
 {
-  switch ( m_filesystem )
+  switch ( d->filesystem )
   {
     case CIFS:
     {
@@ -437,15 +533,39 @@ QString Smb4KShare::fileSystemString() const
 }
 
 
-void Smb4KShare::setUID( uid_t uid )
+void Smb4KShare::setUID( K_UID uid )
 {
-  m_user = KUser( uid );
+  d->user = KUser( uid );
 }
 
 
-void Smb4KShare::setGID( gid_t gid )
+uid_t Smb4KShare::uid() const
 {
-  m_group = KUserGroup( gid );
+  return d->user.uid();
+}
+
+
+QString Smb4KShare::owner() const
+{
+  return d->user.loginName();
+}
+
+
+void Smb4KShare::setGID( K_GID gid )
+{
+  d->group = KUserGroup( gid );
+}
+
+
+K_GID Smb4KShare::gid() const
+{
+  return d->group.gid();
+}
+
+
+QString Smb4KShare::group() const
+{
+  return d->group.name();
 }
 
 
@@ -453,8 +573,7 @@ void Smb4KShare::setIsMounted( bool mounted )
 {
   if ( !isPrinter() )
   {
-    m_is_mounted = mounted;
-   
+    d->mounted = mounted;
     setShareIcon();
   }
   else
@@ -464,9 +583,21 @@ void Smb4KShare::setIsMounted( bool mounted )
 }
 
 
+bool Smb4KShare::isMounted() const
+{
+  return d->mounted;
+}
+
+
 void Smb4KShare::setTotalDiskSpace( qulonglong size )
 {
-  m_total = size;
+  d->totalSpace = size;
+}
+
+
+qulonglong Smb4KShare::totalDiskSpace() const
+{
+  return d->totalSpace;
 }
 
 
@@ -478,10 +609,10 @@ QString Smb4KShare::totalDiskSpaceString() const
   double tmp_factor = 0;
   qulonglong factor = 0;
 
-  (void) frexp( m_total * 1024, &exponent );
+  (void) frexp( d->totalSpace * 1024, &exponent );
   (void) modf( (exponent - 10) / 10, &tmp_factor );
   factor = tmp_factor;
-  qreal tmp_total = m_total / pow( 1024, factor );
+  qreal tmp_total = d->totalSpace / pow( 1024, factor );
   total = QString( "%1" ).arg( tmp_total, 0, 'f', 1 );
 
   switch ( factor )
@@ -523,7 +654,13 @@ QString Smb4KShare::totalDiskSpaceString() const
 
 void Smb4KShare::setFreeDiskSpace( qulonglong size )
 {
-  m_free = size;
+  d->freeSpace = size;
+}
+
+
+qulonglong Smb4KShare::freeDiskSpace() const
+{
+  return d->freeSpace;
 }
 
 
@@ -535,10 +672,10 @@ QString Smb4KShare::freeDiskSpaceString() const
   double tmp_factor = 0;
   qulonglong factor = 0;
 
-  (void) frexp( m_free * 1024, &exponent );
+  (void) frexp( d->freeSpace * 1024, &exponent );
   (void) modf( (exponent - 10) / 10, &tmp_factor );
   factor = tmp_factor;
-  qreal tmp_free = m_free / pow( 1024, factor );
+  qreal tmp_free = d->freeSpace / pow( 1024, factor );
   free = QString( "%1" ).arg( tmp_free, 0, 'f', 1 );
 
   switch ( factor )
@@ -580,7 +717,13 @@ QString Smb4KShare::freeDiskSpaceString() const
 
 void Smb4KShare::setUsedDiskSpace( qulonglong size )
 {
-  m_used = size;
+  d->usedSpace = size;
+}
+
+
+qulonglong Smb4KShare::usedDiskSpace() const
+{
+  return d->usedSpace;
 }
 
 
@@ -592,10 +735,10 @@ QString Smb4KShare::usedDiskSpaceString() const
   double tmp_factor = 0;
   qulonglong factor = 0;
 
-  (void) frexp( m_used * 1024, &exponent );
+  (void) frexp( d->usedSpace * 1024, &exponent );
   (void) modf( (exponent - 10) / 10, &tmp_factor );
   factor = tmp_factor;
-  qreal tmp_used = m_used / pow( 1024, factor );
+  qreal tmp_used = d->usedSpace / pow( 1024, factor );
   used = QString( "%1" ).arg( tmp_used, 0, 'f', 1 );
 
   switch ( factor )
@@ -664,18 +807,18 @@ bool Smb4KShare::equals( Smb4KShare *share, CheckFlags flag ) const
     case Full:
     {
       if ( QString::compare( unc( QUrl::RemovePassword ), share->unc( QUrl::RemovePassword ) ) == 0 &&
-           QString::compare( m_workgroup, share->workgroupName() ) == 0 &&
-           QString::compare( m_type_string, share->typeString() ) == 0 &&
-           QString::compare( m_comment, share->comment() ) == 0 &&
-           QString::compare( m_host_ip, share->hostIP() ) == 0 &&
-           QString::compare( m_path, share->path() ) == 0 &&
-           m_inaccessible == share->isInaccessible() &&
-           m_foreign == share->isForeign() &&
-           m_filesystem == share->fileSystem() &&
-           m_user.uid() == share->uid() &&
-           m_group.gid() == share->gid() &&
-           m_total == share->totalDiskSpace() &&
-           m_free == share->freeDiskSpace() )
+           QString::compare( workgroupName(), share->workgroupName() ) == 0 &&
+           QString::compare( typeString(), share->typeString() ) == 0 &&
+           QString::compare( comment(), share->comment() ) == 0 &&
+           QString::compare( hostIP(), share->hostIP() ) == 0 &&
+           QString::compare( path(), share->path() ) == 0 &&
+           isInaccessible() == share->isInaccessible() &&
+           isForeign() == share->isForeign() &&
+           fileSystem() == share->fileSystem() &&
+           uid() == share->uid() &&
+           gid() == share->gid() &&
+           totalDiskSpace() == share->totalDiskSpace() &&
+           freeDiskSpace() == share->freeDiskSpace() )
       {
         return true;
       }
@@ -689,10 +832,10 @@ bool Smb4KShare::equals( Smb4KShare *share, CheckFlags flag ) const
     case NetworkOnly:
     {
       if ( QString::compare( unc( QUrl::RemovePassword ), share->unc( QUrl::RemovePassword ) ) == 0 &&
-           QString::compare( m_workgroup, share->workgroupName() ) == 0 &&
-           QString::compare( m_type_string, share->typeString() ) == 0 &&
-           QString::compare( m_comment, share->comment() ) == 0 &&
-           QString::compare( m_host_ip, share->hostIP() ) == 0 )
+           QString::compare( workgroupName(), share->workgroupName() ) == 0 &&
+           QString::compare( typeString(), share->typeString() ) == 0 &&
+           QString::compare( comment(), share->comment() ) == 0 &&
+           QString::compare( hostIP(), share->hostIP() ) == 0 )
       {
         return true;
       }
@@ -705,15 +848,15 @@ bool Smb4KShare::equals( Smb4KShare *share, CheckFlags flag ) const
     }
     case LocalOnly:
     {
-      if ( QString::compare( m_path, share->path() ) == 0 &&
-           QString::compare( m_url.userName(), share->login() ) == 0 &&
-           m_inaccessible == share->isInaccessible() &&
-           m_foreign == share->isForeign() &&
-           m_filesystem == share->fileSystem() &&
-           m_user.uid() == share->uid() &&
-           m_group.gid() == share->gid() &&
-           m_total == share->totalDiskSpace() &&
-           m_free == share->freeDiskSpace() )
+      if ( QString::compare( path(), share->path() ) == 0 &&
+           QString::compare( login(), share->login() ) == 0 &&
+           isInaccessible() == share->isInaccessible() &&
+           isForeign() == share->isForeign() &&
+           fileSystem() == share->fileSystem() &&
+           uid() == share->uid() &&
+           gid() == share->gid() &&
+           totalDiskSpace() == share->totalDiskSpace() &&
+           freeDiskSpace() == share->freeDiskSpace() )
       {
         return true;
       }
@@ -740,52 +883,52 @@ bool Smb4KShare::isEmpty( CheckFlags flag ) const
   {
     case Full:
     {
-      if ( !m_url.isEmpty() )
+      if ( !d->url.isEmpty() )
       {
         return false;
       }
 
-      if ( !m_workgroup.isEmpty() )
+      if ( !d->workgroup.isEmpty() )
       {
         return false;
       }
 
-      if ( !m_type_string.isEmpty() )
+      if ( !d->typeString.isEmpty() )
       {
         return false;
       }
 
-      if ( !m_comment.isEmpty() )
+      if ( !d->comment.isEmpty() )
       {
         return false;
       }
 
-      if ( !m_host_ip.isEmpty() )
+      if ( !d->ip.isNull() )
       {
         return false;
       }
 
-      if ( !m_path.isEmpty() )
+      if ( !d->path.isEmpty() )
       {
         return false;
       }
 
-      if ( m_filesystem != Unknown )
+      if ( d->filesystem != Unknown )
       {
         return false;
       }
 
-      if ( m_total > 0 )
+      if ( d->totalSpace > 0 )
       {
         return false;
       }
 
-      if ( m_free > 0 )
+      if ( d->freeSpace > 0 )
       {
         return false;
       }
       
-      if ( m_used > 0 )
+      if ( d->usedSpace > 0 )
       {
         return false;
       }
@@ -794,27 +937,27 @@ bool Smb4KShare::isEmpty( CheckFlags flag ) const
     }
     case NetworkOnly:
     {
-      if ( !m_url.isEmpty() )
+      if ( !d->url.isEmpty() )
       {
         return false;
       }
 
-      if ( !m_workgroup.isEmpty() )
+      if ( !d->workgroup.isEmpty() )
       {
         return false;
       }
 
-      if ( !m_type_string.isEmpty() )
+      if ( !d->typeString.isEmpty() )
       {
         return false;
       }
 
-      if ( !m_comment.isEmpty() )
+      if ( !d->comment.isEmpty() )
       {
         return false;
       }
 
-      if ( !m_host_ip.isEmpty() )
+      if ( !d->ip.isNull() )
       {
         return false;
       }
@@ -823,27 +966,27 @@ bool Smb4KShare::isEmpty( CheckFlags flag ) const
     }
     case LocalOnly:
     {
-      if ( !m_path.isEmpty() )
+      if ( !d->path.isEmpty() )
       {
         return false;
       }
 
-      if ( m_filesystem != Unknown )
+      if ( d->filesystem != Unknown )
       {
         return false;
       }
 
-      if ( m_total > 0 )
+      if ( d->totalSpace > 0 )
       {
         return false;
       }
 
-      if ( m_free > 0 )
+      if ( d->freeSpace > 0 )
       {
         return false;
       }
       
-      if ( m_used > 0 )
+      if ( d->usedSpace > 0 )
       {
         return false;
       }
@@ -862,19 +1005,21 @@ bool Smb4KShare::isEmpty( CheckFlags flag ) const
 
 void Smb4KShare::setMountData( Smb4KShare *share )
 {
-  if ( share )
+  Q_ASSERT( share );
+
+  if ( equals( share, NetworkOnly ) )
   {
-    m_path = share->path();
-    m_inaccessible = share->isInaccessible();
-    m_foreign = share->isForeign();
-    m_filesystem = share->fileSystem();
-    m_user = KUser( share->uid() );
-    m_group = KUserGroup( share->gid() );
-    m_total = share->totalDiskSpace();
-    m_free = share->freeDiskSpace();
-    m_is_mounted = share->isMounted();
-    m_type_string = share->typeString();
-    
+    d->path         = share->path();
+    d->inaccessible = share->isInaccessible();
+    d->foreign      = share->isForeign();
+    d->filesystem   = share->fileSystem();
+    d->user         = KUser( share->uid() );
+    d->group        = KUserGroup( share->gid() );
+    d->totalSpace   = share->totalDiskSpace();
+    d->freeSpace    = share->freeDiskSpace();
+    d->usedSpace    = share->usedDiskSpace();
+    d->mounted      = share->isMounted();
+    d->typeString   = share->typeString();
     setShareIcon();
   }
   else
@@ -888,30 +1033,36 @@ void Smb4KShare::resetMountData()
 {
   // The login name is not reset here, because it is also
   // needed for things that are not mount-releated.
-  m_path.clear();
-  m_inaccessible = false;
-  m_foreign = false;
-  m_filesystem = Unknown;
-  m_user = KUser( getuid() );
-  m_group = KUserGroup( getgid() );
-  m_total = -1;
-  m_free = -1;
-  m_is_mounted = false;
-  m_type_string = "Disk";
-  
+  d->path.clear();
+  d->inaccessible = false;
+  d->foreign      = false;
+  d->filesystem   = Unknown;
+  d->user         = KUser( getuid() );
+  d->group        = KUserGroup( getgid() );
+  d->totalSpace   = -1;
+  d->freeSpace    = -1;
+  d->usedSpace    = -1;
+  d->mounted      = false;
+  d->typeString   = "Disk";
   setShareIcon();
 }
 
 
 bool Smb4KShare::isHomesShare() const
 {
-  return m_url.path().endsWith( "homes" );
+  return d->url.path().endsWith( "homes" );
 }
 
 
 void Smb4KShare::setPort( int port )
 {
-  m_url.setPort( port );
+  d->url.setPort( port );
+}
+
+
+int Smb4KShare::port() const
+{
+  return d->url.port();
 }
 
 
@@ -921,8 +1072,8 @@ void Smb4KShare::setAuthInfo( Smb4KAuthInfo *authInfo )
   // string if we have a homes share.
   if ( !isHomesShare() || !authInfo->login().isEmpty() )
   {
-    m_url.setUserName( authInfo->login() );
-    m_url.setPassword( authInfo->password() );
+    d->url.setUserName( authInfo->login() );
+    d->url.setPassword( authInfo->password() );
   }
   else
   {
@@ -937,12 +1088,18 @@ void Smb4KShare::setLogin( const QString &login )
   // string if we have a homes share.
   if ( !isHomesShare() || !login.isEmpty() )
   {
-    m_url.setUserName( login );
+    d->url.setUserName( login );
   }
   else
   {
     // Do nothing
   }
+}
+
+
+QString Smb4KShare::login() const
+{
+  return d->url.userName();
 }
 
 
@@ -952,12 +1109,24 @@ void Smb4KShare::setPassword( const QString &passwd )
   // string if we have a homes share.
   if ( !isHomesShare() || !passwd.isEmpty() )
   {
-    m_url.setPassword( passwd );
+    d->url.setPassword( passwd );
   }
   else
   {
     // Do nothing
   }
+}
+
+
+QString Smb4KShare::password() const
+{
+  return d->url.password();
+}
+
+
+bool Smb4KShare::hasHostIP() const
+{
+  return !d->ip.isNull();
 }
 
 
@@ -1009,16 +1178,3 @@ void Smb4KShare::setShareIcon()
   }
 }
 
-
-const QString &Smb4KShare::ipIsValid( const QString &ip )
-{
-  QHostAddress ip_address( ip );
-
-  if ( ip_address.protocol() == QAbstractSocket::UnknownNetworkLayerProtocol )
-  {
-    // The IP address is invalid.
-    static_cast<QString>( ip ).clear();
-  }
-
-  return ip;
-}
