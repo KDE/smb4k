@@ -30,29 +30,33 @@
 #include <config.h>
 #endif
 
+// application specific includes
+#include "smb4kbasicnetworkitem.h"
+
 // Qt includes
 #include <QString>
 #include <QUrl>
+#include <QScopedPointer>
 
 // KDE includes
 #include <kdemacros.h>
 
-// application specific includes
-#include "smb4kbasicnetworkitem.h"
-
 // forward declarations
 class Smb4KAuthInfo;
+class Smb4KHostPrivate;
 
 
 /**
  * This class is a container that carries information about a host found in
  * the network neighborhood. It is part of the core classes of Smb4K.
  *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
 class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
 {
+  friend class Smb4KHostPrivate;
+  
   public:
     /**
      * The default constructor. It takes the name of the host as only argument.
@@ -94,7 +98,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns the host's name.
      */
-    QString hostName() const { return m_url.host().toUpper(); }
+    QString hostName() const; 
 
     /**
      * Returns the UNC of the server in the form [smb:]//[USER:PASS@]HOST[:PORT] depending on
@@ -121,7 +125,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      * 
      * @returns the URL of the network item.
      */
-    QUrl url() const { return m_url; }
+    QUrl url() const;
 
     /**
      * Set the workgroup where this host is located.
@@ -135,7 +139,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns the workgroup name.
      */
-    QString workgroupName() const { return m_workgroup; }
+    QString workgroupName() const;
 
     /**
      * Set the IP address of this host. @p ip will only be accepted
@@ -155,7 +159,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns the host's IP address or an empty string.
      */
-    QString ip() const { return m_ip; }
+    QString ip() const;
 
     /**
      * Returns TRUE if the IP address has already been checked (i.e. set)
@@ -165,7 +169,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns TRUE if the IP address has been checked.
      */
-    bool ipChecked() const { return m_ip_checked; }
+    bool ipChecked() const;
 
     /**
      * Set the comment that was defined for the host.
@@ -180,7 +184,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns the comment or an empty string.
      */
-    QString comment() const { return m_comment; }
+    QString comment() const;
 
     /**
      * Set the "Server" and the "OS" (operating system) strings as
@@ -211,14 +215,14 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns TRUE if the infomation has been checked.
      */
-    bool infoChecked() const { return m_info_checked; }
+    bool infoChecked() const;
 
     /**
      * Returns the "Server" string as reported by the host.
      *
      * @returns the "Server" string.
      */
-    QString serverString() const { return m_server_string; }
+    QString serverString() const;
 
     /**
      * Returns the "OS" (operating system) string as reported by the
@@ -226,7 +230,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns the OS string.
      */
-    QString osString() const { return m_os_string; }
+    QString osString() const;
 
     /**
      * Set this host to be a master browser.
@@ -241,7 +245,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns TRUE if the host is a master browser.
      */
-    bool isMasterBrowser() const { return m_is_master; }
+    bool isMasterBrowser() const;
 
     /**
      * Returns TRUE if the item is empty and FALSE otherwise. An item is not
@@ -264,7 +268,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns the port.
      */
-    int port() const { return m_url.port(); }
+    int port() const;
 
     /**
      * Compare another Smb4KHost object with this one an return TRUE if both carry
@@ -303,7 +307,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns the login name.
      */
-    QString login() const { return m_url.userName(); }
+    QString login() const;
     
     /**
      * Set the password used for authentication.
@@ -317,72 +321,17 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      * 
      * @returns the password.
      */
-    QString password() const { return m_url.password(); }
+    QString password() const;
     
     /**
      * Returns TRUE if the host's IP address is set and FALSE otherwise.
      * 
      * @returns TRUE if the host's IP address is known.
      */
-    bool hasIP() const { return !m_ip.isEmpty(); }
+    bool hasIP() const;
 
   private:
-    /**
-     * The URL
-     */
-    QUrl m_url;
-    
-    /**
-     * The workgroup the host is in
-     */
-    QString m_workgroup;
-
-    /**
-     * The host's IP address
-     */
-    QString m_ip;
-
-    /**
-     * The comment
-     */
-    QString m_comment;
-
-    /**
-     * The server string
-     */
-    QString m_server_string;
-
-    /**
-     * The OS string
-     */
-    QString m_os_string;
-
-    /**
-     * Have we checked for info yet?
-     */
-    bool m_info_checked;
-
-    /**
-     * Have we already checked for the IP address?
-     */
-    bool m_ip_checked;
-
-    /**
-     * Determines if the host is a master browser
-     */
-    bool m_is_master;
-
-    /**
-     * This function checks if the given IP address is either
-     * compatible with IPv4 or IPv6. If it is not, an empty string
-     * is returned.
-     *
-     * @param ip              The IP address that needs to be checked.
-     *
-     * @returns the IP address or an empty string if the IP address
-     * is not compatible with either IPv4 or IPv6.
-     */
-    const QString &ipIsValid( const QString &ip );
+    const QScopedPointer<Smb4KHostPrivate> d;
 };
 
 #endif

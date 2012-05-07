@@ -25,7 +25,6 @@
 
 // Qt includes
 #include <QHostAddress>
-#include <QAbstractSocket>
 #include <QStringList>
 
 // KDE includes
@@ -37,21 +36,37 @@
 #include <smb4kauthinfo.h>
 
 
-Smb4KHost::Smb4KHost( const QString &name ) : Smb4KBasicNetworkItem( Host ),
-  m_url( QUrl( ) ), m_workgroup( QString() ), m_ip( QString() ), m_comment( QString() ),
-  m_server_string( QString() ), m_os_string( QString() ), m_info_checked( false ),
-  m_ip_checked( false ), m_is_master( false )
+class Smb4KHostPrivate
 {
+  public:
+    QUrl url;
+    QString workgroup;
+    QHostAddress ip;
+    bool ipChecked;
+    QString comment;
+    bool infoChecked;
+    QString serverString;
+    QString osString;
+    bool isMaster;
+};
+
+
+Smb4KHost::Smb4KHost( const QString &name )
+: Smb4KBasicNetworkItem( Host ), d( new Smb4KHostPrivate )
+{
+  d->infoChecked  = false;
+  d->ipChecked    = false;
+  d->isMaster     = false;
   setHostName( name );
   setIcon( KIcon( "network-server" ) );
 }
 
 
-Smb4KHost::Smb4KHost( const Smb4KHost &h ) : Smb4KBasicNetworkItem( Host ),
-  m_url( h.url() ), m_workgroup( h.workgroupName() ), m_ip( h.ip() ), m_comment( h.comment() ),
-  m_server_string( h.serverString() ), m_os_string( h.osString() ), m_info_checked( h.infoChecked() ),
-  m_ip_checked( h.ipChecked() ), m_is_master( h.isMasterBrowser() )
+Smb4KHost::Smb4KHost( const Smb4KHost &h )
+: Smb4KBasicNetworkItem( Host ), d( new Smb4KHostPrivate )
 {
+  *d = *h.d;
+  
   if ( icon().isNull() )
   {
     setIcon( KIcon( "network-server" ) );
@@ -63,11 +78,13 @@ Smb4KHost::Smb4KHost( const Smb4KHost &h ) : Smb4KBasicNetworkItem( Host ),
 }
 
 
-Smb4KHost::Smb4KHost() : Smb4KBasicNetworkItem( Host ),
-  m_url( QUrl() ), m_workgroup( QString() ), m_ip( QString() ), m_comment( QString() ),
-  m_server_string( QString() ), m_os_string( QString() ), m_info_checked( false ),
-  m_ip_checked( false ), m_is_master( false )
+Smb4KHost::Smb4KHost()
+: Smb4KBasicNetworkItem( Host ), d( new Smb4KHostPrivate )
 {
+  d->infoChecked  = false;
+  d->ipChecked    = false;
+  d->isMaster     = false;
+  setIcon( KIcon( "network-server" ) );
 }
 
 
@@ -78,11 +95,11 @@ Smb4KHost::~Smb4KHost()
 
 void Smb4KHost::setHostName( const QString &name )
 {
-  m_url.setHost( name );
+  d->url.setHost( name );
   
-  if ( m_url.scheme().isEmpty() )
+  if ( d->url.scheme().isEmpty() )
   {
-    m_url.setScheme( "smb" );
+    d->url.setScheme( "smb" );
   }
   else
   {
@@ -91,17 +108,23 @@ void Smb4KHost::setHostName( const QString &name )
 }
 
 
+QString Smb4KHost::hostName() const
+{
+  return d->url.host().toUpper();
+}
+
+
 QString Smb4KHost::unc( QUrl::FormattingOptions options ) const
 {
   QString unc;
   
-  if ( (options & QUrl::RemoveUserInfo) || m_url.userName().isEmpty() )
+  if ( (options & QUrl::RemoveUserInfo) || d->url.userName().isEmpty() )
   {
-    unc = m_url.toString( options|QUrl::RemovePath|QUrl::StripTrailingSlash ).replace( "//"+m_url.host(), "//"+hostName() );
+    unc = d->url.toString( options|QUrl::RemovePath|QUrl::StripTrailingSlash ).replace( "//"+d->url.host(), "//"+hostName() );
   }
   else
   {
-    unc = m_url.toString( options|QUrl::RemovePath|QUrl::StripTrailingSlash ).replace( '@'+m_url.host(), '@'+hostName() );
+    unc = d->url.toString( options|QUrl::RemovePath|QUrl::StripTrailingSlash ).replace( '@'+d->url.host(), '@'+hostName() );
   }
   
   return unc;
@@ -113,7 +136,6 @@ void Smb4KHost::setURL( const QUrl &url )
   // Check validity.
   if ( !url.isValid() )
   {
-    qDebug() << "Invalid URL provided";
     return;
   }
   else
@@ -124,7 +146,6 @@ void Smb4KHost::setURL( const QUrl &url )
   // Check scheme
   if ( !url.scheme().isEmpty() && QString::compare( "smb", url.scheme() ) != 0 )
   {
-    qDebug() << "URL has wrong scheme";
     return;
   }
   else
@@ -144,64 +165,124 @@ void Smb4KHost::setURL( const QUrl &url )
   }
 
   // Set the URL
-  m_url = url;
+  d->url = url;
 
   // Do some adjustments
-  if ( m_url.scheme().isEmpty() )
+  if ( d->url.scheme().isEmpty() )
   {
-    m_url.setScheme( "smb" );
+    d->url.setScheme( "smb" );
   }
   else
   {
     // Do nothing
   }
+}
+
+
+QUrl Smb4KHost::url() const
+{
+  return d->url;
 }
 
 
 void Smb4KHost::setWorkgroupName( const QString &workgroup )
 {
-  m_workgroup = workgroup;
+  d->workgroup = workgroup;
+}
+
+
+QString Smb4KHost::workgroupName() const
+{
+  return d->workgroup;
 }
 
 
 void Smb4KHost::setIP( const QString &ip )
 {
-  m_ip         = ipIsValid( ip );
-  m_ip_checked = true;
+  d->ip.setAddress( ip );
+  d->ipChecked = true;
+}
+
+
+QString Smb4KHost::ip() const
+{
+  return d->ip.toString();
+}
+
+
+bool Smb4KHost::hasIP() const
+{
+  return !d->ip.isNull();
+}
+
+
+bool Smb4KHost::ipChecked() const
+{
+  return d->ipChecked;
 }
 
 
 void Smb4KHost::setComment( const QString &comment )
 {
-  m_comment = comment;
+  d->comment = comment;
+}
+
+
+QString Smb4KHost::comment() const
+{
+  return d->comment;
 }
 
 
 void Smb4KHost::setInfo( const QString &serverString, const QString &osString )
 {
-  m_server_string = serverString;
-  m_os_string     = osString;
-  m_info_checked  = true;
+  d->serverString = serverString;
+  d->osString     = osString;
+  d->infoChecked  = true;
 }
 
 
 void Smb4KHost::resetInfo()
 {
-  m_info_checked = false;
-  m_server_string.clear();
-  m_os_string.clear();
+  d->infoChecked = false;
+  d->serverString.clear();
+  d->osString.clear();
+}
+
+
+bool Smb4KHost::infoChecked() const
+{
+  return d->infoChecked;
+}
+
+
+QString Smb4KHost::serverString() const
+{
+  return d->serverString;
+}
+
+
+QString Smb4KHost::osString() const
+{
+  return d->osString;
 }
 
 
 void Smb4KHost::setIsMasterBrowser( bool master )
 {
-  m_is_master = master;
+  d->isMaster = master;
+}
+
+
+bool Smb4KHost::isMasterBrowser() const
+{
+  return d->isMaster;
 }
 
 
 bool Smb4KHost::isEmpty() const
 {
-  if ( !m_url.isEmpty() )
+  if ( !d->url.isEmpty() )
   {
     return false;
   }
@@ -210,7 +291,7 @@ bool Smb4KHost::isEmpty() const
     // Do nothing
   }
 
-  if ( !m_workgroup.isEmpty() )
+  if ( !d->workgroup.isEmpty() )
   {
     return false;
   }
@@ -219,7 +300,7 @@ bool Smb4KHost::isEmpty() const
     // Do nothing
   }
 
-  if ( !m_ip.isEmpty() )
+  if ( !d->ip.isNull() )
   {
     return false;
   }
@@ -228,7 +309,7 @@ bool Smb4KHost::isEmpty() const
     // Do nothing
   }
 
-  if ( !m_comment.isEmpty() )
+  if ( !d->comment.isEmpty() )
   {
     return false;
   }
@@ -237,7 +318,7 @@ bool Smb4KHost::isEmpty() const
     // Do nothing
   }
 
-  if ( !m_server_string.isEmpty() )
+  if ( !d->serverString.isEmpty() )
   {
     return false;
   }
@@ -246,7 +327,7 @@ bool Smb4KHost::isEmpty() const
     // Do nothing
   }
 
-  if ( !m_os_string.isEmpty() )
+  if ( !d->osString.isEmpty() )
   {
     return false;
   }
@@ -263,19 +344,37 @@ bool Smb4KHost::isEmpty() const
 
 void Smb4KHost::setLogin( const QString &login )
 {
-  m_url.setUserName( login );
+  d->url.setUserName( login );
+}
+
+
+QString Smb4KHost::login() const
+{
+  return d->url.userName();
 }
 
 
 void Smb4KHost::setPassword( const QString &passwd )
 {
-  m_url.setPassword( passwd );
+  d->url.setPassword( passwd );
+}
+
+
+QString Smb4KHost::password() const
+{
+  return d->url.password();
 }
 
 
 void Smb4KHost::setPort( int port )
 {
-  m_url.setPort( port );
+  d->url.setPort( port );
+}
+
+
+int Smb4KHost::port() const
+{
+  return d->url.port();
 }
 
 
@@ -283,7 +382,7 @@ bool Smb4KHost::equals( Smb4KHost *host ) const
 {
   Q_ASSERT( host );
 
-  if ( QString::compare( m_url.toString( QUrl::RemovePassword ), host->unc( QUrl::RemovePassword ) ) != 0 )
+  if ( QString::compare( unc( QUrl::RemovePassword ), host->unc( QUrl::RemovePassword ) ) != 0 )
   {
     return false;
   }
@@ -292,7 +391,7 @@ bool Smb4KHost::equals( Smb4KHost *host ) const
     // Do nothing
   }
 
-  if ( QString::compare( m_workgroup, host->workgroupName() ) != 0 )
+  if ( QString::compare( workgroupName(), host->workgroupName() ) != 0 )
   {
     return false;
   }
@@ -301,7 +400,7 @@ bool Smb4KHost::equals( Smb4KHost *host ) const
     // Do nothing
   }
 
-  if ( QString::compare( m_ip, host->ip() ) != 0 )
+  if ( QString::compare( ip(), host->ip() ) != 0 )
   {
     return false;
   }
@@ -310,7 +409,7 @@ bool Smb4KHost::equals( Smb4KHost *host ) const
     // Do nothing
   }
 
-  if ( QString::compare( m_comment, host->comment() ) != 0 )
+  if ( QString::compare( comment(), host->comment() ) != 0 )
   {
     return false;
   }
@@ -319,7 +418,7 @@ bool Smb4KHost::equals( Smb4KHost *host ) const
     // Do nothing
   }
 
-  if ( QString::compare( m_server_string, host->serverString() ) != 0 )
+  if ( QString::compare( serverString(), host->serverString() ) != 0 )
   {
     return false;
   }
@@ -328,7 +427,7 @@ bool Smb4KHost::equals( Smb4KHost *host ) const
     // Do nothing
   }
 
-  if ( QString::compare( m_os_string, host->osString() ) != 0 )
+  if ( QString::compare( osString(), host->osString() ) != 0 )
   {
     return false;
   }
@@ -345,20 +444,7 @@ bool Smb4KHost::equals( Smb4KHost *host ) const
 
 void Smb4KHost::setAuthInfo( Smb4KAuthInfo *authInfo )
 {
-  m_url.setUserName( authInfo->login() );
-  m_url.setPassword( authInfo->password() );
+  d->url.setUserName( authInfo->login() );
+  d->url.setPassword( authInfo->password() );
 }
 
-
-const QString &Smb4KHost::ipIsValid( const QString &ip )
-{
-  QHostAddress ip_address( ip );
-
-  if ( ip_address.protocol() == QAbstractSocket::UnknownNetworkLayerProtocol )
-  {
-    // The IP address is invalid.
-    static_cast<QString>( ip ).clear();
-  }
-
-  return ip;
-}
