@@ -80,8 +80,8 @@ Smb4KBookmark::Smb4KBookmark( const Smb4KBookmark &b )
 Smb4KBookmark::Smb4KBookmark()
 : d( new Smb4KBookmarkPrivate )
 {
-  d->type = "Disk";
-  d->icon = KIcon( "folder-remote" );  
+  d->type      = "Disk";
+  d->icon      = KIcon( "folder-remote" );
 }
 
 

@@ -284,10 +284,7 @@ class KDE_EXPORT Smb4KBookmark
     QIcon icon() const;
 
   private:
-    /**
-     * Pointer to the Smb4KBookmarkPrivate class.
-     */
-    QScopedPointer<Smb4KBookmarkPrivate> d;
+    const QScopedPointer<Smb4KBookmarkPrivate> d;
 };
 
 #endif
