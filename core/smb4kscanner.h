@@ -3,7 +3,7 @@
     shares found on the network neighborhood
                              -------------------
     begin                : So Mai 22 2011
-    copyright            : (C) 2011 by Alexander Reinholdt
+    copyright            : (C) 2011-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -31,6 +31,9 @@
 #include <config.h>
 #endif
 
+// application specific includes
+#include "smb4knetworkobject.h"
+
 // Qt includes
 #include <QWidget>
 #include <QTimerEvent>
@@ -39,9 +42,6 @@
 // KDE includes
 #include <kcompositejob.h>
 #include <kdemacros.h>
-
-// application specific includes
-#include "smb4knetworkobject.h"
 
 // forward declarations
 class Smb4KBasicNetworkItem;
@@ -330,6 +330,14 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
     void authError( Smb4KHost *host,
                     int process );
 
+    /**
+     * This signal is emitted when an IP address was successfully looked
+     * up.
+     *
+     * @param host          The host
+     */
+    void ipAddress( Smb4KHost *host );
+
   protected slots:
     /**
      * Starts the composite job
@@ -410,30 +418,35 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
      * Is called when workgroups and domains have been looked
      * up
      */
-    void slotWorkgroups( const QList<Smb4KWorkgroup> &workgroups_list );
+    void slotWorkgroups( const QList<Smb4KWorkgroup *> &workgroups_list );
 
     /**
      * Is called when hosts have been looked up by the IP scan method
      */
-    void slotHosts( const QList<Smb4KHost> &hosts_list );
+    void slotHosts( const QList<Smb4KHost *> &hosts_list );
 
     /**
      * Is called when hosts have been looked up by the normal lookup
      * method
      */
     void slotHosts( Smb4KWorkgroup *workgroup,
-                    const QList<Smb4KHost> &hosts_list );
+                    const QList<Smb4KHost *> &hosts_list );
     
     /**
      * Is called when shares have been looked up
      */
     void slotShares( Smb4KHost *host,
-                     const QList<Smb4KShare> &shares_list );
+                     const QList<Smb4KShare *> &shares_list );
     
     /**
      * Is called when additional information has been acquired
      */
     void slotInfo( Smb4KHost *host );
+
+    /**
+     * Is called when an IP address was looked up
+     */
+    void slotProcessIPAddress( Smb4KHost *host );
 
   private:
     /**

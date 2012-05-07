@@ -30,17 +30,17 @@
 #include <config.h>
 #endif
 
+// application specific includes
+#include "smb4kscanner.h"
+#include "smb4kprocess.h"
+#include "smb4kworkgroup.h"
+#include "smb4kauthinfo.h"
+
 // Qt includes
 #include <QWidget>
 
 // KDE includes
 #include <kjob.h>
-
-// application specific includes
-#include <smb4kscanner.h>
-#include <smb4kprocess.h>
-#include <smb4kworkgroup.h>
-#include <smb4kauthinfo.h>
 
 // forward declarations
 class Smb4KHost;
@@ -94,7 +94,7 @@ class Smb4KLookupDomainsJob : public KJob
      *
      * @returns the list of workgroups
      */
-    const QList<Smb4KWorkgroup> &workgroupsList() { return m_workgroups_list; }
+    const QList<Smb4KWorkgroup *> &workgroupsList() { return m_workgroups_list; }
 
   signals:
     /**
@@ -109,9 +109,9 @@ class Smb4KLookupDomainsJob : public KJob
     void finished();
     
     /**
-     * Emits the list of discovered workgroups and domains
+     * Emitted when workgroups/domains were found
      */
-    void workgroups( const QList<Smb4KWorkgroup> &list );
+    void workgroups( const QList<Smb4KWorkgroup *> &list );
 
   protected:
     bool doKill();
@@ -127,7 +127,7 @@ class Smb4KLookupDomainsJob : public KJob
     bool m_started;
     QWidget *m_parent_widget;
     Smb4KProcess *m_proc;
-    QList<Smb4KWorkgroup> m_workgroups_list;
+    QList<Smb4KWorkgroup *> m_workgroups_list;
 };
 
 
@@ -193,7 +193,7 @@ class Smb4KQueryMasterJob : public KJob
      *
      * @returns the list of workgroups
      */
-    const QList<Smb4KWorkgroup> &workgroupsList() { return m_workgroups_list; }
+    const QList<Smb4KWorkgroup *> &workgroupsList() { return m_workgroups_list; }
 
   signals:
     /**
@@ -208,9 +208,9 @@ class Smb4KQueryMasterJob : public KJob
     void finished();
 
     /**
-     * Emits the list of discovered workgroups and domains
+     * Emitted when workgroups/domains were found
      */
-    void workgroups( const QList<Smb4KWorkgroup> &list );
+    void workgroups( const QList<Smb4KWorkgroup *> &list );
 
     /**
      * This signal is emitted when an authentication error
@@ -235,7 +235,7 @@ class Smb4KQueryMasterJob : public KJob
     QWidget *m_parent_widget;
     QString m_master_browser;
     Smb4KProcess *m_proc;
-    QList<Smb4KWorkgroup> m_workgroups_list;
+    QList<Smb4KWorkgroup *> m_workgroups_list;
 };
 
 
@@ -287,7 +287,7 @@ class Smb4KScanBAreasJob : public KJob
      *
      * @returns the list of workgroups
      */
-    const QList<Smb4KWorkgroup> &workgroupsList() { return m_workgroups_list; }
+    const QList<Smb4KWorkgroup *> &workgroupsList() { return m_workgroups_list; }
 
     /**
      * Returns the list of discovered hosts. You can use this function
@@ -296,7 +296,7 @@ class Smb4KScanBAreasJob : public KJob
      *
      * @returns the list of hosts
      */
-    const QList<Smb4KHost> &hostsList() { return m_hosts_list; }
+    const QList<Smb4KHost *> &hostsList() { return m_hosts_list; }
 
   signals:
     /**
@@ -311,18 +311,14 @@ class Smb4KScanBAreasJob : public KJob
     void finished();
 
     /**
-     * Emits the list of discovered workgroups and domains.
-     * 
-     * @param list        The list of workgroups
+     * Emitted when workgroups/domains were found
      */
-    void workgroups( const QList<Smb4KWorkgroup> &list );
+    void workgroups( const QList<Smb4KWorkgroup *> &list );
 
     /**
-     * Emits the list of discovered hosts.
-     *
-     * @param list        The list of hosts
+     * Emitted when hosts were found
      */
-    void hosts( const QList<Smb4KHost> &list );
+    void hosts( const QList<Smb4KHost *> &list );
 
   protected:
     bool doKill();
@@ -338,8 +334,8 @@ class Smb4KScanBAreasJob : public KJob
     bool m_started;
     QWidget *m_parent_widget;
     Smb4KProcess *m_proc;
-    QList<Smb4KWorkgroup> m_workgroups_list;
-    QList<Smb4KHost> m_hosts_list;
+    QList<Smb4KWorkgroup *> m_workgroups_list;
+    QList<Smb4KHost *> m_hosts_list;
 };
 
 
@@ -393,7 +389,7 @@ class Smb4KLookupDomainMembersJob : public KJob
      * 
      * @returns the workgroup
      */
-    Smb4KWorkgroup *workgroup() { return &m_workgroup; }
+    Smb4KWorkgroup *workgroup() { return m_workgroup; }
 
     /**
      * Returns the list of discovered hosts. You can use this function
@@ -402,7 +398,7 @@ class Smb4KLookupDomainMembersJob : public KJob
      *
      * @returns the list of hosts
      */
-    const QList<Smb4KHost> &hostsList() { return m_hosts_list; }
+    const QList<Smb4KHost *> &hostsList() { return m_hosts_list; }
 
   signals:
     /**
@@ -420,14 +416,10 @@ class Smb4KLookupDomainMembersJob : public KJob
     void finished( Smb4KWorkgroup *workgroup );
 
     /**
-     * Emits the list of @p hosts that belong to a certain @p workgroup.
-     *
-     * @param workgroup   The workgroup
-     *
-     * @param list        The list of hosts
+     * Emitted when hosts were found
      */
     void hosts( Smb4KWorkgroup *workgroup,
-                const QList<Smb4KHost> &list );
+                const QList<Smb4KHost *> &list );
     
     /**
      * This signal is emitted when an authentication error
@@ -449,10 +441,10 @@ class Smb4KLookupDomainMembersJob : public KJob
     void processHosts();
     bool m_started;
     QWidget *m_parent_widget;
-    Smb4KWorkgroup m_workgroup;
+    Smb4KWorkgroup *m_workgroup;
     Smb4KProcess *m_proc;
-    QList<Smb4KHost> m_hosts_list;
-    Smb4KHost m_master_browser;
+    QList<Smb4KHost *> m_hosts_list;
+    Smb4KHost *m_master_browser;
 };
 
 
@@ -506,7 +498,7 @@ class Smb4KLookupSharesJob : public KJob
      * 
      * @returns the host
      */
-    Smb4KHost *host() { return &m_host; }
+    Smb4KHost *host() { return m_host; }
     
   signals:
     /**
@@ -524,15 +516,10 @@ class Smb4KLookupSharesJob : public KJob
     void finished( Smb4KHost *host );
     
     /**
-     * This signal emits the list of shares that was retrieved from
-     * the queried host.
-     * 
-     * @param host          The host
-     *
-     * @param list          The list of shares
+     * Emitted when shares were found
      */
     void shares( Smb4KHost *host,
-                 const QList<Smb4KShare> &list );
+                 const QList<Smb4KShare *> &list );
     
     /**
      * This signal is emitted when an authentication error
@@ -554,10 +541,10 @@ class Smb4KLookupSharesJob : public KJob
   private:
     void processShares();
     bool m_started;
-    Smb4KHost m_host;
+    Smb4KHost *m_host;
     QWidget *m_parent_widget;
     Smb4KProcess *m_proc;
-    QList<Smb4KShare> m_shares_list;
+    QList<Smb4KShare *> m_shares_list;
 };
 
 
@@ -591,7 +578,7 @@ class Smb4KLookupInfoJob : public KJob
     /**
      * Sets up the lookup job.
      *
-     * @param workgroup     The host that is to be asked for its shared resources
+     * @param host          The host that is to be asked for its information
      *
      * @param parent        The parent widget
      */
@@ -604,6 +591,12 @@ class Smb4KLookupInfoJob : public KJob
      * @returns the parent widget
      */
     QWidget *parentWidget() { return m_parent_widget; }
+
+    /**
+     * Returns the host for which the additional information
+     * was acquired.
+     */
+    Smb4KHost *host() { return m_host; }
     
   signals:
     /**
@@ -623,11 +616,7 @@ class Smb4KLookupInfoJob : public KJob
     void finished( Smb4KHost *host );
     
     /**
-     * This signal is emitted when and if additional information was
-     * found.
-     *
-     * @param host          The host that was queried for and now carries
-     *                      additional information
+     * This signal is emitted when additional information was found.
      */
     void info( Smb4KHost *host );
     
@@ -642,7 +631,81 @@ class Smb4KLookupInfoJob : public KJob
   private:
     void processInfo();
     bool m_started;
-    Smb4KHost m_host;
+    Smb4KHost *m_host;
+    QWidget *m_parent_widget;
+    Smb4KProcess *m_proc;
+};
+
+
+class Smb4KLookupIPAddressJob : public KJob
+{
+  Q_OBJECT
+
+  public:
+    /**
+     * Constructor
+     */
+    Smb4KLookupIPAddressJob( QObject* parent = 0 );
+
+    /**
+     * Destructor
+     */
+    ~Smb4KLookupIPAddressJob();
+
+    /**
+     * Returns TRUE if the job has been started and FALSE otherwise
+     *
+     * @returns TRUE if the job has been started
+     */
+    bool isStarted() { return m_started; }
+
+    /**
+     * Starts the job
+     */
+    void start();
+
+    /**
+     * Sets up the lookup for a host
+     *
+     * @param host        The host for which the IP address should be
+     *                    acquired
+     *
+     * @param parent      The parent widget
+     */
+    void setupLookup( Smb4KHost *host,
+                      QWidget *parent = 0 );
+
+    /**
+     * Returns the parent widget
+     *
+     * @returns the parent widget
+     */
+    QWidget *parentWidget() { return m_parent_widget; }
+
+    /**
+     * Returns the host for which the additional information
+     * was acquired.
+     */
+    Smb4KHost *host() { return m_host; }
+
+  signals:
+    /**
+     * Is emitted when an IP address was found
+     */
+    void ipAddress( Smb4KHost *host );
+
+  protected:
+    bool doKill();
+
+  protected slots:
+    void slotStartLookup();
+    void slotProcessFinished( int exitCode,
+                              QProcess::ExitStatus exitStatus );
+
+  private:
+    void processIPAddress();
+    bool m_started;
+    Smb4KHost *m_host;
     QWidget *m_parent_widget;
     Smb4KProcess *m_proc;
 };
