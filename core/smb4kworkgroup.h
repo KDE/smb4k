@@ -31,15 +31,19 @@
 #include <config.h>
 #endif
 
+// application specific includes
+#include "smb4kbasicnetworkitem.h"
+
 // Qt includes
 #include <QString>
 #include <QUrl>
+#include <QScopedPointer>
 
 // KDE includes
 #include <kdemacros.h>
 
-// application specific includes
-#include "smb4kbasicnetworkitem.h"
+// forward declarations
+class Smb4KWorkgroupPrivate;
 
 /**
  * This class is a container that carries information about a workgroup or
@@ -51,6 +55,8 @@
 
 class KDE_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
 {
+  friend class Smb4KWorkgroupPrivate;
+  
   public:
     /**
      * The default constructor. It takes the name of the workgroup as only
@@ -92,7 +98,7 @@ class KDE_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      *
      * @returns the workgroup name.
      */
-    QString workgroupName() const { return m_url.host().toUpper(); }
+    QString workgroupName() const;
 
     /**
      * Sets the name of the master browser of this workgroup or domain.
@@ -106,7 +112,7 @@ class KDE_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      *
      * @returns the name of the master browser.
      */
-    QString masterBrowserName() const { return m_master_name; }
+    QString masterBrowserName() const;
 
     /**
      * Set the IP address of the master browser. @p ip will only be accepted
@@ -123,7 +129,7 @@ class KDE_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      *
      * @returns the IP address of the master browser or an empty string.
      */
-    QString masterBrowserIP() const { return m_master_ip; }
+    QString masterBrowserIP() const;
 
     /**
      * Set @p pseudo to TRUE if the master browser of this workgroup is a
@@ -141,7 +147,7 @@ class KDE_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      *
      * @returns TRUE if the workgroup has a pseudo master browser.
      */
-    bool hasPseudoMasterBrowser() const { return m_pseudo_master; }
+    bool hasPseudoMasterBrowser() const;
 
     /**
      * Returns TRUE if the item is empty and FALSE otherwise. An item is not
@@ -174,47 +180,17 @@ class KDE_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      *
      * @returns TRUE if the master browsers IP address is known.
      */
-    bool hasMasterBrowserIP() const { return !m_master_ip.isEmpty(); }
+    bool hasMasterBrowserIP() const;
     
     /**
      * Returns the URL (the full UNC) of the workgroup item.
      * 
      * @returns the URL of the network item.
      */
-    QUrl url() const { return m_url; }
+    QUrl url() const;
 
   private:
-    /**
-     * The URL of the workgroup
-     */
-    QUrl m_url;
-    
-    /**
-     * The master browser's name.
-     */
-    QString m_master_name;
-
-    /**
-     * The master browser's IP address.
-     */
-    QString m_master_ip;
-
-    /**
-     * Defines if this is a master browser.
-     */
-    bool m_pseudo_master;
-
-    /**
-     * This function checks if the given IP address is either
-     * compatible with IPv4 or IPv6. If it is not, an empty string
-     * is returned.
-     *
-     * @param ip              The IP address that needs to be checked.
-     *
-     * @returns the IP address or an empty string if the IP address
-     * is not compatible with either IPv4 or IPv6.
-     */
-    const QString &ipIsValid( const QString &ip );
+    const QScopedPointer<Smb4KWorkgroupPrivate> d;
 };
 
 #endif
