@@ -34,12 +34,12 @@
 #include "smb4ksolidinterface.h"
 
 // Qt includes
-#include <QObject>
-#include <QFile>
-#include <QString>
-#include <QStringList>
-#include <QDeclarativeListProperty>
-#include <QScopedPointer>
+#include <QtCore/QObject>
+#include <QtCore/QFile>
+#include <QtCore/QString>
+#include <QtCore/QStringList>
+#include <QtCore/QScopedPointer>
+#include <QtDeclarative/QDeclarativeListProperty>
 
 // KDE includes
 #include <kdemacros.h>
@@ -74,6 +74,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
   Q_PROPERTY( bool running READ isRunning )
 
   friend class Smb4KMounterPrivate;
+  friend class Smb4KMounterPrivate2;
 
   public:
     /**
@@ -454,7 +455,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
     /**
      * Pointer to the Smb4KMounterPrivate class.
      */
-    QScopedPointer<Smb4KMounterPrivate> d;
+    const QScopedPointer<Smb4KMounterPrivate> d;
 };
 
 #endif

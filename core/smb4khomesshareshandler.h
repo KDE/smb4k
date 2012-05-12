@@ -31,11 +31,11 @@
 #endif
 
 // Qt includes
-#include <QObject>
-#include <QString>
-#include <QStringList>
-#include <QPair>
-#include <QList>
+#include <QtCore/QObject>
+#include <QtCore/QString>
+#include <QtCore/QStringList>
+#include <QtCore/QList>
+#include <QtCore/QScopedPointer>
 
 // KDE includes
 #include <kdialog.h>
@@ -62,6 +62,16 @@ class KDE_EXPORT Smb4KHomesSharesHandler : public QObject
   friend class Smb4KHomesSharesHandlerPrivate;
 
   public:
+    /**
+     * The constructor
+     */
+    Smb4KHomesSharesHandler( QObject *parent = 0 );
+
+    /**
+     * The destructor
+     */
+    ~Smb4KHomesSharesHandler();
+    
     /**
      * Returns a static pointer to this class.
      */
@@ -105,16 +115,6 @@ class KDE_EXPORT Smb4KHomesSharesHandler : public QObject
 
   private:
     /**
-     * The constructor
-     */
-    Smb4KHomesSharesHandler();
-
-    /**
-     * The destructor
-     */
-    ~Smb4KHomesSharesHandler();
-
-    /**
      * Load the host and user names into a map.
      */
     void readUserNames();
@@ -135,11 +135,11 @@ class KDE_EXPORT Smb4KHomesSharesHandler : public QObject
      */
     void addHomesUsers( Smb4KShare *share,
                         QStringList *users );
-    
+
     /**
-     * The list of shares with homes users
+     * Pointer to the Smb4KHomesSharesHandlerPrivate class
      */
-    QList<Smb4KHomesUsers> m_homes_users;
+    const QScopedPointer<Smb4KHomesSharesHandlerPrivate> d;
 };
 
 #endif

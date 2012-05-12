@@ -24,20 +24,20 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4kcustomoptionsmanager_p.h"
+#include "smb4ksettings.h"
+
 // Qt includes
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QLabel>
-#include <QCoreApplication>
+#include <QtCore/QCoreApplication>
+#include <QtGui/QVBoxLayout>
+#include <QtGui/QHBoxLayout>
+#include <QtGui/QLabel>
 
 // KDE includes
 #include <klocale.h>
 #include <kstandardguiitem.h>
 #include <kuser.h>
-
-// application specific includes
-#include <smb4kcustomoptionsmanager_p.h>
-#include <smb4ksettings.h>
 
 
 Smb4KCustomOptionsDialog::Smb4KCustomOptionsDialog( Smb4KCustomOptions *options, QWidget *parent )
@@ -566,16 +566,6 @@ void Smb4KCustomOptionsDialog::slotOKClicked()
   saveDialogSize( group, KConfigGroup::Normal );
 }
 
-
-
-Smb4KCustomOptionsManagerPrivate::Smb4KCustomOptionsManagerPrivate()
-{
-}
-
-
-Smb4KCustomOptionsManagerPrivate::~Smb4KCustomOptionsManagerPrivate()
-{
-}
 
 #include "smb4kcustomoptionsmanager_p.moc"
 

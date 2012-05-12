@@ -27,8 +27,8 @@
 #include "smb4kcustomoptions.h"
 
 // Qt includes
-#include <QDebug>
-#include <QHostAddress>
+#include <QtCore/QDebug>
+#include <QtNetwork/QHostAddress>
 
 // KDE includes
 #include <kuser.h>

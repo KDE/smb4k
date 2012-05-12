@@ -1358,27 +1358,4 @@ void Smb4KMountDialog::slotWorkgroupEntered()
 }
 
 
-Smb4KMounterPrivate::Smb4KMounterPrivate()
-{
-}
-
-
-Smb4KMounterPrivate::~Smb4KMounterPrivate()
-{
-  while ( !importedShares.isEmpty() )
-  {
-    delete importedShares.takeFirst();
-  }
-
-  while ( !retries.isEmpty() )
-  {
-    delete retries.takeFirst();
-  }
-
-  while ( !shareObjects.isEmpty() )
-  {
-    delete shareObjects.takeFirst();
-  }
-}
-
 #include "smb4kmounter_p.moc"

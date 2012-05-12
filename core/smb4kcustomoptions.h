@@ -35,8 +35,8 @@
 #include "smb4kshare.h"
 
 // Qt includes
-#include <QUrl>
-#include <QScopedPointer>
+#include <QtCore/QUrl>
+#include <QtCore/QScopedPointer>
 
 // KDE includes
 #include <kdemacros.h>
@@ -387,7 +387,7 @@ class KDE_EXPORT Smb4KCustomOptions
     bool isEmpty();
 
   private:
-    QScopedPointer<Smb4KCustomOptionsPrivate> d;
+    const QScopedPointer<Smb4KCustomOptionsPrivate> d;
 };
 
 #endif

@@ -28,7 +28,7 @@
 #include "smb4kauthinfo.h"
 
 // Qt includes
-#include <QHostAddress>
+#include <QtNetwork/QHostAddress>
 
 // KDE includes
 #include <kdebug.h>

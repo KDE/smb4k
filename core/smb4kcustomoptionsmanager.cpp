@@ -32,22 +32,25 @@
 #include "smb4kshare.h"
 
 // Qt includes
-#include <QXmlStreamReader>
-#include <QXmlStreamWriter>
-#include <QDebug>
-#include <QCoreApplication>
-#include <QPointer>
+#include <QtCore/QXmlStreamReader>
+#include <QtCore/QXmlStreamWriter>
+#include <QtCore/QDebug>
+#include <QtCore/QCoreApplication>
+#include <QtCore/QPointer>
 
 // KDE includes
 #include <kglobal.h>
 #include <kstandarddirs.h>
 #include <klocale.h>
 
-K_GLOBAL_STATIC( Smb4KCustomOptionsManagerPrivate, p );
+K_GLOBAL_STATIC( Smb4KCustomOptionsManagerStatic, p );
 
 
-Smb4KCustomOptionsManager::Smb4KCustomOptionsManager() : QObject( 0 )
+Smb4KCustomOptionsManager::Smb4KCustomOptionsManager( QObject *parent )
+: QObject( parent ), d( new Smb4KCustomOptionsManagerPrivate )
 {
+  qDebug() << "Constructor";
+  
   // We need the directory.
   QString dir = KGlobal::dirs()->locateLocal( "data", "smb4k", KGlobal::mainComponent() );
 
@@ -87,7 +90,7 @@ void Smb4KCustomOptionsManager::addRemount( Smb4KShare *share )
   {
     options = new Smb4KCustomOptions( share );
     options->setRemount( Smb4KCustomOptions::DoRemount );
-    m_options << options;
+    d->options << options;
   }
 }
 
@@ -111,12 +114,12 @@ void Smb4KCustomOptionsManager::removeRemount( Smb4KShare *share )
 
 void Smb4KCustomOptionsManager::clearRemounts()
 {
-  for ( int i = 0; i < m_options.size(); ++i )
+  for ( int i = 0; i < d->options.size(); ++i )
   {
-    if ( m_options.at( i )->type() == Smb4KCustomOptions::Share &&
-         m_options.at( i )->remount() == Smb4KCustomOptions::DoRemount )
+    if ( d->options.at( i )->type() == Smb4KCustomOptions::Share &&
+         d->options.at( i )->remount() == Smb4KCustomOptions::DoRemount )
     {
-      m_options[i]->setRemount( Smb4KCustomOptions::NoRemount );
+      d->options[i]->setRemount( Smb4KCustomOptions::NoRemount );
     }
     else
     {
@@ -130,11 +133,11 @@ QList<Smb4KCustomOptions *> Smb4KCustomOptionsManager::sharesToRemount()
 {
   QList<Smb4KCustomOptions *> remounts;
   
-  for ( int i = 0; i < m_options.size(); ++i )
+  for ( int i = 0; i < d->options.size(); ++i )
   {
-    if ( m_options.at( i )->remount() == Smb4KCustomOptions::DoRemount )
+    if ( d->options.at( i )->remount() == Smb4KCustomOptions::DoRemount )
     {
-      remounts << m_options[i];
+      remounts << d->options[i];
     }
     else
     {
@@ -160,14 +163,14 @@ Smb4KCustomOptions *Smb4KCustomOptionsManager::findOptions( Smb4KBasicNetworkIte
 
       if ( host )
       {
-        for ( int i = 0; i < m_options.size(); ++i )
+        for ( int i = 0; i < d->options.size(); ++i )
         {
-          if ( m_options.at( i )->type() == Smb4KCustomOptions::Host )
+          if ( d->options.at( i )->type() == Smb4KCustomOptions::Host )
           {
-            if ( QString::compare( m_options.at( i )->unc(), host->unc(), Qt::CaseInsensitive ) == 0 ||
-                 QString::compare( m_options.at( i )->ip(), host->ip() ) == 0 )
+            if ( QString::compare( d->options.at( i )->unc(), host->unc(), Qt::CaseInsensitive ) == 0 ||
+                 QString::compare( d->options.at( i )->ip(), host->ip() ) == 0 )
             {
-              options = m_options[i];
+              options = d->options[i];
               break;
             }
             else
@@ -193,14 +196,14 @@ Smb4KCustomOptions *Smb4KCustomOptionsManager::findOptions( Smb4KBasicNetworkIte
 
       if ( share )
       {
-        for ( int i = 0; i < m_options.size(); ++i )
+        for ( int i = 0; i < d->options.size(); ++i )
         {
-          if ( m_options.at( i )->type() == Smb4KCustomOptions::Share )
+          if ( d->options.at( i )->type() == Smb4KCustomOptions::Share )
           {
-            if ( QString::compare( m_options.at( i )->unc(), share->unc(), Qt::CaseInsensitive ) == 0 ||
-                 QString::compare( m_options.at( i )->unc(), share->homeUNC(), Qt::CaseInsensitive ) == 0 )
+            if ( QString::compare( d->options.at( i )->unc(), share->unc(), Qt::CaseInsensitive ) == 0 ||
+                 QString::compare( d->options.at( i )->unc(), share->homeUNC(), Qt::CaseInsensitive ) == 0 )
             {
-              options = m_options[i];
+              options = d->options[i];
               break;
             }
             else
@@ -208,12 +211,12 @@ Smb4KCustomOptions *Smb4KCustomOptionsManager::findOptions( Smb4KBasicNetworkIte
               continue;
             }
           }
-          else if ( m_options.at( i )->type() == Smb4KCustomOptions::Host && !exactMatch )
+          else if ( d->options.at( i )->type() == Smb4KCustomOptions::Host && !exactMatch )
           {
-            if ( QString::compare( m_options.at( i )->unc(), share->hostUNC(), Qt::CaseInsensitive ) == 0 ||
-                 QString::compare( m_options.at( i )->ip(), share->hostIP() ) == 0 )
+            if ( QString::compare( d->options.at( i )->unc(), share->hostUNC(), Qt::CaseInsensitive ) == 0 ||
+                 QString::compare( d->options.at( i )->ip(), share->hostIP() ) == 0 )
             {
-              options = m_options[i];
+              options = d->options[i];
             }
             else
             {
@@ -249,12 +252,12 @@ Smb4KCustomOptions* Smb4KCustomOptionsManager::findOptions( const QUrl &url )
   
   if ( url.isValid() && QString::compare( url.scheme(), "smb" ) == 0 )
   {
-    for ( int i = 0; i < m_options.size(); ++i )
+    for ( int i = 0; i < d->options.size(); ++i )
     {
-      if ( QString::compare( m_options.at( i )->url().host(), url.host(), Qt::CaseInsensitive ) == 0 &&
-           QString::compare( m_options.at( i )->url().path(), url.path(), Qt::CaseInsensitive ) == 0 )
+      if ( QString::compare( d->options.at( i )->url().host(), url.host(), Qt::CaseInsensitive ) == 0 &&
+           QString::compare( d->options.at( i )->url().path(), url.path(), Qt::CaseInsensitive ) == 0 )
       {
-        options = m_options[i];
+        options = d->options[i];
         break;
       }
       else
@@ -275,9 +278,9 @@ Smb4KCustomOptions* Smb4KCustomOptionsManager::findOptions( const QUrl &url )
 void Smb4KCustomOptionsManager::readCustomOptions()
 {
   // Clean up.
-  if ( !m_options.isEmpty() )
+  if ( !d->options.isEmpty() )
   {
-    delete m_options.takeFirst();
+    delete d->options.takeFirst();
   }
   
   // Locate the XML file.
@@ -486,7 +489,7 @@ void Smb4KCustomOptionsManager::readCustomOptions()
               }
             }
 
-            m_options << options;
+            d->options << options;
           }
           else
           {
@@ -530,9 +533,9 @@ void Smb4KCustomOptionsManager::readCustomOptions()
 void Smb4KCustomOptionsManager::writeCustomOptions()
 {
   // Clean up:
-  QFile xmlFile( KGlobal::dirs()->locateLocal( "data", "smb4k/custom_options.xml", KGlobal::mainComponent() ) );
+  QFile xmlFile( KGlobal::dirs()->locateLocal( "data", "smb4k/custo.xml", KGlobal::mainComponent() ) );
 
-  if ( !m_options.isEmpty() )
+  if ( !d->options.isEmpty() )
   {
     if ( xmlFile.open( QIODevice::WriteOnly | QIODevice::Text ) )
     {
@@ -542,9 +545,9 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
       xmlWriter.writeStartElement( "custom_options" );
       xmlWriter.writeAttribute( "version", "1.1" );
 
-      for ( int i = 0; i < m_options.size(); ++i )
+      for ( int i = 0; i < d->options.size(); ++i )
       {
-        Smb4KCustomOptions *options = m_options[i];
+        Smb4KCustomOptions *options = d->options[i];
         
         if ( hasCustomOptions( options ) || options->remount() == Smb4KCustomOptions::DoRemount )
         {
@@ -606,9 +609,9 @@ const QList<Smb4KCustomOptions *> Smb4KCustomOptionsManager::customOptions()
 {
   QList<Smb4KCustomOptions *> custom_options;
   
-  for ( int i = 0; i < m_options.size(); ++i )
+  for ( int i = 0; i < d->options.size(); ++i )
   {
-    Smb4KCustomOptions *options = m_options[i];
+    Smb4KCustomOptions *options = d->options[i];
     
     if ( hasCustomOptions( options ) || options->remount() == Smb4KCustomOptions::DoRemount )
     {
@@ -626,9 +629,9 @@ const QList<Smb4KCustomOptions *> Smb4KCustomOptionsManager::customOptions()
 
 void Smb4KCustomOptionsManager::replaceCustomOptions( const QList<Smb4KCustomOptions*> &options_list )
 {
-  while ( !m_options.isEmpty() )
+  while ( !d->options.isEmpty() )
   {
-    delete m_options.takeFirst();
+    delete d->options.takeFirst();
   }
   
   if ( !options_list.isEmpty() )
@@ -639,7 +642,7 @@ void Smb4KCustomOptionsManager::replaceCustomOptions( const QList<Smb4KCustomOpt
       
       if ( hasCustomOptions( options ) || options->remount() == Smb4KCustomOptions::DoRemount )
       {
-        m_options << new Smb4KCustomOptions( *options );
+        d->options << new Smb4KCustomOptions( *options );
       }
       else
       {
@@ -810,7 +813,7 @@ void Smb4KCustomOptionsManager::addCustomOptions( Smb4KCustomOptions *options )
   
   if ( !known_options )
   {
-    m_options << new Smb4KCustomOptions( *options );
+    d->options << new Smb4KCustomOptions( *options );
   }
   else
   {
@@ -860,11 +863,11 @@ void Smb4KCustomOptionsManager::removeCustomOptions( Smb4KCustomOptions *options
   
   if ( known_options )
   {
-    int index = m_options.indexOf( known_options );
+    int index = d->options.indexOf( known_options );
     
     if ( index != -1 )
     {
-      delete m_options.takeAt( index );
+      delete d->options.takeAt( index );
     }
     else
     {

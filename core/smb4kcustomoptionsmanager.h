@@ -34,8 +34,9 @@
 #include "smb4kcustomoptions.h"
 
 // Qt includes
-#include <QObject>
-#include <QWidget>
+#include <QtCore/QObject>
+#include <QtCore/QScopedPointer>
+#include <QtGui/QWidget>
 
 // KDE includes
 #include <kdemacros.h>
@@ -52,6 +53,16 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
   friend class Smb4KCustomOptionsManagerPrivate;
   
   public:
+    /**
+     * Constructor
+     */
+    explicit Smb4KCustomOptionsManager( QObject *parent = 0 );
+
+    /**
+     * Destructor
+     */
+    ~Smb4KCustomOptionsManager();
+    
     /**
      * Returns a static pointer to this class
      * 
@@ -178,16 +189,6 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
   
   private:
     /**
-     * Constructor
-     */
-    Smb4KCustomOptionsManager();
-    
-    /**
-     * Destructor
-     */
-    ~Smb4KCustomOptionsManager();
-    
-    /**
      * Read custom options
      */
     void readCustomOptions();
@@ -196,11 +197,11 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
      * Write custom options
      */
     void writeCustomOptions();
-    
+
     /**
-     * List of items for that custom options are defined
+     * Pointer to Smb4KCustomOptionsManagerPrivate class
      */
-    QList<Smb4KCustomOptions *> m_options;
+    const QScopedPointer<Smb4KCustomOptionsManagerPrivate> d;
 };
 
 #endif

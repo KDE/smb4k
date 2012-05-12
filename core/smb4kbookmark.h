@@ -32,10 +32,10 @@
 #endif
 
 // Qt includes
-#include <QString>
-#include <QUrl>
-#include <QScopedPointer>
-#include <QIcon>
+#include <QtCore/QString>
+#include <QtCore/QUrl>
+#include <QtCore/QScopedPointer>
+#include <QtGui/QIcon>
 
 // KDE includes
 #include <kdemacros.h>

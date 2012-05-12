@@ -39,13 +39,13 @@
 #include "smb4kcustomoptions.h"
 
 // Qt includes
-#include <QApplication>
-#include <QDir>
-#include <QTextStream>
-#include <QTextCodec>
-#include <QDesktopWidget>
-#include <QTimer>
-#include <QFileInfo>
+#include <QtCore/QDir>
+#include <QtCore/QTextStream>
+#include <QtCore/QTextCodec>
+#include <QtCore/QTimer>
+#include <QtCore/QFileInfo>
+#include <QtGui/QApplication>
+#include <QtGui/QDesktopWidget>
 
 // KDE includes
 #include <kapplication.h>
@@ -62,7 +62,7 @@ using namespace Smb4KGlobal;
 
 #define TIMEOUT 50
 
-K_GLOBAL_STATIC( Private, p );
+K_GLOBAL_STATIC( Smb4KMounterStatic, p );
 
 
 
@@ -104,6 +104,20 @@ Smb4KMounter::Smb4KMounter() : KCompositeJob( 0 ), d( new Smb4KMounterPrivate )
 
 Smb4KMounter::~Smb4KMounter()
 {
+  while ( !d->importedShares.isEmpty() )
+  {
+    delete d->importedShares.takeFirst();
+  }
+
+  while ( !d->retries.isEmpty() )
+  {
+    delete d->retries.takeFirst();
+  }
+
+  while ( !d->shareObjects.isEmpty() )
+  {
+    delete d->shareObjects.takeFirst();
+  }
 }
 
 

@@ -23,13 +23,21 @@
  *   MA 02110-1335 USA                                                     *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4khomesshareshandler.h"
+#include "smb4khomesshareshandler_p.h"
+#include "smb4kshare.h"
+#include "smb4ksettings.h"
+#include "smb4kauthinfo.h"
+#include "smb4knotification.h"
+
 // Qt includes
-#include <QFile>
-#include <QTextCodec>
-#include <QXmlStreamWriter>
-#include <QXmlStreamReader>
-#include <QCoreApplication>
-#include <QPointer>
+#include <QtCore/QFile>
+#include <QtCore/QTextCodec>
+#include <QtCore/QXmlStreamWriter>
+#include <QtCore/QXmlStreamReader>
+#include <QtCore/QCoreApplication>
+#include <QtCore/QPointer>
 
 // KDE includes
 #include <kdebug.h>
@@ -37,19 +45,12 @@
 #include <klocale.h>
 #include <kglobal.h>
 
-// application specific includes
-#include <smb4khomesshareshandler.h>
-#include <smb4khomesshareshandler_p.h>
-#include <smb4kshare.h>
-#include <smb4ksettings.h>
-#include <smb4kauthinfo.h>
-#include <smb4knotification.h>
+
+K_GLOBAL_STATIC( Smb4KHomesSharesHandlerStatic, p );
 
 
-K_GLOBAL_STATIC( Smb4KHomesSharesHandlerPrivate, p );
-
-
-Smb4KHomesSharesHandler::Smb4KHomesSharesHandler() : QObject()
+Smb4KHomesSharesHandler::Smb4KHomesSharesHandler( QObject *parent )
+: QObject( parent ), d( new Smb4KHomesSharesHandlerPrivate )
 {
   // First we need the directory.
   QString dir = KGlobal::dirs()->locateLocal( "data", "smb4k", KGlobal::mainComponent() );
@@ -220,7 +221,7 @@ void Smb4KHomesSharesHandler::readUserNames()
               }
             }
 
-            m_homes_users << users;
+            d->homesUsers << users;
           }
           else
           {
@@ -265,7 +266,7 @@ void Smb4KHomesSharesHandler::writeUserNames()
 {
   QFile xmlFile( KGlobal::dirs()->locateLocal( "data", "smb4k/homes_shares.xml", KGlobal::mainComponent() ) );
 
-  if ( !m_homes_users.isEmpty() )
+  if ( !d->homesUsers.isEmpty() )
   {
     if ( xmlFile.open( QIODevice::WriteOnly | QIODevice::Text ) )
     {
@@ -278,18 +279,18 @@ void Smb4KHomesSharesHandler::writeUserNames()
       xmlWriter.writeStartElement( "homes_shares" );
       xmlWriter.writeAttribute( "version", "1.0" );
 
-      for ( int i = 0; i < m_homes_users.size(); ++i )
+      for ( int i = 0; i < d->homesUsers.size(); ++i )
       {
         xmlWriter.writeStartElement( "homes" );
         xmlWriter.writeAttribute( "profile", "Default" );
-        xmlWriter.writeTextElement( "host", m_homes_users.at( i ).share.hostName() );
-        xmlWriter.writeTextElement( "workgroup", m_homes_users.at( i ).share.workgroupName() );
-        xmlWriter.writeTextElement( "ip", m_homes_users.at( i ).share.hostIP() );
+        xmlWriter.writeTextElement( "host", d->homesUsers.at( i ).share.hostName() );
+        xmlWriter.writeTextElement( "workgroup", d->homesUsers.at( i ).share.workgroupName() );
+        xmlWriter.writeTextElement( "ip", d->homesUsers.at( i ).share.hostIP() );
         xmlWriter.writeStartElement( "users" );
 
-        for ( int j = 0; j < m_homes_users.at( i ).users.size(); ++j )
+        for ( int j = 0; j < d->homesUsers.at( i ).users.size(); ++j )
         {
-          xmlWriter.writeTextElement( "user", m_homes_users.at( i ).users.at( j ) );
+          xmlWriter.writeTextElement( "user", d->homesUsers.at( i ).users.at( j ) );
         }
 
         xmlWriter.writeEndElement();
@@ -319,15 +320,15 @@ void Smb4KHomesSharesHandler::findHomesUsers( Smb4KShare *share, QStringList *us
   Q_ASSERT( share );
   Q_ASSERT( users );
  
-  if ( !m_homes_users.isEmpty() )
+  if ( !d->homesUsers.isEmpty() )
   {
-    for ( int i = 0; i < m_homes_users.size(); ++i )
+    for ( int i = 0; i < d->homesUsers.size(); ++i )
     {
-      if ( QString::compare( share->unc(), m_homes_users.at( i ).share.unc(), Qt::CaseInsensitive ) == 0 &&
-           ((m_homes_users.at( i ).share.workgroupName().isEmpty() || share->workgroupName().isEmpty()) ||
-           QString::compare( share->workgroupName(), m_homes_users.at( i ).share.workgroupName(), Qt::CaseInsensitive ) == 0) )
+      if ( QString::compare( share->unc(), d->homesUsers.at( i ).share.unc(), Qt::CaseInsensitive ) == 0 &&
+           ((d->homesUsers.at( i ).share.workgroupName().isEmpty() || share->workgroupName().isEmpty()) ||
+           QString::compare( share->workgroupName(), d->homesUsers.at( i ).share.workgroupName(), Qt::CaseInsensitive ) == 0) )
       {
-        *users = m_homes_users.at( i ).users;
+        *users = d->homesUsers.at( i ).users;
         break;
       }
       else
@@ -346,15 +347,15 @@ void Smb4KHomesSharesHandler::addHomesUsers( Smb4KShare *share, QStringList *use
   
   bool found = false;
   
-  if ( !m_homes_users.isEmpty() )
+  if ( !d->homesUsers.isEmpty() )
   {
-    for ( int i = 0; i < m_homes_users.size(); ++i )
+    for ( int i = 0; i < d->homesUsers.size(); ++i )
     {
-      if ( QString::compare( share->unc(), m_homes_users.at( i ).share.unc(), Qt::CaseInsensitive ) == 0 &&
-           ((m_homes_users.at( i ).share.workgroupName().isEmpty() || share->workgroupName().isEmpty()) ||
-           QString::compare( share->workgroupName(), m_homes_users.at( i ).share.workgroupName(), Qt::CaseInsensitive ) == 0) )
+      if ( QString::compare( share->unc(), d->homesUsers.at( i ).share.unc(), Qt::CaseInsensitive ) == 0 &&
+           ((d->homesUsers.at( i ).share.workgroupName().isEmpty() || share->workgroupName().isEmpty()) ||
+           QString::compare( share->workgroupName(), d->homesUsers.at( i ).share.workgroupName(), Qt::CaseInsensitive ) == 0) )
       {
-        m_homes_users[i].users = *users;
+        d->homesUsers[i].users = *users;
         found = true;
         break;
       }
@@ -371,7 +372,7 @@ void Smb4KHomesSharesHandler::addHomesUsers( Smb4KShare *share, QStringList *use
   
   if ( !found )
   {
-    m_homes_users << Smb4KHomesUsers( *share, *users );
+    d->homesUsers << Smb4KHomesUsers( *share, *users );
   }
   else
   {

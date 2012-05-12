@@ -34,8 +34,8 @@
 #include "smb4kbookmarkhandler.h"
 
 // Qt includes
-#include <QTreeWidget>
-#include <QString>
+#include <QtCore/QString>
+#include <QtGui/QTreeWidget>
 
 // KDE includes
 #include <kdialog.h>
@@ -321,8 +321,14 @@ class KDE_EXPORT Smb4KBookmarkEditor : public KDialog
 class Smb4KBookmarkHandlerPrivate
 {
   public:
-    Smb4KBookmarkHandlerPrivate();
-    ~Smb4KBookmarkHandlerPrivate();
+    Smb4KBookmarkEditor *editor;
+    QList<Smb4KBookmark *> bookmarks;
+};
+
+
+class Smb4KBookmarkHandlerStatic
+{
+  public:
     Smb4KBookmarkHandler instance;
 };
 

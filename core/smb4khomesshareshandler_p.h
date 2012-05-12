@@ -31,12 +31,15 @@
 #include <config.h>
 #endif
 
+// application specific includes
+#include "smb4khomesshareshandler.h"
+#include "smb4kshare.h"
+
+// Qt includes
+#include <QtCore/QStringList>
+
 // KDE includes
 #include <kcombobox.h>
-
-// application specific includes
-#include <smb4khomesshareshandler.h>
-#include <smb4kshare.h>
 
 
 class Smb4KHomesUsers
@@ -141,8 +144,13 @@ class Smb4KHomesUserDialog : public KDialog
 class Smb4KHomesSharesHandlerPrivate
 {
   public:
-    Smb4KHomesSharesHandlerPrivate();
-    ~Smb4KHomesSharesHandlerPrivate();
+    QList<Smb4KHomesUsers> homesUsers;
+};
+
+
+class Smb4KHomesSharesHandlerStatic
+{
+  public:
     Smb4KHomesSharesHandler instance;
 };
 

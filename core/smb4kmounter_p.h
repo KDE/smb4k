@@ -393,8 +393,6 @@ class Smb4KMountDialog : public KDialog
 class Smb4KMounterPrivate
 {
   public:
-    Smb4KMounterPrivate();
-    ~Smb4KMounterPrivate();
     int timeout;
     int checks;
     Smb4KMountDialog *dialog;
@@ -411,7 +409,7 @@ class Smb4KMounterPrivate
 };
 
 
-class Private
+class Smb4KMounterStatic
 {
   public:
     Smb4KMounter instance;

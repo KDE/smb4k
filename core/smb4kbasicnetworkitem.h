@@ -32,9 +32,9 @@
 #endif
 
 // Qt includes
-#include <QString>
-#include <QIcon>
-#include <QScopedPointer>
+#include <QtCore/QString>
+#include <QtCore/QScopedPointer>
+#include <QtGui/QIcon>
 
 // KDE includes
 #include <kdemacros.h>

@@ -29,7 +29,7 @@
 #include "smb4kshare.h"
 
 // Qt includes
-#include <QHostAddress>
+#include <QtNetwork/QHostAddress>
 
 // KDE includes
 #include <kdebug.h>

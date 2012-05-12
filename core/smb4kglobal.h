@@ -27,9 +27,10 @@
 #define SMB4KGLOBAL_H
 
 // Qt includes
-#include <QString>
-#include <QList>
-#include <QEvent>
+#include <QtCore/QMap>
+#include <QtCore/QString>
+#include <QtCore/QList>
+#include <QtCore/QEvent>
 
 // KDE includes
 #include <kdemacros.h>

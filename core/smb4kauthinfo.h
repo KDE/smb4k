@@ -32,9 +32,9 @@
 #include "smb4kshare.h"
 
 // Qt includes
-#include <QString>
-#include <QUrl>
-#include <QScopedPointer>
+#include <QtCore/QString>
+#include <QtCore/QUrl>
+#include <QtCore/QScopedPointer>
 
 // KDE includes
 #include <kdemacros.h>

@@ -31,20 +31,20 @@
 #include <config.h>
 #endif
 
-// Qt includes
-#include <QList>
-#include <QMap>
-#include <QObject>
-
 // application specific includes
-#include <smb4kworkgroup.h>
-#include <smb4khost.h>
-#include <smb4kshare.h>
+#include "smb4kworkgroup.h"
+#include "smb4khost.h"
+#include "smb4kshare.h"
+
+// Qt includes
+#include <QtCore/QList>
+#include <QtCore/QMap>
+#include <QtCore/QObject>
 
 /**
  * This class is a private helper for the Smb4KGlobal namespace.
  *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
 class Smb4KGlobalPrivate : public QObject

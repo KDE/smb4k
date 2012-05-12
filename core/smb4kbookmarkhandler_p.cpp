@@ -29,17 +29,17 @@
 #include "smb4kbookmark.h"
 
 // Qt includes
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QGridLayout>
-#include <QLabel>
-#include <QHeaderView>
-#include <QInputDialog>
-#include <QEvent>
-#include <QDropEvent>
-#include <QDragMoveEvent>
-#include <QDragEnterEvent>
-#include <QDragLeaveEvent>
+#include <QtCore/QEvent>
+#include <QtGui/QVBoxLayout>
+#include <QtGui/QHBoxLayout>
+#include <QtGui/QGridLayout>
+#include <QtGui/QLabel>
+#include <QtGui/QHeaderView>
+#include <QtGui/QInputDialog>
+#include <QtGui/QDropEvent>
+#include <QtGui/QDragMoveEvent>
+#include <QtGui/QDragEnterEvent>
+#include <QtGui/QDragLeaveEvent>
 
 // KDE includes
 #include <klocale.h>
@@ -1120,16 +1120,6 @@ void Smb4KBookmarkEditor::slotIconSizeChanged( int group )
   }
 }
 
-
-
-Smb4KBookmarkHandlerPrivate::Smb4KBookmarkHandlerPrivate()
-{
-}
-
-
-Smb4KBookmarkHandlerPrivate::~Smb4KBookmarkHandlerPrivate()
-{
-}
 
 #include "smb4kbookmarkhandler_p.moc"
 

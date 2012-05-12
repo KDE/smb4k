@@ -24,24 +24,24 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4kglobal_p.h"
+#include "smb4knotification.h"
+#include "smb4ksettings.h"
+
 // Qt includes
-#include <QDir>
-#include <QTextStream>
-#include <QTextCodec>
-#include <QFile>
-#include <QHostAddress>
-#include <QAbstractSocket>
-#include <QCoreApplication>
+#include <QtCore/QDir>
+#include <QtCore/QTextStream>
+#include <QtCore/QTextCodec>
+#include <QtCore/QFile>
+#include <QtCore/QCoreApplication>
+#include <QtNetwork/QHostAddress>
+#include <QtNetwork/QAbstractSocket>
 
 // system specific includes
 #include <unistd.h>
 #include <sys/types.h>
 #include <errno.h>
-
-// application specific includes
-#include "smb4kglobal_p.h"
-#include <smb4knotification.h>
-#include <smb4ksettings.h>
 
 
 Smb4KGlobalPrivate::Smb4KGlobalPrivate()

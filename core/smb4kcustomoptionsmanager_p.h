@@ -31,18 +31,19 @@
 #include <config.h>
 #endif
 
+// application specific includes
+#include "smb4kcustomoptionsmanager.h"
+#include "smb4kcustomoptions.h"
+
 // Qt includes
-#include <QCheckBox>
+#include <QtCore/QList>
+#include <QtGui/QCheckBox>
 
 // KDE includes
 #include <kdialog.h>
 #include <klineedit.h>
 #include <knuminput.h>
 #include <kcombobox.h>
-
-// application specific includes
-#include <smb4kcustomoptionsmanager.h>
-#include <smb4kcustomoptions.h>
 
 class Smb4KCustomOptionsDialog : public KDialog
 {
@@ -84,8 +85,13 @@ class Smb4KCustomOptionsDialog : public KDialog
 class Smb4KCustomOptionsManagerPrivate
 {
   public:
-    Smb4KCustomOptionsManagerPrivate();
-    ~Smb4KCustomOptionsManagerPrivate();
+    QList<Smb4KCustomOptions *> options;
+};
+
+
+class Smb4KCustomOptionsManagerStatic
+{
+  public:
     Smb4KCustomOptionsManager instance;
 };
 

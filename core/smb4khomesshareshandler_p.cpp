@@ -24,20 +24,20 @@
  *   MA 02110-1335 USA                                                     *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4khomesshareshandler_p.h"
+#include "smb4ksettings.h"
+
 // Qt includes
-#include <QWidget>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QGridLayout>
-#include <QLabel>
-#include <QLineEdit>
+#include <QtGui/QWidget>
+#include <QtGui/QVBoxLayout>
+#include <QtGui/QHBoxLayout>
+#include <QtGui/QGridLayout>
+#include <QtGui/QLabel>
+#include <QtGui/QLineEdit>
 
 // KDE includes
 #include <klocale.h>
-
-// application specific includes
-#include <smb4khomesshareshandler_p.h>
-#include <smb4ksettings.h>
 
 
 Smb4KHomesUsers::Smb4KHomesUsers( const Smb4KShare &s, const QStringList &u )
@@ -221,17 +221,6 @@ void Smb4KHomesUserDialog::slotHomesUserEntered()
   {
     // Do nothing
   }
-}
-
-
-
-Smb4KHomesSharesHandlerPrivate::Smb4KHomesSharesHandlerPrivate()
-{
-}
-
-
-Smb4KHomesSharesHandlerPrivate::~Smb4KHomesSharesHandlerPrivate()
-{
 }
 
 #include "smb4khomesshareshandler_p.moc"

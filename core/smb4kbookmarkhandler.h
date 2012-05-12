@@ -31,9 +31,10 @@
 #endif
 
 // Qt includes
-#include <QObject>
-#include <QList>
-#include <QWidget>
+#include <QtCore/QObject>
+#include <QtCore/QList>
+#include <QtCore/QScopedPointer>
+#include <QtGui/QWidget>
 
 // KDE includes
 #include <kdemacros.h>
@@ -63,7 +64,7 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
     /**
      * The constructor.
      */
-    Smb4KBookmarkHandler();
+    explicit Smb4KBookmarkHandler( QObject *parent = 0 );
 
     /**
      * The destructor.
@@ -158,11 +159,6 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
 
   private:
     /**
-     * The list of bookmarks.
-     */
-    QList<Smb4KBookmark *> m_bookmarks;
-
-    /**
      * This function loads the list of bookmarks from the bookmarks file.
      * When it finishes, the bookmarksUpdated() signal is emitted. So, if you
      * want to access the list of bookmarks immediately after they were read,
@@ -189,9 +185,9 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
     void writeBookmarkList( const QList<Smb4KBookmark *> &list );
 
     /**
-     * The bookmark editor
+     * Pointer to Smb4KBookmarkHandlerPrivate class
      */
-    Smb4KBookmarkEditor *m_editor;
+    const QScopedPointer<Smb4KBookmarkHandlerPrivate> d;
 };
 
 #endif
