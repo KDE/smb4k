@@ -525,16 +525,20 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     /**
      * Enumeration for the checks.
      *
-     * @param Full          Full comparison
-     *
-     * @param NetworkOnly   Only the network related values are compared (except the UNC!).
-     *
-     * @param LocalOnly     Only those values are compared that are of local importance
-     *                      (including the UNC).
+     * @enum Full               Full comparison
+     * @enum NetworkOnly        Only the network related values are compared
+     * @enum MinimalNetworkOnly Only the absolutely necessary network related values
+     *                          are compared
+     * @enum LocalOnly          Only those values are compared that are of local 
+     *                          importance
+     * @enum MinimalLocalOnly   Only those values are compared that have local importance
+     *                          and are absolutely for a comparision
      */
     enum CheckFlags{ Full,
                      NetworkOnly,
-                     LocalOnly };
+                     MinimalNetworkOnly,
+                     LocalOnly,
+                     MinimalLocalOnly };
 
     /**
      * Compare another Smb4KShare object with this one an return TRUE if both carry

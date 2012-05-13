@@ -806,38 +806,248 @@ bool Smb4KShare::equals( Smb4KShare *share, CheckFlags flag ) const
   {
     case Full:
     {
-      if ( QString::compare( unc( QUrl::RemovePassword ), share->unc( QUrl::RemovePassword ) ) == 0 &&
-           QString::compare( workgroupName(), share->workgroupName() ) == 0 &&
-           QString::compare( typeString(), share->typeString() ) == 0 &&
-           QString::compare( comment(), share->comment() ) == 0 &&
-           QString::compare( hostIP(), share->hostIP() ) == 0 &&
-           QString::compare( path(), share->path() ) == 0 &&
-           isInaccessible() == share->isInaccessible() &&
-           isForeign() == share->isForeign() &&
-           fileSystem() == share->fileSystem() &&
-           uid() == share->uid() &&
-           gid() == share->gid() &&
-           totalDiskSpace() == share->totalDiskSpace() &&
-           freeDiskSpace() == share->freeDiskSpace() )
+      // UNC
+      if ( QString::compare( unc(), share->unc(), Qt::CaseInsensitive ) != 0 )
       {
-        return true;
+        return false;
       }
       else
       {
         // Do nothing
       }
 
+      // Login
+      if ( QString::compare( login(), share->login() ) != 0 )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Workgroup name
+      if ( QString::compare( workgroupName(), share->workgroupName(), Qt::CaseInsensitive ) != 0 )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Type
+      if ( QString::compare( typeString(), share->typeString() ) != 0 )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Comment
+      if ( QString::compare( comment(), share->comment() ) != 0 )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // IP address
+      if ( QString::compare( hostIP(), share->hostIP() ) != 0 )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Path
+      if ( QString::compare( path(), share->path() ) != 0 )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Accessibility?
+      if ( isInaccessible() != share->isInaccessible() )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Foreignness
+      if ( isForeign() != share->isForeign() )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // File system
+      if ( fileSystem() != share->fileSystem() )
+      {
+        return false;
+      }
+      else
+      {
+        // do nothing
+      }
+
+      // UID
+      if ( uid() != share->uid() )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // GID
+      if ( gid() != share->gid() )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Total space
+      if ( totalDiskSpace() != share->totalDiskSpace() )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Used space
+      if ( usedDiskSpace() != share->usedDiskSpace() )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Mounted
+      if ( isMounted() != share->isMounted() )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+        
       break;
     }
     case NetworkOnly:
     {
-      if ( QString::compare( unc( QUrl::RemovePassword ), share->unc( QUrl::RemovePassword ) ) == 0 &&
-           QString::compare( workgroupName(), share->workgroupName() ) == 0 &&
-           QString::compare( typeString(), share->typeString() ) == 0 &&
-           QString::compare( comment(), share->comment() ) == 0 &&
-           QString::compare( hostIP(), share->hostIP() ) == 0 )
+      // UNC
+      if ( QString::compare( unc(), share->unc(), Qt::CaseInsensitive ) != 0 )
       {
-        return true;
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Login
+      if ( QString::compare( login(), share->login() ) != 0 )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Workgroup name
+      if ( QString::compare( workgroupName(), share->workgroupName(), Qt::CaseInsensitive ) != 0 )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Type
+      if ( QString::compare( typeString(), share->typeString() ) != 0 )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Comment
+      if ( QString::compare( comment(), share->comment() ) != 0 )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // IP address
+      if ( QString::compare( hostIP(), share->hostIP() ) != 0 )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      break;
+    }
+    case MinimalNetworkOnly:
+    {
+      // UNC
+      if ( QString::compare( unc(), share->unc(), Qt::CaseInsensitive ) != 0 )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Workgroup name
+      if ( QString::compare( workgroupName(), share->workgroupName(), Qt::CaseInsensitive ) != 0 )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Type
+      if ( QString::compare( typeString(), share->typeString() ) != 0 )
+      {
+        return false;
       }
       else
       {
@@ -848,17 +1058,154 @@ bool Smb4KShare::equals( Smb4KShare *share, CheckFlags flag ) const
     }
     case LocalOnly:
     {
-      if ( QString::compare( path(), share->path() ) == 0 &&
-           QString::compare( login(), share->login() ) == 0 &&
-           isInaccessible() == share->isInaccessible() &&
-           isForeign() == share->isForeign() &&
-           fileSystem() == share->fileSystem() &&
-           uid() == share->uid() &&
-           gid() == share->gid() &&
-           totalDiskSpace() == share->totalDiskSpace() &&
-           freeDiskSpace() == share->freeDiskSpace() )
+      // UNC
+      if ( QString::compare( unc(), share->unc(), Qt::CaseInsensitive ) != 0 )
       {
-        return true;
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Login
+      if ( QString::compare( login(), share->login() ) != 0 )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      // Path
+      if ( QString::compare( path(), share->path() ) != 0 )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Accessibility?
+      if ( isInaccessible() != share->isInaccessible() )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Foreignness
+      if ( isForeign() != share->isForeign() )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // File system
+      if ( fileSystem() != share->fileSystem() )
+      {
+        return false;
+      }
+      else
+      {
+        // do nothing
+      }
+
+      // UID
+      if ( uid() != share->uid() )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // GID
+      if ( gid() != share->gid() )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Total space
+      if ( totalDiskSpace() != share->totalDiskSpace() )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Used space
+      if ( usedDiskSpace() != share->usedDiskSpace() )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Mounted
+      if ( isMounted() != share->isMounted() )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      break;
+    }
+    case MinimalLocalOnly:
+    {
+      // UNC
+      if ( QString::compare( unc(), share->unc(), Qt::CaseInsensitive ) != 0 )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Path
+      if ( QString::compare( path(), share->path() ) != 0 )
+      {
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // File system
+      if ( fileSystem() != share->fileSystem() )
+      {
+        return false;
+      }
+      else
+      {
+        // do nothing
+      }
+
+      // Mounted
+      if ( isMounted() != share->isMounted() )
+      {
+        return false;
       }
       else
       {
@@ -866,14 +1213,14 @@ bool Smb4KShare::equals( Smb4KShare *share, CheckFlags flag ) const
       }
 
       break;
-    }
+    }    
     default:
     {
       break;
     }
   }
 
-  return false;
+  return true;
 }
 
 
@@ -1007,7 +1354,7 @@ void Smb4KShare::setMountData( Smb4KShare *share )
 {
   Q_ASSERT( share );
 
-  if ( equals( share, NetworkOnly ) )
+  if ( equals( share, MinimalNetworkOnly ) )
   {
     d->path         = share->path();
     d->inaccessible = share->isInaccessible();
