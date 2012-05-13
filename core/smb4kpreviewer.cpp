@@ -2,7 +2,7 @@
     smb4kpreviewer  -  This class queries a remote share for a preview
                              -------------------
     begin                : Sa Mär 05 2011
-    copyright            : (C) 2011 by Alexander Reinholdt
+    copyright            : (C) 2011-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -23,29 +23,30 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4kpreviewer.h"
+#include "smb4kpreviewer_p.h"
+#include "smb4kwalletmanager.h"
+#include "smb4kshare.h"
+#include "smb4kauthinfo.h"
+#include "smb4khomesshareshandler.h"
+#include "smb4kglobal.h"
+
 // Qt includes
-#include <QTimer>
-#include <QDebug>
-#include <QCoreApplication>
+#include <QtCore/QTimer>
+#include <QtCore/QDebug>
+#include <QtCore/QCoreApplication>
 
 // KDE includes
 #include <kglobal.h>
 
-// application specific includes
-#include <smb4kpreviewer.h>
-#include <smb4kpreviewer_p.h>
-#include <smb4kwalletmanager.h>
-#include <smb4kshare.h>
-#include <smb4kauthinfo.h>
-#include <smb4khomesshareshandler.h>
-#include <smb4kglobal.h>
-
 using namespace Smb4KGlobal;
 
-K_GLOBAL_STATIC( Smb4KPreviewerPrivate, p );
+K_GLOBAL_STATIC( Smb4KPreviewerStatic, p );
 
 
-Smb4KPreviewer::Smb4KPreviewer() : KCompositeJob( 0 )
+Smb4KPreviewer::Smb4KPreviewer( QObject *parent )
+: KCompositeJob( parent ), d( new Smb4KPreviewerPrivate )
 {
   setAutoDelete( false );
 
@@ -105,11 +106,11 @@ void Smb4KPreviewer::preview( Smb4KShare *share, QWidget *parent )
   // for this share and reuse it, if appropriate.
   Smb4KPreviewDialog *dlg = NULL;
   
-  for ( int i = 0; i < m_dialogs.size(); ++i )
+  for ( int i = 0; i < d->dialogs.size(); ++i )
   {
-    if ( share == m_dialogs.at( i )->share() )
+    if ( share == d->dialogs.at( i )->share() )
     {
-      dlg = m_dialogs.at( i );
+      dlg = d->dialogs.at( i );
     }
     else
     {
@@ -131,7 +132,7 @@ void Smb4KPreviewer::preview( Smb4KShare *share, QWidget *parent )
              dlg,  SLOT( slotFinished( Smb4KShare *, const QUrl & ) ) );
     connect( dlg,  SIGNAL( abortPreview( Smb4KShare * ) ),
              this, SLOT( slotAbortPreview( Smb4KShare* ) ) );
-    m_dialogs.append( dlg );
+    d->dialogs.append( dlg );
   }
   else
   {
@@ -266,8 +267,8 @@ void Smb4KPreviewer::slotDialogClosed( Smb4KPreviewDialog *dialog )
     // Find the dialog in the list and take it from the list.
     // It will automatically be deleted on close, so there is
     // no need to delete the dialog here.
-    int i = m_dialogs.indexOf( dialog );
-    m_dialogs.takeAt( i );
+    int i = d->dialogs.indexOf( dialog );
+    d->dialogs.takeAt( i );
   }
   else
   {
@@ -307,11 +308,11 @@ void Smb4KPreviewer::slotAcquirePreview( Smb4KShare *share, const QUrl &url, QWi
   // can be sent.
   Smb4KPreviewDialog *dlg = NULL;
 
-  for ( int i = 0; i < m_dialogs.size(); ++i )
+  for ( int i = 0; i < d->dialogs.size(); ++i )
   {
-    if ( m_dialogs.at( i ) && m_dialogs.at( i )->share() == share )
+    if ( d->dialogs.at( i ) && d->dialogs.at( i )->share() == share )
     {
-      dlg = m_dialogs[i];
+      dlg = d->dialogs[i];
       break;
     }
     else

@@ -37,9 +37,9 @@
 #include "smb4knetworkobject.h"
 
 // Qt includes
-#include <QThread>
-#include <QString>
-#include <QCheckBox>
+#include <QtCore/QThread>
+#include <QtCore/QString>
+#include <QtGui/QCheckBox>
 
 // KDE includes
 #include <kdebug.h>

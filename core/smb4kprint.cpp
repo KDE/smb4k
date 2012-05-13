@@ -2,7 +2,7 @@
     smb4kprint  -  The (new) printing core class.
                              -------------------
     begin                : Son Feb 20 2011
-    copyright            : (C) 2011 by Alexander Reinholdt
+    copyright            : (C) 2011-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -23,6 +23,15 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4kprint.h"
+#include "smb4kprint_p.h"
+#include "smb4kshare.h"
+#include "smb4knotification.h"
+#include "smb4kauthinfo.h"
+#include "smb4kwalletmanager.h"
+#include "smb4kglobal.h"
+
 // Qt includes
 #include <QTimer>
 #include <QDebug>
@@ -32,22 +41,14 @@
 #include <kglobal.h>
 #include <kstandarddirs.h>
 
-// application specific includes
-#include <smb4kprint.h>
-#include <smb4kprint_p.h>
-#include <smb4kshare.h>
-#include <smb4knotification.h>
-#include <smb4kauthinfo.h>
-#include <smb4kwalletmanager.h>
-#include <smb4kglobal.h>
-
 using namespace Smb4KGlobal;
 
 
-K_GLOBAL_STATIC( Smb4KPrintPrivate, p );
+K_GLOBAL_STATIC( Smb4KPrintStatic, p );
 
 
-Smb4KPrint::Smb4KPrint() : KCompositeJob( 0 )
+Smb4KPrint::Smb4KPrint( QObject *parent )
+: KCompositeJob( parent )
 {
   setAutoDelete( false );
 

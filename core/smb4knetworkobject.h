@@ -37,11 +37,11 @@
 #include "smb4kshare.h"
 
 // Qt includes
-#include <QObject>
-#include <QUrl>
-#include <QString>
-#include <QIcon>
-#include <QScopedPointer>
+#include <QtCore/QObject>
+#include <QtCore/QUrl>
+#include <QtCore/QString>
+#include <QtCore/QScopedPointer>
+#include <QtGui/QIcon>
 
 // KDE includes
 #include <kdemacros.h>
@@ -197,7 +197,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
     QUrl mountpoint() const;
     
   private:
-    QScopedPointer<Smb4KNetworkObjectPrivate> d;
+    const QScopedPointer<Smb4KNetworkObjectPrivate> d;
 };
 
 #endif

@@ -36,10 +36,10 @@
 #include "smb4kwalletmanager.h"
 
 // Qt includes
-#include <QTimer>
-#include <QDebug>
-#include <QHostAddress>
-#include <QAbstractSocket>
+#include <QtCore/QTimer>
+#include <QtCore/QDebug>
+#include <QtNetwork/QHostAddress>
+#include <QtNetwork/QAbstractSocket>
 
 // KDE includes
 #include <kstandarddirs.h>
@@ -2735,16 +2735,6 @@ void Smb4KLookupIPAddressJob::slotProcessFinished( int /*exitCode*/, QProcess::E
   emitResult();
 }
 
-
-
-Smb4KScannerPrivate::Smb4KScannerPrivate()
-{
-}
-
-
-Smb4KScannerPrivate::~Smb4KScannerPrivate()
-{
-}
 
 
 #include "smb4kscanner_p.moc"

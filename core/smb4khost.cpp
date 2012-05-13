@@ -23,17 +23,17 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4khost.h"
+#include "smb4kauthinfo.h"
+
 // Qt includes
-#include <QHostAddress>
-#include <QStringList>
+#include <QtCore/QStringList>
+#include <QtNetwork/QHostAddress>
 
 // KDE includes
 #include <kdebug.h>
 #include <kicon.h>
-
-// application specific includes
-#include <smb4khost.h>
-#include <smb4kauthinfo.h>
 
 
 class Smb4KHostPrivate

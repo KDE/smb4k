@@ -34,13 +34,13 @@
 #include "smb4kcustomoptions.h"
 
 // Qt includes
-#include <QFileInfo>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
-#include <QGridLayout>
-#include <QLabel>
-#include <QTimer>
-#include <QDir>
+#include <QtCore/QFileInfo>
+#include <QtCore/QTimer>
+#include <QtCore/QDir>
+#include <QtGui/QHBoxLayout>
+#include <QtGui/QVBoxLayout>
+#include <QtGui/QGridLayout>
+#include <QtGui/QLabel>
 
 // KDE includes
 #include <kdiskfreespaceinfo.h>

@@ -48,7 +48,6 @@
 #include <QtGui/QDesktopWidget>
 
 // KDE includes
-#include <kapplication.h>
 #include <klocale.h>
 #include <kdebug.h>
 #include <kmessagebox.h>
@@ -66,7 +65,8 @@ K_GLOBAL_STATIC( Smb4KMounterStatic, p );
 
 
 
-Smb4KMounter::Smb4KMounter() : KCompositeJob( 0 ), d( new Smb4KMounterPrivate )
+Smb4KMounter::Smb4KMounter( QObject *parent )
+: KCompositeJob( parent ), d( new Smb4KMounterPrivate )
 {
   setAutoDelete( false );
 
@@ -88,17 +88,17 @@ Smb4KMounter::Smb4KMounter() : KCompositeJob( 0 ), d( new Smb4KMounterPrivate )
   d->pendingMounts = 0;
   d->initialMounts = 0;
 
-  connect( kapp,                        SIGNAL( aboutToQuit() ),
-           this,                        SLOT( slotAboutToQuit() ) );
+  connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ),
+           this,                         SLOT( slotAboutToQuit() ) );
 
-  connect( Smb4KSolidInterface::self(), SIGNAL( buttonPressed( Smb4KSolidInterface::ButtonType ) ),
-           this,                        SLOT( slotHardwareButtonPressed( Smb4KSolidInterface::ButtonType ) ) );
+  connect( Smb4KSolidInterface::self(),  SIGNAL( buttonPressed( Smb4KSolidInterface::ButtonType ) ),
+           this,                         SLOT( slotHardwareButtonPressed( Smb4KSolidInterface::ButtonType ) ) );
 
-  connect( Smb4KSolidInterface::self(), SIGNAL( wokeUp() ),
-           this,                        SLOT( slotComputerWokeUp() ) );
+  connect( Smb4KSolidInterface::self(),  SIGNAL( wokeUp() ),
+           this,                         SLOT( slotComputerWokeUp() ) );
 
-  connect( Smb4KSolidInterface::self(), SIGNAL( networkStatusChanged( Smb4KSolidInterface::ConnectionStatus ) ),
-           this,                        SLOT( slotNetworkStatusChanged( Smb4KSolidInterface::ConnectionStatus ) ) );
+  connect( Smb4KSolidInterface::self(),  SIGNAL( networkStatusChanged( Smb4KSolidInterface::ConnectionStatus ) ),
+           this,                         SLOT( slotNetworkStatusChanged( Smb4KSolidInterface::ConnectionStatus ) ) );
 }
 
 
@@ -168,7 +168,7 @@ void Smb4KMounter::abort( Smb4KShare *share )
 
 void Smb4KMounter::abortAll()
 {
-  if ( !kapp->closingDown() )
+  if ( !QCoreApplication::closingDown() )
   {
     QListIterator<KJob *> it( subjobs() );
     
@@ -1366,7 +1366,7 @@ void Smb4KMounter::cleanup()
 
 void Smb4KMounter::timerEvent( QTimerEvent * )
 {
-  if ( !kapp->startingUp() && !isRunning() )
+  if ( !QCoreApplication::startingUp() && !isRunning() )
   {
     if ( !d->retries.isEmpty() )
     {

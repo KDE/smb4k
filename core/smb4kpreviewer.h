@@ -2,7 +2,7 @@
     smb4kpreviewer  -  This class queries a remote share for a preview
                              -------------------
     begin                : Sa Mär 05 2011
-    copyright            : (C) 2011 by Alexander Reinholdt
+    copyright            : (C) 2011-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -31,8 +31,9 @@
 #endif
 
 // Qt includes
-#include <QWidget>
-#include <QUrl>
+#include <QtCore/QUrl>
+#include <QtCore/QScopedPointer>
+#include <QtGui/QWidget>
 
 // KDE includes
 #include <kdemacros.h>
@@ -51,6 +52,16 @@ class KDE_EXPORT Smb4KPreviewer : public KCompositeJob
   friend class Smb4KPreviewerPrivate;
 
   public:
+    /**
+     * Constructor
+     */
+    Smb4KPreviewer( QObject *parent = 0 );
+
+    /**
+     * Destructor
+     */
+    ~Smb4KPreviewer();
+    
     /**
      * This function returns a static pointer to this class.
      *
@@ -181,19 +192,9 @@ class KDE_EXPORT Smb4KPreviewer : public KCompositeJob
 
   private:
     /**
-     * Constructor
+     * Pointer to the Smb4KPreviewerPrivate class
      */
-    Smb4KPreviewer();
-
-    /**
-     * Destructor
-     */
-    ~Smb4KPreviewer();
-
-    /**
-     * List of preview dialogs
-     */
-    QList<Smb4KPreviewDialog *> m_dialogs;
+    const QScopedPointer<Smb4KPreviewerPrivate> d;
 };
 
 #endif

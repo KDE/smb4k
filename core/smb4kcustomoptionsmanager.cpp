@@ -49,8 +49,6 @@ K_GLOBAL_STATIC( Smb4KCustomOptionsManagerStatic, p );
 Smb4KCustomOptionsManager::Smb4KCustomOptionsManager( QObject *parent )
 : QObject( parent ), d( new Smb4KCustomOptionsManagerPrivate )
 {
-  qDebug() << "Constructor";
-  
   // We need the directory.
   QString dir = KGlobal::dirs()->locateLocal( "data", "smb4k", KGlobal::mainComponent() );
 

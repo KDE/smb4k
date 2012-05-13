@@ -35,9 +35,10 @@
 #include "smb4kprocess.h"
 #include "smb4kworkgroup.h"
 #include "smb4kauthinfo.h"
+#include "smb4knetworkobject.h"
 
 // Qt includes
-#include <QWidget>
+#include <QtGui/QWidget>
 
 // KDE includes
 #include <kjob.h>
@@ -714,8 +715,18 @@ class Smb4KLookupIPAddressJob : public KJob
 class Smb4KScannerPrivate
 {
   public:
-    Smb4KScannerPrivate();
-    ~Smb4KScannerPrivate();
+    int elapsedTime;
+    bool scanningAllowed;
+    QList<Smb4KNetworkObject *> workgroupObjects;
+    QList<Smb4KNetworkObject *> hostObjects;
+    QList<Smb4KNetworkObject *> shareObjects;
+    QList<Smb4KScanner::Process> periodicJobs;
+};
+
+
+class Smb4KScannerStatic
+{
+  public:
     Smb4KScanner instance;
 };
 

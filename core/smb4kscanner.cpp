@@ -39,10 +39,10 @@
 #include "smb4knetworkobject.h"
 
 // Qt includes
-#include <QTimer>
-#include <QHostAddress>
-#include <QAbstractSocket>
-#include <QDebug>
+#include <QtCore/QTimer>
+#include <QtCore/QDebug>
+#include <QtNetwork/QHostAddress>
+#include <QtNetwork/QAbstractSocket>
 
 // KDE includes
 #include <kglobal.h>
@@ -52,10 +52,12 @@ using namespace Smb4KGlobal;
 
 #define TIMER_INTERVAL 250
 
-K_GLOBAL_STATIC( Smb4KScannerPrivate, p );
+K_GLOBAL_STATIC( Smb4KScannerStatic, p );
 
 
-Smb4KScanner::Smb4KScanner() : KCompositeJob( 0 )
+
+Smb4KScanner::Smb4KScanner( QObject *parent )
+: KCompositeJob( parent ), d( new Smb4KScannerPrivate )
 {
   setAutoDelete( false );
 
@@ -68,8 +70,8 @@ Smb4KScanner::Smb4KScanner() : KCompositeJob( 0 )
     // Do nothing
   }
   
-  m_interval = 0;
-  m_scanning_allowed = true;
+  d->elapsedTime     = 0;
+  d->scanningAllowed = true;
   
   connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
 }
@@ -77,19 +79,19 @@ Smb4KScanner::Smb4KScanner() : KCompositeJob( 0 )
 
 Smb4KScanner::~Smb4KScanner()
 {
-  while ( !m_workgroup_objects.isEmpty() )
+  while ( !d->workgroupObjects.isEmpty() )
   {
-    delete m_workgroup_objects.takeFirst();
+    delete d->workgroupObjects.takeFirst();
   }
 
-  while ( !m_host_objects.isEmpty() )
+  while ( !d->hostObjects.isEmpty() )
   {
-    delete m_host_objects.takeFirst();
+    delete d->hostObjects.takeFirst();
   }
 
-  while ( !m_share_objects.isEmpty() )
+  while ( !d->shareObjects.isEmpty() )
   {
-    delete m_share_objects.takeFirst();
+    delete d->shareObjects.takeFirst();
   }
 }
 
@@ -704,19 +706,19 @@ void Smb4KScanner::lookupInfo( Smb4KHost *host, QWidget *parent )
 
 QDeclarativeListProperty<Smb4KNetworkObject> Smb4KScanner::workgroups()
 {
-  return QDeclarativeListProperty<Smb4KNetworkObject>( this, m_workgroup_objects );
+  return QDeclarativeListProperty<Smb4KNetworkObject>( this, d->workgroupObjects );
 }
 
 
 QDeclarativeListProperty<Smb4KNetworkObject> Smb4KScanner::hosts()
 {
-  return QDeclarativeListProperty<Smb4KNetworkObject>( this, m_host_objects );
+  return QDeclarativeListProperty<Smb4KNetworkObject>( this, d->hostObjects );
 }
 
 
 QDeclarativeListProperty<Smb4KNetworkObject> Smb4KScanner::shares()
 {
-  return QDeclarativeListProperty<Smb4KNetworkObject>( this, m_share_objects );
+  return QDeclarativeListProperty<Smb4KNetworkObject>( this, d->shareObjects );
 }
 
 
@@ -789,11 +791,11 @@ Smb4KNetworkObject *Smb4KScanner::find( const QUrl &url, int type )
     {
       case Smb4KNetworkObject::Workgroup:
       {
-        for ( int i = 0; i < m_workgroup_objects.size(); ++i )
+        for ( int i = 0; i < d->workgroupObjects.size(); ++i )
         {
-          if ( url == m_workgroup_objects.at( i )->url() )
+          if ( url == d->workgroupObjects.at( i )->url() )
           {
-            object = m_workgroup_objects[i];
+            object = d->workgroupObjects[i];
             break;
           }
           else
@@ -805,11 +807,11 @@ Smb4KNetworkObject *Smb4KScanner::find( const QUrl &url, int type )
       }
       case Smb4KNetworkObject::Host:
       {
-        for ( int i = 0; i < m_host_objects.size(); ++i )
+        for ( int i = 0; i < d->hostObjects.size(); ++i )
         {
-          if ( url == m_host_objects.at( i )->url() )
+          if ( url == d->hostObjects.at( i )->url() )
           {
-            object = m_host_objects[i];
+            object = d->hostObjects[i];
             break;
           }
           else
@@ -821,11 +823,11 @@ Smb4KNetworkObject *Smb4KScanner::find( const QUrl &url, int type )
       }
       case Smb4KNetworkObject::Share:
       {
-        for ( int i = 0; i < m_share_objects.size(); ++i )
+        for ( int i = 0; i < d->shareObjects.size(); ++i )
         {
-          if ( url == m_share_objects.at( i )->url() )
+          if ( url == d->shareObjects.at( i )->url() )
           {
-            object = m_share_objects[i];
+            object = d->shareObjects[i];
             break;
           }
           else
@@ -854,29 +856,29 @@ void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
 {
   if ( Smb4KSettings::periodicScanning() )
   {
-    if ( m_interval == 0 )
+    if ( d->elapsedTime == 0 )
     {
-      if ( m_periodic_jobs.isEmpty() )
+      if ( d->periodicJobs.isEmpty() )
       {
         // This case occurs when the user enables periodic scanning during
         // runtime. We need to fill the list of periodic jobs here, so that
         // we can immediately start periodic scanning.
-        m_periodic_jobs << LookupDomains;
-        m_periodic_jobs << LookupDomainMembers;
-        m_periodic_jobs << LookupShares;
+        d->periodicJobs << LookupDomains;
+        d->periodicJobs << LookupDomainMembers;
+        d->periodicJobs << LookupShares;
       }
       else
       {
         // This is the regular case. We do not need to do anything.
       }
 
-      Process p = m_periodic_jobs.takeFirst();
+      Process p = d->periodicJobs.takeFirst();
 
       switch ( p )
       {
         case LookupDomains:
         {
-          m_scanning_allowed = false;
+          d->scanningAllowed = false;
           lookupDomains();
           break;
         }
@@ -888,23 +890,23 @@ void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
     }
     else
     {
-      if ( m_interval >= (Smb4KSettings::scanInterval() * 60000 /* milliseconds */) )
+      if ( d->elapsedTime >= (Smb4KSettings::scanInterval() * 60000 /* milliseconds */) )
       {
         // Reset interval. Since the check above 
-        m_interval = -TIMER_INTERVAL;
+        d->elapsedTime = -TIMER_INTERVAL;
 
         // Fill list
-        m_periodic_jobs << LookupDomains;
-        m_periodic_jobs << LookupDomainMembers;
-        m_periodic_jobs << LookupShares;
+        d->periodicJobs << LookupDomains;
+        d->periodicJobs << LookupDomainMembers;
+        d->periodicJobs << LookupShares;
       }
       else
       {
         // Check if we need to do something.
         // Do not start any process before the previous has not finished.
-        if ( !m_periodic_jobs.isEmpty() && m_scanning_allowed )
+        if ( !d->periodicJobs.isEmpty() && d->scanningAllowed )
         {
-          Process p = m_periodic_jobs.takeFirst();
+          Process p = d->periodicJobs.takeFirst();
 
           switch ( p )
           {
@@ -912,7 +914,7 @@ void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
             {
               for ( int i = 0; i < workgroupsList().size(); ++i )
               {
-                m_scanning_allowed = false;
+                d->scanningAllowed = false;
                 lookupDomainMembers( workgroupsList()[i] );
               }
               break;
@@ -921,7 +923,7 @@ void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
             {
               for ( int i = 0; i < hostsList().size(); ++i )
               {
-                m_scanning_allowed = false;
+                d->scanningAllowed = false;
                 lookupShares( hostsList()[i] );
               }
               break;
@@ -939,15 +941,15 @@ void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
       }
     }
 
-    m_interval += TIMER_INTERVAL;
+    d->elapsedTime += TIMER_INTERVAL;
   }
   else
   {
     // Periodic scanning is not enabled or has been disabled
     // during runtime. So, reset the interval, if necessary.
-    if ( m_interval != 0 )
+    if ( d->elapsedTime != 0 )
     {
-      m_interval = 0;
+      d->elapsedTime = 0;
     }
     else
     {
@@ -975,9 +977,9 @@ void Smb4KScanner::slotStartJobs()
   if ( Smb4KSettings::periodicScanning() )
   {
     // Fill list
-    m_periodic_jobs << LookupDomains;
-    m_periodic_jobs << LookupDomainMembers;
-    m_periodic_jobs << LookupShares;
+    d->periodicJobs << LookupDomains;
+    d->periodicJobs << LookupDomainMembers;
+    d->periodicJobs << LookupShares;
   }
   else
   {
@@ -1121,7 +1123,7 @@ void Smb4KScanner::slotDomainsLookupFinished()
 {
   Smb4KBasicNetworkItem item;
   emit finished( &item, LookupDomains );
-  m_scanning_allowed = true;
+  d->scanningAllowed = true;
 }
 
 
@@ -1134,7 +1136,7 @@ void Smb4KScanner::slotAboutToStartHostsLookup( Smb4KWorkgroup *workgroup )
 void Smb4KScanner::slotHostsLookupFinished( Smb4KWorkgroup *workgroup )
 {
   emit finished( workgroup, LookupDomainMembers );
-  m_scanning_allowed = true;
+  d->scanningAllowed = true;
 }
 
 
@@ -1147,7 +1149,7 @@ void Smb4KScanner::slotAboutToStartSharesLookup( Smb4KHost *host )
 void Smb4KScanner::slotSharesLookupFinished( Smb4KHost *host )
 {
   emit finished( host, LookupShares );
-  m_scanning_allowed = true;
+  d->scanningAllowed = true;
 }
 
 
@@ -1336,25 +1338,25 @@ void Smb4KScanner::slotWorkgroups( const QList<Smb4KWorkgroup *> &workgroups_lis
   }
 
   // (Re)fill the list of workgroup objects.
-  while ( !m_workgroup_objects.isEmpty() )
+  while ( !d->workgroupObjects.isEmpty() )
   {
-    delete m_workgroup_objects.takeFirst();
+    delete d->workgroupObjects.takeFirst();
   }
 
   for ( int i = 0; i < workgroupsList().size(); ++i )
   {
-    m_workgroup_objects << new Smb4KNetworkObject( workgroupsList().at( i ) );
+    d->workgroupObjects << new Smb4KNetworkObject( workgroupsList().at( i ) );
   }
 
   // (Re)fill the list of host object.
-  while ( !m_host_objects.isEmpty() )
+  while ( !d->hostObjects.isEmpty() )
   {
-    delete m_host_objects.takeFirst();
+    delete d->hostObjects.takeFirst();
   }
 
   for ( int i = 0; i < hostsList().size(); ++i )
   {
-    m_host_objects << new Smb4KNetworkObject( hostsList().at( i ) );
+    d->hostObjects << new Smb4KNetworkObject( hostsList().at( i ) );
   }  
 
   emit workgroups( workgroupsList() );
@@ -1517,14 +1519,14 @@ void Smb4KScanner::slotHosts( Smb4KWorkgroup *workgroup, const QList<Smb4KHost *
   }
 
   // (Re)fill the list of host object.
-  while ( !m_host_objects.isEmpty() )
+  while ( !d->hostObjects.isEmpty() )
   {
-    delete m_host_objects.takeFirst();
+    delete d->hostObjects.takeFirst();
   }
 
   for ( int i = 0; i < hostsList().size(); ++i )
   {
-    m_host_objects << new Smb4KNetworkObject( hostsList().at( i ) );
+    d->hostObjects << new Smb4KNetworkObject( hostsList().at( i ) );
   }
   
   emit hostsListChanged();
@@ -1568,7 +1570,7 @@ void Smb4KScanner::slotShares( Smb4KHost *host, const QList<Smb4KShare *> &share
             continue;
           }
         }
-        
+
         shares_list[i]->setMountData( mounted_share );
       }
       else
@@ -1635,14 +1637,14 @@ void Smb4KScanner::slotShares( Smb4KHost *host, const QList<Smb4KShare *> &share
   }
 
   // (Re)fill the list of share object.
-  while ( !m_share_objects.isEmpty() )
+  while ( !d->shareObjects.isEmpty() )
   {
-    delete m_share_objects.takeFirst();
+    delete d->shareObjects.takeFirst();
   }
 
   for ( int i = 0; i < sharesList().size(); ++i )
   {
-    m_share_objects << new Smb4KNetworkObject( sharesList().at( i ) );
+    d->shareObjects << new Smb4KNetworkObject( sharesList().at( i ) );
   }
   
   QList<Smb4KShare *> shared_resources = sharedResources( host );

@@ -35,9 +35,10 @@
 #include "smb4knetworkobject.h"
 
 // Qt includes
-#include <QWidget>
-#include <QTimerEvent>
-#include <QDeclarativeListProperty>
+#include <QtCore/QTimerEvent>
+#include <QtCore/QScopedPointer>
+#include <QtGui/QWidget>
+#include <QtDeclarative/QDeclarativeListProperty>
 
 // KDE includes
 #include <kcompositejob.h>
@@ -51,7 +52,7 @@ class Smb4KShare;
 class Smb4KQueryMasterJob;
 class Smb4KLookupDomainMembersJob;
 class Smb4KLookupSharesJob;
-// class Smb4KNetworkObject;
+class Smb4KScannerPrivate;
 
 class KDE_EXPORT Smb4KScanner : public KCompositeJob
 {
@@ -76,7 +77,7 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
     /**
      * Constructor
      */
-    Smb4KScanner();
+    Smb4KScanner( QObject *parent = 0 );
 
     /**
      * Destructor
@@ -450,35 +451,9 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
 
   private:
     /**
-     * Scan interval
+     * Pointer to Smb4KScannerPrivate class
      */
-    int m_interval;
-    
-    /**
-     * List for periodic jobs
-     */
-    QList<Process> m_periodic_jobs;
-    
-    /**
-     * Allowance to process the next job when in
-     * periodic scanning mode
-     */
-    bool m_scanning_allowed;
-
-    /**
-     * A list with all workgroups encapsulated in Smb4KNetworkObjects
-     */
-    QList<Smb4KNetworkObject *> m_workgroup_objects;
-
-    /**
-     * A list with all hosts encapsulted in Smb4KNetworkObjects
-     */
-    QList<Smb4KNetworkObject *> m_host_objects;
-
-    /**
-     * A list with all shares encapsulted in Smb4KNetworkObjects
-     */
-    QList<Smb4KNetworkObject *> m_share_objects;
+    const QScopedPointer<Smb4KScannerPrivate> d;
 };
 
 #endif

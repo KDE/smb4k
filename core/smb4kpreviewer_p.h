@@ -30,9 +30,13 @@
 #include <config.h>
 #endif
 
+// application specific includes
+#include "smb4kpreviewer.h"
+#include "smb4kprocess.h"
+
 // Qt includes
-#include <QStringList>
-#include <QListIterator>
+#include <QtCore/QStringList>
+#include <QtCore/QListIterator>
 
 // KDE includes
 #include <kjob.h>
@@ -40,10 +44,6 @@
 #include <klistwidget.h>
 #include <khistorycombobox.h>
 #include <kaction.h>
-
-// application specific includes
-#include <smb4kpreviewer.h>
-#include <smb4kprocess.h>
 
 // forward declarations
 class Smb4KShare;
@@ -371,8 +371,13 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
 class Smb4KPreviewerPrivate
 {
   public:
-    Smb4KPreviewerPrivate();
-    ~Smb4KPreviewerPrivate();
+    QList<Smb4KPreviewDialog *> dialogs;
+};
+
+
+class Smb4KPreviewerStatic
+{
+  public:
     Smb4KPreviewer instance;
 };
 

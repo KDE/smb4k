@@ -23,10 +23,20 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4kpreviewer_p.h"
+#include "smb4knotification.h"
+#include "smb4khost.h"
+#include "smb4kshare.h"
+#include "smb4kglobal.h"
+#include "smb4ksettings.h"
+#include "smb4kcustomoptionsmanager.h"
+#include "smb4kcustomoptions.h"
+
 // Qt includes
-#include <QTimer>
-#include <QGridLayout>
-#include <QDateTime>
+#include <QtCore/QTimer>
+#include <QtCore/QDateTime>
+#include <QtGui/QGridLayout>
 
 // KDE includes
 #include <kdebug.h>
@@ -36,16 +46,6 @@
 #include <ktoolbar.h>
 #include <kstatusbar.h>
 #include <kshell.h>
-
-// application specific includes
-#include <smb4kpreviewer_p.h>
-#include <smb4knotification.h>
-#include <smb4khost.h>
-#include <smb4kshare.h>
-#include <smb4kglobal.h>
-#include <smb4ksettings.h>
-#include <smb4kcustomoptionsmanager.h>
-#include <smb4kcustomoptions.h>
 
 using namespace Smb4KGlobal;
 
@@ -1043,15 +1043,6 @@ void Smb4KPreviewDialog::slotIconSizeChanged( int group )
   }
 }
 
-
-Smb4KPreviewerPrivate::Smb4KPreviewerPrivate()
-{
-}
-
-
-Smb4KPreviewerPrivate::~Smb4KPreviewerPrivate()
-{
-}
 
 #include "smb4kpreviewer_p.moc"
 

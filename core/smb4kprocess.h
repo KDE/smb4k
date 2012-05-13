@@ -2,7 +2,7 @@
     smb4kprocess  -  This class executes shell processes.
                              -------------------
     begin                : Mi Mär 4 2009
-    copyright            : (C) 2009-2011 by Alexander Reinholdt
+    copyright            : (C) 2009-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -19,7 +19,7 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
@@ -30,19 +30,27 @@
 #include <config.h>
 #endif
 
+// Qt includes
+#include <QtCore/QScopedPointer>
+
 // KDE includes
 #include <kprocess.h>
+
+// forward declarations
+class Smb4KProcessPrivate;
 
 /**
  * This class provides a version of KProcess adjusted to the needs of Smb4K.
  * It executes shell processes.
  *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
 class Smb4KProcess : public KProcess
 {
   Q_OBJECT
+
+  friend class Smb4KProcessPrivate;
 
   public:
     /**
@@ -69,10 +77,10 @@ class Smb4KProcess : public KProcess
      *
      * @returns TRUE if the process was aborted.
      */
-    bool isAborted() { return m_aborted; }
+    bool isAborted() const;
 
   private:
-    bool m_aborted;
+    const QScopedPointer<Smb4KProcessPrivate> d;
 };
 
 

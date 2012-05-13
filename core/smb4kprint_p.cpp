@@ -24,12 +24,19 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4kprint_p.h"
+#include "smb4kshare.h"
+#include "smb4ksettings.h"
+#include "smb4knotification.h"
+#include "smb4kglobal.h"
+
 // Qt includes
-#include <QGridLayout>
-#include <QLabel>
-#include <QTimer>
-#include <QTextDocument>
-#include <QPointer>
+#include <QtCore/QTimer>
+#include <QtCore/QPointer>
+#include <QtGui/QGridLayout>
+#include <QtGui/QLabel>
+#include <QtGui/QTextDocument>
 
 // KDE includes
 #include <kdebug.h>
@@ -37,13 +44,6 @@
 #include <kfileitem.h>
 #include <ktempdir.h>
 #include <kstandarddirs.h>
-
-// application specific includes
-#include <smb4kprint_p.h>
-#include <smb4kshare.h>
-#include <smb4ksettings.h>
-#include <smb4knotification.h>
-#include <smb4kglobal.h>
 
 using namespace Smb4KGlobal;
 
@@ -491,17 +491,6 @@ void Smb4KPrintDialog::slotInputValueChanged( const QString &text )
   enableButton( User2, !text.isEmpty() );
   enableButton( Details, !text.isEmpty() );
   setDefaultButton( !text.isEmpty() ? User2 : User1 );
-}
-
-
-
-Smb4KPrintPrivate::Smb4KPrintPrivate()
-{
-}
-
-
-Smb4KPrintPrivate::~Smb4KPrintPrivate()
-{
 }
 
 #include "smb4kprint_p.moc"

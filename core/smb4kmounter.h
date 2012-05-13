@@ -74,7 +74,6 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
   Q_PROPERTY( bool running READ isRunning )
 
   friend class Smb4KMounterPrivate;
-  friend class Smb4KMounterPrivate2;
 
   public:
     /**
@@ -86,7 +85,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
     /**
      * The constructor.
      */
-    Smb4KMounter();
+    Smb4KMounter( QObject *parent = 0 );
     
     /**
      * The destructor.

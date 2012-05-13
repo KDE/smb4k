@@ -3,7 +3,7 @@
                              -------------------
     begin                : Son Jun 27 2010
     copyright            : (C) 2010-2012 by Alexander Reinholdt
-    email                : alexander.reinholdt@kdemail.org
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -42,8 +42,6 @@
 #include <kdemacros.h>
 #include <kauthactionreply.h>
 
-// system includes
-#include <string.h>
 
 using namespace KAuth;
 

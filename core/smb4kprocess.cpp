@@ -19,7 +19,7 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
@@ -27,9 +27,17 @@
 #include <smb4kprocess.h>
 
 
-Smb4KProcess::Smb4KProcess( QObject *parent ) : KProcess( parent )
+class Smb4KProcessPrivate
 {
-  m_aborted = false;
+  public:
+    bool aborted;
+};
+
+
+Smb4KProcess::Smb4KProcess( QObject *parent )
+: KProcess( parent ), d( new Smb4KProcessPrivate )
+{
+  d->aborted = false;
 }
 
 
@@ -40,9 +48,15 @@ Smb4KProcess::~Smb4KProcess()
 
 void Smb4KProcess::abort()
 {
-  m_aborted = true;
+  d->aborted = true;
   kill();
   waitForFinished( -1 );
+}
+
+
+bool Smb4KProcess::isAborted() const
+{
+  return d->aborted;
 }
 
 #include "smb4kprocess.moc"

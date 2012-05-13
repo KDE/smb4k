@@ -2,7 +2,7 @@
     smb4kprint  -  The (new) printing core class.
                              -------------------
     begin                : Son Feb 20 2011
-    copyright            : (C) 2011 by Alexander Reinholdt
+    copyright            : (C) 2011-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -31,7 +31,7 @@
 #endif
 
 // Qt includes
-#include <QWidget>
+#include <QtGui/QWidget>
 
 // KDE specific includes
 #include <kcompositejob.h>
@@ -50,6 +50,16 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
   friend class Smb4KPrintPrivate;
   
   public:
+    /**
+     * The constructor
+     */
+    Smb4KPrint( QObject *parent = 0 );
+
+    /**
+     * The destructor
+     */
+    ~Smb4KPrint();
+    
     /**
      * This function returns a static pointer to this class.
      *
@@ -140,17 +150,6 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
      * Called when the application exits
      */
     void slotAboutToQuit();
-    
-  private:
-    /**
-     * The constructor
-     */
-    Smb4KPrint();
-    
-    /**
-     * The destructor
-     */
-    ~Smb4KPrint();
 };
 
 #endif

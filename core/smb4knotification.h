@@ -3,7 +3,7 @@
                              -------------------
     begin                : Son Jun 27 2010
     copyright            : (C) 2010-2012 by Alexander Reinholdt
-    email                : alexander.reinholdt@kdemail.org
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -31,11 +31,11 @@
 #endif
 
 // Qt includes
-#include <QObject>
-#include <QFile>
-#include <QDir>
-#include <QProcess>
-#include <QScopedPointer>
+#include <QtCore/QObject>
+#include <QtCore/QFile>
+#include <QtCore/QDir>
+#include <QtCore/QProcess>
+#include <QtCore/QScopedPointer>
 
 // KDE includes
 #include <kurl.h>
@@ -355,7 +355,7 @@ class KDE_EXPORT Smb4KNotification : public QObject
     void slotOpenShare();
 
   private:
-    QScopedPointer<Smb4KNotificationPrivate> d;
+    const QScopedPointer<Smb4KNotificationPrivate> d;
 };
 
 #endif

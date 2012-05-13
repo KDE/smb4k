@@ -31,8 +31,12 @@
 #include <config.h>
 #endif
 
+// application specific includes
+#include "smb4kprint.h"
+#include "smb4kprocess.h"
+
 // Qt includes
-#include <QPrinter>
+#include <QtGui/QPrinter>
 
 // KDE includes
 #include <kdialog.h>
@@ -41,10 +45,6 @@
 #include <kurl.h>
 #include <kjob.h>
 #include <ktempdir.h>
-
-// application specific includes
-#include <smb4kprint.h>
-#include <smb4kprocess.h>
 
 // forward declarations
 class Smb4KAuthInfo;
@@ -225,11 +225,9 @@ class Smb4KPrintDialog : public KDialog
 };
 
 
-class Smb4KPrintPrivate
+class Smb4KPrintStatic
 {
   public:
-    Smb4KPrintPrivate();
-    ~Smb4KPrintPrivate();
     Smb4KPrint instance;
 };
 
