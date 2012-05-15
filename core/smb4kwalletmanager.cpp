@@ -77,7 +77,7 @@ K_GLOBAL_STATIC( Smb4KWalletManagerStatic, p );
 
 
 Smb4KWalletManager::Smb4KWalletManager( QObject *parent )
-: QObject( parent )
+: QObject( parent ), d( new Smb4KWalletManagerPrivate )
 {
   d->wallet = NULL;
   d->state  = Unknown;
