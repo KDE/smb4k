@@ -3,8 +3,8 @@
     Solid framework.
                              -------------------
     begin                : So Sep 14 2008
-    copyright            : (C) 2008 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2008-2012 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -20,8 +20,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 #ifndef SMB4KSOLIDINTERFACE_H
@@ -32,13 +32,16 @@
 #endif
 
 // Qt includes
-#include <QObject>
-#include <QMap>
+#include <QtCore/QObject>
+#include <QtCore/QScopedPointer>
 
 // KDE includes
 #include <kdemacros.h>
 #include <solid/button.h>
 #include <solid/networking.h>
+
+// forward declarations
+class Smb4KSolidInterfacePrivate;
 
 class KDE_EXPORT Smb4KSolidInterface : public QObject
 {
@@ -67,6 +70,16 @@ class KDE_EXPORT Smb4KSolidInterface : public QObject
                             Unknown };
 
     /**
+     * The constructor
+     */
+    Smb4KSolidInterface( QObject *parent = 0 );
+
+    /**
+     * The destructor
+     */
+    ~Smb4KSolidInterface();
+
+    /**
      * Returns a static pointer to this class.
      *
      * @returns a static pointer to this class.
@@ -78,8 +91,8 @@ class KDE_EXPORT Smb4KSolidInterface : public QObject
      *
      * @returns the network current status.
      */
-    ConnectionStatus networkStatus() { return m_network_status; }
-
+    ConnectionStatus networkStatus() const;
+    
   signals:
     /**
      * This signal is emitted when a hardware button was pressed.
@@ -173,43 +186,15 @@ class KDE_EXPORT Smb4KSolidInterface : public QObject
 
   private:
     /**
-     * The constructor
-     */
-    Smb4KSolidInterface();
-
-    /**
-     * The destructor
-     */
-    ~Smb4KSolidInterface();
-
-    /**
      * Initialize the solid interface. Look for all devices that are
      * already there and that should observed by the solid interface.
      */
     void init();
 
     /**
-     * Which button was pressed?
+     * Pointer to Smb4KSolidInterfacePrivate class
      */
-    ButtonType m_button_pressed;
-
-    /**
-     * Network status.
-     */
-    ConnectionStatus m_network_status;
-
-    /**
-     * In this map all devices are stored that were removed when one
-     * of the special buttons (sleep, lid, power) was pressed. It is
-     * used to figure out, when the notebook wakes up again. It takes
-     * the UDI and the button type.
-     */
-    QMap<QString, ButtonType> m_removed_devices;
-
-    /**
-     * The powermanagement cookie (sleep state prevention)
-     */
-    int m_cookie;
+    const QScopedPointer<Smb4KSolidInterfacePrivate> d;
 };
 
 #endif

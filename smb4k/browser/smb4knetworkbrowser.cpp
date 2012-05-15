@@ -23,6 +23,12 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4knetworkbrowser.h"
+#include "smb4knetworkbrowseritem.h"
+#include "../tooltips/smb4ktooltip.h"
+#include "core/smb4ksettings.h"
+
 // Qt includes
 #include <QMouseEvent>
 #include <QFocusEvent>
@@ -38,13 +44,6 @@
 #include <kglobalsettings.h>
 #include <kapplication.h>
 #include <kiconloader.h>
-
-// application specific includes
-#include <smb4knetworkbrowser.h>
-#include <smb4knetworkbrowseritem.h>
-#include <../tooltips/smb4ktooltip.h>
-#include <core/smb4ksettings.h>
-
 
 Smb4KNetworkBrowser::Smb4KNetworkBrowser( QWidget *parent )
 : QTreeWidget( parent )

@@ -31,14 +31,13 @@
 #endif
 
 // Qt includes
-#include <QWidget>
+#include <QtGui/QWidget>
 
 // KDE includes
 #include <kcompositejob.h>
 #include <kdemacros.h>
 
 // forward declarations
-class Smb4KSearchPrivate;
 class Smb4KSearchJob;
 class Smb4KShare;
 
@@ -47,9 +46,17 @@ class KDE_EXPORT Smb4KSearch : public KCompositeJob
 {
   Q_OBJECT
 
-  friend class Smb4KSearchPrivate;
-
   public:
+    /**
+     * Constructor
+     */
+    Smb4KSearch( QObject *parent = 0 );
+
+    /**
+     * Destructor
+     */
+    ~Smb4KSearch();
+    
     /**
      * This function returns a static pointer to this class.
      *
@@ -152,17 +159,6 @@ class KDE_EXPORT Smb4KSearch : public KCompositeJob
      * Called when the program is about to quit
      */
     void slotAboutToQuit();
-
-  private:
-    /**
-     * Constructor
-     */
-    Smb4KSearch();
-
-    /**
-     * Destructor
-     */
-    ~Smb4KSearch();
 };
 
 #endif

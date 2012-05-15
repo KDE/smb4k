@@ -24,12 +24,30 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4knetworkbrowser_part.h"
+#include "smb4knetworkbrowser.h"
+#include "smb4knetworkbrowseritem.h"
+#include "../tooltips/smb4ktooltip.h"
+#include "core/smb4kglobal.h"
+#include "core/smb4ksettings.h"
+#include "core/smb4kbookmark.h"
+#include "core/smb4kwalletmanager.h"
+#include "core/smb4kauthinfo.h"
+#include "core/smb4kscanner.h"
+#include "core/smb4kmounter.h"
+#include "core/smb4kprint.h"
+#include "core/smb4kpreviewer.h"
+#include "core/smb4kbookmarkhandler.h"
+#include "core/smb4kcustomoptionsmanager.h"
+#include "core/smb4kcustomoptions.h"
+
 // Qt includes
-#include <QKeySequence>
-#include <QEvent>
-#include <QTreeWidget>
-#include <QTreeWidgetItemIterator>
-#include <QHeaderView>
+#include <QtCore/QEvent>
+#include <QtGui/QKeySequence>
+#include <QtGui/QTreeWidget>
+#include <QtGui/QTreeWidgetItemIterator>
+#include <QtGui/QHeaderView>
 
 // KDE includes
 #include <kaboutdata.h>
@@ -44,24 +62,6 @@
 #include <kapplication.h>
 #include <kconfiggroup.h>
 #include <kglobalsettings.h>
-
-// application specific includes
-#include <smb4knetworkbrowser_part.h>
-#include <smb4knetworkbrowser.h>
-#include <smb4knetworkbrowseritem.h>
-#include <../tooltips/smb4ktooltip.h>
-#include <core/smb4kglobal.h>
-#include <core/smb4ksettings.h>
-#include <core/smb4kbookmark.h>
-#include <core/smb4kwalletmanager.h>
-#include <core/smb4kauthinfo.h>
-#include <core/smb4kscanner.h>
-#include <core/smb4kmounter.h>
-#include <core/smb4kprint.h>
-#include <core/smb4kpreviewer.h>
-#include <core/smb4kbookmarkhandler.h>
-#include <core/smb4kcustomoptionsmanager.h>
-#include <core/smb4kcustomoptions.h>
 
 using namespace Smb4KGlobal;
 

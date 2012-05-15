@@ -201,7 +201,7 @@ class KDE_EXPORT Smb4KAuthInfo
      *
      * @returns the type.
      */
-    int type() const;
+    Type type() const;
 
     /**
      * If the item is a homes share, this function returns TRUE. In
@@ -262,6 +262,9 @@ class KDE_EXPORT Smb4KAuthInfo
     QString ip() const;
 
   private:
+    /**
+     * Pointer to Smb4KAuthInfoPrivate class
+     */
     const QScopedPointer<Smb4KAuthInfoPrivate> d;
 };
 

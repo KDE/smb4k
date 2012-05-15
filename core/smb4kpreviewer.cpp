@@ -152,7 +152,7 @@ void Smb4KPreviewer::preview( Smb4KShare *share, QWidget *parent )
 
 bool Smb4KPreviewer::isRunning()
 {
-  return !subjobs().isEmpty();
+  return hasSubjobs();
 }
 
 

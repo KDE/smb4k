@@ -39,7 +39,7 @@ class Smb4KAuthInfoPrivate
   public:
     QUrl url;
     QString workgroup;
-    int type;
+    Smb4KAuthInfo::Type type;
     bool homesShare;
     QHostAddress ip;
 };
@@ -289,7 +289,7 @@ QString Smb4KAuthInfo::password() const
 }
 
 
-int Smb4KAuthInfo::type() const
+Smb4KAuthInfo::Type Smb4KAuthInfo::type() const
 {
   return d->type;
 }

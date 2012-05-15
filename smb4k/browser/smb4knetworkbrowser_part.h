@@ -32,9 +32,9 @@
 #endif
 
 // Qt includes
-#include <QTreeWidgetItem>
-#include <QList>
-#include <QAction>
+#include <QtCore/QList>
+#include <QtGui/QAction>
+#include <QtGui/QTreeWidgetItem>
 
 // KDE includes
 #include <kparts/part.h>

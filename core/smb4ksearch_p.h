@@ -148,11 +148,9 @@ class Smb4KSearchJob : public KJob
 };
 
 
-class Smb4KSearchPrivate
+class Smb4KSearchStatic
 {
   public:
-    Smb4KSearchPrivate();
-    ~Smb4KSearchPrivate();
     Smb4KSearch instance;
 };
 

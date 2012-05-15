@@ -2,7 +2,7 @@
     smb4ksynchronizer  -  This is the new synchronizer of Smb4K.
                              -------------------
     begin                : Fr Feb 04 2011
-    copyright            : (C) 2011 by Alexander Reinholdt
+    copyright            : (C) 2011-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 // application specific includes
@@ -31,11 +31,11 @@
 #include "smb4kshare.h"
 
 // Qt includes
-#include <QTimer>
-#include <QDebug>
-#include <QFile>
-#include <QDir>
-#include <QCoreApplication>
+#include <QtCore/QTimer>
+#include <QtCore/QDebug>
+#include <QtCore/QFile>
+#include <QtCore/QDir>
+#include <QtCore/QCoreApplication>
 
 // KDE includes
 #include <kglobal.h>
@@ -44,10 +44,11 @@
 
 using namespace Smb4KGlobal;
 
-K_GLOBAL_STATIC( Smb4KSynchronizerPrivate, p );
+K_GLOBAL_STATIC( Smb4KSynchronizerStatic, p );
 
 
-Smb4KSynchronizer::Smb4KSynchronizer() : KCompositeJob( 0 )
+Smb4KSynchronizer::Smb4KSynchronizer( QObject *parent )
+: KCompositeJob( parent )
 {
   setAutoDelete( false );
   connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );

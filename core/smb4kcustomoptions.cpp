@@ -44,16 +44,16 @@ class Smb4KCustomOptionsPrivate
     QString workgroup;
     QUrl url;
     QHostAddress ip;
-    int type;
-    int remount;
+    Smb4KCustomOptions::Type type;
+    Smb4KCustomOptions::Remount remount;
     QString profile;
     int smbPort;
 #ifndef Q_OS_FREEBSD
     int fileSystemPort;
-    int writeAccess;
+    Smb4KCustomOptions::WriteAccess writeAccess;
 #endif
-    int protocolHint;
-    int kerberos;
+    Smb4KCustomOptions::ProtocolHint protocolHint;
+    Smb4KCustomOptions::Kerberos kerberos;
     KUser user;
     KUserGroup group;
 };
@@ -135,8 +135,14 @@ void Smb4KCustomOptions::setHost( Smb4KHost *host )
   {
     case Unknown:
     {
-      d->type = Host;
-//       m_host = *host;
+      d->workgroup      = host->workgroupName();
+      d->url            = host->url();
+      d->type           = Host;
+      d->smbPort        = host->port() != -1 ? host->port() : 139;
+#ifndef Q_OS_FREEBSD
+      d->fileSystemPort = 445;
+#endif
+      d->ip.setAddress( host->ip() );
       break;
     }
     default:
@@ -155,8 +161,16 @@ void Smb4KCustomOptions::setShare( Smb4KShare *share )
   {
     case Unknown:
     {
-      d->type  = Share;
-//       d->share = *share;
+      d->url            = share->url();
+      d->workgroup      = share->workgroupName();
+      d->type           = Share;
+      d->smbPort        = 139;
+#ifndef Q_OS_FREEBSD
+      d->fileSystemPort = share->port() != -1 ? share->port() : 445;
+#endif
+      d->user           = KUser( share->uid() );
+      d->group          = KUserGroup( share->gid() );
+      d->ip.setAddress( share->hostIP() );
       break;
     }
     case Host:
@@ -174,7 +188,7 @@ void Smb4KCustomOptions::setShare( Smb4KShare *share )
 
 Smb4KCustomOptions::Type Smb4KCustomOptions::type() const
 {
-  return static_cast<Type>( d->type );
+  return d->type;
 }
 
 
@@ -198,7 +212,7 @@ void Smb4KCustomOptions::setRemount( Smb4KCustomOptions::Remount remount )
 
 Smb4KCustomOptions::Remount Smb4KCustomOptions::remount() const
 {
-  return static_cast<Remount>( d->remount );
+  return d->remount;
 }
 
 
@@ -371,7 +385,7 @@ void Smb4KCustomOptions::setWriteAccess( Smb4KCustomOptions::WriteAccess access 
 
 Smb4KCustomOptions::WriteAccess Smb4KCustomOptions::writeAccess() const
 {
-  return static_cast<WriteAccess>( d->writeAccess );
+  return d->writeAccess;
 }
 #endif
 
@@ -384,7 +398,7 @@ void Smb4KCustomOptions::setProtocolHint( Smb4KCustomOptions::ProtocolHint proto
 
 Smb4KCustomOptions::ProtocolHint Smb4KCustomOptions::protocolHint() const
 {
-  return static_cast<ProtocolHint>( d->protocolHint );
+  return d->protocolHint;
 }
 
 
@@ -396,7 +410,7 @@ void Smb4KCustomOptions::setUseKerberos( Smb4KCustomOptions::Kerberos kerberos )
 
 Smb4KCustomOptions::Kerberos Smb4KCustomOptions::useKerberos() const
 {
-  return static_cast<Kerberos>( d->kerberos );
+  return d->kerberos;
 }
 
 

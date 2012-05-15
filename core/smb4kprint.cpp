@@ -109,7 +109,7 @@ void Smb4KPrint::print( Smb4KShare *printer, QWidget *parent )
 
 bool Smb4KPrint::isRunning()
 {
-  return !subjobs().isEmpty();
+  return hasSubjobs();
 }
 
 

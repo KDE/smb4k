@@ -104,7 +104,7 @@ Smb4KScanner *Smb4KScanner::self()
 
 bool Smb4KScanner::isRunning()
 {
-  return !subjobs().isEmpty();
+  return hasSubjobs();
 }
 
 

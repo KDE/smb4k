@@ -223,6 +223,12 @@ bool Smb4KMounter::isRunning( Smb4KShare *share )
 }
 
 
+bool Smb4KMounter::isRunning()
+{
+  return hasSubjobs();
+}
+
+
 void Smb4KMounter::triggerRemounts()
 {
   if ( Smb4KSettings::remountShares() || d->hardwareReason )

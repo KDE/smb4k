@@ -31,8 +31,8 @@
 #endif
 
 // Qt includes
-#include <QWidget>
-#include <QList>
+#include <QtCore/QList>
+#include <QtGui/QWidget>
 
 // KDE includes
 #include <kwallet.h>
@@ -41,6 +41,7 @@
 // forward declarations
 class Smb4KAuthInfo;
 class Smb4KBasicNetworkItem;
+class Smb4KWalletManagerPrivate;
 
 /**
  * This class manages the access to the digital wallet where the authentication
@@ -60,6 +61,16 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
   friend class Smb4KWalletManagerPrivate;
 
   public:
+    /**
+     * The constructor
+     */
+    Smb4KWalletManager( QObject *parent = 0 );
+
+    /**
+     * The destructor
+     */
+    ~Smb4KWalletManager();
+    
     /**
      * This is a static pointer to this class.
      */
@@ -130,7 +141,7 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
      *
      * @returns TRUE if the wallet system can be/is used.
      */
-    bool useWalletSystem();
+    bool useWalletSystem() const;
 
     /**
      * The state enumeration
@@ -146,7 +157,7 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
      *
      * @returns the current state.
      */
-    State currentState() { return m_state; }
+    State currentState() const;
     
     /**
      * Returns the list of authentication informations stored in the wallet
@@ -186,15 +197,6 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
     void initialized();
 
   private:
-    /**
-     * The constructor
-     */
-    Smb4KWalletManager();
-
-    /**
-     * The destructor
-     */
-    ~Smb4KWalletManager();
 
     /**
      * Initialize the wallet manager.
@@ -202,24 +204,9 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
     void init();
 
     /**
-     * The wallet
-     */
-    KWallet::Wallet *m_wallet;
-
-    /**
      * Creates the Smb4K subfolder and makes the wallet use it.
      */
     void setupFolder();
-
-    /**
-     * The current state
-     */
-    State m_state;
-
-    /**
-     * Internal list for storing authentication information
-     */
-    QList<Smb4KAuthInfo *> m_list;
 
 #ifdef Q_OS_FREEBSD
     /**
@@ -230,6 +217,11 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
      */
     void writeToConfigFile( Smb4KAuthInfo *authInfo );
 #endif
+
+    /**
+     * Pointer to the Smb4KWalletManagerPrivate class
+     */
+    const QScopedPointer<Smb4KWalletManagerPrivate> d;
 };
 
 #endif

@@ -189,7 +189,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      *
      * @returns TRUE if the mounter is running and FALSE otherwise.
      */
-    bool isRunning() { return hasSubjobs(); }
+    bool isRunning();
 
     /**
      * This function starts the composite job

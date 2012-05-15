@@ -34,21 +34,20 @@
 #include "smb4khomesshareshandler.h"
 
 // Qt includes
-#include <QTimer>
-#include <QDebug>
-#include <QHostAddress>
-#include <QAbstractSocket>
-#include <QApplication>
+#include <QtCore/QTimer>
+#include <QtCore/QDebug>
+#include <QtGui/QApplication>
 
 // KDE includes
 #include <kglobal.h>
 
 using namespace Smb4KGlobal;
 
-K_GLOBAL_STATIC( Smb4KSearchPrivate, p );
+K_GLOBAL_STATIC( Smb4KSearchStatic, p );
 
 
-Smb4KSearch::Smb4KSearch() : KCompositeJob( 0 )
+Smb4KSearch::Smb4KSearch( QObject *parent )
+: KCompositeJob( parent )
 {
   setAutoDelete( false );
 
@@ -154,7 +153,7 @@ void Smb4KSearch::search( const QString &string, QWidget *parent )
 
 bool Smb4KSearch::isRunning()
 {
-  return !subjobs().isEmpty();
+  return hasSubjobs();
 }
 
 

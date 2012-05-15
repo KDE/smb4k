@@ -3,8 +3,8 @@
     Solid framework.
                              -------------------
     begin                : So Sep 14 2008
-    copyright            : (C) 2008 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2008-2012 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -20,9 +20,15 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
+
+// application specific includes
+#include "smb4ksolidinterface.h"
+
+// Qt includes
+#include <QtCore/QMap>
 
 // KDE includes
 #include <kglobal.h>
@@ -35,23 +41,30 @@
 #include <solid/battery.h>
 #include <solid/powermanagement.h>
 
-// application specific includes
-#include <smb4ksolidinterface.h>
-
 class Smb4KSolidInterfacePrivate
+{
+  public:
+    Smb4KSolidInterface::ButtonType buttonPressed;
+    Smb4KSolidInterface::ConnectionStatus networkStatus;
+    QMap<QString,Smb4KSolidInterface::ButtonType> removedDevices;
+};
+
+
+class Smb4KSolidInterfaceStatic
 {
   public:
     Smb4KSolidInterface instance;
 };
 
-K_GLOBAL_STATIC( Smb4KSolidInterfacePrivate, priv );
+
+K_GLOBAL_STATIC( Smb4KSolidInterfaceStatic, priv );
 
 
-Smb4KSolidInterface::Smb4KSolidInterface()
-: QObject(),
-  m_button_pressed( UnknownButton ),
-  m_network_status( Unknown )
+Smb4KSolidInterface::Smb4KSolidInterface( QObject *parent )
+: QObject( parent ), d( new Smb4KSolidInterfacePrivate )
 {
+  d->buttonPressed = UnknownButton;
+  d->networkStatus = Unknown;
   init();
 }
 
@@ -64,6 +77,12 @@ Smb4KSolidInterface::~Smb4KSolidInterface()
 Smb4KSolidInterface *Smb4KSolidInterface::self()
 {
   return &priv->instance;
+}
+
+
+Smb4KSolidInterface::ConnectionStatus Smb4KSolidInterface::networkStatus() const
+{
+  return d->networkStatus;
 }
 
 
@@ -173,15 +192,14 @@ void Smb4KSolidInterface::slotDeviceAdded( const QString &udi )
   // Work around the fact that there is no signal that tells
   // us when the computer woke up. Check the UDIs in the map
   // and emit the wokeUp()
-  if ( m_button_pressed != UnknownButton &&
-       m_removed_devices[udi] == m_button_pressed )
+  if ( d->buttonPressed != UnknownButton && d->removedDevices[udi] == d->buttonPressed )
   {
-    m_removed_devices.remove( udi );
+    d->removedDevices.remove( udi );
 
-    if ( m_removed_devices.isEmpty() )
+    if ( d->removedDevices.isEmpty() )
     {
       // Work around: Computer woke up.
-      m_button_pressed = UnknownButton;
+      d->buttonPressed = UnknownButton;
       emit wokeUp();
     }
     else
@@ -198,9 +216,9 @@ void Smb4KSolidInterface::slotDeviceRemoved( const QString &udi )
   // that the computer has been woken up. Store the removed device(s)
   // and the pressed button to figure out later (in slotDeviceAdded())
   // if the computer became active again.
-  if ( m_button_pressed != UnknownButton )
+  if ( d->buttonPressed != UnknownButton )
   {
-    m_removed_devices.insert( udi, m_button_pressed );
+    d->removedDevices.insert( udi, d->buttonPressed );
   }
   else
   {
@@ -209,37 +227,37 @@ void Smb4KSolidInterface::slotDeviceRemoved( const QString &udi )
 }
 
 
-void Smb4KSolidInterface::slotButtonPressed( Solid::Button::ButtonType type, const QString &udi )
+void Smb4KSolidInterface::slotButtonPressed( Solid::Button::ButtonType type, const QString &/*udi*/ )
 {
   switch ( type )
   {
     case Solid::Button::LidButton:
     {
-      m_button_pressed = LidButton;
+      d->buttonPressed = LidButton;
       break;
     }
     case Solid::Button::SleepButton:
     {
-      m_button_pressed = SleepButton;
+      d->buttonPressed = SleepButton;
       break;
     }
     case Solid::Button::PowerButton:
     {
-      m_button_pressed = PowerButton;
+      d->buttonPressed = PowerButton;
       break;
     }
     default:
     {
-      m_button_pressed = UnknownButton;
+      d->buttonPressed = UnknownButton;
       break;
     }
   }
 
-  emit buttonPressed( m_button_pressed );
+  emit buttonPressed( d->buttonPressed );
 }
 
 
-void Smb4KSolidInterface::slotAcPlugStateChanged( bool state, const QString &udi )
+void Smb4KSolidInterface::slotAcPlugStateChanged( bool state, const QString &/*udi*/ )
 {
   if ( state )
   {
@@ -252,7 +270,7 @@ void Smb4KSolidInterface::slotAcPlugStateChanged( bool state, const QString &udi
 }
 
 
-void Smb4KSolidInterface::slotBatteryChargeStateChanged( int state, const QString &udi )
+void Smb4KSolidInterface::slotBatteryChargeStateChanged( int state, const QString &/*udi*/ )
 {
   switch ( state )
   {
@@ -275,7 +293,7 @@ void Smb4KSolidInterface::slotBatteryChargeStateChanged( int state, const QStrin
 }
 
 
-void Smb4KSolidInterface::slotBatteryChargePercentChanged( int value, const QString &udi )
+void Smb4KSolidInterface::slotBatteryChargePercentChanged( int value, const QString &/*udi*/ )
 {
   kDebug() << "Battery charge percent value: " << value << endl;
 }
@@ -287,33 +305,33 @@ void Smb4KSolidInterface::slotNetworkStatusChanged( Solid::Networking::Status st
   {
     case Solid::Networking::Connecting:
     {
-      m_network_status = Connecting;
+      d->networkStatus = Connecting;
       break;
     }
     case Solid::Networking::Connected:
     {
-      m_network_status = Connected;
+      d->networkStatus = Connected;
       break;
     }
     case Solid::Networking::Disconnecting:
     {
-      m_network_status = Disconnecting;
+      d->networkStatus = Disconnecting;
       break;
     }
     case Solid::Networking::Unconnected:
     {
-      m_network_status = Disconnected;
+      d->networkStatus = Disconnected;
       break;
     }
     case Solid::Networking::Unknown:
     default:
     {
-      m_network_status = Unknown;
+      d->networkStatus = Unknown;
       break;
     }
   }
 
-  emit networkStatusChanged( m_network_status );
+  emit networkStatusChanged( d->networkStatus );
 }
 
 #include "smb4ksolidinterface.moc"

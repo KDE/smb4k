@@ -2,7 +2,7 @@
     smb4knetworkbrowseritem  -  Smb4K's network browser list item.
                              -------------------
     begin                : Mo Jan 8 2007
-    copyright            : (C) 2007-2011 by Alexander Reinholdt
+    copyright            : (C) 2007-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -27,8 +27,8 @@
 #include "smb4knetworkbrowseritem.h"
 
 // Qt includes
-#include <QApplication>
-#include <QBrush>
+#include <QtGui/QApplication>
+#include <QtGui/QBrush>
 
 // KDE includes
 #include <kiconloader.h>

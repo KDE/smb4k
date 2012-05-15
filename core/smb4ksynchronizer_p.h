@@ -206,11 +206,9 @@ class Smb4KSynchronizationDialog : public KDialog
 };
 
 
-class Smb4KSynchronizerPrivate
+class Smb4KSynchronizerStatic
 {
   public:
-    Smb4KSynchronizerPrivate() {};
-    ~Smb4KSynchronizerPrivate() {};
     Smb4KSynchronizer instance;
 };
 

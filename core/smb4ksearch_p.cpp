@@ -35,7 +35,7 @@
 #include "smb4kcustomoptions.h"
 
 // Qt includes
-#include <QTimer>
+#include <QtCore/QTimer>
 
 // KDE includes
 #include <kstandarddirs.h>
@@ -363,16 +363,6 @@ void Smb4KSearchJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitStatus
   emit finished( m_string );
 }
 
-
-
-Smb4KSearchPrivate::Smb4KSearchPrivate()
-{
-}
-
-
-Smb4KSearchPrivate::~Smb4KSearchPrivate()
-{
-}
 
 #include "smb4ksearch_p.moc"
 

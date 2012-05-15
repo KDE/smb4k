@@ -2,7 +2,7 @@
     smb4ksynchronizer  -  This is the new synchronizer of Smb4K.
                              -------------------
     begin                : Fr Feb 04 2011
-    copyright            : (C) 2011 by Alexander Reinholdt
+    copyright            : (C) 2011-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -19,8 +19,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 #ifndef SMB4KSYNCHRONIZER_H
@@ -31,24 +31,31 @@
 #endif
 
 // Qt includes
-#include <QString>
-#include <QWidget>
+#include <QtCore/QString>
+#include <QtGui/QWidget>
 
 // KDE includes
 #include <kdemacros.h>
 #include <kjob.h>
 #include <kcompositejob.h>
 
-class Smb4KSynchronizerPrivate;
 class Smb4KShare;
 
 class KDE_EXPORT Smb4KSynchronizer : public KCompositeJob
 {
   Q_OBJECT
 
-  friend class Smb4KSynchronizerPrivate;
-
   public:
+    /**
+     * The constructor
+     */
+    Smb4KSynchronizer( QObject *parent = 0 );
+
+    /**
+     * The destructor
+     */
+    ~Smb4KSynchronizer();
+    
     /**
      * This function returns a static pointer to this class.
      *
@@ -137,17 +144,6 @@ class KDE_EXPORT Smb4KSynchronizer : public KCompositeJob
      * Invoked when the application goes down
      */
     void slotAboutToQuit();
-
-  private:
-    /**
-     * The constructor
-     */
-    Smb4KSynchronizer();
-
-    /**
-     * The destructor
-     */
-    ~Smb4KSynchronizer();
 };
 
 #endif

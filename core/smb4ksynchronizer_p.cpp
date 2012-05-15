@@ -32,10 +32,10 @@
 #include "smb4kshare.h"
 
 // Qt includes
-#include <QTimer>
-#include <QGridLayout>
-#include <QLabel>
-#include <QPointer>
+#include <QtCore/QTimer>
+#include <QtCore/QPointer>
+#include <QtGui/QGridLayout>
+#include <QtGui/QLabel>
 
 // KDE includes
 #include <kdebug.h>
