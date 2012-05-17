@@ -26,10 +26,6 @@
 #ifndef SMB4KMAINWINDOW_H
 #define SMB4KMAINWINDOW_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // Qt includes
 #include <QActionGroup>
 #include <QLabel>

@@ -24,6 +24,10 @@
  *   MA 02110-1335 USA                                                     *
  ***************************************************************************/
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 // KDE includes
 #include <kiconloader.h>
 #include <klocale.h>

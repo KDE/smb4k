@@ -27,10 +27,6 @@
 #ifndef SMB4KNETWORKBROWSERPART_H
 #define SMB4KNETWORKBROWSERPART_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // Qt includes
 #include <QtCore/QList>
 #include <QtGui/QAction>

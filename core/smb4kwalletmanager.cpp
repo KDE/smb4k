@@ -1291,7 +1291,7 @@ void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
           // The entry is in the list.
           for ( int i = index; i < contents.size(); ++i )
           {
-            if ( contents.at( i ).startsWith( "password", Qt::CaseInsensitive ) )
+            if ( contents.at( i ).startsWith( QLatin1String( "password" ), Qt::CaseInsensitive ) )
             {
               if ( QString::compare( contents.at( i ).section( '=', 1, 1 ).trimmed(), password ) != 0 &&
                    !authInfo->password().isEmpty() /* we do not want empty server passwords */ )
@@ -1364,7 +1364,7 @@ void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
           // The entry is in the list.
           for ( int i = index; i < contents.size(); ++i )
           {
-            if ( contents.at( i ).startsWith( "password", Qt::CaseInsensitive ) )
+            if ( contents.at( i ).startsWith( QLatin1String( "password" ), Qt::CaseInsensitive ) )
             {
               if ( QString::compare( contents.at( i ).section( '=', 1, 1 ).trimmed(), password ) != 0 &&
                    !authInfo->password().isEmpty() /* we do not want empty server passwords */ )
@@ -1444,7 +1444,7 @@ void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
           // The entry is in the list.
           for ( int i = index; i < contents.size(); ++i )
           {
-            if ( contents.at( i ).startsWith( "password", Qt::CaseInsensitive ) )
+            if ( contents.at( i ).startsWith( QLatin1String( "password" ), Qt::CaseInsensitive ) )
             {
               if ( QString::compare( contents.at( i ).section( '=', 1, 1 ).trimmed(), password ) != 0 &&
                    !authInfo->password().isEmpty() )

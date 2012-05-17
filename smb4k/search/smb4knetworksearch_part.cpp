@@ -24,6 +24,10 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 // application specific includes
 #include "smb4knetworksearch_part.h"
 #include "smb4knetworksearch.h"
@@ -62,7 +66,7 @@ Smb4KNetworkSearchPart::Smb4KNetworkSearchPart( QWidget *parentWidget, QObject *
   // Parse arguments:
   for ( int i = 0; i < args.size(); ++i )
   {
-    if ( args.at( i ).toString().startsWith( "silent" ) )
+    if ( args.at( i ).toString().startsWith( QLatin1String( "silent" ) ) )
     {
       if ( QString::compare( args.at( i ).toString().section( '=', 1, 1 ).trimmed(), "\"true\"" ) == 0 )
       {

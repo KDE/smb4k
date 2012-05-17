@@ -172,7 +172,7 @@ bool Smb4KScanner::isRunning( Smb4KScanner::Process process, Smb4KBasicNetworkIt
         // and search for a "LookupDomainMembersJob".
         for ( int i = 0; i < subjobs().size(); ++i )
         {
-          if ( subjobs().at( i )->objectName().startsWith( "LookupDomainMembersJob" ) )
+          if ( subjobs().at( i )->objectName().startsWith( QLatin1String( "LookupDomainMembersJob" ) ) )
           {
             running = true;
             break;
@@ -219,7 +219,7 @@ bool Smb4KScanner::isRunning( Smb4KScanner::Process process, Smb4KBasicNetworkIt
         // and search for a "LookupSharesJob".
         for ( int i = 0; i < subjobs().size(); ++i )
         {
-          if ( subjobs().at( i )->objectName().startsWith( "LookupSharesJob" ) )
+          if ( subjobs().at( i )->objectName().startsWith( QLatin1String( "LookupSharesJob" ) ) )
           {
             running = true;
             break;
@@ -266,7 +266,7 @@ bool Smb4KScanner::isRunning( Smb4KScanner::Process process, Smb4KBasicNetworkIt
         // and search for a "LookupInfoJob".
         for ( int i = 0; i < subjobs().size(); ++i )
         {
-          if ( subjobs().at( i )->objectName().startsWith( "LookupInfoJob" ) )
+          if ( subjobs().at( i )->objectName().startsWith( QLatin1String( "LookupInfoJob" ) ) )
           {
             running = true;
             break;
@@ -356,7 +356,7 @@ void Smb4KScanner::abort( Smb4KScanner::Process process, Smb4KBasicNetworkItem *
         // and search for a "LookupDomainMembersJob".
         for ( int i = 0; i < subjobs().size(); ++i )
         {
-          if ( subjobs().at( i )->objectName().startsWith( "LookupDomainMembersJob" ) )
+          if ( subjobs().at( i )->objectName().startsWith( QLatin1String( "LookupDomainMembersJob" ) ) )
           {
             subjobs().at( i )->kill( KJob::EmitResult );
             continue;
@@ -403,7 +403,7 @@ void Smb4KScanner::abort( Smb4KScanner::Process process, Smb4KBasicNetworkItem *
         // and search for a "LookupSharesJob".
         for ( int i = 0; i < subjobs().size(); ++i )
         {
-          if ( subjobs().at( i )->objectName().startsWith( "LookupSharesJob" ) )
+          if ( subjobs().at( i )->objectName().startsWith( QLatin1String( "LookupSharesJob" ) ) )
           {
             subjobs().at( i )->kill( KJob::EmitResult );
             continue;
@@ -451,7 +451,7 @@ void Smb4KScanner::abort( Smb4KScanner::Process process, Smb4KBasicNetworkItem *
         // and search for a "LookupInfoJob".
         for ( int i = 0; i < subjobs().size(); ++i )
         {
-          if ( subjobs().at( i )->objectName().startsWith( "LookupInfoJob" ) )
+          if ( subjobs().at( i )->objectName().startsWith( QLatin1String( "LookupInfoJob" ) ) )
           {
             subjobs().at( i )->kill( KJob::EmitResult );
             continue;

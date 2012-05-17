@@ -26,10 +26,6 @@
 #ifndef SMB4KCONFIGDIALOG_H
 #define SMB4KCONFIGDIALOG_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // KDE includes
 #include <kconfigdialog.h>
 

@@ -23,6 +23,10 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 // application specific includes
 #include "smb4kbookmarkmenu.h"
 #include "core/smb4kbookmark.h"
@@ -453,7 +457,7 @@ void Smb4KBookmarkMenu::slotActionTriggered( QAction *action )
       delete mounts.takeFirst();
     }
   }
-  else if ( action->objectName().startsWith( "mount_" ) && QString::compare( "mount_toplevel", action->objectName() ) != 0 )
+  else if ( action->objectName().startsWith( QLatin1String( "mount_" ) ) && QString::compare( "mount_toplevel", action->objectName() ) != 0 )
   {
     // Mount all bookmarked share that belong to this group.
     QString group_name = action->objectName().section( '_', 1, -1 ).trimmed();

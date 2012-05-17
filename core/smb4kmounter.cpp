@@ -1636,7 +1636,7 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
           {
             KJob *job = it.next();
 
-            if ( job->objectName().startsWith( "MountJob_bulk" ) )
+            if ( job->objectName().startsWith( QLatin1String( "MountJob_bulk" ) ) )
             {
               still_mounting = true;
               break;
@@ -1755,7 +1755,7 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
           {
             KJob *job = it.next();
                 
-            if ( job->objectName().startsWith( "UnmountJob_bulk" ) )
+            if ( job->objectName().startsWith( QLatin1String( "UnmountJob_bulk" ) ) )
             {
               still_unmounting = true;
               break;

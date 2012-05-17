@@ -27,10 +27,6 @@
 #ifndef SMB4KAUTHOPTIONS_H
 #define SMB4KAUTHOPTIONS_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // Application specific includes
 #include "core/smb4kauthinfo.h"
 

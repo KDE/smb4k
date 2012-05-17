@@ -26,10 +26,6 @@
 #ifndef SMB4KSYSTEMTRAY_H
 #define SMB4KSYSTEMTRAY_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // Qt includes
 #include <QWidget>
 #include <QString>

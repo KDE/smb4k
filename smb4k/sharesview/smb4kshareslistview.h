@@ -26,10 +26,6 @@
 #ifndef SMB4KSHARESLISTVIEW_H
 #define SMB4KSHARESLISTVIEW_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // Qt includes
 #include <QTreeWidget>
 #include <QTimer>

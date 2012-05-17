@@ -459,7 +459,7 @@ void Smb4KPreviewJob::slotReadStandardError()
     {
       it.remove();
     }
-    else if ( line.trimmed().startsWith( "Domain" ) || line.trimmed().startsWith( "OS" ) )
+    else if ( line.trimmed().startsWith( QLatin1String( "Domain" ) ) || line.trimmed().startsWith( QLatin1String( "OS" ) ) )
     {
       it.remove();
     }

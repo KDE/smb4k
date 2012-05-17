@@ -27,10 +27,6 @@
 #ifndef SMB4KSAMBAOPTIONS_H
 #define SMB4KSAMBAOPTIONS_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // application specific includes
 #include "core/smb4kcustomoptions.h"
 

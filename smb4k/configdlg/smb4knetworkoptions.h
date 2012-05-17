@@ -27,10 +27,6 @@
 #ifndef SMB4KNETWORKOPTIONS_H
 #define SMB4KNETWORKOPTIONS_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // Qt includes
 #include <QWidget>
 

@@ -147,7 +147,7 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions( bool read )
           // This is a comment. We do not need it.
           continue;
         }
-        else if ( contents.at( i ).trimmed().startsWith( "include" ) )
+        else if ( contents.at( i ).trimmed().startsWith( QLatin1String( "include" ) ) )
         {
           // Look for the include file and put its contents into the
           // m_samba_options map.

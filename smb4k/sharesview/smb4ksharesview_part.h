@@ -26,10 +26,6 @@
 #ifndef SMB4KSHARESVIEW_PART_H
 #define SMB4KSHARESVIEW_PART_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // Qt includes
 #include <QGridLayout>
 

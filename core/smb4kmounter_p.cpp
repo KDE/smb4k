@@ -1269,7 +1269,7 @@ void Smb4KMountDialog::slotOkClicked()
     QUrl url;
     
     // Take care of Windows-like UNC addresses:
-    if ( m_share_input->text().trimmed().startsWith( "\\" ) )
+    if ( m_share_input->text().trimmed().startsWith( QLatin1String( "\\" ) ) )
     {
       QString unc = m_share_input->text();
       unc.replace( "\\", "/" );

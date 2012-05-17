@@ -26,10 +26,6 @@
 #ifndef SMB4KSHARESMENU_H
 #define SMB4KSHARESMENU_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // Qt includes
 #include <QAction>
 #include <QActionGroup>

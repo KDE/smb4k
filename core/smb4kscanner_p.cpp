@@ -105,7 +105,7 @@ void Smb4KLookupDomainsJob::processWorkgroups()
 
     foreach ( const QString &line, stdout )
     {
-      if ( line.startsWith( "Looking up status of" ) )
+      if ( line.startsWith( QLatin1String( "Looking up status of" ) ) )
       {
         // Get the IP address of the master browser.
         workgroup->setMasterBrowserIP( line.section( "of", 1, 1 ).trimmed() );
@@ -531,15 +531,15 @@ void Smb4KQueryMasterJob::processWorkgroups()
 
     foreach ( const QString &line, stdout )
     {
-      if ( line.trimmed().startsWith( "Enumerating" ) )
+      if ( line.trimmed().startsWith( QLatin1String( "Enumerating" ) ) )
       {
         continue;
       }
-      else if ( line.trimmed().startsWith( "Domain name" ) )
+      else if ( line.trimmed().startsWith( QLatin1String( "Domain name" ) ) )
       {
         continue;
       }
-      else if ( line.trimmed().startsWith( "-------------" ) )
+      else if ( line.trimmed().startsWith( QLatin1String( "-------------" ) ) )
       {
         continue;
       }
@@ -984,7 +984,7 @@ void Smb4KScanBAreasJob::processScan()
       // Check if we have to skip this host entry.
       // A host entry is skipped if the IP address is invalid, i.e.
       // 0.0.0.0 is returned.
-      if ( line.startsWith( "Looking up status of" ) )
+      if ( line.startsWith( QLatin1String( "Looking up status of" ) ) )
       {
         QString ip_address = line.section( "of", 1, 1 ).trimmed();
         skip = (QString::compare( ip_address, "0.0.0.0" ) == 0);
@@ -998,7 +998,7 @@ void Smb4KScanBAreasJob::processScan()
       // skip lines until there is a valid host entry.
       if ( !skip )
       {
-        if ( line.startsWith( "Looking up status of" ) )
+        if ( line.startsWith( QLatin1String( "Looking up status of" ) ) )
         {
           // Set the IP address of the host.
           QString ip_address = line.section( "of", 1, 1 ).trimmed();
@@ -1484,15 +1484,15 @@ void Smb4KLookupDomainMembersJob::processHosts()
 
     foreach ( const QString &line, stdout )
     {
-      if ( line.trimmed().startsWith( "Enumerating" ) )
+      if ( line.trimmed().startsWith( QLatin1String( "Enumerating" ) ) )
       {
         continue;
       }
-      else if ( line.trimmed().startsWith( "Server name" ) )
+      else if ( line.trimmed().startsWith( QLatin1String( "Server name" ) ) )
       {
         continue;
       }
-      else if ( line.trimmed().startsWith( "-------------" ) )
+      else if ( line.trimmed().startsWith( QLatin1String( "-------------" ) ) )
       {
         continue;
       }
@@ -1839,23 +1839,23 @@ void Smb4KLookupSharesJob::processShares()
     
     foreach ( const QString &line, stdout )
     {
-      if ( line.trimmed().startsWith( "Enumerating" ) )
+      if ( line.trimmed().startsWith( QLatin1String( "Enumerating" ) ) )
       {
         continue;
       }
-      else if ( line.trimmed().startsWith( "Share name" ) )
+      else if ( line.trimmed().startsWith( QLatin1String( "Share name" ) ) )
       {
         continue;
       }
-      else if ( line.trimmed().startsWith( "----------" ) )
+      else if ( line.trimmed().startsWith( QLatin1String( "----------" ) ) )
       {
         continue;
       }
       else if ( line.contains( " Disk     ", Qt::CaseSensitive ) /* line has comment */ ||
                 (!line.contains( " Disk     ", Qt::CaseSensitive ) &&
-                line.trimmed().endsWith( " Disk", Qt::CaseSensitive ) /* line has no comment */) )
+                line.trimmed().endsWith( QLatin1String( " Disk" ), Qt::CaseSensitive ) /* line has no comment */) )
       {
-        if ( !line.trimmed().endsWith( " Disk", Qt::CaseSensitive ) )
+        if ( !line.trimmed().endsWith( QLatin1String( " Disk" ), Qt::CaseSensitive ) )
         {
           share->setShareName( line.section( " Disk     ", 0, 0 ).trimmed() );
           share->setComment( line.section( " Disk     ", 1, 1 ).trimmed() );
@@ -1890,9 +1890,9 @@ void Smb4KLookupSharesJob::processShares()
       }
       else if ( line.contains( " IPC      ", Qt::CaseSensitive ) /* line has comment */ ||
                 (!line.contains( " IPC      ", Qt::CaseSensitive ) &&
-                line.trimmed().endsWith( " IPC", Qt::CaseSensitive ) /* line has no comment */) )
+                line.trimmed().endsWith( QLatin1String( " IPC" ), Qt::CaseSensitive ) /* line has no comment */) )
       {
-        if ( !line.trimmed().endsWith( " IPC", Qt::CaseSensitive ) )
+        if ( !line.trimmed().endsWith( QLatin1String( " IPC" ), Qt::CaseSensitive ) )
         {
           share->setShareName( line.section( " IPC      ", 0, 0 ).trimmed() );
           share->setComment( line.section( " IPC      ", 1, 1 ).trimmed() );
@@ -1927,9 +1927,9 @@ void Smb4KLookupSharesJob::processShares()
       }
       else if ( line.contains( " Print    ", Qt::CaseSensitive ) /* line has comment */ ||
                 (!line.contains( " Print    ", Qt::CaseSensitive ) &&
-                line.trimmed().endsWith( " Print", Qt::CaseSensitive ) /* line has no comment */) )
+                line.trimmed().endsWith( QLatin1String( " Print" ), Qt::CaseSensitive ) /* line has no comment */) )
       {
-        if ( !line.trimmed().endsWith( " Print", Qt::CaseSensitive ) )
+        if ( !line.trimmed().endsWith( QLatin1String( " Print" ), Qt::CaseSensitive ) )
         {
           share->setShareName( line.section( " Print    ", 0, 0 ).trimmed() );
           share->setComment( line.section( " Print    ", 1, 1 ).trimmed() );

@@ -27,11 +27,6 @@
 #ifndef SMB4KNETWORGSEARCHITEM_H
 #define SMB4KNETWORHSEARCHITEM_H
 
-
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // application specific includes
 #include "core/smb4khost.h"
 #include "core/smb4kshare.h"

@@ -23,6 +23,13 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+// application specific includes
+#include "smb4kmounthelper.h"
+
 // Qt includes
 #include <QProcessEnvironment>
 #include <QUrl>
@@ -34,9 +41,6 @@
 #include <klocale.h>
 #include <kprocess.h>
 #include <kmountpoint.h>
-
-// application specific includes
-#include "smb4kmounthelper.h"
 
 KDE4_AUTH_HELPER_MAIN( "net.sourceforge.smb4k.mounthelper", Smb4KMountHelper )
 

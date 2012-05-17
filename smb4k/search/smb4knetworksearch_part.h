@@ -27,10 +27,6 @@
 #ifndef SMB4KNETWORKSEARCHPART_H
 #define SMB4KNETWORKSEARCHPART_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // KDE includes
 #include <kparts/part.h>
 #include <kparts/genericfactory.h>

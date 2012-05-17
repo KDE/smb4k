@@ -24,6 +24,10 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 // application specific includes
 #include "smb4knetworkbrowser_part.h"
 #include "smb4knetworkbrowser.h"
@@ -75,7 +79,7 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject
   // Parse arguments:
   for ( int i = 0; i < args.size(); ++i )
   {
-    if ( args.at( i ).toString().startsWith( "bookmark_shortcut" ) )
+    if ( args.at( i ).toString().startsWith( QLatin1String( "bookmark_shortcut" ) ) )
     {
       if ( QString::compare( args.at( i ).toString().section( '=', 1, 1 ).trimmed(), "\"false\"" ) == 0 )
       {
@@ -88,7 +92,7 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject
 
       continue;
     }
-    else if ( args.at( i ).toString().startsWith( "silent" ) )
+    else if ( args.at( i ).toString().startsWith( QLatin1String( "silent" ) ) )
     {
       if ( QString::compare( args.at( i ).toString().section( '=', 1, 1 ).trimmed(), "\"true\"" ) == 0 )
       {

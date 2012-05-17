@@ -26,10 +26,6 @@
 #ifndef SMB4KRSYNCOPTIONS_H
 #define SMB4KRSYNCOPTIONS_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // KDE includes
 #include <ktabwidget.h>
 

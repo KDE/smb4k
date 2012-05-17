@@ -26,10 +26,6 @@
 #ifndef SMB4KSHARESLISTVIEWITEM_H
 #define SMB4KSHARESLISTVIEWITEM_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // application specific includes
 #include "core/smb4kshare.h"
 

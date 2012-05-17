@@ -1401,7 +1401,7 @@ void Smb4KShare::resetMountData()
 
 bool Smb4KShare::isHomesShare() const
 {
-  return d->url.path().endsWith( "homes" );
+  return d->url.path().endsWith( QLatin1String( "homes" ) );
 }
 
 

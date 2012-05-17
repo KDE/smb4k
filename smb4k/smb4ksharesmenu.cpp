@@ -23,6 +23,10 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 // application specific includes
 #include "smb4ksharesmenu.h"
 #include "core/smb4kshare.h"
@@ -335,23 +339,23 @@ void Smb4KSharesMenu::slotShareAction( QAction *action )
 
   if ( share )
   {
-    if ( action->objectName().startsWith( "[unmount]" ) )
+    if ( action->objectName().startsWith( QLatin1String( "[unmount]" ) ) )
     {
       Smb4KMounter::self()->unmountShare( share, false, m_parent_widget );
     }
-    else if ( action->objectName().startsWith( "[bookmark]" ) )
+    else if ( action->objectName().startsWith( QLatin1String( "[bookmark]" ) ) )
     {
       Smb4KBookmarkHandler::self()->addBookmark( share, m_parent_widget );
     }
-    else if ( action->objectName().startsWith( "[synchronize]" ) )
+    else if ( action->objectName().startsWith( QLatin1String( "[synchronize]" ) ) )
     {
       Smb4KSynchronizer::self()->synchronize( share, m_parent_widget );
     }
-    else if ( action->objectName().startsWith( "[konsole]" ) )
+    else if ( action->objectName().startsWith( QLatin1String( "[konsole]" ) ) )
     {
       open( share, Smb4KGlobal::Konsole );
     }
-    else if ( action->objectName().startsWith( "[filemanager]" ) )
+    else if ( action->objectName().startsWith( QLatin1String( "[filemanager]" ) ) )
     {
       open( share, Smb4KGlobal::FileManager );
     }
