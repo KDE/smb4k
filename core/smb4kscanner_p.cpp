@@ -2625,21 +2625,63 @@ bool Smb4KLookupIPAddressJob::doKill()
 
 void Smb4KLookupIPAddressJob::processIPAddress()
 {
-  QString stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 );
-  m_host->setIP( stdout.trimmed() );
+  // Normally, there should only be one IP address. However, there might
+  // be more than one. So, split the incoming data and use the first entry
+  // as IP address (it's most likely the correct one). If there is no data,
+  // set the IP address to an empty string.
+  QStringList ip_address = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( "\n", QString::SkipEmptyParts );
+
+  if ( !ip_address.isEmpty() )
+  {
+    m_host->setIP( ip_address.first().trimmed() );
+  }
+  else
+  {
+    m_host->setIP( QString() );
+  }
   emit ipAddress( m_host );
 }
 
 
 void Smb4KLookupIPAddressJob::slotStartLookup()
 {
-  // Find net program
-  QString net = KStandardDirs::findExe( "net" );
+  // Find nmblookup program.
+  QString nmblookup = KStandardDirs::findExe( "nmblookup" );
 
-  if ( net.isEmpty() )
+  if ( nmblookup.isEmpty() )
   {
     Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "net" );
+    notification->commandNotFound( "nmblookup" );
+    emitResult();
+    return;
+  }
+  else
+  {
+    // Go ahead
+  }
+
+  // Find grep program.
+  QString grep = KStandardDirs::findExe( "grep" );
+
+  if ( grep.isEmpty() )
+  {
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->commandNotFound( "grep" );
+    emitResult();
+    return;
+  }
+  else
+  {
+    // Go ahead
+  }
+
+  // Find the awk program
+  QString awk = KStandardDirs::findExe( "awk" );
+
+  if ( awk.isEmpty() )
+  {
+    Smb4KNotification *notification = new Smb4KNotification();
+    notification->commandNotFound( "awk" );
     emitResult();
     return;
   }
@@ -2651,14 +2693,11 @@ void Smb4KLookupIPAddressJob::slotStartLookup()
   // Global Samba options
   QMap<QString,QString> samba_options = globalSambaOptions();
 
-  // Compile the command.
+  // Compile the arguments
   QStringList arguments;
-  arguments << net;
-  arguments << "lookup";
-  arguments << m_host->hostName();
-  arguments << QString( "-w %1" ).arg( KShell::quoteArg( m_host->workgroupName() ) );
-  arguments << QString( "-p %1" ).arg( Smb4KSettings::remoteSMBPort() );
+  arguments << nmblookup;
 
+  // Domain
   if ( !Smb4KSettings::domainName().isEmpty() &&
        QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0 )
   {
@@ -2669,7 +2708,7 @@ void Smb4KLookupIPAddressJob::slotStartLookup()
     // Do nothing
   }
 
-  // The user's NetBIOS name
+  // NetBIOS name
   if ( !Smb4KSettings::netBIOSName().isEmpty() &&
        QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0 )
   {
@@ -2680,24 +2719,71 @@ void Smb4KLookupIPAddressJob::slotStartLookup()
     // Do nothing
   }
 
-  if ( Smb4KSettings::useKerberos() )
+  // NetBIOS scope
+  if ( !Smb4KSettings::netBIOSScope().isEmpty() &&
+       QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0 )
   {
-    arguments << "-k";
+    arguments << QString( "-i %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSScope() ) );
   }
   else
   {
     // Do nothing
   }
 
-  if ( Smb4KSettings::machineAccount() )
+  // Socket options
+  if ( !Smb4KSettings::socketOptions().isEmpty() &&
+       QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0 )
   {
-    arguments << "-P";
+    arguments << QString( "-O %1" ).arg( KShell::quoteArg( Smb4KSettings::socketOptions() ) );
   }
   else
   {
     // Do nothing
   }
 
+  // Port 137
+  if ( Smb4KSettings::usePort137() )
+  {
+    arguments << "-r";
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // Broadcast address
+  QHostAddress address( Smb4KSettings::broadcastAddress() );
+
+  if ( !Smb4KSettings::broadcastAddress().isEmpty() &&
+       address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol )
+  {
+    arguments << QString( "-B %1" ).arg( Smb4KSettings::broadcastAddress() );
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // WINS server
+  if ( !winsServer().isEmpty() )
+  {
+    arguments << "-R";
+    arguments << QString( "-U %1" ).arg( KShell::quoteArg( winsServer() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  arguments << "--";
+  arguments << KShell::quoteArg( m_host->hostName() );
+  arguments << "|";
+  arguments << grep;
+  arguments << "'<00>'";
+  arguments << "|";
+  arguments << awk;
+  arguments << "{'print $1'}";
+  
   m_proc = new Smb4KProcess( this );
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
   m_proc->setShellCommand( arguments.join( " " ) );
