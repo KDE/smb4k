@@ -27,10 +27,6 @@
 #ifndef SMB4KBOOKMARK_H
 #define SMB4KBOOKMARK_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // Qt includes
 #include <QtCore/QString>
 #include <QtCore/QUrl>

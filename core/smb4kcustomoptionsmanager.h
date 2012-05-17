@@ -26,10 +26,6 @@
 #ifndef SMB4KCUSTOMOPTIONSMANAGER_H
 #define SMB4KCUSTOMOPTIONSMANAGER_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // application specific includes
 #include "smb4kcustomoptions.h"
 
@@ -45,6 +41,14 @@
 class Smb4KCustomOptionsManagerPrivate;
 class Smb4KShare;
 class Smb4KBasicNetworkItem;
+
+/**
+ * This classes manages the custom options that were defined
+ * for a certain share or host.
+ *
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ * @since 1.0.0
+ */
 
 class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
 {

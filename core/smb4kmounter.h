@@ -26,10 +26,6 @@
 #ifndef SMB4KMOUNTER_H
 #define SMB4KMOUNTER_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // application specific includes
 #include "smb4ksolidinterface.h"
 

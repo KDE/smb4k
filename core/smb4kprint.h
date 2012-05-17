@@ -26,10 +26,6 @@
 #ifndef SMB4KPRINT_H
 #define SMB4KPRINT_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // Qt includes
 #include <QtGui/QWidget>
 
@@ -41,6 +37,14 @@
 class Smb4KPrintPrivate;
 class Smb4KShare;
 class Smb4KPrintJob;
+
+/**
+ * This class provides an interface to printer shares on your
+ * network neighborhood.
+ *
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ * @since 1.0.0
+ */
 
 
 class KDE_EXPORT Smb4KPrint : public KCompositeJob

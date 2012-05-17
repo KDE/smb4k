@@ -24,6 +24,18 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4knetworksearch_part.h"
+#include "smb4knetworksearch.h"
+#include "smb4knetworksearchitem.h"
+#include "core/smb4khost.h"
+#include "core/smb4kshare.h"
+#include "core/smb4ksettings.h"
+#include "core/smb4kglobal.h"
+#include "core/smb4kscanner.h"
+#include "core/smb4kmounter.h"
+#include "core/smb4ksearch.h"
+
 // Qt includes
 #include <QLineEdit>
 #include <QKeySequence>
@@ -37,18 +49,6 @@
 #include <kactioncollection.h>
 #include <kmenu.h>
 #include <kapplication.h>
-
-// application specific includes
-#include <smb4knetworksearch_part.h>
-#include <smb4knetworksearch.h>
-#include <smb4knetworksearchitem.h>
-#include <core/smb4khost.h>
-#include <core/smb4kshare.h>
-#include <core/smb4ksettings.h>
-#include <core/smb4kglobal.h>
-#include <core/smb4kscanner.h>
-#include <core/smb4kmounter.h>
-#include <core/smb4ksearch.h>
 
 using namespace Smb4KGlobal;
 

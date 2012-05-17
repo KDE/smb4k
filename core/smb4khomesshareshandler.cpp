@@ -23,6 +23,10 @@
  *   MA 02110-1335 USA                                                     *
  ***************************************************************************/
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 // application specific includes
 #include "smb4khomesshareshandler.h"
 #include "smb4khomesshareshandler_p.h"

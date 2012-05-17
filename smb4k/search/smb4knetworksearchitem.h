@@ -32,15 +32,15 @@
 #include <config.h>
 #endif
 
+// application specific includes
+#include "core/smb4khost.h"
+#include "core/smb4kshare.h"
+
 // Qt includes
 #include <QListWidgetItem>
 
 // KDE includes
 #include <klistwidget.h>
-
-// system includes
-#include <core/smb4khost.h>
-#include <core/smb4kshare.h>
 
 /**
  * This class is an enhanced version of QListWidgetItem, that is used

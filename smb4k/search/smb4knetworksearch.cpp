@@ -23,6 +23,10 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4knetworksearch.h"
+#include "smb4knetworksearchitem.h"
+
 // Qt includes
 #include <QGridLayout>
 #include <QLabel>
@@ -31,10 +35,6 @@
 #include <klocale.h>
 #include <kdebug.h>
 #include <kicon.h>
-
-// application specific includes
-#include <smb4knetworksearch.h>
-#include <smb4knetworksearchitem.h>
 
 Smb4KNetworkSearch::Smb4KNetworkSearch( QWidget *parent )
 : QWidget( parent )

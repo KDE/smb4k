@@ -23,6 +23,10 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 // application specific includes
 #include "smb4ksynchronizer.h"
 #include "smb4ksynchronizer_p.h"
@@ -48,7 +52,7 @@ K_GLOBAL_STATIC( Smb4KSynchronizerStatic, p );
 
 
 Smb4KSynchronizer::Smb4KSynchronizer( QObject *parent )
-: KCompositeJob( parent )
+: KCompositeJob( parent ), d( new Smb4KSynchronizerPrivate )
 {
   setAutoDelete( false );
   connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );

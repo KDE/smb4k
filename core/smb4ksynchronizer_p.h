@@ -27,10 +27,6 @@
 #ifndef SMB4KSYNCHRONIZER_P_H
 #define SMB4KSYNCHRONIZER_P_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // application specific includes
 #include "smb4ksynchronizer.h"
 #include "smb4kprocess.h"
@@ -203,6 +199,11 @@ class Smb4KSynchronizationDialog : public KDialog
      * The destination URL requester
      */
     KUrlRequester *m_destination;
+};
+
+
+class Smb4KSynchronizerPrivate
+{
 };
 
 

@@ -23,6 +23,12 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4kshareslistview.h"
+#include "smb4kshareslistviewitem.h"
+#include "../tooltips/smb4ktooltip.h"
+#include "core/smb4ksettings.h"
+
 // Qt includes
 #include <QMouseEvent>
 #include <QWheelEvent>
@@ -39,11 +45,6 @@
 #include <kiconloader.h>
 #include <kicon.h>
 
-// application specific includes
-#include <smb4kshareslistview.h>
-#include <smb4kshareslistviewitem.h>
-#include <../tooltips/smb4ktooltip.h>
-#include <core/smb4ksettings.h>
 
 Smb4KSharesListView::Smb4KSharesListView( QWidget *parent )
 : QTreeWidget( parent )

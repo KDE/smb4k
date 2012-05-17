@@ -26,10 +26,6 @@
 #ifndef SMB4KPROCESS_H
 #define SMB4KPROCESS_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // Qt includes
 #include <QtCore/QScopedPointer>
 

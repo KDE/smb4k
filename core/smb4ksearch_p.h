@@ -26,10 +26,6 @@
 #ifndef SMB4KSEARCH_P_H
 #define SMB4KSEARCH_P_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // application specific includes
 #include "smb4ksearch.h"
 #include "smb4kprocess.h"
@@ -145,6 +141,11 @@ class Smb4KSearchJob : public KJob
     Smb4KHost *m_master;
     QWidget *m_parent_widget;
     Smb4KProcess *m_proc;
+};
+
+
+class Smb4KSearchPrivate
+{
 };
 
 

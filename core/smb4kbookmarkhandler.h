@@ -26,10 +26,6 @@
 #ifndef SMB4KBOOKMARKHANDLER_H
 #define SMB4KBOOKMARKHANDLER_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // Qt includes
 #include <QtCore/QObject>
 #include <QtCore/QList>

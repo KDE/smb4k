@@ -27,10 +27,6 @@
 #ifndef SMB4KSOLIDINTERFACE_H
 #define SMB4KSOLIDINTERFACE_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // Qt includes
 #include <QtCore/QObject>
 #include <QtCore/QScopedPointer>
@@ -42,6 +38,15 @@
 
 // forward declarations
 class Smb4KSolidInterfacePrivate;
+
+/**
+ * This class provides an interface to the hardware of the computer
+ * Smb4K is running on. It is used to react on network connects and
+ * disconnects, hibernation, etc.
+ *
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ * @since 1.0.0
+ */
 
 class KDE_EXPORT Smb4KSolidInterface : public QObject
 {

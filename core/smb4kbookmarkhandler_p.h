@@ -26,10 +26,6 @@
 #ifndef SMB4KBOOKMARKHANDLER_P_H
 #define SMB4KBOOKMARKHANDLER_P_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // application specific includes
 #include "smb4kbookmarkhandler.h"
 

@@ -23,6 +23,18 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4ksharesview_part.h"
+#include "smb4kshareslistviewitem.h"
+#include "smb4ksharesiconviewitem.h"
+#include "../tooltips/smb4ktooltip.h"
+#include "core/smb4kshare.h"
+#include "core/smb4ksettings.h"
+#include "core/smb4kglobal.h"
+#include "core/smb4kmounter.h"
+#include "core/smb4ksynchronizer.h"
+#include "core/smb4kbookmarkhandler.h"
+
 // Qt includes
 #include <QHeaderView>
 #include <QDropEvent>
@@ -30,7 +42,6 @@
 // KDE includes
 #include <klocale.h>
 #include <kaboutdata.h>
-#include <klocale.h>
 #include <kaction.h>
 #include <kdebug.h>
 #include <kicon.h>
@@ -42,18 +53,6 @@
 #include <kjobuidelegate.h>
 #include <kstandarddirs.h>
 #include <kglobalsettings.h>
-
-// application specific includes
-#include <smb4ksharesview_part.h>
-#include <smb4kshareslistviewitem.h>
-#include <smb4ksharesiconviewitem.h>
-#include <../tooltips/smb4ktooltip.h>
-#include <core/smb4kshare.h>
-#include <core/smb4ksettings.h>
-#include <core/smb4kglobal.h>
-#include <core/smb4kmounter.h>
-#include <core/smb4ksynchronizer.h>
-#include <core/smb4kbookmarkhandler.h>
 
 using namespace Smb4KGlobal;
 

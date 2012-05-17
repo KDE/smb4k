@@ -26,10 +26,6 @@
 #ifndef SMB4KCUSTOMOPTIONS_H
 #define SMB4KCUSTOMOPTIONS_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // application specific includes
 #include "smb4khost.h"
 #include "smb4kshare.h"
@@ -43,6 +39,14 @@
 
 // forward declarations
 class Smb4KCustomOptionsPrivate;
+
+/**
+ * This class stored the custom options defined for a certain host
+ * or share.
+ *
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ * @since 1.0.0
+ */
 
 class KDE_EXPORT Smb4KCustomOptions
 {

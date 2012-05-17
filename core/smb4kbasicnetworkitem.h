@@ -27,10 +27,6 @@
 #ifndef SMB4KBASICNETWORKITEM_H
 #define SMB4KBASICNETWORKITEM_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // Qt includes
 #include <QtCore/QString>
 #include <QtCore/QScopedPointer>
@@ -41,6 +37,14 @@
 
 // forward declarations
 class Smb4KBasicNetworkItemPrivate;
+
+/**
+ * This is the basic class from which all other network item classes
+ * are derived.
+ * 
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ * @since 1.0.0
+ */
 
 class KDE_EXPORT Smb4KBasicNetworkItem
 {

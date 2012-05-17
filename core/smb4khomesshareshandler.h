@@ -26,10 +26,6 @@
 #ifndef SMB4KHOMESSHARESHANDLER_H
 #define SMB4KHOMESSHARESHANDLER_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // Qt includes
 #include <QtCore/QObject>
 #include <QtCore/QString>

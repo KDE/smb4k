@@ -26,12 +26,9 @@
 #ifndef SMB4KSYNCHRONIZER_H
 #define SMB4KSYNCHRONIZER_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // Qt includes
 #include <QtCore/QString>
+#include <QtCore/QScopedPointer>
 #include <QtGui/QWidget>
 
 // KDE includes
@@ -39,11 +36,15 @@
 #include <kjob.h>
 #include <kcompositejob.h>
 
+// forward declarations
 class Smb4KShare;
+class Smb4KSynchronizerPrivate;
 
 class KDE_EXPORT Smb4KSynchronizer : public KCompositeJob
 {
   Q_OBJECT
+
+  friend class Smb4KSynchronizerPrivate;
 
   public:
     /**
@@ -144,6 +145,12 @@ class KDE_EXPORT Smb4KSynchronizer : public KCompositeJob
      * Invoked when the application goes down
      */
     void slotAboutToQuit();
+
+  private:
+    /**
+     * Pointer to Smb4KSearchPrivate class
+     */
+    const QScopedPointer<Smb4KSynchronizerPrivate> d;
 };
 
 #endif

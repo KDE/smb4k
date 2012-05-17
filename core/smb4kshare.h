@@ -26,19 +26,15 @@
 #ifndef SMB4KSHARE_H
 #define SMB4KSHARE_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // application specific includes
 #include "smb4kbasicnetworkitem.h"
 
 // Qt includes
-#include <QString>
-#include <QStringList>
-#include <QtGlobal>
-#include <QUrl>
-#include <QScopedPointer>
+#include <QtCore/QString>
+#include <QtCore/QStringList>
+#include <QtCore/QtGlobal>
+#include <QtCore/QUrl>
+#include <QtCore/QScopedPointer>
 
 // KDE includes
 #include <kuser.h>

@@ -26,10 +26,6 @@
 #ifndef SMB4KPREVIEWER_H
 #define SMB4KPREVIEWER_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // Qt includes
 #include <QtCore/QUrl>
 #include <QtCore/QScopedPointer>
@@ -44,6 +40,13 @@ class Smb4KPreviewerPrivate;
 class Smb4KShare;
 class Smb4KPreviewJob;
 class Smb4KPreviewDialog;
+
+/**
+ * This class acquires previews from defined shares.
+ *
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ * @since 1.0.0
+ */
 
 class KDE_EXPORT Smb4KPreviewer : public KCompositeJob
 {

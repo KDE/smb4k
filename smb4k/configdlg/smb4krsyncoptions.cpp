@@ -19,9 +19,13 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,   *
- *   MA  02111-1307 USA                                                    *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
+
+// application specific includes
+#include "smb4krsyncoptions.h"
+#include "core/smb4ksettings.h"
 
 // Qt includes
 #include <QGridLayout>
@@ -38,9 +42,6 @@
 #include <kfile.h>
 #include <klineedit.h>
 
-// application specific includes
-#include <smb4krsyncoptions.h>
-#include <core/smb4ksettings.h>
 
 Smb4KRsyncOptions::Smb4KRsyncOptions( QWidget *parent )
 : KTabWidget( parent )

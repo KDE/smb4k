@@ -23,6 +23,15 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4ksharesmenu.h"
+#include "core/smb4kshare.h"
+#include "core/smb4kmounter.h"
+#include "core/smb4kglobal.h"
+#include "core/smb4ksettings.h"
+#include "core/smb4ksynchronizer.h"
+#include "core/smb4kbookmarkhandler.h"
+
 // Qt includes
 #include <QMap>
 #include <QVariant>
@@ -34,15 +43,6 @@
 #include <kiconloader.h>
 #include <kaction.h>
 #include <kstandarddirs.h>
-
-// application specific includes
-#include "smb4ksharesmenu.h"
-#include <core/smb4kshare.h>
-#include <core/smb4kmounter.h>
-#include <core/smb4kglobal.h>
-#include <core/smb4ksettings.h>
-#include <core/smb4ksynchronizer.h>
-#include <core/smb4kbookmarkhandler.h>
 
 using namespace Smb4KGlobal;
 

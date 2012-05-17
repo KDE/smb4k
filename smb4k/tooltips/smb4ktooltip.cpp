@@ -23,6 +23,13 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4ktooltip.h"
+#include "core/smb4kbasicnetworkitem.h"
+#include "core/smb4kworkgroup.h"
+#include "core/smb4khost.h"
+#include "core/smb4kshare.h"
+
 // Qt includes
 #include <QTimer>
 #include <QDebug>
@@ -42,13 +49,6 @@
 #include <kseparator.h>
 #include <kwindowsystem.h>
 #include <kcolorscheme.h>
-
-// application specific includes
-#include <core/smb4kbasicnetworkitem.h>
-#include <core/smb4kworkgroup.h>
-#include <core/smb4khost.h>
-#include <core/smb4kshare.h>
-#include "smb4ktooltip.h"
 
 Smb4KToolTip::Smb4KToolTip( QWidget* parent )
 : QWidget( parent, Qt::ToolTip|Qt::BypassGraphicsProxyWidget|Qt::FramelessWindowHint ),

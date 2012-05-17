@@ -39,7 +39,7 @@ class Smb4KSettings;
 /**
  * This is the (new) configuration dialog of Smb4K.
  *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
 class Smb4KConfigDialog : public KConfigDialog

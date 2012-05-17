@@ -24,6 +24,10 @@
  *   Boston, MA 02110-1335, USA                                            *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4kuserinterfaceoptions.h"
+#include "core/smb4ksettings.h"
+
 // Qt includes
 #include <QGridLayout>
 #include <QVBoxLayout>
@@ -36,9 +40,6 @@
 // KDE includes
 #include <klocale.h>
 
-// application specific includes
-#include "smb4kuserinterfaceoptions.h"
-#include <core/smb4ksettings.h>
 
 Smb4KUserInterfaceOptions::Smb4KUserInterfaceOptions( QWidget *parent )
 : KTabWidget( parent )

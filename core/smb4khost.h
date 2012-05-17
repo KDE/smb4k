@@ -26,10 +26,6 @@
 #ifndef SMB4KHOST_H
 #define SMB4KHOST_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // application specific includes
 #include "smb4kbasicnetworkitem.h"
 

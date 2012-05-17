@@ -27,10 +27,6 @@
 #ifndef SMB4KSCANNER_H
 #define SMB4KSCANNER_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // application specific includes
 #include "smb4knetworkobject.h"
 
@@ -53,6 +49,15 @@ class Smb4KQueryMasterJob;
 class Smb4KLookupDomainMembersJob;
 class Smb4KLookupSharesJob;
 class Smb4KScannerPrivate;
+
+
+/**
+ * This class scans the network neighborhood for workgroups/domains,
+ * hosts and shares. It looks up additions information and IP addresses.
+ *
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ * @since 1.0.0
+ */
 
 class KDE_EXPORT Smb4KScanner : public KCompositeJob
 {

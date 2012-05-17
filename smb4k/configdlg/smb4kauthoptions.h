@@ -50,7 +50,7 @@
  * This is the configuration tab for the authentication settings
  * of Smb4K.
  *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
 

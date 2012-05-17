@@ -24,11 +24,15 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 // application specific includes
 #include "smb4kworkgroup.h"
 
 // Qt includes
-#include <QHostAddress>
+#include <QtNetwork/QHostAddress>
 
 // KDE includes
 #include <kicon.h>

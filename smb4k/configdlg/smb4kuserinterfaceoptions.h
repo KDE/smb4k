@@ -41,7 +41,7 @@
 /**
  * The configuration page for the user interface of Smb4K.
  *
- * @author Alexander Reinholdt  <dustpuppy@mail.berlios.de>
+ * @author Alexander Reinholdt  <alexander.reinholdt@kdemail.net>
  */
 
 class Smb4KUserInterfaceOptions : public KTabWidget

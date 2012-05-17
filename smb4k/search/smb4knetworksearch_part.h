@@ -45,7 +45,7 @@ class Smb4KShare;
 /**
  * This is one of the parts of Smb4K. It contains the search dialog.
  *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
 class Smb4KNetworkSearchPart : public KParts::Part

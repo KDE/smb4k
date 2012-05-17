@@ -23,16 +23,16 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4kqmlplugin.h"
+#include "core/smb4kglobal.h"
+#include "core/smb4kscanner.h"
+#include "core/smb4kmounter.h"
+#include "core/smb4knetworkobject.h"
+
 // Qt includes
 #include <QtDeclarative/qdeclarative.h>
 #include <QIcon>
-
-// application specific includes
-#include "smb4kqmlplugin.h"
-#include <core/smb4kglobal.h>
-#include <core/smb4kscanner.h>
-#include <core/smb4kmounter.h>
-#include <core/smb4knetworkobject.h>
 
 void Smb4KQMLPlugin::registerTypes( const char *uri )
 {

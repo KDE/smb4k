@@ -26,11 +26,8 @@
 #ifndef SMB4KSEARCH_H
 #define SMB4KSEARCH_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // Qt includes
+#include <QtCore/QScopedPointer>
 #include <QtGui/QWidget>
 
 // KDE includes
@@ -40,11 +37,14 @@
 // forward declarations
 class Smb4KSearchJob;
 class Smb4KShare;
+class Smb4KSearchPrivate;
 
 
 class KDE_EXPORT Smb4KSearch : public KCompositeJob
 {
   Q_OBJECT
+
+  friend class Smb4KSearchPrivate;
 
   public:
     /**
@@ -159,6 +159,12 @@ class KDE_EXPORT Smb4KSearch : public KCompositeJob
      * Called when the program is about to quit
      */
     void slotAboutToQuit();
+
+  private:
+    /**
+     * Pointer to Smb4KSearchPrivate class
+     */
+    const QScopedPointer<Smb4KSearchPrivate> d;
 };
 
 #endif

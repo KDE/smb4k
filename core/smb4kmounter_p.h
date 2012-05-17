@@ -27,10 +27,6 @@
 #ifndef SMB4KMOUNTER_P_H
 #define SMB4KMOUNTER_P_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // application specific includes
 #include "smb4kmounter.h"
 #include "smb4kshare.h"

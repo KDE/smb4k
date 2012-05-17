@@ -27,10 +27,6 @@
 #ifndef SMB4KNETWORKOBJECT_H
 #define SMB4KNETWORKOBJECT_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // application specific includes
 #include "smb4kworkgroup.h"
 #include "smb4khost.h"

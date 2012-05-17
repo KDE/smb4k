@@ -41,9 +41,11 @@ class Smb4KHost;
 class Smb4KShare;
 
 /**
- * This is the global namespace for the core classes of Smb4K.
+ * This is the global namespace. It provides access to the global lists
+ * of workgroups, hosts and shares, to the global settings of the Samba
+ * configuration and much more.
  *
- * @author    Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author    Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
 namespace Smb4KGlobal

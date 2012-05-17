@@ -23,6 +23,16 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4ksystemtray.h"
+#include "smb4kbookmarkmenu.h"
+#include "smb4ksharesmenu.h"
+#include "core/smb4kworkgroup.h"
+#include "core/smb4kshare.h"
+#include "core/smb4kglobal.h"
+#include "core/smb4kmounter.h"
+#include "core/smb4kscanner.h"
+
 // KDE specific includes
 #include <kiconloader.h>
 #include <klocale.h>
@@ -36,16 +46,6 @@
 #include <kpluginfactory.h>
 #include <kactioncollection.h>
 #include <kmenu.h>
-
-// application specific includes
-#include <smb4ksystemtray.h>
-#include <smb4kbookmarkmenu.h>
-#include <smb4ksharesmenu.h>
-#include <core/smb4kworkgroup.h>
-#include <core/smb4kshare.h>
-#include <core/smb4kglobal.h>
-#include <core/smb4kmounter.h>
-#include <core/smb4kscanner.h>
 
 using namespace Smb4KGlobal;
 

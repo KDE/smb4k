@@ -20,9 +20,13 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, 51 Franklin Street, Suite 500, Boston,      *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
+
+// application specific includes
+#include "smb4knetworkoptions.h"
+#include "core/smb4ksettings.h"
 
 // Qt includes
 #include <QVBoxLayout>
@@ -39,9 +43,6 @@
 #include <kcombobox.h>
 #include <knuminput.h>
 
-// application specific includes
-#include "smb4knetworkoptions.h"
-#include <core/smb4ksettings.h>
 
 Smb4KNetworkOptions::Smb4KNetworkOptions( QWidget *parent )
 : QWidget( parent )

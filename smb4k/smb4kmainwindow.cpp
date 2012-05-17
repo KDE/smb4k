@@ -23,6 +23,23 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4kmainwindow.h"
+#include "smb4ksystemtray.h"
+#include "smb4kbookmarkmenu.h"
+#include "core/smb4ksettings.h"
+#include "core/smb4kglobal.h"
+#include "core/smb4kwalletmanager.h"
+#include "core/smb4kworkgroup.h"
+#include "core/smb4khost.h"
+#include "core/smb4kshare.h"
+#include "core/smb4kscanner.h"
+#include "core/smb4kmounter.h"
+#include "core/smb4kprint.h"
+#include "core/smb4ksynchronizer.h"
+#include "core/smb4kpreviewer.h"
+#include "core/smb4ksearch.h"
+
 // Qt includes
 #include <QSize>
 #include <QVariantList>
@@ -49,23 +66,6 @@
 #include <kiconeffect.h>
 #include <kmenubar.h>
 #include <kmenu.h>
-
-// application specific includes
-#include <smb4kmainwindow.h>
-#include <smb4ksystemtray.h>
-#include <smb4kbookmarkmenu.h>
-#include <core/smb4ksettings.h>
-#include <core/smb4kglobal.h>
-#include <core/smb4kwalletmanager.h>
-#include <core/smb4kworkgroup.h>
-#include <core/smb4khost.h>
-#include <core/smb4kshare.h>
-#include <core/smb4kscanner.h>
-#include <core/smb4kmounter.h>
-#include <core/smb4kprint.h>
-#include <core/smb4ksynchronizer.h>
-#include <core/smb4kpreviewer.h>
-#include <core/smb4ksearch.h>
 
 using namespace Smb4KGlobal;
 using namespace KParts;

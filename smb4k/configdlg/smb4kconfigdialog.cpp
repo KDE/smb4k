@@ -23,6 +23,21 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
+// application specific includes
+#include "smb4kconfigdialog.h"
+#include "smb4kuserinterfaceoptions.h"
+#include "smb4knetworkoptions.h"
+#include "smb4kshareoptions.h"
+#include "smb4kauthoptions.h"
+#include "smb4ksambaoptions.h"
+#include "smb4krsyncoptions.h"
+#include "smb4klaptopsupportoptions.h"
+#include "core/smb4ksettings.h"
+#include "core/smb4kglobal.h"
+#include "core/smb4kauthinfo.h"
+#include "core/smb4kwalletmanager.h"
+#include "core/smb4kcustomoptionsmanager.h"
+
 // Qt includes
 #include <QRadioButton>
 #include <QCheckBox>
@@ -44,25 +59,6 @@
 #include <kpassworddialog.h>
 #include <kapplication.h>
 #include <kconfigdialogmanager.h>
-
-// system specific includes
-// #include <unistd.h>
-// #include <sys/types.h>
-
-// application specific includes
-#include <smb4kconfigdialog.h>
-#include <smb4kuserinterfaceoptions.h>
-#include <smb4knetworkoptions.h>
-#include <smb4kshareoptions.h>
-#include <smb4kauthoptions.h>
-#include <smb4ksambaoptions.h>
-#include <smb4krsyncoptions.h>
-#include <smb4klaptopsupportoptions.h>
-#include <core/smb4ksettings.h>
-#include <core/smb4kglobal.h>
-#include <core/smb4kauthinfo.h>
-#include <core/smb4kwalletmanager.h>
-#include <core/smb4kcustomoptionsmanager.h>
 
 using namespace Smb4KGlobal;
 

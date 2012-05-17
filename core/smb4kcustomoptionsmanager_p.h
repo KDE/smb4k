@@ -27,10 +27,6 @@
 #ifndef SMB4KCUSTOMOPTIONSMANAGER_P_H
 #define SMB4KCUSTOMOPTIONSMANAGER_P_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // application specific includes
 #include "smb4kcustomoptionsmanager.h"
 #include "smb4kcustomoptions.h"

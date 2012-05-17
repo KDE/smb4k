@@ -26,10 +26,6 @@
 #ifndef SMB4KNOTIFICATION_H
 #define SMB4KNOTIFICATION_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // Qt includes
 #include <QtCore/QObject>
 #include <QtCore/QFile>
@@ -51,6 +47,7 @@ class Smb4KNotificationPrivate;
  * This class provides notifications used thoughout Smb4K.
  *
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ * @since 1.0.0
  */
 
 
