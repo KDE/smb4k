@@ -28,15 +28,14 @@
 #include <config.h>
 #endif
 
+// application specific includes
+#include "smb4knetworksearchitem.h"
+#include "smb4knetworksearch.h"
+
 // KDE includes
 #include <kiconloader.h>
 #include <klocale.h>
 #include <kicon.h>
-
-// application specific includes
-#include <smb4knetworksearchitem.h>
-#include <smb4knetworksearch.h>
-#include <core/smb4khost.h>
 
 
 Smb4KNetworkSearchItem::Smb4KNetworkSearchItem( KListWidget *listWidget, Smb4KShare *share )

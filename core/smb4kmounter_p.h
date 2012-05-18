@@ -41,7 +41,6 @@
 #include <kdebug.h>
 #include <klineedit.h>
 #include <kdialog.h>
-#include <kjob.h>
 #include <kauth.h>
 #include <kjob.h>
 

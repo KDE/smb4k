@@ -42,9 +42,7 @@
 #include <kurlrequester.h>
 #include <klineedit.h>
 #include <knuminput.h>
-#include <klineedit.h>
 #include <kfile.h>
-#include <klineedit.h>
 
 
 Smb4KRsyncOptions::Smb4KRsyncOptions( QWidget *parent )

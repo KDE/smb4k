@@ -24,11 +24,10 @@
  *   MA 02110-1335 USA                                                     *
  ***************************************************************************/
 
-#ifndef SMB4KNETWORGSEARCHITEM_H
-#define SMB4KNETWORHSEARCHITEM_H
+#ifndef SMB4KNETWORKSEARCHITEM_H
+#define SMB4KNETWORKSEARCHITEM_H
 
 // application specific includes
-#include "core/smb4khost.h"
 #include "core/smb4kshare.h"
 
 // Qt includes
@@ -42,10 +41,9 @@
  * by the search dialog of Smb4K to show the search results. It
  * encapsulates a Smb4KHost which carries all the information needed.
  *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class Smb4KNetworkSearch;
 class Smb4KNetworkSearchItem : public QListWidgetItem
 {
   public:

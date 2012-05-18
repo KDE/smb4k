@@ -2633,7 +2633,7 @@ void Smb4KLookupIPAddressJob::processIPAddress()
   // be more than one. So, split the incoming data and use the first entry
   // as IP address (it's most likely the correct one). If there is no data,
   // set the IP address to an empty string.
-  QStringList ip_address = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( "\n", QString::SkipEmptyParts );
+  QStringList ip_address = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts );
 
   if ( !ip_address.isEmpty() )
   {
