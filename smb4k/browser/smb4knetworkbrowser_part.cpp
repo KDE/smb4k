@@ -1518,16 +1518,7 @@ void Smb4KNetworkBrowserPart::slotAddIPAddress( Smb4KHost *host )
     // Update the tool tip, if there is one.
     if ( m_widget->tooltip() && m_widget->tooltip()->isVisible() )
     {
-      if ( QString::compare( m_widget->tooltip()->networkItem()->key(), hostItem->networkItem()->key() ) == 0 ||
-           (workgroupItem &&
-           QString::compare( m_widget->tooltip()->networkItem()->key(), workgroupItem->networkItem()->key() ) == 0) )
-      {
-        m_widget->tooltip()->update();
-      }
-      else
-      {
-        // Do nothing
-      }
+      m_widget->tooltip()->update();
     }
     else
     {
@@ -1558,8 +1549,7 @@ void Smb4KNetworkBrowserPart::slotAddInformation( Smb4KHost *host )
         hostItem->update( host );
 
         // Now update the tool tip in case it is shown:
-        if ( m_widget->tooltip() && m_widget->tooltip()->isVisible() &&
-             QString::compare( m_widget->tooltip()->networkItem()->key(), hostItem->networkItem()->key() ) == 0 )
+        if ( m_widget->tooltip() && m_widget->tooltip()->isVisible() )
         {
           m_widget->tooltip()->update();
         }
