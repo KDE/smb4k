@@ -101,7 +101,7 @@ class Smb4KPrintJob : public KJob
      */
     QWidget *parentWidget() { return m_parent_widget; }
     
-  signals:
+  Q_SIGNALS:
     /**
      * Emitted when an authentication error happened.
      */
@@ -124,7 +124,7 @@ class Smb4KPrintJob : public KJob
      */
     bool doKill();
     
-  protected slots:
+  protected Q_SLOTS:
     void slotStartPrinting();
     void slotReadStandardOutput();
     void slotReadStandardError();
@@ -174,7 +174,7 @@ class Smb4KPrintDialog : public KDialog
      */
     QPrinter *printer() { return m_printer; }
     
-  protected slots:
+  protected Q_SLOTS:
     /**
      * This slot is called when the User1 (i.e. the "Close") button
      * has been clicked.

@@ -113,7 +113,7 @@ class KDE_EXPORT Smb4KSynchronizer : public KCompositeJob
      */
     void start();
 
-  signals:
+  Q_SIGNALS:
     /**
      * This signal is emitted when a job is started. The emitted path
      * is the one of the destination.
@@ -130,7 +130,7 @@ class KDE_EXPORT Smb4KSynchronizer : public KCompositeJob
      */
     void finished( const QString &dest );
     
-  protected slots:
+  protected Q_SLOTS:
     /**
      * Invoked by start() function
      */

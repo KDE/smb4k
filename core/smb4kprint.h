@@ -119,7 +119,7 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
      */
     void start();
     
-  signals:
+  Q_SIGNALS:
     /**
      * This signal is emitted when a job is started.
      *
@@ -134,7 +134,7 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
      */
     void finished( Smb4KShare *printer );
     
-  protected slots:
+  protected Q_SLOTS:
     /**
      * Invoked by start() function
      */

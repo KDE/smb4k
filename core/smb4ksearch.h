@@ -108,7 +108,7 @@ class KDE_EXPORT Smb4KSearch : public KCompositeJob
      */
     void start();
 
-  signals:
+  Q_SIGNALS:
     /**
      * This signal is emitted when a search process is about to be started. It passes
      * the search string to the receiver.
@@ -134,7 +134,7 @@ class KDE_EXPORT Smb4KSearch : public KCompositeJob
      */
     void result( Smb4KShare *share );
 
-  protected slots:
+  protected Q_SLOTS:
     /**
      * Invoked by start() function
      */

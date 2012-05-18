@@ -244,7 +244,7 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
      */
     void timerEvent( QTimerEvent *e );
 
-  signals:
+  Q_SIGNALS:
     /**
      * This signal is emitted when a scan process is about to be started. It passes
      * the network @p item as well as the lookup method that is used to the receiver.
@@ -344,7 +344,7 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
      */
     void ipAddress( Smb4KHost *host );
 
-  protected slots:
+  protected Q_SLOTS:
     /**
      * Starts the composite job
      */

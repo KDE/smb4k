@@ -236,7 +236,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      */
     Q_INVOKABLE Smb4KNetworkObject *find( const QUrl &url, bool exactMatch = true );
     
-  signals:
+  Q_SIGNALS:
     /**
      * This signal is emitted whenever a share item was updated. This mainly happens
      * from within the import() function.
@@ -299,7 +299,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      */
     void timerEvent( QTimerEvent *event );
 
-  protected slots:
+  protected Q_SLOTS:
     /**
      * Starts the composite job
      */

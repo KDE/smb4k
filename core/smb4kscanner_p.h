@@ -93,7 +93,7 @@ class Smb4KLookupDomainsJob : public KJob
      */
     const QList<Smb4KWorkgroup *> &workgroupsList() { return m_workgroups_list; }
 
-  signals:
+  Q_SIGNALS:
     /**
      * This signal is emitted when a lookup process is about
      * to start
@@ -113,7 +113,7 @@ class Smb4KLookupDomainsJob : public KJob
   protected:
     bool doKill();
 
-  protected slots:
+  protected Q_SLOTS:
     void slotStartLookup();
     void slotReadStandardError();
     void slotProcessFinished( int exitCode,
@@ -192,7 +192,7 @@ class Smb4KQueryMasterJob : public KJob
      */
     const QList<Smb4KWorkgroup *> &workgroupsList() { return m_workgroups_list; }
 
-  signals:
+  Q_SIGNALS:
     /**
      * This signal is emitted when a lookup process is about
      * to start
@@ -220,7 +220,7 @@ class Smb4KQueryMasterJob : public KJob
   protected:
     bool doKill();
 
-  protected slots:
+  protected Q_SLOTS:
     void slotStartLookup();
     void slotReadStandardError();
     void slotProcessFinished( int exitCode,
@@ -295,7 +295,7 @@ class Smb4KScanBAreasJob : public KJob
      */
     const QList<Smb4KHost *> &hostsList() { return m_hosts_list; }
 
-  signals:
+  Q_SIGNALS:
     /**
      * This signal is emitted when a scan process is about
      * to start
@@ -320,7 +320,7 @@ class Smb4KScanBAreasJob : public KJob
   protected:
     bool doKill();
 
-  protected slots:
+  protected Q_SLOTS:
     void slotStartScan();
     void slotReadStandardError();
     void slotProcessFinished( int exitCode,
@@ -397,7 +397,7 @@ class Smb4KLookupDomainMembersJob : public KJob
      */
     const QList<Smb4KHost *> &hostsList() { return m_hosts_list; }
 
-  signals:
+  Q_SIGNALS:
     /**
      * This signal is emitted when the lookup process is about to start.
      *
@@ -429,7 +429,7 @@ class Smb4KLookupDomainMembersJob : public KJob
   protected:
     bool doKill();
 
-  protected slots:
+  protected Q_SLOTS:
     void slotStartLookup();
     void slotReadStandardError();
     void slotProcessFinished( int exitCode,
@@ -497,7 +497,7 @@ class Smb4KLookupSharesJob : public KJob
      */
     Smb4KHost *host() { return m_host; }
     
-  signals:
+  Q_SIGNALS:
     /**
      * This signal is emitted when the lookup process is about to start.
      *
@@ -529,7 +529,7 @@ class Smb4KLookupSharesJob : public KJob
   protected:
     bool doKill();
     
-  protected slots:
+  protected Q_SLOTS:
     void slotStartLookup();
     void slotReadStandardError();
     void slotProcessFinished( int exitCode,
@@ -595,7 +595,7 @@ class Smb4KLookupInfoJob : public KJob
      */
     Smb4KHost *host() { return m_host; }
     
-  signals:
+  Q_SIGNALS:
     /**
      * This signal is emitted when the lookup process is about to start.
      *
@@ -620,7 +620,7 @@ class Smb4KLookupInfoJob : public KJob
   protected:
     bool doKill();
     
-  protected slots:
+  protected Q_SLOTS:
     void slotStartLookup();
     void slotProcessFinished( int exitCode,
                               QProcess::ExitStatus exitStatus );
@@ -685,7 +685,7 @@ class Smb4KLookupIPAddressJob : public KJob
      */
     Smb4KHost *host() { return m_host; }
 
-  signals:
+  Q_SIGNALS:
     /**
      * Is emitted when an IP address was found
      */
@@ -694,7 +694,7 @@ class Smb4KLookupIPAddressJob : public KJob
   protected:
     bool doKill();
 
-  protected slots:
+  protected Q_SLOTS:
     void slotStartLookup();
     void slotProcessFinished( int exitCode,
                               QProcess::ExitStatus exitStatus );

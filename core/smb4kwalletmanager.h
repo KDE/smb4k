@@ -173,7 +173,7 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
      */
     void writeWalletEntries( const QList<Smb4KAuthInfo *> &entries );
 
-  signals:
+  Q_SIGNALS:
     /**
      * This signal is emitted if the wallet was opened asynchronously.
      *
@@ -193,7 +193,6 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
     void initialized();
 
   private:
-
     /**
      * Initialize the wallet manager.
      */

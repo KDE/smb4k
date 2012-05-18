@@ -103,7 +103,7 @@ class KDE_EXPORT Smb4KHomesSharesHandler : public QObject
      */
     QStringList homesUsers( Smb4KShare *share );
     
-  protected slots:
+  protected Q_SLOTS:
     /**
      * Called when the application goes down
      */

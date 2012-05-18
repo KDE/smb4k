@@ -101,7 +101,7 @@ class Smb4KSearchJob : public KJob
      */
     QWidget *parentWidget() { return m_parent_widget; }
 
-  signals:
+  Q_SIGNALS:
     /**
      * Emitted when the search is about to begin.
      */
@@ -129,7 +129,7 @@ class Smb4KSearchJob : public KJob
      */
     bool doKill();
 
-  protected slots:
+  protected Q_SLOTS:
     void slotStartSearch();
     void slotReadStandardOutput();
     void slotReadStandardError();

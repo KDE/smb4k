@@ -124,7 +124,7 @@ class Smb4KMountJob : public KJob
      */
     QWidget *parentWidget() { return m_parent_widget; }
 
-  signals:
+  Q_SIGNALS:
     /**
      * This signal is emitted when shares are about to be mounted
      */
@@ -157,7 +157,7 @@ class Smb4KMountJob : public KJob
      */
     bool doKill();
 
-  protected slots:
+  protected Q_SLOTS:
     void slotStartMount();
     void slotActionFinished( ActionReply reply );
     void slotFinishJob();
@@ -237,7 +237,7 @@ class Smb4KUnmountJob : public KJob
                        bool silent,
                        QWidget *parent = 0 );
     
-  signals:
+  Q_SIGNALS:
     /**
      * This signal is emitted when shares are about to be unmounted
      */
@@ -260,7 +260,7 @@ class Smb4KUnmountJob : public KJob
      */
     bool doKill();
 
-  protected slots:
+  protected Q_SLOTS:
     void slotStartUnmount();
     void slotActionFinished( ActionReply reply );
     void slotFinishJob();
@@ -310,7 +310,7 @@ class Smb4KMountDialog : public KDialog
      */
     bool validUserInput() { return m_valid; }
 
-  protected slots:
+  protected Q_SLOTS:
     /**
      * This slot is activated if the OK button has been clicked.
      */

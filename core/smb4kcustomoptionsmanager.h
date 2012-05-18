@@ -185,7 +185,7 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
      */
     bool hasCustomOptions( Smb4KCustomOptions *options );
     
-  protected slots:
+  protected Q_SLOTS:
     /**
      * Called when the application exits
      */

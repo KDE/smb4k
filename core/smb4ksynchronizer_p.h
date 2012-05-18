@@ -95,7 +95,7 @@ class Smb4KSyncJob : public KJob
      */
     const KUrl &destination() { return m_dest; }
 
-  signals:
+  Q_SIGNALS:
     /**
      * This signal is emitted when a job is started. The emitted path
      * is the one of the destination.
@@ -119,7 +119,7 @@ class Smb4KSyncJob : public KJob
      */
     bool doKill();
     
-  protected slots:
+  protected Q_SLOTS:
     void slotStartSynchronization();
     void slotReadStandardOutput();
     void slotReadStandardError();
@@ -165,7 +165,7 @@ class Smb4KSynchronizationDialog : public KDialog
      */
     const KUrl destination();
 
-  protected slots:
+  protected Q_SLOTS:
     /**
      * This slot is called when the User1 button is clicked.
      * It initializes the synchronization.

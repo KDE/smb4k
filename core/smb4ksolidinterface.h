@@ -98,7 +98,7 @@ class KDE_EXPORT Smb4KSolidInterface : public QObject
      */
     ConnectionStatus networkStatus() const;
     
-  signals:
+  Q_SIGNALS:
     /**
      * This signal is emitted when a hardware button was pressed.
      *
@@ -120,7 +120,7 @@ class KDE_EXPORT Smb4KSolidInterface : public QObject
      */
     void wokeUp();
 
-  protected slots:
+  protected Q_SLOTS:
     /**
      * This slot is connected to the deviceAdded() signal of the
      * device notifier. It is called whenever a device was added.

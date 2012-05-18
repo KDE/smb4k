@@ -111,7 +111,7 @@ class Smb4KGlobalPrivate : public QObject
      */
     bool modifyCursor;
 
-  public slots:
+  protected Q_SLOTS:
     /**
      * This slot does last things before the application quits
      */

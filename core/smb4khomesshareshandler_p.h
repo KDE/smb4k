@@ -104,7 +104,7 @@ class Smb4KHomesUserDialog : public KDialog
      */
     QString login() { return m_user_combo->currentText(); }
     
-  protected slots:
+  protected Q_SLOTS:
     /**
      * Is connected to the textChanged() signal of the combo box
      * in the "Specify User" dialog.

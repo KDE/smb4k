@@ -64,7 +64,7 @@ class KDE_EXPORT Smb4KBookmarkDialog : public KDialog
     */
    ~Smb4KBookmarkDialog();
 
-  protected slots:
+  protected Q_SLOTS:
     /**
      * Called when a bookmark was clicked in the list widget.
      */
@@ -174,7 +174,7 @@ class KDE_EXPORT Smb4KBookmarkEditor : public KDialog
     bool eventFilter( QObject *obj,
                       QEvent *e );
 
-  protected slots:
+  protected Q_SLOTS:
     /**
      * Called when a bookmark was clicked
      */

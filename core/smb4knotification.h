@@ -340,7 +340,7 @@ class KDE_EXPORT Smb4KNotification : public QObject
      */
     void emptyBroadcastAreas();
 
-  protected slots:
+  protected Q_SLOTS:
     /**
      * This slot is invoked when the notification is closed or ignored.
      */

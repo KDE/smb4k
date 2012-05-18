@@ -147,7 +147,7 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      */
     void editBookmarks( QWidget *parent = 0 );
 
-  signals:
+  Q_SIGNALS:
     /**
      * Signal emitted when the list of bookmarks has been updated.
      */

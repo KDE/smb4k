@@ -121,7 +121,7 @@ class KDE_EXPORT Smb4KPreviewer : public KCompositeJob
      */
     void start();
 
-  signals:
+  Q_SIGNALS:
     /**
      * Emitted when the acquistition process is about to begin.
      * 
@@ -144,8 +144,7 @@ class KDE_EXPORT Smb4KPreviewer : public KCompositeJob
     void finished( Smb4KShare *share,
                    const QUrl &url );
 
-
-  protected slots:
+  protected Q_SLOTS:
     /**
      * Invoked by start() function
      */

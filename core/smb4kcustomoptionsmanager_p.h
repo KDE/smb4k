@@ -57,7 +57,7 @@ class Smb4KCustomOptionsDialog : public KDialog
      */
     ~Smb4KCustomOptionsDialog();
     
-  protected slots:
+  protected Q_SLOTS:
     void slotSetDefaultValues();
     void slotCheckValues();
     void slotOKClicked();

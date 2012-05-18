@@ -120,7 +120,7 @@ class Smb4KPreviewJob : public KJob
      */
     const QUrl &location() { return m_url; }
 
-  signals:
+  Q_SIGNALS:
     /**
      * Emitted when an authentication error happened.
      */
@@ -151,7 +151,7 @@ class Smb4KPreviewJob : public KJob
   protected:
     bool doKill();
 
-  protected slots:
+  protected Q_SLOTS:
     void slotStartPreview();
     void slotReadStandardOutput();
     void slotReadStandardError();
@@ -193,7 +193,7 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
      */
     Smb4KShare *share() { return m_share; }
 
-  signals:
+  Q_SIGNALS:
     /**
      * Emitted when the dialog closes.
      *
@@ -224,7 +224,7 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
      */
     void abortPreview( Smb4KShare *share );
 
-  protected slots:
+  protected Q_SLOTS:
     /**
      * This slot is called when an action has been triggered.
      *
