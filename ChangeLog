@@ -35,6 +35,8 @@ Smb4K 1.1.0 (????-??-??):
     mounted share, if it could be found.
 - Removed Smb4KIPAddressScanner class. IP addresses are now looked up by
   Smb4KScanner using a private job.
+- Revised network browser:
+  + Removed wrong checks that caused tooltips not being updated properly.
 
 Smb4K 1.0.1 (2012-03-11):
 - Fixed potential crash in Smb4KWalletManager::init().
