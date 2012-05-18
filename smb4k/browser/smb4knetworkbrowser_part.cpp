@@ -625,7 +625,7 @@ void Smb4KNetworkBrowserPart::slotAboutToShowToolTip( Smb4KBasicNetworkItem *ite
         // if necessary.
         Smb4KHost *host = static_cast<Smb4KHost *>( item );
         
-        if ( !host->infoChecked() )
+        if ( !host->hasInfo() )
         {
           Smb4KScanner::self()->lookupInfo( host, m_widget );
         }
