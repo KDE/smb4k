@@ -174,6 +174,7 @@ void Smb4KNetworkBrowserItem::update( Smb4KBasicNetworkItem *item )
           // Do nothing
         }
         
+        delete m_workgroup;
         m_workgroup = new Smb4KWorkgroup( *(static_cast<Smb4KWorkgroup *>( item )) );
         break;
       }
@@ -188,6 +189,7 @@ void Smb4KNetworkBrowserItem::update( Smb4KBasicNetworkItem *item )
           // Do nothing
         }
         
+        delete m_host;
         m_host = new Smb4KHost( *(static_cast<Smb4KHost *>( item )) );
         
         // Adjust the item's color.
@@ -226,6 +228,7 @@ void Smb4KNetworkBrowserItem::update( Smb4KBasicNetworkItem *item )
           // Do nothing
         }
         
+        delete m_share;
         m_share = new Smb4KShare( *(static_cast<Smb4KShare *>( item )) );
 
         // Set the comment.
