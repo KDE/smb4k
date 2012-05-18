@@ -82,7 +82,6 @@ Smb4KToolTip::Smb4KToolTip( QWidget* parent )
   }
   else
   {
-    qDebug() << "UnknownParent";
     m_parent = UnknownParent;
   }
 } 
@@ -577,7 +576,7 @@ void Smb4KToolTip::updateNetworkBrowserToolTip()
         
         if ( mb_label )
         {
-          if ( !workgroup->masterBrowserIP().isEmpty() )
+          if ( !workgroup->hasMasterBrowserIP() )
           {
             mb_label->setText( workgroup->masterBrowserName()+" ("+workgroup->masterBrowserIP()+')' );
           }
