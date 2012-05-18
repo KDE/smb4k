@@ -674,7 +674,7 @@ void Smb4KScanner::lookupInfo( Smb4KHost *host, QWidget *parent )
   // aquired previously or if we need to start a lookup job.
   Smb4KHost *known_host = findHost( host->hostName(), host->workgroupName() );
   
-  if ( known_host && known_host->infoChecked() )
+  if ( known_host && known_host->hasInfo() )
   {
     emit info( known_host );
     return;
@@ -1317,7 +1317,7 @@ void Smb4KScanner::slotWorkgroups( const QList<Smb4KWorkgroup *> &workgroups_lis
   {
     for ( int i = 0; i < hostsList().size(); ++i )
     {
-      if ( !hostsList().at( i )->ipChecked() )
+      if ( !hostsList().at( i )->hasIP() )
       {
         Smb4KLookupIPAddressJob *job = new Smb4KLookupIPAddressJob( this );
         job->setObjectName( "LookupIPAddressJob" );
@@ -1399,7 +1399,7 @@ void Smb4KScanner::slotHosts( Smb4KWorkgroup *workgroup, const QList<Smb4KHost *
         }
 
         // Set the additional information
-        if ( !hosts_list.at( i )->infoChecked() && host->infoChecked() )
+        if ( !hosts_list.at( i )->hasInfo() && host->hasInfo() )
         {
           hosts_list[i]->setInfo( host->serverString(), host->osString() );
         }
@@ -1488,7 +1488,7 @@ void Smb4KScanner::slotHosts( Smb4KWorkgroup *workgroup, const QList<Smb4KHost *
   {
     for ( int i = 0; i < hostsList().size(); ++i )
     {
-      if ( !hostsList().at( i )->ipChecked() )
+      if ( !hostsList().at( i )->hasIP() )
       {
         Smb4KLookupIPAddressJob *job = new Smb4KLookupIPAddressJob( this );
         job->setObjectName( "LookupIPAddressJob" );
@@ -1663,7 +1663,7 @@ void Smb4KScanner::slotInfo( Smb4KHost *host )
   
   Smb4KHost *known_host = NULL;
   
-  if ( host->infoChecked() )
+  if ( host->hasInfo() )
   {
     // Copy the information also to host in the global list, if present,
     // or copy 'host' to the global list.

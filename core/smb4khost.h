@@ -141,9 +141,6 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      * Set the IP address of this host. @p ip will only be accepted
      * if it is compatible with either IPv4 or IPv6.
      *
-     * When this function is invoked, it sets the m_ip_checked property
-     * to TRUE so that ipChecked() retruns TRUE.
-     *
      * @param ip                  The IP address of this host.
      */
     void setIP( const QString &ip );
@@ -156,16 +153,13 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      * @returns the host's IP address or an empty string.
      */
     QString ip() const;
-
+    
     /**
-     * Returns TRUE if the IP address has already been checked (i.e. set)
-     * and false otherwise. It does not matter if actually there is an
-     * IP address present. The only thing that is important is that
-     * setIP() was called.
-     *
-     * @returns TRUE if the IP address has been checked.
+     * Returns TRUE if the host's IP address is set and FALSE otherwise.
+     * 
+     * @returns TRUE if the host's IP address is known.
      */
-    bool ipChecked() const;
+    bool hasIP() const;
 
     /**
      * Set the comment that was defined for the host.
@@ -186,9 +180,6 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      * Set the "Server" and the "OS" (operating system) strings as
      * they are reported by the host.
      *
-     * When this function is invoked, it will set the m_info_checked
-     * property to TRUE, so that infoChecked() returns TRUE.
-     *
      * @param serverString        The "Server" string
      *
      * @param osString            The "OS" string
@@ -197,21 +188,17 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
                   const QString &osString = QString() );
 
     /**
-     * With this function you can manually reset the "info is checked" flag,
-     * i.e. it will be set to FALSE. In addition the server string and the
-     * operating system string will be cleared.
+     * With this function clears the server and OS string.
      */
     void resetInfo();
-
+    
     /**
-     * Returns TRUE if the infomation has already been checked (i.e. set)
-     * and FALSE otherwise. It does not matter if actually there is some
-     * information present. The only thing that is important is that
-     * setInfo() was called.
-     *
-     * @returns TRUE if the infomation has been checked.
+     * Returns TRUE if additional information, i.e. the server and OS string, 
+     * has been acquired and is non-null.
+     * 
+     * @returns TRUE if information is present.
      */
-    bool infoChecked() const;
+    bool hasInfo() const;
 
     /**
      * Returns the "Server" string as reported by the host.
@@ -318,13 +305,6 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      * @returns the password.
      */
     QString password() const;
-    
-    /**
-     * Returns TRUE if the host's IP address is set and FALSE otherwise.
-     * 
-     * @returns TRUE if the host's IP address is known.
-     */
-    bool hasIP() const;
 
   private:
     const QScopedPointer<Smb4KHostPrivate> d;

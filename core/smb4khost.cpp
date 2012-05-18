@@ -46,9 +46,7 @@ class Smb4KHostPrivate
     QUrl url;
     QString workgroup;
     QHostAddress ip;
-    bool ipChecked;
     QString comment;
-    bool infoChecked;
     QString serverString;
     QString osString;
     bool isMaster;
@@ -58,8 +56,6 @@ class Smb4KHostPrivate
 Smb4KHost::Smb4KHost( const QString &name )
 : Smb4KBasicNetworkItem( Host ), d( new Smb4KHostPrivate )
 {
-  d->infoChecked  = false;
-  d->ipChecked    = false;
   d->isMaster     = false;
   setHostName( name );
   setIcon( KIcon( "network-server" ) );
@@ -85,8 +81,6 @@ Smb4KHost::Smb4KHost( const Smb4KHost &h )
 Smb4KHost::Smb4KHost()
 : Smb4KBasicNetworkItem( Host ), d( new Smb4KHostPrivate )
 {
-  d->infoChecked  = false;
-  d->ipChecked    = false;
   d->isMaster     = false;
   setIcon( KIcon( "network-server" ) );
 }
@@ -204,7 +198,6 @@ QString Smb4KHost::workgroupName() const
 void Smb4KHost::setIP( const QString &ip )
 {
   d->ip.setAddress( ip );
-  d->ipChecked = true;
 }
 
 
@@ -217,12 +210,6 @@ QString Smb4KHost::ip() const
 bool Smb4KHost::hasIP() const
 {
   return !d->ip.isNull();
-}
-
-
-bool Smb4KHost::ipChecked() const
-{
-  return d->ipChecked;
 }
 
 
@@ -242,21 +229,19 @@ void Smb4KHost::setInfo( const QString &serverString, const QString &osString )
 {
   d->serverString = serverString;
   d->osString     = osString;
-  d->infoChecked  = true;
 }
 
 
 void Smb4KHost::resetInfo()
 {
-  d->infoChecked = false;
   d->serverString.clear();
   d->osString.clear();
 }
 
 
-bool Smb4KHost::infoChecked() const
+bool Smb4KHost::hasInfo() const
 {
-  return d->infoChecked;
+  return (!d->osString.isEmpty() && !d->serverString.isEmpty());
 }
 
 
