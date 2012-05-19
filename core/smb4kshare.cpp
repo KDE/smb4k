@@ -234,14 +234,14 @@ QString Smb4KShare::homeUNC( QUrl::FormattingOptions options ) const
     if ( (options & QUrl::RemoveUserInfo) )
     {
       unc = d->url.toString( options|QUrl::StripTrailingSlash );
-
+      
       if ( d->url.path().startsWith( '/' ) )
       {
         unc = unc.replace( "//"+d->url.host(), "//"+hostName() ).replace( d->url.path(), '/'+d->url.userName() );
       }
       else
       {
-        unc = unc.replace( "//"+d->url.host(), "//"+hostName() ).replace( d->url.path(), '/'+d->url.userName() );
+        unc = unc.replace( "//"+d->url.host(), "//"+hostName() ).replace( d->url.path(), d->url.userName() );
       }
     }
     else
@@ -254,7 +254,7 @@ QString Smb4KShare::homeUNC( QUrl::FormattingOptions options ) const
       }
       else
       {
-        unc = unc.replace( '@'+d->url.host(), '@'+hostName() ).replace( d->url.path(), '/'+d->url.userName() );
+        unc = unc.replace( '@'+d->url.host(), '@'+hostName() ).replace( d->url.path(), d->url.userName() );
       }
     }
   }
