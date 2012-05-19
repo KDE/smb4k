@@ -1380,15 +1380,12 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
   {
     if ( !d->retries.isEmpty() )
     {
-      QList<Smb4KShare *> shares;
+      mountShares( d->retries );
       
-      for ( int i = 0; i < d->retries.size(); ++i )
+      while ( !d->retries.isEmpty() )
       {
-        shares << d->retries[i];
+        delete d->retries.takeFirst();
       }
-      
-      mountShares( shares );
-      d->retries.clear();
     }
     else
     {
@@ -1540,7 +1537,7 @@ void Smb4KMounter::slotAuthError( Smb4KMountJob *job )
     {
       if ( Smb4KWalletManager::self()->showPasswordDialog( job->authErrors()[i], job->parentWidget() ) )
       {
-        d->retries << job->authErrors().at( i );
+        d->retries << new Smb4KShare( *job->authErrors().at( i ) );
       }
       else
       {
@@ -1561,7 +1558,7 @@ void Smb4KMounter::slotRetryMounting( Smb4KMountJob *job )
   {
     for ( int i = 0; i < job->retries().size(); ++i )
     {
-      d->retries << job->retries().at( i );
+      d->retries << new Smb4KShare( *job->retries().at( i ) );
     }
   }
   else
