@@ -35,17 +35,32 @@ configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/config.h.cmake
 add_subdirectory( core )
 add_subdirectory( helpers )
 add_subdirectory( smb4k )
-add_subdirectory( plasmoid )
 add_subdirectory( data )
+
+option( INSTALL_PLASMOID "Install plasmoid" ON )
+
+if ( ${KDE_VERSION} VERSION_LESS 4.8.0 )
+  set( INSTALL_PLASMOID false )
+endif ( ${KDE_VERSION} VERSION_LESS 4.8.0 )
+
+if ( INSTALL_PLASMOID )
+  message( STATUS "Installing plasmoid (-DINSTALL_PLASMOID=false to disable)" )
+elseif ( NOT INSTALL_PLASMOID )
+  if ( ${KDE_VERSION} VERSION_LESS 4.8.0 )
+    message( STATUS "Not installing plasmoid (KDE version smaller than 4.8.0)" )
+  else ( ${KDE_VERSION} VERSION_LESS 4.8.0 )
+    message ( STATUS "Not installing plasmoid (-DINSTALL_PLASMOID=true to enable)" )
+  endif ( ${KDE_VERSION} VERSION_LESS 4.8.0 )
+endif( INSTALL_PLASMOID )
 
 ########### Header files ################
 
 option( INSTALL_HEADER_FILES "Install header files" OFF )
 
 if ( INSTALL_HEADER_FILES )
-  message( STATUS "Installing Smb4K's core header files (-DINSTALL_HEADER_FILES=false to disable)" )
+  message( STATUS "Installing core header files (-DINSTALL_HEADER_FILES=false to disable)" )
 elseif ( NOT INSTALL_HEADER_FILES )
-  message( STATUS "Not installing Smb4K's core header files (-DINSTALL_HEADER_FILES=true to enable)" )
+  message( STATUS "Not installing core header files (-DINSTALL_HEADER_FILES=true to enable)" )
 endif( INSTALL_HEADER_FILES )
 
 ########### install files ###############
