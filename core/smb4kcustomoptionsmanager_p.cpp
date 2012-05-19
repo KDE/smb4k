@@ -1,5 +1,5 @@
 /***************************************************************************
-    smb4kcustomoptionsmanager_p - Private helper classes for 
+    smb4kcustomoptionsmanager_p - Private helper classes for
     Smb4KCustomOptionsManager class
                              -------------------
     begin                : Fr 29 Apr 2011
@@ -51,12 +51,12 @@ Smb4KCustomOptionsDialog::Smb4KCustomOptionsDialog( Smb4KCustomOptions *options,
   setButtons( User1|Ok|Cancel );
   setDefaultButton( Ok );
   setButtonGuiItem( User1, KStandardGuiItem::defaults() );
-  
+
   setupView();
-  
+
   connect( this, SIGNAL( user1Clicked() ), SLOT( slotSetDefaultValues() ) );
   connect( this, SIGNAL( okClicked() ), SLOT( slotOKClicked() ) );
-  
+
   KConfigGroup group( Smb4KSettings::self()->config(), "CustomOptionsDialog" );
   restoreDialogSize( group );
 }
@@ -88,18 +88,18 @@ void Smb4KCustomOptionsDialog::setupView()
   pixmap->setAlignment( Qt::AlignBottom );
 
   QLabel *label = NULL;
-  
+
   switch ( m_options->type() )
   {
     case Smb4KCustomOptions::Host:
     {
-      label = new QLabel( i18n( "<p>Define custom options for host <b>%1</b> and all the shares it provides.</p>", 
+      label = new QLabel( i18n( "<p>Define custom options for host <b>%1</b> and all the shares it provides.</p>",
                           m_options->hostName() ), description );
       break;
     }
     case Smb4KCustomOptions::Share:
     {
-      label = new QLabel( i18n( "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>", 
+      label = new QLabel( i18n( "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>",
                           m_options->shareName(), m_options->hostName() ),
                           description );
       break;
@@ -110,23 +110,23 @@ void Smb4KCustomOptionsDialog::setupView()
       break;
     }
   }
-  
+
   label->setWordWrap( true );
   label->setAlignment( Qt::AlignBottom );
 
   desc_layout->addWidget( pixmap, 0 );
   desc_layout->addWidget( label, Qt::AlignBottom );
-  
+
   QWidget *editors = new QWidget( main_widget );
-  
+
   QGridLayout *editors_layout = new QGridLayout( editors );
   editors_layout->setSpacing( 5 );
   editors_layout->setMargin( 0 );
- 
+
   QLabel *unc_label = new QLabel( i18n( "UNC Address:" ), editors );
   KLineEdit *unc    = new KLineEdit( m_options->unc(), editors );
   unc->setReadOnly( true );
-      
+
   QLabel *smb_label = new QLabel( i18n( "SMB Port:" ), editors );
   m_smb_port        = new KIntNumInput( (m_options->smbPort() != Smb4KSettings::remoteSMBPort() ?
                       m_options->smbPort() : Smb4KSettings::remoteSMBPort()), editors );
@@ -136,21 +136,21 @@ void Smb4KCustomOptionsDialog::setupView()
 
 #ifndef Q_OS_FREEBSD
   QLabel *fs_label = new QLabel( i18n( "Filesystem Port:" ), editors );
-  m_fs_port        = new KIntNumInput( (m_options->fileSystemPort() != Smb4KSettings::remoteFileSystemPort() ? 
+  m_fs_port        = new KIntNumInput( (m_options->fileSystemPort() != Smb4KSettings::remoteFileSystemPort() ?
                      m_options->fileSystemPort() : Smb4KSettings::remoteFileSystemPort()), editors );
   m_fs_port->setRange( Smb4KSettings::self()->remoteFileSystemPortItem()->minValue().toInt(),
                        Smb4KSettings::self()->remoteFileSystemPortItem()->maxValue().toInt() );
   m_fs_port->setSliderEnabled( true );
-     
+
   QLabel *rw_label = new QLabel( i18n( "Write Access:" ), editors );
   m_write_access   = new KComboBox( editors );
   m_write_access->insertItem( 0, Smb4KSettings::self()->writeAccessItem()->choices()
-                                 .value( Smb4KSettings::EnumWriteAccess::ReadWrite ).label, 
+                                 .value( Smb4KSettings::EnumWriteAccess::ReadWrite ).label,
                               QVariant::fromValue<int>( Smb4KCustomOptions::ReadWrite ) );
   m_write_access->insertItem( 1, Smb4KSettings::self()->writeAccessItem()->choices()
-                                 .value( Smb4KSettings::EnumWriteAccess::ReadOnly ).label, 
+                                 .value( Smb4KSettings::EnumWriteAccess::ReadOnly ).label,
                               QVariant::fromValue<int>( Smb4KCustomOptions::ReadOnly ) );
- 
+
   if ( m_options->writeAccess() == Smb4KCustomOptions::UndefinedWriteAccess )
   {
     switch ( Smb4KSettings::writeAccess() )
@@ -268,16 +268,19 @@ void Smb4KCustomOptionsDialog::setupView()
       }
     }
   }
-  
+
   QLabel *uid_label = new QLabel( i18n( "User ID:" ), editors );
   m_user_id         = new KComboBox( editors );
-  
-  for ( int i = 0; i < KUser::allUsers().size(); ++i )
+
+  // To avoid weird crashes under FreeBSD, first copy KUser::allUsers().
+  QList<KUser> all_users = KUser::allUsers();
+
+  for ( int i = 0; i < all_users.size(); ++i )
   {
-    KUser user = KUser::allUsers().at( i );
-    m_user_id->insertItem( i, QString( "%1 (%2)" ).arg( user.loginName() ).arg( user.uid() ), 
+    KUser user = all_users.at( i );
+    m_user_id->insertItem( i, QString( "%1 (%2)" ).arg( user.loginName() ).arg( user.uid() ),
                            QVariant::fromValue<K_UID>( user.uid() ) );
-    
+
     if ( m_options->uid() == user.uid() )
     {
       m_user_id->setCurrentIndex( i );
@@ -287,16 +290,19 @@ void Smb4KCustomOptionsDialog::setupView()
       // Do nothing
     }
   }
-  
+
   QLabel *gid_label = new QLabel( i18n( "Group ID:" ), editors );
   m_group_id        = new KComboBox( editors );
-  
-  for ( int i = 0; i < KUserGroup::allGroups().size(); ++i )
+
+  // To avoid weird crashes under FreeBSD, first copy KUserGroup::allGroups().
+  QList<KUserGroup> all_groups = KUserGroup::allGroups();
+
+  for ( int i = 0; i < all_groups.size(); ++i )
   {
-    KUserGroup group = KUserGroup::allGroups().at( i );
-    m_group_id->insertItem( i, QString( "%1 (%2)" ).arg( group.name() ).arg( group.gid() ), 
+    KUserGroup group = all_groups.at( i );
+    m_group_id->insertItem( i, QString( "%1 (%2)" ).arg( group.name() ).arg( group.gid() ),
                            QVariant::fromValue<K_UID>( group.gid() ) );
-    
+
     if ( m_options->gid() == group.gid() )
     {
       m_group_id->setCurrentIndex( i );
@@ -306,9 +312,9 @@ void Smb4KCustomOptionsDialog::setupView()
       // Do nothing
     }
   }
-  
+
   m_kerberos = new QCheckBox( Smb4KSettings::self()->useKerberosItem()->label(), editors );
-    
+
   if ( m_options->useKerberos() == Smb4KCustomOptions::UndefinedKerberos )
   {
     m_kerberos->setChecked( Smb4KSettings::useKerberos() );
@@ -333,7 +339,7 @@ void Smb4KCustomOptionsDialog::setupView()
       }
     }
   }
-  
+
   editors_layout->addWidget( unc_label, 0, 0, 0 );
   editors_layout->addWidget( unc, 0, 1, 0 );
   editors_layout->addWidget( smb_label, 1, 0, 0 );
@@ -359,10 +365,10 @@ void Smb4KCustomOptionsDialog::setupView()
   editors_layout->addWidget( m_group_id, 4, 1, 0 );
   editors_layout->addWidget( m_kerberos, 5, 0, 1, 2, 0 );
 #endif
-  
+
   layout->addWidget( description );
   layout->addWidget( editors );
-  
+
   connect( m_smb_port, SIGNAL( valueChanged( int ) ), SLOT( slotCheckValues() ) );
 #ifndef Q_OS_FREEBSD
   connect( m_fs_port, SIGNAL( valueChanged(int) ), SLOT( slotCheckValues() ) );
@@ -372,7 +378,7 @@ void Smb4KCustomOptionsDialog::setupView()
   connect( m_user_id, SIGNAL( currentIndexChanged( int ) ), SLOT( slotCheckValues() ) );
   connect( m_group_id, SIGNAL( currentIndexChanged( int ) ), SLOT( slotCheckValues() ) );
   connect( m_kerberos, SIGNAL( toggled( bool ) ), SLOT( slotCheckValues() ) );
-  
+
   enableButton( User1, !defaultValues() );
 }
 
@@ -387,7 +393,7 @@ bool Smb4KCustomOptionsDialog::defaultValues()
   {
     // Do nothing
   }
-  
+
 #ifndef Q_OS_FREEBSD
 
   if ( m_fs_port->value() != Smb4KSettings::remoteFileSystemPort() )
@@ -398,8 +404,8 @@ bool Smb4KCustomOptionsDialog::defaultValues()
   {
     // Do nothing
   }
-  
-  if ( QString::compare( m_write_access->currentText(), 
+
+  if ( QString::compare( m_write_access->currentText(),
        Smb4KSettings::self()->writeAccessItem()->choices().value( Smb4KSettings::self()->writeAccess() ).label,
        Qt::CaseInsensitive ) != 0 )
   {
@@ -421,9 +427,9 @@ bool Smb4KCustomOptionsDialog::defaultValues()
   {
     // Do nothing
   }
-  
+
   K_UID uid = (K_UID)m_user_id->itemData( m_user_id->currentIndex() ).toInt();
-  
+
   if ( uid != (K_UID)Smb4KSettings::userID().toInt() )
   {
     return false;
@@ -432,9 +438,9 @@ bool Smb4KCustomOptionsDialog::defaultValues()
   {
     // Do nothing
   }
-  
+
   K_GID gid = (K_GID)m_group_id->itemData( m_group_id->currentIndex() ).toInt();
-  
+
   if ( gid != (K_GID)Smb4KSettings::groupID().toInt() )
   {
     return false;
@@ -443,7 +449,7 @@ bool Smb4KCustomOptionsDialog::defaultValues()
   {
     // Do nothing
   }
-  
+
   if ( m_kerberos->isChecked() != Smb4KSettings::useKerberos() )
   {
     return false;
@@ -452,7 +458,7 @@ bool Smb4KCustomOptionsDialog::defaultValues()
   {
     // Do nothing
   }
-  
+
   return true;
 }
 
@@ -509,7 +515,7 @@ void Smb4KCustomOptionsDialog::slotSetDefaultValues()
       break;
     }
   }
-  
+
   for ( int i = 0; i < m_user_id->count(); ++i )
   {
     if ( m_user_id->itemData( i ).toInt() == Smb4KSettings::userID().toInt() )
@@ -522,7 +528,7 @@ void Smb4KCustomOptionsDialog::slotSetDefaultValues()
       continue;
     }
   }
-  
+
   for ( int i = 0; i < m_group_id->count(); ++i )
   {
     if ( m_group_id->itemData( i ).toInt() == Smb4KSettings::groupID().toInt() )
@@ -535,7 +541,7 @@ void Smb4KCustomOptionsDialog::slotSetDefaultValues()
       continue;
     }
   }
-  
+
   m_kerberos->setChecked( Smb4KSettings::self()->useKerberos() );
 }
 
@@ -565,7 +571,7 @@ void Smb4KCustomOptionsDialog::slotOKClicked()
   {
     m_options->setUseKerberos( Smb4KCustomOptions::NoKerberos );
   }
-  
+
   KConfigGroup group( Smb4KSettings::self()->config(), "CustomOptionsDialog" );
   saveDialogSize( group, KConfigGroup::Normal );
 }
