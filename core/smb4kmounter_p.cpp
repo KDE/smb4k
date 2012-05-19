@@ -771,7 +771,7 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
 #else
         if ( stderr.contains( "Authentication error" ) )
         {
-          m_auth_errors << *share;
+          m_auth_errors << new Smb4KShare( *share );
           emit authError( this );
         }
 #endif
