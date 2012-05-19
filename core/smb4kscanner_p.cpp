@@ -416,7 +416,7 @@ void Smb4KLookupDomainsJob::slotStartLookup()
   {
     // Do nothing
   }
-
+  
   m_proc = new Smb4KProcess( this );
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
   m_proc->setShellCommand( arguments.join( " " ) );
