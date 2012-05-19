@@ -48,22 +48,22 @@ KDE4_AUTH_HELPER_MAIN( "net.sourceforge.smb4k.mounthelper", Smb4KMountHelper )
 ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
 {
   ActionReply reply;
-  reply.addData( "share_url", args["share_url"] );
-  reply.addData( "share_workgroup", args["share_workgroup"] );
-  reply.addData( "share_comment", args["share_comment"] );
-  reply.addData( "share_ip", args["share_ip"] );
-  reply.addData( "share_mountpoint", args["share_mountpoint"] );
+  reply.addData( "url", args["url"] );
+  reply.addData( "workgroup", args["workgroup"] );
+  reply.addData( "comment", args["comment"] );
+  reply.addData( "ip", args["ip"] );
+  reply.addData( "mountpoint", args["mountpoint"] );
   reply.addData( "key", args["key"] );
 
   KProcess proc( this );
   proc.setOutputChannelMode( KProcess::SeparateChannels );
   proc.setProcessEnvironment( QProcessEnvironment::systemEnvironment() );
-  proc.setEnv( "PASSWD", args["share_url"].toUrl().password(), true );
+  proc.setEnv( "PASSWD", args["url"].toUrl().password(), true );
   // The $HOME environment variable is needed under FreeBSD to
   // point the mount process to the right ~/.nsmbrc file. Under
   // Linux it is not needed.
   proc.setEnv( "HOME", args["home_dir"].toString() );
-  proc.setProgram( args["mount_command"].toStringList() );
+  proc.setProgram( args["command"].toStringList() );
 
   // Run the mount process.
   proc.start();
@@ -128,8 +128,8 @@ ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
 ActionReply Smb4KMountHelper::unmount( const QVariantMap &args )
 {
   ActionReply reply;
-  reply.addData( "share_url", args["share_url"] );
-  reply.addData( "share_mountpoint", args["share_mountpoint"] );
+  reply.addData( "url", args["url"] );
+  reply.addData( "mountpoint", args["mountpoint"] );
   reply.addData( "key", args["key"] );
 
   // Check if the mountpoint is valid and the file system is
@@ -140,11 +140,11 @@ ActionReply Smb4KMountHelper::unmount( const QVariantMap &args )
   for( int j = 0; j < mountpoints.size(); j++ )
   {
 #ifndef Q_OS_FREEBSD
-    if ( QString::compare( args["share_mountpoint"].toString(),
+    if ( QString::compare( args["mountpoint"].toString(),
                            mountpoints.at( j )->mountPoint(), Qt::CaseInsensitive ) == 0 &&
          QString::compare( mountpoints.at( j )->mountType(), "cifs", Qt::CaseInsensitive ) == 0 )
 #else
-    if ( QString::compare( args["share_mountpoint"].toString(),
+    if ( QString::compare( args["mountpoint"].toString(),
                            mountpoints.at( j )->mountPoint(), Qt::CaseInsensitive ) == 0 &&
          QString::compare( mountpoints.at( j )->mountType(), "smbfs", Qt::CaseInsensitive ) == 0 )
 #endif
@@ -172,7 +172,7 @@ ActionReply Smb4KMountHelper::unmount( const QVariantMap &args )
   KProcess proc( this );
   proc.setOutputChannelMode( KProcess::SeparateChannels );
   proc.setProcessEnvironment( QProcessEnvironment::systemEnvironment() );
-  proc.setProgram( args["umount_command"].toStringList() );
+  proc.setProgram( args["command"].toStringList() );
 
   // Run the unmount process.
   proc.start();

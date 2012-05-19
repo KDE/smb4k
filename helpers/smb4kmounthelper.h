@@ -37,18 +37,20 @@ using namespace KAuth;
 class Smb4KMountHelper : public QObject
 {
   Q_OBJECT
-  
+
   public slots:
     /**
      * Mounts a CIFS/SMBFS share.
-     * 
+     *
      * The following arguments are recognized:
-     * mount_command      The full mount command (mandatory)
-     * share_url          The URL of the share (mandatory)
-     * share_mountpoint   The mountpoint of the share (mandatory)
-     * share_workgroup    The workgroup of the share (optional)
-     * share_comment      The comment of the share (optional)
-     * key                The key of this action (optional, mandatory for Smb4K)
+     * @arg command     The full mount command (mandatory)
+     * @arg url         The URL of the share (mandatory)
+     * @arg mountpoint  The mountpoint of the share (mandatory)
+     * @arg workgroup   The workgroup of the share (optional)
+     * @arg comments    The comment of the share (optional)
+     * @arg ip          The IP address of the host that offers the share (optional)
+     * @arg key         The key of this action (optional, mandatory for Smb4K)
+     * @arg home_dir    The home directory of the user (mandatory under FreeBSD)
      */
     ActionReply mount( const QVariantMap &args );
 
@@ -56,10 +58,10 @@ class Smb4KMountHelper : public QObject
      * Unmounts a CIFS/SMBFS share.
      *
      * The following arguments are recognized:
-     * unmount_command    The full unmount command (mandatory)
-     * share_url          The URL of the share (optional, mandatory for Smb4K)
-     * share_mountpoint   The mountpoint of the share (mandatory)
-     * key                The key of this action (optional, mandatory for Smb4K)
+     * @arg command     The full unmount command (mandatory)
+     * @arg url         The URL of the share (optional, mandatory for Smb4K)
+     * @arg mountpoint  The mountpoint of the share (mandatory)
+     * @arg key         The key of this action (optional, mandatory for Smb4K)
      */
     ActionReply unmount( const QVariantMap &args );
 };
