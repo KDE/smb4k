@@ -1,9 +1,12 @@
 Smb4K 1.1.0 (????-??-??):
 - Merged Smb4KCore class and Smb4KGlobal namespace. The Smb4KCore class
   was removed.
-- Fixed many issues reported by krazy2.
+- Fixed many issues reported by krazy2. On the way several minor changes
+  to the core classes were applied.
 - Made Smb4K a kdeinit executable.
-- Added a plasmoid.
+- Renamed the mount helper to net.sourceforge.smb4k.mounthelper.
+- Added a plasmoid. It needs KDE 4.8.0 or later. If this requirement is not
+  met, its installation will be skipped.
 - Added Smb4KNetworkObject class that derives from QObject and encapsulates
   a network item (workgroup, host, or share).
 - Revised Smb4KScanner class:
@@ -16,20 +19,20 @@ Smb4K 1.1.0 (????-??-??):
   + Added lookup() function that takes a QUrl as argument and initiates a
     network lookup according to the URL. The URL must already be known to
     Smb4K otherwise this function will not do anything.
-  + Added find() function that takes a QUrl as argument and searches for 
+  + Added find() function that takes a QUrl as argument and searches for
     a network item with the given URL. The URL must already be known to
     Smb4K otherwise this function will not do anything.
 - Revised Smb4KMounter class:
   + To use functions from the mounter in the plasmoid, Q_INVOKABLE and
     Q_PROPERTY macros are used.
-  + Added mountedShares() functions that returns a list of type 
+  + Added mountedShares() functions that returns a list of type
     QDeclarativeListProperty<Smb4KNetworkObject>.
   + Added mountedSharesListChanged() signal.
   + Added mount() function that takes a QUrl as argument and mounts the
-    corresponding share. The URL must already be known to Smb4K otherwise 
+    corresponding share. The URL must already be known to Smb4K otherwise
     this function will not do anything.
   + Added unmount() function that takes a QUrl as argument (the path)
-    and unmounts the corresponding share. The mounted share must already 
+    and unmounts the corresponding share. The mounted share must already
     be known to Smb4K otherwise this function will do nothing.
   + Added find() function. It takes a QUrl and a boolean and returns the
     mounted share, if it could be found.
@@ -37,6 +40,8 @@ Smb4K 1.1.0 (????-??-??):
   Smb4KScanner using a private job.
 - Revised network browser:
   + Removed wrong checks that caused tooltips not being updated properly.
+- Revised mount helper:
+  + Simplified names for the arguments that can/must be passed.
 
 Smb4K 1.0.1 (2012-03-11):
 - Fixed potential crash in Smb4KWalletManager::init().
@@ -51,7 +56,7 @@ Smb4K 1.0.0 (2012-02-01):
 - Unified the function names of the core classes that set and return the
   workgroup name, host name, and share name.
 - Made the core container classes use QUrls internally where appropriate.
-- Added ability to install core header files by passing the new 
+- Added ability to install core header files by passing the new
   -DINSTALL_HEADER_FILES=true configuration option to cmake. By default,
   no header files will be installed.
 - Revised Smb4KSettings class:
@@ -83,7 +88,7 @@ Smb4K 1.0.0 (2012-02-01):
     they now take a Smb4KBasicNetworkItem object as argument.
   + showPasswordDialog() function now takes a Smb4KBasicNetworkItem object
     as argument.
-- Introduced Smb4KBasicNetworkItem class. Smb4KWorkgroup, Smb4KHost and 
+- Introduced Smb4KBasicNetworkItem class. Smb4KWorkgroup, Smb4KHost and
   Smb4KShare inherit this class.
 - Revised Smb4KWorkgroup class:
   + Added equals() function.
@@ -115,9 +120,9 @@ Smb4K 1.0.0 (2012-02-01):
   + Added hasHostIP() function.
   + Added homeUNC() function that returns the UNC of the user's home repository
     in case of a 'homes' share.
-  + Renamed type() to typeString(), setType() to setTypeString() and 
-    translatedType() to translatedTypeString() to avoid problems with 
-    Smb4KBasicNetworkItem::type(). 
+  + Renamed type() to typeString(), setType() to setTypeString() and
+    translatedType() to translatedTypeString() to avoid problems with
+    Smb4KBasicNetworkItem::type().
   + The default value for typeString() is now "Disk".
   + Removed uidIsSet() function.
   + Removed gidIsSet() function.
@@ -141,7 +146,7 @@ Smb4K 1.0.0 (2012-02-01):
   + Added openMountDialog() function that opens the mount dialog.
   + The mount dialog is a private helper class now. It has been revised.
   + Added unmountShares() function that unmounts a list of shares at once.
-    Made unmountAllShares() call this function with 
+    Made unmountAllShares() call this function with
     Smb4KGlobal::mountedSharesList() as one of the arguments.
   + Added slotHardwareButtonPressed() slot that initiates the unmounting of
     all shares when the computer enters one of the sleep states.
@@ -151,8 +156,8 @@ Smb4K 1.0.0 (2012-02-01):
     exits or when the computer goes to sleep to save the currently mounted
     shares.
   + Rewrote slotAboutToQuit() slot.
-  + The import() function has been rewritten (closes #16169). Among other things, 
-    shares that were mounted under Linux with the obsolete SMBFS file system are 
+  + The import() function has been rewritten (closes #16169). Among other things,
+    shares that were mounted under Linux with the obsolete SMBFS file system are
     no longer imported.
   + Added 'servern' and 'netbiosname' mount options. They are only used, if a
     connection to a remote host is attempted via port 139.
@@ -160,7 +165,7 @@ Smb4K 1.0.0 (2012-02-01):
     to start.
   + Added finished() signal that is emitted when a mount process finished.
   + Replaced old updated() signal with one that emits the share that was updated.
-  + Before the mounted() and unmounted() signals are emitted, we check if the 
+  + Before the mounted() and unmounted() signals are emitted, we check if the
     (un)mounting was successful.
   + Added 'sec' argument for mount.cifs under non-FreeBSD operating systems.
   + Removed all state functions.
@@ -182,7 +187,7 @@ Smb4K 1.0.0 (2012-02-01):
     are using KJobs.
   + Added abortAll() function that aborts all running synchronization processes
     at once.
-  + Added isRunning( Smb4KShare * ) function. You can test with it if a certain 
+  + Added isRunning( Smb4KShare * ) function. You can test with it if a certain
     synchronization process is running.
   + Added aboutToStart( const QString & ) signal that is emitted when a
     synchronization process is about to start.
@@ -215,7 +220,7 @@ Smb4K 1.0.0 (2012-02-01):
   + Introduced Smb4KScanner::self().
   + Made constructor and destructor private.
   + Removed old abort() function.
-  + Incoming scan requests can now be processes in parallel, because we are 
+  + Incoming scan requests can now be processes in parallel, because we are
     using KJobs.
   + Added abortAll() function that aborts all running scanning processes at once.
   + Added new abort() function. You can abort a certain process or process group
@@ -293,8 +298,8 @@ Smb4K 1.0.0 (2012-02-01):
   + Added setIcon() and icon() functions.
 - Revised Smb4KBookmarkHandler class:
   + Did a major revision.
-  + Added the ability to assign a group to the bookmark(s) (closes #18001). 
-  + Modified the addBookmark() function that takes a Smb4KShare object and 
+  + Added the ability to assign a group to the bookmark(s) (closes #18001).
+  + Modified the addBookmark() function that takes a Smb4KShare object and
     removed the one that took a Smb4KBookmark object.
   + Added addBookmarks() function.
   + Made writeBookmarkList() private.
@@ -321,22 +326,22 @@ Smb4K 1.0.0 (2012-02-01):
   + Removed all replaceXXX() functions.
   + All functions returning one of the global lists return constant references
     instead of pointers.
-  + Added globalSambaOptions() and winsServer() functions. They were moved from 
+  + Added globalSambaOptions() and winsServer() functions. They were moved from
     the removed Smb4KSambaOptionsHandler class.
   + Added Smb4KEvent class that handles Smb4K specific events.
 - Added Smb4KNotification class. It shows notifications to the user.
 - Removed Smb4KCoreMessage class in favor of Smb4KNotification.
 - Added Smb4KToolTip class that is to replace all other tooltip implementations.
 - Revised shares view:
-  + Adjusted the code so that the new abilities that the reworked synchronizer 
+  + Adjusted the code so that the new abilities that the reworked synchronizer
     offers can be used.
   + Added "Add Bookmark" action (closes #14217).
   + Multiple shares can now be selected.
   + The tool tips are now shown when the QEvent::ToolTip event occurrs and
     not by our own implementation.
-  + Replaced slotMountedShares() by three slots: slotShareMounted(), 
+  + Replaced slotMountedShares() by three slots: slotShareMounted(),
     slotShareUnmounted() and slotShareUpdated().
-  + Revised Smb4KShares*ViewItem classes. This includes the removal of the 
+  + Revised Smb4KShares*ViewItem classes. This includes the removal of the
     Smb4KSharesViewItemData class.
   + Removed Smb4KSharesViewToolTip class. We are now using Smb4KToolTip.
   + Honor KDE's icon size settings.
@@ -348,7 +353,7 @@ Smb4K 1.0.0 (2012-02-01):
     forced unmounting of inaccessible shares on the "Shares" page in the
     configuration dialog.
 - Revised network browser:
-  + Adjusted the code so that the new abilities that the reworked print code 
+  + Adjusted the code so that the new abilities that the reworked print code
     offers can be used.
   + Adjusted the code so that the new wallet manager can be used.
   + The type of the share is now translated.
@@ -405,7 +410,7 @@ Smb4K 1.0.0 (2012-02-01):
   + Use new bookmark menu.
 - Revised system tray icon:
   + Smb4KSystemTray inherits KStatusNotifierItem class.
-  + Removed functions for embedding the system tray window. The icon will now always 
+  + Removed functions for embedding the system tray window. The icon will now always
     reside in the tray.
   + The system tray icon will be set passive (will be hidden) if no workgroups could
     be found and no shares were mounted.
@@ -416,8 +421,8 @@ Smb4K 1.0.0 (2012-02-01):
 
 Smb4K 0.10.12 (2011-12-04):
 - Fixed wrong QString to char conversion in the mounter.
-- Adjusted author's e-mail address and the project's home page and bug 
-  report mailing list addresses due to the relocation of Smb4K to 
+- Adjusted author's e-mail address and the project's home page and bug
+  report mailing list addresses due to the relocation of Smb4K to
   Sourceforge.net.
 
 Smb4K 0.10.11 (2011-11-13):
@@ -443,14 +448,14 @@ Smb4K 0.10.8 (2010-08-21):
 - Fixed crashes in Smb4KScanner::scanForWorkgroupMembers().
 
 Smb4K 0.10.7 (2010-04-07):
-- Replace broken backported smb4k_umount binary with a fixed one from the 
+- Replace broken backported smb4k_umount binary with a fixed one from the
   0.10 branch. This way you won't get the "unknown argument" errors anymore.
 
 Smb4K 0.10.6 (2010-03-24):
 - Include files are no longer installed.
 - Added updated portugese translation. Thanks to Fathi Boudra for sending the
   link and Américo Monteiro for the translation.
-- Fixed missing of shares that have no comment (closes #16837 and presumably 
+- Fixed missing of shares that have no comment (closes #16837 and presumably
   also #3009 and #7949).
 - Fixed listing of shares when a "creating lame ..." message appears on stderr
   (closes #16849).
@@ -476,7 +481,7 @@ Smb4K 0.9.10 (2010-01-30):
     instead.
   + Removed homesHandler() function. Use Smb4KHomesSharesHandler::self()
     instead.
-  + Removed timer() function. It was long deprecated and not used 
+  + Removed timer() function. It was long deprecated and not used
     anymore.
 - Adjusted code to use the new infrastructure.
 - Fixed compilation errors under CentOS 4.8.
