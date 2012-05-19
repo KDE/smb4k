@@ -663,7 +663,7 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
 
   mount_command << share->canonicalPath();
 #endif
-
+  
   action->setName( "net.sourceforge.smb4k.mounthelper.mount" );
   action->setHelperID( "net.sourceforge.smb4k.mounthelper" );
   action->addArgument( "mount_command", mount_command );
