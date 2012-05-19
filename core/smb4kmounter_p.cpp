@@ -663,25 +663,25 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
 
   mount_command << share->canonicalPath();
 #endif
-  
+
   action->setName( "net.sourceforge.smb4k.mounthelper.mount" );
   action->setHelperID( "net.sourceforge.smb4k.mounthelper" );
-  action->addArgument( "mount_command", mount_command );
+  action->addArgument( "command", mount_command );
   action->addArgument( "home_dir", QDir::homePath() );
 
   if ( !share->isHomesShare() )
   {
-    action->addArgument( "share_url", share->url() );
+    action->addArgument( "url", share->url() );
   }
   else
   {
-    action->addArgument( "share_url", share->homeURL() );
+    action->addArgument( "url", share->homeURL() );
   }
 
-  action->addArgument( "share_workgroup", share->workgroupName() );
-  action->addArgument( "share_comment", share->comment() );
-  action->addArgument( "share_ip", share->hostIP() );
-  action->addArgument( "share_mountpoint", share->canonicalPath() );
+  action->addArgument( "workgroup", share->workgroupName() );
+  action->addArgument( "comment", share->comment() );
+  action->addArgument( "ip", share->hostIP() );
+  action->addArgument( "mountpoint", share->canonicalPath() );
 
   return true;
 }
@@ -747,7 +747,7 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
       // Check if the mount process reported an error
       QString stderr( reply.data()["stderr"].toString() );
 
-      if ( QString::compare( share->canonicalPath(), reply.data()["share_mountpoint"].toString() ) == 0 && !stderr.isEmpty() )
+      if ( QString::compare( share->canonicalPath(), reply.data()["mountpoint"].toString() ) == 0 && !stderr.isEmpty() )
       {
 #ifndef Q_OS_FREEBSD
         if ( stderr.contains( "mount error 13", Qt::CaseSensitive ) || stderr.contains( "mount error(13)" )
@@ -962,11 +962,11 @@ bool Smb4KUnmountJob::createUnmountAction( Smb4KShare *share, bool force, bool s
 
   action->setName( "net.sourceforge.smb4k.mounthelper.unmount" );
   action->setHelperID( "net.sourceforge.smb4k.mounthelper" );
-  action->addArgument( "umount_command", unmount_command );
+  action->addArgument( "command", unmount_command );
 
   // Now add everything we need.
-  action->addArgument( "share_url", share->url() );
-  action->addArgument( "share_mountpoint", share->canonicalPath() );
+  action->addArgument( "url", share->url() );
+  action->addArgument( "mountpoint", share->canonicalPath() );
 
   return true;
 }
@@ -1035,7 +1035,7 @@ void Smb4KUnmountJob::slotActionFinished( ActionReply reply )
       // Check if the unmount process reported an error
       QString stderr( reply.data()["stderr"].toString() );
 
-      if ( QString::compare( share->canonicalPath(), reply.data()["share_mountpoint"].toString() ) == 0 && !stderr.isEmpty() )
+      if ( QString::compare( share->canonicalPath(), reply.data()["mountpoint"].toString() ) == 0 && !stderr.isEmpty() )
       {
         Smb4KNotification *notification = new Smb4KNotification();
         notification->unmountingFailed( share, stderr );
@@ -1267,7 +1267,7 @@ void Smb4KMountDialog::slotOkClicked()
   if ( !m_share_input->text().trimmed().isEmpty() )
   {
     QUrl url;
-    
+
     // Take care of Windows-like UNC addresses:
     if ( m_share_input->text().trimmed().startsWith( QLatin1String( "\\" ) ) )
     {
@@ -1279,7 +1279,7 @@ void Smb4KMountDialog::slotOkClicked()
     {
       url = QUrl( m_share_input->text().trimmed() );
     }
-    
+
     url.setScheme( "smb" );
 
     if ( url.isValid() && !url.host().isEmpty() /* no invalid host name */ &&
