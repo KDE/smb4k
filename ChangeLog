@@ -36,12 +36,18 @@ Smb4K 1.1.0 (????-??-??):
     be known to Smb4K otherwise this function will do nothing.
   + Added find() function. It takes a QUrl and a boolean and returns the
     mounted share, if it could be found.
+- Revised Smb4KWalletManager class:
+  + When prompting for a password for a 'homes' share, use the UNC of the
+    user's home directory and not //SERVER/homes.
 - Removed Smb4KIPAddressScanner class. IP addresses are now looked up by
   Smb4KScanner using a private job.
 - Revised network browser:
   + Removed wrong checks that caused tooltips not being updated properly.
 - Revised mount helper:
   + Simplified names for the arguments that can/must be passed.
+- Revised main window:
+  + When mounting a 'homes' share, show that UNC of the user's home
+    directory in the status bar instead of //SERVER/homes.
 
 Smb4K 1.0.1 (2012-03-11):
 - Fixed potential crash in Smb4KWalletManager::init().

@@ -534,7 +534,7 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
   }
 
   // Do not ask for a password. Use ~/.nsmbrc instead.
-//   arguments << "-N";
+  arguments << "-N";
 
   // UID
   if ( options )

@@ -93,7 +93,7 @@ Smb4KMainWindow::Smb4KMainWindow()
   setupMenuBar();
   setupStatusBar();
   setupSystemTrayWidget();
-  
+
   // Apply the main window settings
   setAutoSaveSettings( KConfigGroup( Smb4KSettings::self()->config(), "MainWindow" ), true );
 }
@@ -185,7 +185,7 @@ void Smb4KMainWindow::setupStatusBar()
   m_feedback_icon = new QLabel( statusBar() );
   m_feedback_icon->setContentsMargins( 0, 0, 0, 0 );
   m_feedback_icon->setAlignment( Qt::AlignCenter );
-  
+
   statusBar()->addPermanentWidget( m_progress_bar );
   statusBar()->addPermanentWidget( m_feedback_icon );
   statusBar()->addPermanentWidget( m_pass_icon );
@@ -195,31 +195,31 @@ void Smb4KMainWindow::setupStatusBar()
 
   connect( Smb4KWalletManager::self(), SIGNAL( initialized() ),
            this,                       SLOT( slotWalletManagerInitialized() ) );
-           
+
   connect( Smb4KMounter::self(),       SIGNAL( mounted( Smb4KShare * ) ),
            this,                       SLOT( slotVisualMountFeedback( Smb4KShare * ) ) );
-           
+
   connect( Smb4KMounter::self(),       SIGNAL( unmounted( Smb4KShare * ) ),
            this,                       SLOT( slotVisualUnmountFeedback( Smb4KShare * ) ) );
-           
+
   connect( Smb4KScanner::self(),       SIGNAL( aboutToStart( Smb4KBasicNetworkItem *, int ) ),
            this,                       SLOT( slotScannerAboutToStart( Smb4KBasicNetworkItem *, int ) ) );
-      
+
   connect( Smb4KScanner::self(),       SIGNAL( finished( Smb4KBasicNetworkItem *, int ) ),
            this,                       SLOT( slotScannerFinished( Smb4KBasicNetworkItem *, int ) ) );
-           
+
   connect( Smb4KMounter::self(),       SIGNAL( aboutToStart( Smb4KShare *, int ) ),
            this,                       SLOT( slotMounterAboutToStart( Smb4KShare *, int ) ) );
-  
+
   connect( Smb4KMounter::self(),       SIGNAL( finished( Smb4KShare *, int ) ),
            this,                       SLOT( slotMounterFinished( Smb4KShare *, int ) ) );
-           
+
   connect( Smb4KSearch::self(),        SIGNAL( aboutToStart( const QString & ) ),
            this,                       SLOT( slotSearchAboutToStart( const QString & ) ) );
-           
+
   connect( Smb4KSearch::self(),        SIGNAL( finished( const QString & ) ),
            this,                       SLOT( slotSearchFinished( const QString & ) ) );
-           
+
   connect( Smb4KPrint::self(),         SIGNAL( aboutToStart( Smb4KShare * ) ),
            this,                       SLOT( slotPrintingAboutToStart( Smb4KShare * ) ) );
 
@@ -244,7 +244,7 @@ void Smb4KMainWindow::setupView()
 {
   // There is no active part initially. Set it NULL.
   m_active_part = NULL;
-  
+
   // We do not set a central widget, because it causes "problems"
   // with the dock widgets. We have the nested dock widget property
   // set to true, so we can arrange the dock widgets as we like,
@@ -309,7 +309,7 @@ void Smb4KMainWindow::setupView()
   {
     QVariantList args;
     args << QString( "silent=\"true\"" );
-    
+
     m_search_part = search_factory->create<KParts::Part>( this, args );
     m_search_part->setObjectName( "NetworkSearchPart" );
 
@@ -529,7 +529,7 @@ void Smb4KMainWindow::loadSettings()
   // Check the state of the password handler and the wallet settings and
   // set the pixmap in the status bar accordingly.
   slotWalletManagerInitialized();
-  
+
   // Set up the mount indicator icon.
   setupMountIndicator();
 }
@@ -569,7 +569,7 @@ bool Smb4KMainWindow::queryExit()
 void Smb4KMainWindow::setupMountIndicator()
 {
   QStringList overlays;
-  
+
   if ( mountedSharesList().size() == 0 )
   {
     m_feedback_icon->setToolTip( i18n( "There are currently no shares mounted." ) );
@@ -579,7 +579,7 @@ void Smb4KMainWindow::setupMountIndicator()
     overlays.append( "emblem-mounted" );
     m_feedback_icon->setToolTip( i18np( "There is currently %1 share mounted.", "There are currently %1 shares mounted.", mountedSharesList().size() ) );
   }
-  
+
   m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::Small, 0, KIconLoader::DefaultState, overlays ) );
 }
 
@@ -768,7 +768,7 @@ void Smb4KMainWindow::slotWalletManagerInitialized()
 void Smb4KMainWindow::slotScannerAboutToStart( Smb4KBasicNetworkItem *item, int process )
 {
   Q_ASSERT( item );
-  
+
   switch ( process )
   {
     case Smb4KScanner::LookupDomains:
@@ -799,7 +799,7 @@ void Smb4KMainWindow::slotScannerAboutToStart( Smb4KBasicNetworkItem *item, int 
       break;
     }
   }
-  
+
   if ( !m_progress_bar->isVisible() )
   {
     m_progress_bar->setVisible( true );
@@ -829,16 +829,27 @@ void Smb4KMainWindow::slotScannerFinished( Smb4KBasicNetworkItem */*item*/, int 
 void Smb4KMainWindow::slotMounterAboutToStart( Smb4KShare *share, int process )
 {
   Q_ASSERT( share );
-  
+
   switch ( process )
   {
     case Smb4KMounter::MountShare:
     {
-      statusBar()->showMessage( i18n( "Mounting share %1...", share->unc() ), 0 );
+      // Show the right UNC to the user. If the share is a 'homes'
+      // share, we display Smb4KShare::homeUNC().
+      if ( !share->isHomesShare() )
+      {
+        statusBar()->showMessage( i18n( "Mounting share %1...", share->unc() ), 0 );
+      }
+      else
+      {
+        statusBar()->showMessage( i18n( "Mounting share %1...", share->homeUNC() ), 0 );
+      }
       break;
     }
     case Smb4KMounter::UnmountShare:
     {
+      // When unmounting a share, there won't be a share where we
+      // have to look up which UNC we present to the user.
       statusBar()->showMessage( i18n( "Unmounting share %1...", share->unc() ), 0 );
       break;
     }
@@ -847,7 +858,7 @@ void Smb4KMainWindow::slotMounterAboutToStart( Smb4KShare *share, int process )
       break;
     }
   }
-  
+
   if ( !m_progress_bar->isVisible() )
   {
     m_progress_bar->setVisible( true );
@@ -862,11 +873,11 @@ void Smb4KMainWindow::slotMounterAboutToStart( Smb4KShare *share, int process )
 void Smb4KMainWindow::slotVisualMountFeedback( Smb4KShare *share )
 {
   Q_ASSERT( share );
-  
+
   m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "dialog-ok",
                               KIconLoader::Small, 0, KIconLoader::DefaultState ) );
   m_feedback_icon->setToolTip( i18n( "%1 has been mounted successfully.", share->unc() ) );
-    
+
   QList<QTabBar *> list = findChildren<QTabBar *>();
   QDockWidget *shares_dock = findChild<QDockWidget *>( "SharesViewDockWidget" );
 
@@ -901,7 +912,7 @@ void Smb4KMainWindow::slotVisualMountFeedback( Smb4KShare *share )
   {
     // Do nothing
   }
-  
+
   QTimer::singleShot( 2000, this, SLOT( slotEndVisualFeedback() ) );
 }
 
@@ -909,11 +920,11 @@ void Smb4KMainWindow::slotVisualMountFeedback( Smb4KShare *share )
 void Smb4KMainWindow::slotVisualUnmountFeedback( Smb4KShare *share )
 {
   Q_ASSERT( share );
-  
+
   m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "dialog-ok",
                               KIconLoader::Small, 0, KIconLoader::DefaultState ) );
   m_feedback_icon->setToolTip( i18n( "%1 has been unmounted successfully.", share->unc() ) );
-    
+
   QList<QTabBar *> list = findChildren<QTabBar *>();
   QDockWidget *shares_dock = findChild<QDockWidget *>( "SharesViewDockWidget" );
 
@@ -956,7 +967,7 @@ void Smb4KMainWindow::slotVisualUnmountFeedback( Smb4KShare *share )
 void Smb4KMainWindow::slotMounterFinished( Smb4KShare *share, int process )
 {
   Q_ASSERT( share );
-  
+
   // Give visual feedback if the mounting/unmounting failed.
   switch( process )
   {
@@ -967,7 +978,7 @@ void Smb4KMainWindow::slotMounterFinished( Smb4KShare *share, int process )
         m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "dialog-cancel",
                                     KIconLoader::Small, 0, KIconLoader::DefaultState ) );
         m_feedback_icon->setToolTip( i18n( "Mounting %1 failed.", share->unc() ) );
-        
+
         QTimer::singleShot( 2000, this, SLOT( slotEndVisualFeedback() ) );
       }
       else
@@ -983,7 +994,7 @@ void Smb4KMainWindow::slotMounterFinished( Smb4KShare *share, int process )
         m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "dialog-cancel",
                                     KIconLoader::Small, 0, KIconLoader::DefaultState ) );
         m_feedback_icon->setToolTip( i18n( "Unmounting %1 failed.", share->unc() ) );
-        
+
         QTimer::singleShot( 2000, this, SLOT( slotEndVisualFeedback() ) );
       }
       else
@@ -997,7 +1008,7 @@ void Smb4KMainWindow::slotMounterFinished( Smb4KShare *share, int process )
       break;
     }
   }
-  
+
   if ( !coreIsRunning()  )
   {
     m_progress_bar->setVisible( false );
@@ -1014,9 +1025,9 @@ void Smb4KMainWindow::slotMounterFinished( Smb4KShare *share, int process )
 void Smb4KMainWindow::slotSearchAboutToStart( const QString &string )
 {
   Q_ASSERT( !string.isEmpty() );
-  
+
   statusBar()->showMessage( i18n( "Searching for \"%1\"...", string ) );
-  
+
   if ( !m_progress_bar->isVisible() )
   {
     m_progress_bar->setVisible( true );
@@ -1046,7 +1057,7 @@ void Smb4KMainWindow::slotSearchFinished( const QString &/*string*/ )
 void Smb4KMainWindow::slotPrintingAboutToStart( Smb4KShare *printer )
 {
   statusBar()->showMessage( i18n( "Sending file to printer %1...", printer->unc() ), 0 );
-  
+
   if ( !m_progress_bar->isVisible() )
   {
     m_progress_bar->setVisible( true );
@@ -1076,7 +1087,7 @@ void Smb4KMainWindow::slotPrintingFinished( Smb4KShare */*printer*/ )
 void Smb4KMainWindow::slotSynchronizerAboutToStart( const QString &dest )
 {
   statusBar()->showMessage( i18n( "Synchronizing %1", dest ), 0 );
-  
+
   if ( !m_progress_bar->isVisible() )
   {
     m_progress_bar->setVisible( true );
@@ -1106,9 +1117,9 @@ void Smb4KMainWindow::slotSynchronizerFinished( const QString &/*dest*/ )
 void Smb4KMainWindow::slotPreviewerAboutToStart( Smb4KShare *share, const QUrl &/*url*/ )
 {
   Q_ASSERT( share );
-  
+
   statusBar()->showMessage( i18n( "Retrieving preview from %1...", share->unc() ), 0 );
-  
+
   if ( !m_progress_bar->isVisible() )
   {
     m_progress_bar->setVisible( true );
@@ -1216,7 +1227,7 @@ void Smb4KMainWindow::slotActivePartChanged( KParts::Part *part )
 void Smb4KMainWindow::slotEnableBookmarkAction()
 {
   QAction *action = m_active_part->actionCollection()->action( "bookmark_action" );
-  
+
   if ( action )
   {
     actionCollection()->action( "add_bookmark_action" )->setEnabled( action->isEnabled() );
