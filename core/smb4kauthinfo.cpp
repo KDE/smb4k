@@ -83,6 +83,7 @@ void Smb4KAuthInfo::setHost( Smb4KHost *host )
   m_workgroup   = host->workgroupName();
   m_homes_share = false;
   m_url         = host->url();
+  m_ip          = host->ip();
 }
 
 
@@ -102,6 +103,8 @@ void Smb4KAuthInfo::setShare( Smb4KShare *share )
   {
     m_url       = share->homeURL();
   }
+  
+  m_ip          = share->hostIP();
 }
 
 
