@@ -911,11 +911,19 @@ bool Smb4KWalletManager::showPasswordDialog( Smb4KBasicNetworkItem *networkItem,
         }
         else
         {
+          
           dlg.setUsername( share->login() );
           dlg.setPassword( share->password() );
         }
-
-        dlg.setPrompt( i18n( "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>", share->unc() ) );
+        
+        if ( !share->isHomesShare() )
+        {
+          dlg.setPrompt( i18n( "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>", share->unc() ) );
+        }
+        else
+        {
+          dlg.setPrompt( i18n( "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>", share->homeUNC() ) );
+        }
 
         // Execute the password dialog, retrieve the new authentication
         // information and save it.
