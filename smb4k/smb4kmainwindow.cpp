@@ -831,7 +831,14 @@ void Smb4KMainWindow::slotMounterAboutToStart( Smb4KShare *share, int process )
   {
     case Smb4KMounter::MountShare:
     {
-      statusBar()->showMessage( i18n( "Mounting share %1..." ).arg( share->unc() ), 0 );
+      if ( !share->isHomesShare() )
+      {
+        statusBar()->showMessage( i18n( "Mounting share %1..." ).arg( share->unc() ), 0 );
+      }
+      else
+      {
+        statusBar()->showMessage( i18n( "Mounting share %1..." ).arg( share->homeUNC() ), 0 );
+      }
       break;
     }
     case Smb4KMounter::UnmountShare:

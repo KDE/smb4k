@@ -6,6 +6,12 @@ Smb4K 1.0.2 (????-??-??):
   declaration in Smb4KUnmountJob::slotActionFinished().
 - Fixed wrong assumption that qreal equals double in Smb4KShare class. 
   Patch by Rex Dieter from the Fedora Project.
+- Fixed missing assignments of the IP address in Smb4KAuthInfo::setHost()
+  and Smb4KAuthInfo::setShare().
+- When prompting for a password for a 'homes' share, use the UNC of the 
+  user's home directory and not //SERVER/homes.
+- When mounting a 'homes' share, show the UNC of the user's home directory
+  in the mainwindow's status bar instead of //SERVER/homes.
 
 Smb4K 1.0.1 (2012-03-11):
 - Fixed potential crash in Smb4KWalletManager::init().
