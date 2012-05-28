@@ -45,14 +45,22 @@
 
 
 Smb4KHomesUsers::Smb4KHomesUsers( const Smb4KShare &s, const QStringList &u )
-: share( s ), users( u )
 {
+  workgroupName = s.workgroupName();
+  hostName      = s.hostName();
+  shareName     = s.shareName();
+  hostIP        = s.hostIP();
+  users         = u;
 }
 
 
-Smb4KHomesUsers::Smb4KHomesUsers( const Smb4KHomesUsers &users )
-: share( users.share ), users( users.users )
+Smb4KHomesUsers::Smb4KHomesUsers( const Smb4KHomesUsers &u )
 {
+  workgroupName = u.workgroupName;
+  hostName      = u.hostName;
+  shareName     = u.shareName;
+  hostIP        = u.hostIP;
+  users         = u.users;
 }
 
 

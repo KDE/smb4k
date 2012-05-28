@@ -61,11 +61,26 @@ class Smb4KHomesUsers
      * Destructor
      */
     ~Smb4KHomesUsers();
-    
+
     /**
-     * Share
+     * Workgroup name
      */
-    Smb4KShare share;
+    QString workgroupName;
+
+    /**
+     * Host name
+     */
+    QString hostName;
+
+    /**
+     * Share name
+     */
+    QString shareName;
+
+    /**
+     * IP address
+     */
+    QString hostIP;
     
     /**
      * User list
@@ -140,7 +155,7 @@ class Smb4KHomesUserDialog : public KDialog
 class Smb4KHomesSharesHandlerPrivate
 {
   public:
-    QList<Smb4KHomesUsers> homesUsers;
+    QList<Smb4KHomesUsers *> homesUsers;
 };
 
 

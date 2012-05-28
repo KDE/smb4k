@@ -72,6 +72,10 @@ Smb4KHomesSharesHandler::Smb4KHomesSharesHandler( QObject *parent )
 
 Smb4KHomesSharesHandler::~Smb4KHomesSharesHandler()
 {
+  while ( !d->homesUsers.isEmpty() )
+  {
+    delete d->homesUsers.takeFirst();
+  }
 }
 
 
@@ -175,8 +179,8 @@ void Smb4KHomesSharesHandler::readUserNames()
         {
           if ( xmlReader.name() == "homes" )
           {
-            Smb4KHomesUsers users;
-            users.share.setShareName( xmlReader.name().toString() );
+            Smb4KHomesUsers *users = new Smb4KHomesUsers();
+            users->shareName = xmlReader.name().toString();
 
             while ( !(xmlReader.isEndElement() && xmlReader.name() == "homes") )
             {
@@ -186,15 +190,15 @@ void Smb4KHomesSharesHandler::readUserNames()
               {
                 if ( xmlReader.name() == "host" )
                 {
-                  users.share.setHostName( xmlReader.readElementText() );
+                  users->hostName = xmlReader.readElementText();
                 }
                 else if ( xmlReader.name() == "workgroup" )
                 {
-                  users.share.setWorkgroupName( xmlReader.readElementText() );
+                  users->workgroupName = xmlReader.readElementText();
                 }
                 else if ( xmlReader.name() == "ip" )
                 {
-                  users.share.setHostIP( xmlReader.readElementText() );
+                  users->hostIP = xmlReader.readElementText();
                 }
                 else if ( xmlReader.name() == "users" )
                 {
@@ -204,7 +208,7 @@ void Smb4KHomesSharesHandler::readUserNames()
 
                     if ( xmlReader.isStartElement() && xmlReader.name() == "user" )
                     {
-                      users.users << xmlReader.readElementText();
+                      users->users << xmlReader.readElementText();
                     }
                     else
                     {
@@ -287,14 +291,14 @@ void Smb4KHomesSharesHandler::writeUserNames()
       {
         xmlWriter.writeStartElement( "homes" );
         xmlWriter.writeAttribute( "profile", "Default" );
-        xmlWriter.writeTextElement( "host", d->homesUsers.at( i ).share.hostName() );
-        xmlWriter.writeTextElement( "workgroup", d->homesUsers.at( i ).share.workgroupName() );
-        xmlWriter.writeTextElement( "ip", d->homesUsers.at( i ).share.hostIP() );
+        xmlWriter.writeTextElement( "host", d->homesUsers.at( i )->hostName );
+        xmlWriter.writeTextElement( "workgroup", d->homesUsers.at( i )->workgroupName );
+        xmlWriter.writeTextElement( "ip", d->homesUsers.at( i )->hostIP );
         xmlWriter.writeStartElement( "users" );
 
-        for ( int j = 0; j < d->homesUsers.at( i ).users.size(); ++j )
+        for ( int j = 0; j < d->homesUsers.at( i )->users.size(); ++j )
         {
-          xmlWriter.writeTextElement( "user", d->homesUsers.at( i ).users.at( j ) );
+          xmlWriter.writeTextElement( "user", d->homesUsers.at( i )->users.at( j ) );
         }
 
         xmlWriter.writeEndElement();
@@ -328,11 +332,12 @@ void Smb4KHomesSharesHandler::findHomesUsers( Smb4KShare *share, QStringList *us
   {
     for ( int i = 0; i < d->homesUsers.size(); ++i )
     {
-      if ( QString::compare( share->unc(), d->homesUsers.at( i ).share.unc(), Qt::CaseInsensitive ) == 0 &&
-           ((d->homesUsers.at( i ).share.workgroupName().isEmpty() || share->workgroupName().isEmpty()) ||
-           QString::compare( share->workgroupName(), d->homesUsers.at( i ).share.workgroupName(), Qt::CaseInsensitive ) == 0) )
+      if ( QString::compare( share->hostName(), d->homesUsers.at(i)->hostName, Qt::CaseInsensitive ) == 0 &&
+           QString::compare( share->shareName(), d->homesUsers.at(i)->shareName, Qt::CaseInsensitive ) == 0 &&
+           ((d->homesUsers.at( i )->workgroupName.isEmpty() || share->workgroupName().isEmpty()) ||
+           QString::compare( share->workgroupName(), d->homesUsers.at(i)->workgroupName, Qt::CaseInsensitive ) == 0) )
       {
-        *users = d->homesUsers.at( i ).users;
+        *users = d->homesUsers.at( i )->users;
         break;
       }
       else
@@ -355,11 +360,12 @@ void Smb4KHomesSharesHandler::addHomesUsers( Smb4KShare *share, QStringList *use
   {
     for ( int i = 0; i < d->homesUsers.size(); ++i )
     {
-      if ( QString::compare( share->unc(), d->homesUsers.at( i ).share.unc(), Qt::CaseInsensitive ) == 0 &&
-           ((d->homesUsers.at( i ).share.workgroupName().isEmpty() || share->workgroupName().isEmpty()) ||
-           QString::compare( share->workgroupName(), d->homesUsers.at( i ).share.workgroupName(), Qt::CaseInsensitive ) == 0) )
+      if ( QString::compare( share->hostName(), d->homesUsers.at(i)->hostName, Qt::CaseInsensitive ) == 0 &&
+           QString::compare( share->shareName(), d->homesUsers.at(i)->shareName, Qt::CaseInsensitive ) == 0 &&
+           ((d->homesUsers.at( i )->workgroupName.isEmpty() || share->workgroupName().isEmpty()) ||
+           QString::compare( share->workgroupName(), d->homesUsers.at( i )->workgroupName, Qt::CaseInsensitive ) == 0) )
       {
-        d->homesUsers[i].users = *users;
+        d->homesUsers[i]->users = *users;
         found = true;
         break;
       }
@@ -376,7 +382,7 @@ void Smb4KHomesSharesHandler::addHomesUsers( Smb4KShare *share, QStringList *use
   
   if ( !found )
   {
-    d->homesUsers << Smb4KHomesUsers( *share, *users );
+    d->homesUsers << new Smb4KHomesUsers( *share, *users );
   }
   else
   {
