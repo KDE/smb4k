@@ -911,7 +911,6 @@ bool Smb4KWalletManager::showPasswordDialog( Smb4KBasicNetworkItem *networkItem,
         }
         else
         {
-          
           dlg.setUsername( share->login() );
           dlg.setPassword( share->password() );
         }

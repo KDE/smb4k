@@ -735,7 +735,7 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
         if ( stderr.contains( "mount error 13", Qt::CaseSensitive ) || stderr.contains( "mount error(13)" )
             /* authentication error */ )
         {
-          m_auth_errors << *share;
+          m_auth_errors << Smb4KShare( *share );
           emit authError( this );
         }
         else if ( (stderr.contains( "mount error 6" ) || stderr.contains( "mount error(6)" )) /* bad share name */ &&
