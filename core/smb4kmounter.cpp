@@ -1085,7 +1085,14 @@ void Smb4KMounter::unmountShares( const QList<Smb4KShare *> &shares, bool silent
   
   addSubjob( job );
 
-  job->start();  
+  if ( !p->aboutToQuit() )
+  {
+    job->start();
+  }
+  else
+  {
+    job->synchronousStart();
+  }
 }
 
 

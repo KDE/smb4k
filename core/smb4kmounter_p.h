@@ -206,6 +206,14 @@ class Smb4KUnmountJob : public KJob
     void start();
     
     /**
+     * Starts the job synchronously. In contrast to the start() function, it
+     * directly calls slotStartUnmount().
+     * 
+     * You should not use this function unless it is really necessary.
+     */
+    void synchronousStart();
+    
+    /**
      * Set up the job for a single unmount.
      *
      * You must run this function before start() is called.

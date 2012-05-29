@@ -14,6 +14,8 @@ Smb4K 1.0.2 (????-??-??):
   in the mainwindow's status bar instead of //SERVER/homes.
 - Fixed a crash in Smb4KMountJob::slotActionFinished() reported by 
   Peter Trenholme.
+- Fixed unmounting on exit. Many thanks go to Peter Trenholme for reporting
+  this issue.
 
 Smb4K 1.0.1 (2012-03-11):
 - Fixed potential crash in Smb4KWalletManager::init().
