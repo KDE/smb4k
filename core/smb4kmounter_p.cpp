@@ -876,6 +876,13 @@ void Smb4KUnmountJob::start()
 }
 
 
+void Smb4KUnmountJob::synchronousStart()
+{
+  m_started = true;
+  slotStartUnmount();
+}
+
+
 void Smb4KUnmountJob::setupUnmount( Smb4KShare *share, bool force, bool silent, QWidget *parent )
 {
   Q_ASSERT( share );
