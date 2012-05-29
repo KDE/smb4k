@@ -1098,7 +1098,14 @@ void Smb4KMounter::unmountShares( const QList<Smb4KShare *> &shares, bool silent
           }
           else
           {
-            // Do nothing
+            if ( d->aboutToQuit )
+            {
+              continue;
+            }
+            else
+            {
+              // Do nothing
+            }
           }
         }
       }
@@ -1168,7 +1175,14 @@ void Smb4KMounter::unmountShares( const QList<Smb4KShare *> &shares, bool silent
 
 void Smb4KMounter::unmountAllShares( QWidget *parent )
 {
-  unmountShares( mountedSharesList(), false, parent );
+  if ( !d->aboutToQuit )
+  {
+    unmountShares( mountedSharesList(), false, parent );
+  }
+  else
+  {
+    unmountShares( mountedSharesList(), true, parent );
+  }
 }
 
 
