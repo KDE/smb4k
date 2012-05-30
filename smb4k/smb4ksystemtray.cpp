@@ -67,7 +67,7 @@ Smb4KSystemTray::Smb4KSystemTray( QWidget *parent )
   // Set up the context menu (skeleton):
   KAction *manual_mount = new KAction( KIcon( "view-form", KIconLoader::global(), QStringList( "emblem-mounted" ) ),
                           i18n( "&Open Mount Dialog" ), actionCollection() );
-  KAction *configure    = KStandardAction::preferences( this, SLOT( slotConfigDialog() ),
+  KAction *configure    = KStandardAction::preferences( this, SLOT(slotConfigDialog()),
                           actionCollection() );
   
   Smb4KSharesMenu *shares_menu = new Smb4KSharesMenu( associatedWidget(), this );
@@ -80,17 +80,17 @@ Smb4KSystemTray::Smb4KSystemTray( QWidget *parent )
   contextMenu()->addAction( configure );
 
   // Connections:
-  connect( manual_mount,                 SIGNAL( triggered( bool ) ),
-           this,                         SLOT( slotMountDialog( bool ) ) );
+  connect( manual_mount,                 SIGNAL(triggered(bool)),
+           this,                         SLOT(slotMountDialog(bool)) );
 
-  connect( Smb4KMounter::self(),         SIGNAL( mounted( Smb4KShare * ) ),
-           this,                         SLOT( slotSetStatus() ) );
+  connect( Smb4KMounter::self(),         SIGNAL(mounted(Smb4KShare*)),
+           this,                         SLOT(slotSetStatus()) );
 
-  connect( Smb4KMounter::self(),         SIGNAL( unmounted( Smb4KShare * ) ),
-           this,                         SLOT( slotSetStatus() ) );
+  connect( Smb4KMounter::self(),         SIGNAL(unmounted(Smb4KShare*)),
+           this,                         SLOT(slotSetStatus()) );
 
-  connect( Smb4KScanner::self(),         SIGNAL( workgroups( const QList<Smb4KWorkgroup *> & ) ),
-           this,                         SLOT( slotSetStatus() ) );
+  connect( Smb4KScanner::self(),         SIGNAL(workgroups(QList<Smb4KWorkgroup*>)),
+           this,                         SLOT(slotSetStatus()) );
 }
 
 
@@ -148,11 +148,11 @@ void Smb4KSystemTray::slotConfigDialog()
     // To make sure we do not connect the config dialog several times
     // to slotSettingsChanged(), we break the connection first and re-
     // establish it afterwards:
-    disconnect( dlg,  SIGNAL( settingsChanged( const QString & ) ),
-                this, SLOT( slotSettingsChanged( const QString & ) ) );
+    disconnect( dlg,  SIGNAL(settingsChanged(QString)),
+                this, SLOT(slotSettingsChanged(QString)) );
 
-    connect( dlg,  SIGNAL( settingsChanged( const QString & ) ),
-             this, SLOT( slotSettingsChanged( const QString & ) ) );
+    connect( dlg,  SIGNAL(settingsChanged(QString)),
+             this, SLOT(slotSettingsChanged(QString)) );
 
     return;
   }
@@ -181,11 +181,11 @@ void Smb4KSystemTray::slotConfigDialog()
     // ... and show it.
     if ( dlg )
     {
-      connect( dlg,  SIGNAL( settingsChanged( const QString & ) ),
-               this, SLOT( slotSettingsChanged( const QString & ) ) );
+      connect( dlg,  SIGNAL(settingsChanged(QString)),
+               this, SLOT(slotSettingsChanged(QString)) );
 
-      connect( dlg,  SIGNAL( settingsChanged( const QString & ) ),
-               this, SIGNAL( settingsChanged( const QString & ) ) );
+      connect( dlg,  SIGNAL(settingsChanged(QString)),
+               this, SIGNAL(settingsChanged(QString)) );
 
       dlg->show();
     }

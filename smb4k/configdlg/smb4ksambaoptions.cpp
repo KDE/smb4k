@@ -838,55 +838,55 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   //
   // Connections
   //
-  connect( user_menu,        SIGNAL( triggered( QAction * ) ),
-           this,             SLOT( slotNewUserTriggered( QAction * ) ) );
+  connect( user_menu,        SIGNAL(triggered(QAction*)),
+           this,             SLOT(slotNewUserTriggered(QAction*)) );
 
-  connect( group_menu,       SIGNAL( triggered( QAction * ) ),
-           this,             SLOT( slotNewGroupTriggered( QAction * ) ) );
+  connect( group_menu,       SIGNAL(triggered(QAction*)),
+           this,             SLOT(slotNewGroupTriggered(QAction*)) );
 
-  connect( m_custom_options, SIGNAL( itemDoubleClicked( QListWidgetItem * ) ),
-           this,             SLOT( slotEditCustomItem( QListWidgetItem * ) ) );
+  connect( m_custom_options, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
+           this,             SLOT(slotEditCustomItem(QListWidgetItem*)) );
 
-  connect( m_custom_options, SIGNAL( itemSelectionChanged() ),
-           this,             SLOT( slotItemSelectionChanged() ) );
+  connect( m_custom_options, SIGNAL(itemSelectionChanged()),
+           this,             SLOT(slotItemSelectionChanged()) );
 
-  connect( m_custom_options, SIGNAL( customContextMenuRequested( const QPoint & ) ),
-           this,             SLOT( slotCustomContextMenuRequested( const QPoint & ) ) );
+  connect( m_custom_options, SIGNAL(customContextMenuRequested(QPoint)),
+           this,             SLOT(slotCustomContextMenuRequested(QPoint)) );
            
-  connect( edit_action,      SIGNAL( triggered( bool ) ),
-           this,             SLOT( slotEditActionTriggered( bool ) ) );
+  connect( edit_action,      SIGNAL(triggered(bool)),
+           this,             SLOT(slotEditActionTriggered(bool)) );
            
-  connect( remove_action,    SIGNAL( triggered( bool ) ),
-           this,             SLOT( slotRemoveActionTriggered( bool ) ) );
+  connect( remove_action,    SIGNAL(triggered(bool)),
+           this,             SLOT(slotRemoveActionTriggered(bool)) );
            
-  connect( clear_action,     SIGNAL( triggered( bool ) ),
-           this,             SLOT( slotClearActionTriggered( bool ) ) );
+  connect( clear_action,     SIGNAL(triggered(bool)),
+           this,             SLOT(slotClearActionTriggered(bool)) );
   
-  connect( undo_action,      SIGNAL( triggered( bool ) ),
-           this,             SLOT( slotUndoActionTriggered( bool ) ) );
+  connect( undo_action,      SIGNAL(triggered(bool)),
+           this,             SLOT(slotUndoActionTriggered(bool)) );
   
-  connect( m_smb_port,       SIGNAL( valueChanged( int ) ),
-           this,             SLOT( slotEntryChanged() ) );
+  connect( m_smb_port,       SIGNAL(valueChanged(int)),
+           this,             SLOT(slotEntryChanged()) );
   
 #ifndef Q_OS_FREEBSD
-  connect( m_fs_port,        SIGNAL( valueChanged( int ) ),
-           this,             SLOT( slotEntryChanged() ) );
+  connect( m_fs_port,        SIGNAL(valueChanged(int)),
+           this,             SLOT(slotEntryChanged()) );
   
-  connect( m_write_access,   SIGNAL( currentIndexChanged( int ) ),
-           this,             SLOT( slotEntryChanged() ) );
+  connect( m_write_access,   SIGNAL(currentIndexChanged(int)),
+           this,             SLOT(slotEntryChanged()) );
 #endif
   
-  connect( m_protocol_hint,  SIGNAL( currentIndexChanged( int ) ),
-           this,             SLOT( slotEntryChanged() ) );
+  connect( m_protocol_hint,  SIGNAL(currentIndexChanged(int)),
+           this,             SLOT(slotEntryChanged()) );
   
-  connect( m_user_id,        SIGNAL( currentIndexChanged( int ) ),
-           this,             SLOT( slotEntryChanged() ) );
+  connect( m_user_id,        SIGNAL(currentIndexChanged(int)),
+           this,             SLOT(slotEntryChanged()) );
   
-  connect( m_group_id,       SIGNAL( currentIndexChanged( int ) ),
-           this,             SLOT( slotEntryChanged() ) );
+  connect( m_group_id,       SIGNAL(currentIndexChanged(int)),
+           this,             SLOT(slotEntryChanged()) );
   
-  connect( m_kerberos,       SIGNAL( toggled( bool ) ),
-           this,             SLOT( slotEntryChanged() ) );
+  connect( m_kerberos,       SIGNAL(toggled(bool)),
+           this,             SLOT(slotEntryChanged()) );
 }
 
 

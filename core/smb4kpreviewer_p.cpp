@@ -68,7 +68,7 @@ Smb4KPreviewJob::~Smb4KPreviewJob()
 void Smb4KPreviewJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT( slotStartPreview() ) );
+  QTimer::singleShot( 0, this, SLOT(slotStartPreview()) );
 }
 
 
@@ -341,9 +341,9 @@ void Smb4KPreviewJob::slotStartPreview()
   m_proc->setEnv( "PASSWD", m_share->password(), true );
   m_proc->setShellCommand( arguments.join( " " ) );
 
-  connect( m_proc, SIGNAL( readyReadStandardOutput() ), SLOT( slotReadStandardOutput() ) );
-  connect( m_proc, SIGNAL( readyReadStandardError() ),  SLOT( slotReadStandardError() ) );
-  connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
+  connect( m_proc, SIGNAL(readyReadStandardOutput()), SLOT(slotReadStandardOutput()) );
+  connect( m_proc, SIGNAL(readyReadStandardError()),  SLOT(slotReadStandardError()) );
+  connect( m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(slotProcessFinished(int,QProcess::ExitStatus)) );
 
   m_proc->start();
 }
@@ -561,15 +561,15 @@ Smb4KPreviewDialog::Smb4KPreviewDialog( Smb4KShare *share, QWidget *parent )
 
   setupView();
 
-  connect( this,                   SIGNAL( closeClicked() ),
-           this,                   SLOT( slotCloseClicked() ) );
+  connect( this,                   SIGNAL(closeClicked()),
+           this,                   SLOT(slotCloseClicked()) );
 
   setMinimumWidth( sizeHint().width() > 350 ? sizeHint().width() : 350 );
 
   KConfigGroup group( Smb4KSettings::self()->config(), "PreviewDialog" );
   restoreDialogSize( group );
 
-  QTimer::singleShot( 0, this, SLOT( slotRequestPreview() ) );
+  QTimer::singleShot( 0, this, SLOT(slotRequestPreview()) );
 }
 
 
@@ -630,17 +630,17 @@ void Smb4KPreviewDialog::setupView()
   layout->addWidget( m_view, 0, 0, 0 );
   layout->addWidget( toolbar, 1, 0, 0 );
 
-  connect( toolbar, SIGNAL( actionTriggered( QAction * ) ),
-           this,      SLOT( slotActionTriggered( QAction * ) ) );
+  connect( toolbar, SIGNAL(actionTriggered(QAction*)),
+           this,      SLOT(slotActionTriggered(QAction*)) );
 
-  connect( m_combo,   SIGNAL( activated( const QString & ) ),
-           this,      SLOT( slotItemActivated( const QString & ) ) );
+  connect( m_combo,   SIGNAL(activated(QString)),
+           this,      SLOT(slotItemActivated(QString)) );
 
-  connect( m_view,    SIGNAL( executed( QListWidgetItem * ) ),
-           this,      SLOT( slotItemExecuted( QListWidgetItem * ) ) );
+  connect( m_view,    SIGNAL(executed(QListWidgetItem*)),
+           this,      SLOT(slotItemExecuted(QListWidgetItem*)) );
 
-  connect( KGlobalSettings::self(), SIGNAL( iconChanged( int ) ),
-           this,                    SLOT( slotIconSizeChanged( int ) ) );
+  connect( KGlobalSettings::self(), SIGNAL(iconChanged(int)),
+           this,                    SLOT(slotIconSizeChanged(int)) );
 }
 
 

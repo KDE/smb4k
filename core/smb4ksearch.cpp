@@ -64,7 +64,7 @@ Smb4KSearch::Smb4KSearch( QObject *parent )
     // Do nothing
   }
   
-  connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
+  connect( QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()) );
 }
 
 
@@ -134,11 +134,11 @@ void Smb4KSearch::search( const QString &string, QWidget *parent )
 
   delete master_browser;
 
-  connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
-  connect( job, SIGNAL( authError( Smb4KSearchJob * ) ), SLOT( slotAuthError( Smb4KSearchJob * ) ) );
-  connect( job, SIGNAL( result( Smb4KShare * ) ), SLOT( slotProcessSearchResult( Smb4KShare * ) ) );
-  connect( job, SIGNAL( aboutToStart( const QString & ) ), SIGNAL( aboutToStart( const QString & ) ) );
-  connect( job, SIGNAL( finished( const QString & ) ), SIGNAL( finished( const QString & ) ) );
+  connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
+  connect( job, SIGNAL(authError(Smb4KSearchJob*)), SLOT(slotAuthError(Smb4KSearchJob*)) );
+  connect( job, SIGNAL(result(Smb4KShare*)), SLOT(slotProcessSearchResult(Smb4KShare*)) );
+  connect( job, SIGNAL(aboutToStart(QString)), SIGNAL(aboutToStart(QString)) );
+  connect( job, SIGNAL(finished(QString)), SIGNAL(finished(QString)) );
 
   if ( !hasSubjobs() && modifyCursor() )
   {
@@ -211,7 +211,7 @@ void Smb4KSearch::abort( const QString &string )
 
 void Smb4KSearch::start()
 {
-  QTimer::singleShot( 0, this, SLOT( slotStartJobs() ) );
+  QTimer::singleShot( 0, this, SLOT(slotStartJobs()) );
 }
 
 

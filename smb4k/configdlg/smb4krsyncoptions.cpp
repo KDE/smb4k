@@ -538,38 +538,38 @@ Smb4KRsyncOptions::Smb4KRsyncOptions( QWidget *parent )
 
   insertTab( AdvancedTab, advanced_tab, i18n( "Advanced Settings" ) );
 
-  connect( archive_mode,     SIGNAL( toggled( bool ) ),
-           this,             SLOT( slotArchiveToggled( bool ) ) );
+  connect( archive_mode,     SIGNAL(toggled(bool)),
+           this,             SLOT(slotArchiveToggled(bool)) );
 
-  connect( recursive,        SIGNAL( toggled( bool ) ),
-           this,             SLOT( slotUncheckArchive( bool ) ) );
+  connect( recursive,        SIGNAL(toggled(bool)),
+           this,             SLOT(slotUncheckArchive(bool)) );
 
-  connect( preserve_links,   SIGNAL( toggled( bool ) ),
-           this,             SLOT( slotUncheckArchive( bool ) ) );
+  connect( preserve_links,   SIGNAL(toggled(bool)),
+           this,             SLOT(slotUncheckArchive(bool)) );
 
-  connect( preserve_perms,   SIGNAL( toggled( bool ) ),
-           this,             SLOT( slotUncheckArchive( bool ) ) );
+  connect( preserve_perms,   SIGNAL(toggled(bool)),
+           this,             SLOT(slotUncheckArchive(bool)) );
 
-  connect( preserve_times,   SIGNAL( toggled( bool ) ),
-           this,             SLOT( slotUncheckArchive( bool ) ) );
+  connect( preserve_times,   SIGNAL(toggled(bool)),
+           this,             SLOT(slotUncheckArchive(bool)) );
 
-  connect( preserve_group,   SIGNAL( toggled( bool ) ),
-           this,             SLOT( slotUncheckArchive( bool ) ) );
+  connect( preserve_group,   SIGNAL(toggled(bool)),
+           this,             SLOT(slotUncheckArchive(bool)) );
 
-  connect( preserve_owner,   SIGNAL( toggled( bool ) ),
-           this,             SLOT( slotUncheckArchive( bool ) ) );
+  connect( preserve_owner,   SIGNAL(toggled(bool)),
+           this,             SLOT(slotUncheckArchive(bool)) );
 
-  connect( preserve_devices, SIGNAL( toggled( bool ) ),
-           this,             SLOT( slotUncheckArchive( bool ) ) );
+  connect( preserve_devices, SIGNAL(toggled(bool)),
+           this,             SLOT(slotUncheckArchive(bool)) );
 
-  connect( backup,           SIGNAL( toggled( bool ) ),
-           this,             SLOT( slotBackupToggled( bool ) ) );
+  connect( backup,           SIGNAL(toggled(bool)),
+           this,             SLOT(slotBackupToggled(bool)) );
 
-  connect( f_filter,         SIGNAL( toggled( bool ) ),
-           this,             SLOT( slotFShortcutToggled( bool ) ) );
+  connect( f_filter,         SIGNAL(toggled(bool)),
+           this,             SLOT(slotFShortcutToggled(bool)) );
 
-  connect( ff_filter,        SIGNAL( toggled( bool ) ),
-           this,             SLOT( slotFFShortcutToggled( bool ) ) );
+  connect( ff_filter,        SIGNAL(toggled(bool)),
+           this,             SLOT(slotFFShortcutToggled(bool)) );
 
   slotArchiveToggled( true );
   slotBackupToggled( false );

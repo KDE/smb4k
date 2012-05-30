@@ -86,10 +86,10 @@ Smb4KHomesUserDialog::Smb4KHomesUserDialog( QWidget *parent ) : KDialog( parent 
   
   setupView();
   
-  connect( m_user_combo, SIGNAL( textChanged( const QString &) ), SLOT( slotTextChanged( const QString & ) ) );
-  connect( m_user_combo->lineEdit(), SIGNAL( editingFinished() ), SLOT( slotHomesUserEntered() ) );
-  connect( this, SIGNAL( user1Clicked() ), SLOT( slotClearClicked() ) );
-  connect( this, SIGNAL( okClicked() ), SLOT( slotOkClicked() ) );
+  connect( m_user_combo, SIGNAL(textChanged(QString)), SLOT(slotTextChanged(QString)) );
+  connect( m_user_combo->lineEdit(), SIGNAL(editingFinished()), SLOT(slotHomesUserEntered()) );
+  connect( this, SIGNAL(user1Clicked()), SLOT(slotClearClicked()) );
+  connect( this, SIGNAL(okClicked()), SLOT(slotOkClicked()) );
   
   setMinimumWidth( sizeHint().width() > 350 ? sizeHint().width() : 350 );
   

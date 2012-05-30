@@ -103,11 +103,11 @@ Smb4KAuthOptions::Smb4KAuthOptions( QWidget *parent ) : KTabWidget( parent )
   general_layout->addWidget( default_box, 1, 0, 0 );
   general_layout->addItem( spacer, 2, 0, 1, 1, 0 );
 
-  connect( use_wallet,   SIGNAL( toggled( bool ) ),
-           this,         SLOT( slotKWalletButtonToggled( bool ) ) );
+  connect( use_wallet,   SIGNAL(toggled(bool)),
+           this,         SLOT(slotKWalletButtonToggled(bool)) );
 
-  connect( default_auth, SIGNAL( toggled( bool ) ),
-           this,         SLOT( slotDefaultLoginToggled( bool ) ) );
+  connect( default_auth, SIGNAL(toggled(bool)),
+           this,         SLOT(slotDefaultLoginToggled(bool)) );
 
   slotKWalletButtonToggled( use_wallet->isChecked() );
   slotDefaultLoginToggled( default_auth->isChecked() );
@@ -191,44 +191,44 @@ Smb4KAuthOptions::Smb4KAuthOptions( QWidget *parent ) : KTabWidget( parent )
   m_details_menu->addAction( edit_action );
   m_details_menu->addAction( undo_details_action );
   
-  connect( m_load_button,    SIGNAL( clicked( bool ) ),
-           this,             SIGNAL( loadWalletEntries() ) );
+  connect( m_load_button,    SIGNAL(clicked(bool)),
+           this,             SIGNAL(loadWalletEntries()) );
   
-  connect( m_save_button,    SIGNAL( clicked( bool ) ),
-           this,             SIGNAL( saveWalletEntries() ) );
+  connect( m_save_button,    SIGNAL(clicked(bool)),
+           this,             SIGNAL(saveWalletEntries()) );
            
-  connect( m_save_button,    SIGNAL( clicked( bool ) ),
-           this,             SLOT( slotSaveClicked( bool ) ) );
+  connect( m_save_button,    SIGNAL(clicked(bool)),
+           this,             SLOT(slotSaveClicked(bool)) );
   
-  connect( m_details_box,    SIGNAL( clicked( bool ) ),
-           this,             SLOT( slotDetailsClicked( bool ) ) );
+  connect( m_details_box,    SIGNAL(clicked(bool)),
+           this,             SLOT(slotDetailsClicked(bool)) );
            
-  connect( m_entries_widget, SIGNAL( itemSelectionChanged() ),
-           this,             SLOT( slotItemSelectionChanged() ) );
+  connect( m_entries_widget, SIGNAL(itemSelectionChanged()),
+           this,             SLOT(slotItemSelectionChanged()) );
            
-  connect( m_entries_widget, SIGNAL( customContextMenuRequested( const QPoint & ) ),
-           this,             SLOT( slotShowListWidgetContextMenu( const QPoint & ) ) );
+  connect( m_entries_widget, SIGNAL(customContextMenuRequested(QPoint)),
+           this,             SLOT(slotShowListWidgetContextMenu(QPoint)) );
            
-  connect( m_details_widget, SIGNAL( cellChanged( int, int ) ),
-           this,             SLOT( slotDetailsChanged( int, int ) ) );
+  connect( m_details_widget, SIGNAL(cellChanged(int,int)),
+           this,             SLOT(slotDetailsChanged(int,int)) );
            
-  connect( m_details_widget, SIGNAL( customContextMenuRequested( const QPoint &) ),
-           this,             SLOT( slotShowTableWidgetContextMenu( const QPoint & ) ) );
+  connect( m_details_widget, SIGNAL(customContextMenuRequested(QPoint)),
+           this,             SLOT(slotShowTableWidgetContextMenu(QPoint)) );
            
-  connect( remove_action,    SIGNAL( triggered( bool ) ),
-           this,             SLOT( slotRemoveActionTriggered( bool ) ) );
+  connect( remove_action,    SIGNAL(triggered(bool)),
+           this,             SLOT(slotRemoveActionTriggered(bool)) );
            
-  connect( clear_action,     SIGNAL( triggered( bool ) ),
-           this,             SLOT( slotClearActionTriggered( bool ) ) );
+  connect( clear_action,     SIGNAL(triggered(bool)),
+           this,             SLOT(slotClearActionTriggered(bool)) );
            
-  connect( undo_list_action, SIGNAL( triggered( bool ) ),
-           this,             SLOT( slotUndoListActionTriggered( bool ) ) );
+  connect( undo_list_action, SIGNAL(triggered(bool)),
+           this,             SLOT(slotUndoListActionTriggered(bool)) );
            
-  connect( edit_action,      SIGNAL( triggered( bool ) ),
-           this,             SLOT( slotEditActionTriggered( bool ) ) );
+  connect( edit_action,      SIGNAL(triggered(bool)),
+           this,             SLOT(slotEditActionTriggered(bool)) );
            
-  connect( undo_details_action, SIGNAL( triggered( bool ) ),
-           this,             SLOT( slotUndoDetailsActionTriggered( bool ) ) );
+  connect( undo_details_action, SIGNAL(triggered(bool)),
+           this,             SLOT(slotUndoDetailsActionTriggered(bool)) );
            
   m_load_button->setFocus();
   

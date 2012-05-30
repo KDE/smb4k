@@ -73,24 +73,24 @@ Smb4KNetworkBrowser::Smb4KNetworkBrowser( QWidget *parent )
   header()->setResizeMode( QHeaderView::ResizeToContents );
 
   // Add some connections:
-  connect( this, SIGNAL( itemExecuted( QTreeWidgetItem *, int ) ),
-           this, SLOT( slotItemExecuted( QTreeWidgetItem *, int ) ) );
+  connect( this, SIGNAL(itemExecuted(QTreeWidgetItem*,int)),
+           this, SLOT(slotItemExecuted(QTreeWidgetItem*,int)) );
 
-  connect( this, SIGNAL( itemEntered( QTreeWidgetItem *, int ) ),
-           this, SLOT( slotItemEntered( QTreeWidgetItem *, int ) ) );
+  connect( this, SIGNAL(itemEntered(QTreeWidgetItem*,int)),
+           this, SLOT(slotItemEntered(QTreeWidgetItem*,int)) );
 
-  connect( this, SIGNAL( viewportEntered() ),
-           this, SLOT( slotViewportEntered() ) );
+  connect( this, SIGNAL(viewportEntered()),
+           this, SLOT(slotViewportEntered()) );
 
   // We need to conform with KDE's settings (see also slotKDESettingsChanged(),
   // slotItemEntered() and slotViewportEntered()).
   slotKDESettingsChanged( KGlobalSettings::SETTINGS_MOUSE );
 
-  connect( KGlobalSettings::self(), SIGNAL( settingsChanged( int ) ),
-           this,                    SLOT( slotKDESettingsChanged( int ) ) );
+  connect( KGlobalSettings::self(), SIGNAL(settingsChanged(int)),
+           this,                    SLOT(slotKDESettingsChanged(int)) );
 
-  connect( m_auto_select_timer,     SIGNAL( timeout() ),
-           this,                    SLOT( slotAutoSelectItem() ) );
+  connect( m_auto_select_timer,     SIGNAL(timeout()),
+           this,                    SLOT(slotAutoSelectItem()) );
 }
 
 
@@ -448,8 +448,8 @@ void Smb4KNetworkBrowser::slotKDESettingsChanged( int category )
     return;
   }
 
-  disconnect( this, SIGNAL( itemClicked( QTreeWidgetItem *, int ) ) );
-  disconnect( this, SIGNAL( itemDoubleClicked( QTreeWidgetItem *, int ) ) );
+  disconnect( this, SIGNAL(itemClicked(QTreeWidgetItem*,int)) );
+  disconnect( this, SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)) );
 
   m_use_single_click        = KGlobalSettings::singleClick();
   m_change_cursor_over_icon = KGlobalSettings::changeCursorOverIcon();
@@ -457,13 +457,13 @@ void Smb4KNetworkBrowser::slotKDESettingsChanged( int category )
 
   if ( m_use_single_click )
   {
-    connect( this, SIGNAL( itemClicked( QTreeWidgetItem *, int ) ),
-             this, SIGNAL( itemExecuted( QTreeWidgetItem *, int ) ) );
+    connect( this, SIGNAL(itemClicked(QTreeWidgetItem*,int)),
+             this, SIGNAL(itemExecuted(QTreeWidgetItem*,int)) );
   }
   else
   {
-    connect( this, SIGNAL( itemDoubleClicked( QTreeWidgetItem *, int ) ),
-             this, SIGNAL( itemExecuted( QTreeWidgetItem *, int ) ) );
+    connect( this, SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),
+             this, SIGNAL(itemExecuted(QTreeWidgetItem*,int)) );
   }
 
   if ( !m_use_single_click || !m_change_cursor_over_icon )

@@ -65,8 +65,8 @@ Smb4KBookmarkDialog::Smb4KBookmarkDialog( const QList<Smb4KBookmark *> &bookmark
   m_label_edit->completionObject()->setItems( group.readEntry( "LabelCompletion", QStringList() ) );
   m_group_combo->completionObject()->setItems( group.readEntry( "GroupCompletion", m_groups ) );
 
-  connect( this, SIGNAL( buttonClicked( KDialog::ButtonCode ) ), SLOT( slotUserClickedButton( KDialog::ButtonCode ) ) );
-  connect( KGlobalSettings::self(), SIGNAL( iconChanged( int ) ), SLOT( slotIconSizeChanged( int ) ) );
+  connect( this, SIGNAL(buttonClicked(KDialog::ButtonCode)), SLOT(slotUserClickedButton(KDialog::ButtonCode)) );
+  connect( KGlobalSettings::self(), SIGNAL(iconChanged(int)), SLOT(slotIconSizeChanged(int)) );
 }
 
 
@@ -134,9 +134,9 @@ void Smb4KBookmarkDialog::setupView()
 
   setMinimumWidth( sizeHint().width() > 350 ? sizeHint().width() : 350 );
 
-  connect( m_widget, SIGNAL( itemClicked( QListWidgetItem * ) ), SLOT( slotBookmarkClicked( QListWidgetItem * ) ) );
-  connect( m_label_edit, SIGNAL( editingFinished() ), SLOT( slotLabelEdited() ) );
-  connect( m_group_combo->lineEdit(), SIGNAL( editingFinished() ), SLOT( slotGroupEdited() ) );
+  connect( m_widget, SIGNAL(itemClicked(QListWidgetItem*)), SLOT(slotBookmarkClicked(QListWidgetItem*)) );
+  connect( m_label_edit, SIGNAL(editingFinished()), SLOT(slotLabelEdited()) );
+  connect( m_group_combo->lineEdit(), SIGNAL(editingFinished()), SLOT(slotGroupEdited()) );
 }
 
 
@@ -341,8 +341,8 @@ Smb4KBookmarkEditor::Smb4KBookmarkEditor( const QList<Smb4KBookmark *> &bookmark
   m_ip_edit->completionObject()->setItems( group.readEntry( "IPCompletion", QStringList() ) );
   m_group_combo->completionObject()->setItems( group.readEntry( "GroupCompletion", m_groups ) );
 
-  connect( this, SIGNAL( buttonClicked( KDialog::ButtonCode ) ), SLOT( slotUserClickedButton( KDialog::ButtonCode ) ) );
-  connect( KGlobalSettings::self(), SIGNAL( iconChanged( int ) ), SLOT( slotIconSizeChanged( int ) ) );
+  connect( this, SIGNAL(buttonClicked(KDialog::ButtonCode)), SLOT(slotUserClickedButton(KDialog::ButtonCode)) );
+  connect( KGlobalSettings::self(), SIGNAL(iconChanged(int)), SLOT(slotIconSizeChanged(int)) );
 }
 
 
@@ -532,15 +532,15 @@ void Smb4KBookmarkEditor::setupView()
   layout->addWidget( m_tree_widget );
   layout->addWidget( m_editors );
 
-  connect( m_tree_widget, SIGNAL( itemClicked( QTreeWidgetItem *, int ) ), SLOT( slotItemClicked( QTreeWidgetItem *, int ) ) );
-  connect( m_tree_widget, SIGNAL( customContextMenuRequested( const QPoint & ) ), SLOT( slotContextMenuRequested( const QPoint & ) ) );
-  connect( m_label_edit, SIGNAL( editingFinished() ), SLOT( slotLabelEdited() ) );
-  connect( m_ip_edit, SIGNAL( editingFinished() ), SLOT( slotIPEdited() ) );
-  connect( m_login_edit, SIGNAL( editingFinished() ), SLOT( slotLoginEdited() ) );
-  connect( m_group_combo->lineEdit(), SIGNAL( editingFinished() ), SLOT( slotGroupEdited() ) );
-  connect( m_add_group, SIGNAL( triggered( bool ) ), SLOT( slotAddGroupTriggered( bool ) ) );
-  connect( m_delete, SIGNAL( triggered( bool ) ), SLOT( slotDeleteTriggered( bool ) ) );
-  connect( m_clear, SIGNAL( triggered( bool ) ), SLOT( slotClearTriggered( bool ) ) );
+  connect( m_tree_widget, SIGNAL(itemClicked(QTreeWidgetItem*,int)), SLOT(slotItemClicked(QTreeWidgetItem*,int)) );
+  connect( m_tree_widget, SIGNAL(customContextMenuRequested(QPoint)), SLOT(slotContextMenuRequested(QPoint)) );
+  connect( m_label_edit, SIGNAL(editingFinished()), SLOT(slotLabelEdited()) );
+  connect( m_ip_edit, SIGNAL(editingFinished()), SLOT(slotIPEdited()) );
+  connect( m_login_edit, SIGNAL(editingFinished()), SLOT(slotLoginEdited()) );
+  connect( m_group_combo->lineEdit(), SIGNAL(editingFinished()), SLOT(slotGroupEdited()) );
+  connect( m_add_group, SIGNAL(triggered(bool)), SLOT(slotAddGroupTriggered(bool)) );
+  connect( m_delete, SIGNAL(triggered(bool)), SLOT(slotDeleteTriggered(bool)) );
+  connect( m_clear, SIGNAL(triggered(bool)), SLOT(slotClearTriggered(bool)) );
 }
 
 

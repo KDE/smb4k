@@ -327,8 +327,8 @@ Smb4KUserInterfaceOptions::Smb4KUserInterfaceOptions( QWidget *parent )
   insertTab( PreviewDialogTab, preview_tab, i18n( "Preview Dialog" ) );
 
   // Add connections:
-  connect( show_hidden, SIGNAL( clicked( bool ) ),
-           this,        SLOT( slotShowHiddenClicked( bool ) ) );
+  connect( show_hidden, SIGNAL(clicked(bool)),
+           this,        SLOT(slotShowHiddenClicked(bool)) );
 
   // Do last adjustments:
   slotShowHiddenClicked( Smb4KSettings::showHiddenShares() );

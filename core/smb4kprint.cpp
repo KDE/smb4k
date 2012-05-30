@@ -65,7 +65,7 @@ Smb4KPrint::Smb4KPrint( QObject *parent )
     // Do nothing
   }
   
-  connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
+  connect( QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()) );
 }
 
 
@@ -100,10 +100,10 @@ void Smb4KPrint::print( Smb4KShare *printer, QWidget *parent )
   job->setObjectName( QString( "PrintJob_%1" ).arg( printer->unc() ) );
   job->setupPrinting( printer, parent );
   
-  connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
-  connect( job, SIGNAL( authError( Smb4KPrintJob * ) ), SLOT( slotAuthError( Smb4KPrintJob * ) ) );
-  connect( job, SIGNAL( aboutToStart( Smb4KShare * ) ), SIGNAL( aboutToStart( Smb4KShare * ) ) );
-  connect( job, SIGNAL( finished( Smb4KShare * ) ), SIGNAL( finished( Smb4KShare * ) ) );
+  connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
+  connect( job, SIGNAL(authError(Smb4KPrintJob*)), SLOT(slotAuthError(Smb4KPrintJob*)) );
+  connect( job, SIGNAL(aboutToStart(Smb4KShare*)), SIGNAL(aboutToStart(Smb4KShare*)) );
+  connect( job, SIGNAL(finished(Smb4KShare*)), SIGNAL(finished(Smb4KShare*)) );
   
   addSubjob( job );
   
@@ -166,7 +166,7 @@ void Smb4KPrint::abort( Smb4KShare *share )
 
 void Smb4KPrint::start()
 {
-  QTimer::singleShot( 0, this, SLOT( slotStartJobs() ) );
+  QTimer::singleShot( 0, this, SLOT(slotStartJobs()) );
 }
 
 

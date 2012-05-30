@@ -67,9 +67,9 @@ Smb4KSharesMenu::Smb4KSharesMenu( QWidget *parentWidget, QObject *parent )
   // Setup the menu
   setupMenu();
 
-  connect( m_actions, SIGNAL( triggered( QAction * ) ), SLOT( slotShareAction( QAction * ) ) );
-  connect( Smb4KMounter::self(), SIGNAL( mounted( Smb4KShare * ) ), SLOT( slotShareMounted( Smb4KShare * ) ) );
-  connect( Smb4KMounter::self(), SIGNAL( unmounted( Smb4KShare * ) ), SLOT( slotShareUnmounted( Smb4KShare * ) ) );
+  connect( m_actions, SIGNAL(triggered(QAction*)), SLOT(slotShareAction(QAction*)) );
+  connect( Smb4KMounter::self(), SIGNAL(mounted(Smb4KShare*)), SLOT(slotShareMounted(Smb4KShare*)) );
+  connect( Smb4KMounter::self(), SIGNAL(unmounted(Smb4KShare*)), SLOT(slotShareUnmounted(Smb4KShare*)) );
 }
 
 
@@ -109,7 +109,7 @@ void Smb4KSharesMenu::setupMenu()
   unmount_all->setEnabled( false );
   m_action_collection->addAction( "unmount_all", unmount_all );
 
-  connect( unmount_all, SIGNAL( triggered( bool ) ), SLOT( slotUnmountAllShares() ) );
+  connect( unmount_all, SIGNAL(triggered(bool)), SLOT(slotUnmountAllShares()) );
 
   addAction( unmount_all );
 

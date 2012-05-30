@@ -129,65 +129,65 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject
   loadSettings();
 
   // Add some connections:
-  connect( m_widget,               SIGNAL( customContextMenuRequested( const QPoint & ) ),
-           this,                   SLOT( slotContextMenuRequested( const QPoint & ) ) );
+  connect( m_widget,               SIGNAL(customContextMenuRequested(QPoint)),
+           this,                   SLOT(slotContextMenuRequested(QPoint)) );
 
-  connect( m_widget,               SIGNAL( itemSelectionChanged() ),
-           this,                   SLOT( slotItemSelectionChanged() ) );
+  connect( m_widget,               SIGNAL(itemSelectionChanged()),
+           this,                   SLOT(slotItemSelectionChanged()) );
 
-  connect( m_widget,               SIGNAL( itemPressed( QTreeWidgetItem *, int ) ),
-           this,                   SLOT( slotItemPressed( QTreeWidgetItem *, int ) ) );
+  connect( m_widget,               SIGNAL(itemPressed(QTreeWidgetItem*,int)),
+           this,                   SLOT(slotItemPressed(QTreeWidgetItem*,int)) );
 
-  connect( m_widget,               SIGNAL( itemExecuted( QTreeWidgetItem *, int ) ),
-           this,                   SLOT( slotItemExecuted( QTreeWidgetItem *, int ) ) );
+  connect( m_widget,               SIGNAL(itemExecuted(QTreeWidgetItem*,int)),
+           this,                   SLOT(slotItemExecuted(QTreeWidgetItem*,int)) );
 
-  connect( m_widget->tooltip(),    SIGNAL( aboutToShow( Smb4KBasicNetworkItem * ) ),
-           this,                   SLOT( slotAboutToShowToolTip( Smb4KBasicNetworkItem * ) ) );
+  connect( m_widget->tooltip(),    SIGNAL(aboutToShow(Smb4KBasicNetworkItem*)),
+           this,                   SLOT(slotAboutToShowToolTip(Smb4KBasicNetworkItem*)) );
 
-  connect( m_widget->tooltip(),    SIGNAL( aboutToHide( Smb4KBasicNetworkItem * ) ),
-           this,                   SLOT( slotAboutToHideToolTip( Smb4KBasicNetworkItem * ) ) );
+  connect( m_widget->tooltip(),    SIGNAL(aboutToHide(Smb4KBasicNetworkItem*)),
+           this,                   SLOT(slotAboutToHideToolTip(Smb4KBasicNetworkItem*)) );
 
-  connect( Smb4KScanner::self(),   SIGNAL( workgroups( const QList<Smb4KWorkgroup *> & ) ),
-           this,                   SLOT( slotWorkgroups( const QList<Smb4KWorkgroup *> & ) ) );
+  connect( Smb4KScanner::self(),   SIGNAL(workgroups(QList<Smb4KWorkgroup*>)),
+           this,                   SLOT(slotWorkgroups(QList<Smb4KWorkgroup*>)) );
 
-  connect( Smb4KScanner::self(),   SIGNAL( hosts( Smb4KWorkgroup *, const QList<Smb4KHost *> & ) ),
-           this,                   SLOT( slotWorkgroupMembers( Smb4KWorkgroup *, const QList<Smb4KHost *> & ) ) );
+  connect( Smb4KScanner::self(),   SIGNAL(hosts(Smb4KWorkgroup*,QList<Smb4KHost*>)),
+           this,                   SLOT(slotWorkgroupMembers(Smb4KWorkgroup*,QList<Smb4KHost*>)) );
 
-  connect( Smb4KScanner::self(),   SIGNAL( shares( Smb4KHost *, const QList<Smb4KShare *> & ) ),
-           this,                   SLOT( slotShares( Smb4KHost *, const QList<Smb4KShare *> & ) ) );
+  connect( Smb4KScanner::self(),   SIGNAL(shares(Smb4KHost*,QList<Smb4KShare*>)),
+           this,                   SLOT(slotShares(Smb4KHost*,QList<Smb4KShare*>)) );
 
-  connect( Smb4KScanner::self(),   SIGNAL( info( Smb4KHost * ) ),
-           this,                   SLOT( slotAddInformation( Smb4KHost * ) ) );
+  connect( Smb4KScanner::self(),   SIGNAL(info(Smb4KHost*)),
+           this,                   SLOT(slotAddInformation(Smb4KHost*)) );
   
-  connect( Smb4KScanner::self(),   SIGNAL( authError( Smb4KHost *, int ) ),
-           this,                   SLOT( slotAuthError( Smb4KHost *, int ) ) );
+  connect( Smb4KScanner::self(),   SIGNAL(authError(Smb4KHost*,int)),
+           this,                   SLOT(slotAuthError(Smb4KHost*,int)) );
 
-  connect( Smb4KScanner::self(),   SIGNAL( aboutToStart( Smb4KBasicNetworkItem *, int ) ),
-           this,                   SLOT( slotScannerAboutToStart( Smb4KBasicNetworkItem *, int ) ) );
+  connect( Smb4KScanner::self(),   SIGNAL(aboutToStart(Smb4KBasicNetworkItem*,int)),
+           this,                   SLOT(slotScannerAboutToStart(Smb4KBasicNetworkItem*,int)) );
 
-  connect( Smb4KScanner::self(),   SIGNAL( finished( Smb4KBasicNetworkItem *, int ) ),
-           this,                   SLOT( slotScannerFinished( Smb4KBasicNetworkItem *, int ) ) );
+  connect( Smb4KScanner::self(),   SIGNAL(finished(Smb4KBasicNetworkItem*,int)),
+           this,                   SLOT(slotScannerFinished(Smb4KBasicNetworkItem*,int)) );
 
-  connect( Smb4KScanner::self(),   SIGNAL( ipAddress( Smb4KHost * ) ),
-           this,                   SLOT( slotAddIPAddress( Smb4KHost * ) ) );
+  connect( Smb4KScanner::self(),   SIGNAL(ipAddress(Smb4KHost*)),
+           this,                   SLOT(slotAddIPAddress(Smb4KHost*)) );
 
-  connect( Smb4KMounter::self(),   SIGNAL( aboutToStart( Smb4KShare *, int ) ),
-           this,                   SLOT( slotMounterAboutToStart( Smb4KShare *, int ) ) );
+  connect( Smb4KMounter::self(),   SIGNAL(aboutToStart(Smb4KShare*,int)),
+           this,                   SLOT(slotMounterAboutToStart(Smb4KShare*,int)) );
 
-  connect( Smb4KMounter::self(),   SIGNAL( finished( Smb4KShare *, int ) ),
-           this,                   SLOT( slotMounterFinished( Smb4KShare *, int ) ) );
+  connect( Smb4KMounter::self(),   SIGNAL(finished(Smb4KShare*,int)),
+           this,                   SLOT(slotMounterFinished(Smb4KShare*,int)) );
 
-  connect( Smb4KMounter::self(),   SIGNAL( mounted( Smb4KShare * ) ),
-           this,                   SLOT( slotShareMounted( Smb4KShare * ) ) );
+  connect( Smb4KMounter::self(),   SIGNAL(mounted(Smb4KShare*)),
+           this,                   SLOT(slotShareMounted(Smb4KShare*)) );
 
-  connect( Smb4KMounter::self(),   SIGNAL( unmounted( Smb4KShare * ) ),
-           this,                   SLOT( slotShareUnmounted( Smb4KShare * ) ) );
+  connect( Smb4KMounter::self(),   SIGNAL(unmounted(Smb4KShare*)),
+           this,                   SLOT(slotShareUnmounted(Smb4KShare*)) );
 
-  connect( kapp,                   SIGNAL( aboutToQuit() ),
-           this,                   SLOT( slotAboutToQuit() ) );
+  connect( kapp,                   SIGNAL(aboutToQuit()),
+           this,                   SLOT(slotAboutToQuit()) );
            
-  connect( KGlobalSettings::self(), SIGNAL( iconChanged( int ) ),
-           this,                    SLOT( slotIconSizeChanged( int ) ) );
+  connect( KGlobalSettings::self(), SIGNAL(iconChanged(int)),
+           this,                    SLOT(slotIconSizeChanged(int)) );
 }
 
 
@@ -204,27 +204,27 @@ void Smb4KNetworkBrowserPart::setupActions()
   rescan_shortcuts += QKeySequence::Refresh;
   rescan_shortcuts += QKeySequence( Qt::CTRL+Qt::Key_R );
   rescan_action->setShortcuts( rescan_shortcuts );
-  connect( rescan_action, SIGNAL( triggered( bool ) ), this, SLOT( slotRescan( bool ) ) );
+  connect( rescan_action, SIGNAL(triggered(bool)), this, SLOT(slotRescan(bool)) );
 
   KAction *abort_action    = new KAction( KIcon( "process-stop" ), i18n( "&Abort" ),
                              actionCollection() );
   abort_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_A ) );
-  connect( abort_action, SIGNAL( triggered( bool ) ), this, SLOT( slotAbort( bool ) ) );
+  connect( abort_action, SIGNAL(triggered(bool)), this, SLOT(slotAbort(bool)) );
 
   KAction *manual_action   = new KAction( KIcon( "view-form", KIconLoader::global(), QStringList( "emblem-mounted" ) ),
                              i18n( "&Open Mount Dialog" ), actionCollection() );
   manual_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_O ) );
-  connect( manual_action, SIGNAL( triggered( bool ) ), this, SLOT( slotMountManually( bool ) ) );
+  connect( manual_action, SIGNAL(triggered(bool)), this, SLOT(slotMountManually(bool)) );
 
   KAction *auth_action     = new KAction( KIcon( "dialog-password" ), i18n( "Au&thentication" ),
                              actionCollection() );
   auth_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_T ) );
-  connect( auth_action, SIGNAL( triggered( bool ) ), this, SLOT( slotAuthentication( bool ) ) );
+  connect( auth_action, SIGNAL(triggered(bool)), this, SLOT(slotAuthentication(bool)) );
 
   KAction *custom_action   = new KAction( KIcon( "preferences-system-network" ), i18n( "&Custom Options" ),
                              actionCollection() );
   custom_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_C ) );
-  connect( custom_action, SIGNAL( triggered( bool ) ), this, SLOT( slotCustomOptions( bool ) ) );
+  connect( custom_action, SIGNAL(triggered(bool)), this, SLOT(slotCustomOptions(bool)) );
 
   KAction *bookmark_action = new KAction( KIcon( "bookmark-new" ), i18n( "Add &Bookmark" ),
                              actionCollection() );
@@ -236,22 +236,22 @@ void Smb4KNetworkBrowserPart::setupActions()
   {
     // Do nothing
   }
-  connect( bookmark_action, SIGNAL( triggered( bool ) ), this, SLOT( slotAddBookmark( bool ) ) );
+  connect( bookmark_action, SIGNAL(triggered(bool)), this, SLOT(slotAddBookmark(bool)) );
 
   KAction *preview_action  = new KAction( KIcon( "view-list-icons" ), i18n( "Pre&view" ),
                              actionCollection() );
   preview_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_V ) );
-  connect( preview_action, SIGNAL( triggered( bool ) ), this, SLOT( slotPreview( bool ) ) );
+  connect( preview_action, SIGNAL(triggered(bool)), this, SLOT(slotPreview(bool)) );
 
   KAction *print_action    = new KAction( KIcon( "printer" ), i18n( "&Print File" ),
                              actionCollection() );
   print_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_P ) );
-  connect( print_action, SIGNAL( triggered( bool ) ), this, SLOT( slotPrint( bool ) ) );
+  connect( print_action, SIGNAL(triggered(bool)), this, SLOT(slotPrint(bool)) );
 
   KAction *mount_action    = new KAction( KIcon( "emblem-mounted" ), i18n( "&Mount" ),
                              actionCollection() );
   mount_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_M ) );
-  connect( mount_action, SIGNAL( triggered( bool ) ), this, SLOT( slotMount( bool ) ) );
+  connect( mount_action, SIGNAL(triggered(bool)), this, SLOT(slotMount(bool)) );
 
   actionCollection()->addAction( "rescan_action", rescan_action );
   actionCollection()->addAction( "abort_action", abort_action );

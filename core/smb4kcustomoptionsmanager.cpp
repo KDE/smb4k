@@ -63,7 +63,7 @@ Smb4KCustomOptionsManager::Smb4KCustomOptionsManager( QObject *parent )
   
   readCustomOptions();
   
-  connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
+  connect( QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()) );
 }
 
 

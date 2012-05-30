@@ -54,8 +54,8 @@ Smb4KCustomOptionsDialog::Smb4KCustomOptionsDialog( Smb4KCustomOptions *options,
 
   setupView();
 
-  connect( this, SIGNAL( user1Clicked() ), SLOT( slotSetDefaultValues() ) );
-  connect( this, SIGNAL( okClicked() ), SLOT( slotOKClicked() ) );
+  connect( this, SIGNAL(user1Clicked()), SLOT(slotSetDefaultValues()) );
+  connect( this, SIGNAL(okClicked()), SLOT(slotOKClicked()) );
 
   KConfigGroup group( Smb4KSettings::self()->config(), "CustomOptionsDialog" );
   restoreDialogSize( group );
@@ -369,15 +369,15 @@ void Smb4KCustomOptionsDialog::setupView()
   layout->addWidget( description );
   layout->addWidget( editors );
 
-  connect( m_smb_port, SIGNAL( valueChanged( int ) ), SLOT( slotCheckValues() ) );
+  connect( m_smb_port, SIGNAL(valueChanged(int)), SLOT(slotCheckValues()) );
 #ifndef Q_OS_FREEBSD
-  connect( m_fs_port, SIGNAL( valueChanged(int) ), SLOT( slotCheckValues() ) );
-  connect( m_write_access, SIGNAL( currentIndexChanged( int ) ), SLOT( slotCheckValues() ) );
+  connect( m_fs_port, SIGNAL(valueChanged(int)), SLOT(slotCheckValues()) );
+  connect( m_write_access, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()) );
 #endif
-  connect( m_protocol_hint, SIGNAL( currentIndexChanged( int ) ), SLOT( slotCheckValues() ) );
-  connect( m_user_id, SIGNAL( currentIndexChanged( int ) ), SLOT( slotCheckValues() ) );
-  connect( m_group_id, SIGNAL( currentIndexChanged( int ) ), SLOT( slotCheckValues() ) );
-  connect( m_kerberos, SIGNAL( toggled( bool ) ), SLOT( slotCheckValues() ) );
+  connect( m_protocol_hint, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()) );
+  connect( m_user_id, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()) );
+  connect( m_group_id, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()) );
+  connect( m_kerberos, SIGNAL(toggled(bool)), SLOT(slotCheckValues()) );
 
   enableButton( User1, !defaultValues() );
 }

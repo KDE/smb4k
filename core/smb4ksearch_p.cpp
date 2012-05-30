@@ -64,7 +64,7 @@ Smb4KSearchJob::~Smb4KSearchJob()
 void Smb4KSearchJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT( slotStartSearch() ) );
+  QTimer::singleShot( 0, this, SLOT(slotStartSearch()) );
 }
 
 
@@ -258,9 +258,9 @@ void Smb4KSearchJob::slotStartSearch()
   m_proc->setEnv( "PASSWD", !m_master->password().isEmpty() ? m_master->password() : "", true );
   m_proc->setShellCommand( arguments.join( " " ) );
   
-  connect( m_proc, SIGNAL( readyReadStandardOutput() ), this, SLOT( slotReadStandardOutput() ) );
-  connect( m_proc, SIGNAL( readyReadStandardError() ), this, SLOT( slotReadStandardError() ) );
-  connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), this, SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
+  connect( m_proc, SIGNAL(readyReadStandardOutput()), this, SLOT(slotReadStandardOutput()) );
+  connect( m_proc, SIGNAL(readyReadStandardError()), this, SLOT(slotReadStandardError()) );
+  connect( m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotProcessFinished(int,QProcess::ExitStatus)) );
   
   m_proc->start();
 }

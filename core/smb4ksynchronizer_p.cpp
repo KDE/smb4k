@@ -68,7 +68,7 @@ Smb4KSyncJob::~Smb4KSyncJob()
 void Smb4KSyncJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT( slotStartSynchronization() ) );
+  QTimer::singleShot( 0, this, SLOT(slotStartSynchronization()) );
 }
 
 
@@ -157,7 +157,7 @@ void Smb4KSyncJob::slotStartSynchronization()
 
     // Register the job with the job tracker
     m_job_tracker->registerJob( this );
-    connect( this, SIGNAL( result( KJob * ) ), m_job_tracker, SLOT( unregisterJob( KJob * ) ) );
+    connect( this, SIGNAL(result(KJob*)), m_job_tracker, SLOT(unregisterJob(KJob*)) );
     
     // Get the list of arguments
     QStringList arguments;
@@ -656,9 +656,9 @@ void Smb4KSyncJob::slotStartSynchronization()
     m_proc->setOutputChannelMode( KProcess::SeparateChannels );
     m_proc->setProgram( rsync, arguments );
 
-    connect( m_proc, SIGNAL( readyReadStandardOutput() ), SLOT( slotReadStandardOutput() ) );
-    connect( m_proc, SIGNAL( readyReadStandardError() ),  SLOT( slotReadStandardError() ) );
-    connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
+    connect( m_proc, SIGNAL(readyReadStandardOutput()), SLOT(slotReadStandardOutput()) );
+    connect( m_proc, SIGNAL(readyReadStandardError()),  SLOT(slotReadStandardError()) );
+    connect( m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(slotProcessFinished(int,QProcess::ExitStatus)) );
 
     m_proc->start();
   }
@@ -880,14 +880,14 @@ Smb4KSynchronizationDialog::Smb4KSynchronizationDialog( Smb4KShare *share, QWidg
   layout->addWidget( m_destination, 2, 1, 0 );
 
   // Connections
-  connect( this,                      SIGNAL( user1Clicked() ),
-           this,                      SLOT( slotUser1Clicked() ) );
+  connect( this,                      SIGNAL(user1Clicked()),
+           this,                      SLOT(slotUser1Clicked()) );
 
-  connect( this,                      SIGNAL( user2Clicked() ),
-           this,                      SLOT( slotUser2Clicked() ) );
+  connect( this,                      SIGNAL(user2Clicked()),
+           this,                      SLOT(slotUser2Clicked()) );
 
-  connect( this,                      SIGNAL( user3Clicked() ),
-           this,                      SLOT( slotUser3Clicked() ) );
+  connect( this,                      SIGNAL(user3Clicked()),
+           this,                      SLOT(slotUser3Clicked()) );
 
   setMinimumSize( (sizeHint().width() > 350 ? sizeHint().width() : 350), sizeHint().height() );
 

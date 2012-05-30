@@ -81,7 +81,7 @@ Smb4KMainWindow::Smb4KMainWindow()
   // Part manager
   m_manager = new KParts::PartManager( this );
   m_manager->setAllowNestedParts( true );
-  connect( m_manager, SIGNAL( activePartChanged( KParts::Part * ) ), SLOT( slotActivePartChanged( KParts::Part * ) ) );
+  connect( m_manager, SIGNAL(activePartChanged(KParts::Part*)), SLOT(slotActivePartChanged(KParts::Part*)) );
 
   // Set up main window
   setStandardToolBarMenuEnabled( true );
@@ -107,11 +107,11 @@ Smb4KMainWindow::~Smb4KMainWindow()
 void Smb4KMainWindow::setupActions()
 {
   // Quit action
-  KAction *quit_action = KStandardAction::quit( this, SLOT( slotQuit() ), actionCollection() );
+  KAction *quit_action = KStandardAction::quit( this, SLOT(slotQuit()), actionCollection() );
   actionCollection()->addAction( "quit_action", quit_action );
 
   // Configure action
-  KAction *configure_action = KStandardAction::preferences( this, SLOT( slotConfigDialog() ), actionCollection() );
+  KAction *configure_action = KStandardAction::preferences( this, SLOT(slotConfigDialog()), actionCollection() );
   actionCollection()->addAction( "configure_action", configure_action );
 
   // Dock widgets action menu
@@ -127,7 +127,7 @@ void Smb4KMainWindow::setupActions()
 
   QActionGroup *view_modes_group = new QActionGroup( actionCollection() );
   view_modes_group->setExclusive( true );
-  connect( view_modes_group, SIGNAL( triggered( QAction * ) ), this, SLOT( slotViewModeTriggered( QAction * ) ) );
+  connect( view_modes_group, SIGNAL(triggered(QAction*)), this, SLOT(slotViewModeTriggered(QAction*)) );
 
   KAction *icon_view_action = new KAction( i18n( "Icon View" ), view_modes_group );
   icon_view_action->setCheckable( true );
@@ -160,7 +160,7 @@ void Smb4KMainWindow::setupActions()
   bookmarks->addBookmarkAction()->setEnabled( false );
   actionCollection()->addAction( "bookmarks_menu", bookmarks );
   actionCollection()->addAction( "add_bookmark_action", bookmarks->addBookmarkAction() );
-  connect( bookmarks->addBookmarkAction(), SIGNAL( triggered( bool ) ), SLOT( slotAddBookmark() ) );
+  connect( bookmarks->addBookmarkAction(), SIGNAL(triggered(bool)), SLOT(slotAddBookmark()) );
 }
 
 
@@ -193,50 +193,50 @@ void Smb4KMainWindow::setupStatusBar()
   slotWalletManagerInitialized();
   setupMountIndicator();
 
-  connect( Smb4KWalletManager::self(), SIGNAL( initialized() ),
-           this,                       SLOT( slotWalletManagerInitialized() ) );
+  connect( Smb4KWalletManager::self(), SIGNAL(initialized()),
+           this,                       SLOT(slotWalletManagerInitialized()) );
 
-  connect( Smb4KMounter::self(),       SIGNAL( mounted( Smb4KShare * ) ),
-           this,                       SLOT( slotVisualMountFeedback( Smb4KShare * ) ) );
+  connect( Smb4KMounter::self(),       SIGNAL(mounted(Smb4KShare*)),
+           this,                       SLOT(slotVisualMountFeedback(Smb4KShare*)) );
 
-  connect( Smb4KMounter::self(),       SIGNAL( unmounted( Smb4KShare * ) ),
-           this,                       SLOT( slotVisualUnmountFeedback( Smb4KShare * ) ) );
+  connect( Smb4KMounter::self(),       SIGNAL(unmounted(Smb4KShare*)),
+           this,                       SLOT(slotVisualUnmountFeedback(Smb4KShare*)) );
 
-  connect( Smb4KScanner::self(),       SIGNAL( aboutToStart( Smb4KBasicNetworkItem *, int ) ),
-           this,                       SLOT( slotScannerAboutToStart( Smb4KBasicNetworkItem *, int ) ) );
+  connect( Smb4KScanner::self(),       SIGNAL(aboutToStart(Smb4KBasicNetworkItem*,int)),
+           this,                       SLOT(slotScannerAboutToStart(Smb4KBasicNetworkItem*,int)) );
 
-  connect( Smb4KScanner::self(),       SIGNAL( finished( Smb4KBasicNetworkItem *, int ) ),
-           this,                       SLOT( slotScannerFinished( Smb4KBasicNetworkItem *, int ) ) );
+  connect( Smb4KScanner::self(),       SIGNAL(finished(Smb4KBasicNetworkItem*,int)),
+           this,                       SLOT(slotScannerFinished(Smb4KBasicNetworkItem*,int)) );
 
-  connect( Smb4KMounter::self(),       SIGNAL( aboutToStart( Smb4KShare *, int ) ),
-           this,                       SLOT( slotMounterAboutToStart( Smb4KShare *, int ) ) );
+  connect( Smb4KMounter::self(),       SIGNAL(aboutToStart(Smb4KShare*,int)),
+           this,                       SLOT(slotMounterAboutToStart(Smb4KShare*,int)) );
 
-  connect( Smb4KMounter::self(),       SIGNAL( finished( Smb4KShare *, int ) ),
-           this,                       SLOT( slotMounterFinished( Smb4KShare *, int ) ) );
+  connect( Smb4KMounter::self(),       SIGNAL(finished(Smb4KShare*,int)),
+           this,                       SLOT(slotMounterFinished(Smb4KShare*,int)) );
 
-  connect( Smb4KSearch::self(),        SIGNAL( aboutToStart( const QString & ) ),
-           this,                       SLOT( slotSearchAboutToStart( const QString & ) ) );
+  connect( Smb4KSearch::self(),        SIGNAL(aboutToStart(QString)),
+           this,                       SLOT(slotSearchAboutToStart(QString)) );
 
-  connect( Smb4KSearch::self(),        SIGNAL( finished( const QString & ) ),
-           this,                       SLOT( slotSearchFinished( const QString & ) ) );
+  connect( Smb4KSearch::self(),        SIGNAL(finished(QString)),
+           this,                       SLOT(slotSearchFinished(QString)) );
 
-  connect( Smb4KPrint::self(),         SIGNAL( aboutToStart( Smb4KShare * ) ),
-           this,                       SLOT( slotPrintingAboutToStart( Smb4KShare * ) ) );
+  connect( Smb4KPrint::self(),         SIGNAL(aboutToStart(Smb4KShare*)),
+           this,                       SLOT(slotPrintingAboutToStart(Smb4KShare*)) );
 
-  connect( Smb4KPrint::self(),         SIGNAL( finished( Smb4KShare * ) ),
-           this,                       SLOT( slotPrintingFinished( Smb4KShare * ) ) );
+  connect( Smb4KPrint::self(),         SIGNAL(finished(Smb4KShare*)),
+           this,                       SLOT(slotPrintingFinished(Smb4KShare*)) );
 
-  connect( Smb4KSynchronizer::self(),  SIGNAL( aboutToStart( const QString & ) ),
-           this,                       SLOT( slotSynchronizerAboutToStart( const QString & ) ) );
+  connect( Smb4KSynchronizer::self(),  SIGNAL(aboutToStart(QString)),
+           this,                       SLOT(slotSynchronizerAboutToStart(QString)) );
 
-  connect( Smb4KSynchronizer::self(),  SIGNAL( finished( const QString & ) ),
-           this,                       SLOT( slotSynchronizerFinished( const QString & ) ) );
+  connect( Smb4KSynchronizer::self(),  SIGNAL(finished(QString)),
+           this,                       SLOT(slotSynchronizerFinished(QString)) );
 
-  connect( Smb4KPreviewer::self(),     SIGNAL( aboutToStart( Smb4KShare *, const QUrl & ) ),
-           this,                       SLOT( slotPreviewerAboutToStart( Smb4KShare *, const QUrl & ) ) );
+  connect( Smb4KPreviewer::self(),     SIGNAL(aboutToStart(Smb4KShare*,QUrl)),
+           this,                       SLOT(slotPreviewerAboutToStart(Smb4KShare*,QUrl)) );
 
-  connect( Smb4KPreviewer::self(),     SIGNAL( finished( Smb4KShare *, const QUrl & ) ),
-           this,                       SLOT( slotPreviewerFinished( Smb4KShare *, const QUrl & ) ) );
+  connect( Smb4KPreviewer::self(),     SIGNAL(finished(Smb4KShare*,QUrl)),
+           this,                       SLOT(slotPreviewerFinished(Smb4KShare*,QUrl)) );
 }
 
 
@@ -461,8 +461,8 @@ void Smb4KMainWindow::setupSystemTrayWidget()
     // Do nothing
   }
 
-  connect( m_system_tray_widget, SIGNAL( settingsChanged( const QString & ) ),
-           this,                 SLOT( slotSettingsChanged( const QString & ) ) );
+  connect( m_system_tray_widget, SIGNAL(settingsChanged(QString)),
+           this,                 SLOT(slotSettingsChanged(QString)) );
 }
 
 
@@ -605,18 +605,18 @@ void Smb4KMainWindow::slotConfigDialog()
     // To make sure we do not connect the config dialog several times
     // to slotSettingsChanged(), we break the connection first and re-
     // establish it afterwards:
-    disconnect( dlg,  SIGNAL( settingsChanged( const QString & ) ),
-                this, SLOT( slotSettingsChanged( const QString & ) ) );
+    disconnect( dlg,  SIGNAL(settingsChanged(QString)),
+                this, SLOT(slotSettingsChanged(QString)) );
 
-    connect( dlg,  SIGNAL( settingsChanged( const QString & ) ),
-             this, SLOT( slotSettingsChanged( const QString & ) ) );
+    connect( dlg,  SIGNAL(settingsChanged(QString)),
+             this, SLOT(slotSettingsChanged(QString)) );
 
     // Same procedure for the system tray widget:
-    disconnect( dlg, SIGNAL( settingsChanged( const QString & ) ),
-                m_system_tray_widget, SLOT( slotSettingsChanged( const QString & ) ) );
+    disconnect( dlg, SIGNAL(settingsChanged(QString)),
+                m_system_tray_widget, SLOT(slotSettingsChanged(QString)) );
 
-    connect( dlg, SIGNAL( settingsChanged( const QString & ) ),
-             m_system_tray_widget, SLOT( slotSettingsChanged( const QString & ) ) );
+    connect( dlg, SIGNAL(settingsChanged(QString)),
+             m_system_tray_widget, SLOT(slotSettingsChanged(QString)) );
 
     return;
   }
@@ -637,11 +637,11 @@ void Smb4KMainWindow::slotConfigDialog()
     // ... and show it.
     if ( dlg )
     {
-      connect( dlg,  SIGNAL( settingsChanged( const QString & ) ),
-               this, SLOT( slotSettingsChanged( const QString & ) ) );
+      connect( dlg,  SIGNAL(settingsChanged(QString)),
+               this, SLOT(slotSettingsChanged(QString)) );
 
-      connect( dlg, SIGNAL( settingsChanged( const QString & ) ),
-               m_system_tray_widget, SLOT( slotSettingsChanged( const QString & ) ) );
+      connect( dlg, SIGNAL(settingsChanged(QString)),
+               m_system_tray_widget, SLOT(slotSettingsChanged(QString)) );
 
       dlg->show();
     }
@@ -913,7 +913,7 @@ void Smb4KMainWindow::slotVisualMountFeedback( Smb4KShare *share )
     // Do nothing
   }
 
-  QTimer::singleShot( 2000, this, SLOT( slotEndVisualFeedback() ) );
+  QTimer::singleShot( 2000, this, SLOT(slotEndVisualFeedback()) );
 }
 
 
@@ -960,7 +960,7 @@ void Smb4KMainWindow::slotVisualUnmountFeedback( Smb4KShare *share )
     // Do nothing
   }
 
-  QTimer::singleShot( 2000, this, SLOT( slotEndVisualFeedback() ) );
+  QTimer::singleShot( 2000, this, SLOT(slotEndVisualFeedback()) );
 }
 
 
@@ -979,7 +979,7 @@ void Smb4KMainWindow::slotMounterFinished( Smb4KShare *share, int process )
                                     KIconLoader::Small, 0, KIconLoader::DefaultState ) );
         m_feedback_icon->setToolTip( i18n( "Mounting %1 failed.", share->unc() ) );
 
-        QTimer::singleShot( 2000, this, SLOT( slotEndVisualFeedback() ) );
+        QTimer::singleShot( 2000, this, SLOT(slotEndVisualFeedback()) );
       }
       else
       {
@@ -995,7 +995,7 @@ void Smb4KMainWindow::slotMounterFinished( Smb4KShare *share, int process )
                                     KIconLoader::Small, 0, KIconLoader::DefaultState ) );
         m_feedback_icon->setToolTip( i18n( "Unmounting %1 failed.", share->unc() ) );
 
-        QTimer::singleShot( 2000, this, SLOT( slotEndVisualFeedback() ) );
+        QTimer::singleShot( 2000, this, SLOT(slotEndVisualFeedback()) );
       }
       else
       {
@@ -1194,7 +1194,7 @@ void Smb4KMainWindow::slotActivePartChanged( KParts::Part *part )
 
     if ( action )
     {
-      disconnect( action, SIGNAL( changed() ), this, SLOT( slotEnableBookmarkAction() ) );
+      disconnect( action, SIGNAL(changed()), this, SLOT(slotEnableBookmarkAction()) );
     }
     else
     {
@@ -1215,7 +1215,7 @@ void Smb4KMainWindow::slotActivePartChanged( KParts::Part *part )
   if ( action )
   {
     actionCollection()->action( "add_bookmark_action" )->setEnabled( action->isEnabled() );
-    connect( action, SIGNAL( changed() ), this, SLOT( slotEnableBookmarkAction() ) );
+    connect( action, SIGNAL(changed()), this, SLOT(slotEnableBookmarkAction()) );
   }
   else
   {

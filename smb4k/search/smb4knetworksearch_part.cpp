@@ -102,41 +102,41 @@ Smb4KNetworkSearchPart::Smb4KNetworkSearchPart( QWidget *parentWidget, QObject *
   m_widget->comboBox()->completionObject()->setItems( group.readEntry( "SearchItemCompletion", QStringList() ) );
 
   // Connections:
-  connect( m_widget->comboBox(),   SIGNAL( returnPressed() ),
-           this,                   SLOT( slotReturnPressed() ) );
+  connect( m_widget->comboBox(),   SIGNAL(returnPressed()),
+           this,                   SLOT(slotReturnPressed()) );
 
-  connect( m_widget->comboBox(),   SIGNAL( textChanged( const QString & ) ),
-           this,                   SLOT( slotComboBoxTextChanged( const QString & ) ) );
+  connect( m_widget->comboBox(),   SIGNAL(textChanged(QString)),
+           this,                   SLOT(slotComboBoxTextChanged(QString)) );
 
-  connect( m_widget->listWidget(), SIGNAL( itemDoubleClicked( QListWidgetItem * ) ),
-           this,                   SLOT( slotItemDoubleClicked( QListWidgetItem * ) ) );
+  connect( m_widget->listWidget(), SIGNAL(itemDoubleClicked(QListWidgetItem*)),
+           this,                   SLOT(slotItemDoubleClicked(QListWidgetItem*)) );
 
-  connect( m_widget->listWidget(), SIGNAL( itemSelectionChanged() ),
-           this,                   SLOT( slotItemSelectionChanged() ) );
+  connect( m_widget->listWidget(), SIGNAL(itemSelectionChanged()),
+           this,                   SLOT(slotItemSelectionChanged()) );
 
-  connect( m_widget->listWidget(), SIGNAL( customContextMenuRequested( const QPoint & ) ),
-           this,                   SLOT( slotContextMenuRequested( const QPoint & ) ) );
+  connect( m_widget->listWidget(), SIGNAL(customContextMenuRequested(QPoint)),
+           this,                   SLOT(slotContextMenuRequested(QPoint)) );
 
-  connect( Smb4KMounter::self(),   SIGNAL( mounted( Smb4KShare * ) ),
-           this,                   SLOT( slotShareMounted( Smb4KShare * ) ) );
+  connect( Smb4KMounter::self(),   SIGNAL(mounted(Smb4KShare*)),
+           this,                   SLOT(slotShareMounted(Smb4KShare*)) );
            
-  connect( Smb4KMounter::self(),   SIGNAL( unmounted( Smb4KShare * ) ),
-           this,                   SLOT( slotShareUnmounted( Smb4KShare * ) ) );
+  connect( Smb4KMounter::self(),   SIGNAL(unmounted(Smb4KShare*)),
+           this,                   SLOT(slotShareUnmounted(Smb4KShare*)) );
 
-  connect( Smb4KSearch::self(),    SIGNAL( result( Smb4KShare * ) ),
-           this,                   SLOT( slotReceivedSearchResult( Smb4KShare * ) ) );
+  connect( Smb4KSearch::self(),    SIGNAL(result(Smb4KShare*)),
+           this,                   SLOT(slotReceivedSearchResult(Smb4KShare*)) );
 
-  connect( Smb4KSearch::self(),    SIGNAL( aboutToStart( const QString & ) ),
-           this,                   SLOT( slotSearchAboutToStart( const QString & ) ) );
+  connect( Smb4KSearch::self(),    SIGNAL(aboutToStart(QString)),
+           this,                   SLOT(slotSearchAboutToStart(QString)) );
 
-  connect( Smb4KSearch::self(),    SIGNAL( finished( const QString & ) ),
-           this,                   SLOT( slotSearchFinished( const QString & ) ) );
+  connect( Smb4KSearch::self(),    SIGNAL(finished(QString)),
+           this,                   SLOT(slotSearchFinished(QString)) );
            
-  connect( kapp,                   SIGNAL( aboutToQuit() ),
-           this,                   SLOT( slotAboutToQuit() ) );
+  connect( kapp,                   SIGNAL(aboutToQuit()),
+           this,                   SLOT(slotAboutToQuit()) );
            
-  connect( KGlobalSettings::self(), SIGNAL( iconChanged( int ) ),
-           this,                    SLOT( slotIconSizeChanged( int ) ) );
+  connect( KGlobalSettings::self(), SIGNAL(iconChanged(int)),
+           this,                    SLOT(slotIconSizeChanged(int)) );
 }
 
 
@@ -150,22 +150,22 @@ void Smb4KNetworkSearchPart::setupActions()
   KAction *search_action = new KAction( KIcon( "system-search" ), i18n( "&Search" ),
                            actionCollection() );
   search_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_S ) );
-  connect( search_action, SIGNAL( triggered( bool ) ), this, SLOT( slotSearchActionTriggered( bool ) ) );
+  connect( search_action, SIGNAL(triggered(bool)), this, SLOT(slotSearchActionTriggered(bool)) );
 
   KAction *clear_action  = new KAction( KIcon( "edit-clear-history" ), i18n( "&Clear" ),
                            actionCollection() );
   // No shortcut.
-  connect( clear_action, SIGNAL( triggered( bool ) ), this, SLOT( slotClearActionTriggered( bool ) ) );
+  connect( clear_action, SIGNAL(triggered(bool)), this, SLOT(slotClearActionTriggered(bool)) );
 
   KAction *item_action    = new KAction( KIcon( "emblem-mounted" ), i18n( "Mount" ),
                            actionCollection() );
   item_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_D ) );
-  connect( item_action, SIGNAL( triggered( bool ) ), this, SLOT( slotMountActionTriggered( bool ) ) );
+  connect( item_action, SIGNAL(triggered(bool)), this, SLOT(slotMountActionTriggered(bool)) );
 
   KAction *abort_action  = new KAction( KIcon( "process-stop" ), i18n( "Abort" ),
                            actionCollection() );
   abort_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_A ) );
-  connect( abort_action, SIGNAL( triggered( bool ) ), this, SLOT( slotAbortActionTriggered( bool ) ) );
+  connect( abort_action, SIGNAL(triggered(bool)), this, SLOT(slotAbortActionTriggered(bool)) );
 
   actionCollection()->addAction( "search_action", search_action );
   actionCollection()->addAction( "abort_search_action", abort_action );

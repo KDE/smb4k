@@ -67,7 +67,7 @@ Smb4KPrintJob::~Smb4KPrintJob()
 void Smb4KPrintJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT( slotStartPrinting() ) );
+  QTimer::singleShot( 0, this, SLOT(slotStartPrinting()) );
 }
 
 
@@ -238,9 +238,9 @@ void Smb4KPrintJob::slotStartPrinting()
     m_proc->setEnv( "PASSWD", m_share->password(), true );
     m_proc->setProgram( smbspool, arguments );
 
-    connect( m_proc, SIGNAL( readyReadStandardOutput() ), SLOT( slotReadStandardOutput() ) );
-    connect( m_proc, SIGNAL( readyReadStandardError() ),  SLOT( slotReadStandardError() ) );
-    connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
+    connect( m_proc, SIGNAL(readyReadStandardOutput()), SLOT(slotReadStandardOutput()) );
+    connect( m_proc, SIGNAL(readyReadStandardError()),  SLOT(slotReadStandardError()) );
+    connect( m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(slotProcessFinished(int,QProcess::ExitStatus)) );
 
     m_proc->start();
   }
@@ -361,14 +361,14 @@ Smb4KPrintDialog::Smb4KPrintDialog( Smb4KShare *share, QPrinter *printer, QWidge
   enableButton( User2, false );
   enableButton( Details, false );
 
-  connect( this,   SIGNAL( user1Clicked() ),
-           this,   SLOT( slotUser1Clicked() ) );
+  connect( this,   SIGNAL(user1Clicked()),
+           this,   SLOT(slotUser1Clicked()) );
 
-  connect( this,   SIGNAL( user2Clicked() ),
-           this,   SLOT( slotUser2Clicked() ) );
+  connect( this,   SIGNAL(user2Clicked()),
+           this,   SLOT(slotUser2Clicked()) );
 
-  connect( m_file, SIGNAL( textChanged( const QString & ) ),
-           this,   SLOT( slotInputValueChanged( const QString & ) ) );
+  connect( m_file, SIGNAL(textChanged(QString)),
+           this,   SLOT(slotInputValueChanged(QString)) );
            
   setMinimumWidth( sizeHint().width() > 350 ? sizeHint().width() : 350 );
 

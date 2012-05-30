@@ -71,21 +71,21 @@ Smb4KSharesIconView::Smb4KSharesIconView( QWidget *parent )
   m_tooltip = new Smb4KToolTip( this );
 
   // Connections:
-  connect( this, SIGNAL( itemEntered( QListWidgetItem * ) ),
-           this, SLOT( slotItemEntered( QListWidgetItem * ) ) );
+  connect( this, SIGNAL(itemEntered(QListWidgetItem*)),
+           this, SLOT(slotItemEntered(QListWidgetItem*)) );
 
-  connect( this, SIGNAL( viewportEntered() ),
-           this, SLOT( slotViewportEntered() ) );
+  connect( this, SIGNAL(viewportEntered()),
+           this, SLOT(slotViewportEntered()) );
 
   // We need to conform with KDE's settings (see also slotKDESettingsChanged(),
   // slotItemEntered() and slotViewportEntered()).
   slotKDESettingsChanged( KGlobalSettings::SETTINGS_MOUSE );
 
-  connect( KGlobalSettings::self(), SIGNAL( settingsChanged( int ) ),
-           this,                    SLOT( slotKDESettingsChanged( int ) ) );
+  connect( KGlobalSettings::self(), SIGNAL(settingsChanged(int)),
+           this,                    SLOT(slotKDESettingsChanged(int)) );
 
-  connect( m_auto_select_timer,     SIGNAL( timeout() ),
-           this,                    SLOT( slotAutoSelectItem() ) );
+  connect( m_auto_select_timer,     SIGNAL(timeout()),
+           this,                    SLOT(slotAutoSelectItem()) );
 }
 
 
@@ -454,8 +454,8 @@ void Smb4KSharesIconView::slotKDESettingsChanged( int category )
     return;
   }
 
-  disconnect( this, SIGNAL( itemClicked( QListWidgetItem * ) ) );
-  disconnect( this, SIGNAL( itemDoubleClicked( QListWidgetItem * ) ) );
+  disconnect( this, SIGNAL(itemClicked(QListWidgetItem*)) );
+  disconnect( this, SIGNAL(itemDoubleClicked(QListWidgetItem*)) );
 
   m_use_single_click        = KGlobalSettings::singleClick();
   m_change_cursor_over_icon = KGlobalSettings::changeCursorOverIcon();
@@ -463,13 +463,13 @@ void Smb4KSharesIconView::slotKDESettingsChanged( int category )
 
   if ( m_use_single_click )
   {
-    connect( this, SIGNAL( itemClicked( QListWidgetItem * ) ),
-             this, SIGNAL( itemExecuted( QListWidgetItem * ) ) );
+    connect( this, SIGNAL(itemClicked(QListWidgetItem*)),
+             this, SIGNAL(itemExecuted(QListWidgetItem*)) );
   }
   else
   {
-    connect( this, SIGNAL( itemDoubleClicked( QListWidgetItem * ) ),
-             this, SIGNAL( itemExecuted( QListWidgetItem * ) ) );
+    connect( this, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
+             this, SIGNAL(itemExecuted(QListWidgetItem*)) );
   }
 
   if ( !m_use_single_click || !m_change_cursor_over_icon )

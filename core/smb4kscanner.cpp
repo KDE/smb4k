@@ -77,7 +77,7 @@ Smb4KScanner::Smb4KScanner( QObject *parent )
   d->elapsedTime     = 0;
   d->scanningAllowed = true;
   
-  connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
+  connect( QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()) );
 }
 
 
@@ -475,7 +475,7 @@ void Smb4KScanner::abort( Smb4KScanner::Process process, Smb4KBasicNetworkItem *
 void Smb4KScanner::start()
 {
   // Avoid a race with QApplication and use 50 ms here.
-  QTimer::singleShot( 50, this, SLOT( slotStartJobs() ) );
+  QTimer::singleShot( 50, this, SLOT(slotStartJobs()) );
 }
 
 
@@ -487,10 +487,10 @@ void Smb4KScanner::lookupDomains( QWidget *parent )
     job->setObjectName( "LookupDomainsJob" );
     job->setupLookup( parent );
 
-    connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
-    connect( job, SIGNAL( aboutToStart() ), SLOT( slotAboutToStartDomainsLookup() ) );
-    connect( job, SIGNAL( finished() ), SLOT( slotDomainsLookupFinished() ) );
-    connect( job, SIGNAL( workgroups( const QList<Smb4KWorkgroup *> & ) ), SLOT( slotWorkgroups( const QList<Smb4KWorkgroup *> & ) ) );
+    connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
+    connect( job, SIGNAL(aboutToStart()), SLOT(slotAboutToStartDomainsLookup()) );
+    connect( job, SIGNAL(finished()), SLOT(slotDomainsLookupFinished()) );
+    connect( job, SIGNAL(workgroups(QList<Smb4KWorkgroup*>)), SLOT(slotWorkgroups(QList<Smb4KWorkgroup*>)) );
 
     if ( !hasSubjobs() && modifyCursor() )
     {
@@ -511,11 +511,11 @@ void Smb4KScanner::lookupDomains( QWidget *parent )
     job->setObjectName( "LookupDomainsJob" );
     job->setupLookup( QString(), parent );
 
-    connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
-    connect( job, SIGNAL( aboutToStart() ), SLOT( slotAboutToStartDomainsLookup() ) );
-    connect( job, SIGNAL( finished() ), SLOT( slotDomainsLookupFinished() ) );
-    connect( job, SIGNAL( workgroups( const QList<Smb4KWorkgroup *> & ) ), SLOT( slotWorkgroups( const QList<Smb4KWorkgroup *> & ) ) );
-    connect( job, SIGNAL( authError( Smb4KQueryMasterJob * ) ), SLOT( slotAuthError( Smb4KQueryMasterJob * ) ) );
+    connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
+    connect( job, SIGNAL(aboutToStart()), SLOT(slotAboutToStartDomainsLookup()) );
+    connect( job, SIGNAL(finished()), SLOT(slotDomainsLookupFinished()) );
+    connect( job, SIGNAL(workgroups(QList<Smb4KWorkgroup*>)), SLOT(slotWorkgroups(QList<Smb4KWorkgroup*>)) );
+    connect( job, SIGNAL(authError(Smb4KQueryMasterJob*)), SLOT(slotAuthError(Smb4KQueryMasterJob*)) );
 
     if ( !hasSubjobs() && modifyCursor() )
     {
@@ -549,11 +549,11 @@ void Smb4KScanner::lookupDomains( QWidget *parent )
     job->setObjectName( "LookupDomainsJob" );
     job->setupLookup( Smb4KSettings::customMasterBrowser(), parent );
 
-    connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
-    connect( job, SIGNAL( aboutToStart() ), SLOT( slotAboutToStartDomainsLookup() ) );
-    connect( job, SIGNAL( finished() ), SLOT( slotDomainsLookupFinished() ) );
-    connect( job, SIGNAL( workgroups( const QList<Smb4KWorkgroup *> & ) ), SLOT( slotWorkgroups( const QList<Smb4KWorkgroup *> & ) ) );
-    connect( job, SIGNAL( authError( Smb4KQueryMasterJob * ) ), SLOT( slotAuthError( Smb4KQueryMasterJob * ) ) );
+    connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
+    connect( job, SIGNAL(aboutToStart()), SLOT(slotAboutToStartDomainsLookup()) );
+    connect( job, SIGNAL(finished()), SLOT(slotDomainsLookupFinished()) );
+    connect( job, SIGNAL(workgroups(QList<Smb4KWorkgroup*>)), SLOT(slotWorkgroups(QList<Smb4KWorkgroup*>)) );
+    connect( job, SIGNAL(authError(Smb4KQueryMasterJob*)), SLOT(slotAuthError(Smb4KQueryMasterJob*)) );
 
     if ( !hasSubjobs() && modifyCursor() )
     {
@@ -576,11 +576,11 @@ void Smb4KScanner::lookupDomains( QWidget *parent )
       job->setObjectName( "ScanBAreasJob" );
       job->setupScan( parent );
 
-      connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
-      connect( job, SIGNAL( aboutToStart() ), SLOT( slotAboutToStartDomainsLookup() ) );
-      connect( job, SIGNAL( finished() ), SLOT( slotDomainsLookupFinished() ) );
-      connect( job, SIGNAL( workgroups( const QList<Smb4KWorkgroup *> & ) ), SLOT( slotWorkgroups( const QList<Smb4KWorkgroup *> & ) ) );
-      connect( job, SIGNAL( hosts( const QList<Smb4KHost *> & ) ), SLOT( slotHosts( const QList<Smb4KHost *> & ) ) );
+      connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
+      connect( job, SIGNAL(aboutToStart()), SLOT(slotAboutToStartDomainsLookup()) );
+      connect( job, SIGNAL(finished()), SLOT(slotDomainsLookupFinished()) );
+      connect( job, SIGNAL(workgroups(QList<Smb4KWorkgroup*>)), SLOT(slotWorkgroups(QList<Smb4KWorkgroup*>)) );
+      connect( job, SIGNAL(hosts(QList<Smb4KHost*>)), SLOT(slotHosts(QList<Smb4KHost*>)) );
 
       if ( !hasSubjobs() && modifyCursor() )
       {
@@ -616,11 +616,11 @@ void Smb4KScanner::lookupDomainMembers( Smb4KWorkgroup *workgroup, QWidget *pare
   job->setObjectName( QString( "LookupDomainMembersJob_%1" ).arg( workgroup->workgroupName() ) );
   job->setupLookup( workgroup, parent );
 
-  connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
-  connect( job, SIGNAL( aboutToStart( Smb4KWorkgroup * ) ), SLOT( slotAboutToStartHostsLookup( Smb4KWorkgroup * ) ) );
-  connect( job, SIGNAL( finished( Smb4KWorkgroup * ) ), SLOT( slotHostsLookupFinished( Smb4KWorkgroup * ) ) );
-  connect( job, SIGNAL( hosts( Smb4KWorkgroup *, const QList<Smb4KHost *> & ) ), SLOT( slotHosts( Smb4KWorkgroup *, const QList<Smb4KHost *> & ) ) );
-  connect( job, SIGNAL( authError( Smb4KLookupDomainMembersJob * ) ), SLOT( slotAuthError( Smb4KLookupDomainMembersJob * ) ) );
+  connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
+  connect( job, SIGNAL(aboutToStart(Smb4KWorkgroup*)), SLOT(slotAboutToStartHostsLookup(Smb4KWorkgroup*)) );
+  connect( job, SIGNAL(finished(Smb4KWorkgroup*)), SLOT(slotHostsLookupFinished(Smb4KWorkgroup*)) );
+  connect( job, SIGNAL(hosts(Smb4KWorkgroup*,QList<Smb4KHost*>)), SLOT(slotHosts(Smb4KWorkgroup*,QList<Smb4KHost*>)) );
+  connect( job, SIGNAL(authError(Smb4KLookupDomainMembersJob*)), SLOT(slotAuthError(Smb4KLookupDomainMembersJob*)) );
 
   if ( !hasSubjobs() && modifyCursor() )
   {
@@ -645,11 +645,11 @@ void Smb4KScanner::lookupShares( Smb4KHost *host, QWidget *parent )
   job->setObjectName( QString( "LookupSharesJob_%1" ).arg( host->hostName() ) );
   job->setupLookup( host, parent );
   
-  connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
-  connect( job, SIGNAL( aboutToStart( Smb4KHost * ) ), SLOT( slotAboutToStartSharesLookup( Smb4KHost * ) ) );
-  connect( job, SIGNAL( finished( Smb4KHost * ) ), SLOT( slotSharesLookupFinished( Smb4KHost * ) ) );
-  connect( job, SIGNAL( shares( Smb4KHost *, const QList<Smb4KShare *> & ) ), SLOT( slotShares( Smb4KHost *, const QList<Smb4KShare *> &) ) );
-  connect( job, SIGNAL( authError( Smb4KLookupSharesJob * ) ), SLOT( slotAuthError( Smb4KLookupSharesJob * ) ) );
+  connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
+  connect( job, SIGNAL(aboutToStart(Smb4KHost*)), SLOT(slotAboutToStartSharesLookup(Smb4KHost*)) );
+  connect( job, SIGNAL(finished(Smb4KHost*)), SLOT(slotSharesLookupFinished(Smb4KHost*)) );
+  connect( job, SIGNAL(shares(Smb4KHost*,QList<Smb4KShare*>)), SLOT(slotShares(Smb4KHost*,QList<Smb4KShare*>)) );
+  connect( job, SIGNAL(authError(Smb4KLookupSharesJob*)), SLOT(slotAuthError(Smb4KLookupSharesJob*)) );
   
   if ( !hasSubjobs() && modifyCursor() )
   {
@@ -688,10 +688,10 @@ void Smb4KScanner::lookupInfo( Smb4KHost *host, QWidget *parent )
   job->setObjectName( QString( "LookupInfoJob_%1" ).arg( host->hostName() ) );
   job->setupLookup( host, parent );
     
-  connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
-  connect( job, SIGNAL( aboutToStart( Smb4KHost * ) ), SLOT( slotAboutToStartSharesLookup( Smb4KHost * ) ) );
-  connect( job, SIGNAL( finished( Smb4KHost * ) ), SLOT( slotSharesLookupFinished( Smb4KHost * ) ) );
-  connect( job, SIGNAL( info( Smb4KHost * ) ), SLOT( slotInfo( Smb4KHost * ) ) );
+  connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
+  connect( job, SIGNAL(aboutToStart(Smb4KHost*)), SLOT(slotAboutToStartSharesLookup(Smb4KHost*)) );
+  connect( job, SIGNAL(finished(Smb4KHost*)), SLOT(slotSharesLookupFinished(Smb4KHost*)) );
+  connect( job, SIGNAL(info(Smb4KHost*)), SLOT(slotInfo(Smb4KHost*)) );
     
   if ( !hasSubjobs() && modifyCursor() )
   {
@@ -1042,11 +1042,11 @@ void Smb4KScanner::slotAuthError( Smb4KQueryMasterJob *job )
     job->setObjectName( "LookupDomainsJob" );
     job->setupLookup( job->masterBrowser(), job->parentWidget() );
 
-    connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
-    connect( job, SIGNAL( aboutToStart() ), SLOT( slotAboutToStartDomainsLookup() ) );
-    connect( job, SIGNAL( finished() ), SLOT( slotDomainsLookupFinished() ) );
-    connect( job, SIGNAL( workgroups( const QList<Smb4KWorkgroup> & ) ), SLOT( slotWorkgroups( const QList<Smb4KWorkgroup> & ) ) );
-    connect( job, SIGNAL( authError( Smb4KQueryMasterJob * ) ), SLOT( slotAuthError( Smb4KQueryMasterJob * ) ) );
+    connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
+    connect( job, SIGNAL(aboutToStart()), SLOT(slotAboutToStartDomainsLookup()) );
+    connect( job, SIGNAL(finished()), SLOT(slotDomainsLookupFinished()) );
+    connect( job, SIGNAL(workgroups(QList<Smb4KWorkgroup>)), SLOT(slotWorkgroups(QList<Smb4KWorkgroup>)) );
+    connect( job, SIGNAL(authError(Smb4KQueryMasterJob*)), SLOT(slotAuthError(Smb4KQueryMasterJob*)) );
 
     if ( !hasSubjobs() && modifyCursor() )
     {
@@ -1323,8 +1323,8 @@ void Smb4KScanner::slotWorkgroups( const QList<Smb4KWorkgroup *> &workgroups_lis
         job->setObjectName( "LookupIPAddressJob" );
         job->setupLookup( hostsList().at( i ), 0 );
 
-        connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
-        connect( job, SIGNAL( ipAddress( Smb4KHost * ) ), SLOT( slotProcessIPAddress( Smb4KHost * ) ) );
+        connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
+        connect( job, SIGNAL(ipAddress(Smb4KHost*)), SLOT(slotProcessIPAddress(Smb4KHost*)) );
 
         addSubjob( job );
 
@@ -1494,8 +1494,8 @@ void Smb4KScanner::slotHosts( Smb4KWorkgroup *workgroup, const QList<Smb4KHost *
         job->setObjectName( "LookupIPAddressJob" );
         job->setupLookup( hostsList().at( i ), 0 );
 
-        connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
-        connect( job, SIGNAL( ipAddress( Smb4KHost * ) ), SLOT( slotProcessIPAddress( Smb4KHost * ) ) );
+        connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
+        connect( job, SIGNAL(ipAddress(Smb4KHost*)), SLOT(slotProcessIPAddress(Smb4KHost*)) );
 
         addSubjob( job );
 

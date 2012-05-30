@@ -85,7 +85,7 @@ Smb4KMountJob::~Smb4KMountJob()
 void Smb4KMountJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT( slotStartMount() ) );
+  QTimer::singleShot( 0, this, SLOT(slotStartMount()) );
 }
 
 
@@ -706,8 +706,8 @@ void Smb4KMountJob::slotStartMount()
 
     if ( createMountAction( share, &mountAction ) )
     {
-      connect( mountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
-               this, SLOT( slotActionFinished( ActionReply ) ) );
+      connect( mountAction.watcher(), SIGNAL(actionPerformed(ActionReply)),
+               this, SLOT(slotActionFinished(ActionReply)) );
 
       actions << mountAction;
     }
@@ -806,7 +806,7 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
   {
     // Give the operating system some time to process the mounts
     // before we invoke KMountPoint::currentMountPoints().
-    QTimer::singleShot( 100, this, SLOT( slotFinishJob() ) );
+    QTimer::singleShot( 100, this, SLOT(slotFinishJob()) );
   }
 }
 
@@ -872,7 +872,7 @@ Smb4KUnmountJob::~Smb4KUnmountJob()
 void Smb4KUnmountJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT( slotStartUnmount() ) );
+  QTimer::singleShot( 0, this, SLOT(slotStartUnmount()) );
 }
 
 
@@ -998,8 +998,8 @@ void Smb4KUnmountJob::slotStartUnmount()
 
     if ( createUnmountAction( share, m_force, m_silent, &unmountAction ) )
     {
-      connect( unmountAction.watcher(), SIGNAL( actionPerformed( ActionReply ) ),
-               this, SLOT( slotActionFinished( ActionReply ) ) );
+      connect( unmountAction.watcher(), SIGNAL(actionPerformed(ActionReply)),
+               this, SLOT(slotActionFinished(ActionReply)) );
 
       actions << unmountAction;
     }
@@ -1075,7 +1075,7 @@ void Smb4KUnmountJob::slotActionFinished( ActionReply reply )
     // before we invoke KMountPoint::currentMountPoints(). It seems
     // that we need at least 500 ms, so that even slow systems have
     // the opportunity to unregister the mounts.
-    QTimer::singleShot( 500, this, SLOT( slotFinishJob() ) );
+    QTimer::singleShot( 500, this, SLOT(slotFinishJob()) );
   }
 }
 
@@ -1142,8 +1142,8 @@ Smb4KMountDialog::Smb4KMountDialog( Smb4KShare *share, QWidget *parent )
 
   setupView();
 
-  connect( this, SIGNAL( okClicked() ), SLOT( slotOkClicked() ) );
-  connect( this, SIGNAL( cancelClicked() ), SLOT( slotCancelClicked() ) );
+  connect( this, SIGNAL(okClicked()), SLOT(slotOkClicked()) );
+  connect( this, SIGNAL(cancelClicked()), SLOT(slotCancelClicked()) );
 
   setMinimumWidth( sizeHint().width() > 350 ? sizeHint().width() : 350 );
 
@@ -1245,17 +1245,17 @@ void Smb4KMountDialog::setupView()
   slotChangeInputValue( m_share_input->text() );
 
   // Connections
-  connect( m_share_input,     SIGNAL( textChanged ( const QString & ) ) ,
-           this,              SLOT( slotChangeInputValue( const QString & ) ) );
+  connect( m_share_input,     SIGNAL(textChanged(QString)) ,
+           this,              SLOT(slotChangeInputValue(QString)) );
 
-  connect( m_share_input,     SIGNAL( editingFinished() ),
-           this,              SLOT( slotShareNameEntered() ) );
+  connect( m_share_input,     SIGNAL(editingFinished()),
+           this,              SLOT(slotShareNameEntered()) );
 
-  connect( m_ip_input,        SIGNAL( editingFinished() ),
-           this,              SLOT( slotIPEntered() ) );
+  connect( m_ip_input,        SIGNAL(editingFinished()),
+           this,              SLOT(slotIPEntered()) );
 
-  connect( m_workgroup_input, SIGNAL( editingFinished() ),
-           this,              SLOT( slotWorkgroupEntered() ) );
+  connect( m_workgroup_input, SIGNAL(editingFinished()),
+           this,              SLOT(slotWorkgroupEntered()) );
 }
 
 

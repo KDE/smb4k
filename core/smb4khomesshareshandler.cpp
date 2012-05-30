@@ -66,7 +66,7 @@ Smb4KHomesSharesHandler::Smb4KHomesSharesHandler( QObject *parent )
   
   readUserNames();
   
-  connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) ); 
+  connect( QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()) ); 
 }
 
 

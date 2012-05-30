@@ -158,7 +158,7 @@ void Smb4KToolTip::show( Smb4KBasicNetworkItem *item, const QPoint &pos )
   move( p );
   setVisible( true );
   
-  QTimer::singleShot( 10000, this, SLOT( slotHideToolTip() ) );
+  QTimer::singleShot( 10000, this, SLOT(slotHideToolTip()) );
 }
 
 

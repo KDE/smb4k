@@ -70,7 +70,7 @@ Smb4KLookupDomainsJob::~Smb4KLookupDomainsJob()
 void Smb4KLookupDomainsJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT( slotStartLookup() ) );
+  QTimer::singleShot( 0, this, SLOT(slotStartLookup()) );
 }
 
 
@@ -421,8 +421,8 @@ void Smb4KLookupDomainsJob::slotStartLookup()
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
   m_proc->setShellCommand( arguments.join( " " ) );
 
-  connect( m_proc, SIGNAL( readyReadStandardError() ), this, SLOT( slotReadStandardError() ) );
-  connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), this, SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
+  connect( m_proc, SIGNAL(readyReadStandardError()), this, SLOT(slotReadStandardError()) );
+  connect( m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotProcessFinished(int,QProcess::ExitStatus)) );
 
   emit aboutToStart();
 
@@ -495,7 +495,7 @@ Smb4KQueryMasterJob::~Smb4KQueryMasterJob()
 void Smb4KQueryMasterJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT( slotStartLookup() ) );
+  QTimer::singleShot( 0, this, SLOT(slotStartLookup()) );
 }
 
 
@@ -824,8 +824,8 @@ void Smb4KQueryMasterJob::slotStartLookup()
     m_proc->unsetEnv( "PASSWD" );
   }
 
-  connect( m_proc, SIGNAL( readyReadStandardError() ), this, SLOT( slotReadStandardError() ) );
-  connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), this, SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
+  connect( m_proc, SIGNAL(readyReadStandardError()), this, SLOT(slotReadStandardError()) );
+  connect( m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotProcessFinished(int,QProcess::ExitStatus)) );
 
   emit aboutToStart();
 
@@ -944,7 +944,7 @@ Smb4KScanBAreasJob::~Smb4KScanBAreasJob()
 void Smb4KScanBAreasJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT( slotStartScan() ) );
+  QTimer::singleShot( 0, this, SLOT(slotStartScan()) );
 }
 
 
@@ -1369,8 +1369,8 @@ void Smb4KScanBAreasJob::slotStartScan()
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
   m_proc->setShellCommand( arguments.join( " " ) );
 
-  connect( m_proc, SIGNAL( readyReadStandardError() ), SLOT( slotReadStandardError() ) );
-  connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
+  connect( m_proc, SIGNAL(readyReadStandardError()), SLOT(slotReadStandardError()) );
+  connect( m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(slotProcessFinished(int,QProcess::ExitStatus)) );
 
   emit aboutToStart();
 
@@ -1447,7 +1447,7 @@ Smb4KLookupDomainMembersJob::~Smb4KLookupDomainMembersJob()
 void Smb4KLookupDomainMembersJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT( slotStartLookup() ) );
+  QTimer::singleShot( 0, this, SLOT(slotStartLookup()) );
 }
 
 
@@ -1687,8 +1687,8 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
       m_proc->unsetEnv( "PASSWD" );
     }
   
-    connect( m_proc, SIGNAL( readyReadStandardError() ), SLOT( slotReadStandardError() ) );
-    connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
+    connect( m_proc, SIGNAL(readyReadStandardError()), SLOT(slotReadStandardError()) );
+    connect( m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(slotProcessFinished(int,QProcess::ExitStatus)) );
 
     emit aboutToStart( m_workgroup );
     
@@ -1787,7 +1787,7 @@ Smb4KLookupSharesJob::~Smb4KLookupSharesJob()
 void Smb4KLookupSharesJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT( slotStartLookup() ) );
+  QTimer::singleShot( 0, this, SLOT(slotStartLookup()) );
 }
 
 
@@ -2156,8 +2156,8 @@ void Smb4KLookupSharesJob::slotStartLookup()
     m_proc->unsetEnv( "PASSWD" );
   }
 
-  connect( m_proc, SIGNAL( readyReadStandardError() ), this, SLOT( slotReadStandardError() ) );
-  connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), this, SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
+  connect( m_proc, SIGNAL(readyReadStandardError()), this, SLOT(slotReadStandardError()) );
+  connect( m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotProcessFinished(int,QProcess::ExitStatus)) );
 
   emit aboutToStart( m_host );
 
@@ -2248,7 +2248,7 @@ Smb4KLookupInfoJob::~Smb4KLookupInfoJob()
 void Smb4KLookupInfoJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT( slotStartLookup() ) );
+  QTimer::singleShot( 0, this, SLOT(slotStartLookup()) );
 }
 
 
@@ -2547,7 +2547,7 @@ void Smb4KLookupInfoJob::slotStartLookup()
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
   m_proc->setShellCommand( arguments.join( " " ) );
 
-  connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), this, SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
+  connect( m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotProcessFinished(int,QProcess::ExitStatus)) );
 
   emit aboutToStart( m_host );
 
@@ -2600,7 +2600,7 @@ Smb4KLookupIPAddressJob::~Smb4KLookupIPAddressJob()
 void Smb4KLookupIPAddressJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT( slotStartLookup() ) );
+  QTimer::singleShot( 0, this, SLOT(slotStartLookup()) );
 }
 
 
@@ -2643,6 +2643,7 @@ void Smb4KLookupIPAddressJob::processIPAddress()
   {
     m_host->setIP( QString() );
   }
+  
   emit ipAddress( m_host );
 }
 
@@ -2792,7 +2793,7 @@ void Smb4KLookupIPAddressJob::slotStartLookup()
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
   m_proc->setShellCommand( arguments.join( " " ) );
 
-  connect( m_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), this, SLOT( slotProcessFinished( int, QProcess::ExitStatus ) ) );
+  connect( m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotProcessFinished(int,QProcess::ExitStatus)) );
 
   m_proc->start();
 }

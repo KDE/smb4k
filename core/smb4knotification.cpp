@@ -85,8 +85,8 @@ void Smb4KNotification::shareMounted( Smb4KShare* share )
                                   0L,
                                   KNotification::CloseOnTimeout );
     notification->setActions( QStringList( i18n( "Open" ) ) );
-    connect( notification, SIGNAL( activated( unsigned int ) ), this, SLOT( slotOpenShare() ) );
-    connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+    connect( notification, SIGNAL(activated(uint)), this, SLOT(slotOpenShare()) );
+    connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
   }
   else
   {
@@ -109,7 +109,7 @@ void Smb4KNotification::shareUnmounted( Smb4KShare* share )
                                   KIconLoader::DefaultState, QStringList( "emblem-unmounted" ) ),
                                   0L,
                                   KNotification::CloseOnTimeout );
-    connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+    connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
   }
   else
   {
@@ -131,7 +131,7 @@ void Smb4KNotification::sharesMounted( int total, int actual )
                                     KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "emblem-mounted" ) ),
                                     0L,
                                     KNotification::CloseOnTimeout );
-      connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+      connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
     }
     else
     {
@@ -142,7 +142,7 @@ void Smb4KNotification::sharesMounted( int total, int actual )
                                     KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList( "emblem-mounted" ) ),
                                     0L,
                                     KNotification::CloseOnTimeout );
-      connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+      connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
     }
   }
   else
@@ -165,7 +165,7 @@ void Smb4KNotification::allSharesUnmounted( int total, int actual )
                                     KIconLoader::DefaultState, QStringList( "emblem-unmounted" ) ),
                                     0L,
                                     KNotification::CloseOnTimeout );
-      connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+      connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
     }
     else
     {
@@ -176,7 +176,7 @@ void Smb4KNotification::allSharesUnmounted( int total, int actual )
                                     KIconLoader::DefaultState, QStringList( "emblem-unmounted" ) ),
                                     0L,
                                     KNotification::CloseOnTimeout );
-      connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+      connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
     }
   }
   else
@@ -200,7 +200,7 @@ void Smb4KNotification::openingWalletFailed( const QString &name )
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::CloseOnTimeout );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
 }
 
 
@@ -214,7 +214,7 @@ void Smb4KNotification::loginsNotAccessible()
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::CloseOnTimeout );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
 }
 
 
@@ -228,7 +228,7 @@ void Smb4KNotification::mimetypeNotSupported( const QString &mt )
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::CloseOnTimeout );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
 }
 
 
@@ -241,7 +241,7 @@ void Smb4KNotification::bookmarkExists( Smb4KBookmark *bookmark )
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::CloseOnTimeout );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
 }
 
 
@@ -255,7 +255,7 @@ void Smb4KNotification::bookmarkLabelInUse( Smb4KBookmark *bookmark )
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::CloseOnTimeout );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
 }
 
 
@@ -269,7 +269,7 @@ void Smb4KNotification::emptyCustomMasterBrowser()
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::CloseOnTimeout );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
 }
 
 
@@ -298,7 +298,7 @@ void Smb4KNotification::retrievingDomainsFailed( const QString &err_msg )
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::Persistent );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );    
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );    
 }
 
 
@@ -322,7 +322,7 @@ void Smb4KNotification::scanningBroadcastAreaFailed( const QString &err_msg )
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::Persistent );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );    
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );    
 }
 
 
@@ -346,7 +346,7 @@ void Smb4KNotification::retrievingServersFailed( Smb4KWorkgroup* workgroup, cons
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::Persistent );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );  
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );  
 }
 
 
@@ -370,7 +370,7 @@ void Smb4KNotification::retrievingSharesFailed( Smb4KHost *host, const QString &
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::Persistent );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );  
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );  
 }
 
 
@@ -394,7 +394,7 @@ void Smb4KNotification::retrievingPreviewFailed( Smb4KShare *share, const QStrin
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::Persistent );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
 }
 
 
@@ -418,7 +418,7 @@ void Smb4KNotification::mountingFailed( Smb4KShare *share, const QString &err_ms
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::Persistent );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
 }
 
 
@@ -442,7 +442,7 @@ void Smb4KNotification::unmountingFailed( Smb4KShare *share, const QString &err_
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::Persistent );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
 }
 
 
@@ -456,7 +456,7 @@ void Smb4KNotification::unmountingNotAllowed( Smb4KShare *share )
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::Persistent );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
 }
 
 
@@ -480,7 +480,7 @@ void Smb4KNotification::printingFailed( Smb4KShare *printer, const QString &err_
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::Persistent );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
 }
 
 
@@ -504,7 +504,7 @@ void Smb4KNotification::synchronizationFailed( const KUrl &src, const KUrl &dest
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::Persistent );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
 }
 
 
@@ -528,7 +528,7 @@ void Smb4KNotification::searchingFailed( const QString &item, const QString &err
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::Persistent );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
 }
 
 
@@ -541,7 +541,7 @@ void Smb4KNotification::commandNotFound( const QString &command )
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::Persistent );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
 }
 
 
@@ -556,7 +556,7 @@ void Smb4KNotification::cannotBookmarkPrinter( Smb4KShare *share )
                                   KIconLoader::DefaultState ),
                                   0L,
                                   KNotification::Persistent );
-    connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+    connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
   }
   else
   {
@@ -574,7 +574,7 @@ void Smb4KNotification::fileNotFound( const QString &fileName )
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::Persistent );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
 }
 
 
@@ -598,7 +598,7 @@ void Smb4KNotification::openingFileFailed( const QFile &file )
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::Persistent );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
 }
 
 
@@ -629,7 +629,7 @@ void Smb4KNotification::readingFileFailed( const QFile &file, const QString &err
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::Persistent );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
 }
 
 
@@ -643,7 +643,7 @@ void Smb4KNotification::mkdirFailed( const QDir &dir )
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::Persistent );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
 }
 
 
@@ -693,7 +693,7 @@ void Smb4KNotification::processError( QProcess::ProcessError error )
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::Persistent );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
 }
 
 
@@ -737,7 +737,7 @@ void Smb4KNotification::systemCallFailed( const QString &sys_call, int err_no )
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::Persistent );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
 }
 
 
@@ -804,7 +804,7 @@ void Smb4KNotification::actionFailed( int err_code )
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::Persistent );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
 }
 
 
@@ -817,7 +817,7 @@ void Smb4KNotification::invalidURLPassed()
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::Persistent );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
 }
 
 
@@ -830,7 +830,7 @@ void Smb4KNotification::emptyBroadcastAreas()
                                 KIconLoader::DefaultState ),
                                 0L,
                                 KNotification::Persistent );
-  connect( notification, SIGNAL( closed() ), this, SLOT( slotNotificationClosed() ) );
+  connect( notification, SIGNAL(closed()), this, SLOT(slotNotificationClosed()) );
 }
 
 /////////////////////////////////////////////////////////////////////////////

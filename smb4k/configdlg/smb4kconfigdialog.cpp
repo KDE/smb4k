@@ -155,23 +155,23 @@ void Smb4KConfigDialog::setupDialog()
   // Smb4KConfigDialog::showEvent()!
 
   // Connections
-  connect( samba_options,      SIGNAL( customSettingsModified() ),
-           this,               SLOT( slotEnableApplyButton() ) );
+  connect( samba_options,      SIGNAL(customSettingsModified()),
+           this,               SLOT(slotEnableApplyButton()) );
   
-  connect( samba_options,      SIGNAL( reloadCustomSettings() ),
-           this,               SLOT( slotReloadCustomOptions() ) );
+  connect( samba_options,      SIGNAL(reloadCustomSettings()),
+           this,               SLOT(slotReloadCustomOptions()) );
 
-  connect( auth_options,       SIGNAL( loadWalletEntries() ),
-           this,               SLOT( slotLoadAuthenticationInformation() ) );
+  connect( auth_options,       SIGNAL(loadWalletEntries()),
+           this,               SLOT(slotLoadAuthenticationInformation()) );
            
-  connect( auth_options,       SIGNAL( saveWalletEntries() ),
-           this,               SLOT( slotSaveAuthenticationInformation() ) );
+  connect( auth_options,       SIGNAL(saveWalletEntries()),
+           this,               SLOT(slotSaveAuthenticationInformation()) );
            
-  connect( auth_options,       SIGNAL( setDefaultLogin() ),
-           this,               SLOT( slotSetDefaultLogin() ) );
+  connect( auth_options,       SIGNAL(setDefaultLogin()),
+           this,               SLOT(slotSetDefaultLogin()) );
            
-  connect( auth_options,       SIGNAL( walletEntriesModified() ),
-           this,               SLOT( slotEnableApplyButton() ) );
+  connect( auth_options,       SIGNAL(walletEntriesModified()),
+           this,               SLOT(slotEnableApplyButton()) );
 
   setInitialSize( QSize( 800, 600 ) );
 

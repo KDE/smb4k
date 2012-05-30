@@ -143,26 +143,26 @@ Smb4KSharesViewPart::Smb4KSharesViewPart( QWidget *parentWidget, QObject *parent
   loadSettings();
 
   // Add some connections:
-  connect( Smb4KMounter::self(), SIGNAL( mounted( Smb4KShare * ) ),
-           this,                 SLOT( slotShareMounted( Smb4KShare * ) ) );
+  connect( Smb4KMounter::self(), SIGNAL(mounted(Smb4KShare*)),
+           this,                 SLOT(slotShareMounted(Smb4KShare*)) );
            
-  connect( Smb4KMounter::self(), SIGNAL( unmounted( Smb4KShare * ) ),
-           this,                 SLOT( slotShareUnmounted( Smb4KShare * ) ) );
+  connect( Smb4KMounter::self(), SIGNAL(unmounted(Smb4KShare*)),
+           this,                 SLOT(slotShareUnmounted(Smb4KShare*)) );
            
-  connect( Smb4KMounter::self(), SIGNAL( updated( Smb4KShare *) ),
-           this,                 SLOT( slotShareUpdated( Smb4KShare * ) ) );
+  connect( Smb4KMounter::self(), SIGNAL(updated(Smb4KShare*)),
+           this,                 SLOT(slotShareUpdated(Smb4KShare*)) );
 
-  connect( Smb4KMounter::self(), SIGNAL( aboutToStart( Smb4KShare *, int ) ),
-           this,                 SLOT( slotMounterAboutToStart( Smb4KShare *, int ) ) );
+  connect( Smb4KMounter::self(), SIGNAL(aboutToStart(Smb4KShare*,int)),
+           this,                 SLOT(slotMounterAboutToStart(Smb4KShare*,int)) );
 
-  connect( Smb4KMounter::self(), SIGNAL( finished( Smb4KShare *, int ) ),
-           this,                 SLOT( slotMounterFinished( Smb4KShare *, int ) ) );
+  connect( Smb4KMounter::self(), SIGNAL(finished(Smb4KShare*,int)),
+           this,                 SLOT(slotMounterFinished(Smb4KShare*,int)) );
 
-  connect( kapp,                 SIGNAL( aboutToQuit() ),
-           this,                 SLOT( slotAboutToQuit() ) );
+  connect( kapp,                 SIGNAL(aboutToQuit()),
+           this,                 SLOT(slotAboutToQuit()) );
            
-  connect( KGlobalSettings::self(), SIGNAL( iconChanged( int ) ),
-           this,                    SLOT( slotIconSizeChanged( int ) ) );
+  connect( KGlobalSettings::self(), SIGNAL(iconChanged(int)),
+           this,                    SLOT(slotIconSizeChanged(int)) );
 }
 
 
@@ -180,20 +180,20 @@ void Smb4KSharesViewPart::setupView()
     {
       if ( m_list_view )
       {
-        disconnect( m_list_view, SIGNAL( customContextMenuRequested( const QPoint & ) ),
-                    this,        SLOT( slotContextMenuRequested( const QPoint & ) ) );
+        disconnect( m_list_view, SIGNAL(customContextMenuRequested(QPoint)),
+                    this,        SLOT(slotContextMenuRequested(QPoint)) );
 
-        disconnect( m_list_view, SIGNAL( itemSelectionChanged() ),
-                    this,        SLOT( slotItemSelectionChanged() ) );
+        disconnect( m_list_view, SIGNAL(itemSelectionChanged()),
+                    this,        SLOT(slotItemSelectionChanged()) );
 
-        disconnect( m_list_view, SIGNAL( itemPressed( QTreeWidgetItem *, int ) ),
-                    this,        SLOT( slotItemPressed( QTreeWidgetItem *, int ) ) );
+        disconnect( m_list_view, SIGNAL(itemPressed(QTreeWidgetItem*,int)),
+                    this,        SLOT(slotItemPressed(QTreeWidgetItem*,int)) );
 
-        disconnect( m_list_view, SIGNAL( itemExecuted( QTreeWidgetItem *, int ) ),
-                    this,        SLOT( slotItemExecuted( QTreeWidgetItem *, int ) ) );
+        disconnect( m_list_view, SIGNAL(itemExecuted(QTreeWidgetItem*,int)),
+                    this,        SLOT(slotItemExecuted(QTreeWidgetItem*,int)) );
 
-        disconnect( m_list_view, SIGNAL( acceptedDropEvent( Smb4KSharesListViewItem *, QDropEvent * ) ),
-                    this,        SLOT( slotListViewDropEvent( Smb4KSharesListViewItem *, QDropEvent * ) ) );
+        disconnect( m_list_view, SIGNAL(acceptedDropEvent(Smb4KSharesListViewItem*,QDropEvent*)),
+                    this,        SLOT(slotListViewDropEvent(Smb4KSharesListViewItem*,QDropEvent*)) );
     
         delete m_list_view;
         m_list_view = NULL;
@@ -214,20 +214,20 @@ void Smb4KSharesViewPart::setupView()
         int icon_size = KIconLoader::global()->currentSize( KIconLoader::Desktop );
         m_icon_view->setIconSize( QSize( icon_size, icon_size ) );
 
-        connect( m_icon_view, SIGNAL( customContextMenuRequested( const QPoint & ) ),
-                 this,        SLOT( slotContextMenuRequested( const QPoint & ) ) );
+        connect( m_icon_view, SIGNAL(customContextMenuRequested(QPoint)),
+                 this,        SLOT(slotContextMenuRequested(QPoint)) );
 
-        connect( m_icon_view, SIGNAL( itemSelectionChanged() ),
-                 this,        SLOT( slotItemSelectionChanged() ) );
+        connect( m_icon_view, SIGNAL(itemSelectionChanged()),
+                 this,        SLOT(slotItemSelectionChanged()) );
 
-        connect( m_icon_view, SIGNAL( itemPressed( QListWidgetItem * ) ),
-                 this,        SLOT( slotItemPressed( QListWidgetItem * ) ) );
+        connect( m_icon_view, SIGNAL(itemPressed(QListWidgetItem*)),
+                 this,        SLOT(slotItemPressed(QListWidgetItem*)) );
 
-        connect( m_icon_view, SIGNAL( itemExecuted( QListWidgetItem * ) ),
-                 this,        SLOT( slotItemExecuted( QListWidgetItem * ) ) );
+        connect( m_icon_view, SIGNAL(itemExecuted(QListWidgetItem*)),
+                 this,        SLOT(slotItemExecuted(QListWidgetItem*)) );
 
-        connect( m_icon_view, SIGNAL( acceptedDropEvent( Smb4KSharesIconViewItem *, QDropEvent * ) ),
-                 this,        SLOT( slotIconViewDropEvent( Smb4KSharesIconViewItem *, QDropEvent * ) ) );
+        connect( m_icon_view, SIGNAL(acceptedDropEvent(Smb4KSharesIconViewItem*,QDropEvent*)),
+                 this,        SLOT(slotIconViewDropEvent(Smb4KSharesIconViewItem*,QDropEvent*)) );
       }
       else
       {
@@ -240,20 +240,20 @@ void Smb4KSharesViewPart::setupView()
     {
       if ( m_icon_view )
       {
-        disconnect( m_icon_view, SIGNAL( customContextMenuRequested( const QPoint & ) ),
-                    this,        SLOT( slotContextMenuRequested( const QPoint & ) ) );
+        disconnect( m_icon_view, SIGNAL(customContextMenuRequested(QPoint)),
+                    this,        SLOT(slotContextMenuRequested(QPoint)) );
 
-        disconnect( m_icon_view, SIGNAL( itemSelectionChanged() ),
-                    this,        SLOT( slotItemSelectionChanged() ) );
+        disconnect( m_icon_view, SIGNAL(itemSelectionChanged()),
+                    this,        SLOT(slotItemSelectionChanged()) );
 
-        disconnect( m_icon_view, SIGNAL( itemPressed( QListWidgetItem * ) ),
-                    this,        SLOT( slotItemPressed( QListWidgetItem * ) ) );
+        disconnect( m_icon_view, SIGNAL(itemPressed(QListWidgetItem*)),
+                    this,        SLOT(slotItemPressed(QListWidgetItem*)) );
 
-        disconnect( m_icon_view, SIGNAL( itemExecuted( QListWidgetItem * ) ),
-                    this,        SLOT( slotItemExecuted( QListWidgetItem * ) ) );
+        disconnect( m_icon_view, SIGNAL(itemExecuted(QListWidgetItem*)),
+                    this,        SLOT(slotItemExecuted(QListWidgetItem*)) );
 
-        disconnect( m_icon_view, SIGNAL( acceptedDropEvent( Smb4KSharesIconViewItem *, QDropEvent * ) ),
-                    this,        SLOT( slotIconViewDropEvent( Smb4KSharesIconViewItem *, QDropEvent * ) ) );
+        disconnect( m_icon_view, SIGNAL(acceptedDropEvent(Smb4KSharesIconViewItem*,QDropEvent*)),
+                    this,        SLOT(slotIconViewDropEvent(Smb4KSharesIconViewItem*,QDropEvent*)) );
         
         delete m_icon_view;
         m_icon_view = NULL;
@@ -274,20 +274,20 @@ void Smb4KSharesViewPart::setupView()
         int icon_size = KIconLoader::global()->currentSize( KIconLoader::Small );
         m_list_view->setIconSize( QSize( icon_size, icon_size ) );
 
-        connect( m_list_view, SIGNAL( customContextMenuRequested( const QPoint & ) ),
-                 this,        SLOT( slotContextMenuRequested( const QPoint & ) ) );
+        connect( m_list_view, SIGNAL(customContextMenuRequested(QPoint)),
+                 this,        SLOT(slotContextMenuRequested(QPoint)) );
 
-        connect( m_list_view, SIGNAL( itemSelectionChanged() ),
-                 this,        SLOT( slotItemSelectionChanged() ) );
+        connect( m_list_view, SIGNAL(itemSelectionChanged()),
+                 this,        SLOT(slotItemSelectionChanged()) );
 
-        connect( m_list_view, SIGNAL( itemPressed( QTreeWidgetItem *, int ) ),
-                 this,        SLOT( slotItemPressed( QTreeWidgetItem *, int ) ) );
+        connect( m_list_view, SIGNAL(itemPressed(QTreeWidgetItem*,int)),
+                 this,        SLOT(slotItemPressed(QTreeWidgetItem*,int)) );
 
-        connect( m_list_view, SIGNAL( itemExecuted( QTreeWidgetItem *, int ) ),
-                 this,        SLOT( slotItemExecuted( QTreeWidgetItem *, int ) ) );
+        connect( m_list_view, SIGNAL(itemExecuted(QTreeWidgetItem*,int)),
+                 this,        SLOT(slotItemExecuted(QTreeWidgetItem*,int)) );
 
-        connect( m_list_view, SIGNAL( acceptedDropEvent( Smb4KSharesListViewItem *, QDropEvent * ) ),
-                 this,        SLOT( slotListViewDropEvent( Smb4KSharesListViewItem *, QDropEvent * ) ) );
+        connect( m_list_view, SIGNAL(acceptedDropEvent(Smb4KSharesListViewItem*,QDropEvent*)),
+                 this,        SLOT(slotListViewDropEvent(Smb4KSharesListViewItem*,QDropEvent*)) );
       }
       else
       {
@@ -309,22 +309,22 @@ void Smb4KSharesViewPart::setupActions()
   KAction *unmount_action     = new KAction( KIcon( "media-eject" ), i18n( "&Unmount" ),
                                 actionCollection() );
   unmount_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_U ) );
-  connect( unmount_action, SIGNAL( triggered( bool ) ), this, SLOT( slotUnmountShare( bool ) ) );
+  connect( unmount_action, SIGNAL(triggered(bool)), this, SLOT(slotUnmountShare(bool)) );
 
   KAction *unmount_all_action = new KAction( KIcon( "system-run" ), i18n( "U&nmount All" ),
                                 actionCollection() );
   unmount_all_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_N ) );
-  connect( unmount_all_action, SIGNAL( triggered( bool ) ), this, SLOT( slotUnmountAllShares( bool ) ) );
+  connect( unmount_all_action, SIGNAL(triggered(bool)), this, SLOT(slotUnmountAllShares(bool)) );
 
   KAction *synchronize_action = new KAction( KIcon( "go-bottom" ), i18n( "S&ynchronize" ),
                                 actionCollection() );
   synchronize_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_Y ) );
-  connect( synchronize_action, SIGNAL( triggered( bool ) ), this, SLOT( slotSynchronize( bool ) ) );
+  connect( synchronize_action, SIGNAL(triggered(bool)), this, SLOT(slotSynchronize(bool)) );
 
   KAction *konsole_action     = new KAction( KIcon( "utilities-terminal" ), i18n( "Open with Konso&le" ),
                                 actionCollection() );
   konsole_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_L ) );
-  connect( konsole_action, SIGNAL( triggered( bool ) ), this, SLOT( slotKonsole( bool ) ) );
+  connect( konsole_action, SIGNAL(triggered(bool)), this, SLOT(slotKonsole(bool)) );
 
   KAction *filemanager_action = new KAction( KIcon( "system-file-manager" ), i18n( "Open with F&ile Manager" ),
                                 actionCollection() );
@@ -332,7 +332,7 @@ void Smb4KSharesViewPart::setupActions()
   shortcuts.append( QKeySequence( Qt::CTRL+Qt::Key_I ) );
   shortcuts.append( QKeySequence( Qt::CTRL+Qt::Key_K ) );  // legacy shortcut
   filemanager_action->setShortcuts( shortcuts );
-  connect( filemanager_action, SIGNAL( triggered( bool ) ), this, SLOT( slotFileManager( bool ) ) );
+  connect( filemanager_action, SIGNAL(triggered(bool)), this, SLOT(slotFileManager(bool)) );
 
   KAction *bookmark_action = new KAction( KIcon( "bookmark-new" ), i18n( "Add &Bookmark" ),
                              actionCollection() );
@@ -345,7 +345,7 @@ void Smb4KSharesViewPart::setupActions()
     // Do nothing
   }
 
-  connect( bookmark_action, SIGNAL( triggered( bool ) ), this, SLOT( slotAddBookmark( bool ) ) );
+  connect( bookmark_action, SIGNAL(triggered(bool)), this, SLOT(slotAddBookmark(bool)) );
 
   actionCollection()->addAction( "unmount_action", unmount_action );
   actionCollection()->addAction( "unmount_all_action", unmount_all_action );

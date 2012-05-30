@@ -92,17 +92,17 @@ Smb4KMounter::Smb4KMounter( QObject *parent )
   d->pendingMounts = 0;
   d->initialMounts = 0;
 
-  connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ),
-           this,                         SLOT( slotAboutToQuit() ) );
+  connect( QCoreApplication::instance(), SIGNAL(aboutToQuit()),
+           this,                         SLOT(slotAboutToQuit()) );
 
-  connect( Smb4KSolidInterface::self(),  SIGNAL( buttonPressed( Smb4KSolidInterface::ButtonType ) ),
-           this,                         SLOT( slotHardwareButtonPressed( Smb4KSolidInterface::ButtonType ) ) );
+  connect( Smb4KSolidInterface::self(),  SIGNAL(buttonPressed(Smb4KSolidInterface::ButtonType)),
+           this,                         SLOT(slotHardwareButtonPressed(Smb4KSolidInterface::ButtonType)) );
 
-  connect( Smb4KSolidInterface::self(),  SIGNAL( wokeUp() ),
-           this,                         SLOT( slotComputerWokeUp() ) );
+  connect( Smb4KSolidInterface::self(),  SIGNAL(wokeUp()),
+           this,                         SLOT(slotComputerWokeUp()) );
 
-  connect( Smb4KSolidInterface::self(),  SIGNAL( networkStatusChanged( Smb4KSolidInterface::ConnectionStatus ) ),
-           this,                         SLOT( slotNetworkStatusChanged( Smb4KSolidInterface::ConnectionStatus ) ) );
+  connect( Smb4KSolidInterface::self(),  SIGNAL(networkStatusChanged(Smb4KSolidInterface::ConnectionStatus)),
+           this,                         SLOT(slotNetworkStatusChanged(Smb4KSolidInterface::ConnectionStatus)) );
 }
 
 
@@ -613,7 +613,7 @@ void Smb4KMounter::import( bool check_inaccessible )
     url.setPath( d->importedShares.at( i )->path() );
     KIO::StatJob *job = KIO::stat( url, KIO::HideProgressInfo );
     job->setDetails( 0 );
-    connect( job, SIGNAL( result( KJob * ) ), SLOT( slotStatResult( KJob * ) ) );
+    connect( job, SIGNAL(result(KJob*)), SLOT(slotStatResult(KJob*)) );
     
     // Do not use addSubJob(), because that would confuse isRunning, etc.
     job->start();
@@ -709,12 +709,12 @@ void Smb4KMounter::mountShare( Smb4KShare *share, QWidget *parent )
   job->setObjectName( QString( "MountJob_%1" ).arg( unc ) );
   job->setupMount( share, parent );
 
-  connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
-  connect( job, SIGNAL( authError( Smb4KMountJob * ) ), SLOT( slotAuthError( Smb4KMountJob * ) ) );
-  connect( job, SIGNAL( retry( Smb4KMountJob * ) ), SLOT( slotRetryMounting( Smb4KMountJob * ) ) );
-  connect( job, SIGNAL( aboutToStart( const QList<Smb4KShare *> & ) ), SLOT( slotAboutToStartMounting( const QList<Smb4KShare *> & ) ) );
-  connect( job, SIGNAL( finished( const QList<Smb4KShare *> & ) ), SLOT( slotFinishedMounting( const QList<Smb4KShare *> & ) ) );
-  connect( job, SIGNAL( mounted( Smb4KShare * ) ), SLOT( slotShareMounted( Smb4KShare * ) ) );
+  connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
+  connect( job, SIGNAL(authError(Smb4KMountJob*)), SLOT(slotAuthError(Smb4KMountJob*)) );
+  connect( job, SIGNAL(retry(Smb4KMountJob*)), SLOT(slotRetryMounting(Smb4KMountJob*)) );
+  connect( job, SIGNAL(aboutToStart(QList<Smb4KShare*>)), SLOT(slotAboutToStartMounting(QList<Smb4KShare*>)) );
+  connect( job, SIGNAL(finished(QList<Smb4KShare*>)), SLOT(slotFinishedMounting(QList<Smb4KShare*>)) );
+  connect( job, SIGNAL(mounted(Smb4KShare*)), SLOT(slotShareMounted(Smb4KShare*)) );
 
   if ( !hasSubjobs() && modifyCursor() )
   {
@@ -877,12 +877,12 @@ void Smb4KMounter::mountShares( const QList<Smb4KShare *> &shares, QWidget *pare
   job->setObjectName( QString( "MountJob_bulk-%1" ).arg( shares.size() ) );
   job->setupMount( shares_to_mount, parent );
 
-  connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
-  connect( job, SIGNAL( authError( Smb4KMountJob * ) ), SLOT( slotAuthError( Smb4KMountJob * ) ) );
-  connect( job, SIGNAL( retry( Smb4KMountJob * ) ), SLOT( slotRetryMounting( Smb4KMountJob * ) ) );
-  connect( job, SIGNAL( aboutToStart( const QList<Smb4KShare *> & ) ), SLOT( slotAboutToStartMounting( const QList<Smb4KShare *> & ) ) );
-  connect( job, SIGNAL( finished( const QList<Smb4KShare *> & ) ), SLOT( slotFinishedMounting( const QList<Smb4KShare *> & ) ) );
-  connect( job, SIGNAL( mounted( Smb4KShare * ) ), SLOT( slotShareMounted( Smb4KShare * ) ) );
+  connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
+  connect( job, SIGNAL(authError(Smb4KMountJob*)), SLOT(slotAuthError(Smb4KMountJob*)) );
+  connect( job, SIGNAL(retry(Smb4KMountJob*)), SLOT(slotRetryMounting(Smb4KMountJob*)) );
+  connect( job, SIGNAL(aboutToStart(QList<Smb4KShare*>)), SLOT(slotAboutToStartMounting(QList<Smb4KShare*>)) );
+  connect( job, SIGNAL(finished(QList<Smb4KShare*>)), SLOT(slotFinishedMounting(QList<Smb4KShare*>)) );
+  connect( job, SIGNAL(mounted(Smb4KShare*)), SLOT(slotShareMounted(Smb4KShare*)) );
   
   if ( !hasSubjobs() && modifyCursor() )
   {
@@ -1002,10 +1002,10 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool silent, QWidget *parent
   job->setObjectName( QString( "UnmountJob_%1" ).arg( share->canonicalPath() ) );
   job->setupUnmount( share, force, silent, parent );
 
-  connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
-  connect( job, SIGNAL( aboutToStart( const QList<Smb4KShare *> & ) ), SLOT( slotAboutToStartUnmounting( const QList<Smb4KShare *> & ) ) );
-  connect( job, SIGNAL( finished( const QList<Smb4KShare *> & ) ), SLOT( slotFinishedUnmounting( const QList<Smb4KShare *> & ) ) );
-  connect( job, SIGNAL( unmounted( Smb4KShare * ) ), SLOT( slotShareUnmounted( Smb4KShare * ) ) );
+  connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
+  connect( job, SIGNAL(aboutToStart(QList<Smb4KShare*>)), SLOT(slotAboutToStartUnmounting(QList<Smb4KShare*>)) );
+  connect( job, SIGNAL(finished(QList<Smb4KShare*>)), SLOT(slotFinishedUnmounting(QList<Smb4KShare*>)) );
+  connect( job, SIGNAL(unmounted(Smb4KShare*)), SLOT(slotShareUnmounted(Smb4KShare*)) );
 
   if ( !hasSubjobs() && modifyCursor() )
   {
@@ -1146,10 +1146,10 @@ void Smb4KMounter::unmountShares( const QList<Smb4KShare *> &shares, bool silent
   job->setObjectName( QString( "UnmountJob_bulk-%1" ).arg( shares.size() ) );
   job->setupUnmount( shares_to_unmount, force, silent, parent );
 
-  connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
-  connect( job, SIGNAL( aboutToStart( const QList<Smb4KShare *> & ) ), SLOT( slotAboutToStartUnmounting( const QList<Smb4KShare *> & ) ) );
-  connect( job, SIGNAL( finished( const QList<Smb4KShare *> & ) ), SLOT( slotFinishedUnmounting( const QList<Smb4KShare *> & ) ) );
-  connect( job, SIGNAL( unmounted( Smb4KShare * ) ), SLOT( slotShareUnmounted( Smb4KShare * ) ) );
+  connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
+  connect( job, SIGNAL(aboutToStart(QList<Smb4KShare*>)), SLOT(slotAboutToStartUnmounting(QList<Smb4KShare*>)) );
+  connect( job, SIGNAL(finished(QList<Smb4KShare*>)), SLOT(slotFinishedUnmounting(QList<Smb4KShare*>)) );
+  connect( job, SIGNAL(unmounted(Smb4KShare*)), SLOT(slotShareUnmounted(Smb4KShare*)) );
 
   if ( !hasSubjobs() && modifyCursor() )
   {
@@ -1189,7 +1189,7 @@ void Smb4KMounter::unmountAllShares( QWidget *parent )
 void Smb4KMounter::start()
 {
   // Avoid a race with QApplication and use 50 ms here.
-  QTimer::singleShot( 50, this, SLOT( slotStartJobs() ) );
+  QTimer::singleShot( 50, this, SLOT(slotStartJobs()) );
 }
 
 

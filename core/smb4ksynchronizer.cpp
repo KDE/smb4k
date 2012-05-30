@@ -55,7 +55,7 @@ Smb4KSynchronizer::Smb4KSynchronizer( QObject *parent )
 : KCompositeJob( parent ), d( new Smb4KSynchronizerPrivate )
 {
   setAutoDelete( false );
-  connect( QCoreApplication::instance(), SIGNAL( aboutToQuit() ), SLOT( slotAboutToQuit() ) );
+  connect( QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()) );
 }
 
 
@@ -80,9 +80,9 @@ void Smb4KSynchronizer::synchronize( Smb4KShare *share, QWidget *parent )
     job->setObjectName( QString( "SyncJob_%1" ).arg( share->canonicalPath() ) );
     job->setupSynchronization( share, parent );
     
-    connect( job, SIGNAL( result( KJob * ) ), SLOT( slotJobFinished( KJob * ) ) );
-    connect( job, SIGNAL( aboutToStart( const QString & ) ), SIGNAL( aboutToStart( const QString & ) ) );
-    connect( job, SIGNAL( finished( const QString & ) ), SIGNAL( finished( const QString & ) ) );
+    connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
+    connect( job, SIGNAL(aboutToStart(QString)), SIGNAL(aboutToStart(QString)) );
+    connect( job, SIGNAL(finished(QString)), SIGNAL(finished(QString)) );
 
     addSubjob( job );
     
@@ -150,7 +150,7 @@ void Smb4KSynchronizer::abort( Smb4KShare *share )
 
 void Smb4KSynchronizer::start()
 {
-  QTimer::singleShot( 0, this, SLOT( slotStartJobs() ) );
+  QTimer::singleShot( 0, this, SLOT(slotStartJobs()) );
 }
 
 /////////////////////////////////////////////////////////////////////////////

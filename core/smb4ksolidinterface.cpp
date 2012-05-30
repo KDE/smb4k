@@ -93,11 +93,11 @@ Smb4KSolidInterface::ConnectionStatus Smb4KSolidInterface::networkStatus() const
 void Smb4KSolidInterface::init()
 {
   // Connect to device notifier.
-  connect( Solid::DeviceNotifier::instance(), SIGNAL( deviceAdded( const QString & ) ),
-           this,                              SLOT( slotDeviceAdded( const QString & ) ) );
+  connect( Solid::DeviceNotifier::instance(), SIGNAL(deviceAdded(QString)),
+           this,                              SLOT(slotDeviceAdded(QString)) );
 
-  connect( Solid::DeviceNotifier::instance(), SIGNAL( deviceRemoved( const QString & ) ),
-           this,                              SLOT( slotDeviceRemoved( const QString & ) ) );
+  connect( Solid::DeviceNotifier::instance(), SIGNAL(deviceRemoved(QString)),
+           this,                              SLOT(slotDeviceRemoved(QString)) );
 
   // Get the buttons
   QList<Solid::Device> list_btn = Solid::Device::listFromType( Solid::DeviceInterface::Button, QString() );
@@ -107,8 +107,8 @@ void Smb4KSolidInterface::init()
     if ( device_btn.isValid() )
     {
       const Solid::Button *button = device_btn.as<Solid::Button>();
-      connect( button, SIGNAL( pressed( Solid::Button::ButtonType, const QString & ) ),
-               this,   SLOT( slotButtonPressed( Solid::Button::ButtonType, const QString & ) ) );
+      connect( button, SIGNAL(pressed(Solid::Button::ButtonType,QString)),
+               this,   SLOT(slotButtonPressed(Solid::Button::ButtonType,QString)) );
 
       continue;
     }
@@ -129,8 +129,8 @@ void Smb4KSolidInterface::init()
     if ( device_ac.isValid() )
     {
       const Solid::AcAdapter *acadapter = device_ac.as<Solid::AcAdapter>();
-      connect( acadapter, SIGNAL( plugStateChanged( bool, const QString & ) ),
-               this,     SLOT( slotAcPlugStateChanged( bool, const QString & ) ) );
+      connect( acadapter, SIGNAL(plugStateChanged(bool,QString)),
+               this,     SLOT(slotAcPlugStateChanged(bool,QString)) );
 
       // FIXME: Check the current state.
 
@@ -155,11 +155,11 @@ void Smb4KSolidInterface::init()
       {
         case Solid::Battery::PrimaryBattery:
         {
-          connect( battery, SIGNAL( chargeStateChanged( int, const QString & ) ),
-                   this,    SLOT( slotBatteryChargeStateChanged( int, const QString & ) ) );
+          connect( battery, SIGNAL(chargeStateChanged(int,QString)),
+                   this,    SLOT(slotBatteryChargeStateChanged(int,QString)) );
 
-          connect( battery, SIGNAL( chargePercentChanged( int, const QString & ) ),
-                   this,    SLOT( slotBatteryChargePercentChanged( int, const QString & ) ) );
+          connect( battery, SIGNAL(chargePercentChanged(int,QString)),
+                   this,    SLOT(slotBatteryChargePercentChanged(int,QString)) );
 
           // FIXME: Check charge state and value
 
@@ -182,8 +182,8 @@ void Smb4KSolidInterface::init()
   // Check network status and connect to the notifier
   slotNetworkStatusChanged( Solid::Networking::status() );
 
-  connect( Solid::Networking::notifier(), SIGNAL( statusChanged( Solid::Networking::Status ) ),
-           this,                          SLOT( slotNetworkStatusChanged( Solid::Networking::Status ) ) );
+  connect( Solid::Networking::notifier(), SIGNAL(statusChanged(Solid::Networking::Status)),
+           this,                          SLOT(slotNetworkStatusChanged(Solid::Networking::Status)) );
 }
 
 
