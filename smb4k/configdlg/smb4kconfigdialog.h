@@ -110,7 +110,7 @@ class Smb4KConfigDialog : public KConfigDialog
     void slotSetDefaultLogin();
     
     /**
-     * Enable/disbale the "Apply" button if settings that are not managed by
+     * Enable/disable the "Apply" button if settings that are not managed by
      * KConfig XT have changed.
      */
     void slotEnableApplyButton();

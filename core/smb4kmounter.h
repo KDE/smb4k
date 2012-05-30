@@ -286,7 +286,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
                    int process );
     
     /**
-     * This signal is emitted everytime the list of mounted shares is
+     * This signal is emitted every time the list of mounted shares is
      * modified.
      */
     void mountedSharesListChanged();

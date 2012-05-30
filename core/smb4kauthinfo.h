@@ -229,7 +229,7 @@ class KDE_EXPORT Smb4KAuthInfo
     bool equals( Smb4KAuthInfo *info ) const;
     
     /**
-     * Operator to check if two authentication informations are equal.
+     * Operator to check if two authentication information objects are equal.
      */
     bool operator==( Smb4KAuthInfo info ) const { return equals( &info ); }
 

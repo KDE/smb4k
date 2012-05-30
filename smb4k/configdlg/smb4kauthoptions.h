@@ -135,7 +135,7 @@ class Smb4KAuthOptions : public KTabWidget
     void setDefaultLogin();
     
     /**
-     * This signal is emitted everytime the wallet entries potentially were 
+     * This signal is emitted every time the wallet entries potentially were 
      * modified by the user. When this signal is emitted, it does not necessarily 
      * mean that any wallet entry indeed changed. It only means that the user 
      * edited one.

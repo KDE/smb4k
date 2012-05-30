@@ -671,7 +671,7 @@ void Smb4KScanner::lookupInfo( Smb4KHost *host, QWidget *parent )
   Q_ASSERT( host );
   
   // Check if the additional information (Server, OS) has already been
-  // aquired previously or if we need to start a lookup job.
+  // acquired previously or if we need to start a lookup job.
   Smb4KHost *known_host = findHost( host->hostName(), host->workgroupName() );
   
   if ( known_host && known_host->hasInfo() )

@@ -1383,7 +1383,7 @@ void Smb4KShare::setMountData( Smb4KShare *share )
 void Smb4KShare::resetMountData()
 {
   // The login name is not reset here, because it is also
-  // needed for things that are not mount-releated.
+  // needed for things that are not mount-related.
   d->path.clear();
   d->inaccessible = false;
   d->foreign      = false;

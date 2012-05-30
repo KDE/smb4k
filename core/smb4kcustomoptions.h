@@ -379,7 +379,7 @@ class KDE_EXPORT Smb4KCustomOptions
     bool equals( Smb4KCustomOptions *options ) const;
     
     /**
-     * Operator to check if two infos are equal.
+     * Operator to check if two custom options objects are equal.
      */
     bool operator==( Smb4KCustomOptions options ) const { return equals( &options ); }
     

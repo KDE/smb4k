@@ -120,7 +120,7 @@ class Smb4KSambaOptions : public KTabWidget
     
   signals:
     /**
-     * This signal is emitted everytime the custom settings potentially were 
+     * This signal is emitted every time the custom settings potentially were 
      * modified by the user. When this signal is emitted, it does not necessarily 
      * mean that any custom setting changed. It only means that the user edited 
      * one option.

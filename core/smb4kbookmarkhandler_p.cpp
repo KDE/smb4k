@@ -39,7 +39,6 @@
 #include <QtGui/QGridLayout>
 #include <QtGui/QLabel>
 #include <QtGui/QHeaderView>
-#include <QtGui/QInputDialog>
 #include <QtGui/QDropEvent>
 #include <QtGui/QDragMoveEvent>
 #include <QtGui/QDragEnterEvent>
@@ -48,6 +47,7 @@
 // KDE includes
 #include <klocale.h>
 #include <kmenu.h>
+#include <kinputdialog.h>
 
 
 Smb4KBookmarkDialog::Smb4KBookmarkDialog( const QList<Smb4KBookmark *> &bookmarks, const QStringList &groups, QWidget *parent )
@@ -1019,8 +1019,8 @@ void Smb4KBookmarkEditor::slotAddGroupTriggered( bool /*checked*/ )
 {
   bool ok = false;
   
-  QString group_name = QInputDialog::getText( this, i18n( "Add Group" ), i18n( "Group name:" ),
-                                              QLineEdit::Normal, QString(), &ok );
+  QString group_name = KInputDialog::getText( i18n( "Add Group" ), i18n( "Group name:" ),
+                                              QString(), &ok, this );
 
   if ( ok && !group_name.isEmpty() &&
        m_tree_widget->findItems( group_name, Qt::MatchFixedString|Qt::MatchCaseSensitive, 0 ).isEmpty() )

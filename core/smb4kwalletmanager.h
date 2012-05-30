@@ -156,20 +156,20 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
     State currentState() const;
     
     /**
-     * Returns the list of authentication informations stored in the wallet
-     * or an empty list if the wallet is not open, no entries are defined or 
-     * the wallet system is disabled.
+     * Returns the list of authentication information objects stored in the 
+     * wallet or an empty list if the wallet is not open, no entries are 
+     * defined or the wallet system is disabled.
      * 
      * @returns a list of all wallet entries.
      */
     QList<Smb4KAuthInfo *> walletEntries();
     
     /**
-     * Writes a list of authentication informations to the wallet. If the 
-     * wallet system is disabled or the wallet is not open, this function 
+     * Writes a list of authentication information objects to the wallet. If 
+     * the wallet system is disabled or the wallet is not open, this function 
      * will do nothing.
      * 
-     * @param entries       The list of authentication informations
+     * @param entries       The list of authentication information objects
      */
     void writeWalletEntries( const QList<Smb4KAuthInfo *> &entries );
 

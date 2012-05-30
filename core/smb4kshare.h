@@ -512,7 +512,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     /**
      * Returns the disk usage in a human readable form with value and unit,
      * for example 3.5 %, 67.0 % etc. If the usage was not set or could not
-     * be determined, this funtion returns an empty string.
+     * be determined, this function returns an empty string.
      *
      * @returns the disk usage in a human readable form or an empty string.
      */
@@ -528,7 +528,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * @enum LocalOnly          Only those values are compared that are of local 
      *                          importance
      * @enum MinimalLocalOnly   Only those values are compared that have local importance
-     *                          and are absolutely for a comparision
+     *                          and are absolutely for a comparison
      */
     enum CheckFlags{ Full,
                      NetworkOnly,

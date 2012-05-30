@@ -857,7 +857,7 @@ void Smb4KMounter::mountShares( const QList<Smb4KShare *> &shares, QWidget *pare
         Smb4KWalletManager::self()->readAuthInfo( share );
         shares_to_mount << share;
 
-        // Add the mount process to the inital and pending mounts.
+        // Add the mount process to the initial and pending mounts.
         d->pendingMounts++;
         d->initialMounts++;
       }
@@ -1116,7 +1116,7 @@ void Smb4KMounter::unmountShares( const QList<Smb4KShare *> &shares, bool silent
 
       shares_to_unmount << share;
 
-      // Add the unmount process to the inital and pending unmounts.
+      // Add the unmount process to the initial and pending unmounts.
       d->pendingUnmounts++;
       d->initialUnmounts++;
     }
