@@ -96,7 +96,7 @@ class Smb4KPreviewJob : public KJob
      * @param parent      The parent widget
      */
     void setupPreview( Smb4KShare *share,
-                       const QUrl &url,
+                       const KUrl &url,
                        QWidget *parent );
 
     /**
@@ -118,7 +118,7 @@ class Smb4KPreviewJob : public KJob
      *
      * @returns the path
      */
-    const QUrl &location() { return m_url; }
+    const KUrl &location() { return m_url; }
 
   Q_SIGNALS:
     /**
@@ -130,13 +130,13 @@ class Smb4KPreviewJob : public KJob
      * Emitted when the printing is about to begin.
      */
     void aboutToStart( Smb4KShare *share,
-                       const QUrl &url );
+                       const KUrl &url );
 
     /**
      * Emitted after the printing finished.
      */
     void finished( Smb4KShare *share,
-                   const QUrl &url );
+                   const KUrl &url );
 
     /**
      * Emits the contents of the directory just listed
@@ -145,7 +145,7 @@ class Smb4KPreviewJob : public KJob
      *
      * @param contents  The contents of the URL
      */
-    void preview( const QUrl &url,
+    void preview( const KUrl &url,
                   const QList<Item> &contents );
 
   protected:
@@ -162,7 +162,7 @@ class Smb4KPreviewJob : public KJob
     Smb4KShare *m_share;
     QWidget *m_parent_widget;
     Smb4KProcess *m_proc;
-    QUrl m_url;
+    KUrl m_url;
 };
 
 
@@ -213,7 +213,7 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
      * @param parent        The parent widget that should be used
      */
     void requestPreview( Smb4KShare *share,
-                         const QUrl &url,
+                         const KUrl &url,
                          QWidget *parent = 0 );
 
     /**
@@ -246,7 +246,7 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
      * 
      * @param contents      The contents of a certain directory
      */
-    void slotDisplayPreview( const QUrl &url,
+    void slotDisplayPreview( const KUrl &url,
                              const QList<Item> &contents );
     
     /**
@@ -258,7 +258,7 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
      *                      acquired
      */
     void slotAboutToStart( Smb4KShare *share,
-                           const QUrl &url );
+                           const KUrl &url );
 
     /**
      * This slot is called when the preview process finished.
@@ -269,7 +269,7 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
      *                      acquired
      */
     void slotFinished( Smb4KShare *share,
-                       const QUrl &url );
+                       const KUrl &url );
 
     /**
      * Is called, if an item has been executed.
@@ -304,7 +304,7 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
     /**
      * The current URL
      */
-    QUrl m_url;
+    KUrl m_url;
     
     /**
      * Enumeration for the items in the list view.

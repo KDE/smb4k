@@ -31,11 +31,11 @@
 #include "smb4kshare.h"
 
 // Qt includes
-#include <QtCore/QUrl>
 #include <QtCore/QScopedPointer>
 
 // KDE includes
 #include <kdemacros.h>
+#include <kurl.h>
 
 // forward declarations
 class Smb4KCustomOptionsPrivate;
@@ -193,24 +193,32 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @param url             The URL
      */
-    void setURL( const QUrl &url );
+    void setURL( const KUrl &url );
+    
+    /**
+     * Sets the UNC/URL of the network item
+     *
+     * @param url             The URL of the network item
+     */
+    void setURL( const QString &url );
     
     /**
      * Returns the URL of the network item
      * 
      * @returns the URL
      */
-    QUrl url() const;
+    KUrl url() const;
 
     /**
-     * Returns the UNC in the form [smb:]//[USER:PASSWORD@]HOST[/SHARE] depending on
-     * the format specified by @p options.
+     * Returns the UNC in the form //HOST/Share.
+     * 
+     * This function should only be used for basic comparisons or for display
+     * purposes. If you need to do sophisticated comparisons, use the url() 
+     * function instead.
      *
      * @returns the UNC.
      */
-    QString unc( QUrl::FormattingOptions options = QUrl::RemoveScheme|
-                                                   QUrl::RemoveUserInfo|
-                                                   QUrl::RemovePort ) const;
+    QString unc() const;
 
     /**
      * Returns the host name.

@@ -33,11 +33,11 @@
 
 // Qt includes
 #include <QtCore/QString>
-#include <QtCore/QUrl>
 #include <QtCore/QScopedPointer>
 
 // KDE includes
 #include <kdemacros.h>
+#include <kurl.h>
 
 // forward declarations
 class Smb4KAuthInfoPrivate;
@@ -134,24 +134,26 @@ class KDE_EXPORT Smb4KAuthInfo
     QString workgroupName() const;
     
     /**
-     * Returns the UNC in the form [smb:]//[USER:PASSWORD@]HOST/SHARE depending on
-     * the format specified by @p options.
+     * Returns the UNC in the form //HOST/Share.
+     * 
+     * This function should only be used for basic comparisons or for display
+     * purposes. If you need to do sophisticated comparisons, use the url() 
+     * function instead.
      *
      * @returns the UNC.
      */
-    QString unc( QUrl::FormattingOptions options = QUrl::RemoveScheme|
-                                                   QUrl::RemoveUserInfo|
-                                                   QUrl::RemovePort ) const;
+    QString unc() const;
 
     /**
-     * Returns the host's UNC in the form [smb:]//[USER:PASSWORD@]HOST depending on
-     * the format specified by @p options.
+     * Returns the UNC of the host in the form //HOST.
+     * 
+     * This function should only be used for basic comparisons or for display
+     * purposes. If you need to do sophisticated comparisons, use the url() 
+     * function instead.
      *
-     * @returns the UNC of the host.
+     * @returns the host's UNC.
      */
-    QString hostUNC( QUrl::FormattingOptions options = QUrl::RemoveScheme|
-                                                       QUrl::RemoveUserInfo|
-                                                       QUrl::RemovePort ) const;
+    QString hostUNC() const;
 
     /**
      * Returns the host name.
@@ -238,14 +240,21 @@ class KDE_EXPORT Smb4KAuthInfo
      *
      * @param url             The URL of the network item
      */
-    void setURL( const QUrl &url );
+    void setURL( const KUrl &url );
+    
+    /**
+     * Sets the URL of the share.
+     *
+     * @param url             The URL of the network item
+     */
+    void setURL( const QString &url );
 
     /**
      * Returns the URL of the network item
      *
      * @returns the URL
      */
-    QUrl url() const;
+    KUrl url() const;
 
     /**
      * Sets the IP address for this authentication information object

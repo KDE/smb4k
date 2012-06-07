@@ -248,7 +248,7 @@ Smb4KCustomOptions *Smb4KCustomOptionsManager::findOptions( Smb4KBasicNetworkIte
 }
 
 
-Smb4KCustomOptions* Smb4KCustomOptionsManager::findOptions( const QUrl &url )
+Smb4KCustomOptions* Smb4KCustomOptionsManager::findOptions( const KUrl &url )
 {
   Smb4KCustomOptions *options = NULL;
   
@@ -333,8 +333,7 @@ void Smb4KCustomOptionsManager::readCustomOptions()
                 }
                 else if ( xmlReader.name() == "unc" )
                 {
-                  options->setURL( QUrl( xmlReader.readElementText() ) );
-//                   break;
+                  options->setURL( xmlReader.readElementText() );
                 }
                 else if ( xmlReader.name() == "ip" )
                 {

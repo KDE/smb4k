@@ -663,19 +663,21 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
 
   mount_command << share->canonicalPath();
 #endif
-
+  
   action->setName( "net.sourceforge.smb4k.mounthelper.mount" );
   action->setHelperID( "net.sourceforge.smb4k.mounthelper" );
   action->addArgument( "command", mount_command );
   action->addArgument( "home_dir", QDir::homePath() );
+  
+  qDebug() << mount_command;
 
   if ( !share->isHomesShare() )
   {
-    action->addArgument( "url", share->url() );
+    action->addArgument( "url", static_cast<QUrl>(share->url()) );
   }
   else
   {
-    action->addArgument( "url", share->homeURL() );
+    action->addArgument( "url", static_cast<QUrl>(share->homeURL()) );
   }
 
   action->addArgument( "workgroup", share->workgroupName() );
@@ -972,7 +974,7 @@ bool Smb4KUnmountJob::createUnmountAction( Smb4KShare *share, bool force, bool s
   action->addArgument( "command", unmount_command );
 
   // Now add everything we need.
-  action->addArgument( "url", share->url() );
+  action->addArgument( "url", share->url().url() );
   action->addArgument( "mountpoint", share->canonicalPath() );
 
   return true;
@@ -1273,21 +1275,21 @@ void Smb4KMountDialog::slotOkClicked()
 {
   if ( !m_share_input->text().trimmed().isEmpty() )
   {
-    QUrl url;
+    KUrl url;
 
     // Take care of Windows-like UNC addresses:
     if ( m_share_input->text().trimmed().startsWith( QLatin1String( "\\" ) ) )
     {
       QString unc = m_share_input->text();
       unc.replace( "\\", "/" );
-      url = QUrl( unc );
+      url = KUrl( unc );
     }
     else
     {
-      url = QUrl( m_share_input->text().trimmed() );
+      url = KUrl( m_share_input->text().trimmed() );
     }
 
-    url.setScheme( "smb" );
+    url.setProtocol( "smb" );
 
     if ( url.isValid() && !url.host().isEmpty() /* no invalid host name */ &&
          url.path().length() > 1 /* share name length */ && !url.path().endsWith( '/' ) )
@@ -1325,8 +1327,8 @@ void Smb4KMountDialog::slotCancelClicked()
 void Smb4KMountDialog::slotShareNameEntered()
 {
   KCompletion *completion = m_share_input->completionObject();
-  QUrl url( m_share_input->userText() );
-  url.setScheme( "smb" );
+  KUrl url( m_share_input->userText() );
+  url.setProtocol( "smb" );
 
   if ( url.isValid() && !url.isEmpty() )
   {

@@ -655,14 +655,14 @@ void Smb4KMounter::mountShare( Smb4KShare *share, QWidget *parent )
       // Do nothing
     }
     
-    unc = share->homeUNC( QUrl::None );
-    mounted_shares = findShareByUNC( unc );
+    unc = share->homeUNC();
   }
   else
   {
-    unc = share->unc( QUrl::None );
-    mounted_shares = findShareByUNC( unc );
+    unc = share->unc();
   }
+  
+  mounted_shares = findShareByUNC( unc );
   
   // Check if it is already mounted:
   for ( int i = 0; i != mounted_shares.size(); ++i )
@@ -708,7 +708,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share, QWidget *parent )
   Smb4KMountJob *job = new Smb4KMountJob( this );
   job->setObjectName( QString( "MountJob_%1" ).arg( unc ) );
   job->setupMount( share, parent );
-
+  
   connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
   connect( job, SIGNAL(authError(Smb4KMountJob*)), SLOT(slotAuthError(Smb4KMountJob*)) );
   connect( job, SIGNAL(retry(Smb4KMountJob*)), SLOT(slotRetryMounting(Smb4KMountJob*)) );
@@ -808,11 +808,11 @@ void Smb4KMounter::mountShares( const QList<Smb4KShare *> &shares, QWidget *pare
         // Do nothing
       }
     
-      unc = share->homeUNC( QUrl::None );
+      unc = share->homeUNC();
     }
     else
     {
-      unc = share->unc( QUrl::None );
+      unc = share->unc();
     }
     
     mounted_shares = findShareByUNC( unc );
@@ -1199,7 +1199,7 @@ QDeclarativeListProperty< Smb4KNetworkObject > Smb4KMounter::mountedShares()
 }
 
 
-void Smb4KMounter::mount( const QUrl &url )
+void Smb4KMounter::mount( const KUrl &url )
 {
   if ( url.isValid() && !url.path().isEmpty() )
   {
@@ -1221,11 +1221,11 @@ void Smb4KMounter::mount( const QUrl &url )
 }
 
 
-void Smb4KMounter::unmount( const QUrl &path )
+void Smb4KMounter::unmount( const KUrl &mountpoint )
 {
-  if ( path.isValid() )
+  if ( mountpoint.isValid() )
   {
-    Smb4KShare *share = findShareByPath( path.path() );
+    Smb4KShare *share = findShareByPath( mountpoint.path() );
   
     if ( share )
     {
@@ -1244,19 +1244,19 @@ void Smb4KMounter::unmount( const QUrl &path )
 
 
 
-Smb4KNetworkObject *Smb4KMounter::find( const QUrl &url, bool exactMatch )
+Smb4KNetworkObject *Smb4KMounter::find( const KUrl &url, bool exactMatch )
 {
   Smb4KNetworkObject *object = NULL;
   
   if ( url.isValid() )
   {
-    QUrl u1 = url;
+    KUrl u1 = url;
     u1.setUserInfo( QString() );
     u1.setPort( -1 );
     
     for ( int i = 0; i < d->shareObjects.size(); ++i )
     {
-      QUrl u2 =  d->shareObjects.at( i )->url();
+      KUrl u2 =  d->shareObjects.at( i )->url();
       u2.setUserInfo( QString() );
       u2.setPort( -1 );
       

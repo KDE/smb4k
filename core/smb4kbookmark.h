@@ -29,12 +29,12 @@
 
 // Qt includes
 #include <QtCore/QString>
-#include <QtCore/QUrl>
 #include <QtCore/QScopedPointer>
 #include <QtGui/QIcon>
 
 // KDE includes
 #include <kdemacros.h>
+#include <kurl.h>
 
 // forward declarations
 class Smb4KShare;
@@ -151,36 +151,26 @@ class KDE_EXPORT Smb4KBookmark
     QString typeString() const;
 
     /**
-     * This function sets the UNC (Uniform Naming Convention string). This
-     * has to conform to the following scheme: [smb:]//[USER@]HOST/SHARE.
-     *
-     * The UNC may contain the protocol, i.e. "smb://". If a wrong protocol or a mal-
-     * formatted UNC is passed, this function will return immediately without doing
-     * anything.
-     *
-     * @param unc           The UNC of the share/bookmark
-     */
-    void setUNC( const QString &unc );
-
-    /**
-     * Returns the UNC in the form [smb:]//[USER@]HOST[:PORT]/SHARE depending on
-     * the format specified by @p options.
+     * Returns the UNC in the form //HOST/Share.
+     * 
+     * This function should only be used for basic comparisons or for display
+     * purposes. If you need to do sophisticated comparisons, use the url() 
+     * function instead.
      *
      * @returns the UNC.
      */
-    QString unc( QUrl::FormattingOptions options = QUrl::RemoveScheme|
-                                                   QUrl::RemoveUserInfo|
-                                                   QUrl::RemovePort ) const;
+    QString unc() const;
 
     /**
-     * Returns the host's UNC in the form [smb:]//[USER@]HOST[:PORT] depending on
-     * the format specified by @p options.
+     * Returns the host's UNC in the form //HOST/Share.
+     * 
+     * This function should only be used for basic comparisons or for display
+     * purposes. If you need to do sophisticated comparisons, use the url() 
+     * function instead.
      *
-     * @returns the UNC of the host.
+     * @returns the host's UNC.
      */
-    QString hostUNC( QUrl::FormattingOptions options = QUrl::RemoveScheme|
-                                                       QUrl::RemoveUserInfo|
-                                                       QUrl::RemovePort ) const;
+    QString hostUNC() const;
 
     /**
      * Set the (optional) the bookmark's label.
@@ -209,13 +199,27 @@ class KDE_EXPORT Smb4KBookmark
      * @returns the login.
      */
     QString login() const;
+    
+    /**
+     * Sets the URL of the share after some checks are passed.
+     *
+     * @param url             The URL of the network item
+     */
+    void setURL( const KUrl &url );
+    
+    /**
+     * Sets the URL of the share.
+     *
+     * @param url             The URL of the network item
+     */
+    void setURL( const QString &url );
 
     /**
      * Returns the URL of this bookmark.
      *
      * @returns the URL
      */
-    QUrl url() const;
+    KUrl url() const;
 
     /**
      * Set the group this bookmark belongs to.

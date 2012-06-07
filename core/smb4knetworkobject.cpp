@@ -36,12 +36,12 @@ class Smb4KNetworkObjectPrivate
 {
   public:
     QString workgroup;
-    QUrl url;
+    KUrl url;
     int type;
     QIcon icon;
     QString comment;
     bool mounted;
-    QUrl mountpoint;
+    KUrl mountpoint;
     bool printer;
 };
 
@@ -81,7 +81,7 @@ Smb4KNetworkObject::Smb4KNetworkObject( Smb4KShare *share, QObject *parent )
   d->type       = Share;
   d->mounted    = share->isMounted();
   d->printer    = share->isPrinter();
-  d->mountpoint = QUrl( share->path() );
+  d->mountpoint.setUrl( share->path(), KUrl::TolerantMode );
   d->mountpoint.setScheme( "file" );
 }
 
@@ -159,7 +159,7 @@ QString Smb4KNetworkObject::comment() const
 }
 
 
-QUrl Smb4KNetworkObject::url() const
+KUrl Smb4KNetworkObject::url() const
 {
   return d->url;
 }
@@ -245,7 +245,7 @@ void Smb4KNetworkObject::update( Smb4KBasicNetworkItem *networkItem )
         d->type       = Share;
         d->mounted    = share->isMounted();
         d->printer    = share->isPrinter();
-        d->mountpoint = QUrl( share->path() );
+        d->mountpoint.setUrl( share->path(), KUrl::TolerantMode );
         d->mountpoint.setScheme( "file" );
       }
       else
@@ -271,7 +271,7 @@ bool Smb4KNetworkObject::isPrinter() const
 }
 
 
-QUrl Smb4KNetworkObject::mountpoint() const
+KUrl Smb4KNetworkObject::mountpoint() const
 {
   return d->mountpoint;
 }

@@ -234,7 +234,7 @@ void Smb4KPrintJob::slotStartPrinting()
     
     m_proc = new Smb4KProcess( this );
     m_proc->setOutputChannelMode( KProcess::SeparateChannels );
-    m_proc->setEnv( "DEVICE_URI", m_share->unc( QUrl::None ), true );
+    m_proc->setEnv( "DEVICE_URI", m_share->url().url(), true );
     m_proc->setEnv( "PASSWD", m_share->password(), true );
     m_proc->setProgram( smbspool, arguments );
 

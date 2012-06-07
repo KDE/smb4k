@@ -2,7 +2,7 @@
     smb4kbookmarkhandler_p  -  Private classes for the bookmark handler
                              -------------------
     begin                : Sun Mar 20 2011
-    copyright            : (C) 2011 by Alexander Reinholdt
+    copyright            : (C) 2011-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -153,7 +153,7 @@ void Smb4KBookmarkDialog::loadLists()
 }
 
 
-Smb4KBookmark *Smb4KBookmarkDialog::findBookmark( const QUrl &url )
+Smb4KBookmark *Smb4KBookmarkDialog::findBookmark( const KUrl &url )
 {
   Smb4KBookmark *bookmark = NULL;
   
@@ -188,7 +188,7 @@ void Smb4KBookmarkDialog::slotBookmarkClicked( QListWidgetItem *bookmark_item )
       // Do nothing
     }
 
-    QUrl url = bookmark_item->data( Qt::UserRole ).toUrl();
+    KUrl url = bookmark_item->data( Qt::UserRole ).toUrl();
     
     Smb4KBookmark *bookmark = findBookmark( url );
 
@@ -216,7 +216,7 @@ void Smb4KBookmarkDialog::slotBookmarkClicked( QListWidgetItem *bookmark_item )
 void Smb4KBookmarkDialog::slotLabelEdited()
 {
   // Set the label
-  QUrl url = m_widget->currentItem()->data( Qt::UserRole ).toUrl();
+  KUrl url = m_widget->currentItem()->data( Qt::UserRole ).toUrl();
 
   Smb4KBookmark *bookmark = findBookmark( url );
 
@@ -246,7 +246,7 @@ void Smb4KBookmarkDialog::slotLabelEdited()
 void Smb4KBookmarkDialog::slotGroupEdited()
 {
   // Set the group
-  QUrl url = m_widget->currentItem()->data( Qt::UserRole ).toUrl();
+  KUrl url = m_widget->currentItem()->data( Qt::UserRole ).toUrl();
 
   Smb4KBookmark *bookmark = findBookmark( url );
 
@@ -631,7 +631,7 @@ void Smb4KBookmarkEditor::loadBookmarks( const QList<Smb4KBookmark *> &list )
 }
 
 
-Smb4KBookmark *Smb4KBookmarkEditor::findBookmark( const QUrl &url )
+Smb4KBookmark *Smb4KBookmarkEditor::findBookmark( const KUrl &url )
 {
   Smb4KBookmark *bookmark = NULL;
 
@@ -736,7 +736,7 @@ void Smb4KBookmarkEditor::slotContextMenuRequested( const QPoint &pos )
 void Smb4KBookmarkEditor::slotLabelEdited()
 {
   // Set the label
-  QUrl url = m_tree_widget->currentItem()->data( 0, QTreeWidgetItem::UserType ).toUrl();
+  KUrl url = m_tree_widget->currentItem()->data( 0, QTreeWidgetItem::UserType ).toUrl();
 
   Smb4KBookmark *bookmark = findBookmark( url );
 
@@ -766,7 +766,7 @@ void Smb4KBookmarkEditor::slotLabelEdited()
 void Smb4KBookmarkEditor::slotLoginEdited()
 {
   // Set the login
-  QUrl url = m_tree_widget->currentItem()->data( 0, QTreeWidgetItem::UserType ).toUrl();
+  KUrl url = m_tree_widget->currentItem()->data( 0, QTreeWidgetItem::UserType ).toUrl();
 
   Smb4KBookmark *bookmark = findBookmark( url );
 
@@ -796,7 +796,7 @@ void Smb4KBookmarkEditor::slotLoginEdited()
 void Smb4KBookmarkEditor::slotIPEdited()
 {
   // Set the ip address
-  QUrl url = m_tree_widget->currentItem()->data( 0, QTreeWidgetItem::UserType ).toUrl();
+  KUrl url = m_tree_widget->currentItem()->data( 0, QTreeWidgetItem::UserType ).toUrl();
 
   Smb4KBookmark *bookmark = findBookmark( url );
 
@@ -839,7 +839,7 @@ void Smb4KBookmarkEditor::slotGroupEdited()
   // Get the URL of the current item. We need to do this
   // here, because after the following operation there is
   // no current item anymore.
-  QUrl url = m_tree_widget->currentItem()->data( 0, QTreeWidgetItem::UserType ).toUrl();
+  KUrl url = m_tree_widget->currentItem()->data( 0, QTreeWidgetItem::UserType ).toUrl();
 
   // Return here if the item is a group
   if ( url.isEmpty() )

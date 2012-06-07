@@ -293,12 +293,13 @@ void Smb4KSearchJob::slotReadStandardOutput()
 
         if ( unc.contains( m_string, Qt::CaseInsensitive ) )
         {
-          Smb4KShare share;
-          share.setURL( QUrl( unc ) );
-          share.setComment( comment );
-          share.setWorkgroupName( workgroup_name );
+          Smb4KShare *share = new Smb4KShare();
+          share->setURL( unc );
+          share->setComment( comment );
+          share->setWorkgroupName( workgroup_name );
 
-          emit result( &share );
+          emit result( share );
+          delete share;
         }
         else
         {

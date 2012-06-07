@@ -43,7 +43,7 @@
 class Smb4KHostPrivate
 {
   public:
-    QUrl url;
+    KUrl url;
     QString workgroup;
     QHostAddress ip;
     QString comment;
@@ -94,15 +94,7 @@ Smb4KHost::~Smb4KHost()
 void Smb4KHost::setHostName( const QString &name )
 {
   d->url.setHost( name );
-  
-  if ( d->url.scheme().isEmpty() )
-  {
-    d->url.setScheme( "smb" );
-  }
-  else
-  {
-    // Do nothing
-  }
+  d->url.setProtocol( "smb" );
 }
 
 
@@ -112,24 +104,24 @@ QString Smb4KHost::hostName() const
 }
 
 
-QString Smb4KHost::unc( QUrl::FormattingOptions options ) const
+QString Smb4KHost::unc() const
 {
   QString unc;
   
-  if ( (options & QUrl::RemoveUserInfo) || d->url.userName().isEmpty() )
+  if ( !hostName().isEmpty() )
   {
-    unc = d->url.toString( options|QUrl::RemovePath|QUrl::StripTrailingSlash ).replace( "//"+d->url.host(), "//"+hostName() );
+    unc = QString( "//%1" ).arg( hostName() );
   }
   else
   {
-    unc = d->url.toString( options|QUrl::RemovePath|QUrl::StripTrailingSlash ).replace( '@'+d->url.host(), '@'+hostName() );
+    // Do nothing
   }
   
   return unc;
 }
 
 
-void Smb4KHost::setURL( const QUrl &url )
+void Smb4KHost::setURL( const KUrl &url )
 {
   // Check validity.
   if ( !url.isValid() )
@@ -141,8 +133,9 @@ void Smb4KHost::setURL( const QUrl &url )
     // Do nothing
   }
 
-  // Check scheme
-  if ( !url.scheme().isEmpty() && QString::compare( "smb", url.scheme() ) != 0 )
+  // Check protocol
+  if ( !url.protocol().isEmpty() && 
+       (QString::compare( url.protocol(), "smb" ) != 0 || QString::compare( url.protocol(), "file" ) != 0) )
   {
     return;
   }
@@ -152,9 +145,8 @@ void Smb4KHost::setURL( const QUrl &url )
   }
 
   // Check that this is a host item
-  if ( !url.path().isEmpty() )
+  if ( url.hasPath() )
   {
-    qDebug() << "Not a host URL. No URL set.";
     return;
   }
   else
@@ -165,19 +157,12 @@ void Smb4KHost::setURL( const QUrl &url )
   // Set the URL
   d->url = url;
 
-  // Do some adjustments
-  if ( d->url.scheme().isEmpty() )
-  {
-    d->url.setScheme( "smb" );
-  }
-  else
-  {
-    // Do nothing
-  }
+  // Force protocol
+  d->url.setProtocol( "smb" );
 }
 
 
-QUrl Smb4KHost::url() const
+KUrl Smb4KHost::url() const
 {
   return d->url;
 }
@@ -371,7 +356,7 @@ bool Smb4KHost::equals( Smb4KHost *host ) const
 {
   Q_ASSERT( host );
 
-  if ( QString::compare( unc( QUrl::RemovePassword ), host->unc( QUrl::RemovePassword ) ) != 0 )
+  if ( d->url != host->url() )
   {
     return false;
   }

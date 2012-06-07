@@ -39,7 +39,6 @@
 #include <QWheelEvent>
 #include <QDesktopWidget>
 #include <QApplication>
-#include <QUrl>
 #include <QDrag>
 
 // KDE includes
@@ -47,6 +46,7 @@
 #include <kglobalsettings.h>
 #include <kiconloader.h>
 #include <kicon.h>
+#include <kurl.h>
 
 
 Smb4KSharesIconView::Smb4KSharesIconView( QWidget *parent )
@@ -255,7 +255,7 @@ void Smb4KSharesIconView::dragMoveEvent( QDragMoveEvent *e )
   if ( item && (item->flags() & Qt::ItemIsDropEnabled) &&
        (e->proposedAction() & (Qt::CopyAction | Qt::MoveAction)) )
   {
-    QUrl url = QUrl::fromLocalFile( item->shareItem()->path() );
+    KUrl url( item->shareItem()->path() );
 
     if ( e->source() == this && e->mimeData()->urls().first() == url )
     {
@@ -279,7 +279,7 @@ void Smb4KSharesIconView::dropEvent( QDropEvent *e )
 
   if ( item && (e->proposedAction() & (Qt::CopyAction | Qt::MoveAction)) )
   {
-    QUrl url = QUrl::fromLocalFile( item->shareItem()->path() );
+    KUrl url( item->shareItem()->path() );
 
     if ( e->source() == this && e->mimeData()->urls().first() == url )
     {
@@ -314,8 +314,7 @@ QMimeData *Smb4KSharesIconView::mimeData( const QList<QListWidgetItem *> list ) 
   for ( int i = 0; i < list.count(); ++i )
   {
     Smb4KSharesIconViewItem *item = static_cast<Smb4KSharesIconViewItem *>( list.at( i ) );
-
-    urls.append( QUrl::fromLocalFile( item->shareItem()->path() ) );
+    urls.append( KUrl( item->shareItem()->path() ) );
   }
 
   mimeData->setUrls( urls );

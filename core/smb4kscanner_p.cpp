@@ -1498,7 +1498,7 @@ void Smb4KLookupDomainMembersJob::processHosts()
       }
       else
       {
-        // Omit host names that contain spaces since QUrl cannot handle them.
+        // Omit host names that contain spaces since KUrl cannot handle them.
         // And, they are wrong, anyway.
         if ( !line.section( "   ", 0, 0 ).trimmed().contains( " " ) )
         {

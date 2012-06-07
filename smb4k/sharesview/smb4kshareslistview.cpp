@@ -288,7 +288,7 @@ void Smb4KSharesListView::dragMoveEvent( QDragMoveEvent *e )
   if ( item && (item->flags() & Qt::ItemIsDropEnabled) &&
        (e->proposedAction() & (Qt::CopyAction | Qt::MoveAction)) )
   {
-    QUrl url = QUrl::fromLocalFile( item->shareItem()->path() );
+    KUrl url( item->shareItem()->path() );
 
     if ( e->source() == this && e->mimeData()->urls().first() == url )
     {
@@ -313,7 +313,7 @@ void Smb4KSharesListView::dropEvent( QDropEvent *e )
 
   if ( item && (e->proposedAction() & (Qt::CopyAction | Qt::MoveAction)) )
   {
-    QUrl url = QUrl::fromLocalFile( item->shareItem()->path() );
+    KUrl url( item->shareItem()->path() );
 
     if ( e->source() == this && e->mimeData()->urls().first() == url )
     {
@@ -348,8 +348,7 @@ QMimeData *Smb4KSharesListView::mimeData( const QList<QTreeWidgetItem *> list ) 
   for ( int i = 0; i < list.count(); ++i )
   {
     Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>( list.at( i ) );
-
-    urls.append( QUrl::fromLocalFile( item->shareItem()->path() ) );
+    urls.append( KUrl( item->shareItem()->path() ) );
   }
 
   mimeData->setUrls( urls );

@@ -27,13 +27,13 @@
 #define SMB4KPREVIEWER_H
 
 // Qt includes
-#include <QtCore/QUrl>
 #include <QtCore/QScopedPointer>
 #include <QtGui/QWidget>
 
 // KDE includes
 #include <kdemacros.h>
 #include <kcompositejob.h>
+#include <kurl.h>
 
 // forward declarations
 class Smb4KPreviewerPrivate;
@@ -131,7 +131,7 @@ class KDE_EXPORT Smb4KPreviewer : public KCompositeJob
      *                      acquired
      */
     void aboutToStart( Smb4KShare *share,
-                       const QUrl &url );
+                       const KUrl &url );
 
     /**
      * Emitted after the acquisition process finished.
@@ -142,7 +142,7 @@ class KDE_EXPORT Smb4KPreviewer : public KCompositeJob
      *                      acquired
      */
     void finished( Smb4KShare *share,
-                   const QUrl &url );
+                   const KUrl &url );
 
   protected Q_SLOTS:
     /**
@@ -176,7 +176,7 @@ class KDE_EXPORT Smb4KPreviewer : public KCompositeJob
      * @param parent      The parent widget
      */
     void slotAcquirePreview( Smb4KShare *share,
-                             const QUrl &url,
+                             const KUrl &url,
                              QWidget *parent );
 
     /**

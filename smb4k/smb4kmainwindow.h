@@ -240,7 +240,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      * @param url           The URL of the current location
      */
     void slotPreviewerAboutToStart( Smb4KShare *share,
-                                    const QUrl &url );
+                                    const KUrl &url );
 
     /**
      * This slot shows a message according to the finished action that was reported
@@ -251,7 +251,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      * @param url           The URL of the current location
      */
     void slotPreviewerFinished( Smb4KShare *share,
-                                const QUrl &url );
+                                const KUrl &url );
 
     /**
      * This slot hides the feedback icon in the status bar. It is connected to

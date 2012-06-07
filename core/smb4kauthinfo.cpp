@@ -41,7 +41,7 @@
 class Smb4KAuthInfoPrivate
 {
   public:
-    QUrl url;
+    KUrl url;
     QString workgroup;
     Smb4KAuthInfo::Type type;
     bool homesShare;
@@ -146,7 +146,7 @@ QString Smb4KAuthInfo::workgroupName() const
 }
 
 
-QString Smb4KAuthInfo::unc( QUrl::FormattingOptions options ) const
+QString Smb4KAuthInfo::unc() const
 {
   QString unc;
   
@@ -154,25 +154,25 @@ QString Smb4KAuthInfo::unc( QUrl::FormattingOptions options ) const
   {
     case Host:
     {
-      if ( (options & QUrl::RemoveUserInfo) || d->url.userName().isEmpty() )
+      if ( !hostName().isEmpty() )
       {
-        unc = d->url.toString( options|QUrl::RemovePath ).replace( "//"+d->url.host(), "//"+hostName() );
+        unc = QString( "//%1" ).arg( hostName() );
       }
       else
       {
-        unc = d->url.toString( options|QUrl::RemovePath ).replace( '@'+d->url.host(), '@'+hostName() );
+        // Do nothing
       }
       break;
     }
     case Share:
     {
-      if ( (options & QUrl::RemoveUserInfo) || d->url.userName().isEmpty() )
+      if ( !hostName().isEmpty() && !shareName().isEmpty() )
       {
-        unc = d->url.toString( options ).replace( "//"+d->url.host(), "//"+hostName() );
+        unc = QString( "//%1/%2" ).arg( hostName() ).arg( shareName() );
       }
       else
       {
-        unc = d->url.toString( options ).replace( '@'+d->url.host(), '@'+hostName() );
+        // Do nothing
       }
       break;
     }
@@ -186,29 +186,30 @@ QString Smb4KAuthInfo::unc( QUrl::FormattingOptions options ) const
 }
 
 
-QString Smb4KAuthInfo::hostUNC( QUrl::FormattingOptions options ) const
+QString Smb4KAuthInfo::hostUNC() const
 {
   QString unc;
   
-  if ( (options & QUrl::RemoveUserInfo) || d->url.userName().isEmpty() )
+  if ( !hostName().isEmpty() )
   {
-    unc = d->url.toString( options|QUrl::RemovePath ).replace( "//"+d->url.host(), "//"+hostName() );
+    unc = QString( "//%1" ).arg( hostName() );
   }
   else
   {
-    unc = d->url.toString( options|QUrl::RemovePath ).replace( '@'+d->url.host(), '@'+hostName() );
+    // Do nothing
   }
   
   return unc;
 }
 
 
-void Smb4KAuthInfo::setURL( const QUrl &url )
+void Smb4KAuthInfo::setURL( const KUrl &url )
 {
   d->url = url;
+  d->url.setProtocol( "smb" );
 
   // Set the type.
-  if ( d->url.path().contains( "/" ) == 1 )
+  if ( d->url.hasPath() && !d->url.path(KUrl::RemoveTrailingSlash).endsWith('/') )
   {
     d->type = Share;
   }
@@ -217,22 +218,33 @@ void Smb4KAuthInfo::setURL( const QUrl &url )
     d->type = Host;
   }
   
-  // Set the scheme.
-  if ( d->url.scheme().isEmpty() )
-  {
-    d->url.setScheme( "smb" );
-  }
-  else
-  {
-    // Do nothing
-  }
-
   // Determine whether this is a homes share.
-  d->homesShare = (QString::compare( d->url.path().remove( 0, 1 ), "homes", Qt::CaseSensitive ) == 0);
+  d->homesShare = (QString::compare( d->url.path(KUrl::RemoveTrailingSlash).remove( 0, 1 ), "homes", Qt::CaseSensitive ) == 0);
 }
 
 
-QUrl Smb4KAuthInfo::url() const
+void Smb4KAuthInfo::setURL( const QString &url )
+{
+  d->url.setUrl( url, KUrl::TolerantMode );
+  d->url.setProtocol( "smb" );
+  
+  // Set the type.
+  if ( d->url.hasPath() && !d->url.path(KUrl::RemoveTrailingSlash).endsWith('/') )
+  {
+    d->type = Share;
+  }
+  else
+  {
+    d->type = Host;
+  }
+  
+  // Determine whether this is a homes share.
+  d->homesShare = (QString::compare( d->url.path(KUrl::RemoveTrailingSlash).remove( 0, 1 ), "homes", Qt::CaseSensitive ) == 0);
+}
+
+
+
+KUrl Smb4KAuthInfo::url() const
 {
   return d->url;
 }
@@ -247,7 +259,7 @@ QString Smb4KAuthInfo::hostName() const
 
 QString Smb4KAuthInfo::shareName() const
 {
-  if ( d->url.path().startsWith( '/' ) )
+  if ( d->url.path().startsWith('/') )
   {
     return d->url.path().remove( 0, 1 );
   }
@@ -314,9 +326,7 @@ void Smb4KAuthInfo::useDefaultAuthInfo()
 bool Smb4KAuthInfo::equals( Smb4KAuthInfo *info ) const
 {
   // URL
-  QUrl url( info->unc( QUrl::None ) );
-  
-  if ( d->url != url )
+  if ( d->url != info->url() )
   {
     return false;
   }

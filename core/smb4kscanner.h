@@ -211,8 +211,8 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
     QDeclarativeListProperty<Smb4KNetworkObject> shares();
     
     /**
-     * This function takes a QUrl object and initiates a network scan depending 
-     * on the type of the network item.
+     * This function takes a KUrl object and initiates a network scan depending 
+     * on the @param type of the network item.
      * 
      * Please note that this function only works with network objects that are 
      * already known. All others will be ignored.
@@ -221,10 +221,10 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
      * 
      * @param type        The type of the network item
      */
-    Q_INVOKABLE void lookup( const QUrl &url, int type );
+    Q_INVOKABLE void lookup( const KUrl &url, int type );
     
     /**
-     * This function takes a QUrl object, looks up the respective network object
+     * This function takes a KUrl object, looks up the respective network object
      * and returns it. If there is not such an object, NULL is returned.
      * 
      * Please note that this function only works with network objects that are 
@@ -236,7 +236,7 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
      * 
      * @returns The network item or NULL if it was not found.
      */
-    Q_INVOKABLE Smb4KNetworkObject *find( const QUrl &url, int type );
+    Q_INVOKABLE Smb4KNetworkObject *find( const KUrl &url, int type );
     
   protected:
     /**

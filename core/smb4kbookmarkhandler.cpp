@@ -317,7 +317,7 @@ void Smb4KBookmarkHandler::loadBookmarks()
                 }
                 else if ( xmlReader.name() == "unc" )
                 {
-                  bookmark->setUNC( xmlReader.readElementText() );
+                  bookmark->setURL( xmlReader.readElementText() );
                 }
                 else if ( xmlReader.name() == "login" )
                 {

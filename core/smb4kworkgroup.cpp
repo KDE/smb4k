@@ -40,8 +40,8 @@
 class Smb4KWorkgroupPrivate
 {
   public:
-    QUrl url;
-    QUrl masterURL;
+    KUrl url;
+    KUrl masterURL;
     QHostAddress masterIP;
     bool pseudoMaster;
 };
@@ -52,7 +52,7 @@ Smb4KWorkgroup::Smb4KWorkgroup( const QString &name )
 {
   d->pseudoMaster = false;
   d->url.setHost( name );
-  d->url.setScheme( "smb" );
+  d->url.setProtocol( "smb" );
   setIcon( KIcon( "network-workgroup" ) );
 }
 
@@ -89,7 +89,7 @@ Smb4KWorkgroup::~Smb4KWorkgroup()
 void Smb4KWorkgroup::setWorkgroupName( const QString &name )
 {
   d->url.setHost( name );
-  d->url.setScheme( "smb" );
+  d->url.setProtocol( "smb" );
 }
 
 
@@ -102,15 +102,7 @@ QString Smb4KWorkgroup::workgroupName() const
 void Smb4KWorkgroup::setMasterBrowserName( const QString &name )
 {
   d->masterURL.setHost( name );
-
-  if ( d->masterURL.scheme().isEmpty() )
-  {
-    d->masterURL.setScheme( "smb" );
-  }
-  else
-  {
-    // Do nothing
-  }
+  d->masterURL.setProtocol( "smb" );
 }
 
 
@@ -221,7 +213,7 @@ bool Smb4KWorkgroup::hasMasterBrowserIP() const
 }
 
 
-QUrl Smb4KWorkgroup::url() const
+KUrl Smb4KWorkgroup::url() const
 {
   return d->url;
 }

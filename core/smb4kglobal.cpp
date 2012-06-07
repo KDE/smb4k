@@ -574,7 +574,6 @@ Smb4KShare* Smb4KGlobal::findShareByPath( const QString &path )
 QList<Smb4KShare *> Smb4KGlobal::findShareByUNC( const QString &unc )
 {
   QList<Smb4KShare *> list;
-  QUrl u( unc );
 
   mutex.lock();
 
@@ -582,12 +581,8 @@ QList<Smb4KShare *> Smb4KGlobal::findShareByUNC( const QString &unc )
   {
     for ( int i = 0; i < p->mountedSharesList.size(); ++i )
     {
-      if ( QString::compare( u.toString( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort ),
-                            p->mountedSharesList.at( i )->unc( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort ),
-                            Qt::CaseInsensitive ) == 0 ||
-          QString::compare( u.toString( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort ).replace( ' ', '_' ),
-                            p->mountedSharesList.at( i )->unc( QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort ),
-                            Qt::CaseInsensitive ) == 0  )
+      if ( QString::compare( unc, p->mountedSharesList.at( i )->unc(), Qt::CaseInsensitive ) == 0 ||
+           QString::compare( QString( unc ).replace( ' ', '_' ), p->mountedSharesList.at( i )->unc(), Qt::CaseInsensitive ) == 0  )
       {
         list.append( p->mountedSharesList.at( i ) );
         continue;

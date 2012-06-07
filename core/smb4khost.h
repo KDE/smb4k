@@ -31,11 +31,11 @@
 
 // Qt includes
 #include <QtCore/QString>
-#include <QtCore/QUrl>
 #include <QtCore/QScopedPointer>
 
 // KDE includes
 #include <kdemacros.h>
+#include <kurl.h>
 
 // forward declarations
 class Smb4KAuthInfo;
@@ -97,31 +97,32 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
     QString hostName() const; 
 
     /**
-     * Returns the UNC of the server in the form [smb:]//[USER:PASS@]HOST[:PORT] depending on
-     * the format specified by @p options.
+     * Returns the UNC (Uniform Naming Convention string) in the form //HOST.
      * 
+     * This function should only be used for basic comparisons or for display
+     * purposes. If you need to do sophisticated comparisons, use the url() 
+     * function instead.
+     *
      * Please note that this function returns a modified URL string (uppercase
      * hostname, etc.) and automatically strips a trailing slash if one is present.
      *
      * @returns the UNC.
      */
-    QString unc( QUrl::FormattingOptions options = QUrl::RemoveScheme|
-                                                   QUrl::RemoveUserInfo|
-                                                   QUrl::RemovePort ) const;
+    QString unc() const;
                                                    
     /**
      * Sets the URL of the network item after some checks are passed.
      * 
      * @param url             The URL of the network item
      */
-    void setURL( const QUrl &url );
+    void setURL( const KUrl &url );
     
     /**
      * Returns the URL (the full UNC) of the host item.
      * 
      * @returns the URL of the network item.
      */
-    QUrl url() const;
+    KUrl url() const;
 
     /**
      * Set the workgroup where this host is located.

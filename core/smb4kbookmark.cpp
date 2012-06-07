@@ -43,7 +43,7 @@
 class Smb4KBookmarkPrivate
 {
   public:
-    QUrl url;
+    KUrl url;
     QString workgroup;
     QHostAddress ip;
     QString type;
@@ -109,15 +109,7 @@ QString Smb4KBookmark::workgroupName() const
 void Smb4KBookmark::setHostName( const QString &host )
 {
   d->url.setHost( host );
-  
-  if ( d->url.scheme().isEmpty() )
-  {
-    d->url.setScheme( "smb" );
-  }
-  else
-  {
-    // Do nothing
-  }
+  d->url.setProtocol( "smb" );
 }
 
 
@@ -172,50 +164,34 @@ QString Smb4KBookmark::typeString() const
 }
 
 
-void Smb4KBookmark::setUNC( const QString &unc )
-{
-  // Set the UNC.
-  d->url.setUrl( unc, QUrl::TolerantMode );
-
-  if ( d->url.scheme().isEmpty() )
-  {
-    d->url.setScheme( "smb" );
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-QString Smb4KBookmark::unc( QUrl::FormattingOptions options ) const
+QString Smb4KBookmark::unc() const
 {
   QString unc;
   
-  if ( (options & QUrl::RemoveUserInfo) || d->url.userName().isEmpty() )
+  if ( !hostName().isEmpty() && !shareName().isEmpty() )
   {
-    unc = d->url.toString( options ).replace( "//"+d->url.host(), "//"+hostName() );
+    unc = QString( "//%1/%2" ).arg( hostName() ).arg( shareName() );
   }
-  else
+  else 
   {
-    unc = d->url.toString( options ).replace( '@'+d->url.host(), '@'+hostName() );
+    // Do nothing
   }
   
   return unc;
 }
 
 
-QString Smb4KBookmark::hostUNC( QUrl::FormattingOptions options ) const
+QString Smb4KBookmark::hostUNC() const
 {
   QString unc;
   
-  if ( (options & QUrl::RemoveUserInfo) || d->url.userName().isEmpty() )
+  if ( !hostName().isEmpty() )
   {
-    unc = d->url.toString( options|QUrl::RemovePath ).replace( "//"+d->url.host(), "//"+hostName() );
+    unc = QString( "//%1" ).arg( hostName() );
   }
   else
   {
-    unc = d->url.toString( options|QUrl::RemovePath ).replace( '@'+d->url.host(), '@'+hostName() );
+    // Do nothing
   }
   
   return unc;
@@ -246,7 +222,21 @@ QString Smb4KBookmark::login() const
 }
 
 
-QUrl Smb4KBookmark::url() const
+void Smb4KBookmark::setURL( const KUrl &url )
+{
+  d->url = url;
+  d->url.setProtocol( "smb" );
+}
+
+
+void Smb4KBookmark::setURL( const QString &url )
+{
+  d->url.setUrl( url, KUrl::TolerantMode );
+  d->url.setProtocol( "smb" );
+}
+
+
+KUrl Smb4KBookmark::url() const
 {
   return d->url;
 }
@@ -279,9 +269,7 @@ QString Smb4KBookmark::profile() const
 bool Smb4KBookmark::equals( Smb4KBookmark *bookmark ) const
 {
   // URL
-  QUrl url( bookmark->unc( QUrl::None ) );
-  
-  if ( d->url != url )
+  if ( d->url != bookmark->url() )
   {
     return false;
   }

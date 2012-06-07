@@ -46,7 +46,7 @@ class Smb4KCustomOptionsPrivate
 {
   public:
     QString workgroup;
-    QUrl url;
+    KUrl url;
     QHostAddress ip;
     Smb4KCustomOptions::Type type;
     Smb4KCustomOptions::Remount remount;
@@ -243,45 +243,52 @@ QString Smb4KCustomOptions::workgroupName() const
 }
 
 
-void Smb4KCustomOptions::setURL( const QUrl &url )
+void Smb4KCustomOptions::setURL( const KUrl &url )
 {
   d->url = url;
 }
 
 
-QUrl Smb4KCustomOptions::url() const
+void Smb4KCustomOptions::setURL( const QString &url )
+{
+  d->url.setUrl( url, KUrl::TolerantMode );
+  d->url.setProtocol( "smb" );
+}
+
+
+KUrl Smb4KCustomOptions::url() const
 {
   return d->url;
 }
 
 
-QString Smb4KCustomOptions::unc( QUrl::FormattingOptions options ) const
+QString Smb4KCustomOptions::unc() const
 {
   QString unc;
-
+  
   switch ( d->type )
   {
     case Host:
     {
-      if ( (options & QUrl::RemoveUserInfo) || d->url.userName().isEmpty() )
+      if ( !hostName().isEmpty() )
       {
-        unc = d->url.toString( options|QUrl::RemovePath ).replace( "//"+d->url.host(), "//"+d->url.host().toUpper() );
+        unc = QString( "//%1" ).arg( hostName() );
       }
       else
       {
-        unc = d->url.toString( options|QUrl::RemovePath ).replace( '@'+d->url.host(), '@'+d->url.host().toUpper() );
+        // Do nothing
       }
       break;
     }
     case Share:
     {
-      if ( (options & QUrl::RemoveUserInfo) || d->url.userName().isEmpty() )
+      if ( !hostName().isEmpty() && !shareName().isEmpty() )
       {
-        unc = d->url.toString( options ).replace( "//"+d->url.host(), "//"+d->url.host().toUpper() );
+        unc = QString( "//%1/%2" ).arg( hostName() ).arg( shareName() );
       }
       else
       {
-        unc = d->url.toString( options ).replace( '@'+d->url.host(), '@'+d->url.host().toUpper() );
+        // Do nothing
       }
       break;
     }

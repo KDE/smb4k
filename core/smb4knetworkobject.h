@@ -34,13 +34,13 @@
 
 // Qt includes
 #include <QtCore/QObject>
-#include <QtCore/QUrl>
 #include <QtCore/QString>
 #include <QtCore/QScopedPointer>
 #include <QtGui/QIcon>
 
 // KDE includes
 #include <kdemacros.h>
+#include <kurl.h>
 
 // forward declaration
 class Smb4KNetworkObjectPrivate;
@@ -68,10 +68,10 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
   Q_PROPERTY( QString shareName READ shareName CONSTANT )
   Q_PROPERTY( QIcon icon READ icon CONSTANT )
   Q_PROPERTY( QString comment READ comment CONSTANT )
-  Q_PROPERTY( QUrl url READ url CONSTANT )
+  Q_PROPERTY( KUrl url READ url CONSTANT )
   Q_PROPERTY( bool isMounted READ isMounted CONSTANT )
   Q_PROPERTY( bool isPrinter READ isPrinter CONSTANT )
-  Q_PROPERTY( QUrl mountpoint READ mountpoint CONSTANT )
+  Q_PROPERTY( KUrl mountpoint READ mountpoint CONSTANT )
 
   public:
     /**
@@ -159,7 +159,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * so to discriminate it from a host, you need to check the type()
      * function as well.
      */
-    QUrl url() const;
+    KUrl url() const;
     
     /**
      * This function returns TRUE if the network item is a share and it is
@@ -190,7 +190,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * 
      * @returns the mount point of a share.
      */
-    QUrl mountpoint() const;
+    KUrl mountpoint() const;
     
   private:
     const QScopedPointer<Smb4KNetworkObjectPrivate> d;

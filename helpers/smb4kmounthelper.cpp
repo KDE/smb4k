@@ -32,7 +32,6 @@
 
 // Qt includes
 #include <QProcessEnvironment>
-#include <QUrl>
 #include <QDebug>
 
 // KDE includes
@@ -41,6 +40,7 @@
 #include <klocale.h>
 #include <kprocess.h>
 #include <kmountpoint.h>
+#include <kurl.h>
 
 KDE4_AUTH_HELPER_MAIN( "net.sourceforge.smb4k.mounthelper", Smb4KMountHelper )
 
@@ -54,7 +54,7 @@ ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
   reply.addData( "ip", args["ip"] );
   reply.addData( "mountpoint", args["mountpoint"] );
   reply.addData( "key", args["key"] );
-
+  
   KProcess proc( this );
   proc.setOutputChannelMode( KProcess::SeparateChannels );
   proc.setProcessEnvironment( QProcessEnvironment::systemEnvironment() );

@@ -48,7 +48,7 @@
 class Smb4KSharePrivate
 {
   public:
-    QUrl url;
+    KUrl url;
     QString workgroup;
     QString typeString;
     QString comment;
@@ -81,7 +81,7 @@ Smb4KShare::Smb4KShare( const QString &host, const QString &name )
   d->mounted      = false;
   d->url.setHost( host );
   d->url.setPath( name );
-  d->url.setScheme( "smb" );
+  d->url.setProtocol( "smb" );
   setShareIcon();
 }
 
@@ -99,8 +99,8 @@ Smb4KShare::Smb4KShare( const QString &unc )
   d->freeSpace    = -1;
   d->usedSpace    = -1;
   d->mounted      = false;
-  d->url.setUrl( unc );
-  d->url.setScheme( "smb" );
+  d->url.setUrl( unc, KUrl::TolerantMode );
+  d->url.setProtocol( "smb" );
   setShareIcon();
 }
 
@@ -146,15 +146,7 @@ Smb4KShare::~Smb4KShare()
 void Smb4KShare::setShareName( const QString &name )
 {
   d->url.setPath( name.trimmed() );
-
-  if ( d->url.scheme().isEmpty() )
-  {
-    d->url.setScheme( "smb" );
-  }
-  else
-  {
-    // Do nothing
-  }
+  d->url.setProtocol( "smb" );
 }
 
 
@@ -163,20 +155,11 @@ QString Smb4KShare::shareName() const
   // Since users might come up with very weird share names,
   // we are careful and do not use QString::remove( "/" ), but
   // only remove preceding and trailing slashes.
-  QString share_name = d->url.path();
+  QString share_name = d->url.path(KUrl::RemoveTrailingSlash);
   
   if ( share_name.startsWith( '/' ) )
   {
     share_name = share_name.remove( 0, 1 );
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  if ( share_name.endsWith( '/' ) )
-  {
-    share_name = share_name.remove( share_name.size() - 1, 1 );
   }
   else
   {
@@ -190,15 +173,7 @@ QString Smb4KShare::shareName() const
 void Smb4KShare::setHostName( const QString &hostName )
 {
   d->url.setHost( hostName.trimmed() );
-
-  if ( d->url.scheme().isEmpty() )
-  {
-    d->url.setScheme( "smb" );
-  }
-  else
-  {
-    // Do nothing
-  }
+  d->url.setProtocol( "smb" );
 }
 
 
@@ -208,55 +183,13 @@ QString Smb4KShare::hostName() const
 }
 
 
-QString Smb4KShare::unc( QUrl::FormattingOptions options ) const
+QString Smb4KShare::unc() const
 {
   QString unc;
   
-  if ( (options & QUrl::RemoveUserInfo) || d->url.userName().isEmpty() )
+  if ( !hostName().isEmpty() && !shareName().isEmpty() )
   {
-    unc = d->url.toString( options|QUrl::StripTrailingSlash ).replace( "//"+d->url.host(), "//"+hostName() );
-  }
-  else
-  {
-    unc = d->url.toString( options|QUrl::StripTrailingSlash ).replace( '@'+d->url.host(), '@'+hostName() );
-  }
-  
-  return unc;
-}
-
-
-QString Smb4KShare::homeUNC( QUrl::FormattingOptions options ) const
-{
-  QString unc;
-
-  if ( isHomesShare() && !d->url.userName().isEmpty() )
-  {
-    if ( (options & QUrl::RemoveUserInfo) )
-    {
-      unc = d->url.toString( options|QUrl::StripTrailingSlash );
-      
-      if ( d->url.path().startsWith( '/' ) )
-      {
-        unc = unc.replace( "//"+d->url.host(), "//"+hostName() ).replace( d->url.path(), '/'+d->url.userName() );
-      }
-      else
-      {
-        unc = unc.replace( "//"+d->url.host(), "//"+hostName() ).replace( d->url.path(), d->url.userName() );
-      }
-    }
-    else
-    {
-      unc = d->url.toString( options|QUrl::StripTrailingSlash );
-
-      if ( d->url.path().startsWith( '/' ) )
-      {
-        unc = unc.replace( '@'+d->url.host(), '@'+hostName() ).replace( d->url.path(), '/'+d->url.userName() );
-      }
-      else
-      {
-        unc = unc.replace( '@'+d->url.host(), '@'+hostName() ).replace( d->url.path(), d->url.userName() );
-      }
-    }
+    unc = QString( "//%1/%2" ).arg( hostName() ).arg( shareName() );
   }
   else
   {
@@ -267,7 +200,24 @@ QString Smb4KShare::homeUNC( QUrl::FormattingOptions options ) const
 }
 
 
-void Smb4KShare::setURL( const QUrl &url )
+QString Smb4KShare::homeUNC() const
+{
+  QString unc;
+
+  if ( isHomesShare() && !hostName().isEmpty() && !d->url.userName().isEmpty() )
+  {
+    unc = QString( "//%1/%2" ).arg( hostName() ).arg( d->url.userName() );
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  return unc;
+}
+
+
+void Smb4KShare::setURL( const KUrl &url )
 {
   // Check validity.
   if ( !url.isValid() )
@@ -279,8 +229,9 @@ void Smb4KShare::setURL( const QUrl &url )
     // Do nothing
   }
 
-  // Check scheme
-  if ( !url.scheme().isEmpty() && QString::compare( "smb", url.scheme() ) != 0 )
+  // Check protocol
+  if ( !url.protocol().isEmpty() && 
+       (QString::compare( url.protocol(), "smb" ) != 0 || QString::compare( url.protocol(), "file" ) != 0) )
   {
     return;
   }
@@ -288,10 +239,9 @@ void Smb4KShare::setURL( const QUrl &url )
   {
     // Do nothing
   }
-
+  
   // Check that the share name is present
-  if ( (url.path().endsWith( '/' ) && url.path().count( "/" ) > 2) ||
-       (!url.path().endsWith( '/' ) && url.path().count( "/" ) > 1) )
+  if ( !url.hasPath() || url.path(KUrl::RemoveTrailingSlash).endsWith('/') )
   {
     return;
   }
@@ -302,28 +252,65 @@ void Smb4KShare::setURL( const QUrl &url )
 
   // Set the URL
   d->url = url;
+  
+  // Force the protocol
+  d->url.setProtocol( "smb" );
+}
 
-  // Do some adjustments
-  if ( d->url.scheme().isEmpty() )
+
+void Smb4KShare::setURL( const QString &url )
+{
+  KUrl u;
+  u.setUrl( url, KUrl::TolerantMode );
+
+  // Check validity.
+  if ( !u.isValid() )
   {
-    d->url.setScheme( "smb" );
+    return;
   }
   else
   {
     // Do nothing
   }
+
+  // Check protocol
+  if ( !u.protocol().isEmpty() && 
+       (QString::compare( u.protocol(), "smb" ) != 0 || QString::compare( u.protocol(), "file" ) != 0) )
+  {
+    return;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Check that the share name is present
+  if ( !u.hasPath() || u.path(KUrl::RemoveTrailingSlash).endsWith('/') )
+  {
+    return;
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // Set the URL
+  d->url = u;
+  
+  // Force the protocol
+  d->url.setProtocol( "smb" );
 }
 
 
-QUrl Smb4KShare::url() const
+KUrl Smb4KShare::url() const
 {
   return d->url;
 }
 
 
-QUrl Smb4KShare::homeURL() const
+KUrl Smb4KShare::homeURL() const
 {
-  QUrl url;
+  KUrl url;
   
   if ( isHomesShare() && !d->url.userName().isEmpty() )
   {
@@ -339,17 +326,17 @@ QUrl Smb4KShare::homeURL() const
 }
 
 
-QString Smb4KShare::hostUNC( QUrl::FormattingOptions options ) const
+QString Smb4KShare::hostUNC() const
 {
   QString unc;
-
-  if ( (options & QUrl::RemoveUserInfo) || d->url.userName().isEmpty() )
+  
+  if ( !hostName().isEmpty() )
   {
-    unc = d->url.toString( options|QUrl::RemovePath|QUrl::StripTrailingSlash ).replace( "//"+d->url.host(), "//"+hostName() );
+    unc = QString( "//%1" ).arg( hostName() );
   }
   else
   {
-    unc = d->url.toString( options|QUrl::RemovePath|QUrl::StripTrailingSlash ).replace( '@'+d->url.host(), '@'+hostName() );
+    // Do nothing
   }
   
   return unc;

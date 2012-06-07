@@ -1012,7 +1012,7 @@ QList<Smb4KAuthInfo *> Smb4KWalletManager::walletEntries()
         }
         else
         {
-          authInfo->setURL( QUrl( entries.at( i ) ) );
+          authInfo->setURL( entries.at( i ) );
           authInfo->setIP( map["IP Address"] );
           authInfo->setWorkgroupName( map["Workgroup"] );
           authInfo->setLogin( map["Login"] );

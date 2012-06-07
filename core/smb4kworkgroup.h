@@ -32,11 +32,11 @@
 
 // Qt includes
 #include <QtCore/QString>
-#include <QtCore/QUrl>
 #include <QtCore/QScopedPointer>
 
 // KDE includes
 #include <kdemacros.h>
+#include <kurl.h>
 
 // forward declarations
 class Smb4KWorkgroupPrivate;
@@ -46,7 +46,7 @@ class Smb4KWorkgroupPrivate;
  * domain found in the network neighborhood. It is part of the core classes
  * of Smb4K.
  *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
 class KDE_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
@@ -183,7 +183,7 @@ class KDE_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      * 
      * @returns the URL of the network item.
      */
-    QUrl url() const;
+    KUrl url() const;
 
   private:
     const QScopedPointer<Smb4KWorkgroupPrivate> d;

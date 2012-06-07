@@ -232,11 +232,11 @@ void Smb4KMainWindow::setupStatusBar()
   connect( Smb4KSynchronizer::self(),  SIGNAL(finished(QString)),
            this,                       SLOT(slotSynchronizerFinished(QString)) );
 
-  connect( Smb4KPreviewer::self(),     SIGNAL(aboutToStart(Smb4KShare*,QUrl)),
-           this,                       SLOT(slotPreviewerAboutToStart(Smb4KShare*,QUrl)) );
+  connect( Smb4KPreviewer::self(),     SIGNAL(aboutToStart(Smb4KShare*,KUrl)),
+           this,                       SLOT(slotPreviewerAboutToStart(Smb4KShare*,KUrl)) );
 
-  connect( Smb4KPreviewer::self(),     SIGNAL(finished(Smb4KShare*,QUrl)),
-           this,                       SLOT(slotPreviewerFinished(Smb4KShare*,QUrl)) );
+  connect( Smb4KPreviewer::self(),     SIGNAL(finished(Smb4KShare*,KUrl)),
+           this,                       SLOT(slotPreviewerFinished(Smb4KShare*,KUrl)) );
 }
 
 
@@ -1114,7 +1114,7 @@ void Smb4KMainWindow::slotSynchronizerFinished( const QString &/*dest*/ )
 }
 
 
-void Smb4KMainWindow::slotPreviewerAboutToStart( Smb4KShare *share, const QUrl &/*url*/ )
+void Smb4KMainWindow::slotPreviewerAboutToStart( Smb4KShare *share, const KUrl &/*url*/ )
 {
   Q_ASSERT( share );
 
@@ -1131,7 +1131,7 @@ void Smb4KMainWindow::slotPreviewerAboutToStart( Smb4KShare *share, const QUrl &
 }
 
 
-void Smb4KMainWindow::slotPreviewerFinished( Smb4KShare */*share*/, const QUrl &/*url*/ )
+void Smb4KMainWindow::slotPreviewerFinished( Smb4KShare */*share*/, const KUrl &/*url*/ )
 {
   if ( !coreIsRunning()  )
   {

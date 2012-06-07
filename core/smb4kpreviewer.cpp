@@ -128,12 +128,12 @@ void Smb4KPreviewer::preview( Smb4KShare *share, QWidget *parent )
     dlg = new Smb4KPreviewDialog( share, parent );
     connect( dlg,  SIGNAL(aboutToClose(Smb4KPreviewDialog*)),
              this, SLOT(slotDialogClosed(Smb4KPreviewDialog*)) );
-    connect( dlg,  SIGNAL(requestPreview(Smb4KShare*,QUrl,QWidget*)),
-             this, SLOT(slotAcquirePreview(Smb4KShare*,QUrl,QWidget*)) );
-    connect( this, SIGNAL(aboutToStart(Smb4KShare*,QUrl)),
-             dlg,  SLOT(slotAboutToStart(Smb4KShare*,QUrl)) );
-    connect( this, SIGNAL(finished(Smb4KShare*,QUrl)),
-             dlg,  SLOT(slotFinished(Smb4KShare*,QUrl)) );
+    connect( dlg,  SIGNAL(requestPreview(Smb4KShare*,KUrl,QWidget*)),
+             this, SLOT(slotAcquirePreview(Smb4KShare*,KUrl,QWidget*)) );
+    connect( this, SIGNAL(aboutToStart(Smb4KShare*,KUrl)),
+             dlg,  SLOT(slotAboutToStart(Smb4KShare*,KUrl)) );
+    connect( this, SIGNAL(finished(Smb4KShare*,KUrl)),
+             dlg,  SLOT(slotFinished(Smb4KShare*,KUrl)) );
     connect( dlg,  SIGNAL(abortPreview(Smb4KShare*)),
              this, SLOT(slotAbortPreview(Smb4KShare*)) );
     d->dialogs.append( dlg );
@@ -281,7 +281,7 @@ void Smb4KPreviewer::slotDialogClosed( Smb4KPreviewDialog *dialog )
 }
 
 
-void Smb4KPreviewer::slotAcquirePreview( Smb4KShare *share, const QUrl &url, QWidget *parent )
+void Smb4KPreviewer::slotAcquirePreview( Smb4KShare *share, const KUrl &url, QWidget *parent )
 {
   // Get the authentication information
   Smb4KWalletManager::self()->readAuthInfo( share );
@@ -303,10 +303,10 @@ void Smb4KPreviewer::slotAcquirePreview( Smb4KShare *share, const QUrl &url, QWi
            this, SLOT(slotJobFinished(KJob*)) );
   connect( job,  SIGNAL(authError(Smb4KPreviewJob*)),
            this, SLOT(slotAuthError(Smb4KPreviewJob*)) );
-  connect( job,  SIGNAL(aboutToStart(Smb4KShare*,QUrl)),
-           this, SIGNAL(aboutToStart(Smb4KShare*,QUrl)) );
-  connect( job,  SIGNAL(finished(Smb4KShare*,QUrl)),
-           this, SIGNAL(finished(Smb4KShare*,QUrl)) );
+  connect( job,  SIGNAL(aboutToStart(Smb4KShare*,KUrl)),
+           this, SIGNAL(aboutToStart(Smb4KShare*,KUrl)) );
+  connect( job,  SIGNAL(finished(Smb4KShare*,KUrl)),
+           this, SIGNAL(finished(Smb4KShare*,KUrl)) );
 
   // Get the preview dialog, so that the result of the query
   // can be sent.
@@ -327,8 +327,8 @@ void Smb4KPreviewer::slotAcquirePreview( Smb4KShare *share, const QUrl &url, QWi
   
   if ( dlg )
   {
-    connect( job, SIGNAL(preview(QUrl,QList<Item>)),
-             dlg, SLOT(slotDisplayPreview(QUrl,QList<Item>)) );
+    connect( job, SIGNAL(preview(KUrl,QList<Item>)),
+             dlg, SLOT(slotDisplayPreview(KUrl,QList<Item>)) );
   }
   else
   {

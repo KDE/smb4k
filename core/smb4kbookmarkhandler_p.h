@@ -2,7 +2,7 @@
     smb4kbookmarkhandler_p  -  Private classes for the bookmark handler
                              -------------------
     begin                : Sun Mar 20 2011
-    copyright            : (C) 2011 by Alexander Reinholdt
+    copyright            : (C) 2011-2012 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -104,7 +104,7 @@ class KDE_EXPORT Smb4KBookmarkDialog : public KDialog
     /**
      * Finds the bookmark in the list
      */
-    Smb4KBookmark *findBookmark( const QUrl &url );
+    Smb4KBookmark *findBookmark( const KUrl &url );
 
     /**
      * The list of bookmarks
@@ -245,7 +245,7 @@ class KDE_EXPORT Smb4KBookmarkEditor : public KDialog
     /**
      * Finds the bookmark in the list
      */
-    Smb4KBookmark *findBookmark( const QUrl &url );
+    Smb4KBookmark *findBookmark( const KUrl &url );
 
     /**
      * List of the bookmarks that are being processed

@@ -41,6 +41,7 @@
 #include <kdemacros.h>
 #include <kauth.h>
 #include <kcompositejob.h>
+#include <kurl.h>
 
 using namespace KAuth;
 
@@ -202,7 +203,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
     QDeclarativeListProperty<Smb4KNetworkObject> mountedShares();
     
     /**
-     * This function takes a QUrl object and initiates the mounting of a remote
+     * This function takes a KUrl object and initiates the mounting of a remote
      * share. 
      * 
      * Please note that this function only works with share objects that are 
@@ -210,20 +211,21 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * 
      * @param url         The URL of the remote share
      */
-    Q_INVOKABLE void mount( const QUrl &url );
+    Q_INVOKABLE void mount( const KUrl &url );
     
     /**
-     * This function takes the @p path and initiates the unmounting of a share.
+     * This function takes the URL of a @p mountpoint and initiates the unmounting 
+     * of a share.
      * 
      * Please note that this function only works with share objects that are 
      * already known. All others will be ignored.
      * 
-     * @param path        The path of the mounted share
+     * @param path        The mountpoint of the mounted share
      */
-    Q_INVOKABLE void unmount( const QUrl &path );
+    Q_INVOKABLE void unmount( const KUrl &mountpoint );
     
     /**
-     * This function takes a QUrl object, looks up the respective mounted share
+     * This function takes a KUrl object, looks up the respective mounted share
      * and returns it. If there is not such a share, NULL is returned.
      * 
      * @param url         The URL of the mounted share
@@ -234,7 +236,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * 
      * @returns The mounted share or NULL if it was not found.
      */
-    Q_INVOKABLE Smb4KNetworkObject *find( const QUrl &url, bool exactMatch = true );
+    Q_INVOKABLE Smb4KNetworkObject *find( const KUrl &url, bool exactMatch = true );
     
   Q_SIGNALS:
     /**

@@ -128,7 +128,7 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
      *
      * @returns the custom options
      */
-    Smb4KCustomOptions *findOptions( const QUrl &url );
+    Smb4KCustomOptions *findOptions( const KUrl &url );
     
     /**
      * Get the list of custom options. The list not only comprises of those items that

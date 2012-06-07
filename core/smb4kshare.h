@@ -33,10 +33,10 @@
 #include <QtCore/QString>
 #include <QtCore/QStringList>
 #include <QtCore/QtGlobal>
-#include <QtCore/QUrl>
 #include <QtCore/QScopedPointer>
 
 // KDE includes
+#include <kurl.h>
 #include <kuser.h>
 #include <kdemacros.h>
 
@@ -122,49 +122,58 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     QString hostName() const;
 
     /**
-     * Returns the UNC (Uniform Naming Convention string) address in the form 
-     * [smb:]//[USER:PASS@]HOST[:PORT]/SHARE depending on the format specified by 
-     * @p options.
+     * Returns the UNC (Uniform Naming Convention string) in the form //HOST/Share.
+     * 
+     * This function should only be used for basic comparisons or for display
+     * purposes. If you need to do sophisticated comparisons, use the url() 
+     * function instead.
      * 
      * Please note that this function returns a modified URL string (uppercase
      * hostname, etc.) and automatically strips a trailing slash if one is present.
      *
      * @returns the UNC.
      */
-    QString unc( QUrl::FormattingOptions options = QUrl::RemoveScheme|
-                                                   QUrl::RemoveUserInfo|
-                                                   QUrl::RemovePort ) const;
+    QString unc() const;
                                                    
     /**
-     * In case of a 'homes' share, this function returns the UNC of the user's 
-     * home repository in the form [smb:]//[USER@]HOST[:PORT]/USER depending 
-     * on the format specified by @p options.
+     * In case of a 'homes' share, this function returns the UNC (Uniform 
+     * Naming Convention string) of the user's home repository in the form 
+     * //HOST/User.
      * 
      * If the share is not a 'homes' share or no user name for the homes share
      * has been defined, this function returns an empty string.
      * 
+     * This function should only be used for basic comparisons or for display
+     * purposes. If you need to do sophisticated comparisons, use the url() 
+     * function instead.
+     * 
      * Please note that this function returns a modified URL string (uppercase
      * hostname, etc.) and automatically strips a trailing slash if one is present.
      *
      * @returns the UNC.
      */
-    QString homeUNC( QUrl::FormattingOptions options = QUrl::RemoveScheme|
-                                                       QUrl::RemoveUserInfo|
-                                                       QUrl::RemovePort ) const;
+    QString homeUNC() const;
                                                        
     /**
      * Sets the URL of the share after some checks are passed.
      * 
      * @param url             The URL of the network item
      */
-    void setURL( const QUrl &url );
+    void setURL( const KUrl &url );
+    
+    /**
+     * Sets the URL of the share.
+     *
+     * @param url             The URL of the network item
+     */
+    void setURL( const QString &url );
     
     /**
      * Returns the URL of the share.
      * 
      * @returns the URL of the share.
      */
-    QUrl url() const;
+    KUrl url() const;
                                                        
     /**
      * In case of a 'homes' share, this function returns the URL of the user's 
@@ -175,20 +184,21 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * 
      * @returns the user's home repository's URL.
      */
-    QUrl homeURL() const;
+    KUrl homeURL() const;
 
     /**
-     * Returns the host's UNC in the form [smb:]//[USER@]HOST[:PORT] depending on
-     * the format specified by @p options.
+     * Returns the host's UNC (Uniform Naming Convention string) in the form //HOST.
+     * 
+     * This function should only be used for basic comparisons or for display
+     * purposes. If you need to do sophisticated comparisons, use the url() 
+     * function instead.
      * 
      * Please note that this function returns a modified URL string (uppercase
      * hostname) and automatically strips a trailing slash if one is present.
      *
      * @returns the UNC of the host.
      */
-    QString hostUNC( QUrl::FormattingOptions options = QUrl::RemoveScheme|
-                                                       QUrl::RemoveUserInfo|
-                                                       QUrl::RemovePort ) const;
+    QString hostUNC() const;
 
     /**
      * Set the workgroup where the host is located that offers this share.
