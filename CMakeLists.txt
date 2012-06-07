@@ -45,6 +45,7 @@ endif ( ${KDE_VERSION} VERSION_LESS 4.8.0 )
 
 if ( INSTALL_PLASMOID )
   message( STATUS "Installing plasmoid (-DINSTALL_PLASMOID=false to disable)" )
+  add_subdirectory( plasmoid )
 elseif ( NOT INSTALL_PLASMOID )
   if ( ${KDE_VERSION} VERSION_LESS 4.8.0 )
     message( STATUS "Not installing plasmoid (KDE version smaller than 4.8.0)" )
