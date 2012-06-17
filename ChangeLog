@@ -1,3 +1,7 @@
+Smb4K 1.0.3 (????-??-??):
+- Make sure that output from the mount and unmount process is trimmed, so 
+  that there are no false error messages.
+
 Smb4K 1.0.2 (2012-05-30):
 - Fixed two potential crashes in class Smb4KHomesSharesHandler.
 - Fixed a wrong comparision between QString and QByteArray in 

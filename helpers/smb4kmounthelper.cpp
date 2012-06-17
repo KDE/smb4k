@@ -102,11 +102,11 @@ ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
     {
       // Check if there is output on stderr.
       QString stderr = QString::fromUtf8( proc.readAllStandardError() );
-      reply.addData( "stderr", stderr );
+      reply.addData( "stderr", stderr.trimmed() );
 
       // Check if there is output on stdout.
       QString stdout = QString::fromUtf8( proc.readAllStandardOutput() );
-      reply.addData( "stdout", stdout );
+      reply.addData( "stdout", stdout.trimmed() );
     }
   }
   else
@@ -211,11 +211,11 @@ ActionReply Smb4KMountHelper::unmount( const QVariantMap &args )
     {
       // Check if there is output on stderr.
       QString stderr = QString::fromUtf8( proc.readAllStandardError() );
-      reply.addData( "stderr", stderr );
+      reply.addData( "stderr", stderr.trimmed() );
 
       // Check if there is output on stdout.
       QString stdout = QString::fromUtf8( proc.readAllStandardOutput() );
-      reply.addData( "stdout", stdout );
+      reply.addData( "stdout", stdout.trimmed() );
     }
   }
   else
