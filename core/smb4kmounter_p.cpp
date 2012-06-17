@@ -669,8 +669,6 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
   action->addArgument( "command", mount_command );
   action->addArgument( "home_dir", QDir::homePath() );
   
-  qDebug() << mount_command;
-
   if ( !share->isHomesShare() )
   {
     action->addArgument( "url", static_cast<QUrl>(share->url()) );
