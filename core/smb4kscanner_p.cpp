@@ -1289,7 +1289,7 @@ void Smb4KScanBAreasJob::slotStartScan()
     if ( !Smb4KSettings::domainName().isEmpty() &&
          QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0 )
     {
-      QString( "-W %1" ).arg( KShell::quoteArg( Smb4KSettings::domainName() ) );
+      arguments << QString( "-W %1" ).arg( KShell::quoteArg( Smb4KSettings::domainName() ) );
     }
     else
     {
@@ -2633,17 +2633,22 @@ void Smb4KLookupIPAddressJob::processIPAddress()
   // be more than one. So, split the incoming data and use the first entry
   // as IP address (it's most likely the correct one). If there is no data,
   // set the IP address to an empty string.
-  QStringList ip_address = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts );
+  QStringList output = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts );
 
-  if ( !ip_address.isEmpty() )
+  foreach ( const QString &line, output )
   {
-    m_host->setIP( ip_address.first().trimmed() );
+    if ( line.contains( "<00>" ) )
+    {
+      QString ip_address = line.section( " ", 0, 0 ).trimmed();
+      m_host->setIP( ip_address );
+      break;
+    }
+    else
+    {
+      continue;
+    }
   }
-  else
-  {
-    m_host->setIP( QString() );
-  }
-  
+
   emit ipAddress( m_host );
 }
 
@@ -2657,36 +2662,6 @@ void Smb4KLookupIPAddressJob::slotStartLookup()
   {
     Smb4KNotification *notification = new Smb4KNotification();
     notification->commandNotFound( "nmblookup" );
-    emitResult();
-    return;
-  }
-  else
-  {
-    // Go ahead
-  }
-
-  // Find grep program.
-  QString grep = KStandardDirs::findExe( "grep" );
-
-  if ( grep.isEmpty() )
-  {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "grep" );
-    emitResult();
-    return;
-  }
-  else
-  {
-    // Go ahead
-  }
-
-  // Find the awk program
-  QString awk = KStandardDirs::findExe( "awk" );
-
-  if ( awk.isEmpty() )
-  {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "awk" );
     emitResult();
     return;
   }
@@ -2782,12 +2757,6 @@ void Smb4KLookupIPAddressJob::slotStartLookup()
 
   arguments << "--";
   arguments << KShell::quoteArg( m_host->hostName() );
-  arguments << "|";
-  arguments << grep;
-  arguments << "'<00>'";
-  arguments << "|";
-  arguments << awk;
-  arguments << "{'print $1'}";
   
   m_proc = new Smb4KProcess( this );
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
