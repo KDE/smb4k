@@ -729,7 +729,7 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
       // Check if the mount process reported an error
       QString stderr( reply.data()["stderr"].toString() );
 
-      if ( QString::compare( share->canonicalPath(), reply.data()["share_mountpoint"].toString() ) == 0 && stderr.isEmpty() )
+      if ( QString::compare( share->canonicalPath(), reply.data()["share_mountpoint"].toString() ) == 0 && !stderr.isEmpty() )
       {
 #ifndef Q_OS_FREEBSD
         if ( stderr.contains( "mount error 13", Qt::CaseSensitive ) || stderr.contains( "mount error(13)" )
@@ -1020,7 +1020,7 @@ void Smb4KUnmountJob::slotActionFinished( ActionReply reply )
       // Check if the unmount process reported an error
       QString stderr( reply.data()["stderr"].toString() );
 
-      if ( QString::compare( share->canonicalPath(), reply.data()["share_mountpoint"].toString() ) == 0 && stderr.isEmpty() )
+      if ( QString::compare( share->canonicalPath(), reply.data()["share_mountpoint"].toString() ) == 0 && !stderr.isEmpty() )
       {
         Smb4KNotification *notification = new Smb4KNotification();
         notification->unmountingFailed( share, stderr );
