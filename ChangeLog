@@ -1,8 +1,8 @@
 Smb4K 1.0.3 (2012-06-23):
 - Make sure that output from the mount and unmount process is trimmed, so 
   that there are no false error messages.
-- Fixed false error notifications that occurred during mounting and 
-  unmounting shares.
+- Fixed error notifications being shown although mounting and unmounting
+  shares was successful.
 
 Smb4K 1.0.2 (2012-05-30):
 - Fixed two potential crashes in class Smb4KHomesSharesHandler.
