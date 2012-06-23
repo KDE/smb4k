@@ -1045,7 +1045,7 @@ void Smb4KScanner::slotAuthError( Smb4KQueryMasterJob *job )
     connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
     connect( job, SIGNAL(aboutToStart()), SLOT(slotAboutToStartDomainsLookup()) );
     connect( job, SIGNAL(finished()), SLOT(slotDomainsLookupFinished()) );
-    connect( job, SIGNAL(workgroups(QList<Smb4KWorkgroup>)), SLOT(slotWorkgroups(QList<Smb4KWorkgroup>)) );
+    connect( job, SIGNAL(workgroups(QList<Smb4KWorkgroup*>)), SLOT(slotWorkgroups(QList<Smb4KWorkgroup*>)) );
     connect( job, SIGNAL(authError(Smb4KQueryMasterJob*)), SLOT(slotAuthError(Smb4KQueryMasterJob*)) );
 
     if ( !hasSubjobs() && modifyCursor() )
