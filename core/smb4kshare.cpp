@@ -230,14 +230,13 @@ void Smb4KShare::setURL( const KUrl &url )
   }
 
   // Check protocol
-  if ( !url.protocol().isEmpty() && 
-       (QString::compare( url.protocol(), "smb" ) != 0 || QString::compare( url.protocol(), "file" ) != 0) )
+  if ( url.protocol().isEmpty() || QString::compare( url.protocol(), "smb" ) == 0 )
   {
-    return;
+    // Do nothing
   }
   else
   {
-    // Do nothing
+    return;
   }
   
   // Check that the share name is present
@@ -263,42 +262,7 @@ void Smb4KShare::setURL( const QString &url )
   KUrl u;
   u.setUrl( url, KUrl::TolerantMode );
 
-  // Check validity.
-  if ( !u.isValid() )
-  {
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Check protocol
-  if ( !u.protocol().isEmpty() && 
-       (QString::compare( u.protocol(), "smb" ) != 0 || QString::compare( u.protocol(), "file" ) != 0) )
-  {
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Check that the share name is present
-  if ( !u.hasPath() || u.path(KUrl::RemoveTrailingSlash).endsWith('/') )
-  {
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Set the URL
-  d->url = u;
-  
-  // Force the protocol
-  d->url.setProtocol( "smb" );
+  setURL( u );
 }
 
 
