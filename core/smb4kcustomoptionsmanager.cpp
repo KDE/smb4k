@@ -534,7 +534,7 @@ void Smb4KCustomOptionsManager::readCustomOptions()
 void Smb4KCustomOptionsManager::writeCustomOptions()
 {
   // Clean up:
-  QFile xmlFile( KGlobal::dirs()->locateLocal( "data", "smb4k/custo.xml", KGlobal::mainComponent() ) );
+  QFile xmlFile( KGlobal::dirs()->locateLocal( "data", "smb4k/custom_options.xml", KGlobal::mainComponent() ) );
 
   if ( !d->options.isEmpty() )
   {
