@@ -134,14 +134,13 @@ void Smb4KHost::setURL( const KUrl &url )
   }
 
   // Check protocol
-  if ( !url.protocol().isEmpty() && 
-       (QString::compare( url.protocol(), "smb" ) != 0 || QString::compare( url.protocol(), "file" ) != 0) )
+  if ( url.protocol().isEmpty() || QString::compare( url.protocol(), "smb" ) == 0 )
   {
-    return;
+    // Do nothing
   }
   else
   {
-    // Do nothing
+    return;
   }
 
   // Check that this is a host item
