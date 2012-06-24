@@ -90,6 +90,21 @@ Smb4KShareOptions::Smb4KShareOptions( QWidget *parent )
                                   mount_box );
   remount_shares->setObjectName( "kcfg_RemountShares" );
 
+  QLabel *rem_attempts_label    = new QLabel( Smb4KSettings::self()->remountAttemptsItem()->label(),
+                                  mount_box );
+  rem_attempts_label->setIndent( 30 );
+  KIntNumInput *remount_attempts = new KIntNumInput( mount_box );
+  remount_attempts->setObjectName( "kcfg_RemountAttempts" );
+  rem_attempts_label->setBuddy( remount_attempts );
+  
+  QLabel *rem_interval_label    = new QLabel( Smb4KSettings::self()->remountIntervalItem()->label(),
+                                  mount_box );
+  rem_interval_label->setIndent( 30 );
+  KIntNumInput *remount_interval = new KIntNumInput( mount_box );
+  remount_interval->setObjectName( "kcfg_RemountInterval" );
+  remount_interval->setSuffix( " min." );
+  rem_interval_label->setBuddy( remount_interval );
+  
   QCheckBox *allow_foreign      = new QCheckBox( Smb4KSettings::self()->unmountForeignSharesItem()->label(),
                                   mount_box );
   allow_foreign->setObjectName( "kcfg_UnmountForeignShares" );
@@ -101,14 +116,22 @@ Smb4KShareOptions::Smb4KShareOptions( QWidget *parent )
 #endif
 
 #ifdef Q_OS_LINUX
-  mount_layout->addWidget( remount_shares, 0, 0, 0 );
-  mount_layout->addWidget( unmount_all_shares, 1, 0, 0 );
-  mount_layout->addWidget( unmount_inaccessible, 2, 0, 0 );
-  mount_layout->addWidget( allow_foreign, 3, 0, 0 );
+  mount_layout->addWidget( remount_shares, 0, 0, 1, 2, 0 );
+  mount_layout->addWidget( rem_attempts_label, 1, 0, 0 );
+  mount_layout->addWidget( remount_attempts, 1, 1, 0 );
+  mount_layout->addWidget( rem_interval_label, 2, 0, 0 );
+  mount_layout->addWidget( remount_interval, 2, 1, 0 );
+  mount_layout->addWidget( unmount_all_shares, 3, 0, 1, 2, 0 );
+  mount_layout->addWidget( unmount_inaccessible, 4, 0, 1, 2, 0 );
+  mount_layout->addWidget( allow_foreign, 5, 0, 1, 2, 0 );
 #else
-  mount_layout->addWidget( remount_shares, 0, 0, 0 );
-  mount_layout->addWidget( unmount_all_shares, 1, 0, 0 );
-  mount_layout->addWidget( allow_foreign, 2, 0, 0 );
+  mount_layout->addWidget( remount_shares, 0, 0, 1, 2, 0 );
+  mount_layout->addWidget( rem_attempts_label, 1, 0, 0 );
+  mount_layout->addWidget( remount_attempts, 1, 1, 0 );
+  mount_layout->addWidget( rem_interval_label, 2, 0, 0 );
+  mount_layout->addWidget( remount_interval, 2, 1, 0 );
+  mount_layout->addWidget( unmount_all_shares, 3, 0, 1, 2, 0 );
+  mount_layout->addWidget( allow_foreign, 4, 0, 1, 2, 0 );
 #endif
 
   // Checks

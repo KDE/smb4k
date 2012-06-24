@@ -86,27 +86,27 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
 
   QLabel *netbios_name_label    = new QLabel( Smb4KSettings::self()->netBIOSNameItem()->label(),
                                   general_box );
-
   KLineEdit *netbios_name       = new KLineEdit( general_box );
   netbios_name->setObjectName( "kcfg_NetBIOSName" );
+  netbios_name_label->setBuddy( netbios_name );
 
   QLabel *domain_label          = new QLabel( Smb4KSettings::self()->domainNameItem()->label(),
                                   general_box );
-
   KLineEdit *domain             = new KLineEdit( general_box );
   domain->setObjectName( "kcfg_DomainName" );
-
+  domain_label->setBuddy( domain );
+  
   QLabel *socket_options_label  = new QLabel( Smb4KSettings::self()->socketOptionsItem()->label(),
                                   general_box );
-
   KLineEdit *socket_options     = new KLineEdit( general_box );
   socket_options->setObjectName( "kcfg_SocketOptions" );
-
+  socket_options_label->setBuddy( socket_options );
+  
   QLabel *netbios_scope_label   = new QLabel( Smb4KSettings::self()->netBIOSScopeItem()->label(),
                                   general_box );
-
   KLineEdit *netbios_scope      = new KLineEdit( general_box );
   netbios_scope->setObjectName( "kcfg_NetBIOSScope" );
+  netbios_scope_label->setBuddy( netbios_scope );
 
   gen_opt_layout->addWidget( netbios_name_label, 0, 0, 0 );
   gen_opt_layout->addWidget( netbios_name, 0, 1, 0 );
@@ -233,6 +233,9 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   QToolButton *user_chooser    = new QToolButton( user_widget );
   user_chooser->setIcon( KIcon( "edit-find-user" ) );
   user_chooser->setToolTip( i18n( "Choose a different user" ) );
+  user_chooser->setPopupMode( QToolButton::InstantPopup );
+
+  user_id_label->setBuddy( user_chooser );
   
   QMenu *user_menu             = new QMenu( user_chooser );
   user_chooser->setMenu( user_menu );
@@ -277,6 +280,9 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   QToolButton *group_chooser   = new QToolButton( group_widget );
   group_chooser->setIcon( KIcon( "edit-find-user" ) );
   group_chooser->setToolTip( i18n( "Choose a different group" ) );
+  group_chooser->setPopupMode( QToolButton::InstantPopup );
+
+  group_id_label->setBuddy( group_chooser );
 
   QMenu *group_menu            = new QMenu( group_chooser );
   group_chooser->setMenu( group_menu );
@@ -311,6 +317,8 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   fmask->setObjectName( "kcfg_FileMask" );
   fmask->setAlignment( Qt::AlignRight );
 
+  fmask_label->setBuddy( fmask );
+
   QLabel *dmask_label          = new QLabel( Smb4KSettings::self()->directoryMaskItem()->label(),
                                  common_options );
 
@@ -318,6 +326,8 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   dmask->setObjectName( "kcfg_DirectoryMask" );
   dmask->setAlignment( Qt::AlignRight );
 
+  dmask_label->setBuddy( dmask );
+  
 #ifndef Q_OS_FREEBSD
   QLabel *write_access_label   = new QLabel( Smb4KSettings::self()->writeAccessItem()->label(),
                                  common_options );
@@ -328,6 +338,8 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
                             Smb4KSettings::self()->writeAccessItem()->choices().value( Smb4KSettings::EnumWriteAccess::ReadWrite ).label );
   write_access->insertItem( Smb4KSettings::EnumWriteAccess::ReadOnly,
                             Smb4KSettings::self()->writeAccessItem()->choices().value( Smb4KSettings::EnumWriteAccess::ReadOnly ).label );
+
+  write_access_label->setBuddy( write_access );
 #endif
 
   QLabel *charset_label        = new QLabel( Smb4KSettings::self()->clientCharsetItem()->label(),
@@ -381,6 +393,8 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
                        Smb4KSettings::self()->clientCharsetItem()->choices().value( Smb4KSettings::EnumClientCharset::euc_kr ).label );
   charset->insertItem( Smb4KSettings::EnumClientCharset::tis_620,
                        Smb4KSettings::self()->clientCharsetItem()->choices().value( Smb4KSettings::EnumClientCharset::tis_620 ).label );
+
+  charset_label->setBuddy( charset );
 
 #ifdef Q_OS_FREEBSD
   QLabel *codepage_label       = new QLabel( Smb4KSettings::self()->serverCodepageItem()->label(),
@@ -455,6 +469,8 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
                         Smb4KSettings::self()->serverCodepageItem()->choices().value( Smb4KSettings::EnumServerCodepage::cp1258 ).label );
   codepage->insertItem( Smb4KSettings::EnumServerCodepage::unicode,
                         Smb4KSettings::self()->serverCodepageItem()->choices().value( Smb4KSettings::EnumServerCodepage::unicode ).label );
+
+  codepage_label->setBuddy( codepage );
 #endif
 
 #ifndef Q_OS_FREEBSD
@@ -544,11 +560,15 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   security_box->insertItem( Smb4KSettings::EnumSecurityMode::Ntlmv2i,
                             Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmv2i ).label );
 
+  security_label->setBuddy( security_box );
+
   QLabel *add_options_label    = new QLabel( Smb4KSettings::self()->customCIFSOptionsItem()->label(),
                                  c_extra_widget );
 
   KLineEdit *additional_opts   = new KLineEdit( c_extra_widget );
   additional_opts->setObjectName( "kcfg_CustomCIFSOptions" );
+
+  add_options_label->setBuddy( additional_opts );
 
   c_extra_layout->addWidget( security_label, 0, 0, 0 );
   c_extra_layout->addWidget( security_box, 0, 1, 0 );
@@ -601,6 +621,8 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   protocol_hint->insertItem( Smb4KSettings::EnumProtocolHint::ADS,
                              Smb4KSettings::self()->protocolHintItem()->choices().value( Smb4KSettings::EnumProtocolHint::ADS ).label );
 
+  proto_hint_label->setBuddy( protocol_hint );
+
   net_layout->addWidget( proto_hint_label, 0, 0, 0 );
   net_layout->addWidget( protocol_hint, 0, 1, 0 );
 
@@ -616,6 +638,8 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   KLineEdit *name_resolve      = new KLineEdit( smbclient_box );
   name_resolve->setObjectName( "kcfg_NameResolveOrder" );
 
+  name_resolve_label->setBuddy( name_resolve );
+
   QLabel *buffer_size_label    = new QLabel( Smb4KSettings::self()->bufferSizeItem()->label(),
                                  smbclient_box );
 
@@ -623,6 +647,8 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   buffer_size->setObjectName( "kcfg_BufferSize" );
   buffer_size->setSuffix( i18n( " Bytes" ) );
   buffer_size->setSliderEnabled( true );
+
+  buffer_size_label->setBuddy( buffer_size );
 
   smbclient_layout->addWidget( name_resolve_label, 0, 0, 0 );
   smbclient_layout->addWidget( name_resolve, 0, 1, 0 );
@@ -640,6 +666,8 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
 
   KLineEdit *broadcast_address = new KLineEdit( nmblookup_box );
   broadcast_address->setObjectName( "kcfg_BroadcastAddress" );
+
+  broadcast_add_label->setBuddy( broadcast_address );
 
   QCheckBox *port_137          = new QCheckBox( Smb4KSettings::self()->usePort137Item()->label(),
                                  nmblookup_box );
@@ -725,6 +753,8 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   
   m_unc_address = new KLineEdit( m_editors );
   m_unc_address->setReadOnly( true );
+
+  unc_label->setBuddy( m_unc_address );
   
   QLabel *smb_port_label = new QLabel( "SMB Port:", m_editors );
   
@@ -733,6 +763,8 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
                         Smb4KSettings::self()->remoteSMBPortItem()->maxValue().toInt() );
   m_smb_port->setSliderEnabled( true );
 
+  smb_port_label->setBuddy( m_smb_port );
+
 #ifndef Q_OS_FREEBSD
   QLabel *fs_port_label = new QLabel( i18n( "Filesystem Port:" ), m_editors );
   
@@ -740,6 +772,8 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   m_fs_port->setRange( Smb4KSettings::self()->remoteFileSystemPortItem()->minValue().toInt(),
                        Smb4KSettings::self()->remoteFileSystemPortItem()->maxValue().toInt() );
   m_fs_port->setSliderEnabled( true );
+
+  fs_port_label->setBuddy( m_fs_port );
   
   QLabel *rw_label = new QLabel( i18n( "Write Access:" ), m_editors );
   
@@ -750,6 +784,8 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   m_write_access->insertItem( 1, Smb4KSettings::self()->writeAccessItem()->choices()
                                  .value( Smb4KSettings::EnumWriteAccess::ReadOnly ).label, 
                               QVariant::fromValue<int>( Smb4KCustomOptions::ReadOnly ) );
+
+  rw_label->setBuddy( m_write_access );
 #endif
   
   QLabel *protocol_label = new QLabel( i18n( "Protocol Hint:" ), m_editors );
@@ -767,6 +803,8 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   m_protocol_hint->insertItem( 3, Smb4KSettings::self()->protocolHintItem()->choices()
                                   .value( Smb4KSettings::EnumProtocolHint::ADS ).label,
                                QVariant::fromValue<int>( Smb4KCustomOptions::ADS ) );
+
+  protocol_label->setBuddy( m_protocol_hint );
   
   QLabel *uid_label = new QLabel( i18n( "User ID:" ), m_editors );
   m_user_id         = new KComboBox( m_editors );
@@ -779,6 +817,8 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
     m_user_id->insertItem( i, QString( "%1 (%2)" ).arg( user.loginName() ).arg( user.uid() ), 
                            QVariant::fromValue<K_UID>( user.uid() ) );
   }
+
+  uid_label->setBuddy( m_user_id );
   
   QLabel *gid_label = new QLabel( i18n( "Group ID:" ), m_editors );
   m_group_id        = new KComboBox( m_editors );
@@ -789,8 +829,10 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
   {
     KUserGroup group = all_groups.at( i );
     m_group_id->insertItem( i, QString( "%1 (%2)" ).arg( group.name() ).arg( group.gid() ), 
-                           QVariant::fromValue<K_UID>( group.gid() ) );
+                           QVariant::fromValue<K_GID>( group.gid() ) );
   }
+
+  gid_label->setBuddy( m_group_id );
   
   m_kerberos = new QCheckBox( Smb4KSettings::self()->useKerberosItem()->label(), m_editors );
   
