@@ -412,6 +412,7 @@ class Smb4KMounterPrivate
     int initialUnmounts;
     int pendingMounts;
     int initialMounts;
+    bool firstImportDone;
 };
 
 

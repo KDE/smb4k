@@ -93,6 +93,7 @@ Smb4KMounter::Smb4KMounter( QObject *parent )
   d->initialUnmounts = 0;
   d->pendingMounts = 0;
   d->initialMounts = 0;
+  d->firstImportDone = false;
 
   connect( QCoreApplication::instance(), SIGNAL(aboutToQuit()),
            this,                         SLOT(slotAboutToQuit()) );
@@ -1469,13 +1470,22 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
     // Clean up the mount prefix
     cleanup();
 
-    // Try to remount those shares that weren't mounted
-    // in the first run.
-    if ( Smb4KSettings::remountShares() && !d->remounts.isEmpty() &&
-         d->remountTimeout >= (60000 * Smb4KSettings::remountInterval()) &&
-         d->remountAttempts <= Smb4KSettings::remountAttempts() )
+    if ( Smb4KSettings::remountShares() )
     {
-      triggerRemounts( false );
+      if ( d->remountTimeout == 0 && d->firstImportDone && d->remountAttempts == 0 )
+      {
+        triggerRemounts( true );
+      }
+      else if ( !d->remounts.isEmpty() &&
+                d->remountTimeout >= (60000 * Smb4KSettings::remountInterval()) &&
+                d->remountAttempts <= Smb4KSettings::remountAttempts() )
+      {
+        triggerRemounts( false );
+      }
+      else
+      {
+        // Do nothing
+      }
     }
     else
     {
@@ -1487,7 +1497,8 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
     // Do nothing and wait until the application started up.
   }
   
-  if ( Smb4KSettings::remountShares() && d->remountAttempts < Smb4KSettings::remountAttempts() )
+  if ( Smb4KSettings::remountShares() && d->firstImportDone &&
+       d->remountAttempts < Smb4KSettings::remountAttempts() )
   {
     d->remountTimeout += TIMEOUT;
   }
@@ -1513,7 +1524,6 @@ void Smb4KMounter::slotStartJobs()
        Smb4KSolidInterface::self()->networkStatus() == Smb4KSolidInterface::Unknown )
   {
     d->hardwareReason = false;
-    triggerRemounts( true );
   }
   else
   {
@@ -2365,6 +2375,15 @@ void Smb4KMounter::slotStatResult( KJob *job )
   }
 
   delete share;
+
+  if ( !d->firstImportDone )
+  {
+    d->firstImportDone = true;
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
