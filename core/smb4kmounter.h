@@ -419,7 +419,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
     /**
      * Trigger the remounting of shares.
      */
-    void triggerRemounts();
+    void triggerRemounts( bool fill_list );
 
     /**
      * Imports mounted shares.

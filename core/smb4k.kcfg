@@ -215,6 +215,20 @@
       <whatsthis>Remount all your shares that were mounted when you exited the program. If a remount fails, Smb4K will retry the next time it is started. Shares that were mounted by other users are ignored.</whatsthis>
       <default>false</default>
     </entry>
+    <entry name="RemountAttempts" type="Int">
+      <label>Number of remount attempts:</label>
+      <whatsthis>Set the number of attempts that are made to remount shares before Smb4K gives up.</whatsthis>
+      <min>1</min>
+      <max>100</max>
+      <default>1</default>
+    </entry>
+    <entry name="RemountInterval" type="Int">
+      <label>Interval between remount attempts:</label>
+      <whatsthis>Set the time that elapses between attempts to remount shares.</whatsthis>
+      <min>1</min>
+      <max>30</max>
+      <default>5</default>
+    </entry>
     <entry name="UnmountForeignShares" type="Bool">
       <label>Allow the unmounting of shares that are owned by other users</label>
       <whatsthis>Allow the unmounting of shares that were mounted by other users. Please think before you enable this option.</whatsthis>

@@ -83,7 +83,9 @@ Smb4KMounter::Smb4KMounter( QObject *parent )
     // Do nothing
   }
 
-  d->timeout = 0;
+  d->importTimeout = 0;
+  d->remountTimeout = 0;
+  d->remountAttempts = 0;
   d->checks = 0;
   d->dialog = 0;
   d->aboutToQuit = false;
@@ -233,77 +235,93 @@ bool Smb4KMounter::isRunning()
 }
 
 
-void Smb4KMounter::triggerRemounts()
+void Smb4KMounter::triggerRemounts( bool fill_list )
 {
   if ( Smb4KSettings::remountShares() || d->hardwareReason )
   {
-    // Get the shares that are to be remounted
-    QList<Smb4KCustomOptions *> list = Smb4KCustomOptionsManager::self()->sharesToRemount();
-    QList<Smb4KShare *> remounts;
-
-    if ( !list.isEmpty() )
+    if ( fill_list )
     {
-      // Check which ones actually need to be remounted.
-      for ( int i = 0; i < list.size(); ++i )
+      // Get the shares that are to be remounted
+      QList<Smb4KCustomOptions *> list = Smb4KCustomOptionsManager::self()->sharesToRemount();
+
+      if ( !list.isEmpty() )
       {
-        QList<Smb4KShare *> mounted_shares = findShareByUNC( list.at( i )->unc() );
-
-        if ( !mounted_shares.isEmpty() )
+        // Check which ones actually need to be remounted.
+        for ( int i = 0; i < list.size(); ++i )
         {
-          bool mount = true;
+          QList<Smb4KShare *> mounted_shares = findShareByUNC( list.at( i )->unc() );
 
-          for ( int j = 0; j < mounted_shares.size(); ++j )
+          if ( !mounted_shares.isEmpty() )
           {
-            if ( !mounted_shares.at( j )->isForeign() )
+            bool mount = true;
+
+            for ( int j = 0; j < mounted_shares.size(); ++j )
             {
-              mount = false;
-              break;
+              if ( !mounted_shares.at( j )->isForeign() )
+              {
+                mount = false;
+                break;
+              }
+              else
+              {
+                continue;
+              }
+            }
+
+            if ( mount )
+            {
+              Smb4KShare *share = new Smb4KShare();
+              share->setURL( list.at( i )->url() );
+              share->setWorkgroupName( list.at( i )->workgroupName() );
+              share->setHostIP( list.at( i )->ip() );
+
+              if ( !share->url().isEmpty() )
+              {
+                d->remounts << share;
+              }
+              else
+              {
+                // Do nothing
+              }
             }
             else
             {
-              continue;
+              // Do nothing
             }
           }
-
-          if ( mount )
+          else
           {
             Smb4KShare *share = new Smb4KShare();
             share->setURL( list.at( i )->url() );
             share->setWorkgroupName( list.at( i )->workgroupName() );
             share->setHostIP( list.at( i )->ip() );
 
-            remounts << share;
-          }
-          else
-          {
-            // Do nothing
+            if ( !share->url().isEmpty() )
+            {
+              d->remounts << share;
+            }
+            else
+            {
+              // Do nothing
+            }
           }
         }
-        else
-        {
-          Smb4KShare *share = new Smb4KShare();
-          share->setURL( list.at( i )->url() );
-          share->setWorkgroupName( list.at( i )->workgroupName() );
-          share->setHostIP( list.at( i )->ip() );
-            
-          remounts << share;
-        }
-      }
-
-      if ( !remounts.isEmpty() )
-      {
-        mountShares( remounts );
       }
       else
       {
         // Do nothing
       }
 
-      // Clear list
-      while ( !remounts.isEmpty() )
+      if ( !d->remounts.isEmpty() )
       {
-        delete remounts.takeFirst();
+        mountShares( d->remounts );
       }
+      else
+      {
+        // Do nothing
+      }
+
+      d->remountAttempts++;
     }
     else
     {
@@ -735,19 +753,19 @@ void Smb4KMounter::openMountDialog( QWidget *parent )
 {
   if ( !d->dialog )
   {
-    Smb4KShare share;
+    Smb4KShare *share = new Smb4KShare();
     
-    d->dialog = new Smb4KMountDialog( &share, parent );
+    d->dialog = new Smb4KMountDialog( share, parent );
 
     if ( d->dialog->exec() == KDialog::Accepted && d->dialog->validUserInput() )
     {
       // Pass the share to mountShare().
-      mountShare( &share, parent );
+      mountShare( share, parent );
       
       // Bookmark the share if the user wants this.
       if ( d->dialog->bookmarkShare() )
       {
-        Smb4KBookmarkHandler::self()->addBookmark( &share );
+        Smb4KBookmarkHandler::self()->addBookmark( share );
       }
       else
       {
@@ -761,6 +779,8 @@ void Smb4KMounter::openMountDialog( QWidget *parent )
 
     delete d->dialog;
     d->dialog = NULL;
+
+    delete share;
   }
   else
   {
@@ -1333,6 +1353,7 @@ void Smb4KMounter::saveSharesForRemount()
 {
   if ( (Smb4KSettings::remountShares() && d->aboutToQuit) || d->hardwareReason )
   {
+    // Save currently mounted shares.
     for ( int i = 0; i < mountedSharesList().size(); ++i )
     {
       if ( !mountedSharesList().at( i )->isForeign() )
@@ -1343,6 +1364,12 @@ void Smb4KMounter::saveSharesForRemount()
       {
         Smb4KCustomOptionsManager::self()->removeRemount( mountedSharesList().at( i ) );
       }
+    }
+
+    // Save failed remounts.
+    for ( int i = 0; i < d->remounts.size(); ++i )
+    {
+      Smb4KCustomOptionsManager::self()->addRemount( d->remounts.at( i ) );
     }
   }
   else
@@ -1355,6 +1382,11 @@ void Smb4KMounter::saveSharesForRemount()
     {
       // Do nothing
     }
+  }
+
+  while ( !d->remounts.isEmpty() )
+  {
+    delete d->remounts.takeFirst();
   }
 }
 
@@ -1413,7 +1445,7 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
       // Do nothing
     }
     
-    if ( d->timeout >= Smb4KSettings::checkInterval() && d->importedShares.isEmpty() )
+    if ( d->importTimeout >= Smb4KSettings::checkInterval() && d->importedShares.isEmpty() )
     {
       // Import the mounted shares.
       if ( d->checks == 10 )
@@ -1427,7 +1459,7 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
         d->checks += 1;
       }
       
-      d->timeout = 0;
+      d->importTimeout = 0;
     }
     else
     {
@@ -1435,14 +1467,36 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
     }
     
     // Clean up the mount prefix
-    cleanup();    
+    cleanup();
+
+    // Try to remount those shares that weren't mounted
+    // in the first run.
+    if ( Smb4KSettings::remountShares() && !d->remounts.isEmpty() &&
+         d->remountTimeout >= (60000 * Smb4KSettings::remountInterval()) &&
+         d->remountAttempts <= Smb4KSettings::remountAttempts() )
+    {
+      triggerRemounts( false );
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
     // Do nothing and wait until the application started up.
   }
   
-  d->timeout += TIMEOUT;
+  if ( Smb4KSettings::remountShares() && d->remountAttempts < Smb4KSettings::remountAttempts() )
+  {
+    d->remountTimeout += TIMEOUT;
+  }
+  else
+  {
+    d->remountTimeout = 0;
+  }
+
+  d->importTimeout += TIMEOUT;
 }
 
 
@@ -1453,20 +1507,20 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
 
 void Smb4KMounter::slotStartJobs()
 {
-  startTimer( TIMEOUT );
-
   import( true );
 
   if ( Smb4KSolidInterface::self()->networkStatus() == Smb4KSolidInterface::Connected ||
        Smb4KSolidInterface::self()->networkStatus() == Smb4KSolidInterface::Unknown )
   {
     d->hardwareReason = false;
-    triggerRemounts();
+    triggerRemounts( true );
   }
   else
   {
     // Do nothing and wait until the network becomes available.
   }
+
+  startTimer( TIMEOUT );
 }
 
 
@@ -1592,6 +1646,25 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
 {
   Q_ASSERT( share );
 
+  // Remove the share from the list of shares that are to be remounted.
+  QMutableListIterator<Smb4KShare *> s( d->remounts );
+
+  while ( s.hasNext() )
+  {
+    Smb4KShare *remount = s.next();
+
+    if ( !share->isForeign() && QString::compare( remount->unc(), share->unc(), Qt::CaseInsensitive ) == 0 )
+    {
+      qDebug() << "Removing " << remount->unc() << " from list of remounts";
+      s.remove();
+      break;
+    }
+    else
+    {
+      continue;
+    }
+  }
+  
   // Check that the share has not already been entered into the list.
   Smb4KShare *known_share = findShareByPath( share->canonicalPath() );
 
@@ -1944,7 +2017,7 @@ void Smb4KMounter::slotComputerWokeUp()
     case Smb4KSolidInterface::Unknown:
     {
       d->hardwareReason = true;
-      triggerRemounts();
+      triggerRemounts( true );
       d->hardwareReason = false;
       break;
     }
@@ -1963,7 +2036,7 @@ void Smb4KMounter::slotNetworkStatusChanged( Smb4KSolidInterface::ConnectionStat
     case Smb4KSolidInterface::Connected:
     {
       d->hardwareReason = true;
-      triggerRemounts();
+      triggerRemounts( true );
       d->hardwareReason = false;
       break;
     }
@@ -1979,7 +2052,7 @@ void Smb4KMounter::slotNetworkStatusChanged( Smb4KSolidInterface::ConnectionStat
     case Smb4KSolidInterface::Unknown:
     {
       d->hardwareReason = true;
-      triggerRemounts();
+      triggerRemounts( true );
       d->hardwareReason = false;
       break;
     }

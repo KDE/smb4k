@@ -396,11 +396,14 @@ class Smb4KMountDialog : public KDialog
 class Smb4KMounterPrivate
 {
   public:
-    int timeout;
+    int importTimeout;
+    int remountTimeout;
+    int remountAttempts;
     int checks;
     Smb4KMountDialog *dialog;
     QList<Smb4KShare *> importedShares;
     QList<Smb4KShare *> retries;
+    QList<Smb4KShare *> remounts;
     QList<Smb4KNetworkObject *> shareObjects;
     QStringList obsoleteMountpoints;
     bool aboutToQuit;
