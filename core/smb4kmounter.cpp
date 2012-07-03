@@ -1021,7 +1021,7 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool silent, QWidget *parent
   // Create a new job and add it to the subjobs
   Smb4KUnmountJob *job = new Smb4KUnmountJob( this );
   job->setObjectName( QString( "UnmountJob_%1" ).arg( share->canonicalPath() ) );
-  job->setupUnmount( share, force, silent, parent );
+  job->setupUnmount( share, force, silent, d->aboutToQuit, parent );
 
   connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
   connect( job, SIGNAL(aboutToStart(QList<Smb4KShare*>)), SLOT(slotAboutToStartUnmounting(QList<Smb4KShare*>)) );
@@ -1165,8 +1165,8 @@ void Smb4KMounter::unmountShares( const QList<Smb4KShare *> &shares, bool silent
   // Create a new job and add it to the subjobs
   Smb4KUnmountJob *job = new Smb4KUnmountJob( this );
   job->setObjectName( QString( "UnmountJob_bulk-%1" ).arg( shares.size() ) );
-  job->setupUnmount( shares_to_unmount, force, silent, parent );
-
+  job->setupUnmount( shares_to_unmount, force, silent, d->aboutToQuit, parent );
+    
   connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
   connect( job, SIGNAL(aboutToStart(QList<Smb4KShare*>)), SLOT(slotAboutToStartUnmounting(QList<Smb4KShare*>)) );
   connect( job, SIGNAL(finished(QList<Smb4KShare*>)), SLOT(slotFinishedUnmounting(QList<Smb4KShare*>)) );
@@ -1183,14 +1183,7 @@ void Smb4KMounter::unmountShares( const QList<Smb4KShare *> &shares, bool silent
   
   addSubjob( job );
 
-  if ( !d->aboutToQuit )
-  {
-    job->start();
-  }
-  else
-  {
-    job->synchronousStart();
-  }
+  job->start();
 }
 
 
@@ -1665,7 +1658,6 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
 
     if ( !share->isForeign() && QString::compare( remount->unc(), share->unc(), Qt::CaseInsensitive ) == 0 )
     {
-      qDebug() << "Removing " << remount->unc() << " from list of remounts";
       s.remove();
       break;
     }
@@ -1700,6 +1692,12 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
     addMountedShare( known_share );
 
     // Check whether the share stems from a bulk mount or not.
+    // 
+    // FIXME: What can be done to determine whether this share was
+    // mounted via a bulk mount or not and act accordingly.
+    // Example: A buld mount is still running (i.e. remounting of
+    // shares) and the user starts to mount additional shares through
+    // the GUI.
     if ( d->pendingMounts != 0 )
     {
       if ( Smb4KSettings::remountShares() )

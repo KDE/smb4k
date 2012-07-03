@@ -202,14 +202,6 @@ class Smb4KUnmountJob : public KJob
     void start();
     
     /**
-     * Starts the job synchronously. In contrast to the start() function, it
-     * directly calls slotStartUnmount().
-     * 
-     * You should not use this function unless it is really necessary.
-     */
-    void synchronousStart();    
-    
-    /**
      * Set up the job for a single unmount.
      *
      * You must run this function before start() is called.
@@ -219,12 +211,16 @@ class Smb4KUnmountJob : public KJob
      * @param force       Force unmounting
      * 
      * @param silent      Perform the unmounting silently. No reporting
+     *
+     * @param synchron    Start the job synchronously. slotStartUnmount() is
+     *                    called directly.
      * 
      * @param parent      The parent widget
      */
     void setupUnmount( Smb4KShare *share,
                        bool force,
                        bool silent,
+                       bool synchron,
                        QWidget *parent = 0 );
     
     /**
@@ -237,12 +233,16 @@ class Smb4KUnmountJob : public KJob
      * @param force       Force unmounting
      * 
      * @param silent      Perform the unmounting silently. No reporting
+     *
+     * @param synchron    Start the job synchronously. slotStartUnmount() is
+     *                    called directly.
      * 
      * @param parent      The parent widget
      */
     void setupUnmount( const QList<Smb4KShare *> &shares,
                        bool force,
                        bool silent,
+                       bool synchron,
                        QWidget *parent = 0 );
     
   Q_SIGNALS:
@@ -277,6 +277,7 @@ class Smb4KUnmountJob : public KJob
     bool m_started;
     bool m_force;
     bool m_silent;
+    bool m_synchron;
     QList<Smb4KShare *> m_shares;
     QWidget *m_parent_widget;
     bool createUnmountAction( Smb4KShare *share,

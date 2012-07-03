@@ -872,28 +872,30 @@ Smb4KUnmountJob::~Smb4KUnmountJob()
 void Smb4KUnmountJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT(slotStartUnmount()) );
+  
+  if ( !m_synchron )
+  {
+    QTimer::singleShot( 0, this, SLOT(slotStartUnmount()) );
+  }
+  else
+  {
+    slotStartUnmount();
+  }
 }
 
 
-void Smb4KUnmountJob::synchronousStart()
-{
-  m_started = true;
-  slotStartUnmount();
-}
-
-
-void Smb4KUnmountJob::setupUnmount( Smb4KShare *share, bool force, bool silent, QWidget *parent )
+void Smb4KUnmountJob::setupUnmount( Smb4KShare *share, bool force, bool silent, bool synchron, QWidget *parent )
 {
   Q_ASSERT( share );
   m_shares << new Smb4KShare( *share );
   m_force = force;
   m_silent = silent;
+  m_synchron = synchron;
   m_parent_widget = parent;
 }
 
 
-void Smb4KUnmountJob::setupUnmount( const QList<Smb4KShare *> &shares, bool force, bool silent, QWidget* parent )
+void Smb4KUnmountJob::setupUnmount( const QList<Smb4KShare *> &shares, bool force, bool silent, bool synchron, QWidget* parent )
 {
   QListIterator<Smb4KShare *> it( shares );
 
@@ -906,6 +908,7 @@ void Smb4KUnmountJob::setupUnmount( const QList<Smb4KShare *> &shares, bool forc
 
   m_force = force;
   m_silent = silent;
+  m_synchron = synchron;
   m_parent_widget = parent;
 }
 
