@@ -252,7 +252,7 @@ Smb4KCustomOptions* Smb4KCustomOptionsManager::findOptions( const KUrl &url )
 {
   Smb4KCustomOptions *options = NULL;
   
-  if ( url.isValid() && QString::compare( url.scheme(), "smb" ) == 0 )
+  if ( url.isValid() && QString::compare( url.protocol(), "smb" ) == 0 )
   {
     for ( int i = 0; i < d->options.size(); ++i )
     {
