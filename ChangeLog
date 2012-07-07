@@ -9,6 +9,19 @@ Smb4K 1.1.0 (????-??-??):
   met, its installation will be skipped.
 - Added Smb4KNetworkObject class that derives from QObject and encapsulates
   a network item (workgroup, host, or share).
+- Revised Smb4KHost class:
+  + The unc() function now only returns the UNC in the form //HOST. If you
+    also need the username, password or port in the string, use the url() 
+    function.
+  + Removed ipChecked() function.
+  + Removed infoChecked() function.
+  + Added hasIP() function.
+  + Added hasInfo() function.
+- Revised Smb4KShare class:
+  + The unc() function now only returns the UNC in the form //HOST/Share. If 
+    you also need the username, password or port in the string, use the url() 
+    function.
+  + Added setURL() function that takes a string as argument.
 - Revised Smb4KScanner class:
   + To use functions from the scanner in the plasmoid, Q_INVOKABLE and
     Q_PROPERTY macros are used.
@@ -41,6 +54,9 @@ Smb4K 1.1.0 (????-??-??):
 - Revised Smb4KWalletManager class:
   + When prompting for a password for a 'homes' share, use the UNC of the
     user's home directory and not //SERVER/homes.
+- Revised Smb4KCustomOptionsManager class:
+  + The customOptions() function now takes a boolean that determines if
+    also entries that are only meant to be remounted are also returned.
 - Removed Smb4KIPAddressScanner class. IP addresses are now looked up by
   Smb4KScanner using a private job.
 - Revised network browser:
@@ -51,6 +67,7 @@ Smb4K 1.1.0 (????-??-??):
   + When mounting a 'homes' share, show that UNC of the user's home
     directory in the status bar instead of //SERVER/homes.
 - Revised configuration dialog:
+  + Added options for advanced remounting behavior.
   + Implemented shortcuts for all entries. (Labels have now their buddies
     set.)
 
