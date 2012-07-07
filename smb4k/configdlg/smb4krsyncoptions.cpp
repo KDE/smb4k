@@ -70,6 +70,8 @@ Smb4KRsyncOptions::Smb4KRsyncOptions( QWidget *parent )
   prefix->setMode( KFile::Directory | KFile::LocalOnly );
   prefix->setObjectName( "kcfg_RsyncPrefix" );
 
+  rsync_prefix_label->setBuddy( prefix );
+
   directory_layout->addWidget( rsync_prefix_label, 0, 0, 0 );
   directory_layout->addWidget( prefix, 0, 1, 0 );
 
@@ -397,6 +399,8 @@ Smb4KRsyncOptions::Smb4KRsyncOptions( QWidget *parent )
 
   KLineEdit *custom_rules       = new KLineEdit( filter_rules_box );
   custom_rules->setObjectName( "kcfg_CustomFilteringRules" );
+
+  custom_rules_label->setBuddy( custom_rules );
 
   QLabel *special_rules         = new QLabel( i18n( "Special filter rules:" ), filter_rules_box );
 

@@ -62,11 +62,12 @@ Smb4KShareOptions::Smb4KShareOptions( QWidget *parent )
 
   QLabel *prefix_label          = new QLabel( Smb4KSettings::self()->mountPrefixItem()->label(),
                                   directory_box );
-
   KUrlRequester *prefix         = new KUrlRequester( directory_box );
   prefix->setMode( KFile::Directory | KFile::LocalOnly );
   prefix->setObjectName( "kcfg_MountPrefix" );
 
+  prefix_label->setBuddy( prefix );
+  
   QCheckBox *lowercase_subdirs  = new QCheckBox( Smb4KSettings::self()->forceLowerCaseSubdirsItem()->label(),
                                   directory_box );
   lowercase_subdirs->setObjectName( "kcfg_ForceLowerCaseSubdirs" );
@@ -142,7 +143,6 @@ Smb4KShareOptions::Smb4KShareOptions( QWidget *parent )
 
   QLabel *check_interval_label  = new QLabel( Smb4KSettings::self()->checkIntervalItem()->label(),
                                   checks_box );
-
   KIntNumInput *check_interval  = new KIntNumInput( checks_box );
   check_interval->setObjectName( "kcfg_CheckInterval" );
   check_interval->setSuffix( " ms" );
@@ -151,6 +151,8 @@ Smb4KShareOptions::Smb4KShareOptions( QWidget *parent )
   check_interval->setSingleStep( 50 );
   check_interval->setSliderEnabled( true );
 
+  check_interval_label->setBuddy( check_interval );
+  
   checks_layout->addWidget( check_interval_label, 0, 0, 0 );
   checks_layout->addWidget( check_interval, 0, 1, 0 );
 
