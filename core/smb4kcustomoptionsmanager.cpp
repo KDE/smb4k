@@ -606,7 +606,7 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
 }
 
 
-const QList<Smb4KCustomOptions *> Smb4KCustomOptionsManager::customOptions()
+const QList<Smb4KCustomOptions *> Smb4KCustomOptionsManager::customOptions( bool optionsOnly )
 {
   QList<Smb4KCustomOptions *> custom_options;
   
@@ -614,7 +614,7 @@ const QList<Smb4KCustomOptions *> Smb4KCustomOptionsManager::customOptions()
   {
     Smb4KCustomOptions *options = d->options[i];
     
-    if ( hasCustomOptions( options ) || options->remount() == Smb4KCustomOptions::DoRemount )
+    if ( hasCustomOptions( options ) || (!optionsOnly && options->remount() == Smb4KCustomOptions::DoRemount) )
     {
       custom_options << options;
     }

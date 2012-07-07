@@ -131,12 +131,16 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
     Smb4KCustomOptions *findOptions( const KUrl &url );
     
     /**
-     * Get the list of custom options. The list not only comprises of those items that
-     * have custom options defined but also of those that are "only" to be remounted.
+     * Get the list of custom options. By default, the list not only comprises of those 
+     * items that have custom options defined but also of those that are "only" to be 
+     * remounted. If @p optionsOnly is defined, only those entries are returned that have
+     * custom options defined. Those that are only to be remounted won't be returned.
+     * 
+     * @param optionsOnly         Only return those entries that have custom options defined
      * 
      * @returns the list of custom options objects.
      */
-    const QList<Smb4KCustomOptions *> customOptions();
+    const QList<Smb4KCustomOptions *> customOptions( bool optionsOnly = false );
     
     /**
      * Replace all previously defined custom options with a list of new ones. If you
