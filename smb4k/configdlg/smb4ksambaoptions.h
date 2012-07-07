@@ -213,7 +213,7 @@ class Smb4KSambaOptions : public KTabWidget
      * 
      * @param url             The URL of the custom options info object
      */
-    Smb4KCustomOptions *findOptions( const QUrl &url );
+    Smb4KCustomOptions *findOptions( const QString &url );
     
     /**
      * Populate the editors with the current settings and enable the

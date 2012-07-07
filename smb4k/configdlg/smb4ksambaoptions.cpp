@@ -946,7 +946,7 @@ void Smb4KSambaOptions::insertCustomOptions( const QList<Smb4KCustomOptions *> &
   // Insert those options that are not there.
   for ( int i = 0; i < list.size(); ++i )
   {
-    Smb4KCustomOptions *options = findOptions( list.at( i )->url() );
+    Smb4KCustomOptions *options = findOptions( list.at( i )->url().prettyUrl() );
     
     if ( !options )
     {
@@ -974,7 +974,7 @@ void Smb4KSambaOptions::insertCustomOptions( const QList<Smb4KCustomOptions *> &
         QListWidgetItem *item = new QListWidgetItem( KIcon( "network-server" ), 
                                     m_options_list.at( i )->unc(),
                                     m_custom_options, Host );
-        item->setData( Qt::UserRole, m_options_list.at( i )->url() );
+        item->setData( Qt::UserRole, m_options_list.at( i )->url().prettyUrl() );
         break;
       }
       case Smb4KCustomOptions::Share:
@@ -982,7 +982,7 @@ void Smb4KSambaOptions::insertCustomOptions( const QList<Smb4KCustomOptions *> &
         QListWidgetItem *item = new QListWidgetItem( KIcon( "folder-remote" ), 
                                     m_options_list.at( i )->unc(),
                                     m_custom_options, Share );
-        item->setData( Qt::UserRole, m_options_list.at( i )->url() );
+        item->setData( Qt::UserRole, m_options_list.at( i )->url().prettyUrl() );
         break;
       }
       default:
@@ -1004,13 +1004,13 @@ const QList<Smb4KCustomOptions *> Smb4KSambaOptions::getCustomOptions()
 }
 
 
-Smb4KCustomOptions *Smb4KSambaOptions::findOptions( const QUrl &url )
+Smb4KCustomOptions *Smb4KSambaOptions::findOptions( const QString &url )
 {
   Smb4KCustomOptions *options = NULL;
   
   for ( int i = 0; i < m_options_list.size(); ++i )
   {
-    if ( url == m_options_list.at( i )->url() )
+    if ( QString::compare(url, m_options_list.at(i)->url().prettyUrl(), Qt::CaseInsensitive) == 0 )
     {
       options = m_options_list[i];
       break;
@@ -1282,7 +1282,7 @@ void Smb4KSambaOptions::commitChanges()
 {
   if ( m_current_options && !m_options_list.isEmpty() && m_editors->isEnabled() )
   {
-    Smb4KCustomOptions *options = findOptions( m_current_options->url() );
+    Smb4KCustomOptions *options = findOptions( m_current_options->url().prettyUrl() );
     
     options->setSMBPort( m_smb_port->value() );
 #ifndef Q_OS_FREEBSD
@@ -1382,7 +1382,7 @@ void Smb4KSambaOptions::slotNewGroupTriggered( QAction *action )
 
 void Smb4KSambaOptions::slotEditCustomItem( QListWidgetItem *item )
 {
-  Smb4KCustomOptions *options = findOptions( item->data( Qt::UserRole ).toUrl() );
+  Smb4KCustomOptions *options = findOptions( item->data( Qt::UserRole ).toString() );
   
   if ( options )
   {
@@ -1432,7 +1432,7 @@ void Smb4KSambaOptions::slotEditActionTriggered( bool /*checked*/ )
 void Smb4KSambaOptions::slotRemoveActionTriggered( bool /*checked*/ )
 {
   QListWidgetItem *item = m_custom_options->currentItem();
-  Smb4KCustomOptions *options = findOptions( item->data( Qt::UserRole ).toUrl() );
+  Smb4KCustomOptions *options = findOptions( item->data( Qt::UserRole ).toString() );
   
   if ( item && options )
   {
@@ -1510,7 +1510,8 @@ void Smb4KSambaOptions::slotUndoActionTriggered( bool /*checked*/ )
   {
     if ( m_current_options )
     {
-      if ( m_custom_options->currentItem()->data( Qt::UserRole ).toUrl() == m_current_options->url() )
+      if ( QString::compare(m_custom_options->currentItem()->data( Qt::UserRole ).toString(),
+                            m_current_options->url().prettyUrl(), Qt::CaseInsensitive) == 0 )
       {
         // Populate the editor with the original values and commit
         // the changes.
@@ -1521,7 +1522,7 @@ void Smb4KSambaOptions::slotUndoActionTriggered( bool /*checked*/ )
       {
         // Copy the original values to the appropriate options object
         // in the list.
-        Smb4KCustomOptions *options = findOptions( m_current_options->url() );
+        Smb4KCustomOptions *options = findOptions( m_current_options->url().prettyUrl() );
         
         if ( options )
         {

@@ -184,7 +184,7 @@ void Smb4KConfigDialog::loadCustomSambaOptions()
 {
   if ( m_samba )
   {
-    QList<Smb4KCustomOptions *> options = Smb4KCustomOptionsManager::self()->customOptions();
+    QList<Smb4KCustomOptions *> options = Smb4KCustomOptionsManager::self()->customOptions( true );
     m_samba->widget()->findChild<Smb4KSambaOptions *>()->insertCustomOptions( options );
   }
   else
