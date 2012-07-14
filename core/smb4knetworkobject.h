@@ -68,10 +68,10 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
   Q_PROPERTY( QString shareName READ shareName CONSTANT )
   Q_PROPERTY( QIcon icon READ icon CONSTANT )
   Q_PROPERTY( QString comment READ comment CONSTANT )
-  Q_PROPERTY( KUrl url READ url CONSTANT )
+  Q_PROPERTY( QUrl url READ url CONSTANT )
   Q_PROPERTY( bool isMounted READ isMounted CONSTANT )
   Q_PROPERTY( bool isPrinter READ isPrinter CONSTANT )
-  Q_PROPERTY( KUrl mountpoint READ mountpoint CONSTANT )
+  Q_PROPERTY( QUrl mountpoint READ mountpoint CONSTANT )
 
   public:
     /**
