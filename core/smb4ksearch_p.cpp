@@ -72,7 +72,7 @@ void Smb4KSearchJob::setupSearch( const QString &string, Smb4KHost *master, QWid
 {
   Q_ASSERT( !string.trimmed().isEmpty() );
   m_string = string;
-  m_master = new Smb4KHost( *master );
+  m_master = master ? new Smb4KHost( *master ) : NULL;
   m_parent_widget = parentWidget;
 }
 
@@ -106,6 +106,7 @@ void Smb4KSearchJob::slotStartSearch()
     Smb4KNotification *notification = new Smb4KNotification();
     notification->commandNotFound( "smbtree" );
     emitResult();
+    emit finished(m_string);
     return;
   }
   else
@@ -115,7 +116,6 @@ void Smb4KSearchJob::slotStartSearch()
 
   // Lookup the custom options that are defined for the master browser.
   Smb4KCustomOptions *options = NULL;
-  Smb4KAuthInfo authInfo;
 
   if ( m_master )
   {
@@ -123,8 +123,7 @@ void Smb4KSearchJob::slotStartSearch()
   }
   else
   {
-    emitResult();
-    return;
+    // Do nothing
   }
 
   // Compile the command
@@ -244,7 +243,7 @@ void Smb4KSearchJob::slotStartSearch()
     // Do nothing
   }
 
-  if ( !authInfo.login().isEmpty() )
+  if ( m_master && !m_master->login().isEmpty() )
   {
     arguments << QString( "-U %1" ).arg( m_master->login() );
   }
@@ -255,7 +254,7 @@ void Smb4KSearchJob::slotStartSearch()
 
   m_proc = new Smb4KProcess( this );
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
-  m_proc->setEnv( "PASSWD", !m_master->password().isEmpty() ? m_master->password() : "", true );
+  m_proc->setEnv( "PASSWD", (m_master && !m_master->password().isEmpty()) ? m_master->password() : "", true );
   m_proc->setShellCommand( arguments.join( " " ) );
   
   connect( m_proc, SIGNAL(readyReadStandardOutput()), this, SLOT(slotReadStandardOutput()) );
@@ -333,10 +332,14 @@ void Smb4KSearchJob::slotReadStandardError()
     m_proc->abort();
     emit authError( this );
   }
-  else
+  else if ( stderr.contains("NT_STATUS") )
   {
     Smb4KNotification *notification = new Smb4KNotification();
     notification->searchingFailed( m_string, stderr );
+  }
+  else
+  {
+    // Do nothing
   }
 }
 
@@ -365,7 +368,7 @@ void Smb4KSearchJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitStatus
   }
   
   emitResult();
-  emit finished( m_string );
+  emit finished(m_string);
 }
 
 
