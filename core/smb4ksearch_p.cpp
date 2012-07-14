@@ -337,10 +337,14 @@ void Smb4KSearchJob::slotReadStandardError()
     m_proc->abort();
     emit authError( this );
   }
-  else
+  else if ( stderr.contains( "NT_STATUS" ) )
   {
     Smb4KNotification *notification = new Smb4KNotification();
     notification->searchingFailed( m_string, stderr );
+  }
+  else
+  {
+    // Do nothing
   }
 }
 

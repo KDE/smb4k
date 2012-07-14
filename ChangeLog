@@ -1,3 +1,9 @@
+Smb4K 1.0.4 (????-??-??):
+- Fixed erroneously shown error notifications when searching. Thanks to
+  Alexander Willand for reporting this issue.
+- Make sure that "tdb_log" messages are not shown as error notifications
+  to the user.
+
 Smb4K 1.0.3 (2012-06-23):
 - Make sure that output from the mount and unmount process is trimmed, so 
   that there are no false error messages.
