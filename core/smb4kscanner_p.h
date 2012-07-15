@@ -712,6 +712,7 @@ class Smb4KScannerPrivate
 {
   public:
     int elapsedTime;
+    bool haveNewHosts;
     bool scanningAllowed;
     QList<Smb4KNetworkObject *> workgroupObjects;
     QList<Smb4KNetworkObject *> hostObjects;

@@ -2604,7 +2604,7 @@ void Smb4KLookupIPAddressJob::start()
 }
 
 
-void Smb4KLookupIPAddressJob::setupLookup(Smb4KHost *host, QWidget *parent )
+void Smb4KLookupIPAddressJob::setupLookup( Smb4KHost *host, QWidget *parent )
 {
   Q_ASSERT( host );
   m_host = new Smb4KHost( *host );
@@ -2744,16 +2744,19 @@ void Smb4KLookupIPAddressJob::slotStartLookup()
     // Do nothing
   }
 
-  // WINS server
-  if ( !winsServer().isEmpty() )
-  {
-    arguments << "-R";
-    arguments << QString( "-U %1" ).arg( KShell::quoteArg( winsServer() ) );
-  }
-  else
-  {
-    // Do nothing
-  }
+  // We do not use the WINS server here, because it emerged that using
+  // the WINS server is sometimes not very reliable. 
+  
+  
+//   if ( !winsServer().isEmpty() )
+//   {
+//     arguments << "-R";
+//     arguments << QString( "-U %1" ).arg( KShell::quoteArg( winsServer() ) );
+//   }
+//   else
+//   {
+//     // Do nothing
+//   }
 
   arguments << "--";
   arguments << KShell::quoteArg( m_host->hostName() );

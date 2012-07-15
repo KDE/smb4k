@@ -76,6 +76,7 @@ Smb4KScanner::Smb4KScanner( QObject *parent )
   
   d->elapsedTime     = 0;
   d->scanningAllowed = true;
+  d->haveNewHosts    = false;
   
   connect( QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()) );
 }
@@ -858,6 +859,7 @@ Smb4KNetworkObject *Smb4KScanner::find( const KUrl &url, int type )
 
 void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
 {
+  // Periodic scanning
   if ( Smb4KSettings::periodicScanning() )
   {
     if ( d->elapsedTime == 0 )
@@ -959,6 +961,37 @@ void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
     {
       // Do nothing
     }
+  }
+  
+  // Lookup IP addresses if necessary
+  if ( d->haveNewHosts && !hostsList().isEmpty() && !Smb4KSettings::scanBroadcastAreas() )
+  {
+    for ( int i = 0; i < hostsList().size(); ++i )
+    {
+      if ( !hostsList().at( i )->hasIP() )
+      {
+        Smb4KLookupIPAddressJob *job = new Smb4KLookupIPAddressJob( this );
+        job->setObjectName( QString("LookupIPAddressJob_%1").arg(hostsList().at(i)->unc()) );
+        job->setupLookup( hostsList().at( i ), 0 );
+
+        connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
+        connect( job, SIGNAL(ipAddress(Smb4KHost*)), SLOT(slotProcessIPAddress(Smb4KHost*)) );
+
+        addSubjob( job );
+
+        job->start();
+      }
+      else
+      {
+        continue;
+      }
+    }
+    
+    d->haveNewHosts = false;
+  }
+  else
+  {
+    // Do nothing
   }
 }
 
@@ -1282,6 +1315,8 @@ void Smb4KScanner::slotWorkgroups( const QList<Smb4KWorkgroup *> &workgroups_lis
         }
       }
     }
+    
+    d->haveNewHosts = true;
   }
   else
   {
@@ -1310,35 +1345,6 @@ void Smb4KScanner::slotWorkgroups( const QList<Smb4KWorkgroup *> &workgroups_lis
   for ( int i = 0; i < workgroups_list.size(); ++i )
   {
     addWorkgroup( new Smb4KWorkgroup( *workgroups_list.at( i ) ) );
-  }
-
-  // Scan for IP addresses if necessary
-  if ( !Smb4KSettings::scanBroadcastAreas() )
-  {
-    for ( int i = 0; i < hostsList().size(); ++i )
-    {
-      if ( !hostsList().at( i )->hasIP() )
-      {
-        Smb4KLookupIPAddressJob *job = new Smb4KLookupIPAddressJob( this );
-        job->setObjectName( "LookupIPAddressJob" );
-        job->setupLookup( hostsList().at( i ), 0 );
-
-        connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
-        connect( job, SIGNAL(ipAddress(Smb4KHost*)), SLOT(slotProcessIPAddress(Smb4KHost*)) );
-
-        addSubjob( job );
-
-        job->start();
-      }
-      else
-      {
-        continue;
-      }
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 
   // (Re)fill the list of workgroup objects.
@@ -1482,36 +1488,9 @@ void Smb4KScanner::slotHosts( Smb4KWorkgroup *workgroup, const QList<Smb4KHost *
   {
     addHost( new Smb4KHost( *hosts_list.at( i ) ) );
   }
-
-  // Scan for IP addresses if necessary
-  if ( !hostsList().isEmpty() && !Smb4KSettings::scanBroadcastAreas() )
-  {
-    for ( int i = 0; i < hostsList().size(); ++i )
-    {
-      if ( !hostsList().at( i )->hasIP() )
-      {
-        Smb4KLookupIPAddressJob *job = new Smb4KLookupIPAddressJob( this );
-        job->setObjectName( "LookupIPAddressJob" );
-        job->setupLookup( hostsList().at( i ), 0 );
-
-        connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
-        connect( job, SIGNAL(ipAddress(Smb4KHost*)), SLOT(slotProcessIPAddress(Smb4KHost*)) );
-
-        addSubjob( job );
-
-        job->start();
-      }
-      else
-      {
-        continue;
-      }
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
   
+  d->haveNewHosts = true;
+
   if ( workgroup )
   {
     QList<Smb4KHost *> workgroup_members = workgroupMembers( workgroup );
@@ -1677,6 +1656,8 @@ void Smb4KScanner::slotInfo( Smb4KHost *host )
     {
       known_host = new Smb4KHost( *host );
       addHost( known_host );
+      
+      d->haveNewHosts = true;
     }
   }
   else
