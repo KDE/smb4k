@@ -98,6 +98,20 @@ class KDE_EXPORT Smb4KSolidInterface : public QObject
      */
     ConnectionStatus networkStatus() const;
     
+    /**
+     * Suppress the sleep of the system. This function should be
+     * called when the application should do something before the
+     * sleep kicks in.
+     *
+     * @param reason      The reason why the sleep is suppressed
+     */
+    void beginSleepSuppression( const QString &reason = QString() );
+    
+    /**
+     * Stop suppressing the sleep of the system.
+     */
+    void endSleepSuppression();
+    
   Q_SIGNALS:
     /**
      * This signal is emitted when a hardware button was pressed.

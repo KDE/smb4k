@@ -51,6 +51,7 @@ class Smb4KSolidInterfacePrivate
     Smb4KSolidInterface::ButtonType buttonPressed;
     Smb4KSolidInterface::ConnectionStatus networkStatus;
     QMap<QString,Smb4KSolidInterface::ButtonType> removedDevices;
+    int sleepCookie;
 };
 
 
@@ -61,7 +62,7 @@ class Smb4KSolidInterfaceStatic
 };
 
 
-K_GLOBAL_STATIC( Smb4KSolidInterfaceStatic, priv );
+K_GLOBAL_STATIC( Smb4KSolidInterfaceStatic, p );
 
 
 Smb4KSolidInterface::Smb4KSolidInterface( QObject *parent )
@@ -69,6 +70,7 @@ Smb4KSolidInterface::Smb4KSolidInterface( QObject *parent )
 {
   d->buttonPressed = UnknownButton;
   d->networkStatus = Unknown;
+  d->sleepCookie   = 0;
   init();
 }
 
@@ -80,7 +82,7 @@ Smb4KSolidInterface::~Smb4KSolidInterface()
 
 Smb4KSolidInterface *Smb4KSolidInterface::self()
 {
-  return &priv->instance;
+  return &p->instance;
 }
 
 
@@ -88,6 +90,19 @@ Smb4KSolidInterface::ConnectionStatus Smb4KSolidInterface::networkStatus() const
 {
   return d->networkStatus;
 }
+
+
+void Smb4KSolidInterface::beginSleepSuppression(const QString &reason)
+{
+  d->sleepCookie = Solid::PowerManagement::beginSuppressingSleep(reason);
+}
+
+
+void Smb4KSolidInterface::endSleepSuppression()
+{
+  Solid::PowerManagement::stopSuppressingSleep(d->sleepCookie);
+}
+
 
 
 void Smb4KSolidInterface::init()
@@ -231,7 +246,7 @@ void Smb4KSolidInterface::slotDeviceRemoved( const QString &udi )
 }
 
 
-void Smb4KSolidInterface::slotButtonPressed( Solid::Button::ButtonType type, const QString &/*udi*/ )
+void Smb4KSolidInterface::slotButtonPressed(Solid::Button::ButtonType type, const QString &/*udi*/)
 {
   switch ( type )
   {
@@ -257,7 +272,7 @@ void Smb4KSolidInterface::slotButtonPressed( Solid::Button::ButtonType type, con
     }
   }
 
-  emit buttonPressed( d->buttonPressed );
+  emit buttonPressed(d->buttonPressed);
 }
 
 
