@@ -1960,13 +1960,15 @@ void Smb4KMounter::slotHardwareButtonPressed( Smb4KSolidInterface::ButtonType ty
   {
     case Smb4KSolidInterface::SleepButton:
     {
-      if ( Smb4KSettings::unmountWhenSleepButtonPressed() )
+      if (Smb4KSettings::unmountWhenSleepButtonPressed() && !mountedSharesList().isEmpty())
       {
+        Smb4KSolidInterface::self()->beginSleepSuppression(i18n("Unmounting shares. Please wait."));
         d->hardwareReason = true;
         abortAll();
         saveSharesForRemount();
         unmountAllShares();
         d->hardwareReason = false;
+        Smb4KSolidInterface::self()->endSleepSuppression();
       }
       else
       {
@@ -1976,13 +1978,15 @@ void Smb4KMounter::slotHardwareButtonPressed( Smb4KSolidInterface::ButtonType ty
     }
     case Smb4KSolidInterface::LidButton:
     {
-      if ( Smb4KSettings::unmountWhenLidButtonPressed() )
+      if (Smb4KSettings::unmountWhenLidButtonPressed() && !mountedSharesList().isEmpty())
       {
+        Smb4KSolidInterface::self()->beginSleepSuppression(i18n("Unmounting shares. Please wait."));
         d->hardwareReason = true;
         abortAll();
         saveSharesForRemount();
         unmountAllShares();
         d->hardwareReason = false;
+        Smb4KSolidInterface::self()->endSleepSuppression();
       }
       else
       {
@@ -1992,13 +1996,15 @@ void Smb4KMounter::slotHardwareButtonPressed( Smb4KSolidInterface::ButtonType ty
     }
     case Smb4KSolidInterface::PowerButton:
     {
-      if ( Smb4KSettings::unmountWhenPowerButtonPressed() )
+      if (Smb4KSettings::unmountWhenPowerButtonPressed() && !mountedSharesList().isEmpty())
       {
+        Smb4KSolidInterface::self()->beginSleepSuppression(i18n("Unmounting shares. Please wait."));
         d->hardwareReason = true;
         abortAll();
         saveSharesForRemount();
         unmountAllShares();
         d->hardwareReason = false;
+        Smb4KSolidInterface::self()->endSleepSuppression();
       }
       else
       {
