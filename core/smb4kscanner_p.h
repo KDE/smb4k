@@ -711,7 +711,10 @@ class Smb4KLookupIPAddressJob : public KJob
 class Smb4KScannerPrivate
 {
   public:
-    int elapsedTime;
+    // Elapsed time for periodic scanning
+    int elapsedTimePS;
+    // Elapsed time for IP address look-up
+    int elapsedTimeIP;
     bool haveNewHosts;
     bool scanningAllowed;
     QList<Smb4KNetworkObject *> workgroupObjects;

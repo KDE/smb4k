@@ -74,7 +74,8 @@ Smb4KScanner::Smb4KScanner( QObject *parent )
     // Do nothing
   }
   
-  d->elapsedTime     = 0;
+  d->elapsedTimePS   = 0;
+  d->elapsedTimeIP   = 0;
   d->scanningAllowed = true;
   d->haveNewHosts    = false;
   
@@ -862,7 +863,7 @@ void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
   // Periodic scanning
   if ( Smb4KSettings::periodicScanning() )
   {
-    if ( d->elapsedTime == 0 )
+    if ( d->elapsedTimePS == 0 )
     {
       if ( d->periodicJobs.isEmpty() )
       {
@@ -896,10 +897,11 @@ void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
     }
     else
     {
-      if ( d->elapsedTime >= (Smb4KSettings::scanInterval() * 60000 /* milliseconds */) )
+      if ( d->elapsedTimePS >= (Smb4KSettings::scanInterval() * 60000 /* milliseconds */) )
       {
-        // Reset interval. Since the check above 
-        d->elapsedTime = -TIMER_INTERVAL;
+        // Reset interval. 
+        // To get the correct behavior, we need to set the time to -TIMER_INTERVAL!
+        d->elapsedTimePS = -TIMER_INTERVAL;
 
         // Fill list
         d->periodicJobs << LookupDomains;
@@ -947,15 +949,15 @@ void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
       }
     }
 
-    d->elapsedTime += TIMER_INTERVAL;
+    d->elapsedTimePS += TIMER_INTERVAL;
   }
   else
   {
     // Periodic scanning is not enabled or has been disabled
     // during runtime. So, reset the interval, if necessary.
-    if ( d->elapsedTime != 0 )
+    if ( d->elapsedTimePS != 0 )
     {
-      d->elapsedTime = 0;
+      d->elapsedTimePS = 0;
     }
     else
     {
@@ -964,7 +966,10 @@ void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
   }
   
   // Lookup IP addresses if necessary
-  if ( d->haveNewHosts && !hostsList().isEmpty() && !Smb4KSettings::scanBroadcastAreas() )
+  // Checks are run either if new hosts were discovered or every 60 seconds. 
+  // The latter is done to retrieve IP addresses for hosts for which the IP 
+  // address was not discovered in the first run.
+  if ( (d->haveNewHosts && !hostsList().isEmpty() && !Smb4KSettings::scanBroadcastAreas()) || d->elapsedTimeIP >= 60000 )
   {
     for ( int i = 0; i < hostsList().size(); ++i )
     {
@@ -988,11 +993,14 @@ void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
     }
     
     d->haveNewHosts = false;
+    d->elapsedTimeIP = -TIMER_INTERVAL;
   }
   else
   {
     // Do nothing
   }
+  
+  d->elapsedTimeIP += TIMER_INTERVAL;
 }
 
 
