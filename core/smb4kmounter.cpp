@@ -50,6 +50,7 @@
 #include <QtCore/QFileInfo>
 #include <QtGui/QApplication>
 #include <QtGui/QDesktopWidget>
+#include <QtTest/QTest>
 
 // KDE includes
 #include <klocale.h>
@@ -1542,6 +1543,12 @@ void Smb4KMounter::slotAboutToQuit()
   if ( Smb4KSettings::unmountSharesOnExit() )
   {
     unmountAllShares();
+    
+    // Wait until done.
+    while ( hasSubjobs() )
+    {
+      QTest::qWait( TIMEOUT );
+    }
   }
   else
   {

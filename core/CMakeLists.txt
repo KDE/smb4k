@@ -48,6 +48,7 @@ kde4_add_library( smb4kcore SHARED ${smb4kcore_LIB_SRCS} )
 target_link_libraries( smb4kcore
   ${QT_QTCORE_LIBRARY}
   ${QT_QTGUI_LIBRARY}
+  ${QT_QTTEST_LIBRARY}
   ${KDE4_KDECORE_LIBS}
   ${KDE4_KDEUI_LIBS}
   ${KDE4_KIO_LIBS}
