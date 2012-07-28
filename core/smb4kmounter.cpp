@@ -1326,6 +1326,12 @@ void Smb4KMounter::slotAboutToQuit()
   if ( Smb4KSettings::unmountSharesOnExit() )
   {
     unmountAllShares();
+    
+    // Wait until done.
+    while ( hasSubjobs() )
+    {
+      QTest::qWait( TIMEOUT );
+    }
   }
   else
   {
