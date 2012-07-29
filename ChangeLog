@@ -4,6 +4,8 @@ Smb4K 1.0.4 (????-??-??):
 - Make sure that "tdb_log" messages are not shown as error notifications
   to the user.
 - Wait until unmounting all shares on exit finished before closing down.
+- Make sure that the mount prefix and all its subdirectories correctly 
+  inherit their permissions.
 
 Smb4K 1.0.3 (2012-06-23):
 - Make sure that output from the mount and unmount process is trimmed, so 
