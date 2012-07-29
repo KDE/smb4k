@@ -138,6 +138,26 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
     // Do nothing
   }
 
+  // Get the permissions that should be used for creating the
+  // mount prefix and all its subdirectories. 
+  // Please note that the actual permissions of the mount points
+  // are determined by the mount utility.
+  QFile::Permissions permissions;
+  KUrl parentDirectory;
+  
+  if ( QFile::exists( Smb4KSettings::mountPrefix().path() ) )
+  {
+    parentDirectory = Smb4KSettings::mountPrefix();
+  }
+  else
+  {
+    KUrl u( Smb4KSettings::mountPrefix() );
+    parentDirectory = u.upUrl();
+  }
+  
+  QFile f( parentDirectory.path() );
+  permissions = f.permissions();
+  
   // Assemble the mount point and create it.
   QString mountpoint;
   mountpoint += Smb4KSettings::mountPrefix().path();
@@ -164,6 +184,14 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
   }
   else
   {
+    KUrl u( dir.path() );
+    
+    while ( u != parentDirectory )
+    {
+      QFile( u.path() ).setPermissions( permissions );
+      u = u.upUrl();
+    }
+    
     share->setPath( dir.path() );
   }
 
