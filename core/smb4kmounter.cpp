@@ -31,6 +31,7 @@
 #include <QDesktopWidget>
 #include <QTimer>
 #include <QFileInfo>
+#include <QTest>
 
 // KDE includes
 #include <kapplication.h>
