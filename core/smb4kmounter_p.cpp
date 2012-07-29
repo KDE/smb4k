@@ -156,9 +156,8 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
     // Do nothing
   }
 
-
   // Get the permissions that should be used for creating the
-  // mount prefix and all directories below. 
+  // mount prefix and all its subdirectories. 
   // Please note that the actual permissions of the mount points
   // are determined by the mount utility.
   QFile::Permissions permissions;
