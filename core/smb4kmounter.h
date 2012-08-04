@@ -417,7 +417,12 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
 
   private:
     /**
-     * Trigger the remounting of shares.
+     * Trigger the remounting of shares. If the parameter @p fill_list is
+     * set to true, the internal list should be populated with the shares
+     * that are scheduled for a remount.
+     * 
+     * @param fill_list       Fill the internal list with shares that are 
+     *                        to be remounted.
      */
     void triggerRemounts( bool fill_list );
 

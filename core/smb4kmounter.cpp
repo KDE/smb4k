@@ -313,22 +313,22 @@ void Smb4KMounter::triggerRemounts( bool fill_list )
       {
         // Do nothing
       }
-
-      if ( !d->remounts.isEmpty() )
-      {
-        mountShares( d->remounts );
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      d->remountAttempts++;
     }
     else
     {
       // Do nothing
     }
+    
+    if ( !d->remounts.isEmpty() )
+    {
+      mountShares( d->remounts );
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    d->remountAttempts++;
   }
   else
   {
@@ -637,6 +637,15 @@ void Smb4KMounter::import( bool check_inaccessible )
     
     // Do not use addSubJob(), because that would confuse isRunning, etc.
     job->start();
+  }
+  
+  if ( !d->firstImportDone && d->importedShares.isEmpty() )
+  {
+    d->firstImportDone = true;
+  }
+  else
+  {
+    // Do nothing. d->firstImportDone will be set in slotStatResult().
   }
 }
 
@@ -1464,9 +1473,9 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
     // Clean up the mount prefix
     cleanup();
 
-    if ( Smb4KSettings::remountShares() )
+    if ( Smb4KSettings::remountShares() && d->firstImportDone )
     {
-      if ( d->remountTimeout == 0 && d->firstImportDone && d->remountAttempts == 0 )
+      if ( d->remountTimeout == 0 && d->remountAttempts == 0 )
       {
         triggerRemounts( true );
       }
@@ -1480,10 +1489,19 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
       {
         // Do nothing
       }
+      
+      if ( d->remountAttempts < Smb4KSettings::remountAttempts() )
+      {
+        d->remountTimeout += TIMEOUT;
+      }
+      else
+      {
+        d->remountTimeout = 0;
+      }
     }
     else
     {
-      // Do nothing
+      d->remountTimeout = 0;
     }
   }
   else
@@ -1491,16 +1509,6 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
     // Do nothing and wait until the application started up.
   }
   
-  if ( Smb4KSettings::remountShares() && d->firstImportDone &&
-       d->remountAttempts < Smb4KSettings::remountAttempts() )
-  {
-    d->remountTimeout += TIMEOUT;
-  }
-  else
-  {
-    d->remountTimeout = 0;
-  }
-
   d->importTimeout += TIMEOUT;
 }
 
@@ -2134,7 +2142,7 @@ void Smb4KMounter::slotStatResult( KJob *job )
   {
     if ( QString::compare( d->importedShares.at( i )->path(), path ) == 0 )
     {
-      share = new Smb4KShare( *d->importedShares.takeAt( i ) );
+      share = d->importedShares.takeAt( i );
       break;
     }
     else
@@ -2387,7 +2395,7 @@ void Smb4KMounter::slotStatResult( KJob *job )
 
   delete share;
 
-  if ( !d->firstImportDone )
+  if ( !d->firstImportDone && d->importedShares.isEmpty() )
   {
     d->firstImportDone = true;
   }
