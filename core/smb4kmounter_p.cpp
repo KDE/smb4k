@@ -1319,17 +1319,16 @@ void Smb4KMountDialog::slotOkClicked()
     {
       QString unc = m_share_input->text();
       unc.replace( "\\", "/" );
-      url = KUrl( unc );
+      url.setUrl( unc, KUrl::TolerantMode );
     }
     else
     {
-      url = KUrl( m_share_input->text().trimmed() );
+      url.setUrl( m_share_input->text().trimmed(), KUrl::TolerantMode );
     }
 
     url.setProtocol( "smb" );
 
-    if ( url.isValid() && !url.host().isEmpty() /* no invalid host name */ &&
-         url.path().length() > 1 /* share name length */ && !url.path().endsWith( '/' ) )
+    if ( url.isValid() && url.hasHost() && url.hasPath() && !url.path().endsWith( '/' ) )
     {
       m_share->setURL( url );
       m_share->setWorkgroupName( m_workgroup_input->text().trimmed() );
