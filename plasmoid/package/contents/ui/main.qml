@@ -560,7 +560,6 @@ Item {
   // An network item was clicked
   //
   function networkItemClicked() {
-    
     if ( browserListView.model.get( browserListView.currentIndex ).itemType < 3 /* 3 == share */ ) {
       parent_url = browserListView.model.get( browserListView.currentIndex ).itemURL
       parent_item = browserListView.model.get( browserListView.currentIndex ).itemName
