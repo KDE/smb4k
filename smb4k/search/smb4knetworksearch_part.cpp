@@ -296,8 +296,7 @@ void Smb4KNetworkSearchPart::slotSearchActionTriggered( bool /*checked*/ )
 
   if ( !search_item.isEmpty() )
   {
-    Smb4KSearch::self()->search( m_widget->comboBox()->currentText() );
-    
+    Smb4KSearch::self()->search( m_widget->comboBox()->currentText(), m_widget );
     KCompletion *completion = m_widget->comboBox()->completionObject();
     completion->addItem( search_item );
   }
