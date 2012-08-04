@@ -211,7 +211,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * 
      * @param url         The URL of the remote share
      */
-    Q_INVOKABLE void mount( const KUrl &url );
+    Q_INVOKABLE void mount( const QUrl &url );
     
     /**
      * This function takes the URL of a @p mountpoint and initiates the unmounting 
@@ -222,7 +222,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * 
      * @param path        The mountpoint of the mounted share
      */
-    Q_INVOKABLE void unmount( const KUrl &mountpoint );
+    Q_INVOKABLE void unmount( const QUrl &mountpoint );
     
     /**
      * This function takes a KUrl object, looks up the respective mounted share
@@ -236,7 +236,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * 
      * @returns The mounted share or NULL if it was not found.
      */
-    Q_INVOKABLE Smb4KNetworkObject *find( const KUrl &url, bool exactMatch = true );
+    Q_INVOKABLE Smb4KNetworkObject *find( const QUrl &url, bool exactMatch = true );
     
   Q_SIGNALS:
     /**

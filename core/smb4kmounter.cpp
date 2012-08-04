@@ -1223,7 +1223,7 @@ QDeclarativeListProperty< Smb4KNetworkObject > Smb4KMounter::mountedShares()
 }
 
 
-void Smb4KMounter::mount( const KUrl &url )
+void Smb4KMounter::mount( const QUrl &url )
 {
   if ( url.isValid() && !url.path().isEmpty() )
   {
@@ -1245,7 +1245,7 @@ void Smb4KMounter::mount( const KUrl &url )
 }
 
 
-void Smb4KMounter::unmount( const KUrl &mountpoint )
+void Smb4KMounter::unmount( const QUrl &mountpoint )
 {
   if ( mountpoint.isValid() )
   {
@@ -1268,7 +1268,7 @@ void Smb4KMounter::unmount( const KUrl &mountpoint )
 
 
 
-Smb4KNetworkObject *Smb4KMounter::find( const KUrl &url, bool exactMatch )
+Smb4KNetworkObject *Smb4KMounter::find( const QUrl &url, bool exactMatch )
 {
   Smb4KNetworkObject *object = NULL;
   

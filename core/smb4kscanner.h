@@ -221,7 +221,7 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
      * 
      * @param type        The type of the network item
      */
-    Q_INVOKABLE void lookup( const KUrl &url, int type );
+    Q_INVOKABLE void lookup( const QUrl &url, int type );
     
     /**
      * This function takes a KUrl object, looks up the respective network object
@@ -236,7 +236,7 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
      * 
      * @returns The network item or NULL if it was not found.
      */
-    Q_INVOKABLE Smb4KNetworkObject *find( const KUrl &url, int type );
+    Q_INVOKABLE Smb4KNetworkObject *find( const QUrl &url, int type );
     
   protected:
     /**

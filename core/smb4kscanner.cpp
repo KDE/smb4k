@@ -728,7 +728,7 @@ QDeclarativeListProperty<Smb4KNetworkObject> Smb4KScanner::shares()
 }
 
 
-void Smb4KScanner::lookup( const KUrl& url, int type )
+void Smb4KScanner::lookup( const QUrl& url, int type )
 {
   if ( url.isValid() )
   {
@@ -787,7 +787,7 @@ void Smb4KScanner::lookup( const KUrl& url, int type )
 }
 
 
-Smb4KNetworkObject *Smb4KScanner::find( const KUrl &url, int type )
+Smb4KNetworkObject *Smb4KScanner::find( const QUrl &url, int type )
 {
   Smb4KNetworkObject *object = NULL;
   
