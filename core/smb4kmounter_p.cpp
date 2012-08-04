@@ -941,7 +941,7 @@ void Smb4KUnmountJob::setupUnmount( const QList<Smb4KShare *> &shares, bool forc
 }
 
 
-bool Smb4KUnmountJob::createUnmountAction( Smb4KShare *share, bool force, bool silent, Action *action )
+bool Smb4KUnmountJob::createUnmountAction( Smb4KShare *share, Action *action )
 {
   Q_ASSERT( share );
   Q_ASSERT( action );
@@ -970,7 +970,7 @@ bool Smb4KUnmountJob::createUnmountAction( Smb4KShare *share, bool force, bool s
     }
   }
 
-  if ( umount.isEmpty() && !silent )
+  if ( umount.isEmpty() && !m_silent )
   {
     Smb4KNotification *notification = new Smb4KNotification();
     notification->commandNotFound( umount );
@@ -986,7 +986,7 @@ bool Smb4KUnmountJob::createUnmountAction( Smb4KShare *share, bool force, bool s
   unmount_command << umount;
 
 #ifdef Q_OS_LINUX
-  if ( force )
+  if ( m_force )
   {
     unmount_command << "-l"; // lazy unmount
   }
@@ -1027,7 +1027,7 @@ void Smb4KUnmountJob::slotStartUnmount()
     Smb4KShare *share = it.next();
     Action unmountAction;
 
-    if ( createUnmountAction( share, m_force, m_silent, &unmountAction ) )
+    if ( createUnmountAction( share, &unmountAction ) )
     {
       connect( unmountAction.watcher(), SIGNAL(actionPerformed(ActionReply)),
                this, SLOT(slotActionFinished(ActionReply)) );
@@ -1073,7 +1073,8 @@ void Smb4KUnmountJob::slotActionFinished( ActionReply reply )
       // Check if the unmount process reported an error
       QString stderr( reply.data()["stderr"].toString() );
 
-      if ( QString::compare( share->canonicalPath(), reply.data()["mountpoint"].toString() ) == 0 && !stderr.isEmpty() )
+      if ( QString::compare( share->canonicalPath(), reply.data()["mountpoint"].toString() ) == 0 && 
+           !stderr.isEmpty() && !m_silent )
       {
         Smb4KNotification *notification = new Smb4KNotification();
         notification->unmountingFailed( share, stderr );
@@ -1088,15 +1089,22 @@ void Smb4KUnmountJob::slotActionFinished( ActionReply reply )
   else
   {
     // The auth action failed. Report this.
-    Smb4KNotification *notification = new Smb4KNotification();
-
-    if ( reply.type() == ActionReply::KAuthError )
+    if ( !m_silent )
     {
-      notification->actionFailed( reply.errorCode() );
+      Smb4KNotification *notification = new Smb4KNotification();
+
+      if ( reply.type() == ActionReply::KAuthError )
+      {
+        notification->actionFailed( reply.errorCode() );
+      }
+      else
+      {
+        notification->actionFailed();
+      }
     }
     else
     {
-      notification->actionFailed();
+      // Do nothing
     }
   }
 

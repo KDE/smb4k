@@ -281,8 +281,6 @@ class Smb4KUnmountJob : public KJob
     QList<Smb4KShare *> m_shares;
     QWidget *m_parent_widget;
     bool createUnmountAction( Smb4KShare *share,
-                              bool force,
-                              bool silent,
                               Action *action );
     int m_processed;
 };
