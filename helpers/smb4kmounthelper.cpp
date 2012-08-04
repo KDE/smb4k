@@ -117,7 +117,6 @@ ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
   {
     reply.setErrorCode( ActionReply::HelperError );
     reply.setErrorDescription( i18n( "The mount process could not be started." ) );
-    return reply;
   }
 
   return reply;
@@ -226,7 +225,6 @@ ActionReply Smb4KMountHelper::unmount( const QVariantMap &args )
   {
     reply.setErrorCode( ActionReply::HelperError );
     reply.setErrorDescription( i18n( "The unmount process could not be started." ) );
-    return reply;
   }
 
   return reply;
