@@ -22,6 +22,8 @@ Smb4K 1.1.0 (????-??-??):
     you also need the username, password or port in the string, use the url() 
     function.
   + Added setURL() function that takes a string as argument.
+- Removed Smb4KIPAddressScanner class. IP addresses are now looked up by
+  Smb4KScanner using a private job.
 - Revised Smb4KScanner class:
   + To use functions from the scanner in the plasmoid, Q_INVOKABLE and
     Q_PROPERTY macros are used.
@@ -35,6 +37,7 @@ Smb4K 1.1.0 (????-??-??):
   + Added find() function that takes a QUrl as argument and searches for
     a network item with the given URL. The URL must already be known to
     Smb4K otherwise this function will not do anything.
+  + IP addresses are looked up every 60 s and when new hosts were discovered.
 - Revised Smb4KMounter class:
   + To use functions from the mounter in the plasmoid, Q_INVOKABLE and
     Q_PROPERTY macros are used.
@@ -57,8 +60,6 @@ Smb4K 1.1.0 (????-??-??):
 - Revised Smb4KCustomOptionsManager class:
   + The customOptions() function now takes a boolean that determines if
     also entries that are only meant to be remounted are also returned.
-- Removed Smb4KIPAddressScanner class. IP addresses are now looked up by
-  Smb4KScanner using a private job.
 - Revised network browser:
   + Removed wrong checks that caused tooltips not being updated properly.
 - Revised mount helper:
