@@ -61,19 +61,9 @@ PlasmaComponents.ListItem {
     }
     Column {
       anchors.verticalCenter: parent.verticalCenter
-      Text { 
-        text: itemName 
-        clip: true
-        MouseArea {
-          anchors.fill: parent
-          onClicked: {
-            delegate.itemClicked()
-          }
-        }
-      }
-      Text { 
-        text: "<font size=\"-1\">"+itemComment+"</font>" 
-        visible: itemComment.length != 0 ? true : false
+      PlasmaComponents.Label {
+        id: delegateItemText
+        text: itemName+(itemComment.length != 0 ? "<br><font size=\"-1\">"+itemComment+"</font>" :"")
         clip: true
         MouseArea {
           anchors.fill: parent

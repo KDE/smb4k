@@ -82,19 +82,11 @@ Item {
         }
       }
     }
-    Text {
-      text: itemName
+    PlasmaComponents.Label {
+      text: itemName+"<br>"+i18n( "<font size=\"-1\">on %1</font>" ).arg( itemHost )
+      horizontalAlignment: Text.AlignHCenter
       anchors.horizontalCenter: parent.horizontalCenter
-      MouseArea {
-        anchors.fill: parent
-        onClicked: {
-          delegate.openClicked()
-        }
-      }
-    }
-    Text {
-      text: i18n( "<font size=\"-1\">on %1</font>" ).arg( itemHost )
-      anchors.horizontalCenter: parent.horizontalCenter
+      clip: true
       MouseArea {
         anchors.fill: parent
         onClicked: {

@@ -27,6 +27,7 @@ import QtQuick 1.1
 import org.kde.plasma.core 0.1 as PlasmaCore
 import org.kde.plasma.graphicswidgets 0.1 as PlasmaWidgets
 import org.kde.plasma.components 0.1 as PlasmaComponents
+import org.kde.plasma.extras 0.1 as PlasmaExtras
 import org.kde.qtextracomponents 0.1
 
 
@@ -70,9 +71,8 @@ Item {
   //
   // The browser widget
   //
-  // FIXME: With KDE SC 4.9 move to PlasmaComponents.ScrollArea
-  ListView {
-    id: browserListView
+  PlasmaExtras.ScrollArea {
+    id: browserScrollArea
     anchors {
       top: parent.top
       left: parent.left
@@ -80,68 +80,56 @@ Item {
     }
     anchors.rightMargin: 5
     width: parent.width / 2
-    delegate: BrowserItemDelegate {
-      id: browserDelegate
-      onItemClicked: {
-        browserListView.currentIndex = index
-        networkItemClicked()
+    ListView {
+      id: browserListView
+      delegate: BrowserItemDelegate {
+        id: browserDelegate
+        onItemClicked: {
+          browserListView.currentIndex = index
+          networkItemClicked()
+        }
+        onUpClicked: {
+          browserListView.currentIndex = index
+          up()
+        }
       }
-      onUpClicked: {
-        browserListView.currentIndex = index
-        up()
-      }
-    }
-    model: ListModel {}
-    focus: true
-    highlightRangeMode: ListView.StrictlyEnforceRange
-    PlasmaComponents.ScrollBar {
-      flickableItem: parent
-      anchors {
-        right: parent.right
-        top: parent.top
-        bottom: parent.bottom
-      }
+      model: ListModel {}
+      focus: true
+      highlightRangeMode: ListView.StrictlyEnforceRange
     }
   }
   
   //
   // The mounted shares view
   //
-  // FIXME: With KDE SC 4.9 move to PlasmaComponents.ScrollArea
-  GridView {
-    id: sharesView
-    cellWidth: 120
-    cellHeight: 80
+  PlasmaExtras.ScrollArea {
+    id: sharesViewScrollArea
     anchors {
       top: parent.top
-      left: browserListView.right
+      left: browserScrollArea.right
       right: parent.right
       bottom: parent.bottom
     }
     anchors.leftMargin: 5
     width: parent.width / 2
-    delegate: SharesViewItemDelegate {
-      id: sharesViewDelegate
-      onOpenClicked: {
-        sharesView.currentIndex = index
-        mountedShareClicked()
+    GridView {
+      id: sharesView
+      cellWidth: 120
+      cellHeight: 80
+      delegate: SharesViewItemDelegate {
+        id: sharesViewDelegate
+        onOpenClicked: {
+          sharesView.currentIndex = index
+          mountedShareClicked()
+        }
+        onUnmountClicked: {
+          sharesView.currentIndex = index
+          unmountShare()
+        }
       }
-      onUnmountClicked: {
-        sharesView.currentIndex = index
-        unmountShare()
-      }
-    }
-    model: ListModel {}
-    focus: true
-    highlightRangeMode: GridView.StrictlyEnforceRange
-
-    PlasmaComponents.ScrollBar {
-      flickableItem: parent
-      anchors {
-        right: parent.right
-        top: parent.top
-        bottom: parent.bottom
-      }
+      model: ListModel {}
+      focus: true
+      highlightRangeMode: GridView.StrictlyEnforceRange
     }
   }
 
