@@ -275,11 +275,18 @@ class Smb4KNetworkBrowserPart : public KParts::Part
     void slotPrint( bool checked );
 
     /**
-     * Mount a remote share. This slot is connected to the 'Mount' action.
+     * Mount or unmount a share. This slot is connected to the 'Mount'/'Unmount' dual action.
      *
      * @param checked             Is TRUE if the action is checked (not used here).
      */
-    void slotMount( bool checked );
+    void slotMountActionTriggered( bool checked );
+
+    /**
+     * Change the state of the 'mount'/'Unmount' dual action.
+     *
+     * @param active              TRUE if the the action is in the active state.
+     */
+    void slotMountActionChanged( bool active );
 
     /**
      * This slot is connected to the Smb4KScanner::aboutToStart() signal.

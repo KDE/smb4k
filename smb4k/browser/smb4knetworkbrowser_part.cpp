@@ -56,6 +56,7 @@
 // KDE includes
 #include <kaboutdata.h>
 #include <kaction.h>
+#include <kdualaction.h>
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kdebug.h>
@@ -248,10 +249,15 @@ void Smb4KNetworkBrowserPart::setupActions()
   print_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_P ) );
   connect( print_action, SIGNAL(triggered(bool)), this, SLOT(slotPrint(bool)) );
 
-  KAction *mount_action    = new KAction( KIcon( "emblem-mounted" ), i18n( "&Mount" ),
-                             actionCollection() );
+  KDualAction *mount_action = new KDualAction( actionCollection() );
+  KGuiItem mount_item( i18n( "&Mount" ), KIcon( "emblem-mounted" ) );
+  KGuiItem unmount_item( i18n( "&Unmount" ), KIcon( "emblem-unmounted" ) );
+  mount_action->setActiveGuiItem( mount_item );
+  mount_action->setInactiveGuiItem( unmount_item );
   mount_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_M ) );
-  connect( mount_action, SIGNAL(triggered(bool)), this, SLOT(slotMount(bool)) );
+  mount_action->setActive( true );
+  connect( mount_action, SIGNAL(triggered(bool)), this, SLOT(slotMountActionTriggered(bool)) );
+  connect( mount_action, SIGNAL(activeChanged(bool)), this, SLOT(slotMountActionChanged(bool)) );
 
   actionCollection()->addAction( "rescan_action", rescan_action );
   actionCollection()->addAction( "abort_action", abort_action );
@@ -447,8 +453,10 @@ void Smb4KNetworkBrowserPart::slotItemSelectionChanged()
           actionCollection()->action( "authentication_action" )->setEnabled( true );
           actionCollection()->action( "preview_action" )->setEnabled( false );
           actionCollection()->action( "mount_action" )->setEnabled( false );
+          static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
           actionCollection()->action( "print_action" )->setEnabled( false );
           actionCollection()->action( "custom_action" )->setEnabled( true );
+          
           break;
         }
         case Smb4KNetworkBrowserItem::Share:
@@ -463,8 +471,23 @@ void Smb4KNetworkBrowserPart::slotItemSelectionChanged()
           {
             actionCollection()->action( "bookmark_action" )->setEnabled( true );
             actionCollection()->action( "preview_action" )->setEnabled( true );
-            actionCollection()->action( "mount_action" )->setEnabled( !browser_item->shareItem()->isMounted() ||
-                                (browser_item->shareItem()->isMounted() && browser_item->shareItem()->isForeign()) );
+
+            if ( !browser_item->shareItem()->isMounted() || (browser_item->shareItem()->isMounted() && browser_item->shareItem()->isForeign()) )
+            {
+              actionCollection()->action( "mount_action" )->setEnabled( true );
+              static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
+            }
+            else if ( browser_item->shareItem()->isMounted() && !browser_item->shareItem()->isForeign() )
+            {
+              actionCollection()->action( "mount_action" )->setEnabled( true );
+              static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( false );
+            }
+            else
+            {
+              actionCollection()->action( "mount_action" )->setEnabled( false );
+              static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
+            }
+
             actionCollection()->action( "print_action" )->setEnabled( false );
             actionCollection()->action( "custom_action" )->setEnabled( true );
           }
@@ -473,6 +496,7 @@ void Smb4KNetworkBrowserPart::slotItemSelectionChanged()
             actionCollection()->action( "bookmark_action" )->setEnabled( false );
             actionCollection()->action( "preview_action" )->setEnabled( false );
             actionCollection()->action( "mount_action" )->setEnabled( false );
+            static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
             actionCollection()->action( "print_action" )->setEnabled( 
               !Smb4KPrint::self()->isRunning( browser_item->shareItem() ) );
             actionCollection()->action( "custom_action" )->setEnabled( false );
@@ -487,6 +511,7 @@ void Smb4KNetworkBrowserPart::slotItemSelectionChanged()
           actionCollection()->action( "authentication_action" )->setEnabled( false );
           actionCollection()->action( "preview_action" )->setEnabled( false );
           actionCollection()->action( "mount_action" )->setEnabled( false );
+          static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
           actionCollection()->action( "print_action" )->setEnabled( false );
           actionCollection()->action( "custom_action" )->setEnabled( false );
           break;
@@ -517,6 +542,7 @@ void Smb4KNetworkBrowserPart::slotItemPressed( QTreeWidgetItem *item, int /*colu
     actionCollection()->action( "authentication_action" )->setEnabled( false );
     actionCollection()->action( "preview_action" )->setEnabled( false );
     actionCollection()->action( "mount_action" )->setEnabled( false );
+    static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
     actionCollection()->action( "print_action" )->setEnabled( false );
     actionCollection()->action( "custom_action" )->setEnabled( false );
   }
@@ -530,14 +556,28 @@ void Smb4KNetworkBrowserPart::slotItemPressed( QTreeWidgetItem *item, int /*colu
         {
           if ( browser_item->shareItem()->isPrinter() )
           {
-            actionCollection()->action( "print_action" )->setEnabled( 
-              !Smb4KPrint::self()->isRunning( browser_item->shareItem() ) );
+            actionCollection()->action( "print_action" )->setEnabled( true );
+            
             actionCollection()->action( "mount_action" )->setEnabled( false );
+            static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
           }
           else
           {
-            actionCollection()->action( "mount_action" )->setEnabled( !browser_item->shareItem()->isMounted() ||
-                                (browser_item->shareItem()->isMounted() && browser_item->shareItem()->isForeign()) );
+            if ( !browser_item->shareItem()->isMounted() || (browser_item->shareItem()->isMounted() && browser_item->shareItem()->isForeign()) )
+            {
+              actionCollection()->action( "mount_action" )->setEnabled( true );
+              static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
+            }
+            else if ( browser_item->shareItem()->isMounted() && !browser_item->shareItem()->isForeign() )
+            {
+              actionCollection()->action( "mount_action" )->setEnabled( true );
+              static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( false );
+            }
+            else
+            {
+              actionCollection()->action( "mount_action" )->setEnabled( false );
+              static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
+            }
           }
 
           break;
@@ -592,7 +632,7 @@ void Smb4KNetworkBrowserPart::slotItemExecuted( QTreeWidgetItem *item, int /*col
       {
         if ( !browserItem->shareItem()->isPrinter() )
         {
-          slotMount( false );  // boolean is ignored
+          slotMountActionTriggered( false );  // boolean is ignored
         }
         else
         {
@@ -1863,7 +1903,7 @@ void Smb4KNetworkBrowserPart::slotPrint( bool /*checked*/ )
 }
 
 
-void Smb4KNetworkBrowserPart::slotMount( bool /*checked*/ )
+void Smb4KNetworkBrowserPart::slotMountActionTriggered( bool /*checked*/ )
 {
   Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( m_widget->currentItem() );
 
@@ -1873,7 +1913,14 @@ void Smb4KNetworkBrowserPart::slotMount( bool /*checked*/ )
     {
       case Smb4KNetworkBrowserItem::Share:
       {
-        Smb4KMounter::self()->mountShare( item->shareItem() );
+        if ( !item->shareItem()->isMounted() )
+        {
+          Smb4KMounter::self()->mountShare( item->shareItem(), m_widget );
+        }
+        else
+        {
+          Smb4KMounter::self()->unmountShare( item->shareItem(), false, m_widget );
+        }
         break;
       }
       default:
@@ -1885,6 +1932,20 @@ void Smb4KNetworkBrowserPart::slotMount( bool /*checked*/ )
   else
   {
     // Do nothing
+  }
+}
+
+
+
+void Smb4KNetworkBrowserPart::slotMountActionChanged( bool active )
+{
+  if ( active )
+  {
+    actionCollection()->action( "mount_action" )->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_M ) );
+  }
+  else
+  {
+    actionCollection()->action( "mount_action" )->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_U ) );
   }
 }
 
