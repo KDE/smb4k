@@ -1,4 +1,4 @@
-Smb4K 1.0.4 (????-??-??):
+Smb4K 1.0.4 (2012-08-19):
 - Fixed erroneously shown error notifications when searching. Thanks to
   Alexander Willand for reporting this issue.
 - Make sure that "tdb_log" messages are not shown as error notifications
