@@ -8,7 +8,7 @@ set( VERSION_PATCH 65 )
 cmake_minimum_required( VERSION 2.6 )
 
 set( QT_MIN_VERSION 4.7.0 )
-set( KDE_MIN_VERSION 4.4.0 ) 
+set( KDE_MIN_VERSION 4.6.0 ) 
 find_package( KDE4 REQUIRED )
 
 include(KDE4Defaults)
