@@ -85,7 +85,7 @@ Smb4KMountJob::~Smb4KMountJob()
 void Smb4KMountJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT(slotStartMount()) );
+  QTimer::singleShot( 50, this, SLOT(slotStartMount()) );
 }
 
 
@@ -834,7 +834,7 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
   {
     // Give the operating system some time to process the mounts
     // before we invoke KMountPoint::currentMountPoints().
-    QTimer::singleShot( 100, this, SLOT(slotFinishJob()) );
+    QTimer::singleShot( 500, this, SLOT(slotFinishJob()) );
   }
 }
 
@@ -903,7 +903,7 @@ void Smb4KUnmountJob::start()
   
   if ( !m_synchron )
   {
-    QTimer::singleShot( 0, this, SLOT(slotStartUnmount()) );
+    QTimer::singleShot( 50, this, SLOT(slotStartUnmount()) );
   }
   else
   {
