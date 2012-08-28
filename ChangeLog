@@ -1,4 +1,5 @@
 Smb4K 1.1.0 (????-??-??):
+- Smb4K needs KDE SC version 4.6 or later.
 - Merged Smb4KCore class and Smb4KGlobal namespace. The Smb4KCore class
   was removed.
 - Fixed many issues reported by krazy2. On the way several minor changes
@@ -64,6 +65,10 @@ Smb4K 1.1.0 (????-??-??):
   + Removed wrong checks that caused tooltips not being updated properly.
 - Revised mount helper:
   + Simplified names for the arguments that can/must be passed.
+- Revised network browser:
+  + Added ability to unmount shares. Many thanks go to Ettore Atalan for
+    the suggestion.
+  + Files can be printed if there are still other print jobs running.
 - Revised main window:
   + When mounting a 'homes' share, show that UNC of the user's home
     directory in the status bar instead of //SERVER/homes.
