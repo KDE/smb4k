@@ -90,10 +90,6 @@ Smb4KMounter::Smb4KMounter( QObject *parent )
   d->checks = 0;
   d->dialog = 0;
   d->aboutToQuit = false;
-  d->pendingUnmounts = 0;
-  d->initialUnmounts = 0;
-  d->pendingMounts = 0;
-  d->initialMounts = 0;
   d->firstImportDone = false;
 
   connect( QCoreApplication::instance(), SIGNAL(aboutToQuit()),
@@ -887,10 +883,6 @@ void Smb4KMounter::mountShares( const QList<Smb4KShare *> &shares, QWidget *pare
       {
         Smb4KWalletManager::self()->readAuthInfo( share );
         shares_to_mount << share;
-
-        // Add the mount process to the initial and pending mounts.
-        d->pendingMounts++;
-        d->initialMounts++;
       }
       else
       {
@@ -905,7 +897,7 @@ void Smb4KMounter::mountShares( const QList<Smb4KShare *> &shares, QWidget *pare
   
   // Create a new job and add it to the subjobs
   Smb4KMountJob *job = new Smb4KMountJob( this );
-  job->setObjectName( QString( "MountJob_bulk-%1" ).arg( shares.size() ) );
+  job->setObjectName( QString( "MountJob_bulk-%1" ).arg( shares_to_mount.size() ) );
   job->setupMount( shares_to_mount, parent );
 
   connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
@@ -1146,10 +1138,6 @@ void Smb4KMounter::unmountShares( const QList<Smb4KShare *> &shares, bool silent
       }
 
       shares_to_unmount << share;
-
-      // Add the unmount process to the initial and pending unmounts.
-      d->pendingUnmounts++;
-      d->initialUnmounts++;
     }
     else
     {
@@ -1687,18 +1675,9 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
 
   if ( !known_share )
   {
-    // Copy incoming share, because it will be deleted shortly 
+    // Copy incoming share, because it will be deleted shortly
     // after Smb4KMountJob::mounted() signal was emitted.
     known_share = new Smb4KShare( *share );
-    
-    if ( known_share->isHomesShare() )
-    {
-      known_share->setURL( share->homeURL() );
-    }
-    else
-    {
-      // Do nothing
-    }
 
     // Check the usage, etc.
     check( known_share );
@@ -1706,106 +1685,15 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
     // Add the share
     addMountedShare( known_share );
 
-    // Check whether the share stems from a bulk mount or not.
-    // 
-    // FIXME: What can be done to determine whether this share was
-    // mounted via a bulk mount or not and act accordingly.
-    // Example: A buld mount is still running (i.e. remounting of
-    // shares) and the user starts to mount additional shares through
-    // the GUI.
-    if ( d->pendingMounts != 0 )
+    if ( Smb4KSettings::remountShares() )
     {
-      if ( Smb4KSettings::remountShares() )
-      {
-        Smb4KCustomOptionsManager::self()->removeRemount( known_share );
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      // Remove the mount from the pending mount processes.
-      d->pendingMounts--;
-
-      if ( d->pendingMounts == 0 )
-      {
-        Smb4KNotification *notification = new Smb4KNotification( this );
-        notification->sharesMounted( d->initialMounts, d->initialMounts );
-
-        // There are no mount processes currently running.
-        d->pendingMounts = 0;
-        d->initialMounts = 0;
-      }
-      else
-      {
-        if ( hasSubjobs() )
-        {
-          bool still_mounting = false;
-
-          QListIterator<KJob *> it( subjobs() );
-
-          while ( it.hasNext() )
-          {
-            KJob *job = it.next();
-
-            if ( job->objectName().startsWith( QLatin1String( "MountJob_bulk" ) ) )
-            {
-              still_mounting = true;
-              break;
-            }
-            else
-            {
-              continue;
-            }
-          }
-
-          if ( !still_mounting )
-          {
-            if ( d->initialMounts > 1 )
-            {
-              Smb4KNotification *notification = new Smb4KNotification( this );
-              notification->sharesMounted( d->initialMounts, (d->initialMounts - d->pendingMounts) );
-            }
-            else
-            {
-              Smb4KNotification *notification = new Smb4KNotification( this );
-              notification->shareMounted( known_share );
-            }
-
-            // There are currently no mount processes running.
-            d->pendingMounts = 0;
-            d->initialMounts = 0;
-          }
-          else
-          {
-            // Do nothing
-          }
-        }
-        else
-        {
-          if ( d->initialMounts > 1 )
-          {
-            Smb4KNotification *notification = new Smb4KNotification( this );
-            notification->sharesMounted( d->initialMounts, (d->initialMounts - d->pendingMounts) );
-          }
-          else
-          {
-            Smb4KNotification *notification = new Smb4KNotification( this );
-            notification->shareMounted( known_share );
-          }
-
-          // There are currently no mount processes running.
-          d->pendingMounts = 0;
-          d->initialMounts = 0;
-        }
-      }
+      Smb4KCustomOptionsManager::self()->removeRemount( known_share );
     }
     else
     {
-      Smb4KNotification *notification = new Smb4KNotification( this );
-      notification->shareMounted( known_share );
+      // Do nothing
     }
-    
+
     // (Re)fill the list of share object.
     while ( !d->shareObjects.isEmpty() )
     {
@@ -1816,7 +1704,7 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
     {
       d->shareObjects << new Smb4KNetworkObject( mountedSharesList().at( i ) );
     }
-    
+
     // Emit the mounted() signal.
     emit mounted( known_share );
     emit mountedSharesListChanged();
@@ -1834,101 +1722,17 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
   
   // Get the share that was unmounted.
   Smb4KShare *known_share = findShareByPath( share->canonicalPath() );
-  
+
   if ( known_share )
   {
     // Set the share as unmounted. Since the unmount job
     // works with an internal copy, we have to set this here!
     known_share->setIsMounted( false );
-    
-    if ( d->pendingUnmounts != 0 )
-    {
-      // Remove the unmount process from the pending unmounts.
-      d->pendingUnmounts--;
 
-      if ( d->pendingUnmounts == 0 )
-      {
-        Smb4KNotification *notification = new Smb4KNotification( this );
-        notification->allSharesUnmounted( d->initialUnmounts, d->initialUnmounts );
-
-        // There are currently no unmount processes running.
-        d->pendingUnmounts = 0;
-        d->initialUnmounts = 0;
-      }
-      else
-      {
-        if ( hasSubjobs() )
-        {
-          bool still_unmounting = false;
-              
-          QListIterator<KJob *> it( subjobs() );
-              
-          while ( it.hasNext() )
-          {
-            KJob *job = it.next();
-                
-            if ( job->objectName().startsWith( QLatin1String( "UnmountJob_bulk" ) ) )
-            {
-              still_unmounting = true;
-              break;
-            }
-            else
-            {
-              continue;
-            }
-          }
-
-          if ( !still_unmounting )
-          {
-            if ( d->initialUnmounts > 1 )
-            {
-              Smb4KNotification *notification = new Smb4KNotification( this );
-              notification->allSharesUnmounted( d->initialUnmounts, (d->initialUnmounts - d->pendingUnmounts) );
-            }
-            else
-            {
-              Smb4KNotification *notification = new Smb4KNotification( this );
-              notification->shareUnmounted( known_share );
-            }
-
-            // There are currently no unmount processes running.
-            d->pendingUnmounts = 0;
-            d->initialUnmounts = 0;
-          }
-          else
-          {
-            // Do nothing
-          }
-        }
-        else
-        {
-          if ( d->initialUnmounts > 1 )
-          {
-            Smb4KNotification *notification = new Smb4KNotification( this );
-            notification->allSharesUnmounted( d->initialUnmounts, (d->initialUnmounts - d->pendingUnmounts) );
-          }
-          else
-          {
-            Smb4KNotification *notification = new Smb4KNotification( this );
-            notification->shareUnmounted( known_share );
-          }
-
-          // There are currently no unmount processes running.
-          d->pendingUnmounts = 0;
-          d->initialUnmounts = 0;
-        }
-      }
-    }
-    else
-    {
-      Smb4KNotification *notification = new Smb4KNotification( this );
-      notification->shareUnmounted( known_share );
-    }
-    
     // Update the share object so that the return value of isMounted()
     // is correct.
     Smb4KNetworkObject *share_obj = find( known_share->url() );
-    
+
     if ( share_obj )
     {
       share_obj->update( known_share );
@@ -1942,13 +1746,13 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
     // after the mount prefix was cleaned up, Smb4KShare::canonicalPath()
     // would return an empty string.
     emit unmounted( known_share );
-    
+
     // Schedule the obsolete mountpoint for removal.
     d->obsoleteMountpoints << known_share->canonicalPath();
 
     // Remove the share from the list of mounted shares.
     removeMountedShare( known_share );
-    
+
     // (Re)fill the list of share object.
     while ( !d->shareObjects.isEmpty() )
     {
@@ -1959,7 +1763,7 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
     {
       d->shareObjects << new Smb4KNetworkObject( mountedSharesList().at( i ) );
     }
-    
+
     emit mountedSharesListChanged();
   }
   else
@@ -2104,9 +1908,34 @@ void Smb4KMounter::slotAboutToStartMounting( const QList<Smb4KShare *> &shares )
 
 void Smb4KMounter::slotFinishedMounting( const QList<Smb4KShare *> &shares )
 {
+  // Emit finished() signal and count the number of
+  // failed mounts.
+  int failed_mounts = 0;
+  
   for ( int i = 0; i < shares.size(); ++i )
   {
     emit finished( shares[i], MountShare );
+
+    if ( !shares.at( i )->isMounted() )
+    {
+      failed_mounts++;
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+
+  // Notify the user.
+  if ( shares.size() > 1 )
+  {
+    Smb4KNotification *notification = new Smb4KNotification( this );
+    notification->sharesMounted( shares.size(), (shares.size() - failed_mounts) );
+  }
+  else
+  {
+    Smb4KNotification *notification = new Smb4KNotification( this );
+    notification->shareMounted( shares.first() );
   }
 }
 
@@ -2122,9 +1951,33 @@ void Smb4KMounter::slotAboutToStartUnmounting( const QList<Smb4KShare *> &shares
 
 void Smb4KMounter::slotFinishedUnmounting( const QList<Smb4KShare *> &shares )
 {
+  // Emit finished() signal and count the number of
+  // failed mounts.
+  int failed_unmounts = 0;
+  
   for ( int i = 0; i < shares.size(); ++i )
   {
     emit finished( shares[i], UnmountShare );
+
+    if ( shares.at( i )->isMounted() )
+    {
+      failed_unmounts++;
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+
+  if ( shares.size() > 1 )
+  {
+    Smb4KNotification *notification = new Smb4KNotification( this );
+    notification->allSharesUnmounted( shares.size(), (shares.size() - failed_unmounts) );
+  }
+  else
+  {
+    Smb4KNotification *notification = new Smb4KNotification( this );
+    notification->shareUnmounted( shares.first() );
   }
 }
 

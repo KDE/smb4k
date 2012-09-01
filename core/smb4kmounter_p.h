@@ -407,10 +407,6 @@ class Smb4KMounterPrivate
     QStringList obsoleteMountpoints;
     bool aboutToQuit;
     bool hardwareReason;
-    int pendingUnmounts;
-    int initialUnmounts;
-    int pendingMounts;
-    int initialMounts;
     bool firstImportDone;
 };
 
