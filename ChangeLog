@@ -55,6 +55,7 @@ Smb4K 1.1.0 (????-??-??):
     mounted share, if it could be found.
   + Added ability to make several attempts to remount shares. Many thanks
     go to Ettore Atalan for the suggestion.
+  + Improved handling of notifications.
 - Revised Smb4KWalletManager class:
   + When prompting for a password for a 'homes' share, use the UNC of the
     user's home directory and not //SERVER/homes.
@@ -69,13 +70,44 @@ Smb4K 1.1.0 (????-??-??):
   + Added ability to unmount shares. Many thanks go to Ettore Atalan for
     the suggestion.
   + Files can be printed if there are still other print jobs running.
-- Revised main window:
-  + When mounting a 'homes' share, show that UNC of the user's home
-    directory in the status bar instead of //SERVER/homes.
 - Revised configuration dialog:
   + Added options for advanced remounting behavior.
   + Implemented shortcuts for all entries. (Labels have now their buddies
     set.)
+
+Smb4K 1.0.4 (2012-08-19):
+- Fixed erroneously shown error notifications when searching. Thanks to
+  Alexander Willand for reporting this issue.
+- Make sure that "tdb_log" messages are not shown as error notifications
+  to the user.
+- Wait until unmounting all shares on exit finished before closing down.
+- Make sure that the mount prefix and all its subdirectories correctly
+  inherit their permissions.
+
+Smb4K 1.0.3 (2012-06-23):
+- Make sure that output from the mount and unmount process is trimmed, so
+  that there are no false error messages.
+- Fixed error notifications being shown although mounting and unmounting
+  shares was successful.
+
+Smb4K 1.0.2 (2012-05-30):
+- Fixed two potential crashes in class Smb4KHomesSharesHandler.
+- Fixed a wrong comparision between QString and QByteArray in
+  Smb4KMountJob::slotActionFinished().
+- Fixed a wrong comparision between QString and QByteArray and a double
+  declaration in Smb4KUnmountJob::slotActionFinished().
+- Fixed wrong assumption that qreal equals double in Smb4KShare class.
+  Patch by Rex Dieter from the Fedora Project.
+- Fixed missing assignments of the IP address in Smb4KAuthInfo::setHost()
+  and Smb4KAuthInfo::setShare().
+- When prompting for a password for a 'homes' share, use the UNC of the
+  user's home directory and not //SERVER/homes.
+- When mounting a 'homes' share, show the UNC of the user's home directory
+  in the mainwindow's status bar instead of //SERVER/homes.
+- Fixed a crash in Smb4KMountJob::slotActionFinished() reported by
+  Peter Trenholme.
+- Fixed unmounting on exit. Many thanks go to Peter Trenholme for reporting
+  this issue.
 
 Smb4K 1.0.1 (2012-03-11):
 - Fixed potential crash in Smb4KWalletManager::init().
