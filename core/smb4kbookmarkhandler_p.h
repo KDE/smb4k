@@ -99,7 +99,7 @@ class KDE_EXPORT Smb4KBookmarkDialog : public KDialog
     /**
      * Load the list of bookmarks and the one of the groups
      */
-    void loadLists();
+    void loadLists( const QList<Smb4KBookmark *> &bookmarks, const QStringList &groups );
 
     /**
      * Finds the bookmark in the list

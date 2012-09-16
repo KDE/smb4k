@@ -51,14 +51,14 @@
 
 
 Smb4KBookmarkDialog::Smb4KBookmarkDialog( const QList<Smb4KBookmark *> &bookmarks, const QStringList &groups, QWidget *parent )
-: KDialog( parent ), m_bookmarks( bookmarks ), m_groups( groups )
+: KDialog( parent )
 {
   setCaption( i18n( "Add Bookmarks" ) );
   setButtons( Ok|Cancel );
   setDefaultButton( Ok );
 
   setupView();
-  loadLists();
+  loadLists( bookmarks, groups );
 
   KConfigGroup group( Smb4KSettings::self()->config(), "BookmarkDialog" );
   restoreDialogSize( group );
@@ -72,6 +72,10 @@ Smb4KBookmarkDialog::Smb4KBookmarkDialog( const QList<Smb4KBookmark *> &bookmark
 
 Smb4KBookmarkDialog::~Smb4KBookmarkDialog()
 {
+  while ( !m_bookmarks.isEmpty() )
+  {
+    delete m_bookmarks.takeFirst();
+  }
 }
 
 
@@ -140,13 +144,17 @@ void Smb4KBookmarkDialog::setupView()
 }
 
 
-void Smb4KBookmarkDialog::loadLists()
+void Smb4KBookmarkDialog::loadLists( const QList<Smb4KBookmark *> &bookmarks, const QStringList &groups )
 {
-  // Add the bookmarks to the list widget
-  for ( int i = 0; i < m_bookmarks.size(); ++i )
+  // Copy the bookmarks to the internal list and add them to 
+  // the list widget afterwards.
+  for ( int i = 0; i < bookmarks.size(); ++i )
   {
-    QListWidgetItem *item = new QListWidgetItem( m_bookmarks.at( i )->icon(), m_bookmarks.at( i )->unc(), m_widget );
-    item->setData( Qt::UserRole, m_bookmarks.at( i )->url() );
+    Smb4KBookmark *bookmark = new Smb4KBookmark( *bookmarks[i] );
+    QListWidgetItem *item = new QListWidgetItem( bookmark->icon(), bookmark->unc(), m_widget );
+    item->setData( Qt::UserRole, static_cast<QUrl>( bookmark->url() ) );
+    
+    m_bookmarks << bookmark;
   }
 
   m_group_combo->addItems( m_groups );
@@ -576,7 +584,7 @@ void Smb4KBookmarkEditor::loadBookmarks( const QList<Smb4KBookmark *> &list )
       }
 
       QTreeWidgetItem *bookmark = new QTreeWidgetItem( QTreeWidgetItem::UserType );
-      bookmark->setData( 0, QTreeWidgetItem::UserType, m_bookmarks.at( i )->url() );
+      bookmark->setData( 0, QTreeWidgetItem::UserType, static_cast<QUrl>( m_bookmarks.at( i )->url() ) );
       bookmark->setIcon( 0, m_bookmarks.at( i )->icon() );
       bookmark->setText( 0, m_bookmarks.at( i )->unc() );
       bookmark->setText( (m_tree_widget->columnCount() - 1), QString( "01_%1" ).arg( m_bookmarks.at( i )->unc() ) );
@@ -588,7 +596,7 @@ void Smb4KBookmarkEditor::loadBookmarks( const QList<Smb4KBookmark *> &list )
     else
     {
       QTreeWidgetItem *bookmark = new QTreeWidgetItem( QTreeWidgetItem::UserType );
-      bookmark->setData( 0, QTreeWidgetItem::UserType, m_bookmarks.at( i )->url() );
+      bookmark->setData( 0, QTreeWidgetItem::UserType, static_cast<QUrl>( m_bookmarks.at( i )->url() ) );
       bookmark->setIcon( 0, m_bookmarks.at( i )->icon() );
       bookmark->setText( 0, m_bookmarks.at( i )->unc() );
       bookmark->setText( (m_tree_widget->columnCount() - 1), QString( "01_%1" ).arg( m_bookmarks.at( i )->unc() ) );
