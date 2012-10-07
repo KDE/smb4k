@@ -157,6 +157,7 @@ void Smb4KBookmarkDialog::loadLists( const QList<Smb4KBookmark *> &bookmarks, co
     m_bookmarks << bookmark;
   }
 
+  m_groups = groups;
   m_group_combo->addItems( m_groups );
 }
 
