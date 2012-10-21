@@ -104,6 +104,25 @@ void Smb4KBookmarkHandler::addBookmark( Smb4KShare *share, QWidget *parent )
 }
 
 
+void Smb4KBookmarkHandler::addBookmark( const QUrl & url )
+{
+  for ( int i = 0; i < sharesList().size(); ++i )
+  {
+    if ( sharesList().at( i )->url() == url )
+    {
+      QList<Smb4KShare *> shares;
+      shares << sharesList().at( i );
+      addBookmarks( shares, 0 );
+      break;
+    }
+    else
+    {
+      continue;
+    }
+  }
+}
+
+
 void Smb4KBookmarkHandler::addBookmarks( const QList<Smb4KShare *> &list, QWidget *parent )
 {
   // Prepare the list of bookmarks and show the save dialog.

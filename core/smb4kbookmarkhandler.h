@@ -30,6 +30,7 @@
 #include <QtCore/QObject>
 #include <QtCore/QList>
 #include <QtCore/QScopedPointer>
+#include <QtCore/QUrl>
 #include <QtGui/QWidget>
 
 // KDE includes
@@ -83,6 +84,15 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      */
     void addBookmark( Smb4KShare *share,
                       QWidget *parent = 0 );
+    
+    /**
+     * This function adds a new bookmark. In contrast to the functions above,
+     * it takes an URL @p url and searches the global list of shares for the 
+     * share with this URL. If the share cannot be found, nothing will be done.
+     * 
+     * @param url           The URL of the share that is to be bookmarked
+     */
+    Q_INVOKABLE void addBookmark( const QUrl &url );
 
     /**
      * This function adds several bookmarks at once.
