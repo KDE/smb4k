@@ -773,7 +773,7 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
       Smb4KShare *share = it.next();
 
       // Check if the mount process reported an error
-      QString stderr( reply.data()["stderr"].toString() );
+      QString stderr( reply.data()["stderr"].toString().trimmed() );
 
       if ( QString::compare( share->canonicalPath(), reply.data()["mountpoint"].toString() ) == 0 && !stderr.isEmpty() )
       {
@@ -1071,7 +1071,7 @@ void Smb4KUnmountJob::slotActionFinished( ActionReply reply )
       Smb4KShare *share = it.next();
 
       // Check if the unmount process reported an error
-      QString stderr( reply.data()["stderr"].toString() );
+      QString stderr( reply.data()["stderr"].toString().trimmed() );
 
       if ( QString::compare( share->canonicalPath(), reply.data()["mountpoint"].toString() ) == 0 && 
            !stderr.isEmpty() && !m_silent )
