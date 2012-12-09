@@ -392,7 +392,8 @@ void Smb4KMainWindow::setupView()
     KApplication::exit( 1 );
     return;
   }
-
+  
+  // Initial main window look.
   KConfigGroup config_group( Smb4KSettings::self()->config(), "MainWindow" );
 
   if ( !config_group.exists() )
@@ -416,8 +417,6 @@ void Smb4KMainWindow::setupView()
     {
       // Do nothing
     }
-
-
   }
   else
   {
@@ -1187,19 +1186,22 @@ void Smb4KMainWindow::slotActivePartChanged( KParts::Part *part )
 {
   Q_ASSERT( part );
 
+  QAction *bookmark_action = NULL;
+
   // First break the connection to the slotEnableBookmarkAction() slot.
   if ( m_active_part )
   {
-    QAction *action = m_active_part->actionCollection()->action( "bookmark_action" );
+    bookmark_action = m_active_part->actionCollection()->action( "bookmark_action" );
 
-    if ( action )
+    if ( bookmark_action )
     {
-      disconnect( action, SIGNAL(changed()), this, SLOT(slotEnableBookmarkAction()) );
+      disconnect( bookmark_action, SIGNAL(changed()), this, SLOT(slotEnableBookmarkAction()) );
     }
     else
     {
       // Do nothing
     }
+    
   }
   else
   {
@@ -1208,19 +1210,42 @@ void Smb4KMainWindow::slotActivePartChanged( KParts::Part *part )
 
   // Let m_active_part point to the new active part.
   m_active_part = part;
-
+  
   // Connect the action.
-  QAction *action = m_active_part->actionCollection()->action( "bookmark_action" );
+  bookmark_action = m_active_part->actionCollection()->action( "bookmark_action" );
 
-  if ( action )
+  if ( bookmark_action )
   {
-    actionCollection()->action( "add_bookmark_action" )->setEnabled( action->isEnabled() );
-    connect( action, SIGNAL(changed()), this, SLOT(slotEnableBookmarkAction()) );
+    actionCollection()->action( "add_bookmark_action" )->setEnabled( bookmark_action->isEnabled() );
+    connect( bookmark_action, SIGNAL(changed()), this, SLOT(slotEnableBookmarkAction()) );
   }
   else
   {
     actionCollection()->action( "add_bookmark_action" )->setEnabled( false );
   }
+  
+  // Modify toolbar. Only load those actions that we need, i.e. not those
+  // that are already in the tool bar.
+  QList<QAction *> dynamic_list;
+
+  for ( int i = 0; i < m_active_part->actionCollection()->actions().size(); ++i )
+  {
+    QAction *action = m_active_part->actionCollection()->action(i);
+
+    if ( QString::compare( action->objectName(), "bookmark_action" ) == 0 )
+    {
+      continue;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    dynamic_list << action;
+  }
+
+  unplugActionList( "dynamic_list" );
+  plugActionList( "dynamic_list", dynamic_list );
 }
 
 

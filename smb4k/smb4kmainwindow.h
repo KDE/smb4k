@@ -49,7 +49,7 @@ class Smb4KPreviewItem;
  * This is the main window of Smb4K. It provides the network browser, the
  * shares view and all other dialogs as well as a menu, status and tool bar.
  *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
 class Smb4KMainWindow : public KParts::MainWindow
@@ -293,7 +293,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      * Set up menu bar
      */
     void setupMenuBar();
-    
+
     /**
      * Set up the system tray widget
      */

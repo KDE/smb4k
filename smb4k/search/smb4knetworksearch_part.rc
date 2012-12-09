@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="smb4ksearchdialog_part" version="1">
+<gui name="smb4ksearchdialog_part" version="1">
 <MenuBar>
   <Menu name="search"><text>Search</text>
     <Action name="search_action"/>
@@ -14,6 +14,6 @@
   <Action name="abort_search_action"/>
   <Separator/>
   <Action name="clear_search_action"/>
-  <Action name="item_action"/>
+  <Action name="mount_action"/>
 </ToolBar>
-</kpartgui>
+</gui>

@@ -157,10 +157,10 @@ void Smb4KNetworkSearchPart::setupActions()
   // No shortcut.
   connect( clear_action, SIGNAL(triggered(bool)), this, SLOT(slotClearActionTriggered(bool)) );
 
-  KAction *item_action    = new KAction( KIcon( "emblem-mounted" ), i18n( "Mount" ),
+  KAction *mount_action  = new KAction( KIcon( "emblem-mounted" ), i18n( "Mount" ),
                            actionCollection() );
-  item_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_D ) );
-  connect( item_action, SIGNAL(triggered(bool)), this, SLOT(slotMountActionTriggered(bool)) );
+  mount_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_D ) );
+  connect( mount_action, SIGNAL(triggered(bool)), this, SLOT(slotMountActionTriggered(bool)) );
 
   KAction *abort_action  = new KAction( KIcon( "process-stop" ), i18n( "Abort" ),
                            actionCollection() );
@@ -170,21 +170,19 @@ void Smb4KNetworkSearchPart::setupActions()
   actionCollection()->addAction( "search_action", search_action );
   actionCollection()->addAction( "abort_search_action", abort_action );
   actionCollection()->addAction( "clear_search_action", clear_action );
-  actionCollection()->addAction( "item_action", item_action );
+  actionCollection()->addAction( "mount_action", mount_action );
 
   // Disable all actions.
   search_action->setEnabled( false );
   clear_action->setEnabled( false );
-  item_action->setEnabled( false );
+  mount_action->setEnabled( false );
   abort_action->setEnabled( false );
 
   // Put the actions in the context menu.
   m_menu = new KActionMenu( this );
   m_menu_title = m_menu->menu()->addTitle( KIcon( "system-search" ), i18n( "Search Results" ) );
-//   m_menu->addAction( abort_action );
-//   m_menu->addSeparator();
   m_menu->addAction( clear_action );
-  m_menu->addAction( item_action );
+  m_menu->addAction( mount_action );
   
   // Put some actions in the tool bar of the search widget
   m_widget->toolBar()->addAction( search_action );
@@ -317,7 +315,7 @@ void Smb4KNetworkSearchPart::slotClearActionTriggered( bool /*checked*/ )
   // Disable the actions.
   actionCollection()->action( "search_action" )->setEnabled( false );
   actionCollection()->action( "clear_search_action" )->setEnabled( false );
-  actionCollection()->action( "item_action" )->setEnabled( false );
+  actionCollection()->action( "mount_action" )->setEnabled( false );
   actionCollection()->action( "abort_search_action" )->setEnabled( false );
 }
 
@@ -408,25 +406,25 @@ void Smb4KNetworkSearchPart::slotItemSelectionChanged()
       {
         case Smb4KNetworkSearchItem::Share:
         {
-          actionCollection()->action( "item_action" )->setEnabled( true );
+          actionCollection()->action( "mount_action" )->setEnabled( true );
 
           break;
         }
         default:
         {
-          actionCollection()->action( "item_action" )->setEnabled( false );
+          actionCollection()->action( "mount_action" )->setEnabled( false );
           break;
         }
       }
     }
     else
     {
-      actionCollection()->action( "item_action" )->setEnabled( false );
+      actionCollection()->action( "mount_action" )->setEnabled( false );
     }
   }
   else
   {
-    actionCollection()->action( "item_action" )->setEnabled( false );
+    actionCollection()->action( "mount_action" )->setEnabled( false );
   }
 }
 
