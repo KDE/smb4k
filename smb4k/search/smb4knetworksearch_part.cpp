@@ -53,6 +53,7 @@
 #include <kactioncollection.h>
 #include <kmenu.h>
 #include <kapplication.h>
+#include <kdualaction.h>
 
 using namespace Smb4KGlobal;
 
@@ -157,10 +158,24 @@ void Smb4KNetworkSearchPart::setupActions()
   // No shortcut.
   connect( clear_action, SIGNAL(triggered(bool)), this, SLOT(slotClearActionTriggered(bool)) );
 
-  KAction *mount_action  = new KAction( KIcon( "emblem-mounted" ), i18n( "Mount" ),
-                           actionCollection() );
-  mount_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_D ) );
+  KDualAction *mount_action = new KDualAction( actionCollection() );
+  KGuiItem mount_item( i18n( "&Mount" ), KIcon( "emblem-mounted" ) );
+  KGuiItem unmount_item( i18n( "&Unmount" ), KIcon( "emblem-unmounted" ) );
+  mount_action->setActiveGuiItem( mount_item );
+  mount_action->setInactiveGuiItem( unmount_item );
+  mount_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_M ) );
+  mount_action->setActive( true );
+  // The mount action has to change automatically to the unmount
+  // action, because we want to be able to unmount the selected
+  // share immediately.
+  mount_action->setAutoToggle( true );
   connect( mount_action, SIGNAL(triggered(bool)), this, SLOT(slotMountActionTriggered(bool)) );
+  connect( mount_action, SIGNAL(activeChanged(bool)), this, SLOT(slotMountActionChanged(bool)) );
+  
+//   KAction *mount_action  = new KAction( KIcon( "emblem-mounted" ), i18n( "Mount" ),
+//                            actionCollection() );
+//   mount_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_D ) );
+//   connect( mount_action, SIGNAL(triggered(bool)), this, SLOT(slotMountActionTriggered(bool)) );
 
   KAction *abort_action  = new KAction( KIcon( "process-stop" ), i18n( "Abort" ),
                            actionCollection() );
@@ -221,7 +236,10 @@ void Smb4KNetworkSearchPart::customEvent( QEvent *e )
         case Smb4KNetworkSearchItem::Share:
         {
           // First unmark the share.
-          item->setMounted( false );
+          Smb4KShare *share = new Smb4KShare( *item->shareItem() );
+          share->setIsMounted( false );
+          item->update( share );
+          delete share;
             
           // Now either mark it again or leave it unmarked.
           QList<Smb4KShare *> list = findShareByUNC( item->shareItem()->unc() );
@@ -257,6 +275,17 @@ void Smb4KNetworkSearchPart::customEvent( QEvent *e )
   else if ( e->type() == Smb4KEvent::SetFocus )
   {
     m_widget->comboBox()->lineEdit()->setFocus();
+  }
+  else if ( e->type() == Smb4KEvent::MountOrUnmountShare )
+  {
+    // Change the active state of the mount action. This needs
+    // to be done here, because the action is not switched
+    // automatically in case the part is notified from outside.
+    KDualAction *mount_action = static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) );
+    mount_action->setActive( !mount_action->isActive() );
+
+    // Mount or unmount the share.
+    slotMountActionTriggered( false );
   }
   else
   {
@@ -323,19 +352,39 @@ void Smb4KNetworkSearchPart::slotClearActionTriggered( bool /*checked*/ )
 void Smb4KNetworkSearchPart::slotMountActionTriggered( bool /*checked*/ )
 {
   // Check if we need to add this host to the global list of hosts.
-  Smb4KNetworkSearchItem *item = static_cast<Smb4KNetworkSearchItem *>( m_widget->listWidget()->currentItem() );
+  Smb4KNetworkSearchItem *searchItem = static_cast<Smb4KNetworkSearchItem *>( m_widget->listWidget()->currentItem() );
 
-  switch ( item->type() )
+  switch ( searchItem->type() )
   {
     case Smb4KNetworkSearchItem::Share:
     {
-      Smb4KMounter::self()->mountShare( item->shareItem() );
+      if ( !searchItem->shareItem()->isMounted() )
+      {
+        Smb4KMounter::self()->mountShare( searchItem->shareItem(), m_widget );
+      }
+      else
+      {
+        Smb4KMounter::self()->unmountShare( searchItem->shareItem(), false, m_widget );
+      }
       break;
     }
     default:
     {
       break;
     }
+  }
+}
+
+
+void Smb4KNetworkSearchPart::slotMountActionChanged( bool active )
+{
+  if ( active )
+  {
+    actionCollection()->action( "mount_action" )->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_M ) );
+  }
+  else
+  {
+    actionCollection()->action( "mount_action" )->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_U ) );
   }
 }
 
@@ -374,7 +423,14 @@ void Smb4KNetworkSearchPart::slotItemDoubleClicked( QListWidgetItem *item )
     {
       case Smb4KNetworkSearchItem::Share:
       {
-        Smb4KMounter::self()->mountShare( searchItem->shareItem() );
+        if ( !searchItem->shareItem()->isMounted() )
+        {
+          Smb4KMounter::self()->mountShare( searchItem->shareItem(), m_widget );
+        }
+        else
+        {
+          Smb4KMounter::self()->unmountShare( searchItem->shareItem(), false, m_widget );
+        }
         break;
       }
       default:
@@ -400,19 +456,34 @@ void Smb4KNetworkSearchPart::slotItemSelectionChanged()
     // item in the list.
     if ( list.count() == 1 )
     {
-      Smb4KNetworkSearchItem *item = static_cast<Smb4KNetworkSearchItem *>( list.first() );
+      Smb4KNetworkSearchItem *searchItem = static_cast<Smb4KNetworkSearchItem *>( list.first() );
 
-      switch ( item->type() )
+      switch ( searchItem->type() )
       {
         case Smb4KNetworkSearchItem::Share:
         {
-          actionCollection()->action( "mount_action" )->setEnabled( true );
-
+          if ( !searchItem->shareItem()->isMounted() || (searchItem->shareItem()->isMounted() && searchItem->shareItem()->isForeign()) )
+          {
+            actionCollection()->action( "mount_action" )->setEnabled( true );
+            static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
+          }
+          else if ( searchItem->shareItem()->isMounted() && !searchItem->shareItem()->isForeign() )
+          {
+            actionCollection()->action( "mount_action" )->setEnabled( true );
+            static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( false );
+          }
+          else
+          {
+            actionCollection()->action( "mount_action" )->setEnabled( false );
+            static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
+          }
+          
           break;
         }
         default:
         {
           actionCollection()->action( "mount_action" )->setEnabled( false );
+          static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
           break;
         }
       }
@@ -420,11 +491,13 @@ void Smb4KNetworkSearchPart::slotItemSelectionChanged()
     else
     {
       actionCollection()->action( "mount_action" )->setEnabled( false );
+      static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
     }
   }
   else
   {
     actionCollection()->action( "mount_action" )->setEnabled( false );
+    static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
   }
 }
 
@@ -538,15 +611,15 @@ void Smb4KNetworkSearchPart::slotShareMounted( Smb4KShare *share )
   
   for ( int i = 0; i < m_widget->listWidget()->count(); ++i )
   {
-    Smb4KNetworkSearchItem *item = static_cast<Smb4KNetworkSearchItem *>( m_widget->listWidget()->item( i ) );
+    Smb4KNetworkSearchItem *searchItem = static_cast<Smb4KNetworkSearchItem *>( m_widget->listWidget()->item( i ) );
     
-    switch ( item->type() )
+    switch ( searchItem->type() )
     {
       case Smb4KNetworkSearchItem::Share:
       {
-        if ( QString::compare( item->shareItem()->unc(), share->unc(), Qt::CaseInsensitive ) == 0 )
+        if ( QString::compare( searchItem->shareItem()->unc(), share->unc(), Qt::CaseInsensitive ) == 0 )
         {
-          item->setMounted( share->isMounted() );
+          searchItem->update( share );
         }
         else
         {
@@ -577,7 +650,7 @@ void Smb4KNetworkSearchPart::slotShareUnmounted( Smb4KShare *share )
       {
         if ( QString::compare( item->shareItem()->unc(), share->unc(), Qt::CaseInsensitive ) == 0 )
         {
-          item->setMounted( share->isMounted() );
+          item->update( share );
         }
         else
         {

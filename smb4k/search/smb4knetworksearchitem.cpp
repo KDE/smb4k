@@ -95,9 +95,12 @@ void Smb4KNetworkSearchItem::setupItem()
 }
 
 
-void Smb4KNetworkSearchItem::setMounted( bool mounted )
+void Smb4KNetworkSearchItem::update( Smb4KShare *share )
 {
-  m_share->setIsMounted( mounted );
+  m_share->setIsMounted( share->isMounted() );
+  m_share->setPath( share->path() );
+  m_share->setForeign( share->isForeign() );
+
   setupItem();
 }
 

@@ -77,7 +77,7 @@ class Smb4KNetworkSearchItem : public QListWidgetItem
     /**
      * The destructor
      */
-    ~Smb4KNetworkSearchItem();
+    virtual ~Smb4KNetworkSearchItem();
 
     /**
      * This function returns the Smb4KShare object that is encapsulated
@@ -88,20 +88,14 @@ class Smb4KNetworkSearchItem : public QListWidgetItem
     Smb4KShare *shareItem() { return m_share; }
 
     /**
-     * This functions notifies the item that the share that it represents
-     * is mounted, i.e. it is in the list of mounted shares. It will set the
-     * icon and m_is_mounted accordingly.
-     *
-     * @param mounted           Should be TRUE if the share is mounted.
+     * Update the item. Use this function instead of the pointer to the 
+     * share item to update the share item, because this function also
+     * sets up the displayed item.
+     * 
+     * @param share             The share that is to be used to update 
+     *                          this item.
      */
-    void setMounted( bool mounted );
-
-    /**
-     * This function returns TRUE if the item is already mounted.
-     *
-     * @returns TRUE if the item is already mounted.
-     */
-    bool isMounted() const { return m_share->isMounted(); }
+    void update( Smb4KShare *share );
 
   private:
     /**

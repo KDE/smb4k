@@ -256,6 +256,10 @@ void Smb4KNetworkBrowserPart::setupActions()
   mount_action->setInactiveGuiItem( unmount_item );
   mount_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_M ) );
   mount_action->setActive( true );
+  // The mount action has to change automatically to the unmount
+  // action, because we want to be able to unmount the selected
+  // share immediately.
+  mount_action->setAutoToggle( true );
   connect( mount_action, SIGNAL(triggered(bool)), this, SLOT(slotMountActionTriggered(bool)) );
   connect( mount_action, SIGNAL(activeChanged(bool)), this, SLOT(slotMountActionChanged(bool)) );
 
@@ -392,6 +396,17 @@ void Smb4KNetworkBrowserPart::customEvent( QEvent *e )
   else if ( e->type() == Smb4KEvent::AddBookmark )
   {
     slotAddBookmark( false );
+  }
+  else if ( e->type() == Smb4KEvent::MountOrUnmountShare )
+  {
+    // Change the active state of the mount action. This needs 
+    // to be done here, because the action is not switched
+    // automatically in case the part is notified from outside.
+    KDualAction *mount_action = static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) );
+    mount_action->setActive( !mount_action->isActive() );
+
+    // Mount or unmount the share.
+    slotMountActionTriggered( false );
   }
   else
   {

@@ -35,7 +35,8 @@
 </ToolBar>
 <ToolBar fullWidth="true" name="mainToolBar">
   <text>Main Toolbar</text>
-  <Action name="add_bookmark_action"/>
+  <Action name="mount_action"/>
+  <Action name="bookmark_action"/>
   <Separator/>
   <ActionList name="dynamic_list">
   <!-- dynamically loaded by the main window -->

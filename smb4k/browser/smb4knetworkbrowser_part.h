@@ -282,7 +282,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
     void slotMountActionTriggered( bool checked );
 
     /**
-     * Change the state of the 'mount'/'Unmount' dual action.
+     * Change the state of the 'Mount'/'Unmount' dual action.
      *
      * @param active              TRUE if the the action is in the active state.
      */

@@ -163,6 +163,13 @@ class Smb4KNetworkSearchPart : public KParts::Part
     void slotMountActionTriggered( bool checked );
 
     /**
+     * Change the state of the 'Mount'/'Unmount' dual action.
+     *
+     * @param active              TRUE if the the action is in the active state.
+     */
+    void slotMountActionChanged( bool active );
+
+    /**
      * This slot is invoked when the Abort action is triggered. It enables and
      * disables some actions.
      *

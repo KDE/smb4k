@@ -273,6 +273,21 @@ class Smb4KMainWindow : public KParts::MainWindow
      */
     void slotEnableBookmarkAction();
 
+    /**
+     * Enable/disable the "Mount"/"Unmount" action
+     */
+    void slotEnableMountAction();
+
+    /**
+     * Called when the global mount action (in the toolbar) has been triggered
+     */
+    void slotMountActionTriggered();
+
+    /**
+     * Called when the mount dual action needs to change its active state.
+     */
+    void slotMountActionChanged( bool active );
+
   private:
     /**
      * Set up the main window actions
