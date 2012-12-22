@@ -263,7 +263,9 @@ void Smb4KSearch::slotProcessSearchResult( Smb4KShare *share )
   {
     if ( (!s->isForeign() || Smb4KSettings::showAllShares()) && s->isMounted() )
     {
-      share->setIsMounted( true );
+      share->setIsMounted( s->isMounted() );
+      share->setPath( s->path() );
+      share->setForeign( s->isForeign() );
       break;
     }
     else

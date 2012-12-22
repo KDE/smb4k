@@ -54,10 +54,11 @@ K_GLOBAL_STATIC( Smb4KGlobalPrivate, p );
 QMutex mutex( QMutex::Recursive /* needed to avoid dead-locks */ );
 
 
-const QEvent::Type Smb4KGlobal::Smb4KEvent::LoadSettings = (QEvent::Type)QEvent::registerEventType();
-const QEvent::Type Smb4KGlobal::Smb4KEvent::SetFocus = (QEvent::Type)QEvent::registerEventType();
-const QEvent::Type Smb4KGlobal::Smb4KEvent::ScanNetwork = (QEvent::Type)QEvent::registerEventType();
-const QEvent::Type Smb4KGlobal::Smb4KEvent::AddBookmark = (QEvent::Type)QEvent::registerEventType();
+const QEvent::Type Smb4KGlobal::Smb4KEvent::LoadSettings =        (QEvent::Type)QEvent::registerEventType();
+const QEvent::Type Smb4KGlobal::Smb4KEvent::SetFocus =            (QEvent::Type)QEvent::registerEventType();
+const QEvent::Type Smb4KGlobal::Smb4KEvent::ScanNetwork =         (QEvent::Type)QEvent::registerEventType();
+const QEvent::Type Smb4KGlobal::Smb4KEvent::AddBookmark =         (QEvent::Type)QEvent::registerEventType();
+const QEvent::Type Smb4KGlobal::Smb4KEvent::MountOrUnmountShare = (QEvent::Type)QEvent::registerEventType();
 
 
 Smb4KGlobal::Smb4KEvent::Smb4KEvent( QEvent::Type type ): QEvent( type )
