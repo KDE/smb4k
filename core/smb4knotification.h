@@ -61,7 +61,7 @@ class KDE_EXPORT Smb4KNotification : public QObject
     /**
      * The constructor
      */
-    Smb4KNotification( QObject *parent = 0 );
+    explicit Smb4KNotification( QObject *parent = 0 );
 
     /**
      * The destructor

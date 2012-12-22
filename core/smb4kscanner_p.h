@@ -51,7 +51,7 @@ class Smb4KLookupDomainsJob : public KJob
     /**
      * Constructor
      */
-    Smb4KLookupDomainsJob( QObject *parent = 0 );
+    explicit Smb4KLookupDomainsJob( QObject *parent = 0 );
 
     /**
      * Destructor
@@ -136,7 +136,7 @@ class Smb4KQueryMasterJob : public KJob
     /**
      * Constructor
      */
-    Smb4KQueryMasterJob( QObject *parent = 0 );
+    explicit Smb4KQueryMasterJob( QObject *parent = 0 );
 
     /**
      * Destructor
@@ -244,7 +244,7 @@ class Smb4KScanBAreasJob : public KJob
     /**
      * Constructor
      */
-    Smb4KScanBAreasJob( QObject *parent = 0 );
+    explicit Smb4KScanBAreasJob( QObject *parent = 0 );
 
     /**
      * Destructor
@@ -344,7 +344,7 @@ class Smb4KLookupDomainMembersJob : public KJob
     /**
      * Constructor
      */
-    Smb4KLookupDomainMembersJob( QObject *parent = 0 );
+    explicit Smb4KLookupDomainMembersJob( QObject *parent = 0 );
 
     /**
      * Destructor
@@ -453,7 +453,7 @@ class Smb4KLookupSharesJob : public KJob
     /**
      * Constructor
      */
-    Smb4KLookupSharesJob( QObject* parent = 0 );
+    explicit Smb4KLookupSharesJob( QObject* parent = 0 );
     
     /**
      * Destructor
@@ -553,7 +553,7 @@ class Smb4KLookupInfoJob : public KJob
     /**
      * Constructor
      */
-    Smb4KLookupInfoJob( QObject *parent = 0 );
+    explicit Smb4KLookupInfoJob( QObject *parent = 0 );
     
     /**
      * Destructor
@@ -642,7 +642,7 @@ class Smb4KLookupIPAddressJob : public KJob
     /**
      * Constructor
      */
-    Smb4KLookupIPAddressJob( QObject* parent = 0 );
+    explicit Smb4KLookupIPAddressJob( QObject* parent = 0 );
 
     /**
      * Destructor

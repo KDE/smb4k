@@ -82,7 +82,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
     /**
      * The constructor.
      */
-    Smb4KMounter( QObject *parent = 0 );
+    explicit Smb4KMounter( QObject *parent = 0 );
     
     /**
      * The destructor.

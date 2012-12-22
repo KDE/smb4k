@@ -95,12 +95,12 @@ class KDE_EXPORT Smb4KCustomOptions
     /**
      * Constructor for a host
      */
-    Smb4KCustomOptions( Smb4KHost *host );
+    explicit Smb4KCustomOptions( Smb4KHost *host );
                 
     /**
      * Constructor for a share
      */
-    Smb4KCustomOptions( Smb4KShare *share );
+    explicit Smb4KCustomOptions( Smb4KShare *share );
     
     /**
      * Copy constructor

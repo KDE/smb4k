@@ -54,7 +54,7 @@ class Smb4KProcess : public KProcess
      *
      * @param parent        The parent object
      */
-    Smb4KProcess( QObject *parent = 0 );
+    explicit Smb4KProcess( QObject *parent = 0 );
 
     /**
      * The destructor

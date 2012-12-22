@@ -45,7 +45,7 @@ class Smb4KSearchJob : public KJob
     /**
      * The constructor
      */
-    Smb4KSearchJob( QObject *parent = 0 );
+    explicit Smb4KSearchJob( QObject *parent = 0 );
 
     /**
      * The destructor

@@ -97,7 +97,7 @@ class Smb4KHomesUserDialog : public KDialog
     /**
      * Constructor
      */
-    Smb4KHomesUserDialog( QWidget *parent = 0 );
+    explicit Smb4KHomesUserDialog( QWidget *parent = 0 );
     
     /**
      * Destructor

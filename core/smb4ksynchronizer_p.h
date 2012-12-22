@@ -48,7 +48,7 @@ class Smb4KSyncJob : public KJob
     /**
      * Constructor
      */
-    Smb4KSyncJob( QObject *parent = 0 );
+    explicit Smb4KSyncJob( QObject *parent = 0 );
 
     /**
      * Destructor

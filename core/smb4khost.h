@@ -61,7 +61,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @param name                The name of the host
      */
-    Smb4KHost( const QString &name );
+    explicit Smb4KHost( const QString &name );
 
     /**
      * The copy constructor. This constructor takes a Smb4KHost item as argument

@@ -67,7 +67,7 @@ class KDE_EXPORT Smb4KBasicNetworkItem
     /**
      * The constructor
      */
-    Smb4KBasicNetworkItem( Smb4KBasicNetworkItem::Type type = Unknown );
+    explicit Smb4KBasicNetworkItem( Smb4KBasicNetworkItem::Type type = Unknown );
 
     /**
      * The copy constructor

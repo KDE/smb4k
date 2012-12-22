@@ -2639,7 +2639,7 @@ void Smb4KLookupIPAddressJob::processIPAddress()
   {
     if ( line.contains( "<00>" ) )
     {
-      QString ip_address = line.section( " ", 0, 0 ).trimmed();
+      QString ip_address = line.section( ' ', 0, 0 ).trimmed();
       m_host->setIP( ip_address );
       break;
     }
