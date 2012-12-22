@@ -580,7 +580,7 @@ void Smb4KMounter::import( bool check_inaccessible )
       emit unmounted( mountedSharesList().at( i ) );
       removeMountedShare( mountedSharesList().at( i ) );
       
-      // (Re)fill the list of share object.
+      // (Re)fill the list of share objects.
       while ( !d->shareObjects.isEmpty() )
       {
         delete d->shareObjects.takeFirst();
@@ -604,44 +604,51 @@ void Smb4KMounter::import( bool check_inaccessible )
   // Now stat the imported shares to get information about them.
   // Do not use Smb4KShare::canonicalPath() here, otherwise we might
   // get lock-ups with inaccessible shares.
-  for ( int i = 0; i < d->importedShares.size(); ++i )
+  if ( Smb4KSolidInterface::self()->networkStatus() == Smb4KSolidInterface::Connected )
   {
-    // Check if the share is inaccessible and should be checked.
-    Smb4KShare *share = findShareByPath( d->importedShares.at( i )->path() );
-    
-    if ( share )
+    for ( int i = 0; i < d->importedShares.size(); ++i )
     {
-      if ( share->isInaccessible() && !check_inaccessible )
+      // Check if the share is inaccessible and should be checked.
+      Smb4KShare *share = findShareByPath( d->importedShares.at( i )->path() );
+
+      if ( share )
       {
-        continue;
+        if ( share->isInaccessible() && !check_inaccessible )
+        {
+          continue;
+        }
+        else
+        {
+          // Do nothing
+        }
       }
       else
       {
         // Do nothing
       }
+
+      KUrl url;
+      url.setPath( d->importedShares.at( i )->path() );
+      KIO::StatJob *job = KIO::stat( url, KIO::HideProgressInfo );
+      job->setDetails( 0 );
+      connect( job, SIGNAL(result(KJob*)), SLOT(slotStatResult(KJob*)) );
+
+      // Do not use addSubJob(), because that would confuse isRunning, etc.
+      job->start();
+    }
+
+    if ( !d->firstImportDone && d->importedShares.isEmpty() )
+    {
+      d->firstImportDone = true;
     }
     else
     {
-      // Do nothing
+      // Do nothing. d->firstImportDone will be set in slotStatResult().
     }
-    
-    KUrl url;
-    url.setPath( d->importedShares.at( i )->path() );
-    KIO::StatJob *job = KIO::stat( url, KIO::HideProgressInfo );
-    job->setDetails( 0 );
-    connect( job, SIGNAL(result(KJob*)), SLOT(slotStatResult(KJob*)) );
-    
-    // Do not use addSubJob(), because that would confuse isRunning, etc.
-    job->start();
-  }
-  
-  if ( !d->firstImportDone && d->importedShares.isEmpty() )
-  {
-    d->firstImportDone = true;
   }
   else
   {
-    // Do nothing. d->firstImportDone will be set in slotStatResult().
+    // Do nothing
   }
 }
 
@@ -1421,7 +1428,7 @@ void Smb4KMounter::cleanup()
 
 void Smb4KMounter::timerEvent( QTimerEvent * )
 {
-  if ( !QCoreApplication::startingUp() && !isRunning() )
+  if ( !QCoreApplication::startingUp() )
   {
     if ( !d->retries.isEmpty() )
     {
@@ -1786,6 +1793,13 @@ void Smb4KMounter::slotHardwareButtonPressed( Smb4KSolidInterface::ButtonType ty
         abortAll();
         saveSharesForRemount();
         unmountAllShares();
+
+        // Wait until done
+        while ( hasSubjobs() )
+        {
+          QTest::qWait( TIMEOUT );
+        }
+        
         d->hardwareReason = false;
         Smb4KSolidInterface::self()->endSleepSuppression();
       }
@@ -1804,6 +1818,13 @@ void Smb4KMounter::slotHardwareButtonPressed( Smb4KSolidInterface::ButtonType ty
         abortAll();
         saveSharesForRemount();
         unmountAllShares();
+
+        // Wait until done
+        while ( hasSubjobs() )
+        {
+          QTest::qWait( TIMEOUT );
+        }
+        
         d->hardwareReason = false;
         Smb4KSolidInterface::self()->endSleepSuppression();
       }
@@ -1822,6 +1843,13 @@ void Smb4KMounter::slotHardwareButtonPressed( Smb4KSolidInterface::ButtonType ty
         abortAll();
         saveSharesForRemount();
         unmountAllShares();
+
+        // Wait until done
+        while ( hasSubjobs() )
+        {
+          QTest::qWait( TIMEOUT );
+        }
+        
         d->hardwareReason = false;
         Smb4KSolidInterface::self()->endSleepSuppression();
       }
@@ -1867,6 +1895,7 @@ void Smb4KMounter::slotNetworkStatusChanged( Smb4KSolidInterface::ConnectionStat
   switch ( status )
   {
     case Smb4KSolidInterface::Connected:
+    case Smb4KSolidInterface::Unknown:
     {
       d->hardwareReason = true;
       triggerRemounts( true );
@@ -1879,13 +1908,13 @@ void Smb4KMounter::slotNetworkStatusChanged( Smb4KSolidInterface::ConnectionStat
       abortAll();
       saveSharesForRemount();
       unmountAllShares();
-      d->hardwareReason = false;
-      break;
-    }
-    case Smb4KSolidInterface::Unknown:
-    {
-      d->hardwareReason = true;
-      triggerRemounts( true );
+
+      // Wait until done
+      while ( hasSubjobs() )
+      {
+        QTest::qWait( TIMEOUT );
+      }
+      
       d->hardwareReason = false;
       break;
     }
