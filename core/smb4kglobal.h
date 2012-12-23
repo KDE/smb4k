@@ -62,7 +62,7 @@ namespace Smb4KGlobal
       static const QEvent::Type AddBookmark;
       static const QEvent::Type MountOrUnmountShare;
       
-      Smb4KEvent( QEvent::Type type );
+      explicit Smb4KEvent( QEvent::Type type );
       ~Smb4KEvent();
   };
 

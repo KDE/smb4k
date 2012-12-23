@@ -77,7 +77,7 @@ class KDE_EXPORT Smb4KSolidInterface : public QObject
     /**
      * The constructor
      */
-    Smb4KSolidInterface( QObject *parent = 0 );
+    explicit Smb4KSolidInterface( QObject *parent = 0 );
 
     /**
      * The destructor

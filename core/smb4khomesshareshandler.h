@@ -61,7 +61,7 @@ class KDE_EXPORT Smb4KHomesSharesHandler : public QObject
     /**
      * The constructor
      */
-    Smb4KHomesSharesHandler( QObject *parent = 0 );
+    explicit Smb4KHomesSharesHandler( QObject *parent = 0 );
 
     /**
      * The destructor

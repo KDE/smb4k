@@ -55,7 +55,7 @@ class Smb4KPrintJob : public KJob
     /**
      * The constructor
      */
-    Smb4KPrintJob( QObject *parent = 0 );
+    explicit Smb4KPrintJob( QObject *parent = 0 );
     
     /**
      * The destructor

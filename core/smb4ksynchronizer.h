@@ -50,7 +50,7 @@ class KDE_EXPORT Smb4KSynchronizer : public KCompositeJob
     /**
      * The constructor
      */
-    Smb4KSynchronizer( QObject *parent = 0 );
+    explicit Smb4KSynchronizer( QObject *parent = 0 );
 
     /**
      * The destructor

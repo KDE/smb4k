@@ -50,7 +50,7 @@ class KDE_EXPORT Smb4KSearch : public KCompositeJob
     /**
      * Constructor
      */
-    Smb4KSearch( QObject *parent = 0 );
+    explicit Smb4KSearch( QObject *parent = 0 );
 
     /**
      * Destructor

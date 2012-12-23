@@ -72,7 +72,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param unc           The UNC in the form [smb:]//[USER@]HOST/SHARE.
      */
-    Smb4KShare( const QString &unc );
+    explicit Smb4KShare( const QString &unc );
 
     /**
      * This is the copy constructor. It takes another Smb4KShare item and copies all

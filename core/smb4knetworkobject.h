@@ -100,7 +100,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
     /**
      * Empty constructor
      */
-    Smb4KNetworkObject( QObject *parent = 0 );
+    explicit Smb4KNetworkObject( QObject *parent = 0 );
 
     /**
      * Destructor

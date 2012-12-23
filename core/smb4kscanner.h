@@ -82,7 +82,7 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
     /**
      * Constructor
      */
-    Smb4KScanner( QObject *parent = 0 );
+    explicit Smb4KScanner( QObject *parent = 0 );
 
     /**
      * Destructor

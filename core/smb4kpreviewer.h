@@ -58,7 +58,7 @@ class KDE_EXPORT Smb4KPreviewer : public KCompositeJob
     /**
      * Constructor
      */
-    Smb4KPreviewer( QObject *parent = 0 );
+    explicit Smb4KPreviewer( QObject *parent = 0 );
 
     /**
      * Destructor

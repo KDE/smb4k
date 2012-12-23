@@ -65,7 +65,7 @@ class Smb4KPreviewJob : public KJob
     /**
      * Constructor
      */
-    Smb4KPreviewJob( QObject *parent = 0 );
+    explicit Smb4KPreviewJob( QObject *parent = 0 );
 
     /**
      * Destructor

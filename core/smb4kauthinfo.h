@@ -68,7 +68,7 @@ class KDE_EXPORT Smb4KAuthInfo
      *
      * @param host      The Smb4KHost item.
      */
-    Smb4KAuthInfo( const Smb4KHost *host );
+    explicit Smb4KAuthInfo( const Smb4KHost *host );
 
 
     /**
@@ -79,7 +79,7 @@ class KDE_EXPORT Smb4KAuthInfo
      *
      * @param share     The Smb4KShare item.
      */
-    Smb4KAuthInfo( const Smb4KShare *share );
+    explicit Smb4KAuthInfo( const Smb4KShare *share );
 
     /**
      * The empty constructor.

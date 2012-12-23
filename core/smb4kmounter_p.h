@@ -57,7 +57,7 @@ class Smb4KMountJob : public KJob
     /**
      * Constructor
      */
-    Smb4KMountJob( QObject* parent = 0 );
+    explicit Smb4KMountJob( QObject* parent = 0 );
     
     /**
      * Destructor
@@ -182,7 +182,7 @@ class Smb4KUnmountJob : public KJob
     /**
      * Constructor
      */
-    Smb4KUnmountJob( QObject* parent = 0 );
+    explicit Smb4KUnmountJob( QObject* parent = 0 );
     
     /**
      * Destructor
