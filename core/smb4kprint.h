@@ -57,7 +57,7 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
     /**
      * The constructor
      */
-    Smb4KPrint( QObject *parent = 0 );
+    explicit Smb4KPrint( QObject *parent = 0 );
 
     /**
      * The destructor

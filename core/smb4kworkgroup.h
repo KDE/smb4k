@@ -61,7 +61,7 @@ class KDE_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      *
      * @param name            The name of the workgroup or domain.
      */
-    Smb4KWorkgroup( const QString &name );
+    explicit Smb4KWorkgroup( const QString &name );
 
     /**
      * The copy contructor. This constructor takes another Smb4KWorkgroup item

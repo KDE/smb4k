@@ -60,7 +60,7 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
     /**
      * The constructor
      */
-    Smb4KWalletManager( QObject *parent = 0 );
+    explicit Smb4KWalletManager( QObject *parent = 0 );
 
     /**
      * The destructor
