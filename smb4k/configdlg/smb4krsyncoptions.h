@@ -55,7 +55,7 @@ class Smb4KRsyncOptions : public KTabWidget
      *
      * @param parent        The parent widget
      */
-    Smb4KRsyncOptions( QWidget *parent = 0 );
+    explicit Smb4KRsyncOptions( QWidget *parent = 0 );
 
     /**
      * The destructor

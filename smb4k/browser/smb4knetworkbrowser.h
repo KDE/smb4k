@@ -43,7 +43,7 @@ class Smb4KNetworkBrowser : public QTreeWidget
      *
      * @param parent        The parent widget
      */
-    Smb4KNetworkBrowser( QWidget *parent = 0 );
+    explicit Smb4KNetworkBrowser( QWidget *parent = 0 );
 
     /**
      * The destructor

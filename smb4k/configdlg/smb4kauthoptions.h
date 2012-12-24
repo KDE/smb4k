@@ -66,7 +66,7 @@ class Smb4KAuthOptions : public KTabWidget
      *
      * @param parent          The parent widget
      */
-    Smb4KAuthOptions( QWidget *parent = 0 );
+    explicit Smb4KAuthOptions( QWidget *parent = 0 );
 
     /**
      * The destructor.

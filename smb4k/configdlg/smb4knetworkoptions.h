@@ -47,7 +47,7 @@ class Smb4KNetworkOptions : public QWidget
      *
      * @param parent        The parent widget
      */
-    Smb4KNetworkOptions( QWidget *parent = 0 );
+    explicit Smb4KNetworkOptions( QWidget *parent = 0 );
 
     /**
      * The destructor

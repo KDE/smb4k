@@ -72,7 +72,7 @@ class Smb4KNetworkSearchItem : public QListWidgetItem
      *
      * @param listWidget        The parent list widget.
      */
-    Smb4KNetworkSearchItem( KListWidget *listWidget );
+    explicit Smb4KNetworkSearchItem( KListWidget *listWidget );
 
     /**
      * The destructor

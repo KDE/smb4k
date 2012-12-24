@@ -49,7 +49,7 @@ class KDE_EXPORT Smb4KToolTip : public QWidget
       SharesView,
       UnknownParent
     };
-    Smb4KToolTip( QWidget *parent = 0 );
+    explicit Smb4KToolTip( QWidget *parent = 0 );
     ~Smb4KToolTip();
     void show( Smb4KBasicNetworkItem *item, 
                const QPoint &pos );

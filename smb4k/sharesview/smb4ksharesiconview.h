@@ -51,7 +51,7 @@ class Smb4KSharesIconView : public QListWidget
      *
      * @param parent          The parent widget
      */
-    Smb4KSharesIconView( QWidget *parent = 0 );
+    explicit Smb4KSharesIconView( QWidget *parent = 0 );
 
     /**
      * The destructor.

@@ -55,7 +55,7 @@ class Smb4KNetworkSearch : public QWidget
      * @param parent      The parent widget
      */
     
-    Smb4KNetworkSearch( QWidget *parent = 0 );
+    explicit Smb4KNetworkSearch( QWidget *parent = 0 );
 
     /**
      * The destructor.

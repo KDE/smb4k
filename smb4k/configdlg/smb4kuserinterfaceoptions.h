@@ -57,7 +57,7 @@ class Smb4KUserInterfaceOptions : public KTabWidget
      *
      * @param parent          The parent widget of this class.
      */
-    Smb4KUserInterfaceOptions( QWidget *parent = 0 );
+    explicit Smb4KUserInterfaceOptions( QWidget *parent = 0 );
 
     /**
      * The destructor

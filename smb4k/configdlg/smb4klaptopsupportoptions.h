@@ -45,7 +45,7 @@ class Smb4KLaptopSupportOptions : public QWidget
     /**
      * The constructor
      */
-    Smb4KLaptopSupportOptions( QWidget *parent = 0 );
+    explicit Smb4KLaptopSupportOptions( QWidget *parent = 0 );
 
     /**
      * The destructor

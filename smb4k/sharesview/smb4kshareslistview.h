@@ -52,7 +52,7 @@ class Smb4KSharesListView : public QTreeWidget
      *
      * @param parent        The parent widget
      */
-    Smb4KSharesListView( QWidget *parent = 0 );
+    explicit Smb4KSharesListView( QWidget *parent = 0 );
 
     /**
      * The destructor

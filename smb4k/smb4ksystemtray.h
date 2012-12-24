@@ -46,7 +46,7 @@ class Smb4KSystemTray : public KStatusNotifierItem
      *
      * @param parent        The parent widget of the system tray window
      */
-    Smb4KSystemTray( QWidget *parent = 0 );
+    explicit Smb4KSystemTray( QWidget *parent = 0 );
 
     /**
      * The destructor.

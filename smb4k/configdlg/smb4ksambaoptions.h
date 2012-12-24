@@ -73,7 +73,7 @@ class Smb4KSambaOptions : public KTabWidget
      *
      * @param name              This widget's name
      */
-    Smb4KSambaOptions( QWidget *parent = 0 );
+    explicit Smb4KSambaOptions( QWidget *parent = 0 );
 
     /**
      * The destructor.
