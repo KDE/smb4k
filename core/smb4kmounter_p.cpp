@@ -186,7 +186,7 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
   {
     KUrl u( dir.path() );
     
-    while ( u != parentDirectory )
+    while ( !parentDirectory.equals( u, KUrl::CompareWithoutTrailingSlash ) )
     {
       QFile( u.path() ).setPermissions( permissions );
       u = u.upUrl();

@@ -1,3 +1,8 @@
+Smb4K 1.0.5 (????-??-??):
+- Fixed hanging of Smb4K when a custom mount prefix without a trailing
+  slash was entered (closes SF ticket #28). Thanks go to Ettore Atalan
+  for reporting this issue and PhobosK for the patch.
+
 Smb4K 1.0.4 (2012-08-19):
 - Fixed erroneously shown error notifications when searching. Thanks to
   Alexander Willand for reporting this issue.
