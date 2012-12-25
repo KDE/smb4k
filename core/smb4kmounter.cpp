@@ -1956,15 +1956,22 @@ void Smb4KMounter::slotFinishedMounting( const QList<Smb4KShare *> &shares )
   }
 
   // Notify the user.
-  if ( shares.size() > 1 )
+  if ( shares.size() - failed_mounts != 0 )
   {
-    Smb4KNotification *notification = new Smb4KNotification( this );
-    notification->sharesMounted( shares.size(), (shares.size() - failed_mounts) );
+    if ( shares.size() > 1 )
+    {
+      Smb4KNotification *notification = new Smb4KNotification( this );
+      notification->sharesMounted( shares.size(), (shares.size() - failed_mounts) );
+    }
+    else
+    {
+      Smb4KNotification *notification = new Smb4KNotification( this );
+      notification->shareMounted( shares.first() );
+    }
   }
   else
   {
-    Smb4KNotification *notification = new Smb4KNotification( this );
-    notification->shareMounted( shares.first() );
+    // Do nothing
   }
 }
 
@@ -1998,15 +2005,22 @@ void Smb4KMounter::slotFinishedUnmounting( const QList<Smb4KShare *> &shares )
     }
   }
 
-  if ( shares.size() > 1 )
+  if ( shares.size() - failed_unmounts != 0 )
   {
-    Smb4KNotification *notification = new Smb4KNotification( this );
-    notification->allSharesUnmounted( shares.size(), (shares.size() - failed_unmounts) );
+    if ( shares.size() > 1 )
+    {
+      Smb4KNotification *notification = new Smb4KNotification( this );
+      notification->allSharesUnmounted( shares.size(), (shares.size() - failed_unmounts) );
+    }
+    else
+    {
+      Smb4KNotification *notification = new Smb4KNotification( this );
+      notification->shareUnmounted( shares.first() );
+    }
   }
   else
   {
-    Smb4KNotification *notification = new Smb4KNotification( this );
-    notification->shareUnmounted( shares.first() );
+    // Do nothing
   }
 }
 
