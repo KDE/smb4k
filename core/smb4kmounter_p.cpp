@@ -764,7 +764,6 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
             /* authentication error */ )
         {
           m_auth_errors << Smb4KShare( *share );
-          emit authError( this );
         }
         else if ( (stderr.contains( "mount error 6" ) || stderr.contains( "mount error(6)" )) /* bad share name */ &&
                   share->shareName().contains( "_", Qt::CaseSensitive ) )
@@ -772,7 +771,6 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
           QString share_name = share->shareName();
           share->setShareName( share_name.replace( "_", " " ) );
           m_retries << *share;
-          emit retry( this );
         }
         else if ( stderr.contains( "mount error 101" ) || stderr.contains( "mount error(101)" ) /* network unreachable */ )
         {
@@ -782,7 +780,6 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
         if ( stderr.contains( "Authentication error" ) )
         {
           m_auth_errors << *share;
-          emit authError( this );
         }
 #endif
         else
@@ -814,6 +811,24 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
 
   if ( m_processed == m_shares.size() )
   {
+    if ( !m_auth_errors.isEmpty() )
+    {
+      emit authError( this );
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( !m_retries.isEmpty() )
+    {
+      emit retry( this );
+    }
+    else
+    {
+      // Do nothing
+    }
+	  
     // Give the operating system some time to process the mounts
     // before we invoke KMountPoint::currentMountPoints().
     QTimer::singleShot( 100, this, SLOT( slotFinishJob() ) );
