@@ -1,5 +1,5 @@
-Smb4K 1.0.5 (????-??-??):
-- Fixed hanging of Smb4K when a custom mount prefix without a trailing
+Smb4K 1.0.5 (2012-12-26):
+- Fixed hanging of Smb4K if a custom mount prefix without a trailing
   slash was entered (closes SF ticket #28). Thanks go to Ettore Atalan
   for reporting this issue and PhobosK for the patch.
 
