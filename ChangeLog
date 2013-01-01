@@ -1,6 +1,8 @@
 Smb4K 1.0.6 (2013-01-??):
-- Fix crash in Smb4KMounter::slotAuthError() due to signals being emitted
+- Fixed crash in Smb4KMounter::slotAuthError() due to signals being emitted
   from Smb4KMountJob::slotActionFinished() too often.
+- Fixed unmounting of selected shares. Thanks go to Ettore Atalan for 
+  reporting this issue.
 
 Smb4K 1.0.5 (2012-12-26):
 - Fixed hanging of Smb4K if a custom mount prefix without a trailing
