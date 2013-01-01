@@ -876,9 +876,17 @@ void Smb4KMounter::mountShares( const QList<Smb4KShare *> &shares, QWidget *pare
       
         if ( QString::compare( job->objectName(), QString( "MountJob_%1" ).arg( unc ), Qt::CaseInsensitive ) == 0 )
         {
-          // Already running
-          running = true;
-          break;
+          // Make sure that we do not get false rejections when mounting is
+          // retried due to an authentication error.
+          if ( static_cast<Smb4KMountJob *>( job )->authErrors().isEmpty() )
+          {
+            running = true;
+            break;
+          }
+          else
+          {
+            continue;
+          }
         }
         else
         {

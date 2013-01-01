@@ -29,6 +29,7 @@
 
 // application specific includes
 #include "smb4kwalletmanager.h"
+#include "smb4kwalletmanager_p.h"
 #include "smb4ksettings.h"
 #include "smb4kauthinfo.h"
 #include "smb4khomesshareshandler.h"
@@ -51,30 +52,12 @@
 #include <kglobal.h>
 #include <kdebug.h>
 #include <kapplication.h>
-#include <kpassworddialog.h>
-#include <klocale.h>
 #ifdef Q_OS_FREEBSD
 #include <kprocess.h>
 #include <kstandarddirs.h>
 #endif
 
 using namespace Smb4KGlobal;
-
-
-class Smb4KWalletManagerPrivate
-{
-  public:
-    KWallet::Wallet *wallet;
-    Smb4KWalletManager::State state;
-    QList<Smb4KAuthInfo *> list;
-};
-
-
-class Smb4KWalletManagerStatic
-{
-  public:
-    Smb4KWalletManager instance;
-};
 
 K_GLOBAL_STATIC( Smb4KWalletManagerStatic, p );
 
@@ -860,96 +843,31 @@ bool Smb4KWalletManager::showPasswordDialog( Smb4KBasicNetworkItem *networkItem,
   // Return value
   bool success = false;
 
-  // Read authentication information
-  readAuthInfo( networkItem );
-
-  // Set up the password dialog.
-  QPointer<KPasswordDialog> dlg = new KPasswordDialog( parent, KPasswordDialog::ShowUsernameLine );
+  // Get known logins if available and read the authentication
+  // information.
+  QMap<QString, QString> known_logins;
 
   switch ( networkItem->type() )
   {
-    case Smb4KBasicNetworkItem::Host:
-    {
-      Smb4KHost *host = static_cast<Smb4KHost *>( networkItem );
-
-      if ( host )
-      {
-        dlg->setUsername( host->login() );
-        dlg->setPassword( host->password() );
-        dlg->setPrompt( i18n( "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>", host->hostName() ) );
-
-        // Execute the password dialog, retrieve the new authentication
-        // information and save it.
-        if ( (success = dlg->exec()) )
-        {
-          host->setLogin( dlg->username() );
-          host->setPassword( dlg->password() );
-          writeAuthInfo( host );
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
-      }
-      break;
-    }
     case Smb4KBasicNetworkItem::Share:
     {
       Smb4KShare *share = static_cast<Smb4KShare *>( networkItem );
 
       if ( share )
       {
-        // Get known logins in case we have a 'homes' share and the share
-        // name has not yet been changed.
-        QMap<QString,QString> logins;
         QStringList users = Smb4KHomesSharesHandler::self()->homesUsers( share );
 
         for ( int i = 0; i < users.size(); ++i )
         {
-          Smb4KShare tmp_share( *share );
-          tmp_share.setLogin( users.at( i ) );
+          Smb4KShare *tmp_share = new Smb4KShare( *share );
+          tmp_share->setLogin( users.at( i ) );
 
           // Read the authentication data for the share. If it does not
           // exist yet, login() and password() will be empty.
-          readAuthInfo( &tmp_share );
-          logins.insert( tmp_share.login(), tmp_share.password() );
-        }
+          readAuthInfo( tmp_share );
+          known_logins.insert( tmp_share->login(), tmp_share->password() );
 
-        // Enter authentication information into the dialog
-        if ( !logins.isEmpty() )
-        {
-          dlg->setKnownLogins( logins );
-        }
-        else
-        {
-          dlg->setUsername( share->login() );
-          dlg->setPassword( share->password() );
-        }
-
-        if ( !share->isHomesShare() )
-        {
-          dlg->setPrompt( i18n( "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>", share->unc() ) );
-        }
-        else
-        {
-          dlg->setPrompt( i18n( "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>", share->homeUNC() ) );
-        }
-
-        // Execute the password dialog, retrieve the new authentication
-        // information and save it.
-        if ( (success = dlg->exec()) )
-        {
-          share->setLogin( dlg->username() );
-          share->setPassword( dlg->password() );
-          writeAuthInfo( share );
-        }
-        else
-        {
-          // Do nothing
+          delete tmp_share;
         }
       }
       else
@@ -960,9 +878,17 @@ bool Smb4KWalletManager::showPasswordDialog( Smb4KBasicNetworkItem *networkItem,
     }
     default:
     {
+      readAuthInfo( networkItem );
       break;
     }
   }
+
+  // Set up the password dialog and show it.
+  QPointer<Smb4KPasswordDialog> dlg = new Smb4KPasswordDialog( networkItem, known_logins, parent );
+  success = dlg->exec();
+
+  // Write the authentication information.
+  writeAuthInfo( networkItem );
 
   delete dlg;
 

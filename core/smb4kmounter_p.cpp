@@ -778,11 +778,9 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
       if ( QString::compare( share->canonicalPath(), reply.data()["mountpoint"].toString() ) == 0 && !stderr.isEmpty() )
       {
 #ifndef Q_OS_FREEBSD
-        if ( stderr.contains( "mount error 13", Qt::CaseSensitive ) || stderr.contains( "mount error(13)" )
-            /* authentication error */ )
+        if ( stderr.contains( "mount error 13" ) || stderr.contains( "mount error(13)" ) /* authentication error */ )
         {
           m_auth_errors << new Smb4KShare( *share );
-          emit authError( this );
         }
         else if ( (stderr.contains( "mount error 6" ) || stderr.contains( "mount error(6)" )) /* bad share name */ &&
                   share->shareName().contains( "_", Qt::CaseSensitive ) )
@@ -790,7 +788,6 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
           QString share_name = share->shareName();
           share->setShareName( share_name.replace( '_', ' ' ) );
           m_retries << new Smb4KShare( *share );
-          emit retry( this );
         }
         else if ( stderr.contains( "mount error 101" ) || stderr.contains( "mount error(101)" ) /* network unreachable */ )
         {
@@ -800,7 +797,6 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
         if ( stderr.contains( "Authentication error" ) )
         {
           m_auth_errors << new Smb4KShare( *share );
-          emit authError( this );
         }
 #endif
         else
@@ -832,6 +828,25 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
 
   if ( m_processed == m_shares.size() )
   {
+    // Emit the necessary signals.
+    if ( !m_auth_errors.isEmpty() )
+    {
+      emit authError( this );
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    if ( !m_retries.isEmpty() )
+    {
+      emit retry( this );
+    }
+    else
+    {
+      // Do nothing
+    }
+    
     // Give the operating system some time to process the mounts
     // before we invoke KMountPoint::currentMountPoints().
     QTimer::singleShot( 500, this, SLOT(slotFinishJob()) );

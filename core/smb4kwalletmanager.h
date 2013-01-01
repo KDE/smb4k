@@ -26,12 +26,15 @@
 #ifndef SMB4KWALLETMANAGER_H
 #define SMB4KWALLETMANAGER_H
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 // Qt includes
 #include <QtCore/QList>
 #include <QtGui/QWidget>
 
 // KDE includes
-#include <kwallet.h>
 #include <kdemacros.h>
 
 // forward declarations
@@ -47,7 +50,7 @@ class Smb4KWalletManagerPrivate;
  * can be stored temporarily if the user does not want to use the digital wallet
  * provided by KDE.
  *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
 class KDE_EXPORT Smb4KWalletManager : public QObject

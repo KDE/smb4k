@@ -39,6 +39,7 @@ set( smb4kcore_LIB_SRCS
   smb4ksynchronizer.cpp
   smb4ksynchronizer_p.cpp
   smb4kwalletmanager.cpp
+  smb4kwalletmanager_p.cpp
   smb4kworkgroup.cpp )
 
 kde4_add_kcfg_files( smb4kcore_LIB_SRCS smb4ksettings.kcfgc )
