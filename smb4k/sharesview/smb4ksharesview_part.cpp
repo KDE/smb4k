@@ -1160,6 +1160,7 @@ void Smb4KSharesViewPart::slotUnmountShare( bool /*checked*/ )
     case IconMode:
     {
       QList<QListWidgetItem *> selected_items = m_icon_view->selectedItems();
+      QList<Smb4KShare *> shares;
 
       for ( int i = 0; i < selected_items.size(); ++i )
       {
@@ -1167,7 +1168,7 @@ void Smb4KSharesViewPart::slotUnmountShare( bool /*checked*/ )
 
         if ( item )
         {
-          Smb4KMounter::self()->unmountShare( item->shareItem(), false, m_icon_view );
+          shares << item->shareItem();
         }
         else
         {
@@ -1175,11 +1176,14 @@ void Smb4KSharesViewPart::slotUnmountShare( bool /*checked*/ )
         }
       }
 
+      Smb4KMounter::self()->unmountShares( shares, false, m_icon_view );
+
       break;
     }
     case ListMode:
     {
       QList<QTreeWidgetItem *> selected_items = m_list_view->selectedItems();
+      QList<Smb4KShare *> shares;
 
       for ( int i = 0; i < selected_items.size(); ++i )
       {
@@ -1187,13 +1191,15 @@ void Smb4KSharesViewPart::slotUnmountShare( bool /*checked*/ )
 
         if ( item )
         {
-          Smb4KMounter::self()->unmountShare( item->shareItem(), false, m_list_view );
+          shares << item->shareItem();
         }
         else
         {
           // Do nothing
         }
       }
+
+      Smb4KMounter::self()->unmountShares( shares, false, m_list_view );
 
       break;
     }
