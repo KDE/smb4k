@@ -306,7 +306,7 @@ void Smb4KSharesViewPart::setupView()
 
 void Smb4KSharesViewPart::setupActions()
 {
-  KAction *unmount_action     = new KAction( KIcon( "media-eject" ), i18n( "&Unmount" ),
+  KAction *unmount_action     = new KAction( KIcon( "emblem-unmounted" ), i18n( "&Unmount" ),
                                 actionCollection() );
   unmount_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_U ) );
   connect( unmount_action, SIGNAL(triggered(bool)), this, SLOT(slotUnmountShare(bool)) );
@@ -593,6 +593,10 @@ void Smb4KSharesViewPart::customEvent( QEvent *e )
   else if ( e->type() == Smb4KEvent::AddBookmark )
   {
     slotAddBookmark( false );
+  }
+  else if ( e->type() == Smb4KEvent::MountOrUnmountShare )
+  {
+    slotUnmountShare( false /*ignored*/ );
   }
   else
   {
