@@ -26,10 +26,6 @@
 #ifndef SMB4KWALLETMANAGER_H
 #define SMB4KWALLETMANAGER_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // Qt includes
 #include <QtCore/QList>
 #include <QtGui/QWidget>
