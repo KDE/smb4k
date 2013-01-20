@@ -222,12 +222,6 @@ Smb4KCustomOptions* Smb4KCustomOptionsManager::findOptions( const Smb4KHost *hos
 
 void Smb4KCustomOptionsManager::readCustomOptions()
 {
-  // Clean up.
-  if ( !m_options.isEmpty() )
-  {
-    delete m_options.takeFirst();
-  }
-  
   // Locate the XML file.
   QFile xmlFile( KGlobal::dirs()->locateLocal( "data", "smb4k/custom_options.xml", KGlobal::mainComponent() ) );
 
