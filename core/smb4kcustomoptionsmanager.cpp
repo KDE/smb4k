@@ -279,12 +279,6 @@ Smb4KCustomOptions* Smb4KCustomOptionsManager::findOptions( const KUrl &url )
 
 void Smb4KCustomOptionsManager::readCustomOptions()
 {
-  // Clean up.
-  if ( !d->options.isEmpty() )
-  {
-    delete d->options.takeFirst();
-  }
-  
   // Locate the XML file.
   QFile xmlFile( KGlobal::dirs()->locateLocal( "data", "smb4k/custom_options.xml", KGlobal::mainComponent() ) );
 
@@ -298,8 +292,11 @@ void Smb4KCustomOptionsManager::readCustomOptions()
 
       if ( xmlReader.isStartElement() )
       {
+        // FIXME: Drop version 1.0 with the next revision
         if ( xmlReader.name() == "custom_options" && 
-             (xmlReader.attributes().value( "version" ) != "1.0" && xmlReader.attributes().value( "version" ) != "1.1") )
+             (xmlReader.attributes().value( "version" ) != "1.0" && 
+              xmlReader.attributes().value( "version" ) != "1.1" &&
+              xmlReader.attributes().value( "version" ) != "1.2") )
         {
           xmlReader.raiseError( i18n( "The format of %1 is not supported.", xmlFile.fileName() ) );
           break;
@@ -466,6 +463,32 @@ void Smb4KCustomOptionsManager::readCustomOptions()
                       {
                         options->setGID( (K_GID)xmlReader.readElementText().toInt() );
                       }
+                      else if ( xmlReader.name() == "mac_address" )
+                      {
+                        options->setMACAddress( xmlReader.readElementText() );
+                      }
+                      else if ( xmlReader.name() == "wol_send_before_first_scan" )
+                      {
+                        if ( xmlReader.readElementText() == "true" )
+                        {
+                          options->setWOLSendBeforeFirstScan( true );
+                        }
+                        else
+                        {
+                          options->setWOLSendBeforeFirstScan( false );
+                        }
+                      }
+                      else if ( xmlReader.name() == "wol_send_before_mount" )
+                      {
+                        if ( xmlReader.readElementText() == "true" )
+                        {
+                          options->setWOLSendBeforeMount( true );
+                        }
+                        else
+                        {
+                          options->setWOLSendBeforeMount( false );
+                        }
+                      }
                       else
                       {
                         // Do nothing
@@ -544,7 +567,7 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
       xmlWriter.setAutoFormatting( true );
       xmlWriter.writeStartDocument();
       xmlWriter.writeStartElement( "custom_options" );
-      xmlWriter.writeAttribute( "version", "1.1" );
+      xmlWriter.writeAttribute( "version", "1.2" );
 
       for ( int i = 0; i < d->options.size(); ++i )
       {
@@ -955,6 +978,16 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
   
   // GID
   if ( default_options.gid() != options->gid() )
+  {
+    return true;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // MAC address
+  if ( QString::compare( default_options.macAddress(), options->macAddress() ) != 0 )
   {
     return true;
   }
