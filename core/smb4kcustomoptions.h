@@ -366,6 +366,61 @@ class KDE_EXPORT Smb4KCustomOptions
     QString group() const;
     
     /**
+     * This function sets the MAC address of a host. In case the options 
+     * represent a share this is the MAC address of the host that shares 
+     * the resource.
+     * 
+     * @param macAddress        The MAC address of the host
+     */
+    void setMACAddress( const QString &macAddress );
+    
+    /**
+     * This function returns the MAC address of the host or an empty string if 
+     * no MAC address was defined.
+     *
+     * @returns the MAC address of the host.
+     */
+    QString macAddress() const;
+    
+    /**
+     * Set whether a magic WOL package should be send to the host that this 
+     * network item represents or where this network item is located on first 
+     * network scan.
+     * 
+     * @param send              Boolean that determines if a magic WOL package
+     *                          is to be sent.
+     */
+    void setWOLSendBeforeFirstScan( bool send );
+    
+    /**
+     * Send a magic WOL package to the host that this network item represents
+     * or where this network item is located on first network scan.
+     * 
+     * @returns TRUE if a magic WOL package should be send on first network
+     * scan.
+     */
+    bool wolSendBeforeFirstScan() const;
+    
+    /**
+     * Set whether a magic WOL package should be send to the host that this 
+     * network item represents or where this network item is located before a 
+     * mount attempt.
+     * 
+     * @param send              Boolean that determines if a magic WOL package
+     *                          is to be sent.
+     */
+    void setWOLSendBeforeMount( bool send );
+    
+    /**
+     * Send a magic WOL package to the host that this network item represents
+     * or where this network item is located before a mount attempt.
+     * 
+     * @returns TRUE if a magic WOL package should be send on first network
+     * scan.
+     */
+    bool wolSendBeforeMount() const;
+    
+    /**
      * This function returns all custom options in a sorted map. The UNC,
      * workgroup and IP address must be retrieved separately if needed.
      *

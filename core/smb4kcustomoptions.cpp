@@ -60,6 +60,9 @@ class Smb4KCustomOptionsPrivate
     Smb4KCustomOptions::Kerberos kerberos;
     KUser user;
     KUserGroup group;
+    QString mac;
+    bool wol_first_scan;
+    bool wol_mount;
 };
 
 
@@ -80,6 +83,8 @@ Smb4KCustomOptions::Smb4KCustomOptions( Smb4KHost *host )
   d->user           = KUser( getuid() );
   d->group          = KUserGroup( getgid() );
   d->ip.setAddress( host->ip() );
+  d->wol_first_scan = false;
+  d->wol_mount      = false;
 }
 
 Smb4KCustomOptions::Smb4KCustomOptions( Smb4KShare *share )
@@ -99,6 +104,8 @@ Smb4KCustomOptions::Smb4KCustomOptions( Smb4KShare *share )
   d->user           = KUser( share->uid() );
   d->group          = KUserGroup( share->gid() );
   d->ip.setAddress( share->hostIP() );
+  d->wol_first_scan = false;
+  d->wol_mount      = false;
 }
 
 
@@ -123,6 +130,8 @@ Smb4KCustomOptions::Smb4KCustomOptions()
   d->kerberos       = UndefinedKerberos;
   d->user           = KUser( getuid() );
   d->group          = KUserGroup( getgid() );
+  d->wol_first_scan = false;
+  d->wol_mount      = false;
 }
 
 
@@ -461,10 +470,44 @@ QString Smb4KCustomOptions::group() const
 }
 
 
+void Smb4KCustomOptions::setMACAddress( const QString &macAddress )
+{
+  d->mac = macAddress;
+}
+
+
+QString Smb4KCustomOptions::macAddress() const
+{
+  return d->mac;
+}
+
+
+void Smb4KCustomOptions::setWOLSendBeforeFirstScan( bool send )
+{
+  d->wol_first_scan = send;
+}
+
+
+bool Smb4KCustomOptions::wolSendBeforeFirstScan() const
+{
+  return d->wol_first_scan;
+}
+
+
+void Smb4KCustomOptions::setWOLSendBeforeMount( bool send )
+{
+  d->wol_mount = send;
+}
+
+
+bool Smb4KCustomOptions::wolSendBeforeMount() const
+{
+  return d->wol_mount;
+}
+
+
 QMap<QString, QString> Smb4KCustomOptions::customOptions() const
 {
-  QMap<QString, QString> options;
-  
   QMap<QString,QString> entries;
 
   switch ( d->remount )
@@ -579,10 +622,11 @@ QMap<QString, QString> Smb4KCustomOptions::customOptions() const
   entries.insert( "owner", d->user.loginName() );
   entries.insert( "gid", QString( "%1" ).arg( d->group.gid() ) );
   entries.insert( "group", d->group.name() );
-
-  return entries;
+  entries.insert( "mac_address", d->mac );
+  entries.insert( "wol_send_before_first_scan", d->wol_first_scan ? "true" : "false" );
+  entries.insert( "wol_send_before_mount", d->wol_mount ? "true" : "false" );
   
-  return options;
+  return entries;
 }
 
 
@@ -704,6 +748,36 @@ bool Smb4KCustomOptions::equals( Smb4KCustomOptions *options ) const
   
   // GID
   if ( d->group.gid() != options->gid() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // MAC address
+  if ( QString::compare( d->mac, options->macAddress() ) != 0 )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Send WOL packages before first scan
+  if ( d->wol_first_scan != options->wolSendBeforeFirstScan() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Send WOL packages before mount
+  if ( d->wol_mount != options->wolSendBeforeMount() )
   {
     return false;
   }
@@ -833,6 +907,36 @@ bool Smb4KCustomOptions::isEmpty()
   
   // GID
   if ( d->group.gid() != getgid() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // MAC address
+  if ( !d->mac.isNull() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Send WOL packages before first scan
+  if ( d->wol_first_scan )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Send WOL packages before mount
+  if ( d->wol_mount )
   {
     return false;
   }
