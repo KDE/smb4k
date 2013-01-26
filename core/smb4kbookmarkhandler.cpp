@@ -322,7 +322,7 @@ void Smb4KBookmarkHandler::loadBookmarks()
             Smb4KBookmark *bookmark = new Smb4KBookmark();
 
             bookmark->setGroup( xmlReader.attributes().value( "profile" ).toString() );
-            bookmark->setGroup(xmlReader.attributes().value( "group" ).toString() );
+            bookmark->setGroup( xmlReader.attributes().value( "group" ).toString() );
 
             while ( !(xmlReader.isEndElement() && xmlReader.name() == "bookmark") )
             {
