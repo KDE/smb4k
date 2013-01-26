@@ -2,7 +2,7 @@
     smb4kconfigdialog  -  The configuration dialog of Smb4K
                              -------------------
     begin                : Sa Apr 14 2007
-    copyright            : (C) 2004-2012 by Alexander Reinholdt
+    copyright            : (C) 2004-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -36,6 +36,7 @@
 #include "smb4ksambaoptions.h"
 #include "smb4krsyncoptions.h"
 #include "smb4klaptopsupportoptions.h"
+#include "smb4kcustomoptionspage.h"
 #include "core/smb4ksettings.h"
 #include "core/smb4kglobal.h"
 #include "core/smb4kauthinfo.h"
@@ -141,6 +142,12 @@ void Smb4KConfigDialog::setupDialog()
   laptop_area->setWidget( laptop_options );
   laptop_area->setWidgetResizable( true );
   laptop_area->setFrameStyle( QFrame::NoFrame );
+  
+  Smb4KCustomOptionsPage *custom_options = new Smb4KCustomOptionsPage( this );
+  QScrollArea *custom_area = new QScrollArea( this );
+  custom_area->setWidget( custom_options );
+  custom_area->setWidgetResizable( true );
+  custom_area->setFrameStyle( QFrame::NoFrame );
 
   // Now add the pages to the configuration dialog
   m_user_interface  = addPage( interface_area, i18n( "User Interface" ), "view-choose" );
@@ -150,15 +157,16 @@ void Smb4KConfigDialog::setupDialog()
   m_samba           = addPage( samba_area, i18n( "Samba" ), "preferences-system-network" );
   m_synchronization = addPage( rsync_area, i18n( "Synchronization" ), "go-bottom" );
   m_laptop_support  = addPage( laptop_area, i18n( "Laptop Support" ), "computer-laptop" );
+  m_custom_options  = addPage( custom_area, i18n( "Custom Options" ), "preferences-system-network" );
 
   // Stuff that's not managed by KConfig XT is loaded by
   // Smb4KConfigDialog::showEvent()!
 
   // Connections
-  connect( samba_options,      SIGNAL(customSettingsModified()),
+  connect( custom_options,     SIGNAL(customSettingsModified()),
            this,               SLOT(slotEnableApplyButton()) );
   
-  connect( samba_options,      SIGNAL(reloadCustomSettings()),
+  connect( custom_options,     SIGNAL(reloadCustomSettings()),
            this,               SLOT(slotReloadCustomOptions()) );
 
   connect( auth_options,       SIGNAL(loadWalletEntries()),
@@ -180,12 +188,12 @@ void Smb4KConfigDialog::setupDialog()
 }
 
 
-void Smb4KConfigDialog::loadCustomSambaOptions()
+void Smb4KConfigDialog::loadCustomOptions()
 {
-  if ( m_samba )
+  if ( m_custom_options )
   {
     QList<Smb4KCustomOptions *> options = Smb4KCustomOptionsManager::self()->customOptions( true );
-    m_samba->widget()->findChild<Smb4KSambaOptions *>()->insertCustomOptions( options );
+    m_custom_options->widget()->findChild<Smb4KCustomOptionsPage *>()->insertCustomOptions( options );
   }
   else
   {
@@ -194,11 +202,11 @@ void Smb4KConfigDialog::loadCustomSambaOptions()
 }
 
 
-void Smb4KConfigDialog::saveCustomSambaOptions()
+void Smb4KConfigDialog::saveCustomOptions()
 {
-  if ( m_samba )
+  if ( m_custom_options )
   {
-    QList<Smb4KCustomOptions *> options = m_samba->widget()->findChild<Smb4KSambaOptions *>()->getCustomOptions();
+    QList<Smb4KCustomOptions *> options = m_custom_options->widget()->findChild<Smb4KCustomOptionsPage *>()->getCustomOptions();
     Smb4KCustomOptionsManager::self()->replaceCustomOptions( options );
   }
   else
@@ -494,7 +502,7 @@ void Smb4KConfigDialog::showEvent( QShowEvent *e )
   // We do not want to react on them.
   if ( !e->spontaneous() )
   {
-    loadCustomSambaOptions();
+    loadCustomOptions();
   }
   else
   {
@@ -521,7 +529,7 @@ void Smb4KConfigDialog::slotButtonClicked( int button )
         return;
       }
 
-      saveCustomSambaOptions();
+      saveCustomOptions();
       slotSaveAuthenticationInformation();
 
       break;
@@ -535,7 +543,7 @@ void Smb4KConfigDialog::slotButtonClicked( int button )
         return;
       }
 
-      saveCustomSambaOptions();
+      saveCustomOptions();
       slotSaveAuthenticationInformation();
 
       KConfigGroup group( Smb4KSettings::self()->config(), "ConfigDialog" );
@@ -681,11 +689,11 @@ void Smb4KConfigDialog::slotEnableApplyButton()
   }
   
   // Check the custom settings.
-  Smb4KSambaOptions *samba_options = m_samba->widget()->findChild<Smb4KSambaOptions *>();
+  Smb4KCustomOptionsPage *custom_options = m_custom_options->findChild<Smb4KCustomOptionsPage *>();
   
-  if ( !enable && samba_options && samba_options->customSettingsMaybeChanged() )
+  if ( !enable && custom_options && custom_options->customSettingsMaybeChanged() )
   {
-    QList<Smb4KCustomOptions *> new_list = samba_options->getCustomOptions();
+    QList<Smb4KCustomOptions *> new_list = custom_options->getCustomOptions();
     QList<Smb4KCustomOptions *> old_list = Smb4KCustomOptionsManager::self()->customOptions();
     
     if ( new_list.size() == old_list.size() )
@@ -731,7 +739,7 @@ void Smb4KConfigDialog::slotEnableApplyButton()
 
 void Smb4KConfigDialog::slotReloadCustomOptions()
 {
-  loadCustomSambaOptions();
+  loadCustomOptions();
 }
 
 

@@ -2,7 +2,7 @@
     smb4kconfigdialog  -  The configuration dialog of Smb4K
                              -------------------
     begin                : Sa Apr 14 2007
-    copyright            : (C) 2004-2012 by Alexander Reinholdt
+    copyright            : (C) 2004-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -162,6 +162,11 @@ class Smb4KConfigDialog : public KConfigDialog
     KPageWidgetItem *m_laptop_support;
     
     /**
+     * "Custom Options" page
+     */
+    KPageWidgetItem *m_custom_options;
+    
+    /**
      * Set up the config dialog.
      */
     void setupDialog();
@@ -169,12 +174,12 @@ class Smb4KConfigDialog : public KConfigDialog
     /**
      * Load the custom Samba options
      */
-    void loadCustomSambaOptions();
+    void loadCustomOptions();
 
     /**
      * Save the custom Samba options
      */
-    void saveCustomSambaOptions();
+    void saveCustomOptions();
 
     /**
      * Checks that mandatorily needed input is provided for settings that
