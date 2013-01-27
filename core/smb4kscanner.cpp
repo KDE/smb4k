@@ -41,12 +41,16 @@
 #include "smb4kwalletmanager.h"
 #include "smb4knotification.h"
 #include "smb4knetworkobject.h"
+#include "smb4kcustomoptions.h"
+#include "smb4kcustomoptionsmanager.h"
 
 // Qt includes
 #include <QtCore/QTimer>
 #include <QtCore/QDebug>
 #include <QtNetwork/QHostAddress>
 #include <QtNetwork/QAbstractSocket>
+#include <QtNetwork/QUdpSocket>
+#include <QtTest/QTest>
 
 // KDE includes
 #include <kglobal.h>
@@ -483,6 +487,64 @@ void Smb4KScanner::start()
 
 void Smb4KScanner::lookupDomains( QWidget *parent )
 {
+  // Send Wake On LAN magic packages
+  if ( Smb4KSettings::enableWakeOnLAN() )
+  {
+    QList<Smb4KCustomOptions *> wol_entries = Smb4KCustomOptionsManager::self()->wolEntries();
+    
+    if ( !wol_entries.isEmpty() )
+    {
+      QUdpSocket *socket = new QUdpSocket( this );
+      
+      for ( int i = 0; i < wol_entries.size(); ++i )
+      {
+        QHostAddress addr( wol_entries.at( i )->ip() );
+        qDebug() << addr.toString();
+        
+        // Construct magic sequence
+        QByteArray sequence;
+
+        // 6 times 0xFF
+        for ( int j = 0; j < 6; ++j )
+        {
+          sequence.append( QChar( 0xFF ).toAscii() );
+        }
+        
+        // 16 times the MAC address
+        QStringList parts = wol_entries.at( i )->macAddress().split( ":", QString::SkipEmptyParts );
+        
+        for ( int j = 0; j < 16; ++j )
+        {
+          for ( int k = 0; k < parts.size(); ++k )
+          {
+            sequence.append( QChar( QString( "0x%1" ).arg( parts.at( k ) ).toInt( 0, 16 ) ).toAscii() );
+          }
+        }
+        
+        socket->writeDatagram( sequence, addr, 9 );
+      }
+      
+      delete socket;
+      
+      // Wait 5 seconds
+      int i = 0;
+      
+      while ( i++ < 20 )
+      {
+        QTest::qWait( 250 );
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Now look up the domains  
   if ( Smb4KSettings::lookupDomains() )
   {
     Smb4KLookupDomainsJob *job = new Smb4KLookupDomainsJob( this );

@@ -61,6 +61,7 @@ class Smb4KCustomOptionsDialog : public KDialog
     void slotSetDefaultValues();
     void slotCheckValues();
     void slotOKClicked();
+    void slotEnableWOLFeatures( const QString &mac );
     
   private:
     void setupView();
@@ -75,6 +76,9 @@ class Smb4KCustomOptionsDialog : public KDialog
     KComboBox *m_user_id;
     KComboBox *m_group_id;
     QCheckBox *m_kerberos;
+    KLineEdit *m_mac_address;
+    QCheckBox *m_send_before_scan;
+    QCheckBox *m_send_before_mount;
 };
 
 

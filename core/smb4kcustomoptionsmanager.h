@@ -189,6 +189,14 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
      */
     bool hasCustomOptions( Smb4KCustomOptions *options );
     
+    /**
+     * This function returns a list of custom option objects that have 
+     * Wake-On-LAN features defined.
+     * 
+    * @returns a list of custom options objects with WOL features defined.
+    */
+    QList<Smb4KCustomOptions *> wolEntries() const;
+    
   protected Q_SLOTS:
     /**
      * Called when the application exits

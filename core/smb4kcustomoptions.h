@@ -384,22 +384,22 @@ class KDE_EXPORT Smb4KCustomOptions
     
     /**
      * Set whether a magic WOL package should be send to the host that this 
-     * network item represents or where this network item is located on first 
-     * network scan.
+     * network item represents or where this network item is located before scanning 
+     * the entire network.
      * 
      * @param send              Boolean that determines if a magic WOL package
      *                          is to be sent.
      */
-    void setWOLSendBeforeFirstScan( bool send );
+    void setWOLSendBeforeNetworkScan( bool send );
     
     /**
      * Send a magic WOL package to the host that this network item represents
-     * or where this network item is located on first network scan.
+     * or where this network item is located before scanning the entire network.
      * 
      * @returns TRUE if a magic WOL package should be send on first network
      * scan.
      */
-    bool wolSendBeforeFirstScan() const;
+    bool wolSendBeforeNetworkScan() const;
     
     /**
      * Set whether a magic WOL package should be send to the host that this 

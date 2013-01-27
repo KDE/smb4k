@@ -471,11 +471,11 @@ void Smb4KCustomOptionsManager::readCustomOptions()
                       {
                         if ( xmlReader.readElementText() == "true" )
                         {
-                          options->setWOLSendBeforeFirstScan( true );
+                          options->setWOLSendBeforeNetworkScan( true );
                         }
                         else
                         {
-                          options->setWOLSendBeforeFirstScan( false );
+                          options->setWOLSendBeforeNetworkScan( false );
                         }
                       }
                       else if ( xmlReader.name() == "wol_send_before_mount" )
@@ -865,25 +865,7 @@ void Smb4KCustomOptionsManager::removeCustomOptions( Smb4KCustomOptions *options
 {
   Q_ASSERT( options );
   
-  Smb4KCustomOptions *known_options = NULL;
-  
-  switch ( options->type() )
-  {
-    case Smb4KCustomOptions::Host:
-    {
-      known_options = findOptions( options->url() );
-      break;
-    }
-    case Smb4KCustomOptions::Share:
-    {
-      known_options = findOptions( options->url() );
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
+  Smb4KCustomOptions *known_options = findOptions( options->url() );
   
   if ( known_options )
   {
@@ -996,7 +978,48 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
     // Do nothing
   }
   
+  // Send before first scan
+  if ( default_options.wolSendBeforeNetworkScan() != options->wolSendBeforeNetworkScan() )
+  {
+    return true;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Send before mount
+  if ( default_options.wolSendBeforeMount() != options->wolSendBeforeMount() )
+  {
+    return true;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
   return false;
+}
+
+
+QList<Smb4KCustomOptions *> Smb4KCustomOptionsManager::wolEntries() const
+{
+  QList<Smb4KCustomOptions *> list;
+  
+  for ( int i = 0; i < d->options.size(); ++i )
+  {
+    if ( !d->options.at( i )->macAddress().isEmpty() && 
+         (d->options.at( i )->wolSendBeforeNetworkScan() || d->options.at( i )->wolSendBeforeMount()) )
+    {
+      list << d->options[i];
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  return list;
 }
 
 

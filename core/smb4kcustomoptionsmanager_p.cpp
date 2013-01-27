@@ -37,6 +37,7 @@
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QLabel>
+#include <QtGui/QGroupBox>
 
 // KDE includes
 #include <klocale.h>
@@ -95,6 +96,7 @@ void Smb4KCustomOptionsDialog::setupView()
     {
       label = new QLabel( i18n( "<p>Define custom options for host <b>%1</b> and all the shares it provides.</p>",
                           m_options->hostName() ), description );
+      qDebug() << "Host";
       break;
     }
     case Smb4KCustomOptions::Share:
@@ -102,6 +104,7 @@ void Smb4KCustomOptionsDialog::setupView()
       label = new QLabel( i18n( "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>",
                           m_options->shareName(), m_options->hostName() ),
                           description );
+      qDebug() << "Share";
       break;
     }
     default:
@@ -117,39 +120,55 @@ void Smb4KCustomOptionsDialog::setupView()
   desc_layout->addWidget( pixmap, 0 );
   desc_layout->addWidget( label, Qt::AlignBottom );
 
-  QWidget *editors = new QWidget( main_widget );
+  QGroupBox *general = new QGroupBox( i18n( "General" ), main_widget );
 
-  QGridLayout *editors_layout = new QGridLayout( editors );
-  editors_layout->setSpacing( 5 );
-  editors_layout->setMargin( 0 );
+  QGridLayout *general_layout = new QGridLayout( general );
+  general_layout->setSpacing( 5 );
 
-  QLabel *unc_label = new QLabel( i18n( "UNC Address:" ), editors );
-  KLineEdit *unc    = new KLineEdit( m_options->unc(), editors );
+  QLabel *unc_label = new QLabel( i18n( "UNC Address:" ), general );
+  KLineEdit *unc    = new KLineEdit( m_options->unc(), general );
   unc->setReadOnly( true );
+  
+  QLabel *ip_label = new QLabel( i18n( "IP Address:" ), general );
+  KLineEdit *ip    = new KLineEdit( m_options->ip(), general );
+  ip->setReadOnly( true );
+  
+  general_layout->addWidget( unc_label, 0, 0, 0 );
+  general_layout->addWidget( unc, 0, 1, 0 );
+  general_layout->addWidget( ip_label, 1, 0, 0 );
+  general_layout->addWidget( ip, 1, 1, 0 );
+  
+  QGroupBox *samba_editors = new QGroupBox( i18n( "Samba" ), main_widget );
+  
+  QGridLayout *samba_editors_layout = new QGridLayout( samba_editors );
+  samba_editors_layout->setSpacing( 5 );
 
-  QLabel *smb_label = new QLabel( i18n( "SMB Port:" ), editors );
+  QLabel *smb_label = new QLabel( i18n( "SMB Port:" ), samba_editors );
   m_smb_port        = new KIntNumInput( (m_options->smbPort() != Smb4KSettings::remoteSMBPort() ?
-                      m_options->smbPort() : Smb4KSettings::remoteSMBPort()), editors );
+                      m_options->smbPort() : Smb4KSettings::remoteSMBPort()), samba_editors );
   m_smb_port->setRange( Smb4KSettings::self()->remoteSMBPortItem()->minValue().toInt(),
                         Smb4KSettings::self()->remoteSMBPortItem()->maxValue().toInt() );
   m_smb_port->setSliderEnabled( true );
+  smb_label->setBuddy( m_smb_port );
 
 #ifndef Q_OS_FREEBSD
-  QLabel *fs_label = new QLabel( i18n( "Filesystem Port:" ), editors );
+  QLabel *fs_label = new QLabel( i18n( "Filesystem Port:" ), samba_editors );
   m_fs_port        = new KIntNumInput( (m_options->fileSystemPort() != Smb4KSettings::remoteFileSystemPort() ?
-                     m_options->fileSystemPort() : Smb4KSettings::remoteFileSystemPort()), editors );
+                     m_options->fileSystemPort() : Smb4KSettings::remoteFileSystemPort()), samba_editors );
   m_fs_port->setRange( Smb4KSettings::self()->remoteFileSystemPortItem()->minValue().toInt(),
                        Smb4KSettings::self()->remoteFileSystemPortItem()->maxValue().toInt() );
   m_fs_port->setSliderEnabled( true );
+  fs_label->setBuddy( m_fs_port );
 
-  QLabel *rw_label = new QLabel( i18n( "Write Access:" ), editors );
-  m_write_access   = new KComboBox( editors );
+  QLabel *rw_label = new QLabel( i18n( "Write Access:" ), samba_editors );
+  m_write_access   = new KComboBox( samba_editors );
   m_write_access->insertItem( 0, Smb4KSettings::self()->writeAccessItem()->choices()
                                  .value( Smb4KSettings::EnumWriteAccess::ReadWrite ).label,
                               QVariant::fromValue<int>( Smb4KCustomOptions::ReadWrite ) );
   m_write_access->insertItem( 1, Smb4KSettings::self()->writeAccessItem()->choices()
                                  .value( Smb4KSettings::EnumWriteAccess::ReadOnly ).label,
                               QVariant::fromValue<int>( Smb4KCustomOptions::ReadOnly ) );
+  rw_label->setBuddy( m_write_access );
 
   if ( m_options->writeAccess() == Smb4KCustomOptions::UndefinedWriteAccess )
   {
@@ -193,8 +212,8 @@ void Smb4KCustomOptionsDialog::setupView()
   }
 #endif
 
-  QLabel *protocol_label = new QLabel( i18n( "Protocol Hint:" ), editors );
-  m_protocol_hint        = new KComboBox( editors );
+  QLabel *protocol_label = new QLabel( i18n( "Protocol Hint:" ), samba_editors );
+  m_protocol_hint        = new KComboBox( samba_editors );
   m_protocol_hint->insertItem( 0, Smb4KSettings::self()->protocolHintItem()->choices()
                                   .value( Smb4KSettings::EnumProtocolHint::Automatic ).label,
                                QVariant::fromValue<int>( Smb4KCustomOptions::Automatic ) );
@@ -207,6 +226,7 @@ void Smb4KCustomOptionsDialog::setupView()
   m_protocol_hint->insertItem( 3, Smb4KSettings::self()->protocolHintItem()->choices()
                                   .value( Smb4KSettings::EnumProtocolHint::ADS ).label,
                                QVariant::fromValue<int>( Smb4KCustomOptions::ADS ) );
+  protocol_label->setBuddy( m_protocol_hint );
 
   if ( m_options->protocolHint() == Smb4KCustomOptions::UndefinedProtocolHint )
   {
@@ -269,8 +289,9 @@ void Smb4KCustomOptionsDialog::setupView()
     }
   }
 
-  QLabel *uid_label = new QLabel( i18n( "User ID:" ), editors );
-  m_user_id         = new KComboBox( editors );
+  QLabel *uid_label = new QLabel( i18n( "User ID:" ), samba_editors );
+  m_user_id         = new KComboBox( samba_editors );
+  uid_label->setBuddy( m_user_id );
 
   // To avoid weird crashes under FreeBSD, first copy KUser::allUsers().
   QList<KUser> all_users = KUser::allUsers();
@@ -291,8 +312,9 @@ void Smb4KCustomOptionsDialog::setupView()
     }
   }
 
-  QLabel *gid_label = new QLabel( i18n( "Group ID:" ), editors );
-  m_group_id        = new KComboBox( editors );
+  QLabel *gid_label = new QLabel( i18n( "Group ID:" ), samba_editors );
+  m_group_id        = new KComboBox( samba_editors );
+  gid_label->setBuddy( m_group_id );
 
   // To avoid weird crashes under FreeBSD, first copy KUserGroup::allGroups().
   QList<KUserGroup> all_groups = KUserGroup::allGroups();
@@ -313,7 +335,7 @@ void Smb4KCustomOptionsDialog::setupView()
     }
   }
 
-  m_kerberos = new QCheckBox( Smb4KSettings::self()->useKerberosItem()->label(), editors );
+  m_kerberos = new QCheckBox( Smb4KSettings::self()->useKerberosItem()->label(), samba_editors );
 
   if ( m_options->useKerberos() == Smb4KCustomOptions::UndefinedKerberos )
   {
@@ -340,34 +362,58 @@ void Smb4KCustomOptionsDialog::setupView()
     }
   }
 
-  editors_layout->addWidget( unc_label, 0, 0, 0 );
-  editors_layout->addWidget( unc, 0, 1, 0 );
-  editors_layout->addWidget( smb_label, 1, 0, 0 );
-  editors_layout->addWidget( m_smb_port, 1, 1, 0 );
+  samba_editors_layout->addWidget( smb_label, 0, 0, 0 );
+  samba_editors_layout->addWidget( m_smb_port, 0, 1, 0 );
 #ifndef Q_OS_FREEBSD
-  editors_layout->addWidget( fs_label, 2, 0, 0 );
-  editors_layout->addWidget( m_fs_port, 2, 1, 0 );
-  editors_layout->addWidget( rw_label, 3, 0, 0 );
-  editors_layout->addWidget( m_write_access, 3, 1, 0 );
-  editors_layout->addWidget( protocol_label, 4, 0, 0 );
-  editors_layout->addWidget( m_protocol_hint, 4, 1, 0 );
-  editors_layout->addWidget( uid_label, 5, 0, 0 );
-  editors_layout->addWidget( m_user_id, 5, 1, 0 );
-  editors_layout->addWidget( gid_label, 6, 0, 0 );
-  editors_layout->addWidget( m_group_id, 6, 1, 0 );
-  editors_layout->addWidget( m_kerberos, 7, 0, 1, 2, 0 );
+  samba_editors_layout->addWidget( fs_label, 1, 0, 0 );
+  samba_editors_layout->addWidget( m_fs_port, 1, 1, 0 );
+  samba_editors_layout->addWidget( rw_label, 2, 0, 0 );
+  samba_editors_layout->addWidget( m_write_access, 2, 1, 0 );
+  samba_editors_layout->addWidget( protocol_label, 3, 0, 0 );
+  samba_editors_layout->addWidget( m_protocol_hint, 3, 1, 0 );
+  samba_editors_layout->addWidget( uid_label, 4, 0, 0 );
+  samba_editors_layout->addWidget( m_user_id, 4, 1, 0 );
+  samba_editors_layout->addWidget( gid_label, 5, 0, 0 );
+  samba_editors_layout->addWidget( m_group_id, 5, 1, 0 );
+  samba_editors_layout->addWidget( m_kerberos, 6, 0, 1, 2, 0 );
 #else
-  editors_layout->addWidget( protocol_label, 2, 0, 0 );
-  editors_layout->addWidget( m_protocol_hint, 2, 1, 0 );
-  editors_layout->addWidget( uid_label, 3, 0, 0 );
-  editors_layout->addWidget( m_user_id, 3, 1, 0 );
-  editors_layout->addWidget( gid_label, 4, 0, 0 );
-  editors_layout->addWidget( m_group_id, 4, 1, 0 );
-  editors_layout->addWidget( m_kerberos, 5, 0, 1, 2, 0 );
+  samba_editors_layout->addWidget( protocol_label, 1, 0, 0 );
+  samba_editors_layout->addWidget( m_protocol_hint, 1, 1, 0 );
+  samba_editors_layout->addWidget( uid_label, 2, 0, 0 );
+  samba_editors_layout->addWidget( m_user_id, 2, 1, 0 );
+  samba_editors_layout->addWidget( gid_label, 3, 0, 0 );
+  samba_editors_layout->addWidget( m_group_id, 3, 1, 0 );
+  samba_editors_layout->addWidget( m_kerberos, 4, 0, 1, 2, 0 );
 #endif
+  
+  QGroupBox *wol_editors = new QGroupBox( i18n( "Wake-On-LAN" ), main_widget );
+  
+  QGridLayout *wol_editors_layout = new QGridLayout( wol_editors );
+  wol_editors_layout->setSpacing( 5 );
+  
+  QLabel *mac_label = new QLabel( i18n( "MAC Address:" ), wol_editors );
+  m_mac_address     = new KLineEdit( m_options->macAddress(), wol_editors );
+  mac_label->setBuddy( m_mac_address );
+  
+  // If you change the texts here, please also alter them in the config
+  // dialog.
+  m_send_before_scan = new QCheckBox( i18n( "Send magic package before scanning the network neighborhood" ), wol_editors );
+  m_send_before_scan->setChecked( m_options->wolSendBeforeNetworkScan() );
+  m_send_before_scan->setEnabled( (m_options->type() == Smb4KCustomOptions::Host) );
+  
+  m_send_before_mount = new QCheckBox( i18n( "Send magic package before mounting a share" ), wol_editors );
+  m_send_before_mount->setChecked( m_options->wolSendBeforeMount() );
+  m_send_before_mount->setEnabled( (m_options->type() == Smb4KCustomOptions::Host) );
+  
+  wol_editors_layout->addWidget( mac_label, 0, 0, 0 );
+  wol_editors_layout->addWidget( m_mac_address, 0, 1, 0 );
+  wol_editors_layout->addWidget( m_send_before_scan, 1, 0, 1, 2, 0 );
+  wol_editors_layout->addWidget( m_send_before_mount, 2, 0, 1, 2, 0 );
 
   layout->addWidget( description );
-  layout->addWidget( editors );
+  layout->addWidget( general );
+  layout->addWidget( samba_editors );
+  layout->addWidget( wol_editors );
 
   connect( m_smb_port, SIGNAL(valueChanged(int)), SLOT(slotCheckValues()) );
 #ifndef Q_OS_FREEBSD
@@ -378,7 +424,13 @@ void Smb4KCustomOptionsDialog::setupView()
   connect( m_user_id, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()) );
   connect( m_group_id, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()) );
   connect( m_kerberos, SIGNAL(toggled(bool)), SLOT(slotCheckValues()) );
-
+  connect( m_mac_address, SIGNAL(textChanged(QString)), SLOT(slotCheckValues()) );
+  connect( m_mac_address, SIGNAL(textChanged(QString)), SLOT(slotEnableWOLFeatures(QString)) );
+  connect( m_send_before_scan, SIGNAL(toggled(bool)), SLOT(slotCheckValues()) );
+  connect( m_send_before_mount, SIGNAL(toggled(bool)), SLOT(slotCheckValues()) );
+  
+  wol_editors->setEnabled( (m_options->type() == Smb4KCustomOptions::Host && Smb4KSettings::enableWakeOnLAN()) );
+  
   enableButton( User1, !defaultValues() );
 }
 
@@ -453,6 +505,40 @@ bool Smb4KCustomOptionsDialog::defaultValues()
   if ( m_kerberos->isChecked() != Smb4KSettings::useKerberos() )
   {
     return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  if ( m_options->type() == Smb4KCustomOptions::Host )
+  {
+    if ( !m_mac_address->text().isEmpty() )
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    if ( m_send_before_scan->isChecked() )
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    if ( m_send_before_mount->isChecked() )
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
@@ -543,6 +629,17 @@ void Smb4KCustomOptionsDialog::slotSetDefaultValues()
   }
 
   m_kerberos->setChecked( Smb4KSettings::self()->useKerberos() );
+
+  if ( m_options->type() == Smb4KCustomOptions::Host )
+  {
+    m_mac_address->clear();
+    m_send_before_scan->setChecked( false );
+    m_send_before_mount->setChecked( false );
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
@@ -571,9 +668,22 @@ void Smb4KCustomOptionsDialog::slotOKClicked()
   {
     m_options->setUseKerberos( Smb4KCustomOptions::NoKerberos );
   }
+  
+  m_options->setMACAddress( m_mac_address->text() );
+  m_options->setWOLSendBeforeNetworkScan( m_send_before_scan->isChecked() );
+  m_options->setWOLSendBeforeMount( m_send_before_mount->isChecked() );
 
   KConfigGroup group( Smb4KSettings::self()->config(), "CustomOptionsDialog" );
   saveDialogSize( group, KConfigGroup::Normal );
+}
+
+
+void Smb4KCustomOptionsDialog::slotEnableWOLFeatures( const QString &mac )
+{
+  QRegExp exp( "..\\:..\\:..\\:..\\:..\\:.." );
+    
+  m_send_before_scan->setEnabled( exp.exactMatch( mac ) );
+  m_send_before_mount->setEnabled( exp.exactMatch( mac ) );
 }
 
 

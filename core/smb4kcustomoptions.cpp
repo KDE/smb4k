@@ -482,13 +482,13 @@ QString Smb4KCustomOptions::macAddress() const
 }
 
 
-void Smb4KCustomOptions::setWOLSendBeforeFirstScan( bool send )
+void Smb4KCustomOptions::setWOLSendBeforeNetworkScan( bool send )
 {
   d->wol_first_scan = send;
 }
 
 
-bool Smb4KCustomOptions::wolSendBeforeFirstScan() const
+bool Smb4KCustomOptions::wolSendBeforeNetworkScan() const
 {
   return d->wol_first_scan;
 }
@@ -767,7 +767,7 @@ bool Smb4KCustomOptions::equals( Smb4KCustomOptions *options ) const
   }
   
   // Send WOL packages before first scan
-  if ( d->wol_first_scan != options->wolSendBeforeFirstScan() )
+  if ( d->wol_first_scan != options->wolSendBeforeNetworkScan() )
   {
     return false;
   }
