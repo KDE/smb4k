@@ -108,7 +108,7 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
 
   unc_label->setBuddy( m_unc_address );
   
-  QLabel *ip_label = new QLabel( i18n( "IP address:" ), m_general_editors );
+  QLabel *ip_label = new QLabel( i18n( "IP Address:" ), m_general_editors );
   
   m_ip_address = new KLineEdit( m_general_editors );
   m_ip_address->setClearButtonShown( true );
@@ -237,7 +237,7 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
 //   samba_editor_layout->setRowStretch( 5, 100 );
 #endif
   
-  m_mac_editors = new QGroupBox( i18n( "Wake On LAN" ), editors );
+  m_mac_editors = new QGroupBox( i18n( "Wake-On-LAN" ), editors );
   
   QGridLayout *mac_editor_layout = new QGridLayout( m_mac_editors );
   mac_editor_layout->setSpacing( 5 );
@@ -253,9 +253,11 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
   
   mac_label->setBuddy( m_mac_address );
   
-  m_send_before_scan = new QCheckBox( i18n( "Send magic package before the first scan of the network neighborhood" ), m_mac_editors );
+  // If you change the texts here please also alter them in the custom 
+  // options dialog.
+  m_send_before_scan = new QCheckBox( i18n( "Send magic package before scanning the network neighborhood" ), m_mac_editors );
   m_send_before_scan->setEnabled( false );
-  m_send_before_mount = new QCheckBox( i18n( "Send magic package before a mount attempt" ), m_mac_editors );
+  m_send_before_mount = new QCheckBox( i18n( "Send magic package before mounting a share" ), m_mac_editors );
   m_send_before_mount->setEnabled( false );
   
   mac_editor_layout->addWidget( mac_label, 0, 0, 0 );
@@ -695,14 +697,14 @@ void Smb4KCustomOptionsPage::populateEditors(Smb4KCustomOptions* options)
   }
   
   m_mac_address->setText( m_current_options->macAddress() );
-  m_send_before_scan->setChecked( m_current_options->wolSendBeforeFirstScan() );
+  m_send_before_scan->setChecked( m_current_options->wolSendBeforeNetworkScan() );
   m_send_before_mount->setChecked( m_current_options->wolSendBeforeMount() );
   
   // Enable widget
   m_general_editors->setEnabled( true );
   m_samba_editors->setEnabled( true );
   
-  if ( m_current_options->type() == Smb4KCustomOptions::Host )
+  if ( m_current_options->type() == Smb4KCustomOptions::Host && Smb4KSettings::enableWakeOnLAN() )
   {
     m_mac_editors->setEnabled( true );
   }
@@ -761,7 +763,7 @@ void Smb4KCustomOptionsPage::commitChanges()
       // Do nothing
     }
     
-    options->setWOLSendBeforeFirstScan( m_send_before_scan->isChecked() );
+    options->setWOLSendBeforeNetworkScan( m_send_before_scan->isChecked() );
     options->setWOLSendBeforeMount( m_send_before_mount->isChecked() );
     
     m_maybe_changed = true;
@@ -965,7 +967,7 @@ void Smb4KCustomOptionsPage::slotUndoActionTriggered( bool /*checked*/ )
           options->setGID( m_current_options->gid() );
           options->setUseKerberos( m_current_options->useKerberos() );
           options->setMACAddress( m_current_options->macAddress() );
-          options->setWOLSendBeforeFirstScan( m_current_options->wolSendBeforeFirstScan() );
+          options->setWOLSendBeforeNetworkScan( m_current_options->wolSendBeforeNetworkScan() );
           options->setWOLSendBeforeMount( m_current_options->wolSendBeforeMount() );
         }
         else

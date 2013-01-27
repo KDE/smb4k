@@ -3,7 +3,7 @@
     settings of Smb4K
                              -------------------
     begin                : Sa Nov 15 2003
-    copyright            : (C) 2003-2011 by Alexander Reinholdt
+    copyright            : (C) 2003-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -132,13 +132,43 @@ Smb4KNetworkOptions::Smb4KNetworkOptions( QWidget *parent )
   scan_interval->setSingleStep( 1 );
   scan_interval->setSliderEnabled( true );
   
+  interval_label->setBuddy( scan_interval );
+  
   periodic_layout->addWidget( periodic_scanning, 0, 0, 1, 2, 0 );
   periodic_layout->addWidget( interval_label, 1, 0, 0 );
-  periodic_layout->addWidget( scan_interval, 1, 1, 0 );  
+  periodic_layout->addWidget( scan_interval, 1, 1, 0 );
+  
+  //
+  // Wake On LAN
+  //
+  QGroupBox *wake_box = new QGroupBox( i18n( "Wake-On-LAN" ), this );
+  
+  QGridLayout *wake_box_layout      = new QGridLayout( wake_box );
+  wake_box_layout->setSpacing( 5 );  
+  
+  QCheckBox *enable_wol = new QCheckBox( Smb4KSettings::self()->enableWakeOnLANItem()->label(),
+                          wake_box );
+  enable_wol->setObjectName( "kcfg_EnableWakeOnLAN" );
+  
+  QLabel *waiting_label = new QLabel( Smb4KSettings::self()->wakeOnLANWaitingTimeItem()->label(),
+                          wake_box );
+  
+  KIntNumInput *waiting_time = new KIntNumInput( wake_box );
+  waiting_time->setObjectName( "kcfg_WakeOnLANWaitingTime" );
+  waiting_time->setSuffix( " s" );
+  waiting_time->setSingleStep( 1 );
+  waiting_time->setSliderEnabled( true );
+  
+  waiting_label->setBuddy( waiting_time );
+  
+  wake_box_layout->addWidget( enable_wol, 0, 0, 1, 2, 0 );
+  wake_box_layout->addWidget( waiting_label, 1, 0, 0 );
+  wake_box_layout->addWidget( waiting_time, 1, 1, 0 );
 
   layout->addWidget( browse_list_box, 0 );
   layout->addWidget( auth_box, 0 );
   layout->addWidget( periodic_box, 0 );
+  layout->addWidget( wake_box, 0 );
   layout->addStretch( 100 );
 }
 
