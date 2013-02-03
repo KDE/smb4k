@@ -3,7 +3,7 @@
     support of Smb4K
                              -------------------
     begin                : Mi Sep 17 2008
-    copyright            : (C) 2008-2012 by Alexander Reinholdt
+    copyright            : (C) 2008-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -34,6 +34,7 @@
 
 // Qt includes
 #include <QGridLayout>
+#include <QVBoxLayout>
 #include <QGroupBox>
 #include <QCheckBox>
 #include <QLabel>
@@ -46,7 +47,7 @@
 Smb4KLaptopSupportOptions::Smb4KLaptopSupportOptions( QWidget *parent )
 : QWidget( parent )
 {
-  QGridLayout *layout = new QGridLayout( this );
+  QVBoxLayout *layout = new QVBoxLayout( this );
   layout->setSpacing( 5 );
   layout->setMargin( 0 );
 
@@ -102,11 +103,9 @@ Smb4KLaptopSupportOptions::Smb4KLaptopSupportOptions( QWidget *parent )
 
   note_layout->setColumnStretch( 1, 1 );
 
-  QSpacerItem *spacer = new QSpacerItem( 10, 10, QSizePolicy::Preferred, QSizePolicy::Expanding );
-
-  layout->addWidget( hardware, 0, 0, 0 );
-  layout->addWidget( note, 1, 0, 0 );
-  layout->addItem( spacer, 2, 0 );
+  layout->addWidget( hardware );
+  layout->addWidget( note );
+  layout->addStretch( 100 );
 }
 
 

@@ -785,27 +785,32 @@ void Smb4KMainWindow::slotScannerAboutToStart( Smb4KBasicNetworkItem *item, int 
 
   switch ( process )
   {
-    case Smb4KScanner::LookupDomains:
+    case LookupDomains:
     {
       statusBar()->showMessage( i18n( "Looking for workgroups and domains..." ), 0 );
       break;
     }
-    case Smb4KScanner::LookupDomainMembers:
+    case LookupDomainMembers:
     {
       Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>( item );
       statusBar()->showMessage( i18n( "Looking for hosts in domain %1...", workgroup->workgroupName() ), 0 );
       break;
     }
-    case Smb4KScanner::LookupShares:
+    case LookupShares:
     {
       Smb4KHost *host = static_cast<Smb4KHost *>( item );
       statusBar()->showMessage( i18n( "Looking for shares provided by host %1...", host->hostName() ), 0 );
       break;
     }
-    case Smb4KScanner::LookupInfo:
+    case LookupInfo:
     {
       Smb4KHost *host = static_cast<Smb4KHost *>( item );
       statusBar()->showMessage( i18n( "Looking for more information about host %1...", host->hostName() ), 0 );
+      break;
+    }
+    case WakeUp:
+    {
+      statusBar()->showMessage( i18n( "Waking up remote servers..." ), 0 );
       break;
     }
     default:
@@ -846,7 +851,7 @@ void Smb4KMainWindow::slotMounterAboutToStart( Smb4KShare *share, int process )
 
   switch ( process )
   {
-    case Smb4KMounter::MountShare:
+    case MountShare:
     {
       // Show the right UNC to the user. If the share is a 'homes'
       // share, we display Smb4KShare::homeUNC().
@@ -860,7 +865,7 @@ void Smb4KMainWindow::slotMounterAboutToStart( Smb4KShare *share, int process )
       }
       break;
     }
-    case Smb4KMounter::UnmountShare:
+    case UnmountShare:
     {
       // When unmounting a share, there won't be a share where we
       // have to look up which UNC we present to the user.
@@ -985,7 +990,7 @@ void Smb4KMainWindow::slotMounterFinished( Smb4KShare *share, int process )
   // Give visual feedback if the mounting/unmounting failed.
   switch( process )
   {
-    case Smb4KMounter::MountShare:
+    case MountShare:
     {
       if ( !share->isMounted() )
       {
@@ -1001,7 +1006,7 @@ void Smb4KMainWindow::slotMounterFinished( Smb4KShare *share, int process )
       }
       break;
     }
-    case Smb4KMounter::UnmountShare:
+    case UnmountShare:
     {
       if ( share->isMounted() )
       {

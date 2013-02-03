@@ -46,6 +46,7 @@
 #include <klineedit.h>
 #include <kcombobox.h>
 #include <knuminput.h>
+#include <kiconloader.h>
 
 
 Smb4KNetworkOptions::Smb4KNetworkOptions( QWidget *parent )
@@ -161,9 +162,31 @@ Smb4KNetworkOptions::Smb4KNetworkOptions( QWidget *parent )
   
   waiting_label->setBuddy( waiting_time );
   
+  QFrame *note                 = new QFrame( wake_box );
+
+  QGridLayout *note_layout     = new QGridLayout( note );
+  note_layout->setSpacing( 10 );
+  note_layout->setMargin( 5 );
+
+  QLabel *important_pix        = new QLabel( note );
+  important_pix->setPixmap( KIconLoader::global()->loadIcon( "emblem-important", KIconLoader::Desktop, KIconLoader::SizeMedium ) );
+  important_pix->adjustSize();
+
+  QLabel *message              = new QLabel( note );
+  message->setText( i18n( "<qt>Define the hosts that should be woken up via the custom options dialog.</qt>" ) );
+  message->setTextFormat( Qt::AutoText );
+  message->setWordWrap( true );
+  message->setAlignment( Qt::AlignJustify );
+
+  note_layout->addWidget( important_pix, 0, 0, Qt::AlignCenter );
+  note_layout->addWidget( message, 0, 1, Qt::AlignVCenter );
+
+  note_layout->setColumnStretch( 1, 1 );
+  
   wake_box_layout->addWidget( enable_wol, 0, 0, 1, 2, 0 );
   wake_box_layout->addWidget( waiting_label, 1, 0, 0 );
   wake_box_layout->addWidget( waiting_time, 1, 1, 0 );
+  wake_box_layout->addWidget( note, 2, 0, 1, 2, 0 );
 
   layout->addWidget( browse_list_box, 0 );
   layout->addWidget( auth_box, 0 );

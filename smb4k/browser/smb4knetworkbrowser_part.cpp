@@ -714,7 +714,7 @@ void Smb4KNetworkBrowserPart::slotAboutToHideToolTip( Smb4KBasicNetworkItem *ite
       {
         // Kill the lookup process for the additional information.
         Smb4KHost *host = static_cast<Smb4KHost *>( item );
-        Smb4KScanner::self()->abort( Smb4KScanner::LookupInfo, host );
+        Smb4KScanner::self()->abort( LookupInfo, host );
         break;
       }
       default:
@@ -1632,7 +1632,7 @@ void Smb4KNetworkBrowserPart::slotAuthError( Smb4KHost *host, int process )
 {
   switch ( process )
   {
-    case Smb4KScanner::LookupDomains:
+    case LookupDomains:
     {
       // We queried a master browser from the list of domains and
       // workgroup. So, we can clear the whole list of domains.
@@ -1642,7 +1642,7 @@ void Smb4KNetworkBrowserPart::slotAuthError( Smb4KHost *host, int process )
       }
       break;
     }
-    case Smb4KScanner::LookupDomainMembers:
+    case LookupDomainMembers:
     {
       // Get the workgroup where the master browser is not accessible 
       // and clear the whole list of hosts. Then, reinsert the master 
@@ -1676,7 +1676,7 @@ void Smb4KNetworkBrowserPart::slotAuthError( Smb4KHost *host, int process )
       }
       break;
     }
-    case Smb4KScanner::LookupShares:
+    case LookupShares:
     {
       // Get the host that could not be accessed.
       QTreeWidgetItemIterator it( m_widget );
@@ -1969,7 +1969,7 @@ void Smb4KNetworkBrowserPart::slotScannerAboutToStart( Smb4KBasicNetworkItem *it
 {
   switch ( process )
   {
-    case Smb4KScanner::LookupDomains:
+    case LookupDomains:
     {
       if ( !m_silent )
       {
@@ -1981,7 +1981,7 @@ void Smb4KNetworkBrowserPart::slotScannerAboutToStart( Smb4KBasicNetworkItem *it
       }
       break;
     }
-    case Smb4KScanner::LookupDomainMembers:
+    case LookupDomainMembers:
     {
       if ( !m_silent )
       {
@@ -1994,7 +1994,7 @@ void Smb4KNetworkBrowserPart::slotScannerAboutToStart( Smb4KBasicNetworkItem *it
       }
       break;
     }
-    case Smb4KScanner::LookupShares:
+    case LookupShares:
     {
       if ( !m_silent )
       {
@@ -2007,12 +2007,24 @@ void Smb4KNetworkBrowserPart::slotScannerAboutToStart( Smb4KBasicNetworkItem *it
       }
       break;
     }
-    case Smb4KScanner::LookupInfo:
+    case LookupInfo:
     {
       if ( !m_silent )
       {
         Smb4KHost *host = static_cast<Smb4KHost *>( item );
         emit setStatusBarText( i18n( "Looking for more information about host %1...", host->hostName() ) );
+      }
+      else
+      {
+        // Do nothing
+      }
+      break;
+    }
+    case WakeUp:
+    {
+      if ( !m_silent )
+      {
+        emit setStatusBarText( i18n( "Waking up remote servers..." ) );
       }
       else
       {

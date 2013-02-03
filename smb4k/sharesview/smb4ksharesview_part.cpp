@@ -1470,7 +1470,7 @@ void Smb4KSharesViewPart::slotMounterAboutToStart( Smb4KShare *share, int proces
 {
   switch ( process )
   {
-    case Smb4KMounter::MountShare:
+    case MountShare:
     {
       if ( !m_silent )
       {
@@ -1482,7 +1482,7 @@ void Smb4KSharesViewPart::slotMounterAboutToStart( Smb4KShare *share, int proces
       }
       break;
     }
-    case Smb4KMounter::UnmountShare:
+    case UnmountShare:
     {
       if ( !m_silent )
       {

@@ -3,7 +3,7 @@
     support of Smb4K
                              -------------------
     begin                : Mi Sep 17 2008
-    copyright            : (C) 2008-2012 by Alexander Reinholdt
+    copyright            : (C) 2008-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
