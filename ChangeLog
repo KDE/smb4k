@@ -1,7 +1,5 @@
 Smb4K 1.1.0 (????-??-??):
 - Smb4K needs KDE SC version 4.6 or later.
-- Merged Smb4KCore class and Smb4KGlobal namespace. The Smb4KCore class
-  was removed.
 - Fixed many issues reported by krazy2. On the way several minor changes
   to the core classes were applied.
 - Made Smb4K a kdeinit executable.
@@ -12,8 +10,11 @@ Smb4K 1.1.0 (????-??-??):
   a network item (workgroup, host, or share).
 - Revised main tool bar. It contains all actions that are needed by all parts
   and dynamically loads all others. The tool bars of the parts are hidden by
-  default. However, you can adjust the tool bars (also the main one) to your 
-  likings by the tool bar editor.
+  default.
+- Added Wake On LAN (WOL) feature (closes SF ticket #27).
+- Revised Smb4KGlobal namespace:
+  + Merged Smb4KCore class and removed it.
+  + Added Process enumeration in favor of per class solutions.
 - Revised Smb4KHost class:
   + The unc() function now only returns the UNC in the form //HOST. If you
     also need the username, password or port in the string, use the url() 
@@ -66,8 +67,13 @@ Smb4K 1.1.0 (????-??-??):
 - Revised Smb4KCustomOptionsManager class:
   + The customOptions() function now takes a boolean that determines if
     also entries that are only meant to be remounted are also returned.
+  + The findOptions() functions take either a QUrl object or an 
+    Smb4KBasicNetworkItem object and a boolean.
+  + Added wolEntries() function that returns a list of custom options objects
+    that have Wake-On-LAN features defined.
 - Revised network browser:
   + Removed wrong checks that caused tooltips not being updated properly.
+  + Added ability to select multiple shares and process them accordingly.
 - Revised mount helper:
   + Simplified names for the arguments that can/must be passed.
 - Revised network browser:
@@ -78,6 +84,8 @@ Smb4K 1.1.0 (????-??-??):
   + Added options for advanced remounting behavior.
   + Implemented shortcuts for all entries. (Labels have now their buddies
     set.)
+  + Moved custom options to own page, since they are no longer only related
+    to Samba. The Wake On LAN settings have been added.
 
 Smb4K 1.0.4 (2012-08-19):
 - Fixed erroneously shown error notifications when searching. Thanks to
