@@ -36,7 +36,6 @@
 #include "smb4kworkgroup.h"
 #include "smb4khost.h"
 #include "smb4kshare.h"
-#include "smb4kglobal.h"
 #include "smb4kauthinfo.h"
 #include "smb4kwalletmanager.h"
 #include "smb4knotification.h"
@@ -118,7 +117,7 @@ bool Smb4KScanner::isRunning()
 }
 
 
-bool Smb4KScanner::isRunning( Smb4KScanner::Process process, Smb4KBasicNetworkItem *item )
+bool Smb4KScanner::isRunning( Smb4KGlobal::Process process, Smb4KBasicNetworkItem *item )
 {
   bool running = false;
 
@@ -304,7 +303,7 @@ void Smb4KScanner::abortAll()
 }
 
 
-void Smb4KScanner::abort( Smb4KScanner::Process process, Smb4KBasicNetworkItem *item )
+void Smb4KScanner::abort( Smb4KGlobal::Process process, Smb4KBasicNetworkItem *item )
 {
   switch ( process )
   {
@@ -494,12 +493,23 @@ void Smb4KScanner::lookupDomains( QWidget *parent )
     
     if ( !wol_entries.isEmpty() )
     {
+      Smb4KBasicNetworkItem item;
+      emit aboutToStart( &item, WakeUp );
+      
       QUdpSocket *socket = new QUdpSocket( this );
       
       for ( int i = 0; i < wol_entries.size(); ++i )
       {
-        QHostAddress addr( wol_entries.at( i )->ip() );
-        qDebug() << addr.toString();
+        QHostAddress addr;
+        
+        if ( !wol_entries.at( i )->ip().isEmpty() )
+        {
+          addr.setAddress( wol_entries.at( i )->ip() );
+        }
+        else
+        {
+          addr.setAddress( "255.255.255.255" );
+        }
         
         // Construct magic sequence
         QByteArray sequence;
@@ -526,13 +536,16 @@ void Smb4KScanner::lookupDomains( QWidget *parent )
       
       delete socket;
       
-      // Wait 5 seconds
+      // Wait the defined time
+      int stop = 1000 * Smb4KSettings::wakeOnLANWaitingTime() / 250;
       int i = 0;
       
-      while ( i++ < 20 )
+      while ( i++ < stop )
       {
         QTest::qWait( 250 );
       }
+      
+      emit finished( &item, WakeUp );
     }
     else
     {

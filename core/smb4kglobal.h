@@ -51,6 +51,25 @@ class Smb4KShare;
 namespace Smb4KGlobal
 {
   /**
+   * The Process enumeration.
+   * 
+   * @enum LookupDomains          Look up domains
+   * @enum LookupDomainMembers    Look up those servers that belong to a domain/workgroup
+   * @enum LookupShares           Look up shares on a server
+   * @enum LookupInfo             Lookup additional info about a server
+   * @enum WakeUp                 Send magic Wake-On-LAN packages
+   * @enum MountShare             Mount a share
+   * @enum UnmountShare           Unmount a share
+   */
+  enum Process { LookupDomains,
+                 LookupDomainMembers,
+                 LookupShares,
+                 LookupInfo,
+                 WakeUp,
+                 MountShare,
+                 UnmountShare };
+  
+  /**
    * This class extends the QEvent class with Smb4K specific events
    */
   class KDE_EXPORT Smb4KEvent : public QEvent

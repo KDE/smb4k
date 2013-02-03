@@ -734,6 +734,26 @@ void Smb4KMounter::mountShare( Smb4KShare *share, QWidget *parent )
     return;
   }
   
+  // Check if the host should be woken up
+  if ( Smb4KSettings::enableWakeOnLAN() )
+  {
+    QList<Smb4KCustomOptions *> wol_entries = Smb4KCustomOptionsManager::self()->wolEntries();
+    
+    if ( !wol_entries.isEmpty() )
+    {
+      // FIXME
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Get the authentication information
   Smb4KWalletManager::self()->readAuthInfo( share );
   
   // Create a new job and add it to the subjobs

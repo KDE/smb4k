@@ -29,6 +29,7 @@
 
 // application specific includes
 #include "smb4knetworkobject.h"
+#include "smb4kglobal.h"
 
 // Qt includes
 #include <QtCore/QTimerEvent>
@@ -72,14 +73,6 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
 
   public:
     /**
-     * The process enumeration
-     */
-    enum Process { LookupDomains,
-                   LookupDomainMembers,
-                   LookupShares,
-                   LookupInfo };
-
-    /**
      * Constructor
      */
     explicit Smb4KScanner( QObject *parent = 0 );
@@ -112,7 +105,7 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
      *
      * @param item            The network item for a more fine grained testing
      */
-    bool isRunning( Process process,
+    bool isRunning( Smb4KGlobal::Process process,
                     Smb4KBasicNetworkItem *item = NULL );
 
     /**
@@ -133,7 +126,7 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
      *
      * @param item            The network item for a more fine grained killing
      */
-    void abort( Process process,
+    void abort( Smb4KGlobal::Process process,
                 Smb4KBasicNetworkItem *item = NULL );
 
     /**

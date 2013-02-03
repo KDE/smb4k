@@ -720,7 +720,7 @@ class Smb4KScannerPrivate
     QList<Smb4KNetworkObject *> workgroupObjects;
     QList<Smb4KNetworkObject *> hostObjects;
     QList<Smb4KNetworkObject *> shareObjects;
-    QList<Smb4KScanner::Process> periodicJobs;
+    QList<Smb4KGlobal::Process> periodicJobs;
 };
 
 

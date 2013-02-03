@@ -74,12 +74,6 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
 
   public:
     /**
-     * This enumeration denotes the process
-     */
-    enum Process { MountShare,
-                   UnmountShare };
-
-    /**
      * The constructor.
      */
     explicit Smb4KMounter( QObject *parent = 0 );

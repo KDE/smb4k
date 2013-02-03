@@ -197,8 +197,8 @@
     </entry>
     <entry name="WakeOnLANWaitingTime" type="Int">
       <label>Waiting time:</label>
-      <whatsthis>This is the waiting time in seconds between the sending of the magic Wake-On-LAN packages and the scanning of the network or the mounting of a share.</whatsthis>
-      <min>1</min>
+      <whatsthis>This is the waiting time in seconds between the sending of the magic Wake-On-LAN packages and the scanning of the network neighborhood or the mounting of a share.</whatsthis>
+      <min>0</min>
       <max>60</max>
       <default>5</default>
     </entry>
