@@ -810,7 +810,7 @@ void Smb4KMainWindow::slotScannerAboutToStart( Smb4KBasicNetworkItem *item, int 
     }
     case WakeUp:
     {
-      statusBar()->showMessage( i18n( "Waking up remote servers..." ), 0 );
+      statusBar()->showMessage( i18n( "Waking up remote hosts..." ), 0 );
       break;
     }
     default:
@@ -870,6 +870,13 @@ void Smb4KMainWindow::slotMounterAboutToStart( Smb4KShare *share, int process )
       // When unmounting a share, there won't be a share where we
       // have to look up which UNC we present to the user.
       statusBar()->showMessage( i18n( "Unmounting share %1...", share->unc() ), 0 );
+      break;
+    }
+    case WakeUp:
+    {
+      // The mounter sends a magic WOL package to the host where the share is
+      // located to wake it up before mounting share.
+      statusBar()->showMessage( i18n( "Waking up host %1...", share->hostName() ), 0);
       break;
     }
     default:
