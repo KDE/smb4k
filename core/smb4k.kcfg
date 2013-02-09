@@ -192,7 +192,7 @@
     </entry>
     <entry name="EnableWakeOnLAN" type="Bool">
       <label>Enable Wake-On-LAN features</label>
-      <whatsthis>Wake-on-LAN (WOL) is an ethernet computer networking standard that allows a computer to be turned on or woken up by a network message. Smb4K uses a magic package send via a UDP socket to wake up remove servers. If you want to take advantage of the Wake-On-LAN feature, you need to enable this option.</whatsthis>
+      <whatsthis>Wake-on-LAN (WOL) is an ethernet computer networking standard that allows a computer to be turned on or woken up by a network message. Smb4K uses a magic package send via a UDP socket to wake up remote servers. If you want to take advantage of the Wake-On-LAN feature, you need to enable this option.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="WakeOnLANWaitingTime" type="Int">
