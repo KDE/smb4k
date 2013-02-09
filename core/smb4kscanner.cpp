@@ -500,38 +500,45 @@ void Smb4KScanner::lookupDomains( QWidget *parent )
       
       for ( int i = 0; i < wol_entries.size(); ++i )
       {
-        QHostAddress addr;
-        
-        if ( !wol_entries.at( i )->ip().isEmpty() )
+        if ( wol_entries.at( i )->wolSendBeforeNetworkScan() )
         {
-          addr.setAddress( wol_entries.at( i )->ip() );
+          QHostAddress addr;
+          
+          if ( !wol_entries.at( i )->ip().isEmpty() )
+          {
+            addr.setAddress( wol_entries.at( i )->ip() );
+          }
+          else
+          {
+            addr.setAddress( "255.255.255.255" );
+          }
+          
+          // Construct magic sequence
+          QByteArray sequence;
+
+          // 6 times 0xFF
+          for ( int j = 0; j < 6; ++j )
+          {
+            sequence.append( QChar( 0xFF ).toAscii() );
+          }
+          
+          // 16 times the MAC address
+          QStringList parts = wol_entries.at( i )->macAddress().split( ":", QString::SkipEmptyParts );
+          
+          for ( int j = 0; j < 16; ++j )
+          {
+            for ( int k = 0; k < parts.size(); ++k )
+            {
+              sequence.append( QChar( QString( "0x%1" ).arg( parts.at( k ) ).toInt( 0, 16 ) ).toAscii() );
+            }
+          }
+          
+          socket->writeDatagram( sequence, addr, 9 );
         }
         else
         {
-          addr.setAddress( "255.255.255.255" );
+          // Do nothing
         }
-        
-        // Construct magic sequence
-        QByteArray sequence;
-
-        // 6 times 0xFF
-        for ( int j = 0; j < 6; ++j )
-        {
-          sequence.append( QChar( 0xFF ).toAscii() );
-        }
-        
-        // 16 times the MAC address
-        QStringList parts = wol_entries.at( i )->macAddress().split( ":", QString::SkipEmptyParts );
-        
-        for ( int j = 0; j < 16; ++j )
-        {
-          for ( int k = 0; k < parts.size(); ++k )
-          {
-            sequence.append( QChar( QString( "0x%1" ).arg( parts.at( k ) ).toInt( 0, 16 ) ).toAscii() );
-          }
-        }
-        
-        socket->writeDatagram( sequence, addr, 9 );
       }
       
       delete socket;

@@ -51,6 +51,7 @@
 #include <QtGui/QApplication>
 #include <QtGui/QDesktopWidget>
 #include <QtTest/QTest>
+#include <QtNetwork/QUdpSocket>
 
 // KDE includes
 #include <klocale.h>
@@ -734,14 +735,63 @@ void Smb4KMounter::mountShare( Smb4KShare *share, QWidget *parent )
     return;
   }
   
-  // Check if the host should be woken up
+  // Check if the host should be woken up before we start mounting the
+  // share.
   if ( Smb4KSettings::enableWakeOnLAN() )
   {
-    QList<Smb4KCustomOptions *> wol_entries = Smb4KCustomOptionsManager::self()->wolEntries();
-    
-    if ( !wol_entries.isEmpty() )
+    Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions( share->url().upUrl() );
+  
+    if ( options && options->wolSendBeforeMount() )
     {
-      // FIXME
+      emit aboutToStart( share, WakeUp );
+      
+      QUdpSocket *socket = new QUdpSocket( this );
+      QHostAddress addr;
+      
+      // Use the host's IP address directly from the share object.
+      if ( !share->hostIP().isEmpty() )
+      {
+        addr.setAddress( share->hostIP() );
+      }
+      else
+      {
+        addr.setAddress( "255.255.255.255" );
+      }
+          
+      // Construct magic sequence
+      QByteArray sequence;
+
+      // 6 times 0xFF
+      for ( int j = 0; j < 6; ++j )
+      {
+        sequence.append( QChar( 0xFF ).toAscii() );
+      }
+          
+      // 16 times the MAC address
+      QStringList parts = options->macAddress().split( ":", QString::SkipEmptyParts );
+          
+      for ( int j = 0; j < 16; ++j )
+      {
+        for ( int k = 0; k < parts.size(); ++k )
+        {
+          sequence.append( QChar( QString( "0x%1" ).arg( parts.at( k ) ).toInt( 0, 16 ) ).toAscii() );
+        }
+      }
+          
+      socket->writeDatagram( sequence, addr, 9 );
+      
+      delete socket;
+      
+      // Wait the defined time
+      int stop = 1000 * Smb4KSettings::wakeOnLANWaitingTime() / 250;
+      int i = 0;
+      
+      while ( i++ < stop )
+      {
+        QTest::qWait( 250 );
+      }
+      
+      emit finished( share, WakeUp );
     }
     else
     {
