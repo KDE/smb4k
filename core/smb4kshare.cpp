@@ -79,9 +79,8 @@ Smb4KShare::Smb4KShare( const QString &host, const QString &name )
   d->freeSpace    = -1;
   d->usedSpace    = -1;
   d->mounted      = false;
-  d->url.setHost( host );
-  d->url.setPath( name );
-  d->url.setProtocol( "smb" );
+  setHostName( host );
+  setShareName( name );
   setShareIcon();
 }
 
@@ -135,6 +134,7 @@ Smb4KShare::Smb4KShare()
   d->freeSpace    = -1;
   d->usedSpace    = -1;
   d->mounted      = false;
+  d->url.setProtocol( "smb" );
 }
 
 
@@ -145,7 +145,15 @@ Smb4KShare::~Smb4KShare()
 
 void Smb4KShare::setShareName( const QString &name )
 {
-  d->url.setPath( name.trimmed() );
+  if ( name.startsWith( '/' ) )
+  {
+    d->url.setPath( name.trimmed() );
+  }
+  else
+  {
+    d->url.setPath( "/"+name.trimmed() );
+  }
+  
   d->url.setProtocol( "smb" );
 }
 
