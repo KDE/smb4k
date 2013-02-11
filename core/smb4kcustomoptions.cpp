@@ -188,7 +188,21 @@ void Smb4KCustomOptions::setShare( Smb4KShare *share )
     }
     case Host:
     {
-
+      if ( QString::compare( unc(), share->hostUNC(), Qt::CaseInsensitive ) == 0 )
+      {
+        d->url            = share->url();
+        d->type           = Share;
+#ifndef Q_OS_FREEBSD
+        d->fileSystemPort = share->port() != -1 ? share->port() : d->fileSystemPort;
+#endif
+        d->user           = KUser( share->uid() );
+        d->group          = KUserGroup( share->gid() );
+        d->ip.setAddress( share->hostIP() );
+      }
+      else
+      {
+        // Do nothing
+      }
       break;
     }
     default:
