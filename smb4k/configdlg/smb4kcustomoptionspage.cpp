@@ -768,6 +768,35 @@ void Smb4KCustomOptionsPage::commitChanges()
     options->setWOLSendBeforeNetworkScan( m_send_before_scan->isChecked() );
     options->setWOLSendBeforeMount( m_send_before_mount->isChecked() );
     
+    // In case of a host, propagate the changes to its shares.
+    if ( options->type() == Smb4KCustomOptions::Host )
+    {
+      for ( int i = 0; i < m_options_list.size(); ++i )
+      {
+        if ( m_options_list.at( i )->type() == Smb4KCustomOptions::Share &&
+             QString::compare( m_options_list.at( i )->hostName() , options->hostName(), Qt::CaseInsensitive ) == 0 &&
+             QString::compare( m_options_list.at( i )->workgroupName() , options->workgroupName(), Qt::CaseInsensitive ) == 0 )
+        {
+#ifndef Q_OS_FREEBSD
+          m_options_list->setSMBPort( options->smbPort() );
+#endif
+          m_options_list->setProtocolHint( options->protocolHint() );
+          m_options_list->setUseKerberos( options->useKerberos() );
+          m_options_list->setMACAddress( options->macAddress() );
+          m_options_list->setWOLSendBeforeNetworkScan( options->wolSendBeforeNetworkScan() );
+          m_options_list->setWOLSendBeforeMount( options->wolSendBeforeMount() );
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+    
     m_maybe_changed = true;
     emit customSettingsModified();
   }
@@ -869,7 +898,7 @@ void Smb4KCustomOptionsPage::slotRemoveActionTriggered( bool /*checked*/ )
   
   if ( item && options )
   {
-    if ( m_current_options->url() == options->url() )
+    if ( m_current_options && m_current_options->url().equals( options->url(), KUrl::CompareWithoutTrailingSlash ) )
     {
       m_current_options = NULL;
     }
