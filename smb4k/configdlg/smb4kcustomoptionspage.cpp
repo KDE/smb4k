@@ -778,13 +778,13 @@ void Smb4KCustomOptionsPage::commitChanges()
              QString::compare( m_options_list.at( i )->workgroupName() , options->workgroupName(), Qt::CaseInsensitive ) == 0 )
         {
 #ifndef Q_OS_FREEBSD
-          m_options_list->setSMBPort( options->smbPort() );
+          m_options_list.at( i )->setSMBPort( options->smbPort() );
 #endif
-          m_options_list->setProtocolHint( options->protocolHint() );
-          m_options_list->setUseKerberos( options->useKerberos() );
-          m_options_list->setMACAddress( options->macAddress() );
-          m_options_list->setWOLSendBeforeNetworkScan( options->wolSendBeforeNetworkScan() );
-          m_options_list->setWOLSendBeforeMount( options->wolSendBeforeMount() );
+          m_options_list.at( i )->setProtocolHint( options->protocolHint() );
+          m_options_list.at( i )->setUseKerberos( options->useKerberos() );
+          m_options_list.at( i )->setMACAddress( options->macAddress() );
+          m_options_list.at( i )->setWOLSendBeforeNetworkScan( options->wolSendBeforeNetworkScan() );
+          m_options_list.at( i )->setWOLSendBeforeMount( options->wolSendBeforeMount() );
         }
         else
         {
