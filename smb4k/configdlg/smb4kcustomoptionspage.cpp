@@ -260,8 +260,6 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
   m_send_before_mount = new QCheckBox( i18n( "Send magic package before mounting a share" ), m_mac_editors );
   m_send_before_mount->setEnabled( false );
   
-  
-  
   mac_editor_layout->addWidget( mac_label, 0, 0, 0 );
   mac_editor_layout->addWidget( m_mac_address, 0, 1, 0 );
   mac_editor_layout->addWidget( m_send_before_scan, 1, 0, 1, 2, 0 );
