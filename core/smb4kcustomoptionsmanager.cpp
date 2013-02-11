@@ -215,6 +215,7 @@ Smb4KCustomOptions *Smb4KCustomOptionsManager::findOptions( Smb4KBasicNetworkIte
           }
           else if ( d->options.at( i )->type() == Smb4KCustomOptions::Host && !exactMatch )
           {
+            // FIXME: This might be problematic if the user uses a DHCP server.
             if ( QString::compare( d->options.at( i )->unc(), share->hostUNC(), Qt::CaseInsensitive ) == 0 ||
                  QString::compare( d->options.at( i )->ip(), share->hostIP() ) == 0 )
             {
@@ -815,25 +816,12 @@ void Smb4KCustomOptionsManager::addCustomOptions( Smb4KCustomOptions *options )
 {
   Q_ASSERT( options );
   
-  Smb4KCustomOptions *known_options = NULL;
+  // Add the custom options. Check if there already is an entry with the
+  // same URL and modify it if found.
+  // If the incoming options are those for a host, propagate the host specific
+  // changes to its shares as well.
   
-  switch ( options->type() )
-  {
-    case Smb4KCustomOptions::Host:
-    {
-      known_options = findOptions( options->url() );
-      break;
-    }
-    case Smb4KCustomOptions::Share:
-    {
-      known_options = findOptions( options->url() );
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
+  Smb4KCustomOptions *known_options = findOptions( options->url() );
   
   if ( !known_options )
   {
@@ -852,6 +840,37 @@ void Smb4KCustomOptionsManager::addCustomOptions( Smb4KCustomOptions *options )
       known_options->setUID( options->uid() );
       known_options->setGID( options->gid() );
       known_options->setUseKerberos( options->useKerberos() );
+      known_options->setMACAddress( options->macAddress() );
+      known_options->setWOLSendBeforeNetworkScan( options->wolSendBeforeNetworkScan() );
+      known_options->setWOLSendBeforeMount( options->wolSendBeforeMount() );
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    if ( known_options->type() == Smb4KCustomOptions::Host )
+    {
+      for ( int i = 0; i < d->options.size(); ++i )
+      {
+        if ( d->options.at( i )->type() == Smb4KCustomOptions::Share &&
+             QString::compare( d->options.at( i )->hostName() , options->hostName(), Qt::CaseInsensitive ) == 0 &&
+             QString::compare( d->options.at( i )->workgroupName() , options->workgroupName(), Qt::CaseInsensitive ) == 0 )
+        {
+#ifndef Q_OS_FREEBSD
+          d->options[i]->setSMBPort( options->smbPort() );
+#endif
+          d->options[i]->setProtocolHint( options->protocolHint() );
+          d->options[i]->setUseKerberos( options->useKerberos() );
+          d->options[i]->setMACAddress( options->macAddress() );
+          d->options[i]->setWOLSendBeforeNetworkScan( options->wolSendBeforeNetworkScan() );
+          d->options[i]->setWOLSendBeforeMount( options->wolSendBeforeMount() );
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
     }
     else
     {

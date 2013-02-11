@@ -96,7 +96,6 @@ void Smb4KCustomOptionsDialog::setupView()
     {
       label = new QLabel( i18n( "<p>Define custom options for host <b>%1</b> and all the shares it provides.</p>",
                           m_options->hostName() ), description );
-      qDebug() << "Host";
       break;
     }
     case Smb4KCustomOptions::Share:
@@ -104,7 +103,6 @@ void Smb4KCustomOptionsDialog::setupView()
       label = new QLabel( i18n( "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>",
                           m_options->shareName(), m_options->hostName() ),
                           description );
-      qDebug() << "Share";
       break;
     }
     default:
@@ -638,7 +636,8 @@ void Smb4KCustomOptionsDialog::slotSetDefaultValues()
   }
   else
   {
-    // Do nothing
+    // Do nothing, because with shares these widgets are
+    // disabled.
   }
 }
 
