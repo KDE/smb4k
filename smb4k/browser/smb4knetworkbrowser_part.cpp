@@ -1819,7 +1819,7 @@ void Smb4KNetworkBrowserPart::slotAuthentication( bool /*checked*/ )
 void Smb4KNetworkBrowserPart::slotCustomOptions( bool /*checked*/ )
 {
   Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( m_widget->currentItem() );
-
+  
   if ( item )
   {
     switch ( item->type() )
