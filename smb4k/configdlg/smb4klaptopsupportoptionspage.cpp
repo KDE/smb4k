@@ -1,5 +1,5 @@
 /***************************************************************************
-    smb4klaptopsupportoptions  -  The configuration page for the laptop
+    smb4klaptopsupportoptionspage  -  The configuration page for the laptop
     support of Smb4K
                              -------------------
     begin                : Mi Sep 17 2008
@@ -29,7 +29,7 @@
 #endif
 
 // application specific includes
-#include "smb4klaptopsupportoptions.h"
+#include "smb4klaptopsupportoptionspage.h"
 #include "core/smb4ksettings.h"
 
 // Qt includes
@@ -44,7 +44,7 @@
 #include <kiconloader.h>
 
 
-Smb4KLaptopSupportOptions::Smb4KLaptopSupportOptions( QWidget *parent )
+Smb4KLaptopSupportOptionsPage::Smb4KLaptopSupportOptionsPage( QWidget *parent )
 : QWidget( parent )
 {
   QVBoxLayout *layout = new QVBoxLayout( this );
@@ -109,8 +109,8 @@ Smb4KLaptopSupportOptions::Smb4KLaptopSupportOptions( QWidget *parent )
 }
 
 
-Smb4KLaptopSupportOptions::~Smb4KLaptopSupportOptions()
+Smb4KLaptopSupportOptionsPage::~Smb4KLaptopSupportOptionsPage()
 {
 }
 
-#include "smb4klaptopsupportoptions.moc"
+#include "smb4klaptopsupportoptionspage.moc"

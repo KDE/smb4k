@@ -1,5 +1,5 @@
 /***************************************************************************
-    smb4klaptopsupportoptions  -  The configuration page for the laptop
+    smb4klaptopsupportoptionspage  -  The configuration page for the laptop
     support of Smb4K
                              -------------------
     begin                : Mi Sep 17 2008
@@ -37,7 +37,7 @@
  * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
  */
 
-class Smb4KLaptopSupportOptions : public QWidget
+class Smb4KLaptopSupportOptionsPage : public QWidget
 {
   Q_OBJECT
 
@@ -45,12 +45,12 @@ class Smb4KLaptopSupportOptions : public QWidget
     /**
      * The constructor
      */
-    explicit Smb4KLaptopSupportOptions( QWidget *parent = 0 );
+    explicit Smb4KLaptopSupportOptionsPage( QWidget *parent = 0 );
 
     /**
      * The destructor
      */
-    ~Smb4KLaptopSupportOptions();
+    ~Smb4KLaptopSupportOptionsPage();
 };
 
 #endif

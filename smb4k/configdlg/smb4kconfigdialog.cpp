@@ -32,10 +32,10 @@
 #include "smb4kuserinterfaceoptions.h"
 #include "smb4knetworkoptions.h"
 #include "smb4kshareoptions.h"
-#include "smb4kauthoptions.h"
+#include "smb4kauthoptionspage.h"
 #include "smb4ksambaoptions.h"
 #include "smb4krsyncoptions.h"
-#include "smb4klaptopsupportoptions.h"
+#include "smb4klaptopsupportoptionspage.h"
 #include "smb4kcustomoptionspage.h"
 #include "core/smb4ksettings.h"
 #include "core/smb4kglobal.h"
@@ -117,7 +117,7 @@ void Smb4KConfigDialog::setupDialog()
   share_area->setWidgetResizable( true );
   share_area->setFrameStyle( QFrame::NoFrame );
 
-  Smb4KAuthOptions *auth_options = new Smb4KAuthOptions( this );
+  Smb4KAuthOptionsPage *auth_options = new Smb4KAuthOptionsPage( this );
   QScrollArea *auth_area = new QScrollArea( this );
   auth_area->setWidget( auth_options );
   auth_area->setWidgetResizable( true );
@@ -137,7 +137,7 @@ void Smb4KConfigDialog::setupDialog()
   
   rsync_options->setEnabled( !KStandardDirs::findExe( "rsync" ).isEmpty() );
 
-  Smb4KLaptopSupportOptions *laptop_options = new Smb4KLaptopSupportOptions( this );
+  Smb4KLaptopSupportOptionsPage *laptop_options = new Smb4KLaptopSupportOptionsPage( this );
   QScrollArea *laptop_area = new QScrollArea( this );
   laptop_area->setWidget( laptop_options );
   laptop_area->setWidgetResizable( true );
@@ -563,7 +563,7 @@ void Smb4KConfigDialog::slotButtonClicked( int button )
 
 void Smb4KConfigDialog::slotLoadAuthenticationInformation()
 {
-  Smb4KAuthOptions *auth_options = m_authentication->widget()->findChild<Smb4KAuthOptions *>();
+  Smb4KAuthOptionsPage *auth_options = m_authentication->widget()->findChild<Smb4KAuthOptionsPage *>();
   QList<Smb4KAuthInfo *> entries = Smb4KWalletManager::self()->walletEntries();
   auth_options->insertWalletEntries( entries );
   auth_options->displayWalletEntries();
@@ -572,7 +572,7 @@ void Smb4KConfigDialog::slotLoadAuthenticationInformation()
 
 void Smb4KConfigDialog::slotSaveAuthenticationInformation()
 {
-  Smb4KAuthOptions *auth_options = m_authentication->widget()->findChild<Smb4KAuthOptions *>();
+  Smb4KAuthOptionsPage *auth_options = m_authentication->widget()->findChild<Smb4KAuthOptionsPage *>();
   
   if ( auth_options->walletEntriesDisplayed() )
   {
@@ -588,7 +588,7 @@ void Smb4KConfigDialog::slotSaveAuthenticationInformation()
 
 void Smb4KConfigDialog::slotSetDefaultLogin()
 {
-  Smb4KAuthOptions *auth_options = m_authentication->widget()->findChild<Smb4KAuthOptions *>();
+  Smb4KAuthOptionsPage *auth_options = m_authentication->widget()->findChild<Smb4KAuthOptionsPage *>();
   
   if ( !auth_options->undoRemoval() )
   {
@@ -640,7 +640,7 @@ void Smb4KConfigDialog::slotEnableApplyButton()
   bool enable = false;
   
   // Check the wallet entries.
-  Smb4KAuthOptions *auth_options = m_authentication->widget()->findChild<Smb4KAuthOptions *>();
+  Smb4KAuthOptionsPage *auth_options = m_authentication->widget()->findChild<Smb4KAuthOptionsPage *>();
 
   if ( auth_options->walletEntriesMaybeChanged() )
   {

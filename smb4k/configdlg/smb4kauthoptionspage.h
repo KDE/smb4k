@@ -1,9 +1,9 @@
 /***************************************************************************
-    smb4kauthoptions  -  The configuration page for the authentication
+    smb4kauthoptionspage  -  The configuration page for the authentication
     settings of Smb4K
                              -------------------
     begin                : Sa Nov 15 2003
-    copyright            : (C) 2003-2012 by Alexander Reinholdt
+    copyright            : (C) 2003-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -50,7 +50,7 @@
  */
 
 
-class Smb4KAuthOptions : public KTabWidget
+class Smb4KAuthOptionsPage : public KTabWidget
 {
   Q_OBJECT
 
@@ -66,12 +66,12 @@ class Smb4KAuthOptions : public KTabWidget
      *
      * @param parent          The parent widget
      */
-    explicit Smb4KAuthOptions( QWidget *parent = 0 );
+    explicit Smb4KAuthOptionsPage( QWidget *parent = 0 );
 
     /**
      * The destructor.
      */
-    ~Smb4KAuthOptions();
+    ~Smb4KAuthOptionsPage();
     
     /**
      * Insert the list of authentication information entries into the internal

@@ -5,10 +5,10 @@ include_directories( ${KDE4_INCLUDES} ${KDE4_INCLUDE_DIR} ${QT_INCLUDES}  )
 ########### next target ###############
 
 set(smb4kconfigdialog_LIB_SRCS
-   smb4kauthoptions.cpp
+   smb4kauthoptionspage.cpp
    smb4kconfigdialog.cpp
    smb4kcustomoptionspage.cpp
-   smb4klaptopsupportoptions.cpp
+   smb4klaptopsupportoptionspage.cpp
    smb4knetworkoptions.cpp
    smb4krsyncoptions.cpp
    smb4ksambaoptions.cpp
