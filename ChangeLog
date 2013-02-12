@@ -1,4 +1,4 @@
-Smb4K 1.0.6 (2013-01-??):
+Smb4K 1.0.6 (2013-02-12):
 - Fixed crash in Smb4KMounter::slotAuthError() due to signals being emitted
   from Smb4KMountJob::slotActionFinished() too often.
 - Fixed unmounting of selected shares. Thanks go to Ettore Atalan for 
