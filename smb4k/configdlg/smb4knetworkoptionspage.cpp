@@ -29,7 +29,7 @@
 #endif
 
 // application specific includes
-#include "smb4knetworkoptions.h"
+#include "smb4knetworkoptionspage.h"
 #include "core/smb4ksettings.h"
 
 // Qt includes
@@ -49,7 +49,7 @@
 #include <kiconloader.h>
 
 
-Smb4KNetworkOptions::Smb4KNetworkOptions( QWidget *parent )
+Smb4KNetworkOptionsPage::Smb4KNetworkOptionsPage( QWidget *parent )
 : QWidget( parent )
 {
   QVBoxLayout *layout = new QVBoxLayout( this );
@@ -196,9 +196,9 @@ Smb4KNetworkOptions::Smb4KNetworkOptions( QWidget *parent )
 }
 
 
-Smb4KNetworkOptions::~Smb4KNetworkOptions()
+Smb4KNetworkOptionsPage::~Smb4KNetworkOptionsPage()
 {
 }
 
 
-#include "smb4knetworkoptions.moc"
+#include "smb4knetworkoptionspage.moc"

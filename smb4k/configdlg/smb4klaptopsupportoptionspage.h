@@ -24,8 +24,8 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifndef SMB4KLAPTOPSUPPORTOPTIONS_H
-#define SMB4KLAPTOPSUPPORTOPTIONS_H
+#ifndef SMB4KLAPTOPSUPPORTOPTIONSPAGE_H
+#define SMB4KLAPTOPSUPPORTOPTIONSPAGE_H
 
 // Qt includes
 #include <QWidget>

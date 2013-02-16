@@ -3,7 +3,7 @@
     of all settings concerning the user interface of Smb4K
                              -------------------
     begin                : Mi Aug 30 2006
-    copyright            : (C) 2006-2011 by Alexander Reinholdt
+    copyright            : (C) 2006-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -20,8 +20,8 @@
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500,        *
- *   Boston, MA 02110-1335, USA                                            *
+ *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
+ *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
 #ifdef HAVE_CONFIG_H
@@ -29,7 +29,7 @@
 #endif
 
 // application specific includes
-#include "smb4kuserinterfaceoptions.h"
+#include "smb4kuserinterfaceoptionspage.h"
 #include "core/smb4ksettings.h"
 
 // Qt includes
@@ -45,7 +45,7 @@
 #include <klocale.h>
 
 
-Smb4KUserInterfaceOptions::Smb4KUserInterfaceOptions( QWidget *parent )
+Smb4KUserInterfaceOptionsPage::Smb4KUserInterfaceOptionsPage( QWidget *parent )
 : KTabWidget( parent )
 {
   //
@@ -335,7 +335,7 @@ Smb4KUserInterfaceOptions::Smb4KUserInterfaceOptions( QWidget *parent )
 }
 
 
-Smb4KUserInterfaceOptions::~Smb4KUserInterfaceOptions()
+Smb4KUserInterfaceOptionsPage::~Smb4KUserInterfaceOptionsPage()
 {
 }
 
@@ -345,10 +345,10 @@ Smb4KUserInterfaceOptions::~Smb4KUserInterfaceOptions()
 /////////////////////////////////////////////////////////////////////////////
 
 
-void Smb4KUserInterfaceOptions::slotShowHiddenClicked( bool checked )
+void Smb4KUserInterfaceOptionsPage::slotShowHiddenClicked( bool checked )
 {
   findChild<QCheckBox *>( "kcfg_ShowHiddenIPCShares" )->setEnabled( checked );
   findChild<QCheckBox *>( "kcfg_ShowHiddenADMINShares" )->setEnabled( checked );
 }
 
-#include "smb4kuserinterfaceoptions.moc"
+#include "smb4kuserinterfaceoptionspage.moc"

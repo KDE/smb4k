@@ -29,7 +29,7 @@
 #endif
 
 // application specific includes
-#include "smb4ksambaoptions.h"
+#include "smb4ksambaoptionspage.h"
 #include "core/smb4kglobal.h"
 #include "core/smb4ksettings.h"
 #include "core/smb4khost.h"
@@ -59,7 +59,7 @@
 using namespace Smb4KGlobal;
 
 
-Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
+Smb4KSambaOptionsPage::Smb4KSambaOptionsPage( QWidget *parent ) : KTabWidget( parent )
 {
   //
   // General
@@ -700,7 +700,7 @@ Smb4KSambaOptions::Smb4KSambaOptions( QWidget *parent ) : KTabWidget( parent )
 }
 
 
-Smb4KSambaOptions::~Smb4KSambaOptions()
+Smb4KSambaOptionsPage::~Smb4KSambaOptionsPage()
 {
 }
 
@@ -709,7 +709,7 @@ Smb4KSambaOptions::~Smb4KSambaOptions()
 //  SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
 
-void Smb4KSambaOptions::slotNewUserTriggered( QAction *action )
+void Smb4KSambaOptionsPage::slotNewUserTriggered( QAction *action )
 {
   KLineEdit *user_id = findChild<KLineEdit *>( "kcfg_UserID" );
 
@@ -724,7 +724,7 @@ void Smb4KSambaOptions::slotNewUserTriggered( QAction *action )
 }
 
 
-void Smb4KSambaOptions::slotNewGroupTriggered( QAction *action )
+void Smb4KSambaOptionsPage::slotNewGroupTriggered( QAction *action )
 {
   KLineEdit *group_id = findChild<KLineEdit *>( "kcfg_GroupID" );
 
@@ -740,4 +740,4 @@ void Smb4KSambaOptions::slotNewGroupTriggered( QAction *action )
 
 
 
-#include "smb4ksambaoptions.moc"
+#include "smb4ksambaoptionspage.moc"

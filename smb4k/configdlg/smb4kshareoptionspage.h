@@ -24,8 +24,8 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifndef SMB4KSHAREOPTIONS_H
-#define SMB4KSHAREOPTIONS_H
+#ifndef SMB4KSHAREOPTIONSPAGE_H
+#define SMB4KSHAREOPTIONSPAGE_H
 
 // Qt includes
 #include <QWidget>
@@ -37,7 +37,7 @@
  * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
  */
 
-class Smb4KShareOptions : public QWidget
+class Smb4KShareOptionsPage : public QWidget
 {
   Q_OBJECT
 
@@ -47,11 +47,11 @@ class Smb4KShareOptions : public QWidget
      *
      * @param parent          The parent of this widget
      */
-    explicit Smb4KShareOptions( QWidget *parent = 0 );
+    explicit Smb4KShareOptionsPage( QWidget *parent = 0 );
 
     /**
      * The destructor.
      */
-    ~Smb4KShareOptions();
+    ~Smb4KShareOptionsPage();
 };
 #endif

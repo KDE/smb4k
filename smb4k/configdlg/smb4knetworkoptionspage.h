@@ -24,8 +24,8 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifndef SMB4KNETWORKOPTIONS_H
-#define SMB4KNETWORKOPTIONS_H
+#ifndef SMB4KNETWORKOPTIONSPAGE_H
+#define SMB4KNETWORKOPTIONSPAGE_H
 
 // Qt includes
 #include <QWidget>
@@ -37,7 +37,7 @@
  * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
  */
 
-class Smb4KNetworkOptions : public QWidget
+class Smb4KNetworkOptionsPage : public QWidget
 {
   Q_OBJECT
 
@@ -47,11 +47,11 @@ class Smb4KNetworkOptions : public QWidget
      *
      * @param parent        The parent widget
      */
-    explicit Smb4KNetworkOptions( QWidget *parent = 0 );
+    explicit Smb4KNetworkOptionsPage( QWidget *parent = 0 );
 
     /**
      * The destructor
      */
-    ~Smb4KNetworkOptions();
+    ~Smb4KNetworkOptionsPage();
 };
 #endif

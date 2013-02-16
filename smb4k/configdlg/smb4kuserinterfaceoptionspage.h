@@ -1,9 +1,9 @@
 /***************************************************************************
-    smb4ksambaoptions.cpp  -  This is the configuration page for the
-    Samba settings of Smb4K
+    smb4kuserinterfaceoptions  -  This configuration page takes care
+    of all settings concerning the user interface of Smb4K
                              -------------------
-    begin                : Mo Jan 26 2004
-    copyright            : (C) 2004-2013 by Alexander Reinholdt
+    begin                : Mi Aug 30 2006
+    copyright            : (C) 2006-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -24,62 +24,54 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifndef SMB4KSAMBAOPTIONS_H
-#define SMB4KSAMBAOPTIONS_H
+#ifndef SMB4KUSERINTERFACEOPTIONSPAGE_H
+#define SMB4KUSERINTERFACEOPTIONSPAGE_H
 
 // Qt includes
-#include <QList>
-#include <QListWidgetItem>
+#include <QWidget>
 
 // KDE includes
 #include <ktabwidget.h>
 
+
 /**
- * This class manages the configuration dialog of the options
- * that can be passed to smbmount and other programs of the
- * Samba software suite.
+ * The configuration page for the user interface of Smb4K.
  *
- * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ * @author Alexander Reinholdt  <alexander.reinholdt@kdemail.net>
  */
 
-
-class Smb4KSambaOptions : public KTabWidget
+class Smb4KUserInterfaceOptionsPage : public KTabWidget
 {
   Q_OBJECT
 
   public:
-    enum Tabs{ GeneralTab = 0,
-               MountingTab = 1,
-               ClientProgramsTab = 2 };
+    /**
+     * Tabs enumeration
+     */
+    enum Tabs{ MainWindowSystemTrayTab = 0,
+               NetworkNeighborhoodTab = 1,
+               MountedSharesTab = 2,
+               PreviewDialogTab = 3 };
+    /**
+     * The constructor
+     *
+     * @param parent          The parent widget of this class.
+     */
+    explicit Smb4KUserInterfaceOptionsPage( QWidget *parent = 0 );
 
     /**
-     * The constructor.
-     *
-     * @param parent            The parent widget
-     *
-     * @param name              This widget's name
+     * The destructor
      */
-    explicit Smb4KSambaOptions( QWidget *parent = 0 );
-
-    /**
-     * The destructor.
-     */
-    ~Smb4KSambaOptions();
-
+    ~Smb4KUserInterfaceOptionsPage();
+    
   protected slots:
     /**
-     * Sets the new general user ID.
+     * Enables/disables buttons according to the toggle state of the
+     * "Show hidden shares" button.
      *
-     * @param action              The action that represents the new user.
+     * @param checked         TRUE if the check box is checked.
      */
-    void slotNewUserTriggered( QAction *action );
-
-    /**
-     * Sets the new general group ID.
-     *
-     * @param action              The action that represents the new group.
-     */
-    void slotNewGroupTriggered( QAction *action );
+    void slotShowHiddenClicked( bool checked );
 };
 
 #endif

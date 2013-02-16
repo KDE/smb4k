@@ -23,8 +23,8 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifndef SMB4KRSYNCOPTIONS_H
-#define SMB4KRSYNCOPTIONS_H
+#ifndef SMB4KRSYNCOPTIONSPAGE_H
+#define SMB4KRSYNCOPTIONSPAGE_H
 
 // KDE includes
 #include <ktabwidget.h>
@@ -37,7 +37,7 @@
  * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
  */
 
-class Smb4KRsyncOptions : public KTabWidget
+class Smb4KRsyncOptionsPage : public KTabWidget
 {
   Q_OBJECT
 
@@ -55,12 +55,12 @@ class Smb4KRsyncOptions : public KTabWidget
      *
      * @param parent        The parent widget
      */
-    explicit Smb4KRsyncOptions( QWidget *parent = 0 );
+    explicit Smb4KRsyncOptionsPage( QWidget *parent = 0 );
 
     /**
      * The destructor
      */
-    ~Smb4KRsyncOptions();
+    ~Smb4KRsyncOptionsPage();
     
   protected slots:
     /**

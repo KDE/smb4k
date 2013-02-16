@@ -29,12 +29,12 @@
 
 // application specific includes
 #include "smb4kconfigdialog.h"
-#include "smb4kuserinterfaceoptions.h"
-#include "smb4knetworkoptions.h"
-#include "smb4kshareoptions.h"
+#include "smb4kuserinterfaceoptionspage.h"
+#include "smb4knetworkoptionspage.h"
+#include "smb4kshareoptionspage.h"
 #include "smb4kauthoptionspage.h"
-#include "smb4ksambaoptions.h"
-#include "smb4krsyncoptions.h"
+#include "smb4ksambaoptionspage.h"
+#include "smb4krsyncoptionspage.h"
 #include "smb4klaptopsupportoptionspage.h"
 #include "smb4kcustomoptionspage.h"
 #include "core/smb4ksettings.h"
@@ -99,19 +99,19 @@ void Smb4KConfigDialog::setupDialog()
   setAttribute( Qt::WA_DeleteOnClose, true );
 
   // Add the pages:
-  Smb4KUserInterfaceOptions *interface_options = new Smb4KUserInterfaceOptions( this );
+  Smb4KUserInterfaceOptionsPage *interface_options = new Smb4KUserInterfaceOptionsPage( this );
   QScrollArea *interface_area = new QScrollArea( this );
   interface_area->setWidget( interface_options );
   interface_area->setWidgetResizable( true );
   interface_area->setFrameStyle( QFrame::NoFrame );
 
-  Smb4KNetworkOptions *network_options = new Smb4KNetworkOptions( this );
+  Smb4KNetworkOptionsPage *network_options = new Smb4KNetworkOptionsPage( this );
   QScrollArea *network_area = new QScrollArea( this );
   network_area->setWidget( network_options );
   network_area->setWidgetResizable( true );
   network_area->setFrameStyle( QFrame::NoFrame );
 
-  Smb4KShareOptions *share_options = new Smb4KShareOptions( this );
+  Smb4KShareOptionsPage *share_options = new Smb4KShareOptionsPage( this );
   QScrollArea *share_area = new QScrollArea( this );
   share_area->setWidget( share_options );
   share_area->setWidgetResizable( true );
@@ -123,13 +123,13 @@ void Smb4KConfigDialog::setupDialog()
   auth_area->setWidgetResizable( true );
   auth_area->setFrameStyle( QFrame::NoFrame );
 
-  Smb4KSambaOptions *samba_options = new Smb4KSambaOptions( this );
+  Smb4KSambaOptionsPage *samba_options = new Smb4KSambaOptionsPage( this );
   QScrollArea *samba_area = new QScrollArea( this );
   samba_area->setWidget( samba_options );
   samba_area->setWidgetResizable( true );
   samba_area->setFrameStyle( QFrame::NoFrame );
 
-  Smb4KRsyncOptions *rsync_options = new Smb4KRsyncOptions( this );
+  Smb4KRsyncOptionsPage *rsync_options = new Smb4KRsyncOptionsPage( this );
   QScrollArea *rsync_area = new QScrollArea( this );
   rsync_area->setWidget( rsync_options );
   rsync_area->setWidgetResizable( true );
@@ -287,8 +287,8 @@ bool Smb4KConfigDialog::checkSettings()
     KMessageBox::sorry( this, i18n( "The file mask has not been filled in.\nPlease enter it now." ) );
     setCurrentPage( m_samba );
     
-    Smb4KSambaOptions *samba_options = m_samba->widget()->findChild<Smb4KSambaOptions *>();
-    samba_options->setCurrentIndex( Smb4KSambaOptions::MountingTab );
+    Smb4KSambaOptionsPage *samba_options = m_samba->widget()->findChild<Smb4KSambaOptionsPage *>();
+    samba_options->setCurrentIndex( Smb4KSambaOptionsPage::MountingTab );
     
     file_mask->setFocus();
     return false;
@@ -305,8 +305,8 @@ bool Smb4KConfigDialog::checkSettings()
     KMessageBox::sorry( this, i18n( "The directory mask has not been filled in.\nPlease enter it now." ) );
     setCurrentPage( m_samba );
     
-    Smb4KSambaOptions *samba_options = m_samba->widget()->findChild<Smb4KSambaOptions *>();
-    samba_options->setCurrentIndex( Smb4KSambaOptions::MountingTab );
+    Smb4KSambaOptionsPage *samba_options = m_samba->widget()->findChild<Smb4KSambaOptionsPage *>();
+    samba_options->setCurrentIndex( Smb4KSambaOptionsPage::MountingTab );
     
     directory_mask->setFocus();
     return false;
@@ -326,8 +326,8 @@ bool Smb4KConfigDialog::checkSettings()
     KMessageBox::sorry( this, i18n( "The synchronization prefix has not been filled in.\nPlease enter it now." ) );
     setCurrentPage( m_synchronization );
     
-    Smb4KRsyncOptions *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptions *>();
-    sync_options->setCurrentIndex( Smb4KRsyncOptions::CopyingTab );
+    Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
+    sync_options->setCurrentIndex( Smb4KRsyncOptionsPage::CopyingTab );
     
     sync_prefix->setFocus();
     return false;
@@ -348,8 +348,8 @@ bool Smb4KConfigDialog::checkSettings()
                                     "Please enter it now." ) );
     setCurrentPage( m_synchronization );
     
-    Smb4KRsyncOptions *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptions *>();
-    sync_options->setCurrentIndex( Smb4KRsyncOptions::DelTransTab );
+    Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
+    sync_options->setCurrentIndex( Smb4KRsyncOptionsPage::DelTransTab );
     
     partial_directory->setFocus();
     return false;
@@ -369,8 +369,8 @@ bool Smb4KConfigDialog::checkSettings()
                                     "Please enter it now." ) );
     setCurrentPage( m_synchronization );
     
-    Smb4KRsyncOptions *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptions *>();
-    sync_options->setCurrentIndex( Smb4KRsyncOptions::FilteringTab );
+    Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
+    sync_options->setCurrentIndex( Smb4KRsyncOptionsPage::FilteringTab );
     
     exclude_pattern->setFocus();
     return false;
@@ -390,8 +390,8 @@ bool Smb4KConfigDialog::checkSettings()
                                     "has not been filled in.\nPlease enter it now." ) );
     setCurrentPage( m_synchronization );
     
-    Smb4KRsyncOptions *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptions *>();
-    sync_options->setCurrentIndex( Smb4KRsyncOptions::FilteringTab );
+    Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
+    sync_options->setCurrentIndex( Smb4KRsyncOptionsPage::FilteringTab );
     
     exclude_file->setFocus();
     return false;
@@ -411,8 +411,8 @@ bool Smb4KConfigDialog::checkSettings()
                                     "Please enter it now." ) );
     setCurrentPage( m_synchronization );
     
-    Smb4KRsyncOptions *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptions *>();
-    sync_options->setCurrentIndex( Smb4KRsyncOptions::FilteringTab );
+    Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
+    sync_options->setCurrentIndex( Smb4KRsyncOptionsPage::FilteringTab );
     
     include_pattern->setFocus();
     return false;
@@ -432,8 +432,8 @@ bool Smb4KConfigDialog::checkSettings()
                                     "has not been filled in.\nPlease enter it now." ) );
     setCurrentPage( m_synchronization );
     
-    Smb4KRsyncOptions *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptions *>();
-    sync_options->setCurrentIndex( Smb4KRsyncOptions::FilteringTab );
+    Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
+    sync_options->setCurrentIndex( Smb4KRsyncOptionsPage::FilteringTab );
     
     include_file->setFocus();
     return false;
@@ -456,8 +456,8 @@ bool Smb4KConfigDialog::checkSettings()
       KMessageBox::sorry( this, i18n( "The backup suffix for synchronization has not been filled in.\nPlease enter it now." ) );
       setCurrentPage( m_synchronization );
       
-      Smb4KRsyncOptions *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptions *>();
-      sync_options->setCurrentIndex( Smb4KRsyncOptions::AdvancedTab );
+      Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
+      sync_options->setCurrentIndex( Smb4KRsyncOptionsPage::AdvancedTab );
       
       backup_suffix->setFocus();
       return false;
@@ -476,8 +476,8 @@ bool Smb4KConfigDialog::checkSettings()
       KMessageBox::sorry( this, i18n( "The backup directory for synchronization has not been filled in.\nPlease enter it now." ) );
       setCurrentPage( m_synchronization );
       
-      Smb4KRsyncOptions *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptions *>();
-      sync_options->setCurrentIndex( Smb4KRsyncOptions::AdvancedTab );
+      Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
+      sync_options->setCurrentIndex( Smb4KRsyncOptionsPage::AdvancedTab );
       
       backup_dir->setFocus();
       return false;

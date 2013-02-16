@@ -28,7 +28,7 @@
 #endif
 
 // application specific includes
-#include "smb4krsyncoptions.h"
+#include "smb4krsyncoptionspage.h"
 #include "core/smb4ksettings.h"
 
 // Qt includes
@@ -45,7 +45,7 @@
 #include <kfile.h>
 
 
-Smb4KRsyncOptions::Smb4KRsyncOptions( QWidget *parent )
+Smb4KRsyncOptionsPage::Smb4KRsyncOptionsPage( QWidget *parent )
 : KTabWidget( parent )
 {
   //
@@ -580,7 +580,7 @@ Smb4KRsyncOptions::Smb4KRsyncOptions( QWidget *parent )
 }
 
 
-Smb4KRsyncOptions::~Smb4KRsyncOptions()
+Smb4KRsyncOptionsPage::~Smb4KRsyncOptionsPage()
 {
 }
 
@@ -589,7 +589,7 @@ Smb4KRsyncOptions::~Smb4KRsyncOptions()
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
 
-void Smb4KRsyncOptions::slotArchiveToggled( bool checked )
+void Smb4KRsyncOptionsPage::slotArchiveToggled( bool checked )
 {
   if ( checked )
   {
@@ -604,7 +604,7 @@ void Smb4KRsyncOptions::slotArchiveToggled( bool checked )
 }
 
 
-void Smb4KRsyncOptions::slotUncheckArchive( bool checked )
+void Smb4KRsyncOptionsPage::slotUncheckArchive( bool checked )
 {
   if ( !checked )
   {
@@ -613,7 +613,7 @@ void Smb4KRsyncOptions::slotUncheckArchive( bool checked )
 }
 
 
-void Smb4KRsyncOptions::slotBackupToggled( bool checked )
+void Smb4KRsyncOptionsPage::slotBackupToggled( bool checked )
 {
   findChild<QCheckBox *>( "kcfg_UseBackupDirectory" )->setEnabled( checked );
   findChild<KUrlRequester *>( "kcfg_BackupDirectory" )->setEnabled( checked );
@@ -622,7 +622,7 @@ void Smb4KRsyncOptions::slotBackupToggled( bool checked )
 }
 
 
-void Smb4KRsyncOptions::slotFShortcutToggled( bool on )
+void Smb4KRsyncOptionsPage::slotFShortcutToggled( bool on )
 {
   QCheckBox *ff_filter = findChild<QCheckBox *>( "kcfg_UseFFFilterRule" );
 
@@ -633,7 +633,7 @@ void Smb4KRsyncOptions::slotFShortcutToggled( bool on )
 }
 
 
-void Smb4KRsyncOptions::slotFFShortcutToggled( bool on )
+void Smb4KRsyncOptionsPage::slotFFShortcutToggled( bool on )
 {
   QCheckBox *f_filter = findChild<QCheckBox *>( "kcfg_UseFFilterRule" );
 
@@ -643,4 +643,4 @@ void Smb4KRsyncOptions::slotFFShortcutToggled( bool on )
   }
 }
 
-#include "smb4krsyncoptions.moc"
+#include "smb4krsyncoptionspage.moc"

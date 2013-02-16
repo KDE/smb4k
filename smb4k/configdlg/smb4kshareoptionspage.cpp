@@ -29,7 +29,7 @@
 #endif
 
 // applications specific includes
-#include "smb4kshareoptions.h"
+#include "smb4kshareoptionspage.h"
 #include "core/smb4ksettings.h"
 
 // Qt includes
@@ -47,7 +47,7 @@
 #include <klineedit.h>
 
 
-Smb4KShareOptions::Smb4KShareOptions( QWidget *parent )
+Smb4KShareOptionsPage::Smb4KShareOptionsPage( QWidget *parent )
 : QWidget( parent )
 {
   QVBoxLayout *layout = new QVBoxLayout( this );
@@ -162,9 +162,9 @@ Smb4KShareOptions::Smb4KShareOptions( QWidget *parent )
   layout->addStretch( 100 );
 }
 
-Smb4KShareOptions::~Smb4KShareOptions()
+Smb4KShareOptionsPage::~Smb4KShareOptionsPage()
 {
 }
 
 
-#include "smb4kshareoptions.moc"
+#include "smb4kshareoptionspage.moc"

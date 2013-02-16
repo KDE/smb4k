@@ -24,8 +24,8 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifndef SMB4KAUTHOPTIONS_H
-#define SMB4KAUTHOPTIONS_H
+#ifndef SMB4KAUTHOPTIONSPAGE_H
+#define SMB4KAUTHOPTIONSPAGE_H
 
 // Application specific includes
 #include "core/smb4kauthinfo.h"
