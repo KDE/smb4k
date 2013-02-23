@@ -1265,7 +1265,7 @@ void Smb4KMainWindow::slotActivePartChanged( KParts::Part *part )
   // Let m_active_part point to the new active part.
   m_active_part = part;
   
-    // Setup actions
+  // Setup actions
   QList<QAction *> dynamic_list;
 
   for ( int i = 0; i < m_active_part->actionCollection()->actions().size(); ++i )
@@ -1300,6 +1300,31 @@ void Smb4KMainWindow::slotActivePartChanged( KParts::Part *part )
       static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( false );
       actionCollection()->action( "mount_action" )->setEnabled( action->isEnabled() );
       connect( action, SIGNAL(changed()), this, SLOT(slotEnableMountAction()) );
+      continue;
+    }
+    else if ( QString::compare( action->objectName(), "filemanager_action" ) == 0 ||
+              QString::compare( action->objectName(), "konsole_action" ) == 0 )
+    {
+      if ( !actionCollection()->action( "open_with" ) )
+      {
+        KActionMenu *open_with = new KActionMenu( KIcon( "folder-open" ), i18n( "Open With" ), actionCollection() );
+        actionCollection()->addAction( "open_with", open_with );
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      if ( !actionCollection()->action( "open_with" )->findChild<KAction *>( action->objectName() ) )
+      {
+        static_cast<KActionMenu *>( actionCollection()->action( "open_with" ) )->addAction( action );
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      dynamic_list << actionCollection()->action( "open_with" );
       continue;
     }
     else
