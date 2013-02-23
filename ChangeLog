@@ -8,9 +8,8 @@ Smb4K 1.1.0 (????-??-??):
   met, its installation will be skipped.
 - Added Smb4KNetworkObject class that derives from QObject and encapsulates
   a network item (workgroup, host, or share).
-- Revised main tool bar. It contains all actions that are needed by all parts
-  and dynamically loads all others. The tool bars of the parts are hidden by
-  default.
+- Introduced a new dynamic main tool bar. If you do not like it, you can enable 
+  old tool bars via the 'Shown Toolbars' menu item.
 - Added Wake On LAN (WOL) feature (closes SF ticket #27).
 - Revised Smb4KGlobal namespace:
   + Merged Smb4KCore class and removed it.
@@ -89,6 +88,7 @@ Smb4K 1.1.0 (????-??-??):
   + Moved custom options to own page, since they are no longer only related
     to Samba. The Wake On LAN settings have been added. Improvements were 
     implemented.
+  + Renamed all classes that represent a page in the configuration dialog.
 
 Smb4K 1.0.4 (2012-08-19):
 - Fixed erroneously shown error notifications when searching. Thanks to
