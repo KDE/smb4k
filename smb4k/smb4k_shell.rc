@@ -30,7 +30,7 @@
 </ToolBar>
 <ToolBar fullWidth="false" name="sharesViewToolBar" hidden="true"><text>Shares Toolbar</text>
 </ToolBar>
-<ToolBar fullWidth="true" name="mainToolBarOld" hidden="true"><text>Main Toolbar</text>
+<ToolBar fullWidth="true" name="altMainToolBar" hidden="true"><text>Alternative Main Toolbar</text>
   <Action name="bookmark_action"/>
   <Separator/>
   <Action name="dock_widgets_menu"/>
@@ -39,7 +39,7 @@
   <Separator/>
   <Action name="quit_action"/>
 </ToolBar>
-<ToolBar fullWidth="true" name="mainToolBar"><text>Application Toolbar</text>
+<ToolBar fullWidth="true" name="mainToolBar"><text>Main Toolbar</text>
   <Action name="mount_action"/>
   <Action name="bookmark_action"/>
   <Separator/>
