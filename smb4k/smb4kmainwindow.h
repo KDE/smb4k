@@ -287,6 +287,11 @@ class Smb4KMainWindow : public KParts::MainWindow
      * Called when the mount dual action needs to change its active state.
      */
     void slotMountActionChanged( bool active );
+    
+    /**
+     * Enable/disable the "Open With" action
+     */
+    void slotEnableOpenWithAction();
 
   private:
     /**

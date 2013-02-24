@@ -1308,7 +1308,9 @@ void Smb4KMainWindow::slotActivePartChanged( KParts::Part *part )
       if ( !actionCollection()->action( "open_with" ) )
       {
         KActionMenu *open_with = new KActionMenu( KIcon( "folder-open" ), i18n( "Open With" ), actionCollection() );
+        open_with->setEnabled( action->isEnabled() );
         actionCollection()->addAction( "open_with", open_with );
+        connect( action, SIGNAL(changed()), this, SLOT(slotEnableOpenWithAction()) );
       }
       else
       {
@@ -1400,6 +1402,21 @@ void Smb4KMainWindow::slotMountActionTriggered()
 void Smb4KMainWindow::slotMountActionChanged( bool active )
 {
   static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( active );
+}
+
+
+void Smb4KMainWindow::slotEnableOpenWithAction()
+{
+  QAction *open_with = actionCollection()->action( "open_with" );
+  
+  if ( open_with )
+  {
+    open_with->setEnabled( !open_with->isEnabled() );
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
