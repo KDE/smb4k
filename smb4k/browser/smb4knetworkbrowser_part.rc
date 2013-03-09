@@ -2,8 +2,7 @@
 <gui name="smb4knetworkbrowser_part" version="1">
 <MenuBar>
   <Menu name="network"><text>&amp;Network</text>
-    <Action name="rescan_action"/>
-    <Action name="abort_action"/>
+    <Action name="rescan_abort_action"/>
     <Separator/>
     <Action name="mount_manually_action"/>
     <Separator/>
@@ -15,7 +14,7 @@
   </Menu>
 </MenuBar>
 <ToolBar name="networkToolBar">
-  <Action name="rescan_action"/>
+  <Action name="rescan_abort_action"/>
   <Action name="abort_action"/>
   <Separator/>
   <Action name="mount_manually_action"/>

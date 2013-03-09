@@ -214,18 +214,11 @@ class Smb4KNetworkBrowserPart : public KParts::Part
     void slotAuthError( Smb4KHost *host, int process );
 
     /**
-     * Rescan the network. This slot is connected to the 'Rescan' action.
+     * Rescan the network or abort a network scan.
      *
      * @param checked             Is TRUE if the action is checked (not used here).
      */
-    void slotRescan( bool checked );
-
-    /**
-     * Abort a network scan. This slot is connected to the 'Abort' action.
-     *
-     * @param checked             Is TRUE if the action is checked (not used here).
-     */
-    void slotAbort( bool checked );
+    void slotRescanAbortActionTriggered( bool checked );
 
     /**
      * Manually mount a share. This slot is connected to the 'Mount Manually'

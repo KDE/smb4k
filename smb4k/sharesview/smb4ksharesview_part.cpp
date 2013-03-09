@@ -320,6 +320,8 @@ void Smb4KSharesViewPart::setupActions()
                                 actionCollection() );
   synchronize_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_Y ) );
   connect( synchronize_action, SIGNAL(triggered(bool)), this, SLOT(slotSynchronize(bool)) );
+  
+  KActionMenu *open_with_menu = new KActionMenu( KIcon( "folder-open" ), i18n( "Open With" ), actionCollection() );
 
   KAction *konsole_action     = new KAction( KIcon( "utilities-terminal" ), i18n( "Open with Konso&le" ),
                                 actionCollection() );
@@ -333,6 +335,9 @@ void Smb4KSharesViewPart::setupActions()
   shortcuts.append( QKeySequence( Qt::CTRL+Qt::Key_K ) );  // legacy shortcut
   filemanager_action->setShortcuts( shortcuts );
   connect( filemanager_action, SIGNAL(triggered(bool)), this, SLOT(slotFileManager(bool)) );
+  
+  open_with_menu->addAction( konsole_action );
+  open_with_menu->addAction( filemanager_action );
 
   KAction *bookmark_action = new KAction( KIcon( "bookmark-new" ), i18n( "Add &Bookmark" ),
                              actionCollection() );
@@ -351,6 +356,7 @@ void Smb4KSharesViewPart::setupActions()
   actionCollection()->addAction( "unmount_all_action", unmount_all_action );
   actionCollection()->addAction( "bookmark_action", bookmark_action );
   actionCollection()->addAction( "synchronize_action", synchronize_action );
+  actionCollection()->addAction( "open_with", open_with_menu );
   actionCollection()->addAction( "konsole_action", konsole_action );
   actionCollection()->addAction( "filemanager_action", filemanager_action );
 

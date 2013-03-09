@@ -2,7 +2,7 @@
     smb4kmainwindow  -  The main window of Smb4K.
                              -------------------
     begin                : Di Jan 1 2008
-    copyright            : (C) 2008-2012 by Alexander Reinholdt
+    copyright            : (C) 2008-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -77,7 +77,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      * Reimplemented from KMainWindow.
      */
     bool queryExit();
-
+    
   protected slots:
     /**
      * Quits the application.
@@ -292,6 +292,33 @@ class Smb4KMainWindow : public KParts::MainWindow
      * Enable/disable the "Open With" action
      */
     void slotEnableOpenWithAction();
+    
+    /**
+     * This slot is connected to the visibilityChanged() signals of the network browser
+     * dock widget. It is used to get the tool bars right.
+     *
+     * @param visible         If the dock widget is visible.
+     */
+    void slotNetworkBrowserVisibilityChanged( bool visible );
+    
+    /**
+     * This slot is connected to the visibilityChanged() signals of the shares view
+     * dock widget. It is used to get the tool bars right.
+     *
+     * @param visible         If the dock widget is visible.
+     */
+    void slotSharesViewVisibilityChanged( bool visible );
+    
+    
+    /**
+     * This slot is connected to the visibilityChanged() signals of the network browser
+     * dock widget. It is used to get the tool bars right.
+     *
+     * @param visible         If the dock widget is visible.
+     */
+    void slotSearchDialogVisibilityChanged( bool visible );
+    
+    
 
   private:
     /**

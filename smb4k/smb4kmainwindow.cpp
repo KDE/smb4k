@@ -2,7 +2,7 @@
     smb4kmainwindow  -  The main window of Smb4K.
                              -------------------
     begin                : Di Jan 1 2008
-    copyright            : (C) 2008-2012 by Alexander Reinholdt
+    copyright            : (C) 2008-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -289,6 +289,7 @@ void Smb4KMainWindow::setupView()
       browser_dock->setObjectName( "NetworkBrowserDockWidget" );
       browser_dock->setWidget( m_browser_part->widget() );
       browser_dock->setAllowedAreas( Qt::LeftDockWidgetArea );
+      connect( browser_dock, SIGNAL(visibilityChanged(bool)), this, SLOT(slotNetworkBrowserVisibilityChanged(bool)) );
 
       addDockWidget( Qt::LeftDockWidgetArea, browser_dock );
 
@@ -300,7 +301,7 @@ void Smb4KMainWindow::setupView()
       static_cast<KActionMenu *>( actionCollection()->action( "dock_widgets_menu" ) )->addAction( browser_dock->toggleViewAction() );
 
       // Add the Part object to the manager
-      m_manager->addPart( m_browser_part );
+      m_manager->addPart( m_browser_part, false );
     }
     else
     {
@@ -335,6 +336,7 @@ void Smb4KMainWindow::setupView()
       search_dock->setObjectName( "NetworkSearchDockWidget" );
       search_dock->setWidget( m_search_part->widget() );
       search_dock->setAllowedAreas( Qt::LeftDockWidgetArea );
+      connect( search_dock, SIGNAL(visibilityChanged(bool)), this, SLOT(slotSearchDialogVisibilityChanged(bool)) );
 
       addDockWidget( Qt::LeftDockWidgetArea, search_dock );
 
@@ -346,7 +348,7 @@ void Smb4KMainWindow::setupView()
       static_cast<KActionMenu *>( actionCollection()->action( "dock_widgets_menu" ) )->addAction( search_dock->toggleViewAction() );
 
       // Add the Part object to the manager
-      m_manager->addPart( m_search_part );
+      m_manager->addPart( m_search_part, false );
     }
     else
     {
@@ -381,6 +383,7 @@ void Smb4KMainWindow::setupView()
       shares_dock->setObjectName( "SharesViewDockWidget" );
       shares_dock->setWidget( m_shares_part->widget() );
       shares_dock->setAllowedAreas( Qt::LeftDockWidgetArea );
+      connect( shares_dock, SIGNAL(visibilityChanged(bool)), this, SLOT(slotSharesViewVisibilityChanged(bool)) );
 
       addDockWidget( Qt::LeftDockWidgetArea, shares_dock );
 
@@ -392,7 +395,7 @@ void Smb4KMainWindow::setupView()
       static_cast<KActionMenu *>( actionCollection()->action( "dock_widgets_menu" ) )->addAction( shares_dock->toggleViewAction() );
 
       // Add the Part object to the manager
-      m_manager->addPart( m_shares_part );
+      m_manager->addPart( m_shares_part, false );
     }
     else
     {
@@ -413,29 +416,51 @@ void Smb4KMainWindow::setupView()
 
   if ( !config_group.exists() )
   {
-    // Create a tab widget from the parts at first start.
-    // Afterwards, let the autosaving take over.
-    if ( browser_dock && search_dock )
+    QList<QDockWidget *> docks = findChildren<QDockWidget *>();
+    
+    for ( int i = 1; i < docks.size(); ++i )
     {
-      tabifyDockWidget( browser_dock, search_dock );
+      tabifyDockWidget( docks.at( i-1 ), docks.at( i ) );
     }
-    else
+    
+    // Set the part of the last tabified dock widget active.
+    for ( int i = 0; i < m_manager->parts().size(); ++i )
     {
-      // Do nothing
-    }
-
-    if ( search_dock && shares_dock )
-    {
-      tabifyDockWidget( search_dock, shares_dock );
-    }
-    else
-    {
-      // Do nothing
+      if ( m_manager->parts().at( i )->widget() == docks.last()->widget() )
+      {
+        m_manager->setActivePart( m_manager->parts().at( i ) );
+        break;
+      }
+      else
+      {
+        continue;
+      }
     }
   }
   else
   {
-    // Do nothing
+    QString active_part = config_group.readEntry( "ActivePart", QString() );
+    
+    if ( !active_part.isEmpty() )
+    {
+      // Set the part of the last tabified dock widget active.
+      for ( int i = 0; i < m_manager->parts().size(); ++i )
+      {
+        if ( QString::compare( active_part, m_manager->parts().at( i )->objectName() ) == 0 )
+        {
+          m_manager->setActivePart( m_manager->parts().at( i ) );
+          break;
+        }
+        else
+        {
+          continue;
+        }
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
   }
 }
 
@@ -575,6 +600,11 @@ bool Smb4KMainWindow::queryClose()
 
 bool Smb4KMainWindow::queryExit()
 {
+  // Save the active part.
+  KConfigGroup config_group( Smb4KSettings::self()->config(), "MainWindow" );
+  config_group.writeEntry( "ActivePart", m_manager->activePart()->objectName() );
+  
+  // Save if the main window should be started docked.
   Smb4KSettings::setStartMainWindowDocked( !isVisible() );
   return true;
 }
@@ -1305,28 +1335,6 @@ void Smb4KMainWindow::slotActivePartChanged( KParts::Part *part )
     else if ( QString::compare( action->objectName(), "filemanager_action" ) == 0 ||
               QString::compare( action->objectName(), "konsole_action" ) == 0 )
     {
-      if ( !actionCollection()->action( "open_with" ) )
-      {
-        KActionMenu *open_with = new KActionMenu( KIcon( "folder-open" ), i18n( "Open With" ), actionCollection() );
-        open_with->setEnabled( action->isEnabled() );
-        actionCollection()->addAction( "open_with", open_with );
-        connect( action, SIGNAL(changed()), this, SLOT(slotEnableOpenWithAction()) );
-      }
-      else
-      {
-        // Do nothing
-      }
-      
-      if ( !actionCollection()->action( "open_with" )->findChild<KAction *>( action->objectName() ) )
-      {
-        static_cast<KActionMenu *>( actionCollection()->action( "open_with" ) )->addAction( action );
-      }
-      else
-      {
-        // Do nothing
-      }
-      
-      dynamic_list << actionCollection()->action( "open_with" );
       continue;
     }
     else
@@ -1412,6 +1420,72 @@ void Smb4KMainWindow::slotEnableOpenWithAction()
   if ( open_with )
   {
     open_with->setEnabled( !open_with->isEnabled() );
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KMainWindow::slotNetworkBrowserVisibilityChanged(bool visible)
+{
+  QDockWidget *dock = findChild<QDockWidget *>( "NetworkBrowserDockWidget" );
+  
+  if ( dock )
+  {
+    if ( visible && m_browser_part != m_active_part )
+    {
+      m_manager->setActivePart( m_browser_part );
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KMainWindow::slotSharesViewVisibilityChanged(bool visible)
+{
+  QDockWidget *dock = findChild<QDockWidget *>( "SharesViewDockWidget" );
+  
+  if ( dock )
+  {
+    if ( visible && m_shares_part != m_active_part )
+    {
+      m_manager->setActivePart( m_shares_part );
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KMainWindow::slotSearchDialogVisibilityChanged(bool visible)
+{
+  QDockWidget *dock = findChild<QDockWidget *>( "NetworkSearchDockWidget" );
+  
+  if ( dock )
+  {
+    if ( visible && m_search_part != m_active_part )
+    {
+      m_manager->setActivePart( m_search_part );
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {

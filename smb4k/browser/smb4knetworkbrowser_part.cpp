@@ -199,19 +199,19 @@ Smb4KNetworkBrowserPart::~Smb4KNetworkBrowserPart()
 
 void Smb4KNetworkBrowserPart::setupActions()
 {
-  KAction *rescan_action   = new KAction( KIcon( "view-refresh" ), i18n( "Scan Netwo&rk" ),
-                             actionCollection() );
+  KDualAction *rescan_abort_action = new KDualAction( actionCollection() );
+  KGuiItem rescan_item( i18n( "Scan Netwo&rk" ), KIcon( "view-refresh" ) );
+  KGuiItem abort_item( i18n( "&Abort" ), KIcon( "process-stop" ) );
+  rescan_abort_action->setActiveGuiItem( rescan_item );
+  rescan_abort_action->setInactiveGuiItem( abort_item );
   QList<QKeySequence> rescan_shortcuts;
   rescan_shortcuts += QKeySequence::Refresh;
   rescan_shortcuts += QKeySequence( Qt::CTRL+Qt::Key_R );
-  rescan_action->setShortcuts( rescan_shortcuts );
-  connect( rescan_action, SIGNAL(triggered(bool)), this, SLOT(slotRescan(bool)) );
-
-  KAction *abort_action    = new KAction( KIcon( "process-stop" ), i18n( "&Abort" ),
-                             actionCollection() );
-  abort_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_A ) );
-  connect( abort_action, SIGNAL(triggered(bool)), this, SLOT(slotAbort(bool)) );
-
+  rescan_abort_action->setShortcuts( rescan_shortcuts );
+  rescan_abort_action->setActive( true );
+  rescan_abort_action->setAutoToggle( false );
+  connect( rescan_abort_action, SIGNAL(triggered(bool)), this, SLOT(slotRescanAbortActionTriggered(bool)) );
+  
   KAction *manual_action   = new KAction( KIcon( "view-form", KIconLoader::global(), QStringList( "emblem-mounted" ) ),
                              i18n( "&Open Mount Dialog" ), actionCollection() );
   manual_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_O ) );
@@ -263,8 +263,7 @@ void Smb4KNetworkBrowserPart::setupActions()
   connect( mount_action, SIGNAL(triggered(bool)), this, SLOT(slotMountActionTriggered(bool)) );
   connect( mount_action, SIGNAL(activeChanged(bool)), this, SLOT(slotMountActionChanged(bool)) );
 
-  actionCollection()->addAction( "rescan_action", rescan_action );
-  actionCollection()->addAction( "abort_action", abort_action );
+  actionCollection()->addAction( "rescan_abort_action", rescan_abort_action );
   actionCollection()->addAction( "mount_manually_action", manual_action );
   actionCollection()->addAction( "authentication_action", auth_action );
   actionCollection()->addAction( "custom_action", custom_action );
@@ -274,8 +273,7 @@ void Smb4KNetworkBrowserPart::setupActions()
   actionCollection()->addAction( "mount_action", mount_action );
 
   // Enable/disable the actions:
-  rescan_action->setEnabled( true );
-  abort_action->setEnabled( false );
+  rescan_abort_action->setEnabled( true );
   manual_action->setEnabled( true );
   auth_action->setEnabled( false );
   custom_action->setEnabled( false );
@@ -287,8 +285,7 @@ void Smb4KNetworkBrowserPart::setupActions()
   // Plug the actions into the action menu:
   m_menu = new KActionMenu( this );
   m_menu_title = m_menu->menu()->addTitle( KIcon( "network-workgroup" ), i18n( "Network" ) );
-  m_menu->addAction( rescan_action );
-  m_menu->addAction( abort_action );
+  m_menu->addAction( rescan_abort_action );
   m_menu->addSeparator();
   m_menu->addAction( bookmark_action );
   m_menu->addAction( manual_action );
@@ -391,7 +388,7 @@ void Smb4KNetworkBrowserPart::customEvent( QEvent *e )
   }
   else if ( e->type() == Smb4KEvent::ScanNetwork )
   {
-    slotRescan( false ); // boolean is ignored
+    slotRescanAbortActionTriggered( false ); // boolean is ignored
   }
   else if ( e->type() == Smb4KEvent::AddBookmark )
   {
@@ -432,13 +429,13 @@ void Smb4KNetworkBrowserPart::slotContextMenuRequested( const QPoint &pos )
   {
     m_menu_title = m_menu->menu()->addTitle( item->icon( Smb4KNetworkBrowserItem::Network ),
                                              item->text( Smb4KNetworkBrowserItem::Network ),
-                                             actionCollection()->action( "rescan_action" ) );
+                                             actionCollection()->action( "rescan_abort_action" ) );
   }
   else
   {
     m_menu_title = m_menu->menu()->addTitle( KIcon( "network-workgroup" ),
                                              i18n( "Network" ),
-                                             actionCollection()->action( "rescan_action" ) );
+                                             actionCollection()->action( "rescan_abort_action" ) );
   }
 
   m_menu->menu()->popup( m_widget->viewport()->mapToGlobal( pos ) );
@@ -461,7 +458,8 @@ void Smb4KNetworkBrowserPart::slotItemSelectionChanged()
         case Smb4KNetworkBrowserItem::Host:
         {
           // Change the text of the rescan action:
-          actionCollection()->action( "rescan_action" )->setText( i18n( "Scan Compute&r" ) );
+          KGuiItem rescan_item( i18n( "Scan Compute&r" ), KIcon( "view-refresh" ) );
+          static_cast<KDualAction *>( actionCollection()->action( "rescan_abort_action" ) )->setActiveGuiItem( rescan_item );
 
           // Enable/disable the actions:
           actionCollection()->action( "bookmark_action" )->setEnabled( false );
@@ -477,7 +475,8 @@ void Smb4KNetworkBrowserPart::slotItemSelectionChanged()
         case Smb4KNetworkBrowserItem::Share:
         {
           // Change the text of the rescan action:
-          actionCollection()->action( "rescan_action" )->setText( i18n( "Scan Compute&r" ) );
+          KGuiItem rescan_item( i18n( "Scan Compute&r" ), KIcon( "view-refresh" ) );
+          static_cast<KDualAction *>( actionCollection()->action( "rescan_abort_action" ) )->setActiveGuiItem( rescan_item );
 
           // Enable/disable the actions:
           actionCollection()->action( "authentication_action" )->setEnabled( true );
@@ -521,7 +520,8 @@ void Smb4KNetworkBrowserPart::slotItemSelectionChanged()
         default:
         {
           // Change the text of the rescan action:
-          actionCollection()->action( "rescan_action" )->setText( i18n( "Scan Wo&rkgroup" ) );
+          KGuiItem rescan_item( i18n( "Scan Wo&rkgroup" ), KIcon( "view-refresh" ) );
+          static_cast<KDualAction *>( actionCollection()->action( "rescan_abort_action" ) )->setActiveGuiItem( rescan_item );
           actionCollection()->action( "bookmark_action" )->setEnabled( false );
           actionCollection()->action( "authentication_action" )->setEnabled( false );
           actionCollection()->action( "preview_action" )->setEnabled( false );
@@ -552,7 +552,8 @@ void Smb4KNetworkBrowserPart::slotItemPressed( QTreeWidgetItem *item, int /*colu
 
   if ( !browser_item && m_widget->selectedItems().size() == 0 )
   {
-    actionCollection()->action( "rescan_action" )->setText( i18n( "Scan Netwo&rk" ) );
+    KGuiItem rescan_item( i18n( "Scan Netwo&rk" ), KIcon( "view-refresh" ) );
+    static_cast<KDualAction *>( actionCollection()->action( "rescan_abort_action" ) )->setActiveGuiItem( rescan_item );    
     actionCollection()->action( "bookmark_action" )->setEnabled( false );
     actionCollection()->action( "authentication_action" )->setEnabled( false );
     actionCollection()->action( "preview_action" )->setEnabled( false );
@@ -1719,63 +1720,64 @@ void Smb4KNetworkBrowserPart::slotAuthError( Smb4KHost *host, int process )
 }
 
 
-void Smb4KNetworkBrowserPart::slotRescan( bool /* checked */)
+void Smb4KNetworkBrowserPart::slotRescanAbortActionTriggered( bool /* checked */)
 {
-  // The mouse is inside the viewport. Let's see what we have to do.
-  if ( m_widget->currentItem() && m_widget->currentItem()->isSelected() )
+  KDualAction *rescan_abort_action = static_cast<KDualAction *>( actionCollection()->action( "rescan_abort_action" ) );
+  
+  if ( rescan_abort_action )
   {
-    Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( m_widget->currentItem() );
-
-    switch ( item->type() )
+    if ( rescan_abort_action->isActive() )
     {
-      case Smb4KNetworkBrowserItem::Workgroup:
+      // The mouse is inside the viewport. Let's see what we have to do.
+      if ( m_widget->currentItem() && m_widget->currentItem()->isSelected() )
       {
-        Smb4KScanner::self()->lookupDomainMembers( item->workgroupItem(), m_widget );
-        break;
+        Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( m_widget->currentItem() );
+
+        switch ( item->type() )
+        {
+          case Smb4KNetworkBrowserItem::Workgroup:
+          {
+            Smb4KScanner::self()->lookupDomainMembers( item->workgroupItem(), m_widget );
+            break;
+          }
+          case Smb4KNetworkBrowserItem::Host:
+          {
+            Smb4KScanner::self()->lookupShares( item->hostItem(), m_widget );
+            break;
+          }
+          case Smb4KNetworkBrowserItem::Share:
+          {
+            Smb4KNetworkBrowserItem *parentItem = static_cast<Smb4KNetworkBrowserItem *>( item->parent() );
+            Smb4KScanner::self()->lookupShares( parentItem->hostItem(), m_widget );
+            break;
+          }
+          default:
+          {
+            break;
+          }
+        }
       }
-      case Smb4KNetworkBrowserItem::Host:
+      else
       {
-        Smb4KScanner::self()->lookupShares( item->hostItem(), m_widget );
-        break;
+        Smb4KScanner::self()->lookupDomains( m_widget );
       }
-      case Smb4KNetworkBrowserItem::Share:
+    }
+    else
+    {
+      if ( Smb4KScanner::self()->isRunning() )
       {
-        Smb4KNetworkBrowserItem *parentItem = static_cast<Smb4KNetworkBrowserItem *>( item->parent() );
-        Smb4KScanner::self()->lookupShares( parentItem->hostItem(), m_widget );
-        break;
+        Smb4KScanner::self()->abortAll();
       }
-      default:
+      else
       {
-        break;
+        // Do nothing
       }
     }
   }
   else
   {
-    Smb4KScanner::self()->lookupDomains( m_widget );
-  }
-}
-
-
-void Smb4KNetworkBrowserPart::slotAbort( bool /*checked*/ )
-{
-  if ( Smb4KScanner::self()->isRunning() )
-  {
-    Smb4KScanner::self()->abortAll();
-  }
-  else
-  {
     // Do nothing
-  }
-
-  if ( Smb4KMounter::self()->isRunning() )
-  {
-    Smb4KMounter::self()->abortAll();
-  }
-  else
-  {
-    // Do nothing
-  }
+  }    
 }
 
 
@@ -2038,8 +2040,31 @@ void Smb4KNetworkBrowserPart::slotScannerAboutToStart( Smb4KBasicNetworkItem *it
     }
   }
 
-  actionCollection()->action( "rescan_action" )->setEnabled( false );
-  actionCollection()->action( "abort_action" )->setEnabled( true );
+  KDualAction *rescan_abort_action = static_cast<KDualAction *>( actionCollection()->action( "rescan_abort_action" ) );
+  
+  if ( rescan_abort_action )
+  {
+    rescan_abort_action->setActive( !rescan_abort_action->isActive() );
+    
+    if ( rescan_abort_action->isActive() )
+    {
+      QList<QKeySequence> rescan_shortcuts;
+      rescan_shortcuts += QKeySequence::Refresh;
+      rescan_shortcuts += QKeySequence( Qt::CTRL+Qt::Key_R );
+      rescan_abort_action->setShortcuts( rescan_shortcuts );
+    }
+    else
+    {
+      QList<QKeySequence> abort_shortcuts;
+      abort_shortcuts += QKeySequence( Qt::Key_Escape );
+      abort_shortcuts += QKeySequence( Qt::CTRL+Qt::Key_A );
+      rescan_abort_action->setShortcuts( abort_shortcuts );
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
@@ -2054,8 +2079,31 @@ void Smb4KNetworkBrowserPart::slotScannerFinished( Smb4KBasicNetworkItem */*item
     // Do nothing
   }
 
-  actionCollection()->action( "rescan_action" )->setEnabled( true );
-  actionCollection()->action( "abort_action" )->setEnabled( false );
+  KDualAction *rescan_abort_action = static_cast<KDualAction *>( actionCollection()->action( "rescan_abort_action" ) );
+  
+  if ( rescan_abort_action )
+  {
+    rescan_abort_action->setActive( !rescan_abort_action->isActive() );
+    
+    if ( rescan_abort_action->isActive() )
+    {
+      QList<QKeySequence> rescan_shortcuts;
+      rescan_shortcuts += QKeySequence::Refresh;
+      rescan_shortcuts += QKeySequence( Qt::CTRL+Qt::Key_R );
+      rescan_abort_action->setShortcuts( rescan_shortcuts );
+    }
+    else
+    {
+      QList<QKeySequence> abort_shortcuts;
+      abort_shortcuts += QKeySequence( Qt::Key_Escape );
+      abort_shortcuts += QKeySequence( Qt::CTRL+Qt::Key_A );
+      rescan_abort_action->setShortcuts( abort_shortcuts );
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
@@ -2063,7 +2111,7 @@ void Smb4KNetworkBrowserPart::slotMounterAboutToStart( Smb4KShare */*share*/, in
 {
   // Do not change the state of the rescan action here, because it has
   // nothing to do with the mounter.
-  actionCollection()->action( "abort_action" )->setEnabled( true );
+//   actionCollection()->action( "abort_action" )->setEnabled( true );
 }
 
 
@@ -2071,7 +2119,7 @@ void Smb4KNetworkBrowserPart::slotMounterFinished( Smb4KShare */*share*/, int /*
 {
   // Do not change the state of the rescan action here, because it has
   // nothing to do with the mounter.
-  actionCollection()->action( "abort_action" )->setEnabled( false );
+//   actionCollection()->action( "abort_action" )->setEnabled( false );
 }
 
 
