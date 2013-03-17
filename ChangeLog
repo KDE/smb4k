@@ -1,5 +1,5 @@
 Smb4K 1.0.7 (2013-03-??):
-
+- Fixed remounting of shares. 
 
 Smb4K 1.0.6 (2013-03-03):
 - Fixed crash in Smb4KMounter::slotAuthError() due to signals being emitted
