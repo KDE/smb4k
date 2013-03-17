@@ -432,6 +432,16 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * The mount dialog
      */
     Smb4KMountDialog *m_dialog;
+    
+    /**
+     * The first import has been done
+     */
+    bool m_first_import_done;
+    
+    /**
+     * The remounting has been done
+     */
+    bool m_remounting_done;
 };
 
 #endif

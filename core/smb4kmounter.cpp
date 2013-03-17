@@ -85,6 +85,7 @@ Smb4KMounter::Smb4KMounter() : KCompositeJob( 0 )
   m_timeout = 0;
   m_checks = 0;
   m_dialog = NULL;
+  m_first_import_done = false;
 
   connect( kapp,                        SIGNAL( aboutToQuit() ),
            this,                        SLOT( slotAboutToQuit() ) );
@@ -280,6 +281,8 @@ void Smb4KMounter::triggerRemounts()
   {
     // Do nothing
   }
+  
+  m_remounting_done = true;
 }
 
 
@@ -1277,7 +1280,16 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
     }
     
     // Clean up the mount prefix
-    cleanup();    
+    cleanup();
+
+    if ( Smb4KSettings::remountShares() && m_first_import_done && !m_remounting_done )
+    {
+      triggerRemounts();
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
@@ -1295,20 +1307,19 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
 
 void Smb4KMounter::slotStartJobs()
 {
-  startTimer( TIMEOUT );
-
   import( true );
 
   if ( Smb4KSolidInterface::self()->networkStatus() == Smb4KSolidInterface::Connected ||
        Smb4KSolidInterface::self()->networkStatus() == Smb4KSolidInterface::Unknown )
   {
     p->setHardwareReason( false );
-    triggerRemounts();
   }
   else
   {
     // Do nothing and wait until the network becomes available.
   }
+
+  startTimer( TIMEOUT );
 }
 
 
@@ -2032,6 +2043,15 @@ void Smb4KMounter::slotStatResult( KJob *job )
     {
       // Do nothing
     }
+  }
+  
+  if ( !m_first_import_done && m_imported_shares.isEmpty() )
+  {
+    m_first_import_done = true;
+  }
+  else
+  {
+    // Do nothing
   }
 }
 
