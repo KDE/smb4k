@@ -208,6 +208,7 @@ class Smb4KCustomOptionsPage : public QWidget
     QCheckBox *m_kerberos;
     QCheckBox *m_send_before_scan;
     QCheckBox *m_send_before_mount;
+    QCheckBox *m_remount_share;
     
     bool m_maybe_changed;
     QList<Smb4KCustomOptions *> m_options_list;

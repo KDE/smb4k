@@ -192,7 +192,7 @@ void Smb4KConfigDialog::loadCustomOptions()
 {
   if ( m_custom_options )
   {
-    QList<Smb4KCustomOptions *> options = Smb4KCustomOptionsManager::self()->customOptions( true );
+    QList<Smb4KCustomOptions *> options = Smb4KCustomOptionsManager::self()->customOptions();
     m_custom_options->widget()->findChild<Smb4KCustomOptionsPage *>()->insertCustomOptions( options );
   }
   else

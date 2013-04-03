@@ -115,10 +115,13 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
   
   ip_label->setBuddy( m_ip_address );
   
+  m_remount_share = new QCheckBox( i18n( "Remount this share" ), m_general_editors );
+  
   general_editor_layout->addWidget( unc_label, 0, 0, 0 );
   general_editor_layout->addWidget( m_unc_address, 0, 1, 0 );
   general_editor_layout->addWidget( ip_label, 1, 0, 0 );
   general_editor_layout->addWidget( m_ip_address, 1, 1, 0 );
+  general_editor_layout->addWidget( m_remount_share, 2, 0, 1, 2, 0 );
   
   m_samba_editors = new QGroupBox( i18n( "Samba" ), editors );
   
@@ -303,6 +306,12 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
   connect( undo_action,      SIGNAL(triggered(bool)),
            this,             SLOT(slotUndoActionTriggered(bool)) );
   
+  connect( m_ip_address,     SIGNAL(textChanged(QString)),
+           this,             SLOT(slotEntryChanged()) );
+  
+  connect( m_remount_share,  SIGNAL(toggled(bool)),
+           this,             SLOT(slotEntryChanged()) );
+  
   connect( m_smb_port,       SIGNAL(valueChanged(int)),
            this,             SLOT(slotEntryChanged()) );
   
@@ -420,6 +429,7 @@ void Smb4KCustomOptionsPage::clearEditors()
   // Clearing the editors means to reset them to their initial/default values.
   m_unc_address->clear();
   m_ip_address->clear();
+  m_remount_share->setChecked( false );
   m_smb_port->setValue( Smb4KSettings::remoteSMBPort() );
 #ifndef Q_OS_FREEBSD
   m_fs_port->setValue( Smb4KSettings::remoteFileSystemPort() );
@@ -513,26 +523,10 @@ void Smb4KCustomOptionsPage::populateEditors(Smb4KCustomOptions* options)
   commitChanges();
   
   // Copy custom options object
-  m_current_options = options;
+  m_current_options = new Smb4KCustomOptions( *options );
   
   // Populate the editors with the stored values.
-  switch ( m_current_options->type() )
-  {
-    case Smb4KCustomOptions::Host:
-    {
-      m_unc_address->setText( m_current_options->unc() );
-      break;
-    }
-    case Smb4KCustomOptions::Share:
-    {
-      m_unc_address->setText( m_current_options->unc() );
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
+  m_unc_address->setText( m_current_options->unc() );
   
   if ( !m_current_options->ip().isEmpty() )
   {
@@ -541,7 +535,16 @@ void Smb4KCustomOptionsPage::populateEditors(Smb4KCustomOptions* options)
   else
   {
     // Do nothing
-  } 
+  }
+  
+  if ( m_current_options->remount() == Smb4KCustomOptions::DoRemount )
+  {
+    m_remount_share->setChecked( true );
+  }
+  else
+  {
+    m_remount_share->setChecked( false );
+  }
   
   if ( m_current_options->smbPort() != -1 )
   {
@@ -704,13 +707,22 @@ void Smb4KCustomOptionsPage::populateEditors(Smb4KCustomOptions* options)
   m_general_editors->setEnabled( true );
   m_samba_editors->setEnabled( true );
   
-  if ( m_current_options->type() == Smb4KCustomOptions::Host && Smb4KSettings::enableWakeOnLAN() )
+  if ( m_current_options->type() == Smb4KCustomOptions::Host )
   {
-    m_mac_editors->setEnabled( true );
+    if ( Smb4KSettings::enableWakeOnLAN() )
+    {
+      m_mac_editors->setEnabled( true );
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    m_remount_share->setEnabled( false );
   }
   else
   {
-    // Do nothing
+    m_remount_share->setEnabled( true );
   }
   
   slotEnableWOLFeatures( m_mac_address->text() );
@@ -719,7 +731,8 @@ void Smb4KCustomOptionsPage::populateEditors(Smb4KCustomOptions* options)
 
 void Smb4KCustomOptionsPage::commitChanges()
 {
-  if ( m_current_options && !m_options_list.isEmpty() && m_samba_editors->isEnabled() )
+  if ( m_current_options && !m_options_list.isEmpty() &&
+       QString::compare( m_current_options->unc(), m_unc_address->text() ) == 0 )
   {
     Smb4KCustomOptions *options = findOptions( m_current_options->url().prettyUrl() );
     
@@ -732,6 +745,15 @@ void Smb4KCustomOptionsPage::commitChanges()
     else
     {
       // Do nothing
+    }
+    
+    if ( m_remount_share->isChecked() )
+    {
+      options->setRemount( Smb4KCustomOptions::DoRemount );
+    }
+    else
+    {
+      options->setRemount( Smb4KCustomOptions::NoRemount );
     }
     
     options->setSMBPort( m_smb_port->value() );
@@ -898,6 +920,7 @@ void Smb4KCustomOptionsPage::slotRemoveActionTriggered( bool /*checked*/ )
   {
     if ( m_current_options && m_current_options->url().equals( options->url(), KUrl::CompareWithoutTrailingSlash ) )
     {
+      delete m_current_options;
       m_current_options = NULL;
     }
     else
@@ -952,6 +975,7 @@ void Smb4KCustomOptionsPage::slotClearActionTriggered( bool /*checked*/ )
     delete m_options_list.takeFirst();
   }
   
+  delete m_current_options;
   m_current_options = NULL;
 
   m_removed = true;
