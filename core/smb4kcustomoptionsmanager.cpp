@@ -668,12 +668,10 @@ void Smb4KCustomOptionsManager::replaceCustomOptions( const QList<Smb4KCustomOpt
       
       if ( hasCustomOptions( options ) )
       {
-        qDebug() << "custom options";
         d->options << new Smb4KCustomOptions( *options );
       }
       else if ( options->remount() == Smb4KCustomOptions::DoRemount )
       {
-        qDebug() << "remount";
         d->options << new Smb4KCustomOptions( *options );
       }
       else
@@ -999,7 +997,6 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
   if ( empty_options.smbPort() != options->smbPort() && 
        default_options.smbPort() != options->smbPort() )
   {
-    qDebug() << "smb port";
     return true;
   }
   else
@@ -1013,7 +1010,6 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
   if ( empty_options.fileSystemPort() != options->fileSystemPort() && 
        default_options.fileSystemPort() != options->fileSystemPort() )
   {
-    qDebug() << "fs port";
     return true;
   }
   else
@@ -1025,7 +1021,6 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
   if ( empty_options.writeAccess() != options->writeAccess() &&
        default_options.writeAccess() != options->writeAccess() )
   {
-    qDebug() << "write access";
     return true;
   }
   else
@@ -1038,7 +1033,6 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
   if ( empty_options.protocolHint() != options->protocolHint() &&
        default_options.protocolHint() != options->protocolHint() )
   {
-    qDebug() << "protocol hint";
     return true;
   }
   else
@@ -1051,7 +1045,6 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
   if ( empty_options.useKerberos() != options->useKerberos() &&
        default_options.useKerberos() != options->useKerberos() )
   {
-    qDebug() << "kerberos";
     return true;
   }
   else
@@ -1063,7 +1056,6 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
   if ( empty_options.uid() != options->uid() &&
        default_options.uid() != options->uid() )
   {
-    qDebug() << "uid";
     return true;
   }
   else
@@ -1075,7 +1067,6 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
   if ( empty_options.gid() != options->gid() &&
        default_options.gid() != options->gid() )
   {
-    qDebug() << "gid";
     return true;
   }
   else
@@ -1087,7 +1078,6 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
   if ( QString::compare( empty_options.macAddress(), options->macAddress() ) != 0 &&
        QString::compare( default_options.macAddress(), options->macAddress() ) != 0 )
   {
-    qDebug() << "mac address";
     return true;
   }
   else
@@ -1099,7 +1089,6 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
   if ( empty_options.wolSendBeforeNetworkScan() != options->wolSendBeforeNetworkScan() &&
        default_options.wolSendBeforeNetworkScan() != options->wolSendBeforeNetworkScan() )
   {
-    qDebug() << "send before scan";
     return true;
   }
   else
@@ -1111,7 +1100,6 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
   if ( empty_options.wolSendBeforeMount() != options->wolSendBeforeMount() &&
        default_options.wolSendBeforeMount() != options->wolSendBeforeMount() )
   {
-    qDebug() << "send before mount";
     return true;
   }
   else
