@@ -41,6 +41,7 @@
 #include <smb4knotification.h>
 #include <smb4khost.h>
 #include <smb4kshare.h>
+#include "smb4ksettings.h"
 
 K_GLOBAL_STATIC( Smb4KCustomOptionsManagerPrivate, p );
 
@@ -823,12 +824,87 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
 {
   Q_ASSERT( options );
   
-  // Check if there are custom options defined. We do this
-  // by using an empty Smb4KCustomOptions object for comparison.
-  Smb4KCustomOptions default_options;
+  // Check if there are custom options defined.
+  // Checks are performed against an empty and a default custom
+  // options object. Default means that the values of the global
+  // settings are honored.
+  Smb4KCustomOptions empty_options, default_options;
+  
+  // Set up the default options
+  default_options.setSMBPort( Smb4KSettings::remoteSMBPort() );
+#ifndef Q_OS_FREEBSD
+  default_options.setFileSystemPort( Smb4KSettings::remoteFileSystemPort() );
+  
+  switch ( Smb4KSettings::writeAccess() )
+  {
+    case Smb4KSettings::EnumWriteAccess::ReadWrite:
+    {
+      default_options.setWriteAccess( Smb4KCustomOptions::ReadWrite );
+      break;
+    }
+    case Smb4KSettings::EnumWriteAccess::ReadOnly:
+    {
+      default_options.setWriteAccess( Smb4KCustomOptions::ReadOnly );
+      break;
+    }
+    default:
+    {
+      default_options.setWriteAccess( Smb4KCustomOptions::UndefinedWriteAccess );
+      break;
+    }
+  }
+#endif
+
+  switch ( Smb4KSettings::protocolHint() )
+  {
+    case Smb4KSettings::EnumProtocolHint::Automatic:
+    {
+      default_options.setProtocolHint( Smb4KCustomOptions::Automatic );
+      break;
+    }
+    case Smb4KSettings::EnumProtocolHint::RPC:
+    {
+      default_options.setProtocolHint( Smb4KCustomOptions::RPC );
+      break;
+    }
+    case Smb4KSettings::EnumProtocolHint::RAP:
+    {
+      default_options.setProtocolHint( Smb4KCustomOptions::RAP );
+      break;
+    }
+    case Smb4KSettings::EnumProtocolHint::ADS:
+    {
+      default_options.setProtocolHint( Smb4KCustomOptions::ADS );
+      break;
+    }
+    default:
+    {
+      default_options.setProtocolHint( Smb4KCustomOptions::UndefinedProtocolHint );
+      break;
+    }
+  }
+  
+  if ( Smb4KSettings::useKerberos() )
+  {
+    default_options.setUseKerberos( Smb4KCustomOptions::UseKerberos );
+  }
+  else
+  {
+    default_options.setUseKerberos( Smb4KCustomOptions::NoKerberos );
+  }
+  
+  default_options.setUID( (K_UID)Smb4KSettings::userID().toInt() );
+  default_options.setGID( (K_GID)Smb4KSettings::groupID().toInt() );
+  
+  // WOL features have no default values.
+  
+  //
+  // Do the actual check
+  //
 
   // SMB port
-  if ( default_options.smbPort() != options->smbPort() )
+  if ( empty_options.smbPort() != options->smbPort() && 
+       default_options.smbPort() != options->smbPort() )
   {
     return true;
   }
@@ -840,7 +916,8 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
 #ifndef Q_OS_FREEBSD
   
   // File system port (used for mounting)
-  if ( default_options.fileSystemPort() != options->fileSystemPort() )
+  if ( empty_options.fileSystemPort() != options->fileSystemPort() && 
+       default_options.fileSystemPort() != options->fileSystemPort() )
   {
     return true;
   }
@@ -850,7 +927,8 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
   }
 
   // Write access
-  if ( default_options.writeAccess() != options->writeAccess() )
+  if ( empty_options.writeAccess() != options->writeAccess() &&
+       default_options.writeAccess() != options->writeAccess() )
   {
     return true;
   }
@@ -861,7 +939,8 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
 #endif
 
   // Protocol hint
-  if ( default_options.protocolHint() != options->protocolHint() )
+  if ( empty_options.protocolHint() != options->protocolHint() &&
+       default_options.protocolHint() != options->protocolHint() )
   {
     return true;
   }
@@ -871,7 +950,8 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
   }
   
   // Kerberos
-  if ( default_options.useKerberos() != options->useKerberos() )
+  if ( empty_options.useKerberos() != options->useKerberos() &&
+       default_options.useKerberos() != options->useKerberos() )
   {
     return true;
   }
@@ -881,7 +961,8 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
   }
   
   // UID
-  if ( default_options.uid() != options->uid() )
+  if ( empty_options.uid() != options->uid() &&
+       default_options.uid() != options->uid() )
   {
     return true;
   }
@@ -891,7 +972,8 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
   }
   
   // GID
-  if ( default_options.gid() != options->gid() )
+  if ( empty_options.gid() != options->gid() &&
+       default_options.gid() != options->gid() )
   {
     return true;
   }
