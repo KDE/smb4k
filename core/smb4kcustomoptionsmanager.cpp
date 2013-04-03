@@ -1040,7 +1040,6 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
     // Do nothing
   }
   
-  // FIXME??
   // Kerberos
   if ( empty_options.useKerberos() != options->useKerberos() &&
        default_options.useKerberos() != options->useKerberos() )
