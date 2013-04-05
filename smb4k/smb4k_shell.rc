@@ -40,12 +40,14 @@
   <Action name="quit_action"/>
 </ToolBar>
 <ToolBar fullWidth="true" name="mainToolBar"><text>Main Toolbar</text>
-  <Action name="mount_action"/>
-  <Action name="bookmark_action"/>
+<!--   <Action name="mount_action"/> -->
+
   <Separator/>
   <ActionList name="dynamic_list">
   <!-- dynamically loaded by the main window -->
   </ActionList>
+  <Separator/>
+  <Action name="bookmark_action"/>
   <Separator/>
   <Action name="dock_widgets_menu"/>
   <Action name="shares_view_menu"/>

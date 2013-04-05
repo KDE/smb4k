@@ -256,10 +256,7 @@ void Smb4KNetworkBrowserPart::setupActions()
   mount_action->setInactiveGuiItem( unmount_item );
   mount_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_M ) );
   mount_action->setActive( true );
-  // The mount action has to change automatically to the unmount
-  // action, because we want to be able to unmount the selected
-  // share immediately.
-  mount_action->setAutoToggle( true );
+  mount_action->setAutoToggle( false );
   connect( mount_action, SIGNAL(triggered(bool)), this, SLOT(slotMountActionTriggered(bool)) );
   connect( mount_action, SIGNAL(activeChanged(bool)), this, SLOT(slotMountActionChanged(bool)) );
 
@@ -2115,11 +2112,43 @@ void Smb4KNetworkBrowserPart::slotMounterAboutToStart( Smb4KShare */*share*/, in
 }
 
 
-void Smb4KNetworkBrowserPart::slotMounterFinished( Smb4KShare */*share*/, int /*process*/ )
+void Smb4KNetworkBrowserPart::slotMounterFinished( Smb4KShare */*share*/, int process )
 {
-  // Do not change the state of the rescan action here, because it has
-  // nothing to do with the mounter.
-//   actionCollection()->action( "abort_action" )->setEnabled( false );
+  switch ( process )
+  {
+    case MountShare:
+    {
+      KDualAction *mount_action = static_cast<KDualAction *>(actionCollection()->action( "mount_action" ));
+      
+      if ( mount_action )
+      {
+        mount_action->setActive( false );
+      }
+      else
+      {
+        // Do nothing
+      }
+      break;
+    }
+    case UnmountShare:
+    {
+      KDualAction *mount_action = static_cast<KDualAction *>(actionCollection()->action( "mount_action" ));
+      
+      if ( mount_action )
+      {
+        mount_action->setActive( true );
+      }
+      else
+      {
+        // Do nothing
+      }
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
 }
 
 

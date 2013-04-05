@@ -2,16 +2,14 @@
 <gui name="smb4ksearchdialog_part" version="1">
 <MenuBar>
   <Menu name="search"><text>Search</text>
-    <Action name="search_action"/>
-    <Action name="abort_search_action"/>
+    <Action name="search_abort_action"/>
     <Separator/>
     <Action name="clear_search_action"/>
     <Action name="item_action"/>
   </Menu>
 </MenuBar>
 <ToolBar name="searchToolBar">
-  <Action name="search_action"/>
-  <Action name="abort_search_action"/>
+  <Action name="search_abort_action"/>
   <Separator/>
   <Action name="clear_search_action"/>
   <Action name="mount_action"/>

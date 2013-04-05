@@ -139,14 +139,6 @@ class Smb4KNetworkSearchPart : public KParts::Part
     void slotReturnPressed();
 
     /**
-     * This slot is invoked when the Search action is triggered. It disables some
-     * widgets and starts the search.
-     *
-     * @param checked             TRUE if the action is checked.
-     */
-    void slotSearchActionTriggered( bool checked );
-
-    /**
      * This slot is invoked whent the Clear action is triggered. It clears the
      * combo box and the list widget and diables the actions.
      *
@@ -168,14 +160,6 @@ class Smb4KNetworkSearchPart : public KParts::Part
      * @param active              TRUE if the the action is in the active state.
      */
     void slotMountActionChanged( bool active );
-
-    /**
-     * This slot is invoked when the Abort action is triggered. It enables and
-     * disables some actions.
-     *
-     * @param checked             TRUE if the action is checked.
-     */
-    void slotAbortActionTriggered( bool checked );
 
     /**
      * This slot is invoked when the text in the combo box changed. It enables
@@ -211,6 +195,31 @@ class Smb4KNetworkSearchPart : public KParts::Part
      * @param group               The icon group
      */
     void slotIconSizeChanged( int group );
+    
+    /**
+     * This action is invoked when the Search/Abort dual action is triggered
+     *
+     * @param checked             TRUE if the action is checked
+     */
+    void slotSearchAbortActionTriggered( bool checked );
+    
+    /**
+     * This action is invoked when the active state of the Search/Abort
+     * dual action changed.
+     * 
+     * @param active              active or inactive
+     */
+    void slotSearchAbortActionChanged( bool active );
+    
+    /**
+     * This slot is invoked when a mount or unmount finished. It is used
+     * to switch the active state of the Mount/Unmount dual action.
+     * 
+     * @param share               The share
+     * 
+     * @param process             The kind of process
+     */
+    void slotMounterFinished( Smb4KShare *share, int process );
 
   private:
     /**

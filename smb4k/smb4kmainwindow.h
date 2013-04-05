@@ -272,21 +272,6 @@ class Smb4KMainWindow : public KParts::MainWindow
      * Enable/disable the "Add Bookmark" action
      */
     void slotEnableBookmarkAction();
-
-    /**
-     * Enable/disable the "Mount"/"Unmount" action
-     */
-    void slotEnableMountAction();
-
-    /**
-     * Called when the global mount action (in the toolbar) has been triggered
-     */
-    void slotMountActionTriggered();
-
-    /**
-     * Called when the mount dual action needs to change its active state.
-     */
-    void slotMountActionChanged( bool active );
     
     /**
      * Enable/disable the "Open With" action

@@ -148,11 +148,17 @@ Smb4KNetworkSearchPart::~Smb4KNetworkSearchPart()
 
 void Smb4KNetworkSearchPart::setupActions()
 {
-  KAction *search_action = new KAction( KIcon( "system-search" ), i18n( "&Search" ),
-                           actionCollection() );
-  search_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_S ) );
-  connect( search_action, SIGNAL(triggered(bool)), this, SLOT(slotSearchActionTriggered(bool)) );
-
+  KDualAction *search_abort_action = new KDualAction( actionCollection() );
+  KGuiItem search_item( i18n( "&Search" ), KIcon( "system-search" ) );
+  KGuiItem abort_item( i18n( "Abort" ), KIcon( "process-stop" ) );
+  search_abort_action->setActiveGuiItem( search_item );
+  search_abort_action->setInactiveGuiItem( abort_item );
+  search_abort_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_S ) );
+  search_abort_action->setActive( true );
+  search_abort_action->setAutoToggle( false );
+  connect( search_abort_action, SIGNAL(triggered(bool)), this, SLOT(slotSearchAbortActionTriggered(bool)) );
+  connect( search_abort_action, SIGNAL(activeChanged(bool)), this, SLOT(slotSearchAbortActionChanged(bool)) );
+  
   KAction *clear_action  = new KAction( KIcon( "edit-clear-history" ), i18n( "&Clear" ),
                            actionCollection() );
   // No shortcut.
@@ -165,33 +171,18 @@ void Smb4KNetworkSearchPart::setupActions()
   mount_action->setInactiveGuiItem( unmount_item );
   mount_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_M ) );
   mount_action->setActive( true );
-  // The mount action has to change automatically to the unmount
-  // action, because we want to be able to unmount the selected
-  // share immediately.
-  mount_action->setAutoToggle( true );
+  mount_action->setAutoToggle( false );
   connect( mount_action, SIGNAL(triggered(bool)), this, SLOT(slotMountActionTriggered(bool)) );
   connect( mount_action, SIGNAL(activeChanged(bool)), this, SLOT(slotMountActionChanged(bool)) );
   
-//   KAction *mount_action  = new KAction( KIcon( "emblem-mounted" ), i18n( "Mount" ),
-//                            actionCollection() );
-//   mount_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_D ) );
-//   connect( mount_action, SIGNAL(triggered(bool)), this, SLOT(slotMountActionTriggered(bool)) );
-
-  KAction *abort_action  = new KAction( KIcon( "process-stop" ), i18n( "Abort" ),
-                           actionCollection() );
-  abort_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_A ) );
-  connect( abort_action, SIGNAL(triggered(bool)), this, SLOT(slotAbortActionTriggered(bool)) );
-
-  actionCollection()->addAction( "search_action", search_action );
-  actionCollection()->addAction( "abort_search_action", abort_action );
+  actionCollection()->addAction( "search_abort_action", search_abort_action );
   actionCollection()->addAction( "clear_search_action", clear_action );
   actionCollection()->addAction( "mount_action", mount_action );
 
   // Disable all actions.
-  search_action->setEnabled( false );
+  search_abort_action->setEnabled( false );
   clear_action->setEnabled( false );
   mount_action->setEnabled( false );
-  abort_action->setEnabled( false );
 
   // Put the actions in the context menu.
   m_menu = new KActionMenu( this );
@@ -200,8 +191,7 @@ void Smb4KNetworkSearchPart::setupActions()
   m_menu->addAction( mount_action );
   
   // Put some actions in the tool bar of the search widget
-  m_widget->toolBar()->addAction( search_action );
-  m_widget->toolBar()->addAction( abort_action );
+  m_widget->toolBar()->addAction( search_abort_action );
 }
 
 
@@ -304,7 +294,16 @@ void Smb4KNetworkSearchPart::slotReturnPressed()
 {
   if ( !m_widget->comboBox()->currentText().isEmpty() )
   {
-    slotSearchActionTriggered( false );
+    KDualAction *search_abort_action = static_cast<KDualAction *>( actionCollection()->action( "search_abort_action" ) );
+    
+    if ( search_abort_action && search_abort_action->isActive() )
+    {
+      slotSearchAbortActionTriggered( false );
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
@@ -313,23 +312,60 @@ void Smb4KNetworkSearchPart::slotReturnPressed()
 }
 
 
-void Smb4KNetworkSearchPart::slotSearchActionTriggered( bool /*checked*/ )
+void Smb4KNetworkSearchPart::slotSearchAbortActionTriggered(bool /*checked*/)
 {
-  // Start the search.
-  // Note: The combo box will be disabled/enabled by slotScannerState().
-  m_widget->listWidget()->clear();
-
-  QString search_item = m_widget->comboBox()->currentText();
-
-  if ( !search_item.isEmpty() )
+  KDualAction *search_abort_action = static_cast<KDualAction *>( actionCollection()->action( "search_abort_action" ) );
+  
+  if ( search_abort_action )
   {
-    Smb4KSearch::self()->search( m_widget->comboBox()->currentText(), m_widget );
-    KCompletion *completion = m_widget->comboBox()->completionObject();
-    completion->addItem( search_item );
+    if ( search_abort_action->isActive() )
+    {
+      // Start the search.
+      m_widget->listWidget()->clear();
+
+      QString search_item = m_widget->comboBox()->currentText();
+
+      if ( !search_item.isEmpty() )
+      {
+        Smb4KSearch::self()->search( m_widget->comboBox()->currentText(), m_widget );
+        KCompletion *completion = m_widget->comboBox()->completionObject();
+        completion->addItem( search_item );
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      QString search_item = m_widget->comboBox()->currentText();
+    
+      if ( !search_item.isEmpty() )
+      {
+        Smb4KSearch::self()->abort( m_widget->comboBox()->currentText() );
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
   }
   else
   {
     // Do nothing
+  }
+}
+
+
+void Smb4KNetworkSearchPart::slotSearchAbortActionChanged(bool active)
+{
+  if ( active )
+  {
+    actionCollection()->action( "search_abort_action" )->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_S ) );
+  }
+  else
+  {
+    actionCollection()->action( "search_abort_action" )->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_A ) );
   }
 }
 
@@ -342,10 +378,9 @@ void Smb4KNetworkSearchPart::slotClearActionTriggered( bool /*checked*/ )
   m_widget->listWidget()->clear();
 
   // Disable the actions.
-  actionCollection()->action( "search_action" )->setEnabled( false );
+  actionCollection()->action( "search_abort_action" )->setEnabled( false );
   actionCollection()->action( "clear_search_action" )->setEnabled( false );
   actionCollection()->action( "mount_action" )->setEnabled( false );
-  actionCollection()->action( "abort_search_action" )->setEnabled( false );
 }
 
 
@@ -389,24 +424,9 @@ void Smb4KNetworkSearchPart::slotMountActionChanged( bool active )
 }
 
 
-void Smb4KNetworkSearchPart::slotAbortActionTriggered( bool /*checked*/ )
-{
-  QString search_item = m_widget->comboBox()->currentText();
-
-  if ( !search_item.isEmpty() )
-  {
-    Smb4KSearch::self()->abort( m_widget->comboBox()->currentText() );
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
 void Smb4KNetworkSearchPart::slotComboBoxTextChanged( const QString &text )
 {
-  actionCollection()->action( "search_action" )->setEnabled( !text.isEmpty() );
+  actionCollection()->action( "search_abort_action" )->setEnabled( !text.isEmpty() );
   actionCollection()->action( "clear_search_action" )->setEnabled( !text.isEmpty() );
 }
 
@@ -571,8 +591,17 @@ void Smb4KNetworkSearchPart::slotSearchAboutToStart( const QString &string )
   }
 
   m_widget->comboBox()->setEnabled( false );
-  actionCollection()->action( "abort_search_action" )->setEnabled( true );
-  actionCollection()->action( "search_action" )->setEnabled( false );
+  KDualAction *search_abort_action = static_cast<KDualAction *>( actionCollection()->action( "search_abort_action" ) );
+  
+  if ( search_abort_action )
+  {
+    search_abort_action->setActive( false );
+  }
+  else
+  {
+    // Do nothing
+  }
+  
   actionCollection()->action( "clear_search_action" )->setEnabled( false );
   // Add action will be disabled elsewhere.
 }
@@ -590,8 +619,17 @@ void Smb4KNetworkSearchPart::slotSearchFinished( const QString &/*string*/ )
   }
 
   m_widget->comboBox()->setEnabled( true );
-  actionCollection()->action( "abort_search_action" )->setEnabled( false );
-  actionCollection()->action( "search_action" )->setEnabled( true );
+  KDualAction *search_abort_action = static_cast<KDualAction *>( actionCollection()->action( "search_abort_action" ) );
+  
+  if ( search_abort_action )
+  {
+    search_abort_action->setActive( true );
+  }
+  else
+  {
+    // Do nothing
+  }
+  
   actionCollection()->action( "clear_search_action" )->setEnabled( !m_widget->comboBox()->currentText().isEmpty() );
 
   if ( m_widget->listWidget()->count() == 0 )
@@ -682,6 +720,46 @@ void Smb4KNetworkSearchPart::slotIconSizeChanged( int group )
     {
       int icon_size = KIconLoader::global()->currentSize( KIconLoader::Small );
       m_widget->listWidget()->setIconSize( QSize( icon_size, icon_size ) );
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+}
+
+
+void Smb4KNetworkSearchPart::slotMounterFinished(Smb4KShare* /*share*/, int process)
+{
+  switch ( process )
+  {
+    case MountShare:
+    {
+      KDualAction *mount_action = static_cast<KDualAction *>(actionCollection()->action( "mount_action" ));
+      
+      if ( mount_action )
+      {
+        mount_action->setActive( false );
+      }
+      else
+      {
+        // Do nothing
+      }
+      break;
+    }
+    case UnmountShare:
+    {
+      KDualAction *mount_action = static_cast<KDualAction *>(actionCollection()->action( "mount_action" ));
+      
+      if ( mount_action )
+      {
+        mount_action->setActive( true );
+      }
+      else
+      {
+        // Do nothing
+      }
       break;
     }
     default:

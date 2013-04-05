@@ -162,20 +162,6 @@ void Smb4KMainWindow::setupActions()
   actionCollection()->addAction( "bookmarks_menu", bookmarks );
   actionCollection()->addAction( "bookmark_action", bookmarks->addBookmarkAction() );
   connect( bookmarks->addBookmarkAction(), SIGNAL(triggered(bool)), SLOT(slotAddBookmark()) );
-
-  // Mount/unmount action
-  KDualAction *mount_action = new KDualAction( actionCollection() );
-  KGuiItem mount_item( i18n( "&Mount" ), KIcon( "emblem-mounted" ) );
-  KGuiItem unmount_item( i18n( "&Unmount" ), KIcon( "emblem-unmounted" ) );
-  mount_action->setActiveGuiItem( mount_item );
-  mount_action->setInactiveGuiItem( unmount_item );
-  // Do not allow auto toggling. The action will be toggled
-  // by the active part.
-  mount_action->setAutoToggle( false );
-  mount_action->setActive( true );
-  mount_action->setEnabled( false );
-  actionCollection()->addAction( "mount_action", mount_action );
-  connect( mount_action, SIGNAL(triggered(bool)), SLOT(slotMountActionTriggered()) );
 }
 
 
@@ -1244,7 +1230,7 @@ void Smb4KMainWindow::slotActivePartChanged( KParts::Part *part )
   Q_ASSERT( part );
 
   QAction *bookmark_action = NULL;
-  QAction *mount_action = NULL;
+//   QAction *mount_action = NULL;
 
   // First break the connections and disable the actions
   if ( m_active_part )
@@ -1256,31 +1242,6 @@ void Smb4KMainWindow::slotActivePartChanged( KParts::Part *part )
     {
       disconnect( bookmark_action, SIGNAL(changed()), this, SLOT(slotEnableBookmarkAction()) );
       actionCollection()->action( "bookmark_action" )->setEnabled( false );
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    // Mount/unmount action
-    if ( m_active_part == m_browser_part || m_active_part == m_search_part )
-    {
-      mount_action = m_active_part->actionCollection()->action( "mount_action" );
-    }
-    else if ( m_active_part == m_shares_part )
-    {
-      mount_action = m_active_part->actionCollection()->action( "unmount_action" );
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    if ( mount_action )
-    {
-//       disconnect( mount_action, SIGNAL(changed()), this, SLOT(slotEnableMountAction()) );
-      disconnect( mount_action );
-      actionCollection()->action( "mount_action" )->setEnabled( false );
     }
     else
     {
@@ -1306,30 +1267,6 @@ void Smb4KMainWindow::slotActivePartChanged( KParts::Part *part )
     {
       actionCollection()->action( "bookmark_action" )->setEnabled( action->isEnabled() );
       connect( action, SIGNAL(changed()), this, SLOT(slotEnableBookmarkAction()) );
-      continue;
-    }
-    else if ( QString::compare( action->objectName(), "mount_action" ) == 0 )
-    {
-      static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
-      actionCollection()->action( "mount_action" )->setEnabled( action->isEnabled() );
-      connect( action, SIGNAL(changed()), this, SLOT(slotEnableMountAction()) );
-
-      if ( QString::compare( action->metaObject()->className(), "KDualAction" ) == 0 )
-      {
-        connect( static_cast<KDualAction *>( action ), SIGNAL(activeChanged(bool)), this, SLOT(slotMountActionChanged(bool)) );
-      }
-      else
-      {
-        // Do nothing
-      }
-      
-      continue;
-    }
-    else if ( QString::compare( action->objectName(), "unmount_action" ) == 0 )
-    {
-      static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( false );
-      actionCollection()->action( "mount_action" )->setEnabled( action->isEnabled() );
-      connect( action, SIGNAL(changed()), this, SLOT(slotEnableMountAction()) );
       continue;
     }
     else if ( QString::compare( action->objectName(), "filemanager_action" ) == 0 ||
@@ -1362,54 +1299,6 @@ void Smb4KMainWindow::slotEnableBookmarkAction()
   {
     // Do nothing
   }
-}
-
-
-void Smb4KMainWindow::slotEnableMountAction()
-{
-  QAction *action = NULL;
-  
-  if ( m_active_part == m_browser_part || m_active_part == m_search_part )
-  {
-    action = m_active_part->actionCollection()->action( "mount_action" );
-  }
-  else if ( m_active_part == m_shares_part )
-  {
-    action = m_active_part->actionCollection()->action( "unmount_action" );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if ( action )
-  {
-    actionCollection()->action( "mount_action" )->setEnabled( action->isEnabled() );
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KMainWindow::slotMountActionTriggered()
-{
-  if ( m_active_part )
-  {
-    Smb4KEvent *customEvent = new Smb4KEvent( Smb4KEvent::MountOrUnmountShare );
-    KApplication::postEvent( m_active_part, customEvent );
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KMainWindow::slotMountActionChanged( bool active )
-{
-  static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( active );
 }
 
 
