@@ -1300,7 +1300,18 @@ void Smb4KMounter::mount( const QUrl &url )
 {
   if ( url.isValid() && !url.path().isEmpty() )
   {
-    Smb4KShare *share = findShare( url.path(), url.host() );
+    QString path = url.path();
+    
+    if ( path.startsWith( '/' ) )
+    {
+      path = path.mid( 1, -1 );
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    Smb4KShare *share = findShare( path, url.host() );
   
     if ( share )
     {
