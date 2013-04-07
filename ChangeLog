@@ -75,6 +75,7 @@ Smb4K 1.1.0 (????-??-??):
 - Revised network browser:
   + Removed wrong checks that caused tooltips not being updated properly.
   + Added ability to select multiple shares and process them accordingly.
+  + Improved tool bar.
 - Revised mount helper:
   + Simplified names for the arguments that can/must be passed.
 - Revised network browser:
@@ -86,8 +87,8 @@ Smb4K 1.1.0 (????-??-??):
   + Implemented shortcuts for all entries. (Labels have now their buddies
     set.)
   + Moved custom options to own page, since they are no longer only related
-    to Samba. The Wake On LAN settings have been added. Improvements were 
-    implemented.
+    to Samba. Wake On LAN settings and the ability to - basically - switch
+    off remounting have been added. Further improvements were implemented.
   + Renamed all classes that represent a page in the configuration dialog.
 
 Smb4K 1.0.4 (2012-08-19):
