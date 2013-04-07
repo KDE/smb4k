@@ -31,7 +31,7 @@ import org.kde.plasma.extras 0.1 as PlasmaExtras
 import org.kde.qtextracomponents 0.1
 
 
-Item {
+PlasmaExtras.App {
   id: mainwindow
   property int minimumWidth: 400
   property int minimumHeight: 300
@@ -67,72 +67,104 @@ Item {
       removeUnmountedShares()
     }
   }
-
+  
   //
-  // The browser widget
+  // The widgets
   //
-  PlasmaExtras.ScrollArea {
-    id: browserScrollArea
+  PlasmaComponents.TabBar {
+    id: tabBar
     anchors {
       top: parent.top
       left: parent.left
-      bottom: parent.bottom
+      right: parent.right
     }
-    anchors.rightMargin: 5
-    width: parent.width / 2
-    ListView {
-      id: browserListView
-      delegate: BrowserItemDelegate {
-        id: browserDelegate
-        onItemClicked: {
-          browserListView.currentIndex = index
-          networkItemClicked()
-        }
-        onUpClicked: {
-          browserListView.currentIndex = index
-          up()
-        }
-      }
-      model: ListModel {}
-      focus: true
-      highlightRangeMode: ListView.StrictlyEnforceRange
+    
+    PlasmaComponents.TabButton {
+      id: browserTabButton
+      text: "Network Neighborhood"
+      iconSource: "network-workgroup"
+      tab: browserPage
+    }
+    
+    PlasmaComponents.TabButton {
+      id: sharesTabButton
+      text: "Mounted Shares"
+      iconSource: "folder-remote"
+      tab: sharesPage
     }
   }
-  
-  //
-  // The mounted shares view
-  //
-  PlasmaExtras.ScrollArea {
-    id: sharesViewScrollArea
+      
+  PlasmaComponents.TabGroup {
+    id: tabGroup
+    currentTab: browserPage
     anchors {
-      top: parent.top
-      left: browserScrollArea.right
+      top: tabBar.bottom
+      left: parent.left
       right: parent.right
       bottom: parent.bottom
     }
-    anchors.leftMargin: 5
-    width: parent.width / 2
-    GridView {
-      id: sharesView
-      cellWidth: 120
-      cellHeight: 80
-      delegate: SharesViewItemDelegate {
-        id: sharesViewDelegate
-        onOpenClicked: {
-          sharesView.currentIndex = index
-          mountedShareClicked()
-        }
-        onUnmountClicked: {
-          sharesView.currentIndex = index
-          unmountShare()
+      
+    //
+    // The browser widget
+    //
+    PlasmaComponents.Page {
+      id: browserPage
+      
+      PlasmaExtras.ScrollArea {
+        id: browserScrollArea
+        anchors.fill: parent
+        ListView {
+          id: browserListView
+          delegate: BrowserItemDelegate {
+            id: browserDelegate
+            onItemClicked: {
+              browserListView.currentIndex = index
+              networkItemClicked()
+            }
+            onUpClicked: {
+              browserListView.currentIndex = index
+              up()
+            }
+          }
+          model: ListModel {}
+          focus: true
+          highlightRangeMode: ListView.StrictlyEnforceRange
         }
       }
-      model: ListModel {}
-      focus: true
-      highlightRangeMode: GridView.StrictlyEnforceRange
+    }
+    
+    //
+    // The mounter widget
+    //
+    PlasmaComponents.Page {
+      id: sharesPage
+      
+      PlasmaExtras.ScrollArea {
+        id: sharesViewScrollArea
+        anchors.fill: parent
+        GridView {
+          id: sharesView
+          cellWidth: 120
+          cellHeight: 80
+          delegate: SharesViewItemDelegate {
+            id: sharesViewDelegate
+            onOpenClicked: {
+              sharesView.currentIndex = index
+              mountedShareClicked()
+            }
+            onUnmountClicked: {
+              sharesView.currentIndex = index
+              unmountShare()
+            }
+          }
+          model: ListModel {}
+          focus: true
+          highlightRangeMode: GridView.StrictlyEnforceRange
+        }
+      }
     }
   }
-
+  
   PlasmaComponents.BusyIndicator {
     id: busyIndicator
     running: false
