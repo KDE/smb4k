@@ -197,7 +197,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
     QDeclarativeListProperty<Smb4KNetworkObject> mountedShares();
     
     /**
-     * This function takes a KUrl object and initiates the mounting of a remote
+     * This function takes a QUrl object and initiates the mounting of a remote
      * share. 
      * 
      * Please note that this function only works with share objects that are 

@@ -111,6 +111,33 @@ void Smb4KPrint::print( Smb4KShare *printer, QWidget *parent )
 }
 
 
+void Smb4KPrint::print(const QUrl& url)
+{
+  QString host = url.host();
+  QString name = url.path();
+  
+  if ( name.startsWith( '/' ) )
+  {
+    name = name.mid( 1 );
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  Smb4KShare *printer = findShare( name, host );
+  
+  if ( printer )
+  {
+    print( printer, 0 );
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
 bool Smb4KPrint::isRunning()
 {
   return hasSubjobs();

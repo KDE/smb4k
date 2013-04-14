@@ -33,6 +33,7 @@
 #include "core/smb4kscanner.h"
 #include "core/smb4kmounter.h"
 #include "core/smb4knetworkobject.h"
+#include "core/smb4kprint.h"
 
 // Qt includes
 #include <QtDeclarative/qdeclarative.h>
@@ -43,6 +44,7 @@ void Smb4KQMLPlugin::registerTypes( const char *uri )
   qmlRegisterType<Smb4KNetworkObject>( uri, 1, 0, "NetworkObject" );
   qmlRegisterType<Smb4KScanner>( uri, 1, 0, "Scanner" );
   qmlRegisterType<Smb4KMounter>( uri, 1, 0, "Mounter" );
+  qmlRegisterType<Smb4KPrint>( uri, 1, 0, "Print" );
 }
 
 Q_EXPORT_PLUGIN2( Smb4KQML, Smb4KQMLPlugin );

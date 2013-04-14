@@ -68,6 +68,10 @@ PlasmaExtras.App {
     }
   }
   
+  Print {
+    id: printer
+  }
+  
   //
   // The widgets
   //
@@ -177,6 +181,7 @@ PlasmaExtras.App {
   Component.onCompleted: {
     scanner.start()
     mounter.start()
+    printer.start()
   }
 
   //
@@ -596,7 +601,7 @@ PlasmaExtras.App {
         mounter.mount( browserListView.model.get( browserListView.currentIndex ).itemURL )
       }
       else {
-        print( "FIXME: Print a file" );
+        printer.print( browserListView.model.get( browserListView.currentIndex ).itemURL )
       }
     }
   }

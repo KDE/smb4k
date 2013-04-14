@@ -27,6 +27,7 @@
 #define SMB4KPRINT_H
 
 // Qt includes
+#include <QtCore/QUrl>
 #include <QtGui/QWidget>
 
 // KDE specific includes
@@ -50,6 +51,8 @@ class Smb4KPrintJob;
 class KDE_EXPORT Smb4KPrint : public KCompositeJob
 {
   Q_OBJECT
+  
+  Q_PROPERTY( bool running READ isRunning )
   
   friend class Smb4KPrintPrivate;
   
@@ -118,6 +121,17 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
      * This function starts the composite job
      */
     void start();
+    
+    /**
+     * This function takes a QUrl object and initiates the printing of a file
+     * on a remote printer. 
+     * 
+     * Please note that this function only works with share objects that are 
+     * already known. All others will be ignored.
+     * 
+     * @param url         The URL of the remote printer share
+     */
+    Q_INVOKABLE void print( const QUrl &url );
     
   Q_SIGNALS:
     /**
