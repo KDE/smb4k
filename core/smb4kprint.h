@@ -108,7 +108,7 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
     /**
      * This function aborts all print jobs at once.
      */
-    void abortAll();
+    Q_INVOKABLE void abortAll();
 
     /**
      * This function aborts the printing to a certain printer share.

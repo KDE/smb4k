@@ -638,6 +638,7 @@ PlasmaExtras.App {
   function abort() {
     scanner.abortAll
     mounter.abortAll
+    printer.abortAll
   }
   
   //
