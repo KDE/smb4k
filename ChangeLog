@@ -2,6 +2,9 @@ Smb4K 1.0.7 (2013-03-??):
 - Fixed remounting of shares.
 - Fixed Smb4KCustomOptionsManager::hasCustomOptions(). The default options
   defined via the configuration dialog are honored now.
+- Fixed "Ignoring unknown parameter" error messages (closes SF ticket #29).
+- Fixed command line argument when a master browser is queried for the 
+  browse list.
 
 Smb4K 1.0.6 (2013-03-03):
 - Fixed crash in Smb4KMounter::slotAuthError() due to signals being emitted
