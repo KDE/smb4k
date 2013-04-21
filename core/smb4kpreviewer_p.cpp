@@ -443,7 +443,7 @@ void Smb4KPreviewJob::slotReadStandardError()
 
   // Remove DEBUG messages and the additional information
   // that smbclient unfortunately reports to stderr.
-  QStringList err_msg = stderr.split( "\n", QString::SkipEmptyParts );
+  QStringList err_msg = stderr.split( '\n', QString::SkipEmptyParts );
 
   QMutableStringListIterator it( err_msg );
 
@@ -455,7 +455,11 @@ void Smb4KPreviewJob::slotReadStandardError()
     {
       it.remove();
     }
-    else if ( line.trimmed().startsWith( "Domain" ) || line.trimmed().startsWith( "OS" ) )
+    else if ( line.trimmed().startsWith( QLatin1String( "Domain" ) ) || line.trimmed().startsWith( QLatin1String( "OS" ) ) )
+    {
+      it.remove();
+    }
+    else if ( line.trimmed().startsWith( "Ignoring unknown parameter" ) )
     {
       it.remove();
     }
