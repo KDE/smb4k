@@ -265,7 +265,7 @@ void Smb4KPrintJob::slotReadStandardError()
     else
     {
       // Remove DEBUG messages.
-      QStringList err_msg = stderr.split( "\n", QString::SkipEmptyParts );
+      QStringList err_msg = stderr.split( '\n', QString::SkipEmptyParts );
       
       QMutableStringListIterator it( err_msg );
       
@@ -274,6 +274,10 @@ void Smb4KPrintJob::slotReadStandardError()
         QString line = it.next();
         
         if ( line.contains( "DEBUG" ) )
+        {
+          it.remove();
+        }
+        else if ( line.trimmed().startsWith( "Ignoring unknown parameter" ) )
         {
           it.remove();
         }
