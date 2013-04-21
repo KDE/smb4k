@@ -424,6 +424,34 @@ void Smb4KLookupDomainsJob::slotReadStandardError()
   // Read from stderr and decide what to do.
   QString stderr = QString::fromUtf8( m_proc->readAllStandardError(), -1 ).trimmed();
 
+  // Remove unimportant warnings
+  if ( stderr.contains( "Ignoring unknown parameter" ) )
+  {
+    QStringList tmp = stderr.split( '\n' );
+
+    QMutableStringListIterator it( tmp );
+
+    while ( it.hasNext() )
+    {
+      QString test = it.next();
+
+      if ( test.trimmed().startsWith( "Ignoring unknown parameter" ) )
+      {
+        it.remove();
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+
+    stderr = tmp.join( "\n" );
+  }
+  else
+  {
+    // Do nothing
+  }
+  
   if ( !stderr.isEmpty() )
   {
     Smb4KNotification *notification = new Smb4KNotification();
@@ -703,7 +731,7 @@ void Smb4KQueryMasterJob::slotStartLookup()
   // User name and password if needed
   if ( Smb4KSettings::masterBrowsersRequireAuth() && !host.login().isEmpty() )
   {
-    arguments << QString( "-U %1%" ).arg( host.login() );
+    arguments << QString( "-U %1" ).arg( host.login() );
   }
   else
   {
@@ -768,7 +796,7 @@ void Smb4KQueryMasterJob::slotStartLookup()
   // User name and password if needed
   if ( Smb4KSettings::masterBrowsersRequireAuth() && !host.login().isEmpty() )
   {
-    arguments << QString( "-U %1%" ).arg( host.login() );
+    arguments << QString( "-U %1" ).arg( host.login() );
   }
   else
   {
@@ -820,6 +848,34 @@ void Smb4KQueryMasterJob::slotReadStandardError()
   // Read from stderr and decide what to do.
   QString stderr = QString::fromUtf8( m_proc->readAllStandardError(), -1 ).trimmed();
 
+  // Remove unimportant warnings
+  if ( stderr.contains( "Ignoring unknown parameter" ) )
+  {
+    QStringList tmp = stderr.split( '\n' );
+
+    QMutableStringListIterator it( tmp );
+
+    while ( it.hasNext() )
+    {
+      QString test = it.next();
+
+      if ( test.trimmed().startsWith( "Ignoring unknown parameter" ) )
+      {
+        it.remove();
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+
+    stderr = tmp.join( "\n" );
+  }
+  else
+  {
+    // Do nothing
+  }
+
   if ( !stderr.isEmpty() )
   {
     if ( stderr.contains( "The username or password was not correct." ) ||
@@ -830,13 +886,13 @@ void Smb4KQueryMasterJob::slotReadStandardError()
       if ( m_master_browser.isEmpty() )
       {
         // Figure out the current master browser's IP address.
-        QStringList stderr_list = stderr.split( "\n", QString::SkipEmptyParts );
+        QStringList stderr_list = stderr.split( '\n', QString::SkipEmptyParts );
 
         foreach ( const QString &line, stderr_list )
         {
           if ( line.contains( "Connecting to host=" ) )
           {
-            m_master_browser = line.section( "=", 1, 1 ).trimmed();
+            m_master_browser = line.section( '=', 1, 1 ).trimmed();
             break;
           }
           else
@@ -1351,6 +1407,34 @@ void Smb4KScanBAreasJob::slotReadStandardError()
 {
   QString stderr = QString::fromUtf8( m_proc->readAllStandardError(), -1 ).trimmed();
 
+  // Remove unimportant warnings
+  if ( stderr.contains( "Ignoring unknown parameter" ) )
+  {
+    QStringList tmp = stderr.split( '\n' );
+
+    QMutableStringListIterator it( tmp );
+
+    while ( it.hasNext() )
+    {
+      QString test = it.next();
+
+      if ( test.trimmed().startsWith( "Ignoring unknown parameter" ) )
+      {
+        it.remove();
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+
+    stderr = tmp.join( "\n" );
+  }
+  else
+  {
+    // Do nothing
+  }
+
   if ( !stderr.isEmpty() )
   {
     Smb4KNotification *notification = new Smb4KNotification();
@@ -1665,6 +1749,34 @@ void Smb4KLookupDomainMembersJob::slotReadStandardError()
 {
   QString stderr = QString::fromUtf8( m_proc->readAllStandardError(), -1 ).trimmed();
 
+  // Remove unimportant warnings
+  if ( stderr.contains( "Ignoring unknown parameter" ) )
+  {
+    QStringList tmp = stderr.split( '\n' );
+
+    QMutableStringListIterator it( tmp );
+
+    while ( it.hasNext() )
+    {
+      QString test = it.next();
+
+      if ( test.trimmed().startsWith( "Ignoring unknown parameter" ) )
+      {
+        it.remove();
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+
+    stderr = tmp.join( "\n" );
+  }
+  else
+  {
+    // Do nothing
+  }
+
   if ( !stderr.isEmpty() )
   {
     if ( stderr.contains( "The username or password was not correct." ) ||
@@ -1677,7 +1789,7 @@ void Smb4KLookupDomainMembersJob::slotReadStandardError()
     else if ( stderr.contains( "tdb_transaction_recover:" ) ||
               stderr.contains( "tdb_log" ) )
     {
-      // Suppress debug output/information sent to stderr
+      // Suppress debug output/information send to stderr
       qDebug() << stderr;
     }
     else
@@ -2071,7 +2183,7 @@ void Smb4KLookupSharesJob::slotStartLookup()
   }
   
   // Authentication data
-  if ( !m_host.login().isEmpty() && !m_host.login().isEmpty() )
+  if ( !m_host.login().isEmpty() )
   {
     arguments << QString( "-U %1" ).arg( m_host.login() );
   }
@@ -2109,6 +2221,38 @@ void Smb4KLookupSharesJob::slotReadStandardError()
 {
   QString stderr = QString::fromUtf8( m_proc->readAllStandardError(), -1 ).trimmed();
 
+  // Remove unimportant warnings
+  if ( stderr.contains( "Ignoring unknown parameter" ) )
+  {
+    QStringList tmp = stderr.split( '\n' );
+
+    QMutableStringListIterator it( tmp );
+
+    while ( it.hasNext() )
+    {
+      QString test = it.next();
+
+      if ( test.trimmed().startsWith( "Ignoring unknown parameter" ) )
+      {
+        it.remove();
+      }
+      else if ( test.contains( "creating lame", Qt::CaseSensitive ) )
+      {
+        it.remove();
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+
+    stderr = tmp.join( "\n" );
+  }
+  else
+  {
+    // Do nothing
+  }
+
   if ( !stderr.isEmpty() )
   {
     if ( stderr.contains( "The username or password was not correct." ) ||
@@ -2125,15 +2269,8 @@ void Smb4KLookupSharesJob::slotReadStandardError()
     }
     else
     {
-      if ( !stderr.contains( "creating lame", Qt::CaseSensitive ) )
-      {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->retrievingSharesFailed( &m_host, stderr );
-      }
-      else
-      {
-        // Do nothing
-      }
+      Smb4KNotification *notification = new Smb4KNotification();
+      notification->retrievingSharesFailed( &m_host, stderr );
     }
   }
   else
