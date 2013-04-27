@@ -37,7 +37,6 @@ PlasmaComponents.ListItem {
   id: delegate
     
   signal itemClicked()
-  signal upClicked()
   
   width: browserListView.width
   height: theme.mediumIconSize + 8
@@ -74,29 +73,29 @@ PlasmaComponents.ListItem {
       }
     }
   }
-  QIconItem {
-    anchors.verticalCenter: parent.verticalCenter
-    anchors.right: parent.right
-    anchors.rightMargin: 10
-    anchors.leftMargin: 10
-    icon: "go-up"
-    height: theme.smallIconSize
-    width: theme.smallIconSize
-    opacity: 0.2
-    visible: itemType > 1 ? true : false
-    enabled: itemType > 1 ? true : false
-    MouseArea {
-      anchors.fill: parent
-      hoverEnabled: true
-      onEntered: {
-        parent.opacity = 1.0
-      }
-      onExited: {
-        parent.opacity = 0.2
-      }
-      onClicked: {
-        delegate.upClicked()
-      }
-    }        
-  }
+//   QIconItem {
+//     anchors.verticalCenter: parent.verticalCenter
+//     anchors.right: parent.right
+//     anchors.rightMargin: 10
+//     anchors.leftMargin: 10
+//     icon: "go-up"
+//     height: theme.smallIconSize
+//     width: theme.smallIconSize
+//     opacity: 0.2
+//     visible: itemType > 1 ? true : false
+//     enabled: itemType > 1 ? true : false
+//     MouseArea {
+//       anchors.fill: parent
+//       hoverEnabled: true
+//       onEntered: {
+//         parent.opacity = 1.0
+//       }
+//       onExited: {
+//         parent.opacity = 0.2
+//       }
+//       onClicked: {
+//         delegate.upClicked()
+//       }
+//     }        
+//   }
 }

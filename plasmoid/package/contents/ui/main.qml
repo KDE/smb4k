@@ -85,16 +85,23 @@ PlasmaExtras.App {
     
     PlasmaComponents.TabButton {
       id: browserTabButton
-      text: "Network Neighborhood"
+      text: i18n( "Network Neighborhood" )
       iconSource: "network-workgroup"
       tab: browserPage
     }
     
     PlasmaComponents.TabButton {
       id: sharesTabButton
-      text: "Mounted Shares"
+      text: i18n( "Mounted Shares" )
       iconSource: "folder-remote"
       tab: sharesPage
+    }
+    
+    PlasmaComponents.TabButton {
+      id: bookmarkTabButton
+      text: i18n( "Bookmarks" )
+      iconSource: "favorites"
+      tab: bookmarksPage
     }
   }
       
@@ -114,20 +121,66 @@ PlasmaExtras.App {
     PlasmaComponents.Page {
       id: browserPage
       
+      PlasmaComponents.ToolBar {
+        id: browserToolBar
+        anchors {
+          top: parent.top
+          left: parent.left
+          right: parent.right
+          topMargin: 2
+          rightMargin: 4
+          leftMargin: 4
+        }
+        PlasmaComponents.ToolBarLayout {
+          id: browserToolBarLayout
+          
+          PlasmaComponents.ToolButton {
+            id: rescanButton
+            text: i18n( "Rescan" )
+            iconSource: "view-refresh"
+            onClicked: {
+              rescan()
+            }
+          }
+          
+          PlasmaComponents.ToolButton {
+            id: upButton
+            text: i18n( "Up" )
+            iconSource: "go-up"
+            onClicked: {
+              up()
+            }
+          }
+        }
+        
+        tools: browserToolBarLayout
+      }
+      
       PlasmaExtras.ScrollArea {
         id: browserScrollArea
-        anchors.fill: parent
+        anchors {
+          top: browserToolBar.bottom
+          left: parent.left
+          right: parent.right
+          bottom: parent.bottom
+          topMargin: 5
+        }
         ListView {
           id: browserListView
           delegate: BrowserItemDelegate {
             id: browserDelegate
             onItemClicked: {
               browserListView.currentIndex = index
+              
+              if ( browserListView.model.get( index ).itemType < 3 /*share*/ ) {
+                parent_item = browserListView.model.get( index ).itemName
+                parent_type = browserListView.model.get( index ).itemType
+                parent_url  = browserListView.model.get( index ).itemURL
+              } 
+              else {
+                // Do nothing
+              }
               networkItemClicked()
-            }
-            onUpClicked: {
-              browserListView.currentIndex = index
-              up()
             }
           }
           model: ListModel {}
@@ -166,6 +219,13 @@ PlasmaExtras.App {
           highlightRangeMode: GridView.StrictlyEnforceRange
         }
       }
+    }
+    
+    //
+    // The bookmarks page
+    //
+    PlasmaComponents.Page {
+      id: bookmarksPage
     }
   }
   
@@ -585,23 +645,20 @@ PlasmaExtras.App {
   // An network item was clicked
   //
   function networkItemClicked() {
-    if ( browserListView.model.get( browserListView.currentIndex ).itemType < 3 /* 3 == share */ ) {
-      parent_url = browserListView.model.get( browserListView.currentIndex ).itemURL
-      parent_item = browserListView.model.get( browserListView.currentIndex ).itemName
-      parent_type = browserListView.model.get( browserListView.currentIndex ).itemType
-      
-      scanner.lookup( parent_url, parent_type )
-      
-      while ( browserListView.model.count != 0 ) {
-        browserListView.model.remove( 0 )
-      }
-    }
-    else {
+    // If the current item is a share, mount it or show the print dialog.
+    if ( browserListView.model.get( browserListView.currentIndex ).itemType == 3 ) {
       if ( !browserListView.model.get( browserListView.currentIndex ).itemIsPrinter ) {
         mounter.mount( browserListView.model.get( browserListView.currentIndex ).itemURL )
       }
       else {
         printer.print( browserListView.model.get( browserListView.currentIndex ).itemURL )
+      }
+    }
+    else {
+      scanner.lookup( parent_url, parent_type )
+      
+      while ( browserListView.model.count != 0 ) {
+        browserListView.model.remove( 0 )
       }
     }
   }
@@ -651,6 +708,9 @@ PlasmaExtras.App {
         parent_url = "smb://"
         parent_item = ""
         parent_type--
+        while ( browserListView.model.count != 0 ) {
+          browserListView.model.remove( 0 )
+        }  
         rescan()
         break
       }
@@ -659,6 +719,9 @@ PlasmaExtras.App {
         parent_url = "smb://"+object.workgroupName
         parent_item = object.workgroupName
         parent_type--
+        while ( browserListView.model.count != 0 ) {
+          browserListView.model.remove( 0 )
+        }  
         rescan()
         break
       }
@@ -666,10 +729,6 @@ PlasmaExtras.App {
         break
       }
     }
- 
-    while ( browserListView.model.count != 0 ) {
-      browserListView.model.remove( 0 )
-    }    
   }
   
   //
