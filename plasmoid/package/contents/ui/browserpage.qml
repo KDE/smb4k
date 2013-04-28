@@ -1,5 +1,5 @@
 /***************************************************************************
-    browser.qml - The browser of Smb4K's plasmoid
+    browserpage.qml - The browser of Smb4K's plasmoid
                              -------------------
     begin                : So Apr 28 2013
     copyright            : (C) 2013 by Alexander Reinholdt
@@ -31,6 +31,10 @@ import org.kde.plasma.extras 0.1 as PlasmaExtras
 PlasmaComponents.Page {
   id: browserPage
   
+  property string parent_item: ""
+  property int parent_type: 0 // Unknown
+  property url parent_url
+  
   signal busy()
   signal idle()
 
@@ -46,17 +50,40 @@ PlasmaComponents.Page {
       getShares()
     }
     onAboutToStart: {
-      print( "about to start" )
       browserPage.busy()
     }
     onFinished: {
-      print( "finished" )
       browserPage.idle()
     }
   }
   
-  property Scanner instance: scanner
-        
+  Print {
+    id: printer
+    onAboutToStart: {
+      browserPage.busy()
+    }
+    onFinished: {
+      browserPage.idle()
+    }
+  }
+  
+  Mounter {
+    id: mounter
+    onMounted: {
+      shareMounted()
+    }
+    onUnmounted: {
+      shareUnmounted()
+    }
+    onAboutToStart: {
+      browserPage.busy()
+    }
+    onFinished: {
+      browserPage.idle()
+    }
+  }
+  
+          
   PlasmaComponents.ToolBar {
     id: browserToolBar
     anchors {
@@ -76,6 +103,15 @@ PlasmaComponents.Page {
         iconSource: "view-refresh"
         onClicked: {
           rescan()
+        }
+      }
+      
+      PlasmaComponents.ToolButton {
+        id: abortButton
+        text: i18n( "Abort" )
+        iconSource: "process-stop"
+        onClicked: {
+          abort()
         }
       }
           
@@ -123,6 +159,12 @@ PlasmaComponents.Page {
       focus: true
       highlightRangeMode: ListView.StrictlyEnforceRange
     }
+  }
+  
+  Component.onCompleted: {
+    scanner.start()
+    mounter.start()
+    printer.start()
   }
   
   //
@@ -422,6 +464,62 @@ PlasmaComponents.Page {
   }
   
   //
+  // A share has been mounted
+  //
+  function shareMounted() {
+    // Modify the icon in the browser
+    if ( parent_type == 2 ) {
+      for ( var i = 0; i < browserListView.model.count; i++ ) {
+        var object = mounter.find( browserListView.model.get( i ).itemURL, false )
+        
+        if ( object && parent_item == object.hostName ) {
+          browserListView.model.get( i ).itemIcon = object.icon
+        }
+        else {
+          // Do nothing
+        }
+      }
+    }
+    else {
+      // Do nothing
+    }
+  }
+  
+  // 
+  // A share has been unmounted
+  //
+  function shareUnmounted() {
+    // Modify the icon in the browser
+    if ( parent_type == 2 ) {
+      for ( var i = 0; i < browserListView.model.count; i++ ) {
+        var object = mounter.find( browserListView.model.get( i ).itemURL, false )
+        
+        if ( object ) {
+          if ( !object.isMounted && parent_item == object.hostName ) {
+            browserListView.model.get( i ).itemIcon = object.icon
+          }
+          else {
+            // Do nothing
+          }
+        }
+        else {
+          var obj = browserPage.instance.find( browserListView.model.get( i ).itemURL, browserListView.model.get( i ).itemType )
+          
+          if ( obj ) {
+            browserListView.model.get( i ).itemIcon = obj.icon
+          }
+          else {
+            // Do nothing
+          }
+        }
+      }
+    }
+    else {
+      // Do nothing
+    }
+  }
+  
+  //
   // Rescan the network neighborhood
   //
   function rescan() {
@@ -434,10 +532,12 @@ PlasmaComponents.Page {
   }
   
   //
-  // Abort the scanning of the network neighborhood
+  // Abort all actions done by the core classes
   //
   function abort() {
-    scanner.abort()
+    scanner.abortAll()
+    printer.abortAll()
+    mounter.abortAll()
   }
   
   //
