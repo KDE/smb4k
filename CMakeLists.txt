@@ -42,19 +42,19 @@ add_subdirectory( data )
 
 option( INSTALL_PLASMOID "Install plasmoid" ON )
 
-if ( ${KDE_VERSION} VERSION_LESS 4.9.0 )
+if ( ${KDE_VERSION} VERSION_LESS 4.10.0 )
   set( INSTALL_PLASMOID false )
-endif ( ${KDE_VERSION} VERSION_LESS 4.9.0 )
+endif ( ${KDE_VERSION} VERSION_LESS 4.10.0 )
 
 if ( INSTALL_PLASMOID )
   message( STATUS "Installing plasmoid (-DINSTALL_PLASMOID=false to disable)" )
   add_subdirectory( plasmoid )
 elseif ( NOT INSTALL_PLASMOID )
-  if ( ${KDE_VERSION} VERSION_LESS 4.9.0 )
-    message( STATUS "Not installing plasmoid (KDE version not supported)" )
-  else ( ${KDE_VERSION} VERSION_LESS 4.9.0 )
-    message ( STATUS "Not installing plasmoid (-DINSTALL_PLASMOID=true to enable)" )
-  endif ( ${KDE_VERSION} VERSION_LESS 4.9.0 )
+  if ( ${KDE_VERSION} VERSION_LESS 4.10.0 )
+    message( STATUS "Not installing plasmoid (KDE version 4.10 or later required)" )
+  else ( ${KDE_VERSION} VERSION_LESS 4.10.0 )
+    message( STATUS "Not installing plasmoid (-DINSTALL_PLASMOID=true to enable)" )
+  endif ( ${KDE_VERSION} VERSION_LESS 4.10.0 )
 endif( INSTALL_PLASMOID )
 
 ########### Header files ################
