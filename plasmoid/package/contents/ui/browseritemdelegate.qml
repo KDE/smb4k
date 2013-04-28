@@ -85,8 +85,8 @@ PlasmaComponents.ListItem {
     height: theme.smallIconSize
     width: theme.smallIconSize
     opacity: 0.2
-    visible: itemType == 3 ? true : false
-    enabled: itemType == 3 ? true : false
+    visible: (itemType == 3 && !itemIsPrinter) ? true : false
+    enabled: (itemType == 3 && !itemIsPrinter) ? true : false
     MouseArea {
       anchors.fill: parent
       hoverEnabled: true
