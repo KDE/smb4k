@@ -1,3 +1,4 @@
+BrowserPage 0.1 browserpage.qml
 BrowserItemDelegate 0.1 browseritemdelegate.qml
 SharesViewItemDelegate 0.1 sharesviewitemdelegate.qml
 
