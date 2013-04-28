@@ -161,6 +161,14 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
                                   QWidget *parent = 0 );
     
     /**
+     * This function opens the custom options dialog for a specific URL. The
+     * network item must be known to Smb4K for this function to do anything.
+     * 
+     * @param url                 The network item's URL
+     */
+    Q_INVOKABLE void openCustomOptionsDialog( const QUrl &url );
+    
+    /**
      * This function adds custom options for a single network item to the list
      * of options. If there already are options defined for that network item,
      * they are updated.

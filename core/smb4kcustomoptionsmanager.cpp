@@ -35,6 +35,7 @@
 #include "smb4khost.h"
 #include "smb4kshare.h"
 #include "smb4ksettings.h"
+#include "smb4kglobal.h"
 
 // Qt includes
 #include <QtCore/QXmlStreamReader>
@@ -47,6 +48,8 @@
 #include <kglobal.h>
 #include <kstandarddirs.h>
 #include <klocale.h>
+
+using namespace Smb4KGlobal;
 
 K_GLOBAL_STATIC( Smb4KCustomOptionsManagerStatic, p );
 
@@ -813,6 +816,41 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog( Smb4KBasicNetworkItem *
   else
   {
     // Do nothing
+  }
+}
+
+
+void Smb4KCustomOptionsManager::openCustomOptionsDialog(const QUrl& url)
+{
+  if ( !url.path().isEmpty() )
+  {
+    for ( int i = 0; i < sharesList().size(); ++i )
+    {
+      if ( sharesList().at( i )->url() == url )
+      {
+        openCustomOptionsDialog( sharesList().at( i ) );
+        break;
+      }
+      else
+      {
+        continue;
+      }
+    }
+  }
+  else
+  {
+    for ( int i = 0; i < hostsList().size(); ++i )
+    {
+      if ( hostsList().at( i )->url() == url )
+      {
+        openCustomOptionsDialog( hostsList().at( i ) );
+        break;
+      }
+      else
+      {
+        continue;
+      }
+    }
   }
 }
 
