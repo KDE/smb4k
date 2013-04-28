@@ -103,7 +103,7 @@ PlasmaExtras.App {
     //
     // The bookmarks page
     //
-    PlasmaComponents.Page {
+    BookmarksPage {
       id: bookmarksPage
       
       // Do not connect signals here, because this leads

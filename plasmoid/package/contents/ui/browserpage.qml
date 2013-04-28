@@ -83,6 +83,13 @@ PlasmaComponents.Page {
     }
   }
   
+  BookmarkHandler {
+    id: bookmarkHandler
+  }
+  
+  OptionsManager {
+    id: optionsManager
+  }
           
   PlasmaComponents.ToolBar {
     id: browserToolBar
@@ -153,6 +160,12 @@ PlasmaComponents.Page {
             // Do nothing
           }
           networkItemClicked()
+        }
+        onBookmarkClicked: {
+          bookmarkHandler.addBookmark( browserListView.model.get( index ).itemURL )
+        }
+        onConfigureClicked: {
+          optionsManager.openCustomOptionsDialog(  browserListView.model.get( index ).itemURL  )
         }
       }
       model: ListModel {}
