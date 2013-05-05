@@ -288,6 +288,10 @@ void Smb4KPrintJob::slotReadStandardError()
         {
           it.remove();
         }
+        else if ( line.trimmed().startsWith( "Ignoring unknown parameter" ) )
+        {
+          it.remove();
+        }
         else
         {
           // Do nothing

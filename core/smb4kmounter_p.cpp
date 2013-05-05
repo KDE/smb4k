@@ -472,47 +472,116 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
   }
 
   // Security mode
-  switch ( Smb4KSettings::securityMode() )
+  if ( options )
   {
-    case Smb4KSettings::EnumSecurityMode::None:
+    switch ( options->securityMode() )
     {
-      args_list << "sec=none";
-      break;
+      case Smb4KCustomOptions::NoSecurityMode:
+      {
+        args_list << "sec=none";
+        break;
+      }
+      case Smb4KCustomOptions::Krb5:
+      {
+        args_list << "sec=krb5";
+        break;
+      }
+      case Smb4KCustomOptions::Krb5i:
+      {
+        args_list << "sec=krb5i";
+        break;
+      }
+      case Smb4KCustomOptions::Ntlm:
+      {
+        args_list << "sec=ntlm";
+        break;
+      }
+      case Smb4KCustomOptions::Ntlmi:
+      {
+        args_list << "sec=ntlmi";
+        break;
+      }
+      case Smb4KCustomOptions::Ntlmv2:
+      {
+        args_list << "sec=ntlmv2";
+        break;
+      }
+      case Smb4KCustomOptions::Ntlmv2i:
+      {
+        args_list << "sec=ntlmv2i";
+        break;
+      }
+      case Smb4KCustomOptions::Ntlmssp:
+      {
+        args_list << "sec=ntlmssp";
+        break;
+      }
+      case Smb4KCustomOptions::Ntlmsspi:
+      {
+        args_list << "sec=ntlmsspi";
+        break;
+      }
+      default:
+      {
+        // Smb4KCustomOptions::DefaultSecurityMode
+        break;
+      }
     }
-    case Smb4KSettings::EnumSecurityMode::Krb5:
+  }
+  else
+  {
+    switch ( Smb4KSettings::securityMode() )
     {
-      args_list << "sec=krb5";
-      break;
-    }
-    case Smb4KSettings::EnumSecurityMode::Krb5i:
-    {
-      args_list << "sec=krb5i";
-      break;
-    }
-    case Smb4KSettings::EnumSecurityMode::Ntlm:
-    {
-      args_list << "sec=ntlm";
-      break;
-    }
-    case Smb4KSettings::EnumSecurityMode::Ntlmi:
-    {
-      args_list << "sec=ntlmi";
-      break;
-    }
-    case Smb4KSettings::EnumSecurityMode::Ntlmv2:
-    {
-      args_list << "sec=ntlmv2";
-      break;
-    }
-    case Smb4KSettings::EnumSecurityMode::Ntlmv2i:
-    {
-      args_list << "sec=ntlmv2i";
-      break;
-    }
-    default:
-    {
-      // Smb4KSettings::EnumSecurityMode::Default,
-      break;
+      case Smb4KSettings::EnumSecurityMode::None:
+      {
+        args_list << "sec=none";
+        break;
+      }
+      case Smb4KSettings::EnumSecurityMode::Krb5:
+      {
+        args_list << "sec=krb5";
+        break;
+      }
+      case Smb4KSettings::EnumSecurityMode::Krb5i:
+      {
+        args_list << "sec=krb5i";
+        break;
+      }
+      case Smb4KSettings::EnumSecurityMode::Ntlm:
+      {
+        args_list << "sec=ntlm";
+        break;
+      }
+      case Smb4KSettings::EnumSecurityMode::Ntlmi:
+      {
+        args_list << "sec=ntlmi";
+        break;
+      }
+      case Smb4KSettings::EnumSecurityMode::Ntlmv2:
+      {
+        args_list << "sec=ntlmv2";
+        break;
+      }
+      case Smb4KSettings::EnumSecurityMode::Ntlmv2i:
+      {
+        args_list << "sec=ntlmv2i";
+        break;
+      }
+      case Smb4KSettings::EnumSecurityMode::Ntlmssp:
+      {
+        args_list << "sec=ntlmssp";
+        break;
+      }
+      case Smb4KSettings::EnumSecurityMode::Ntlmsspi:
+      {
+        args_list << "sec=ntlmsspi";
+        break;
+      }
+      default:
+      {
+        // Smb4KSettings::EnumSecurityMode::Default,
+        break;
+      }
     }
   }
 

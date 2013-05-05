@@ -680,6 +680,12 @@
         <choice name="Ntlmv2i">
           <label>Use NTLMv2 password hashing with packet signing</label>
         </choice>
+        <choice name="Ntlmssp">
+          <label>Use NTLMv2 password hashing encapsulated in Raw NTLMSSP message</label>
+        </choice>
+        <choice name="Ntlmsspi">
+          <label>Use NTLMv2 password hashing encapsulated in Raw NTLMSSP message, and force packet signing</label>
+        </choice>
       </choices>
       <default>Default</default>
     </entry>

@@ -201,6 +201,7 @@ class Smb4KCustomOptionsPage : public QWidget
 #ifndef Q_OS_FREEBSD
     KIntNumInput *m_fs_port;
     KComboBox *m_write_access;
+    KComboBox *m_security_mode;
 #endif
     KComboBox *m_protocol_hint;
     KComboBox *m_user_id;

@@ -27,6 +27,9 @@ Smb4K 1.1.0 (????-??-??):
     you also need the username, password or port in the string, use the url() 
     function.
   + Added setURL() function that takes a string as argument.
+- Revised Smb4KCustomOptions class:
+  + Added functions for Wake-On-LAN.
+  + Added functions for defining the security mode used by mount.cifs.
 - Removed Smb4KIPAddressScanner class. IP addresses are now looked up by
   Smb4KScanner using a private job.
 - Revised Smb4KScanner class:
@@ -70,8 +73,9 @@ Smb4K 1.1.0 (????-??-??):
     Smb4KBasicNetworkItem object and a boolean.
   + Added wolEntries() function that returns a list of custom options objects
     that have Wake-On-LAN features defined.
-  + Host specific changes that were made to the options of a host are propagated
-    also to its shares.
+  + Custom options that are defined for a host object are propagated to its
+    shares (if there are custom options for its shares are defined). The options
+    for the host overwrite the ones defined for its shares.
 - Revised network browser:
   + Removed wrong checks that caused tooltips not being updated properly.
   + Added ability to select multiple shares and process them accordingly.
@@ -90,6 +94,8 @@ Smb4K 1.1.0 (????-??-??):
     to Samba. Wake On LAN settings and the ability to - basically - switch
     off remounting have been added. Further improvements were implemented.
   + Renamed all classes that represent a page in the configuration dialog.
+  + Added security modes 'ntlmssp' and 'ntlmsspi' for mount.cifs used with
+    Linux kernel >= 3.8.
 
 Smb4K 1.0.4 (2012-08-19):
 - Fixed erroneously shown error notifications when searching. Thanks to

@@ -551,7 +551,10 @@ Smb4KSambaOptionsPage::Smb4KSambaOptionsPage( QWidget *parent ) : KTabWidget( pa
                             Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmv2 ).label );
   security_box->insertItem( Smb4KSettings::EnumSecurityMode::Ntlmv2i,
                             Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmv2i ).label );
-
+  security_box->insertItem( Smb4KSettings::EnumSecurityMode::Ntlmssp,
+                            Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmssp ).label );
+  security_box->insertItem( Smb4KSettings::EnumSecurityMode::Ntlmsspi,
+                            Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmsspi ).label );
   security_label->setBuddy( security_box );
 
   QLabel *add_options_label    = new QLabel( Smb4KSettings::self()->customCIFSOptionsItem()->label(),

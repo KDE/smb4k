@@ -83,6 +83,21 @@ class KDE_EXPORT Smb4KCustomOptions
     enum WriteAccess { ReadWrite,
                        ReadOnly,
                        UndefinedWriteAccess };
+
+    /**
+     * The SecurityMode enumeration
+     */
+    enum SecurityMode { DefaultSecurityMode,
+                        NoSecurityMode,
+                        Krb5,
+                        Krb5i,
+                        Ntlm,
+                        Ntlmi,
+                        Ntlmv2,
+                        Ntlmv2i,
+                        Ntlmssp,
+                        Ntlmsspi,
+                        UndefinedSecurityMode };
 #endif
                        
     /**
@@ -291,6 +306,20 @@ class KDE_EXPORT Smb4KCustomOptions
      * @returns the write access
      */
     WriteAccess writeAccess() const;
+
+    /**
+     * Set the security mode for mounting.
+     *
+     * @param mode            The security mode
+     */
+    void setSecurityMode( SecurityMode mode );
+
+    /**
+     * Returns the security mode for mounting a specific share.
+     *
+     * @returns the security mode
+     */
+    SecurityMode securityMode() const;
 #endif
 
     /**

@@ -323,6 +323,34 @@ void Smb4KSearchJob::slotReadStandardError()
 {
   QString stderr = QString::fromUtf8( m_proc->readAllStandardError(), -1 );
 
+  // Remove unimportant warnings
+  if ( stderr.contains( "Ignoring unknown parameter" ) )
+  {
+    QStringList tmp = stderr.split( '\n' );
+
+    QMutableStringListIterator it( tmp );
+
+    while ( it.hasNext() )
+    {
+      QString test = it.next();
+
+      if ( test.trimmed().startsWith( "Ignoring unknown parameter" ) )
+      {
+        it.remove();
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+
+    stderr = tmp.join( "\n" );
+  }
+  else
+  {
+    // Do nothing
+  }
+
   // Process authentication errors:
   if ( stderr.contains( "The username or password was not correct." ) ||
        stderr.contains( "NT_STATUS_ACCOUNT_DISABLED" ) /* AD error */ ||

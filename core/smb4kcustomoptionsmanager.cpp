@@ -878,6 +878,7 @@ void Smb4KCustomOptionsManager::addCustomOptions( Smb4KCustomOptions *options )
 #ifndef Q_OS_FREEBSD
       known_options->setFileSystemPort( options->fileSystemPort() );
       known_options->setWriteAccess( options->writeAccess() );
+      known_options->setSecurityMode( options->securityMode() );
 #endif
       known_options->setProtocolHint( options->protocolHint() );
       known_options->setUID( options->uid() );
@@ -900,10 +901,17 @@ void Smb4KCustomOptionsManager::addCustomOptions( Smb4KCustomOptions *options )
              QString::compare( d->options.at( i )->hostName() , options->hostName(), Qt::CaseInsensitive ) == 0 &&
              QString::compare( d->options.at( i )->workgroupName() , options->workgroupName(), Qt::CaseInsensitive ) == 0 )
         {
-#ifndef Q_OS_FREEBSD
+          // Propagate the options to the shared resources of the host.
+          // They overwrite the ones defined for the shares.
           d->options[i]->setSMBPort( options->smbPort() );
+#ifndef Q_OS_FREEBSD
+          d->options[i]->setFileSystemPort( options->fileSystemPort() );
+          d->options[i]->setWriteAccess( options->writeAccess() );
+          d->options[i]->setSecurityMode( options->securityMode() );
 #endif
           d->options[i]->setProtocolHint( options->protocolHint() );
+          d->options[i]->setUID( options->uid() );
+          d->options[i]->setGID( options->gid() );
           d->options[i]->setUseKerberos( options->useKerberos() );
           d->options[i]->setMACAddress( options->macAddress() );
           d->options[i]->setWOLSendBeforeNetworkScan( options->wolSendBeforeNetworkScan() );

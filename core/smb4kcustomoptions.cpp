@@ -55,6 +55,7 @@ class Smb4KCustomOptionsPrivate
 #ifndef Q_OS_FREEBSD
     int fileSystemPort;
     Smb4KCustomOptions::WriteAccess writeAccess;
+    Smb4KCustomOptions::SecurityMode securityMode;
 #endif
     Smb4KCustomOptions::ProtocolHint protocolHint;
     Smb4KCustomOptions::Kerberos kerberos;
@@ -77,6 +78,7 @@ Smb4KCustomOptions::Smb4KCustomOptions( Smb4KHost *host )
 #ifndef Q_OS_FREEBSD
   d->fileSystemPort = 445;
   d->writeAccess    = UndefinedWriteAccess;
+  d->securityMode   = UndefinedSecurityMode;
 #endif
   d->protocolHint   = UndefinedProtocolHint;
   d->kerberos       = UndefinedKerberos;
@@ -98,6 +100,7 @@ Smb4KCustomOptions::Smb4KCustomOptions( Smb4KShare *share )
 #ifndef Q_OS_FREEBSD
   d->fileSystemPort = share->port() != -1 ? share->port() : 445;
   d->writeAccess    = UndefinedWriteAccess;
+  d->securityMode   = UndefinedSecurityMode;
 #endif
   d->protocolHint   = UndefinedProtocolHint;
   d->kerberos       = UndefinedKerberos;
@@ -125,6 +128,7 @@ Smb4KCustomOptions::Smb4KCustomOptions()
 #ifndef Q_OS_FREEBSD
   d->fileSystemPort = 445;
   d->writeAccess    = UndefinedWriteAccess;
+  d->securityMode   = UndefinedSecurityMode;
 #endif
   d->protocolHint   = UndefinedProtocolHint;
   d->kerberos       = UndefinedKerberos;
@@ -346,8 +350,6 @@ QString Smb4KCustomOptions::shareName() const
 }
 
 
-
-
 void Smb4KCustomOptions::setIP( const QString &ip )
 {
   d->ip.setAddress( ip );
@@ -420,6 +422,18 @@ void Smb4KCustomOptions::setWriteAccess( Smb4KCustomOptions::WriteAccess access 
 Smb4KCustomOptions::WriteAccess Smb4KCustomOptions::writeAccess() const
 {
   return d->writeAccess;
+}
+
+
+void Smb4KCustomOptions::setSecurityMode(Smb4KCustomOptions::SecurityMode mode)
+{
+  d->securityMode = mode;
+}
+
+
+Smb4KCustomOptions::SecurityMode Smb4KCustomOptions::securityMode() const
+{
+  return d->securityMode;
 }
 #endif
 

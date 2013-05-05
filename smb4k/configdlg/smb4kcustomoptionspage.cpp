@@ -162,6 +162,34 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
                               QVariant::fromValue<int>( Smb4KCustomOptions::ReadOnly ) );
 
   rw_label->setBuddy( m_write_access );
+
+  QLabel *security_label = new QLabel( i18n( "Security Mode:" ), m_samba_editors );
+
+  m_security_mode = new KComboBox( m_samba_editors );
+
+  m_security_mode->insertItem( 0, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Default ).label,
+                               QVariant::fromValue<int>( Smb4KCustomOptions::DefaultSecurityMode ) );
+  m_security_mode->insertItem( 1, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::None ).label,
+                               QVariant::fromValue<int>( Smb4KCustomOptions::NoSecurityMode ) );
+  m_security_mode->insertItem( 2, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Krb5 ).label,
+                               QVariant::fromValue<int>( Smb4KCustomOptions::Krb5 ) );
+  m_security_mode->insertItem( 3, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Krb5i ).label,
+                               QVariant::fromValue<int>( Smb4KCustomOptions::Krb5i ) );
+  m_security_mode->insertItem( 4, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlm ).label,
+                               QVariant::fromValue<int>( Smb4KCustomOptions::Ntlm ) );
+  m_security_mode->insertItem( 5, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmi ).label,
+                               QVariant::fromValue<int>( Smb4KCustomOptions::Ntlmi ) );
+  m_security_mode->insertItem( 6, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmv2 ).label,
+                               QVariant::fromValue<int>( Smb4KCustomOptions::Ntlmv2 ) );
+  m_security_mode->insertItem( 7, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmv2i ).label,
+                               QVariant::fromValue<int>( Smb4KCustomOptions::Ntlmv2i ) );
+  m_security_mode->insertItem( 8, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmssp ).label,
+                               QVariant::fromValue<int>( Smb4KCustomOptions::Ntlmssp ) );
+  m_security_mode->insertItem( 9, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmsspi ).label,
+                               QVariant::fromValue<int>( Smb4KCustomOptions::Ntlmsspi ) );
+  
+  security_label->setBuddy( m_security_mode );
+
 #endif
   
   QLabel *protocol_label = new QLabel( i18n( "Protocol Hint:" ), m_samba_editors );
@@ -219,14 +247,16 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
   samba_editor_layout->addWidget( m_fs_port, 1, 1, 0 );
   samba_editor_layout->addWidget( rw_label, 2, 0, 0 );
   samba_editor_layout->addWidget( m_write_access, 2, 1, 0 );
-  samba_editor_layout->addWidget( protocol_label, 3, 0, 0 );
-  samba_editor_layout->addWidget( m_protocol_hint, 3, 1, 0 );
-  samba_editor_layout->addWidget( uid_label, 4, 0, 0 );
-  samba_editor_layout->addWidget( m_user_id, 4, 1, 0 );
-  samba_editor_layout->addWidget( gid_label, 5, 0, 0 );
-  samba_editor_layout->addWidget( m_group_id, 5, 1, 0 );
-  samba_editor_layout->addWidget( m_kerberos, 6, 0, 1, 2, 0 );
-//   samba_editor_layout->setRowStretch( 7, 100 );
+  samba_editor_layout->addWidget( security_label, 3, 0, 0 );
+  samba_editor_layout->addWidget( m_security_mode, 3, 1, 0 );
+  samba_editor_layout->addWidget( protocol_label, 4, 0, 0 );
+  samba_editor_layout->addWidget( m_protocol_hint, 4, 1, 0 );
+  samba_editor_layout->addWidget( uid_label, 5, 0, 0 );
+  samba_editor_layout->addWidget( m_user_id, 5, 1, 0 );
+  samba_editor_layout->addWidget( gid_label, 6, 0, 0 );
+  samba_editor_layout->addWidget( m_group_id, 6, 1, 0 );
+  samba_editor_layout->addWidget( m_kerberos, 7, 0, 1, 2, 0 );
+//   samba_editor_layout->setRowStretch( 8, 100 );
 #else
   samba_editor_layout->addWidget( smb_port_label, 0, 0, 0 );
   samba_editor_layout->addWidget( m_smb_port, 0, 1, 0 );
@@ -320,6 +350,9 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
            this,             SLOT(slotEntryChanged()) );
   
   connect( m_write_access,   SIGNAL(currentIndexChanged(int)),
+           this,             SLOT(slotEntryChanged()) );
+
+  connect( m_security_mode,  SIGNAL(currentIndexChanged(int)),
            this,             SLOT(slotEntryChanged()) );
 #endif
   
@@ -450,7 +483,65 @@ void Smb4KCustomOptionsPage::clearEditors()
     {
       break;
     }
-  }  
+  }
+
+  switch ( Smb4KSettings::securityMode() )
+  {
+    case Smb4KSettings::EnumSecurityMode::Default:
+    {
+      m_security_mode->setCurrentIndex( 0 );
+      break;
+    }
+    case Smb4KSettings::EnumSecurityMode::None:
+    {
+      m_security_mode->setCurrentIndex( 1 );
+      break;
+    }
+    case Smb4KSettings::EnumSecurityMode::Krb5:
+    {
+      m_security_mode->setCurrentIndex( 2 );
+      break;
+    }
+    case Smb4KSettings::EnumSecurityMode::Krb5i:
+    {
+      m_security_mode->setCurrentIndex( 3 );
+      break;
+    }
+    case Smb4KSettings::EnumSecurityMode::Ntlm:
+    {
+      m_security_mode->setCurrentIndex( 4 );
+      break;
+    }
+    case Smb4KSettings::EnumSecurityMode::Ntlmi:
+    {
+      m_security_mode->setCurrentIndex( 5 );
+      break;
+    }
+    case Smb4KSettings::EnumSecurityMode::Ntlmv2:
+    {
+      m_security_mode->setCurrentIndex( 6 );
+      break;
+    }
+    case Smb4KSettings::EnumSecurityMode::Ntlmv2i:
+    {
+      m_security_mode->setCurrentIndex( 7 );
+      break;
+    }
+    case Smb4KSettings::EnumSecurityMode::Ntlmssp:
+    {
+      m_security_mode->setCurrentIndex( 8 );
+      break;
+    }
+    case Smb4KSettings::EnumSecurityMode::Ntlmsspi:
+    {
+      m_security_mode->setCurrentIndex( 9 );
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
 #endif
   switch ( Smb4KSettings::protocolHint() )
   {
@@ -597,6 +688,127 @@ void Smb4KCustomOptionsPage::populateEditors(Smb4KCustomOptions* options)
       case Smb4KCustomOptions::ReadOnly:
       {
         m_write_access->setCurrentIndex( 1 );
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
+
+  if ( m_current_options->securityMode() == Smb4KCustomOptions::UndefinedSecurityMode )
+  {
+    switch ( Smb4KSettings::securityMode() )
+    {
+      case Smb4KSettings::EnumSecurityMode::Default:
+      {
+        m_security_mode->setCurrentIndex( 0 );
+        break;
+      }
+      case Smb4KSettings::EnumSecurityMode::None:
+      {
+        m_security_mode->setCurrentIndex( 1 );
+        break;
+      }
+      case Smb4KSettings::EnumSecurityMode::Krb5:
+      {
+        m_security_mode->setCurrentIndex( 2 );
+        break;
+      }
+      case Smb4KSettings::EnumSecurityMode::Krb5i:
+      {
+        m_security_mode->setCurrentIndex( 3 );
+        break;
+      }
+      case Smb4KSettings::EnumSecurityMode::Ntlm:
+      {
+        m_security_mode->setCurrentIndex( 4 );
+        break;
+      }
+      case Smb4KSettings::EnumSecurityMode::Ntlmi:
+      {
+        m_security_mode->setCurrentIndex( 5 );
+        break;
+      }
+      case Smb4KSettings::EnumSecurityMode::Ntlmv2:
+      {
+        m_security_mode->setCurrentIndex( 6 );
+        break;
+      }
+      case Smb4KSettings::EnumSecurityMode::Ntlmv2i:
+      {
+        m_security_mode->setCurrentIndex( 7 );
+        break;
+      }
+      case Smb4KSettings::EnumSecurityMode::Ntlmssp:
+      {
+        m_security_mode->setCurrentIndex( 8 );
+        break;
+      }
+      case Smb4KSettings::EnumSecurityMode::Ntlmsspi:
+      {
+        m_security_mode->setCurrentIndex( 9 );
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
+  else
+  {
+    switch ( m_current_options->securityMode() )
+    {
+      case Smb4KCustomOptions::DefaultSecurityMode:
+      {
+        m_security_mode->setCurrentIndex( 0 );
+        break;
+      }
+      case Smb4KCustomOptions::NoSecurityMode:
+      {
+        m_security_mode->setCurrentIndex( 1 );
+        break;
+      }
+      case Smb4KCustomOptions::Krb5:
+      {
+        m_security_mode->setCurrentIndex( 2 );
+        break;
+      }
+      case Smb4KCustomOptions::Krb5i:
+      {
+        m_security_mode->setCurrentIndex( 3 );
+        break;
+      }
+      case Smb4KCustomOptions::Ntlm:
+      {
+        m_security_mode->setCurrentIndex( 4 );
+        break;
+      }
+      case Smb4KCustomOptions::Ntlmi:
+      {
+        m_security_mode->setCurrentIndex( 5 );
+        break;
+      }
+      case Smb4KCustomOptions::Ntlmv2:
+      {
+        m_security_mode->setCurrentIndex( 6 );
+        break;
+      }
+      case Smb4KCustomOptions::Ntlmv2i:
+      {
+        m_security_mode->setCurrentIndex( 7 );
+        break;
+      }
+      case Smb4KCustomOptions::Ntlmssp:
+      {
+        m_security_mode->setCurrentIndex( 8 );
+        break;
+      }
+      case Smb4KCustomOptions::Ntlmsspi:
+      {
+        m_security_mode->setCurrentIndex( 9 );
         break;
       }
       default:
@@ -760,6 +972,7 @@ void Smb4KCustomOptionsPage::commitChanges()
 #ifndef Q_OS_FREEBSD
     options->setFileSystemPort( m_fs_port->value() );
     options->setWriteAccess( (Smb4KCustomOptions::WriteAccess)m_write_access->itemData( m_write_access->currentIndex() ).toInt() );
+    options->setSecurityMode( (Smb4KCustomOptions::SecurityMode)m_security_mode->itemData(m_security_mode->currentIndex() ).toInt() );
 #endif
     options->setProtocolHint( (Smb4KCustomOptions::ProtocolHint)m_protocol_hint->itemData( m_protocol_hint->currentIndex() ).toInt() );
     options->setUID( m_user_id->itemData( m_user_id->currentIndex() ).toInt() );
@@ -797,14 +1010,21 @@ void Smb4KCustomOptionsPage::commitChanges()
              QString::compare( m_options_list.at( i )->hostName() , options->hostName(), Qt::CaseInsensitive ) == 0 &&
              QString::compare( m_options_list.at( i )->workgroupName() , options->workgroupName(), Qt::CaseInsensitive ) == 0 )
         {
+          // Propagate the options to the shared resources of the host.
+          // They overwrite the ones defined for the shares.
+          m_options_list[i]->setSMBPort( options->smbPort() );
 #ifndef Q_OS_FREEBSD
-          m_options_list.at( i )->setSMBPort( options->smbPort() );
+          m_options_list[i]->setFileSystemPort( options->fileSystemPort() );
+          m_options_list[i]->setWriteAccess( options->writeAccess() );
+          m_options_list[i]->setSecurityMode( options->securityMode() );
 #endif
-          m_options_list.at( i )->setProtocolHint( options->protocolHint() );
-          m_options_list.at( i )->setUseKerberos( options->useKerberos() );
-          m_options_list.at( i )->setMACAddress( options->macAddress() );
-          m_options_list.at( i )->setWOLSendBeforeNetworkScan( options->wolSendBeforeNetworkScan() );
-          m_options_list.at( i )->setWOLSendBeforeMount( options->wolSendBeforeMount() );
+          m_options_list[i]->setProtocolHint( options->protocolHint() );
+          m_options_list[i]->setUID( options->uid() );
+          m_options_list[i]->setGID( options->gid() );
+          m_options_list[i]->setUseKerberos( options->useKerberos() );
+          m_options_list[i]->setMACAddress( options->macAddress() );
+          m_options_list[i]->setWOLSendBeforeNetworkScan( options->wolSendBeforeNetworkScan() );
+          m_options_list[i]->setWOLSendBeforeMount( options->wolSendBeforeMount() );
         }
         else
         {
@@ -1014,6 +1234,7 @@ void Smb4KCustomOptionsPage::slotUndoActionTriggered( bool /*checked*/ )
 #ifndef Q_OS_FREEBSD
           options->setFileSystemPort( m_current_options->fileSystemPort() );
           options->setWriteAccess( m_current_options->writeAccess() );
+          options->setSecurityMode( m_current_options->securityMode() );
 #endif
           options->setProtocolHint( m_current_options->protocolHint() );
           options->setUID( m_current_options->uid() );
