@@ -535,8 +535,6 @@ Smb4KSambaOptionsPage::Smb4KSambaOptionsPage( QWidget *parent ) : KTabWidget( pa
                                  
   KComboBox *security_box      = new KComboBox( c_extra_widget );
   security_box->setObjectName( "kcfg_SecurityMode" );
-  security_box->insertItem( Smb4KSettings::EnumSecurityMode::Default,
-                            Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Default ).label );
   security_box->insertItem( Smb4KSettings::EnumSecurityMode::None,
                             Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::None ).label );
   security_box->insertItem( Smb4KSettings::EnumSecurityMode::Krb5,

@@ -224,25 +224,23 @@ void Smb4KCustomOptionsDialog::setupView()
   QLabel *security_label = new QLabel( i18n( "Security Mode:" ), samba_editors );
   
   m_security_mode        = new KComboBox( samba_editors );
-  m_security_mode->insertItem( 0, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Default ).label,
-                               QVariant::fromValue<int>( Smb4KCustomOptions::DefaultSecurityMode ) );
-  m_security_mode->insertItem( 1, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::None ).label,
+  m_security_mode->insertItem( 0, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::None ).label,
                                QVariant::fromValue<int>( Smb4KCustomOptions::NoSecurityMode ) );
-  m_security_mode->insertItem( 2, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Krb5 ).label,
+  m_security_mode->insertItem( 1, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Krb5 ).label,
                                QVariant::fromValue<int>( Smb4KCustomOptions::Krb5 ) );
-  m_security_mode->insertItem( 3, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Krb5i ).label,
+  m_security_mode->insertItem( 2, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Krb5i ).label,
                                QVariant::fromValue<int>( Smb4KCustomOptions::Krb5i ) );
-  m_security_mode->insertItem( 4, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlm ).label,
+  m_security_mode->insertItem( 3, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlm ).label,
                                QVariant::fromValue<int>( Smb4KCustomOptions::Ntlm ) );
-  m_security_mode->insertItem( 5, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmi ).label,
+  m_security_mode->insertItem( 4, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmi ).label,
                                QVariant::fromValue<int>( Smb4KCustomOptions::Ntlmi ) );
-  m_security_mode->insertItem( 6, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmv2 ).label,
+  m_security_mode->insertItem( 5, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmv2 ).label,
                                QVariant::fromValue<int>( Smb4KCustomOptions::Ntlmv2 ) );
-  m_security_mode->insertItem( 7, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmv2i ).label,
+  m_security_mode->insertItem( 6, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmv2i ).label,
                                QVariant::fromValue<int>( Smb4KCustomOptions::Ntlmv2i ) );
-  m_security_mode->insertItem( 8, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmssp ).label,
+  m_security_mode->insertItem( 7, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmssp ).label,
                                QVariant::fromValue<int>( Smb4KCustomOptions::Ntlmssp ) );
-  m_security_mode->insertItem( 9, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmsspi ).label,
+  m_security_mode->insertItem( 8, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmsspi ).label,
                                QVariant::fromValue<int>( Smb4KCustomOptions::Ntlmsspi ) );
   security_label->setBuddy( m_security_mode );
 
@@ -250,54 +248,49 @@ void Smb4KCustomOptionsDialog::setupView()
   {
     switch ( Smb4KSettings::securityMode() )
     {
-      case Smb4KSettings::EnumSecurityMode::Default:
+      case Smb4KSettings::EnumSecurityMode::None:
       {
         m_security_mode->setCurrentIndex( 0 );
         break;
       }
-      case Smb4KSettings::EnumSecurityMode::None:
+      case Smb4KSettings::EnumSecurityMode::Krb5:
       {
         m_security_mode->setCurrentIndex( 1 );
         break;
       }
-      case Smb4KSettings::EnumSecurityMode::Krb5:
+      case Smb4KSettings::EnumSecurityMode::Krb5i:
       {
         m_security_mode->setCurrentIndex( 2 );
         break;
       }
-      case Smb4KSettings::EnumSecurityMode::Krb5i:
+      case Smb4KSettings::EnumSecurityMode::Ntlm:
       {
         m_security_mode->setCurrentIndex( 3 );
         break;
       }
-      case Smb4KSettings::EnumSecurityMode::Ntlm:
+      case Smb4KSettings::EnumSecurityMode::Ntlmi:
       {
         m_security_mode->setCurrentIndex( 4 );
         break;
       }
-      case Smb4KSettings::EnumSecurityMode::Ntlmi:
+      case Smb4KSettings::EnumSecurityMode::Ntlmv2:
       {
         m_security_mode->setCurrentIndex( 5 );
         break;
       }
-      case Smb4KSettings::EnumSecurityMode::Ntlmv2:
+      case Smb4KSettings::EnumSecurityMode::Ntlmv2i:
       {
         m_security_mode->setCurrentIndex( 6 );
         break;
       }
-      case Smb4KSettings::EnumSecurityMode::Ntlmv2i:
+      case Smb4KSettings::EnumSecurityMode::Ntlmssp:
       {
         m_security_mode->setCurrentIndex( 7 );
         break;
       }
-      case Smb4KSettings::EnumSecurityMode::Ntlmssp:
-      {
-        m_security_mode->setCurrentIndex( 8 );
-        break;
-      }
       case Smb4KSettings::EnumSecurityMode::Ntlmsspi:
       {
-        m_security_mode->setCurrentIndex( 9 );
+        m_security_mode->setCurrentIndex( 8 );
         break;
       }
       default:
@@ -310,54 +303,49 @@ void Smb4KCustomOptionsDialog::setupView()
   {
     switch ( m_options->securityMode() )
     {
-      case Smb4KCustomOptions::DefaultSecurityMode:
+      case Smb4KCustomOptions::NoSecurityMode:
       {
         m_security_mode->setCurrentIndex( 0 );
         break;
       }
-      case Smb4KCustomOptions::NoSecurityMode:
+      case Smb4KCustomOptions::Krb5:
       {
         m_security_mode->setCurrentIndex( 1 );
         break;
       }
-      case Smb4KCustomOptions::Krb5:
+      case Smb4KCustomOptions::Krb5i:
       {
         m_security_mode->setCurrentIndex( 2 );
         break;
       }
-      case Smb4KCustomOptions::Krb5i:
+      case Smb4KCustomOptions::Ntlm:
       {
         m_security_mode->setCurrentIndex( 3 );
         break;
       }
-      case Smb4KCustomOptions::Ntlm:
+      case Smb4KCustomOptions::Ntlmi:
       {
         m_security_mode->setCurrentIndex( 4 );
         break;
       }
-      case Smb4KCustomOptions::Ntlmi:
+      case Smb4KCustomOptions::Ntlmv2:
       {
         m_security_mode->setCurrentIndex( 5 );
         break;
       }
-      case Smb4KCustomOptions::Ntlmv2:
+      case Smb4KCustomOptions::Ntlmv2i:
       {
         m_security_mode->setCurrentIndex( 6 );
         break;
       }
-      case Smb4KCustomOptions::Ntlmv2i:
+      case Smb4KCustomOptions::Ntlmssp:
       {
         m_security_mode->setCurrentIndex( 7 );
         break;
       }
-      case Smb4KCustomOptions::Ntlmssp:
-      {
-        m_security_mode->setCurrentIndex( 8 );
-        break;
-      }
       case Smb4KCustomOptions::Ntlmsspi:
       {
-        m_security_mode->setCurrentIndex( 9 );
+        m_security_mode->setCurrentIndex( 8 );
         break;
       }
       default:
@@ -753,54 +741,49 @@ void Smb4KCustomOptionsDialog::slotSetDefaultValues()
 
   switch ( Smb4KSettings::securityMode() )
   {
-    case Smb4KSettings::EnumSecurityMode::Default:
+    case Smb4KSettings::EnumSecurityMode::None:
     {
       m_security_mode->setCurrentIndex( 0 );
       break;
     }
-    case Smb4KSettings::EnumSecurityMode::None:
+    case Smb4KSettings::EnumSecurityMode::Krb5:
     {
       m_security_mode->setCurrentIndex( 1 );
       break;
     }
-    case Smb4KSettings::EnumSecurityMode::Krb5:
+    case Smb4KSettings::EnumSecurityMode::Krb5i:
     {
       m_security_mode->setCurrentIndex( 2 );
       break;
     }
-    case Smb4KSettings::EnumSecurityMode::Krb5i:
+    case Smb4KSettings::EnumSecurityMode::Ntlm:
     {
       m_security_mode->setCurrentIndex( 3 );
       break;
     }
-    case Smb4KSettings::EnumSecurityMode::Ntlm:
+    case Smb4KSettings::EnumSecurityMode::Ntlmi:
     {
       m_security_mode->setCurrentIndex( 4 );
       break;
     }
-    case Smb4KSettings::EnumSecurityMode::Ntlmi:
+    case Smb4KSettings::EnumSecurityMode::Ntlmv2:
     {
       m_security_mode->setCurrentIndex( 5 );
       break;
     }
-    case Smb4KSettings::EnumSecurityMode::Ntlmv2:
+    case Smb4KSettings::EnumSecurityMode::Ntlmv2i:
     {
       m_security_mode->setCurrentIndex( 6 );
       break;
     }
-    case Smb4KSettings::EnumSecurityMode::Ntlmv2i:
+    case Smb4KSettings::EnumSecurityMode::Ntlmssp:
     {
       m_security_mode->setCurrentIndex( 7 );
       break;
     }
-    case Smb4KSettings::EnumSecurityMode::Ntlmssp:
-    {
-      m_security_mode->setCurrentIndex( 8 );
-      break;
-    }
     case Smb4KSettings::EnumSecurityMode::Ntlmsspi:
     {
-      m_security_mode->setCurrentIndex( 9 );
+      m_security_mode->setCurrentIndex( 8 );
       break;
     }
     default:

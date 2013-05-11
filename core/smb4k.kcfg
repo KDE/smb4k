@@ -656,38 +656,35 @@
       <label>Security mode:</label>
       <whatsthis>Security mode for mount.cifs. To be able to use this mode, the CIFS kernel module 1.40 or later is required.</whatsthis>
       <choices>
-        <choice name="Default">
-          <label>Use default security mode</label>
-        </choice>
         <choice name="None">
-          <label>Attempt to connect as a null user (no name)</label>
+          <label>Connect as a null user (no name)</label>
         </choice>
         <choice name="Krb5">
-          <label>Use Kerberos authentication</label>
+          <label>Kerberos version 5 authentication</label>
         </choice>
         <choice name="Krb5i">
-          <label>Use Kerberos authentication and packet signing</label>
+          <label>Kerberos authentication and packet signing</label>
         </choice>
         <choice name="Ntlm">
-          <label>Use NTLM password hashing</label>
+          <label>NTLM password hashing</label>
         </choice>
         <choice name="Ntlmi">
-          <label>Use NTLM password hashing with packet signing</label>
+          <label>NTLM password hashing and packet signing</label>
         </choice>
         <choice name="Ntlmv2">
-          <label>Use NTLMv2 password hashing</label>
+          <label>NTLMv2 password hashing</label>
         </choice>
         <choice name="Ntlmv2i">
-          <label>Use NTLMv2 password hashing with packet signing</label>
+          <label>NTLMv2 password hashing and packet signing</label>
         </choice>
         <choice name="Ntlmssp">
-          <label>Use NTLMv2 password hashing encapsulated in Raw NTLMSSP message</label>
+          <label>NTLMv2 password hashing encapsulated in Raw NTLMSSP message</label>
         </choice>
         <choice name="Ntlmsspi">
-          <label>Use NTLMv2 password hashing encapsulated in Raw NTLMSSP message, and force packet signing</label>
+          <label>NTLMv2 password hashing encapsulated in Raw NTLMSSP message and packet signing</label>
         </choice>
       </choices>
-      <default>Default</default>
+      <default>Ntlm</default>
     </entry>
   </group>  
 

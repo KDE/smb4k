@@ -87,8 +87,7 @@ class KDE_EXPORT Smb4KCustomOptions
     /**
      * The SecurityMode enumeration
      */
-    enum SecurityMode { DefaultSecurityMode,
-                        NoSecurityMode,
+    enum SecurityMode { NoSecurityMode,
                         Krb5,
                         Krb5i,
                         Ntlm,
