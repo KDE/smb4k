@@ -340,13 +340,13 @@ PlasmaComponents.Page {
         
         if ( !have_item ) {
           browserListView.model.append( { 
-                                 "itemName": scanner.hosts[i].hostName,
-                                 "itemComment": scanner.hosts[i].comment,
-                                 "itemIcon": scanner.hosts[i].icon, 
-                                 "itemURL": scanner.hosts[i].url,
-                                 "itemType": scanner.hosts[i].type,
-                                 "itemIsMounted": scanner.hosts[i].isMounted,
-                                 "itemIsPrinter": scanner.hosts[i].isPrinter } )
+            "itemName": scanner.hosts[i].hostName,
+            "itemComment": scanner.hosts[i].comment,
+            "itemIcon": scanner.hosts[i].icon, 
+            "itemURL": scanner.hosts[i].url,
+            "itemType": scanner.hosts[i].type,
+            "itemIsMounted": scanner.hosts[i].isMounted,
+            "itemIsPrinter": scanner.hosts[i].isPrinter } )
         }
         else {
           // Do nothing

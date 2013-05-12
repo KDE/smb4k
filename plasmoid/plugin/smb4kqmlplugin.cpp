@@ -36,6 +36,7 @@
 #include "core/smb4kprint.h"
 #include "core/smb4kbookmarkhandler.h"
 #include "core/smb4kcustomoptionsmanager.h"
+#include "core/smb4kbookmarkobject.h"
 
 // Qt includes
 #include <QtDeclarative/qdeclarative.h>
@@ -49,6 +50,7 @@ void Smb4KQMLPlugin::registerTypes( const char *uri )
   qmlRegisterType<Smb4KPrint>( uri, 1, 0, "Print" );
   qmlRegisterType<Smb4KBookmarkHandler>( uri, 1, 0, "BookmarkHandler" );
   qmlRegisterType<Smb4KCustomOptionsManager>( uri, 1, 0, "OptionsManager" );
+  qmlRegisterType<Smb4KBookmarkObject>( uri, 1, 0, "BookmarkObject" );
 }
 
 Q_EXPORT_PLUGIN2( Smb4KQML, Smb4KQMLPlugin );
