@@ -32,12 +32,14 @@
 #include <QtCore/QScopedPointer>
 #include <QtCore/QUrl>
 #include <QtGui/QWidget>
+#include <QtDeclarative/QDeclarativeListProperty>
 
 // KDE includes
 #include <kdemacros.h>
 
 // forward declarations
 class Smb4KBookmark;
+class Smb4KBookmarkObject;
 class Smb4KShare;
 class Smb4KBookmarkHandlerPrivate;
 class Smb4KBookmarkDialog;
@@ -54,6 +56,10 @@ class Smb4KBookmarkEditor;
 class KDE_EXPORT Smb4KBookmarkHandler : public QObject
 {
   Q_OBJECT
+  
+  Q_PROPERTY( QDeclarativeListProperty<Smb4KBookmarkObject> bookmarks READ bookmarks NOTIFY updated )
+  Q_PROPERTY( QDeclarativeListProperty<Smb4KBookmarkObject> groups READ groups )
+  
   
   friend class Smb4KBookmarkHandlerPrivate;
 
@@ -110,7 +116,16 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      * @returns             The current list of bookmarks stored in the
      *                      bookmark file.
      */
-    QList<Smb4KBookmark *> bookmarks() const;
+    QList<Smb4KBookmark *> bookmarksList() const;
+    
+    /**
+     * This function returns the list of bookmarks. Basically, this is the 
+     * the list returned by the above bookmarksList() function converted into a 
+     * list of Smb4KBookmarkObject objects.
+     * 
+     * @returns the list of bookmarks
+     */
+    QDeclarativeListProperty<Smb4KBookmarkObject> bookmarks();
 
     /**
      * Get the list of bookmarks belonging to a certain group.
@@ -119,8 +134,8 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      *
      * @returns a list of bookmarks belonging to a certain group
      */
-    QList<Smb4KBookmark *> bookmarks( const QString &group ) const;
-
+    QList<Smb4KBookmark *> bookmarksList( const QString &group ) const;
+    
     /**
      * This function searches for a bookmark using its UNC and returns a pointer
      * to it if it is present or NULL.
@@ -148,7 +163,16 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      *
      * @returns the list of groups
      */
-    QStringList groups() const;
+    QStringList groupsList() const;
+    
+    /**
+     * This function returns the list of bookmark groups. Basically, this is the 
+     * the list returned by the above groupsList() function converted into a 
+     * list of Smb4KBookmarkObject objects.
+     * 
+     * @returns the list of bookmarks
+     */
+    QDeclarativeListProperty<Smb4KBookmarkObject> groups();    
 
     /**
      * Opens the bookmark editor
@@ -166,7 +190,7 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
   private:
     /**
      * This function loads the list of bookmarks from the bookmarks file.
-     * When it finishes, the bookmarksUpdated() signal is emitted. So, if you
+     * When it finishes, the updated() signal is emitted. So, if you
      * want to access the list of bookmarks immediately after they were read,
      * connect a slot to that signal.
      */

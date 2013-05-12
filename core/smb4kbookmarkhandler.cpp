@@ -37,6 +37,7 @@
 #include "smb4kshare.h"
 #include "smb4ksettings.h"
 #include "smb4knotification.h"
+#include "smb4kbookmarkobject.h"
 
 // Qt includes
 #include <QtCore/QDir>
@@ -84,7 +85,12 @@ Smb4KBookmarkHandler::~Smb4KBookmarkHandler()
   {
     delete d->bookmarks.takeFirst();
   }
-
+  
+  while ( !d->bookmarkObjects.isEmpty() )
+  {
+    delete d->bookmarkObjects.takeFirst();
+  }
+  
   delete d->editor;
 }
 
@@ -185,7 +191,7 @@ void Smb4KBookmarkHandler::addBookmarks( const QList<Smb4KShare *> &list, QWidge
 
   if ( !new_bookmarks.isEmpty() )
   {
-    QPointer<Smb4KBookmarkDialog> dlg = new Smb4KBookmarkDialog( new_bookmarks, groups(), parent );
+    QPointer<Smb4KBookmarkDialog> dlg = new Smb4KBookmarkDialog( new_bookmarks, groupsList(), parent );
 
     if ( dlg->exec() == KDialog::Accepted )
     {
@@ -214,9 +220,25 @@ void Smb4KBookmarkHandler::addBookmarks( const QList<Smb4KShare *> &list, QWidge
         }
       }
 
-      // Append the new bookmarks to the internal list and
-      // save that list to the bookmark file.
+      // Append the new bookmarks to the internal list.
       d->bookmarks << new_bookmarks;
+      
+      // Append new groups to the internal list.
+      for ( int i = 0; i < new_bookmarks.size(); ++i )
+      {
+        if ( !d->groups.contains( new_bookmarks.at( i )->group() ) )
+        {
+          d->groups << new_bookmarks[i]->group();
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      
+      d->groups.sort();
+        
+      // Save the bookmarks list.
       writeBookmarkList( d->bookmarks );
     }
     else
@@ -229,6 +251,27 @@ void Smb4KBookmarkHandler::addBookmarks( const QList<Smb4KShare *> &list, QWidge
   else
   {
     // Do nothing
+  }
+  
+  // (Re)fill the list of bookmark objects and groups.
+  while ( !d->bookmarkObjects.isEmpty() )
+  {
+    delete d->bookmarkObjects.takeFirst();
+  }
+  
+  while ( !d->groupObjects.isEmpty() )
+  {
+    delete d->groupObjects.takeFirst();
+  }
+  
+  for ( int i = 0; i < d->bookmarks.size(); ++i )
+  {
+    d->bookmarkObjects << new Smb4KBookmarkObject( d->bookmarks.at( i ) );
+  }
+  
+  for ( int i = 0; i < d->groups.size(); ++i )
+  {
+    d->groupObjects << new Smb4KBookmarkObject( d->groups.at( i ) );
   }
 }
 
@@ -321,7 +364,7 @@ void Smb4KBookmarkHandler::loadBookmarks()
           {
             Smb4KBookmark *bookmark = new Smb4KBookmark();
 
-            bookmark->setGroup( xmlReader.attributes().value( "profile" ).toString() );
+            bookmark->setProfile( xmlReader.attributes().value( "profile" ).toString() );
             bookmark->setGroup( xmlReader.attributes().value( "group" ).toString() );
 
             while ( !(xmlReader.isEndElement() && xmlReader.name() == "bookmark") )
@@ -368,6 +411,15 @@ void Smb4KBookmarkHandler::loadBookmarks()
             }
 
             d->bookmarks.append( bookmark );
+            
+            if ( !d->groups.contains( bookmark->group() ) )
+            {
+              d->groups << bookmark->group();
+            }
+            else
+            {
+              // Do nothing
+            }
           }
           else
           {
@@ -404,8 +456,18 @@ void Smb4KBookmarkHandler::loadBookmarks()
     {
       // Do nothing
     }
-
-    return;
+  }
+  
+  for ( int i = 0; i < d->bookmarks.size(); ++i )
+  {
+    d->bookmarkObjects << new Smb4KBookmarkObject( d->bookmarks.at( i ) );
+  }
+  
+  d->groups.sort();
+  
+  for ( int i = 0; i < d->groups.size(); ++i )
+  {
+    d->groupObjects << new Smb4KBookmarkObject( d->groups.at( i ) );
   }
 }
 
@@ -460,7 +522,7 @@ Smb4KBookmark *Smb4KBookmarkHandler::findBookmarkByLabel( const QString &label )
 }
 
 
-QList<Smb4KBookmark *> Smb4KBookmarkHandler::bookmarks() const
+QList<Smb4KBookmark *> Smb4KBookmarkHandler::bookmarksList() const
 {
   // Update the bookmarks:
   update();
@@ -470,7 +532,13 @@ QList<Smb4KBookmark *> Smb4KBookmarkHandler::bookmarks() const
 }
 
 
-QList<Smb4KBookmark *> Smb4KBookmarkHandler::bookmarks( const QString &group ) const
+QDeclarativeListProperty<Smb4KBookmarkObject> Smb4KBookmarkHandler::bookmarks()
+{
+  return QDeclarativeListProperty<Smb4KBookmarkObject>( this, d->bookmarkObjects );
+}
+
+
+QList<Smb4KBookmark *> Smb4KBookmarkHandler::bookmarksList( const QString &group ) const
 {
   // Update bookmarks
   update();
@@ -494,25 +562,15 @@ QList<Smb4KBookmark *> Smb4KBookmarkHandler::bookmarks( const QString &group ) c
 }
 
 
-QStringList Smb4KBookmarkHandler::groups() const
+QStringList Smb4KBookmarkHandler::groupsList() const
 {
-  QStringList groups;
+  return d->groups;
+}
 
-  for ( int i = 0; i < d->bookmarks.size(); ++i )
-  {
-    if ( !groups.contains( d->bookmarks.at( i )->group() ) )
-    {
-      groups << d->bookmarks.at( i )->group();
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
 
-  groups.sort();
-  
-  return groups;
+QDeclarativeListProperty<Smb4KBookmarkObject> Smb4KBookmarkHandler::groups()
+{
+  return QDeclarativeListProperty<Smb4KBookmarkObject>( this, d->groupObjects );
 }
 
 
