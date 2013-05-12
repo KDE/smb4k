@@ -67,7 +67,7 @@ class KDE_EXPORT Smb4KScanner : public KCompositeJob
   Q_PROPERTY( QDeclarativeListProperty<Smb4KNetworkObject> workgroups READ workgroups NOTIFY workgroupsListChanged )
   Q_PROPERTY( QDeclarativeListProperty<Smb4KNetworkObject> hosts READ hosts NOTIFY hostsListChanged )
   Q_PROPERTY( QDeclarativeListProperty<Smb4KNetworkObject> shares READ shares NOTIFY sharesListChanged )
-  Q_PROPERTY( bool running READ isRunning )
+  Q_PROPERTY( bool running READ isRunning CONSTANT )
 
   friend class Smb4KScannerPrivate;
 
