@@ -1,5 +1,5 @@
 /***************************************************************************
-    smb4knetworkitemcontainer  -  This class derives from QObject and
+    smb4knetworkobject  -  This class derives from QObject and
     encapsulates the network items. It is for use with QtQuick.
                              -------------------
     begin                : Fr Mär 02 2012
