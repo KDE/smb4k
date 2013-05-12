@@ -173,7 +173,7 @@ class KDE_EXPORT Smb4KBookmark
     QString hostUNC() const;
 
     /**
-     * Set the (optional) the bookmark's label.
+     * Set the (optional) bookmark label.
      *
      * @param label           The bookmark's label
      */
