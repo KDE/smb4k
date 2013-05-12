@@ -13,6 +13,7 @@ set( smb4kcore_LIB_SRCS
   smb4kbookmark.cpp
   smb4kbookmarkhandler.cpp
   smb4kbookmarkhandler_p.cpp
+  smb4kbookmarkobject.cpp
   smb4kcustomoptions.cpp
   smb4kcustomoptionsmanager.cpp
   smb4kcustomoptionsmanager_p.cpp
