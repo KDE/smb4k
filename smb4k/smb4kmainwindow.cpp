@@ -1229,14 +1229,11 @@ void Smb4KMainWindow::slotActivePartChanged( KParts::Part *part )
 {
   Q_ASSERT( part );
 
-  QAction *bookmark_action = NULL;
-//   QAction *mount_action = NULL;
-
   // First break the connections and disable the actions
   if ( m_active_part )
   {
     // Bookmark action
-    bookmark_action = m_active_part->actionCollection()->action( "bookmark_action" );
+    QAction *bookmark_action = m_active_part->actionCollection()->action( "bookmark_action" );
 
     if ( bookmark_action )
     {
@@ -1294,21 +1291,6 @@ void Smb4KMainWindow::slotEnableBookmarkAction()
   if ( action )
   {
     actionCollection()->action( "bookmark_action" )->setEnabled( action->isEnabled() );
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KMainWindow::slotEnableOpenWithAction()
-{
-  QAction *open_with = actionCollection()->action( "open_with" );
-  
-  if ( open_with )
-  {
-    open_with->setEnabled( !open_with->isEnabled() );
   }
   else
   {

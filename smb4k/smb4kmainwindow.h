@@ -274,11 +274,6 @@ class Smb4KMainWindow : public KParts::MainWindow
     void slotEnableBookmarkAction();
     
     /**
-     * Enable/disable the "Open With" action
-     */
-    void slotEnableOpenWithAction();
-    
-    /**
      * This slot is connected to the visibilityChanged() signals of the network browser
      * dock widget. It is used to get the tool bars right.
      *

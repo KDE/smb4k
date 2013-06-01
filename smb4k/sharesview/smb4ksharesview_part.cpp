@@ -350,8 +350,6 @@ void Smb4KSharesViewPart::setupActions()
     // Do nothing
   }
 
-  connect( bookmark_action, SIGNAL(triggered(bool)), this, SLOT(slotAddBookmark(bool)) );
-
   actionCollection()->addAction( "unmount_action", unmount_action );
   actionCollection()->addAction( "unmount_all_action", unmount_all_action );
   actionCollection()->addAction( "bookmark_action", bookmark_action );
@@ -365,6 +363,7 @@ void Smb4KSharesViewPart::setupActions()
   unmount_all_action->setEnabled( false );
   bookmark_action->setEnabled( false );
   synchronize_action->setEnabled( false );
+  open_with_menu->setEnabled( false );
   konsole_action->setEnabled( false );
   filemanager_action->setEnabled( false );
 
@@ -379,6 +378,10 @@ void Smb4KSharesViewPart::setupActions()
   m_menu->addSeparator();
   m_menu->addAction( konsole_action );
   m_menu->addAction( filemanager_action );
+  
+  connect( bookmark_action, SIGNAL(triggered(bool)), this, SLOT(slotAddBookmark(bool)) );
+  connect( konsole_action, SIGNAL(changed()), this, SLOT(slotEnableOpenWithAction()) );
+  connect( filemanager_action, SIGNAL(changed()), this, SLOT(slotEnableOpenWithAction()) );
 }
 
 
@@ -1562,6 +1565,16 @@ void Smb4KSharesViewPart::slotIconSizeChanged( int group )
       break;
     }
   }
+}
+
+
+void Smb4KSharesViewPart::slotEnableOpenWithAction()
+{
+  // Disable the Open With action menu, when all Open With actions are 
+  // disabled.
+  bool enable = (actionCollection()->action( "konsole_action" )->isEnabled() || 
+                 actionCollection()->action( "filemanager_action" )->isEnabled());
+  actionCollection()->action( "open_with" )->setEnabled( enable );
 }
 
 

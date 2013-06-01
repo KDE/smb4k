@@ -275,6 +275,11 @@ class Smb4KSharesViewPart : public KParts::Part
      * @param group               The icon group
      */
     void slotIconSizeChanged( int group );
+    
+    /**
+     * Enable or disable the Open With action
+     */
+    void slotEnableOpenWithAction();
 
   private:
     /**
