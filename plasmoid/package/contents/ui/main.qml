@@ -169,19 +169,12 @@ PlasmaExtras.App {
     scanner.start()
     mounter.start()
     printer.start();
-    
-    //
-    // Initial setups
-    //
-    bookmarksPage.getGroups()
-    bookmarksPage.getBookmarks()
   }
   
   //
   // The application is busy
   //
   function busy() {
-    print( "busy()" )
     busyIndicator.visible = true
     busyIndicator.running = true
   }
@@ -190,7 +183,6 @@ PlasmaExtras.App {
   // The application has become idle
   //
   function idle() {
-    print( "idle()" )
     busyIndicator.running = false
     busyIndicator.visible = false
   }

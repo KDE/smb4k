@@ -47,6 +47,7 @@
 #include <QtCore/QXmlStreamWriter>
 #include <QtCore/QXmlStreamReader>
 #include <QtCore/QPointer>
+#include <QtCore/QMutableListIterator>
 
 // KDE includes
 #include <kstandarddirs.h>
@@ -226,9 +227,9 @@ void Smb4KBookmarkHandler::addBookmarks( const QList<Smb4KShare *> &list, QWidge
       // Append new groups to the internal list.
       for ( int i = 0; i < new_bookmarks.size(); ++i )
       {
-        if ( !d->groups.contains( new_bookmarks.at( i )->group() ) )
+        if ( !d->groups.contains( new_bookmarks.at( i )->groupName() ) )
         {
-          d->groups << new_bookmarks[i]->group();
+          d->groups << new_bookmarks[i]->groupName();
         }
         else
         {
@@ -253,7 +254,7 @@ void Smb4KBookmarkHandler::addBookmarks( const QList<Smb4KShare *> &list, QWidge
     // Do nothing
   }
   
-  // (Re)fill the list of bookmark objects and groups.
+  // (Re)fill the list of bookmark and group objects.
   while ( !d->bookmarkObjects.isEmpty() )
   {
     delete d->bookmarkObjects.takeFirst();
@@ -273,6 +274,105 @@ void Smb4KBookmarkHandler::addBookmarks( const QList<Smb4KShare *> &list, QWidge
   {
     d->groupObjects << new Smb4KBookmarkObject( d->groups.at( i ) );
   }
+  
+  emit updated();
+}
+
+
+void Smb4KBookmarkHandler::removeBookmark(Smb4KBookmark* bookmark)
+{
+  Q_ASSERT( bookmark );
+  
+  // Update the bookmarks
+  update();
+  
+  for ( int i = 0; i < d->bookmarks.size(); ++i )
+  {
+    if ( QString::compare( bookmark->unc(), d->bookmarks.at(i)->unc(), Qt::CaseInsensitive ) == 0 &&
+         QString::compare( bookmark->groupName(), d->bookmarks.at(i)->groupName(), Qt::CaseInsensitive ) == 0 )
+    {
+      delete d->bookmarks.takeAt(i);
+      break;
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  // Write the list to the bookmarks file.
+  writeBookmarkList( d->bookmarks );
+  
+  // (Re)fill the list of bookmark and group objects.
+  while ( !d->bookmarkObjects.isEmpty() )
+  {
+    delete d->bookmarkObjects.takeFirst();
+  }
+  
+  while ( !d->groupObjects.isEmpty() )
+  {
+    delete d->groupObjects.takeFirst();
+  }
+  
+  for ( int i = 0; i < d->bookmarks.size(); ++i )
+  {
+    d->bookmarkObjects << new Smb4KBookmarkObject( d->bookmarks.at( i ) );
+  }
+  
+  for ( int i = 0; i < d->groups.size(); ++i )
+  {
+    d->groupObjects << new Smb4KBookmarkObject( d->groups.at( i ) );
+  }
+  
+  emit updated();
+}
+
+
+void Smb4KBookmarkHandler::removeBookmark(const QUrl& url)
+{
+  // Update bookmarks
+  update();
+  
+  // Find the bookmark in the list and remove it.
+  QString path = (url.path().startsWith( '/' ) ? url.path().remove( 0, 1 ) : url.path());
+  QString unc = QString( "//%1/%2" ).arg( url.host().toUpper() ).arg( path );
+  Smb4KBookmark *bookmark = findBookmarkByUNC( unc );
+  
+  if ( bookmark )
+  {
+    removeBookmark( bookmark );
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KBookmarkHandler::removeGroup(const QString& name)
+{
+  update();
+  
+  QMutableListIterator<Smb4KBookmark *> it( d->bookmarks );
+  
+  while ( it.hasNext() )
+  {
+    Smb4KBookmark *b = it.next();
+    
+    if ( QString::compare( b->groupName(), name, Qt::CaseInsensitive ) == 0 )
+    {
+      it.remove();
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  // Write the list to the bookmarks file.
+  writeBookmarkList( d->bookmarks );
+  
+  emit updated();
 }
 
 
@@ -305,7 +405,7 @@ void Smb4KBookmarkHandler::writeBookmarkList( const QList<Smb4KBookmark *> &list
 
         xmlWriter.writeStartElement( "bookmark" );
         xmlWriter.writeAttribute( "profile", d->bookmarks.at( i )->profile() );
-        xmlWriter.writeAttribute( "group", d->bookmarks.at( i )->group() );
+        xmlWriter.writeAttribute( "group", d->bookmarks.at( i )->groupName() );
 
         xmlWriter.writeTextElement( "workgroup", d->bookmarks.at( i )->workgroupName() );
         xmlWriter.writeTextElement( "unc", d->bookmarks.at( i )->unc() );
@@ -320,8 +420,6 @@ void Smb4KBookmarkHandler::writeBookmarkList( const QList<Smb4KBookmark *> &list
       xmlWriter.writeEndDocument();
 
       xmlFile.close();
-      
-      emit updated();
     }
     else
     {
@@ -365,7 +463,7 @@ void Smb4KBookmarkHandler::loadBookmarks()
             Smb4KBookmark *bookmark = new Smb4KBookmark();
 
             bookmark->setProfile( xmlReader.attributes().value( "profile" ).toString() );
-            bookmark->setGroup( xmlReader.attributes().value( "group" ).toString() );
+            bookmark->setGroupName( xmlReader.attributes().value( "group" ).toString() );
 
             while ( !(xmlReader.isEndElement() && xmlReader.name() == "bookmark") )
             {
@@ -412,9 +510,9 @@ void Smb4KBookmarkHandler::loadBookmarks()
 
             d->bookmarks.append( bookmark );
             
-            if ( !d->groups.contains( bookmark->group() ) )
+            if ( !d->groups.contains( bookmark->groupName() ) )
             {
-              d->groups << bookmark->group();
+              d->groups << bookmark->groupName();
             }
             else
             {
@@ -548,7 +646,7 @@ QList<Smb4KBookmark *> Smb4KBookmarkHandler::bookmarksList( const QString &group
 
   for ( int i = 0; i < d->bookmarks.size(); ++i )
   {
-    if ( QString::compare( group, d->bookmarks.at( i )->group(), Qt::CaseInsensitive ) == 0 )
+    if ( QString::compare( group, d->bookmarks.at( i )->groupName(), Qt::CaseInsensitive ) == 0 )
     {
       bookmarks << d->bookmarks[i];
     }
@@ -606,7 +704,7 @@ void Smb4KBookmarkHandler::editBookmarks( QWidget *parent )
           bookmark->setLabel( bookmarks.at( i )->label() );
           bookmark->setLogin( bookmarks.at( i )->login() );
           bookmark->setHostIP( bookmarks.at( i )->hostIP() );
-          bookmark->setGroup( bookmarks.at( i )->group() );
+          bookmark->setGroupName( bookmarks.at( i )->groupName() );
           found = true;
           break;
         }
@@ -636,10 +734,9 @@ void Smb4KBookmarkHandler::editBookmarks( QWidget *parent )
       }
     }
       
-    // Finally write the list to the file. We do not
-    // need to emit the updated() signal here, because
-    // writeBookmarkList() is going to do this, anyway.
+    // Finally write the list to the file.
     writeBookmarkList( d->bookmarks );
+    emit updated();
   }
   else
   {

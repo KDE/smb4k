@@ -32,13 +32,18 @@ Smb4K 1.1.0 (????-??-??):
 - Revised Smb4KCustomOptions class:
   + Added functions for Wake-On-LAN.
   + Added functions for defining the security mode used by mount.cifs.
+- Revised Smb4KBookmark class:
+  + Renamed function group() to groupName().
+  + Renamed function setGroup() to setGroupName().
 - Removed Smb4KIPAddressScanner class. IP addresses are now looked up by
   Smb4KScanner using a private job.
 - Revised Smb4KBookmarkHandler class:
   + Renamed the bookmarks() functions to bookmarksList() to unify the naming.
   + To use functions from the bookmark handler in the plasmoid, Q_INVOKABLE 
     and Q_PROPERTY macros are used.
-  +
+  + Added addBookmark() function that takes an URL as argument.
+  + Added two removeBookmark() functions, one taking a pointer to a Smb4KBookmark
+    object and one taking a URL.
 - Revised Smb4KScanner class:
   + To use functions from the scanner in the plasmoid, Q_INVOKABLE and
     Q_PROPERTY macros are used.

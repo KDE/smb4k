@@ -204,7 +204,7 @@ void Smb4KBookmarkDialog::slotBookmarkClicked( QListWidgetItem *bookmark_item )
     if ( bookmark )
     {
       m_label_edit->setText( bookmark->label() );
-      m_group_combo->setCurrentItem( bookmark->group() );
+      m_group_combo->setCurrentItem( bookmark->groupName() );
     }
     else
     {
@@ -261,7 +261,7 @@ void Smb4KBookmarkDialog::slotGroupEdited()
 
   if ( bookmark )
   {
-    bookmark->setGroup( m_group_combo->currentText() );
+    bookmark->setGroupName( m_group_combo->currentText() );
   }
   else
   {
@@ -435,7 +435,7 @@ bool Smb4KBookmarkEditor::eventFilter( QObject *obj, QEvent *e )
 
           if ( bookmark )
           {
-            bookmark->setGroup( group_name );
+            bookmark->setGroupName( group_name );
           }
           else
           {
@@ -452,7 +452,7 @@ bool Smb4KBookmarkEditor::eventFilter( QObject *obj, QEvent *e )
 
           if ( bookmark )
           {
-            bookmark->setGroup( QString() );
+            bookmark->setGroupName( QString() );
           }
           else
           {
@@ -564,10 +564,10 @@ void Smb4KBookmarkEditor::loadBookmarks( const QList<Smb4KBookmark *> &list )
   // the available groups in a list.
   for ( int i = 0; i < m_bookmarks.size(); ++i )
   {
-    if ( !m_bookmarks.at( i )->group().isEmpty() )
+    if ( !m_bookmarks.at( i )->groupName().isEmpty() )
     {
       // Find the group and add the bookmark
-      QList<QTreeWidgetItem *> items = m_tree_widget->findItems( m_bookmarks.at( i )->group(), Qt::MatchFixedString|Qt::MatchCaseSensitive, 0 );
+      QList<QTreeWidgetItem *> items = m_tree_widget->findItems( m_bookmarks.at( i )->groupName(), Qt::MatchFixedString|Qt::MatchCaseSensitive, 0 );
       QTreeWidgetItem *group = NULL;
 
       if ( !items.isEmpty() )
@@ -578,8 +578,8 @@ void Smb4KBookmarkEditor::loadBookmarks( const QList<Smb4KBookmark *> &list )
       {
         group = new QTreeWidgetItem( QTreeWidgetItem::UserType );
         group->setIcon( 0, KIcon( "folder-favorites" ) );
-        group->setText( 0, m_bookmarks.at( i )->group() );
-        group->setText( (m_tree_widget->columnCount() - 1), QString( "00_%1" ).arg( m_bookmarks.at( i )->group() ) );
+        group->setText( 0, m_bookmarks.at( i )->groupName() );
+        group->setText( (m_tree_widget->columnCount() - 1), QString( "00_%1" ).arg( m_bookmarks.at( i )->groupName() ) );
         group->setFlags( Qt::ItemIsSelectable|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled|Qt::ItemIsDropEnabled ) ;
         m_tree_widget->addTopLevelItem( group );
       }
@@ -606,9 +606,9 @@ void Smb4KBookmarkEditor::loadBookmarks( const QList<Smb4KBookmark *> &list )
     }
 
     // Add the group to the list
-    if ( !m_groups.contains( m_bookmarks.at( i )->group() ) )
+    if ( !m_groups.contains( m_bookmarks.at( i )->groupName() ) )
     {
-      m_groups << m_bookmarks.at( i )->group();
+      m_groups << m_bookmarks.at( i )->groupName();
     }
     else
     {
@@ -679,7 +679,7 @@ void Smb4KBookmarkEditor::slotItemClicked( QTreeWidgetItem *item, int /*col*/ )
           m_label_edit->setText( bookmark->label() );
           m_login_edit->setText( bookmark->login() );
           m_ip_edit->setText( bookmark->hostIP() );
-          m_group_combo->setCurrentItem( bookmark->group() );
+          m_group_combo->setCurrentItem( bookmark->groupName() );
           m_editors->setEnabled( true );
         }
         else
@@ -710,7 +710,7 @@ void Smb4KBookmarkEditor::slotItemClicked( QTreeWidgetItem *item, int /*col*/ )
         m_label_edit->setText( bookmark->label() );
         m_login_edit->setText( bookmark->login() );
         m_ip_edit->setText( bookmark->hostIP() );
-        m_group_combo->setCurrentItem( bookmark->group() );
+        m_group_combo->setCurrentItem( bookmark->groupName() );
         m_editors->setEnabled( true );
       }
       else
@@ -864,7 +864,7 @@ void Smb4KBookmarkEditor::slotGroupEdited()
 
   if ( bookmark )
   {
-    bookmark->setGroup( m_group_combo->currentText() );
+    bookmark->setGroupName( m_group_combo->currentText() );
   }
   else
   {

@@ -2,8 +2,8 @@
     smb4kbookmarkobject -  This class derives from QObject and
     encapsulates a bookmark item. It is for use with QtQuick.
                              -------------------
-    begin                : Fr Mär 02 2012
-    copyright            : (C) 2012 by Alexander Reinholdt
+    begin                : Fr Mai 11 2013
+    copyright            : (C) 2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -40,7 +40,6 @@ class Smb4KBookmarkObjectPrivate
 {
   public:
     QString workgroup;
-    QString unc;
     KUrl url;
     QIcon icon;
     QString label;
@@ -53,11 +52,10 @@ Smb4KBookmarkObject::Smb4KBookmarkObject(Smb4KBookmark* bookmark, QObject* paren
 : QObject(parent), d( new Smb4KBookmarkObjectPrivate )
 {
   d->workgroup  = bookmark->workgroupName();
-  d->unc        = bookmark->unc();
   d->url        = bookmark->url();
   d->icon       = bookmark->icon();
   d->label      = bookmark->label();
-  d->group      = bookmark->group();
+  d->group      = bookmark->groupName();
   d->isGroup    = false;
 }
 
@@ -90,9 +88,17 @@ QString Smb4KBookmarkObject::workgroupName() const
 }
 
 
+void Smb4KBookmarkObject::setWorkgroupName(const QString& name)
+{
+  d->workgroup = name;
+  emit changed();
+}
+
+
 QString Smb4KBookmarkObject::unc() const
 {
-  return d->unc;
+  QString path = (d->url.path().startsWith( '/' ) ? d->url.path().remove( 0, 1 ) : d->url.path());
+  return QString( "//%1/%2" ).arg( d->url.host().toUpper() ).arg( path );
 }
 
 
@@ -102,24 +108,31 @@ QString Smb4KBookmarkObject::label() const
 }
 
 
+void Smb4KBookmarkObject::setLabel(const QString& label)
+{
+  d->label = label;
+  emit changed();
+}
+
+
 QString Smb4KBookmarkObject::description() const
 {
   QString desc;
   
   if ( !d->isGroup )
   {
-    if ( Smb4KSettings::showCustomBookmarkLabel() && !d->label.isEmpty() )
+    if ( Smb4KSettings::showCustomBookmarkLabel() && !label().isEmpty() )
     {
-      desc = d->label;
+      desc = label();
     }
     else
     {
-      desc = d->unc;
+      desc = unc();
     }
   }
   else
   {
-    desc = d->group;
+    desc = groupName();
   }
   
   return desc;
@@ -132,21 +145,49 @@ KUrl Smb4KBookmarkObject::url() const
 }
 
 
+void Smb4KBookmarkObject::setURL(const KUrl& url)
+{
+  d->url = url;
+  emit changed();
+}
+
+
 QIcon Smb4KBookmarkObject::icon() const
 {
   return d->icon;
 }
 
 
-QString Smb4KBookmarkObject::group() const
+void Smb4KBookmarkObject::setIcon(const QIcon& icon)
+{
+  d->icon = icon;
+  emit changed();
+}
+
+
+QString Smb4KBookmarkObject::groupName() const
 {
   return d->group;
+}
+
+
+void Smb4KBookmarkObject::setGroupName(const QString& name)
+{
+  d->group = name;
+  emit changed();
 }
 
 
 bool Smb4KBookmarkObject::isGroup() const
 {
   return d->isGroup;
+}
+
+
+void Smb4KBookmarkObject::setGroup(bool group)
+{
+  d->isGroup = group;
+  emit changed();
 }
 
 

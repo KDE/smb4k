@@ -242,13 +242,13 @@ KUrl Smb4KBookmark::url() const
 }
 
 
-void Smb4KBookmark::setGroup( const QString &name )
+void Smb4KBookmark::setGroupName( const QString &name )
 {
   d->group = name;
 }
 
 
-QString Smb4KBookmark::group() const
+QString Smb4KBookmark::groupName() const
 {
   return d->group;
 }
@@ -319,7 +319,7 @@ bool Smb4KBookmark::equals( Smb4KBookmark *bookmark ) const
   }
   
   // Group
-  if ( QString::compare( d->group, bookmark->group() ) != 0 )
+  if ( QString::compare( d->group, bookmark->groupName() ) != 0 )
   {
     return false;
   }

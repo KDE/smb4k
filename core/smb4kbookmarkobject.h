@@ -2,8 +2,8 @@
     smb4kbookmarkobject -  This class derives from QObject and
     encapsulates a bookmark item. It is for use with QtQuick.
                              -------------------
-    begin                : Fr Mär 02 2012
-    copyright            : (C) 2012 by Alexander Reinholdt
+    begin                : Fr Mai 11 2013
+    copyright            : (C) 2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -58,14 +58,14 @@ class KDE_EXPORT Smb4KBookmarkObject : public QObject
   
   friend class Smb4KBookmarkObjectPrivate;
   
-  Q_PROPERTY( QString workgroupName READ workgroupName CONSTANT )
+  Q_PROPERTY( QString workgroupName READ workgroupName WRITE setWorkgroupName NOTIFY changed )
   Q_PROPERTY( QString unc READ unc CONSTANT )
-  Q_PROPERTY( QString label READ label CONSTANT )
+  Q_PROPERTY( QString label READ label WRITE setLabel NOTIFY changed )
   Q_PROPERTY( QString description READ description CONSTANT )
-  Q_PROPERTY( QUrl url READ url CONSTANT )
-  Q_PROPERTY( QIcon icon READ icon CONSTANT )
-  Q_PROPERTY( QString group READ group CONSTANT )
-  Q_PROPERTY( bool isGroup READ isGroup CONSTANT )
+  Q_PROPERTY( QUrl url READ url WRITE setURL NOTIFY changed )
+  Q_PROPERTY( QIcon icon READ icon WRITE setIcon NOTIFY changed )
+  Q_PROPERTY( QString groupName READ groupName WRITE setGroupName NOTIFY changed )
+  Q_PROPERTY( bool isGroup READ isGroup WRITE setGroup NOTIFY changed )
   
   public:
     /**
@@ -97,6 +97,13 @@ class KDE_EXPORT Smb4KBookmarkObject : public QObject
     QString workgroupName() const;
     
     /**
+     * Set the workgroup of the bookmark object.
+     * 
+     * @param name      The workgroup name
+     */
+    void setWorkgroupName( const QString &name );
+    
+    /**
      * This function returns the UNC of the bookmarked share.
      * 
      * @returns the UNC
@@ -112,6 +119,13 @@ class KDE_EXPORT Smb4KBookmarkObject : public QObject
     QString label() const;
     
     /**
+     * Set the label of the bookmarked share.
+     * 
+     * @param label     The label
+     */
+    void setLabel( const QString &label );
+    
+    /**
      * This function returns the description of this object. In case of a bookmark
      * group, this functions returns the group name like the @see group() function.
      * In case of a bookmark, the return value depends on the choice of the user. 
@@ -122,11 +136,18 @@ class KDE_EXPORT Smb4KBookmarkObject : public QObject
     QString description() const;
     
     /**
-     * This function returns the URL of this item.
+     * This function returns the URL of this bookmark.
      * 
      * @returns the URL
      */
     KUrl url() const;
+    
+    /**
+     * Set the URL of this bookmark.
+     * 
+     * @param url       The URL
+     */
+    void setURL( const KUrl &url );
     
     /**
      * This function returns the icon of the bookmark.
@@ -136,12 +157,26 @@ class KDE_EXPORT Smb4KBookmarkObject : public QObject
     QIcon icon() const;
     
     /**
+     * Set the icon of the bookmark.
+     * 
+     * @param icon      The icon
+     */
+    void setIcon( const QIcon &icon );
+    
+    /**
      * This function returns the name of the group the bookmark is
      * in.
      * 
      * @returns the group
      */
-    QString group() const;
+    QString groupName() const;
+    
+    /**
+     * Set the name of the group this bookmark is in.
+     * 
+     * @param name      The group name
+     */
+    void setGroupName( const QString &name );
     
     /**
      * This function returns TRUE if this object represents a bookmark
@@ -150,6 +185,19 @@ class KDE_EXPORT Smb4KBookmarkObject : public QObject
      * @returns TRUE if this object is a bookmark group
      */
     bool isGroup() const;
+    
+    /**
+     * For a bookmark group @p group has to be set to TRUE.
+     * 
+     * @param group     TRUE for a bookmark group and FALSE otherwise
+     */
+    void setGroup( bool group );
+    
+  Q_SIGNALS:
+    /**
+     * This signal is emitted if something changed.
+     */
+    void changed();
     
   private:
     const QScopedPointer<Smb4KBookmarkObjectPrivate> d;

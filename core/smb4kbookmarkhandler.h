@@ -109,6 +109,27 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      */
     void addBookmarks( const QList<Smb4KShare *> &list,
                        QWidget *parent = 0 );
+    
+    /**
+     * Remove a bookmark.
+     * 
+     * @param bookmark      The bookmark that is to be removed
+     */
+    void removeBookmark( Smb4KBookmark *bookmark );
+    
+    /**
+     * This function removes a bookmark with URL @p url. 
+     * 
+     * @param url           The URL of the bookmark that is to be removed
+     */
+    Q_INVOKABLE void removeBookmark( const QUrl &url );
+    
+    /**
+     * This function removes a group and all the bookmarks it contains.
+     * 
+     * @param name          The group name
+     */
+    Q_INVOKABLE void removeGroup( const QString &name );
 
     /**
      * Get the list of bookmarks.

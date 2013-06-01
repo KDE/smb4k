@@ -93,7 +93,7 @@ PlasmaComponents.ListItem {
         parent.opacity = 0.2
       }
       onClicked: {
-        delegate.configureClicked()
+        delegate.removeClicked()
       }
     }        
   }

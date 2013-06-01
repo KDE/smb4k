@@ -308,7 +308,7 @@ void Smb4KBookmarkMenu::setupMenu( bool setup_all )
         }
         
         bookmark->setData( bookmarks.at( j )->url() );
-        m_action_collection->addAction( QString( "[%1]_%2" ).arg( bookmarks.at( j )->group() ).arg( bookmarks.at( j )->unc() ), bookmark );
+        m_action_collection->addAction( QString( "[%1]_%2" ).arg( bookmarks.at( j )->groupName() ).arg( bookmarks.at( j )->unc() ), bookmark );
         sorted_bookmarks << item;
       }
 
@@ -320,7 +320,7 @@ void Smb4KBookmarkMenu::setupMenu( bool setup_all )
 
         if ( bookmark )
         {
-          group_menu->addAction( m_action_collection->action( QString( "[%1]_%2" ).arg( bookmark->group() ).arg( bookmark->unc() ) ) );
+          group_menu->addAction( m_action_collection->action( QString( "[%1]_%2" ).arg( bookmark->groupName() ).arg( bookmark->unc() ) ) );
         }
         else
         {
@@ -328,7 +328,7 @@ void Smb4KBookmarkMenu::setupMenu( bool setup_all )
 
           if ( bookmark )
           {
-            group_menu->addAction( m_action_collection->action( QString( "[%1]_%2" ).arg( bookmark->group() ).arg( bookmark->unc() ) ) );
+            group_menu->addAction( m_action_collection->action( QString( "[%1]_%2" ).arg( bookmark->groupName() ).arg( bookmark->unc() ) ) );
           }
           else
           {
@@ -386,7 +386,7 @@ void Smb4KBookmarkMenu::setupMenu( bool setup_all )
     }
 
     bookmark->setData( bookmarks.at( j )->url() );
-    m_action_collection->addAction( QString( "[%1]_%2" ).arg( bookmarks.at( j )->group() ).arg( bookmarks.at( j )->unc() ), bookmark );
+    m_action_collection->addAction( QString( "[%1]_%2" ).arg( bookmarks.at( j )->groupName() ).arg( bookmarks.at( j )->unc() ), bookmark );
     sorted_bookmarks << item;
   }
 
@@ -398,7 +398,7 @@ void Smb4KBookmarkMenu::setupMenu( bool setup_all )
 
     if ( bookmark )
     {
-      addAction( m_action_collection->action( QString( "[%1]_%2" ).arg( bookmark->group() ).arg( bookmark->unc() ) ) );
+      addAction( m_action_collection->action( QString( "[%1]_%2" ).arg( bookmark->groupName() ).arg( bookmark->unc() ) ) );
     }
     else
     {
@@ -406,7 +406,7 @@ void Smb4KBookmarkMenu::setupMenu( bool setup_all )
 
       if ( bookmark )
       {
-        addAction( m_action_collection->action( QString( "[%1]_%2" ).arg( bookmark->group() ).arg( bookmark->unc() ) ) );
+        addAction( m_action_collection->action( QString( "[%1]_%2" ).arg( bookmark->groupName() ).arg( bookmark->unc() ) ) );
       }
       else
       {
@@ -488,7 +488,7 @@ void Smb4KBookmarkMenu::slotActionTriggered( QAction *action )
 
     Smb4KBookmark *bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC( unc );
 
-    if ( bookmark && QString::compare( group_name, bookmark->group() ) == 0 )
+    if ( bookmark && QString::compare( group_name, bookmark->groupName() ) == 0 )
     {
       Smb4KShare *share = new Smb4KShare( bookmark->hostName(), bookmark->shareName() );
       share->setWorkgroupName( bookmark->workgroupName() );

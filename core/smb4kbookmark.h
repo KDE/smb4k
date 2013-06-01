@@ -226,14 +226,14 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @param name            The group name
      */
-    void setGroup( const QString &name );
+    void setGroupName( const QString &name );
 
     /**
      * Returns the group name of this bookmark.
      *
      * @returns the group name
      */
-    QString group() const;
+    QString groupName() const;
     
     /**
      * Sets the profile this bookmark belongs to. The profile is meant 
