@@ -31,31 +31,7 @@ import org.kde.plasma.extras 0.1 as PlasmaExtras
 PlasmaComponents.Page {
   id: bookmarksPage
   
-  signal busy()
-  signal idle()
-  
-  BookmarkHandler {
-    id: bookmarkHandler
-    onUpdated: {
-      getGroupsAndBookmarks()
-    }
-  }
-  
-  Mounter {
-    id: mounter
-    onMounted: {
-      shareMounted()
-    }
-    onUnmounted: {
-      shareUnmounted()
-    }
-    onAboutToStart: {
-      bookmarksPage.busy()
-    }
-    onFinished: {
-      bookmarksPage.idle()
-    }
-  }
+  property BookmarkObject currentObject: BookmarkObject{}
   
   PlasmaExtras.ScrollArea {
     id: bookmarksScrollArea
@@ -65,11 +41,11 @@ PlasmaComponents.Page {
       delegate: BookmarkItemDelegate {
         id: bookmarkDelegate
         onItemClicked: {
-          bookmarksListView.currentIndex = index
-          bookmarkClicked()
+          currentObject = bookmarksListView.model.get( index ).object
+          bookmarkOrGroupClicked()
         }
         onRemoveClicked: {
-          bookmarksListView.currentIndex = index
+          currentObject = bookmarksListView.model.get( index ).object
           removeBookmark()
         }
       }
@@ -79,27 +55,37 @@ PlasmaComponents.Page {
     }
   }
   
-  Component.onCompleted: {
-    getGroupsAndBookmarks()
-    mounter.start()
+  //
+  // Connections
+  //
+  Connections {
+    target: bookmarkHandler
+    onUpdated: refillView()
+  }
+  
+  Connections {
+    target: mounter
+    onMounted: shareMounted
+    onUnmounted: shareUnmounted
   }
   
   //
-  // Get the bookmarks and groups
+  // Initially fill the view
   //
-  function getGroupsAndBookmarks() {
-    while ( bookmarksListView.model.count != 0 ) {
-      bookmarksListView.model.remove( 0 )
-    }
-    
+  function refillView() {
+    print( "FIXME: Reload current view" )
+  }
+  
+  //
+  // Get the groups
+  //
+  function getGroups() {
     // Get the groups
     if ( bookmarkHandler.groups.length != 0 ) {
       for ( var i = 0; i < bookmarkHandler.groups.length; ++i ) {
         if ( bookmarkHandler.groups[i].description.length != 0 ) {
           bookmarksListView.model.append( {
-            "itemIsGroup": bookmarkHandler.groups[i].isGroup,
-            "itemIcon": bookmarkHandler.groups[i].icon,
-            "itemDescription": bookmarkHandler.groups[i].description } )
+            "object": bookmarkHandler.groups[i] } )
         }
         else {
           // Do nothing
@@ -109,25 +95,49 @@ PlasmaComponents.Page {
     else {
       // Do nothing
     }
-    
-    // Get the bookmarks that do not belong to a group
+  }
+  
+  //
+  // Get the bookmarks
+  //
+  function getBookmarks() {
     if ( bookmarkHandler.bookmarks.length != 0 ) {
       for ( var i = 0; i < bookmarkHandler.bookmarks.length; ++i ) {
-        if ( bookmarkHandler.bookmarks[i].group.length == 0 ) {
-          bookmarksListView.model.append( {
-            "itemIsGroup": bookmarkHandler.bookmarks[i].isGroup,
-            "itemIcon": bookmarkHandler.bookmarks[i].icon,
-            "itemDescription": bookmarkHandler.bookmarks[i].description,
-            "itemURL": bookmarkHandler.bookmarks[i].url } )
+        if ( currentObject.isGroup ) {
+          if ( bookmarkHandler.bookmarks[i].group == currentObject.group ) {
+            bookmarksListView.model.append( {
+              "object": bookmarkHandler.bookmarks[i] } )
+          }
+          else {
+            // Do nothing
+          }
         }
         else {
-          // Do nothing
+          if ( bookmarkHandler.bookmarks[i].group.length == 0 ) {
+            bookmarksListView.model.append( {
+              "object": bookmarkHandler.bookmarks[i] } )
+          }
+          else {
+            // Do nothing
+          }
         }
       }
     }
   }
   
-  function bookmarkClicked() {
+  //
+  // Bookmark or group was clicked
+  //
+  function bookmarkOrGroupClicked() {
+    if ( currentObject.isGroup ) {
+      while ( bookmarksListView.model.count != 0 ) {
+        bookmarksListView.model.remove( 0 )
+      }
+      getBookmarks()
+    }
+    else {
+      mounter.mount( currentObject.url )
+    }
   }
   
   function removeBookmark() {
@@ -135,8 +145,10 @@ PlasmaComponents.Page {
   }
   
   function shareMounted() {
+    print( "FIXME: Share has been mounted" )
   }
   
   function shareUnmounted() {
+    print( "FIXME: Share has been unmounted" )
   }
 }

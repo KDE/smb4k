@@ -8,6 +8,8 @@ Smb4K 1.1.0 (????-??-??):
   met, its installation will be skipped.
 - Added Smb4KNetworkObject class that derives from QObject and encapsulates
   a network item (workgroup, host, or share).
+- Added Smb4KBookmarkObject class that derives from QObject and encapsulates
+  a bookmark.
 - Introduced a new dynamic main tool bar. If you do not like it, you can enable 
   old tool bars via the 'Shown Toolbars' menu item.
 - Added Wake On LAN (WOL) feature (closes SF ticket #27).
@@ -32,6 +34,11 @@ Smb4K 1.1.0 (????-??-??):
   + Added functions for defining the security mode used by mount.cifs.
 - Removed Smb4KIPAddressScanner class. IP addresses are now looked up by
   Smb4KScanner using a private job.
+- Revised Smb4KBookmarkHandler class:
+  + Renamed the bookmarks() functions to bookmarksList() to unify the naming.
+  + To use functions from the bookmark handler in the plasmoid, Q_INVOKABLE 
+    and Q_PROPERTY macros are used.
+  +
 - Revised Smb4KScanner class:
   + To use functions from the scanner in the plasmoid, Q_INVOKABLE and
     Q_PROPERTY macros are used.

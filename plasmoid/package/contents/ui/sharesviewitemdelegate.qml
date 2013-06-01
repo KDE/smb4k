@@ -51,7 +51,7 @@ Item {
       anchors.horizontalCenter: parent.horizontalCenter
       spacing: 10
       QIconItem {
-        icon: itemIcon
+        icon: object.icon
         width: theme.largeIconSize
         height: theme.largeIconSize
         MouseArea {
@@ -83,7 +83,7 @@ Item {
       }
     }
     PlasmaComponents.Label {
-      text: itemName+"<br>"+i18n( "<font size=\"-1\">on %1</font>" ).arg( itemHost )
+      text: object.shareName+"<br>"+i18n( "<font size=\"-1\">on %1</font>" ).arg( object.hostName )
       horizontalAlignment: Text.AlignHCenter
       anchors.horizontalCenter: parent.horizontalCenter
       clip: true

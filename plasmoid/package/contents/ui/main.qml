@@ -36,6 +36,59 @@ PlasmaExtras.App {
   property int minimumHeight: 300
   
   //
+  // The scanner
+  //
+  Scanner {
+    id: scanner
+  }
+  
+  Connections {
+    target: scanner
+    onAboutToStart: busy()
+    onFinished: idle()
+  }
+  
+  //
+  // The mounter
+  //
+  Mounter {
+    id: mounter
+  }
+  
+  Connections {
+    target: mounter
+    onAboutToStart: busy()
+    onFinished: idle()
+  }
+  
+  //
+  // The print interface
+  //
+  Print {
+    id: printer
+  }
+  
+  Connections {
+    target: printer
+    onAboutToStart: busy()
+    onFinished: idle()
+  }
+  
+  //
+  // The bookmark handler
+  //
+  BookmarkHandler {
+    id: bookmarkHandler
+  }
+  
+  //
+  // The custom options manager
+  //
+  OptionsManager {
+    id: optionsManager
+  }
+  
+  //
   // The widgets
   //
   PlasmaComponents.TabBar {
@@ -83,10 +136,6 @@ PlasmaExtras.App {
     //
     BrowserPage {
       id: browserPage
-      
-      // Do not connect signals here, because this leads
-      // to a stack overflow. Use Component.onCompleted
-      // below.
     }
     
     //
@@ -94,10 +143,6 @@ PlasmaExtras.App {
     //
     SharesViewPage {
       id: sharesViewPage
-      
-      // Do not connect signals here, because this leads
-      // to a stack overflow. Use Component.onCompleted
-      // below.
     }
     
     //
@@ -105,10 +150,6 @@ PlasmaExtras.App {
     //
     BookmarksPage {
       id: bookmarksPage
-      
-      // Do not connect signals here, because this leads
-      // to a stack overflow. Use Component.onCompleted
-      // below.
     }
   }
   
@@ -123,22 +164,24 @@ PlasmaExtras.App {
   
   Component.onCompleted: {
     //
-    // The browser
+    // Start the core classes
     //
-    browserPage.busy.connect(busy)
-    browserPage.idle.connect(idle)
+    scanner.start()
+    mounter.start()
+    printer.start();
     
     //
-    // The shares view
+    // Initial setups
     //
-    sharesViewPage.busy.connect(busy)
-    sharesViewPage.idle.connect(idle)
+    bookmarksPage.getGroups()
+    bookmarksPage.getBookmarks()
   }
   
   //
   // The application is busy
   //
   function busy() {
+    print( "busy()" )
     busyIndicator.visible = true
     busyIndicator.running = true
   }
@@ -147,6 +190,7 @@ PlasmaExtras.App {
   // The application has become idle
   //
   function idle() {
+    print( "idle()" )
     busyIndicator.running = false
     busyIndicator.visible = false
   }

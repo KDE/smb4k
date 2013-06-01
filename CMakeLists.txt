@@ -2,14 +2,14 @@ project( smb4k )
 
 set( VERSION_MAJOR 1 )
 set( VERSION_MINOR 0 )
-set( VERSION_PATCH 65 )
+set( VERSION_PATCH 80 )
 
 set( VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH} )
 
 cmake_minimum_required( VERSION 2.6 )
 
 set( QT_MIN_VERSION 4.7.0 )
-set( KDE_MIN_VERSION 4.6.0 ) 
+set( KDE_MIN_VERSION 4.8.0 ) 
 find_package( KDE4 REQUIRED )
 
 include(KDE4Defaults)

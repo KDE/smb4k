@@ -2,7 +2,7 @@
     smb4kmounter.cpp  -  The core class that mounts the shares.
                              -------------------
     begin                : Die Jun 10 2003
-    copyright            : (C) 2003-2012 by Alexander Reinholdt
+    copyright            : (C) 2003-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -41,6 +41,7 @@
 #include "smb4kbookmarkhandler.h"
 #include "smb4kcustomoptionsmanager.h"
 #include "smb4kcustomoptions.h"
+#include "smb4kbookmark.h"
 
 // Qt includes
 #include <QtCore/QDir>
@@ -1319,7 +1320,16 @@ void Smb4KMounter::mount( const QUrl &url )
     }
     else
     {
-      // Do nothing
+      // If the share is not in the global list of shares,
+      // try the list of bookmarks.
+      QString unc( "//"+url.host()+"/"+path );
+      Smb4KBookmark *bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC( unc );
+      share = new Smb4KShare();
+      share->setURL( url );
+      share->setWorkgroupName( bookmark->workgroupName() );
+      share->setHostIP( bookmark->hostIP() );
+      mountShare( share );
+      delete share;
     }
   }
   else
@@ -1790,7 +1800,7 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
       // Do nothing
     }
 
-    // (Re)fill the list of share object.
+    // (Re)fill the list of share objects.
     while ( !d->shareObjects.isEmpty() )
     {
       delete d->shareObjects.takeFirst();
@@ -1849,7 +1859,7 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
     // Remove the share from the list of mounted shares.
     removeMountedShare( known_share );
 
-    // (Re)fill the list of share object.
+    // (Re)fill the list of share objects.
     while ( !d->shareObjects.isEmpty() )
     {
       delete d->shareObjects.takeFirst();

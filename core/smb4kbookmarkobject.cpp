@@ -75,6 +75,7 @@ Smb4KBookmarkObject::Smb4KBookmarkObject(const QString& groupName, QObject* pare
 Smb4KBookmarkObject::Smb4KBookmarkObject(QObject* parent)
 : QObject(parent), d( new Smb4KBookmarkObjectPrivate )
 {
+  d->isGroup    = false;
 }
 
 

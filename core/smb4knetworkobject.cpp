@@ -31,6 +31,9 @@
 // application specific includes
 #include "smb4knetworkobject.h"
 
+// Qt includes
+#include <QtCore/QDebug>
+
 
 class Smb4KNetworkObjectPrivate
 {
@@ -38,6 +41,7 @@ class Smb4KNetworkObjectPrivate
     QString workgroup;
     KUrl url;
     int type;
+    int parentType;
     QIcon icon;
     QString comment;
     bool mounted;
@@ -52,9 +56,9 @@ Smb4KNetworkObject::Smb4KNetworkObject( Smb4KWorkgroup *workgroup, QObject *pare
   d->workgroup = workgroup->workgroupName();
   d->url       = workgroup->url();
   d->icon      = workgroup->icon();
-  d->type      = Workgroup;
   d->mounted   = false;
   d->printer   = false;
+  setType( Workgroup );
 }
 
 
@@ -65,9 +69,9 @@ Smb4KNetworkObject::Smb4KNetworkObject( Smb4KHost *host, QObject *parent )
   d->url       = host->url();
   d->icon      = host->icon();
   d->comment   = host->comment();
-  d->type      = Host;
   d->mounted   = false;
   d->printer   = false;
+  setType( Host );
 }
 
 
@@ -78,20 +82,21 @@ Smb4KNetworkObject::Smb4KNetworkObject( Smb4KShare *share, QObject *parent )
   d->url        = share->url();
   d->icon       = share->icon();
   d->comment    = share->comment();
-  d->type       = Share;
   d->mounted    = share->isMounted();
   d->printer    = share->isPrinter();
   d->mountpoint.setUrl( share->path(), KUrl::TolerantMode );
   d->mountpoint.setScheme( "file" );
+  setType( Share );
 }
 
 
 Smb4KNetworkObject::Smb4KNetworkObject( QObject *parent )
 : QObject( parent ), d( new Smb4KNetworkObjectPrivate )
 {
-  d->type      = Unknown;
+  d->url       = QUrl( "smb://" );
   d->mounted   = false;
   d->printer   = false;
+  setType( Network );
 }
 
 
@@ -106,15 +111,61 @@ Smb4KNetworkObject::Type Smb4KNetworkObject::type() const
 }
 
 
+Smb4KNetworkObject::Type Smb4KNetworkObject::parentType() const
+{
+  return static_cast<Type>( d->parentType );
+}
+
+
+void Smb4KNetworkObject::setType(Smb4KNetworkObject::Type type)
+{
+  d->type = type;
+  
+  switch ( type )
+  {
+    case Host:
+    {
+      d->parentType = Workgroup;
+      break;
+    }
+    case Share:
+    {
+      d->parentType = Host;
+      break;
+    }
+    default:
+    {
+      d->parentType = Network;
+      break;
+    }
+  }
+  emit changed();
+}
+
+
 QString Smb4KNetworkObject::workgroupName() const
 {
   return d->workgroup;
 }
 
 
+void Smb4KNetworkObject::setWorkgroupName(const QString& name)
+{
+  d->workgroup = name;
+  emit changed();
+}
+
+
 QString Smb4KNetworkObject::hostName() const
 {
   return d->url.host().toUpper();
+}
+
+
+void Smb4KNetworkObject::setHostName(const QString& name)
+{
+  d->url.setHost( name );
+  emit changed();
 }
 
 
@@ -147,9 +198,54 @@ QString Smb4KNetworkObject::shareName() const
 }
 
 
+void Smb4KNetworkObject::setShareName(const QString& name)
+{
+  d->url.setPath( name );
+  emit changed();
+}
+
+
+QString Smb4KNetworkObject::name() const
+{
+  QString name;
+  
+  switch ( d->type )
+  {
+    case Workgroup:
+    {
+      name = workgroupName();
+      break;
+    }
+    case Host:
+    {
+      name = hostName();
+      break;
+    }
+    case Share:
+    {
+      name = shareName();
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+  
+  return name;
+}
+
+
 QIcon Smb4KNetworkObject::icon() const
 {
   return d->icon;
+}
+
+
+void Smb4KNetworkObject::setIcon(const QIcon& icon)
+{
+  d->icon = icon;
+  emit changed();
 }
 
 
@@ -159,15 +255,66 @@ QString Smb4KNetworkObject::comment() const
 }
 
 
+void Smb4KNetworkObject::setComment(const QString& comment)
+{
+  d->comment = comment;
+  emit changed();
+}
+
+
 KUrl Smb4KNetworkObject::url() const
 {
   return d->url;
 }
 
 
+KUrl Smb4KNetworkObject::parentURL() const
+{
+  // Do not use KUrl::upUrl() here, because it produces
+  // an URL like this: smb://HOST/Share/../ and we do not
+  // want that.
+  KUrl parent_url;
+  parent_url.setUrl( "smb://" );
+
+  switch ( d->type )
+  {
+    case Host:
+    {
+      parent_url.setHost( d->workgroup );
+      break;
+    }
+    case Share:
+    {
+      parent_url.setHost( d->url.host() );
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+  
+  return parent_url;
+}
+
+
+void Smb4KNetworkObject::setURL(const KUrl& url)
+{
+  d->url = url;
+  emit changed();
+}
+
+
 bool Smb4KNetworkObject::isMounted() const
 {
   return d->mounted;
+}
+
+
+void Smb4KNetworkObject::setMounted(bool mounted)
+{
+  d->mounted = mounted;
+  emit changed();
 }
 
 
@@ -260,8 +407,10 @@ void Smb4KNetworkObject::update( Smb4KBasicNetworkItem *networkItem )
   }
   else
   {
-    d->type = Unknown;
+    d->type = Network;
   }
+  
+  emit changed();
 }
 
 
@@ -271,9 +420,23 @@ bool Smb4KNetworkObject::isPrinter() const
 }
 
 
+void Smb4KNetworkObject::setPrinter(bool printer)
+{
+  d->printer = printer;
+  emit changed();
+}
+
+
 KUrl Smb4KNetworkObject::mountpoint() const
 {
   return d->mountpoint;
+}
+
+
+void Smb4KNetworkObject::setMountpoint( const KUrl &mountpoint )
+{
+  d->mountpoint = mountpoint;
+  emit changed();
 }
 
 

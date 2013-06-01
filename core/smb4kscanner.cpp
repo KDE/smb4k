@@ -816,7 +816,7 @@ void Smb4KScanner::lookup( const QUrl& url, int type )
   {
     switch ( type )
     {
-      case Smb4KNetworkObject::Unknown:
+      case Smb4KNetworkObject::Network:
       {
         lookupDomains();
         break;
@@ -1461,7 +1461,7 @@ void Smb4KScanner::slotWorkgroups( const QList<Smb4KWorkgroup *> &workgroups_lis
 
   emit workgroups( workgroupsList() );
   emit workgroupsListChanged();
-  emit hostsListChanged();  
+//   emit hostsListChanged();  
 }
 
 

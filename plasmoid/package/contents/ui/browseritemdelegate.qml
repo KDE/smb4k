@@ -49,7 +49,7 @@ PlasmaComponents.ListItem {
       anchors.verticalCenter: parent.verticalCenter
       QIconItem {
         id: delegateItemIcon
-        icon: itemIcon
+        icon: object.icon
         width: theme.mediumIconSize
         height: theme.mediumIconSize
         MouseArea {
@@ -64,7 +64,7 @@ PlasmaComponents.ListItem {
       anchors.verticalCenter: parent.verticalCenter
       PlasmaComponents.Label {
         id: delegateItemText
-        text: itemName+(itemComment.length != 0 ? "<br><font size=\"-1\">"+itemComment+"</font>" :"")
+        text: object.name+(object.comment.length != 0 ? "<br><font size=\"-1\">"+object.comment+"</font>" :"")
         clip: true
         MouseArea {
           anchors.fill: parent
@@ -85,8 +85,8 @@ PlasmaComponents.ListItem {
     height: theme.smallIconSize
     width: theme.smallIconSize
     opacity: 0.2
-    visible: (itemType == 3 && !itemIsPrinter) ? true : false
-    enabled: (itemType == 3 && !itemIsPrinter) ? true : false
+    visible: (object.type == 3 && !object.isPrinter) ? true : false
+    enabled: (object.type == 3 && !object.isPrinter) ? true : false
     MouseArea {
       anchors.fill: parent
       hoverEnabled: true
@@ -111,8 +111,8 @@ PlasmaComponents.ListItem {
     height: theme.smallIconSize
     width: theme.smallIconSize
     opacity: 0.2
-    visible: itemType > 1 ? true : false
-    enabled: itemType > 1 ? true : false
+    visible: object.type > 1 ? true : false
+    enabled: object.type > 1 ? true : false
     MouseArea {
       anchors.fill: parent
       hoverEnabled: true

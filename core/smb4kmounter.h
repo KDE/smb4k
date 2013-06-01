@@ -2,7 +2,7 @@
     smb4kmounter.h  -  The core class that mounts the shares.
                              -------------------
     begin                : Die Jun 10 2003
-    copyright            : (C) 2003-2012 by Alexander Reinholdt
+    copyright            : (C) 2003-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -87,7 +87,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * Returns a static pointer to this class.
      */
     static Smb4KMounter *self();
-
+    
     /**
      * Aborts the mount/unmount process that is running for the share @p share.
      *
@@ -201,7 +201,8 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * share. 
      * 
      * Please note that this function only works with share objects that are 
-     * already known. All others will be ignored.
+     * already known, i.e. it must either be a share that was already looked
+     * up during program run or one that was bookmarked.
      * 
      * @param url         The URL of the remote share
      */
@@ -258,7 +259,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * @param share            The share that is going to be unmounted.
      */
     void unmounted( Smb4KShare *share );
-
+    
     /**
      * This signal is emitted when a mount/unmount process for the share 
      * @p share is about to be started.

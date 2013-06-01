@@ -120,7 +120,7 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
     /**
      * This function starts the composite job
      */
-    void start();
+    Q_INVOKABLE void start();
     
     /**
      * This function takes a QUrl object and initiates the printing of a file

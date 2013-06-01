@@ -47,7 +47,7 @@ PlasmaComponents.ListItem {
       anchors.verticalCenter: parent.verticalCenter
       QIconItem {
         id: delegateItemIcon
-        icon: itemIcon
+        icon: object.icon
         width: theme.mediumIconSize
         height: theme.mediumIconSize
         MouseArea {
@@ -62,7 +62,7 @@ PlasmaComponents.ListItem {
       anchors.verticalCenter: parent.verticalCenter
       PlasmaComponents.Label {
         id: delegateItemText
-        text: itemDescription
+        text: object.description
         clip: true
         MouseArea {
           anchors.fill: parent
@@ -83,8 +83,6 @@ PlasmaComponents.ListItem {
     height: theme.smallIconSize
     width: theme.smallIconSize
     opacity: 0.2
-    visible: !itemIsGroup
-    enabled: !itemIsGroup
     MouseArea {
       anchors.fill: parent
       hoverEnabled: true

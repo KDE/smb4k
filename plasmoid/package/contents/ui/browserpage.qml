@@ -31,66 +31,9 @@ import org.kde.plasma.extras 0.1 as PlasmaExtras
 PlasmaComponents.Page {
   id: browserPage
   
-  property string parent_item: ""
-  property int parent_type: 0 // Unknown
-  property url parent_url
-  
-  signal busy()
-  signal idle()
-
-  Scanner {
-    id: scanner
-    onWorkgroupsChanged: {
-      getWorkgroups()
-    }
-    onHostsChanged: {
-      getHosts()
-    }
-    onSharesChanged: {
-      getShares()
-    }
-    onAboutToStart: {
-      browserPage.busy()
-    }
-    onFinished: {
-      browserPage.idle()
-    }
-  }
-  
-  Print {
-    id: printer
-    onAboutToStart: {
-      browserPage.busy()
-    }
-    onFinished: {
-      browserPage.idle()
-    }
-  }
-  
-  Mounter {
-    id: mounter
-    onMounted: {
-      shareMounted()
-    }
-    onUnmounted: {
-      shareUnmounted()
-    }
-    onAboutToStart: {
-      browserPage.busy()
-    }
-    onFinished: {
-      browserPage.idle()
-    }
-  }
-  
-  BookmarkHandler {
-    id: bookmarkHandler
-  }
-  
-  OptionsManager {
-    id: optionsManager
-  }
-          
+  //
+  // The tool bar
+  //
   PlasmaComponents.ToolBar {
     id: browserToolBar
     anchors {
@@ -103,13 +46,20 @@ PlasmaComponents.Page {
     }
     PlasmaComponents.ToolBarLayout {
       id: browserToolBarLayout
+      spacing: 2
           
       PlasmaComponents.ToolButton {
         id: rescanButton
         text: i18n( "Rescan" )
         iconSource: "view-refresh"
         onClicked: {
-          rescan()
+          var object = browserListView.model.get(browserListView.currentIndex).object
+          if ( typeof( object ) != 'null' ) {
+            rescan( object )
+          }
+          else {
+            print( "FIXME: Handle empty network list view!" )
+          }
         }
       }
       
@@ -127,14 +77,23 @@ PlasmaComponents.Page {
         text: i18n( "Up" )
         iconSource: "go-up"
         onClicked: {
-          up()
+          var object = browserListView.model.get(browserListView.currentIndex).object
+          if ( typeof( object ) != 'null' ) {
+            up( object )
+          }
+          else {
+            print( "FIXME: Handle empty network list view!" )
+          }
         }
       }
     }
         
     tools: browserToolBarLayout
   }
-      
+  
+  //
+  // The list view
+  //
   PlasmaExtras.ScrollArea {
     id: browserScrollArea
     anchors {
@@ -149,23 +108,31 @@ PlasmaComponents.Page {
       delegate: BrowserItemDelegate {
         id: browserDelegate
         onItemClicked: {
-          browserListView.currentIndex = index
-              
-          if ( browserListView.model.get( index ).itemType < 3 /*share*/ ) {
-            parent_item = browserListView.model.get( index ).itemName
-            parent_type = browserListView.model.get( index ).itemType
-            parent_url  = browserListView.model.get( index ).itemURL
-          } 
+          var object = browserListView.model.get(index).object
+          if ( typeof( object ) != 'null' ) {
+            networkItemClicked( object )
+          }
           else {
             // Do nothing
           }
-          networkItemClicked()
         }
         onBookmarkClicked: {
-          bookmarkHandler.addBookmark( browserListView.model.get( index ).itemURL )
+          var object = browserListView.model.get(index).object
+          if ( typeof( object ) != 'null' ) {
+            bookmarkHandler.addBookmark( object.url )
+          }
+          else {
+            // Do nothing
+          }
         }
         onConfigureClicked: {
-          optionsManager.openCustomOptionsDialog(  browserListView.model.get( index ).itemURL  )
+          var object = browserListView.model.get(index).object
+          if ( typeof( object ) != 'null' ) {
+            optionsManager.openCustomOptionsDialog( object.url )
+          }
+          else {
+            // Do nothing
+          }
         }
       }
       model: ListModel {}
@@ -174,95 +141,84 @@ PlasmaComponents.Page {
     }
   }
   
-  Component.onCompleted: {
-    scanner.start()
-    mounter.start()
-    printer.start()
+  //
+  // Connections
+  //
+  Connections {
+    target: scanner
+    onWorkgroupsChanged: getWorkgroups()
+    onHostsChanged: getHosts()
+    onSharesChanged: getShares()
   }
   
+  Connections {
+    target: mounter
+    onMounted: shareMounted()
+    onUnmounted: shareUnmounted()
+  }
+  
+  //
+  // A network item was clicked
+  //
+  function networkItemClicked( object ) {
+    if ( object.type == 3 ) {
+      if ( !object.isPrinter ) {
+        mounter.mount( object.url )
+      }
+      else {
+        printer.print( object.url )
+      }
+    }
+    else {
+      scanner.lookup( object.url, object.type )
+    }
+  }
+  
+  //
+  // Rescan the current level
+  //
+  function rescan( object ) {
+    scanner.lookup( object.parentURL, object.parentType )
+  }
+  
+  //
+  // Abort any process run by the involved core classes
+  //
+  function abort() {
+    scanner.abortAll()
+    mounter.abortAll()
+    printer.abortAll()
+  }
+  
+  //
+  // Go one level up
+  //
+  function up( object ) {
+    var parentObject = scanner.find( object.parentURL, object.parentType )
+    scanner.lookup( parentObject.parentURL, parentObject.parentType )
+  }
+
   //
   // Get the workgroups and show them in the list view
   //
   function getWorkgroups() {
+    //
+    // Clear the list view
+    //
+    while ( browserListView.model.count != 0 ) {
+      browserListView.model.remove( 0 )
+    }
     
-    if ( parent_type != 0 /* unknown aka entire network */ ) {
-      return
-    }
-    else {
-    }
-
-    // Remove obsolete workgroups
-    if ( browserListView.model.count != 0 ) {
-      obsolete_items = new Array()
-      
-      for ( var i = 0; i < browserListView.model.count; i++ ) {
-        var object = scanner.find( browserListView.model.get( i ).itemURL, browserListView.model.get( i ).itemType )
-        
-        if ( !object ) {
-          obsolete_items.push( browserListView.model.get( i ).itemName )
-        }
-        else {
-          // Do nothing
-        }
-      }
-      
-      if ( obsolete_items.length != 0 ) {
-        for ( var i = 0; i < obsolete_items.length; i++ ) {
-          for ( var j = 0; j < browserListView.model.count; j++ ) {
-            if ( obsolete_items[i] == browserListView.model.get( j ).itemName ) {
-              browserListView.model.remove( j )
-              break
-            }
-            else {
-              continue
-            }
-          }
-        }
-      }
-      else {
-        // Do nothing
+    //
+    // Add the workgroups
+    //
+    if ( scanner.workgroups.length != 0 ) {
+      for ( var i = 0; i < scanner.workgroups.length; i++ ) {
+        browserListView.model.append( { "object": scanner.workgroups[i] } )
       }
     }
     else {
       // Do nothing
-    }
-    
-    // Add new workgroups
-    if ( scanner.workgroups.length != 0 ) {
-      for ( var i = 0; i < scanner.workgroups.length; i++ ) {
-        var have_item = false
-        
-        if ( browserListView.model.count != 0 ) {
-          for ( var j = 0; j < browserListView.model.count; j++ ) {
-            if ( browserListView.model.get( j ).itemName == scanner.workgroups[i].workgroupName ) {
-              have_item = true
-              break
-            }
-            else {
-              // Do nothing
-            }
-          }
-        }
-        
-        if ( !have_item ) {
-          browserListView.model.append( { 
-                                 "itemName": scanner.workgroups[i].workgroupName,
-                                 "itemComment": scanner.workgroups[i].comment,
-                                 "itemIcon": scanner.workgroups[i].icon, 
-                                 "itemURL": scanner.workgroups[i].url,
-                                 "itemType": scanner.workgroups[i].type,
-                                 "itemIsMounted": scanner.workgroups[i].isMounted,
-                                 "itemIsPrinter": scanner.workgroups[i].isPrinter } )
-        }
-        else {
-          // Do nothing
-        }
-      }
-    }
-    else {
-      while ( browserListView.model.count != 0 ) {
-        browserListView.model.remove( 0 )
-      }
     }
   }
 
@@ -270,93 +226,23 @@ PlasmaComponents.Page {
   // Get the hosts and show them in the list view
   //
   function getHosts() {
-    
-    if ( parent_type != 1 /* workgroup */ ) {
-      return
+    //
+    // Clear the list view
+    //
+    while ( browserListView.model.count != 0 ) {
+      browserListView.model.remove( 0 )
     }
-    else {
-    }
     
-    // Remove obsolete hosts
-    if ( browserListView.model.count != 0 ) {
-      obsolete_items = new Array()
-      
-      for ( var i = 0; i < browserListView.model.count; i++ ) {
-        var object = scanner.find( browserListView.model.get( i ).itemURL, browserListView.model.get( i ).itemType )
-        
-        if ( !object ) {
-          obsolete_items.push( browserListView.model.get( i ).itemName )
-        }
-        else {
-          // Do nothing
-        }
-      }
-      
-      if ( obsolete_items.length != 0 ) {
-        for ( var i = 0; i < obsolete_items.length; i++ ) {
-          for ( var j = 0; j < browserListView.model.count; j++ ) {
-            if ( obsolete_items[i] == browserListView.model.get( j ).itemName ) {
-              browserListView.model.remove( j )
-              break
-            }
-            else {
-              continue
-            }
-          }
-        }
-      }
-      else {
-        // Do nothing
+    //
+    // Add the workgroup members
+    //
+    if ( scanner.hosts.length != 0 ) {
+      for ( var i = 0; i < scanner.hosts.length; i++ ) {
+        browserListView.model.append( { "object": scanner.hosts[i] } )
       }
     }
     else {
       // Do nothing
-    }
-    
-    // Add new hosts
-    if ( scanner.hosts.length != 0 ) {
-      for ( var i = 0; i < scanner.hosts.length; i++ ) {
-        
-        if ( scanner.hosts[i].workgroupName != parent_item ) {
-          continue
-        }
-        else {
-          // Do nothing
-        }
-        
-        var have_item = false
-        
-        if ( browserListView.model.count != 0 ) {
-          for ( var j = 0; j < browserListView.model.count; j++ ) {
-            if ( browserListView.model.get( j ).itemName == scanner.hosts[i].hostName ) {
-              have_item = true
-              break
-            }
-            else {
-              // Do nothing
-            }
-          }
-        }
-        
-        if ( !have_item ) {
-          browserListView.model.append( { 
-            "itemName": scanner.hosts[i].hostName,
-            "itemComment": scanner.hosts[i].comment,
-            "itemIcon": scanner.hosts[i].icon, 
-            "itemURL": scanner.hosts[i].url,
-            "itemType": scanner.hosts[i].type,
-            "itemIsMounted": scanner.hosts[i].isMounted,
-            "itemIsPrinter": scanner.hosts[i].isPrinter } )
-        }
-        else {
-          // Do nothing
-        }
-      }
-    }
-    else {
-      while ( browserListView.model.count != 0 ) {
-        browserListView.model.remove( 0 )
-      }
     }
   }
 
@@ -364,115 +250,23 @@ PlasmaComponents.Page {
   // Get the shares and show them in the list view
   //
   function getShares() {
-    
-    if ( parent_type != 2 /* host */ ) {
-      return
+    //
+    // Clear the list view
+    //
+    while ( browserListView.model.count != 0 ) {
+      browserListView.model.remove( 0 )
     }
-    else {
-    }
-    
-    // Remove obsolete shares
-    if ( browserListView.model.count != 0 ) {
-      obsolete_items = new Array()
       
-      for ( var i = 0; i < browserListView.model.count; i++ ) {
-        var object = scanner.find( browserListView.model.get( i ).itemURL, browserListView.model.get( i ).itemType )
-        
-        if ( !object ) {
-          obsolete_items.push( browserListView.model.get( i ).itemName )
-        }
-        else {
-          // Do nothing
-        }
-      }
-      
-      if ( obsolete_items.length != 0 ) {
-        for ( var i = 0; i < obsolete_items.length; i++ ) {
-          for ( var j = 0; j < browserListView.model.count; j++ ) {
-            if ( obsolete_items[i] == browserListView.model.get( j ).itemName ) {
-              browserListView.model.remove( j )
-              break
-            }
-            else {
-              continue
-            }
-          }
-        }
-      }
-      else {
-        // Do nothing
+    //
+    // Add the workgroup members
+    //
+    if ( scanner.shares.length != 0 ) {
+      for ( var i = 0; i < scanner.shares.length; i++ ) {
+        browserListView.model.append( { "object": scanner.shares[i] } )
       }
     }
     else {
       // Do nothing
-    }
-    
-    // Add new shares
-    if ( scanner.shares.length != 0 ) {
-      for ( var i = 0; i < scanner.shares.length; i++ ) {
-        
-        if ( scanner.shares[i].hostName != parent_item ) {
-          continue
-        }
-        else {
-          // Do nothing
-        }
-        
-        var have_item = false
-        
-        if ( browserListView.model.count != 0 ) {
-          for ( var j = 0; j < browserListView.model.count; j++ ) {
-            if ( browserListView.model.get( j ).itemName == scanner.shares[i].shareName ) {
-              have_item = true
-              break
-            }
-            else {
-              // Do nothing
-            }
-          }
-        }
-        
-        if ( !have_item ) {
-          browserListView.model.append( { 
-                                 "itemName": scanner.shares[i].shareName,
-                                 "itemComment": scanner.shares[i].comment,
-                                 "itemIcon": scanner.shares[i].icon, 
-                                 "itemURL": scanner.shares[i].url,
-                                 "itemType": scanner.shares[i].type,
-                                 "itemIsMounted": scanner.shares[i].isMounted,
-                                 "itemIsPrinter": scanner.shares[i].isPrinter } )
-        }
-        else {
-          // Do nothing
-        }
-      }
-    }
-    else {
-      while ( browserListView.model.count != 0 ) {
-        browserListView.model.remove( 0 )
-      }
-    }
-  }
-  
-  //
-  // An network item was clicked
-  //
-  function networkItemClicked() {
-    // If the current item is a share, mount it or show the print dialog.
-    if ( browserListView.model.get( browserListView.currentIndex ).itemType == 3 ) {
-      if ( !browserListView.model.get( browserListView.currentIndex ).itemIsPrinter ) {
-        mounter.mount( browserListView.model.get( browserListView.currentIndex ).itemURL )
-      }
-      else {
-        printer.print( browserListView.model.get( browserListView.currentIndex ).itemURL )
-      }
-    }
-    else {
-      scanner.lookup( parent_url, parent_type )
-      
-      while ( browserListView.model.count != 0 ) {
-        browserListView.model.remove( 0 )
-      }
     }
   }
   
@@ -480,13 +274,12 @@ PlasmaComponents.Page {
   // A share has been mounted
   //
   function shareMounted() {
-    // Modify the icon in the browser
-    if ( parent_type == 2 ) {
+    var object = browserListView.model.get(browserListView.currentIndex).object
+    if ( object.type == 3 /* share */ ) {
       for ( var i = 0; i < browserListView.model.count; i++ ) {
-        var object = mounter.find( browserListView.model.get( i ).itemURL, false )
-        
-        if ( object && parent_item == object.hostName ) {
-          browserListView.model.get( i ).itemIcon = object.icon
+        var obj = mounter.find( browserListView.model.get(i).object.url, false )
+        if ( typeof( obj ) != 'null' && object.hostName == obj.hostName ) {
+          browserListView.model.get(i).object.icon = object.icon
         }
         else {
           // Do nothing
@@ -498,28 +291,23 @@ PlasmaComponents.Page {
     }
   }
   
-  // 
-  // A share has been unmounted
-  //
   function shareUnmounted() {
-    // Modify the icon in the browser
-    if ( parent_type == 2 ) {
+    var object = browserListView.model.get(browserListView.currentIndex).object
+    if ( object.type == 3 /* share */ ) {
       for ( var i = 0; i < browserListView.model.count; i++ ) {
-        var object = mounter.find( browserListView.model.get( i ).itemURL, false )
-        
-        if ( object ) {
-          if ( !object.isMounted && parent_item == object.hostName ) {
-            browserListView.model.get( i ).itemIcon = object.icon
+        var obj = mounter.find( browserListView.model.get(i).object.url, false )
+        if ( typeof( obj ) != 'null' ) {
+          if ( !obj.isMounted && object.hostName == obj.hostName ) {
+            browserListView.model.get(i).object.icon = obj.icon
           }
           else {
             // Do nothing
           }
         }
         else {
-          var obj = browserPage.instance.find( browserListView.model.get( i ).itemURL, browserListView.model.get( i ).itemType )
-          
-          if ( obj ) {
-            browserListView.model.get( i ).itemIcon = obj.icon
+          var alt_obj = scanner.find( browserListView.model.get(i).object.url, browserListView.model.get(i).object.type )
+          if ( typeof( alt_obj ) != 'null' ) {
+            browserListView.model.get(i).object.icon = alt_obj.icon
           }
           else {
             // Do nothing
@@ -529,60 +317,6 @@ PlasmaComponents.Page {
     }
     else {
       // Do nothing
-    }
-  }
-  
-  //
-  // Rescan the network neighborhood
-  //
-  function rescan() {
-    if ( parent_type < 3 /* 3 == share */ ) {
-      scanner.lookup( parent_url, parent_type )
-    }
-    else {
-      // Do nothing
-    }   
-  }
-  
-  //
-  // Abort all actions done by the core classes
-  //
-  function abort() {
-    scanner.abortAll()
-    printer.abortAll()
-    mounter.abortAll()
-  }
-  
-  //
-  // Go one level up
-  //
-  function up() {
-    switch ( parent_type )
-    {
-      case 1: {
-        parent_url = "smb://"
-        parent_item = ""
-        parent_type--
-        while ( browserListView.model.count != 0 ) {
-          browserListView.model.remove( 0 )
-        }  
-        rescan()
-        break
-      }
-      case 2: {
-        var object = scanner.find( parent_url, parent_type )
-        parent_url = "smb://"+object.workgroupName
-        parent_item = object.workgroupName
-        parent_type--
-        while ( browserListView.model.count != 0 ) {
-          browserListView.model.remove( 0 )
-        }  
-        rescan()
-        break
-      }
-      default: {
-        break
-      }
     }
   }
 }
