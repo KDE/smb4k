@@ -236,7 +236,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
   Q_SIGNALS:
     /**
      * This signal is emitted whenever a share item was updated. This mainly happens
-     * from within the import() function.
+     * from within the import process.
      * 
      * @param share             The share item that was just updated.
      */ 
@@ -283,8 +283,14 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
                    int process );
     
     /**
-     * This signal is emitted every time the list of mounted shares is
-     * modified.
+     * This signal is emitted every time a share was added to or removed
+     * from the list of shares. In contrast to the mounted() and unmounted()
+     * signals, this signal is emitted at the end of the modification of
+     * the list (the unmount() signal is emitted before the share is actually
+     * removed from the list).
+     * 
+     * If you need to know if the contents of a specific share has been changed,
+     * you need to connect to the updated() signal.
      */
     void mountedSharesListChanged();
 

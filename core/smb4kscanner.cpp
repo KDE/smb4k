@@ -523,7 +523,7 @@ void Smb4KScanner::lookupDomains( QWidget *parent )
           }
           
           // 16 times the MAC address
-          QStringList parts = wol_entries.at( i )->macAddress().split( ":", QString::SkipEmptyParts );
+          QStringList parts = wol_entries.at( i )->macAddress().split( ':', QString::SkipEmptyParts );
           
           for ( int j = 0; j < 16; ++j )
           {

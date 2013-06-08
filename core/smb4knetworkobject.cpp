@@ -93,7 +93,7 @@ Smb4KNetworkObject::Smb4KNetworkObject( Smb4KShare *share, QObject *parent )
 Smb4KNetworkObject::Smb4KNetworkObject( QObject *parent )
 : QObject( parent ), d( new Smb4KNetworkObjectPrivate )
 {
-  d->url       = QUrl( "smb://" );
+  d->url.setUrl( "smb://", KUrl::TolerantMode );
   d->mounted   = false;
   d->printer   = false;
   setType( Network );

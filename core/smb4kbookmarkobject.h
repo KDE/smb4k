@@ -66,6 +66,7 @@ class KDE_EXPORT Smb4KBookmarkObject : public QObject
   Q_PROPERTY( QIcon icon READ icon WRITE setIcon NOTIFY changed )
   Q_PROPERTY( QString groupName READ groupName WRITE setGroupName NOTIFY changed )
   Q_PROPERTY( bool isGroup READ isGroup WRITE setGroup NOTIFY changed )
+  Q_PROPERTY( bool isMounted READ isMounted WRITE setMounted NOTIFY changed )
   
   public:
     /**
@@ -192,6 +193,21 @@ class KDE_EXPORT Smb4KBookmarkObject : public QObject
      * @param group     TRUE for a bookmark group and FALSE otherwise
      */
     void setGroup( bool group );
+    
+    /**
+     * Returns TRUE if the share that is represented by this bookmark 
+     * is mounted.
+     * 
+     * @returns TRUE if the bookmarked share is mounted
+     */
+    bool isMounted() const;
+    
+    /**
+     * For a share that is mounted set this to TRUE.
+     * 
+     * @param mounted   Set to TRUE for a mounted share
+     */
+    void setMounted( bool mounted );
     
   Q_SIGNALS:
     /**

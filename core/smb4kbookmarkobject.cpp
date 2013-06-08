@@ -45,6 +45,7 @@ class Smb4KBookmarkObjectPrivate
     QString label;
     QString group;
     bool isGroup;
+    bool isMounted;
 };
 
 
@@ -57,6 +58,7 @@ Smb4KBookmarkObject::Smb4KBookmarkObject(Smb4KBookmark* bookmark, QObject* paren
   d->label      = bookmark->label();
   d->group      = bookmark->groupName();
   d->isGroup    = false;
+  d->isMounted  = false;
 }
 
 
@@ -66,6 +68,7 @@ Smb4KBookmarkObject::Smb4KBookmarkObject(const QString& groupName, QObject* pare
   d->icon       = KIcon("folder-favorites");
   d->group      = groupName;
   d->isGroup    = true;
+  d->isMounted  = false;
 }
 
 
@@ -74,6 +77,7 @@ Smb4KBookmarkObject::Smb4KBookmarkObject(QObject* parent)
 : QObject(parent), d( new Smb4KBookmarkObjectPrivate )
 {
   d->isGroup    = false;
+  d->isMounted  = false;
 }
 
 
@@ -187,6 +191,19 @@ bool Smb4KBookmarkObject::isGroup() const
 void Smb4KBookmarkObject::setGroup(bool group)
 {
   d->isGroup = group;
+  emit changed();
+}
+
+
+bool Smb4KBookmarkObject::isMounted() const
+{
+  return d->isMounted;
+}
+
+
+void Smb4KBookmarkObject::setMounted(bool mounted)
+{
+  d->isMounted = mounted;
   emit changed();
 }
 

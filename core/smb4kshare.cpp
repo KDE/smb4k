@@ -151,7 +151,7 @@ void Smb4KShare::setShareName( const QString &name )
   }
   else
   {
-    d->url.setPath( "/"+name.trimmed() );
+    d->url.setPath( '/'+name.trimmed() );
   }
   
   d->url.setProtocol( "smb" );

@@ -58,7 +58,6 @@ class Smb4KNetworkObjectPrivate;
 class KDE_EXPORT Smb4KNetworkObject : public QObject
 {
   Q_OBJECT
-
   Q_PROPERTY( Type type READ type WRITE setType NOTIFY changed )
   Q_PROPERTY( Type parentType READ parentType CONSTANT )
   Q_PROPERTY( QString workgroupName READ workgroupName WRITE setWorkgroupName NOTIFY changed )

@@ -769,7 +769,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share, QWidget *parent )
       }
           
       // 16 times the MAC address
-      QStringList parts = options->macAddress().split( ":", QString::SkipEmptyParts );
+      QStringList parts = options->macAddress().split( ':', QString::SkipEmptyParts );
           
       for ( int j = 0; j < 16; ++j )
       {
@@ -2318,9 +2318,9 @@ void Smb4KMounter::slotStatResult( KJob *job )
         {
           d->shareObjects << new Smb4KNetworkObject( mountedSharesList().at( i ) );
         }
+        
+        emit mountedSharesListChanged();
       }
-
-      emit mountedSharesListChanged();
     }
     else
     {
