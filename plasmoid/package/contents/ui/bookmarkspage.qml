@@ -42,7 +42,7 @@ PlasmaComponents.Page {
         id: bookmarkDelegate
         onItemClicked: {
           var object = bookmarksListView.model.get(index).object
-          if ( typeof( object ) != 'null' ) {
+          if ( object !== null ) {
             bookmarkOrGroupClicked( object )
           }
           else {
@@ -51,7 +51,7 @@ PlasmaComponents.Page {
         }
         onRemoveClicked: {
           var object = bookmarksListView.model.get( index ).object
-          if ( typeof( object ) != 'null' ) {
+          if ( object !== null ) {
             if ( object.isGroup ) {
               removeGroup( object, index )
             }
@@ -80,8 +80,8 @@ PlasmaComponents.Page {
   
   Connections {
     target: mounter
-    onMounted: shareMounted()
-    onUnmounted: shareUnmounted()
+    onMounted: shareMountedOrUnmounted()
+    onUnmounted: shareMountedOrUnmounted()
   }
   
   //
@@ -126,6 +126,7 @@ PlasmaComponents.Page {
   // Fill the view
   //
   function fillView() {
+    print( "fillView()" )
     if ( bookmarksListView.model.count == 0 ) {
       getGroups()
       getBookmarks( "" )
@@ -173,7 +174,7 @@ PlasmaComponents.Page {
   //
   function getBookmarks( group_name ) {
     if ( bookmarkHandler.bookmarks.length != 0 ) {
-      for ( var i = 0; i < bookmarkHandler.bookmarks.length; ++i ) {
+      for ( var i = 0; i < bookmarkHandler.bookmarks.length; i++ ) {
         if ( bookmarkHandler.bookmarks[i].groupName == group_name ) {
           bookmarksListView.model.append( { "object": bookmarkHandler.bookmarks[i] } )
         }
@@ -182,13 +183,25 @@ PlasmaComponents.Page {
         }
       }
     }
+    else {
+      // Do nothing
+    }
   }
   
-  function shareMounted() {
-    print( "FIXME: Share has been mounted" )
-  }
-  
-  function shareUnmounted() {
-    print( "FIXME: Share has been unmounted" )
+  function shareMountedOrUnmounted() {
+//     for ( var i = 0; i < bookmarksListView.model.count; i++ ) {
+//       if ( !bookmarksListView.model.get(i).object.isGroup ) {
+//         var object = mounter.find( bookmarksListView.model.get(i).object.url, false )
+//         if ( object !== null ) {
+//           bookmarksListView.model.get(i).enabled = !object.isMounted
+//         }
+//         else {
+//           bookmarksListView.model.get(i).enabled = true
+//         }
+//       }
+//       else {
+//         // Do nothing
+//       }
+//     }
   }
 }

@@ -40,6 +40,7 @@ PlasmaComponents.ListItem {
 
   width: bookmarksListView.width
   height: theme.mediumIconSize + 8
+  enabled: !object.isMounted
   
   Row {
     spacing: 10

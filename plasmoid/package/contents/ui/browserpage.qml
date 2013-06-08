@@ -53,9 +53,14 @@ PlasmaComponents.Page {
         text: i18n( "Rescan" )
         iconSource: "view-refresh"
         onClicked: {
-          var object = browserListView.model.get(browserListView.currentIndex).object
-          if ( typeof( object ) != 'null' ) {
-            rescan( object )
+          if ( browserListView.model.count != 0 ) {
+            var object = browserListView.model.get(browserListView.currentIndex).object
+            if ( object !== null ) {
+              rescan( object )
+            }
+            else {
+              // Do nothing
+            }
           }
           else {
             print( "FIXME: Handle empty network list view!" )
@@ -77,9 +82,14 @@ PlasmaComponents.Page {
         text: i18n( "Up" )
         iconSource: "go-up"
         onClicked: {
-          var object = browserListView.model.get(browserListView.currentIndex).object
-          if ( typeof( object ) != 'null' ) {
-            up( object )
+          if ( browserListView.model.count != 0 ) {
+            var object = browserListView.model.get(browserListView.currentIndex).object
+            if ( object !== null ) {
+              up( object )
+            }
+            else {
+              // Do nothing
+            }
           }
           else {
             print( "FIXME: Handle empty network list view!" )
@@ -109,7 +119,7 @@ PlasmaComponents.Page {
         id: browserDelegate
         onItemClicked: {
           var object = browserListView.model.get(index).object
-          if ( typeof( object ) != 'null' ) {
+          if ( object !== null ) {
             networkItemClicked( object )
           }
           else {
@@ -118,7 +128,7 @@ PlasmaComponents.Page {
         }
         onBookmarkClicked: {
           var object = browserListView.model.get(index).object
-          if ( typeof( object ) != 'null' ) {
+          if ( object !== null ) {
             bookmarkHandler.addBookmark( object.url )
           }
           else {
@@ -127,7 +137,7 @@ PlasmaComponents.Page {
         }
         onConfigureClicked: {
           var object = browserListView.model.get(index).object
-          if ( typeof( object ) != 'null' ) {
+          if ( object !== null ) {
             optionsManager.openCustomOptionsDialog( object.url )
           }
           else {
@@ -153,8 +163,7 @@ PlasmaComponents.Page {
   
   Connections {
     target: mounter
-    onMounted: shareMounted()
-    onUnmounted: shareUnmounted()
+    onMountedSharesListChanged: shareMountedOrUnmounted()
   }
   
   //
@@ -271,53 +280,66 @@ PlasmaComponents.Page {
   }
   
   //
-  // A share has been mounted
+  // A share has been mounted or unmounted
   //
-  function shareMounted() {
-    var object = browserListView.model.get(browserListView.currentIndex).object
-    if ( object.type == 3 /* share */ ) {
-      for ( var i = 0; i < browserListView.model.count; i++ ) {
-        var obj = mounter.find( browserListView.model.get(i).object.url, false )
-        if ( typeof( obj ) != 'null' && object.hostName == obj.hostName ) {
-          browserListView.model.get(i).object.icon = object.icon
-        }
-        else {
-          // Do nothing
-        }
-      }
-    }
-    else {
-      // Do nothing
-    }
+  function shareMountedOrUnmounted() {
   }
   
-  function shareUnmounted() {
-    var object = browserListView.model.get(browserListView.currentIndex).object
-    if ( object.type == 3 /* share */ ) {
-      for ( var i = 0; i < browserListView.model.count; i++ ) {
-        var obj = mounter.find( browserListView.model.get(i).object.url, false )
-        if ( typeof( obj ) != 'null' ) {
-          if ( !obj.isMounted && object.hostName == obj.hostName ) {
-            browserListView.model.get(i).object.icon = obj.icon
-          }
-          else {
-            // Do nothing
-          }
-        }
-        else {
-          var alt_obj = scanner.find( browserListView.model.get(i).object.url, browserListView.model.get(i).object.type )
-          if ( typeof( alt_obj ) != 'null' ) {
-            browserListView.model.get(i).object.icon = alt_obj.icon
-          }
-          else {
-            // Do nothing
-          }
-        }
-      }
-    }
-    else {
-      // Do nothing
-    }
-  }
+//   function shareMounted() {
+//     if ( browserListView.model.count != 0 ) {
+//       var object = browserListView.model.get(browserListView.currentIndex).object
+//       if ( object.type == 3 /* share */ ) {
+//         for ( var i = 0; i < browserListView.model.count; i++ ) {
+//           var obj = mounter.find( browserListView.model.get(i).object.url, false )
+//           if ( obj !== null && object.hostName == obj.hostName ) {
+//             browserListView.model.get(i).object.icon = object.icon
+//           }
+//           else {
+//             // Do nothing
+//           }
+//         }
+//       }
+//       else {
+//         // Do nothing
+//       }
+//     }
+//     else {
+//       // Do nothing
+//     }
+//   }
+//   
+//   function shareUnmounted() {
+//     if ( browserListView.model.count != 0 ) {
+//       var object = browserListView.model.get(browserListView.currentIndex).object
+//       if ( object.type == 3 /* share */ ) {
+//         for ( var i = 0; i < browserListView.model.count; i++ ) {
+//           var obj = mounter.find( browserListView.model.get(i).object.url, false )
+//           if (  obj !== null ) {
+//             if ( !obj.isMounted && object.hostName == obj.hostName ) {
+//               browserListView.model.get(i).object.icon = obj.icon
+//             }
+//             else {
+//               // Do nothing
+//             }
+//           }
+//           else {
+//             var alt_obj = scanner.find( browserListView.model.get(i).object.url, browserListView.model.get(i).object.type )
+//             if ( alt_obj !== null ) {
+//               browserListView.model.get(i).object.icon = alt_obj.icon
+//             }
+//             else {
+//               // Do nothing
+//             }
+//           }
+//         }
+//       }
+//       else {
+//         // Do nothing
+//       }
+//     }
+//     else {
+//       // Do nothing
+//     }
+//   }
 }
 

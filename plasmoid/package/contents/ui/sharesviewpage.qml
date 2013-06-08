@@ -31,29 +31,37 @@ import org.kde.plasma.extras 0.1 as PlasmaExtras
 PlasmaComponents.Page {
   id: sharesPage
   
-  property NetworkObject currentObject: NetworkObject{}
+  // FIXME: Implement tool bar with unmount all button
   
   PlasmaExtras.ScrollArea {
     id: sharesViewScrollArea
     anchors.fill: parent
-    GridView {
+    ListView {
       id: sharesView
-      cellWidth: 120
-      cellHeight: 80
       delegate: SharesViewItemDelegate {
         id: sharesViewDelegate
-        onOpenClicked: {
-          currentObject = sharesView.model.get( index ).object
-          mountedShareClicked()
+        onItemClicked: {
+          var object = sharesView.model.get(index).object
+          if ( object !== null ) {
+            mountedShareClicked( object )
+          }
+          else {
+            // Do nothing
+          }            
         }
         onUnmountClicked: {
-          currentObject = sharesView.model.get( index ).object
-          unmountShare()
+          var object = sharesView.model.get(index).object
+          if ( object !== null ) {
+            unmountShare( object, index )
+          }
+          else {
+            // Do nothing
+          }
         }
       }
       model: ListModel {}
       focus: true
-      highlightRangeMode: GridView.StrictlyEnforceRange
+      highlightRangeMode: ListView.StrictlyEnforceRange
     }
   }
   
@@ -62,94 +70,42 @@ PlasmaComponents.Page {
   //
   Connections {
     target: mounter
-    onMounted: addMountedShares()
-    onUnmounted: removeUnmountedShares()
+    onMountedSharesListChanged: shareMountedOrUnmounted()
   }
   
   //
-  // Add mounted shares to the shares view
+  // (Re-)load the list of mounted shares
   //
-  function addMountedShares() {
-    if ( mounter.mountedShares.length != 0 ) {
-      for ( var i = 0; i < mounter.mountedShares.length; ++i ) {
-        var have_item = false
-        if ( sharesView.model.count != 0 ) {
-          for ( var j = 0; j < sharesView.model.count; ++j ) {
-            if ( sharesView.model.get( j ).object.url == mounter.mountedShares[i].url ) {
-              have_item = true
-              break
-            }
-            else {
-              // Do nothing
-            }
-          }
-        }
-
-        if ( !have_item ) {
-          sharesView.model.append( { "object": mounter.mountedShares[i] } )
-        }
-        else {
-          // Do nothing
-        }
-      }
+  function shareMountedOrUnmounted() {
+    while ( sharesView.model.count != 0 ) {
+      sharesView.model.remove(0)
     }
-    else {
-      // Do nothing
-    }
-  }
-  
-  //
-  // Remove unmounted shares from the shares view
-  //
-  function removeUnmountedShares() {
-    // Remove obsolete shares.
-    if ( sharesView.model.count != 0 ) {
-      obsolete_shares = new Array()
-
-      for ( var i = 0; i < sharesView.model.count; i++ ) {
-        var object = mounter.find( sharesView.model.get( i ).object.url )
-        
-        if ( !object || !object.isMounted ) {
-          obsolete_shares.push( sharesView.model.get( i ).object.url.toString() )
-        }
-        else {
-          // Do nothing
-        }
-      }
-
-      if ( obsolete_shares.length != 0 ) {
-        for ( var i = 0; i < obsolete_shares.length; i++ ) {
-          for ( var j = 0; j < sharesView.model.count; j++ ) {
-            if ( obsolete_shares[i] == sharesView.model.get( j ).object.url.toString() ) {
-              sharesView.model.remove( j )
-              break
-            }
-            else {
-              continue
-            }
-          }
-        }
+    
+    for ( var i = 0; i < mounter.mountedShares.length; i++ ) {
+      // The unmounted() signal is emitted before the share is
+      // actually removed from the list. So, we need to check 
+      // here, if the share is still mounted.
+      if ( mounter.mountedShares[i].isMounted ) {
+        sharesView.model.append( { "object": mounter.mountedShares[i] } )
       }
       else {
         // Do nothing
       }
-    }
-    else {
-      // Do nothing
     }
   }
   
   //
   // A mounted share was clicked
   //
-  function mountedShareClicked() {
-    Qt.openUrlExternally( currentObject.mountpoint )
+  function mountedShareClicked( object ) {
+    Qt.openUrlExternally( object.mountpoint )
   }
   
   //
   // A mounted share is to be unmounted
   //
-  function unmountShare() {
-    mounter.unmount( currentObject.mountpoint )
+  function unmountShare( object, index ) {
+    sharesView.model.remove( index )
+    mounter.unmount( object.mountpoint )
   }
 }

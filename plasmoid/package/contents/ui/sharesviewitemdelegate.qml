@@ -32,67 +32,97 @@ import org.kde.qtextracomponents 0.1
 
 
 //
-// Delegate for the items in the shares view
+// Delegate for the list items in the shares view
 //
-Item {
+PlasmaComponents.ListItem {
   id: delegate
-      
+    
+  signal itemClicked()
+  signal bookmarkClicked()
   signal unmountClicked()
-  signal openClicked()
-      
-  width: sharesView.cellWidth
-  height: sharesView.cellHeight
   
-  anchors.verticalCenter: parent.verticalCenter
+  width: sharesView.width
+  height: theme.mediumIconSize + 8
 
-  Column {
-    anchors.horizontalCenter: parent.horizontalCenter
-    Row {
-      anchors.horizontalCenter: parent.horizontalCenter
-      spacing: 10
+  Row {
+    spacing: 10
+    Column {
+      anchors.verticalCenter: parent.verticalCenter
       QIconItem {
+        id: delegateItemIcon
         icon: object.icon
-        width: theme.largeIconSize
-        height: theme.largeIconSize
+        width: theme.mediumIconSize
+        height: theme.mediumIconSize
         MouseArea {
           anchors.fill: parent
           onClicked: {
-            delegate.openClicked()
-          }
-        }
-      }
-      QIconItem {
-        id: unmountButton
-        icon: "media-eject"
-        width: theme.smallIconSize
-        height: theme.smallIconSize
-        opacity: 0.2
-        MouseArea {
-          anchors.fill: parent
-          hoverEnabled: true
-          onEntered: {
-            parent.opacity = 1.0
-          }
-          onExited: {
-            parent.opacity = 0.2
-          }
-          onClicked: {
-            delegate.unmountClicked()
+            delegate.itemClicked()
           }
         }
       }
     }
-    PlasmaComponents.Label {
-      text: object.shareName+"<br>"+i18n( "<font size=\"-1\">on %1</font>" ).arg( object.hostName )
-      horizontalAlignment: Text.AlignHCenter
-      anchors.horizontalCenter: parent.horizontalCenter
-      clip: true
-      MouseArea {
-        anchors.fill: parent
-        onClicked: {
-          delegate.openClicked()
+    Column {
+      anchors.verticalCenter: parent.verticalCenter
+      PlasmaComponents.Label {
+        id: delegateItemText
+        text: object.shareName+i18n( " <font size=\"-1\">on %1</font>" ).arg( object.hostName )
+        clip: true
+        MouseArea {
+          anchors.fill: parent
+          onClicked: {
+            delegate.itemClicked()
+          }
         }
       }
     }
   }
+  QIconItem {
+    id: bookmarkButton
+    anchors.verticalCenter: parent.verticalCenter
+    anchors.right: unmountButton.left
+    anchors.rightMargin: 10
+    anchors.leftMargin: 10
+    icon: "favorites"
+    height: theme.smallIconSize
+    width: theme.smallIconSize
+    opacity: 0.2
+    MouseArea {
+      anchors.fill: parent
+      hoverEnabled: true
+      onEntered: {
+        parent.opacity = 1.0
+      }
+      onExited: {
+        parent.opacity = 0.2
+      }
+      onClicked: {
+        delegate.bookmarkClicked()
+      }
+    }        
+  }
+  QIconItem {
+    id: unmountButton
+    anchors.verticalCenter: parent.verticalCenter
+    anchors.right: parent.right
+    anchors.rightMargin: 10
+    anchors.leftMargin: 10
+    icon: "emblem-unmounted"
+    height: theme.smallIconSize
+    width: theme.smallIconSize
+    opacity: 0.2
+    MouseArea {
+      anchors.fill: parent
+      hoverEnabled: true
+      onEntered: {
+        parent.opacity = 1.0
+      }
+      onExited: {
+        parent.opacity = 0.2
+      }
+      onClicked: {
+        delegate.unmountClicked()
+      }
+    }        
+  }
 }
+
