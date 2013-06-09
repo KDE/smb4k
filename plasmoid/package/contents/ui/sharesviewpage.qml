@@ -58,6 +58,15 @@ PlasmaComponents.Page {
             // Do nothing
           }
         }
+        onBookmarkClicked: {
+          var object = sharesView.model.get(index).object
+          if ( object !== null ) {
+            bookmarkHandler.addBookmark( object.url )
+          }
+          else {
+            // Do nothing
+          }
+        }
       }
       model: ListModel {}
       focus: true

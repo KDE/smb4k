@@ -126,7 +126,6 @@ PlasmaComponents.Page {
   // Fill the view
   //
   function fillView() {
-    print( "fillView()" )
     if ( bookmarksListView.model.count == 0 ) {
       getGroups()
       getBookmarks( "" )
@@ -189,19 +188,19 @@ PlasmaComponents.Page {
   }
   
   function shareMountedOrUnmounted() {
-//     for ( var i = 0; i < bookmarksListView.model.count; i++ ) {
-//       if ( !bookmarksListView.model.get(i).object.isGroup ) {
-//         var object = mounter.find( bookmarksListView.model.get(i).object.url, false )
-//         if ( object !== null ) {
-//           bookmarksListView.model.get(i).enabled = !object.isMounted
-//         }
-//         else {
-//           bookmarksListView.model.get(i).enabled = true
-//         }
-//       }
-//       else {
-//         // Do nothing
-//       }
-//     }
+    for ( var i = 0; i < bookmarksListView.model.count; i++ ) {
+      if ( !bookmarksListView.model.get(i).object.isGroup ) {
+        var object = mounter.find( bookmarksListView.model.get(i).object.url, false )
+        if ( object !== null ) {
+          bookmarksListView.model.get(i).enabled = !object.isMounted
+        }
+        else {
+          bookmarksListView.model.get(i).enabled = true
+        }
+      }
+      else {
+        // Do nothing
+      }
+    }
   }
 }

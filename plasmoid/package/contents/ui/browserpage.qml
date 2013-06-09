@@ -163,7 +163,8 @@ PlasmaComponents.Page {
   
   Connections {
     target: mounter
-    onMountedSharesListChanged: shareMountedOrUnmounted()
+    onMounted: shareMountedOrUnmounted()
+    onUnmounted: shareMountedOrUnmounted()
   }
   
   //
@@ -283,63 +284,27 @@ PlasmaComponents.Page {
   // A share has been mounted or unmounted
   //
   function shareMountedOrUnmounted() {
+    if ( browserListView.model.count != 0 ) {
+      // Check on which level we are.
+      var object = browserListView.model.get(0).object
+      if ( object !== null && object.type == 3 /* share */ ) {
+        for ( var i = 0; i < browserListView.model.count; i++ ) {
+          var obj = mounter.find( browserListView.model.get(i).object.url, false )
+          if ( obj !== null ) {
+            browserListView.model.get(i).object.icon = obj.icon
+          }
+          else {
+            // Do nothing
+          }
+        }
+      }
+      else {
+        // Do nothing
+      }
+    }
+    else {
+      // Do nothing
+    }
   }
-  
-//   function shareMounted() {
-//     if ( browserListView.model.count != 0 ) {
-//       var object = browserListView.model.get(browserListView.currentIndex).object
-//       if ( object.type == 3 /* share */ ) {
-//         for ( var i = 0; i < browserListView.model.count; i++ ) {
-//           var obj = mounter.find( browserListView.model.get(i).object.url, false )
-//           if ( obj !== null && object.hostName == obj.hostName ) {
-//             browserListView.model.get(i).object.icon = object.icon
-//           }
-//           else {
-//             // Do nothing
-//           }
-//         }
-//       }
-//       else {
-//         // Do nothing
-//       }
-//     }
-//     else {
-//       // Do nothing
-//     }
-//   }
-//   
-//   function shareUnmounted() {
-//     if ( browserListView.model.count != 0 ) {
-//       var object = browserListView.model.get(browserListView.currentIndex).object
-//       if ( object.type == 3 /* share */ ) {
-//         for ( var i = 0; i < browserListView.model.count; i++ ) {
-//           var obj = mounter.find( browserListView.model.get(i).object.url, false )
-//           if (  obj !== null ) {
-//             if ( !obj.isMounted && object.hostName == obj.hostName ) {
-//               browserListView.model.get(i).object.icon = obj.icon
-//             }
-//             else {
-//               // Do nothing
-//             }
-//           }
-//           else {
-//             var alt_obj = scanner.find( browserListView.model.get(i).object.url, browserListView.model.get(i).object.type )
-//             if ( alt_obj !== null ) {
-//               browserListView.model.get(i).object.icon = alt_obj.icon
-//             }
-//             else {
-//               // Do nothing
-//             }
-//           }
-//         }
-//       }
-//       else {
-//         // Do nothing
-//       }
-//     }
-//     else {
-//       // Do nothing
-//     }
-//   }
 }
 
