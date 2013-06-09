@@ -113,19 +113,53 @@ void Smb4KBookmarkHandler::addBookmark( Smb4KShare *share, QWidget *parent )
 
 void Smb4KBookmarkHandler::addBookmark( const QUrl & url )
 {
+  QList<Smb4KShare *> shares; 
+  
+  // First, search the list of shares gathered by 
+  // the scanner.
   for ( int i = 0; i < sharesList().size(); ++i )
   {
     if ( sharesList().at( i )->url() == url )
     {
-      QList<Smb4KShare *> shares;
       shares << sharesList().at( i );
-      addBookmarks( shares, 0 );
       break;
     }
     else
     {
       continue;
     }
+  }
+  
+  // Second, if the list is still empty, try the list 
+  // of mounted shares.
+  if ( shares.isEmpty() )
+  {
+    for ( int i = 0; i < mountedSharesList().size(); ++i )
+    {
+      if ( mountedSharesList().at( i )->url() == url )
+      {
+        shares << mountedSharesList().at( i );
+        break;
+      }
+      else
+      {
+        continue;
+      }
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Now add the share.
+  if ( !shares.isEmpty() )
+  {
+    addBookmarks( shares, 0 );
+  }
+  else
+  {
+    // Do nothing
   }
 }
 
