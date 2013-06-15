@@ -205,7 +205,12 @@ PlasmaComponents.Page {
   //
   function up( object ) {
     var parentObject = scanner.find( object.parentURL, object.parentType )
-    scanner.lookup( parentObject.parentURL, parentObject.parentType )
+    if ( parentObject !== null ) {
+      scanner.lookup( parentObject.parentURL, parentObject.parentType )
+    }
+    else {
+      // Do nothing
+    }
   }
 
   //
@@ -237,6 +242,18 @@ PlasmaComponents.Page {
   //
   function getHosts() {
     //
+    // Get the workgroup name the shares were looked up for
+    //
+    var workgroup_name = ""
+    
+    if ( browserListView.model.get(browserListView.currentIndex).object !== null ) {
+      workgroup_name = browserListView.model.get(browserListView.currentIndex).object.workgroupName
+    }
+    else {
+      // Do nothing
+    }
+    
+    //
     // Clear the list view
     //
     while ( browserListView.model.count != 0 ) {
@@ -248,7 +265,12 @@ PlasmaComponents.Page {
     //
     if ( scanner.hosts.length != 0 ) {
       for ( var i = 0; i < scanner.hosts.length; i++ ) {
-        browserListView.model.append( { "object": scanner.hosts[i] } )
+        if ( workgroup_name.length != 0 && workgroup_name == scanner.hosts[i].workgroupName ) {
+          browserListView.model.append( { "object": scanner.hosts[i] } )
+        }
+        else {
+          // Do nothing
+        }
       }
     }
     else {
@@ -261,6 +283,18 @@ PlasmaComponents.Page {
   //
   function getShares() {
     //
+    // Get the host name the shares were looked up for
+    //
+    var host_name = ""
+    
+    if ( browserListView.model.get(browserListView.currentIndex).object !== null ) {
+      host_name = browserListView.model.get(browserListView.currentIndex).object.hostName
+    }
+    else {
+      // Do nothing
+    }
+    
+    //
     // Clear the list view
     //
     while ( browserListView.model.count != 0 ) {
@@ -268,11 +302,16 @@ PlasmaComponents.Page {
     }
       
     //
-    // Add the workgroup members
+    // Add the shares
     //
     if ( scanner.shares.length != 0 ) {
       for ( var i = 0; i < scanner.shares.length; i++ ) {
-        browserListView.model.append( { "object": scanner.shares[i] } )
+        if ( host_name.length != 0 && host_name == scanner.shares[i].hostName ) {
+          browserListView.model.append( { "object": scanner.shares[i] } )
+        }
+        else {
+          // Do nothing
+        }
       }
     }
     else {
