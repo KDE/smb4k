@@ -3,7 +3,7 @@
     for the Smb4KSolidInterface class
                              -------------------
     begin                : So Jun 30 2013
-    copyright            : (C) 2008-2012 by Alexander Reinholdt
+    copyright            : (C) 2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
