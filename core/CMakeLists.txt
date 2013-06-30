@@ -37,6 +37,7 @@ set( smb4kcore_LIB_SRCS
   smb4ksearch_p.cpp
   smb4kshare.cpp
   smb4ksolidinterface.cpp
+  smb4ksolidinterface_p.cpp
   smb4ksynchronizer.cpp
   smb4ksynchronizer_p.cpp
   smb4kwalletmanager.cpp
@@ -72,6 +73,7 @@ if ( INSTALL_HEADER_FILES )
     smb4kbasicnetworkitem.h
     smb4kbookmark.h
     smb4kbookmarkhandler.h
+    smb4kbookmarkobject.h
     smb4kcore.h
     smb4kcustomoptions.h
     smb4kcustomoptionsmanager.h
