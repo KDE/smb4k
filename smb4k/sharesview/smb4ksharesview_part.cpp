@@ -316,7 +316,7 @@ void Smb4KSharesViewPart::setupActions()
   unmount_all_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_N ) );
   connect( unmount_all_action, SIGNAL(triggered(bool)), this, SLOT(slotUnmountAllShares(bool)) );
 
-  KAction *synchronize_action = new KAction( KIcon( "go-bottom" ), i18n( "S&ynchronize" ),
+  KAction *synchronize_action = new KAction( KIcon( "folder-sync" ), i18n( "S&ynchronize" ),
                                 actionCollection() );
   synchronize_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_Y ) );
   connect( synchronize_action, SIGNAL(triggered(bool)), this, SLOT(slotSynchronize(bool)) );

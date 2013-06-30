@@ -218,7 +218,7 @@ void Smb4KSharesMenu::slotShareMounted( Smb4KShare *share )
   m_action_collection->addAction( share_menu->objectName(), share_menu );
 
   // Now add the actions for this share.
-  KAction *unmount = new KAction( KIcon( "media-eject" ), i18n( "Unmount" ), m_actions );
+  KAction *unmount = new KAction( KIcon( "enblem-unmounted" ), i18n( "Unmount" ), m_actions );
   unmount->setObjectName( QString( "[unmount]_%1" ).arg( share->canonicalPath() ) );
   unmount->setEnabled( !share->isForeign() || Smb4KSettings::unmountForeignShares() );
   share_menu->addAction( unmount );
@@ -231,7 +231,7 @@ void Smb4KSharesMenu::slotShareMounted( Smb4KShare *share )
   share_menu->addAction( add_bookmark );
   m_action_collection->addAction( add_bookmark->objectName(), add_bookmark );
 
-  KAction *synchronize = new KAction( KIcon( "go-bottom" ), i18n( "Synchronize" ), m_actions );
+  KAction *synchronize = new KAction( KIcon( "folder-sync" ), i18n( "Synchronize" ), m_actions );
   synchronize->setObjectName( QString( "[synchronize]_%1" ).arg( share->canonicalPath() ) );
   synchronize->setEnabled( !KStandardDirs::findExe( "rsync" ).isEmpty() && !share->isInaccessible() );
   share_menu->addAction( synchronize );
