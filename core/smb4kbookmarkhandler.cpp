@@ -223,7 +223,7 @@ void Smb4KBookmarkHandler::addBookmarks( const QList<Smb4KShare *> &list, QWidge
 
     new_bookmarks << new Smb4KBookmark( list.at( i ) );
   }
-
+  
   if ( !new_bookmarks.isEmpty() )
   {
     QPointer<Smb4KBookmarkDialog> dlg = new Smb4KBookmarkDialog( new_bookmarks, groupsList(), parent );
@@ -254,27 +254,8 @@ void Smb4KBookmarkHandler::addBookmarks( const QList<Smb4KShare *> &list, QWidge
           // Do nothing
         }
       }
-
-      // Append the new bookmarks to the internal list.
-      d->bookmarks << new_bookmarks;
       
-      // Append new groups to the internal list.
-      for ( int i = 0; i < new_bookmarks.size(); ++i )
-      {
-        if ( !d->groups.contains( new_bookmarks.at( i )->groupName() ) )
-        {
-          d->groups << new_bookmarks[i]->groupName();
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-      
-      d->groups.sort();
-        
-      // Save the bookmarks list.
-      writeBookmarkList( d->bookmarks );
+      addBookmarks( new_bookmarks, false );
     }
     else
     {
@@ -287,6 +268,46 @@ void Smb4KBookmarkHandler::addBookmarks( const QList<Smb4KShare *> &list, QWidge
   {
     // Do nothing
   }
+}
+
+
+void Smb4KBookmarkHandler::addBookmarks(const QList< Smb4KBookmark* >& list, bool replace)
+{
+  // Clear the internal lists if desired.
+  if ( replace )
+  {
+    while ( !d->bookmarks.isEmpty() )
+    {
+      delete d->bookmarks.takeFirst();
+    }
+    
+    d->groups.clear();
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Append the new bookmarks to the internal list.
+  d->bookmarks << list;
+      
+  // Append new groups to the internal list.
+  for ( int i = 0; i < list.size(); ++i )
+  {
+    if ( !d->groups.contains( list.at( i )->groupName() ) )
+    {
+      d->groups << list[i]->groupName();
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+      
+  d->groups.sort();
+        
+  // Save the bookmarks list.
+  writeBookmarkList( d->bookmarks );  
   
   // (Re)fill the list of bookmark and group objects.
   while ( !d->bookmarkObjects.isEmpty() )
@@ -333,6 +354,23 @@ void Smb4KBookmarkHandler::removeBookmark(Smb4KBookmark* bookmark)
       // Do nothing
     }
   }
+  
+  // Update the groups
+  d->groups.clear();
+  
+  for ( int i = 0; i < d->bookmarks.size(); ++i )
+  {
+    if ( !d->groups.contains( d->bookmarks.at( i )->groupName() ) )
+    {
+      d->groups << d->bookmarks[i]->groupName();
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  d->groups.sort();
   
   // Write the list to the bookmarks file.
   writeBookmarkList( d->bookmarks );
@@ -403,8 +441,46 @@ void Smb4KBookmarkHandler::removeGroup(const QString& name)
     }
   }
   
+  // Update the groups list
+  d->groups.clear();
+  
+  for ( int i = 0; i < d->bookmarks.size(); ++i )
+  {
+    if ( !d->groups.contains( d->bookmarks.at( i )->groupName(), Qt::CaseInsensitive ) )
+    {
+      d->groups << d->bookmarks[i]->groupName();
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  d->groups.sort();
+  
   // Write the list to the bookmarks file.
   writeBookmarkList( d->bookmarks );
+  
+  // (Re)fill the list of bookmark and group objects.
+  while ( !d->bookmarkObjects.isEmpty() )
+  {
+    delete d->bookmarkObjects.takeFirst();
+  }
+  
+  while ( !d->groupObjects.isEmpty() )
+  {
+    delete d->groupObjects.takeFirst();
+  }
+  
+  for ( int i = 0; i < d->bookmarks.size(); ++i )
+  {
+    d->bookmarkObjects << new Smb4KBookmarkObject( d->bookmarks.at( i ) );
+  }
+  
+  for ( int i = 0; i < d->groups.size(); ++i )
+  {
+    d->groupObjects << new Smb4KBookmarkObject( d->groups.at( i ) );
+  }
   
   emit updated();
 }
@@ -719,58 +795,11 @@ void Smb4KBookmarkHandler::editBookmarks( QWidget *parent )
   
   if ( d->editor->exec() == KDialog::Accepted )
   {
+    // Now replace the current list with the new one that is
+    // passed by the editor. For this set the 'replace' argument
+    // for addBookmarks() to TRUE.
     QList<Smb4KBookmark *> bookmarks = d->editor->editedBookmarks();
-
-    // Update the list of bookmarks.
-    QMutableListIterator<Smb4KBookmark *> it( d->bookmarks );
-    Smb4KBookmark *bookmark = NULL;
-      
-    while ( it.hasNext() )
-    {
-      bookmark = it.next();
-      bool found = false;
-
-      for ( int i = 0; i < bookmarks.size(); ++i )
-      {
-        if ( QString::compare( bookmark->unc(), bookmarks.at( i )->unc() ) == 0 &&
-             QString::compare( bookmark->workgroupName(), bookmarks.at( i )->workgroupName() ) == 0 )
-        {
-          bookmark->setLabel( bookmarks.at( i )->label() );
-          bookmark->setLogin( bookmarks.at( i )->login() );
-          bookmark->setHostIP( bookmarks.at( i )->hostIP() );
-          bookmark->setGroupName( bookmarks.at( i )->groupName() );
-          found = true;
-          break;
-        }
-        else
-        {
-          continue;
-        }
-      }
-
-      if ( !found )
-      {
-        it.remove();
-
-        if ( bookmark )
-        {
-          delete bookmark;
-          bookmark = NULL;
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-      
-    // Finally write the list to the file.
-    writeBookmarkList( d->bookmarks );
-    emit updated();
+    addBookmarks( bookmarks, true );
   }
   else
   {
