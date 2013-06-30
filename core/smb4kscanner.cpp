@@ -963,47 +963,41 @@ void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
       // Do nothing
     }
 
-    if ( !d->periodicJobs.isEmpty() )
+    // Periodic scanning is only done if there are jobs 
+    // to process, there are no subjobs in the queue and 
+    // scanning is allowed.
+    if ( !d->periodicJobs.isEmpty() && !hasSubjobs() && d->scanningAllowed )
     {
-      // Periodic scanning is only done if there are no subjobs
-      // in the queue and scanning is allowed.
-      if ( !hasSubjobs() && d->scanningAllowed )
-      {
-        // Get the process and initiate the periodic scanning.
-        Process p = d->periodicJobs.takeFirst();
+      // Get the process and initiate the periodic scanning.
+      Process p = d->periodicJobs.takeFirst();
 
-        switch ( p )
-        {
-          case LookupDomains:
-          {
-            lookupDomains();
-            break;
-          }
-          case LookupDomainMembers:
-          {
-            for ( int i = 0; i < workgroupsList().size(); ++i )
-            {
-              lookupDomainMembers( workgroupsList()[i] );
-            }
-            break;
-          }
-          case LookupShares:
-          {
-            for ( int i = 0; i < hostsList().size(); ++i )
-            {
-              lookupShares( hostsList()[i] );
-            }
-            break;
-          }
-          default:
-          {
-            break;
-          }
-        }
-      }
-      else
+      switch ( p )
       {
-        // Do nothing
+        case LookupDomains:
+        {
+          lookupDomains();
+          break;
+        }
+        case LookupDomainMembers:
+        {
+          for ( int i = 0; i < workgroupsList().size(); ++i )
+          {
+            lookupDomainMembers( workgroupsList()[i] );
+          }
+          break;
+        }
+        case LookupShares:
+        {
+          for ( int i = 0; i < hostsList().size(); ++i )
+          {
+            lookupShares( hostsList()[i] );
+          }
+          break;
+        }
+        default:
+        {
+          break;
+        }
       }
     }
     else
