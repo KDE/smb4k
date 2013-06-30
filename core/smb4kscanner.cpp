@@ -948,9 +948,20 @@ void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
     if ( d->elapsedTimePS == 0 )
     {
       // Fill the list of periodic jobs.
-      d->periodicJobs << LookupDomains;
-      d->periodicJobs << LookupDomainMembers;
-      d->periodicJobs << LookupShares;
+      // Make sure that the jobs do not accumulate when periodic 
+      // scanning is inhibited, but that there is a list of jobs
+      // that can immediately executed when scanning is allowed 
+      // again.
+      if ( d->scanningAllowed || d->periodicJobs.isEmpty() )
+      {
+        d->periodicJobs << LookupDomains;
+        d->periodicJobs << LookupDomainMembers;
+        d->periodicJobs << LookupShares;
+      }
+      else
+      {
+        // Do nothing
+      }
     }
     else if ( d->elapsedTimePS >= (Smb4KSettings::scanInterval() * 60000 /* milliseconds */)  )
     {
