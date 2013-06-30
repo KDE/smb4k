@@ -130,27 +130,13 @@ class KDE_EXPORT Smb4KSolidInterface : public QObject
     void networkStatusChanged( Smb4KSolidInterface::ConnectionStatus status );
 
     /**
-     * This signal is emitted when the computer woke up.
+     * This signal is a convenience signal and is emitted when the computer 
+     * woke up. It is connected to the Solid::Powermanagement::Notifier::resumingFromSuspend()
+     * signal.
      */
     void wokeUp();
 
   protected Q_SLOTS:
-    /**
-     * This slot is connected to the deviceAdded() signal of the
-     * device notifier. It is called whenever a device was added.
-     *
-     * @param udi       The UDI of the device
-     */
-    void slotDeviceAdded( const QString &udi );
-
-    /**
-     * This slot is connected to the deviceRemoved() signal of the
-     * device notifier. It is called whenever a device was removed.
-     *
-     * @param udi       The UDI of the device
-     */
-    void slotDeviceRemoved( const QString &udi );
-
     /**
      * This slot is connected to the pressed() signal of each button
      * that was found.

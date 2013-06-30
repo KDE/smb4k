@@ -30,6 +30,7 @@
 
 // application specific includes
 #include "smb4ksolidinterface.h"
+#include "smb4ksolidinterface_p.h"
 
 // Qt includes
 #include <QtCore/QMap>
@@ -44,22 +45,6 @@
 #include <solid/acadapter.h>
 #include <solid/battery.h>
 #include <solid/powermanagement.h>
-
-class Smb4KSolidInterfacePrivate
-{
-  public:
-    Smb4KSolidInterface::ButtonType buttonPressed;
-    Smb4KSolidInterface::ConnectionStatus networkStatus;
-    QMap<QString,Smb4KSolidInterface::ButtonType> removedDevices;
-    int sleepCookie;
-};
-
-
-class Smb4KSolidInterfaceStatic
-{
-  public:
-    Smb4KSolidInterface instance;
-};
 
 
 K_GLOBAL_STATIC( Smb4KSolidInterfaceStatic, p );
@@ -95,6 +80,8 @@ Smb4KSolidInterface::ConnectionStatus Smb4KSolidInterface::networkStatus() const
 void Smb4KSolidInterface::beginSleepSuppression(const QString &reason)
 {
   d->sleepCookie = Solid::PowerManagement::beginSuppressingSleep(reason);
+  
+  if ( d->sleepCookie == -1 ) qDebug() << "Sleep suppression denied";
 }
 
 
@@ -107,13 +94,6 @@ void Smb4KSolidInterface::endSleepSuppression()
 
 void Smb4KSolidInterface::init()
 {
-  // Connect to device notifier.
-  connect( Solid::DeviceNotifier::instance(), SIGNAL(deviceAdded(QString)),
-           this,                              SLOT(slotDeviceAdded(QString)) );
-
-  connect( Solid::DeviceNotifier::instance(), SIGNAL(deviceRemoved(QString)),
-           this,                              SLOT(slotDeviceRemoved(QString)) );
-
   // Get the buttons
   QList<Solid::Device> list_btn = Solid::Device::listFromType( Solid::DeviceInterface::Button, QString() );
 
@@ -133,8 +113,11 @@ void Smb4KSolidInterface::init()
     }
   }
 
-  // FIXME: Check for hibernation, etc. as well as for the system waking
-  // up again.
+  // FIXME: Check for hibernation, etc.
+  
+  // Notify the application when the system wakes up again.
+  connect( Solid::PowerManagement::notifier(), SIGNAL(resumingFromSuspend()),
+           this,                               SIGNAL(wokeUp()) );
 
   // Get the AC adapter(s)
   QList<Solid::Device> list_ac = Solid::Device::listFromType( Solid::DeviceInterface::AcAdapter, QString() );
@@ -205,46 +188,6 @@ void Smb4KSolidInterface::init()
 /////////////////////////////////////////////////////////////////////////////
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
-
-void Smb4KSolidInterface::slotDeviceAdded( const QString &udi )
-{
-  // Work around the fact that there is no signal that tells
-  // us when the computer woke up. Check the UDIs in the map
-  // and emit the wokeUp()
-  if ( d->buttonPressed != UnknownButton && d->removedDevices[udi] == d->buttonPressed )
-  {
-    d->removedDevices.remove( udi );
-
-    if ( d->removedDevices.isEmpty() )
-    {
-      // Work around: Computer woke up.
-      d->buttonPressed = UnknownButton;
-      emit wokeUp();
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-}
-
-
-void Smb4KSolidInterface::slotDeviceRemoved( const QString &udi )
-{
-  // Work around the fact that there is no signal that tells us,
-  // that the computer has been woken up. Store the removed device(s)
-  // and the pressed button to figure out later (in slotDeviceAdded())
-  // if the computer became active again.
-  if ( d->buttonPressed != UnknownButton )
-  {
-    d->removedDevices.insert( udi, d->buttonPressed );
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
 
 void Smb4KSolidInterface::slotButtonPressed(Solid::Button::ButtonType type, const QString &/*udi*/)
 {
