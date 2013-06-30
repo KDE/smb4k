@@ -101,7 +101,8 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
     Q_INVOKABLE void addBookmark( const QUrl &url );
 
     /**
-     * This function adds several bookmarks at once.
+     * This function adds several bookmarks at once. It takes a list of 
+     * Smb4KShare items and converts them internally to bookmark items.
      *
      * @param list          The list of shares that are to be bookmarked
      *
@@ -125,7 +126,8 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
     Q_INVOKABLE void removeBookmark( const QUrl &url );
     
     /**
-     * This function removes a group and all the bookmarks it contains.
+     * This function removes a group and all the bookmarks it contains. Please
+     * note that the 
      * 
      * @param name          The group name
      */
@@ -200,7 +202,7 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      * 
      * @param parent        The parent widget
      */
-    void editBookmarks( QWidget *parent = 0 );
+    Q_INVOKABLE void editBookmarks( QWidget *parent = 0 );
 
   Q_SIGNALS:
     /**
@@ -235,6 +237,18 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      */
     void writeBookmarkList( const QList<Smb4KBookmark *> &list );
 
+    /**
+     * This function adds several bookmarks at once. It takes a list of
+     * Smb4KBookmark items.
+     * 
+     * @param list          The list of bookmarks that are to be bookmarked
+     * 
+     * @param replace       If TRUE the old list of bookmarks is replaced by
+     *                      @p list.
+     */
+    void addBookmarks( const QList<Smb4KBookmark *> &list,
+                       bool replace = false );
+    
     /**
      * Pointer to Smb4KBookmarkHandlerPrivate class
      */
