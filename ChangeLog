@@ -58,6 +58,7 @@ Smb4K 1.1.0 (????-??-??):
     a network item with the given URL. The URL must already be known to
     Smb4K otherwise this function will not do anything.
   + IP addresses are looked up every 60 s and when new hosts were discovered.
+  + Improved periodic scanning.
 - Revised Smb4KMounter class:
   + To use functions from the mounter in the plasmoid, Q_INVOKABLE and
     Q_PROPERTY macros are used.
@@ -88,6 +89,10 @@ Smb4K 1.1.0 (????-??-??):
   + Custom options that are defined for a host object are propagated to its
     shares (if there are custom options for its shares are defined). The options
     for the host overwrite the ones defined for its shares.
+- Revised Smb4KSolidInterface class:
+  + Removed custom code that determined that the computer woke up.
+  + Connected wokeUp() signal to
+    Solid::PowerManagement::Notifier::resumingFromSuspend().
 - Revised network browser:
   + Removed wrong checks that caused tooltips not being updated properly.
   + Added ability to select multiple shares and process them accordingly.
