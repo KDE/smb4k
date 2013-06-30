@@ -31,11 +31,58 @@ import org.kde.plasma.extras 0.1 as PlasmaExtras
 PlasmaComponents.Page {
   id: bookmarksPage
   
-  // FIXME: Implement tool bar with back and edit tool button
+  //
+  // The tool bar
+  //
+  PlasmaComponents.ToolBar {
+    id: bookmarksToolBar
+    anchors {
+      top: parent.top
+      left: parent.left
+      right: parent.right
+      topMargin: 2
+      rightMargin: 4
+      leftMargin: 4
+    }
+    PlasmaComponents.ToolBarLayout {
+      id: bookmarksToolBarLayout
+      spacing: 2
+          
+      PlasmaComponents.ToolButton {
+        id: backButton
+        text: i18n( "Back" )
+        iconSource: "go-previous"
+        width: minimumWidth
+        onClicked: {
+          back()
+        }
+      }
+      PlasmaComponents.ToolButton {
+        id: editButton
+        text: i18n( "Edit" )
+        iconSource: "bookmarks-organize"
+        width: minimumWidth
+        onClicked: {
+          bookmarkHandler.editBookmarks() 
+        }
+      }
+      Item {
+        id: spacer
+      }
+    }
+        
+    tools: bookmarksToolBarLayout
+  }
   
   PlasmaExtras.ScrollArea {
     id: bookmarksScrollArea
-    anchors.fill: parent
+    anchors {
+      top: bookmarksToolBar.bottom
+      left: parent.left
+      right: parent.right
+      bottom: parent.bottom
+      topMargin: 5
+    }
     ListView {
       id: bookmarksListView
       delegate: BookmarkItemDelegate {
@@ -123,29 +170,30 @@ PlasmaComponents.Page {
   }
   
   //
+  // Back button
+  //
+  function back() {
+    // Since the 'Back' button is only useful when you
+    // are currently in a group subfolder and want to 
+    // go back to the toplevel, just run fillView() here.
+    fillView()
+  }
+  
+  //
   // Fill the view
   //
   function fillView() {
-    if ( bookmarksListView.model.count == 0 ) {
-      getGroups()
-      getBookmarks( "" )
+    //
+    // Fill the view with the groups and those bookmarks
+    // that do not belong into any group. Since this function
+    // is only invoked when bookmarks are added or edited, we
+    // can live with this very basic approach.
+    //
+    while ( bookmarksListView.model.count != 0 ) {
+      bookmarksListView.model.remove(0)
     }
-    else {
-      var object = bookmarksListView.model.get(0).object
-      if ( object.isGroup || object.groupName.length == 0 ) {
-        while ( bookmarksListView.model.count != 0 ) {
-          bookmarksListView.model.remove(0)
-        }
-        getGroups()
-        getBookmarks( "" )
-      }
-      else {
-        while ( bookmarksListView.model.count != 0 ) {
-          bookmarksListView.model.remove(0)
-        }
-        getBookmarks( object.groupName )
-      }
-    }
+    getGroups()
+    getBookmarks( "" )
   }
   
   //
@@ -192,10 +240,10 @@ PlasmaComponents.Page {
       if ( !bookmarksListView.model.get(i).object.isGroup ) {
         var object = mounter.find( bookmarksListView.model.get(i).object.url, false )
         if ( object !== null ) {
-          bookmarksListView.model.get(i).enabled = !object.isMounted
+          bookmarksListView.model.get(i).object.icon = object.icon
         }
         else {
-          bookmarksListView.model.get(i).enabled = true
+          // Do nothing
         }
       }
       else {

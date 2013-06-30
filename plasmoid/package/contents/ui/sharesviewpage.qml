@@ -31,11 +31,49 @@ import org.kde.plasma.extras 0.1 as PlasmaExtras
 PlasmaComponents.Page {
   id: sharesPage
   
-  // FIXME: Implement tool bar with unmount all button
+  //
+  // The tool bar
+  //
+  PlasmaComponents.ToolBar {
+    id: sharesToolBar
+    anchors {
+      top: parent.top
+      left: parent.left
+      right: parent.right
+      topMargin: 2
+      rightMargin: 4
+      leftMargin: 4
+    }
+    PlasmaComponents.ToolBarLayout {
+      id: sharesToolBarLayout
+      spacing: 2
+          
+      PlasmaComponents.ToolButton {
+        id: unmountAllButton
+        text: i18n( "Unmount All" )
+        iconSource: "system-run"
+        width: minimumWidth
+        onClicked: {
+          mounter.unmountAll()
+        }
+      }
+      Item {
+        id: spacer
+      }
+    }
+        
+    tools: sharesToolBarLayout
+  }
   
   PlasmaExtras.ScrollArea {
     id: sharesViewScrollArea
-    anchors.fill: parent
+    anchors {
+      top: sharesToolBar.bottom
+      left: parent.left
+      right: parent.right
+      bottom: parent.bottom
+      topMargin: 5
+    }
     ListView {
       id: sharesView
       delegate: SharesViewItemDelegate {

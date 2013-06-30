@@ -65,7 +65,7 @@ PlasmaComponents.ListItem {
       anchors.verticalCenter: parent.verticalCenter
       PlasmaComponents.Label {
         id: delegateItemText
-        text: object.shareName+i18n( " <font size=\"-1\">on %1</font>" ).arg( object.hostName )
+        text: object.shareName+"<br>"+i18n( "<font size=\"-1\">on %1</font>" ).arg( object.hostName )
         clip: true
         MouseArea {
           anchors.fill: parent

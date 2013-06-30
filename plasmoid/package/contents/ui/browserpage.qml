@@ -31,6 +31,9 @@ import org.kde.plasma.extras 0.1 as PlasmaExtras
 PlasmaComponents.Page {
   id: browserPage
   
+  property url lastUrl: ""
+  property int lastType: 0
+  
   //
   // The tool bar
   //
@@ -52,49 +55,52 @@ PlasmaComponents.Page {
         id: rescanButton
         text: i18n( "Rescan" )
         iconSource: "view-refresh"
+        width: minimumWidth
         onClicked: {
-          if ( browserListView.model.count != 0 ) {
-            var object = browserListView.model.get(browserListView.currentIndex).object
-            if ( object !== null ) {
-              rescan( object )
-            }
-            else {
-              // Do nothing
-            }
+          var object = scanner.find( lastUrl, lastType )
+          if ( object !== null ) {
+            rescan( object )
           }
           else {
-            print( "FIXME: Handle empty network list view!" )
+            // Do nothing
           }
         }
       }
-      
       PlasmaComponents.ToolButton {
         id: abortButton
         text: i18n( "Abort" )
         iconSource: "process-stop"
+        width: minimumWidth
         onClicked: {
           abort()
         }
       }
-          
       PlasmaComponents.ToolButton {
         id: upButton
         text: i18n( "Up" )
         iconSource: "go-up"
+        width: minimumWidth
         onClicked: {
-          if ( browserListView.model.count != 0 ) {
-            var object = browserListView.model.get(browserListView.currentIndex).object
-            if ( object !== null ) {
-              up( object )
-            }
-            else {
-              // Do nothing
-            }
+          var object = scanner.find( lastUrl, lastType )
+          if ( object !== null ) {
+            rescan( object )
           }
           else {
-            print( "FIXME: Handle empty network list view!" )
+            // Do nothing
           }
         }
+      }
+      PlasmaComponents.ToolButton {
+        id: mountDialogButton
+        text: i18n( "Mount Dialog" )
+        iconSource: "view-form"
+        width: minimumWidth
+        onClicked: {
+          mounter.openMountDialog()
+        }
+      }
+      Item {
+        id: spacer
       }
     }
         
@@ -120,6 +126,8 @@ PlasmaComponents.Page {
         onItemClicked: {
           var object = browserListView.model.get(index).object
           if ( object !== null ) {
+            lastUrl = object.url
+            lastType = object.type
             networkItemClicked( object )
           }
           else {
@@ -129,6 +137,8 @@ PlasmaComponents.Page {
         onBookmarkClicked: {
           var object = browserListView.model.get(index).object
           if ( object !== null ) {
+            lastUrl = object.url
+            lastType = object.type            
             bookmarkHandler.addBookmark( object.url )
           }
           else {
@@ -138,6 +148,8 @@ PlasmaComponents.Page {
         onConfigureClicked: {
           var object = browserListView.model.get(index).object
           if ( object !== null ) {
+            lastUrl = object.url
+            lastType = object.type
             optionsManager.openCustomOptionsDialog( object.url )
           }
           else {
@@ -242,12 +254,13 @@ PlasmaComponents.Page {
   //
   function getHosts() {
     //
-    // Get the workgroup name the shares were looked up for
+    // Get the workgroup name the hosts were looked up for
     //
     var workgroup_name = ""
+    var object = scanner.find( lastUrl, lastType )
     
-    if ( browserListView.model.get(browserListView.currentIndex).object !== null ) {
-      workgroup_name = browserListView.model.get(browserListView.currentIndex).object.workgroupName
+    if ( object !== null ) {
+      workgroup_name = object.workgroupName
     }
     else {
       // Do nothing
@@ -286,14 +299,15 @@ PlasmaComponents.Page {
     // Get the host name the shares were looked up for
     //
     var host_name = ""
+    var object = scanner.find( lastUrl, lastType )
     
-    if ( browserListView.model.get(browserListView.currentIndex).object !== null ) {
-      host_name = browserListView.model.get(browserListView.currentIndex).object.hostName
+    if ( object !== null ) {
+      host_name = object.hostName
     }
     else {
       // Do nothing
     }
-    
+
     //
     // Clear the list view
     //
