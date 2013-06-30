@@ -840,9 +840,6 @@ bool Smb4KWalletManager::showPasswordDialog( Smb4KBasicNetworkItem *networkItem,
   // set up, init() will do nothing.
   init();
 
-  // Return value
-  bool success = false;
-
   // Get known logins if available and read the authentication
   // information.
   QMap<QString, QString> known_logins;
@@ -885,10 +882,20 @@ bool Smb4KWalletManager::showPasswordDialog( Smb4KBasicNetworkItem *networkItem,
 
   // Set up the password dialog and show it.
   QPointer<Smb4KPasswordDialog> dlg = new Smb4KPasswordDialog( networkItem, known_logins, parent );
-  success = dlg->exec();
-
-  // Write the authentication information.
-  writeAuthInfo( networkItem );
+ 
+  // Return value
+  bool success = false;
+  
+  if ( dlg->exec() == Smb4KPasswordDialog::Accepted )
+  {
+    // Write the authentication information.
+    writeAuthInfo( networkItem );
+    success = true;
+  }
+  else
+  {
+    // Do nothing
+  }
 
   delete dlg;
 

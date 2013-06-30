@@ -104,7 +104,6 @@ Smb4KPasswordDialog::Smb4KPasswordDialog( Smb4KBasicNetworkItem* networkItem, co
 
 Smb4KPasswordDialog::~Smb4KPasswordDialog()
 {
-
 }
 
 
