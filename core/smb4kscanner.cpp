@@ -1021,11 +1021,15 @@ void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
     }
   }
 
-  // Lookup IP addresses if necessary
-  // Checks are run either if new hosts were discovered or every 60 seconds. 
-  // The latter is done to retrieve IP addresses for hosts for which the IP 
-  // address was not discovered in the first run.
-  if ( (d->haveNewHosts && !hostsList().isEmpty() && !Smb4KSettings::scanBroadcastAreas()) || d->elapsedTimeIP >= 60000 )
+  // Look up IP addresses.
+  // Only run this if there are no subjobs in the queue. Otherwise
+  // there might be crashes in the GUI or other nasty stuff.
+  // 
+  // Checks are run either if new hosts were discovered or every
+  // 60 seconds. The latter is done to retrieve IP addresses for
+  // hosts for which the IP address was not discovered in the
+  // first run.
+  if ( !hasSubjobs() && ((d->haveNewHosts && !hostsList().isEmpty() && !Smb4KSettings::scanBroadcastAreas()) || d->elapsedTimeIP >= 60000) )
   {
     for ( int i = 0; i < hostsList().size(); ++i )
     {
@@ -1047,7 +1051,7 @@ void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
         continue;
       }
     }
-    
+
     d->haveNewHosts = false;
     d->elapsedTimeIP = -TIMER_INTERVAL;
   }
@@ -1055,7 +1059,7 @@ void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
   {
     // Do nothing
   }
-  
+
   d->elapsedTimeIP += TIMER_INTERVAL;
 }
 
