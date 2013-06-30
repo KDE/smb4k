@@ -950,7 +950,7 @@ void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
       // Fill the list of periodic jobs.
       // Make sure that the jobs do not accumulate when periodic 
       // scanning is inhibited, but that there is a list of jobs
-      // that can immediately executed when scanning is allowed 
+      // that can immediately be executed when scanning is allowed 
       // again.
       if ( d->scanningAllowed || d->periodicJobs.isEmpty() )
       {
