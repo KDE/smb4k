@@ -3,7 +3,7 @@
     shares found on the network neighborhood
                              -------------------
     begin                : So Mai 22 2011
-    copyright            : (C) 2011-2012 by Alexander Reinholdt
+    copyright            : (C) 2011-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
