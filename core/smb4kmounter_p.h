@@ -408,6 +408,7 @@ class Smb4KMounterPrivate
     bool aboutToQuit;
     bool hardwareReason;
     bool firstImportDone;
+    bool importsAllowed;
 };
 
 
