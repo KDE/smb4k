@@ -93,6 +93,7 @@ Smb4KMounter::Smb4KMounter( QObject *parent )
   d->dialog = 0;
   d->aboutToQuit = false;
   d->firstImportDone = false;
+  d->importsAllowed = true;
 
   connect( QCoreApplication::instance(), SIGNAL(aboutToQuit()),
            this,                         SLOT(slotAboutToQuit()) );
@@ -1109,7 +1110,7 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool silent, QWidget *parent
   // Create a new job and add it to the subjobs
   Smb4KUnmountJob *job = new Smb4KUnmountJob( this );
   job->setObjectName( QString( "UnmountJob_%1" ).arg( share->canonicalPath() ) );
-  job->setupUnmount( share, force, silent, d->aboutToQuit, parent );
+  job->setupUnmount( share, force, silent, (d->aboutToQuit || d->hardwareReason), parent );
 
   connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
   connect( job, SIGNAL(aboutToStart(QList<Smb4KShare*>)), SLOT(slotAboutToStartUnmounting(QList<Smb4KShare*>)) );
@@ -1249,7 +1250,7 @@ void Smb4KMounter::unmountShares( const QList<Smb4KShare *> &shares, bool silent
   // Create a new job and add it to the subjobs
   Smb4KUnmountJob *job = new Smb4KUnmountJob( this );
   job->setObjectName( QString( "UnmountJob_bulk-%1" ).arg( shares.size() ) );
-  job->setupUnmount( shares_to_unmount, force, silent, d->aboutToQuit, parent );
+  job->setupUnmount( shares_to_unmount, force, silent, (d->aboutToQuit || d->hardwareReason), parent );
     
   connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
   connect( job, SIGNAL(aboutToStart(QList<Smb4KShare*>)), SLOT(slotAboutToStartUnmounting(QList<Smb4KShare*>)) );
@@ -1358,6 +1359,12 @@ void Smb4KMounter::unmount( const QUrl &mountpoint )
   {
     // Do nothing
   }
+}
+
+
+void Smb4KMounter::unmountAll()
+{
+  unmountAllShares();
 }
 
 
@@ -1527,25 +1534,13 @@ void Smb4KMounter::cleanup()
 
 void Smb4KMounter::timerEvent( QTimerEvent * )
 {
-  if ( !QCoreApplication::startingUp() )
+  // Import newly mounted shares. This is only done when imports
+  // are allowed (no auth error occurred and a password dialog is
+  // op at the moment) and there are currently no subjobs.
+  if ( d->importTimeout >= Smb4KSettings::checkInterval() && d->importedShares.isEmpty() )
   {
-    if ( !d->retries.isEmpty() )
+    if ( d->importsAllowed && !hasSubjobs() )
     {
-      mountShares( d->retries );
-      
-      while ( !d->retries.isEmpty() )
-      {
-        delete d->retries.takeFirst();
-      }
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    if ( d->importTimeout >= Smb4KSettings::checkInterval() && d->importedShares.isEmpty() )
-    {
-      // Import the mounted shares.
       if ( d->checks == 10 )
       {
         import( true );
@@ -1556,26 +1551,33 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
         import( false );
         d->checks += 1;
       }
-      
-      d->importTimeout = 0;
+        
+      d->importTimeout = -TIMEOUT;
     }
     else
     {
       // Do nothing
     }
-    
-    // Clean up the mount prefix
-    cleanup();
-
-    if ( Smb4KSettings::remountShares() && d->firstImportDone )
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Try to remount those shares that could not be mounted 
+  // before. Do this only if there are no subjobs, because we
+  // do not want to get crashes because a share was invalidated
+  // during processing the shares.
+  if ( d->remountAttempts <= Smb4KSettings::remountAttempts() )
+  {
+    if ( Smb4KSettings::remountShares() && d->firstImportDone && !hasSubjobs() )
     {
       if ( d->remountTimeout == 0 && d->remountAttempts == 0 )
       {
         triggerRemounts( true );
       }
       else if ( !d->remounts.isEmpty() &&
-                d->remountTimeout >= (60000 * Smb4KSettings::remountInterval()) &&
-                d->remountAttempts <= Smb4KSettings::remountAttempts() )
+                d->remountTimeout >= (60000 * Smb4KSettings::remountInterval()) )
       {
         triggerRemounts( false );
       }
@@ -1584,26 +1586,41 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
         // Do nothing
       }
       
-      if ( d->remountAttempts < Smb4KSettings::remountAttempts() )
-      {
-        d->remountTimeout += TIMEOUT;
-      }
-      else
-      {
-        d->remountTimeout = 0;
-      }
+      d->remountTimeout = -TIMEOUT;
     }
     else
     {
-      d->remountTimeout = 0;
+      // Do nothing
+    }
+    
+    d->remountAttempts += TIMEOUT;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Retry mounting those shares that failed. This also only 
+  // done when there are no subjobs.
+  if ( !d->retries.isEmpty() && !hasSubjobs() )
+  {
+    mountShares( d->retries );
+      
+    while ( !d->retries.isEmpty() )
+    {
+      delete d->retries.takeFirst();
     }
   }
   else
   {
-    // Do nothing and wait until the application started up.
+    // Do nothing
   }
   
+  // Count up the timeouts.
   d->importTimeout += TIMEOUT;
+  
+  // Finally, clean up the mount prefix.
+  cleanup();
 }
 
 
@@ -1617,7 +1634,7 @@ void Smb4KMounter::slotStartJobs()
   import( true );
 
   if ( Smb4KSolidInterface::self()->networkStatus() == Smb4KSolidInterface::Connected ||
-       Smb4KSolidInterface::self()->networkStatus() == Smb4KSolidInterface::Unknown )
+       Smb4KSolidInterface::self()->networkStatus() == Smb4KSolidInterface::UnknownStatus )
   {
     d->hardwareReason = false;
   }
@@ -1716,6 +1733,11 @@ void Smb4KMounter::slotJobFinished( KJob *job )
 
 void Smb4KMounter::slotAuthError( Smb4KMountJob *job )
 {
+  // Do not allow imports when an authentication error 
+  // occurred. We do not want to operate on a network
+  // item that might get invalidated between imports.
+  d->importsAllowed = false;
+  
   if ( job )
   {
     for ( int i = 0; i < job->authErrors().size(); ++i )
@@ -1734,6 +1756,8 @@ void Smb4KMounter::slotAuthError( Smb4KMountJob *job )
   {
     // Do nothing
   }
+  
+  d->importsAllowed = true;
 }
 
 
@@ -1751,7 +1775,6 @@ void Smb4KMounter::slotRetryMounting( Smb4KMountJob *job )
     // Do nothing
   }
 }
-
 
 
 void Smb4KMounter::slotShareMounted( Smb4KShare *share )
@@ -1881,14 +1904,15 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
 
 void Smb4KMounter::slotHardwareButtonPressed( Smb4KSolidInterface::ButtonType type )
 {
+  int cookie = Smb4KSolidInterface::self()->beginSleepSuppression(i18n("Unmounting shares. Please wait."));
+  d->hardwareReason = true;
+  
   switch ( type )
   {
     case Smb4KSolidInterface::SleepButton:
     {
       if (Smb4KSettings::unmountWhenSleepButtonPressed() && !mountedSharesList().isEmpty())
       {
-        Smb4KSolidInterface::self()->beginSleepSuppression(i18n("Unmounting shares. Please wait."));
-        d->hardwareReason = true;
         abortAll();
         saveSharesForRemount();
         unmountAllShares();
@@ -1898,9 +1922,6 @@ void Smb4KMounter::slotHardwareButtonPressed( Smb4KSolidInterface::ButtonType ty
         {
           QTest::qWait( TIMEOUT );
         }
-        
-        d->hardwareReason = false;
-        Smb4KSolidInterface::self()->endSleepSuppression();
       }
       else
       {
@@ -1912,8 +1933,6 @@ void Smb4KMounter::slotHardwareButtonPressed( Smb4KSolidInterface::ButtonType ty
     {
       if (Smb4KSettings::unmountWhenLidButtonPressed() && !mountedSharesList().isEmpty())
       {
-        Smb4KSolidInterface::self()->beginSleepSuppression(i18n("Unmounting shares. Please wait."));
-        d->hardwareReason = true;
         abortAll();
         saveSharesForRemount();
         unmountAllShares();
@@ -1923,9 +1942,6 @@ void Smb4KMounter::slotHardwareButtonPressed( Smb4KSolidInterface::ButtonType ty
         {
           QTest::qWait( TIMEOUT );
         }
-        
-        d->hardwareReason = false;
-        Smb4KSolidInterface::self()->endSleepSuppression();
       }
       else
       {
@@ -1937,8 +1953,6 @@ void Smb4KMounter::slotHardwareButtonPressed( Smb4KSolidInterface::ButtonType ty
     {
       if (Smb4KSettings::unmountWhenPowerButtonPressed() && !mountedSharesList().isEmpty())
       {
-        Smb4KSolidInterface::self()->beginSleepSuppression(i18n("Unmounting shares. Please wait."));
-        d->hardwareReason = true;
         abortAll();
         saveSharesForRemount();
         unmountAllShares();
@@ -1948,9 +1962,6 @@ void Smb4KMounter::slotHardwareButtonPressed( Smb4KSolidInterface::ButtonType ty
         {
           QTest::qWait( TIMEOUT );
         }
-        
-        d->hardwareReason = false;
-        Smb4KSolidInterface::self()->endSleepSuppression();
       }
       else
       {
@@ -1963,29 +1974,24 @@ void Smb4KMounter::slotHardwareButtonPressed( Smb4KSolidInterface::ButtonType ty
       break;
     }
   }
+  
+  d->hardwareReason = false;
+  Smb4KSolidInterface::self()->endSleepSuppression(cookie);
+  qDebug() << "Good night!";
 }
 
 
 void Smb4KMounter::slotComputerWokeUp()
 {
-  // Only trigger a remount here, if the network connection is
-  // established. If the computer is still disconnected,
-  // slotNetworkStatusChanged() will initiate the remounting.
-  switch ( Smb4KSolidInterface::self()->networkStatus() )
+  // Trigger the remount here if necessary.
+  while ( Smb4KSolidInterface::self()->networkStatus() == Smb4KSolidInterface::Disconnected )
   {
-    case Smb4KSolidInterface::Connected:
-    case Smb4KSolidInterface::Unknown:
-    {
-      d->hardwareReason = true;
-      triggerRemounts( true );
-      d->hardwareReason = false;
-      break;
-    }
-    default:
-    {
-      break;
-    }
+    QTest::qWait( TIMEOUT );
   }
+  
+  d->hardwareReason = true;
+  triggerRemounts(true);
+  d->hardwareReason = false;
 }
 
 
@@ -1993,14 +1999,6 @@ void Smb4KMounter::slotNetworkStatusChanged( Smb4KSolidInterface::ConnectionStat
 {
   switch ( status )
   {
-    case Smb4KSolidInterface::Connected:
-    case Smb4KSolidInterface::Unknown:
-    {
-      d->hardwareReason = true;
-      triggerRemounts( true );
-      d->hardwareReason = false;
-      break;
-    }
     case Smb4KSolidInterface::Disconnected:
     {
       d->hardwareReason = true;
@@ -2019,6 +2017,9 @@ void Smb4KMounter::slotNetworkStatusChanged( Smb4KSolidInterface::ConnectionStat
     }
     default:
     {
+      d->hardwareReason = true;
+      triggerRemounts( true );
+      d->hardwareReason = false;
       break;
     }
   }

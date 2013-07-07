@@ -116,7 +116,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      *
      * @param parent      The parent widget of this dialog
      */
-    void openMountDialog( QWidget *parent = 0 );
+    Q_INVOKABLE void openMountDialog( QWidget *parent = 0 );
 
     /**
      * Mounts a list of shares at once.
@@ -218,6 +218,12 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * @param path        The mountpoint of the mounted share
      */
     Q_INVOKABLE void unmount( const QUrl &mountpoint );
+    
+    /**
+     * This function is a convenience function. It unmounts all currently mounted
+     * shares by invoking @see unmountAllShares( 0 ).
+     */
+    Q_INVOKABLE void unmountAll();
     
     /**
      * This function takes a KUrl object, looks up the respective mounted share
