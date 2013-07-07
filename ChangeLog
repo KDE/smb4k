@@ -1,5 +1,5 @@
 Smb4K 1.1.0 (????-??-??):
-- Smb4K needs KDE SC version 4.6 or later.
+- Smb4K needs KDE SC version 4.8 or later.
 - Fixed many issues reported by krazy2. On the way several minor changes
   to the core classes were applied.
 - Made Smb4K a kdeinit executable.
@@ -44,6 +44,9 @@ Smb4K 1.1.0 (????-??-??):
   + Added addBookmark() function that takes an URL as argument.
   + Added two removeBookmark() functions, one taking a pointer to a Smb4KBookmark
     object and one taking a URL.
+  + Added private addBookmarks() function that takes a list of Smb4KBookmark 
+    objects and optionally a boolean that indicates if the internal list of
+    shares should be replaced by the new one.
 - Revised Smb4KScanner class:
   + To use functions from the scanner in the plasmoid, Q_INVOKABLE and
     Q_PROPERTY macros are used.
@@ -76,6 +79,7 @@ Smb4K 1.1.0 (????-??-??):
   + Added ability to make several attempts to remount shares. Many thanks
     go to Ettore Atalan for the suggestion.
   + Improved handling of notifications.
+  + Improved handling of timer based events.
 - Revised Smb4KWalletManager class:
   + When prompting for a password for a 'homes' share, use the UNC of the
     user's home directory and not //SERVER/homes.
@@ -93,6 +97,11 @@ Smb4K 1.1.0 (????-??-??):
   + Removed custom code that determined that the computer woke up.
   + Connected wokeUp() signal to
     Solid::PowerManagement::Notifier::resumingFromSuspend().
+  + The sleep cookie is not handled internally anymore. So, the function
+    beginSleepSuppression() returns a cookie and endSleepSuppression()
+    takes a cookie.
+  + Renamed Smb4KSolidInterface::NetworkStatus::Unknown to
+    Smb4KSolidInterface::NetworkStatus::UnknownStatus.
 - Revised network browser:
   + Removed wrong checks that caused tooltips not being updated properly.
   + Added ability to select multiple shares and process them accordingly.
