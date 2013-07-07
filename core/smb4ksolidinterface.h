@@ -72,7 +72,7 @@ class KDE_EXPORT Smb4KSolidInterface : public QObject
                             Connected,
                             Disconnecting,
                             Disconnected,
-                            Unknown };
+                            UnknownStatus };
 
     /**
      * The constructor
@@ -104,13 +104,17 @@ class KDE_EXPORT Smb4KSolidInterface : public QObject
      * sleep kicks in.
      *
      * @param reason      The reason why the sleep is suppressed
+     *
+     * @returns the sleep cookie.
      */
-    void beginSleepSuppression( const QString &reason = QString() );
+    int beginSleepSuppression( const QString &reason = QString() );
     
     /**
      * Stop suppressing the sleep of the system.
+     * 
+     * @param cookie      The sleep cookie
      */
-    void endSleepSuppression();
+    void endSleepSuppression( int cookie );
     
   Q_SIGNALS:
     /**

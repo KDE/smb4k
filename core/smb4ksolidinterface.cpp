@@ -54,8 +54,7 @@ Smb4KSolidInterface::Smb4KSolidInterface( QObject *parent )
 : QObject( parent ), d( new Smb4KSolidInterfacePrivate )
 {
   d->buttonPressed = UnknownButton;
-  d->networkStatus = Unknown;
-  d->sleepCookie   = 0;
+  d->networkStatus = UnknownStatus;
   init();
 }
 
@@ -77,17 +76,15 @@ Smb4KSolidInterface::ConnectionStatus Smb4KSolidInterface::networkStatus() const
 }
 
 
-void Smb4KSolidInterface::beginSleepSuppression(const QString &reason)
+int Smb4KSolidInterface::beginSleepSuppression(const QString &reason)
 {
-  d->sleepCookie = Solid::PowerManagement::beginSuppressingSleep(reason);
-  
-  if ( d->sleepCookie == -1 ) qDebug() << "Sleep suppression denied";
+  return Solid::PowerManagement::beginSuppressingSleep(reason);
 }
 
 
-void Smb4KSolidInterface::endSleepSuppression()
+void Smb4KSolidInterface::endSleepSuppression( int cookie )
 {
-  Solid::PowerManagement::stopSuppressingSleep(d->sleepCookie);
+  Solid::PowerManagement::stopSuppressingSleep(cookie);
 }
 
 
@@ -288,7 +285,7 @@ void Smb4KSolidInterface::slotNetworkStatusChanged( Solid::Networking::Status st
     case Solid::Networking::Unknown:
     default:
     {
-      d->networkStatus = Unknown;
+      d->networkStatus = UnknownStatus;
       break;
     }
   }

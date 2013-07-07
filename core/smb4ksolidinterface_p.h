@@ -32,7 +32,6 @@ class Smb4KSolidInterfacePrivate
   public:
     Smb4KSolidInterface::ButtonType buttonPressed;
     Smb4KSolidInterface::ConnectionStatus networkStatus;
-    int sleepCookie;
 };
 
 
