@@ -91,6 +91,13 @@ void Smb4KSolidInterface::endSleepSuppression( int cookie )
 
 void Smb4KSolidInterface::init()
 {
+  // Connect to device notifier.
+  connect( Solid::DeviceNotifier::instance(), SIGNAL(deviceAdded(QString)),   
+           this,                              SLOT(slotDeviceAdded(QString)) );   
+   
+  connect( Solid::DeviceNotifier::instance(), SIGNAL(deviceRemoved(QString)),   
+           this,                              SLOT(slotDeviceRemoved(QString)) );
+  
   // Get the buttons
   QList<Solid::Device> list_btn = Solid::Device::listFromType( Solid::DeviceInterface::Button, QString() );
 
@@ -185,6 +192,18 @@ void Smb4KSolidInterface::init()
 /////////////////////////////////////////////////////////////////////////////
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
+
+void Smb4KSolidInterface::slotDeviceAdded(const QString& udi)
+{
+  kDebug() << "Added device: " << udi;
+}
+
+
+void Smb4KSolidInterface::slotDeviceRemoved(const QString& udi)
+{
+  kDebug() << "Removed device: " << udi;
+}
+
 
 void Smb4KSolidInterface::slotButtonPressed(Solid::Button::ButtonType type, const QString &/*udi*/)
 {
