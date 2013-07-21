@@ -321,6 +321,12 @@ void Smb4KMounter::triggerRemounts( bool fill_list )
     if ( !d->remounts.isEmpty() )
     {
       mountShares( d->remounts );
+    
+      // Wait until done.
+      while ( hasSubjobs() )
+      {
+        QTest::qWait( TIMEOUT );
+      }
     }
     else
     {
@@ -1564,60 +1570,70 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
     // Do nothing
   }
   
+  d->importTimeout += TIMEOUT;
+  
   // Try to remount those shares that could not be mounted 
   // before. Do this only if there are no subjobs, because we
   // do not want to get crashes because a share was invalidated
   // during processing the shares.
-  if ( d->remountAttempts <= Smb4KSettings::remountAttempts() )
+  if ( Smb4KSettings::remountShares() && Smb4KSettings::remountAttempts() > d->remountAttempts )
   {
-    if ( Smb4KSettings::remountShares() && d->firstImportDone && !hasSubjobs() )
+    // Inhibit automatic sleeping.
+    int cookie = Smb4KSolidInterface::self()->beginSleepSuppression(i18n("Remounting shares. Please wait."));
+    
+    if ( d->firstImportDone && !hasSubjobs() )
     {
-      if ( d->remountTimeout == 0 && d->remountAttempts == 0 )
+      if ( d->remountAttempts == 0 )
       {
-        triggerRemounts( true );
+        triggerRemounts(true);
       }
       else if ( !d->remounts.isEmpty() &&
                 d->remountTimeout >= (60000 * Smb4KSettings::remountInterval()) )
       {
-        triggerRemounts( false );
+        triggerRemounts(false);
+        d->remountTimeout = -TIMEOUT;
       }
       else
       {
         // Do nothing
       }
-      
-      d->remountTimeout = -TIMEOUT;
     }
     else
     {
       // Do nothing
     }
     
-    d->remountAttempts += TIMEOUT;
+    d->remountTimeout += TIMEOUT;
+    
+    // Allow automatic sleeping.
+    Smb4KSolidInterface::self()->endSleepSuppression(cookie);
   }
   else
   {
     // Do nothing
   }
   
-  // Retry mounting those shares that failed. This also only 
+  // Retry mounting those shares that failed. This is also only 
   // done when there are no subjobs.
   if ( !d->retries.isEmpty() && !hasSubjobs() )
   {
+    // Inhibit automatic sleeping.
+    int cookie = Smb4KSolidInterface::self()->beginSleepSuppression(i18n("Retrying to mount shares. Please wait."));
+    
     mountShares( d->retries );
       
     while ( !d->retries.isEmpty() )
     {
       delete d->retries.takeFirst();
     }
+    
+    // Allow automatic sleeping.
+    Smb4KSolidInterface::self()->endSleepSuppression(cookie);
   }
   else
   {
     // Do nothing
   }
-  
-  // Count up the timeouts.
-  d->importTimeout += TIMEOUT;
   
   // Finally, clean up the mount prefix.
   cleanup();
@@ -1983,15 +1999,6 @@ void Smb4KMounter::slotHardwareButtonPressed( Smb4KSolidInterface::ButtonType ty
 
 void Smb4KMounter::slotComputerWokeUp()
 {
-  // Trigger the remount here if necessary.
-  while ( Smb4KSolidInterface::self()->networkStatus() == Smb4KSolidInterface::Disconnected )
-  {
-    QTest::qWait( TIMEOUT );
-  }
-  
-  d->hardwareReason = true;
-  triggerRemounts(true);
-  d->hardwareReason = false;
 }
 
 
