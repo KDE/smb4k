@@ -1928,21 +1928,6 @@ bool Smb4KLookupSharesJob::doKill()
 
 void Smb4KLookupSharesJob::processShares()
 {
-  // Additional authentication error handling.
-  if ( m_proc->exitCode() == 104 /* access denied in W2k3 domain */ ||
-       m_proc->exitCode() == 235 /* wrong password in W2k3 domain */ )
-  {
-    emit authError( this );
-    // We can just return here, because this function is invoked
-    // in slotProcessFinished() and emitResult() will be emitted 
-    // at its end.
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-
   QStringList stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts );
   
   if ( !stdout.isEmpty() )
@@ -2885,15 +2870,15 @@ void Smb4KLookupIPAddressJob::slotStartLookup()
   // the WINS server is sometimes not very reliable. 
   
   
-//   if ( !winsServer().isEmpty() )
-//   {
-//     arguments << "-R";
-//     arguments << QString( "-U %1" ).arg( KShell::quoteArg( winsServer() ) );
-//   }
-//   else
-//   {
-//     // Do nothing
-//   }
+  if ( !winsServer().isEmpty() )
+  {
+    arguments << "-R";
+    arguments << QString( "-U %1" ).arg( KShell::quoteArg( winsServer() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
 
   arguments << "--";
   arguments << KShell::quoteArg( m_host->hostName() );
