@@ -62,6 +62,11 @@ Smb4K 1.1.0 (????-??-??):
     Smb4K otherwise this function will not do anything.
   + IP addresses are looked up every 60 s and when new hosts were discovered.
   + Improved periodic scanning.
+  + Reimplemented usage of WINS server when looking up IP addresses.
+  + Removed additional error code handling from
+    Smb4KLookupSharesJob::processShares() since auth errors should be
+    reported with a NTSTATUS* error message via stderr (closes SF ticket
+    #25).
 - Revised Smb4KMounter class:
   + To use functions from the mounter in the plasmoid, Q_INVOKABLE and
     Q_PROPERTY macros are used.
