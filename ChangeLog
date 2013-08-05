@@ -85,6 +85,9 @@ Smb4K 1.1.0 (????-??-??):
     go to Ettore Atalan for the suggestion.
   + Improved handling of notifications.
   + Improved handling of timer based events.
+  + Fixed mounting with Kerberos. The location of the ticket is propagated
+    to the root environment in which the mounting is done and the 'cruid'
+    argument to mount.cifs is set to the users uid (closes SF ticket #32).
 - Revised Smb4KWalletManager class:
   + When prompting for a password for a 'homes' share, use the UNC of the
     user's home directory and not //SERVER/homes.
