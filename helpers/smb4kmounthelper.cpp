@@ -63,6 +63,17 @@ ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
   // point the mount process to the right ~/.nsmbrc file. Under
   // Linux it is not needed.
   proc.setEnv( "HOME", args["home_dir"].toString() );
+  // If the location of a Kerberos ticket is passed, it needs to
+  // be passed to the process environment here.
+  if ( args.contains( "krb_ticket" ) )
+  {
+    proc.setEnv( "KRB5CCNAME", args["krb5_ticket"].toString() );
+  }
+  else
+  {
+    // Do nothing
+  }
+  // Set the program.
   proc.setProgram( args["command"].toStringList() );
 
   // Run the mount process.
