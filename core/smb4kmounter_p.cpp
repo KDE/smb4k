@@ -39,8 +39,10 @@
 
 // Qt includes
 #include <QtCore/QFileInfo>
+#include <QtCore/QFile>
 #include <QtCore/QTimer>
 #include <QtCore/QDir>
+#include <QtCore/QProcessEnvironment>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QGridLayout>
@@ -52,6 +54,11 @@
 #include <kstandarddirs.h>
 #include <kmountpoint.h>
 #include <kshell.h>
+
+// system includes
+#include <unistd.h>
+#include <sys/types.h>
+       
 
 using namespace Smb4KGlobal;
 
@@ -484,11 +491,13 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
       case Smb4KCustomOptions::Krb5:
       {
         args_list << "sec=krb5";
+        args_list << QString( "cruid=%1" ).arg( getuid() );
         break;
       }
       case Smb4KCustomOptions::Krb5i:
       {
         args_list << "sec=krb5i";
+        args_list << QString( "cruid=%1" ).arg( getuid() );
         break;
       }
       case Smb4KCustomOptions::Ntlm:
@@ -779,7 +788,29 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
   action->addArgument( "comment", share->comment() );
   action->addArgument( "ip", share->hostIP() );
   action->addArgument( "mountpoint", share->canonicalPath() );
-
+ 
+  // The path to the Kerberos ticket is stored - if it exists - in the
+  // KRB5CCNAME environment variable. By default, the ticket is located
+  // at /tmp/krb5cc_[uid]. So, if the environment variable does not exist,
+  // but the cache file is there, try to use it.
+  if ( QProcessEnvironment::systemEnvironment().contains( "KRB5CCNAME" ) )
+  {
+    action->addArgument( "krb5_ticket", QProcessEnvironment::systemEnvironment().value( "KRB5CCNAME", "" ) );
+  }
+  else
+  {
+    QString ticket = QString( "/tmp/krb5cc_%1" ).arg( getuid() );
+    
+    if ( QFile::exists( ticket ) )
+    {
+      action->addArgument( "krb5_ticket", "FILE:"+ticket );
+    }
+    else
+    {
+      // Do nothing
+    }
+  }    
+ 
   return true;
 }
 
