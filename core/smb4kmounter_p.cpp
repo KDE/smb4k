@@ -549,11 +549,13 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
       case Smb4KSettings::EnumSecurityMode::Krb5:
       {
         args_list << "sec=krb5";
+        args_list << QString( "cruid=%1" ).arg( getuid() );
         break;
       }
       case Smb4KSettings::EnumSecurityMode::Krb5i:
       {
         args_list << "sec=krb5i";
+        args_list << QString( "cruid=%1" ).arg( getuid() );
         break;
       }
       case Smb4KSettings::EnumSecurityMode::Ntlm:
