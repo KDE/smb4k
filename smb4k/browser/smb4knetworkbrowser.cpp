@@ -2,7 +2,7 @@
     smb4knetworkbrowser  -  The network browser widget of Smb4K.
                              -------------------
     begin                : Mo Jan 8 2007
-    copyright            : (C) 2007-2011 by Alexander Reinholdt
+    copyright            : (C) 2007-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -59,7 +59,7 @@ Smb4KNetworkBrowser::Smb4KNetworkBrowser( QWidget *parent )
   
   setContextMenuPolicy( Qt::CustomContextMenu );
 
-  m_tooltip = new Smb4KToolTip( this );
+  m_tooltip_item = NULL;
   m_mouse_inside = false;
   m_auto_select_timer = new QTimer( this );
 
@@ -138,9 +138,11 @@ bool Smb4KNetworkBrowser::event( QEvent *e )
           // If it is, hide it.
           if ( pos.x() <= ind * indentation() )
           {
-            if ( m_tooltip->isVisible() )
+            if ( m_tooltip_item )
             {
-              m_tooltip->hide();
+              emit aboutToHideToolTip(m_tooltip_item);
+              m_tooltip_item->tooltip()->hide();
+              m_tooltip_item = NULL;
             }
             else
             {
@@ -149,55 +151,32 @@ bool Smb4KNetworkBrowser::event( QEvent *e )
           }
           else
           {
-            if ( !m_tooltip->isVisible() || (m_tooltip->networkItem() && 
-                QString::compare( item->networkItem()->key(), m_tooltip->networkItem()->key() ) != 0) )
-            {
-              switch ( item->type() )
-              {
-                case Smb4KNetworkBrowserItem::Workgroup:
-                {
-                  m_tooltip->show( item->workgroupItem(), pos );
-                  break;
-                }
-                case Smb4KNetworkBrowserItem::Host:
-                {
-                  m_tooltip->show( item->hostItem(), pos );
-                  break;
-                }
-                case Smb4KNetworkBrowserItem::Share:
-                {
-                  m_tooltip->show( item->shareItem(), pos );
-                  break;
-                }
-                default:
-                {
-                  break;
-                }
-              }
-            }
-            else
-            {
-              // Do nothing
-            }
+            m_tooltip_item = item;
+            emit aboutToShowToolTip(m_tooltip_item);
+            m_tooltip_item->tooltip()->show(cursor().pos());
           }
         }
         else
         {
-          if ( m_tooltip->isVisible() )
+          if ( m_tooltip_item )
           {
-            m_tooltip->hide();
+            emit aboutToHideToolTip(m_tooltip_item);
+            m_tooltip_item->tooltip()->hide();
+            m_tooltip_item = NULL;
           }
           else
           {
             // Do nothing
-          }
+          }         
         }
       }
       else
       {
-        if ( m_tooltip->isVisible() )
+        if ( m_tooltip_item )
         {
-          m_tooltip->hide();
+          emit aboutToHideToolTip(m_tooltip_item);
+          m_tooltip_item->tooltip()->hide();
+          m_tooltip_item = NULL;
         }
         else
         {
@@ -227,9 +206,11 @@ void Smb4KNetworkBrowser::mouseMoveEvent( QMouseEvent *e )
     emit itemEntered( item, columnAt( e->pos().x() ) );
     
     // Hide tool tip if the items diverge.
-    if ( m_tooltip->networkItem() && m_tooltip->networkItem() != item->networkItem() )
+    if ( m_tooltip_item && m_tooltip_item->tooltip()->networkItem() != item->networkItem() )
     {
-      m_tooltip->hide();
+      emit aboutToHideToolTip(m_tooltip_item);
+      m_tooltip_item->tooltip()->hide();
+      m_tooltip_item = NULL;
     }
     else
     {
@@ -239,7 +220,16 @@ void Smb4KNetworkBrowser::mouseMoveEvent( QMouseEvent *e )
   else
   {
     // Hide the tool tip
-    m_tooltip->hide();
+    if (m_tooltip_item)
+    {
+      emit aboutToHideToolTip(m_tooltip_item);
+      m_tooltip_item->tooltip()->hide();
+      m_tooltip_item = NULL;
+    }
+    else
+    {
+      // Do nothing
+    }
   }
 
   QTreeWidget::mouseMoveEvent( e );
@@ -248,9 +238,11 @@ void Smb4KNetworkBrowser::mouseMoveEvent( QMouseEvent *e )
 
 void Smb4KNetworkBrowser::leaveEvent( QEvent *e )
 {
-  if ( m_tooltip->isVisible() )
+  if ( m_tooltip_item )
   {
-    m_tooltip->hide();
+    emit aboutToHideToolTip(m_tooltip_item);
+    m_tooltip_item->tooltip()->hide();
+    m_tooltip_item = NULL;
   }
   else
   {
@@ -275,9 +267,11 @@ void Smb4KNetworkBrowser::enterEvent( QEvent *e )
 void Smb4KNetworkBrowser::mousePressEvent( QMouseEvent *e )
 {
   // Hide the current tool tip so that it is not in the way.
-  if ( m_tooltip->isVisible() )
+  if ( m_tooltip_item )
   {
-    m_tooltip->hide();
+    emit aboutToHideToolTip(m_tooltip_item);
+    m_tooltip_item->tooltip()->hide();
+    m_tooltip_item = NULL;
   }
   else
   {
@@ -312,9 +306,11 @@ void Smb4KNetworkBrowser::focusOutEvent( QFocusEvent *e )
 
 void Smb4KNetworkBrowser::wheelEvent( QWheelEvent *e )
 {
-  if ( m_tooltip->isVisible() )
+  if ( m_tooltip_item )
   {
-    m_tooltip->hide();
+    emit aboutToHideToolTip(m_tooltip_item);
+    m_tooltip_item->tooltip()->hide();
+    m_tooltip_item = NULL;
   }
   else
   {
@@ -350,20 +346,14 @@ void Smb4KNetworkBrowser::slotItemEntered( QTreeWidgetItem *item, int /*column*/
   {
     // Do nothing
   }
-
-  if ( m_tooltip->isVisible() )
-  {
-    Smb4KNetworkBrowserItem *browser_item = static_cast<Smb4KNetworkBrowserItem *>( item );
   
-    if ( browser_item && m_tooltip->networkItem() &&
-         QString::compare( browser_item->networkItem()->key(), m_tooltip->networkItem()->key() ) != 0 )
-    {
-      m_tooltip->hide();
-    }
-    else
-    {
-      // Do nothing
-    }
+  Smb4KNetworkBrowserItem *browser_item = static_cast<Smb4KNetworkBrowserItem *>( item );
+  
+  if ( m_tooltip_item && m_tooltip_item != browser_item )
+  {
+    emit aboutToHideToolTip(m_tooltip_item);
+    m_tooltip_item->tooltip()->hide();
+    m_tooltip_item = NULL;
   }
   else
   {
@@ -387,9 +377,11 @@ void Smb4KNetworkBrowser::slotViewportEntered()
   m_auto_select_timer->stop();
   m_auto_select_item = 0;
   
-  if ( m_tooltip->isVisible() )
+  if ( m_tooltip_item )
   {
-    m_tooltip->hide();
+    emit aboutToHideToolTip(m_tooltip_item);
+    m_tooltip_item->tooltip()->hide();
+    m_tooltip_item = NULL;
   }
   else
   {
@@ -400,9 +392,11 @@ void Smb4KNetworkBrowser::slotViewportEntered()
 
 void Smb4KNetworkBrowser::slotItemExecuted( QTreeWidgetItem *item, int /*column*/ )
 {
-  if ( m_tooltip->isVisible() )
+  if ( m_tooltip_item )
   {
-    m_tooltip->hide();
+    emit aboutToHideToolTip(m_tooltip_item);
+    m_tooltip_item->tooltip()->hide();
+    m_tooltip_item = NULL;
   }
   else
   {

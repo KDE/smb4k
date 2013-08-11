@@ -2,7 +2,7 @@
     smb4ktooltip  -  Provides tooltips for Smb4K
                              -------------------
     begin                : Sa Dez 23 2010
-    copyright            : (C) 2010-2012 by Alexander Reinholdt
+    copyright            : (C) 2010-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -58,6 +58,14 @@ Smb4KToolTip::Smb4KToolTip( QWidget* parent )
 : QWidget( parent, Qt::ToolTip|Qt::BypassGraphicsProxyWidget|Qt::FramelessWindowHint ),
   m_item( NULL ), m_tip_layout( NULL ), m_info_layout( NULL ), m_text_layout( NULL )
 {
+  m_master_browser_label = NULL;
+  m_comment_label        = NULL;
+  m_server_label         = NULL;
+  m_os_label             = NULL;
+  m_ip_label             = NULL;
+  m_mounted_label        = NULL;
+  m_size_label           = NULL;
+  
   setAttribute( Qt::WA_TranslucentBackground );
   
   // Copied from QToolTip
@@ -66,24 +74,6 @@ Smb4KToolTip::Smb4KToolTip( QWidget* parent )
   setPalette( QToolTip::palette() );
   ensurePolished();
   setWindowOpacity( style()->styleHint( QStyle::SH_ToolTipLabel_Opacity, 0, this ) / 255.0 );
-  
-  // Check which of the Smb4K GUIs we have got as parent.
-  if ( qstrcmp( parent->metaObject()->className(), "Smb4KNetworkBrowser" ) == 0 )
-  {
-    m_parent = NetworkBrowser;
-  }
-  else if ( qstrcmp( parent->metaObject()->className(), "Smb4KSharesIconView" ) == 0 )
-  {
-    m_parent = SharesView;
-  }
-  else if ( qstrcmp( parent->metaObject()->className(), "Smb4KSharesListView" ) == 0 )
-  {
-    m_parent = SharesView;
-  }
-  else
-  {
-    m_parent = UnknownParent;
-  }
 } 
 
 
@@ -93,66 +83,205 @@ Smb4KToolTip::~Smb4KToolTip()
   // somewhere outside of this class.
 }
 
- 
-void Smb4KToolTip::show( Smb4KBasicNetworkItem *item, const QPoint &pos )
+
+void Smb4KToolTip::setup(Smb4KToolTip::Parent parent, Smb4KBasicNetworkItem* item)
 {
-  // Let the internal Smb4KBasicNetworkItem object point to the
-  // one for that we will show information.
-  m_item = item;
-  
-  // Ensure that the tooltip is setup correctly.
-  if ( isVisible() )
+  if ( item )
   {
-    hide();
+    m_item = item;
+  
+    // Set up tool tip.
+    switch ( parent )
+    {
+      case NetworkBrowser:
+      {
+        setupNetworkBrowserToolTip();
+        break;
+      }
+      case SharesView:
+      {
+        setupSharesViewToolTip();
+        break;
+      }
+      default:
+      {
+        return;
+      }
+    }
   }
   else
   {
     // Do nothing
   }
-  
-  // Setup the tooltip.
-  switch ( m_parent )
-  {
-    case NetworkBrowser:
-    {
-      setupNetworkBrowserToolTip();
-      break;
-    }
-    case SharesView:
-    {
-      setupSharesViewToolTip();
-      break;
-    }
-    default:
-    {
-      return;
-    }
-  }
-  
-  // Emit the aboutToShow() signal.
-  emit aboutToShow( m_item );
-  
-  // Show the tooltip.
-  QPoint p = static_cast<QAbstractScrollArea *>( parentWidget() )->viewport()->mapToGlobal( pos );
+}
 
+
+void Smb4KToolTip::update(Smb4KToolTip::Parent parent, Smb4KBasicNetworkItem* item)
+{
+  if ( item )
+  {
+    m_item = item;
+    
+    switch ( parent )
+    {
+      case NetworkBrowser:
+      {
+        switch ( m_item->type() )
+        {
+          case Smb4KBasicNetworkItem::Workgroup:
+          {
+            Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>( item );
+            
+            if ( !workgroup->masterBrowserIP().isEmpty() )
+            {
+              m_master_browser_label->setText( workgroup->masterBrowserName()+" ("+workgroup->masterBrowserIP()+')' );
+            }
+            else
+            {
+              m_master_browser_label->setText( workgroup->masterBrowserName() );
+            }
+            break;
+          }
+          case Smb4KBasicNetworkItem::Host:
+          {
+            Smb4KHost *host = static_cast<Smb4KHost *>( item );
+            
+            if ( !host->comment().isEmpty() )
+            {
+              m_comment_label->setText( host->comment() );
+            }
+            else
+            {
+              m_comment_label->setText( "-" );
+            }
+            
+            if ( !host->serverString().isEmpty() )
+            {
+              m_server_label->setText( host->serverString() );
+            }
+            else
+            {
+              m_server_label->setText( "-" );
+            }
+            
+            if ( !host->osString().isEmpty() )
+            {
+              m_os_label->setText( host->osString() );
+            }
+            else
+            {
+              m_os_label->setText( "-" );
+            }
+            
+            if ( !host->ip().isEmpty() )
+            {
+              m_ip_label->setText( host->ip() );
+            }
+            else
+            {
+              m_ip_label->setText( "-" );
+            }
+            break;
+          }
+          case Smb4KBasicNetworkItem::Share:
+          {
+            Smb4KShare *share = static_cast<Smb4KShare *>( item );
+            
+            if ( !share->comment().isEmpty() )
+            {
+              m_comment_label->setText( share->comment() );
+            }
+            else
+            {
+              m_comment_label->setText( "-" );
+            }
+            
+            if ( !share->isPrinter() )
+            {
+              if ( share->isMounted() )
+              {
+                m_mounted_label->setText( i18n( "yes" ) );
+              }
+              else
+              {
+                m_mounted_label->setText( i18n( "no" ) );
+              }
+            }
+            else
+            {
+              m_mounted_label->setText( "-" );
+            }
+            
+            if ( !share->hostIP().isEmpty() )
+            {
+              m_ip_label->setText( share->hostIP() );
+            }
+            else
+            {
+              m_ip_label->setText( "-" );
+            }
+            
+            break;
+          }
+          default:
+          {
+            break;
+          }
+        }
+        break;
+      }
+      case SharesView:
+      {
+        Smb4KShare *share = static_cast<Smb4KShare *>( item );
+        
+        if ( share->totalDiskSpace() != 0 && share->freeDiskSpace() != 0 )
+        {
+          m_size_label->setText( i18n( "%1 free of %2 (%3 used)",
+                                 share->freeDiskSpaceString(),
+                                 share->totalDiskSpaceString(),
+                                 share->diskUsageString() ) );
+        }
+        else
+        {
+          m_size_label->setText( i18n( "unknown" ) );
+        }
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }    
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+ 
+void Smb4KToolTip::show(const QPoint &pos)
+{
+  QPoint p;
+  
   QDesktopWidget *d = QApplication::desktop();
 
-  if ( p.x() + width() > d->width() )
+  if ( pos.x() + width() > d->width() )
   {
-    p.setX( p.x() - width() - 5 );
+    p.setX( pos.x() - width() - 5 );
   }
   else
   {
-    p.setX( p.x() + 5 );
+    p.setX( pos.x() + 5 );
   }
 
-  if ( p.y() + height() > d->height() )
+  if ( pos.y() + height() > d->height() )
   {
-    p.setY( p.y() - height() - 5 );
+    p.setY( pos.y() - height() - 5 );
   }
   else
   {
-    p.setY( p.y() + 5 );
+    p.setY( pos.y() + 5 );
   }
 
   move( p );
@@ -160,11 +289,11 @@ void Smb4KToolTip::show( Smb4KBasicNetworkItem *item, const QPoint &pos )
   
   QTimer::singleShot( 10000, this, SLOT(slotHideToolTip()) );
 }
-
-
+ 
+ 
 void Smb4KToolTip::hide()
 {
-  slotHideToolTip();
+  setVisible( false );
 }
 
 
@@ -225,12 +354,13 @@ void Smb4KToolTip::setupNetworkBrowserToolTip()
       
       if ( !workgroup->masterBrowserIP().isEmpty() )
       {
-        m_text_layout->addWidget( new QLabel( workgroup->masterBrowserName()
-                                  +" ("+workgroup->masterBrowserIP()+')', this ), 1, 1, 0 );
+        m_master_browser_label = new QLabel( workgroup->masterBrowserName()+" ("+workgroup->masterBrowserIP()+')', this );
+        m_text_layout->addWidget( m_master_browser_label, 1, 1, 0 );
       }
       else
       {
-        m_text_layout->addWidget( new QLabel( workgroup->masterBrowserName(), this ), 1, 1, 0 );
+        m_master_browser_label = new QLabel( workgroup->masterBrowserName(), this );
+        m_text_layout->addWidget( m_master_browser_label, 1, 1, 0 );
       }
       
       m_info_layout->addLayout( m_text_layout );
@@ -265,11 +395,13 @@ void Smb4KToolTip::setupNetworkBrowserToolTip()
       
       if ( !host->comment().isEmpty() )
       {
-        m_text_layout->addWidget( new QLabel( host->comment(), this ), 1, 1, 0 );
+        m_comment_label = new QLabel( host->comment(), this );
+        m_text_layout->addWidget( m_comment_label, 1, 1, 0 );
       }
       else
       {
-        m_text_layout->addWidget( new QLabel( "-", this ), 1, 1, 0 );
+        m_comment_label = new QLabel( "-", this );
+        m_text_layout->addWidget( m_comment_label, 1, 1, 0 );
       }
       
       QLabel *srv_label = new QLabel( i18n( "Server" ), this );
@@ -279,11 +411,13 @@ void Smb4KToolTip::setupNetworkBrowserToolTip()
       
       if ( !host->serverString().isEmpty() )
       {
-        m_text_layout->addWidget( new QLabel( host->serverString(), this ), 2, 1, 0 );
+        m_server_label = new QLabel( host->serverString(), this );
+        m_text_layout->addWidget( m_server_label, 2, 1, 0 );
       }
       else
       {
-        m_text_layout->addWidget( new QLabel( "-", this ), 2, 1, 0 );
+        m_server_label = new QLabel( "-", this );
+        m_text_layout->addWidget( m_server_label, 2, 1, 0 );
       }
       
       QLabel *os_label = new QLabel( i18n( "Operating system" ), this );
@@ -293,11 +427,13 @@ void Smb4KToolTip::setupNetworkBrowserToolTip()
       
       if ( !host->osString().isEmpty() )
       {
-        m_text_layout->addWidget( new QLabel( host->osString(), this ), 3, 1, 0 );
+        m_os_label = new QLabel( host->osString(), this );
+        m_text_layout->addWidget( m_os_label, 3, 1, 0 );
       }
       else
       {
-        m_text_layout->addWidget( new QLabel( "-", this ), 3, 1, 0 );
+        m_os_label = new QLabel( "-", this );
+        m_text_layout->addWidget( m_os_label, 3, 1, 0 );
       }
       
       QLabel *ip_label = new QLabel( i18n( "IP Address" ), this );
@@ -307,11 +443,13 @@ void Smb4KToolTip::setupNetworkBrowserToolTip()
       
       if ( !host->ip().isEmpty() )
       {
-        m_text_layout->addWidget( new QLabel( host->ip(), this ), 4, 1, 0 );
+        m_ip_label = new QLabel( host->ip(), this );
+        m_text_layout->addWidget( m_ip_label, 4, 1, 0 );
       }
       else
       {
-        m_text_layout->addWidget( new QLabel( "-", this ), 4, 1, 0 );
+        m_ip_label = new QLabel( "-", this );
+        m_text_layout->addWidget( m_ip_label, 4, 1, 0 );
       }
       
       QLabel *wg_label = new QLabel( i18n( "Workgroup" ), this );
@@ -352,11 +490,13 @@ void Smb4KToolTip::setupNetworkBrowserToolTip()
       
       if ( !share->comment().isEmpty() )
       {
-        m_text_layout->addWidget( new QLabel( share->comment(), this ), 1, 1, 0 );
+        m_comment_label = new QLabel( share->comment(), this );
+        m_text_layout->addWidget( m_comment_label, 1, 1, 0 );
       }
       else
       {
-        m_text_layout->addWidget( new QLabel( "-", this ), 1, 1, 0 );
+        m_comment_label = new QLabel( "-", this );
+        m_text_layout->addWidget( m_comment_label, 1, 1, 0 );
       }
      
       QLabel *mnt_label = new QLabel( i18n( "Mounted" ), this );
@@ -368,16 +508,19 @@ void Smb4KToolTip::setupNetworkBrowserToolTip()
       {
         if ( share->isMounted() )
         {
-          m_text_layout->addWidget( new QLabel( i18n( "yes" ), this ), 2, 1, 0 );
+          m_mounted_label = new QLabel( i18n( "yes" ), this );
+          m_text_layout->addWidget( m_mounted_label, 2, 1, 0 );
         }
         else
         {
-          m_text_layout->addWidget( new QLabel( i18n( "no" ), this ), 2, 1, 0 );
+          m_mounted_label = new QLabel( i18n( "no" ), this );
+          m_text_layout->addWidget( m_mounted_label, 2, 1, 0 );
         }
       }
       else
       {
-        m_text_layout->addWidget( new QLabel( "-", this ), 2, 1, 0 );
+        m_mounted_label = new QLabel( "-", this );
+        m_text_layout->addWidget( m_mounted_label, 2, 1, 0 );
       }
       
       QLabel *h_label = new QLabel( i18n( "Host" ), this );
@@ -393,11 +536,13 @@ void Smb4KToolTip::setupNetworkBrowserToolTip()
       
       if ( !share->hostIP().isEmpty() )
       {
-        m_text_layout->addWidget( new QLabel( share->hostIP(), this ), 4, 1, 0 );
+        m_ip_label = new QLabel( share->hostIP(), this );
+        m_text_layout->addWidget( m_ip_label, 4, 1, 0 );
       }
       else
       {
-        m_text_layout->addWidget( new QLabel( "-", this ), 4, 1, 0 );
+        m_ip_label = new QLabel( "-", this );
+        m_text_layout->addWidget( m_ip_label, 4, 1, 0 );
       }
       
       QLabel *unc_label = new QLabel( i18n( "UNC" ), this );
@@ -523,40 +668,20 @@ void Smb4KToolTip::setupSharesViewToolTip()
   
   if ( share->totalDiskSpace() != 0 && share->freeDiskSpace() != 0 )
   {
-    m_text_layout->addWidget( new QLabel( i18n( "%1 free of %2 (%3 used)",
-                              share->freeDiskSpaceString(),
-                              share->totalDiskSpaceString(),
-                              share->diskUsageString() ) ), 5, 1, 0 );
+    m_size_label = new QLabel( i18n( "%1 free of %2 (%3 used)",
+                               share->freeDiskSpaceString(),
+                               share->totalDiskSpaceString(),
+                               share->diskUsageString() ) );
+    m_text_layout->addWidget( m_size_label, 5, 1, 0 );
   }
   else
   {
-    m_text_layout->addWidget( new QLabel( i18n( "unknown" ) ), 5, 1, 0 );
+    m_size_label = new QLabel( i18n( "unknown" ) );
+    m_text_layout->addWidget( m_size_label, 5, 1, 0 );
   }
       
   m_info_layout->addLayout( m_text_layout );
   m_info_layout->addSpacerItem( new QSpacerItem( 0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding ) );
-}
-
-
-void Smb4KToolTip::update()
-{
-  switch ( m_parent )
-  {
-    case NetworkBrowser:
-    {
-      updateNetworkBrowserToolTip();
-      break;
-    }
-    case SharesView:
-    {
-      updateSharesViewToolTip();
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
 }
 
 
@@ -874,54 +999,56 @@ void Smb4KToolTip::arc(QPainterPath& path,
 }
 
 
+// void Smb4KToolTip::clear()
+// {
+//   // Delete all the layout stuff
+//   QLayoutItem *child;
+//   
+//   if ( m_text_layout )
+//   {
+//     while ( (child = m_text_layout->takeAt( 0 )) != 0 )
+//     {
+//       delete child;
+//     }
+//   }
+//   
+//   if ( m_info_layout )
+//   {
+//     while ( (child = m_info_layout->takeAt( 0 )) != 0 )
+//     {
+//       delete child;
+//     }
+//   }
+// 
+//   if ( m_tip_layout )
+//   {
+//     while ( (child = m_tip_layout->takeAt( 0 )) != 0 )
+//     {
+//       delete child;
+//     }
+//   }
+//   
+//   // Delete all children
+//   while ( !children().isEmpty() )
+//   {
+//     delete children().first();
+//   }
+// 
+//   // For the above checks to work, assign the NULL pointer
+//   // to the layout objects.
+//   m_text_layout = NULL;
+//   m_info_layout = NULL;
+//   m_tip_layout = NULL; 
+// }
+
+
 //
 // SLOTS
 //
 
 void Smb4KToolTip::slotHideToolTip()
 {
-  emit aboutToHide( m_item );
-  
-  setVisible( false );
-  
-  // Delete all the layout stuff
-  QLayoutItem *child;
-  
-  if ( m_text_layout )
-  {
-    while ( (child = m_text_layout->takeAt( 0 )) != 0 )
-    {
-      delete child;
-    }
-  }
-  
-  if ( m_info_layout )
-  {
-    while ( (child = m_info_layout->takeAt( 0 )) != 0 )
-    {
-      delete child;
-    }
-  }
-
-  if ( m_tip_layout )
-  {
-    while ( (child = m_tip_layout->takeAt( 0 )) != 0 )
-    {
-      delete child;
-    }
-  }
-  
-  // Delete all children
-  while ( !children().isEmpty() )
-  {
-    delete children().first();
-  }
-
-  // For the above checks to work, assign the NULL pointer
-  // to the layout objects.
-  m_text_layout = NULL;
-  m_info_layout = NULL;
-  m_tip_layout = NULL;
+  hide();
 }
 
 #include "smb4ktooltip.moc"

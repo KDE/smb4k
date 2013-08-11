@@ -1126,7 +1126,6 @@ void Smb4KSharesViewPart::slotShareUpdated( Smb4KShare *share )
              QString::compare( item->shareItem()->canonicalPath(), share->canonicalPath() ) == 0) )
         {
           item->update( share );
-          m_icon_view->tooltip()->update();
           break;
         }
         else
@@ -1148,7 +1147,6 @@ void Smb4KSharesViewPart::slotShareUpdated( Smb4KShare *share )
              QString::compare( item->shareItem()->canonicalPath(), share->canonicalPath() ) == 0) )
         {
           item->update( share );
-          m_list_view->tooltip()->update();
           break;
         }
         else

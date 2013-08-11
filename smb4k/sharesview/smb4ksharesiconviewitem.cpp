@@ -44,6 +44,9 @@ Smb4KSharesIconViewItem::Smb4KSharesIconViewItem( Smb4KSharesIconView *parent, S
 
   m_share = new Smb4KShare( *share );
   
+  m_tooltip   = new Smb4KToolTip();
+  m_tooltip->setup( Smb4KToolTip::SharesView, m_share );
+  
   if ( !m_mountpoint )
   {
     setText( m_share->unc() );
@@ -60,6 +63,7 @@ Smb4KSharesIconViewItem::Smb4KSharesIconViewItem( Smb4KSharesIconView *parent, S
 Smb4KSharesIconViewItem::~Smb4KSharesIconViewItem()
 {
   delete m_share;
+  delete m_tooltip;
 }
 
 
@@ -75,6 +79,8 @@ void Smb4KSharesIconViewItem::update( Smb4KShare *share )
   delete m_share;
   m_share = new Smb4KShare( *share );
   
+  m_tooltip->update( Smb4KToolTip::SharesView, m_share );
+  
   if ( !m_mountpoint )
   {
     setText( m_share->unc() );
@@ -86,3 +92,10 @@ void Smb4KSharesIconViewItem::update( Smb4KShare *share )
 
   setIcon( m_share->icon() );
 }
+
+
+Smb4KToolTip* Smb4KSharesIconViewItem::tooltip()
+{
+  return m_tooltip;
+}
+

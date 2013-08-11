@@ -3,7 +3,7 @@
     browser of Smb4K.
                              -------------------
     begin                : Fr Jan 5 2007
-    copyright            : (C) 2007-2012 by Alexander Reinholdt
+    copyright            : (C) 2007-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -142,11 +142,11 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject
   connect( m_widget,               SIGNAL(itemExecuted(QTreeWidgetItem*,int)),
            this,                   SLOT(slotItemExecuted(QTreeWidgetItem*,int)) );
 
-  connect( m_widget->tooltip(),    SIGNAL(aboutToShow(Smb4KBasicNetworkItem*)),
-           this,                   SLOT(slotAboutToShowToolTip(Smb4KBasicNetworkItem*)) );
+  connect( m_widget,               SIGNAL(aboutToShowToolTip(Smb4KNetworkBrowserItem*)),
+           this,                   SLOT(slotAboutToShowToolTip(Smb4KNetworkBrowserItem*)) );
 
-  connect( m_widget->tooltip(),    SIGNAL(aboutToHide(Smb4KBasicNetworkItem*)),
-           this,                   SLOT(slotAboutToHideToolTip(Smb4KBasicNetworkItem*)) );
+  connect( m_widget,               SIGNAL(aboutToHideToolTip(Smb4KNetworkBrowserItem*)),
+           this,                   SLOT(slotAboutToHideToolTip(Smb4KNetworkBrowserItem*)) );
 
   connect( Smb4KScanner::self(),   SIGNAL(workgroups(QList<Smb4KWorkgroup*>)),
            this,                   SLOT(slotWorkgroups(QList<Smb4KWorkgroup*>)) );
@@ -666,21 +666,17 @@ void Smb4KNetworkBrowserPart::slotItemExecuted( QTreeWidgetItem *item, int /*col
 }
 
 
-void Smb4KNetworkBrowserPart::slotAboutToShowToolTip( Smb4KBasicNetworkItem *item )
+void Smb4KNetworkBrowserPart::slotAboutToShowToolTip( Smb4KNetworkBrowserItem *item )
 {
   if ( item )
   {
     switch ( item->type() )
     {
-      case Smb4KBasicNetworkItem::Host:
+      case Smb4KNetworkBrowserItem::Host:
       {
-        // Check if additional information is needed and send a request to the scanner,
-        // if necessary.
-        Smb4KHost *host = static_cast<Smb4KHost *>( item );
-        
-        if ( !host->hasInfo() )
+        if ( !item->hostItem()->hasInfo() )
         {
-          Smb4KScanner::self()->lookupInfo( host, m_widget );
+          Smb4KScanner::self()->lookupInfo( item->hostItem(), m_widget );
         }
         else
         {
@@ -702,17 +698,16 @@ void Smb4KNetworkBrowserPart::slotAboutToShowToolTip( Smb4KBasicNetworkItem *ite
 }
 
 
-void Smb4KNetworkBrowserPart::slotAboutToHideToolTip( Smb4KBasicNetworkItem *item )
+void Smb4KNetworkBrowserPart::slotAboutToHideToolTip( Smb4KNetworkBrowserItem *item )
 {
   if ( item )
   {
     switch ( item->type() )
     {
-      case Smb4KBasicNetworkItem::Host:
+      case Smb4KNetworkBrowserItem::Host:
       {
         // Kill the lookup process for the additional information.
-        Smb4KHost *host = static_cast<Smb4KHost *>( item );
-        Smb4KScanner::self()->abort( LookupInfo, host );
+        Smb4KScanner::self()->abort( LookupInfo, item->hostItem() );
         break;
       }
       default:
@@ -1567,16 +1562,6 @@ void Smb4KNetworkBrowserPart::slotAddIPAddress( Smb4KHost *host )
     {
       // Do nothing
     }
-    
-    // Update the tool tip, if there is one.
-    if ( m_widget->tooltip() && m_widget->tooltip()->isVisible() )
-    {
-      m_widget->tooltip()->update();
-    }
-    else
-    {
-      // Do nothing
-    }  
   }
   else
   {
@@ -1600,17 +1585,6 @@ void Smb4KNetworkBrowserPart::slotAddInformation( Smb4KHost *host )
       {
         Smb4KNetworkBrowserItem *hostItem = static_cast<Smb4KNetworkBrowserItem *>( hosts.at( i ) );
         hostItem->update( host );
-
-        // Now update the tool tip in case it is shown:
-        if ( m_widget->tooltip() && m_widget->tooltip()->isVisible() )
-        {
-          m_widget->tooltip()->update();
-        }
-        else
-        {
-          // Do nothing
-        }
-
         break;
       }
       else

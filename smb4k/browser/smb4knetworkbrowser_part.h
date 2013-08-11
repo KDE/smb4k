@@ -3,7 +3,7 @@
     browser of Smb4K.
                              -------------------
     begin                : Fr Jan 5 2007
-    copyright            : (C) 2007-2012 by Alexander Reinholdt
+    copyright            : (C) 2007-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -142,7 +142,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      * @param item                The item for which the additional info is to
      *                            be retrieved
      */
-    void slotAboutToShowToolTip( Smb4KBasicNetworkItem *item );
+    void slotAboutToShowToolTip( Smb4KNetworkBrowserItem *item );
 
     /**
      * This slot is called when the tool tip is about to be closed. It stops the
@@ -151,7 +151,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      * @param item                The item for which the additional info was to
      *                            be retrieved
      */
-    void slotAboutToHideToolTip( Smb4KBasicNetworkItem *item );
+    void slotAboutToHideToolTip( Smb4KNetworkBrowserItem *item );
 
     /**
      * This slot receives the workgroups/domains found by the scanner. It takes

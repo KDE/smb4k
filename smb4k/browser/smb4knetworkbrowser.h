@@ -2,7 +2,7 @@
     smb4knetworkbrowser  -  The network browser widget of Smb4K.
                              -------------------
     begin                : Mo Jan 8 2007
-    copyright            : (C) 2007-2011 by Alexander Reinholdt
+    copyright            : (C) 2007-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -59,15 +59,6 @@ class Smb4KNetworkBrowser : public QTreeWidget
                   Comment = 3 };
 
     /**
-     * Returns a pointer to the current tool tip or NULL, if there
-     * is no tool tip at the moment. Please note, that the tool tip
-     * is generated 2 sec before it is shown.
-     *
-     * @returns a pointer to the current tool tip.
-     */
-    Smb4KToolTip *tooltip() const { return m_tooltip; }
-
-    /**
      * This function returns TRUE if the mouse is inside the network
      * browser widget and FALSE otherwise.
      *
@@ -85,6 +76,20 @@ class Smb4KNetworkBrowser : public QTreeWidget
      */
     void itemExecuted( QTreeWidgetItem *item,
                        int column );
+    
+    /**
+     * This signal is emitted when a tool tip is about to be shown.
+     * 
+     * @param item          The network browser item
+     */
+    void aboutToShowToolTip( Smb4KNetworkBrowserItem *item );
+    
+    /**
+     * This signal is emitted when a tool tip is about to be hidden.
+     * 
+     * @param item          The network browser item
+     */
+    void aboutToHideToolTip( Smb4KNetworkBrowserItem *item );
 
   protected:
     /**
@@ -182,10 +187,10 @@ class Smb4KNetworkBrowser : public QTreeWidget
 
   private:
     /**
-     * The tool tip for the network browser
+     * The item for that a tool tip is shown
      */
-    Smb4KToolTip *m_tooltip;
-
+    Smb4KNetworkBrowserItem *m_tooltip_item;
+    
     /**
      * Mouse inside the widget?
      */

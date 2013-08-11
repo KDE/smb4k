@@ -2,7 +2,7 @@
     smb4ktooltip  -  Provides tooltips for Smb4K
                              -------------------
     begin                : Sa Dez 23 2010
-    copyright            : (C) 2010-2012 by Alexander Reinholdt
+    copyright            : (C) 2010-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -32,6 +32,7 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QPoint>
+#include <QLabel>
 
 // KDE includes
 #include <kdemacros.h>
@@ -51,15 +52,11 @@ class KDE_EXPORT Smb4KToolTip : public QWidget
     };
     explicit Smb4KToolTip( QWidget *parent = 0 );
     ~Smb4KToolTip();
-    void show( Smb4KBasicNetworkItem *item, 
-               const QPoint &pos );
+    void setup( Parent parent, Smb4KBasicNetworkItem *item );
+    void update( Parent parent, Smb4KBasicNetworkItem *item );
+    void show( const QPoint &pos );
     void hide();
     Smb4KBasicNetworkItem *networkItem() { return m_item; }
-    void update();
-    
-  signals:
-    void aboutToShow( Smb4KBasicNetworkItem *item );
-    void aboutToHide( Smb4KBasicNetworkItem *item );
     
   protected:
     void paintEvent( QPaintEvent *e );
@@ -69,7 +66,6 @@ class KDE_EXPORT Smb4KToolTip : public QWidget
     
   private:
     Smb4KBasicNetworkItem *m_item;
-    Parent m_parent;
     QHBoxLayout *m_tip_layout;
     QVBoxLayout *m_info_layout;
     QGridLayout *m_text_layout;
@@ -81,6 +77,13 @@ class KDE_EXPORT Smb4KToolTip : public QWidget
                      qreal cx, qreal cy,
                      qreal radius, qreal angle,
                      qreal sweepLength );
+    QLabel *m_master_browser_label;
+    QLabel *m_comment_label;
+    QLabel *m_server_label;
+    QLabel *m_os_label;
+    QLabel *m_ip_label;
+    QLabel *m_mounted_label;
+    QLabel *m_size_label;
 };
 
 #endif

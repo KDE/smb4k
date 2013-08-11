@@ -30,6 +30,7 @@
 #include "core/smb4kworkgroup.h"
 #include "core/smb4khost.h"
 #include "core/smb4kshare.h"
+#include "../tooltips/smb4ktooltip.h"
 
 // Qt includes
 #include <QtGui/QTreeWidgetItem>
@@ -131,6 +132,13 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
      * @param item          A Smb4KBasicNetworkItem object
      */
     void update( Smb4KBasicNetworkItem *item );
+    
+    /**
+     * This function returns the tool tip of this item.
+     * 
+     * @returns the tool tip.
+     */
+    Smb4KToolTip *tooltip();
 
   private:
     /**
@@ -147,6 +155,11 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
      * The share item
      */
     Smb4KShare *m_share;
+    
+    /**
+     * The tool tip of this item
+     */
+    Smb4KToolTip *m_tooltip;
 };
 
 #endif

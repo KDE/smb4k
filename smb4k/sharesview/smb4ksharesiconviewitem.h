@@ -28,6 +28,7 @@
 
 // application specific includes
 #include "core/smb4kshare.h"
+#include "../tooltips/smb4ktooltip.h"
 
 // Qt includes
 #include <QListWidgetItem>
@@ -84,6 +85,13 @@ class Smb4KSharesIconViewItem : public QListWidgetItem
      */
     void update( Smb4KShare *share );
     
+    /**
+     * This function returns the tool tip of this item.
+     * 
+     * @returns the tool tip.
+     */
+    Smb4KToolTip *tooltip();
+    
   private:
     /**
      * The Smb4KShare item
@@ -93,7 +101,12 @@ class Smb4KSharesIconViewItem : public QListWidgetItem
     /**
      * Show the mountpoint
      */
-    bool m_mountpoint;  
+    bool m_mountpoint;
+    
+    /**
+     * The tool tip
+     */
+    Smb4KToolTip *m_tooltip;
 };
 
 #endif

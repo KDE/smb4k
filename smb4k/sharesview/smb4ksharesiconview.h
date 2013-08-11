@@ -2,7 +2,7 @@
     smb4ksharesiconview  -  This is the shares icon view of Smb4K.
                              -------------------
     begin                : Mo Dez 4 2006
-    copyright            : (C) 2006-2012 by Alexander Reinholdt
+    copyright            : (C) 2006-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -58,13 +58,6 @@ class Smb4KSharesIconView : public QListWidget
      */
     ~Smb4KSharesIconView();
 
-    /**
-     * Returns a pointer to the tooltip.
-     * 
-     * @returns a pointer to the tooltip.
-     */
-    Smb4KToolTip *tooltip() { return m_tooltip; }
-
   signals:
     /**
      * This signal is emitted when an item has been executed.
@@ -83,6 +76,20 @@ class Smb4KSharesIconView : public QListWidget
      */
     void acceptedDropEvent( Smb4KSharesIconViewItem *item,
                             QDropEvent *e );
+    
+    /**
+     * This signal is emitted when a tool tip is about to be shown.
+     * 
+     * @param item          The shares list view item
+     */
+    void aboutToShowToolTip( Smb4KSharesIconViewItem *item );
+    
+    /**
+     * This signal is emitted when a tool tip is about to be hidden.
+     * 
+     * @param item          The shares list view item
+     */
+    void aboutToHideToolTip( Smb4KSharesIconViewItem *item );
 
   protected:
     /**
@@ -196,9 +203,9 @@ class Smb4KSharesIconView : public QListWidget
 
   private:
     /**
-     * The tool tip
+     * The item for that a tool tip is shown
      */
-    Smb4KToolTip *m_tooltip;
+    Smb4KSharesIconViewItem *m_tooltip_item;
 
     /**
      * The tool tip timer

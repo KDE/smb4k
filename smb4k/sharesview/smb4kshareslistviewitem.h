@@ -2,7 +2,7 @@
     smb4kshareslistviewitem  -  The shares list view item class of Smb4K.
                              -------------------
     begin                : Sa Jun 30 2007
-    copyright            : (C) 2007-2012 by Alexander Reinholdt
+    copyright            : (C) 2007-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,6 +28,7 @@
 
 // application specific includes
 #include "core/smb4kshare.h"
+#include "../tooltips/smb4ktooltip.h"
 
 // Qt includes
 #include <QTreeWidgetItem>
@@ -107,6 +108,13 @@ class Smb4KSharesListViewItem : public QTreeWidgetItem
      * @param share         The Smb4KShare item that is used for the update
      */
     void update( Smb4KShare *share );
+    
+    /**
+     * This function returns the tool tip of this item.
+     * 
+     * @returns the tool tip.
+     */
+    Smb4KToolTip *tooltip();
 
   private:
     /**
@@ -118,6 +126,11 @@ class Smb4KSharesListViewItem : public QTreeWidgetItem
      * Show the mountpoint
      */
     bool m_mountpoint;
+    
+    /**
+     * The tool tip
+     */
+    Smb4KToolTip *m_tooltip;
 };
 
 #endif

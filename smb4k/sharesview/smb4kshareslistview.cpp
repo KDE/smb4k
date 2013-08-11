@@ -2,7 +2,7 @@
     smb4kshareslistview  -  This is the shares list view of Smb4K.
                              -------------------
     begin                : Sa Jun 30 2007
-    copyright            : (C) 2007-2012 by Alexander Reinholdt
+    copyright            : (C) 2007-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -63,9 +63,9 @@ Smb4KSharesListView::Smb4KSharesListView( QWidget *parent )
 
   setContextMenuPolicy( Qt::CustomContextMenu );
 
+  m_tooltip_item = NULL;
   m_auto_select_timer = new QTimer( this );
   m_mouse_inside = false;
-  m_tooltip = new Smb4KToolTip( this );
 
   QStringList header_labels;
   header_labels.append( i18n( "Item" ) );
@@ -122,21 +122,17 @@ bool Smb4KSharesListView::event( QEvent *e )
       {
         if ( Smb4KSettings::showShareToolTip() )
         {
-          if ( !m_tooltip->isVisible() || (m_tooltip->networkItem() && 
-               QString::compare( item->shareItem()->key(), m_tooltip->networkItem()->key() ) != 0) )
-          {
-            m_tooltip->show( item->shareItem(), pos );
-          }
-          else
-          {
-            // Do nothing
-          }
+          m_tooltip_item = item;
+          emit aboutToShowToolTip(m_tooltip_item);
+          m_tooltip_item->tooltip()->show(cursor().pos());
         }
         else
         {
-          if ( m_tooltip->isVisible() )
+          if ( m_tooltip_item )
           {
-            m_tooltip->hide();
+            emit aboutToHideToolTip(m_tooltip_item);
+            m_tooltip_item->tooltip()->hide();
+            m_tooltip_item = NULL;
           }
           else
           {
@@ -146,9 +142,11 @@ bool Smb4KSharesListView::event( QEvent *e )
       }
       else
       {
-        if ( m_tooltip->isVisible() )
+        if ( m_tooltip_item )
         {
-          m_tooltip->hide();
+          emit aboutToHideToolTip(m_tooltip_item);
+          m_tooltip_item->tooltip()->hide();
+          m_tooltip_item = NULL;
         }
         else
         {
@@ -189,9 +187,11 @@ void Smb4KSharesListView::mouseMoveEvent( QMouseEvent *e )
 
 void Smb4KSharesListView::leaveEvent( QEvent *e )
 {
-  if ( m_tooltip->isVisible() )
+  if ( m_tooltip_item )
   {
-    m_tooltip->hide();
+    emit aboutToHideToolTip(m_tooltip_item);
+    m_tooltip_item->tooltip()->hide();
+    m_tooltip_item = NULL;
   }
   else
   {
@@ -214,9 +214,11 @@ void Smb4KSharesListView::enterEvent( QEvent *e )
 void Smb4KSharesListView::mousePressEvent( QMouseEvent *e )
 {
   // Hide the current tool tip so that it is not in the way.
-  if ( m_tooltip->isVisible() )
+  if ( m_tooltip_item )
   {
-    m_tooltip->hide();
+    emit aboutToHideToolTip(m_tooltip_item);
+    m_tooltip_item->tooltip()->hide();
+    m_tooltip_item = NULL;
   }
   else
   {
@@ -251,9 +253,11 @@ void Smb4KSharesListView::focusOutEvent( QFocusEvent *e )
 
 void Smb4KSharesListView::wheelEvent( QWheelEvent *e )
 {
-  if ( m_tooltip->isVisible() )
+  if ( m_tooltip_item )
   {
-    m_tooltip->hide();
+    emit aboutToHideToolTip(m_tooltip_item);
+    m_tooltip_item->tooltip()->hide();
+    m_tooltip_item = NULL;
   }
   else
   {
@@ -359,9 +363,11 @@ QMimeData *Smb4KSharesListView::mimeData( const QList<QTreeWidgetItem *> list ) 
 
 void Smb4KSharesListView::startDrag( Qt::DropActions supported )
 {
-  if ( m_tooltip->isVisible() )
+  if ( m_tooltip_item )
   {
-    m_tooltip->hide();
+    emit aboutToHideToolTip(m_tooltip_item);
+    m_tooltip_item->tooltip()->hide();
+    m_tooltip_item = NULL;
   }
   else
   {
@@ -431,24 +437,18 @@ void Smb4KSharesListView::slotItemEntered( QTreeWidgetItem *item, int /*column*/
     // Do nothing
   }
   
-  if ( m_tooltip->isVisible() )
+  Smb4KSharesListViewItem *share_item = static_cast<Smb4KSharesListViewItem *>( item );
+  
+  if ( m_tooltip_item && m_tooltip_item != share_item )
   {
-    Smb4KSharesListViewItem *share_item = static_cast<Smb4KSharesListViewItem *>( item );
-      
-    if ( share_item && m_tooltip->networkItem() && 
-         QString::compare( share_item->shareItem()->key(), m_tooltip->networkItem()->key() ) != 0 )
-    {
-      m_tooltip->hide();
-    }
-    else
-    {
-      // Do nothing
-    }
+    emit aboutToHideToolTip(m_tooltip_item);
+    m_tooltip_item->tooltip()->hide();
+    m_tooltip_item = NULL;
   }
   else
   {
     // Do nothing
-  }
+  } 
 }
 
 
@@ -467,9 +467,11 @@ void Smb4KSharesListView::slotViewportEntered()
   m_auto_select_timer->stop();
   m_auto_select_item = 0;
 
-  if ( m_tooltip->isVisible() )
+  if ( m_tooltip_item )
   {
-    m_tooltip->hide();
+    emit aboutToHideToolTip(m_tooltip_item);
+    m_tooltip_item->tooltip()->hide();
+    m_tooltip_item = NULL;
   }
   else
   {

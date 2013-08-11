@@ -2,7 +2,7 @@
     smb4kshareslistviewitem  -  The shares list view item class of Smb4K.
                              -------------------
     begin                : Sa Jun 30 2007
-    copyright            : (C) 2007-2012 by Alexander Reinholdt
+    copyright            : (C) 2007-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -49,6 +49,9 @@ Smb4KSharesListViewItem::Smb4KSharesListViewItem( Smb4KSharesListView *parent, S
 
   // Copy share object
   m_share = new Smb4KShare( *share );
+  
+  m_tooltip   = new Smb4KToolTip();
+  m_tooltip->setup( Smb4KToolTip::SharesView, m_share );
   
   // Set up the text.
   if ( !m_mountpoint )
@@ -104,6 +107,7 @@ Smb4KSharesListViewItem::Smb4KSharesListViewItem( Smb4KSharesListView *parent, S
 Smb4KSharesListViewItem::~Smb4KSharesListViewItem()
 {
   delete m_share;
+  delete m_tooltip;
 }
 
 
@@ -118,6 +122,8 @@ void Smb4KSharesListViewItem::update( Smb4KShare *share )
 {
   delete m_share;
   m_share = new Smb4KShare( *share );
+  
+  m_tooltip->update( Smb4KToolTip::SharesView, m_share );
   
   // Set up the text.
   if ( !m_mountpoint )
@@ -162,4 +168,11 @@ void Smb4KSharesListViewItem::update( Smb4KShare *share )
 
   setIcon( Item, m_share->icon() );
 }
+
+
+Smb4KToolTip* Smb4KSharesListViewItem::tooltip()
+{
+  return m_tooltip;
+}
+
 

@@ -45,6 +45,8 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem( QTreeWidget *parent, Smb4KWork
   m_workgroup = new Smb4KWorkgroup( *workgroup );
   m_host      = NULL;
   m_share     = NULL;
+  m_tooltip   = new Smb4KToolTip();
+  m_tooltip->setup( Smb4KToolTip::NetworkBrowser, m_workgroup );
   setText( Network, m_workgroup->workgroupName() );
   setIcon( Network, m_workgroup->icon() );
 }
@@ -56,6 +58,8 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem( QTreeWidgetItem *parent, Smb4K
   m_workgroup = NULL;
   m_host      = new Smb4KHost( *host );
   m_share     = NULL;
+  m_tooltip   = new Smb4KToolTip();
+  m_tooltip->setup( Smb4KToolTip::NetworkBrowser, m_host );
   setText( Network, m_host->hostName() );
   setText( IP, m_host->ip() );
   setText( Comment, m_host->comment() );
@@ -83,6 +87,8 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem( QTreeWidgetItem *parent, Smb4K
   m_workgroup = NULL;
   m_host      = NULL;
   m_share     = new Smb4KShare( *share );
+  m_tooltip   = new Smb4KToolTip();
+  m_tooltip->setup( Smb4KToolTip::NetworkBrowser, m_share );
   setText( Network, m_share->shareName() );
   setText( Type, m_share->translatedTypeString() );
   setText( Comment, m_share->comment() );
@@ -110,6 +116,7 @@ Smb4KNetworkBrowserItem::~Smb4KNetworkBrowserItem()
   delete m_workgroup;
   delete m_host;
   delete m_share;
+  delete m_tooltip;
 }
 
 
@@ -176,6 +183,9 @@ void Smb4KNetworkBrowserItem::update( Smb4KBasicNetworkItem *item )
         
         delete m_workgroup;
         m_workgroup = new Smb4KWorkgroup( *(static_cast<Smb4KWorkgroup *>( item )) );
+        
+        m_tooltip->update( Smb4KToolTip::NetworkBrowser, m_workgroup );
+        
         break;
       }
       case Smb4KBasicNetworkItem::Host:
@@ -191,6 +201,8 @@ void Smb4KNetworkBrowserItem::update( Smb4KBasicNetworkItem *item )
         
         delete m_host;
         m_host = new Smb4KHost( *(static_cast<Smb4KHost *>( item )) );
+        
+        m_tooltip->update( Smb4KToolTip::NetworkBrowser, m_host );
         
         // Adjust the item's color.
         if ( m_host->isMasterBrowser() )
@@ -230,6 +242,8 @@ void Smb4KNetworkBrowserItem::update( Smb4KBasicNetworkItem *item )
         
         delete m_share;
         m_share = new Smb4KShare( *(static_cast<Smb4KShare *>( item )) );
+        
+        m_tooltip->update( Smb4KToolTip::NetworkBrowser, m_share );
 
         // Set the comment.
         setText( Comment, m_share->comment() );
@@ -257,5 +271,11 @@ void Smb4KNetworkBrowserItem::update( Smb4KBasicNetworkItem *item )
   {
     // Do nothing
   }
+}
+
+
+Smb4KToolTip* Smb4KNetworkBrowserItem::tooltip()
+{
+  return m_tooltip;
 }
 
