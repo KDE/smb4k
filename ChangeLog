@@ -110,13 +110,14 @@ Smb4K 1.1.0 (????-??-??):
     takes a cookie.
   + Renamed Smb4KSolidInterface::NetworkStatus::Unknown to
     Smb4KSolidInterface::NetworkStatus::UnknownStatus.
+- Changed the way tooltip are handled. They are not owned by the widgets
+  anymore, but by the items.
+- Revised mount helper:
+  + Simplified names for the arguments that can/must be passed.
 - Revised network browser:
   + Removed wrong checks that caused tooltips not being updated properly.
   + Added ability to select multiple shares and process them accordingly.
   + Improved tool bar.
-- Revised mount helper:
-  + Simplified names for the arguments that can/must be passed.
-- Revised network browser:
   + Added ability to unmount shares. Many thanks go to Ettore Atalan for
     the suggestion.
   + Files can be printed if there are still other print jobs running.
