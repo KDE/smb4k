@@ -40,22 +40,12 @@
 
 // Qt includes
 #include <QtCore/QPointer>
-#ifdef Q_OS_FREEBSD
-#include <QtCore/QFile>
-#include <QtCore/QDir>
-#include <QtCore/QTextCodec>
-#include <QtCore/QTextStream>
-#endif
 #include <QtGui/QDesktopWidget>
 
 // KDE includes
 #include <kglobal.h>
 #include <kdebug.h>
 #include <kapplication.h>
-#ifdef Q_OS_FREEBSD
-#include <kprocess.h>
-#include <kstandarddirs.h>
-#endif
 
 using namespace Smb4KGlobal;
 
@@ -258,10 +248,6 @@ void Smb4KWalletManager::readAuthInfo( Smb4KBasicNetworkItem *networkItem )
           {
             // Do nothing
           }
-#ifdef Q_OS_FREEBSD
-          Smb4KAuthInfo authInfo( host );
-          writeToConfigFile( &authInfo );
-#endif
         }
         else
         {
@@ -358,10 +344,6 @@ void Smb4KWalletManager::readAuthInfo( Smb4KBasicNetworkItem *networkItem )
           {
             // Do nothing
           }
-#ifdef Q_OS_FREEBSD
-          Smb4KAuthInfo authInfo( share );
-          writeToConfigFile( &authInfo );
-#endif
         }
         else
         {
@@ -415,10 +397,6 @@ void Smb4KWalletManager::readAuthInfo( Smb4KBasicNetworkItem *networkItem )
               continue;
             }
           }
-#ifdef Q_OS_FREEBSD
-          Smb4KAuthInfo authInfo( host );
-          writeToConfigFile( &authInfo );
-#endif
         }
         else
         {
@@ -503,10 +481,6 @@ void Smb4KWalletManager::readAuthInfo( Smb4KBasicNetworkItem *networkItem )
               continue;
             }
           }
-#ifdef Q_OS_FREEBSD
-          Smb4KAuthInfo authInfo( share );
-          writeToConfigFile( &authInfo );
-#endif
         }
         else
         {
@@ -622,11 +596,6 @@ void Smb4KWalletManager::writeAuthInfo( Smb4KBasicNetworkItem *networkItem )
           {
             // Do nothing
           }
-
-#ifdef Q_OS_FREEBSD
-          Smb4KAuthInfo authInfo( host );
-          writeToConfigFile( &authInfo );
-#endif
         }
         else
         {
@@ -680,11 +649,6 @@ void Smb4KWalletManager::writeAuthInfo( Smb4KBasicNetworkItem *networkItem )
           {
             // Do nothing
           }
-
-#ifdef Q_OS_FREEBSD
-          Smb4KAuthInfo authInfo( share );
-          writeToConfigFile( &authInfo );
-#endif
         }
         else
         {
@@ -746,10 +710,6 @@ void Smb4KWalletManager::writeAuthInfo( Smb4KBasicNetworkItem *networkItem )
           }
 
           d->list << new Smb4KAuthInfo( authInfo );
-
-#ifdef Q_OS_FREEBSD
-          writeToConfigFile( &authInfo );
-#endif
         }
         else
         {
@@ -785,10 +745,6 @@ void Smb4KWalletManager::writeAuthInfo( Smb4KBasicNetworkItem *networkItem )
           }
 
           d->list << new Smb4KAuthInfo( authInfo );
-
-#ifdef Q_OS_FREEBSD
-          writeToConfigFile( &authInfo );
-#endif
         }
         else
         {
@@ -1014,469 +970,6 @@ void Smb4KWalletManager::writeWalletEntries( const QList<Smb4KAuthInfo *> &entri
     // Do nothing
   }
 }
-
-
-#ifdef Q_OS_FREEBSD
-
-void Smb4KWalletManager::writeToConfigFile( Smb4KAuthInfo *authInfo )
-{
-  Q_ASSERT( authInfo );
-
-  // Only write the authentication information if it is not empty.
-  if ( authInfo->login().isEmpty() /* allow empty passwords */ )
-  {
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Find smbutil program
-  QString smbutil = KStandardDirs::findExe( "smbutil" );
-
-  if ( smbutil.isEmpty() )
-  {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "smbutil" );
-    return;
-  }
-  else
-  {
-    // Go ahead
-  }
-
-  QStringList contents;
-
-  // Open the config file.
-  QFile file( QDir::homePath()+QDir::separator()+".nsmbrc" );
-
-  if ( file.exists() )
-  {
-    if ( file.open( QIODevice::ReadOnly|QIODevice::Text ) )
-    {
-      QTextStream ts( &file );
-      // Note: With Qt 4.3 this seems to be obsolete, we'll keep
-      // it for now.
-      ts.setCodec( QTextCodec::codecForLocale() );
-
-      while ( !ts.atEnd() )
-      {
-        contents << ts.readLine().trimmed();
-      }
-
-      file.close();
-    }
-    else
-    {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->openingFileFailed( file );
-      return;
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Check if we have to write something.
-  bool write = false;
-
-  // If the default section is missing, add it to the config file.
-  if ( !contents.contains( "[default]", Qt::CaseInsensitive ) )
-  {
-    // Get the global Samba options.
-    QMap<QString,QString> global_options = globalSambaOptions();
-
-    // Set up the default section.
-    QStringList default_section;
-    default_section << "[default]";
-
-    // Local and remote character set
-    QString client_charset, server_charset;
-
-    switch ( Smb4KSettings::clientCharset() )
-    {
-      case Smb4KSettings::EnumClientCharset::default_charset:
-      {
-        client_charset = global_options["unix charset"].toLower();
-        break;
-      }
-      default:
-      {
-        Q_ASSERT( !Smb4KSettings::self()->clientCharsetItem()->label().isEmpty() );
-        client_charset = Smb4KSettings::self()->clientCharsetItem()->label();
-        break;
-      }
-    }
-
-    switch ( Smb4KSettings::serverCodepage() )
-    {
-      case Smb4KSettings::EnumServerCodepage::default_codepage:
-      {
-        server_charset = global_options["dos charset"].toLower(); // maybe empty
-        break;
-      }
-      default:
-      {
-        Q_ASSERT( !Smb4KSettings::self()->serverCodepageItem()->label().isEmpty() );
-        server_charset = Smb4KSettings::self()->serverCodepageItem()->label();
-        break;
-      }
-    }
-
-    if ( !client_charset.isEmpty() && !server_charset.isEmpty() )
-    {
-      default_section << "charsets="+client_charset+':'+server_charset;
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    // WINS server
-    QString wins_server = winsServer();
-
-    if ( !wins_server.isEmpty() )
-    {
-      default_section << "nbns="+wins_server;
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    // Workgroup/domain
-    QString domain;
-
-    if ( !Smb4KSettings::domainName().isEmpty() )
-    {
-      domain = Smb4KSettings::domainName();
-    }
-    else
-    {
-      domain = global_options["workgroup"];
-    }
-
-    if ( !domain.isEmpty() )
-    {
-      default_section << "workgroup="+domain;
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    // The rest of the possible options we leave up to the user.
-
-    default_section << "";
-
-    // Prepend the default section to the contents of ~/.nsmbrc.
-    contents = default_section+contents;
-
-    write = true;
-  }
-  else
-  {
-    // We won't touch the default section when it exists.
-  }
-
-  // Encrypt the password that was passed by authInfo.
-  QString password;
-
-  KProcess proc;
-  proc.setShellCommand( smbutil+" crypt "+authInfo->password() );
-  proc.setOutputChannelMode( KProcess::SeparateChannels );
-
-  switch ( proc.execute() )
-  {
-    case -2:
-    case -1:
-    {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->processError( proc.error() );
-      return;
-    }
-    default:
-    {
-      password = QString::fromUtf8( proc.readAllStandardOutput(), -1 ).trimmed();
-      break;
-    }
-  }
-
-  // Check the entry that corresponds to the data passed by authInfo.
-  switch ( authInfo->type() )
-  {
-    case Smb4KAuthInfo::Host:
-    {
-      int index = -1;
-
-      if ( !authInfo->login().isEmpty() )
-      {
-        if ( contents.contains( '['+authInfo->hostName().toUpper()+':'+authInfo->login().toUpper()+']' ) )
-        {
-          index = contents.indexOf( '['+authInfo->hostName().toUpper()+':'+authInfo->login().toUpper()+']' );
-        }
-        else if ( contents.contains( '['+authInfo->hostName().toLower()+':'+authInfo->login().toLower()+']' ) )
-        {
-          index = contents.indexOf( '['+authInfo->hostName().toLower()+':'+authInfo->login().toLower()+']' );
-        }
-        else
-        {
-          // Do nohing
-        }
-
-        if ( index != -1 )
-        {
-          // The entry is in the list.
-          for ( int i = index; i < contents.size(); ++i )
-          {
-            if ( contents.at( i ).startsWith( QLatin1String( "password" ), Qt::CaseInsensitive ) )
-            {
-              if ( QString::compare( contents.at( i ).section( '=', 1, 1 ).trimmed(), password ) != 0 &&
-                   !authInfo->password().isEmpty() /* we do not want empty server passwords */ )
-              {
-                contents[i].replace( contents.at( i ).section( '=', 1, 1 ).trimmed(), password );
-                write = true;
-              }
-              else
-              {
-                // Do nothing
-              }
-
-              break;
-            }
-            else if ( contents.at( i ).isEmpty() )
-            {
-              break;
-            }
-            else
-            {
-              continue;
-            }
-          }
-        }
-        else
-        {
-          // The entry is not in the list. Append it, if a password is
-          // available.
-          if ( !authInfo->password().isEmpty() )
-          {
-            if ( !contents.last().trimmed().isEmpty() )
-            {
-              contents << "";
-            }
-            else
-            {
-              // Do nothing
-            }
-
-            contents << '['+authInfo->hostName().toUpper()+':'+authInfo->login().toUpper()+']';
-            contents << "password="+password;
-            contents << "workgroup="+authInfo->workgroupName();
-            contents << "";
-
-            write = true;
-          }
-          else
-          {
-            // Do nothing
-          }
-        }
-      }
-      else
-      {
-        if ( contents.contains( '['+authInfo->hostName().toUpper()+']' ) )
-        {
-          index = contents.indexOf( '['+authInfo->hostName().toUpper()+']' );
-        }
-        else if ( contents.contains( '['+authInfo->hostName().toLower()+']' ) )
-        {
-          index = contents.indexOf( '['+authInfo->hostName().toLower()+']' );
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        if ( index != -1 )
-        {
-          // The entry is in the list.
-          for ( int i = index; i < contents.size(); ++i )
-          {
-            if ( contents.at( i ).startsWith( QLatin1String( "password" ), Qt::CaseInsensitive ) )
-            {
-              if ( QString::compare( contents.at( i ).section( '=', 1, 1 ).trimmed(), password ) != 0 &&
-                   !authInfo->password().isEmpty() /* we do not want empty server passwords */ )
-              {
-                contents[i].replace( contents.at( i ).section( '=', 1, 1 ).trimmed(), password );
-                write = true;
-              }
-              else
-              {
-                // Do nothing
-              }
-
-              break;
-            }
-            else if ( contents.at( i ).isEmpty() )
-            {
-              break;
-            }
-            else
-            {
-              continue;
-            }
-          }
-        }
-        else
-        {
-          // The entry is not in the list. Append it, if a password is
-          // available.
-          if ( !authInfo->password().isEmpty() )
-          {
-            if ( !contents.last().trimmed().isEmpty() )
-            {
-              contents << "";
-            }
-            else
-            {
-              // Do nothing
-            }
-
-            contents << '['+authInfo->hostName().toUpper()+']';
-            contents << "password="+password;
-            contents << "workgroup="+authInfo->workgroupName();
-            contents << "";
-            write = true;
-          }
-          else
-          {
-            // Do nothing
-          }
-        }
-      }
-
-      break;
-    }
-    case Smb4KAuthInfo::Share:
-    {
-      int index = -1;
-
-      if ( !authInfo->login().isEmpty() )
-      {
-        // The server is not in the file.
-        if ( contents.contains( '['+authInfo->hostName().toUpper()+':'+authInfo->login().toUpper()+':'+authInfo->shareName().toUpper()+']' ) )
-        {
-          index = contents.indexOf( '['+authInfo->hostName().toUpper()+':'+authInfo->login().toUpper()+':'+authInfo->shareName().toUpper()+']' );
-        }
-        else if ( contents.contains( '['+authInfo->hostName().toLower()+':'+authInfo->login().toLower()+':'+authInfo->shareName().toLower()+']' ) )
-        {
-          index = contents.indexOf( '['+authInfo->hostName().toLower()+':'+authInfo->login().toLower()+':'+authInfo->shareName().toLower()+']' );
-        }
-        else
-        {
-          // Do nohing
-        }
-
-        if ( index != -1 )
-        {
-          // The entry is in the list.
-          for ( int i = index; i < contents.size(); ++i )
-          {
-            if ( contents.at( i ).startsWith( QLatin1String( "password" ), Qt::CaseInsensitive ) )
-            {
-              if ( QString::compare( contents.at( i ).section( '=', 1, 1 ).trimmed(), password ) != 0 &&
-                   !authInfo->password().isEmpty() )
-              {
-                contents[i].replace( contents.at( i ).section( '=', 1, 1 ).trimmed(), password );
-                write = true;
-              }
-              else
-              {
-                // Do nothing
-              }
-
-              break;
-            }
-            else if ( contents.at( i ).isEmpty() )
-            {
-              break;
-            }
-            else
-            {
-              continue;
-            }
-          }
-        }
-        else
-        {
-          // The entry is not in the list. Append it, if a password is
-          // available.
-          if ( !authInfo->password().isEmpty() )
-          {
-            if ( !contents.last().trimmed().isEmpty() )
-            {
-              contents << "";
-            }
-            else
-            {
-              // Do nothing
-            }
-
-            contents << '['+authInfo->hostName().toUpper()+':'+authInfo->login().toUpper()+':'+authInfo->shareName().toUpper()+']';
-            contents << "password="+password;
-            contents << "workgroup="+authInfo->workgroupName();
-            contents << "";
-
-            write = true;
-          }
-          else
-          {
-            // Do nothing
-          }
-        }
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-
-  if ( write )
-  {
-    if ( file.open( QIODevice::WriteOnly|QIODevice::Text ) )
-    {
-      QTextStream ts( &file );
-      // Note: With Qt 4.3 this seems to be obsolete, we'll keep
-      // it for now.
-      ts.setCodec( QTextCodec::codecForLocale() );
-
-      ts << contents.join( "\n" );
-
-      file.close();
-    }
-    else
-    {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->openingFileFailed( file );
-      return;
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-#endif
 
 
 #include "smb4kwalletmanager.moc"

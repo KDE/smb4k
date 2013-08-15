@@ -58,7 +58,12 @@ ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
   KProcess proc( this );
   proc.setOutputChannelMode( KProcess::SeparateChannels );
   proc.setProcessEnvironment( QProcessEnvironment::systemEnvironment() );
+#ifndef Q_OS_FREEBSD
   proc.setEnv( "PASSWD", args["url"].toUrl().password(), true );
+#else
+  // We need this to avoid a translated password prompt.
+  proc.setEnv("LANG", "C");
+#endif
   // The $HOME environment variable is needed under FreeBSD to
   // point the mount process to the right ~/.nsmbrc file. Under
   // Linux it is not needed.
@@ -81,13 +86,29 @@ ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
 
   if ( proc.waitForStarted( -1 ) )
   {
-    // We want to be able to terminate the process from outside.
-    // Thus, we implement a loop that checks periodically, if we
-    // need to kill the process.
     bool user_kill = false;
 
     while ( !proc.waitForFinished( 10 ) )
     {
+#ifdef Q_OS_FREEBSD
+      // Check if there is a password prompt. If there is one, pass
+      // the password to it.
+      QByteArray out = proc.readAllStandardError();
+      
+      if ( out.startsWith("Password:") )
+      {
+        proc.write(args["url"].toUrl().password().toUtf8());
+        proc.write("\r");
+      }
+      else
+      {
+        // Do nothing
+      }
+#endif
+
+      // We want to be able to terminate the process from outside.
+      // Thus, we implement a loop that checks periodically, if we
+      // need to kill the process.
       if ( HelperSupport::isStopped() )
       {
         proc.kill();

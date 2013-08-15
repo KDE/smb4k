@@ -202,16 +202,6 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
      */
     void setupFolder();
 
-#ifdef Q_OS_FREEBSD
-    /**
-     * This function invokes s shell, encrypts the password using the
-     * smbutil utility and writes it to the ~/.nsmbrc file.
-     *
-     * @param authInfo        The authentication information
-     */
-    void writeToConfigFile( Smb4KAuthInfo *authInfo );
-#endif
-
     /**
      * Pointer to the Smb4KWalletManagerPrivate class
      */

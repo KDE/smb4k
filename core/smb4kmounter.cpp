@@ -621,6 +621,7 @@ void Smb4KMounter::import( bool check_inaccessible )
     found = false;
   }
   
+#ifndef Q_OS_FREEBSD
   // Now stat the imported shares to get information about them.
   // Do not use Smb4KShare::canonicalPath() here, otherwise we might
   // get lock-ups with inaccessible shares.
@@ -646,7 +647,7 @@ void Smb4KMounter::import( bool check_inaccessible )
       {
         // Do nothing
       }
-
+      
       KUrl url;
       url.setPath( d->importedShares.at( i )->path() );
       KIO::StatJob *job = KIO::stat( url, KIO::HideProgressInfo );
@@ -670,6 +671,48 @@ void Smb4KMounter::import( bool check_inaccessible )
   {
     // Do nothing
   }
+#else
+  // FIXME: Remove this as soon as Solid's network module supports FreeBSD.
+  for ( int i = 0; i < d->importedShares.size(); ++i )
+  {
+    // Check if the share is inaccessible and should be checked.
+    Smb4KShare *share = findShareByPath( d->importedShares.at( i )->path() );
+
+    if ( share )
+    {
+      if ( share->isInaccessible() && !check_inaccessible )
+      {
+        continue;
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+     
+    KUrl url;
+    url.setPath( d->importedShares.at( i )->path() );
+    KIO::StatJob *job = KIO::stat( url, KIO::HideProgressInfo );
+    job->setDetails( 0 );
+    connect( job, SIGNAL(result(KJob*)), SLOT(slotStatResult(KJob*)) );
+
+    // Do not use addSubJob(), because that would confuse isRunning, etc.
+    job->start();
+  }
+
+  if ( !d->firstImportDone && d->importedShares.isEmpty() )
+  {
+    d->firstImportDone = true;
+  }
+  else
+  {
+    // Do nothing. d->firstImportDone will be set in slotStatResult().
+  }
+#endif
 }
 
 
