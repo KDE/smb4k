@@ -42,6 +42,10 @@ Smb4KProcess::Smb4KProcess( QObject *parent )
 : KProcess( parent ), d( new Smb4KProcessPrivate )
 {
   d->aborted = false;
+
+  // Explicitly set the language, because Samba
+  // might be localized (closes SF ticket #34).
+  setEnv("LANG", "C");
 }
 
 
