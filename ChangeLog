@@ -1,3 +1,7 @@
+Smb4K 1.0.8 (????-??-??):
+- Explicity set language to "C" in Smb4KProcess, because Samba might be
+  localized (closes SF ticket #34).
+
 Smb4K 1.0.7 (2013-05-13):
 - Fixed remounting of shares.
 - Fixed Smb4KCustomOptionsManager::hasCustomOptions(). The default options
