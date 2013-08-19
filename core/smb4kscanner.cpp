@@ -810,11 +810,11 @@ QDeclarativeListProperty<Smb4KNetworkObject> Smb4KScanner::shares()
 }
 
 
-void Smb4KScanner::lookup( const QUrl& url, int type )
+void Smb4KScanner::lookup( Smb4KNetworkObject *object )
 {
-  if ( url.isValid() )
+  if ( object )
   {
-    switch ( type )
+    switch ( object->type() )
     {
       case Smb4KNetworkObject::Network:
       {
@@ -824,7 +824,7 @@ void Smb4KScanner::lookup( const QUrl& url, int type )
       case Smb4KNetworkObject::Workgroup:
       {
         // Check if the workgroup is known.
-        Smb4KWorkgroup *workgroup = findWorkgroup( url.host().toUpper() );
+        Smb4KWorkgroup *workgroup = findWorkgroup( object->url().host().toUpper() );
         
         if ( workgroup )
         {
@@ -839,7 +839,7 @@ void Smb4KScanner::lookup( const QUrl& url, int type )
       case Smb4KNetworkObject::Host:
       {
         // Check if the host is known.
-        Smb4KHost *host = findHost( url.host().toUpper() );
+        Smb4KHost *host = findHost( object->url().host().toUpper() );
         
         if ( host )
         {
@@ -864,7 +864,8 @@ void Smb4KScanner::lookup( const QUrl& url, int type )
   }
   else
   {
-    // Do nothing
+    // If the object is NULL, scan the whole network.
+    lookupDomains();
   }
 }
 

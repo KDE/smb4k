@@ -45,7 +45,7 @@ Smb4K 1.1.0 (????-??-??):
     and Q_PROPERTY macros are used.
   + Added addBookmark() function that takes an URL as argument.
   + Added two removeBookmark() functions, one taking a pointer to a Smb4KBookmark
-    object and one taking a URL.
+    object and one taking an URL.
   + Added private addBookmarks() function that takes a list of Smb4KBookmark 
     objects and optionally a boolean that indicates if the internal list of
     shares should be replaced by the new one.

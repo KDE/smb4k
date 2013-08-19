@@ -81,12 +81,25 @@ PlasmaComponents.Page {
         iconSource: "go-up"
         width: minimumWidth
         onClicked: {
-          var object = scanner.find( lastUrl, lastType )
-          if ( object !== null ) {
-            rescan( object )
+          if ( browserListView.model.count != 0 ) {
+            var first_object = browserListView.model.get(0).object
+            if ( first_object !== null ) {
+              // Go one level up.
+              up( first_object )
+            }
+            else {
+              // Do nothing
+            }
           }
           else {
-            // Do nothing
+            var object = scanner.find( lastUrl, lastType )
+            if ( object !== null ) {
+              // We only have the parent item. Just rescan.
+              rescan( object )
+            }
+            else {
+              // Do nothing
+            }
           }
         }
       }
@@ -185,14 +198,14 @@ PlasmaComponents.Page {
   function networkItemClicked( object ) {
     if ( object.type == 3 ) {
       if ( !object.isPrinter ) {
-        mounter.mount( object.url )
+        mounter.mount( object )
       }
       else {
         printer.print( object.url )
       }
     }
     else {
-      scanner.lookup( object.url, object.type )
+      scanner.lookup( object )
     }
   }
   
@@ -200,7 +213,13 @@ PlasmaComponents.Page {
   // Rescan the current level
   //
   function rescan( object ) {
-    scanner.lookup( object.parentURL, object.parentType )
+    var parent = scanner.find( object.parentURL, object.parentType )
+    if ( parent !== null ) {
+      scanner.lookup( parent )
+    }
+    else {
+      // Do nothing
+    }
   }
   
   //
@@ -216,9 +235,9 @@ PlasmaComponents.Page {
   // Go one level up
   //
   function up( object ) {
-    var parentObject = scanner.find( object.parentURL, object.parentType )
-    if ( parentObject !== null ) {
-      scanner.lookup( parentObject.parentURL, parentObject.parentType )
+    var parent = scanner.find( object.parentURL, object.parentType )
+    if ( parent !== null ) {
+      scanner.lookup( parent )
     }
     else {
       // Do nothing

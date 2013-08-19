@@ -38,6 +38,7 @@
 class Smb4KPrintPrivate;
 class Smb4KShare;
 class Smb4KPrintJob;
+class Smb4KNetworkObject;
 
 /**
  * This class provides an interface to printer shares on your
@@ -123,15 +124,15 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
     Q_INVOKABLE void start();
     
     /**
-     * This function takes a QUrl object and initiates the printing of a file
-     * on a remote printer. 
+     * This function takes a network object representing a remote printer and 
+     * initiates the printing of a file. 
      * 
      * Please note that this function only works with share objects that are 
      * already known. All others will be ignored.
      * 
-     * @param url         The URL of the remote printer share
+     * @param object        The network object representing a remote printer
      */
-    Q_INVOKABLE void print( const QUrl &url );
+    Q_INVOKABLE void print( Smb4KNetworkObject *object );
     
   Q_SIGNALS:
     /**

@@ -81,7 +81,7 @@ PlasmaComponents.Page {
         onItemClicked: {
           var object = sharesView.model.get(index).object
           if ( object !== null ) {
-            mountedShareClicked( object )
+            Qt.openUrlExternally( object.mountpoint )
           }
           else {
             // Do nothing
@@ -90,7 +90,7 @@ PlasmaComponents.Page {
         onUnmountClicked: {
           var object = sharesView.model.get(index).object
           if ( object !== null ) {
-            unmountShare( object, index )
+            mounter.unmount( object )
           }
           else {
             // Do nothing
@@ -139,20 +139,5 @@ PlasmaComponents.Page {
         // Do nothing
       }
     }
-  }
-  
-  //
-  // A mounted share was clicked
-  //
-  function mountedShareClicked( object ) {
-    Qt.openUrlExternally( object.mountpoint )
-  }
-  
-  //
-  // A mounted share is to be unmounted
-  //
-  function unmountShare( object, index ) {
-    sharesView.model.remove( index )
-    mounter.unmount( object.mountpoint )
   }
 }
