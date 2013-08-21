@@ -99,7 +99,7 @@ PlasmaComponents.Page {
         onBookmarkClicked: {
           var object = sharesView.model.get(index).object
           if ( object !== null ) {
-            bookmarkHandler.addBookmark( object.url )
+            bookmarkHandler.addBookmark( object )
           }
           else {
             // Do nothing

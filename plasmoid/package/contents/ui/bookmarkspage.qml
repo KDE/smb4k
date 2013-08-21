@@ -100,10 +100,10 @@ PlasmaComponents.Page {
           var object = bookmarksListView.model.get( index ).object
           if ( object !== null ) {
             if ( object.isGroup ) {
-              removeGroup( object, index )
+              removeGroup( object )
             }
             else {
-              removeBookmark( object, index )
+              removeBookmark( object )
             }
           }
           else {
@@ -144,29 +144,27 @@ PlasmaComponents.Page {
   function bookmarkOrGroupClicked( object ) {
     if ( object.isGroup ) {
       while ( bookmarksListView.model.count != 0 ) {
-        bookmarksListView.model.remove( 0 )
+        bookmarksListView.model.remove(0)
       }
       getBookmarks( object.groupName )
     }
     else {
-      mounter.mount( object.url )
+      mounter.mount( object )
     }
   }
   
   //
   // Remove a group
   //
-  function removeGroup( object, index ) {
-    bookmarksListView.model.remove( index )
+  function removeGroup( object ) {
     bookmarksHandler.removeGroup( object.groupName )
   }
   
   //
   // Remove a bookmark
   //
-  function removeBookmark( object, index ) {
-    bookmarksListView.model.remove( index )
-    bookmarkHandler.removeBookmark( object.url )
+  function removeBookmark( object ) {
+    bookmarkHandler.removeBookmark( object )
   }
   
   //

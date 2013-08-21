@@ -152,7 +152,7 @@ PlasmaComponents.Page {
           if ( object !== null ) {
             lastUrl = object.url
             lastType = object.type            
-            bookmarkHandler.addBookmark( object.url )
+            bookmarkHandler.addBookmark( object )
           }
           else {
             // Do nothing
@@ -163,7 +163,7 @@ PlasmaComponents.Page {
           if ( object !== null ) {
             lastUrl = object.url
             lastType = object.type
-            optionsManager.openCustomOptionsDialog( object.url )
+            optionsManager.openCustomOptionsDialog( object )
           }
           else {
             // Do nothing
