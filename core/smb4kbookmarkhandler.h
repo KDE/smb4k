@@ -2,7 +2,7 @@
     smb4kbookmarkhandler  -  This class handles the bookmarks.
                              -------------------
     begin                : Fr Jan 9 2004
-    copyright            : (C) 2004-2012 by Alexander Reinholdt
+    copyright            : (C) 2004-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -41,6 +41,7 @@
 class Smb4KBookmark;
 class Smb4KBookmarkObject;
 class Smb4KShare;
+class Smb4KNetworkObject;
 class Smb4KBookmarkHandlerPrivate;
 class Smb4KBookmarkDialog;
 class Smb4KBookmarkEditor;
@@ -98,7 +99,7 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      * 
      * @param url           The URL of the share that is to be bookmarked
      */
-    Q_INVOKABLE void addBookmark( const QUrl &url );
+    Q_INVOKABLE void addBookmark( Smb4KNetworkObject *object );
 
     /**
      * This function adds several bookmarks at once. It takes a list of 
@@ -123,11 +124,10 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      * 
      * @param url           The URL of the bookmark that is to be removed
      */
-    Q_INVOKABLE void removeBookmark( const QUrl &url );
+    Q_INVOKABLE void removeBookmark( Smb4KBookmarkObject *object );
     
     /**
-     * This function removes a group and all the bookmarks it contains. Please
-     * note that the 
+     * This function removes a group and all the bookmarks it contains.
      * 
      * @param name          The group name
      */

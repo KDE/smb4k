@@ -36,6 +36,7 @@
 #include "smb4kshare.h"
 #include "smb4ksettings.h"
 #include "smb4kglobal.h"
+#include "smb4knetworkobject.h"
 
 // Qt includes
 #include <QtCore/QXmlStreamReader>
@@ -820,37 +821,53 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog( Smb4KBasicNetworkItem *
 }
 
 
-void Smb4KCustomOptionsManager::openCustomOptionsDialog(const QUrl& url)
+void Smb4KCustomOptionsManager::openCustomOptionsDialog(Smb4KNetworkObject *object)
 {
-  if ( !url.path().isEmpty() )
+  if ( object )
   {
-    for ( int i = 0; i < sharesList().size(); ++i )
+    switch ( object->type() )
     {
-      if ( sharesList().at( i )->url() == url )
+      case Smb4KNetworkObject::Host:
       {
-        openCustomOptionsDialog( sharesList().at( i ) );
+        for ( int i = 0; i < hostsList().size(); ++i )
+        {
+          if ( hostsList().at( i )->url() == object->url() )
+          {
+            openCustomOptionsDialog( hostsList().at( i ) );
+            break;
+          }
+          else
+          {
+            continue;
+          }
+        }
         break;
       }
-      else
+      case Smb4KNetworkObject::Share:
       {
-        continue;
+        for ( int i = 0; i < sharesList().size(); ++i )
+        {
+          if ( sharesList().at( i )->url() == object->url() )
+          {
+            openCustomOptionsDialog( sharesList().at( i ) );
+            break;
+          }
+          else
+          {
+            continue;
+          }
+        }
+        break;
+      }
+      default:
+      {
+        break;
       }
     }
   }
   else
   {
-    for ( int i = 0; i < hostsList().size(); ++i )
-    {
-      if ( hostsList().at( i )->url() == url )
-      {
-        openCustomOptionsDialog( hostsList().at( i ) );
-        break;
-      }
-      else
-      {
-        continue;
-      }
-    }
+    // Do nothing
   }
 }
 

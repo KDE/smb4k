@@ -2,7 +2,7 @@
     smb4kbookmarkhandler  -  This class handles the bookmarks.
                              -------------------
     begin                : Fr Jan 9 2004
-    copyright            : (C) 2004-2012 by Alexander Reinholdt
+    copyright            : (C) 2004-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -38,6 +38,7 @@
 #include "smb4ksettings.h"
 #include "smb4knotification.h"
 #include "smb4kbookmarkobject.h"
+#include "smb4knetworkobject.h"
 
 // Qt includes
 #include <QtCore/QDir>
@@ -104,41 +105,32 @@ Smb4KBookmarkHandler *Smb4KBookmarkHandler::self()
 
 void Smb4KBookmarkHandler::addBookmark( Smb4KShare *share, QWidget *parent )
 {
-  Q_ASSERT( share );
-  QList<Smb4KShare *> shares;
-  shares << share;
-  addBookmarks( shares, parent );
+  if ( share )
+  {
+    QList<Smb4KShare *> shares;
+    shares << share;
+    addBookmarks( shares, parent );
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
-void Smb4KBookmarkHandler::addBookmark( const QUrl & url )
+void Smb4KBookmarkHandler::addBookmark( Smb4KNetworkObject *object )
 {
-  QList<Smb4KShare *> shares; 
-  
-  // First, search the list of shares gathered by 
-  // the scanner.
-  for ( int i = 0; i < sharesList().size(); ++i )
+  if ( object )
   {
-    if ( sharesList().at( i )->url() == url )
+    QList<Smb4KShare *> shares; 
+    
+    // First, search the list of shares gathered by 
+    // the scanner.
+    for ( int i = 0; i < sharesList().size(); ++i )
     {
-      shares << sharesList().at( i );
-      break;
-    }
-    else
-    {
-      continue;
-    }
-  }
-  
-  // Second, if the list is still empty, try the list 
-  // of mounted shares.
-  if ( shares.isEmpty() )
-  {
-    for ( int i = 0; i < mountedSharesList().size(); ++i )
-    {
-      if ( mountedSharesList().at( i )->url() == url )
+      if ( sharesList().at( i )->url() == object->url() )
       {
-        shares << mountedSharesList().at( i );
+        shares << sharesList().at( i );
         break;
       }
       else
@@ -146,16 +138,38 @@ void Smb4KBookmarkHandler::addBookmark( const QUrl & url )
         continue;
       }
     }
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Now add the share.
-  if ( !shares.isEmpty() )
-  {
-    addBookmarks( shares, 0 );
+    
+    // Second, if the list is still empty, try the list 
+    // of mounted shares.
+    if ( shares.isEmpty() )
+    {
+      for ( int i = 0; i < mountedSharesList().size(); ++i )
+      {
+        if ( mountedSharesList().at( i )->url() == object->url() )
+        {
+          shares << mountedSharesList().at( i );
+          break;
+        }
+        else
+        {
+          continue;
+        }
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // Now add the share.
+    if ( !shares.isEmpty() )
+    {
+      addBookmarks( shares, 0 );
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
@@ -336,83 +350,95 @@ void Smb4KBookmarkHandler::addBookmarks(const QList< Smb4KBookmark* >& list, boo
 
 void Smb4KBookmarkHandler::removeBookmark(Smb4KBookmark* bookmark)
 {
-  Q_ASSERT( bookmark );
-  
-  // Update the bookmarks
-  update();
-  
-  for ( int i = 0; i < d->bookmarks.size(); ++i )
+  if ( bookmark )
   {
-    if ( QString::compare( bookmark->unc(), d->bookmarks.at(i)->unc(), Qt::CaseInsensitive ) == 0 &&
-         QString::compare( bookmark->groupName(), d->bookmarks.at(i)->groupName(), Qt::CaseInsensitive ) == 0 )
+    // Update the bookmarks
+    update();
+    
+    for ( int i = 0; i < d->bookmarks.size(); ++i )
     {
-      delete d->bookmarks.takeAt(i);
-      break;
+      if ( QString::compare( bookmark->unc(), d->bookmarks.at(i)->unc(), Qt::CaseInsensitive ) == 0 &&
+          QString::compare( bookmark->groupName(), d->bookmarks.at(i)->groupName(), Qt::CaseInsensitive ) == 0 )
+      {
+        delete d->bookmarks.takeAt(i);
+        break;
+      }
+      else
+      {
+        // Do nothing
+      }
     }
-    else
+    
+    // Update the groups
+    d->groups.clear();
+    
+    for ( int i = 0; i < d->bookmarks.size(); ++i )
     {
-      // Do nothing
+      if ( !d->groups.contains( d->bookmarks.at( i )->groupName() ) )
+      {
+        d->groups << d->bookmarks[i]->groupName();
+      }
+      else
+      {
+        // Do nothing
+      }
     }
-  }
-  
-  // Update the groups
-  d->groups.clear();
-  
-  for ( int i = 0; i < d->bookmarks.size(); ++i )
-  {
-    if ( !d->groups.contains( d->bookmarks.at( i )->groupName() ) )
+    
+    d->groups.sort();
+    
+    // Write the list to the bookmarks file.
+    writeBookmarkList( d->bookmarks );
+    
+    // (Re)fill the list of bookmark and group objects.
+    while ( !d->bookmarkObjects.isEmpty() )
     {
-      d->groups << d->bookmarks[i]->groupName();
+      delete d->bookmarkObjects.takeFirst();
     }
-    else
+    
+    while ( !d->groupObjects.isEmpty() )
     {
-      // Do nothing
+      delete d->groupObjects.takeFirst();
     }
+    
+    for ( int i = 0; i < d->bookmarks.size(); ++i )
+    {
+      d->bookmarkObjects << new Smb4KBookmarkObject( d->bookmarks.at( i ) );
+    }
+    
+    for ( int i = 0; i < d->groups.size(); ++i )
+    {
+      d->groupObjects << new Smb4KBookmarkObject( d->groups.at( i ) );
+    }
+    
+    emit updated();
   }
-  
-  d->groups.sort();
-  
-  // Write the list to the bookmarks file.
-  writeBookmarkList( d->bookmarks );
-  
-  // (Re)fill the list of bookmark and group objects.
-  while ( !d->bookmarkObjects.isEmpty() )
+  else
   {
-    delete d->bookmarkObjects.takeFirst();
+    // Do nothing
   }
-  
-  while ( !d->groupObjects.isEmpty() )
-  {
-    delete d->groupObjects.takeFirst();
-  }
-  
-  for ( int i = 0; i < d->bookmarks.size(); ++i )
-  {
-    d->bookmarkObjects << new Smb4KBookmarkObject( d->bookmarks.at( i ) );
-  }
-  
-  for ( int i = 0; i < d->groups.size(); ++i )
-  {
-    d->groupObjects << new Smb4KBookmarkObject( d->groups.at( i ) );
-  }
-  
-  emit updated();
 }
 
 
-void Smb4KBookmarkHandler::removeBookmark(const QUrl& url)
+void Smb4KBookmarkHandler::removeBookmark(Smb4KBookmarkObject *object)
 {
-  // Update bookmarks
-  update();
-  
-  // Find the bookmark in the list and remove it.
-  QString path = (url.path().startsWith( '/' ) ? url.path().remove( 0, 1 ) : url.path());
-  QString unc = QString( "//%1/%2" ).arg( url.host().toUpper() ).arg( path );
-  Smb4KBookmark *bookmark = findBookmarkByUNC( unc );
-  
-  if ( bookmark )
+  if ( object )
   {
-    removeBookmark( bookmark );
+    // Update bookmarks
+    update();
+    
+    // Find the bookmark in the list and remove it.
+    QString path = (object->url().path().startsWith( '/' ) ? object->url().path().remove( 0, 1 ) : object->url().path());
+    QString unc = QString( "//%1/%2" ).arg( object->url().host().toUpper() ).arg( path );
+    Smb4KBookmark *bookmark = findBookmarkByUNC( unc );
+    
+    if ( bookmark )
+    {
+      removeBookmark( bookmark );
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
