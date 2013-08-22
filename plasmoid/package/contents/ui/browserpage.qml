@@ -82,10 +82,10 @@ PlasmaComponents.Page {
         width: minimumWidth
         onClicked: {
           if ( browserListView.model.count != 0 ) {
-            var first_object = browserListView.model.get(0).object
-            if ( first_object !== null ) {
+            var object = browserListView.model.get(0).object
+            if ( object !== null ) {
               // Go one level up.
-              up( first_object )
+              up( object )
             }
             else {
               // Do nothing
@@ -235,12 +235,22 @@ PlasmaComponents.Page {
   // Go one level up
   //
   function up( object ) {
-    var parent = scanner.find( object.parentURL, object.parentType )
-    if ( parent !== null ) {
-      scanner.lookup( parent )
-    }
-    else {
-      // Do nothing
+    switch ( object.type ) {
+      case 2:       // host
+        scanner.lookup()
+        break
+      case 3:       // share
+        var parent = scanner.find( object.parentURL, object.parentType )
+        var grandparent = scanner.find( parent.parentURL, parent.parentType )
+        if ( grandparent !== null ) {
+          scanner.lookup( grandparent )
+        }
+        else {
+          // Do nothing
+        }
+        break
+      default:
+        break
     }
   }
 
