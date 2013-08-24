@@ -93,6 +93,11 @@ Smb4KBookmarkHandler::~Smb4KBookmarkHandler()
     delete d->bookmarkObjects.takeFirst();
   }
   
+  while ( !d->groupObjects.isEmpty() )
+  {
+    delete d->groupObjects.takeFirst();
+  }
+  
   delete d->editor;
 }
 
