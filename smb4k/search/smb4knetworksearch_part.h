@@ -3,7 +3,7 @@
     of Smb4K.
                              -------------------
     begin                : Fr Jun 1 2007
-    copyright            : (C) 2007-2012 by Alexander Reinholdt
+    copyright            : (C) 2007-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -157,7 +157,7 @@ class Smb4KNetworkSearchPart : public KParts::Part
     /**
      * Change the state of the 'Mount'/'Unmount' dual action.
      *
-     * @param active              TRUE if the the action is in the active state.
+     * @param active              TRUE if the action is in the active state.
      */
     void slotMountActionChanged( bool active );
 
