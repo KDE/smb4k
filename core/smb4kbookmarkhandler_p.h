@@ -231,6 +231,8 @@ class KDE_EXPORT Smb4KBookmarkEditor : public KDialog
      * Called when the icon size changed
      */
     void slotIconSizeChanged( int group );
+    
+    void slotAdjust();
 
   private:
     /**
@@ -241,7 +243,7 @@ class KDE_EXPORT Smb4KBookmarkEditor : public KDialog
     /**
      * Load bookmarks
      */
-    void loadBookmarks( const QList<Smb4KBookmark *> &list );
+    void loadBookmarks( const QList<Smb4KBookmark *> &bookmarks );
 
     /**
      * Finds the bookmark in the list
@@ -307,11 +309,6 @@ class KDE_EXPORT Smb4KBookmarkEditor : public KDialog
      * Clear action
      */
     KAction *m_clear;
-
-    /**
-     * The item that's dragged around
-     */
-    QTreeWidgetItem *m_drag_item;
 };
 
 

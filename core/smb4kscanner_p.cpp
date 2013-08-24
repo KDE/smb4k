@@ -2,7 +2,7 @@
     smb4kscanner_p  -  Private helper classes for the scanner
                              -------------------
     begin                : So Mai 22 2011
-    copyright            : (C) 2011-2012 by Alexander Reinholdt
+    copyright            : (C) 2011-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -42,6 +42,7 @@
 // Qt includes
 #include <QtCore/QTimer>
 #include <QtCore/QDebug>
+#include <QtCore/QLatin1String>
 #include <QtNetwork/QHostAddress>
 #include <QtNetwork/QAbstractSocket>
 
@@ -446,7 +447,7 @@ void Smb4KLookupDomainsJob::slotReadStandardError()
     {
       QString test = it.next();
 
-      if ( test.trimmed().startsWith( "Ignoring unknown parameter" ) )
+      if ( test.trimmed().startsWith( QLatin1String( "Ignoring unknown parameter" ) ) )
       {
         it.remove();
       }
@@ -877,7 +878,7 @@ void Smb4KQueryMasterJob::slotReadStandardError()
     {
       QString test = it.next();
 
-      if ( test.trimmed().startsWith( "Ignoring unknown parameter" ) )
+      if ( test.trimmed().startsWith( QLatin1String( "Ignoring unknown parameter" ) ) )
       {
         it.remove();
       }
@@ -1449,7 +1450,7 @@ void Smb4KScanBAreasJob::slotReadStandardError()
     {
       QString test = it.next();
 
-      if ( test.trimmed().startsWith( "Ignoring unknown parameter" ) )
+      if ( test.trimmed().startsWith( QLatin1String( "Ignoring unknown parameter" ) ) )
       {
         it.remove();
       }
@@ -1803,7 +1804,7 @@ void Smb4KLookupDomainMembersJob::slotReadStandardError()
     {
       QString test = it.next();
 
-      if ( test.trimmed().startsWith( "Ignoring unknown parameter" ) )
+      if ( test.trimmed().startsWith( QLatin1String( "Ignoring unknown parameter" ) ) )
       {
         it.remove();
       }
@@ -2277,7 +2278,7 @@ void Smb4KLookupSharesJob::slotReadStandardError()
     {
       QString test = it.next();
 
-      if ( test.trimmed().startsWith( "Ignoring unknown parameter" ) )
+      if ( test.trimmed().startsWith( QLatin1String( "Ignoring unknown parameter" ) ) )
       {
         it.remove();
       }

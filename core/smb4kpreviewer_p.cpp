@@ -2,7 +2,7 @@
     smb4kpreviewer_p  -  Private helper classes for Smb4KPreviewer class.
                              -------------------
     begin                : So Dez 21 2008
-    copyright            : (C) 2008-2012 by Alexander Reinholdt
+    copyright            : (C) 2008-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -40,6 +40,7 @@
 // Qt includes
 #include <QtCore/QTimer>
 #include <QtCore/QDateTime>
+#include <QtCore/QLatin1String>
 #include <QtGui/QGridLayout>
 
 // KDE includes
@@ -463,7 +464,7 @@ void Smb4KPreviewJob::slotReadStandardError()
     {
       it.remove();
     }
-    else if ( line.trimmed().startsWith( "Ignoring unknown parameter" ) )
+    else if ( line.trimmed().startsWith( QLatin1String( "Ignoring unknown parameter" ) ) )
     {
       it.remove();
     }

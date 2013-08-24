@@ -2,7 +2,7 @@
     smb4ksearch_p  -  Private helper classes for Smb4KSearch class.
                              -------------------
     begin                : Mo Dez 22 2008
-    copyright            : (C) 2008-2012 by Alexander Reinholdt
+    copyright            : (C) 2008-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -40,6 +40,7 @@
 
 // Qt includes
 #include <QtCore/QTimer>
+#include <QtCore/QLatin1String>
 
 // KDE includes
 #include <kstandarddirs.h>
@@ -334,7 +335,7 @@ void Smb4KSearchJob::slotReadStandardError()
     {
       QString test = it.next();
 
-      if ( test.trimmed().startsWith( "Ignoring unknown parameter" ) )
+      if ( test.trimmed().startsWith( QLatin1String( "Ignoring unknown parameter" ) ) )
       {
         it.remove();
       }

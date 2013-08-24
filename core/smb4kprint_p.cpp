@@ -3,7 +3,7 @@
     Smb4KPrint class
                              -------------------
     begin                : Fr Okt 31 2008
-    copyright            : (C) 2008-2012 by Alexander Reinholdt
+    copyright            : (C) 2008-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -38,6 +38,7 @@
 // Qt includes
 #include <QtCore/QTimer>
 #include <QtCore/QPointer>
+#include <QtCore/QLatin1String>
 #include <QtGui/QGridLayout>
 #include <QtGui/QLabel>
 #include <QtGui/QTextDocument>
@@ -288,7 +289,7 @@ void Smb4KPrintJob::slotReadStandardError()
         {
           it.remove();
         }
-        else if ( line.trimmed().startsWith( "Ignoring unknown parameter" ) )
+        else if ( line.trimmed().startsWith( QLatin1String( "Ignoring unknown parameter" ) ) )
         {
           it.remove();
         }

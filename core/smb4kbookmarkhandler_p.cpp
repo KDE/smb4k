@@ -34,6 +34,7 @@
 
 // Qt includes
 #include <QtCore/QEvent>
+#include <QtCore/QTimer>
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QGridLayout>
@@ -43,6 +44,7 @@
 #include <QtGui/QDragMoveEvent>
 #include <QtGui/QDragEnterEvent>
 #include <QtGui/QDragLeaveEvent>
+#include <QtGui/QTreeWidgetItemIterator>
 
 // KDE includes
 #include <klocale.h>
@@ -378,90 +380,26 @@ bool Smb4KBookmarkEditor::eventFilter( QObject *obj, QEvent *e )
     {
       case QEvent::DragEnter:
       {
-        // Only accept the drag enter event if it originates from
-        // the tree widget's viewport.
-        // NOTE: Do not remove the drag item from the parent (neither
-        // widget nor top level item). You will crash the application
-        // otherwise.
         QDragEnterEvent *ev = static_cast<QDragEnterEvent *>( e );
-        QPoint pos = m_tree_widget->viewport()->mapToParent( ev->pos() );
-
-        if ( (m_drag_item = m_tree_widget->itemAt( pos )) == NULL )
+        
+        if ( ev->source() == m_tree_widget->viewport() )
         {
-          ev->ignore();
+          e->accept();
         }
         else
         {
-          ev->accept();
+          e->ignore();
         }
         break;
       }
       case QEvent::DragLeave:
       {
-        // Do not allow a bookmark to be dragged outside the tree widget.
-        QDragLeaveEvent *ev = static_cast<QDragLeaveEvent *>( e );
-        ev->ignore();
+        e->ignore();
         break;
       }
       case QEvent::Drop:
       {
-        // Get the bookmark for the dropped item.
-        Smb4KBookmark *bookmark = findBookmark( m_drag_item->data( 0, QTreeWidgetItem::UserType ).toUrl() );
-        
-        // Get the item where the dragged item has been dropped.
-        QDropEvent *ev = static_cast<QDropEvent *>( e );
-        QPoint pos = m_tree_widget->viewport()->mapToParent( ev->pos() );
-        QTreeWidgetItem *neighbor = m_tree_widget->itemAt( pos );
-        
-        if ( neighbor )
-        {
-          QTreeWidgetItem *parent = NULL;
-          QString group_name;
-          
-          if ( m_tree_widget->indexOfTopLevelItem( neighbor ) != -1 )
-          {
-            // This is the group item.
-            parent = neighbor;
-            neighbor->addChild( m_drag_item );
-            group_name = neighbor->text( 0 );
-          }
-          else
-          {
-            // This is a child.
-            parent = neighbor->parent();
-            neighbor->parent()->addChild( m_drag_item );
-            group_name = neighbor->parent()->text( 0 );
-          }
-
-          if ( bookmark )
-          {
-            bookmark->setGroupName( group_name );
-          }
-          else
-          {
-            // Do nothing
-          }
-
-          parent->sortChildren( (m_tree_widget->columnCount() - 1), Qt::AscendingOrder );
-        }
-        else
-        {
-          // The item has been dragged to the top level. Add it as top level
-          // item.
-          m_tree_widget->addTopLevelItem( m_drag_item );
-
-          if ( bookmark )
-          {
-            bookmark->setGroupName( QString() );
-          }
-          else
-          {
-            // Do nothing
-          }
-
-          m_tree_widget->sortItems( (m_tree_widget->columnCount() - 1), Qt::AscendingOrder );
-        }
-        m_drag_item = NULL;
+        QTimer::singleShot( 50, this, SLOT(slotAdjust()));
         break;
       }
       default:
@@ -553,69 +491,63 @@ void Smb4KBookmarkEditor::setupView()
 }
 
 
-void Smb4KBookmarkEditor::loadBookmarks( const QList<Smb4KBookmark *> &list )
+void Smb4KBookmarkEditor::loadBookmarks( const QList<Smb4KBookmark *> &bookmarks )
 {
-  for ( int i = 0; i < list.size(); ++i )
+  // Copy the bookmarks and the groups to the internal lists.
+  for ( int i = 0; i < bookmarks.size(); ++i )
   {
-    m_bookmarks << new Smb4KBookmark( *list[i] );
-  }
-  
-  // Load the bookmarks into the tree view and compile 
-  // the available groups in a list.
-  for ( int i = 0; i < m_bookmarks.size(); ++i )
-  {
-    if ( !m_bookmarks.at( i )->groupName().isEmpty() )
+    m_bookmarks << new Smb4KBookmark( *bookmarks[i] );
+    
+    if ( !m_groups.contains( bookmarks.at( i )->groupName() ) )
     {
-      // Find the group and add the bookmark
-      QList<QTreeWidgetItem *> items = m_tree_widget->findItems( m_bookmarks.at( i )->groupName(), Qt::MatchFixedString|Qt::MatchCaseSensitive, 0 );
-      QTreeWidgetItem *group = NULL;
-
-      if ( !items.isEmpty() )
-      {
-        group = items.first();
-      }
-      else
-      {
-        group = new QTreeWidgetItem( QTreeWidgetItem::UserType );
-        group->setIcon( 0, KIcon( "folder-favorites" ) );
-        group->setText( 0, m_bookmarks.at( i )->groupName() );
-        group->setText( (m_tree_widget->columnCount() - 1), QString( "00_%1" ).arg( m_bookmarks.at( i )->groupName() ) );
-        group->setFlags( Qt::ItemIsSelectable|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled|Qt::ItemIsDropEnabled ) ;
-        m_tree_widget->addTopLevelItem( group );
-      }
-
-      QTreeWidgetItem *bookmark = new QTreeWidgetItem( QTreeWidgetItem::UserType );
-      bookmark->setData( 0, QTreeWidgetItem::UserType, static_cast<QUrl>( m_bookmarks.at( i )->url() ) );
-      bookmark->setIcon( 0, m_bookmarks.at( i )->icon() );
-      bookmark->setText( 0, m_bookmarks.at( i )->unc() );
-      bookmark->setText( (m_tree_widget->columnCount() - 1), QString( "01_%1" ).arg( m_bookmarks.at( i )->unc() ) );
-      bookmark->setFlags( Qt::ItemIsSelectable|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled|Qt::ItemIsDragEnabled ) ;
-      group->addChild( bookmark );
-
-      group->setExpanded( true );
-    }
-    else
-    {
-      QTreeWidgetItem *bookmark = new QTreeWidgetItem( QTreeWidgetItem::UserType );
-      bookmark->setData( 0, QTreeWidgetItem::UserType, static_cast<QUrl>( m_bookmarks.at( i )->url() ) );
-      bookmark->setIcon( 0, m_bookmarks.at( i )->icon() );
-      bookmark->setText( 0, m_bookmarks.at( i )->unc() );
-      bookmark->setText( (m_tree_widget->columnCount() - 1), QString( "01_%1" ).arg( m_bookmarks.at( i )->unc() ) );
-      bookmark->setFlags( Qt::ItemIsSelectable|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled|Qt::ItemIsDragEnabled ) ;
-      m_tree_widget->addTopLevelItem( bookmark );
-    }
-
-    // Add the group to the list
-    if ( !m_groups.contains( m_bookmarks.at( i )->groupName() ) )
-    {
-      m_groups << m_bookmarks.at( i )->groupName();
+      m_groups << bookmarks.at( i )->groupName();
     }
     else
     {
       // Do nothing
     }
   }
-
+  
+  // Insert the groups into the tree widget.
+  for ( int i = 0; i < m_groups.size(); ++i )
+  {
+    if ( !m_groups.at( i ).isEmpty() )
+    {
+      QTreeWidgetItem *group = new QTreeWidgetItem( QTreeWidgetItem::UserType );
+      group->setIcon( 0, KIcon( "folder-favorites" ) );
+      group->setText( 0, m_bookmarks.at( i )->groupName() );
+      group->setText( (m_tree_widget->columnCount() - 1), QString( "00_%1" ).arg( m_bookmarks.at( i )->groupName() ) );
+      group->setFlags( Qt::ItemIsSelectable|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled|Qt::ItemIsDropEnabled ) ;
+      m_tree_widget->addTopLevelItem( group );
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  // Now load the bookmarks
+  for ( int i = 0; i < m_bookmarks.size(); ++i )
+  {
+    QTreeWidgetItem *bookmark = new QTreeWidgetItem( QTreeWidgetItem::UserType );
+    bookmark->setData( 0, QTreeWidgetItem::UserType, static_cast<QUrl>( m_bookmarks.at( i )->url() ) );
+    bookmark->setIcon( 0, m_bookmarks.at( i )->icon() );
+    bookmark->setText( 0, m_bookmarks.at( i )->unc() );
+    bookmark->setText( (m_tree_widget->columnCount() - 1), QString( "01_%1" ).arg( m_bookmarks.at( i )->unc() ) );
+    bookmark->setFlags( Qt::ItemIsSelectable|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled|Qt::ItemIsDragEnabled ) ;
+    
+    if ( !m_bookmarks.at( i )->groupName().isEmpty() )
+    {
+      QList<QTreeWidgetItem *> items = m_tree_widget->findItems( m_bookmarks.at( i )->groupName(), Qt::MatchFixedString|Qt::MatchCaseSensitive, 0 );
+      items.first()->addChild( bookmark );
+      items.first()->setExpanded( true );      
+    }
+    else
+    {
+      m_tree_widget->addTopLevelItem( bookmark );
+    }
+  }
+  
   // Sort
   for ( int i = 0; i < m_tree_widget->topLevelItemCount(); ++i )
   {
@@ -623,7 +555,7 @@ void Smb4KBookmarkEditor::loadBookmarks( const QList<Smb4KBookmark *> &list )
   }
   
   m_tree_widget->sortItems( (m_tree_widget->columnCount() - 1), Qt::AscendingOrder );
-
+  
   // Check that an empty goup entry is also present. If it is not there,
   // add it now and insert the groups to the group combo box afterwards.
   if ( !m_groups.contains( "" ) && !m_groups.contains( QString() ) )
@@ -1132,6 +1064,58 @@ void Smb4KBookmarkEditor::slotIconSizeChanged( int group )
     }
   }
 }
+
+
+void Smb4KBookmarkEditor::slotAdjust()
+{
+  // Do the necessary adjustments:
+  QTreeWidgetItemIterator it( m_tree_widget );
+  while ( *it )
+  {
+    if ( !(*it)->parent() )
+    {
+      if ( (*it)->data( 0, QTreeWidgetItem::UserType ).toUrl().isEmpty() )
+      {
+        if ( (*it)->childCount() == 0 )
+        {
+          delete *it;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        Smb4KBookmark *bookmark = findBookmark((*it)->data( 0, QTreeWidgetItem::UserType ).toUrl());
+      
+        if ( bookmark )
+        {
+          bookmark->setGroupName("");
+        }
+        else
+        {
+          // Do nothing
+        }        
+      }
+    }
+    else
+    {
+      Smb4KBookmark *bookmark = findBookmark((*it)->data( 0, QTreeWidgetItem::UserType ).toUrl());
+      
+      if ( bookmark )
+      {
+        bookmark->setGroupName((*it)->text(0));
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    ++it;
+  }
+}
+
 
 
 #include "smb4kbookmarkhandler_p.moc"
