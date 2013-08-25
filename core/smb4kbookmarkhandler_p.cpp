@@ -1105,7 +1105,7 @@ void Smb4KBookmarkEditor::slotAdjust()
       
       if ( bookmark )
       {
-        bookmark->setGroupName((*it)->text(0));
+        bookmark->setGroupName((*it)->parent()->text(0));
       }
       else
       {

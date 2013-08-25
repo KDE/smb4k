@@ -308,7 +308,10 @@ void Smb4KBookmarkHandler::addBookmarks(const QList< Smb4KBookmark* >& list, boo
   }
   
   // Append the new bookmarks to the internal list.
-  d->bookmarks << list;
+  for ( int i = 0; i < list.size(); ++i )
+  {
+    d->bookmarks << new Smb4KBookmark( *list.at( i ) );
+  }
       
   // Append new groups to the internal list.
   for ( int i = 0; i < list.size(); ++i )
