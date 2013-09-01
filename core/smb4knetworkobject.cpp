@@ -3,7 +3,7 @@
     encapsulates the network items. It is for use with QtQuick.
                              -------------------
     begin                : Fr Mär 02 2012
-    copyright            : (C) 2012 by Alexander Reinholdt
+    copyright            : (C) 2012-2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

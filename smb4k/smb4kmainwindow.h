@@ -347,12 +347,6 @@ class Smb4KMainWindow : public KParts::MainWindow
     QProgressBar *m_progress_bar;
 
     /**
-     * The id of the timer that set the values of the
-     * progress bar.
-     */
-    int m_timer_id;
-
-    /**
      * This is the pixmap label that represents the state of
      * the password handler in the status bar.
      */

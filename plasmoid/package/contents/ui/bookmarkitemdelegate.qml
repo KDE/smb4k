@@ -36,7 +36,6 @@ PlasmaComponents.ListItem {
   id: delegate
   
   signal itemClicked()
-  signal removeClicked()
 
   width: bookmarksListView.width
   height: theme.mediumIconSize + 8
@@ -73,29 +72,5 @@ PlasmaComponents.ListItem {
         }
       }
     }
-  }
-  QIconItem {
-    id: removeButton
-    anchors.verticalCenter: parent.verticalCenter
-    anchors.right: parent.right
-    anchors.rightMargin: 10
-    anchors.leftMargin: 10
-    icon: "edit-delete"
-    height: theme.smallIconSize
-    width: theme.smallIconSize
-    opacity: 0.2
-    MouseArea {
-      anchors.fill: parent
-      hoverEnabled: true
-      onEntered: {
-        parent.opacity = 1.0
-      }
-      onExited: {
-        parent.opacity = 0.2
-      }
-      onClicked: {
-        delegate.removeClicked()
-      }
-    }        
   }
 }

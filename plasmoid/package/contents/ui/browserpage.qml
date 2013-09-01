@@ -57,13 +57,7 @@ PlasmaComponents.Page {
         iconSource: "view-refresh"
         width: minimumWidth
         onClicked: {
-          var object = scanner.find( lastUrl, lastType )
-          if ( object !== null ) {
-            rescan( object )
-          }
-          else {
-            // Do nothing
-          }
+          rescan()
         }
       }
       PlasmaComponents.ToolButton {
@@ -92,14 +86,7 @@ PlasmaComponents.Page {
             }
           }
           else {
-            var object = scanner.find( lastUrl, lastType )
-            if ( object !== null ) {
-              // We only have the parent item. Just rescan.
-              rescan( object )
-            }
-            else {
-              // Do nothing
-            }
+            rescan()
           }
         }
       }
@@ -198,7 +185,7 @@ PlasmaComponents.Page {
   function networkItemClicked( object ) {
     if ( object.type == 3 ) {
       if ( !object.isPrinter ) {
-        mounter.mount( object )
+        mounter.mount( object.url )
       }
       else {
         printer.print( object.url )
@@ -212,13 +199,26 @@ PlasmaComponents.Page {
   //
   // Rescan the current level
   //
-  function rescan( object ) {
-    var parent = scanner.find( object.parentURL, object.parentType )
-    if ( parent !== null ) {
-      scanner.lookup( parent )
+  function rescan() {
+    if ( browserListView.model.count != 0 ) {
+      var object = browserListView.model.get(0).object
+      if ( object ) {
+        scanner.lookup( object )
+      }
+      else {
+        scanner.lookup()
+      }
     }
     else {
-      // Do nothing
+      // Fallback method. Use the last known URL and Type
+      // for rescanning.
+      var object = scanner.find( lastUrl, lastType )
+      if ( object !== null ) {
+        scanner.lookup( object )
+      }
+      else {
+        scanner.lookup()
+      } 
     }
   }
   

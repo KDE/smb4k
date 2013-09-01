@@ -197,29 +197,28 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
     QDeclarativeListProperty<Smb4KNetworkObject> mountedShares();
     
     /**
-     * This function takes a network object and initiates the mounting of the 
-     * remote share. 
+     * This function takes the URL and initiates the mounting of the remote
+     * share.
      * 
      * Please note that this function only works with network objects that 
      * represent a share and that are already known, i.e. it must either be 
      * a share that was already looked up during program run or one that was 
      * bookmarked.
      * 
-     * @param object      The network object representing a share
+     * @param url         The URL of the remote share
      */
-    Q_INVOKABLE void mount( Smb4KNetworkObject *object );
+    Q_INVOKABLE void mount( const QUrl &url );
     
     /**
-     * This function takes a network object and initiates the unmounting of the
-     * remote share.
+     * This function takes the URL of a @p mountpoint and initiates the 
+     * unmounting of the mounted share.
      * 
      * Please note that this function only works with network objects that 
-     * represent a mounted remote share and that are already known. All others 
-     * will be ignored.
+     * represent a share and that are already known.
      * 
-     * @param object      The network object representing a mounted share
+     * @param mountpoint  The URL of the mountpoint
      */
-    Q_INVOKABLE void unmount( Smb4KNetworkObject *object );
+    Q_INVOKABLE void unmount( const QUrl &mountpoint );
     
     /**
      * This function is a convenience function. It unmounts all currently mounted

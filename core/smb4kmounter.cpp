@@ -1358,46 +1358,39 @@ QDeclarativeListProperty< Smb4KNetworkObject > Smb4KMounter::mountedShares()
 }
 
 
-void Smb4KMounter::mount( Smb4KNetworkObject *object )
+void Smb4KMounter::mount(const QUrl& url)
 {
-  if ( object && object->type() == Smb4KNetworkObject::Share )
+  if ( url.isValid() && !url.path().isEmpty() )
   {
-    if ( object->url().isValid() )
+    QString share_name = url.path();
+      
+    if ( share_name.startsWith( '/' ) )
     {
-      QString path = object->url().path();
-      
-      if ( path.startsWith( '/' ) )
-      {
-        path = path.mid( 1, -1 );
-      }
-      else
-      {
-        // Do nothing
-      }
-      
-      Smb4KShare *share = findShare( path, object->url().host() );
-    
-      if ( share )
-      {
-        mountShare( share );
-      }
-      else
-      {
-        // If the share is not in the global list of shares,
-        // try the list of bookmarks.
-        QString unc( "//"+object->url().host()+"/"+path );
-        Smb4KBookmark *bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC( unc );
-        share = new Smb4KShare();
-        share->setURL( object->url() );
-        share->setWorkgroupName( bookmark->workgroupName() );
-        share->setHostIP( bookmark->hostIP() );
-        mountShare( share );
-        delete share;
-      }
+      share_name = share_name.mid( 1, -1 );
     }
     else
     {
       // Do nothing
+    }
+      
+    Smb4KShare *share = findShare( share_name, url.host() );
+    
+    if ( share )
+    {
+      mountShare( share );
+    }
+    else
+    {
+      // If the share is not in the global list of shares,
+      // try the list of bookmarks.
+      QString unc( "//"+url.host()+"/"+share_name );
+      Smb4KBookmark *bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC( unc );
+      share = new Smb4KShare();
+      share->setURL( url );
+      share->setWorkgroupName( bookmark->workgroupName() );
+      share->setHostIP( bookmark->hostIP() );
+      mountShare( share );
+      delete share;
     }
   }
   else
@@ -1407,23 +1400,15 @@ void Smb4KMounter::mount( Smb4KNetworkObject *object )
 }
 
 
-void Smb4KMounter::unmount( Smb4KNetworkObject *object )
+void Smb4KMounter::unmount(const QUrl& mountpoint)
 {
-  qDebug() << "About to unmount share";
-  if ( object )
+  if ( mountpoint.isValid() )
   {
-    if ( object->mountpoint().isValid() )
-    {
-      Smb4KShare *share = findShareByPath( object->mountpoint().path() );
+    Smb4KShare *share = findShareByPath( mountpoint.path() );
     
-      if ( share )
-      {
-        unmountShare( share );
-      }
-      else
-      {
-        // Do nothing
-      }
+    if ( share )
+    {
+      unmountShare( share );
     }
     else
     {
@@ -1434,7 +1419,6 @@ void Smb4KMounter::unmount( Smb4KNetworkObject *object )
   {
     // Do nothing
   }
-  qDebug() << "Unmounted share";
 }
 
 

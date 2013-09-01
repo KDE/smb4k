@@ -90,7 +90,7 @@ PlasmaComponents.Page {
         onUnmountClicked: {
           var object = sharesView.model.get(index).object
           if ( object !== null ) {
-            mounter.unmount( object )
+            mounter.unmount( object.mountpoint )
           }
           else {
             // Do nothing

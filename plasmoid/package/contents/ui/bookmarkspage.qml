@@ -96,20 +96,6 @@ PlasmaComponents.Page {
             // Do nothing
           }
         }
-        onRemoveClicked: {
-          var object = bookmarksListView.model.get( index ).object
-          if ( object !== null ) {
-            if ( object.isGroup ) {
-              removeGroup( object )
-            }
-            else {
-              removeBookmark( object )
-            }
-          }
-          else {
-            // Do nothing
-          }
-        }
       }
       model: ListModel {}
       focus: true
@@ -149,22 +135,8 @@ PlasmaComponents.Page {
       getBookmarks( object.groupName )
     }
     else {
-      mounter.mount( object )
+      mounter.mount( object.url )
     }
-  }
-  
-  //
-  // Remove a group
-  //
-  function removeGroup( object ) {
-    bookmarksHandler.removeGroup( object.groupName )
-  }
-  
-  //
-  // Remove a bookmark
-  //
-  function removeBookmark( object ) {
-    bookmarkHandler.removeBookmark( object )
   }
   
   //

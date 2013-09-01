@@ -49,6 +49,7 @@ Smb4K 1.1.0 (????-??-??):
   + Added private addBookmarks() function that takes a list of Smb4KBookmark 
     objects and optionally a boolean that indicates if the internal list of
     shares should be replaced by the new one.
+  + Improved bookmark editor.
 - Revised Smb4KProcess class:
   + Explicitly set the language to "C", because Samba might be localized
     (closes SF ticket #34).
