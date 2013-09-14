@@ -35,7 +35,6 @@
 #include "smb4kauthinfo.h"
 #include "smb4kwalletmanager.h"
 #include "smb4kglobal.h"
-#include "smb4knetworkobject.h"
 
 // Qt includes
 #include <QTimer>
@@ -109,40 +108,6 @@ void Smb4KPrint::print( Smb4KShare *printer, QWidget *parent )
   addSubjob( job );
   
   job->start();
-}
-
-
-void Smb4KPrint::print( Smb4KNetworkObject *object )
-{
-  if ( object )
-  {
-    QString host = object->url().host();
-    QString name = object->url().path();
-    
-    if ( name.startsWith( '/' ) )
-    {
-      name = name.mid( 1 );
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    Smb4KShare *printer = findShare( name, host );
-    
-    if ( printer )
-    {
-      print( printer, 0 );
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
 }
 
 

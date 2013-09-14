@@ -35,7 +35,6 @@
 #include <QtCore/QString>
 #include <QtCore/QStringList>
 #include <QtCore/QScopedPointer>
-#include <QtDeclarative/QDeclarativeListProperty>
 
 // KDE includes
 #include <kdemacros.h>
@@ -66,9 +65,6 @@ class Smb4KMounterPrivate;
 class KDE_EXPORT Smb4KMounter : public KCompositeJob
 {
   Q_OBJECT
-  
-  Q_PROPERTY( QDeclarativeListProperty<Smb4KNetworkObject> mountedShares READ mountedShares NOTIFY mountedSharesListChanged )
-  Q_PROPERTY( bool running READ isRunning )
 
   friend class Smb4KMounterPrivate;
 
@@ -98,7 +94,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
     /**
      * Aborts all running processes at once.
      */
-    Q_INVOKABLE void abortAll();
+    void abortAll();
 
     /**
      * This function attempts to mount a share.
@@ -116,7 +112,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      *
      * @param parent      The parent widget of this dialog
      */
-    Q_INVOKABLE void openMountDialog( QWidget *parent = 0 );
+    void openMountDialog( QWidget *parent = 0 );
 
     /**
      * Mounts a list of shares at once.
@@ -185,60 +181,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
     /**
      * This function starts the composite job
      */
-    Q_INVOKABLE void start();
-    
-    /**
-     * This function returns the list of mounted shares. Basically, this is the
-     * Smb4KGlobal::mountedSharesList() list converted into a list of Smb4KNetworkItem
-     * objects.
-     *
-     * @returns the list of the mounted shares.
-     */
-    QDeclarativeListProperty<Smb4KNetworkObject> mountedShares();
-    
-    /**
-     * This function takes the URL and initiates the mounting of the remote
-     * share.
-     * 
-     * Please note that this function only works with network objects that 
-     * represent a share and that are already known, i.e. it must either be 
-     * a share that was already looked up during program run or one that was 
-     * bookmarked.
-     * 
-     * @param url         The URL of the remote share
-     */
-    Q_INVOKABLE void mount( const QUrl &url );
-    
-    /**
-     * This function takes the URL of a @p mountpoint and initiates the 
-     * unmounting of the mounted share.
-     * 
-     * Please note that this function only works with network objects that 
-     * represent a share and that are already known.
-     * 
-     * @param mountpoint  The URL of the mountpoint
-     */
-    Q_INVOKABLE void unmount( const QUrl &mountpoint );
-    
-    /**
-     * This function is a convenience function. It unmounts all currently mounted
-     * shares by invoking @see unmountAllShares( 0 ).
-     */
-    Q_INVOKABLE void unmountAll();
-    
-    /**
-     * This function takes a KUrl object, looks up the respective mounted share
-     * and returns it. If there is not such a share, NULL is returned.
-     * 
-     * @param url         The URL of the mounted share
-     * 
-     * @param exactMatch  Determines if the function should only search for the 
-     *                    exact match or if it may also except matches where the
-     *                    user info and port may differ.
-     * 
-     * @returns The mounted share or NULL if it was not found.
-     */
-    Q_INVOKABLE Smb4KNetworkObject *find( const QUrl &url, bool exactMatch = true );
+    void start();
     
   Q_SIGNALS:
     /**

@@ -54,7 +54,7 @@ PlasmaComponents.Page {
         iconSource: "system-run"
         width: minimumWidth
         onClicked: {
-          mounter.unmountAll()
+          iface.unmountAll()
         }
       }
       Item {
@@ -90,7 +90,7 @@ PlasmaComponents.Page {
         onUnmountClicked: {
           var object = sharesView.model.get(index).object
           if ( object !== null ) {
-            mounter.unmount( object.mountpoint )
+            iface.unmount( object.mountpoint )
           }
           else {
             // Do nothing
@@ -99,7 +99,7 @@ PlasmaComponents.Page {
         onBookmarkClicked: {
           var object = sharesView.model.get(index).object
           if ( object !== null ) {
-            bookmarkHandler.addBookmark( object )
+            iface.addBookmark( object )
           }
           else {
             // Do nothing
@@ -116,8 +116,8 @@ PlasmaComponents.Page {
   // Connections
   //
   Connections {
-    target: mounter
-    onMountedSharesListChanged: shareMountedOrUnmounted()
+    target: iface
+    onMountedSharesChanged: shareMountedOrUnmounted()
   }
   
   //
@@ -128,12 +128,12 @@ PlasmaComponents.Page {
       sharesView.model.remove(0)
     }
     
-    for ( var i = 0; i < mounter.mountedShares.length; i++ ) {
+    for ( var i = 0; i < iface.mountedShares.length; i++ ) {
       // The unmounted() signal is emitted before the share is
       // actually removed from the list. So, we need to check 
       // here, if the share is still mounted.
-      if ( mounter.mountedShares[i].isMounted ) {
-        sharesView.model.append( { "object": mounter.mountedShares[i] } )
+      if ( iface.mountedShares[i].isMounted ) {
+        sharesView.model.append( { "object": iface.mountedShares[i] } )
       }
       else {
         // Do nothing

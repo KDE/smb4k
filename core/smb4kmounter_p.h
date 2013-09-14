@@ -30,7 +30,6 @@
 // application specific includes
 #include "smb4kmounter.h"
 #include "smb4kshare.h"
-#include "smb4knetworkobject.h"
 
 // Qt includes
 #include <QtCore/QThread>
@@ -403,7 +402,6 @@ class Smb4KMounterPrivate
     QList<Smb4KShare *> importedShares;
     QList<Smb4KShare *> retries;
     QList<Smb4KShare *> remounts;
-    QList<Smb4KNetworkObject *> shareObjects;
     QStringList obsoleteMountpoints;
     bool aboutToQuit;
     bool hardwareReason;

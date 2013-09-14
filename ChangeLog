@@ -13,6 +13,8 @@ Smb4K 1.1.0 (????-??-??):
 - Introduced a new dynamic main tool bar. If you do not like it, you can enable 
   old tool bars via the 'Shown Toolbars' menu item.
 - Added Wake On LAN (WOL) feature (closes SF ticket #27).
+- Introduced Smb4KDeclarative class that provides an interface for Plasma/
+  QtQuick to the core classes.
 - Improved mounting under FreeBSD. We do not need the ~/.nsmbrc file anymore
   because the mount helper will feed the password to the mount process.
 - Revised Smb4KGlobal namespace:
@@ -41,8 +43,6 @@ Smb4K 1.1.0 (????-??-??):
   Smb4KScanner using a private job.
 - Revised Smb4KBookmarkHandler class:
   + Renamed the bookmarks() functions to bookmarksList() to unify the naming.
-  + To use functions from the bookmark handler in the plasmoid, Q_INVOKABLE 
-    and Q_PROPERTY macros are used.
   + Added addBookmark() function that takes an URL as argument.
   + Added two removeBookmark() functions, one taking a pointer to a Smb4KBookmark
     object and one taking an URL.
@@ -54,8 +54,6 @@ Smb4K 1.1.0 (????-??-??):
   + Explicitly set the language to "C", because Samba might be localized
     (closes SF ticket #34).
 - Revised Smb4KScanner class:
-  + To use functions from the scanner in the plasmoid, Q_INVOKABLE and
-    Q_PROPERTY macros are used.
   + Added workgroups(), hosts(), and shares() functions that return lists
     of type QDeclarativeListProperty<Smb4KNetworkObject>.
   + Added workgroupsListChanged() and sharesListChanged() signals.
@@ -74,8 +72,6 @@ Smb4K 1.1.0 (????-??-??):
     reported with a NTSTATUS* error message via stderr (closes SF ticket
     #25).
 - Revised Smb4KMounter class:
-  + To use functions from the mounter in the plasmoid, Q_INVOKABLE and
-    Q_PROPERTY macros are used.
   + Added mountedShares() functions that returns a list of type
     QDeclarativeListProperty<Smb4KNetworkObject>.
   + Added mountedSharesListChanged() signal.
@@ -123,6 +119,7 @@ Smb4K 1.1.0 (????-??-??):
   anymore, but by the items.
 - Revised mount helper:
   + Simplified names for the arguments that can/must be passed.
+  + Under FreeBSD, the password is passed to the mount utility.
 - Revised network browser:
   + Removed wrong checks that caused tooltips not being updated properly.
   + Added ability to select multiple shares and process them accordingly.

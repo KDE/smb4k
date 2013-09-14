@@ -1,8 +1,9 @@
 /***************************************************************************
-    smb4kqmlplugin - The QML plugin for use with Plasma/QtQuick
+    smb4kdeclarative - This class provides helper classes for 
+    Smb4KDeclarative
                              -------------------
-    begin                : Di Feb 21 2012
-    copyright            : (C) 2012 by Alexander Reinholdt
+    begin                : Mo 02 Sep 2013
+    copyright            : (C) 2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,23 +29,5 @@
 #endif
 
 // application specific includes
-#include "smb4kqmlplugin.h"
-#include "core/smb4kglobal.h"
-#include "core/smb4knetworkobject.h"
-#include "core/smb4kbookmarkhandler.h"
-#include "core/smb4kcustomoptionsmanager.h"
-#include "core/smb4kbookmarkobject.h"
-#include "core/smb4kdeclarative.h"
+#include "smb4kdeclarative_p.h"
 
-// Qt includes
-#include <QtDeclarative/qdeclarative.h>
-
-
-void Smb4KQMLPlugin::registerTypes( const char *uri )
-{
-  qmlRegisterType<Smb4KNetworkObject>( uri, 1, 0, "NetworkObject" );
-  qmlRegisterType<Smb4KBookmarkObject>( uri, 1, 0, "BookmarkObject" );
-  qmlRegisterType<Smb4KDeclarative>( uri, 1, 0, "CoreInterface" );
-}
-
-Q_EXPORT_PLUGIN2( Smb4KQML, Smb4KQMLPlugin );

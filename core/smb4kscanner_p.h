@@ -31,7 +31,6 @@
 #include "smb4kprocess.h"
 #include "smb4kworkgroup.h"
 #include "smb4kauthinfo.h"
-#include "smb4knetworkobject.h"
 
 // Qt includes
 #include <QtGui/QWidget>
@@ -717,9 +716,6 @@ class Smb4KScannerPrivate
     int elapsedTimeIP;
     bool haveNewHosts;
     bool scanningAllowed;
-    QList<Smb4KNetworkObject *> workgroupObjects;
-    QList<Smb4KNetworkObject *> hostObjects;
-    QList<Smb4KNetworkObject *> shareObjects;
     QList<Smb4KGlobal::Process> periodicJobs;
 };
 

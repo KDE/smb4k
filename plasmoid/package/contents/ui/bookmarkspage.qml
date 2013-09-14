@@ -63,7 +63,7 @@ PlasmaComponents.Page {
         iconSource: "bookmarks-organize"
         width: minimumWidth
         onClicked: {
-          bookmarkHandler.editBookmarks() 
+          iface.editBookmarks() 
         }
       }
       Item {
@@ -107,14 +107,9 @@ PlasmaComponents.Page {
   // Connections
   //
   Connections {
-    target: bookmarkHandler
-    onUpdated: fillView()
-  }
-  
-  Connections {
-    target: mounter
-    onMounted: shareMountedOrUnmounted()
-    onUnmounted: shareMountedOrUnmounted()
+    target: iface
+    onMountedSharesChanged: shareMountedOrUnmounted()
+    onBookmarksListChanged: fillView()
   }
   
   //
@@ -135,7 +130,7 @@ PlasmaComponents.Page {
       getBookmarks( object.groupName )
     }
     else {
-      mounter.mount( object.url )
+      iface.mount( object.url )
     }
   }
   
@@ -171,10 +166,10 @@ PlasmaComponents.Page {
   //
   function getGroups() {
     // Get the groups
-    if ( bookmarkHandler.groups.length != 0 ) {
-      for ( var i = 0; i < bookmarkHandler.groups.length; ++i ) {
-        if ( bookmarkHandler.groups[i].description.length != 0 ) {
-          bookmarksListView.model.append( { "object": bookmarkHandler.groups[i] } )
+    if ( iface.bookmarkGroups.length != 0 ) {
+      for ( var i = 0; i < iface.bookmarkGroups.length; ++i ) {
+        if ( iface.bookmarkGroups[i].description.length != 0 ) {
+          bookmarksListView.model.append( { "object": iface.bookmarkGroups[i] } )
         }
         else {
           // Do nothing
@@ -190,10 +185,10 @@ PlasmaComponents.Page {
   // Get the bookmarks
   //
   function getBookmarks( group_name ) {
-    if ( bookmarkHandler.bookmarks.length != 0 ) {
-      for ( var i = 0; i < bookmarkHandler.bookmarks.length; i++ ) {
-        if ( bookmarkHandler.bookmarks[i].groupName == group_name ) {
-          bookmarksListView.model.append( { "object": bookmarkHandler.bookmarks[i] } )
+    if ( iface.bookmarks.length != 0 ) {
+      for ( var i = 0; i < iface.bookmarks.length; i++ ) {
+        if ( iface.bookmarks[i].groupName == group_name ) {
+          bookmarksListView.model.append( { "object": iface.bookmarks[i] } )
         }
         else {
           // Do nothing
@@ -208,7 +203,7 @@ PlasmaComponents.Page {
   function shareMountedOrUnmounted() {
     for ( var i = 0; i < bookmarksListView.model.count; i++ ) {
       if ( !bookmarksListView.model.get(i).object.isGroup ) {
-        var object = mounter.find( bookmarksListView.model.get(i).object.url, false )
+        var object = iface.findMountedShare( bookmarksListView.model.get(i).object.url, false )
         if ( object !== null ) {
           bookmarksListView.model.get(i).object.icon = object.icon
         }

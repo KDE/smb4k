@@ -1,8 +1,9 @@
 /***************************************************************************
-    smb4kqmlplugin - The QML plugin for use with Plasma/QtQuick
+    smb4kdeclarative - This class provides helper classes for 
+    Smb4KDeclarative
                              -------------------
-    begin                : Di Feb 21 2012
-    copyright            : (C) 2012 by Alexander Reinholdt
+    begin                : Mo 02 Sep 2013
+    copyright            : (C) 2013 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -23,28 +24,24 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
+#ifndef SMB4KDECLARATIVE_P_H
+#define SMB4KDECLARATIVE_P_H
 
 // application specific includes
-#include "smb4kqmlplugin.h"
-#include "core/smb4kglobal.h"
-#include "core/smb4knetworkobject.h"
-#include "core/smb4kbookmarkhandler.h"
-#include "core/smb4kcustomoptionsmanager.h"
-#include "core/smb4kbookmarkobject.h"
-#include "core/smb4kdeclarative.h"
+#include "smb4kscanner.h"
+#include "smb4kmounter.h"
+#include "smb4knetworkobject.h"
+#include "smb4kbookmarkobject.h"
 
-// Qt includes
-#include <QtDeclarative/qdeclarative.h>
-
-
-void Smb4KQMLPlugin::registerTypes( const char *uri )
+class Smb4KDeclarativePrivate
 {
-  qmlRegisterType<Smb4KNetworkObject>( uri, 1, 0, "NetworkObject" );
-  qmlRegisterType<Smb4KBookmarkObject>( uri, 1, 0, "BookmarkObject" );
-  qmlRegisterType<Smb4KDeclarative>( uri, 1, 0, "CoreInterface" );
-}
+  public:
+    QList<Smb4KNetworkObject *> workgroupObjects;
+    QList<Smb4KNetworkObject *> hostObjects;
+    QList<Smb4KNetworkObject *> shareObjects;
+    QList<Smb4KNetworkObject *> mountedObjects;
+    QList<Smb4KBookmarkObject *> bookmarkObjects;
+    QList<Smb4KBookmarkObject *> bookmarkGroupObjects;
+};
 
-Q_EXPORT_PLUGIN2( Smb4KQML, Smb4KQMLPlugin );
+#endif

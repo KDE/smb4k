@@ -41,7 +41,6 @@
 class Smb4KCustomOptionsManagerPrivate;
 class Smb4KShare;
 class Smb4KBasicNetworkItem;
-class Smb4KNetworkObject;
 
 /**
  * This classes manages the custom options that were defined
@@ -160,13 +159,6 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
      */
     void openCustomOptionsDialog( Smb4KBasicNetworkItem *item,
                                   QWidget *parent = 0 );
-    
-    /**
-     * This function opens the custom options dialog.
-     * 
-     * @param object              The network object
-     */
-    Q_INVOKABLE void openCustomOptionsDialog( Smb4KNetworkObject *object );
     
     /**
      * This function adds custom options for a single network item to the list

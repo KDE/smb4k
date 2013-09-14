@@ -39,9 +39,7 @@
 
 // forward declarations
 class Smb4KBookmark;
-class Smb4KBookmarkObject;
 class Smb4KShare;
-class Smb4KNetworkObject;
 class Smb4KBookmarkHandlerPrivate;
 class Smb4KBookmarkDialog;
 class Smb4KBookmarkEditor;
@@ -56,11 +54,7 @@ class Smb4KBookmarkEditor;
 
 class KDE_EXPORT Smb4KBookmarkHandler : public QObject
 {
-  Q_OBJECT
-  
-  Q_PROPERTY( QDeclarativeListProperty<Smb4KBookmarkObject> bookmarks READ bookmarks NOTIFY updated )
-  Q_PROPERTY( QDeclarativeListProperty<Smb4KBookmarkObject> groups READ groups )
-  
+  Q_OBJECT  
   
   friend class Smb4KBookmarkHandlerPrivate;
 
@@ -91,15 +85,6 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      */
     void addBookmark( Smb4KShare *share,
                       QWidget *parent = 0 );
-    
-    /**
-     * This function adds a new bookmark. In contrast to the functions above,
-     * it takes an URL @p url and searches the global list of shares for the 
-     * share with this URL. If the share cannot be found, nothing will be done.
-     * 
-     * @param url           The URL of the share that is to be bookmarked
-     */
-    Q_INVOKABLE void addBookmark( Smb4KNetworkObject *object );
 
     /**
      * This function adds several bookmarks at once. It takes a list of 
@@ -120,18 +105,11 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
     void removeBookmark( Smb4KBookmark *bookmark );
     
     /**
-     * This function removes a bookmark with URL @p url. 
-     * 
-     * @param url           The URL of the bookmark that is to be removed
-     */
-    Q_INVOKABLE void removeBookmark( Smb4KBookmarkObject *object );
-    
-    /**
      * This function removes a group and all the bookmarks it contains.
      * 
      * @param name          The group name
      */
-    Q_INVOKABLE void removeGroup( const QString &name );
+    void removeGroup( const QString &name );
 
     /**
      * Get the list of bookmarks.
@@ -141,15 +119,6 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      */
     QList<Smb4KBookmark *> bookmarksList() const;
     
-    /**
-     * This function returns the list of bookmarks. Basically, this is the 
-     * the list returned by the above bookmarksList() function converted into a 
-     * list of Smb4KBookmarkObject objects.
-     * 
-     * @returns the list of bookmarks
-     */
-    QDeclarativeListProperty<Smb4KBookmarkObject> bookmarks();
-
     /**
      * Get the list of bookmarks belonging to a certain group.
      *
@@ -186,23 +155,14 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      *
      * @returns the list of groups
      */
-    QStringList groupsList() const;
-    
-    /**
-     * This function returns the list of bookmark groups. Basically, this is the 
-     * the list returned by the above groupsList() function converted into a 
-     * list of Smb4KBookmarkObject objects.
-     * 
-     * @returns the list of bookmarks
-     */
-    QDeclarativeListProperty<Smb4KBookmarkObject> groups();    
+    QStringList groupsList() const;  
 
     /**
      * Opens the bookmark editor
      * 
      * @param parent        The parent widget
      */
-    Q_INVOKABLE void editBookmarks( QWidget *parent = 0 );
+    void editBookmarks( QWidget *parent = 0 );
 
   Q_SIGNALS:
     /**

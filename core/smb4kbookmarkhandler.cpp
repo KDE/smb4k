@@ -37,8 +37,6 @@
 #include "smb4kshare.h"
 #include "smb4ksettings.h"
 #include "smb4knotification.h"
-#include "smb4kbookmarkobject.h"
-#include "smb4knetworkobject.h"
 
 // Qt includes
 #include <QtCore/QDir>
@@ -88,16 +86,6 @@ Smb4KBookmarkHandler::~Smb4KBookmarkHandler()
     delete d->bookmarks.takeFirst();
   }
   
-  while ( !d->bookmarkObjects.isEmpty() )
-  {
-    delete d->bookmarkObjects.takeFirst();
-  }
-  
-  while ( !d->groupObjects.isEmpty() )
-  {
-    delete d->groupObjects.takeFirst();
-  }
-  
   delete d->editor;
 }
 
@@ -115,66 +103,6 @@ void Smb4KBookmarkHandler::addBookmark( Smb4KShare *share, QWidget *parent )
     QList<Smb4KShare *> shares;
     shares << share;
     addBookmarks( shares, parent );
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KBookmarkHandler::addBookmark( Smb4KNetworkObject *object )
-{
-  if ( object )
-  {
-    QList<Smb4KShare *> shares; 
-    
-    // First, search the list of shares gathered by 
-    // the scanner.
-    for ( int i = 0; i < sharesList().size(); ++i )
-    {
-      if ( sharesList().at( i )->url() == object->url() )
-      {
-        shares << sharesList().at( i );
-        break;
-      }
-      else
-      {
-        continue;
-      }
-    }
-    
-    // Second, if the list is still empty, try the list 
-    // of mounted shares.
-    if ( shares.isEmpty() )
-    {
-      for ( int i = 0; i < mountedSharesList().size(); ++i )
-      {
-        if ( mountedSharesList().at( i )->url() == object->url() )
-        {
-          shares << mountedSharesList().at( i );
-          break;
-        }
-        else
-        {
-          continue;
-        }
-      }
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    // Now add the share.
-    if ( !shares.isEmpty() )
-    {
-      addBookmarks( shares, 0 );
-    }
-    else
-    {
-      // Do nothing
-    }
   }
   else
   {
@@ -330,28 +258,6 @@ void Smb4KBookmarkHandler::addBookmarks(const QList< Smb4KBookmark* >& list, boo
         
   // Save the bookmarks list.
   writeBookmarkList( d->bookmarks );  
-  
-  // (Re)fill the list of bookmark and group objects.
-  while ( !d->bookmarkObjects.isEmpty() )
-  {
-    delete d->bookmarkObjects.takeFirst();
-  }
-  
-  while ( !d->groupObjects.isEmpty() )
-  {
-    delete d->groupObjects.takeFirst();
-  }
-  
-  for ( int i = 0; i < d->bookmarks.size(); ++i )
-  {
-    d->bookmarkObjects << new Smb4KBookmarkObject( d->bookmarks.at( i ) );
-  }
-  
-  for ( int i = 0; i < d->groups.size(); ++i )
-  {
-    d->groupObjects << new Smb4KBookmarkObject( d->groups.at( i ) );
-  }
-  
   emit updated();
 }
 
@@ -396,57 +302,7 @@ void Smb4KBookmarkHandler::removeBookmark(Smb4KBookmark* bookmark)
     
     // Write the list to the bookmarks file.
     writeBookmarkList( d->bookmarks );
-    
-    // (Re)fill the list of bookmark and group objects.
-    while ( !d->bookmarkObjects.isEmpty() )
-    {
-      delete d->bookmarkObjects.takeFirst();
-    }
-    
-    while ( !d->groupObjects.isEmpty() )
-    {
-      delete d->groupObjects.takeFirst();
-    }
-    
-    for ( int i = 0; i < d->bookmarks.size(); ++i )
-    {
-      d->bookmarkObjects << new Smb4KBookmarkObject( d->bookmarks.at( i ) );
-    }
-    
-    for ( int i = 0; i < d->groups.size(); ++i )
-    {
-      d->groupObjects << new Smb4KBookmarkObject( d->groups.at( i ) );
-    }
-    
     emit updated();
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KBookmarkHandler::removeBookmark(Smb4KBookmarkObject *object)
-{
-  if ( object )
-  {
-    // Update bookmarks
-    update();
-    
-    // Find the bookmark in the list and remove it.
-    QString path = (object->url().path().startsWith( '/' ) ? object->url().path().remove( 0, 1 ) : object->url().path());
-    QString unc = QString( "//%1/%2" ).arg( object->url().host().toUpper() ).arg( path );
-    Smb4KBookmark *bookmark = findBookmarkByUNC( unc );
-    
-    if ( bookmark )
-    {
-      removeBookmark( bookmark );
-    }
-    else
-    {
-      // Do nothing
-    }
   }
   else
   {
@@ -494,28 +350,6 @@ void Smb4KBookmarkHandler::removeGroup(const QString& name)
   
   // Write the list to the bookmarks file.
   writeBookmarkList( d->bookmarks );
-  
-  // (Re)fill the list of bookmark and group objects.
-  while ( !d->bookmarkObjects.isEmpty() )
-  {
-    delete d->bookmarkObjects.takeFirst();
-  }
-  
-  while ( !d->groupObjects.isEmpty() )
-  {
-    delete d->groupObjects.takeFirst();
-  }
-  
-  for ( int i = 0; i < d->bookmarks.size(); ++i )
-  {
-    d->bookmarkObjects << new Smb4KBookmarkObject( d->bookmarks.at( i ) );
-  }
-  
-  for ( int i = 0; i < d->groups.size(); ++i )
-  {
-    d->groupObjects << new Smb4KBookmarkObject( d->groups.at( i ) );
-  }
-  
   emit updated();
 }
 
@@ -700,17 +534,7 @@ void Smb4KBookmarkHandler::loadBookmarks()
     }
   }
   
-  for ( int i = 0; i < d->bookmarks.size(); ++i )
-  {
-    d->bookmarkObjects << new Smb4KBookmarkObject( d->bookmarks.at( i ) );
-  }
-  
-  d->groups.sort();
-  
-  for ( int i = 0; i < d->groups.size(); ++i )
-  {
-    d->groupObjects << new Smb4KBookmarkObject( d->groups.at( i ) );
-  }
+  emit updated();
 }
 
 
@@ -774,12 +598,6 @@ QList<Smb4KBookmark *> Smb4KBookmarkHandler::bookmarksList() const
 }
 
 
-QDeclarativeListProperty<Smb4KBookmarkObject> Smb4KBookmarkHandler::bookmarks()
-{
-  return QDeclarativeListProperty<Smb4KBookmarkObject>( this, d->bookmarkObjects );
-}
-
-
 QList<Smb4KBookmark *> Smb4KBookmarkHandler::bookmarksList( const QString &group ) const
 {
   // Update bookmarks
@@ -807,12 +625,6 @@ QList<Smb4KBookmark *> Smb4KBookmarkHandler::bookmarksList( const QString &group
 QStringList Smb4KBookmarkHandler::groupsList() const
 {
   return d->groups;
-}
-
-
-QDeclarativeListProperty<Smb4KBookmarkObject> Smb4KBookmarkHandler::groups()
-{
-  return QDeclarativeListProperty<Smb4KBookmarkObject>( this, d->groupObjects );
 }
 
 

@@ -36,7 +36,6 @@
 #include "smb4kshare.h"
 #include "smb4ksettings.h"
 #include "smb4kglobal.h"
-#include "smb4knetworkobject.h"
 
 // Qt includes
 #include <QtCore/QXmlStreamReader>
@@ -813,57 +812,6 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog( Smb4KBasicNetworkItem *
   if ( delete_options )
   {
     delete options;
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KCustomOptionsManager::openCustomOptionsDialog(Smb4KNetworkObject *object)
-{
-  if ( object )
-  {
-    switch ( object->type() )
-    {
-      case Smb4KNetworkObject::Host:
-      {
-        for ( int i = 0; i < hostsList().size(); ++i )
-        {
-          if ( hostsList().at( i )->url() == object->url() )
-          {
-            openCustomOptionsDialog( hostsList().at( i ) );
-            break;
-          }
-          else
-          {
-            continue;
-          }
-        }
-        break;
-      }
-      case Smb4KNetworkObject::Share:
-      {
-        for ( int i = 0; i < sharesList().size(); ++i )
-        {
-          if ( sharesList().at( i )->url() == object->url() )
-          {
-            openCustomOptionsDialog( sharesList().at( i ) );
-            break;
-          }
-          else
-          {
-            continue;
-          }
-        }
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
   }
   else
   {

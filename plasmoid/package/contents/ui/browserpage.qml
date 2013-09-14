@@ -96,7 +96,7 @@ PlasmaComponents.Page {
         iconSource: "view-form"
         width: minimumWidth
         onClicked: {
-          mounter.openMountDialog()
+          iface.openMountDialog()
         }
       }
       Item {
@@ -150,7 +150,7 @@ PlasmaComponents.Page {
           if ( object !== null ) {
             lastUrl = object.url
             lastType = object.type
-            optionsManager.openCustomOptionsDialog( object )
+            iface.openCustomOptionsDialog( object )
           }
           else {
             // Do nothing
@@ -167,16 +167,11 @@ PlasmaComponents.Page {
   // Connections
   //
   Connections {
-    target: scanner
+    target: iface
     onWorkgroupsChanged: getWorkgroups()
     onHostsChanged: getHosts()
     onSharesChanged: getShares()
-  }
-  
-  Connections {
-    target: mounter
-    onMounted: shareMountedOrUnmounted()
-    onUnmounted: shareMountedOrUnmounted()
+    onMountedSharesChanged: shareMountedOrUnmounted()
   }
   
   //
@@ -185,14 +180,14 @@ PlasmaComponents.Page {
   function networkItemClicked( object ) {
     if ( object.type == 3 ) {
       if ( !object.isPrinter ) {
-        mounter.mount( object.url )
+        iface.mount( object.url )
       }
       else {
-        printer.print( object.url )
+        iface.print( object.url )
       }
     }
     else {
-      scanner.lookup( object )
+      iface.lookup( object )
     }
   }
   
@@ -203,21 +198,21 @@ PlasmaComponents.Page {
     if ( browserListView.model.count != 0 ) {
       var object = browserListView.model.get(0).object
       if ( object ) {
-        scanner.lookup( object )
+        iface.lookup( object )
       }
       else {
-        scanner.lookup()
+        iface.lookup()
       }
     }
     else {
       // Fallback method. Use the last known URL and Type
       // for rescanning.
-      var object = scanner.find( lastUrl, lastType )
+      var object = iface.findNetworkItem( lastUrl, lastType )
       if ( object !== null ) {
-        scanner.lookup( object )
+        iface.lookup( object )
       }
       else {
-        scanner.lookup()
+        iface.lookup()
       } 
     }
   }
@@ -226,9 +221,9 @@ PlasmaComponents.Page {
   // Abort any process run by the involved core classes
   //
   function abort() {
-    scanner.abortAll()
-    mounter.abortAll()
-    printer.abortAll()
+    iface.abortScanner();
+    iface.abortMounter();
+    iface.abortPrinter();
   }
   
   //
@@ -237,13 +232,13 @@ PlasmaComponents.Page {
   function up( object ) {
     switch ( object.type ) {
       case 2:       // host
-        scanner.lookup()
+        iface.lookup()
         break
       case 3:       // share
-        var parent = scanner.find( object.parentURL, object.parentType )
-        var grandparent = scanner.find( parent.parentURL, parent.parentType )
+        var parent = iface.findNetworkItem( object.parentURL, object.parentType )
+        var grandparent = iface.findNetworkItem( parent.parentURL, parent.parentType )
         if ( grandparent !== null ) {
-          scanner.lookup( grandparent )
+          iface.lookup( grandparent )
         }
         else {
           // Do nothing
@@ -268,9 +263,9 @@ PlasmaComponents.Page {
     //
     // Add the workgroups
     //
-    if ( scanner.workgroups.length != 0 ) {
-      for ( var i = 0; i < scanner.workgroups.length; i++ ) {
-        browserListView.model.append( { "object": scanner.workgroups[i] } )
+    if ( iface.workgroups.length != 0 ) {
+      for ( var i = 0; i < iface.workgroups.length; i++ ) {
+        browserListView.model.append( { "object": iface.workgroups[i] } )
       }
     }
     else {
@@ -286,7 +281,7 @@ PlasmaComponents.Page {
     // Get the workgroup name the hosts were looked up for
     //
     var workgroup_name = ""
-    var object = scanner.find( lastUrl, lastType )
+    var object = iface.findNetworkItem( lastUrl, lastType )
     
     if ( object !== null ) {
       workgroup_name = object.workgroupName
@@ -305,10 +300,10 @@ PlasmaComponents.Page {
     //
     // Add the workgroup members
     //
-    if ( scanner.hosts.length != 0 ) {
-      for ( var i = 0; i < scanner.hosts.length; i++ ) {
-        if ( workgroup_name.length != 0 && workgroup_name == scanner.hosts[i].workgroupName ) {
-          browserListView.model.append( { "object": scanner.hosts[i] } )
+    if ( iface.hosts.length != 0 ) {
+      for ( var i = 0; i < iface.hosts.length; i++ ) {
+        if ( workgroup_name.length != 0 && workgroup_name == iface.hosts[i].workgroupName ) {
+          browserListView.model.append( { "object": iface.hosts[i] } )
         }
         else {
           // Do nothing
@@ -328,7 +323,7 @@ PlasmaComponents.Page {
     // Get the host name the shares were looked up for
     //
     var host_name = ""
-    var object = scanner.find( lastUrl, lastType )
+    var object = iface.findNetworkItem( lastUrl, lastType )
     
     if ( object !== null ) {
       host_name = object.hostName
@@ -347,10 +342,10 @@ PlasmaComponents.Page {
     //
     // Add the shares
     //
-    if ( scanner.shares.length != 0 ) {
-      for ( var i = 0; i < scanner.shares.length; i++ ) {
-        if ( host_name.length != 0 && host_name == scanner.shares[i].hostName ) {
-          browserListView.model.append( { "object": scanner.shares[i] } )
+    if ( iface.shares.length != 0 ) {
+      for ( var i = 0; i < iface.shares.length; i++ ) {
+        if ( host_name.length != 0 && host_name == iface.shares[i].hostName ) {
+          browserListView.model.append( { "object": iface.shares[i] } )
         }
         else {
           // Do nothing
@@ -371,12 +366,12 @@ PlasmaComponents.Page {
       var object = browserListView.model.get(0).object
       if ( object !== null && object.type == 3 /* share */ ) {
         for ( var i = 0; i < browserListView.model.count; i++ ) {
-          var obj = mounter.find( browserListView.model.get(i).object.url, false )
+          var obj = iface.findMountedShare( browserListView.model.get(i).object.url, false )
           if ( obj !== null ) {
             browserListView.model.get(i).object.icon = obj.icon
           }
           else {
-            // Do nothing
+            browserListView.model.get(i).object.icon = "folder-remote"
           }
         }
       }

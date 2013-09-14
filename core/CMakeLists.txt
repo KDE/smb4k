@@ -7,7 +7,7 @@ include_directories(
 
 ########### next target ###############
 
-set( smb4kcore_LIB_SRCS
+set( smb4kcore_LIB_SRCS 
   smb4kauthinfo.cpp
   smb4kbasicnetworkitem.cpp
   smb4kbookmark.cpp
@@ -17,6 +17,8 @@ set( smb4kcore_LIB_SRCS
   smb4kcustomoptions.cpp
   smb4kcustomoptionsmanager.cpp
   smb4kcustomoptionsmanager_p.cpp
+  smb4kdeclarative.cpp
+  smb4kdeclarative_p.cpp
   smb4kglobal.cpp
   smb4kglobal_p.cpp
   smb4khomesshareshandler.cpp
@@ -74,9 +76,9 @@ if ( INSTALL_HEADER_FILES )
     smb4kbookmark.h
     smb4kbookmarkhandler.h
     smb4kbookmarkobject.h
-    smb4kcore.h
     smb4kcustomoptions.h
     smb4kcustomoptionsmanager.h
+    smb4kdeclarative.h
     smb4kglobal.h
     smb4khomesshareshandler.h
     smb4khost.h

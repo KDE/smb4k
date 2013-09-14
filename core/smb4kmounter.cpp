@@ -120,11 +120,6 @@ Smb4KMounter::~Smb4KMounter()
   {
     delete d->retries.takeFirst();
   }
-
-  while ( !d->shareObjects.isEmpty() )
-  {
-    delete d->shareObjects.takeFirst();
-  }
 }
 
 
@@ -583,34 +578,8 @@ void Smb4KMounter::import( bool check_inaccessible )
     if ( !found )
     {
       mountedSharesList()[i]->setIsMounted( false );
-      
-      // Update the share object so that the return value of isMounted()
-      // is correct.
-      Smb4KNetworkObject *share_obj = find( mountedSharesList().at( i )->url() );
-      
-      if ( share_obj )
-      {
-        share_obj->update( mountedSharesList().at( i ) );
-      }
-      else
-      {
-        // Do nothing
-      }
-      
       emit unmounted( mountedSharesList().at( i ) );
       removeMountedShare( mountedSharesList().at( i ) );
-      
-      // (Re)fill the list of share objects.
-      while ( !d->shareObjects.isEmpty() )
-      {
-        delete d->shareObjects.takeFirst();
-      }
-
-      for ( int i = 0; i < mountedSharesList().size(); ++i )
-      {
-        d->shareObjects << new Smb4KNetworkObject( mountedSharesList().at( i ) );
-      }
-      
       emit mountedSharesListChanged();
     }
     else
@@ -1352,124 +1321,6 @@ void Smb4KMounter::start()
 }
 
 
-QDeclarativeListProperty< Smb4KNetworkObject > Smb4KMounter::mountedShares()
-{
-  return QDeclarativeListProperty<Smb4KNetworkObject>( this, d->shareObjects );
-}
-
-
-void Smb4KMounter::mount(const QUrl& url)
-{
-  if ( url.isValid() && !url.path().isEmpty() )
-  {
-    QString share_name = url.path();
-      
-    if ( share_name.startsWith( '/' ) )
-    {
-      share_name = share_name.mid( 1, -1 );
-    }
-    else
-    {
-      // Do nothing
-    }
-      
-    Smb4KShare *share = findShare( share_name, url.host() );
-    
-    if ( share )
-    {
-      mountShare( share );
-    }
-    else
-    {
-      // If the share is not in the global list of shares,
-      // try the list of bookmarks.
-      QString unc( "//"+url.host()+"/"+share_name );
-      Smb4KBookmark *bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC( unc );
-      share = new Smb4KShare();
-      share->setURL( url );
-      share->setWorkgroupName( bookmark->workgroupName() );
-      share->setHostIP( bookmark->hostIP() );
-      mountShare( share );
-      delete share;
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KMounter::unmount(const QUrl& mountpoint)
-{
-  if ( mountpoint.isValid() )
-  {
-    Smb4KShare *share = findShareByPath( mountpoint.path() );
-    
-    if ( share )
-    {
-      unmountShare( share );
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KMounter::unmountAll()
-{
-  unmountAllShares();
-}
-
-
-
-Smb4KNetworkObject *Smb4KMounter::find( const QUrl &url, bool exactMatch )
-{
-  Smb4KNetworkObject *object = NULL;
-  
-  if ( url.isValid() )
-  {
-    KUrl u1 = url;
-    u1.setUserInfo( QString() );
-    u1.setPort( -1 );
-    
-    for ( int i = 0; i < d->shareObjects.size(); ++i )
-    {
-      KUrl u2 =  d->shareObjects.at( i )->url();
-      u2.setUserInfo( QString() );
-      u2.setPort( -1 );
-      
-      if ( url == d->shareObjects.at( i )->url() )
-      {
-        object = d->shareObjects[i];
-        break;
-      }
-      else if ( u1 == u2 && !exactMatch )
-      {
-        object = d->shareObjects[i];
-        continue;
-      }
-      else
-      {
-        continue;
-      }
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  return object;
-}
-
-
 void Smb4KMounter::check( Smb4KShare *share )
 {
   // Get the info about the usage, etc.
@@ -1893,17 +1744,6 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
       // Do nothing
     }
 
-    // (Re)fill the list of share objects.
-    while ( !d->shareObjects.isEmpty() )
-    {
-      delete d->shareObjects.takeFirst();
-    }
-
-    for ( int i = 0; i < mountedSharesList().size(); ++i )
-    {
-      d->shareObjects << new Smb4KNetworkObject( mountedSharesList().at( i ) );
-    }
-
     // Emit the mounted() signal.
     emit mounted( known_share );
     emit mountedSharesListChanged();
@@ -1928,19 +1768,6 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
     // works with an internal copy, we have to set this here!
     known_share->setIsMounted( false );
 
-    // Update the share object so that the return value of isMounted()
-    // is correct.
-    Smb4KNetworkObject *share_obj = find( known_share->url() );
-
-    if ( share_obj )
-    {
-      share_obj->update( known_share );
-    }
-    else
-    {
-      // Do nothing
-    }
-
     // Emit the unmounted() signal. We do it here, because if we do it
     // after the mount prefix was cleaned up, Smb4KShare::canonicalPath()
     // would return an empty string.
@@ -1951,18 +1778,6 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
 
     // Remove the share from the list of mounted shares.
     removeMountedShare( known_share );
-
-    // (Re)fill the list of share objects.
-    while ( !d->shareObjects.isEmpty() )
-    {
-      delete d->shareObjects.takeFirst();
-    }
-
-    for ( int i = 0; i < mountedSharesList().size(); ++i )
-    {
-      d->shareObjects << new Smb4KNetworkObject( mountedSharesList().at( i ) );
-    }
-
     emit mountedSharesListChanged();
   }
   else
@@ -2336,51 +2151,13 @@ void Smb4KMounter::slotStatResult( KJob *job )
 
         Smb4KShare *new_share = new Smb4KShare( *share );
         addMountedShare( new_share );
-
-        // (Re)fill the list of share object.
-        while ( !d->shareObjects.isEmpty() )
-        {
-          delete d->shareObjects.takeFirst();
-        }
-
-        for ( int i = 0; i < mountedSharesList().size(); ++i )
-        {
-          d->shareObjects << new Smb4KNetworkObject( mountedSharesList().at( i ) );
-        }
-
         emit updated( new_share );
       }
       else
       {
         mounted_share->setIsMounted( false );
-
-        // Update the share object so that the return value of isMounted()
-        // is correct.
-        Smb4KNetworkObject *share_obj = find( mounted_share->url() );
-
-        if ( share_obj )
-        {
-          share_obj->update( mounted_share );
-        }
-        else
-        {
-          // Do nothing
-        }
-
         emit unmounted( mounted_share );
         removeMountedShare( mounted_share );
-
-        // (Re)fill the list of share object.
-        while ( !d->shareObjects.isEmpty() )
-        {
-          delete d->shareObjects.takeFirst();
-        }
-
-        for ( int i = 0; i < mountedSharesList().size(); ++i )
-        {
-          d->shareObjects << new Smb4KNetworkObject( mountedSharesList().at( i ) );
-        }
-        
         emit mountedSharesListChanged();
       }
     }
@@ -2424,18 +2201,6 @@ void Smb4KMounter::slotStatResult( KJob *job )
         // This is a new share.
         Smb4KShare *new_share = new Smb4KShare( *share );
         addMountedShare( new_share );
-
-        // (Re)fill the list of share object.
-        while ( !d->shareObjects.isEmpty() )
-        {
-          delete d->shareObjects.takeFirst();
-        }
-
-        for ( int i = 0; i < mountedSharesList().size(); ++i )
-        {
-          d->shareObjects << new Smb4KNetworkObject( mountedSharesList().at( i ) );
-        }
-
         emit mounted( new_share );
         emit mountedSharesListChanged();
       }

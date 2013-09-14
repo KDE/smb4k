@@ -39,7 +39,6 @@
 #include "smb4kauthinfo.h"
 #include "smb4kwalletmanager.h"
 #include "smb4knotification.h"
-#include "smb4knetworkobject.h"
 #include "smb4kcustomoptions.h"
 #include "smb4kcustomoptionsmanager.h"
 
@@ -88,20 +87,6 @@ Smb4KScanner::Smb4KScanner( QObject *parent )
 
 Smb4KScanner::~Smb4KScanner()
 {
-  while ( !d->workgroupObjects.isEmpty() )
-  {
-    delete d->workgroupObjects.takeFirst();
-  }
-
-  while ( !d->hostObjects.isEmpty() )
-  {
-    delete d->hostObjects.takeFirst();
-  }
-
-  while ( !d->shareObjects.isEmpty() )
-  {
-    delete d->shareObjects.takeFirst();
-  }
 }
 
 
@@ -792,155 +777,6 @@ void Smb4KScanner::lookupInfo( Smb4KHost *host, QWidget *parent )
 }
 
 
-QDeclarativeListProperty<Smb4KNetworkObject> Smb4KScanner::workgroups()
-{
-  return QDeclarativeListProperty<Smb4KNetworkObject>( this, d->workgroupObjects );
-}
-
-
-QDeclarativeListProperty<Smb4KNetworkObject> Smb4KScanner::hosts()
-{
-  return QDeclarativeListProperty<Smb4KNetworkObject>( this, d->hostObjects );
-}
-
-
-QDeclarativeListProperty<Smb4KNetworkObject> Smb4KScanner::shares()
-{
-  return QDeclarativeListProperty<Smb4KNetworkObject>( this, d->shareObjects );
-}
-
-
-void Smb4KScanner::lookup( Smb4KNetworkObject *object )
-{
-  if ( object )
-  {
-    switch ( object->type() )
-    {
-      case Smb4KNetworkObject::Network:
-      {
-        lookupDomains();
-        break;
-      }
-      case Smb4KNetworkObject::Workgroup:
-      {
-        // Check if the workgroup is known.
-        Smb4KWorkgroup *workgroup = findWorkgroup( object->url().host().toUpper() );
-        
-        if ( workgroup )
-        {
-          lookupDomainMembers( workgroup );
-        }
-        else
-        {
-          // Do nothing
-        }
-        break;
-      }
-      case Smb4KNetworkObject::Host:
-      {
-        // Check if the host is known.
-        Smb4KHost *host = findHost( object->url().host().toUpper() );
-        
-        if ( host )
-        {
-          lookupShares( host );
-        }
-        else
-        {
-          // Do nothing
-        }
-        break;
-      }
-      case Smb4KNetworkObject::Share:
-      {
-        break;
-      }
-      default:
-      {
-        // Shares are ignored
-        break;
-      }
-    }
-  }
-  else
-  {
-    // If the object is NULL, scan the whole network.
-    lookupDomains();
-  }
-}
-
-
-Smb4KNetworkObject *Smb4KScanner::find( const QUrl &url, int type )
-{
-  Smb4KNetworkObject *object = NULL;
-  
-  if ( url.isValid() )
-  {  
-    switch ( type )
-    {
-      case Smb4KNetworkObject::Workgroup:
-      {
-        for ( int i = 0; i < d->workgroupObjects.size(); ++i )
-        {
-          if ( url == d->workgroupObjects.at( i )->url() )
-          {
-            object = d->workgroupObjects[i];
-            break;
-          }
-          else
-          {
-            continue;
-          }
-        }
-        break;
-      }
-      case Smb4KNetworkObject::Host:
-      {
-        for ( int i = 0; i < d->hostObjects.size(); ++i )
-        {
-          if ( url == d->hostObjects.at( i )->url() )
-          {
-            object = d->hostObjects[i];
-            break;
-          }
-          else
-          {
-            continue;
-          }
-        }
-        break;
-      }
-      case Smb4KNetworkObject::Share:
-      {
-        for ( int i = 0; i < d->shareObjects.size(); ++i )
-        {
-          if ( url == d->shareObjects.at( i )->url() )
-          {
-            object = d->shareObjects[i];
-            break;
-          }
-          else
-          {
-            continue;
-          }
-        }
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  return object;
-}
-
-
 void Smb4KScanner::timerEvent( QTimerEvent */*e*/ )
 {
   // Periodic scanning
@@ -1445,31 +1281,7 @@ void Smb4KScanner::slotWorkgroups( const QList<Smb4KWorkgroup *> &workgroups_lis
     addWorkgroup( new Smb4KWorkgroup( *workgroups_list.at( i ) ) );
   }
 
-  // (Re)fill the list of workgroup objects.
-  while ( !d->workgroupObjects.isEmpty() )
-  {
-    delete d->workgroupObjects.takeFirst();
-  }
-
-  for ( int i = 0; i < workgroupsList().size(); ++i )
-  {
-    d->workgroupObjects << new Smb4KNetworkObject( workgroupsList().at( i ) );
-  }
-
-  // (Re)fill the list of host object.
-  while ( !d->hostObjects.isEmpty() )
-  {
-    delete d->hostObjects.takeFirst();
-  }
-
-  for ( int i = 0; i < hostsList().size(); ++i )
-  {
-    d->hostObjects << new Smb4KNetworkObject( hostsList().at( i ) );
-  }  
-
   emit workgroups( workgroupsList() );
-  emit workgroupsListChanged();
-//   emit hostsListChanged();  
 }
 
 
@@ -1598,19 +1410,6 @@ void Smb4KScanner::slotHosts( Smb4KWorkgroup *workgroup, const QList<Smb4KHost *
   {
     emit hosts( workgroup, hostsList() );
   }
-
-  // (Re)fill the list of host object.
-  while ( !d->hostObjects.isEmpty() )
-  {
-    delete d->hostObjects.takeFirst();
-  }
-
-  for ( int i = 0; i < hostsList().size(); ++i )
-  {
-    d->hostObjects << new Smb4KNetworkObject( hostsList().at( i ) );
-  }
-  
-  emit hostsListChanged();
 }
 
 
@@ -1716,21 +1515,9 @@ void Smb4KScanner::slotShares( Smb4KHost *host, const QList<Smb4KShare *> &share
   {
     addShare( new Smb4KShare( *shares_list.at( i ) ) );
   }
-
-  // (Re)fill the list of share object.
-  while ( !d->shareObjects.isEmpty() )
-  {
-    delete d->shareObjects.takeFirst();
-  }
-
-  for ( int i = 0; i < sharesList().size(); ++i )
-  {
-    d->shareObjects << new Smb4KNetworkObject( sharesList().at( i ) );
-  }
   
   QList<Smb4KShare *> shared_resources = sharedResources( host );
   emit shares( host, shared_resources );
-  emit sharesListChanged();
 }
 
 

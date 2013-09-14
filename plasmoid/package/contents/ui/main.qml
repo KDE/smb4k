@@ -36,56 +36,16 @@ PlasmaExtras.App {
   property int minimumHeight: 300
   
   //
-  // The scanner
+  // The core interface
   //
-  Scanner {
-    id: scanner
+  CoreInterface {
+    id: iface
   }
   
   Connections {
-    target: scanner
-    onAboutToStart: busy()
-    onFinished: idle()
-  }
-  
-  //
-  // The mounter
-  //
-  Mounter {
-    id: mounter
-  }
-  
-  Connections {
-    target: mounter
-    onAboutToStart: busy()
-    onFinished: idle()
-  }
-  
-  //
-  // The print interface
-  //
-  Print {
-    id: printer
-  }
-  
-  Connections {
-    target: printer
-    onAboutToStart: busy()
-    onFinished: idle()
-  }
-  
-  //
-  // The bookmark handler
-  //
-  BookmarkHandler {
-    id: bookmarkHandler
-  }
-  
-  //
-  // The custom options manager
-  //
-  OptionsManager {
-    id: optionsManager
+    target: iface
+    onBusy: busy()
+    onIdle: idle()
   }
   
   //
@@ -166,9 +126,9 @@ PlasmaExtras.App {
     //
     // Start the core classes
     //
-    scanner.start()
-    mounter.start()
-    printer.start();
+    iface.startScanner();
+    iface.startMounter()
+    iface.startPrinter();
   }
   
   //

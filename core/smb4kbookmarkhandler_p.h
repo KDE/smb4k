@@ -317,9 +317,7 @@ class Smb4KBookmarkHandlerPrivate
   public:
     Smb4KBookmarkEditor *editor;
     QList<Smb4KBookmark *> bookmarks;
-    QList<Smb4KBookmarkObject *> bookmarkObjects;
     QStringList groups;
-    QList<Smb4KBookmarkObject *> groupObjects;
 };
 
 

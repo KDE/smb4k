@@ -53,8 +53,6 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
 {
   Q_OBJECT
   
-  Q_PROPERTY( bool running READ isRunning )
-  
   friend class Smb4KPrintPrivate;
   
   public:
@@ -109,7 +107,7 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
     /**
      * This function aborts all print jobs at once.
      */
-    Q_INVOKABLE void abortAll();
+    void abortAll();
 
     /**
      * This function aborts the printing to a certain printer share.
@@ -121,18 +119,7 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
     /**
      * This function starts the composite job
      */
-    Q_INVOKABLE void start();
-    
-    /**
-     * This function takes a network object representing a remote printer and 
-     * initiates the printing of a file. 
-     * 
-     * Please note that this function only works with share objects that are 
-     * already known. All others will be ignored.
-     * 
-     * @param object        The network object representing a remote printer
-     */
-    Q_INVOKABLE void print( Smb4KNetworkObject *object );
+    void start();
     
   Q_SIGNALS:
     /**
