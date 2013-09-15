@@ -78,6 +78,8 @@ PlasmaComponents.Page {
           if ( browserListView.model.count != 0 ) {
             var object = browserListView.model.get(0).object
             if ( object !== null ) {
+              lastUrl = object.url
+              lastType = object.type
               // Go one level up.
               up( object )
             }
@@ -195,26 +197,16 @@ PlasmaComponents.Page {
   // Rescan the current level
   //
   function rescan() {
-    if ( browserListView.model.count != 0 ) {
-      var object = browserListView.model.get(0).object
-      if ( object ) {
-        iface.lookup( object )
-      }
-      else {
-        iface.lookup()
-      }
+    //
+    // FIXME: Use items from the list view for rescanning
+    //
+    var object = iface.findNetworkItem( lastUrl, lastType )
+    if ( object !== null ) {
+      iface.lookup( object )
     }
     else {
-      // Fallback method. Use the last known URL and Type
-      // for rescanning.
-      var object = iface.findNetworkItem( lastUrl, lastType )
-      if ( object !== null ) {
-        iface.lookup( object )
-      }
-      else {
-        iface.lookup()
-      } 
-    }
+      iface.lookup()
+    } 
   }
   
   //
