@@ -28,6 +28,7 @@ import org.kde.plasma.core 0.1 as PlasmaCore
 import org.kde.plasma.components 0.1 as PlasmaComponents
 import org.kde.plasma.extras 0.1 as PlasmaExtras
 
+
 PlasmaComponents.Page {
   id: browserPage
   
@@ -141,7 +142,7 @@ PlasmaComponents.Page {
           if ( object !== null ) {
             lastUrl = object.url
             lastType = object.type            
-            bookmarkHandler.addBookmark( object )
+            iface.addBookmark( object )
           }
           else {
             // Do nothing
@@ -354,26 +355,32 @@ PlasmaComponents.Page {
   //
   function shareMountedOrUnmounted() {
     if ( browserListView.model.count != 0 ) {
-      // Check on which level we are.
-      var object = browserListView.model.get(0).object
-      if ( object !== null && object.type == 3 /* share */ ) {
-        for ( var i = 0; i < browserListView.model.count; i++ ) {
-          var obj = iface.findMountedShare( browserListView.model.get(i).object.url, false )
-          if ( obj !== null ) {
-            browserListView.model.get(i).object.icon = obj.icon
+      for ( var i = 0; i < browserListView.model.count; i++ ) {
+        var object = browserListView.model.get(i).object
+        if ( object !== null ) {
+          if ( object.type == 3 /* share */ ) {
+            var share_object = iface.findMountedShare( object.url, false )
+            if ( share_object !== null ) {
+              object.icon = share_object.icon
+            }
+            else {
+              object.icon = "folder-remote"
+            }
           }
           else {
-            browserListView.model.get(i).object.icon = "folder-remote"
+            // Stop. We are on the wrong level.
+            break
           }
         }
-      }
-      else {
-        // Do nothing
+        else {
+          // Do nothing
+        }
       }
     }
     else {
       // Do nothing
     }
+    browserListView.model.sync
   }
 }
 

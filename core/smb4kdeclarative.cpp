@@ -55,7 +55,9 @@ Smb4KDeclarative::Smb4KDeclarative(QObject* parent)
   connect( Smb4KScanner::self(), SIGNAL(aboutToStart(Smb4KBasicNetworkItem*,int)), this, SIGNAL(busy()) );
   connect( Smb4KScanner::self(), SIGNAL(finished(Smb4KBasicNetworkItem*,int)), this, SIGNAL(idle()) );
   
-  connect( Smb4KMounter::self(), SIGNAL(mountedSharesListChanged()), this, SLOT(slotMountedSharesListChanged()) );
+//   connect( Smb4KMounter::self(), SIGNAL(mountedSharesListChanged()), this, SLOT(slotMountedSharesListChanged()) );
+  connect( Smb4KMounter::self(), SIGNAL(mounted(Smb4KShare*)), this, SLOT(slotMountedSharesListChanged()) );
+  connect( Smb4KMounter::self(), SIGNAL(unmounted(Smb4KShare*)), this, SLOT(slotMountedSharesListChanged()) );
   connect( Smb4KMounter::self(), SIGNAL(aboutToStart(Smb4KShare*,int)), this, SIGNAL(busy()) );
   connect( Smb4KMounter::self(), SIGNAL(finished(Smb4KShare*,int)), this, SIGNAL(idle()) );
   
