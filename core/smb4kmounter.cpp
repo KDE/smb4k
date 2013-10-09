@@ -1523,7 +1523,7 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
   if ( !d->retries.isEmpty() && !hasSubjobs() )
   {
     // Inhibit automatic sleeping.
-    int cookie = Smb4KSolidInterface::self()->beginSleepSuppression(i18n("Retrying to mount shares. Please wait."));
+    int cookie = Smb4KSolidInterface::self()->beginSleepSuppression(i18n("Remounting shares. Please wait."));
     
     mountShares( d->retries );
       
