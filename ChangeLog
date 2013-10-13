@@ -1,4 +1,4 @@
-Smb4K 1.0.8 (????-??-??):
+Smb4K 1.0.8 (2013-10-13):
 - Explicity set language to "C" in Smb4KProcess, because Samba might be
   localized (closes SF ticket #34).
 
