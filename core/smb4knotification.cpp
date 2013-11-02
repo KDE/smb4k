@@ -536,7 +536,7 @@ void Smb4KNotification::commandNotFound( const QString &command )
 {
   KNotification *notification = KNotification::event( KNotification::Error,
                                 "Smb4K",
-                                i18n( "<p>The command</p><p><i>%1</i></p><p>could not be found. Please check your installation.</p>", command ),
+                                i18n( "<p>The command <b>%1</b> could not be found. Please check your installation.</p>", command ),
                                 KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0,
                                 KIconLoader::DefaultState ),
                                 0L,
