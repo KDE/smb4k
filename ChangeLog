@@ -1,3 +1,9 @@
+Smb4K 1.0.9 (2013-11-03):
+- With non-English languages the change introduced in version 1.0.8 
+  might not work correctly, because e.g. umlauts are not recognized and
+  the shell output is truncated. Setting the language to "en_US.UTF-8"
+  fixes this problem.
+
 Smb4K 1.0.8 (2013-10-19):
 - Explicity set language to "C" in Smb4KProcess, because Samba might be
   localized (closes SF ticket #34).
