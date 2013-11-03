@@ -45,7 +45,7 @@ Smb4KProcess::Smb4KProcess( QObject *parent )
 
   // Explicitly set the language, because Samba
   // might be localized (closes SF ticket #34).
-  setEnv("LANG", "C");
+  setEnv("LANG", "en_US.UTF-8");
 }
 
 
