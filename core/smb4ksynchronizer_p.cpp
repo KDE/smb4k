@@ -699,6 +699,50 @@ void Smb4KSyncJob::slotReadStandardOutput()
           // Do nothing
         }
       }
+      else if ( stdout.at( i ).contains( " to-chk=" ) )
+      {
+        // Make Smb4K work with rsync >= 3.1.
+        QString tmp = stdout.at( i ).section( " to-chk=", 1, 1 ).section( ')', 0, 0 ).trimmed();
+
+        bool success1 = true;
+        bool success2 = true;
+
+        qulonglong files = tmp.section( '/', 0, 0 ).trimmed().toLongLong( &success1 );
+        qulonglong total = tmp.section( '/', 1, 1 ).trimmed().toLongLong( &success2 );
+
+        if ( success1 && success2 )
+        {
+          setProcessedAmount( KJob::Files, total - files );
+          setTotalAmount( KJob::Files, total );
+          emitPercent( total - files, total );
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else if ( stdout.at( i ).contains( " ir-chk=" ) )
+      {
+        // Make Smb4K work with rsync >= 3.1.
+        QString tmp = stdout.at( i ).section( " ir-chk=", 1, 1 ).section( ')', 0, 0 ).trimmed();
+
+        bool success1 = true;
+        bool success2 = true;
+
+        qulonglong files = tmp.section( '/', 0, 0 ).trimmed().toLongLong( &success1 );
+        qulonglong total = tmp.section( '/', 1, 1 ).trimmed().toLongLong( &success2 );
+
+        if ( success1 && success2 )
+        {
+          setProcessedAmount( KJob::Files, total - files );
+          setTotalAmount( KJob::Files, total );
+          emitPercent( total - files, total );
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
       else
       {
         // No overall transfer progress can be determined

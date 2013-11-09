@@ -4,7 +4,7 @@ Smb4K 1.1.0 (????-??-??):
   to the core classes were applied.
 - Made Smb4K a kdeinit executable.
 - Renamed the mount helper to net.sourceforge.smb4k.mounthelper.
-- Added a plasmoid. It needs KDE 4.8.0 or later. If this requirement is not
+- Added a plasmoid. It needs KDE 4.10.0 or later. If this requirement is not
   met, its installation will be skipped.
 - Added Smb4KNetworkObject class that derives from QObject and encapsulates
   a network item (workgroup, host, or share).
@@ -115,6 +115,8 @@ Smb4K 1.1.0 (????-??-??):
     takes a cookie.
   + Renamed Smb4KSolidInterface::NetworkStatus::Unknown to
     Smb4KSolidInterface::NetworkStatus::UnknownStatus.
+- Revised Smb4KSynchronizer class (and helper classes):
+  + Make synchronizer work with rsync 3.1.
 - Changed the way tooltip are handled. They are not owned by the widgets
   anymore, but by the items.
 - Revised mount helper:
@@ -137,6 +139,17 @@ Smb4K 1.1.0 (????-??-??):
   + Renamed all classes that represent a page in the configuration dialog.
   + Added security modes 'ntlmssp' and 'ntlmsspi' for mount.cifs used with
     Linux kernel >= 3.8.
+- ... and more ...
+    
+Smb4K 1.0.9 (2013-11-03):
+- With non-English languages the change introduced in version 1.0.8 
+  might not work correctly, because e.g. umlauts are not recognized and
+  the shell output is truncated. Setting the language to "en_US.UTF-8"
+  fixes this problem.
+
+Smb4K 1.0.8 (2013-10-19):
+- Explicity set language to "C" in Smb4KProcess, because Samba might be
+  localized (closes SF ticket #34).
     
 Smb4K 1.0.7 (2013-05-13):
 - Fixed remounting of shares.
