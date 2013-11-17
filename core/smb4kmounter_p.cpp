@@ -892,6 +892,10 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
         {
           qDebug() << "Network unreachable ..." << endl;
         }
+        else if ( stderr.contains( "Unable to find suitable address." ) )
+        {
+          // Swallow this
+        }
 #else
         if ( stderr.contains( "Authentication error" ) )
         {
