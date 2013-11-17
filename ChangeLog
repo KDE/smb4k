@@ -92,6 +92,8 @@ Smb4K 1.1.0 (????-??-??):
     argument to mount.cifs is set to the users uid (closes SF ticket #32).
   + Adjusted command line under FreeBSD, so that the password can be passed
     to the mount process by the mount helper.
+  + Under Linux, the error message "Unable to find suitable address." is 
+    now suppressed.
 - Revised Smb4KWalletManager class:
   + When prompting for a password for a 'homes' share, use the UNC of the
     user's home directory and not //SERVER/homes.
