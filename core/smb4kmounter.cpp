@@ -315,18 +315,7 @@ void Smb4KMounter::triggerRemounts( bool fill_list )
     
     if ( !d->remounts.isEmpty() )
     {
-      for ( int i = 0; i < d->remounts.size(); ++i )
-      {
-        if ( d->remounts.at( i ) )
-        {
-          mountShare( d->remounts.at( i ) );
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-//       mountShares( d->remounts );
+      mountShares( d->remounts );
     
       // Wait until done.
       while ( hasSubjobs() )
