@@ -442,6 +442,51 @@ void Smb4KCustomOptionsManager::readCustomOptions()
                           options->setWriteAccess( Smb4KCustomOptions::UndefinedWriteAccess );
                         }
                       }
+                      else if ( xmlReader.name() == "security_mode" )
+                      {
+                        QString security_mode = xmlReader.readElementText();
+                        
+                        if ( QString::compare( security_mode, "none" ) == 0 )
+                        {
+                          options->setSecurityMode( Smb4KCustomOptions::NoSecurityMode );
+                        }
+                        else if ( QString::compare( security_mode, "krb5" ) == 0 )
+                        {
+                          options->setSecurityMode( Smb4KCustomOptions::Krb5 );
+                        }
+                        else if ( QString::compare( security_mode, "krb5i" ) == 0 )
+                        {
+                          options->setSecurityMode( Smb4KCustomOptions::Krb5i );
+                        }                        
+                        else if ( QString::compare( security_mode, "ntlm" ) == 0 )
+                        {
+                          options->setSecurityMode( Smb4KCustomOptions::Ntlm );
+                        }
+                        else if ( QString::compare( security_mode, "ntlmi" ) == 0 )
+                        {
+                          options->setSecurityMode( Smb4KCustomOptions::Ntlmi );
+                        }
+                        else if ( QString::compare( security_mode, "ntlmv2" ) == 0 )
+                        {
+                          options->setSecurityMode( Smb4KCustomOptions::Ntlmv2 );
+                        }
+                        else if ( QString::compare( security_mode, "ntlmv2i" ) == 0 )
+                        {
+                          options->setSecurityMode( Smb4KCustomOptions::Ntlmv2i );
+                        }
+                        else if ( QString::compare( security_mode, "ntlmssp" ) == 0 )
+                        {
+                          options->setSecurityMode( Smb4KCustomOptions::Ntlmssp );
+                        }
+                        else if ( QString::compare( security_mode, "ntlmsspi" ) == 0 )
+                        {
+                          options->setSecurityMode( Smb4KCustomOptions::Ntlmsspi );
+                        }
+                        else
+                        {
+                          options->setSecurityMode( Smb4KCustomOptions::UndefinedSecurityMode );
+                        }
+                      }
 #endif
                       else if ( xmlReader.name() == "kerberos" )
                       {
@@ -955,6 +1000,60 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
       break;
     }
   }
+  
+  switch ( Smb4KSettings::securityMode() )
+  {
+    case Smb4KSettings::EnumSecurityMode::None:
+    {
+      default_options.setSecurityMode( Smb4KCustomOptions::NoSecurityMode );
+      break;
+    }
+    case Smb4KSettings::EnumSecurityMode::Krb5:
+    {
+      default_options.setSecurityMode( Smb4KCustomOptions::Krb5 );
+      break;
+    }
+    case Smb4KSettings::EnumSecurityMode::Krb5i:
+    {
+      default_options.setSecurityMode( Smb4KCustomOptions::Krb5i );
+      break;
+    }
+    case Smb4KSettings::EnumSecurityMode::Ntlm:
+    {
+      default_options.setSecurityMode( Smb4KCustomOptions::Ntlm );
+      break;
+    }
+    case Smb4KSettings::EnumSecurityMode::Ntlmi:
+    {
+      default_options.setSecurityMode( Smb4KCustomOptions::Ntlmi );
+      break;
+    }
+    case Smb4KSettings::EnumSecurityMode::Ntlmv2:
+    {
+      default_options.setSecurityMode( Smb4KCustomOptions::Ntlmv2 );
+      break;
+    }
+    case Smb4KSettings::EnumSecurityMode::Ntlmv2i:
+    {
+      default_options.setSecurityMode( Smb4KCustomOptions::Ntlmv2i );
+      break;
+    }
+    case Smb4KSettings::EnumSecurityMode::Ntlmssp:
+    {
+      default_options.setSecurityMode( Smb4KCustomOptions::Ntlmssp );
+      break;
+    }
+    case Smb4KSettings::EnumSecurityMode::Ntlmsspi:
+    {
+      default_options.setSecurityMode( Smb4KCustomOptions::Ntlmsspi );
+      break;
+    }
+    default:
+    {
+      default_options.setSecurityMode( Smb4KCustomOptions::UndefinedSecurityMode );
+      break;
+    }
+  }
 #endif
 
   switch ( Smb4KSettings::protocolHint() )
@@ -1031,6 +1130,17 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
   // Write access
   if ( empty_options.writeAccess() != options->writeAccess() &&
        default_options.writeAccess() != options->writeAccess() )
+  {
+    return true;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Security mode
+  if ( empty_options.securityMode() != options->securityMode() &&
+       default_options.securityMode() != options->securityMode() )
   {
     return true;
   }

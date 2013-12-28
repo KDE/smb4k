@@ -587,6 +587,59 @@ QMap<QString, QString> Smb4KCustomOptions::customOptions() const
       break;
     }
   }
+  
+  switch ( d->securityMode )
+  {
+    case NoSecurityMode:
+    {
+      entries.insert( "security_mode", "none" );
+      break;
+    }
+    case Krb5:
+    {
+      entries.insert( "security_mode", "krb5" );
+      break;
+    }
+    case Krb5i:
+    {
+      entries.insert( "security_mode", "krb5i" );
+      break;
+    }
+    case Ntlm:
+    {
+      entries.insert( "security_mode", "ntlm" );
+      break;
+    }
+    case Ntlmi:
+    {
+      entries.insert( "security_mode", "ntlmi" );
+      break;
+    }
+    case Ntlmv2:
+    {
+      entries.insert( "security_mode", "ntlmv2" );
+      break;
+    }
+    case Ntlmv2i:
+    {
+      entries.insert( "security_mode", "ntlmv2i" );
+      break;
+    }
+    case Ntlmssp:
+    {
+      entries.insert( "security_mode", "ntlmssp" );
+      break;
+    }
+    case Ntlmsspi:
+    {
+      entries.insert( "security_mode", "ntlmsspi" );
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
 #endif
 
   switch ( d->protocolHint )
