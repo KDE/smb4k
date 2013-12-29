@@ -141,6 +141,7 @@ Smb4K 1.1.0 (????-??-??):
   + Renamed all classes that represent a page in the configuration dialog.
   + Added security modes 'ntlmssp' and 'ntlmsspi' for mount.cifs used with
     Linux kernel >= 3.8.
+  + Set the default security mode for mount.cifs to 'ntlmssp'.
 - ... and more ...
     
 Smb4K 1.0.9 (2013-11-03):

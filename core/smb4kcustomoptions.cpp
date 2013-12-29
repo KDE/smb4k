@@ -635,6 +635,11 @@ QMap<QString, QString> Smb4KCustomOptions::customOptions() const
       entries.insert( "security_mode", "ntlmsspi" );
       break;
     }
+    case UndefinedSecurityMode:
+    {
+      entries.insert( "security_mode", QString() );
+      break;
+    }
     default:
     {
       break;
@@ -667,7 +672,6 @@ QMap<QString, QString> Smb4KCustomOptions::customOptions() const
     case UndefinedProtocolHint:
     {
       entries.insert( "protocol", QString() );
-
       break;
     }
     default:

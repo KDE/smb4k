@@ -660,31 +660,31 @@
           <label>Connect as a null user (no name)</label>
         </choice>
         <choice name="Krb5">
-          <label>Kerberos version 5 authentication</label>
+          <label>Kerberos 5 authentication</label>
         </choice>
         <choice name="Krb5i">
-          <label>Kerberos authentication and packet signing</label>
+          <label>Kerberos 5 authentication and packet signing</label>
         </choice>
         <choice name="Ntlm">
-          <label>NTLM password hashing</label>
+          <label>NTLM protocol</label>
         </choice>
         <choice name="Ntlmi">
-          <label>NTLM password hashing and packet signing</label>
+          <label>NTLM protocol and packet signing</label>
         </choice>
         <choice name="Ntlmv2">
-          <label>NTLMv2 password hashing</label>
+          <label>NTLMv2 protocol</label>
         </choice>
         <choice name="Ntlmv2i">
-          <label>NTLMv2 password hashing and packet signing</label>
+          <label>NTLMv2 protocol and packet signing</label>
         </choice>
         <choice name="Ntlmssp">
-          <label>NTLMv2 password hashing encapsulated in Raw NTLMSSP message</label>
+          <label>NTLMSSP messaging protocol</label>
         </choice>
         <choice name="Ntlmsspi">
-          <label>NTLMv2 password hashing encapsulated in Raw NTLMSSP message and packet signing</label>
+          <label>NTLMSSP messaging protocol and packet signing</label>
         </choice>
       </choices>
-      <default>Ntlm</default>
+      <default>Ntlmssp</default>
     </entry>
   </group>  
 
