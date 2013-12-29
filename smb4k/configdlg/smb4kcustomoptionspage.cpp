@@ -52,6 +52,9 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
   custom_layout->setSpacing( 5 );
   custom_layout->setMargin( 0 );
   
+  //
+  // The list widget
+  //  
   m_custom_options           = new KListWidget( this );
   m_custom_options->setObjectName( "CustomOptionsList" );
   m_custom_options->viewport()->installEventFilter( this );
@@ -86,6 +89,9 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
   m_menu->addAction( clear_action );
   m_menu->addAction( undo_action );
   
+  //
+  // The editors
+  //  
   QWidget *editors = new QWidget( this );
   
   QVBoxLayout *editors_layout = new QVBoxLayout( editors );
@@ -123,18 +129,27 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
   general_editor_layout->addWidget( m_ip_address, 1, 1, 0 );
   general_editor_layout->addWidget( m_remount_share, 2, 0, 1, 2, 0 );
   
-  m_samba_editors = new QGroupBox( i18n( "Samba" ), editors );
+  m_tab_widget = new KTabWidget( editors );
   
-  QGridLayout *samba_editor_layout = new QGridLayout( m_samba_editors );
+  QWidget *samba_tab = new QWidget( m_tab_widget );
+  
+  QVBoxLayout *samba_tab_layout = new QVBoxLayout( samba_tab );
+  samba_tab_layout->setSpacing( 5 );
+  samba_tab_layout->setMargin( 0 );
+  
+  QGroupBox *samba_editors = new QGroupBox( samba_tab );
+  samba_editors->setFlat( true );
+  
+  QGridLayout *samba_editor_layout = new QGridLayout( samba_editors );
   samba_editor_layout->setSpacing( 5 );
   samba_editor_layout->setContentsMargins( samba_editor_layout->margin(),
                                            samba_editor_layout->margin() + 10,
                                            samba_editor_layout->margin(),
                                            samba_editor_layout->margin() );
   
-  QLabel *smb_port_label = new QLabel( "SMB Port:", m_samba_editors );
+  QLabel *smb_port_label = new QLabel( "SMB Port:", samba_editors );
   
-  m_smb_port = new KIntNumInput( m_samba_editors );
+  m_smb_port = new KIntNumInput( samba_editors );
   m_smb_port->setRange( Smb4KSettings::self()->remoteSMBPortItem()->minValue().toInt(),
                         Smb4KSettings::self()->remoteSMBPortItem()->maxValue().toInt() );
   m_smb_port->setSliderEnabled( true );
@@ -142,18 +157,18 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
   smb_port_label->setBuddy( m_smb_port );
 
 #ifndef Q_OS_FREEBSD
-  QLabel *fs_port_label = new QLabel( i18n( "Filesystem Port:" ), m_samba_editors );
+  QLabel *fs_port_label = new QLabel( i18n( "Filesystem Port:" ), samba_editors );
   
-  m_fs_port = new KIntNumInput( m_samba_editors );
+  m_fs_port = new KIntNumInput( samba_editors );
   m_fs_port->setRange( Smb4KSettings::self()->remoteFileSystemPortItem()->minValue().toInt(),
                        Smb4KSettings::self()->remoteFileSystemPortItem()->maxValue().toInt() );
   m_fs_port->setSliderEnabled( true );
 
   fs_port_label->setBuddy( m_fs_port );
   
-  QLabel *rw_label = new QLabel( i18n( "Write Access:" ), m_samba_editors );
+  QLabel *rw_label = new QLabel( i18n( "Write Access:" ), samba_editors );
   
-  m_write_access = new KComboBox( m_samba_editors );
+  m_write_access = new KComboBox( samba_editors );
   m_write_access->insertItem( 0, Smb4KSettings::self()->writeAccessItem()->choices()
                                  .value( Smb4KSettings::EnumWriteAccess::ReadWrite ).label, 
                               QVariant::fromValue<int>( Smb4KCustomOptions::ReadWrite ) );
@@ -163,9 +178,9 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
 
   rw_label->setBuddy( m_write_access );
 
-  QLabel *security_label = new QLabel( i18n( "Security Mode:" ), m_samba_editors );
+  QLabel *security_label = new QLabel( i18n( "Security Mode:" ), samba_editors );
 
-  m_security_mode = new KComboBox( m_samba_editors );
+  m_security_mode = new KComboBox( samba_editors );
 
   m_security_mode->insertItem( 0, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::None ).label,
                                QVariant::fromValue<int>( Smb4KCustomOptions::NoSecurityMode ) );
@@ -190,9 +205,9 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
 
 #endif
   
-  QLabel *protocol_label = new QLabel( i18n( "Protocol Hint:" ), m_samba_editors );
+  QLabel *protocol_label = new QLabel( i18n( "Protocol Hint:" ), samba_editors );
   
-  m_protocol_hint        = new KComboBox( m_samba_editors );
+  m_protocol_hint        = new KComboBox( samba_editors );
   m_protocol_hint->insertItem( 0, Smb4KSettings::self()->protocolHintItem()->choices()
                                   .value( Smb4KSettings::EnumProtocolHint::Automatic ).label,
                                QVariant::fromValue<int>( Smb4KCustomOptions::Automatic ) );
@@ -208,8 +223,8 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
 
   protocol_label->setBuddy( m_protocol_hint );
   
-  QLabel *uid_label = new QLabel( i18n( "User ID:" ), m_samba_editors );
-  m_user_id         = new KComboBox( m_samba_editors );
+  QLabel *uid_label = new QLabel( i18n( "User ID:" ), samba_editors );
+  m_user_id         = new KComboBox( samba_editors );
   
   QList<KUser> all_users = KUser::allUsers();
   
@@ -222,8 +237,8 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
 
   uid_label->setBuddy( m_user_id );
   
-  QLabel *gid_label = new QLabel( i18n( "Group ID:" ), m_samba_editors );
-  m_group_id        = new KComboBox( m_samba_editors );
+  QLabel *gid_label = new QLabel( i18n( "Group ID:" ), samba_editors );
+  m_group_id        = new KComboBox( samba_editors );
   
   QList<KUserGroup> all_groups = KUserGroup::allGroups();
   
@@ -236,7 +251,7 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
 
   gid_label->setBuddy( m_group_id );
   
-  m_kerberos = new QCheckBox( Smb4KSettings::self()->useKerberosItem()->label(), m_samba_editors );
+  m_kerberos = new QCheckBox( Smb4KSettings::self()->useKerberosItem()->label(), samba_editors );
   
 #ifndef Q_OS_FREEBSD
   samba_editor_layout->addWidget( smb_port_label, 0, 0, 0 );
@@ -254,7 +269,6 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
   samba_editor_layout->addWidget( gid_label, 6, 0, 0 );
   samba_editor_layout->addWidget( m_group_id, 6, 1, 0 );
   samba_editor_layout->addWidget( m_kerberos, 7, 0, 1, 2, 0 );
-//   samba_editor_layout->setRowStretch( 8, 100 );
 #else
   samba_editor_layout->addWidget( smb_port_label, 0, 0, 0 );
   samba_editor_layout->addWidget( m_smb_port, 0, 1, 0 );
@@ -265,48 +279,60 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
   samba_editor_layout->addWidget( gid_label, 3, 0, 0 );
   samba_editor_layout->addWidget( m_group_id, 3, 1, 0 );
   samba_editor_layout->addWidget( m_kerberos, 4, 0, 1, 2, 0 );
-//   samba_editor_layout->setRowStretch( 5, 100 );
 #endif
   
-  m_mac_editors = new QGroupBox( i18n( "Wake-On-LAN" ), editors );
+  samba_tab_layout->addWidget( samba_editors );
+  samba_tab_layout->addStretch( 100 );
+
+  QWidget *wol_tab = new QWidget( m_tab_widget );
   
-  QGridLayout *mac_editor_layout = new QGridLayout( m_mac_editors );
+  QVBoxLayout *wol_tab_layout = new QVBoxLayout( wol_tab );
+  wol_tab_layout->setSpacing( 5 );
+  wol_tab_layout->setMargin( 0 );  
+  
+  QGroupBox *mac_editors = new QGroupBox( wol_tab );
+  mac_editors->setFlat( true );
+  
+  QGridLayout *mac_editor_layout = new QGridLayout( mac_editors );
   mac_editor_layout->setSpacing( 5 );
   mac_editor_layout->setContentsMargins( mac_editor_layout->margin(),
                                          mac_editor_layout->margin() + 10,
                                          mac_editor_layout->margin(),
                                          mac_editor_layout->margin() );
   
-  QLabel *mac_label = new QLabel( i18n( "MAC address:" ), m_mac_editors );
+  QLabel *mac_label = new QLabel( i18n( "MAC address:" ), mac_editors );
   
-  m_mac_address = new KLineEdit( m_mac_editors );
+  m_mac_address = new KLineEdit( mac_editors );
   m_mac_address->setClearButtonShown( true );
   
   mac_label->setBuddy( m_mac_address );
   
   // If you change the texts here please also alter them in the custom 
   // options dialog.
-  m_send_before_scan = new QCheckBox( i18n( "Send magic package before scanning the network neighborhood" ), m_mac_editors );
+  m_send_before_scan = new QCheckBox( i18n( "Send magic package before scanning the network neighborhood" ), mac_editors );
   m_send_before_scan->setEnabled( false );
-  m_send_before_mount = new QCheckBox( i18n( "Send magic package before mounting a share" ), m_mac_editors );
+  m_send_before_mount = new QCheckBox( i18n( "Send magic package before mounting a share" ), mac_editors );
   m_send_before_mount->setEnabled( false );
   
   mac_editor_layout->addWidget( mac_label, 0, 0, 0 );
   mac_editor_layout->addWidget( m_mac_address, 0, 1, 0 );
   mac_editor_layout->addWidget( m_send_before_scan, 1, 0, 1, 2, 0 );
   mac_editor_layout->addWidget( m_send_before_mount, 2, 0, 1, 2, 0 );
-
+  
+  wol_tab_layout->addWidget( mac_editors );
+  wol_tab_layout->addStretch( 100 );
+  
+  (void)m_tab_widget->insertTab( SambaTab, samba_tab, i18n( "Samba" ) );
+  (void)m_tab_widget->insertTab( WolTab, wol_tab, i18n( "Wake-On-LAN" ) );
+  
   editors_layout->addWidget( m_general_editors );
-  editors_layout->addWidget( m_samba_editors );
-  editors_layout->addWidget( m_mac_editors );
-  editors_layout->addStretch( 100 );
+  editors_layout->addWidget( m_tab_widget );
                                  
   custom_layout->addWidget( m_custom_options );
   custom_layout->addWidget( editors );
 
   m_general_editors->setEnabled( false );
-  m_samba_editors->setEnabled( false );
-  m_mac_editors->setEnabled( false );
+  m_tab_widget->setEnabled( false );
 
   clearEditors();
   
@@ -573,10 +599,9 @@ void Smb4KCustomOptionsPage::clearEditors()
   m_send_before_scan->setChecked( false );
   m_send_before_mount->setChecked( false );
   
-  // Disable widget
+  // Disable widgets
   m_general_editors->setEnabled( false );
-  m_samba_editors->setEnabled( false );
-  m_mac_editors->setEnabled( false );
+  m_tab_widget->setEnabled( false );
 }
 
 
@@ -900,23 +925,17 @@ void Smb4KCustomOptionsPage::populateEditors(Smb4KCustomOptions* options)
   
   // Enable widget
   m_general_editors->setEnabled( true );
-  m_samba_editors->setEnabled( true );
+  m_tab_widget->setEnabled( true );
+  m_tab_widget->widget( SambaTab )->setEnabled( true );
   
   if ( m_current_options->type() == Smb4KCustomOptions::Host )
   {
-    if ( Smb4KSettings::enableWakeOnLAN() )
-    {
-      m_mac_editors->setEnabled( true );
-    }
-    else
-    {
-      // Do nothing
-    }
-    
+    m_tab_widget->widget( WolTab )->setEnabled( Smb4KSettings::enableWakeOnLAN() );
     m_remount_share->setEnabled( false );
   }
   else
   {
+    m_tab_widget->widget( WolTab )->setEnabled( false );
     m_remount_share->setEnabled( true );
   }
   

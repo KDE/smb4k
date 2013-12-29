@@ -40,6 +40,7 @@
 #include <klineedit.h>
 #include <knuminput.h>
 #include <kcombobox.h>
+#include <ktabwidget.h>
 
 // forward declarations
 class Smb4KCustomOptions;
@@ -183,6 +184,7 @@ class Smb4KCustomOptionsPage : public QWidget
     void slotEnableWOLFeatures( const QString &mac_address );
     
   private:
+    enum Tabs { SambaTab = 0, WolTab = 1 };
     void clearEditors();
     Smb4KCustomOptions *findOptions( const QString &url );
     void populateEditors( Smb4KCustomOptions *options );
@@ -192,8 +194,7 @@ class Smb4KCustomOptionsPage : public QWidget
     KActionMenu *m_menu;
     KActionCollection *m_collection;
     QGroupBox *m_general_editors;
-    QGroupBox *m_samba_editors;
-    QGroupBox *m_mac_editors;
+    KTabWidget *m_tab_widget;
     KLineEdit *m_unc_address;
     KLineEdit *m_ip_address;
     KLineEdit *m_mac_address;
