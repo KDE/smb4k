@@ -678,10 +678,10 @@
           <label>NTLMv2 protocol and packet signing</label>
         </choice>
         <choice name="Ntlmssp">
-          <label>NTLMSSP messaging protocol</label>
+          <label>NTLMSSP protocol</label>
         </choice>
         <choice name="Ntlmsspi">
-          <label>NTLMSSP messaging protocol and packet signing</label>
+          <label>NTLMSSP protocol and packet signing</label>
         </choice>
       </choices>
       <default>Ntlmssp</default>
