@@ -280,6 +280,9 @@ void Smb4KDeclarative::openMountDialog(QWidget* parent)
 
 void Smb4KDeclarative::mount(const QUrl& url)
 {
+  //
+  // FIXME - Smb4K 1.2: Use Smb4KNetworkObject as argument
+  // 
   if ( url.isValid() && !url.path().isEmpty() )
   {
     QString share_name = url.path();
@@ -322,6 +325,9 @@ void Smb4KDeclarative::mount(const QUrl& url)
 
 void Smb4KDeclarative::unmount(const QUrl& mountpoint)
 {
+  //
+  // FIXME - Smb4K 1.2: Use Smb4KNetworkObject as argument
+  // 
   if ( mountpoint.isValid() )
   {
     Smb4KShare *share = findShareByPath( mountpoint.path() );

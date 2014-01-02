@@ -186,7 +186,7 @@ PlasmaComponents.Page {
         iface.mount( object.url )
       }
       else {
-        iface.print( object.url )
+        iface.print( object )
       }
     }
     else {
