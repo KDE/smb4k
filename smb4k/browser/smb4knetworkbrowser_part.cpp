@@ -359,7 +359,7 @@ KAboutData *Smb4KNetworkBrowserPart::createAboutData()
                           "3.0",
                           ki18n( "The network browser KPart of Smb4K" ),
                           KAboutData::License_GPL_V2,
-                          ki18n( "\u00A9 2007-2011, Alexander Reinholdt" ),
+                          ki18n( "\u00A9 2007-2014, Alexander Reinholdt" ),
                           KLocalizedString(),
                           "http://smb4k.sourceforge.net",
                           "smb4k-bugs@lists.sourceforge.net" );

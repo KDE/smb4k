@@ -1,4 +1,4 @@
-Smb4K 1.1.0 (????-??-??):
+Smb4K 1.1.0 (2014-01-??):
 - Smb4K needs KDE SC version 4.8 or later.
 - Fixed many issues reported by krazy2. On the way several minor changes
   to the core classes were applied.

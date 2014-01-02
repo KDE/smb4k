@@ -48,7 +48,7 @@ static const char description[] =
   I18N_NOOP( "The advanced network neighborhood browser for KDE." );
 
 static const char authors[] =
-  I18N_NOOP( "\u00A9 2003-2012 Alexander Reinholdt" );
+  I18N_NOOP( "\u00A9 2003-2014 Alexander Reinholdt" );
 
 
 extern "C" KDE_EXPORT int kdemain( int argc, char **argv )
