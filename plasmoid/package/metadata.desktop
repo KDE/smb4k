@@ -1,6 +1,16 @@
 [Desktop Entry]
 Name=Network Neighborhood
+Name[de]=Netzwerkumgebung
+Name[nl]=Netwerkomgeving
+Name[pt]=Vizinhança na Rede
+Name[uk]=Мережеве оточення
+Name[x-test]=xxNetwork Neighborhoodxx
 Comment=Network neighborhood browser based on Smb4K
+Comment[de]=Erweiterter Browser für die Netzwerkumgebung auf der Basis von Smb4K
+Comment[nl]=Browser gebaseerd op smb4k voor de netwerkomgeving
+Comment[pt]=Navegador da vizinhança da rede baseado no Smb4K
+Comment[uk]=Переглядач мережевого середовища на основі Smb4K
+Comment[x-test]=xxNetwork neighborhood browser based on Smb4Kxx
 Icon=smb4k
 
 X-Plasma-API=declarativeappletscript
