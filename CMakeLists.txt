@@ -37,6 +37,7 @@ add_subdirectory( core )
 add_subdirectory( helpers )
 add_subdirectory( smb4k )
 add_subdirectory( data )
+add_subdirectory( doc )
 
 ########### Plasmoid ####################
 
