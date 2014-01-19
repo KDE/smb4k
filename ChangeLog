@@ -1,3 +1,8 @@
+Smb4K 1.2.0 (????-??-??):
+- Smb4K is no kdeinit executable anymore. The change in Smb4K 1.1.0 was 
+  actually not needed. Thanks go to Albert Astals Cid who pointed this
+  out.
+
 Smb4K 1.1.0 (2014-01-06):
 - Smb4K needs KDE SC version 4.8 or later.
 - Fixed many issues reported by krazy2. On the way several minor changes
