@@ -48,7 +48,9 @@
 #include <kglobal.h>
 #include <kstandarddirs.h>
 #include <kshell.h>
+#include <KGlobal>
 
+static const KCatalogLoader catalogLoader( QLatin1String("smb4k-core") );
 
 K_GLOBAL_STATIC( Smb4KGlobalPrivate, p );
 QMutex mutex( QMutex::Recursive /* needed to avoid dead-locks */ );
