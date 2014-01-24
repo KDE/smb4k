@@ -1,4 +1,3 @@
 #!/bin/bash
-$EXTRACTRC `find . -name \*.kcfg -o -name \*.rc` >> ./rc.cpp
-$XGETTEXT `find . -name \*.cpp` -o $podir/smb4k.pot
-$XGETTEXT `find . -name \*.qml` -L Java --join -o $podir/smb4k.pot
+$EXTRACTRC `find . -name \*.kcfg -o -name \*.rc | grep -v 'core/' ` >> ./rc.cpp
+$XGETTEXT `find . -name \*.cpp | grep -v 'core/' ` -o $podir/smb4k.pot
