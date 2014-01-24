@@ -399,7 +399,7 @@ namespace Smb4KGlobal
    * @param openWith      Integer of type Smb4KCore::OpenWith. Determines with which
    *                      application the share should be opened.
    */
-  KDE_EXPORT void open( Smb4KShare *share, OpenWith openWith = FileManager );
+  KDE_EXPORT void openShare( Smb4KShare *share, OpenWith openWith = FileManager );
   
   /**
    * Get the entries of the [global] section of the smb.conf file. By setting @p read 

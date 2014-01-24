@@ -755,7 +755,7 @@ bool Smb4KGlobal::onlyForeignMountedShares()
 }
 
 
-void Smb4KGlobal::open( Smb4KShare *share, OpenWith openWith )
+void Smb4KGlobal::openShare( Smb4KShare *share, OpenWith openWith )
 {
   if ( !share || share->isInaccessible() )
   {

@@ -353,11 +353,11 @@ void Smb4KSharesMenu::slotShareAction( QAction *action )
     }
     else if ( action->objectName().startsWith( QLatin1String( "[konsole]" ) ) )
     {
-      open( share, Smb4KGlobal::Konsole );
+      openShare( share, Smb4KGlobal::Konsole );
     }
     else if ( action->objectName().startsWith( QLatin1String( "[filemanager]" ) ) )
     {
-      open( share, Smb4KGlobal::FileManager );
+      openShare( share, Smb4KGlobal::FileManager );
     }
     else
     {
