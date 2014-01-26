@@ -48,16 +48,6 @@
       <whatsthis>Hidden shares will be displayed in the network browser. Hidden shares are ending with a $ sign, e.g. Musik$ or IPC$.</whatsthis>
       <default>true</default>
     </entry>
-    <entry name="ShowHiddenIPCShares" type="Bool">
-      <label>Show hidden IPC$ shares</label>
-      <whatsthis>Hidden IPC$ shares will be displayed in the network browser.</whatsthis>
-      <default>true</default>
-    </entry>
-    <entry name="ShowHiddenADMINShares" type="Bool">
-      <label>Show hidden ADMIN$ shares</label>
-      <whatsthis>Hidden ADMIN$ shares will be displayed in the network browser.</whatsthis>
-      <default>true</default>
-    </entry>
     <entry name="ShowType" type="Bool">
       <label>Show the type of the share</label>
       <whatsthis>The type of a share will be displayed in a separate column in the network browser. It can either be Disk, Print or IPC.</whatsthis>

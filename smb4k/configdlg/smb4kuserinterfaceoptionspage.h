@@ -63,15 +63,6 @@ class Smb4KUserInterfaceOptionsPage : public KTabWidget
      * The destructor
      */
     ~Smb4KUserInterfaceOptionsPage();
-    
-  protected slots:
-    /**
-     * Enables/disables buttons according to the toggle state of the
-     * "Show hidden shares" button.
-     *
-     * @param checked         TRUE if the check box is checked.
-     */
-    void slotShowHiddenClicked( bool checked );
 };
 
 #endif

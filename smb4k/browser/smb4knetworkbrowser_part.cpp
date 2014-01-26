@@ -1295,9 +1295,7 @@ void Smb4KNetworkBrowserPart::slotShares( Smb4KHost *host, const QList<Smb4KShar
                   {
                     if ( Smb4KSettings::showHiddenShares() )
                     {
-                      if ( (share_item->shareItem()->isPrinter() && Smb4KSettings::showPrinterShares()) ||
-                           (share_item->shareItem()->isIPC() && Smb4KSettings::showHiddenIPCShares()) ||
-                           (share_item->shareItem()->isADMIN() && Smb4KSettings::showHiddenADMINShares()) )
+                      if ( share_item->shareItem()->isPrinter() && Smb4KSettings::showPrinterShares() )
                       {
                         share_item->update( list.at( j ) );
                       }
@@ -1340,10 +1338,7 @@ void Smb4KNetworkBrowserPart::slotShares( Smb4KHost *host, const QList<Smb4KShar
                 {
                   if ( Smb4KSettings::showHiddenShares() )
                   {
-                    if ( (!list.at( j )->isPrinter() && !list.at( j )->isIPC() && !list.at( j )->isADMIN()) ||
-                         (list.at( j )->isPrinter() && Smb4KSettings::showPrinterShares()) ||
-                         (list.at( j )->isIPC() && Smb4KSettings::showHiddenIPCShares()) ||
-                         (list.at( j )->isADMIN() && Smb4KSettings::showHiddenADMINShares()) )
+                    if ( !list.at( j )->isPrinter() || (list.at( j )->isPrinter() && Smb4KSettings::showPrinterShares()) )
                     {
                       (void) new Smb4KNetworkBrowserItem( network_item, list.at( j ) );
                     }
@@ -1398,15 +1393,7 @@ void Smb4KNetworkBrowserPart::slotShares( Smb4KHost *host, const QList<Smb4KShar
                 }
                 else
                 {
-                  if ( (!Smb4KSettings::showHiddenIPCShares() && share_item->shareItem()->isIPC()) ||
-                       (!Smb4KSettings::showHiddenADMINShares() && share_item->shareItem()->isADMIN()) )
-                  {
-                    break;
-                  }
-                  else
-                  {
-                    // Do nothing
-                  }
+                  // Do nothing
                 }
 
                 found_share = true;

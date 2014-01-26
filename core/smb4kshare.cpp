@@ -406,18 +406,6 @@ bool Smb4KShare::isPrinter() const
 }
 
 
-bool Smb4KShare::isIPC() const
-{
-  return (QString::compare( d->url.path(), "IPC$" ) == 0);
-}
-
-
-bool Smb4KShare::isADMIN() const
-{
-  return (QString::compare( d->url.path(), "ADMIN$" ) == 0);
-}
-
-
 void Smb4KShare::setPath( const QString &mountpoint )
 {
   d->path = mountpoint;

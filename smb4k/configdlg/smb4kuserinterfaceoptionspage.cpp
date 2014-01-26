@@ -122,18 +122,8 @@ Smb4KUserInterfaceOptionsPage::Smb4KUserInterfaceOptionsPage( QWidget *parent )
                                     remote_shares_box );
   show_hidden->setObjectName( "kcfg_ShowHiddenShares" );
 
-  QCheckBox *show_ipc             = new QCheckBox( Smb4KSettings::self()->showHiddenIPCSharesItem()->label(),
-                                    remote_shares_box );
-  show_ipc->setObjectName( "kcfg_ShowHiddenIPCShares" );
-
-  QCheckBox *show_admin           = new QCheckBox( Smb4KSettings::self()->showHiddenADMINSharesItem()->label(),
-                                    remote_shares_box );
-  show_admin->setObjectName( "kcfg_ShowHiddenADMINShares" );
-
   shares_layout->addWidget( show_printers, 0, 0, 0 );
   shares_layout->addWidget( show_hidden, 0, 1, 0 );
-  shares_layout->addWidget( show_ipc, 1, 0, 0 );
-  shares_layout->addWidget( show_admin, 1, 1, 0 );
 
   // Columns
   QGroupBox *columns_box          = new QGroupBox( i18n( "Columns" ), network_browser_tab );
@@ -325,13 +315,6 @@ Smb4KUserInterfaceOptionsPage::Smb4KUserInterfaceOptionsPage( QWidget *parent )
   preview_layout->addItem( spacer5, 1, 0, 1, 1, 0 );
 
   insertTab( PreviewDialogTab, preview_tab, i18n( "Preview Dialog" ) );
-
-  // Add connections:
-  connect( show_hidden, SIGNAL(clicked(bool)),
-           this,        SLOT(slotShowHiddenClicked(bool)) );
-
-  // Do last adjustments:
-  slotShowHiddenClicked( Smb4KSettings::showHiddenShares() );
 }
 
 
@@ -344,11 +327,5 @@ Smb4KUserInterfaceOptionsPage::~Smb4KUserInterfaceOptionsPage()
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
 
-
-void Smb4KUserInterfaceOptionsPage::slotShowHiddenClicked( bool checked )
-{
-  findChild<QCheckBox *>( "kcfg_ShowHiddenIPCShares" )->setEnabled( checked );
-  findChild<QCheckBox *>( "kcfg_ShowHiddenADMINShares" )->setEnabled( checked );
-}
 
 #include "smb4kuserinterfaceoptionspage.moc"

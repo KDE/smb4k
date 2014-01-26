@@ -286,22 +286,6 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     bool isPrinter() const;
 
     /**
-     * If the share is an IPC$ share this function returns TRUE and FALSE
-     * otherwise.
-     *
-     * @returns TRUE if the share is an IPC share.
-     */
-    bool isIPC() const;
-
-    /**
-     * If the share is an ADMIN$ share this function returns TRUE and FALSE
-     * otherwise.
-     *
-     * @returns TRUE if the share is an ADMIN share.
-     */
-    bool isADMIN() const;
-
-    /**
      * Sets the path aka mount point of the share as gathered by the mounter.
      *
      * @param mountpoint      The mount point of the share.
