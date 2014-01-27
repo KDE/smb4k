@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Network Neighborhood
 Name[cs]=Síťové okolí
+Name[da]=Netværksnabolag
 Name[de]=Netzwerkumgebung
 Name[es]=Entorno de red
 Name[nl]=Netwerkomgeving
@@ -12,6 +13,7 @@ Name[uk]=Мережеве оточення
 Name[x-test]=xxNetwork Neighborhoodxx
 Comment=Network neighborhood browser based on Smb4K
 Comment[cs]=Prohlížeč síťového okolí založený na Smb4K
+Comment[da]=Browser til netværksnabolag baseret på Smb4K
 Comment[de]=Erweiterter Browser für die Netzwerkumgebung auf der Basis von Smb4K
 Comment[es]=Explorador de entorno de red basado en Smb4K
 Comment[nl]=Browser gebaseerd op smb4k voor de netwerkomgeving

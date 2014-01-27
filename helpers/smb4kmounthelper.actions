@@ -1,5 +1,6 @@
 [net.sourceforge.smb4k.mounthelper.mount]
 Name=Mount action
+Name[da]=Monteringshandling
 Name[de]=Aktion
 Name[es]=Acción de montaje
 Name[nl]=Aankoppelactie
@@ -10,6 +11,7 @@ Name[sv]=Monteringsåtgärd
 Name[uk]=Дія з монтування
 Name[x-test]=xxMount actionxx
 Description=Mounts a share
+Description[da]=Monterer en ressource
 Description[de]=Eine Freigabe einbinden
 Description[es]=Monta un recurso compartido
 Description[nl]=Een gedeelde zaak aankoppelen
@@ -23,6 +25,7 @@ Policy=yes
 
 [net.sourceforge.smb4k.mounthelper.unmount]
 Name=Unmount action
+Name[da]=Afmonteringshandling
 Name[de]=Aktion zum Lösen einer Einbindung
 Name[es]=Acción de desmontaje
 Name[nl]=Actie bij afkoppelen
@@ -33,6 +36,7 @@ Name[sv]=Avmonteringsåtgärd
 Name[uk]=Дія з демонтування
 Name[x-test]=xxUnmount actionxx
 Description=Unmounts a share
+Description[da]=Afmonterer en ressource
 Description[de]=Die Einbindung einer Freigabe lösen
 Description[es]=Desmonta un recurso compartido
 Description[nl]=Koppelt een gedeelde zaak af
