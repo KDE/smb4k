@@ -1,6 +1,7 @@
 [Global]
 IconName=smb4k
 Name=Smb4K
+Name[bs]=Smb4K
 Name[cs]=Smb4K
 Name[da]=Smb4K
 Name[de]=Smb4K
@@ -13,6 +14,7 @@ Name[sv]=Smb4K
 Name[uk]=Smb4K
 Name[x-test]=xxSmb4Kxx
 Comment=Advanced Network Neighborhood Browser
+Comment[bs]=Napredni pregledač mrežnog susjedstva
 Comment[cs]=Pokročilý prohlížeč síťového okolí
 Comment[da]=Den avancerede browser til netværksnabolag
 Comment[de]=Erweiterter Browser für die Netzwerkumgebung
@@ -28,6 +30,7 @@ Version=1
 
 [Context/Notification]
 Name=Notification
+Name[bs]=Obavještenje
 Name[cs]=Hlášení
 Name[da]=Bekendtgørelse
 Name[de]=Benachrichtigung
@@ -40,6 +43,7 @@ Name[sv]=Underrättelse
 Name[uk]=Сповіщення
 Name[x-test]=xxNotificationxx
 Comment=The user is notified about an action
+Comment[bs]=Korisnik je obavješten o akciji
 Comment[cs]=Uživatel je na činnost upozorněn
 Comment[da]=Brugeren får besked om en handling
 Comment[de]=Den Benutzer über eine Aktion benachrichtigen
@@ -54,6 +58,7 @@ Comment[x-test]=xxThe user is notified about an actionxx
 
 [Context/Warning]
 Name=Warning
+Name[bs]=Upozorenje
 Name[cs]=Varování
 Name[da]=Advarsel
 Name[de]=Warnung
@@ -66,6 +71,7 @@ Name[sv]=Varning
 Name[uk]=Попередження
 Name[x-test]=xxWarningxx
 Comment=A warning is shown to the user
+Comment[bs]=Prikazana je upozoravajuća poruka korisniku
 Comment[cs]=Uživateli je zobrazeno varování
 Comment[da]=En advarselsmeddelelse vises til brugeren
 Comment[de]=Dem Benutzer eine Warnung anzeigen
@@ -80,6 +86,7 @@ Comment[x-test]=xxA warning is shown to the userxx
 
 [Context/Error]
 Name=Error
+Name[bs]=Greška
 Name[cs]=Chyba
 Name[da]=Fejl
 Name[de]=Fehler
@@ -92,6 +99,7 @@ Name[sv]=Fel
 Name[uk]=Помилка
 Name[x-test]=xxErrorxx
 Comment=An error message is shown to the user
+Comment[bs]=Poruka greške je prikazana korisniku
 Comment[da]=En fejlmeddelelse vises til brugeren
 Comment[de]=Dem Benutzer eine Fehlermeldung anzeigen
 Comment[es]=Se muestra un mensaje de error al usuario
