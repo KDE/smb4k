@@ -3,7 +3,7 @@
     namespace.
                              -------------------
     begin                : Di Jul 24 2007
-    copyright            : (C) 2007-2012 by Alexander Reinholdt
+    copyright            : (C) 2007-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -141,6 +141,16 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions( bool read )
       // Process the file contents.
       for ( int i = contents.indexOf( "[global]", 0 ); i < contents.size(); ++i )
       {
+        if ( i == -1 )
+        {
+          // The smb.conf file does not contain a global section.
+          break;
+        }
+        else
+        {
+          // Do nothing
+        }
+        
         if ( contents.at( i ).trimmed().startsWith( '#' ) ||
              contents.at( i ).trimmed().startsWith( ';' ) )
         {
