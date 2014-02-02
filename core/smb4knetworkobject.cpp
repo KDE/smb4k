@@ -30,9 +30,12 @@
 
 // application specific includes
 #include "smb4knetworkobject.h"
+#include "smb4kglobal.h"
 
 // Qt includes
 #include <QtCore/QDebug>
+
+using namespace Smb4KGlobal;
 
 
 class Smb4KNetworkObjectPrivate
@@ -105,19 +108,19 @@ Smb4KNetworkObject::~Smb4KNetworkObject()
 }
 
 
-Smb4KNetworkObject::Type Smb4KNetworkObject::type() const
+Smb4KGlobal::NetworkItem Smb4KNetworkObject::type() const
 {
-  return static_cast<Type>( d->type );
+  return static_cast<Smb4KGlobal::NetworkItem>( d->type );
 }
 
 
-Smb4KNetworkObject::Type Smb4KNetworkObject::parentType() const
+Smb4KGlobal::NetworkItem Smb4KNetworkObject::parentType() const
 {
-  return static_cast<Type>( d->parentType );
+  return static_cast<Smb4KGlobal::NetworkItem>( d->parentType );
 }
 
 
-void Smb4KNetworkObject::setType(Smb4KNetworkObject::Type type)
+void Smb4KNetworkObject::setType(Smb4KGlobal::NetworkItem type)
 {
   d->type = type;
   
@@ -320,7 +323,7 @@ void Smb4KNetworkObject::setMounted(bool mounted)
 
 void Smb4KNetworkObject::update( Smb4KBasicNetworkItem *networkItem )
 {
-  if ( d->type == Workgroup && networkItem->type() == Smb4KBasicNetworkItem::Workgroup )
+  if ( d->type == Workgroup && networkItem->type() == Workgroup )
   {
     Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>( networkItem );
     
@@ -346,7 +349,7 @@ void Smb4KNetworkObject::update( Smb4KBasicNetworkItem *networkItem )
       // Do nothing
     }
   }
-  else if ( d->type == Host && networkItem->type() == Smb4KBasicNetworkItem::Host )
+  else if ( d->type == Host && networkItem->type() == Host )
   {
     Smb4KHost *host = static_cast<Smb4KHost *>( networkItem );
     
@@ -374,7 +377,7 @@ void Smb4KNetworkObject::update( Smb4KBasicNetworkItem *networkItem )
       // Do nothing
     }
   }
-  else if ( d->type == Share && networkItem->type() == Smb4KBasicNetworkItem::Share )
+  else if ( d->type == Share && networkItem->type() == Share )
   {
     Smb4KShare *share = static_cast<Smb4KShare *>( networkItem );
     

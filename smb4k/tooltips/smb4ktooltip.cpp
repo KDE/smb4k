@@ -33,6 +33,7 @@
 #include "core/smb4kworkgroup.h"
 #include "core/smb4khost.h"
 #include "core/smb4kshare.h"
+#include "core/smb4kglobal.h"
 
 // Qt includes
 #include <QTimer>
@@ -53,6 +54,9 @@
 #include <kseparator.h>
 #include <kwindowsystem.h>
 #include <kcolorscheme.h>
+
+using namespace Smb4KGlobal;
+
 
 Smb4KToolTip::Smb4KToolTip( QWidget* parent )
 : QWidget( parent, Qt::ToolTip|Qt::BypassGraphicsProxyWidget|Qt::FramelessWindowHint ),
@@ -128,7 +132,7 @@ void Smb4KToolTip::update(Smb4KToolTip::Parent parent, Smb4KBasicNetworkItem* it
       {
         switch ( m_item->type() )
         {
-          case Smb4KBasicNetworkItem::Workgroup:
+          case Workgroup:
           {
             Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>( item );
             
@@ -142,7 +146,7 @@ void Smb4KToolTip::update(Smb4KToolTip::Parent parent, Smb4KBasicNetworkItem* it
             }
             break;
           }
-          case Smb4KBasicNetworkItem::Host:
+          case Host:
           {
             Smb4KHost *host = static_cast<Smb4KHost *>( item );
             
@@ -183,7 +187,7 @@ void Smb4KToolTip::update(Smb4KToolTip::Parent parent, Smb4KBasicNetworkItem* it
             }
             break;
           }
-          case Smb4KBasicNetworkItem::Share:
+          case Share:
           {
             Smb4KShare *share = static_cast<Smb4KShare *>( item );
             
@@ -326,7 +330,7 @@ void Smb4KToolTip::setupNetworkBrowserToolTip()
   
   switch ( m_item->type() )
   {
-    case Smb4KBasicNetworkItem::Workgroup:
+    case Workgroup:
     {
       Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>( m_item );
       
@@ -367,7 +371,7 @@ void Smb4KToolTip::setupNetworkBrowserToolTip()
       m_info_layout->addSpacerItem( new QSpacerItem( 0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding ) );
       break;
     }
-    case Smb4KBasicNetworkItem::Host:
+    case Host:
     {
       Smb4KHost *host = static_cast<Smb4KHost *>( m_item );
       
@@ -462,7 +466,7 @@ void Smb4KToolTip::setupNetworkBrowserToolTip()
       m_info_layout->addSpacerItem( new QSpacerItem( 0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding ) );
       break;
     }
-    case Smb4KBasicNetworkItem::Share:
+    case Share:
     {
       Smb4KShare *share = static_cast<Smb4KShare *>( m_item );
       
@@ -691,7 +695,7 @@ void Smb4KToolTip::updateNetworkBrowserToolTip()
   {
     switch ( m_item->type() )
     {
-      case Smb4KBasicNetworkItem::Workgroup:
+      case Workgroup:
       {
         Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>( m_item );
         
@@ -717,7 +721,7 @@ void Smb4KToolTip::updateNetworkBrowserToolTip()
         
         break;
       }
-      case Smb4KBasicNetworkItem::Host:
+      case Host:
       {
         Smb4KHost *host = static_cast<Smb4KHost *>( m_item );
 
@@ -803,7 +807,7 @@ void Smb4KToolTip::updateNetworkBrowserToolTip()
       
         break;
       }
-      case Smb4KBasicNetworkItem::Share:
+      case Share:
       {
         Smb4KShare *share = static_cast<Smb4KShare *>( m_item );
         

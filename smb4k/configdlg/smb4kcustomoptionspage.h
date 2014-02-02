@@ -68,13 +68,6 @@ class Smb4KCustomOptionsPage : public QWidget
     virtual ~Smb4KCustomOptionsPage();
     
     /**
-     * This enumeration marks the type of the custom options item
-     * in the list widget.
-     */
-    enum ItemType{ Host,
-                   Share };
-
-    /**
      * This function inserts a list of custom option items into the list widget.
      *
      * @param list              The list with Smb4KSambaOptions objects

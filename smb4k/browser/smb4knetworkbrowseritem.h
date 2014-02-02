@@ -80,13 +80,6 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
     virtual ~Smb4KNetworkBrowserItem();
 
     /**
-     * Type of the item.
-     */
-    enum ItemType{ Workgroup = 1000,
-                   Host = 1001,
-                   Share = 1002 };
-
-    /**
      * Columns of the item.
      */
     enum Columns{ Network = 0,

@@ -32,6 +32,7 @@
 #include "smb4knetworkbrowseritem.h"
 #include "../tooltips/smb4ktooltip.h"
 #include "core/smb4ksettings.h"
+#include "core/smb4kglobal.h"
 
 // Qt includes
 #include <QMouseEvent>
@@ -48,6 +49,8 @@
 #include <kglobalsettings.h>
 #include <kapplication.h>
 #include <kiconloader.h>
+
+using namespace Smb4KGlobal;
 
 Smb4KNetworkBrowser::Smb4KNetworkBrowser( QWidget *parent )
 : QTreeWidget( parent )
@@ -117,12 +120,12 @@ bool Smb4KNetworkBrowser::event( QEvent *e )
 
           switch ( item->type() )
           {
-            case Smb4KNetworkBrowserItem::Host:
+            case Host:
             {
               ind = 2;
               break;
             }
-            case Smb4KNetworkBrowserItem::Share:
+            case Share:
             {
               ind = 3;
               break;
@@ -407,8 +410,8 @@ void Smb4KNetworkBrowser::slotItemExecuted( QTreeWidgetItem *item, int /*column*
   {
     switch ( item->type() )
     {
-      case Smb4KNetworkBrowserItem::Workgroup:
-      case Smb4KNetworkBrowserItem::Host:
+      case Workgroup:
+      case Host:
       {
         if ( !item->isExpanded() )
         {

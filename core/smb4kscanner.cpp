@@ -130,7 +130,7 @@ bool Smb4KScanner::isRunning( Smb4KGlobal::Process process, Smb4KBasicNetworkIte
     }
     case LookupDomainMembers:
     {
-      if ( item && item->type() == Smb4KBasicNetworkItem::Workgroup )
+      if ( item && item->type() == Workgroup )
       {
         // Only return TRUE if a job for the passed workgroup is running.
         Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>( item );
@@ -177,7 +177,7 @@ bool Smb4KScanner::isRunning( Smb4KGlobal::Process process, Smb4KBasicNetworkIte
     }
     case LookupShares:
     {
-      if ( item && item->type() == Smb4KBasicNetworkItem::Host )
+      if ( item && item->type() == Host )
       {
         // Only return TRUE if a job for the passed host is running.
         Smb4KHost *host = static_cast<Smb4KHost *>( item );
@@ -224,7 +224,7 @@ bool Smb4KScanner::isRunning( Smb4KGlobal::Process process, Smb4KBasicNetworkIte
     }
     case LookupInfo:
     {
-      if ( item && item->type() == Smb4KBasicNetworkItem::Host )
+      if ( item && item->type() == Host )
       {
         // Only return TRUE if a job for the passed host is running.
         Smb4KHost *host = static_cast<Smb4KHost *>( item );
@@ -314,7 +314,7 @@ void Smb4KScanner::abort( Smb4KGlobal::Process process, Smb4KBasicNetworkItem *i
     }
     case LookupDomainMembers:
     {
-      if ( item && item->type() == Smb4KBasicNetworkItem::Workgroup )
+      if ( item && item->type() == Workgroup )
       {
         // Only kill a job if the workgroup matches.
         Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>( item );
@@ -361,7 +361,7 @@ void Smb4KScanner::abort( Smb4KGlobal::Process process, Smb4KBasicNetworkItem *i
     }
     case LookupShares:
     {
-      if ( item && item->type() == Smb4KBasicNetworkItem::Host )
+      if ( item && item->type() == Host )
       {
         // Only kill a job if the host matches
         Smb4KHost *host = static_cast<Smb4KHost *>( item );
@@ -409,7 +409,7 @@ void Smb4KScanner::abort( Smb4KGlobal::Process process, Smb4KBasicNetworkItem *i
     }
     case LookupInfo:
     {
-      if ( item && item->type() == Smb4KBasicNetworkItem::Host )
+      if ( item && item->type() == Host )
       {
         // Only return TRUE if a job for the passed host is running.
         Smb4KHost *host = static_cast<Smb4KHost *>( item );

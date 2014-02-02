@@ -93,13 +93,13 @@ void Smb4KCustomOptionsDialog::setupView()
 
   switch ( m_options->type() )
   {
-    case Smb4KCustomOptions::Host:
+    case Host:
     {
       label = new QLabel( i18n( "<p>Define custom options for host <b>%1</b> and all the shares it provides.</p>",
                           m_options->hostName() ), description );
       break;
     }
-    case Smb4KCustomOptions::Share:
+    case Share:
     {
       label = new QLabel( i18n( "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>",
                           m_options->shareName(), m_options->hostName() ),
@@ -552,11 +552,11 @@ void Smb4KCustomOptionsDialog::setupView()
   // dialog.
   m_send_before_scan = new QCheckBox( i18n( "Send magic package before scanning the network neighborhood" ), wol_editors );
   m_send_before_scan->setChecked( m_options->wolSendBeforeNetworkScan() );
-  m_send_before_scan->setEnabled( (m_options->type() == Smb4KCustomOptions::Host) );
+  m_send_before_scan->setEnabled( (m_options->type() == Host) );
   
   m_send_before_mount = new QCheckBox( i18n( "Send magic package before mounting a share" ), wol_editors );
   m_send_before_mount->setChecked( m_options->wolSendBeforeMount() );
-  m_send_before_mount->setEnabled( (m_options->type() == Smb4KCustomOptions::Host) );
+  m_send_before_mount->setEnabled( (m_options->type() == Host) );
   
   wol_editors_layout->addWidget( mac_label, 0, 0, 0 );
   wol_editors_layout->addWidget( m_mac_address, 0, 1, 0 );
@@ -585,7 +585,7 @@ void Smb4KCustomOptionsDialog::setupView()
   connect( m_send_before_scan, SIGNAL(toggled(bool)), SLOT(slotCheckValues()) );
   connect( m_send_before_mount, SIGNAL(toggled(bool)), SLOT(slotCheckValues()) );
   
-  wol_editors->setEnabled( (m_options->type() == Smb4KCustomOptions::Host && Smb4KSettings::enableWakeOnLAN()) );
+  wol_editors->setEnabled( (m_options->type() == Host && Smb4KSettings::enableWakeOnLAN()) );
   
   enableButton( User1, !defaultValues() );
 }
@@ -677,7 +677,7 @@ bool Smb4KCustomOptionsDialog::defaultValues()
     // Do nothing
   }
   
-  if ( m_options->type() == Smb4KCustomOptions::Host )
+  if ( m_options->type() == Host )
   {
     if ( !m_mac_address->text().isEmpty() )
     {
@@ -849,7 +849,7 @@ void Smb4KCustomOptionsDialog::slotSetDefaultValues()
 
   m_kerberos->setChecked( Smb4KSettings::self()->useKerberos() );
 
-  if ( m_options->type() == Smb4KCustomOptions::Host )
+  if ( m_options->type() == Host )
   {
     m_mac_address->clear();
     m_send_before_scan->setChecked( false );

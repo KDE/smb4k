@@ -28,6 +28,7 @@
 #include "smb4kcustomoptionspage.h"
 #include "core/smb4ksettings.h"
 #include "core/smb4kcustomoptions.h"
+#include "core/smb4kglobal.h"
 
 // Qt includes
 #include <QHBoxLayout>
@@ -39,6 +40,8 @@
 // KDE includes
 #include <klocale.h>
 #include <kmenu.h>
+
+using namespace Smb4KGlobal;
 
 
 Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( parent )
@@ -443,7 +446,7 @@ void Smb4KCustomOptionsPage::insertCustomOptions(const QList<Smb4KCustomOptions*
   {
     switch ( m_options_list.at( i )->type() )
     {
-      case Smb4KCustomOptions::Host:
+      case Host:
       {
         QListWidgetItem *item = new QListWidgetItem( KIcon( "network-server" ), 
                                     m_options_list.at( i )->unc(),
@@ -451,7 +454,7 @@ void Smb4KCustomOptionsPage::insertCustomOptions(const QList<Smb4KCustomOptions*
         item->setData( Qt::UserRole, m_options_list.at( i )->url().prettyUrl() );
         break;
       }
-      case Smb4KCustomOptions::Share:
+      case Share:
       {
         QListWidgetItem *item = new QListWidgetItem( KIcon( "folder-remote" ), 
                                     m_options_list.at( i )->unc(),
@@ -928,7 +931,7 @@ void Smb4KCustomOptionsPage::populateEditors(Smb4KCustomOptions* options)
   m_tab_widget->setEnabled( true );
   m_tab_widget->widget( SambaTab )->setEnabled( true );
   
-  if ( m_current_options->type() == Smb4KCustomOptions::Host )
+  if ( m_current_options->type() == Host )
   {
     m_tab_widget->widget( WolTab )->setEnabled( Smb4KSettings::enableWakeOnLAN() );
     m_remount_share->setEnabled( false );
@@ -1004,11 +1007,11 @@ void Smb4KCustomOptionsPage::commitChanges()
     options->setWOLSendBeforeMount( m_send_before_mount->isChecked() );
     
     // In case of a host, propagate the changes to its shares.
-    if ( options->type() == Smb4KCustomOptions::Host )
+    if ( options->type() == Host )
     {
       for ( int i = 0; i < m_options_list.size(); ++i )
       {
-        if ( m_options_list.at( i )->type() == Smb4KCustomOptions::Share &&
+        if ( m_options_list.at( i )->type() == Share &&
              QString::compare( m_options_list.at( i )->hostName() , options->hostName(), Qt::CaseInsensitive ) == 0 &&
              QString::compare( m_options_list.at( i )->workgroupName() , options->workgroupName(), Qt::CaseInsensitive ) == 0 )
         {

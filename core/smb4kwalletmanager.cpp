@@ -178,7 +178,7 @@ void Smb4KWalletManager::readAuthInfo( Smb4KBasicNetworkItem *networkItem )
 
     switch ( networkItem->type() )
     {
-      case Smb4KBasicNetworkItem::Host:
+      case Host:
       {
         Smb4KHost *host = static_cast<Smb4KHost *>( networkItem );
 
@@ -255,7 +255,7 @@ void Smb4KWalletManager::readAuthInfo( Smb4KBasicNetworkItem *networkItem )
         }
         break;
       }
-      case Smb4KBasicNetworkItem::Share:
+      case Share:
       {
         Smb4KShare *share = static_cast<Smb4KShare *>( networkItem );
 
@@ -361,7 +361,7 @@ void Smb4KWalletManager::readAuthInfo( Smb4KBasicNetworkItem *networkItem )
   {
     switch ( networkItem->type() )
     {
-      case Smb4KBasicNetworkItem::Host:
+      case Host:
       {
         Smb4KHost *host = static_cast<Smb4KHost *>( networkItem );
 
@@ -404,7 +404,7 @@ void Smb4KWalletManager::readAuthInfo( Smb4KBasicNetworkItem *networkItem )
         }
         break;
       }
-      case Smb4KBasicNetworkItem::Share:
+      case Share:
       {
         Smb4KShare *share = static_cast<Smb4KShare *>( networkItem );
 
@@ -557,7 +557,7 @@ void Smb4KWalletManager::writeAuthInfo( Smb4KBasicNetworkItem *networkItem )
   {
     switch ( networkItem->type() )
     {
-      case Smb4KBasicNetworkItem::Host:
+      case Host:
       {
         Smb4KHost *host = static_cast<Smb4KHost *>( networkItem );
 
@@ -603,7 +603,7 @@ void Smb4KWalletManager::writeAuthInfo( Smb4KBasicNetworkItem *networkItem )
         }
         break;
       }
-      case Smb4KBasicNetworkItem::Share:
+      case Share:
       {
         Smb4KShare *share = static_cast<Smb4KShare *>( networkItem );
 
@@ -682,7 +682,7 @@ void Smb4KWalletManager::writeAuthInfo( Smb4KBasicNetworkItem *networkItem )
     // do this, remove the old one, if one is present.
     switch ( networkItem->type() )
     {
-      case Smb4KBasicNetworkItem::Host:
+      case Host:
       {
         Smb4KHost *host = static_cast<Smb4KHost *>( networkItem );
 
@@ -717,7 +717,7 @@ void Smb4KWalletManager::writeAuthInfo( Smb4KBasicNetworkItem *networkItem )
         }
         break;
       }
-      case Smb4KBasicNetworkItem::Share:
+      case Share:
       {
         Smb4KShare *share = static_cast<Smb4KShare *>( networkItem );
 
@@ -802,7 +802,7 @@ bool Smb4KWalletManager::showPasswordDialog( Smb4KBasicNetworkItem *networkItem,
 
   switch ( networkItem->type() )
   {
-    case Smb4KBasicNetworkItem::Share:
+    case Share:
     {
       Smb4KShare *share = static_cast<Smb4KShare *>( networkItem );
 

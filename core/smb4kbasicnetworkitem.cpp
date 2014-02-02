@@ -41,13 +41,13 @@
 class Smb4KBasicNetworkItemPrivate
 {
   public:
-    Smb4KBasicNetworkItem::Type type;
+    NetworkItem type;
     QString key;
     QIcon icon;
 };
 
 
-Smb4KBasicNetworkItem::Smb4KBasicNetworkItem( Smb4KBasicNetworkItem::Type type )
+Smb4KBasicNetworkItem::Smb4KBasicNetworkItem( NetworkItem type )
 : d( new Smb4KBasicNetworkItemPrivate )
 {
   d->type = type;
@@ -66,7 +66,7 @@ Smb4KBasicNetworkItem::~Smb4KBasicNetworkItem()
 }
 
 
-Smb4KBasicNetworkItem::Type Smb4KBasicNetworkItem::type() const
+Smb4KGlobal::NetworkItem Smb4KBasicNetworkItem::type() const
 {
   return d->type;
 }

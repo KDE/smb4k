@@ -27,6 +27,9 @@
 #ifndef SMB4KBASICNETWORKITEM_H
 #define SMB4KBASICNETWORKITEM_H
 
+// application specific includes
+#include "smb4kglobal.h"
+
 // Qt includes
 #include <QtCore/QString>
 #include <QtCore/QScopedPointer>
@@ -37,6 +40,8 @@
 
 // forward declarations
 class Smb4KBasicNetworkItemPrivate;
+
+using namespace Smb4KGlobal;
 
 /**
  * This is the basic class from which all other network item classes
@@ -50,24 +55,9 @@ class KDE_EXPORT Smb4KBasicNetworkItem
 {
   public:
     /**
-     * Enumeration to determine the type of the network
-     * item.
-     *
-     * @enum Workgroup      The network item is a workgroup or domain.
-     * @enum Host           The network item is a host.
-     * @enum Share          The network item is a share.
-     * @enum Unknown        The network item type is unknown.
-     */
-    enum Type { 
-      Workgroup,
-      Host,
-      Share,
-      Unknown };
-
-    /**
      * The constructor
      */
-    explicit Smb4KBasicNetworkItem( Smb4KBasicNetworkItem::Type type = Unknown );
+    explicit Smb4KBasicNetworkItem( NetworkItem type = Unknown );
 
     /**
      * The copy constructor
@@ -85,7 +75,7 @@ class KDE_EXPORT Smb4KBasicNetworkItem
      *
      * @returns the type.
      */
-    Type type() const;
+    Smb4KGlobal::NetworkItem type() const;
 
     /**
      * With this function you can set a key, that can be used to identify

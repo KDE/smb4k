@@ -29,6 +29,7 @@
 // application specific includes
 #include "smb4khost.h"
 #include "smb4kshare.h"
+#include "smb4kglobal.h"
 
 // Qt includes
 #include <QtCore/QScopedPointer>
@@ -39,6 +40,8 @@
 
 // forward declarations
 class Smb4KCustomOptionsPrivate;
+
+using namespace Smb4KGlobal;
 
 /**
  * This class stored the custom options defined for a certain host
@@ -53,13 +56,6 @@ class KDE_EXPORT Smb4KCustomOptions
   friend class Smb4KCustomOptionsPrivate;
   
   public:
-    /**
-     * Type enumeration
-     */
-    enum Type { Host,
-                Share,
-                Unknown };
-                
     /**
      * Remount enumeration
      */
@@ -155,7 +151,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @returns the type of the network item
      */
-    Type type() const;
+    Smb4KGlobal::NetworkItem type() const;
     
     /**
      * If the network item is of type Share, set if it should be remounted.

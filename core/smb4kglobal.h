@@ -61,14 +61,31 @@ namespace Smb4KGlobal
    * @enum MountShare             Mount a share
    * @enum UnmountShare           Unmount a share
    */
-  enum Process { LookupDomains,
-                 LookupDomainMembers,
-                 LookupShares,
-                 LookupInfo,
-                 WakeUp,
-                 MountShare,
-                 UnmountShare };
-  
+  enum Process { 
+    LookupDomains,
+    LookupDomainMembers,
+    LookupShares,
+    LookupInfo,
+    WakeUp,
+    MountShare,
+    UnmountShare };
+                 
+  /**
+   * The enumeration to determine the type of a network item.
+   * 
+   * @enum Network                the network
+   * @enum Workgroup              a workgroup
+   * @enum Host                   a host
+   * @enum Share                  a share
+   * @enum Unknown                an unknown network item 
+   */
+  enum NetworkItem { 
+    Network,
+    Workgroup,
+    Host,
+    Share,
+    Unknown };
+     
   /**
    * This class extends the QEvent class with Smb4K specific events
    */

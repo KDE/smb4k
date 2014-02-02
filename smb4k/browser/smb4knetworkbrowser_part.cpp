@@ -452,7 +452,7 @@ void Smb4KNetworkBrowserPart::slotItemSelectionChanged()
     {
       switch ( browser_item->type() )
       {
-        case Smb4KNetworkBrowserItem::Host:
+        case Host:
         {
           // Change the text of the rescan action:
           KGuiItem rescan_item( i18n( "Scan Compute&r" ), KIcon( "view-refresh" ) );
@@ -469,7 +469,7 @@ void Smb4KNetworkBrowserPart::slotItemSelectionChanged()
           
           break;
         }
-        case Smb4KNetworkBrowserItem::Share:
+        case Share:
         {
           // Change the text of the rescan action:
           KGuiItem rescan_item( i18n( "Scan Compute&r" ), KIcon( "view-refresh" ) );
@@ -565,7 +565,7 @@ void Smb4KNetworkBrowserPart::slotItemPressed( QTreeWidgetItem *item, int /*colu
     {
       switch ( browser_item->type() )
       {
-        case Smb4KNetworkBrowserItem::Share:
+        case Share:
         {
           if ( browser_item->shareItem()->isPrinter() )
           {
@@ -617,7 +617,7 @@ void Smb4KNetworkBrowserPart::slotItemExecuted( QTreeWidgetItem *item, int /*col
   {
     switch ( browserItem->type() )
     {
-      case Smb4KNetworkBrowserItem::Workgroup:
+      case Workgroup:
       {
         if ( browserItem->isExpanded() )
         {
@@ -629,7 +629,7 @@ void Smb4KNetworkBrowserPart::slotItemExecuted( QTreeWidgetItem *item, int /*col
         }
         break;
       }
-      case Smb4KNetworkBrowserItem::Host:
+      case Host:
       {
         if ( browserItem->isExpanded() )
         {
@@ -641,7 +641,7 @@ void Smb4KNetworkBrowserPart::slotItemExecuted( QTreeWidgetItem *item, int /*col
         }
         break;
       }
-      case Smb4KNetworkBrowserItem::Share:
+      case Share:
       {
         if ( !browserItem->shareItem()->isPrinter() )
         {
@@ -672,7 +672,7 @@ void Smb4KNetworkBrowserPart::slotAboutToShowToolTip( Smb4KNetworkBrowserItem *i
   {
     switch ( item->type() )
     {
-      case Smb4KNetworkBrowserItem::Host:
+      case Host:
       {
         if ( !item->hostItem()->hasInfo() )
         {
@@ -704,7 +704,7 @@ void Smb4KNetworkBrowserPart::slotAboutToHideToolTip( Smb4KNetworkBrowserItem *i
   {
     switch ( item->type() )
     {
-      case Smb4KNetworkBrowserItem::Host:
+      case Host:
       {
         // Kill the lookup process for the additional information.
         Smb4KScanner::self()->abort( LookupInfo, item->hostItem() );
@@ -1013,7 +1013,7 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
         
         switch ( item->type() )
         {
-          case Smb4KNetworkBrowserItem::Host:
+          case Host:
           {
             bool found = false;
             
@@ -1068,7 +1068,7 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
           {
             Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( hosts.at( i ) );
             
-            if ( item->type() == Smb4KNetworkBrowserItem::Host &&
+            if ( item->type() == Host &&
                  QString::compare( list.at( i )->workgroupName(), item->hostItem()->workgroupName(), Qt::CaseInsensitive ) == 0 &&
                  QString::compare( list.at( i )->unc(), item->hostItem()->unc(), Qt::CaseInsensitive ) == 0 )
             {
@@ -1247,7 +1247,7 @@ void Smb4KNetworkBrowserPart::slotShares( Smb4KHost *host, const QList<Smb4KShar
     {
       Smb4KNetworkBrowserItem *network_item = static_cast<Smb4KNetworkBrowserItem *>( network_items.at( i ) );
 
-      if ( network_item->type() == Smb4KNetworkBrowserItem::Host )
+      if ( network_item->type() == Host )
       {
         if ( !list.isEmpty() )
         {
@@ -1457,7 +1457,7 @@ void Smb4KNetworkBrowserPart::slotAddIPAddress( Smb4KHost *host )
     
     if ( item )
     {
-      if ( item->type() == Smb4KNetworkBrowserItem::Host )
+      if ( item->type() == Host )
       {
         if ( QString::compare( host->unc(), item->hostItem()->unc(), Qt::CaseInsensitive ) == 0 &&
              QString::compare( host->workgroupName(), item->hostItem()->workgroupName(), Qt::CaseInsensitive ) == 0 )
@@ -1612,7 +1612,7 @@ void Smb4KNetworkBrowserPart::slotAuthError( Smb4KHost *host, int process )
         {
           Smb4KNetworkBrowserItem *workgroup = static_cast<Smb4KNetworkBrowserItem *>( m_widget->topLevelItem( i ) );
           
-          if ( workgroup && workgroup->type() == Smb4KNetworkBrowserItem::Workgroup &&
+          if ( workgroup && workgroup->type() == Workgroup &&
                QString::compare( host->workgroupName(), workgroup->workgroupItem()->workgroupName(), Qt::CaseInsensitive ) == 0 )
           {
             QList<QTreeWidgetItem *> hosts = workgroup->takeChildren();
@@ -1644,7 +1644,7 @@ void Smb4KNetworkBrowserPart::slotAuthError( Smb4KHost *host, int process )
       {
         Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( *it );
         
-        if ( item && item->type() == Smb4KNetworkBrowserItem::Host )
+        if ( item && item->type() == Host )
         {
           if ( QString::compare( host->hostName(), item->hostItem()->hostName(), Qt::CaseInsensitive ) == 0 &&
                QString::compare( host->workgroupName(), item->hostItem()->workgroupName(), Qt::CaseInsensitive ) == 0 )
@@ -1693,17 +1693,17 @@ void Smb4KNetworkBrowserPart::slotRescanAbortActionTriggered( bool /* checked */
 
         switch ( item->type() )
         {
-          case Smb4KNetworkBrowserItem::Workgroup:
+          case Workgroup:
           {
             Smb4KScanner::self()->lookupDomainMembers( item->workgroupItem(), m_widget );
             break;
           }
-          case Smb4KNetworkBrowserItem::Host:
+          case Host:
           {
             Smb4KScanner::self()->lookupShares( item->hostItem(), m_widget );
             break;
           }
-          case Smb4KNetworkBrowserItem::Share:
+          case Share:
           {
             Smb4KNetworkBrowserItem *parentItem = static_cast<Smb4KNetworkBrowserItem *>( item->parent() );
             Smb4KScanner::self()->lookupShares( parentItem->hostItem(), m_widget );
@@ -1753,12 +1753,12 @@ void Smb4KNetworkBrowserPart::slotAuthentication( bool /*checked*/ )
   {
     switch ( item->type() )
     {
-      case Smb4KNetworkBrowserItem::Host:
+      case Host:
       {
         Smb4KWalletManager::self()->showPasswordDialog( item->hostItem(), m_widget );
         break;
       }
-      case Smb4KNetworkBrowserItem::Share:
+      case Share:
       {
         Smb4KWalletManager::self()->showPasswordDialog( item->shareItem(), m_widget );
         break;
@@ -1784,12 +1784,12 @@ void Smb4KNetworkBrowserPart::slotCustomOptions( bool /*checked*/ )
   {
     switch ( item->type() )
     {
-      case Smb4KNetworkBrowserItem::Host:
+      case Host:
       {
         Smb4KCustomOptionsManager::self()->openCustomOptionsDialog( item->hostItem(), m_widget );
         break;
       }
-      case Smb4KNetworkBrowserItem::Share:
+      case Share:
       {
         Smb4KCustomOptionsManager::self()->openCustomOptionsDialog( item->shareItem(), m_widget );
         break;
@@ -1818,7 +1818,7 @@ void Smb4KNetworkBrowserPart::slotAddBookmark( bool /*checked*/ )
     {
       Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( selected_items.at( i ) );
 
-      if ( item->type() == Smb4KNetworkBrowserItem::Share && !item->shareItem()->isPrinter() )
+      if ( item->type() == Share && !item->shareItem()->isPrinter() )
       {
         shares << item->shareItem();
         continue;
@@ -1886,7 +1886,7 @@ void Smb4KNetworkBrowserPart::slotMountActionTriggered( bool /*checked*/ )
   {
     switch ( item->type() )
     {
-      case Smb4KNetworkBrowserItem::Share:
+      case Share:
       {
         if ( !item->shareItem()->isMounted() )
         {
@@ -2121,7 +2121,7 @@ void Smb4KNetworkBrowserPart::slotShareMounted( Smb4KShare *share )
   {
     Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( *it );
     
-    if ( item->type() == Smb4KNetworkBrowserItem::Share )
+    if ( item->type() == Share )
     {
       if ( QString::compare( item->shareItem()->unc(), share->unc(), Qt::CaseInsensitive ) == 0 )
       {
@@ -2151,7 +2151,7 @@ void Smb4KNetworkBrowserPart::slotShareUnmounted( Smb4KShare *share )
   {
     Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( *it );
     
-    if ( item->type() == Smb4KNetworkBrowserItem::Share )
+    if ( item->type() == Share )
     {
       if ( QString::compare( item->shareItem()->unc(), share->unc(), Qt::CaseInsensitive ) == 0 )
       {

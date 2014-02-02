@@ -29,6 +29,7 @@
 
 // application specific includes
 #include "smb4knetworkbrowseritem.h"
+#include "core/smb4kglobal.h"
 
 // Qt includes
 #include <QtGui/QApplication>
@@ -170,7 +171,7 @@ void Smb4KNetworkBrowserItem::update( Smb4KBasicNetworkItem *item )
   {
     switch ( item->type() )
     {
-      case Smb4KBasicNetworkItem::Workgroup:
+      case Workgroup:
       {
         if ( type() != Workgroup )
         {
@@ -188,7 +189,7 @@ void Smb4KNetworkBrowserItem::update( Smb4KBasicNetworkItem *item )
         
         break;
       }
-      case Smb4KBasicNetworkItem::Host:
+      case Host:
       {
         if ( type() != Host )
         {
@@ -229,7 +230,7 @@ void Smb4KNetworkBrowserItem::update( Smb4KBasicNetworkItem *item )
         setText( Comment, m_host->comment() );
         break;
       }
-      case Smb4KBasicNetworkItem::Share:
+      case Share:
       {
         if ( type() != Share )
         {

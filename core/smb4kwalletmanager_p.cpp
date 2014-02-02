@@ -44,7 +44,7 @@ Smb4KPasswordDialog::Smb4KPasswordDialog( Smb4KBasicNetworkItem* networkItem, co
   
   switch ( m_item->type() )
   {
-    case Smb4KBasicNetworkItem::Host:
+    case Host:
     {
       Smb4KHost *host = static_cast<Smb4KHost *>( m_item );
 
@@ -60,7 +60,7 @@ Smb4KPasswordDialog::Smb4KPasswordDialog( Smb4KBasicNetworkItem* networkItem, co
       }
       break;
     }
-    case Smb4KBasicNetworkItem::Share:
+    case Share:
     {
       Smb4KShare *share = static_cast<Smb4KShare *>( m_item );
 
@@ -111,7 +111,7 @@ void Smb4KPasswordDialog::slotGotUsernameAndPassword( const QString &user, const
 {
   switch ( m_item->type() )
   {
-    case Smb4KBasicNetworkItem::Host:
+    case Host:
     {
       Smb4KHost *host = static_cast<Smb4KHost *>( m_item );
 
@@ -126,7 +126,7 @@ void Smb4KPasswordDialog::slotGotUsernameAndPassword( const QString &user, const
       }
       break;
     }
-    case Smb4KBasicNetworkItem::Share:
+    case Share:
     {
       Smb4KShare *share = static_cast<Smb4KShare *>( m_item );
 

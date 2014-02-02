@@ -147,12 +147,12 @@ void Smb4KDeclarative::lookup( Smb4KNetworkObject *object )
   {
     switch ( object->type() )
     {
-      case Smb4KNetworkObject::Network:
+      case Network:
       {
         Smb4KScanner::self()->lookupDomains();
         break;
       }
-      case Smb4KNetworkObject::Workgroup:
+      case Workgroup:
       {
         // Check if the workgroup is known.
         Smb4KWorkgroup *workgroup = findWorkgroup( object->url().host().toUpper() );
@@ -167,7 +167,7 @@ void Smb4KDeclarative::lookup( Smb4KNetworkObject *object )
         }
         break;
       }
-      case Smb4KNetworkObject::Host:
+      case Host:
       {
         // Check if the host is known.
         Smb4KHost *host = findHost( object->url().host().toUpper() );
@@ -182,7 +182,7 @@ void Smb4KDeclarative::lookup( Smb4KNetworkObject *object )
         }
         break;
       }
-      case Smb4KNetworkObject::Share:
+      case Share:
       {
         break;
       }
@@ -209,7 +209,7 @@ Smb4KNetworkObject *Smb4KDeclarative::findNetworkItem( const QUrl &url, int type
   {  
     switch ( type )
     {
-      case Smb4KNetworkObject::Workgroup:
+      case Workgroup:
       {
         for ( int i = 0; i < d->workgroupObjects.size(); ++i )
         {
@@ -225,7 +225,7 @@ Smb4KNetworkObject *Smb4KDeclarative::findNetworkItem( const QUrl &url, int type
         }
         break;
       }
-      case Smb4KNetworkObject::Host:
+      case Host:
       {
         for ( int i = 0; i < d->hostObjects.size(); ++i )
         {
@@ -241,7 +241,7 @@ Smb4KNetworkObject *Smb4KDeclarative::findNetworkItem( const QUrl &url, int type
         }
         break;
       }
-      case Smb4KNetworkObject::Share:
+      case Share:
       {
         for ( int i = 0; i < d->shareObjects.size(); ++i )
         {
@@ -532,7 +532,7 @@ void Smb4KDeclarative::openCustomOptionsDialog(Smb4KNetworkObject *object)
   {
     switch ( object->type() )
     {
-      case Smb4KNetworkObject::Host:
+      case Host:
       {
         for ( int i = 0; i < hostsList().size(); ++i )
         {
@@ -548,7 +548,7 @@ void Smb4KDeclarative::openCustomOptionsDialog(Smb4KNetworkObject *object)
         }
         break;
       }
-      case Smb4KNetworkObject::Share:
+      case Share:
       {
         for ( int i = 0; i < sharesList().size(); ++i )
         {

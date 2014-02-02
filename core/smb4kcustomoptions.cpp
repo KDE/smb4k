@@ -48,7 +48,7 @@ class Smb4KCustomOptionsPrivate
     QString workgroup;
     KUrl url;
     QHostAddress ip;
-    Smb4KCustomOptions::Type type;
+    NetworkItem type;
     Smb4KCustomOptions::Remount remount;
     QString profile;
     int smbPort;
@@ -217,7 +217,7 @@ void Smb4KCustomOptions::setShare( Smb4KShare *share )
 }
 
 
-Smb4KCustomOptions::Type Smb4KCustomOptions::type() const
+Smb4KGlobal::NetworkItem Smb4KCustomOptions::type() const
 {
   return d->type;
 }

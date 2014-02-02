@@ -31,6 +31,7 @@
 #include "smb4kworkgroup.h"
 #include "smb4khost.h"
 #include "smb4kshare.h"
+#include "smb4kglobal.h"
 
 // Qt includes
 #include <QtCore/QObject>
@@ -45,6 +46,8 @@
 // forward declaration
 class Smb4KNetworkObjectPrivate;
 
+using namespace Smb4KGlobal;
+
 /**
  * This class derives from QObject and makes the main functions of the 
  * network items Smb4KWorkgroup, Smb4KHost, and Smb4KShare available. Its 
@@ -58,8 +61,8 @@ class Smb4KNetworkObjectPrivate;
 class KDE_EXPORT Smb4KNetworkObject : public QObject
 {
   Q_OBJECT
-  Q_PROPERTY( Type type READ type WRITE setType NOTIFY changed )
-  Q_PROPERTY( Type parentType READ parentType CONSTANT )
+  Q_PROPERTY( NetworkItem type READ type WRITE setType NOTIFY changed )
+  Q_PROPERTY( NetworkItem parentType READ parentType CONSTANT )
   Q_PROPERTY( QString workgroupName READ workgroupName WRITE setWorkgroupName NOTIFY changed )
   Q_PROPERTY( QString hostName READ hostName WRITE setHostName NOTIFY changed )
   Q_PROPERTY( QString shareName READ shareName WRITE setShareName NOTIFY changed )
@@ -71,19 +74,12 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
   Q_PROPERTY( bool isMounted READ isMounted WRITE setMounted NOTIFY changed )
   Q_PROPERTY( bool isPrinter READ isPrinter WRITE setPrinter NOTIFY changed )
   Q_PROPERTY( QUrl mountpoint READ mountpoint WRITE setMountpoint NOTIFY changed )
-  Q_ENUMS( Type )
 
+  Q_ENUMS( NetworkItem )
+  
   friend class Smb4KNetworkObjectPrivate;
   
   public:
-    /**
-     * Type enumeration
-     */
-    enum Type { Network = 0,
-                Workgroup = 1,
-                Host = 2,
-                Share = 3 };
-                
     /**
      * Constructor for a workgroup.
      */
@@ -114,7 +110,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * 
      * @returns the type
      */
-    Type type() const;
+    Smb4KGlobal::NetworkItem type() const;
     
     /**
      * This function returns the type of the parent of this item. In case of
@@ -123,14 +119,14 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * 
      * @returns the parent's type
      */
-    Type parentType() const;
+    Smb4KGlobal::NetworkItem parentType() const;
     
     /**
      * Set the type of the network item.
      * 
      * @param type        The type
      */
-    void setType( Type type );
+    void setType( Smb4KGlobal::NetworkItem type );
 
     /**
      * Returns the workgroup name.
