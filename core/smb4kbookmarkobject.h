@@ -61,7 +61,6 @@ class KDE_EXPORT Smb4KBookmarkObject : public QObject
   Q_PROPERTY( QString workgroupName READ workgroupName WRITE setWorkgroupName NOTIFY changed )
   Q_PROPERTY( QString unc READ unc CONSTANT )
   Q_PROPERTY( QString label READ label WRITE setLabel NOTIFY changed )
-  Q_PROPERTY( QString description READ description CONSTANT )
   Q_PROPERTY( QUrl url READ url WRITE setURL NOTIFY changed )
   Q_PROPERTY( QIcon icon READ icon WRITE setIcon NOTIFY changed )
   Q_PROPERTY( QString groupName READ groupName WRITE setGroupName NOTIFY changed )
@@ -125,16 +124,6 @@ class KDE_EXPORT Smb4KBookmarkObject : public QObject
      * @param label     The label
      */
     void setLabel( const QString &label );
-    
-    /**
-     * This function returns the description of this object. In case of a bookmark
-     * group, this functions returns the group name like the @see group() function.
-     * In case of a bookmark, the return value depends on the choice of the user. 
-     * It is either the UNC or the label.
-     * 
-     * @returns the description of the bookmark or the name of the bookmark group
-     */
-    QString description() const;
     
     /**
      * This function returns the URL of this bookmark.

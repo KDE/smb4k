@@ -168,7 +168,7 @@ PlasmaComponents.Page {
     // Get the groups
     if ( iface.bookmarkGroups.length != 0 ) {
       for ( var i = 0; i < iface.bookmarkGroups.length; ++i ) {
-        if ( iface.bookmarkGroups[i].description.length != 0 ) {
+        if ( iface.bookmarkGroups[i].groupName.length != 0 ) {
           bookmarksListView.model.append( { "object": iface.bookmarkGroups[i] } )
         }
         else {

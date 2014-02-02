@@ -62,7 +62,19 @@ PlasmaComponents.ListItem {
       anchors.verticalCenter: parent.verticalCenter
       PlasmaComponents.Label {
         id: delegateItemText
-        text: object.description
+        text: {
+          if ( !object.isGroup ) {
+            if ( plasmoid.readConfig("ShowCustomBookmarkLabel") && object.label.length != 0 ) {
+              object.label
+            }
+            else {
+              object.unc
+            }
+          }
+          else {
+            object.groupName
+          }
+        }
         clip: true
         MouseArea {
           anchors.fill: parent

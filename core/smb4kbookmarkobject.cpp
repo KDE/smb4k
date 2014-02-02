@@ -30,7 +30,6 @@
 
 // application specific includes
 #include "smb4kbookmarkobject.h"
-#include "smb4ksettings.h"
 
 // KDE includes
 #include "kicon.h"
@@ -116,30 +115,6 @@ void Smb4KBookmarkObject::setLabel(const QString& label)
 {
   d->label = label;
   emit changed();
-}
-
-
-QString Smb4KBookmarkObject::description() const
-{
-  QString desc;
-  
-  if ( !d->isGroup )
-  {
-    if ( Smb4KSettings::showCustomBookmarkLabel() && !label().isEmpty() )
-    {
-      desc = label();
-    }
-    else
-    {
-      desc = unc();
-    }
-  }
-  else
-  {
-    desc = groupName();
-  }
-  
-  return desc;
 }
 
 
