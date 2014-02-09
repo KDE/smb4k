@@ -760,37 +760,24 @@ void Smb4KMainWindow::slotWalletManagerInitialized()
 {
   if ( Smb4KWalletManager::self()->useWalletSystem() )
   {
-    switch ( Smb4KWalletManager::self()->currentState() )
+    if ( Smb4KWalletManager::self()->walletIsOpen() )
     {
-      case Smb4KWalletManager::UseWallet:
-      {
-        m_pass_icon->setPixmap( KIconLoader::global()->loadIcon( "wallet-open",
-                                KIconLoader::Small, 0, KIconLoader::DefaultState ) );
-        m_pass_icon->setToolTip( i18n( "The wallet is in use." ) );
-        break;
-      }
-      default:
-      {
-        m_pass_icon->setPixmap( KIconLoader::global()->loadIcon( "wallet-closed",
-                                KIconLoader::Small, 0, KIconLoader::DefaultState ) );
-        m_pass_icon->setToolTip( i18n( "The wallet is not in use." ) );
-        break;
-      }
+      m_pass_icon->setPixmap( KIconLoader::global()->loadIcon( "wallet-open",
+                              KIconLoader::Small, 0, KIconLoader::DefaultState ) );
+      m_pass_icon->setToolTip( i18n( "The wallet is in use." ) );
+    }
+    else
+    {
+      m_pass_icon->setPixmap( KIconLoader::global()->loadIcon( "wallet-closed",
+                              KIconLoader::Small, 0, KIconLoader::DefaultState ) );
+      m_pass_icon->setToolTip( i18n( "The wallet is not in use." ) );
     }
   }
   else
   {
     m_pass_icon->setPixmap( KIconLoader::global()->loadIcon( "dialog-password",
                             KIconLoader::Small, 0, KIconLoader::DefaultState ) );
-
-    if ( Smb4KSettings::rememberLogins() )
-    {
-      m_pass_icon->setToolTip( i18n( "The password dialog mode is used and logins are remembered." ) );
-    }
-    else
-    {
-      m_pass_icon->setToolTip( i18n( "The password dialog mode is used and logins are not remembered." ) );
-    }
+    m_pass_icon->setToolTip( i18n( "The password dialog mode is used." ) );
   }
 }
 

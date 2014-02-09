@@ -60,8 +60,7 @@ class Smb4KWalletManagerPrivate
 {
   public:
     KWallet::Wallet *wallet;
-    Smb4KWalletManager::State state;
-    QList<Smb4KAuthInfo *> list;
+    bool initialized;
 };
 
 

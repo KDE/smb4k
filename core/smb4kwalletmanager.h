@@ -2,7 +2,7 @@
     smb4kwalletmanager  -  This is the wallet manager of Smb4K.
                              -------------------
     begin                : Sa Dez 27 2008
-    copyright            : (C) 2008-2012 by Alexander Reinholdt
+    copyright            : (C) 2008-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -139,22 +139,6 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
     bool useWalletSystem() const;
 
     /**
-     * The state enumeration
-     */
-    enum State { UseWallet,
-                 RememberAuthInfo,
-                 ForgetAuthInfo,
-                 Unknown };
-
-    /**
-     * This function returns the current state of the wallet manager. The
-     * state is defined in the State enumeration.
-     *
-     * @returns the current state.
-     */
-    State currentState() const;
-    
-    /**
      * Returns the list of authentication information objects stored in the 
      * wallet or an empty list if the wallet is not open, no entries are 
      * defined or the wallet system is disabled.
@@ -171,36 +155,33 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
      * @param entries       The list of authentication information objects
      */
     void writeWalletEntries( const QList<Smb4KAuthInfo *> &entries );
+    
+    /**
+     * This function returns TRUE if the wallet is used and open and 
+     * FALSE otherwise.
+     * 
+     * @returns TRUE if the wallet is used and open.
+     */
+    bool walletIsOpen() const;
 
   Q_SIGNALS:
     /**
-     * This signal is emitted if the wallet was opened asynchronously.
-     *
-     * @param success         TRUE if the wallet could be opened
-     *                        successfully.
-     */
-    void walletOpened( bool success );
-
-    /**
      * This signal is emitted when the wallet manager was initialized
      * and is ready to process authentication information.
-     *
-     * If you want to find out if the wallet manager actually uses a
-     * wallet or only an internal list (in case the wallet could not
-     * be opened), you have to use the currentState() function.
      */
     void initialized();
+    
+  protected Q_SLOTS:
+    /**
+     * This slot is invoked when the wallet is opened.
+     */
+    void slotWalletOpened( bool success );
 
   private:
     /**
      * Initialize the wallet manager.
      */
     void init();
-
-    /**
-     * Creates the Smb4K subfolder and makes the wallet use it.
-     */
-    void setupFolder();
 
     /**
      * Pointer to the Smb4KWalletManagerPrivate class

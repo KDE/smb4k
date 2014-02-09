@@ -2,7 +2,7 @@
     smb4kwalletmanager  -  This is the wallet manager of Smb4K.
                              -------------------
     begin                : Sa Dez 27 2008
-    copyright            : (C) 2008-2012 by Alexander Reinholdt
+    copyright            : (C) 2008-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -40,7 +40,7 @@
 
 // Qt includes
 #include <QtCore/QPointer>
-#include <QtGui/QDesktopWidget>
+#include <QtTest/QTest>
 
 // KDE includes
 #include <kglobal.h>
@@ -57,7 +57,7 @@ Smb4KWalletManager::Smb4KWalletManager( QObject *parent )
 : QObject( parent ), d( new Smb4KWalletManagerPrivate )
 {
   d->wallet = NULL;
-  d->state  = Unknown;
+  d->initialized = false;
 }
 
 
@@ -76,8 +76,6 @@ void Smb4KWalletManager::init()
 {
   if ( KWallet::Wallet::isEnabled() && Smb4KSettings::useWallet() )
   {
-    // The wallet system is enabled and should be used,
-    // so try to get the wallet.
     if ( !d->wallet )
     {
       // Get the main window as parent of the wallet.
@@ -97,28 +95,19 @@ void Smb4KWalletManager::init()
         }
       }
 
-      d->wallet = KWallet::Wallet::openWallet( KWallet::Wallet::NetworkWallet(),
-                                              parent ? parent->winId() : 0,
-                                              KWallet::Wallet::Synchronous );
-
-      if ( d->wallet )
-      {
-        setupFolder();
-        d->state = UseWallet;
-      }
-      else
-      {
-        Smb4KNotification *notification = new Smb4KNotification( this );
-        notification->openingWalletFailed( KWallet::Wallet::NetworkWallet() );
-
-        d->state = Unknown;
-      }
-
-      emit initialized();
+      d->wallet = KWallet::Wallet::openWallet( KWallet::Wallet::NetworkWallet(), (parent ? parent->winId() : 0), KWallet::Wallet::Asynchronous );
+      connect( d->wallet, SIGNAL(walletOpened(bool)), this, SLOT(slotWalletOpened(bool)) );
     }
     else
     {
       // Do nothing. We already have a wallet.
+    }
+    
+    // Wait until the wallet has been opened or the 
+    // user canceled the dialog.
+    while ( !d->initialized )
+    {
+      QTest::qWait( 250 );
     }
   }
   else
@@ -133,33 +122,8 @@ void Smb4KWalletManager::init()
       // Do nothing
     }
 
-    d->state = Smb4KSettings::rememberLogins() ?
-              RememberAuthInfo :
-              ForgetAuthInfo;
-
+    d->initialized = true;
     emit initialized();
-  }
-}
-
-
-void Smb4KWalletManager::setupFolder()
-{
-  if ( d->wallet && d->wallet->isOpen() )
-  {
-    if ( !d->wallet->hasFolder( "Smb4K" ) )
-    {
-      d->wallet->createFolder( "Smb4K" );
-      d->wallet->setFolder( "Smb4K" );
-    }
-    else
-    {
-      d->wallet->setFolder( "Smb4K" );
-    }
-  }
-  else
-  {
-    Smb4KNotification *notification = new Smb4KNotification( this );
-    notification->loginsNotAccessible();
   }
 }
 
@@ -359,154 +323,7 @@ void Smb4KWalletManager::readAuthInfo( Smb4KBasicNetworkItem *networkItem )
   }
   else
   {
-    switch ( networkItem->type() )
-    {
-      case Host:
-      {
-        Smb4KHost *host = static_cast<Smb4KHost *>( networkItem );
-
-        if ( host )
-        {
-          for ( int i = 0; i < d->list.size(); ++i )
-          {
-            if ( QString::compare( host->unc(), d->list.at( i )->unc(), Qt::CaseInsensitive ) == 0 &&
-                 (host->workgroupName().isEmpty() || d->list.at( i )->workgroupName().isEmpty() ||
-                 QString::compare( host->workgroupName(), d->list.at( i )->workgroupName(), Qt::CaseInsensitive ) == 0) )
-            {
-              if ( !host->login().isEmpty() )
-              {
-                if ( QString::compare( host->login(), d->list.at( i )->login() ) == 0 )
-                {
-                  host->setLogin( d->list.at( i )->login() );
-                  host->setPassword( d->list.at( i )->password() );
-                }
-                else
-                {
-                  // Do nothing
-                }
-              }
-              else
-              {
-                host->setLogin( d->list.at( i )->login() );
-                host->setPassword( d->list.at( i )->password() );
-              }
-              break;
-            }
-            else
-            {
-              continue;
-            }
-          }
-        }
-        else
-        {
-          // Do nothing
-        }
-        break;
-      }
-      case Share:
-      {
-        Smb4KShare *share = static_cast<Smb4KShare *>( networkItem );
-
-        if ( share )
-        {
-          QString unc;
-
-          if ( !share->isHomesShare() )
-          {
-            unc = share->unc();
-          }
-          else
-          {
-            // Specify a user name if necessary. The overwrite argument
-            // is set to FALSE here, so that no dialog is shown if a user
-            // name has already been provided.
-            Smb4KHomesSharesHandler::self()->specifyUser( share, false );
-
-            unc = share->homeUNC();
-          }
-
-          for ( int i = 0; i < d->list.size(); ++i )
-          {
-            if ( QString::compare( unc, d->list.at( i )->unc(), Qt::CaseInsensitive ) == 0 &&
-                 (share->workgroupName().isEmpty() || d->list.at( i )->workgroupName().isEmpty() ||
-                 QString::compare( share->workgroupName(), d->list.at( i )->workgroupName(), Qt::CaseInsensitive ) == 0) )
-            {
-              // Exact match
-              if ( !share->login().isEmpty() )
-              {
-                if ( QString::compare( share->login(), d->list.at( i )->login() ) == 0 )
-                {
-                  share->setLogin( d->list.at( i )->login() );
-                  share->setPassword( d->list.at( i )->password() );
-                }
-                else
-                {
-                  // Do nothing
-                }
-              }
-              else
-              {
-                share->setLogin( d->list.at( i )->login() );
-                share->setPassword( d->list.at( i )->password() );
-              }
-              break;
-            }
-            else if ( QString::compare( share->hostUNC(), d->list.at( i )->hostUNC(), Qt::CaseInsensitive ) == 0 &&
-                      (share->workgroupName().isEmpty() || d->list.at( i )->workgroupName().isEmpty() ||
-                      QString::compare( share->workgroupName(), d->list.at( i )->workgroupName(), Qt::CaseInsensitive ) == 0) )
-            {
-              // The host is the same
-              if ( !share->login().isEmpty() )
-              {
-                if ( QString::compare( share->login(), d->list.at( i )->login() ) == 0 )
-                {
-                  share->setLogin( d->list.at( i )->login() );
-                  share->setPassword( d->list.at( i )->password() );
-                }
-                else
-                {
-                  // Do nothing
-                }
-              }
-              else
-              {
-                share->setLogin( d->list.at( i )->login() );
-                share->setPassword( d->list.at( i )->password() );
-              }
-              continue;
-            }
-            else
-            {
-              continue;
-            }
-          }
-        }
-        else
-        {
-          // Do nothing
-        }
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-
-    // Clear the list if necessary, i.e. if the wallet manager
-    // should forget the previously used login(s).
-    if ( !Smb4KSettings::rememberLogins() )
-    {
-      while ( !d->list.isEmpty() )
-      {
-        delete d->list.takeFirst();
-      }
-    }
-    else
-    {
-      // Do nothing
-    }
+    // Do nothing
   }
 }
 
@@ -664,99 +481,7 @@ void Smb4KWalletManager::writeAuthInfo( Smb4KBasicNetworkItem *networkItem )
   }
   else
   {
-    // Clear the list if necessary, i.e. if the wallet manager
-    // should forget the previously used login(s).
-    if ( !Smb4KSettings::rememberLogins() )
-    {
-      while ( !d->list.isEmpty() )
-      {
-        delete d->list.takeFirst();
-      }
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    // Now insert the new authentication information. Before we
-    // do this, remove the old one, if one is present.
-    switch ( networkItem->type() )
-    {
-      case Host:
-      {
-        Smb4KHost *host = static_cast<Smb4KHost *>( networkItem );
-
-        if ( host )
-        {
-          Smb4KAuthInfo authInfo( host );
-
-          QMutableListIterator<Smb4KAuthInfo *> it( d->list );
-
-          while ( it.hasNext() )
-          {
-            Smb4KAuthInfo *auth_info = it.next();
-
-            if ( QString::compare( auth_info->unc(), authInfo.unc(), Qt::CaseInsensitive ) == 0 &&
-                 (auth_info->workgroupName().isEmpty() || authInfo.workgroupName().isEmpty() ||
-                 QString::compare( auth_info->workgroupName(), authInfo.workgroupName(), Qt::CaseInsensitive ) == 0) )
-            {
-              it.remove();
-              break;
-            }
-            else
-            {
-              // Do nothing
-            }
-          }
-
-          d->list << new Smb4KAuthInfo( authInfo );
-        }
-        else
-        {
-          // Do nothing
-        }
-        break;
-      }
-      case Share:
-      {
-        Smb4KShare *share = static_cast<Smb4KShare *>( networkItem );
-
-        if ( share )
-        {
-          Smb4KAuthInfo authInfo( share );
-
-          QMutableListIterator<Smb4KAuthInfo *> it( d->list );
-
-          while ( it.hasNext() )
-          {
-            Smb4KAuthInfo *auth_info = it.next();
-
-            if ( QString::compare( auth_info->unc(), authInfo.unc(), Qt::CaseInsensitive ) == 0 &&
-                 (auth_info->workgroupName().isEmpty() || authInfo.workgroupName().isEmpty() ||
-                 QString::compare( auth_info->workgroupName(), authInfo.workgroupName(), Qt::CaseInsensitive ) == 0) )
-            {
-              it.remove();
-              break;
-            }
-            else
-            {
-              // Do nothing
-            }
-          }
-
-          d->list << new Smb4KAuthInfo( authInfo );
-        }
-        else
-        {
-          // Do nothing
-        }
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
+    // Do nothing
   }
 }
 
@@ -865,12 +590,6 @@ bool Smb4KWalletManager::useWalletSystem() const
 }
 
 
-Smb4KWalletManager::State Smb4KWalletManager::currentState() const
-{
-  return d->state;
-}
-
-
 QList<Smb4KAuthInfo *> Smb4KWalletManager::walletEntries()
 {
   // Initialize the wallet manager. In case the wallet is already
@@ -969,6 +688,48 @@ void Smb4KWalletManager::writeWalletEntries( const QList<Smb4KAuthInfo *> &entri
   {
     // Do nothing
   }
+}
+
+
+bool Smb4KWalletManager::walletIsOpen() const
+{
+  return (d->wallet ? (useWalletSystem() && d->wallet->isOpen()) : false);
+}
+
+
+void Smb4KWalletManager::slotWalletOpened(bool success)
+{
+  if ( success )
+  {
+    if ( d->wallet && d->wallet->isOpen() )
+    {
+      if ( !d->wallet->hasFolder( "Smb4K" ) )
+      {
+        d->wallet->createFolder( "Smb4K" );
+        d->wallet->setFolder( "Smb4K" );
+      }
+      else
+      {
+        d->wallet->setFolder( "Smb4K" );
+      }
+    }
+    else
+    {
+      Smb4KNotification *notification = new Smb4KNotification( this );
+      notification->loginsNotAccessible();
+    }
+  }
+  else
+  {
+    delete d->wallet;
+    d->wallet = NULL;
+    
+    Smb4KNotification *notification = new Smb4KNotification( this );
+    notification->openingWalletFailed( KWallet::Wallet::NetworkWallet() );
+  }
+
+  d->initialized = true;
+  emit initialized();
 }
 
 
