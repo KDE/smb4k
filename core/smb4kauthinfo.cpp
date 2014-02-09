@@ -105,32 +105,46 @@ Smb4KAuthInfo::~Smb4KAuthInfo()
 void Smb4KAuthInfo::setHost( Smb4KHost *host )
 {
   Q_ASSERT( host );
-
-  d->url        = host->url();
-  d->type       = Host;
-  d->workgroup  = host->workgroupName();
-  d->homesShare = false;
-  d->ip.setAddress( host->ip() );
+  
+  if ( host )
+  {
+    d->url        = host->url();
+    d->type       = Host;
+    d->workgroup  = host->workgroupName();
+    d->homesShare = false;
+    d->ip.setAddress( host->ip() );
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
 void Smb4KAuthInfo::setShare( Smb4KShare *share )
 {
   Q_ASSERT( share );
-
-  if ( !share->isHomesShare() )
+  
+  if ( share )
   {
-    d->url      = share->url();
+    if ( !share->isHomesShare() )
+    {
+      d->url      = share->url();
+    }
+    else
+    {
+      d->url      = share->homeURL();
+    }
+    
+    d->type       = Share;
+    d->workgroup  = share->workgroupName();
+    d->homesShare = share->isHomesShare();
+    d->ip.setAddress( share->hostIP() );
   }
   else
   {
-    d->url      = share->homeURL();
+    // Do nothing
   }
-  
-  d->type       = Share;
-  d->workgroup  = share->workgroupName();
-  d->homesShare = share->isHomesShare();
-  d->ip.setAddress( share->hostIP() );
 }
 
 
