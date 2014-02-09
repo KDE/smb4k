@@ -258,11 +258,6 @@
       <whatsthis>Use a wallet to store the login. The username and password are stored encrypted on your hard drive. If this setting is disabled, the login is not stored permanently but only temporarily.</whatsthis>
       <default>true</default>
     </entry>
-    <entry name="RememberLogins" type="Bool">
-      <label>Remember logins during program run</label>
-      <whatsthis>If you decide to store your logins temporarily, Smb4K will remember them only until the program exits. If you disable this setting, you will have to provide the login every time it is needed.</whatsthis>
-      <default>true</default>
-    </entry>
     <entry name="UseDefaultLogin" type="Bool">
       <label>Use a default login</label>
       <whatsthis>Enable the usage of a default login. The provided data is used by default to authenticate to a remote server. This is very useful e.g. if you are working in an Active Directory environment or an NT domain.</whatsthis>

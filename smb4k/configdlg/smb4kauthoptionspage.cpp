@@ -77,12 +77,7 @@ Smb4KAuthOptionsPage::Smb4KAuthOptionsPage( QWidget *parent ) : KTabWidget( pare
                              password_box );
   use_wallet->setObjectName( "kcfg_UseWallet" );
 
-  QCheckBox *remember_pass = new QCheckBox( Smb4KSettings::self()->rememberLoginsItem()->label(),
-                             password_box );
-  remember_pass->setObjectName( "kcfg_RememberLogins" );
-
   pass_layout->addWidget( use_wallet, 0, 0, 0 );
-  pass_layout->addWidget( remember_pass, 1, 0, 0 );
 
   // Default login box
   QGroupBox *default_box   = new QGroupBox( i18n( "Default Login" ), general_tab );
