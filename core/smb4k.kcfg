@@ -125,7 +125,7 @@
     </entry>
     <entry name="PreviewHiddenItems" type="Bool">
       <label>Preview hidden files and directories</label>
-      <whatsthis>Display hidden files and directories in the preview dialog. The hidden files and directories are those whose names begin with a period.  They are usually needed for very specific purposes (storing the configuration information for an application, etc.). Since they are not of any importance for your regular work, you normally do not need to enable this feature.</whatsthis>
+      <whatsthis>Display hidden files and directories in the preview dialog. The hidden files and directories are those whose names begin with a period. They are usually needed for very specific purposes (storing the configuration information for an application, etc.). Since they are not of any importance for your regular work, you normally do not need to enable this feature.</whatsthis>
       <default>false</default>
     </entry>
   </group>
