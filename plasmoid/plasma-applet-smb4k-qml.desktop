@@ -1,34 +1,6 @@
 [Desktop Entry]
 Name=Network Neighborhood
-Name[bs]=Mrežno sisjedstvo
-Name[cs]=Síťové okolí
-Name[da]=Netværksnabolag
-Name[de]=Netzwerkumgebung
-Name[es]=Entorno de red
-Name[fr]=Voisinage réseau
-Name[hu]=Hálózati mappa
-Name[nl]=Netwerkomgeving
-Name[pt]=Vizinhança na Rede
-Name[pt_BR]=Vizinhança na rede
-Name[sk]=Moje blízke okolie
-Name[sv]=Nätverksgrannskap
-Name[uk]=Мережеве оточення
-Name[x-test]=xxNetwork Neighborhoodxx
 Comment=Network neighborhood browser based on Smb4K
-Comment[bs]=Pregledač mrežnog susjedstva baziran na Smb4K
-Comment[cs]=Prohlížeč síťového okolí založený na Smb4K
-Comment[da]=Browser til netværksnabolag baseret på Smb4K
-Comment[de]=Erweiterter Browser für die Netzwerkumgebung auf der Basis von Smb4K
-Comment[es]=Explorador de entorno de red basado en Smb4K
-Comment[fr]=Explorateur de voisinage réseau conçu à partir de Smb4K
-Comment[hu]=Smb4K alapú hálózati mappa böngésző
-Comment[nl]=Browser gebaseerd op smb4k voor de netwerkomgeving
-Comment[pt]=Navegador da vizinhança da rede baseado no Smb4K
-Comment[pt_BR]=Navegador da vizinhança da rede baseado no Smb4K
-Comment[sk]=Prehliadať sieťového okolia založený na Smb4K
-Comment[sv]=Bläddrare för nätverksgrannskapet baserad på Smb4K
-Comment[uk]=Переглядач мережевого середовища на основі Smb4K
-Comment[x-test]=xxNetwork neighborhood browser based on Smb4Kxx
 Icon=smb4k
 
 X-Plasma-API=declarativeappletscript
