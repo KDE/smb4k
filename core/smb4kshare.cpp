@@ -1368,9 +1368,9 @@ void Smb4KShare::setAuthInfo( Smb4KAuthInfo *authInfo )
 {
   // Avoid that the login is overwritten with an empty 
   // string if we have a homes share.
-  if ( !isHomesShare() || !authInfo->login().isEmpty() )
+  if ( !isHomesShare() || !authInfo->userName().isEmpty() )
   {
-    d->url.setUserName( authInfo->login() );
+    d->url.setUserName( authInfo->userName() );
     d->url.setPassword( authInfo->password() );
   }
   else

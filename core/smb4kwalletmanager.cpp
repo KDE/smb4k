@@ -345,15 +345,13 @@ void Smb4KWalletManager::readDefaultAuthInfo( Smb4KAuthInfo *authInfo )
 
     if ( !map.isEmpty() )
     {
-      authInfo->setLogin( map["Login"] );
+      authInfo->setUserName( map["Login"] );
       authInfo->setPassword( map["Password"] );
     }
     else
     {
       // Do nothing
     }
-
-    authInfo->useDefaultAuthInfo();
   }
   else
   {
@@ -492,11 +490,11 @@ void Smb4KWalletManager::writeDefaultAuthInfo( Smb4KAuthInfo *authInfo )
 
   if ( useWalletSystem() && d->wallet )
   {
-    // Write the default authentication information to the wallet
-    if ( authInfo->type() == Smb4KAuthInfo::Default && !authInfo->login().isEmpty() /* allow empty passwords */ )
+    // Write the default authentication information to the wallet.
+    if ( !authInfo->userName().isEmpty() /* allow empty passwords */ )
     {
       QMap<QString,QString> map;
-      map["Login"]    = authInfo->login();
+      map["Login"]    = authInfo->userName();
       map["Password"] = authInfo->password();
       d->wallet->writeMap( "DEFAULT_LOGIN", map );
       d->wallet->sync();
@@ -614,8 +612,7 @@ QList<Smb4KAuthInfo *> Smb4KWalletManager::walletEntries()
         if ( QString::compare( entries.at( i ), "DEFAULT_LOGIN" ) == 0 )
         {
           // Default login
-          authInfo->useDefaultAuthInfo();
-          authInfo->setLogin( map["Login"] );
+          authInfo->setUserName( map["Login"] );
           authInfo->setPassword( map["Password"] );
         }
         else
@@ -623,7 +620,7 @@ QList<Smb4KAuthInfo *> Smb4KWalletManager::walletEntries()
           authInfo->setURL( entries.at( i ) );
           authInfo->setIP( map["IP Address"] );
           authInfo->setWorkgroupName( map["Workgroup"] );
-          authInfo->setLogin( map["Login"] );
+          authInfo->setUserName( map["Login"] );
           authInfo->setPassword( map["Password"] );
         }
 
@@ -665,10 +662,10 @@ void Smb4KWalletManager::writeWalletEntries( const QList<Smb4KAuthInfo *> &entri
     {
       QMap<QString,QString> map;
 
-      if ( entries.at( i )->type() == Smb4KAuthInfo::Default )
+      if ( entries.at( i )->type() == Unknown )
       {
         // Default login
-        map["Login"] = entries.at( i )->login();
+        map["Login"] = entries.at( i )->userName();
         map["Password"] = entries.at( i )->password();
         d->wallet->writeMap( "DEFAULT_LOGIN", map );
       }
@@ -676,7 +673,7 @@ void Smb4KWalletManager::writeWalletEntries( const QList<Smb4KAuthInfo *> &entri
       {
         map["IP Address"] = entries.at( i )->ip();
         map["Workgroup"] = entries.at( i )->workgroupName();
-        map["Login"] = entries.at( i )->login();
+        map["Login"] = entries.at( i )->userName();
         map["Password"] = entries.at( i )->password();
         d->wallet->writeMap( entries.at( i )->unc(), map );
       }

@@ -260,7 +260,7 @@ void Smb4KAuthOptionsPage::displayWalletEntries()
   {
     switch ( m_entries_list.at( i )->type() )
     {
-      case Smb4KAuthInfo::Default:
+      case Unknown:
       {
         (void) new QListWidgetItem( KIcon( "dialog-password" ), i18n( "Default Login" ), m_entries_widget );
         break;
@@ -350,8 +350,8 @@ void Smb4KAuthOptionsPage::showDetails( Smb4KAuthInfo *authInfo )
   
   switch ( authInfo->type() )
   {
-    case Smb4KAuthInfo::Host:
-    case Smb4KAuthInfo::Share:
+    case Host:
+    case Share:
     {
       m_details_widget->setColumnCount( 2 );
       m_details_widget->setRowCount( 4 );
@@ -381,13 +381,13 @@ void Smb4KAuthOptionsPage::showDetails( Smb4KAuthInfo *authInfo )
       m_details_widget->setItem( 1, 0, workgroup_label );
       m_details_widget->setItem( 1, 1, new QTableWidgetItem( authInfo->workgroupName() ) );
       m_details_widget->setItem( 2, 0, login_label );
-      m_details_widget->setItem( 2, 1, new QTableWidgetItem( authInfo->login() ) );
+      m_details_widget->setItem( 2, 1, new QTableWidgetItem( authInfo->userName() ) );
       m_details_widget->setItem( 3, 0, password_label );
       m_details_widget->setItem( 3, 1, new QTableWidgetItem( authInfo->password() ) );
           
       break;
     }
-    case Smb4KAuthInfo::Default:
+    default:
     {
       m_details_widget->setColumnCount( 2 );
       m_details_widget->setRowCount( 3 );
@@ -411,14 +411,10 @@ void Smb4KAuthOptionsPage::showDetails( Smb4KAuthInfo *authInfo )
       m_details_widget->setItem( 0, 0, entry_label );
       m_details_widget->setItem( 0, 1, entry );
       m_details_widget->setItem( 1, 0, login_label );
-      m_details_widget->setItem( 1, 1, new QTableWidgetItem( authInfo->login() ) );
+      m_details_widget->setItem( 1, 1, new QTableWidgetItem( authInfo->userName() ) );
       m_details_widget->setItem( 2, 0, password_label );
       m_details_widget->setItem( 2, 1, new QTableWidgetItem( authInfo->password() ) );
           
-      break;
-    }
-    default:
-    {
       break;
     }
   }
@@ -481,7 +477,7 @@ void Smb4KAuthOptionsPage::slotDetailsClicked( bool checked )
     {
       if ( QString::compare( selected_items.first()->text(), m_entries_list.at( i )->unc() ) == 0 ||
            (QString::compare( selected_items.first()->text(), i18n( "Default Login" ) ) == 0 &&
-            m_entries_list.at( i )->type() == Smb4KAuthInfo::Default) )
+            m_entries_list.at( i )->type() == Unknown) )
       {
         showDetails( m_entries_list.at( i ) );
         break;
@@ -517,12 +513,12 @@ void Smb4KAuthOptionsPage::slotDetailsChanged( int row, int column )
     {
       if ( QString::compare( m_details_widget->item( 0, 1 )->text(), m_entries_list.at( i )->unc() ) == 0 ||
            (QString::compare( m_details_widget->item( 0, 1 )->text(), i18n( "Default Login" ) ) == 0 &&
-           m_entries_list.at( i )->type() == Smb4KAuthInfo::Default) )
+           m_entries_list.at( i )->type() == Unknown) )
       {
         switch ( m_entries_list.at( i )->type() )
         {
-          case Smb4KAuthInfo::Host:
-          case Smb4KAuthInfo::Share:
+          case Host:
+          case Share:
           {
             if ( column == 1 )
             {
@@ -535,7 +531,7 @@ void Smb4KAuthOptionsPage::slotDetailsChanged( int row, int column )
                 }
                 case 2: // Login
                 {
-                  m_entries_list[i]->setLogin( m_details_widget->item( row, column )->text() );
+                  m_entries_list[i]->setUserName( m_details_widget->item( row, column )->text() );
                   break;
                 }
                 case 3: // Password
@@ -556,7 +552,7 @@ void Smb4KAuthOptionsPage::slotDetailsChanged( int row, int column )
             
             break;
           }
-          case Smb4KAuthInfo::Default:
+          default:
           {
             if ( column == 1 )
             {
@@ -564,7 +560,7 @@ void Smb4KAuthOptionsPage::slotDetailsChanged( int row, int column )
               {
                 case 1: // Login
                 {
-                  m_entries_list[i]->setLogin( m_details_widget->item( row, column )->text() );
+                  m_entries_list[i]->setUserName( m_details_widget->item( row, column )->text() );
                   break;
                 }
                 case 2: // Password
@@ -583,10 +579,6 @@ void Smb4KAuthOptionsPage::slotDetailsChanged( int row, int column )
               // Do nothing
             }
             
-            break;
-          }
-          default:
-          {
             break;
           }
         }
@@ -638,11 +630,11 @@ void Smb4KAuthOptionsPage::slotRemoveActionTriggered( bool /*checked*/ )
   {
     if ( QString::compare( m_entries_widget->currentItem()->text(), m_entries_list.at( i )->unc() ) == 0 ||
          (QString::compare( m_entries_widget->currentItem()->text(), i18n( "Default Login" ) ) == 0 &&
-         m_entries_list.at( i )->type() == Smb4KAuthInfo::Default) )
+         m_entries_list.at( i )->type() == Unknown) )
     {
       switch ( m_entries_list.at( i )->type() )
       {
-        case Smb4KAuthInfo::Default:
+        case Unknown:
         {
           QCheckBox *default_login = findChild<QCheckBox *>( "kcfg_UseDefaultLogin" );
           m_default_login = default_login->isChecked();
@@ -731,26 +723,22 @@ void Smb4KAuthOptionsPage::slotUndoDetailsActionTriggered( bool /*checked*/ )
   for ( int i = 0; i < m_entries_list.size(); ++i )
   {
     if ( QString::compare( m_auth_info->unc(), m_entries_list.at( i )->unc() ) == 0 ||
-         (m_auth_info->type() == Smb4KAuthInfo::Default && m_auth_info->type() == m_entries_list.at( i )->type()) )
+         (m_auth_info->type() == Unknown && m_auth_info->type() == m_entries_list.at( i )->type()) )
     {
       switch ( m_auth_info->type() )
       {
-        case Smb4KAuthInfo::Host:
-        case Smb4KAuthInfo::Share:
+        case Host:
+        case Share:
         {
           m_entries_list[i]->setWorkgroupName( m_auth_info->workgroupName() );
-          m_entries_list[i]->setLogin( m_auth_info->login() );
-          m_entries_list[i]->setPassword( m_auth_info->password() );
-          break;
-        }
-        case Smb4KAuthInfo::Default:
-        {
-          m_entries_list[i]->setLogin( m_auth_info->login() );
+          m_entries_list[i]->setUserName( m_auth_info->userName() );
           m_entries_list[i]->setPassword( m_auth_info->password() );
           break;
         }
         default:
         {
+          m_entries_list[i]->setUserName( m_auth_info->userName() );
+          m_entries_list[i]->setPassword( m_auth_info->password() );
           break;
         }
       }

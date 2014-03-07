@@ -30,6 +30,7 @@
 // application specific includes
 #include "smb4khost.h"
 #include "smb4kshare.h"
+#include "smb4kglobal.h"
 
 // Qt includes
 #include <QtCore/QString>
@@ -41,6 +42,8 @@
 
 // forward declarations
 class Smb4KAuthInfoPrivate;
+
+using namespace Smb4KGlobal;
 
 /**
  * This class provides a container for the authentication data.
@@ -54,15 +57,6 @@ class KDE_EXPORT Smb4KAuthInfo
   friend class Smb4KAuthInfoPrivate;
   
   public:
-    /**
-     * Enumeration that determines the type of network item the
-     * authentication information is for.
-     */
-    enum Type { Host,
-                Share,
-                Default,
-                Unknown };
-
     /**
      * Constructor for a host item.
      *
@@ -170,21 +164,21 @@ class KDE_EXPORT Smb4KAuthInfo
     QString shareName() const;
 
     /**
-     * Sets the login.
+     * Sets the username.
      * 
      * In case of a 'homes' share, this function will also set the share
-     * name to @p login.
+     * name to @p username.
      *
-     * @param login     The login for the server/share
+     * @param username  The login for the server/share
      */
-    void setLogin( const QString &login );
+    void setUserName( const QString &username );
 
     /**
-     * Returns the login name.
+     * Returns the username.
      *
-     * @returns         The login
+     * @returns         The username
      */
-    QString login() const;
+    QString userName() const;
 
     /**
      * Sets the password.
@@ -203,7 +197,7 @@ class KDE_EXPORT Smb4KAuthInfo
      *
      * @returns the type.
      */
-    Type type() const;
+    Smb4KGlobal::NetworkItem type() const;
 
     /**
      * If the item is a homes share, this function returns TRUE. In
@@ -212,12 +206,6 @@ class KDE_EXPORT Smb4KAuthInfo
      * @returns TRUE if the item is a homes share.
      */
     bool isHomesShare() const;
-
-    /**
-     * This function sets the type of this authentication information to
-     * "Default", i.e. it carries the default authentication information.
-     */
-    void useDefaultAuthInfo();
 
     /**
      * Compare another Smb4KAuthInfo object with this one an return TRUE if both carry

@@ -600,12 +600,12 @@ void Smb4KConfigDialog::slotSetDefaultLogin()
     
     QPointer<KPasswordDialog> dlg = new KPasswordDialog( this, KPasswordDialog::ShowUsernameLine );
     dlg->setPrompt( i18n( "Enter the default login information." ) );
-    dlg->setUsername( authInfo.login() );
+    dlg->setUsername( authInfo.userName() );
     dlg->setPassword( authInfo.password() );
     
     if ( dlg->exec() == KPasswordDialog::Accepted )
     {
-      authInfo.setLogin( dlg->username() );
+      authInfo.setUserName( dlg->username() );
       authInfo.setPassword( dlg->password() );
       
       Smb4KWalletManager::self()->writeDefaultAuthInfo( &authInfo );
@@ -657,8 +657,8 @@ void Smb4KConfigDialog::slotEnableApplyButton()
              (QString::compare( old_wallet_entries.at( i )->workgroupName(),
                                 new_wallet_entries.at( j )->workgroupName(),
                                 Qt::CaseInsensitive ) != 0 ||
-              QString::compare( old_wallet_entries.at( i )->login(),
-                                new_wallet_entries.at( j )->login(),
+              QString::compare( old_wallet_entries.at( i )->userName(),
+                                new_wallet_entries.at( j )->userName(),
                                 Qt::CaseInsensitive ) != 0 ||
               QString::compare( old_wallet_entries.at( i )->password(),
                                 new_wallet_entries.at( j )->password(),

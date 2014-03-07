@@ -1930,9 +1930,27 @@ bool Smb4KLookupSharesJob::doKill()
 void Smb4KLookupSharesJob::processShares()
 {
   QStringList stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts );
-  
+
   if ( !stdout.isEmpty() )
   {
+    // For some strange reason, Samba sometimes reports
+    // some NT_STATUS error messages via stdout (e.g. Kubuntu 13.10,
+    // Samba 3.6.18). So, we need to check stdout for authentication
+    // errors as well...
+    if ( stdout.contains( "The username or password was not correct." ) ||
+         stdout.contains( "NT_STATUS_ACCOUNT_DISABLED" ) /* AD error */ ||
+         stdout.contains( "NT_STATUS_ACCESS_DENIED" ) ||
+         stdout.contains( "NT_STATUS_LOGON_FAILURE" ) )
+    {
+      emit authError( this );
+      return;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // Now process the shares.
     Smb4KShare *share = new Smb4KShare();
     
     foreach ( const QString &line, stdout )
@@ -2253,7 +2271,7 @@ void Smb4KLookupSharesJob::slotStartLookup()
   {
     m_proc->unsetEnv( "PASSWD" );
   }
-
+  
   connect( m_proc, SIGNAL(readyReadStandardError()), this, SLOT(slotReadStandardError()) );
   connect( m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotProcessFinished(int,QProcess::ExitStatus)) );
 

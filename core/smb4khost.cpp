@@ -417,7 +417,7 @@ bool Smb4KHost::equals( Smb4KHost *host ) const
 
 void Smb4KHost::setAuthInfo( Smb4KAuthInfo *authInfo )
 {
-  d->url.setUserName( authInfo->login() );
+  d->url.setUserName( authInfo->userName() );
   d->url.setPassword( authInfo->password() );
 }
 

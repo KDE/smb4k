@@ -43,7 +43,7 @@ class Smb4KAuthInfoPrivate
   public:
     KUrl url;
     QString workgroup;
-    Smb4KAuthInfo::Type type;
+    NetworkItem type;
     bool homesShare;
     QHostAddress ip;
 };
@@ -286,13 +286,13 @@ QString Smb4KAuthInfo::shareName() const
 }
 
 
-void Smb4KAuthInfo::setLogin( const QString &login )
+void Smb4KAuthInfo::setUserName( const QString &username )
 {
-  d->url.setUserName( login );
+  d->url.setUserName( username );
 
   if ( d->homesShare )
   {
-    d->url.setPath( login );
+    d->url.setPath( username );
   }
   else
   {
@@ -301,7 +301,7 @@ void Smb4KAuthInfo::setLogin( const QString &login )
 }
 
 
-QString Smb4KAuthInfo::login() const
+QString Smb4KAuthInfo::userName() const
 {
   return d->url.userName();
 }
@@ -319,7 +319,7 @@ QString Smb4KAuthInfo::password() const
 }
 
 
-Smb4KAuthInfo::Type Smb4KAuthInfo::type() const
+Smb4KGlobal::NetworkItem Smb4KAuthInfo::type() const
 {
   return d->type;
 }
@@ -328,12 +328,6 @@ Smb4KAuthInfo::Type Smb4KAuthInfo::type() const
 bool Smb4KAuthInfo::isHomesShare() const
 {
   return d->homesShare;
-}
-
-
-void Smb4KAuthInfo::useDefaultAuthInfo()
-{
-  d->type = Default;
 }
 
 
