@@ -6,7 +6,7 @@ set( VERSION_PATCH 0 )
 
 set( VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH} )
 
-cmake_minimum_required( VERSION 2.6 )
+cmake_minimum_required( VERSION 2.8 FATAL_ERROR )
 
 set( QT_MIN_VERSION 4.7.0 )
 set( KDE_MIN_VERSION 4.8.0 ) 
