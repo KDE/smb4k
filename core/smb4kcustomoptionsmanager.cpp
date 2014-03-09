@@ -2,7 +2,7 @@
     smb4kcustomoptionsmanager - Manage custom options
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2013 by Alexander Reinholdt
+    copyright            : (C) 2011-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -82,50 +82,95 @@ Smb4KCustomOptionsManager *Smb4KCustomOptionsManager::self()
 }
 
 
-void Smb4KCustomOptionsManager::addRemount( Smb4KShare *share )
+void Smb4KCustomOptionsManager::addRemount( Smb4KShare *share, bool always )
 {
   Q_ASSERT( share );
   
-  Smb4KCustomOptions *options = NULL;
-  
-  if ( (options = findOptions( share, true )) )
+  if ( share )
   {
-    options->setRemount( Smb4KCustomOptions::DoRemount );
-  }
-  else
-  {
-    options = new Smb4KCustomOptions( share );
-    options->setRemount( Smb4KCustomOptions::DoRemount );
-    d->options << options;
-  }
-}
-
-
-void Smb4KCustomOptionsManager::removeRemount( Smb4KShare *share )
-{
-  Q_ASSERT( share );
-  
-  Smb4KCustomOptions *options = NULL;
-  
-  if ( (options = findOptions( share, true )) )
-  {
-    options->setRemount( Smb4KCustomOptions::NoRemount );
+    Smb4KCustomOptions *options = NULL;
+    
+    if ( (options = findOptions( share, true )) )
+    {
+      // If the options are already in the list, check if the share is
+      // always to be remounted. If so, ignore the 'always' argument
+      // and leave that option untouched.
+      if ( options->remount() != Smb4KCustomOptions::RemountAlways )
+      {
+        options->setRemount( always ? Smb4KCustomOptions::RemountAlways : Smb4KCustomOptions::RemountOnce );
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      options = new Smb4KCustomOptions( share );
+      options->setRemount( always ? Smb4KCustomOptions::RemountAlways : Smb4KCustomOptions::RemountOnce );
+      d->options << options;
+    }
   }
   else
   {
     // Do nothing
-  }  
+  }
 }
 
 
-void Smb4KCustomOptionsManager::clearRemounts()
+void Smb4KCustomOptionsManager::removeRemount( Smb4KShare *share, bool force )
+{
+  Q_ASSERT( share );
+  
+  if ( share )
+  {
+    Smb4KCustomOptions *options = NULL;
+    
+    if ( (options = findOptions( share, true )) )
+    {
+      if ( options->remount() == Smb4KCustomOptions::RemountOnce )
+      {
+        options->setRemount( Smb4KCustomOptions::RemountNever );
+      }
+      else if ( options->remount() == Smb4KCustomOptions::RemountAlways && force )
+      {
+        options->setRemount( Smb4KCustomOptions::RemountNever );
+      }
+      else
+      {
+        // Do nothing
+      }      
+    }
+    else
+    {
+      // Do nothing
+    }     
+  }
+  else
+  {
+    // Do nothing
+  } 
+}
+
+
+void Smb4KCustomOptionsManager::clearRemounts( bool force )
 {
   for ( int i = 0; i < d->options.size(); ++i )
   {
-    if ( d->options.at( i )->type() == Share &&
-         d->options.at( i )->remount() == Smb4KCustomOptions::DoRemount )
+    if ( d->options.at(i)->type() == Share )
     {
-      d->options[i]->setRemount( Smb4KCustomOptions::NoRemount );
+      if ( d->options.at(i)->remount() == Smb4KCustomOptions::RemountOnce )
+      {
+        d->options[i]->setRemount( Smb4KCustomOptions::RemountNever );
+      }
+      else if ( d->options.at(i)->remount() == Smb4KCustomOptions::RemountAlways && force )
+      {
+        d->options[i]->setRemount( Smb4KCustomOptions::RemountNever );
+      }
+      else
+      {
+        // Do nothing
+      }
     }
     else
     {
@@ -141,7 +186,11 @@ QList<Smb4KCustomOptions *> Smb4KCustomOptionsManager::sharesToRemount()
   
   for ( int i = 0; i < d->options.size(); ++i )
   {
-    if ( d->options.at( i )->remount() == Smb4KCustomOptions::DoRemount )
+    if ( d->options.at( i )->remount() == Smb4KCustomOptions::RemountOnce )
+    {
+      remounts << d->options[i];
+    }
+    else if ( d->options.at( i )->remount() == Smb4KCustomOptions::RemountAlways )
     {
       remounts << d->options[i];
     }
@@ -297,11 +346,9 @@ void Smb4KCustomOptionsManager::readCustomOptions()
 
       if ( xmlReader.isStartElement() )
       {
-        // FIXME: Drop version 1.0 with the next revision
         if ( xmlReader.name() == "custom_options" && 
-             (xmlReader.attributes().value( "version" ) != "1.0" && 
-              xmlReader.attributes().value( "version" ) != "1.1" &&
-              xmlReader.attributes().value( "version" ) != "1.2") )
+             (xmlReader.attributes().value( "version" ) != "1.2" &&
+              xmlReader.attributes().value( "version" ) != "2.0") )
         {
           xmlReader.raiseError( i18n( "The format of %1 is not supported.", xmlFile.fileName() ) );
           break;
@@ -353,43 +400,32 @@ void Smb4KCustomOptionsManager::readCustomOptions()
                       {
                         QString remount = xmlReader.readElementText();
 
-                        if ( QString::compare( remount, "true" ) == 0 )
+                        // FIXME: Remove the entries "true" and "false" with the next
+                        // revision (i.e. Smb4K > 1.2).
+                        if ( QString::compare( remount, "once" ) == 0 )
                         {
-                          options->setRemount( Smb4KCustomOptions::DoRemount );
+                          options->setRemount( Smb4KCustomOptions::RemountOnce );
+                        }
+                        else if ( QString::compare( remount, "always" ) == 0 )
+                        {
+                          options->setRemount( Smb4KCustomOptions::RemountAlways );
+                        }
+                        else if ( QString::compare( remount, "never" ) == 0 )
+                        {
+                          options->setRemount( Smb4KCustomOptions::RemountNever );
+                        }
+                        else if ( QString::compare( remount, "true" ) == 0 )
+                        {
+                          options->setRemount( Smb4KCustomOptions::RemountOnce );
                         }
                         else if ( QString::compare( remount, "false" ) == 0 )
                         {
-                          options->setRemount( Smb4KCustomOptions::NoRemount );
+                          options->setRemount( Smb4KCustomOptions::RemountNever );
                         }
                         else
                         {
                           options->setRemount( Smb4KCustomOptions::UndefinedRemount );
                         }
-                      }
-                      else if ( xmlReader.name() == "port" )
-                      {
-                        // FIXME: For backward compatibility. Remove with versions >> 1.0.x.
-#ifndef Q_OS_FREEBSD
-                        switch ( options->type() )
-                        {
-                          case Host:
-                          {
-                            options->setSMBPort( xmlReader.readElementText().toInt() );
-                            break;
-                          }
-                          case Share:
-                          {
-                            options->setFileSystemPort( xmlReader.readElementText().toInt() );
-                            break;
-                          }
-                          default:
-                          {
-                            break;
-                          }
-                        }
-#else
-                        options->setSMBPort( xmlReader.readElementText().toInt() );
-#endif
                       }
                       else if ( xmlReader.name() == "smb_port" )
                       {
@@ -617,13 +653,14 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
       xmlWriter.setAutoFormatting( true );
       xmlWriter.writeStartDocument();
       xmlWriter.writeStartElement( "custom_options" );
-      xmlWriter.writeAttribute( "version", "1.2" );
+      xmlWriter.writeAttribute( "version", "2.0" );
 
       for ( int i = 0; i < d->options.size(); ++i )
       {
         Smb4KCustomOptions *options = d->options[i];
         
-        if ( hasCustomOptions( options ) || options->remount() == Smb4KCustomOptions::DoRemount )
+        if ( hasCustomOptions( options ) || 
+             options->remount() == Smb4KCustomOptions::RemountOnce )
         {
           xmlWriter.writeStartElement( "options" );
           xmlWriter.writeAttribute( "type", options->type() == Host ? "host" : "share" );
@@ -687,7 +724,8 @@ const QList<Smb4KCustomOptions *> Smb4KCustomOptionsManager::customOptions( bool
   {
     Smb4KCustomOptions *options = d->options[i];
     
-    if ( hasCustomOptions( options ) || (!optionsOnly && options->remount() == Smb4KCustomOptions::DoRemount) )
+    if ( hasCustomOptions( options ) || 
+         (!optionsOnly && options->remount() == Smb4KCustomOptions::RemountOnce) )
     {
       custom_options << options;
     }
@@ -718,7 +756,7 @@ void Smb4KCustomOptionsManager::replaceCustomOptions( const QList<Smb4KCustomOpt
       {
         d->options << new Smb4KCustomOptions( *options );
       }
-      else if ( options->remount() == Smb4KCustomOptions::DoRemount )
+      else if ( options->remount() == Smb4KCustomOptions::RemountOnce )
       {
         d->options << new Smb4KCustomOptions( *options );
       }
@@ -1097,11 +1135,20 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
   default_options.setUID( (K_UID)Smb4KSettings::userID().toInt() );
   default_options.setGID( (K_GID)Smb4KSettings::groupID().toInt() );
   
-  // WOL features have no default values.
+  // NOTE: WOL features and remounting do not have default values.
   
   //
   // Do the actual check
   //
+  
+  if ( options->remount() == Smb4KCustomOptions::RemountAlways )
+  {
+    return true;
+  }
+  else
+  {
+    // Do nothing
+  }    
 
   // SMB port
   if ( empty_options.smbPort() != options->smbPort() && 

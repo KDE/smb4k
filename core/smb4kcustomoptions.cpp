@@ -2,7 +2,7 @@
     smb4kcustomoptions - This class carries custom options
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2013 by Alexander Reinholdt
+    copyright            : (C) 2011-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -540,15 +540,20 @@ QMap<QString, QString> Smb4KCustomOptions::customOptions() const
 
   switch ( d->remount )
   {
-    case DoRemount:
+    case RemountOnce:
     {
-      entries.insert( "remount", "true" );
+      entries.insert( "remount", "once" );
       break;
     }
-    case NoRemount:
+    case RemountAlways:
     {
-      entries.insert( "remount", "false" );
+      entries.insert( "remount", "always" );
       break;
+    }
+    case RemountNever:
+    {
+      entries.insert( "remount", "never" );
+      break;      
     }
     case UndefinedRemount:
     {
@@ -767,6 +772,16 @@ bool Smb4KCustomOptions::equals( Smb4KCustomOptions *options ) const
   {
     // Do nothing
   }
+  
+  // Remounting
+  if ( d->remount != options->remount() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
 
   // SMB port
   if ( d->smbPort != options->smbPort() )
@@ -919,6 +934,16 @@ bool Smb4KCustomOptions::isEmpty()
   
   // IP address
   if ( !d->ip.isNull() )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Remounting
+  if ( d->remount != Smb4KCustomOptions::UndefinedRemount )
   {
     return false;
   }

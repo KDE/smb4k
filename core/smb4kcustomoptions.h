@@ -2,7 +2,7 @@
     smb4kcustomoptions - This class carries custom options
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2013 by Alexander Reinholdt
+    copyright            : (C) 2011-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -44,7 +44,7 @@ class Smb4KCustomOptionsPrivate;
 using namespace Smb4KGlobal;
 
 /**
- * This class stored the custom options defined for a certain host
+ * This class stores the custom options defined for a certain host
  * or share.
  *
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
@@ -58,9 +58,17 @@ class KDE_EXPORT Smb4KCustomOptions
   public:
     /**
      * Remount enumeration
+     * 
+     * @param RemountOnce       Remount the share only next time the application
+     *                          is started.
+     * @param RemountAlways     Remount the share everytime the application is
+     *                          started.
+     * @param RemountNever      Never remount the share.
+     * @param UndefinedRemount  No remount option is defined.
      */
-    enum Remount { DoRemount,
-                   NoRemount,
+    enum Remount { RemountOnce,
+                   RemountAlways,
+                   RemountNever,
                    UndefinedRemount };
                   
     /**

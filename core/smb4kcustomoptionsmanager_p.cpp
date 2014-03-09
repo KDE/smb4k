@@ -3,7 +3,7 @@
     Smb4KCustomOptionsManager class
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2012 by Alexander Reinholdt
+    copyright            : (C) 2011-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -136,7 +136,34 @@ void Smb4KCustomOptionsDialog::setupView()
   general_layout->addWidget( unc, 0, 1, 0 );
   general_layout->addWidget( ip_label, 1, 0, 0 );
   general_layout->addWidget( ip, 1, 1, 0 );
+  
+  if ( m_options->type() == Share )
+  {
+    m_remount = new QCheckBox( i18n( "Always remount this share" ), general );
+    m_remount->setChecked( (m_options->remount() == Smb4KCustomOptions::RemountAlways) );
+    general_layout->addWidget( m_remount, 2, 0, 1, 2, 0 );
+  }
+  else
+  {
+    m_remount = NULL;
+  }
+  
+  switch ( m_options->type() )
+  {
+    case Host:
+    {
+      break;
+    }
+    case Share:
+    {
 
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
 
   //
   // Tab widget with settings
@@ -593,6 +620,22 @@ void Smb4KCustomOptionsDialog::setupView()
 
 bool Smb4KCustomOptionsDialog::defaultValues()
 {
+  if ( m_options->type() == Share )
+  {
+    if ( m_remount->isChecked() != false )
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+    
   if ( m_smb_port->value() != Smb4KSettings::remoteSMBPort() )
   {
     return false;
@@ -717,6 +760,15 @@ bool Smb4KCustomOptionsDialog::defaultValues()
 
 void Smb4KCustomOptionsDialog::slotSetDefaultValues()
 {
+  if ( m_options->type() == Share )
+  {
+    m_remount->setChecked( false );
+  }
+  else
+  {
+    // Do nothing
+  }
+  
   m_smb_port->setValue( Smb4KSettings::remoteSMBPort() );
 #ifndef Q_OS_FREEBSD
   m_fs_port->setValue( Smb4KSettings::remoteFileSystemPort() );
@@ -871,6 +923,22 @@ void Smb4KCustomOptionsDialog::slotCheckValues()
 
 void Smb4KCustomOptionsDialog::slotOKClicked()
 {
+  if ( m_options->type() == Share )
+  {
+    if ( m_remount->isChecked() )
+    {
+      m_options->setRemount( Smb4KCustomOptions::RemountAlways );
+    }
+    else
+    {
+      m_options->setRemount( Smb4KCustomOptions::RemountNever );
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+  
   m_options->setSMBPort( m_smb_port->value() );
 #ifndef Q_OS_FREEBSD
   m_options->setFileSystemPort( m_fs_port->value() );

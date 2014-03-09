@@ -2,7 +2,7 @@
     smb4kcustomoptionsmanager - Manage custom options
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2013 by Alexander Reinholdt
+    copyright            : (C) 2011-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -76,24 +76,37 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
     
     /**
      * Add the share to the list of shares that are to be remounted
-     * next time.
+     * either only on next program start or always Smb4K is restarted.
      * 
      * @param share     The share object
+     * 
+     * @param always    If set to TRUE the share is always mounted 
+     *                  when Smb4K is restarted.
      */
-    void addRemount( Smb4KShare *share );
+    void addRemount( Smb4KShare *share, bool always = false );
     
     /**
-     * Remove the share @p share from the list of shares that are to
-     * be remounted the next time.
+     * Remove the share @p share from the list of shares that are to be 
+     * remounted. If @p force is set to TRUE, the share is removed even 
+     * if it should always be removed (option is set to 
+     * Smb4KCustomOptions::AlwaysRemount). Apart from that, the share is only 
+     * removed when the option is set to Smb4KCustomOptions::DoRemount.
      * 
      * @param share     The share object
+     * 
+     * @param force     If set to TRUE, the share is removed regardless of the
+     *                  remount setting.
      */
-    void removeRemount( Smb4KShare *share );
+    void removeRemount( Smb4KShare *share, bool force = false );
     
     /**
-     * Removes all remounts from the list of custom options.
+     * Removes all remounts from the list of custom options. If @p force
+     * is set to TRUE, even those are removed that should always be remounted.
+     * 
+     * @param force     If set to TRUE, even those shares are removed that should
+     *                  always be remounted.
      */
-    void clearRemounts();
+    void clearRemounts( bool force );
     
     /**
      * Returns the list of shares that are to be remounted.

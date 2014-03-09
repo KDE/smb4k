@@ -3,7 +3,7 @@
     options
                              -------------------
     begin                : Sa Jan 19 2013
-    copyright            : (C) 2013 by Alexander Reinholdt
+    copyright            : (C) 2013-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -124,7 +124,7 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
   
   ip_label->setBuddy( m_ip_address );
   
-  m_remount_share = new QCheckBox( i18n( "Remount this share" ), m_general_editors );
+  m_remount_share = new QCheckBox( i18n( "Always remount this share" ), m_general_editors );
   
   general_editor_layout->addWidget( unc_label, 0, 0, 0 );
   general_editor_layout->addWidget( m_unc_address, 0, 1, 0 );
@@ -649,7 +649,7 @@ void Smb4KCustomOptionsPage::populateEditors(Smb4KCustomOptions* options)
     // Do nothing
   }
   
-  if ( m_current_options->remount() == Smb4KCustomOptions::DoRemount )
+  if ( m_current_options->remount() == Smb4KCustomOptions::RemountAlways )
   {
     m_remount_share->setChecked( true );
   }
@@ -966,11 +966,11 @@ void Smb4KCustomOptionsPage::commitChanges()
     
     if ( m_remount_share->isChecked() )
     {
-      options->setRemount( Smb4KCustomOptions::DoRemount );
+      options->setRemount( Smb4KCustomOptions::RemountAlways );
     }
     else
     {
-      options->setRemount( Smb4KCustomOptions::NoRemount );
+      options->setRemount( Smb4KCustomOptions::RemountNever );
     }
     
     options->setSMBPort( m_smb_port->value() );

@@ -233,7 +233,9 @@ bool Smb4KMounter::isRunning()
 
 void Smb4KMounter::triggerRemounts( bool fill_list )
 {
-  if ( Smb4KSettings::remountShares() || d->hardwareReason )
+  if ( Smb4KSettings::remountShares() /* one-time remounts */ || 
+       !Smb4KCustomOptionsManager::self()->sharesToRemount().isEmpty() /* permanent remounts */ || 
+       d->hardwareReason /* hardware reason */ )
   {
     if ( fill_list )
     {
@@ -1363,25 +1365,25 @@ void Smb4KMounter::saveSharesForRemount()
     {
       if ( !mountedSharesList().at( i )->isForeign() )
       {
-        Smb4KCustomOptionsManager::self()->addRemount( mountedSharesList().at( i ) );
+        Smb4KCustomOptionsManager::self()->addRemount( mountedSharesList().at( i ), false );
       }
       else
       {
-        Smb4KCustomOptionsManager::self()->removeRemount( mountedSharesList().at( i ) );
+        Smb4KCustomOptionsManager::self()->removeRemount( mountedSharesList().at( i ), false );
       }
     }
 
     // Save failed remounts.
     for ( int i = 0; i < d->remounts.size(); ++i )
     {
-      Smb4KCustomOptionsManager::self()->addRemount( d->remounts.at( i ) );
+      Smb4KCustomOptionsManager::self()->addRemount( d->remounts.at( i ), false );
     }
   }
   else
   {
     if ( !Smb4KSettings::remountShares() )
     {
-      Smb4KCustomOptionsManager::self()->clearRemounts();
+      Smb4KCustomOptionsManager::self()->clearRemounts( false );
     }
     else
     {
@@ -1470,7 +1472,8 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
   // before. Do this only if there are no subjobs, because we
   // do not want to get crashes because a share was invalidated
   // during processing the shares.
-  if ( Smb4KSettings::remountShares() && Smb4KSettings::remountAttempts() > d->remountAttempts )
+  if ( (Smb4KSettings::remountShares() || !Smb4KCustomOptionsManager::self()->sharesToRemount().isEmpty()) && 
+       Smb4KSettings::remountAttempts() > d->remountAttempts )
   {
     // Inhibit automatic sleeping.
     int cookie = Smb4KSolidInterface::self()->beginSleepSuppression(i18n("Remounting shares. Please wait."));
@@ -1726,7 +1729,7 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
 
     if ( Smb4KSettings::remountShares() )
     {
-      Smb4KCustomOptionsManager::self()->removeRemount( known_share );
+      Smb4KCustomOptionsManager::self()->removeRemount( known_share, false );
     }
     else
     {
