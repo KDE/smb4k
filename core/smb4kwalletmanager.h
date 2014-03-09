@@ -41,10 +41,9 @@ class Smb4KWalletManagerPrivate;
 /**
  * This class manages the access to the digital wallet where the authentication
  * information is stored.
- *
- * This class also provides an internal list, where authentication information
- * can be stored temporarily if the user does not want to use the digital wallet
- * provided by KDE.
+ * 
+ * If the user chooses to no use the wallet, a password dialog is shown every
+ * time authentication information is needed.
  *
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
