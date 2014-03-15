@@ -599,7 +599,24 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
   // Global custom options provided by the user
   if ( !Smb4KSettings::customCIFSOptions().isEmpty() )
   {
-    args_list += Smb4KSettings::customCIFSOptions().split( ',', QString::SkipEmptyParts );
+    // SECURITY: Remove cruid option.
+    // This issue was reported by Heiner Markert.
+    QStringList list = Smb4KSettings::customCIFSOptions().split( ',', QString::SkipEmptyParts );
+    QMutableStringListIterator it( list );
+      
+    while ( it.hasNext() )
+    {
+      if ( it.next().contains( "cruid=" ) )
+      {
+        it.remove();
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    
+    args_list += list;
   }
   else
   {
