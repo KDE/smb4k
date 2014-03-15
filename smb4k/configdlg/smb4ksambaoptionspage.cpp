@@ -51,6 +51,7 @@
 #include <kcombobox.h>
 #include <kuser.h>
 #include <kicon.h>
+#include <kmessagebox.h>
 
 // System includes
 #include <unistd.h>
@@ -560,7 +561,6 @@ Smb4KSambaOptionsPage::Smb4KSambaOptionsPage( QWidget *parent ) : KTabWidget( pa
 
   KLineEdit *additional_opts   = new KLineEdit( c_extra_widget );
   additional_opts->setObjectName( "kcfg_CustomCIFSOptions" );
-
   add_options_label->setBuddy( additional_opts );
 
   c_extra_layout->addWidget( security_label, 0, 0, 0 );
@@ -698,6 +698,9 @@ Smb4KSambaOptionsPage::Smb4KSambaOptionsPage( QWidget *parent ) : KTabWidget( pa
 
   connect( group_menu,       SIGNAL(triggered(QAction*)),
            this,             SLOT(slotNewGroupTriggered(QAction*)) );
+  
+  connect( additional_opts,  SIGNAL(userTextChanged(QString)),
+           this,             SLOT(slotAdditionalCIFSOptionsChanged(QString)) );
 }
 
 
@@ -732,6 +735,53 @@ void Smb4KSambaOptionsPage::slotNewGroupTriggered( QAction *action )
   if ( group_id )
   {
     group_id->setText( action->data().toString() );
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KSambaOptionsPage::slotAdditionalCIFSOptionsChanged(const QString& options)
+{
+  if ( !options.trimmed().isEmpty() )
+  {
+    // SECURITY: Remove cruid option.
+    // This issue was reported by Heiner Markert.
+    if ( options.contains( "cruid=" ) )
+    {
+      QStringList list = options.split( ',', QString::SkipEmptyParts );
+      QMutableStringListIterator it( list );
+      
+      while ( it.hasNext() )
+      {
+        if ( it.next().contains( "cruid=" ) )
+        {
+          it.remove();
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+
+      KLineEdit *cifs_opts = findChild<KLineEdit *>( "kcfg_CustomCIFSOptions" );
+      
+      if ( cifs_opts )
+      {
+        KMessageBox::information( this, i18n( "<qt>Due to security concerns, the cruid option cannot be defined here and will now be removed.</qt>" ) );
+        cifs_opts->setText( list.join( " ," ) );
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
