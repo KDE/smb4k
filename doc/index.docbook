@@ -3875,7 +3875,10 @@ Default: selected
 <chapter id="commands" >
 <title>Command Reference</title>
 
-<sect1 id="file_menu">
+<sect1 id="menu_items">
+<title>Menu Items</title>
+
+<sect2 id="file_menu">
 <title>The File Menu</title>
 <para>
 <variablelist>
@@ -3899,9 +3902,9 @@ Quit &smb4k;.
 </varlistentry>
 </variablelist>
 </para>
-</sect1>
+</sect2>
 
-<sect1 id="network_menu">
+<sect2 id="network_menu">
 <title>The Network Menu</title>
 <para>
 <variablelist>
@@ -4049,9 +4052,9 @@ Quit &smb4k;.
 </varlistentry>
 </variablelist>
 </para>
-</sect1>
+</sect2>
 
-<sect1 id="search_menu">
+<sect2 id="search_menu">
 <title>The Search Menu</title>
 <para>
   <variablelist>
@@ -4124,9 +4127,9 @@ Quit &smb4k;.
     </varlistentry>
   </variablelist>
 </para>
-</sect1> 
+</sect2> 
 
-<sect1 id="shares_menu">
+<sect2 id="shares_menu">
 <title>The Shares Menu</title>
 <para>
 <variablelist>
@@ -4222,9 +4225,9 @@ Quit &smb4k;.
 </varlistentry>
 </variablelist>
 </para>
-</sect1>
+</sect2>
 
-<sect1 id="bookmarks_menu">
+<sect2 id="bookmarks_menu">
 <title>The Bookmarks Menu</title>
 <para>
 <variablelist>
@@ -4261,9 +4264,9 @@ Quit &smb4k;.
 </varlistentry>
 </variablelist>
 </para>
-</sect1>
+</sect2>
 
-<sect1 id="settings_menu">
+<sect2 id="settings_menu">
 <title>The Settings Menu</title>
 <para>
 <variablelist>
@@ -4334,12 +4337,18 @@ Quit &smb4k;.
 </varlistentry>
 </variablelist>
 </para>
+</sect2>
+
+<sect2 id="help-menu">
+<title>The Help Menu</title>
+<para>Additionally &smb4k; has the common &kde; <guimenu>Help</guimenu>
+menu items, for more information read the section about the 
+<ulink url="help:/fundamentals/ui.html#menus-help">Help Menu</ulink>
+of the &kde; Fundamentals.</para>
+</sect2>
+
 </sect1>
 
-<sect1 id="help_menu">
-<title>The Help Menu</title>
-&help.menu.documentation;
-</sect1>
 </chapter>
 
 <!-- Reporting bugs -->
