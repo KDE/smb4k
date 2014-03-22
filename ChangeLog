@@ -5,6 +5,18 @@ Smb4K 1.2.0 (????-??-??):
 - Revised Smb4KGlobal namespace:
   + Renamed open() function to openShare() to make krazy2 happy.
 
+Smb4K 1.1.1 (2014-03-22):
+- Fixed a string in the handbook.
+- Set date when documentation was updated to 2014-03-16.
+- Fixed potential security issue reported by Heiner Markert. Do not
+  allow the cruid option to be entered via the "Additional options"
+  line edit. Also, implement a check in Smb4KMountJob::createMountAction()
+  that removes the cruid option from the custom options returned by
+  Smb4KSettings::customCIFSOptions().
+- Fix crash that might happen due to a (misconfigured) smb.conf file
+  that does not contain a global section. Many thanks go to Michael 
+  Rohde for reporting this issue.
+
 Smb4K 1.1.0 (2014-01-06):
 - Smb4K needs KDE SC version 4.8 or later.
 - Fixed many issues reported by krazy2. On the way several minor changes
