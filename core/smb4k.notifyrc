@@ -20,6 +20,7 @@ Name[sk]=Smb4K
 Name[sv]=Smb4K
 Name[uk]=Smb4K
 Name[x-test]=xxSmb4Kxx
+Name[zh_TW]=Smb4K
 Comment=Advanced Network Neighborhood Browser
 Comment[bs]=Napredni pregledač mrežnog susjedstva
 Comment[ca]=Explorador avançat de veïnatge de xarxa
@@ -38,6 +39,7 @@ Comment[sk]=Pokročilý prehliadač sieťového okolia
 Comment[sv]=Avancerad bläddrare för nätverksgrannskapet
 Comment[uk]=Переглядач мережевого оточення з додатковими можливостями
 Comment[x-test]=xxAdvanced Network Neighborhood Browserxx
+Comment[zh_TW]=進階網路芳鄰瀏覽器
 Version=1
 
 [Context/Notification]
@@ -61,6 +63,7 @@ Name[sk]=Pripomienka
 Name[sv]=Underrättelse
 Name[uk]=Сповіщення
 Name[x-test]=xxNotificationxx
+Name[zh_TW]=通知
 Comment=The user is notified about an action
 Comment[bs]=Korisnik je obavješten o akciji
 Comment[ca]=L'usuari ha estat notificat quant a una acció
@@ -79,6 +82,7 @@ Comment[sk]=Používateľ je upozornený na akciu
 Comment[sv]=Användaren blir underrättad om en åtgärd
 Comment[uk]=Користувачеві повідомлено про дію
 Comment[x-test]=xxThe user is notified about an actionxx
+Comment[zh_TW]=使用者被通知某些動作
 
 [Context/Warning]
 Name=Warning
@@ -101,6 +105,7 @@ Name[sk]=Upozornenie
 Name[sv]=Varning
 Name[uk]=Попередження
 Name[x-test]=xxWarningxx
+Name[zh_TW]=警告
 Comment=A warning is shown to the user
 Comment[bs]=Prikazana je upozoravajuća poruka korisniku
 Comment[ca]=Es mostra un avís a l'usuari
@@ -119,6 +124,7 @@ Comment[sk]=Používateľovi sa zobrazí upozornenie
 Comment[sv]=En varning visas för användaren
 Comment[uk]=Користувачеві показано попередження
 Comment[x-test]=xxA warning is shown to the userxx
+Comment[zh_TW]=警告已顯示給使用者
 
 [Context/Error]
 Name=Error
@@ -141,6 +147,7 @@ Name[sk]=Chyba
 Name[sv]=Fel
 Name[uk]=Помилка
 Name[x-test]=xxErrorxx
+Name[zh_TW]=錯誤
 Comment=An error message is shown to the user
 Comment[bs]=Poruka greške je prikazana korisniku
 Comment[ca]=Es mostra un missatge d'error a l'usuari
@@ -158,3 +165,4 @@ Comment[sk]=Používateľovi sa zobrazí chybová správa
 Comment[sv]=Ett felmeddelande visas för användaren
 Comment[uk]=Користувачеві показано повідомлення про помилку
 Comment[x-test]=xxAn error message is shown to the userxx
+Comment[zh_TW]=錯誤訊息已顯示給使用者
