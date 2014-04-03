@@ -20,6 +20,7 @@ Name[sk]=Moje blízke okolie
 Name[sv]=Nätverksgrannskap
 Name[uk]=Мережеве оточення
 Name[x-test]=xxNetwork Neighborhoodxx
+Name[zh_TW]=網路芳鄰
 Comment=Network neighborhood browser based on Smb4K
 Comment[bs]=Pregledač mrežnog susjedstva baziran na Smb4K
 Comment[ca]=Explorador de veïnatge de xarxa basat en el Smb4K
@@ -40,6 +41,7 @@ Comment[sk]=Prehliadať sieťového okolia založený na Smb4K
 Comment[sv]=Bläddrare för nätverksgrannskapet baserad på Smb4K
 Comment[uk]=Переглядач мережевого середовища на основі Smb4K
 Comment[x-test]=xxNetwork neighborhood browser based on Smb4Kxx
+Comment[zh_TW]=網路
 Icon=smb4k
 
 X-Plasma-API=declarativeappletscript
