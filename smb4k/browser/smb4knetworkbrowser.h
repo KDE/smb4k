@@ -184,6 +184,12 @@ class Smb4KNetworkBrowser : public QTreeWidget
      * This slot is used to auto select the item under the mouse.
      */
     void slotAutoSelectItem();
+    
+    /**
+     * Take care that only shares are selected when the user marks multiple
+     * shares.
+     */    
+    void slotItemSelectionChanged();
 
   private:
     /**

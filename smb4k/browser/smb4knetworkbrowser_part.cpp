@@ -441,6 +441,8 @@ void Smb4KNetworkBrowserPart::slotContextMenuRequested( const QPoint &pos )
 
 void Smb4KNetworkBrowserPart::slotItemSelectionChanged()
 {
+  kDebug() << "Item selection changed...";
+  
   // Get the selected item.
   QList<QTreeWidgetItem *> items = m_widget->selectedItems();
 
@@ -466,7 +468,6 @@ void Smb4KNetworkBrowserPart::slotItemSelectionChanged()
           static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
           actionCollection()->action( "print_action" )->setEnabled( false );
           actionCollection()->action( "custom_action" )->setEnabled( true );
-          
           break;
         }
         case Share:
@@ -535,19 +536,43 @@ void Smb4KNetworkBrowserPart::slotItemSelectionChanged()
       // Do nothing. This is managed elsewhere.
     }
   }
-  else
+  else if ( items.size() > 1 )
   {
-    // Do nothing
+    // In this case there are only shares selected, because all other items
+    // are automatically deselected in extended selection mode.
+    
+    // For deciding which function the mount action should have, we use
+    // the number of unmounted shares. If that is identical with the items.size(),
+    // it will mount the items, otherwise it will unmount them.
+    int unmounted_shares = items.size();
+    
+    for ( int i = 0; i < items.size(); ++i )
+    {
+      Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( items.at( i ) );
+      
+      if ( item && item->shareItem()->isMounted() )
+      {
+        unmounted_shares--;
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    
+    // Adjust the actions.
+    KGuiItem rescan_item( i18n( "Scan Netwo&rk" ), KIcon( "view-refresh" ) );
+    static_cast<KDualAction *>( actionCollection()->action( "rescan_abort_action" ) )->setActiveGuiItem( rescan_item );
+    actionCollection()->action( "rescan_abort_action" )->setEnabled( false );
+    actionCollection()->action( "bookmark_action" )->setEnabled( true );
+    actionCollection()->action( "authentication_action" )->setEnabled( false );
+    actionCollection()->action( "preview_action" )->setEnabled( true );
+    actionCollection()->action( "mount_action" )->setEnabled( true );
+    static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( (unmounted_shares == items.size()) );
+    actionCollection()->action( "print_action" )->setEnabled( false );
+    actionCollection()->action( "custom_action" )->setEnabled( false );    
   }
-}
-
-
-void Smb4KNetworkBrowserPart::slotItemPressed( QTreeWidgetItem *item, int /*column*/ )
-{
-  // Enable/disable the actions.
-  Smb4KNetworkBrowserItem *browser_item = static_cast<Smb4KNetworkBrowserItem *>( item );
-
-  if ( !browser_item && m_widget->selectedItems().size() == 0 )
+  else
   {
     KGuiItem rescan_item( i18n( "Scan Netwo&rk" ), KIcon( "view-refresh" ) );
     static_cast<KDualAction *>( actionCollection()->action( "rescan_abort_action" ) )->setActiveGuiItem( rescan_item );    
@@ -559,9 +584,33 @@ void Smb4KNetworkBrowserPart::slotItemPressed( QTreeWidgetItem *item, int /*colu
     actionCollection()->action( "print_action" )->setEnabled( false );
     actionCollection()->action( "custom_action" )->setEnabled( false );
   }
-  else
+  
+  kDebug() << "Smb4KNetworkBrowserPart: Item selection changed ...";
+}
+
+
+void Smb4KNetworkBrowserPart::slotItemPressed( QTreeWidgetItem *item, int /*column*/ )
+{
+  // FIXME: Check if this slot is still necessary...
+  
+  if ( QApplication::keyboardModifiers() == Qt::NoModifier )
   {
-    if ( browser_item )
+    // Enable/disable the actions.
+    Smb4KNetworkBrowserItem *browser_item = static_cast<Smb4KNetworkBrowserItem *>( item );
+    
+    if ( !browser_item && m_widget->selectedItems().size() == 0 )
+    {
+      KGuiItem rescan_item( i18n( "Scan Netwo&rk" ), KIcon( "view-refresh" ) );
+      static_cast<KDualAction *>( actionCollection()->action( "rescan_abort_action" ) )->setActiveGuiItem( rescan_item );    
+      actionCollection()->action( "bookmark_action" )->setEnabled( false );
+      actionCollection()->action( "authentication_action" )->setEnabled( false );
+      actionCollection()->action( "preview_action" )->setEnabled( false );
+      actionCollection()->action( "mount_action" )->setEnabled( false );
+      static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
+      actionCollection()->action( "print_action" )->setEnabled( false );
+      actionCollection()->action( "custom_action" )->setEnabled( false );
+    }
+    else if ( browser_item )
     {
       switch ( browser_item->type() )
       {
@@ -606,58 +655,71 @@ void Smb4KNetworkBrowserPart::slotItemPressed( QTreeWidgetItem *item, int /*colu
       // Do nothing
     }
   }
+  else
+  {
+    // Do nothing
+  }
+  
+  kDebug() << "Smb4KNetworkBrowserPart: Item pressed...";
 }
 
 
 void Smb4KNetworkBrowserPart::slotItemExecuted( QTreeWidgetItem *item, int /*column*/ )
 {
-  Smb4KNetworkBrowserItem *browserItem = static_cast<Smb4KNetworkBrowserItem *>( item );
-
-  if ( browserItem )
+  if ( QApplication::keyboardModifiers() == Qt::NoModifier && m_widget->selectedItems().size() == 1 )
   {
-    switch ( browserItem->type() )
+    Smb4KNetworkBrowserItem *browserItem = static_cast<Smb4KNetworkBrowserItem *>( item );
+
+    if ( browserItem )
     {
-      case Workgroup:
+      switch ( browserItem->type() )
       {
-        if ( browserItem->isExpanded() )
+        case Workgroup:
         {
-          Smb4KScanner::self()->lookupDomainMembers( browserItem->workgroupItem(), m_widget );
+          if ( browserItem->isExpanded() )
+          {
+            Smb4KScanner::self()->lookupDomainMembers( browserItem->workgroupItem(), m_widget );
+          }
+          else
+          {
+            // Do nothing
+          }
+          break;
         }
-        else
+        case Host:
         {
-          // Do nothing
+          if ( browserItem->isExpanded() )
+          {
+            Smb4KScanner::self()->lookupShares( browserItem->hostItem(), m_widget );
+          }
+          else
+          {
+            // Do nothing
+          }
+          break;
         }
-        break;
-      }
-      case Host:
-      {
-        if ( browserItem->isExpanded() )
+        case Share:
         {
-          Smb4KScanner::self()->lookupShares( browserItem->hostItem(), m_widget );
+          if ( !browserItem->shareItem()->isPrinter() )
+          {
+            slotMountActionTriggered( false );  // boolean is ignored
+          }
+          else
+          {
+            slotPrint( false );  // boolean is ignored
+          }
+          break;
         }
-        else
+        default:
         {
-          // Do nothing
+          break;
         }
-        break;
-      }
-      case Share:
-      {
-        if ( !browserItem->shareItem()->isPrinter() )
-        {
-          slotMountActionTriggered( false );  // boolean is ignored
-        }
-        else
-        {
-          slotPrint( false );  // boolean is ignored
-        }
-        break;
-      }
-      default:
-      {
-        break;
       }
     }
+    else
+    {
+      // Do nothing
+    }    
   }
   else
   {
@@ -1809,16 +1871,16 @@ void Smb4KNetworkBrowserPart::slotCustomOptions( bool /*checked*/ )
 
 void Smb4KNetworkBrowserPart::slotAddBookmark( bool /*checked*/ )
 {
-  QList<QTreeWidgetItem *> selected_items = m_widget->selectedItems();
+  QList<QTreeWidgetItem *> items = m_widget->selectedItems();
   QList<Smb4KShare *> shares;
 
-  if ( !selected_items.isEmpty() )
+  if ( !items.isEmpty() )
   {
-    for ( int i = 0; i < selected_items.size(); ++i )
+    for ( int i = 0; i < items.size(); ++i )
     {
-      Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( selected_items.at( i ) );
+      Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( items.at( i ) );
 
-      if ( item->type() == Share && !item->shareItem()->isPrinter() )
+      if ( item && item->type() == Share && !item->shareItem()->isPrinter() )
       {
         shares << item->shareItem();
         continue;
@@ -1848,13 +1910,24 @@ void Smb4KNetworkBrowserPart::slotAddBookmark( bool /*checked*/ )
 
 void Smb4KNetworkBrowserPart::slotPreview( bool /*checked*/ )
 {
-  // Get the current item and pass the encapsulated Smb4KShare item
-  // to the preview job.
-  Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( m_widget->currentItem() );
-
-  if ( item && !item->shareItem()->isPrinter() )
+  QList<QTreeWidgetItem *> items = m_widget->selectedItems();
+  
+  if ( !items.isEmpty() )
   {
-    Smb4KPreviewer::self()->preview( item->shareItem(), m_widget );
+    for ( int i = 0; i < items.size(); ++i )
+    {
+      Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( items.at( i ) );
+
+      if ( item && item->type() == Share && !item->shareItem()->isPrinter() )
+      {
+        Smb4KPreviewer::self()->preview( item->shareItem(), m_widget );
+        continue;
+      }
+      else
+      {
+        continue;
+      }
+    }
   }
   else
   {
@@ -1867,7 +1940,7 @@ void Smb4KNetworkBrowserPart::slotPrint( bool /*checked*/ )
 {
   Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( m_widget->currentItem() );
   
-  if ( item->shareItem()->isPrinter() )
+  if ( item && item->shareItem()->isPrinter() )
   {
     Smb4KPrint::self()->print( item->shareItem(), m_widget );
   }
@@ -1880,33 +1953,80 @@ void Smb4KNetworkBrowserPart::slotPrint( bool /*checked*/ )
 
 void Smb4KNetworkBrowserPart::slotMountActionTriggered( bool /*checked*/ )
 {
-  Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( m_widget->currentItem() );
-
-  if ( item )
+  QList<QTreeWidgetItem *> items = m_widget->selectedItems();
+  
+  if ( items.size() > 1 )
   {
-    switch ( item->type() )
+    // In the case of multiple selected network items, selectedItems() 
+    // only contains shares. Thus, we do not need to test for the type.
+    // For deciding what the mount action is supposed to do, i.e. mount
+    // the (remaining) selected unmounted shares or unmounting all selected
+    // mounted shares, we use the number of unmounted shares. If that is
+    // greater than 0, we mount all shares that need to be mounted, otherwise
+    // we unmount all selected shares.
+    QList<Smb4KShare *> unmounted, mounted;
+    
+    for ( int i = 0; i < items.size(); ++i )
     {
-      case Share:
+      Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( items.at( i ) );
+      
+      if ( item && item->shareItem()->isMounted() )
       {
-        if ( !item->shareItem()->isMounted() )
-        {
-          Smb4KMounter::self()->mountShare( item->shareItem(), m_widget );
-        }
-        else
-        {
-          Smb4KMounter::self()->unmountShare( item->shareItem(), false, m_widget );
-        }
-        break;
+        mounted << item->shareItem();
       }
-      default:
+      else if ( item && !item->shareItem()->isMounted() )
       {
-        break;
+        unmounted << item->shareItem();
       }
+      else
+      {
+        // Do nothing
+      }
+    }
+    
+    if ( unmounted.size() > 0 )
+    {
+      // Mount the (remaining) unmounted shares.
+      Smb4KMounter::self()->mountShares( unmounted, m_widget );
+    }
+    else
+    {
+      // Unmount all shares.
+      Smb4KMounter::self()->unmountShares( mounted, m_widget );
     }
   }
   else
   {
-    // Do nothing
+    // If only one network item is selected, we need to test for the type
+    // of the item. Only in case of a share we need to do something.
+    Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( m_widget->currentItem() );
+
+    if ( item )
+    {
+      switch ( item->type() )
+      {
+        case Share:
+        {
+          if ( !item->shareItem()->isMounted() )
+          {
+            Smb4KMounter::self()->mountShare( item->shareItem(), m_widget );
+          }
+          else
+          {
+            Smb4KMounter::self()->unmountShare( item->shareItem(), false, m_widget );
+          }
+          break;
+        }
+        default:
+        {
+          break;
+        }
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
   }
 }
 

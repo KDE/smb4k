@@ -58,7 +58,7 @@ Smb4KNetworkBrowser::Smb4KNetworkBrowser( QWidget *parent )
   setRootIsDecorated( true );
   setAllColumnsShowFocus( false );
   setMouseTracking( true );
-  setSelectionMode( SingleSelection );
+  setSelectionMode( ExtendedSelection );
   
   setContextMenuPolicy( Qt::CustomContextMenu );
 
@@ -84,6 +84,9 @@ Smb4KNetworkBrowser::Smb4KNetworkBrowser( QWidget *parent )
 
   connect( this, SIGNAL(viewportEntered()),
            this, SLOT(slotViewportEntered()) );
+  
+  connect( this, SIGNAL(itemSelectionChanged()),
+           this, SLOT(slotItemSelectionChanged()) );
 
   // We need to conform with KDE's settings (see also slotKDESettingsChanged(),
   // slotItemEntered() and slotViewportEntered()).
@@ -406,28 +409,37 @@ void Smb4KNetworkBrowser::slotItemExecuted( QTreeWidgetItem *item, int /*column*
     // Do nothing
   }
 
-  if ( item )
+  // Only do something if there are no keyboard modifiers pressed
+  // and there is only one item selected.
+  if ( QApplication::keyboardModifiers() == Qt::NoModifier && selectedItems().size() == 1 )
   {
-    switch ( item->type() )
+    if ( item )
     {
-      case Workgroup:
-      case Host:
+      switch ( item->type() )
       {
-        if ( !item->isExpanded() )
+        case Workgroup:
+        case Host:
         {
-          expandItem( item );
-        }
-        else
-        {
-          collapseItem( item );
-        }
+          if ( !item->isExpanded() )
+          {
+            expandItem( item );
+          }
+          else
+          {
+            collapseItem( item );
+          }
 
-        break;
+          break;
+        }
+        default:
+        {
+          break;
+        }
       }
-      default:
-      {
-        break;
-      }
+    }
+    else
+    {
+      // Do nothing
     }
   }
   else
@@ -601,6 +613,57 @@ void Smb4KNetworkBrowser::slotAutoSelectItem()
   else
   {
     // Do nothing. This should never happen, however.
+  }
+}
+
+
+void Smb4KNetworkBrowser::slotItemSelectionChanged()
+{
+  if ( selectedItems().size() > 1 )
+  {
+    // If multiple items are selected, only allow shares
+    // to stay selected.
+    for ( int i = 0; i < selectedItems().size(); ++i )
+    {
+      Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(selectedItems()[i]);
+      
+      if ( item )
+      {
+        switch ( item->networkItem()->type() )
+        {
+          case Workgroup:
+          case Host:
+          {
+            item->setSelected(false);
+            break;
+          }
+          case Share:
+          {
+            if ( item->shareItem()->isPrinter() )
+            {
+              item->setSelected(false);
+            }
+            else
+            {
+              // Do nothing
+            }
+            break;
+          }
+          default:
+          {
+            break;
+          }
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+  }
+  else
+  {
+    // Do nothing
   }
 }
 
