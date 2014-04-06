@@ -352,93 +352,97 @@ void Smb4KPreviewJob::slotStartPreview()
 
 void Smb4KPreviewJob::slotReadStandardOutput()
 {
-  QStringList list = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts );
-  QList<Item> items;
-
-  foreach ( const QString &line, list )
+  QString stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 );
+  
+  if ( stdout.contains( "NT_STATUS_ACCESS_DENIED", Qt::CaseSensitive ) || 
+       stdout.contains( "NT_STATUS_LOGON_FAILURE", Qt::CaseSensitive ) )
   {
-    if ( line.contains( "blocks of size" ) || line.contains( "Domain=[" ) )
+    // This might happen if a directory cannot be accessed due to missing
+    // read permissions.
+    emit authError( this );
+  }
+  else
+  {
+    QStringList list = stdout.split( '\n', QString::SkipEmptyParts );
+    QList<Item> items;
+
+    foreach ( const QString &line, list )
     {
-      continue;
-    }
-    else if ( line.contains( "NT_STATUS_ACCESS_DENIED", Qt::CaseSensitive ) ||
-              line.contains( "NT_STATUS_LOGON_FAILURE", Qt::CaseSensitive ) )
-    {
-      // This might happen if a directory cannot be accessed due to missing
-      // read permissions.
-      emit authError( this );
-      break;
-    }
-    else
-    {
-      QString entry = line;
-      
-      QString left = entry.trimmed().section( "     ", 0, -2 ).trimmed();
-      QString right = entry.remove( left );
-
-      QString name = left.section( "  ", 0, -2 ).trimmed().isEmpty() ?
-                     left :
-                     left.section( "  ", 0, -2 ).trimmed();
-
-      QString dir_string = left.right( 3 ).trimmed();
-      bool is_dir = (!dir_string.isEmpty() && dir_string.contains( "D" ));
-
-      QString tmp_size = right.trimmed().section( "  ", 0, 0 ).trimmed();
-      QString size;
-
-      if ( tmp_size[0].isLetter() )
-      {
-        size = right.trimmed().section( "  ", 1, 1 ).trimmed();
-      }
-      else
-      {
-        size = tmp_size;
-      }
-
-      QString date = QDateTime::fromString( right.section( QString( " %1 " ).arg( size ), 1, 1 ).trimmed() ).toString();
-
-      if ( !name.isEmpty() )
-      {
-        Item item;
-
-        if ( is_dir )
-        {
-          if ( name.startsWith( '.' ) &&
-              (QString::compare( name, "." ) != 0 && QString::compare( name, ".." ) != 0) )
-          {
-            item.first = HiddenDirectoryItem;
-          }
-          else
-          {
-            item.first = DirectoryItem;
-          }
-        }
-        else
-        {
-          if ( name.startsWith( '.' ) )
-          {
-            item.first = HiddenFileItem;
-          }
-          else
-          {
-            item.first = FileItem;
-          }
-        }
-
-        item.second["name"] = name;
-        item.second["size"] = size;
-        item.second["date"] = date;
-
-        items << item;
-      }
-      else
+      if ( line.contains( "blocks of size" ) || line.contains( "Domain=[" ) )
       {
         continue;
       }
-    }
-  }
+      else
+      {
+        QString entry = line;
+        
+        QString left = entry.trimmed().section( "     ", 0, -2 ).trimmed();
+        QString right = entry.remove( left );
 
-  emit preview( m_url, items );
+        QString name = left.section( "  ", 0, -2 ).trimmed().isEmpty() ?
+                       left :
+                       left.section( "  ", 0, -2 ).trimmed();
+
+        QString dir_string = left.right( 3 ).trimmed();
+        bool is_dir = (!dir_string.isEmpty() && dir_string.contains( "D" ));
+
+        QString tmp_size = right.trimmed().section( "  ", 0, 0 ).trimmed();
+        QString size;
+
+        if ( tmp_size[0].isLetter() )
+        {
+          size = right.trimmed().section( "  ", 1, 1 ).trimmed();
+        }
+        else
+        {
+          size = tmp_size;
+        }
+
+        QString date = QDateTime::fromString( right.section( QString( " %1 " ).arg( size ), 1, 1 ).trimmed() ).toString();
+
+        if ( !name.isEmpty() )
+        {
+          Item item;
+
+          if ( is_dir )
+          {
+            if ( name.startsWith( '.' ) &&
+                 (QString::compare( name, "." ) != 0 && QString::compare( name, ".." ) != 0) )
+            {
+              item.first = HiddenDirectoryItem;
+            }
+            else
+            {
+              item.first = DirectoryItem;
+            }
+          }
+          else
+          {
+            if ( name.startsWith( '.' ) )
+            {
+              item.first = HiddenFileItem;
+            }
+            else
+            {
+              item.first = FileItem;
+            }
+          }
+
+          item.second["name"] = name;
+          item.second["size"] = size;
+          item.second["date"] = date;
+
+          items << item;
+        }
+        else
+        {
+          continue;
+        }
+      }
+    }
+
+    emit preview( m_url, items );
+  }
 }
 
 

@@ -253,9 +253,15 @@ void Smb4KPreviewer::slotJobFinished( KJob *job )
 
 void Smb4KPreviewer::slotAuthError( Smb4KPreviewJob *job )
 {
-  if ( Smb4KWalletManager::self()->showPasswordDialog( job->share(), job->parentWidget() ) )
+  // To avoid a crash here because after the password dialog closed
+  // the job is gone, immediately get the needed data.
+  Smb4KShare *share = job->share();
+  QWidget *parent   = job->parentWidget();
+  KUrl location     = job->location();
+  
+  if ( Smb4KWalletManager::self()->showPasswordDialog( share, parent ) )
   {
-    slotAcquirePreview( job->share(), job->location(), job->parentWidget() );
+    slotAcquirePreview( share, location, parent );
   }
   else
   {
@@ -297,6 +303,7 @@ void Smb4KPreviewer::slotAcquirePreview( Smb4KShare *share, const KUrl &url, QWi
   {
     job->setObjectName( QString( "PreviewJob_%1" ).arg( share->homeUNC() ) );
   }
+  
   job->setupPreview( share, url, parent );
 
   connect( job,  SIGNAL(result(KJob*)),
