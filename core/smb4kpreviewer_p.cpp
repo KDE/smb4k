@@ -798,7 +798,10 @@ void Smb4KPreviewDialog::slotActionTriggered( QAction *action )
     }
     else if ( kaction == m_up )
     {
-      QString test = QString( "//%1/%2" ).arg( m_url.host() ).arg( m_url.path(KUrl::RemoveTrailingSlash) );
+      QString test = QString("//%1%2%3")
+                     .arg(m_url.host())
+                     .arg(m_url.path().startsWith('/') ? "" : "/")
+                     .arg(m_url.path(KUrl::RemoveTrailingSlash));
       
       if ( QString::compare( m_share->unc(), test, Qt::CaseInsensitive ) != 0 )
       {
@@ -952,7 +955,10 @@ void Smb4KPreviewDialog::slotDisplayPreview( const KUrl &url, const QList<Item> 
   m_forward->setEnabled( enable_forward );
 
   // Enable/disable the up action.
-  QString test = QString( "//%1/%2" ).arg( m_url.host() ).arg( m_url.path(KUrl::RemoveTrailingSlash) );
+  QString test = QString("//%1%2%3")
+                 .arg(m_url.host())
+                 .arg(m_url.path().startsWith('/') ? "" : "/")
+                 .arg(m_url.path(KUrl::RemoveTrailingSlash));
   bool enable_up = (QString::compare( m_share->unc(), test, Qt::CaseInsensitive ) != 0);
   m_up->setEnabled( enable_up );
 }
