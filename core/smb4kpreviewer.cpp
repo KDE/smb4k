@@ -334,8 +334,8 @@ void Smb4KPreviewer::slotAcquirePreview( Smb4KShare *share, const KUrl &url, QWi
   
   if ( dlg )
   {
-    connect( job, SIGNAL(preview(KUrl,QList<Item>)),
-             dlg, SLOT(slotDisplayPreview(KUrl,QList<Item>)) );
+    connect( job, SIGNAL(preview(KUrl,QList<Smb4KPreviewFileItem>)),
+             dlg, SLOT(slotDisplayPreview(KUrl,QList<Smb4KPreviewFileItem>)) );
   }
   else
   {

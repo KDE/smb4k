@@ -40,22 +40,88 @@
 #include <klistwidget.h>
 #include <khistorycombobox.h>
 #include <kaction.h>
+#include <kdualaction.h>
+#include <kicon.h>
 
 // forward declarations
 class Smb4KShare;
 
-#define FileItem            100
-#define HiddenFileItem      101
-#define DirectoryItem       102
-#define HiddenDirectoryItem 103
 
-// Use this as follows:
-// - The integer defines the type of the item (see above)
-// - The key of the map is one of the following entries:
-//   + name - The name of the file or directory (mandatory)
-//   + date - The modification date of the file or directory (optional)
-//   + size - The file size (optional)
-typedef QPair< int,QMap<QString,QString> > Item;
+class Smb4KPreviewFileItem
+{
+  public:
+    /**
+     * Constructor
+     */
+    Smb4KPreviewFileItem();
+    
+    /**
+     * Destructor
+     */
+    ~Smb4KPreviewFileItem();
+    
+    /**
+     * Set the item name.
+     */
+    void setItemName( const QString &name );
+    
+    /**
+     * Returns the name of the item.
+     */
+    QString itemName() const;
+    
+    /**
+     * Set the modification date of the file or directory.
+     */
+    void setDate( const QString &date );
+    
+    /**
+     * Returns the modification date.
+     */
+    QString date() const;
+    
+    /**
+     * Set the file size.
+     */
+    void setItemSize( const QString &size );
+    
+    /**
+     * Returns the file size.
+     */
+    QString itemSize() const;
+    
+    /**
+     * Mark the item as directory.
+     */
+    void setDir( bool dir );
+    
+    /**
+     * Returns TRUE if the item is a directory.
+     */
+    bool isDir() const;
+    
+    /**
+     * Returns TRUE if the item is a file.
+     */
+    bool isFile() const;
+    
+    /**
+     * Returns TRUE if the file or directory is hidden.
+     */
+    bool isHidden() const;
+    
+    /**
+     * Returns the icon for the item.
+     */
+    KIcon itemIcon() const;
+    
+  private:
+    QString m_name;
+    QString m_date;
+    QString m_size;
+    bool m_dir;
+};
+
 
 class Smb4KPreviewJob : public KJob
 {
@@ -146,7 +212,7 @@ class Smb4KPreviewJob : public KJob
      * @param contents  The contents of the URL
      */
     void preview( const KUrl &url,
-                  const QList<Item> &contents );
+                  const QList<Smb4KPreviewFileItem> &contents );
 
   protected:
     bool doKill();
@@ -225,12 +291,10 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
     void abortPreview( Smb4KShare *share );
 
   protected Q_SLOTS:
-    /**
-     * This slot is called when an action has been triggered.
-     *
-     * @param action        The triggered action
-     */
-    void slotActionTriggered( QAction *action );
+    void slotReloadAbortActionTriggered(bool);
+    void slotBackActionTriggered(bool);
+    void slotForwardActionTriggered(bool);
+    void slotUpActionTriggered(bool);
 
     /**
      * This slot can be called to request a preview. However, it only
@@ -247,7 +311,7 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
      * @param contents      The contents of a certain directory
      */
     void slotDisplayPreview( const KUrl &url,
-                             const QList<Item> &contents );
+                             const QList<Smb4KPreviewFileItem> &contents );
     
     /**
      * This slot is called when the preview process is about to start.
@@ -328,14 +392,9 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
     KHistoryComboBox *m_combo;
 
     /**
-     * Reload action
+     * Reload/Abort dual action
      */
-    KAction *m_reload;
-
-    /**
-     * Abort action
-     */
-    KAction *m_abort;
+    KDualAction *m_reload_abort;
 
     /**
      * Back action
