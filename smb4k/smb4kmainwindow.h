@@ -73,11 +73,6 @@ class Smb4KMainWindow : public KParts::MainWindow
      */
     bool queryClose();
 
-    /**
-     * Reimplemented from KMainWindow.
-     */
-    bool queryExit();
-    
   protected slots:
     /**
      * Quits the application.
