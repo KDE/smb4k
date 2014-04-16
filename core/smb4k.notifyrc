@@ -211,166 +211,194 @@ Action=Popup
 Name=Opening wallet failed
 Comment=The network wallet could not be opened
 Contexts=Warning
+Sound=KDE-Sys-Warning.ogg
 Action=Popup|Sound
 
 [Event/credentialsNotAccessible]
 Name=Credentials not accessible
 Comment=The credentials could not be read from the wallet
 Contexts=Warning
+Sound=KDE-Sys-Warning.ogg
 Action=Popup|Sound
 
 [Event/mimetypeNotSupported]
 Name=Mimetype not supported
 Comment=The mimetype of the file that is to be printed is not supported
 Contexts=Warning
+Sound=KDE-Sys-Warning.ogg
 Action=Popup|Sound
 
 [Event/bookmarkExists]
 Name=Bookmark exists
 Comment=The bookmark exists
 Contexts=Warning
+Sound=KDE-Sys-Warning.ogg
 Action=Popup|Sound
 
 [Event/bookmarkLabelInUse]
 Name=Bookmark label in use
 Comment=The label for the bookmark already exists
 Contexts=Warning
+Sound=KDE-Sys-Warning.ogg
 Action=Popup|Sound
 
 [Event/emptyMasterBrowser]
 Name=No master browser provided
 Comment=The custom master browser has not been provided
 Contexts=Warning
+Sound=KDE-Sys-Warning.ogg
 Action=Popup|Sound
 
 [Event/retrievingDomainsFailed]
 Name=Retrieving domains failed
 Comment=Retrieving the available domains failed
 Contexts=Error
+Sound=KDE-Sys-Error.ogg
 Action=Popup|Sound
 
 [Event/scanningBroadcastAreaFailed]
 Name=Scanning broadcast area failed
 Comment=Scanning the defined broadcast area(s) failed
 Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/retrievingHostsFailed]
 Name=Retrieving hosts failed
 Comment=Retrieving the list of hosts belonging to a domain failed
 Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/retrievingSharesFailed]
 Name=Retrieving shares failed
 Comment=Retrieving the list of shares provided by a host failed
 Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/retrievingPreviewFailed]
 Name=Retrieving preview failed
 Comment=Retrieving the preview of a share failed
 Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/mountingFailed]
 Name=Mounting failed
 Comment=Mounting a share failed
 Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/unmountingFailed]
 Name=Unmounting failed
 Comment=Unmounting a share failed
 Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/unmountingNotAllowed]
 Name=Unmounting not allowed
 Comment=The unmounting of a certain share is not allowed
 Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/printingFailed]
 Name=Printing failed
 Comment=Printing on a network printer failed
 Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/synchronizationFailed]
 Name=Synchronization failed
 Comment=The synchronization of a share and a local copy failed
 Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/searchingFailed]
 Name=Searching failed
 Comment=Searching the network neighborhood failed
 Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/commandNotFound]
 Name=Command not found
 Comment=A required command could not be found
 Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/cannotBookmarkPrinter]
 Name=Cannot bookmark printer
 Comment=A printer cannot be bookmarked
 Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/fileNotFound]
 Name=File not found
 Comment=A file could not be found
 Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/openingFileFailed]
 Name=Opening file failed
 Comment=A file could not be opened
 Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/readingFileFailed]
 Name=Reading file failed
 Comment=A file could not be read
 Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/mkdirFailed]
 Name=mkdir failed
 Comment=A directory could not be created
 Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/processError]
 Name=Process error
 Comment=A process error occurred
 Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/systemCallFailed]
 Name=Process error failed
 Comment=A system call failed
 Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/actionFailed]
 Name=Action failed
 Comment=A KAuth action failed
 Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/invalidURL]
 Name=Invalid URL
 Comment=An invalid URL was passed
 Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/emptyBroadcastAreas]
 Name=Broadcast areas empty
 Comment=The entry of the broadcast areas is empty
 Contexts=Error
+Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
