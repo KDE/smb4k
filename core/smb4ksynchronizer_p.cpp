@@ -102,8 +102,7 @@ void Smb4KSyncJob::slotStartSynchronization()
 
   if ( rsync.isEmpty() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "rsync" );
+    Smb4KNotification::commandNotFound("rsync");
     emitResult();
     return;
   }
@@ -126,8 +125,7 @@ void Smb4KSyncJob::slotStartSynchronization()
 
         if ( !sync_dir.mkpath( dlg->destination().path() ) )
         {
-          Smb4KNotification *notification = new Smb4KNotification();
-          notification->mkdirFailed( sync_dir );
+          Smb4KNotification::mkdirFailed(sync_dir);
           emitResult();
           return;
         }
@@ -814,8 +812,7 @@ void Smb4KSyncJob::slotReadStandardError()
        /*ignore "some files were not transferred" error*/) )
   {
     m_proc->abort();
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->synchronizationFailed( m_src, m_dest, stderr );
+    Smb4KNotification::synchronizationFailed(m_src, m_dest, stderr);
   }
   else
   {
@@ -836,8 +833,7 @@ void Smb4KSyncJob::slotProcessFinished( int, QProcess::ExitStatus status )
     {
       if ( !m_proc->isAborted() )
       {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->processError( m_proc->error() );
+        Smb4KNotification::processError(m_proc->error());
       }
       else
       {

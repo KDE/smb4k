@@ -617,8 +617,7 @@ void Smb4KCustomOptionsManager::readCustomOptions()
 
     if ( xmlReader.hasError() )
     {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->readingFileFailed( xmlFile, xmlReader.errorString() );
+      Smb4KNotification::readingFileFailed(xmlFile, xmlReader.errorString());
     }
     else
     {
@@ -629,8 +628,7 @@ void Smb4KCustomOptionsManager::readCustomOptions()
   {
     if ( xmlFile.exists() )
     {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->openingFileFailed( xmlFile );
+      Smb4KNotification::openingFileFailed(xmlFile);
     }
     else
     {
@@ -704,8 +702,7 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
     }
     else
     {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->openingFileFailed( xmlFile );
+      Smb4KNotification::openingFileFailed(xmlFile);
       return;
     }
   }

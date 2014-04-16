@@ -104,8 +104,7 @@ void Smb4KSearchJob::slotStartSearch()
 
   if ( smbtree.isEmpty() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "smbtree" );
+    Smb4KNotification::commandNotFound("smbtree");
     emitResult();
     emit finished(m_string);
     return;
@@ -363,8 +362,7 @@ void Smb4KSearchJob::slotReadStandardError()
   }
   else if ( stderr.contains("NT_STATUS") )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->searchingFailed( m_string, stderr );
+    Smb4KNotification::searchingFailed(m_string, stderr);
   }
   else
   {
@@ -381,8 +379,7 @@ void Smb4KSearchJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitStatus
     {
       if ( !m_proc->isAborted() )
       {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->processError( m_proc->error() );
+        Smb4KNotification::processError(m_proc->error());
       }
       else
       {

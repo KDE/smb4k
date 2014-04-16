@@ -102,8 +102,7 @@ void Smb4KPrintJob::slotStartPrinting()
 
   if ( smbspool.isEmpty() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "smbspool" );
+    Smb4KNotification::commandNotFound("smbspool");
     emitResult();
     return;
   }
@@ -138,8 +137,7 @@ void Smb4KPrintJob::slotStartPrinting()
       // Check that the file exists
       if ( !QFile::exists( fileURL.path() ) )
       {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->fileNotFound( fileURL.path() );
+        Smb4KNotification::fileNotFound(fileURL.path());
         emitResult();
         return;
       }
@@ -216,8 +214,7 @@ void Smb4KPrintJob::slotStartPrinting()
     }
     else
     {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->mimetypeNotSupported( file_item.mimetype() );
+      Smb4KNotification::mimetypeNotSupported(file_item.mimetype());
       emitResult();
       return;
     }
@@ -301,8 +298,7 @@ void Smb4KPrintJob::slotReadStandardError()
       
       if ( !err_msg.isEmpty() )
       {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->printingFailed( m_share, err_msg.join( "\n" ) );
+        Smb4KNotification::printingFailed(m_share, err_msg.join( "\n" ));
       }
       else
       {
@@ -326,8 +322,7 @@ void Smb4KPrintJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitStatus 
     {
       if ( !m_proc->isAborted() )
       {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->processError( m_proc->error() );
+        Smb4KNotification::processError(m_proc->error());
       }
       else
       {

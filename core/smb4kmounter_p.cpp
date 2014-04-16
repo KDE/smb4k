@@ -154,8 +154,7 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
 
   if ( mount.isEmpty() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( mount );
+    Smb4KNotification::commandNotFound(mount);
     return false;
   }
   else
@@ -203,8 +202,7 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
 
   if ( !dir.mkpath( dir.path() ) )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->mkdirFailed( dir );
+    Smb4KNotification::mkdirFailed(dir);
     return false;
   }
   else
@@ -921,8 +919,7 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
 #endif
         else
         {
-          Smb4KNotification *notification = new Smb4KNotification();
-          notification->mountingFailed( share, stderr );
+          Smb4KNotification::mountingFailed(share, stderr);
         }
       }
       else
@@ -934,15 +931,13 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
   else
   {
     // The auth action failed. Report this.
-    Smb4KNotification *notification = new Smb4KNotification();
-
     if ( reply.type() == ActionReply::KAuthError )
     {
-      notification->actionFailed( reply.errorCode() );
+      Smb4KNotification::actionFailed(reply.errorCode());
     }
     else
     {
-      notification->actionFailed();
+      Smb4KNotification::actionFailed();
     }
   }
 
@@ -1107,8 +1102,7 @@ bool Smb4KUnmountJob::createUnmountAction( Smb4KShare *share, Action *action )
 
   if ( umount.isEmpty() && !m_silent )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( umount );
+    Smb4KNotification::commandNotFound(umount);
     return false;
   }
   else
@@ -1211,8 +1205,7 @@ void Smb4KUnmountJob::slotActionFinished( ActionReply reply )
       if ( QString::compare( share->canonicalPath(), reply.data()["mountpoint"].toString() ) == 0 && 
            !stderr.isEmpty() && !m_silent )
       {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->unmountingFailed( share, stderr );
+        Smb4KNotification::unmountingFailed(share, stderr);
       }
       else
       {
@@ -1226,15 +1219,13 @@ void Smb4KUnmountJob::slotActionFinished( ActionReply reply )
     // The auth action failed. Report this.
     if ( !m_silent )
     {
-      Smb4KNotification *notification = new Smb4KNotification();
-
       if ( reply.type() == ActionReply::KAuthError )
       {
-        notification->actionFailed( reply.errorCode() );
+        Smb4KNotification::actionFailed(reply.errorCode());
       }
       else
       {
-        notification->actionFailed();
+        Smb4KNotification::actionFailed();
       }
     }
     else
@@ -1471,8 +1462,7 @@ void Smb4KMountDialog::slotOkClicked()
     }
     else
     {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->invalidURLPassed();
+      Smb4KNotification::invalidURLPassed();
       m_valid = false;
     }
   }

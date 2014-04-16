@@ -121,8 +121,7 @@ void Smb4KBookmarkHandler::addBookmarks( const QList<Smb4KShare *> &list, QWidge
     // Check if the share is a printer
     if ( list.at( i )->isPrinter() )
     {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->cannotBookmarkPrinter( list.at( i ) );
+      Smb4KNotification::cannotBookmarkPrinter(list.at( i ));
       continue;
     }
     else
@@ -159,8 +158,7 @@ void Smb4KBookmarkHandler::addBookmarks( const QList<Smb4KShare *> &list, QWidge
     // Skip bookmarks already present
     if ( known_bookmark )
     {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->bookmarkExists( known_bookmark );
+      Smb4KNotification::bookmarkExists(known_bookmark);
       continue;
     }
     else
@@ -186,9 +184,7 @@ void Smb4KBookmarkHandler::addBookmarks( const QList<Smb4KShare *> &list, QWidge
 
           if ( bookmark )
           {
-            Smb4KNotification *notification = new Smb4KNotification();
-            notification->bookmarkLabelInUse( new_bookmarks.at( i ) );
-
+            Smb4KNotification::bookmarkLabelInUse(new_bookmarks.at( i ));
             new_bookmarks[i]->setLabel( QString( "%1 (1)" ).arg( new_bookmarks.at( i )->label() ) );
           }
           else
@@ -372,8 +368,7 @@ void Smb4KBookmarkHandler::writeBookmarkList( const QList<Smb4KBookmark *> &list
       {
         if ( !list.at( i )->url().isValid() )
         {
-          Smb4KNotification *notification = new Smb4KNotification();
-          notification->invalidURLPassed();
+          Smb4KNotification::invalidURLPassed();
           continue;
         }
         else
@@ -401,8 +396,7 @@ void Smb4KBookmarkHandler::writeBookmarkList( const QList<Smb4KBookmark *> &list
     }
     else
     {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->openingFileFailed( xmlFile );
+      Smb4KNotification::openingFileFailed(xmlFile);
       return;
     }
   }
@@ -513,8 +507,7 @@ void Smb4KBookmarkHandler::loadBookmarks()
 
     if ( xmlReader.hasError() )
     {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->readingFileFailed( xmlFile, xmlReader.errorString() );
+      Smb4KNotification::readingFileFailed(xmlFile, xmlReader.errorString());
     }
     else
     {
@@ -525,8 +518,7 @@ void Smb4KBookmarkHandler::loadBookmarks()
   {
     if ( xmlFile.exists() )
     {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->openingFileFailed( xmlFile );
+      Smb4KNotification::openingFileFailed(xmlFile);
     }
     else
     {

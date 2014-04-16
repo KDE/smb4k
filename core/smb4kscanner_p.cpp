@@ -205,8 +205,7 @@ void Smb4KLookupDomainsJob::slotStartLookup()
 
   if ( nmblookup.isEmpty() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "nmblookup" );
+    Smb4KNotification::commandNotFound("nmblookup");
     emitResult();
     return;
   }
@@ -220,8 +219,7 @@ void Smb4KLookupDomainsJob::slotStartLookup()
 
   if ( grep.isEmpty() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "grep" );
+    Smb4KNotification::commandNotFound("grep");
     emitResult();
     return;
   }
@@ -235,8 +233,7 @@ void Smb4KLookupDomainsJob::slotStartLookup()
 
   if ( awk.isEmpty() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "awk" );
+    Smb4KNotification::commandNotFound("awk");
     emitResult();
     return;
   }
@@ -250,8 +247,7 @@ void Smb4KLookupDomainsJob::slotStartLookup()
 
   if ( xargs.isEmpty() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "xargs" );
+    Smb4KNotification::commandNotFound("xargs");
     emitResult();
     return;
   }
@@ -466,8 +462,7 @@ void Smb4KLookupDomainsJob::slotReadStandardError()
   
   if ( !stderr.isEmpty() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->retrievingDomainsFailed( stderr );
+    Smb4KNotification::retrievingDomainsFailed(stderr);
   }
   else
   {
@@ -484,8 +479,7 @@ void Smb4KLookupDomainsJob::slotProcessFinished( int /*exitCode*/, QProcess::Exi
     {
       if ( !m_proc->isAborted() )
       {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->processError( m_proc->error() );
+        Smb4KNotification::processError(m_proc->error());
       }
       else
       {
@@ -609,8 +603,7 @@ void Smb4KQueryMasterJob::slotStartLookup()
 
   if ( net.isEmpty() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "net" );
+    Smb4KNotification::commandNotFound("net");
     emitResult();
     return;
   }
@@ -624,8 +617,7 @@ void Smb4KQueryMasterJob::slotStartLookup()
 
   if ( xargs.isEmpty() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "xargs" );
+    Smb4KNotification::commandNotFound("xargs");
     emitResult();
     return;
   }
@@ -932,8 +924,7 @@ void Smb4KQueryMasterJob::slotReadStandardError()
       // Avoid reporting the debug output as error.
       if ( stderr.contains( "NT_STATUS" ) )
       {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->retrievingDomainsFailed( stderr );
+        Smb4KNotification::retrievingDomainsFailed(stderr);
       }
       else
       {
@@ -956,8 +947,7 @@ void Smb4KQueryMasterJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitS
     {
       if ( !m_proc->isAborted() )
       {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->processError( m_proc->error() );
+        Smb4KNotification::processError(m_proc->error());
       }
       else
       {
@@ -1192,8 +1182,7 @@ void Smb4KScanBAreasJob::slotStartScan()
 
   if ( nmblookup.isEmpty() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "nmblookup" );
+    Smb4KNotification::commandNotFound("nmblookup");
     emitResult();
     return;
   }
@@ -1207,8 +1196,7 @@ void Smb4KScanBAreasJob::slotStartScan()
 
   if ( awk.isEmpty() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "awk" );
+    Smb4KNotification::commandNotFound("awk");
     emitResult();
     return;
   }
@@ -1222,8 +1210,7 @@ void Smb4KScanBAreasJob::slotStartScan()
 
   if ( sed.isEmpty() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "sed" );
+    Smb4KNotification::commandNotFound("sed");
     emitResult();
     return;
   }
@@ -1237,8 +1224,7 @@ void Smb4KScanBAreasJob::slotStartScan()
 
   if ( xargs.isEmpty() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "xargs" );
+    Smb4KNotification::commandNotFound("xargs");
     emitResult();
     return;
   }
@@ -1469,8 +1455,7 @@ void Smb4KScanBAreasJob::slotReadStandardError()
 
   if ( !stderr.isEmpty() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->scanningBroadcastAreaFailed( stderr );
+    Smb4KNotification::scanningBroadcastAreaFailed(stderr);
   }
   else
   {
@@ -1487,8 +1472,7 @@ void Smb4KScanBAreasJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitSt
     {
       if ( !m_proc->isAborted() )
       {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->processError( m_proc->error() );
+        Smb4KNotification::processError(m_proc->error());
       }
       else
       {
@@ -1643,8 +1627,7 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
 
   if ( net.isEmpty() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "net" );
+    Smb4KNotification::commandNotFound("net");
     emitResult();
     return;
   }
@@ -1839,8 +1822,7 @@ void Smb4KLookupDomainMembersJob::slotReadStandardError()
     else
     {
       // Notify the user that an error occurred.
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->retrievingServersFailed( m_workgroup, stderr );
+      Smb4KNotification::retrievingHostsFailed(m_workgroup, stderr);
     }
   }
   else
@@ -1858,8 +1840,7 @@ void Smb4KLookupDomainMembersJob::slotProcessFinished( int /*exitCode*/, QProces
     {
       if ( !m_proc->isAborted() )
       {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->processError( m_proc->error() );
+        Smb4KNotification::processError(m_proc->error());
       }
       else
       {
@@ -2102,8 +2083,7 @@ void Smb4KLookupSharesJob::slotStartLookup()
 
   if ( net.isEmpty() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "net" );
+    Smb4KNotification::commandNotFound("net");
     emitResult();
     return;
   }
@@ -2333,8 +2313,7 @@ void Smb4KLookupSharesJob::slotReadStandardError()
     }
     else
     {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->retrievingSharesFailed( m_host, stderr );
+      Smb4KNotification::retrievingSharesFailed(m_host, stderr);
     }
   }
   else
@@ -2352,8 +2331,7 @@ void Smb4KLookupSharesJob::slotProcessFinished( int /*exitCode*/, QProcess::Exit
     {
       if ( !m_proc->isAborted() )
       {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->processError( m_proc->error() );
+        Smb4KNotification::processError(m_proc->error());
       }
       else
       {
@@ -2477,8 +2455,7 @@ void Smb4KLookupInfoJob::slotStartLookup()
 
   if ( smbclient.isEmpty() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "smbclient" );
+    Smb4KNotification::commandNotFound("smbclient");
     emitResult();
     return;
   }
@@ -2704,8 +2681,7 @@ void Smb4KLookupInfoJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitSt
     {
       if ( !m_proc->isAborted() )
       {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->processError( m_proc->error() );
+        Smb4KNotification::processError(m_proc->error());
       }
       else
       {
@@ -2801,8 +2777,7 @@ void Smb4KLookupIPAddressJob::slotStartLookup()
 
   if ( nmblookup.isEmpty() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "nmblookup" );
+    Smb4KNotification::commandNotFound("nmblookup");
     emitResult();
     return;
   }
@@ -2920,8 +2895,7 @@ void Smb4KLookupIPAddressJob::slotProcessFinished( int /*exitCode*/, QProcess::E
     {
       if ( !m_proc->isAborted() )
       {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->processError( m_proc->error() );
+        Smb4KNotification::processError(m_proc->error());
       }
       else
       {

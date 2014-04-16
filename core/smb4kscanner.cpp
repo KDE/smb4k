@@ -606,8 +606,7 @@ void Smb4KScanner::lookupDomains( QWidget *parent )
     // browser instead.
     if ( Smb4KSettings::customMasterBrowser().isEmpty() )
     {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->emptyCustomMasterBrowser();
+      Smb4KNotification::emptyCustomMasterBrowser();
     }
     else
     {
@@ -666,8 +665,7 @@ void Smb4KScanner::lookupDomains( QWidget *parent )
     }
     else
     {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->emptyBroadcastAreas();
+      Smb4KNotification::emptyBroadcastAreas();
     }
   }
   else

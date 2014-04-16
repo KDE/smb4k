@@ -781,8 +781,7 @@ void Smb4KGlobal::openShare( Smb4KShare *share, OpenWith openWith )
 
       if ( konsole.isEmpty() )
       {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->commandNotFound( "konsole" );
+        Smb4KNotification::commandNotFound("konsole");
       }
       else
       {

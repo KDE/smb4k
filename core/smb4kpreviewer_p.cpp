@@ -196,8 +196,7 @@ void Smb4KPreviewJob::slotStartPreview()
 
   if ( smbclient.isEmpty() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->commandNotFound( "smbclient" );
+    Smb4KNotification::commandNotFound("smbclient");
     emitResult();
     return;
   }
@@ -561,8 +560,7 @@ void Smb4KPreviewJob::slotReadStandardError()
     {
       if ( !err_msg.isEmpty() )
       {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->retrievingPreviewFailed( m_share, err_msg.join( "\n" ) );
+        Smb4KNotification::retrievingPreviewFailed(m_share, err_msg.join( "\n" ));
       }
       else
       {
@@ -585,8 +583,7 @@ void Smb4KPreviewJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitStatu
     {
       if ( !m_proc->isAborted() )
       {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->processError( m_proc->error() );;
+        Smb4KNotification::processError(m_proc->error());
       }
       else
       {
@@ -681,7 +678,7 @@ void Smb4KPreviewDialog::setupView()
   m_reload_abort->setInactiveGuiItem(abort_item);
   m_reload_abort->setActive(true);
   m_reload_abort->setAutoToggle(false);
-  m_reload_abort->setEnabled(false);
+//   m_reload_abort->setEnabled(false);
   
   m_back    = new KAction( KIcon( "go-previous" ), i18n( "Back" ), toolbar );
   m_back->setEnabled( false );

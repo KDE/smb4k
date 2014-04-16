@@ -57,18 +57,6 @@ Smb4KUserInterfaceOptionsPage::Smb4KUserInterfaceOptionsPage( QWidget *parent )
   main_window_layout->setSpacing( 5 );
   main_window_layout->setMargin( 0 );
   
-  // Notifications
-  QGroupBox *notifications_box    = new QGroupBox( i18n( "Notifications" ), mainwindow_tab );
-  
-  QGridLayout *notifications_layout = new QGridLayout( notifications_box );
-  notifications_layout->setSpacing( 5 );
-  
-  QCheckBox *show_notifications   = new QCheckBox( Smb4KSettings::self()->showNotificationsItem()->label(),
-                                    notifications_box );
-  show_notifications->setObjectName( "kcfg_ShowNotifications" );
-  
-  notifications_layout->addWidget( show_notifications, 0, 0, 0 );
-  
   // Bookmarks
   QGroupBox *bookmarks_box        = new QGroupBox( i18n( "Bookmarks" ), mainwindow_tab );
 
@@ -81,7 +69,6 @@ Smb4KUserInterfaceOptionsPage::Smb4KUserInterfaceOptionsPage( QWidget *parent )
 
   bookmarks_layout->addWidget( show_bookmark_label, 0, 0, 0 );
 
-  main_window_layout->addWidget( notifications_box );
   main_window_layout->addWidget( bookmarks_box );
   main_window_layout->addStretch( 100 );
 

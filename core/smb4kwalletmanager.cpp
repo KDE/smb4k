@@ -712,8 +712,7 @@ void Smb4KWalletManager::slotWalletOpened(bool success)
     }
     else
     {
-      Smb4KNotification *notification = new Smb4KNotification( this );
-      notification->loginsNotAccessible();
+      Smb4KNotification::credentialsNotAccessible();
     }
   }
   else
@@ -721,8 +720,7 @@ void Smb4KWalletManager::slotWalletOpened(bool success)
     delete d->wallet;
     d->wallet = NULL;
     
-    Smb4KNotification *notification = new Smb4KNotification( this );
-    notification->openingWalletFailed( KWallet::Wallet::NetworkWallet() );
+    Smb4KNotification::openingWalletFailed(KWallet::Wallet::NetworkWallet());
   }
 
   d->initialized = true;

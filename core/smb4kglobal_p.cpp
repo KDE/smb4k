@@ -123,8 +123,7 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions( bool read )
         }
         else
         {
-          Smb4KNotification *notification = new Smb4KNotification();
-          notification->openingFileFailed( file );
+          Smb4KNotification::openingFileFailed(file);
           return m_samba_options;
         }
 
@@ -193,8 +192,7 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions( bool read )
             }
             else
             {
-              Smb4KNotification *notification = new Smb4KNotification();
-              notification->openingFileFailed( file );
+              Smb4KNotification::openingFileFailed(file);
               continue;
             }
           }
@@ -229,8 +227,7 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions( bool read )
       if ( gethostname( hostname, hostnamelen ) == -1 )
       {
         int error = errno;
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->systemCallFailed( "gethostname()", error );
+        Smb4KNotification::systemCallFailed("gethostname()", error);
       }
       else
       {

@@ -399,8 +399,7 @@ void Smb4KMounter::import( bool check_inaccessible )
         }
         else
         {
-          Smb4KNotification *notification = new Smb4KNotification();
-          notification->openingFileFailed( proc_mounts );
+          Smb4KNotification::openingFileFailed(proc_mounts);
           return;
         }
 
@@ -684,8 +683,7 @@ void Smb4KMounter::mountShare( Smb4KShare *share, QWidget *parent )
   // with an error message.
   if ( !share->url().isValid() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->invalidURLPassed();
+    Smb4KNotification::invalidURLPassed();
     return;
   }
   else
@@ -908,8 +906,7 @@ void Smb4KMounter::mountShares( const QList<Smb4KShare *> &shares, QWidget *pare
     // with an error message.
     if ( !share->url().isValid() )
     {
-      Smb4KNotification *notification = new Smb4KNotification();
-      notification->invalidURLPassed();
+      Smb4KNotification::invalidURLPassed();
       continue;
     }
     else
@@ -1038,8 +1035,7 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool silent, QWidget *parent
   // with an error message.
   if ( !share->url().isValid() )
   {
-    Smb4KNotification *notification = new Smb4KNotification();
-    notification->invalidURLPassed();
+    Smb4KNotification::invalidURLPassed();
     return;
   }
   else
@@ -1073,8 +1069,7 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool silent, QWidget *parent
     {
       if ( !silent )
       {
-        Smb4KNotification *notification = new Smb4KNotification();
-        notification->unmountingNotAllowed( share );
+        Smb4KNotification::unmountingNotAllowed(share);
       }
       else
       {
@@ -1200,8 +1195,7 @@ void Smb4KMounter::unmountShares( const QList<Smb4KShare *> &shares, bool silent
         {
           if ( !silent )
           {
-            Smb4KNotification *notification = new Smb4KNotification();
-            notification->unmountingNotAllowed( share );
+            Smb4KNotification::unmountingNotAllowed(share);
           }
           else
           {
@@ -1928,13 +1922,11 @@ void Smb4KMounter::slotFinishedMounting( const QList<Smb4KShare *> &shares )
   {
     if ( shares.size() > 1 )
     {
-      Smb4KNotification *notification = new Smb4KNotification( this );
-      notification->sharesMounted( shares.size(), (shares.size() - failed_mounts) );
+      Smb4KNotification::sharesMounted(shares.size(), (shares.size() - failed_mounts));
     }
     else
     {
-      Smb4KNotification *notification = new Smb4KNotification( this );
-      notification->shareMounted( shares.first() );
+      Smb4KNotification::shareMounted(shares.first());
     }
   }
   else
@@ -1977,13 +1969,11 @@ void Smb4KMounter::slotFinishedUnmounting( const QList<Smb4KShare *> &shares )
   {
     if ( shares.size() > 1 )
     {
-      Smb4KNotification *notification = new Smb4KNotification( this );
-      notification->allSharesUnmounted( shares.size(), (shares.size() - failed_unmounts) );
+      Smb4KNotification::sharesUnmounted(shares.size(), (shares.size() - failed_unmounts));
     }
     else
     {
-      Smb4KNotification *notification = new Smb4KNotification( this );
-      notification->shareUnmounted( shares.first() );
+      Smb4KNotification::shareUnmounted(shares.first());
     }
   }
   else
