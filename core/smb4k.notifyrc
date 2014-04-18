@@ -776,7 +776,7 @@ Sound=KDE-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/systemCallFailed]
-Name=Process error failed
+Name=System call failed
 Name[de]=Systemaufruf fehlgeschlagen
 Name[nl]=Procesfout is mislukt
 Name[pl]=Nieudany błąd procesu
