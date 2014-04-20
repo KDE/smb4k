@@ -833,6 +833,10 @@ Action=Popup|Sound
 
 [Event/systemCallFailed]
 Name=System call failed
+Name[de]=Systemaufruf fehlgeschlagen
+Name[nl]=Systeemaanroep is mislukt
+Name[pt]=Erro em chamada ao sistema
+Name[pt_BR]=Ocorreu um erro em uma chamada de sistema
 Name[sv]=Systemanrop misslyckades
 Name[uk]=Помилка системного виклику
 Name[x-test]=xxSystem call failedxx
@@ -841,7 +845,7 @@ Comment[de]=Ein Systemaufruf ist fehlgeschlagen
 Comment[nl]=Een systeemaanroep is mislukt
 Comment[pl]=Nieudane wywołanie systemu
 Comment[pt]=Ocorreu um erro numa chamada ao sistema
-Comment[pt_BR]=Ocorreu um erro em uma chamada de sistema
+Comment[pt_BR]=Erro em uma chamada de sistema
 Comment[sv]=Ett systemanrop misslyckades
 Comment[uk]=Помилка системного виклику
 Comment[x-test]=xxA system call failedxx
