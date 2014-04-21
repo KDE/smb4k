@@ -185,6 +185,7 @@ Comment[zh_TW]=錯誤訊息已顯示給使用者
 
 [Event/shareMounted]
 Name=Share mounted
+Name[da]=Ressource monteret
 Name[de]=Freigabe eingebunden
 Name[nl]=Share aangekoppeld
 Name[pl]=Zamontowano udział 
@@ -194,6 +195,7 @@ Name[sv]=Delad resurs monterad
 Name[uk]=Змонтовано ресурс
 Name[x-test]=xxShare mountedxx
 Comment=A share has been mounted
+Comment[da]=En ressource er blevet monteret
 Comment[de]=Es wurde eine Freigaben eingebunden
 Comment[nl]=Een gedeelde map is aangekoppeld
 Comment[pl]=Udział został zamontowany
@@ -207,6 +209,7 @@ Action=Popup
 
 [Event/shareUnmounted]
 Name=Share unmounted
+Name[da]=Ressource afmonteret
 Name[de]=Einbindung der Freigabe gelöst
 Name[nl]=Share afgekoppeld
 Name[pl]=Udział odmontowany
@@ -216,6 +219,7 @@ Name[sv]=Delad resurs avmonterad
 Name[uk]=Демонтовано ресурс
 Name[x-test]=xxShare unmountedxx
 Comment=A share has been unmounted
+Comment[da]=En ressource er blevet afmonteret
 Comment[de]=Die Einbindung einer Freigabe ist gelöst worden
 Comment[nl]=Een gedeelde map is afgekoppeld
 Comment[pl]=Udział został odmontowany
@@ -229,6 +233,7 @@ Action=Popup
 
 [Event/sharesMounted]
 Name=Shares mounted
+Name[da]=Ressourcer monteret
 Name[de]=Freigaben eingebunden
 Name[nl]=Shares aangekoppeld
 Name[pl]=Zamontowano udziały
@@ -238,6 +243,7 @@ Name[sv]=Delade resurser monterade
 Name[uk]=Змонтовано ресурси
 Name[x-test]=xxShares mountedxx
 Comment=Multiple shares have been mounted
+Comment[da]=Flere ressourcer er blevet monteret
 Comment[de]=Mehrerer Freigaben wurden eingebunden
 Comment[nl]=Meerdere gedeelde mappen zijn aangekoppeld
 Comment[pl]=Zamontowano wiele udziałów
@@ -251,6 +257,7 @@ Action=Popup
 
 [Event/sharesUnmounted]
 Name=Shares unmounted
+Name[da]=Ressourcer afmonteret
 Name[de]=Einbindung der Freigaben gelöst
 Name[nl]=Shares afgekoppeld
 Name[pl]=Odmontowano udziały
@@ -260,6 +267,7 @@ Name[sv]=Delade resurser avmonterade
 Name[uk]=Демонтовано ресурси
 Name[x-test]=xxShares unmountedxx
 Comment=Multiple shares have been unmounted
+Comment[da]=Flere ressourcer er blevet afmonteret
 Comment[de]=Die Einbindung mehrerer Freigaben wurde gelöst
 Comment[nl]=Meerdere gedeelde mappen zijn afgekoppeld
 Comment[pl]=Odmontowano wiele udziałów
@@ -273,6 +281,7 @@ Action=Popup
 
 [Event/openingWalletFailed]
 Name=Opening wallet failed
+Name[da]=Åbning af tegnebogen mislykkedes
 Name[de]=Öffnen des Passwortspeichers fehlgeschlagen
 Name[nl]=Openen van de portefeuille is mislukt
 Name[pl]=Nieudane otwieranie portfela
@@ -282,6 +291,7 @@ Name[sv]=Misslyckades öppna plånboken
 Name[uk]=Спроба відкриття сховища паролів зазнала невдачі
 Name[x-test]=xxOpening wallet failedxx
 Comment=The network wallet could not be opened
+Comment[da]=Netværkstegnebogen kunne ikke åbnes
 Comment[de]=Der Netzwerk-Passwortspeicher kann nicht geöffnet werden
 Comment[nl]=De netwerkportefeuille kon niet worden geopend
 Comment[pl]=Nie można otworzyć portfela sieciowego
@@ -296,6 +306,7 @@ Action=Popup|Sound
 
 [Event/credentialsNotAccessible]
 Name=Credentials not accessible
+Name[da]=Akkreditiver ikke tilgængelige
 Name[de]=Anmeldedaten nicht verfügbar
 Name[nl]=Credentials zijn niet toegankelijk
 Name[pl]=Dane poufne są niedostępne
@@ -305,6 +316,7 @@ Name[sv]=Behörighetsinformation ej tillgänglig
 Name[uk]=Немає реєстраційних даних
 Name[x-test]=xxCredentials not accessiblexx
 Comment=The credentials could not be read from the wallet
+Comment[da]=Akkreditiverne kunne ikke læses fra tegnebogen
 Comment[de]=Die Anmeldedaten können nicht aus dem Passwortspeicher gelesen werden
 Comment[nl]=De credentials konden niet uit de portefeuille worden gelezen
 Comment[pl]=Nie można odczytać danych poufnych z portfela
@@ -319,6 +331,7 @@ Action=Popup|Sound
 
 [Event/mimetypeNotSupported]
 Name=Mimetype not supported
+Name[da]=MIME-type ikke understøttet
 Name[de]=MIME-Typ wird nicht unterstützt
 Name[nl]=Mimetype wordt niet ondersteund
 Name[pl]=Typ mime nieobsługiwany
@@ -328,6 +341,7 @@ Name[sv]=Mime-typ stöds inte
 Name[uk]=Підтримки типу MIME не передбачено
 Name[x-test]=xxMimetype not supportedxx
 Comment=The mimetype of the file that is to be printed is not supported
+Comment[da]=MIME-typen for den fil der skal udskrives, er ikke understøttet
 Comment[de]=Der MIME-Typ der zu druckenden Datei wird nicht unterstützt
 Comment[nl]=Het mimetype van het bestand dat afgedrukt moet worden wordt niet ondersteund
 Comment[pl]=Typ mime pliku, który masz zamiar wydrukować nie jest obsługiwany
@@ -342,6 +356,7 @@ Action=Popup|Sound
 
 [Event/bookmarkExists]
 Name=Bookmark exists
+Name[da]=Bogmærket findes
 Name[de]=Lesezeichen vorhanden
 Name[nl]=Bladwijzer bestaat al
 Name[pl]=Zakładka istnieje
@@ -351,6 +366,7 @@ Name[sv]=Bokmärke finns
 Name[uk]=Така закладка вже існує
 Name[x-test]=xxBookmark existsxx
 Comment=The bookmark exists
+Comment[da]=Bogmærket findes
 Comment[de]=Das Lesezeichen ist bereits vorhanden
 Comment[nl]=De bladwijzer bestaat al
 Comment[pl]=Zakładka istnieje
@@ -365,6 +381,7 @@ Action=Popup|Sound
 
 [Event/bookmarkLabelInUse]
 Name=Bookmark label in use
+Name[da]=Bogmærke-etiketten er i brug
 Name[de]=Beschriftung des Lesezeichens wird bereits verwendet
 Name[nl]=Bladwijzerlabel is in gebruik
 Name[pl]=Etykieta zakładki w użyciu
@@ -374,6 +391,7 @@ Name[sv]=Bokmärkesbeteckning används
 Name[uk]=Мітку закладки вже використано
 Name[x-test]=xxBookmark label in usexx
 Comment=The label for the bookmark already exists
+Comment[da]=Etiketten for bogmærket findes allerede
 Comment[de]=Es existiert bereits ein Lesezeichen mit diesem Namen
 Comment[nl]=Het label voor de bladwijzer bestaat al
 Comment[pl]=Etykieta dla zakładki już istnieje
@@ -388,6 +406,7 @@ Action=Popup|Sound
 
 [Event/emptyMasterBrowser]
 Name=No master browser provided
+Name[da]=Ingen hovedadgangskode angivet
 Name[de]=Kein Masterbrowser angegeben
 Name[nl]=Geen hoofdbrowser gegeven
 Name[pl]=Nie podano głównej przeglądarki
@@ -397,6 +416,7 @@ Name[sv]=Ingen huvudwebbläsare tillhandahållen
 Name[uk]=Не надано основного переглядача
 Name[x-test]=xxNo master browser providedxx
 Comment=The custom master browser has not been provided
+Comment[da]=Den brugervalgte masterbrowser er ikke blevet oplyst
 Comment[de]=Es wurde kein benutzerdefinierter Masterbrowser angegeben
 Comment[nl]=De eigen hoofdbrowser is niet gegeven
 Comment[pl]=Nie została podana główna, własna przeglądarka
@@ -411,6 +431,7 @@ Action=Popup|Sound
 
 [Event/retrievingDomainsFailed]
 Name=Retrieving domains failed
+Name[da]=Hentning af domæner mislykkedes
 Name[de]=Abfragen der Domänen fehlgeschlagen
 Name[nl]=Ophalen van domeinen is mislukt
 Name[pl]=Nieudane pobieranie wykazu domen
@@ -420,6 +441,7 @@ Name[sv]=Misslyckades hämta domäner
 Name[uk]=Невдала спроба отримання списку доменів
 Name[x-test]=xxRetrieving domains failedxx
 Comment=Retrieving the available domains failed
+Comment[da]=Hentning af de tilgængelige domæner mislykkedes
 Comment[de]=Das Abfragen verfügbarer Domänen ist fehlgeschlagen
 Comment[nl]=Ophalen van de beschikbare domeinen is mislukt
 Comment[pl]=Nieudane pobieranie wykazu dostępnych domen
@@ -434,6 +456,7 @@ Action=Popup|Sound
 
 [Event/scanningBroadcastAreaFailed]
 Name=Scanning broadcast area failed
+Name[da]=Scanning af broadcast-området mislykkedes
 Name[de]=Durchsuchen der Broadcast-Bereiche fehlgeschlagen
 Name[nl]=Scannen van het broadcastgebied is mislukt
 Name[pl]=Nieudane przeszukiwanie obszaru nadawania
@@ -443,6 +466,7 @@ Name[sv]=Sökning av utsändningsområde misslyckades
 Name[uk]=Спроба сканування діапазону трансляції зазнала невдачі
 Name[x-test]=xxScanning broadcast area failedxx
 Comment=Scanning the defined broadcast area(s) failed
+Comment[da]=Scanning af de definerede broadcast-områder mislykkedes
 Comment[de]=Das Durchsuchen der definierten Broadcast-Bereiche ist fehlgeschlagen
 Comment[nl]=Scannen van de gedefinieerde broadcastgebieden is mislukt
 Comment[pl]=Nieudane przeszukiwanie podanego obszaru nadawania
@@ -457,6 +481,7 @@ Action=Popup|Sound
 
 [Event/retrievingHostsFailed]
 Name=Retrieving hosts failed
+Name[da]=Hentning af værter mislykkedes
 Name[de]=Abrufen der Rechner fehlgeschlagen
 Name[nl]=Hosts ophalen is mislukt
 Name[pl]=Nieudane pobieranie gospodarzy 
@@ -466,6 +491,7 @@ Name[sv]=Misslyckades hämta värddatorer
 Name[uk]=Невдала спроб отримання списку вузлів
 Name[x-test]=xxRetrieving hosts failedxx
 Comment=Retrieving the list of hosts belonging to a domain failed
+Comment[da]=Hentning af listen over værter der hører til et domæne mislykkedes
 Comment[de]=Das Abfragen der Liste von Rechnern, die einer Domäne gehören, ist fehlgeschlagen
 Comment[nl]=Ophalen van de lijst met hosts behorende bij een domein is mislukt
 Comment[pl]=Nieudane pobieranie wykazu gospodarzy należących do domeny
@@ -480,6 +506,7 @@ Action=Popup|Sound
 
 [Event/retrievingSharesFailed]
 Name=Retrieving shares failed
+Name[da]=Hentning af ressourcer mislykkedes
 Name[de]=Abrufen der Freigaben fehlgeschlagen
 Name[nl]=Ophalen van gedeelde mappen is mislukt
 Name[pl]=Nieudane pobieranie udziałów 
@@ -489,6 +516,7 @@ Name[sv]=Misslyckades hämta delade resurser
 Name[uk]=Невдала спроба отримання списку спільних ресурсів
 Name[x-test]=xxRetrieving shares failedxx
 Comment=Retrieving the list of shares provided by a host failed
+Comment[da]=Hentning af listen over ressourcer som leveres af en vært mislykkedes
 Comment[de]=Das Abrufen der Liste von Freigaben eines Rechners ist fehlgeschlagen
 Comment[nl]=Ophalen van de lijst met gedeelde mappen geleverd door een host is mislukt
 Comment[pl]=Nieudane pobieranie wykazu udziałów dostarczanych przez gospodarza
@@ -503,6 +531,7 @@ Action=Popup|Sound
 
 [Event/retrievingPreviewFailed]
 Name=Retrieving preview failed
+Name[da]=Hentning af forhåndsvisning mislykkedes
 Name[de]=Abfragen der Vorschau fehlgeschlagen
 Name[nl]=Ophalen van een voorbeeld van is mislukt
 Name[pl]=Nieudane pobieranie podglądu
@@ -512,6 +541,7 @@ Name[sv]=Misslyckades hämta förhandsgranskning
 Name[uk]=Невдала спроба отримання попереднього перегляду
 Name[x-test]=xxRetrieving preview failedxx
 Comment=Retrieving the preview of a share failed
+Comment[da]=Hentning af forhåndsvisning af en ressource mislykkedes
 Comment[de]=Das Abfragen der Vorschau für eine Freigabe ist fehlgeschlagen
 Comment[nl]=Ophalen van het voorbeeld van een gedeelde map is mislukt
 Comment[pl]=Nieudane pobieranie podglądu udziału
@@ -527,6 +557,7 @@ Action=Popup|Sound
 [Event/mountingFailed]
 Name=Mounting failed
 Name[cs]=Připojení selhalo
+Name[da]=Montering mislykkedes
 Name[de]=Einbinden fehlgeschlagen
 Name[nl]=Aankoppelen is mislukt
 Name[pl]=Nieudane montowanie
@@ -536,6 +567,7 @@ Name[sv]=Montering misslyckades
 Name[uk]=Невдала спроба монтування
 Name[x-test]=xxMounting failedxx
 Comment=Mounting a share failed
+Comment[da]=Montering af en ressource mislykkedes
 Comment[de]=Das Einbinden einer Freigabe ist fehlgeschlagen
 Comment[nl]=Aankoppelen van een gedeelde map is mislukt
 Comment[pl]=Nieudane montowanie udziału
@@ -551,6 +583,7 @@ Action=Popup|Sound
 [Event/unmountingFailed]
 Name=Unmounting failed
 Name[cs]=Odpojení neúspěšné
+Name[da]=Afmontering mislykkedes
 Name[de]=Lösen der Einbindung fehlgeschlagen
 Name[nl]=Afkoppelen is mislukt.
 Name[pl]=Nieudane odmontowywanie
@@ -560,6 +593,7 @@ Name[sv]=Avmontering misslyckades
 Name[uk]=Помилка демонтування
 Name[x-test]=xxUnmounting failedxx
 Comment=Unmounting a share failed
+Comment[da]=Afmontering af en ressource mislykkedes
 Comment[de]=Das Lösen der Einbindung einer Freigabe ist fehlgeschlagen
 Comment[nl]=Afkoppelen van een gedeelde map is mislukt
 Comment[pl]=Nieudane odmontowywanie udziału
@@ -574,6 +608,7 @@ Action=Popup|Sound
 
 [Event/unmountingNotAllowed]
 Name=Unmounting not allowed
+Name[da]=Afmontering er ikke tilladt
 Name[de]=Lösen der Einbindung nicht erlaubt
 Name[nl]=Afkoppelen niet toegestaan
 Name[pl]=Odmontowywanie niedozwolone
@@ -583,6 +618,7 @@ Name[sv]=Avmontering tillåts inte
 Name[uk]=Демонтування заборонено
 Name[x-test]=xxUnmounting not allowedxx
 Comment=The unmounting of a certain share is not allowed
+Comment[da]=Afmontering af en bestemt ressource er ikke tilladt
 Comment[de]=Das Lösen der Einbindung einer bestimmten Freigabe ist nicht erlaubt
 Comment[nl]=Het afkoppelen van een bepaalde gedeelde map is niet toegestaan
 Comment[pl]=Odmontowywanie niektórych udziałów jest niedozwolone
@@ -598,6 +634,7 @@ Action=Popup|Sound
 [Event/printingFailed]
 Name=Printing failed
 Name[cs]=Tisk selhal
+Name[da]=Udskrivning mislykkedes
 Name[de]=Drucken fehlgeschlagen
 Name[nl]=Afdrukken is mislukt
 Name[pl]=Nieudane drukowanie
@@ -607,6 +644,7 @@ Name[sv]=Utskrift misslyckades
 Name[uk]=Помилка друку
 Name[x-test]=xxPrinting failedxx
 Comment=Printing on a network printer failed
+Comment[da]=Udskrift på en netværksprinter mislykkedes
 Comment[de]=Das Drucken auf dem Netzwerkdrucker ist fehlgeschlagen
 Comment[nl]=Afdrukken op een netwerkprinter is mislukt
 Comment[pl]=Nieudane drukowanie na drukarce sieciowej
@@ -622,6 +660,7 @@ Action=Popup|Sound
 [Event/synchronizationFailed]
 Name=Synchronization failed
 Name[cs]=Synchronizace selhala
+Name[da]=Synkronisering mislykkedes
 Name[de]=Abgleich fehlgeschlagen
 Name[nl]=Synchronisatie mislukt
 Name[pl]=Nieudane synchronizowanie
@@ -631,6 +670,7 @@ Name[sv]=Synkronisering misslyckades
 Name[uk]=Невдала спроба синхронізації
 Name[x-test]=xxSynchronization failedxx
 Comment=The synchronization of a share and a local copy failed
+Comment[da]=Synkronisering af en ressource og en lokal kopi mislykkedes
 Comment[de]=Der Abgleich zwischen einer Freigabe und der lokalen Kopie ist fehlgeschlagen
 Comment[nl]=De synchronisatie van een gedeelde map met een lokale kopie is mislukt
 Comment[pl]=Nieudane synchronizowanie udziału i kopii lokalnej
@@ -646,6 +686,7 @@ Action=Popup|Sound
 [Event/searchingFailed]
 Name=Searching failed
 Name[cs]=Hledání selhalo
+Name[da]=Søgning mislykkedes
 Name[de]=Suche fehlgeschlagen
 Name[nl]=Zoeken is mislukt
 Name[pl]=Nieudane wyszukiwanie
@@ -656,6 +697,7 @@ Name[uk]=Помилка пошуку
 Name[x-test]=xxSearching failedxx
 Comment=Searching the network neighborhood failed
 Comment[cs]=Prohledávání síťového okolí selhalo
+Comment[da]=Gennemsøgning af netværksnabolaget mislykkedes
 Comment[de]=Das Durchsuchen der Netzwerkumgebung ist fehlgeschlagen
 Comment[nl]=Zoeken in de netwerkomgeving is mislukt
 Comment[pl]=Nieudane przeszukiwanie otoczenia sieciowego
@@ -670,6 +712,7 @@ Action=Popup|Sound
 
 [Event/commandNotFound]
 Name=Command not found
+Name[da]=Kommando ikke fundet
 Name[de]=Befehl nicht gefunden
 Name[nl]=Commando niet gevonden
 Name[pl]=Nie znaleziono polecenia
@@ -679,6 +722,7 @@ Name[sv]=Kommandot hittades inte
 Name[uk]=Команду не знайдено
 Name[x-test]=xxCommand not foundxx
 Comment=A required command could not be found
+Comment[da]=En påkrævet kommando kunne ikke findes
 Comment[de]=Ein erforderlicher Befehl wurde nicht gefunden
 Comment[nl]=Een vereist commando is niet gevonden
 Comment[pl]=Nie można znaleźć wymaganego polecenia
@@ -693,6 +737,7 @@ Action=Popup|Sound
 
 [Event/cannotBookmarkPrinter]
 Name=Cannot bookmark printer
+Name[da]=Kan ikke sætte bogmærke ved printer
 Name[de]=Lesezeichen für Drucker kann nicht angelegt werden
 Name[nl]=Kan geen bladwijzer maken van een printer
 Name[pl]=Nie można utworzyć zakładki dla drukarki
@@ -702,6 +747,7 @@ Name[sv]=Kan inte lägga till bokmärke för skrivare
 Name[uk]=Не можна створювати закладки для принтерів
 Name[x-test]=xxCannot bookmark printerxx
 Comment=A printer cannot be bookmarked
+Comment[da]=Der kan ikke sættes bogmærke ved en printer
 Comment[de]=Ein Lesezeichen für einen Drucker kann nicht angelegt werden
 Comment[nl]=Een printer kan geen bladwijzer hebben
 Comment[pl]=Nie można utworzyć zakładki dla drukarki
@@ -717,6 +763,7 @@ Action=Popup|Sound
 [Event/fileNotFound]
 Name=File not found
 Name[cs]=Soubor nenalezen
+Name[da]=Fil ikke fundet
 Name[de]=Datei nicht gefunden
 Name[nl]=Bestand niet gevonden
 Name[pl]=Nie znaleziono pliku
@@ -726,6 +773,7 @@ Name[sv]=Filen hittades inte
 Name[uk]=Файл не знайдено
 Name[x-test]=xxFile not foundxx
 Comment=A file could not be found
+Comment[da]=En fil kunne ikke findes
 Comment[de]=Eine Datei wurde nicht gefunden
 Comment[nl]=Een bestand kon niet worden gevonden
 Comment[pl]=Nie można znaleźć pliku
@@ -740,6 +788,7 @@ Action=Popup|Sound
 
 [Event/openingFileFailed]
 Name=Opening file failed
+Name[da]=Åbning af fil mislykkedes
 Name[de]=Öffnen der Datei fehlgeschlagen
 Name[nl]=Openen van bestand is mislukt
 Name[pl]=Nieudane otwieranie pliku
@@ -749,6 +798,7 @@ Name[sv]=Misslyckades öppna fil
 Name[uk]=Спроба відкриття файла зазнала невдачі
 Name[x-test]=xxOpening file failedxx
 Comment=A file could not be opened
+Comment[da]=En fil kunne ikke åbnes
 Comment[de]=Eine Datei kann nicht geöffnet werden
 Comment[nl]=Een bestand kon niet worden geopend
 Comment[pl]=Nie można otworzyć pliku
@@ -763,6 +813,7 @@ Action=Popup|Sound
 
 [Event/readingFileFailed]
 Name=Reading file failed
+Name[da]=Læsning af fil mislykkedes
 Name[de]=Lesen der Datei fehlgeschlagen
 Name[nl]=Lezen van bestand is mislukt
 Name[pl]=Nieudane czytanie z pliku
@@ -772,6 +823,7 @@ Name[sv]=Misslyckades läsa fil
 Name[uk]=Помилка читання файла
 Name[x-test]=xxReading file failedxx
 Comment=A file could not be read
+Comment[da]=En fil kunne ikke læses
 Comment[de]=Eine Datei kann nicht gelesen werden
 Comment[nl]=Een bestand kon niet worden gelezen
 Comment[pl]=Nie można odczytać pliku
@@ -786,6 +838,7 @@ Action=Popup|Sound
 
 [Event/mkdirFailed]
 Name=mkdir failed
+Name[da]=mkdir mislykkedes
 Name[de]=Befehl mkdir fehlgeschlagen
 Name[nl]=Commando mkdir is mislukt
 Name[pl]=Niepowodzenie mkdir
@@ -795,6 +848,7 @@ Name[sv]=Kommandot mkdir misslyckades
 Name[uk]=Помилка mkdir
 Name[x-test]=xxmkdir failedxx
 Comment=A directory could not be created
+Comment[da]=En mappe kunne ikke oprettes
 Comment[de]=Ein Ordner kann konnte nicht erstellt werden
 Comment[nl]=Een map kon niet worden aangemaakt
 Comment[pl]=Nie można utworzyć katalogu
@@ -810,6 +864,7 @@ Action=Popup|Sound
 [Event/processError]
 Name=Process error
 Name[cs]=Chyba procesu
+Name[da]=Procesfejl
 Name[de]=Prozess-Fehler
 Name[nl]=Procesfout
 Name[pl]=Błąd procesu
@@ -819,6 +874,7 @@ Name[sv]=Processfel
 Name[uk]=Помилка процесу
 Name[x-test]=xxProcess errorxx
 Comment=A process error occurred
+Comment[da]=Der opstod en procesfejl
 Comment[de]=Es ist ein Prozess-Fehler aufgetreten
 Comment[nl]=Er deed zich een procesfout voor
 Comment[pl]=Wystąpił błąd procesu
@@ -833,6 +889,7 @@ Action=Popup|Sound
 
 [Event/systemCallFailed]
 Name=System call failed
+Name[da]=Systemkald mislykkedes
 Name[de]=Systemaufruf fehlgeschlagen
 Name[nl]=Systeemaanroep is mislukt
 Name[pt]=Erro em chamada ao sistema
@@ -841,6 +898,7 @@ Name[sv]=Systemanrop misslyckades
 Name[uk]=Помилка системного виклику
 Name[x-test]=xxSystem call failedxx
 Comment=A system call failed
+Comment[da]=Et systemkald mislykkedes
 Comment[de]=Ein Systemaufruf ist fehlgeschlagen
 Comment[nl]=Een systeemaanroep is mislukt
 Comment[pl]=Nieudane wywołanie systemu
@@ -855,6 +913,7 @@ Action=Popup|Sound
 
 [Event/actionFailed]
 Name=Action failed
+Name[da]=Handling mislykkedes
 Name[de]=Aktion fehlgeschlagen
 Name[nl]=Actie is mislukt
 Name[pl]=Nieudane działanie
@@ -864,6 +923,7 @@ Name[sv]=Åtgärd misslyckades
 Name[uk]=Спроба виконання дії зазнала невдачі
 Name[x-test]=xxAction failedxx
 Comment=A KAuth action failed
+Comment[da]=En KAuth-handling mislykkedes
 Comment[de]=Eine KAuth-Aktion ist fehlgeschlagen
 Comment[nl]=Een KAuth-actie is mislukt
 Comment[pl]=Niepowodzenie działania KAuth
@@ -879,6 +939,7 @@ Action=Popup|Sound
 [Event/invalidURL]
 Name=Invalid URL
 Name[cs]=Neplatné URL
+Name[da]=Ugyldig URL
 Name[de]=Ungültige Adresse (URL)
 Name[nl]=Ongeldig URL-adres
 Name[pl]=Nieprawidłowy adres URL
@@ -888,6 +949,7 @@ Name[sv]=Ogiltig webbadress
 Name[uk]=Некоректна адреса
 Name[x-test]=xxInvalid URLxx
 Comment=An invalid URL was passed
+Comment[da]=En ugyldig URL blev modtaget
 Comment[de]=Es wurde eine ungültige Adresse (URL) übergeben
 Comment[nl]=Een ongeldige URL is doorgegeven
 Comment[pl]=Podano nieprawidłowy adres URL
@@ -902,6 +964,7 @@ Action=Popup|Sound
 
 [Event/emptyBroadcastAreas]
 Name=Broadcast areas empty
+Name[da]=Broadcast-områderne er tomme
 Name[de]=Broadcast-Bereiche sind leer
 Name[nl]=Broadcastgebieden zijn leeg
 Name[pl]=Obszary rozgłaszania jest pusty
@@ -911,6 +974,7 @@ Name[sv]=Utsändningsområden tomma
 Name[uk]=Порожні області трансляції
 Name[x-test]=xxBroadcast areas emptyxx
 Comment=The entry of the broadcast areas is empty
+Comment[da]=Indgangen til broadcast-områder er tom
 Comment[de]=Der Eintrag der Broadcast-Bereiche ist leer
 Comment[nl]=Het item van de broadcastgebieden is leeg
 Comment[pl]=Wpis obszarów rozgłaszania jest pusty
