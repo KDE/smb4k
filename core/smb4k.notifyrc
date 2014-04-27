@@ -948,6 +948,7 @@ Name=System call failed
 Name[da]=Systemkald mislykkedes
 Name[de]=Systemaufruf fehlgeschlagen
 Name[nl]=Systeemaanroep is mislukt
+Name[pl]=Nieudane wywołanie systemu
 Name[pt]=Erro em chamada ao sistema
 Name[pt_BR]=Ocorreu um erro em uma chamada de sistema
 Name[sv]=Systemanrop misslyckades
