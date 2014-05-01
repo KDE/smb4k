@@ -95,23 +95,6 @@ Smb4KUserInterfaceOptionsPage::Smb4KUserInterfaceOptionsPage( QWidget *parent )
   
   behavior_layout->addWidget( auto_open, 0, 0, 0 );
 
-  // Remote shares
-  QGroupBox *remote_shares_box    = new QGroupBox( i18n( "Remote Shares" ), network_browser_tab );
-
-  QGridLayout *shares_layout      = new QGridLayout( remote_shares_box );
-  shares_layout->setSpacing( 5 );
-
-  QCheckBox *show_printers        = new QCheckBox( Smb4KSettings::self()->showPrinterSharesItem()->label(),
-                                    remote_shares_box );
-  show_printers->setObjectName( "kcfg_ShowPrinterShares" );
-
-  QCheckBox *show_hidden          = new QCheckBox( Smb4KSettings::self()->showHiddenSharesItem()->label(),
-                                    remote_shares_box );
-  show_hidden->setObjectName( "kcfg_ShowHiddenShares" );
-
-  shares_layout->addWidget( show_printers, 0, 0, 0 );
-  shares_layout->addWidget( show_hidden, 0, 1, 0 );
-
   // Columns
   QGroupBox *columns_box          = new QGroupBox( i18n( "Columns" ), network_browser_tab );
 
@@ -147,7 +130,6 @@ Smb4KUserInterfaceOptionsPage::Smb4KUserInterfaceOptionsPage( QWidget *parent )
   n_tooltips_layout->addWidget( network_tooltip, 0, 0, 0 );
 
   net_browser_layout->addWidget( behavior_box );
-  net_browser_layout->addWidget( remote_shares_box );
   net_browser_layout->addWidget( columns_box );
   net_browser_layout->addWidget( network_tooltips_box );
   net_browser_layout->addStretch( 100 );
@@ -247,12 +229,7 @@ Smb4KUserInterfaceOptionsPage::Smb4KUserInterfaceOptionsPage( QWidget *parent )
                                     mounted_shares_box );
   show_mountpoint->setObjectName( "kcfg_ShowMountPoint" );
 
-  QCheckBox *show_all_shares      = new QCheckBox( Smb4KSettings::self()->showAllSharesItem()->label(),
-                                    mounted_shares_box );
-  show_all_shares->setObjectName( "kcfg_ShowAllShares" );
-
   mounted_layout->addWidget( show_mountpoint, 0, 0, 0 );
-  mounted_layout->addWidget( show_all_shares, 1, 0, 0 );
 
   // Share tooltips
   QGroupBox *share_tooltips_box   = new QGroupBox( i18n( "Tooltips" ), shares_view_tab );
@@ -274,34 +251,6 @@ Smb4KUserInterfaceOptionsPage::Smb4KUserInterfaceOptionsPage( QWidget *parent )
   shares_view_layout->addItem( spacer4, 3, 0 );
 
   insertTab( MountedSharesTab, shares_view_tab, i18n( "Mounted Shares" ) );
-
-  //
-  // Preview dialog
-  //
-  QWidget *preview_tab            = new QWidget( this );
-
-  QGridLayout *preview_layout     = new QGridLayout( preview_tab );
-  preview_layout->setSpacing( 5 );
-  preview_layout->setMargin( 0 );
-
-
-  QGroupBox *preview_files_box    = new QGroupBox( i18n( "Hidden Files && Directories" ), preview_tab );
-
-  QGridLayout *prev_files_layout  = new QGridLayout( preview_files_box );
-  prev_files_layout->setSpacing( 5 );
-
-  QCheckBox *preview_hidden       = new QCheckBox( Smb4KSettings::self()->previewHiddenItemsItem()->label(),
-                                    preview_files_box );
-  preview_hidden->setObjectName( "kcfg_PreviewHiddenItems" );
-
-  prev_files_layout->addWidget( preview_hidden, 0, 0, 0 );
-
-  QSpacerItem *spacer5 = new QSpacerItem( 10, 10, QSizePolicy::Preferred, QSizePolicy::Expanding );
-
-  preview_layout->addWidget( preview_files_box, 0, 0, 0 );
-  preview_layout->addItem( spacer5, 1, 0, 1, 1, 0 );
-
-  insertTab( PreviewDialogTab, preview_tab, i18n( "Preview Dialog" ) );
 }
 
 

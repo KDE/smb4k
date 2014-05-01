@@ -77,7 +77,7 @@ Smb4KShareOptionsPage::Smb4KShareOptionsPage( QWidget *parent )
   directory_layout->addWidget( lowercase_subdirs, 1, 0, 1, 2, 0 );
 
   // Mounting and unmounting
-  QGroupBox *mount_box          = new QGroupBox( i18n( "Mounting && Unmounting" ), this );
+  QGroupBox *mount_box          = new QGroupBox( i18n( "Behavior" ), this );
 
   QGridLayout *mount_layout     = new QGridLayout( mount_box );
   mount_layout->setSpacing( 5 );
@@ -112,6 +112,9 @@ Smb4KShareOptionsPage::Smb4KShareOptionsPage( QWidget *parent )
                                     mount_box );
   unmount_inaccessible->setObjectName( "kcfg_ForceUnmountInaccessible" );
 #endif
+  
+  QCheckBox *retrieve_all       = new QCheckBox(Smb4KSettings::self()->detectAllSharesItem()->label(), mount_box);
+  retrieve_all->setObjectName("kcfg_DetectAllShares");
 
 #ifdef Q_OS_LINUX
   mount_layout->addWidget( rem_attempts_label, 0, 0, 0 );
@@ -122,6 +125,7 @@ Smb4KShareOptionsPage::Smb4KShareOptionsPage( QWidget *parent )
   mount_layout->addWidget( unmount_all_shares, 3, 0, 1, 2, 0 );
   mount_layout->addWidget( unmount_inaccessible, 4, 0, 1, 2, 0 );
   mount_layout->addWidget( allow_foreign, 5, 0, 1, 2, 0 );
+  mount_layout->addWidget( retrieve_all, 6, 0, 1, 2, 0 );
 #else
   mount_layout->addWidget( rem_attempts_label, 0, 0, 0 );
   mount_layout->addWidget( remount_attempts, 0, 1, 0 );
@@ -130,6 +134,7 @@ Smb4KShareOptionsPage::Smb4KShareOptionsPage( QWidget *parent )
   mount_layout->addWidget( remount_shares, 2, 0, 1, 2, 0 );  
   mount_layout->addWidget( unmount_all_shares, 3, 0, 1, 2, 0 );
   mount_layout->addWidget( allow_foreign, 4, 0, 1, 2, 0 );
+  mount_layout->addWidget( retrieve_all, 5, 0, 1, 2, 0 );
 #endif
 
   // Checks

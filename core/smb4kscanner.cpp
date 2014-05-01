@@ -1413,21 +1413,36 @@ void Smb4KScanner::slotHosts( Smb4KWorkgroup *workgroup, const QList<Smb4KHost *
 
 void Smb4KScanner::slotShares( Smb4KHost *host, const QList<Smb4KShare *> &shares_list )
 {
-  Q_ASSERT( host );
+  Q_ASSERT(host);
   
-  if ( !shares_list.isEmpty() )
+  if (host && !shares_list.isEmpty())
   {
-    // Copy some information before processing the shares further. 
-    // Note, that the IP address and other information stemming from
-    // the host were already entered by the lookup job.
-    for ( int i = 0; i < shares_list.size(); ++i )
+    // Process list of shares:
+    QList<Smb4KShare *> new_shares;
+    
+    // Copy all shares that the user wishes to retrieve and set the mount data
+    // as well as the IP address (if not already present).
+    for (int i = 0; i < shares_list.size(); ++i)
     {
+      if (shares_list.at(i)->isPrinter() && !Smb4KSettings::detectPrinterShares())
+      {
+        continue;
+      }
+      else if (shares_list.at(i)->isHidden() && !Smb4KSettings::detectHiddenShares())
+      {
+        continue;
+      }
+      else
+      {
+        // Do nothing
+      }
+      
       // Check if the share has already been mounted.
       QList<Smb4KShare *> mounted_shares = findShareByUNC( shares_list.at( i )->unc() );
       
       if ( !mounted_shares.isEmpty() )
       {
-        // FIXME: We cannot honor Smb4KSettings::showAllShares() here, because 
+        // FIXME: We cannot honor Smb4KSettings::detectAllShares() here, because 
         // in case the setting is changed, there will be no automatic rescan
         // (in case of an automatic or periodical rescan that would be the 
         // favorable method...
@@ -1454,68 +1469,71 @@ void Smb4KScanner::slotShares( Smb4KHost *host, const QList<Smb4KShare *> &share
       else
       {
         // Do nothing
-      }
-      
-      // Now set some information that might have been collected
-      // since the lookup started...
-      Smb4KShare *share = findShare( shares_list.at( i )->shareName(), shares_list.at( i )->hostName(), shares_list.at( i )->workgroupName() );
-        
-      if ( share )
+      }      
+ 
+      // Now set the IP address, if none could be retrieved by the
+      // lookup job. 
+      if (!shares_list.at(i)->hasHostIP())
       {
-        if ( !shares_list.at( i )->hasHostIP() && share->hasHostIP() )
+        Smb4KShare *s = findShare(shares_list.at(i)->shareName(),
+                                  shares_list.at(i)->hostName(),
+                                  shares_list.at(i)->workgroupName());
+        
+        if (s)
         {
-          shares_list[i]->setHostIP( share->hostIP() );
+          shares_list[i]->setHostIP(s->hostIP());
         }
         else
         {
           // Do nothing
         }
-          
-        removeShare( share );
       }
       else
       {
         // Do nothing
       }
+      
+      new_shares << shares_list[i];
     }
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Copy authentication information
-  Smb4KHost *known_host = findHost( host->hostName(), host->workgroupName() );
-  
-  if ( known_host )
-  {
-    known_host->setLogin( host->login() );
-    known_host->setPassword( host->password() );
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Now remove all (obsolete) shares of the scanned host from
-  // the global list.
-  QList<Smb4KShare *> obsolete_shares = sharedResources( host );
-  QListIterator<Smb4KShare *> s( obsolete_shares );
     
-  while ( s.hasNext() )
-  {
-    Smb4KShare *share = s.next();
-    removeShare( share );
+    // Process the host:
+    // Copy the authentication information.
+    Smb4KHost *known_host = findHost(host->hostName(), host->workgroupName());
+    
+    if(known_host)
+    {
+      known_host->setLogin(host->login());
+      known_host->setPassword(host->password());
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // Now remove all shares of this host from the global list.
+    QList<Smb4KShare *> known_shares = sharedResources(known_host);
+    QListIterator<Smb4KShare *> it(known_shares);
+    
+    while(it.hasNext())
+    {
+      Smb4KShare *s = it.next();
+      removeShare(s);
+    }
+    
+    // Add a copy of all desired shares to the global list.
+    for (int i = 0; i < new_shares.size(); ++i)
+    {
+      addShare(new Smb4KShare(*new_shares[i]));
+    }
+    
+    // Now emit the list of shared resources.
+    QList<Smb4KShare *> shared_resources = sharedResources(host);
+    emit shares(host, shared_resources);
   }
-  
-  // Add a copy of all shares to the global list.
-  for ( int i = 0; i < shares_list.size(); ++i )
+  else
   {
-    addShare( new Smb4KShare( *shares_list.at( i ) ) );
+    // Do nothing
   }
-  
-  QList<Smb4KShare *> shared_resources = sharedResources( host );
-  emit shares( host, shared_resources );
 }
 
 

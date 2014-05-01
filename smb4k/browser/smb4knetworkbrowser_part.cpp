@@ -1299,209 +1299,271 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
 
 void Smb4KNetworkBrowserPart::slotShares( Smb4KHost *host, const QList<Smb4KShare *> &list )
 {
-  if ( host )
+  if (host)
   {
     QList<QTreeWidgetItem *> network_items = m_widget->findItems( host->hostName(), Qt::MatchFixedString|Qt::MatchRecursive, Smb4KNetworkBrowser::Network );
-
-    // There might be several entries in the list that have the same.
-    // So, loop through the list, get the host(s) and process it/them.
-    for ( int i = 0; i < network_items.size(); ++i )
+    
+    // Find the host and process it.
+    for (int i = 0; i < network_items.size(); ++i)
     {
-      Smb4KNetworkBrowserItem *network_item = static_cast<Smb4KNetworkBrowserItem *>( network_items.at( i ) );
-
-      if ( network_item->type() == Host )
+      Smb4KNetworkBrowserItem *network_item = static_cast<Smb4KNetworkBrowserItem *>(network_items[i]);
+      
+      if (network_item && network_item->type() == Host &&
+          QString::compare(network_item->hostItem()->workgroupName(), host->workgroupName(), Qt::CaseInsensitive) == 0)
       {
-        if ( !list.isEmpty() )
+        // Delete all shares of the host.
+        while ( network_item->childCount() != 0 )
         {
-          if ( Smb4KSettings::autoExpandNetworkItems() && !network_item->isExpanded() )
+          delete network_item->child( 0 );
+        }
+        
+        // Add the newly discovered shares to the host.
+        if (!list.isEmpty())
+        {
+          // Expand the list of shares.
+          if (Smb4KSettings::autoExpandNetworkItems() && !network_item->isExpanded())
           {
-            m_widget->expandItem( network_item );
+            m_widget->expandItem(network_item);
           }
           else
           {
             // Do nothing
           }
-
-          // Update and add the shares.
-          for ( int j = 0; j < list.size(); ++j )
+          
+          // Add the shares to the host.
+          for (int j = 0; j < list.size(); ++j)
           {
-            bool found_item = false;
-
-            if ( QString::compare( network_item->hostItem()->hostName(), list.at( j )->hostName() ) == 0 )
-            {
-              for ( int k = 0; k < network_item->childCount(); ++k )
-              {
-                // In case the list also carries entries for other hosts, check that
-                // the host name of the entry in the list and of the current host in
-                // the tree widget are the same.
-                Smb4KNetworkBrowserItem *share_item = static_cast<Smb4KNetworkBrowserItem *>( network_item->child( k ) );
-
-                if ( QString::compare( list.at( j )->shareName(), share_item->shareItem()->shareName() ) == 0 )
-                {
-                  // We found the share. Now process it.
-                  if ( !share_item->shareItem()->isHidden() )
-                  {
-                    if ( !share_item->shareItem()->isPrinter() || Smb4KSettings::showPrinterShares() )
-                    {
-                      share_item->update( list.at( j ) );
-                    }
-                    else
-                    {
-                      // Do nothing. The item will be deleted below.
-                    }
-
-                    found_item = true;
-                    break;
-                  }
-                  else
-                  {
-                    if ( Smb4KSettings::showHiddenShares() )
-                    {
-                      if ( share_item->shareItem()->isPrinter() && Smb4KSettings::showPrinterShares() )
-                      {
-                        share_item->update( list.at( j ) );
-                      }
-                      else
-                      {
-                        // Do nothing. The item will be deleted below.
-                      }
-                    }
-                    else
-                    {
-                      // Do nothing. The item will be deleted below.
-                    }
-
-                    found_item = true;
-                    break;
-                  }
-                }
-                else
-                {
-                  continue;
-                }
-              }
-
-              if ( !found_item )
-              {
-                if ( !list.at( j )->isHidden() )
-                {
-                  if ( !list.at( j )->isPrinter() || Smb4KSettings::showPrinterShares() )
-                  {
-                    (void) new Smb4KNetworkBrowserItem( network_item, list.at( j ) );
-                  }
-                  else
-                  {
-                    // Do nothing
-                  }
-
-                  continue;
-                }
-                else
-                {
-                  if ( Smb4KSettings::showHiddenShares() )
-                  {
-                    if ( !list.at( j )->isPrinter() || (list.at( j )->isPrinter() && Smb4KSettings::showPrinterShares()) )
-                    {
-                      (void) new Smb4KNetworkBrowserItem( network_item, list.at( j ) );
-                    }
-                    else
-                    {
-                      // Do nothing
-                    }
-                  }
-                  else
-                  {
-                    // Do nothing
-                  }
-
-                  continue;
-                }
-              }
-              else
-              {
-                continue;
-              }
-            }
-          }
-
-          // Delete obsolete shares.
-          for ( int j = 0; j < network_item->childCount(); ++j )
-          {
-            Smb4KNetworkBrowserItem *share_item = static_cast<Smb4KNetworkBrowserItem *>( network_item->child( j ) );
-            bool found_share = false;
-
-            for ( int k = 0; k < list.size(); ++k )
-            {
-              if ( QString::compare( share_item->shareItem()->hostName(), list.at( k )->hostName() ) == 0 &&
-                   QString::compare( share_item->shareItem()->shareName(), list.at( k )->shareName() ) == 0 )
-              {
-                // Test if the share needs to be deleted. If this is the case, we
-                // won't set found_share to TRUE.
-
-                // (a) Printer shares
-                if ( !Smb4KSettings::showPrinterShares() && share_item->shareItem()->isPrinter() )
-                {
-                  break;
-                }
-                else
-                {
-                  // Do nothing.
-                }
-
-                // (b) Hidden shares
-                if ( !Smb4KSettings::showHiddenShares() && share_item->shareItem()->isHidden() )
-                {
-                  break;
-                }
-                else
-                {
-                  // Do nothing
-                }
-
-                found_share = true;
-              }
-              else
-              {
-                continue;
-              }
-            }
-
-            if ( !found_share )
-            {
-              delete share_item;
-              continue;
-            }
-            else
-            {
-              continue;
-            }
+            (void) new Smb4KNetworkBrowserItem(network_item, list.at(j));
           }
         }
         else
         {
-          // Collapse the item.
-          m_widget->collapseItem( network_item );
-
-          // Delete all share items from this host:
-          while ( network_item->childCount() != 0 )
-          {
-            delete network_item->child( 0 );
-          }
+          // Collapse the list of shares.
+          m_widget->collapseItem(network_item);
         }
 
-        // Sort the items.
-        m_widget->sortItems( Smb4KNetworkBrowser::Network, Qt::AscendingOrder );
+        // Stop the loop.
+        break;
       }
       else
       {
-        continue;
+        // Do nothing
       }
     }
+    
+    // Sort the items.
+    m_widget->sortItems( Smb4KNetworkBrowser::Network, Qt::AscendingOrder );
   }
   else
   {
     // Do nothing
   }
+  
+  
+  
+//   if ( host )
+//   {
+//     QList<QTreeWidgetItem *> network_items = m_widget->findItems( host->hostName(), Qt::MatchFixedString|Qt::MatchRecursive, Smb4KNetworkBrowser::Network );
+// 
+//     // There might be several entries in the list that have the same.
+//     // So, loop through the list, get the host(s) and process it/them.
+//     for ( int i = 0; i < network_items.size(); ++i )
+//     {
+//       Smb4KNetworkBrowserItem *network_item = static_cast<Smb4KNetworkBrowserItem *>( network_items.at( i ) );
+// 
+//       if ( network_item->type() == Host )
+//       {
+//         if ( !list.isEmpty() )
+//         {
+//           if ( Smb4KSettings::autoExpandNetworkItems() && !network_item->isExpanded() )
+//           {
+//             m_widget->expandItem( network_item );
+//           }
+//           else
+//           {
+//             // Do nothing
+//           }
+// 
+//           // Update and add the shares.
+//           for ( int j = 0; j < list.size(); ++j )
+//           {
+//             bool found_item = false;
+// 
+//             if ( QString::compare( network_item->hostItem()->hostName(), list.at( j )->hostName() ) == 0 )
+//             {
+//               for ( int k = 0; k < network_item->childCount(); ++k )
+//               {
+//                 // In case the list also carries entries for other hosts, check that
+//                 // the host name of the entry in the list and of the current host in
+//                 // the tree widget are the same.
+//                 Smb4KNetworkBrowserItem *share_item = static_cast<Smb4KNetworkBrowserItem *>( network_item->child( k ) );
+// 
+//                 if ( QString::compare( list.at( j )->shareName(), share_item->shareItem()->shareName() ) == 0 )
+//                 {
+//                   // We found the share. Now process it.
+//                   if ( !share_item->shareItem()->isHidden() )
+//                   {
+//                     if ( !share_item->shareItem()->isPrinter() || Smb4KSettings::showPrinterShares() )
+//                     {
+//                       share_item->update( list.at( j ) );
+//                     }
+//                     else
+//                     {
+//                       // Do nothing. The item will be deleted below.
+//                     }
+// 
+//                     found_item = true;
+//                     break;
+//                   }
+//                   else
+//                   {
+//                     if ( Smb4KSettings::showHiddenShares() )
+//                     {
+//                       if ( share_item->shareItem()->isPrinter() && Smb4KSettings::showPrinterShares() )
+//                       {
+//                         share_item->update( list.at( j ) );
+//                       }
+//                       else
+//                       {
+//                         // Do nothing. The item will be deleted below.
+//                       }
+//                     }
+//                     else
+//                     {
+//                       // Do nothing. The item will be deleted below.
+//                     }
+// 
+//                     found_item = true;
+//                     break;
+//                   }
+//                 }
+//                 else
+//                 {
+//                   continue;
+//                 }
+//               }
+// 
+//               if ( !found_item )
+//               {
+//                 if ( !list.at( j )->isHidden() )
+//                 {
+//                   if ( !list.at( j )->isPrinter() || Smb4KSettings::showPrinterShares() )
+//                   {
+//                     (void) new Smb4KNetworkBrowserItem( network_item, list.at( j ) );
+//                   }
+//                   else
+//                   {
+//                     // Do nothing
+//                   }
+// 
+//                   continue;
+//                 }
+//                 else
+//                 {
+//                   if ( Smb4KSettings::showHiddenShares() )
+//                   {
+//                     if ( !list.at( j )->isPrinter() || (list.at( j )->isPrinter() && Smb4KSettings::showPrinterShares()) )
+//                     {
+//                       (void) new Smb4KNetworkBrowserItem( network_item, list.at( j ) );
+//                     }
+//                     else
+//                     {
+//                       // Do nothing
+//                     }
+//                   }
+//                   else
+//                   {
+//                     // Do nothing
+//                   }
+// 
+//                   continue;
+//                 }
+//               }
+//               else
+//               {
+//                 continue;
+//               }
+//             }
+//           }
+// 
+//           // Delete obsolete shares.
+//           for ( int j = 0; j < network_item->childCount(); ++j )
+//           {
+//             Smb4KNetworkBrowserItem *share_item = static_cast<Smb4KNetworkBrowserItem *>( network_item->child( j ) );
+//             bool found_share = false;
+// 
+//             for ( int k = 0; k < list.size(); ++k )
+//             {
+//               if ( QString::compare( share_item->shareItem()->hostName(), list.at( k )->hostName() ) == 0 &&
+//                    QString::compare( share_item->shareItem()->shareName(), list.at( k )->shareName() ) == 0 )
+//               {
+//                 // Test if the share needs to be deleted. If this is the case, we
+//                 // won't set found_share to TRUE.
+// 
+//                 // (a) Printer shares
+//                 if ( !Smb4KSettings::showPrinterShares() && share_item->shareItem()->isPrinter() )
+//                 {
+//                   break;
+//                 }
+//                 else
+//                 {
+//                   // Do nothing.
+//                 }
+// 
+//                 // (b) Hidden shares
+//                 if ( !Smb4KSettings::showHiddenShares() && share_item->shareItem()->isHidden() )
+//                 {
+//                   break;
+//                 }
+//                 else
+//                 {
+//                   // Do nothing
+//                 }
+// 
+//                 found_share = true;
+//               }
+//               else
+//               {
+//                 continue;
+//               }
+//             }
+// 
+//             if ( !found_share )
+//             {
+//               delete share_item;
+//               continue;
+//             }
+//             else
+//             {
+//               continue;
+//             }
+//           }
+//         }
+//         else
+//         {
+//           // Collapse the item.
+//           m_widget->collapseItem( network_item );
+// 
+//           // Delete all share items from this host:
+//           while ( network_item->childCount() != 0 )
+//           {
+//             delete network_item->child( 0 );
+//           }
+//         }
+// 
+//         // Sort the items.
+//         m_widget->sortItems( Smb4KNetworkBrowser::Network, Qt::AscendingOrder );
+//       }
+//       else
+//       {
+//         continue;
+//       }
+//     }
+//   }
+//   else
+//   {
+//     // Do nothing
+//   }
 }
 
 

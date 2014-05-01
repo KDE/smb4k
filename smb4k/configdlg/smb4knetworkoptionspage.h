@@ -27,17 +27,17 @@
 #ifndef SMB4KNETWORKOPTIONSPAGE_H
 #define SMB4KNETWORKOPTIONSPAGE_H
 
-// Qt includes
-#include <QWidget>
+// KDE includes
+#include <ktabwidget.h>
 
 /**
  * This is the configuration tab for the network settings
  * of Smb4K.
  *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class Smb4KNetworkOptionsPage : public QWidget
+class Smb4KNetworkOptionsPage : public KTabWidget
 {
   Q_OBJECT
 

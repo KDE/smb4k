@@ -490,15 +490,38 @@ void Smb4KPreviewJob::slotReadStandardOutput()
         }
 
         QString date = QDateTime::fromString( right.section( QString( " %1 " ).arg( size ), 1, 1 ).trimmed() ).toString();
-
-        if ( !name.isEmpty() && QString::compare(name, ".") != 0 && QString::compare(name, "..") != 0 )
+        
+        if (!name.isEmpty())
         {
-          Smb4KPreviewFileItem item;
-          item.setItemName(name);
-          item.setDir(is_dir);
-          item.setDate(date);
-          item.setItemSize(size);
-          items << item;
+          if (!name.startsWith('.'))
+          {
+            Smb4KPreviewFileItem item;
+            item.setItemName(name);
+            item.setDir(is_dir);
+            item.setDate(date);
+            item.setItemSize(size);
+            items << item;
+          }
+          else if (name.startsWith('.') && QString::compare(name, ".") != 0 && QString::compare(name, "..") != 0)
+          {
+            if (Smb4KSettings::previewHiddenItems())
+            {
+              Smb4KPreviewFileItem item;
+              item.setItemName(name);
+              item.setDir(is_dir);
+              item.setDate(date);
+              item.setItemSize(size);
+              items << item;
+            }
+            else
+            {
+              // Do nothing
+            }
+          }
+          else
+          {
+            // Do nothing
+          }
         }
         else
         {
@@ -946,18 +969,11 @@ void Smb4KPreviewDialog::slotDisplayPreview( const KUrl &url, const QList<Smb4KP
   // Display the preview
   for ( int i = 0; i < contents.size(); ++i )
   {
-    if ( !contents.at(i).isHidden() || Smb4KSettings::previewHiddenItems() )
-    {
-      QListWidgetItem *listItem = new QListWidgetItem( contents.at(i).itemIcon(), 
-                                                       contents.at(i).itemName(), 
-                                                       m_view,
-                                                       (contents.at(i).isDir() ? Directory : File) );
-      listItem->setData( Qt::UserRole, contents.at(i).itemName() );
-    }
-    else
-    {
-      // Do nothing
-    }
+    QListWidgetItem *listItem = new QListWidgetItem( contents.at(i).itemIcon(), 
+                                                     contents.at(i).itemName(), 
+                                                     m_view,
+                                                     (contents.at(i).isDir() ? Directory : File) );
+    listItem->setData( Qt::UserRole, contents.at(i).itemName() );
   }
 
   // Enable/disable the back action.

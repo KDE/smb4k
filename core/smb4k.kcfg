@@ -18,7 +18,7 @@
       <whatsthis>Do not show the name of the share that is represented by the bookmark but the custom label that was defined in the bookmark editor.</whatsthis>
       <default>true</default>
     </entry>
-   <entry name="StartMainWindowDocked" type="Bool">
+    <entry name="StartMainWindowDocked" type="Bool">
       <label>Start docked</label>
       <whatsthis>Start the application docked to the system tray, i.e. only the system tray widget is shown and the main window is hidden. You can bring the main window up by clicking on the system tray widget or by choosing "Restore" from its popup menu.</whatsthis>
       <default>false</default>
@@ -32,16 +32,6 @@
       <label>Show mounted shares in a list view</label>
       <whatsthis>The mounted shares will be displayed in a list view.</whatsthis>
       <default>false</default>
-    </entry>
-    <entry name="ShowPrinterShares" type="Bool">
-      <label>Show printer shares</label>
-      <whatsthis>Printer shares will be displayed in the network browser.</whatsthis>
-      <default>true</default>
-    </entry>
-    <entry name="ShowHiddenShares" type="Bool">
-      <label>Show hidden shares</label>
-      <whatsthis>Hidden shares will be displayed in the network browser. Hidden shares are ending with a $ sign, e.g. Musik$ or IPC$.</whatsthis>
-      <default>true</default>
     </entry>
     <entry name="ShowType" type="Bool">
       <label>Show the type of the share</label>
@@ -71,11 +61,6 @@
     <entry name="ShowMountPoint" type="Bool">
       <label>Show the mount point instead of the share name</label>
       <whatsthis>A share is normally displayed with its name in the shares view. Choosing this feature will cause the exchange of the share name by the mount point.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="ShowAllShares" type="Bool">
-      <label>Show all shares that are mounted on the system</label>
-      <whatsthis>You will not only see the shares that were mounted and are owned by you, but also all other mounts using the SMBFS and CIFS file system that are present on the system.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="ShowShareToolTip" type="Bool">
@@ -117,11 +102,6 @@
       <label>Show the disk usage</label>
       <whatsthis>Show the space that is used on the share (as a percentage.)</whatsthis>
       <default>true</default>
-    </entry>
-    <entry name="PreviewHiddenItems" type="Bool">
-      <label>Preview hidden files and directories</label>
-      <whatsthis>Display hidden files and directories in the preview dialog. The hidden files and directories are those whose names begin with a period. They are usually needed for very specific purposes (storing the configuration information for an application, etc.). Since they are not of any importance for your regular work, you normally do not need to enable this feature.</whatsthis>
-      <default>false</default>
     </entry>
   </group>
 
@@ -187,6 +167,21 @@
       <max>60</max>
       <default>5</default>
     </entry>
+    <entry name="PreviewHiddenItems" type="Bool">
+      <label>Preview hidden files and directories</label>
+      <whatsthis>Preview hidden files and directories. The hidden files and directories are those whose names begin with a period. They are usually needed for very specific purposes (storing the configuration information for an application, etc.). Since they are not of any importance for your regular work, you normally do not need to enable this feature.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="DetectPrinterShares" type="Bool">
+      <label>Detect printer shares</label>
+      <whatsthis>Printer shares will be detected.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="DetectHiddenShares" type="Bool">
+      <label>Detect hidden shares</label>
+      <whatsthis>Hidden shares will be detected. Hidden shares are ending with a $ sign, e.g. Musik$ or IPC$.</whatsthis>
+      <default>true</default>
+    </entry>
   </group>
 
 <!-- Shares -->
@@ -236,13 +231,18 @@
       <whatsthis>Force the unmounting of inaccessible shares (Linux only). In case a share is inaccessible, a lazy unmount is performed. Before the actual unmount is performed, a warning dialog is shown asking to approve the unmount.</whatsthis>
       <default>false</default>
     </entry>
+    <entry name="DetectAllShares" type="Bool">
+      <label>Detect all shares that are mounted on the system</label>
+      <whatsthis>You will not only see the shares that were mounted and are owned by you, but also all other mounts using the SMBFS and CIFS file system that are present on the system.</whatsthis>
+      <default>false</default>
+    </entry>
     <entry name="CheckInterval" type="Int">
       <label>Interval between checks:</label>
       <whatsthis>This is the time in milliseconds that elapses until Smb4K checks again for new mounts and unmounts. The lower limit is 500 ms, the upper one 300000 ms. Please note that the smaller the interval gets the higher is your system load.</whatsthis>
       <min>500</min>
       <max>300000</max>
       <default>2500</default>
-    </entry>
+    </entry>    
   </group>
 
 <!-- Authentication -->

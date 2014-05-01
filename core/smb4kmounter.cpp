@@ -2126,7 +2126,7 @@ void Smb4KMounter::slotStatResult( KJob *job )
       // Now remove the obsolete share entry from the global list
       // of shares and add the stat'ed one. Emit the appropriate
       // signal when done.
-      if ( !share->isForeign() || Smb4KSettings::showAllShares() )
+      if ( !share->isForeign() || Smb4KSettings::detectAllShares() )
       {
         // This share was previouly mounted.
         removeMountedShare( mounted_share );
@@ -2178,7 +2178,7 @@ void Smb4KMounter::slotStatResult( KJob *job )
 
       // Now add the stat'ed share to the global list of shares.
       // Emit the appropriate signal when done.
-      if ( !share->isForeign() || Smb4KSettings::showAllShares() )
+      if ( !share->isForeign() || Smb4KSettings::detectAllShares() )
       {
         // This is a new share.
         Smb4KShare *new_share = new Smb4KShare( *share );

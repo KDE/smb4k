@@ -50,17 +50,18 @@
 
 
 Smb4KNetworkOptionsPage::Smb4KNetworkOptionsPage( QWidget *parent )
-: QWidget( parent )
+: KTabWidget( parent )
 {
-  QVBoxLayout *layout = new QVBoxLayout( this );
-  layout->setSpacing( 5 );
-  layout->setMargin( 0 );
-
   //
+  // General Settings tab
+  //
+  QWidget *tab1                     = new QWidget(this);
+  QVBoxLayout *tab1_layout          = new QVBoxLayout(tab1);
+  tab1_layout->setSpacing(5);
+  tab1_layout->setMargin(0);
+
   // The browse list group box.
-  //
-  QGroupBox *browse_list_box        = new QGroupBox( i18n( "Browse List" ), this );
-
+  QGroupBox *browse_list_box        = new QGroupBox( i18n( "Browse List" ), tab1 );
   QGridLayout *browse_box_layout    = new QGridLayout( browse_list_box );
   browse_box_layout->setSpacing( 5 );
 
@@ -100,25 +101,54 @@ Smb4KNetworkOptionsPage::Smb4KNetworkOptionsPage( QWidget *parent )
   browse_box_layout->addWidget( scan_broadcast, 3, 0, 0 );
   browse_box_layout->addWidget( broadcast_areas, 3, 1, 1, 2, 0 );
 
-  //
   // The authentication group box.
-  //
-  QGroupBox *auth_box               = new QGroupBox( i18n( "Authentication" ), this );
-
-  QGridLayout *auth_box_layout      = new QGridLayout( auth_box );
-  auth_box_layout->setSpacing( 5 );
+  QGroupBox *auth_box               = new QGroupBox( i18n( "Authentication" ), tab1 );
+  QVBoxLayout *auth_box_layout      = new QVBoxLayout(auth_box);
+  auth_box_layout->setSpacing(5);
 
   QCheckBox *master_browser_auth    = new QCheckBox( Smb4KSettings::self()->masterBrowsersRequireAuthItem()->label(),
                                       auth_box );
   master_browser_auth->setObjectName( "kcfg_MasterBrowsersRequireAuth" );
 
-  auth_box_layout->addWidget( master_browser_auth, 0, 0, 0 );
+  auth_box_layout->addWidget(master_browser_auth, 0);
   
-  // Periodic scaning
-  QGroupBox *periodic_box           = new QGroupBox( i18n( "Periodic Scanning" ), this );
+  // Behavior group box.
+  QGroupBox *behavior_box           = new QGroupBox(i18n("Behavior"), tab1);
+  QVBoxLayout *behavior_layout      = new QVBoxLayout(behavior_box);
+  behavior_layout->setSpacing(5);
   
-  QGridLayout *periodic_layout      = new QGridLayout( periodic_box );
-  periodic_layout->setSpacing( 5 );
+  QCheckBox *detect_printers        = new QCheckBox(Smb4KSettings::self()->detectPrinterSharesItem()->label(), behavior_box);
+  detect_printers->setObjectName( "kcfg_DetectPrinterShares" );
+
+  QCheckBox *detect_hidden          = new QCheckBox( Smb4KSettings::self()->detectHiddenSharesItem()->label(), behavior_box);
+  detect_hidden->setObjectName( "kcfg_DetectHiddenShares" );  
+  
+  QCheckBox *preview_hidden         = new QCheckBox(Smb4KSettings::self()->previewHiddenItemsItem()->label(), behavior_box);
+  preview_hidden->setObjectName("kcfg_PreviewHiddenItems");
+  
+  behavior_layout->addWidget(detect_printers, 0);
+  behavior_layout->addWidget(detect_hidden, 0);
+  behavior_layout->addWidget(preview_hidden, 0);
+  
+  tab1_layout->addWidget(browse_list_box, 0);
+  tab1_layout->addWidget(auth_box, 0);
+  tab1_layout->addWidget(behavior_box, 0);
+  tab1_layout->addStretch(100);
+  
+  addTab(tab1, i18n("General Settings"));
+  
+  //
+  // Advanced Settings tab
+  //
+  QWidget *tab2                     = new QWidget(this);
+  QVBoxLayout *tab2_layout          = new QVBoxLayout(tab2);
+  tab2_layout->setSpacing(5);
+  tab2_layout->setMargin(0);
+  
+  // Periodic scanning
+  QGroupBox *periodic_box           = new QGroupBox(i18n("Periodic Scanning"), tab2);
+  QGridLayout *periodic_layout      = new QGridLayout(periodic_box);
+  periodic_layout->setSpacing(5);
   
   QCheckBox *periodic_scanning      = new QCheckBox( Smb4KSettings::self()->periodicScanningItem()->label(),
                                       periodic_box );
@@ -137,24 +167,22 @@ Smb4KNetworkOptionsPage::Smb4KNetworkOptionsPage( QWidget *parent )
   
   periodic_layout->addWidget( periodic_scanning, 0, 0, 1, 2, 0 );
   periodic_layout->addWidget( interval_label, 1, 0, 0 );
-  periodic_layout->addWidget( scan_interval, 1, 1, 0 );
+  periodic_layout->addWidget( scan_interval, 1, 1, 0 );  
   
-  //
-  // Wake On LAN
-  //
-  QGroupBox *wake_box = new QGroupBox( i18n( "Wake-On-LAN" ), this );
   
-  QGridLayout *wake_box_layout      = new QGridLayout( wake_box );
-  wake_box_layout->setSpacing( 5 );  
+  // Wake-On-LAN
+  QGroupBox *wol_box                = new QGroupBox(i18n("Wake-On-LAN"), tab2);
+  QGridLayout *wol_layout           = new QGridLayout(wol_box);
+  wol_layout->setSpacing(5);
   
   QCheckBox *enable_wol = new QCheckBox( Smb4KSettings::self()->enableWakeOnLANItem()->label(),
-                          wake_box );
+                          wol_box );
   enable_wol->setObjectName( "kcfg_EnableWakeOnLAN" );
   
   QLabel *waiting_label = new QLabel( Smb4KSettings::self()->wakeOnLANWaitingTimeItem()->label(),
-                          wake_box );
+                          wol_box );
   
-  KIntNumInput *waiting_time = new KIntNumInput( wake_box );
+  KIntNumInput *waiting_time = new KIntNumInput( wol_box );
   waiting_time->setObjectName( "kcfg_WakeOnLANWaitingTime" );
   waiting_time->setSuffix( " s" );
   waiting_time->setSingleStep( 1 );
@@ -162,8 +190,7 @@ Smb4KNetworkOptionsPage::Smb4KNetworkOptionsPage( QWidget *parent )
   
   waiting_label->setBuddy( waiting_time );
   
-  QFrame *note                 = new QFrame( wake_box );
-
+  QFrame *note                 = new QFrame( wol_box );
   QGridLayout *note_layout     = new QGridLayout( note );
   note_layout->setSpacing( 10 );
   note_layout->setMargin( 5 );
@@ -181,18 +208,18 @@ Smb4KNetworkOptionsPage::Smb4KNetworkOptionsPage( QWidget *parent )
   note_layout->addWidget( important_pix, 0, 0, Qt::AlignCenter );
   note_layout->addWidget( message, 0, 1, Qt::AlignVCenter );
 
-  note_layout->setColumnStretch( 1, 1 );
+  note_layout->setColumnStretch( 1, 1 );  
   
-  wake_box_layout->addWidget( enable_wol, 0, 0, 1, 2, 0 );
-  wake_box_layout->addWidget( waiting_label, 1, 0, 0 );
-  wake_box_layout->addWidget( waiting_time, 1, 1, 0 );
-  wake_box_layout->addWidget( note, 2, 0, 1, 2, 0 );
-
-  layout->addWidget( browse_list_box, 0 );
-  layout->addWidget( auth_box, 0 );
-  layout->addWidget( periodic_box, 0 );
-  layout->addWidget( wake_box, 0 );
-  layout->addStretch( 100 );
+  wol_layout->addWidget( enable_wol, 0, 0, 1, 2, 0 );
+  wol_layout->addWidget( waiting_label, 1, 0, 0 );
+  wol_layout->addWidget( waiting_time, 1, 1, 0 );
+  wol_layout->addWidget( note, 2, 0, 1, 2, 0 );
+  
+  tab2_layout->addWidget( periodic_box, 0 );
+  tab2_layout->addWidget( wol_box, 0 );
+  tab2_layout->addStretch(100);
+  
+  addTab(tab2, i18n("Advanced Settings"));
 }
 
 
