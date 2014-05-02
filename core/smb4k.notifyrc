@@ -189,6 +189,7 @@ Comment[zh_TW]=錯誤訊息已顯示給使用者
 
 [Event/shareMounted]
 Name=Share mounted
+Name[ca]=Compartició muntada
 Name[da]=Ressource monteret
 Name[de]=Freigabe eingebunden
 Name[nl]=Share aangekoppeld
@@ -201,6 +202,7 @@ Name[uk]=Змонтовано ресурс
 Name[x-test]=xxShare mountedxx
 Name[zh_TW]=分享資料夾已掛載
 Comment=A share has been mounted
+Comment[ca]=S'ha muntat una compartició
 Comment[da]=En ressource er blevet monteret
 Comment[de]=Es wurde eine Freigaben eingebunden
 Comment[nl]=Een gedeelde map is aangekoppeld
@@ -217,6 +219,7 @@ Action=Popup
 
 [Event/shareUnmounted]
 Name=Share unmounted
+Name[ca]=Compartició desmuntada
 Name[da]=Ressource afmonteret
 Name[de]=Einbindung der Freigabe gelöst
 Name[nl]=Share afgekoppeld
@@ -229,6 +232,7 @@ Name[uk]=Демонтовано ресурс
 Name[x-test]=xxShare unmountedxx
 Name[zh_TW]=分享資料夾已卸載
 Comment=A share has been unmounted
+Comment[ca]=S'ha desmuntat una compartició
 Comment[da]=En ressource er blevet afmonteret
 Comment[de]=Die Einbindung einer Freigabe ist gelöst worden
 Comment[nl]=Een gedeelde map is afgekoppeld
@@ -245,6 +249,7 @@ Action=Popup
 
 [Event/sharesMounted]
 Name=Shares mounted
+Name[ca]=Comparticions muntades
 Name[da]=Ressourcer monteret
 Name[de]=Freigaben eingebunden
 Name[nl]=Shares aangekoppeld
@@ -257,6 +262,7 @@ Name[uk]=Змонтовано ресурси
 Name[x-test]=xxShares mountedxx
 Name[zh_TW]=分享資料夾已掛載
 Comment=Multiple shares have been mounted
+Comment[ca]=S'han muntat múltiples comparticions
 Comment[da]=Flere ressourcer er blevet monteret
 Comment[de]=Mehrerer Freigaben wurden eingebunden
 Comment[nl]=Meerdere gedeelde mappen zijn aangekoppeld
@@ -273,6 +279,7 @@ Action=Popup
 
 [Event/sharesUnmounted]
 Name=Shares unmounted
+Name[ca]=Comparticions desmuntades
 Name[da]=Ressourcer afmonteret
 Name[de]=Einbindung der Freigaben gelöst
 Name[nl]=Shares afgekoppeld
@@ -285,6 +292,7 @@ Name[uk]=Демонтовано ресурси
 Name[x-test]=xxShares unmountedxx
 Name[zh_TW]=分享資料夾已卸載
 Comment=Multiple shares have been unmounted
+Comment[ca]=S'han desmuntat múltiples comparticions
 Comment[da]=Flere ressourcer er blevet afmonteret
 Comment[de]=Die Einbindung mehrerer Freigaben wurde gelöst
 Comment[nl]=Meerdere gedeelde mappen zijn afgekoppeld
@@ -301,6 +309,7 @@ Action=Popup
 
 [Event/openingWalletFailed]
 Name=Opening wallet failed
+Name[ca]=Ha fallat l'obertura de la cartera
 Name[da]=Åbning af tegnebogen mislykkedes
 Name[de]=Öffnen des Passwortspeichers fehlgeschlagen
 Name[nl]=Openen van de portefeuille is mislukt
@@ -313,6 +322,7 @@ Name[uk]=Спроба відкриття сховища паролів зазн�
 Name[x-test]=xxOpening wallet failedxx
 Name[zh_TW]=開啟錢包失敗
 Comment=The network wallet could not be opened
+Comment[ca]=No s'ha pogut obrir la cartera de xarxa
 Comment[da]=Netværkstegnebogen kunne ikke åbnes
 Comment[de]=Der Netzwerk-Passwortspeicher kann nicht geöffnet werden
 Comment[nl]=De netwerkportefeuille kon niet worden geopend
@@ -330,6 +340,7 @@ Action=Popup|Sound
 
 [Event/credentialsNotAccessible]
 Name=Credentials not accessible
+Name[ca]=Credencials no accessibles
 Name[da]=Akkreditiver ikke tilgængelige
 Name[de]=Anmeldedaten nicht verfügbar
 Name[nl]=Credentials zijn niet toegankelijk
@@ -342,6 +353,7 @@ Name[uk]=Немає реєстраційних даних
 Name[x-test]=xxCredentials not accessiblexx
 Name[zh_TW]=無法取得帳號密碼資訊
 Comment=The credentials could not be read from the wallet
+Comment[ca]=No s'han pogut llegir les credencials de la cartera
 Comment[da]=Akkreditiverne kunne ikke læses fra tegnebogen
 Comment[de]=Die Anmeldedaten können nicht aus dem Passwortspeicher gelesen werden
 Comment[nl]=De credentials konden niet uit de portefeuille worden gelezen
@@ -359,6 +371,7 @@ Action=Popup|Sound
 
 [Event/mimetypeNotSupported]
 Name=Mimetype not supported
+Name[ca]=Tipus MIME no implementat
 Name[da]=MIME-type ikke understøttet
 Name[de]=MIME-Typ wird nicht unterstützt
 Name[nl]=Mimetype wordt niet ondersteund
@@ -371,6 +384,7 @@ Name[uk]=Підтримки типу MIME не передбачено
 Name[x-test]=xxMimetype not supportedxx
 Name[zh_TW]=MIME 型態不支援
 Comment=The mimetype of the file that is to be printed is not supported
+Comment[ca]=El tipus MIME del fitxer a imprimir no està implementat
 Comment[da]=MIME-typen for den fil der skal udskrives, er ikke understøttet
 Comment[de]=Der MIME-Typ der zu druckenden Datei wird nicht unterstützt
 Comment[nl]=Het mimetype van het bestand dat afgedrukt moet worden wordt niet ondersteund
@@ -388,6 +402,7 @@ Action=Popup|Sound
 
 [Event/bookmarkExists]
 Name=Bookmark exists
+Name[ca]=L'adreça d'interès existeix
 Name[da]=Bogmærket findes
 Name[de]=Lesezeichen vorhanden
 Name[nl]=Bladwijzer bestaat al
@@ -400,6 +415,7 @@ Name[uk]=Така закладка вже існує
 Name[x-test]=xxBookmark existsxx
 Name[zh_TW]=書籤已存在
 Comment=The bookmark exists
+Comment[ca]=L'adreça d'interès existeix
 Comment[da]=Bogmærket findes
 Comment[de]=Das Lesezeichen ist bereits vorhanden
 Comment[nl]=De bladwijzer bestaat al
@@ -417,6 +433,7 @@ Action=Popup|Sound
 
 [Event/bookmarkLabelInUse]
 Name=Bookmark label in use
+Name[ca]=L'etiqueta de l'adreça d'interès és en ús
 Name[da]=Bogmærke-etiketten er i brug
 Name[de]=Beschriftung des Lesezeichens wird bereits verwendet
 Name[nl]=Bladwijzerlabel is in gebruik
@@ -429,6 +446,7 @@ Name[uk]=Мітку закладки вже використано
 Name[x-test]=xxBookmark label in usexx
 Name[zh_TW]=書籤標記已在使用中
 Comment=The label for the bookmark already exists
+Comment[ca]=L'etiqueta de l'adreça d'interès ja existeix
 Comment[da]=Etiketten for bogmærket findes allerede
 Comment[de]=Es existiert bereits ein Lesezeichen mit diesem Namen
 Comment[nl]=Het label voor de bladwijzer bestaat al
@@ -446,6 +464,7 @@ Action=Popup|Sound
 
 [Event/emptyMasterBrowser]
 Name=No master browser provided
+Name[ca]=No s'ha proporcionat cap explorador mestre
 Name[da]=Ingen hovedadgangskode angivet
 Name[de]=Kein Masterbrowser angegeben
 Name[nl]=Geen hoofdbrowser gegeven
@@ -458,6 +477,7 @@ Name[uk]=Не надано основного переглядача
 Name[x-test]=xxNo master browser providedxx
 Name[zh_TW]=未提供主要瀏覽器
 Comment=The custom master browser has not been provided
+Comment[ca]=No s'ha proporcionat cap explorador mestre personalitzat
 Comment[da]=Den brugervalgte masterbrowser er ikke blevet oplyst
 Comment[de]=Es wurde kein benutzerdefinierter Masterbrowser angegeben
 Comment[nl]=De eigen hoofdbrowser is niet gegeven
@@ -475,6 +495,7 @@ Action=Popup|Sound
 
 [Event/retrievingDomainsFailed]
 Name=Retrieving domains failed
+Name[ca]=Ha fallat la recuperació de dominis
 Name[da]=Hentning af domæner mislykkedes
 Name[de]=Abfragen der Domänen fehlgeschlagen
 Name[nl]=Ophalen van domeinen is mislukt
@@ -487,6 +508,7 @@ Name[uk]=Невдала спроба отримання списку домен�
 Name[x-test]=xxRetrieving domains failedxx
 Name[zh_TW]=取得網域失敗
 Comment=Retrieving the available domains failed
+Comment[ca]=Ha fallat la recuperació dels dominis disponibles
 Comment[da]=Hentning af de tilgængelige domæner mislykkedes
 Comment[de]=Das Abfragen verfügbarer Domänen ist fehlgeschlagen
 Comment[nl]=Ophalen van de beschikbare domeinen is mislukt
@@ -504,6 +526,7 @@ Action=Popup|Sound
 
 [Event/scanningBroadcastAreaFailed]
 Name=Scanning broadcast area failed
+Name[ca]=Ha fallat l'escaneig de les àrees de difusió
 Name[da]=Scanning af broadcast-området mislykkedes
 Name[de]=Durchsuchen der Broadcast-Bereiche fehlgeschlagen
 Name[nl]=Scannen van het broadcastgebied is mislukt
@@ -516,6 +539,7 @@ Name[uk]=Спроба сканування діапазону трансляці
 Name[x-test]=xxScanning broadcast area failedxx
 Name[zh_TW]=掃描廣播區域失敗
 Comment=Scanning the defined broadcast area(s) failed
+Comment[ca]=Ha fallat l'escaneig de les àrees de difusió definides
 Comment[da]=Scanning af de definerede broadcast-områder mislykkedes
 Comment[de]=Das Durchsuchen der definierten Broadcast-Bereiche ist fehlgeschlagen
 Comment[nl]=Scannen van de gedefinieerde broadcastgebieden is mislukt
@@ -533,6 +557,7 @@ Action=Popup|Sound
 
 [Event/retrievingHostsFailed]
 Name=Retrieving hosts failed
+Name[ca]=Ha fallat la recuperació de servidors
 Name[da]=Hentning af værter mislykkedes
 Name[de]=Abrufen der Rechner fehlgeschlagen
 Name[nl]=Hosts ophalen is mislukt
@@ -545,6 +570,7 @@ Name[uk]=Невдала спроб отримання списку вузлів
 Name[x-test]=xxRetrieving hosts failedxx
 Name[zh_TW]=取得主機失敗
 Comment=Retrieving the list of hosts belonging to a domain failed
+Comment[ca]=Ha fallat la recuperació de la llista de servidors que pertanyen al domini
 Comment[da]=Hentning af listen over værter der hører til et domæne mislykkedes
 Comment[de]=Das Abfragen der Liste von Rechnern, die einer Domäne gehören, ist fehlgeschlagen
 Comment[nl]=Ophalen van de lijst met hosts behorende bij een domein is mislukt
@@ -562,6 +588,7 @@ Action=Popup|Sound
 
 [Event/retrievingSharesFailed]
 Name=Retrieving shares failed
+Name[ca]=Ha fallat la recuperació de la llista de comparticions
 Name[da]=Hentning af ressourcer mislykkedes
 Name[de]=Abrufen der Freigaben fehlgeschlagen
 Name[nl]=Ophalen van gedeelde mappen is mislukt
@@ -574,6 +601,7 @@ Name[uk]=Невдала спроба отримання списку спіль�
 Name[x-test]=xxRetrieving shares failedxx
 Name[zh_TW]=取得分享資源失敗
 Comment=Retrieving the list of shares provided by a host failed
+Comment[ca]=Ha fallat la recuperació de la llista de comparticions proporcionades per un servidor
 Comment[da]=Hentning af listen over ressourcer som leveres af en vært mislykkedes
 Comment[de]=Das Abrufen der Liste von Freigaben eines Rechners ist fehlgeschlagen
 Comment[nl]=Ophalen van de lijst met gedeelde mappen geleverd door een host is mislukt
@@ -591,6 +619,7 @@ Action=Popup|Sound
 
 [Event/retrievingPreviewFailed]
 Name=Retrieving preview failed
+Name[ca]=Ha fallat la recuperació de la vista prèvia
 Name[da]=Hentning af forhåndsvisning mislykkedes
 Name[de]=Abfragen der Vorschau fehlgeschlagen
 Name[nl]=Ophalen van een voorbeeld van is mislukt
@@ -603,6 +632,7 @@ Name[uk]=Невдала спроба отримання попереднього
 Name[x-test]=xxRetrieving preview failedxx
 Name[zh_TW]=取得預覽失敗
 Comment=Retrieving the preview of a share failed
+Comment[ca]=Ha fallat la recuperació de la vista prèvia d'una compartició
 Comment[da]=Hentning af forhåndsvisning af en ressource mislykkedes
 Comment[de]=Das Abfragen der Vorschau für eine Freigabe ist fehlgeschlagen
 Comment[nl]=Ophalen van het voorbeeld van een gedeelde map is mislukt
@@ -620,6 +650,7 @@ Action=Popup|Sound
 
 [Event/mountingFailed]
 Name=Mounting failed
+Name[ca]=Ha fallat el muntatge
 Name[cs]=Připojení selhalo
 Name[da]=Montering mislykkedes
 Name[de]=Einbinden fehlgeschlagen
@@ -633,6 +664,7 @@ Name[uk]=Невдала спроба монтування
 Name[x-test]=xxMounting failedxx
 Name[zh_TW]=掛載失敗
 Comment=Mounting a share failed
+Comment[ca]=Ha fallat el muntatge d'una compartició
 Comment[da]=Montering af en ressource mislykkedes
 Comment[de]=Das Einbinden einer Freigabe ist fehlgeschlagen
 Comment[nl]=Aankoppelen van een gedeelde map is mislukt
@@ -650,6 +682,7 @@ Action=Popup|Sound
 
 [Event/unmountingFailed]
 Name=Unmounting failed
+Name[ca]=Ha fallat el desmuntatge
 Name[cs]=Odpojení neúspěšné
 Name[da]=Afmontering mislykkedes
 Name[de]=Lösen der Einbindung fehlgeschlagen
@@ -663,6 +696,7 @@ Name[uk]=Помилка демонтування
 Name[x-test]=xxUnmounting failedxx
 Name[zh_TW]=卸載失敗
 Comment=Unmounting a share failed
+Comment[ca]=Ha fallat el desmuntatge d'una compartició
 Comment[da]=Afmontering af en ressource mislykkedes
 Comment[de]=Das Lösen der Einbindung einer Freigabe ist fehlgeschlagen
 Comment[nl]=Afkoppelen van een gedeelde map is mislukt
@@ -680,6 +714,7 @@ Action=Popup|Sound
 
 [Event/unmountingNotAllowed]
 Name=Unmounting not allowed
+Name[ca]=No s'ha permès el desmuntatge
 Name[da]=Afmontering er ikke tilladt
 Name[de]=Lösen der Einbindung nicht erlaubt
 Name[nl]=Afkoppelen niet toegestaan
@@ -692,6 +727,7 @@ Name[uk]=Демонтування заборонено
 Name[x-test]=xxUnmounting not allowedxx
 Name[zh_TW]=不允許卸載
 Comment=The unmounting of a certain share is not allowed
+Comment[ca]=No s'ha permès el desmuntatge d'una compartició concreta
 Comment[da]=Afmontering af en bestemt ressource er ikke tilladt
 Comment[de]=Das Lösen der Einbindung einer bestimmten Freigabe ist nicht erlaubt
 Comment[nl]=Het afkoppelen van een bepaalde gedeelde map is niet toegestaan
@@ -709,6 +745,7 @@ Action=Popup|Sound
 
 [Event/printingFailed]
 Name=Printing failed
+Name[ca]=Ha fallat la impressió
 Name[cs]=Tisk selhal
 Name[da]=Udskrivning mislykkedes
 Name[de]=Drucken fehlgeschlagen
@@ -722,6 +759,7 @@ Name[uk]=Помилка друку
 Name[x-test]=xxPrinting failedxx
 Name[zh_TW]=列印失敗
 Comment=Printing on a network printer failed
+Comment[ca]=Ha fallat la impressió en una impressora de xarxa
 Comment[da]=Udskrift på en netværksprinter mislykkedes
 Comment[de]=Das Drucken auf dem Netzwerkdrucker ist fehlgeschlagen
 Comment[nl]=Afdrukken op een netwerkprinter is mislukt
@@ -739,6 +777,7 @@ Action=Popup|Sound
 
 [Event/synchronizationFailed]
 Name=Synchronization failed
+Name[ca]=Ha fallat la sincronització
 Name[cs]=Synchronizace selhala
 Name[da]=Synkronisering mislykkedes
 Name[de]=Abgleich fehlgeschlagen
@@ -752,6 +791,7 @@ Name[uk]=Невдала спроба синхронізації
 Name[x-test]=xxSynchronization failedxx
 Name[zh_TW]=同步失敗
 Comment=The synchronization of a share and a local copy failed
+Comment[ca]=Ha fallat la sincronització d'una compartició amb una còpia local
 Comment[da]=Synkronisering af en ressource og en lokal kopi mislykkedes
 Comment[de]=Der Abgleich zwischen einer Freigabe und der lokalen Kopie ist fehlgeschlagen
 Comment[nl]=De synchronisatie van een gedeelde map met een lokale kopie is mislukt
@@ -769,6 +809,7 @@ Action=Popup|Sound
 
 [Event/searchingFailed]
 Name=Searching failed
+Name[ca]=Ha fallat la cerca
 Name[cs]=Hledání selhalo
 Name[da]=Søgning mislykkedes
 Name[de]=Suche fehlgeschlagen
@@ -782,6 +823,7 @@ Name[uk]=Помилка пошуку
 Name[x-test]=xxSearching failedxx
 Name[zh_TW]=搜尋失敗
 Comment=Searching the network neighborhood failed
+Comment[ca]=Ha fallat la cerca de veïnatge de xarxa
 Comment[cs]=Prohledávání síťového okolí selhalo
 Comment[da]=Gennemsøgning af netværksnabolaget mislykkedes
 Comment[de]=Das Durchsuchen der Netzwerkumgebung ist fehlgeschlagen
@@ -800,6 +842,7 @@ Action=Popup|Sound
 
 [Event/commandNotFound]
 Name=Command not found
+Name[ca]=No s'ha trobat l'ordre
 Name[da]=Kommando ikke fundet
 Name[de]=Befehl nicht gefunden
 Name[ia]=Commando non trovate
@@ -813,6 +856,7 @@ Name[uk]=Команду не знайдено
 Name[x-test]=xxCommand not foundxx
 Name[zh_TW]=找不到指令
 Comment=A required command could not be found
+Comment[ca]=No s'ha pogut trobar l'ordre requerida
 Comment[da]=En påkrævet kommando kunne ikke findes
 Comment[de]=Ein erforderlicher Befehl wurde nicht gefunden
 Comment[nl]=Een vereist commando is niet gevonden
@@ -830,6 +874,7 @@ Action=Popup|Sound
 
 [Event/cannotBookmarkPrinter]
 Name=Cannot bookmark printer
+Name[ca]=No s'ha pogut afegir una adreça d'interès d'impressora
 Name[da]=Kan ikke sætte bogmærke ved printer
 Name[de]=Lesezeichen für Drucker kann nicht angelegt werden
 Name[nl]=Kan geen bladwijzer maken van een printer
@@ -842,6 +887,7 @@ Name[uk]=Не можна створювати закладки для принт
 Name[x-test]=xxCannot bookmark printerxx
 Name[zh_TW]=無法將印表機加入書籤
 Comment=A printer cannot be bookmarked
+Comment[ca]=Una impressora no es pot afegir a les adreces d'interès
 Comment[da]=Der kan ikke sættes bogmærke ved en printer
 Comment[de]=Ein Lesezeichen für einen Drucker kann nicht angelegt werden
 Comment[nl]=Een printer kan geen bladwijzer hebben
@@ -859,6 +905,7 @@ Action=Popup|Sound
 
 [Event/fileNotFound]
 Name=File not found
+Name[ca]=No s'ha trobat el fitxer
 Name[cs]=Soubor nenalezen
 Name[da]=Fil ikke fundet
 Name[de]=Datei nicht gefunden
@@ -873,6 +920,7 @@ Name[uk]=Файл не знайдено
 Name[x-test]=xxFile not foundxx
 Name[zh_TW]=找不到檔案
 Comment=A file could not be found
+Comment[ca]=No s'ha pogut trobar un fitxer
 Comment[da]=En fil kunne ikke findes
 Comment[de]=Eine Datei wurde nicht gefunden
 Comment[nl]=Een bestand kon niet worden gevonden
@@ -890,6 +938,7 @@ Action=Popup|Sound
 
 [Event/openingFileFailed]
 Name=Opening file failed
+Name[ca]=Ha fallat en obrir el fitxer
 Name[da]=Åbning af fil mislykkedes
 Name[de]=Öffnen der Datei fehlgeschlagen
 Name[nl]=Openen van bestand is mislukt
@@ -902,6 +951,7 @@ Name[uk]=Спроба відкриття файла зазнала невдач�
 Name[x-test]=xxOpening file failedxx
 Name[zh_TW]=開啟檔案失敗
 Comment=A file could not be opened
+Comment[ca]=No s'ha pogut obrir un fitxer
 Comment[da]=En fil kunne ikke åbnes
 Comment[de]=Eine Datei kann nicht geöffnet werden
 Comment[nl]=Een bestand kon niet worden geopend
@@ -919,6 +969,7 @@ Action=Popup|Sound
 
 [Event/readingFileFailed]
 Name=Reading file failed
+Name[ca]=Ha fallat en llegir del fitxer
 Name[da]=Læsning af fil mislykkedes
 Name[de]=Lesen der Datei fehlgeschlagen
 Name[nl]=Lezen van bestand is mislukt
@@ -931,6 +982,7 @@ Name[uk]=Помилка читання файла
 Name[x-test]=xxReading file failedxx
 Name[zh_TW]=讀取檔案失敗
 Comment=A file could not be read
+Comment[ca]=No s'ha pogut llegir d'un fitxer
 Comment[da]=En fil kunne ikke læses
 Comment[de]=Eine Datei kann nicht gelesen werden
 Comment[nl]=Een bestand kon niet worden gelezen
@@ -948,6 +1000,7 @@ Action=Popup|Sound
 
 [Event/mkdirFailed]
 Name=mkdir failed
+Name[ca]=Ha fallat el «mkdir»
 Name[da]=mkdir mislykkedes
 Name[de]=Befehl mkdir fehlgeschlagen
 Name[nl]=Commando mkdir is mislukt
@@ -960,6 +1013,7 @@ Name[uk]=Помилка mkdir
 Name[x-test]=xxmkdir failedxx
 Name[zh_TW]=建立目錄失敗
 Comment=A directory could not be created
+Comment[ca]=No s'ha pogut crear un directori
 Comment[da]=En mappe kunne ikke oprettes
 Comment[de]=Ein Ordner kann konnte nicht erstellt werden
 Comment[nl]=Een map kon niet worden aangemaakt
@@ -977,6 +1031,7 @@ Action=Popup|Sound
 
 [Event/processError]
 Name=Process error
+Name[ca]=Error de procés
 Name[cs]=Chyba procesu
 Name[da]=Procesfejl
 Name[de]=Prozess-Fehler
@@ -991,6 +1046,7 @@ Name[uk]=Помилка процесу
 Name[x-test]=xxProcess errorxx
 Name[zh_TW]=行程錯誤
 Comment=A process error occurred
+Comment[ca]=Hi ha hagut un error de procés
 Comment[da]=Der opstod en procesfejl
 Comment[de]=Es ist ein Prozess-Fehler aufgetreten
 Comment[nl]=Er deed zich een procesfout voor
@@ -1008,6 +1064,7 @@ Action=Popup|Sound
 
 [Event/systemCallFailed]
 Name=System call failed
+Name[ca]=Ha fallat la crida del sistema
 Name[da]=Systemkald mislykkedes
 Name[de]=Systemaufruf fehlgeschlagen
 Name[nl]=Systeemaanroep is mislukt
@@ -1020,6 +1077,7 @@ Name[uk]=Помилка системного виклику
 Name[x-test]=xxSystem call failedxx
 Name[zh_TW]=系統呼叫失敗
 Comment=A system call failed
+Comment[ca]=Ha fallat una crida del sistema
 Comment[da]=Et systemkald mislykkedes
 Comment[de]=Ein Systemaufruf ist fehlgeschlagen
 Comment[nl]=Een systeemaanroep is mislukt
@@ -1037,6 +1095,7 @@ Action=Popup|Sound
 
 [Event/actionFailed]
 Name=Action failed
+Name[ca]=L'acció ha fallat
 Name[da]=Handling mislykkedes
 Name[de]=Aktion fehlgeschlagen
 Name[ia]=Action falleva
@@ -1050,6 +1109,7 @@ Name[uk]=Спроба виконання дії зазнала невдачі
 Name[x-test]=xxAction failedxx
 Name[zh_TW]=動作失敗
 Comment=A KAuth action failed
+Comment[ca]=L'acció del KAuth ha fallat
 Comment[da]=En KAuth-handling mislykkedes
 Comment[de]=Eine KAuth-Aktion ist fehlgeschlagen
 Comment[nl]=Een KAuth-actie is mislukt
@@ -1067,6 +1127,7 @@ Action=Popup|Sound
 
 [Event/invalidURL]
 Name=Invalid URL
+Name[ca]=URL no vàlid
 Name[cs]=Neplatné URL
 Name[da]=Ugyldig URL
 Name[de]=Ungültige Adresse (URL)
@@ -1081,6 +1142,7 @@ Name[uk]=Некоректна адреса
 Name[x-test]=xxInvalid URLxx
 Name[zh_TW]=不合法的網址
 Comment=An invalid URL was passed
+Comment[ca]=S'han passat un URL no vàlid
 Comment[da]=En ugyldig URL blev modtaget
 Comment[de]=Es wurde eine ungültige Adresse (URL) übergeben
 Comment[nl]=Een ongeldige URL is doorgegeven
@@ -1098,6 +1160,7 @@ Action=Popup|Sound
 
 [Event/emptyBroadcastAreas]
 Name=Broadcast areas empty
+Name[ca]=Àrees de difusió buides
 Name[da]=Broadcast-områderne er tomme
 Name[de]=Broadcast-Bereiche sind leer
 Name[nl]=Broadcastgebieden zijn leeg
@@ -1110,6 +1173,7 @@ Name[uk]=Порожні області трансляції
 Name[x-test]=xxBroadcast areas emptyxx
 Name[zh_TW]=廣播區域為空
 Comment=The entry of the broadcast areas is empty
+Comment[ca]=L'entrada de les àrees de difusió és buida
 Comment[da]=Indgangen til broadcast-områder er tom
 Comment[de]=Der Eintrag der Broadcast-Bereiche ist leer
 Comment[nl]=Het item van de broadcastgebieden is leeg
