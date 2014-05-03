@@ -1,3 +1,13 @@
+Smb4K 1.1.2 (2014-05-03):
+- Fixed a crash that could happen during the loading of bookmarks into
+  the bookmark editor's tree widget.
+- Fixed the enabling and disabling of the "Up" action in the preview
+  dialog.
+- Fixed two crashes in the previewer: The first occurred when authentication
+  data was requested and the password dialog was just closed and the other
+  one occurred when a recurring authentication error happened.
+- Improved 'Command Reference' section in the handbook.
+
 Smb4K 1.1.1 (2014-03-22):
 - Fixed a string in the handbook.
 - Set date when documentation was updated to 2014-03-16.
