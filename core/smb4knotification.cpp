@@ -2,7 +2,7 @@
     smb4knotification  -  This class provides notifications for Smb4K.
                              -------------------
     begin                : Son Jun 27 2010
-    copyright            : (C) 2010-2012 by Alexander Reinholdt
+    copyright            : (C) 2010-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -84,14 +84,12 @@ Smb4KNotificationActionRunner::~Smb4KNotificationActionRunner()
 
 void Smb4KNotificationActionRunner::slotOpenShare()
 {
-  qDebug() << "Open mountpoint";
   KRun::runUrl( mountpoint, "inode/directory", 0 );
 }
 
 
 void Smb4KNotificationActionRunner::slotNotificationClosed()
 {
-  qDebug() << "Delete runner";
   delete this;
 }
 
