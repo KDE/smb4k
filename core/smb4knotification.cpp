@@ -240,7 +240,7 @@ void Smb4KNotification::bookmarkExists(Smb4KBookmark* bookmark)
   if (bookmark)
   {
     KNotification *notification = new KNotification("bookmarkExists");
-    notification->setText(i18n( "<p>The bookmark for share <b>%1</b> already exists and will be skipped.", 
+    notification->setText(i18n( "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>",
                           bookmark->unc() ));
     notification->setPixmap(KIconLoader::global()->loadIcon( "dialog-warning", KIconLoader::NoGroup, 0, 
                             KIconLoader::DefaultState ));
