@@ -1,9 +1,5 @@
 Smb4K 1.2.0 (????-??-??):
-- Smb4K is no kdeinit executable anymore. The change in Smb4K 1.1.0 was 
-  actually not needed. Thanks go to Albert Astals Cid who pointed this
-  out.
-- Revised Smb4KGlobal namespace:
-  + Renamed open() function to openShare() to make krazy2 happy.
+- ...
 
 Smb4K 1.1.2 (2014-05-03):
 - Fixed a crash that could happen during the loading of bookmarks into
