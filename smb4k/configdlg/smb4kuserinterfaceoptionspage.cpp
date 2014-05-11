@@ -3,7 +3,7 @@
     of all settings concerning the user interface of Smb4K
                              -------------------
     begin                : Mi Aug 30 2006
-    copyright            : (C) 2006-2013 by Alexander Reinholdt
+    copyright            : (C) 2006-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -48,32 +48,6 @@
 Smb4KUserInterfaceOptionsPage::Smb4KUserInterfaceOptionsPage( QWidget *parent )
 : KTabWidget( parent )
 {
-  //
-  // Main window and system tray widget
-  //
-  QWidget *mainwindow_tab         = new QWidget( this );
-
-  QVBoxLayout *main_window_layout = new QVBoxLayout( mainwindow_tab );
-  main_window_layout->setSpacing( 5 );
-  main_window_layout->setMargin( 0 );
-  
-  // Bookmarks
-  QGroupBox *bookmarks_box        = new QGroupBox( i18n( "Bookmarks" ), mainwindow_tab );
-
-  QGridLayout *bookmarks_layout   = new QGridLayout( bookmarks_box );
-  bookmarks_layout->setSpacing( 5 );
-
-  QCheckBox *show_bookmark_label  = new QCheckBox( Smb4KSettings::self()->showCustomBookmarkLabelItem()->label(),
-                                    bookmarks_box );
-  show_bookmark_label->setObjectName( "kcfg_ShowCustomBookmarkLabel" );
-
-  bookmarks_layout->addWidget( show_bookmark_label, 0, 0, 0 );
-
-  main_window_layout->addWidget( bookmarks_box );
-  main_window_layout->addStretch( 100 );
-
-  insertTab( MainWindowSystemTrayTab, mainwindow_tab, i18n( "General Settings" ) );
-
   //
   // Network browser
   //
@@ -134,7 +108,7 @@ Smb4KUserInterfaceOptionsPage::Smb4KUserInterfaceOptionsPage( QWidget *parent )
   net_browser_layout->addWidget( network_tooltips_box );
   net_browser_layout->addStretch( 100 );
 
-  insertTab( NetworkNeighborhoodTab, network_browser_tab, i18n( "Network Neighborhood" ) );
+  addTab(network_browser_tab, i18n( "Network Neighborhood" ));
 
   //
   // Shares view
@@ -250,7 +224,33 @@ Smb4KUserInterfaceOptionsPage::Smb4KUserInterfaceOptionsPage( QWidget *parent )
   shares_view_layout->addWidget( share_tooltips_box, 2, 0, 0 );
   shares_view_layout->addItem( spacer4, 3, 0 );
 
-  insertTab( MountedSharesTab, shares_view_tab, i18n( "Mounted Shares" ) );
+  addTab(shares_view_tab, i18n( "Mounted Shares" ));
+  
+  //
+  // Miscellaneous
+  //
+  QWidget *misc_tab               = new QWidget( this );
+
+  QVBoxLayout *misc_layout = new QVBoxLayout(misc_tab);
+  misc_layout->setSpacing(5);
+  misc_layout->setMargin(0);
+  
+  // Bookmarks
+  QGroupBox *bookmarks_box        = new QGroupBox( i18n( "Bookmarks" ), misc_tab );
+
+  QGridLayout *bookmarks_layout   = new QGridLayout( bookmarks_box );
+  bookmarks_layout->setSpacing( 5 );
+
+  QCheckBox *show_bookmark_label  = new QCheckBox( Smb4KSettings::self()->showCustomBookmarkLabelItem()->label(),
+                                    bookmarks_box );
+  show_bookmark_label->setObjectName( "kcfg_ShowCustomBookmarkLabel" );
+
+  bookmarks_layout->addWidget( show_bookmark_label, 0, 0, 0 );
+
+  misc_layout->addWidget( bookmarks_box );
+  misc_layout->addStretch( 100 );
+
+  addTab(misc_tab, i18n( "Miscellaneous Settings" ));
 }
 
 

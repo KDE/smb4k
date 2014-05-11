@@ -3,7 +3,7 @@
     of all settings concerning the user interface of Smb4K
                              -------------------
     begin                : Mi Aug 30 2006
-    copyright            : (C) 2006-2013 by Alexander Reinholdt
+    copyright            : (C) 2006-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -45,13 +45,6 @@ class Smb4KUserInterfaceOptionsPage : public KTabWidget
   Q_OBJECT
 
   public:
-    /**
-     * Tabs enumeration
-     */
-    enum Tabs{ MainWindowSystemTrayTab = 0,
-               NetworkNeighborhoodTab = 1,
-               MountedSharesTab = 2,
-               PreviewDialogTab = 3 };
     /**
      * The constructor
      *
