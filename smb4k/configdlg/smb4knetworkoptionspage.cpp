@@ -114,8 +114,17 @@ Smb4KNetworkOptionsPage::Smb4KNetworkOptionsPage( QWidget *parent )
   
   // Behavior group box.
   QGroupBox *behavior_box           = new QGroupBox(i18n("Behavior"), tab1);
-  QVBoxLayout *behavior_layout      = new QVBoxLayout(behavior_box);
+  QGridLayout *behavior_layout      = new QGridLayout(behavior_box);
   behavior_layout->setSpacing(5);
+  
+  QLabel *lookup_ips_label          = new QLabel(Smb4KSettings::self()->lookupIPsItem()->label(), behavior_box);
+  KComboBox *lookup_ips             = new KComboBox(behavior_box);
+  lookup_ips->setObjectName("kcfg_LookupIPs");
+  lookup_ips->insertItem(Smb4KSettings::EnumLookupIPs::nmblookup,
+                         Smb4KSettings::self()->lookupIPsItem()->choices().value(Smb4KSettings::EnumLookupIPs::nmblookup).label);
+  lookup_ips->insertItem(Smb4KSettings::EnumLookupIPs::net,
+                         Smb4KSettings::self()->lookupIPsItem()->choices().value(Smb4KSettings::EnumLookupIPs::net).label);
+  lookup_ips_label->setBuddy(lookup_ips);
   
   QCheckBox *detect_printers        = new QCheckBox(Smb4KSettings::self()->detectPrinterSharesItem()->label(), behavior_box);
   detect_printers->setObjectName( "kcfg_DetectPrinterShares" );
@@ -126,9 +135,11 @@ Smb4KNetworkOptionsPage::Smb4KNetworkOptionsPage( QWidget *parent )
   QCheckBox *preview_hidden         = new QCheckBox(Smb4KSettings::self()->previewHiddenItemsItem()->label(), behavior_box);
   preview_hidden->setObjectName("kcfg_PreviewHiddenItems");
   
-  behavior_layout->addWidget(detect_printers, 0);
-  behavior_layout->addWidget(detect_hidden, 0);
-  behavior_layout->addWidget(preview_hidden, 0);
+  behavior_layout->addWidget(lookup_ips_label, 0, 0, 0);
+  behavior_layout->addWidget(lookup_ips, 0, 1, 0);
+  behavior_layout->addWidget(detect_printers, 1, 0, 1, 2, 0);
+  behavior_layout->addWidget(detect_hidden, 2, 0, 1, 2, 0);
+  behavior_layout->addWidget(preview_hidden, 3, 0, 1, 2, 0);
   
   tab1_layout->addWidget(browse_list_box, 0);
   tab1_layout->addWidget(auth_box, 0);

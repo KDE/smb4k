@@ -2,7 +2,7 @@
     smb4kscanner_p  -  Private helper classes for the scanner
                              -------------------
     begin                : So Mai 22 2011
-    copyright            : (C) 2011-2013 by Alexander Reinholdt
+    copyright            : (C) 2011-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -2744,7 +2744,174 @@ bool Smb4KLookupIPAddressJob::doKill()
 }
 
 
-void Smb4KLookupIPAddressJob::processIPAddress()
+void Smb4KLookupIPAddressJob::useNmblookup(QStringList &args)
+{
+  // Find nmblookup program.
+  QString nmblookup = KStandardDirs::findExe( "nmblookup" );
+
+  if ( nmblookup.isEmpty() )
+  {
+    Smb4KNotification::commandNotFound("nmblookup");
+    emitResult();
+    return;
+  }
+  else
+  {
+    // Go ahead
+  }
+
+  // Global Samba options
+  QMap<QString,QString> samba_options = globalSambaOptions();
+
+  // Compile the arguments
+  args << nmblookup;
+
+  // Domain
+  if ( !Smb4KSettings::domainName().isEmpty() &&
+       QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0 )
+  {
+    args << QString( "-W %1" ).arg( KShell::quoteArg( Smb4KSettings::domainName() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // NetBIOS name
+  if ( !Smb4KSettings::netBIOSName().isEmpty() &&
+       QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0 )
+  {
+    args << QString( "-n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // NetBIOS scope
+  if ( !Smb4KSettings::netBIOSScope().isEmpty() &&
+       QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0 )
+  {
+    args << QString( "-i %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSScope() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // Socket options
+  if ( !Smb4KSettings::socketOptions().isEmpty() &&
+       QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0 )
+  {
+    args << QString( "-O %1" ).arg( KShell::quoteArg( Smb4KSettings::socketOptions() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // Port 137
+  if ( Smb4KSettings::usePort137() )
+  {
+    args << "-r";
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // Broadcast address
+  QHostAddress address( Smb4KSettings::broadcastAddress() );
+
+  if ( !Smb4KSettings::broadcastAddress().isEmpty() &&
+       address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol )
+  {
+    args << QString( "-B %1" ).arg( Smb4KSettings::broadcastAddress() );
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // We do not use the WINS server here, because it emerged that using
+  // the WINS server is sometimes not very reliable. 
+  
+  
+  if ( !winsServer().isEmpty() )
+  {
+    args << "-R";
+    args << QString( "-U %1" ).arg( KShell::quoteArg( winsServer() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  args << "--";
+  args << KShell::quoteArg( m_host->hostName() );
+}
+
+
+void Smb4KLookupIPAddressJob::useNet(QStringList &args)
+{
+  // Find net program
+  QString net = KStandardDirs::findExe("net");
+
+  if ( net.isEmpty() )
+  {
+    Smb4KNotification::commandNotFound("net");
+    emitResult();
+    return;
+  }
+  else
+  {
+    // Go ahead
+  }
+  
+  // Global Samba options
+  QMap<QString,QString> samba_options = globalSambaOptions();
+  
+  // Compile the arguments
+  args << net;
+  args << "lookup";
+  args << "host";
+  args << KShell::quoteArg( m_host->hostName() );
+  
+  // The user's workgroup/domain name
+  if ( !Smb4KSettings::domainName().isEmpty() &&
+       QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0 )
+  {
+    args << QString( "-W %1" ).arg( KShell::quoteArg( Smb4KSettings::domainName() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // The user's NetBIOS name
+  if ( !Smb4KSettings::netBIOSName().isEmpty() &&
+       QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0 )
+  {
+    args << QString( "-n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) );
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // Machine account
+  if ( Smb4KSettings::machineAccount() )
+  {
+    args << "-P";
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KLookupIPAddressJob::processNmblookupOutput()
 {
   // Normally, there should only be one IP address. However, there might
   // be more than one. So, split the incoming data and use the first entry
@@ -2770,120 +2937,51 @@ void Smb4KLookupIPAddressJob::processIPAddress()
 }
 
 
+void Smb4KLookupIPAddressJob::processNetOutput()
+{
+  // There is only one IP address reported:
+  QString output = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).trimmed();
+  m_host->setIP(output);
+  emit ipAddress(m_host);
+}
+
+
 void Smb4KLookupIPAddressJob::slotStartLookup()
 {
-  // Find nmblookup program.
-  QString nmblookup = KStandardDirs::findExe( "nmblookup" );
-
-  if ( nmblookup.isEmpty() )
-  {
-    Smb4KNotification::commandNotFound("nmblookup");
-    emitResult();
-    return;
-  }
-  else
-  {
-    // Go ahead
-  }
-
-  // Global Samba options
-  QMap<QString,QString> samba_options = globalSambaOptions();
-
-  // Compile the arguments
   QStringList arguments;
-  arguments << nmblookup;
-
-  // Domain
-  if ( !Smb4KSettings::domainName().isEmpty() &&
-       QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0 )
-  {
-    arguments << QString( "-W %1" ).arg( KShell::quoteArg( Smb4KSettings::domainName() ) );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // NetBIOS name
-  if ( !Smb4KSettings::netBIOSName().isEmpty() &&
-       QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0 )
-  {
-    arguments << QString( "-n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // NetBIOS scope
-  if ( !Smb4KSettings::netBIOSScope().isEmpty() &&
-       QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0 )
-  {
-    arguments << QString( "-i %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSScope() ) );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Socket options
-  if ( !Smb4KSettings::socketOptions().isEmpty() &&
-       QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0 )
-  {
-    arguments << QString( "-O %1" ).arg( KShell::quoteArg( Smb4KSettings::socketOptions() ) );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Port 137
-  if ( Smb4KSettings::usePort137() )
-  {
-    arguments << "-r";
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Broadcast address
-  QHostAddress address( Smb4KSettings::broadcastAddress() );
-
-  if ( !Smb4KSettings::broadcastAddress().isEmpty() &&
-       address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol )
-  {
-    arguments << QString( "-B %1" ).arg( Smb4KSettings::broadcastAddress() );
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // We do not use the WINS server here, because it emerged that using
-  // the WINS server is sometimes not very reliable. 
   
-  
-  if ( !winsServer().isEmpty() )
+  switch (Smb4KSettings::lookupIPs())
   {
-    arguments << "-R";
-    arguments << QString( "-U %1" ).arg( KShell::quoteArg( winsServer() ) );
+    case Smb4KSettings::EnumLookupIPs::nmblookup:
+    {
+      useNmblookup(arguments);
+      break;
+    }
+    case Smb4KSettings::EnumLookupIPs::net:
+    {
+      useNet(arguments);
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+  
+  if (!arguments.isEmpty())
+  {
+    m_proc = new Smb4KProcess(this);
+    m_proc->setOutputChannelMode(KProcess::SeparateChannels);
+    m_proc->setShellCommand(arguments.join(" "));
+    
+    connect(m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotProcessFinished(int,QProcess::ExitStatus)));
+    
+    m_proc->start();
   }
   else
   {
     // Do nothing
   }
-
-  arguments << "--";
-  arguments << KShell::quoteArg( m_host->hostName() );
-  
-  m_proc = new Smb4KProcess( this );
-  m_proc->setOutputChannelMode( KProcess::SeparateChannels );
-  m_proc->setShellCommand( arguments.join( " " ) );
-
-  connect( m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotProcessFinished(int,QProcess::ExitStatus)) );
-
-  m_proc->start();
 }
 
 
@@ -2905,7 +3003,23 @@ void Smb4KLookupIPAddressJob::slotProcessFinished( int /*exitCode*/, QProcess::E
     }
     default:
     {
-      processIPAddress();
+      switch (Smb4KSettings::lookupIPs())
+      {
+        case Smb4KSettings::EnumLookupIPs::nmblookup:
+        {
+          processNmblookupOutput();
+          break;
+        }
+        case Smb4KSettings::EnumLookupIPs::net:
+        {
+          processNetOutput();
+          break;
+        }
+        default:
+        {
+          break;
+        }
+      }
       break;
     }
   }

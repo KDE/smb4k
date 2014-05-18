@@ -182,6 +182,19 @@
       <whatsthis>Hidden shares will be detected. Hidden shares are ending with a $ sign, e.g. Musik$ or IPC$.</whatsthis>
       <default>true</default>
     </entry>
+    <entry name="LookupIPs" type="Enum">
+      <label>Lookup method for IP addresses:</label>
+      <whatsthis>Define the method that is to be used to detect the IP addresses of the hosts.</whatsthis>
+      <choices>
+        <choice name="nmblookup">
+          <label>Use nmblookup command</label>
+        </choice>
+        <choice name="net">
+          <label>Use net command</label>
+        </choice>
+      </choices>
+      <default>nmblookup</default>
+    </entry>
   </group>
 
 <!-- Shares -->

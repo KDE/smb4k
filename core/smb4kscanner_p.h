@@ -2,7 +2,7 @@
     smb4kscanner_p  -  Private helper classes for the scanner
                              -------------------
     begin                : So Mai 22 2011
-    copyright            : (C) 2011-2013 by Alexander Reinholdt
+    copyright            : (C) 2011-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -699,7 +699,10 @@ class Smb4KLookupIPAddressJob : public KJob
                               QProcess::ExitStatus exitStatus );
 
   private:
-    void processIPAddress();
+    void useNmblookup(QStringList &args);
+    void useNet(QStringList &args);
+    void processNmblookupOutput();
+    void processNetOutput();
     bool m_started;
     Smb4KHost *m_host;
     QWidget *m_parent_widget;
