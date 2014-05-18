@@ -177,6 +177,7 @@ Smb4KSambaOptionsPage::Smb4KSambaOptionsPage( QWidget *parent ) : KTabWidget( pa
                              Smb4KSettings::self()->signingStateItem()->choices().value( Smb4KSettings::EnumSigningState::Off ).label );
   signing_state->insertItem( Smb4KSettings::EnumSigningState::Required,
                              Smb4KSettings::self()->signingStateItem()->choices().value( Smb4KSettings::EnumSigningState::Required ).label );
+  signing_state_label->setBuddy(signing_state);
 
   QCheckBox *encrypt_transport  = new QCheckBox( Smb4KSettings::self()->encryptSMBTransportItem()->label(),
                                   signing_box );
