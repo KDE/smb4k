@@ -728,6 +728,26 @@ void Smb4KQueryMasterJob::slotStartLookup()
   {
     // Do nothing
   }
+  
+  // Encrypt SMB transport
+  if (Smb4KSettings::encryptSMBTransport())
+  {
+    arguments << "-e";
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Use Winbind's ccache
+  if (Smb4KSettings::useWinbindCCache())
+  {
+    arguments << "--use-ccache";
+  }
+  else
+  {
+    // Do nothing
+  }
 
   // Port
   if ( options && options->smbPort() != Smb4KSettings::remoteSMBPort() )
@@ -788,6 +808,26 @@ void Smb4KQueryMasterJob::slotStartLookup()
   if ( Smb4KSettings::machineAccount() )
   {
     arguments << "-P";
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Encrypt SMB transport
+  if (Smb4KSettings::encryptSMBTransport())
+  {
+    arguments << "-e";
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Use Winbind's ccache
+  if (Smb4KSettings::useWinbindCCache())
+  {
+    arguments << "--use-ccache";
   }
   else
   {
@@ -1703,6 +1743,26 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
     {
       // Do nothing
     }
+    
+    // Encrypt SMB transport
+    if (Smb4KSettings::encryptSMBTransport())
+    {
+      arguments << "-e";
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // Use Winbind's ccache
+    if (Smb4KSettings::useWinbindCCache())
+    {
+      arguments << "--use-ccache";
+    }
+    else
+    {
+      // Do nothing
+    }
 
     // Remote SMB port
     if ( options && options->smbPort() != Smb4KSettings::remoteSMBPort() )
@@ -2185,6 +2245,26 @@ void Smb4KLookupSharesJob::slotStartLookup()
   if ( Smb4KSettings::machineAccount() )
   {
     arguments << "-P";
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Encrypt SMB transport
+  if (Smb4KSettings::encryptSMBTransport())
+  {
+    arguments << "-e";
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Use Winbind's ccache
+  if (Smb4KSettings::useWinbindCCache())
+  {
+    arguments << "--use-ccache";
   }
   else
   {
@@ -2908,6 +2988,19 @@ void Smb4KLookupIPAddressJob::useNet(QStringList &args)
   {
     // Do nothing
   }
+  
+  // Encrypt SMB transport
+  if (Smb4KSettings::encryptSMBTransport())
+  {
+    args << "-e";
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // NOTE: --use-ccache (try to use Windind's ccache) seems to be 
+  // irrelevant here.
 }
 
 
