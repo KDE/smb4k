@@ -918,6 +918,10 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
         {
           m_auth_errors << new Smb4KShare( *share );
         }
+        else if (stderr.contains("Permission denied"))
+	{
+	  m_auth_errors << new Smb4KShare(*share);
+	}
 #endif
         else
         {
