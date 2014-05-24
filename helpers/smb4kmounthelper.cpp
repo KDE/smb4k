@@ -2,7 +2,7 @@
     smb4kmounthelper  -  The helper that mounts and unmounts shares.
                              -------------------
     begin                : Sa Okt 16 2010
-    copyright            : (C) 2010-2013 by Alexander Reinholdt
+    copyright            : (C) 2010-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -96,7 +96,7 @@ ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
       // the password to it.
       QByteArray out = proc.readAllStandardError();
       
-      if ( out.startsWith(QLatin1String("Password:")) )
+      if ( out.startsWith("Password:") )
       {
         proc.write(args["url"].toUrl().password().toUtf8());
         proc.write("\r");
