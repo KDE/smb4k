@@ -3,7 +3,7 @@
     Samba settings of Smb4K
                              -------------------
     begin                : Mo Jan 26 2004
-    copyright            : (C) 2004-2013 by Alexander Reinholdt
+    copyright            : (C) 2004-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -698,9 +698,10 @@ Smb4KSambaOptionsPage::Smb4KSambaOptionsPage( QWidget *parent ) : KTabWidget( pa
 
   connect( group_menu,       SIGNAL(triggered(QAction*)),
            this,             SLOT(slotNewGroupTriggered(QAction*)) );
-  
+#ifndef Q_OS_FREEBSD  
   connect( additional_opts,  SIGNAL(userTextChanged(QString)),
            this,             SLOT(slotAdditionalCIFSOptionsChanged(QString)) );
+#endif
 }
 
 
