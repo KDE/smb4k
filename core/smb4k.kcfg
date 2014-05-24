@@ -322,7 +322,7 @@
     </entry>
     <entry name="UseWinbindCCache" type="Bool">
       <label>Use Winbind ccache for authentication</label>
-      <whatsthis>Use the Winbind ccache for authentication. This setting affects smbclient and smbtree command.</whatsthis>
+      <whatsthis>Use the Winbind ccache for authentication. This setting affects the net, smbclient and smbtree command.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="SigningState" type="Enum">
@@ -346,7 +346,7 @@
     </entry>
     <entry name="EncryptSMBTransport" type="Bool">
       <label>Encrypt SMB transport</label>
-      <whatsthis>Encrypt the SMB transport (Unix extended servers only). This setting affects the smbclient and smbtree command.</whatsthis>
+      <whatsthis>Encrypt the SMB transport (Unix extended servers only). This setting affects the net, smbclient and smbtree command.</whatsthis>
       <default>false</default>
     </entry>  
     <entry name="ClientCharset" type="Enum">
