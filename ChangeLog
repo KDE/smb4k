@@ -1,3 +1,8 @@
+Smb4K 1.1.3 (2014-06-17):
+- Make mounting of a password protected share work under FreeBSD, if
+  no password has been defined yet.
+- Fixed compilation errors under FreeBSD.
+
 Smb4K 1.1.2 (2014-05-03):
 - Fixed a crash that could happen during the loading of bookmarks into
   the bookmark editor's tree widget.
