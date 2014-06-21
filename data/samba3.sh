@@ -8,4 +8,4 @@ while read line ; do
   fi
 done
 
-echo "# DELETE [Samba]NoInodeDataCaching
+echo "# DELETE [Samba]NoInodeDataCaching"
