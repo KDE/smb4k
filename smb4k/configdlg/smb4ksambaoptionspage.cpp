@@ -43,6 +43,7 @@
 #include <QCheckBox>
 #include <QToolButton>
 #include <QMenu>
+#include <QInputDialog>
 
 // KDE includes
 #include <klocale.h>
@@ -501,6 +502,14 @@ Smb4KSambaOptionsPage::Smb4KSambaOptionsPage( QWidget *parent ) : KTabWidget( pa
 
   QGridLayout *advanced_layout = new QGridLayout( advanced_options );
   advanced_layout->setSpacing( 5 );
+  
+  QCheckBox *force_uid         = new QCheckBox(Smb4KSettings::self()->forceUIDItem()->label(),
+                                 advanced_options);
+  force_uid->setObjectName("kcfg_ForceUID");
+  
+  QCheckBox *force_gid         = new QCheckBox(Smb4KSettings::self()->forceGIDItem()->label(),
+                                 advanced_options);
+  force_gid->setObjectName("kcfg_ForceGID");
 
   QCheckBox *permission_checks = new QCheckBox( Smb4KSettings::self()->permissionChecksItem()->label(),
                                  advanced_options );
@@ -513,10 +522,6 @@ Smb4KSambaOptionsPage::Smb4KSambaOptionsPage( QWidget *parent ) : KTabWidget( pa
   QCheckBox *server_inodes     = new QCheckBox( Smb4KSettings::self()->serverInodeNumbersItem()->label(),
                                  advanced_options );
   server_inodes->setObjectName( "kcfg_ServerInodeNumbers" );
-
-  QCheckBox *no_inode_caching  = new QCheckBox( Smb4KSettings::self()->noInodeDataCachingItem()->label(),
-                                 advanced_options );
-  no_inode_caching->setObjectName( "kcfg_NoInodeDataCaching" );
 
   QCheckBox *reserved_chars    = new QCheckBox( Smb4KSettings::self()->translateReservedCharsItem()->label(),
                                  advanced_options );
@@ -531,6 +536,33 @@ Smb4KSambaOptionsPage::Smb4KSambaOptionsPage( QWidget *parent ) : KTabWidget( pa
   QGridLayout *c_extra_layout  = new QGridLayout( c_extra_widget );
   c_extra_layout->setSpacing( 5 );
   c_extra_layout->setMargin( 0 );
+  
+  QLabel *smbProtocol_label    = new QLabel(Smb4KSettings::self()->smbProtocolVersionItem()->label(),
+                                 c_extra_widget);
+  
+  KComboBox *smbProtocol_box   = new KComboBox(c_extra_widget);
+  smbProtocol_box->setObjectName("kcfg_SmbProtocolVersion");
+  smbProtocol_box->insertItem(Smb4KSettings::EnumSmbProtocolVersion::OnePointZero,
+                              Smb4KSettings::self()->smbProtocolVersionItem()->choices().value(Smb4KSettings::EnumSmbProtocolVersion::OnePointZero).label);
+  smbProtocol_box->insertItem(Smb4KSettings::EnumSmbProtocolVersion::TwoPointZero,
+                              Smb4KSettings::self()->smbProtocolVersionItem()->choices().value(Smb4KSettings::EnumSmbProtocolVersion::TwoPointZero).label);
+  smbProtocol_box->insertItem(Smb4KSettings::EnumSmbProtocolVersion::TwoPointOne,
+                              Smb4KSettings::self()->smbProtocolVersionItem()->choices().value(Smb4KSettings::EnumSmbProtocolVersion::TwoPointOne).label);
+  smbProtocol_box->insertItem(Smb4KSettings::EnumSmbProtocolVersion::ThreePointZero,
+                              Smb4KSettings::self()->smbProtocolVersionItem()->choices().value(Smb4KSettings::EnumSmbProtocolVersion::ThreePointZero).label);
+  
+  QLabel *cache_label          = new QLabel(Smb4KSettings::self()->cacheModeItem()->label(),
+                                 c_extra_widget);
+  
+  KComboBox *cache_box         = new KComboBox(c_extra_widget);
+  cache_box->setObjectName("kcfg_CacheMode");
+  cache_box->insertItem(Smb4KSettings::EnumCacheMode::None,
+                        Smb4KSettings::self()->cacheModeItem()->choices().value(Smb4KSettings::EnumCacheMode::None).label);
+  cache_box->insertItem(Smb4KSettings::EnumCacheMode::Strict,
+                        Smb4KSettings::self()->cacheModeItem()->choices().value(Smb4KSettings::EnumCacheMode::Strict).label);
+  cache_box->insertItem(Smb4KSettings::EnumCacheMode::Loose,
+                        Smb4KSettings::self()->cacheModeItem()->choices().value(Smb4KSettings::EnumCacheMode::Loose).label);
+  cache_label->setBuddy(cache_box);
   
   QLabel *security_label       = new QLabel( Smb4KSettings::self()->securityModeItem()->label(),
                                  c_extra_widget );
@@ -562,20 +594,32 @@ Smb4KSambaOptionsPage::Smb4KSambaOptionsPage( QWidget *parent ) : KTabWidget( pa
 
   KLineEdit *additional_opts   = new KLineEdit( c_extra_widget );
   additional_opts->setObjectName( "kcfg_CustomCIFSOptions" );
+  additional_opts->setReadOnly(true);
+  additional_opts->setClearButtonShown(true);
   add_options_label->setBuddy( additional_opts );
+  
+  QToolButton *additional_opts_edit = new QToolButton(c_extra_widget);
+  additional_opts_edit->setIcon(KIcon("document-edit"));
+  additional_opts_edit->setToolTip(i18n("Edit the additional CIFS options."));
 
-  c_extra_layout->addWidget( security_label, 0, 0, 0 );
-  c_extra_layout->addWidget( security_box, 0, 1, 0 );
-  c_extra_layout->addWidget( add_options_label, 1, 0, 0 );
-  c_extra_layout->addWidget( additional_opts, 1, 1, 0 );
+  c_extra_layout->addWidget(smbProtocol_label, 0, 0, 0);
+  c_extra_layout->addWidget(smbProtocol_box, 0, 1, 1, 2, 0);
+  c_extra_layout->addWidget(cache_label, 1, 0, 0);
+  c_extra_layout->addWidget(cache_box, 1, 1, 1, 2, 0);
+  c_extra_layout->addWidget(security_label, 2, 0, 0);
+  c_extra_layout->addWidget(security_box, 2, 1, 1, 2, 0);
+  c_extra_layout->addWidget(add_options_label, 3, 0, 0);
+  c_extra_layout->addWidget(additional_opts, 3, 1, 0);
+  c_extra_layout->addWidget(additional_opts_edit, 3, 2, 0);
 
-  advanced_layout->addWidget( permission_checks, 0, 0, 0 );
-  advanced_layout->addWidget( client_controls, 0, 1, 0 );
-  advanced_layout->addWidget( server_inodes, 1, 0, 0 );
-  advanced_layout->addWidget( no_inode_caching, 1, 1, 0 );
-  advanced_layout->addWidget( reserved_chars, 2, 0, 0 );
-  advanced_layout->addWidget( no_locking, 2, 1, 0 );
-  advanced_layout->addWidget( c_extra_widget, 3, 0, 1, 2, 0 );
+  advanced_layout->addWidget(force_uid, 0, 0, 0);
+  advanced_layout->addWidget(force_gid, 0, 1, 0);
+  advanced_layout->addWidget(permission_checks, 1, 0, 0);
+  advanced_layout->addWidget(client_controls, 1, 1, 0);
+  advanced_layout->addWidget(server_inodes, 2, 0, 0);
+  advanced_layout->addWidget(reserved_chars, 2, 1, 0);
+  advanced_layout->addWidget(no_locking, 3, 0, 0);
+  advanced_layout->addWidget(c_extra_widget, 4, 0, 1, 2, 0);
 #endif
 
   mount_layout->addWidget( common_options );
@@ -699,9 +743,9 @@ Smb4KSambaOptionsPage::Smb4KSambaOptionsPage( QWidget *parent ) : KTabWidget( pa
 
   connect( group_menu,       SIGNAL(triggered(QAction*)),
            this,             SLOT(slotNewGroupTriggered(QAction*)) );
-#ifndef Q_OS_FREEBSD  
-  connect( additional_opts,  SIGNAL(userTextChanged(QString)),
-           this,             SLOT(slotAdditionalCIFSOptionsChanged(QString)) );
+#ifdef Q_OS_LINUX
+  connect(additional_opts_edit,  SIGNAL(clicked(bool)),
+          this,             SLOT(slotAdditionalCIFSOptions()));
 #endif
 }
 
@@ -745,39 +789,65 @@ void Smb4KSambaOptionsPage::slotNewGroupTriggered( QAction *action )
 }
 
 
-void Smb4KSambaOptionsPage::slotAdditionalCIFSOptionsChanged(const QString& options)
+void Smb4KSambaOptionsPage::slotAdditionalCIFSOptions()
 {
-  if ( !options.trimmed().isEmpty() )
+  KLineEdit *cifs_opts = findChild<KLineEdit *>( "kcfg_CustomCIFSOptions" );
+  
+  if (cifs_opts)
   {
-    // SECURITY: Remove cruid option.
-    // This issue was reported by Heiner Markert.
-    if ( options.contains( "cruid=" ) )
+    QString options = cifs_opts->originalText();
+    
+    bool ok = false;
+    options = QInputDialog::getText(this, i18n("Additional CIFS Options"), 
+                                    i18n("<qt>Enter the desired options as a comma separated list:</qt>"), 
+                                    QLineEdit::Normal, 
+                                    options,
+                                    &ok);
+    
+    if (ok)
     {
-      QStringList list = options.split( ',', QString::SkipEmptyParts );
-      QMutableStringListIterator it( list );
-      
-      while ( it.hasNext() )
+      if(!options.trimmed().isEmpty())
       {
-        if ( it.next().contains( "cruid=" ) )
+        // SECURITY: Only pass those arguments to mount.cifs that do not pose
+        // a potential security risk and that have not already been defined.
+        //
+        // This is, among others, the proper fix to the security issue reported
+        // by Heiner Markert (aka CVE-2014-2581).
+        QStringList whitelist = whitelistedMountArguments();
+        QStringList denied_args;
+        QStringList list = options.split( ',', QString::SkipEmptyParts );
+        QMutableStringListIterator it(list);
+        
+        while (it.hasNext())
         {
-          it.remove();
+          QString arg = it.next().section("=", 0, 0);
+          
+          if (!whitelist.contains(arg))
+          {
+            denied_args << arg;
+            it.remove();
+          }
+          else
+          {
+            // Do nothing
+          }
+        }
+        
+        if (!denied_args.isEmpty())
+        {
+          QString msg = i18np("<qt>The following entry is going to be removed from the additional options: %2. Please read the handbook for details.</qt>", "<qt>The following %1 entries are going to be removed from the additional options: %2. Please read the handbook for details.</qt>", denied_args.size(), denied_args.join(", "));
+          KMessageBox::sorry(this, msg);
         }
         else
         {
           // Do nothing
         }
-      }
-
-      KLineEdit *cifs_opts = findChild<KLineEdit *>( "kcfg_CustomCIFSOptions" );
-      
-      if ( cifs_opts )
-      {
-        KMessageBox::information( this, i18n( "<qt>Due to security concerns, the cruid option cannot be defined here and will now be removed.</qt>" ) );
-        cifs_opts->setText( list.join( " ," ) );
+        
+        cifs_opts->setText(list.join(",").trimmed());
       }
       else
       {
-        // Do nothing
+        cifs_opts->clear();
       }
     }
     else

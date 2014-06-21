@@ -110,6 +110,14 @@ class Smb4KGlobalPrivate : public QObject
      * a busy cursor when they are doing something or not.
      */
     bool modifyCursor;
+    
+#ifdef Q_OS_LINUX
+    /**
+     * This list contains all whitelisted arguments for the mount.cifs binary and
+     * is only present under the Linux operatin system.
+     */
+    QStringList whitelistedMountArguments;
+#endif
 
   protected Q_SLOTS:
     /**

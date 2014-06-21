@@ -3,7 +3,7 @@
     browser of Smb4K.
                              -------------------
     begin                : Fr Jan 5 2007
-    copyright            : (C) 2007-2013 by Alexander Reinholdt
+    copyright            : (C) 2007-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -46,9 +46,9 @@ class Smb4KShare;
 class Smb4KBasicNetworkItem;
 
 /**
- * This is one of the parts of Smb4K. It contains the network browser.
+ * This is one of the parts of Smb4K. It contains the network neighborhood browser.
  *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
 class Smb4KNetworkBrowserPart : public KParts::Part

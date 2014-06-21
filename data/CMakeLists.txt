@@ -8,4 +8,7 @@ install( PROGRAMS
   network2.sh
   samba2.sh
   userinterface2.sh
+  userinterface3.sh
+  userinterface4.sh
+  samba3.sh
   DESTINATION ${KCONF_UPDATE_INSTALL_DIR} )

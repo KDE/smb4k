@@ -82,12 +82,10 @@ class Smb4KSambaOptionsPage : public KTabWidget
     void slotNewGroupTriggered( QAction *action );
     
     /**
-     * This slot is activated when the entry in the "Additional CIFS
-     * Options" line edit changed.
-     * 
-     * @param options             The options string
+     * This slot is activated when the additional CIFS options are to be
+     * edited.
      */
-    void slotAdditionalCIFSOptionsChanged( const QString &options );
+    void slotAdditionalCIFSOptions();
 };
 
 #endif

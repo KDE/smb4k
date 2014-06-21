@@ -2,7 +2,7 @@
     smb4knetworkbrowser  -  The network browser widget of Smb4K.
                              -------------------
     begin                : Mo Jan 8 2007
-    copyright            : (C) 2007-2013 by Alexander Reinholdt
+    copyright            : (C) 2007-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -32,6 +32,12 @@
 // forward declarations
 class Smb4KNetworkBrowserItem;
 class Smb4KToolTip;
+
+/**
+ * This is the network neighborhood browser widget.
+ * 
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ */
 
 class Smb4KNetworkBrowser : public QTreeWidget
 {

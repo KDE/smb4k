@@ -2,7 +2,7 @@
     smb4kglobal  -  This is the global namespace for Smb4K.
                              -------------------
     begin                : Sa Apr 2 2005
-    copyright            : (C) 2005-2012 by Alexander Reinholdt
+    copyright            : (C) 2005-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -31,6 +31,7 @@
 #include <QtCore/QString>
 #include <QtCore/QList>
 #include <QtCore/QEvent>
+#include <QtCore/QStringList>
 
 // KDE includes
 #include <kdemacros.h>
@@ -441,6 +442,14 @@ namespace Smb4KGlobal
    * @returns TRUE in case a busy cursor should be set.
    */
   KDE_EXPORT bool modifyCursor();
+  
+#ifdef Q_OS_LINUX
+  /**
+   * This list contains all whitelisted arguments for the mount.cifs binary and
+   * is only present under the Linux operatin system.
+   */
+  KDE_EXPORT QStringList whitelistedMountArguments();
+#endif
 };
 
 #endif

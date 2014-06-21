@@ -52,6 +52,28 @@ Smb4KGlobalPrivate::Smb4KGlobalPrivate()
 {
   onlyForeignShares = false;
   coreInitialized = false;
+  
+#ifdef Q_OS_LINUX
+  whitelistedMountArguments << "dynperm";
+  whitelistedMountArguments << "rwpidforward";
+  whitelistedMountArguments << "hard";
+  whitelistedMountArguments << "soft";
+  whitelistedMountArguments << "noacl";
+  whitelistedMountArguments << "cifsacl";
+  whitelistedMountArguments << "backupuid";
+  whitelistedMountArguments << "backupgid";
+  whitelistedMountArguments << "ignorecase";
+  whitelistedMountArguments << "nocase";
+  whitelistedMountArguments << "nobrl";
+  whitelistedMountArguments << "sfu";
+  whitelistedMountArguments << "nounix";
+  whitelistedMountArguments << "nouser_xattr";
+  whitelistedMountArguments << "fsc";
+  whitelistedMountArguments << "multiuser";
+  whitelistedMountArguments << "actimeo";
+  whitelistedMountArguments << "noposixpaths";
+  whitelistedMountArguments << "posixpaths";
+#endif
 }
 
 

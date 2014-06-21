@@ -533,12 +533,12 @@
     </entry>
     <entry name="UserID" type="String">
       <label>User ID:</label>
-      <whatsthis>This is the user ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS file system and the remote server supports the CIFS Unix Extensions, this setting will be ignored.</whatsthis>
+      <whatsthis>This is the user ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS filesystem under Linux and the remote server supports the CIFS Unix Extensions, this setting will be ignored unless the assignment of the user ID is forced.</whatsthis>
       <default code="true">QString( "%1" ).arg( (int)getuid() )</default>
     </entry>
     <entry name="GroupID" type="String">
       <label>Group ID:</label>
-      <whatsthis>This is the group ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS file system and the remote server supports the CIFS Unix Extensions, this setting will be ignored.</whatsthis>
+      <whatsthis>This is the group ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS filesystem under Linux and the remote server supports the CIFS Unix Extensions, this setting will be ignored unless the assignment of the group ID is forced.</whatsthis>
       <default code="true">QString( "%1" ).arg( (int)getgid() )</default>
     </entry>
     <entry name="FileMask" type="String">
@@ -571,7 +571,7 @@
     </entry>
     <entry name="ClientControlsIDs" type="Bool">
       <label>Attempt to set UID and GID</label>
-      <whatsthis>In case the server supports the CIFS Unix Extensions, the client side (i.e. your side) attempts to set the effective UID and GID of the current process on newly created files, directories and devices. If this feature is turned off, the default UID and GID defined for the share will be used. It is recommended that you read the manual page of mount.cifs before you change this setting.</whatsthis>
+      <whatsthis>In case the server supports the CIFS Unix Extensions, the client side (i.e. your side) attempts to set the effective UID and GID of the current process on newly created files, directories and devices. If this feature is turned off, the server will set the UID and GID to the default for the share. It is recommended that you read the manual page of mount.cifs before you change this setting.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="ServerInodeNumbers" type="Bool">
@@ -579,10 +579,21 @@
       <whatsthis>Use inode numbers (unique persistent file identifiers) returned by the server instead of automatically generating temporary inode numbers on the client side.</whatsthis>
       <default>false</default>
     </entry>
-    <entry name="NoInodeDataCaching" type="Bool">
-      <label>Do not cache inode data</label>
-      <whatsthis>Directly read from and write to files opened on the share. In some cases this can provide better performance than the default behavior which caches reads and writes.</whatsthis>
-      <default>false</default>
+    <entry name="CacheMode" type="Enum">
+      <label>Cache mode:</label>
+      <whatsthis>Define how read and write requests are handled. In case you choose to not cache file data at all, the client never utilizes the cache for normal reads and writes. It always accesses the server directly to satisfy a read or write request. If you choose to follow the CIFS/SMB2 protocol strictly, the cache is only trusted if the client holds an oplock. If the client does not hold an oplock, then the client bypasses the cache and accesses the server directly to satisfy a read or write request. Choosing to allow loose caching semantics can sometimes provide better performance on the expense of cache coherency. This option might cause data corruption, if several clients access the same set of files on the server at the same time. Because of this, the strict cache mode is recommended.</whatsthis>
+      <choices>
+        <choice name="None">
+          <label>Do not cache file data at all</label>
+        </choice>
+        <choice name="Strict">
+          <label>Follow the CIFS/SMB2 protocol strictly</label>
+        </choice>
+        <choice name="Loose">
+          <label>Allow loose caching semantics</label>
+        </choice>
+      </choices>
+      <default>Strict</default>
     </entry>
     <entry name="TranslateReservedChars" type="Bool">
       <label>Translate reserved characters</label>
@@ -678,6 +689,35 @@
         </choice>
       </choices>
       <default>Ntlmssp</default>
+    </entry>
+    <entry name="SmbProtocolVersion" type="Enum">
+      <label>SMB protocol version:</label>
+      <whatsthis>Define which version of the SMB protocol is to be used.</whatsthis>
+      <choices>
+        <choice name="OnePointZero">
+          <label>1.0 (Classic CIFS/SMBv1 protocol)</label>
+        </choice>
+        <choice name="TwoPointZero">
+          <label>2.0 (Windows Vista SP1/Windows Server 2008)</label>
+        </choice>
+        <choice name="TwoPointOne">
+          <label>2.1 (Windows 7/Windows Server 2008R2)</label> 
+        </choice>
+        <choice name="ThreePointZero">
+          <label>3.0 (Windows 8/Windows Server 2012)</label>
+        </choice>
+      </choices>
+      <default>OnePointZero</default>
+    </entry>
+    <entry name="ForceUID" type="Bool">
+      <label>Definitely assign the UID</label>
+      <whatsthis>Instruct the client (i.e. your side) to ignore any user ID (UID) provided by the server for files and directories and to always assign the owner to be the value of the transmitted UID.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="ForceGID" type="Bool">
+      <label>Definitely assign the GID</label>
+      <whatsthis>Instruct the client (i.e. your side) to ignore any group ID (GID) provided by the server for files and directories and to always assign the owner to be the value of the transmitted GID.</whatsthis>
+      <default>false</default>
     </entry>
   </group>  
 
