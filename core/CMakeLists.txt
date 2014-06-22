@@ -28,6 +28,7 @@ set( smb4kcore_LIB_SRCS
   smb4kmounter_p.cpp
   smb4knetworkobject.cpp
   smb4knotification.cpp
+  smb4knotification_p.cpp
   smb4kpreviewer.cpp
   smb4kpreviewer_p.cpp
   smb4kprint.cpp

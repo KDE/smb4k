@@ -29,6 +29,7 @@
 
 // application specific includes
 #include "smb4knotification.h"
+#include "smb4knotification_p.h"
 #include "smb4ksettings.h"
 #include "smb4kbookmark.h"
 #include "smb4kworkgroup.h"
@@ -48,51 +49,7 @@
 
 using namespace KAuth;
 
-
-class Smb4KNotificationPrivate
-{
-  public:
-    KUrl mountpoint;
-};
-
-
-class Smb4KNotificationActionRunner : public QObject
-{
-  Q_OBJECT
-  
-  public:
-    Smb4KNotificationActionRunner();
-    ~Smb4KNotificationActionRunner();
-    KUrl mountpoint;
-    
-  public Q_SLOTS:
-    void slotOpenShare();
-    void slotNotificationClosed();
-};
-
-
-Smb4KNotificationActionRunner::Smb4KNotificationActionRunner()
-: QObject()
-{
-}
-
-
-Smb4KNotificationActionRunner::~Smb4KNotificationActionRunner()
-{
-}
-
-
-void Smb4KNotificationActionRunner::slotOpenShare()
-{
-  KRun::runUrl( mountpoint, "inode/directory", 0 );
-}
-
-
-void Smb4KNotificationActionRunner::slotNotificationClosed()
-{
-  delete this;
-}
-
+// K_GLOBAL_STATIC(Smb4K
 
 //
 // Notifications
@@ -104,9 +61,6 @@ void Smb4KNotification::shareMounted(Smb4KShare* share)
   
   if (share)
   {
-    Smb4KNotificationActionRunner *runner = new Smb4KNotificationActionRunner();
-    runner->mountpoint = share->path();
-    
     KNotification *notification = new KNotification("shareMounted");
     notification->setText(i18n( "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>", 
                           share->unc(), share->path() ));
@@ -114,8 +68,11 @@ void Smb4KNotification::shareMounted(Smb4KShare* share)
                             KIconLoader::DefaultState, QStringList( "emblem-mounted" ) ));
     notification->setActions(QStringList( i18n( "Open" ) ));
     notification->setFlags(KNotification::CloseOnTimeout);
-    runner->connect( notification, SIGNAL(activated(uint)), SLOT(slotOpenShare()) );
-    runner->connect( notification, SIGNAL(closed()), SLOT(slotNotificationClosed()) );
+    
+    Smb4KNotificationActionRunner *runner = new Smb4KNotificationActionRunner(notification);
+    runner->setMountpoint(share->path());
+    runner->connect(notification, SIGNAL(activated(uint)), SLOT(slotOpenShare()));
+    
     notification->sendEvent();
   }
   else
@@ -868,4 +825,3 @@ void Smb4KNotification::emptyBroadcastAreas()
   notification->sendEvent();
 }
 
-#include "smb4knotification.moc"
