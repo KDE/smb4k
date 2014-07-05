@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014 Alexander Reinholdt <alexander.reinholdt@kdemail.net> -->
+<component type="desktop">
+  <id>smb4k.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0+ and GFDL-1.2</project_license>
+  <name>Smb4K</name>
+  <summary>Advanced Network Neighborhood Browser</summary>
+  <description>
+    <p>
+      Smb4K is an advanced network neighborhood browser and Samba share mounting utility for the KDE Software Compilation. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.
+    </p>
+    <p>
+      Smb4K utilizes the programs of the Samba software suite. Its purpose is to provide a program that is easy to use and has as many features as possible.
+    </p>
+    <p>
+      Features:
+    </p>
+    <ul>
+      <li>Scanning for (active) workgroups, hosts, and shares</li>
+      <li>Support of the CIFS (Linux) and SMBFS (FreeBSD) file system</li>
+      <li>Mounting and unmounting of shares</li>
+      <li>Access to the files of a mounted share using a file manager or terminal</li>
+      <li>Auto-detection of external mounts and unmounts</li>
+      <li>Remounting of previously used shares on program start</li>
+      <li>Miscellaneous infos about remote network items and mounted shares</li>
+      <li>Network search</li>
+      <li>WINS server support</li>
+      <li>Preview of the contents of a share</li>
+      <li>Several methods to look up the initial list of workgroups and domains</li>
+      <li>Default login</li>
+      <li>Special handling of homes shares</li>
+      <li>Ability to bookmark favorite shares</li>
+      <li>System tray widget</li>
+      <li>Support of advanced Samba options</li>
+      <li>Support of printer shares</li>
+      <li>KWallet support</li>
+      <li>Synchronization of a remote share with a local copy and vice versa</li>
+      <li>Ability to define custom options for individual servers and shares</li>
+      <li>Laptop support through the Solid hardware device framework</li>
+      <li>Wake-On-LAN capabilities</li>
+      <li>Plasmoid for desktop integration</li>
+    </ul>
+    <p>
+      If you are working in a Windows dominated network environment, you may want to install this application to be able to easily access the provided Windows shares.
+    </p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <caption>The main window</caption>
+      <image>https://sourceforge.net/p/smb4k/screenshot/main_window_1-1-1_hp.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>The plasmoid</caption>
+      <image>https://sourceforge.net/p/smb4k/screenshot/plasmoid.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">http://smb4k.sourceforge.net</url>
+  <url type="bugtracker">http://sourceforge.net/p/smb4k/tickets/</url>
+</component>

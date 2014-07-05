@@ -36,7 +36,8 @@ install( TARGETS smb4k DESTINATION ${BIN_INSTALL_DIR} )
 
 ########### install files ###############
 
-install( PROGRAMS  smb4k.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
-install( FILES  smb4k_shell.rc DESTINATION ${DATA_INSTALL_DIR}/smb4k )
+install( PROGRAMS smb4k.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
+install( FILES smb4k_shell.rc DESTINATION ${DATA_INSTALL_DIR}/smb4k )
+install( FILES smb4k.appdata.xml DESTINATION share/appdata )
 
 kde4_install_icons( ${ICON_INSTALL_DIR} )
