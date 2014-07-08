@@ -5,16 +5,20 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+ and GFDL-1.2</project_license>
   <name>Smb4K</name>
+  <name xml:lang="cs">Smb4K</name>
   <name xml:lang="nl">Smb4K</name>
   <name xml:lang="pt">Smb4K</name>
   <name xml:lang="pt-BR">Smb4K</name>
+  <name xml:lang="sk">Smb4K</name>
   <name xml:lang="sv">Smb4K</name>
   <name xml:lang="uk">Smb4K</name>
   <name xml:lang="x-test">xxSmb4Kxx</name>
   <summary>Advanced Network Neighborhood Browser</summary>
+  <summary xml:lang="cs">Pokročilý prohlížeč síťového okolí</summary>
   <summary xml:lang="nl">Geavanceerde browser voor de netwerkomgeving</summary>
   <summary xml:lang="pt">Navegador Avançado da Vizinhança na Rede</summary>
   <summary xml:lang="pt-BR">Navegador avançado da vizinhança da rede</summary>
+  <summary xml:lang="sk">Pokročilý prehliadač sieťového okolia</summary>
   <summary xml:lang="sv">Avancerad bläddrare för nätverksgrannskapet</summary>
   <summary xml:lang="uk">Переглядач мережевого оточення з додатковими можливостями</summary>
   <summary xml:lang="x-test">xxAdvanced Network Neighborhood Browserxx</summary>
@@ -40,9 +44,11 @@
     <p>
       Features:
     </p>
+    <p xml:lang="cs">Vlastnosti:</p>
     <p xml:lang="nl">Mogelijkheden:</p>
     <p xml:lang="pt">Características:</p>
     <p xml:lang="pt-BR">Funcionalidades:</p>
+    <p xml:lang="sk">Funkcie:</p>
     <p xml:lang="sv">Funktioner:</p>
     <p xml:lang="uk">Можливості:</p>
     <p xml:lang="x-test">xxFeatures:xx</p>
@@ -97,9 +103,11 @@
       <li xml:lang="uk">Показ різноманітних відомостей щодо віддалених елементів мережі та змонтованих спільних ресурсів.</li>
       <li xml:lang="x-test">xxMiscellaneous infos about remote network items and mounted sharesxx</li>
       <li>Network search</li>
+      <li xml:lang="cs">Prohledání sítě</li>
       <li xml:lang="nl">Netwerk doorzoeken</li>
       <li xml:lang="pt">Pesquisa na rede</li>
       <li xml:lang="pt-BR">Pesquisa na rede</li>
+      <li xml:lang="sk">Prehľadávanie siete</li>
       <li xml:lang="sv">Nätverkssökning</li>
       <li xml:lang="uk">Мережевий пошук.</li>
       <li xml:lang="x-test">xxNetwork searchxx</li>
@@ -125,9 +133,11 @@
       <li xml:lang="uk">Декілька способів отримання початкового списку робочих груп та доменів.</li>
       <li xml:lang="x-test">xxSeveral methods to look up the initial list of workgroups and domainsxx</li>
       <li>Default login</li>
+      <li xml:lang="cs">Výchozí přihlášení</li>
       <li xml:lang="nl">Standaard aanmelden</li>
       <li xml:lang="pt">Conta por omissão</li>
       <li xml:lang="pt-BR">Conta padrão</li>
+      <li xml:lang="sk">Štandardné prihlásenie</li>
       <li xml:lang="sv">Standardinloggning</li>
       <li xml:lang="uk">Типова реєстрація.</li>
       <li xml:lang="x-test">xxDefault loginxx</li>
@@ -149,6 +159,7 @@
       <li xml:lang="nl">Widget in systeemvak</li>
       <li xml:lang="pt">Item gráfico da bandeja do sistema</li>
       <li xml:lang="pt-BR">Item da área de notificação</li>
+      <li xml:lang="sk">Widget v systémovej lište</li>
       <li xml:lang="sv">Grafisk komponent i systembrickan</li>
       <li xml:lang="uk">Віджет системного лотка.</li>
       <li xml:lang="x-test">xxSystem tray widgetxx</li>
@@ -170,6 +181,7 @@
       <li xml:lang="nl">Ondersteuning van KWallet</li>
       <li xml:lang="pt">Suporte para a KWallet</li>
       <li xml:lang="pt-BR">Suporte para o KWallet</li>
+      <li xml:lang="sk">Podpora KWallet</li>
       <li xml:lang="sv">Stöd för plånboken</li>
       <li xml:lang="uk">Підтримка роботи з KWallet.</li>
       <li xml:lang="x-test">xxKWallet supportxx</li>
@@ -232,6 +244,7 @@
     </screenshot>
     <screenshot>
       <caption>The plasmoid</caption>
+      <caption xml:lang="cs">Plasmoid</caption>
       <caption xml:lang="nl">De plasmoid</caption>
       <caption xml:lang="pt">O plasmóide</caption>
       <caption xml:lang="pt-BR">O plasmoide</caption>
