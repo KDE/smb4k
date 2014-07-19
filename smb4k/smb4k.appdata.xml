@@ -18,17 +18,6 @@
   <name xml:lang="uk">Smb4K</name>
   <name xml:lang="x-test">xxSmb4Kxx</name>
   <summary>Advanced Network Neighborhood Browser and Samba Share Mounting Utility</summary>
-  <summary xml:lang="cs">Pokročilý prohlížeč síťového okolí</summary>
-  <summary xml:lang="en-GB">Advanced Network Neighborhood Browser</summary>
-  <summary xml:lang="nds">Verwiedert Nettwarkümgeven-Kieker</summary>
-  <summary xml:lang="nl">Geavanceerde browser voor de netwerkomgeving</summary>
-  <summary xml:lang="pl">Zaawansowana przeglądarka otoczenia sieciowego</summary>
-  <summary xml:lang="pt">Navegador Avançado da Vizinhança na Rede</summary>
-  <summary xml:lang="pt-BR">Navegador avançado da vizinhança da rede</summary>
-  <summary xml:lang="sk">Pokročilý prehliadač sieťového okolia</summary>
-  <summary xml:lang="sv">Avancerad bläddrare för nätverksgrannskapet</summary>
-  <summary xml:lang="uk">Переглядач мережевого оточення з додатковими можливостями</summary>
-  <summary xml:lang="x-test">xxAdvanced Network Neighborhood Browserxx</summary>
   <description>
     <p>
       Smb4K is an advanced network neighborhood browser and Samba share mounting utility for the KDE Software Compilation. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.
