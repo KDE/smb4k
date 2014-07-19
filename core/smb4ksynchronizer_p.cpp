@@ -3,7 +3,7 @@
     the Smb4KSynchronizer class.
                              -------------------
     begin                : Fr Okt 24 2008
-    copyright            : (C) 2008-2012 by Alexander Reinholdt
+    copyright            : (C) 2008-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -138,9 +138,11 @@ void Smb4KSyncJob::slotStartSynchronization()
       {
         // Do nothing
       }
-
-      m_src = dlg->source().path();
-      m_dest = dlg->destination().path();
+      
+      // Make sure that we have got the trailing slash present.
+      // rsync is very picky regarding it.
+      m_src = dlg->source().path(KUrl::AddTrailingSlash);
+      m_dest = dlg->destination().path(KUrl::AddTrailingSlash);
     }
     else
     {
@@ -782,7 +784,7 @@ void Smb4KSyncJob::slotReadStandardOutput()
         // No transfer rate available
       }
     }
-    else
+    else if (!stdout.at(i).contains("sending incremental file list"))
     {
       QString file = stdout.at( i ).trimmed();
 
@@ -798,6 +800,10 @@ void Smb4KSyncJob::slotReadStandardOutput()
       emit description( this, i18n( "Synchronizing" ),
                         qMakePair( i18n( "Source" ), src_url.path() ),
                         qMakePair( i18n( "Destination" ), dest_url.path() ) );
+    }
+    else
+    {
+      // Do nothing
     }
   }
 }
@@ -884,13 +890,12 @@ Smb4KSynchronizationDialog::Smb4KSynchronizationDialog( Smb4KShare *share, QWidg
   description->setWordWrap( true );
   description->setAlignment( Qt::AlignBottom );
 
-  KUrl src_url  = KUrl( m_share->path()+'/' );
+  KUrl src_url  = KUrl(m_share->path());
   src_url.cleanPath();
   KUrl dest_url = KUrl( QString( "%1/%2/%3" ).arg( Smb4KSettings::rsyncPrefix().path() )
                                              .arg( m_share->hostName() )
                                              .arg( m_share->shareName() ) );
   dest_url.cleanPath();
-  
 
   QLabel *source_label      = new QLabel( i18n( "Source:" ), main_widget );
   m_source                  = new KUrlRequester( main_widget );

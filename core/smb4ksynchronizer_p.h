@@ -3,7 +3,7 @@
     the Smb4KSynchronizer class.
                              -------------------
     begin                : Fr Okt 24 2008
-    copyright            : (C) 2008-2012 by Alexander Reinholdt
+    copyright            : (C) 2008-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
