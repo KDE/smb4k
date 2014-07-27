@@ -3,7 +3,7 @@
     Smb4KMounter class.
                              -------------------
     begin                : Do Jul 19 2007
-    copyright            : (C) 2007-2012 by Alexander Reinholdt
+    copyright            : (C) 2007-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -818,7 +818,7 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
     }
   }
 
-  if (!charset.isEmpty() && !codepage.isEmpty())
+  if (!client_charset.isEmpty() && !server_charset.isEmpty())
   {
     arguments << "-E";
     arguments << QString( "%1:%2" ).arg( client_charset, server_charset );

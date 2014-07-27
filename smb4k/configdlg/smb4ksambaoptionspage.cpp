@@ -791,6 +791,7 @@ void Smb4KSambaOptionsPage::slotNewGroupTriggered( QAction *action )
 
 void Smb4KSambaOptionsPage::slotAdditionalCIFSOptions()
 {
+#ifdef Q_OS_LINUX
   KLineEdit *cifs_opts = findChild<KLineEdit *>( "kcfg_CustomCIFSOptions" );
   
   if (cifs_opts)
@@ -859,6 +860,7 @@ void Smb4KSambaOptionsPage::slotAdditionalCIFSOptions()
   {
     // Do nothing
   }
+#endif
 }
 
 
