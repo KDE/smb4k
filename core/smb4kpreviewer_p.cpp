@@ -2,7 +2,7 @@
     smb4kpreviewer_p  -  Private helper classes for Smb4KPreviewer class.
                              -------------------
     begin                : So Dez 21 2008
-    copyright            : (C) 2008-2013 by Alexander Reinholdt
+    copyright            : (C) 2008-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -432,7 +432,7 @@ void Smb4KPreviewJob::slotStartPreview()
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
   m_proc->setEnv( "PASSWD", m_share->password(), true );
   m_proc->setShellCommand( arguments.join( " " ) );
-
+  
   connect( m_proc, SIGNAL(readyReadStandardOutput()), SLOT(slotReadStandardOutput()) );
   connect( m_proc, SIGNAL(readyReadStandardError()),  SLOT(slotReadStandardError()) );
   connect( m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(slotProcessFinished(int,QProcess::ExitStatus)) );
@@ -537,29 +537,48 @@ void Smb4KPreviewJob::slotReadStandardOutput()
 
 void Smb4KPreviewJob::slotReadStandardError()
 {
-  QString stderr = QString::fromUtf8( m_proc->readAllStandardError(), -1 ).trimmed();
+  QString stderr = QString::fromUtf8(m_proc->readAllStandardError(), -1).trimmed();
 
-  // Remove DEBUG messages and the additional information
-  // that smbclient unfortunately reports to stderr.
-  QStringList err_msg = stderr.split( '\n', QString::SkipEmptyParts );
+  // Remove DEBUG messages, the additional information
+  // that smbclient unfortunately reports to stderr and
+  // error messages due to a missing smb.conf file.
+  QStringList err_msg = stderr.split('\n', QString::SkipEmptyParts);
+  QMutableStringListIterator it(err_msg);
+  bool delete_next = false;
 
-  QMutableStringListIterator it( err_msg );
-
-  while ( it.hasNext() )
+  while (it.hasNext())
   {
     QString line = it.next();
 
-    if ( line.contains( "DEBUG" ) )
+    if (line.contains( "DEBUG" ))
     {
       it.remove();
     }
-    else if ( line.trimmed().startsWith( QLatin1String( "Domain" ) ) || line.trimmed().startsWith( QLatin1String( "OS" ) ) )
+    else if (line.trimmed().startsWith(QLatin1String("Domain")) || line.trimmed().startsWith(QLatin1String("OS")))
     {
       it.remove();
     }
-    else if ( line.trimmed().startsWith( QLatin1String( "Ignoring unknown parameter" ) ) )
+    else if (line.trimmed().startsWith(QLatin1String("Ignoring unknown parameter")))
     {
       it.remove();
+    }
+    else if (line.contains(QLatin1String("smb.conf")) && line.contains(QLatin1String("Can't load")))
+    {
+      // smb.conf is missing.
+      // Output from smbclient (1 line)
+      it.remove();
+    }
+    else if (line.contains(QLatin1String("smb.conf")) && line.contains(QLatin1String("Unable to open configuration file")))
+    {
+      // smb.conf is missing.
+      // Output by param.c (2 lines)
+      it.remove();
+      delete_next = true;
+    }
+    else if (delete_next && line.contains(QLatin1String("No such file or directory")))
+    {
+      it.remove();
+      delete_next = false;
     }
     else
     {

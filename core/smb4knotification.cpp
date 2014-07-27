@@ -245,6 +245,18 @@ void Smb4KNotification::emptyCustomMasterBrowser()
 }
 
 
+void Smb4KNotification::sambaConfigFileMissing()
+{
+  KNotification *notification = new KNotification("sambaConfigFileMissing");
+  notification->setText(i18n( "The configuration file for the Samba suite <b>smb.conf</b> is missing. This is not "
+                              "a fatal error, but you should consider creating one." ));
+  notification->setPixmap(KIconLoader::global()->loadIcon( "dialog-warning", KIconLoader::NoGroup, 0,
+                          KIconLoader::DefaultState ));
+  notification->setFlags(KNotification::CloseOnTimeout);
+  notification->sendEvent();
+}
+
+
 //
 // Errors
 //

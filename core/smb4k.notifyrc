@@ -612,6 +612,13 @@ Contexts=Warning
 Sound=KDE-Sys-Warning.ogg
 Action=Popup|Sound
 
+[Event/sambaConfigFileMissing]
+Name=Configuration file for Samba missing
+Comment=The configuration file for the Samba suite is missing
+Contexts=Warning
+Sound=KDE-Sys-Warning.ogg
+Action=Popup|Sound
+
 [Event/retrievingDomainsFailed]
 Name=Retrieving domains failed
 Name[ca]=Ha fallat la recuperació de dominis

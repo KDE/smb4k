@@ -430,20 +430,19 @@ void Smb4KLookupDomainsJob::slotStartLookup()
 void Smb4KLookupDomainsJob::slotReadStandardError()
 {
   // Read from stderr and decide what to do.
-  QString stderr = QString::fromUtf8( m_proc->readAllStandardError(), -1 ).trimmed();
+  QString stderr = QString::fromUtf8(m_proc->readAllStandardError(), -1).trimmed();
 
   // Remove unimportant warnings
-  if ( stderr.contains( "Ignoring unknown parameter" ) )
+  if (stderr.contains("Ignoring unknown parameter"))
   {
-    QStringList tmp = stderr.split( '\n' );
+    QStringList list = stderr.split('\n');
+    QMutableStringListIterator it(list);
 
-    QMutableStringListIterator it( tmp );
-
-    while ( it.hasNext() )
+    while (it.hasNext())
     {
       QString test = it.next();
 
-      if ( test.trimmed().startsWith( QLatin1String( "Ignoring unknown parameter" ) ) )
+      if (test.trimmed().startsWith(QLatin1String("Ignoring unknown parameter")))
       {
         it.remove();
       }
@@ -453,7 +452,30 @@ void Smb4KLookupDomainsJob::slotReadStandardError()
       }
     }
 
-    stderr = tmp.join( "\n" );
+    stderr = list.join("\n");
+  }
+  else if (stderr.contains("smb.conf"))
+  {
+    QStringList list = stderr.split('\n');
+    QMutableStringListIterator it(list);
+    
+    while (it.hasNext())
+    {
+      QString test = it.next();
+      
+      if (test.contains(QLatin1String("smb.conf")) && test.contains(QLatin1String("Can't load")))
+      {
+        // smb.conf is missing.
+        // Output from nmblookup (1 line)
+        it.remove();
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    
+    stderr = list.join("\n");
   }
   else
   {
@@ -1463,20 +1485,19 @@ void Smb4KScanBAreasJob::slotStartScan()
 
 void Smb4KScanBAreasJob::slotReadStandardError()
 {
-  QString stderr = QString::fromUtf8( m_proc->readAllStandardError(), -1 ).trimmed();
+  QString stderr = QString::fromUtf8(m_proc->readAllStandardError(), -1).trimmed();
 
   // Remove unimportant warnings
-  if ( stderr.contains( "Ignoring unknown parameter" ) )
+  if ( stderr.contains("Ignoring unknown parameter"))
   {
-    QStringList tmp = stderr.split( '\n' );
+    QStringList list = stderr.split('\n');
+    QMutableStringListIterator it(list);
 
-    QMutableStringListIterator it( tmp );
-
-    while ( it.hasNext() )
+    while (it.hasNext())
     {
       QString test = it.next();
 
-      if ( test.trimmed().startsWith( QLatin1String( "Ignoring unknown parameter" ) ) )
+      if (test.trimmed().startsWith(QLatin1String("Ignoring unknown parameter")))
       {
         it.remove();
       }
@@ -1486,7 +1507,30 @@ void Smb4KScanBAreasJob::slotReadStandardError()
       }
     }
 
-    stderr = tmp.join( "\n" );
+    stderr = list.join("\n");
+  }
+  else if (stderr.contains("smb.conf"))
+  {
+    QStringList list = stderr.split('\n');
+    QMutableStringListIterator it(list);
+    
+    while (it.hasNext())
+    {
+      QString test = it.next();
+      
+      if (test.contains(QLatin1String("smb.conf")) && test.contains(QLatin1String("Can't load")))
+      {
+        // smb.conf is missing.
+        // Output from nmblookup (1 line)
+        it.remove();
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    
+    stderr = list.join("\n");
   }
   else
   {

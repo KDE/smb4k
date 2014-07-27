@@ -52,6 +52,7 @@ Smb4KGlobalPrivate::Smb4KGlobalPrivate()
 {
   onlyForeignShares = false;
   coreInitialized = false;
+  m_samba_options_read = false;
   
 #ifdef Q_OS_LINUX
   whitelistedMountArguments << "dynperm";
@@ -107,8 +108,11 @@ Smb4KGlobalPrivate::~Smb4KGlobalPrivate()
 
 const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions( bool read )
 {
-  if ( m_samba_options.isEmpty() || read )
+  if (!m_samba_options_read || read)
   {
+    // We are about to read the samba options. Set m_samba_options_read = true.
+    m_samba_options_read = true;
+    
     // Clear the options list before reading.
     m_samba_options.clear();
 
@@ -119,7 +123,7 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions( bool read )
     paths << "/usr/local/etc/samba";
 
     QFile file( "smb.conf" );
-
+    bool file_exists = false;
     QStringList contents;
 
     // Locate the file and read its contents:
@@ -127,13 +131,12 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions( bool read )
     {
       QDir::setCurrent( paths.at( i ) );
 
-      if ( file.exists() )
+      if ( (file_exists = file.exists()) )
       {
         if ( file.open( QIODevice::ReadOnly | QIODevice::Text ) )
         {
           QTextStream ts( &file );
           // Note: With Qt 4.3 this seems to be obsolete, we'll keep
-          // it for now.
           ts.setCodec( QTextCodec::codecForLocale() );
 
           while ( !ts.atEnd() )
@@ -155,6 +158,17 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions( bool read )
       {
         continue;
       }
+    }
+    
+    // Notify the user if the configuration file could not be found
+    // in the standard locations.
+    if (!file_exists)
+    {
+      Smb4KNotification::sambaConfigFileMissing();
+    }
+    else
+    {
+      // Do nothing
     }
 
     if ( !contents.isEmpty() )
@@ -272,7 +286,7 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions( bool read )
 void Smb4KGlobalPrivate::setDefaultSettings()
 {
   // Samba options that have to be dynamically imported from smb.conf:
-  QMap<QString, QString> opts = globalSambaOptions( true );
+  QMap<QString, QString> opts = globalSambaOptions(!m_samba_options_read);
 
   if ( !opts["netbios name"].isEmpty() )
   {

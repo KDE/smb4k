@@ -130,6 +130,12 @@ namespace Smb4KNotification
   KDE_EXPORT void emptyCustomMasterBrowser();
   
   /**
+   * This warning is shown if the configuration file for the Samba suite
+   * (smb.conf) could not be loaded.
+   */
+  KDE_EXPORT void sambaConfigFileMissing();
+  
+  /**
    * This error message is shown if the list of workgroups could not
    * be retrieved.
    *

@@ -124,9 +124,10 @@ class Smb4KGlobalPrivate : public QObject
      * This slot does last things before the application quits
      */
     void slotAboutToQuit();
-
+    
   private:
     QMap<QString,QString> m_samba_options;
+    bool m_samba_options_read;
 };
 
 #endif
