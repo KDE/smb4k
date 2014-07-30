@@ -18,6 +18,7 @@
   <name xml:lang="uk">Smb4K</name>
   <name xml:lang="x-test">xxSmb4Kxx</name>
   <summary>Advanced Network Neighborhood Browser and Samba Share Mounting Utility</summary>
+  <summary xml:lang="cs">Pokročilý prohlížeč síťového okolí a nástroj na připojování úložišť samba</summary>
   <summary xml:lang="en-GB">Advanced Network Neighborhood Browser and Samba Share Mounting Utility</summary>
   <summary xml:lang="nl">Geavanceerde browser voor de netwerkomgeving en hulpmiddel voor aankoppelen van Samba shares</summary>
   <summary xml:lang="pl">Zaawansowana przeglądarka otoczenia sieciowego i narzędzie do montowania udziałów Samby</summary>
@@ -243,6 +244,7 @@
       <li xml:lang="uk">Підтримка спільних принтерів.</li>
       <li xml:lang="x-test">xxSupport of printer sharesxx</li>
       <li>KWallet support</li>
+      <li xml:lang="cs">Podpora KWallet</li>
       <li xml:lang="en-GB">KWallet support</li>
       <li xml:lang="nds">KWallet-Ünnerstütten</li>
       <li xml:lang="nl">Ondersteuning van KWallet</li>
