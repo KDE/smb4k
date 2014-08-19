@@ -3,8 +3,8 @@
     Smb4K regarding share management
                              -------------------
     begin                : Sa Nov 15 2003
-    copyright            : (C) 2003-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2003-2014 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
@@ -34,7 +34,7 @@
  * This is the configuration tab for the settings that are
  * used to manage the mounted shares.
  *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
 class Smb4KShareOptionsPage : public QWidget
