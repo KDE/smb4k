@@ -2,8 +2,8 @@
     smb4krsyncoptions  -  The configuration page for the rsync options
                              -------------------
     begin                : So Nov 20 2005
-    copyright            : (C) 2005-2010 by Alexander Reinholdt
-    email                : dustpuppy@users.berlios.de
+    copyright            : (C) 2005-2014 by Alexander Reinholdt
+    email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
 /***************************************************************************
