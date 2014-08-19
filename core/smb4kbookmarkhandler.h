@@ -2,7 +2,7 @@
     smb4kbookmarkhandler  -  This class handles the bookmarks.
                              -------------------
     begin                : Fr Jan 9 2004
-    copyright            : (C) 2004-2013 by Alexander Reinholdt
+    copyright            : (C) 2004-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -169,15 +169,24 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      * Signal emitted when the list of bookmarks has been updated.
      */
     void updated();
+    
+  protected Q_SLOTS:
+    /**
+     * This slot is called if the profiles settings changed.
+     */
+    void slotProfileSettingsChanged();
 
   private:
     /**
-     * This function loads the list of bookmarks from the bookmarks file.
-     * When it finishes, the updated() signal is emitted. So, if you
-     * want to access the list of bookmarks immediately after they were read,
-     * connect a slot to that signal.
+     * This function reads the list of bookmarks from the bookmarks file.
+     * 
+     * @param bookmarks       The list that should be filled with the bookmarks
+     * @param groups          The list that should be filled with the bookmark groups 
+     * @param allBookmarks    Read all bookmarks ignoring profiles
      */
-    void loadBookmarks();
+    void readBookmarks(QList<Smb4KBookmark *> *bookmarks,
+                       QStringList *groups,
+                       bool allBookmarks);
 
     /**
      * This function updates the data of the bookmarks, i.e. is searches for
@@ -189,8 +198,7 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
     /**
      * This function writes a new list of bookmarks. The old list will be
      * deleted. It should be used, if you manipulated the list of bookmarks
-     * i. e. by a bookmark editor. When this function finishes, the
-     * bookmarksUpdated() signal will be emitted.
+     * i. e. by a bookmark editor.
      *
      * @param list          The (new) list of bookmarks that is to be written
      *                      to the bookmark file

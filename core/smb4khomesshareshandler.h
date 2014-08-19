@@ -2,7 +2,7 @@
     smb4khomesshareshandler  -  This class handles the homes shares.
                              -------------------
     begin                : Do Aug 10 2006
-    copyright            : (C) 2006-2012 by Alexander Reinholdt
+    copyright            : (C) 2006-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -108,12 +108,18 @@ class KDE_EXPORT Smb4KHomesSharesHandler : public QObject
      * Called when the application goes down
      */
     void slotAboutToQuit();
+    
+    /**
+     * This slot is called if the profiles settings changed.
+     */
+    void slotProfileSettingsChanged();
 
   private:
     /**
      * Load the host and user names into a map.
      */
-    void readUserNames();
+    void readUserNames(QList<Smb4KHomesUsers *> *list, 
+                       bool readAll);
 
     /**
      * Save the host and user names.

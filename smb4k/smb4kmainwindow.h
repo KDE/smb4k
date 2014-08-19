@@ -292,8 +292,6 @@ class Smb4KMainWindow : public KParts::MainWindow
      * @param visible         If the dock widget is visible.
      */
     void slotSearchDialogVisibilityChanged( bool visible );
-    
-    
 
   private:
     /**

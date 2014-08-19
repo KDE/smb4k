@@ -215,12 +215,17 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
      * Called when the application exits
      */
     void slotAboutToQuit();
+    
+    /**
+     * This slot is called if the profiles settings changed.
+     */
+    void slotProfileSettingsChanged();
   
   private:
     /**
      * Read custom options
      */
-    void readCustomOptions();
+    void readCustomOptions(QList<Smb4KCustomOptions *> *optionsList, bool allOptions);
     
     /**
      * Write custom options

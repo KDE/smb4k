@@ -37,6 +37,7 @@
 #include "smb4krsyncoptionspage.h"
 #include "smb4klaptopsupportoptionspage.h"
 #include "smb4kcustomoptionspage.h"
+#include "smb4kprofilespage.h"
 #include "core/smb4ksettings.h"
 #include "core/smb4kglobal.h"
 #include "core/smb4kauthinfo.h"
@@ -148,16 +149,23 @@ void Smb4KConfigDialog::setupDialog()
   custom_area->setWidget( custom_options );
   custom_area->setWidgetResizable( true );
   custom_area->setFrameStyle( QFrame::NoFrame );
+  
+  Smb4KProfilesPage *profiles_page = new Smb4KProfilesPage(this);
+  QScrollArea *profiles_area = new QScrollArea(this);
+  profiles_area->setWidget(profiles_page);
+  profiles_area->setWidgetResizable(true);
+  profiles_area->setFrameStyle(QFrame::NoFrame);
 
   // Now add the pages to the configuration dialog
-  m_user_interface  = addPage( interface_area, i18n( "User Interface" ), "view-choose" );
-  m_network         = addPage( network_area, i18n( "Network" ), "network-workgroup" );
-  m_shares          = addPage( share_area, i18n( "Shares" ), "folder-remote" );
-  m_authentication  = addPage( auth_area, i18n( "Authentication" ), "dialog-password" );
-  m_samba           = addPage( samba_area, i18n( "Samba" ), "preferences-system-network" );
-  m_synchronization = addPage( rsync_area, i18n( "Synchronization" ), "folder-sync" );
-  m_laptop_support  = addPage( laptop_area, i18n( "Laptop Support" ), "computer-laptop" );
-  m_custom_options  = addPage( custom_area, i18n( "Custom Options" ), "preferences-system-network" );
+  m_user_interface  = addPage(interface_area, i18n( "User Interface" ), "view-choose" );
+  m_network         = addPage(network_area, i18n( "Network" ), "network-workgroup" );
+  m_shares          = addPage(share_area, i18n( "Shares" ), "folder-remote" );
+  m_authentication  = addPage(auth_area, i18n( "Authentication" ), "dialog-password" );
+  m_samba           = addPage(samba_area, i18n( "Samba" ), "preferences-system-network" );
+  m_synchronization = addPage(rsync_area, i18n( "Synchronization" ), "folder-sync" );
+  m_laptop_support  = addPage(laptop_area, i18n( "Laptop Support" ), "computer-laptop" );
+  m_custom_options  = addPage(custom_area, i18n( "Custom Options" ), "preferences-system-network" );
+  m_profiles        = addPage(profiles_area, i18n("Profiles"), "format-list-unordered");
 
   // Stuff that's not managed by KConfig XT is loaded by
   // Smb4KConfigDialog::showEvent()!

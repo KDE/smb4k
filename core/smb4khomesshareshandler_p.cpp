@@ -3,7 +3,7 @@
     handler.
                              -------------------
     begin                : Mo Apr 11 2011
-    copyright            : (C) 2011 by Alexander Reinholdt
+    copyright            : (C) 2011-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -61,6 +61,7 @@ Smb4KHomesUsers::Smb4KHomesUsers( const Smb4KHomesUsers &u )
   shareName     = u.shareName;
   hostIP        = u.hostIP;
   users         = u.users;
+  profile       = u.profile;
 }
 
 

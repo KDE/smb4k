@@ -31,6 +31,7 @@
 #include "smb4kmainwindow.h"
 #include "smb4ksystemtray.h"
 #include "smb4kbookmarkmenu.h"
+#include "smb4kprofilesmenu.h"
 #include "core/smb4ksettings.h"
 #include "core/smb4kglobal.h"
 #include "core/smb4kwalletmanager.h"
@@ -122,6 +123,10 @@ void Smb4KMainWindow::setupActions()
   m_dock_widgets = new QActionGroup( actionCollection() );
   m_dock_widgets->setExclusive( false );
 
+  //
+  // FIXME: Move the shares view actionmenu to its own class
+  //  
+  
   // Shares view action menu
   KActionMenu *shares_view_menu = new KActionMenu( KIcon( "view-choose" ), i18n( "Shares View" ), actionCollection() );
   actionCollection()->addAction( "shares_view_menu", shares_view_menu );
@@ -162,6 +167,10 @@ void Smb4KMainWindow::setupActions()
   actionCollection()->addAction( "bookmarks_menu", bookmarks );
   actionCollection()->addAction( "bookmark_action", bookmarks->addBookmarkAction() );
   connect( bookmarks->addBookmarkAction(), SIGNAL(triggered(bool)), SLOT(slotAddBookmark()) );
+  
+  // Profiles menu
+  Smb4KProfilesMenu *profiles = new Smb4KProfilesMenu(this);
+  actionCollection()->addAction("profiles_menu", profiles);
 }
 
 

@@ -3,7 +3,7 @@
     handler.
                              -------------------
     begin                : Mo Apr 11 2011
-    copyright            : (C) 2011 by Alexander Reinholdt
+    copyright            : (C) 2011-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -86,6 +86,11 @@ class Smb4KHomesUsers
      * User list
      */
     QStringList users;
+    
+    /**
+     * Profile
+     */
+    QString profile;
 };
 
 

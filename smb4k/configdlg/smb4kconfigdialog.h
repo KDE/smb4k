@@ -162,6 +162,11 @@ class Smb4KConfigDialog : public KConfigDialog
     KPageWidgetItem *m_custom_options;
     
     /**
+     * "Profiles" page
+     */
+    KPageWidgetItem *m_profiles;
+    
+    /**
      * Set up the config dialog.
      */
     void setupDialog();

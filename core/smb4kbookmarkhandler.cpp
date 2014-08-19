@@ -2,7 +2,7 @@
     smb4kbookmarkhandler  -  This class handles the bookmarks.
                              -------------------
     begin                : Fr Jan 9 2004
-    copyright            : (C) 2004-2013 by Alexander Reinholdt
+    copyright            : (C) 2004-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -37,6 +37,7 @@
 #include "smb4kshare.h"
 #include "smb4ksettings.h"
 #include "smb4knotification.h"
+#include "smb4kprofilemanager.h"
 
 // Qt includes
 #include <QtCore/QDir>
@@ -75,7 +76,10 @@ Smb4KBookmarkHandler::Smb4KBookmarkHandler( QObject *parent )
     KGlobal::dirs()->makeDir( dir );
   }
 
-  loadBookmarks();
+  readBookmarks(&d->bookmarks, &d->groups, false);
+  
+  // Connections
+  connect(Smb4KProfileManager::self(), SIGNAL(settingsChanged()), this, SLOT(slotProfileSettingsChanged()));
 }
 
 
@@ -111,7 +115,7 @@ void Smb4KBookmarkHandler::addBookmark( Smb4KShare *share, QWidget *parent )
 }
 
 
-void Smb4KBookmarkHandler::addBookmarks( const QList<Smb4KShare *> &list, QWidget *parent )
+void Smb4KBookmarkHandler::addBookmarks(const QList<Smb4KShare *> &list, QWidget *parent)
 {
   // Prepare the list of bookmarks and show the save dialog.
   QList<Smb4KBookmark *> new_bookmarks;
@@ -165,8 +169,10 @@ void Smb4KBookmarkHandler::addBookmarks( const QList<Smb4KShare *> &list, QWidge
     {
       // Do nothing
     }
-
-    new_bookmarks << new Smb4KBookmark( list.at( i ) );
+    
+    Smb4KBookmark *bookmark = new Smb4KBookmark(list.at(i));
+    bookmark->setProfile(Smb4KProfileManager::self()->activeProfile());
+    new_bookmarks << bookmark;
   }
   
   if ( !new_bookmarks.isEmpty() )
@@ -268,7 +274,7 @@ void Smb4KBookmarkHandler::removeBookmark(Smb4KBookmark* bookmark)
     for ( int i = 0; i < d->bookmarks.size(); ++i )
     {
       if ( QString::compare( bookmark->unc(), d->bookmarks.at(i)->unc(), Qt::CaseInsensitive ) == 0 &&
-          QString::compare( bookmark->groupName(), d->bookmarks.at(i)->groupName(), Qt::CaseInsensitive ) == 0 )
+           QString::compare( bookmark->groupName(), d->bookmarks.at(i)->groupName(), Qt::CaseInsensitive ) == 0 )
       {
         delete d->bookmarks.takeAt(i);
         break;
@@ -350,23 +356,56 @@ void Smb4KBookmarkHandler::removeGroup(const QString& name)
 }
 
 
-void Smb4KBookmarkHandler::writeBookmarkList( const QList<Smb4KBookmark *> &list )
+void Smb4KBookmarkHandler::writeBookmarkList(const QList<Smb4KBookmark *> &list)
 {
-  QFile xmlFile( KGlobal::dirs()->locateLocal( "data", "smb4k/bookmarks.xml", KGlobal::mainComponent() ) );
-
-  if ( !list.isEmpty() )
+  QList<Smb4KBookmark *> allBookmarks;
+  QStringList allGroups; /* Can be ignored */
+  
+  // First read all entries. Ignore all those that have 
+  // representatives in list.
+  readBookmarks(&allBookmarks, &allGroups, true);
+  
+  QMutableListIterator<Smb4KBookmark *> it(allBookmarks);
+  
+  while (it.hasNext())
   {
-    if ( xmlFile.open( QIODevice::WriteOnly | QIODevice::Text ) )
+    Smb4KBookmark *bookmark = it.next();
+    
+    for (int i = 0; i < list.size(); ++i)
     {
-      QXmlStreamWriter xmlWriter( &xmlFile );
-      xmlWriter.setAutoFormatting( true );
-      xmlWriter.writeStartDocument();
-      xmlWriter.writeStartElement( "bookmarks" );
-      xmlWriter.writeAttribute( "version", "1.1" );
-
-      for ( int i = 0; i < list.size(); ++i )
+      if (QString::compare(bookmark->workgroupName(), list.at(i)->workgroupName()) == 0 &&
+          QString::compare(bookmark->unc(), list.at(i)->unc()) == 0 &&
+          QString::compare(bookmark->profile(), list.at(i)->profile()) == 0)
       {
-        if ( !list.at( i )->url().isValid() )
+        it.remove();
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+  }
+  
+  for (int i = 0; i < list.size(); ++i)
+  {
+    allBookmarks << new Smb4KBookmark(*list[i]);
+  }  
+  
+  QFile xmlFile(KGlobal::dirs()->locateLocal("data", "smb4k/bookmarks.xml", KGlobal::mainComponent()));
+
+  if (!allBookmarks.isEmpty())
+  {
+    if (xmlFile.open(QIODevice::WriteOnly|QIODevice::Text))
+    {
+      QXmlStreamWriter xmlWriter(&xmlFile);
+      xmlWriter.setAutoFormatting(true);
+      xmlWriter.writeStartDocument();
+      xmlWriter.writeStartElement("bookmarks");
+      xmlWriter.writeAttribute("version", "1.1");
+
+      for (int i = 0; i < allBookmarks.size(); ++i)
+      {
+        if (!allBookmarks.at(i)->url().isValid())
         {
           Smb4KNotification::invalidURLPassed();
           continue;
@@ -376,16 +415,16 @@ void Smb4KBookmarkHandler::writeBookmarkList( const QList<Smb4KBookmark *> &list
           // Do nothing
         }
 
-        xmlWriter.writeStartElement( "bookmark" );
-        xmlWriter.writeAttribute( "profile", d->bookmarks.at( i )->profile() );
-        xmlWriter.writeAttribute( "group", d->bookmarks.at( i )->groupName() );
+        xmlWriter.writeStartElement("bookmark");
+        xmlWriter.writeAttribute("profile", allBookmarks.at(i)->profile());
+        xmlWriter.writeAttribute("group", allBookmarks.at(i)->groupName());
 
-        xmlWriter.writeTextElement( "workgroup", d->bookmarks.at( i )->workgroupName() );
-        xmlWriter.writeTextElement( "unc", d->bookmarks.at( i )->unc() );
-        xmlWriter.writeTextElement( "login", d->bookmarks.at( i )->login() );
-        xmlWriter.writeTextElement( "ip", d->bookmarks.at( i )->hostIP() );
-        xmlWriter.writeTextElement( "type", d->bookmarks.at( i )->typeString() );
-        xmlWriter.writeTextElement( "label", d->bookmarks.at( i )->label() );
+        xmlWriter.writeTextElement("workgroup", allBookmarks.at(i)->workgroupName());
+        xmlWriter.writeTextElement("unc", allBookmarks.at(i)->unc());
+        xmlWriter.writeTextElement("login", allBookmarks.at(i)->login());
+        xmlWriter.writeTextElement("ip", allBookmarks.at(i)->hostIP());
+        xmlWriter.writeTextElement("type", allBookmarks.at(i)->typeString());
+        xmlWriter.writeTextElement("label", allBookmarks.at(i)->label());
 
         xmlWriter.writeEndElement();
       }
@@ -397,17 +436,23 @@ void Smb4KBookmarkHandler::writeBookmarkList( const QList<Smb4KBookmark *> &list
     else
     {
       Smb4KNotification::openingFileFailed(xmlFile);
-      return;
     }
   }
   else
   {
     xmlFile.remove();
   }
+  
+  while (!allBookmarks.isEmpty())
+  {
+    delete allBookmarks.takeFirst();
+  }
+  
+  allGroups.clear();
 }
 
 
-void Smb4KBookmarkHandler::loadBookmarks()
+void Smb4KBookmarkHandler::readBookmarks(QList<Smb4KBookmark *> *bookmarks, QStringList *groups, bool allBookmarks)
 {
   // Locate the XML file.
   QFile xmlFile( KGlobal::dirs()->locateLocal( "data", "smb4k/bookmarks.xml", KGlobal::mainComponent() ) );
@@ -432,63 +477,72 @@ void Smb4KBookmarkHandler::loadBookmarks()
         {
           if ( xmlReader.name() == "bookmark" )
           {
-            Smb4KBookmark *bookmark = new Smb4KBookmark();
-
-            bookmark->setProfile( xmlReader.attributes().value( "profile" ).toString() );
-            bookmark->setGroupName( xmlReader.attributes().value( "group" ).toString() );
-
-            while ( !(xmlReader.isEndElement() && xmlReader.name() == "bookmark") )
+            QString profile = xmlReader.attributes().value("profile").toString();
+            
+            if (allBookmarks || QString::compare(Smb4KProfileManager::self()->activeProfile(), profile, Qt::CaseSensitive) == 0)
             {
-              xmlReader.readNext();
-
-              if ( xmlReader.isStartElement() )
+              Smb4KBookmark *bookmark = new Smb4KBookmark();
+              bookmark->setProfile(profile);
+              bookmark->setGroupName(xmlReader.attributes().value("group").toString());
+              
+              while ( !(xmlReader.isEndElement() && xmlReader.name() == "bookmark") )
               {
-                if ( xmlReader.name() == "workgroup" )
+                xmlReader.readNext();
+
+                if ( xmlReader.isStartElement() )
                 {
-                  bookmark->setWorkgroupName( xmlReader.readElementText() );
-                }
-                else if ( xmlReader.name() == "unc" )
-                {
-                  bookmark->setURL( xmlReader.readElementText() );
-                }
-                else if ( xmlReader.name() == "login" )
-                {
-                  bookmark->setLogin( xmlReader.readElementText() );
-                }
-                else if ( xmlReader.name() == "ip" )
-                {
-                  bookmark->setHostIP( xmlReader.readElementText() );
-                }
-                else if ( xmlReader.name() == "type" )
-                {
-                  bookmark->setTypeString( xmlReader.readElementText() );
-                }
-                else if ( xmlReader.name() == "label" )
-                {
-                  bookmark->setLabel( xmlReader.readElementText() );
+                  if ( xmlReader.name() == "workgroup" )
+                  {
+                    bookmark->setWorkgroupName( xmlReader.readElementText() );
+                  }
+                  else if ( xmlReader.name() == "unc" )
+                  {
+                    bookmark->setURL( xmlReader.readElementText() );
+                  }
+                  else if ( xmlReader.name() == "login" )
+                  {
+                    bookmark->setLogin( xmlReader.readElementText() );
+                  }
+                  else if ( xmlReader.name() == "ip" )
+                  {
+                    bookmark->setHostIP( xmlReader.readElementText() );
+                  }
+                  else if ( xmlReader.name() == "type" )
+                  {
+                    bookmark->setTypeString( xmlReader.readElementText() );
+                  }
+                  else if ( xmlReader.name() == "label" )
+                  {
+                    bookmark->setLabel( xmlReader.readElementText() );
+                  }
+                  else
+                  {
+                    // Do nothing
+                  }
+
+                  continue;
                 }
                 else
                 {
-                  // Do nothing
+                  continue;
                 }
-
-                continue;
+              }
+              
+              *bookmarks << bookmark;
+              
+              if (!groups->contains(bookmark->groupName()))
+              {
+                *groups << bookmark->groupName();
               }
               else
               {
-                continue;
-              }
-            }
-
-            d->bookmarks.append( bookmark );
-            
-            if ( !d->groups.contains( bookmark->groupName() ) )
-            {
-              d->groups << bookmark->groupName();
+                // Do nothing
+              }             
+              
             }
             else
             {
-              // Do nothing
+              continue;
             }
           }
           else
@@ -673,6 +727,21 @@ void Smb4KBookmarkHandler::update() const
       // Do nothing
     }
   }
+}
+
+
+void Smb4KBookmarkHandler::slotProfileSettingsChanged()
+{
+  // Clear the list of bookmarks and the list of groups.
+  while (!d->bookmarks.isEmpty())
+  {
+    delete d->bookmarks.takeFirst();
+  }
+  
+  d->groups.clear();
+  
+  // Reload the bookmarks and groups.
+  readBookmarks(&d->bookmarks, &d->groups, false);
 }
 
 #include "smb4kbookmarkhandler.moc"

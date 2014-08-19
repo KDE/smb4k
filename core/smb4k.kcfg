@@ -1090,4 +1090,24 @@
       <default>true</default>
     </entry>
   </group>
+  
+  <!-- Profiles -->
+  
+  <group name="Profiles">
+    <entry name="UseProfiles" type="Bool">
+      <label>Use profiles</label>
+      <whatsthis>Make Smb4K use profiles. This enables you to define different bookmarks and custom options for each profile. This is especially useful if you are using a laptop in different network neighborhoods, e. g. at home and at work.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="ProfilesList" type="StringList">
+      <label>Profiles</label>
+      <whatsthis>The list of profiles.</whatsthis>
+      <default>Home,Work</default>
+    </entry>
+    <entry name="ActiveProfile" type="String">
+      <label>Active profile</label>
+      <whatsthis>This is the currently active profile.</whatsthis>
+      <default code="true">QString()</default>
+    </entry>
+  </group>
 </kcfg>

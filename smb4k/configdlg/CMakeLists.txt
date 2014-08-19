@@ -10,6 +10,7 @@ set(smb4kconfigdialog_LIB_SRCS
    smb4kcustomoptionspage.cpp
    smb4klaptopsupportoptionspage.cpp
    smb4knetworkoptionspage.cpp
+   smb4kprofilespage.cpp
    smb4krsyncoptionspage.cpp
    smb4ksambaoptionspage.cpp
    smb4kshareoptionspage.cpp
