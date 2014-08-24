@@ -398,6 +398,7 @@ class Smb4KMounterPrivate
     int remountTimeout;
     int remountAttempts;
     int checks;
+    int timerId;
     Smb4KMountDialog *dialog;
     QList<Smb4KShare *> importedShares;
     QList<Smb4KShare *> retries;

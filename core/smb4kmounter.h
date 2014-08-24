@@ -365,6 +365,11 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * @param job             The KIO::StatJob
      */
     void slotStatResult( KJob *job );
+    
+    /**
+     * This slot is called if the profiles settings changed.
+     */
+    void slotProfileSettingsChanged();
 
   private:
     /**

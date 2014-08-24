@@ -42,6 +42,7 @@
 #include "smb4kcustomoptionsmanager.h"
 #include "smb4kcustomoptions.h"
 #include "smb4kbookmark.h"
+#include "smb4kprofilemanager.h"
 
 // Qt includes
 #include <QtCore/QDir>
@@ -95,17 +96,20 @@ Smb4KMounter::Smb4KMounter( QObject *parent )
   d->firstImportDone = false;
   d->importsAllowed = true;
 
-  connect( QCoreApplication::instance(), SIGNAL(aboutToQuit()),
-           this,                         SLOT(slotAboutToQuit()) );
+  connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()),
+          this,                         SLOT(slotAboutToQuit()));
 
-  connect( Smb4KSolidInterface::self(),  SIGNAL(buttonPressed(Smb4KSolidInterface::ButtonType)),
-           this,                         SLOT(slotHardwareButtonPressed(Smb4KSolidInterface::ButtonType)) );
+  connect(Smb4KSolidInterface::self(),  SIGNAL(buttonPressed(Smb4KSolidInterface::ButtonType)),
+          this,                         SLOT(slotHardwareButtonPressed(Smb4KSolidInterface::ButtonType)));
 
-  connect( Smb4KSolidInterface::self(),  SIGNAL(wokeUp()),
-           this,                         SLOT(slotComputerWokeUp()) );
+  connect(Smb4KSolidInterface::self(),  SIGNAL(wokeUp()),
+          this,                         SLOT(slotComputerWokeUp()));
 
-  connect( Smb4KSolidInterface::self(),  SIGNAL(networkStatusChanged(Smb4KSolidInterface::ConnectionStatus)),
-           this,                         SLOT(slotNetworkStatusChanged(Smb4KSolidInterface::ConnectionStatus)) );
+  connect(Smb4KSolidInterface::self(),  SIGNAL(networkStatusChanged(Smb4KSolidInterface::ConnectionStatus)),
+          this,                         SLOT(slotNetworkStatusChanged(Smb4KSolidInterface::ConnectionStatus)));
+  
+  connect(Smb4KProfileManager::self(),  SIGNAL(settingsChanged()),
+          this,                         SLOT(slotProfileSettingsChanged()));
 }
 
 
@@ -1432,7 +1436,7 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
 {
   // Import newly mounted shares. This is only done when imports
   // are allowed (no auth error occurred and a password dialog is
-  // op at the moment) and there are currently no subjobs.
+  // open at the moment) and there are currently no subjobs.
   if ( d->importTimeout >= Smb4KSettings::checkInterval() && d->importedShares.isEmpty() )
   {
     if ( d->importsAllowed && !hasSubjobs() )
@@ -1550,7 +1554,7 @@ void Smb4KMounter::slotStartJobs()
     // Do nothing and wait until the network becomes available.
   }
 
-  startTimer( TIMEOUT );
+  d->timerId = startTimer( TIMEOUT );
 }
 
 
@@ -2208,6 +2212,58 @@ void Smb4KMounter::slotStatResult( KJob *job )
     // Do nothing
   }
 }
+
+
+void Smb4KMounter::slotProfileSettingsChanged()
+{
+  // Stop the timer.
+  killTimer(d->timerId);
+  
+  // Abort all actions that are currently running.
+  if (isRunning())
+  {
+    abortAll();
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Clear all remounts.
+  while (!d->remounts.isEmpty())
+  {
+    delete d->remounts.takeFirst();
+  }
+  
+  // Clear all retries.
+  while (!d->retries.isEmpty())
+  {
+    delete d->retries.takeFirst();
+  }
+  
+  // Unmount all shares and wait until done.
+  unmountAllShares();
+  
+  while ( hasSubjobs() )
+  {
+    QTest::qWait(TIMEOUT);
+  }
+  
+  // Reset some variables.
+  d->importTimeout = 0;
+  d->remountTimeout = 0;
+  d->remountAttempts = 0;
+  d->checks = 0;
+  d->firstImportDone = false;
+  d->importsAllowed = true;
+  
+  // Import the shares currently mounted.
+  import(true);
+  
+  // Start the timer again.
+  d->timerId = startTimer(TIMEOUT);
+}
+
 
 
 #include "smb4kmounter.moc"
