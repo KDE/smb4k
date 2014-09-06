@@ -81,6 +81,7 @@
     <ul>
       <li>Scanning for (active) workgroups, hosts, and shares</li>
       <li xml:lang="ca">Exploració per a grups de treball, ordinadors i comparticions (actius)</li>
+      <li xml:lang="de">Suche nach (aktiven) Arbeitsgruppen, Rechnern und Freigaben</li>
       <li xml:lang="en-GB">Scanning for (active) workgroups, hosts, and shares</li>
       <li xml:lang="es">Escaneo de grupos de trabajo, servidores y recursos compartidos (activos)</li>
       <li xml:lang="nds">Kieken na (aktiev) Arbeitkoppeln, Reekners un Freegaven</li>
@@ -93,6 +94,7 @@
       <li xml:lang="x-test">xxScanning for (active) workgroups, hosts, and sharesxx</li>
       <li>Support of the CIFS (Linux) and SMBFS (FreeBSD) file system</li>
       <li xml:lang="ca">Implementació dels sistemes de fitxers CIFS (Linux) i SMBFS (FreeBSD)</li>
+      <li xml:lang="de">Unterstützung für CIFS-Dateisysteme unter Linux und SMBFS-Dateisysteme unter FreeBSD</li>
       <li xml:lang="en-GB">Support of the CIFS (Linux) and SMBFS (FreeBSD) file system</li>
       <li xml:lang="es">Admite los sistemas de archivo CIFS (Linux) y SMBFS (FreeBSD)</li>
       <li xml:lang="nds">Ünnerstütt dat CIFS- (op Linux) un SMBFS-Dateisysteem (op FreeBSD)</li>
@@ -105,6 +107,7 @@
       <li xml:lang="x-test">xxSupport of the CIFS (Linux) and SMBFS (FreeBSD) file systemxx</li>
       <li>Mounting and unmounting of shares</li>
       <li xml:lang="ca">El muntatge i desmuntatge de les comparticions</li>
+      <li xml:lang="de">Einbinden und Lösen von Freigaben</li>
       <li xml:lang="en-GB">Mounting and unmounting of shares</li>
       <li xml:lang="es">Montaje y desmontaje de recursos compartidos</li>
       <li xml:lang="nds">Freegaven in- un uthangen</li>
@@ -117,6 +120,7 @@
       <li xml:lang="x-test">xxMounting and unmounting of sharesxx</li>
       <li>Access to the files of a mounted share using a file manager or terminal</li>
       <li xml:lang="ca">Accés als fitxers d'una compartició muntada utilitzant un gestor de fitxers o terminal</li>
+      <li xml:lang="de">Zugriff auf die Dateien einer eingebundenen Freigabe mit einem Dateiverwaltungsprogramm oder einem Terminal</li>
       <li xml:lang="en-GB">Access to the files of a mounted share using a file manager or terminal</li>
       <li xml:lang="es">Acceso a los archivos de un recurso compartido montado utilizando un gestor de archivos o un terminal</li>
       <li xml:lang="nds">Togriep op de Dateien binnen en inhangt Freegaav över Dateipleger oder Konsool</li>
@@ -129,6 +133,7 @@
       <li xml:lang="x-test">xxAccess to the files of a mounted share using a file manager or terminalxx</li>
       <li>Auto-detection of external mounts and unmounts</li>
       <li xml:lang="ca">Detecció automàtica de muntatges i desmuntatges externs</li>
+      <li xml:lang="de">Automatische Erkennung externer Medien, die eingebunden oder ausgehängt werden</li>
       <li xml:lang="en-GB">Auto-detection of external mounts and unmounts</li>
       <li xml:lang="es">Detección automática de montajes y desmontajes externos</li>
       <li xml:lang="nds">Automaatsch Opdecken vun In- un Uthangen vun buten ut</li>
@@ -141,6 +146,7 @@
       <li xml:lang="x-test">xxAuto-detection of external mounts and unmountsxx</li>
       <li>Remounting of previously used shares on program start</li>
       <li xml:lang="ca">Torna a muntar les comparticions utilitzades anteriorment durant l'inici del programa</li>
+      <li xml:lang="de">Erneute Einbindung von vorher benutzten Freigaben beim Start des Programms</li>
       <li xml:lang="en-GB">Remounting of previously used shares on program start</li>
       <li xml:lang="es">Vuelve a montar los recursos compartidos utilizados anteriormente al iniciar el programa</li>
       <li xml:lang="nds">Wedderinhangen vun al vördem bruukt Freegaven bi Programmstart</li>
@@ -153,6 +159,7 @@
       <li xml:lang="x-test">xxRemounting of previously used shares on program startxx</li>
       <li>Miscellaneous infos about remote network items and mounted shares</li>
       <li xml:lang="ca">Informacions diverses sobre els elements de la xarxa remota i les comparticions muntades</li>
+      <li xml:lang="de">Verschiedene Informationen über Netzwerke auf anderen Rechnern und eingebundene Freigaben</li>
       <li xml:lang="en-GB">Miscellaneous information about remote network items and mounted shares</li>
       <li xml:lang="es">Información variada sobre los elementos remotos de la red y los recursos compartidos montados</li>
       <li xml:lang="nds">En Reeg verscheden Informatschonen över Indrääg binnen Nettwarken un inhangt Freegaven</li>
@@ -166,6 +173,7 @@
       <li>Network search</li>
       <li xml:lang="ca">Cerca a la xarxa</li>
       <li xml:lang="cs">Prohledání sítě</li>
+      <li xml:lang="de">Netzwerksuche</li>
       <li xml:lang="en-GB">Network search</li>
       <li xml:lang="es">Búsqueda en la red</li>
       <li xml:lang="nds">Nettwarksöök</li>
@@ -179,6 +187,7 @@
       <li xml:lang="x-test">xxNetwork searchxx</li>
       <li>WINS server support</li>
       <li xml:lang="ca">Implementació del servidor WINS</li>
+      <li xml:lang="de">Unterstützung für WINS-Server</li>
       <li xml:lang="en-GB">WINS server support</li>
       <li xml:lang="es">Soporte para servidores WINS</li>
       <li xml:lang="nds">WINS-Server-Ünnerstütten</li>
@@ -191,6 +200,7 @@
       <li xml:lang="x-test">xxWINS server supportxx</li>
       <li>Preview of the contents of a share</li>
       <li xml:lang="ca">Vista prèvia dels continguts d'una compartició</li>
+      <li xml:lang="de">Vorschau des Inhalts einer Freigabe</li>
       <li xml:lang="en-GB">Preview of the contents of a share</li>
       <li xml:lang="es">Visualización previa del contenido de un recurso compartido</li>
       <li xml:lang="nds">Vöransicht vun de Freegaav ehr Inholt</li>
@@ -203,6 +213,7 @@
       <li xml:lang="x-test">xxPreview of the contents of a sharexx</li>
       <li>Several methods to look up the initial list of workgroups and domains</li>
       <li xml:lang="ca">Hi ha diversos mètodes per cercar la llista inicial dels grups de treball i dominis</li>
+      <li xml:lang="de">Mehrere Methoden zur Suche nach der anfänglichen Liste von Arbeitsgruppen und Domänen</li>
       <li xml:lang="en-GB">Several methods to look up the initial list of workgroups and domains</li>
       <li xml:lang="es">Varios métodos para buscar la lista inicial de grupos de trabajo y dominios</li>
       <li xml:lang="nds">Mehr Metoden för't Naslaan vun de eerste List mit Arbeitkoppeln un Domääns</li>
@@ -216,6 +227,7 @@
       <li>Default login</li>
       <li xml:lang="ca">Inici de sessió per defecte</li>
       <li xml:lang="cs">Výchozí přihlášení</li>
+      <li xml:lang="de">Standardanmeldung</li>
       <li xml:lang="en-GB">Default login</li>
       <li xml:lang="es">Inicio de sesión predeterminado</li>
       <li xml:lang="nds">Standardanmellen</li>
@@ -229,6 +241,7 @@
       <li xml:lang="x-test">xxDefault loginxx</li>
       <li>Special handling of homes shares</li>
       <li xml:lang="ca">Tractament especial per a la distribució de les comparticions personals</li>
+      <li xml:lang="de">Besondere Behandlung freigegebener persönlicher Ordner</li>
       <li xml:lang="en-GB">Special handling of homes shares</li>
       <li xml:lang="es">Manejo especial de los directorios personales compartidos</li>
       <li xml:lang="nds">Besünner Hanteren vun Tohuus-Freegaven</li>
@@ -241,6 +254,7 @@
       <li xml:lang="x-test">xxSpecial handling of homes sharesxx</li>
       <li>Ability to bookmark favorite shares</li>
       <li xml:lang="ca">La possibilitat d'apuntar les comparticions a les adreces d'interès</li>
+      <li xml:lang="de">Lesezeichen für bevorzugte Freigaben</li>
       <li xml:lang="en-GB">Ability to bookmark favorite shares</li>
       <li xml:lang="es">Capacidad para marcar recursos compartidos como favoritos</li>
       <li xml:lang="nds">Leestekens för vörtrocken Freegaven</li>
@@ -253,6 +267,7 @@
       <li xml:lang="x-test">xxAbility to bookmark favorite sharesxx</li>
       <li>System tray widget</li>
       <li xml:lang="ca">Un estri per a la safata del sistema</li>
+      <li xml:lang="de">Symbol im Systemabschnitt der Kontrollleiste</li>
       <li xml:lang="en-GB">System tray widget</li>
       <li xml:lang="es">Elemento gráfico de la bandeja del sistema</li>
       <li xml:lang="nds">Systeemafsnitt-Lüttprogramm</li>
@@ -266,6 +281,7 @@
       <li xml:lang="x-test">xxSystem tray widgetxx</li>
       <li>Support of advanced Samba options</li>
       <li xml:lang="ca">Implementació de les opcions avançades de Samba</li>
+      <li xml:lang="de">Unterstützung der erweiterten Samba-Einstellungen</li>
       <li xml:lang="en-GB">Support of advanced Samba options</li>
       <li xml:lang="es">Soporte para las opciones avanzadas de Samba</li>
       <li xml:lang="nds">Ünnerstütt verwieder Samba-Optschonen</li>
@@ -278,6 +294,7 @@
       <li xml:lang="x-test">xxSupport of advanced Samba optionsxx</li>
       <li>Support of printer shares</li>
       <li xml:lang="ca">Implementació de les impressores compartides</li>
+      <li xml:lang="de">Unterstützung für Drucker-Freigaben</li>
       <li xml:lang="en-GB">Support of printer shares</li>
       <li xml:lang="es">Soporte de impresoras compartidas</li>
       <li xml:lang="nds">Ünnerstütten vun Druckerfreegaven</li>
@@ -291,6 +308,7 @@
       <li>KWallet support</li>
       <li xml:lang="ca">Implementació per a KWallet</li>
       <li xml:lang="cs">Podpora KWallet</li>
+      <li xml:lang="de">Unterstützung für KWallet</li>
       <li xml:lang="en-GB">KWallet support</li>
       <li xml:lang="es">Soporte para KWallet</li>
       <li xml:lang="nds">KWallet-Ünnerstütten</li>
@@ -304,6 +322,7 @@
       <li xml:lang="x-test">xxKWallet supportxx</li>
       <li>Synchronization of a remote share with a local copy and vice versa</li>
       <li xml:lang="ca">Sincronització d'una compartició remota amb una còpia local i viceversa</li>
+      <li xml:lang="de">Abgleich einer entfernten Freigabe mit einer lokalen Kopie und umgekehrt</li>
       <li xml:lang="en-GB">Synchronisation of a remote share with a local copy and vice versa</li>
       <li xml:lang="es">Sincronización de un recurso compartido remoto con una copia local y viceversa</li>
       <li xml:lang="nds">Synkroniseren vun en feern Freegaav mit en lokaal Kopie, un ok ümdreiht</li>
@@ -316,6 +335,7 @@
       <li xml:lang="x-test">xxSynchronization of a remote share with a local copy and vice versaxx</li>
       <li>Ability to define custom options for individual servers and shares</li>
       <li xml:lang="ca">La possibilitat de definir individualment opcions personalitzades per a servidors i comparticions</li>
+      <li xml:lang="de">Fähigkeit zur Definition von benutzerdefinierten Einstellungen für einzelne Server und Freigaben.</li>
       <li xml:lang="en-GB">Ability to define custom options for individual servers and shares</li>
       <li xml:lang="es">Capacidad para definir opciones personalizadas para servidores y recursos compartidos individuales</li>
       <li xml:lang="nds">Lett Di Dien egen Optschonen för enkelte Servers un Freegaven fastleggen</li>
@@ -328,6 +348,7 @@
       <li xml:lang="x-test">xxAbility to define custom options for individual servers and sharesxx</li>
       <li>Laptop support through the Solid hardware device framework</li>
       <li xml:lang="ca">Implementació de l'ordinador portàtil a través del marc de treball per a dispositius Solid</li>
+      <li xml:lang="de">Laptop-Unterstützung durch das Solid-Framework für Hardware-Geräte</li>
       <li xml:lang="en-GB">Laptop support through the Solid hardware device framework</li>
       <li xml:lang="es">Soporte de portátiles a través de la infraestructura de dispositivos hardware Solid</li>
       <li xml:lang="nds">Klappreekner-Ünnerstütten över't Hardware-Rahmenwark Solid</li>
@@ -340,6 +361,7 @@
       <li xml:lang="x-test">xxLaptop support through the Solid hardware device frameworkxx</li>
       <li>Wake-On-LAN capabilities</li>
       <li xml:lang="ca">Funcionalitats d'activació per LAN (Wake-On-LAN)</li>
+      <li xml:lang="de">„Wake-On-LAN“-Fähigkeiten</li>
       <li xml:lang="en-GB">Wake-On-LAN capabilities</li>
       <li xml:lang="es">Capacidades «Wake on LAN»</li>
       <li xml:lang="nds">Kann OpWaken-op-LAN (WOL)</li>
@@ -352,6 +374,7 @@
       <li xml:lang="x-test">xxWake-On-LAN capabilitiesxx</li>
       <li>Plasmoid for desktop integration</li>
       <li xml:lang="ca">Plasmoide per a la integració a l'escriptori</li>
+      <li xml:lang="de">Plasmoid für die Integration in die Arbeitsfläche</li>
       <li xml:lang="en-GB">Plasmoid for desktop integration</li>
       <li xml:lang="es">Plasmoide para integración en el escritorio</li>
       <li xml:lang="nds">Plasma-Lüttprogramm för't Integreren na den Schriefdisch</li>
@@ -382,6 +405,7 @@
     <screenshot type="default">
       <caption>The main window</caption>
       <caption xml:lang="ca">La finestra principal</caption>
+      <caption xml:lang="de">Das Hauptfenster</caption>
       <caption xml:lang="en-GB">The main window</caption>
       <caption xml:lang="es">La ventana principal</caption>
       <caption xml:lang="nds">Dat Hööftfinster</caption>
@@ -398,6 +422,7 @@
       <caption>The plasmoid</caption>
       <caption xml:lang="ca">El plasmoide</caption>
       <caption xml:lang="cs">Plasmoid</caption>
+      <caption xml:lang="de">Das Plasmoid</caption>
       <caption xml:lang="en-GB">The plasmoid</caption>
       <caption xml:lang="es">El plasmoide</caption>
       <caption xml:lang="nds">Dat Plasma-Lüttprogramm</caption>
