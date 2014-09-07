@@ -175,6 +175,22 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
      * This slot is called if the profiles settings changed.
      */
     void slotProfileSettingsChanged();
+    
+    /**
+     * This slot is called when the entries of a profile are to be migrated
+     * to another profile.
+     * 
+     * @param from        The name of the old profile.
+     * @param to          The name of the new profile.
+     */
+    void slotProfileMigrated(const QString &from, const QString &to);
+    
+    /**
+     * This slot is called when a profile is to be removed.
+     * 
+     * @param name        The name of the profile.
+     */
+    void slotProfileRemoved(const QString &name);
 
   private:
     /**
@@ -196,14 +212,17 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
     void update() const;
 
     /**
-     * This function writes a new list of bookmarks. The old list will be
-     * deleted. It should be used, if you manipulated the list of bookmarks
-     * i. e. by a bookmark editor.
+     * This function writes the bookmarks to the disk. If @p listOnly is
+     * set to TRUE, only the list that was passed will be written to the 
+     * file replacing the existing bookmarks. If it is FALSE (the default),
+     * the list will be merged with the existing bookmarks. 
      *
      * @param list          The (new) list of bookmarks that is to be written
      *                      to the bookmark file
+     * @param listOnly      If TRUE only the passed list will be written to
+     *                      the file.
      */
-    void writeBookmarkList( const QList<Smb4KBookmark *> &list );
+    void writeBookmarkList(const QList<Smb4KBookmark *> &list, bool listOnly = false);
 
     /**
      * This function adds several bookmarks at once. It takes a list of

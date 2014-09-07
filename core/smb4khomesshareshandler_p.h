@@ -33,6 +33,7 @@
 
 // Qt includes
 #include <QtCore/QStringList>
+#include <QtNetwork/QHostAddress>
 
 // KDE includes
 #include <kcombobox.h>
@@ -65,32 +66,70 @@ class Smb4KHomesUsers
     /**
      * Workgroup name
      */
-    QString workgroupName;
+    QString workgroupName() const;
+    
+    /**
+     * Set workgroup name
+     */
+    void setWorkgroupName(const QString &name);
 
     /**
      * Host name
      */
-    QString hostName;
+    QString hostName() const;
+    
+    /**
+     * Set host name
+     */
+    void setHostName(const QString &name);
 
     /**
      * Share name
      */
-    QString shareName;
+    QString shareName() const;
+    
+    /**
+     * Set share name
+     */
+    void setShareName(const QString &name);
 
     /**
      * IP address
      */
-    QString hostIP;
+    QString hostIP() const;
+    
+    /**
+     * Set IP address
+     */
+    void setHostIP(const QString &ip);
     
     /**
      * User list
      */
-    QStringList users;
+    QStringList users() const;
+    
+    /**
+     * Set user list
+     */
+    void setUsers(const QStringList &users);
     
     /**
      * Profile
      */
-    QString profile;
+    QString profile() const;
+    
+    /**
+     * Set profile
+     */
+    void setProfile(const QString &profile);
+    
+  private:
+    QString m_workgroup_name;
+    QString m_host_name;
+    QString m_share_name;
+    QHostAddress m_host_ip;
+    QStringList m_users;
+    QString m_profile;
 };
 
 

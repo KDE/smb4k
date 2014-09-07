@@ -68,8 +68,14 @@ Smb4KHomesSharesHandler::Smb4KHomesSharesHandler( QObject *parent )
   readUserNames(&d->homesUsers, false);
   
   // Connections
-  connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()));
-  connect(Smb4KProfileManager::self(), SIGNAL(settingsChanged()), SLOT(slotProfileSettingsChanged()));
+  connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), 
+          this, SLOT(slotAboutToQuit()));
+  connect(Smb4KProfileManager::self(), SIGNAL(settingsChanged()), 
+          this, SLOT(slotProfileSettingsChanged()));
+  connect(Smb4KProfileManager::self(), SIGNAL(profileMigrated(QString,QString)), 
+          this, SLOT(slotProfileMigrated(QString,QString)));
+  connect(Smb4KProfileManager::self(), SIGNAL(profileRemoved(QString)),
+          this, SLOT(slotProfileRemoved(QString)));
 }
 
 
@@ -130,7 +136,7 @@ bool Smb4KHomesSharesHandler::specifyUser( Smb4KShare *share, bool overwrite, QW
         // Do nothing
       }
       
-      writeUserNames();
+      writeUserNames(d->homesUsers);
     }
     else
     {
@@ -191,8 +197,8 @@ void Smb4KHomesSharesHandler::readUserNames(QList<Smb4KHomesUsers *> *list, bool
                 (!Smb4KProfileManager::self()->useProfiles() && QString::compare(profile, "Default", Qt::CaseSensitive) == 0))
             {
               Smb4KHomesUsers *users = new Smb4KHomesUsers();
-              users->profile = profile;
-              users->shareName = xmlReader.name().toString();
+              users->setProfile(profile);
+              users->setShareName(xmlReader.name().toString());
               
               while ( !(xmlReader.isEndElement() && xmlReader.name() == "homes") )
               {
@@ -202,31 +208,35 @@ void Smb4KHomesSharesHandler::readUserNames(QList<Smb4KHomesUsers *> *list, bool
                 {
                   if ( xmlReader.name() == "host" )
                   {
-                    users->hostName = xmlReader.readElementText();
+                    users->setHostName(xmlReader.readElementText());
                   }
                   else if ( xmlReader.name() == "workgroup" )
                   {
-                    users->workgroupName = xmlReader.readElementText();
+                    users->setWorkgroupName(xmlReader.readElementText());
                   }
                   else if ( xmlReader.name() == "ip" )
                   {
-                    users->hostIP = xmlReader.readElementText();
+                    users->setHostIP(xmlReader.readElementText());
                   }
                   else if ( xmlReader.name() == "users" )
                   {
+                    QStringList u;
+                    
                     while ( !(xmlReader.isEndElement() && xmlReader.name() == "users") )
                     {
                       xmlReader.readNext();
 
                       if ( xmlReader.isStartElement() && xmlReader.name() == "user" )
                       {
-                        users->users << xmlReader.readElementText();
+                        u << xmlReader.readElementText();
                       }
                       else
                       {
                         // Do nothing
                       }
                     }
+                    
+                    users->setUsers(u);
                   }
                   else
                   {
@@ -285,39 +295,46 @@ void Smb4KHomesSharesHandler::readUserNames(QList<Smb4KHomesUsers *> *list, bool
 }
 
 
-void Smb4KHomesSharesHandler::writeUserNames()
+void Smb4KHomesSharesHandler::writeUserNames(const QList<Smb4KHomesUsers *> &list, bool listOnly)
 {
   QList<Smb4KHomesUsers *> allUsers;
   
-  // First read all entries. Ignore all those that have 
-  // representatives in d->homesUsers.
-  readUserNames(&allUsers, true);
-  
-  QMutableListIterator<Smb4KHomesUsers *> it(allUsers);
-  
-  while (it.hasNext())
-  {
-    Smb4KHomesUsers *users = it.next();
+  if (!listOnly)
+  {  
+    // First read all entries. Ignore all those that have 
+    // representatives in d->homesUsers.
+    readUserNames(&allUsers, true);
     
-    for (int i = 0; i < d->homesUsers.size(); ++i)
+    QMutableListIterator<Smb4KHomesUsers *> it(allUsers);
+    
+    while (it.hasNext())
     {
-      if (QString::compare(users->workgroupName, d->homesUsers.at(i)->workgroupName) == 0 &&
-          QString::compare(users->hostName, d->homesUsers.at(i)->hostName) == 0 &&
-          QString::compare(users->shareName, d->homesUsers.at(i)->shareName) == 0 &&
-          QString::compare(users->profile, d->homesUsers.at(i)->profile) == 0)
+      Smb4KHomesUsers *users = it.next();
+      
+      for (int i = 0; i < d->homesUsers.size(); ++i)
       {
-        it.remove();
-      }
-      else
-      {
-        // Do nothing
+        if (QString::compare(users->workgroupName(), list.at(i)->workgroupName(), Qt::CaseInsensitive) == 0 &&
+            QString::compare(users->hostName(), list.at(i)->hostName(), Qt::CaseInsensitive) == 0 &&
+            QString::compare(users->shareName(), list.at(i)->shareName(), Qt::CaseInsensitive) == 0 &&
+            QString::compare(users->profile(), list.at(i)->profile()) == 0)
+        {
+          it.remove();
+        }
+        else
+        {
+          // Do nothing
+        }
       }
     }
   }
-  
-  for (int i = 0; i < d->homesUsers.size(); ++i)
+  else
   {
-    allUsers << new Smb4KHomesUsers(*d->homesUsers[i]);
+    // Do nothing
+  }
+  
+  for (int i = 0; i < list.size(); ++i)
+  {
+    allUsers << new Smb4KHomesUsers(*list[i]);
   }
   
   QFile xmlFile(KGlobal::dirs()->locateLocal("data", "smb4k/homes_shares.xml", KGlobal::mainComponent()));
@@ -345,17 +362,17 @@ void Smb4KHomesSharesHandler::writeUserNames()
         }
         else
         {
-          xmlWriter.writeAttribute("profile", allUsers.at(i)->profile);
+          xmlWriter.writeAttribute("profile", allUsers.at(i)->profile());
         }
         // xmlWriter.writeAttribute("profile", allUsers.at(i)->profile);
-        xmlWriter.writeTextElement("host", allUsers.at(i)->hostName);
-        xmlWriter.writeTextElement("workgroup", allUsers.at(i)->workgroupName);
-        xmlWriter.writeTextElement("ip", allUsers.at(i)->hostIP);
+        xmlWriter.writeTextElement("host", allUsers.at(i)->hostName());
+        xmlWriter.writeTextElement("workgroup", allUsers.at(i)->workgroupName());
+        xmlWriter.writeTextElement("ip", allUsers.at(i)->hostIP());
         xmlWriter.writeStartElement("users");
 
-        for (int j = 0; j < allUsers.at(i)->users.size(); ++j)
+        for (int j = 0; j < allUsers.at(i)->users().size(); ++j)
         {
-          xmlWriter.writeTextElement("user", allUsers.at(i)->users.at(j));
+          xmlWriter.writeTextElement("user", allUsers.at(i)->users().at(j));
         }
 
         xmlWriter.writeEndElement();
@@ -391,12 +408,12 @@ void Smb4KHomesSharesHandler::findHomesUsers( Smb4KShare *share, QStringList *us
   {
     for ( int i = 0; i < d->homesUsers.size(); ++i )
     {
-      if ( QString::compare( share->hostName(), d->homesUsers.at(i)->hostName, Qt::CaseInsensitive ) == 0 &&
-           QString::compare( share->shareName(), d->homesUsers.at(i)->shareName, Qt::CaseInsensitive ) == 0 &&
-           ((d->homesUsers.at( i )->workgroupName.isEmpty() || share->workgroupName().isEmpty()) ||
-           QString::compare( share->workgroupName(), d->homesUsers.at(i)->workgroupName, Qt::CaseInsensitive ) == 0) )
+      if ( QString::compare( share->hostName(), d->homesUsers.at(i)->hostName(), Qt::CaseInsensitive ) == 0 &&
+           QString::compare( share->shareName(), d->homesUsers.at(i)->shareName(), Qt::CaseInsensitive ) == 0 &&
+           ((d->homesUsers.at( i )->workgroupName().isEmpty() || share->workgroupName().isEmpty()) ||
+           QString::compare( share->workgroupName(), d->homesUsers.at(i)->workgroupName(), Qt::CaseInsensitive ) == 0) )
       {
-        *users = d->homesUsers.at( i )->users;
+        *users = d->homesUsers.at(i)->users();
         break;
       }
       else
@@ -419,12 +436,12 @@ void Smb4KHomesSharesHandler::addHomesUsers( Smb4KShare *share, QStringList *use
   {
     for ( int i = 0; i < d->homesUsers.size(); ++i )
     {
-      if ( QString::compare( share->hostName(), d->homesUsers.at(i)->hostName, Qt::CaseInsensitive ) == 0 &&
-           QString::compare( share->shareName(), d->homesUsers.at(i)->shareName, Qt::CaseInsensitive ) == 0 &&
-           ((d->homesUsers.at( i )->workgroupName.isEmpty() || share->workgroupName().isEmpty()) ||
-           QString::compare( share->workgroupName(), d->homesUsers.at( i )->workgroupName, Qt::CaseInsensitive ) == 0) )
+      if (QString::compare(share->hostName(), d->homesUsers.at(i)->hostName(), Qt::CaseInsensitive) == 0 &&
+          QString::compare(share->shareName(), d->homesUsers.at(i)->shareName(), Qt::CaseInsensitive) == 0 &&
+          ((d->homesUsers.at(i)->workgroupName().isEmpty() || share->workgroupName().isEmpty()) ||
+          QString::compare(share->workgroupName(), d->homesUsers.at(i)->workgroupName(), Qt::CaseInsensitive) == 0))
       {
-        d->homesUsers[i]->users = *users;
+        d->homesUsers[i]->setUsers(*users);
         found = true;
         break;
       }
@@ -442,7 +459,7 @@ void Smb4KHomesSharesHandler::addHomesUsers( Smb4KShare *share, QStringList *use
   if ( !found )
   {
     Smb4KHomesUsers *u = new Smb4KHomesUsers(*share, *users);
-    u->profile = Smb4KProfileManager::self()->activeProfile();
+    u->setProfile(Smb4KProfileManager::self()->activeProfile());
     d->homesUsers << u;
   }
   else
@@ -459,7 +476,7 @@ void Smb4KHomesSharesHandler::addHomesUsers( Smb4KShare *share, QStringList *use
 
 void Smb4KHomesSharesHandler::slotAboutToQuit()
 {
-  writeUserNames();
+  writeUserNames(d->homesUsers);
 }
 
 
@@ -473,6 +490,77 @@ void Smb4KHomesSharesHandler::slotProfileSettingsChanged()
   
   // Reload the list of homes users.
   readUserNames(&d->homesUsers, false);
+}
+
+
+void Smb4KHomesSharesHandler::slotProfileMigrated(const QString& from, const QString& to)
+{
+  QList<Smb4KHomesUsers *> allUsers;
+ 
+  // Read all entries for later conversion.
+  readUserNames(&allUsers, true);
+  
+  // Replace the old profile name with the new one.
+  for (int i = 0; i < allUsers.size(); ++i)
+  {
+    if (QString::compare(allUsers.at(i)->profile(), from, Qt::CaseSensitive) == 0)
+    {
+      allUsers[i]->setProfile(to);
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  // Write the new list to the file.
+  writeUserNames(allUsers, true);
+  
+  // Profile settings changed, so invoke the slot.
+  slotProfileSettingsChanged();
+  
+  // Clear the temporary lists of bookmarks and groups.
+  while (!allUsers.isEmpty())
+  {
+    delete allUsers.takeFirst();
+  }
+}
+
+
+void Smb4KHomesSharesHandler::slotProfileRemoved(const QString& name)
+{
+  QList<Smb4KHomesUsers *> allUsers;
+ 
+  // Read all entries for later removal.
+  readUserNames(&allUsers, true);
+  
+  QMutableListIterator<Smb4KHomesUsers *> it(allUsers);
+  
+  while (it.hasNext())
+  {
+    Smb4KHomesUsers *user = it.next();
+    
+    if (QString::compare(user->profile(), name, Qt::CaseSensitive) == 0)
+    {
+      it.remove();
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  // Write the new list to the file.
+  writeUserNames(allUsers, true);
+  
+  // Profile settings changed, so invoke the slot.
+  slotProfileSettingsChanged();
+  
+  // Clear the temporary lists of bookmarks and groups.
+  while (!allUsers.isEmpty())
+  {
+    delete allUsers.takeFirst();
+  }
 }
 
 #include "smb4khomesshareshandler.moc"

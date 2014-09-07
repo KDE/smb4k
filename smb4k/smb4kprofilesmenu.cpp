@@ -61,6 +61,7 @@ Smb4KProfilesMenu::Smb4KProfilesMenu(QObject* parent)
   }
   
   setCurrentAction(Smb4KProfileManager::self()->activeProfile());
+  setToolBarMode(KSelectAction::MenuMode);
   
   // Connections
   connect(Smb4KProfileManager::self(), SIGNAL(settingsChanged()), this, SLOT(slotSettingsChanged()));

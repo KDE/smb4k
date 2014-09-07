@@ -69,8 +69,14 @@ Smb4KCustomOptionsManager::Smb4KCustomOptionsManager( QObject *parent )
   readCustomOptions(&d->options, false);
   
   // Connections
-  connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()));
-  connect(Smb4KProfileManager::self(), SIGNAL(settingsChanged()), SLOT(slotProfileSettingsChanged()));
+  connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), 
+          this, SLOT(slotAboutToQuit()));
+  connect(Smb4KProfileManager::self(), SIGNAL(settingsChanged()), 
+          this, SLOT(slotProfileSettingsChanged()));
+  connect(Smb4KProfileManager::self(), SIGNAL(profileMigrated(QString,QString)), 
+          this, SLOT(slotProfileMigrated(QString,QString)));
+  connect(Smb4KProfileManager::self(), SIGNAL(profileRemoved(QString)),
+          this, SLOT(slotProfileRemoved(QString)));
 }
 
 
@@ -650,39 +656,46 @@ void Smb4KCustomOptionsManager::readCustomOptions(QList<Smb4KCustomOptions *> *o
 }
 
 
-void Smb4KCustomOptionsManager::writeCustomOptions()
+void Smb4KCustomOptionsManager::writeCustomOptions(const QList<Smb4KCustomOptions *> &list, bool listOnly)
 {
   QList<Smb4KCustomOptions *> allOptions;
   
-  // First read all entries. Ignore all those that have 
-  // representatives in list.
-  readCustomOptions(&allOptions, true);
-  
-  QMutableListIterator<Smb4KCustomOptions *> it(allOptions);
-  
-  while (it.hasNext())
+  if (!listOnly)
   {
-    Smb4KCustomOptions *options = it.next();
+    // First read all entries. Ignore all those that have 
+    // representatives in list.
+    readCustomOptions(&allOptions, true);
     
-    for (int i = 0; i < d->options.size(); ++i)
+    QMutableListIterator<Smb4KCustomOptions *> it(allOptions);
+    
+    while (it.hasNext())
     {
-      if (QString::compare(options->workgroupName(), d->options.at(i)->workgroupName()) == 0 &&
-          QString::compare(options->unc(), d->options.at(i)->unc()) == 0 &&
-          QString::compare(options->profile(), d->options.at(i)->profile()) == 0)
+      Smb4KCustomOptions *options = it.next();
+      
+      for (int i = 0; i < list.size(); ++i)
       {
-        it.remove();
-      }
-      else
-      {
-        // Do nothing
+        if (QString::compare(options->workgroupName(), list.at(i)->workgroupName(), Qt::CaseInsensitive) == 0 &&
+            QString::compare(options->unc(), list.at(i)->unc(), Qt::CaseInsensitive) == 0 &&
+            QString::compare(options->profile(), list.at(i)->profile()) == 0)
+        {
+          it.remove();
+        }
+        else
+        {
+          // Do nothing
+        }
       }
     }
   }
-  
-  for (int i = 0; i < d->options.size(); ++i)
+  else
   {
-    allOptions << new Smb4KCustomOptions(*d->options[i]);
-  } 
+    // Do nothing
+  }
+  
+  for (int i = 0; i < list.size(); ++i)
+  {
+    allOptions << new Smb4KCustomOptions(*list[i]);
+  }
   
   QFile xmlFile(KGlobal::dirs()->locateLocal("data", "smb4k/custom_options.xml", KGlobal::mainComponent()));
 
@@ -698,7 +711,7 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
 
       for (int i = 0; i < allOptions.size(); ++i)
       {
-        Smb4KCustomOptions *options = allOptions[i];
+        Smb4KCustomOptions *options = allOptions.at(i);
         
         if (hasCustomOptions(options) || options->remount() == Smb4KCustomOptions::RemountOnce)
         {
@@ -822,7 +835,7 @@ void Smb4KCustomOptionsManager::replaceCustomOptions( const QList<Smb4KCustomOpt
     // Do nothing
   }
   
-  writeCustomOptions();
+  writeCustomOptions(d->options);
 }
 
 
@@ -935,7 +948,7 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog( Smb4KBasicNetworkItem *
       removeCustomOptions( options );
     }
       
-    writeCustomOptions();
+    writeCustomOptions(d->options);
   }
   else
   {
@@ -1369,7 +1382,7 @@ QList<Smb4KCustomOptions *> Smb4KCustomOptionsManager::wolEntries() const
 
 void Smb4KCustomOptionsManager::slotAboutToQuit()
 {
-  writeCustomOptions();
+  writeCustomOptions(d->options);
 }
 
 
@@ -1383,6 +1396,77 @@ void Smb4KCustomOptionsManager::slotProfileSettingsChanged()
   
   // Reload the list.
   readCustomOptions(&d->options, false);
+}
+
+
+void Smb4KCustomOptionsManager::slotProfileMigrated(const QString& from, const QString& to)
+{
+  QList<Smb4KCustomOptions *> allOptions;
+ 
+  // Read all entries for later conversion.
+  readCustomOptions(&allOptions, true);
+  
+  // Replace the old profile name with the new one.
+  for (int i = 0; i < allOptions.size(); ++i)
+  {
+    if (QString::compare(allOptions.at(i)->profile(), from, Qt::CaseSensitive) == 0)
+    {
+      allOptions[i]->setProfile(to);
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  // Write the new list to the file.
+  writeCustomOptions(allOptions, true);
+  
+  // Profile settings changed, so invoke the slot.
+  slotProfileSettingsChanged();
+  
+  // Clear the temporary lists of bookmarks and groups.
+  while (!allOptions.isEmpty())
+  {
+    delete allOptions.takeFirst();
+  }
+}
+
+
+void Smb4KCustomOptionsManager::slotProfileRemoved(const QString& name)
+{
+  QList<Smb4KCustomOptions *> allOptions;
+ 
+  // Read all entries for later removal.
+  readCustomOptions(&allOptions, true);
+  
+  QMutableListIterator<Smb4KCustomOptions *> it(allOptions);
+  
+  while (it.hasNext())
+  {
+    Smb4KCustomOptions *options = it.next();
+    
+    if (QString::compare(options->profile(), name, Qt::CaseSensitive) == 0)
+    {
+      it.remove();
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  // Write the new list to the file.
+  writeCustomOptions(allOptions, true);
+  
+  // Profile settings changed, so invoke the slot.
+  slotProfileSettingsChanged();
+  
+  // Clear the temporary lists of bookmarks and groups.
+  while (!allOptions.isEmpty())
+  {
+    delete allOptions.takeFirst();
+  }
 }
 
 #include "smb4kcustomoptionsmanager.moc"

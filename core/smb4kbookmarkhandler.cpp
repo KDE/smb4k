@@ -79,7 +79,12 @@ Smb4KBookmarkHandler::Smb4KBookmarkHandler( QObject *parent )
   readBookmarks(&d->bookmarks, &d->groups, false);
   
   // Connections
-  connect(Smb4KProfileManager::self(), SIGNAL(settingsChanged()), this, SLOT(slotProfileSettingsChanged()));
+  connect(Smb4KProfileManager::self(), SIGNAL(settingsChanged()), 
+          this, SLOT(slotProfileSettingsChanged()));
+  connect(Smb4KProfileManager::self(), SIGNAL(profileMigrated(QString,QString)), 
+          this, SLOT(slotProfileMigrated(QString,QString)));
+  connect(Smb4KProfileManager::self(), SIGNAL(profileRemoved(QString)),
+          this, SLOT(slotProfileRemoved(QString)));
 }
 
 
@@ -356,40 +361,47 @@ void Smb4KBookmarkHandler::removeGroup(const QString& name)
 }
 
 
-void Smb4KBookmarkHandler::writeBookmarkList(const QList<Smb4KBookmark *> &list)
+void Smb4KBookmarkHandler::writeBookmarkList(const QList<Smb4KBookmark *> &list, bool listOnly)
 {
   QList<Smb4KBookmark *> allBookmarks;
-  QStringList allGroups; /* Can be ignored */
+  QStringList allGroups; // Can be ignored.
   
-  // First read all entries. Ignore all those that have 
-  // representatives in list.
-  readBookmarks(&allBookmarks, &allGroups, true);
-  
-  QMutableListIterator<Smb4KBookmark *> it(allBookmarks);
-  
-  while (it.hasNext())
-  {
-    Smb4KBookmark *bookmark = it.next();
+  if (!listOnly)
+  {  
+    // First read all entries. Ignore all those that have 
+    // representatives in list.
+    readBookmarks(&allBookmarks, &allGroups, true);
     
-    for (int i = 0; i < list.size(); ++i)
+    QMutableListIterator<Smb4KBookmark *> it(allBookmarks);
+    
+    while (it.hasNext())
     {
-      if (QString::compare(bookmark->workgroupName(), list.at(i)->workgroupName()) == 0 &&
-          QString::compare(bookmark->unc(), list.at(i)->unc()) == 0 &&
-          QString::compare(bookmark->profile(), list.at(i)->profile()) == 0)
+      Smb4KBookmark *bookmark = it.next();
+      
+      for (int i = 0; i < list.size(); ++i)
       {
-        it.remove();
-      }
-      else
-      {
-        // Do nothing
+        if (QString::compare(bookmark->workgroupName(), list.at(i)->workgroupName(), Qt::CaseInsensitive) == 0 &&
+            QString::compare(bookmark->unc(), list.at(i)->unc(), Qt::CaseInsensitive) == 0 &&
+            QString::compare(bookmark->profile(), list.at(i)->profile()) == 0)
+        {
+          it.remove();
+        }
+        else
+        {
+          // Do nothing
+        }
       }
     }
+  }
+  else
+  {
+    // Do nothing
   }
   
   for (int i = 0; i < list.size(); ++i)
   {
     allBookmarks << new Smb4KBookmark(*list[i]);
-  }  
+  }
   
   QFile xmlFile(KGlobal::dirs()->locateLocal("data", "smb4k/bookmarks.xml", KGlobal::mainComponent()));
 
@@ -742,6 +754,83 @@ void Smb4KBookmarkHandler::slotProfileSettingsChanged()
   
   // Reload the bookmarks and groups.
   readBookmarks(&d->bookmarks, &d->groups, false);
+}
+
+
+void Smb4KBookmarkHandler::slotProfileMigrated(const QString& from, const QString& to)
+{
+  QList<Smb4KBookmark *> allBookmarks;
+  QStringList allGroups; // Can be ignored.
+ 
+  // Read all entries for later conversion.
+  readBookmarks(&allBookmarks, &allGroups, true);
+  
+  // Replace the old profile name with the new one.
+  for (int i = 0; i < allBookmarks.size(); ++i)
+  {
+    if (QString::compare(allBookmarks.at(i)->profile(), from, Qt::CaseSensitive) == 0)
+    {
+      allBookmarks[i]->setProfile(to);
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  // Write the new list to the file.
+  writeBookmarkList(allBookmarks, true);
+  
+  // Profile settings changed, so invoke the slot.
+  slotProfileSettingsChanged();
+  
+  // Clear the temporary lists of bookmarks and groups.
+  while (!allBookmarks.isEmpty())
+  {
+    delete allBookmarks.takeFirst();
+  }
+  
+  allGroups.clear();
+}
+
+
+void Smb4KBookmarkHandler::slotProfileRemoved(const QString& name)
+{
+  QList<Smb4KBookmark *> allBookmarks;
+  QStringList allGroups; // Can be ignored.
+ 
+  // Read all entries for later removal.
+  readBookmarks(&allBookmarks, &allGroups, true);
+  
+  QMutableListIterator<Smb4KBookmark *> it(allBookmarks);
+  
+  while (it.hasNext())
+  {
+    Smb4KBookmark *bookmark = it.next();
+    
+    if (QString::compare(bookmark->profile(), name, Qt::CaseSensitive) == 0)
+    {
+      it.remove();
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  // Write the new list to the file.
+  writeBookmarkList(allBookmarks, true);
+  
+  // Profile settings changed, so invoke the slot.
+  slotProfileSettingsChanged();
+  
+  // Clear the temporary lists of bookmarks and groups.
+  while (!allBookmarks.isEmpty())
+  {
+    delete allBookmarks.takeFirst();
+  }
+  
+  allGroups.clear();
 }
 
 #include "smb4kbookmarkhandler.moc"

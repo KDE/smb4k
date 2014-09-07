@@ -145,8 +145,96 @@ bool Smb4KProfileManager::useProfiles() const
 }
 
 
+void Smb4KProfileManager::migrateProfile(const QString& from, const QString& to)
+{
+  if (d->useProfiles)
+  {
+    // First exchange the old profile.
+    for (int i = 0; i < d->profiles.size(); ++i)
+    {
+      if (QString::compare(from, d->profiles.at(i), Qt::CaseSensitive) == 0)
+      {
+        d->profiles.replace(i, to);
+        break;
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    
+    Smb4KSettings::setProfilesList(d->profiles);
+    
+    // In case the active profile was modified, rename it according
+    // the value passed.
+    if (QString::compare(from, d->activeProfile, Qt::CaseSensitive) == 0)
+    {
+      (void)setActiveProfile(to);
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    emit profileMigrated(from, to);
+    emit settingsChanged();
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KProfileManager::removeProfile(const QString& name)
+{
+  if (d->useProfiles)
+  {
+    // First remove the profile from the list.
+    QMutableStringListIterator it(d->profiles);
+    
+    while (it.hasNext())
+    {
+      QString entry = it.next();
+      
+      if (QString::compare(name, entry, Qt::CaseSensitive) == 0)
+      {
+        it.remove();
+        break;
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    
+    Smb4KSettings::setProfilesList(d->profiles);
+ 
+    // In case the active profile was removed, replace it with the
+    // first entry in the profiles list.
+    if (QString::compare(name, d->activeProfile, Qt::CaseSensitive) == 0)
+    {
+      // FIXME: Ask to migrate.
+      (void)setActiveProfile(d->profiles.first());
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    emit profileRemoved(name);
+    emit settingsChanged();
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
 void Smb4KProfileManager::slotConfigChanged()
 {
+  qDebug() << "Config changed...";
   bool use_changed, profiles_changed, active_changed = false;
   
   // Use of profiles

@@ -408,6 +408,7 @@ class Smb4KMounterPrivate
     bool hardwareReason;
     bool firstImportDone;
     bool importsAllowed;
+    QString activeProfile;
 };
 
 

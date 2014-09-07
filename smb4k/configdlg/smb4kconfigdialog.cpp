@@ -43,6 +43,7 @@
 #include "core/smb4kauthinfo.h"
 #include "core/smb4kwalletmanager.h"
 #include "core/smb4kcustomoptionsmanager.h"
+#include "core/smb4kprofilemanager.h"
 
 // Qt includes
 #include <QRadioButton>
@@ -52,6 +53,8 @@
 #include <QSize>
 #include <QScrollArea>
 #include <QPointer>
+#include <QPair>
+#include <QList>
 
 // KDE includes
 #include <klineedit.h>
@@ -65,6 +68,7 @@
 #include <kpassworddialog.h>
 #include <kapplication.h>
 #include <kconfigdialogmanager.h>
+#include <keditlistwidget.h>
 
 using namespace Smb4KGlobal;
 
@@ -171,24 +175,24 @@ void Smb4KConfigDialog::setupDialog()
   // Smb4KConfigDialog::showEvent()!
 
   // Connections
-  connect( custom_options,     SIGNAL(customSettingsModified()),
-           this,               SLOT(slotEnableApplyButton()) );
+  connect(custom_options, SIGNAL(customSettingsModified()),
+          this,           SLOT(slotEnableApplyButton()));
   
-  connect( custom_options,     SIGNAL(reloadCustomSettings()),
-           this,               SLOT(slotReloadCustomOptions()) );
+  connect(custom_options, SIGNAL(reloadCustomSettings()),
+          this,           SLOT(slotReloadCustomOptions()) );
 
-  connect( auth_options,       SIGNAL(loadWalletEntries()),
-           this,               SLOT(slotLoadAuthenticationInformation()) );
+  connect( auth_options,  SIGNAL(loadWalletEntries()),
+           this,          SLOT(slotLoadAuthenticationInformation()) );
            
-  connect( auth_options,       SIGNAL(saveWalletEntries()),
-           this,               SLOT(slotSaveAuthenticationInformation()) );
+  connect( auth_options,  SIGNAL(saveWalletEntries()),
+           this,          SLOT(slotSaveAuthenticationInformation()) );
            
-  connect( auth_options,       SIGNAL(setDefaultLogin()),
-           this,               SLOT(slotSetDefaultLogin()) );
+  connect( auth_options,  SIGNAL(setDefaultLogin()),
+           this,          SLOT(slotSetDefaultLogin()) );
            
-  connect( auth_options,       SIGNAL(walletEntriesModified()),
-           this,               SLOT(slotEnableApplyButton()) );
-
+  connect( auth_options,  SIGNAL(walletEntriesModified()),
+           this,          SLOT(slotEnableApplyButton()) );
+  
   setInitialSize( QSize( 800, 600 ) );
 
   KConfigGroup group( Smb4KSettings::self()->config(), "ConfigDialog" );
@@ -216,6 +220,59 @@ void Smb4KConfigDialog::saveCustomOptions()
   {
     QList<Smb4KCustomOptions *> options = m_custom_options->widget()->findChild<Smb4KCustomOptionsPage *>()->getCustomOptions();
     Smb4KCustomOptionsManager::self()->replaceCustomOptions( options );
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KConfigDialog::propagateProfilesChanges()
+{
+  Smb4KProfilesPage *profiles_page = m_profiles->widget()->findChild<Smb4KProfilesPage *>();
+  
+  if (profiles_page)
+  {
+    // Remove the profiles.
+    QStringList removed_profiles = profiles_page->removedProfiles();
+    
+    if (!removed_profiles.isEmpty())
+    {
+      for (int i = 0; i < removed_profiles.size(); ++i)
+      {
+        Smb4KProfileManager::self()->removeProfile(removed_profiles.at(i));
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // Rename the profiles.
+    QList< QPair<QString,QString> > renamed_profiles = profiles_page->renamedProfiles();
+    
+    if (!renamed_profiles.isEmpty())
+    {
+      for (int i = 0; i < renamed_profiles.size(); ++i)
+      {
+        Smb4KProfileManager::self()->migrateProfile(renamed_profiles.at(i).first, renamed_profiles.at(i).second);
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // Finally reload the custom options.
+    if (!removed_profiles.isEmpty() || !renamed_profiles.isEmpty())
+    {
+      loadCustomOptions();
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
@@ -539,6 +596,7 @@ void Smb4KConfigDialog::slotButtonClicked( int button )
 
       saveCustomOptions();
       slotSaveAuthenticationInformation();
+      propagateProfilesChanges();
 
       break;
     }
@@ -553,6 +611,7 @@ void Smb4KConfigDialog::slotButtonClicked( int button )
 
       saveCustomOptions();
       slotSaveAuthenticationInformation();
+      propagateProfilesChanges();
 
       KConfigGroup group( Smb4KSettings::self()->config(), "ConfigDialog" );
       saveDialogSize( group, KConfigGroup::Normal );
@@ -697,7 +756,7 @@ void Smb4KConfigDialog::slotEnableApplyButton()
   }
   
   // Check the custom settings.
-  Smb4KCustomOptionsPage *custom_options = m_custom_options->findChild<Smb4KCustomOptionsPage *>();
+  Smb4KCustomOptionsPage *custom_options = m_custom_options->widget()->findChild<Smb4KCustomOptionsPage *>();
   
   if ( !enable && custom_options && custom_options->customSettingsMaybeChanged() )
   {
@@ -749,6 +808,5 @@ void Smb4KConfigDialog::slotReloadCustomOptions()
 {
   loadCustomOptions();
 }
-
 
 #include "smb4kconfigdialog.moc"

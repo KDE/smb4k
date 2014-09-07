@@ -180,6 +180,12 @@ class Smb4KConfigDialog : public KConfigDialog
      * Save the custom Samba options
      */
     void saveCustomOptions();
+    
+    /**
+     * Takes care that the changes made to the profiles are propagated
+     * to the core classes via the profiles manager.
+     */
+    void propagateProfilesChanges();
 
     /**
      * Checks that mandatorily needed input is provided for settings that

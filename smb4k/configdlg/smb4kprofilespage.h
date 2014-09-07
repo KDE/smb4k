@@ -28,6 +28,8 @@
 
 // Qt includes
 #include <QWidget>
+#include <QList>
+#include <QPair>
 
 // KDE includes
 #include <keditlistwidget.h>
@@ -47,12 +49,32 @@ class Smb4KProfilesPage : public QWidget
      * Destructor
      */
     virtual ~Smb4KProfilesPage();
+    
+    /**
+     * This function returns a list of pairs that contains the
+     * renamed profiles. The first entry of the pair is the old name
+     * of the profile and the second entry is the new name.
+     * 
+     * @returns a list of name pairs
+     */
+    QList< QPair<QString,QString> > renamedProfiles() const;
+    
+    /**
+     * This function returns the list of removed profiles.
+     * 
+     * @returns the removed profiles
+     */
+    QStringList removedProfiles() const;
 
   protected Q_SLOTS:
     void slotEnableWidget(int state);
+    void slotProfileRemoved(const QString &name);
+    void slotProfileChanged();
 
   private:
     KEditListWidget *m_profiles;
+    QList< QPair<QString,QString> > m_renamed;
+    QStringList m_removed;
 };
 
 #endif

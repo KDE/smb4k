@@ -95,6 +95,7 @@ Smb4KMounter::Smb4KMounter( QObject *parent )
   d->aboutToQuit = false;
   d->firstImportDone = false;
   d->importsAllowed = true;
+  d->activeProfile = Smb4KProfileManager::self()->activeProfile();
 
   connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()),
           this,                         SLOT(slotAboutToQuit()));
@@ -2216,52 +2217,60 @@ void Smb4KMounter::slotStatResult( KJob *job )
 
 void Smb4KMounter::slotProfileSettingsChanged()
 {
-  // Stop the timer.
-  killTimer(d->timerId);
-  
-  // Abort all actions that are currently running.
-  if (isRunning())
+  if (QString::compare(d->activeProfile, Smb4KProfileManager::self()->activeProfile()) != 0)
   {
-    abortAll();
+    // Stop the timer.
+    killTimer(d->timerId);
+    
+    // Abort all actions that are currently running.
+    if (isRunning())
+    {
+      abortAll();
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // Clear all remounts.
+    while (!d->remounts.isEmpty())
+    {
+      delete d->remounts.takeFirst();
+    }
+    
+    // Clear all retries.
+    while (!d->retries.isEmpty())
+    {
+      delete d->retries.takeFirst();
+    }
+    
+    // Unmount all shares and wait until done.
+    unmountAllShares();
+    
+    while ( hasSubjobs() )
+    {
+      QTest::qWait(TIMEOUT);
+    }
+    
+    // Reset some variables.
+    d->importTimeout = 0;
+    d->remountTimeout = 0;
+    d->remountAttempts = 0;
+    d->checks = 0;
+    d->firstImportDone = false;
+    d->importsAllowed = true;
+    d->activeProfile = Smb4KProfileManager::self()->activeProfile();
+    
+    // Import the shares currently mounted.
+    import(true);
+    
+    // Start the timer again.
+    d->timerId = startTimer(TIMEOUT);
   }
   else
   {
     // Do nothing
   }
-  
-  // Clear all remounts.
-  while (!d->remounts.isEmpty())
-  {
-    delete d->remounts.takeFirst();
-  }
-  
-  // Clear all retries.
-  while (!d->retries.isEmpty())
-  {
-    delete d->retries.takeFirst();
-  }
-  
-  // Unmount all shares and wait until done.
-  unmountAllShares();
-  
-  while ( hasSubjobs() )
-  {
-    QTest::qWait(TIMEOUT);
-  }
-  
-  // Reset some variables.
-  d->importTimeout = 0;
-  d->remountTimeout = 0;
-  d->remountAttempts = 0;
-  d->checks = 0;
-  d->firstImportDone = false;
-  d->importsAllowed = true;
-  
-  // Import the shares currently mounted.
-  import(true);
-  
-  // Start the timer again.
-  d->timerId = startTimer(TIMEOUT);
 }
 
 

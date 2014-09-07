@@ -113,6 +113,22 @@ class KDE_EXPORT Smb4KHomesSharesHandler : public QObject
      * This slot is called if the profiles settings changed.
      */
     void slotProfileSettingsChanged();
+    
+    /**
+     * This slot is called when the entries of a profile are to be migrated
+     * to another profile.
+     * 
+     * @param from        The name of the old profile.
+     * @param to          The name of the new profile.
+     */
+    void slotProfileMigrated(const QString &from, const QString &to);
+    
+    /**
+     * This slot is called when a profile is to be removed.
+     * 
+     * @param name        The name of the profile.
+     */
+    void slotProfileRemoved(const QString &name);
 
   private:
     /**
@@ -122,9 +138,17 @@ class KDE_EXPORT Smb4KHomesSharesHandler : public QObject
                        bool readAll);
 
     /**
-     * Save the host and user names.
+     * This function writes the homes user entries to the disk. If @p listOnly 
+     * is set to TRUE, only the list that was passed will be written to the 
+     * file replacing the existing homes user entries. If it is FALSE (the 
+     * default), the list will be merged with the existing homes user entries. 
+     *
+     * @param list          The (new) list of homes user entries that is to be 
+     *                      written.
+     * @param listOnly      If TRUE only the passed list will be written to
+     *                      the file.
      */
-    void writeUserNames();
+    void writeUserNames(const QList<Smb4KHomesUsers *> &list, bool listOnly = false);
     
     /**
      * Find the homes user for a specific share
