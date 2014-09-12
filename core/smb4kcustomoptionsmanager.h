@@ -41,6 +41,7 @@
 class Smb4KCustomOptionsManagerPrivate;
 class Smb4KShare;
 class Smb4KBasicNetworkItem;
+class Smb4KProfileManager;
 
 /**
  * This classes manages the custom options that were defined
@@ -55,6 +56,7 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
   Q_OBJECT
   
   friend class Smb4KCustomOptionsManagerPrivate;
+  friend class Smb4KProfileManager;
   
   public:
     /**
@@ -221,22 +223,6 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
      */
     void slotProfileSettingsChanged();
     
-    /**
-     * This slot is called when the entries of a profile are to be migrated
-     * to another profile.
-     * 
-     * @param from        The name of the old profile.
-     * @param to          The name of the new profile.
-     */
-    void slotProfileMigrated(const QString &from, const QString &to);
-    
-    /**
-     * This slot is called when a profile is to be removed.
-     * 
-     * @param name        The name of the profile.
-     */
-    void slotProfileRemoved(const QString &name);
-  
   private:
     /**
      * Read custom options
@@ -255,6 +241,25 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
      *                      the file.
      */
     void writeCustomOptions(const QList<Smb4KCustomOptions *> &list, bool listOnly = false);
+    
+    /**
+     * Migrates one profile to another.
+     * 
+     * This function is meant to be used by the profile manager.
+     * 
+     * @param from        The name of the old profile.
+     * @param to          The name of the new profile.
+     */
+    void migrateProfile(const QString &from, const QString &to);
+    
+    /**
+     * Removes a profile from the list of profiles.
+     * 
+     * This function is meant to be used by the profile manager.
+     * 
+     * @param name        The name of the profile.
+     */
+    void removeProfile(const QString &name);
 
     /**
      * Pointer to Smb4KCustomOptionsManagerPrivate class

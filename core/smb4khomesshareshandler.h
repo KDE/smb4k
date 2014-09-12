@@ -42,6 +42,7 @@ class Smb4KShare;
 class Smb4KAuthInfo;
 class Smb4KHomesUsers;
 class Smb4KHomesSharesHandlerPrivate;
+class Smb4KProfileManager;
 
 
 /**
@@ -56,6 +57,7 @@ class KDE_EXPORT Smb4KHomesSharesHandler : public QObject
   Q_OBJECT
 
   friend class Smb4KHomesSharesHandlerPrivate;
+  friend class Smb4KProfileManager;
 
   public:
     /**
@@ -114,22 +116,6 @@ class KDE_EXPORT Smb4KHomesSharesHandler : public QObject
      */
     void slotProfileSettingsChanged();
     
-    /**
-     * This slot is called when the entries of a profile are to be migrated
-     * to another profile.
-     * 
-     * @param from        The name of the old profile.
-     * @param to          The name of the new profile.
-     */
-    void slotProfileMigrated(const QString &from, const QString &to);
-    
-    /**
-     * This slot is called when a profile is to be removed.
-     * 
-     * @param name        The name of the profile.
-     */
-    void slotProfileRemoved(const QString &name);
-
   private:
     /**
      * Load the host and user names into a map.
@@ -161,6 +147,25 @@ class KDE_EXPORT Smb4KHomesSharesHandler : public QObject
      */
     void addHomesUsers( Smb4KShare *share,
                         QStringList *users );
+    
+    /**
+     * Migrates one profile to another.
+     * 
+     * This function is meant to be used by the profile manager.
+     * 
+     * @param from        The name of the old profile.
+     * @param to          The name of the new profile.
+     */
+    void migrateProfile(const QString &from, const QString &to);
+    
+    /**
+     * Removes a profile from the list of profiles.
+     * 
+     * This function is meant to be used by the profile manager.
+     * 
+     * @param name        The name of the profile.
+     */
+    void removeProfile(const QString &name);
 
     /**
      * Pointer to the Smb4KHomesSharesHandlerPrivate class

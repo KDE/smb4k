@@ -73,10 +73,6 @@ Smb4KCustomOptionsManager::Smb4KCustomOptionsManager( QObject *parent )
           this, SLOT(slotAboutToQuit()));
   connect(Smb4KProfileManager::self(), SIGNAL(settingsChanged()), 
           this, SLOT(slotProfileSettingsChanged()));
-  connect(Smb4KProfileManager::self(), SIGNAL(profileMigrated(QString,QString)), 
-          this, SLOT(slotProfileMigrated(QString,QString)));
-  connect(Smb4KProfileManager::self(), SIGNAL(profileRemoved(QString)),
-          this, SLOT(slotProfileRemoved(QString)));
 }
 
 
@@ -1376,30 +1372,7 @@ QList<Smb4KCustomOptions *> Smb4KCustomOptionsManager::wolEntries() const
 }
 
 
-/////////////////////////////////////////////////////////////////////////////
-// SLOT IMPLEMENTATIONS
-/////////////////////////////////////////////////////////////////////////////
-
-void Smb4KCustomOptionsManager::slotAboutToQuit()
-{
-  writeCustomOptions(d->options);
-}
-
-
-void Smb4KCustomOptionsManager::slotProfileSettingsChanged()
-{
-  // Clear the list of custom options.
-  while (!d->options.isEmpty())
-  {
-    delete d->options.takeFirst();
-  }
-  
-  // Reload the list.
-  readCustomOptions(&d->options, false);
-}
-
-
-void Smb4KCustomOptionsManager::slotProfileMigrated(const QString& from, const QString& to)
+void Smb4KCustomOptionsManager::migrateProfile(const QString& from, const QString& to)
 {
   QList<Smb4KCustomOptions *> allOptions;
  
@@ -1433,7 +1406,7 @@ void Smb4KCustomOptionsManager::slotProfileMigrated(const QString& from, const Q
 }
 
 
-void Smb4KCustomOptionsManager::slotProfileRemoved(const QString& name)
+void Smb4KCustomOptionsManager::removeProfile(const QString& name)
 {
   QList<Smb4KCustomOptions *> allOptions;
  
@@ -1468,5 +1441,29 @@ void Smb4KCustomOptionsManager::slotProfileRemoved(const QString& name)
     delete allOptions.takeFirst();
   }
 }
+
+
+/////////////////////////////////////////////////////////////////////////////
+// SLOT IMPLEMENTATIONS
+/////////////////////////////////////////////////////////////////////////////
+
+void Smb4KCustomOptionsManager::slotAboutToQuit()
+{
+  writeCustomOptions(d->options);
+}
+
+
+void Smb4KCustomOptionsManager::slotProfileSettingsChanged()
+{
+  // Clear the list of custom options.
+  while (!d->options.isEmpty())
+  {
+    delete d->options.takeFirst();
+  }
+  
+  // Reload the list.
+  readCustomOptions(&d->options, false);
+}
+
 
 #include "smb4kcustomoptionsmanager.moc"

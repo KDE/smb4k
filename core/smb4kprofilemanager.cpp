@@ -32,6 +32,9 @@
 #include "smb4kprofilemanager.h"
 #include "smb4kprofilemanager_p.h"
 #include "smb4ksettings.h"
+#include "smb4khomesshareshandler.h"
+#include "smb4kcustomoptionsmanager.h"
+#include "smb4kbookmarkhandler.h"
 
 // KDE includes
 #include <kglobal.h>
@@ -176,7 +179,11 @@ void Smb4KProfileManager::migrateProfile(const QString& from, const QString& to)
       // Do nothing
     }
     
-    emit profileMigrated(from, to);
+    // Migrate profiles.
+    Smb4KBookmarkHandler::self()->migrateProfile(from, to);
+    Smb4KCustomOptionsManager::self()->migrateProfile(from, to);
+    Smb4KHomesSharesHandler::self()->migrateProfile(from, to);
+    
     emit settingsChanged();
   }
   else
@@ -215,14 +222,26 @@ void Smb4KProfileManager::removeProfile(const QString& name)
     if (QString::compare(name, d->activeProfile, Qt::CaseSensitive) == 0)
     {
       // FIXME: Ask to migrate.
-      (void)setActiveProfile(d->profiles.first());
+      
+      if (!d->profiles.isEmpty())
+      {
+        (void)setActiveProfile(d->profiles.first());
+      }
+      else
+      {
+        // Do nothing
+      }
     }
     else
     {
       // Do nothing
     }
     
-    emit profileRemoved(name);
+    // Remove the profile.
+    Smb4KBookmarkHandler::self()->removeProfile(name);
+    Smb4KCustomOptionsManager::self()->removeProfile(name);
+    Smb4KHomesSharesHandler::self()->removeProfile(name);
+    
     emit settingsChanged();
   }
   else
@@ -234,7 +253,6 @@ void Smb4KProfileManager::removeProfile(const QString& name)
 
 void Smb4KProfileManager::slotConfigChanged()
 {
-  qDebug() << "Config changed...";
   bool use_changed, profiles_changed, active_changed = false;
   
   // Use of profiles

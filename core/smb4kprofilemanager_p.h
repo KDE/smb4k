@@ -30,6 +30,30 @@
 // Qt includes
 #include <QtCore/QString>
 #include <QtCore/QStringList>
+#include <QtGui/QWidget>
+
+// KDE includes
+#include <kdialog.h>
+
+
+class Smb4KProfileMigrationDialog : public KDialog
+{
+  Q_OBJECT
+  
+  public:
+    /**
+     * Constructor
+     */
+    explicit Smb4KProfileMigrationDialog(const QString &from,
+                                         const QStringList &to,
+                                         QWidget* parent = 0);
+    
+    /**
+     * Destructor
+     */
+    virtual ~Smb4KProfileMigrationDialog();
+};
+
 
 class Smb4KProfileManagerPrivate
 {

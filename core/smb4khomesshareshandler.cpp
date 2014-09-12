@@ -72,10 +72,6 @@ Smb4KHomesSharesHandler::Smb4KHomesSharesHandler( QObject *parent )
           this, SLOT(slotAboutToQuit()));
   connect(Smb4KProfileManager::self(), SIGNAL(settingsChanged()), 
           this, SLOT(slotProfileSettingsChanged()));
-  connect(Smb4KProfileManager::self(), SIGNAL(profileMigrated(QString,QString)), 
-          this, SLOT(slotProfileMigrated(QString,QString)));
-  connect(Smb4KProfileManager::self(), SIGNAL(profileRemoved(QString)),
-          this, SLOT(slotProfileRemoved(QString)));
 }
 
 
@@ -355,7 +351,7 @@ void Smb4KHomesSharesHandler::writeUserNames(const QList<Smb4KHomesUsers *> &lis
         
         // FIXME: Remove this block with Smb4K > 2.0 and use the commented line below. 
         // This block was introduced for migration, because the default profile 
-        // (e.g. use of no profiles) was not empty but named "Default"...
+        // (i.e. use of no profiles) was not empty but named "Default"...
         if (!Smb4KProfileManager::self()->useProfiles())
         {
           xmlWriter.writeAttribute("profile", Smb4KSettings::self()->activeProfile());
@@ -469,31 +465,7 @@ void Smb4KHomesSharesHandler::addHomesUsers( Smb4KShare *share, QStringList *use
 }
 
 
-
-/////////////////////////////////////////////////////////////////////////////
-// SLOT IMPLEMENTATIONS
-/////////////////////////////////////////////////////////////////////////////
-
-void Smb4KHomesSharesHandler::slotAboutToQuit()
-{
-  writeUserNames(d->homesUsers);
-}
-
-
-void Smb4KHomesSharesHandler::slotProfileSettingsChanged()
-{
-  // Clear the list of homes users.
-  while (!d->homesUsers.isEmpty())
-  {
-    delete d->homesUsers.takeFirst();
-  }
-  
-  // Reload the list of homes users.
-  readUserNames(&d->homesUsers, false);
-}
-
-
-void Smb4KHomesSharesHandler::slotProfileMigrated(const QString& from, const QString& to)
+void Smb4KHomesSharesHandler::migrateProfile(const QString& from, const QString& to)
 {
   QList<Smb4KHomesUsers *> allUsers;
  
@@ -527,7 +499,7 @@ void Smb4KHomesSharesHandler::slotProfileMigrated(const QString& from, const QSt
 }
 
 
-void Smb4KHomesSharesHandler::slotProfileRemoved(const QString& name)
+void Smb4KHomesSharesHandler::removeProfile(const QString& name)
 {
   QList<Smb4KHomesUsers *> allUsers;
  
@@ -550,18 +522,44 @@ void Smb4KHomesSharesHandler::slotProfileRemoved(const QString& name)
     }
   }
   
+  qDebug() << "Size of homes users list: " << allUsers.size();
+  
   // Write the new list to the file.
   writeUserNames(allUsers, true);
   
   // Profile settings changed, so invoke the slot.
   slotProfileSettingsChanged();
   
-  // Clear the temporary lists of bookmarks and groups.
+  // Clear the temporary list of homes users.
   while (!allUsers.isEmpty())
   {
     delete allUsers.takeFirst();
   }
 }
+
+
+/////////////////////////////////////////////////////////////////////////////
+// SLOT IMPLEMENTATIONS
+/////////////////////////////////////////////////////////////////////////////
+
+void Smb4KHomesSharesHandler::slotAboutToQuit()
+{
+  writeUserNames(d->homesUsers);
+}
+
+
+void Smb4KHomesSharesHandler::slotProfileSettingsChanged()
+{
+  // Clear the list of homes users.
+  while (!d->homesUsers.isEmpty())
+  {
+    delete d->homesUsers.takeFirst();
+  }
+  
+  // Reload the list of homes users.
+  readUserNames(&d->homesUsers, false);
+}
+
 
 #include "smb4khomesshareshandler.moc"
 

@@ -119,29 +119,6 @@ class KDE_EXPORT Smb4KProfileManager : public QObject
      */
     void settingsChanged();
     
-    /**
-     * This signal is emitted when the entries of a profile are to be migrated.
-     * 
-     * Please note that the profile manager does not manipulate any files,
-     * but only emits this signal. So, you need to connect to this signal
-     * in the respective classes that handle e. g. bookmarks or similar.
-     * 
-     * @param from        The old name of the profile.
-     * @param to          The new name of the profile.
-     */
-    void profileMigrated(const QString &from, const QString &to);
-    
-    /**
-     * This signal is emitted when a profile is to be removed.
-     * 
-     * Please note that the profile manager does not manipulate any files,
-     * but only emits this signal. So, you need to connect to this signal
-     * in the respective classes that handle e. g. bookmarks or similar.
-     * 
-     * @param name        The name of the profile.
-     */
-    void profileRemoved(const QString &name);
-    
   protected Q_SLOTS:
     /**
      * This slot is connected to the configChanged() signal of the

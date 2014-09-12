@@ -81,10 +81,6 @@ Smb4KBookmarkHandler::Smb4KBookmarkHandler( QObject *parent )
   // Connections
   connect(Smb4KProfileManager::self(), SIGNAL(settingsChanged()), 
           this, SLOT(slotProfileSettingsChanged()));
-  connect(Smb4KProfileManager::self(), SIGNAL(profileMigrated(QString,QString)), 
-          this, SLOT(slotProfileMigrated(QString,QString)));
-  connect(Smb4KProfileManager::self(), SIGNAL(profileRemoved(QString)),
-          this, SLOT(slotProfileRemoved(QString)));
 }
 
 
@@ -742,22 +738,7 @@ void Smb4KBookmarkHandler::update() const
 }
 
 
-void Smb4KBookmarkHandler::slotProfileSettingsChanged()
-{
-  // Clear the list of bookmarks and the list of groups.
-  while (!d->bookmarks.isEmpty())
-  {
-    delete d->bookmarks.takeFirst();
-  }
-  
-  d->groups.clear();
-  
-  // Reload the bookmarks and groups.
-  readBookmarks(&d->bookmarks, &d->groups, false);
-}
-
-
-void Smb4KBookmarkHandler::slotProfileMigrated(const QString& from, const QString& to)
+void Smb4KBookmarkHandler::migrateProfile(const QString& from, const QString& to)
 {
   QList<Smb4KBookmark *> allBookmarks;
   QStringList allGroups; // Can be ignored.
@@ -794,7 +775,7 @@ void Smb4KBookmarkHandler::slotProfileMigrated(const QString& from, const QStrin
 }
 
 
-void Smb4KBookmarkHandler::slotProfileRemoved(const QString& name)
+void Smb4KBookmarkHandler::removeProfile(const QString& name)
 {
   QList<Smb4KBookmark *> allBookmarks;
   QStringList allGroups; // Can be ignored.
@@ -832,5 +813,21 @@ void Smb4KBookmarkHandler::slotProfileRemoved(const QString& name)
   
   allGroups.clear();
 }
+
+
+void Smb4KBookmarkHandler::slotProfileSettingsChanged()
+{
+  // Clear the list of bookmarks and the list of groups.
+  while (!d->bookmarks.isEmpty())
+  {
+    delete d->bookmarks.takeFirst();
+  }
+  
+  d->groups.clear();
+  
+  // Reload the bookmarks and groups.
+  readBookmarks(&d->bookmarks, &d->groups, false);
+}
+
 
 #include "smb4kbookmarkhandler.moc"

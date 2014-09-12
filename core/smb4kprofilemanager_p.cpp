@@ -23,3 +23,24 @@
  *   Free Software Foundation, Inc., 51 Franklin Street, Suite 500, Boston,*
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
+
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+// application specific includes
+#include "smb4kprofilemanager_p.h"
+
+
+Smb4KProfileMigrationDialog::Smb4KProfileMigrationDialog(const QString& from, const QStringList& to, QWidget* parent)
+: KDialog(parent)
+{
+}
+
+
+Smb4KProfileMigrationDialog::~Smb4KProfileMigrationDialog()
+{
+}
+
+
+#include "smb4kprofilemanager_p.moc"
