@@ -2,7 +2,7 @@
     smb4kmounter.h  -  The core class that mounts the shares.
                              -------------------
     begin                : Die Jun 10 2003
-    copyright            : (C) 2003-2013 by Alexander Reinholdt
+    copyright            : (C) 2003-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -370,7 +370,15 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * This slot is called if the profiles settings changed.
      */
     void slotProfileSettingsChanged();
-
+    
+    /**
+     * This slot is called when a profile was migrated.
+     * 
+     * @param from            The old profile
+     * @param to              The new profile
+     */
+    void slotProfileMigrated(const QString &from, const QString &to);
+    
   private:
     /**
      * Trigger the remounting of shares. If the parameter @p fill_list is

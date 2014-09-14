@@ -27,6 +27,9 @@
 #ifndef SMB4KPROFILEMANAGER_P_H
 #define SMB4KPROFILEMANAGER_P_H
 
+// Application specific includes
+#include "smb4kprofilemanager.h"
+
 // Qt includes
 #include <QtCore/QString>
 #include <QtCore/QStringList>
@@ -34,6 +37,7 @@
 
 // KDE includes
 #include <kdialog.h>
+#include <kcombobox.h>
 
 
 class Smb4KProfileMigrationDialog : public KDialog
@@ -44,7 +48,7 @@ class Smb4KProfileMigrationDialog : public KDialog
     /**
      * Constructor
      */
-    explicit Smb4KProfileMigrationDialog(const QString &from,
+    explicit Smb4KProfileMigrationDialog(const QStringList &from,
                                          const QStringList &to,
                                          QWidget* parent = 0);
     
@@ -52,6 +56,32 @@ class Smb4KProfileMigrationDialog : public KDialog
      * Destructor
      */
     virtual ~Smb4KProfileMigrationDialog();
+    
+    /**
+     * Returns the name of the profile of which the entries 
+     * should be migrated.
+     * 
+     * @returns the name of the profile.
+     */
+    QString from() const;
+    
+    /**
+     * Returns the name of the profile where the entries should
+     * be migrated to.
+     * 
+     * @returns the name of the new profile.
+     */
+    QString to() const;
+    
+  protected Q_SLOTS:
+    void slotOkClicked();
+    
+  private:
+    void setupView();
+    QStringList m_from_list;
+    QStringList m_to_list;
+    KComboBox *m_from_box;
+    KComboBox *m_to_box;
 };
 
 

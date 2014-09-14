@@ -60,11 +60,21 @@ class Smb4KProfilesPage : public QWidget
     QList< QPair<QString,QString> > renamedProfiles() const;
     
     /**
+     * Clear the list of renamed profiles.
+     */
+    void clearRenamedProfiles();
+    
+    /**
      * This function returns the list of removed profiles.
      * 
      * @returns the removed profiles
      */
     QStringList removedProfiles() const;
+    
+    /**
+     * Clear the list of removed profiles.
+     */
+    void clearRemovedProfiles();
 
   protected Q_SLOTS:
     void slotEnableWidget(int state);

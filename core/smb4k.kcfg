@@ -1109,5 +1109,10 @@
       <whatsthis>This is the currently active profile.</whatsthis>
       <default code="true">QString()</default>
     </entry>
+    <entry name="UseMigrationAssistant" type="Bool">
+      <label>Use profile migration assistant</label>
+      <whatsthis>Use the profile migration assistant when profiles are removed or the enabled or disabled the use of profiles. The profile migration assistant allows you to migrate all settings that were saved for a certain profile to a different one.</whatsthis>
+      <default>true</default>
+    </entry>
   </group>
 </kcfg>

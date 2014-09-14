@@ -241,8 +241,10 @@ void Smb4KConfigDialog::propagateProfilesChanges()
     {
       for (int i = 0; i < removed_profiles.size(); ++i)
       {
-        Smb4KProfileManager::self()->removeProfile(removed_profiles.at(i));
+        Smb4KProfileManager::self()->removeProfile(removed_profiles.at(i), this);
       }
+      
+      profiles_page->clearRemovedProfiles();
     }
     else
     {
@@ -258,6 +260,8 @@ void Smb4KConfigDialog::propagateProfilesChanges()
       {
         Smb4KProfileManager::self()->migrateProfile(renamed_profiles.at(i).first, renamed_profiles.at(i).second);
       }
+      
+      profiles_page->clearRenamedProfiles();
     }
     else
     {

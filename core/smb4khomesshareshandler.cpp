@@ -522,8 +522,6 @@ void Smb4KHomesSharesHandler::removeProfile(const QString& name)
     }
   }
   
-  qDebug() << "Size of homes users list: " << allUsers.size();
-  
   // Write the new list to the file.
   writeUserNames(allUsers, true);
   

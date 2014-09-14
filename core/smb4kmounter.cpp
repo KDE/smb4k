@@ -2,7 +2,7 @@
     smb4kmounter.cpp  -  The core class that mounts the shares.
                              -------------------
     begin                : Die Jun 10 2003
-    copyright            : (C) 2003-2013 by Alexander Reinholdt
+    copyright            : (C) 2003-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -99,18 +99,16 @@ Smb4KMounter::Smb4KMounter( QObject *parent )
 
   connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()),
           this,                         SLOT(slotAboutToQuit()));
-
   connect(Smb4KSolidInterface::self(),  SIGNAL(buttonPressed(Smb4KSolidInterface::ButtonType)),
           this,                         SLOT(slotHardwareButtonPressed(Smb4KSolidInterface::ButtonType)));
-
   connect(Smb4KSolidInterface::self(),  SIGNAL(wokeUp()),
           this,                         SLOT(slotComputerWokeUp()));
-
   connect(Smb4KSolidInterface::self(),  SIGNAL(networkStatusChanged(Smb4KSolidInterface::ConnectionStatus)),
           this,                         SLOT(slotNetworkStatusChanged(Smb4KSolidInterface::ConnectionStatus)));
-  
   connect(Smb4KProfileManager::self(),  SIGNAL(settingsChanged()),
           this,                         SLOT(slotProfileSettingsChanged()));
+  connect(Smb4KProfileManager::self(),  SIGNAL(profileMigrated(QString,QString)),
+          this,                         SLOT(slotProfileMigrated(QString,QString)));
 }
 
 
@@ -2273,6 +2271,18 @@ void Smb4KMounter::slotProfileSettingsChanged()
   }
 }
 
+
+void Smb4KMounter::slotProfileMigrated(const QString& from, const QString& to)
+{
+  if (QString::compare(from, d->activeProfile, Qt::CaseSensitive) == 0)
+  {
+    d->activeProfile = to;
+  }
+  else
+  {
+    // Do nothing
+  }
+}
 
 
 #include "smb4kmounter.moc"

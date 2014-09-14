@@ -61,7 +61,12 @@ Smb4KProfilesPage::Smb4KProfilesPage(QWidget* parent)
   QCheckBox *use_profiles = new QCheckBox(Smb4KSettings::self()->useProfilesItem()->label(), settings);
   use_profiles->setObjectName("kcfg_UseProfiles");
   
+  // Use profile migration assistant
+  QCheckBox *use_assistant = new QCheckBox(Smb4KSettings::self()->useMigrationAssistantItem()->label(), settings);
+  use_assistant->setObjectName("kcfg_UseMigrationAssistant");
+  
   settings_layout->addWidget(use_profiles, 0, 0);
+  settings_layout->addWidget(use_assistant, 0, 0);
   
   // List of profiles
   m_profiles = new KEditListWidget(this);
@@ -88,9 +93,21 @@ QList< QPair<QString,QString> > Smb4KProfilesPage::renamedProfiles() const
 }
 
 
+void Smb4KProfilesPage::clearRenamedProfiles()
+{
+  m_renamed.clear();
+}
+
+
 QStringList Smb4KProfilesPage::removedProfiles() const
 {
   return m_removed;
+}
+
+
+void Smb4KProfilesPage::clearRemovedProfiles()
+{
+  m_removed.clear();
 }
 
 

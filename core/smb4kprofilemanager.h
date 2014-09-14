@@ -32,6 +32,7 @@
 #include <QtCore/QScopedPointer>
 #include <QtCore/QString>
 #include <QtCore/QStringList>
+#include <QtGui/QWidget>
 
 // KDE includes
 #include <kdemacros.h>
@@ -109,8 +110,10 @@ class KDE_EXPORT Smb4KProfileManager : public QObject
      * Remove a profile with all its entries.
      * 
      * @param name        The name of the profile.
+     * @param parent      The parent widget for the profile migration
+     *                    dialog.
      */
-    void removeProfile(const QString &name);
+    void removeProfile(const QString &name, QWidget *parent = 0);
     
   Q_SIGNALS:
     /**
@@ -118,6 +121,22 @@ class KDE_EXPORT Smb4KProfileManager : public QObject
      * profiles changed.
      */
     void settingsChanged();
+    
+    /**
+     * This signal is emitted when all entries of one profile was migrated
+     * to another one.
+     * 
+     * @param from        The old profile
+     * @param to          The new profile
+     */
+    void profileMigrated(const QString &from, const QString &to);
+    
+    /**
+     * This signal is emitted when a profile was removed.
+     * 
+     * @param profile     The removed profile
+     */
+    void removedProfile(const QString &profile);
     
   protected Q_SLOTS:
     /**

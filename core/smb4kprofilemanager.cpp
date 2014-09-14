@@ -36,6 +36,9 @@
 #include "smb4kcustomoptionsmanager.h"
 #include "smb4kbookmarkhandler.h"
 
+// Qt includes
+#include <QtCore/QPointer>
+
 // KDE includes
 #include <kglobal.h>
 
@@ -184,6 +187,7 @@ void Smb4KProfileManager::migrateProfile(const QString& from, const QString& to)
     Smb4KCustomOptionsManager::self()->migrateProfile(from, to);
     Smb4KHomesSharesHandler::self()->migrateProfile(from, to);
     
+    emit profileMigrated(from, to);
     emit settingsChanged();
   }
   else
@@ -193,7 +197,7 @@ void Smb4KProfileManager::migrateProfile(const QString& from, const QString& to)
 }
 
 
-void Smb4KProfileManager::removeProfile(const QString& name)
+void Smb4KProfileManager::removeProfile(const QString& name, QWidget* parent)
 {
   if (d->useProfiles)
   {
@@ -217,13 +221,32 @@ void Smb4KProfileManager::removeProfile(const QString& name)
     
     Smb4KSettings::setProfilesList(d->profiles);
  
-    // In case the active profile was removed, replace it with the
-    // first entry in the profiles list.
-    if (QString::compare(name, d->activeProfile, Qt::CaseSensitive) == 0)
+    if (!d->profiles.isEmpty())
     {
-      // FIXME: Ask to migrate.
+      // Ask the user if he/she wants to migrate the entries 
+      // of the removed profile to another one.
+      if (Smb4KSettings::useMigrationAssistant())
+      {
+        QPointer<Smb4KProfileMigrationDialog> dlg = new Smb4KProfileMigrationDialog(QStringList(name), d->profiles, parent);
+          
+        if (dlg->exec() == KDialog::Accepted)
+        {
+          migrateProfile(dlg->from(), dlg->to());
+        }
+        else
+        {
+          // Do nothing
+        }
+        
+        delete dlg;
+      }
+      else
+      {
+        // Do nothing
+      }
       
-      if (!d->profiles.isEmpty())
+      // Set a new active profile if the user removed the current one.
+      if (QString::compare(name, d->activeProfile, Qt::CaseSensitive) == 0)
       {
         (void)setActiveProfile(d->profiles.first());
       }
@@ -242,6 +265,7 @@ void Smb4KProfileManager::removeProfile(const QString& name)
     Smb4KCustomOptionsManager::self()->removeProfile(name);
     Smb4KHomesSharesHandler::self()->removeProfile(name);
     
+    emit removedProfile(name);
     emit settingsChanged();
   }
   else
