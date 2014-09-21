@@ -120,6 +120,14 @@ class Smb4KConfigDialog : public KConfigDialog
      */
     void slotReloadCustomOptions();
     
+    /**
+     * This slot is used to check the settings of the different pages.
+     * 
+     * @param current     the current dialog page
+     * @param before      the previous dialog page
+     */
+    void slotCheckPage(KPageWidgetItem *current, KPageWidgetItem *before);
+    
   private:
     /**
      * "User Interface" page
@@ -186,6 +194,34 @@ class Smb4KConfigDialog : public KConfigDialog
      * to the core classes via the profiles manager.
      */
     void propagateProfilesChanges();
+    
+    /**
+     * Checks the settings in the Network page.
+     * 
+     * @returns TRUE if everything is OK and FALSE otherwise.
+     */
+    bool checkNetworkPage();
+    
+    /**
+     * Checks the settings in the Shares page.
+     * 
+     * @returns TRUE if everything is OK and FALSE otherwise.
+     */
+    bool checkSharesPage();
+    
+    /**
+     * Checks the settings in the Samba page.
+     * 
+     * @returns TRUE if everything is OK and FALSE otherwise.
+     */
+    bool checkSambaPage();
+    
+    /**
+     * Checks the settings in the Synchronization page.
+     * 
+     * @returns TRUE if everything is OK and FALSE otherwise.
+     */
+    bool checkSynchronizationPage();
 
     /**
      * Checks that mandatorily needed input is provided for settings that

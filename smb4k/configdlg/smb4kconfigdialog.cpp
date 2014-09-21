@@ -193,6 +193,9 @@ void Smb4KConfigDialog::setupDialog()
   connect( auth_options,  SIGNAL(walletEntriesModified()),
            this,          SLOT(slotEnableApplyButton()) );
   
+  connect( this,          SIGNAL(currentPageChanged(KPageWidgetItem*,KPageWidgetItem*)),
+           this,          SLOT(slotCheckPage(KPageWidgetItem*,KPageWidgetItem*)));
+  
   setInitialSize( QSize( 800, 600 ) );
 
   KConfigGroup group( Smb4KSettings::self()->config(), "ConfigDialog" );
@@ -285,19 +288,16 @@ void Smb4KConfigDialog::propagateProfilesChanges()
 }
 
 
-bool Smb4KConfigDialog::checkSettings()
+bool Smb4KConfigDialog::checkNetworkPage()
 {
-  //
-  // Network page
-  //
-  QRadioButton *query_custom_master = m_network->widget()->findChild<QRadioButton *>( "kcfg_QueryCustomMaster" );
-  KLineEdit *custom_master_input    = m_network->widget()->findChild<KLineEdit *>( "kcfg_CustomMasterBrowser" );
+  QRadioButton *query_custom_master = m_network->widget()->findChild<QRadioButton *>("kcfg_QueryCustomMaster");
+  KLineEdit *custom_master_input    = m_network->widget()->findChild<KLineEdit *>("kcfg_CustomMasterBrowser");
 
-  if ( (query_custom_master && query_custom_master->isChecked()) &&
-       (custom_master_input && custom_master_input->text().trimmed().isEmpty()) )
+  if ((query_custom_master && query_custom_master->isChecked()) &&
+      (custom_master_input && custom_master_input->text().trimmed().isEmpty()))
   {
-    KMessageBox::sorry( this, i18n( "The custom master browser that is to be queried has not been filled in.\nPlease enter it now." ) );
-    setCurrentPage( m_network );
+    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    setCurrentPage(m_network);
     custom_master_input->setFocus();
     return false;
   }
@@ -306,31 +306,34 @@ bool Smb4KConfigDialog::checkSettings()
     // Do nothing
   }
   
-  QRadioButton *scan_bcast_areas = m_network->widget()->findChild<QRadioButton *>( "kcfg_ScanBroadcastAreas" );
-  KLineEdit *bcast_areas_input   = m_network->widget()->findChild<KLineEdit *>( "kcfg_BroadcastAreas" );
+  QRadioButton *scan_bcast_areas = m_network->widget()->findChild<QRadioButton *>("kcfg_ScanBroadcastAreas");
+  KLineEdit *bcast_areas_input   = m_network->widget()->findChild<KLineEdit *>("kcfg_BroadcastAreas");
   
-  if ( (scan_bcast_areas && scan_bcast_areas->isChecked()) &&
-       (bcast_areas_input && bcast_areas_input->text().trimmed().isEmpty()) )
+  if ((scan_bcast_areas && scan_bcast_areas->isChecked()) &&
+      (bcast_areas_input && bcast_areas_input->text().trimmed().isEmpty()))
   {
-    KMessageBox::sorry( this, i18n( "The broadcast areas that are to be scanned have not been filled in.\nPlease enter them now." ) );
-    setCurrentPage( m_network );
+    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    setCurrentPage(m_network);
     bcast_areas_input->setFocus();
     return false;
   }
   else
   {
     // Do nothing
-  }
+  }  
   
-  //
-  // Shares page
-  //
-  KUrlRequester *mount_prefix = m_shares->widget()->findChild<KUrlRequester *>( "kcfg_MountPrefix" );
+  return true;
+}
+
+
+bool Smb4KConfigDialog::checkSharesPage()
+{
+  KUrlRequester *mount_prefix = m_shares->widget()->findChild<KUrlRequester *>("kcfg_MountPrefix");
   
-  if ( mount_prefix && mount_prefix->url().path().trimmed().isEmpty() )
+  if (mount_prefix && mount_prefix->url().path().trimmed().isEmpty())
   {
-    KMessageBox::sorry( this, i18n( "The mount prefix has not been filled in.\nPlease enter it now." ) );
-    setCurrentPage( m_shares );
+    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    setCurrentPage(m_shares);
     mount_prefix->setFocus();
     return false;
   }
@@ -339,25 +342,29 @@ bool Smb4KConfigDialog::checkSettings()
     // Do nothing
   }
   
-  //
-  // Authentication page
-  //
-  // FIXME: Should we check the presence of the default login here? A 
-  // disadvantage would be that we need to open the wallet even if it 
-  // wasn't open until now.
+  return true;
+}
 
-  //
-  // Samba page
-  //
-  KLineEdit *file_mask = m_samba->widget()->findChild<KLineEdit *>( "kcfg_FileMask" );
+
+bool Smb4KConfigDialog::checkSambaPage()
+{
+  KLineEdit *file_mask = m_samba->widget()->findChild<KLineEdit *>("kcfg_FileMask");
   
-  if ( file_mask && file_mask->text().trimmed().isEmpty() )
+  if (file_mask && file_mask->text().trimmed().isEmpty())
   {
-    KMessageBox::sorry( this, i18n( "The file mask has not been filled in.\nPlease enter it now." ) );
-    setCurrentPage( m_samba );
+    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    setCurrentPage(m_samba);
     
     Smb4KSambaOptionsPage *samba_options = m_samba->widget()->findChild<Smb4KSambaOptionsPage *>();
-    samba_options->setCurrentIndex( Smb4KSambaOptionsPage::MountingTab );
+    
+    if (samba_options)
+    {
+      samba_options->setCurrentIndex(Smb4KSambaOptionsPage::MountingTab);
+    }
+    else
+    {
+      // Do nothing
+    }
     
     file_mask->setFocus();
     return false;
@@ -367,15 +374,23 @@ bool Smb4KConfigDialog::checkSettings()
     // Do nothing
   }
   
-  KLineEdit *directory_mask = m_samba->widget()->findChild<KLineEdit *>( "kcfg_DirectoryMask" );
+  KLineEdit *directory_mask = m_samba->widget()->findChild<KLineEdit *>("kcfg_DirectoryMask");
   
-  if ( directory_mask && directory_mask->text().trimmed().isEmpty() )
+  if (directory_mask && directory_mask->text().trimmed().isEmpty())
   {
-    KMessageBox::sorry( this, i18n( "The directory mask has not been filled in.\nPlease enter it now." ) );
-    setCurrentPage( m_samba );
+    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    setCurrentPage(m_samba);
     
     Smb4KSambaOptionsPage *samba_options = m_samba->widget()->findChild<Smb4KSambaOptionsPage *>();
-    samba_options->setCurrentIndex( Smb4KSambaOptionsPage::MountingTab );
+    
+    if (samba_options)
+    {
+      samba_options->setCurrentIndex( Smb4KSambaOptionsPage::MountingTab );
+    }
+    else
+    {
+      // Do nothing
+    }
     
     directory_mask->setFocus();
     return false;
@@ -385,20 +400,112 @@ bool Smb4KConfigDialog::checkSettings()
     // Do nothing
   }
   
-  //
-  // Synchronization page
-  // 
-  KUrlRequester *sync_prefix = m_synchronization->widget()->findChild<KUrlRequester *>( "kcfg_RsyncPrefix" );
+  return true;
+}
+
+
+bool Smb4KConfigDialog::checkSynchronizationPage()
+{
+  KUrlRequester *sync_prefix = m_synchronization->widget()->findChild<KUrlRequester *>("kcfg_RsyncPrefix");
   
-  if ( sync_prefix && sync_prefix->url().path().trimmed().isEmpty() )
+  if (sync_prefix && sync_prefix->url().path().trimmed().isEmpty())
   {
-    KMessageBox::sorry( this, i18n( "The synchronization prefix has not been filled in.\nPlease enter it now." ) );
-    setCurrentPage( m_synchronization );
+    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    setCurrentPage(m_synchronization);
     
     Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
-    sync_options->setCurrentIndex( Smb4KRsyncOptionsPage::CopyingTab );
+    
+    if (sync_options)
+    {
+      sync_options->setCurrentIndex(Smb4KRsyncOptionsPage::CopyingTab);
+    }
+    else
+    {
+      // Do nothing
+    }
     
     sync_prefix->setFocus();
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  QCheckBox *max_delete = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_UseMaximumDelete");
+  KIntNumInput *max_delete_val = m_synchronization->widget()->findChild<KIntNumInput *>("kcfg_MaximumDeleteValue");
+  
+  if ((max_delete && max_delete->isChecked()) && (max_delete_val && max_delete_val->value() == 0))
+  {
+    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    setCurrentPage(m_synchronization);
+    
+    Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
+    
+    if (sync_options)
+    {
+      sync_options->setCurrentIndex(Smb4KRsyncOptionsPage::DelTransTab);
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    max_delete_val->setFocus();
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  QCheckBox *min_trans_size = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_UseMinimalTransferSize");
+  KIntNumInput *min_trans_size_val = m_synchronization->widget()->findChild<KIntNumInput *>("kcfg_MinimalTransferSize");
+  
+  if ((min_trans_size && min_trans_size->isChecked()) && (min_trans_size_val && min_trans_size_val->value() == 0))
+  {
+    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    setCurrentPage(m_synchronization);
+    
+    Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
+    
+    if (sync_options)
+    {
+      sync_options->setCurrentIndex(Smb4KRsyncOptionsPage::DelTransTab);
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    min_trans_size_val->setFocus();
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  QCheckBox *max_trans_size = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_UseMaximalTransferSize");
+  KIntNumInput *max_trans_size_val = m_synchronization->widget()->findChild<KIntNumInput *>("kcfg_MaximalTransferSize");
+  
+  if ((max_trans_size && max_trans_size->isChecked()) && (max_trans_size_val && max_trans_size_val->value() == 0))
+  {
+    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    setCurrentPage(m_synchronization);
+    
+    Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
+    
+    if (sync_options)
+    {
+      sync_options->setCurrentIndex(Smb4KRsyncOptionsPage::DelTransTab);
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    max_trans_size_val->setFocus();
     return false;
   }
   else
@@ -409,16 +516,22 @@ bool Smb4KConfigDialog::checkSettings()
   QCheckBox *use_partial_directory = m_synchronization->widget()->findChild<QCheckBox *>( "kcfg_UsePartialDirectory" );
   KUrlRequester *partial_directory = m_synchronization->widget()->findChild<KUrlRequester *>( "kcfg_PartialDirectory" );
   
-  if ( (use_partial_directory && use_partial_directory->isChecked()) &&
-       (partial_directory && partial_directory->url().path().trimmed().isEmpty()) )
+  if ((use_partial_directory && use_partial_directory->isChecked()) &&
+      (partial_directory && partial_directory->url().path().trimmed().isEmpty()))
   {
-    KMessageBox::sorry( this, i18n( "The directory where partially transferred files should\n"
-                                    "be stored has not been filled in.\n"
-                                    "Please enter it now." ) );
+    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
     setCurrentPage( m_synchronization );
     
     Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
-    sync_options->setCurrentIndex( Smb4KRsyncOptionsPage::DelTransTab );
+    
+    if (sync_options)
+    {
+      sync_options->setCurrentIndex(Smb4KRsyncOptionsPage::DelTransTab);
+    }
+    else
+    {
+      // Do nothing
+    }
     
     partial_directory->setFocus();
     return false;
@@ -428,18 +541,25 @@ bool Smb4KConfigDialog::checkSettings()
     // Do nothing
   }
   
-  QCheckBox *use_exclude_pattern = m_synchronization->widget()->findChild<QCheckBox *>( "kcfg_UseExcludePattern" );
-  KLineEdit *exclude_pattern     = m_synchronization->widget()->findChild<KLineEdit *>( "kcfg_ExcludePattern" );
+  QCheckBox *use_exclude_pattern = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_UseExcludePattern");
+  KLineEdit *exclude_pattern = m_synchronization->widget()->findChild<KLineEdit *>("kcfg_ExcludePattern");
   
-  if ( (use_exclude_pattern && use_exclude_pattern->isChecked()) &&
-       (exclude_pattern && exclude_pattern->text().trimmed().isEmpty()) )
+  if ((use_exclude_pattern && use_exclude_pattern->isChecked()) &&
+      (exclude_pattern && exclude_pattern->text().trimmed().isEmpty()))
   {
-    KMessageBox::sorry( this, i18n( "The exclude pattern for synchronization has not been filled in.\n"
-                                    "Please enter it now." ) );
-    setCurrentPage( m_synchronization );
+    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    setCurrentPage(m_synchronization);
     
     Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
-    sync_options->setCurrentIndex( Smb4KRsyncOptionsPage::FilteringTab );
+    
+    if (sync_options)
+    {
+      sync_options->setCurrentIndex(Smb4KRsyncOptionsPage::FilteringTab);
+    }
+    else
+    {
+      // Do nothing
+    }
     
     exclude_pattern->setFocus();
     return false;
@@ -449,18 +569,25 @@ bool Smb4KConfigDialog::checkSettings()
     // Do nothing
   }
   
-  QCheckBox *use_exclude_file = m_synchronization->widget()->findChild<QCheckBox *>( "kcfg_UseExcludeFrom" );
-  KUrlRequester *exclude_file = m_synchronization->widget()->findChild<KUrlRequester *>( "kcfg_ExcludeFrom" );
+  QCheckBox *use_exclude_file = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_UseExcludeFrom");
+  KUrlRequester *exclude_file = m_synchronization->widget()->findChild<KUrlRequester *>("kcfg_ExcludeFrom");
   
-  if ( (use_exclude_file && use_exclude_file->isChecked()) &&
-       (exclude_file && exclude_file->url().path().trimmed().isEmpty()) )
+  if ((use_exclude_file && use_exclude_file->isChecked()) &&
+      (exclude_file && exclude_file->url().path().trimmed().isEmpty()))
   {
-    KMessageBox::sorry( this, i18n( "The file from which the exclude pattern for synchronization are to be read\n"
-                                    "has not been filled in.\nPlease enter it now." ) );
-    setCurrentPage( m_synchronization );
+    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    setCurrentPage(m_synchronization);
     
     Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
-    sync_options->setCurrentIndex( Smb4KRsyncOptionsPage::FilteringTab );
+    
+    if (sync_options)
+    {
+      sync_options->setCurrentIndex(Smb4KRsyncOptionsPage::FilteringTab);
+    }
+    else
+    {
+      // Do nothing
+    }
     
     exclude_file->setFocus();
     return false;
@@ -470,18 +597,25 @@ bool Smb4KConfigDialog::checkSettings()
     // Do nothing
   }
   
-  QCheckBox *use_include_pattern = m_synchronization->widget()->findChild<QCheckBox *>( "kcfg_UseIncludePattern" );
-  KLineEdit *include_pattern     = m_synchronization->widget()->findChild<KLineEdit *>( "kcfg_IncludePattern" );
+  QCheckBox *use_include_pattern = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_UseIncludePattern");
+  KLineEdit *include_pattern = m_synchronization->widget()->findChild<KLineEdit *>("kcfg_IncludePattern");
   
-  if ( (use_include_pattern && use_include_pattern->isChecked()) &&
-       (include_pattern && include_pattern->text().trimmed().isEmpty()) )
+  if ((use_include_pattern && use_include_pattern->isChecked()) &&
+      (include_pattern && include_pattern->text().trimmed().isEmpty()))
   {
-    KMessageBox::sorry( this, i18n( "The include pattern for synchronization has not been filled in.\n"
-                                    "Please enter it now." ) );
-    setCurrentPage( m_synchronization );
+    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    setCurrentPage(m_synchronization);
     
     Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
-    sync_options->setCurrentIndex( Smb4KRsyncOptionsPage::FilteringTab );
+    
+    if (sync_options)
+    {
+      sync_options->setCurrentIndex(Smb4KRsyncOptionsPage::FilteringTab);
+    }
+    else
+    {
+      // Do nothing
+    }
     
     include_pattern->setFocus();
     return false;
@@ -491,18 +625,25 @@ bool Smb4KConfigDialog::checkSettings()
     // Do nothing
   }
   
-  QCheckBox *use_include_file = m_synchronization->widget()->findChild<QCheckBox *>( "kcfg_UseIncludeFrom" );
-  KUrlRequester *include_file = m_synchronization->widget()->findChild<KUrlRequester *>( "kcfg_IncludeFrom" );
+  QCheckBox *use_include_file = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_UseIncludeFrom");
+  KUrlRequester *include_file = m_synchronization->widget()->findChild<KUrlRequester *>("kcfg_IncludeFrom");
   
-  if ( (use_include_file && use_include_file->isChecked()) &&
-       (include_file && include_file->url().path().trimmed().isEmpty()) )
+  if ((use_include_file && use_include_file->isChecked()) &&
+      (include_file && include_file->url().path().trimmed().isEmpty()))
   {
-    KMessageBox::sorry( this, i18n( "The file from which the include pattern for synchronization are to be read\n"
-                                    "has not been filled in.\nPlease enter it now." ) );
-    setCurrentPage( m_synchronization );
+    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    setCurrentPage(m_synchronization);
     
     Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
-    sync_options->setCurrentIndex( Smb4KRsyncOptionsPage::FilteringTab );
+    
+    if (sync_options)
+    {
+      sync_options->setCurrentIndex(Smb4KRsyncOptionsPage::FilteringTab);
+    }
+    else
+    {
+      // Do nothing
+    }
     
     include_file->setFocus();
     return false;
@@ -512,21 +653,29 @@ bool Smb4KConfigDialog::checkSettings()
     // Do nothing
   }
   
-  QCheckBox *make_backups = m_synchronization->widget()->findChild<QCheckBox *>( "kcfg_MakeBackups" );
+  QCheckBox *make_backups = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_MakeBackups");
   
-  if ( make_backups && make_backups->isChecked() )
+  if (make_backups && make_backups->isChecked())
   {
-    QCheckBox *use_backup_suffix = m_synchronization->widget()->findChild<QCheckBox *>( "kcfg_UseBackupSuffix" );
-    KLineEdit *backup_suffix     = m_synchronization->widget()->findChild<KLineEdit *>( "kcfg_BackupSuffix" );
+    QCheckBox *use_backup_suffix = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_UseBackupSuffix");
+    KLineEdit *backup_suffix = m_synchronization->widget()->findChild<KLineEdit *>("kcfg_BackupSuffix");
     
-    if ( (use_backup_suffix && use_backup_suffix->isChecked()) &&
-         (backup_suffix && backup_suffix->text().trimmed().isEmpty()) )
+    if ((use_backup_suffix && use_backup_suffix->isChecked()) &&
+        (backup_suffix && backup_suffix->text().trimmed().isEmpty()))
     {
-      KMessageBox::sorry( this, i18n( "The backup suffix for synchronization has not been filled in.\nPlease enter it now." ) );
-      setCurrentPage( m_synchronization );
+      KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+      setCurrentPage(m_synchronization);
       
       Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
-      sync_options->setCurrentIndex( Smb4KRsyncOptionsPage::AdvancedTab );
+      
+      if (sync_options)
+      {
+        sync_options->setCurrentIndex(Smb4KRsyncOptionsPage::AdvancedTab);
+      }
+      else
+      {
+        // Do nothing
+      }
       
       backup_suffix->setFocus();
       return false;
@@ -536,17 +685,25 @@ bool Smb4KConfigDialog::checkSettings()
       // Do nothing
     }
     
-    QCheckBox *use_backup_dir = m_synchronization->widget()->findChild<QCheckBox *>( "kcfg_UseBackupDirectory" );
-    KUrlRequester *backup_dir = m_synchronization->widget()->findChild<KUrlRequester *>( "kcfg_BackupDirectory" );
+    QCheckBox *use_backup_dir = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_UseBackupDirectory");
+    KUrlRequester *backup_dir = m_synchronization->widget()->findChild<KUrlRequester *>("kcfg_BackupDirectory");
     
-    if ( (use_backup_dir && use_backup_dir->isChecked()) &&
-         (backup_dir && backup_dir->url().path().trimmed().isEmpty()) )
+    if ((use_backup_dir && use_backup_dir->isChecked()) &&
+        (backup_dir && backup_dir->url().path().trimmed().isEmpty()))
     {
-      KMessageBox::sorry( this, i18n( "The backup directory for synchronization has not been filled in.\nPlease enter it now." ) );
-      setCurrentPage( m_synchronization );
+      KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+      setCurrentPage(m_synchronization);
       
       Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
-      sync_options->setCurrentIndex( Smb4KRsyncOptionsPage::AdvancedTab );
+      
+      if (sync_options)
+      {
+        sync_options->setCurrentIndex(Smb4KRsyncOptionsPage::AdvancedTab);
+      }
+      else
+      {
+        // Do nothing
+      }
       
       backup_dir->setFocus();
       return false;
@@ -555,6 +712,57 @@ bool Smb4KConfigDialog::checkSettings()
     {
       // Do nothing
     }
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // FIXME: Also check --block-size (kcfg_UseBlockSize & kcfg_BlockSize) and 
+  // --checksum-seed (kcfg_UseChecksumSeed & kcfg_ChecksumSeed), if necessary.
+  // However, I need more info on what values are needed ...
+
+  return true;
+}
+
+
+
+bool Smb4KConfigDialog::checkSettings()
+{
+  // Check Network page
+  if (!checkNetworkPage())
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Check Shares page
+  if (!checkSharesPage())
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Check Samba page
+  if (!checkSambaPage())
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Check Synchronization page
+  if (!checkSynchronizationPage())
+  {
+    return false;
   }
   else
   {
@@ -811,6 +1019,51 @@ void Smb4KConfigDialog::slotEnableApplyButton()
 void Smb4KConfigDialog::slotReloadCustomOptions()
 {
   loadCustomOptions();
+}
+
+
+void Smb4KConfigDialog::slotCheckPage(KPageWidgetItem* /*current*/, KPageWidgetItem* before)
+{
+  if (before == m_user_interface)
+  {
+    // Nothing to do
+  }
+  else if (before == m_network)
+  {
+    (void)checkNetworkPage();
+  }
+  else if (before == m_shares)
+  {
+    (void)checkSharesPage();
+  }
+  else if (before == m_authentication)
+  {
+    // Do nothing
+  }
+  else if (before == m_samba)
+  {
+    (void)checkSambaPage();
+  }
+  else if (before == m_synchronization)
+  {
+    (void)checkSynchronizationPage();
+  }
+  else if (before == m_laptop_support)
+  {
+    // Do nothing
+  }
+  else if (before == m_custom_options)
+  {
+    // Do nothing
+  }
+  else if (before == m_profiles)
+  {
+    // Do nothing
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 #include "smb4kconfigdialog.moc"
