@@ -24,6 +24,7 @@
   <summary xml:lang="cs">Pokročilý prohlížeč síťového okolí a nástroj na připojování úložišť samba</summary>
   <summary xml:lang="en-GB">Advanced Network Neighborhood Browser and Samba Share Mounting Utility</summary>
   <summary xml:lang="es">Navegador avanzado del entorno de red y utilidad para montar recursos compartidos de Samba</summary>
+  <summary xml:lang="nds">Verwiedert Nettwarkümgeven-Kieker un Inhangwrktüüch för Samba-Freegaven</summary>
   <summary xml:lang="nl">Geavanceerde browser voor de netwerkomgeving en hulpmiddel voor aankoppelen van Samba shares</summary>
   <summary xml:lang="pl">Zaawansowana przeglądarka otoczenia sieciowego i narzędzie do montowania udziałów Samby</summary>
   <summary xml:lang="pt">Navegador Avançado da Vizinhança na Rede e Utilitário de Montagem de Partilhas de Samba</summary>
@@ -216,7 +217,7 @@
       <li xml:lang="de">Mehrere Methoden zur Suche nach der anfänglichen Liste von Arbeitsgruppen und Domänen</li>
       <li xml:lang="en-GB">Several methods to look up the initial list of workgroups and domains</li>
       <li xml:lang="es">Varios métodos para buscar la lista inicial de grupos de trabajo y dominios</li>
-      <li xml:lang="nds">Mehr Metoden för't Naslaan vun de eerste List mit Arbeitkoppeln un Domääns</li>
+      <li xml:lang="nds">Mehr Metoden för't Naslaan vun de eerste List mit Arbeitkoppeln un Domänen</li>
       <li xml:lang="nl">Verschillende methoden om de initiële lijst van werkgroepen en domeinen op te zoeken</li>
       <li xml:lang="pl">Kilka sposobów na znalezienie wstępnej listy grup roboczych i domen</li>
       <li xml:lang="pt">Diversos métodos para pesquisar a lista inicial de grupos de trabalho e domínios</li>
