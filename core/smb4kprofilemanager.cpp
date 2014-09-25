@@ -153,41 +153,59 @@ bool Smb4KProfileManager::useProfiles() const
 
 void Smb4KProfileManager::migrateProfile(const QString& from, const QString& to)
 {
-  if (d->useProfiles)
+  if (d->useProfiles || to.isEmpty())
   {
-    // First exchange the old profile.
-    for (int i = 0; i < d->profiles.size(); ++i)
+    if (!to.isEmpty()) 
     {
-      if (QString::compare(from, d->profiles.at(i), Qt::CaseSensitive) == 0)
+      // Migrate one/the defaulr profile to another one.
+      // 
+      // First exchange the old profile.
+      for (int i = 0; i < d->profiles.size(); ++i)
       {
-        d->profiles.replace(i, to);
-        break;
+        if (QString::compare(from, d->profiles.at(i), Qt::CaseSensitive) == 0)
+        {
+          d->profiles.replace(i, to);
+          break;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      
+      Smb4KSettings::setProfilesList(d->profiles);
+      
+      // In case the active profile was modified, rename it according
+      // the value passed.
+      if (QString::compare(from, d->activeProfile, Qt::CaseSensitive) == 0)
+      {
+        (void)setActiveProfile(to);
       }
       else
       {
         // Do nothing
       }
-    }
-    
-    Smb4KSettings::setProfilesList(d->profiles);
-    
-    // In case the active profile was modified, rename it according
-    // the value passed.
-    if (QString::compare(from, d->activeProfile, Qt::CaseSensitive) == 0)
-    {
-      (void)setActiveProfile(to);
+      
+      // Migrate profiles.
+      Smb4KBookmarkHandler::self()->migrateProfile(from, to);
+      Smb4KCustomOptionsManager::self()->migrateProfile(from, to);
+      Smb4KHomesSharesHandler::self()->migrateProfile(from, to);
+        
+      emit profileMigrated(from, to);
     }
     else
     {
-      // Do nothing
+      // Migrate all profiles to the default one.
+      for (int i = 0; i < d->profiles.size(); ++i)
+      {
+        Smb4KBookmarkHandler::self()->migrateProfile(d->profiles.at(i), to);
+        Smb4KCustomOptionsManager::self()->migrateProfile(d->profiles.at(i), to);
+        Smb4KHomesSharesHandler::self()->migrateProfile(d->profiles.at(i), to);
+          
+        emit profileMigrated(d->profiles.at(i), to);        
+      }
     }
     
-    // Migrate profiles.
-    Smb4KBookmarkHandler::self()->migrateProfile(from, to);
-    Smb4KCustomOptionsManager::self()->migrateProfile(from, to);
-    Smb4KHomesSharesHandler::self()->migrateProfile(from, to);
-    
-    emit profileMigrated(from, to);
     emit settingsChanged();
   }
   else
@@ -315,6 +333,50 @@ void Smb4KProfileManager::slotConfigChanged()
   }
   
   d->forceSilence = false;
+  
+  // Migrate profile(s), if necessary.
+  if (use_changed && Smb4KSettings::useMigrationAssistant())
+  {
+    QStringList from, to;
+    
+    if (d->useProfiles)
+    {
+      // Since the setting changed, the use of profiles was 
+      // switched off before. So, ask the user if he/she wants
+      // to migrate the default profile to any other one.
+      // Therefore, from needs to get one empty entry (default
+      // profile) and to has to be d->profiles.
+      from << QString();
+      to << d->profiles;
+    }
+    else
+    {
+      // Here it is vice versa: Ask the user if he/she wants to
+      // migrate all profiles to the default profile. Therefore,
+      // set from to d->profiles and to to empty.
+      from << d->profiles;
+      to << QString();
+    }
+    
+    // Now, launch the migration dialog.
+    QPointer<Smb4KProfileMigrationDialog> dlg = new Smb4KProfileMigrationDialog(from, to, 0);
+          
+    if (dlg->exec() == KDialog::Accepted)
+    {
+      // FIXME: Make sure that migrateProfile() does the right job.
+      migrateProfile(dlg->from(), dlg->to());
+    }
+    else
+    {
+      // Do nothing
+    }
+        
+    delete dlg;
+  }
+  else
+  {
+    // Do nothing
+  }
   
   // Emission of signal
   if (use_changed || profiles_changed || active_changed)
