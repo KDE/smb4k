@@ -105,10 +105,10 @@ Smb4KMounter::Smb4KMounter( QObject *parent )
           this,                         SLOT(slotComputerWokeUp()));
   connect(Smb4KSolidInterface::self(),  SIGNAL(networkStatusChanged(Smb4KSolidInterface::ConnectionStatus)),
           this,                         SLOT(slotNetworkStatusChanged(Smb4KSolidInterface::ConnectionStatus)));
+  connect(Smb4KProfileManager::self(),  SIGNAL(migratedProfile(QString,QString)),
+          this,                         SLOT(slotProfileMigrated(QString,QString)));
   connect(Smb4KProfileManager::self(),  SIGNAL(settingsChanged()),
           this,                         SLOT(slotProfileSettingsChanged()));
-  connect(Smb4KProfileManager::self(),  SIGNAL(profileMigrated(QString,QString)),
-          this,                         SLOT(slotProfileMigrated(QString,QString)));
 }
 
 
@@ -2219,16 +2219,9 @@ void Smb4KMounter::slotProfileSettingsChanged()
   {
     // Stop the timer.
     killTimer(d->timerId);
-    
-    // Abort all actions that are currently running.
-    if (isRunning())
-    {
-      abortAll();
-    }
-    else
-    {
-      // Do nothing
-    }
+
+    saveSharesForRemount();
+    abortAll();
     
     // Clear all remounts.
     while (!d->remounts.isEmpty())
@@ -2245,7 +2238,7 @@ void Smb4KMounter::slotProfileSettingsChanged()
     // Unmount all shares and wait until done.
     unmountAllShares();
     
-    while ( hasSubjobs() )
+    while (hasSubjobs())
     {
       QTest::qWait(TIMEOUT);
     }

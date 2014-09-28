@@ -91,7 +91,6 @@ class Smb4KProfileManagerPrivate
     QString activeProfile;
     QStringList profiles;
     bool useProfiles;
-    bool forceSilence;
 };
 
 

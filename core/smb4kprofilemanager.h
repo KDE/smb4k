@@ -32,6 +32,7 @@
 #include <QtCore/QScopedPointer>
 #include <QtCore/QString>
 #include <QtCore/QStringList>
+#include <QtCore/QPair>
 #include <QtGui/QWidget>
 
 // KDE includes
@@ -68,10 +69,11 @@ class KDE_EXPORT Smb4KProfileManager : public QObject
      * Otherwise the this function does nothing.
      * 
      * @param name        Name of the active profile.
+     * @param noSignal    Do not emit the settingsChanged() signal.
      * 
      * @returns true if the active profile was changed.
      */
-    bool setActiveProfile(const QString &name);
+    bool setActiveProfile(const QString &name, bool noSignal = false);
     
     /**
      * Return the currently active profile or an empty string if 
@@ -99,7 +101,7 @@ class KDE_EXPORT Smb4KProfileManager : public QObject
     bool useProfiles() const;
     
     /**
-     * Migrate all entries in one profile to another.
+     * Migrate all entries of one profile to another.
      * 
      * @param from        The name of the old profile.
      * @param to          The name of the new profile.
@@ -107,13 +109,31 @@ class KDE_EXPORT Smb4KProfileManager : public QObject
     void migrateProfile(const QString &from, const QString &to);
     
     /**
-     * Remove a profile with all its entries.
+     * Migrate all entries of a list of profiles to other profiles.
+     * 
+     * @param list        The list of profile pairs. The first entry
+     *                    is the "from" profile, the second one the 
+     *                    "to" profile.
+     */
+    void migrateProfiles(const QList< QPair<QString,QString> > &list);
+    
+    /**
+     * Remove a profile with all of its entries.
      * 
      * @param name        The name of the profile.
      * @param parent      The parent widget for the profile migration
      *                    dialog.
      */
     void removeProfile(const QString &name, QWidget *parent = 0);
+    
+    /**
+     * Remove a list of profiles with all of their entries.
+     * 
+     * @param list        The list of profile names.
+     * @param parent      The parent widget for the profile migration
+     *                    dialog.
+     */
+    void removeProfiles(const QStringList &list, QWidget *parent = 0);
     
   Q_SIGNALS:
     /**
@@ -129,7 +149,7 @@ class KDE_EXPORT Smb4KProfileManager : public QObject
      * @param from        The old profile
      * @param to          The new profile
      */
-    void profileMigrated(const QString &from, const QString &to);
+    void migratedProfile(const QString &from, const QString &to);
     
     /**
      * This signal is emitted when a profile was removed.

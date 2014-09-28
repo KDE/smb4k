@@ -80,6 +80,12 @@ class Smb4KConfigDialog : public KConfigDialog
 
   protected slots:
     /**
+     * Reimplemented from KConfigDialog. Used to do things that 
+     * KConfigDialog::updateSettings() does not do.
+     */
+    void updateSettings();
+    
+    /**
      * Reimplemented from KDialog. This slot overwrites the standard
      * behavior of the "Apply" and "OK" button, so that application
      * actions can be executed like saving the super user settings to

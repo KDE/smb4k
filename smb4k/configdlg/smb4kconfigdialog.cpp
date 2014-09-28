@@ -242,11 +242,7 @@ void Smb4KConfigDialog::propagateProfilesChanges()
     
     if (!removed_profiles.isEmpty())
     {
-      for (int i = 0; i < removed_profiles.size(); ++i)
-      {
-        Smb4KProfileManager::self()->removeProfile(removed_profiles.at(i), this);
-      }
-      
+      Smb4KProfileManager::self()->removeProfiles(removed_profiles, this);
       profiles_page->clearRemovedProfiles();
     }
     else
@@ -259,11 +255,7 @@ void Smb4KConfigDialog::propagateProfilesChanges()
     
     if (!renamed_profiles.isEmpty())
     {
-      for (int i = 0; i < renamed_profiles.size(); ++i)
-      {
-        Smb4KProfileManager::self()->migrateProfile(renamed_profiles.at(i).first, renamed_profiles.at(i).second);
-      }
-      
+      Smb4KProfileManager::self()->migrateProfiles(renamed_profiles);
       profiles_page->clearRenamedProfiles();
     }
     else
@@ -793,22 +785,30 @@ void Smb4KConfigDialog::showEvent( QShowEvent *e )
 /////////////////////////////////////////////////////////////////////////////
 
 
-void Smb4KConfigDialog::slotButtonClicked( int button )
+void Smb4KConfigDialog::updateSettings()
 {
-  switch( button )
+  saveCustomOptions();
+  slotSaveAuthenticationInformation();
+  propagateProfilesChanges();
+      
+  KConfigDialog::updateSettings();
+}
+
+
+void Smb4KConfigDialog::slotButtonClicked(int button)
+{
+  qDebug() << metaObject()->className() << "::slotButtonClicked()";
+  
+  switch(button)
   {
     case Apply:
     {
       // If some settings are not complete, stop here and give
       // the user the opportunity to fill in the needed string(s).
-      if ( !checkSettings() )
+      if (!checkSettings())
       {
         return;
       }
-
-      saveCustomOptions();
-      slotSaveAuthenticationInformation();
-      propagateProfilesChanges();
 
       break;
     }
@@ -816,17 +816,13 @@ void Smb4KConfigDialog::slotButtonClicked( int button )
     {
       // If some settings are not complete, stop here and give
       // the user the opportunity to fill in the needed string(s).
-      if ( !checkSettings() )
+      if (!checkSettings())
       {
         return;
       }
 
-      saveCustomOptions();
-      slotSaveAuthenticationInformation();
-      propagateProfilesChanges();
-
-      KConfigGroup group( Smb4KSettings::self()->config(), "ConfigDialog" );
-      saveDialogSize( group, KConfigGroup::Normal );
+      KConfigGroup group(Smb4KSettings::self()->config(), "ConfigDialog");
+      saveDialogSize(group, KConfigGroup::Normal);
 
       break;
     }
@@ -836,7 +832,7 @@ void Smb4KConfigDialog::slotButtonClicked( int button )
     }
   }
 
-  KConfigDialog::slotButtonClicked( button );
+  KConfigDialog::slotButtonClicked(button);
 }
 
 
