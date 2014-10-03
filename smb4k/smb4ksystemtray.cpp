@@ -2,7 +2,7 @@
     smb4ksystemtray  -  This is the system tray window class of Smb4K.
                              -------------------
     begin                : Mi Jun 13 2007
-    copyright            : (C) 2007-2011 by Alexander Reinholdt
+    copyright            : (C) 2007-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -31,6 +31,7 @@
 #include "smb4ksystemtray.h"
 #include "smb4kbookmarkmenu.h"
 #include "smb4ksharesmenu.h"
+#include "smb4kprofilesmenu.h"
 #include "core/smb4kworkgroup.h"
 #include "core/smb4kshare.h"
 #include "core/smb4kglobal.h"
@@ -72,9 +73,11 @@ Smb4KSystemTray::Smb4KSystemTray( QWidget *parent )
   
   Smb4KSharesMenu *shares_menu = new Smb4KSharesMenu( associatedWidget(), this );
   Smb4KBookmarkMenu *bookmark_menu = new Smb4KBookmarkMenu( Smb4KBookmarkMenu::SystemTray, associatedWidget(), this );
+  Smb4KProfilesMenu *profiles_menu = new Smb4KProfilesMenu(this);
 
   contextMenu()->addAction( shares_menu );
   contextMenu()->addAction( bookmark_menu );
+  contextMenu()->addAction(profiles_menu);
   contextMenu()->addSeparator();
   contextMenu()->addAction( manual_mount );
   contextMenu()->addAction( configure );
