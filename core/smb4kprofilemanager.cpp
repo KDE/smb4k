@@ -47,6 +47,13 @@
 K_GLOBAL_STATIC(Smb4KProfileManagerStatic, p);
 
 
+//
+// NOTE: Do not invoke writeConfig() here, because this will/might
+// trigger the configChanged() signal which can lead to unwanted
+// effects.
+//
+
+
 Smb4KProfileManager::Smb4KProfileManager(QObject* parent)
 : QObject(parent), d(new Smb4KProfileManagerPrivate)
 {
@@ -113,7 +120,6 @@ bool Smb4KProfileManager::setActiveProfile(const QString& name, bool noSignal)
   if (changed)
   {
     Smb4KSettings::setActiveProfile(d->activeProfile);
-    Smb4KSettings::self()->writeConfig();
     
     if (!noSignal)
     {
@@ -217,7 +223,6 @@ void Smb4KProfileManager::migrateProfiles(const QList< QPair<QString,QString> >&
     }
     
     Smb4KSettings::setProfilesList(d->profiles);
-    Smb4KSettings::self()->writeConfig();
     emit settingsChanged();
   }
   else
@@ -308,7 +313,6 @@ void Smb4KProfileManager::removeProfiles(const QStringList& list, QWidget* paren
     }
     
     Smb4KSettings::setProfilesList(d->profiles);
-    Smb4KSettings::self()->writeConfig();
     emit settingsChanged();
   }
   else

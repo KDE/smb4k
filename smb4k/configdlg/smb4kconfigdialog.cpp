@@ -797,8 +797,6 @@ void Smb4KConfigDialog::updateSettings()
 
 void Smb4KConfigDialog::slotButtonClicked(int button)
 {
-  qDebug() << metaObject()->className() << "::slotButtonClicked()";
-  
   switch(button)
   {
     case Apply:

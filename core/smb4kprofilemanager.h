@@ -41,6 +41,19 @@
 // forward declarations
 class Smb4KProfileManagerPrivate;
 
+/**
+ * This class "manages" the profiles defined by the user in such a 
+ * degree as it sends signals when the active profile changed, a
+ * profile was renamed or removed. You can also actively initiate the
+ * migration of or remove a profile.
+ * 
+ * When using profiles, please use this class instead of the KConfig XT
+ * class(es).
+ * 
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ * @since 1.2.0
+ */
+
 
 class KDE_EXPORT Smb4KProfileManager : public QObject
 {

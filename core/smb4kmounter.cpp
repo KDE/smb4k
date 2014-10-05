@@ -1851,7 +1851,6 @@ void Smb4KMounter::slotHardwareButtonPressed( Smb4KSolidInterface::ButtonType ty
   
   d->hardwareReason = false;
   Smb4KSolidInterface::self()->endSleepSuppression(cookie);
-  qDebug() << "Good night!";
 }
 
 
