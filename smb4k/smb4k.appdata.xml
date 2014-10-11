@@ -46,6 +46,7 @@
     <p xml:lang="pl">Smb4K jest zaawansowaną przeglądarką otoczenia sieciowego i narzędziem do montowania udziałów Samby dla Zbioru Oprogramowania KDE. Przegląda twoje otoczenie sieciowe w poszukiwaniu wszystkich dostępnych grup roboczych, serwerów i udziałów, żeby umożliwić zamontowanie wszystkich tych udziałów w lokalnym systemie plików.</p>
     <p xml:lang="pt">O Smb4K é um navegador avançado da vizinhança da rede e um utilitário de montagem de partilhas do Samba para a Compilação de Aplicações do KDE. Ele sonda a sua vizinhança da rede à procura de todos os grupos de trabalho, servidores e partilhas disponíveis, podendo montar todas as partilhas desejadas no seu sistema de ficheiros local.</p>
     <p xml:lang="pt-BR">Smb4K é um navegador avançado da vizinhança da rede e um utilitário de montagem de compartilhamentos do Samba para aplicativos do KDE. Ele verifica a vizinhança da rede à procura de todos os grupos de trabalho, servidores e compartilhamentos disponíveis, podendo montar todos os compartilhamentos desejados no seu sistema de arquivos local.</p>
+    <p xml:lang="sk">Smb4K je pokročilý prehliadač siete a nástroj na pripájanie Samba zdieľaní pre softvérovú kompiláciu KDE. Prehľadá vašu sieť, nájde všetky dostupné pracovné skupiny, servery a zdieľania a môže pripojiť všetky želané zdieľania do vášho miestneho súborového systému.</p>
     <p xml:lang="sv">Smb4K är en avancerad bläddrare för nätverksgrannskapet och verktyg för montering av delade Samba-kataloger för KDE:s programvarusamling. Det söker igenom ditt nätverksgrannskap för att hitta alla tillgängliga arbetsgrupper, servrar och delade kataloger, och kan montera alla delade kataloger som önskas i det lokala filsystemet.</p>
     <p xml:lang="uk">Smb4K програма з розширеними можливостями для перегляду мережевого середовища та монтування спільних ресурсів Samba для збірки програмного забезпечення KDE. Програма сканує мережеве оточення і шукає доступні робочі групи, сервери і спільні ресурси. Вона може монтувати усі бажані спільні ресурси у вашій локальній файловій системі.</p>
     <p xml:lang="x-test">xxSmb4K is an advanced network neighborhood browser and Samba share mounting utility for the KDE Software Compilation. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.xx</p>
@@ -60,6 +61,7 @@
     <p xml:lang="pl">Smb4K wykorzystuje programy z pakietu oprogramowania Samby. Jego zadaniem jest dostarczenie łatwego w użyciu programu jednocześnie posiadającego tak wiele możliwości jaka tylko jest możliwa.</p>
     <p xml:lang="pt">O Smb4K utiliza os programas do pacote de aplicações do Samba. O seu objectivo é oferecer um programa que seja simples de usar e tenha tantas funcionalidades quantas possíveis.</p>
     <p xml:lang="pt-BR">O Smb4K usa os programas do pacote de aplicativos do Samba. Seu objetivo é oferecer um programa que seja simples de usar e tenha todas as funcionalidades possíveis.</p>
+    <p xml:lang="sk">Smb4K používa programy softvérového balíka Samba. Jeho cieľom je poskytnúť program, ktorý sa ľahko používa a obsahuje toľko funkcií, ako je len možné.</p>
     <p xml:lang="sv">Smb4K utnyttjar programmen i Samba-programvarusviten. Dess syfte är att tillhandahålla ett program som är enkelt att använda och har så många funktioner som möjligt.</p>
     <p xml:lang="uk">Smb4K використовує програми із комплекту програмного забезпечення Samba. Її призначено для спрощення користування системою, вона має якомога ширший спектр можливостей.</p>
     <p xml:lang="x-test">xxSmb4K utilizes the programs of the Samba software suite. Its purpose is to provide a program that is easy to use and has as many features as possible.xx</p>
@@ -91,6 +93,7 @@
       <li xml:lang="pl">Przeszukiwanie (aktywnych) grup roboczych, gospodarzy oraz udziałów</li>
       <li xml:lang="pt">Pesquisar pelos grupos de trabalho, máquinas e partilhas - activos ou não</li>
       <li xml:lang="pt-BR">Pesquisar por grupos de trabalho, máquinas e compartilhamentos (ativos)</li>
+      <li xml:lang="sk">Prehľadávanie aktívnych pracovných skupín, hostiteľov a zdieľaní</li>
       <li xml:lang="sv">Sökning efter (aktiva) arbetsgrupper, värddatorer och delade resurser</li>
       <li xml:lang="uk">Виявлення (активних) робочих груп, вузлів та спільних ресурсів.</li>
       <li xml:lang="x-test">xxScanning for (active) workgroups, hosts, and sharesxx</li>
@@ -104,6 +107,7 @@
       <li xml:lang="pl">Obsługa systemu plików CIFS (Linux) oraz SMBFS (FreeBSD)</li>
       <li xml:lang="pt">Suporte para os sistemas de ficheiros CIFS (Linux) e SMBFS (FreeBSD)</li>
       <li xml:lang="pt-BR">Suporte para os sistemas de arquivos CIFS (Linux) e SMBFS (FreeBSD)</li>
+      <li xml:lang="sk">Podpora súborových systémov CIFS (Linux) a SMBFS (FreeBSD)</li>
       <li xml:lang="sv">Stöd för filsystemen CIFS (Linux) och SMBFS (FreeBSD)</li>
       <li xml:lang="uk">Підтримка файлових систем CIFS (Linux) та SMBFS (FreeBSD).</li>
       <li xml:lang="x-test">xxSupport of the CIFS (Linux) and SMBFS (FreeBSD) file systemxx</li>
@@ -117,6 +121,7 @@
       <li xml:lang="pl">Montowanie i odmontowywanie udziałów</li>
       <li xml:lang="pt">Montagem e desmontagem de partilhas</li>
       <li xml:lang="pt-BR">Montagem e desmontagem de compartilhamentos</li>
+      <li xml:lang="sk">Pripájanie a odpájanie zdieľaní</li>
       <li xml:lang="sv">Montera och avmontera delade resurser</li>
       <li xml:lang="uk">Монтування і демонтування спільних ресурсів.</li>
       <li xml:lang="x-test">xxMounting and unmounting of sharesxx</li>
@@ -130,6 +135,7 @@
       <li xml:lang="pl">Dostęp do plików zamontowanego udziału przy użyciu programu do zarządzania plikami lub terminalu</li>
       <li xml:lang="pt">Aceder aos ficheiros de uma partilha montada com um gestor de ficheiros ou terminal</li>
       <li xml:lang="pt-BR">Acessar aos arquivos de um compartilhamento montado com um gerenciador de arquivos ou terminal</li>
+      <li xml:lang="sk">Prístup k súborom pripojených zdieľaní pomocou správcu súborov alebo terminálu</li>
       <li xml:lang="sv">Åtkomst av filer på en monterad delad resurs med en filhanterare eller terminal</li>
       <li xml:lang="uk">Доступ до файлів змонтованого спільного ресурсу за допомогою програми для керування файлами або термінала.</li>
       <li xml:lang="x-test">xxAccess to the files of a mounted share using a file manager or terminalxx</li>
@@ -143,6 +149,7 @@
       <li xml:lang="pl">Samoczynne wykrywanie zewnętrznych działań montowania i odmontowywania</li>
       <li xml:lang="pt">Detectar automaticamente as montagens e desmontagens externas</li>
       <li xml:lang="pt-BR">Detectar automaticamente as montagens e desmontagens externas</li>
+      <li xml:lang="sk">Automatická detekcia externých pripojení a odpojení</li>
       <li xml:lang="sv">Automatiskt detektion av externa monteringar och avmonteringar</li>
       <li xml:lang="uk">Автоматичне виявлення зовнішніх дій з монтування або демонтування.</li>
       <li xml:lang="x-test">xxAuto-detection of external mounts and unmountsxx</li>
@@ -156,6 +163,7 @@
       <li xml:lang="pl">Montowanie poprzednio zamontowanych udziałów przy starcie</li>
       <li xml:lang="pt">Voltar a montar as partilhas usadas anteriormente ao iniciar o programa</li>
       <li xml:lang="pt-BR">Remontar os compartilhamentos usados anteriormente ao iniciar o programa</li>
+      <li xml:lang="sk">Znovupripojenie predtým použitých zdieľaní pri spustení programu</li>
       <li xml:lang="sv">Montering av tidigare använda delade resurser igen vid programstart</li>
       <li xml:lang="uk">Повторне монтування раніше використаних спільних ресурсів під час запуску програми.</li>
       <li xml:lang="x-test">xxRemounting of previously used shares on program startxx</li>
@@ -169,6 +177,7 @@
       <li xml:lang="pl">Różne informacje o elementach w zdalnej sieci i zamontowanych udziałach</li>
       <li xml:lang="pt">Diversas informações acerca dos itens de rede remotos e das partilhas montadas</li>
       <li xml:lang="pt-BR">Diversas informações sobre os itens de rede remotos e dos compartilhamentos montados</li>
+      <li xml:lang="sk">Rôzne informácie o vzdialených sieťových položkách a pripojených zdieľaniach</li>
       <li xml:lang="sv">Diverse information om fjärrobjekt i nätverket och monterade delade resurser</li>
       <li xml:lang="uk">Показ різноманітних відомостей щодо віддалених елементів мережі та змонтованих спільних ресурсів.</li>
       <li xml:lang="x-test">xxMiscellaneous infos about remote network items and mounted sharesxx</li>
@@ -197,6 +206,7 @@
       <li xml:lang="pl">Obsługa serwera WINS</li>
       <li xml:lang="pt">Suporte para servidores WINS</li>
       <li xml:lang="pt-BR">Suporte para servidores WINS</li>
+      <li xml:lang="sk">Podpora serverov WINS</li>
       <li xml:lang="sv">Stöd för WINS-server</li>
       <li xml:lang="uk">Підтримка серверів WINS.</li>
       <li xml:lang="x-test">xxWINS server supportxx</li>
@@ -210,6 +220,7 @@
       <li xml:lang="pl">Podgląd zawartości udziału</li>
       <li xml:lang="pt">Antevisão do conteúdo de uma partilha</li>
       <li xml:lang="pt-BR">Visualização do conteúdo de um compartilhamento</li>
+      <li xml:lang="sk">Náhľad obsahu zdieľania</li>
       <li xml:lang="sv">Förhandsgranskning av innehållet i en delad resurs</li>
       <li xml:lang="uk">Попередній перегляд даних зі спільного ресурсу.</li>
       <li xml:lang="x-test">xxPreview of the contents of a sharexx</li>
@@ -223,6 +234,7 @@
       <li xml:lang="pl">Kilka sposobów na znalezienie wstępnej listy grup roboczych i domen</li>
       <li xml:lang="pt">Diversos métodos para pesquisar a lista inicial de grupos de trabalho e domínios</li>
       <li xml:lang="pt-BR">Diversos métodos para pesquisar a lista inicial de grupos de trabalho e domínios</li>
+      <li xml:lang="sk">Niekoľko metód na hľadanie úvodného zoznamu pracovných skupín a domén</li>
       <li xml:lang="sv">Flera metoder för att slå upp den ursprungliga listan med arbetsgrupper och domäner</li>
       <li xml:lang="uk">Декілька способів отримання початкового списку робочих груп та доменів.</li>
       <li xml:lang="x-test">xxSeveral methods to look up the initial list of workgroups and domainsxx</li>
@@ -251,6 +263,7 @@
       <li xml:lang="pl">Wyjątkowa obsługa udziałów w postaci katalogów domowych</li>
       <li xml:lang="pt">Tratamento especial para as partilhas de áreas pessoais</li>
       <li xml:lang="pt-BR">Tratamento especial para os compartilhamentos de áreas pessoais</li>
+      <li xml:lang="sk">Špeciálne zaobchádzanie so zdieľaniami home</li>
       <li xml:lang="sv">Särskild hantering av delade hemkataloger</li>
       <li xml:lang="uk">Особливі інструменти роботи з домашніми спільними ресурсами.</li>
       <li xml:lang="x-test">xxSpecial handling of homes sharesxx</li>
@@ -264,6 +277,7 @@
       <li xml:lang="pl">Możliwość nadania zakładki ulubionym udziałom</li>
       <li xml:lang="pt">A capacidade de marcar as partilhas como favoritos</li>
       <li xml:lang="pt-BR">Capacidade de marcar os compartilhamentos como favoritos</li>
+      <li xml:lang="sk">Podpora záložiek zdieľaní</li>
       <li xml:lang="sv">Möjlighet att lägga till bokmärken för favoritresurser</li>
       <li xml:lang="uk">Можливість створення закладок для потрібних вам спільних ресурсів.</li>
       <li xml:lang="x-test">xxAbility to bookmark favorite sharesxx</li>
@@ -291,6 +305,7 @@
       <li xml:lang="pl">Obsługa zaawansowanych możliwości Samby</li>
       <li xml:lang="pt">Suporte para as opções avançadas do Samba</li>
       <li xml:lang="pt-BR">Suporte para as opções avançadas do Samba</li>
+      <li xml:lang="sk">Podpora pokročilých volieb Samba</li>
       <li xml:lang="sv">Stöd för avancerade alternativ i Samba</li>
       <li xml:lang="uk">Підтримка додаткових параметрів Samba.</li>
       <li xml:lang="x-test">xxSupport of advanced Samba optionsxx</li>
@@ -304,6 +319,7 @@
       <li xml:lang="pl">Obsługa drukarek sieciowych</li>
       <li xml:lang="pt">Suporte para as partilhas de impressoras</li>
       <li xml:lang="pt-BR">Suporte para os compartilhamentos de impressoras</li>
+      <li xml:lang="sk">Podpora zdieľania tlačiarní</li>
       <li xml:lang="sv">Stöd för delade skrivare</li>
       <li xml:lang="uk">Підтримка спільних принтерів.</li>
       <li xml:lang="x-test">xxSupport of printer sharesxx</li>
@@ -332,6 +348,7 @@
       <li xml:lang="pl">Synchronizacja zdalnego udziału z lokalną kopią i na odwrót</li>
       <li xml:lang="pt">Sincronização de uma partilha remota com uma cópia local e vice-versa</li>
       <li xml:lang="pt-BR">Sincronização de um compartilhamento remoto com uma cópia local e vice-versa</li>
+      <li xml:lang="sk">Synchronizácia vzdialených zdieľaní s miestnou kópiou a naopak</li>
       <li xml:lang="sv">Synkronisering av delade fjärresurser med en lokal kopia och tvärtom</li>
       <li xml:lang="uk">Синхронізація віддаленого спільного ресурсу з локальною копією і навпаки.</li>
       <li xml:lang="x-test">xxSynchronization of a remote share with a local copy and vice versaxx</li>
@@ -345,6 +362,7 @@
       <li xml:lang="pl">Możliwość określenia osobnych ustawień dla poszczególnych serwerów i udziałów</li>
       <li xml:lang="pt">A capacidade de definir opções personalizadas para os servidores e partilhas individuais</li>
       <li xml:lang="pt-BR">Capacidade de definir opções personalizadas para os servidores e compartilhamentos individuais</li>
+      <li xml:lang="sk">Možnosť definovať vlastné voľby pre individuálne servery a zdieľania</li>
       <li xml:lang="sv">Möjlighet att definiera egna alternativ för enskilda servrar och delade resurser</li>
       <li xml:lang="uk">Можливість визначення нетипових параметрів для окремих серверів та спільних ресурсів.</li>
       <li xml:lang="x-test">xxAbility to define custom options for individual servers and sharesxx</li>
@@ -358,6 +376,7 @@
       <li xml:lang="pl">Obsługa laptopa przez szkielet urządzenia sprzętowego Solid</li>
       <li xml:lang="pt">Suporte para portáteis, através da plataforma de dispositivos de 'hardware' Solid</li>
       <li xml:lang="pt-BR">Suporte para notebooks através da plataforma de hardware Solid</li>
+      <li xml:lang="sk">Podpora laptopov cez framework hardvérových zariadení Solid</li>
       <li xml:lang="sv">Stöd för bärbara datorer via Solid-ramverket för hårdvaruenheter</li>
       <li xml:lang="uk">Підтримка ноутбуків за допомогою оболонки для роботи з пристроями Solid.</li>
       <li xml:lang="x-test">xxLaptop support through the Solid hardware device frameworkxx</li>
@@ -371,6 +390,7 @@
       <li xml:lang="pl">Możliwość Wake-On-LAN</li>
       <li xml:lang="pt">Capacidades de activação pela LAN</li>
       <li xml:lang="pt-BR">Capacidades de ativação por LAN (Wake-On-LAN)</li>
+      <li xml:lang="sk">Schopnosti Wake-On-LAN</li>
       <li xml:lang="sv">Funktioner för att väckas av lokalt nätverk</li>
       <li xml:lang="uk">Можливості пробудження сигналом з локальної мережі.</li>
       <li xml:lang="x-test">xxWake-On-LAN capabilitiesxx</li>
@@ -384,6 +404,7 @@
       <li xml:lang="pl">Plazmoid do integracji z pulpitem</li>
       <li xml:lang="pt">Plasmóide de integração no ambiente de trabalho</li>
       <li xml:lang="pt-BR">Plasmoide de integração no ambiente de trabalho</li>
+      <li xml:lang="sk">Plazmoid pre integráciu s pracovnou plochou</li>
       <li xml:lang="sv">Plasmoid för integrering med skrivbordssökning</li>
       <li xml:lang="uk">Плазмоїд для інтеграції зі стільницею.</li>
       <li xml:lang="x-test">xxPlasmoid for desktop integrationxx</li>
@@ -399,6 +420,7 @@
     <p xml:lang="pl">Jeśli pracujesz w otoczeniu sieciowym zdominowanym przez system Windows, to możesz wgrać program do łatwego uzyskiwania dostępu do udziałów Windowsa.</p>
     <p xml:lang="pt">Se estiver a trabalhar num ambiente de rede dominado pelo Windows, poderá querer instalar esta aplicação para poder acede facilmente às partilhas de rede disponíveis.</p>
     <p xml:lang="pt-BR">Se estiver trabalhando em um ambiente de rede dominado pelo Windows, poderá querer instalar este aplicativo para acessar facilmente os compartilhamentos de rede disponíveis.</p>
+    <p xml:lang="sk">Ak pracujete vo Windows sieťovom prostredí, možno budete chcieť nainštalovať túto aplikáciu, aby ste mali možnosť jednoducho pristupovať ku zdieľaniam Windows.</p>
     <p xml:lang="sv">Om du arbetar i en Windows-dominerad nätverksmiljö, kan du vilja installera detta program för att enkelt kunna komma åt de delade Windows-kataloger som tillhandahålls.</p>
     <p xml:lang="uk">Якщо ви працюєте у середовищі з переважним використанням Windows, вам варто встановити цю програму для полегшення доступу до спільних ресурсів Windows.</p>
     <p xml:lang="x-test">xxIf you are working in a Windows dominated network environment, you may want to install this application to be able to easily access the provided Windows shares.xx</p>
@@ -415,6 +437,7 @@
       <caption xml:lang="pl">Główne okno</caption>
       <caption xml:lang="pt">A janela principal</caption>
       <caption xml:lang="pt-BR">A janela principal</caption>
+      <caption xml:lang="sk">Hlavné okno</caption>
       <caption xml:lang="sv">Huvudfönstret</caption>
       <caption xml:lang="uk">Головне вікно.</caption>
       <caption xml:lang="x-test">xxThe main windowxx</caption>
@@ -432,6 +455,7 @@
       <caption xml:lang="pl">Plazmoid</caption>
       <caption xml:lang="pt">O plasmóide</caption>
       <caption xml:lang="pt-BR">O plasmoide</caption>
+      <caption xml:lang="sk">Plazmoid</caption>
       <caption xml:lang="sv">Plasmoiden</caption>
       <caption xml:lang="uk">Плазмоїд.</caption>
       <caption xml:lang="x-test">xxThe plasmoidxx</caption>
