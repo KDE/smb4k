@@ -299,29 +299,13 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
     void slotShareUnmounted( Smb4KShare *share );
     
     /**
-     * This slot is called by the Solid interface when a hardware button was
-     * pressed. It is used to unmount shares according to the wishes of the
-     * user.
-     *
-     * @param type            The button type
-     */
-    void slotHardwareButtonPressed( Smb4KSolidInterface::ButtonType type );
-
-    /**
-     * This slot is called by the Solid interface when the computer woke up
-     * from a sleep or stand-by state. It initializes the remounting of the
-     * previously unmounted shares.
-     */
-    void slotComputerWokeUp();
-
-    /**
      * This slot is called by the Solid interface when the network status
      * changed. It is used to initialize network actions when the network
      * became available.
      *
      * @param status          The new network status
      */
-    void slotNetworkStatusChanged( Smb4KSolidInterface::ConnectionStatus status );
+    void slotNetworkStatusChanged(Smb4KSolidInterface::ConnectionStatus status);
 
     /**
      * Called when a mount job started. It just emits the 

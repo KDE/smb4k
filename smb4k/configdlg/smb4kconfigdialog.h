@@ -166,11 +166,6 @@ class Smb4KConfigDialog : public KConfigDialog
     KPageWidgetItem *m_synchronization;
     
     /**
-     * "Laptop Support" page 
-     */
-    KPageWidgetItem *m_laptop_support;
-    
-    /**
      * "Custom Options" page
      */
     KPageWidgetItem *m_custom_options;

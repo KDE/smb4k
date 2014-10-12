@@ -3,7 +3,7 @@
     Solid framework.
                              -------------------
     begin                : So Sep 14 2008
-    copyright            : (C) 2008-2012 by Alexander Reinholdt
+    copyright            : (C) 2008-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -132,13 +132,6 @@ class KDE_EXPORT Smb4KSolidInterface : public QObject
      *                  enumeration
      */
     void networkStatusChanged( Smb4KSolidInterface::ConnectionStatus status );
-
-    /**
-     * This signal is a convenience signal and is emitted when the computer 
-     * woke up. It is connected to the Solid::Powermanagement::Notifier::resumingFromSuspend()
-     * signal.
-     */
-    void wokeUp();
 
   protected Q_SLOTS:
      /**

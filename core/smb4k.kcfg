@@ -1065,32 +1065,6 @@
     </entry>
   </group>
 
-
-<!-- Laptop support -->
-
-  <group name="LaptopSupport">
-    <entry name="UnmountWhenSleepButtonPressed" type="Bool">
-      <label>Unmount all shares when the sleep button is pressed</label>
-     <whatsthis>Unmount all mounted shares after the hardware sleep button is pressed. The shares will automatically be remounted after the computer wakes up again.</whatsthis>
-      <default>true</default>
-    </entry>
-    <entry name="UnmountWhenLidButtonPressed" type="Bool">
-      <label>Unmount all shares when the lid is closed</label>
-     <whatsthis>Unmount all mounted shares after the lid of the laptop is closed. The shares will automatically be remounted after the computer wakes up again.</whatsthis>
-      <default>true</default>
-    </entry>
-    <entry name="UnmountWhenPowerButtonPressed" type="Bool">
-      <label>Unmount all shares when the power button is pressed</label>
-     <whatsthis>Unmount all mounted shares after the hardware power button is pressed. The shares will automatically be remounted after the computer wakes up again.</whatsthis>
-      <default>true</default>
-    </entry>
-    <entry name="UnmountWhenNetworkDisconnected" type="Bool">
-      <label>Unmount all shares when the network is disconnected</label>
-      <whatsthis>Unmount all mounted shares when the user disconnects from the network or the connection is lost due to a different reason. Using this option in combination with sleep and/or hibernation might lead to unwanted side effects. In this case you should unmount the shares manually before you suspend the computer.</whatsthis>
-      <default>true</default>
-    </entry>
-  </group>
-  
   <!-- Profiles -->
   
   <group name="Profiles">
@@ -1111,7 +1085,7 @@
     </entry>
     <entry name="UseMigrationAssistant" type="Bool">
       <label>Use profile migration assistant</label>
-      <whatsthis>Use the profile migration assistant when profiles are removed or the enabled or disabled the use of profiles. The profile migration assistant allows you to migrate all settings that were saved for a certain profile to a different one.</whatsthis>
+      <whatsthis>Use the profile migration assistant when profiles are removed or the use of profiles is enabled or disabled. The profile migration assistant allows you to migrate all settings that were saved for a certain profile to a different one.</whatsthis>
       <default>true</default>
     </entry>
   </group>

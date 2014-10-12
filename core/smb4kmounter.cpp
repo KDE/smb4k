@@ -99,10 +99,6 @@ Smb4KMounter::Smb4KMounter( QObject *parent )
 
   connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()),
           this,                         SLOT(slotAboutToQuit()));
-  connect(Smb4KSolidInterface::self(),  SIGNAL(buttonPressed(Smb4KSolidInterface::ButtonType)),
-          this,                         SLOT(slotHardwareButtonPressed(Smb4KSolidInterface::ButtonType)));
-  connect(Smb4KSolidInterface::self(),  SIGNAL(wokeUp()),
-          this,                         SLOT(slotComputerWokeUp()));
   connect(Smb4KSolidInterface::self(),  SIGNAL(networkStatusChanged(Smb4KSolidInterface::ConnectionStatus)),
           this,                         SLOT(slotNetworkStatusChanged(Smb4KSolidInterface::ConnectionStatus)));
   connect(Smb4KProfileManager::self(),  SIGNAL(migratedProfile(QString,QString)),
@@ -1776,71 +1772,30 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
 }
 
 
-void Smb4KMounter::slotHardwareButtonPressed( Smb4KSolidInterface::ButtonType type )
+void Smb4KMounter::slotNetworkStatusChanged(Smb4KSolidInterface::ConnectionStatus status)
 {
   int cookie = Smb4KSolidInterface::self()->beginSleepSuppression(i18n("Unmounting shares. Please wait."));
   d->hardwareReason = true;
   
-  switch ( type )
+  switch (status)
   {
-    case Smb4KSolidInterface::SleepButton:
+    case Smb4KSolidInterface::Disconnecting:
+    case Smb4KSolidInterface::Disconnected:
     {
-      if (Smb4KSettings::unmountWhenSleepButtonPressed() && !mountedSharesList().isEmpty())
-      {
-        abortAll();
-        saveSharesForRemount();
-        unmountAllShares();
+      abortAll();
+      saveSharesForRemount();
+      unmountAllShares();
 
-        // Wait until done
-        while ( hasSubjobs() )
-        {
-          QTest::qWait( TIMEOUT );
-        }
-      }
-      else
+      // Wait until done
+      while (hasSubjobs())
       {
-        // Do nothing
+        QTest::qWait(TIMEOUT);
       }
       break;
     }
-    case Smb4KSolidInterface::LidButton:
+    case Smb4KSolidInterface::Connected:
     {
-      if (Smb4KSettings::unmountWhenLidButtonPressed() && !mountedSharesList().isEmpty())
-      {
-        abortAll();
-        saveSharesForRemount();
-        unmountAllShares();
-
-        // Wait until done
-        while ( hasSubjobs() )
-        {
-          QTest::qWait( TIMEOUT );
-        }
-      }
-      else
-      {
-        // Do nothing
-      }
-      break;
-    }
-    case Smb4KSolidInterface::PowerButton:
-    {
-      if (Smb4KSettings::unmountWhenPowerButtonPressed() && !mountedSharesList().isEmpty())
-      {
-        abortAll();
-        saveSharesForRemount();
-        unmountAllShares();
-
-        // Wait until done
-        while ( hasSubjobs() )
-        {
-          QTest::qWait( TIMEOUT );
-        }
-      }
-      else
-      {
-        // Do nothing
-      }
+      triggerRemounts(true);
       break;
     }
     default:
@@ -1851,42 +1806,6 @@ void Smb4KMounter::slotHardwareButtonPressed( Smb4KSolidInterface::ButtonType ty
   
   d->hardwareReason = false;
   Smb4KSolidInterface::self()->endSleepSuppression(cookie);
-}
-
-
-void Smb4KMounter::slotComputerWokeUp()
-{
-}
-
-
-void Smb4KMounter::slotNetworkStatusChanged( Smb4KSolidInterface::ConnectionStatus status )
-{
-  switch ( status )
-  {
-    case Smb4KSolidInterface::Disconnected:
-    {
-      d->hardwareReason = true;
-      abortAll();
-      saveSharesForRemount();
-      unmountAllShares();
-
-      // Wait until done
-      while ( hasSubjobs() )
-      {
-        QTest::qWait( TIMEOUT );
-      }
-      
-      d->hardwareReason = false;
-      break;
-    }
-    default:
-    {
-      d->hardwareReason = true;
-      triggerRemounts( true );
-      d->hardwareReason = false;
-      break;
-    }
-  }
 }
 
 

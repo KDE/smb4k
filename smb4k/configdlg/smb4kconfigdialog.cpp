@@ -35,7 +35,6 @@
 #include "smb4kauthoptionspage.h"
 #include "smb4ksambaoptionspage.h"
 #include "smb4krsyncoptionspage.h"
-#include "smb4klaptopsupportoptionspage.h"
 #include "smb4kcustomoptionspage.h"
 #include "smb4kprofilespage.h"
 #include "core/smb4ksettings.h"
@@ -142,12 +141,6 @@ void Smb4KConfigDialog::setupDialog()
   
   rsync_options->setEnabled( !KStandardDirs::findExe( "rsync" ).isEmpty() );
 
-  Smb4KLaptopSupportOptionsPage *laptop_options = new Smb4KLaptopSupportOptionsPage( this );
-  QScrollArea *laptop_area = new QScrollArea( this );
-  laptop_area->setWidget( laptop_options );
-  laptop_area->setWidgetResizable( true );
-  laptop_area->setFrameStyle( QFrame::NoFrame );
-  
   Smb4KCustomOptionsPage *custom_options = new Smb4KCustomOptionsPage( this );
   QScrollArea *custom_area = new QScrollArea( this );
   custom_area->setWidget( custom_options );
@@ -167,7 +160,6 @@ void Smb4KConfigDialog::setupDialog()
   m_authentication  = addPage(auth_area, i18n( "Authentication" ), "dialog-password" );
   m_samba           = addPage(samba_area, i18n( "Samba" ), "preferences-system-network" );
   m_synchronization = addPage(rsync_area, i18n( "Synchronization" ), "folder-sync" );
-  m_laptop_support  = addPage(laptop_area, i18n( "Laptop Support" ), "computer-laptop" );
   m_custom_options  = addPage(custom_area, i18n( "Custom Options" ), "preferences-system-network" );
   m_profiles        = addPage(profiles_area, i18n("Profiles"), "format-list-unordered");
 
@@ -1041,10 +1033,6 @@ void Smb4KConfigDialog::slotCheckPage(KPageWidgetItem* /*current*/, KPageWidgetI
   else if (before == m_synchronization)
   {
     (void)checkSynchronizationPage();
-  }
-  else if (before == m_laptop_support)
-  {
-    // Do nothing
   }
   else if (before == m_custom_options)
   {

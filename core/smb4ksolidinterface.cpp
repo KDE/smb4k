@@ -3,7 +3,7 @@
     Solid framework.
                              -------------------
     begin                : So Sep 14 2008
-    copyright            : (C) 2008-2012 by Alexander Reinholdt
+    copyright            : (C) 2008-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -117,12 +117,6 @@ void Smb4KSolidInterface::init()
     }
   }
 
-  // FIXME: Check for hibernation, etc.
-  
-  // Notify the application when the system wakes up again.
-  connect( Solid::PowerManagement::notifier(), SIGNAL(resumingFromSuspend()),
-           this,                               SIGNAL(wokeUp()) );
-
   // Get the AC adapter(s)
   QList<Solid::Device> list_ac = Solid::Device::listFromType( Solid::DeviceInterface::AcAdapter, QString() );
 
@@ -195,13 +189,13 @@ void Smb4KSolidInterface::init()
 
 void Smb4KSolidInterface::slotDeviceAdded(const QString& udi)
 {
-  kDebug() << "Added device: " << udi;
+  qDebug() << metaObject()->className() << "Added device: " << udi;
 }
 
 
 void Smb4KSolidInterface::slotDeviceRemoved(const QString& udi)
 {
-  kDebug() << "Removed device: " << udi;
+  qDebug() << metaObject()->className() << "Removed device: " << udi;
 }
 
 
@@ -239,11 +233,11 @@ void Smb4KSolidInterface::slotAcPlugStateChanged( bool state, const QString &/*u
 {
   if ( state )
   {
-    kDebug() << "AC adapter plugged ..." << endl;
+    qDebug() << metaObject()->className() << "AC adapter plugged ...";
   }
   else
   {
-    kDebug() << "AC adapter unplugged ..." << endl;
+    qDebug() << metaObject()->className() << "AC adapter unplugged ...";
   }
 }
 
@@ -254,17 +248,17 @@ void Smb4KSolidInterface::slotBatteryChargeStateChanged( int state, const QStrin
   {
     case Solid::Battery::Discharging:
     {
-      kDebug() << "Battery is discharging ..." << endl;
+      qDebug() << metaObject()->className() << "Battery is discharging ...";
       break;
     }
     case Solid::Battery::Charging:
     {
-      kDebug() << "Battery is charging ..." << endl;
+      qDebug() << metaObject()->className() << "Battery is charging ...";
       break;
     }
     default:
     {
-      kDebug() << "Unknown battery state ..." << endl;
+      qDebug() << metaObject()->className() << "Unknown battery state ...";
       break;
     }
   }
@@ -273,7 +267,7 @@ void Smb4KSolidInterface::slotBatteryChargeStateChanged( int state, const QStrin
 
 void Smb4KSolidInterface::slotBatteryChargePercentChanged( int value, const QString &/*udi*/ )
 {
-  kDebug() << "Battery charge percent value: " << value << endl;
+  qDebug() << metaObject()->className() << "Battery charge percent value: " << value;
 }
 
 
@@ -309,7 +303,7 @@ void Smb4KSolidInterface::slotNetworkStatusChanged( Solid::Networking::Status st
     }
   }
 
-  emit networkStatusChanged( d->networkStatus );
+  emit networkStatusChanged(d->networkStatus);
 }
 
 #include "smb4ksolidinterface.moc"
