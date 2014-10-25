@@ -71,8 +71,8 @@ Smb4KCustomOptionsManager::Smb4KCustomOptionsManager( QObject *parent )
   // Connections
   connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), 
           this, SLOT(slotAboutToQuit()));
-  connect(Smb4KProfileManager::self(), SIGNAL(settingsChanged()), 
-          this, SLOT(slotProfileSettingsChanged()));
+  connect(Smb4KProfileManager::self(), SIGNAL(activeProfileChanged(QString)), 
+          this, SLOT(slotActiveProfileChanged(QString)));
 }
 
 
@@ -87,22 +87,22 @@ Smb4KCustomOptionsManager *Smb4KCustomOptionsManager::self()
 }
 
 
-void Smb4KCustomOptionsManager::addRemount( Smb4KShare *share, bool always )
+void Smb4KCustomOptionsManager::addRemount(Smb4KShare *share, bool always)
 {
-  Q_ASSERT( share );
+  Q_ASSERT(share);
   
-  if ( share )
+  if (share)
   {
-    Smb4KCustomOptions *options = NULL;
+    Smb4KCustomOptions *options = findOptions(share, true);
     
-    if ( (options = findOptions( share, true )) )
+    if (options)
     {
       // If the options are already in the list, check if the share is
       // always to be remounted. If so, ignore the 'always' argument
       // and leave that option untouched.
-      if ( options->remount() != Smb4KCustomOptions::RemountAlways )
+      if (options->remount() != Smb4KCustomOptions::RemountAlways)
       {
-        options->setRemount( always ? Smb4KCustomOptions::RemountAlways : Smb4KCustomOptions::RemountOnce );
+        options->setRemount(always ? Smb4KCustomOptions::RemountAlways : Smb4KCustomOptions::RemountOnce);
       }
       else
       {
@@ -111,11 +111,13 @@ void Smb4KCustomOptionsManager::addRemount( Smb4KShare *share, bool always )
     }
     else
     {
-      options = new Smb4KCustomOptions( share );
+      options = new Smb4KCustomOptions(share);
       options->setProfile(Smb4KProfileManager::self()->activeProfile());
       options->setRemount(always ? Smb4KCustomOptions::RemountAlways : Smb4KCustomOptions::RemountOnce);
-      d->options << options;
+      d->options << options;      
     }
+    
+    writeCustomOptions(d->options);
   }
   else
   {
@@ -150,7 +152,9 @@ void Smb4KCustomOptionsManager::removeRemount( Smb4KShare *share, bool force )
     else
     {
       // Do nothing
-    }     
+    }
+    
+    writeCustomOptions(d->options);
   }
   else
   {
@@ -183,6 +187,8 @@ void Smb4KCustomOptionsManager::clearRemounts( bool force )
       // Do nothing
     }
   }
+  
+  writeCustomOptions(d->options);
 }
 
 
@@ -950,8 +956,6 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog( Smb4KBasicNetworkItem *
     {
       removeCustomOptions( options );
     }
-      
-    writeCustomOptions(d->options);
   }
   else
   {
@@ -976,85 +980,95 @@ void Smb4KCustomOptionsManager::addCustomOptions( Smb4KCustomOptions *options )
 {
   Q_ASSERT( options );
   
-  // Add the custom options. Check if there already is an entry with the
-  // same URL and modify it if found.
-  // If the incoming options are those for a host, propagate the host specific
-  // changes to its shares as well.
-  
-  Smb4KCustomOptions *known_options = findOptions( options->url() );
-  
-  if ( !known_options )
+  if (options)
   {
-    Smb4KCustomOptions *o = new Smb4KCustomOptions(*options);
     
-    if (o->profile().isEmpty())
+    // Add the custom options. Check if there already is an entry with the
+    // same URL and modify it if found.
+    // If the incoming options are those for a host, propagate the host specific
+    // changes to its shares as well.
+    
+    Smb4KCustomOptions *known_options = findOptions( options->url() );
+    
+    if ( !known_options )
     {
-      o->setProfile(Smb4KProfileManager::self()->activeProfile());
+      Smb4KCustomOptions *o = new Smb4KCustomOptions(*options);
+      
+      if (o->profile().isEmpty())
+      {
+        o->setProfile(Smb4KProfileManager::self()->activeProfile());
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      d->options << o;
     }
     else
     {
-      // Do nothing
+      if ( known_options != options && !known_options->equals( options ) )
+      {
+        known_options->setSMBPort( options->smbPort() );
+  #ifndef Q_OS_FREEBSD
+        known_options->setFileSystemPort( options->fileSystemPort() );
+        known_options->setWriteAccess( options->writeAccess() );
+        known_options->setSecurityMode( options->securityMode() );
+  #endif
+        known_options->setProtocolHint( options->protocolHint() );
+        known_options->setUID( options->uid() );
+        known_options->setGID( options->gid() );
+        known_options->setUseKerberos( options->useKerberos() );
+        known_options->setMACAddress( options->macAddress() );
+        known_options->setWOLSendBeforeNetworkScan( options->wolSendBeforeNetworkScan() );
+        known_options->setWOLSendBeforeMount( options->wolSendBeforeMount() );
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      if ( known_options->type() == Host )
+      {
+        for ( int i = 0; i < d->options.size(); ++i )
+        {
+          if ( d->options.at( i )->type() == Share &&
+              QString::compare( d->options.at( i )->hostName() , options->hostName(), Qt::CaseInsensitive ) == 0 &&
+              QString::compare( d->options.at( i )->workgroupName() , options->workgroupName(), Qt::CaseInsensitive ) == 0 )
+          {
+            // Propagate the options to the shared resources of the host.
+            // They overwrite the ones defined for the shares.
+            d->options[i]->setSMBPort( options->smbPort() );
+  #ifndef Q_OS_FREEBSD
+            d->options[i]->setFileSystemPort( options->fileSystemPort() );
+            d->options[i]->setWriteAccess( options->writeAccess() );
+            d->options[i]->setSecurityMode( options->securityMode() );
+  #endif
+            d->options[i]->setProtocolHint( options->protocolHint() );
+            d->options[i]->setUID( options->uid() );
+            d->options[i]->setGID( options->gid() );
+            d->options[i]->setUseKerberos( options->useKerberos() );
+            d->options[i]->setMACAddress( options->macAddress() );
+            d->options[i]->setWOLSendBeforeNetworkScan( options->wolSendBeforeNetworkScan() );
+            d->options[i]->setWOLSendBeforeMount( options->wolSendBeforeMount() );
+          }
+          else
+          {
+            // Do nothing
+          }
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
     }
     
-    d->options << o;
+    writeCustomOptions(d->options);
   }
   else
   {
-    if ( known_options != options && !known_options->equals( options ) )
-    {
-      known_options->setSMBPort( options->smbPort() );
-#ifndef Q_OS_FREEBSD
-      known_options->setFileSystemPort( options->fileSystemPort() );
-      known_options->setWriteAccess( options->writeAccess() );
-      known_options->setSecurityMode( options->securityMode() );
-#endif
-      known_options->setProtocolHint( options->protocolHint() );
-      known_options->setUID( options->uid() );
-      known_options->setGID( options->gid() );
-      known_options->setUseKerberos( options->useKerberos() );
-      known_options->setMACAddress( options->macAddress() );
-      known_options->setWOLSendBeforeNetworkScan( options->wolSendBeforeNetworkScan() );
-      known_options->setWOLSendBeforeMount( options->wolSendBeforeMount() );
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    if ( known_options->type() == Host )
-    {
-      for ( int i = 0; i < d->options.size(); ++i )
-      {
-        if ( d->options.at( i )->type() == Share &&
-             QString::compare( d->options.at( i )->hostName() , options->hostName(), Qt::CaseInsensitive ) == 0 &&
-             QString::compare( d->options.at( i )->workgroupName() , options->workgroupName(), Qt::CaseInsensitive ) == 0 )
-        {
-          // Propagate the options to the shared resources of the host.
-          // They overwrite the ones defined for the shares.
-          d->options[i]->setSMBPort( options->smbPort() );
-#ifndef Q_OS_FREEBSD
-          d->options[i]->setFileSystemPort( options->fileSystemPort() );
-          d->options[i]->setWriteAccess( options->writeAccess() );
-          d->options[i]->setSecurityMode( options->securityMode() );
-#endif
-          d->options[i]->setProtocolHint( options->protocolHint() );
-          d->options[i]->setUID( options->uid() );
-          d->options[i]->setGID( options->gid() );
-          d->options[i]->setUseKerberos( options->useKerberos() );
-          d->options[i]->setMACAddress( options->macAddress() );
-          d->options[i]->setWOLSendBeforeNetworkScan( options->wolSendBeforeNetworkScan() );
-          d->options[i]->setWOLSendBeforeMount( options->wolSendBeforeMount() );
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-    }
-    else
-    {
-      // Do nothing
-    }
+    // Do nothing
   }
 }
 
@@ -1063,20 +1077,29 @@ void Smb4KCustomOptionsManager::removeCustomOptions( Smb4KCustomOptions *options
 {
   Q_ASSERT( options );
   
-  Smb4KCustomOptions *known_options = findOptions( options->url() );
-  
-  if ( known_options )
+  if (options)
   {
-    int index = d->options.indexOf( known_options );
+    Smb4KCustomOptions *known_options = findOptions( options->url() );
     
-    if ( index != -1 )
+    if ( known_options )
     {
-      delete d->options.takeAt( index );
+      int index = d->options.indexOf( known_options );
+      
+      if ( index != -1 )
+      {
+        delete d->options.takeAt( index );
+      }
+      else
+      {
+        // Do nothing
+      }
     }
     else
     {
       // Do nothing
     }
+    
+    writeCustomOptions(d->options);
   }
   else
   {
@@ -1403,7 +1426,7 @@ void Smb4KCustomOptionsManager::migrateProfile(const QString& from, const QStrin
   writeCustomOptions(allOptions, true);
   
   // Profile settings changed, so invoke the slot.
-  slotProfileSettingsChanged();
+  slotActiveProfileChanged(Smb4KProfileManager::self()->activeProfile());
   
   // Clear the temporary lists of bookmarks and groups.
   while (!allOptions.isEmpty())
@@ -1440,7 +1463,7 @@ void Smb4KCustomOptionsManager::removeProfile(const QString& name)
   writeCustomOptions(allOptions, true);
   
   // Profile settings changed, so invoke the slot.
-  slotProfileSettingsChanged();
+  slotActiveProfileChanged(Smb4KProfileManager::self()->activeProfile());
   
   // Clear the temporary lists of bookmarks and groups.
   while (!allOptions.isEmpty())
@@ -1460,7 +1483,7 @@ void Smb4KCustomOptionsManager::slotAboutToQuit()
 }
 
 
-void Smb4KCustomOptionsManager::slotProfileSettingsChanged()
+void Smb4KCustomOptionsManager::slotActiveProfileChanged(const QString& /*activeProfile*/)
 {
   // Clear the list of custom options.
   while (!d->options.isEmpty())

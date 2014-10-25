@@ -26,6 +26,10 @@
 #ifndef SMB4KPROFILESMENU_H
 #define SMB4KPROFILESMENU_H
 
+// Qt include
+#include <QString>
+#include <QStringList>
+
 // KDE includes
 #include <kselectaction.h>
 
@@ -46,7 +50,9 @@ class Smb4KProfilesMenu : public KSelectAction
     virtual ~Smb4KProfilesMenu();
     
   protected Q_SLOTS:
-    void slotSettingsChanged();
+    void slotActiveProfileChanged(const QString &newProfile);
+    void slotProfilesListChanged(const QStringList &profiles);
+    void slotProfileUsageChanged(bool use);
     void slotActionTriggered(const QString &name);
     
   private:

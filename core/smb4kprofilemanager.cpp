@@ -88,7 +88,7 @@ Smb4KProfileManager* Smb4KProfileManager::self()
 }
 
 
-bool Smb4KProfileManager::setActiveProfile(const QString& name, bool noSignal)
+void Smb4KProfileManager::setActiveProfile(const QString& name)
 {
   bool changed = false;
   
@@ -120,22 +120,12 @@ bool Smb4KProfileManager::setActiveProfile(const QString& name, bool noSignal)
   if (changed)
   {
     Smb4KSettings::setActiveProfile(d->activeProfile);
-    
-    if (!noSignal)
-    {
-      emit settingsChanged();
-    }
-    else
-    {
-      // Do nothing
-    }
+    emit activeProfileChanged(d->activeProfile);
   }
   else
   {
     // Do nothing
   }
-  
-  return changed;
 }
 
 
@@ -192,22 +182,22 @@ void Smb4KProfileManager::migrateProfiles(const QList< QPair<QString,QString> >&
           }
         }
         
-        // In case the active profile was modified, rename it according
-        // the value passed.
-        if (QString::compare(from, d->activeProfile, Qt::CaseSensitive) == 0)
-        {
-          (void)setActiveProfile(to, true);
-        }
-        else
-        {
-          // Do nothing
-        }
-      
         // Migrate profiles.
         Smb4KBookmarkHandler::self()->migrateProfile(from, to);
         Smb4KCustomOptionsManager::self()->migrateProfile(from, to);
         Smb4KHomesSharesHandler::self()->migrateProfile(from, to);
         emit migratedProfile(from, to);
+        
+        // In case the active profile was modified, rename it according
+        // the value passed.
+        if (QString::compare(from, d->activeProfile, Qt::CaseSensitive) == 0)
+        {
+          setActiveProfile(to);
+        }
+        else
+        {
+          // Do nothing
+        }
       }
       else
       {
@@ -223,7 +213,7 @@ void Smb4KProfileManager::migrateProfiles(const QList< QPair<QString,QString> >&
     }
     
     Smb4KSettings::setProfilesList(d->profiles);
-    emit settingsChanged();
+    emit profilesListChanged(d->profiles);
   }
   else
   {
@@ -289,16 +279,6 @@ void Smb4KProfileManager::removeProfiles(const QStringList& list, QWidget* paren
         {
           // Do nothing
         }
-      
-        // Set a new active profile if the user removed the current one.
-        if (QString::compare(name, d->activeProfile, Qt::CaseSensitive) == 0)
-        {
-          (void)setActiveProfile(d->profiles.first(), true);
-        }
-        else
-        {
-          // Do nothing
-        }
       }
       else
       {
@@ -309,11 +289,21 @@ void Smb4KProfileManager::removeProfiles(const QStringList& list, QWidget* paren
       Smb4KBookmarkHandler::self()->removeProfile(name);
       Smb4KCustomOptionsManager::self()->removeProfile(name);
       Smb4KHomesSharesHandler::self()->removeProfile(name);
-      emit removedProfile(name);      
+      emit removedProfile(name);
+      
+      // Set a new active profile if the user removed the current one.
+      if (QString::compare(name, d->activeProfile, Qt::CaseSensitive) == 0)
+      {
+        setActiveProfile(!d->profiles.isEmpty() ? d->profiles.first() : QString());
+      }
+      else
+      {
+         // Do nothing
+      }
     }
     
     Smb4KSettings::setProfilesList(d->profiles);
-    emit settingsChanged();
+    emit profilesListChanged(d->profiles);
   }
   else
   {
@@ -325,14 +315,13 @@ void Smb4KProfileManager::removeProfiles(const QStringList& list, QWidget* paren
 void Smb4KProfileManager::slotConfigChanged()
 {
   bool use_changed = false;
-  bool profiles_changed = false;
-  bool active_changed = false;
   
   // Use of profiles
   if (d->useProfiles != Smb4KSettings::useProfiles())
   {
     d->useProfiles = Smb4KSettings::useProfiles();
-    use_changed    = true;
+    emit profileUsageChanged(d->useProfiles);
+    use_changed = true;
   }
   else
   {
@@ -343,24 +332,13 @@ void Smb4KProfileManager::slotConfigChanged()
   if (d->profiles != Smb4KSettings::profilesList())
   {
     d->profiles = Smb4KSettings::profilesList();
-    profiles_changed = true;
+    emit profilesListChanged(d->profiles);
   }
   else
   {
     // Do nothing
   }
 
-  // Active profile
-  if (!Smb4KSettings::activeProfile().isEmpty() &&
-      d->profiles.contains(Smb4KSettings::activeProfile()))
-  {
-    active_changed = setActiveProfile(Smb4KSettings::activeProfile(), true);
-  }
-  else
-  {
-    active_changed = setActiveProfile(d->profiles.first(), true);
-  }
-  
   // Migrate profile(s), if necessary.
   if (use_changed && Smb4KSettings::useMigrationAssistant())
   {
@@ -404,14 +382,15 @@ void Smb4KProfileManager::slotConfigChanged()
     // Do nothing
   }
   
-  // Emission of signal.
-  if (use_changed || profiles_changed || active_changed)
+  // Active profile
+  if (!Smb4KSettings::activeProfile().isEmpty() &&
+      d->profiles.contains(Smb4KSettings::activeProfile()))
   {
-    emit settingsChanged();
+    setActiveProfile(Smb4KSettings::activeProfile());
   }
   else
   {
-    // Do nothing
+    setActiveProfile(d->profiles.first());
   }
 }
 

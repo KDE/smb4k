@@ -216,8 +216,8 @@
       <default>false</default>
     </entry>
     <entry name="RemountShares" type="Bool">
-      <label>Remount recently used shares on program start</label>
-      <whatsthis>Remount all your shares that were mounted when you exited the program. If a remount fails, Smb4K will retry the next time it is started. Shares that were mounted by other users are ignored.</whatsthis>
+      <label>Remount shares</label>
+      <whatsthis>Remount all your shares that were mounted when you exited the program or changed a profile. If the remounting of a share fails, Smb4K will retry the next time it is started. Shares that were mounted by other users are ignored. Please note that  this setting does not affect the automatic remounting of shares when your computer woke up from a sleep state.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="RemountAttempts" type="Int">

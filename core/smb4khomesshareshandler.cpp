@@ -70,8 +70,8 @@ Smb4KHomesSharesHandler::Smb4KHomesSharesHandler( QObject *parent )
   // Connections
   connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), 
           this, SLOT(slotAboutToQuit()));
-  connect(Smb4KProfileManager::self(), SIGNAL(settingsChanged()), 
-          this, SLOT(slotProfileSettingsChanged()));
+  connect(Smb4KProfileManager::self(), SIGNAL(activeProfileChanged(QString)), 
+          this, SLOT(slotActiveProfileChanged(QString)));
 }
 
 
@@ -489,7 +489,7 @@ void Smb4KHomesSharesHandler::migrateProfile(const QString& from, const QString&
   writeUserNames(allUsers, true);
   
   // Profile settings changed, so invoke the slot.
-  slotProfileSettingsChanged();
+  slotActiveProfileChanged(Smb4KProfileManager::self()->activeProfile());
   
   // Clear the temporary lists of bookmarks and groups.
   while (!allUsers.isEmpty())
@@ -526,7 +526,7 @@ void Smb4KHomesSharesHandler::removeProfile(const QString& name)
   writeUserNames(allUsers, true);
   
   // Profile settings changed, so invoke the slot.
-  slotProfileSettingsChanged();
+  slotActiveProfileChanged(Smb4KProfileManager::self()->activeProfile());
   
   // Clear the temporary list of homes users.
   while (!allUsers.isEmpty())
@@ -546,7 +546,7 @@ void Smb4KHomesSharesHandler::slotAboutToQuit()
 }
 
 
-void Smb4KHomesSharesHandler::slotProfileSettingsChanged()
+void Smb4KHomesSharesHandler::slotActiveProfileChanged(const QString& /*activeProfile*/)
 {
   // Clear the list of homes users.
   while (!d->homesUsers.isEmpty())

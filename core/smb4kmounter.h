@@ -351,9 +351,9 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
     void slotStatResult( KJob *job );
     
     /**
-     * This slot is called if the profiles settings changed.
+     * This slot is called when the active profile changed.
      */
-    void slotProfileSettingsChanged();
+    void slotActiveProfileChanged(const QString &newProfile);
     
     /**
      * This slot is called when a profile was migrated.

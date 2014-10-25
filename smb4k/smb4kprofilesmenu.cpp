@@ -34,6 +34,7 @@
 
 // Qt includes
 #include <QtCore/QStringList>
+#include <QtGui/QAction>
 
 // KDE includes
 #include <kicon.h>
@@ -64,8 +65,12 @@ Smb4KProfilesMenu::Smb4KProfilesMenu(QObject* parent)
   setToolBarMode(KSelectAction::MenuMode);
   
   // Connections
-  connect(Smb4KProfileManager::self(), SIGNAL(settingsChanged()), this, SLOT(slotSettingsChanged()));
-  connect(this, SIGNAL(triggered(QString)), this, SLOT(slotActionTriggered(QString)));
+  connect(Smb4KProfileManager::self(), SIGNAL(activeProfileChanged(QString)), 
+          this, SLOT(slotActiveProfileChanged(QString)));
+  connect(Smb4KProfileManager::self(), SIGNAL(profilesListChanged(QStringList)),
+          this, SLOT(slotProfilesListChanged(QStringList)));
+  connect(this, SIGNAL(triggered(QString)), 
+          this, SLOT(slotActionTriggered(QString)));
 }
 
 
@@ -74,11 +79,16 @@ Smb4KProfilesMenu::~Smb4KProfilesMenu()
 }
 
 
-void Smb4KProfilesMenu::slotSettingsChanged()
+
+void Smb4KProfilesMenu::slotActiveProfileChanged(const QString& newProfile)
+{
+  setCurrentAction(newProfile);
+}
+
+
+void Smb4KProfilesMenu::slotProfilesListChanged(const QStringList& profiles)
 {
   clear();
-  
-  QStringList profiles = Smb4KProfileManager::self()->profilesList();
   
   for (int i = 0; i < profiles.size(); ++i)
   {
@@ -95,6 +105,24 @@ void Smb4KProfilesMenu::slotSettingsChanged()
   }
   
   setCurrentAction(Smb4KProfileManager::self()->activeProfile());
+}
+
+
+void Smb4KProfilesMenu::slotProfileUsageChanged(bool use)
+{
+  for (int i = 0; i < actions().size(); ++i)
+  {
+    QAction *action = actions()[i];
+    
+    if (action)
+    {
+      action->setEnabled(use);
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
 }
 
 

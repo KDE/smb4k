@@ -404,10 +404,9 @@ class Smb4KMounterPrivate
     QList<Smb4KShare *> retries;
     QList<Smb4KShare *> remounts;
     QStringList obsoleteMountpoints;
-    bool aboutToQuit;
-    bool hardwareReason;
     bool firstImportDone;
     bool importsAllowed;
+    bool internalReason;
     QString activeProfile;
 };
 

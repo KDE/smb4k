@@ -162,7 +162,7 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
     /**
      * Opens the bookmark editor
      * 
-     * @param parent        The parent widget
+     * @param parent          The parent widget
      */
     void editBookmarks( QWidget *parent = 0 );
 
@@ -174,9 +174,11 @@ class KDE_EXPORT Smb4KBookmarkHandler : public QObject
     
   protected Q_SLOTS:
     /**
-     * This slot is called if the profiles settings changed.
+     * This slot is called if the active profile changed.
+     * 
+     * @param activeProfile   The name of the active profile
      */
-    void slotProfileSettingsChanged();
+    void slotActiveProfileChanged(const QString &activeProfile);
     
   private:
     /**

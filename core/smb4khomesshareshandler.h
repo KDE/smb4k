@@ -112,9 +112,11 @@ class KDE_EXPORT Smb4KHomesSharesHandler : public QObject
     void slotAboutToQuit();
     
     /**
-     * This slot is called if the profiles settings changed.
+     * This slot is called if the active profile changed.
+     * 
+     * @param activeProfile   The name of the active profile
      */
-    void slotProfileSettingsChanged();
+    void slotActiveProfileChanged(const QString &activeProfile);
     
   private:
     /**

@@ -82,11 +82,10 @@ class KDE_EXPORT Smb4KProfileManager : public QObject
      * Otherwise the this function does nothing.
      * 
      * @param name        Name of the active profile.
-     * @param noSignal    Do not emit the settingsChanged() signal.
      * 
      * @returns true if the active profile was changed.
      */
-    bool setActiveProfile(const QString &name, bool noSignal = false);
+    void setActiveProfile(const QString &name);
     
     /**
      * Return the currently active profile or an empty string if 
@@ -100,7 +99,7 @@ class KDE_EXPORT Smb4KProfileManager : public QObject
      * Returns the list of profiles or an empty string list if the 
      * the use of profiles is diabled.
      * 
-     * @returns the list of profiles.
+     * @returns the list of profiles.///
      */
     QStringList profilesList() const;
     
@@ -150,12 +149,6 @@ class KDE_EXPORT Smb4KProfileManager : public QObject
     
   Q_SIGNALS:
     /**
-     * This signal is emittted when any of the settings related to 
-     * profiles changed.
-     */
-    void settingsChanged();
-    
-    /**
      * This signal is emitted when all entries of one profile was migrated
      * to another one.
      * 
@@ -170,6 +163,28 @@ class KDE_EXPORT Smb4KProfileManager : public QObject
      * @param profile     The removed profile
      */
     void removedProfile(const QString &profile);
+    
+    /**
+     * This signal is emitted when the active profile changed.
+     * 
+     * @param newProfile  The name of the new profile
+     */
+    void activeProfileChanged(const QString &newProfile);
+    
+    /**
+     * This signal is emitted when the list of profiles changed.
+     * 
+     * @param profiles    The list of profiles
+     */
+    void profilesListChanged(const QStringList &profiles);
+    
+    /**
+     * This signal is emitted when the usage of profiles is switched
+     * on or off.
+     * 
+     * @param use           TRUE if profiles are used and FALSE otherwise
+     */
+    void profileUsageChanged(bool use);
     
   protected Q_SLOTS:
     /**
