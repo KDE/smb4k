@@ -28,8 +28,8 @@
 <holder>Alexander Reinholdt</holder>
 </copyright>
 <legalnotice>&underFDL;</legalnotice>
-<date>2014-01-xx</date>
-<releaseinfo>5.0.0</releaseinfo>
+<date>2014-10-xx</date>
+<releaseinfo>5.1.0</releaseinfo>
 <abstract>
 <para>&smb4k; is an advanced network neighborhood browser and a front end to the programs of the Samba software suite.</para>
 </abstract>
@@ -3748,87 +3748,6 @@ Default: not selected
 </varlistentry>
 </variablelist>
 </sect3>
-</sect2>
-</sect1>
-
-
-<!-- Configuration: Laptop Support -->
-
-<sect1 id="configuration_laptop_support">
-<title>Laptop Support</title>
-
-<para>The settings on this page influence the way &smb4k; behaves when used on a laptop. Primarily, they make sure that the application runs smoothly even after a suspension/hibernation and during or after a network disconnection. But you can also define the behavior when the laptop is powered off without prior log-off.</para>
-  
-<para>Please note that &smb4k; is only able to detect changes in state of the hardware through the <ulink url="http://solid.kde.org">Solid</ulink> hardware device framework. So, it might be necessary that you unmount all shares manually if you initiate a software suspend/hibernation. Have also a look at the options defined on the <link linkend="configuration_shares">Shares</link> configuration page under <link linkend="configuration_shares_mounting">Mounting &amp; Unmounting</link>.</para>
-
-<sect2 id="configuration_laptop_support_hardware">
-<title>Hardware</title>
-<screenshot>
-<screeninfo>Screenshot of the "Laptop Support" configuration page</screeninfo>
-<mediaobject>
-<imageobject>
-<imagedata fileref="configuration_laptop_support.png" format="PNG" />
-</imageobject>
-<textobject>
-<phrase>The "Laptop Support" configuration page</phrase>
-</textobject>
-</mediaobject>
-</screenshot>
-
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Unmount all shares when the sleep button is pressed</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>All shares owned by you are unmounted when the sleep button is pressed and your laptop is about to suspend or hibernate. After the operating system woke up again, the shares are remounted.</para>
-<para>
-Default: selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Unmount all shares when the lid is closed</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>All shares owned by you are unmounted when the lid is closed and your laptop is about to suspend or hibernate. After the operating system woke up again, the shares are remounted.</para>
-<para>
-Default: selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Unmount all shares when the power button is pressed</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>All shares owned by you are unmounted when the power button is pressed and your laptop is about to power off. On the next program run, the shares are remounted.</para>
-<para>
-Default: selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Unmount all shares when the network is disconnected</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>All shares owned by you are unmounted when the network gets disconnected. After the connection was established again, the shares are remounted.</para>
-<para>
-Default: selected
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
 </sect2>
 </sect1>
 
