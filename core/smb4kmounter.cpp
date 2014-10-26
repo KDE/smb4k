@@ -2171,12 +2171,6 @@ void Smb4KMounter::slotActiveProfileChanged(const QString &newProfile)
     d->importsAllowed = true;
     d->activeProfile = newProfile;
     
-//     // Import the shares currently mounted.
-//     import(true);
-//     
-//     // Trigger remounts.
-//     triggerRemounts(true);
-    
     // Start the timer again.
     d->timerId = startTimer(TIMEOUT);
   }
