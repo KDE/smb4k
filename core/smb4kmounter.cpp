@@ -1287,7 +1287,7 @@ void Smb4KMounter::unmountShares( const QList<Smb4KShare *> &shares, bool silent
 
 void Smb4KMounter::unmountAllShares(QWidget* parent)
 {
-  if (d->internalReason)
+  if (!d->internalReason)
   {
     unmountShares(mountedSharesList(), false, parent);
   }
