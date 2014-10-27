@@ -334,8 +334,6 @@
 
 <para>Often a share is password protected. In this case, an <link linkend="mainwindow_network_authentication">authentication dialog</link> will appear and you have to enter the correct user name (if not already provided) and password. &smb4k; will proceed mounting the share unless a wrong user name or password was supplied. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="mounted_shares_view">mounted shares view</link>. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (&Linux;) or <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (FreeBSD) will be shown.</para>
 
-<para>You can switch off the (purely informatory) mount notifications in the <link linkend="configuration_user_interface_general_notifications">configuration dialog</link>.</para>
-
 <note><para>With a standard installation of &smb4k;, <emphasis>FreeBSD</emphasis> users might experience problems when they try to mount a share. This is due to misplaced DBUS and/or PolKit-1 config files. The section <link linkend="freebsd_remarks_installation">Remarks for FreeBSD Users : DBUS and PolKit-1</link> explains how to fix these issues.</para></note>
 </sect2>
 
@@ -372,7 +370,7 @@
 </mediaobject>
 </screenshot>
 <para>The preview dialog acts like a simple file manager. You can navigate through the contents of the remote share by clicking the folder icons in the list view and the <guibutton>Up</guibutton>, <guibutton>Back</guibutton>, and <guibutton>Forward</guibutton> button. The current location is displayed in the combo box on the right hand side. The <guibutton>Reload</guibutton> button reloads the contents of the current folder.</para>
-<para> By default, the preview dialog only shows folders and files that are not hidden. You can change this behavior in the <link linkend="configuration_user_interface_preview_hidden">configuration dialog</link>. File transfers or the like are not possible.</para>
+<para> By default, the preview dialog only shows folders and files that are not hidden. You can change this behavior in the <link linkend="configuration_network_general_behavior">configuration dialog</link>. File transfers or the like are not possible.</para>
 </sect2>
 
 <sect2 id="mainwindow_network_authentication">
@@ -586,8 +584,8 @@
       </menuchoice>
     </term>
     <listitem>
-      <para>Unmount one or multiple selected shares. The ability to unmount shares is by default restricted to the ones that are owned by you. However, you can change this behavior by changing the <link linkend="configuration_shares_mounting">settings</link> in the configuration dialog. If no share is selected in the shares view, this button is disabled.</para>
-      <para>&smb4k; also provides the ability to force the unmounting of shares (&Linux; only). This might be useful with inaccessible shares that cannot be unmounted the normal way. To enable this feature, you need to modify the <link linkend="configuration_shares_mounting">settings</link> in the configuration dialog.</para>
+      <para>Unmount one or multiple selected shares. The ability to unmount shares is by default restricted to the ones that are owned by you. However, you can change this behavior by changing the <link linkend="configuration_shares_behavior">settings</link> in the configuration dialog. If no share is selected in the shares view, this button is disabled.</para>
+      <para>&smb4k; also provides the ability to force the unmounting of shares (&Linux; only). This might be useful with inaccessible shares that cannot be unmounted the normal way. To enable this feature, you need to modify the <link linkend="configuration_shares_behavior">settings</link> in the configuration dialog.</para>
       <para>Read the <link linkend="mainwindow_shares_unmounting">Unmounting Shares</link> section for more details.</para>
     </listitem>
   </varlistentry>
@@ -693,7 +691,7 @@
 <itemizedlist>
 <listitem><para>The icon on the left hand side indicates that this share is not accessible. &smb4k; won't allow you to open it or to do synchronization with it. You will only be able to unmount or add a bookmark to it.</para></listitem>
 <listitem><para>The central icon indicates that the share is online, accessible, and owned by you. You may perform all available actions on it.</para></listitem>
-<listitem><para>All shares marked with a red flag like the one on the right hand side are owned by another user. They are only shown if you adjusted the <link linkend="configuration_user_interface_shares_mounted_shares">settings</link> to display them. In the default configuration, you are not allowed to unmount these shares, but you can <link linkend="configuration_shares_mounting">change this behavior</link>, too.</para></listitem>
+<listitem><para>All shares marked with a red flag like the one on the right hand side are owned by another user. They are only shown if you adjusted the <link linkend="configuration_shares_behavior">settings</link> to display them. In the default configuration, you are not allowed to unmount these shares, but you can <link linkend="configuration_shares_behavior">change this behavior</link>, too.</para></listitem>
 </itemizedlist>
 </sect2>
 
@@ -721,7 +719,7 @@
 <para>If you click the <guibutton>Yes</guibutton> button, the share will definitely be unmounted. So, please think twice before you decide to unmount shares that are owned by other users!</para>
 <para>Inaccessible shares are unmounted with a "normal" unmount by default. If this should fail, you can <link linkend="configuration_shares">configure</link> &smb4k; so as to perform a <ulink url="man:/umount">lazy unmount</ulink> on inaccessible shares (&Linux; only).</para>
 <para>All shares can be unmounted at once by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>N</keycap></keycombo></shortcut><guimenuitem>Unmount All</guimenuitem></menuchoice> action. Depending on your settings, this will also unmount foreign and inaccessible shares.</para>
-<para>After a successful unmount process, the user is notified. You can switch off this kind of purely informatory notifications in the <link linkend="configuration_user_interface_general_notifications">configuration dialog</link>. If unmounting fails, a notification with the returned error message will be shown.</para>
+<para>After a successful unmount process, the user is notified. If unmounting fails, a notification with the returned error message will be shown.</para>
 </sect2>
 
 <sect2 id="mainwindow_shares_synchronization">
@@ -794,7 +792,7 @@
 </mediaobject>
 </screenshot>
 <para>Especially adding a group may help you to organize the bookmarks. In the bookmark menu, all bookmarks belonging to one group will be arranged in a submenu with the group entry as parent (see <link linkend="mainwindow_bookmarks_menu">below</link>).</para>
-<para>The label can be any text describing the share. In case you define a label, it will be displayed in the bookmarks menu instead of the UNC by default. If you want to change this behavior, you can do so in the <link linkend="configuration_user_interface_general_bookmarks">configuration dialog</link>.</para>
+<para>The label can be any text describing the share. In case you define a label, it will be displayed in the bookmarks menu instead of the UNC by default. If you want to change this behavior, you can do so in the <link linkend="configuration_user_interface_misc_bookmarks">configuration dialog</link>.</para>
 </sect2>
 
 <sect2 id="mainwindow_bookmarks_menu">
@@ -875,7 +873,7 @@
 </mediaobject>
 </screenshot>
 <para>In the tree view the bookmarks are arranged according to the groups they belong to. Bookmarks without groups are located at the top level. To rearrange bookmarks, the tree view offers drag and drop capabilities, so that you can move bookmarks around using the mouse.</para>
-<para>If you want to edit a bookmark, you can do so by selecting it. The stored label, login, IP address and group name appear in the input widgets and become editable. In most cases, you do not need to touch the IP address and the login, because &smb4k; stored the correct values at the time you bookmarked the share. However, if the server got a different IP address (&eg; because DHCP is used on your local network) or your login changed, these entries should be adjusted. With the label you can give each bookmark a custom description. It will be used <emphasis>instead</emphasis> of the UNC address in the case this feature is enabled in the <link linkend="configuration_user_interface_general_bookmarks">configuration dialog</link>. The group entry, finally, helps you to organize your bookmarks. Especially if you use &eg; your notebook at home and at work, it might be a good idea to create two groups "Home" and "Work" and save the bookmarks accordingly.</para>
+<para>If you want to edit a bookmark, you can do so by selecting it. The stored label, login, IP address and group name appear in the input widgets and become editable. In most cases, you do not need to touch the IP address and the login, because &smb4k; stored the correct values at the time you bookmarked the share. However, if the server got a different IP address (&eg; because DHCP is used on your local network) or your login changed, these entries should be adjusted. With the label you can give each bookmark a custom description. It will be used <emphasis>instead</emphasis> of the UNC address in the case this feature is enabled in the <link linkend="configuration_user_interface_misc_bookmarks">configuration dialog</link>. The group entry, finally, helps you to organize your bookmarks. Especially if you use &eg; your notebook at home and at work, it might be a good idea to create two groups "Home" and "Work" and save the bookmarks accordingly.</para>
 <para>The tree view also offers a popup menu containing the following three actions. They can be used to add groups or remove groups and/or bookmarks.</para>
 <screenshot>
 <screeninfo>Screenshot of the popup menu of the bookmark editor</screeninfo>
@@ -974,7 +972,7 @@
       </menuchoice>
     </term>
     <listitem>
-      <para>Unmount all shares at once. Depending on your <link linkend="configuration_shares_mounting">settings</link>, &smb4k; attempts to unmount either only those shares that are owned by you or all that are listed.</para>
+      <para>Unmount all shares at once. Depending on your <link linkend="configuration_shares_behavior">settings</link>, &smb4k; attempts to unmount either only those shares that are owned by you or all that are listed.</para>
     </listitem>
   </varlistentry>
 </variablelist>
@@ -1187,11 +1185,17 @@
 <para>Bookmarked shares can be mounted by left clicking the respective bookmark. Bookmark groups can be entered the same way.</para>
 
 <para>To edit or remove the bookmarks, you can press the <guibutton>Edit</guibutton> action button in the toolbar to open the <link linkend="mainwindow_bookmarks_editor">Bookmark Editor</link>. To get back to the toplevel the <guibutton>Back</guibutton> button is used.</para>
-
 </sect2>
 </sect1>
 
-<!-- Remarks for FreeBSD users -->
+<!-- Using Smb4K : Notifications -->
+
+<sect1 id="notifications">
+  <title>Notifications</title>
+  <para>...</para>
+</sect1>
+
+<!-- Using Smb4K : Remarks for FreeBSD users -->
 
 <sect1 id="freebsd_remarks">
 <title>Remarks for FreeBSD Users</title>
@@ -1214,12 +1218,6 @@
 </listitem>
 </itemizedlist>
 </sect2>
-
-<sect2 id="freebsd_remarks_mounting">
-<title>Mounting</title>
-<para>Under FreeBSD, the SMB protocol is implemented in a different way than with other *NIX operating systems, and, thus, mounting of remote shares works differently. The major difference is the way the logon information is passed during the mount process. While under &Linux; and other operating systems that use Samba's <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> program you may specify the user name and password within the command options or by setting the <envar>USER</envar> and <envar>PASSWD</envar> environment variables, under FreeBSD, all logon information is stored in the credentials file <filename>~/.nsmbrc</filename>. If the logon information is not available there, you will not be able to mount a password protected share.</para>
-<para>&smb4k; writes new logon information to the credentials file on the fly, so that it can be used immediately. If you use a WINS server, this one and a few more global things will be considered, too. However, the information &smb4k; writes to <filename>~/.nsmbrc</filename> is limited: Only the name of the remote share, its workgroup, the login name (user name) and the encrypted password are provided. If you experience problems due to missing entries, you need to add them manually.</para>
-</sect2>
 </sect1>
 
 </chapter>
@@ -1232,7 +1230,7 @@
 
 <para>This section describes the settings that are available to configure &smb4k;. To open the configuration dialog, you have to click the <link linkend="mainwindow_overview"><guimenuitem>Configure &smb4k;...</guimenuitem></link> menu item.</para>
 
-<!-- Configuration: User Interface -->
+<!-- Configuring Smb4K : User Interface -->
 
 <sect1 id="configuration_user_interface">
 <title>User Interface</title>
@@ -1251,51 +1249,7 @@
 </mediaobject>
 </screenshot>
 
-<sect2 id="configuration_user_interface_general">
-<title>General Settings</title>
-
-<sect3 id="configuration_user_interface_general_notifications">
-<title>Notifications</title>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Show notifications</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-The user is notified about actions that were performed, &ie; the mounting or unmounting of a share. If you do not want to be disturbed too often, you might want to switch this option off. Warnings and error messages are not affected by this option.
-</para>
-<para>
-Default: selected
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect3>
-
-<sect3 id="configuration_user_interface_general_bookmarks">
-<title>Bookmarks</title>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Show custom bookmark label if available</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-The custom description (label) of the bookmark is shown. It can be defined in the <link linkend="mainwindow_bookmarks_editor">bookmark editor</link>.
-</para>
-<para>
-Default: selected
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect3>
-</sect2>
+<!-- Configuring Smb4K : User Interface : Network Neighborhood -->
 
 <sect2 id="configuration_user_interface_network">
 <title>Network Neighborhood</title>
@@ -1315,72 +1269,6 @@ Automatically expand domain and host items when a list of associated network ite
 </para>
 <para>
 Default: selected
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect3>
-
-<sect3 id="configuration_user_interface_network_remote_shares">
-<title>Remote Shares</title>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Show printer shares</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-Printer shares are shown.
-</para>
-<para>
-Default: selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Show hidden shares</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-All hidden shares except those of type ADMIN$ and IPC$ are shown in the network browser.
-</para>
-<para>
-Default: selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Show hidden IPC$ shares</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-Hidden IPC$ shares are shown. This option can only be chosen if you also ticked the <guibutton>Show hidden shares</guibutton> check box.
-</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Show hidden ADMIN$ shares</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-Hidden ADMIN$ shares are shown. This option can only be chosen if you also ticked the <guibutton>Show hidden shares</guibutton> check box.
-</para>
-<para>
-Default: not selected
 </para>
 </listitem>
 </varlistentry>
@@ -1459,6 +1347,8 @@ Default: selected
 </variablelist>
 </sect3>
 </sect2>
+
+<!-- Configuring Smb4K : User Interface : Mounted Shares -->
 
 <sect2 id="configuration_user_interface_shares">
 <title>Mounted Shares</title>
@@ -1625,21 +1515,6 @@ Default: not selected
 </para>
 </listitem>
 </varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Show all shares that are mounted on the system</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<emphasis>All</emphasis> mounts that are using either the CIFS (&Linux;) or SMBFS (FreeBSD) file system are shown. By default, only the shares owned by you are displayed.
-</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
 </variablelist>
 </sect3>
 
@@ -1665,24 +1540,26 @@ Default: selected
 </sect3>
 </sect2>
 
-<sect2 id="configuration_user_interface_preview">
-<title>Preview Dialog</title>
+<!-- Configuring Smb4K : User Interface : Miscellaneous Settings -->
 
-<sect3 id="configuration_user_interface_preview_hidden">
-<title>Hidden Files &amp; Directories</title>
+<sect2 id="configuration_user_interface_misc">
+<title>Miscellaneous Settings</title>
+
+<sect3 id="configuration_user_interface_misc_bookmarks">
+<title>Bookmarks</title>
 <variablelist>
 <varlistentry>
 <term>
 <menuchoice>
-<guibutton>Preview hidden files and directories</guibutton>
+<guibutton>Show custom bookmark label if available</guibutton>
 </menuchoice>
 </term>
 <listitem>
 <para>
-Show all files and directories including the hidden ones when opening a share's contents in the preview dialog. By default, this feature is deselected.
+The custom description (label) of the bookmark is shown. It can be defined in the <link linkend="mainwindow_bookmarks_editor">bookmark editor</link>.
 </para>
 <para>
-Default: not selected
+Default: selected
 </para>
 </listitem>
 </varlistentry>
@@ -1691,12 +1568,12 @@ Default: not selected
 </sect2>
 </sect1>
 
-<!-- Configuration: Network -->
+<!-- Configuring Smb4K : Network -->
 
 <sect1 id="configuration_network">
 <title>Network</title>
 
-<para>The options in the <guilabel>Network</guilabel> configuration tab can be used to change the lookup method for the browse list, to make &smb4k; send authentication information when querying the workgroup master browsers, and to enable periodic scanning as well as the Wake-On-LAN features. If you want to adjust the behavior of Samba programs, see the <link linkend="configuration_samba">Samba</link> section.</para>
+<para>The options located here can be used to change the lookup method for the browse list, to make &smb4k; send authentication information when querying the workgroup master browsers, to modify the behavior when previewing or looking up remote shares, and to enable periodic scanning as well as the Wake-On-LAN features. If you want to adjust the behavior of Samba programs, see the <link linkend="configuration_samba">Samba</link> section.</para>
 
 <screenshot>
 <screeninfo>Screenshot of the "Network" configuration tab</screeninfo>
@@ -1710,7 +1587,12 @@ Default: not selected
 </mediaobject>
 </screenshot>
 
-<sect2 id="configuration_network_browselist">
+<!-- Configuring Smb4K : Network : General Settings -->
+
+<sect2 id="configuration_network_general">
+  <title>General Settings</title>
+
+<sect3 id="configuration_network_browselist">
 <title>Browse List</title>
 <variablelist>
 <varlistentry>
@@ -1776,9 +1658,9 @@ Default: not selected
 </listitem>
 </varlistentry>
 </variablelist>
-</sect2>
+</sect3>
 
-<sect2 id="configuration_network_master_authentication">
+<sect3 id="configuration_network_master_authentication">
 <title>Authentication</title>
 <variablelist>
 <varlistentry>
@@ -1797,9 +1679,76 @@ Default: not selected
 </listitem>
 </varlistentry>
 </variablelist>
+</sect3>
+
+<sect3 id="configuration_network_general_behavior">
+  <title>Behavior</title>
+  <variablelist>
+    <varlistentry>
+      <term>
+        <menuchoice><guibutton>Lookup method for IP addresses</guibutton></menuchoice>
+      </term>
+      <listitem>
+        <para>Define the method that is to be used to detect the IP addresses of the hosts. By default, <ulink url="man:/nmblookup"><citerefentry><refentrytitle>nmblookup</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> is used.</para>
+        <para>The following options are available:</para>
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Use nmblookup command</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Use the <ulink url="man:/nmblookup"><citerefentry><refentrytitle>nmblookup</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> command.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Use net command</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Use the <ulink url="man:/net"><citerefentry><refentrytitle>net</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> command.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+        <para>Default: <guibutton>Use nmblookup command</guibutton></para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <menuchoice><guibutton>Detect printer shares</guibutton></menuchoice>
+      </term>
+      <listitem>
+        <para>Printer shares are detected.</para>
+        <para>Default: selected</para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <menuchoice><guibutton>Detect hidden shares</guibutton></menuchoice>
+      </term>
+      <listitem>
+        <para>Hidden shares are detected. Hidden shares are ending with a $ sign, e.g. Musik$ or IPC$.</para>
+        <para>Default: selected</para>
+      </listitem>
+    </varlistentry>    
+    <varlistentry>
+      <term>
+        <menuchoice><guibutton>Preview hidden files and directories</guibutton></menuchoice>
+      </term>
+      <listitem>
+        <para>Show all files and directories including the hidden ones when opening a share's contents in the preview dialog.</para>
+        <para>Default: not selected</para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+</sect3>
 </sect2>
 
-<sect2 id="configuration_network_periodic_scanning">
+<!-- Configuring Smb4K : Network : Advanced Settings -->
+
+<sect2 id="configuration_network_advanced">
+  <title>Advanced Settings</title>
+  
+<sect3 id="configuration_network_periodic_scanning">
 <title>Periodic Scanning</title>
 <variablelist>
 <varlistentry>
@@ -1831,9 +1780,9 @@ If periodic scanning is enabled, this is the time in minutes that elapses until 
 </listitem>
 </varlistentry>
 </variablelist>
-</sect2>
+</sect3>
 
-<sect2 id="configuration_network_wake_on_lan">
+<sect3 id="configuration_network_wake_on_lan">
 <title>Wake-On-LAN</title>
 
 <para>To be able to use the Wake-On_LAN capability of &smb4k;, you have to enable the setting in this section. The hosts that should to be woken up have to be defined through the <link linkend="configuration_custom_options">custom options dialog</link>.</para>
@@ -1862,15 +1811,16 @@ If periodic scanning is enabled, this is the time in minutes that elapses until 
     </listitem>
   </varlistentry>
 </variablelist>
+</sect3>
 </sect2>
 </sect1>
 
-<!-- Configuration: Shares -->
+<!-- Configuring Smb4K : Shares -->
 
 <sect1 id="configuration_shares">
 <title>Shares</title>
 
-<para>These options determine where &smb4k; will mount the remote shares and how it behaves on start-up and exit regarding mounted or recently used shares. If you want to configure the mount options, please see the <link linkend="configuration_samba">Samba</link> section.</para>
+<para>These options determine where &smb4k; will mount the remote shares and how it behaves &eg; on start-up and exit. If you want to configure the mount options, please see the <link linkend="configuration_samba">Samba</link> section.</para>
 
 <screenshot>
 <screeninfo>Screenshot of the "Shares" configuration tab</screeninfo>
@@ -1883,6 +1833,8 @@ If periodic scanning is enabled, this is the time in minutes that elapses until 
 </textobject>
 </mediaobject>
 </screenshot>
+
+<!-- Configuring Smb4K : Shares : Directories -->
 
 <sect2 id="configuration_shares_directories">
 <title>Directories</title>
@@ -1921,16 +1873,19 @@ Default: not selected
 </variablelist>
 </sect2>
 
-<sect2 id="configuration_shares_mounting">
-<title>Mounting &amp; Unmounting</title>
+<!-- Configuring Smb4K : Shares : Behavior -->
+
+<sect2 id="configuration_shares_behavior">
+<title>Behavior</title>
 
 <variablelist>
   <varlistentry>
     <term>
-      <menuchoice><guibutton>Remount recently used shares on program start</guibutton></menuchoice>
+      <menuchoice><guibutton>Remount shares</guibutton></menuchoice>
     </term>
     <listitem>
-      <para>All shares that were mounted at the time &smb4k; was shut down will be remounted on program restart. This option affects only the shares that were mounted by you.</para>
+      <para>Remount all your shares that were mounted when you exited the program or changed a profile. If the remounting of a share fails, Smb4K will retry the next time it is started. Shares that were mounted by other users are ignored.</para>
+      <note><para>This setting does not affect the automatic remounting of shares when your computer woke up from a sleep state.</para></note>
       <para>Default: not selected</para>
     </listitem>
   </varlistentry>
@@ -1957,7 +1912,7 @@ Default: not selected
       <menuchoice><guibutton>Unmount all personal shares on exit</guibutton></menuchoice>
     </term>
     <listitem>
-      <para>All mounted shares that are owned by you will be unmounted on program exit.</para>
+      <para>Unmount all shares that belong to you when the program exits. Shares that are owned by other users are ignored.</para>
       <para>Default: not selected</para>
     </listitem>
   </varlistentry>
@@ -1966,7 +1921,7 @@ Default: not selected
       <menuchoice><guibutton>Force the unmounting of inaccessible shares</guibutton></menuchoice>
     </term>
     <listitem>
-      <para>Force the unmounting of inaccessible shares (&Linux; only). In case a share is inaccessible, a lazy unmount is performed. Before the actual unmount is performed, a warning dialog is shown asking to approve the unmount.</para>
+      <para>Force the unmounting of inaccessible shares (&Linux; only). In case a share is inaccessible, a lazy unmount is performed. Before the actual unmounting is done, a warning dialog is shown asking to approve the unmount.</para>
       <para>Default: not selected</para>
     </listitem>
   </varlistentry>
@@ -1980,23 +1935,33 @@ Default: not selected
       <para>Default: not selected</para>
     </listitem>
   </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice><guibutton>Detect all shares that are mounted on the system</guibutton></menuchoice>
+    </term>
+    <listitem>
+      <para>You will not only see the shares that were mounted and are owned by you, but also all other mounts using the SMBFS (FreeBSD) and CIFS (&Linux;) file system that are present on the system.</para>
+      <para>Default: not selected</para>
+    </listitem>
+  </varlistentry>  
 </variablelist>
 </sect2>
 
+<!-- Configuring Smb4K : Shares : Checks -->
+
 <sect2 id="configuration_shares_checks">
 <title>Checks</title>
+
 <variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Interval between checks</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>&smb4k; periodically checks for newly mounted and inaccessable shares with an interval that can be defined here. Under normal circumstances, you do not need to change it. But if the server you connected to suffers from high load, you should increase the interval to ease it's situation. The effect on your system's load is generally rather small unless you set the interval below 1000 ms (not recommended).</para>
-<para>Default: 2500 ms</para>
-</listitem>
-</varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice><guibutton>Interval between checks</guibutton></menuchoice>
+    </term>
+    <listitem>
+      <para>&smb4k; periodically checks for newly mounted and inaccessable shares with an interval that can be defined here. Under normal circumstances, you do not need to change it. But if the server you connected to suffers from high load, you should increase the interval to ease it's situation. The effect on your system's load is generally rather small unless you set the interval below 1000 ms (not recommended).</para>
+      <para>Default: 2500 ms</para>
+    </listitem>
+  </varlistentry>
 </variablelist>
 </sect2>
 </sect1>
@@ -2020,76 +1985,51 @@ Default: not selected
 </mediaobject>
 </screenshot>
 
+<!-- Configuring Smb4K : Authentication : General Settings -->
+
 <sect2 id="configuration_authentication_general">
 <title>General Settings</title>
   
 <sect3 id="configuration_authentication_general_storage">
-<title>Password Storage</title>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Save logins in a wallet</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-  The login names and passwords are stored in a subfolder named <filename role="directory">Smb4K</filename> of the current network wallet (default: "kdewallet"). The advantage of this method is, that the authentication data is stored permanently and encrypted on your hard drive. You only have to provide it once and the next time it is needed, &smb4k; will read it from the wallet. If you uncheck this option, the authentication data will either be stored temporarily or not at all (see below).
-</para>
-<para>
-Default: selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Remember logins during program run</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-If you do not want &smb4k; to store the authentication data in a wallet, you can decide whether it should be stored temporarily or not. If you uncheck this check box, &smb4k; will immediately forget the authentication data you provided and you will have to enter it everytime it is needed. This option has no effect if you chose to store the passwords in a wallet (see above).
-</para>
-<para>
-Default: selected
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
+  <title>Password Storage</title>
+  <variablelist>
+    <varlistentry>
+      <term>
+        <menuchoice><guibutton>Save logins in a wallet</guibutton></menuchoice>
+      </term>
+      <listitem>
+        <para>The login names and passwords are stored in a subfolder named <filename role="directory">Smb4K</filename> of the current network wallet (default: "kdewallet"). The advantage of this method is, that the authentication data is stored permanently and encrypted on your hard drive. You only have to provide it once and the next time it is needed, &smb4k; will read it from the wallet. If you uncheck this option, the authentication data won't be stored at all.</para>
+        <para>Default: selected</para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
 </sect3>
 
 <sect3 id="configuration_authentication_general_default">
-<title>Default Login</title>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Use a default login</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>The default login is used by default to authenticate to a server. If you enable this feature, a password dialog pops up, where you can provide the default login information.</para>
-<screenshot>
-<screeninfo>Screenshot of the default login input dialog</screeninfo>
-<mediaobject>
-<imageobject>
-<imagedata fileref="dialog_default_login.png" format="PNG" />
-</imageobject>
-<textobject>
-<phrase>The default login input dialog</phrase>
-</textobject>
-</mediaobject>
-</screenshot>
-<para>You have to fill in at least the user name. Empty passwords are supported.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
+  <title>Default Login</title>
+  <variablelist>
+    <varlistentry>
+      <term>
+        <menuchoice><guibutton>Use a default login</guibutton></menuchoice>
+      </term>
+      <listitem>
+        <para>The default login is used by default to authenticate to the servers in your network neighborhood. If you enable this feature, a password dialog pops up, where you can provide the default login information.</para>
+        <screenshot>
+          <screeninfo>Screenshot of the default login input dialog</screeninfo>
+          <mediaobject>
+            <imageobject><imagedata fileref="dialog_default_login.png" format="PNG" /></imageobject>
+            <textobject><phrase>The default login input dialog</phrase></textobject>
+          </mediaobject>
+        </screenshot>
+        <para>You have to fill in at least the user name. Empty passwords are supported.</para>
+        <para>Default: not selected</para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
 </sect3>
 </sect2>
+
+<!-- Configuring Smb4K : Authentication : Wallet Entries -->
 
 <sect2 id="configuration_authentication_wallet_entries">
 <title>Wallet Entries</title>
@@ -4084,7 +4024,7 @@ Quit &smb4k;.
 </term>
 <listitem>
 <para>
-<action>Unmount all of the mounted shares at once. In the default configuration this is restricted to the user's shares, but this can be altered in the <link linkend="configuration_shares_mounting">configuration dialog</link>. For further information read the <link linkend="mainwindow_shares_unmounting">Unmounting Shares</link> section.</action>
+<action>Unmount all of the mounted shares at once. In the default configuration this is restricted to the user's shares, but this can be altered in the <link linkend="configuration_shares_behavior">configuration dialog</link>. For further information read the <link linkend="mainwindow_shares_unmounting">Unmounting Shares</link> section.</action>
 </para>
 </listitem>
 </varlistentry>
