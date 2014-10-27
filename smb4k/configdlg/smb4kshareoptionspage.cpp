@@ -76,65 +76,69 @@ Smb4KShareOptionsPage::Smb4KShareOptionsPage( QWidget *parent )
   directory_layout->addWidget( prefix, 0, 1, 0 );
   directory_layout->addWidget( lowercase_subdirs, 1, 0, 1, 2, 0 );
 
-  // Mounting and unmounting
-  QGroupBox *mount_box          = new QGroupBox( i18n( "Behavior" ), this );
+  // Behavior
+  QGroupBox *behavior_box          = new QGroupBox( i18n( "Behavior" ), this );
 
-  QGridLayout *mount_layout     = new QGridLayout( mount_box );
-  mount_layout->setSpacing( 5 );
+  QGridLayout *behavior_layout     = new QGridLayout( behavior_box );
+  behavior_layout->setSpacing( 5 );
+  
+  QCheckBox *remount_shares     = new QCheckBox( Smb4KSettings::self()->remountSharesItem()->label(),
+                                  behavior_box );
+  remount_shares->setObjectName( "kcfg_RemountShares" );
   
   QLabel *rem_attempts_label    = new QLabel( Smb4KSettings::self()->remountAttemptsItem()->label(),
-                                  mount_box );
-  KIntNumInput *remount_attempts = new KIntNumInput( mount_box );
+                                  behavior_box );
+  rem_attempts_label->setIndent(25);
+  
+  KIntNumInput *remount_attempts = new KIntNumInput( behavior_box );
   remount_attempts->setObjectName( "kcfg_RemountAttempts" );
   rem_attempts_label->setBuddy( remount_attempts );
   
   QLabel *rem_interval_label    = new QLabel( Smb4KSettings::self()->remountIntervalItem()->label(),
-                                  mount_box );
-  KIntNumInput *remount_interval = new KIntNumInput( mount_box );
+                                  behavior_box );
+  rem_interval_label->setIndent(25);
+  
+  KIntNumInput *remount_interval = new KIntNumInput( behavior_box );
   remount_interval->setObjectName( "kcfg_RemountInterval" );
   remount_interval->setSuffix( " min." );
   rem_interval_label->setBuddy( remount_interval );
 
-  QCheckBox *remount_shares     = new QCheckBox( Smb4KSettings::self()->remountSharesItem()->label(),
-                                  mount_box );
-  remount_shares->setObjectName( "kcfg_RemountShares" );
-
   QCheckBox *unmount_all_shares = new QCheckBox( Smb4KSettings::self()->unmountSharesOnExitItem()->label(),
-                                  mount_box );
+                                  behavior_box );
   unmount_all_shares->setObjectName( "kcfg_UnmountSharesOnExit" );
   
   QCheckBox *allow_foreign      = new QCheckBox( Smb4KSettings::self()->unmountForeignSharesItem()->label(),
-                                  mount_box );
+                                  behavior_box );
   allow_foreign->setObjectName( "kcfg_UnmountForeignShares" );
 
 #ifdef Q_OS_LINUX
   QCheckBox *unmount_inaccessible = new QCheckBox( Smb4KSettings::self()->forceUnmountInaccessibleItem()->label(),
-                                    mount_box );
+                                    behavior_box );
   unmount_inaccessible->setObjectName( "kcfg_ForceUnmountInaccessible" );
 #endif
   
-  QCheckBox *retrieve_all       = new QCheckBox(Smb4KSettings::self()->detectAllSharesItem()->label(), mount_box);
+  QCheckBox *retrieve_all       = new QCheckBox(Smb4KSettings::self()->detectAllSharesItem()->label(), behavior_box);
   retrieve_all->setObjectName("kcfg_DetectAllShares");
 
 #ifdef Q_OS_LINUX
-  mount_layout->addWidget( rem_attempts_label, 0, 0, 0 );
-  mount_layout->addWidget( remount_attempts, 0, 1, 0 );
-  mount_layout->addWidget( rem_interval_label, 1, 0, 0 );
-  mount_layout->addWidget( remount_interval, 1, 1, 0 );
-  mount_layout->addWidget( remount_shares, 2, 0, 1, 2, 0 );
-  mount_layout->addWidget( unmount_all_shares, 3, 0, 1, 2, 0 );
-  mount_layout->addWidget( unmount_inaccessible, 4, 0, 1, 2, 0 );
-  mount_layout->addWidget( allow_foreign, 5, 0, 1, 2, 0 );
-  mount_layout->addWidget( retrieve_all, 6, 0, 1, 2, 0 );
+  behavior_layout->addWidget( remount_shares, 0, 0, 1, 2, 0 );
+  behavior_layout->addWidget( rem_attempts_label, 1, 0, 0 );
+  behavior_layout->addWidget( remount_attempts, 1, 1, 0 );
+  behavior_layout->addWidget( rem_interval_label, 2, 0, 0 );
+  behavior_layout->addWidget( remount_interval, 2, 1, 0 );
+  behavior_layout->addWidget( unmount_all_shares, 3, 0, 1, 2, 0 );
+  behavior_layout->addWidget( unmount_inaccessible, 4, 0, 1, 2, 0 );
+  behavior_layout->addWidget( allow_foreign, 5, 0, 1, 2, 0 );
+  behavior_layout->addWidget( retrieve_all, 6, 0, 1, 2, 0 );
 #else
-  mount_layout->addWidget( rem_attempts_label, 0, 0, 0 );
-  mount_layout->addWidget( remount_attempts, 0, 1, 0 );
-  mount_layout->addWidget( rem_interval_label, 1, 0, 0 );
-  mount_layout->addWidget( remount_interval, 1, 1, 0 );
-  mount_layout->addWidget( remount_shares, 2, 0, 1, 2, 0 );  
-  mount_layout->addWidget( unmount_all_shares, 3, 0, 1, 2, 0 );
-  mount_layout->addWidget( allow_foreign, 4, 0, 1, 2, 0 );
-  mount_layout->addWidget( retrieve_all, 5, 0, 1, 2, 0 );
+  behavior_layout->addWidget( remount_shares, 0, 0, 1, 2, 0 );
+  behavior_layout->addWidget( rem_attempts_label, 1, 0, 0 );
+  behavior_layout->addWidget( remount_attempts, 1, 1, 0 );
+  behavior_layout->addWidget( rem_interval_label, 2, 0, 0 );
+  behavior_layout->addWidget( remount_interval, 2, 1, 0 );
+  behavior_layout->addWidget( unmount_all_shares, 3, 0, 1, 2, 0 );
+  behavior_layout->addWidget( allow_foreign, 4, 0, 1, 2, 0 );
+  behavior_layout->addWidget( retrieve_all, 5, 0, 1, 2, 0 );
 #endif
 
   // Checks
@@ -159,7 +163,7 @@ Smb4KShareOptionsPage::Smb4KShareOptionsPage( QWidget *parent )
   checks_layout->addWidget( check_interval, 0, 1, 0 );
 
   layout->addWidget( directory_box, 0, 0 );
-  layout->addWidget( mount_box, 1, 0 );
+  layout->addWidget( behavior_box, 1, 0 );
   layout->addWidget( checks_box, 2, 0 );
   layout->addStretch( 100 );
 }

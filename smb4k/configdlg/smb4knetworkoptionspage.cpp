@@ -3,7 +3,7 @@
     settings of Smb4K
                              -------------------
     begin                : Sa Nov 15 2003
-    copyright            : (C) 2003-2013 by Alexander Reinholdt
+    copyright            : (C) 2003-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -167,6 +167,7 @@ Smb4KNetworkOptionsPage::Smb4KNetworkOptionsPage( QWidget *parent )
   
   QLabel *interval_label            = new QLabel( Smb4KSettings::self()->scanIntervalItem()->label(),
                                       periodic_box );
+  interval_label->setIndent(25);
   
   KIntNumInput *scan_interval       = new KIntNumInput( periodic_box );
   scan_interval->setObjectName( "kcfg_ScanInterval" );
@@ -192,6 +193,7 @@ Smb4KNetworkOptionsPage::Smb4KNetworkOptionsPage( QWidget *parent )
   
   QLabel *waiting_label = new QLabel( Smb4KSettings::self()->wakeOnLANWaitingTimeItem()->label(),
                           wol_box );
+  waiting_label->setIndent(25);
   
   KIntNumInput *waiting_time = new KIntNumInput( wol_box );
   waiting_time->setObjectName( "kcfg_WakeOnLANWaitingTime" );
