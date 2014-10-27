@@ -174,12 +174,12 @@
     </entry>
     <entry name="DetectPrinterShares" type="Bool">
       <label>Detect printer shares</label>
-      <whatsthis>Printer shares will be detected.</whatsthis>
+      <whatsthis>Printer shares are detected.</whatsthis>
       <default>true</default>
     </entry>
     <entry name="DetectHiddenShares" type="Bool">
       <label>Detect hidden shares</label>
-      <whatsthis>Hidden shares will be detected. Hidden shares are ending with a $ sign, e.g. Musik$ or IPC$.</whatsthis>
+      <whatsthis>Hidden shares are detected. Hidden shares are ending with a $ sign, e.g. Musik$ or IPC$.</whatsthis>
       <default>true</default>
     </entry>
     <entry name="LookupIPs" type="Enum">
