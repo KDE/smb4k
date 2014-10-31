@@ -761,6 +761,51 @@ void Smb4KQueryMasterJob::slotStartLookup()
     // Do nothing
   }
   
+  // Use Kerberos
+  if (options)
+  {
+    switch (options->useKerberos())
+    {
+      case Smb4KCustomOptions::UseKerberos:
+      {
+        arguments << "-k";
+        break;
+      }
+      case Smb4KCustomOptions::NoKerberos:
+      {
+        // No kerberos 
+        break;
+      }
+      case Smb4KCustomOptions::UndefinedKerberos:
+      {
+        if (Smb4KSettings::useKerberos())
+        {
+          arguments << "-k";
+        }
+        else
+        {
+          // Do nothing
+        }
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
+  else
+  {
+    if (Smb4KSettings::useKerberos())
+    {
+      arguments << "-k";
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
   // Use Winbind's ccache
   if (Smb4KSettings::useWinbindCCache())
   {
@@ -846,6 +891,51 @@ void Smb4KQueryMasterJob::slotStartLookup()
     // Do nothing
   }
   
+  // Use Kerberos
+  if (options)
+  {
+    switch (options->useKerberos())
+    {
+      case Smb4KCustomOptions::UseKerberos:
+      {
+        arguments << "-k";
+        break;
+      }
+      case Smb4KCustomOptions::NoKerberos:
+      {
+        // No kerberos 
+        break;
+      }
+      case Smb4KCustomOptions::UndefinedKerberos:
+      {
+        if (Smb4KSettings::useKerberos())
+        {
+          arguments << "-k";
+        }
+        else
+        {
+          // Do nothing
+        }
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
+  else
+  {
+    if (Smb4KSettings::useKerberos())
+    {
+      arguments << "-k";
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
   // Use Winbind's ccache
   if (Smb4KSettings::useWinbindCCache())
   {
@@ -877,7 +967,7 @@ void Smb4KQueryMasterJob::slotStartLookup()
     arguments << "-U %";
   }
 
-  // IP address (discovered by by previous net command)
+  // IP address (discovered by previous net command)
   arguments << "-I ip";
 
   // Server name if available
@@ -1798,6 +1888,51 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
       // Do nothing
     }
     
+    // Use Kerberos
+    if (options)
+    {
+      switch (options->useKerberos())
+      {
+        case Smb4KCustomOptions::UseKerberos:
+        {
+          arguments << "-k";
+          break;
+        }
+        case Smb4KCustomOptions::NoKerberos:
+        {
+          // No kerberos 
+          break;
+        }
+        case Smb4KCustomOptions::UndefinedKerberos:
+        {
+          if (Smb4KSettings::useKerberos())
+          {
+            arguments << "-k";
+          }
+          else
+          {
+            // Do nothing
+          }
+          break;
+        }
+        default:
+        {
+          break;
+        }
+      }
+    }
+    else
+    {
+      if (Smb4KSettings::useKerberos())
+      {
+        arguments << "-k";
+      }
+      else
+      {
+        // Do nothing
+      }
+    }    
+    
     // Use Winbind's ccache
     if (Smb4KSettings::useWinbindCCache())
     {
@@ -2676,7 +2811,7 @@ void Smb4KLookupInfoJob::slotStartLookup()
     }
   }
   
-  // Kerberos
+  // Use Kerberos
   if ( options )
   {
     switch ( options->useKerberos() )
@@ -2994,6 +3129,7 @@ void Smb4KLookupIPAddressJob::useNet(QStringList &args)
   
   // Global Samba options
   QMap<QString,QString> samba_options = globalSambaOptions();
+  Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions(m_host);
   
   // Compile the arguments
   args << net;
@@ -3042,9 +3178,61 @@ void Smb4KLookupIPAddressJob::useNet(QStringList &args)
   {
     // Do nothing
   }
-
-  // NOTE: --use-ccache (try to use Windind's ccache) seems to be 
-  // irrelevant here.
+  
+  // Use Kerberos
+  if (options)
+  {
+    switch (options->useKerberos())
+    {
+      case Smb4KCustomOptions::UseKerberos:
+      {
+        args << "-k";
+        break;
+      }
+      case Smb4KCustomOptions::NoKerberos:
+      {
+        // No kerberos 
+        break;
+      }
+      case Smb4KCustomOptions::UndefinedKerberos:
+      {
+        if (Smb4KSettings::useKerberos())
+        {
+          args << "-k";
+        }
+        else
+        {
+          // Do nothing
+        }
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
+  else
+  {
+    if (Smb4KSettings::useKerberos())
+    {
+      args << "-k";
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  // Winbind's ccache
+  if (Smb4KSettings::useWinbindCCache())
+  {
+    args << "--use-ccache";
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
