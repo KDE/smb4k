@@ -276,11 +276,13 @@ bool Smb4KConfigDialog::checkNetworkPage()
 {
   QRadioButton *query_custom_master = m_network->widget()->findChild<QRadioButton *>("kcfg_QueryCustomMaster");
   KLineEdit *custom_master_input    = m_network->widget()->findChild<KLineEdit *>("kcfg_CustomMasterBrowser");
+  
+  QString msg = i18n("An incorrect setting has been found. You are now taken to the corresponding dialog page to fix it.");
 
   if ((query_custom_master && query_custom_master->isChecked()) &&
       (custom_master_input && custom_master_input->text().trimmed().isEmpty()))
   {
-    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    KMessageBox::sorry(this, msg);
     setCurrentPage(m_network);
     custom_master_input->setFocus();
     return false;
@@ -296,7 +298,7 @@ bool Smb4KConfigDialog::checkNetworkPage()
   if ((scan_bcast_areas && scan_bcast_areas->isChecked()) &&
       (bcast_areas_input && bcast_areas_input->text().trimmed().isEmpty()))
   {
-    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    KMessageBox::sorry(this, msg);
     setCurrentPage(m_network);
     bcast_areas_input->setFocus();
     return false;
@@ -314,9 +316,11 @@ bool Smb4KConfigDialog::checkSharesPage()
 {
   KUrlRequester *mount_prefix = m_shares->widget()->findChild<KUrlRequester *>("kcfg_MountPrefix");
   
+  QString msg = i18n("An incorrect setting has been found. You are now taken to the corresponding dialog page to fix it.");
+  
   if (mount_prefix && mount_prefix->url().path().trimmed().isEmpty())
   {
-    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    KMessageBox::sorry(this, msg);
     setCurrentPage(m_shares);
     mount_prefix->setFocus();
     return false;
@@ -334,9 +338,11 @@ bool Smb4KConfigDialog::checkSambaPage()
 {
   KLineEdit *file_mask = m_samba->widget()->findChild<KLineEdit *>("kcfg_FileMask");
   
+  QString msg = i18n("An incorrect setting has been found. You are now taken to the corresponding dialog page to fix it.");
+  
   if (file_mask && file_mask->text().trimmed().isEmpty())
   {
-    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    KMessageBox::sorry(this, msg);
     setCurrentPage(m_samba);
     
     Smb4KSambaOptionsPage *samba_options = m_samba->widget()->findChild<Smb4KSambaOptionsPage *>();
@@ -362,7 +368,7 @@ bool Smb4KConfigDialog::checkSambaPage()
   
   if (directory_mask && directory_mask->text().trimmed().isEmpty())
   {
-    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    KMessageBox::sorry(this, msg);
     setCurrentPage(m_samba);
     
     Smb4KSambaOptionsPage *samba_options = m_samba->widget()->findChild<Smb4KSambaOptionsPage *>();
@@ -392,9 +398,11 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
 {
   KUrlRequester *sync_prefix = m_synchronization->widget()->findChild<KUrlRequester *>("kcfg_RsyncPrefix");
   
+  QString msg = i18n("An incorrect setting has been found. You are now taken to the corresponding dialog page to fix it.");
+  
   if (sync_prefix && sync_prefix->url().path().trimmed().isEmpty())
   {
-    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    KMessageBox::sorry(this, msg);
     setCurrentPage(m_synchronization);
     
     Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
@@ -421,7 +429,7 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
   
   if ((max_delete && max_delete->isChecked()) && (max_delete_val && max_delete_val->value() == 0))
   {
-    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    KMessageBox::sorry(this, msg);
     setCurrentPage(m_synchronization);
     
     Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
@@ -448,7 +456,7 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
   
   if ((min_trans_size && min_trans_size->isChecked()) && (min_trans_size_val && min_trans_size_val->value() == 0))
   {
-    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    KMessageBox::sorry(this, msg);
     setCurrentPage(m_synchronization);
     
     Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
@@ -475,7 +483,7 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
   
   if ((max_trans_size && max_trans_size->isChecked()) && (max_trans_size_val && max_trans_size_val->value() == 0))
   {
-    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    KMessageBox::sorry(this, msg);
     setCurrentPage(m_synchronization);
     
     Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
@@ -503,7 +511,7 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
   if ((use_partial_directory && use_partial_directory->isChecked()) &&
       (partial_directory && partial_directory->url().path().trimmed().isEmpty()))
   {
-    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    KMessageBox::sorry(this, msg);
     setCurrentPage( m_synchronization );
     
     Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
@@ -531,7 +539,7 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
   if ((use_exclude_pattern && use_exclude_pattern->isChecked()) &&
       (exclude_pattern && exclude_pattern->text().trimmed().isEmpty()))
   {
-    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    KMessageBox::sorry(this, msg);
     setCurrentPage(m_synchronization);
     
     Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
@@ -559,7 +567,7 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
   if ((use_exclude_file && use_exclude_file->isChecked()) &&
       (exclude_file && exclude_file->url().path().trimmed().isEmpty()))
   {
-    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    KMessageBox::sorry(this, msg);
     setCurrentPage(m_synchronization);
     
     Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
@@ -587,7 +595,7 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
   if ((use_include_pattern && use_include_pattern->isChecked()) &&
       (include_pattern && include_pattern->text().trimmed().isEmpty()))
   {
-    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    KMessageBox::sorry(this, msg);
     setCurrentPage(m_synchronization);
     
     Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
@@ -615,7 +623,7 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
   if ((use_include_file && use_include_file->isChecked()) &&
       (include_file && include_file->url().path().trimmed().isEmpty()))
   {
-    KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+    KMessageBox::sorry(this, msg);
     setCurrentPage(m_synchronization);
     
     Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
@@ -647,7 +655,7 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
     if ((use_backup_suffix && use_backup_suffix->isChecked()) &&
         (backup_suffix && backup_suffix->text().trimmed().isEmpty()))
     {
-      KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+      KMessageBox::sorry(this, msg);
       setCurrentPage(m_synchronization);
       
       Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
@@ -675,7 +683,7 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
     if ((use_backup_dir && use_backup_dir->isChecked()) &&
         (backup_dir && backup_dir->url().path().trimmed().isEmpty()))
     {
-      KMessageBox::sorry(this, i18n("An incorrect setting has been found. You are now taken there to fix it."));
+      KMessageBox::sorry(this, msg);
       setCurrentPage(m_synchronization);
       
       Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
