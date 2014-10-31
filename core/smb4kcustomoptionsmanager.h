@@ -128,6 +128,9 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
      * Except in some special cases, you should not set @p exactMatch to true,
      * because options that are defined for all shares provided by a certain host and
      * stored in a host-type custom options object are ignored then.
+     * 
+     * @param networkItem         The network item
+     * @param exaxtMatch          If TRUE, only exact matches are returned
      *
      * @returns the custom options for the network item
      */
@@ -140,6 +143,8 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
      * This function searches the list of custom options and compares the host entry
      * and, if applicable, the path (i.e. the share name). If an exact match was found, 
      * the corresponding custom options are returned.
+     * 
+     * @param url                 The network item's URL
      *
      * @returns the custom options
      */
