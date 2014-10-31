@@ -312,12 +312,12 @@
     </entry>
     <entry name="UseKerberos" type="Bool">
       <label>Try to authenticate with Kerberos</label>
-      <whatsthis>Try to authenticate with Kerberos. This is only useful in an Active Directory environment. The setting affects the smbclient and smbtree command.</whatsthis>
+      <whatsthis>Try to authenticate with Kerberos. This is only useful in an Active Directory environment. The setting affects the net, smbclient and smbtree command.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="MachineAccount" type="Bool">
       <label>Authenticate with local machine account</label>
-      <whatsthis>Make queries to the remote server using the machine account of the local server. The setting affects the net, smbclient, and smbtree command.</whatsthis>
+      <whatsthis>Make queries to the remote server using the machine account of the local server. The setting affects the net, smbclient and smbtree command.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="UseWinbindCCache" type="Bool">
