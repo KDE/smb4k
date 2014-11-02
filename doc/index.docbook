@@ -50,29 +50,30 @@
 <para>&smb4k; is an advanced network neighborhood browser and a front end to the programs of the <ulink url="http://www.samba.org">Samba software suite</ulink>. It provides many handy features that ease your life in a mostly &Windows;-dominated network environment:</para>
 
 <itemizedlist>
-<listitem><para>Scanning for (active) workgroups, hosts, and shares</para></listitem>
-<listitem><para>Support of the CIFS (&Linux;) and SMBFS (FreeBSD) file system</para></listitem>
-<listitem><para>Mounting and unmounting of shares</para></listitem>
-<listitem><para>Access to the files of a mounted share using a file manager or terminal</para></listitem>
-<listitem><para>Auto-detection of external mounts and unmounts</para></listitem>
-<listitem><para>Remounting of previously used shares on program start</para></listitem>
-<listitem><para>Miscellaneous infos about remote network items and mounted shares</para></listitem>
-<listitem><para>Network search</para></listitem>
-<listitem><para>WINS server support</para></listitem>
-<listitem><para>Preview of the contents of a share</para></listitem>
-<listitem><para>Several methods to look up the initial list of workgroups and domains</para></listitem>
-<listitem><para>Default login</para></listitem>
-<listitem><para>Special handling of homes shares</para></listitem>
-<listitem><para>Ability to bookmark favorite shares</para></listitem>
-<listitem><para>System tray widget</para></listitem>
-<listitem><para>Support of advanced Samba options</para></listitem>
-<listitem><para>Support of printer shares</para></listitem>
-<listitem><para>KWallet support</para></listitem>
-<listitem><para>Synchronization of a remote share with a local copy and vice versa</para></listitem>
-<listitem><para>Ability to define custom options for individual servers and shares</para></listitem>
-<listitem><para>Laptop support through the Solid hardware device framework</para></listitem>
-<listitem><para>Wake-On-LAN capabilities</para></listitem>
-<listitem><para>&plasmoid; for desktop integration</para></listitem>
+  <listitem><para>Scanning for (active) workgroups, hosts, and shares</para></listitem>
+  <listitem><para>Support of the CIFS (&Linux;) and SMBFS (FreeBSD) file system</para></listitem>
+  <listitem><para>Mounting and unmounting of shares</para></listitem>
+  <listitem><para>Access to the files of a mounted share using a file manager or terminal</para></listitem>
+  <listitem><para>Auto-detection of external mounts and unmounts</para></listitem>
+  <listitem><para>Remounting of previously used shares on program start</para></listitem>
+  <listitem><para>Miscellaneous infos about remote network items and mounted shares</para></listitem>
+  <listitem><para>Network search</para></listitem>
+  <listitem><para>WINS server support</para></listitem>
+  <listitem><para>Preview of the contents of a share</para></listitem>
+  <listitem><para>Several methods to look up the initial list of workgroups and domains</para></listitem>
+  <listitem><para>Default login</para></listitem>
+  <listitem><para>Special handling of homes shares</para></listitem>
+  <listitem><para>Ability to bookmark favorite shares</para></listitem>
+  <listitem><para>System tray widget</para></listitem>
+  <listitem><para>Support of advanced Samba options</para></listitem>
+  <listitem><para>Support of printer shares</para></listitem>
+  <listitem><para>KWallet support</para></listitem>
+  <listitem><para>Synchronization of a remote share with a local copy and vice versa</para></listitem>
+  <listitem><para>Ability to define custom options for individual servers and shares</para></listitem>
+  <listitem><para>Laptop support through the Solid hardware device framework</para></listitem>
+  <listitem><para>Wake-On-LAN capabilities</para></listitem>
+  <listitem><para>&plasmoid; for desktop integration</para></listitem>
+  <listitem><para>Profiles</para></listitem>
 </itemizedlist>
 
  <para>If you encounter problems while using &smb4k;, please visit our <ulink url="https://sourceforge.net/p/smb4k/wiki/Home/">wiki</ulink> first. If you cannot find your problem described there, please post a help request to our <ulink url="https://sourceforge.net/p/smb4k/discussion/help/">Help</ulink> forum. In case you find a bug, please report it to our <ulink url="https://sourceforge.net/p/smb4k/tickets/">bug tracker</ulink>.</para>
@@ -137,7 +138,7 @@
 <para>The main window is highly configurable. You can hide or show all tabbed widgets (<menuchoice><guimenu>Settings</guimenu><guimenuitem>Dock Widgets</guimenuitem></menuchoice>). They can also be dragged around with the mouse and docked to different areas in the main window. You can even detach them from the main window. The status bar and the toolbars can be hidden/shown by toggling the menu entry <menuchoice><guimenu>Settings</guimenu><guimenuitem>Show Statusbar</guimenuitem></menuchoice> and the ones under <menuchoice><guimenu>Settings</guimenu><guimenuitem>Toolbars Shown</guimenuitem></menuchoice>, respectively.</para>
 </sect1>
 
-<!-- The network browser -->
+<!-- The Network Neighborhood Browser -->
 
 <sect1 id="network_neighborhood_browser">
 <title>The Network Neighborhood Browser</title>
@@ -158,6 +159,8 @@
   </mediaobject>
 </screenshot>
 
+<!-- The Network Neighborhood Browser : Browsing -->
+
 <sect2 id="network_neighborhood_browser_browsing">
 <title>Browsing</title>
 <para>&smb4k; automatically scans the network neighborhood for active workgroups and domains on start-up and presents them in the network neighborhood browser. Opening a workgroup item shows the servers belonging to it. If you want to access the shares of one of the servers, you have to open the desired server.</para>
@@ -170,6 +173,8 @@
 
 <note><para>Under normal circumstances you should not have any trouble browsing the network neighborhood. In case you experience problems, please read our <ulink url="https://sourceforge.net/p/smb4k/wiki/Home/">wiki</ulink> first before thinking about <ulink url="https://sourceforge.net/p/smb4k/tickets/">reporting a bug</ulink>. It lists some common problems and their solutions.</para></note>
 </sect2>
+
+<!-- The Network Neighborhood Browser : Actions and Popup Menu -->
 
 <sect2 id="mainwindow_network_menu">
 <title>Actions and Popup Menu</title>
@@ -298,11 +303,15 @@
 <para>The title of the popup menu is set to the name of the network item or displays <guilabel>Network</guilabel> if you clicked on the viewport.</para>
 </sect2>
 
+<!-- The Network Neighborhood Browser : Tooltips -->
+
 <sect2 id="mainwindow_network_tooltips">
 <title>Tooltips</title>
 <para>For each network item a tooltip is provided that contains various information like the name of the workgroup and master browser, the name and IP address of the host, the name of the share, &etc; If a tooltip is requested for a server, it is queried for additional information about the operating system and the server (&eg; Samba).</para>
 <para>The tooltips can be disabled in the <link linkend="configuration_user_interface_network_tooltips">configuration dialog</link>.</para>
 </sect2>
+
+<!-- The Network Neighborhood Browser : Mounting a Share -->
 
 <sect2 id="mainwindow_network_mounting">
 <title>Mounting a Share</title>
@@ -310,26 +319,17 @@
 <para>There are three options available to mount a remote share:</para>
 
 <orderedlist>
-<listitem>
-<para>Execute the icon representing the remote share in the network neighborhood browser. (Depending on your &kde; settings, this is done by either single or double clicking the icon.)</para>
-</listitem>
-<listitem>
-<para>Select the remote share and click the <guimenuitem>Mount</guimenuitem> menu entry. Alternatively, you can press the <keycombo action="simul">&Ctrl; <keycap>M</keycap></keycombo> keyboard shortcut.</para>
-</listitem>
-<listitem><para>If &smb4k; was not able to find the server where the share is located, you can press the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>O</keycap></keycombo></shortcut><guimenuitem>Open Mount Dialog</guimenuitem></menuchoice> menu entry and a mount dialog will be opened:</para>
-<screenshot>
-<screeninfo>Screenshot of the "Mount Share" dialog</screeninfo>
-<mediaobject>
-<imageobject>
-<imagedata fileref="dialog_manual_mount.png" format="PNG" />
-</imageobject>
-<textobject>
-<phrase>The "Mount Share" dialog</phrase>
-</textobject>
-</mediaobject>
-</screenshot>
-<para>Here you can enter the location of the share either as <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention">Uniform Naming Convention (UNC)</ulink> address in the form <screen>//[USER@]SERVER/SHARE</screen> or <screen>\\[USER@]SERVER\SHARE</screen> or as URL in the form <screen>[smb:]//[user@]server:port/share</screen> The <guibutton>OK</guibutton> button will be enabled and you can press it to mount the share. However, it is advisable to enter the IP address and the workgroup of the server, too. If you want to add the share to the bookmarks at the same time, tick the <guibutton>Add this share to the bookmarks</guibutton> check box.</para>
-</listitem>
+  <listitem><para>Execute the icon representing the remote share in the network neighborhood browser. (Depending on your &kde; settings, this is done by either single or double clicking the icon.)</para></listitem>
+  <listitem><para>Select the remote share and click the <guimenuitem>Mount</guimenuitem> menu entry. Alternatively, you can press the <keycombo action="simul">&Ctrl; <keycap>M</keycap></keycombo> keyboard shortcut.</para></listitem>
+  <listitem><para>If &smb4k; was not able to find the server where the share is located, you can press the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>O</keycap></keycombo></shortcut><guimenuitem>Open Mount Dialog</guimenuitem></menuchoice> menu entry and a mount dialog will be opened:</para>
+  <screenshot>
+    <screeninfo>Screenshot of the "Mount Share" dialog</screeninfo>
+    <mediaobject>
+      <imageobject><imagedata fileref="dialog_manual_mount.png" format="PNG" /></imageobject>
+      <textobject><phrase>The "Mount Share" dialog</phrase></textobject>
+    </mediaobject>
+  </screenshot>
+  <para>Here you can enter the location of the share either as <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention">Uniform Naming Convention (UNC)</ulink> address in the form <screen>//[USER@]SERVER/SHARE</screen> or <screen>\\[USER@]SERVER\SHARE</screen> or as URL in the form <screen>[smb:]//[user@]server:port/share</screen> The <guibutton>OK</guibutton> button will be enabled and you can press it to mount the share. However, it is advisable to enter the IP address and the workgroup of the server, too. If you want to add the share to the bookmarks at the same time, tick the <guibutton>Add this share to the bookmarks</guibutton> check box.</para></listitem>
 </orderedlist>
 
 <para>Often a share is password protected. In this case, an <link linkend="mainwindow_network_authentication">authentication dialog</link> will appear and you have to enter the correct user name (if not already provided) and password. &smb4k; will proceed mounting the share unless a wrong user name or password was supplied. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="mounted_shares_view">mounted shares view</link>. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (&Linux;) or <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (FreeBSD) will be shown.</para>
@@ -2032,48 +2032,42 @@ Default: not selected
 <!-- Configuring Smb4K : Authentication : Wallet Entries -->
 
 <sect2 id="configuration_authentication_wallet_entries">
-<title>Wallet Entries</title>
-<para>The <guilabel>Wallet Entries</guilabel> tab contains an editor with that you can modify or remove existing wallet entries.</para>
-<screenshot>
-<screeninfo>Screenshot of the wallet entries editor</screeninfo>
-<mediaobject>
-<imageobject>
-<imagedata fileref="configuration_wallet_entries.png" format="PNG" />
-</imageobject>
-<textobject>
-<phrase>The wallet entries editor</phrase>
-</textobject>
-</mediaobject>
-</screenshot>
-<para>Before you can edit the wallet entries, you have to load them from the wallet by pressing the <guibutton>Load</guibutton> button. The list of entries appears then on the left. An entry can be edited by selecting it and checking the <guibutton>Show details</guibutton> button. The details are then shown on the right and can be modified.</para>
-<para>An entry can be removed by right clicking it and choosing the <guimenuitem>Remove</guimenuitem> item from the popup menu. All wallet entries may be removed at once by choosing the <guimenuitem>Clear List</guimenuitem> item.</para>
-<para>Changes can be reset by choosing the <guimenuitem>Undo</guimenuitem> item from the popup menu either in the wallet entries list widget or in the details widget.</para>
-<para>After you finished editing, the changes have to be committed to the wallet by pressing <guibutton>Save</guibutton>.</para>
+  <title>Wallet Entries</title>
+  <para>The <guilabel>Wallet Entries</guilabel> tab contains an editor with that you can modify or remove existing wallet entries.</para>
+  <screenshot>
+    <screeninfo>Screenshot of the wallet entries editor</screeninfo>
+    <mediaobject>
+      <imageobject><imagedata fileref="configuration_wallet_entries.png" format="PNG" /></imageobject>
+      <textobject><phrase>The wallet entries editor</phrase></textobject>
+    </mediaobject>
+  </screenshot>
+  <para>Before you can edit the wallet entries, you have to load them from the wallet by pressing the <guibutton>Load</guibutton> button. The list of entries appears then on the left. An entry can be edited by selecting it and checking the <guibutton>Show details</guibutton> button. The details are then shown on the right and can be modified.</para>
+  <para>An entry can be removed by right clicking it and choosing the <guimenuitem>Remove</guimenuitem> item from the popup menu. All wallet entries may be removed at once by choosing the <guimenuitem>Clear List</guimenuitem> item.</para>
+  <para>Changes can be reset by choosing the <guimenuitem>Undo</guimenuitem> item from the popup menu either in the wallet entries list widget or in the details widget.</para>
+  <para>After you finished editing, the changes have to be committed to the wallet by pressing <guibutton>Save</guibutton>.</para>
 </sect2>
 </sect1>
 
-<!-- Configuration: Samba -->
+<!-- Configuring Smb4K : Samba -->
 
 <sect1 id="configuration_samba">
 <title>Samba</title>
 
-<para>Here you can directly influence the command line arguments that are passed to the Samba programs and also manage the custom settings you defined for single shares. Please note, that the settings will have no effect outside &smb4k; and that no changes will be applied to the <filename>smb.conf</filename> configuration file. For further information, please refer to the manual pages of the Samba software suite.</para>
+<para>Here you can directly influence the command line arguments that are passed to the Samba programs. Please note, that the settings will have no effect outside &smb4k; and that no changes will be applied to the <filename>smb.conf</filename> configuration file. For further information, please refer to the manual pages of the Samba software suite.</para>
 
 <screenshot>
-<screeninfo>Screenshot of the "Samba" configuration page</screeninfo>
-<mediaobject>
-<imageobject>
-<imagedata fileref="configuration_samba.png" format="PNG" />
-</imageobject>
-<textobject>
-<phrase>The "Samba" configuration page</phrase>
-</textobject>
-</mediaobject>
+  <screeninfo>Screenshot of the "Samba" configuration page</screeninfo>
+  <mediaobject>
+    <imageobject><imagedata fileref="configuration_samba.png" format="PNG" /></imageobject>
+    <textobject><phrase>The "Samba" configuration page</phrase></textobject>
+  </mediaobject>
 </screenshot>
 
+<!-- Configuring Smb4K : Samba : General Settings -->
+  
 <sect2 id="configuration_samba_general">
 <title>General Settings</title>
-   
+    
 <sect3 id="configuration_samba_general_general">
 <title>General Options</title>
 <variablelist>
@@ -2143,171 +2137,123 @@ Default: NetBIOS scope defined in <filename>smb.conf</filename>
 <sect3 id="configuration_samba_general_ports">
 <title>Remote Ports</title>
 <variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>SMB port</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Sets the remote SMB port number that is used by <ulink url="man:/net"><citerefentry><refentrytitle>net</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/smbclient"><citerefentry><refentrytitle>smbclient</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to communicate with a remote host. Under FreeBSD, this is also the port that is used for mounting.</para>
-<para>Unless you are using a firewall or have a customized network setup, you do not need to change anything here.</para>
-<para>
-Default: 139
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>File system port</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-Sets the file system port number that is used by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> when mounting a remote share. The default port number (445) should work for all modern operating systems. If you experience problems, try setting the port number to 139. If the problems only occur with a few hosts, it is recommended not to set the port number here globally, but to use the <link linkend="network_neighborhood_browser_custom">Custom Options</link> dialog to define the port number individually for the problematic hosts.
-</para>
-<para>This option is only available under &Linux;. Under FreeBSD, the port for mounting shares is set with <guibutton>SMB port</guibutton>.</para>
-<para>
-Default: 445
-</para>
-</listitem>
-</varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice><guibutton>SMB port</guibutton></menuchoice>
+    </term>
+    <listitem>
+      <para>Sets the remote SMB port number that is used by <ulink url="man:/net"><citerefentry><refentrytitle>net</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink>, <ulink url="man:/smbclient"><citerefentry><refentrytitle>smbclient</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> and <ulink url="man:/smbclient"><citerefentry><refentrytitle>smbtree</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to communicate with a remote host. Under FreeBSD, this is also the port that is used for mounting.</para>
+      <para>Unless you are using a firewall or have a customized network setup, you do not need to change anything here.</para>
+      <para>Default: 139</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice><guibutton>File system port</guibutton></menuchoice>
+    </term>
+    <listitem>
+      <para>Sets the file system port number that is used by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> when mounting a remote share. The default port number (445) should work for all modern operating systems. If you experience problems, try setting the port number to 139. If the problems only occur with a few hosts, it is recommended to leave this option untouched and to use the <link linkend="network_neighborhood_browser_custom">Custom Options</link> dialog to define individual port numbers for the problematic hosts.</para>
+      <para>This option is only available under &Linux;. Under FreeBSD, the port for mounting shares is set with the <guibutton>SMB port</guibutton> option.</para>
+      <para>Default: 445</para>
+    </listitem>
+  </varlistentry>
 </variablelist>
 </sect3>
 
 <sect3 id="configuration_samba_general_authentication">
 <title>Authentication</title>
 <variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Try to authenticate with Kerberos</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-Use Kerberos for authentication in an Active Directory environment.
-</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Authenticate with local machine account</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-Make queries to the remote server using the machine account of the local server.
-</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Use Winbind ccache for authentication</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-Try to use the credentials cached by Winbind.
-</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice><guibutton>Try to authenticate with Kerberos</guibutton></menuchoice>
+    </term>
+    <listitem>
+      <para>Use Kerberos for authentication in an Active Directory environment. This setting is used by <ulink url="man:/net"><citerefentry><refentrytitle>net</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink>, <ulink url="man:/smbclient"><citerefentry><refentrytitle>smbclient</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> and <ulink url="man:/smbtree"><citerefentry><refentrytitle>smbtree</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink>.</para>
+      <para>Default: not selected</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice><guibutton>Authenticate with local machine account</guibutton></menuchoice>
+    </term>
+    <listitem>
+      <para>Make queries to the remote server using the machine account of the local server. This setting is used by <ulink url="man:/net"><citerefentry><refentrytitle>net</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink>, <ulink url="man:/smbclient"><citerefentry><refentrytitle>smbclient</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> and <ulink url="man:/smbtree"><citerefentry><refentrytitle>smbtree</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink>.</para>
+      <para>Default: not selected</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice><guibutton>Use Winbind ccache for authentication</guibutton></menuchoice>
+    </term>
+    <listitem>
+      <para>Try to use the credentials cached by Winbind. This setting is used by <ulink url="man:/net"><citerefentry><refentrytitle>net</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink>, <ulink url="man:/smbclient"><citerefentry><refentrytitle>smbclient</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> and <ulink url="man:/smbtree"><citerefentry><refentrytitle>smbtree</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink>.</para>
+      <para>Default: not selected</para>
+    </listitem>
+  </varlistentry>
 </variablelist>
 </sect3>
 
 <sect3 id="configuration_samba_general_security">
 <title>Security</title>
 <variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Signing state</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-Set the client signing state. This setting is used by <ulink url="man:/smbclient"><citerefentry><refentrytitle>smbclient</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> and <ulink url="man:/smbtree"><citerefentry><refentrytitle>smbtree</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink>.
-</para>
-<para>
-The following options are available:
-</para>
-<variablelist>
   <varlistentry>
     <term>
-      <menuchoice>
-	<guibutton>None</guibutton>
-      </menuchoice>
+      <menuchoice><guibutton>Signing state</guibutton></menuchoice>
     </term>
     <listitem>
-      <para>Do not set the client signing state.</para>
+      <para>Set the client signing state. This setting is used by <ulink url="man:/smbclient"><citerefentry><refentrytitle>smbclient</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> and <ulink url="man:/smbtree"><citerefentry><refentrytitle>smbtree</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink>.</para>
+      <para>The following options are available:</para>
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>None</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Do not set the client signing state.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>On</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Set the client signing state to <emphasis>on</emphasis>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Off</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Set the client signing state to <emphasis>off</emphasis>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Required</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Set the client signing state to <emphasis>required</emphasis>.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+      <para>Default: None</para>
     </listitem>
   </varlistentry>
   <varlistentry>
     <term>
-      <menuchoice>
-	<guibutton>On</guibutton>
-      </menuchoice>
+      <menuchoice><guibutton>Encrypt SMB transport</guibutton></menuchoice>
     </term>
     <listitem>
-      <para>Set the client signing state to <emphasis>on</emphasis>.</para>
+      <para>This option requires the remote server to support the &UNIX; extensions. Request that the connection be encrypted. This is new for Samba 3.2 and will only work with Samba 3.2 or above servers. Fails the connection if encryption cannot be negotiated.</para>
+      <para>Default: not selected</para>
     </listitem>
   </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-	<guibutton>Off</guibutton>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Set the client signing state to <emphasis>off</emphasis>.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-	<guibutton>Required</guibutton>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Set the client signing state to <emphasis>required</emphasis>.</para>
-    </listitem>
-  </varlistentry>
-</variablelist>
-<para>
-Default: None
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Encrypt SMB transport</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-This option requires the remote server to support the &UNIX; extensions. Request that the connection be encrypted. This is new for Samba 3.2 and will only work with Samba 3.2 or above servers. Fails the connection if encryption cannot be negotiated.
-</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
 </variablelist>
 </sect3>
 </sect2>
+
+<!-- Configuring Smb4K : Samba : Mounting -->
 
 <sect2 id="configuration_samba_mounting">
 <title>Mounting</title>   
@@ -2315,329 +2261,317 @@ Default: not selected
 <sect3 id="configuration_samba_mounting_common">
 <title>Common Options</title>
 <variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>User ID</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-Sets the owner of the files and directories on the file system. By default, your UID is used. To change the UID, press the search button and choose one from the drop down menu.
-</para>
-<para>
-Default: your UID
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Group ID</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-Sets the group that owns the files and directories on the file system. By default, your GID is used. To change the GID, press the search button and choose one from the drop down menu.
-</para>
-<para>
-Default: your GID
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>File mask</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-Sets the permissions that are applied to files. The value is given in octal and has to have 4 digits. To learn more about the file mask (fmask), you should read the <ulink url="man:/mount"><citerefentry><refentrytitle>mount</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.
-</para>
-<para>
-Default: 0755
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Directory mask</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-Sets the permissions that are applied to directories. The value is given in octal and has to have 4 digits. To learn more about the folder mask (dmask), you should read the <ulink url="man:/mount"><citerefentry><refentrytitle>mount</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.
-</para>
-<para>
-Default: 0755
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Write access</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-Here you can determine if the shares should be mounted <emphasis>read-write</emphasis> or <emphasis>read-only</emphasis> by default. This option is independent of the file mask and the folder mask settings above.
-</para>
-<para>
-Default: read-write
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Client character set</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-Sets the character set used by the client side (&ie; your computer).
-</para>
-<para>
-Default: default
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Server codepage</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Sets the codepage the remote server uses.</para> 
-<para>This option is only available under FreeBSD.</para>
-<para>
-Default: default
-</para>
-</listitem>
-</varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice><guibutton>User ID</guibutton></menuchoice>
+    </term>
+    <listitem>
+      <para>Sets the owner of the files and directories on the file system. By default, your UID is used. To change the UID, press the search button and choose one from the drop down menu.</para>
+      <para>Default: your UID</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice><guibutton>Group ID</guibutton></menuchoice>
+    </term>
+    <listitem>
+      <para>Sets the group that owns the files and directories on the file system. By default, your GID is used. To change the GID, press the search button and choose one from the drop down menu.</para>
+      <para>Default: your GID</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice><guibutton>File mask</guibutton></menuchoice>
+    </term>
+    <listitem>
+      <para>Sets the permissions that are applied to files. The value is given in octal and has to have 4 digits. To learn more about the file mask (fmask), you should read the <ulink url="man:/mount"><citerefentry><refentrytitle>mount</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.</para>
+      <para>Default: 0755</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice><guibutton>Directory mask</guibutton></menuchoice>
+    </term>
+    <listitem>
+      <para>Sets the permissions that are applied to directories. The value is given in octal and has to have 4 digits. To learn more about the folder mask (dmask), you should read the <ulink url="man:/mount"><citerefentry><refentrytitle>mount</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.</para>
+      <para>Default: 0755</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice><guibutton>Write access</guibutton></menuchoice>
+    </term>
+    <listitem>
+      <para>Here you can determine if the shares should be mounted <emphasis>read-write</emphasis> or <emphasis>read-only</emphasis> by default. This option is independent of the file mask and the folder mask settings above.</para>
+      <para>Default: read-write</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice><guibutton>Client character set</guibutton></menuchoice>
+    </term>
+    <listitem>
+      <para>Sets the character set used by the client side (&ie; your computer).</para>
+      <para>Default: default</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice><guibutton>Server codepage</guibutton></menuchoice>
+    </term>
+    <listitem>
+      <para>Sets the codepage the remote server uses.</para> 
+      <para>This option is only available under FreeBSD.</para>
+      <para>Default: default</para>
+    </listitem>
+  </varlistentry>
 </variablelist>
 </sect3>
 
 <sect3 id="configuration_samba_mounting_advanced">
 <title>Advanced Options</title>
-<para><emphasis>(This widget is not available under FreeBSD.)</emphasis></para>
-<para>Most of the options you can define here require &Linux; kernel 2.6.15 or later to work.</para>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Do permission checks</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-The client side checks if you have the correct UID and GID to manipulate files and directories on the share. This is in addition to the normal ACL check on the target machine done by the server software. You might want to switch this feature off, if the server(s) support the CIFS Unix extensions and you are, hence, not allowed to access the share.
-</para>
-<para>
-Default: selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Attempt to set UID and GID</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-If the CIFS Unix extensions are negotiated with the server the client side will attempt to set the effective UID and GID of the local process on newly created files, directories, and devices. If this feature is turned off, the default UID and GID defined for the share will be used. It is recommended that you read the manual page of <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> before you change this setting.
-</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Use server inode numbers</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-Use inode numbers (unique persistent file identifiers) returned by the server instead of automatically generating temporary inode numbers on the client side. This parameter has no effect if the server does not support returning inode numbers or similar. It is recommended that you read the manual page of <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> before you change this setting.
-</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Do not cache inode data</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-Do not do inode data caching on files opened on the share. In some cases this can provide better performance than the default behavior which caches reads and writes.
-</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Translate reserved characters</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-Translate six of the seven reserved characters (not backslash, but including the colon, question mark, pipe, asterisk, greater than and less than characters) to the remap range (above 0xF000), which also allows the client side to recognize files created with such characters by &Windows;’s POSIX emulation. This can also be useful when mounting to most versions of Samba. This has no effect if the server does not support Unicode.
-</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Do not use locking</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-Do not use locking. Do not start lockd.
-</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Security mode</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Security mode. To be able to use this option, the CIFS kernel module 1.40 or later is needed.</para>
-<para>The allowed values are:</para>
-<variablelist>
-  <varlistentry>
-    <term>
-      <menuchoice>
-	<guibutton>Connect as a null user (no name)</guibutton>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>The <option>sec=none</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to attempt to connect as a null user (no name).</para>
+  <para><emphasis>(This widget is not available under FreeBSD.)</emphasis></para>
+  <para>Most of the options you can define here require &Linux; kernel 2.6.15 or later to work.</para>
+  <variablelist>
+    <varlistentry>
+      <term>
+        <menuchoice><guibutton>Definitely assign the UID</guibutton></menuchoice>
+      </term>
+      <listitem>
+        <para>Instruct the client (i.e. your side) to ignore any user ID (UID) provided by the server for files and directories and to always assign the owner to be the value of the transmitted UID.</para>
+        <para>Default: not selected</para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <menuchoice><guibutton>Definitely assign the GID</guibutton></menuchoice>
+      </term>
+      <listitem>
+        <para>Instruct the client (i.e. your side) to ignore any group ID (GID) provided by the server for files and directories and to always assign the owner to be the value of the transmitted GID.</para>
+        <para>Default: not selected</para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <menuchoice><guibutton>Do permission checks</guibutton></menuchoice>
+      </term>
+      <listitem>
+        <para>The client side checks if you have the correct UID and GID to manipulate files and directories on the share. This is in addition to the normal ACL check on the target machine done by the server software. You might want to switch this feature off, if the server(s) support the CIFS Unix extensions and you are, hence, not allowed to access the share.</para>
+        <para>Default: selected</para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <menuchoice><guibutton>Attempt to set UID and GID</guibutton></menuchoice>
+      </term>
+      <listitem>
+        <para>If the CIFS Unix extensions are negotiated with the server the client side will attempt to set the effective UID and GID of the local process on newly created files, directories, and devices. If this feature is turned off, the default UID and GID defined for the share will be used. It is recommended that you read the manual page of <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> before you change this setting.</para>
+        <para>Default: not selected</para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <menuchoice><guibutton>Use server inode numbers</guibutton></menuchoice>
+      </term>
+      <listitem>
+        <para>Use inode numbers (unique persistent file identifiers) returned by the server instead of automatically generating temporary inode numbers on the client side. This parameter has no effect if the server does not support returning inode numbers or similar. It is recommended that you read the manual page of <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> before you change this setting.</para>
+        <para>Default: not selected</para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <menuchoice><guibutton>Translate reserved characters</guibutton></menuchoice>
+      </term>
+      <listitem>
+        <para>Translate six of the seven reserved characters (not backslash, but including the colon, question mark, pipe, asterisk, greater than and less than characters) to the remap range (above 0xF000), which also allows the client side to recognize files created with such characters by &Windows;’s POSIX emulation. This can also be useful when mounting to most versions of Samba. This has no effect if the server does not support Unicode.</para>
+        <para>Default: not selected</para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <menuchoice><guibutton>Do not use locking</guibutton></menuchoice>
+      </term>
+      <listitem>
+        <para>Do not use locking. Do not start lockd.</para>
+        <para>Default: not selected</para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <menuchoice><guibutton>SMB protocol version</guibutton></menuchoice>
+      </term>
+      <listitem>
+        <para>Define which version of the SMB protocol is to be used.</para>
+        <para>The following values are allowed:</para>
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>1.0 (Classic CIFS/SMBv1 protocol)</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>The <option>vers=1.0</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the classic CIFS/SMBv1 protocol.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>2.0 (Windows Vista SP1/Windows Server 2008)</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>The <option>vers=2.0</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv2.002 protocol.This was initially introduced in Windows Vista Service Pack 1, and Windows Server 2008.</para>
+              <note>
+                <para>Note that the initial release version of Windows Vista spoke a slightly different dialect (2.000) that is not supported.</para>
+              </note>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>2.1 (Windows 7/Windows Server 2008R2)</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>The <option>vers=2.1</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv2.1 protocol that was introduced in Microsoft Windows 7 and Windows Server 2008R2.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>3.0 (Windows 8/Windows Server 2012)</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>The <option>vers=3.0</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv3.0 protocol that was introduced in Microsoft Windows 8 and Windows Server 2012.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+        <para>Default: <guibutton>1.0 (Classic CIFS/SMBv1 protocol)</guibutton></para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <menuchoice><guibutton>Cache mode</guibutton></menuchoice>
+      </term>
+      <listitem>
+        <para>Define how read and write requests are handled. In case you choose to not cache file data at all, the client never utilizes the cache for normal reads and writes. It always accesses the server directly to satisfy a read or write request. If you choose to follow the CIFS/SMB2 protocol strictly, the cache is only trusted if the client holds an oplock. If the client does not hold an oplock, then the client bypasses the cache and accesses the server directly to satisfy a read or write request. Choosing to allow loose caching semantics can sometimes provide better performance on the expense of cache coherency. This option might cause data corruption, if several clients access the same set of files on the server at the same time. Because of this, the strict cache mode is recommended.</para>
+        <para>The following values are allowed:</para>
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Do not cache file data at all</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>The <option>cache=none</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to not cache file data at all.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Follow the CIFS/SMB2 protocol strictly</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>The <option>cache=strict</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to follow the CIFS/SMB2 protocol strictly.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Allow loose caching semantics</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>The <option>cache=loose</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to allow loose caching semantics.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+        <para>Default: <guibutton>Follow the CIFS/SMB2 protocol strictly</guibutton></para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <menuchoice><guibutton>Security mode</guibutton></menuchoice>
+      </term>
+      <listitem>
+        <para>Security mode. To be able to use this option, the CIFS kernel module 1.40 or later is needed.</para>
+        <para>The allowed values are:</para>
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Connect as a null user (no name)</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>The <option>sec=none</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to attempt to connect as a null user (no name).</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Kerberos 5 authentication</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>The <option>sec=krb5</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use Kerberos version 5 authentication.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Kerberos 5 authentication and packet signing</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>The <option>sec=krb5i</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use Kerberos version 5 authentication and force packet signing.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>NTLM protocol</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>The <option>sec=ntlm</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use NTLM password hashing. Up to &Linux; kernel version 3.8 this is the default setting.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>NTLM protocol and packet signing</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>The <option>sec=ntlmi</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use NTLM password hashing and force packet signing.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>NTLMv2 protocol</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>The <option>sec=ntlmv2</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use NTLMv2 password hashing.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>NTLMv2 protocol and packet signing</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>The <option>sec=ntlmv2i</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use NTLMv2 password hashing and force packet signing.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>NTLMSSP protocol</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>The <option>sec=ntlmssp</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use NTLMv2 password hashing encapsulated in a Raw NTLMSSP message. Since &Linux; kernel version 3.8 this is the default setting.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>NTLMSSP protocol and packet signing</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>The <option>sec=ntlmssp</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use NTLMv2 password hashing encapsulated in a Raw NTLMSSP message and force packet signing.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+        <para>Default: <guibutton>NTLMSSP protocol</guibutton></para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        <menuchoice><guibutton>Additional options</guibutton></menuchoice>
+      </term>
+      <listitem>
+        <para>Define additional options for use with <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink>. Clicking the edit button to the right of the line edit opens an input dialog where the options have to be provided in a comma-separated list. After clicking <guibutton>OK</guibutton> in the input dialog, the options will be checked against a whitelist and all entries not present in it will be removed.</para>
+      <para>Default: empty</para>
     </listitem>
   </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-	<guibutton>Kerberos 5 authentication</guibutton>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>The <option>sec=krb5</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use Kerberos version 5 authentication.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-	<guibutton>Kerberos 5 authentication and packet signing</guibutton>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>The <option>sec=krb5i</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use Kerberos version 5 authentication and force packet signing.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-	<guibutton>NTLM protocol</guibutton>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>The <option>sec=ntlm</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use NTLM password hashing. Up to &Linux; kernel version 3.8 this is the default setting.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-	<guibutton>NTLM protocol and packet signing</guibutton>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>The <option>sec=ntlmi</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use NTLM password hashing and force packet signing.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-	<guibutton>NTLMv2 protocol</guibutton>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>The <option>sec=ntlmv2</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use NTLMv2 password hashing.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-	<guibutton>NTLMv2 protocol and packet signing</guibutton>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>The <option>sec=ntlmv2i</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use NTLMv2 password hashing and force packet signing.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <guibutton>NTLMSSP protocol</guibutton>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>The <option>sec=ntlmssp</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use NTLMv2 password hashing encapsulated in a Raw NTLMSSP message. Since &Linux; kernel version 3.8 this is the default setting.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <guibutton>NTLMSSP protocol and packet signing</guibutton>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>The <option>sec=ntlmssp</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use NTLMv2 password hashing encapsulated in a Raw NTLMSSP message and force packet signing.</para>
-    </listitem>
-  </varlistentry>
-</variablelist>
-<para>
-Default: <guilabel>NTLMSSP protocol</guilabel>
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Additional options</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-Define additional options for use with <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink>. They have to be provided in a comma-separated list and should not include any options that were already defined in the configuration dialog because this could lead to unwanted side effects. The list is appended AS IS to the command line arguments. To find out about the arguments that can be used read the manual page of <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink>.
-</para>
-<para>
-Default: empty
-</para>
-</listitem>
-</varlistentry>
 </variablelist>
 </sect3>
 </sect2>
