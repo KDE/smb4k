@@ -2576,6 +2576,8 @@ Default: NetBIOS scope defined in <filename>smb.conf</filename>
 </sect3>
 </sect2>
 
+<!-- Configuring Smb4K : Samba : Utility Programs -->
+
 <sect2 id="configuration_samba_utility_programs">
 <title>Utility Programs</title>
   
@@ -2747,7 +2749,7 @@ Default: not selected
 </sect2>
 </sect1>
 
-<!-- Configuration: Synchronization -->
+<!-- Configuring Smb4K : Synchronization -->
 
 <sect1 id="configuration_sync">
 <title>Synchronization</title>
@@ -2765,6 +2767,8 @@ Default: not selected
 </textobject>
 </mediaobject>
 </screenshot>
+
+<!-- Configuring Smb4K : Synchronization : Copying -->
 
 <sect2 id="configuration_sync_copying">
 <title>Copying</title>
@@ -3091,6 +3095,8 @@ Default: not selected
 </sect3>
 </sect2>
 
+<!-- Configuring Smb4K : Synchronization : File Deletion & Transfer -->
+
 <sect2 id="configuration_sync_filedel">
 <title>File Deletion &amp; Transfer</title>
 
@@ -3296,6 +3302,8 @@ Default: not selected; DIR: <filename class="directory">$HOME</filename>
 </sect3>
 </sect2>
 
+<!-- Configuring Smb4K : Synchronization : Filtering -->
+
 <sect2 id="configuration_sync_filter">
 <title>Filtering</title>   
 
@@ -3428,6 +3436,8 @@ Default: not selected
 </variablelist>
 </sect3>
 </sect2>
+
+<!-- Configuring Smb4K : Synchronization : Advanced Settings -->
 
 <sect2 id="configuration_sync_advanced">
 <title>Advanced Settings</title>
@@ -3626,7 +3636,7 @@ Default: not selected
 </sect1>
 
 
-<!-- Configuration: Custom Options -->
+<!-- Configuring Smb4K : Custom Options -->
 
 <sect1 id="configuration_custom_options">
 <title>Custom Options</title>
@@ -3646,7 +3656,9 @@ Default: not selected
 
 <para>The options defined for a network item can be edited by either double clicking an entry in the list view or by choosing the <guimenuitem>Edit</guimenuitem> item from the popup menu (right click on the selected item). The custom options are then being loaded and can be edited. To remove an entry, right click it and choose the <guimenuitem>Remove</guimenuitem> item from the popup menu. All network items may be removed at once by choosing the <guimenuitem>Clear List</guimenuitem> item. Changes can be reset by choosing the <guimenuitem>Undo</guimenuitem> item from the popup menu.</para>
 
-<para>The custom options are accessible through the editor widgets on the right. In the <guilabel>General</guilabel> section the UNC address of the network item and its editable IP address are shown. Also, you can define whether the share should be remounted. Below, the custom options are arranged in two tabs:</para>
+<para>The custom options are accessible through the editor widgets on the right. In the <guilabel>General</guilabel> section the UNC address of the network item and its editable IP address are shown. In case of a share, you can also define whether it should always be remounted. Below, the custom options are arranged in two tabs:</para>
+
+<!-- Configuring Smb4K : Custom Options : Samba -->
 
 <sect2 id="configuration_custom_options_samba">
   <title>Samba</title>
@@ -3654,12 +3666,66 @@ Default: not selected
   <para>You can edit various Samba settings here. Which ones are available depends on the operating system you are using. For more information, have a look at the description of the <link linkend="configuration_samba">Samba</link> configuration page.</para>
 </sect2>
 
+<!-- Configuring Smb4K : Custom Options : Wake-On-LAN -->
+
 <sect2 id="configuration_custom_options_wol">
   <title>Wake-On-LAN</title>
   
   <para>Here you can edit the options that you previously defined through the <link linkend="network_neighborhood_browser_custom">Custom Options</link> dialog.</para>
 </sect2>
+</sect1>
 
+<!-- Configuring Smb4K : Profiles -->
+
+<sect1 id="configuration_profiles">
+  <title>Profiles</title>
+  
+  <para>On this page you can enable the use of profiles and manage your profiles.</para>
+  
+  <screenshot>
+    <screeninfo>Screenshot of the "Profiles" configuration tab</screeninfo>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="configuration_profiles.png" format="PNG" />
+      </imageobject>
+      <textobject>
+        <phrase>The "Profiles" configuration tab</phrase>
+      </textobject>
+    </mediaobject>
+  </screenshot>
+
+<!-- Configuring Smb4K : Profiles : Settings -->
+
+  <sect2 id="configuration_profiles_settings">
+    <title>Settings</title>
+    <variablelist>
+      <varlistentry>
+        <term>
+          <menuchoice><guibutton>Use profiles</guibutton></menuchoice>
+        </term>
+        <listitem>
+          <para>Make Smb4K use profiles. This enables you to define different bookmarks and custom options for each profile. This is especially useful if you are using a laptop in different network neighborhoods, e. g. at home and at work. When enabling this setting the first time, the first entry in the <link linkend="configuration_profiles_profiles">profiles list</link> will be the active profile.</para>
+          <para>Default: not selected</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice><guibutton>Use profile migration assistant</guibutton></menuchoice>
+        </term>
+        <listitem>
+          <para>Use the profile migration assistant when profiles are removed or the use of profiles is enabled or disabled. The profile migration assistant allows you to migrate all settings that were saved for a certain profile to a different one.</para>
+          <para>Default: not selected</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+
+<!-- Configuring Smb4K : Profiles : Profiles -->
+
+  <sect2 id="configuration_profiles_profiles">
+    <title>Profiles</title>
+    <para>Here, you can manage your profiles. By default, there are two pre-defined ones (<guilabel>Home</guilabel> and <guilabel>Work</guilabel>), but you can add your own ones. When you enabled the use of profiles the first time, the first entry in the list will be the active profile.</para>
+  </sect2>
 </sect1>
 </chapter>
 
