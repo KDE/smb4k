@@ -2417,7 +2417,7 @@ Default: NetBIOS scope defined in <filename>smb.conf</filename>
               <menuchoice><guibutton>2.0 (Windows Vista SP1/Windows Server 2008)</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>The <option>vers=2.0</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv2.002 protocol.This was initially introduced in Windows Vista Service Pack 1, and Windows Server 2008.</para>
+              <para>The <option>vers=2.0</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv2.002 protocol. This was initially introduced in Windows Vista Service Pack 1, and Windows Server 2008.</para>
               <note>
                 <para>Note that the initial release version of Windows Vista spoke a slightly different dialect (2.000) that is not supported.</para>
               </note>
