@@ -1086,7 +1086,7 @@
     <entry name="UseMigrationAssistant" type="Bool">
       <label>Use profile migration assistant</label>
       <whatsthis>Use the profile migration assistant when profiles are removed or the use of profiles is enabled or disabled. The profile migration assistant allows you to migrate all settings that were saved for a certain profile to a different one.</whatsthis>
-      <default>true</default>
+      <default>false</default>
     </entry>
   </group>
 </kcfg>
