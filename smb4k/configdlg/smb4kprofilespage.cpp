@@ -66,15 +66,22 @@ Smb4KProfilesPage::Smb4KProfilesPage(QWidget* parent)
   use_assistant->setObjectName("kcfg_UseMigrationAssistant");
   
   settings_layout->addWidget(use_profiles, 0, 0);
-  settings_layout->addWidget(use_assistant, 0, 0);
+  settings_layout->addWidget(use_assistant, 1, 0);
+  
+  QGroupBox *profiles = new QGroupBox(i18n("Profiles"), this);
+  
+  QVBoxLayout *profiles_layout = new QVBoxLayout(profiles);
+  profiles_layout->setSpacing(5);
   
   // List of profiles
-  m_profiles = new KEditListWidget(this);
+  m_profiles = new KEditListWidget(profiles);
   m_profiles->setObjectName("kcfg_ProfilesList");
   m_profiles->setEnabled(Smb4KSettings::self()->useProfiles());
   
+  profiles_layout->addWidget(m_profiles, 0, 0);
+  
   layout->addWidget(settings, 0, 0);
-  layout->addWidget(m_profiles, 1, 0);
+  layout->addWidget(profiles, 1, 0);
 
   connect(use_profiles, SIGNAL(stateChanged(int)), this, SLOT(slotEnableWidget(int)));
   connect(m_profiles, SIGNAL(removed(QString)), this, SLOT(slotProfileRemoved(QString)));
