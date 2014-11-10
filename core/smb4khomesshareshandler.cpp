@@ -297,8 +297,8 @@ void Smb4KHomesSharesHandler::writeUserNames(const QList<Smb4KHomesUsers *> &lis
   
   if (!listOnly)
   {  
-    // First read all entries. Ignore all those that have 
-    // representatives in d->homesUsers.
+    // First read all entries. Then remove all, that belong to
+    // the currently active profile.
     readUserNames(&allUsers, true);
     
     QMutableListIterator<Smb4KHomesUsers *> it(allUsers);
@@ -307,19 +307,13 @@ void Smb4KHomesSharesHandler::writeUserNames(const QList<Smb4KHomesUsers *> &lis
     {
       Smb4KHomesUsers *users = it.next();
       
-      for (int i = 0; i < d->homesUsers.size(); ++i)
+      if (QString::compare(users->profile(), Smb4KProfileManager::self()->activeProfile()) == 0)
       {
-        if (QString::compare(users->workgroupName(), list.at(i)->workgroupName(), Qt::CaseInsensitive) == 0 &&
-            QString::compare(users->hostName(), list.at(i)->hostName(), Qt::CaseInsensitive) == 0 &&
-            QString::compare(users->shareName(), list.at(i)->shareName(), Qt::CaseInsensitive) == 0 &&
-            QString::compare(users->profile(), list.at(i)->profile()) == 0)
-        {
-          it.remove();
-        }
-        else
-        {
-          // Do nothing
-        }
+        it.remove();
+      }
+      else
+      {
+        // Do nothing
       }
     }
   }

@@ -364,8 +364,8 @@ void Smb4KBookmarkHandler::writeBookmarkList(const QList<Smb4KBookmark *> &list,
   
   if (!listOnly)
   {  
-    // First read all entries. Ignore all those that have 
-    // representatives in list.
+    // First read all entries. Then remove all, that belong to
+    // the currently active profile.
     readBookmarks(&allBookmarks, &allGroups, true);
     
     QMutableListIterator<Smb4KBookmark *> it(allBookmarks);
@@ -374,18 +374,13 @@ void Smb4KBookmarkHandler::writeBookmarkList(const QList<Smb4KBookmark *> &list,
     {
       Smb4KBookmark *bookmark = it.next();
       
-      for (int i = 0; i < list.size(); ++i)
+      if (QString::compare(bookmark->profile(), Smb4KProfileManager::self()->activeProfile()) == 0)
       {
-        if (QString::compare(bookmark->workgroupName(), list.at(i)->workgroupName(), Qt::CaseInsensitive) == 0 &&
-            QString::compare(bookmark->unc(), list.at(i)->unc(), Qt::CaseInsensitive) == 0 &&
-            QString::compare(bookmark->profile(), list.at(i)->profile()) == 0)
-        {
-          it.remove();
-        }
-        else
-        {
-          // Do nothing
-        }
+        it.remove();
+      }
+      else
+      {
+        // Do nothing
       }
     }
   }

@@ -567,7 +567,7 @@ QMap<QString, QString> Smb4KCustomOptions::customOptions() const
   }
 
   entries.insert( "smb_port", QString( "%1" ).arg( smbPort() ) );
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   entries.insert( "filesystem_port", QString( "%1" ).arg( fileSystemPort() ) );
   
   switch ( d->writeAccess )
@@ -720,10 +720,10 @@ QMap<QString, QString> Smb4KCustomOptions::customOptions() const
 }
 
 
-bool Smb4KCustomOptions::equals( Smb4KCustomOptions *options ) const
+bool Smb4KCustomOptions::equals(Smb4KCustomOptions *options, bool fullCheck) const
 {
   // Type
-  if ( d->type != options->type() )
+  if (d->type != options->type())
   {
     return false;
   }
@@ -731,9 +731,9 @@ bool Smb4KCustomOptions::equals( Smb4KCustomOptions *options ) const
   {
     // Do nothing
   }
-  
+
   // Profile
-  if ( QString::compare( d->profile, options->profile() ) != 0 )
+  if (QString::compare(d->profile, options->profile()) != 0)
   {
     return false;
   }
@@ -743,7 +743,7 @@ bool Smb4KCustomOptions::equals( Smb4KCustomOptions *options ) const
   }
   
   // Workgroup
-  if ( QString::compare( d->workgroup, options->workgroupName(), Qt::CaseInsensitive ) != 0 )
+  if (QString::compare(d->workgroup, options->workgroupName(), Qt::CaseInsensitive) != 0)
   {
     return false;
   }
@@ -752,9 +752,8 @@ bool Smb4KCustomOptions::equals( Smb4KCustomOptions *options ) const
     // Do nothing
   }
   
-  // URL - Instead of checking if the whole network item equals
-  //  the one defined here, it is sufficient to check the URL.
-  if ( d->url != options->url() )
+  // UNC
+  if (QString::compare(unc(), options->unc(), Qt::CaseInsensitive) != 0)
   {
     return false;
   }
@@ -763,129 +762,146 @@ bool Smb4KCustomOptions::equals( Smb4KCustomOptions *options ) const
     // Do nothing
   }
   
-  // IP address
-  if ( QString::compare( d->ip.toString(), options->ip() ) != 0 )
+  // Full check
+  if (fullCheck)
   {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Remounting
-  if ( d->remount != options->remount() )
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
+    // IP address
+    if (QString::compare(d->ip.toString(), options->ip()) != 0)
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // Remounting
+    if (d->remount != options->remount())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // SMB port
+    if (d->smbPort != options->smbPort())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+#ifdef Q_OS_LINUX
+    // File system port (used for mounting)
+    if (d->fileSystemPort != options->fileSystemPort())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
 
-  // SMB port
-  if ( d->smbPort != options->smbPort() )
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-#ifndef Q_OS_FREEBSD
-  
-  // File system port (used for mounting)
-  if ( d->fileSystemPort != options->fileSystemPort() )
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Write access
-  if ( d->writeAccess != options->writeAccess() )
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
+    // Write access
+    if (d->writeAccess != options->writeAccess())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // Security mode
+    if (d->securityMode != options->securityMode())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
 #endif
 
-  // Protocol hint
-  if ( d->protocolHint != options->protocolHint() )
-  {
-    return false;
+    // Protocol hint
+    if (d->protocolHint != options->protocolHint())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // Kerberos
+    if (d->kerberos != options->useKerberos())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // UID
+    if (d->user.uid() != options->uid())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // GID
+    if (d->group.gid() != options->gid())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // MAC address
+    if (QString::compare(d->mac, options->macAddress()) != 0)
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // Send WOL packages before first scan
+    if (d->wol_first_scan != options->wolSendBeforeNetworkScan())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // Send WOL packages before mount
+    if (d->wol_mount != options->wolSendBeforeMount())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
     // Do nothing
   }
   
-  // Kerberos
-  if ( d->kerberos != options->useKerberos() )
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // UID
-  if ( d->user.uid() != options->uid() )
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // GID
-  if ( d->group.gid() != options->gid() )
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // MAC address
-  if ( QString::compare( d->mac, options->macAddress() ) != 0 )
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Send WOL packages before first scan
-  if ( d->wol_first_scan != options->wolSendBeforeNetworkScan() )
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Send WOL packages before mount
-  if ( d->wol_mount != options->wolSendBeforeMount() )
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
   return true;
 }
 
@@ -962,8 +978,7 @@ bool Smb4KCustomOptions::isEmpty()
     // Do nothing
   }
   
-#ifndef Q_OS_FREEBSD
-  
+#ifdef Q_OS_LINUX
   // File system port (used for mounting)
   if ( d->fileSystemPort != 445 )
   {
@@ -976,6 +991,16 @@ bool Smb4KCustomOptions::isEmpty()
 
   // Write access
   if ( d->writeAccess != UndefinedWriteAccess )
+  {
+    return false;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Security mode
+  if (d->securityMode != Smb4KCustomOptions::UndefinedSecurityMode)
   {
     return false;
   }

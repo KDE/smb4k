@@ -188,7 +188,7 @@ void Smb4KCustomOptionsDialog::setupView()
   m_smb_port->setSliderEnabled( true );
   smb_label->setBuddy( m_smb_port );
 
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   QLabel *fs_label = new QLabel( i18n( "Filesystem Port:" ), samba_editors );
   m_fs_port        = new KIntNumInput( (m_options->fileSystemPort() != Smb4KSettings::remoteFileSystemPort() ?
                      m_options->fileSystemPort() : Smb4KSettings::remoteFileSystemPort()), samba_editors );

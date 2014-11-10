@@ -280,7 +280,7 @@ class KDE_EXPORT Smb4KCustomOptions
      */
     int smbPort() const;
     
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
     /**
      * Set the port that is to be used with mounting for a single share or all
      * shares of a host.
@@ -466,17 +466,21 @@ class KDE_EXPORT Smb4KCustomOptions
     QMap<QString,QString> customOptions() const;
     
     /**
-     * Check if the custom options @p options are equal to those defined here.
+     * Check if the custom options @p options are equal to those defined here. If
+     * you just want to check if the options have the same UNC and workgroup and 
+     * belong to the same profile, set @p fullCheck to FALSE.
      * 
      * @param options             The options that are to be compared to the
      *                            ones defined here
+     * @param fullCheck           Set this to FALSE if you just want to check
+     *                            the profile, UNC and workgroup.
      */
-    bool equals( Smb4KCustomOptions *options ) const;
+    bool equals(Smb4KCustomOptions *options, bool fullCheck = true) const;
     
     /**
      * Operator to check if two custom options objects are equal.
      */
-    bool operator==( Smb4KCustomOptions options ) const { return equals( &options ); }
+    bool operator==( Smb4KCustomOptions options ) const { return equals(&options, true); }
     
     /**
      * Check if the custom options are empty.
@@ -484,7 +488,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * @returns TRUE if the custom options object is empty
      */
     bool isEmpty();
-
+    
   private:
     const QScopedPointer<Smb4KCustomOptionsPrivate> d;
 };

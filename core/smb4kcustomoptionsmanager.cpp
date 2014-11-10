@@ -664,8 +664,8 @@ void Smb4KCustomOptionsManager::writeCustomOptions(const QList<Smb4KCustomOption
   
   if (!listOnly)
   {
-    // First read all entries. Ignore all those that have 
-    // representatives in list.
+    // First read all entries. Then remove all, that belong to
+    // the currently active profile.
     readCustomOptions(&allOptions, true);
     
     QMutableListIterator<Smb4KCustomOptions *> it(allOptions);
@@ -674,18 +674,13 @@ void Smb4KCustomOptionsManager::writeCustomOptions(const QList<Smb4KCustomOption
     {
       Smb4KCustomOptions *options = it.next();
       
-      for (int i = 0; i < list.size(); ++i)
+      if (QString::compare(options->profile(), Smb4KProfileManager::self()->activeProfile()) == 0)
       {
-        if (QString::compare(options->workgroupName(), list.at(i)->workgroupName(), Qt::CaseInsensitive) == 0 &&
-            QString::compare(options->unc(), list.at(i)->unc(), Qt::CaseInsensitive) == 0 &&
-            QString::compare(options->profile(), list.at(i)->profile()) == 0)
-        {
-          it.remove();
-        }
-        else
-        {
-          // Do nothing
-        }
+        it.remove();
+      }
+      else
+      {
+        // Do nothing
       }
     }
   }
@@ -724,7 +719,7 @@ void Smb4KCustomOptionsManager::writeCustomOptions(const QList<Smb4KCustomOption
           xmlWriter.writeTextElement("workgroup", options->workgroupName());
           xmlWriter.writeTextElement("unc", options->unc());
           xmlWriter.writeTextElement("ip", options->ip());
-
+          
           xmlWriter.writeStartElement("custom");
 
           QMap<QString,QString> map = options->customOptions();
@@ -976,94 +971,87 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog( Smb4KBasicNetworkItem *
 }
 
 
-void Smb4KCustomOptionsManager::addCustomOptions( Smb4KCustomOptions *options )
+void Smb4KCustomOptionsManager::addCustomOptions(Smb4KCustomOptions *options)
 {
-  Q_ASSERT( options );
+  Q_ASSERT(options);
   
   if (options)
   {
+    // Add the custom options. If the incoming options are those for a host, 
+    // propagate the host specific changes to its shares as well.
     
-    // Add the custom options. Check if there already is an entry with the
-    // same URL and modify it if found.
-    // If the incoming options are those for a host, propagate the host specific
-    // changes to its shares as well.
+    // Find the options.
+    Smb4KCustomOptions *known_options = findOptions(options->url());
     
-    Smb4KCustomOptions *known_options = findOptions( options->url() );
-    
-    if ( !known_options )
+    if (known_options)
     {
-      Smb4KCustomOptions *o = new Smb4KCustomOptions(*options);
+      // Remove the known options from the list and add the ones that
+      // were passed. We can do this, because findOptions(KUrl) returns
+      // the exact match.
+      int index = d->options.indexOf(known_options);
       
-      if (o->profile().isEmpty())
+      if (index != -1)
       {
-        o->setProfile(Smb4KProfileManager::self()->activeProfile());
+        d->options.removeAt(index);
       }
       else
       {
         // Do nothing
       }
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // Add the options to the list.
+    Smb4KCustomOptions *o = new Smb4KCustomOptions(*options);
       
-      d->options << o;
+    if (o->profile().isEmpty())
+    {
+      o->setProfile(Smb4KProfileManager::self()->activeProfile());
     }
     else
     {
-      if ( known_options != options && !known_options->equals( options ) )
+      // Do nothing
+    }
+
+    d->options << o;
+    
+    // Propagate the options of the host item to its shared resources.
+    // Overwrite the settings.
+    if (o->type() == Host)
+    {
+      for (int i = 0; i < d->options.size(); ++i)
       {
-        known_options->setSMBPort( options->smbPort() );
-  #ifndef Q_OS_FREEBSD
-        known_options->setFileSystemPort( options->fileSystemPort() );
-        known_options->setWriteAccess( options->writeAccess() );
-        known_options->setSecurityMode( options->securityMode() );
-  #endif
-        known_options->setProtocolHint( options->protocolHint() );
-        known_options->setUID( options->uid() );
-        known_options->setGID( options->gid() );
-        known_options->setUseKerberos( options->useKerberos() );
-        known_options->setMACAddress( options->macAddress() );
-        known_options->setWOLSendBeforeNetworkScan( options->wolSendBeforeNetworkScan() );
-        known_options->setWOLSendBeforeMount( options->wolSendBeforeMount() );
-      }
-      else
-      {
-        // Do nothing
-      }
-      
-      if ( known_options->type() == Host )
-      {
-        for ( int i = 0; i < d->options.size(); ++i )
+        if (d->options.at(i)->type() == Share && d->options.at(i)->unc().startsWith(o->unc(), Qt::CaseInsensitive))
         {
-          if ( d->options.at( i )->type() == Share &&
-              QString::compare( d->options.at( i )->hostName() , options->hostName(), Qt::CaseInsensitive ) == 0 &&
-              QString::compare( d->options.at( i )->workgroupName() , options->workgroupName(), Qt::CaseInsensitive ) == 0 )
-          {
-            // Propagate the options to the shared resources of the host.
-            // They overwrite the ones defined for the shares.
-            d->options[i]->setSMBPort( options->smbPort() );
-  #ifndef Q_OS_FREEBSD
-            d->options[i]->setFileSystemPort( options->fileSystemPort() );
-            d->options[i]->setWriteAccess( options->writeAccess() );
-            d->options[i]->setSecurityMode( options->securityMode() );
-  #endif
-            d->options[i]->setProtocolHint( options->protocolHint() );
-            d->options[i]->setUID( options->uid() );
-            d->options[i]->setGID( options->gid() );
-            d->options[i]->setUseKerberos( options->useKerberos() );
-            d->options[i]->setMACAddress( options->macAddress() );
-            d->options[i]->setWOLSendBeforeNetworkScan( options->wolSendBeforeNetworkScan() );
-            d->options[i]->setWOLSendBeforeMount( options->wolSendBeforeMount() );
-          }
-          else
-          {
-            // Do nothing
-          }
+          d->options[i]->setSMBPort(o->smbPort());
+#ifdef Q_OS_LINUX
+          d->options[i]->setFileSystemPort(o->fileSystemPort());
+          d->options[i]->setWriteAccess(o->writeAccess());
+          d->options[i]->setSecurityMode(o->securityMode());
+#endif
+          d->options[i]->setProtocolHint(o->protocolHint());
+          d->options[i]->setUID(o->uid());
+          d->options[i]->setGID(o->gid());
+          d->options[i]->setUseKerberos(o->useKerberos());
+          d->options[i]->setMACAddress(o->macAddress());
+          d->options[i]->setWOLSendBeforeNetworkScan(o->wolSendBeforeNetworkScan());
+          d->options[i]->setWOLSendBeforeMount(o->wolSendBeforeMount());          
+        }
+        else
+        {
+          // Do nothing
         }
       }
-      else
-      {
-        // Do nothing
-      }
+    }
+    else
+    {
+      // Do nothing
     }
     
+    // Now write the updated list.
     writeCustomOptions(d->options);
   }
   else
@@ -1073,21 +1061,21 @@ void Smb4KCustomOptionsManager::addCustomOptions( Smb4KCustomOptions *options )
 }
 
 
-void Smb4KCustomOptionsManager::removeCustomOptions( Smb4KCustomOptions *options )
+void Smb4KCustomOptionsManager::removeCustomOptions(Smb4KCustomOptions *options)
 {
-  Q_ASSERT( options );
+  Q_ASSERT(options);
   
   if (options)
   {
-    Smb4KCustomOptions *known_options = findOptions( options->url() );
+    Smb4KCustomOptions *known_options = findOptions(options->url());
     
-    if ( known_options )
+    if (known_options)
     {
-      int index = d->options.indexOf( known_options );
+      int index = d->options.indexOf(known_options);
       
-      if ( index != -1 )
+      if (index != -1)
       {
-        delete d->options.takeAt( index );
+        delete d->options.takeAt(index);
       }
       else
       {
@@ -1120,7 +1108,7 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
   
   // Set up the default options
   default_options.setSMBPort( Smb4KSettings::remoteSMBPort() );
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   default_options.setFileSystemPort( Smb4KSettings::remoteFileSystemPort() );
   
   switch ( Smb4KSettings::writeAccess() )
@@ -1264,8 +1252,7 @@ bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
     // Do nothing
   }
   
-#ifndef Q_OS_FREEBSD
-  
+#ifdef Q_OS_LINUX
   // File system port (used for mounting)
   if ( empty_options.fileSystemPort() != options->fileSystemPort() && 
        default_options.fileSystemPort() != options->fileSystemPort() )
