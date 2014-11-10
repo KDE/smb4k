@@ -3725,6 +3725,7 @@ Default: not selected
   <sect2 id="configuration_profiles_profiles">
     <title>Profiles</title>
     <para>Here, you can manage your profiles. By default, there are two pre-defined ones (<guilabel>Home</guilabel> and <guilabel>Work</guilabel>), but you can add your own ones. When you enabled the use of profiles the first time, the first entry in the list will be the active profile.</para>
+    <para>When you rename a profile, the settings are migrated automatically (without showing the migration assistant). If you enabled the use of the migration assistant, it is shown when you remove a profile giving you the opportunity to migrate the stored settings to another profile. If the use of the migration assistant is disabled, the profile and all of its settings are removed.</para>
   </sect2>
 </sect1>
 </chapter>
@@ -3734,33 +3735,40 @@ Default: not selected
 <chapter id="commands" >
 <title>Command Reference</title>
 
+<!-- Command Reference : Menu Items -->
+
 <sect1 id="menu_items">
 <title>Menu Items</title>
 
+<!-- Command Reference : Menu Items : The File Menu -->
+
 <sect2 id="file_menu">
 <title>The File Menu</title>
-<para>
 <variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<shortcut>
-<keycombo action="simul" >
-&Ctrl; <keycap>Q</keycap>
-</keycombo>
-</shortcut>
-<guimenu>File</guimenu>
-<guimenuitem>Quit</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-Quit &smb4k;.
-</para>
-</listitem>
-</varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice>
+        <guimenu>File</guimenu>
+        <guimenuitem>Profiles</guimenuitem>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para>Select the profile to use. This menu entry is disabled if the user did not enabled the use of profiles.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice>
+        <shortcut><keycombo action="simul" >&Ctrl; <keycap>Q</keycap></keycombo></shortcut>
+        <guimenu>File</guimenu>
+        <guimenuitem>Quit</guimenuitem>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para>Quit &smb4k;.</para>
+    </listitem>
+  </varlistentry>
 </variablelist>
-</para>
 </sect2>
 
 <sect2 id="network_menu">
