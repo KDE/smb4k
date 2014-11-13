@@ -1024,7 +1024,9 @@ void Smb4KCustomOptionsManager::addCustomOptions(Smb4KCustomOptions *options)
     {
       for (int i = 0; i < d->options.size(); ++i)
       {
-        if (d->options.at(i)->type() == Share && d->options.at(i)->unc().startsWith(o->unc(), Qt::CaseInsensitive))
+        if (d->options.at(i)->type() == Share &&
+            QString::compare(d->options.at(i)->hostName(), o->hostName(), Qt::CaseInsensitive) == 0 &&
+            QString::compare(d->options.at(i)->workgroupName(), o->workgroupName(), Qt::CaseInsensitive) == 0)
         {
           d->options[i]->setSMBPort(o->smbPort());
 #ifdef Q_OS_LINUX
