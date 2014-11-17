@@ -204,10 +204,7 @@ void Smb4KNetworkBrowserPart::setupActions()
   KGuiItem abort_item( i18n( "&Abort" ), KIcon( "process-stop" ) );
   rescan_abort_action->setActiveGuiItem( rescan_item );
   rescan_abort_action->setInactiveGuiItem( abort_item );
-  QList<QKeySequence> rescan_shortcuts;
-  rescan_shortcuts += QKeySequence::Refresh;
-  rescan_shortcuts += QKeySequence( Qt::CTRL+Qt::Key_R );
-  rescan_abort_action->setShortcuts( rescan_shortcuts );
+  rescan_abort_action->setShortcut(QKeySequence::Refresh);
   rescan_abort_action->setActive( true );
   rescan_abort_action->setAutoToggle( false );
   connect( rescan_abort_action, SIGNAL(triggered(bool)), this, SLOT(slotRescanAbortActionTriggered(bool)) );
