@@ -25,24 +25,6 @@
     <Action name="configure_action"/>
   </Menu>
 </MenuBar>
-  <!-- fullWidth="false" shortens the tool bar, so that it looks nicer. -->
-<ToolBar fullWidth="false" name="networkToolBar" hidden="true"><text>Network Toolbar</text>
-</ToolBar>
-<ToolBar fullWidth="false" name="searchToolBar" hidden="true"><text>Search Toolbar</text>
-</ToolBar>
-<ToolBar fullWidth="false" name="sharesViewToolBar" hidden="true"><text>Shares Toolbar</text>
-</ToolBar>
-<ToolBar fullWidth="true" name="altMainToolBar" hidden="true"><text>Alternative Main Toolbar</text>
-  <Action name="bookmark_action"/>
-  <Separator/>
-  <Action name="profiles_menu"/>
-  <Separator/> 
-  <Action name="dock_widgets_menu"/>
-  <Action name="shares_view_menu"/>
-  <Action name="configure_action"/>
-  <Separator/>
-  <Action name="quit_action"/>
-</ToolBar>
 <ToolBar fullWidth="true" name="mainToolBar"><text>Main Toolbar</text>
 <!--   <Action name="mount_action"/> -->
   <Separator/>
