@@ -36,6 +36,7 @@ set( smb4kcore_LIB_SRCS
   smb4kprocess.cpp
   smb4kprofilemanager.cpp
   smb4kprofilemanager_p.cpp
+  smb4kprofileobject.cpp
   smb4kscanner.cpp
   smb4kscanner_p.cpp
   smb4ksearch.cpp
@@ -92,6 +93,7 @@ if ( INSTALL_HEADER_FILES )
     smb4kprint.h
     smb4kprocess.h
     smb4kprofilemanager.h
+    smb4kprofileobject.h
     smb4kscanner.h
     smb4ksearch.h
     smb4kshare.h
