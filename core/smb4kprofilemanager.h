@@ -99,7 +99,7 @@ class KDE_EXPORT Smb4KProfileManager : public QObject
      * Returns the list of profiles or an empty string list if the 
      * the use of profiles is diabled.
      * 
-     * @returns the list of profiles.///
+     * @returns the list of profiles.
      */
     QStringList profilesList() const;
     
