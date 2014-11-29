@@ -3,7 +3,7 @@
     QtQuick
                              -------------------
     begin                : Mo 02 Sep 2013
-    copyright            : (C) 2013 by Alexander Reinholdt
+    copyright            : (C) 2013-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -42,6 +42,7 @@
 #include "smb4kprint.h"
 #include "smb4kbookmarkobject.h"
 #include "smb4kcustomoptionsmanager.h"
+#include "smb4kprofilemanager.h"
 
 using namespace Smb4KGlobal;
 
@@ -65,8 +66,15 @@ Smb4KDeclarative::Smb4KDeclarative(QObject* parent)
   
   connect( Smb4KBookmarkHandler::self(), SIGNAL(updated()), this, SLOT(slotBookmarksListChanged()) );
   
+  connect(Smb4KProfileManager::self(), SIGNAL(profilesListChanged(QStringList)), this, SLOT(slotProfilesListChanged(QStringList)));
+  connect(Smb4KProfileManager::self(), SIGNAL(activeProfileChanged(QString)), this, SLOT(slotActiveProfileChanged(QString)));
+  connect(Smb4KProfileManager::self(), SIGNAL(profileUsageChanged(bool)), this, SLOT(slotProfileUsageChanged(bool)));
+  
   // Do the initial loading of items.
   slotBookmarksListChanged();
+  slotProfilesListChanged(Smb4KProfileManager::self()->profilesList());
+  slotActiveProfileChanged(Smb4KProfileManager::self()->activeProfile());
+  slotProfileUsageChanged(Smb4KProfileManager::self()->useProfiles());
 }
 
 
@@ -139,6 +147,11 @@ QDeclarativeListProperty<Smb4KBookmarkObject> Smb4KDeclarative::bookmarkGroups()
   return QDeclarativeListProperty<Smb4KBookmarkObject>( this, d->bookmarkGroupObjects );
 }
 
+
+QDeclarativeListProperty<Smb4KProfileObject> Smb4KDeclarative::profiles()
+{
+  return QDeclarativeListProperty<Smb4KProfileObject>(this, d->profileObjects);
+}
 
 
 void Smb4KDeclarative::lookup( Smb4KNetworkObject *object )
@@ -613,6 +626,18 @@ void Smb4KDeclarative::abortPrinter()
 }
 
 
+QString Smb4KDeclarative::activeProfile() const
+{
+  return d->activeProfile;
+}
+
+
+bool Smb4KDeclarative::profileUsage() const
+{
+  return d->profileUsage;
+}
+
+
 void Smb4KDeclarative::slotWorkgroupsListChanged()
 {
   // (Re)fill the list of workgroup objects.
@@ -706,6 +731,37 @@ void Smb4KDeclarative::slotBookmarksListChanged()
   
   emit bookmarksListChanged();
 }
+
+
+void Smb4KDeclarative::slotProfilesListChanged(const QStringList& profiles)
+{
+  while (!d->profileObjects.isEmpty())
+  {
+    delete d->profileObjects.takeFirst();
+  }
+  
+  for (int i = 0; i < profiles.size(); ++i)
+  {
+    d->profileObjects << new Smb4KProfileObject(profiles.at(i));
+  }
+  
+  emit profilesListChanged();
+}
+
+
+void Smb4KDeclarative::slotActiveProfileChanged(const QString& activeProfile)
+{
+  d->activeProfile = activeProfile;
+  emit activeProfileChanged();
+}
+
+
+void Smb4KDeclarative::slotProfileUsageChanged(bool use)
+{
+  d->profileUsage = use;
+  emit profileUsageChanged();;
+}
+
 
 
 #include "smb4kdeclarative.moc"

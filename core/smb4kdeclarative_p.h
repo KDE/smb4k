@@ -3,7 +3,7 @@
     Smb4KDeclarative
                              -------------------
     begin                : Mo 02 Sep 2013
-    copyright            : (C) 2013 by Alexander Reinholdt
+    copyright            : (C) 2013-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -32,6 +32,7 @@
 #include "smb4kmounter.h"
 #include "smb4knetworkobject.h"
 #include "smb4kbookmarkobject.h"
+#include "smb4kprofileobject.h"
 
 class Smb4KDeclarativePrivate
 {
@@ -42,6 +43,9 @@ class Smb4KDeclarativePrivate
     QList<Smb4KNetworkObject *> mountedObjects;
     QList<Smb4KBookmarkObject *> bookmarkObjects;
     QList<Smb4KBookmarkObject *> bookmarkGroupObjects;
+    QList<Smb4KProfileObject *> profileObjects;
+    QString activeProfile;
+    bool profileUsage;
 };
 
 #endif

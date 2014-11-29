@@ -3,7 +3,7 @@
     QtQuick
                              -------------------
     begin                : Mo 02 Sep 2013
-    copyright            : (C) 2013 by Alexander Reinholdt
+    copyright            : (C) 2013-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -39,6 +39,7 @@
 class Smb4KDeclarativePrivate;
 class Smb4KNetworkObject;
 class Smb4KBookmarkObject;
+class Smb4KProfileObject;
 
 
 /**
@@ -53,12 +54,15 @@ class KDE_EXPORT Smb4KDeclarative : public QObject
 {
   Q_OBJECT
   
-  Q_PROPERTY( QDeclarativeListProperty<Smb4KNetworkObject> workgroups READ workgroups NOTIFY workgroupsListChanged )
-  Q_PROPERTY( QDeclarativeListProperty<Smb4KNetworkObject> hosts READ hosts NOTIFY hostsListChanged )
-  Q_PROPERTY( QDeclarativeListProperty<Smb4KNetworkObject> shares READ shares NOTIFY sharesListChanged )
-  Q_PROPERTY( QDeclarativeListProperty<Smb4KNetworkObject> mountedShares READ mountedShares NOTIFY mountedSharesListChanged )
-  Q_PROPERTY( QDeclarativeListProperty<Smb4KBookmarkObject> bookmarks READ bookmarks NOTIFY bookmarksListChanged )
-  Q_PROPERTY( QDeclarativeListProperty<Smb4KBookmarkObject> bookmarkGroups READ bookmarkGroups NOTIFY bookmarksListChanged )
+  Q_PROPERTY(QDeclarativeListProperty<Smb4KNetworkObject> workgroups READ workgroups NOTIFY workgroupsListChanged)
+  Q_PROPERTY(QDeclarativeListProperty<Smb4KNetworkObject> hosts READ hosts NOTIFY hostsListChanged)
+  Q_PROPERTY(QDeclarativeListProperty<Smb4KNetworkObject> shares READ shares NOTIFY sharesListChanged)
+  Q_PROPERTY(QDeclarativeListProperty<Smb4KNetworkObject> mountedShares READ mountedShares NOTIFY mountedSharesListChanged)
+  Q_PROPERTY(QDeclarativeListProperty<Smb4KBookmarkObject> bookmarks READ bookmarks NOTIFY bookmarksListChanged)
+  Q_PROPERTY(QDeclarativeListProperty<Smb4KBookmarkObject> bookmarkGroups READ bookmarkGroups NOTIFY bookmarksListChanged)
+  Q_PROPERTY(QDeclarativeListProperty<Smb4KProfileObject> profiles READ profiles NOTIFY profilesListChanged)
+  Q_PROPERTY(QString activeProfile READ activeProfile NOTIFY activeProfileChanged)
+  Q_PROPERTY(bool profileUsage READ profileUsage NOTIFY profileUsageChanged);
   
   friend class Smb4KDeclarativePrivate;
   
@@ -125,7 +129,16 @@ class KDE_EXPORT Smb4KDeclarative : public QObject
      * 
      * @returns the list of bookmarks
      */
-    QDeclarativeListProperty<Smb4KBookmarkObject> bookmarkGroups();  
+    QDeclarativeListProperty<Smb4KBookmarkObject> bookmarkGroups();
+    
+    /**
+     * This function returns the list of profiles. Basically, this is the list
+     * returned by the Smb4KProfileManager::profilesList() converted into a list 
+     * of Smb4KProfileObject objects.
+     * 
+     * @returns the list of profiles
+     */
+    QDeclarativeListProperty<Smb4KProfileObject> profiles();
     
     /**
      * This function takes a Smb4KNetworkObject object and initiates a network 
@@ -277,6 +290,21 @@ class KDE_EXPORT Smb4KDeclarative : public QObject
      * This function aborts any actions of the printer interface.
      */
     Q_INVOKABLE void abortPrinter();
+    
+    /**
+     * Return the currently active profile or an empty string if 
+     * the use of profiles is disabled.
+     * 
+     * @returns the active profile.
+     */
+    QString activeProfile() const;
+    
+    /**
+     * Return the current setting of the profile usage.
+     * 
+     * @returns the profile usage.
+     */
+    bool profileUsage() const;
 
   Q_SIGNALS:
     /**
@@ -303,6 +331,21 @@ class KDE_EXPORT Smb4KDeclarative : public QObject
      * This signal is emitted when the list of bookmarks changed.
      */
     void bookmarksListChanged();
+    
+    /**
+     * This signal is emitted when the list of profiles changed.
+     */
+    void profilesListChanged();
+    
+    /**
+     * This signal is emitted when the active profile changed.
+     */
+    void activeProfileChanged();
+    
+    /**
+     * This signal is emitted when the profile usage changed.
+     */
+    void profileUsageChanged();
     
     /**
      * This signal is emitted, when one of the core classes becomes
@@ -351,6 +394,26 @@ class KDE_EXPORT Smb4KDeclarative : public QObject
      * bookmarksListChanged() signal.
      */
     void slotBookmarksListChanged();
+    
+    /**
+     * This slot is invoked when the list of profiles changed. It rebuils
+     * the list of profiles and emits the profilesListChanged() signal.
+     */
+    void slotProfilesListChanged(const QStringList &profiles);
+    
+    /**
+     * This slot is invoked when the active profile changed. It resets 
+     * the value for the active profile and emits the activeProfileChanged()
+     * signal.
+     */
+    void slotActiveProfileChanged(const QString &activeProfile);
+    
+    /**
+     * This slot is invoked when the profile usage changed. It resets
+     * the value for the profile usage and emits the profileUsageChanged()
+     * signal.
+     */
+    void slotProfileUsageChanged(bool use);
     
   private:
     const QScopedPointer<Smb4KDeclarativePrivate> d;
