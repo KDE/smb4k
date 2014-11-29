@@ -1417,7 +1417,7 @@ void Smb4KCustomOptionsManager::migrateProfile(const QString& from, const QStrin
   // Profile settings changed, so invoke the slot.
   slotActiveProfileChanged(Smb4KProfileManager::self()->activeProfile());
   
-  // Clear the temporary lists of bookmarks and groups.
+  // Clear the temporary lists of custom options.
   while (!allOptions.isEmpty())
   {
     delete allOptions.takeFirst();

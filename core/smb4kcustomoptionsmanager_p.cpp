@@ -535,7 +535,7 @@ void Smb4KCustomOptionsDialog::setupView()
 
   samba_editors_layout->addWidget( smb_label, 0, 0, 0 );
   samba_editors_layout->addWidget( m_smb_port, 0, 1, 0 );
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   samba_editors_layout->addWidget( fs_label, 1, 0, 0 );
   samba_editors_layout->addWidget( m_fs_port, 1, 1, 0 );
   samba_editors_layout->addWidget( rw_label, 2, 0, 0 );
@@ -598,7 +598,7 @@ void Smb4KCustomOptionsDialog::setupView()
   layout->addWidget( tab_widget );
 
   connect( m_smb_port, SIGNAL(valueChanged(int)), SLOT(slotCheckValues()) );
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   connect( m_fs_port, SIGNAL(valueChanged(int)), SLOT(slotCheckValues()) );
   connect( m_write_access, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()) );
   connect( m_security_mode, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()) );
@@ -645,7 +645,7 @@ bool Smb4KCustomOptionsDialog::defaultValues()
     // Do nothing
   }
 
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   if ( m_fs_port->value() != Smb4KSettings::remoteFileSystemPort() )
   {
     return false;
@@ -770,7 +770,7 @@ void Smb4KCustomOptionsDialog::slotSetDefaultValues()
   }
   
   m_smb_port->setValue( Smb4KSettings::remoteSMBPort() );
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   m_fs_port->setValue( Smb4KSettings::remoteFileSystemPort() );
 
   switch ( Smb4KSettings::writeAccess() )
@@ -940,7 +940,7 @@ void Smb4KCustomOptionsDialog::slotOKClicked()
   }
   
   m_options->setSMBPort( m_smb_port->value() );
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   m_options->setFileSystemPort( m_fs_port->value() );
   m_options->setWriteAccess( (Smb4KCustomOptions::WriteAccess)m_write_access->itemData( m_write_access->currentIndex() ).toInt() );
   m_options->setSecurityMode( (Smb4KCustomOptions::SecurityMode)m_security_mode->itemData( m_security_mode->currentIndex() ).toInt() );
