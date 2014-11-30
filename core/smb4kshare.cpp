@@ -2,7 +2,7 @@
     smb4kshare  -  Smb4K's container class for information about a share.
                              -------------------
     begin                : Mo Jan 28 2008
-    copyright            : (C) 2008-2012 by Alexander Reinholdt
+    copyright            : (C) 2008-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -1432,12 +1432,12 @@ void Smb4KShare::setShareIcon()
 {
   // We have three base icons: The remote folder, the locked folder
   // and the printer icon.
-  if ( !isPrinter() )
+  if (!isPrinter())
   {
     // Overlays
     QStringList overlays;
     
-    if ( isMounted() )
+    if (isMounted())
     {
       overlays << "emblem-mounted";
     }
@@ -1446,33 +1446,47 @@ void Smb4KShare::setShareIcon()
       overlays << "";
     }
 
-    if ( isForeign() )
+    if (isForeign())
     {
       overlays << "";
       overlays << "flag-red";
+      // FIXME (Smb4K 2.0): Use 'view-media-artist' instead of 'flag-red'.
+//       overlays << "view-media-artist";
     }
     else
     {
       // Do nothing
     }
+
+    // The icon
+    KIcon icon;
     
-    // Icon name
-    QString icon_name;
-    
-    if ( !isInaccessible() )
+    if (!isInaccessible())
     {
-      icon_name = "folder-remote";
+      icon = KIcon("folder-remote", KIconLoader::global(), overlays);
+      
+      // FIXME (Smb4K 2.0): Use 'folder-network' instead of 'folder-remote'.
+//       icon = KIcon("folder-network", KIconLoader::global(), overlays);
+//       
+//       if (icon.isNull())
+//       {
+//         icon = KIcon("folder-remote", KIconLoader::global(), overlays);
+//       }
+//       else
+//       {
+//         // Nichts tun
+//       }
     }
     else
     {
-      icon_name = "folder-locked";
+      icon = KIcon("folder-locked", KIconLoader::global(), overlays);
     }
     
-    setIcon( KIcon( icon_name, KIconLoader::global(), overlays ) );
+    setIcon(icon);
   }
   else
   {
-    setIcon( KIcon( "printer" ) );
+    setIcon(KIcon("printer"));
   }
 }
 
