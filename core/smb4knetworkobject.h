@@ -46,8 +46,6 @@
 // forward declaration
 class Smb4KNetworkObjectPrivate;
 
-using namespace Smb4KGlobal;
-
 /**
  * This class derives from QObject and makes the main functions of the 
  * network items Smb4KWorkgroup, Smb4KHost, and Smb4KShare available. Its 
@@ -61,44 +59,54 @@ using namespace Smb4KGlobal;
 class KDE_EXPORT Smb4KNetworkObject : public QObject
 {
   Q_OBJECT
-  Q_PROPERTY( NetworkItem type READ type WRITE setType NOTIFY changed )
-  Q_PROPERTY( NetworkItem parentType READ parentType CONSTANT )
-  Q_PROPERTY( QString workgroupName READ workgroupName WRITE setWorkgroupName NOTIFY changed )
-  Q_PROPERTY( QString hostName READ hostName WRITE setHostName NOTIFY changed )
-  Q_PROPERTY( QString shareName READ shareName WRITE setShareName NOTIFY changed )
-  Q_PROPERTY( QString name READ name CONSTANT )
-  Q_PROPERTY( QIcon icon READ icon WRITE setIcon NOTIFY changed )
-  Q_PROPERTY( QString comment READ comment WRITE setComment NOTIFY changed )
-  Q_PROPERTY( QUrl url READ url WRITE setURL NOTIFY changed )
-  Q_PROPERTY( QUrl parentURL READ parentURL CONSTANT )
-  Q_PROPERTY( bool isMounted READ isMounted WRITE setMounted NOTIFY changed )
-  Q_PROPERTY( bool isPrinter READ isPrinter WRITE setPrinter NOTIFY changed )
-  Q_PROPERTY( QUrl mountpoint READ mountpoint WRITE setMountpoint NOTIFY changed )
-
-  Q_ENUMS( NetworkItem )
+  Q_PROPERTY(NetworkItem type READ type WRITE setType NOTIFY changed)
+  Q_PROPERTY(NetworkItem parentType READ parentType CONSTANT)
+  Q_PROPERTY(QString workgroupName READ workgroupName WRITE setWorkgroupName NOTIFY changed)
+  Q_PROPERTY(QString hostName READ hostName WRITE setHostName NOTIFY changed)
+  Q_PROPERTY(QString shareName READ shareName WRITE setShareName NOTIFY changed)
+  Q_PROPERTY(QString name READ name CONSTANT)
+  Q_PROPERTY(QIcon icon READ icon WRITE setIcon NOTIFY changed)
+  Q_PROPERTY(QString comment READ comment WRITE setComment NOTIFY changed)
+  Q_PROPERTY(QUrl url READ url WRITE setURL NOTIFY changed)
+  Q_PROPERTY(QUrl parentURL READ parentURL CONSTANT)
+  Q_PROPERTY(bool isMounted READ isMounted WRITE setMounted NOTIFY changed)
+  Q_PROPERTY(bool isPrinter READ isPrinter WRITE setPrinter NOTIFY changed)
+  Q_PROPERTY(QUrl mountpoint READ mountpoint WRITE setMountpoint NOTIFY changed)
+  Q_ENUMS(NetworkItem)
   
   friend class Smb4KNetworkObjectPrivate;
   
   public:
     /**
+     * NetworkItem enumeration. Used to make the property system happy.
+     * Assigns the values of Smb4KGlobal::NetworkItem to its representatives.
+     */
+    enum NetworkItem {
+      Network = Smb4KGlobal::Network,
+      Workgroup = Smb4KGlobal::Workgroup,
+      Host = Smb4KGlobal::Host,
+      Share = Smb4KGlobal::Share,
+      Unknown = Smb4KGlobal::Unknown };
+    
+    /**
      * Constructor for a workgroup.
      */
-    explicit Smb4KNetworkObject( Smb4KWorkgroup *workgroup, QObject *parent = 0 );
+    explicit Smb4KNetworkObject(Smb4KWorkgroup *workgroup, QObject *parent = 0);
 
     /**
      * Constructor for a host.
      */
-    explicit Smb4KNetworkObject( Smb4KHost *host, QObject *parent = 0 );
+    explicit Smb4KNetworkObject(Smb4KHost *host, QObject *parent = 0);
 
     /**
      * Constructor for a share.
      */
-    explicit Smb4KNetworkObject( Smb4KShare *share, QObject *parent = 0 );
+    explicit Smb4KNetworkObject(Smb4KShare *share, QObject *parent = 0);
 
     /**
      * Empty constructor
      */
-    explicit Smb4KNetworkObject( QObject *parent = 0 );
+    explicit Smb4KNetworkObject(QObject *parent = 0);
 
     /**
      * Destructor
@@ -110,7 +118,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * 
      * @returns the type
      */
-    Smb4KGlobal::NetworkItem type() const;
+    NetworkItem type() const;
     
     /**
      * This function returns the type of the parent of this item. In case of
@@ -119,14 +127,14 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * 
      * @returns the parent's type
      */
-    Smb4KGlobal::NetworkItem parentType() const;
+    NetworkItem parentType() const;
     
     /**
      * Set the type of the network item.
      * 
      * @param type        The type
      */
-    void setType( Smb4KGlobal::NetworkItem type );
+    void setType(NetworkItem type);
 
     /**
      * Returns the workgroup name.
@@ -140,7 +148,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * 
      * @param name        The workgroup name
      */
-    void setWorkgroupName( const QString &name );
+    void setWorkgroupName(const QString &name);
 
     /**
      * In case of a host or share, this function returns the name
@@ -156,7 +164,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * 
      * @param name        The host name
      */
-    void setHostName( const QString &name );
+    void setHostName(const QString &name);
 
     /**
      * In case of a share, this function returns the name of the
@@ -172,7 +180,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * 
      * @param name        The share name
      */
-    void setShareName( const QString &name );
+    void setShareName(const QString &name);
     
     /**
      * This is a convenience function that returns the name of the 
@@ -194,7 +202,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * 
      * @param icon        The icon
      */
-    void setIcon( const QIcon &icon );
+    void setIcon(const QIcon &icon);
     
     /**
      * This function returns the comment of a network item or an
@@ -209,7 +217,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * 
      * @param comment     The comment
      */
-    void setComment( const QString &comment );
+    void setComment(const QString &comment);
     
     /**
      * This function returns the UNC/URL of this item.
@@ -234,7 +242,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * 
      * @param url         The URL
      */
-    void setURL( const KUrl &url );
+    void setURL(const KUrl &url);
     
     /**
      * This function returns TRUE if the network item is a share and it is
@@ -249,14 +257,14 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * 
      * @param mounted     Should be TRUE if the network item is mounted
      */
-    void setMounted( bool mounted );
+    void setMounted(bool mounted);
     
     /**
      * Updates the network item.
      * 
      * @param networkItem   The network item that needs to be updated
      */
-    void update( Smb4KBasicNetworkItem *networkItem );
+    void update(Smb4KBasicNetworkItem *networkItem);
     
     /**
      * This function returns TRUE if the network item is a printer share.
@@ -271,7 +279,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * 
      * @param printer     Should be TRUE if the network item is a printer
      */
-    void setPrinter( bool printer );
+    void setPrinter(bool printer);
     
     /**
      * This function returns the mountpoint of a mounted share or an empty 
@@ -287,7 +295,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * 
      * @param mountpoint  The mountpoint
      */
-    void setMountpoint( const KUrl &url );
+    void setMountpoint(const KUrl &url);
     
   Q_SIGNALS:
     /**
