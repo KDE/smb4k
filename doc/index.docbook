@@ -28,10 +28,10 @@
 <holder>Alexander Reinholdt</holder>
 </copyright>
 <legalnotice>&underFDL;</legalnotice>
-<date>2014-10-xx</date>
+<date>2014-11-xx</date>
 <releaseinfo>5.1.0</releaseinfo>
 <abstract>
-<para>&smb4k; is an advanced network neighborhood browser and a front end to the programs of the Samba software suite.</para>
+<para>&smb4k; is an advanced network neighborhood browser and Samba share mounting utility for KDE.</para>
 </abstract>
 <keywordset>
 <keyword>KDE</keyword>
@@ -45,9 +45,9 @@
 <chapter id="introduction" >
 <title>Introduction</title>
 
-<para>This handbook describes &smb4k; 1.1.x and to some extent earlier versions.</para>
+<para>This handbook describes &smb4k; 1.2.x and to some extent earlier versions.</para>
 
-<para>&smb4k; is an advanced network neighborhood browser and a front end to the programs of the <ulink url="http://www.samba.org">Samba software suite</ulink>. It provides many handy features that ease your life in a mostly &Windows;-dominated network environment:</para>
+<para>&smb4k; is an advanced network neighborhood browser and <ulink url="http://www.samba.org">Samba</ulink> share mounting utility. It provides many handy features that ease your life in a mostly &Windows;-dominated network environment:</para>
 
 <itemizedlist>
   <listitem><para>Scanning for (active) workgroups, hosts, and shares</para></listitem>
@@ -73,7 +73,7 @@
   <listitem><para>Laptop support through the Solid hardware device framework</para></listitem>
   <listitem><para>Wake-On-LAN capabilities</para></listitem>
   <listitem><para>&plasmoid; for desktop integration</para></listitem>
-  <listitem><para>Profiles</para></listitem>
+  <listitem><para>Profiles for different network neighborhood setups</para></listitem>
 </itemizedlist>
 
  <para>If you encounter problems while using &smb4k;, please visit our <ulink url="https://sourceforge.net/p/smb4k/wiki/Home/">wiki</ulink> first. If you cannot find your problem described there, please post a help request to our <ulink url="https://sourceforge.net/p/smb4k/discussion/help/">Help</ulink> forum. In case you find a bug, please report it to our <ulink url="https://sourceforge.net/p/smb4k/tickets/">bug tracker</ulink>.</para>
@@ -85,7 +85,7 @@
 <chapter id="using_smb4k">
 <title>Using &smb4k;</title>
 
-<!-- Running Smb4K -->
+<!-- Using Smb4K : Running Smb4K -->
 
 <sect1 id="running_smb4k" >
 <title>Running &smb4k;</title>
@@ -107,12 +107,12 @@
 </textobject>
 </mediaobject>
 </screenshot>
-<para>In this case, please install the listed programs or, if they are already present, add their location to the <envar>PATH</envar> environment variable in your shell's configuration file (for the <ulink url="man:/bash"><citerefentry><refentrytitle>bash</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> shell it is the <filename>~/.bashrc</filename> file).</para>
+<para>In this case, please install the specified program or, if it is already present, add its location to the <envar>PATH</envar> environment variable in your shell's configuration file (for the <ulink url="man:/bash"><citerefentry><refentrytitle>bash</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> shell it is the <filename>~/.bashrc</filename> file).</para>
 
-<para>In addition, it is recommended that you configure Samba before using &smb4k;. The <ulink url="man:/swat"><citerefentry><refentrytitle>swat</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> utility can be used for this purpose. It is part of the Samba software suite and provides an easy-to-use web interface. See its manual page for documentation.</para></note>
+<para>In addition, it is recommended that you configure Samba before using &smb4k;. You may use the web-based <ulink url="man:/swat"><citerefentry><refentrytitle>swat</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> utility for this purpose, if you have Samba 3 installed. However, it was removed from Samba 4. In this case, you can use other graphical tools (&eg; <application>system-config-samba</application>) or configure the <ulink url="man:/smb.conf"><citerefentry><refentrytitle>smb.conf</refentrytitle><manvolnum>5</manvolnum></citerefentry></ulink> file manually.</para></note>
 </sect1>
 
-<!-- Main Window -->
+<!-- Using Smb4K : Main Window -->
 
 <sect1 id="mainwindow_overview">
 <title>The Main Window</title>
@@ -129,7 +129,7 @@
   </mediaobject>
 </screenshot>
 
-<para>Since version 1.1.0, &smb4k; comes with a compact unified toolbar as the default, but the user can still choose to use multiple toolbars. If you wish to use the classical way, four toolbars are defined, for each widget one: the main toolbar, the toolbars for the <guilabel>Network Neighborhood</guilabel> widget, the <guilabel>Shares View</guilabel> widget and the <guilabel>Network Search</guilabel> widget. The unified toolbar contains some of the main actions, like <guimenuitem>Configure &smb4k;</guimenuitem> and <guimenuitem>Quit</guimenuitem>. It also dynamically loads the actions of the dock widget that currently has got the focus. For additional information and some important warnings, please have a look at the sections discussing the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, <link linkend="network_search_dialog">search dialog</link>, and <link linkend="mounted_shares_view">mounted shares view</link>.</para>
+<para>&smb4k; comes with a compact unified toolbar that contains some of the main actions, like <guimenuitem>Configure &smb4k;</guimenuitem> and <guimenuitem>Quit</guimenuitem> and dynamically loads the actions of the dock widget that currently has got the focus. For additional information and some important warnings, please have a look at the sections discussing the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, <link linkend="network_search_dialog">search dialog</link>, and <link linkend="mounted_shares_view">mounted shares view</link>.</para>
 
 <para>The status bar gives some information about the current status of &smb4k;. If the application is processing a user request (&eg; mounting a share), a descriptive message is displayed in the leftmost section and a progress bar is shown with a busy indicator. The two icons on the right hand side indicate if there are shares mounted (remote folder icon) and the status of the authentication system (wallet or key icon).</para>
 
@@ -138,14 +138,14 @@
 <para>The main window is highly configurable. You can hide or show all tabbed widgets (<menuchoice><guimenu>Settings</guimenu><guimenuitem>Dock Widgets</guimenuitem></menuchoice>). They can also be dragged around with the mouse and docked to different areas in the main window. You can even detach them from the main window. The status bar and the toolbars can be hidden/shown by toggling the menu entry <menuchoice><guimenu>Settings</guimenu><guimenuitem>Show Statusbar</guimenuitem></menuchoice> and the ones under <menuchoice><guimenu>Settings</guimenu><guimenuitem>Toolbars Shown</guimenuitem></menuchoice>, respectively.</para>
 </sect1>
 
-<!-- The Network Neighborhood Browser -->
+<!-- Using Smb4K : The Network Neighborhood Browser -->
 
 <sect1 id="network_neighborhood_browser">
 <title>The Network Neighborhood Browser</title>
 
 <para>The interaction with the network neighborhood is done with the <guilabel>Network Neighborhood</guilabel> browser. It contains all network items &#8212; &ie; workgroups, servers, and shares &#8212; &smb4k; was able to find. They are organized in a network tree, and you can navigate through it by either clicking the [+] next to the item name or by executing the item itself.</para>
 
-<para>In the network tree, the master browser of each workgroup or domain is highlighted by blue font color. Mounted shares are marked with the respective folder icon.</para>
+<para>In the network tree, the master browser of each workgroup or domain is highlighted by blue font color. Mounted shares are marked with the respective folder icon and an italic font.</para>
 
 <screenshot>
   <screeninfo>Screenshot of the network neighborhood browser</screeninfo>
@@ -159,7 +159,9 @@
   </mediaobject>
 </screenshot>
 
-<!-- The Network Neighborhood Browser : Browsing -->
+<para>The selection of multiple network items is supported since &smb4k; 1.2.0. So, it is now possible to &eg; mount or preview several shares at once.</para>
+
+<!-- Using Smb4K : The Network Neighborhood Browser : Browsing -->
 
 <sect2 id="network_neighborhood_browser_browsing">
 <title>Browsing</title>
@@ -169,12 +171,12 @@
 
 <para>There are <link linkend="configuration_network_browselist">four methods</link> to retrieve the browse list: The default one is to scan the network neighborhood for all available master browsers. The second and third method directly query a master browser to get the browse list. The difference is that the former is a dynamic one, where the current master browser of your workgroup or domain is looked up and used, and the latter is a static one, where a fixed name or IP address is used. It is recommended that you choose the dynamic method. However, there might be circumstances that make it necessary to use a static name or IP address. The last method searches for all registered IP addresses within a given broadcast area. This might come in handy on poorly performing network neighborhoods.</para>
 
-<para>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic package to each server that is to be woken up and waits the defined time until it starts the lookup of the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_network_wake_on_lan">configuration dialog</link>. The servers that should to be woken up can be defined in the <link linkend="network_neighborhood_browser_custom">Custom Options</link> dialog.</para>
+<para>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic package to each server that is to be woken up and waits the defined time until it starts the lookup of the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_network_wake_on_lan">configuration dialog</link>. The servers that should to be woken up have to be defined in the <link linkend="network_neighborhood_browser_custom">Custom Options</link> dialog.</para>
 
 <note><para>Under normal circumstances you should not have any trouble browsing the network neighborhood. In case you experience problems, please read our <ulink url="https://sourceforge.net/p/smb4k/wiki/Home/">wiki</ulink> first before thinking about <ulink url="https://sourceforge.net/p/smb4k/tickets/">reporting a bug</ulink>. It lists some common problems and their solutions.</para></note>
 </sect2>
 
-<!-- The Network Neighborhood Browser : Actions and Popup Menu -->
+<!-- Using Smb4K : The Network Neighborhood Browser : Actions and Popup Menu -->
 
 <sect2 id="mainwindow_network_menu">
 <title>Actions and Popup Menu</title>
@@ -191,9 +193,6 @@
     </term>
     <listitem>
       <para>Scan the whole network neighborhood, the highlighted workgroup/domain or computer for new entries. This action is visible by default and will be replaced by the <guimenuitem>Abort</guimenuitem> action if a network scan is running.</para>
-      <note>
-        <para>The old keyboard shortcut <keycombo action="simul">&Ctrl; <keycap>R</keycap></keycombo> is still available as an alternative.</para>
-      </note>
     </listitem>
   </varlistentry>
   <varlistentry>
@@ -204,7 +203,7 @@
       </menuchoice>
     </term>
     <listitem>
-      <para>Abort any running process of the network neighborhood browser. This action is invisible by default and will only be visible instead of the <guimenuitem>Scan Network|Workgroup|Computer</guimenuitem> action if a network scan is running.</para>
+      <para>Abort any running process of the network neighborhood browser. This action is invisible by default and will only be visible instead of the <guimenuitem>Scan Network|Workgroup|Computer</guimenuitem> action when a network scan is running.</para>
     </listitem>
   </varlistentry>
   <varlistentry>
@@ -248,7 +247,7 @@
       </menuchoice>
     </term>
     <listitem>
-      <para>Open the <link linkend="network_neighborhood_browser_custom">Custom Options</link> dialog. You can set several custom options for the selected server or share. If no a workgroup or not item is selected, this menu entry is disabled.</para>
+      <para>Open the <link linkend="network_neighborhood_browser_custom">Custom Options</link> dialog. You can set several custom options for the selected server or share. If a workgroup or no item is selected, this menu entry is disabled.</para>
     </listitem>
   </varlistentry>
   <varlistentry>
@@ -281,7 +280,18 @@
       </menuchoice>
     </term>
     <listitem>
-      <para>Mount the selected remote share. By default and if you clicked anything different than a share with type "Disk" or "IPC", this action is disabled.</para>
+      <para>Mount the selected remote share. By default and if you clicked anything different than a share with type "Disk" or "IPC", this action is disabled. If you selected a mounted share, this action is replaced by the <guimenuitem>Unmount</guimenuitem> action.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice>
+        <shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut>
+        <guimenuitem>Unmount</guimenuitem>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para>Unmount the selected share. This action is invisible by default and will only be visible instead of the <guimenuitem>Mount</guimenuitem> action when the share is currently mounted.</para>
     </listitem>
   </varlistentry>
 </variablelist>
@@ -289,13 +299,13 @@
 <para>Although you can interact with the network neighborhood using the keyboard shortcuts mentioned above, in most cases it is more convenient to use the mouse. By right clicking you can open a popup menu. It contains all actions that are available in the network neighborhood browser. Depending on the position where you clicked (on a network item or on the viewport), some of them may be disabled. The figure below shows the popup menu opened on a remote share.</para>
 
 <screenshot>
-  <screeninfo>Screenshot of the popup menu of the network browser</screeninfo>
+  <screeninfo>Screenshot of the popup menu of the network neighborhood browser</screeninfo>
     <mediaobject>
       <imageobject>
         <imagedata fileref="popup_menu_browser.png" format="PNG" />
       </imageobject>
       <textobject>
-        <phrase>The popup menu of the network browser</phrase>
+        <phrase>The popup menu of the network neighborhood browser</phrase>
       </textobject>
     </mediaobject>
 </screenshot>
@@ -303,7 +313,7 @@
 <para>The title of the popup menu is set to the name of the network item or displays <guilabel>Network</guilabel> if you clicked on the viewport.</para>
 </sect2>
 
-<!-- The Network Neighborhood Browser : Tooltips -->
+<!-- Using Smb4K : The Network Neighborhood Browser : Tooltips -->
 
 <sect2 id="mainwindow_network_tooltips">
 <title>Tooltips</title>
@@ -311,7 +321,7 @@
 <para>The tooltips can be disabled in the <link linkend="configuration_user_interface_network_tooltips">configuration dialog</link>.</para>
 </sect2>
 
-<!-- The Network Neighborhood Browser : Mounting a Share -->
+<!-- Using Smb4K : The Network Neighborhood Browser : Mounting a Share -->
 
 <sect2 id="mainwindow_network_mounting">
 <title>Mounting a Share</title>
@@ -333,9 +343,9 @@
 </orderedlist>
 
 <para>Often a share is password protected. In this case, an <link linkend="mainwindow_network_authentication">authentication dialog</link> will appear and you have to enter the correct user name (if not already provided) and password. &smb4k; will proceed mounting the share unless a wrong user name or password was supplied. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="mounted_shares_view">mounted shares view</link>. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (&Linux;) or <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (FreeBSD) will be shown.</para>
-
-<note><para>With a standard installation of &smb4k;, <emphasis>FreeBSD</emphasis> users might experience problems when they try to mount a share. This is due to misplaced DBUS and/or PolKit-1 config files. The section <link linkend="freebsd_remarks_installation">Remarks for FreeBSD Users : DBUS and PolKit-1</link> explains how to fix these issues.</para></note>
 </sect2>
+
+<!-- Using Smb4K : The Network Neighborhood Browser : Printing Files -->
 
 <sect2 id="mainwindow_network_printing">
 <title>Printing Files on Remote Printers</title>
@@ -355,6 +365,8 @@
 <para>&smb4k; currently supports PDF, Postscript, image, and text files. If you try to print a file with an unsupported mimetype, a notification with an error message will appear telling you the mimetype is not supported. In this case you have to convert the file manually to Postscript or PDF and try again.</para>
 </sect2>
 
+<!-- Using Smb4K : The Network Neighborhood Browser : Previewing Shares -->
+
 <sect2 id="mainwindow_network_preview">
 <title>Previewing Shares</title>
 <para>&smb4k; provides the ability to preview remote shares. If you click the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>V</keycap></keycombo></shortcut><guimenuitem>Preview</guimenuitem></menuchoice> menu entry, the contents of the selected remote share will be opened in a preview dialog.</para>
@@ -373,6 +385,8 @@
 <para> By default, the preview dialog only shows folders and files that are not hidden. You can change this behavior in the <link linkend="configuration_network_general_behavior">configuration dialog</link>. File transfers or the like are not possible.</para>
 </sect2>
 
+<!-- Using Smb4K : The Network Neighborhood Browser : Providing Authentication Information -->
+
 <sect2 id="mainwindow_network_authentication">
 <title>Providing Authentication Information</title>
 <para>Many servers or remote shares are password protected. In that case, a password dialog appears asking you for the user name and password. The same happens, if you click the  <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>T</keycap></keycombo></shortcut><guimenuitem>Authentication</guimenuitem></menuchoice> menu entry.</para>
@@ -387,12 +401,20 @@
 </textobject>
 </mediaobject>
 </screenshot>
-<para>If a user name has already been provided, it will be shown in the respective field. If it is wrong or no user name was provided, you have to enter one. The password, however, may be left blank. Clicking the <guibutton>OK</guibutton> button will commit the data. Depending on your choice in the <link linkend="configuration_authentication">configuration dialog</link>, the user name and password will be stored permanently in a digital wallet, temporarily until &smb4k; exits or not all. In the latter case you will have to provide them <emphasis>every time</emphasis> they are needed.</para>
+<para>If a user name has already been provided, it will be shown in the respective field. If it is wrong or no user name was provided, you have to enter one. The password, however, may be left blank. Clicking the <guibutton>OK</guibutton> button will commit the data. Depending on your choice in the <link linkend="configuration_authentication">configuration dialog</link>, the user name and password will be stored permanently in a digital wallet or not all. In the latter case you will have to provide them <emphasis>every time</emphasis> they are needed.</para>
 </sect2>
+
+<!-- Using Smb4K : The Network Neighborhood Browser : Defining Custom Options -->
 
 <sect2 id="network_neighborhood_browser_custom">
 <title>Defining Custom Options</title>
-<para>If you need to define special options for a single server or share that are different from the global ones that are set in the configuration dialog<!-- link comes below -->, you can do this with the <guilabel>Custom Options</guilabel> dialog. It is opened by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Custom Options</guimenuitem></menuchoice> menu entry.</para>
+<para>Use the <guilabel>Custom Options</guilabel> dialog if you want to</para>
+<itemizedlist>
+  <listitem><para>define custom Samba options for a single server or share that deviate from the ones defined in the configuration dialog,</para></listitem>
+  <listitem><para>define a server that should be woken up prior to network scans or mount attempts (Wake-On-LAN feature, see <link linkend="configuration_network_wake_on_lan">here</link> section),</para></listitem>
+  <listitem><para>always mount a certain share on start-up or if the corresponding profile is loaded.</para></listitem>
+</itemizedlist>
+<para>The dialog is opened by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Custom Options</guimenuitem></menuchoice> menu entry.</para>
 
 <screenshot>
   <screeninfo>Screenshot of the custom options dialog for a share</screeninfo>
@@ -406,9 +428,7 @@
   </mediaobject>
 </screenshot>
 
-<para>You can define custom Samba options here and set up the Wake-On-LAN feature. For the latter, you need to have Wake-On-LAN enabled in the <link linkend="configuration_network_wake_on_lan">configuration dialog</link>.</para>
-
-<para>The <guibutton>Default</guibutton> button is enabled if the entries in the dialog deviate from the settings you defined in the configuration dialog. By clicking it, you can reset the entries in the dialog to these default ones. The <guibutton>OK</guibutton> button is enabled if you changed the settings in the dialog. Clicking it will commit the custom settings and close the dialog.</para>
+<para>The <guibutton>Default</guibutton> button is enabled if the entries in the dialog deviate from the settings you defined in the configuration dialog. By clicking it, you can reset the entries in the dialog to their default values. The <guibutton>OK</guibutton> button is enabled if you changed the settings in the dialog. Clicking it will commit the custom settings and close the dialog.</para>
 
 <note><para>Under FreeBSD, the dialog contains less entries than if you run a different operating system, because several of the options are not supported.</para></note>
 
@@ -423,8 +443,9 @@
   
   <para>To make the Wake-On-LAN feature work, you need to provide the MAC address of the server you selected. Currently, &smb4k; has no way to determine the MAC address, so you need to find it out on your own. Afterwards, you can define if &smb4k; should send a magic Wake-On-LAN package to the selected host before the network neighborhood is scanned and/or one of its shares is mounted.</para>
 </sect3>
-
 </sect2>
+
+<!-- Using Smb4K : The Network Neighborhood Browser : Adding Bookmarks -->
 
 <sect2 id="mainwindow_network_bookmark">
 <title>Adding Bookmarks</title>
@@ -433,27 +454,27 @@
 </sect2>
 </sect1>
 
-<!-- The search dialog -->
+<!-- Using Smb4K : The Network Search Dialog -->
 
 <sect1 id="network_search_dialog">
 <title>The Network Search Dialog</title>
 <para>The <guilabel>Network Search</guilabel> dialog consists of the combo box where you can enter the search item and a list view where the search results are shown.</para>
 <screenshot>
-<screeninfo>Screenshot of the network search dialog</screeninfo>
-<mediaobject>
-<imageobject>
-<imagedata fileref="network_search_dialog.png" format="PNG" />
-</imageobject>
-<textobject>
-<phrase>The network search dialog</phrase>
-</textobject>
-</mediaobject>
+  <screeninfo>Screenshot of the network search dialog</screeninfo>
+  <mediaobject>
+    <imageobject><imagedata fileref="network_search_dialog.png" format="PNG" /></imageobject>
+    <textobject><phrase>The network search dialog</phrase></textobject>
+  </mediaobject>
 </screenshot>
+
+<!-- Using Smb4K : The Network Search Dialog : Searching -->
 
 <sect2 id="network_search_dialog_searching">
 <title>Searching</title>
 <para>&smb4k; searches the network neighborhood for shares that match or contain the search string. To start a search, enter the term and either press the &Enter; key or click the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut><guimenuitem>Search</guimenuitem></menuchoice> action next to the input box. All network shares that match the search criterion are listed in the list view. If they are already mounted on the system, they are marked accordingly. If the search fails, an error message is displayed. Starting a new search will clear the list view. If you need to abort a search, click the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>A</keycap></keycombo></shortcut><guimenuitem>Abort</guimenuitem></menuchoice> action next to the <guimenuitem>Search</guimenuitem> action.</para>
 </sect2>
+
+<!-- Using Smb4K : The Network Search Dialog : Actions and Popup Menu -->
 
 <sect2 id="network_search_dialog_menu">
   <title>Actions and Popup Menu</title>
@@ -504,9 +525,20 @@
       <para>Mount a remote share from within the search dialog. Alternatively, you can double click the network share in the list view.</para>
     </listitem>
   </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice>
+        <shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut>
+        <guimenuitem>Unmount</guimenuitem>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para>Unmount the selected share. This action is invisible by default and will only be visible instead of the <guimenuitem>Mount</guimenuitem> action when the share is currently mounted.</para>
+    </listitem>
+  </varlistentry>
 </variablelist>
 
-<para>The popup menu contains two of the four actions. The <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut><guimenuitem>Search</guimenuitem></menuchoice> and <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>A</keycap></keycombo></shortcut><guimenuitem>Abort</guimenuitem></menuchoice> dual action is located next to the search input box (as well as in the menu bar and tool bar).</para>
+<para>The popup menu contains two entries: The <menuchoice><guimenuitem>Clear</guimenuitem></menuchoice> action and the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>M</keycap></keycombo></shortcut><guimenuitem>Mount</guimenuitem></menuchoice> | <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut><guimenuitem>Unmount</guimenuitem></menuchoice> dual action. The <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut><guimenuitem>Search</guimenuitem></menuchoice> | <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>A</keycap></keycombo></shortcut><guimenuitem>Abort</guimenuitem></menuchoice> dual action is located next to the search input box (as well as in the menu bar and tool bar).</para>
 
 <screenshot>
   <screeninfo>Screenshot of the network search's popup menu</screeninfo>
@@ -1188,6 +1220,13 @@
 </sect2>
 </sect1>
 
+<!-- Using Smb4K : Profiles -->
+
+<sect1 id="profiles">
+  <title>Profiles</title>
+  <para>...</para>
+</sect1>
+
 <!-- Using Smb4K : Notifications -->
 
 <sect1 id="notifications">
@@ -1200,23 +1239,28 @@
 <sect1 id="freebsd_remarks">
 <title>Remarks for FreeBSD Users</title>
 
+<sect2 id="freebsd_remarks_mounting">
+  <title>Mounting of Shares (Smb4K >= 1.2.0)</title>
+  <para>Since version 1.2.0, the password for a share is directly passed to <command>mount_smbfs</command>, so that the <filename>~/.nsmbrc</filename> is not necessary anymore for mounting to work. Moreover, &smb4k; will not write any data to that file anymore.</para>
+</sect2>
+
 <sect2 id="freebsd_remarks_installation">
-<title>DBUS and PolKit-1</title>
-<para>&smb4k; makes use of the &kde; authorization API (KAuth) to enable mounting of remote shares. KAuth uses DBUS and PolKit-1 (or PolicyKit) for privilege escalation, so it is necessary that &smb4k; is set up properly. When installing &smb4k; under FreeBSD, it might be necessary to manually adjust some things to achieve this (With version 1.0.10 of package <application>kdehier4</application> this seems to be fixed!):</para>
-<itemizedlist>
-<listitem>
-<para>Check that the file <filename>de.berlios.smb4k.mounthelper.policy</filename> exists in the directory <filename class="directory">/usr/local/share/polkit-1/actions/</filename>. If it is not present, you need to link (or copy) it to that location:
-<screen><userinput><prompt>$</prompt> <command>cd</command> <filename class="directory">/usr/local/share/polkit-1/actions/</filename></userinput>
-<userinput><prompt>$</prompt> <command>sudo ln</command> -s \
-<filename>/usr/local/kde4/share/polkit-1/actions/de.berlios.smb4k.mounthelper.policy</filename> .</userinput></screen></para>
-</listitem>
-<listitem>
-<para>The installation most likely put the DBUS files into the wrong location, so you have to link (or copy) them to the right one:
-<screen><userinput><prompt>$</prompt> <command>cd</command> <filename class="directory">/usr/local/share/dbus-1/system-services</filename></userinput>
-<userinput><prompt>$</prompt> <command>sudo ln</command> -s \
-<filename>/usr/local/kde4/share/dbus-1/system-services/de.berlios.smb4k.mounthelper.service</filename> .</userinput></screen></para>
-</listitem>
-</itemizedlist>
+  <title>DBUS and PolKit-1</title>
+  <para>&smb4k; makes use of the &kde; authorization API (KAuth) to enable mounting of remote shares. KAuth uses DBUS and PolKit-1 (or PolicyKit) for privilege escalation, so it is necessary that &smb4k; is set up properly. When installing &smb4k; under FreeBSD, it might be necessary to manually adjust some things to achieve this (With version 1.0.10 of package <application>kdehier4</application> this seems to be fixed!):</para>
+  <itemizedlist>
+    <listitem>
+      <para>Check that the file <filename>net.sourceforge.smb4k.mounthelper.policy</filename> exists in the directory <filename class="directory">/usr/local/share/polkit-1/actions/</filename>. If it is not present, you need to link (or copy) it to that location:
+      <screen><userinput><prompt>$</prompt> <command>cd</command> <filename class="directory">/usr/local/share/polkit-1/actions/</filename></userinput>
+      <userinput><prompt>$</prompt> <command>sudo ln</command> -s \
+      <filename>/usr/local/kde4/share/polkit-1/actions/net.sourceforge.smb4k.mounthelper.policy</filename> .</userinput></screen></para>
+    </listitem>
+    <listitem>
+      <para>The installation most likely put the DBUS files into the wrong location, so you have to link (or copy) them to the right one:
+      <screen><userinput><prompt>$</prompt> <command>cd</command> <filename class="directory">/usr/local/share/dbus-1/system-services</filename></userinput>
+      <userinput><prompt>$</prompt> <command>sudo ln</command> -s \
+      <filename>/usr/local/kde4/share/dbus-1/system-services/net.sourceforge.smb4k.mounthelper.service</filename> .</userinput></screen></para>
+    </listitem>
+  </itemizedlist>
 </sect2>
 </sect1>
 
