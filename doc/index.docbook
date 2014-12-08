@@ -1279,15 +1279,15 @@
   <itemizedlist>
     <listitem>
       <para>Check that the file <filename>net.sourceforge.smb4k.mounthelper.policy</filename> exists in the directory <filename class="directory">/usr/local/share/polkit-1/actions/</filename>. If it is not present, you need to link (or copy) it to that location:
-      <screen><userinput><prompt>$</prompt> <command>cd</command> <filename class="directory">/usr/local/share/polkit-1/actions/</filename></userinput>
-      <userinput><prompt>$</prompt> <command>sudo ln</command> -s \
-      <filename>/usr/local/kde4/share/polkit-1/actions/net.sourceforge.smb4k.mounthelper.policy</filename> .</userinput></screen></para>
+<screen><userinput><prompt>$</prompt> <command>cd</command> <filename class="directory">/usr/local/share/polkit-1/actions/</filename></userinput>
+<userinput><prompt>$</prompt> <command>sudo ln</command> -s \
+<filename>/usr/local/kde4/share/polkit-1/actions/net.sourceforge.smb4k.mounthelper.policy</filename> .</userinput></screen></para>
     </listitem>
     <listitem>
       <para>The installation most likely put the DBUS files into the wrong location, so you have to link (or copy) them to the right one:
-      <screen><userinput><prompt>$</prompt> <command>cd</command> <filename class="directory">/usr/local/share/dbus-1/system-services</filename></userinput>
-      <userinput><prompt>$</prompt> <command>sudo ln</command> -s \
-      <filename>/usr/local/kde4/share/dbus-1/system-services/net.sourceforge.smb4k.mounthelper.service</filename> .</userinput></screen></para>
+<screen><userinput><prompt>$</prompt> <command>cd</command> <filename class="directory">/usr/local/share/dbus-1/system-services</filename></userinput>
+<userinput><prompt>$</prompt> <command>sudo ln</command> -s \
+<filename>/usr/local/kde4/share/dbus-1/system-services/net.sourceforge.smb4k.mounthelper.service</filename> .</userinput></screen></para>
     </listitem>
   </itemizedlist>
 </sect2>
