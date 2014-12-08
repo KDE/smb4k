@@ -1231,7 +1231,36 @@
 
 <sect1 id="notifications">
   <title>Notifications</title>
-  <para>...</para>
+  
+<!-- Using Smb4K : Notifications : Default Behavior -->
+  
+  <sect2 id="notifications_default_behavior">
+    <title>Default Behavior</title>
+    <para>Normal events like mounting and unmounting of a share as well as warnings and errors are reported to the user via system notifications. By default, if the user is notified about a normal event, a notification pops up silently. With warnings and errors also a sound is played. The screenshot below shows the notification that pops up after a share was mounted.</para>
+    <screenshot>
+      <screeninfo>Screenshot of the notification after mounting a share</screeninfo>
+      <mediaobject>
+        <imageobject><imagedata fileref="notification_share_mounted.png" format="PNG" /></imageobject>
+        <textobject><phrase>Notification after mounting a share</phrase></textobject>
+      </mediaobject>
+    </screenshot>
+    <para>The default behavior of each notification can be changed via the <link linkend="notifications_manage">&systemsettings;</link>.</para>
+  </sect2>
+
+<!-- Using Smb4K : Notifications : Manage Notifications -->
+
+  <sect2 id="notifications_manage">
+    <title>Manage Notifications</title>
+    <para>&smb4k; used notifications to inform the user about events, warnings and errors. They can be managed via the &systemsettings;. To modify the behavior of one or all notifications, open the <guibutton>Application and System Notifications</guibutton> module and choose the <guibutton>Manage Notifications</guibutton> entry. In the tab <guilabel>Applications</guilabel> select the <guilabel>Advanced Network Neighborhood Browser</guilabel> entry from the drop-down menu:</para>
+    <screenshot>
+      <screeninfo>Screenshot of the systemsettings notification module</screeninfo>
+      <mediaobject>
+        <imageobject><imagedata fileref="systemsettings_manage_notifications.png" format="PNG" /></imageobject>
+        <textobject><phrase>Systemsettings notification module</phrase></textobject>
+      </mediaobject>
+    </screenshot>
+    <para>All available notifications are shown in the list view and can be edited, enabled and disabled according to your liking.</para>
+  </sect2>
 </sect1>
 
 <!-- Using Smb4K : Remarks for FreeBSD users -->
