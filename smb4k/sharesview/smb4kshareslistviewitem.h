@@ -2,7 +2,7 @@
     smb4kshareslistviewitem  -  The shares list view item class of Smb4K.
                              -------------------
     begin                : Sa Jun 30 2007
-    copyright            : (C) 2007-2013 by Alexander Reinholdt
+    copyright            : (C) 2007-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -49,7 +49,7 @@ class Smb4KSharesListViewItem : public QTreeWidgetItem
     /**
      * Enumeration for the columns.
      */
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
     enum Columns { Item = 0,
                    Login = 1,
                    FileSystem = 2,
