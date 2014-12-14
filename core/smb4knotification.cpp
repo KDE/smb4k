@@ -716,7 +716,7 @@ void Smb4KNotification::systemCallFailed(const QString& sys_call, int err_no)
   int len = 100;
   char buf[100];
   buf[0] = '\0';
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   // This is thread safe.
   const char *msg;
 

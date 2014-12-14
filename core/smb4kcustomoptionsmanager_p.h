@@ -69,7 +69,7 @@ class Smb4KCustomOptionsDialog : public KDialog
     Smb4KCustomOptions *m_options;
     QCheckBox *m_remount;
     KIntNumInput *m_smb_port;
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
     KIntNumInput *m_fs_port;
     KComboBox *m_write_access;
     KComboBox *m_security_mode;
