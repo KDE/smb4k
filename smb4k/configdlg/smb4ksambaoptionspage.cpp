@@ -124,7 +124,7 @@ Smb4KSambaOptionsPage::Smb4KSambaOptionsPage( QWidget *parent ) : KTabWidget( pa
   remote_smb_port->setObjectName( "kcfg_RemoteSMBPort" );
   remote_smb_port->setSliderEnabled( true );
 
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   QLabel *remote_fs_port_label  = new QLabel( Smb4KSettings::self()->remoteFileSystemPortItem()->label(),
                                   ports_box );
 
@@ -135,7 +135,7 @@ Smb4KSambaOptionsPage::Smb4KSambaOptionsPage( QWidget *parent ) : KTabWidget( pa
 
   ports_layout->addWidget( remote_smb_port_label, 0, 0, 0 );
   ports_layout->addWidget( remote_smb_port, 0, 1, 0 );
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   ports_layout->addWidget( remote_fs_port_label, 1, 0, 0 );
   ports_layout->addWidget( remote_fs_port, 1, 1, 0 );
 #endif
@@ -323,7 +323,7 @@ Smb4KSambaOptionsPage::Smb4KSambaOptionsPage( QWidget *parent ) : KTabWidget( pa
 
   dmask_label->setBuddy( dmask );
   
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   QLabel *write_access_label   = new QLabel( Smb4KSettings::self()->writeAccessItem()->label(),
                                  common_options );
 
@@ -468,7 +468,7 @@ Smb4KSambaOptionsPage::Smb4KSambaOptionsPage( QWidget *parent ) : KTabWidget( pa
   codepage_label->setBuddy( codepage );
 #endif
 
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   common_layout->addWidget( user_id_label, 0, 0, 0 );
   common_layout->addWidget( user_widget, 0, 1, 0 );
   common_layout->addWidget( group_id_label, 1, 0, 0 );
@@ -496,7 +496,7 @@ Smb4KSambaOptionsPage::Smb4KSambaOptionsPage( QWidget *parent ) : KTabWidget( pa
   common_layout->addWidget( codepage, 5, 1, 0 );
 #endif
 
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   // Advanced CIFS options
   QGroupBox *advanced_options  = new QGroupBox( i18n( "Advanced Options" ), mount_tab );
 
@@ -623,7 +623,7 @@ Smb4KSambaOptionsPage::Smb4KSambaOptionsPage( QWidget *parent ) : KTabWidget( pa
 #endif
 
   mount_layout->addWidget( common_options );
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   mount_layout->addWidget( advanced_options );
 #endif
   mount_layout->addStretch( 100 );

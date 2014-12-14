@@ -159,7 +159,7 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
 
   smb_port_label->setBuddy( m_smb_port );
 
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   QLabel *fs_port_label = new QLabel( i18n( "Filesystem Port:" ), samba_editors );
   
   m_fs_port = new KIntNumInput( samba_editors );
@@ -256,7 +256,7 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
   
   m_kerberos = new QCheckBox( Smb4KSettings::self()->useKerberosItem()->label(), samba_editors );
   
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   samba_editor_layout->addWidget( smb_port_label, 0, 0, 0 );
   samba_editor_layout->addWidget( m_smb_port, 0, 1, 0 );
   samba_editor_layout->addWidget( fs_port_label, 1, 0, 0 );
@@ -372,7 +372,7 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
   connect( m_smb_port,       SIGNAL(valueChanged(int)),
            this,             SLOT(slotEntryChanged()) );
   
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   connect( m_fs_port,        SIGNAL(valueChanged(int)),
            this,             SLOT(slotEntryChanged()) );
   
@@ -491,7 +491,7 @@ void Smb4KCustomOptionsPage::clearEditors()
   m_ip_address->clear();
   m_remount_share->setChecked( false );
   m_smb_port->setValue( Smb4KSettings::remoteSMBPort() );
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   m_fs_port->setValue( Smb4KSettings::remoteFileSystemPort() );
 
   switch ( Smb4KSettings::writeAccess() )
@@ -667,7 +667,7 @@ void Smb4KCustomOptionsPage::populateEditors(Smb4KCustomOptions* options)
     m_smb_port->setValue( Smb4KSettings::remoteSMBPort() );
   }
   
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   if ( m_current_options->fileSystemPort() != -1 )
   {
     m_fs_port->setValue( m_current_options->fileSystemPort() );
@@ -974,7 +974,7 @@ void Smb4KCustomOptionsPage::commitChanges()
     }
     
     options->setSMBPort( m_smb_port->value() );
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
     options->setFileSystemPort( m_fs_port->value() );
     options->setWriteAccess( (Smb4KCustomOptions::WriteAccess)m_write_access->itemData( m_write_access->currentIndex() ).toInt() );
     options->setSecurityMode( (Smb4KCustomOptions::SecurityMode)m_security_mode->itemData(m_security_mode->currentIndex() ).toInt() );
@@ -1018,7 +1018,7 @@ void Smb4KCustomOptionsPage::commitChanges()
           // Propagate the options to the shared resources of the host.
           // They overwrite the ones defined for the shares.
           m_options_list[i]->setSMBPort( options->smbPort() );
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
           m_options_list[i]->setFileSystemPort( options->fileSystemPort() );
           m_options_list[i]->setWriteAccess( options->writeAccess() );
           m_options_list[i]->setSecurityMode( options->securityMode() );
@@ -1236,7 +1236,7 @@ void Smb4KCustomOptionsPage::slotUndoActionTriggered( bool /*checked*/ )
         if ( options )
         {
           options->setSMBPort( m_current_options->smbPort() );
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
           options->setFileSystemPort( m_current_options->fileSystemPort() );
           options->setWriteAccess( m_current_options->writeAccess() );
           options->setSecurityMode( m_current_options->securityMode() );
