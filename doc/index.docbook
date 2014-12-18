@@ -1248,7 +1248,7 @@
     <orderedlist>
       <listitem><para>all settings of a profile that is to be removed to another one</para></listitem>
       <listitem><para>all settings that were stored when using no profiles to a specific profile</para></listitem>
-      <listitem><para>all settings of all profiles back to 
+      <listitem><para>all settings of all profiles from backups</para></listitem>
     </orderedlist>
   </sect2>
   
