@@ -79,6 +79,13 @@ PlasmaExtras.App {
       iconSource: "favorites"
       tab: bookmarksPage
     }
+    
+    PlasmaComponents.TabButton {
+      id: profilesTabButton
+      text: i18n("Profiles")
+      iconSource: "format-list-unordered"
+      tab: profilesPage
+    }
   }
       
   PlasmaComponents.TabGroup {
@@ -110,6 +117,13 @@ PlasmaExtras.App {
     //
     BookmarksPage {
       id: bookmarksPage
+    }
+    
+    //
+    // The profiles page
+    //
+    ProfilesPage {
+      id: profilesPage
     }
   }
   

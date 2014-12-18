@@ -65,6 +65,9 @@ PlasmaComponents.Page {
     tools: sharesToolBarLayout
   }
   
+  //
+  // The list view
+  //
   PlasmaExtras.ScrollArea {
     id: sharesViewScrollArea
     anchors {

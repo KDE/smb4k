@@ -1,8 +1,10 @@
 BookmarksPage 0.1 bookmarkspage.qml
 BrowserPage 0.1 browserpage.qml
 SharesViewPage 0.1 sharesviewpage.qml
+ProfilesPage 0.1 profilespage.qml
 BookmarkItemDelegate 0.1 bookmarkitemdelegate.qml
 BrowserItemDelegate 0.1 browseritemdelegate.qml
 SharesViewItemDelegate 0.1 sharesviewitemdelegate.qml
+ProfileItemDelegate 0.1 profileitemdelegate.qml
 
 plugin smb4kqml ../plugin
