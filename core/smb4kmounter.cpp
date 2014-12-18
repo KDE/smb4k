@@ -344,7 +344,7 @@ void Smb4KMounter::import( bool check_inaccessible )
 
   for ( int i = 0; i < mount_points.size(); ++i )
   {
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
     if ( QString::compare( mount_points.at( i )->mountType(), "cifs" ) == 0 )
 #else
     if ( QString::compare( mount_points.at( i )->mountType(), "smbfs" ) == 0 )
@@ -353,7 +353,7 @@ void Smb4KMounter::import( bool check_inaccessible )
       Smb4KShare *share = new Smb4KShare( mount_points.at( i )->mountedFrom() );
       share->setPath( mount_points.at( i )->mountPoint() );
 
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
       share->setFileSystem( Smb4KShare::CIFS );
 
       // Check if the share is new and we have to open /proc/mounts (if it exists)
@@ -579,7 +579,7 @@ void Smb4KMounter::import( bool check_inaccessible )
     found = false;
   }
   
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   // Now stat the imported shares to get information about them.
   // Do not use Smb4KShare::canonicalPath() here, otherwise we might
   // get lock-ups with inaccessible shares.

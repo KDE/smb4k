@@ -1224,7 +1224,40 @@
 
 <sect1 id="profiles">
   <title>Profiles</title>
-  <para>...</para>
+  <para>Since version 1.2.0, &smb4k; offers the use of profiles. They are intended for better handling of different network neighborhoods, &eg; if you are using your laptop at home and at work. Currently, bookmarks, custom options and user names you defined for homes shares are saved in a profile.</para>
+  
+<!-- Using Smb4K : Profiles : Enabling the Use of Profiles -->
+  
+  <sect2 id="profiles_enable">
+    <title>Enabling and Managing Profiles</title>
+    <para>The use of profiles can be enabled in the <link linkend="configuration_profiles">configuration dialog</link>.  After you enabled profile usage, the first profile in the list, most likely the <guilabel>Home</guilabel> profile, is picked to be the active profile. You can also enable the profile migration assistant.</para>
+    <para>Two profiles are pre-defined, <guilabel>Home</guilabel> and <guilabel>Work</guilabel>, and you can define as many profiles as you want. A new profile is added by entering its name into the edit line on the <guibutton>Profiles</guibutton> configuration page and clicking <guibutton>Add</guibutton> afterwards.</para>
+    <screenshot>
+      <screeninfo>Screenshot of the Profiles configuration page (add profile)</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="configuration_profiles_add_profile.png" format="PNG" />
+        </imageobject>
+        <textobject>
+          <phrase>Profiles configuration page (add profile)</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+    <para>A profile can be removed by selecting it in the list view and clicking <guibutton>Remove</guibutton>. There is also the possibility to change the order of the profiles with the <guibutton>Move Up</guibutton> and <guibutton>Move Down</guibutton> buttons.</para>
+    <para>In case you enabled the use of the migration assistant, it is always launched when you remove a profile or when you enable/disable the use of profiles. It provides the possibility to migrate</para>
+    <orderedlist>
+      <listitem><para>all settings of a profile that is to be removed to another one</para></listitem>
+      <listitem><para>all settings that were stored when using no profiles to a specific profile</para></listitem>
+      <listitem><para>all settings of all profiles from backups</para></listitem>
+    </orderedlist>
+  </sect2>
+  
+<!-- Using Smb4K : Profiles : Activating a Profile -->
+  
+  <sect2 id="profiles_activate_profile">
+    <title>Activating a Profile</title>
+    <para>...</para>
+  </sect2>  
 </sect1>
 
 <!-- Using Smb4K : Notifications -->

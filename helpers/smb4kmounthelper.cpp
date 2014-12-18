@@ -59,7 +59,7 @@ ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
   KProcess proc( this );
   proc.setOutputChannelMode( KProcess::SeparateChannels );
   proc.setProcessEnvironment( QProcessEnvironment::systemEnvironment() );
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   proc.setEnv( "PASSWD", args["url"].toUrl().password(), true );
 #else
   // We need this to avoid a translated password prompt.
@@ -171,7 +171,7 @@ ActionReply Smb4KMountHelper::unmount( const QVariantMap &args )
 
   for( int j = 0; j < mountpoints.size(); j++ )
   {
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
     if ( QString::compare( args["mountpoint"].toString(),
                            mountpoints.at( j )->mountPoint(), Qt::CaseInsensitive ) == 0 &&
          QString::compare( mountpoints.at( j )->mountType(), "cifs", Qt::CaseInsensitive ) == 0 )

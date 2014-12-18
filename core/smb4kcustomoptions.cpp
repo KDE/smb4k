@@ -52,7 +52,7 @@ class Smb4KCustomOptionsPrivate
     Smb4KCustomOptions::Remount remount;
     QString profile;
     int smbPort;
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
     int fileSystemPort;
     Smb4KCustomOptions::WriteAccess writeAccess;
     Smb4KCustomOptions::SecurityMode securityMode;
@@ -75,7 +75,7 @@ Smb4KCustomOptions::Smb4KCustomOptions( Smb4KHost *host )
   d->type           = Host;
   d->remount        = UndefinedRemount;
   d->smbPort        = host->port() != -1 ? host->port() : 139;
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   d->fileSystemPort = 445;
   d->writeAccess    = UndefinedWriteAccess;
   d->securityMode   = UndefinedSecurityMode;
@@ -97,7 +97,7 @@ Smb4KCustomOptions::Smb4KCustomOptions( Smb4KShare *share )
   d->type           = Share;
   d->remount        = UndefinedRemount;
   d->smbPort        = 139;
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   d->fileSystemPort = share->port() != -1 ? share->port() : 445;
   d->writeAccess    = UndefinedWriteAccess;
   d->securityMode   = UndefinedSecurityMode;
@@ -125,7 +125,7 @@ Smb4KCustomOptions::Smb4KCustomOptions()
   d->type           = Unknown;
   d->remount        = UndefinedRemount;
   d->smbPort        = 139;
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
   d->fileSystemPort = 445;
   d->writeAccess    = UndefinedWriteAccess;
   d->securityMode   = UndefinedSecurityMode;
@@ -156,7 +156,7 @@ void Smb4KCustomOptions::setHost( Smb4KHost *host )
       d->url            = host->url();
       d->type           = Host;
       d->smbPort        = host->port() != -1 ? host->port() : 139;
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
       d->fileSystemPort = 445;
 #endif
       d->ip.setAddress( host->ip() );
@@ -182,7 +182,7 @@ void Smb4KCustomOptions::setShare( Smb4KShare *share )
       d->workgroup      = share->workgroupName();
       d->type           = Share;
       d->smbPort        = 139;
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
       d->fileSystemPort = share->port() != -1 ? share->port() : 445;
 #endif
       d->user           = KUser( share->uid() );
@@ -196,7 +196,7 @@ void Smb4KCustomOptions::setShare( Smb4KShare *share )
       {
         d->url            = share->url();
         d->type           = Share;
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
         d->fileSystemPort = share->port() != -1 ? share->port() : d->fileSystemPort;
 #endif
         d->user           = KUser( share->uid() );
@@ -387,7 +387,7 @@ int Smb4KCustomOptions::smbPort() const
 }
 
 
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
 void Smb4KCustomOptions::setFileSystemPort( int port )
 {
   d->fileSystemPort = port;

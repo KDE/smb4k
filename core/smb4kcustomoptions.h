@@ -80,7 +80,7 @@ class KDE_EXPORT Smb4KCustomOptions
                         ADS,
                         UndefinedProtocolHint };
 
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
     /**
      * The WriteAccess enumeration
      */

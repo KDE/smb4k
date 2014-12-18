@@ -146,9 +146,9 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
   for (int i = 0; i < paths.size(); ++i)
   {
     QString mount;
-#if defined(Q_OS_LINUX)
+#ifdef Q_OS_LINUX
     mount = KGlobal::dirs()->findExe("mount.cifs", paths.at(i));
-#elif defined(Q_OS_FREEBSD)
+#else
     mount = KGlobal::dirs()->findExe("mount_smbfs", paths.at(i));
 #endif
 
@@ -165,9 +165,9 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
 
   if (mount_command.isEmpty())
   {
-#if defined(Q_OS_LINUX)
+#ifdef Q_OS_LINUX
     Smb4KNotification::commandNotFound("mount.cifs");
-#elif defined(Q_OS_FREEBSD)
+#else
     Smb4KNotification::commandNotFound("mount_smbfs");
 #endif
     return false;
@@ -237,7 +237,7 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
   QMap<QString, QString> global_options = globalSambaOptions();
   Smb4KCustomOptions *options  = Smb4KCustomOptionsManager::self()->findOptions( share );  
   
-#if defined(Q_OS_LINUX)
+#ifdef Q_OS_LINUX
   //
   // LINUX section
   //
@@ -722,7 +722,7 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
   mount_command << share->canonicalPath();
   mount_command += arguments;
   
-#elif defined(Q_OS_FREEBSD)
+#else
   //
   // FREEBSD section
   //
@@ -983,7 +983,7 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
 
       if ( QString::compare( share->canonicalPath(), reply.data()["mountpoint"].toString() ) == 0 && !stderr.isEmpty() )
       {
-#ifndef Q_OS_FREEBSD
+#ifdef Q_OS_LINUX
         if ( stderr.contains( "mount error 13" ) || stderr.contains( "mount error(13)" ) /* authentication error */ )
         {
           m_auth_errors << new Smb4KShare( *share );

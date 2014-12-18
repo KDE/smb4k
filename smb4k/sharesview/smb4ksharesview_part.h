@@ -2,7 +2,7 @@
     smb4ksharesview_part  -This Part includes the shares view of Smb4K.
                              -------------------
     begin                : Sa Jun 30 2007
-    copyright            : (C) 2007-2012 by Alexander Reinholdt
+    copyright            : (C) 2007-2014 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
