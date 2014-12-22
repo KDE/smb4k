@@ -129,7 +129,7 @@
   </mediaobject>
 </screenshot>
 
-<para>&smb4k; comes with a compact unified toolbar that contains some of the main actions, like <guimenuitem>Configure &smb4k;</guimenuitem> and <guimenuitem>Quit</guimenuitem> and dynamically loads the actions of the dock widget that currently has got the focus. For additional information and some important warnings, please have a look at the sections discussing the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, <link linkend="network_search_dialog">search dialog</link>, and <link linkend="mounted_shares_view">mounted shares view</link>.</para>
+<para>&smb4k; comes with a compact unified toolbar as the default, but the user can still choose to use multiple toolbars. If you wish to use the classical way, four toolbars are defined, for each widget one: the main toolbar, the toolbars for the <guilabel>Network Neighborhood</guilabel> widget, the <guilabel>Shares View</guilabel> widget and the <guilabel>Network Search</guilabel> widget. The unified toolbar contains some of the main actions, like <guimenuitem>Configure &smb4k;</guimenuitem> and <guimenuitem>Quit</guimenuitem>. It also dynamically loads the actions of the dock widget that currently has got the focus. For additional information and some important warnings, please have a look at the sections discussing the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, <link linkend="network_search_dialog">search dialog</link>, and <link linkend="mounted_shares_view">mounted shares view</link>.</para>
 
 <para>The status bar gives some information about the current status of &smb4k;. If the application is processing a user request (&eg; mounting a share), a descriptive message is displayed in the leftmost section and a progress bar is shown with a busy indicator. The two icons on the right hand side indicate if there are shares mounted (remote folder icon) and the status of the authentication system (wallet or key icon).</para>
 
@@ -562,11 +562,13 @@
 </sect2>
 </sect1>
 
-<!-- The shares view -->
+<!-- Using Smb4K : The Mounted Shares View -->
 
 <sect1 id="mounted_shares_view">
 <title>The Mounted Shares View</title>
 <para>In the shares view, you can interact with the mounted shares on your system.</para>
+
+<!-- Using Smb4K : The Mounted Shares View : Different Views -->
 
 <sect2 id="mounted_shares_view_views">
 <title>Different Views</title>
@@ -596,11 +598,13 @@
   </mediaobject>
 </screenshot>
 
-<para>The default view is the traditional icon view where the shares are displayed as icons along with their name or mount point. In the list view all shares are displayed with their name or mount point, the file system and the disk usage. More information can be included by adjusting the <link linkend="configuration_user_interface_shares_view">settings</link>.</para>
+<para>The default view is the icon view where the shares are displayed as icons along with their name or mount point. In the list view all shares are displayed with their name or mount point, the file system and the disk usage. More information can be included by adjusting the <link linkend="configuration_user_interface_shares_view">settings</link>.</para>
 
 <para>You can switch between the two views by either selecting an entry from the <link linkend="mainwindow_overview"><guibutton>Shares View</guibutton></link> menu or by changing the settings in the <link linkend="configuration_user_interface_shares_view">configuration dialog</link>.</para>
-<para>By default, you will only see your own mounts in the shares view. However, you can tell &smb4k; to show all mounts by altering the <link linkend="configuration_user_interface_shares_mounted_shares">respective settings</link>.</para>
+<para>By default, only your own mounts are displayed in the shares view. However, you can tell &smb4k; to show all mounts by altering the <link linkend="configuration_shares_behavior">respective settings</link>.</para>
 </sect2>
+
+<!-- Using Smb4K : The Mounted Shares View : Actions and Popup Menu -->
 
 <sect2 id="mounted_shares_view_menu">
   <title>Actions and Popup Menu</title>
@@ -694,17 +698,23 @@
 <para>It can be opened by clicking the right mouse button.</para>
 </sect2>
 
+<!-- Using Smb4K : The Mounted Shares View : Tooltips -->
+
 <sect2 id="mounted_shares_view_tooltips">
 <title>Tooltips</title>
 <para>The tooltips provide information about the share name, the mount point, the user and group, the login, the file system, the disk usage, and the free disk space. If the share is <link linkend="mounted_shares_view_inaccessible_shares">inaccessible</link>, these values are marked as unknown.</para>
 <para>Tooltips are enabled by default. You can deactivate them in the <link linkend="configuration_user_interface_shares_tooltips">configuration dialog</link>.</para>
 </sect2>
 
+<!-- Using Smb4K : The Mounted Shares View : Inaccessible Shares -->
+
 <sect2 id="mounted_shares_view_inaccessible_shares">
 <title>Inaccessible Shares</title>
 <para>&smb4k; periodically checks all mounted shares if they are still accessible. If an inaccessible share is encountered, it will be marked with a <link linkend="mounted_shares_view_icons">modified icon</link> and you will not be able to open or synchronize it anymore. Unmounting and adding a bookmark is still possible.</para>
 <note><para>The program might freeze for a short period of time due to an inaccessible share. It will recover afterwards.</para></note>
 </sect2>
+
+<!-- Using Smb4K : The Mounted Shares View : Icons -->
 
 <sect2 id="mounted_shares_view_icons">
 <title>Icons</title>
@@ -727,12 +737,16 @@
 </itemizedlist>
 </sect2>
 
+<!-- Using Smb4K : The Mounted Shares View : Drag-and-Drop -->
+
 <sect2 id="mainwindow_shares_dnd">
 <title>Drag-and-Drop</title>
 <para>&smb4k; supports drag-and-drop in the shares views:</para>
 <para>You can drag a share icon from within the shares view onto the desktop or into another application (&eg; &dolphin;) and drop it there. You will then maybe get a popup menu asking you if you want to copy, link or move the contents of the share. When choosing the appropriate operation please remember that under most circumstances moving and linking the share might not be a good idea. The popup menu can be avoided if you hold down the &Ctrl; key while you are dragging and dropping the share.</para>
 <para>Files and directories can be transferred to a mounted share by dragging them over its icon in the view and drop them there. By default the data will be moved to the share. To copy it, hold down the &Ctrl; key while you are dragging and dropping it. The transfer will only be successful if the share was mounted with read and write permissions.</para>
 </sect2>
+
+<!-- Using Smb4K : The Mounted Shares View : Unmounting Shares -->
 
 <sect2 id="mainwindow_shares_unmounting">
 <title>Unmounting Shares</title>
@@ -749,10 +763,12 @@
   </mediaobject>
 </screenshot>
 <para>If you click the <guibutton>Yes</guibutton> button, the share will definitely be unmounted. So, please think twice before you decide to unmount shares that are owned by other users!</para>
-<para>Inaccessible shares are unmounted with a "normal" unmount by default. If this should fail, you can <link linkend="configuration_shares">configure</link> &smb4k; so as to perform a <ulink url="man:/umount">lazy unmount</ulink> on inaccessible shares (&Linux; only).</para>
+<para>Inaccessible shares are unmounted with a "normal" unmount by default. If this should fail, you can <link linkend="configuration_shares_behavior">configure</link> &smb4k; so as to perform a <ulink url="man:/umount">lazy unmount</ulink> on inaccessible shares (&Linux; only).</para>
 <para>All shares can be unmounted at once by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>N</keycap></keycombo></shortcut><guimenuitem>Unmount All</guimenuitem></menuchoice> action. Depending on your settings, this will also unmount foreign and inaccessible shares.</para>
 <para>After a successful unmount process, the user is notified. If unmounting fails, a notification with the returned error message will be shown.</para>
 </sect2>
+
+<!-- Using Smb4K : The Mounted Shares View : Synchronization -->
 
 <sect2 id="mainwindow_shares_synchronization">
 <title>Synchronization</title>
@@ -780,7 +796,7 @@
     </textobject>
   </mediaobject>
 </screenshot>
-<para>In the default, collapsed version it displays the source and destination of the file that is currently transferred, the transfer rate and the overall progress. More information like the number of transferred files and a graphical representation of the transfer rate can be seen by clicking the <guibutton>More</guibutton> button on the left below to the progress bar.</para>
+<para>In the default, collapsed version it displays the source and destination of the file that is currently transferred, the transfer rate and the overall progress. More information like the number of transferred files and a graphical representation of the transfer rate can be seen by clicking the <guibutton>[+]</guibutton> (More) button on the left below to the progress bar.</para>
 <para>The synchronization can be paused or canceled at any time by pressing the pause or stop button to the right of the progress bar.</para>
 
 <note>
@@ -788,6 +804,8 @@
   <para>The progress is calculated from the number of transferred files devided by the total number of files present on the share. Their size is not considered. That means that one very large file adds to the progress as much as a very small one does. Also, due to the way <application>rsync</application> displays the transfer progress, the progress bar is only updated after the transfer of the file.</para>
 </note>
 </sect2>
+
+<!-- Using Smb4K : The Mounted Shares View : Opening a Share -->
 
 <sect2 id="mainwindow_shares_konqueror">
 <title>Opening a Share</title>
@@ -804,7 +822,7 @@
 </sect2>
 </sect1>
 
-<!-- Bookmarks -->
+<!-- Using Smb4K : Bookmarks -->
 
 <sect1 id="mainwindow_bookmarks">
 <title>Handling Bookmarks</title>
@@ -1224,14 +1242,15 @@
 
 <sect1 id="profiles">
   <title>Profiles</title>
-  <para>Since version 1.2.0, &smb4k; offers the use of profiles. They are intended for better handling of different network neighborhoods, &eg; if you are using your laptop at home and at work. Currently, bookmarks, custom options and user names you defined for homes shares are saved in a profile.</para>
+  <para>&smb4k; offers the use of different profiles. They are intended for better handling of different network neighborhoods, &eg; if you are using your laptop at home and at work.</para>
+  <para>By default, the use of different profiles is disabled and a default profile is used: one profile for everything. Most users won't have to change anything, because the default behavior satisfies their needs completely. However, for some users this feature might be very useful.</para>
   
-<!-- Using Smb4K : Profiles : Enabling the Use of Profiles -->
+<!-- Using Smb4K : Profiles : Enabling and Managing Profiles -->
   
   <sect2 id="profiles_enable">
     <title>Enabling and Managing Profiles</title>
-    <para>The use of profiles can be enabled in the <link linkend="configuration_profiles">configuration dialog</link>.  After you enabled profile usage, the first profile in the list, most likely the <guilabel>Home</guilabel> profile, is picked to be the active profile. You can also enable the profile migration assistant.</para>
-    <para>Two profiles are pre-defined, <guilabel>Home</guilabel> and <guilabel>Work</guilabel>, and you can define as many profiles as you want. A new profile is added by entering its name into the edit line on the <guibutton>Profiles</guibutton> configuration page and clicking <guibutton>Add</guibutton> afterwards.</para>
+    <para>The use of different profiles can be enabled in the <link linkend="configuration_profiles">configuration dialog</link>. The first profile in the list, most likely the <guilabel>Home</guilabel> profile, is picked to be the active profile. You can also enable the profile migration assistant.</para>
+    <para>Two profiles are pre-defined, <guilabel>Home</guilabel> and <guilabel>Work</guilabel>, but you can define as many profiles as you want. A new profile is added by entering its name into the edit line on the <guibutton>Profiles</guibutton> configuration page and clicking <guibutton>Add</guibutton> afterwards.</para>
     <screenshot>
       <screeninfo>Screenshot of the Profiles configuration page (add profile)</screeninfo>
       <mediaobject>
@@ -1245,11 +1264,11 @@
     </screenshot>
     <para>A profile can be removed by selecting it in the list view and clicking <guibutton>Remove</guibutton>. There is also the possibility to change the order of the profiles with the <guibutton>Move Up</guibutton> and <guibutton>Move Down</guibutton> buttons.</para>
     <para>In case you enabled the use of the migration assistant, it is always launched when you remove a profile or when you enable/disable the use of profiles. It provides the possibility to migrate</para>
-    <orderedlist>
+    <itemizedlist>
       <listitem><para>all settings of a profile that is to be removed to another one</para></listitem>
-      <listitem><para>all settings that were stored when using no profiles to a specific profile</para></listitem>
-      <listitem><para>all settings of all profiles from backups</para></listitem>
-    </orderedlist>
+      <listitem><para>all settings that were stored under the default profile to a specific other profile</para></listitem>
+      <listitem><para>all settings of all profiles back to the default profile</para></listitem>
+    </itemizedlist>
   </sect2>
   
 <!-- Using Smb4K : Profiles : Activating a Profile -->
