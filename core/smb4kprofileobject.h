@@ -49,21 +49,14 @@ class Smb4KProfileObjectPrivate;
 class KDE_EXPORT Smb4KProfileObject : public QObject
 {
   Q_OBJECT
+  Q_PROPERTY(QString profileName READ profileName WRITE setProfileName NOTIFY changed)
+  Q_PROPERTY(bool isActiveProfile READ isActiveProfile WRITE setActiveProfile NOTIFY changed)
   
   friend class Smb4KProfileObjectPrivate;
-  
-  Q_PROPERTY(QString profileName READ profileName WRITE setProfileName NOTIFY changed);
   
   public:
     /**
      * The constructor
-     * @param profileName   The name of the profile
-     * @param parent        The parent of this item
-     */
-    explicit Smb4KProfileObject(const QString &profileName, QObject *parent = 0);
-    
-    /**
-     * The empty constructor
      * @param parent        The parent of this item
      */
     explicit Smb4KProfileObject(QObject *parent = 0);
@@ -84,6 +77,20 @@ class KDE_EXPORT Smb4KProfileObject : public QObject
      * @param profileName   The name of the profile
      */
     void setProfileName(const QString &profileName);
+    
+    /**
+     * This function returns TRUE if this is the active 
+     * profile and FALSE otherwise.
+     * @returns TRUE if this is the active profile.
+     */
+    bool isActiveProfile() const;
+    
+    /**
+     * With this function you can mark this profile as the
+     * active one.
+     * @param active        Set this as the active profile
+     */
+    void setActiveProfile(bool active);
     
   Q_SIGNALS:
     /**

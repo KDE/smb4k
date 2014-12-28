@@ -44,8 +44,6 @@ class Smb4KDeclarativePrivate
     QList<Smb4KBookmarkObject *> bookmarkObjects;
     QList<Smb4KBookmarkObject *> bookmarkGroupObjects;
     QList<Smb4KProfileObject *> profileObjects;
-    QString activeProfile;
-    bool profileUsage;
 };
 
 #endif

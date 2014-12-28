@@ -35,7 +35,43 @@ import org.kde.qtextracomponents 0.1
 //
 PlasmaComponents.ListItem {
   id: delegate
-  PlasmaComponents.RadioButton {
+  
+  signal itemClicked()
+  
+  width: profilesView.width
+  height: theme.mediumIconSize + 8
+  
+  Row {
+    spacing: 10
+    Column {
+      anchors.verticalCenter: parent.verticalCenter
+      QIconItem {
+        id: delegateItemIcon
+        icon: "format-list-unordered"
+        width: theme.mediumIconSize
+        height: theme.mediumIconSize
+        MouseArea {
+          anchors.fill: parent
+          onClicked: {
+            delegate.itemClicked()
+          }
+        }
+      }
+    }
+    Column {
+      anchors.verticalCenter: parent.verticalCenter
+      PlasmaComponents.Label {
+        id: delegateItemText
+        text: object.profileName+(object.isActiveProfile ? " "+i18n("(active)") : "")
+        clip: true
+        MouseArea {
+          anchors.fill: parent
+          onClicked: {
+            delegate.itemClicked()
+          }
+        }
+      }
+    }
   }
 }
 

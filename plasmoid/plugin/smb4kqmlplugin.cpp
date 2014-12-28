@@ -34,17 +34,19 @@
 #include "core/smb4kbookmarkhandler.h"
 #include "core/smb4kcustomoptionsmanager.h"
 #include "core/smb4kbookmarkobject.h"
+#include "core/smb4kprofileobject.h"
 #include "core/smb4kdeclarative.h"
 
 // Qt includes
 #include <QtDeclarative/qdeclarative.h>
 
 
-void Smb4KQMLPlugin::registerTypes( const char *uri )
+void Smb4KQMLPlugin::registerTypes(const char *uri)
 {
-  qmlRegisterType<Smb4KNetworkObject>( uri, 1, 0, "NetworkObject" );
-  qmlRegisterType<Smb4KBookmarkObject>( uri, 1, 0, "BookmarkObject" );
-  qmlRegisterType<Smb4KDeclarative>( uri, 1, 0, "CoreInterface" );
+  qmlRegisterType<Smb4KNetworkObject>(uri, 1, 0, "NetworkObject");
+  qmlRegisterType<Smb4KBookmarkObject>(uri, 1, 0, "BookmarkObject");
+  qmlRegisterType<Smb4KProfileObject>(uri, 1, 0, "ProfileObject");
+  qmlRegisterType<Smb4KDeclarative>(uri, 1, 0, "CoreInterface");
 }
 
 Q_EXPORT_PLUGIN2( Smb4KQML, Smb4KQMLPlugin );

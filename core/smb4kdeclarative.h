@@ -61,7 +61,7 @@ class KDE_EXPORT Smb4KDeclarative : public QObject
   Q_PROPERTY(QDeclarativeListProperty<Smb4KBookmarkObject> bookmarks READ bookmarks NOTIFY bookmarksListChanged)
   Q_PROPERTY(QDeclarativeListProperty<Smb4KBookmarkObject> bookmarkGroups READ bookmarkGroups NOTIFY bookmarksListChanged)
   Q_PROPERTY(QDeclarativeListProperty<Smb4KProfileObject> profiles READ profiles NOTIFY profilesListChanged)
-  Q_PROPERTY(QString activeProfile READ activeProfile NOTIFY activeProfileChanged)
+  Q_PROPERTY(QString activeProfile READ activeProfile WRITE setActiveProfile NOTIFY activeProfileChanged)
   Q_PROPERTY(bool profileUsage READ profileUsage NOTIFY profileUsageChanged);
   
   friend class Smb4KDeclarativePrivate;
@@ -298,6 +298,12 @@ class KDE_EXPORT Smb4KDeclarative : public QObject
      * @returns the active profile.
      */
     QString activeProfile() const;
+    
+    /**
+     * Set the active profile.
+     * @param profile       The name of the active profile
+     */
+    void setActiveProfile(const QString &profile);
     
     /**
      * Return the current setting of the profile usage.

@@ -36,19 +36,15 @@ class Smb4KProfileObjectPrivate
 {
   public:
     QString profileName;
+    bool activeProfile;
 };
-
-
-Smb4KProfileObject::Smb4KProfileObject(const QString& profileName, QObject* parent)
-: QObject(parent), d(new Smb4KProfileObjectPrivate)
-{
-  d->profileName = profileName;
-}
 
 
 Smb4KProfileObject::Smb4KProfileObject(QObject* parent)
 : QObject(parent), d(new Smb4KProfileObjectPrivate)
 {
+  d->profileName = QString();
+  d->activeProfile = false;
 }
 
 
@@ -69,5 +65,17 @@ void Smb4KProfileObject::setProfileName(const QString& profileName)
   emit changed();
 }
 
+
+bool Smb4KProfileObject::isActiveProfile() const
+{
+  return d->activeProfile;
+}
+
+
+void Smb4KProfileObject::setActiveProfile(bool active)
+{
+  d->activeProfile = active;
+  emit changed();
+}
 
 #include "smb4kprofileobject.moc"

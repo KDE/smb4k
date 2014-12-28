@@ -30,6 +30,31 @@ import org.kde.plasma.extras 0.1 as PlasmaExtras
 
 PlasmaComponents.Page {
   id: profilesPage
+
+  //
+  // The tool bar
+  //
+  PlasmaComponents.ToolBar {
+    id: profilesToolBar
+    anchors {
+      top: parent.top
+      left: parent.left
+      right: parent.right
+      topMargin: 2
+      rightMargin: 4
+      leftMargin: 4
+    }
+    PlasmaComponents.ToolBarLayout {
+      id: profilesToolBarLayout
+      spacing: 2
+      // Tool buttons here
+      Item {
+        id: spacer
+      }
+    }
+        
+    tools: profilesToolBarLayout
+  }
   
   //
   // The list view
@@ -47,10 +72,51 @@ PlasmaComponents.Page {
       id: profilesView
       delegate: ProfileItemDelegate {
         id: profileItemDelegate
+        onItemClicked: {
+          iface.activeProfile = object.profileName
+        }
       }
       model: ListModel {}
       focus: true
+      highlight: PlasmaComponents.Highlight {}
       highlightRangeMode: ListView.StrictlyEnforceRange
+    }
+  }
+  
+  //
+  // Connections
+  //
+  Connections {
+    target: iface
+    onProfilesListChanged: fillView()
+    onActiveProfileChanged: fillView()
+  }
+  
+  //
+  // Do initial things
+  //
+  Component.onCompleted: {
+    fillView()
+  }
+  
+  //
+  // Fill the view
+  //
+  function fillView() {
+    // First, clear the view.
+    while (profilesView.model.count != 0) {
+      profilesView.model.remove(0)
+    }
+    
+    // Now fill the view if the list of profiles is not empty
+    // and the use of profiles is enabled.
+    if (iface.profileUsage && iface.profiles.length != 0) {
+      for (var i = 0; i < iface.profiles.length; i++) {
+        profilesView.model.append( {"object": iface.profiles[i]} )
+      }
+    }
+    else {
+      // Do nothing
     }
   }
 }

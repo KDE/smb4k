@@ -44,27 +44,34 @@
 #include "smb4kcustomoptionsmanager.h"
 #include "smb4kprofilemanager.h"
 
+// Qt includes
+#include <QtCore/QDebug>
+
 using namespace Smb4KGlobal;
 
 
 Smb4KDeclarative::Smb4KDeclarative(QObject* parent)
 : QObject(parent), d( new Smb4KDeclarativePrivate )
 {
-  connect( Smb4KScanner::self(), SIGNAL(workgroups(QList<Smb4KWorkgroup*>)), this, SLOT(slotWorkgroupsListChanged()) );
-  connect( Smb4KScanner::self(), SIGNAL(hosts(Smb4KWorkgroup*,QList<Smb4KHost*>)), this, SLOT(slotHostsListChanged()) );
-  connect( Smb4KScanner::self(), SIGNAL(shares(Smb4KHost*,QList<Smb4KShare*>)), this, SLOT(slotSharesListChanged()) );
-  connect( Smb4KScanner::self(), SIGNAL(aboutToStart(Smb4KBasicNetworkItem*,int)), this, SIGNAL(busy()) );
-  connect( Smb4KScanner::self(), SIGNAL(finished(Smb4KBasicNetworkItem*,int)), this, SIGNAL(idle()) );
+  // Initialize the core.
+  Smb4KGlobal::initCore(true, false);
   
-  connect( Smb4KMounter::self(), SIGNAL(mounted(Smb4KShare*)), this, SLOT(slotMountedSharesListChanged()) );
-  connect( Smb4KMounter::self(), SIGNAL(unmounted(Smb4KShare*)), this, SLOT(slotMountedSharesListChanged()) );
-  connect( Smb4KMounter::self(), SIGNAL(aboutToStart(Smb4KShare*,int)), this, SIGNAL(busy()) );
-  connect( Smb4KMounter::self(), SIGNAL(finished(Smb4KShare*,int)), this, SIGNAL(idle()) );
+  // Connections
+  connect(Smb4KScanner::self(), SIGNAL(workgroups(QList<Smb4KWorkgroup*>)), this, SLOT(slotWorkgroupsListChanged()));
+  connect(Smb4KScanner::self(), SIGNAL(hosts(Smb4KWorkgroup*,QList<Smb4KHost*>)), this, SLOT(slotHostsListChanged()));
+  connect(Smb4KScanner::self(), SIGNAL(shares(Smb4KHost*,QList<Smb4KShare*>)), this, SLOT(slotSharesListChanged()));
+  connect(Smb4KScanner::self(), SIGNAL(aboutToStart(Smb4KBasicNetworkItem*,int)), this, SIGNAL(busy()));
+  connect(Smb4KScanner::self(), SIGNAL(finished(Smb4KBasicNetworkItem*,int)), this, SIGNAL(idle()));
   
-  connect( Smb4KPrint::self(), SIGNAL(aboutToStart(Smb4KShare*)), this, SIGNAL(busy()) );
-  connect( Smb4KPrint::self(), SIGNAL(finished(Smb4KShare*)), this, SIGNAL(idle()) );
+  connect(Smb4KMounter::self(), SIGNAL(mounted(Smb4KShare*)), this, SLOT(slotMountedSharesListChanged()));
+  connect(Smb4KMounter::self(), SIGNAL(unmounted(Smb4KShare*)), this, SLOT(slotMountedSharesListChanged()));
+  connect(Smb4KMounter::self(), SIGNAL(aboutToStart(Smb4KShare*,int)), this, SIGNAL(busy()));
+  connect(Smb4KMounter::self(), SIGNAL(finished(Smb4KShare*,int)), this, SIGNAL(idle()));
   
-  connect( Smb4KBookmarkHandler::self(), SIGNAL(updated()), this, SLOT(slotBookmarksListChanged()) );
+  connect(Smb4KPrint::self(), SIGNAL(aboutToStart(Smb4KShare*)), this, SIGNAL(busy()));
+  connect(Smb4KPrint::self(), SIGNAL(finished(Smb4KShare*)), this, SIGNAL(idle()));
+  
+  connect(Smb4KBookmarkHandler::self(), SIGNAL(updated()), this, SLOT(slotBookmarksListChanged()));
   
   connect(Smb4KProfileManager::self(), SIGNAL(profilesListChanged(QStringList)), this, SLOT(slotProfilesListChanged(QStringList)));
   connect(Smb4KProfileManager::self(), SIGNAL(activeProfileChanged(QString)), this, SLOT(slotActiveProfileChanged(QString)));
@@ -80,71 +87,76 @@ Smb4KDeclarative::Smb4KDeclarative(QObject* parent)
 
 Smb4KDeclarative::~Smb4KDeclarative()
 {
-  while ( !d->workgroupObjects.isEmpty() )
+  while (!d->workgroupObjects.isEmpty())
   {
     delete d->workgroupObjects.takeFirst();
   }
 
-  while ( !d->hostObjects.isEmpty() )
+  while (!d->hostObjects.isEmpty())
   {
     delete d->hostObjects.takeFirst();
   }
 
-  while ( !d->shareObjects.isEmpty() )
+  while (!d->shareObjects.isEmpty())
   {
     delete d->shareObjects.takeFirst();
   }
   
-  while ( !d->mountedObjects.isEmpty() )
+  while (!d->mountedObjects.isEmpty())
   {
     delete d->mountedObjects.takeFirst();
   }
   
-  while ( !d->bookmarkObjects.isEmpty() )
+  while (!d->bookmarkObjects.isEmpty())
   {
     delete d->bookmarkObjects.takeFirst();
   }
   
-  while ( !d->bookmarkGroupObjects.isEmpty() )
+  while (!d->bookmarkGroupObjects.isEmpty())
   {
     delete d->bookmarkGroupObjects.takeFirst();
+  }
+  
+  while (!d->profileObjects.isEmpty())
+  {
+    delete d->profileObjects.takeFirst();
   }
 }
 
 
 QDeclarativeListProperty<Smb4KNetworkObject> Smb4KDeclarative::workgroups()
 {
-  return QDeclarativeListProperty<Smb4KNetworkObject>( this, d->workgroupObjects );
+  return QDeclarativeListProperty<Smb4KNetworkObject>(this, d->workgroupObjects);
 }
 
 
 QDeclarativeListProperty<Smb4KNetworkObject> Smb4KDeclarative::hosts()
 {
-  return QDeclarativeListProperty<Smb4KNetworkObject>( this, d->hostObjects );
+  return QDeclarativeListProperty<Smb4KNetworkObject>(this, d->hostObjects);
 }
 
 
 QDeclarativeListProperty<Smb4KNetworkObject> Smb4KDeclarative::shares()
 {
-  return QDeclarativeListProperty<Smb4KNetworkObject>( this, d->shareObjects );
+  return QDeclarativeListProperty<Smb4KNetworkObject>(this, d->shareObjects);
 }
 
 
 QDeclarativeListProperty<Smb4KNetworkObject> Smb4KDeclarative::mountedShares()
 {
-  return QDeclarativeListProperty<Smb4KNetworkObject>( this, d->mountedObjects );
+  return QDeclarativeListProperty<Smb4KNetworkObject>(this, d->mountedObjects);
 }
 
 
 QDeclarativeListProperty<Smb4KBookmarkObject> Smb4KDeclarative::bookmarks()
 {
-  return QDeclarativeListProperty<Smb4KBookmarkObject>( this, d->bookmarkObjects );
+  return QDeclarativeListProperty<Smb4KBookmarkObject>(this, d->bookmarkObjects);
 }
 
 
 QDeclarativeListProperty<Smb4KBookmarkObject> Smb4KDeclarative::bookmarkGroups()
 {
-  return QDeclarativeListProperty<Smb4KBookmarkObject>( this, d->bookmarkGroupObjects );
+  return QDeclarativeListProperty<Smb4KBookmarkObject>(this, d->bookmarkGroupObjects);
 }
 
 
@@ -628,13 +640,33 @@ void Smb4KDeclarative::abortPrinter()
 
 QString Smb4KDeclarative::activeProfile() const
 {
-  return d->activeProfile;
+  QString activeProfile;
+  
+  for (int i = 0; i < d->profileObjects.size(); ++i)
+  {
+    if (d->profileObjects.at(i)->isActiveProfile())
+    {
+      activeProfile = d->profileObjects.at(i)->profileName();
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  return activeProfile;
+}
+
+
+void Smb4KDeclarative::setActiveProfile(const QString& profile)
+{
+  Smb4KProfileManager::self()->setActiveProfile(profile);
 }
 
 
 bool Smb4KDeclarative::profileUsage() const
 {
-  return d->profileUsage;
+  return Smb4KProfileManager::self()->useProfiles();
 }
 
 
@@ -674,7 +706,7 @@ void Smb4KDeclarative::slotHostsListChanged()
 
 void Smb4KDeclarative::slotSharesListChanged()
 {
-  // (Re)fill the list of share object.
+  // (Re)fill the list of share objects.
   while ( !d->shareObjects.isEmpty() )
   {
     delete d->shareObjects.takeFirst();
@@ -742,7 +774,19 @@ void Smb4KDeclarative::slotProfilesListChanged(const QStringList& profiles)
   
   for (int i = 0; i < profiles.size(); ++i)
   {
-    d->profileObjects << new Smb4KProfileObject(profiles.at(i));
+    Smb4KProfileObject *profile = new Smb4KProfileObject();
+    profile->setProfileName(profiles.at(i));
+    
+    if (QString::compare(profiles.at(i), Smb4KProfileManager::self()->activeProfile()) == 0)
+    {
+      profile->setActiveProfile(true);
+    }
+    else
+    {
+      profile->setActiveProfile(false);
+    }
+    
+    d->profileObjects << profile;
   }
   
   emit profilesListChanged();
@@ -751,15 +795,24 @@ void Smb4KDeclarative::slotProfilesListChanged(const QStringList& profiles)
 
 void Smb4KDeclarative::slotActiveProfileChanged(const QString& activeProfile)
 {
-  d->activeProfile = activeProfile;
+  for (int i = 0; i < d->profileObjects.size(); ++i)
+  {
+    if (QString::compare(d->profileObjects.at(i)->profileName(), activeProfile) == 0)
+    {
+      d->profileObjects[i]->setActiveProfile(true);
+    }
+    else
+    {
+      d->profileObjects[i]->setActiveProfile(false);
+    }
+  }
   emit activeProfileChanged();
 }
 
 
-void Smb4KDeclarative::slotProfileUsageChanged(bool use)
+void Smb4KDeclarative::slotProfileUsageChanged(bool /*use*/)
 {
-  d->profileUsage = use;
-  emit profileUsageChanged();;
+  emit profileUsageChanged();
 }
 
 
