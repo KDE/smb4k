@@ -74,7 +74,7 @@ Smb4KGlobal::Smb4KEvent::~Smb4KEvent()
 
 
 
-void Smb4KGlobal::initCore( bool modifyCursor )
+void Smb4KGlobal::initCore(bool modifyCursor, bool initClasses)
 {
   // Should the core use a busy cursor?
   p->modifyCursor = modifyCursor;
@@ -83,11 +83,17 @@ void Smb4KGlobal::initCore( bool modifyCursor )
   p->setDefaultSettings();
   
   // Initialize the necessary core classes
-  Smb4KScanner::self()->start();
-  Smb4KMounter::self()->start();
+  if (initClasses)
+  {
+    Smb4KScanner::self()->start();
+    Smb4KMounter::self()->start();
+  }
+  else
+  {
+    // Do nothing
+  }
 
   p->makeConnections();
-
   p->coreInitialized = true;
 }
 

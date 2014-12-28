@@ -111,10 +111,15 @@ namespace Smb4KGlobal
    * 
    * By setting the @p modifyCursor parameter to TRUE, you force the core classes
    * to set a busy cursor when they do something. Default is FALSE.
+   * 
+   * Setting @p initClasses to FALSE will avoid starting the core classes. This 
+   * should only the used if you are starting the core classes in a different 
+   * way (e. g. if you are starting them in the plasmoid via the Smb4KDeclarative
+   * class).
    *
    * You should execute this function before starting your main application.
    */
-  KDE_EXPORT void initCore( bool modifyCursor = false );
+  KDE_EXPORT void initCore(bool modifyCursor = false, bool initClasses = true);
 
   /**
    * Aborts all actions that are run by the core classes and that can be aborted.

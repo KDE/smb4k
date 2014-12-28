@@ -354,7 +354,7 @@ void Smb4KGlobalPrivate::setDefaultSettings()
 
 void Smb4KGlobalPrivate::makeConnections()
 {
-  connect( QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()) );
+  connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()));
 }
 
 
