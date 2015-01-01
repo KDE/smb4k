@@ -588,7 +588,15 @@ bool Smb4KMainWindow::queryExit()
 {
   // Save the active part.
   KConfigGroup config_group( Smb4KSettings::self()->config(), "MainWindow" );
-  config_group.writeEntry( "ActivePart", m_manager->activePart()->objectName() );
+
+  if (m_manager->activePart())
+  {
+    config_group.writeEntry( "ActivePart", m_manager->activePart()->objectName() );
+  }
+  else
+  {
+    // Do nothing
+  }
   
   // Save if the main window should be started docked.
   Smb4KSettings::setStartMainWindowDocked( !isVisible() );
