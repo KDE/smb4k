@@ -960,7 +960,7 @@ void Smb4KScanner::slotJobFinished( KJob *job )
 }
 
 
-void Smb4KScanner::slotAuthError( Smb4KQueryMasterJob *job )
+void Smb4KScanner::slotAuthError(Smb4KQueryMasterJob *job)
 {
   // Do not allow periodic scanning when an authentication
   // error occurred. We do not want to operate on a network
@@ -969,49 +969,49 @@ void Smb4KScanner::slotAuthError( Smb4KQueryMasterJob *job )
   
   Smb4KHost master_browser;
   
-  if ( !job->masterBrowser().isEmpty() )
+  if (!job->masterBrowser().isEmpty())
   {
-    master_browser.setIsMasterBrowser( true );
+    master_browser.setIsMasterBrowser(true);
 
-    if ( QHostAddress( job->masterBrowser() ).protocol() == QAbstractSocket::UnknownNetworkLayerProtocol )
+    if (QHostAddress( job->masterBrowser() ).protocol() == QAbstractSocket::UnknownNetworkLayerProtocol)
     {
-      master_browser.setHostName( job->masterBrowser() );
+      master_browser.setHostName(job->masterBrowser());
     }
     else
     {
-      master_browser.setIP( job->masterBrowser() );
+      master_browser.setIP(job->masterBrowser());
     }
     
-    emit authError ( &master_browser, LookupDomains );
+    emit authError (&master_browser, LookupDomains);
   }
   else
   {
     // Do nothing
   }
 
-  if ( Smb4KWalletManager::self()->showPasswordDialog( &master_browser, job->parentWidget() ) )
+  if (Smb4KWalletManager::self()->showPasswordDialog(&master_browser, job->parentWidget()))
   {
     // Start a query job with the returned master browser.
-    Smb4KQueryMasterJob *job = new Smb4KQueryMasterJob( this );
-    job->setObjectName( "LookupDomainsJob" );
-    job->setupLookup( job->masterBrowser(), job->parentWidget() );
+    Smb4KQueryMasterJob *job = new Smb4KQueryMasterJob(this);
+    job->setObjectName("LookupDomainsJob");
+    job->setupLookup(master_browser.hostName().isEmpty() ? master_browser.ip() : master_browser.hostName(), job->parentWidget());
 
-    connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
-    connect( job, SIGNAL(aboutToStart()), SLOT(slotAboutToStartDomainsLookup()) );
-    connect( job, SIGNAL(finished()), SLOT(slotDomainsLookupFinished()) );
-    connect( job, SIGNAL(workgroups(QList<Smb4KWorkgroup*>)), SLOT(slotWorkgroups(QList<Smb4KWorkgroup*>)) );
-    connect( job, SIGNAL(authError(Smb4KQueryMasterJob*)), SLOT(slotAuthError(Smb4KQueryMasterJob*)) );
+    connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
+    connect(job, SIGNAL(aboutToStart()), SLOT(slotAboutToStartDomainsLookup()));
+    connect(job, SIGNAL(finished()), SLOT(slotDomainsLookupFinished()));
+    connect(job, SIGNAL(workgroups(QList<Smb4KWorkgroup*>)), SLOT(slotWorkgroups(QList<Smb4KWorkgroup*>)));
+    connect(job, SIGNAL(authError(Smb4KQueryMasterJob*)), SLOT(slotAuthError(Smb4KQueryMasterJob*)));
 
-    if ( !hasSubjobs() && modifyCursor() )
+    if (!hasSubjobs() && modifyCursor())
     {
-      QApplication::setOverrideCursor( Qt::BusyCursor );
+      QApplication::setOverrideCursor(Qt::BusyCursor);
     }
     else
     {
       // Do nothing
     }
 
-    addSubjob( job );
+    addSubjob(job);
 
     job->start();
   }
@@ -1024,22 +1024,23 @@ void Smb4KScanner::slotAuthError( Smb4KQueryMasterJob *job )
 }
 
 
-void Smb4KScanner::slotAuthError( Smb4KLookupDomainMembersJob *job )
+void Smb4KScanner::slotAuthError(Smb4KLookupDomainMembersJob *job)
 {
   // Do not allow periodic scanning when an authentication
   // error occurred. We do not want to operate on a network
   // item that might get invalidated during periodic scanning.
   d->scanningAllowed = false;
 
-  Smb4KHost *master_browser = findHost( job->workgroup()->masterBrowserName(), job->workgroup()->workgroupName() );
+  Smb4KWorkgroup *workgroup = findWorkgroup(job->workgroup()->workgroupName());
+  Smb4KHost *master_browser = findHost(job->workgroup()->masterBrowserName(), job->workgroup()->workgroupName());
   
-  if ( master_browser )
+  if (workgroup && master_browser)
   {
-    emit authError( master_browser, LookupDomainMembers );
+    emit authError(master_browser, LookupDomainMembers);
     
-    if ( Smb4KWalletManager::self()->showPasswordDialog( master_browser, job->parentWidget() ) )
+    if (Smb4KWalletManager::self()->showPasswordDialog(master_browser, job->parentWidget()))
     {
-      lookupDomainMembers( job->workgroup(), job->parentWidget() );
+      lookupDomainMembers(workgroup, job->parentWidget());
     }
     else
     {
@@ -1055,22 +1056,22 @@ void Smb4KScanner::slotAuthError( Smb4KLookupDomainMembersJob *job )
 }
 
 
-void Smb4KScanner::slotAuthError( Smb4KLookupSharesJob *job )
+void Smb4KScanner::slotAuthError(Smb4KLookupSharesJob *job)
 {
   // Do not allow periodic scanning when an authentication
   // error occurred. We do not want to operate on a network
   // item that might get invalidated during periodic scanning.
   d->scanningAllowed = false;
   
-  Smb4KHost *host = findHost( job->host()->hostName(), job->host()->workgroupName() );
+  Smb4KHost *host = findHost(job->host()->hostName(), job->host()->workgroupName());
   
-  if ( host )
+  if (host)
   {
-    emit authError( host, LookupShares );
+    emit authError(host, LookupShares);
     
-    if ( Smb4KWalletManager::self()->showPasswordDialog( host, job->parentWidget() ) )
+    if (Smb4KWalletManager::self()->showPasswordDialog(host, job->parentWidget()))
     {
-      lookupShares( host, job->parentWidget() );
+      lookupShares(host, job->parentWidget());
     }
     else
     {
