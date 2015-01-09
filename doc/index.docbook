@@ -1000,11 +1000,11 @@
 </sect2>
 </sect1>
 
-<!-- The Plasmoid -->
+<!-- Using Smb4K : The Plasmoid -->
 
 <sect1 id="plasmoid">
 <title>The &plasmoid;</title>
-<para>&smb4k; comes with a plasmoid that can be added as a widget to the desktop or the panel. It consists of three views that are arranged as tabs: <guilabel>Network Neighborhood</guilabel>, <guilabel>Mounted Shares</guilabel>, and <guilabel>Bookmarks</guilabel>.</para>
+<para>&smb4k; comes with a plasmoid that can be added as a widget to the desktop or the panel. It consists of four views that are arranged as tabs: <guilabel>Network Neighborhood</guilabel>, <guilabel>Mounted Shares</guilabel>, <guilabel>Bookmarks</guilabel>, and <guilabel>Profiles</guilabel>.</para>
 
 <screenshot>
   <screeninfo>Screenshot of the plasmoid on the desktop</screeninfo>
@@ -1018,10 +1018,12 @@
     </mediaobject>
 </screenshot>
 
+<!-- Using Smb4K : The Plasmoid : Network Neighborhood Tab -->
+
 <sect2 id="plasmoid_network_neighborhood">
 <title>Network Neighborhood Tab</title>
 
-<para>In the <guilabel>Network Neighborhood</guilabel> tab the network items are arranged in a list view:</para>
+<para>On the <guilabel>Network Neighborhood</guilabel> page the network items are arranged in a list view:</para>
 
 <screenshot>
   <screeninfo>Screenshot of the plasmoid's network neighborhood tab</screeninfo>
@@ -1040,12 +1042,16 @@
 <para>For hosts and shares, to the right of the name of the network item some action buttons are arranged. For hosts, there is one button with that you can open the <link linkend="network_neighborhood_browser_custom">Custom Options</link> dialog. For shares, there is an additional button with that you can <link linkend="mainwindow_add_bookmarks">add the share to the bookmarks</link>. The action buttons are transparent by default and change to opaque when you move your mouse over them. By left clicking you initiate the respective action.</para>
  
 <para>Besides the already mentioned <guibutton>Up</guibutton> button, the toolbar contains three more entries: <guibutton>Rescan</guibutton>, <guibutton>Abort</guibutton> and <guibutton>Mount Dialog</guibutton>. With them you can do a rescan, abort any running action or open the <link linkend="mainwindow_network_mounting">dialog for "manual" mounts</link>.</para>
+
+<note><para>In the current development state, the plasmoid is not able to handle the <link linkend="configuration_network_periodic_scanning">automatic scanning feature</link>, &smb4k; provides. Funny things will happen, if you use it with the plasmoid and will it probably render mostly unusable.</para></note>
 </sect2>
+
+<!-- Using Smb4K : The Plasmoid : Mounted Shares Tab -->
 
 <sect2 id="plasmoid_mounted_shares">
 <title>Mounted Shares Tab</title>
 
-<para>In the <guilabel>Mounted Shares</guilabel> tab all mounted shares are listed:</para>
+<para>On the <guilabel>Mounted Shares</guilabel> page all mounted shares are listed:</para>
 
 <screenshot>
   <screeninfo>Screenshot of the plasmoid's mounted shares tab</screeninfo>
@@ -1062,13 +1068,14 @@
 <para>Right to the name of the share and its host, two action buttons are arranged. The first one is for <link linkend="mainwindow_add_bookmarks">adding a bookmark</link> and the second for unmounting the shares. The action buttons are transparent by default and change to opaque when you move your mouse over them. By left clicking you initiate the respective action.</para>
 
 <para>The toolbar only contains the <guibutton>Unmount All</guibutton> with that you can unmount all shares at once.</para>
-
 </sect2>
+
+<!-- Using Smb4K : The Plasmoid : Bookmarks Tab -->
 
 <sect2 id="plasmoid_bookmarks">
 <title>Bookmarks Tab</title>
 
-<para>In the <guilabel>Bookmarks</guilabel> tab the bookmark groups and bookmarks are listed:</para>
+<para>On the <guilabel>Bookmarks</guilabel> page the bookmark groups and bookmarks <!-- defined for the currently active profile -->are listed:</para>
 
 <screenshot>
   <screeninfo>Screenshot of the plasmoid's bookmarks tab</screeninfo>
@@ -1085,6 +1092,15 @@
 <para>Bookmarked shares can be mounted by left clicking the respective bookmark. Bookmark groups can be entered the same way.</para>
 
 <para>To edit or remove the bookmarks, you can press the <guibutton>Edit</guibutton> action button in the toolbar to open the <link linkend="mainwindow_bookmarks_editor">Bookmark Editor</link>. To get back to the toplevel the <guibutton>Back</guibutton> button is used.</para>
+</sect2>
+
+<!-- Using Smb4K : The Plasmoid : Profiles Tab -->
+
+<sect2 id="plasmoid_profiles">
+  <title>Profiles Tab</title>
+  <para>On the <guilabel>Profiles</guilabel> page, all defined profiles are listed. The currently active one is marked with an appended <guilabel>(active)</guilabel>.</para>
+  <!-- screenshot goes here -->
+  <para>You can activate a certain profile by clicking it.</para>
 </sect2>
 </sect1>
 
