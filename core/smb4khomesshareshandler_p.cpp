@@ -3,7 +3,7 @@
     handler.
                              -------------------
     begin                : Mo Apr 11 2011
-    copyright            : (C) 2011-2014 by Alexander Reinholdt
+    copyright            : (C) 2011-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -148,7 +148,8 @@ void Smb4KHomesUsers::setProfile(const QString& profile)
 
 
 
-Smb4KHomesUserDialog::Smb4KHomesUserDialog( QWidget *parent ) : KDialog( parent )
+Smb4KHomesUserDialog::Smb4KHomesUserDialog( Smb4KShare *share, QWidget *parent ) 
+: KDialog( parent ), m_share(share)
 {
   setCaption( i18n( "Specify User" ) );
   setButtons( KDialog::User1|KDialog::Ok|KDialog::Cancel );
@@ -197,7 +198,7 @@ void Smb4KHomesUserDialog::setupView()
   pixmap->setPixmap( user_pix );
   pixmap->setAlignment( Qt::AlignBottom );
 
-  QLabel *label = new QLabel( i18n( "Please specify a username." ), description );
+  QLabel *label = new QLabel( i18n( "Please specify a username for share <b>%1</b>." ).arg(m_share->unc()), description );
   label->setWordWrap( true );
   label->setAlignment( Qt::AlignBottom );
 

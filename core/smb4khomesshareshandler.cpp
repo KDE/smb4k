@@ -102,7 +102,7 @@ bool Smb4KHomesSharesHandler::specifyUser( Smb4KShare *share, bool overwrite, QW
     QStringList users;
     findHomesUsers( share, &users );
     
-    QPointer<Smb4KHomesUserDialog> dlg = new Smb4KHomesUserDialog( parent );
+    QPointer<Smb4KHomesUserDialog> dlg = new Smb4KHomesUserDialog( share, parent );
     dlg->setUserNames( users );
     
     if ( dlg->exec() == KDialog::Accepted )

@@ -3,7 +3,7 @@
     handler.
                              -------------------
     begin                : Mo Apr 11 2011
-    copyright            : (C) 2011-2014 by Alexander Reinholdt
+    copyright            : (C) 2011-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -141,7 +141,7 @@ class Smb4KHomesUserDialog : public KDialog
     /**
      * Constructor
      */
-    explicit Smb4KHomesUserDialog( QWidget *parent = 0 );
+    explicit Smb4KHomesUserDialog( Smb4KShare *share, QWidget *parent = 0 );
     
     /**
      * Destructor
@@ -193,6 +193,7 @@ class Smb4KHomesUserDialog : public KDialog
   private:
     void setupView();
     KComboBox *m_user_combo;
+    Smb4KShare *m_share;
 };
 
 
