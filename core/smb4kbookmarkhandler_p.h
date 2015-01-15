@@ -64,6 +64,14 @@ class KDE_EXPORT Smb4KBookmarkDialog : public KDialog
     * The destructor
     */
    ~Smb4KBookmarkDialog();
+   
+   /**
+    * Returns the list of bookmarks including all changes that could
+    * be made in the bookmark dialog.
+    * 
+    * @returns the list of bookmarks.
+    */
+   const QList<Smb4KBookmark *> &bookmarks();
 
   protected Q_SLOTS:
     /**

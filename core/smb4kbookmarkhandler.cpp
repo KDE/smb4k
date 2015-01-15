@@ -182,30 +182,10 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<Smb4KShare *> &list, QWidget
 
     if ( dlg->exec() == KDialog::Accepted )
     {
-      // Check the label of the new bookmarks.
-      for ( int i = 0; i < new_bookmarks.size(); ++i )
-      {
-        if ( !new_bookmarks.at( i )->label().isEmpty() )
-        {
-          Smb4KBookmark *bookmark = findBookmarkByLabel( new_bookmarks.at( i )->label() );
-
-          if ( bookmark )
-          {
-            Smb4KNotification::bookmarkLabelInUse(new_bookmarks.at( i ));
-            new_bookmarks[i]->setLabel( QString( "%1 (1)" ).arg( new_bookmarks.at( i )->label() ) );
-          }
-          else
-          {
-            // Do nothing
-          }
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-      
-      addBookmarks( new_bookmarks, false );
+      // The bookmark dialog uses an internal list of bookmarks, 
+      // so use that one instead of the temporary list created 
+      // above.
+      addBookmarks(dlg->bookmarks(), false);
     }
     else
     {
@@ -217,6 +197,12 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<Smb4KShare *> &list, QWidget
   else
   {
     // Do nothing
+  }
+  
+  // Clear the list of bookmarks.
+  while (!new_bookmarks.isEmpty())
+  {
+    delete new_bookmarks.takeFirst();
   }
 }
 
@@ -238,10 +224,21 @@ void Smb4KBookmarkHandler::addBookmarks(const QList< Smb4KBookmark* >& list, boo
     // Do nothing
   }
   
-  // Append the new bookmarks to the internal list.
-  for ( int i = 0; i < list.size(); ++i )
+  // Append the new bookmarks to the internal list and check
+  // the label simultaneously.
+  for (int i = 0; i < list.size(); ++i)
   {
-    d->bookmarks << new Smb4KBookmark( *list.at( i ) );
+    if (!list.at(i)->label().isEmpty() && findBookmarkByLabel(list.at(i)->label()))
+    {
+      Smb4KNotification::bookmarkLabelInUse(list.at(i));
+      Smb4KBookmark *new_bookmark = new Smb4KBookmark(*list.at(i));
+      new_bookmark->setLabel(QString("%1 (1)").arg(list.at(i)->label()));
+      d->bookmarks << new_bookmark;
+    }
+    else
+    {
+      d->bookmarks << new Smb4KBookmark(*list.at(i));
+    }
   }
       
   // Append new groups to the internal list.
