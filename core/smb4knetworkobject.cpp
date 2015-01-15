@@ -3,7 +3,7 @@
     encapsulates the network items. It is for use with QtQuick.
                              -------------------
     begin                : Fr Mär 02 2012
-    copyright            : (C) 2012-2013 by Alexander Reinholdt
+    copyright            : (C) 2012-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -50,6 +50,7 @@ class Smb4KNetworkObjectPrivate
     bool mounted;
     KUrl mountpoint;
     bool printer;
+    bool isMaster;
 };
 
 
@@ -61,6 +62,7 @@ Smb4KNetworkObject::Smb4KNetworkObject(Smb4KWorkgroup *workgroup, QObject *paren
   d->icon      = workgroup->icon();
   d->mounted   = false;
   d->printer   = false;
+  d->isMaster  = false;
   setType(Workgroup);
 }
 
@@ -74,6 +76,7 @@ Smb4KNetworkObject::Smb4KNetworkObject(Smb4KHost *host, QObject *parent)
   d->comment   = host->comment();
   d->mounted   = false;
   d->printer   = false;
+  d->isMaster  = host->isMasterBrowser();
   setType(Host);
 }
 
@@ -87,6 +90,7 @@ Smb4KNetworkObject::Smb4KNetworkObject(Smb4KShare *share, QObject *parent)
   d->comment    = share->comment();
   d->mounted    = share->isMounted();
   d->printer    = share->isPrinter();
+  d->isMaster   = false;
   d->mountpoint.setUrl(share->path(), KUrl::TolerantMode);
   d->mountpoint.setScheme("file");
   setType(Share);
@@ -99,6 +103,7 @@ Smb4KNetworkObject::Smb4KNetworkObject(QObject *parent)
   d->url.setUrl("smb://", KUrl::TolerantMode);
   d->mounted   = false;
   d->printer   = false;
+  d->isMaster  = false;
   setType(Network);
 }
 
@@ -169,6 +174,26 @@ void Smb4KNetworkObject::setHostName(const QString& name)
 {
   d->url.setHost(name);
   emit changed();
+}
+
+
+bool Smb4KNetworkObject::isMasterBrowser() const
+{
+  return d->isMaster;
+}
+
+
+void Smb4KNetworkObject::setMasterBrowser(bool master)
+{
+  if (type() == Host)
+  {
+    d->isMaster = master;
+    emit changed();
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 

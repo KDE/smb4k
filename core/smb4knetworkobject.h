@@ -3,7 +3,7 @@
     encapsulates the network items. It is for use with QtQuick.
                              -------------------
     begin                : Fr Mär 02 2012
-    copyright            : (C) 2012-2013 by Alexander Reinholdt
+    copyright            : (C) 2012-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -72,6 +72,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
   Q_PROPERTY(bool isMounted READ isMounted WRITE setMounted NOTIFY changed)
   Q_PROPERTY(bool isPrinter READ isPrinter WRITE setPrinter NOTIFY changed)
   Q_PROPERTY(QUrl mountpoint READ mountpoint WRITE setMountpoint NOTIFY changed)
+  Q_PROPERTY(bool isMasterBrowser READ isMasterBrowser WRITE setMasterBrowser NOTIFY changed)
   Q_ENUMS(NetworkItem)
   
   friend class Smb4KNetworkObjectPrivate;
@@ -165,6 +166,22 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * @param name        The host name
      */
     void setHostName(const QString &name);
+    
+    /**
+     * Returns TRUE if this network object represents a master browser
+     * and FALSE otherwise.
+     * @returns TRUE if the network object is a master browser
+     */
+    bool isMasterBrowser() const;
+    
+    /**
+     * Set this network object to be a master browser. This function
+     * only does something, if type() returns Host.
+     * 
+     * @param master      Set to TRUE, if the network item is a master 
+     *                    browser
+     */
+    void setMasterBrowser(bool master);
 
     /**
      * In case of a share, this function returns the name of the
