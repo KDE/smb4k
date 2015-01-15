@@ -844,7 +844,7 @@
   </mediaobject>
 </screenshot>
 
-<para>By left clicking the icon, you can minimize or restore the main window. A right click brings up a popup menu that contains several menu items allowing you to work with the mounted shares, manage or mount your bookmarks and to configure &smb4k; without the need to open the main window.</para>
+<para>By left clicking the icon, you can minimize or restore the main window. A right click brings up a popup menu that contains several menu items allowing you to work with the mounted shares, manage or mount your bookmarks, select the profile you want to use and to configure &smb4k; without the need to open the main window.</para>
 </sect2>
 
 <sect2 id="systemtray_menus">
@@ -932,7 +932,7 @@
   </varlistentry>
 </variablelist>
 
-<para>The <guimenuitem>Bookmarks</guimenuitem> menu contains all your bookmarks organized according to the structure you gave them (see also <link linkend="mainwindow_add_bookmarks">here</link> and <link linkend="mainwindow_bookmarks_editor">here</link>)</para>
+<para>The <guimenuitem>Bookmarks</guimenuitem> menu contains all your bookmarks organized according to the structure you gave them (see also <link linkend="mainwindow_add_bookmarks">here</link> and <link linkend="mainwindow_bookmarks_editor">here</link>).</para>
 
 <screenshot>
   <screeninfo>Screenshot 2 of the popup menu of the system tray icon</screeninfo>
@@ -1098,9 +1098,10 @@
 
 <sect2 id="plasmoid_profiles">
   <title>Profiles Tab</title>
-  <para>On the <guilabel>Profiles</guilabel> page, all defined profiles are listed. The currently active one is marked with an appended <guilabel>(active)</guilabel>.</para>
+  <para>On the <guilabel>Profiles</guilabel> page, all defined profiles are listed. The currently active one is marked with an appended <guilabel>(active)</guilabel> label.</para>
   <!-- screenshot goes here -->
   <para>You can activate a certain profile by clicking it.</para>
+  <para>Profiles can be <link linkend="profiles">managed</link> via the <link linkend="configuration_profiles">configuration dialog</link>.</para>
 </sect2>
 </sect1>
 
@@ -1278,20 +1279,34 @@
         </textobject>
       </mediaobject>
     </screenshot>
-    <para>A profile can be removed by selecting it in the list view and clicking <guibutton>Remove</guibutton>. There is also the possibility to change the order of the profiles with the <guibutton>Move Up</guibutton> and <guibutton>Move Down</guibutton> buttons.</para>
-    <para>In case you enabled the use of the migration assistant, it is always launched when you remove a profile or when you enable/disable the use of profiles. It provides the possibility to migrate</para>
+    <para>If you want to rename a profile, just click it and edit the name edit line. Clicking <guibutton>Add</guibutton> will update the name in the list view. All stored settings will be migrated seamlessly (without the use of the migration assistant). A profile can be removed by selecting it in the list view and clicking <guibutton>Remove</guibutton>. There is also the possibility to change the order of the profiles with the <guibutton>Move Up</guibutton> and <guibutton>Move Down</guibutton> buttons.</para>
+    <para>In case you enabled the use of the migration assistant, it is always launched when you remove a profile or when you enable/disable the use of profiles. It provides the possibility to migrate all relevant settings</para>
     <itemizedlist>
-      <listitem><para>all settings of a profile that is to be removed to another one</para></listitem>
-      <listitem><para>all settings that were stored under the default profile to a specific other profile</para></listitem>
-      <listitem><para>all settings of all profiles back to the default profile</para></listitem>
+      <listitem><para>of a profile that is to be removed to another one</para></listitem>
+      <listitem><para>of the defualt profile to a specific other profile</para></listitem>
+      <listitem><para>of all profiles back to the default profile</para></listitem>
     </itemizedlist>
+    <para>The following screenshot shows exemplarily the profile migration assistant after you enabled the use of profiles:</para>
+    <screenshot>
+      <screeninfo>Screenshot of the profile migration assistant</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="profile_migration_assistant.png" format="PNG" />
+        </imageobject>
+        <textobject>
+          <phrase>Profile Migration Assistant</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+    <para>Under <guilabel>Old Profile</guilabel> the old profile (<guilabel>&lt;Default Profile&gt;</guilabel> in this case) is listed. Under <guilabel>New Profile</guilabel> you can choose the profile where the settings should be migrated to from a drop-down menu. Clicking the <guibutton>OK</guibutton> button migrates the settings, clicking <guibutton>Cancel</guibutton> cancels the action.</para>
+    <note><para>In order to use the migration assistant when you enable the use of profiles the first time, you need to enable its use at the same time you enable the use of profiles.</para></note>
   </sect2>
   
 <!-- Using Smb4K : Profiles : Activating a Profile -->
   
   <sect2 id="profiles_activate_profile">
     <title>Activating a Profile</title>
-    <para>...</para>
+    <para>By default, the first profile in the list is set active when you enable the use of profiles. The active profile can be changed in the <guimenu>Profiles</guimenu> menu of the main window or the system tray widget or on the <guilabel>Profiles</guilabel> page of the plasmoid.</para>
   </sect2>  
 </sect1>
 
