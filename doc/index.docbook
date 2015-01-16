@@ -1283,7 +1283,7 @@
     <para>In case you enabled the use of the migration assistant, it is always launched when you remove a profile or when you enable/disable the use of profiles. It provides the possibility to migrate all relevant settings</para>
     <itemizedlist>
       <listitem><para>of a profile that is to be removed to another one</para></listitem>
-      <listitem><para>of the defualt profile to a specific other profile</para></listitem>
+      <listitem><para>of the default profile to a specific other profile</para></listitem>
       <listitem><para>of all profiles back to the default profile</para></listitem>
     </itemizedlist>
     <para>The following screenshot shows exemplarily the profile migration assistant after you enabled the use of profiles:</para>
