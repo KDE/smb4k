@@ -4465,9 +4465,9 @@ of the &kde; Fundamentals.</para>
 <sect1 id="appendix_requirements" >
 <title>Requirements</title>
 
-<para>&smb4k; officially supports &Linux; (>= 2.2.x) and FreeBSD (>= 4.10). It might also run on other Unix systems.</para>
-<para>If you want to compile &smb4k; from source, you need to have the kdelibs (including header files) and kdebase-runtime modules of the &kde; SC 4.4 or later installed. Additionally, &Qt; version 4.7 or later is required.</para>
-<para>In order to use &smb4k; successfully, you have to install the Samba software suite (3.x, 3.4 or later recommended), &GNU; grep, &GNU; awk or similar, &GNU; sed and the &GNU; findutils. If you are using &Linux;, you also need support of the <filename class="directory">/proc</filename> file system compiled into your kernel.</para>
+<para>&smb4k; officially supports &Linux; (>= 2.2.x) and FreeBSD (>= 4.10). NetBSD support is experimental. Other Unix systems haven't been tested.</para>
+<para>If you want to compile &smb4k; from source, you need to have &Qt; (version 4.8 or later, but <emphasis role="bold">not</emphasis> &Qt; 5.x) as well as kdelibs (including header files) and kde-runtime (&kde; SC 4.8 or later) installed. For the plasmoid, &kde; SC 4.10 or later is required.</para>
+<para>In order to use &smb4k; successfully, you have to install the Samba software suite (3.x or 4.x, 4.x recommended), &GNU; grep, &GNU; awk or similar, &GNU; sed and the &GNU; findutils. If you are using &Linux;, you also need support of the <filename class="directory">/proc</filename> file system compiled into your kernel.</para>
 <para>To enable full functionality, you should also install rsync.</para>
 <para>&smb4k; uses about 20 MB of memory to run, but this may vary depending on your platform and configuration.</para>
 <para>Links to all required libraries and programs as well as &smb4k; itself can be found on <ulink url="http://smb4k.sourceforge.net" >the &smb4k; home page</ulink>.</para>
