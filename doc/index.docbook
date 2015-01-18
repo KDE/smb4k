@@ -24,11 +24,11 @@
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
 </authorgroup>
 <copyright>
-<year>2005-2014</year>
+<year>2005-2015</year>
 <holder>Alexander Reinholdt</holder>
 </copyright>
 <legalnotice>&underFDL;</legalnotice>
-<date>2014-11-xx</date>
+<date>2015-01-xx</date>
 <releaseinfo>5.1.0</releaseinfo>
 <abstract>
 <para>&smb4k; is an advanced network neighborhood browser and Samba share mounting utility for KDE.</para>
@@ -1391,7 +1391,7 @@
 <para>Under NetBSD, &smb4k; is able to run since version 1.2.0. However, some modifications have to be made in order to be able to mount and unmount shares:</para>
 <para>Assuming that the prefix of your &kde; installation is <filename class="directory">/usr/pkg</filename>, the following steps have to be taken to make &smb4k; work properly:</para>
 <itemizedlist>
-  <listitem><para>Configure, compile and install &smb4k; according to the directions given in the <link linkend="appendix_compilation">Compilation and Installation</link> section of the appendix.</para></listitem>
+  <listitem><para>Configure, compile and install &smb4k; according to the directions given in the <link linkend="appendix_compilation">Configuration, Compilation and Installation</link> section of the appendix.</para></listitem>
   <listitem><para>After installation, link (or copy) the file <filename>net.sourceforge.smb4k.mounthelper.conf</filename> from the <filename class="directory">examples</filename> directory to the right location:</para>
 <para><screen><userinput><prompt>$</prompt> <command>cd</command> <filename class="directory">/usr/pkg/etc/dbus-1/system.d/</filename></userinput>
 <userinput><prompt>$</prompt> <command>sudo ln</command> -s \
@@ -1405,7 +1405,6 @@
 </sect3>
 </sect2>
 </sect1>
-
 </chapter>
 
 
@@ -4416,7 +4415,8 @@ of the &kde; Fundamentals.</para>
 <listitem><para>Provide the version of &smb4k; and &kde;.</para></listitem>
 <listitem><para>Mention your operating system (&Linux;, FreeBSD, &etc;) and the distribution that is running on your computer.</para></listitem>
 <listitem><para>Include the full error message if an error dialog was displayed.</para></listitem>
-<listitem><para>Add additional data, &ie; attach the backtrace if you experienced a crash, send a screen shot if you are reporting a &GUI; related problem, &etc;</para></listitem>
+<listitem><para>If you experienced a crash, attach a full backtrace. For this it is recommended that you (re-)compile &smb4k; with debugging symbols. How this is done is mentioned in the <link linkend="appendix_compilation">Configuration, Compilation and Installation</link> appendix.</para></listitem>
+<listitem><para>Add additional data, &eg; send a screen shot if you are reporting a &GUI; related problem.</para></listitem>
 </itemizedlist>
 <para>The recommended method to report a bug is to go to our <ulink url="https://sourceforge.net/p/smb4k/tickets/">bug tracking system</ulink> and fill out the form. But you can also use the dialog that opens when you click the <menuchoice><guimenu>Help</guimenu><guimenuitem>Report Bug...</guimenuitem></menuchoice> menu item.</para>
 </chapter>
@@ -4427,7 +4427,7 @@ of the &kde; Fundamentals.</para>
 <chapter id="credits" >
 <title>Credits and License</title>
 
-<para>Copyright &copy; 2003 - 2014, Alexander Reinholdt <email>alexander.reinholdt@kdemail.net</email></para>
+<para>Copyright &copy; 2003 - 2015, Alexander Reinholdt <email>alexander.reinholdt@kdemail.net</email></para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
 &underFDL;
@@ -4454,8 +4454,8 @@ of the &kde; Fundamentals.</para>
 
 <!-- Appendix -->
 
-<appendix id="appendix_installation" >
-<title>Installation</title>
+<appendix id="appendix">
+  <title>Appendix</title>
 
 <sect1 id="appendix_getting_smb4k" >
 <title>How to obtain &smb4k;</title>
@@ -4465,43 +4465,82 @@ of the &kde; Fundamentals.</para>
 <sect1 id="appendix_requirements" >
 <title>Requirements</title>
 
-<para>&smb4k; officially supports &Linux; (>= 2.2.x) and FreeBSD (>= 4.10). NetBSD support is experimental. Other Unix systems haven't been tested.</para>
-<para>If you want to compile &smb4k; from source, you need to have &Qt; (version 4.8 or later, but <emphasis role="bold">not</emphasis> &Qt; 5.x) as well as kdelibs (including header files) and kde-runtime (&kde; SC 4.8 or later) installed. For the plasmoid, &kde; SC 4.10 or later is required.</para>
-<para>In order to use &smb4k; successfully, you have to install the Samba software suite (3.x or 4.x, 4.x recommended), &GNU; grep, &GNU; awk or similar, &GNU; sed and the &GNU; findutils. If you are using &Linux;, you also need support of the <filename class="directory">/proc</filename> file system compiled into your kernel.</para>
-<para>To enable full functionality, you should also install rsync.</para>
+<para>&smb4k; officially supports &Linux;, FreeBSD and NetBSD. Other operating systems might work as well, but haven't been tested.</para>
+<para>To compile &smb4k;, you need:</para>
+<itemizedlist>
+  <listitem><para><ulink url="http://www.cmake.org">CMake</ulink> (>= 2.8)</para></listitem>
+  <listitem><para><ulink url="http://gcc.gnu.org">GNU Compiler Collection</ulink> (g++ >= 4.0) or <ulink url="http://clang.llvm.org">clang/LLVM</ulink> (>= 3.0)</para></listitem>
+</itemizedlist>
+<para>&smb4k; depends on the following libraries:</para>
+<itemizedlist>
+  <listitem><para><ulink url="http://www.kde.org">kdelibs and kde-runtime</ulink> (>= 4.8.0 or >= 4.10.0 for the plasmoid)</para></listitem>
+  <listitem><para><ulink url="http://www.qt.io">&Qt;</ulink> (>= 4.8.0, but &lt; 5.x)</para></listitem>
+  <listitem><para>an implementation of the C library</para></listitem>
+</itemizedlist>
+<para>For a proper operation, you also need:</para>
+<itemizedlist>
+  <listitem><para><ulink url="http://www.samba.org">Samba</ulink> (3.x or 4.x, 4.1 recommended)</para></listitem>
+  <listitem><para><ulink url="http://http://www.gnu.org/software/grep/">GNU grep</ulink></para></listitem>
+  <listitem><para><ulink url="http://www.gnu.org/software/gawk/">GNU awk (gawk)</ulink> or similar</para></listitem>
+  <listitem><para><ulink url="http://www.gnu.org/software/sed/">GNU sed</ulink></para></listitem>
+  <listitem><para><ulink url="http://www.gnu.org/software/findutils/">GNU findutils (xargs)</ulink></para></listitem>
+  <listitem><para>Support of the /proc file system compiled into your kernel (&Linux;)</para></listitem>
+</itemizedlist>
+<para>To enable full functionality, you may also want to install these programs:</para>
+<itemizedlist>
+  <listitem><para><ulink url="http://rsync.samba.org">rsync</ulink></para></listitem>
+</itemizedlist>
 <para>&smb4k; uses about 20 MB of memory to run, but this may vary depending on your platform and configuration.</para>
-<para>Links to all required libraries and programs as well as &smb4k; itself can be found on <ulink url="http://smb4k.sourceforge.net" >the &smb4k; home page</ulink>.</para>
 <para>The list of changes can be found in the <filename>ChangeLog</filename> file.</para>
 </sect1>
 
-<sect1 id="appendix_compilation" >
-<title>Compilation and Installation</title>
-<para>This section describes the configuration, compilation and installation of &smb4k;.</para>
-<orderedlist>
-<listitem><para>Unpack the downloaded source tarball: <screen><prompt>$</prompt> <userinput><command>tar</command> -xvfj smb4k-x.x.x.tar.bz2</userinput></screen> (Replace x.x.x with the version number)</para></listitem>
-<listitem><para>Create a build directory: 
-<screen><prompt>$</prompt> <userinput><command>cd</command> smb4k-x.x.x</userinput>
-<prompt>$</prompt> <userinput><command>mkdir</command> build</userinput>
-</screen> (The build directory can have any name you want.)</para></listitem>
-<listitem><para>Change into the build directory: <screen><prompt>$</prompt> <userinput><command>cd</command> build</userinput></screen></para></listitem>
-<listitem><para>Configure the source code with at least the following command: 
-<screen><prompt>$</prompt> <userinput><command>cmake</command> -DCMAKE_INSTALL_PREFIX=`<command>kde4-config</command> --prefix` -DCMAKE_BUILD_TYPE=Release ..</userinput></screen> 
-If you also want to install &smb4k;'s core header files, add the <option>-DINSTALL_HEADER_FILES=true</option> to the command line. Several more options can be added. Read the <ulink url="http://www.cmake.org/HTML/Documentation.html">cmake documentation</ulink> for more information.</para></listitem>
-<listitem><para>Compile the source code: <screen><prompt>$</prompt> <userinput><command>make</command></userinput></screen></para></listitem>
-<listitem><para>Install the application. Run <screen><prompt>$</prompt> <userinput><command>sudo</command> <command>make</command> install</userinput></screen> in the <filename class="directory">build</filename> directory. If you want to be able to remove &smb4k; with your package manager, install the <application>checkinstall</application> package and run <screen><prompt>$</prompt> <userinput><command>sudo</command> <command>checkinstall</command></userinput></screen> instead.</para></listitem>
-</orderedlist>
-</sect1>
+<sect1 id="appendix_compilation">
+<title>Configuration, Compilation and Installation</title>
 
-<sect1 id="appendix_debugging">
-<title>Debugging the Source Code</title>
-<para>If you experience crashes or similar and want to debug the source code yourself, compile it with debugging symbols. The procedure is similar to the one described in the <link linkend="appendix_compilation">Compilation and Installation</link> section except that you need to modify the cmake command slightly:</para>
-<screen><prompt>$</prompt> <userinput><command>cmake</command> -DCMAKE_INSTALL_PREFIX=`<command>kde4-config</command> --prefix` -DCMAKE_BUILD_TYPE=Debug ..</userinput></screen>
-<para>Now compile and install the program as stated <link linkend="appendix_compilation">before</link>. If you do not want to
-install but only debug the newly compiled program, you may execute &smb4k; from
-within the source code directory. Change into the <filename role="directory">smb4k</filename> subdirectory and run:</para>
-<screen><prompt>$</prompt> <userinput><command>./smb4k</command> --nofork</userinput></screen>
-<para>If you found the cause for a bug, please let us know. A backtrace or a patch will be much appreciated.</para>
+<para>This section describes the configuration, compilation and installation of &smb4k;. Make sure, you have read the <link linkend="appendix_requirements">Requirements</link> page before you start.</para>
+<para><ulink url="https://sourceforge.net/projects/smb4k/files">Download</ulink> the version of Smb4K you are interested in and extract the source tarball:</para>
+<para><screen><prompt>$</prompt> <userinput><command>tar</command> xvfJ smb4k-x.y.z.tar.xz</userinput></screen></para>
+<para>Replace x.y.z with the version number. Change into the source code directory and create a <filename class="directory">build</filename> directory:</para>
+<para><screen><prompt>$</prompt> <userinput><command>cd</command> <filename class="directory">smb4k-x.y.z</filename></userinput>
+<prompt>$</prompt> <userinput><command>mkdir</command> <filename class="directory">build</filename></userinput></screen></para>
+<para>Change into the <filename class="directory">build</filename> directory and configure the source code:</para>
+<para><screen><prompt>$</prompt> <userinput><command>cd</command> <filename class="directory">build</filename></userinput>
+<prompt>$</prompt> <userinput><command>cmake</command> -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` -DCMAKE_BUILD_TYPE=Release <filename class="directory">..</filename></userinput></screen></para>
+<para>If you want to compile Smb4K with debug symbols, replace Release by Debug. There are also some &smb4k; specific arguments you might be interested in:</para>
+<para>
+  <informaltable frame="all">
+  <tgroup cols="3" align="left" colsep="1" rowsep="1">
+    <thead>
+      <row>
+        <entry>Argument</entry>
+        <entry>Since</entry>
+        <entry>Description</entry>
+      </row>
+    </thead>
+    <tbody>
+      <row>
+        <entry>-DINSTALL_HEADER_FILES=yes|no</entry>
+        <entry align="center">1.0.0</entry>
+        <entry>Install the core header files. This is off by default.</entry>
+      </row>
+      <row>
+        <entry>-DINSTALL_PLASMOID=yes|no</entry>
+        <entry align="center">1.1.0</entry>
+        <entry>Install the plasmoid. KDE SC 4.10 or higher is required. This is on by default, if the right KDE version is detected.</entry>
+      </row>
+    </tbody>
+  </tgroup>
+  </informaltable>
+</para>
+<para>After the configuration, compile and install &smb4k;:</para>
+<para><screen><prompt>$</prompt> <userinput><command>make</command> &amp;&amp; <command>sudo make</command> install</userinput></screen></para>
+<para>If you want to be able to remove &smb4k; with your package manager later on, use <application>checkinstall</application> instead of <command>make install</command>. The package should be present in your distribution's repository. Run:</para>
+<para><screen><prompt>$</prompt> <userinput><command>make</command> &amp;&amp; <command>sudo checkinstall</command></userinput></screen></para>
+<note>
+<para>If you experience a crash or similar and want to either debug &smb4k; yourself or report a bug including a full backtrace, please compile the program with debugging symbols. The procedure is similar to the one described above except that the <application>cmake</application> command has to look like this:</para>
+<screen><prompt>$</prompt> <userinput><command>cmake</command> -DCMAKE_INSTALL_PREFIX=`<command>kde4-config</command> --prefix` -DCMAKE_BUILD_TYPE=debugfull ..</userinput></screen>
+<para>Compile and install the program as stated above. If you found the cause for the bug, please let us <link linkend="reporting_bugs">know</link>.</para>
+</note>
 </sect1>
 </appendix>
-
 </book>
