@@ -31,30 +31,38 @@ import org.kde.plasma.extras 0.1 as PlasmaExtras
 PlasmaComponents.Page {
   id: profilesPage
 
-  //
-  // The tool bar
-  //
-  PlasmaComponents.ToolBar {
-    id: profilesToolBar
-    anchors {
-      top: parent.top
-      left: parent.left
-      right: parent.right
-      topMargin: 2
-      rightMargin: 4
-      leftMargin: 4
-    }
-    PlasmaComponents.ToolBarLayout {
-      id: profilesToolBarLayout
-      spacing: 2
-      // Tool buttons here
-      Item {
-        id: spacer
-      }
-    }
-        
-    tools: profilesToolBarLayout
-  }
+//   //
+//   // The tool bar
+//   //
+//   PlasmaComponents.ToolBar {
+//     id: profilesToolBar
+//     anchors {
+//       top: parent.top
+//       left: parent.left
+//       right: parent.right
+//       topMargin: 2
+//       rightMargin: 4
+//       leftMargin: 4
+//     }
+//     PlasmaComponents.ToolBarLayout {
+//       id: profilesToolBarLayout
+//       spacing: 2
+//       PlasmaComponents.ToolButton {
+//         id: editButton
+//         text: i18n("Edit")
+//         iconSource: "document-edit"
+//         width: minimumWidth
+//         onClicked: {
+//           // FIXME
+//         }
+//       }
+//       Item {
+//         id: spacer
+//       }
+//     }
+//         
+//     tools: profilesToolBarLayout
+//   }
   
   //
   // The list view
@@ -62,7 +70,7 @@ PlasmaComponents.Page {
   PlasmaExtras.ScrollArea {
     id: profilesPageScrollArea
     anchors {
-      top: parent.top
+      top: parent.top // Change this if we are using a toolbar
       left: parent.left
       right: parent.right
       bottom: parent.bottom
@@ -78,7 +86,7 @@ PlasmaComponents.Page {
       }
       model: ListModel {}
       focus: true
-      highlight: PlasmaComponents.Highlight {}
+//       highlight: PlasmaComponents.Highlight {}
       highlightRangeMode: ListView.StrictlyEnforceRange
     }
   }

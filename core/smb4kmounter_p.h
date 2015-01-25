@@ -3,7 +3,7 @@
     Smb4KMounter class.
                              -------------------
     begin                : Do Jul 19 2007
-    copyright            : (C) 2007-2014 by Alexander Reinholdt
+    copyright            : (C) 2007-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

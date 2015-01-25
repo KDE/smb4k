@@ -54,9 +54,6 @@
 #include <kicon.h>
 #include <kmessagebox.h>
 
-// System includes
-#include <unistd.h>
-#include <sys/types.h>
 
 using namespace Smb4KGlobal;
 

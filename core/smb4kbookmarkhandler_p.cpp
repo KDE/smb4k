@@ -81,6 +81,12 @@ Smb4KBookmarkDialog::~Smb4KBookmarkDialog()
 }
 
 
+const QList<Smb4KBookmark *> &Smb4KBookmarkDialog::bookmarks()
+{
+  return m_bookmarks;
+}
+
+
 void Smb4KBookmarkDialog::setupView()
 {
   QWidget *main_widget = new QWidget( this );
@@ -514,7 +520,7 @@ void Smb4KBookmarkEditor::loadBookmarks( const QList<Smb4KBookmark *> &bookmarks
     if (!m_groups.at(i).isEmpty())
     {
       QTreeWidgetItem *group = new QTreeWidgetItem(QTreeWidgetItem::UserType);
-      group->setIcon(0, KIcon("folder-favorites"));
+      group->setIcon(0, KIcon("folder-bookmark"));
       group->setText(0, m_groups.at(i));
       group->setText((m_tree_widget->columnCount() - 1), QString("00_%1").arg(m_groups.at(i)));
       group->setFlags(Qt::ItemIsSelectable|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled|Qt::ItemIsDropEnabled);

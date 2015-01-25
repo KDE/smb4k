@@ -49,8 +49,6 @@
 
 using namespace KAuth;
 
-// K_GLOBAL_STATIC(Smb4K
-
 //
 // Notifications
 //

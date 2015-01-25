@@ -3,7 +3,7 @@
     Smb4KMounter class.
                              -------------------
     begin                : Do Jul 19 2007
-    copyright            : (C) 2007-2014 by Alexander Reinholdt
+    copyright            : (C) 2007-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -54,10 +54,7 @@
 #include <kstandarddirs.h>
 #include <kmountpoint.h>
 #include <kshell.h>
-
-// system includes
-#include <unistd.h>
-#include <sys/types.h>
+#include <KUser>
        
 
 using namespace Smb4KGlobal;
@@ -539,13 +536,13 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
       case Smb4KCustomOptions::Krb5:
       {
         args_list << "sec=krb5";
-        args_list << QString("cruid=%1").arg(getuid());
+        args_list << QString("cruid=%1").arg(KUser(KUser::UseRealUserID).uid());
         break;
       }
       case Smb4KCustomOptions::Krb5i:
       {
         args_list << "sec=krb5i";
-        args_list << QString("cruid=%1").arg(getuid());
+        args_list << QString("cruid=%1").arg(KUser(KUser::UseRealUserID).uid());
         break;
       }
       case Smb4KCustomOptions::Ntlm:
@@ -597,13 +594,13 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
       case Smb4KSettings::EnumSecurityMode::Krb5:
       {
         args_list << "sec=krb5";
-        args_list << QString("cruid=%1").arg(getuid());
+        args_list << QString("cruid=%1").arg(KUser(KUser::UseRealUserID).uid());
         break;
       }
       case Smb4KSettings::EnumSecurityMode::Krb5i:
       {
         args_list << "sec=krb5i";
-        args_list << QString("cruid=%1").arg(getuid());
+        args_list << QString("cruid=%1").arg(KUser(KUser::UseRealUserID).uid());
         break;
       }
       case Smb4KSettings::EnumSecurityMode::Ntlm:
@@ -905,7 +902,7 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
   }
   else
   {
-    QString ticket = QString("/tmp/krb5cc_%1").arg(getuid());
+    QString ticket = QString("/tmp/krb5cc_%1").arg(KUser(KUser::UseRealUserID).uid());
     
     if (QFile::exists(ticket))
     {
