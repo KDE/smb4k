@@ -827,6 +827,8 @@
 <sect1 id="systemtray">
 <title>The System Tray Widget</title>
 
+<!-- Using Smb4K : The System Tray Widget : Location and Usage -->
+
 <sect2 id="systemtray_location_usage">
 <title>Location and Usage</title>
 
@@ -846,6 +848,8 @@
 
 <para>By left clicking the icon, you can minimize or restore the main window. A right click brings up a popup menu that contains several menu items allowing you to work with the mounted shares, manage or mount your bookmarks, select the profile you want to use and to configure &smb4k; without the need to open the main window.</para>
 </sect2>
+
+<!-- Using Smb4K : The System Tray Widget : Menus and Menu Items -->
 
 <sect2 id="systemtray_menus">
 <title>Menus and Menu Items</title>
@@ -947,6 +951,22 @@
 </screenshot>
 
 <para>Its layout is as described <link linkend="mainwindow_bookmarks_menu">here</link> except that the <guimenuitem>Add Bookmark</guimenuitem> menu item is not present.</para>
+
+<para>In the <guimenuitem>Profiles</guimenuitem> menu, all profiles you <link linkend="profiles">defined</link> are listed:</para>
+
+<screenshot>
+  <screeninfo>Screenshot 3 of the popup menu of the system tray icon</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="system_tray_icon_popup_menu3.png" format="PNG" />
+    </imageobject>
+    <textobject>
+      <phrase>System tray icon's popup menu 3</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+
+<para>You can activate a profile by clicking it. The profiles can be <link linkend="profiles">managed</link> via the <link linkend="configuration_profiles">configuration dialog</link>.</para>
 
 <para>The other menu entries are:</para>
 
@@ -1307,7 +1327,14 @@
   <sect2 id="profiles_activate_profile">
     <title>Activating a Profile</title>
     <para>By default, the first profile in the list is set active when you enable the use of profiles. The active profile can be changed in the <guimenu>Profiles</guimenu> menu of the main window or the system tray widget or on the <guilabel>Profiles</guilabel> page of the plasmoid.</para>
-  </sect2>  
+    <para>When a profile is activated, several things happen:</para>
+    <itemizedlist>
+      <listitem><para>All currently mounted shares are unmounted and are scheduled for remount.</para></listitem>
+      <listitem><para>All shares are remounted that were previously mounted under the activated profile.</para></listitem>
+      <listitem><para>The bookmarks of this profile are loaded.</para></listitem>
+      <listitem><para>The custom options of this profile are loaded.</para></listitem>
+    </itemizedlist>
+  </sect2>
 </sect1>
 
 <!-- Using Smb4K : Notifications -->
