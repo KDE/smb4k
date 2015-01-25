@@ -41,9 +41,9 @@
 #include <kicon.h>
 #include <kiconloader.h>
 
-// system includes
-#include <unistd.h>
-#include <math.h>
+// C++ includes
+#include <cmath>
+
 
 class Smb4KSharePrivate
 {
@@ -73,8 +73,8 @@ Smb4KShare::Smb4KShare( const QString &host, const QString &name )
   d->inaccessible = false;
   d->foreign      = false;
   d->filesystem   = Unknown;
-  d->user         = KUser( getuid() );
-  d->group        = KUserGroup( getgid() );
+  d->user         = KUser(KUser::UseRealUserID);
+  d->group        = KUserGroup(KUser::UseRealUserID);
   d->totalSpace   = -1;
   d->freeSpace    = -1;
   d->usedSpace    = -1;
@@ -92,8 +92,8 @@ Smb4KShare::Smb4KShare( const QString &unc )
   d->inaccessible = false;
   d->foreign      = false;
   d->filesystem   = Unknown;
-  d->user         = KUser( getuid() );
-  d->group        = KUserGroup( getgid() );
+  d->user         = KUser(KUser::UseRealUserID);
+  d->group        = KUserGroup(KUser::UseRealUserID);
   d->totalSpace   = -1;
   d->freeSpace    = -1;
   d->usedSpace    = -1;
@@ -128,8 +128,8 @@ Smb4KShare::Smb4KShare()
   d->inaccessible = false;
   d->foreign      = false;
   d->filesystem   = Unknown;
-  d->user         = KUser( getuid() );
-  d->group        = KUserGroup( getgid() );
+  d->user         = KUser(KUser::UseRealUserID);
+  d->group        = KUserGroup(KUser::UseRealUserID);
   d->totalSpace   = -1;
   d->freeSpace    = -1;
   d->usedSpace    = -1;
@@ -560,10 +560,10 @@ QString Smb4KShare::totalDiskSpaceString() const
   double tmp_factor = 0;
   qulonglong factor = 0;
 
-  (void) frexp( d->totalSpace * 1024, &exponent );
-  (void) modf( (exponent - 10) / 10, &tmp_factor );
+  (void) std::frexp( d->totalSpace * 1024, &exponent );
+  (void) std::modf( (exponent - 10) / 10, &tmp_factor );
   factor = tmp_factor;
-  qreal tmp_total = d->totalSpace / pow( 1024, factor );
+  qreal tmp_total = d->totalSpace / std::pow( 1024, factor );
   total = QString( "%1" ).arg( tmp_total, 0, 'f', 1 );
 
   switch ( factor )
@@ -1335,8 +1335,8 @@ void Smb4KShare::resetMountData()
   d->inaccessible = false;
   d->foreign      = false;
   d->filesystem   = Unknown;
-  d->user         = KUser( getuid() );
-  d->group        = KUserGroup( getgid() );
+  d->user         = KUser(KUser::UseRealUserID);
+  d->group        = KUserGroup(KUser::UseRealUserID);
   d->totalSpace   = -1;
   d->freeSpace    = -1;
   d->usedSpace    = -1;

@@ -2,7 +2,7 @@
     smb4kcustomoptions - This class carries custom options
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2014 by Alexander Reinholdt
+    copyright            : (C) 2011-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -36,10 +36,6 @@
 
 // KDE includes
 #include <kuser.h>
-
-// system specific includes
-#include <unistd.h>
-#include <sys/types.h>
 
 
 class Smb4KCustomOptionsPrivate
@@ -82,8 +78,8 @@ Smb4KCustomOptions::Smb4KCustomOptions( Smb4KHost *host )
 #endif
   d->protocolHint   = UndefinedProtocolHint;
   d->kerberos       = UndefinedKerberos;
-  d->user           = KUser( getuid() );
-  d->group          = KUserGroup( getgid() );
+  d->user           = KUser(KUser::UseRealUserID);
+  d->group          = KUserGroup(KUser::UseRealUserID);
   d->ip.setAddress( host->ip() );
   d->wol_first_scan = false;
   d->wol_mount      = false;
@@ -132,8 +128,8 @@ Smb4KCustomOptions::Smb4KCustomOptions()
 #endif
   d->protocolHint   = UndefinedProtocolHint;
   d->kerberos       = UndefinedKerberos;
-  d->user           = KUser( getuid() );
-  d->group          = KUserGroup( getgid() );
+  d->user           = KUser(KUser::UseRealUserID);
+  d->group          = KUserGroup(KUser::UseRealUserID);
   d->wol_first_scan = false;
   d->wol_mount      = false;
 }
@@ -1031,7 +1027,7 @@ bool Smb4KCustomOptions::isEmpty()
   }
   
   // UID
-  if ( d->user.uid() != getuid() )
+  if (d->user.uid() != KUser(KUser::UseRealUserID).uid())
   {
     return false;
   }
@@ -1041,7 +1037,7 @@ bool Smb4KCustomOptions::isEmpty()
   }
   
   // GID
-  if ( d->group.gid() != getgid() )
+  if (d->group.gid() != KUserGroup(KUser::UseRealUserID).gid())
   {
     return false;
   }
