@@ -2,7 +2,7 @@
     smb4kmounthelper  -  The helper that mounts and unmounts shares.
                              -------------------
     begin                : Sa Okt 16 2010
-    copyright            : (C) 2010-2014 by Alexander Reinholdt
+    copyright            : (C) 2010-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

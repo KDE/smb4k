@@ -979,43 +979,43 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
       Smb4KShare *share = it.next();
 
       // Check if the mount process reported an error
-      QString stderr( reply.data()["stderr"].toString().trimmed() );
+      QString stdErr( reply.data()["stderr"].toString().trimmed() );
 
-      if ( QString::compare( share->canonicalPath(), reply.data()["mountpoint"].toString() ) == 0 && !stderr.isEmpty() )
+      if ( QString::compare( share->canonicalPath(), reply.data()["mountpoint"].toString() ) == 0 && !stdErr.isEmpty() )
       {
 #ifdef Q_OS_LINUX
-        if ( stderr.contains( "mount error 13" ) || stderr.contains( "mount error(13)" ) /* authentication error */ )
+        if ( stdErr.contains( "mount error 13" ) || stdErr.contains( "mount error(13)" ) /* authentication error */ )
         {
           m_auth_errors << new Smb4KShare( *share );
         }
-        else if ( (stderr.contains( "mount error 6" ) || stderr.contains( "mount error(6)" )) /* bad share name */ &&
+        else if ( (stdErr.contains( "mount error 6" ) || stdErr.contains( "mount error(6)" )) /* bad share name */ &&
                   share->shareName().contains( "_", Qt::CaseSensitive ) )
         {
           QString share_name = share->shareName();
           share->setShareName( share_name.replace( '_', ' ' ) );
           m_retries << new Smb4KShare( *share );
         }
-        else if ( stderr.contains( "mount error 101" ) || stderr.contains( "mount error(101)" ) /* network unreachable */ )
+        else if ( stdErr.contains( "mount error 101" ) || stdErr.contains( "mount error(101)" ) /* network unreachable */ )
         {
           qDebug() << "Network unreachable ..." << endl;
         }
-        else if ( stderr.contains( "Unable to find suitable address." ) )
+        else if ( stdErr.contains( "Unable to find suitable address." ) )
         {
           // Swallow this
         }
 #else
-        if ( stderr.contains( "Authentication error" ) )
+        if ( stdErr.contains( "Authentication error" ) )
         {
           m_auth_errors << new Smb4KShare( *share );
         }
-        else if (stderr.contains("Permission denied"))
+        else if (stdErr.contains("Permission denied"))
 	{
 	  m_auth_errors << new Smb4KShare(*share);
 	}
 #endif
         else
         {
-          Smb4KNotification::mountingFailed(share, stderr);
+          Smb4KNotification::mountingFailed(share, stdErr);
         }
       }
       else
@@ -1296,12 +1296,12 @@ void Smb4KUnmountJob::slotActionFinished( ActionReply reply )
       Smb4KShare *share = it.next();
 
       // Check if the unmount process reported an error
-      QString stderr( reply.data()["stderr"].toString().trimmed() );
+      QString stdErr( reply.data()["stderr"].toString().trimmed() );
 
       if ( QString::compare( share->canonicalPath(), reply.data()["mountpoint"].toString() ) == 0 && 
-           !stderr.isEmpty() && !m_silent )
+           !stdErr.isEmpty() && !m_silent )
       {
-        Smb4KNotification::unmountingFailed(share, stderr);
+        Smb4KNotification::unmountingFailed(share, stdErr);
       }
       else
       {
