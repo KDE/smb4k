@@ -707,48 +707,6 @@ void Smb4KNotification::processError(QProcess::ProcessError error)
 }
 
 
-void Smb4KNotification::systemCallFailed(const QString& sys_call, int err_no)
-{
-  QString text;
-  
-  int len = 100;
-  char buf[100];
-  buf[0] = '\0';
-#ifdef Q_OS_LINUX
-  // This is thread safe.
-  const char *msg;
-
-  msg = strerror_r( err_no, buf, len );
-
-  if ( buf[0] == '\0' )
-  {
-    // Buffer was not used
-    text = i18n( "<p>The system call <b>%1</b> failed:</p><p><tt>%2</tt></p>", sys_call, QString( msg ) );
-  }
-  else
-  {
-    text = i18n( "<p>The system call <b>%1</b> failed:</p><p><tt>%2</tt></p>", sys_call, QString( buf ) );
-  }
-#else
-  if ( strerror_r( err_no, buf, len ) == 0 )
-  {
-    text = i18n( "<p>The system call <b>%1</b> failed:</p><p><tt>%2</tt></p>", sys_call, QString( buf ) );
-  }
-  else
-  {
-    // Do nothing
-  }
-#endif
-
-  KNotification *notification = new KNotification("systemCallFailed");
-  notification->setText(text);
-  notification->setPixmap(KIconLoader::global()->loadIcon( "dialog-error", KIconLoader::NoGroup, 0,
-                          KIconLoader::DefaultState ));
-  notification->setFlags(KNotification::Persistent);
-  notification->sendEvent();
-}
-
-
 void Smb4KNotification::actionFailed(int err_code)
 {
   QString text, err_msg;
