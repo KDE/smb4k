@@ -3,7 +3,7 @@
     namespace.
                              -------------------
     begin                : Di Jul 24 2007
-    copyright            : (C) 2007-2014 by Alexander Reinholdt
+    copyright            : (C) 2007-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -41,11 +41,7 @@
 #include <QtCore/QCoreApplication>
 #include <QtNetwork/QHostAddress>
 #include <QtNetwork/QAbstractSocket>
-
-// system specific includes
-#include <unistd.h>
-#include <sys/types.h>
-#include <errno.h>
+#include <QtNetwork/QHostInfo>
 
 
 Smb4KGlobalPrivate::Smb4KGlobalPrivate()
@@ -255,24 +251,14 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions( bool read )
 
     // Post-processing. Some values should be entered with their defaults, if they are
     // not already present.
-    if ( !m_samba_options.contains( "netbios name" ) )
+    if (!m_samba_options.contains("netbios name"))
     {
-      size_t hostnamelen = 255;
-      char *hostname = new char[hostnamelen];
-
-      if ( gethostname( hostname, hostnamelen ) == -1 )
-      {
-        int error = errno;
-        Smb4KNotification::systemCallFailed("gethostname()", error);
-      }
-      else
-      {
-        m_samba_options["netbios name"] = ( QString( "%1" ).arg( hostname ) ).toUpper();
-      }
-
-      delete [] hostname;
+      m_samba_options["netbios name"] = QHostInfo::localHostName().toUpper();
     }
-  
+    else
+    {
+      // Do nothing
+    }  
   }
   else
   {

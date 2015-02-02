@@ -671,16 +671,16 @@ void Smb4KSyncJob::slotStartSynchronization()
 
 void Smb4KSyncJob::slotReadStandardOutput()
 {
-  QStringList stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts );
+  QStringList stdOut = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts );
 
-  for ( int i = 0; i < stdout.size(); ++i )
+  for ( int i = 0; i < stdOut.size(); ++i )
   {
-    if ( stdout.at( i )[0].isSpace() )
+    if ( stdOut.at( i )[0].isSpace() )
     {
       // Get the overall transfer progress
-      if ( stdout.at( i ).contains( " to-check=" ) )
+      if ( stdOut.at( i ).contains( " to-check=" ) )
       {
-        QString tmp = stdout.at( i ).section( " to-check=", 1, 1 ).section( ')', 0, 0 ).trimmed();
+        QString tmp = stdOut.at( i ).section( " to-check=", 1, 1 ).section( ')', 0, 0 ).trimmed();
 
         bool success1 = true;
         bool success2 = true;
@@ -699,10 +699,10 @@ void Smb4KSyncJob::slotReadStandardOutput()
           // Do nothing
         }
       }
-      else if ( stdout.at( i ).contains( " to-chk=" ) )
+      else if ( stdOut.at( i ).contains( " to-chk=" ) )
       {
         // Make Smb4K work with rsync >= 3.1.
-        QString tmp = stdout.at( i ).section( " to-chk=", 1, 1 ).section( ')', 0, 0 ).trimmed();
+        QString tmp = stdOut.at( i ).section( " to-chk=", 1, 1 ).section( ')', 0, 0 ).trimmed();
 
         bool success1 = true;
         bool success2 = true;
@@ -721,10 +721,10 @@ void Smb4KSyncJob::slotReadStandardOutput()
           // Do nothing
         }
       }
-      else if ( stdout.at( i ).contains( " ir-chk=" ) )
+      else if ( stdOut.at( i ).contains( " ir-chk=" ) )
       {
         // Make Smb4K work with rsync >= 3.1.
-        QString tmp = stdout.at( i ).section( " ir-chk=", 1, 1 ).section( ')', 0, 0 ).trimmed();
+        QString tmp = stdOut.at( i ).section( " ir-chk=", 1, 1 ).section( ')', 0, 0 ).trimmed();
 
         bool success1 = true;
         bool success2 = true;
@@ -749,20 +749,20 @@ void Smb4KSyncJob::slotReadStandardOutput()
       }
 
       // Get transfer rate
-      if ( stdout.at( i ).contains( "/s ", Qt::CaseSensitive ) )
+      if ( stdOut.at( i ).contains( "/s ", Qt::CaseSensitive ) )
       {
         bool success = true;
         
-        double tmp_speed = stdout.at( i ).section( QRegExp( "../s" ), 0, 0 ).section( ' ', -1 -1 ).trimmed().toDouble( &success );
+        double tmp_speed = stdOut.at( i ).section( QRegExp( "../s" ), 0, 0 ).section( ' ', -1 -1 ).trimmed().toDouble( &success );
 
         if ( success )
         {
           // MB == 1000000 B and kB == 1000 B per definitionem!
-          if ( stdout.at( i ).contains( "MB/s" ) )
+          if ( stdOut.at( i ).contains( "MB/s" ) )
           {
             tmp_speed *= 1e6;
           }
-          else if ( stdout.at( i ).contains( "kB/s" ) )
+          else if ( stdOut.at( i ).contains( "kB/s" ) )
           {
             tmp_speed *= 1e3;
           }
@@ -784,9 +784,9 @@ void Smb4KSyncJob::slotReadStandardOutput()
         // No transfer rate available
       }
     }
-    else if (!stdout.at(i).contains("sending incremental file list"))
+    else if (!stdOut.at(i).contains("sending incremental file list"))
     {
-      QString file = stdout.at( i ).trimmed();
+      QString file = stdOut.at( i ).trimmed();
 
       KUrl src_url = m_src;
       src_url.setFileName( file );
@@ -811,14 +811,14 @@ void Smb4KSyncJob::slotReadStandardOutput()
 
 void Smb4KSyncJob::slotReadStandardError()
 {
-  QString stderr = QString::fromUtf8( m_proc->readAllStandardError(), -1 ).trimmed();
+  QString stdErr = QString::fromUtf8( m_proc->readAllStandardError(), -1 ).trimmed();
 
   // Avoid reporting an error if the process was killed by calling the abort() function.
-  if ( !m_proc->isAborted() && (stderr.contains( "rsync error:" ) && !stderr.contains( "(code 23)" )
+  if ( !m_proc->isAborted() && (stdErr.contains( "rsync error:" ) && !stdErr.contains( "(code 23)" )
        /*ignore "some files were not transferred" error*/) )
   {
     m_proc->abort();
-    Smb4KNotification::synchronizationFailed(m_src, m_dest, stderr);
+    Smb4KNotification::synchronizationFailed(m_src, m_dest, stdErr);
   }
   else
   {

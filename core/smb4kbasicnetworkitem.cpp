@@ -3,7 +3,7 @@
     for the core library of Smb4K.
                              -------------------
     begin                : Do Apr 2 2009
-    copyright            : (C) 2009-2012 by Alexander Reinholdt
+    copyright            : (C) 2009-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -31,11 +31,11 @@
 // application specific includes
 #include "smb4kbasicnetworkitem.h"
 
+// Qt includes
+#include <QtCore/QtGlobal>
+
 // KDE includes
 #include <kdebug.h>
-
-// system specific includes
-#include <stdlib.h>
 
 
 class Smb4KBasicNetworkItemPrivate
@@ -51,7 +51,7 @@ Smb4KBasicNetworkItem::Smb4KBasicNetworkItem( NetworkItem type )
 : d( new Smb4KBasicNetworkItemPrivate )
 {
   d->type = type;
-  d->key  = QString( rand() );
+  d->key  = QString("%1").arg(qrand());
 }
 
 Smb4KBasicNetworkItem::Smb4KBasicNetworkItem( const Smb4KBasicNetworkItem &item )

@@ -54,9 +54,6 @@
 #include <kicon.h>
 #include <kmessagebox.h>
 
-// System includes
-#include <unistd.h>
-#include <sys/types.h>
 
 using namespace Smb4KGlobal;
 
@@ -391,7 +388,7 @@ Smb4KSambaOptionsPage::Smb4KSambaOptionsPage( QWidget *parent ) : KTabWidget( pa
 
   charset_label->setBuddy( charset );
 
-#ifdef Q_OS_FREEBSD
+#if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
   QLabel *codepage_label       = new QLabel( Smb4KSettings::self()->serverCodepageItem()->label(),
                                  common_options );
   codepage_label->setObjectName( "CodepageLabel" );
@@ -492,8 +489,10 @@ Smb4KSambaOptionsPage::Smb4KSambaOptionsPage( QWidget *parent ) : KTabWidget( pa
   common_layout->addWidget( dmask, 3, 1, 0 );
   common_layout->addWidget( charset_label, 4, 0, 0 );
   common_layout->addWidget( charset, 4, 1, 0 );
+#if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
   common_layout->addWidget( codepage_label, 5, 0, 0 );
   common_layout->addWidget( codepage, 5, 1, 0 );
+#endif
 #endif
 
 #ifdef Q_OS_LINUX

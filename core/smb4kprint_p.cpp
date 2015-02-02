@@ -258,15 +258,15 @@ void Smb4KPrintJob::slotReadStandardOutput()
 
 void Smb4KPrintJob::slotReadStandardError()
 {
-  QString stderr = QString::fromUtf8( m_proc->readAllStandardError(), -1 ).trimmed();
+  QString stdErr = QString::fromUtf8( m_proc->readAllStandardError(), -1 ).trimmed();
 
   // Avoid reporting an error if the process was killed by calling the abort() function.
   if ( !m_proc->isAborted() )
   {
     m_proc->abort();
     
-    if ( stderr.contains( "NT_STATUS_LOGON_FAILURE" ) ||
-         stderr.contains( "NT_STATUS_ACCESS_DENIED" ) )
+    if ( stdErr.contains( "NT_STATUS_LOGON_FAILURE" ) ||
+         stdErr.contains( "NT_STATUS_ACCESS_DENIED" ) )
     {
       // Authentication error
       emit authError( this );
@@ -274,7 +274,7 @@ void Smb4KPrintJob::slotReadStandardError()
     else
     {
       // Remove DEBUG messages.
-      QStringList err_msg = stderr.split( '\n', QString::SkipEmptyParts );
+      QStringList err_msg = stdErr.split( '\n', QString::SkipEmptyParts );
       
       QMutableStringListIterator it( err_msg );
       

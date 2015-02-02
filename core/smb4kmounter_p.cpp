@@ -3,7 +3,7 @@
     Smb4KMounter class.
                              -------------------
     begin                : Do Jul 19 2007
-    copyright            : (C) 2007-2014 by Alexander Reinholdt
+    copyright            : (C) 2007-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -54,10 +54,7 @@
 #include <kstandarddirs.h>
 #include <kmountpoint.h>
 #include <kshell.h>
-
-// system includes
-#include <unistd.h>
-#include <sys/types.h>
+#include <KUser>
        
 
 using namespace Smb4KGlobal;
@@ -539,13 +536,13 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
       case Smb4KCustomOptions::Krb5:
       {
         args_list << "sec=krb5";
-        args_list << QString("cruid=%1").arg(getuid());
+        args_list << QString("cruid=%1").arg(KUser(KUser::UseRealUserID).uid());
         break;
       }
       case Smb4KCustomOptions::Krb5i:
       {
         args_list << "sec=krb5i";
-        args_list << QString("cruid=%1").arg(getuid());
+        args_list << QString("cruid=%1").arg(KUser(KUser::UseRealUserID).uid());
         break;
       }
       case Smb4KCustomOptions::Ntlm:
@@ -597,13 +594,13 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
       case Smb4KSettings::EnumSecurityMode::Krb5:
       {
         args_list << "sec=krb5";
-        args_list << QString("cruid=%1").arg(getuid());
+        args_list << QString("cruid=%1").arg(KUser(KUser::UseRealUserID).uid());
         break;
       }
       case Smb4KSettings::EnumSecurityMode::Krb5i:
       {
         args_list << "sec=krb5i";
-        args_list << QString("cruid=%1").arg(getuid());
+        args_list << QString("cruid=%1").arg(KUser(KUser::UseRealUserID).uid());
         break;
       }
       case Smb4KSettings::EnumSecurityMode::Ntlm:
@@ -905,7 +902,7 @@ bool Smb4KMountJob::createMountAction( Smb4KShare *share, Action *action )
   }
   else
   {
-    QString ticket = QString("/tmp/krb5cc_%1").arg(getuid());
+    QString ticket = QString("/tmp/krb5cc_%1").arg(KUser(KUser::UseRealUserID).uid());
     
     if (QFile::exists(ticket))
     {
@@ -979,43 +976,43 @@ void Smb4KMountJob::slotActionFinished( ActionReply reply )
       Smb4KShare *share = it.next();
 
       // Check if the mount process reported an error
-      QString stderr( reply.data()["stderr"].toString().trimmed() );
+      QString stdErr( reply.data()["stderr"].toString().trimmed() );
 
-      if ( QString::compare( share->canonicalPath(), reply.data()["mountpoint"].toString() ) == 0 && !stderr.isEmpty() )
+      if ( QString::compare( share->canonicalPath(), reply.data()["mountpoint"].toString() ) == 0 && !stdErr.isEmpty() )
       {
 #ifdef Q_OS_LINUX
-        if ( stderr.contains( "mount error 13" ) || stderr.contains( "mount error(13)" ) /* authentication error */ )
+        if ( stdErr.contains( "mount error 13" ) || stdErr.contains( "mount error(13)" ) /* authentication error */ )
         {
           m_auth_errors << new Smb4KShare( *share );
         }
-        else if ( (stderr.contains( "mount error 6" ) || stderr.contains( "mount error(6)" )) /* bad share name */ &&
+        else if ( (stdErr.contains( "mount error 6" ) || stdErr.contains( "mount error(6)" )) /* bad share name */ &&
                   share->shareName().contains( "_", Qt::CaseSensitive ) )
         {
           QString share_name = share->shareName();
           share->setShareName( share_name.replace( '_', ' ' ) );
           m_retries << new Smb4KShare( *share );
         }
-        else if ( stderr.contains( "mount error 101" ) || stderr.contains( "mount error(101)" ) /* network unreachable */ )
+        else if ( stdErr.contains( "mount error 101" ) || stdErr.contains( "mount error(101)" ) /* network unreachable */ )
         {
           qDebug() << "Network unreachable ..." << endl;
         }
-        else if ( stderr.contains( "Unable to find suitable address." ) )
+        else if ( stdErr.contains( "Unable to find suitable address." ) )
         {
           // Swallow this
         }
 #else
-        if ( stderr.contains( "Authentication error" ) )
+        if ( stdErr.contains( "Authentication error" ) )
         {
           m_auth_errors << new Smb4KShare( *share );
         }
-        else if (stderr.contains("Permission denied"))
+        else if (stdErr.contains("Permission denied"))
 	{
 	  m_auth_errors << new Smb4KShare(*share);
 	}
 #endif
         else
         {
-          Smb4KNotification::mountingFailed(share, stderr);
+          Smb4KNotification::mountingFailed(share, stdErr);
         }
       }
       else
@@ -1296,12 +1293,12 @@ void Smb4KUnmountJob::slotActionFinished( ActionReply reply )
       Smb4KShare *share = it.next();
 
       // Check if the unmount process reported an error
-      QString stderr( reply.data()["stderr"].toString().trimmed() );
+      QString stdErr( reply.data()["stderr"].toString().trimmed() );
 
       if ( QString::compare( share->canonicalPath(), reply.data()["mountpoint"].toString() ) == 0 && 
-           !stderr.isEmpty() && !m_silent )
+           !stdErr.isEmpty() && !m_silent )
       {
-        Smb4KNotification::unmountingFailed(share, stderr);
+        Smb4KNotification::unmountingFailed(share, stdErr);
       }
       else
       {

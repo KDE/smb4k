@@ -443,10 +443,10 @@ void Smb4KPreviewJob::slotStartPreview()
 
 void Smb4KPreviewJob::slotReadStandardOutput()
 {
-  QString stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 );
+  QString stdOut = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 );
   
-  if ( stdout.contains( "NT_STATUS_ACCESS_DENIED", Qt::CaseSensitive ) || 
-       stdout.contains( "NT_STATUS_LOGON_FAILURE", Qt::CaseSensitive ) )
+  if ( stdOut.contains( "NT_STATUS_ACCESS_DENIED", Qt::CaseSensitive ) || 
+       stdOut.contains( "NT_STATUS_LOGON_FAILURE", Qt::CaseSensitive ) )
   {
     // This might happen if a directory cannot be accessed due to missing
     // read permissions.
@@ -454,7 +454,7 @@ void Smb4KPreviewJob::slotReadStandardOutput()
   }
   else
   {
-    QStringList list = stdout.split( '\n', QString::SkipEmptyParts );
+    QStringList list = stdOut.split( '\n', QString::SkipEmptyParts );
     QList<Smb4KPreviewFileItem> items;
 
     foreach ( const QString &line, list )
@@ -537,12 +537,12 @@ void Smb4KPreviewJob::slotReadStandardOutput()
 
 void Smb4KPreviewJob::slotReadStandardError()
 {
-  QString stderr = QString::fromUtf8(m_proc->readAllStandardError(), -1).trimmed();
+  QString stdErr = QString::fromUtf8(m_proc->readAllStandardError(), -1).trimmed();
 
   // Remove DEBUG messages, the additional information
   // that smbclient unfortunately reports to stderr and
   // error messages due to a missing smb.conf file.
-  QStringList err_msg = stderr.split('\n', QString::SkipEmptyParts);
+  QStringList err_msg = stdErr.split('\n', QString::SkipEmptyParts);
   QMutableStringListIterator it(err_msg);
   bool delete_next = false;
 
@@ -592,8 +592,8 @@ void Smb4KPreviewJob::slotReadStandardError()
   {
     m_proc->abort();
 
-    if ( stderr.contains( "NT_STATUS_LOGON_FAILURE" ) ||
-         stderr.contains( "NT_STATUS_ACCESS_DENIED" ) )
+    if ( stdErr.contains( "NT_STATUS_LOGON_FAILURE" ) ||
+         stdErr.contains( "NT_STATUS_ACCESS_DENIED" ) )
     {
       // Authentication error
       emit authError( this );

@@ -2,7 +2,7 @@
     smb4kmounthelper  -  The helper that mounts and unmounts shares.
                              -------------------
     begin                : Sa Okt 16 2010
-    copyright            : (C) 2010-2014 by Alexander Reinholdt
+    copyright            : (C) 2010-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -48,6 +48,8 @@ KDE4_AUTH_HELPER_MAIN( "net.sourceforge.smb4k.mounthelper", Smb4KMountHelper )
 
 ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
 {
+  qDebug() << "Mounting share...";
+  
   ActionReply reply;
   reply.addData( "url", args["url"] );
   reply.addData( "workgroup", args["workgroup"] );
@@ -91,7 +93,7 @@ ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
 
     while ( !proc.waitForFinished( 10 ) )
     {
-#ifdef Q_OS_FREEBSD
+#if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
       // Check if there is a password prompt. If there is one, pass
       // the password to it.
       QByteArray out = proc.readAllStandardError();
@@ -138,12 +140,12 @@ ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
     else
     {
       // Check if there is output on stderr.
-      QString stderr = QString::fromUtf8( proc.readAllStandardError() );
-      reply.addData( "stderr", stderr.trimmed() );
+      QString stdErr = QString::fromUtf8( proc.readAllStandardError() );
+      reply.addData( "stderr", stdErr.trimmed() );
 
       // Check if there is output on stdout.
-      QString stdout = QString::fromUtf8( proc.readAllStandardOutput() );
-      reply.addData( "stdout", stdout.trimmed() );
+      QString stdOut = QString::fromUtf8( proc.readAllStandardOutput() );
+      reply.addData( "stdout", stdOut.trimmed() );
     }
   }
   else
@@ -246,12 +248,12 @@ ActionReply Smb4KMountHelper::unmount( const QVariantMap &args )
     else
     {
       // Check if there is output on stderr.
-      QString stderr = QString::fromUtf8( proc.readAllStandardError() );
-      reply.addData( "stderr", stderr.trimmed() );
+      QString stdErr = QString::fromUtf8( proc.readAllStandardError() );
+      reply.addData( "stderr", stdErr.trimmed() );
 
       // Check if there is output on stdout.
-      QString stdout = QString::fromUtf8( proc.readAllStandardOutput() );
-      reply.addData( "stdout", stdout.trimmed() );
+      QString stdOut = QString::fromUtf8( proc.readAllStandardOutput() );
+      reply.addData( "stdout", stdOut.trimmed() );
     }
   }
   else

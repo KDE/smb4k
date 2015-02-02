@@ -267,12 +267,12 @@ void Smb4KSearchJob::slotStartSearch()
 
 void Smb4KSearchJob::slotReadStandardOutput()
 {
-  QStringList stdout = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts, Qt::CaseSensitive );
+  QStringList stdOut = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts, Qt::CaseSensitive );
 
   // Process output from smbtree.
   QString workgroup_name;
 
-  foreach ( const QString &line, stdout )
+  foreach ( const QString &line, stdOut )
   {
     if ( !line.contains( "added interface", Qt::CaseInsensitive ) &&
          !line.contains( "tdb(", Qt::CaseInsensitive ) &&
@@ -321,12 +321,12 @@ void Smb4KSearchJob::slotReadStandardOutput()
 
 void Smb4KSearchJob::slotReadStandardError()
 {
-  QString stderr = QString::fromUtf8( m_proc->readAllStandardError(), -1 );
+  QString stdErr = QString::fromUtf8( m_proc->readAllStandardError(), -1 );
 
   // Remove unimportant warnings
-  if ( stderr.contains( "Ignoring unknown parameter" ) )
+  if ( stdErr.contains( "Ignoring unknown parameter" ) )
   {
-    QStringList tmp = stderr.split( '\n' );
+    QStringList tmp = stdErr.split( '\n' );
 
     QMutableStringListIterator it( tmp );
 
@@ -344,7 +344,7 @@ void Smb4KSearchJob::slotReadStandardError()
       }
     }
 
-    stderr = tmp.join( "\n" );
+    stdErr = tmp.join( "\n" );
   }
   else
   {
@@ -352,17 +352,17 @@ void Smb4KSearchJob::slotReadStandardError()
   }
 
   // Process authentication errors:
-  if ( stderr.contains( "The username or password was not correct." ) ||
-       stderr.contains( "NT_STATUS_ACCOUNT_DISABLED" ) /* AD error */ ||
-       stderr.contains( "NT_STATUS_ACCESS_DENIED" ) ||
-       stderr.contains( "NT_STATUS_LOGON_FAILURE" ) )
+  if ( stdErr.contains( "The username or password was not correct." ) ||
+       stdErr.contains( "NT_STATUS_ACCOUNT_DISABLED" ) /* AD error */ ||
+       stdErr.contains( "NT_STATUS_ACCESS_DENIED" ) ||
+       stdErr.contains( "NT_STATUS_LOGON_FAILURE" ) )
   {
     m_proc->abort();
     emit authError( this );
   }
-  else if ( stderr.contains("NT_STATUS") )
+  else if ( stdErr.contains("NT_STATUS") )
   {
-    Smb4KNotification::searchingFailed(m_string, stderr);
+    Smb4KNotification::searchingFailed(m_string, stdErr);
   }
   else
   {

@@ -288,15 +288,6 @@ namespace Smb4KNotification
   KDE_EXPORT void processError( QProcess::ProcessError error );
   
   /**
-   * This error message is shown if a system call returned an error.
-   *
-   * @param sys_call  The system call as string, e.g. "gethostname()"
-   *
-   * @param errno     The error number
-   */
-  KDE_EXPORT void systemCallFailed( const QString &sys_call, int err_no );
-  
-  /**
    * This error message is shown if a KAuth action could not be
    * executed and KAuth::ActionReply::failed() reported true. Pass
    * the error code supplied by KAuth::ActionReply::errorCode() to
