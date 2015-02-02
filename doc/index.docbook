@@ -1330,10 +1330,10 @@
     <para>The default behavior of each notification can be changed via the <link linkend="notifications_manage">&systemsettings;</link>.</para>
   </sect2>
 
-<!-- Using Smb4K : Notifications : Manage Notifications -->
+<!-- Using Smb4K : Notifications : Managing Notifications -->
 
   <sect2 id="notifications_manage">
-    <title>Manage Notifications</title>
+    <title>Managing Notifications</title>
     <para>&smb4k; used notifications to inform the user about events, warnings and errors. They can be managed via the &systemsettings;. To modify the behavior of one or all notifications, open the <guibutton>Application and System Notifications</guibutton> module and choose the <guibutton>Manage Notifications</guibutton> entry. In the tab <guilabel>Applications</guilabel> select the <guilabel>Advanced Network Neighborhood Browser</guilabel> entry from the drop-down menu:</para>
     <screenshot>
       <screeninfo>Screenshot of the systemsettings notification module</screeninfo>
