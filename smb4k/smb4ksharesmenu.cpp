@@ -2,7 +2,7 @@
     smb4ksharesmenu  -  Shares menu
                              -------------------
     begin                : Mon Sep 05 2011
-    copyright            : (C) 2011-2012 by Alexander Reinholdt
+    copyright            : (C) 2011-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -218,7 +218,7 @@ void Smb4KSharesMenu::slotShareMounted( Smb4KShare *share )
   m_action_collection->addAction( share_menu->objectName(), share_menu );
 
   // Now add the actions for this share.
-  KAction *unmount = new KAction( KIcon( "enblem-unmounted" ), i18n( "Unmount" ), m_actions );
+  KAction *unmount = new KAction( KIcon( "emblem-unmounted" ), i18n( "Unmount" ), m_actions );
   unmount->setObjectName( QString( "[unmount]_%1" ).arg( share->canonicalPath() ) );
   unmount->setEnabled( !share->isForeign() || Smb4KSettings::unmountForeignShares() );
   share_menu->addAction( unmount );
