@@ -1380,36 +1380,73 @@ void Smb4KMounter::saveSharesForRemount()
 
 void Smb4KMounter::cleanup()
 {
-  if (!d->obsoleteMountpoints.isEmpty())
+  // Get the current and previous mountpoints in the mount prefix.
+  QDir dir(Smb4KSettings::mountPrefix().path());
+  QFileInfoList hostDirs = dir.entryInfoList(QDir::AllDirs|QDir::NoDotAndDotDot, QDir::Name);
+  QFileInfoList mountpoints;
+  
+  for (int i = 0; i < hostDirs.size(); ++i)
   {
-    while (!d->obsoleteMountpoints.isEmpty())
+    if (!dir.cd(hostDirs.at(i).absoluteFilePath()))
     {
-      QString path = d->obsoleteMountpoints.takeFirst();
-      
-      if (path.startsWith(Smb4KSettings::mountPrefix().path()))
-      {
-        QDir dir(path);
+      continue;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    mountpoints << dir.entryInfoList(QDir::AllDirs|QDir::NoDotAndDotDot, QDir::Name);
+    
+    dir.cdUp();
+  }
 
-        if (dir.rmdir(dir.canonicalPath()))
-        {
-          dir.cdUp();
-          dir.rmdir(dir.canonicalPath());
-        }
-        else
-        {
-          // Do nothing
-        }
+  // Now check which mountpoints are still in use and remove
+  // the others. Do not rely on the internal list of Smb4K here,
+  // because even on exit we want to be absolutely sure that a 
+  // certain mountpoint is not used anymore.
+  KMountPoint::List list = KMountPoint::currentMountPoints();
+  QMutableListIterator<QFileInfo> it(mountpoints);
+  
+  while (it.hasNext())
+  {
+    QFileInfo info = it.next();
+    
+    for (int i = 0; i < list.size(); ++i)
+    {
+      if (QString::compare(list.at(i)->mountPoint(), info.absoluteFilePath(), Qt::CaseSensitive) == 0)
+      {
+        it.remove();
       }
       else
       {
-        // Do nothing here. Do not remove any paths that are outside the
-        // mount prefix.
+        // Do nothing
       }
     }
   }
-  else
+  
+  for (int i = 0; i < mountpoints.size(); ++i)
   {
-    // Do nothing
+    dir.rmdir(mountpoints.at(i).absoluteFilePath());
+  }
+  
+  for (int i = 0; i < hostDirs.size(); ++i)
+  {
+    if (dir.cd(hostDirs.at(i).absoluteFilePath()))
+    {
+      if (dir.entryList(QDir::AllDirs|QDir::NoDotAndDotDot, QDir::Name).size() == 0)
+      {
+        dir.rmdir(hostDirs.at(i).absoluteFilePath());
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
   }
 }
 
@@ -1592,10 +1629,6 @@ void Smb4KMounter::slotAboutToQuit()
     }
   }
   
-  // Now add the empty mountpoints to the list of obsolete
-  // mountpoints.
-  d->obsoleteMountpoints += mountpoints;
-  
   // Clean up the mount prefix.
   cleanup();
   
@@ -1739,9 +1772,6 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
     // after the mount prefix was cleaned up, Smb4KShare::canonicalPath()
     // would return an empty string.
     emit unmounted( known_share );
-
-    // Schedule the obsolete mountpoint for removal.
-    d->obsoleteMountpoints << known_share->canonicalPath();
 
     // Remove the share from the list of mounted shares.
     removeMountedShare( known_share );

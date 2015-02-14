@@ -403,7 +403,6 @@ class Smb4KMounterPrivate
     QList<Smb4KShare *> importedShares;
     QList<Smb4KShare *> retries;
     QList<Smb4KShare *> remounts;
-    QStringList obsoleteMountpoints;
     bool firstImportDone;
     bool importsAllowed;
     bool internalReason;
