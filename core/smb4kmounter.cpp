@@ -1548,9 +1548,6 @@ void Smb4KMounter::timerEvent( QTimerEvent * )
   {
     // Do nothing
   }
-  
-  // Finally, clean up the mount prefix.
-  cleanup();
 }
 
 
@@ -1781,6 +1778,9 @@ void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
   {
     // Do nothing
   }
+  
+  // Clean up the mount prefix.
+  cleanup();
 }
 
 
