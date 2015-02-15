@@ -28,7 +28,7 @@
 <holder>Alexander Reinholdt</holder>
 </copyright>
 <legalnotice>&underFDL;</legalnotice>
-<date>2015-01-xx</date>
+<date>2015-02-15</date>
 <releaseinfo>5.1.0</releaseinfo>
 <abstract>
 <para>&smb4k; is an advanced network neighborhood browser and Samba share mounting utility for KDE.</para>
@@ -51,7 +51,7 @@
 
 <itemizedlist>
   <listitem><para>Scanning for (active) workgroups, hosts, and shares</para></listitem>
-  <listitem><para>Support of the CIFS (&Linux;) and SMBFS (FreeBSD) file system</para></listitem>
+  <listitem><para>Support of the CIFS (&Linux;) and SMBFS (FreeBSD, NetBSD) file system</para></listitem>
   <listitem><para>Mounting and unmounting of shares</para></listitem>
   <listitem><para>Access to the files of a mounted share using a file manager or terminal</para></listitem>
   <listitem><para>Auto-detection of external mounts and unmounts</para></listitem>
@@ -59,7 +59,7 @@
   <listitem><para>Miscellaneous infos about remote network items and mounted shares</para></listitem>
   <listitem><para>Network search</para></listitem>
   <listitem><para>WINS server support</para></listitem>
-  <listitem><para>Preview of the contents of a share</para></listitem>
+  <listitem><para>Preview of the contents of a remote share</para></listitem>
   <listitem><para>Several methods to look up the initial list of workgroups and domains</para></listitem>
   <listitem><para>Default login</para></listitem>
   <listitem><para>Special handling of homes shares</para></listitem>
@@ -93,7 +93,7 @@
 <para>After the installation, you can run &smb4k; either from the K menu or from the command prompt by typing</para>
 <screen><prompt>$</prompt> <userinput><command>smb4k</command></userinput></screen>
 <para>&smb4k; does not take any arguments, except those that are known to all &kde; programs.</para>
-<para>&smb4k; also comes with a &plasmoid; for better desktop integration. It can be added as widget to the desktop or the panel.</para>
+<para>&smb4k; also comes with a <link linkend="plasmoid">&plasmoid;</link> for better desktop integration. It can be added as widget to the desktop or the panel.</para>
 
 <note><para>If your system is missing some of the programs &smb4k; needs to operate properly, it notifies the user:</para>
 <screenshot id="notification_missing_program">
@@ -109,7 +109,7 @@
 </screenshot>
 <para>In this case, please install the specified program or, if it is already present, add its location to the <envar>PATH</envar> environment variable in your shell's configuration file (for the <ulink url="man:/bash"><citerefentry><refentrytitle>bash</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> shell it is the <filename>~/.bashrc</filename> file).</para>
 
-<para>In addition, it is recommended that you configure Samba before using &smb4k;. You may use the web-based <ulink url="man:/swat"><citerefentry><refentrytitle>swat</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> utility for this purpose, if you have Samba 3 installed. However, it was removed from Samba 4. In this case, you can use other graphical tools (&eg; <application>system-config-samba</application>) or configure the <ulink url="man:/smb.conf"><citerefentry><refentrytitle>smb.conf</refentrytitle><manvolnum>5</manvolnum></citerefentry></ulink> file manually.</para></note>
+<para>In addition, it is recommended that you configure Samba before using &smb4k;. You may use the web-based <ulink url="man:/swat"><citerefentry><refentrytitle>swat</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> utility for this purpose if you have Samba 3 installed. However, it was removed from Samba 4. In this case, you can use other graphical tools (&eg; <application>system-config-samba</application>) or configure the <ulink url="man:/smb.conf"><citerefentry><refentrytitle>smb.conf</refentrytitle><manvolnum>5</manvolnum></citerefentry></ulink> file manually.</para></note>
 </sect1>
 
 <!-- Using Smb4K : Main Window -->
@@ -159,7 +159,7 @@
   </mediaobject>
 </screenshot>
 
-<para>The selection of multiple network items is supported since &smb4k; 1.2.0. So, it is now possible to &eg; mount or preview several shares at once.</para>
+<para>The selection of multiple network items is supported. So, it is possible to &eg; mount or preview several shares at once.</para>
 
 <!-- Using Smb4K : The Network Neighborhood Browser : Browsing -->
 
@@ -342,7 +342,7 @@
   <para>Here you can enter the location of the share either as <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention">Uniform Naming Convention (UNC)</ulink> address in the form <screen>//[USER@]SERVER/SHARE</screen> or <screen>\\[USER@]SERVER\SHARE</screen> or as URL in the form <screen>[smb:]//[user@]server:port/share</screen> The <guibutton>OK</guibutton> button will be enabled and you can press it to mount the share. However, it is advisable to enter the IP address and the workgroup of the server, too. If you want to add the share to the bookmarks at the same time, tick the <guibutton>Add this share to the bookmarks</guibutton> check box.</para></listitem>
 </orderedlist>
 
-<para>Often a share is password protected. In this case, an <link linkend="mainwindow_network_authentication">authentication dialog</link> will appear and you have to enter the correct user name (if not already provided) and password. &smb4k; will proceed mounting the share unless a wrong user name or password was supplied. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="mounted_shares_view">mounted shares view</link>. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (&Linux;) or <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (FreeBSD) will be shown.</para>
+<para>Often a share is password protected. In this case, an <link linkend="mainwindow_network_authentication">authentication dialog</link> will appear and you have to enter the correct user name (if not already provided) and password. &smb4k; will proceed mounting the share unless a wrong user name or password was supplied. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="mounted_shares_view">mounted shares view</link>. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (&Linux;) or <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (FreeBSD, NetBSD) will be shown.</para>
 </sect2>
 
 <!-- Using Smb4K : The Network Neighborhood Browser : Printing Files -->
@@ -411,7 +411,7 @@
 <para>Use the <guilabel>Custom Options</guilabel> dialog if you want to</para>
 <itemizedlist>
   <listitem><para>define custom Samba options for a single server or share that deviate from the ones defined in the configuration dialog,</para></listitem>
-  <listitem><para>define a server that should be woken up prior to network scans or mount attempts (Wake-On-LAN feature, see <link linkend="configuration_network_wake_on_lan">here</link> section),</para></listitem>
+  <listitem><para>define a server that should be woken up prior to network scans or mount attempts (Wake-On-LAN feature, see <link linkend="configuration_network_wake_on_lan">here</link>),</para></listitem>
   <listitem><para>always mount a certain share on start-up or if the corresponding profile is loaded.</para></listitem>
 </itemizedlist>
 <para>The dialog is opened by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Custom Options</guimenuitem></menuchoice> menu entry.</para>
@@ -430,7 +430,7 @@
 
 <para>The <guibutton>Default</guibutton> button is enabled if the entries in the dialog deviate from the settings you defined in the configuration dialog. By clicking it, you can reset the entries in the dialog to their default values. The <guibutton>OK</guibutton> button is enabled if you changed the settings in the dialog. Clicking it will commit the custom settings and close the dialog.</para>
 
-<note><para>Under FreeBSD, the dialog contains less entries than if you run a different operating system, because several of the options are not supported.</para></note>
+<note><para>Under FreeBSD and NetBSD, the dialog contains less entries than if you run a different operating system, because several of the options are not supported.</para></note>
 
 <sect3 id="network_neighborhood_browser_custom_samba">
   <title>Samba</title>
@@ -471,7 +471,7 @@
 
 <sect2 id="network_search_dialog_searching">
 <title>Searching</title>
-<para>&smb4k; searches the network neighborhood for shares that match or contain the search string. To start a search, enter the term and either press the &Enter; key or click the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut><guimenuitem>Search</guimenuitem></menuchoice> action next to the input box. All network shares that match the search criterion are listed in the list view. If they are already mounted on the system, they are marked accordingly. If the search fails, an error message is displayed. Starting a new search will clear the list view. If you need to abort a search, click the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>A</keycap></keycombo></shortcut><guimenuitem>Abort</guimenuitem></menuchoice> action next to the <guimenuitem>Search</guimenuitem> action.</para>
+<para>&smb4k; searches the network neighborhood for shares that match or contain the search string. To start a search, enter the term and either press the &Enter; key or click the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut><guimenuitem>Search</guimenuitem></menuchoice> action next to the input box. All network shares that match the search criterion are listed in the list view. If they are already mounted on the system, they are marked accordingly. If the search fails, an error message is displayed. Starting a new search will clear the list view. If you need to abort a search, click the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>A</keycap></keycombo></shortcut><guimenuitem>Abort</guimenuitem></menuchoice> action.</para>
 </sect2>
 
 <!-- Using Smb4K : The Network Search Dialog : Actions and Popup Menu -->
@@ -1063,7 +1063,7 @@
  
 <para>Besides the already mentioned <guibutton>Up</guibutton> button, the toolbar contains three more entries: <guibutton>Rescan</guibutton>, <guibutton>Abort</guibutton> and <guibutton>Mount Dialog</guibutton>. With them you can do a rescan, abort any running action or open the <link linkend="mainwindow_network_mounting">dialog for "manual" mounts</link>.</para>
 
-<note><para>In the current development state, the &plasmoid; is not able to handle the <link linkend="configuration_network_periodic_scanning">automatic scanning feature</link>, &smb4k; provides. Funny things will happen, if you use it with the &plasmoid; and will it probably render mostly unusable.</para></note>
+<note><para>In the current development state, the &plasmoid; is not able to handle the <link linkend="configuration_network_periodic_scanning">automatic scanning feature</link>, &smb4k; provides. Funny things will happen, if you use it with the &plasmoid; and will probably render it mostly unusable.</para></note>
 </sect2>
 
 <!-- Using Smb4K : The Plasmoid : Mounted Shares Tab -->
