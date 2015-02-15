@@ -2,7 +2,7 @@
     smb4kshare  -  Smb4K's container class for information about a share.
                              -------------------
     begin                : Mo Jan 28 2008
-    copyright            : (C) 2008-2014 by Alexander Reinholdt
+    copyright            : (C) 2008-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -623,10 +623,10 @@ QString Smb4KShare::freeDiskSpaceString() const
   double tmp_factor = 0;
   qulonglong factor = 0;
 
-  (void) frexp( d->freeSpace * 1024, &exponent );
-  (void) modf( (exponent - 10) / 10, &tmp_factor );
+  (void) std::frexp( d->freeSpace * 1024, &exponent );
+  (void) std::modf( (exponent - 10) / 10, &tmp_factor );
   factor = tmp_factor;
-  qreal tmp_free = d->freeSpace / pow( 1024, factor );
+  qreal tmp_free = d->freeSpace / std::pow( 1024, factor );
   free = QString( "%1" ).arg( tmp_free, 0, 'f', 1 );
 
   switch ( factor )
@@ -686,10 +686,10 @@ QString Smb4KShare::usedDiskSpaceString() const
   double tmp_factor = 0;
   qulonglong factor = 0;
 
-  (void) frexp( d->usedSpace * 1024, &exponent );
-  (void) modf( (exponent - 10) / 10, &tmp_factor );
+  (void) std::frexp( d->usedSpace * 1024, &exponent );
+  (void) std::modf( (exponent - 10) / 10, &tmp_factor );
   factor = tmp_factor;
-  qreal tmp_used = d->usedSpace / pow( 1024, factor );
+  qreal tmp_used = d->usedSpace / std::pow( 1024, factor );
   used = QString( "%1" ).arg( tmp_used, 0, 'f', 1 );
 
   switch ( factor )
