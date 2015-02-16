@@ -48,8 +48,6 @@ KDE4_AUTH_HELPER_MAIN( "net.sourceforge.smb4k.mounthelper", Smb4KMountHelper )
 
 ActionReply Smb4KMountHelper::mount( const QVariantMap &args )
 {
-  qDebug() << "Mounting share...";
-  
   ActionReply reply;
   reply.addData( "url", args["url"] );
   reply.addData( "workgroup", args["workgroup"] );
