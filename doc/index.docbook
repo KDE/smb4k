@@ -1085,9 +1085,9 @@
   </mediaobject>
 </screenshot>
 
-<para>Right to the name of the share and its host, two action buttons are arranged. The first one is for <link linkend="mainwindow_add_bookmarks">adding a bookmark</link> and the second for unmounting the shares. The action buttons are transparent by default and change to opaque when you move your mouse over them. By left clicking you initiate the respective action.</para>
+<para>Right to the name of the share and its host, two action buttons are arranged. The first one is for <link linkend="mainwindow_add_bookmarks">adding a bookmark</link> and the second for unmounting the share. The action buttons are transparent by default and change to opaque when you move your mouse over them. By left clicking you initiate the respective action.</para>
 
-<para>The toolbar only contains the <guibutton>Unmount All</guibutton> with that you can unmount all shares at once.</para>
+<para>The toolbar only contains the <guibutton>Unmount All</guibutton> action that lets you unmount all shares at once.</para>
 </sect2>
 
 <!-- Using Smb4K : The Plasmoid : Bookmarks Tab -->
@@ -1095,7 +1095,7 @@
 <sect2 id="plasmoid_bookmarks">
 <title>Bookmarks Tab</title>
 
-<para>On the <guilabel>Bookmarks</guilabel> page the bookmark groups and bookmarks <!-- defined for the currently active profile -->are listed:</para>
+<para>On the <guilabel>Bookmarks</guilabel> page, the bookmark groups and bookmarks <!-- defined for the currently active profile -->are listed:</para>
 <screenshot>
   <screeninfo>Screenshot of the plasmoid's bookmarks tab</screeninfo>
   <mediaobject>
@@ -1139,7 +1139,7 @@
 
 <sect2 id="mainwindow_add_bookmarks">
 <title>Adding Bookmarks</title>
-<para>You can add bookmarks to your favorite shares from within the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, the <link linkend="mounted_shares_view">shares view</link> and the <link linkend="plasmoid">plasmoid</link>. In the dock widgets of the main window, this is done by selecting one or multiple shares and clicking the <menuchoice><guimenuitem>Add Bookmark</guimenuitem></menuchoice> action. In the plasmoid, you click the respective bookmark action next to the item's name. A dialog will then pop up where you can add a label and/or assign a group to the bookmark.</para>
+<para>You can add bookmarks to your favorite shares from within the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, the <link linkend="mounted_shares_view">shares view</link> and the <link linkend="plasmoid">&plasmoid;</link>. In the dock widgets of the main window, this is done by selecting one or multiple shares and clicking the <menuchoice><guimenuitem>Add Bookmark</guimenuitem></menuchoice> action. In the &plasmoid;, you click the respective bookmark action next to the item's name. A dialog will then pop up where you can add a label and/or assign a group to the bookmark.</para>
 <screenshot>
 <screeninfo>Screenshot of the bookmarks addition dialog</screeninfo>
 <mediaobject>
@@ -1215,12 +1215,12 @@
 <para>All other entries are either group submenus or shares that do not belong to a group. All entries are listed alphabetically and the bookmarks may either appear with their UNC address or descriptive label. By clicking a bookmark, the respective share is mounted. If a bookmarked share is mounted on the system, the bookmark entry is disabled.</para>
 <para>For each group there is a submenu. It contains all bookmarks belonging to the group and a <guimenuitem>Mount All Bookmarks</guimenuitem> menu item. The latter one can be used to mount all bookmarks in that submenu at once.</para>
 
-<para>The plasmoid provides a <link linkend="plasmoid_bookmarks"><guilabel>Bookmarks</guilabel> tab</link> where all bookmarks are arranged in a similar way as in the bookmark menu. The bookmark groups and the bookmarks are listed in the view. Bookmarked shares can be mounted by clicking the respective entry. In the tool bar two actions are present: <guimenuitem>Back</guimenuitem> and <guimenuitem>Edit</guimenuitem>. By clicking <guimenuitem>Back</guimenuitem> you can get back to the top level if you entered a group folder. The <guimenuitem>Edit</guimenuitem> action will open the <link linkend="mainwindow_bookmarks_editor">bookmark editor</link>.</para>
+<para>In the system tray widget, there is an identical <guilabel>Bookmarks</guilabel> <link linkend="systemtray_menus">submenu</link> except that the <guilabel>Add Bookmark</guilabel> entry is missing. The plasmoid provides a <guilabel>Bookmarks</guilabel> <link linkend="plasmoid_bookmarks">tab</link> where all bookmarks are arranged in a similar way as in the bookmark menu. The bookmark groups and the bookmarks are listed in the view. Bookmarked shares can be mounted by clicking the respective entry. In the tool bar two actions are present: <guimenuitem>Back</guimenuitem> and <guimenuitem>Edit</guimenuitem>. By clicking <guimenuitem>Back</guimenuitem> you can get back to the top level if you entered a group folder. The <guimenuitem>Edit</guimenuitem> action will open the <link linkend="mainwindow_bookmarks_editor">bookmark editor</link>.</para>
 </sect2>
 
 <sect2 id="mainwindow_bookmarks_editor">
 <title>Editing Bookmarks</title>
-<para>The bookmarks may be edited or removed via the bookmark editor. It can be opened by clicking the <guimenuitem>Edit Bookmarks</guimenuitem> action in the main window or the <guimenuitem>Edit</guimenuitem> action in the <guilabel>Bookmarks</guilabel> tab of the plasmoid.</para>
+<para>The bookmarks may be edited or removed via the bookmark editor. It can be opened by clicking the <guimenuitem>Edit Bookmarks</guimenuitem> entry in the <guilabel>Bookmarks</guilabel> menu or the <guimenuitem>Edit</guimenuitem> action in the <guilabel>Bookmarks</guilabel> tab of the &plasmoid;.</para>
 <screenshot>
 <screeninfo>Screenshot of the bookmark editor</screeninfo>
 <mediaobject>
@@ -1232,8 +1232,8 @@
 </textobject>
 </mediaobject>
 </screenshot>
-<para>In the tree view the bookmarks are arranged according to the groups they belong to. Bookmarks without groups are located at the top level. To rearrange bookmarks, the tree view offers drag and drop capabilities, so that you can move bookmarks around using the mouse.</para>
-<para>If you want to edit a bookmark, you can do so by selecting it. The stored label, login, IP address and group name appear in the input widgets and become editable. In most cases, you do not need to touch the IP address and the login, because &smb4k; stored the correct values at the time you bookmarked the share. However, if the server got a different IP address (&eg; because DHCP is used on your local network) or your login changed, these entries should be adjusted. With the label you can give each bookmark a custom description. It will be used <emphasis>instead</emphasis> of the UNC address in the case this feature is enabled in the <link linkend="configuration_user_interface_misc_bookmarks">configuration dialog</link>. The group entry, finally, helps you to organize your bookmarks. Especially if you use &eg; your notebook at home and at work, it might be a good idea to create two groups "Home" and "Work" and save the bookmarks accordingly.</para>
+<para>In the tree view, the bookmarks are arranged according to the groups they belong to. Bookmarks without groups are located at the top level. To rearrange bookmarks, the tree view offers drag and drop capabilities, so that you can move bookmarks around using the mouse.</para>
+<para>If you want to edit a bookmark, you can do so by selecting it. The stored label, login, IP address and group name appear in the input widgets and become editable. In most cases, you do not need to touch the IP address and the login, because &smb4k; stored the correct values at the time you bookmarked the share. However, if the server got a different IP address (&eg; because DHCP is used on your local network) or your login changed, these entries should be adjusted. With the label you can give each bookmark a custom description. It will be used for display <emphasis>instead</emphasis> of the UNC address, but this can be changed in the <link linkend="configuration_user_interface_misc_bookmarks">configuration dialog</link>. The group entry, finally, helps you to organize your bookmarks. Especially if you use &eg; your notebook at home and at work, and you do not want to use <link linkend="profiles">profiles</link>, it might be a good idea to create two groups "Home" and "Work" and save the bookmarks accordingly.</para>
 <para>The tree view also offers a popup menu containing the following three actions. They can be used to add groups or remove groups and/or bookmarks.</para>
 <screenshot>
 <screeninfo>Screenshot of the popup menu of the bookmark editor</screeninfo>
@@ -1264,7 +1264,7 @@
 </menuchoice>
 </term>
 <listitem>
-<para>Remove a selected bookmark. This action is disabled if no bookmark is selected.</para>
+<para>Remove a selected bookmark or group. In case of a group, all bookmarks stored under that group are also removed.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
@@ -1341,6 +1341,7 @@
       <listitem><para>The bookmarks of this profile are loaded.</para></listitem>
       <listitem><para>The custom options of this profile are loaded.</para></listitem>
     </itemizedlist>
+    <para>So, don't be surprised when things change when you selected a different profile ...</para>
   </sect2>
 </sect1>
 
@@ -1353,7 +1354,7 @@
   
   <sect2 id="notifications_default_behavior">
     <title>Default Behavior</title>
-    <para>Normal events like mounting and unmounting of a share as well as warnings and errors are reported to the user via system notifications. By default, if the user is notified about a normal event, a notification pops up silently. With warnings and errors also a sound is played. The screenshot below shows the notification that pops up after a share was mounted.</para>
+    <para>Normal events like mounting and unmounting of a share as well as warnings and errors are reported to the user via system notifications. By default, when the user is notified about a normal event, a notification pops up silently. With warnings and errors also a sound is played. The screenshot below shows the notification that pops up after a share was mounted.</para>
     <screenshot>
       <screeninfo>Screenshot of the notification after mounting a share</screeninfo>
       <mediaobject>
@@ -1368,7 +1369,7 @@
 
   <sect2 id="notifications_manage">
     <title>Managing Notifications</title>
-    <para>&smb4k; used notifications to inform the user about events, warnings and errors. They can be managed via the &systemsettings;. To modify the behavior of one or all notifications, open the <guibutton>Application and System Notifications</guibutton> module and choose the <guibutton>Manage Notifications</guibutton> entry. In the tab <guilabel>Applications</guilabel> select the <guilabel>Advanced Network Neighborhood Browser</guilabel> entry from the drop-down menu:</para>
+    <para>&smb4k; uses notifications to inform the user about events, warnings and errors. They can be managed via the &systemsettings;. To modify the behavior of one or all notifications, open the <guibutton>Application and System Notifications</guibutton> module and choose the <guibutton>Manage Notifications</guibutton> entry. In the tab <guilabel>Applications</guilabel> select the <guilabel>Advanced Network Neighborhood Browser</guilabel> entry from the drop-down menu:</para>
     <screenshot>
       <screeninfo>Screenshot of the systemsettings notification module</screeninfo>
       <mediaobject>
