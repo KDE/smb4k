@@ -5,6 +5,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+ and GFDL-1.2</project_license>
   <name>Smb4K</name>
+  <name xml:lang="bs">Smb4K</name>
   <name xml:lang="ca">Smb4K</name>
   <name xml:lang="cs">Smb4K</name>
   <name xml:lang="da">Smb4K</name>
@@ -22,6 +23,7 @@
   <name xml:lang="uk">Smb4K</name>
   <name xml:lang="x-test">xxSmb4Kxx</name>
   <summary>Advanced Network Neighborhood Browser and Samba Share Mounting Utility</summary>
+  <summary xml:lang="bs">Napredni pretraživač mrežnih susjeda i Samba dijeljeni ugrađeni uslužni program</summary>
   <summary xml:lang="ca">Explorador avançat del veïnatge de xarxa i utilitat per a muntar les comparticions de Samba</summary>
   <summary xml:lang="cs">Pokročilý prohlížeč síťového okolí a nástroj na připojování úložišť samba</summary>
   <summary xml:lang="de">Erweiterter Browser für die Netzwerkumgebung und Dienstprogramm zum Einbinden von Samba-Freigaben</summary>
@@ -41,6 +43,7 @@
     <p>
       Smb4K is an advanced network neighborhood browser and Samba share mounting utility for the KDE Software Compilation. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.
     </p>
+    <p xml:lang="bs">Smb4k je napredni pretraživač mrežnih susjeda i Samba dijeljeni ugrađeni uslužni program za KDE softver kompilaciju. On skenira vašu mrežu susjeda za sve dostupne radne grupe, servere i razmjene i može ugraditi sve željene razmjene na vaš lokalni sistem datoteka.</p>
     <p xml:lang="ca">El Smb4K és un explorador avançat del veïnatge de xarxa i utilitat per a muntar les comparticions de Samba pel KDE Software Compilation. Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
     <p xml:lang="en-GB">Smb4K is an advanced network neighborhood browser and Samba share mounting utility for the KDE Software Compilation. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.</p>
     <p xml:lang="es">Smb4K es un navegador avanzado del entorno de red y una utilidad de montaje de recursos compartidos Samba para «KDE Software Compilation». Escanea su entorno de red en busca de cualquier grupo de trabajo, servidor y recurso compartido disponible y puede montar todos los recursos compartidos deseados en su sistema de archivos local.</p>
@@ -57,6 +60,7 @@
     <p>
       Smb4K utilizes the programs of the Samba software suite. Its purpose is to provide a program that is easy to use and has as many features as possible.
     </p>
+    <p xml:lang="bs">Smb4k ugrađuje programe iz Samba softver paketa. Njegova svrha je da omogući program koji je lagan za upotrebu i ima što više mogućnosti.</p>
     <p xml:lang="ca">El Smb4K utilitza els programes de la suite de programari Samba. El seu propòsit és proporcionar un programa de fàcil ús i contenir tantes característiques com sigui possible.</p>
     <p xml:lang="en-GB">Smb4K utilises the programs of the Samba software suite. Its purpose is to provide a program that is easy to use and has as many features as possible.</p>
     <p xml:lang="es">Smb4K utiliza los programas de la suite de programas Samba. Su objetivo es proporcionar un programa que sea sencillo de usar y tenga tantas prestaciones como sea posible.</p>
@@ -73,6 +77,7 @@
     <p>
       Features:
     </p>
+    <p xml:lang="bs">Svojstva:</p>
     <p xml:lang="ca">Característiques:</p>
     <p xml:lang="cs">Vlastnosti:</p>
     <p xml:lang="da">Funktioner:</p>
@@ -91,6 +96,7 @@
     <p xml:lang="x-test">xxFeatures:xx</p>
     <ul>
       <li>Scanning for (active) workgroups, hosts, and shares</li>
+      <li xml:lang="bs">Pretraživanje (aktivnih) radnih grupa, hostova i razmjena</li>
       <li xml:lang="ca">Exploració per a grups de treball, ordinadors i comparticions (actius)</li>
       <li xml:lang="de">Suche nach (aktiven) Arbeitsgruppen, Rechnern und Freigaben</li>
       <li xml:lang="en-GB">Scanning for (active) workgroups, hosts, and shares</li>
@@ -106,6 +112,7 @@
       <li xml:lang="uk">Виявлення (активних) робочих груп, вузлів та спільних ресурсів.</li>
       <li xml:lang="x-test">xxScanning for (active) workgroups, hosts, and sharesxx</li>
       <li>Support of the CIFS (Linux) and SMBFS (FreeBSD) file system</li>
+      <li xml:lang="bs">Podrška za CIFS (Linux) i SMBFS (FreeBSD) sistem datoteka</li>
       <li xml:lang="ca">Implementació dels sistemes de fitxers CIFS (Linux) i SMBFS (FreeBSD)</li>
       <li xml:lang="de">Unterstützung für CIFS-Dateisysteme unter Linux und SMBFS-Dateisysteme unter FreeBSD</li>
       <li xml:lang="en-GB">Support of the CIFS (Linux) and SMBFS (FreeBSD) file system</li>
@@ -121,6 +128,7 @@
       <li xml:lang="uk">Підтримка файлових систем CIFS (Linux) та SMBFS (FreeBSD).</li>
       <li xml:lang="x-test">xxSupport of the CIFS (Linux) and SMBFS (FreeBSD) file systemxx</li>
       <li>Mounting and unmounting of shares</li>
+      <li xml:lang="bs">Namještanje i razmještanje razmjena</li>
       <li xml:lang="ca">El muntatge i desmuntatge de les comparticions</li>
       <li xml:lang="de">Einbinden und Lösen von Freigaben</li>
       <li xml:lang="en-GB">Mounting and unmounting of shares</li>
@@ -136,6 +144,7 @@
       <li xml:lang="uk">Монтування і демонтування спільних ресурсів.</li>
       <li xml:lang="x-test">xxMounting and unmounting of sharesxx</li>
       <li>Access to the files of a mounted share using a file manager or terminal</li>
+      <li xml:lang="bs">Pristup datotekama namještene razmjene koristeći upravitelj datotekom ili terminal</li>
       <li xml:lang="ca">Accés als fitxers d'una compartició muntada utilitzant un gestor de fitxers o terminal</li>
       <li xml:lang="de">Zugriff auf die Dateien einer eingebundenen Freigabe mit einem Dateiverwaltungsprogramm oder einem Terminal</li>
       <li xml:lang="en-GB">Access to the files of a mounted share using a file manager or terminal</li>
@@ -151,6 +160,7 @@
       <li xml:lang="uk">Доступ до файлів змонтованого спільного ресурсу за допомогою програми для керування файлами або термінала.</li>
       <li xml:lang="x-test">xxAccess to the files of a mounted share using a file manager or terminalxx</li>
       <li>Auto-detection of external mounts and unmounts</li>
+      <li xml:lang="bs">Auto-detekcija vanjskih namještanja i razmještanja</li>
       <li xml:lang="ca">Detecció automàtica de muntatges i desmuntatges externs</li>
       <li xml:lang="de">Automatische Erkennung externer Medien, die eingebunden oder ausgehängt werden</li>
       <li xml:lang="en-GB">Auto-detection of external mounts and unmounts</li>
@@ -166,6 +176,7 @@
       <li xml:lang="uk">Автоматичне виявлення зовнішніх дій з монтування або демонтування.</li>
       <li xml:lang="x-test">xxAuto-detection of external mounts and unmountsxx</li>
       <li>Remounting of previously used shares on program start</li>
+      <li xml:lang="bs">Ponovno namještanje prethodno korištenih razmjena na početak programa</li>
       <li xml:lang="ca">Torna a muntar les comparticions utilitzades anteriorment durant l'inici del programa</li>
       <li xml:lang="de">Erneute Einbindung von vorher benutzten Freigaben beim Start des Programms</li>
       <li xml:lang="en-GB">Remounting of previously used shares on program start</li>
@@ -181,6 +192,7 @@
       <li xml:lang="uk">Повторне монтування раніше використаних спільних ресурсів під час запуску програми.</li>
       <li xml:lang="x-test">xxRemounting of previously used shares on program startxx</li>
       <li>Miscellaneous infos about remote network items and mounted shares</li>
+      <li xml:lang="bs">Raznovrsne informacije o udaljenim mrežnim stavkama i namještenim razmjenama</li>
       <li xml:lang="ca">Informacions diverses sobre els elements de la xarxa remota i les comparticions muntades</li>
       <li xml:lang="de">Verschiedene Informationen über Netzwerke auf anderen Rechnern und eingebundene Freigaben</li>
       <li xml:lang="en-GB">Miscellaneous information about remote network items and mounted shares</li>
@@ -196,6 +208,7 @@
       <li xml:lang="uk">Показ різноманітних відомостей щодо віддалених елементів мережі та змонтованих спільних ресурсів.</li>
       <li xml:lang="x-test">xxMiscellaneous infos about remote network items and mounted sharesxx</li>
       <li>Network search</li>
+      <li xml:lang="bs">Pretraga mreže</li>
       <li xml:lang="ca">Cerca a la xarxa</li>
       <li xml:lang="cs">Prohledání sítě</li>
       <li xml:lang="da">Netværkssøgning</li>
@@ -213,6 +226,7 @@
       <li xml:lang="uk">Мережевий пошук.</li>
       <li xml:lang="x-test">xxNetwork searchxx</li>
       <li>WINS server support</li>
+      <li xml:lang="bs">Podrška za WINS server</li>
       <li xml:lang="ca">Implementació del servidor WINS</li>
       <li xml:lang="da">WINS-server-understøttelse</li>
       <li xml:lang="de">Unterstützung für WINS-Server</li>
@@ -229,6 +243,7 @@
       <li xml:lang="uk">Підтримка серверів WINS.</li>
       <li xml:lang="x-test">xxWINS server supportxx</li>
       <li>Preview of the contents of a share</li>
+      <li xml:lang="bs">Pregled sadržaja razmjene</li>
       <li xml:lang="ca">Vista prèvia dels continguts d'una compartició</li>
       <li xml:lang="de">Vorschau des Inhalts einer Freigabe</li>
       <li xml:lang="en-GB">Preview of the contents of a share</li>
@@ -244,6 +259,7 @@
       <li xml:lang="uk">Попередній перегляд даних зі спільного ресурсу.</li>
       <li xml:lang="x-test">xxPreview of the contents of a sharexx</li>
       <li>Several methods to look up the initial list of workgroups and domains</li>
+      <li xml:lang="bs">Nekoliko metoda za pregled početnih lista radnih grupa i domena</li>
       <li xml:lang="ca">Hi ha diversos mètodes per cercar la llista inicial dels grups de treball i dominis</li>
       <li xml:lang="de">Mehrere Methoden zur Suche nach der anfänglichen Liste von Arbeitsgruppen und Domänen</li>
       <li xml:lang="en-GB">Several methods to look up the initial list of workgroups and domains</li>
@@ -259,6 +275,7 @@
       <li xml:lang="uk">Декілька способів отримання початкового списку робочих груп та доменів.</li>
       <li xml:lang="x-test">xxSeveral methods to look up the initial list of workgroups and domainsxx</li>
       <li>Default login</li>
+      <li xml:lang="bs">Početna prijava</li>
       <li xml:lang="ca">Inici de sessió per defecte</li>
       <li xml:lang="cs">Výchozí přihlášení</li>
       <li xml:lang="da">Standard-login</li>
@@ -276,6 +293,7 @@
       <li xml:lang="uk">Типова реєстрація.</li>
       <li xml:lang="x-test">xxDefault loginxx</li>
       <li>Special handling of homes shares</li>
+      <li xml:lang="bs">Posebno korištenje početnih razmjena</li>
       <li xml:lang="ca">Tractament especial per a la distribució de les comparticions personals</li>
       <li xml:lang="de">Besondere Behandlung freigegebener persönlicher Ordner</li>
       <li xml:lang="en-GB">Special handling of homes shares</li>
@@ -291,6 +309,7 @@
       <li xml:lang="uk">Особливі інструменти роботи з домашніми спільними ресурсами.</li>
       <li xml:lang="x-test">xxSpecial handling of homes sharesxx</li>
       <li>Ability to bookmark favorite shares</li>
+      <li xml:lang="bs">Sposobnost bilježenja omiljenih razmjena</li>
       <li xml:lang="ca">La possibilitat d'apuntar les comparticions a les adreces d'interès</li>
       <li xml:lang="de">Lesezeichen für bevorzugte Freigaben</li>
       <li xml:lang="en-GB">Ability to bookmark favorite shares</li>
@@ -306,6 +325,7 @@
       <li xml:lang="uk">Можливість створення закладок для потрібних вам спільних ресурсів.</li>
       <li xml:lang="x-test">xxAbility to bookmark favorite sharesxx</li>
       <li>System tray widget</li>
+      <li xml:lang="bs">Kontrola za poslužavnik sistema</li>
       <li xml:lang="ca">Un estri per a la safata del sistema</li>
       <li xml:lang="de">Symbol im Systemabschnitt der Kontrollleiste</li>
       <li xml:lang="en-GB">System tray widget</li>
@@ -321,6 +341,7 @@
       <li xml:lang="uk">Віджет системного лотка.</li>
       <li xml:lang="x-test">xxSystem tray widgetxx</li>
       <li>Support of advanced Samba options</li>
+      <li xml:lang="bs">Podrška za napredne Samba opcije</li>
       <li xml:lang="ca">Implementació de les opcions avançades de Samba</li>
       <li xml:lang="de">Unterstützung der erweiterten Samba-Einstellungen</li>
       <li xml:lang="en-GB">Support of advanced Samba options</li>
@@ -336,6 +357,7 @@
       <li xml:lang="uk">Підтримка додаткових параметрів Samba.</li>
       <li xml:lang="x-test">xxSupport of advanced Samba optionsxx</li>
       <li>Support of printer shares</li>
+      <li xml:lang="bs">Podrška za razmjene štampača</li>
       <li xml:lang="ca">Implementació de les impressores compartides</li>
       <li xml:lang="de">Unterstützung für Drucker-Freigaben</li>
       <li xml:lang="en-GB">Support of printer shares</li>
@@ -351,6 +373,7 @@
       <li xml:lang="uk">Підтримка спільних принтерів.</li>
       <li xml:lang="x-test">xxSupport of printer sharesxx</li>
       <li>KWallet support</li>
+      <li xml:lang="bs">KWallet podrška</li>
       <li xml:lang="ca">Implementació per a KWallet</li>
       <li xml:lang="cs">Podpora KWallet</li>
       <li xml:lang="de">Unterstützung für KWallet</li>
@@ -367,6 +390,7 @@
       <li xml:lang="uk">Підтримка роботи з KWallet.</li>
       <li xml:lang="x-test">xxKWallet supportxx</li>
       <li>Synchronization of a remote share with a local copy and vice versa</li>
+      <li xml:lang="bs">Sinhronizacija udaljenih razmjena sa lokalnom kopijom i obrnuto</li>
       <li xml:lang="ca">Sincronització d'una compartició remota amb una còpia local i viceversa</li>
       <li xml:lang="de">Abgleich einer entfernten Freigabe mit einer lokalen Kopie und umgekehrt</li>
       <li xml:lang="en-GB">Synchronisation of a remote share with a local copy and vice versa</li>
@@ -382,6 +406,7 @@
       <li xml:lang="uk">Синхронізація віддаленого спільного ресурсу з локальною копією і навпаки.</li>
       <li xml:lang="x-test">xxSynchronization of a remote share with a local copy and vice versaxx</li>
       <li>Ability to define custom options for individual servers and shares</li>
+      <li xml:lang="bs">Sposobnost definisanja prilagođenih opcija za individualne servere i razmjene</li>
       <li xml:lang="ca">La possibilitat de definir individualment opcions personalitzades per a servidors i comparticions</li>
       <li xml:lang="de">Fähigkeit zur Definition von benutzerdefinierten Einstellungen für einzelne Server und Freigaben.</li>
       <li xml:lang="en-GB">Ability to define custom options for individual servers and shares</li>
@@ -397,6 +422,7 @@
       <li xml:lang="uk">Можливість визначення нетипових параметрів для окремих серверів та спільних ресурсів.</li>
       <li xml:lang="x-test">xxAbility to define custom options for individual servers and sharesxx</li>
       <li>Laptop support through the Solid hardware device framework</li>
+      <li xml:lang="bs">Laptop podrška preko čvrstog hardver uređajnog okruženja</li>
       <li xml:lang="ca">Implementació de l'ordinador portàtil a través del marc de treball per a dispositius Solid</li>
       <li xml:lang="de">Laptop-Unterstützung durch das Solid-Framework für Hardware-Geräte</li>
       <li xml:lang="en-GB">Laptop support through the Solid hardware device framework</li>
@@ -412,6 +438,7 @@
       <li xml:lang="uk">Підтримка ноутбуків за допомогою оболонки для роботи з пристроями Solid.</li>
       <li xml:lang="x-test">xxLaptop support through the Solid hardware device frameworkxx</li>
       <li>Wake-On-LAN capabilities</li>
+      <li xml:lang="bs">Wake-On-LAN mogućnosti</li>
       <li xml:lang="ca">Funcionalitats d'activació per LAN (Wake-On-LAN)</li>
       <li xml:lang="de">„Wake-On-LAN“-Fähigkeiten</li>
       <li xml:lang="en-GB">Wake-On-LAN capabilities</li>
@@ -427,6 +454,7 @@
       <li xml:lang="uk">Можливості пробудження сигналом з локальної мережі.</li>
       <li xml:lang="x-test">xxWake-On-LAN capabilitiesxx</li>
       <li>Plasmoid for desktop integration</li>
+      <li xml:lang="bs">Plasmoid za integraciju radne površine</li>
       <li xml:lang="ca">Plasmoide per a la integració a l'escriptori</li>
       <li xml:lang="de">Plasmoid für die Integration in die Arbeitsfläche</li>
       <li xml:lang="en-GB">Plasmoid for desktop integration</li>
@@ -445,6 +473,7 @@
     <p>
       If you are working in a Windows dominated network environment, you may want to install this application to be able to easily access the provided Windows shares.
     </p>
+    <p xml:lang="bs">Ako radite sa Windows dominiranim mrežnim okruženjem, možda ćete željeti instalirati aplikaciju kako biste lako pristupili omogućenim Windows razmjenama.</p>
     <p xml:lang="ca">Si esteu treballant en un entorn de xarxa dominat per Windows, és possible que vulgueu instal·lar aquesta aplicació per a poder accedir amb facilitat a les comparticions proporcionades per Windows.</p>
     <p xml:lang="en-GB">If you are working in a Windows dominated network environment, you may want to install this application to be able to easily access the provided Windows shares.</p>
     <p xml:lang="es">Si estás trabajando en un entorno de red dominado por Windows, es posible que desees instalar esta aplicación para poder acceder fácilmente a los recursos Windows compartidos.</p>
@@ -462,6 +491,7 @@
   <screenshots>
     <screenshot type="default">
       <caption>The main window</caption>
+      <caption xml:lang="bs">Glavni prozor</caption>
       <caption xml:lang="ca">La finestra principal</caption>
       <caption xml:lang="de">Das Hauptfenster</caption>
       <caption xml:lang="en-GB">The main window</caption>
@@ -480,6 +510,7 @@
     </screenshot>
     <screenshot>
       <caption>The plasmoid</caption>
+      <caption xml:lang="bs">Plazmoid</caption>
       <caption xml:lang="ca">El plasmoide</caption>
       <caption xml:lang="cs">Plasmoid</caption>
       <caption xml:lang="de">Das Plasmoid</caption>
