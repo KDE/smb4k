@@ -1,5 +1,132 @@
 Smb4K 1.2.0 (????-??-??):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at
+https://projects.kde.org/projects/extragear/network/smb4k/repository/show?rev=1.2
+
+- Added support for NetBSD.
+- Added support for profiles.
+- Added appdata file. Closes SF ticket #35.
+- Updated handbook.
+- Do not clean up the mount prefix in Smb4KMounter::timerEvent(), but
+  do it when a share was unmounted (and, naturally, on exit).
+- Fix the Smb4KMounter::cleanup() function.
+- Removed Smb4KNotification::systemCallFailed() and also removed
+  the systemCallFailed event from smb4k.notifyrc file.
+  are reserved variables, so they were replaced by 'stdOut' and 'stdErr'.
+- Get rid of platform dependend functions and replace them by Qt, KDE or
+  C++ includes.
+- Added Smb4KDeclarative::isMasterBrowser() and Smb4KDeclarative::setMasterBrowser()
+  functions.
+- Fixed non-functional editing capabilities of the bookmark dialog.
+- Added share name to the homes user dialog.
+- Implemented profiles page in the plasmoid.
+- Added a second argument to initCore() function with that you can determine
+  whether the core classes (at the moment scanner and mounter) should be started
+  or not.
+- Removed old CTRL+R shortcut for rescanning the network neighborhood.
+- Implemented use of Kerberos with net command.
+- Improved handling of sleep states. Smb4K now reacts on changes of the network
+  connection instead of on button press events. So, we are also able to properly
+  unmount and remount shares when the computer is suspended by software.
+  Since the button press events are not checked anymore, the respective settings
+  and the 'Laptop Support' configuration page were removed.
+  These changes should fix SF ticket #38.
+- If the smb.conf file is missing, notify the user (ideally only once)
+  that it is missing and recommend him/her to create one.
+  Since we do not want to spam the user, remove any warnings/error
+  messages about a missing smb.conf file from stderr.
+- Fixed compilation errors under FreeBSD.
+- Fixed synchronization: rsync needs trailing slashes to operate correctly.
+  Make sure they are present. Also, ignore the "sending incremental file list"
+  output when compiling file urls.
+- Implemented more CIFS mount options under Linux as well as a whitelist
+  of mount.cifs options that are save to be entered via the "Additional options"
+  line edit in the configuration dialog.
+  The new (and removed) mount options are:
+  - 'cache=none|strict|loose' replacing 'directio' that is deprecated as of
+    kernel 3.7 and was thus removed. In the configuration dialog the respective
+    setting is named 'Cache mode'.
+  - 'vers=1.0|2.0|2.1|3.0'. In the configuration dialog the respective setting
+    is named 'SMB protocol version'.
+  - 'forceuid'. In the configuration dialog the respective setting is named
+    'Definitely assign the UID'.
+  - 'forcegid'. In the configuration dialog the respective setting is named
+    'Definitely assign the GID'.
+  To ensure a seamless transition, configuration updates are provided.
+  To enforce proper checking of the additional options provided by the user,
+  the "Additional options" line edit has been set read-only and the user must
+  use the new edit button to be able to enter the options. All options that
+  are not whitelisted - i.e. they have already been defined elsewhere or they
+  pose a potential security risk - will be removed from the list upon commit.
+  This is, among others, the proper fix to the security issue reported
+  by Heiner Markert (aka CVE-2014-2581) and initially fixed in version 1.1.2.
+- Use the "-e" (--encrypt) and "--use-ccache" options with the net command
+  where appropriate.
+- Add the ability to lookup the IP addresses of the hosts with the 'net'
+  command. You can choose to either use the 'nmblookup' command or the
+  'net' command on the 'Network' configuration page.
+- Reorganized the tabs in the User Interface configuration page. There is now 
+  a 'Miscellaneous Settings' tab that currently contains the bookmark settings.
+- Moved and partly renamed four settings. They all were located under "User 
+  Inferface" and were now moved to the "Network" and "Shares" sections in 
+  smb4k.kcfg, respectively.
+- Implemented notifications correctly. Part of the rewrite is the
+  transformation of the Smb4KNotification class into a namespace.
+  Since now the notifications can be edited via system settings, there
+  is no need for the "Show notifications" setting anymore that was
+  removed accordingly.
+- Implemented selection of multiple items in the browser:
+  You can select multiple items in the browser by pressing either the
+  CTRL or Shift key. However, only share items can be selected this way.
+  All others are automatically deselected.
+- Implement permanent (re)mounting of shares. This closes SF ticket #33.
+- Require CMake version 2.8 and make it a fatal error if it is not present.
+- Due to the API changes the version number of the core library was increased.
+- Smb4KWalletManager now opens the wallet asynchronously. This fixes the problem 
+  thatarose because of the timeout of KWallet::Wallet::openWallet() in synchronous 
+  mode where the password dialog for the host/share was shown before the wallet 
+  was opened.
+  Addtionally, some functions were removed and added.
+- Remove setting for temporal storage of the login information. Now, the
+  user either stores the passwords in the wallet or needs to enter the
+  login information each time it is needed.
+  Although it might be a regression for a few users, I decided to do this
+  because the code can be better maintained.
+- Do not use custom bookmark labels in the plasmoid.
+- Fix crash that might happen due to a (misconfigured) smb.conf file
+  that does not contain a global section.
+  Many thanks go to Michael Rohde for reporting this issue.
+- Remove the ability to exclude IPC$ and/or ADMIN$ shares from being
+  displayed when hidden shares should be listed.
+  This change also includes the removal of Smb4KShare::isIPC() and
+  Smb4KShare::isADMIN().
+- Fix i18n handling in smb4k (split into 3 catalogs)
+  + Added a new catalog plasma_applet_smb4k-qml with messages extracted from 
+    plasmoid/ subdir
+  + Spitted existing message extraction:
+     * catalog smb4k with messages extracted from smb4k/ and helpers/ subdirs
+       loaded via KAboutData/KComponentData
+     * catalog smb4k-core with messages extracted from core/ subdir
+       loaded via KCatalogLoader in core/smb4kglobal.cpp
+- Actually, Smb4K does not need to be a kdeinit executable. So, the
+  modification introduced in Smb4K 1.1.0 was reverted. Thanks go to
+  Albert Alstals Cid for pointing this out.
 - ...
+
+Smb4K 1.1.4 (2015-01-01):
+- Hopefully fixed a crash reported by Ingo Ratsdorf that happened when the
+  user used the "Master browsers need authentication" setting and an 
+  authentication error occurred.
+- Fix a potential crash in Smb4KMainWindow. Thanks go to Mounty One for
+  reporting this issue.
+- When the user cancels the homes user dialog, don't show the custom options
+  dialog.
+
+Smb4K 1.1.3 (2014-06-17):
+- Make mounting of a password protected share work under FreeBSD, if
+  no password has been defined yet.
+- Fixed compilation errors under FreeBSD.
 
 Smb4K 1.1.2 (2014-05-03):
 - Fixed a crash that could happen during the loading of bookmarks into
