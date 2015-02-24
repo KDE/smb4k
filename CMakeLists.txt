@@ -18,9 +18,12 @@ include(FindGettext)
 include(ConvenienceLibs.cmake)
 include(ConfigureChecks.cmake)
 
-# Disallow in-source builds
-# macro_ensure_out_of_source_build( "Smb4K requires an out of source build. Please create a separate build directory and
-# run 'cmake [options] <path_to_source_directory>' there." )
+# Make sure that Smb4K build when the several custom targets
+# with the same name exists (happens in the po directory).
+if ( EXISTS po )
+  set_property(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS ON)
+endif( EXISTS po )
+
 
 add_definitions( ${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
 
