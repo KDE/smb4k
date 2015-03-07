@@ -7,6 +7,7 @@
   <name>Smb4K</name>
   <name xml:lang="bs">Smb4K</name>
   <name xml:lang="ca">Smb4K</name>
+  <name xml:lang="cs">Smb4K</name>
   <name xml:lang="en-GB">Smb4K</name>
   <name xml:lang="es">Smb4K</name>
   <name xml:lang="fr">Smb4K</name>
@@ -21,6 +22,7 @@
   <summary>Advanced Network Neighborhood Browser and Samba Share Mounting Utility</summary>
   <summary xml:lang="bs">Napredni pretraživač mrežnih susjeda i Samba dijeljeni ugrađeni uslužni program</summary>
   <summary xml:lang="ca">Explorador avançat del veïnatge de xarxa i utilitat per a muntar les comparticions de Samba</summary>
+  <summary xml:lang="cs">Pokročilý prohlížeč síťového okolí a nástroj na připojování úložišť samba</summary>
   <summary xml:lang="en-GB">Advanced Network Neighborhood Browser and Samba Share Mounting Utility</summary>
   <summary xml:lang="es">Navegador avanzado del entorno de red y utilidad para montar recursos compartidos de Samba</summary>
   <summary xml:lang="fr">Navigateur avancé de voisinage réseau et utilitaire pour le montage des partages Samba</summary>
@@ -70,6 +72,7 @@
     </p>
     <p xml:lang="bs">Svojstva:</p>
     <p xml:lang="ca">Característiques:</p>
+    <p xml:lang="cs">Vlastnosti:</p>
     <p xml:lang="en-GB">Features:</p>
     <p xml:lang="es">Características:</p>
     <p xml:lang="fr">Fonctionnalité :</p>
@@ -183,6 +186,7 @@
       <li>Network search</li>
       <li xml:lang="bs">Pretraga mreže</li>
       <li xml:lang="ca">Cerca a la xarxa</li>
+      <li xml:lang="cs">Prohledání sítě</li>
       <li xml:lang="en-GB">Network search</li>
       <li xml:lang="es">Búsqueda en la red</li>
       <li xml:lang="fr">Recherche sur le réseau</li>
@@ -239,6 +243,7 @@
       <li>Default login</li>
       <li xml:lang="bs">Početna prijava</li>
       <li xml:lang="ca">Inici de sessió per defecte</li>
+      <li xml:lang="cs">Výchozí přihlášení</li>
       <li xml:lang="en-GB">Default login</li>
       <li xml:lang="es">Inicio de sesión predeterminado</li>
       <li xml:lang="fr">Identificateur de connexion par défaut</li>
@@ -323,6 +328,7 @@
       <li>KWallet support</li>
       <li xml:lang="bs">KWallet podrška</li>
       <li xml:lang="ca">Implementació per a KWallet</li>
+      <li xml:lang="cs">Podpora KWallet</li>
       <li xml:lang="en-GB">KWallet support</li>
       <li xml:lang="es">Soporte para KWallet</li>
       <li xml:lang="fr">Prise en charge de KWallet</li>
@@ -444,6 +450,7 @@
       <caption>The plasmoid</caption>
       <caption xml:lang="bs">Plazmoid</caption>
       <caption xml:lang="ca">El plasmoide</caption>
+      <caption xml:lang="cs">Plasmoid</caption>
       <caption xml:lang="en-GB">The plasmoid</caption>
       <caption xml:lang="es">El plasmoide</caption>
       <caption xml:lang="fr">Le plasmoïde</caption>
