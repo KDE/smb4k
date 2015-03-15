@@ -40,9 +40,7 @@
 #include <kdebug.h>
 #include <kicon.h>
 #include <kiconloader.h>
-
-// C++ includes
-#include <cmath>
+#include <kio/global.h>
 
 
 class Smb4KSharePrivate
@@ -554,52 +552,7 @@ qulonglong Smb4KShare::totalDiskSpace() const
 
 QString Smb4KShare::totalDiskSpaceString() const
 {
-  QString total, total_dim;
-
-  int exponent = 0;
-  double tmp_factor = 0;
-  qulonglong factor = 0;
-
-  (void) std::frexp( d->totalSpace * 1024, &exponent );
-  (void) std::modf( (exponent - 10) / 10, &tmp_factor );
-  factor = tmp_factor;
-  qreal tmp_total = d->totalSpace / std::pow( 1024, factor );
-  total = QString( "%1" ).arg( tmp_total, 0, 'f', 1 );
-
-  switch ( factor )
-  {
-    case 0:
-    {
-      total_dim = 'B';
-      break;
-    }
-    case 1:
-    {
-      total_dim = "KiB";
-      break;
-    }
-    case 2:
-    {
-      total_dim = "MiB";
-      break;
-    }
-    case 3:
-    {
-      total_dim = "GiB";
-      break;
-    }
-    case 4:
-    {
-      total_dim = "TiB";
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-
-  return total+' '+total_dim;
+  return KIO::convertSize(d->totalSpace);
 }
 
 
@@ -617,52 +570,7 @@ qulonglong Smb4KShare::freeDiskSpace() const
 
 QString Smb4KShare::freeDiskSpaceString() const
 {
-  QString free, free_dim;
-
-  int exponent = 0;
-  double tmp_factor = 0;
-  qulonglong factor = 0;
-
-  (void) std::frexp( d->freeSpace * 1024, &exponent );
-  (void) std::modf( (exponent - 10) / 10, &tmp_factor );
-  factor = tmp_factor;
-  qreal tmp_free = d->freeSpace / std::pow( 1024, factor );
-  free = QString( "%1" ).arg( tmp_free, 0, 'f', 1 );
-
-  switch ( factor )
-  {
-    case 0:
-    {
-      free_dim = 'B';
-      break;
-    }
-    case 1:
-    {
-      free_dim = "KiB";
-      break;
-    }
-    case 2:
-    {
-      free_dim = "MiB";
-      break;
-    }
-    case 3:
-    {
-      free_dim = "GiB";
-      break;
-    }
-    case 4:
-    {
-      free_dim = "TiB";
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-
-  return free+' '+free_dim;
+  return KIO::convertSize(d->freeSpace);
 }
 
 
@@ -680,52 +588,7 @@ qulonglong Smb4KShare::usedDiskSpace() const
 
 QString Smb4KShare::usedDiskSpaceString() const
 {
-  QString used, used_dim;
-
-  int exponent = 0;
-  double tmp_factor = 0;
-  qulonglong factor = 0;
-
-  (void) std::frexp( d->usedSpace * 1024, &exponent );
-  (void) std::modf( (exponent - 10) / 10, &tmp_factor );
-  factor = tmp_factor;
-  qreal tmp_used = d->usedSpace / std::pow( 1024, factor );
-  used = QString( "%1" ).arg( tmp_used, 0, 'f', 1 );
-
-  switch ( factor )
-  {
-    case 0:
-    {
-      used_dim = 'B';
-      break;
-    }
-    case 1:
-    {
-      used_dim = "KiB";
-      break;
-    }
-    case 2:
-    {
-      used_dim = "MiB";
-      break;
-    }
-    case 3:
-    {
-      used_dim = "GiB";
-      break;
-    }
-    case 4:
-    {
-      used_dim = "TiB";
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-
-  return used+' '+used_dim;
+  return KIO::convertSize(d->usedSpace);
 }
 
 
