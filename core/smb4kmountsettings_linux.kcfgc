@@ -1,0 +1,8 @@
+File=smb4kmountsettings_linux.kcfg
+ClassName=Smb4KMountSettings
+Singleton=true
+Mutators=true
+ItemAccessors=true
+SetUserTexts=true
+Inherits=KConfigSkeleton
+Visibility=KDE_EXPORT

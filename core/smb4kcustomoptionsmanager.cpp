@@ -2,7 +2,7 @@
     smb4kcustomoptionsmanager - Manage custom options
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2014 by Alexander Reinholdt
+    copyright            : (C) 2011-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -37,6 +37,12 @@
 #include "smb4ksettings.h"
 #include "smb4kglobal.h"
 #include "smb4kprofilemanager.h"
+
+#if defined(Q_OS_LINUX)
+#include "smb4kmountsettings_linux.h"
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+#include "smb4kmountsettings_freebsd.h"
+#endif
 
 // Qt includes
 #include <QtCore/QXmlStreamReader>
@@ -218,96 +224,103 @@ QList<Smb4KCustomOptions *> Smb4KCustomOptionsManager::sharesToRemount()
 
 Smb4KCustomOptions *Smb4KCustomOptionsManager::findOptions( Smb4KBasicNetworkItem *networkItem, bool exactMatch )
 {
-  Q_ASSERT( networkItem );
+  Q_ASSERT(networkItem);
   
   Smb4KCustomOptions *options = NULL;
-
-  switch ( networkItem->type() )
+  
+  if (networkItem)
   {
-    case Host:
+    switch ( networkItem->type() )
     {
-      Smb4KHost *host = static_cast<Smb4KHost *>( networkItem );
-
-      if ( host )
+      case Host:
       {
-        for ( int i = 0; i < d->options.size(); ++i )
+        Smb4KHost *host = static_cast<Smb4KHost *>( networkItem );
+
+        if ( host )
         {
-          if ( d->options.at( i )->type() == Host )
+          for ( int i = 0; i < d->options.size(); ++i )
           {
-            if ( QString::compare( d->options.at( i )->unc(), host->unc(), Qt::CaseInsensitive ) == 0 ||
-                 QString::compare( d->options.at( i )->ip(), host->ip() ) == 0 )
+            if ( d->options.at( i )->type() == Host )
             {
-              options = d->options[i];
-              break;
+              if ( QString::compare( d->options.at( i )->unc(), host->unc(), Qt::CaseInsensitive ) == 0 ||
+                  QString::compare( d->options.at( i )->ip(), host->ip() ) == 0 )
+              {
+                options = d->options[i];
+                break;
+              }
+              else
+              {
+                continue;
+              }
             }
             else
             {
               continue;
             }
           }
-          else
-          {
-            continue;
-          }
         }
-      }
-      else
-      {
-        // Do nothing
-      }
-      break;
-    }
-    case Share:
-    {
-      Smb4KShare *share = static_cast<Smb4KShare *>( networkItem );
-
-      if ( share )
-      {
-        for ( int i = 0; i < d->options.size(); ++i )
+        else
         {
-          if ( d->options.at( i )->type() == Share )
+          // Do nothing
+        }
+        break;
+      }
+      case Share:
+      {
+        Smb4KShare *share = static_cast<Smb4KShare *>( networkItem );
+
+        if ( share )
+        {
+          for ( int i = 0; i < d->options.size(); ++i )
           {
-            if ( QString::compare( d->options.at( i )->unc(), share->unc(), Qt::CaseInsensitive ) == 0 ||
-                 QString::compare( d->options.at( i )->unc(), share->homeUNC(), Qt::CaseInsensitive ) == 0 )
+            if ( d->options.at( i )->type() == Share )
             {
-              options = d->options[i];
-              break;
+              if ( QString::compare( d->options.at( i )->unc(), share->unc(), Qt::CaseInsensitive ) == 0 ||
+                  QString::compare( d->options.at( i )->unc(), share->homeUNC(), Qt::CaseInsensitive ) == 0 )
+              {
+                options = d->options[i];
+                break;
+              }
+              else
+              {
+                continue;
+              }
+            }
+            else if ( d->options.at( i )->type() == Host && !exactMatch )
+            {
+              // FIXME: This might be problematic if the user uses a DHCP server.
+              if ( QString::compare( d->options.at( i )->unc(), share->hostUNC(), Qt::CaseInsensitive ) == 0 ||
+                  QString::compare( d->options.at( i )->ip(), share->hostIP() ) == 0 )
+              {
+                options = d->options[i];
+              }
+              else
+              {
+                // Do nothing
+              }
+              continue;
             }
             else
             {
               continue;
             }
           }
-          else if ( d->options.at( i )->type() == Host && !exactMatch )
-          {
-            // FIXME: This might be problematic if the user uses a DHCP server.
-            if ( QString::compare( d->options.at( i )->unc(), share->hostUNC(), Qt::CaseInsensitive ) == 0 ||
-                 QString::compare( d->options.at( i )->ip(), share->hostIP() ) == 0 )
-            {
-              options = d->options[i];
-            }
-            else
-            {
-              // Do nothing
-            }
-            continue;
-          }
-          else
-          {
-            continue;
-          }
         }
+        else
+        {
+          // Do nothing
+        }
+        break;
       }
-      else
+      default:
       {
-        // Do nothing
+        break;
       }
-      break;
     }
-    default:
-    {
-      break;
-    }
+  }
+  else
+  {
+    // Do nothing
   }
   
   return options;
@@ -838,56 +851,47 @@ void Smb4KCustomOptionsManager::replaceCustomOptions( const QList<Smb4KCustomOpt
 
 void Smb4KCustomOptionsManager::openCustomOptionsDialog( Smb4KBasicNetworkItem *item, QWidget *parent )
 {
-  Q_ASSERT( item );
+  Q_ASSERT(item);
   
   Smb4KCustomOptions *options = NULL;
   bool delete_options = false;
   
-  switch ( item->type() )
+  if (item)
   {
-    case Host:
+    switch ( item->type() )
     {
-      Smb4KHost *host = static_cast<Smb4KHost *>( item );
-      
-      if ( host )
+      case Host:
       {
-        options = findOptions( host );
-      
-        if ( !options )
+        Smb4KHost *host = static_cast<Smb4KHost *>( item );
+        
+        if ( host )
         {
-          options = new Smb4KCustomOptions( host );
-          options->setProfile(Smb4KProfileManager::self()->activeProfile());
-          delete_options = true;
+          options = findOptions( host );
+        
+          if ( !options )
+          {
+            options = new Smb4KCustomOptions( host );
+            options->setProfile(Smb4KProfileManager::self()->activeProfile());
+            delete_options = true;
+          }
+          else
+          {
+            // Do nothing
+          }
         }
         else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        return;
-      }
-      break;
-    }
-    case Share:
-    {
-      Smb4KShare *share = static_cast<Smb4KShare *>( item );
-      
-      if ( share )
-      {
-        if ( share->isPrinter() )
         {
           return;
         }
-        else
-        {
-          // Do nothing
-        }
+        break;
+      }
+      case Share:
+      {
+        Smb4KShare *share = static_cast<Smb4KShare *>( item );
         
-        if ( share->isHomesShare() )
+        if ( share )
         {
-          if (!Smb4KHomesSharesHandler::self()->specifyUser( share, true, parent ))
+          if ( share->isPrinter() )
           {
             return;
           }
@@ -895,74 +899,90 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog( Smb4KBasicNetworkItem *
           {
             // Do nothing
           }
-        }
-        else
-        {
-          // Do nothing
-        }
-        
-        options = findOptions( share );
-        
-        if ( !options )
-        {
-          options = new Smb4KCustomOptions( share );
-          options->setProfile(Smb4KProfileManager::self()->activeProfile());
-          delete_options = true;
           
-          // Get rid of the 'homes' share
           if ( share->isHomesShare() )
           {
-            options->setURL( share->homeURL() );
+            if (!Smb4KHomesSharesHandler::self()->specifyUser( share, true, parent ))
+            {
+              return;
+            }
+            else
+            {
+              // Do nothing
+            }
           }
           else
           {
             // Do nothing
           }
+          
+          options = findOptions( share );
+          
+          if ( !options )
+          {
+            options = new Smb4KCustomOptions( share );
+            options->setProfile(Smb4KProfileManager::self()->activeProfile());
+            delete_options = true;
+            
+            // Get rid of the 'homes' share
+            if ( share->isHomesShare() )
+            {
+              options->setURL( share->homeURL() );
+            }
+            else
+            {
+              // Do nothing
+            }
+          }
+          else
+          {
+            // In case the custom options object for the host has been 
+            // returned, change its internal network item, otherwise we
+            // will change the host's custom options...
+            options->setShare( share );
+          }
         }
         else
         {
-          // In case the custom options object for the host has been 
-          // returned, change its internal network item, otherwise we
-          // will change the host's custom options...
-          options->setShare( share );
+          return;
         }
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+    
+    QPointer<Smb4KCustomOptionsDialog> dlg = new Smb4KCustomOptionsDialog( options, parent );
+      
+    if ( dlg->exec() == KDialog::Accepted )
+    {
+      if ( hasCustomOptions( options ) )
+      {
+        addCustomOptions( options );
       }
       else
       {
-        return;
+        removeCustomOptions( options );
       }
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-  
-  QPointer<Smb4KCustomOptionsDialog> dlg = new Smb4KCustomOptionsDialog( options, parent );
-    
-  if ( dlg->exec() == KDialog::Accepted )
-  {
-    if ( hasCustomOptions( options ) )
-    {
-      addCustomOptions( options );
     }
     else
     {
-      removeCustomOptions( options );
+      // Do nothing
     }
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  delete dlg;
-  
-  // Delete the options object if necessary. 
-  if ( delete_options )
-  {
-    delete options;
+    
+    delete dlg;
+    
+    // Delete the options object if necessary. 
+    if ( delete_options )
+    {
+      delete options;
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
@@ -1029,7 +1049,7 @@ void Smb4KCustomOptionsManager::addCustomOptions(Smb4KCustomOptions *options)
             QString::compare(d->options.at(i)->workgroupName(), o->workgroupName(), Qt::CaseInsensitive) == 0)
         {
           d->options[i]->setSMBPort(o->smbPort());
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_LINUX)
           d->options[i]->setFileSystemPort(o->fileSystemPort());
           d->options[i]->setWriteAccess(o->writeAccess());
           d->options[i]->setSecurityMode(o->securityMode());
@@ -1100,266 +1120,273 @@ void Smb4KCustomOptionsManager::removeCustomOptions(Smb4KCustomOptions *options)
 
 bool Smb4KCustomOptionsManager::hasCustomOptions( Smb4KCustomOptions *options )
 {
-  Q_ASSERT( options );
+  Q_ASSERT(options);
   
-  // Check if there are custom options defined.
-  // Checks are performed against an empty and a default custom
-  // options object. Default means that the values of the global
-  // settings are honored.
-  Smb4KCustomOptions empty_options, default_options;
-  
-  // Set up the default options
-  default_options.setSMBPort( Smb4KSettings::remoteSMBPort() );
-#ifdef Q_OS_LINUX
-  default_options.setFileSystemPort( Smb4KSettings::remoteFileSystemPort() );
-  
-  switch ( Smb4KSettings::writeAccess() )
+  if (options)
   {
-    case Smb4KSettings::EnumWriteAccess::ReadWrite:
+    // Check if there are custom options defined.
+    // Checks are performed against an empty and a default custom
+    // options object. Default means that the values of the global
+    // settings are honored.
+    Smb4KCustomOptions empty_options, default_options;
+    
+    // Set up the default options
+    default_options.setSMBPort( Smb4KSettings::remoteSMBPort() );
+#if defined(Q_OS_LINUX)
+    default_options.setFileSystemPort(Smb4KMountSettings::remoteFileSystemPort());
+    
+    switch (Smb4KMountSettings::writeAccess())
     {
-      default_options.setWriteAccess( Smb4KCustomOptions::ReadWrite );
-      break;
+      case Smb4KMountSettings::EnumWriteAccess::ReadWrite:
+      {
+        default_options.setWriteAccess(Smb4KCustomOptions::ReadWrite);
+        break;
+      }
+      case Smb4KMountSettings::EnumWriteAccess::ReadOnly:
+      {
+        default_options.setWriteAccess(Smb4KCustomOptions::ReadOnly);
+        break;
+      }
+      default:
+      {
+        default_options.setWriteAccess(Smb4KCustomOptions::UndefinedWriteAccess);
+        break;
+      }
     }
-    case Smb4KSettings::EnumWriteAccess::ReadOnly:
+    
+    switch (Smb4KMountSettings::securityMode())
     {
-      default_options.setWriteAccess( Smb4KCustomOptions::ReadOnly );
-      break;
+      case Smb4KMountSettings::EnumSecurityMode::None:
+      {
+        default_options.setSecurityMode(Smb4KCustomOptions::NoSecurityMode);
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Krb5:
+      {
+        default_options.setSecurityMode(Smb4KCustomOptions::Krb5);
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Krb5i:
+      {
+        default_options.setSecurityMode(Smb4KCustomOptions::Krb5i);
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Ntlm:
+      {
+        default_options.setSecurityMode(Smb4KCustomOptions::Ntlm);
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Ntlmi:
+      {
+        default_options.setSecurityMode(Smb4KCustomOptions::Ntlmi);
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Ntlmv2:
+      {
+        default_options.setSecurityMode(Smb4KCustomOptions::Ntlmv2);
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Ntlmv2i:
+      {
+        default_options.setSecurityMode(Smb4KCustomOptions::Ntlmv2i);
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Ntlmssp:
+      {
+        default_options.setSecurityMode(Smb4KCustomOptions::Ntlmssp);
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Ntlmsspi:
+      {
+        default_options.setSecurityMode(Smb4KCustomOptions::Ntlmsspi);
+        break;
+      }
+      default:
+      {
+        default_options.setSecurityMode(Smb4KCustomOptions::UndefinedSecurityMode);
+        break;
+      }
     }
-    default:
-    {
-      default_options.setWriteAccess( Smb4KCustomOptions::UndefinedWriteAccess );
-      break;
-    }
-  }
-  
-  switch ( Smb4KSettings::securityMode() )
-  {
-    case Smb4KSettings::EnumSecurityMode::None:
-    {
-      default_options.setSecurityMode( Smb4KCustomOptions::NoSecurityMode );
-      break;
-    }
-    case Smb4KSettings::EnumSecurityMode::Krb5:
-    {
-      default_options.setSecurityMode( Smb4KCustomOptions::Krb5 );
-      break;
-    }
-    case Smb4KSettings::EnumSecurityMode::Krb5i:
-    {
-      default_options.setSecurityMode( Smb4KCustomOptions::Krb5i );
-      break;
-    }
-    case Smb4KSettings::EnumSecurityMode::Ntlm:
-    {
-      default_options.setSecurityMode( Smb4KCustomOptions::Ntlm );
-      break;
-    }
-    case Smb4KSettings::EnumSecurityMode::Ntlmi:
-    {
-      default_options.setSecurityMode( Smb4KCustomOptions::Ntlmi );
-      break;
-    }
-    case Smb4KSettings::EnumSecurityMode::Ntlmv2:
-    {
-      default_options.setSecurityMode( Smb4KCustomOptions::Ntlmv2 );
-      break;
-    }
-    case Smb4KSettings::EnumSecurityMode::Ntlmv2i:
-    {
-      default_options.setSecurityMode( Smb4KCustomOptions::Ntlmv2i );
-      break;
-    }
-    case Smb4KSettings::EnumSecurityMode::Ntlmssp:
-    {
-      default_options.setSecurityMode( Smb4KCustomOptions::Ntlmssp );
-      break;
-    }
-    case Smb4KSettings::EnumSecurityMode::Ntlmsspi:
-    {
-      default_options.setSecurityMode( Smb4KCustomOptions::Ntlmsspi );
-      break;
-    }
-    default:
-    {
-      default_options.setSecurityMode( Smb4KCustomOptions::UndefinedSecurityMode );
-      break;
-    }
-  }
 #endif
 
-  switch ( Smb4KSettings::protocolHint() )
-  {
-    case Smb4KSettings::EnumProtocolHint::Automatic:
+    switch ( Smb4KSettings::protocolHint() )
     {
-      default_options.setProtocolHint( Smb4KCustomOptions::Automatic );
-      break;
+      case Smb4KSettings::EnumProtocolHint::Automatic:
+      {
+        default_options.setProtocolHint( Smb4KCustomOptions::Automatic );
+        break;
+      }
+      case Smb4KSettings::EnumProtocolHint::RPC:
+      {
+        default_options.setProtocolHint( Smb4KCustomOptions::RPC );
+        break;
+      }
+      case Smb4KSettings::EnumProtocolHint::RAP:
+      {
+        default_options.setProtocolHint( Smb4KCustomOptions::RAP );
+        break;
+      }
+      case Smb4KSettings::EnumProtocolHint::ADS:
+      {
+        default_options.setProtocolHint( Smb4KCustomOptions::ADS );
+        break;
+      }
+      default:
+      {
+        default_options.setProtocolHint( Smb4KCustomOptions::UndefinedProtocolHint );
+        break;
+      }
     }
-    case Smb4KSettings::EnumProtocolHint::RPC:
+    
+    if ( Smb4KSettings::useKerberos() )
     {
-      default_options.setProtocolHint( Smb4KCustomOptions::RPC );
-      break;
+      default_options.setUseKerberos( Smb4KCustomOptions::UseKerberos );
     }
-    case Smb4KSettings::EnumProtocolHint::RAP:
+    else
     {
-      default_options.setProtocolHint( Smb4KCustomOptions::RAP );
-      break;
+      default_options.setUseKerberos( Smb4KCustomOptions::NoKerberos );
     }
-    case Smb4KSettings::EnumProtocolHint::ADS:
+    
+    default_options.setUID((K_UID)Smb4KMountSettings::userID().toInt());
+    default_options.setGID((K_GID)Smb4KMountSettings::groupID().toInt());
+    
+    // NOTE: WOL features and remounting do not have default values.
+    
+    //
+    // Do the actual check
+    //
+    
+    if ( options->remount() == Smb4KCustomOptions::RemountAlways )
     {
-      default_options.setProtocolHint( Smb4KCustomOptions::ADS );
-      break;
+      return true;
     }
-    default:
+    else
     {
-      default_options.setProtocolHint( Smb4KCustomOptions::UndefinedProtocolHint );
-      break;
-    }
-  }
-  
-  if ( Smb4KSettings::useKerberos() )
-  {
-    default_options.setUseKerberos( Smb4KCustomOptions::UseKerberos );
-  }
-  else
-  {
-    default_options.setUseKerberos( Smb4KCustomOptions::NoKerberos );
-  }
-  
-  default_options.setUID( (K_UID)Smb4KSettings::userID().toInt() );
-  default_options.setGID( (K_GID)Smb4KSettings::groupID().toInt() );
-  
-  // NOTE: WOL features and remounting do not have default values.
-  
-  //
-  // Do the actual check
-  //
-  
-  if ( options->remount() == Smb4KCustomOptions::RemountAlways )
-  {
-    return true;
-  }
-  else
-  {
-    // Do nothing
-  }    
+      // Do nothing
+    }    
 
-  // SMB port
-  if ( empty_options.smbPort() != options->smbPort() && 
-       default_options.smbPort() != options->smbPort() )
-  {
-    return true;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-#ifdef Q_OS_LINUX
-  // File system port (used for mounting)
-  if ( empty_options.fileSystemPort() != options->fileSystemPort() && 
-       default_options.fileSystemPort() != options->fileSystemPort() )
-  {
-    return true;
-  }
-  else
-  {
-    // Do nothing
-  }
+    // SMB port
+    if ( empty_options.smbPort() != options->smbPort() && 
+        default_options.smbPort() != options->smbPort() )
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+#if defined(Q_OS_LINUX)
+    // File system port (used for mounting)
+    if ( empty_options.fileSystemPort() != options->fileSystemPort() && 
+        default_options.fileSystemPort() != options->fileSystemPort() )
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
 
-  // Write access
-  if ( empty_options.writeAccess() != options->writeAccess() &&
-       default_options.writeAccess() != options->writeAccess() )
-  {
-    return true;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Security mode
-  if ( empty_options.securityMode() != options->securityMode() &&
-       default_options.securityMode() != options->securityMode() )
-  {
-    return true;
-  }
-  else
-  {
-    // Do nothing
-  }
+    // Write access
+    if ( empty_options.writeAccess() != options->writeAccess() &&
+        default_options.writeAccess() != options->writeAccess() )
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // Security mode
+    if ( empty_options.securityMode() != options->securityMode() &&
+        default_options.securityMode() != options->securityMode() )
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
 #endif
 
-  // Protocol hint
-  if ( empty_options.protocolHint() != options->protocolHint() &&
-       default_options.protocolHint() != options->protocolHint() )
-  {
-    return true;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Kerberos
-  if ( empty_options.useKerberos() != options->useKerberos() &&
-       default_options.useKerberos() != options->useKerberos() )
-  {
-    return true;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // UID
-  if ( empty_options.uid() != options->uid() &&
-       default_options.uid() != options->uid() )
-  {
-    return true;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // GID
-  if ( empty_options.gid() != options->gid() &&
-       default_options.gid() != options->gid() )
-  {
-    return true;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // MAC address
-  if ( QString::compare( empty_options.macAddress(), options->macAddress() ) != 0 &&
-       QString::compare( default_options.macAddress(), options->macAddress() ) != 0 )
-  {
-    return true;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Send before first scan
-  if ( empty_options.wolSendBeforeNetworkScan() != options->wolSendBeforeNetworkScan() &&
-       default_options.wolSendBeforeNetworkScan() != options->wolSendBeforeNetworkScan() )
-  {
-    return true;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Send before mount
-  if ( empty_options.wolSendBeforeMount() != options->wolSendBeforeMount() &&
-       default_options.wolSendBeforeMount() != options->wolSendBeforeMount() )
-  {
-    return true;
+    // Protocol hint
+    if ( empty_options.protocolHint() != options->protocolHint() &&
+        default_options.protocolHint() != options->protocolHint() )
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // Kerberos
+    if ( empty_options.useKerberos() != options->useKerberos() &&
+        default_options.useKerberos() != options->useKerberos() )
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // UID
+    if ( empty_options.uid() != options->uid() &&
+        default_options.uid() != options->uid() )
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // GID
+    if ( empty_options.gid() != options->gid() &&
+        default_options.gid() != options->gid() )
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // MAC address
+    if ( QString::compare( empty_options.macAddress(), options->macAddress() ) != 0 &&
+        QString::compare( default_options.macAddress(), options->macAddress() ) != 0 )
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // Send before first scan
+    if ( empty_options.wolSendBeforeNetworkScan() != options->wolSendBeforeNetworkScan() &&
+        default_options.wolSendBeforeNetworkScan() != options->wolSendBeforeNetworkScan() )
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // Send before mount
+    if ( empty_options.wolSendBeforeMount() != options->wolSendBeforeMount() &&
+        default_options.wolSendBeforeMount() != options->wolSendBeforeMount() )
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {

@@ -3,7 +3,7 @@
     options
                              -------------------
     begin                : Sa Jan 19 2013
-    copyright            : (C) 2013-2014 by Alexander Reinholdt
+    copyright            : (C) 2013-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,6 +30,13 @@
 #include "core/smb4kcustomoptions.h"
 #include "core/smb4kglobal.h"
 
+#if defined(Q_OS_LINUX)
+#include "core/smb4kmountsettings_linux.h"
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+#include "core/smb4kmountsettings_freebsd.h"
+#endif
+
+
 // Qt includes
 #include <QHBoxLayout>
 #include <QLabel>
@@ -51,361 +58,7 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage( QWidget *parent ) : QWidget( par
   m_removed = false;
   m_current_options = NULL;
   
-  QHBoxLayout *custom_layout = new QHBoxLayout( this );
-  custom_layout->setSpacing( 5 );
-  custom_layout->setMargin( 0 );
-  
-  //
-  // The list widget
-  //  
-  m_custom_options           = new KListWidget( this );
-  m_custom_options->setObjectName( "CustomOptionsList" );
-  m_custom_options->viewport()->installEventFilter( this );
-  m_custom_options->setSelectionMode( KListWidget::SingleSelection );
-  m_custom_options->setContextMenuPolicy( Qt::CustomContextMenu );
-
-  m_menu = new KActionMenu( m_custom_options );
-
-  KAction *edit_action      = new KAction( KIcon( "edit-rename" ), i18n( "Edit" ),
-                              m_collection );
-  edit_action->setEnabled( false );
-
-  KAction *remove_action    = new KAction( KIcon( "edit-delete" ), i18n( "Remove" ),
-                               m_collection );
-  remove_action->setEnabled( false );
-  
-  KAction *clear_action     = new KAction( KIcon( "edit-clear-list" ), i18n( "Clear List" ),
-                              m_collection );
-  clear_action->setEnabled( false );
-  
-  KAction *undo_action      = new KAction( KIcon( "edit-undo" ), i18n( "Undo" ),
-                              m_collection );
-  undo_action->setEnabled( false );
-  
-  m_collection->addAction( "edit_action", edit_action );
-  m_collection->addAction( "remove_action", remove_action );
-  m_collection->addAction( "clear_action", clear_action );
-  m_collection->addAction( "undo_action", undo_action );
-
-  m_menu->addAction( edit_action );
-  m_menu->addAction( remove_action );
-  m_menu->addAction( clear_action );
-  m_menu->addAction( undo_action );
-  
-  //
-  // The editors
-  //  
-  QWidget *editors = new QWidget( this );
-  
-  QVBoxLayout *editors_layout = new QVBoxLayout( editors );
-  editors_layout->setSpacing( 5 );
-  editors_layout->setMargin( 0 );
-  
-  m_general_editors = new QGroupBox( i18n( "General" ), editors );
-  
-  QGridLayout *general_editor_layout = new QGridLayout( m_general_editors );
-  general_editor_layout->setSpacing( 5 );
-  general_editor_layout->setContentsMargins( general_editor_layout->margin(),
-                                             general_editor_layout->margin() + 10,
-                                             general_editor_layout->margin(),
-                                             general_editor_layout->margin() );
-
-  QLabel *unc_label = new QLabel( i18n( "UNC Address:" ), m_general_editors );
-  
-  m_unc_address = new KLineEdit( m_general_editors );
-  m_unc_address->setReadOnly( true );
-
-  unc_label->setBuddy( m_unc_address );
-  
-  QLabel *ip_label = new QLabel( i18n( "IP Address:" ), m_general_editors );
-  
-  m_ip_address = new KLineEdit( m_general_editors );
-  m_ip_address->setClearButtonShown( true );
-  
-  ip_label->setBuddy( m_ip_address );
-  
-  m_remount_share = new QCheckBox( i18n( "Always remount this share" ), m_general_editors );
-  
-  general_editor_layout->addWidget( unc_label, 0, 0, 0 );
-  general_editor_layout->addWidget( m_unc_address, 0, 1, 0 );
-  general_editor_layout->addWidget( ip_label, 1, 0, 0 );
-  general_editor_layout->addWidget( m_ip_address, 1, 1, 0 );
-  general_editor_layout->addWidget( m_remount_share, 2, 0, 1, 2, 0 );
-  
-  m_tab_widget = new KTabWidget( editors );
-  
-  QWidget *samba_tab = new QWidget( m_tab_widget );
-  
-  QVBoxLayout *samba_tab_layout = new QVBoxLayout( samba_tab );
-  samba_tab_layout->setSpacing( 5 );
-  samba_tab_layout->setMargin( 0 );
-  
-  QGroupBox *samba_editors = new QGroupBox( samba_tab );
-  samba_editors->setFlat( true );
-  
-  QGridLayout *samba_editor_layout = new QGridLayout( samba_editors );
-  samba_editor_layout->setSpacing( 5 );
-  samba_editor_layout->setContentsMargins( samba_editor_layout->margin(),
-                                           samba_editor_layout->margin() + 10,
-                                           samba_editor_layout->margin(),
-                                           samba_editor_layout->margin() );
-  
-  QLabel *smb_port_label = new QLabel( "SMB Port:", samba_editors );
-  
-  m_smb_port = new KIntNumInput( samba_editors );
-  m_smb_port->setRange( Smb4KSettings::self()->remoteSMBPortItem()->minValue().toInt(),
-                        Smb4KSettings::self()->remoteSMBPortItem()->maxValue().toInt() );
-  m_smb_port->setSliderEnabled( true );
-
-  smb_port_label->setBuddy( m_smb_port );
-
-#ifdef Q_OS_LINUX
-  QLabel *fs_port_label = new QLabel( i18n( "Filesystem Port:" ), samba_editors );
-  
-  m_fs_port = new KIntNumInput( samba_editors );
-  m_fs_port->setRange( Smb4KSettings::self()->remoteFileSystemPortItem()->minValue().toInt(),
-                       Smb4KSettings::self()->remoteFileSystemPortItem()->maxValue().toInt() );
-  m_fs_port->setSliderEnabled( true );
-
-  fs_port_label->setBuddy( m_fs_port );
-  
-  QLabel *rw_label = new QLabel( i18n( "Write Access:" ), samba_editors );
-  
-  m_write_access = new KComboBox( samba_editors );
-  m_write_access->insertItem( 0, Smb4KSettings::self()->writeAccessItem()->choices()
-                                 .value( Smb4KSettings::EnumWriteAccess::ReadWrite ).label, 
-                              QVariant::fromValue<int>( Smb4KCustomOptions::ReadWrite ) );
-  m_write_access->insertItem( 1, Smb4KSettings::self()->writeAccessItem()->choices()
-                                 .value( Smb4KSettings::EnumWriteAccess::ReadOnly ).label, 
-                              QVariant::fromValue<int>( Smb4KCustomOptions::ReadOnly ) );
-
-  rw_label->setBuddy( m_write_access );
-
-  QLabel *security_label = new QLabel( i18n( "Security Mode:" ), samba_editors );
-
-  m_security_mode = new KComboBox( samba_editors );
-
-  m_security_mode->insertItem( 0, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::None ).label,
-                               QVariant::fromValue<int>( Smb4KCustomOptions::NoSecurityMode ) );
-  m_security_mode->insertItem( 1, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Krb5 ).label,
-                               QVariant::fromValue<int>( Smb4KCustomOptions::Krb5 ) );
-  m_security_mode->insertItem( 2, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Krb5i ).label,
-                               QVariant::fromValue<int>( Smb4KCustomOptions::Krb5i ) );
-  m_security_mode->insertItem( 3, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlm ).label,
-                               QVariant::fromValue<int>( Smb4KCustomOptions::Ntlm ) );
-  m_security_mode->insertItem( 4, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmi ).label,
-                               QVariant::fromValue<int>( Smb4KCustomOptions::Ntlmi ) );
-  m_security_mode->insertItem( 5, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmv2 ).label,
-                               QVariant::fromValue<int>( Smb4KCustomOptions::Ntlmv2 ) );
-  m_security_mode->insertItem( 6, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmv2i ).label,
-                               QVariant::fromValue<int>( Smb4KCustomOptions::Ntlmv2i ) );
-  m_security_mode->insertItem( 7, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmssp ).label,
-                               QVariant::fromValue<int>( Smb4KCustomOptions::Ntlmssp ) );
-  m_security_mode->insertItem( 8, Smb4KSettings::self()->securityModeItem()->choices().value( Smb4KSettings::EnumSecurityMode::Ntlmsspi ).label,
-                               QVariant::fromValue<int>( Smb4KCustomOptions::Ntlmsspi ) );
-  
-  security_label->setBuddy( m_security_mode );
-
-#endif
-  
-  QLabel *protocol_label = new QLabel( i18n( "Protocol Hint:" ), samba_editors );
-  
-  m_protocol_hint        = new KComboBox( samba_editors );
-  m_protocol_hint->insertItem( 0, Smb4KSettings::self()->protocolHintItem()->choices()
-                                  .value( Smb4KSettings::EnumProtocolHint::Automatic ).label,
-                               QVariant::fromValue<int>( Smb4KCustomOptions::Automatic ) );
-  m_protocol_hint->insertItem( 1, Smb4KSettings::self()->protocolHintItem()->choices()
-                                  .value( Smb4KSettings::EnumProtocolHint::RPC ).label,
-                               QVariant::fromValue<int>( Smb4KCustomOptions::RPC ) );
-  m_protocol_hint->insertItem( 2, Smb4KSettings::self()->protocolHintItem()->choices()
-                                  .value( Smb4KSettings::EnumProtocolHint::RAP ).label,
-                               QVariant::fromValue<int>( Smb4KCustomOptions::RAP ) );
-  m_protocol_hint->insertItem( 3, Smb4KSettings::self()->protocolHintItem()->choices()
-                                  .value( Smb4KSettings::EnumProtocolHint::ADS ).label,
-                               QVariant::fromValue<int>( Smb4KCustomOptions::ADS ) );
-
-  protocol_label->setBuddy( m_protocol_hint );
-  
-  QLabel *uid_label = new QLabel( i18n( "User ID:" ), samba_editors );
-  m_user_id         = new KComboBox( samba_editors );
-  
-  QList<KUser> all_users = KUser::allUsers();
-  
-  for ( int i = 0; i < all_users.size(); ++i )
-  {
-    KUser user = all_users.at( i );
-    m_user_id->insertItem( i, QString( "%1 (%2)" ).arg( user.loginName() ).arg( user.uid() ), 
-                           QVariant::fromValue<K_UID>( user.uid() ) );
-  }
-
-  uid_label->setBuddy( m_user_id );
-  
-  QLabel *gid_label = new QLabel( i18n( "Group ID:" ), samba_editors );
-  m_group_id        = new KComboBox( samba_editors );
-  
-  QList<KUserGroup> all_groups = KUserGroup::allGroups();
-  
-  for ( int i = 0; i < all_groups.size(); ++i )
-  {
-    KUserGroup group = all_groups.at( i );
-    m_group_id->insertItem( i, QString( "%1 (%2)" ).arg( group.name() ).arg( group.gid() ), 
-                           QVariant::fromValue<K_GID>( group.gid() ) );
-  }
-
-  gid_label->setBuddy( m_group_id );
-  
-  m_kerberos = new QCheckBox( Smb4KSettings::self()->useKerberosItem()->label(), samba_editors );
-  
-#ifdef Q_OS_LINUX
-  samba_editor_layout->addWidget( smb_port_label, 0, 0, 0 );
-  samba_editor_layout->addWidget( m_smb_port, 0, 1, 0 );
-  samba_editor_layout->addWidget( fs_port_label, 1, 0, 0 );
-  samba_editor_layout->addWidget( m_fs_port, 1, 1, 0 );
-  samba_editor_layout->addWidget( rw_label, 2, 0, 0 );
-  samba_editor_layout->addWidget( m_write_access, 2, 1, 0 );
-  samba_editor_layout->addWidget( security_label, 3, 0, 0 );
-  samba_editor_layout->addWidget( m_security_mode, 3, 1, 0 );
-  samba_editor_layout->addWidget( protocol_label, 4, 0, 0 );
-  samba_editor_layout->addWidget( m_protocol_hint, 4, 1, 0 );
-  samba_editor_layout->addWidget( uid_label, 5, 0, 0 );
-  samba_editor_layout->addWidget( m_user_id, 5, 1, 0 );
-  samba_editor_layout->addWidget( gid_label, 6, 0, 0 );
-  samba_editor_layout->addWidget( m_group_id, 6, 1, 0 );
-  samba_editor_layout->addWidget( m_kerberos, 7, 0, 1, 2, 0 );
-#else
-  samba_editor_layout->addWidget( smb_port_label, 0, 0, 0 );
-  samba_editor_layout->addWidget( m_smb_port, 0, 1, 0 );
-  samba_editor_layout->addWidget( protocol_label, 1, 0, 0 );
-  samba_editor_layout->addWidget( m_protocol_hint, 1, 1, 0 );
-  samba_editor_layout->addWidget( uid_label, 2, 0, 0 );
-  samba_editor_layout->addWidget( m_user_id, 2, 1, 0 );
-  samba_editor_layout->addWidget( gid_label, 3, 0, 0 );
-  samba_editor_layout->addWidget( m_group_id, 3, 1, 0 );
-  samba_editor_layout->addWidget( m_kerberos, 4, 0, 1, 2, 0 );
-#endif
-  
-  samba_tab_layout->addWidget( samba_editors );
-  samba_tab_layout->addStretch( 100 );
-
-  QWidget *wol_tab = new QWidget( m_tab_widget );
-  
-  QVBoxLayout *wol_tab_layout = new QVBoxLayout( wol_tab );
-  wol_tab_layout->setSpacing( 5 );
-  wol_tab_layout->setMargin( 0 );  
-  
-  QGroupBox *mac_editors = new QGroupBox( wol_tab );
-  mac_editors->setFlat( true );
-  
-  QGridLayout *mac_editor_layout = new QGridLayout( mac_editors );
-  mac_editor_layout->setSpacing( 5 );
-  mac_editor_layout->setContentsMargins( mac_editor_layout->margin(),
-                                         mac_editor_layout->margin() + 10,
-                                         mac_editor_layout->margin(),
-                                         mac_editor_layout->margin() );
-  
-  QLabel *mac_label = new QLabel( i18n( "MAC address:" ), mac_editors );
-  
-  m_mac_address = new KLineEdit( mac_editors );
-  m_mac_address->setClearButtonShown( true );
-  
-  mac_label->setBuddy( m_mac_address );
-  
-  // If you change the texts here please also alter them in the custom 
-  // options dialog.
-  m_send_before_scan = new QCheckBox( i18n( "Send magic package before scanning the network neighborhood" ), mac_editors );
-  m_send_before_scan->setEnabled( false );
-  m_send_before_mount = new QCheckBox( i18n( "Send magic package before mounting a share" ), mac_editors );
-  m_send_before_mount->setEnabled( false );
-  
-  mac_editor_layout->addWidget( mac_label, 0, 0, 0 );
-  mac_editor_layout->addWidget( m_mac_address, 0, 1, 0 );
-  mac_editor_layout->addWidget( m_send_before_scan, 1, 0, 1, 2, 0 );
-  mac_editor_layout->addWidget( m_send_before_mount, 2, 0, 1, 2, 0 );
-  
-  wol_tab_layout->addWidget( mac_editors );
-  wol_tab_layout->addStretch( 100 );
-  
-  (void)m_tab_widget->insertTab( SambaTab, samba_tab, i18n( "Samba" ) );
-  (void)m_tab_widget->insertTab( WolTab, wol_tab, i18n( "Wake-On-LAN" ) );
-  
-  editors_layout->addWidget( m_general_editors );
-  editors_layout->addWidget( m_tab_widget );
-                                 
-  custom_layout->addWidget( m_custom_options );
-  custom_layout->addWidget( editors );
-
-  m_general_editors->setEnabled( false );
-  m_tab_widget->setEnabled( false );
-
-  clearEditors();
-  
-  //
-  // Connections
-  //
-  connect( m_custom_options, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
-           this,             SLOT(slotEditCustomItem(QListWidgetItem*)) );
-
-  connect( m_custom_options, SIGNAL(itemSelectionChanged()),
-           this,             SLOT(slotItemSelectionChanged()) );
-
-  connect( m_custom_options, SIGNAL(customContextMenuRequested(QPoint)),
-           this,             SLOT(slotCustomContextMenuRequested(QPoint)) );
-  
-  connect( edit_action,      SIGNAL(triggered(bool)),
-           this,             SLOT(slotEditActionTriggered(bool)) );
-           
-  connect( remove_action,    SIGNAL(triggered(bool)),
-           this,             SLOT(slotRemoveActionTriggered(bool)) );
-           
-  connect( clear_action,     SIGNAL(triggered(bool)),
-           this,             SLOT(slotClearActionTriggered(bool)) );
-  
-  connect( undo_action,      SIGNAL(triggered(bool)),
-           this,             SLOT(slotUndoActionTriggered(bool)) );
-  
-  connect( m_ip_address,     SIGNAL(textChanged(QString)),
-           this,             SLOT(slotEntryChanged()) );
-  
-  connect( m_remount_share,  SIGNAL(toggled(bool)),
-           this,             SLOT(slotEntryChanged()) );
-  
-  connect( m_smb_port,       SIGNAL(valueChanged(int)),
-           this,             SLOT(slotEntryChanged()) );
-  
-#ifdef Q_OS_LINUX
-  connect( m_fs_port,        SIGNAL(valueChanged(int)),
-           this,             SLOT(slotEntryChanged()) );
-  
-  connect( m_write_access,   SIGNAL(currentIndexChanged(int)),
-           this,             SLOT(slotEntryChanged()) );
-
-  connect( m_security_mode,  SIGNAL(currentIndexChanged(int)),
-           this,             SLOT(slotEntryChanged()) );
-#endif
-  
-  connect( m_protocol_hint,  SIGNAL(currentIndexChanged(int)),
-           this,             SLOT(slotEntryChanged()) );
-  
-  connect( m_user_id,        SIGNAL(currentIndexChanged(int)),
-           this,             SLOT(slotEntryChanged()) );
-  
-  connect( m_group_id,       SIGNAL(currentIndexChanged(int)),
-           this,             SLOT(slotEntryChanged()) );
-  
-  connect( m_kerberos,       SIGNAL(toggled(bool)),
-           this,             SLOT(slotEntryChanged()) );
-  
-  connect( m_mac_address,    SIGNAL(textChanged(QString)),
-           this,             SLOT(slotEntryChanged()) );
-  
-  connect( m_send_before_scan,   SIGNAL(toggled(bool)),
-           this,             SLOT(slotEntryChanged()) );
-  
-  connect( m_send_before_mount,  SIGNAL(toggled(bool)),
-           this,             SLOT(slotEntryChanged()) );
-  
-  connect( m_mac_address,    SIGNAL(textChanged(QString)),
-           this,             SLOT(slotEnableWOLFeatures(QString)) );
+  setupWidget();
 }
 
 
@@ -416,6 +69,586 @@ Smb4KCustomOptionsPage::~Smb4KCustomOptionsPage()
     delete m_options_list.takeFirst();
   }
 }
+
+#if defined(Q_OS_LINUX)
+//
+// Linux
+//
+void Smb4KCustomOptionsPage::setupWidget()
+{
+  QHBoxLayout *custom_layout = new QHBoxLayout(this);
+  custom_layout->setSpacing(5);
+  custom_layout->setMargin(0);
+  
+  //
+  // The list widget
+  //  
+  m_custom_options = new KListWidget(this);
+  m_custom_options->setObjectName("CustomOptionsList");
+  m_custom_options->viewport()->installEventFilter(this);
+  m_custom_options->setSelectionMode(KListWidget::SingleSelection);
+  m_custom_options->setContextMenuPolicy( Qt::CustomContextMenu );
+
+  m_menu = new KActionMenu(m_custom_options);
+
+  KAction *edit_action = new KAction(KIcon("edit-rename"), i18n("Edit"), m_collection);
+  edit_action->setEnabled(false);
+
+  KAction *remove_action = new KAction(KIcon("edit-delete"), i18n("Remove"), m_collection);
+  remove_action->setEnabled(false);
+  
+  KAction *clear_action = new KAction(KIcon("edit-clear-list"), i18n("Clear List"), m_collection);
+  clear_action->setEnabled(false);
+  
+  KAction *undo_action = new KAction(KIcon("edit-undo"), i18n("Undo"), m_collection);
+  undo_action->setEnabled(false);
+  
+  m_collection->addAction("edit_action", edit_action);
+  m_collection->addAction("remove_action", remove_action);
+  m_collection->addAction("clear_action", clear_action);
+  m_collection->addAction("undo_action", undo_action);
+
+  m_menu->addAction(edit_action);
+  m_menu->addAction(remove_action);
+  m_menu->addAction(clear_action);
+  m_menu->addAction(undo_action);
+  
+  //
+  // The editors
+  //  
+  QWidget *editors = new QWidget(this);
+  
+  QVBoxLayout *editors_layout = new QVBoxLayout(editors);
+  editors_layout->setSpacing(5);
+  editors_layout->setMargin(0);
+  
+  m_general_editors = new QGroupBox(i18n("General"), editors);
+  
+  QGridLayout *general_editor_layout = new QGridLayout(m_general_editors);
+  general_editor_layout->setSpacing(5);
+  general_editor_layout->setContentsMargins(general_editor_layout->margin(),
+                                            general_editor_layout->margin() + 10,
+                                            general_editor_layout->margin(),
+                                            general_editor_layout->margin());
+
+  QLabel *unc_label = new QLabel(i18n("UNC Address:"), m_general_editors);
+  
+  m_unc_address = new KLineEdit(m_general_editors);
+  m_unc_address->setReadOnly(true);
+
+  unc_label->setBuddy(m_unc_address);
+  
+  QLabel *ip_label = new QLabel(i18n("IP Address:"), m_general_editors);
+  
+  m_ip_address = new KLineEdit(m_general_editors);
+  m_ip_address->setClearButtonShown(true);
+  
+  ip_label->setBuddy(m_ip_address);
+  
+  m_remount_share = new QCheckBox(i18n("Always remount this share"), m_general_editors);
+  
+  general_editor_layout->addWidget(unc_label, 0, 0, 0);
+  general_editor_layout->addWidget(m_unc_address, 0, 1, 0);
+  general_editor_layout->addWidget(ip_label, 1, 0, 0);
+  general_editor_layout->addWidget(m_ip_address, 1, 1, 0);
+  general_editor_layout->addWidget(m_remount_share, 2, 0, 1, 2, 0);
+  
+  m_tab_widget = new KTabWidget(editors);
+  
+  QWidget *samba_tab = new QWidget(m_tab_widget);
+  
+  QVBoxLayout *samba_tab_layout = new QVBoxLayout(samba_tab);
+  samba_tab_layout->setSpacing(5);
+  samba_tab_layout->setMargin(0);
+  
+  QGroupBox *samba_editors = new QGroupBox(samba_tab);
+  samba_editors->setFlat(true);
+  
+  QGridLayout *samba_editor_layout = new QGridLayout(samba_editors);
+  samba_editor_layout->setSpacing(5);
+  samba_editor_layout->setContentsMargins(samba_editor_layout->margin(),
+                                          samba_editor_layout->margin() + 10,
+                                          samba_editor_layout->margin(),
+                                          samba_editor_layout->margin() );
+  
+  QLabel *smb_port_label = new QLabel("SMB Port:", samba_editors);
+  
+  m_smb_port = new KIntNumInput(samba_editors);
+  m_smb_port->setRange(Smb4KSettings::self()->remoteSMBPortItem()->minValue().toInt(),
+                       Smb4KSettings::self()->remoteSMBPortItem()->maxValue().toInt());
+  m_smb_port->setSliderEnabled(true);
+
+  smb_port_label->setBuddy(m_smb_port);
+
+  QLabel *fs_port_label = new QLabel(i18n("Filesystem Port:"), samba_editors);
+  
+  m_fs_port = new KIntNumInput(samba_editors);
+  m_fs_port->setRange(Smb4KMountSettings::self()->remoteFileSystemPortItem()->minValue().toInt(),
+                      Smb4KMountSettings::self()->remoteFileSystemPortItem()->maxValue().toInt());
+  m_fs_port->setSliderEnabled(true);
+
+  fs_port_label->setBuddy(m_fs_port);
+  
+  QLabel *rw_label = new QLabel(i18n("Write Access:"), samba_editors);
+  
+  m_write_access = new KComboBox(samba_editors);
+  m_write_access->insertItem(0, Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadWrite).label, 
+                             QVariant::fromValue<int>(Smb4KCustomOptions::ReadWrite));
+  m_write_access->insertItem(1, Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadOnly).label, 
+                             QVariant::fromValue<int>(Smb4KCustomOptions::ReadOnly));
+
+  rw_label->setBuddy(m_write_access);
+
+  QLabel *security_label = new QLabel(i18n("Security Mode:"), samba_editors);
+
+  m_security_mode = new KComboBox(samba_editors);
+
+  m_security_mode->insertItem(0, Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::None).label,
+                              QVariant::fromValue<int>(Smb4KCustomOptions::NoSecurityMode));
+  m_security_mode->insertItem(1, Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Krb5).label,
+                              QVariant::fromValue<int>(Smb4KCustomOptions::Krb5));
+  m_security_mode->insertItem(2, Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Krb5i).label,
+                              QVariant::fromValue<int>(Smb4KCustomOptions::Krb5i));
+  m_security_mode->insertItem(3, Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlm).label,
+                              QVariant::fromValue<int>(Smb4KCustomOptions::Ntlm));
+  m_security_mode->insertItem(4, Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlmi).label,
+                              QVariant::fromValue<int>(Smb4KCustomOptions::Ntlmi));
+  m_security_mode->insertItem(5, Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlmv2).label,
+                              QVariant::fromValue<int>(Smb4KCustomOptions::Ntlmv2));
+  m_security_mode->insertItem(6, Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlmv2i).label,
+                              QVariant::fromValue<int>(Smb4KCustomOptions::Ntlmv2i));
+  m_security_mode->insertItem(7, Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlmssp).label,
+                              QVariant::fromValue<int>(Smb4KCustomOptions::Ntlmssp));
+  m_security_mode->insertItem(8, Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlmsspi).label,
+                              QVariant::fromValue<int>(Smb4KCustomOptions::Ntlmsspi));
+  
+  security_label->setBuddy(m_security_mode);
+  
+  QLabel *protocol_label = new QLabel(i18n("Protocol Hint:"), samba_editors);
+  
+  m_protocol_hint = new KComboBox(samba_editors);
+  m_protocol_hint->insertItem(0, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::Automatic).label,
+                              QVariant::fromValue<int>(Smb4KCustomOptions::Automatic));
+  m_protocol_hint->insertItem(1, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::RPC).label,
+                              QVariant::fromValue<int>(Smb4KCustomOptions::RPC));
+  m_protocol_hint->insertItem(2, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::RAP).label,
+                              QVariant::fromValue<int>(Smb4KCustomOptions::RAP));
+  m_protocol_hint->insertItem(3, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::ADS).label,
+                              QVariant::fromValue<int>(Smb4KCustomOptions::ADS));
+
+  protocol_label->setBuddy(m_protocol_hint);
+  
+  QLabel *uid_label = new QLabel(i18n("User ID:"), samba_editors);
+  m_user_id = new KComboBox(samba_editors);
+  
+  QList<KUser> all_users = KUser::allUsers();
+  
+  for (int i = 0; i < all_users.size(); ++i)
+  {
+    KUser user = all_users.at(i);
+    m_user_id->insertItem(i, QString("%1 (%2)").arg(user.loginName()).arg(user.uid()), QVariant::fromValue<K_UID>(user.uid()));
+  }
+
+  uid_label->setBuddy(m_user_id);
+  
+  QLabel *gid_label = new QLabel(i18n("Group ID:"), samba_editors);
+  m_group_id = new KComboBox(samba_editors);
+  
+  QList<KUserGroup> all_groups = KUserGroup::allGroups();
+  
+  for (int i = 0; i < all_groups.size(); ++i)
+  {
+    KUserGroup group = all_groups.at(i);
+    m_group_id->insertItem( i, QString("%1 (%2)").arg(group.name()).arg(group.gid()), QVariant::fromValue<K_GID>(group.gid()));
+  }
+
+  gid_label->setBuddy(m_group_id);
+  
+  m_kerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), samba_editors);
+
+  samba_editor_layout->addWidget(smb_port_label, 0, 0, 0);
+  samba_editor_layout->addWidget(m_smb_port, 0, 1, 0);
+  samba_editor_layout->addWidget(fs_port_label, 1, 0, 0);
+  samba_editor_layout->addWidget(m_fs_port, 1, 1, 0);
+  samba_editor_layout->addWidget(rw_label, 2, 0, 0);
+  samba_editor_layout->addWidget(m_write_access, 2, 1, 0);
+  samba_editor_layout->addWidget(security_label, 3, 0, 0);
+  samba_editor_layout->addWidget(m_security_mode, 3, 1, 0);
+  samba_editor_layout->addWidget(protocol_label, 4, 0, 0);
+  samba_editor_layout->addWidget(m_protocol_hint, 4, 1, 0);
+  samba_editor_layout->addWidget(uid_label, 5, 0, 0);
+  samba_editor_layout->addWidget(m_user_id, 5, 1, 0);
+  samba_editor_layout->addWidget(gid_label, 6, 0, 0);
+  samba_editor_layout->addWidget(m_group_id, 6, 1, 0);
+  samba_editor_layout->addWidget(m_kerberos, 7, 0, 1, 2, 0);
+  
+  samba_tab_layout->addWidget(samba_editors);
+  samba_tab_layout->addStretch(100);
+
+  QWidget *wol_tab = new QWidget(m_tab_widget);
+  
+  QVBoxLayout *wol_tab_layout = new QVBoxLayout(wol_tab);
+  wol_tab_layout->setSpacing(5);
+  wol_tab_layout->setMargin(0);  
+  
+  QGroupBox *mac_editors = new QGroupBox(wol_tab);
+  mac_editors->setFlat(true);
+  
+  QGridLayout *mac_editor_layout = new QGridLayout(mac_editors);
+  mac_editor_layout->setSpacing(5);
+  mac_editor_layout->setContentsMargins(mac_editor_layout->margin(),
+                                        mac_editor_layout->margin() + 10,
+                                        mac_editor_layout->margin(),
+                                        mac_editor_layout->margin());
+  
+  QLabel *mac_label = new QLabel(i18n("MAC address:"), mac_editors);
+  
+  m_mac_address = new KLineEdit(mac_editors);
+  m_mac_address->setClearButtonShown(true);
+  
+  mac_label->setBuddy(m_mac_address);
+  
+  // If you change the texts here please also alter them in the custom 
+  // options dialog.
+  m_send_before_scan = new QCheckBox(i18n("Send magic package before scanning the network neighborhood"), mac_editors);
+  m_send_before_scan->setEnabled(false);
+  m_send_before_mount = new QCheckBox(i18n("Send magic package before mounting a share"), mac_editors);
+  m_send_before_mount->setEnabled(false);
+  
+  mac_editor_layout->addWidget(mac_label, 0, 0, 0);
+  mac_editor_layout->addWidget(m_mac_address, 0, 1, 0);
+  mac_editor_layout->addWidget(m_send_before_scan, 1, 0, 1, 2, 0);
+  mac_editor_layout->addWidget(m_send_before_mount, 2, 0, 1, 2, 0);
+  
+  wol_tab_layout->addWidget(mac_editors);
+  wol_tab_layout->addStretch(100);
+  
+  (void)m_tab_widget->insertTab(SambaTab, samba_tab, i18n("Samba"));
+  (void)m_tab_widget->insertTab(WolTab, wol_tab, i18n("Wake-On-LAN"));
+  
+  editors_layout->addWidget(m_general_editors);
+  editors_layout->addWidget(m_tab_widget);
+                                 
+  custom_layout->addWidget(m_custom_options);
+  custom_layout->addWidget(editors);
+
+  m_general_editors->setEnabled(false);
+  m_tab_widget->setEnabled(false);
+
+  clearEditors();
+  
+  //
+  // Connections
+  //
+  connect(m_custom_options, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
+          this,             SLOT(slotEditCustomItem(QListWidgetItem*)));
+  connect(m_custom_options, SIGNAL(itemSelectionChanged()),
+          this,             SLOT(slotItemSelectionChanged()));
+  connect(m_custom_options, SIGNAL(customContextMenuRequested(QPoint)),
+          this,             SLOT(slotCustomContextMenuRequested(QPoint)));
+  connect(edit_action,      SIGNAL(triggered(bool)),
+          this,             SLOT(slotEditActionTriggered(bool)));
+  connect(remove_action,    SIGNAL(triggered(bool)),
+          this,             SLOT(slotRemoveActionTriggered(bool)));
+  connect(clear_action,     SIGNAL(triggered(bool)),
+          this,             SLOT(slotClearActionTriggered(bool)));
+  connect(undo_action,      SIGNAL(triggered(bool)),
+          this,             SLOT(slotUndoActionTriggered(bool)));
+  connect(m_ip_address,     SIGNAL(textChanged(QString)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_remount_share,  SIGNAL(toggled(bool)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_smb_port,       SIGNAL(valueChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_fs_port,        SIGNAL(valueChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_write_access,   SIGNAL(currentIndexChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_security_mode,  SIGNAL(currentIndexChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_protocol_hint,  SIGNAL(currentIndexChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_user_id,        SIGNAL(currentIndexChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_group_id,       SIGNAL(currentIndexChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_kerberos,       SIGNAL(toggled(bool)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_mac_address,    SIGNAL(textChanged(QString)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_send_before_scan,   SIGNAL(toggled(bool)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_send_before_mount,  SIGNAL(toggled(bool)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_mac_address,    SIGNAL(textChanged(QString)),
+          this,             SLOT(slotEnableWOLFeatures(QString)));
+}
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+//
+// FreeBSD and NetBSD
+//
+void Smb4KCustomOptionsPage::setupWidget()
+{
+  QHBoxLayout *custom_layout = new QHBoxLayout(this);
+  custom_layout->setSpacing(5);
+  custom_layout->setMargin(0);
+  
+  //
+  // The list widget
+  //  
+  m_custom_options = new KListWidget(this);
+  m_custom_options->setObjectName("CustomOptionsList");
+  m_custom_options->viewport()->installEventFilter(this);
+  m_custom_options->setSelectionMode(KListWidget::SingleSelection);
+  m_custom_options->setContextMenuPolicy(Qt::CustomContextMenu);
+
+  m_menu = new KActionMenu(m_custom_options);
+
+  KAction *edit_action = new KAction(KIcon("edit-rename"), i18n("Edit"), m_collection);
+  edit_action->setEnabled(false);
+
+  KAction *remove_action = new KAction(KIcon("edit-delete"), i18n("Remove"), m_collection );
+  remove_action->setEnabled(false);
+  
+  KAction *clear_action = new KAction(KIcon("edit-clear-list"), i18n("Clear List"), m_collection );
+  clear_action->setEnabled(false);
+  
+  KAction *undo_action = new KAction(KIcon("edit-undo"), i18n("Undo"), m_collection);
+  undo_action->setEnabled(false);
+  
+  m_collection->addAction("edit_action", edit_action);
+  m_collection->addAction("remove_action", remove_action);
+  m_collection->addAction("clear_action", clear_action);
+  m_collection->addAction("undo_action", undo_action);
+
+  m_menu->addAction(edit_action);
+  m_menu->addAction(remove_action);
+  m_menu->addAction(clear_action);
+  m_menu->addAction(undo_action);
+  
+  //
+  // The editors
+  //  
+  QWidget *editors = new QWidget(this);
+  
+  QVBoxLayout *editors_layout = new QVBoxLayout(editors);
+  editors_layout->setSpacing(5);
+  editors_layout->setMargin(0);
+  
+  m_general_editors = new QGroupBox(i18n("General"), editors);
+  
+  QGridLayout *general_editor_layout = new QGridLayout(m_general_editors);
+  general_editor_layout->setSpacing(5);
+  general_editor_layout->setContentsMargins(general_editor_layout->margin(),
+                                            general_editor_layout->margin() + 10,
+                                            general_editor_layout->margin(),
+                                            general_editor_layout->margin());
+
+  QLabel *unc_label = new QLabel(i18n("UNC Address:"), m_general_editors);
+  
+  m_unc_address = new KLineEdit(m_general_editors);
+  m_unc_address->setReadOnly(true);
+
+  unc_label->setBuddy(m_unc_address);
+  
+  QLabel *ip_label = new QLabel(i18n("IP Address:"), m_general_editors);
+  
+  m_ip_address = new KLineEdit(m_general_editors);
+  m_ip_address->setClearButtonShown(true);
+  
+  ip_label->setBuddy(m_ip_address);
+  
+  m_remount_share = new QCheckBox(i18n("Always remount this share"), m_general_editors);
+  
+  general_editor_layout->addWidget(unc_label, 0, 0, 0);
+  general_editor_layout->addWidget(m_unc_address, 0, 1, 0);
+  general_editor_layout->addWidget(ip_label, 1, 0, 0);
+  general_editor_layout->addWidget(m_ip_address, 1, 1, 0);
+  general_editor_layout->addWidget(m_remount_share, 2, 0, 1, 2, 0);
+  
+  m_tab_widget = new KTabWidget(editors);
+  
+  QWidget *samba_tab = new QWidget(m_tab_widget);
+  
+  QVBoxLayout *samba_tab_layout = new QVBoxLayout(samba_tab);
+  samba_tab_layout->setSpacing(5);
+  samba_tab_layout->setMargin(0);
+  
+  QGroupBox *samba_editors = new QGroupBox(samba_tab);
+  samba_editors->setFlat(true);
+  
+  QGridLayout *samba_editor_layout = new QGridLayout(samba_editors);
+  samba_editor_layout->setSpacing(5);
+  samba_editor_layout->setContentsMargins(samba_editor_layout->margin(),
+                                          samba_editor_layout->margin() + 10,
+                                          samba_editor_layout->margin(),
+                                          samba_editor_layout->margin());
+  
+  QLabel *smb_port_label = new QLabel("SMB Port:", samba_editors);
+  
+  m_smb_port = new KIntNumInput(samba_editors);
+  m_smb_port->setRange(Smb4KSettings::self()->remoteSMBPortItem()->minValue().toInt(),
+                       Smb4KSettings::self()->remoteSMBPortItem()->maxValue().toInt());
+  m_smb_port->setSliderEnabled(true);
+
+  smb_port_label->setBuddy(m_smb_port);
+
+  QLabel *protocol_label = new QLabel(i18n("Protocol Hint:"), samba_editors);
+  
+  m_protocol_hint = new KComboBox(samba_editors);
+  m_protocol_hint->insertItem(0, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::Automatic).label,
+                              QVariant::fromValue<int>(Smb4KCustomOptions::Automatic));
+  m_protocol_hint->insertItem(1, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::RPC).label,
+                              QVariant::fromValue<int>(Smb4KCustomOptions::RPC));
+  m_protocol_hint->insertItem(2, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::RAP).label,
+                              QVariant::fromValue<int>(Smb4KCustomOptions::RAP));
+  m_protocol_hint->insertItem(3, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::ADS).label,
+                              QVariant::fromValue<int>(Smb4KCustomOptions::ADS));
+
+  protocol_label->setBuddy(m_protocol_hint);
+  
+  QLabel *uid_label = new QLabel(i18n("User ID:"), samba_editors);
+  m_user_id = new KComboBox(samba_editors);
+  
+  QList<KUser> all_users = KUser::allUsers();
+  
+  for (int i = 0; i < all_users.size(); ++i)
+  {
+    KUser user = all_users.at(i);
+    m_user_id->insertItem(i, QString("%1 (%2)").arg(user.loginName()).arg(user.uid()), QVariant::fromValue<K_UID>(user.uid()));
+  }
+
+  uid_label->setBuddy(m_user_id);
+  
+  QLabel *gid_label = new QLabel(i18n("Group ID:"), samba_editors);
+  m_group_id = new KComboBox(samba_editors);
+  
+  QList<KUserGroup> all_groups = KUserGroup::allGroups();
+  
+  for (int i = 0; i < all_groups.size(); ++i)
+  {
+    KUserGroup group = all_groups.at(i);
+    m_group_id->insertItem(i, QString("%1 (%2)").arg(group.name()).arg(group.gid()), QVariant::fromValue<K_GID>(group.gid()));
+  }
+
+  gid_label->setBuddy(m_group_id);
+  
+  m_kerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), samba_editors);
+  
+  samba_editor_layout->addWidget(smb_port_label, 0, 0, 0);
+  samba_editor_layout->addWidget(m_smb_port, 0, 1, 0);
+  samba_editor_layout->addWidget(protocol_label, 1, 0, 0);
+  samba_editor_layout->addWidget(m_protocol_hint, 1, 1, 0);
+  samba_editor_layout->addWidget(uid_label, 2, 0, 0);
+  samba_editor_layout->addWidget(m_user_id, 2, 1, 0);
+  samba_editor_layout->addWidget(gid_label, 3, 0, 0);
+  samba_editor_layout->addWidget(m_group_id, 3, 1, 0);
+  samba_editor_layout->addWidget(m_kerberos, 4, 0, 1, 2, 0);
+  
+  samba_tab_layout->addWidget(samba_editors);
+  samba_tab_layout->addStretch(100);
+
+  QWidget *wol_tab = new QWidget(m_tab_widget);
+  
+  QVBoxLayout *wol_tab_layout = new QVBoxLayout(wol_tab);
+  wol_tab_layout->setSpacing(5);
+  wol_tab_layout->setMargin(0);  
+  
+  QGroupBox *mac_editors = new QGroupBox(wol_tab);
+  mac_editors->setFlat(true);
+  
+  QGridLayout *mac_editor_layout = new QGridLayout(mac_editors);
+  mac_editor_layout->setSpacing(5);
+  mac_editor_layout->setContentsMargins(mac_editor_layout->margin(),
+                                        mac_editor_layout->margin() + 10,
+                                        mac_editor_layout->margin(),
+                                        mac_editor_layout->margin());
+  
+  QLabel *mac_label = new QLabel(i18n("MAC address:"), mac_editors);
+  
+  m_mac_address = new KLineEdit(mac_editors);
+  m_mac_address->setClearButtonShown(true);
+  
+  mac_label->setBuddy(m_mac_address);
+  
+  // If you change the texts here please also alter them in the custom 
+  // options dialog.
+  m_send_before_scan = new QCheckBox(i18n("Send magic package before scanning the network neighborhood"), mac_editors);
+  m_send_before_scan->setEnabled(false);
+  m_send_before_mount = new QCheckBox(i18n("Send magic package before mounting a share"), mac_editors);
+  m_send_before_mount->setEnabled(false);
+  
+  mac_editor_layout->addWidget(mac_label, 0, 0, 0);
+  mac_editor_layout->addWidget(m_mac_address, 0, 1, 0);
+  mac_editor_layout->addWidget(m_send_before_scan, 1, 0, 1, 2, 0);
+  mac_editor_layout->addWidget(m_send_before_mount, 2, 0, 1, 2, 0);
+  
+  wol_tab_layout->addWidget(mac_editors);
+  wol_tab_layout->addStretch(100);
+  
+  (void)m_tab_widget->insertTab(SambaTab, samba_tab, i18n("Samba"));
+  (void)m_tab_widget->insertTab(WolTab, wol_tab, i18n("Wake-On-LAN"));
+  
+  editors_layout->addWidget(m_general_editors);
+  editors_layout->addWidget(m_tab_widget);
+                                 
+  custom_layout->addWidget(m_custom_options);
+  custom_layout->addWidget(editors);
+
+  m_general_editors->setEnabled(false);
+  m_tab_widget->setEnabled(false);
+
+  clearEditors();
+  
+  //
+  // Connections
+  //
+  connect(m_custom_options, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
+          this,             SLOT(slotEditCustomItem(QListWidgetItem*)));
+  connect(m_custom_options, SIGNAL(itemSelectionChanged()),
+          this,             SLOT(slotItemSelectionChanged()));
+  connect(m_custom_options, SIGNAL(customContextMenuRequested(QPoint)),
+          this,             SLOT(slotCustomContextMenuRequested(QPoint)));
+  connect(edit_action,      SIGNAL(triggered(bool)),
+          this,             SLOT(slotEditActionTriggered(bool)));
+  connect(remove_action,    SIGNAL(triggered(bool)),
+          this,             SLOT(slotRemoveActionTriggered(bool)));
+  connect(clear_action,     SIGNAL(triggered(bool)),
+          this,             SLOT(slotClearActionTriggered(bool)));
+  connect(undo_action,      SIGNAL(triggered(bool)),
+          this,             SLOT(slotUndoActionTriggered(bool)));
+  connect(m_ip_address,     SIGNAL(textChanged(QString)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_remount_share,  SIGNAL(toggled(bool)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_smb_port,       SIGNAL(valueChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_protocol_hint,  SIGNAL(currentIndexChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_user_id,        SIGNAL(currentIndexChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_group_id,       SIGNAL(currentIndexChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_kerberos,       SIGNAL(toggled(bool)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_mac_address,    SIGNAL(textChanged(QString)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_send_before_scan,   SIGNAL(toggled(bool)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_send_before_mount,  SIGNAL(toggled(bool)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_mac_address,    SIGNAL(textChanged(QString)),
+          this,             SLOT(slotEnableWOLFeatures(QString)));
+}
+#else
+//
+// Dummy
+//
+void Smb4KCustomOptionsPage::setupWidget()
+{
+
+}
+#endif
 
 
 void Smb4KCustomOptionsPage::insertCustomOptions(const QList<Smb4KCustomOptions*> &list)
@@ -481,6 +714,138 @@ const QList< Smb4KCustomOptions* > Smb4KCustomOptionsPage::getCustomOptions()
 }
 
 
+#if defined(Q_OS_LINUX)
+//
+// Linux
+//
+void Smb4KCustomOptionsPage::clearEditors()
+{
+  // Do not reset the current custom options object here,
+  // so that we can undo the last changes!
+  
+  // Clearing the editors means to reset them to their initial/default values.
+  m_unc_address->clear();
+  m_ip_address->clear();
+  m_remount_share->setChecked( false );
+  m_smb_port->setValue(Smb4KSettings::remoteSMBPort());
+  m_fs_port->setValue(Smb4KMountSettings::remoteFileSystemPort());
+
+  switch (Smb4KMountSettings::writeAccess())
+  {
+    case Smb4KMountSettings::EnumWriteAccess::ReadWrite:
+    {
+      m_write_access->setCurrentIndex(0);
+      break;
+    }
+    case Smb4KMountSettings::EnumWriteAccess::ReadOnly:
+    {
+      m_write_access->setCurrentIndex(1);
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+
+  switch (Smb4KMountSettings::securityMode())
+  {
+    case Smb4KMountSettings::EnumSecurityMode::None:
+    {
+      m_security_mode->setCurrentIndex(0);
+      break;
+    }
+    case Smb4KMountSettings::EnumSecurityMode::Krb5:
+    {
+      m_security_mode->setCurrentIndex(1);
+      break;
+    }
+    case Smb4KMountSettings::EnumSecurityMode::Krb5i:
+    {
+      m_security_mode->setCurrentIndex(2);
+      break;
+    }
+    case Smb4KMountSettings::EnumSecurityMode::Ntlm:
+    {
+      m_security_mode->setCurrentIndex(3);
+      break;
+    }
+    case Smb4KMountSettings::EnumSecurityMode::Ntlmi:
+    {
+      m_security_mode->setCurrentIndex(4);
+      break;
+    }
+    case Smb4KMountSettings::EnumSecurityMode::Ntlmv2:
+    {
+      m_security_mode->setCurrentIndex(5);
+      break;
+    }
+    case Smb4KMountSettings::EnumSecurityMode::Ntlmv2i:
+    {
+      m_security_mode->setCurrentIndex(6);
+      break;
+    }
+    case Smb4KMountSettings::EnumSecurityMode::Ntlmssp:
+    {
+      m_security_mode->setCurrentIndex(7);
+      break;
+    }
+    case Smb4KMountSettings::EnumSecurityMode::Ntlmsspi:
+    {
+      m_security_mode->setCurrentIndex(8);
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+
+  switch (Smb4KSettings::protocolHint())
+  {
+    case Smb4KSettings::EnumProtocolHint::Automatic:
+    {
+      m_protocol_hint->setCurrentIndex(0);
+      break;
+    }
+    case Smb4KSettings::EnumProtocolHint::RPC:
+    {
+      m_protocol_hint->setCurrentIndex(1);
+      break;
+    }
+    case Smb4KSettings::EnumProtocolHint::RAP:
+    {
+      m_protocol_hint->setCurrentIndex(2);
+      break;
+    }
+    case Smb4KSettings::EnumProtocolHint::ADS:
+    {
+      m_protocol_hint->setCurrentIndex(3);
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+      
+  KUser user(KUser::UseRealUserID);
+  m_user_id->setCurrentItem(QString("%1 (%2)").arg(user.loginName()).arg(user.uid()));
+  KUserGroup group(KUser::UseRealUserID);
+  m_group_id->setCurrentItem(QString("%1 (%2)").arg(group.name()).arg(group.gid()));
+  m_kerberos->setChecked(false);
+  m_mac_address->clear();
+  m_send_before_scan->setChecked(false);
+  m_send_before_mount->setChecked(false);
+  
+  // Disable widgets
+  m_general_editors->setEnabled(false);
+  m_tab_widget->setEnabled(false);
+}
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+//
+// FreeBSD and NetBSD
+//
 void Smb4KCustomOptionsPage::clearEditors()
 {
   // Do not reset the current custom options object here,
@@ -492,7 +857,7 @@ void Smb4KCustomOptionsPage::clearEditors()
   m_remount_share->setChecked( false );
   m_smb_port->setValue( Smb4KSettings::remoteSMBPort() );
 #ifdef Q_OS_LINUX
-  m_fs_port->setValue( Smb4KSettings::remoteFileSystemPort() );
+  m_fs_port->setValue(Smb4KMountSettings::remoteFileSystemPort());
 
   switch ( Smb4KSettings::writeAccess() )
   {
@@ -606,6 +971,14 @@ void Smb4KCustomOptionsPage::clearEditors()
   m_general_editors->setEnabled( false );
   m_tab_widget->setEnabled( false );
 }
+#else
+//
+// Dummy
+//
+void Smb4KCustomOptionsPage::clearEditors()
+{
+}
+#endif
 
 
 Smb4KCustomOptions* Smb4KCustomOptionsPage::findOptions(const QString& url)
@@ -629,6 +1002,327 @@ Smb4KCustomOptions* Smb4KCustomOptionsPage::findOptions(const QString& url)
 }
 
 
+#if defined(Q_OS_LINUX)
+//
+// Linux
+//
+void Smb4KCustomOptionsPage::populateEditors(Smb4KCustomOptions* options)
+{
+  // Commit changes
+  commitChanges();
+  
+  // Copy custom options object
+  m_current_options = new Smb4KCustomOptions(*options);
+  
+  // Populate the editors with the stored values.
+  m_unc_address->setText(m_current_options->unc());
+  
+  if (!m_current_options->ip().isEmpty())
+  {
+    m_ip_address->setText(m_current_options->ip());
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  if (m_current_options->remount() == Smb4KCustomOptions::RemountAlways)
+  {
+    m_remount_share->setChecked(true);
+  }
+  else
+  {
+    m_remount_share->setChecked(false);
+  }
+  
+  if (m_current_options->smbPort() != -1)
+  {
+    m_smb_port->setValue(m_current_options->smbPort());
+  }
+  else
+  {
+    m_smb_port->setValue(Smb4KSettings::remoteSMBPort());
+  }
+  
+  if (m_current_options->fileSystemPort() != -1)
+  {
+    m_fs_port->setValue(m_current_options->fileSystemPort());
+  }
+  else
+  {
+    m_fs_port->setValue(Smb4KMountSettings::remoteFileSystemPort());
+  }
+  
+  if (m_current_options->writeAccess() == Smb4KCustomOptions::UndefinedWriteAccess)
+  {
+    switch (Smb4KMountSettings::writeAccess())
+    {
+      case Smb4KMountSettings::EnumWriteAccess::ReadWrite:
+      {
+        m_write_access->setCurrentIndex(0);
+        break;
+      }
+      case Smb4KMountSettings::EnumWriteAccess::ReadOnly:
+      {
+        m_write_access->setCurrentIndex(1);
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
+  else
+  {
+    switch (m_current_options->writeAccess())
+    {
+      case Smb4KCustomOptions::ReadWrite:
+      {
+        m_write_access->setCurrentIndex(0);
+        break;
+      }
+      case Smb4KCustomOptions::ReadOnly:
+      {
+        m_write_access->setCurrentIndex(1);
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
+
+  if (m_current_options->securityMode() == Smb4KCustomOptions::UndefinedSecurityMode)
+  {
+    switch (Smb4KMountSettings::securityMode())
+    {
+      case Smb4KMountSettings::EnumSecurityMode::None:
+      {
+        m_security_mode->setCurrentIndex(0);
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Krb5:
+      {
+        m_security_mode->setCurrentIndex(1);
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Krb5i:
+      {
+        m_security_mode->setCurrentIndex(2);
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Ntlm:
+      {
+        m_security_mode->setCurrentIndex(3);
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Ntlmi:
+      {
+        m_security_mode->setCurrentIndex(4);
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Ntlmv2:
+      {
+        m_security_mode->setCurrentIndex(5);
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Ntlmv2i:
+      {
+        m_security_mode->setCurrentIndex(6);
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Ntlmssp:
+      {
+        m_security_mode->setCurrentIndex(7);
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Ntlmsspi:
+      {
+        m_security_mode->setCurrentIndex(8);
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
+  else
+  {
+    switch (m_current_options->securityMode())
+    {
+      case Smb4KCustomOptions::NoSecurityMode:
+      {
+        m_security_mode->setCurrentIndex(0);
+        break;
+      }
+      case Smb4KCustomOptions::Krb5:
+      {
+        m_security_mode->setCurrentIndex(1);
+        break;
+      }
+      case Smb4KCustomOptions::Krb5i:
+      {
+        m_security_mode->setCurrentIndex(2);
+        break;
+      }
+      case Smb4KCustomOptions::Ntlm:
+      {
+        m_security_mode->setCurrentIndex(3);
+        break;
+      }
+      case Smb4KCustomOptions::Ntlmi:
+      {
+        m_security_mode->setCurrentIndex(4);
+        break;
+      }
+      case Smb4KCustomOptions::Ntlmv2:
+      {
+        m_security_mode->setCurrentIndex(5);
+        break;
+      }
+      case Smb4KCustomOptions::Ntlmv2i:
+      {
+        m_security_mode->setCurrentIndex(6);
+        break;
+      }
+      case Smb4KCustomOptions::Ntlmssp:
+      {
+        m_security_mode->setCurrentIndex(7);
+        break;
+      }
+      case Smb4KCustomOptions::Ntlmsspi:
+      {
+        m_security_mode->setCurrentIndex(8);
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
+
+  if (m_current_options->protocolHint() == Smb4KCustomOptions::UndefinedProtocolHint)
+  {
+    switch (Smb4KSettings::protocolHint())
+    {
+      case Smb4KSettings::EnumProtocolHint::Automatic:
+      {
+        m_protocol_hint->setCurrentIndex(0);
+        break;
+      }
+      case Smb4KSettings::EnumProtocolHint::RPC:
+      {
+        m_protocol_hint->setCurrentIndex(1);
+        break;
+      }
+      case Smb4KSettings::EnumProtocolHint::RAP:
+      {
+        m_protocol_hint->setCurrentIndex(2);
+        break;
+      }
+      case Smb4KSettings::EnumProtocolHint::ADS:
+      {
+        m_protocol_hint->setCurrentIndex(3);
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
+  else
+  {
+    switch (m_current_options->protocolHint())
+    {
+      case Smb4KCustomOptions::Automatic:
+      {
+        m_protocol_hint->setCurrentIndex(0);
+        break;
+      }
+      case Smb4KCustomOptions::RPC:
+      {
+        m_protocol_hint->setCurrentIndex(1);
+        break;
+      }
+      case Smb4KCustomOptions::RAP:
+      {
+        m_protocol_hint->setCurrentIndex(2);
+        break;
+      }
+      case Smb4KCustomOptions::ADS:
+      {
+        m_protocol_hint->setCurrentIndex(3);
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
+  
+  KUser user(m_current_options->uid());
+  m_user_id->setCurrentItem(QString("%1 (%2)").arg(user.loginName()).arg(user.uid()));
+  
+  KUserGroup group(m_current_options->gid());
+  m_group_id->setCurrentItem(QString("%1 (%2)").arg(group.name()).arg(group.gid()));
+  
+  if (m_current_options->useKerberos() == Smb4KCustomOptions::UndefinedKerberos)
+  {
+    m_kerberos->setChecked(Smb4KSettings::useKerberos());
+  }
+  else
+  {
+    switch (m_current_options->useKerberos())
+    {
+      case Smb4KCustomOptions::UseKerberos:
+      {
+        m_kerberos->setChecked(true);
+        break;
+      }
+      case Smb4KCustomOptions::NoKerberos:
+      {
+        m_kerberos->setChecked(false);
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
+  
+  m_mac_address->setText(m_current_options->macAddress());
+  m_send_before_scan->setChecked(m_current_options->wolSendBeforeNetworkScan());
+  m_send_before_mount->setChecked(m_current_options->wolSendBeforeMount());
+  
+  // Enable widget
+  m_general_editors->setEnabled(true);
+  m_tab_widget->setEnabled(true);
+  m_tab_widget->widget(SambaTab)->setEnabled(true);
+  
+  if (m_current_options->type() == Host)
+  {
+    m_tab_widget->widget(WolTab)->setEnabled(Smb4KSettings::enableWakeOnLAN());
+    m_remount_share->setEnabled(false);
+  }
+  else
+  {
+    m_tab_widget->widget(WolTab)->setEnabled(false);
+    m_remount_share->setEnabled(true);
+  }
+  
+  slotEnableWOLFeatures(m_mac_address->text());
+}
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+//
+// FreeBSD and NetBSD
+//
 void Smb4KCustomOptionsPage::populateEditors(Smb4KCustomOptions* options)
 {
   // Commit changes
@@ -667,169 +1361,6 @@ void Smb4KCustomOptionsPage::populateEditors(Smb4KCustomOptions* options)
     m_smb_port->setValue( Smb4KSettings::remoteSMBPort() );
   }
   
-#ifdef Q_OS_LINUX
-  if ( m_current_options->fileSystemPort() != -1 )
-  {
-    m_fs_port->setValue( m_current_options->fileSystemPort() );
-  }
-  else
-  {
-    m_fs_port->setValue( Smb4KSettings::remoteFileSystemPort() );
-  }
-  
-  if ( m_current_options->writeAccess() == Smb4KCustomOptions::UndefinedWriteAccess )
-  {
-    switch ( Smb4KSettings::writeAccess() )
-    {
-      case Smb4KSettings::EnumWriteAccess::ReadWrite:
-      {
-        m_write_access->setCurrentIndex( 0 );
-        break;
-      }
-      case Smb4KSettings::EnumWriteAccess::ReadOnly:
-      {
-        m_write_access->setCurrentIndex( 1 );
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-  else
-  {
-    switch ( m_current_options->writeAccess() )
-    {
-      case Smb4KCustomOptions::ReadWrite:
-      {
-        m_write_access->setCurrentIndex( 0 );
-        break;
-      }
-      case Smb4KCustomOptions::ReadOnly:
-      {
-        m_write_access->setCurrentIndex( 1 );
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-
-  if ( m_current_options->securityMode() == Smb4KCustomOptions::UndefinedSecurityMode )
-  {
-    switch ( Smb4KSettings::securityMode() )
-    {
-      case Smb4KSettings::EnumSecurityMode::None:
-      {
-        m_security_mode->setCurrentIndex( 0 );
-        break;
-      }
-      case Smb4KSettings::EnumSecurityMode::Krb5:
-      {
-        m_security_mode->setCurrentIndex( 1 );
-        break;
-      }
-      case Smb4KSettings::EnumSecurityMode::Krb5i:
-      {
-        m_security_mode->setCurrentIndex( 2 );
-        break;
-      }
-      case Smb4KSettings::EnumSecurityMode::Ntlm:
-      {
-        m_security_mode->setCurrentIndex( 3 );
-        break;
-      }
-      case Smb4KSettings::EnumSecurityMode::Ntlmi:
-      {
-        m_security_mode->setCurrentIndex( 4 );
-        break;
-      }
-      case Smb4KSettings::EnumSecurityMode::Ntlmv2:
-      {
-        m_security_mode->setCurrentIndex( 5 );
-        break;
-      }
-      case Smb4KSettings::EnumSecurityMode::Ntlmv2i:
-      {
-        m_security_mode->setCurrentIndex( 6 );
-        break;
-      }
-      case Smb4KSettings::EnumSecurityMode::Ntlmssp:
-      {
-        m_security_mode->setCurrentIndex( 7 );
-        break;
-      }
-      case Smb4KSettings::EnumSecurityMode::Ntlmsspi:
-      {
-        m_security_mode->setCurrentIndex( 8 );
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-  else
-  {
-    switch ( m_current_options->securityMode() )
-    {
-      case Smb4KCustomOptions::NoSecurityMode:
-      {
-        m_security_mode->setCurrentIndex( 0 );
-        break;
-      }
-      case Smb4KCustomOptions::Krb5:
-      {
-        m_security_mode->setCurrentIndex( 1 );
-        break;
-      }
-      case Smb4KCustomOptions::Krb5i:
-      {
-        m_security_mode->setCurrentIndex( 2 );
-        break;
-      }
-      case Smb4KCustomOptions::Ntlm:
-      {
-        m_security_mode->setCurrentIndex( 3 );
-        break;
-      }
-      case Smb4KCustomOptions::Ntlmi:
-      {
-        m_security_mode->setCurrentIndex( 4 );
-        break;
-      }
-      case Smb4KCustomOptions::Ntlmv2:
-      {
-        m_security_mode->setCurrentIndex( 5 );
-        break;
-      }
-      case Smb4KCustomOptions::Ntlmv2i:
-      {
-        m_security_mode->setCurrentIndex( 6 );
-        break;
-      }
-      case Smb4KCustomOptions::Ntlmssp:
-      {
-        m_security_mode->setCurrentIndex( 7 );
-        break;
-      }
-      case Smb4KCustomOptions::Ntlmsspi:
-      {
-        m_security_mode->setCurrentIndex( 8 );
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-#endif
-
   if ( m_current_options->protocolHint() == Smb4KCustomOptions::UndefinedProtocolHint )
   {
     switch ( Smb4KSettings::protocolHint() )
@@ -944,9 +1475,124 @@ void Smb4KCustomOptionsPage::populateEditors(Smb4KCustomOptions* options)
   
   slotEnableWOLFeatures( m_mac_address->text() );
 }
+#else
+//
+// Dummy
+//
+void Smb4KCustomOptionsPage::populateEditors(Smb4KCustomOptions*)
+{
+}
+#endif
 
-
+#if defined(Q_OS_LINUX)
+//
+// Linux
+//
 void Smb4KCustomOptionsPage::commitChanges()
+{
+  if (m_current_options && !m_options_list.isEmpty() &&
+      QString::compare(m_current_options->unc(), m_unc_address->text()) == 0)
+  {
+    Smb4KCustomOptions *options = findOptions(m_current_options->url().prettyUrl());
+    
+    QHostAddress addr(m_ip_address->text());
+    
+    if (addr.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol)
+    {
+      options->setIP(m_ip_address->text());
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    if (m_remount_share->isChecked())
+    {
+      options->setRemount(Smb4KCustomOptions::RemountAlways);
+    }
+    else
+    {
+      options->setRemount(Smb4KCustomOptions::RemountNever);
+    }
+    
+    options->setSMBPort(m_smb_port->value());
+    options->setFileSystemPort(m_fs_port->value());
+    options->setWriteAccess((Smb4KCustomOptions::WriteAccess)m_write_access->itemData( m_write_access->currentIndex() ).toInt());
+    options->setSecurityMode((Smb4KCustomOptions::SecurityMode)m_security_mode->itemData(m_security_mode->currentIndex() ).toInt());
+    options->setProtocolHint((Smb4KCustomOptions::ProtocolHint)m_protocol_hint->itemData( m_protocol_hint->currentIndex() ).toInt());
+    options->setUID(m_user_id->itemData( m_user_id->currentIndex() ).toInt());
+    options->setGID(m_group_id->itemData( m_group_id->currentIndex() ).toInt());
+
+    if (m_kerberos->isChecked())
+    {
+      options->setUseKerberos(Smb4KCustomOptions::UseKerberos);
+    }
+    else
+    {
+      options->setUseKerberos(Smb4KCustomOptions::NoKerberos);
+    }
+    
+    QRegExp exp("..\\:..\\:..\\:..\\:..\\:..");
+    
+    if (exp.exactMatch(m_mac_address->text()))
+    {
+      options->setMACAddress(m_mac_address->text());
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    options->setWOLSendBeforeNetworkScan(m_send_before_scan->isChecked());
+    options->setWOLSendBeforeMount(m_send_before_mount->isChecked());
+    
+    // In case of a host, propagate the changes to its shares.
+    if (options->type() == Host)
+    {
+      for (int i = 0; i < m_options_list.size(); ++i)
+      {
+        if (m_options_list.at(i)->type() == Share &&
+            QString::compare(m_options_list.at(i)->hostName(), options->hostName(), Qt::CaseInsensitive) == 0 &&
+            QString::compare(m_options_list.at(i)->workgroupName(), options->workgroupName(), Qt::CaseInsensitive) == 0)
+        {
+          // Propagate the options to the shared resources of the host.
+          // They overwrite the ones defined for the shares.
+          m_options_list[i]->setSMBPort(options->smbPort());
+          m_options_list[i]->setFileSystemPort(options->fileSystemPort());
+          m_options_list[i]->setWriteAccess(options->writeAccess());
+          m_options_list[i]->setSecurityMode(options->securityMode());
+          m_options_list[i]->setProtocolHint(options->protocolHint());
+          m_options_list[i]->setUID(options->uid());
+          m_options_list[i]->setGID(options->gid());
+          m_options_list[i]->setUseKerberos(options->useKerberos());
+          m_options_list[i]->setMACAddress(options->macAddress());
+          m_options_list[i]->setWOLSendBeforeNetworkScan(options->wolSendBeforeNetworkScan());
+          m_options_list[i]->setWOLSendBeforeMount(options->wolSendBeforeMount());
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    m_maybe_changed = true;
+    emit customSettingsModified();
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+//
+// FreeBSD and NetBSD
+//
+oid Smb4KCustomOptionsPage::commitChanges()
 {
   if ( m_current_options && !m_options_list.isEmpty() &&
        QString::compare( m_current_options->unc(), m_unc_address->text() ) == 0 )
@@ -974,11 +1620,6 @@ void Smb4KCustomOptionsPage::commitChanges()
     }
     
     options->setSMBPort( m_smb_port->value() );
-#ifdef Q_OS_LINUX
-    options->setFileSystemPort( m_fs_port->value() );
-    options->setWriteAccess( (Smb4KCustomOptions::WriteAccess)m_write_access->itemData( m_write_access->currentIndex() ).toInt() );
-    options->setSecurityMode( (Smb4KCustomOptions::SecurityMode)m_security_mode->itemData(m_security_mode->currentIndex() ).toInt() );
-#endif
     options->setProtocolHint( (Smb4KCustomOptions::ProtocolHint)m_protocol_hint->itemData( m_protocol_hint->currentIndex() ).toInt() );
     options->setUID( m_user_id->itemData( m_user_id->currentIndex() ).toInt() );
     options->setGID( m_group_id->itemData( m_group_id->currentIndex() ).toInt() );
@@ -1018,11 +1659,6 @@ void Smb4KCustomOptionsPage::commitChanges()
           // Propagate the options to the shared resources of the host.
           // They overwrite the ones defined for the shares.
           m_options_list[i]->setSMBPort( options->smbPort() );
-#ifdef Q_OS_LINUX
-          m_options_list[i]->setFileSystemPort( options->fileSystemPort() );
-          m_options_list[i]->setWriteAccess( options->writeAccess() );
-          m_options_list[i]->setSecurityMode( options->securityMode() );
-#endif
           m_options_list[i]->setProtocolHint( options->protocolHint() );
           m_options_list[i]->setUID( options->uid() );
           m_options_list[i]->setGID( options->gid() );
@@ -1050,6 +1686,14 @@ void Smb4KCustomOptionsPage::commitChanges()
     // Do nothing
   }
 }
+#else
+//
+// Dummy
+//
+oid Smb4KCustomOptionsPage::commitChanges()
+{
+}
+#endif
 
 
 bool Smb4KCustomOptionsPage::eventFilter(QObject* obj, QEvent* e)

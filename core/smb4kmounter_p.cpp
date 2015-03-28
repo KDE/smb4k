@@ -37,6 +37,12 @@
 #include "smb4kcustomoptionsmanager.h"
 #include "smb4kcustomoptions.h"
 
+#if defined(Q_OS_LINUX)
+#include "smb4kmountsettings_linux.h"
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+#include "smb4kmountsettings_freebsd.h"
+#endif
+
 // Qt includes
 #include <QtCore/QFileInfo>
 #include <QtCore/QFile>
@@ -245,12 +251,12 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   
   if (options)
   {
-    share->setPort(options->fileSystemPort() != Smb4KSettings::remoteFileSystemPort() ?
-                   options->fileSystemPort() : Smb4KSettings::remoteFileSystemPort());
+    share->setPort(options->fileSystemPort() != Smb4KMountSettings::remoteFileSystemPort() ?
+                   options->fileSystemPort() : Smb4KMountSettings::remoteFileSystemPort());
   }
   else
   {
-    share->setPort(Smb4KSettings::remoteFileSystemPort());
+    share->setPort(Smb4KMountSettings::remoteFileSystemPort());
   }
   
   // Compile the list of arguments, that is added to the
@@ -290,7 +296,7 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   // Client's and server's NetBIOS name
   // According to the manual page, this is only needed when port 139
   // is used. So, we only pass the NetBIOS name in that case.
-  if (Smb4KSettings::remoteFileSystemPort() == 139 || (options && options->fileSystemPort() == 139))
+  if (Smb4KMountSettings::remoteFileSystemPort() == 139 || (options && options->fileSystemPort() == 139))
   {
     // The client's NetBIOS name.
     if (!Smb4KSettings::netBIOSName().isEmpty())
@@ -319,10 +325,10 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   }
   
   // UID
-  args_list << QString("uid=%1").arg(options ? options->uid() : (K_UID)Smb4KSettings::userID().toInt());
+  args_list << QString("uid=%1").arg(options ? options->uid() : (K_UID)Smb4KMountSettings::userID().toInt());
   
   // Force user
-  if (Smb4KSettings::forceUID())
+  if (Smb4KMountSettings::forceUID())
   {
     args_list << "forceuid";
   }
@@ -332,10 +338,10 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   }
   
   // GID
-  args_list << QString("gid=%1").arg(options ? options->gid() : (K_GID)Smb4KSettings::groupID().toInt());
+  args_list << QString("gid=%1").arg(options ? options->gid() : (K_GID)Smb4KMountSettings::groupID().toInt());
   
   // Force GID
-  if (Smb4KSettings::forceGID())
+  if (Smb4KMountSettings::forceGID())
   {
     args_list << "forcegid";
   }
@@ -345,9 +351,9 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   }
   
   // Client character set
-  switch (Smb4KSettings::clientCharset())
+  switch (Smb4KMountSettings::clientCharset())
   {
-    case Smb4KSettings::EnumClientCharset::default_charset:
+    case Smb4KMountSettings::EnumClientCharset::default_charset:
     {
       if (!global_options["unix charset"].isEmpty())
       {
@@ -362,7 +368,7 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
     default:
     {
       args_list << QString("iocharset=%1")
-                   .arg(Smb4KSettings::self()->clientCharsetItem()->choices().value(Smb4KSettings::clientCharset()).label);
+                   .arg(Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::clientCharset()).label);
       break;
     }
   }
@@ -387,14 +393,14 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
       }
       default:
       {
-        switch (Smb4KSettings::writeAccess())
+        switch (Smb4KMountSettings::writeAccess())
         {
-          case Smb4KSettings::EnumWriteAccess::ReadWrite:
+          case Smb4KMountSettings::EnumWriteAccess::ReadWrite:
           {
             args_list << "rw";
             break;
           }
-          case Smb4KSettings::EnumWriteAccess::ReadOnly:
+          case Smb4KMountSettings::EnumWriteAccess::ReadOnly:
           {
             args_list << "ro";
             break;
@@ -410,14 +416,14 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   }
   else
   {
-    switch (Smb4KSettings::writeAccess())
+    switch (Smb4KMountSettings::writeAccess())
     {
-      case Smb4KSettings::EnumWriteAccess::ReadWrite:
+      case Smb4KMountSettings::EnumWriteAccess::ReadWrite:
       {
         args_list << "rw";
         break;
       }
-      case Smb4KSettings::EnumWriteAccess::ReadOnly:
+      case Smb4KMountSettings::EnumWriteAccess::ReadOnly:
       {
         args_list << "ro";
         break;
@@ -430,9 +436,9 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   }
   
   // File mask
-  if (!Smb4KSettings::fileMask().isEmpty())
+  if (!Smb4KMountSettings::fileMask().isEmpty())
   {
-    args_list << QString("file_mode=%1").arg(Smb4KSettings::fileMask());
+    args_list << QString("file_mode=%1").arg(Smb4KMountSettings::fileMask());
   }
   else
   {
@@ -440,9 +446,9 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   }
 
   // Directory mask
-  if (!Smb4KSettings::directoryMask().isEmpty())
+  if (!Smb4KMountSettings::directoryMask().isEmpty())
   {
-    args_list << QString("dir_mode=%1").arg(Smb4KSettings::directoryMask());
+    args_list << QString("dir_mode=%1").arg(Smb4KMountSettings::directoryMask());
   }
   else
   {
@@ -450,7 +456,7 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   }
   
   // Permission checks
-  if (Smb4KSettings::permissionChecks())
+  if (Smb4KMountSettings::permissionChecks())
   {
     args_list << "perm";
   }
@@ -460,7 +466,7 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   }
   
   // Client controls IDs
-  if (Smb4KSettings::clientControlsIDs())
+  if (Smb4KMountSettings::clientControlsIDs())
   {
     args_list << "setuids";
   }
@@ -470,7 +476,7 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   }
   
   // Server inode numbers
-  if (Smb4KSettings::serverInodeNumbers())
+  if (Smb4KMountSettings::serverInodeNumbers())
   {
     args_list << "serverino";
   }
@@ -480,19 +486,19 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   }
   
   // Cache mode
-  switch (Smb4KSettings::cacheMode())
+  switch (Smb4KMountSettings::cacheMode())
   {
-    case Smb4KSettings::EnumCacheMode::None:
+    case Smb4KMountSettings::EnumCacheMode::None:
     {
       args_list << "cache=none";
       break;
     }
-    case Smb4KSettings::EnumCacheMode::Strict:
+    case Smb4KMountSettings::EnumCacheMode::Strict:
     {
       args_list << "cache=strict";
       break;
     }
-    case Smb4KSettings::EnumCacheMode::Loose:
+    case Smb4KMountSettings::EnumCacheMode::Loose:
     {
       args_list << "cache=loose";
       break;
@@ -504,7 +510,7 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   }
   
   // Translate reserved characters
-  if (Smb4KSettings::translateReservedChars())
+  if (Smb4KMountSettings::translateReservedChars())
   {
     args_list << "mapchars";
   }
@@ -514,7 +520,7 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   }
   
   // Locking
-  if (Smb4KSettings::noLocking())
+  if (Smb4KMountSettings::noLocking())
   {
     args_list << "nolock";
   }
@@ -584,51 +590,51 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   }
   else
   {
-    switch (Smb4KSettings::securityMode())
+    switch (Smb4KMountSettings::securityMode())
     {
-      case Smb4KSettings::EnumSecurityMode::None:
+      case Smb4KMountSettings::EnumSecurityMode::None:
       {
         args_list << "sec=none";
         break;
       }
-      case Smb4KSettings::EnumSecurityMode::Krb5:
+      case Smb4KMountSettings::EnumSecurityMode::Krb5:
       {
         args_list << "sec=krb5";
         args_list << QString("cruid=%1").arg(KUser(KUser::UseRealUserID).uid());
         break;
       }
-      case Smb4KSettings::EnumSecurityMode::Krb5i:
+      case Smb4KMountSettings::EnumSecurityMode::Krb5i:
       {
         args_list << "sec=krb5i";
         args_list << QString("cruid=%1").arg(KUser(KUser::UseRealUserID).uid());
         break;
       }
-      case Smb4KSettings::EnumSecurityMode::Ntlm:
+      case Smb4KMountSettings::EnumSecurityMode::Ntlm:
       {
         args_list << "sec=ntlm";
         break;
       }
-      case Smb4KSettings::EnumSecurityMode::Ntlmi:
+      case Smb4KMountSettings::EnumSecurityMode::Ntlmi:
       {
         args_list << "sec=ntlmi";
         break;
       }
-      case Smb4KSettings::EnumSecurityMode::Ntlmv2:
+      case Smb4KMountSettings::EnumSecurityMode::Ntlmv2:
       {
         args_list << "sec=ntlmv2";
         break;
       }
-      case Smb4KSettings::EnumSecurityMode::Ntlmv2i:
+      case Smb4KMountSettings::EnumSecurityMode::Ntlmv2i:
       {
         args_list << "sec=ntlmv2i";
         break;
       }
-      case Smb4KSettings::EnumSecurityMode::Ntlmssp:
+      case Smb4KMountSettings::EnumSecurityMode::Ntlmssp:
       {
         args_list << "sec=ntlmssp";
         break;
       }
-      case Smb4KSettings::EnumSecurityMode::Ntlmsspi:
+      case Smb4KMountSettings::EnumSecurityMode::Ntlmsspi:
       {
         args_list << "sec=ntlmsspi";
         break;
@@ -642,24 +648,24 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   }
   
   // SMB protocol version
-  switch (Smb4KSettings::smbProtocolVersion())
+  switch (Smb4KMountSettings::smbProtocolVersion())
   {
-    case Smb4KSettings::EnumSmbProtocolVersion::OnePointZero:
+    case Smb4KMountSettings::EnumSmbProtocolVersion::OnePointZero:
     {
       args_list << "vers=1.0";
       break;
     }
-    case Smb4KSettings::EnumSmbProtocolVersion::TwoPointZero:
+    case Smb4KMountSettings::EnumSmbProtocolVersion::TwoPointZero:
     {
       args_list << "vers=2.0";
       break;
     }
-    case Smb4KSettings::EnumSmbProtocolVersion::TwoPointOne:
+    case Smb4KMountSettings::EnumSmbProtocolVersion::TwoPointOne:
     {
       args_list << "vers=2.1";
       break;
     }
-    case Smb4KSettings::EnumSmbProtocolVersion::ThreePointZero:
+    case Smb4KMountSettings::EnumSmbProtocolVersion::ThreePointZero:
     {
       args_list << "vers=3.0";
       break;
@@ -671,7 +677,7 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   }
     
   // Global custom options provided by the user
-  if (!Smb4KSettings::customCIFSOptions().isEmpty())
+  if (!Smb4KMountSettings::customCIFSOptions().isEmpty())
   {
     // SECURITY: Only pass those arguments to mount.cifs that do not pose
     // a potential security risk and that have not already been defined.
@@ -679,7 +685,7 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
     // This is, among others, the proper fix to the security issue reported
     // by Heiner Markert (aka CVE-2014-2581).
     QStringList whitelist = whitelistedMountArguments();
-    QStringList list = Smb4KSettings::customCIFSOptions().split(',', QString::SkipEmptyParts);
+    QStringList list = Smb4KMountSettings::customCIFSOptions().split(',', QString::SkipEmptyParts);
     QMutableStringListIterator it(list);
     
     while (it.hasNext())

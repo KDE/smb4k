@@ -161,6 +161,11 @@ class Smb4KConfigDialog : public KConfigDialog
     KPageWidgetItem *m_samba;
     
     /**
+     * "Mounting" page
+     */
+    KPageWidgetItem *m_mounting;
+    
+    /**
      * "Synchronization" page
      */
     KPageWidgetItem *m_synchronization;
@@ -211,11 +216,11 @@ class Smb4KConfigDialog : public KConfigDialog
     bool checkSharesPage();
     
     /**
-     * Checks the settings in the Samba page.
+     * Checks the settings in the Mounting page.
      * 
      * @returns TRUE if everything is OK and FALSE otherwise.
      */
-    bool checkSambaPage();
+    bool checkMountingPage();
     
     /**
      * Checks the settings in the Synchronization page.

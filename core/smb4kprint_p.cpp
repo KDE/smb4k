@@ -49,6 +49,7 @@
 #include <kfileitem.h>
 #include <ktempdir.h>
 #include <kstandarddirs.h>
+#include <KUser>
 
 using namespace Smb4KGlobal;
 
@@ -222,7 +223,7 @@ void Smb4KPrintJob::slotStartPrinting()
     // Send the document to the printer.
     QStringList arguments;
     arguments << "111";                                       // job ID number; not used at the moment
-    arguments << KUser( getuid() ).loginName();               // user name; not used at the moment
+    arguments << KUser(KUser::UseRealUserID).loginName();     // user name; not used at the moment
     arguments << "Smb4K print job";                           // job name
     arguments << QString( "%1" ).arg( printer->copyCount() ); // number of copies
     arguments << "";                                          // options; not used at the moment

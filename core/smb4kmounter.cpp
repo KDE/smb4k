@@ -64,6 +64,7 @@
 #include <kio/job.h>
 #include <kio/jobclasses.h>
 #include <kdiskfreespaceinfo.h>
+#include <KUser>
 
 using namespace Smb4KGlobal;
 
@@ -1902,7 +1903,7 @@ void Smb4KMounter::slotStatResult( KJob *job )
 
     // Is this a mount that was done by the user or by
     // someone else (or the system)?
-    if ( (share->uid() == getuid() && share->gid() == getgid()) ||
+    if ( (share->uid() == KUser(KUser::UseRealUserID).uid() && share->gid() == KUserGroup(KUser::UseRealUserID).gid()) ||
          (share->path().startsWith( Smb4KSettings::mountPrefix().path() ) || share->path().startsWith( QDir::homePath() )) ||
          (share->canonicalPath().startsWith( QDir( Smb4KSettings::mountPrefix().path() ).canonicalPath() ) ||
          share->canonicalPath().startsWith( QDir::home().canonicalPath() )) )

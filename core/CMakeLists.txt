@@ -50,7 +50,15 @@ set( smb4kcore_LIB_SRCS
   smb4kwalletmanager_p.cpp
   smb4kworkgroup.cpp )
 
-kde4_add_kcfg_files( smb4kcore_LIB_SRCS smb4ksettings.kcfgc )
+if (${CMAKE_HOST_SYSTEM_NAME} MATCHES "Linux")
+  kde4_add_kcfg_files(smb4kcore_LIB_SRCS smb4ksettings.kcfgc smb4kmountsettings_linux.kcfgc)
+elseif(${CMAKE_HOST_SYSTEM_NAME} MATCHES "FreeBSD")
+  kde4_add_kcfg_files(smb4kcore_LIB_SRCS smb4ksettings.kcfgc smb4kmountsettings_freebsd.kcfgc)
+elseif(${CMAKE_HOST_SYSTEM_NAME} MATCHES "NetBSD")
+  kde4_add_kcfg_files(smb4kcore_LIB_SRCS smb4ksettings.kcfgc smb4kmountsettings_freebsd.kcfgc)
+else ()
+  kde4_add_kcfg_files( smb4kcore_LIB_SRCS smb4ksettings.kcfgc )
+endif ()
 
 kde4_add_library( smb4kcore SHARED ${smb4kcore_LIB_SRCS} )
 
