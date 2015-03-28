@@ -854,102 +854,29 @@ void Smb4KCustomOptionsPage::clearEditors()
   // Clearing the editors means to reset them to their initial/default values.
   m_unc_address->clear();
   m_ip_address->clear();
-  m_remount_share->setChecked( false );
-  m_smb_port->setValue( Smb4KSettings::remoteSMBPort() );
-#ifdef Q_OS_LINUX
-  m_fs_port->setValue(Smb4KMountSettings::remoteFileSystemPort());
+  m_remount_share->setChecked(false);
+  m_smb_port->setValue(Smb4KSettings::remoteSMBPort());
 
-  switch ( Smb4KSettings::writeAccess() )
-  {
-    case Smb4KSettings::EnumWriteAccess::ReadWrite:
-    {
-      m_write_access->setCurrentIndex( 0 );
-      break;
-    }
-    case Smb4KSettings::EnumWriteAccess::ReadOnly:
-    {
-      m_write_access->setCurrentIndex( 1 );
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-
-  switch ( Smb4KSettings::securityMode() )
-  {
-    case Smb4KSettings::EnumSecurityMode::None:
-    {
-      m_security_mode->setCurrentIndex( 0 );
-      break;
-    }
-    case Smb4KSettings::EnumSecurityMode::Krb5:
-    {
-      m_security_mode->setCurrentIndex( 1 );
-      break;
-    }
-    case Smb4KSettings::EnumSecurityMode::Krb5i:
-    {
-      m_security_mode->setCurrentIndex( 2 );
-      break;
-    }
-    case Smb4KSettings::EnumSecurityMode::Ntlm:
-    {
-      m_security_mode->setCurrentIndex( 3 );
-      break;
-    }
-    case Smb4KSettings::EnumSecurityMode::Ntlmi:
-    {
-      m_security_mode->setCurrentIndex( 4 );
-      break;
-    }
-    case Smb4KSettings::EnumSecurityMode::Ntlmv2:
-    {
-      m_security_mode->setCurrentIndex( 5 );
-      break;
-    }
-    case Smb4KSettings::EnumSecurityMode::Ntlmv2i:
-    {
-      m_security_mode->setCurrentIndex( 6 );
-      break;
-    }
-    case Smb4KSettings::EnumSecurityMode::Ntlmssp:
-    {
-      m_security_mode->setCurrentIndex( 7 );
-      break;
-    }
-    case Smb4KSettings::EnumSecurityMode::Ntlmsspi:
-    {
-      m_security_mode->setCurrentIndex( 8 );
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-#endif
-  switch ( Smb4KSettings::protocolHint() )
+  switch (Smb4KSettings::protocolHint())
   {
     case Smb4KSettings::EnumProtocolHint::Automatic:
     {
-      m_protocol_hint->setCurrentIndex( 0 );
+      m_protocol_hint->setCurrentIndex(0);
       break;
     }
     case Smb4KSettings::EnumProtocolHint::RPC:
     {
-      m_protocol_hint->setCurrentIndex( 1 );
+      m_protocol_hint->setCurrentIndex(1);
       break;
     }
     case Smb4KSettings::EnumProtocolHint::RAP:
     {
-      m_protocol_hint->setCurrentIndex( 2 );
+      m_protocol_hint->setCurrentIndex(2);
       break;
     }
     case Smb4KSettings::EnumProtocolHint::ADS:
     {
-      m_protocol_hint->setCurrentIndex( 3 );
+      m_protocol_hint->setCurrentIndex(3);
       break;
     }
     default:
@@ -958,18 +885,18 @@ void Smb4KCustomOptionsPage::clearEditors()
     }
   }
       
-  KUser user( getuid() );
-  m_user_id->setCurrentItem( QString( "%1 (%2)" ).arg( user.loginName() ).arg( user.uid() ) );
-  KUserGroup group( getgid() );
-  m_group_id->setCurrentItem( QString( "%1 (%2)" ).arg( group.name() ).arg( group.gid() ) );
-  m_kerberos->setChecked( false );
+  KUser user(KUser::UseRealUserID);
+  m_user_id->setCurrentItem(QString("%1 (%2)").arg(user.loginName()).arg(user.uid()));
+  KUserGroup group(KUser::UseRealUserID);
+  m_group_id->setCurrentItem(QString("%1 (%2)").arg(group.name()).arg(group.gid()));
+  m_kerberos->setChecked(false);
   m_mac_address->clear();
-  m_send_before_scan->setChecked( false );
-  m_send_before_mount->setChecked( false );
+  m_send_before_scan->setChecked(false);
+  m_send_before_mount->setChecked(false);
   
   // Disable widgets
-  m_general_editors->setEnabled( false );
-  m_tab_widget->setEnabled( false );
+  m_general_editors->setEnabled(false);
+  m_tab_widget->setEnabled(false);
 }
 #else
 //
@@ -1592,80 +1519,80 @@ void Smb4KCustomOptionsPage::commitChanges()
 //
 // FreeBSD and NetBSD
 //
-oid Smb4KCustomOptionsPage::commitChanges()
+void Smb4KCustomOptionsPage::commitChanges()
 {
-  if ( m_current_options && !m_options_list.isEmpty() &&
-       QString::compare( m_current_options->unc(), m_unc_address->text() ) == 0 )
+  if (m_current_options && !m_options_list.isEmpty() &&
+      QString::compare(m_current_options->unc(), m_unc_address->text()) == 0)
   {
-    Smb4KCustomOptions *options = findOptions( m_current_options->url().prettyUrl() );
+    Smb4KCustomOptions *options = findOptions(m_current_options->url().prettyUrl());
     
-    QHostAddress addr( m_ip_address->text() );
+    QHostAddress addr(m_ip_address->text());
     
-    if ( addr.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol )
+    if (addr.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol)
     {
-      options->setIP( m_ip_address->text() );
+      options->setIP(m_ip_address->text());
     }
     else
     {
       // Do nothing
     }
     
-    if ( m_remount_share->isChecked() )
+    if (m_remount_share->isChecked())
     {
-      options->setRemount( Smb4KCustomOptions::RemountAlways );
+      options->setRemount(Smb4KCustomOptions::RemountAlways);
     }
     else
     {
-      options->setRemount( Smb4KCustomOptions::RemountNever );
+      options->setRemount(Smb4KCustomOptions::RemountNever);
     }
     
-    options->setSMBPort( m_smb_port->value() );
-    options->setProtocolHint( (Smb4KCustomOptions::ProtocolHint)m_protocol_hint->itemData( m_protocol_hint->currentIndex() ).toInt() );
-    options->setUID( m_user_id->itemData( m_user_id->currentIndex() ).toInt() );
-    options->setGID( m_group_id->itemData( m_group_id->currentIndex() ).toInt() );
+    options->setSMBPort(m_smb_port->value());
+    options->setProtocolHint((Smb4KCustomOptions::ProtocolHint)m_protocol_hint->itemData(m_protocol_hint->currentIndex()).toInt());
+    options->setUID(m_user_id->itemData(m_user_id->currentIndex()).toInt());
+    options->setGID(m_group_id->itemData(m_group_id->currentIndex()).toInt());
 
-    if ( m_kerberos->isChecked() )
+    if (m_kerberos->isChecked())
     {
-      options->setUseKerberos( Smb4KCustomOptions::UseKerberos );
+      options->setUseKerberos(Smb4KCustomOptions::UseKerberos);
     }
     else
     {
-      options->setUseKerberos( Smb4KCustomOptions::NoKerberos );
+      options->setUseKerberos(Smb4KCustomOptions::NoKerberos);
     }
     
-    QRegExp exp( "..\\:..\\:..\\:..\\:..\\:.." );
+    QRegExp exp("..\\:..\\:..\\:..\\:..\\:..");
     
-    if ( exp.exactMatch( m_mac_address->text() ) )
+    if (exp.exactMatch(m_mac_address->text()))
     {
-      options->setMACAddress( m_mac_address->text() );
+      options->setMACAddress(m_mac_address->text());
     }
     else
     {
       // Do nothing
     }
     
-    options->setWOLSendBeforeNetworkScan( m_send_before_scan->isChecked() );
-    options->setWOLSendBeforeMount( m_send_before_mount->isChecked() );
+    options->setWOLSendBeforeNetworkScan(m_send_before_scan->isChecked());
+    options->setWOLSendBeforeMount(m_send_before_mount->isChecked());
     
     // In case of a host, propagate the changes to its shares.
-    if ( options->type() == Host )
+    if (options->type() == Host)
     {
-      for ( int i = 0; i < m_options_list.size(); ++i )
+      for (int i = 0; i < m_options_list.size(); ++i)
       {
-        if ( m_options_list.at( i )->type() == Share &&
-             QString::compare( m_options_list.at( i )->hostName() , options->hostName(), Qt::CaseInsensitive ) == 0 &&
-             QString::compare( m_options_list.at( i )->workgroupName() , options->workgroupName(), Qt::CaseInsensitive ) == 0 )
+        if (m_options_list.at(i)->type() == Share &&
+            QString::compare(m_options_list.at(i)->hostName() , options->hostName(), Qt::CaseInsensitive) == 0 &&
+            QString::compare(m_options_list.at(i)->workgroupName() , options->workgroupName(), Qt::CaseInsensitive) == 0)
         {
           // Propagate the options to the shared resources of the host.
           // They overwrite the ones defined for the shares.
-          m_options_list[i]->setSMBPort( options->smbPort() );
-          m_options_list[i]->setProtocolHint( options->protocolHint() );
-          m_options_list[i]->setUID( options->uid() );
-          m_options_list[i]->setGID( options->gid() );
-          m_options_list[i]->setUseKerberos( options->useKerberos() );
-          m_options_list[i]->setMACAddress( options->macAddress() );
-          m_options_list[i]->setWOLSendBeforeNetworkScan( options->wolSendBeforeNetworkScan() );
-          m_options_list[i]->setWOLSendBeforeMount( options->wolSendBeforeMount() );
+          m_options_list[i]->setSMBPort(options->smbPort());
+          m_options_list[i]->setProtocolHint(options->protocolHint());
+          m_options_list[i]->setUID(options->uid());
+          m_options_list[i]->setGID(options->gid());
+          m_options_list[i]->setUseKerberos(options->useKerberos());
+          m_options_list[i]->setMACAddress(options->macAddress());
+          m_options_list[i]->setWOLSendBeforeNetworkScan(options->wolSendBeforeNetworkScan());
+          m_options_list[i]->setWOLSendBeforeMount(options->wolSendBeforeMount());
         }
         else
         {

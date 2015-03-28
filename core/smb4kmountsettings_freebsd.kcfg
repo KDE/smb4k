@@ -9,7 +9,7 @@
   <group name="Samba">
     <entry name="ClientCharset" type="Enum">
       <label>Client character set:</label>
-      <whatsthis>This is the character set that is used by the client side (i.e. your side) either to convert local path names to and from Unicode (CIFS, Linux) or for codepage to charset translations (SMBFS, FreeBSD). If you keep the default setting, Smb4K will try to automatically determine the charset by looking up the "unix charset" option in the smb.conf.</whatsthis>
+      <whatsthis>This is the character set that is used by the client side (i.e. your side) for codepage to charset translations. If you keep the default setting, Smb4K will try to automatically determine the charset by looking up the "unix charset" option in the smb.conf.</whatsthis>
       <choices>
         <choice name="default_charset">
           <label>default</label>
@@ -191,22 +191,22 @@
     </entry>
     <entry name="UserID" type="String">
       <label>User ID:</label>
-      <whatsthis>This is the user ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS filesystem under Linux and the remote server supports the CIFS Unix Extensions, this setting will be ignored unless the assignment of the user ID is forced.</whatsthis>
+      <whatsthis>This is the user ID (a number) that the files and directories of the mounted share will have.</whatsthis>
       <default code="true">QString("%1").arg(KUser(KUser::UseRealUserID).uid())</default>
     </entry>
     <entry name="GroupID" type="String">
       <label>Group ID:</label>
-      <whatsthis>This is the group ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS filesystem under Linux and the remote server supports the CIFS Unix Extensions, this setting will be ignored unless the assignment of the group ID is forced.</whatsthis>
+      <whatsthis>This is the group ID (a number) that the files and directories of the mounted share will have.</whatsthis>
       <default code="true">QString("%1").arg(KUserGroup(KUser::UseRealUserID).gid())</default>
     </entry>
     <entry name="FileMask" type="String">
       <label>File mask:</label>
-      <whatsthis>This is the mask that will be used for creating files. It must be defined in octal. In case the CIFS file system is used, this setting only takes effect if the server does not support the CIFS Unix Extensions.</whatsthis>
+      <whatsthis>This is the mask that will be used for creating files. It must be defined in octal.</whatsthis>
       <default>0755</default>
     </entry>
     <entry name="DirectoryMask" type="String">
       <label>Directory mask:</label>
-      <whatsthis>This is the mask that will be used for creating directories. It must be defined in octal. In case the CIFS file system is used, this setting only takes effect if the server does not support the CIFS Unix Extensions.</whatsthis>
+      <whatsthis>This is the mask that will be used for creating directories. It must be defined in octal.</whatsthis>
       <default>0755</default>
     </entry>
   </group>

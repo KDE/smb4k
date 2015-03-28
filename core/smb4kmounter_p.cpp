@@ -771,16 +771,6 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   // Set some settings for the share.
   share->setFileSystem(Smb4KShare::SMBFS);
   
-  if (options)
-  {
-    share->setPort(options->fileSystemPort() != Smb4KSettings::remoteFileSystemPort() ?
-                   options->fileSystemPort() : Smb4KSettings::remoteFileSystemPort());
-  }
-  else
-  {
-    share->setPort(Smb4KSettings::remoteFileSystemPort());
-  }
-  
   // Compile the list of arguments.
   QStringList args_list;
   
@@ -815,7 +805,7 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   else
   {
     args_list << "-u";
-    args_list << QString("%1").arg((K_UID)Smb4KSettings::userID().toInt());
+    args_list << QString("%1").arg((K_UID)Smb4KMountSettings::userID().toInt());
   }
   
   // GID
@@ -827,36 +817,36 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   else
   {
     args_list << "-g";
-    args_list << QString("%1").arg((K_GID)Smb4KSettings::groupID().toInt());
+    args_list << QString("%1").arg((K_GID)Smb4KMountSettings::groupID().toInt());
   }
   
   // Character sets for the client and server
   QString client_charset, server_charset;
 
-  switch (Smb4KSettings::clientCharset())
+  switch (Smb4KMountSettings::clientCharset())
   {
-    case Smb4KSettings::EnumClientCharset::default_charset:
+    case Smb4KMountSettings::EnumClientCharset::default_charset:
     {
       client_charset = global_options["unix charset"].toLower(); // maybe empty
       break;
     }
     default:
     {
-      client_charset = Smb4KSettings::self()->clientCharsetItem()->choices().value(Smb4KSettings::clientCharset()).label;
+      client_charset = Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::clientCharset()).label;
       break;
     }
   }
 
-  switch (Smb4KSettings::serverCodepage())
+  switch (Smb4KMountSettings::serverCodepage())
   {
-    case Smb4KSettings::EnumServerCodepage::default_codepage:
+    case Smb4KMountSettings::EnumServerCodepage::default_codepage:
     {
       server_charset = global_options["dos charset"].toLower(); // maybe empty
       break;
     }
     default:
     {
-      server_charset = Smb4KSettings::self()->serverCodepageItem()->choices().value(Smb4KSettings::serverCodepage()).label;
+      server_charset = Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::serverCodepage()).label;
       break;
     }
   }
@@ -872,10 +862,10 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   }
   
   // File mask
-  if (!Smb4KSettings::fileMask().isEmpty())
+  if (!Smb4KMountSettings::fileMask().isEmpty())
   {
     args_list << "-f";
-    args_list << QString("%1").arg(Smb4KSettings::fileMask());
+    args_list << QString("%1").arg(Smb4KMountSettings::fileMask());
   }
   else
   {
@@ -883,10 +873,10 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   }
 
   // Directory mask
-  if (!Smb4KSettings::directoryMask().isEmpty())
+  if (!Smb4KMountSettings::directoryMask().isEmpty())
   {
     args_list << "-d";
-    args_list << QString("%1").arg(Smb4KSettings::directoryMask());
+    args_list << QString("%1").arg(Smb4KMountSettings::directoryMask());
   }
   else
   {
