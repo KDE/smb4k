@@ -180,6 +180,7 @@ Comment[zh_TW]=警告已顯示給使用者
 
 [Context/Error]
 Name=Error
+Name[ast]=Fallu
 Name[bs]=Greška
 Name[ca]=Error
 Name[ca@valencia]=Error
