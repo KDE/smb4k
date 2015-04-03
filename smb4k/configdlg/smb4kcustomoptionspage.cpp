@@ -1617,8 +1617,9 @@ void Smb4KCustomOptionsPage::commitChanges()
 //
 // Dummy
 //
-oid Smb4KCustomOptionsPage::commitChanges()
+void Smb4KCustomOptionsPage::commitChanges()
 {
+  qWarning() << "Smb4KCustomOptionsPage::commitChanges() not implemented!";
 }
 #endif
 

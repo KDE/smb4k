@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+                          http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <include>KUser</include>
+  <include>QString</include>
+  <kcfgfile name="smb4krc" />
+  
+  <group name="Samba">
+    <entry name="UserID" type="String">
+      <label>User ID:</label>
+      <whatsthis>This is the user ID (a number) that the files and directories of the mounted share will have.</whatsthis>
+      <default code="true">QString("%1").arg(KUser(KUser::UseRealUserID).uid())</default>
+    </entry>
+    <entry name="GroupID" type="String">
+      <label>Group ID:</label>
+      <whatsthis>This is the group ID (a number) that the files and directories of the mounted share will have.</whatsthis>
+      <default code="true">QString("%1").arg(KUserGroup(KUser::UseRealUserID).gid())</default>
+    </entry>
+    <entry name="FileMask" type="String">
+      <label>File mask:</label>
+      <whatsthis>This is the mask that will be used for creating files. It must be defined in octal.</whatsthis>
+      <!-- NOTE: The manual page under OpenIndiana Hipster 2015 says it must be a _triplet_! -->
+      <default>755</default>
+    </entry>
+    <entry name="DirectoryMask" type="String">
+      <label>Directory mask:</label>
+      <whatsthis>This is the mask that will be used for creating directories. It must be defined in octal.</whatsthis>
+      <!-- NOTE: The manual page under OpenIndiana Hipster 2015 says it must be a _triplet_! -->
+      <default>755</default>
+    </entry>
+    <entry name="WriteAccess" type="Enum">
+      <label>Write access:</label>
+      <whatsthis>Here you can choose if the shares should be mounted in read-write or read-only mode.</whatsthis>
+      <choices>
+        <choice name="ReadWrite">
+          <label>read-write</label>
+        </choice>
+        <choice name="ReadOnly">
+          <label>read-only</label>
+        </choice>
+      </choices>
+      <default>ReadWrite</default>
+    </entry>
+    <entry name="ProgramExecution" type="Bool">
+      <label>Allow executing programs in the file system.</label>
+      <whatsthis>Allow or disallow executing programs in the file system. Allow or disallow mmap(2) with PROT_EXEC for files within the file system.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="NonBlockingMandatoryLocking" type="Bool">
+      <label>Allow non-blocking mandatory locking semantics</label>
+      <whatsthis>Allow or disallow non-blocking mandatory locking semantics on this file system. If the file system is mounted with this option, then applications can 
+        use the fcntl(2) interface to place non-blocking mandatory locks on files and the system enforces those semantics. If you enable this option, it can cause
+        standards conformant applications to see unexpected errors.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="SuidExecution" type="Bool">
+      <label>Allow setuid or setgid execution.</label>
+      <whatsthis>Allow or disallow setuid or setgid execution. This option also allows or disallows opening any device-special entries that appear within the filesystem.</whatsthis>
+      <default>true</default>
+    </entry>
+  </group>  
+</kcfg>
