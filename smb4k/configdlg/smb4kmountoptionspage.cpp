@@ -661,10 +661,182 @@ void Smb4KMountOptionsPage::setupWidget()
   common_layout->addWidget(codepage_label, 5, 0, 0);
   common_layout->addWidget(codepage, 5, 1, 0);
 
-
   mount_layout->addWidget(common_options);
   mount_layout->addStretch(100);
 
+  //
+  // Connections
+  //
+  connect( user_menu,        SIGNAL(triggered(QAction*)),
+           this,             SLOT(slotNewUserTriggered(QAction*)) );
+  connect( group_menu,       SIGNAL(triggered(QAction*)),
+           this,             SLOT(slotNewGroupTriggered(QAction*)) );
+}
+#elif defined(Q_OS_SOLARIS)
+//
+// Solaris/illumos
+//
+void Smb4KMountOptionsPage::setupWidget()
+{
+  QVBoxLayout *mount_layout = new QVBoxLayout(this);
+  mount_layout->setSpacing(5);
+  mount_layout->setMargin(0);
+
+  // Common Options
+  QGroupBox *common_options = new QGroupBox(i18n("Common Options"), this);
+
+  QGridLayout *common_layout = new QGridLayout(common_options);
+  common_layout->setSpacing(5);
+
+  QLabel *user_id_label = new QLabel(Smb4KMountSettings::self()->userIDItem()->label(), common_options);
+
+  QWidget *user_widget = new QWidget(common_options);
+
+  QGridLayout *user_layout = new QGridLayout(user_widget);
+  user_layout->setSpacing(5);
+  user_layout->setMargin(0);
+
+  KLineEdit *user_id = new KLineEdit(user_widget);
+  user_id->setObjectName("kcfg_UserID");
+  user_id->setAlignment(Qt::AlignRight);
+  user_id->setReadOnly(true);
+
+  QToolButton *user_chooser = new QToolButton(user_widget);
+  user_chooser->setIcon(KIcon("edit-find-user"));
+  user_chooser->setToolTip(i18n("Choose a different user"));
+  user_chooser->setPopupMode(QToolButton::InstantPopup);
+
+  user_id_label->setBuddy(user_chooser);
+  
+  QMenu *user_menu = new QMenu(user_chooser);
+  user_chooser->setMenu(user_menu);
+
+  QList<KUser> user_list = KUser::allUsers();
+  QMap<QString,QString> users;
+
+  for (int i = 0; i < user_list.size(); ++i)
+  {
+    users.insert(QString("%1 (%2)").arg(user_list.at(i).loginName()).arg(user_list.at(i).uid()),
+                 QString("%1").arg(user_list.at(i).uid()));
+  }
+
+  QMap<QString,QString>::const_iterator u_it = users.constBegin();
+
+  while (u_it != users.constEnd())
+  {
+    QAction *user_action = user_menu->addAction(u_it.key());
+    user_action->setData(u_it.value());
+    ++u_it;
+  }
+
+  user_layout->addWidget(user_id, 0, 0, 0);
+  user_layout->addWidget(user_chooser, 0, 1, Qt::AlignCenter);
+
+  QLabel *group_id_label = new QLabel(Smb4KMountSettings::self()->groupIDItem()->label(), common_options);
+
+  QWidget *group_widget = new QWidget(common_options);
+
+  QGridLayout *group_layout = new QGridLayout(group_widget);
+  group_layout->setSpacing(5);
+  group_layout->setMargin(0);
+
+  KLineEdit *group_id = new KLineEdit(group_widget);
+  group_id->setObjectName("kcfg_GroupID");
+  group_id->setAlignment(Qt::AlignRight);
+  group_id->setReadOnly(true);
+  
+  QToolButton *group_chooser = new QToolButton(group_widget);
+  group_chooser->setIcon(KIcon("edit-find-user"));
+  group_chooser->setToolTip(i18n("Choose a different group"));
+  group_chooser->setPopupMode(QToolButton::InstantPopup);
+
+  group_id_label->setBuddy(group_chooser);
+
+  QMenu *group_menu = new QMenu(group_chooser);
+  group_chooser->setMenu(group_menu);
+
+  QList<KUserGroup> group_list = KUserGroup::allGroups();
+  QMap<QString,QString> groups;
+
+  for (int i = 0; i < group_list.size(); ++i)
+  {
+    groups.insert(QString("%1 (%2)").arg(group_list.at(i).name()).arg(group_list.at(i).gid()),
+                  QString("%1").arg(group_list.at(i).gid()));
+  }
+
+  QMap<QString,QString>::const_iterator g_it = groups.constBegin();
+
+  while (g_it != groups.constEnd())
+  {
+    QAction *group_action = group_menu->addAction(g_it.key());
+    group_action->setData(g_it.value());
+    ++g_it;
+  }
+
+  group_layout->addWidget(group_id, 0, 0, 0);
+  group_layout->addWidget(group_chooser, 0, 1, Qt::AlignCenter);
+
+  QLabel *fmask_label = new QLabel(Smb4KMountSettings::self()->fileMaskItem()->label(), common_options);
+
+  KLineEdit *fmask = new KLineEdit(common_options);
+  fmask->setObjectName("kcfg_FileMask");
+  fmask->setAlignment(Qt::AlignRight);
+
+  fmask_label->setBuddy(fmask);
+
+  QLabel *dmask_label = new QLabel(Smb4KMountSettings::self()->directoryMaskItem()->label(), common_options);
+
+  KLineEdit *dmask = new KLineEdit(common_options);
+  dmask->setObjectName("kcfg_DirectoryMask");
+  dmask->setAlignment(Qt::AlignRight);
+
+  dmask_label->setBuddy(dmask);
+  
+  QLabel *write_access_label = new QLabel(Smb4KMountSettings::self()->writeAccessItem()->label(), common_options);
+
+  KComboBox *write_access      = new KComboBox(common_options);
+  write_access->setObjectName("kcfg_WriteAccess");
+  write_access->insertItem(Smb4KMountSettings::EnumWriteAccess::ReadWrite,
+                           Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadWrite).label);
+  write_access->insertItem(Smb4KMountSettings::EnumWriteAccess::ReadOnly,
+                           Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadOnly).label);
+
+  write_access_label->setBuddy(write_access);
+  
+  common_layout->addWidget(user_id_label, 0, 0, 0);
+  common_layout->addWidget(user_widget, 0, 1, 0);
+  common_layout->addWidget(group_id_label, 1, 0, 0);
+  common_layout->addWidget(group_widget, 1, 1, 0);
+  common_layout->addWidget(fmask_label, 2, 0, 0);
+  common_layout->addWidget(fmask, 2, 1, 0);
+  common_layout->addWidget(dmask_label, 3, 0, 0);
+  common_layout->addWidget(dmask, 3, 1, 0);
+  common_layout->addWidget(write_access_label, 4, 0, 0);
+  common_layout->addWidget(write_access, 4, 1, 0);
+  
+  // Advanced options
+  QGroupBox *advanced_options = new QGroupBox(i18n("Advanced Options"), this);
+
+  QVBoxLayout *advanced_layout = new QVBoxLayout(advanced_options);
+  advanced_layout->setSpacing(5);
+  
+  QCheckBox *procexec = new QCheckBox(Smb4KMountSettings::self()->programExecutionItem()->label(), advanced_options);
+  procexec->setObjectName("kcfg_ProgramExecution");
+  
+  QCheckBox *nonblock = new QCheckBox(Smb4KMountSettings::self()->nonBlockingMandatoryLockingItem()->label(), advanced_options);
+  nonblock->setObjectName("kcfg_NonBlockingMandatoryLocking");
+  
+  QCheckBox *suidexec = new QCheckBox(Smb4KMountSettings::self()->suidExecutionItem()->label(), advanced_options);
+  suidexec->setObjectName("kcfg_SuidExecution");
+  
+  advanced_layout->addWidget(procexec, 0);
+  advanced_layout->addWidget(nonblock, 0);
+  advanced_layout->addWidget(suidexec, 0);
+  
+  mount_layout->addWidget(common_options);
+  mount_layout->addWidget(advanced_options);
+  mount_layout->addStretch(100);
+  
   //
   // Connections
   //

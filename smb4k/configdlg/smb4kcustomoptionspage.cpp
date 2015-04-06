@@ -34,6 +34,8 @@
 #include "core/smb4kmountsettings_linux.h"
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
 #include "core/smb4kmountsettings_freebsd.h"
+#elif defined(Q_OS_SOLARIS)
+#include "core/smb4kmountsettings_solaris.h"
 #endif
 
 
@@ -640,6 +642,274 @@ void Smb4KCustomOptionsPage::setupWidget()
   connect(m_mac_address,    SIGNAL(textChanged(QString)),
           this,             SLOT(slotEnableWOLFeatures(QString)));
 }
+#elif defined(Q_OS_SOLARIS)
+void Smb4KCustomOptionsPage::setupWidget()
+{
+  QHBoxLayout *custom_layout = new QHBoxLayout(this);
+  custom_layout->setSpacing(5);
+  custom_layout->setMargin(0);
+  
+  //
+  // The list widget
+  //  
+  m_custom_options = new KListWidget(this);
+  m_custom_options->setObjectName("CustomOptionsList");
+  m_custom_options->viewport()->installEventFilter(this);
+  m_custom_options->setSelectionMode(KListWidget::SingleSelection);
+  m_custom_options->setContextMenuPolicy( Qt::CustomContextMenu );
+
+  m_menu = new KActionMenu(m_custom_options);
+
+  KAction *edit_action = new KAction(KIcon("edit-rename"), i18n("Edit"), m_collection);
+  edit_action->setEnabled(false);
+
+  KAction *remove_action = new KAction(KIcon("edit-delete"), i18n("Remove"), m_collection);
+  remove_action->setEnabled(false);
+  
+  KAction *clear_action = new KAction(KIcon("edit-clear-list"), i18n("Clear List"), m_collection);
+  clear_action->setEnabled(false);
+  
+  KAction *undo_action = new KAction(KIcon("edit-undo"), i18n("Undo"), m_collection);
+  undo_action->setEnabled(false);
+  
+  m_collection->addAction("edit_action", edit_action);
+  m_collection->addAction("remove_action", remove_action);
+  m_collection->addAction("clear_action", clear_action);
+  m_collection->addAction("undo_action", undo_action);
+
+  m_menu->addAction(edit_action);
+  m_menu->addAction(remove_action);
+  m_menu->addAction(clear_action);
+  m_menu->addAction(undo_action);
+  
+  //
+  // The editors
+  //  
+  QWidget *editors = new QWidget(this);
+  
+  QVBoxLayout *editors_layout = new QVBoxLayout(editors);
+  editors_layout->setSpacing(5);
+  editors_layout->setMargin(0);
+  
+  m_general_editors = new QGroupBox(i18n("General"), editors);
+  
+  QGridLayout *general_editor_layout = new QGridLayout(m_general_editors);
+  general_editor_layout->setSpacing(5);
+  general_editor_layout->setContentsMargins(general_editor_layout->margin(),
+                                            general_editor_layout->margin() + 10,
+                                            general_editor_layout->margin(),
+                                            general_editor_layout->margin());
+
+  QLabel *unc_label = new QLabel(i18n("UNC Address:"), m_general_editors);
+  
+  m_unc_address = new KLineEdit(m_general_editors);
+  m_unc_address->setReadOnly(true);
+
+  unc_label->setBuddy(m_unc_address);
+  
+  QLabel *ip_label = new QLabel(i18n("IP Address:"), m_general_editors);
+  
+  m_ip_address = new KLineEdit(m_general_editors);
+  m_ip_address->setClearButtonShown(true);
+  
+  ip_label->setBuddy(m_ip_address);
+  
+  m_remount_share = new QCheckBox(i18n("Always remount this share"), m_general_editors);
+  
+  general_editor_layout->addWidget(unc_label, 0, 0, 0);
+  general_editor_layout->addWidget(m_unc_address, 0, 1, 0);
+  general_editor_layout->addWidget(ip_label, 1, 0, 0);
+  general_editor_layout->addWidget(m_ip_address, 1, 1, 0);
+  general_editor_layout->addWidget(m_remount_share, 2, 0, 1, 2, 0);
+  
+  m_tab_widget = new KTabWidget(editors);
+  
+  QWidget *samba_tab = new QWidget(m_tab_widget);
+  
+  QVBoxLayout *samba_tab_layout = new QVBoxLayout(samba_tab);
+  samba_tab_layout->setSpacing(5);
+  samba_tab_layout->setMargin(0);
+  
+  QGroupBox *samba_editors = new QGroupBox(samba_tab);
+  samba_editors->setFlat(true);
+  
+  QGridLayout *samba_editor_layout = new QGridLayout(samba_editors);
+  samba_editor_layout->setSpacing(5);
+  samba_editor_layout->setContentsMargins(samba_editor_layout->margin(),
+                                          samba_editor_layout->margin() + 10,
+                                          samba_editor_layout->margin(),
+                                          samba_editor_layout->margin() );
+  
+  QLabel *smb_port_label = new QLabel("SMB Port:", samba_editors);
+  
+  m_smb_port = new KIntNumInput(samba_editors);
+  m_smb_port->setRange(Smb4KSettings::self()->remoteSMBPortItem()->minValue().toInt(),
+                       Smb4KSettings::self()->remoteSMBPortItem()->maxValue().toInt());
+  m_smb_port->setSliderEnabled(true);
+
+  smb_port_label->setBuddy(m_smb_port);
+
+  QLabel *rw_label = new QLabel(i18n("Write Access:"), samba_editors);
+  
+  m_write_access = new KComboBox(samba_editors);
+  m_write_access->insertItem(0, Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadWrite).label, 
+                             QVariant::fromValue<int>(Smb4KCustomOptions::ReadWrite));
+  m_write_access->insertItem(1, Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadOnly).label, 
+                             QVariant::fromValue<int>(Smb4KCustomOptions::ReadOnly));
+
+  rw_label->setBuddy(m_write_access);
+
+  QLabel *protocol_label = new QLabel(i18n("Protocol Hint:"), samba_editors);
+  
+  m_protocol_hint = new KComboBox(samba_editors);
+  m_protocol_hint->insertItem(0, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::Automatic).label,
+                              QVariant::fromValue<int>(Smb4KCustomOptions::Automatic));
+  m_protocol_hint->insertItem(1, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::RPC).label,
+                              QVariant::fromValue<int>(Smb4KCustomOptions::RPC));
+  m_protocol_hint->insertItem(2, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::RAP).label,
+                              QVariant::fromValue<int>(Smb4KCustomOptions::RAP));
+  m_protocol_hint->insertItem(3, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::ADS).label,
+                              QVariant::fromValue<int>(Smb4KCustomOptions::ADS));
+
+  protocol_label->setBuddy(m_protocol_hint);
+  
+  QLabel *uid_label = new QLabel(i18n("User ID:"), samba_editors);
+  m_user_id = new KComboBox(samba_editors);
+  
+  QList<KUser> all_users = KUser::allUsers();
+  
+  for (int i = 0; i < all_users.size(); ++i)
+  {
+    KUser user = all_users.at(i);
+    m_user_id->insertItem(i, QString("%1 (%2)").arg(user.loginName()).arg(user.uid()), QVariant::fromValue<K_UID>(user.uid()));
+  }
+
+  uid_label->setBuddy(m_user_id);
+  
+  QLabel *gid_label = new QLabel(i18n("Group ID:"), samba_editors);
+  m_group_id = new KComboBox(samba_editors);
+  
+  QList<KUserGroup> all_groups = KUserGroup::allGroups();
+  
+  for (int i = 0; i < all_groups.size(); ++i)
+  {
+    KUserGroup group = all_groups.at(i);
+    m_group_id->insertItem( i, QString("%1 (%2)").arg(group.name()).arg(group.gid()), QVariant::fromValue<K_GID>(group.gid()));
+  }
+
+  gid_label->setBuddy(m_group_id);
+  
+  m_kerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), samba_editors);
+
+  samba_editor_layout->addWidget(smb_port_label, 0, 0, 0);
+  samba_editor_layout->addWidget(m_smb_port, 0, 1, 0);
+  samba_editor_layout->addWidget(rw_label, 1, 0, 0);
+  samba_editor_layout->addWidget(m_write_access, 1, 1, 0);
+  samba_editor_layout->addWidget(protocol_label, 2, 0, 0);
+  samba_editor_layout->addWidget(m_protocol_hint, 2, 1, 0);
+  samba_editor_layout->addWidget(uid_label, 3, 0, 0);
+  samba_editor_layout->addWidget(m_user_id, 3, 1, 0);
+  samba_editor_layout->addWidget(gid_label, 4, 0, 0);
+  samba_editor_layout->addWidget(m_group_id, 4, 1, 0);
+  samba_editor_layout->addWidget(m_kerberos, 5, 0, 1, 2, 0);
+  
+  samba_tab_layout->addWidget(samba_editors);
+  samba_tab_layout->addStretch(100);
+
+  QWidget *wol_tab = new QWidget(m_tab_widget);
+  
+  QVBoxLayout *wol_tab_layout = new QVBoxLayout(wol_tab);
+  wol_tab_layout->setSpacing(5);
+  wol_tab_layout->setMargin(0);  
+  
+  QGroupBox *mac_editors = new QGroupBox(wol_tab);
+  mac_editors->setFlat(true);
+  
+  QGridLayout *mac_editor_layout = new QGridLayout(mac_editors);
+  mac_editor_layout->setSpacing(5);
+  mac_editor_layout->setContentsMargins(mac_editor_layout->margin(),
+                                        mac_editor_layout->margin() + 10,
+                                        mac_editor_layout->margin(),
+                                        mac_editor_layout->margin());
+  
+  QLabel *mac_label = new QLabel(i18n("MAC address:"), mac_editors);
+  
+  m_mac_address = new KLineEdit(mac_editors);
+  m_mac_address->setClearButtonShown(true);
+  
+  mac_label->setBuddy(m_mac_address);
+  
+  // If you change the texts here please also alter them in the custom 
+  // options dialog.
+  m_send_before_scan = new QCheckBox(i18n("Send magic package before scanning the network neighborhood"), mac_editors);
+  m_send_before_scan->setEnabled(false);
+  m_send_before_mount = new QCheckBox(i18n("Send magic package before mounting a share"), mac_editors);
+  m_send_before_mount->setEnabled(false);
+  
+  mac_editor_layout->addWidget(mac_label, 0, 0, 0);
+  mac_editor_layout->addWidget(m_mac_address, 0, 1, 0);
+  mac_editor_layout->addWidget(m_send_before_scan, 1, 0, 1, 2, 0);
+  mac_editor_layout->addWidget(m_send_before_mount, 2, 0, 1, 2, 0);
+  
+  wol_tab_layout->addWidget(mac_editors);
+  wol_tab_layout->addStretch(100);
+  
+  (void)m_tab_widget->insertTab(SambaTab, samba_tab, i18n("Samba"));
+  (void)m_tab_widget->insertTab(WolTab, wol_tab, i18n("Wake-On-LAN"));
+  
+  editors_layout->addWidget(m_general_editors);
+  editors_layout->addWidget(m_tab_widget);
+                                 
+  custom_layout->addWidget(m_custom_options);
+  custom_layout->addWidget(editors);
+
+  m_general_editors->setEnabled(false);
+  m_tab_widget->setEnabled(false);
+
+  clearEditors();
+  
+  //
+  // Connections
+  //
+  connect(m_custom_options, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
+          this,             SLOT(slotEditCustomItem(QListWidgetItem*)));
+  connect(m_custom_options, SIGNAL(itemSelectionChanged()),
+          this,             SLOT(slotItemSelectionChanged()));
+  connect(m_custom_options, SIGNAL(customContextMenuRequested(QPoint)),
+          this,             SLOT(slotCustomContextMenuRequested(QPoint)));
+  connect(edit_action,      SIGNAL(triggered(bool)),
+          this,             SLOT(slotEditActionTriggered(bool)));
+  connect(remove_action,    SIGNAL(triggered(bool)),
+          this,             SLOT(slotRemoveActionTriggered(bool)));
+  connect(clear_action,     SIGNAL(triggered(bool)),
+          this,             SLOT(slotClearActionTriggered(bool)));
+  connect(undo_action,      SIGNAL(triggered(bool)),
+          this,             SLOT(slotUndoActionTriggered(bool)));
+  connect(m_ip_address,     SIGNAL(textChanged(QString)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_remount_share,  SIGNAL(toggled(bool)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_smb_port,       SIGNAL(valueChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_write_access,   SIGNAL(currentIndexChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_protocol_hint,  SIGNAL(currentIndexChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_user_id,        SIGNAL(currentIndexChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_group_id,       SIGNAL(currentIndexChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_kerberos,       SIGNAL(toggled(bool)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_mac_address,    SIGNAL(textChanged(QString)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_send_before_scan,   SIGNAL(toggled(bool)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_send_before_mount,  SIGNAL(toggled(bool)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_mac_address,    SIGNAL(textChanged(QString)),
+          this,             SLOT(slotEnableWOLFeatures(QString)));  
+}
 #else
 //
 // Dummy
@@ -654,13 +924,13 @@ void Smb4KCustomOptionsPage::setupWidget()
 void Smb4KCustomOptionsPage::insertCustomOptions(const QList<Smb4KCustomOptions*> &list)
 {
   // Insert those options that are not there.
-  for ( int i = 0; i < list.size(); ++i )
+  for (int i = 0; i < list.size(); ++i)
   {
-    Smb4KCustomOptions *options = findOptions( list.at( i )->url().prettyUrl() );
+    Smb4KCustomOptions *options = findOptions(list.at(i)->url().prettyUrl());
     
-    if ( !options )
+    if (!options)
     {
-      m_options_list << new Smb4KCustomOptions( *list[i] );
+      m_options_list << new Smb4KCustomOptions(*list[i]);
     }
     else
     {
@@ -669,40 +939,47 @@ void Smb4KCustomOptionsPage::insertCustomOptions(const QList<Smb4KCustomOptions*
   }
   
   // Clear the list widget before (re)displaying the list
-  while ( m_custom_options->count() != 0 )
+  while (m_custom_options->count() != 0)
   {
-    delete m_custom_options->item( 0 );
+    delete m_custom_options->item(0);
   }
   
   // Display the list.
-  for ( int i = 0; i < m_options_list.size(); ++i )
+  if (m_custom_options)
   {
-    switch ( m_options_list.at( i )->type() )
+    for (int i = 0; i < m_options_list.size(); ++i)
     {
-      case Host:
+      switch (m_options_list.at(i)->type())
       {
-        QListWidgetItem *item = new QListWidgetItem( KIcon( "network-server" ), 
-                                    m_options_list.at( i )->unc(),
-                                    m_custom_options, Host );
-        item->setData( Qt::UserRole, m_options_list.at( i )->url().prettyUrl() );
-        break;
-      }
-      case Share:
-      {
-        QListWidgetItem *item = new QListWidgetItem( KIcon( "folder-remote" ), 
-                                    m_options_list.at( i )->unc(),
-                                    m_custom_options, Share );
-        item->setData( Qt::UserRole, m_options_list.at( i )->url().prettyUrl() );
-        break;
-      }
-      default:
-      {
-        break;
+        case Host:
+        {
+          QListWidgetItem *item = new QListWidgetItem(KIcon("network-server"), 
+                                      m_options_list.at(i)->unc(),
+                                      m_custom_options, Host);
+          item->setData(Qt::UserRole, m_options_list.at(i)->url().prettyUrl());
+          break;
+        }
+        case Share:
+        {
+          QListWidgetItem *item = new QListWidgetItem(KIcon("folder-remote"), 
+                                      m_options_list.at(i)->unc(),
+                                      m_custom_options, Share);
+          item->setData(Qt::UserRole, m_options_list.at(i)->url().prettyUrl());
+          break;
+        }
+        default:
+        {
+          break;
+        }
       }
     }
-  }
 
-  m_custom_options->sortItems( Qt::AscendingOrder );
+    m_custom_options->sortItems(Qt::AscendingOrder);
+  }
+  else
+  {
+    // Do nothing
+  }
   
   m_removed = false;
 }

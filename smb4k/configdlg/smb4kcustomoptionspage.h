@@ -193,10 +193,12 @@ class Smb4KCustomOptionsPage : public QWidget
     KLineEdit *m_ip_address;
     KLineEdit *m_mac_address;
     KIntNumInput *m_smb_port;
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_LINUX)
     KIntNumInput *m_fs_port;
-    KComboBox *m_write_access;
     KComboBox *m_security_mode;
+#endif
+#if defined(Q_OS_LINUX) || defined(Q_OS_SOLARIS)
+    KComboBox *m_write_access;
 #endif
     KComboBox *m_protocol_hint;
     KComboBox *m_user_id;

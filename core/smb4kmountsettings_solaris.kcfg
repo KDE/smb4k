@@ -44,7 +44,7 @@
       <default>ReadWrite</default>
     </entry>
     <entry name="ProgramExecution" type="Bool">
-      <label>Allow executing programs in the file system.</label>
+      <label>Allow executing programs in the file system</label>
       <whatsthis>Allow or disallow executing programs in the file system. Allow or disallow mmap(2) with PROT_EXEC for files within the file system.</whatsthis>
       <default>true</default>
     </entry>
@@ -56,7 +56,7 @@
       <default>false</default>
     </entry>
     <entry name="SuidExecution" type="Bool">
-      <label>Allow setuid or setgid execution.</label>
+      <label>Allow setuid or setgid execution</label>
       <whatsthis>Allow or disallow setuid or setgid execution. This option also allows or disallows opening any device-special entries that appear within the filesystem.</whatsthis>
       <default>true</default>
     </entry>
