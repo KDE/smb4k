@@ -345,7 +345,7 @@ void Smb4KMounter::import( bool check_inaccessible )
 
   for ( int i = 0; i < mount_points.size(); ++i )
   {
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_LINUX)
     if ( QString::compare( mount_points.at( i )->mountType(), "cifs" ) == 0 )
 #else
     if ( QString::compare( mount_points.at( i )->mountType(), "smbfs" ) == 0 )
@@ -354,7 +354,7 @@ void Smb4KMounter::import( bool check_inaccessible )
       Smb4KShare *share = new Smb4KShare( mount_points.at( i )->mountedFrom() );
       share->setPath( mount_points.at( i )->mountPoint() );
 
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_LINUX)
       share->setFileSystem( Smb4KShare::CIFS );
 
       // Check if the share is new and we have to open /proc/mounts (if it exists)
@@ -527,7 +527,6 @@ void Smb4KMounter::import( bool check_inaccessible )
       {
         // Do nothing
       }
-//       qDebug() << "Domain and ip address?";
 #endif
       share->setIsMounted( true );
       d->importedShares << share;
@@ -580,7 +579,7 @@ void Smb4KMounter::import( bool check_inaccessible )
     found = false;
   }
   
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_LINUX)
   // Now stat the imported shares to get information about them.
   // Do not use Smb4KShare::canonicalPath() here, otherwise we might
   // get lock-ups with inaccessible shares.
@@ -1111,7 +1110,7 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool silent, QWidget *parent
   // inaccessible share (Linux only)
   bool force = false;
 
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_LINUX)
   if ( share->isInaccessible() )
   {
     force = Smb4KSettings::forceUnmountInaccessible();
@@ -1250,7 +1249,7 @@ void Smb4KMounter::unmountShares( const QList<Smb4KShare *> &shares, bool silent
   // inaccessible share
   bool force = false;
 
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_LINUX)
   if ( have_inaccessible_shares )
   {
     force = Smb4KSettings::forceUnmountInaccessible();
