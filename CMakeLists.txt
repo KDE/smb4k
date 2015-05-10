@@ -18,12 +18,11 @@ include(FindGettext)
 include(ConvenienceLibs.cmake)
 include(ConfigureChecks.cmake)
 
-# Make sure that Smb4K build when the several custom targets
-# with the same name exists (happens in the po directory).
+# Make sure that Smb4K builds when several custom targets
+# with the same name exist (happens in the po directory).
 if ( EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po" )
   set_property(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS ON)
 endif( EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po" )
-
 
 add_definitions( ${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
 

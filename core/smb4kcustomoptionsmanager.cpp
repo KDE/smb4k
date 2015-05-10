@@ -1114,6 +1114,10 @@ void Smb4KCustomOptionsManager::removeCustomOptions(Smb4KCustomOptions *options)
 }
 
 
+#if defined(Q_OS_LINUX)
+//
+// Linux
+//
 bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
 {
   Q_ASSERT(options);
@@ -1129,7 +1133,6 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
     // Set up the default options
     default_options.setSMBPort(Smb4KSettings::remoteSMBPort());
 
-#if defined(Q_OS_LINUX)
     default_options.setFileSystemPort(Smb4KMountSettings::remoteFileSystemPort());
 
     switch (Smb4KMountSettings::securityMode())
@@ -1185,9 +1188,7 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
         break;
       }
     }
-#endif
 
-#if defined(Q_OS_LINUX) || defined(Q_OS_SOLARIS)
     switch (Smb4KMountSettings::writeAccess())
     {
       case Smb4KMountSettings::EnumWriteAccess::ReadWrite:
@@ -1206,7 +1207,6 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
         break;
       }
     }
-#endif
 
     switch (Smb4KSettings::protocolHint())
     {
@@ -1275,7 +1275,6 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
       // Do nothing
     }
 
-#if defined(Q_OS_LINUX)
     // File system port (used for mounting)
     if (empty_options.fileSystemPort() != options->fileSystemPort() && 
         default_options.fileSystemPort() != options->fileSystemPort())
@@ -1297,9 +1296,7 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
     {
       // Do nothing
     }
-#endif
 
-#if defined(Q_OS_LINUX) || defined(Q_OS_SOLARIS)
     // Write access
     if (empty_options.writeAccess() != options->writeAccess() &&
         default_options.writeAccess() != options->writeAccess())
@@ -1310,7 +1307,6 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
     {
       // Do nothing
     }
-#endif
 
     // Protocol hint
     if (empty_options.protocolHint() != options->protocolHint() &&
@@ -1396,6 +1392,522 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
 
   return false;
 }
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+//
+// FreeBSD or NetBSD
+//
+bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
+{
+  Q_ASSERT(options);
+
+  if (options)
+  {
+    // Check if there are custom options defined.
+    // Checks are performed against an empty and a default custom
+    // options object. Default means that the values of the global
+    // settings are honored.
+    Smb4KCustomOptions empty_options, default_options;
+
+    // Set up the default options
+    default_options.setSMBPort(Smb4KSettings::remoteSMBPort());
+
+    switch (Smb4KSettings::protocolHint())
+    {
+      case Smb4KSettings::EnumProtocolHint::Automatic:
+      {
+        default_options.setProtocolHint(Smb4KCustomOptions::Automatic);
+        break;
+      }
+      case Smb4KSettings::EnumProtocolHint::RPC:
+      {
+        default_options.setProtocolHint(Smb4KCustomOptions::RPC);
+        break;
+      }
+      case Smb4KSettings::EnumProtocolHint::RAP:
+      {
+        default_options.setProtocolHint(Smb4KCustomOptions::RAP);
+        break;
+      }
+      case Smb4KSettings::EnumProtocolHint::ADS:
+      {
+        default_options.setProtocolHint(Smb4KCustomOptions::ADS);
+        break;
+      }
+      default:
+      {
+        default_options.setProtocolHint(Smb4KCustomOptions::UndefinedProtocolHint);
+        break;
+      }
+    }
+
+    if (Smb4KSettings::useKerberos())
+    {
+      default_options.setUseKerberos(Smb4KCustomOptions::UseKerberos);
+    }
+    else
+    {
+      default_options.setUseKerberos(Smb4KCustomOptions::NoKerberos);
+    }
+
+    default_options.setUID((K_UID)Smb4KMountSettings::userID().toInt());
+    default_options.setGID((K_GID)Smb4KMountSettings::groupID().toInt());
+
+    // NOTE: WOL features and remounting do not have default values.
+    //
+    // Do the actual checks
+    //
+
+    // Remounting
+    if (options->remount() == Smb4KCustomOptions::RemountAlways)
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }    
+
+    // SMB port
+    if (empty_options.smbPort() != options->smbPort() && 
+        default_options.smbPort() != options->smbPort())
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // Protocol hint
+    if (empty_options.protocolHint() != options->protocolHint() &&
+        default_options.protocolHint() != options->protocolHint())
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // Kerberos
+    if (empty_options.useKerberos() != options->useKerberos() &&
+        default_options.useKerberos() != options->useKerberos())
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // UID
+    if (empty_options.uid() != options->uid() &&
+        default_options.uid() != options->uid())
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // GID
+    if (empty_options.gid() != options->gid() &&
+        default_options.gid() != options->gid())
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // MAC address
+    if (QString::compare(empty_options.macAddress(), options->macAddress()) != 0 &&
+        QString::compare(default_options.macAddress(), options->macAddress()) != 0)
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // Send before first scan
+    if (empty_options.wolSendBeforeNetworkScan() != options->wolSendBeforeNetworkScan() &&
+        default_options.wolSendBeforeNetworkScan() != options->wolSendBeforeNetworkScan())
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // Send before mount
+    if (empty_options.wolSendBeforeMount() != options->wolSendBeforeMount() &&
+        default_options.wolSendBeforeMount() != options->wolSendBeforeMount())
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  return false;
+}
+#elif defined(Q_OS_SOLARIS)
+//
+// Solaris/illumos
+//
+bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
+{
+  Q_ASSERT(options);
+
+  if (options)
+  {
+    // Check if there are custom options defined.
+    // Checks are performed against an empty and a default custom
+    // options object. Default means that the values of the global
+    // settings are honored.
+    Smb4KCustomOptions empty_options, default_options;
+
+    // Set up the default options
+    default_options.setSMBPort(Smb4KSettings::remoteSMBPort());
+
+    switch (Smb4KMountSettings::writeAccess())
+    {
+      case Smb4KMountSettings::EnumWriteAccess::ReadWrite:
+      {
+        default_options.setWriteAccess(Smb4KCustomOptions::ReadWrite);
+        break;
+      }
+      case Smb4KMountSettings::EnumWriteAccess::ReadOnly:
+      {
+        default_options.setWriteAccess(Smb4KCustomOptions::ReadOnly);
+        break;
+      }
+      default:
+      {
+        default_options.setWriteAccess(Smb4KCustomOptions::UndefinedWriteAccess);
+        break;
+      }
+    }
+
+    switch (Smb4KSettings::protocolHint())
+    {
+      case Smb4KSettings::EnumProtocolHint::Automatic:
+      {
+        default_options.setProtocolHint(Smb4KCustomOptions::Automatic);
+        break;
+      }
+      case Smb4KSettings::EnumProtocolHint::RPC:
+      {
+        default_options.setProtocolHint(Smb4KCustomOptions::RPC);
+        break;
+      }
+      case Smb4KSettings::EnumProtocolHint::RAP:
+      {
+        default_options.setProtocolHint(Smb4KCustomOptions::RAP);
+        break;
+      }
+      case Smb4KSettings::EnumProtocolHint::ADS:
+      {
+        default_options.setProtocolHint(Smb4KCustomOptions::ADS);
+        break;
+      }
+      default:
+      {
+        default_options.setProtocolHint(Smb4KCustomOptions::UndefinedProtocolHint);
+        break;
+      }
+    }
+
+    if (Smb4KSettings::useKerberos())
+    {
+      default_options.setUseKerberos(Smb4KCustomOptions::UseKerberos);
+    }
+    else
+    {
+      default_options.setUseKerberos(Smb4KCustomOptions::NoKerberos);
+    }
+
+    default_options.setUID((K_UID)Smb4KMountSettings::userID().toInt());
+    default_options.setGID((K_GID)Smb4KMountSettings::groupID().toInt());
+
+    // NOTE: WOL features and remounting do not have default values.
+    //
+    // Do the actual checks
+    //
+
+    // Remounting
+    if (options->remount() == Smb4KCustomOptions::RemountAlways)
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }    
+
+    // SMB port
+    if (empty_options.smbPort() != options->smbPort() && 
+        default_options.smbPort() != options->smbPort())
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // Write access
+    if (empty_options.writeAccess() != options->writeAccess() &&
+        default_options.writeAccess() != options->writeAccess())
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // Protocol hint
+    if (empty_options.protocolHint() != options->protocolHint() &&
+        default_options.protocolHint() != options->protocolHint())
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // Kerberos
+    if (empty_options.useKerberos() != options->useKerberos() &&
+        default_options.useKerberos() != options->useKerberos())
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // UID
+    if (empty_options.uid() != options->uid() &&
+        default_options.uid() != options->uid())
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // GID
+    if (empty_options.gid() != options->gid() &&
+        default_options.gid() != options->gid())
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // MAC address
+    if (QString::compare(empty_options.macAddress(), options->macAddress()) != 0 &&
+        QString::compare(default_options.macAddress(), options->macAddress()) != 0)
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // Send before first scan
+    if (empty_options.wolSendBeforeNetworkScan() != options->wolSendBeforeNetworkScan() &&
+        default_options.wolSendBeforeNetworkScan() != options->wolSendBeforeNetworkScan())
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // Send before mount
+    if (empty_options.wolSendBeforeMount() != options->wolSendBeforeMount() &&
+        default_options.wolSendBeforeMount() != options->wolSendBeforeMount())
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  return false;
+}
+#else
+//
+// Generic (without mount options)
+//
+bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
+{
+  Q_ASSERT(options);
+
+  if (options)
+  {
+    // Check if there are custom options defined.
+    // Checks are performed against an empty and a default custom
+    // options object. Default means that the values of the global
+    // settings are honored.
+    Smb4KCustomOptions empty_options, default_options;
+
+    // Set up the default options
+    default_options.setSMBPort(Smb4KSettings::remoteSMBPort());
+
+    switch (Smb4KSettings::protocolHint())
+    {
+      case Smb4KSettings::EnumProtocolHint::Automatic:
+      {
+        default_options.setProtocolHint(Smb4KCustomOptions::Automatic);
+        break;
+      }
+      case Smb4KSettings::EnumProtocolHint::RPC:
+      {
+        default_options.setProtocolHint(Smb4KCustomOptions::RPC);
+        break;
+      }
+      case Smb4KSettings::EnumProtocolHint::RAP:
+      {
+        default_options.setProtocolHint(Smb4KCustomOptions::RAP);
+        break;
+      }
+      case Smb4KSettings::EnumProtocolHint::ADS:
+      {
+        default_options.setProtocolHint(Smb4KCustomOptions::ADS);
+        break;
+      }
+      default:
+      {
+        default_options.setProtocolHint(Smb4KCustomOptions::UndefinedProtocolHint);
+        break;
+      }
+    }
+
+    if (Smb4KSettings::useKerberos())
+    {
+      default_options.setUseKerberos(Smb4KCustomOptions::UseKerberos);
+    }
+    else
+    {
+      default_options.setUseKerberos(Smb4KCustomOptions::NoKerberos);
+    }
+
+    // NOTE: WOL features and remounting do not have default values.
+    //
+    // Do the actual checks
+    //
+
+    // Remounting
+    if (options->remount() == Smb4KCustomOptions::RemountAlways)
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }    
+
+    // SMB port
+    if (empty_options.smbPort() != options->smbPort() && 
+        default_options.smbPort() != options->smbPort())
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // Protocol hint
+    if (empty_options.protocolHint() != options->protocolHint() &&
+        default_options.protocolHint() != options->protocolHint())
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // Kerberos
+    if (empty_options.useKerberos() != options->useKerberos() &&
+        default_options.useKerberos() != options->useKerberos())
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // MAC address
+    if (QString::compare(empty_options.macAddress(), options->macAddress()) != 0 &&
+        QString::compare(default_options.macAddress(), options->macAddress()) != 0)
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // Send before first scan
+    if (empty_options.wolSendBeforeNetworkScan() != options->wolSendBeforeNetworkScan() &&
+        default_options.wolSendBeforeNetworkScan() != options->wolSendBeforeNetworkScan())
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // Send before mount
+    if (empty_options.wolSendBeforeMount() != options->wolSendBeforeMount() &&
+        default_options.wolSendBeforeMount() != options->wolSendBeforeMount())
+    {
+      return true;
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  return false;
+}
+#endif
 
 
 

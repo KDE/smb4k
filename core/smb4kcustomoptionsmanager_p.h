@@ -65,7 +65,9 @@ class Smb4KCustomOptionsDialog : public KDialog
     
   private:
     void setupView();
-    bool defaultValues();
+    bool checkDefaultValues();
+    void setDefaultValues();
+    void saveValues();
     Smb4KCustomOptions *m_options;
     QCheckBox *m_remount;
     KIntNumInput *m_smb_port;
