@@ -178,7 +178,7 @@
       <li xml:lang="x-test">xxAuto-detection of external mounts and unmountsxx</li>
       <li>Remounting of previously used shares on program start</li>
       <li xml:lang="bs">Ponovno namještanje prethodno korištenih razmjena na početak programa</li>
-      <li xml:lang="ca">Torna a muntar les comparticions utilitzades anteriorment durant l'inici del programa</li>
+      <li xml:lang="ca">Tornar a muntar comparticions utilitzades anteriorment en iniciar el programa</li>
       <li xml:lang="de">Erneute Einbindung von vorher benutzten Freigaben beim Start des Programms</li>
       <li xml:lang="en-GB">Remounting of previously used shares on program start</li>
       <li xml:lang="es">Vuelve a montar los recursos compartidos utilizados anteriormente al iniciar el programa</li>
@@ -194,7 +194,7 @@
       <li xml:lang="x-test">xxRemounting of previously used shares on program startxx</li>
       <li>Miscellaneous infos about remote network items and mounted shares</li>
       <li xml:lang="bs">Raznovrsne informacije o udaljenim mrežnim stavkama i namještenim razmjenama</li>
-      <li xml:lang="ca">Informacions diverses sobre els elements de la xarxa remota i les comparticions muntades</li>
+      <li xml:lang="ca">Informacions diverses sobre els elements de xarxa remots i les comparticions muntades</li>
       <li xml:lang="de">Verschiedene Informationen über Netzwerke auf anderen Rechnern und eingebundene Freigaben</li>
       <li xml:lang="en-GB">Miscellaneous information about remote network items and mounted shares</li>
       <li xml:lang="es">Información variada sobre los elementos remotos de la red y los recursos compartidos montados</li>
@@ -295,7 +295,7 @@
       <li xml:lang="x-test">xxDefault loginxx</li>
       <li>Special handling of homes shares</li>
       <li xml:lang="bs">Posebno korištenje početnih razmjena</li>
-      <li xml:lang="ca">Tractament especial per a la distribució de les comparticions personals</li>
+      <li xml:lang="ca">Gestió especial per a les comparticions personals</li>
       <li xml:lang="de">Besondere Behandlung freigegebener persönlicher Ordner</li>
       <li xml:lang="en-GB">Special handling of homes shares</li>
       <li xml:lang="es">Manejo especial de los directorios personales compartidos</li>
@@ -375,7 +375,7 @@
       <li xml:lang="x-test">xxSupport of printer sharesxx</li>
       <li>KWallet support</li>
       <li xml:lang="bs">KWallet podrška</li>
-      <li xml:lang="ca">Implementació per a KWallet</li>
+      <li xml:lang="ca">Implementació per al KWallet</li>
       <li xml:lang="cs">Podpora KWallet</li>
       <li xml:lang="de">Unterstützung für KWallet</li>
       <li xml:lang="en-GB">KWallet support</li>
