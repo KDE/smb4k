@@ -47,6 +47,7 @@
     </p>
     <p xml:lang="bs">Smb4k je napredni pretraživač mrežnih susjeda i Samba dijeljeni ugrađeni uslužni program za KDE softver kompilaciju. On skenira vašu mrežu susjeda za sve dostupne radne grupe, servere i razmjene i može ugraditi sve željene razmjene na vaš lokalni sistem datoteka.</p>
     <p xml:lang="ca">El Smb4K és un explorador avançat del veïnatge de xarxa i utilitat per a muntar les comparticions de Samba pel KDE Software Compilation. Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
+    <p xml:lang="de">Smb4K ist ein erweiterter Browser für die Netzwerkumgebung und Dienstprogramm für das Einbinden von Samba-Freigaben für die KDE-Softwaresammlung. Es durchsucht Ihre Netzwerkumgebung nach allen verfügbaren Arbeitsgruppen, Server und Freigaben und kann alle gewünschten Freigaben in Ihr lokales Dateisystem einbinden.</p>
     <p xml:lang="en-GB">Smb4K is an advanced network neighborhood browser and Samba share mounting utility for the KDE Software Compilation. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.</p>
     <p xml:lang="es">Smb4K es un navegador avanzado del entorno de red y una utilidad de montaje de recursos compartidos Samba para «KDE Software Compilation». Escanea su entorno de red en busca de cualquier grupo de trabajo, servidor y recurso compartido disponible y puede montar todos los recursos compartidos deseados en su sistema de archivos local.</p>
     <p xml:lang="fr">Smb4K est un navigateur de voisinage réseau avancé et un utilitaire de montage Samba pour KDE SC. Il balaye votre voisinage réseau à la recherche des groupes de travail, serveurs et partages disponibles et peut montrer tous les partages désirés sur votre système de fichier local.</p>
@@ -65,6 +66,7 @@
     </p>
     <p xml:lang="bs">Smb4k ugrađuje programe iz Samba softver paketa. Njegova svrha je da omogući program koji je lagan za upotrebu i ima što više mogućnosti.</p>
     <p xml:lang="ca">El Smb4K utilitza els programes de la suite de programari Samba. El seu propòsit és proporcionar un programa de fàcil ús i contenir tantes característiques com sigui possible.</p>
+    <p xml:lang="de">Smb4K benutzt die Programme der Samba-Softwaresammlung, um ein Programm mit leichter Handhabung und möglichst vielen Funktionen zur Verfügung zu stellen.</p>
     <p xml:lang="en-GB">Smb4K utilises the programs of the Samba software suite. Its purpose is to provide a program that is easy to use and has as many features as possible.</p>
     <p xml:lang="es">Smb4K utiliza los programas de la suite de programas Samba. Su objetivo es proporcionar un programa que sea sencillo de usar y tenga tantas prestaciones como sea posible.</p>
     <p xml:lang="fr">Smb4K utilise les programmes de la suite logicielle Samba. Son objectif est de fournir un programme facile à utiliser et fournissant le plus de fonctionnalités possibles.</p>
