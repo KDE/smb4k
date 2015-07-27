@@ -2,7 +2,7 @@
     smb4kbookmarkhandler_p  -  Private classes for the bookmark handler
                              -------------------
     begin                : Sun Mar 20 2011
-    copyright            : (C) 2011-2014 by Alexander Reinholdt
+    copyright            : (C) 2011-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -35,46 +35,48 @@
 // Qt includes
 #include <QtCore/QEvent>
 #include <QtCore/QTimer>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QGridLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QHeaderView>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QTreeWidgetItemIterator>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QInputDialog>
+#include <QtWidgets/QDialogButtonBox>
 #include <QtGui/QDropEvent>
 #include <QtGui/QDragMoveEvent>
 #include <QtGui/QDragEnterEvent>
 #include <QtGui/QDragLeaveEvent>
-#include <QtGui/QTreeWidgetItemIterator>
 
 // KDE includes
-#include <klocale.h>
-#include <kmenu.h>
-#include <kinputdialog.h>
+#define TRANSLATION_DOMAIN "smb4k-core"
+#include <KI18n/KLocalizedString>
+#include <KIconThemes/KIconLoader>
+#include <KConfigGui/KWindowConfig>
 
 
-Smb4KBookmarkDialog::Smb4KBookmarkDialog( const QList<Smb4KBookmark *> &bookmarks, const QStringList &groups, QWidget *parent )
-: KDialog( parent )
+Smb4KBookmarkDialog::Smb4KBookmarkDialog(const QList<Smb4KBookmark *> &bookmarks, const QStringList &groups, QWidget *parent)
+: QDialog(parent)
 {
-  setCaption( i18n( "Add Bookmarks" ) );
-  setButtons( Ok|Cancel );
-  setDefaultButton( Ok );
+  setWindowTitle(i18n("Add Bookmarks"));
 
   setupView();
-  loadLists( bookmarks, groups );
+  loadLists(bookmarks, groups);
 
-  KConfigGroup group( Smb4KSettings::self()->config(), "BookmarkDialog" );
-  restoreDialogSize( group );
-  m_label_edit->completionObject()->setItems( group.readEntry( "LabelCompletion", QStringList() ) );
-  m_group_combo->completionObject()->setItems( group.readEntry( "GroupCompletion", m_groups ) );
+  KConfigGroup group(Smb4KSettings::self()->config(), "BookmarkDialog");
+  KWindowConfig::restoreWindowSize(windowHandle(), group);
+  m_label_edit->completionObject()->setItems(group.readEntry("LabelCompletion", QStringList()));
+  m_group_combo->completionObject()->setItems(group.readEntry("GroupCompletion", m_groups));
 
-  connect( this, SIGNAL(buttonClicked(KDialog::ButtonCode)), SLOT(slotUserClickedButton(KDialog::ButtonCode)) );
-  connect( KGlobalSettings::self(), SIGNAL(iconChanged(int)), SLOT(slotIconSizeChanged(int)) );
+  connect(KIconLoader::global(), SIGNAL(iconChanged(int)), SLOT(slotIconSizeChanged(int)));
 }
 
 
 Smb4KBookmarkDialog::~Smb4KBookmarkDialog()
 {
-  while ( !m_bookmarks.isEmpty() )
+  while (!m_bookmarks.isEmpty())
   {
     delete m_bookmarks.takeFirst();
   }
@@ -89,94 +91,111 @@ const QList<Smb4KBookmark *> &Smb4KBookmarkDialog::bookmarks()
 
 void Smb4KBookmarkDialog::setupView()
 {
-  QWidget *main_widget = new QWidget( this );
-  setMainWidget( main_widget );
+  QVBoxLayout *layout = new QVBoxLayout(this);
+  layout->setSpacing(5);
 
-  QVBoxLayout *layout = new QVBoxLayout( main_widget );
-  layout->setSpacing( 5 );
-  layout->setMargin( 0 );
+  QWidget *description = new QWidget(this);
 
-  QWidget *description = new QWidget( main_widget );
+  QHBoxLayout *desc_layout = new QHBoxLayout(description);
+  desc_layout->setSpacing(5);
+  desc_layout->setMargin(0);
 
-  QHBoxLayout *desc_layout = new QHBoxLayout( description );
-  desc_layout->setSpacing( 5 );
-  desc_layout->setMargin( 0 );
+  QLabel *pixmap = new QLabel(description);
+  QPixmap sync_pix = KDE::icon("bookmark-new").pixmap(KIconLoader::SizeHuge);
+  pixmap->setPixmap(sync_pix);
+  pixmap->setAlignment(Qt::AlignBottom);
 
-  QLabel *pixmap = new QLabel( description );
-  QPixmap sync_pix = KIcon( "bookmark-new" ).pixmap( KIconLoader::SizeHuge );
-  pixmap->setPixmap( sync_pix );
-  pixmap->setAlignment( Qt::AlignBottom );
+  QLabel *label = new QLabel(i18n("All listed shares will be bookmarked. To edit the label "
+                                  "or group, click the respective bookmark entry."), description);
+  label->setWordWrap(true);
+  label->setAlignment(Qt::AlignBottom);
 
-  QLabel *label = new QLabel( i18n( "All listed shares will be bookmarked. To edit the label "
-                                    "or group, click the respective bookmark entry." ), description );
-  label->setWordWrap( true );
-  label->setAlignment( Qt::AlignBottom );
+  desc_layout->addWidget(pixmap, 0);
+  desc_layout->addWidget(label, Qt::AlignBottom);
 
-  desc_layout->addWidget( pixmap, 0 );
-  desc_layout->addWidget( label, Qt::AlignBottom );
+  m_widget = new QListWidget(this);
+  m_widget->setSortingEnabled(true);
+  m_widget->setSelectionMode(QAbstractItemView::SingleSelection);
+  int icon_size = KIconLoader::global()->currentSize(KIconLoader::Small);
+  m_widget->setIconSize(QSize(icon_size, icon_size));
 
-  m_widget = new KListWidget( main_widget );
-  m_widget->setSortingEnabled( true );
-  m_widget->setSelectionMode( QAbstractItemView::SingleSelection );
-  int icon_size = KIconLoader::global()->currentSize( KIconLoader::Small );
-  m_widget->setIconSize( QSize( icon_size, icon_size ) );
+  m_editors = new QWidget(this);
+  m_editors->setEnabled(false);
 
-  m_editors = new QWidget( main_widget );
-  m_editors->setEnabled( false );
+  QGridLayout *editors_layout = new QGridLayout(m_editors);
+  editors_layout->setSpacing(5);
+  editors_layout->setMargin(0);
 
-  QGridLayout *editors_layout = new QGridLayout( m_editors );
-  editors_layout->setSpacing( 5 );
-  editors_layout->setMargin( 0 );
+  QLabel *l_label = new QLabel(i18n("Label:"), m_editors);
+  m_label_edit = new KLineEdit(m_editors);
+  m_label_edit->setClearButtonShown(true);
 
-  QLabel *l_label = new QLabel( i18n( "Label:" ), m_editors );
-  m_label_edit = new KLineEdit( m_editors );
-  m_label_edit->setClearButtonShown( true );
+  QLabel *g_label = new QLabel(i18n("Group:"), m_editors);
+  m_group_combo = new KComboBox(true, m_editors);
 
-  QLabel *g_label = new QLabel( i18n( "Group:" ), m_editors );
-  m_group_combo = new KComboBox( true, m_editors );
+  editors_layout->addWidget(l_label, 0, 0, 0);
+  editors_layout->addWidget(m_label_edit, 0, 1, 0);
+  editors_layout->addWidget(g_label, 1, 0, 0);
+  editors_layout->addWidget(m_group_combo, 1, 1, 0);
+  
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Horizontal, this);
+  m_ok_button = buttonBox->addButton(QDialogButtonBox::Ok);
+  m_cancel_button = buttonBox->addButton(QDialogButtonBox::Cancel);
+  
+  m_ok_button->setShortcut(Qt::CTRL|Qt::Key_Return);
+  m_cancel_button->setShortcut(Qt::Key_Escape);
+  
+  m_ok_button->setDefault(true);
 
-  editors_layout->addWidget( l_label, 0, 0, 0 );
-  editors_layout->addWidget( m_label_edit, 0, 1, 0 );
-  editors_layout->addWidget( g_label, 1, 0, 0 );
-  editors_layout->addWidget( m_group_combo, 1, 1, 0 );
+  layout->addWidget(description, 0);
+  layout->addWidget(m_widget, 0);
+  layout->addWidget(m_editors, 0);
+  layout->addWidget(buttonBox, 0);
 
-  layout->addWidget( description, 0 );
-  layout->addWidget( m_widget, 0 );
-  layout->addWidget( m_editors, 0 );
+  setMinimumWidth(sizeHint().width() > 350 ? sizeHint().width() : 350);
 
-  setMinimumWidth( sizeHint().width() > 350 ? sizeHint().width() : 350 );
-
-  connect( m_widget, SIGNAL(itemClicked(QListWidgetItem*)), SLOT(slotBookmarkClicked(QListWidgetItem*)) );
-  connect( m_label_edit, SIGNAL(editingFinished()), SLOT(slotLabelEdited()) );
-  connect( m_group_combo->lineEdit(), SIGNAL(editingFinished()), SLOT(slotGroupEdited()) );
+  connect(m_widget, SIGNAL(itemClicked(QListWidgetItem*)), 
+          this, SLOT(slotBookmarkClicked(QListWidgetItem*)));
+  
+  connect(m_label_edit, SIGNAL(editingFinished()), 
+          this, SLOT(slotLabelEdited()));
+  
+  connect(m_group_combo->lineEdit(), SIGNAL(editingFinished()), 
+          this, SLOT(slotGroupEdited()));
+  
+  connect(m_ok_button, SIGNAL(clicked()), 
+          this, SLOT(slotDialogAccepted()));
+  
+  connect(m_cancel_button, SIGNAL(clicked()), 
+          this, SLOT(reject()));
 }
 
 
-void Smb4KBookmarkDialog::loadLists( const QList<Smb4KBookmark *> &bookmarks, const QStringList &groups )
+void Smb4KBookmarkDialog::loadLists(const QList<Smb4KBookmark *> &bookmarks, const QStringList &groups)
 {
   // Copy the bookmarks to the internal list and add them to 
   // the list widget afterwards.
-  for ( int i = 0; i < bookmarks.size(); ++i )
+  for (int i = 0; i < bookmarks.size(); ++i)
   {
-    Smb4KBookmark *bookmark = new Smb4KBookmark( *bookmarks[i] );
-    QListWidgetItem *item = new QListWidgetItem( bookmark->icon(), bookmark->unc(), m_widget );
-    item->setData( Qt::UserRole, static_cast<QUrl>( bookmark->url() ) );
+    Smb4KBookmark *bookmark = new Smb4KBookmark(*bookmarks[i]);
+    QListWidgetItem *item = new QListWidgetItem(bookmark->icon(), bookmark->unc(), m_widget);
+    item->setData(Qt::UserRole, static_cast<QUrl>(bookmark->url()));
     
     m_bookmarks << bookmark;
   }
 
   m_groups = groups;
-  m_group_combo->addItems( m_groups );
+  m_group_combo->addItems(m_groups);
 }
 
 
-Smb4KBookmark *Smb4KBookmarkDialog::findBookmark( const KUrl &url )
+Smb4KBookmark *Smb4KBookmarkDialog::findBookmark(const QUrl &url)
 {
-  Smb4KBookmark *bookmark = NULL;
+  Smb4KBookmark *bookmark = 0;
   
-  for ( int i = 0; i < m_bookmarks.size(); ++i )
+  for (int i = 0; i < m_bookmarks.size(); ++i)
   {
-    if ( m_bookmarks.at( i )->url() == url )
+    if (m_bookmarks.at(i)->url() == url)
     {
       bookmark = m_bookmarks[i];
       break;
@@ -191,41 +210,41 @@ Smb4KBookmark *Smb4KBookmarkDialog::findBookmark( const KUrl &url )
 }
 
 
-void Smb4KBookmarkDialog::slotBookmarkClicked( QListWidgetItem *bookmark_item )
+void Smb4KBookmarkDialog::slotBookmarkClicked(QListWidgetItem *bookmark_item)
 {
-  if ( bookmark_item )
+  if (bookmark_item)
   {
     // Enable the editor widgets if necessary
-    if ( !m_editors->isEnabled() )
+    if (!m_editors->isEnabled())
     {
-      m_editors->setEnabled( true );
+      m_editors->setEnabled(true);
     }
     else
     {
       // Do nothing
     }
 
-    KUrl url = bookmark_item->data( Qt::UserRole ).toUrl();
+    QUrl url = bookmark_item->data(Qt::UserRole).toUrl();
     
-    Smb4KBookmark *bookmark = findBookmark( url );
+    Smb4KBookmark *bookmark = findBookmark(url);
 
-    if ( bookmark )
+    if (bookmark)
     {
-      m_label_edit->setText( bookmark->label() );
-      m_group_combo->setCurrentItem( bookmark->groupName() );
+      m_label_edit->setText(bookmark->label());
+      m_group_combo->setCurrentItem(bookmark->groupName());
     }
     else
     {
       m_label_edit->clear();
       m_group_combo->clearEditText();
-      m_editors->setEnabled( false );
+      m_editors->setEnabled(false);
     }
   }
   else
   {
     m_label_edit->clear();
     m_group_combo->clearEditText();
-    m_editors->setEnabled( false );
+    m_editors->setEnabled(false);
   }
 }
 
@@ -233,13 +252,13 @@ void Smb4KBookmarkDialog::slotBookmarkClicked( QListWidgetItem *bookmark_item )
 void Smb4KBookmarkDialog::slotLabelEdited()
 {
   // Set the label
-  KUrl url = m_widget->currentItem()->data( Qt::UserRole ).toUrl();
+  QUrl url = m_widget->currentItem()->data(Qt::UserRole).toUrl();
 
-  Smb4KBookmark *bookmark = findBookmark( url );
+  Smb4KBookmark *bookmark = findBookmark(url);
 
-  if ( bookmark )
+  if (bookmark)
   {
-    bookmark->setLabel( m_label_edit->userText() );
+    bookmark->setLabel(m_label_edit->userText());
   }
   else
   {
@@ -249,9 +268,9 @@ void Smb4KBookmarkDialog::slotLabelEdited()
   // Add label to completion object
   KCompletion *completion = m_label_edit->completionObject();
 
-  if ( !m_label_edit->userText().isEmpty() )
+  if (!m_label_edit->userText().isEmpty())
   {
-    completion->addItem( m_label_edit->userText() );
+    completion->addItem(m_label_edit->userText());
   }
   else
   {
@@ -263,13 +282,13 @@ void Smb4KBookmarkDialog::slotLabelEdited()
 void Smb4KBookmarkDialog::slotGroupEdited()
 {
   // Set the group
-  KUrl url = m_widget->currentItem()->data( Qt::UserRole ).toUrl();
+  QUrl url = m_widget->currentItem()->data(Qt::UserRole).toUrl();
 
-  Smb4KBookmark *bookmark = findBookmark( url );
+  Smb4KBookmark *bookmark = findBookmark(url);
 
-  if ( bookmark )
+  if (bookmark)
   {
-    bookmark->setGroupName( m_group_combo->currentText() );
+    bookmark->setGroupName(m_group_combo->currentText());
   }
   else
   {
@@ -277,9 +296,9 @@ void Smb4KBookmarkDialog::slotGroupEdited()
   }
 
   // Add the group name to the combo box
-  if ( m_group_combo->findText( m_group_combo->currentText() ) == -1 )
+  if (m_group_combo->findText(m_group_combo->currentText()) == -1)
   {
-    m_group_combo->addItem( m_group_combo->currentText() );
+    m_group_combo->addItem(m_group_combo->currentText());
   }
   else
   {
@@ -289,9 +308,9 @@ void Smb4KBookmarkDialog::slotGroupEdited()
   // Add group to completion object
   KCompletion *completion = m_group_combo->completionObject();
 
-  if ( !m_group_combo->currentText().isEmpty() )
+  if (!m_group_combo->currentText().isEmpty())
   {
-    completion->addItem( m_group_combo->currentText() );
+    completion->addItem(m_group_combo->currentText());
   }
   else
   {
@@ -300,34 +319,25 @@ void Smb4KBookmarkDialog::slotGroupEdited()
 }
 
 
-void Smb4KBookmarkDialog::slotUserClickedButton( KDialog::ButtonCode code )
+void Smb4KBookmarkDialog::slotDialogAccepted()
 {
-  switch ( code )
-  {
-    case KDialog::Ok:
-    {
-      KConfigGroup group( Smb4KSettings::self()->config(), "BookmarkDialog" );
-      saveDialogSize( group, KConfigGroup::Normal );
-      group.writeEntry( "LabelCompletion", m_label_edit->completionObject()->items() );
-      group.writeEntry( "GroupCompletion", m_group_combo->completionObject()->items() );
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
+  KConfigGroup group(Smb4KSettings::self()->config(), "BookmarkDialog");
+  KWindowConfig::saveWindowSize(windowHandle(), group);
+  group.writeEntry("LabelCompletion", m_label_edit->completionObject()->items());
+  group.writeEntry("GroupCompletion", m_group_combo->completionObject()->items());
+  
+  accept();
 }
 
 
-void Smb4KBookmarkDialog::slotIconSizeChanged( int group )
+void Smb4KBookmarkDialog::slotIconSizeChanged(int group)
 {
-  switch ( group )
+  switch (group)
   {
     case KIconLoader::Small:
     {
-      int icon_size = KIconLoader::global()->currentSize( KIconLoader::Small );
-      m_widget->setIconSize( QSize( icon_size, icon_size ) );
+      int icon_size = KIconLoader::global()->currentSize(KIconLoader::Small);
+      m_widget->setIconSize(QSize(icon_size, icon_size));
       break;
     }
     default:
@@ -339,33 +349,30 @@ void Smb4KBookmarkDialog::slotIconSizeChanged( int group )
 
 
 
-Smb4KBookmarkEditor::Smb4KBookmarkEditor( const QList<Smb4KBookmark *> &bookmarks, QWidget *parent )
-: KDialog( parent )
+Smb4KBookmarkEditor::Smb4KBookmarkEditor(const QList<Smb4KBookmark *> &bookmarks, QWidget *parent)
+: QDialog(parent)
 {
-  setCaption( i18n( "Edit Bookmarks" ) );
-  setButtons( Ok|Cancel );
-  setDefaultButton( Ok );
-
+  setWindowTitle(i18n("Edit Bookmarks"));
+  
   setupView();
-  loadBookmarks( bookmarks );
+  loadBookmarks(bookmarks);
 
-  setMinimumWidth( sizeHint().height() > sizeHint().width() ? sizeHint().height() : sizeHint().width() );
+  setMinimumWidth(sizeHint().height() > sizeHint().width() ? sizeHint().height() : sizeHint().width());
 
-  KConfigGroup group( Smb4KSettings::self()->config(), "BookmarkEditor" );
-  restoreDialogSize( group );
-  m_label_edit->completionObject()->setItems( group.readEntry( "LabelCompletion", QStringList() ) );
-  m_login_edit->completionObject()->setItems( group.readEntry( "LoginCompletion", QStringList() ) );
-  m_ip_edit->completionObject()->setItems( group.readEntry( "IPCompletion", QStringList() ) );
-  m_group_combo->completionObject()->setItems( group.readEntry( "GroupCompletion", m_groups ) );
+  KConfigGroup group(Smb4KSettings::self()->config(), "BookmarkEditor");
+  KWindowConfig::restoreWindowSize(windowHandle(), group);
+  m_label_edit->completionObject()->setItems(group.readEntry("LabelCompletion", QStringList()));
+  m_login_edit->completionObject()->setItems(group.readEntry("LoginCompletion", QStringList()));
+  m_ip_edit->completionObject()->setItems(group.readEntry("IPCompletion", QStringList()));
+  m_group_combo->completionObject()->setItems(group.readEntry("GroupCompletion", m_groups));
 
-  connect( this, SIGNAL(buttonClicked(KDialog::ButtonCode)), SLOT(slotUserClickedButton(KDialog::ButtonCode)) );
-  connect( KGlobalSettings::self(), SIGNAL(iconChanged(int)), SLOT(slotIconSizeChanged(int)) );
+  connect(KIconLoader::global(), SIGNAL(iconChanged(int)), SLOT(slotIconSizeChanged(int)));
 }
 
 
 Smb4KBookmarkEditor::~Smb4KBookmarkEditor()
 {
-  while ( !m_bookmarks.isEmpty() )
+  while (!m_bookmarks.isEmpty())
   {
     delete m_bookmarks.takeFirst();
   }
@@ -378,17 +385,17 @@ QList<Smb4KBookmark *> Smb4KBookmarkEditor::editedBookmarks() const
 }
 
 
-bool Smb4KBookmarkEditor::eventFilter( QObject *obj, QEvent *e )
+bool Smb4KBookmarkEditor::eventFilter(QObject *obj, QEvent *e)
 {
-  if ( obj == m_tree_widget->viewport() )
+  if (obj == m_tree_widget->viewport())
   {
-    switch ( e->type() )
+    switch (e->type())
     {
       case QEvent::DragEnter:
       {
-        QDragEnterEvent *ev = static_cast<QDragEnterEvent *>( e );
+        QDragEnterEvent *ev = static_cast<QDragEnterEvent *>(e);
         
-        if ( ev->source() == m_tree_widget->viewport() )
+        if (ev->source() == m_tree_widget->viewport())
         {
           e->accept();
         }
@@ -405,7 +412,7 @@ bool Smb4KBookmarkEditor::eventFilter( QObject *obj, QEvent *e )
       }
       case QEvent::Drop:
       {
-        QTimer::singleShot( 50, this, SLOT(slotAdjust()));
+        QTimer::singleShot(50, this, SLOT(slotAdjust()));
         break;
       }
       default:
@@ -415,98 +422,127 @@ bool Smb4KBookmarkEditor::eventFilter( QObject *obj, QEvent *e )
     }
   }
   
-  return KDialog::eventFilter( obj, e );
+  return QDialog::eventFilter(obj, e);
 }
 
 
 void Smb4KBookmarkEditor::setupView()
 {
-  QWidget *main_widget = new QWidget( this );
-  setMainWidget( main_widget );
+  QVBoxLayout *layout = new QVBoxLayout(this);
+  layout->setSpacing(5);
 
-  QVBoxLayout *layout = new QVBoxLayout( main_widget );
-  layout->setSpacing( 5 );
-  layout->setMargin( 0 );
+  m_tree_widget = new QTreeWidget(this);
+  m_tree_widget->setColumnCount(2);
+  m_tree_widget->hideColumn((m_tree_widget->columnCount() - 1)); // for sorting purposes
+  m_tree_widget->headerItem()->setHidden(true);
+  m_tree_widget->setRootIsDecorated(true);
+  m_tree_widget->setSelectionMode(QAbstractItemView::SingleSelection);
+  m_tree_widget->setContextMenuPolicy(Qt::CustomContextMenu);
+  m_tree_widget->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
+  m_tree_widget->setDragDropMode(QTreeWidget::InternalMove);
+  int icon_size = KIconLoader::global()->currentSize(KIconLoader::Small);
+  m_tree_widget->setIconSize(QSize(icon_size, icon_size));
+  m_tree_widget->viewport()->installEventFilter(this);
 
-  m_tree_widget = new QTreeWidget( main_widget );
-  m_tree_widget->setColumnCount( 2 );
-  m_tree_widget->hideColumn( (m_tree_widget->columnCount() - 1) ); // for sorting purposes
-  m_tree_widget->headerItem()->setHidden( true );
-  m_tree_widget->setRootIsDecorated( true );
-  m_tree_widget->setSelectionMode( QAbstractItemView::SingleSelection );
-  m_tree_widget->setContextMenuPolicy( Qt::CustomContextMenu );
-  m_tree_widget->header()->setResizeMode( QHeaderView::ResizeToContents );
-  m_tree_widget->setDragDropMode( QTreeWidget::InternalMove );
-  int icon_size = KIconLoader::global()->currentSize( KIconLoader::Small );
-  m_tree_widget->setIconSize( QSize( icon_size, icon_size ) );
-  m_tree_widget->viewport()->installEventFilter( this );
-
-  m_add_group = new KAction( KIcon( "folder-bookmark" ), i18n( "Add Group" ), m_tree_widget );
-  m_delete = new KAction( KIcon( "edit-delete" ), i18n( "Remove" ), m_tree_widget );
-  m_clear = new KAction( KIcon( "edit-clear" ), i18n( "Clear Bookmarks" ), m_tree_widget );
+  m_add_group = new QAction(KDE::icon("folder-bookmark"), i18n("Add Group"), m_tree_widget);
+  m_delete = new QAction(KDE::icon("edit-delete"), i18n("Remove"), m_tree_widget);
+  m_clear = new QAction(KDE::icon("edit-clear"), i18n("Clear Bookmarks"), m_tree_widget);
   
-  m_menu = new KActionMenu( m_tree_widget );
-  m_menu->addAction( m_add_group );
-  m_menu->addAction( m_delete );
-  m_menu->addAction( m_clear );
+  m_menu = new KActionMenu(m_tree_widget);
+  m_menu->addAction(m_add_group);
+  m_menu->addAction(m_delete);
+  m_menu->addAction(m_clear);
 
-  m_editors = new QWidget( main_widget );
-  m_editors->setEnabled( false );
+  m_editors = new QWidget(this);
+  m_editors->setEnabled(false);
 
-  QGridLayout *editors_layout = new QGridLayout( m_editors );
-  editors_layout->setSpacing( 5 );
-  editors_layout->setMargin( 0 );
+  QGridLayout *editors_layout = new QGridLayout(m_editors);
+  editors_layout->setSpacing(5);
+  editors_layout->setMargin(0);
 
-  QLabel *l_label = new QLabel( i18n( "Label:" ), m_editors );
-  m_label_edit = new KLineEdit( m_editors );
-  m_label_edit->setClearButtonShown( true );
+  QLabel *l_label = new QLabel(i18n("Label:"), m_editors);
+  m_label_edit = new KLineEdit(m_editors);
+  m_label_edit->setClearButtonShown(true);
 
-  QLabel *lg_label = new QLabel( i18n( "Login:" ), m_editors );
-  m_login_edit = new KLineEdit( m_editors );
-  m_login_edit->setClearButtonShown( true );
+  QLabel *lg_label = new QLabel(i18n("Login:"), m_editors);
+  m_login_edit = new KLineEdit(m_editors);
+  m_login_edit->setClearButtonShown(true);
 
-  QLabel *i_label = new QLabel( i18n( "IP Address:" ), m_editors );
-  m_ip_edit = new KLineEdit( m_editors );
-  m_ip_edit->setClearButtonShown( true );
+  QLabel *i_label = new QLabel(i18n("IP Address:"), m_editors);
+  m_ip_edit = new KLineEdit(m_editors);
+  m_ip_edit->setClearButtonShown(true);
   
-  QLabel *g_label = new QLabel( i18n( "Group:" ), m_editors );
-  m_group_combo = new KComboBox( true, m_editors );
-  m_group_combo->setDuplicatesEnabled( false );
+  QLabel *g_label = new QLabel(i18n("Group:"), m_editors);
+  m_group_combo = new KComboBox(true, m_editors);
+  m_group_combo->setDuplicatesEnabled(false);
 
-  editors_layout->addWidget( l_label, 0, 0, 0 );
-  editors_layout->addWidget( m_label_edit, 0, 1, 0 );
-  editors_layout->addWidget( lg_label, 1, 0, 0 );
-  editors_layout->addWidget( m_login_edit, 1, 1, 0 );
-  editors_layout->addWidget( i_label, 2, 0, 0 );
-  editors_layout->addWidget( m_ip_edit, 2, 1, 0 );
-  editors_layout->addWidget( g_label, 3, 0, 0 );
-  editors_layout->addWidget( m_group_combo, 3, 1, 0 );
+  editors_layout->addWidget(l_label, 0, 0, 0);
+  editors_layout->addWidget(m_label_edit, 0, 1, 0);
+  editors_layout->addWidget(lg_label, 1, 0, 0);
+  editors_layout->addWidget(m_login_edit, 1, 1, 0);
+  editors_layout->addWidget(i_label, 2, 0, 0);
+  editors_layout->addWidget(m_ip_edit, 2, 1, 0);
+  editors_layout->addWidget(g_label, 3, 0, 0);
+  editors_layout->addWidget(m_group_combo, 3, 1, 0);
+  
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Horizontal, this);
+  m_ok_button = buttonBox->addButton(QDialogButtonBox::Ok);
+  m_cancel_button = buttonBox->addButton(QDialogButtonBox::Cancel);
+  
+  m_ok_button->setShortcut(Qt::CTRL|Qt::Key_Return);
+  m_cancel_button->setShortcut(Qt::Key_Escape);
 
-  layout->addWidget( m_tree_widget );
-  layout->addWidget( m_editors );
+  m_ok_button->setDefault(true);
 
-  connect( m_tree_widget, SIGNAL(itemClicked(QTreeWidgetItem*,int)), SLOT(slotItemClicked(QTreeWidgetItem*,int)) );
-  connect( m_tree_widget, SIGNAL(customContextMenuRequested(QPoint)), SLOT(slotContextMenuRequested(QPoint)) );
-  connect( m_label_edit, SIGNAL(editingFinished()), SLOT(slotLabelEdited()) );
-  connect( m_ip_edit, SIGNAL(editingFinished()), SLOT(slotIPEdited()) );
-  connect( m_login_edit, SIGNAL(editingFinished()), SLOT(slotLoginEdited()) );
-  connect( m_group_combo->lineEdit(), SIGNAL(editingFinished()), SLOT(slotGroupEdited()) );
-  connect( m_add_group, SIGNAL(triggered(bool)), SLOT(slotAddGroupTriggered(bool)) );
-  connect( m_delete, SIGNAL(triggered(bool)), SLOT(slotDeleteTriggered(bool)) );
-  connect( m_clear, SIGNAL(triggered(bool)), SLOT(slotClearTriggered(bool)) );
+  layout->addWidget(m_tree_widget);
+  layout->addWidget(m_editors);
+  layout->addWidget(buttonBox);
+
+  connect(m_tree_widget, SIGNAL(itemClicked(QTreeWidgetItem*,int)), 
+          this, SLOT(slotItemClicked(QTreeWidgetItem*,int)));
+  
+  connect(m_tree_widget, SIGNAL(customContextMenuRequested(QPoint)), 
+          this, SLOT(slotContextMenuRequested(QPoint)));
+  
+  connect(m_label_edit, SIGNAL(editingFinished()), 
+          this, SLOT(slotLabelEdited()));
+  
+  connect(m_ip_edit, SIGNAL(editingFinished()), 
+          this, SLOT(slotIPEdited()));
+  
+  connect(m_login_edit, SIGNAL(editingFinished()), 
+          this, SLOT(slotLoginEdited()));
+  
+  connect(m_group_combo->lineEdit(), SIGNAL(editingFinished()), 
+          this, SLOT(slotGroupEdited()));
+  
+  connect(m_add_group, SIGNAL(triggered(bool)), 
+          this, SLOT(slotAddGroupTriggered(bool)));
+  
+  connect(m_delete, SIGNAL(triggered(bool)), 
+          this, SLOT(slotDeleteTriggered(bool)));
+  
+  connect(m_clear, SIGNAL(triggered(bool)), 
+          this, SLOT(slotClearTriggered(bool)));
+  
+  connect(m_ok_button, SIGNAL(clicked()), 
+          this, SLOT(slotDialogAccepted()));
+  
+  connect(m_cancel_button, SIGNAL(clicked()), 
+          this, SLOT(reject()));
 }
 
 
-void Smb4KBookmarkEditor::loadBookmarks( const QList<Smb4KBookmark *> &bookmarks )
+void Smb4KBookmarkEditor::loadBookmarks(const QList<Smb4KBookmark *> &bookmarks)
 {
   // Copy the bookmarks and the groups to the internal lists.
-  for ( int i = 0; i < bookmarks.size(); ++i )
+  for (int i = 0; i < bookmarks.size(); ++i)
   {
-    m_bookmarks << new Smb4KBookmark( *bookmarks[i] );
+    m_bookmarks << new Smb4KBookmark(*bookmarks[i]);
     
-    if ( !m_groups.contains( bookmarks.at( i )->groupName() ) )
+    if (!m_groups.contains(bookmarks.at(i)->groupName()))
     {
-      m_groups << bookmarks.at( i )->groupName();
+      m_groups << bookmarks.at(i)->groupName();
     }
     else
     {
@@ -520,7 +556,7 @@ void Smb4KBookmarkEditor::loadBookmarks( const QList<Smb4KBookmark *> &bookmarks
     if (!m_groups.at(i).isEmpty())
     {
       QTreeWidgetItem *group = new QTreeWidgetItem(QTreeWidgetItem::UserType);
-      group->setIcon(0, KIcon("folder-bookmark"));
+      group->setIcon(0, KDE::icon("folder-bookmark"));
       group->setText(0, m_groups.at(i));
       group->setText((m_tree_widget->columnCount() - 1), QString("00_%1").arg(m_groups.at(i)));
       group->setFlags(Qt::ItemIsSelectable|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled|Qt::ItemIsDropEnabled);
@@ -536,15 +572,15 @@ void Smb4KBookmarkEditor::loadBookmarks( const QList<Smb4KBookmark *> &bookmarks
   for (int i = 0; i < m_bookmarks.size(); ++i)
   {
     QTreeWidgetItem *bookmark = new QTreeWidgetItem(QTreeWidgetItem::UserType);
-    bookmark->setData(0, QTreeWidgetItem::UserType, static_cast<QUrl>(m_bookmarks.at( i )->url()) );
+    bookmark->setData(0, QTreeWidgetItem::UserType, static_cast<QUrl>(m_bookmarks.at(i)->url()));
     bookmark->setIcon(0, m_bookmarks.at(i)->icon());
     bookmark->setText(0, m_bookmarks.at(i)->unc());
-    bookmark->setText((m_tree_widget->columnCount() - 1), QString("01_%1").arg(m_bookmarks.at( i )->unc()));
+    bookmark->setText((m_tree_widget->columnCount() - 1), QString("01_%1").arg(m_bookmarks.at(i)->unc()));
     bookmark->setFlags(Qt::ItemIsSelectable|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled|Qt::ItemIsDragEnabled);
     
     if (!m_bookmarks.at(i)->groupName().isEmpty())
     {
-      QList<QTreeWidgetItem *> items = m_tree_widget->findItems(m_bookmarks.at( i )->groupName(), Qt::MatchFixedString|Qt::MatchCaseSensitive, 0);
+      QList<QTreeWidgetItem *> items = m_tree_widget->findItems(m_bookmarks.at(i)->groupName(), Qt::MatchFixedString|Qt::MatchCaseSensitive, 0);
       
       if (!items.isEmpty())
       {
@@ -563,16 +599,16 @@ void Smb4KBookmarkEditor::loadBookmarks( const QList<Smb4KBookmark *> &bookmarks
   }
 
   // Sort
-  for ( int i = 0; i < m_tree_widget->topLevelItemCount(); ++i )
+  for (int i = 0; i < m_tree_widget->topLevelItemCount(); ++i)
   {
-    m_tree_widget->topLevelItem( i )->sortChildren( (m_tree_widget->columnCount() - 1), Qt::AscendingOrder );
+    m_tree_widget->topLevelItem(i)->sortChildren((m_tree_widget->columnCount() - 1), Qt::AscendingOrder);
   }
   
-  m_tree_widget->sortItems( (m_tree_widget->columnCount() - 1), Qt::AscendingOrder );
+  m_tree_widget->sortItems((m_tree_widget->columnCount() - 1), Qt::AscendingOrder);
   
   // Check that an empty goup entry is also present. If it is not there,
   // add it now and insert the groups to the group combo box afterwards.
-  if ( !m_groups.contains( "" ) && !m_groups.contains( QString() ) )
+  if (!m_groups.contains("") && !m_groups.contains(QString()))
   {
     m_groups << "";
   }
@@ -581,18 +617,18 @@ void Smb4KBookmarkEditor::loadBookmarks( const QList<Smb4KBookmark *> &bookmarks
     // Do nothing
   }
   
-  m_group_combo->addItems( m_groups );
-  m_group_combo->setCurrentItem( "" );
+  m_group_combo->addItems(m_groups);
+  m_group_combo->setCurrentItem("");
 }
 
 
-Smb4KBookmark *Smb4KBookmarkEditor::findBookmark( const KUrl &url )
+Smb4KBookmark *Smb4KBookmarkEditor::findBookmark(const QUrl &url)
 {
-  Smb4KBookmark *bookmark = NULL;
+  Smb4KBookmark *bookmark = 0;
 
-  for ( int i = 0; i < m_bookmarks.size(); ++i )
+  for (int i = 0; i < m_bookmarks.size(); ++i)
   {
-    if ( m_bookmarks.at( i )->url() == url )
+    if (m_bookmarks.at(i)->url() == url)
     {
       bookmark = m_bookmarks[i];
       break;
@@ -607,26 +643,26 @@ Smb4KBookmark *Smb4KBookmarkEditor::findBookmark( const KUrl &url )
 }
 
 
-void Smb4KBookmarkEditor::slotItemClicked( QTreeWidgetItem *item, int /*col*/ )
+void Smb4KBookmarkEditor::slotItemClicked(QTreeWidgetItem *item, int /*col*/)
 {
-  if ( item )
+  if (item)
   {
-    if ( m_tree_widget->indexOfTopLevelItem( item ) != -1 )
+    if (m_tree_widget->indexOfTopLevelItem(item) != -1)
     {
       // This is a top-level item, i.e. it is either a bookmark without
       // group or a group entry.
       // Bookmarks have an URL stored, group folders not.
-      if ( !item->data( 0, QTreeWidgetItem::UserType ).toUrl().isEmpty() )
+      if (!item->data(0, QTreeWidgetItem::UserType).toUrl().isEmpty())
       {
-        Smb4KBookmark *bookmark = findBookmark( item->data( 0, QTreeWidgetItem::UserType ).toUrl() );
+        Smb4KBookmark *bookmark = findBookmark(item->data(0, QTreeWidgetItem::UserType).toUrl());
 
-        if ( bookmark )
+        if (bookmark)
         {
-          m_label_edit->setText( bookmark->label() );
-          m_login_edit->setText( bookmark->login() );
-          m_ip_edit->setText( bookmark->hostIP() );
-          m_group_combo->setCurrentItem( bookmark->groupName() );
-          m_editors->setEnabled( true );
+          m_label_edit->setText(bookmark->label());
+          m_login_edit->setText(bookmark->login());
+          m_ip_edit->setText(bookmark->hostIP());
+          m_group_combo->setCurrentItem(bookmark->groupName());
+          m_editors->setEnabled(true);
         }
         else
         {
@@ -634,7 +670,7 @@ void Smb4KBookmarkEditor::slotItemClicked( QTreeWidgetItem *item, int /*col*/ )
           m_login_edit->clear();
           m_ip_edit->clear();
           m_group_combo->clearEditText();
-          m_editors->setEnabled( false );
+          m_editors->setEnabled(false);
         }
       }
       else
@@ -643,21 +679,21 @@ void Smb4KBookmarkEditor::slotItemClicked( QTreeWidgetItem *item, int /*col*/ )
         m_login_edit->clear();
         m_ip_edit->clear();
         m_group_combo->clearEditText();
-        m_editors->setEnabled( false );
+        m_editors->setEnabled(false);
       }
     }
     else
     {
       // This can only be a bookmark.
-      Smb4KBookmark *bookmark = findBookmark( item->data( 0, QTreeWidgetItem::UserType ).toUrl() );
+      Smb4KBookmark *bookmark = findBookmark(item->data(0, QTreeWidgetItem::UserType).toUrl());
 
-      if ( bookmark )
+      if (bookmark)
       {
-        m_label_edit->setText( bookmark->label() );
-        m_login_edit->setText( bookmark->login() );
-        m_ip_edit->setText( bookmark->hostIP() );
-        m_group_combo->setCurrentItem( bookmark->groupName() );
-        m_editors->setEnabled( true );
+        m_label_edit->setText(bookmark->label());
+        m_login_edit->setText(bookmark->login());
+        m_ip_edit->setText(bookmark->hostIP());
+        m_group_combo->setCurrentItem(bookmark->groupName());
+        m_editors->setEnabled(true);
       }
       else
       {
@@ -665,7 +701,7 @@ void Smb4KBookmarkEditor::slotItemClicked( QTreeWidgetItem *item, int /*col*/ )
         m_login_edit->clear();
         m_ip_edit->clear();
         m_group_combo->clearEditText();
-        m_editors->setEnabled( false );
+        m_editors->setEnabled(false);
       }
     }
   }
@@ -675,29 +711,29 @@ void Smb4KBookmarkEditor::slotItemClicked( QTreeWidgetItem *item, int /*col*/ )
     m_login_edit->clear();
     m_ip_edit->clear();
     m_group_combo->clearEditText();
-    m_editors->setEnabled( false );
+    m_editors->setEnabled(false);
   }
 }
 
 
-void Smb4KBookmarkEditor::slotContextMenuRequested( const QPoint &pos )
+void Smb4KBookmarkEditor::slotContextMenuRequested(const QPoint &pos)
 {
-  QTreeWidgetItem *item = m_tree_widget->itemAt( pos );
-  m_delete->setEnabled( (item) );
-  m_menu->menu()->popup( m_tree_widget->viewport()->mapToGlobal( pos ) );  
+  QTreeWidgetItem *item = m_tree_widget->itemAt(pos);
+  m_delete->setEnabled((item));
+  m_menu->menu()->popup(m_tree_widget->viewport()->mapToGlobal(pos));  
 }
 
 
 void Smb4KBookmarkEditor::slotLabelEdited()
 {
   // Set the label
-  KUrl url = m_tree_widget->currentItem()->data( 0, QTreeWidgetItem::UserType ).toUrl();
+  QUrl url = m_tree_widget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl();
 
-  Smb4KBookmark *bookmark = findBookmark( url );
+  Smb4KBookmark *bookmark = findBookmark(url);
 
-  if ( bookmark )
+  if (bookmark)
   {
-    bookmark->setLabel( m_label_edit->userText() );
+    bookmark->setLabel(m_label_edit->userText());
   }
   else
   {
@@ -707,9 +743,9 @@ void Smb4KBookmarkEditor::slotLabelEdited()
   // Add label to completion object
   KCompletion *completion = m_label_edit->completionObject();
 
-  if ( !m_label_edit->userText().isEmpty() )
+  if (!m_label_edit->userText().isEmpty())
   {
-    completion->addItem( m_label_edit->userText() );
+    completion->addItem(m_label_edit->userText());
   }
   else
   {
@@ -721,13 +757,13 @@ void Smb4KBookmarkEditor::slotLabelEdited()
 void Smb4KBookmarkEditor::slotLoginEdited()
 {
   // Set the login
-  KUrl url = m_tree_widget->currentItem()->data( 0, QTreeWidgetItem::UserType ).toUrl();
+  QUrl url = m_tree_widget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl();
 
-  Smb4KBookmark *bookmark = findBookmark( url );
+  Smb4KBookmark *bookmark = findBookmark(url);
 
-  if ( bookmark )
+  if (bookmark)
   {
-    bookmark->setLogin( m_login_edit->userText() );
+    bookmark->setLogin(m_login_edit->userText());
   }
   else
   {
@@ -737,9 +773,9 @@ void Smb4KBookmarkEditor::slotLoginEdited()
   // Add login to completion object
   KCompletion *completion = m_login_edit->completionObject();
 
-  if ( !m_login_edit->userText().isEmpty() )
+  if (!m_login_edit->userText().isEmpty())
   {
-    completion->addItem( m_login_edit->userText() );
+    completion->addItem(m_login_edit->userText());
   }
   else
   {
@@ -751,13 +787,13 @@ void Smb4KBookmarkEditor::slotLoginEdited()
 void Smb4KBookmarkEditor::slotIPEdited()
 {
   // Set the ip address
-  KUrl url = m_tree_widget->currentItem()->data( 0, QTreeWidgetItem::UserType ).toUrl();
+  QUrl url = m_tree_widget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl();
 
-  Smb4KBookmark *bookmark = findBookmark( url );
+  Smb4KBookmark *bookmark = findBookmark(url);
 
-  if ( bookmark )
+  if (bookmark)
   {
-    bookmark->setHostIP( m_ip_edit->userText() );
+    bookmark->setHostIP(m_ip_edit->userText());
   }
   else
   {
@@ -767,9 +803,9 @@ void Smb4KBookmarkEditor::slotIPEdited()
   // Add login to completion object
   KCompletion *completion = m_ip_edit->completionObject();
 
-  if ( !m_ip_edit->userText().isEmpty() )
+  if (!m_ip_edit->userText().isEmpty())
   {
-    completion->addItem( m_ip_edit->userText() );
+    completion->addItem(m_ip_edit->userText());
   }
   else
   {
@@ -782,7 +818,7 @@ void Smb4KBookmarkEditor::slotGroupEdited()
 {
   // Do not do anything if either there is no current item
   // or the current item is not selected.
-  if ( !(m_tree_widget->currentItem() && m_tree_widget->currentItem()->isSelected()) )
+  if (!(m_tree_widget->currentItem() && m_tree_widget->currentItem()->isSelected()))
   {
     return;
   }
@@ -794,10 +830,10 @@ void Smb4KBookmarkEditor::slotGroupEdited()
   // Get the URL of the current item. We need to do this
   // here, because after the following operation there is
   // no current item anymore.
-  KUrl url = m_tree_widget->currentItem()->data( 0, QTreeWidgetItem::UserType ).toUrl();
+  QUrl url = m_tree_widget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl();
 
   // Return here if the item is a group
-  if ( url.isEmpty() )
+  if (url.isEmpty())
   {
     return;
   }
@@ -806,11 +842,11 @@ void Smb4KBookmarkEditor::slotGroupEdited()
     // Do nothing
   }
   
-  Smb4KBookmark *bookmark = findBookmark( url );
+  Smb4KBookmark *bookmark = findBookmark(url);
 
-  if ( bookmark )
+  if (bookmark)
   {
-    bookmark->setGroupName( m_group_combo->currentText() );
+    bookmark->setGroupName(m_group_combo->currentText());
   }
   else
   {
@@ -818,9 +854,9 @@ void Smb4KBookmarkEditor::slotGroupEdited()
   }
   
   // Move the current item to the group
-  QList<QTreeWidgetItem *> items = m_tree_widget->findItems( m_group_combo->currentText(), Qt::MatchFixedString|Qt::MatchCaseSensitive, 0 );
+  QList<QTreeWidgetItem *> items = m_tree_widget->findItems(m_group_combo->currentText(), Qt::MatchFixedString|Qt::MatchCaseSensitive, 0);
 
-  if ( !items.isEmpty() )
+  if (!items.isEmpty())
   {
     // There has to be only one entry in the items list, 
     // because we let findItems() only search the top level.
@@ -830,31 +866,31 @@ void Smb4KBookmarkEditor::slotGroupEdited()
     // belongs to a group.
     int index = 0;
     
-    if ( (index = m_tree_widget->indexOfTopLevelItem( m_tree_widget->currentItem() )) != -1 )
+    if ((index = m_tree_widget->indexOfTopLevelItem(m_tree_widget->currentItem())) != -1)
     {
       // The current item is a top level item, so remove
       // it from the top level...
-      QTreeWidgetItem *bookmark_item = m_tree_widget->takeTopLevelItem( index );
+      QTreeWidgetItem *bookmark_item = m_tree_widget->takeTopLevelItem(index);
 
       // ... and add it to the group
-      items.at( 0 )->addChild( bookmark_item );
+      items.at(0)->addChild(bookmark_item);
     }
     else
     {
       // The current item is already in a group. First check
       // that it is not the same as the one that is to be set.
-      if ( m_tree_widget->currentItem()->parent() != items.first() )
+      if (m_tree_widget->currentItem()->parent() != items.first())
       {
-        index = m_tree_widget->currentItem()->parent()->indexOfChild( m_tree_widget->currentItem() );
+        index = m_tree_widget->currentItem()->parent()->indexOfChild(m_tree_widget->currentItem());
 
         // Remove the item from the current group...
-        QTreeWidgetItem *bookmark_item = m_tree_widget->currentItem()->parent()->takeChild( index );
+        QTreeWidgetItem *bookmark_item = m_tree_widget->currentItem()->parent()->takeChild(index);
 
         // ... and add it to the new one
-        items.at( 0 )->addChild( bookmark_item );
+        items.at(0)->addChild(bookmark_item);
 
         // Finally expand the group
-        items.at( 0 )->setExpanded( true );
+        items.at(0)->setExpanded(true);
       }
       else
       {
@@ -866,63 +902,63 @@ void Smb4KBookmarkEditor::slotGroupEdited()
   {
     // We do not create an empty group. In this case, the item is move 
     // to the top level instead.
-    if ( !m_group_combo->currentText().trimmed().isEmpty() )
+    if (!m_group_combo->currentText().trimmed().isEmpty())
     {
       // Create a new group item and add it to the widget
-      QTreeWidgetItem *group = new QTreeWidgetItem( QTreeWidgetItem::UserType );
-      group->setIcon( 0, KIcon( "folder-bookmark" ) );
-      group->setText( 0, m_group_combo->currentText() );
-      group->setText( (m_tree_widget->columnCount() - 1), QString( "00_%1" ).arg( m_group_combo->currentText() ) );
-      m_tree_widget->addTopLevelItem( group );
-      m_tree_widget->sortItems( (m_tree_widget->columnCount() - 1), Qt::AscendingOrder );
+      QTreeWidgetItem *group = new QTreeWidgetItem(QTreeWidgetItem::UserType);
+      group->setIcon(0, KDE::icon("folder-bookmark"));
+      group->setText(0, m_group_combo->currentText());
+      group->setText((m_tree_widget->columnCount() - 1), QString("00_%1").arg(m_group_combo->currentText()));
+      m_tree_widget->addTopLevelItem(group);
+      m_tree_widget->sortItems((m_tree_widget->columnCount() - 1), Qt::AscendingOrder);
 
       // Check if the current item is a top level item or already
       // belongs to a group.
       int index = 0;
 
-      if ( (index = m_tree_widget->indexOfTopLevelItem( m_tree_widget->currentItem() )) != -1 )
+      if ((index = m_tree_widget->indexOfTopLevelItem(m_tree_widget->currentItem())) != -1)
       {
         // The current item is a top level item, so remove
         // it from the top level...
-        QTreeWidgetItem *bookmark_item = m_tree_widget->takeTopLevelItem( index );
+        QTreeWidgetItem *bookmark_item = m_tree_widget->takeTopLevelItem(index);
 
         // ... and add it to the group
-        group->addChild( bookmark_item );
+        group->addChild(bookmark_item);
       }
       else
       {
         // The current item is already in a group. Get its index...
-        index = m_tree_widget->currentItem()->parent()->indexOfChild( m_tree_widget->currentItem() );
+        index = m_tree_widget->currentItem()->parent()->indexOfChild(m_tree_widget->currentItem());
 
         // ... remove it from the current group...
-        QTreeWidgetItem *bookmark_item = m_tree_widget->currentItem()->parent()->takeChild( index );
+        QTreeWidgetItem *bookmark_item = m_tree_widget->currentItem()->parent()->takeChild(index);
 
         // ... and add it to the new one
-        group->addChild( bookmark_item );
+        group->addChild(bookmark_item);
 
         // Finally expand the group
-        group->setExpanded( true );
+        group->setExpanded(true);
       }
 
       // Add the group to the combo box
-      m_group_combo->addItem( m_group_combo->currentText() );
-      m_group_combo->completionObject()->addItem( m_group_combo->currentText() );
+      m_group_combo->addItem(m_group_combo->currentText());
+      m_group_combo->completionObject()->addItem(m_group_combo->currentText());
     }
     else
     {
       // Check if the current item is a top level item or belongs to a group.
       int index = 0;
 
-      if ( (index = m_tree_widget->indexOfTopLevelItem( m_tree_widget->currentItem() )) == -1 )
+      if ((index = m_tree_widget->indexOfTopLevelItem(m_tree_widget->currentItem())) == -1)
       {
         // The current item is already in a group. Get its index...
-        index = m_tree_widget->currentItem()->parent()->indexOfChild( m_tree_widget->currentItem() );
+        index = m_tree_widget->currentItem()->parent()->indexOfChild(m_tree_widget->currentItem());
 
         // ... remove it from the current group...
-        QTreeWidgetItem *bookmark_item = m_tree_widget->currentItem()->parent()->takeChild( index );
+        QTreeWidgetItem *bookmark_item = m_tree_widget->currentItem()->parent()->takeChild(index);
 
         // ... and add it to the top level
-        m_tree_widget->addTopLevelItem( bookmark_item );
+        m_tree_widget->addTopLevelItem(bookmark_item);
       }
       else
       {
@@ -932,14 +968,14 @@ void Smb4KBookmarkEditor::slotGroupEdited()
   }
 
   // Clear the editor widgets if necessary and disable them
-  if ( !m_tree_widget->currentItem() ||
-       m_tree_widget->currentItem()->data( 0, QTreeWidgetItem::UserType ).toUrl() != url )
+  if (!m_tree_widget->currentItem() ||
+       m_tree_widget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl() != url)
   {
     m_label_edit->clear();
     m_login_edit->clear();
     m_ip_edit->clear();
     m_group_combo->clearEditText();
-    m_editors->setEnabled( false );
+    m_editors->setEnabled(false);
   }
   else
   {
@@ -947,9 +983,9 @@ void Smb4KBookmarkEditor::slotGroupEdited()
   }
 
   // Add the group name to the combo box
-  if ( m_group_combo->findText( m_group_combo->currentText() ) == -1 )
+  if (m_group_combo->findText(m_group_combo->currentText()) == -1)
   {
-    m_group_combo->addItem( m_group_combo->currentText() );
+    m_group_combo->addItem(m_group_combo->currentText());
   }
   else
   {
@@ -959,9 +995,9 @@ void Smb4KBookmarkEditor::slotGroupEdited()
   // Add group to completion object
   KCompletion *completion = m_group_combo->completionObject();
 
-  if ( !m_group_combo->currentText().isEmpty() )
+  if (!m_group_combo->currentText().isEmpty())
   {
-    completion->addItem( m_group_combo->currentText() );
+    completion->addItem(m_group_combo->currentText());
   }
   else
   {
@@ -970,28 +1006,28 @@ void Smb4KBookmarkEditor::slotGroupEdited()
 }
 
 
-void Smb4KBookmarkEditor::slotAddGroupTriggered( bool /*checked*/ )
+void Smb4KBookmarkEditor::slotAddGroupTriggered(bool /*checked*/)
 {
   bool ok = false;
   
-  QString group_name = KInputDialog::getText( i18n( "Add Group" ), i18n( "Group name:" ),
-                                              QString(), &ok, this );
+  QString group_name = QInputDialog::getText(this, i18n("Add Group"), i18n("Group name:"), 
+                                             QLineEdit::Normal, QString(), &ok);
 
-  if ( ok && !group_name.isEmpty() &&
-       m_tree_widget->findItems( group_name, Qt::MatchFixedString|Qt::MatchCaseSensitive, 0 ).isEmpty() )
+  if (ok && !group_name.isEmpty() &&
+       m_tree_widget->findItems(group_name, Qt::MatchFixedString|Qt::MatchCaseSensitive, 0).isEmpty())
   {
     // Create a new group item and add it to the widget
-    QTreeWidgetItem *group = new QTreeWidgetItem( QTreeWidgetItem::UserType );
-    group->setIcon( 0, KIcon( "folder-bookmark" ) );
-    group->setText( 0, group_name );
-    group->setText( (m_tree_widget->columnCount() - 1), QString( "00_%1" ).arg( group_name ) );
-    group->setFlags( Qt::ItemIsSelectable|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled|Qt::ItemIsDropEnabled ) ;
-    m_tree_widget->addTopLevelItem( group );
-    m_tree_widget->sortItems( (m_tree_widget->columnCount() - 1), Qt::AscendingOrder );
+    QTreeWidgetItem *group = new QTreeWidgetItem(QTreeWidgetItem::UserType);
+    group->setIcon(0, KDE::icon("folder-bookmark"));
+    group->setText(0, group_name);
+    group->setText((m_tree_widget->columnCount() - 1), QString("00_%1").arg(group_name));
+    group->setFlags(Qt::ItemIsSelectable|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled|Qt::ItemIsDropEnabled) ;
+    m_tree_widget->addTopLevelItem(group);
+    m_tree_widget->sortItems((m_tree_widget->columnCount() - 1), Qt::AscendingOrder);
 
     // Add the group to the combo box
-    m_group_combo->addItem( group_name );
-    m_group_combo->completionObject()->addItem( group_name );
+    m_group_combo->addItem(group_name);
+    m_group_combo->completionObject()->addItem(group_name);
   }
   else
   {
@@ -1000,18 +1036,18 @@ void Smb4KBookmarkEditor::slotAddGroupTriggered( bool /*checked*/ )
 }
 
 
-void Smb4KBookmarkEditor::slotDeleteTriggered( bool /*checked*/ )
+void Smb4KBookmarkEditor::slotDeleteTriggered(bool /*checked*/)
 {
   QList<QTreeWidgetItem *> selected = m_tree_widget->selectedItems();
 
-  while ( !selected.isEmpty() )
+  while (!selected.isEmpty())
   {
     delete selected.takeFirst();
   }
 }
 
 
-void Smb4KBookmarkEditor::slotClearTriggered( bool /*checked*/ )
+void Smb4KBookmarkEditor::slotClearTriggered(bool /*checked*/)
 {
   // Clear the tree widget. Removing bookmarks is done when
   // the dialog is closed.
@@ -1019,57 +1055,48 @@ void Smb4KBookmarkEditor::slotClearTriggered( bool /*checked*/ )
 }
 
 
-void Smb4KBookmarkEditor::slotUserClickedButton( KDialog::ButtonCode code )
+void Smb4KBookmarkEditor::slotDialogAccepted()
 {
-  switch ( code )
+  // Remove obsolete bookmarks.
+  // We can assume that each server in the network has a unique 
+  // name, so we only need to test for the UNC and are done.
+  QMutableListIterator<Smb4KBookmark *> it(m_bookmarks);
+
+  while (it.hasNext())
   {
-    case KDialog::Ok:
-    {
-      // Remove obsolete bookmarks.
-      // We can assume that each server in the network has a unique 
-      // name, so we only need to test for the UNC and are done.
-      QMutableListIterator<Smb4KBookmark *> it( m_bookmarks );
-
-      while ( it.hasNext() )
-      {
-        Smb4KBookmark *bookmark = it.next();
+    Smb4KBookmark *bookmark = it.next();
         
-        QList<QTreeWidgetItem *> items = m_tree_widget->findItems( bookmark->unc(), Qt::MatchFixedString|Qt::MatchCaseSensitive|Qt::MatchRecursive, 0 );
+    QList<QTreeWidgetItem *> items = m_tree_widget->findItems(bookmark->unc(), Qt::MatchFixedString|Qt::MatchCaseSensitive|Qt::MatchRecursive, 0);
 
-        if ( items.isEmpty() )
-        {
-          it.remove();
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-
-      KConfigGroup group( Smb4KSettings::self()->config(), "BookmarkEditor" );
-      saveDialogSize( group, KConfigGroup::Normal );
-      group.writeEntry( "LabelCompletion", m_label_edit->completionObject()->items() );
-      group.writeEntry( "LoginCompletion", m_login_edit->completionObject()->items() );
-      group.writeEntry( "IPCompletion", m_ip_edit->completionObject()->items() );
-      group.writeEntry( "GroupCompletion", m_group_combo->completionObject()->items() );
-      break;
-    }
-    default:
+    if (items.isEmpty())
     {
-      break;
+      it.remove();
+    }
+    else
+    {
+      // Do nothing
     }
   }
+
+  KConfigGroup group(Smb4KSettings::self()->config(), "BookmarkEditor");
+  KWindowConfig::saveWindowSize(windowHandle(), group);
+  group.writeEntry("LabelCompletion", m_label_edit->completionObject()->items());
+  group.writeEntry("LoginCompletion", m_login_edit->completionObject()->items());
+  group.writeEntry("IPCompletion", m_ip_edit->completionObject()->items());
+  group.writeEntry("GroupCompletion", m_group_combo->completionObject()->items());
+  
+  accept();
 }
 
 
-void Smb4KBookmarkEditor::slotIconSizeChanged( int group )
+void Smb4KBookmarkEditor::slotIconSizeChanged(int group)
 {
-  switch ( group )
+  switch (group)
   {
     case KIconLoader::Small:
     {
-      int icon_size = KIconLoader::global()->currentSize( KIconLoader::Small );
-      m_tree_widget->setIconSize( QSize( icon_size, icon_size ) );
+      int icon_size = KIconLoader::global()->currentSize(KIconLoader::Small);
+      m_tree_widget->setIconSize(QSize(icon_size, icon_size));
       break;
     }
     default:
@@ -1083,14 +1110,14 @@ void Smb4KBookmarkEditor::slotIconSizeChanged( int group )
 void Smb4KBookmarkEditor::slotAdjust()
 {
   // Do the necessary adjustments:
-  QTreeWidgetItemIterator it( m_tree_widget );
-  while ( *it )
+  QTreeWidgetItemIterator it(m_tree_widget);
+  while (*it)
   {
-    if ( !(*it)->parent() )
+    if (!(*it)->parent())
     {
-      if ( (*it)->data( 0, QTreeWidgetItem::UserType ).toUrl().isEmpty() )
+      if ((*it)->data(0, QTreeWidgetItem::UserType).toUrl().isEmpty())
       {
-        if ( (*it)->childCount() == 0 )
+        if ((*it)->childCount() == 0)
         {
           delete *it;
         }
@@ -1101,9 +1128,9 @@ void Smb4KBookmarkEditor::slotAdjust()
       }
       else
       {
-        Smb4KBookmark *bookmark = findBookmark((*it)->data( 0, QTreeWidgetItem::UserType ).toUrl());
+        Smb4KBookmark *bookmark = findBookmark((*it)->data(0, QTreeWidgetItem::UserType).toUrl());
       
-        if ( bookmark )
+        if (bookmark)
         {
           bookmark->setGroupName("");
         }
@@ -1115,9 +1142,9 @@ void Smb4KBookmarkEditor::slotAdjust()
     }
     else
     {
-      Smb4KBookmark *bookmark = findBookmark((*it)->data( 0, QTreeWidgetItem::UserType ).toUrl());
+      Smb4KBookmark *bookmark = findBookmark((*it)->data(0, QTreeWidgetItem::UserType).toUrl());
       
-      if ( bookmark )
+      if (bookmark)
       {
         bookmark->setGroupName((*it)->parent()->text(0));
       }
@@ -1129,8 +1156,4 @@ void Smb4KBookmarkEditor::slotAdjust()
     ++it;
   }
 }
-
-
-
-#include "smb4kbookmarkhandler_p.moc"
 

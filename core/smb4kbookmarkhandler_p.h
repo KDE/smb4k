@@ -2,7 +2,7 @@
     smb4kbookmarkhandler_p  -  Private classes for the bookmark handler
                              -------------------
     begin                : Sun Mar 20 2011
-    copyright            : (C) 2011-2014 by Alexander Reinholdt
+    copyright            : (C) 2011-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -32,17 +32,20 @@
 
 // Qt includes
 #include <QtCore/QString>
-#include <QtGui/QTreeWidget>
+#include <QtCore/QUrl>
+#include <QtWidgets/QTreeWidget>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QListWidget>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QPushButton>
 
 // KDE includes
-#include <kdialog.h>
-#include <klistwidget.h>
-#include <klineedit.h>
-#include <kcombobox.h>
-#include <kactionmenu.h>
+#include <KCompletion/KLineEdit>
+#include <KCompletion/KComboBox>
+#include <KWidgetsAddons/KActionMenu>
 
 
-class KDE_EXPORT Smb4KBookmarkDialog : public KDialog
+class Q_DECL_EXPORT Smb4KBookmarkDialog : public QDialog
 {
   Q_OBJECT
 
@@ -56,9 +59,9 @@ class KDE_EXPORT Smb4KBookmarkDialog : public KDialog
      *
      * @param parent          The parent widget
      */
-    Smb4KBookmarkDialog( const QList<Smb4KBookmark *> &bookmarks,
-                         const QStringList &groups,
-                         QWidget *parent );
+    Smb4KBookmarkDialog(const QList<Smb4KBookmark *> &bookmarks,
+                        const QStringList &groups,
+                        QWidget *parent);
 
    /**
     * The destructor
@@ -77,7 +80,7 @@ class KDE_EXPORT Smb4KBookmarkDialog : public KDialog
     /**
      * Called when a bookmark was clicked in the list widget.
      */
-    void slotBookmarkClicked( QListWidgetItem *bookmark_item );
+    void slotBookmarkClicked(QListWidgetItem *bookmark_item);
 
     /**
      * Called when the label is edited by the user
@@ -90,30 +93,40 @@ class KDE_EXPORT Smb4KBookmarkDialog : public KDialog
     void slotGroupEdited();
 
     /**
-     * Called when a button was clicked
+     * Called when the OK button was clicked
      */
-    void slotUserClickedButton( KDialog::ButtonCode code );
+    void slotDialogAccepted();
 
     /**
      * Called when the icon size changed
      */
-    void slotIconSizeChanged( int group );
+    void slotIconSizeChanged(int group);
     
   private:
     /**
      * Sets up the view
      */
     void setupView();
-
+    
     /**
      * Load the list of bookmarks and the one of the groups
      */
-    void loadLists( const QList<Smb4KBookmark *> &bookmarks, const QStringList &groups );
+    void loadLists(const QList<Smb4KBookmark *> &bookmarks, const QStringList &groups);
 
     /**
      * Finds the bookmark in the list
      */
-    Smb4KBookmark *findBookmark( const KUrl &url );
+    Smb4KBookmark *findBookmark(const QUrl &url);
+    
+    /**
+     * Ok push button
+     */
+    QPushButton *m_ok_button;
+    
+    /**
+     * Cancel push button
+     */
+    QPushButton *m_cancel_button;
 
     /**
      * The list of bookmarks
@@ -128,7 +141,7 @@ class KDE_EXPORT Smb4KBookmarkDialog : public KDialog
     /**
      * The tree widget for the potential bookmarks
      */
-    KListWidget *m_widget;
+    QListWidget *m_widget;
 
     /**
      * The widget containing the editors
@@ -147,7 +160,7 @@ class KDE_EXPORT Smb4KBookmarkDialog : public KDialog
 };
 
 
-class KDE_EXPORT Smb4KBookmarkEditor : public KDialog
+class Q_DECL_EXPORT Smb4KBookmarkEditor : public QDialog
 {
   Q_OBJECT
 
@@ -159,8 +172,8 @@ class KDE_EXPORT Smb4KBookmarkEditor : public KDialog
      *
      * @param parent      The parent of this dialog.
      */
-    explicit Smb4KBookmarkEditor( const QList<Smb4KBookmark *> &bookmarks,
-                                  QWidget *parent = 0 );
+    explicit Smb4KBookmarkEditor(const QList<Smb4KBookmark *> &bookmarks,
+                                 QWidget *parent = 0);
 
     /**
      * The destructor.
@@ -180,20 +193,19 @@ class KDE_EXPORT Smb4KBookmarkEditor : public KDialog
     /**
      * Reimplemented from QObject
      */
-    bool eventFilter( QObject *obj,
-                      QEvent *e );
+    bool eventFilter(QObject *obj,
+                     QEvent *e);
 
   protected Q_SLOTS:
     /**
      * Called when a bookmark was clicked
      */
-    void slotItemClicked( QTreeWidgetItem *item,
-                          int col );
+    void slotItemClicked(QTreeWidgetItem *item, int col);
 
     /**
      * Called when the context menu was requested
      */
-    void slotContextMenuRequested( const QPoint &pos );
+    void slotContextMenuRequested(const QPoint &pos);
     
     /**
      * Called when the label is edited by the user
@@ -218,27 +230,27 @@ class KDE_EXPORT Smb4KBookmarkEditor : public KDialog
     /**
      * Called when the add action was triggered
      */
-    void slotAddGroupTriggered( bool checked );
+    void slotAddGroupTriggered(bool checked);
 
     /**
      * Called when the delete action was triggered
      */
-    void slotDeleteTriggered( bool checked );
+    void slotDeleteTriggered(bool checked);
 
     /**
      * Called when the clear action was triggered
      */
-    void slotClearTriggered( bool checked );
+    void slotClearTriggered(bool checked);
     
     /**
-     * Called when a button was clicked
+     * Called when the Ok button was clicked
      */
-    void slotUserClickedButton( KDialog::ButtonCode code );
+    void slotDialogAccepted();
     
     /**
      * Called when the icon size changed
      */
-    void slotIconSizeChanged( int group );
+    void slotIconSizeChanged(int group);
     
     void slotAdjust();
 
@@ -251,13 +263,24 @@ class KDE_EXPORT Smb4KBookmarkEditor : public KDialog
     /**
      * Load bookmarks
      */
-    void loadBookmarks( const QList<Smb4KBookmark *> &bookmarks );
+    void loadBookmarks(const QList<Smb4KBookmark *> &bookmarks);
 
     /**
      * Finds the bookmark in the list
      */
-    Smb4KBookmark *findBookmark( const KUrl &url );
+    Smb4KBookmark *findBookmark(const QUrl &url);
+    
+    /**
+     * Ok push button
+     */
+    QPushButton *m_ok_button;
+    
+    /**
+     * Cancel push button
+     */
+    QPushButton *m_cancel_button;
 
+    
     /**
      * List of the bookmarks that are being processed
      */
@@ -306,17 +329,17 @@ class KDE_EXPORT Smb4KBookmarkEditor : public KDialog
     /**
      * Add group action
      */
-    KAction *m_add_group;
+    QAction *m_add_group;
 
     /**
      * Delete action
      */
-    KAction *m_delete;
+    QAction *m_delete;
 
     /**
      * Clear action
      */
-    KAction *m_clear;
+    QAction *m_clear;
 };
 
 
