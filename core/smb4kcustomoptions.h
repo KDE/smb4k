@@ -33,10 +33,10 @@
 
 // Qt includes
 #include <QtCore/QScopedPointer>
+#include <QtCore/QUrl>
 
 // KDE includes
-#include <kdemacros.h>
-#include <kurl.h>
+#include <KCoreAddons/KUser>
 
 // forward declarations
 class Smb4KCustomOptionsPrivate;
@@ -51,7 +51,7 @@ using namespace Smb4KGlobal;
  * @since 1.0.0
  */
 
-class KDE_EXPORT Smb4KCustomOptions
+class Q_DECL_EXPORT Smb4KCustomOptions
 {
   friend class Smb4KCustomOptionsPrivate;
   
@@ -94,9 +94,7 @@ class KDE_EXPORT Smb4KCustomOptions
                         Ntlmssp,
                         Ntlmsspi,
                         UndefinedSecurityMode };
-#endif
-                        
-#if defined(Q_OS_LINUX) || defined(Q_OS_SOLARIS)
+
     /**
      * The WriteAccess enumeration
      */
@@ -213,7 +211,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @param url             The URL
      */
-    void setURL(const KUrl &url);
+    void setURL(const QUrl &url);
     
     /**
      * Sets the UNC/URL of the network item
@@ -227,7 +225,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @returns the URL
      */
-    KUrl url() const;
+    QUrl url() const;
 
     /**
      * Returns the UNC in the form //HOST/Share.
@@ -311,9 +309,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * @returns the security mode
      */
     SecurityMode securityMode() const;
-#endif
-    
-#if defined(Q_OS_LINUX) || defined(Q_OS_SOLARIS)
+
     /**
      * Set the write access for either a single share or all shares of a host. 
      * 
@@ -358,48 +354,28 @@ class KDE_EXPORT Smb4KCustomOptions
     Kerberos useKerberos() const;
     
     /**
-     * Set the user id you want to use.
-     * 
-     * @param uid               The user id
+     * Set the user who owns the share.
+     * @param user    The user
      */
-    void setUID(K_UID uid);
+    void setUser(const KUser &user);
     
     /**
-     * Returns the user id that is to be used.
-     * 
-     * @returns the user id
+     * Returns the user who owns the share.
+     * @returns the user
      */
-    K_UID uid() const;
+    KUser user() const;
     
     /**
-     * This function returns the name of the owner as defined by the given
-     * UID.
-     * 
-     * @returns the owner's name
+     * Set the group that owns the share.
+     * @param group   The group
      */
-    QString owner() const; 
+    void setGroup(const KUserGroup &group);
     
     /**
-     * Set the group id you want to use.
-     * 
-     * @param gid               The group id
+     * Returns the group that owns the share.
+     * @returns the group
      */
-    void setGID(K_GID gid);
-    
-    /**
-     * Returns the group id that is to be used.
-     * 
-     * @returns the group id
-     */
-    K_GID gid() const;
-    
-    /**
-     * This function returns the name of the group as defined by the given
-     * GID.
-     * 
-     * @returns the owner's name
-     */
-    QString group() const;
+    KUserGroup group() const;
     
     /**
      * This function sets the MAC address of a host. In case the options 
