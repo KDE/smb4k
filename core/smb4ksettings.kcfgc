@@ -5,4 +5,4 @@ Mutators=true
 ItemAccessors=true
 SetUserTexts=true
 Inherits=KConfigSkeleton
-Visibility=KDE_EXPORT
+Visibility=Q_DECL_EXPORT
