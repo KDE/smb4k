@@ -2,7 +2,7 @@
     smb4khost  -  Smb4K's container class for information about a host.
                              -------------------
     begin                : Sa Jan 26 2008
-    copyright            : (C) 2008-2012 by Alexander Reinholdt
+    copyright            : (C) 2008-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -32,10 +32,7 @@
 // Qt includes
 #include <QtCore/QString>
 #include <QtCore/QScopedPointer>
-
-// KDE includes
-#include <kdemacros.h>
-#include <kurl.h>
+#include <QtCore/QUrl>
 
 // forward declarations
 class Smb4KAuthInfo;
@@ -49,7 +46,7 @@ class Smb4KHostPrivate;
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
+class Q_DECL_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
 {
   friend class Smb4KHostPrivate;
   
@@ -61,7 +58,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @param name                The name of the host
      */
-    explicit Smb4KHost( const QString &name );
+    explicit Smb4KHost(const QString &name);
 
     /**
      * The copy constructor. This constructor takes a Smb4KHost item as argument
@@ -69,7 +66,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @param host                The Smb4KHost object that is to be copied.
      */
-    Smb4KHost( const Smb4KHost &host );
+    Smb4KHost(const Smb4KHost &host);
 
     /**
      * The empty constructor. It does not take any argument and you have to set
@@ -87,7 +84,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @param name                The name of the host
      */
-    void setHostName( const QString &name );
+    void setHostName(const QString &name);
 
     /**
      * Returns the name of the host.
@@ -115,21 +112,21 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      * 
      * @param url             The URL of the network item
      */
-    void setURL( const KUrl &url );
+    void setURL(const QUrl &url);
     
     /**
      * Returns the URL (the full UNC) of the host item.
      * 
      * @returns the URL of the network item.
      */
-    KUrl url() const;
+    QUrl url() const;
 
     /**
      * Set the workgroup where this host is located.
      *
      * @param workgroup           The workgroup name
      */
-    void setWorkgroupName( const QString &workgroup );
+    void setWorkgroupName(const QString &workgroup);
 
     /**
      * Returns the name of the workgroup where this host is located.
@@ -144,7 +141,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @param ip                  The IP address of this host.
      */
-    void setIP( const QString &ip );
+    void setIP(const QString &ip);
 
     /**
      * Returns the IP address of the host. If the IP address was not
@@ -167,7 +164,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @param comment             The comment string
      */
-    void setComment( const QString &comment );
+    void setComment(const QString &comment);
 
     /**
      * Returns the comment that was defined or an empty string if there
@@ -185,8 +182,8 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @param osString            The "OS" string
      */
-    void setInfo( const QString &serverString = QString(),
-                  const QString &osString = QString() );
+    void setInfo(const QString &serverString = QString(),
+                  const QString &osString = QString());
 
     /**
      * With this function clears the server and OS string.
@@ -222,7 +219,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      * @param master              Set this to TRUE if the host is a master
      *                            browser.
      */
-    void setIsMasterBrowser( bool master );
+    void setIsMasterBrowser(bool master);
 
     /**
      * Returns TRUE if the host is a master browser and FALSE otherwise.
@@ -245,7 +242,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @param port            The port
      */
-    void setPort( int port );
+    void setPort(int port);
 
     /**
      * Returns the port that is used in the UNC.
@@ -263,12 +260,12 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns TRUE if the data that was compared is the same.
      */
-    bool equals( Smb4KHost *host ) const;
+    bool equals(Smb4KHost *host) const;
     
     /**
      * Operator to check if two hosts are equal.
      */
-    bool operator==( Smb4KHost host ) const { return equals( &host ); }
+    bool operator==(Smb4KHost host) const { return equals(&host); }
 
     /**
      * Set the authentication information for the host. This function will add
@@ -277,14 +274,14 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @param authInfo    The authentication information
      */
-    void setAuthInfo( Smb4KAuthInfo *authInfo );
+    void setAuthInfo(Smb4KAuthInfo *authInfo);
     
     /**
      * Set the login name for the host.
      *
      * @param login               The login name
      */
-    void setLogin( const QString &login );
+    void setLogin(const QString &login);
 
     /**
      * Returns the login name.
@@ -298,7 +295,7 @@ class KDE_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      * 
      * @param passwd              The password
      */
-    void setPassword( const QString &passwd );
+    void setPassword(const QString &passwd);
     
     /**
      * Returns the password.
