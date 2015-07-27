@@ -3,7 +3,7 @@
     workgroup.
                              -------------------
     begin                : Sa Jan 26 2008
-    copyright            : (C) 2008-2012 by Alexander Reinholdt
+    copyright            : (C) 2008-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -33,10 +33,8 @@
 // Qt includes
 #include <QtCore/QString>
 #include <QtCore/QScopedPointer>
+#include <QtCore/QUrl>
 
-// KDE includes
-#include <kdemacros.h>
-#include <kurl.h>
 
 // forward declarations
 class Smb4KWorkgroupPrivate;
@@ -49,7 +47,7 @@ class Smb4KWorkgroupPrivate;
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class KDE_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
+class Q_DECL_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
 {
   friend class Smb4KWorkgroupPrivate;
   
@@ -183,7 +181,7 @@ class KDE_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      * 
      * @returns the URL of the network item.
      */
-    KUrl url() const;
+    QUrl url() const;
 
   private:
     const QScopedPointer<Smb4KWorkgroupPrivate> d;
