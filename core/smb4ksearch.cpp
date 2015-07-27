@@ -2,7 +2,7 @@
     smb4ksearch  -  This class does custom searches
                              -------------------
     begin                : Tue Mar 08 2011
-    copyright            : (C) 2011-2012 by Alexander Reinholdt
+    copyright            : (C) 2011-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -40,22 +40,19 @@
 // Qt includes
 #include <QtCore/QTimer>
 #include <QtCore/QDebug>
-#include <QtGui/QApplication>
-
-// KDE includes
-#include <kglobal.h>
+#include <QtWidgets/QApplication>
 
 using namespace Smb4KGlobal;
 
-K_GLOBAL_STATIC( Smb4KSearchStatic, p );
+Q_GLOBAL_STATIC(Smb4KSearchStatic, p);
 
 
-Smb4KSearch::Smb4KSearch( QObject *parent )
-: KCompositeJob( parent ), d( new Smb4KSearchPrivate )
+Smb4KSearch::Smb4KSearch(QObject *parent)
+: KCompositeJob(parent), d(new Smb4KSearchPrivate)
 {
-  setAutoDelete( false );
+  setAutoDelete(false);
 
-  if ( !coreIsInitialized() )
+  if (!coreIsInitialized())
   {
     setDefaultSettings();
   }
@@ -64,7 +61,7 @@ Smb4KSearch::Smb4KSearch( QObject *parent )
     // Do nothing
   }
   
-  connect( QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()) );
+  connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()));
 }
 
 
@@ -79,9 +76,9 @@ Smb4KSearch *Smb4KSearch::self()
 }
 
 
-void Smb4KSearch::search( const QString &string, QWidget *parent )
+void Smb4KSearch::search(const QString &string, QWidget *parent)
 {
-  if ( string.trimmed().isEmpty() )
+  if (string.trimmed().isEmpty())
   {
     return;
   }
@@ -91,26 +88,26 @@ void Smb4KSearch::search( const QString &string, QWidget *parent )
   }
 
   // Get authentication information.
-  Smb4KHost *master_browser = NULL;
+  Smb4KHost *master_browser = 0;
 
-  if ( Smb4KSettings::masterBrowsersRequireAuth() )
+  if (Smb4KSettings::masterBrowsersRequireAuth())
   {
     // smbtree will be used and the master browser requires authentication. 
     // Lookup the authentication information for the master browser.
-    Smb4KWorkgroup *workgroup = findWorkgroup( Smb4KSettings::domainName() );
-    Smb4KHost *host = NULL;
+    Smb4KWorkgroup *workgroup = findWorkgroup(Smb4KSettings::domainName());
+    Smb4KHost *host = 0;
 
-    if ( workgroup )
+    if (workgroup)
     {
-      host = findHost( workgroup->masterBrowserName(), workgroup->workgroupName() );
+      host = findHost(workgroup->masterBrowserName(), workgroup->workgroupName());
 
-      if ( host )
+      if (host)
       {
         // Copy host item
-        master_browser = new Smb4KHost( *host );
+        master_browser = new Smb4KHost(*host);
         
         // Authentication information
-        Smb4KWalletManager::self()->readAuthInfo( master_browser );
+        Smb4KWalletManager::self()->readAuthInfo(master_browser);
       }
       else
       {
@@ -128,28 +125,28 @@ void Smb4KSearch::search( const QString &string, QWidget *parent )
   }
 
   // Create a new job and add it to the subjobs
-  Smb4KSearchJob *job = new Smb4KSearchJob( this );
-  job->setObjectName( QString( "SearchJob_%1" ).arg( string ) );
-  job->setupSearch( string, master_browser, parent );
+  Smb4KSearchJob *job = new Smb4KSearchJob(this);
+  job->setObjectName(QString("SearchJob_%1").arg(string));
+  job->setupSearch(string, master_browser, parent);
 
   delete master_browser;
 
-  connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
-  connect( job, SIGNAL(authError(Smb4KSearchJob*)), SLOT(slotAuthError(Smb4KSearchJob*)) );
-  connect( job, SIGNAL(result(Smb4KShare*)), SLOT(slotProcessSearchResult(Smb4KShare*)) );
-  connect( job, SIGNAL(aboutToStart(QString)), SIGNAL(aboutToStart(QString)) );
-  connect( job, SIGNAL(finished(QString)), SIGNAL(finished(QString)) );
+  connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
+  connect(job, SIGNAL(authError(Smb4KSearchJob*)), SLOT(slotAuthError(Smb4KSearchJob*)));
+  connect(job, SIGNAL(result(Smb4KShare*)), SLOT(slotProcessSearchResult(Smb4KShare*)));
+  connect(job, SIGNAL(aboutToStart(QString)), SIGNAL(aboutToStart(QString)));
+  connect(job, SIGNAL(finished(QString)), SIGNAL(finished(QString)));
 
-  if ( !hasSubjobs() && modifyCursor() )
+  if (!hasSubjobs() && modifyCursor())
   {
-    QApplication::setOverrideCursor( Qt::BusyCursor );
+    QApplication::setOverrideCursor(Qt::BusyCursor);
   }
   else
   {
     // Do nothing
   }
 
-  addSubjob( job );
+  addSubjob(job);
 
   job->start();
 }
@@ -161,13 +158,13 @@ bool Smb4KSearch::isRunning()
 }
 
 
-bool Smb4KSearch::isRunning( const QString &string )
+bool Smb4KSearch::isRunning(const QString &string)
 {
   bool running = false;
 
-  for ( int i = 0; i < subjobs().size(); ++i )
+  for (int i = 0; i < subjobs().size(); ++i)
   {
-    if ( QString::compare( QString( "SearchJob_%1" ).arg( string ), subjobs().at( i )->objectName() ) == 0 )
+    if (QString::compare(QString("SearchJob_%1").arg(string), subjobs().at(i)->objectName()) == 0)
     {
       running = true;
       break;
@@ -185,20 +182,20 @@ bool Smb4KSearch::isRunning( const QString &string )
 
 void Smb4KSearch::abortAll()
 {
-  for ( int i = 0; i < subjobs().size(); ++i )
+  for (int i = 0; i < subjobs().size(); ++i)
   {
-    subjobs().at( i )->kill( KJob::EmitResult );
+    subjobs().at(i)->kill(KJob::EmitResult);
   }
 }
 
 
-void Smb4KSearch::abort( const QString &string )
+void Smb4KSearch::abort(const QString &string)
 {
-  for ( int i = 0; i < subjobs().size(); ++i )
+  for (int i = 0; i < subjobs().size(); ++i)
   {
-    if ( QString::compare( QString( "SearchJob_%1" ).arg( string ), subjobs().at( i )->objectName() ) == 0 )
+    if (QString::compare(QString("SearchJob_%1").arg(string), subjobs().at(i)->objectName()) == 0)
     {
-      subjobs().at( i )->kill( KJob::EmitResult );
+      subjobs().at(i)->kill(KJob::EmitResult);
       break;
     }
     else
@@ -211,7 +208,7 @@ void Smb4KSearch::abort( const QString &string )
 
 void Smb4KSearch::start()
 {
-  QTimer::singleShot( 0, this, SLOT(slotStartJobs()) );
+  QTimer::singleShot(0, this, SLOT(slotStartJobs()));
 }
 
 
@@ -225,11 +222,11 @@ void Smb4KSearch::slotStartJobs()
 }
 
 
-void Smb4KSearch::slotJobFinished( KJob *job )
+void Smb4KSearch::slotJobFinished(KJob *job)
 {
-  removeSubjob( job );
+  removeSubjob(job);
 
-  if ( !hasSubjobs() && modifyCursor() )
+  if (!hasSubjobs() && modifyCursor())
   {
     QApplication::restoreOverrideCursor();
   }
@@ -240,11 +237,11 @@ void Smb4KSearch::slotJobFinished( KJob *job )
 }
 
 
-void Smb4KSearch::slotAuthError( Smb4KSearchJob *job )
+void Smb4KSearch::slotAuthError(Smb4KSearchJob *job)
 {
-  if ( Smb4KWalletManager::self()->showPasswordDialog( job->masterBrowser(), job->parentWidget() ) )
+  if (Smb4KWalletManager::self()->showPasswordDialog(job->masterBrowser(), job->parentWidget()))
   {
-    search( job->searchString(), job->parentWidget() );
+    search(job->searchString(), job->parentWidget());
   }
   else
   {
@@ -253,19 +250,19 @@ void Smb4KSearch::slotAuthError( Smb4KSearchJob *job )
 }
 
 
-void Smb4KSearch::slotProcessSearchResult( Smb4KShare *share )
+void Smb4KSearch::slotProcessSearchResult(Smb4KShare *share)
 {
-  Q_ASSERT( share );
+  Q_ASSERT(share);
 
-  QList<Smb4KShare *> shares = findShareByUNC( share->unc() );
+  QList<Smb4KShare *> shares = findShareByUNC(share->unc());
 
-  foreach ( Smb4KShare *s, shares )
+  foreach (Smb4KShare *s, shares)
   {
-    if ( (!s->isForeign() || Smb4KSettings::detectAllShares()) && s->isMounted() )
+    if ((!s->isForeign() || Smb4KSettings::detectAllShares()) && s->isMounted())
     {
-      share->setIsMounted( s->isMounted() );
-      share->setPath( s->path() );
-      share->setForeign( s->isForeign() );
+      share->setIsMounted(s->isMounted());
+      share->setPath(s->path());
+      share->setForeign(s->isForeign());
       break;
     }
     else
@@ -275,13 +272,13 @@ void Smb4KSearch::slotProcessSearchResult( Smb4KShare *share )
   }
 
   // The host of this share should already be known. Set the IP address.
-  if ( share->hostIP().isEmpty() )
+  if (share->hostIP().isEmpty())
   {
-    Smb4KHost *host = findHost( share->hostName(), share->workgroupName() );
+    Smb4KHost *host = findHost(share->hostName(), share->workgroupName());
 
-    if ( host )
+    if (host)
     {
-      share->setHostIP( host->ip() );
+      share->setHostIP(host->ip());
     }
     else
     {
@@ -293,7 +290,7 @@ void Smb4KSearch::slotProcessSearchResult( Smb4KShare *share )
     // Do nothing
   }
 
-  emit result( share );
+  emit result(share);
 }
 
 
@@ -302,5 +299,3 @@ void Smb4KSearch::slotAboutToQuit()
   abortAll();
 }
 
-
-#include "smb4ksearch.moc"

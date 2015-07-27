@@ -2,7 +2,7 @@
     smb4ksearch_p  -  Private helper classes for Smb4KSearch class.
                              -------------------
     begin                : Mo Dez 22 2008
-    copyright            : (C) 2008-2013 by Alexander Reinholdt
+    copyright            : (C) 2008-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -45,7 +45,7 @@ class Smb4KSearchJob : public KJob
     /**
      * The constructor
      */
-    explicit Smb4KSearchJob( QObject *parent = 0 );
+    explicit Smb4KSearchJob(QObject *parent = 0);
 
     /**
      * The destructor
@@ -76,9 +76,9 @@ class Smb4KSearchJob : public KJob
      *
      * @param parent          The parent widget
      */
-    void setupSearch( const QString &string,
+    void setupSearch(const QString &string,
                       Smb4KHost *master = 0,
-                      QWidget *parentWidget = 0 );
+                      QWidget *parentWidget = 0);
 
     /**
      * Returns the search string.
@@ -105,22 +105,22 @@ class Smb4KSearchJob : public KJob
     /**
      * Emitted when the search is about to begin.
      */
-    void aboutToStart( const QString &string );
+    void aboutToStart(const QString &string);
 
     /**
      * Emitted after the search finished.
      */
-    void finished( const QString &string );
+    void finished(const QString &string);
 
     /**
      * Emitted when an authentication error happened.
      */
-    void authError( Smb4KSearchJob *job );
+    void authError(Smb4KSearchJob *job);
 
     /**
      * Emitted with a search result
      */
-    void result( Smb4KShare *share );
+    void result(Smb4KShare *share);
 
   protected:
     /**
@@ -133,7 +133,7 @@ class Smb4KSearchJob : public KJob
     void slotStartSearch();
     void slotReadStandardOutput();
     void slotReadStandardError();
-    void slotProcessFinished( int exitCode, QProcess::ExitStatus status );
+    void slotProcessFinished(int exitCode, QProcess::ExitStatus status);
 
   private:
     bool m_started;

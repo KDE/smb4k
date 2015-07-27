@@ -2,7 +2,7 @@
     smb4ksearch  -  This class does custom searches
                              -------------------
     begin                : Tue Mar 08 2011
-    copyright            : (C) 2011-2012 by Alexander Reinholdt
+    copyright            : (C) 2011-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,11 +28,10 @@
 
 // Qt includes
 #include <QtCore/QScopedPointer>
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 
 // KDE includes
-#include <kcompositejob.h>
-#include <kdemacros.h>
+#include <KCoreAddons/KCompositeJob>
 
 // forward declarations
 class Smb4KSearchJob;
@@ -40,7 +39,7 @@ class Smb4KShare;
 class Smb4KSearchPrivate;
 
 
-class KDE_EXPORT Smb4KSearch : public KCompositeJob
+class Q_DECL_EXPORT Smb4KSearch : public KCompositeJob
 {
   Q_OBJECT
 
@@ -50,7 +49,7 @@ class KDE_EXPORT Smb4KSearch : public KCompositeJob
     /**
      * Constructor
      */
-    explicit Smb4KSearch( QObject *parent = 0 );
+    explicit Smb4KSearch(QObject *parent = 0);
 
     /**
      * Destructor
@@ -71,8 +70,8 @@ class KDE_EXPORT Smb4KSearch : public KCompositeJob
      *
      * @param parent          The parent widget
      */
-    void search( const QString &string,
-                 QWidget *parent = 0 );
+    void search(const QString &string,
+                 QWidget *parent = 0);
 
     /**
      * This function tells you whether searches are running
@@ -88,7 +87,7 @@ class KDE_EXPORT Smb4KSearch : public KCompositeJob
      *
      * @returns TRUE if a search is already/still running
      */
-    bool isRunning( const QString &string );
+    bool isRunning(const QString &string);
 
     /**
      * This function aborts all searches at once.
@@ -101,7 +100,7 @@ class KDE_EXPORT Smb4KSearch : public KCompositeJob
      *
      * @param string          The search string
      */
-    void abort( const QString &string );
+    void abort(const QString &string);
 
     /**
      * This function starts the composite job
@@ -115,7 +114,7 @@ class KDE_EXPORT Smb4KSearch : public KCompositeJob
      *
      * @param string        The search string
      */
-    void aboutToStart( const QString &string );
+    void aboutToStart(const QString &string);
 
     /**
      * This signal is emitted when a search process has finished. It passes the
@@ -123,7 +122,7 @@ class KDE_EXPORT Smb4KSearch : public KCompositeJob
      *
      * @param string        The search string
      */
-    void finished( const QString &string );
+    void finished(const QString &string);
 
     /**
      * This signal is emitted when the search returned a result.
@@ -132,7 +131,7 @@ class KDE_EXPORT Smb4KSearch : public KCompositeJob
      *
      * @param mounted       Is the item already known?
      */
-    void result( Smb4KShare *share );
+    void result(Smb4KShare *share);
 
   protected Q_SLOTS:
     /**
@@ -143,17 +142,17 @@ class KDE_EXPORT Smb4KSearch : public KCompositeJob
     /**
      * Called when a job finished
      */
-    void slotJobFinished( KJob *job );
+    void slotJobFinished(KJob *job);
 
     /**
      * Called when an authentication error occurred
      */
-    void slotAuthError( Smb4KSearchJob *job );
+    void slotAuthError(Smb4KSearchJob *job);
 
     /**
      * Called when an search result was found
      */
-    void slotProcessSearchResult( Smb4KShare *share );
+    void slotProcessSearchResult(Smb4KShare *share);
 
     /**
      * Called when the program is about to quit
