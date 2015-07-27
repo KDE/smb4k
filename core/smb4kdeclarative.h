@@ -3,7 +3,7 @@
     QtQuick
                              -------------------
     begin                : Mo 02 Sep 2013
-    copyright            : (C) 2013-2014 by Alexander Reinholdt
+    copyright            : (C) 2013-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,10 +30,7 @@
 // Qt includes
 #include <QtCore/QObject>
 #include <QtCore/QUrl>
-#include <QtDeclarative/QDeclarativeListProperty>
-
-// KDE includes
-#include <kdemacros.h>
+#include <QtQml/QQmlListProperty>
 
 // forward declarations
 class Smb4KDeclarativePrivate;
@@ -50,17 +47,17 @@ class Smb4KProfileObject;
  * @since 1.1.0
  */
 
-class KDE_EXPORT Smb4KDeclarative : public QObject
+class Q_DECL_EXPORT Smb4KDeclarative : public QObject
 {
   Q_OBJECT
   
-  Q_PROPERTY(QDeclarativeListProperty<Smb4KNetworkObject> workgroups READ workgroups NOTIFY workgroupsListChanged)
-  Q_PROPERTY(QDeclarativeListProperty<Smb4KNetworkObject> hosts READ hosts NOTIFY hostsListChanged)
-  Q_PROPERTY(QDeclarativeListProperty<Smb4KNetworkObject> shares READ shares NOTIFY sharesListChanged)
-  Q_PROPERTY(QDeclarativeListProperty<Smb4KNetworkObject> mountedShares READ mountedShares NOTIFY mountedSharesListChanged)
-  Q_PROPERTY(QDeclarativeListProperty<Smb4KBookmarkObject> bookmarks READ bookmarks NOTIFY bookmarksListChanged)
-  Q_PROPERTY(QDeclarativeListProperty<Smb4KBookmarkObject> bookmarkGroups READ bookmarkGroups NOTIFY bookmarksListChanged)
-  Q_PROPERTY(QDeclarativeListProperty<Smb4KProfileObject> profiles READ profiles NOTIFY profilesListChanged)
+  Q_PROPERTY(QQmlListProperty<Smb4KNetworkObject> workgroups READ workgroups NOTIFY workgroupsListChanged)
+  Q_PROPERTY(QQmlListProperty<Smb4KNetworkObject> hosts READ hosts NOTIFY hostsListChanged)
+  Q_PROPERTY(QQmlListProperty<Smb4KNetworkObject> shares READ shares NOTIFY sharesListChanged)
+  Q_PROPERTY(QQmlListProperty<Smb4KNetworkObject> mountedShares READ mountedShares NOTIFY mountedSharesListChanged)
+  Q_PROPERTY(QQmlListProperty<Smb4KBookmarkObject> bookmarks READ bookmarks NOTIFY bookmarksListChanged)
+  Q_PROPERTY(QQmlListProperty<Smb4KBookmarkObject> bookmarkGroups READ bookmarkGroups NOTIFY bookmarksListChanged)
+  Q_PROPERTY(QQmlListProperty<Smb4KProfileObject> profiles READ profiles NOTIFY profilesListChanged)
   Q_PROPERTY(QString activeProfile READ activeProfile WRITE setActiveProfile NOTIFY activeProfileChanged)
   Q_PROPERTY(bool profileUsage READ profileUsage NOTIFY profileUsageChanged);
   
@@ -70,7 +67,7 @@ class KDE_EXPORT Smb4KDeclarative : public QObject
     /**
      * Constructor
      */
-    explicit Smb4KDeclarative( QObject *parent = 0 );
+    explicit Smb4KDeclarative(QObject *parent = 0);
     
     /**
      * Destructor
@@ -84,7 +81,7 @@ class KDE_EXPORT Smb4KDeclarative : public QObject
      * 
      * @returns the list of discovered workgroups.
      */
-    QDeclarativeListProperty<Smb4KNetworkObject> workgroups();
+    QQmlListProperty<Smb4KNetworkObject> workgroups();
 
     /**
      * This function returns the list of hosts. Basically, this is the
@@ -93,7 +90,7 @@ class KDE_EXPORT Smb4KDeclarative : public QObject
      *
      * @returns the list of discovered hosts.
      */
-    QDeclarativeListProperty<Smb4KNetworkObject> hosts();
+    QQmlListProperty<Smb4KNetworkObject> hosts();
 
     /**
      * This function returns the list of shares. Basically, this is the
@@ -102,7 +99,7 @@ class KDE_EXPORT Smb4KDeclarative : public QObject
      *
      * @returns the list of discovered shares.
      */
-    QDeclarativeListProperty<Smb4KNetworkObject> shares();
+    QQmlListProperty<Smb4KNetworkObject> shares();
     
     /**
      * This function returns the list of mounted shares. Basically, this is the
@@ -111,7 +108,7 @@ class KDE_EXPORT Smb4KDeclarative : public QObject
      *
      * @returns the list of the mounted shares.
      */
-    QDeclarativeListProperty<Smb4KNetworkObject> mountedShares();
+    QQmlListProperty<Smb4KNetworkObject> mountedShares();
     
     /**
      * This function returns the list of bookmarks. Basically, this is the 
@@ -120,7 +117,7 @@ class KDE_EXPORT Smb4KDeclarative : public QObject
      * 
      * @returns the list of bookmarks
      */
-    QDeclarativeListProperty<Smb4KBookmarkObject> bookmarks();
+    QQmlListProperty<Smb4KBookmarkObject> bookmarks();
     
     /**
      * This function returns the list of bookmark groups. Basically, this is the 
@@ -129,7 +126,7 @@ class KDE_EXPORT Smb4KDeclarative : public QObject
      * 
      * @returns the list of bookmarks
      */
-    QDeclarativeListProperty<Smb4KBookmarkObject> bookmarkGroups();
+    QQmlListProperty<Smb4KBookmarkObject> bookmarkGroups();
     
     /**
      * This function returns the list of profiles. Basically, this is the list
@@ -138,7 +135,7 @@ class KDE_EXPORT Smb4KDeclarative : public QObject
      * 
      * @returns the list of profiles
      */
-    QDeclarativeListProperty<Smb4KProfileObject> profiles();
+    QQmlListProperty<Smb4KProfileObject> profiles();
     
     /**
      * This function takes a Smb4KNetworkObject object and initiates a network 
@@ -149,7 +146,7 @@ class KDE_EXPORT Smb4KDeclarative : public QObject
      * 
      * @param object      The network object
      */
-    Q_INVOKABLE void lookup( Smb4KNetworkObject *object = 0 );
+    Q_INVOKABLE void lookup(Smb4KNetworkObject *object = 0);
     
     /**
      * This function takes a QUrl object, looks up the respective network object
@@ -164,42 +161,42 @@ class KDE_EXPORT Smb4KDeclarative : public QObject
      * 
      * @returns The network item or NULL if it was not found.
      */
-    Q_INVOKABLE Smb4KNetworkObject *findNetworkItem( const QUrl &url, int type );
+    Q_INVOKABLE Smb4KNetworkObject *findNetworkItem(const QUrl &url, int type);
     
     /**
      * Open the mount dialog to mount a share.
      * 
      * @param parent      The parent of this dialog.
      */
-    Q_INVOKABLE void openMountDialog( QWidget *parent = 0 );
+    Q_INVOKABLE void openMountDialog(QWidget *parent = 0);
     
     /**
-     * This function takes the URL and initiates the mounting of the remote
-     * share.
+     * This function takes a network object and initiates the mounting of 
+     * the remote share.
      * 
      * Please note that this function only works with network objects that 
      * represent a share and that are already known, i.e. it must either be 
      * a share that was already looked up during program run or one that was 
      * bookmarked.
      * 
-     * @param url         The URL of the remote share
+     * @param object         The network object
      */
-    Q_INVOKABLE void mount( const QUrl &url );
+    Q_INVOKABLE void mount(Smb4KNetworkObject *object);
     
     /**
-     * This function takes the URL of a @p mountpoint and initiates the 
-     * unmounting of the mounted share.
+     * This function takes a network object and initiates the unmounting of 
+     * the mounted share.
      * 
      * Please note that this function only works with network objects that 
      * represent a share and that are already known.
      * 
-     * @param mountpoint  The URL of the mountpoint
+     * @param object         The network object
      */
-    Q_INVOKABLE void unmount( const QUrl &mountpoint );
+    Q_INVOKABLE void unmount(Smb4KNetworkObject *object);
     
     /**
      * This function is a convenience function. It unmounts all currently mounted
-     * shares by invoking @see unmountAllShares( 0 ).
+     * shares by invoking @see unmountAllShares(0).
      */
     Q_INVOKABLE void unmountAll();
     
@@ -215,7 +212,7 @@ class KDE_EXPORT Smb4KDeclarative : public QObject
      * 
      * @returns The mounted share or NULL if it was not found.
      */
-    Q_INVOKABLE Smb4KNetworkObject *findMountedShare( const QUrl &url, bool exactMatch = true );
+    Q_INVOKABLE Smb4KNetworkObject *findMountedShare(const QUrl &url, bool exactMatch = true);
     
     /**
      * This function takes a network object representing a remote printer and 
@@ -226,28 +223,28 @@ class KDE_EXPORT Smb4KDeclarative : public QObject
      * 
      * @param object        The network object representing a remote printer
      */
-    Q_INVOKABLE void print( Smb4KNetworkObject *object );
+    Q_INVOKABLE void print(Smb4KNetworkObject *object);
     
     /**
      * This function adds a new bookmark.
      * 
      * @param object        The network object that is to be bookmarked
      */
-    Q_INVOKABLE void addBookmark( Smb4KNetworkObject *object );
+    Q_INVOKABLE void addBookmark(Smb4KNetworkObject *object);
     
     /**
      * This function removes a bookmark. 
      * 
      * @param url           The bookmark object that is to be removed
      */
-    Q_INVOKABLE void removeBookmark( Smb4KBookmarkObject *object );
+    Q_INVOKABLE void removeBookmark(Smb4KBookmarkObject *object);
     
     /**
      * This function removes a bookmark group.
      * 
      * @param name          The name of the bookmark group
      */
-    Q_INVOKABLE void removeBookmarkGroup( const QString &name );
+    Q_INVOKABLE void removeBookmarkGroup(const QString &name);
     
     /**
      * This function invokes the bookmark editor.
@@ -259,7 +256,7 @@ class KDE_EXPORT Smb4KDeclarative : public QObject
      * 
      * @param object              The network object
      */
-    Q_INVOKABLE void openCustomOptionsDialog( Smb4KNetworkObject *object );
+    Q_INVOKABLE void openCustomOptionsDialog(Smb4KNetworkObject *object);
     
     /**
      * This function starts the scanner.

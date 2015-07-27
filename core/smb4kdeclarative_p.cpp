@@ -3,7 +3,7 @@
     Smb4KDeclarative
                              -------------------
     begin                : Mo 02 Sep 2013
-    copyright            : (C) 2013-2014 by Alexander Reinholdt
+    copyright            : (C) 2013-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
