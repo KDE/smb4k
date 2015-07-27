@@ -2,7 +2,7 @@
     smb4kmounter.h  -  The core class that mounts the shares.
                              -------------------
     begin                : Die Jun 10 2003
-    copyright            : (C) 2003-2014 by Alexander Reinholdt
+    copyright            : (C) 2003-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -26,23 +26,17 @@
 #ifndef SMB4KMOUNTER_H
 #define SMB4KMOUNTER_H
 
-// application specific includes
-#include "smb4ksolidinterface.h"
-
 // Qt includes
 #include <QtCore/QObject>
 #include <QtCore/QFile>
 #include <QtCore/QString>
 #include <QtCore/QStringList>
 #include <QtCore/QScopedPointer>
+#include <QtCore/QMap>
+#include <QtCore/QVariant>
 
 // KDE includes
-#include <kdemacros.h>
-#include <kauth.h>
-#include <kcompositejob.h>
-#include <kurl.h>
-
-using namespace KAuth;
+#include <KCoreAddons/KCompositeJob>
 
 // forward declarations
 class Smb4KShare;
@@ -62,7 +56,7 @@ class Smb4KMounterPrivate;
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class KDE_EXPORT Smb4KMounter : public KCompositeJob
+class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
 {
   Q_OBJECT
 
@@ -72,7 +66,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
     /**
      * The constructor.
      */
-    explicit Smb4KMounter( QObject *parent = 0 );
+    explicit Smb4KMounter(QObject *parent = 0);
     
     /**
      * The destructor.
@@ -89,7 +83,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      *
      * @param share           The Smb4KShare object
      */
-    void abort( Smb4KShare *share );
+    void abort(Smb4KShare *share);
 
     /**
      * Aborts all running processes at once.
@@ -103,16 +97,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * 
      * @param parent      The parent widget
      */
-    void mountShare( Smb4KShare *share,
-                     QWidget *parent = 0 );
-
-    /**
-     * Mount a share via a mount dialog. The mount dialog is opened and you have
-     * to enter the UNC and optionally the workgroup and IP address.
-     *
-     * @param parent      The parent widget of this dialog
-     */
-    void openMountDialog( QWidget *parent = 0 );
+    void mountShare(Smb4KShare *share, QWidget *parent = 0);
 
     /**
      * Mounts a list of shares at once.
@@ -121,8 +106,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * 
      * @param parent      The parent widget
      */
-    void mountShares( const QList<Smb4KShare *> &shares,
-                      QWidget *parent = 0 );
+    void mountShares(const QList<Smb4KShare *> &shares, QWidget *parent = 0);
 
     /**
      * This function attempts to unmount a share. With the parameter @p silent you 
@@ -135,9 +119,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * 
      * @param parent      The parent widget
      */
-    void unmountShare( Smb4KShare *share,
-                       bool silent = false,
-                       QWidget *parent = 0 );
+    void unmountShare(Smb4KShare *share, bool silent = false, QWidget *parent = 0);
     
     /**
      * This function attempts to unmount a list of shares. With the parameter @p silent 
@@ -150,9 +132,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * 
      * @param parent      The parent widget
      */
-    void unmountShares( const QList<Smb4KShare *> &shares,
-                        bool silent = false,
-                        QWidget *parent = 0 );
+    void unmountShares(const QList<Smb4KShare *> &shares, bool silent = false, QWidget *parent = 0);
 
     /**
      * Unmounts all shares at once. This is a convenience function. It calls
@@ -160,7 +140,15 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * 
      * @param parent      The parent widget
      */
-    void unmountAllShares( QWidget *parent = 0 );
+    void unmountAllShares(QWidget *parent = 0);
+
+    /**
+     * Mount a share via a mount dialog. The mount dialog is opened and you have
+     * to enter the UNC and optionally the workgroup and IP address.
+     *
+     * @param parent      The parent widget of this dialog
+     */
+    void openMountDialog(QWidget *parent = 0);
 
     /**
      * This function reports if the mount process for @p share is running.
@@ -169,7 +157,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      *
      * @returns TRUE if the process is running.
      */
-    bool isRunning( Smb4KShare *share );
+    bool isRunning(Smb4KShare *share);
 
     /**
      * This function reports if the mounter is running or not.
@@ -190,14 +178,14 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * 
      * @param share             The share item that was just updated.
      */ 
-    void updated( Smb4KShare *share );
+    void updated(Smb4KShare *share);
 
     /**
      * This signal is emitted when a share has successfully been mounted.
      *
      * @param share             The share that was just mounted.
      */
-    void mounted( Smb4KShare *share );
+    void mounted(Smb4KShare *share);
 
     /**
      * This signal is emitted after a share was unmounted and directly before
@@ -208,7 +196,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      *
      * @param share            The share that is going to be unmounted.
      */
-    void unmounted( Smb4KShare *share );
+    void unmounted(Smb4KShare *share);
     
     /**
      * This signal is emitted when a mount/unmount process for the share 
@@ -218,8 +206,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      *
      * @param process           The kind of process
      */
-    void aboutToStart( Smb4KShare *share,
-                       int process );
+    void aboutToStart(Smb4KShare *share, int process);
 
     /**
      * This signal is emitted when the mount/unmount process for the share 
@@ -229,8 +216,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      *
      * @param process           The kind of process
      */
-    void finished( Smb4KShare *share,
-                   int process );
+    void finished(Smb4KShare *share, int process);
     
     /**
      * This signal is emitted every time a share was added to or removed
@@ -250,7 +236,7 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      *
      * @param event             The QTimerEvent event
      */
-    void timerEvent( QTimerEvent *event );
+    void timerEvent(QTimerEvent *event);
 
   protected Q_SLOTS:
     /**
@@ -266,89 +252,32 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
     void slotAboutToQuit();
     
     /**
-     * This slot is called when a job finished
+     * This slot is called when a mount job finished
      * 
      * @param job         The job that finished
      */
-    void slotJobFinished( KJob *job );
+    void slotMountJobFinished(KJob *job);
     
     /**
-     * Called when an authentication error occurred
-     */
-    void slotAuthError( Smb4KMountJob *job );
-
-    /**
-     * Called when mounting for one or more shares should be retried
-     */
-    void slotRetryMounting( Smb4KMountJob *job );
-
-    /**
-     * This slot is called whenever a share was successfully mounted by the 
-     * mount job.
-     *
-     * @param share       The share object
-     */
-    void slotShareMounted( Smb4KShare *share );
-    
-    /**
-     * This slot is called whenever a share was successfully unmounted by the
-     * unmount job.
+     * This slot is called when an unmount job finished
      * 
-     * @param reply       The share object
+     * @param job         The job that finished
      */
-    void slotShareUnmounted( Smb4KShare *share );
+    void slotUnmountJobFinished(KJob *job);
     
     /**
-     * This slot is called by the Solid interface when the network status
-     * changed. It is used to initialize network actions when the network
-     * became available.
-     *
-     * @param status          The new network status
+     * This slot is called when the online status changed. It is used 
+     * to initialize network actions when the network becomes available.
+     * @param online          TRUE if online otherwise FALSE
      */
-    void slotNetworkStatusChanged(Smb4KSolidInterface::ConnectionStatus status);
+    void slotOnlineStateChanged(bool online);
 
-    /**
-     * Called when a mount job started. It just emits the 
-     * aboutToStart( Smb4KShare *, MountShare ) signal for each share
-     * that is processed.
-     *
-     * @param shares          The list of shares that are going to be mounted
-     */
-    void slotAboutToStartMounting( const QList<Smb4KShare *> &shares );
-
-    /**
-     * Called when a mount job has finished. It just emits the
-     * finished( Smb4KShare *, MountShare ) signal for each share that 
-     * was processed.
-     *
-     * @param shares          The shares that were mounted
-     */
-    void slotFinishedMounting( const QList<Smb4KShare *> &shares );
-    
-    /**
-     * Called when an unmount job started. It just emits the 
-     * aboutToStart( Smb4KShare *, UnmountShare ) signal for each share
-     * that is processed.
-     *
-     * @param shares          The shares that are going to be unmounted
-     */
-    void slotAboutToStartUnmounting( const QList<Smb4KShare *> &shares );
-
-    /**
-     * Called when an unmount job has finished. It just emits the
-     * finished( Smb4KShare *, UnmountShare ) signal for each share that
-     * was processed.
-     *
-     * @param shares          The shares that were unmounted
-     */
-    void slotFinishedUnmounting( const QList<Smb4KShare *> &shares );
-    
     /**
      * Called when a mounted share has been stat'ed.
      * 
      * @param job             The KIO::StatJob
      */
-    void slotStatResult( KJob *job );
+    void slotStatResult(KJob *job);
     
     /**
      * This slot is called when the active profile changed.
@@ -363,6 +292,12 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      */
     void slotProfileMigrated(const QString &from, const QString &to);
     
+    /**
+     * This slot is called whenever a network share is mounted or 
+     * unmounted.
+     */
+    void slotTriggerImport();    
+    
   private:
     /**
      * Trigger the remounting of shares. If the parameter @p fill_list is
@@ -372,12 +307,12 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * @param fill_list       Fill the internal list with shares that are 
      *                        to be remounted.
      */
-    void triggerRemounts( bool fill_list );
+    void triggerRemounts(bool fill_list);
 
     /**
      * Imports mounted shares.
      */
-    void import( bool check_inaccessible );
+    void import(bool check_inaccessible);
 
     /**
      * Checks the accessibility, the UID and GID and the usage of
@@ -390,12 +325,22 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
      * 
      * @param share           The share that should be checked.
      */
-    void check( Smb4KShare *share );
+    void check(Smb4KShare *share);
 
     /**
      * Save all shares that need to be remounted.
      */
     void saveSharesForRemount();
+    
+    /**
+     * Fill the mount action arguments into a map.
+     */
+    bool fillMountActionArgs(Smb4KShare *share, QVariantMap &mountArgs);
+    
+    /**
+     * Fill the unmount action arguments into a map.
+     */
+    bool fillUnmountActionArgs(Smb4KShare *share, bool force, bool silent, QVariantMap &unmountArgs);
     
     /**
      * Pointer to the Smb4KMounterPrivate class.
