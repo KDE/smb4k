@@ -2,7 +2,7 @@
     smb4kwalletmanager  -  This is the wallet manager of Smb4K.
                              -------------------
     begin                : Sa Dez 27 2008
-    copyright            : (C) 2008-2014 by Alexander Reinholdt
+    copyright            : (C) 2008-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,10 +28,7 @@
 
 // Qt includes
 #include <QtCore/QList>
-#include <QtGui/QWidget>
-
-// KDE includes
-#include <kdemacros.h>
+#include <QtWidgets/QWidget>
 
 // forward declarations
 class Smb4KAuthInfo;
@@ -48,7 +45,7 @@ class Smb4KWalletManagerPrivate;
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class KDE_EXPORT Smb4KWalletManager : public QObject
+class Q_DECL_EXPORT Smb4KWalletManager : public QObject
 {
   Q_OBJECT
 
@@ -58,7 +55,7 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
     /**
      * The constructor
      */
-    explicit Smb4KWalletManager( QObject *parent = 0 );
+    explicit Smb4KWalletManager(QObject *parent = 0);
 
     /**
      * The destructor
@@ -81,7 +78,7 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
      * @param networkItem     The network item for that the authentication
      *                        information should be acquired
      */
-    void readAuthInfo( Smb4KBasicNetworkItem *networkItem );
+    void readAuthInfo(Smb4KBasicNetworkItem *networkItem);
 
     /**
      * This function reads the default authentication information and enters it
@@ -94,7 +91,7 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
      * @param authInfo        The Smb4KAuthInfo object that will be populated
      *                        with the default authentication information.
      */
-    void readDefaultAuthInfo( Smb4KAuthInfo *authInfo );
+    void readDefaultAuthInfo(Smb4KAuthInfo *authInfo);
 
     /**
      * Write the authentication information provided by the network item to 
@@ -103,7 +100,7 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
      * @param networkItem     The network item for that the authentication
      *                        information should be saved
      */
-    void writeAuthInfo( Smb4KBasicNetworkItem *networkItem );
+    void writeAuthInfo(Smb4KBasicNetworkItem *networkItem);
 
     /**
      * This function writes the default authentication information to the
@@ -112,7 +109,7 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
      * 
      * @param authInfo        The Smb4KAuthInfo object
      */
-    void writeDefaultAuthInfo( Smb4KAuthInfo *authInfo );
+    void writeDefaultAuthInfo(Smb4KAuthInfo *authInfo);
 
     /**
      * Show the password dialog. This function takes an Smb4KBasicNetworkItem
@@ -126,8 +123,8 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
      *
      * @returns TRUE if successful and FALSE otherwise
      */
-    bool showPasswordDialog( Smb4KBasicNetworkItem *networkItem,
-                             QWidget *parent = 0 );
+    bool showPasswordDialog(Smb4KBasicNetworkItem *networkItem,
+                             QWidget *parent = 0);
 
     /**
      * This function returns TRUE if the wallet system can be/is used and
@@ -153,7 +150,7 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
      * 
      * @param entries       The list of authentication information objects
      */
-    void writeWalletEntries( const QList<Smb4KAuthInfo *> &entries );
+    void writeWalletEntries(const QList<Smb4KAuthInfo *> &entries);
     
     /**
      * This function returns TRUE if the wallet is used and open and 
@@ -174,7 +171,7 @@ class KDE_EXPORT Smb4KWalletManager : public QObject
     /**
      * This slot is invoked when the wallet is opened.
      */
-    void slotWalletOpened( bool success );
+    void slotWalletOpened(bool success);
 
   private:
     /**

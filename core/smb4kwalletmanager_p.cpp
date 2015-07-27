@@ -3,7 +3,7 @@
                              of Smb4K.
                              -------------------
     begin                : Mo Dez 31 2012
-    copyright            : (C) 2012-2014 by Alexander Reinholdt
+    copyright            : (C) 2012-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -34,25 +34,25 @@
 #include <QtCore/QDebug>
 
 // KDE includes
-#include <klocale.h>
+#define TRANSLATION_DOMAIN "smb4k-core"
+#include <KI18n/KLocalizedString>
 
-
-Smb4KPasswordDialog::Smb4KPasswordDialog( Smb4KBasicNetworkItem* networkItem, const QMap<QString,QString> &knownLogins, QWidget* parent )
-: KPasswordDialog( parent, KPasswordDialog::ShowUsernameLine )
+Smb4KPasswordDialog::Smb4KPasswordDialog(Smb4KBasicNetworkItem* networkItem, const QMap<QString,QString> &knownLogins, QWidget* parent)
+: KPasswordDialog(parent, KPasswordDialog::ShowUsernameLine)
 {
   m_item = networkItem;
   
-  switch ( m_item->type() )
+  switch (m_item->type())
   {
     case Host:
     {
-      Smb4KHost *host = static_cast<Smb4KHost *>( m_item );
+      Smb4KHost *host = static_cast<Smb4KHost *>(m_item);
 
-      if ( host )
+      if (host)
       {
-        setUsername( host->login() );
-        setPassword( host->password() );
-        setPrompt( i18n( "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>", host->hostName() ) );
+        setUsername(host->login());
+        setPassword(host->password());
+        setPrompt(i18n("<qt>Please enter a username and a password for the host <b>%1</b>.</qt>", host->hostName()));
       }
       else
       {
@@ -62,28 +62,28 @@ Smb4KPasswordDialog::Smb4KPasswordDialog( Smb4KBasicNetworkItem* networkItem, co
     }
     case Share:
     {
-      Smb4KShare *share = static_cast<Smb4KShare *>( m_item );
+      Smb4KShare *share = static_cast<Smb4KShare *>(m_item);
 
-      if ( share )
+      if (share)
       {
         // Enter authentication information into the dialog
-        if ( !knownLogins.isEmpty() )
+        if (!knownLogins.isEmpty())
         {
-          setKnownLogins( knownLogins );
+          setKnownLogins(knownLogins);
         }
         else
         {
-          setUsername( share->login() );
-          setPassword( share->password() );
+          setUsername(share->login());
+          setPassword(share->password());
         }
 
-        if ( !share->isHomesShare() )
+        if (!share->isHomesShare())
         {
-          setPrompt( i18n( "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>", share->unc() ) );
+          setPrompt(i18n("<qt>Please enter a username and a password for the share <b>%1</b>.</qt>", share->unc()));
         }
         else
         {
-          setPrompt( i18n( "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>", share->homeUNC() ) );
+          setPrompt(i18n("<qt>Please enter a username and a password for the share <b>%1</b>.</qt>", share->homeUNC()));
         }
       }
       else
@@ -98,7 +98,7 @@ Smb4KPasswordDialog::Smb4KPasswordDialog( Smb4KBasicNetworkItem* networkItem, co
     }
   }
 
-  connect( this, SIGNAL(gotUsernameAndPassword(QString,QString,bool)), SLOT(slotGotUsernameAndPassword(QString,QString,bool)) );
+  connect(this, SIGNAL(gotUsernameAndPassword(QString,QString,bool)), SLOT(slotGotUsernameAndPassword(QString,QString,bool)));
 }
 
 
@@ -107,18 +107,18 @@ Smb4KPasswordDialog::~Smb4KPasswordDialog()
 }
 
 
-void Smb4KPasswordDialog::slotGotUsernameAndPassword( const QString &user, const QString &pass, bool /*keep*/ )
+void Smb4KPasswordDialog::slotGotUsernameAndPassword(const QString &user, const QString &pass, bool /*keep*/)
 {
-  switch ( m_item->type() )
+  switch (m_item->type())
   {
     case Host:
     {
-      Smb4KHost *host = static_cast<Smb4KHost *>( m_item );
+      Smb4KHost *host = static_cast<Smb4KHost *>(m_item);
 
-      if ( host )
+      if (host)
       {
-        host->setLogin( user );
-        host->setPassword( pass );
+        host->setLogin(user);
+        host->setPassword(pass);
       }
       else
       {
@@ -128,12 +128,12 @@ void Smb4KPasswordDialog::slotGotUsernameAndPassword( const QString &user, const
     }
     case Share:
     {
-      Smb4KShare *share = static_cast<Smb4KShare *>( m_item );
+      Smb4KShare *share = static_cast<Smb4KShare *>(m_item);
 
-      if ( share )
+      if (share)
       {
-        share->setLogin( user );
-        share->setPassword( pass );
+        share->setLogin(user);
+        share->setPassword(pass);
       }
       else
       {
@@ -148,5 +148,3 @@ void Smb4KPasswordDialog::slotGotUsernameAndPassword( const QString &user, const
   }
 }
 
-
-#include "smb4kwalletmanager_p.moc"
