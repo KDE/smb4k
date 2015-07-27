@@ -2,7 +2,7 @@
     smb4kscanner_p  -  Private helper classes for the scanner
                              -------------------
     begin                : So Mai 22 2011
-    copyright            : (C) 2011-2014 by Alexander Reinholdt
+    copyright            : (C) 2011-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -43,25 +43,25 @@
 #include <QtCore/QTimer>
 #include <QtCore/QDebug>
 #include <QtCore/QLatin1String>
+#include <QtCore/QStandardPaths>
 #include <QtNetwork/QHostAddress>
 #include <QtNetwork/QAbstractSocket>
 
 // KDE includes
-#include <kstandarddirs.h>
-#include <kshell.h>
+#include <KCoreAddons/KShell>
 
 using namespace Smb4KGlobal;
 
 
-Smb4KLookupDomainsJob::Smb4KLookupDomainsJob( QObject *parent ) : KJob( parent ),
-  m_started( false ), m_parent_widget( NULL ), m_proc( NULL )
+Smb4KLookupDomainsJob::Smb4KLookupDomainsJob(QObject *parent) : KJob(parent),
+  m_started(false), m_parent_widget(0), m_proc(0)
 {
 }
 
 
 Smb4KLookupDomainsJob::~Smb4KLookupDomainsJob()
 {
-  while ( !m_workgroups_list.isEmpty() )
+  while (!m_workgroups_list.isEmpty())
   {
     delete m_workgroups_list.takeFirst();
   }
@@ -71,11 +71,11 @@ Smb4KLookupDomainsJob::~Smb4KLookupDomainsJob()
 void Smb4KLookupDomainsJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT(slotStartLookup()) );
+  QTimer::singleShot(0, this, SLOT(slotStartLookup()));
 }
 
 
-void Smb4KLookupDomainsJob::setupLookup( QWidget *parent )
+void Smb4KLookupDomainsJob::setupLookup(QWidget *parent)
 {
   m_parent_widget = parent;
 }
@@ -83,7 +83,7 @@ void Smb4KLookupDomainsJob::setupLookup( QWidget *parent )
 
 bool Smb4KLookupDomainsJob::doKill()
 {
-  if ( m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting) )
+  if (m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting))
   {
     m_proc->abort();
   }
@@ -98,28 +98,28 @@ bool Smb4KLookupDomainsJob::doKill()
 
 void Smb4KLookupDomainsJob::processWorkgroups()
 {
-  QStringList stdOut = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts );
+  QStringList stdOut = QString::fromUtf8(m_proc->readAllStandardOutput(), -1).split('\n', QString::SkipEmptyParts);
 
-  if ( !stdOut.isEmpty() )
+  if (!stdOut.isEmpty())
   {
     Smb4KWorkgroup *workgroup = new Smb4KWorkgroup();
 
-    foreach ( const QString &line, stdOut )
+    foreach (const QString &line, stdOut)
     {
-      if ( line.startsWith( QLatin1String( "Looking up status of" ) ) )
+      if (line.startsWith(QLatin1String("Looking up status of")))
       {
         // Get the IP address of the master browser.
-        workgroup->setMasterBrowserIP( line.section( "of", 1, 1 ).trimmed() );
+        workgroup->setMasterBrowserIP(line.section("of", 1, 1).trimmed());
         continue;
       }
-      else if ( line.contains( "MAC Address", Qt::CaseSensitive ) )
+      else if (line.contains("MAC Address", Qt::CaseSensitive))
       {
         // Add workgroup to the list. Ignore misconfigured master browsers,
         // that do not belong to a workgroup/domain, i.e. where the workgroup
         // name is empty.
-        if ( !workgroup->workgroupName().isEmpty() && !workgroup->masterBrowserName().isEmpty() )
+        if (!workgroup->workgroupName().isEmpty() && !workgroup->masterBrowserName().isEmpty())
         {
-          m_workgroups_list << new Smb4KWorkgroup( *workgroup );
+          m_workgroups_list << new Smb4KWorkgroup(*workgroup);
         }
         else
         {
@@ -130,15 +130,15 @@ void Smb4KLookupDomainsJob::processWorkgroups()
         workgroup = new Smb4KWorkgroup();
         continue;
       }
-      else if ( line.contains( " <00> ", Qt::CaseSensitive ) )
+      else if (line.contains(" <00> ", Qt::CaseSensitive))
       {
         // Set the name of the workgroup/host.
-        if ( line.contains( " <GROUP> ", Qt::CaseSensitive ) )
+        if (line.contains(" <GROUP> ", Qt::CaseSensitive))
         {
           // Avoid setting the workgroup name twice.
-          if ( workgroup->workgroupName().isEmpty() )
+          if (workgroup->workgroupName().isEmpty())
           {
-            workgroup->setWorkgroupName( line.section( "<00>", 0, 0 ).trimmed() );
+            workgroup->setWorkgroupName(line.section("<00>", 0, 0).trimmed());
           }
           else
           {
@@ -148,9 +148,9 @@ void Smb4KLookupDomainsJob::processWorkgroups()
         else
         {
           // Avoid setting the name of the master browser twice.
-          if ( workgroup->masterBrowserName().isEmpty() )
+          if (workgroup->masterBrowserName().isEmpty())
           {
-            workgroup->setMasterBrowserName( line.section( "<00>", 0, 0 ).trimmed() );
+            workgroup->setMasterBrowserName(line.section("<00>", 0, 0).trimmed());
           }
           else
           {
@@ -160,12 +160,12 @@ void Smb4KLookupDomainsJob::processWorkgroups()
 
         continue;
       }
-      else if ( line.contains( " <1d> ", Qt::CaseSensitive ) )
+      else if (line.contains(" <1d> ", Qt::CaseSensitive))
       {
         // Get the workgroup name.
-        if ( workgroup->workgroupName().isEmpty() )
+        if (workgroup->workgroupName().isEmpty())
         {
-          workgroup->setWorkgroupName( line.section( "<1d>", 0, 0 ).trimmed() );
+          workgroup->setWorkgroupName(line.section("<1d>", 0, 0).trimmed());
         }
         else
         {
@@ -174,11 +174,11 @@ void Smb4KLookupDomainsJob::processWorkgroups()
 
         continue;
       }
-      else if ( line.contains( "__MSBROWSE__", Qt::CaseSensitive ) &&
-                line.contains( " <01> ", Qt::CaseSensitive ) )
+      else if (line.contains("__MSBROWSE__", Qt::CaseSensitive) &&
+                line.contains(" <01> ", Qt::CaseSensitive))
       {
         // The host is a master browser.
-        workgroup->setHasPseudoMasterBrowser( false );
+        workgroup->setHasPseudoMasterBrowser(false);
         continue;
       }
       else
@@ -194,16 +194,16 @@ void Smb4KLookupDomainsJob::processWorkgroups()
     // Do nothing
   }
 
-  emit workgroups( m_workgroups_list );
+  emit workgroups(m_workgroups_list);
 }
 
 
 void Smb4KLookupDomainsJob::slotStartLookup()
 {
   // Find nmblookup program.
-  QString nmblookup = KStandardDirs::findExe( "nmblookup" );
+  QString nmblookup = QStandardPaths::findExecutable("nmblookup");
 
-  if ( nmblookup.isEmpty() )
+  if (nmblookup.isEmpty())
   {
     Smb4KNotification::commandNotFound("nmblookup");
     emitResult();
@@ -215,9 +215,9 @@ void Smb4KLookupDomainsJob::slotStartLookup()
   }
 
   // Find grep program.
-  QString grep = KStandardDirs::findExe( "grep" );
+  QString grep = QStandardPaths::findExecutable("grep");
 
-  if ( grep.isEmpty() )
+  if (grep.isEmpty())
   {
     Smb4KNotification::commandNotFound("grep");
     emitResult();
@@ -229,9 +229,9 @@ void Smb4KLookupDomainsJob::slotStartLookup()
   }
 
   // Find awk program
-  QString awk = KStandardDirs::findExe( "awk" );
+  QString awk = QStandardPaths::findExecutable("awk");
 
-  if ( awk.isEmpty() )
+  if (awk.isEmpty())
   {
     Smb4KNotification::commandNotFound("awk");
     emitResult();
@@ -243,9 +243,9 @@ void Smb4KLookupDomainsJob::slotStartLookup()
   }
 
   // Find xargs program
-  QString xargs = KStandardDirs::findExe( "xargs" );
+  QString xargs = QStandardPaths::findExecutable("xargs");
 
-  if ( xargs.isEmpty() )
+  if (xargs.isEmpty())
   {
     Smb4KNotification::commandNotFound("xargs");
     emitResult();
@@ -266,10 +266,10 @@ void Smb4KLookupDomainsJob::slotStartLookup()
   arguments << nmblookup;
 
   // Domain
-  if ( !Smb4KSettings::domainName().isEmpty() &&
-       QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0 )
+  if (!Smb4KSettings::domainName().isEmpty() &&
+       QString::compare(Smb4KSettings::domainName(), samba_options["workgroup"]) != 0)
   {
-    arguments << QString( "-W %1" ).arg( KShell::quoteArg( Smb4KSettings::domainName() ) );
+    arguments << QString("-W %1").arg(KShell::quoteArg(Smb4KSettings::domainName()));
   }
   else
   {
@@ -277,10 +277,10 @@ void Smb4KLookupDomainsJob::slotStartLookup()
   }
 
   // NetBIOS name
-  if ( !Smb4KSettings::netBIOSName().isEmpty() &&
-       QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0 )
+  if (!Smb4KSettings::netBIOSName().isEmpty() &&
+       QString::compare(Smb4KSettings::netBIOSName(), samba_options["netbios name"]) != 0)
   {
-    arguments << QString( "-n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) );
+    arguments << QString("-n %1").arg(KShell::quoteArg(Smb4KSettings::netBIOSName()));
   }
   else
   {
@@ -288,10 +288,10 @@ void Smb4KLookupDomainsJob::slotStartLookup()
   }
 
   // NetBIOS scope
-  if ( !Smb4KSettings::netBIOSScope().isEmpty() &&
-       QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0 )
+  if (!Smb4KSettings::netBIOSScope().isEmpty() &&
+       QString::compare(Smb4KSettings::netBIOSScope(), samba_options["netbios scope"]) != 0)
   {
-    arguments << QString( "-i %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSScope() ) );
+    arguments << QString("-i %1").arg(KShell::quoteArg(Smb4KSettings::netBIOSScope()));
   }
   else
   {
@@ -299,10 +299,10 @@ void Smb4KLookupDomainsJob::slotStartLookup()
   }
 
   // Socket options
-  if ( !Smb4KSettings::socketOptions().isEmpty() &&
-       QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0 )
+  if (!Smb4KSettings::socketOptions().isEmpty() &&
+       QString::compare(Smb4KSettings::socketOptions(), samba_options["socket options"]) != 0)
   {
-    arguments << QString( "-O %1" ).arg( KShell::quoteArg( Smb4KSettings::socketOptions() ) );
+    arguments << QString("-O %1").arg(KShell::quoteArg(Smb4KSettings::socketOptions()));
   }
   else
   {
@@ -310,7 +310,7 @@ void Smb4KLookupDomainsJob::slotStartLookup()
   }
 
   // Port 137
-  if ( Smb4KSettings::usePort137() )
+  if (Smb4KSettings::usePort137())
   {
     arguments << "-r";
   }
@@ -320,12 +320,12 @@ void Smb4KLookupDomainsJob::slotStartLookup()
   }
 
   // Broadcast address
-  QHostAddress address( Smb4KSettings::broadcastAddress() );
+  QHostAddress address(Smb4KSettings::broadcastAddress());
 
-  if ( !Smb4KSettings::broadcastAddress().isEmpty() &&
-       address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol )
+  if (!Smb4KSettings::broadcastAddress().isEmpty() &&
+       address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol)
   {
-    arguments << QString( "-B %1" ).arg( Smb4KSettings::broadcastAddress() );
+    arguments << QString("-B %1").arg(Smb4KSettings::broadcastAddress());
   }
   else
   {
@@ -343,13 +343,13 @@ void Smb4KLookupDomainsJob::slotStartLookup()
   arguments << "'{print $1}'";
   arguments << "|";
 
-  if ( !winsServer().isEmpty() )
+  if (!winsServer().isEmpty())
   {
     arguments << xargs;
     arguments << "-Iips";
     arguments << nmblookup;
     arguments << "-R";
-    arguments << QString( "-U %1" ).arg( KShell::quoteArg( winsServer() ) );
+    arguments << QString("-U %1").arg(KShell::quoteArg(winsServer()));
     arguments << "-A ips";
   }
   else
@@ -361,10 +361,10 @@ void Smb4KLookupDomainsJob::slotStartLookup()
   }
 
   // Domain
-  if ( !Smb4KSettings::domainName().isEmpty() &&
-       QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0 )
+  if (!Smb4KSettings::domainName().isEmpty() &&
+       QString::compare(Smb4KSettings::domainName(), samba_options["workgroup"]) != 0)
   {
-    arguments << QString( "-W %1" ).arg( KShell::quoteArg( Smb4KSettings::domainName() ) );
+    arguments << QString("-W %1").arg(KShell::quoteArg(Smb4KSettings::domainName()));
   }
   else
   {
@@ -372,10 +372,10 @@ void Smb4KLookupDomainsJob::slotStartLookup()
   }
 
   // NetBIOS name
-  if ( !Smb4KSettings::netBIOSName().isEmpty() &&
-       QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0 )
+  if (!Smb4KSettings::netBIOSName().isEmpty() &&
+       QString::compare(Smb4KSettings::netBIOSName(), samba_options["netbios name"]) != 0)
   {
-    arguments << QString( "-n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) );
+    arguments << QString("-n %1").arg(KShell::quoteArg(Smb4KSettings::netBIOSName()));
   }
   else
   {
@@ -383,10 +383,10 @@ void Smb4KLookupDomainsJob::slotStartLookup()
   }
 
   // NetBIOS scope
-  if ( !Smb4KSettings::netBIOSScope().isEmpty() &&
-       QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0 )
+  if (!Smb4KSettings::netBIOSScope().isEmpty() &&
+       QString::compare(Smb4KSettings::netBIOSScope(), samba_options["netbios scope"]) != 0)
   {
-    arguments << QString( "-i %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSScope() ) );
+    arguments << QString("-i %1").arg(KShell::quoteArg(Smb4KSettings::netBIOSScope()));
   }
   else
   {
@@ -394,10 +394,10 @@ void Smb4KLookupDomainsJob::slotStartLookup()
   }
 
   // Socket options
-  if ( !Smb4KSettings::socketOptions().isEmpty() &&
-       QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0 )
+  if (!Smb4KSettings::socketOptions().isEmpty() &&
+       QString::compare(Smb4KSettings::socketOptions(), samba_options["socket options"]) != 0)
   {
-    arguments << QString( "-O %1" ).arg( KShell::quoteArg( Smb4KSettings::socketOptions() ) );
+    arguments << QString("-O %1").arg(KShell::quoteArg(Smb4KSettings::socketOptions()));
   }
   else
   {
@@ -405,7 +405,7 @@ void Smb4KLookupDomainsJob::slotStartLookup()
   }
 
   // Port 137
-  if ( Smb4KSettings::usePort137() )
+  if (Smb4KSettings::usePort137())
   {
     arguments << "-r";
   }
@@ -414,12 +414,12 @@ void Smb4KLookupDomainsJob::slotStartLookup()
     // Do nothing
   }
   
-  m_proc = new Smb4KProcess( this );
-  m_proc->setOutputChannelMode( KProcess::SeparateChannels );
-  m_proc->setShellCommand( arguments.join( " " ) );
+  m_proc = new Smb4KProcess(this);
+  m_proc->setOutputChannelMode(KProcess::SeparateChannels);
+  m_proc->setShellCommand(arguments.join(" "));
 
-  connect( m_proc, SIGNAL(readyReadStandardError()), this, SLOT(slotReadStandardError()) );
-  connect( m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotProcessFinished(int,QProcess::ExitStatus)) );
+  connect(m_proc, SIGNAL(readyReadStandardError()), this, SLOT(slotReadStandardError()));
+  connect(m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotProcessFinished(int,QProcess::ExitStatus)));
 
   emit aboutToStart();
 
@@ -482,7 +482,7 @@ void Smb4KLookupDomainsJob::slotReadStandardError()
     // Do nothing
   }
   
-  if ( !stdErr.isEmpty() )
+  if (!stdErr.isEmpty())
   {
     Smb4KNotification::retrievingDomainsFailed(stdErr);
   }
@@ -493,13 +493,13 @@ void Smb4KLookupDomainsJob::slotReadStandardError()
 }
 
 
-void Smb4KLookupDomainsJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitStatus exitStatus )
+void Smb4KLookupDomainsJob::slotProcessFinished(int /*exitCode*/, QProcess::ExitStatus exitStatus)
 {
-  switch ( exitStatus )
+  switch (exitStatus)
   {
     case QProcess::CrashExit:
     {
-      if ( !m_proc->isAborted() )
+      if (!m_proc->isAborted())
       {
         Smb4KNotification::processError(m_proc->error());
       }
@@ -522,15 +522,15 @@ void Smb4KLookupDomainsJob::slotProcessFinished( int /*exitCode*/, QProcess::Exi
 
 
 
-Smb4KQueryMasterJob::Smb4KQueryMasterJob( QObject *parent ) : KJob( parent ),
-  m_started( false ), m_parent_widget( NULL ), m_proc( NULL )
+Smb4KQueryMasterJob::Smb4KQueryMasterJob(QObject *parent) : KJob(parent),
+  m_started(false), m_parent_widget(0), m_proc(0)
 {
 }
 
 
 Smb4KQueryMasterJob::~Smb4KQueryMasterJob()
 {
-  while ( !m_workgroups_list.isEmpty() )
+  while (!m_workgroups_list.isEmpty())
   {
     delete m_workgroups_list.takeFirst();
   }
@@ -540,11 +540,11 @@ Smb4KQueryMasterJob::~Smb4KQueryMasterJob()
 void Smb4KQueryMasterJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT(slotStartLookup()) );
+  QTimer::singleShot(0, this, SLOT(slotStartLookup()));
 }
 
 
-void Smb4KQueryMasterJob::setupLookup( const QString &master, QWidget *parent )
+void Smb4KQueryMasterJob::setupLookup(const QString &master, QWidget *parent)
 {
   m_master_browser = master;
   m_parent_widget = parent;
@@ -553,7 +553,7 @@ void Smb4KQueryMasterJob::setupLookup( const QString &master, QWidget *parent )
 
 bool Smb4KQueryMasterJob::doKill()
 {
-  if ( m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting) )
+  if (m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting))
   {
     m_proc->abort();
   }
@@ -568,38 +568,38 @@ bool Smb4KQueryMasterJob::doKill()
 
 void Smb4KQueryMasterJob::processWorkgroups()
 {
-  QStringList stdOut = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts );
+  QStringList stdOut = QString::fromUtf8(m_proc->readAllStandardOutput(), -1).split('\n', QString::SkipEmptyParts);
 
-  if ( !stdOut.isEmpty() )
+  if (!stdOut.isEmpty())
   {
     Smb4KWorkgroup *workgroup = new Smb4KWorkgroup();
 
-    foreach ( const QString &line, stdOut )
+    foreach (const QString &line, stdOut)
     {
-      if ( line.trimmed().startsWith( QLatin1String( "Enumerating" ) ) )
+      if (line.trimmed().startsWith(QLatin1String("Enumerating")))
       {
         continue;
       }
-      else if ( line.trimmed().startsWith( QLatin1String( "Domain name" ) ) )
+      else if (line.trimmed().startsWith(QLatin1String("Domain name")))
       {
         continue;
       }
-      else if ( line.trimmed().startsWith( QLatin1String( "-------------" ) ) )
+      else if (line.trimmed().startsWith(QLatin1String("-------------")))
       {
         continue;
       }
-      else if ( line.trimmed().isEmpty() )
+      else if (line.trimmed().isEmpty())
       {
         continue;
       }
       else
       {
         // This is the workgroup and master entry. Process it.
-        workgroup->setWorkgroupName( line.section( "   ", 0, 0 ).trimmed() );
-        workgroup->setMasterBrowserName( line.section( "   ", 1, -1 ).trimmed() );
-        workgroup->setHasPseudoMasterBrowser( false );
+        workgroup->setWorkgroupName(line.section("   ", 0, 0).trimmed());
+        workgroup->setMasterBrowserName(line.section("   ", 1, -1).trimmed());
+        workgroup->setHasPseudoMasterBrowser(false);
 
-        m_workgroups_list << new Smb4KWorkgroup( *workgroup );
+        m_workgroups_list << new Smb4KWorkgroup(*workgroup);
 
         delete workgroup;
         workgroup = new Smb4KWorkgroup();
@@ -614,16 +614,16 @@ void Smb4KQueryMasterJob::processWorkgroups()
     // Do nothing
   }
 
-  emit workgroups( m_workgroups_list );
+  emit workgroups(m_workgroups_list);
 }
 
 
 void Smb4KQueryMasterJob::slotStartLookup()
 {
   // Find net program
-  QString net = KStandardDirs::findExe( "net" );
+  QString net = QStandardPaths::findExecutable("net");
 
-  if ( net.isEmpty() )
+  if (net.isEmpty())
   {
     Smb4KNotification::commandNotFound("net");
     emitResult();
@@ -635,9 +635,9 @@ void Smb4KQueryMasterJob::slotStartLookup()
   }
 
   // Find xargs program
-  QString xargs = KStandardDirs::findExe( "xargs" );
+  QString xargs = QStandardPaths::findExecutable("xargs");
 
-  if ( xargs.isEmpty() )
+  if (xargs.isEmpty())
   {
     Smb4KNotification::commandNotFound("xargs");
     emitResult();
@@ -654,40 +654,40 @@ void Smb4KQueryMasterJob::slotStartLookup()
   // Workgroup
   Smb4KWorkgroup workgroup;
 
-  if ( !Smb4KSettings::domainName().isEmpty() )
+  if (!Smb4KSettings::domainName().isEmpty())
   {
-    workgroup.setWorkgroupName( Smb4KSettings::domainName() );
+    workgroup.setWorkgroupName(Smb4KSettings::domainName());
   }
   else
   {
-    workgroup.setWorkgroupName( samba_options["workgroup"] );
+    workgroup.setWorkgroupName(samba_options["workgroup"]);
   }
 
-  Smb4KCustomOptions *options = NULL;
+  Smb4KCustomOptions *options = 0;
   QStringList arguments;
   Smb4KHost host;
   
-  if ( !m_master_browser.isEmpty() )
+  if (!m_master_browser.isEmpty())
   {
     // We do not need to set the domain here, because neither
     // Smb4KCustomOptionsMangager nor Smb4KWalletManager need 
     // the domain entry to return correct data.    
-    if ( QHostAddress( m_master_browser ).protocol() == QAbstractSocket::UnknownNetworkLayerProtocol )
+    if (QHostAddress(m_master_browser).protocol() == QAbstractSocket::UnknownNetworkLayerProtocol)
     {
-      host.setHostName( m_master_browser );
+      host.setHostName(m_master_browser);
     }
     else
     {
-      host.setIP( m_master_browser );
+      host.setIP(m_master_browser);
     }
 
     // Acquire the custom options for the master browser
-    options = Smb4KCustomOptionsManager::self()->findOptions( &host );
+    options = Smb4KCustomOptionsManager::self()->findOptions(&host);
 
     // Get authentication information for the host if needed
-    if ( Smb4KSettings::masterBrowsersRequireAuth() )
+    if (Smb4KSettings::masterBrowsersRequireAuth())
     {
-      Smb4KWalletManager::self()->readAuthInfo( &host );
+      Smb4KWalletManager::self()->readAuthInfo(&host);
     }
     else
     {
@@ -698,14 +698,14 @@ void Smb4KQueryMasterJob::slotStartLookup()
     arguments << net;
     arguments << "lookup";
     arguments << "host";
-    arguments << KShell::quoteArg( host.hostName() );
+    arguments << KShell::quoteArg(host.hostName());
   }
   else
   {
     // Get authentication information for the host if needed
-    if ( Smb4KSettings::masterBrowsersRequireAuth() && Smb4KSettings::useDefaultLogin() )
+    if (Smb4KSettings::masterBrowsersRequireAuth() && Smb4KSettings::useDefaultLogin())
     {
-      Smb4KWalletManager::self()->readAuthInfo( &host );
+      Smb4KWalletManager::self()->readAuthInfo(&host);
     }
     else
     {
@@ -716,14 +716,14 @@ void Smb4KQueryMasterJob::slotStartLookup()
     arguments << net;
     arguments << "lookup";
     arguments << "master";
-    arguments << KShell::quoteArg( workgroup.workgroupName() );
+    arguments << KShell::quoteArg(workgroup.workgroupName());
   }
 
   // The user's workgroup/domain name
-  if ( !Smb4KSettings::domainName().isEmpty() &&
-       QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0 )
+  if (!Smb4KSettings::domainName().isEmpty() &&
+       QString::compare(Smb4KSettings::domainName(), samba_options["workgroup"]) != 0)
   {
-    arguments << QString( "-W %1" ).arg( KShell::quoteArg( Smb4KSettings::domainName() ) );
+    arguments << QString("-W %1").arg(KShell::quoteArg(Smb4KSettings::domainName()));
   }
   else
   {
@@ -731,10 +731,10 @@ void Smb4KQueryMasterJob::slotStartLookup()
   }
 
   // The user's NetBIOS name
-  if ( !Smb4KSettings::netBIOSName().isEmpty() &&
-       QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0 )
+  if (!Smb4KSettings::netBIOSName().isEmpty() &&
+       QString::compare(Smb4KSettings::netBIOSName(), samba_options["netbios name"]) != 0)
   {
-    arguments << QString( "-n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) );
+    arguments << QString("-n %1").arg(KShell::quoteArg(Smb4KSettings::netBIOSName()));
   }
   else
   {
@@ -742,7 +742,7 @@ void Smb4KQueryMasterJob::slotStartLookup()
   }
 
   // Machine account
-  if ( Smb4KSettings::machineAccount() )
+  if (Smb4KSettings::machineAccount())
   {
     arguments << "-P";
   }
@@ -817,19 +817,19 @@ void Smb4KQueryMasterJob::slotStartLookup()
   }
 
   // Port
-  if ( options && options->smbPort() != Smb4KSettings::remoteSMBPort() )
+  if (options && options->smbPort() != Smb4KSettings::remoteSMBPort())
   {
-    arguments << QString( "-p %1" ).arg( options->smbPort() );
+    arguments << QString("-p %1").arg(options->smbPort());
   }
   else
   {
-    arguments << QString( "-p %1" ).arg( Smb4KSettings::remoteSMBPort() );
+    arguments << QString("-p %1").arg(Smb4KSettings::remoteSMBPort());
   }
 
   // User name and password if needed
-  if ( Smb4KSettings::masterBrowsersRequireAuth() && !host.login().isEmpty() )
+  if (Smb4KSettings::masterBrowsersRequireAuth() && !host.login().isEmpty())
   {
-    arguments << QString( "-U %1" ).arg( host.login() );
+    arguments << QString("-U %1").arg(host.login());
   }
   else
   {
@@ -850,10 +850,10 @@ void Smb4KQueryMasterJob::slotStartLookup()
   arguments << "domain";
 
   // The user's workgroup/domain name
-  if ( !Smb4KSettings::domainName().isEmpty() &&
-       QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0 )
+  if (!Smb4KSettings::domainName().isEmpty() &&
+       QString::compare(Smb4KSettings::domainName(), samba_options["workgroup"]) != 0)
   {
-    arguments << QString( "-W %1" ).arg( KShell::quoteArg( Smb4KSettings::domainName() ) );
+    arguments << QString("-W %1").arg(KShell::quoteArg(Smb4KSettings::domainName()));
   }
   else
   {
@@ -861,10 +861,10 @@ void Smb4KQueryMasterJob::slotStartLookup()
   }
 
   // The user's NetBIOS name
-  if ( !Smb4KSettings::netBIOSName().isEmpty() &&
-       QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0 )
+  if (!Smb4KSettings::netBIOSName().isEmpty() &&
+       QString::compare(Smb4KSettings::netBIOSName(), samba_options["netbios name"]) != 0)
   {
-    arguments << QString( "-n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) );
+    arguments << QString("-n %1").arg(KShell::quoteArg(Smb4KSettings::netBIOSName()));
   }
   else
   {
@@ -872,7 +872,7 @@ void Smb4KQueryMasterJob::slotStartLookup()
   }
 
   // Machine account
-  if ( Smb4KSettings::machineAccount() )
+  if (Smb4KSettings::machineAccount())
   {
     arguments << "-P";
   }
@@ -947,19 +947,19 @@ void Smb4KQueryMasterJob::slotStartLookup()
   }
 
   // Port
-  if ( options && options->smbPort() != Smb4KSettings::remoteSMBPort() )
+  if (options && options->smbPort() != Smb4KSettings::remoteSMBPort())
   {
-    arguments << QString( "-p %1" ).arg( options->smbPort() );
+    arguments << QString("-p %1").arg(options->smbPort());
   }
   else
   {
-    arguments << QString( "-p %1" ).arg( Smb4KSettings::remoteSMBPort() );
+    arguments << QString("-p %1").arg(Smb4KSettings::remoteSMBPort());
   }
 
   // User name and password if needed
-  if ( Smb4KSettings::masterBrowsersRequireAuth() && !host.login().isEmpty() )
+  if (Smb4KSettings::masterBrowsersRequireAuth() && !host.login().isEmpty())
   {
-    arguments << QString( "-U %1" ).arg( host.login() );
+    arguments << QString("-U %1").arg(host.login());
   }
   else
   {
@@ -971,9 +971,9 @@ void Smb4KQueryMasterJob::slotStartLookup()
   arguments << "-I ip";
 
   // Server name if available
-  if ( !m_master_browser.isEmpty() )
+  if (!m_master_browser.isEmpty())
   {
-    arguments << QString( "-S %1" ).arg( KShell::quoteArg( m_master_browser ) );
+    arguments << QString("-S %1").arg(KShell::quoteArg(m_master_browser));
   }
   else
   {
@@ -984,21 +984,21 @@ void Smb4KQueryMasterJob::slotStartLookup()
   // are connecting to.
   arguments << "-d3";
 
-  m_proc = new Smb4KProcess( this );
-  m_proc->setOutputChannelMode( KProcess::SeparateChannels );
-  m_proc->setShellCommand( arguments.join( " " ) );
+  m_proc = new Smb4KProcess(this);
+  m_proc->setOutputChannelMode(KProcess::SeparateChannels);
+  m_proc->setShellCommand(arguments.join(" "));
 
-  if ( Smb4KSettings::masterBrowsersRequireAuth() && !host.password().isEmpty() )
+  if (Smb4KSettings::masterBrowsersRequireAuth() && !host.password().isEmpty())
   {
-    m_proc->setEnv( "PASSWD", host.password(), true );
+    m_proc->setEnv("PASSWD", host.password(), true);
   }
   else
   {
-    m_proc->unsetEnv( "PASSWD" );
+    m_proc->unsetEnv("PASSWD");
   }
 
-  connect( m_proc, SIGNAL(readyReadStandardError()), this, SLOT(slotReadStandardError()) );
-  connect( m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotProcessFinished(int,QProcess::ExitStatus)) );
+  connect(m_proc, SIGNAL(readyReadStandardError()), this, SLOT(slotReadStandardError()));
+  connect(m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotProcessFinished(int,QProcess::ExitStatus)));
 
   emit aboutToStart();
 
@@ -1009,20 +1009,20 @@ void Smb4KQueryMasterJob::slotStartLookup()
 void Smb4KQueryMasterJob::slotReadStandardError()
 {
   // Read from stderr and decide what to do.
-  QString stdErr = QString::fromUtf8( m_proc->readAllStandardError(), -1 ).trimmed();
+  QString stdErr = QString::fromUtf8(m_proc->readAllStandardError(), -1).trimmed();
 
   // Remove unimportant warnings
-  if ( stdErr.contains( "Ignoring unknown parameter" ) )
+  if (stdErr.contains("Ignoring unknown parameter"))
   {
-    QStringList tmp = stdErr.split( '\n' );
+    QStringList tmp = stdErr.split('\n');
 
-    QMutableStringListIterator it( tmp );
+    QMutableStringListIterator it(tmp);
 
-    while ( it.hasNext() )
+    while (it.hasNext())
     {
       QString test = it.next();
 
-      if ( test.trimmed().startsWith( QLatin1String( "Ignoring unknown parameter" ) ) )
+      if (test.trimmed().startsWith(QLatin1String("Ignoring unknown parameter")))
       {
         it.remove();
       }
@@ -1032,30 +1032,30 @@ void Smb4KQueryMasterJob::slotReadStandardError()
       }
     }
 
-    stdErr = tmp.join( "\n" );
+    stdErr = tmp.join("\n");
   }
   else
   {
     // Do nothing
   }
 
-  if ( !stdErr.isEmpty() )
+  if (!stdErr.isEmpty())
   {
-    if ( stdErr.contains( "The username or password was not correct." ) ||
-         stdErr.contains( "NT_STATUS_ACCOUNT_DISABLED" ) /* AD error */ ||
-         stdErr.contains( "NT_STATUS_ACCESS_DENIED" ) ||
-         stdErr.contains( "NT_STATUS_LOGON_FAILURE" ) )
+    if (stdErr.contains("The username or password was not correct.") ||
+         stdErr.contains("NT_STATUS_ACCOUNT_DISABLED") /* AD error */ ||
+         stdErr.contains("NT_STATUS_ACCESS_DENIED") ||
+         stdErr.contains("NT_STATUS_LOGON_FAILURE"))
     {
-      if ( m_master_browser.isEmpty() )
+      if (m_master_browser.isEmpty())
       {
         // Figure out the current master browser's IP address.
-        QStringList stdErr_list = stdErr.split( '\n', QString::SkipEmptyParts );
+        QStringList stdErr_list = stdErr.split('\n', QString::SkipEmptyParts);
 
-        foreach ( const QString &line, stdErr_list )
+        foreach (const QString &line, stdErr_list)
         {
-          if ( line.contains( "Connecting to host=" ) )
+          if (line.contains("Connecting to host="))
           {
-            m_master_browser = line.section( '=', 1, 1 ).trimmed();
+            m_master_browser = line.section('=', 1, 1).trimmed();
             break;
           }
           else
@@ -1069,12 +1069,12 @@ void Smb4KQueryMasterJob::slotReadStandardError()
         // Do nothing
       }
 
-      emit authError( this );
+      emit authError(this);
     }
     else
     {
       // Avoid reporting the debug output as error.
-      if ( stdErr.contains( "NT_STATUS" ) )
+      if (stdErr.contains("NT_STATUS"))
       {
         Smb4KNotification::retrievingDomainsFailed(stdErr);
       }
@@ -1091,13 +1091,13 @@ void Smb4KQueryMasterJob::slotReadStandardError()
 }
 
 
-void Smb4KQueryMasterJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitStatus exitStatus )
+void Smb4KQueryMasterJob::slotProcessFinished(int /*exitCode*/, QProcess::ExitStatus exitStatus)
 {
-  switch ( exitStatus )
+  switch (exitStatus)
   {
     case QProcess::CrashExit:
     {
-      if ( !m_proc->isAborted() )
+      if (!m_proc->isAborted())
       {
         Smb4KNotification::processError(m_proc->error());
       }
@@ -1120,20 +1120,20 @@ void Smb4KQueryMasterJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitS
 
 
 
-Smb4KScanBAreasJob::Smb4KScanBAreasJob( QObject *parent ) : KJob( parent ),
-  m_started( false ), m_parent_widget( NULL ), m_proc( NULL )
+Smb4KScanBAreasJob::Smb4KScanBAreasJob(QObject *parent) : KJob(parent),
+  m_started(false), m_parent_widget(0), m_proc(0)
 {
 }
 
 
 Smb4KScanBAreasJob::~Smb4KScanBAreasJob()
 {
-  while ( !m_workgroups_list.isEmpty() )
+  while (!m_workgroups_list.isEmpty())
   {
     delete m_workgroups_list.takeFirst();
   }
 
-  while ( !m_hosts_list.isEmpty() )
+  while (!m_hosts_list.isEmpty())
   {
     delete m_hosts_list.takeFirst();
   }  
@@ -1143,11 +1143,11 @@ Smb4KScanBAreasJob::~Smb4KScanBAreasJob()
 void Smb4KScanBAreasJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT(slotStartScan()) );
+  QTimer::singleShot(0, this, SLOT(slotStartScan()));
 }
 
 
-void Smb4KScanBAreasJob::setupScan( QWidget *parent )
+void Smb4KScanBAreasJob::setupScan(QWidget *parent)
 {
   m_parent_widget = parent;
 }
@@ -1155,7 +1155,7 @@ void Smb4KScanBAreasJob::setupScan( QWidget *parent )
 
 bool Smb4KScanBAreasJob::doKill()
 {
-  if ( m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting) )
+  if (m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting))
   {
     m_proc->abort();
   }
@@ -1170,23 +1170,23 @@ bool Smb4KScanBAreasJob::doKill()
 
 void Smb4KScanBAreasJob::processScan()
 {
-  QStringList stdOut = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).trimmed().split( '\n', QString::SkipEmptyParts );
+  QStringList stdOut = QString::fromUtf8(m_proc->readAllStandardOutput(), -1).trimmed().split('\n', QString::SkipEmptyParts);
 
-  if ( !stdOut.isEmpty() )
+  if (!stdOut.isEmpty())
   {
     Smb4KWorkgroup *workgroup = new Smb4KWorkgroup();
     Smb4KHost *host = new Smb4KHost();
     bool skip = false;
 
-    foreach ( const QString &line, stdOut )
+    foreach (const QString &line, stdOut)
     {
       // Check if we have to skip this host entry.
       // A host entry is skipped if the IP address is invalid, i.e.
       // 0.0.0.0 is returned.
-      if ( line.startsWith( QLatin1String( "Looking up status of" ) ) )
+      if (line.startsWith(QLatin1String("Looking up status of")))
       {
-        QString ip_address = line.section( "of", 1, 1 ).trimmed();
-        skip = (QString::compare( ip_address, "0.0.0.0" ) == 0);
+        QString ip_address = line.section("of", 1, 1).trimmed();
+        skip = (QString::compare(ip_address, "0.0.0.0") == 0);
       }
       else
       {
@@ -1195,16 +1195,16 @@ void Smb4KScanBAreasJob::processScan()
 
       // Now process the output if everything is OK. Otherwise
       // skip lines until there is a valid host entry.
-      if ( !skip )
+      if (!skip)
       {
-        if ( line.startsWith( QLatin1String( "Looking up status of" ) ) )
+        if (line.startsWith(QLatin1String("Looking up status of")))
         {
           // Set the IP address of the host.
-          QString ip_address = line.section( "of", 1, 1 ).trimmed();
+          QString ip_address = line.section("of", 1, 1).trimmed();
 
-          if ( QString::compare( ip_address, "0.0.0.0" ) != 0 )
+          if (QString::compare(ip_address, "0.0.0.0") != 0)
           {
-            host->setIP( ip_address );
+            host->setIP(ip_address);
           }
           else
           {
@@ -1212,19 +1212,19 @@ void Smb4KScanBAreasJob::processScan()
           }
           continue;
         }
-        else if ( line.contains( "MAC Address", Qt::CaseSensitive ) )
+        else if (line.contains("MAC Address", Qt::CaseSensitive))
         {
           // Check that the workgroup object carries a workgroup
           // name and a master browser name.
-          if ( !workgroup->workgroupName().isEmpty() && !workgroup->masterBrowserName().isEmpty() )
+          if (!workgroup->workgroupName().isEmpty() && !workgroup->masterBrowserName().isEmpty())
           {
             // Check whether the workgroup has already been entered
             // into the list.
             bool workgroup_found = false;
 
-            for ( int i = 0; i < m_workgroups_list.size(); ++i )
+            for (int i = 0; i < m_workgroups_list.size(); ++i)
             {
-              if ( QString::compare( m_workgroups_list.at( i )->workgroupName(), workgroup->workgroupName(), Qt::CaseInsensitive ) == 0 )
+              if (QString::compare(m_workgroups_list.at(i)->workgroupName(), workgroup->workgroupName(), Qt::CaseInsensitive) == 0)
               {
                 workgroup_found = true;
                 break;
@@ -1235,9 +1235,9 @@ void Smb4KScanBAreasJob::processScan()
               }
             }
 
-            if ( !workgroup_found )
+            if (!workgroup_found)
             {
-              m_workgroups_list << new Smb4KWorkgroup( *workgroup );
+              m_workgroups_list << new Smb4KWorkgroup(*workgroup);
             }
             else
             {
@@ -1249,7 +1249,7 @@ void Smb4KScanBAreasJob::processScan()
             // Do nothing
           }
 
-          m_hosts_list << new Smb4KHost( *host );
+          m_hosts_list << new Smb4KHost(*host);
 
           delete workgroup;
           workgroup = new Smb4KWorkgroup();
@@ -1258,23 +1258,23 @@ void Smb4KScanBAreasJob::processScan()
           host = new Smb4KHost();
           continue;
         }
-        else if ( line.contains( " <00> ", Qt::CaseSensitive ) )
+        else if (line.contains(" <00> ", Qt::CaseSensitive))
         {
           // This is the name of the workgroup and/or host. Depending
           // on if the <GROUP> label is present, it is either a host name
           // or a workgroup name that we process here.
-          if ( line.contains( " <GROUP> ", Qt::CaseSensitive ) )
+          if (line.contains(" <GROUP> ", Qt::CaseSensitive))
           {
-            workgroup->setWorkgroupName( line.section( "<00>", 0, 0 ).trimmed() );
-            host->setWorkgroupName( line.section( "<00>", 0, 0 ).trimmed() );
+            workgroup->setWorkgroupName(line.section("<00>", 0, 0).trimmed());
+            host->setWorkgroupName(line.section("<00>", 0, 0).trimmed());
           }
           else
           {
-            host->setHostName( line.section( "<00>", 0, 0 ).trimmed() );
+            host->setHostName(line.section("<00>", 0, 0).trimmed());
           }
           continue;
         }
-        else if ( line.contains( "__MSBROWSE__", Qt::CaseSensitive ) )
+        else if (line.contains("__MSBROWSE__", Qt::CaseSensitive))
         {
           // The __MSBROWSE__ label marks a host that offers a browse list.
           // If also the <01> label is present, this is a master browser.
@@ -1282,20 +1282,20 @@ void Smb4KScanBAreasJob::processScan()
           // If the host is not a master browser but offers a browse list,
           // we use it temporarily as pseudo master browser for the workgroup
           // until the right master browser has been set.
-          if ( line.contains( " <01> ", Qt::CaseSensitive ) )
+          if (line.contains(" <01> ", Qt::CaseSensitive))
           {
-            workgroup->setMasterBrowserName( host->hostName() );
-            workgroup->setMasterBrowserIP( host->ip() );
-            workgroup->setHasPseudoMasterBrowser( false );
-            host->setIsMasterBrowser( true );
+            workgroup->setMasterBrowserName(host->hostName());
+            workgroup->setMasterBrowserIP(host->ip());
+            workgroup->setHasPseudoMasterBrowser(false);
+            host->setIsMasterBrowser(true);
           }
           else
           {
-            if ( workgroup->masterBrowserName().isEmpty() )
+            if (workgroup->masterBrowserName().isEmpty())
             {
-              workgroup->setMasterBrowserName( host->hostName() );
-              workgroup->setMasterBrowserIP( host->ip() );
-              workgroup->setHasPseudoMasterBrowser( true );
+              workgroup->setMasterBrowserName(host->hostName());
+              workgroup->setMasterBrowserIP(host->ip());
+              workgroup->setHasPseudoMasterBrowser(true);
             }
             else
             {
@@ -1321,8 +1321,8 @@ void Smb4KScanBAreasJob::processScan()
   }
 
   // Emit signals
-  emit workgroups( m_workgroups_list );
-  emit hosts( m_hosts_list );
+  emit workgroups(m_workgroups_list);
+  emit hosts(m_hosts_list);
   
 }
 
@@ -1330,9 +1330,9 @@ void Smb4KScanBAreasJob::processScan()
 void Smb4KScanBAreasJob::slotStartScan()
 {
   // Find nmblookup program.
-  QString nmblookup = KStandardDirs::findExe( "nmblookup" );
+  QString nmblookup = QStandardPaths::findExecutable("nmblookup");
 
-  if ( nmblookup.isEmpty() )
+  if (nmblookup.isEmpty())
   {
     Smb4KNotification::commandNotFound("nmblookup");
     emitResult();
@@ -1344,9 +1344,9 @@ void Smb4KScanBAreasJob::slotStartScan()
   }
 
   // Find awk program
-  QString awk = KStandardDirs::findExe( "awk" );
+  QString awk = QStandardPaths::findExecutable("awk");
 
-  if ( awk.isEmpty() )
+  if (awk.isEmpty())
   {
     Smb4KNotification::commandNotFound("awk");
     emitResult();
@@ -1358,9 +1358,9 @@ void Smb4KScanBAreasJob::slotStartScan()
   }
 
   // Find sed program
-  QString sed = KStandardDirs::findExe( "sed" );
+  QString sed = QStandardPaths::findExecutable("sed");
 
-  if ( sed.isEmpty() )
+  if (sed.isEmpty())
   {
     Smb4KNotification::commandNotFound("sed");
     emitResult();
@@ -1372,9 +1372,9 @@ void Smb4KScanBAreasJob::slotStartScan()
   }
 
   // Find xargs program
-  QString xargs = KStandardDirs::findExe( "xargs" );
+  QString xargs = QStandardPaths::findExecutable("xargs");
 
-  if ( xargs.isEmpty() )
+  if (xargs.isEmpty())
   {
     Smb4KNotification::commandNotFound("xargs");
     emitResult();
@@ -1391,14 +1391,14 @@ void Smb4KScanBAreasJob::slotStartScan()
   // Broadcast areas/addresses
 
   // FIXME: Emit error message if the list is empty!!!
-  QStringList addresses = Smb4KSettings::broadcastAreas().split( ',', QString::SkipEmptyParts );
+  QStringList addresses = Smb4KSettings::broadcastAreas().split(',', QString::SkipEmptyParts);
 
   // Assemble the command
   QStringList arguments;
   
-  for ( int i = 0; i < addresses.size(); ++i )
+  for (int i = 0; i < addresses.size(); ++i)
   {
-    if ( !arguments.isEmpty() )
+    if (!arguments.isEmpty())
     {
       arguments << ";";
     }
@@ -1410,10 +1410,10 @@ void Smb4KScanBAreasJob::slotStartScan()
     arguments << nmblookup;
 
     // Domain
-    if ( !Smb4KSettings::domainName().isEmpty() &&
-         QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0 )
+    if (!Smb4KSettings::domainName().isEmpty() &&
+         QString::compare(Smb4KSettings::domainName(), samba_options["workgroup"]) != 0)
     {
-      arguments << QString( "-W %1" ).arg( KShell::quoteArg( Smb4KSettings::domainName() ) );
+      arguments << QString("-W %1").arg(KShell::quoteArg(Smb4KSettings::domainName()));
     }
     else
     {
@@ -1421,10 +1421,10 @@ void Smb4KScanBAreasJob::slotStartScan()
     }
 
     // NetBIOS name
-    if ( !Smb4KSettings::netBIOSName().isEmpty() &&
-         QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0 )
+    if (!Smb4KSettings::netBIOSName().isEmpty() &&
+         QString::compare(Smb4KSettings::netBIOSName(), samba_options["netbios name"]) != 0)
     {
-      arguments << QString( "-n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) );
+      arguments << QString("-n %1").arg(KShell::quoteArg(Smb4KSettings::netBIOSName()));
     }
     else
     {
@@ -1432,10 +1432,10 @@ void Smb4KScanBAreasJob::slotStartScan()
     }
 
     // NetBIOS scope
-    if ( !Smb4KSettings::netBIOSScope().isEmpty() &&
-         QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0 )
+    if (!Smb4KSettings::netBIOSScope().isEmpty() &&
+         QString::compare(Smb4KSettings::netBIOSScope(), samba_options["netbios scope"]) != 0)
     {
-      arguments << QString( "-i %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSScope() ) );
+      arguments << QString("-i %1").arg(KShell::quoteArg(Smb4KSettings::netBIOSScope()));
     }
     else
     {
@@ -1443,10 +1443,10 @@ void Smb4KScanBAreasJob::slotStartScan()
     }
 
     // Socket options
-    if ( !Smb4KSettings::socketOptions().isEmpty() &&
-         QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0 )
+    if (!Smb4KSettings::socketOptions().isEmpty() &&
+         QString::compare(Smb4KSettings::socketOptions(), samba_options["socket options"]) != 0)
     {
-      arguments << QString( "-O %1" ).arg( KShell::quoteArg( Smb4KSettings::socketOptions() ) );
+      arguments << QString("-O %1").arg(KShell::quoteArg(Smb4KSettings::socketOptions()));
     }
     else
     {
@@ -1454,7 +1454,7 @@ void Smb4KScanBAreasJob::slotStartScan()
     }
 
     // Port 137
-    if ( Smb4KSettings::usePort137() )
+    if (Smb4KSettings::usePort137())
     {
       arguments << "-r";
     }
@@ -1467,24 +1467,24 @@ void Smb4KScanBAreasJob::slotStartScan()
     // broadcast address option is needed for the IP scan.
 
     // FIXME: Emit error message if address is not IP4 or IP6!!!
-    arguments << QString( "-B %1" ).arg( addresses.at( i ) );
+    arguments << QString("-B %1").arg(addresses.at(i));
     arguments << "--";
-    arguments << QString( "%1" ).arg( KShell::quoteArg( "*" ) );
+    arguments << QString("%1").arg(KShell::quoteArg("*"));
     arguments << sed;
     arguments << "-e /querying/d";
     arguments << "|";
     arguments << awk;
-    arguments << QString( "%1" ).arg( KShell::quoteArg( "{print $1}" ) );
+    arguments << QString("%1").arg(KShell::quoteArg("{print $1}"));
     arguments << "|";
     arguments << xargs;
     arguments << "-Iip";
     arguments << nmblookup;
 
     // Domain
-    if ( !Smb4KSettings::domainName().isEmpty() &&
-         QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0 )
+    if (!Smb4KSettings::domainName().isEmpty() &&
+         QString::compare(Smb4KSettings::domainName(), samba_options["workgroup"]) != 0)
     {
-      arguments << QString( "-W %1" ).arg( KShell::quoteArg( Smb4KSettings::domainName() ) );
+      arguments << QString("-W %1").arg(KShell::quoteArg(Smb4KSettings::domainName()));
     }
     else
     {
@@ -1492,10 +1492,10 @@ void Smb4KScanBAreasJob::slotStartScan()
     }
 
     // NetBIOS name
-    if ( !Smb4KSettings::netBIOSName().isEmpty() &&
-         QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0 )
+    if (!Smb4KSettings::netBIOSName().isEmpty() &&
+         QString::compare(Smb4KSettings::netBIOSName(), samba_options["netbios name"]) != 0)
     {
-      arguments << QString( "-n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) );
+      arguments << QString("-n %1").arg(KShell::quoteArg(Smb4KSettings::netBIOSName()));
     }
     else
     {
@@ -1503,10 +1503,10 @@ void Smb4KScanBAreasJob::slotStartScan()
     }
 
     // NetBIOS scope
-    if ( !Smb4KSettings::netBIOSScope().isEmpty() &&
-         QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0 )
+    if (!Smb4KSettings::netBIOSScope().isEmpty() &&
+         QString::compare(Smb4KSettings::netBIOSScope(), samba_options["netbios scope"]) != 0)
     {
-      arguments << QString( "-i %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSScope() ) );
+      arguments << QString("-i %1").arg(KShell::quoteArg(Smb4KSettings::netBIOSScope()));
     }
     else
     {
@@ -1514,10 +1514,10 @@ void Smb4KScanBAreasJob::slotStartScan()
     }
 
     // Socket options
-    if ( !Smb4KSettings::socketOptions().isEmpty() &&
-         QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0 )
+    if (!Smb4KSettings::socketOptions().isEmpty() &&
+         QString::compare(Smb4KSettings::socketOptions(), samba_options["socket options"]) != 0)
     {
-      arguments << QString( "-O %1" ).arg( KShell::quoteArg( Smb4KSettings::socketOptions() ) );
+      arguments << QString("-O %1").arg(KShell::quoteArg(Smb4KSettings::socketOptions()));
     }
     else
     {
@@ -1525,7 +1525,7 @@ void Smb4KScanBAreasJob::slotStartScan()
     }
 
     // Port 137
-    if ( Smb4KSettings::usePort137() )
+    if (Smb4KSettings::usePort137())
     {
       arguments << "-r";
     }
@@ -1536,10 +1536,10 @@ void Smb4KScanBAreasJob::slotStartScan()
 
     // Broadcast address
     // Note: This time we want to have the global one!
-    if ( !Smb4KSettings::broadcastAddress().isEmpty() &&
-         QHostAddress( Smb4KSettings::broadcastAddress() ).protocol() != QAbstractSocket::UnknownNetworkLayerProtocol )
+    if (!Smb4KSettings::broadcastAddress().isEmpty() &&
+         QHostAddress(Smb4KSettings::broadcastAddress()).protocol() != QAbstractSocket::UnknownNetworkLayerProtocol)
     {
-      arguments << QString( "-B %1" ).arg( Smb4KSettings::broadcastAddress() );
+      arguments << QString("-B %1").arg(Smb4KSettings::broadcastAddress());
     }
     else
     {
@@ -1547,10 +1547,10 @@ void Smb4KScanBAreasJob::slotStartScan()
     }
 
     // Include the WINS server:
-    if ( !winsServer().isEmpty() )
+    if (!winsServer().isEmpty())
     {
       arguments << "-R";
-      arguments << QString( "-U %1" ).arg( winsServer() );
+      arguments << QString("-U %1").arg(winsServer());
     }
     else
     {
@@ -1560,12 +1560,12 @@ void Smb4KScanBAreasJob::slotStartScan()
     arguments << "-A ip";
   }
 
-  m_proc = new Smb4KProcess( this );
-  m_proc->setOutputChannelMode( KProcess::SeparateChannels );
-  m_proc->setShellCommand( arguments.join( " " ) );
+  m_proc = new Smb4KProcess(this);
+  m_proc->setOutputChannelMode(KProcess::SeparateChannels);
+  m_proc->setShellCommand(arguments.join(" "));
 
-  connect( m_proc, SIGNAL(readyReadStandardError()), SLOT(slotReadStandardError()) );
-  connect( m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(slotProcessFinished(int,QProcess::ExitStatus)) );
+  connect(m_proc, SIGNAL(readyReadStandardError()), SLOT(slotReadStandardError()));
+  connect(m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(slotProcessFinished(int,QProcess::ExitStatus)));
 
   emit aboutToStart();
 
@@ -1578,7 +1578,7 @@ void Smb4KScanBAreasJob::slotReadStandardError()
   QString stdErr = QString::fromUtf8(m_proc->readAllStandardError(), -1).trimmed();
 
   // Remove unimportant warnings
-  if ( stdErr.contains("Ignoring unknown parameter"))
+  if (stdErr.contains("Ignoring unknown parameter"))
   {
     QStringList list = stdErr.split('\n');
     QMutableStringListIterator it(list);
@@ -1627,7 +1627,7 @@ void Smb4KScanBAreasJob::slotReadStandardError()
     // Do nothing
   }
 
-  if ( !stdErr.isEmpty() )
+  if (!stdErr.isEmpty())
   {
     Smb4KNotification::scanningBroadcastAreaFailed(stdErr);
   }
@@ -1638,13 +1638,13 @@ void Smb4KScanBAreasJob::slotReadStandardError()
 }
 
 
-void Smb4KScanBAreasJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitStatus exitStatus )
+void Smb4KScanBAreasJob::slotProcessFinished(int /*exitCode*/, QProcess::ExitStatus exitStatus)
 {
-  switch ( exitStatus )
+  switch (exitStatus)
   {
     case QProcess::CrashExit:
     {
-      if ( !m_proc->isAborted() )
+      if (!m_proc->isAborted())
       {
         Smb4KNotification::processError(m_proc->error());
       }
@@ -1667,8 +1667,8 @@ void Smb4KScanBAreasJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitSt
 
 
 
-Smb4KLookupDomainMembersJob::Smb4KLookupDomainMembersJob( QObject *parent ) : KJob( parent ),
-  m_started( false ), m_parent_widget( NULL ), m_proc( NULL )
+Smb4KLookupDomainMembersJob::Smb4KLookupDomainMembersJob(QObject *parent) : KJob(parent),
+  m_started(false), m_parent_widget(0), m_proc(0)
 {
 }
 
@@ -1680,7 +1680,7 @@ Smb4KLookupDomainMembersJob::~Smb4KLookupDomainMembersJob()
   // Do not delete m_master_browser here, because it is a pointer
   // to an entry in Smb4KGlobal::hostsList().
   
-  while ( !m_hosts_list.isEmpty() )
+  while (!m_hosts_list.isEmpty())
   {
     delete m_hosts_list.takeFirst();
   }
@@ -1690,21 +1690,21 @@ Smb4KLookupDomainMembersJob::~Smb4KLookupDomainMembersJob()
 void Smb4KLookupDomainMembersJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT(slotStartLookup()) );
+  QTimer::singleShot(0, this, SLOT(slotStartLookup()));
 }
 
 
-void Smb4KLookupDomainMembersJob::setupLookup( Smb4KWorkgroup *workgroup, QWidget *parent )
+void Smb4KLookupDomainMembersJob::setupLookup(Smb4KWorkgroup *workgroup, QWidget *parent)
 {
-  Q_ASSERT( workgroup );
-  m_workgroup = new Smb4KWorkgroup( *workgroup );
+  Q_ASSERT(workgroup);
+  m_workgroup = new Smb4KWorkgroup(*workgroup);
   m_parent_widget = parent;
 }
 
 
 bool Smb4KLookupDomainMembersJob::doKill()
 {
-  if ( m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting) )
+  if (m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting))
   {
     m_proc->abort();
   }
@@ -1719,23 +1719,23 @@ bool Smb4KLookupDomainMembersJob::doKill()
 
 void Smb4KLookupDomainMembersJob::processHosts()
 {
-  QStringList stdOut = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts );
+  QStringList stdOut = QString::fromUtf8(m_proc->readAllStandardOutput(), -1).split('\n', QString::SkipEmptyParts);
 
-  if ( !stdOut.isEmpty() )
+  if (!stdOut.isEmpty())
   {
     Smb4KHost *host = new Smb4KHost();
 
-    foreach ( const QString &line, stdOut )
+    foreach (const QString &line, stdOut)
     {
-      if ( line.trimmed().startsWith( QLatin1String( "Enumerating" ) ) )
+      if (line.trimmed().startsWith(QLatin1String("Enumerating")))
       {
         continue;
       }
-      else if ( line.trimmed().startsWith( QLatin1String( "Server name" ) ) )
+      else if (line.trimmed().startsWith(QLatin1String("Server name")))
       {
         continue;
       }
-      else if ( line.trimmed().startsWith( QLatin1String( "-------------" ) ) )
+      else if (line.trimmed().startsWith(QLatin1String("-------------")))
       {
         continue;
       }
@@ -1743,21 +1743,21 @@ void Smb4KLookupDomainMembersJob::processHosts()
       {
         // Omit host names that contain spaces since KUrl cannot handle them.
         // And, they are wrong, anyway.
-        if ( !line.section( "   ", 0, 0 ).trimmed().contains( " " ) )
+        if (!line.section("   ", 0, 0).trimmed().contains(" "))
         {
-          host->setHostName( line.section( "   ", 0, 0 ).trimmed() );
-          host->setWorkgroupName( m_workgroup->workgroupName() );
-          host->setComment( line.section( "   ", 1, -1 ).trimmed() );
+          host->setHostName(line.section("   ", 0, 0).trimmed());
+          host->setWorkgroupName(m_workgroup->workgroupName());
+          host->setComment(line.section("   ", 1, -1).trimmed());
           
-          if ( QString::compare( host->hostName(), m_workgroup->masterBrowserName() ) == 0 )
+          if (QString::compare(host->hostName(), m_workgroup->masterBrowserName()) == 0)
           {
-            host->setLogin( m_master_browser->login() );
-            host->setPassword( m_master_browser->password() );
-            host->setIsMasterBrowser( true );
+            host->setLogin(m_master_browser->login());
+            host->setPassword(m_master_browser->password());
+            host->setIsMasterBrowser(true);
 
-            if ( m_workgroup->hasMasterBrowserIP() )
+            if (m_workgroup->hasMasterBrowserIP())
             {
-              host->setIP( m_workgroup->masterBrowserIP() );
+              host->setIP(m_workgroup->masterBrowserIP());
             }
             else
             {
@@ -1766,10 +1766,10 @@ void Smb4KLookupDomainMembersJob::processHosts()
           }
           else
           {
-            host->setIsMasterBrowser( false );
+            host->setIsMasterBrowser(false);
           }
           
-          m_hosts_list << new Smb4KHost( *host );
+          m_hosts_list << new Smb4KHost(*host);
         }
         else
         {
@@ -1790,16 +1790,16 @@ void Smb4KLookupDomainMembersJob::processHosts()
     // Do nothing
   }
 
-  emit hosts( m_workgroup, m_hosts_list );
+  emit hosts(m_workgroup, m_hosts_list);
 }
 
 
 void Smb4KLookupDomainMembersJob::slotStartLookup()
 {
   // Find net program
-  QString net = KStandardDirs::findExe( "net" );
+  QString net = QStandardPaths::findExecutable("net");
 
-  if ( net.isEmpty() )
+  if (net.isEmpty())
   {
     Smb4KNotification::commandNotFound("net");
     emitResult();
@@ -1812,16 +1812,16 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
 
   // Get the master browser of the defined workgroup, so that we
   // can connect to it.
-  Smb4KHost *host = findHost( m_workgroup->masterBrowserName(), m_workgroup->workgroupName() );
+  Smb4KHost *host = findHost(m_workgroup->masterBrowserName(), m_workgroup->workgroupName());
 
-  if ( host )
+  if (host)
   {
     m_master_browser = host;
     
     // If the master browsers need authentication, we read it now.
-    if ( Smb4KSettings::masterBrowsersRequireAuth() )
+    if (Smb4KSettings::masterBrowsersRequireAuth())
     {
-      Smb4KWalletManager::self()->readAuthInfo( m_master_browser );
+      Smb4KWalletManager::self()->readAuthInfo(m_master_browser);
     }
     else
     {
@@ -1832,7 +1832,7 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
     QMap<QString,QString> samba_options = globalSambaOptions();
 
     // Custom options
-    Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions( m_master_browser );
+    Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions(m_master_browser);
 
     // Assemble the command.
     QStringList arguments;
@@ -1847,10 +1847,10 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
     arguments << "domain";
 
     // The user's domain or workgroup
-    if ( !Smb4KSettings::domainName().isEmpty() &&
-         QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0 )
+    if (!Smb4KSettings::domainName().isEmpty() &&
+         QString::compare(Smb4KSettings::domainName(), samba_options["workgroup"]) != 0)
     {
-      arguments << QString( "-W %1" ).arg( KShell::quoteArg( Smb4KSettings::domainName() ) );
+      arguments << QString("-W %1").arg(KShell::quoteArg(Smb4KSettings::domainName()));
     }
     else
     {
@@ -1858,10 +1858,10 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
     }
 
     // The NetBIOS name of the user's machine
-    if ( !Smb4KSettings::netBIOSName().isEmpty() &&
-         QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0 )
+    if (!Smb4KSettings::netBIOSName().isEmpty() &&
+         QString::compare(Smb4KSettings::netBIOSName(), samba_options["netbios name"]) != 0)
     {
-      arguments << QString( "-n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) );
+      arguments << QString("-n %1").arg(KShell::quoteArg(Smb4KSettings::netBIOSName()));
     }
     else
     {
@@ -1869,7 +1869,7 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
     }
 
     // Machine account
-    if ( Smb4KSettings::machineAccount() )
+    if (Smb4KSettings::machineAccount())
     {
       arguments << "-P";
     }
@@ -1944,19 +1944,19 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
     }
 
     // Remote SMB port
-    if ( options && options->smbPort() != Smb4KSettings::remoteSMBPort() )
+    if (options && options->smbPort() != Smb4KSettings::remoteSMBPort())
     {
-      arguments << QString( "-p %1" ).arg( options->smbPort() );
+      arguments << QString("-p %1").arg(options->smbPort());
     }
     else
     {
-      arguments << QString( "-p %1" ).arg( Smb4KSettings::remoteSMBPort() );
+      arguments << QString("-p %1").arg(Smb4KSettings::remoteSMBPort());
     }
 
     // IP address of the master browser
-    if ( m_workgroup->hasMasterBrowserIP() )
+    if (m_workgroup->hasMasterBrowserIP())
     {
-      arguments << QString( "-I %1" ).arg( m_workgroup->masterBrowserIP() );
+      arguments << QString("-I %1").arg(m_workgroup->masterBrowserIP());
     }
     else
     {
@@ -1965,15 +1965,15 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
 
     // Workgroup of the remote master browser that is to be 
     // queried for the workgroup/domain members.
-    arguments << QString( "-w %1" ).arg( KShell::quoteArg( m_workgroup->workgroupName() ) );
+    arguments << QString("-w %1").arg(KShell::quoteArg(m_workgroup->workgroupName()));
 
     // Name of the remote master browser
-    arguments << QString( "-S %1" ).arg( KShell::quoteArg( m_workgroup->masterBrowserName() ) );
+    arguments << QString("-S %1").arg(KShell::quoteArg(m_workgroup->masterBrowserName()));
 
     // Authentication, if needed
-    if ( Smb4KSettings::masterBrowsersRequireAuth() && !m_master_browser->login().isEmpty() )
+    if (Smb4KSettings::masterBrowsersRequireAuth() && !m_master_browser->login().isEmpty())
     {
-      arguments << QString( "-U %1" ).arg( m_master_browser->login() );
+      arguments << QString("-U %1").arg(m_master_browser->login());
     }
     else
     {
@@ -1981,23 +1981,23 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
       arguments << "-U %";
     }
 
-    m_proc = new Smb4KProcess( this );
-    m_proc->setShellCommand( arguments.join( " " ) );
-    m_proc->setOutputChannelMode( KProcess::SeparateChannels );
+    m_proc = new Smb4KProcess(this);
+    m_proc->setShellCommand(arguments.join(" "));
+    m_proc->setOutputChannelMode(KProcess::SeparateChannels);
 
-    if ( Smb4KSettings::self()->masterBrowsersRequireAuth() && !m_master_browser->password().isEmpty() )
+    if (Smb4KSettings::self()->masterBrowsersRequireAuth() && !m_master_browser->password().isEmpty())
     {
-      m_proc->setEnv( "PASSWD", m_master_browser->password(), true );
+      m_proc->setEnv("PASSWD", m_master_browser->password(), true);
     }
     else
     {
-      m_proc->unsetEnv( "PASSWD" );
+      m_proc->unsetEnv("PASSWD");
     }
   
-    connect( m_proc, SIGNAL(readyReadStandardError()), SLOT(slotReadStandardError()) );
-    connect( m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(slotProcessFinished(int,QProcess::ExitStatus)) );
+    connect(m_proc, SIGNAL(readyReadStandardError()), SLOT(slotReadStandardError()));
+    connect(m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(slotProcessFinished(int,QProcess::ExitStatus)));
 
-    emit aboutToStart( m_workgroup );
+    emit aboutToStart(m_workgroup);
     
     m_proc->start();
   }
@@ -2005,7 +2005,7 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
   {
     // The master browser could not be determined. End the
     // job here and emit the signal nontheless.
-    emit hosts( m_workgroup, m_hosts_list );
+    emit hosts(m_workgroup, m_hosts_list);
     emitResult();
   }
 }
@@ -2013,20 +2013,20 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
 
 void Smb4KLookupDomainMembersJob::slotReadStandardError()
 {
-  QString stdErr = QString::fromUtf8( m_proc->readAllStandardError(), -1 ).trimmed();
+  QString stdErr = QString::fromUtf8(m_proc->readAllStandardError(), -1).trimmed();
 
   // Remove unimportant warnings
-  if ( stdErr.contains( "Ignoring unknown parameter" ) )
+  if (stdErr.contains("Ignoring unknown parameter"))
   {
-    QStringList tmp = stdErr.split( '\n' );
+    QStringList tmp = stdErr.split('\n');
 
-    QMutableStringListIterator it( tmp );
+    QMutableStringListIterator it(tmp);
 
-    while ( it.hasNext() )
+    while (it.hasNext())
     {
       QString test = it.next();
 
-      if ( test.trimmed().startsWith( QLatin1String( "Ignoring unknown parameter" ) ) )
+      if (test.trimmed().startsWith(QLatin1String("Ignoring unknown parameter")))
       {
         it.remove();
       }
@@ -2036,24 +2036,24 @@ void Smb4KLookupDomainMembersJob::slotReadStandardError()
       }
     }
 
-    stdErr = tmp.join( "\n" );
+    stdErr = tmp.join("\n");
   }
   else
   {
     // Do nothing
   }
 
-  if ( !stdErr.isEmpty() )
+  if (!stdErr.isEmpty())
   {
-    if ( stdErr.contains( "The username or password was not correct." ) ||
-         stdErr.contains( "NT_STATUS_ACCOUNT_DISABLED" ) /* AD error */ ||
-         stdErr.contains( "NT_STATUS_ACCESS_DENIED" ) ||
-         stdErr.contains( "NT_STATUS_LOGON_FAILURE" ) )
+    if (stdErr.contains("The username or password was not correct.") ||
+         stdErr.contains("NT_STATUS_ACCOUNT_DISABLED") /* AD error */ ||
+         stdErr.contains("NT_STATUS_ACCESS_DENIED") ||
+         stdErr.contains("NT_STATUS_LOGON_FAILURE"))
     {
-      emit authError( this );
+      emit authError(this);
     }
-    else if ( stdErr.contains( "tdb_transaction_recover:" ) ||
-              stdErr.contains( "tdb_log" ) )
+    else if (stdErr.contains("tdb_transaction_recover:") ||
+              stdErr.contains("tdb_log"))
     {
       // Suppress debug output/information send to stderr
       qDebug() << stdErr;
@@ -2071,13 +2071,13 @@ void Smb4KLookupDomainMembersJob::slotReadStandardError()
 }
 
 
-void Smb4KLookupDomainMembersJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitStatus exitStatus )
+void Smb4KLookupDomainMembersJob::slotProcessFinished(int /*exitCode*/, QProcess::ExitStatus exitStatus)
 {
-  switch ( exitStatus )
+  switch (exitStatus)
   {
     case QProcess::CrashExit:
     {
-      if ( !m_proc->isAborted() )
+      if (!m_proc->isAborted())
       {
         Smb4KNotification::processError(m_proc->error());
       }
@@ -2095,13 +2095,13 @@ void Smb4KLookupDomainMembersJob::slotProcessFinished( int /*exitCode*/, QProces
   }
 
   emitResult();
-  emit finished( m_workgroup );
+  emit finished(m_workgroup);
 }
 
 
 
-Smb4KLookupSharesJob::Smb4KLookupSharesJob( QObject *parent ) : KJob( parent ),
-  m_started( false ), m_parent_widget( NULL ), m_proc( NULL )
+Smb4KLookupSharesJob::Smb4KLookupSharesJob(QObject *parent) : KJob(parent),
+  m_started(false), m_parent_widget(0), m_proc(0)
 {
 }
 
@@ -2110,7 +2110,7 @@ Smb4KLookupSharesJob::~Smb4KLookupSharesJob()
 {
   delete m_host;
 
-  while ( !m_shares_list.isEmpty() )
+  while (!m_shares_list.isEmpty())
   {
     delete m_shares_list.takeFirst();
   }
@@ -2120,21 +2120,21 @@ Smb4KLookupSharesJob::~Smb4KLookupSharesJob()
 void Smb4KLookupSharesJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT(slotStartLookup()) );
+  QTimer::singleShot(0, this, SLOT(slotStartLookup()));
 }
 
 
-void Smb4KLookupSharesJob::setupLookup( Smb4KHost *host, QWidget *parent )
+void Smb4KLookupSharesJob::setupLookup(Smb4KHost *host, QWidget *parent)
 {
-  Q_ASSERT( host );
-  m_host = new Smb4KHost( *host );
+  Q_ASSERT(host);
+  m_host = new Smb4KHost(*host);
   m_parent_widget = parent;
 }
 
 
 bool Smb4KLookupSharesJob::doKill()
 {
-  if ( m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting) )
+  if (m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting))
   {
     m_proc->abort();
   }
@@ -2149,20 +2149,20 @@ bool Smb4KLookupSharesJob::doKill()
 
 void Smb4KLookupSharesJob::processShares()
 {
-  QStringList stdOut = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts );
+  QStringList stdOut = QString::fromUtf8(m_proc->readAllStandardOutput(), -1).split('\n', QString::SkipEmptyParts);
 
-  if ( !stdOut.isEmpty() )
+  if (!stdOut.isEmpty())
   {
     // For some strange reason, Samba sometimes reports
     // some NT_STATUS error messages via stdout (e.g. Kubuntu 13.10,
     // Samba 3.6.18). So, we need to check stdout for authentication
     // errors as well...
-    if ( stdOut.contains( "The username or password was not correct." ) ||
-         stdOut.contains( "NT_STATUS_ACCOUNT_DISABLED" ) /* AD error */ ||
-         stdOut.contains( "NT_STATUS_ACCESS_DENIED" ) ||
-         stdOut.contains( "NT_STATUS_LOGON_FAILURE" ) )
+    if (stdOut.contains("The username or password was not correct.") ||
+         stdOut.contains("NT_STATUS_ACCOUNT_DISABLED") /* AD error */ ||
+         stdOut.contains("NT_STATUS_ACCESS_DENIED") ||
+         stdOut.contains("NT_STATUS_LOGON_FAILURE"))
     {
-      emit authError( this );
+      emit authError(this);
       return;
     }
     else
@@ -2173,125 +2173,125 @@ void Smb4KLookupSharesJob::processShares()
     // Now process the shares.
     Smb4KShare *share = new Smb4KShare();
     
-    foreach ( const QString &line, stdOut )
+    foreach (const QString &line, stdOut)
     {
-      if ( line.trimmed().startsWith( QLatin1String( "Enumerating" ) ) )
+      if (line.trimmed().startsWith(QLatin1String("Enumerating")))
       {
         continue;
       }
-      else if ( line.trimmed().startsWith( QLatin1String( "Share name" ) ) )
+      else if (line.trimmed().startsWith(QLatin1String("Share name")))
       {
         continue;
       }
-      else if ( line.trimmed().startsWith( QLatin1String( "----------" ) ) )
+      else if (line.trimmed().startsWith(QLatin1String("----------")))
       {
         continue;
       }
-      else if ( line.contains( " Disk     ", Qt::CaseSensitive ) /* line has comment */ ||
-                (!line.contains( " Disk     ", Qt::CaseSensitive ) &&
-                line.trimmed().endsWith( QLatin1String( " Disk" ), Qt::CaseSensitive ) /* line has no comment */) )
+      else if (line.contains(" Disk     ", Qt::CaseSensitive) /* line has comment */ ||
+                (!line.contains(" Disk     ", Qt::CaseSensitive) &&
+                line.trimmed().endsWith(QLatin1String(" Disk"), Qt::CaseSensitive) /* line has no comment */))
       {
-        if ( !line.trimmed().endsWith( QLatin1String( " Disk" ), Qt::CaseSensitive ) )
+        if (!line.trimmed().endsWith(QLatin1String(" Disk"), Qt::CaseSensitive))
         {
-          share->setShareName( line.section( " Disk     ", 0, 0 ).trimmed() );
-          share->setComment( line.section( " Disk     ", 1, 1 ).trimmed() );
+          share->setShareName(line.section(" Disk     ", 0, 0).trimmed());
+          share->setComment(line.section(" Disk     ", 1, 1).trimmed());
         }
         else
         {
-          share->setShareName( line.section( " Disk", 0, 0 ).trimmed() );
-          share->setComment( "" );
+          share->setShareName(line.section(" Disk", 0, 0).trimmed());
+          share->setComment("");
         }
             
-        share->setHostName( m_host->hostName() );
-        share->setWorkgroupName( m_host->workgroupName() );
-        share->setTypeString( "Disk" );
-        share->setLogin( m_host->login() );
-        share->setPassword( m_host->password() );
+        share->setHostName(m_host->hostName());
+        share->setWorkgroupName(m_host->workgroupName());
+        share->setTypeString("Disk");
+        share->setLogin(m_host->login());
+        share->setPassword(m_host->password());
 
-        if ( m_host->hasIP() )
+        if (m_host->hasIP())
         {
-          share->setHostIP( m_host->ip() );
+          share->setHostIP(m_host->ip());
         }
         else
         {
           // Do nothing
         }
 
-        m_shares_list << new Smb4KShare( *share );
+        m_shares_list << new Smb4KShare(*share);
 
         delete share;
         share = new Smb4KShare();
         
         continue;
       }
-      else if ( line.contains( " IPC      ", Qt::CaseSensitive ) /* line has comment */ ||
-                (!line.contains( " IPC      ", Qt::CaseSensitive ) &&
-                line.trimmed().endsWith( QLatin1String( " IPC" ), Qt::CaseSensitive ) /* line has no comment */) )
+      else if (line.contains(" IPC      ", Qt::CaseSensitive) /* line has comment */ ||
+                (!line.contains(" IPC      ", Qt::CaseSensitive) &&
+                line.trimmed().endsWith(QLatin1String(" IPC"), Qt::CaseSensitive) /* line has no comment */))
       {
-        if ( !line.trimmed().endsWith( QLatin1String( " IPC" ), Qt::CaseSensitive ) )
+        if (!line.trimmed().endsWith(QLatin1String(" IPC"), Qt::CaseSensitive))
         {
-          share->setShareName( line.section( " IPC      ", 0, 0 ).trimmed() );
-          share->setComment( line.section( " IPC      ", 1, 1 ).trimmed() );
+          share->setShareName(line.section(" IPC      ", 0, 0).trimmed());
+          share->setComment(line.section(" IPC      ", 1, 1).trimmed());
         }
         else
         {
-          share->setShareName( line.section( " IPC", 0, 0 ).trimmed() );
-          share->setComment( "" );
+          share->setShareName(line.section(" IPC", 0, 0).trimmed());
+          share->setComment("");
         }
             
-        share->setHostName( m_host->hostName() );
-        share->setWorkgroupName( m_host->workgroupName() );
-        share->setTypeString( "IPC" );
-        share->setLogin( m_host->login() );
-        share->setPassword( m_host->password() );
+        share->setHostName(m_host->hostName());
+        share->setWorkgroupName(m_host->workgroupName());
+        share->setTypeString("IPC");
+        share->setLogin(m_host->login());
+        share->setPassword(m_host->password());
 
-        if ( m_host->hasIP() )
+        if (m_host->hasIP())
         {
-          share->setHostIP( m_host->ip() );
+          share->setHostIP(m_host->ip());
         }
         else
         {
           // Do nothing
         }
 
-        m_shares_list << new Smb4KShare( *share );
+        m_shares_list << new Smb4KShare(*share);
 
         delete share;
         share = new Smb4KShare();
 
         continue;
       }
-      else if ( line.contains( " Print    ", Qt::CaseSensitive ) /* line has comment */ ||
-                (!line.contains( " Print    ", Qt::CaseSensitive ) &&
-                line.trimmed().endsWith( QLatin1String( " Print" ), Qt::CaseSensitive ) /* line has no comment */) )
+      else if (line.contains(" Print    ", Qt::CaseSensitive) /* line has comment */ ||
+                (!line.contains(" Print    ", Qt::CaseSensitive) &&
+                line.trimmed().endsWith(QLatin1String(" Print"), Qt::CaseSensitive) /* line has no comment */))
       {
-        if ( !line.trimmed().endsWith( QLatin1String( " Print" ), Qt::CaseSensitive ) )
+        if (!line.trimmed().endsWith(QLatin1String(" Print"), Qt::CaseSensitive))
         {
-          share->setShareName( line.section( " Print    ", 0, 0 ).trimmed() );
-          share->setComment( line.section( " Print    ", 1, 1 ).trimmed() );
+          share->setShareName(line.section(" Print    ", 0, 0).trimmed());
+          share->setComment(line.section(" Print    ", 1, 1).trimmed());
         }
         else
         {
-          share->setShareName( line.section( " Print", 0, 0 ).trimmed() );
-          share->setComment( "" );
+          share->setShareName(line.section(" Print", 0, 0).trimmed());
+          share->setComment("");
         }
             
-        share->setHostName( m_host->hostName() );
-        share->setWorkgroupName( m_host->workgroupName() );
-        share->setTypeString( "Printer" );
-        share->setLogin( m_host->login() );
-        share->setPassword( m_host->password() );
+        share->setHostName(m_host->hostName());
+        share->setWorkgroupName(m_host->workgroupName());
+        share->setTypeString("Printer");
+        share->setLogin(m_host->login());
+        share->setPassword(m_host->password());
 
-        if ( m_host->hasIP() )
+        if (m_host->hasIP())
         {
-          share->setHostIP( m_host->ip() );
+          share->setHostIP(m_host->ip());
         }
         else
         {
           // Do nothing
         }
 
-        m_shares_list << new Smb4KShare( *share );
+        m_shares_list << new Smb4KShare(*share);
 
         delete share;
         share = new Smb4KShare();
@@ -2311,16 +2311,16 @@ void Smb4KLookupSharesJob::processShares()
     // Do nothing
   }
   
-  emit shares( m_host, m_shares_list );
+  emit shares(m_host, m_shares_list);
 }
 
 
 void Smb4KLookupSharesJob::slotStartLookup()
 {
   // Find net program
-  QString net = KStandardDirs::findExe( "net" );
+  QString net = QStandardPaths::findExecutable("net");
 
-  if ( net.isEmpty() )
+  if (net.isEmpty())
   {
     Smb4KNotification::commandNotFound("net");
     emitResult();
@@ -2332,11 +2332,11 @@ void Smb4KLookupSharesJob::slotStartLookup()
   }
   
   // Authentication information.
-  Smb4KWalletManager::self()->readAuthInfo( m_host );
+  Smb4KWalletManager::self()->readAuthInfo(m_host);
   
   // Global Samba and custom options
   QMap<QString,QString> samba_options = globalSambaOptions();
-  Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions( m_host );
+  Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions(m_host);
   
   // Assemble the command.
   QStringList arguments;
@@ -2345,9 +2345,9 @@ void Smb4KLookupSharesJob::slotStartLookup()
   arguments << net;
   
   // Protocol hint & command.
-  if ( options && options->protocolHint() != Smb4KCustomOptions::UndefinedProtocolHint )
+  if (options && options->protocolHint() != Smb4KCustomOptions::UndefinedProtocolHint)
   {
-    switch ( options->protocolHint() )
+    switch (options->protocolHint())
     {
       case Smb4KCustomOptions::RAP:
       {
@@ -2371,7 +2371,7 @@ void Smb4KLookupSharesJob::slotStartLookup()
   }
   else
   {
-    switch ( Smb4KSettings::protocolHint() )
+    switch (Smb4KSettings::protocolHint())
     {
       case Smb4KSettings::EnumProtocolHint::RAP:
       {
@@ -2399,10 +2399,10 @@ void Smb4KLookupSharesJob::slotStartLookup()
   arguments << "-l";
   
   // The user's domain or workgroup
-  if ( !Smb4KSettings::domainName().isEmpty() &&
-       QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0 )
+  if (!Smb4KSettings::domainName().isEmpty() &&
+       QString::compare(Smb4KSettings::domainName(), samba_options["workgroup"]) != 0)
   {
-    arguments << QString( "-W %1" ).arg( KShell::quoteArg( Smb4KSettings::domainName() ) );
+    arguments << QString("-W %1").arg(KShell::quoteArg(Smb4KSettings::domainName()));
   }
   else
   {
@@ -2410,10 +2410,10 @@ void Smb4KLookupSharesJob::slotStartLookup()
   }
                
   // The user's NetBIOS name
-  if ( !Smb4KSettings::netBIOSName().isEmpty() &&
-       QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0 )
+  if (!Smb4KSettings::netBIOSName().isEmpty() &&
+       QString::compare(Smb4KSettings::netBIOSName(), samba_options["netbios name"]) != 0)
   {
-    arguments << QString( "-n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) );
+    arguments << QString("-n %1").arg(KShell::quoteArg(Smb4KSettings::netBIOSName()));
   }
   else
   {
@@ -2421,7 +2421,7 @@ void Smb4KLookupSharesJob::slotStartLookup()
   }
   
   // Machine account
-  if ( Smb4KSettings::machineAccount() )
+  if (Smb4KSettings::machineAccount())
   {
     arguments << "-P";
   }
@@ -2453,32 +2453,32 @@ void Smb4KLookupSharesJob::slotStartLookup()
   // Port
   // If a port was defined for the host via Smb4KHost::port(), it will 
   // overwrite the other options.
-  if ( m_host->port() != -1 )
+  if (m_host->port() != -1)
   {
-    arguments << QString( "-p %1" ).arg( m_host->port() );
+    arguments << QString("-p %1").arg(m_host->port());
   }
   else
   {
-    if ( options && options->smbPort() != Smb4KSettings::remoteSMBPort() )
+    if (options && options->smbPort() != Smb4KSettings::remoteSMBPort())
     {
-      arguments << QString( "-p %1" ).arg( options->smbPort() );
+      arguments << QString("-p %1").arg(options->smbPort());
     }
     else
     {
-      arguments << QString( "-p %1" ).arg( Smb4KSettings::remoteSMBPort() );
+      arguments << QString("-p %1").arg(Smb4KSettings::remoteSMBPort());
     }
   }
   
   // Remote domain/workgroup name
-  arguments << QString( "-w %1" ).arg( KShell::quoteArg( m_host->workgroupName() ) );
+  arguments << QString("-w %1").arg(KShell::quoteArg(m_host->workgroupName()));
   
   // Remote host name
-  arguments << QString( "-S %1" ).arg( KShell::quoteArg( m_host->hostName() ) );
+  arguments << QString("-S %1").arg(KShell::quoteArg(m_host->hostName()));
 
   // IP address
-  if ( m_host->hasIP() )
+  if (m_host->hasIP())
   {
-    arguments << QString( "-I %1" ).arg( m_host->ip() );
+    arguments << QString("-I %1").arg(m_host->ip());
   }
   else
   {
@@ -2486,9 +2486,9 @@ void Smb4KLookupSharesJob::slotStartLookup()
   }
   
   // Authentication data
-  if ( !m_host->login().isEmpty() )
+  if (!m_host->login().isEmpty())
   {
-    arguments << QString( "-U %1" ).arg( m_host->login() );
+    arguments << QString("-U %1").arg(m_host->login());
   }
   else
   {
@@ -2498,23 +2498,23 @@ void Smb4KLookupSharesJob::slotStartLookup()
   }
  
  
-  m_proc = new Smb4KProcess( this );
-  m_proc->setOutputChannelMode( KProcess::SeparateChannels );
-  m_proc->setShellCommand( arguments.join( " " ) );
+  m_proc = new Smb4KProcess(this);
+  m_proc->setOutputChannelMode(KProcess::SeparateChannels);
+  m_proc->setShellCommand(arguments.join(" "));
   
-  if ( !m_host->password().isEmpty() )
+  if (!m_host->password().isEmpty())
   {
-    m_proc->setEnv( "PASSWD", m_host->password(), true );
+    m_proc->setEnv("PASSWD", m_host->password(), true);
   }
   else
   {
-    m_proc->unsetEnv( "PASSWD" );
+    m_proc->unsetEnv("PASSWD");
   }
   
-  connect( m_proc, SIGNAL(readyReadStandardError()), this, SLOT(slotReadStandardError()) );
-  connect( m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotProcessFinished(int,QProcess::ExitStatus)) );
+  connect(m_proc, SIGNAL(readyReadStandardError()), this, SLOT(slotReadStandardError()));
+  connect(m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotProcessFinished(int,QProcess::ExitStatus)));
 
-  emit aboutToStart( m_host );
+  emit aboutToStart(m_host);
 
   m_proc->start();
 }
@@ -2522,24 +2522,24 @@ void Smb4KLookupSharesJob::slotStartLookup()
 
 void Smb4KLookupSharesJob::slotReadStandardError()
 {
-  QString stdErr = QString::fromUtf8( m_proc->readAllStandardError(), -1 ).trimmed();
+  QString stdErr = QString::fromUtf8(m_proc->readAllStandardError(), -1).trimmed();
 
   // Remove unimportant warnings
-  if ( stdErr.contains( "Ignoring unknown parameter" ) )
+  if (stdErr.contains("Ignoring unknown parameter"))
   {
-    QStringList tmp = stdErr.split( '\n' );
+    QStringList tmp = stdErr.split('\n');
 
-    QMutableStringListIterator it( tmp );
+    QMutableStringListIterator it(tmp);
 
-    while ( it.hasNext() )
+    while (it.hasNext())
     {
       QString test = it.next();
 
-      if ( test.trimmed().startsWith( QLatin1String( "Ignoring unknown parameter" ) ) )
+      if (test.trimmed().startsWith(QLatin1String("Ignoring unknown parameter")))
       {
         it.remove();
       }
-      else if ( test.contains( "creating lame", Qt::CaseSensitive ) )
+      else if (test.contains("creating lame", Qt::CaseSensitive))
       {
         it.remove();
       }
@@ -2549,23 +2549,23 @@ void Smb4KLookupSharesJob::slotReadStandardError()
       }
     }
 
-    stdErr = tmp.join( "\n" );
+    stdErr = tmp.join("\n");
   }
   else
   {
     // Do nothing
   }
 
-  if ( !stdErr.isEmpty() )
+  if (!stdErr.isEmpty())
   {
-    if ( stdErr.contains( "The username or password was not correct." ) ||
-         stdErr.contains( "NT_STATUS_ACCOUNT_DISABLED" ) /* AD error */ ||
-         stdErr.contains( "NT_STATUS_ACCESS_DENIED" ) ||
-         stdErr.contains( "NT_STATUS_LOGON_FAILURE" ) )
+    if (stdErr.contains("The username or password was not correct.") ||
+         stdErr.contains("NT_STATUS_ACCOUNT_DISABLED") /* AD error */ ||
+         stdErr.contains("NT_STATUS_ACCESS_DENIED") ||
+         stdErr.contains("NT_STATUS_LOGON_FAILURE"))
     {
-      emit authError( this );
+      emit authError(this);
     }
-    else if ( stdErr.contains( "could not obtain sid for domain", Qt::CaseSensitive ) )
+    else if (stdErr.contains("could not obtain sid for domain", Qt::CaseSensitive))
     {
       // FIXME
       qDebug() << "FIXME: Wrong protocol used for host " << m_host->hostName();
@@ -2582,13 +2582,13 @@ void Smb4KLookupSharesJob::slotReadStandardError()
 }
 
 
-void Smb4KLookupSharesJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitStatus exitStatus )
+void Smb4KLookupSharesJob::slotProcessFinished(int /*exitCode*/, QProcess::ExitStatus exitStatus)
 {
-  switch ( exitStatus )
+  switch (exitStatus)
   {
     case QProcess::CrashExit:
     {
-      if ( !m_proc->isAborted() )
+      if (!m_proc->isAborted())
       {
         Smb4KNotification::processError(m_proc->error());
       }
@@ -2606,13 +2606,13 @@ void Smb4KLookupSharesJob::slotProcessFinished( int /*exitCode*/, QProcess::Exit
   }
 
   emitResult();
-  emit finished( m_host );
+  emit finished(m_host);
 }
 
 
 
-Smb4KLookupInfoJob::Smb4KLookupInfoJob( QObject *parent ) : KJob( parent ),
-  m_started( false ), m_parent_widget( NULL ), m_proc( NULL )
+Smb4KLookupInfoJob::Smb4KLookupInfoJob(QObject *parent) : KJob(parent),
+  m_started(false), m_parent_widget(0), m_proc(0)
 {
 }
 
@@ -2626,21 +2626,21 @@ Smb4KLookupInfoJob::~Smb4KLookupInfoJob()
 void Smb4KLookupInfoJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT(slotStartLookup()) );
+  QTimer::singleShot(0, this, SLOT(slotStartLookup()));
 }
 
 
-void Smb4KLookupInfoJob::setupLookup( Smb4KHost *host, QWidget* parent )
+void Smb4KLookupInfoJob::setupLookup(Smb4KHost *host, QWidget* parent)
 {
-  Q_ASSERT( host );
-  m_host = new Smb4KHost( *host );
+  Q_ASSERT(host);
+  m_host = new Smb4KHost(*host);
   m_parent_widget = parent;
 }
 
 
 bool Smb4KLookupInfoJob::doKill()
 {
-  if ( m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting) )
+  if (m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting))
   {
     m_proc->abort();
   }
@@ -2657,20 +2657,20 @@ void Smb4KLookupInfoJob::processInfo()
 {
   // First evaluate stdout and if we cannot find the appropriate 
   // information also evaluate stderr.
-  QString stdOut = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 );
+  QString stdOut = QString::fromUtf8(m_proc->readAllStandardOutput(), -1);
   
-  if ( stdOut.contains( "OS=" ) || stdOut.contains( "Server=" ) )
+  if (stdOut.contains("OS=") || stdOut.contains("Server="))
   {
-    QStringList stdOut_list = stdOut.split( '\n', QString::SkipEmptyParts );
+    QStringList stdOut_list = stdOut.split('\n', QString::SkipEmptyParts);
     
-    foreach ( const QString &line, stdOut_list )
+    foreach (const QString &line, stdOut_list)
     {
-      if ( line.contains( "OS=" ) || line.contains( "Server=" ) )
+      if (line.contains("OS=") || line.contains("Server="))
       {
-        QString server = line.section( "Server=[", 1, 1 ).section( ']', 0, 0 ).trimmed();
-        QString os = line.section( "OS=[", 1, 1 ).section( ']', 0, 0 ).trimmed();
-        m_host->setInfo( server, os );
-        emit info( m_host );
+        QString server = line.section("Server=[", 1, 1).section(']', 0, 0).trimmed();
+        QString os = line.section("OS=[", 1, 1).section(']', 0, 0).trimmed();
+        m_host->setInfo(server, os);
+        emit info(m_host);
         break;
       }
       else
@@ -2681,20 +2681,20 @@ void Smb4KLookupInfoJob::processInfo()
   }
   else
   {
-    QString stdErr = QString::fromUtf8( m_proc->readAllStandardError(), -1 );
+    QString stdErr = QString::fromUtf8(m_proc->readAllStandardError(), -1);
     
-    if ( stdErr.contains( "OS=" ) || stdErr.contains( "Server=" ) )
+    if (stdErr.contains("OS=") || stdErr.contains("Server="))
     {
-      QStringList stdErr_list = stdErr.split( '\n', QString::SkipEmptyParts );
+      QStringList stdErr_list = stdErr.split('\n', QString::SkipEmptyParts);
       
-      foreach ( const QString &line, stdErr_list )
+      foreach (const QString &line, stdErr_list)
       {
-        if ( line.contains( "OS=" ) || line.contains( "Server=" ) )
+        if (line.contains("OS=") || line.contains("Server="))
         {
-          QString server = line.section( "Server=[", 1, 1 ).section( ']', 0, 0 ).trimmed();
-          QString os = line.section( "OS=[", 1, 1 ).section( ']', 0, 0 ).trimmed();
-          m_host->setInfo( server, os );
-          emit info( m_host );
+          QString server = line.section("Server=[", 1, 1).section(']', 0, 0).trimmed();
+          QString os = line.section("OS=[", 1, 1).section(']', 0, 0).trimmed();
+          m_host->setInfo(server, os);
+          emit info(m_host);
           break;
         }
         else
@@ -2710,9 +2710,9 @@ void Smb4KLookupInfoJob::processInfo()
 void Smb4KLookupInfoJob::slotStartLookup()
 {
   // Find the smbclient program
-  QString smbclient = KStandardDirs::findExe( "smbclient" );
+  QString smbclient = QStandardPaths::findExecutable("smbclient");
 
-  if ( smbclient.isEmpty() )
+  if (smbclient.isEmpty())
   {
     Smb4KNotification::commandNotFound("smbclient");
     emitResult();
@@ -2728,12 +2728,12 @@ void Smb4KLookupInfoJob::slotStartLookup()
   arguments << smbclient;
   arguments << "-d1";
   arguments << "-N";
-  arguments << QString( "-W %1" ).arg( KShell::quoteArg( m_host->workgroupName() ) );
-  arguments << QString( "-L %1" ).arg( KShell::quoteArg( m_host->hostName() ) );
+  arguments << QString("-W %1").arg(KShell::quoteArg(m_host->workgroupName()));
+  arguments << QString("-L %1").arg(KShell::quoteArg(m_host->hostName()));
 
-  if ( m_host->hasIP() )
+  if (m_host->hasIP())
   {
-    arguments << QString( "-I %1" ).arg( m_host->ip() );
+    arguments << QString("-I %1").arg(m_host->ip());
   }
   else
   {
@@ -2741,7 +2741,7 @@ void Smb4KLookupInfoJob::slotStartLookup()
   }
 
   // Machine account
-  if ( Smb4KSettings::machineAccount() )
+  if (Smb4KSettings::machineAccount())
   {
     arguments << "-P";
   }
@@ -2751,7 +2751,7 @@ void Smb4KLookupInfoJob::slotStartLookup()
   }
   
   // Signing state
-  switch ( Smb4KSettings::signingState() )
+  switch (Smb4KSettings::signingState())
   {
     case Smb4KSettings::EnumSigningState::None:
     {
@@ -2779,9 +2779,9 @@ void Smb4KLookupInfoJob::slotStartLookup()
   }
   
   // Buffer size
-  if ( Smb4KSettings::bufferSize() != 65520 )
+  if (Smb4KSettings::bufferSize() != 65520)
   {
-    arguments << QString( "-b %1" ).arg( Smb4KSettings::bufferSize() );
+    arguments << QString("-b %1").arg(Smb4KSettings::bufferSize());
   }
   else
   {
@@ -2790,31 +2790,31 @@ void Smb4KLookupInfoJob::slotStartLookup()
   
   // Get global Samba and custom options
   QMap<QString,QString> samba_options = globalSambaOptions();
-  Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions( m_host );
+  Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions(m_host);
   
   // Port
   // If a port was defined for the host via Smb4KHost::port(), it will 
   // overwrite the other options.
-  if ( m_host->port() != -1 )
+  if (m_host->port() != -1)
   {
-    arguments << QString( "-p %1" ).arg( m_host->port() );
+    arguments << QString("-p %1").arg(m_host->port());
   }
   else
   {
-    if ( options && options->smbPort() != Smb4KSettings::remoteSMBPort() )
+    if (options && options->smbPort() != Smb4KSettings::remoteSMBPort())
     {
-      arguments << QString( "-p %1" ).arg( options->smbPort() );
+      arguments << QString("-p %1").arg(options->smbPort());
     }
     else
     {
-      arguments << QString( "-p %1" ).arg( Smb4KSettings::remoteSMBPort() );
+      arguments << QString("-p %1").arg(Smb4KSettings::remoteSMBPort());
     }
   }
   
   // Use Kerberos
-  if ( options )
+  if (options)
   {
-    switch ( options->useKerberos() )
+    switch (options->useKerberos())
     {
       case Smb4KCustomOptions::UseKerberos:
       {
@@ -2828,7 +2828,7 @@ void Smb4KLookupInfoJob::slotStartLookup()
       }
       case Smb4KCustomOptions::UndefinedKerberos:
       {
-        if ( Smb4KSettings::useKerberos() )
+        if (Smb4KSettings::useKerberos())
         {
           arguments << "-k";
         }
@@ -2846,7 +2846,7 @@ void Smb4KLookupInfoJob::slotStartLookup()
   }
   else
   {
-    if ( Smb4KSettings::useKerberos() )
+    if (Smb4KSettings::useKerberos())
     {
       arguments << "-k";
     }
@@ -2857,10 +2857,10 @@ void Smb4KLookupInfoJob::slotStartLookup()
   }
   
   // Resolve order
-  if ( !Smb4KSettings::nameResolveOrder().isEmpty() &&
-       QString::compare( Smb4KSettings::nameResolveOrder(), samba_options["name resolve order"] ) != 0 ) 
+  if (!Smb4KSettings::nameResolveOrder().isEmpty() &&
+       QString::compare(Smb4KSettings::nameResolveOrder(), samba_options["name resolve order"]) != 0) 
   {
-    arguments << QString( "-R %1" ).arg( KShell::quoteArg( Smb4KSettings::nameResolveOrder() ) );
+    arguments << QString("-R %1").arg(KShell::quoteArg(Smb4KSettings::nameResolveOrder()));
   }
   else
   {
@@ -2868,10 +2868,10 @@ void Smb4KLookupInfoJob::slotStartLookup()
   }
              
   // NetBIOS name
-  if ( !Smb4KSettings::netBIOSName().isEmpty() &&
-       QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0 )
+  if (!Smb4KSettings::netBIOSName().isEmpty() &&
+       QString::compare(Smb4KSettings::netBIOSName(), samba_options["netbios name"]) != 0)
   {
-    arguments << QString( "-n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) );
+    arguments << QString("-n %1").arg(KShell::quoteArg(Smb4KSettings::netBIOSName()));
   }
   else
   {
@@ -2879,10 +2879,10 @@ void Smb4KLookupInfoJob::slotStartLookup()
   }
              
   // NetBIOS scope
-  if ( !Smb4KSettings::netBIOSScope().isEmpty() &&
-        QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0 )
+  if (!Smb4KSettings::netBIOSScope().isEmpty() &&
+        QString::compare(Smb4KSettings::netBIOSScope(), samba_options["netbios scope"]) != 0)
   {
-    arguments << QString( "-i %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSScope() ) );
+    arguments << QString("-i %1").arg(KShell::quoteArg(Smb4KSettings::netBIOSScope()));
   }
   else
   {
@@ -2890,10 +2890,10 @@ void Smb4KLookupInfoJob::slotStartLookup()
   }
   
   // Socket options
-  if ( !Smb4KSettings::socketOptions().isEmpty() &&
-       QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0 )
+  if (!Smb4KSettings::socketOptions().isEmpty() &&
+       QString::compare(Smb4KSettings::socketOptions(), samba_options["socket options"]) != 0)
   {
-    arguments << QString( "-O %1" ).arg( KShell::quoteArg( Smb4KSettings::socketOptions() ) );
+    arguments << QString("-O %1").arg(KShell::quoteArg(Smb4KSettings::socketOptions()));
   }
   else
   {
@@ -2901,7 +2901,7 @@ void Smb4KLookupInfoJob::slotStartLookup()
   }
 
   // Use Winbind CCache
-  if ( Smb4KSettings::useWinbindCCache() )
+  if (Smb4KSettings::useWinbindCCache())
   {
     arguments << "-C";
   }
@@ -2911,7 +2911,7 @@ void Smb4KLookupInfoJob::slotStartLookup()
   }
 
   // Use encryption
-  if ( Smb4KSettings::encryptSMBTransport() )
+  if (Smb4KSettings::encryptSMBTransport())
   {
     arguments << "-e";
   }
@@ -2920,25 +2920,25 @@ void Smb4KLookupInfoJob::slotStartLookup()
     // Do nothing
   }
   
-  m_proc = new Smb4KProcess( this );
-  m_proc->setOutputChannelMode( KProcess::SeparateChannels );
-  m_proc->setShellCommand( arguments.join( " " ) );
+  m_proc = new Smb4KProcess(this);
+  m_proc->setOutputChannelMode(KProcess::SeparateChannels);
+  m_proc->setShellCommand(arguments.join(" "));
 
-  connect( m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotProcessFinished(int,QProcess::ExitStatus)) );
+  connect(m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotProcessFinished(int,QProcess::ExitStatus)));
 
-  emit aboutToStart( m_host );
+  emit aboutToStart(m_host);
 
   m_proc->start();  
 }
 
 
-void Smb4KLookupInfoJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitStatus exitStatus )
+void Smb4KLookupInfoJob::slotProcessFinished(int /*exitCode*/, QProcess::ExitStatus exitStatus)
 {
-  switch ( exitStatus )
+  switch (exitStatus)
   {
     case QProcess::CrashExit:
     {
-      if ( !m_proc->isAborted() )
+      if (!m_proc->isAborted())
       {
         Smb4KNotification::processError(m_proc->error());
       }
@@ -2956,13 +2956,13 @@ void Smb4KLookupInfoJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitSt
   }
 
   emitResult();
-  emit finished( m_host );
+  emit finished(m_host);
 }
 
 
 
-Smb4KLookupIPAddressJob::Smb4KLookupIPAddressJob( QObject *parent )
-: KJob( parent ), m_started( false ), m_host( NULL ), m_parent_widget( NULL ), m_proc( NULL )
+Smb4KLookupIPAddressJob::Smb4KLookupIPAddressJob(QObject *parent)
+: KJob(parent), m_started(false), m_host(0), m_parent_widget(0), m_proc(0)
 {
 }
 
@@ -2976,21 +2976,21 @@ Smb4KLookupIPAddressJob::~Smb4KLookupIPAddressJob()
 void Smb4KLookupIPAddressJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT(slotStartLookup()) );
+  QTimer::singleShot(0, this, SLOT(slotStartLookup()));
 }
 
 
-void Smb4KLookupIPAddressJob::setupLookup( Smb4KHost *host, QWidget *parent )
+void Smb4KLookupIPAddressJob::setupLookup(Smb4KHost *host, QWidget *parent)
 {
-  Q_ASSERT( host );
-  m_host = new Smb4KHost( *host );
+  Q_ASSERT(host);
+  m_host = new Smb4KHost(*host);
   m_parent_widget = parent;
 }
 
 
 bool Smb4KLookupIPAddressJob::doKill()
 {
-  if ( m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting) )
+  if (m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting))
   {
     m_proc->abort();
   }
@@ -3006,9 +3006,9 @@ bool Smb4KLookupIPAddressJob::doKill()
 void Smb4KLookupIPAddressJob::useNmblookup(QStringList &args)
 {
   // Find nmblookup program.
-  QString nmblookup = KStandardDirs::findExe( "nmblookup" );
+  QString nmblookup = QStandardPaths::findExecutable("nmblookup");
 
-  if ( nmblookup.isEmpty() )
+  if (nmblookup.isEmpty())
   {
     Smb4KNotification::commandNotFound("nmblookup");
     emitResult();
@@ -3026,10 +3026,10 @@ void Smb4KLookupIPAddressJob::useNmblookup(QStringList &args)
   args << nmblookup;
 
   // Domain
-  if ( !Smb4KSettings::domainName().isEmpty() &&
-       QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0 )
+  if (!Smb4KSettings::domainName().isEmpty() &&
+       QString::compare(Smb4KSettings::domainName(), samba_options["workgroup"]) != 0)
   {
-    args << QString( "-W %1" ).arg( KShell::quoteArg( Smb4KSettings::domainName() ) );
+    args << QString("-W %1").arg(KShell::quoteArg(Smb4KSettings::domainName()));
   }
   else
   {
@@ -3037,10 +3037,10 @@ void Smb4KLookupIPAddressJob::useNmblookup(QStringList &args)
   }
 
   // NetBIOS name
-  if ( !Smb4KSettings::netBIOSName().isEmpty() &&
-       QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0 )
+  if (!Smb4KSettings::netBIOSName().isEmpty() &&
+       QString::compare(Smb4KSettings::netBIOSName(), samba_options["netbios name"]) != 0)
   {
-    args << QString( "-n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) );
+    args << QString("-n %1").arg(KShell::quoteArg(Smb4KSettings::netBIOSName()));
   }
   else
   {
@@ -3048,10 +3048,10 @@ void Smb4KLookupIPAddressJob::useNmblookup(QStringList &args)
   }
 
   // NetBIOS scope
-  if ( !Smb4KSettings::netBIOSScope().isEmpty() &&
-       QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0 )
+  if (!Smb4KSettings::netBIOSScope().isEmpty() &&
+       QString::compare(Smb4KSettings::netBIOSScope(), samba_options["netbios scope"]) != 0)
   {
-    args << QString( "-i %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSScope() ) );
+    args << QString("-i %1").arg(KShell::quoteArg(Smb4KSettings::netBIOSScope()));
   }
   else
   {
@@ -3059,10 +3059,10 @@ void Smb4KLookupIPAddressJob::useNmblookup(QStringList &args)
   }
 
   // Socket options
-  if ( !Smb4KSettings::socketOptions().isEmpty() &&
-       QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0 )
+  if (!Smb4KSettings::socketOptions().isEmpty() &&
+       QString::compare(Smb4KSettings::socketOptions(), samba_options["socket options"]) != 0)
   {
-    args << QString( "-O %1" ).arg( KShell::quoteArg( Smb4KSettings::socketOptions() ) );
+    args << QString("-O %1").arg(KShell::quoteArg(Smb4KSettings::socketOptions()));
   }
   else
   {
@@ -3070,7 +3070,7 @@ void Smb4KLookupIPAddressJob::useNmblookup(QStringList &args)
   }
 
   // Port 137
-  if ( Smb4KSettings::usePort137() )
+  if (Smb4KSettings::usePort137())
   {
     args << "-r";
   }
@@ -3080,12 +3080,12 @@ void Smb4KLookupIPAddressJob::useNmblookup(QStringList &args)
   }
 
   // Broadcast address
-  QHostAddress address( Smb4KSettings::broadcastAddress() );
+  QHostAddress address(Smb4KSettings::broadcastAddress());
 
-  if ( !Smb4KSettings::broadcastAddress().isEmpty() &&
-       address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol )
+  if (!Smb4KSettings::broadcastAddress().isEmpty() &&
+       address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol)
   {
-    args << QString( "-B %1" ).arg( Smb4KSettings::broadcastAddress() );
+    args << QString("-B %1").arg(Smb4KSettings::broadcastAddress());
   }
   else
   {
@@ -3096,10 +3096,10 @@ void Smb4KLookupIPAddressJob::useNmblookup(QStringList &args)
   // the WINS server is sometimes not very reliable. 
   
   
-  if ( !winsServer().isEmpty() )
+  if (!winsServer().isEmpty())
   {
     args << "-R";
-    args << QString( "-U %1" ).arg( KShell::quoteArg( winsServer() ) );
+    args << QString("-U %1").arg(KShell::quoteArg(winsServer()));
   }
   else
   {
@@ -3107,16 +3107,16 @@ void Smb4KLookupIPAddressJob::useNmblookup(QStringList &args)
   }
 
   args << "--";
-  args << KShell::quoteArg( m_host->hostName() );
+  args << KShell::quoteArg(m_host->hostName());
 }
 
 
 void Smb4KLookupIPAddressJob::useNet(QStringList &args)
 {
   // Find net program
-  QString net = KStandardDirs::findExe("net");
+  QString net = QStandardPaths::findExecutable("net");
 
-  if ( net.isEmpty() )
+  if (net.isEmpty())
   {
     Smb4KNotification::commandNotFound("net");
     emitResult();
@@ -3135,13 +3135,13 @@ void Smb4KLookupIPAddressJob::useNet(QStringList &args)
   args << net;
   args << "lookup";
   args << "host";
-  args << KShell::quoteArg( m_host->hostName() );
+  args << KShell::quoteArg(m_host->hostName());
   
   // The user's workgroup/domain name
-  if ( !Smb4KSettings::domainName().isEmpty() &&
-       QString::compare( Smb4KSettings::domainName(), samba_options["workgroup"] ) != 0 )
+  if (!Smb4KSettings::domainName().isEmpty() &&
+       QString::compare(Smb4KSettings::domainName(), samba_options["workgroup"]) != 0)
   {
-    args << QString( "-W %1" ).arg( KShell::quoteArg( Smb4KSettings::domainName() ) );
+    args << QString("-W %1").arg(KShell::quoteArg(Smb4KSettings::domainName()));
   }
   else
   {
@@ -3149,10 +3149,10 @@ void Smb4KLookupIPAddressJob::useNet(QStringList &args)
   }
 
   // The user's NetBIOS name
-  if ( !Smb4KSettings::netBIOSName().isEmpty() &&
-       QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0 )
+  if (!Smb4KSettings::netBIOSName().isEmpty() &&
+       QString::compare(Smb4KSettings::netBIOSName(), samba_options["netbios name"]) != 0)
   {
-    args << QString( "-n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) );
+    args << QString("-n %1").arg(KShell::quoteArg(Smb4KSettings::netBIOSName()));
   }
   else
   {
@@ -3160,7 +3160,7 @@ void Smb4KLookupIPAddressJob::useNet(QStringList &args)
   }
 
   // Machine account
-  if ( Smb4KSettings::machineAccount() )
+  if (Smb4KSettings::machineAccount())
   {
     args << "-P";
   }
@@ -3242,14 +3242,14 @@ void Smb4KLookupIPAddressJob::processNmblookupOutput()
   // be more than one. So, split the incoming data and use the first entry
   // as IP address (it's most likely the correct one). If there is no data,
   // set the IP address to an empty string.
-  QStringList output = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts );
+  QStringList output = QString::fromUtf8(m_proc->readAllStandardOutput(), -1).split('\n', QString::SkipEmptyParts);
 
-  foreach ( const QString &line, output )
+  foreach (const QString &line, output)
   {
-    if ( line.contains( "<00>" ) )
+    if (line.contains("<00>"))
     {
-      QString ip_address = line.section( ' ', 0, 0 ).trimmed();
-      m_host->setIP( ip_address );
+      QString ip_address = line.section(' ', 0, 0).trimmed();
+      m_host->setIP(ip_address);
       break;
     }
     else
@@ -3258,14 +3258,14 @@ void Smb4KLookupIPAddressJob::processNmblookupOutput()
     }
   }
 
-  emit ipAddress( m_host );
+  emit ipAddress(m_host);
 }
 
 
 void Smb4KLookupIPAddressJob::processNetOutput()
 {
   // There is only one IP address reported:
-  QString output = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).trimmed();
+  QString output = QString::fromUtf8(m_proc->readAllStandardOutput(), -1).trimmed();
   m_host->setIP(output);
   emit ipAddress(m_host);
 }
@@ -3310,13 +3310,13 @@ void Smb4KLookupIPAddressJob::slotStartLookup()
 }
 
 
-void Smb4KLookupIPAddressJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitStatus exitStatus )
+void Smb4KLookupIPAddressJob::slotProcessFinished(int /*exitCode*/, QProcess::ExitStatus exitStatus)
 {
-  switch ( exitStatus )
+  switch (exitStatus)
   {
     case QProcess::CrashExit:
     {
-      if ( !m_proc->isAborted() )
+      if (!m_proc->isAborted())
       {
         Smb4KNotification::processError(m_proc->error());
       }
@@ -3352,6 +3352,3 @@ void Smb4KLookupIPAddressJob::slotProcessFinished( int /*exitCode*/, QProcess::E
   emitResult();
 }
 
-
-
-#include "smb4kscanner_p.moc"

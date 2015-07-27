@@ -2,7 +2,7 @@
     smb4kscanner_p  -  Private helper classes for the scanner
                              -------------------
     begin                : So Mai 22 2011
-    copyright            : (C) 2011-2014 by Alexander Reinholdt
+    copyright            : (C) 2011-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -33,10 +33,10 @@
 #include "smb4kauthinfo.h"
 
 // Qt includes
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 
 // KDE includes
-#include <kjob.h>
+#include <KCoreAddons/KJob>
 
 // forward declarations
 class Smb4KHost;
@@ -50,7 +50,7 @@ class Smb4KLookupDomainsJob : public KJob
     /**
      * Constructor
      */
-    explicit Smb4KLookupDomainsJob( QObject *parent = 0 );
+    explicit Smb4KLookupDomainsJob(QObject *parent = 0);
 
     /**
      * Destructor
@@ -74,7 +74,7 @@ class Smb4KLookupDomainsJob : public KJob
      *
      * @param parent      The parent widget
      */
-    void setupLookup( QWidget *parent = 0 );
+    void setupLookup(QWidget *parent = 0);
 
     /**
      * Returns the parent widget
@@ -107,7 +107,7 @@ class Smb4KLookupDomainsJob : public KJob
     /**
      * Emitted when workgroups/domains were found
      */
-    void workgroups( const QList<Smb4KWorkgroup *> &list );
+    void workgroups(const QList<Smb4KWorkgroup *> &list);
 
   protected:
     bool doKill();
@@ -115,8 +115,8 @@ class Smb4KLookupDomainsJob : public KJob
   protected Q_SLOTS:
     void slotStartLookup();
     void slotReadStandardError();
-    void slotProcessFinished( int exitCode,
-                              QProcess::ExitStatus exitStatus );
+    void slotProcessFinished(int exitCode,
+                              QProcess::ExitStatus exitStatus);
 
   private:
     void processWorkgroups();
@@ -135,7 +135,7 @@ class Smb4KQueryMasterJob : public KJob
     /**
      * Constructor
      */
-    explicit Smb4KQueryMasterJob( QObject *parent = 0 );
+    explicit Smb4KQueryMasterJob(QObject *parent = 0);
 
     /**
      * Destructor
@@ -163,8 +163,8 @@ class Smb4KQueryMasterJob : public KJob
      *
      * @param parent        The parent widget
      */
-    void setupLookup( const QString &master,
-                      QWidget *parent = 0 );
+    void setupLookup(const QString &master,
+                      QWidget *parent = 0);
     
     /**
      * Returns the parent widget
@@ -206,7 +206,7 @@ class Smb4KQueryMasterJob : public KJob
     /**
      * Emitted when workgroups/domains were found
      */
-    void workgroups( const QList<Smb4KWorkgroup *> &list );
+    void workgroups(const QList<Smb4KWorkgroup *> &list);
 
     /**
      * This signal is emitted when an authentication error
@@ -214,7 +214,7 @@ class Smb4KQueryMasterJob : public KJob
      *
      * @param job           This job
      */
-    void authError( Smb4KQueryMasterJob *job );
+    void authError(Smb4KQueryMasterJob *job);
 
   protected:
     bool doKill();
@@ -222,8 +222,8 @@ class Smb4KQueryMasterJob : public KJob
   protected Q_SLOTS:
     void slotStartLookup();
     void slotReadStandardError();
-    void slotProcessFinished( int exitCode,
-                              QProcess::ExitStatus exitStatus );
+    void slotProcessFinished(int exitCode,
+                              QProcess::ExitStatus exitStatus);
     
   private:
     void processWorkgroups();
@@ -243,7 +243,7 @@ class Smb4KScanBAreasJob : public KJob
     /**
      * Constructor
      */
-    explicit Smb4KScanBAreasJob( QObject *parent = 0 );
+    explicit Smb4KScanBAreasJob(QObject *parent = 0);
 
     /**
      * Destructor
@@ -267,7 +267,7 @@ class Smb4KScanBAreasJob : public KJob
      *
      * @param parent        The parent widget
      */
-    void setupScan( QWidget *parent = 0 );
+    void setupScan(QWidget *parent = 0);
 
     /**
      * Returns the parent widget
@@ -309,12 +309,12 @@ class Smb4KScanBAreasJob : public KJob
     /**
      * Emitted when workgroups/domains were found
      */
-    void workgroups( const QList<Smb4KWorkgroup *> &list );
+    void workgroups(const QList<Smb4KWorkgroup *> &list);
 
     /**
      * Emitted when hosts were found
      */
-    void hosts( const QList<Smb4KHost *> &list );
+    void hosts(const QList<Smb4KHost *> &list);
 
   protected:
     bool doKill();
@@ -322,8 +322,8 @@ class Smb4KScanBAreasJob : public KJob
   protected Q_SLOTS:
     void slotStartScan();
     void slotReadStandardError();
-    void slotProcessFinished( int exitCode,
-                              QProcess::ExitStatus exitStatus );
+    void slotProcessFinished(int exitCode,
+                              QProcess::ExitStatus exitStatus);
 
   private:
     void processScan();
@@ -343,7 +343,7 @@ class Smb4KLookupDomainMembersJob : public KJob
     /**
      * Constructor
      */
-    explicit Smb4KLookupDomainMembersJob( QObject *parent = 0 );
+    explicit Smb4KLookupDomainMembersJob(QObject *parent = 0);
 
     /**
      * Destructor
@@ -369,8 +369,8 @@ class Smb4KLookupDomainMembersJob : public KJob
      *
      * @param parent        The parent widget
      */
-    void setupLookup( Smb4KWorkgroup *workgroup,
-                      QWidget *parent = 0 );
+    void setupLookup(Smb4KWorkgroup *workgroup,
+                      QWidget *parent = 0);
 
     /**
      * Returns the parent widget
@@ -402,20 +402,20 @@ class Smb4KLookupDomainMembersJob : public KJob
      *
      * @param workgroup     The workgroup for that the hosts should be looked up
      */
-    void aboutToStart( Smb4KWorkgroup *workgroup );
+    void aboutToStart(Smb4KWorkgroup *workgroup);
 
     /**
      * This signal is emitted when the lookup process finished.
      *
      * @param workgroup     The workgroup for that the hosts should be looked up
      */
-    void finished( Smb4KWorkgroup *workgroup );
+    void finished(Smb4KWorkgroup *workgroup);
 
     /**
      * Emitted when hosts were found
      */
-    void hosts( Smb4KWorkgroup *workgroup,
-                const QList<Smb4KHost *> &list );
+    void hosts(Smb4KWorkgroup *workgroup,
+                const QList<Smb4KHost *> &list);
     
     /**
      * This signal is emitted when an authentication error
@@ -423,7 +423,7 @@ class Smb4KLookupDomainMembersJob : public KJob
      *
      * @param job           This job
      */
-    void authError( Smb4KLookupDomainMembersJob *job );
+    void authError(Smb4KLookupDomainMembersJob *job);
     
   protected:
     bool doKill();
@@ -431,8 +431,8 @@ class Smb4KLookupDomainMembersJob : public KJob
   protected Q_SLOTS:
     void slotStartLookup();
     void slotReadStandardError();
-    void slotProcessFinished( int exitCode,
-                              QProcess::ExitStatus exitStatus );
+    void slotProcessFinished(int exitCode,
+                              QProcess::ExitStatus exitStatus);
   private:
     void processHosts();
     bool m_started;
@@ -452,7 +452,7 @@ class Smb4KLookupSharesJob : public KJob
     /**
      * Constructor
      */
-    explicit Smb4KLookupSharesJob( QObject* parent = 0 );
+    explicit Smb4KLookupSharesJob(QObject* parent = 0);
     
     /**
      * Destructor
@@ -478,8 +478,8 @@ class Smb4KLookupSharesJob : public KJob
      *
      * @param parent        The parent widget
      */
-    void setupLookup( Smb4KHost *host,
-                      QWidget *parent = 0 );
+    void setupLookup(Smb4KHost *host,
+                      QWidget *parent = 0);
     
     /**
      * Returns the parent widget
@@ -502,20 +502,20 @@ class Smb4KLookupSharesJob : public KJob
      *
      * @param host          The host that is queried for its shares
      */
-    void aboutToStart( Smb4KHost *host );
+    void aboutToStart(Smb4KHost *host);
 
     /**
      * This signal is emitted when the lookup process finished.
      *
      * @param host          The host that is queried for its shares
      */
-    void finished( Smb4KHost *host );
+    void finished(Smb4KHost *host);
     
     /**
      * Emitted when shares were found
      */
-    void shares( Smb4KHost *host,
-                 const QList<Smb4KShare *> &list );
+    void shares(Smb4KHost *host,
+                 const QList<Smb4KShare *> &list);
     
     /**
      * This signal is emitted when an authentication error
@@ -523,7 +523,7 @@ class Smb4KLookupSharesJob : public KJob
      *
      * @param job           This job
      */
-    void authError( Smb4KLookupSharesJob *job );
+    void authError(Smb4KLookupSharesJob *job);
     
   protected:
     bool doKill();
@@ -531,8 +531,8 @@ class Smb4KLookupSharesJob : public KJob
   protected Q_SLOTS:
     void slotStartLookup();
     void slotReadStandardError();
-    void slotProcessFinished( int exitCode,
-                              QProcess::ExitStatus exitStatus );
+    void slotProcessFinished(int exitCode,
+                              QProcess::ExitStatus exitStatus);
     
   private:
     void processShares();
@@ -552,7 +552,7 @@ class Smb4KLookupInfoJob : public KJob
     /**
      * Constructor
      */
-    explicit Smb4KLookupInfoJob( QObject *parent = 0 );
+    explicit Smb4KLookupInfoJob(QObject *parent = 0);
     
     /**
      * Destructor
@@ -578,8 +578,8 @@ class Smb4KLookupInfoJob : public KJob
      *
      * @param parent        The parent widget
      */
-    void setupLookup( Smb4KHost *host,
-                      QWidget *parent = 0 );
+    void setupLookup(Smb4KHost *host,
+                      QWidget *parent = 0);
     
     /**
      * Returns the parent widget
@@ -601,7 +601,7 @@ class Smb4KLookupInfoJob : public KJob
      * @param host          The host that is queried for the additional
      *                      information
      */
-    void aboutToStart( Smb4KHost *host );
+    void aboutToStart(Smb4KHost *host);
 
     /**
      * This signal is emitted when the lookup process finished.
@@ -609,20 +609,20 @@ class Smb4KLookupInfoJob : public KJob
      * @param host          The host that was queried for the additional
      *                      information
      */
-    void finished( Smb4KHost *host );
+    void finished(Smb4KHost *host);
     
     /**
      * This signal is emitted when additional information was found.
      */
-    void info( Smb4KHost *host );
+    void info(Smb4KHost *host);
     
   protected:
     bool doKill();
     
   protected Q_SLOTS:
     void slotStartLookup();
-    void slotProcessFinished( int exitCode,
-                              QProcess::ExitStatus exitStatus );
+    void slotProcessFinished(int exitCode,
+                              QProcess::ExitStatus exitStatus);
     
   private:
     void processInfo();
@@ -641,7 +641,7 @@ class Smb4KLookupIPAddressJob : public KJob
     /**
      * Constructor
      */
-    explicit Smb4KLookupIPAddressJob( QObject* parent = 0 );
+    explicit Smb4KLookupIPAddressJob(QObject* parent = 0);
 
     /**
      * Destructor
@@ -668,8 +668,8 @@ class Smb4KLookupIPAddressJob : public KJob
      *
      * @param parent      The parent widget
      */
-    void setupLookup( Smb4KHost *host,
-                      QWidget *parent = 0 );
+    void setupLookup(Smb4KHost *host,
+                      QWidget *parent = 0);
 
     /**
      * Returns the parent widget
@@ -688,15 +688,15 @@ class Smb4KLookupIPAddressJob : public KJob
     /**
      * Is emitted when an IP address was found
      */
-    void ipAddress( Smb4KHost *host );
+    void ipAddress(Smb4KHost *host);
 
   protected:
     bool doKill();
 
   protected Q_SLOTS:
     void slotStartLookup();
-    void slotProcessFinished( int exitCode,
-                              QProcess::ExitStatus exitStatus );
+    void slotProcessFinished(int exitCode,
+                              QProcess::ExitStatus exitStatus);
 
   private:
     void useNmblookup(QStringList &args);
