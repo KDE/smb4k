@@ -1,8 +1,0 @@
-File=smb4kmountsettings_solaris.kcfg
-ClassName=Smb4KMountSettings
-Singleton=true
-Mutators=true
-ItemAccessors=true
-SetUserTexts=true
-Inherits=KConfigSkeleton
-Visibility=KDE_EXPORT
