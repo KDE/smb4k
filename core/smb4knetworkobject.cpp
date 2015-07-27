@@ -42,13 +42,13 @@ class Smb4KNetworkObjectPrivate
 {
   public:
     QString workgroup;
-    KUrl url;
+    QUrl url;
     int type;
     int parentType;
     QIcon icon;
     QString comment;
     bool mounted;
-    KUrl mountpoint;
+    QUrl mountpoint;
     bool printer;
     bool isMaster;
 };
@@ -91,7 +91,7 @@ Smb4KNetworkObject::Smb4KNetworkObject(Smb4KShare *share, QObject *parent)
   d->mounted    = share->isMounted();
   d->printer    = share->isPrinter();
   d->isMaster   = false;
-  d->mountpoint.setUrl(share->path(), KUrl::TolerantMode);
+  d->mountpoint.setUrl(share->path(), QUrl::TolerantMode);
   d->mountpoint.setScheme("file");
   setType(Share);
 }
@@ -100,7 +100,7 @@ Smb4KNetworkObject::Smb4KNetworkObject(Smb4KShare *share, QObject *parent)
 Smb4KNetworkObject::Smb4KNetworkObject(QObject *parent)
 : QObject(parent), d(new Smb4KNetworkObjectPrivate)
 {
-  d->url.setUrl("smb://", KUrl::TolerantMode);
+  d->url.setUrl("smb://", QUrl::TolerantMode);
   d->mounted   = false;
   d->printer   = false;
   d->isMaster  = false;
@@ -200,7 +200,7 @@ void Smb4KNetworkObject::setMasterBrowser(bool master)
 QString Smb4KNetworkObject::shareName() const
 {
   // Since users might come up with very weird share names,
-  // we are careful and do not use QString::remove( "/" ), but
+  // we are careful and do not use QString::remove("/"), but
   // only remove preceding and trailing slashes.
   QString share_name = d->url.path();
 
@@ -290,19 +290,19 @@ void Smb4KNetworkObject::setComment(const QString& comment)
 }
 
 
-KUrl Smb4KNetworkObject::url() const
+QUrl Smb4KNetworkObject::url() const
 {
   return d->url;
 }
 
 
-KUrl Smb4KNetworkObject::parentURL() const
+QUrl Smb4KNetworkObject::parentURL() const
 {
-  // Do not use KUrl::upUrl() here, because it produces
+  // Do not use QUrl::upUrl() here, because it produces
   // an URL like this: smb://HOST/Share/../ and we do not
   // want that.
-  KUrl parent_url;
-  parent_url.setUrl( "smb://" );
+  QUrl parent_url;
+  parent_url.setUrl("smb://");
 
   switch (d->type)
   {
@@ -326,7 +326,7 @@ KUrl Smb4KNetworkObject::parentURL() const
 }
 
 
-void Smb4KNetworkObject::setURL(const KUrl& url)
+void Smb4KNetworkObject::setURL(const QUrl& url)
 {
   d->url = url;
   emit changed();
@@ -420,7 +420,7 @@ void Smb4KNetworkObject::update(Smb4KBasicNetworkItem *networkItem)
         d->type       = Share;
         d->mounted    = share->isMounted();
         d->printer    = share->isPrinter();
-        d->mountpoint.setUrl(share->path(), KUrl::TolerantMode);
+        d->mountpoint.setUrl(share->path(), QUrl::TolerantMode);
         d->mountpoint.setScheme("file");
       }
       else
@@ -455,18 +455,15 @@ void Smb4KNetworkObject::setPrinter(bool printer)
 }
 
 
-KUrl Smb4KNetworkObject::mountpoint() const
+QUrl Smb4KNetworkObject::mountpoint() const
 {
   return d->mountpoint;
 }
 
 
-void Smb4KNetworkObject::setMountpoint(const KUrl &mountpoint)
+void Smb4KNetworkObject::setMountpoint(const QUrl &mountpoint)
 {
   d->mountpoint = mountpoint;
   emit changed();
 }
 
-
-
-#include "smb4knetworkobject.moc"

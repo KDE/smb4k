@@ -37,11 +37,8 @@
 #include <QtCore/QObject>
 #include <QtCore/QString>
 #include <QtCore/QScopedPointer>
+#include <QtCore/QUrl>
 #include <QtGui/QIcon>
-
-// KDE includes
-#include <kdemacros.h>
-#include <kurl.h>
 
 // forward declaration
 class Smb4KNetworkObjectPrivate;
@@ -56,7 +53,7 @@ class Smb4KNetworkObjectPrivate;
  */
 
 
-class KDE_EXPORT Smb4KNetworkObject : public QObject
+class Q_DECL_EXPORT Smb4KNetworkObject : public QObject
 {
   Q_OBJECT
   Q_PROPERTY(NetworkItem type READ type WRITE setType NOTIFY changed)
@@ -245,21 +242,21 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * 
      * @returns the item's URL
      */
-    KUrl url() const;
+    QUrl url() const;
     
     /**
      * Return the URL of the parent item.
      * 
      * @returns the item's parent URL
      */
-    KUrl parentURL() const;
+    QUrl parentURL() const;
     
     /**
      * Set the URL of this network item.
      * 
      * @param url         The URL
      */
-    void setURL(const KUrl &url);
+    void setURL(const QUrl &url);
     
     /**
      * This function returns TRUE if the network item is a share and it is
@@ -304,7 +301,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * 
      * @returns the mount point of a share.
      */
-    KUrl mountpoint() const;
+    QUrl mountpoint() const;
     
     /**
      * Set the mountpoint for this network item. This is only reasonable with a
@@ -312,7 +309,7 @@ class KDE_EXPORT Smb4KNetworkObject : public QObject
      * 
      * @param mountpoint  The mountpoint
      */
-    void setMountpoint(const KUrl &url);
+    void setMountpoint(const QUrl &url);
     
   Q_SIGNALS:
     /**
