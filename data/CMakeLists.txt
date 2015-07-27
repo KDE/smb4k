@@ -1,6 +1,5 @@
-install( FILES smb4ksettings.upd
-  DESTINATION ${KCONF_UPDATE_INSTALL_DIR} )
-install( PROGRAMS
+install(FILES smb4ksettings.upd DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR})
+install(PROGRAMS
   authentication1.sh
   network1.sh
   userinterface1.sh
@@ -11,4 +10,4 @@ install( PROGRAMS
   userinterface3.sh
   userinterface4.sh
   samba3.sh
-  DESTINATION ${KCONF_UPDATE_INSTALL_DIR} )
+  DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR})
