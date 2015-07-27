@@ -1,13 +1,10 @@
-
 include_directories(
-  ${KDE4_INCLUDES}
-  ${KDE4_INCLUDE_DIR}
-  ${QT_INCLUDES} )
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_BINARY_DIR}
+  ${CMAKE_SOURCE_DIR}
+  ${CMAKE_BINARY_DIR})
 
-
-########### next target ###############
-
-set( smb4kcore_LIB_SRCS 
+set(smb4kcore_LIB_SRCS  
   smb4kauthinfo.cpp
   smb4kbasicnetworkitem.cpp
   smb4kbookmark.cpp
@@ -21,6 +18,8 @@ set( smb4kcore_LIB_SRCS
   smb4kdeclarative_p.cpp
   smb4kglobal.cpp
   smb4kglobal_p.cpp
+  smb4khardwareinterface.cpp
+  smb4khardwareinterface_p.cpp
   smb4khomesshareshandler.cpp
   smb4khomesshareshandler_p.cpp
   smb4khost.cpp
@@ -42,49 +41,57 @@ set( smb4kcore_LIB_SRCS
   smb4ksearch.cpp
   smb4ksearch_p.cpp
   smb4kshare.cpp
-  smb4ksolidinterface.cpp
-  smb4ksolidinterface_p.cpp
   smb4ksynchronizer.cpp
   smb4ksynchronizer_p.cpp
   smb4kwalletmanager.cpp
   smb4kwalletmanager_p.cpp
-  smb4kworkgroup.cpp )
+  smb4kworkgroup.cpp)
 
 if (${CMAKE_HOST_SYSTEM_NAME} MATCHES "Linux")
-  kde4_add_kcfg_files(smb4kcore_LIB_SRCS smb4ksettings.kcfgc smb4kmountsettings_linux.kcfgc)
+  kconfig_add_kcfg_files(smb4kcore_LIB_SRCS smb4ksettings.kcfgc smb4kmountsettings_linux.kcfgc)
 elseif(${CMAKE_HOST_SYSTEM_NAME} MATCHES "FreeBSD")
-  kde4_add_kcfg_files(smb4kcore_LIB_SRCS smb4ksettings.kcfgc smb4kmountsettings_freebsd.kcfgc)
+  kconfig_add_kcfg_files(smb4kcore_LIB_SRCS smb4ksettings.kcfgc smb4kmountsettings_freebsd.kcfgc)
 elseif(${CMAKE_HOST_SYSTEM_NAME} MATCHES "NetBSD")
-  kde4_add_kcfg_files(smb4kcore_LIB_SRCS smb4ksettings.kcfgc smb4kmountsettings_freebsd.kcfgc)
-elseif(${CMAKE_HOST_SYSTEM_NAME} MATCHES "SunOS")
-  kde4_add_kcfg_files(smb4kcore_LIB_SRCS smb4ksettings.kcfgc smb4kmountsettings_solaris.kcfgc)
+  kconfig_add_kcfg_files(smb4kcore_LIB_SRCS smb4ksettings.kcfgc smb4kmountsettings_freebsd.kcfgc)
 else ()
-  kde4_add_kcfg_files( smb4kcore_LIB_SRCS smb4ksettings.kcfgc )
+  kconfig_add_kcfg_files(smb4kcore_LIB_SRCS smb4ksettings.kcfgc)
 endif ()
 
-kde4_add_library( smb4kcore SHARED ${smb4kcore_LIB_SRCS} )
+add_library(smb4kcore SHARED ${smb4kcore_LIB_SRCS})
 
-target_link_libraries( smb4kcore
-  ${QT_QTCORE_LIBRARY}
-  ${QT_QTGUI_LIBRARY}
-  ${QT_QTTEST_LIBRARY}
-  ${QT_QTDECLARATIVE_LIBRARY}
-  ${KDE4_KDECORE_LIBS}
-  ${KDE4_KDEUI_LIBS}
-  ${KDE4_KIO_LIBS}
-  ${KDE4_SOLID_LIBS} )
+target_link_libraries(smb4kcore
+  Qt5::Core
+  Qt5::Widgets
+  Qt5::Gui
+  Qt5::Test
+  Qt5::PrintSupport
+  Qt5::Network
+  KF5::ConfigCore
+  KF5::ConfigGui
+  KF5::Auth
+  KF5::IconThemes
+  KF5::I18n
+  KF5::Completion
+  KF5::CoreAddons
+  KF5::Solid
+  KF5::KIOCore
+  KF5::KIOWidgets
+  KF5::Notifications
+  KF5::JobWidgets
+  KF5::Wallet
+  KF5::KDELibs4Support)
 
-set_target_properties( smb4kcore PROPERTIES VERSION 4.2.0 SOVERSION 4 )
-install( TARGETS smb4kcore DESTINATION ${LIB_INSTALL_DIR} )
+set_target_properties(smb4kcore PROPERTIES VERSION 5.0.0 SOVERSION 5)
+install(TARGETS smb4kcore DESTINATION ${KDE_INSTALL_LIBDIR})
 
 
 ########### install files ###############
 
-install( FILES smb4k.kcfg DESTINATION ${KCFG_INSTALL_DIR} )
-install( FILES smb4k.notifyrc  DESTINATION ${DATA_INSTALL_DIR}/smb4k )
+install(FILES smb4k.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
+install(FILES smb4k.notifyrc DESTINATION ${KNOTIFYRC_INSTALL_DIR})
 
-if ( INSTALL_HEADER_FILES )
-  install( FILES
+if (INSTALL_HEADER_FILES)
+  install(FILES
     smb4kauthinfo.h
     smb4kbasicnetworkitem.h
     smb4kbookmark.h
@@ -94,6 +101,7 @@ if ( INSTALL_HEADER_FILES )
     smb4kcustomoptionsmanager.h
     smb4kdeclarative.h
     smb4kglobal.h
+    smb4khardwareinterface.h
     smb4khomesshareshandler.h
     smb4khost.h
     smb4kmounter.h
@@ -107,9 +115,8 @@ if ( INSTALL_HEADER_FILES )
     smb4kscanner.h
     smb4ksearch.h
     smb4kshare.h
-    smb4ksolidinterface.h
     smb4ksynchronizer.h
     smb4kwalletmanager.h
     smb4kworkgroup.h
-    DESTINATION ${INCLUDE_INSTALL_DIR} )
-endif ( INSTALL_HEADER_FILES )
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR})
+endif (INSTALL_HEADER_FILES)
