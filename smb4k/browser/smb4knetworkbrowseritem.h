@@ -2,7 +2,7 @@
     smb4knetworkbrowseritem  -  Smb4K's network browser list item.
                              -------------------
     begin                : Mo Jan 8 2007
-    copyright            : (C) 2007-2012 by Alexander Reinholdt
+    copyright            : (C) 2007-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -33,11 +33,9 @@
 #include "../tooltips/smb4ktooltip.h"
 
 // Qt includes
-#include <QtGui/QTreeWidgetItem>
-#include <QtGui/QTreeWidget>
+#include <QtWidgets/QTreeWidgetItem>
+#include <QtWidgets/QTreeWidget>
 
-// KDE includes
-#include <kicon.h>
 
 class Smb4KNetworkBrowser;
 class Smb4KNetworkBrowserItem : public QTreeWidgetItem
@@ -51,8 +49,8 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
      * @param workgroup     The Smb4KWorkgroup item that carries all the data
      *                      needed to set up a "workgroup item".
      */
-    Smb4KNetworkBrowserItem( QTreeWidget *parent,
-                             Smb4KWorkgroup *workgroup );
+    Smb4KNetworkBrowserItem(QTreeWidget *parent,
+                            Smb4KWorkgroup *workgroup);
 
     /**
      * The constructor for the host items.
@@ -61,8 +59,8 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
      *
      * @param host          The Smb4KHost item that carries all the data.
      */
-    Smb4KNetworkBrowserItem( QTreeWidgetItem *parent,
-                             Smb4KHost *host );
+    Smb4KNetworkBrowserItem(QTreeWidgetItem *parent,
+                            Smb4KHost *host);
 
     /**
      * The constructor for the share items.
@@ -71,8 +69,8 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
      *
      * @param share         The Smb4KShare item that carries all the data.
      */
-    Smb4KNetworkBrowserItem( QTreeWidgetItem *parent,
-                             Smb4KShare *share );
+    Smb4KNetworkBrowserItem(QTreeWidgetItem *parent,
+                            Smb4KShare *share);
 
     /**
      * The destructor.
@@ -124,7 +122,7 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
      * 
      * @param item          A Smb4KBasicNetworkItem object
      */
-    void update( Smb4KBasicNetworkItem *item );
+    void update(Smb4KBasicNetworkItem *item);
     
     /**
      * This function returns the tool tip of this item.

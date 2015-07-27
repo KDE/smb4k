@@ -2,7 +2,7 @@
     smb4knetworkbrowser  -  The network browser widget of Smb4K.
                              -------------------
     begin                : Mo Jan 8 2007
-    copyright            : (C) 2007-2014 by Alexander Reinholdt
+    copyright            : (C) 2007-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -27,7 +27,7 @@
 #define SMB4KNETWORKBROWSER_H
 
 // Qt includes
-#include <QTreeWidget>
+#include <QtWidgets/QTreeWidget>
 
 // forward declarations
 class Smb4KNetworkBrowserItem;
@@ -49,7 +49,7 @@ class Smb4KNetworkBrowser : public QTreeWidget
      *
      * @param parent        The parent widget
      */
-    explicit Smb4KNetworkBrowser( QWidget *parent = 0 );
+    explicit Smb4KNetworkBrowser(QWidget *parent = 0);
 
     /**
      * The destructor
@@ -74,34 +74,24 @@ class Smb4KNetworkBrowser : public QTreeWidget
 
   signals:
     /**
-     * This signal is emitted when an item has been executed.
-     *
-     * @param item          The item that was executed.
-     *
-     * @param column        The column where the item was executed.
-     */
-    void itemExecuted( QTreeWidgetItem *item,
-                       int column );
-    
-    /**
      * This signal is emitted when a tool tip is about to be shown.
      * 
      * @param item          The network browser item
      */
-    void aboutToShowToolTip( Smb4KNetworkBrowserItem *item );
+    void aboutToShowToolTip(Smb4KNetworkBrowserItem *item);
     
     /**
      * This signal is emitted when a tool tip is about to be hidden.
      * 
      * @param item          The network browser item
      */
-    void aboutToHideToolTip( Smb4KNetworkBrowserItem *item );
+    void aboutToHideToolTip(Smb4KNetworkBrowserItem *item);
 
   protected:
     /**
      * Reimplemented from QWidget.
      */
-    bool event( QEvent *e );
+    bool event(QEvent *e);
 
     /**
      * Reimplemented from QWidget. This function keeps track of the
@@ -109,7 +99,7 @@ class Smb4KNetworkBrowser : public QTreeWidget
      *
      * @param e             The mouse event
      */
-    void mouseMoveEvent( QMouseEvent *e );
+    void mouseMoveEvent(QMouseEvent *e);
 
     /**
      * Reimplemented from QWidget. This function emits the signal
@@ -117,7 +107,7 @@ class Smb4KNetworkBrowser : public QTreeWidget
      *
      * @param e             The event object
      */
-    void leaveEvent( QEvent *e );
+    void leaveEvent(QEvent *e);
 
     /**
      * Reimplemented from QWidget. This function emits the signal
@@ -125,7 +115,7 @@ class Smb4KNetworkBrowser : public QTreeWidget
      *
      * @param e             The event object
      */
-    void enterEvent( QEvent *e );
+    void enterEvent(QEvent *e);
 
     /**
      * Reimplemented from QAbstractItemView. This function handles
@@ -133,7 +123,7 @@ class Smb4KNetworkBrowser : public QTreeWidget
      *
      * @param e             The mouse event object
      */
-    void mousePressEvent( QMouseEvent *e );
+    void mousePressEvent(QMouseEvent *e);
 
     /**
      * Reimplemented from QAbstractItemView. This function is used
@@ -141,7 +131,7 @@ class Smb4KNetworkBrowser : public QTreeWidget
      *
      * @param e             The focus event
      */
-    void focusOutEvent( QFocusEvent *e );
+    void focusOutEvent(QFocusEvent *e);
 
     /**
      * Reimplemented from QWidget. This function is used to handle
@@ -149,7 +139,7 @@ class Smb4KNetworkBrowser : public QTreeWidget
      *
      * @param e             The wheel event
      */
-    void wheelEvent( QWheelEvent *e );
+    void wheelEvent(QWheelEvent *e);
 
   protected slots:
    /**
@@ -159,8 +149,8 @@ class Smb4KNetworkBrowser : public QTreeWidget
      *
      * @param column        The column where the item was entered.
      */
-    void slotItemEntered( QTreeWidgetItem *item,
-                          int column );
+    void slotItemEntered(QTreeWidgetItem *item,
+                          int column);
 
     /**
      * This slot is invoked when the viewport is entered. It is used
@@ -169,28 +159,13 @@ class Smb4KNetworkBrowser : public QTreeWidget
     void slotViewportEntered();
 
     /**
-     * This slot is called when the user executed an item. It is used
+     * This slot is called when the user activated an item. It is used
      * to open the item if it is expandable.
-     *
      * @param item          The item that has been activated.
-     *
      * @param column        The column where the item was activated.
      */
-    void slotItemExecuted( QTreeWidgetItem *item,
-                           int column );
+    void slotItemActivated(QTreeWidgetItem *item, int column);
 
-    /**
-     * This slot is used to adjust to KDE's settings.
-     *
-     * @param category      The category where the settings changed.
-     */
-    void slotKDESettingsChanged( int category );
-
-    /**
-     * This slot is used to auto select the item under the mouse.
-     */
-    void slotAutoSelectItem();
-    
     /**
      * Take care that only shares are selected when the user marks multiple
      * shares.
@@ -207,32 +182,6 @@ class Smb4KNetworkBrowser : public QTreeWidget
      * Mouse inside the widget?
      */
     bool m_mouse_inside;
-
-    /**
-     * Determines if single or double click is used.
-     */
-    bool m_use_single_click;
-
-    /**
-     * Determines if the cursor is changed over an
-     * item in single click mode.
-     */
-    bool m_change_cursor_over_icon;
-
-    /**
-     * Carries the auto select delay.
-     */
-    int m_auto_select_delay;
-
-    /**
-     * The timer for auto selection.
-     */
-    QTimer *m_auto_select_timer;
-
-    /**
-     * The item for auto selection.
-     */
-    QTreeWidgetItem *m_auto_select_item;
 };
 
 #endif

@@ -3,7 +3,7 @@
     browser of Smb4K.
                              -------------------
     begin                : Fr Jan 5 2007
-    copyright            : (C) 2007-2014 by Alexander Reinholdt
+    copyright            : (C) 2007-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -48,41 +48,36 @@
 
 // Qt includes
 #include <QtCore/QEvent>
+#include <QtCore/QDebug>
 #include <QtGui/QKeySequence>
-#include <QtGui/QTreeWidget>
-#include <QtGui/QTreeWidgetItemIterator>
-#include <QtGui/QHeaderView>
+#include <QtWidgets/QTreeWidget>
+#include <QtWidgets/QTreeWidgetItemIterator>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QMenu>
 
 // KDE includes
-#include <kaboutdata.h>
-#include <kaction.h>
-#include <kdualaction.h>
-#include <klocale.h>
-#include <kiconloader.h>
-#include <kdebug.h>
-#include <kcomponentdata.h>
-#include <kicon.h>
-#include <kactioncollection.h>
-#include <kmenu.h>
-#include <kapplication.h>
-#include <kconfiggroup.h>
-#include <kglobalsettings.h>
+#include <KCoreAddons/KPluginFactory>
+#include <KIconThemes/KIconLoader>
+#include <KWidgetsAddons/KDualAction>
+#include <KWidgetsAddons/KGuiItem>
+#include <KI18n/KLocalizedString>
+#include <KXmlGui/KActionCollection>
 
 using namespace Smb4KGlobal;
 
-K_PLUGIN_FACTORY( Smb4KNetworkBrowserPartFactory, registerPlugin<Smb4KNetworkBrowserPart>(); )
-K_EXPORT_PLUGIN( Smb4KNetworkBrowserPartFactory( "Smb4KNetworkBrowserPart" ) );
+K_PLUGIN_FACTORY(Smb4KNetworkBrowserPartFactory, registerPlugin<Smb4KNetworkBrowserPart>();)
 
 
-Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject *parent, const QList<QVariant> &args )
-: KParts::Part( parent ), m_bookmark_shortcut( true ), m_silent( false )
+Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart(QWidget *parentWidget, QObject *parent, const QList<QVariant> &args)
+: KParts::Part(parent), m_bookmark_shortcut(true), m_silent(false)
 {
   // Parse arguments:
-  for ( int i = 0; i < args.size(); ++i )
+  for (int i = 0; i < args.size(); ++i)
   {
-    if ( args.at( i ).toString().startsWith( QLatin1String( "bookmark_shortcut" ) ) )
+    if (args.at(i).toString().startsWith(QLatin1String("bookmark_shortcut")))
     {
-      if ( QString::compare( args.at( i ).toString().section( '=', 1, 1 ).trimmed(), "\"false\"" ) == 0 )
+      if (QString::compare(args.at(i).toString().section('=', 1, 1).trimmed(), "\"false\"") == 0)
       {
         m_bookmark_shortcut = false;
       }
@@ -93,9 +88,9 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject
 
       continue;
     }
-    else if ( args.at( i ).toString().startsWith( QLatin1String( "silent" ) ) )
+    else if (args.at(i).toString().startsWith(QLatin1String("silent")))
     {
-      if ( QString::compare( args.at( i ).toString().section( '=', 1, 1 ).trimmed(), "\"true\"" ) == 0 )
+      if (QString::compare(args.at(i).toString().section('=', 1, 1).trimmed(), "\"true\"") == 0)
       {
         m_silent = true;
       }
@@ -111,15 +106,15 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject
   }
 
   // Set the XML file:
-  setXMLFile( "smb4knetworkbrowser_part.rc" );
+  setXMLFile("smb4knetworkbrowser_part.rc");
 
   // Set the widget of this part:
-  m_widget = new Smb4KNetworkBrowser( parentWidget );
+  m_widget = new Smb4KNetworkBrowser(parentWidget);
   
-  int icon_size = KIconLoader::global()->currentSize( KIconLoader::Small );
-  m_widget->setIconSize( QSize( icon_size, icon_size ) );
+  int icon_size = KIconLoader::global()->currentSize(KIconLoader::Small);
+  m_widget->setIconSize(QSize(icon_size, icon_size));
   
-  setWidget( m_widget );
+  setWidget(m_widget);
 
   // Set up the actions.
   // Do not put this before setWidget() or the shortcuts of the
@@ -130,65 +125,65 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart( QWidget *parentWidget, QObject
   loadSettings();
 
   // Add some connections:
-  connect( m_widget,               SIGNAL(customContextMenuRequested(QPoint)),
-           this,                   SLOT(slotContextMenuRequested(QPoint)) );
-
-  connect( m_widget,               SIGNAL(itemSelectionChanged()),
-           this,                   SLOT(slotItemSelectionChanged()) );
-
-  connect( m_widget,               SIGNAL(itemPressed(QTreeWidgetItem*,int)),
-           this,                   SLOT(slotItemPressed(QTreeWidgetItem*,int)) );
-
-  connect( m_widget,               SIGNAL(itemExecuted(QTreeWidgetItem*,int)),
-           this,                   SLOT(slotItemExecuted(QTreeWidgetItem*,int)) );
-
-  connect( m_widget,               SIGNAL(aboutToShowToolTip(Smb4KNetworkBrowserItem*)),
-           this,                   SLOT(slotAboutToShowToolTip(Smb4KNetworkBrowserItem*)) );
-
-  connect( m_widget,               SIGNAL(aboutToHideToolTip(Smb4KNetworkBrowserItem*)),
-           this,                   SLOT(slotAboutToHideToolTip(Smb4KNetworkBrowserItem*)) );
-
-  connect( Smb4KScanner::self(),   SIGNAL(workgroups(QList<Smb4KWorkgroup*>)),
-           this,                   SLOT(slotWorkgroups(QList<Smb4KWorkgroup*>)) );
-
-  connect( Smb4KScanner::self(),   SIGNAL(hosts(Smb4KWorkgroup*,QList<Smb4KHost*>)),
-           this,                   SLOT(slotWorkgroupMembers(Smb4KWorkgroup*,QList<Smb4KHost*>)) );
-
-  connect( Smb4KScanner::self(),   SIGNAL(shares(Smb4KHost*,QList<Smb4KShare*>)),
-           this,                   SLOT(slotShares(Smb4KHost*,QList<Smb4KShare*>)) );
-
-  connect( Smb4KScanner::self(),   SIGNAL(info(Smb4KHost*)),
-           this,                   SLOT(slotAddInformation(Smb4KHost*)) );
+  connect(m_widget, SIGNAL(customContextMenuRequested(QPoint)),
+          this, SLOT(slotContextMenuRequested(QPoint)));
   
-  connect( Smb4KScanner::self(),   SIGNAL(authError(Smb4KHost*,int)),
-           this,                   SLOT(slotAuthError(Smb4KHost*,int)) );
-
-  connect( Smb4KScanner::self(),   SIGNAL(aboutToStart(Smb4KBasicNetworkItem*,int)),
-           this,                   SLOT(slotScannerAboutToStart(Smb4KBasicNetworkItem*,int)) );
-
-  connect( Smb4KScanner::self(),   SIGNAL(finished(Smb4KBasicNetworkItem*,int)),
-           this,                   SLOT(slotScannerFinished(Smb4KBasicNetworkItem*,int)) );
-
-  connect( Smb4KScanner::self(),   SIGNAL(ipAddress(Smb4KHost*)),
-           this,                   SLOT(slotAddIPAddress(Smb4KHost*)) );
-
-  connect( Smb4KMounter::self(),   SIGNAL(aboutToStart(Smb4KShare*,int)),
-           this,                   SLOT(slotMounterAboutToStart(Smb4KShare*,int)) );
-
-  connect( Smb4KMounter::self(),   SIGNAL(finished(Smb4KShare*,int)),
-           this,                   SLOT(slotMounterFinished(Smb4KShare*,int)) );
-
-  connect( Smb4KMounter::self(),   SIGNAL(mounted(Smb4KShare*)),
-           this,                   SLOT(slotShareMounted(Smb4KShare*)) );
-
-  connect( Smb4KMounter::self(),   SIGNAL(unmounted(Smb4KShare*)),
-           this,                   SLOT(slotShareUnmounted(Smb4KShare*)) );
-
-  connect( kapp,                   SIGNAL(aboutToQuit()),
-           this,                   SLOT(slotAboutToQuit()) );
-           
-  connect( KGlobalSettings::self(), SIGNAL(iconChanged(int)),
-           this,                    SLOT(slotIconSizeChanged(int)) );
+  connect(m_widget, SIGNAL(itemSelectionChanged()),
+          this, SLOT(slotItemSelectionChanged()));
+  
+  connect(m_widget, SIGNAL(itemPressed(QTreeWidgetItem*,int)),
+          this, SLOT(slotItemPressed(QTreeWidgetItem*,int)));
+  
+  connect(m_widget, SIGNAL(itemActivated(QTreeWidgetItem*,int)),
+          this, SLOT(slotItemActivated(QTreeWidgetItem*,int)));
+  
+  connect(m_widget, SIGNAL(aboutToShowToolTip(Smb4KNetworkBrowserItem*)),
+          this, SLOT(slotAboutToShowToolTip(Smb4KNetworkBrowserItem*)));
+  
+  connect(m_widget, SIGNAL(aboutToHideToolTip(Smb4KNetworkBrowserItem*)),
+          this, SLOT(slotAboutToHideToolTip(Smb4KNetworkBrowserItem*)));
+  
+  connect(Smb4KScanner::self(), SIGNAL(workgroups(QList<Smb4KWorkgroup*>)),
+          this, SLOT(slotWorkgroups(QList<Smb4KWorkgroup*>)));
+  
+  connect(Smb4KScanner::self(), SIGNAL(hosts(Smb4KWorkgroup*,QList<Smb4KHost*>)),
+          this, SLOT(slotWorkgroupMembers(Smb4KWorkgroup*,QList<Smb4KHost*>)));
+  
+  connect(Smb4KScanner::self(), SIGNAL(shares(Smb4KHost*,QList<Smb4KShare*>)),
+          this, SLOT(slotShares(Smb4KHost*,QList<Smb4KShare*>)));
+  
+  connect(Smb4KScanner::self(), SIGNAL(info(Smb4KHost*)),
+          this, SLOT(slotAddInformation(Smb4KHost*)));
+  
+  connect(Smb4KScanner::self(), SIGNAL(authError(Smb4KHost*,int)),
+          this, SLOT(slotAuthError(Smb4KHost*,int)));
+  
+  connect(Smb4KScanner::self(), SIGNAL(aboutToStart(Smb4KBasicNetworkItem*,int)),
+          this, SLOT(slotScannerAboutToStart(Smb4KBasicNetworkItem*,int)));
+  
+  connect(Smb4KScanner::self(), SIGNAL(finished(Smb4KBasicNetworkItem*,int)),
+          this, SLOT(slotScannerFinished(Smb4KBasicNetworkItem*,int)));
+  
+  connect(Smb4KScanner::self(), SIGNAL(ipAddress(Smb4KHost*)),
+          this, SLOT(slotAddIPAddress(Smb4KHost*)));
+  
+  connect(Smb4KMounter::self(), SIGNAL(aboutToStart(Smb4KShare*,int)),
+          this, SLOT(slotMounterAboutToStart(Smb4KShare*,int)));
+  
+  connect(Smb4KMounter::self(), SIGNAL(finished(Smb4KShare*,int)),
+          this, SLOT(slotMounterFinished(Smb4KShare*,int)));
+  
+  connect(Smb4KMounter::self(), SIGNAL(mounted(Smb4KShare*)),
+          this, SLOT(slotShareMounted(Smb4KShare*)));
+  
+  connect(Smb4KMounter::self(), SIGNAL(unmounted(Smb4KShare*)),
+          this, SLOT(slotShareUnmounted(Smb4KShare*)));
+  
+  connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()),
+          this, SLOT(slotAboutToQuit()));
+  
+  connect(KIconLoader::global(), SIGNAL(iconChanged(int)),
+          this, SLOT(slotIconSizeChanged(int)));
 }
 
 
@@ -199,122 +194,118 @@ Smb4KNetworkBrowserPart::~Smb4KNetworkBrowserPart()
 
 void Smb4KNetworkBrowserPart::setupActions()
 {
-  KDualAction *rescan_abort_action = new KDualAction( actionCollection() );
-  KGuiItem rescan_item( i18n( "Scan Netwo&rk" ), KIcon( "view-refresh" ) );
-  KGuiItem abort_item( i18n( "&Abort" ), KIcon( "process-stop" ) );
-  rescan_abort_action->setActiveGuiItem( rescan_item );
-  rescan_abort_action->setInactiveGuiItem( abort_item );
+  KDualAction *rescan_abort_action = new KDualAction(this);
+  KGuiItem rescan_item(i18n("Scan Netwo&rk"), KDE::icon("view-refresh"));
+  KGuiItem abort_item(i18n("&Abort"), KDE::icon("process-stop"));
+  rescan_abort_action->setActiveGuiItem(rescan_item);
+  rescan_abort_action->setInactiveGuiItem(abort_item);
   rescan_abort_action->setShortcut(QKeySequence::Refresh);
-  rescan_abort_action->setActive( true );
-  rescan_abort_action->setAutoToggle( false );
-  connect( rescan_abort_action, SIGNAL(triggered(bool)), this, SLOT(slotRescanAbortActionTriggered(bool)) );
+  rescan_abort_action->setActive(true);
+  rescan_abort_action->setAutoToggle(false);
+  connect(rescan_abort_action, SIGNAL(triggered(bool)), this, SLOT(slotRescanAbortActionTriggered(bool)));
   
-  KAction *manual_action   = new KAction( KIcon( "view-form", KIconLoader::global(), QStringList( "emblem-mounted" ) ),
-                             i18n( "&Open Mount Dialog" ), actionCollection() );
-  manual_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_O ) );
-  connect( manual_action, SIGNAL(triggered(bool)), this, SLOT(slotMountManually(bool)) );
+  QAction *manual_action = new QAction(KDE::icon("view-form", QStringList("emblem-mounted")), i18n("&Open Mount Dialog"), this);
+  manual_action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_O));
+  connect(manual_action, SIGNAL(triggered(bool)), this, SLOT(slotMountManually(bool)));
 
-  KAction *auth_action     = new KAction( KIcon( "dialog-password" ), i18n( "Au&thentication" ),
-                             actionCollection() );
-  auth_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_T ) );
-  connect( auth_action, SIGNAL(triggered(bool)), this, SLOT(slotAuthentication(bool)) );
+  QAction *auth_action = new QAction(KDE::icon("dialog-password"), i18n("Au&thentication"), this);
+  auth_action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_T));
+  connect(auth_action, SIGNAL(triggered(bool)), this, SLOT(slotAuthentication(bool)));
 
-  KAction *custom_action   = new KAction( KIcon( "preferences-system-network" ), i18n( "&Custom Options" ),
-                             actionCollection() );
-  custom_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_C ) );
-  connect( custom_action, SIGNAL(triggered(bool)), this, SLOT(slotCustomOptions(bool)) );
+  QAction *custom_action = new QAction(KDE::icon("preferences-system-network"), i18n("&Custom Options"), this);
+  custom_action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_C));
+  connect(custom_action, SIGNAL(triggered(bool)), this, SLOT(slotCustomOptions(bool)));
 
-  KAction *bookmark_action = new KAction( KIcon( "bookmark-new" ), i18n( "Add &Bookmark" ),
-                             actionCollection() );
-  if ( m_bookmark_shortcut )
+  QAction *bookmark_action = new QAction(KDE::icon("bookmark-new"), i18n("Add &Bookmark"), this);
+  
+  if (m_bookmark_shortcut)
   {
-    bookmark_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_B ) );
+    bookmark_action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_B));
   }
   else
   {
     // Do nothing
   }
-  connect( bookmark_action, SIGNAL(triggered(bool)), this, SLOT(slotAddBookmark(bool)) );
+  connect(bookmark_action, SIGNAL(triggered(bool)), this, SLOT(slotAddBookmark(bool)));
 
-  KAction *preview_action  = new KAction( KIcon( "view-list-icons" ), i18n( "Pre&view" ),
-                             actionCollection() );
-  preview_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_V ) );
-  connect( preview_action, SIGNAL(triggered(bool)), this, SLOT(slotPreview(bool)) );
+  QAction *preview_action  = new QAction(KDE::icon("view-list-icons"), i18n("Pre&view"), this);
+  preview_action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_V));
+  connect(preview_action, SIGNAL(triggered(bool)), this, SLOT(slotPreview(bool)));
 
-  KAction *print_action    = new KAction( KIcon( "printer" ), i18n( "&Print File" ),
-                             actionCollection() );
-  print_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_P ) );
-  connect( print_action, SIGNAL(triggered(bool)), this, SLOT(slotPrint(bool)) );
+  QAction *print_action = new QAction(KDE::icon("printer"), i18n("&Print File"), this);
+  print_action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_P));
+  connect(print_action, SIGNAL(triggered(bool)), this, SLOT(slotPrint(bool)));
 
-  KDualAction *mount_action = new KDualAction( actionCollection() );
-  KGuiItem mount_item( i18n( "&Mount" ), KIcon( "emblem-mounted" ) );
-  KGuiItem unmount_item( i18n( "&Unmount" ), KIcon( "emblem-unmounted" ) );
-  mount_action->setActiveGuiItem( mount_item );
-  mount_action->setInactiveGuiItem( unmount_item );
-  mount_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_M ) );
-  mount_action->setActive( true );
-  mount_action->setAutoToggle( false );
-  connect( mount_action, SIGNAL(triggered(bool)), this, SLOT(slotMountActionTriggered(bool)) );
-  connect( mount_action, SIGNAL(activeChanged(bool)), this, SLOT(slotMountActionChanged(bool)) );
+  KDualAction *mount_action = new KDualAction(this);
+  KGuiItem mount_item(i18n("&Mount"), KDE::icon("emblem-mounted"));
+  KGuiItem unmount_item(i18n("&Unmount"), KDE::icon("emblem-unmounted"));
+  mount_action->setActiveGuiItem(mount_item);
+  mount_action->setInactiveGuiItem(unmount_item);
+  mount_action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_M));
+  mount_action->setActive(true);
+  mount_action->setAutoToggle(false);
+  connect(mount_action, SIGNAL(triggered(bool)), this, SLOT(slotMountActionTriggered(bool)));
+  connect(mount_action, SIGNAL(activeChanged(bool)), this, SLOT(slotMountActionChanged(bool)));
 
-  actionCollection()->addAction( "rescan_abort_action", rescan_abort_action );
-  actionCollection()->addAction( "mount_manually_action", manual_action );
-  actionCollection()->addAction( "authentication_action", auth_action );
-  actionCollection()->addAction( "custom_action", custom_action );
-  actionCollection()->addAction( "bookmark_action", bookmark_action );
-  actionCollection()->addAction( "preview_action", preview_action );
-  actionCollection()->addAction( "print_action", print_action );
-  actionCollection()->addAction( "mount_action", mount_action );
+  actionCollection()->addAction("rescan_abort_action", rescan_abort_action);
+  actionCollection()->addAction("mount_manually_action", manual_action);
+  actionCollection()->addAction("authentication_action", auth_action);
+  actionCollection()->addAction("custom_action", custom_action);
+  actionCollection()->addAction("bookmark_action", bookmark_action);
+  actionCollection()->addAction("preview_action", preview_action);
+  actionCollection()->addAction("print_action", print_action);
+  actionCollection()->addAction("mount_action", mount_action);
 
   // Enable/disable the actions:
-  rescan_abort_action->setEnabled( true );
-  manual_action->setEnabled( true );
-  auth_action->setEnabled( false );
-  custom_action->setEnabled( false );
-  bookmark_action->setEnabled( false );
-  preview_action->setEnabled( false );
-  print_action->setEnabled( false );
-  mount_action->setEnabled( false );
+  rescan_abort_action->setEnabled(true);
+  manual_action->setEnabled(true);
+  auth_action->setEnabled(false);
+  custom_action->setEnabled(false);
+  bookmark_action->setEnabled(false);
+  preview_action->setEnabled(false);
+  print_action->setEnabled(false);
+  mount_action->setEnabled(false);
 
   // Plug the actions into the action menu:
-  m_menu = new KActionMenu( this );
-  m_menu_title = m_menu->menu()->addTitle( KIcon( "network-workgroup" ), i18n( "Network" ) );
-  m_menu->addAction( rescan_abort_action );
+  m_menu = new KActionMenu(this);
+  m_menu->menu()->setTitle(i18n("Network"));
+  m_menu->menu()->setIcon(KDE::icon("network-workgroup"));
+  m_menu->addAction(rescan_abort_action);
   m_menu->addSeparator();
-  m_menu->addAction( bookmark_action );
-  m_menu->addAction( manual_action );
+  m_menu->addAction(bookmark_action);
+  m_menu->addAction(manual_action);
   m_menu->addSeparator();
-  m_menu->addAction( auth_action );
-  m_menu->addAction( custom_action );
-  m_menu->addAction( preview_action );
-  m_menu->addAction( print_action );
-  m_menu->addAction( mount_action );
+  m_menu->addAction(auth_action);
+  m_menu->addAction(custom_action);
+  m_menu->addAction(preview_action);
+  m_menu->addAction(print_action);
+  m_menu->addAction(mount_action);
 }
 
 
 void Smb4KNetworkBrowserPart::loadSettings()
 {
   // Show/hide columns:
-  m_widget->setColumnHidden( Smb4KNetworkBrowser::IP, !Smb4KSettings::showIPAddress() );
-  m_widget->setColumnHidden( Smb4KNetworkBrowser::Type, !Smb4KSettings::showType() );
-  m_widget->setColumnHidden( Smb4KNetworkBrowser::Comment, !Smb4KSettings::showComment() );
+  m_widget->setColumnHidden(Smb4KNetworkBrowser::IP, !Smb4KSettings::showIPAddress());
+  m_widget->setColumnHidden(Smb4KNetworkBrowser::Type, !Smb4KSettings::showType());
+  m_widget->setColumnHidden(Smb4KNetworkBrowser::Comment, !Smb4KSettings::showComment());
 
   // Load and apply the positions of the columns.
-  KConfigGroup configGroup( Smb4KSettings::self()->config(), "NetworkBrowserPart" );
+  KConfigGroup configGroup(Smb4KSettings::self()->config(), "NetworkBrowserPart");
 
   QMap<int, int> map;
-  map.insert( configGroup.readEntry( "ColumnPositionNetwork", (int)Smb4KNetworkBrowser::Network ), Smb4KNetworkBrowser::Network );
-  map.insert( configGroup.readEntry( "ColumnPositionType", (int)Smb4KNetworkBrowser::Type ), Smb4KNetworkBrowser::Type );
-  map.insert( configGroup.readEntry( "ColumnPositionIP", (int)Smb4KNetworkBrowser::IP ), Smb4KNetworkBrowser::IP );
-  map.insert( configGroup.readEntry( "ColumnPositionComment", (int)Smb4KNetworkBrowser::Comment ), Smb4KNetworkBrowser::Comment );
+  map.insert(configGroup.readEntry("ColumnPositionNetwork", (int)Smb4KNetworkBrowser::Network), Smb4KNetworkBrowser::Network);
+  map.insert(configGroup.readEntry("ColumnPositionType", (int)Smb4KNetworkBrowser::Type), Smb4KNetworkBrowser::Type);
+  map.insert(configGroup.readEntry("ColumnPositionIP", (int)Smb4KNetworkBrowser::IP), Smb4KNetworkBrowser::IP);
+  map.insert(configGroup.readEntry("ColumnPositionComment", (int)Smb4KNetworkBrowser::Comment), Smb4KNetworkBrowser::Comment);
 
   QMap<int, int>::const_iterator it = map.constBegin();
 
-  while ( it != map.constEnd() )
+  while (it != map.constEnd())
   {
-    if ( it.key() != m_widget->header()->visualIndex( it.value() ) )
+    if (it.key() != m_widget->header()->visualIndex(it.value()))
     {
-      m_widget->header()->moveSection( m_widget->header()->visualIndex( it.value() ), it.key() );
+      m_widget->header()->moveSection(m_widget->header()->visualIndex(it.value()), it.key());
     }
     else
     {
@@ -325,12 +316,12 @@ void Smb4KNetworkBrowserPart::loadSettings()
   }
 
   // Does anything has to be changed with the marked shares?
-  for ( int i = 0; i < mountedSharesList().size(); ++i )
+  for (int i = 0; i < mountedSharesList().size(); ++i)
   {
     // We do not need to use slotShareUnmounted() here, too,
     // because slotShareMounted() will take care of everything
     // we need here.
-    slotShareMounted( mountedSharesList().at( i ) );
+    slotShareMounted(mountedSharesList().at(i));
   }
 }
 
@@ -338,11 +329,11 @@ void Smb4KNetworkBrowserPart::loadSettings()
 void Smb4KNetworkBrowserPart::saveSettings()
 {
   // Save the position of the columns.
-  KConfigGroup configGroup( Smb4KSettings::self()->config(), "NetworkBrowserPart" );
-  configGroup.writeEntry( "ColumnPositionNetwork", m_widget->header()->visualIndex( Smb4KNetworkBrowser::Network ) );
-  configGroup.writeEntry( "ColumnPositionType", m_widget->header()->visualIndex( Smb4KNetworkBrowser::Type ) );
-  configGroup.writeEntry( "ColumnPositionIP", m_widget->header()->visualIndex( Smb4KNetworkBrowser::IP ) );
-  configGroup.writeEntry( "ColumnPositionComment", m_widget->header()->visualIndex( Smb4KNetworkBrowser::Comment ) );
+  KConfigGroup configGroup(Smb4KSettings::self()->config(), "NetworkBrowserPart");
+  configGroup.writeEntry("ColumnPositionNetwork", m_widget->header()->visualIndex(Smb4KNetworkBrowser::Network));
+  configGroup.writeEntry("ColumnPositionType", m_widget->header()->visualIndex(Smb4KNetworkBrowser::Type));
+  configGroup.writeEntry("ColumnPositionIP", m_widget->header()->visualIndex(Smb4KNetworkBrowser::IP));
+  configGroup.writeEntry("ColumnPositionComment", m_widget->header()->visualIndex(Smb4KNetworkBrowser::Comment));
 
   configGroup.sync();
 }
@@ -350,61 +341,55 @@ void Smb4KNetworkBrowserPart::saveSettings()
 
 KAboutData *Smb4KNetworkBrowserPart::createAboutData()
 {
-  KAboutData *aboutData = new KAboutData( "smb4knetworkbrowserpart",
-                          "smb4k",
-                          ki18n( "Smb4KNetworkBrowserPart" ),
-                          "3.0",
-                          ki18n( "The network browser KPart of Smb4K" ),
-                          KAboutData::License_GPL_V2,
-                          ki18n( "\u00A9 2007-2014, Alexander Reinholdt" ),
-                          KLocalizedString(),
-                          "http://smb4k.sourceforge.net",
-                          "smb4k-bugs@lists.sourceforge.net" );
-
+  KAboutData *aboutData = new KAboutData(QStringLiteral("smb4knetworkbrowserpart"), i18n("Smb4KNetworkBrowserPart"),
+    QStringLiteral("4.0"), i18n("The network neighborhood browser KPart of Smb4K"), KAboutLicense::GPL_V2, 
+    i18n("\u00A9 2007-2015, Alexander Reinholdt"), QString(), QStringLiteral("http://smb4k.sourceforge.net"), 
+    QStringLiteral("smb4k-bugs@lists.sourceforge.net"));
+  
   return aboutData;
 }
 
 
-void Smb4KNetworkBrowserPart::customEvent( QEvent *e )
+void Smb4KNetworkBrowserPart::customEvent(QEvent *e)
 {
-  if ( e->type() == Smb4KEvent::LoadSettings )
+  if (e->type() == Smb4KEvent::LoadSettings)
   {
     loadSettings();
   }
-  else if ( e->type() == Smb4KEvent::SetFocus )
+  else if (e->type() == Smb4KEvent::SetFocus)
   {
-    if ( m_widget->topLevelItemCount() != 0 )
+    if (m_widget->topLevelItemCount() != 0)
     {
-      kDebug() << "Do we need to port the selection stuff?" << endl;
+      qDebug() << "Do we need to port the selection stuff?";
     }
 
-    m_widget->setFocus( Qt::OtherFocusReason );
+    m_widget->setFocus(Qt::OtherFocusReason);
   }
-  else if ( e->type() == Smb4KEvent::ScanNetwork )
+  else if (e->type() == Smb4KEvent::ScanNetwork)
   {
-    slotRescanAbortActionTriggered( false ); // boolean is ignored
+    slotRescanAbortActionTriggered(false); // boolean is ignored
   }
-  else if ( e->type() == Smb4KEvent::AddBookmark )
+  else if (e->type() == Smb4KEvent::AddBookmark)
   {
-    slotAddBookmark( false );
+    slotAddBookmark(false);
   }
-  else if ( e->type() == Smb4KEvent::MountOrUnmountShare )
+  else if (e->type() == Smb4KEvent::MountOrUnmountShare)
   {
     // Change the active state of the mount action. This needs 
     // to be done here, because the action is not switched
     // automatically in case the part is notified from outside.
-    KDualAction *mount_action = static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) );
-    mount_action->setActive( !mount_action->isActive() );
+    KDualAction *mount_action = static_cast<KDualAction *>(actionCollection()->action("mount_action"));
+    mount_action->setActive(!mount_action->isActive());
 
     // Mount or unmount the share.
-    slotMountActionTriggered( false );
+    slotMountActionTriggered(false);
   }
   else
   {
     // Do nothing
   }
 
-  KParts::Part::customEvent( e );
+  KParts::Part::customEvent(e);
 }
 
 
@@ -412,118 +397,111 @@ void Smb4KNetworkBrowserPart::customEvent( QEvent *e )
 // SLOT IMPLEMENTATIONS (Smb4KNetworkBrowserPart)
 /////////////////////////////////////////////////////////////////////////////
 
-void Smb4KNetworkBrowserPart::slotContextMenuRequested( const QPoint &pos )
+void Smb4KNetworkBrowserPart::slotContextMenuRequested(const QPoint &pos)
 {
-  QTreeWidgetItem *item = m_widget->itemAt( pos );
+  QTreeWidgetItem *item = m_widget->itemAt(pos);
 
-  m_menu->removeAction( m_menu_title );
-  delete m_menu_title;
-
-  if ( item )
+  if (item)
   {
-    m_menu_title = m_menu->menu()->addTitle( item->icon( Smb4KNetworkBrowserItem::Network ),
-                                             item->text( Smb4KNetworkBrowserItem::Network ),
-                                             actionCollection()->action( "rescan_abort_action" ) );
+    m_menu->menu()->setTitle(item->text(Smb4KNetworkBrowserItem::Network));
+    m_menu->menu()->setIcon(item->icon(Smb4KNetworkBrowserItem::Network));
   }
   else
   {
-    m_menu_title = m_menu->menu()->addTitle( KIcon( "network-workgroup" ),
-                                             i18n( "Network" ),
-                                             actionCollection()->action( "rescan_abort_action" ) );
+    m_menu->menu()->setTitle(i18n("Network"));
+    m_menu->menu()->setIcon(KDE::icon("network-workgroup"));
   }
 
-  m_menu->menu()->popup( m_widget->viewport()->mapToGlobal( pos ) );
+  m_menu->menu()->popup(m_widget->viewport()->mapToGlobal(pos));
 }
 
 
 void Smb4KNetworkBrowserPart::slotItemSelectionChanged()
 {
-  kDebug() << "Item selection changed...";
-  
   // Get the selected item.
   QList<QTreeWidgetItem *> items = m_widget->selectedItems();
 
-  if ( items.size() == 1 )
+  if (items.size() == 1)
   {
-    Smb4KNetworkBrowserItem *browser_item = static_cast<Smb4KNetworkBrowserItem *>( items.first() );
+    Smb4KNetworkBrowserItem *browser_item = static_cast<Smb4KNetworkBrowserItem *>(items.first());
 
-    if ( browser_item )
+    if (browser_item)
     {
-      switch ( browser_item->type() )
+      switch (browser_item->type())
       {
         case Host:
         {
           // Change the text of the rescan action:
-          KGuiItem rescan_item( i18n( "Scan Compute&r" ), KIcon( "view-refresh" ) );
-          static_cast<KDualAction *>( actionCollection()->action( "rescan_abort_action" ) )->setActiveGuiItem( rescan_item );
+          KGuiItem rescan_item(i18n("Scan Compute&r"), KDE::icon("view-refresh"));
+          static_cast<KDualAction *>(actionCollection()->action("rescan_abort_action"))->setActiveGuiItem(rescan_item);
 
           // Enable/disable the actions:
-          actionCollection()->action( "bookmark_action" )->setEnabled( false );
-          actionCollection()->action( "authentication_action" )->setEnabled( true );
-          actionCollection()->action( "preview_action" )->setEnabled( false );
-          actionCollection()->action( "mount_action" )->setEnabled( false );
-          static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
-          actionCollection()->action( "print_action" )->setEnabled( false );
-          actionCollection()->action( "custom_action" )->setEnabled( true );
+          actionCollection()->action("bookmark_action")->setEnabled(false);
+          actionCollection()->action("authentication_action")->setEnabled(true);
+          actionCollection()->action("preview_action")->setEnabled(false);
+          actionCollection()->action("mount_action")->setEnabled(false);
+          static_cast<KDualAction *>(actionCollection()->action("mount_action"))->setActive(true);
+          actionCollection()->action("print_action")->setEnabled(false);
+          actionCollection()->action("custom_action")->setEnabled(true);
           break;
         }
         case Share:
         {
           // Change the text of the rescan action:
-          KGuiItem rescan_item( i18n( "Scan Compute&r" ), KIcon( "view-refresh" ) );
-          static_cast<KDualAction *>( actionCollection()->action( "rescan_abort_action" ) )->setActiveGuiItem( rescan_item );
+          KGuiItem rescan_item(i18n("Scan Compute&r"), KDE::icon("view-refresh"));
+          static_cast<KDualAction *>(actionCollection()->action("rescan_abort_action"))->setActiveGuiItem(rescan_item);
 
           // Enable/disable the actions:
-          actionCollection()->action( "authentication_action" )->setEnabled( true );
+          actionCollection()->action("authentication_action")->setEnabled(true);
 
-          if ( !browser_item->shareItem()->isPrinter() )
+          if (!browser_item->shareItem()->isPrinter())
           {
-            actionCollection()->action( "bookmark_action" )->setEnabled( true );
-            actionCollection()->action( "preview_action" )->setEnabled( true );
+            actionCollection()->action("bookmark_action")->setEnabled(true);
+            actionCollection()->action("preview_action")->setEnabled(true);
 
-            if ( !browser_item->shareItem()->isMounted() || (browser_item->shareItem()->isMounted() && browser_item->shareItem()->isForeign()) )
+            if (!browser_item->shareItem()->isMounted() || (browser_item->shareItem()->isMounted() && browser_item->shareItem()->isForeign()))
             {
-              actionCollection()->action( "mount_action" )->setEnabled( true );
-              static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
+              actionCollection()->action("mount_action")->setEnabled(true);
+              static_cast<KDualAction *>(actionCollection()->action("mount_action"))->setActive(true);
             }
-            else if ( browser_item->shareItem()->isMounted() && !browser_item->shareItem()->isForeign() )
+            else if (browser_item->shareItem()->isMounted() && !browser_item->shareItem()->isForeign())
             {
-              actionCollection()->action( "mount_action" )->setEnabled( true );
-              static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( false );
+              actionCollection()->action("mount_action")->setEnabled(true);
+              static_cast<KDualAction *>(actionCollection()->action("mount_action"))->setActive(false);
             }
             else
             {
-              actionCollection()->action( "mount_action" )->setEnabled( false );
-              static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
+              actionCollection()->action("mount_action")->setEnabled(false);
+              static_cast<KDualAction *>(actionCollection()->action("mount_action"))->setActive(true);
             }
 
-            actionCollection()->action( "print_action" )->setEnabled( false );
-            actionCollection()->action( "custom_action" )->setEnabled( true );
+            actionCollection()->action("print_action")->setEnabled(false);
+            actionCollection()->action("custom_action")->setEnabled(true);
           }
           else
           {
-            actionCollection()->action( "bookmark_action" )->setEnabled( false );
-            actionCollection()->action( "preview_action" )->setEnabled( false );
-            actionCollection()->action( "mount_action" )->setEnabled( false );
-            static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
-            actionCollection()->action( "print_action" )->setEnabled( 
-              !Smb4KPrint::self()->isRunning( browser_item->shareItem() ) );
-            actionCollection()->action( "custom_action" )->setEnabled( false );
+            actionCollection()->action("bookmark_action")->setEnabled(false);
+            actionCollection()->action("preview_action")->setEnabled(false);
+            actionCollection()->action("mount_action")->setEnabled(false);
+            static_cast<KDualAction *>(actionCollection()->action("mount_action"))->setActive(true);
+            actionCollection()->action("print_action")->setEnabled(
+              !Smb4KPrint::self()->isRunning(browser_item->shareItem()));
+            actionCollection()->action("custom_action")->setEnabled(false);
           }
           break;
         }
         default:
         {
           // Change the text of the rescan action:
-          KGuiItem rescan_item( i18n( "Scan Wo&rkgroup" ), KIcon( "view-refresh" ) );
-          static_cast<KDualAction *>( actionCollection()->action( "rescan_abort_action" ) )->setActiveGuiItem( rescan_item );
-          actionCollection()->action( "bookmark_action" )->setEnabled( false );
-          actionCollection()->action( "authentication_action" )->setEnabled( false );
-          actionCollection()->action( "preview_action" )->setEnabled( false );
-          actionCollection()->action( "mount_action" )->setEnabled( false );
-          static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
-          actionCollection()->action( "print_action" )->setEnabled( false );
-          actionCollection()->action( "custom_action" )->setEnabled( false );
+          KGuiItem rescan_item(i18n("Scan Wo&rkgroup"), KDE::icon("view-refresh"));
+          static_cast<KDualAction *>(actionCollection()->action("rescan_abort_action"))->setActiveGuiItem(rescan_item);
+          actionCollection()->action("bookmark_action")->setEnabled(false);
+          actionCollection()->action("authentication_action")->setEnabled(false);
+          actionCollection()->action("preview_action")->setEnabled(false);
+          actionCollection()->action("mount_action")->setEnabled(false);
+          static_cast<KDualAction *>(actionCollection()->action("mount_action"))->setActive(true);
+          actionCollection()->action("print_action")->setEnabled(false);
+          actionCollection()->action("custom_action")->setEnabled(false);
           break;
         }
       }
@@ -533,7 +511,7 @@ void Smb4KNetworkBrowserPart::slotItemSelectionChanged()
       // Do nothing. This is managed elsewhere.
     }
   }
-  else if ( items.size() > 1 )
+  else if (items.size() > 1)
   {
     // In this case there are only shares selected, because all other items
     // are automatically deselected in extended selection mode.
@@ -543,11 +521,11 @@ void Smb4KNetworkBrowserPart::slotItemSelectionChanged()
     // it will mount the items, otherwise it will unmount them.
     int unmounted_shares = items.size();
     
-    for ( int i = 0; i < items.size(); ++i )
+    for (int i = 0; i < items.size(); ++i)
     {
-      Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( items.at( i ) );
+      Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(items.at(i));
       
-      if ( item && item->shareItem()->isMounted() )
+      if (item && item->shareItem()->isMounted())
       {
         unmounted_shares--;
       }
@@ -558,84 +536,82 @@ void Smb4KNetworkBrowserPart::slotItemSelectionChanged()
     }
     
     // Adjust the actions.
-    KGuiItem rescan_item( i18n( "Scan Netwo&rk" ), KIcon( "view-refresh" ) );
-    static_cast<KDualAction *>( actionCollection()->action( "rescan_abort_action" ) )->setActiveGuiItem( rescan_item );
-    actionCollection()->action( "rescan_abort_action" )->setEnabled( false );
-    actionCollection()->action( "bookmark_action" )->setEnabled( true );
-    actionCollection()->action( "authentication_action" )->setEnabled( false );
-    actionCollection()->action( "preview_action" )->setEnabled( true );
-    actionCollection()->action( "mount_action" )->setEnabled( true );
-    static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( (unmounted_shares == items.size()) );
-    actionCollection()->action( "print_action" )->setEnabled( false );
-    actionCollection()->action( "custom_action" )->setEnabled( false );    
+    KGuiItem rescan_item(i18n("Scan Netwo&rk"), KDE::icon("view-refresh"));
+    static_cast<KDualAction *>(actionCollection()->action("rescan_abort_action"))->setActiveGuiItem(rescan_item);
+    actionCollection()->action("rescan_abort_action")->setEnabled(false);
+    actionCollection()->action("bookmark_action")->setEnabled(true);
+    actionCollection()->action("authentication_action")->setEnabled(false);
+    actionCollection()->action("preview_action")->setEnabled(true);
+    actionCollection()->action("mount_action")->setEnabled(true);
+    static_cast<KDualAction *>(actionCollection()->action("mount_action"))->setActive((unmounted_shares == items.size()));
+    actionCollection()->action("print_action")->setEnabled(false);
+    actionCollection()->action("custom_action")->setEnabled(false);    
   }
   else
   {
-    KGuiItem rescan_item( i18n( "Scan Netwo&rk" ), KIcon( "view-refresh" ) );
-    static_cast<KDualAction *>( actionCollection()->action( "rescan_abort_action" ) )->setActiveGuiItem( rescan_item );    
-    actionCollection()->action( "bookmark_action" )->setEnabled( false );
-    actionCollection()->action( "authentication_action" )->setEnabled( false );
-    actionCollection()->action( "preview_action" )->setEnabled( false );
-    actionCollection()->action( "mount_action" )->setEnabled( false );
-    static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
-    actionCollection()->action( "print_action" )->setEnabled( false );
-    actionCollection()->action( "custom_action" )->setEnabled( false );
+    KGuiItem rescan_item(i18n("Scan Netwo&rk"), KDE::icon("view-refresh"));
+    static_cast<KDualAction *>(actionCollection()->action("rescan_abort_action"))->setActiveGuiItem(rescan_item);    
+    actionCollection()->action("bookmark_action")->setEnabled(false);
+    actionCollection()->action("authentication_action")->setEnabled(false);
+    actionCollection()->action("preview_action")->setEnabled(false);
+    actionCollection()->action("mount_action")->setEnabled(false);
+    static_cast<KDualAction *>(actionCollection()->action("mount_action"))->setActive(true);
+    actionCollection()->action("print_action")->setEnabled(false);
+    actionCollection()->action("custom_action")->setEnabled(false);
   }
-  
-  kDebug() << "Smb4KNetworkBrowserPart: Item selection changed ...";
 }
 
 
-void Smb4KNetworkBrowserPart::slotItemPressed( QTreeWidgetItem *item, int /*column*/ )
+void Smb4KNetworkBrowserPart::slotItemPressed(QTreeWidgetItem *item, int /*column*/)
 {
   // FIXME: Check if this slot is still necessary...
   
-  if ( QApplication::keyboardModifiers() == Qt::NoModifier )
+  if (QApplication::keyboardModifiers() == Qt::NoModifier)
   {
     // Enable/disable the actions.
-    Smb4KNetworkBrowserItem *browser_item = static_cast<Smb4KNetworkBrowserItem *>( item );
+    Smb4KNetworkBrowserItem *browser_item = static_cast<Smb4KNetworkBrowserItem *>(item);
     
-    if ( !browser_item && m_widget->selectedItems().size() == 0 )
+    if (!browser_item && m_widget->selectedItems().size() == 0)
     {
-      KGuiItem rescan_item( i18n( "Scan Netwo&rk" ), KIcon( "view-refresh" ) );
-      static_cast<KDualAction *>( actionCollection()->action( "rescan_abort_action" ) )->setActiveGuiItem( rescan_item );    
-      actionCollection()->action( "bookmark_action" )->setEnabled( false );
-      actionCollection()->action( "authentication_action" )->setEnabled( false );
-      actionCollection()->action( "preview_action" )->setEnabled( false );
-      actionCollection()->action( "mount_action" )->setEnabled( false );
-      static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
-      actionCollection()->action( "print_action" )->setEnabled( false );
-      actionCollection()->action( "custom_action" )->setEnabled( false );
+      KGuiItem rescan_item(i18n("Scan Netwo&rk"), KDE::icon("view-refresh"));
+      static_cast<KDualAction *>(actionCollection()->action("rescan_abort_action"))->setActiveGuiItem(rescan_item);    
+      actionCollection()->action("bookmark_action")->setEnabled(false);
+      actionCollection()->action("authentication_action")->setEnabled(false);
+      actionCollection()->action("preview_action")->setEnabled(false);
+      actionCollection()->action("mount_action")->setEnabled(false);
+      static_cast<KDualAction *>(actionCollection()->action("mount_action"))->setActive(true);
+      actionCollection()->action("print_action")->setEnabled(false);
+      actionCollection()->action("custom_action")->setEnabled(false);
     }
-    else if ( browser_item )
+    else if (browser_item)
     {
-      switch ( browser_item->type() )
+      switch (browser_item->type())
       {
         case Share:
         {
-          if ( browser_item->shareItem()->isPrinter() )
+          if (browser_item->shareItem()->isPrinter())
           {
-            actionCollection()->action( "print_action" )->setEnabled( true );
+            actionCollection()->action("print_action")->setEnabled(true);
             
-            actionCollection()->action( "mount_action" )->setEnabled( false );
-            static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
+            actionCollection()->action("mount_action")->setEnabled(false);
+            static_cast<KDualAction *>(actionCollection()->action("mount_action"))->setActive(true);
           }
           else
           {
-            if ( !browser_item->shareItem()->isMounted() || (browser_item->shareItem()->isMounted() && browser_item->shareItem()->isForeign()) )
+            if (!browser_item->shareItem()->isMounted() || (browser_item->shareItem()->isMounted() && browser_item->shareItem()->isForeign()))
             {
-              actionCollection()->action( "mount_action" )->setEnabled( true );
-              static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
+              actionCollection()->action("mount_action")->setEnabled(true);
+              static_cast<KDualAction *>(actionCollection()->action("mount_action"))->setActive(true);
             }
-            else if ( browser_item->shareItem()->isMounted() && !browser_item->shareItem()->isForeign() )
+            else if (browser_item->shareItem()->isMounted() && !browser_item->shareItem()->isForeign())
             {
-              actionCollection()->action( "mount_action" )->setEnabled( true );
-              static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( false );
+              actionCollection()->action("mount_action")->setEnabled(true);
+              static_cast<KDualAction *>(actionCollection()->action("mount_action"))->setActive(false);
             }
             else
             {
-              actionCollection()->action( "mount_action" )->setEnabled( false );
-              static_cast<KDualAction *>( actionCollection()->action( "mount_action" ) )->setActive( true );
+              actionCollection()->action("mount_action")->setEnabled(false);
+              static_cast<KDualAction *>(actionCollection()->action("mount_action"))->setActive(true);
             }
           }
 
@@ -656,26 +632,24 @@ void Smb4KNetworkBrowserPart::slotItemPressed( QTreeWidgetItem *item, int /*colu
   {
     // Do nothing
   }
-  
-  kDebug() << "Smb4KNetworkBrowserPart: Item pressed...";
 }
 
 
-void Smb4KNetworkBrowserPart::slotItemExecuted( QTreeWidgetItem *item, int /*column*/ )
+void Smb4KNetworkBrowserPart::slotItemActivated(QTreeWidgetItem *item, int /*column*/)
 {
-  if ( QApplication::keyboardModifiers() == Qt::NoModifier && m_widget->selectedItems().size() == 1 )
+  if (QApplication::keyboardModifiers() == Qt::NoModifier && m_widget->selectedItems().size() == 1)
   {
-    Smb4KNetworkBrowserItem *browserItem = static_cast<Smb4KNetworkBrowserItem *>( item );
+    Smb4KNetworkBrowserItem *browserItem = static_cast<Smb4KNetworkBrowserItem *>(item);
 
-    if ( browserItem )
+    if (browserItem)
     {
-      switch ( browserItem->type() )
+      switch (browserItem->type())
       {
         case Workgroup:
         {
-          if ( browserItem->isExpanded() )
+          if (browserItem->isExpanded())
           {
-            Smb4KScanner::self()->lookupDomainMembers( browserItem->workgroupItem(), m_widget );
+            Smb4KScanner::self()->lookupDomainMembers(browserItem->workgroupItem(), m_widget);
           }
           else
           {
@@ -685,9 +659,9 @@ void Smb4KNetworkBrowserPart::slotItemExecuted( QTreeWidgetItem *item, int /*col
         }
         case Host:
         {
-          if ( browserItem->isExpanded() )
+          if (browserItem->isExpanded())
           {
-            Smb4KScanner::self()->lookupShares( browserItem->hostItem(), m_widget );
+            Smb4KScanner::self()->lookupShares(browserItem->hostItem(), m_widget);
           }
           else
           {
@@ -697,13 +671,13 @@ void Smb4KNetworkBrowserPart::slotItemExecuted( QTreeWidgetItem *item, int /*col
         }
         case Share:
         {
-          if ( !browserItem->shareItem()->isPrinter() )
+          if (!browserItem->shareItem()->isPrinter())
           {
-            slotMountActionTriggered( false );  // boolean is ignored
+            slotMountActionTriggered(false);  // boolean is ignored
           }
           else
           {
-            slotPrint( false );  // boolean is ignored
+            slotPrint(false);  // boolean is ignored
           }
           break;
         }
@@ -725,17 +699,17 @@ void Smb4KNetworkBrowserPart::slotItemExecuted( QTreeWidgetItem *item, int /*col
 }
 
 
-void Smb4KNetworkBrowserPart::slotAboutToShowToolTip( Smb4KNetworkBrowserItem *item )
+void Smb4KNetworkBrowserPart::slotAboutToShowToolTip(Smb4KNetworkBrowserItem *item)
 {
-  if ( item )
+  if (item)
   {
-    switch ( item->type() )
+    switch (item->type())
     {
       case Host:
       {
-        if ( !item->hostItem()->hasInfo() )
+        if (!item->hostItem()->hasInfo())
         {
-          Smb4KScanner::self()->lookupInfo( item->hostItem(), m_widget );
+          Smb4KScanner::self()->lookupInfo(item->hostItem(), m_widget);
         }
         else
         {
@@ -757,16 +731,16 @@ void Smb4KNetworkBrowserPart::slotAboutToShowToolTip( Smb4KNetworkBrowserItem *i
 }
 
 
-void Smb4KNetworkBrowserPart::slotAboutToHideToolTip( Smb4KNetworkBrowserItem *item )
+void Smb4KNetworkBrowserPart::slotAboutToHideToolTip(Smb4KNetworkBrowserItem *item)
 {
-  if ( item )
+  if (item)
   {
-    switch ( item->type() )
+    switch (item->type())
     {
       case Host:
       {
         // Kill the lookup process for the additional information.
-        Smb4KScanner::self()->abort( LookupInfo, item->hostItem() );
+        Smb4KScanner::self()->abort(LookupInfo, item->hostItem());
         break;
       }
       default:
@@ -782,42 +756,42 @@ void Smb4KNetworkBrowserPart::slotAboutToHideToolTip( Smb4KNetworkBrowserItem *i
 }
 
 
-void Smb4KNetworkBrowserPart::slotWorkgroups( const QList<Smb4KWorkgroup *> &list )
+void Smb4KNetworkBrowserPart::slotWorkgroups(const QList<Smb4KWorkgroup *> &list)
 {
   // Process the list.
-  if ( !list.isEmpty() )
+  if (!list.isEmpty())
   {
     // Remove obsolete workgroup items from the tree widget.
-    for ( int i = 0; i < m_widget->topLevelItemCount(); ++i )
+    for (int i = 0; i < m_widget->topLevelItemCount(); ++i)
     {
-      Smb4KNetworkBrowserItem *workgroup_item = static_cast<Smb4KNetworkBrowserItem *>( m_widget->topLevelItem( i ) );
+      Smb4KNetworkBrowserItem *workgroup_item = static_cast<Smb4KNetworkBrowserItem *>(m_widget->topLevelItem(i));
 
-      for ( int j = 0; j < list.size(); ++j )
+      for (int j = 0; j < list.size(); ++j)
       {
         bool found_workgroup = false;
 
-        if ( QString::compare( list.at( j )->workgroupName(), workgroup_item->workgroupItem()->workgroupName() ) == 0 )
+        if (QString::compare(list.at(j)->workgroupName(), workgroup_item->workgroupItem()->workgroupName()) == 0)
         {
           // Check if the master browser is still the same.
-          if ( QString::compare( list.at( j )->masterBrowserName(), workgroup_item->workgroupItem()->masterBrowserName() ) != 0 )
+          if (QString::compare(list.at(j)->masterBrowserName(), workgroup_item->workgroupItem()->masterBrowserName()) != 0)
           {
             // We found the workgroup.
             bool found_new_master_browser = false;
 
             // Find the old and the new master browser.
-            for ( int k = 0; k < workgroup_item->childCount(); ++k )
+            for (int k = 0; k < workgroup_item->childCount(); ++k)
             {
-              Smb4KNetworkBrowserItem *host_item = static_cast<Smb4KNetworkBrowserItem *>( workgroup_item->child( k ) );
+              Smb4KNetworkBrowserItem *host_item = static_cast<Smb4KNetworkBrowserItem *>(workgroup_item->child(k));
 
-              if ( QString::compare( workgroup_item->workgroupItem()->masterBrowserName(), host_item->hostItem()->hostName() ) == 0 )
+              if (QString::compare(workgroup_item->workgroupItem()->masterBrowserName(), host_item->hostItem()->hostName()) == 0)
               {
                 // This is the old master browser. Update it.
-                Smb4KHost *host = findHost( host_item->hostItem()->hostName(), host_item->hostItem()->workgroupName() );
+                Smb4KHost *host = findHost(host_item->hostItem()->hostName(), host_item->hostItem()->workgroupName());
 
-                if ( host )
+                if (host)
                 {
                   // Update.
-                  host_item->update( host );
+                  host_item->update(host);
                 }
                 else
                 {
@@ -828,15 +802,15 @@ void Smb4KNetworkBrowserPart::slotWorkgroups( const QList<Smb4KWorkgroup *> &lis
 
                 continue;
               }
-              else if ( QString::compare( list.at( j )->masterBrowserName(), host_item->hostItem()->hostName() ) == 0 )
+              else if (QString::compare(list.at(j)->masterBrowserName(), host_item->hostItem()->hostName()) == 0)
               {
                 // This is the new master browser. Update it.
-                Smb4KHost *host = findHost( host_item->hostItem()->hostName(), host_item->hostItem()->workgroupName() );
+                Smb4KHost *host = findHost(host_item->hostItem()->hostName(), host_item->hostItem()->workgroupName());
 
-                if ( host )
+                if (host)
                 {
                   // Update.
-                  host_item->update( host );
+                  host_item->update(host);
                 }
                 else
                 {
@@ -851,11 +825,11 @@ void Smb4KNetworkBrowserPart::slotWorkgroups( const QList<Smb4KWorkgroup *> &lis
               }
             }
 
-            if ( !found_new_master_browser )
+            if (!found_new_master_browser)
             {
               // The new master browser is not in the tree widget, so we have to put it there.
-              Smb4KHost *host = findHost( workgroup_item->workgroupItem()->masterBrowserName(), workgroup_item->workgroupItem()->workgroupName() );
-              (void) new Smb4KNetworkBrowserItem( workgroup_item, host );
+              Smb4KHost *host = findHost(workgroup_item->workgroupItem()->masterBrowserName(), workgroup_item->workgroupItem()->workgroupName());
+              (void) new Smb4KNetworkBrowserItem(workgroup_item, host);
             }
             else
             {
@@ -868,7 +842,7 @@ void Smb4KNetworkBrowserPart::slotWorkgroups( const QList<Smb4KWorkgroup *> &lis
           }
 
           // Update the workgroup item.
-          workgroup_item->update( list.at( j ) );
+          workgroup_item->update(list.at(j));
 
           // We found the workgroup.
           found_workgroup = true;
@@ -881,7 +855,7 @@ void Smb4KNetworkBrowserPart::slotWorkgroups( const QList<Smb4KWorkgroup *> &lis
         }
 
         // Remove the workgroup from the tree widget if it is obsolete.
-        if ( !found_workgroup )
+        if (!found_workgroup)
         {
           delete workgroup_item;
         }
@@ -893,14 +867,14 @@ void Smb4KNetworkBrowserPart::slotWorkgroups( const QList<Smb4KWorkgroup *> &lis
     }
 
     // Put the new workgroup items into the tree widget.
-    for ( int i = 0; i < list.size(); ++i )
+    for (int i = 0; i < list.size(); ++i)
     {
-      QList<QTreeWidgetItem *> items = m_widget->findItems( list.at( i )->workgroupName(), Qt::MatchFixedString, Smb4KNetworkBrowser::Network );
+      QList<QTreeWidgetItem *> items = m_widget->findItems(list.at(i)->workgroupName(), Qt::MatchFixedString, Smb4KNetworkBrowser::Network);
 
-      if ( items.isEmpty() )
+      if (items.isEmpty())
       {
         // The workgroup is not in the tree widget. Add it.
-        (void) new Smb4KNetworkBrowserItem( m_widget, list.at( i ) );
+        (void) new Smb4KNetworkBrowserItem(m_widget, list.at(i));
         continue;
       }
       else
@@ -910,7 +884,7 @@ void Smb4KNetworkBrowserPart::slotWorkgroups( const QList<Smb4KWorkgroup *> &lis
     }
 
     // Sort the items.
-    m_widget->sortItems( Smb4KNetworkBrowser::Network, Qt::AscendingOrder );
+    m_widget->sortItems(Smb4KNetworkBrowser::Network, Qt::AscendingOrder);
   }
   else
   {
@@ -919,14 +893,14 @@ void Smb4KNetworkBrowserPart::slotWorkgroups( const QList<Smb4KWorkgroup *> &lis
     // This happened in one of the networks that I used for testing.).
     // In this case, we should have a look whether the list of
     // host is empty or not.before clearing the tree widget.
-    if ( !Smb4KSettings::scanBroadcastAreas() )
+    if (!Smb4KSettings::scanBroadcastAreas())
     {
       // Clear the tree widget.
       m_widget->clear();
     }
     else
     {
-      if ( hostsList().isEmpty() )
+      if (hostsList().isEmpty())
       {
         // Clear the tree widget.
         m_widget->clear();
@@ -940,31 +914,31 @@ void Smb4KNetworkBrowserPart::slotWorkgroups( const QList<Smb4KWorkgroup *> &lis
 }
 
 
-void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, const QList<Smb4KHost *> &list )
+void Smb4KNetworkBrowserPart::slotWorkgroupMembers(Smb4KWorkgroup *workgroup, const QList<Smb4KHost *> &list)
 {
-  if ( workgroup )
+  if (workgroup)
   {
     // Find the workgroup.
-    QList<QTreeWidgetItem *> workgroups = m_widget->findItems( workgroup->workgroupName(), Qt::MatchFixedString, Smb4KNetworkBrowser::Network );
+    QList<QTreeWidgetItem *> workgroups = m_widget->findItems(workgroup->workgroupName(), Qt::MatchFixedString, Smb4KNetworkBrowser::Network);
 
-    if ( !list.isEmpty() )
+    if (!list.isEmpty())
     {
-      QMutableListIterator<QTreeWidgetItem *> it( workgroups );
+      QMutableListIterator<QTreeWidgetItem *> it(workgroups);
       
-      while ( it.hasNext() )
+      while (it.hasNext())
       {
-        Smb4KNetworkBrowserItem *workgroup_item = static_cast<Smb4KNetworkBrowserItem *>( it.next() );
+        Smb4KNetworkBrowserItem *workgroup_item = static_cast<Smb4KNetworkBrowserItem *>(it.next());
         
         // Remove obsolete hosts from the workgroup.
-        for ( int j = 0; j < workgroup_item->childCount(); ++j )
+        for (int j = 0; j < workgroup_item->childCount(); ++j)
         {
-          Smb4KNetworkBrowserItem *host_item = static_cast<Smb4KNetworkBrowserItem *>( workgroup_item->child( j ) );
+          Smb4KNetworkBrowserItem *host_item = static_cast<Smb4KNetworkBrowserItem *>(workgroup_item->child(j));
           bool found_host = false;
 
-          for ( int k = 0; k < list.size(); ++k )
+          for (int k = 0; k < list.size(); ++k)
           {
-            if ( QString::compare( list.at( k )->workgroupName(), host_item->hostItem()->workgroupName() ) == 0 &&
-                 QString::compare( list.at( k )->hostName(), host_item->hostItem()->hostName() ) == 0 )
+            if (QString::compare(list.at(k)->workgroupName(), host_item->hostItem()->workgroupName()) == 0 &&
+                 QString::compare(list.at(k)->hostName(), host_item->hostItem()->hostName()) == 0)
             {
               found_host = true;
               break;
@@ -975,7 +949,7 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
             }
           }
 
-          if ( !found_host )
+          if (!found_host)
           {
             delete host_item;
           }
@@ -986,19 +960,19 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
         }
         
         // Add new hosts to the workgroup and update the existing ones.
-        for ( int j = 0; j < list.size(); ++j )
+        for (int j = 0; j < list.size(); ++j)
         {
-          if ( QString::compare( list.at( j )->workgroupName(), workgroup_item->workgroupItem()->workgroupName() ) == 0 )
+          if (QString::compare(list.at(j)->workgroupName(), workgroup_item->workgroupItem()->workgroupName()) == 0)
           {
             bool found_host = false;
 
-            for ( int k = 0; k < workgroup_item->childCount(); ++k )
+            for (int k = 0; k < workgroup_item->childCount(); ++k)
             {
-              Smb4KNetworkBrowserItem *host_item = static_cast<Smb4KNetworkBrowserItem *>( workgroup_item->child( k ) );
+              Smb4KNetworkBrowserItem *host_item = static_cast<Smb4KNetworkBrowserItem *>(workgroup_item->child(k));
 
-              if ( QString::compare( list.at( j )->hostName(), host_item->hostItem()->hostName() ) == 0 )
+              if (QString::compare(list.at(j)->hostName(), host_item->hostItem()->hostName()) == 0)
               {
-                host_item->update( list.at( j ) );
+                host_item->update(list.at(j));
                 found_host = true;
                 break;
               }
@@ -1008,9 +982,9 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
               }
             }
 
-            if ( !found_host )
+            if (!found_host)
             {
-              (void) new Smb4KNetworkBrowserItem( workgroup_item, list.at( j ) );
+              (void) new Smb4KNetworkBrowserItem(workgroup_item, list.at(j));
             }
             else
             {
@@ -1027,11 +1001,11 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
         
         // If the workgroup item has children, expand it if necessary. 
         // Otherwise there is no use in keeping it, so remove it.
-        if ( workgroup_item->childCount() != 0 )
+        if (workgroup_item->childCount() != 0)
         {
-          if ( Smb4KSettings::autoExpandNetworkItems() && !workgroup_item->isExpanded() )
+          if (Smb4KSettings::autoExpandNetworkItems() && !workgroup_item->isExpanded())
           {
-            m_widget->expandItem( workgroup_item );
+            m_widget->expandItem(workgroup_item);
           }
           else
           {
@@ -1044,14 +1018,14 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
         }
 
         // Sort the items.
-        m_widget->sortItems( Smb4KNetworkBrowser::Network, Qt::AscendingOrder );     
+        m_widget->sortItems(Smb4KNetworkBrowser::Network, Qt::AscendingOrder);     
       }
     }
     else
     {
       // The workgroup(s) has/have no children (anymore). Remove
       // it/them.
-      while ( !workgroups.isEmpty() )
+      while (!workgroups.isEmpty())
       {
         delete workgroups.takeFirst();
       }
@@ -1060,28 +1034,28 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
   else
   {
     // This is the list of all hosts available on the network.
-    if ( !list.isEmpty() )
+    if (!list.isEmpty())
     {
       // Loop through the network neighborhood tree. Remove the obsolete host
       // and update the still available ones.
-      QTreeWidgetItemIterator it( m_widget );
+      QTreeWidgetItemIterator it(m_widget);
       
-      while ( *it )
+      while (*it)
       {
-        Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( *it );
+        Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(*it);
         
-        switch ( item->type() )
+        switch (item->type())
         {
           case Host:
           {
             bool found = false;
             
-            for ( int i = 0; i < list.size(); ++i )
+            for (int i = 0; i < list.size(); ++i)
             {
-              if ( QString::compare( list.at( i )->workgroupName(), item->hostItem()->workgroupName(), Qt::CaseInsensitive ) == 0 &&
-                   QString::compare( list.at( i )->unc(), item->hostItem()->unc(), Qt::CaseInsensitive ) == 0 )
+              if (QString::compare(list.at(i)->workgroupName(), item->hostItem()->workgroupName(), Qt::CaseInsensitive) == 0 &&
+                   QString::compare(list.at(i)->unc(), item->hostItem()->unc(), Qt::CaseInsensitive) == 0)
               {
-                item->update( list.at( i ) );
+                item->update(list.at(i));
                 found = true;
                 break;
               }
@@ -1091,7 +1065,7 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
               }
             }
             
-            if ( !found )
+            if (!found)
             {
               delete item;
             }
@@ -1113,23 +1087,23 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
       // Now add the new hosts. For this we search the network neighborhood
       // tree and add the host if either there is no match or the found host(s)
       // belong(s) to another workgroup.
-      for ( int i = 0; i < list.size(); ++i )
+      for (int i = 0; i < list.size(); ++i)
       {
-        QList<QTreeWidgetItem *> hosts = m_widget->findItems( list.at( i )->hostName(), 
+        QList<QTreeWidgetItem *> hosts = m_widget->findItems(list.at(i)->hostName(), 
                                                               Qt::MatchFixedString|Qt::MatchRecursive, 
-                                                              Smb4KNetworkBrowser::Network );
+                                                              Smb4KNetworkBrowser::Network);
         
-        if ( !hosts.isEmpty() )
+        if (!hosts.isEmpty())
         {
           bool match = false;
           
-          for ( int j = 0; j < hosts.size(); ++j )
+          for (int j = 0; j < hosts.size(); ++j)
           {
-            Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( hosts.at( i ) );
+            Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(hosts.at(i));
             
-            if ( item->type() == Host &&
-                 QString::compare( list.at( i )->workgroupName(), item->hostItem()->workgroupName(), Qt::CaseInsensitive ) == 0 &&
-                 QString::compare( list.at( i )->unc(), item->hostItem()->unc(), Qt::CaseInsensitive ) == 0 )
+            if (item->type() == Host &&
+                 QString::compare(list.at(i)->workgroupName(), item->hostItem()->workgroupName(), Qt::CaseInsensitive) == 0 &&
+                 QString::compare(list.at(i)->unc(), item->hostItem()->unc(), Qt::CaseInsensitive) == 0)
             {
               match = true;
               break;
@@ -1140,26 +1114,26 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
             }
           }
           
-          if ( !match )
+          if (!match)
           {
             // This host is new. Add it to the list widget and create the
             // workgroup item as well if needed.
-            QList<QTreeWidgetItem *> workgroups = m_widget->findItems( list.at( i )->workgroupName(), Qt::MatchFixedString, Smb4KNetworkBrowser::Network );
+            QList<QTreeWidgetItem *> workgroups = m_widget->findItems(list.at(i)->workgroupName(), Qt::MatchFixedString, Smb4KNetworkBrowser::Network);
             
-            if ( !workgroups.isEmpty() )
+            if (!workgroups.isEmpty())
             {
-              for ( int j = 0; j < workgroups.size(); ++j )
+              for (int j = 0; j < workgroups.size(); ++j)
               {
-                Smb4KNetworkBrowserItem *workgroup_item = static_cast<Smb4KNetworkBrowserItem *>( workgroups.at( j ) );
+                Smb4KNetworkBrowserItem *workgroup_item = static_cast<Smb4KNetworkBrowserItem *>(workgroups.at(j));
 
-                if ( workgroup_item )
+                if (workgroup_item)
                 {
                   // FIXME: Do we need to change the (pseudo) master browser here?
-                  (void) new Smb4KNetworkBrowserItem( workgroup_item, list.at( i ) );
+                  (void) new Smb4KNetworkBrowserItem(workgroup_item, list.at(i));
                   
-                  if ( Smb4KSettings::autoExpandNetworkItems() && !workgroup_item->isExpanded() )
+                  if (Smb4KSettings::autoExpandNetworkItems() && !workgroup_item->isExpanded())
                   {
-                    m_widget->expandItem( workgroup_item );
+                    m_widget->expandItem(workgroup_item);
                   }
                   else
                   {
@@ -1180,25 +1154,25 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
               // in the global list. This may happen, if no master browser could be found
               // during an IP scan. So, we will create a temporary workgroup item now.
               Smb4KWorkgroup workgroup;
-              workgroup.setWorkgroupName( list.at( i )->workgroupName() );
+              workgroup.setWorkgroupName(list.at(i)->workgroupName());
 
-              if ( list.at( i )->isMasterBrowser() )
+              if (list.at(i)->isMasterBrowser())
               {
-                workgroup.setMasterBrowserName( list.at( i )->hostName() );
-                workgroup.setMasterBrowserIP( list.at( i )->ip() );
-                workgroup.setHasPseudoMasterBrowser( !list.at( i )->isMasterBrowser() );
+                workgroup.setMasterBrowserName(list.at(i)->hostName());
+                workgroup.setMasterBrowserIP(list.at(i)->ip());
+                workgroup.setHasPseudoMasterBrowser(!list.at(i)->isMasterBrowser());
               }
               else
               {
                 // Do nothing
               }
 
-              Smb4KNetworkBrowserItem *workgroup_item = new Smb4KNetworkBrowserItem( m_widget, &workgroup );
-              (void) new Smb4KNetworkBrowserItem( workgroup_item, list.at( i ) );
+              Smb4KNetworkBrowserItem *workgroup_item = new Smb4KNetworkBrowserItem(m_widget, &workgroup);
+              (void) new Smb4KNetworkBrowserItem(workgroup_item, list.at(i));
               
-              if ( Smb4KSettings::autoExpandNetworkItems() && !workgroup_item->isExpanded() )
+              if (Smb4KSettings::autoExpandNetworkItems() && !workgroup_item->isExpanded())
               {
-                m_widget->expandItem( workgroup_item );
+                m_widget->expandItem(workgroup_item);
               }
               else
               {
@@ -1216,22 +1190,22 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
         {
           // This host is new. Add it to the list widget and create the
           // workgroup item as well if needed.
-          QList<QTreeWidgetItem *> workgroups = m_widget->findItems( list.at( i )->workgroupName(), Qt::MatchFixedString, Smb4KNetworkBrowser::Network );
+          QList<QTreeWidgetItem *> workgroups = m_widget->findItems(list.at(i)->workgroupName(), Qt::MatchFixedString, Smb4KNetworkBrowser::Network);
           
-          if ( !workgroups.isEmpty() )
+          if (!workgroups.isEmpty())
           {
-            for ( int j = 0; j < workgroups.size(); ++j )
+            for (int j = 0; j < workgroups.size(); ++j)
             {
-              Smb4KNetworkBrowserItem *workgroup_item = static_cast<Smb4KNetworkBrowserItem *>( workgroups.at( j ) );
+              Smb4KNetworkBrowserItem *workgroup_item = static_cast<Smb4KNetworkBrowserItem *>(workgroups.at(j));
 
-              if ( workgroup_item )
+              if (workgroup_item)
               {
                 // FIXME: Do we need to change the (pseudo) master browser here?
-                (void) new Smb4KNetworkBrowserItem( workgroup_item, list.at( i ) );
+                (void) new Smb4KNetworkBrowserItem(workgroup_item, list.at(i));
                 
-                if ( Smb4KSettings::autoExpandNetworkItems() && !workgroup_item->isExpanded() )
+                if (Smb4KSettings::autoExpandNetworkItems() && !workgroup_item->isExpanded())
                 {
-                  m_widget->expandItem( workgroup_item );
+                  m_widget->expandItem(workgroup_item);
                 }
                 else
                 {
@@ -1252,25 +1226,25 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
             // in the global list. This may happen, if no master browser could be found
             // during an IP scan. So, we will create a temporary workgroup item now.
             Smb4KWorkgroup workgroup;
-            workgroup.setWorkgroupName( list.at( i )->workgroupName() );
+            workgroup.setWorkgroupName(list.at(i)->workgroupName());
 
-            if ( list.at( i )->isMasterBrowser() )
+            if (list.at(i)->isMasterBrowser())
             {
-              workgroup.setMasterBrowserName( list.at( i )->hostName() );
-              workgroup.setMasterBrowserIP( list.at( i )->ip() );
-              workgroup.setHasPseudoMasterBrowser( !list.at( i )->isMasterBrowser() );
+              workgroup.setMasterBrowserName(list.at(i)->hostName());
+              workgroup.setMasterBrowserIP(list.at(i)->ip());
+              workgroup.setHasPseudoMasterBrowser(!list.at(i)->isMasterBrowser());
             }
             else
             {
               // Do nothing
             }
 
-            Smb4KNetworkBrowserItem *workgroup_item = new Smb4KNetworkBrowserItem( m_widget, &workgroup );
-            (void) new Smb4KNetworkBrowserItem( workgroup_item, list.at( i ) );
+            Smb4KNetworkBrowserItem *workgroup_item = new Smb4KNetworkBrowserItem(m_widget, &workgroup);
+            (void) new Smb4KNetworkBrowserItem(workgroup_item, list.at(i));
             
-            if ( Smb4KSettings::autoExpandNetworkItems() && !workgroup_item->isExpanded() )
+            if (Smb4KSettings::autoExpandNetworkItems() && !workgroup_item->isExpanded())
             {
-              m_widget->expandItem( workgroup_item );
+              m_widget->expandItem(workgroup_item);
             }
             else
             {
@@ -1282,7 +1256,7 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
       }
       
       // Sort the items.
-      m_widget->sortItems( Smb4KNetworkBrowser::Network, Qt::AscendingOrder );
+      m_widget->sortItems(Smb4KNetworkBrowser::Network, Qt::AscendingOrder);
     }
     else
     {
@@ -1294,11 +1268,11 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers( Smb4KWorkgroup *workgroup, c
 }
 
 
-void Smb4KNetworkBrowserPart::slotShares( Smb4KHost *host, const QList<Smb4KShare *> &list )
+void Smb4KNetworkBrowserPart::slotShares(Smb4KHost *host, const QList<Smb4KShare *> &list)
 {
   if (host)
   {
-    QList<QTreeWidgetItem *> network_items = m_widget->findItems( host->hostName(), Qt::MatchFixedString|Qt::MatchRecursive, Smb4KNetworkBrowser::Network );
+    QList<QTreeWidgetItem *> network_items = m_widget->findItems(host->hostName(), Qt::MatchFixedString|Qt::MatchRecursive, Smb4KNetworkBrowser::Network);
     
     // Find the host and process it.
     for (int i = 0; i < network_items.size(); ++i)
@@ -1311,7 +1285,7 @@ void Smb4KNetworkBrowserPart::slotShares( Smb4KHost *host, const QList<Smb4KShar
         QStringList selected_items;
         
         // Delete all shares of the host.
-        while ( network_item->childCount() != 0 )
+        while (network_item->childCount() != 0)
         {
           if (network_item->child(0)->isSelected())
           {
@@ -1322,7 +1296,7 @@ void Smb4KNetworkBrowserPart::slotShares( Smb4KHost *host, const QList<Smb4KShar
           {
             // Do nothing
           }
-          delete network_item->child( 0 );
+          delete network_item->child(0);
         }
         
         // Add the newly discovered shares to the host.
@@ -1361,7 +1335,7 @@ void Smb4KNetworkBrowserPart::slotShares( Smb4KHost *host, const QList<Smb4KShar
     }
     
     // Sort the items.
-    m_widget->sortItems( Smb4KNetworkBrowser::Network, Qt::AscendingOrder );
+    m_widget->sortItems(Smb4KNetworkBrowser::Network, Qt::AscendingOrder);
   }
   else
   {
@@ -1370,24 +1344,24 @@ void Smb4KNetworkBrowserPart::slotShares( Smb4KHost *host, const QList<Smb4KShar
 }
 
 
-void Smb4KNetworkBrowserPart::slotAddIPAddress( Smb4KHost *host )
+void Smb4KNetworkBrowserPart::slotAddIPAddress(Smb4KHost *host)
 {
-  Q_ASSERT( host );
+  Q_ASSERT(host);
   
   // Find the host.
   Smb4KNetworkBrowserItem *hostItem = NULL;
-  QTreeWidgetItemIterator it( m_widget );
+  QTreeWidgetItemIterator it(m_widget);
   
-  while( *it )
+  while(*it)
   {
-    Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( *it );
+    Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(*it);
     
-    if ( item )
+    if (item)
     {
-      if ( item->type() == Host )
+      if (item->type() == Host)
       {
-        if ( QString::compare( host->unc(), item->hostItem()->unc(), Qt::CaseInsensitive ) == 0 &&
-             QString::compare( host->workgroupName(), item->hostItem()->workgroupName(), Qt::CaseInsensitive ) == 0 )
+        if (QString::compare(host->unc(), item->hostItem()->unc(), Qt::CaseInsensitive) == 0 &&
+             QString::compare(host->workgroupName(), item->hostItem()->workgroupName(), Qt::CaseInsensitive) == 0)
         {
           hostItem = item;
           break;
@@ -1410,26 +1384,26 @@ void Smb4KNetworkBrowserPart::slotAddIPAddress( Smb4KHost *host )
     ++it;
   }
   
-  if ( hostItem )
+  if (hostItem)
   {
     // Update host item
-    hostItem->update( host );
+    hostItem->update(host);
     
     // If the host is a master browser, set the IP address of the
     // workgroup item.
     Smb4KNetworkBrowserItem *workgroupItem = NULL;
     
-    if ( host->isMasterBrowser() )
+    if (host->isMasterBrowser())
     {
-      workgroupItem = static_cast<Smb4KNetworkBrowserItem *>( hostItem->parent() );
+      workgroupItem = static_cast<Smb4KNetworkBrowserItem *>(hostItem->parent());
       
-      if ( workgroupItem )
+      if (workgroupItem)
       {
-        Smb4KWorkgroup *workgroup = findWorkgroup( host->workgroupName() );
+        Smb4KWorkgroup *workgroup = findWorkgroup(host->workgroupName());
         
-        if ( workgroup )
+        if (workgroup)
         {
-          workgroupItem->update( workgroup );
+          workgroupItem->update(workgroup);
         }
         else
         {
@@ -1448,17 +1422,17 @@ void Smb4KNetworkBrowserPart::slotAddIPAddress( Smb4KHost *host )
     
     // If there are already shared resources added to the
     // host item, update their IP address entry.
-    if ( hostItem->childCount() != 0 )
+    if (hostItem->childCount() != 0)
     {
-      for ( int i = 0; i < hostItem->childCount(); ++i )
+      for (int i = 0; i < hostItem->childCount(); ++i)
       {
-        Smb4KNetworkBrowserItem *shareItem = static_cast<Smb4KNetworkBrowserItem *>( hostItem->child( i ) );
+        Smb4KNetworkBrowserItem *shareItem = static_cast<Smb4KNetworkBrowserItem *>(hostItem->child(i));
         
-        if ( shareItem )
+        if (shareItem)
         {
           // We only need to update the IP address. No need to
           // use Smb4KNetworkBrowserItem::update() here.
-          shareItem->shareItem()->setHostIP( host->ip() );
+          shareItem->shareItem()->setHostIP(host->ip());
         }
         else
         {
@@ -1468,9 +1442,9 @@ void Smb4KNetworkBrowserPart::slotAddIPAddress( Smb4KHost *host )
     }
     
     // Now adjust the IP address column, if it is not hidden.
-    if ( !m_widget->isColumnHidden( Smb4KNetworkBrowser::IP ) )
+    if (!m_widget->isColumnHidden(Smb4KNetworkBrowser::IP))
     {
-      m_widget->resizeColumnToContents( Smb4KNetworkBrowser::IP );
+      m_widget->resizeColumnToContents(Smb4KNetworkBrowser::IP);
     }
     else
     {
@@ -1484,21 +1458,21 @@ void Smb4KNetworkBrowserPart::slotAddIPAddress( Smb4KHost *host )
 }
 
 
-void Smb4KNetworkBrowserPart::slotAddInformation( Smb4KHost *host )
+void Smb4KNetworkBrowserPart::slotAddInformation(Smb4KHost *host)
 {
-  if ( host )
+  if (host)
   {
     // Find the host.
-    QList<QTreeWidgetItem *> hosts = m_widget->findItems( host->hostName(), Qt::MatchFixedString|Qt::MatchRecursive, Smb4KNetworkBrowser::Network );
+    QList<QTreeWidgetItem *> hosts = m_widget->findItems(host->hostName(), Qt::MatchFixedString|Qt::MatchRecursive, Smb4KNetworkBrowser::Network);
 
-    for ( int i = 0; i < hosts.size(); ++i )
+    for (int i = 0; i < hosts.size(); ++i)
     {
-      Smb4KNetworkBrowserItem *workgroupItem = static_cast<Smb4KNetworkBrowserItem *>( hosts.at( i )->parent() );
+      Smb4KNetworkBrowserItem *workgroupItem = static_cast<Smb4KNetworkBrowserItem *>(hosts.at(i)->parent());
 
-      if ( QString::compare( host->workgroupName(), workgroupItem->text( Smb4KNetworkBrowserItem::Network ) ) == 0 )
+      if (QString::compare(host->workgroupName(), workgroupItem->text(Smb4KNetworkBrowserItem::Network)) == 0)
       {
-        Smb4KNetworkBrowserItem *hostItem = static_cast<Smb4KNetworkBrowserItem *>( hosts.at( i ) );
-        hostItem->update( host );
+        Smb4KNetworkBrowserItem *hostItem = static_cast<Smb4KNetworkBrowserItem *>(hosts.at(i));
+        hostItem->update(host);
         break;
       }
       else
@@ -1514,17 +1488,17 @@ void Smb4KNetworkBrowserPart::slotAddInformation( Smb4KHost *host )
 }
 
 
-void Smb4KNetworkBrowserPart::slotAuthError( Smb4KHost *host, int process )
+void Smb4KNetworkBrowserPart::slotAuthError(Smb4KHost *host, int process)
 {
-  switch ( process )
+  switch (process)
   {
     case LookupDomains:
     {
       // We queried a master browser from the list of domains and
       // workgroup. So, we can clear the whole list of domains.
-      while ( m_widget->topLevelItemCount() != 0 )
+      while (m_widget->topLevelItemCount() != 0)
       {
-        delete m_widget->takeTopLevelItem( 0 );
+        delete m_widget->takeTopLevelItem(0);
       }
       break;
     }
@@ -1533,18 +1507,18 @@ void Smb4KNetworkBrowserPart::slotAuthError( Smb4KHost *host, int process )
       // Get the workgroup where the master browser is not accessible 
       // and clear the whole list of hosts. Then, reinsert the master 
       // browser.
-      if ( !m_widget->topLevelItemCount() != 0 )
+      if (!m_widget->topLevelItemCount() != 0)
       {
-        for ( int i = 0; i < m_widget->topLevelItemCount(); ++i )
+        for (int i = 0; i < m_widget->topLevelItemCount(); ++i)
         {
-          Smb4KNetworkBrowserItem *workgroup = static_cast<Smb4KNetworkBrowserItem *>( m_widget->topLevelItem( i ) );
+          Smb4KNetworkBrowserItem *workgroup = static_cast<Smb4KNetworkBrowserItem *>(m_widget->topLevelItem(i));
           
-          if ( workgroup && workgroup->type() == Workgroup &&
-               QString::compare( host->workgroupName(), workgroup->workgroupItem()->workgroupName(), Qt::CaseInsensitive ) == 0 )
+          if (workgroup && workgroup->type() == Workgroup &&
+               QString::compare(host->workgroupName(), workgroup->workgroupItem()->workgroupName(), Qt::CaseInsensitive) == 0)
           {
             QList<QTreeWidgetItem *> hosts = workgroup->takeChildren();
             
-            while ( !hosts.isEmpty() )
+            while (!hosts.isEmpty())
             {
               delete hosts.takeFirst();
             }
@@ -1565,20 +1539,20 @@ void Smb4KNetworkBrowserPart::slotAuthError( Smb4KHost *host, int process )
     case LookupShares:
     {
       // Get the host that could not be accessed.
-      QTreeWidgetItemIterator it( m_widget );
+      QTreeWidgetItemIterator it(m_widget);
       
-      while ( *it )
+      while (*it)
       {
-        Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( *it );
+        Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(*it);
         
-        if ( item && item->type() == Host )
+        if (item && item->type() == Host)
         {
-          if ( QString::compare( host->hostName(), item->hostItem()->hostName(), Qt::CaseInsensitive ) == 0 &&
-               QString::compare( host->workgroupName(), item->hostItem()->workgroupName(), Qt::CaseInsensitive ) == 0 )
+          if (QString::compare(host->hostName(), item->hostItem()->hostName(), Qt::CaseInsensitive) == 0 &&
+               QString::compare(host->workgroupName(), item->hostItem()->workgroupName(), Qt::CaseInsensitive) == 0)
           {
             QList<QTreeWidgetItem *> shares = item->takeChildren();
             
-            while ( !shares.isEmpty() )
+            while (!shares.isEmpty())
             {
               delete shares.takeFirst();
             }
@@ -1605,35 +1579,35 @@ void Smb4KNetworkBrowserPart::slotAuthError( Smb4KHost *host, int process )
 }
 
 
-void Smb4KNetworkBrowserPart::slotRescanAbortActionTriggered( bool /* checked */)
+void Smb4KNetworkBrowserPart::slotRescanAbortActionTriggered(bool /* checked */)
 {
-  KDualAction *rescan_abort_action = static_cast<KDualAction *>( actionCollection()->action( "rescan_abort_action" ) );
+  KDualAction *rescan_abort_action = static_cast<KDualAction *>(actionCollection()->action("rescan_abort_action"));
   
-  if ( rescan_abort_action )
+  if (rescan_abort_action)
   {
-    if ( rescan_abort_action->isActive() )
+    if (rescan_abort_action->isActive())
     {
       // The mouse is inside the viewport. Let's see what we have to do.
-      if ( m_widget->currentItem() && m_widget->currentItem()->isSelected() )
+      if (m_widget->currentItem() && m_widget->currentItem()->isSelected())
       {
-        Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( m_widget->currentItem() );
+        Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(m_widget->currentItem());
 
-        switch ( item->type() )
+        switch (item->type())
         {
           case Workgroup:
           {
-            Smb4KScanner::self()->lookupDomainMembers( item->workgroupItem(), m_widget );
+            Smb4KScanner::self()->lookupDomainMembers(item->workgroupItem(), m_widget);
             break;
           }
           case Host:
           {
-            Smb4KScanner::self()->lookupShares( item->hostItem(), m_widget );
+            Smb4KScanner::self()->lookupShares(item->hostItem(), m_widget);
             break;
           }
           case Share:
           {
-            Smb4KNetworkBrowserItem *parentItem = static_cast<Smb4KNetworkBrowserItem *>( item->parent() );
-            Smb4KScanner::self()->lookupShares( parentItem->hostItem(), m_widget );
+            Smb4KNetworkBrowserItem *parentItem = static_cast<Smb4KNetworkBrowserItem *>(item->parent());
+            Smb4KScanner::self()->lookupShares(parentItem->hostItem(), m_widget);
             break;
           }
           default:
@@ -1644,12 +1618,12 @@ void Smb4KNetworkBrowserPart::slotRescanAbortActionTriggered( bool /* checked */
       }
       else
       {
-        Smb4KScanner::self()->lookupDomains( m_widget );
+        Smb4KScanner::self()->lookupDomains(m_widget);
       }
     }
     else
     {
-      if ( Smb4KScanner::self()->isRunning() )
+      if (Smb4KScanner::self()->isRunning())
       {
         Smb4KScanner::self()->abortAll();
       }
@@ -1666,28 +1640,28 @@ void Smb4KNetworkBrowserPart::slotRescanAbortActionTriggered( bool /* checked */
 }
 
 
-void Smb4KNetworkBrowserPart::slotMountManually( bool /*checked*/ )
+void Smb4KNetworkBrowserPart::slotMountManually(bool /*checked*/)
 {
-  Smb4KMounter::self()->openMountDialog( m_widget );
+  Smb4KMounter::self()->openMountDialog(m_widget);
 }
 
 
-void Smb4KNetworkBrowserPart::slotAuthentication( bool /*checked*/ )
+void Smb4KNetworkBrowserPart::slotAuthentication(bool /*checked*/)
 {
-  Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( m_widget->currentItem() );
+  Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(m_widget->currentItem());
 
-  if ( item )
+  if (item)
   {
-    switch ( item->type() )
+    switch (item->type())
     {
       case Host:
       {
-        Smb4KWalletManager::self()->showPasswordDialog( item->hostItem(), m_widget );
+        Smb4KWalletManager::self()->showPasswordDialog(item->hostItem(), m_widget);
         break;
       }
       case Share:
       {
-        Smb4KWalletManager::self()->showPasswordDialog( item->shareItem(), m_widget );
+        Smb4KWalletManager::self()->showPasswordDialog(item->shareItem(), m_widget);
         break;
       }
       default:
@@ -1703,22 +1677,22 @@ void Smb4KNetworkBrowserPart::slotAuthentication( bool /*checked*/ )
 }
 
 
-void Smb4KNetworkBrowserPart::slotCustomOptions( bool /*checked*/ )
+void Smb4KNetworkBrowserPart::slotCustomOptions(bool /*checked*/)
 {
-  Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( m_widget->currentItem() );
+  Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(m_widget->currentItem());
   
-  if ( item )
+  if (item)
   {
-    switch ( item->type() )
+    switch (item->type())
     {
       case Host:
       {
-        Smb4KCustomOptionsManager::self()->openCustomOptionsDialog( item->hostItem(), m_widget );
+        Smb4KCustomOptionsManager::self()->openCustomOptionsDialog(item->hostItem(), m_widget);
         break;
       }
       case Share:
       {
-        Smb4KCustomOptionsManager::self()->openCustomOptionsDialog( item->shareItem(), m_widget );
+        Smb4KCustomOptionsManager::self()->openCustomOptionsDialog(item->shareItem(), m_widget);
         break;
       }
       default:
@@ -1734,18 +1708,18 @@ void Smb4KNetworkBrowserPart::slotCustomOptions( bool /*checked*/ )
 }
 
 
-void Smb4KNetworkBrowserPart::slotAddBookmark( bool /*checked*/ )
+void Smb4KNetworkBrowserPart::slotAddBookmark(bool /*checked*/)
 {
   QList<QTreeWidgetItem *> items = m_widget->selectedItems();
   QList<Smb4KShare *> shares;
 
-  if ( !items.isEmpty() )
+  if (!items.isEmpty())
   {
-    for ( int i = 0; i < items.size(); ++i )
+    for (int i = 0; i < items.size(); ++i)
     {
-      Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( items.at( i ) );
+      Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(items.at(i));
 
-      if ( item && item->type() == Share && !item->shareItem()->isPrinter() )
+      if (item && item->type() == Share && !item->shareItem()->isPrinter())
       {
         shares << item->shareItem();
         continue;
@@ -1762,9 +1736,9 @@ void Smb4KNetworkBrowserPart::slotAddBookmark( bool /*checked*/ )
     return;
   }
 
-  if ( !shares.isEmpty() )
+  if (!shares.isEmpty())
   {
-    Smb4KBookmarkHandler::self()->addBookmarks( shares, m_widget );
+    Smb4KBookmarkHandler::self()->addBookmarks(shares, m_widget);
   }
   else
   {
@@ -1773,19 +1747,19 @@ void Smb4KNetworkBrowserPart::slotAddBookmark( bool /*checked*/ )
 }
 
 
-void Smb4KNetworkBrowserPart::slotPreview( bool /*checked*/ )
+void Smb4KNetworkBrowserPart::slotPreview(bool /*checked*/)
 {
   QList<QTreeWidgetItem *> items = m_widget->selectedItems();
   
-  if ( !items.isEmpty() )
+  if (!items.isEmpty())
   {
-    for ( int i = 0; i < items.size(); ++i )
+    for (int i = 0; i < items.size(); ++i)
     {
-      Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( items.at( i ) );
+      Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(items.at(i));
 
-      if ( item && item->type() == Share && !item->shareItem()->isPrinter() )
+      if (item && item->type() == Share && !item->shareItem()->isPrinter())
       {
-        Smb4KPreviewer::self()->preview( item->shareItem(), m_widget );
+        Smb4KPreviewer::self()->preview(item->shareItem(), m_widget);
         continue;
       }
       else
@@ -1801,13 +1775,13 @@ void Smb4KNetworkBrowserPart::slotPreview( bool /*checked*/ )
 }
 
 
-void Smb4KNetworkBrowserPart::slotPrint( bool /*checked*/ )
+void Smb4KNetworkBrowserPart::slotPrint(bool /*checked*/)
 {
-  Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( m_widget->currentItem() );
+  Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(m_widget->currentItem());
   
-  if ( item && item->shareItem()->isPrinter() )
+  if (item && item->shareItem()->isPrinter())
   {
-    Smb4KPrint::self()->print( item->shareItem(), m_widget );
+    Smb4KPrint::self()->print(item->shareItem(), m_widget);
   }
   else
   {
@@ -1816,11 +1790,11 @@ void Smb4KNetworkBrowserPart::slotPrint( bool /*checked*/ )
 }
 
 
-void Smb4KNetworkBrowserPart::slotMountActionTriggered( bool /*checked*/ )
+void Smb4KNetworkBrowserPart::slotMountActionTriggered(bool /*checked*/)
 {
   QList<QTreeWidgetItem *> items = m_widget->selectedItems();
   
-  if ( items.size() > 1 )
+  if (items.size() > 1)
   {
     // In the case of multiple selected network items, selectedItems() 
     // only contains shares. Thus, we do not need to test for the type.
@@ -1831,15 +1805,15 @@ void Smb4KNetworkBrowserPart::slotMountActionTriggered( bool /*checked*/ )
     // we unmount all selected shares.
     QList<Smb4KShare *> unmounted, mounted;
     
-    for ( int i = 0; i < items.size(); ++i )
+    for (int i = 0; i < items.size(); ++i)
     {
-      Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( items.at( i ) );
+      Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(items.at(i));
       
-      if ( item && item->shareItem()->isMounted() )
+      if (item && item->shareItem()->isMounted())
       {
         mounted << item->shareItem();
       }
-      else if ( item && !item->shareItem()->isMounted() )
+      else if (item && !item->shareItem()->isMounted())
       {
         unmounted << item->shareItem();
       }
@@ -1849,36 +1823,36 @@ void Smb4KNetworkBrowserPart::slotMountActionTriggered( bool /*checked*/ )
       }
     }
     
-    if ( unmounted.size() > 0 )
+    if (unmounted.size() > 0)
     {
       // Mount the (remaining) unmounted shares.
-      Smb4KMounter::self()->mountShares( unmounted, m_widget );
+      Smb4KMounter::self()->mountShares(unmounted, m_widget);
     }
     else
     {
       // Unmount all shares.
-      Smb4KMounter::self()->unmountShares( mounted, m_widget );
+      Smb4KMounter::self()->unmountShares(mounted, m_widget);
     }
   }
   else
   {
     // If only one network item is selected, we need to test for the type
     // of the item. Only in case of a share we need to do something.
-    Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( m_widget->currentItem() );
+    Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(m_widget->currentItem());
 
-    if ( item )
+    if (item)
     {
-      switch ( item->type() )
+      switch (item->type())
       {
         case Share:
         {
-          if ( !item->shareItem()->isMounted() )
+          if (!item->shareItem()->isMounted())
           {
-            Smb4KMounter::self()->mountShare( item->shareItem(), m_widget );
+            Smb4KMounter::self()->mountShare(item->shareItem(), m_widget);
           }
           else
           {
-            Smb4KMounter::self()->unmountShare( item->shareItem(), false, m_widget );
+            Smb4KMounter::self()->unmountShare(item->shareItem(), false, m_widget);
           }
           break;
         }
@@ -1897,28 +1871,28 @@ void Smb4KNetworkBrowserPart::slotMountActionTriggered( bool /*checked*/ )
 
 
 
-void Smb4KNetworkBrowserPart::slotMountActionChanged( bool active )
+void Smb4KNetworkBrowserPart::slotMountActionChanged(bool active)
 {
-  if ( active )
+  if (active)
   {
-    actionCollection()->action( "mount_action" )->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_M ) );
+    actionCollection()->action("mount_action")->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_M));
   }
   else
   {
-    actionCollection()->action( "mount_action" )->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_U ) );
+    actionCollection()->action("mount_action")->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_U));
   }
 }
 
 
-void Smb4KNetworkBrowserPart::slotScannerAboutToStart( Smb4KBasicNetworkItem *item, int process )
+void Smb4KNetworkBrowserPart::slotScannerAboutToStart(Smb4KBasicNetworkItem *item, int process)
 {
-  switch ( process )
+  switch (process)
   {
     case LookupDomains:
     {
-      if ( !m_silent )
+      if (!m_silent)
       {
-        emit setStatusBarText( i18n( "Looking for workgroups and domains..." ) );
+        emit setStatusBarText(i18n("Looking for workgroups and domains..."));
       }
       else
       {
@@ -1928,10 +1902,10 @@ void Smb4KNetworkBrowserPart::slotScannerAboutToStart( Smb4KBasicNetworkItem *it
     }
     case LookupDomainMembers:
     {
-      if ( !m_silent )
+      if (!m_silent)
       {
-        Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>( item );
-        emit setStatusBarText( i18n( "Looking for hosts in domain %1...", workgroup->workgroupName() ) );
+        Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>(item);
+        emit setStatusBarText(i18n("Looking for hosts in domain %1...", workgroup->workgroupName()));
       }
       else
       {
@@ -1941,10 +1915,10 @@ void Smb4KNetworkBrowserPart::slotScannerAboutToStart( Smb4KBasicNetworkItem *it
     }
     case LookupShares:
     {
-      if ( !m_silent )
+      if (!m_silent)
       {
-        Smb4KHost *host = static_cast<Smb4KHost *>( item );
-        emit setStatusBarText( i18n( "Looking for shares provided by host %1...", host->hostName() ) );
+        Smb4KHost *host = static_cast<Smb4KHost *>(item);
+        emit setStatusBarText(i18n("Looking for shares provided by host %1...", host->hostName()));
       }
       else
       {
@@ -1954,10 +1928,10 @@ void Smb4KNetworkBrowserPart::slotScannerAboutToStart( Smb4KBasicNetworkItem *it
     }
     case LookupInfo:
     {
-      if ( !m_silent )
+      if (!m_silent)
       {
-        Smb4KHost *host = static_cast<Smb4KHost *>( item );
-        emit setStatusBarText( i18n( "Looking for more information about host %1...", host->hostName() ) );
+        Smb4KHost *host = static_cast<Smb4KHost *>(item);
+        emit setStatusBarText(i18n("Looking for more information about host %1...", host->hostName()));
       }
       else
       {
@@ -1967,9 +1941,9 @@ void Smb4KNetworkBrowserPart::slotScannerAboutToStart( Smb4KBasicNetworkItem *it
     }
     case WakeUp:
     {
-      if ( !m_silent )
+      if (!m_silent)
       {
-        emit setStatusBarText( i18n( "Waking up remote servers..." ) );
+        emit setStatusBarText(i18n("Waking up remote servers..."));
       }
       else
       {
@@ -1983,25 +1957,25 @@ void Smb4KNetworkBrowserPart::slotScannerAboutToStart( Smb4KBasicNetworkItem *it
     }
   }
 
-  KDualAction *rescan_abort_action = static_cast<KDualAction *>( actionCollection()->action( "rescan_abort_action" ) );
+  KDualAction *rescan_abort_action = static_cast<KDualAction *>(actionCollection()->action("rescan_abort_action"));
   
-  if ( rescan_abort_action )
+  if (rescan_abort_action)
   {
-    rescan_abort_action->setActive( !rescan_abort_action->isActive() );
+    rescan_abort_action->setActive(!rescan_abort_action->isActive());
     
-    if ( rescan_abort_action->isActive() )
+    if (rescan_abort_action->isActive())
     {
       QList<QKeySequence> rescan_shortcuts;
       rescan_shortcuts += QKeySequence::Refresh;
-      rescan_shortcuts += QKeySequence( Qt::CTRL+Qt::Key_R );
-      rescan_abort_action->setShortcuts( rescan_shortcuts );
+      rescan_shortcuts += QKeySequence(Qt::CTRL+Qt::Key_R);
+      rescan_abort_action->setShortcuts(rescan_shortcuts);
     }
     else
     {
       QList<QKeySequence> abort_shortcuts;
-      abort_shortcuts += QKeySequence( Qt::Key_Escape );
-      abort_shortcuts += QKeySequence( Qt::CTRL+Qt::Key_A );
-      rescan_abort_action->setShortcuts( abort_shortcuts );
+      abort_shortcuts += QKeySequence(Qt::Key_Escape);
+      abort_shortcuts += QKeySequence(Qt::CTRL+Qt::Key_A);
+      rescan_abort_action->setShortcuts(abort_shortcuts);
     }
   }
   else
@@ -2011,36 +1985,36 @@ void Smb4KNetworkBrowserPart::slotScannerAboutToStart( Smb4KBasicNetworkItem *it
 }
 
 
-void Smb4KNetworkBrowserPart::slotScannerFinished( Smb4KBasicNetworkItem */*item*/, int /*process*/ )
+void Smb4KNetworkBrowserPart::slotScannerFinished(Smb4KBasicNetworkItem */*item*/, int /*process*/)
 {
-  if ( !m_silent )
+  if (!m_silent)
   {
-    emit setStatusBarText( i18n( "Done." ) );
+    emit setStatusBarText(i18n("Done."));
   }
   else
   {
     // Do nothing
   }
 
-  KDualAction *rescan_abort_action = static_cast<KDualAction *>( actionCollection()->action( "rescan_abort_action" ) );
+  KDualAction *rescan_abort_action = static_cast<KDualAction *>(actionCollection()->action("rescan_abort_action"));
   
-  if ( rescan_abort_action )
+  if (rescan_abort_action)
   {
-    rescan_abort_action->setActive( !rescan_abort_action->isActive() );
+    rescan_abort_action->setActive(!rescan_abort_action->isActive());
     
-    if ( rescan_abort_action->isActive() )
+    if (rescan_abort_action->isActive())
     {
       QList<QKeySequence> rescan_shortcuts;
       rescan_shortcuts += QKeySequence::Refresh;
-      rescan_shortcuts += QKeySequence( Qt::CTRL+Qt::Key_R );
-      rescan_abort_action->setShortcuts( rescan_shortcuts );
+      rescan_shortcuts += QKeySequence(Qt::CTRL+Qt::Key_R);
+      rescan_abort_action->setShortcuts(rescan_shortcuts);
     }
     else
     {
       QList<QKeySequence> abort_shortcuts;
-      abort_shortcuts += QKeySequence( Qt::Key_Escape );
-      abort_shortcuts += QKeySequence( Qt::CTRL+Qt::Key_A );
-      rescan_abort_action->setShortcuts( abort_shortcuts );
+      abort_shortcuts += QKeySequence(Qt::Key_Escape);
+      abort_shortcuts += QKeySequence(Qt::CTRL+Qt::Key_A);
+      rescan_abort_action->setShortcuts(abort_shortcuts);
     }
   }
   else
@@ -2050,25 +2024,25 @@ void Smb4KNetworkBrowserPart::slotScannerFinished( Smb4KBasicNetworkItem */*item
 }
 
 
-void Smb4KNetworkBrowserPart::slotMounterAboutToStart( Smb4KShare */*share*/, int /*process*/ )
+void Smb4KNetworkBrowserPart::slotMounterAboutToStart(Smb4KShare */*share*/, int /*process*/)
 {
   // Do not change the state of the rescan action here, because it has
   // nothing to do with the mounter.
-//   actionCollection()->action( "abort_action" )->setEnabled( true );
+//   actionCollection()->action("abort_action")->setEnabled(true);
 }
 
 
-void Smb4KNetworkBrowserPart::slotMounterFinished( Smb4KShare */*share*/, int process )
+void Smb4KNetworkBrowserPart::slotMounterFinished(Smb4KShare */*share*/, int process)
 {
-  switch ( process )
+  switch (process)
   {
     case MountShare:
     {
-      KDualAction *mount_action = static_cast<KDualAction *>(actionCollection()->action( "mount_action" ));
+      KDualAction *mount_action = static_cast<KDualAction *>(actionCollection()->action("mount_action"));
       
-      if ( mount_action )
+      if (mount_action)
       {
-        mount_action->setActive( false );
+        mount_action->setActive(false);
       }
       else
       {
@@ -2078,11 +2052,11 @@ void Smb4KNetworkBrowserPart::slotMounterFinished( Smb4KShare */*share*/, int pr
     }
     case UnmountShare:
     {
-      KDualAction *mount_action = static_cast<KDualAction *>(actionCollection()->action( "mount_action" ));
+      KDualAction *mount_action = static_cast<KDualAction *>(actionCollection()->action("mount_action"));
       
-      if ( mount_action )
+      if (mount_action)
       {
-        mount_action->setActive( true );
+        mount_action->setActive(true);
       }
       else
       {
@@ -2098,19 +2072,19 @@ void Smb4KNetworkBrowserPart::slotMounterFinished( Smb4KShare */*share*/, int pr
 }
 
 
-void Smb4KNetworkBrowserPart::slotShareMounted( Smb4KShare *share )
+void Smb4KNetworkBrowserPart::slotShareMounted(Smb4KShare *share)
 {
-  QTreeWidgetItemIterator it( m_widget );
+  QTreeWidgetItemIterator it(m_widget);
   
-  while ( *it )
+  while (*it)
   {
-    Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( *it );
+    Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(*it);
     
-    if ( item->type() == Share )
+    if (item->type() == Share)
     {
-      if ( QString::compare( item->shareItem()->unc(), share->unc(), Qt::CaseInsensitive ) == 0 )
+      if (QString::compare(item->shareItem()->unc(), share->unc(), Qt::CaseInsensitive) == 0)
       {
-        item->update( share );
+        item->update(share);
         break;
       }
       else
@@ -2128,19 +2102,19 @@ void Smb4KNetworkBrowserPart::slotShareMounted( Smb4KShare *share )
 }
 
 
-void Smb4KNetworkBrowserPart::slotShareUnmounted( Smb4KShare *share )
+void Smb4KNetworkBrowserPart::slotShareUnmounted(Smb4KShare *share)
 {
-  QTreeWidgetItemIterator it( m_widget );
+  QTreeWidgetItemIterator it(m_widget);
   
-  while ( *it )
+  while (*it)
   {
-    Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>( *it );
+    Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(*it);
     
-    if ( item->type() == Share )
+    if (item->type() == Share)
     {
-      if ( QString::compare( item->shareItem()->unc(), share->unc(), Qt::CaseInsensitive ) == 0 )
+      if (QString::compare(item->shareItem()->unc(), share->unc(), Qt::CaseInsensitive) == 0)
       {
-        item->update( share );
+        item->update(share);
         break;
       }
       else
@@ -2164,14 +2138,14 @@ void Smb4KNetworkBrowserPart::slotAboutToQuit()
 }
 
 
-void Smb4KNetworkBrowserPart::slotIconSizeChanged( int group )
+void Smb4KNetworkBrowserPart::slotIconSizeChanged(int group)
 {
-  switch ( group )
+  switch (group)
   {
     case KIconLoader::Small:
     {
-      int icon_size = KIconLoader::global()->currentSize( KIconLoader::Small );
-      m_widget->setIconSize( QSize( icon_size, icon_size ) );
+      int icon_size = KIconLoader::global()->currentSize(KIconLoader::Small);
+      m_widget->setIconSize(QSize(icon_size, icon_size));
       break;
     }
     default:
@@ -2181,5 +2155,5 @@ void Smb4KNetworkBrowserPart::slotIconSizeChanged( int group )
   }
 }
 
-
+// We need this for K_PLUGIN_FACTORY to work
 #include "smb4knetworkbrowser_part.moc"

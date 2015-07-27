@@ -2,7 +2,7 @@
     smb4knetworkbrowseritem  -  Smb4K's network browser list item.
                              -------------------
     begin                : Mo Jan 8 2007
-    copyright            : (C) 2007-2012 by Alexander Reinholdt
+    copyright            : (C) 2007-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -32,45 +32,44 @@
 #include "core/smb4kglobal.h"
 
 // Qt includes
-#include <QtGui/QApplication>
 #include <QtGui/QBrush>
+#include <QtWidgets/QApplication>
 
 // KDE includes
-#include <kiconloader.h>
-#include <kdebug.h>
 
 
-Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem( QTreeWidget *parent, Smb4KWorkgroup *workgroup )
-: QTreeWidgetItem( parent, Workgroup )
+
+Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidget *parent, Smb4KWorkgroup *workgroup)
+: QTreeWidgetItem(parent, Workgroup)
 {
-  m_workgroup = new Smb4KWorkgroup( *workgroup );
-  m_host      = NULL;
-  m_share     = NULL;
+  m_workgroup = new Smb4KWorkgroup(*workgroup);
+  m_host      = 0;
+  m_share     = 0;
   m_tooltip   = new Smb4KToolTip();
-  m_tooltip->setup( Smb4KToolTip::NetworkBrowser, m_workgroup );
-  setText( Network, m_workgroup->workgroupName() );
-  setIcon( Network, m_workgroup->icon() );
+  m_tooltip->setup(Smb4KToolTip::NetworkBrowser, m_workgroup);
+  setText(Network, m_workgroup->workgroupName());
+  setIcon(Network, m_workgroup->icon());
 }
 
 
-Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem( QTreeWidgetItem *parent, Smb4KHost *host )
-: QTreeWidgetItem( parent, Host )
+Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidgetItem *parent, Smb4KHost *host)
+: QTreeWidgetItem(parent, Host)
 {
-  m_workgroup = NULL;
-  m_host      = new Smb4KHost( *host );
-  m_share     = NULL;
+  m_workgroup = 0;
+  m_host      = new Smb4KHost(*host);
+  m_share     = 0;
   m_tooltip   = new Smb4KToolTip();
-  m_tooltip->setup( Smb4KToolTip::NetworkBrowser, m_host );
-  setText( Network, m_host->hostName() );
-  setText( IP, m_host->ip() );
-  setText( Comment, m_host->comment() );
+  m_tooltip->setup(Smb4KToolTip::NetworkBrowser, m_host);
+  setText(Network, m_host->hostName());
+  setText(IP, m_host->ip());
+  setText(Comment, m_host->comment());
 
-  if ( m_host->isMasterBrowser() )
+  if (m_host->isMasterBrowser())
   {
-    for ( int i = 0; i < columnCount(); ++i )
+    for (int i = 0; i < columnCount(); ++i)
     {
-      QBrush brush( Qt::darkBlue );
-      setForeground( i, brush );
+      QBrush brush(Qt::darkBlue);
+      setForeground(i, brush);
     }
   }
   else
@@ -78,29 +77,29 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem( QTreeWidgetItem *parent, Smb4K
     // Do nothing
   }
 
-  setIcon( Network, m_host->icon() );
+  setIcon(Network, m_host->icon());
 }
 
 
-Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem( QTreeWidgetItem *parent, Smb4KShare *share )
-: QTreeWidgetItem( parent, Share )
+Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidgetItem *parent, Smb4KShare *share)
+: QTreeWidgetItem(parent, Share)
 {
-  m_workgroup = NULL;
-  m_host      = NULL;
-  m_share     = new Smb4KShare( *share );
+  m_workgroup = 0;
+  m_host      = 0;
+  m_share     = new Smb4KShare(*share);
   m_tooltip   = new Smb4KToolTip();
-  m_tooltip->setup( Smb4KToolTip::NetworkBrowser, m_share );
-  setText( Network, m_share->shareName() );
-  setText( Type, m_share->translatedTypeString() );
-  setText( Comment, m_share->comment() );
+  m_tooltip->setup(Smb4KToolTip::NetworkBrowser, m_share);
+  setText(Network, m_share->shareName());
+  setText(Type, m_share->translatedTypeString());
+  setText(Comment, m_share->comment());
 
-  if ( !m_share->isPrinter() && m_share->isMounted() )
+  if (!m_share->isPrinter() && m_share->isMounted())
   {
-    for ( int i = 0; i < columnCount(); ++i )
+    for (int i = 0; i < columnCount(); ++i)
     {
-      QFont f = font( i );
-      f.setItalic( true );
-      setFont( i, f );
+      QFont f = font(i);
+      f.setItalic(true);
+      setFont(i, f);
     }
   }
   else
@@ -108,7 +107,7 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem( QTreeWidgetItem *parent, Smb4K
     // Do nothing
   }
   
-  setIcon( Network, m_share->icon() );
+  setIcon(Network, m_share->icon());
 }
 
 
@@ -141,7 +140,7 @@ Smb4KShare *Smb4KNetworkBrowserItem::shareItem()
 
 Smb4KBasicNetworkItem* Smb4KNetworkBrowserItem::networkItem()
 {
-  switch ( type() )
+  switch (type())
   {
     case Workgroup:
     {
@@ -165,15 +164,15 @@ Smb4KBasicNetworkItem* Smb4KNetworkBrowserItem::networkItem()
 }
 
 
-void Smb4KNetworkBrowserItem::update( Smb4KBasicNetworkItem *item )
+void Smb4KNetworkBrowserItem::update(Smb4KBasicNetworkItem *item)
 {
-  if ( item )
+  if (item)
   {
-    switch ( item->type() )
+    switch (item->type())
     {
       case Workgroup:
       {
-        if ( type() != Workgroup )
+        if (type() != Workgroup)
         {
           return;
         }
@@ -183,15 +182,15 @@ void Smb4KNetworkBrowserItem::update( Smb4KBasicNetworkItem *item )
         }
         
         delete m_workgroup;
-        m_workgroup = new Smb4KWorkgroup( *(static_cast<Smb4KWorkgroup *>( item )) );
+        m_workgroup = new Smb4KWorkgroup(*(static_cast<Smb4KWorkgroup *>(item)));
         
-        m_tooltip->update( Smb4KToolTip::NetworkBrowser, m_workgroup );
+        m_tooltip->update(Smb4KToolTip::NetworkBrowser, m_workgroup);
         
         break;
       }
       case Host:
       {
-        if ( type() != Host )
+        if (type() != Host)
         {
           return;
         }
@@ -201,38 +200,38 @@ void Smb4KNetworkBrowserItem::update( Smb4KBasicNetworkItem *item )
         }
         
         delete m_host;
-        m_host = new Smb4KHost( *(static_cast<Smb4KHost *>( item )) );
+        m_host = new Smb4KHost(*(static_cast<Smb4KHost *>(item)));
         
-        m_tooltip->update( Smb4KToolTip::NetworkBrowser, m_host );
+        m_tooltip->update(Smb4KToolTip::NetworkBrowser, m_host);
         
         // Adjust the item's color.
-        if ( m_host->isMasterBrowser() )
+        if (m_host->isMasterBrowser())
         {
-          for ( int i = 0; i < columnCount(); ++i )
+          for (int i = 0; i < columnCount(); ++i)
           {
-            QBrush brush( Qt::darkBlue );
-            setForeground( i, brush );
+            QBrush brush(Qt::darkBlue);
+            setForeground(i, brush);
           }
         }
         else
         {
-          for ( int i = 0; i < columnCount(); ++i )
+          for (int i = 0; i < columnCount(); ++i)
           {
             QBrush brush = QApplication::palette().text();
-            setForeground( i, brush );
+            setForeground(i, brush);
           }          
         }
         
         // Set the IP address
-        setText( IP, m_host->ip() );
+        setText(IP, m_host->ip());
 
         // Set the comment 
-        setText( Comment, m_host->comment() );
+        setText(Comment, m_host->comment());
         break;
       }
       case Share:
       {
-        if ( type() != Share )
+        if (type() != Share)
         {
           return;
         }
@@ -242,22 +241,22 @@ void Smb4KNetworkBrowserItem::update( Smb4KBasicNetworkItem *item )
         }
         
         delete m_share;
-        m_share = new Smb4KShare( *(static_cast<Smb4KShare *>( item )) );
+        m_share = new Smb4KShare(*(static_cast<Smb4KShare *>(item)));
         
-        m_tooltip->update( Smb4KToolTip::NetworkBrowser, m_share );
+        m_tooltip->update(Smb4KToolTip::NetworkBrowser, m_share);
 
         // Set the comment.
-        setText( Comment, m_share->comment() );
+        setText(Comment, m_share->comment());
     
         // Set the icon
-        setIcon( Network, m_share->icon() );
+        setIcon(Network, m_share->icon());
             
         // Set the font
-        for ( int i = 0; i < columnCount(); ++i )
+        for (int i = 0; i < columnCount(); ++i)
         {
-          QFont f = font( i );
-          f.setItalic( m_share->isMounted() );
-          setFont( i, f );
+          QFont f = font(i);
+          f.setItalic(m_share->isMounted());
+          setFont(i, f);
         }
         
         break;

@@ -3,7 +3,7 @@
     browser of Smb4K.
                              -------------------
     begin                : Fr Jan 5 2007
-    copyright            : (C) 2007-2014 by Alexander Reinholdt
+    copyright            : (C) 2007-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -29,13 +29,13 @@
 
 // Qt includes
 #include <QtCore/QList>
-#include <QtGui/QAction>
-#include <QtGui/QTreeWidgetItem>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QTreeWidgetItem>
 
 // KDE includes
-#include <kparts/part.h>
-#include <kparts/genericfactory.h>
-#include <kactionmenu.h>
+#include <KParts/Part>
+#include <KCoreAddons/KAboutData>
+#include <KWidgetsAddons/KActionMenu>
 
 // forward declarations
 class Smb4KNetworkBrowser;
@@ -68,9 +68,9 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *                            bookmark_shortcut="true"|"false"
      *                            silent="true"|"false"
      */
-    explicit Smb4KNetworkBrowserPart( QWidget *parentWidget = 0,
-                                      QObject *parent = 0,
-                                      const QList<QVariant> &args = QList<QVariant>() );
+    explicit Smb4KNetworkBrowserPart(QWidget *parentWidget = 0,
+                                     QObject *parent = 0,
+                                     const QList<QVariant> &args = QList<QVariant>());
 
     /**
      * The destructor.
@@ -88,7 +88,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
     /**
      * Reimplemented from KParts::Part.
      */
-    void customEvent( QEvent *e );
+    void customEvent(QEvent *e);
 
   protected slots:
     /**
@@ -97,7 +97,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param pos                 The position where user clicked.
      */
-    void slotContextMenuRequested( const QPoint &pos );
+    void slotContextMenuRequested(const QPoint &pos);
 
     /**
      * Is called when the selection changed. This slot takes care of the
@@ -119,19 +119,15 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      * @param column              The column where the user pressed the mouse
      *                            button.
      */
-    void slotItemPressed( QTreeWidgetItem *item,
-                          int column );
+    void slotItemPressed(QTreeWidgetItem *item, int column);
 
     /**
-     * This slot is invoked when the user executed an item. It is used to mount
+     * This slot is invoked when the user activated an item. It is used to mount
      * shares.
-     *
      * @param item                The item that was executed.
-     *
      * @param column              The column where the item was executed.
      */
-    void slotItemExecuted( QTreeWidgetItem *item,
-                           int column );
+    void slotItemActivated(QTreeWidgetItem *item, int column);
 
     /**
      * This slot is called when the user moved the mouse over an @p item in the
@@ -142,7 +138,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      * @param item                The item for which the additional info is to
      *                            be retrieved
      */
-    void slotAboutToShowToolTip( Smb4KNetworkBrowserItem *item );
+    void slotAboutToShowToolTip(Smb4KNetworkBrowserItem *item);
 
     /**
      * This slot is called when the tool tip is about to be closed. It stops the
@@ -151,7 +147,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      * @param item                The item for which the additional info was to
      *                            be retrieved
      */
-    void slotAboutToHideToolTip( Smb4KNetworkBrowserItem *item );
+    void slotAboutToHideToolTip(Smb4KNetworkBrowserItem *item);
 
     /**
      * This slot receives the workgroups/domains found by the scanner. It takes
@@ -161,7 +157,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param list                A list of Smb4KWorkgroup item objects
      */
-    void slotWorkgroups( const QList<Smb4KWorkgroup *> &list );
+    void slotWorkgroups(const QList<Smb4KWorkgroup *> &list);
 
     /**
      * This slot receives the list of workgroup/domain members that were found
@@ -170,8 +166,8 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param list                A list of Smb4KHostItem objects
      */
-    void slotWorkgroupMembers( Smb4KWorkgroup *workgroup,
-                               const QList<Smb4KHost *> &list );
+    void slotWorkgroupMembers(Smb4KWorkgroup *workgroup,
+                               const QList<Smb4KHost *> &list);
 
     /**
      * This slot receives the list of shared resources a host provides. It takes
@@ -182,8 +178,8 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param list                The list of shares that belong to @p host
      */
-    void slotShares( Smb4KHost *host,
-                     const QList<Smb4KShare *> &list );
+    void slotShares(Smb4KHost *host,
+                     const QList<Smb4KShare *> &list);
 
     /**
      * This slot takes a Smb4KHostItem object @p item, reads the IP address entry
@@ -191,7 +187,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param host                A Smb4KHost item with an updated IP address.
      */
-    void slotAddIPAddress( Smb4KHost *host );
+    void slotAddIPAddress(Smb4KHost *host);
 
     /**
      * This slot adds additional information to a browser item. It takes an
@@ -200,7 +196,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param host                A Smb4KHost item with updated contents.
      */
-    void slotAddInformation( Smb4KHost *host );
+    void slotAddInformation(Smb4KHost *host);
     
     /**
      * This slot is called when an authentication error occurred. Depending on
@@ -211,14 +207,14 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      * @param process             The process (action) that was running while the
      *                            authentication error occurred
      */
-    void slotAuthError( Smb4KHost *host, int process );
+    void slotAuthError(Smb4KHost *host, int process);
 
     /**
      * Rescan the network or abort a network scan.
      *
      * @param checked             Is TRUE if the action is checked (not used here).
      */
-    void slotRescanAbortActionTriggered( bool checked );
+    void slotRescanAbortActionTriggered(bool checked);
 
     /**
      * Manually mount a share. This slot is connected to the 'Mount Manually'
@@ -226,7 +222,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param checked             Is TRUE if the action is checked (not used here).
      */
-    void slotMountManually( bool mount );
+    void slotMountManually(bool mount);
 
     /**
      * Provide authentication for the current network object. This slot is
@@ -234,7 +230,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param checked             Is TRUE if the action is checked (not used here).
      */
-    void slotAuthentication( bool checked );
+    void slotAuthentication(bool checked);
 
     /**
      * Provide custom options for a server or share. This slot is connected
@@ -242,7 +238,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param checked             Is TRUE if the action is checked (not used here).
      */
-    void slotCustomOptions( bool checked );
+    void slotCustomOptions(bool checked);
 
     /**
      * Bookmark a remote share. This slot is connected to the 'Add Bookmark'
@@ -250,14 +246,14 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param checked             Is TRUE if the action is checked (not used here).
      */
-    void slotAddBookmark( bool checked );
+    void slotAddBookmark(bool checked);
 
     /**
      * Preview a share. This slot is connected to the 'Preview' action.
      *
      * @param checked             Is TRUE if the action is checked (not used here).
      */
-    void slotPreview( bool checked );
+    void slotPreview(bool checked);
 
     /**
      * Print a document on a remote printer. This slot is connected to the
@@ -265,21 +261,21 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param checked             Is TRUE if the action is checked (not used here).
      */
-    void slotPrint( bool checked );
+    void slotPrint(bool checked);
 
     /**
      * Mount or unmount a share. This slot is connected to the 'Mount'/'Unmount' dual action.
      *
      * @param checked             Is TRUE if the action is checked (not used here).
      */
-    void slotMountActionTriggered( bool checked );
+    void slotMountActionTriggered(bool checked);
 
     /**
      * Change the state of the 'Mount'/'Unmount' dual action.
      *
      * @param active              TRUE if the action is in the active state.
      */
-    void slotMountActionChanged( bool active );
+    void slotMountActionChanged(bool active);
 
     /**
      * This slot is connected to the Smb4KScanner::aboutToStart() signal.
@@ -288,8 +284,8 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param process             The process
      */
-    void slotScannerAboutToStart( Smb4KBasicNetworkItem *item,
-                                  int process );
+    void slotScannerAboutToStart(Smb4KBasicNetworkItem *item,
+                                  int process);
 
     /**
      * This slot is connected to the Smb4KScanner::finished() signal.
@@ -298,8 +294,8 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param process             The process
      */
-    void slotScannerFinished( Smb4KBasicNetworkItem *item,
-                              int process );
+    void slotScannerFinished(Smb4KBasicNetworkItem *item,
+                              int process);
 
     /**
      * This slot is connected to the Smb4KMounter::aboutToStart() signal.
@@ -308,7 +304,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param process             The process
      */
-    void slotMounterAboutToStart( Smb4KShare *share,
+    void slotMounterAboutToStart(Smb4KShare *share,
                                   int process);
 
     /**
@@ -318,8 +314,8 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param process             The process
      */
-    void slotMounterFinished( Smb4KShare *share,
-                              int process );
+    void slotMounterFinished(Smb4KShare *share,
+                              int process);
 
     /**
      * This slot is called whenever a share has been mounted. It marks the
@@ -327,7 +323,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param share               The Smb4KShare object
      */
-    void slotShareMounted( Smb4KShare *share );
+    void slotShareMounted(Smb4KShare *share);
 
     /**
      * This slot is called whenever a share has been unmounted. It marks the
@@ -335,7 +331,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param share               The Smb4KShare object
      */
-    void slotShareUnmounted( Smb4KShare *share );
+    void slotShareUnmounted(Smb4KShare *share);
 
     /**
      * This slot is invoked shortly before the application quits. It is used
@@ -348,7 +344,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param group               The icon group
      */
-    void slotIconSizeChanged( int group );
+    void slotIconSizeChanged(int group);
 
   private:
     /**
@@ -385,11 +381,6 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      * Emit status messages
      */
     bool m_silent;
-
-    /**
-     * The menu title
-     */
-    QAction *m_menu_title;
 };
 
 #endif
