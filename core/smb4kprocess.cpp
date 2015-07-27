@@ -2,7 +2,7 @@
     smb4kprocess  -  This class executes shell processes.
                              -------------------
     begin                : Mi Mär 4 2009
-    copyright            : (C) 2009-2011 by Alexander Reinholdt
+    copyright            : (C) 2009-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,7 +28,7 @@
 #endif
 
 // application specific includes
-#include <smb4kprocess.h>
+#include "smb4kprocess.h"
 
 
 class Smb4KProcessPrivate
@@ -38,8 +38,8 @@ class Smb4KProcessPrivate
 };
 
 
-Smb4KProcess::Smb4KProcess( QObject *parent )
-: KProcess( parent ), d( new Smb4KProcessPrivate )
+Smb4KProcess::Smb4KProcess(QObject *parent)
+: KProcess(parent), d(new Smb4KProcessPrivate)
 {
   d->aborted = false;
 
@@ -58,7 +58,7 @@ void Smb4KProcess::abort()
 {
   d->aborted = true;
   kill();
-  waitForFinished( -1 );
+  waitForFinished(-1);
 }
 
 
@@ -67,4 +67,3 @@ bool Smb4KProcess::isAborted() const
   return d->aborted;
 }
 
-#include "smb4kprocess.moc"

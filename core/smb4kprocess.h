@@ -2,7 +2,7 @@
     smb4kprocess  -  This class executes shell processes.
                              -------------------
     begin                : Mi Mär 4 2009
-    copyright            : (C) 2009-2012 by Alexander Reinholdt
+    copyright            : (C) 2009-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,7 +30,7 @@
 #include <QtCore/QScopedPointer>
 
 // KDE includes
-#include <kprocess.h>
+#include <KCoreAddons/KProcess>
 
 // forward declarations
 class Smb4KProcessPrivate;
@@ -54,7 +54,7 @@ class Smb4KProcess : public KProcess
      *
      * @param parent        The parent object
      */
-    explicit Smb4KProcess( QObject *parent = 0 );
+    explicit Smb4KProcess(QObject *parent = 0);
 
     /**
      * The destructor
