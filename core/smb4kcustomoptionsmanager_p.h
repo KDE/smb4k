@@ -33,15 +33,16 @@
 
 // Qt includes
 #include <QtCore/QList>
-#include <QtGui/QCheckBox>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QSpinBox>
+#include <QtWidgets/QPushButton>
 
 // KDE includes
-#include <kdialog.h>
-#include <klineedit.h>
-#include <knuminput.h>
-#include <kcombobox.h>
+#include <KCompletion/KLineEdit>
+#include <KCompletion/KComboBox>
 
-class Smb4KCustomOptionsDialog : public KDialog
+class Smb4KCustomOptionsDialog : public QDialog
 {
   Q_OBJECT
   
@@ -49,8 +50,8 @@ class Smb4KCustomOptionsDialog : public KDialog
     /**
      * Constructor
      */
-    explicit Smb4KCustomOptionsDialog( Smb4KCustomOptions *options,
-                                       QWidget *parent = 0 );
+    explicit Smb4KCustomOptionsDialog(Smb4KCustomOptions *options,
+                                       QWidget *parent = 0);
     
     /**
      * Destructor
@@ -61,21 +62,22 @@ class Smb4KCustomOptionsDialog : public KDialog
     void slotSetDefaultValues();
     void slotCheckValues();
     void slotOKClicked();
-    void slotEnableWOLFeatures( const QString &mac );
+    void slotEnableWOLFeatures(const QString &mac);
     
   private:
     void setupView();
     bool checkDefaultValues();
     void setDefaultValues();
     void saveValues();
+    QPushButton *m_restore_button;
+    QPushButton *m_ok_button;
+    QPushButton *m_cancel_button;
     Smb4KCustomOptions *m_options;
     QCheckBox *m_remount;
-    KIntNumInput *m_smb_port;
+    QSpinBox *m_smb_port;
 #if defined(Q_OS_LINUX)
-    KIntNumInput *m_fs_port;
+    QSpinBox *m_fs_port;
     KComboBox *m_security_mode;
-#endif
-#if defined(Q_OS_LINUX) || defined(Q_OS_SOLARIS)
     KComboBox *m_write_access;
 #endif
     KComboBox *m_protocol_hint;
