@@ -3,7 +3,7 @@
     encapsulates a profile item/name. It is for use with QtQuick.
                              -------------------
     begin                : So 23 Nov 2014
-    copyright            : (C) 2014 by Alexander Reinholdt
+    copyright            : (C) 2014-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -32,9 +32,6 @@
 #include <QtCore/QString>
 #include <QtCore/QScopedPointer>
 
-// KDE includes
-#include <kdemacros.h>
-
 // forward declarations
 class Smb4KProfileObjectPrivate;
 
@@ -46,7 +43,7 @@ class Smb4KProfileObjectPrivate;
  * @since 1.2.0
  */ 
 
-class KDE_EXPORT Smb4KProfileObject : public QObject
+class Q_DECL_EXPORT Smb4KProfileObject : public QObject
 {
   Q_OBJECT
   Q_PROPERTY(QString profileName READ profileName WRITE setProfileName NOTIFY changed)

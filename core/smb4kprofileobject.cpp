@@ -3,7 +3,7 @@
     encapsulates a profile item/name. It is for use with QtQuick.
                              -------------------
     begin                : So 23 Nov 2014
-    copyright            : (C) 2014 by Alexander Reinholdt
+    copyright            : (C) 2014-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -78,4 +78,3 @@ void Smb4KProfileObject::setActiveProfile(bool active)
   emit changed();
 }
 
-#include "smb4kprofileobject.moc"
