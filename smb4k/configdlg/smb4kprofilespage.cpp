@@ -2,7 +2,7 @@
     smb4kprofilespage  -  The configuration page for the profiles
                              -------------------
     begin                : Do Aug 07 2014
-    copyright            : (C) 2014 by Alexander Reinholdt
+    copyright            : (C) 2014-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -33,14 +33,13 @@
 #include "core/smb4kprofilemanager.h"
 
 // Qt includes
-#include <QtGui/QCheckBox>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QGroupBox>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QGroupBox>
 
 // KDE includes
-#include <keditlistwidget.h>
-#include <klocale.h>
-#include <klineedit.h>
+#include <KI18n/KLocalizedString>
+#include <KCompletion/KLineEdit>
 
 
 Smb4KProfilesPage::Smb4KProfilesPage(QWidget* parent)
@@ -228,5 +227,3 @@ void Smb4KProfilesPage::slotProfileChanged()
   }
 }
 
-
-#include "smb4kprofilespage.moc"

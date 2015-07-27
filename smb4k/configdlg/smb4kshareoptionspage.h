@@ -3,7 +3,7 @@
     Smb4K regarding share management
                              -------------------
     begin                : Sa Nov 15 2003
-    copyright            : (C) 2003-2014 by Alexander Reinholdt
+    copyright            : (C) 2003-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,7 +28,7 @@
 #define SMB4KSHAREOPTIONSPAGE_H
 
 // Qt includes
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 /**
  * This is the configuration tab for the settings that are
@@ -47,7 +47,7 @@ class Smb4KShareOptionsPage : public QWidget
      *
      * @param parent          The parent of this widget
      */
-    explicit Smb4KShareOptionsPage( QWidget *parent = 0 );
+    explicit Smb4KShareOptionsPage(QWidget *parent = 0);
 
     /**
      * The destructor.

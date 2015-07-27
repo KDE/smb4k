@@ -2,7 +2,7 @@
     smb4kprofilespage  -  The configuration page for the profiles
                              -------------------
     begin                : Do Aug 07 2014
-    copyright            : (C) 2014 by Alexander Reinholdt
+    copyright            : (C) 2014-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -27,12 +27,12 @@
 #define SMB4KPROFILESPAGE_H
 
 // Qt includes
-#include <QWidget>
-#include <QList>
-#include <QPair>
+#include <QtCore/QList>
+#include <QtCore/QPair>
+#include <QtWidgets/QWidget>
 
 // KDE includes
-#include <keditlistwidget.h>
+#include <KWidgetsAddons/KEditListWidget>
 
 
 class Smb4KProfilesPage : public QWidget

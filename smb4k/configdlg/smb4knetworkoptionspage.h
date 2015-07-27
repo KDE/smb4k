@@ -3,7 +3,7 @@
     settings of Smb4K
                              -------------------
     begin                : Sa Nov 15 2003
-    copyright            : (C) 2003-2014 by Alexander Reinholdt
+    copyright            : (C) 2003-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -27,8 +27,8 @@
 #ifndef SMB4KNETWORKOPTIONSPAGE_H
 #define SMB4KNETWORKOPTIONSPAGE_H
 
-// KDE includes
-#include <ktabwidget.h>
+// Qt includes
+#include <QtWidgets/QTabWidget>
 
 /**
  * This is the configuration tab for the network settings
@@ -37,7 +37,7 @@
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class Smb4KNetworkOptionsPage : public KTabWidget
+class Smb4KNetworkOptionsPage : public QTabWidget
 {
   Q_OBJECT
 
@@ -47,7 +47,7 @@ class Smb4KNetworkOptionsPage : public KTabWidget
      *
      * @param parent        The parent widget
      */
-    explicit Smb4KNetworkOptionsPage( QWidget *parent = 0 );
+    explicit Smb4KNetworkOptionsPage(QWidget *parent = 0);
 
     /**
      * The destructor

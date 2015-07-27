@@ -35,26 +35,24 @@
 #include "core/smb4kmountsettings_linux.h"
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
 #include "core/smb4kmountsettings_freebsd.h"
-#elif defined(Q_OS_SOLARIS)
-#include "core/smb4kmountsettings_solaris.h"
 #endif
 
 // Qt includes
-#include <QVBoxLayout>
-#include <QGroupBox>
-#include <QLabel>
-#include <QToolButton>
-#include <QMenu>
-#include <QCheckBox>
-#include <QInputDialog>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QGroupBox>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QInputDialog>
+#include <QtWidgets/QSpinBox>
 
 // KDE includes
-#include <KLocale>
-#include <KLineEdit>
-#include <KIcon>
-#include <KComboBox>
-#include <KIntNumInput>
-#include <KMessageBox>
+#include <KI18n/KLocalizedString>
+#include <KCompletion/KLineEdit>
+#include <KCompletion/KComboBox>
+#include <KIconThemes/KIconLoader>
+#include <KWidgetsAddons/KMessageBox>
 
 using namespace Smb4KGlobal;
 
@@ -100,7 +98,7 @@ void Smb4KMountOptionsPage::setupWidget()
   user_id->setReadOnly(true);
 
   QToolButton *user_chooser = new QToolButton(user_widget);
-  user_chooser->setIcon(KIcon("edit-find-user"));
+  user_chooser->setIcon(KDE::icon("edit-find-user"));
   user_chooser->setToolTip(i18n("Choose a different user"));
   user_chooser->setPopupMode(QToolButton::InstantPopup);
 
@@ -114,8 +112,8 @@ void Smb4KMountOptionsPage::setupWidget()
 
   for (int i = 0; i < user_list.size(); ++i)
   {
-    users.insert(QString("%1 (%2)").arg(user_list.at(i).loginName()).arg(user_list.at(i).uid()),
-                 QString("%1").arg(user_list.at(i).uid()));
+    users.insert(QString("%1 (%2)").arg(user_list.at(i).loginName()).arg(user_list.at(i).userId().nativeId()),
+                 QString("%1").arg(user_list.at(i).userId().nativeId()));
   }
 
   QMap<QString,QString>::const_iterator u_it = users.constBegin();
@@ -144,7 +142,7 @@ void Smb4KMountOptionsPage::setupWidget()
   group_id->setReadOnly(true);
   
   QToolButton *group_chooser = new QToolButton(group_widget);
-  group_chooser->setIcon(KIcon("edit-find-user"));
+  group_chooser->setIcon(KDE::icon("edit-find-user"));
   group_chooser->setToolTip(i18n("Choose a different group"));
   group_chooser->setPopupMode(QToolButton::InstantPopup);
 
@@ -158,8 +156,8 @@ void Smb4KMountOptionsPage::setupWidget()
 
   for (int i = 0; i < group_list.size(); ++i)
   {
-    groups.insert(QString("%1 (%2)").arg(group_list.at(i).name()).arg(group_list.at(i).gid()),
-                  QString("%1").arg(group_list.at(i).gid()));
+    groups.insert(QString("%1 (%2)").arg(group_list.at(i).name()).arg(group_list.at(i).groupId().nativeId()),
+                  QString("%1").arg(group_list.at(i).groupId().nativeId()));
   }
 
   QMap<QString,QString>::const_iterator g_it = groups.constBegin();
@@ -251,13 +249,13 @@ void Smb4KMountOptionsPage::setupWidget()
                       Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::euc_kr).label);
   charset->insertItem(Smb4KMountSettings::EnumClientCharset::tis_620,
                       Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::tis_620).label);
-  charset_label->setBuddy( charset );
+  charset_label->setBuddy(charset);
   
   QLabel *remote_fs_port_label = new QLabel(Smb4KMountSettings::self()->remoteFileSystemPortItem()->label(), common_options);
 
-  KIntNumInput *remote_fs_port = new KIntNumInput(common_options);
+  QSpinBox *remote_fs_port = new QSpinBox(common_options);
   remote_fs_port->setObjectName("kcfg_RemoteFileSystemPort");
-  remote_fs_port->setSliderEnabled(true);
+//   remote_fs_port->setSliderEnabled(true);
 
   common_layout->addWidget(user_id_label, 0, 0, 0);
   common_layout->addWidget(user_widget, 0, 1, 0);
@@ -277,8 +275,8 @@ void Smb4KMountOptionsPage::setupWidget()
   // Advanced CIFS options
   QGroupBox *advanced_options = new QGroupBox(i18n("Advanced Options"), this);
 
-  QGridLayout *advanced_layout = new QGridLayout( advanced_options );
-  advanced_layout->setSpacing( 5 );
+  QGridLayout *advanced_layout = new QGridLayout(advanced_options);
+  advanced_layout->setSpacing(5);
   
   QCheckBox *force_uid = new QCheckBox(Smb4KMountSettings::self()->forceUIDItem()->label(), advanced_options);
   force_uid->setObjectName("kcfg_ForceUID");
@@ -358,14 +356,14 @@ void Smb4KMountOptionsPage::setupWidget()
 
   QLabel *add_options_label = new QLabel(Smb4KMountSettings::self()->customCIFSOptionsItem()->label(), c_extra_widget);
 
-  KLineEdit *additional_opts   = new KLineEdit(c_extra_widget);
+  KLineEdit *additional_opts = new KLineEdit(c_extra_widget);
   additional_opts->setObjectName("kcfg_CustomCIFSOptions");
   additional_opts->setReadOnly(true);
   additional_opts->setClearButtonShown(true);
   add_options_label->setBuddy(additional_opts);
   
   QToolButton *additional_opts_edit = new QToolButton(c_extra_widget);
-  additional_opts_edit->setIcon(KIcon("document-edit"));
+  additional_opts_edit->setIcon(KDE::icon("document-edit"));
   additional_opts_edit->setToolTip(i18n("Edit the additional CIFS options."));
 
   c_extra_layout->addWidget(smbProtocol_label, 0, 0, 0);
@@ -394,12 +392,12 @@ void Smb4KMountOptionsPage::setupWidget()
   //
   // Connections
   //
-  connect(user_menu,              SIGNAL(triggered(QAction*)),
-          this,                   SLOT(slotNewUserTriggered(QAction*)) );
-  connect(group_menu,             SIGNAL(triggered(QAction*)),
-          this,                   SLOT(slotNewGroupTriggered(QAction*)) );
-  connect(additional_opts_edit,   SIGNAL(clicked(bool)),
-          this,                   SLOT(slotAdditionalCIFSOptions()));
+  connect(user_menu, SIGNAL(triggered(QAction*)),
+          this, SLOT(slotNewUserTriggered(QAction*)));
+  connect(group_menu, SIGNAL(triggered(QAction*)),
+          this, SLOT(slotNewGroupTriggered(QAction*)));
+  connect(additional_opts_edit, SIGNAL(clicked(bool)),
+          this, SLOT(slotAdditionalCIFSOptions()));
 }
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
 //
@@ -431,7 +429,7 @@ void Smb4KMountOptionsPage::setupWidget()
   user_id->setReadOnly(true);
 
   QToolButton *user_chooser = new QToolButton(user_widget);
-  user_chooser->setIcon(KIcon("edit-find-user"));
+  user_chooser->setIcon(KDE::icon("edit-find-user"));
   user_chooser->setToolTip(i18n("Choose a different user"));
   user_chooser->setPopupMode(QToolButton::InstantPopup);
 
@@ -475,7 +473,7 @@ void Smb4KMountOptionsPage::setupWidget()
   group_id->setReadOnly(true);
   
   QToolButton *group_chooser = new QToolButton(group_widget);
-  group_chooser->setIcon(KIcon("edit-find-user"));
+  group_chooser->setIcon(KDE::icon("edit-find-user"));
   group_chooser->setToolTip(i18n("Choose a different group"));
   group_chooser->setPopupMode(QToolButton::InstantPopup);
 
@@ -628,23 +626,23 @@ void Smb4KMountOptionsPage::setupWidget()
   codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp1250,
                        Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1250).label);
   codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp1251,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1251 ).label);
+                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1251).label);
   codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp1252,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1252 ).label);
+                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1252).label);
   codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp1253,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1253 ).label);
+                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1253).label);
   codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp1254,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1254 ).label);
+                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1254).label);
   codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp1255,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1255 ).label);
+                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1255).label);
   codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp1256,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1256 ).label);
+                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1256).label);
   codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp1257,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1257 ).label);
+                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1257).label);
   codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp1258,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1258 ).label);
+                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1258).label);
   codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::unicode,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::unicode ).label);
+                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::unicode).label);
 
   codepage_label->setBuddy(codepage);
 
@@ -667,183 +665,10 @@ void Smb4KMountOptionsPage::setupWidget()
   //
   // Connections
   //
-  connect( user_menu,        SIGNAL(triggered(QAction*)),
-           this,             SLOT(slotNewUserTriggered(QAction*)) );
-  connect( group_menu,       SIGNAL(triggered(QAction*)),
-           this,             SLOT(slotNewGroupTriggered(QAction*)) );
-}
-#elif defined(Q_OS_SOLARIS)
-//
-// Solaris/illumos
-//
-void Smb4KMountOptionsPage::setupWidget()
-{
-  QVBoxLayout *mount_layout = new QVBoxLayout(this);
-  mount_layout->setSpacing(5);
-  mount_layout->setMargin(0);
-
-  // Common Options
-  QGroupBox *common_options = new QGroupBox(i18n("Common Options"), this);
-
-  QGridLayout *common_layout = new QGridLayout(common_options);
-  common_layout->setSpacing(5);
-
-  QLabel *user_id_label = new QLabel(Smb4KMountSettings::self()->userIDItem()->label(), common_options);
-
-  QWidget *user_widget = new QWidget(common_options);
-
-  QGridLayout *user_layout = new QGridLayout(user_widget);
-  user_layout->setSpacing(5);
-  user_layout->setMargin(0);
-
-  KLineEdit *user_id = new KLineEdit(user_widget);
-  user_id->setObjectName("kcfg_UserID");
-  user_id->setAlignment(Qt::AlignRight);
-  user_id->setReadOnly(true);
-
-  QToolButton *user_chooser = new QToolButton(user_widget);
-  user_chooser->setIcon(KIcon("edit-find-user"));
-  user_chooser->setToolTip(i18n("Choose a different user"));
-  user_chooser->setPopupMode(QToolButton::InstantPopup);
-
-  user_id_label->setBuddy(user_chooser);
-  
-  QMenu *user_menu = new QMenu(user_chooser);
-  user_chooser->setMenu(user_menu);
-
-  QList<KUser> user_list = KUser::allUsers();
-  QMap<QString,QString> users;
-
-  for (int i = 0; i < user_list.size(); ++i)
-  {
-    users.insert(QString("%1 (%2)").arg(user_list.at(i).loginName()).arg(user_list.at(i).uid()),
-                 QString("%1").arg(user_list.at(i).uid()));
-  }
-
-  QMap<QString,QString>::const_iterator u_it = users.constBegin();
-
-  while (u_it != users.constEnd())
-  {
-    QAction *user_action = user_menu->addAction(u_it.key());
-    user_action->setData(u_it.value());
-    ++u_it;
-  }
-
-  user_layout->addWidget(user_id, 0, 0, 0);
-  user_layout->addWidget(user_chooser, 0, 1, Qt::AlignCenter);
-
-  QLabel *group_id_label = new QLabel(Smb4KMountSettings::self()->groupIDItem()->label(), common_options);
-
-  QWidget *group_widget = new QWidget(common_options);
-
-  QGridLayout *group_layout = new QGridLayout(group_widget);
-  group_layout->setSpacing(5);
-  group_layout->setMargin(0);
-
-  KLineEdit *group_id = new KLineEdit(group_widget);
-  group_id->setObjectName("kcfg_GroupID");
-  group_id->setAlignment(Qt::AlignRight);
-  group_id->setReadOnly(true);
-  
-  QToolButton *group_chooser = new QToolButton(group_widget);
-  group_chooser->setIcon(KIcon("edit-find-user"));
-  group_chooser->setToolTip(i18n("Choose a different group"));
-  group_chooser->setPopupMode(QToolButton::InstantPopup);
-
-  group_id_label->setBuddy(group_chooser);
-
-  QMenu *group_menu = new QMenu(group_chooser);
-  group_chooser->setMenu(group_menu);
-
-  QList<KUserGroup> group_list = KUserGroup::allGroups();
-  QMap<QString,QString> groups;
-
-  for (int i = 0; i < group_list.size(); ++i)
-  {
-    groups.insert(QString("%1 (%2)").arg(group_list.at(i).name()).arg(group_list.at(i).gid()),
-                  QString("%1").arg(group_list.at(i).gid()));
-  }
-
-  QMap<QString,QString>::const_iterator g_it = groups.constBegin();
-
-  while (g_it != groups.constEnd())
-  {
-    QAction *group_action = group_menu->addAction(g_it.key());
-    group_action->setData(g_it.value());
-    ++g_it;
-  }
-
-  group_layout->addWidget(group_id, 0, 0, 0);
-  group_layout->addWidget(group_chooser, 0, 1, Qt::AlignCenter);
-
-  QLabel *fmask_label = new QLabel(Smb4KMountSettings::self()->fileMaskItem()->label(), common_options);
-
-  KLineEdit *fmask = new KLineEdit(common_options);
-  fmask->setObjectName("kcfg_FileMask");
-  fmask->setAlignment(Qt::AlignRight);
-
-  fmask_label->setBuddy(fmask);
-
-  QLabel *dmask_label = new QLabel(Smb4KMountSettings::self()->directoryMaskItem()->label(), common_options);
-
-  KLineEdit *dmask = new KLineEdit(common_options);
-  dmask->setObjectName("kcfg_DirectoryMask");
-  dmask->setAlignment(Qt::AlignRight);
-
-  dmask_label->setBuddy(dmask);
-  
-  QLabel *write_access_label = new QLabel(Smb4KMountSettings::self()->writeAccessItem()->label(), common_options);
-
-  KComboBox *write_access      = new KComboBox(common_options);
-  write_access->setObjectName("kcfg_WriteAccess");
-  write_access->insertItem(Smb4KMountSettings::EnumWriteAccess::ReadWrite,
-                           Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadWrite).label);
-  write_access->insertItem(Smb4KMountSettings::EnumWriteAccess::ReadOnly,
-                           Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadOnly).label);
-
-  write_access_label->setBuddy(write_access);
-  
-  common_layout->addWidget(user_id_label, 0, 0, 0);
-  common_layout->addWidget(user_widget, 0, 1, 0);
-  common_layout->addWidget(group_id_label, 1, 0, 0);
-  common_layout->addWidget(group_widget, 1, 1, 0);
-  common_layout->addWidget(fmask_label, 2, 0, 0);
-  common_layout->addWidget(fmask, 2, 1, 0);
-  common_layout->addWidget(dmask_label, 3, 0, 0);
-  common_layout->addWidget(dmask, 3, 1, 0);
-  common_layout->addWidget(write_access_label, 4, 0, 0);
-  common_layout->addWidget(write_access, 4, 1, 0);
-  
-  // Advanced options
-  QGroupBox *advanced_options = new QGroupBox(i18n("Advanced Options"), this);
-
-  QVBoxLayout *advanced_layout = new QVBoxLayout(advanced_options);
-  advanced_layout->setSpacing(5);
-  
-  QCheckBox *procexec = new QCheckBox(Smb4KMountSettings::self()->programExecutionItem()->label(), advanced_options);
-  procexec->setObjectName("kcfg_ProgramExecution");
-  
-  QCheckBox *nonblock = new QCheckBox(Smb4KMountSettings::self()->nonBlockingMandatoryLockingItem()->label(), advanced_options);
-  nonblock->setObjectName("kcfg_NonBlockingMandatoryLocking");
-  
-  QCheckBox *suidexec = new QCheckBox(Smb4KMountSettings::self()->suidExecutionItem()->label(), advanced_options);
-  suidexec->setObjectName("kcfg_SuidExecution");
-  
-  advanced_layout->addWidget(procexec, 0);
-  advanced_layout->addWidget(nonblock, 0);
-  advanced_layout->addWidget(suidexec, 0);
-  
-  mount_layout->addWidget(common_options);
-  mount_layout->addWidget(advanced_options);
-  mount_layout->addStretch(100);
-  
-  //
-  // Connections
-  //
-  connect( user_menu,        SIGNAL(triggered(QAction*)),
-           this,             SLOT(slotNewUserTriggered(QAction*)) );
-  connect( group_menu,       SIGNAL(triggered(QAction*)),
-           this,             SLOT(slotNewGroupTriggered(QAction*)) );
+  connect(user_menu, SIGNAL(triggered(QAction*)),
+          this, SLOT(slotNewUserTriggered(QAction*)));
+  connect(group_menu, SIGNAL(triggered(QAction*)),
+          this, SLOT(slotNewGroupTriggered(QAction*)));
 }
 #else
 //
@@ -912,7 +737,7 @@ void Smb4KMountOptionsPage::slotAdditionalCIFSOptions()
         // by Heiner Markert (aka CVE-2014-2581).
         QStringList whitelist = whitelistedMountArguments();
         QStringList denied_args;
-        QStringList list = options.split( ',', QString::SkipEmptyParts );
+        QStringList list = options.split(',', QString::SkipEmptyParts);
         QMutableStringListIterator it(list);
         
         while (it.hasNext())
@@ -959,5 +784,3 @@ void Smb4KMountOptionsPage::slotAdditionalCIFSOptions()
 #endif
 }
 
-
-#include "smb4kmountoptionspage.moc"

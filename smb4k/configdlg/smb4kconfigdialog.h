@@ -2,7 +2,7 @@
     smb4kconfigdialog  -  The configuration dialog of Smb4K
                              -------------------
     begin                : Sa Apr 14 2007
-    copyright            : (C) 2004-2014 by Alexander Reinholdt
+    copyright            : (C) 2004-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -26,8 +26,11 @@
 #ifndef SMB4KCONFIGDIALOG_H
 #define SMB4KCONFIGDIALOG_H
 
+// Qt includes
+#include <QtWidgets/QAbstractButton>
+
 // KDE includes
-#include <kconfigdialog.h>
+#include <KConfigWidgets/KConfigDialog>
 
 // forward declarations
 class Smb4KSettings;
@@ -38,45 +41,22 @@ class Smb4KSettings;
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class Smb4KConfigDialog : public KConfigDialog
+class Q_DECL_EXPORT Smb4KConfigDialog : public KConfigDialog
 {
   Q_OBJECT
 
   public:
     /**
-     * The constructor.
-     *
+     * The constructor
      * @param parent        The parent widget
-     *
-     * @param name          The name of this dialog
-     *
-     * @param settings      The Smb4KSettings object that needs to be passed
-     *                      so that the settings can be managed.
-     */
-    Smb4KConfigDialog( QWidget *parent, const char *name, Smb4KSettings *settings );
-
-    /**
-     * The constructor for use with the KGenericLibrary.
-     *
-     * @param parent        The parent widget
-     *
      * @param args          The argument list
      */
-    Smb4KConfigDialog( QWidget *parent, const QList<QVariant> &args );
-
+    Smb4KConfigDialog(QWidget *parent, const QList<QVariant> &args);
+    
     /**
      * The destructor
      */
     ~Smb4KConfigDialog();
-
-  protected:
-    /**
-     * Reimplemented from QWidget to do last things before the
-     * configuration dialog is shown.
-     *
-     * @param e             The show event object
-     */
-    void showEvent( QShowEvent *e );
 
   protected slots:
     /**
@@ -86,14 +66,20 @@ class Smb4KConfigDialog : public KConfigDialog
     void updateSettings();
     
     /**
-     * Reimplemented from KDialog. This slot overwrites the standard
-     * behavior of the "Apply" and "OK" button, so that application
-     * actions can be executed like saving the super user settings to
-     * the system files.
-     *
-     * @param button        The button code
+     * Reimplemented from KConfigDialog. Used to do things before
+     * the dialog is shown.
      */
-    void slotButtonClicked( int button );
+    void updateWidgets();
+    
+//     /**
+//      * Reimplemented from KDialog. This slot overwrites the standard
+//      * behavior of the "Apply" and "OK" button, so that application
+//      * actions can be executed like saving the super user settings to
+//      * the system files.
+//      *
+//      * @param button        The button code
+//      */
+//     void slotButtonClicked(int button);
 
     /**
      * This slot is connected to the "Load" button of the "Wallet Entries" tab

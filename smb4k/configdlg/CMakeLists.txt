@@ -1,8 +1,12 @@
-
-include_directories( ${KDE4_INCLUDES} ${KDE4_INCLUDE_DIR} ${QT_INCLUDES}  )
-
-
-########### next target ###############
+include_directories(
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_BINARY_DIR}
+  ${CMAKE_SOURCE_DIR} 
+  ${CMAKE_BINARY_DIR}  
+  ${CMAKE_SOURCE_DIR}/core 
+  ${CMAKE_BINARY_DIR}/core
+  ${CMAKE_SOURCE_DIR}/smb4k 
+  ${CMAKE_BINARY_DIR}/smb4k)
 
 set(smb4kconfigdialog_LIB_SRCS
    smb4kauthoptionspage.cpp
@@ -14,20 +18,26 @@ set(smb4kconfigdialog_LIB_SRCS
    smb4krsyncoptionspage.cpp
    smb4ksambaoptionspage.cpp
    smb4kshareoptionspage.cpp
-   smb4kuserinterfaceoptionspage.cpp )
+   smb4kuserinterfaceoptionspage.cpp)
 
-kde4_add_plugin( smb4kconfigdialog ${smb4kconfigdialog_LIB_SRCS} )
+add_library(smb4kconfigdialog MODULE ${smb4kconfigdialog_LIB_SRCS})
 
-target_link_libraries( smb4kconfigdialog
-  ${KDE4_KDECORE_LIBS}
-  smb4kcore
-  ${KDE4_KDEUI_LIBS}
-  ${KDE4_KIO_LIBS} )
+target_link_libraries(smb4kconfigdialog
+  Qt5::Core
+  Qt5::Widgets
+  Qt5::Gui
+  KF5::WidgetsAddons
+  KF5::CoreAddons
+  KF5::XmlGui
+  KF5::IconThemes
+  KF5::I18n
+  KF5::ConfigCore
+  KF5::ConfigGui
+  KF5::KIOCore
+  KF5::KIOWidgets
+  smb4kcore)
 
-install(TARGETS smb4kconfigdialog DESTINATION ${PLUGIN_INSTALL_DIR} )
-
-
-########### install files ###############
+install(TARGETS smb4kconfigdialog DESTINATION ${KDE_INSTALL_PLUGINDIR})
 
 
 

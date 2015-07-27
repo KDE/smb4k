@@ -28,19 +28,19 @@
 #define SMB4KCUSTOMOPTIONSPAGE_H
 
 // Qt includes
-#include <QWidget>
-#include <QCheckBox>
-#include <QEvent>
-#include <QGroupBox>
+#include <QtCore/QEvent>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QGroupBox>
+#include <QtWidgets/QListWidget>
+#include <QtWidgets/QSpinBox>
+#include <QtWidgets/QTabWidget>
 
 // KDE includes
-#include <klistwidget.h>
-#include <kactionmenu.h>
-#include <kactioncollection.h>
-#include <klineedit.h>
-#include <knuminput.h>
-#include <kcombobox.h>
-#include <ktabwidget.h>
+#include <KCompletion/KComboBox>
+#include <KCompletion/KLineEdit>
+#include <KWidgetsAddons/KActionMenu>
+#include <KXmlGui/KActionCollection>
 
 // forward declarations
 class Smb4KCustomOptions;
@@ -184,20 +184,18 @@ class Smb4KCustomOptionsPage : public QWidget
     void populateEditors( Smb4KCustomOptions *options );
     void commitChanges();
     
-    KListWidget *m_custom_options;
+    QListWidget *m_custom_options;
     KActionMenu *m_menu;
     KActionCollection *m_collection;
     QGroupBox *m_general_editors;
-    KTabWidget *m_tab_widget;
+    QTabWidget *m_tab_widget;
     KLineEdit *m_unc_address;
     KLineEdit *m_ip_address;
     KLineEdit *m_mac_address;
-    KIntNumInput *m_smb_port;
+    QSpinBox *m_smb_port;
 #if defined(Q_OS_LINUX)
-    KIntNumInput *m_fs_port;
+    QSpinBox *m_fs_port;
     KComboBox *m_security_mode;
-#endif
-#if defined(Q_OS_LINUX) || defined(Q_OS_SOLARIS)
     KComboBox *m_write_access;
 #endif
     KComboBox *m_protocol_hint;

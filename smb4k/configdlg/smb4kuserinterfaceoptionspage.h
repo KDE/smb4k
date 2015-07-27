@@ -3,7 +3,7 @@
     of all settings concerning the user interface of Smb4K
                              -------------------
     begin                : Mi Aug 30 2006
-    copyright            : (C) 2006-2014 by Alexander Reinholdt
+    copyright            : (C) 2006-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,10 +28,8 @@
 #define SMB4KUSERINTERFACEOPTIONSPAGE_H
 
 // Qt includes
-#include <QWidget>
+#include <QtWidgets/QTabWidget>
 
-// KDE includes
-#include <ktabwidget.h>
 
 
 /**
@@ -40,7 +38,7 @@
  * @author Alexander Reinholdt  <alexander.reinholdt@kdemail.net>
  */
 
-class Smb4KUserInterfaceOptionsPage : public KTabWidget
+class Smb4KUserInterfaceOptionsPage : public QTabWidget
 {
   Q_OBJECT
 
@@ -50,7 +48,7 @@ class Smb4KUserInterfaceOptionsPage : public KTabWidget
      *
      * @param parent          The parent widget of this class.
      */
-    explicit Smb4KUserInterfaceOptionsPage( QWidget *parent = 0 );
+    explicit Smb4KUserInterfaceOptionsPage(QWidget *parent = 0);
 
     /**
      * The destructor

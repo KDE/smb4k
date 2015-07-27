@@ -2,7 +2,7 @@
     smb4krsyncoptions  -  The configuration page for the rsync options
                              -------------------
     begin                : So Nov 20 2005
-    copyright            : (C) 2005-2014 by Alexander Reinholdt
+    copyright            : (C) 2005-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -26,18 +26,17 @@
 #ifndef SMB4KRSYNCOPTIONSPAGE_H
 #define SMB4KRSYNCOPTIONSPAGE_H
 
-// KDE includes
-#include <ktabwidget.h>
-
+// Qt includes
+#include <QtWidgets/QTabWidget>
 
 /**
  * This class belongs to the configuration dialog and takes
  * care of the options that can be defined for rsync.
  *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class Smb4KRsyncOptionsPage : public KTabWidget
+class Smb4KRsyncOptionsPage : public QTabWidget
 {
   Q_OBJECT
 
@@ -55,7 +54,7 @@ class Smb4KRsyncOptionsPage : public KTabWidget
      *
      * @param parent        The parent widget
      */
-    explicit Smb4KRsyncOptionsPage( QWidget *parent = 0 );
+    explicit Smb4KRsyncOptionsPage(QWidget *parent = 0);
 
     /**
      * The destructor
@@ -69,7 +68,7 @@ class Smb4KRsyncOptionsPage : public KTabWidget
      *
      * @param checked       Is TRUE if the checkbox is checked and FALSE otherwise.
      */
-    void slotArchiveToggled( bool checked );
+    void slotArchiveToggled(bool checked);
 
     /**
      * This slot is invoked if the --archive option has to be switched
@@ -78,7 +77,7 @@ class Smb4KRsyncOptionsPage : public KTabWidget
      * @param checked       Is FALSE if one of the connected checkboxes is unchecked
      *                      and TRUE otherwise.
      */
-    void slotUncheckArchive( bool checked );
+    void slotUncheckArchive(bool checked);
 
     /**
      * This slot is called, when the backup checkbox has been toggled.
@@ -88,7 +87,7 @@ class Smb4KRsyncOptionsPage : public KTabWidget
      * @param checked       Is TRUE if the m_backup check box has been
      *                      checked and FALSE otherwise.
      */
-    void slotBackupToggled( bool checked );
+    void slotBackupToggled(bool checked);
 
     /**
      * This slot is called if the '-F' shortcut has been toggled.
@@ -96,7 +95,7 @@ class Smb4KRsyncOptionsPage : public KTabWidget
      *
      * @param checked       Is TRUE is m_f_filter is checked and FALSE otherwise.
      */
-    void slotFShortcutToggled( bool checked );
+    void slotFShortcutToggled(bool checked);
 
     /**
      * This slot is called if the '-F -F' shortcut has been toggled.
@@ -104,7 +103,7 @@ class Smb4KRsyncOptionsPage : public KTabWidget
      *
      * @param checked       Is TRUE is m_ff_filter is checked and FALSE otherwise.
      */
-    void slotFFShortcutToggled( bool checked );
+    void slotFFShortcutToggled(bool checked);
 };
 
 #endif

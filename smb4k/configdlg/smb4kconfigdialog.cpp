@@ -2,7 +2,7 @@
     smb4kconfigdialog  -  The configuration dialog of Smb4K
                              -------------------
     begin                : Sa Apr 14 2007
-    copyright            : (C) 2004-2014 by Alexander Reinholdt
+    copyright            : (C) 2004-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -49,52 +49,37 @@
 #include "core/smb4kmountsettings_linux.h"
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
 #include "core/smb4kmountsettings_freebsd.h"
-#elif defined(Q_OS_SOLARIS)
-#include "core/smb4kmountsettings_solaris.h"
 #else
 #define UNSUPPORTED_PLATFORM
 #endif
 
 // Qt includes
-#include <QRadioButton>
-#include <QCheckBox>
-#include <QTreeWidget>
-#include <QShowEvent>
-#include <QSize>
-#include <QScrollArea>
-#include <QPointer>
-#include <QPair>
-#include <QList>
+#include <QtCore/QPointer>
+#include <QtCore/QPair>
+#include <QtCore/QList>
+#include <QtCore/QSize>
+#include <QtCore/QStandardPaths>
+#include <QtWidgets/QRadioButton>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QTreeWidget>
+#include <QtWidgets/QScrollArea>
+#include <QtGui/QShowEvent>
 
 // KDE includes
-#include <klineedit.h>
-#include <kpushbutton.h>
-#include <kmessagebox.h>
-#include <kurlrequester.h>
-#include <kcombobox.h>
-#include <kgenericfactory.h>
-#include <kconfiggroup.h>
-#include <kstandarddirs.h>
-#include <kpassworddialog.h>
-#include <kapplication.h>
-#include <kconfigdialogmanager.h>
-#include <keditlistwidget.h>
+#include <KCoreAddons/KPluginFactory>
+#include <KI18n/KLocalizedString>
+#include <KConfigGui/KWindowConfig>
+#include <KWidgetsAddons/KMessageBox>
+#include <KWidgetsAddons/KPasswordDialog>
+#include <KIOWidgets/KUrlRequester>
 
 using namespace Smb4KGlobal;
 
-K_PLUGIN_FACTORY( Smb4KConfigDialogFactory, registerPlugin<Smb4KConfigDialog>(); )
-K_EXPORT_PLUGIN( Smb4KConfigDialogFactory( "Smb4KConfigDialog" ) );
+K_PLUGIN_FACTORY(Smb4KConfigDialogFactory, registerPlugin<Smb4KConfigDialog>();)
 
 
-Smb4KConfigDialog::Smb4KConfigDialog( QWidget *parent, const char *name, Smb4KSettings *settings )
-: KConfigDialog( parent, name, settings )
-{
-  setupDialog();
-}
-
-
-Smb4KConfigDialog::Smb4KConfigDialog( QWidget *parent, const QList<QVariant> &/*args*/ )
-: KConfigDialog( parent, "ConfigDialog", Smb4KSettings::self() )
+Smb4KConfigDialog::Smb4KConfigDialog(QWidget *parent, const QList<QVariant> &/*args*/)
+: KConfigDialog(parent, "ConfigDialog", Smb4KSettings::self())
 {
   setupDialog();
 }
@@ -111,38 +96,38 @@ void Smb4KConfigDialog::setupDialog()
   // but at the moment there are issues with the KURLRequester in file
   // mode. To work around those, we are closing the dialog destructively.
   // Maybe we can remove this if we moved to KDE4.
-  setAttribute( Qt::WA_DeleteOnClose, true );
+  setAttribute(Qt::WA_DeleteOnClose, true);
 
   // Add the pages:
-  Smb4KUserInterfaceOptionsPage *interface_options = new Smb4KUserInterfaceOptionsPage( this );
-  QScrollArea *interface_area = new QScrollArea( this );
-  interface_area->setWidget( interface_options );
-  interface_area->setWidgetResizable( true );
-  interface_area->setFrameStyle( QFrame::NoFrame );
+  Smb4KUserInterfaceOptionsPage *interface_options = new Smb4KUserInterfaceOptionsPage(this);
+  QScrollArea *interface_area = new QScrollArea(this);
+  interface_area->setWidget(interface_options);
+  interface_area->setWidgetResizable(true);
+  interface_area->setFrameStyle(QFrame::NoFrame);
 
-  Smb4KNetworkOptionsPage *network_options = new Smb4KNetworkOptionsPage( this );
-  QScrollArea *network_area = new QScrollArea( this );
-  network_area->setWidget( network_options );
-  network_area->setWidgetResizable( true );
-  network_area->setFrameStyle( QFrame::NoFrame );
+  Smb4KNetworkOptionsPage *network_options = new Smb4KNetworkOptionsPage(this);
+  QScrollArea *network_area = new QScrollArea(this);
+  network_area->setWidget(network_options);
+  network_area->setWidgetResizable(true);
+  network_area->setFrameStyle(QFrame::NoFrame);
 
-  Smb4KShareOptionsPage *share_options = new Smb4KShareOptionsPage( this );
-  QScrollArea *share_area = new QScrollArea( this );
-  share_area->setWidget( share_options );
-  share_area->setWidgetResizable( true );
-  share_area->setFrameStyle( QFrame::NoFrame );
+  Smb4KShareOptionsPage *share_options = new Smb4KShareOptionsPage(this);
+  QScrollArea *share_area = new QScrollArea(this);
+  share_area->setWidget(share_options);
+  share_area->setWidgetResizable(true);
+  share_area->setFrameStyle(QFrame::NoFrame);
 
-  Smb4KAuthOptionsPage *auth_options = new Smb4KAuthOptionsPage( this );
-  QScrollArea *auth_area = new QScrollArea( this );
-  auth_area->setWidget( auth_options );
-  auth_area->setWidgetResizable( true );
-  auth_area->setFrameStyle( QFrame::NoFrame );
+  Smb4KAuthOptionsPage *auth_options = new Smb4KAuthOptionsPage(this);
+  QScrollArea *auth_area = new QScrollArea(this);
+  auth_area->setWidget(auth_options);
+  auth_area->setWidgetResizable(true);
+  auth_area->setFrameStyle(QFrame::NoFrame);
 
-  Smb4KSambaOptionsPage *samba_options = new Smb4KSambaOptionsPage( this );
-  QScrollArea *samba_area = new QScrollArea( this );
-  samba_area->setWidget( samba_options );
-  samba_area->setWidgetResizable( true );
-  samba_area->setFrameStyle( QFrame::NoFrame );
+  Smb4KSambaOptionsPage *samba_options = new Smb4KSambaOptionsPage(this);
+  QScrollArea *samba_area = new QScrollArea(this);
+  samba_area->setWidget(samba_options);
+  samba_area->setWidgetResizable(true);
+  samba_area->setFrameStyle(QFrame::NoFrame);
 
 #if !defined(UNSUPPORTED_PLATFORM)  
   Smb4KMountOptionsPage *mount_options = new Smb4KMountOptionsPage(this);
@@ -152,19 +137,19 @@ void Smb4KConfigDialog::setupDialog()
   mount_area->setFrameStyle(QFrame::NoFrame);
 #endif
 
-  Smb4KRsyncOptionsPage *rsync_options = new Smb4KRsyncOptionsPage( this );
-  QScrollArea *rsync_area = new QScrollArea( this );
-  rsync_area->setWidget( rsync_options );
-  rsync_area->setWidgetResizable( true );
-  rsync_area->setFrameStyle( QFrame::NoFrame );
+  Smb4KRsyncOptionsPage *rsync_options = new Smb4KRsyncOptionsPage(this);
+  QScrollArea *rsync_area = new QScrollArea(this);
+  rsync_area->setWidget(rsync_options);
+  rsync_area->setWidgetResizable(true);
+  rsync_area->setFrameStyle(QFrame::NoFrame);
   
-  rsync_options->setEnabled( !KStandardDirs::findExe( "rsync" ).isEmpty() );
+  rsync_options->setEnabled(!QStandardPaths::findExecutable("rsync").isEmpty());
 
-  Smb4KCustomOptionsPage *custom_options = new Smb4KCustomOptionsPage( this );
-  QScrollArea *custom_area = new QScrollArea( this );
-  custom_area->setWidget( custom_options );
-  custom_area->setWidgetResizable( true );
-  custom_area->setFrameStyle( QFrame::NoFrame );
+  Smb4KCustomOptionsPage *custom_options = new Smb4KCustomOptionsPage(this);
+  QScrollArea *custom_area = new QScrollArea(this);
+  custom_area->setWidget(custom_options);
+  custom_area->setWidgetResizable(true);
+  custom_area->setFrameStyle(QFrame::NoFrame);
   
   Smb4KProfilesPage *profiles_page = new Smb4KProfilesPage(this);
   QScrollArea *profiles_area = new QScrollArea(this);
@@ -173,56 +158,53 @@ void Smb4KConfigDialog::setupDialog()
   profiles_area->setFrameStyle(QFrame::NoFrame);
 
   // Now add the pages to the configuration dialog
-  m_user_interface  = addPage(interface_area, i18n( "User Interface" ), "view-choose" );
-  m_network         = addPage(network_area, i18n( "Network" ), "network-workgroup" );
-  m_shares          = addPage(share_area, i18n( "Shares" ), "folder-remote" );
-  m_authentication  = addPage(auth_area, i18n( "Authentication" ), "dialog-password" );
-  m_samba           = addPage(samba_area, i18n( "Samba" ), "preferences-system-network" );
+  m_user_interface  = addPage(interface_area, Smb4KSettings::self(), i18n("User Interface"), "view-choose");
+  m_network         = addPage(network_area, Smb4KSettings::self(), i18n("Network"), "network-workgroup");
+  m_shares          = addPage(share_area, Smb4KSettings::self(), i18n("Shares"), "folder-remote");
+  m_authentication  = addPage(auth_area, Smb4KSettings::self(), i18n("Authentication"), "dialog-password");
+  m_samba           = addPage(samba_area, Smb4KSettings::self(), i18n("Samba"), "preferences-system-network");
 #if !defined(UNSUPPORTED_PLATFORM)
   m_mounting        = addPage(mount_area, Smb4KMountSettings::self(), i18n("Mounting"), "system-run");
 #endif
-  m_synchronization = addPage(rsync_area, i18n( "Synchronization" ), "folder-sync" );
-  m_custom_options  = addPage(custom_area, i18n( "Custom Options" ), "preferences-system-network" );
-  m_profiles        = addPage(profiles_area, i18n("Profiles"), "format-list-unordered");
-
-  // Stuff that's not managed by KConfig XT is loaded by
-  // Smb4KConfigDialog::showEvent()!
+  m_synchronization = addPage(rsync_area, Smb4KSettings::self(),i18n("Synchronization"), "folder-sync");
+  m_custom_options  = addPage(custom_area, Smb4KSettings::self(), i18n("Custom Options"), "preferences-system-network");
+  m_profiles        = addPage(profiles_area, Smb4KSettings::self(), i18n("Profiles"), "format-list-unordered");
 
   // Connections
   connect(custom_options, SIGNAL(customSettingsModified()),
           this,           SLOT(slotEnableApplyButton()));
   
   connect(custom_options, SIGNAL(reloadCustomSettings()),
-          this,           SLOT(slotReloadCustomOptions()) );
+          this,           SLOT(slotReloadCustomOptions()));
 
-  connect( auth_options,  SIGNAL(loadWalletEntries()),
-           this,          SLOT(slotLoadAuthenticationInformation()) );
+  connect(auth_options,  SIGNAL(loadWalletEntries()),
+          this,          SLOT(slotLoadAuthenticationInformation()));
            
-  connect( auth_options,  SIGNAL(saveWalletEntries()),
-           this,          SLOT(slotSaveAuthenticationInformation()) );
+  connect(auth_options,  SIGNAL(saveWalletEntries()),
+          this,          SLOT(slotSaveAuthenticationInformation()));
            
-  connect( auth_options,  SIGNAL(setDefaultLogin()),
-           this,          SLOT(slotSetDefaultLogin()) );
+  connect(auth_options,  SIGNAL(setDefaultLogin()),
+          this,          SLOT(slotSetDefaultLogin()));
            
-  connect( auth_options,  SIGNAL(walletEntriesModified()),
-           this,          SLOT(slotEnableApplyButton()) );
+  connect(auth_options,  SIGNAL(walletEntriesModified()),
+          this,          SLOT(slotEnableApplyButton()));
   
-  connect( this,          SIGNAL(currentPageChanged(KPageWidgetItem*,KPageWidgetItem*)),
-           this,          SLOT(slotCheckPage(KPageWidgetItem*,KPageWidgetItem*)));
+  connect(this,          SIGNAL(currentPageChanged(KPageWidgetItem*,KPageWidgetItem*)),
+          this,          SLOT(slotCheckPage(KPageWidgetItem*,KPageWidgetItem*)));
   
-  setInitialSize( QSize( 800, 600 ) );
+  resize(QSize(800, 600));
 
-  KConfigGroup group( Smb4KSettings::self()->config(), "ConfigDialog" );
-  restoreDialogSize( group );
+  KConfigGroup group(Smb4KSettings::self()->config(), "ConfigDialog");
+  KWindowConfig::restoreWindowSize(windowHandle(), group);
 }
 
 
 void Smb4KConfigDialog::loadCustomOptions()
 {
-  if ( m_custom_options )
+  if (m_custom_options)
   {
     QList<Smb4KCustomOptions *> options = Smb4KCustomOptionsManager::self()->customOptions();
-    m_custom_options->widget()->findChild<Smb4KCustomOptionsPage *>()->insertCustomOptions( options );
+    m_custom_options->widget()->findChild<Smb4KCustomOptionsPage *>()->insertCustomOptions(options);
   }
   else
   {
@@ -233,10 +215,10 @@ void Smb4KConfigDialog::loadCustomOptions()
 
 void Smb4KConfigDialog::saveCustomOptions()
 {
-  if ( m_custom_options )
+  if (m_custom_options)
   {
     QList<Smb4KCustomOptions *> options = m_custom_options->widget()->findChild<Smb4KCustomOptionsPage *>()->getCustomOptions();
-    Smb4KCustomOptionsManager::self()->replaceCustomOptions( options );
+    Smb4KCustomOptionsManager::self()->replaceCustomOptions(options);
   }
   else
   {
@@ -425,7 +407,7 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
   }
   
   QCheckBox *max_delete = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_UseMaximumDelete");
-  KIntNumInput *max_delete_val = m_synchronization->widget()->findChild<KIntNumInput *>("kcfg_MaximumDeleteValue");
+  QSpinBox *max_delete_val = m_synchronization->widget()->findChild<QSpinBox *>("kcfg_MaximumDeleteValue");
   
   if ((max_delete && max_delete->isChecked()) && (max_delete_val && max_delete_val->value() == 0))
   {
@@ -452,7 +434,7 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
   }
   
   QCheckBox *min_trans_size = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_UseMinimalTransferSize");
-  KIntNumInput *min_trans_size_val = m_synchronization->widget()->findChild<KIntNumInput *>("kcfg_MinimalTransferSize");
+  QSpinBox *min_trans_size_val = m_synchronization->widget()->findChild<QSpinBox *>("kcfg_MinimalTransferSize");
   
   if ((min_trans_size && min_trans_size->isChecked()) && (min_trans_size_val && min_trans_size_val->value() == 0))
   {
@@ -479,7 +461,7 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
   }
   
   QCheckBox *max_trans_size = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_UseMaximalTransferSize");
-  KIntNumInput *max_trans_size_val = m_synchronization->widget()->findChild<KIntNumInput *>("kcfg_MaximalTransferSize");
+  QSpinBox *max_trans_size_val = m_synchronization->widget()->findChild<QSpinBox *>("kcfg_MaximalTransferSize");
   
   if ((max_trans_size && max_trans_size->isChecked()) && (max_trans_size_val && max_trans_size_val->value() == 0))
   {
@@ -505,14 +487,14 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
     // Do nothing
   }
   
-  QCheckBox *use_partial_directory = m_synchronization->widget()->findChild<QCheckBox *>( "kcfg_UsePartialDirectory" );
-  KUrlRequester *partial_directory = m_synchronization->widget()->findChild<KUrlRequester *>( "kcfg_PartialDirectory" );
+  QCheckBox *use_partial_directory = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_UsePartialDirectory");
+  KUrlRequester *partial_directory = m_synchronization->widget()->findChild<KUrlRequester *>("kcfg_PartialDirectory");
   
   if ((use_partial_directory && use_partial_directory->isChecked()) &&
       (partial_directory && partial_directory->url().path().trimmed().isEmpty()))
   {
     KMessageBox::sorry(this, msg);
-    setCurrentPage( m_synchronization );
+    setCurrentPage(m_synchronization);
     
     Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
     
@@ -765,21 +747,6 @@ bool Smb4KConfigDialog::checkSettings()
 }
 
 
-void Smb4KConfigDialog::showEvent( QShowEvent *e )
-{
-  // Spontaneous show events come from outside the application.
-  // We do not want to react on them.
-  if ( !e->spontaneous() )
-  {
-    loadCustomOptions();
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
 /////////////////////////////////////////////////////////////////////////////
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
@@ -790,47 +757,21 @@ void Smb4KConfigDialog::updateSettings()
   saveCustomOptions();
   slotSaveAuthenticationInformation();
   propagateProfilesChanges();
+  
+  KConfigGroup group(Smb4KSettings::self()->config(), "ConfigDialog");
+  KWindowConfig::saveWindowSize(windowHandle(), group);
+  
+  qDebug() << "Smb4KConfigDialog::updateSettings(): Implement checkSettings()!";
       
   KConfigDialog::updateSettings();
 }
 
 
-void Smb4KConfigDialog::slotButtonClicked(int button)
+void Smb4KConfigDialog::updateWidgets()
 {
-  switch(button)
-  {
-    case Apply:
-    {
-      // If some settings are not complete, stop here and give
-      // the user the opportunity to fill in the needed string(s).
-      if (!checkSettings())
-      {
-        return;
-      }
-
-      break;
-    }
-    case Ok:
-    {
-      // If some settings are not complete, stop here and give
-      // the user the opportunity to fill in the needed string(s).
-      if (!checkSettings())
-      {
-        return;
-      }
-
-      KConfigGroup group(Smb4KSettings::self()->config(), "ConfigDialog");
-      saveDialogSize(group, KConfigGroup::Normal);
-
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-
-  KConfigDialog::slotButtonClicked(button);
+  loadCustomOptions();
+  
+  KConfigDialog::updateWidgets();
 }
 
 
@@ -838,7 +779,7 @@ void Smb4KConfigDialog::slotLoadAuthenticationInformation()
 {
   Smb4KAuthOptionsPage *auth_options = m_authentication->widget()->findChild<Smb4KAuthOptionsPage *>();
   QList<Smb4KAuthInfo *> entries = Smb4KWalletManager::self()->walletEntries();
-  auth_options->insertWalletEntries( entries );
+  auth_options->insertWalletEntries(entries);
   auth_options->displayWalletEntries();
 }
 
@@ -847,10 +788,10 @@ void Smb4KConfigDialog::slotSaveAuthenticationInformation()
 {
   Smb4KAuthOptionsPage *auth_options = m_authentication->widget()->findChild<Smb4KAuthOptionsPage *>();
   
-  if ( auth_options->walletEntriesDisplayed() )
+  if (auth_options->walletEntriesDisplayed())
   {
     QList<Smb4KAuthInfo *> entries = auth_options->getWalletEntries();
-    Smb4KWalletManager::self()->writeWalletEntries( entries );
+    Smb4KWalletManager::self()->writeWalletEntries(entries);
   }
   else
   {
@@ -863,27 +804,27 @@ void Smb4KConfigDialog::slotSetDefaultLogin()
 {
   Smb4KAuthOptionsPage *auth_options = m_authentication->widget()->findChild<Smb4KAuthOptionsPage *>();
   
-  if ( !auth_options->undoRemoval() )
+  if (!auth_options->undoRemoval())
   {
     Smb4KAuthInfo authInfo;
     // We do not need to call useDefaultAuthInfo(), because 
     // Smb4KWalletManager::readDefaultAuthInfo() will do this
     // for us.
-    Smb4KWalletManager::self()->readDefaultAuthInfo( &authInfo );
+    Smb4KWalletManager::self()->readDefaultAuthInfo(&authInfo);
     
-    QPointer<KPasswordDialog> dlg = new KPasswordDialog( this, KPasswordDialog::ShowUsernameLine );
-    dlg->setPrompt( i18n( "Enter the default login information." ) );
-    dlg->setUsername( authInfo.userName() );
-    dlg->setPassword( authInfo.password() );
+    QPointer<KPasswordDialog> dlg = new KPasswordDialog(this, KPasswordDialog::ShowUsernameLine);
+    dlg->setPrompt(i18n("Enter the default login information."));
+    dlg->setUsername(authInfo.userName());
+    dlg->setPassword(authInfo.password());
     
-    if ( dlg->exec() == KPasswordDialog::Accepted )
+    if (dlg->exec() == KPasswordDialog::Accepted)
     {
-      authInfo.setUserName( dlg->username() );
-      authInfo.setPassword( dlg->password() );
+      authInfo.setUserName(dlg->username());
+      authInfo.setPassword(dlg->password());
       
-      Smb4KWalletManager::self()->writeDefaultAuthInfo( &authInfo );
+      Smb4KWalletManager::self()->writeDefaultAuthInfo(&authInfo);
       
-      if ( auth_options->walletEntriesDisplayed() )
+      if (auth_options->walletEntriesDisplayed())
       {
         slotLoadAuthenticationInformation();
       }
@@ -895,7 +836,7 @@ void Smb4KConfigDialog::slotSetDefaultLogin()
     else
     {
       // Reset the checkbox.
-      auth_options->findChild<QCheckBox *>( "kcfg_UseDefaultLogin" )->setChecked( false );
+      auth_options->findChild<QCheckBox *>("kcfg_UseDefaultLogin")->setChecked(false);
     }
     
     delete dlg;
@@ -915,27 +856,27 @@ void Smb4KConfigDialog::slotEnableApplyButton()
   // Check the wallet entries.
   Smb4KAuthOptionsPage *auth_options = m_authentication->widget()->findChild<Smb4KAuthOptionsPage *>();
 
-  if ( auth_options->walletEntriesMaybeChanged() )
+  if (auth_options->walletEntriesMaybeChanged())
   {
     QList<Smb4KAuthInfo *> old_wallet_entries = Smb4KWalletManager::self()->walletEntries();
     QList<Smb4KAuthInfo *> new_wallet_entries = auth_options->getWalletEntries();
     
-    for ( int i = 0; i < old_wallet_entries.size(); ++i )
+    for (int i = 0; i < old_wallet_entries.size(); ++i)
     {
-      for ( int j = 0; j < new_wallet_entries.size(); ++j )
+      for (int j = 0; j < new_wallet_entries.size(); ++j)
       {
-        if ( QString::compare( old_wallet_entries.at( i )->unc(),
-                               new_wallet_entries.at( j )->unc(),
-                               Qt::CaseInsensitive ) == 0 &&
-             (QString::compare( old_wallet_entries.at( i )->workgroupName(),
-                                new_wallet_entries.at( j )->workgroupName(),
-                                Qt::CaseInsensitive ) != 0 ||
-              QString::compare( old_wallet_entries.at( i )->userName(),
-                                new_wallet_entries.at( j )->userName(),
-                                Qt::CaseInsensitive ) != 0 ||
-              QString::compare( old_wallet_entries.at( i )->password(),
-                                new_wallet_entries.at( j )->password(),
-                                Qt::CaseInsensitive ) != 0) )
+        if (QString::compare(old_wallet_entries.at(i)->unc(),
+                               new_wallet_entries.at(j)->unc(),
+                               Qt::CaseInsensitive) == 0 &&
+             (QString::compare(old_wallet_entries.at(i)->workgroupName(),
+                                new_wallet_entries.at(j)->workgroupName(),
+                                Qt::CaseInsensitive) != 0 ||
+              QString::compare(old_wallet_entries.at(i)->userName(),
+                                new_wallet_entries.at(j)->userName(),
+                                Qt::CaseInsensitive) != 0 ||
+              QString::compare(old_wallet_entries.at(i)->password(),
+                                new_wallet_entries.at(j)->password(),
+                                Qt::CaseInsensitive) != 0))
         {
           enable = true;
           break;
@@ -946,7 +887,7 @@ void Smb4KConfigDialog::slotEnableApplyButton()
         }
       }
       
-      if ( enable )
+      if (enable)
       {
         break;
       }
@@ -964,18 +905,18 @@ void Smb4KConfigDialog::slotEnableApplyButton()
   // Check the custom settings.
   Smb4KCustomOptionsPage *custom_options = m_custom_options->widget()->findChild<Smb4KCustomOptionsPage *>();
   
-  if ( !enable && custom_options && custom_options->customSettingsMaybeChanged() )
+  if (!enable && custom_options && custom_options->customSettingsMaybeChanged())
   {
     QList<Smb4KCustomOptions *> new_list = custom_options->getCustomOptions();
     QList<Smb4KCustomOptions *> old_list = Smb4KCustomOptionsManager::self()->customOptions();
     
-    if ( new_list.size() == old_list.size() )
+    if (new_list.size() == old_list.size())
     {
-      for ( int i = 0; i < new_list.size(); ++i )
+      for (int i = 0; i < new_list.size(); ++i)
       {
-        for ( int j = 0; j < old_list.size(); ++j )
+        for (int j = 0; j < old_list.size(); ++j)
         {
-          if ( !new_list[i]->equals( old_list.at( j ) ) )
+          if (!new_list[i]->equals(old_list.at(j)))
           {
             enable = true;
             break;
@@ -986,7 +927,7 @@ void Smb4KConfigDialog::slotEnableApplyButton()
           }
         }
         
-        if ( enable )
+        if (enable)
         {
           break;
         }
@@ -1005,8 +946,17 @@ void Smb4KConfigDialog::slotEnableApplyButton()
   {
     // Do nothing
   }
+
+  QPushButton *applyButton = buttonBox()->button(QDialogButtonBox::Apply);
   
-  enableButtonApply( enable );
+  if (applyButton)
+  {
+    applyButton->setEnabled(enable);
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 

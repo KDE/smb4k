@@ -28,11 +28,9 @@
 #define SMB4KSAMBAOPTIONSPAGE_H
 
 // Qt includes
-#include <QList>
-#include <QListWidgetItem>
-
-// KDE includes
-#include <ktabwidget.h>
+#include <QtCore/QList>
+#include <QtWidgets/QListWidgetItem>
+#include <QtWidgets/QTabWidget>
 
 /**
  * This class manages the configuration dialog of the options
@@ -43,7 +41,7 @@
  */
 
 
-class Smb4KSambaOptionsPage : public KTabWidget
+class Smb4KSambaOptionsPage : public QTabWidget
 {
   Q_OBJECT
 
@@ -58,7 +56,7 @@ class Smb4KSambaOptionsPage : public KTabWidget
      *
      * @param name              This widget's name
      */
-    explicit Smb4KSambaOptionsPage( QWidget *parent = 0 );
+    explicit Smb4KSambaOptionsPage(QWidget *parent = 0);
 
     /**
      * The destructor.
