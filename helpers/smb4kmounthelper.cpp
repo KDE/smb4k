@@ -31,19 +31,18 @@
 #include "smb4kmounthelper.h"
 
 // Qt includes
-#include <QProcessEnvironment>
-#include <QDebug>
-#include <QLatin1String>
+#include <QtCore/QProcessEnvironment>
+#include <QtCore/QDebug>
+#include <QtCore/QLatin1String>
+#include <QtCore/QUrl>
 
 // KDE includes
-#include <kglobal.h>
-#include <kstandarddirs.h>
-#include <klocale.h>
-#include <kprocess.h>
-#include <kmountpoint.h>
-#include <kurl.h>
+#include <KAuth/KAuthHelperSupport>
+#include <KCoreAddons/KProcess>
+#include <KI18n/KLocalizedString>
+#include <KIOCore/KMountPoint>
 
-KDE4_AUTH_HELPER_MAIN( "net.sourceforge.smb4k.mounthelper", Smb4KMountHelper )
+KAUTH_HELPER_MAIN("net.sourceforge.smb4k.mounthelper", Smb4KMountHelper);
 
 
 ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
@@ -52,7 +51,7 @@ ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
   // The mountpoint is a unique and can be used to
   // find the share.
   reply.addData("mh_mountpoint", args["mh_mountpoint"]);
-  
+
   KProcess proc(this);
   proc.setOutputChannelMode(KProcess::SeparateChannels);
   proc.setProcessEnvironment(QProcessEnvironment::systemEnvironment());
@@ -71,7 +70,7 @@ ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
   {
     // Do nothing
   }
-  
+
   // Set the mount command here.
   QStringList command;
 #if defined(Q_OS_LINUX)
@@ -101,7 +100,7 @@ ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
       // Check if there is a password prompt. If there is one, pass
       // the password to it.
       QByteArray out = proc.readAllStandardError();
-      
+
       if (out.startsWith("Password:"))
       {
         proc.write(args["mh_url"].toUrl().password().toUtf8());
@@ -131,7 +130,7 @@ ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
     {
       if (!user_kill)
       {
-        reply.setErrorCode(ActionReply::HelperError);
+        reply.setType(ActionReply::HelperErrorType);
         reply.setErrorDescription(i18n("The mount process crashed."));
         return reply;
       }
@@ -149,13 +148,12 @@ ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
   }
   else
   {
-    reply.setErrorCode(ActionReply::HelperError);
+    reply.setType(ActionReply::HelperErrorType);
     reply.setErrorDescription(i18n("The mount process could not be started."));
   }
 
   return reply;
 }
-
 
 
 ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
@@ -193,7 +191,7 @@ ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
 
   if (!mountpoint_ok)
   {
-    reply.setErrorCode(ActionReply::HelperError);
+    reply.setType(ActionReply::HelperErrorType);
     reply.setErrorDescription(i18n("The mountpoint is invalid."));
     return reply;
   }
@@ -242,7 +240,7 @@ ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
     {
       if (!user_kill)
       {
-        reply.setErrorCode(ActionReply::HelperError);
+        reply.setType(ActionReply::HelperErrorType);
         reply.setErrorDescription(i18n("The unmount process crashed."));
         return reply;
       }
@@ -260,11 +258,10 @@ ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
   }
   else
   {
-    reply.setErrorCode(ActionReply::HelperError);
+    reply.setType(ActionReply::HelperErrorType);
     reply.setErrorDescription(i18n("The unmount process could not be started."));
   }
 
   return reply;
 }
 
-#include "smb4kmounthelper.moc"
