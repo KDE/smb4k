@@ -2,7 +2,7 @@
     smb4khomesshareshandler  -  This class handles the homes shares.
                              -------------------
     begin                : Do Aug 10 2006
-    copyright            : (C) 2006-2014 by Alexander Reinholdt
+    copyright            : (C) 2006-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -32,10 +32,8 @@
 #include <QtCore/QStringList>
 #include <QtCore/QList>
 #include <QtCore/QScopedPointer>
+#include <QtWidgets/QDialog>
 
-// KDE includes
-#include <kdialog.h>
-#include <kdemacros.h>
 
 // forward declarations
 class Smb4KShare;
@@ -52,7 +50,7 @@ class Smb4KProfileManager;
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class KDE_EXPORT Smb4KHomesSharesHandler : public QObject
+class Q_DECL_EXPORT Smb4KHomesSharesHandler : public QObject
 {
   Q_OBJECT
 
@@ -63,7 +61,7 @@ class KDE_EXPORT Smb4KHomesSharesHandler : public QObject
     /**
      * The constructor
      */
-    explicit Smb4KHomesSharesHandler( QObject *parent = 0 );
+    explicit Smb4KHomesSharesHandler(QObject *parent = 0);
 
     /**
      * The destructor
@@ -92,9 +90,9 @@ class KDE_EXPORT Smb4KHomesSharesHandler : public QObject
      *
      * @returns TRUE if user has been chosen and FALSE otherwise.
      */
-    bool specifyUser( Smb4KShare *share, 
+    bool specifyUser(Smb4KShare *share, 
                       bool overwrite = true, 
-                      QWidget *parent = 0 );
+                      QWidget *parent = 0);
     
     /**
      * Return the list of users defined for a certain homes share.
@@ -103,7 +101,7 @@ class KDE_EXPORT Smb4KHomesSharesHandler : public QObject
      * 
      * @returns a list of users
      */
-    QStringList homesUsers( Smb4KShare *share );
+    QStringList homesUsers(Smb4KShare *share);
     
   protected Q_SLOTS:
     /**
@@ -141,14 +139,14 @@ class KDE_EXPORT Smb4KHomesSharesHandler : public QObject
     /**
      * Find the homes user for a specific share
      */
-    void findHomesUsers( Smb4KShare *share, 
-                         QStringList *users );
+    void findHomesUsers(Smb4KShare *share, 
+                         QStringList *users);
     
     /**
      * Add user to a homes share
      */
-    void addHomesUsers( Smb4KShare *share,
-                        QStringList *users );
+    void addHomesUsers(Smb4KShare *share,
+                        QStringList *users);
     
     /**
      * Migrates one profile to another.

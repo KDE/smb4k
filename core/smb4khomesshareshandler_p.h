@@ -33,10 +33,12 @@
 
 // Qt includes
 #include <QtCore/QStringList>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QPushButton>
 #include <QtNetwork/QHostAddress>
 
 // KDE includes
-#include <kcombobox.h>
+#include <KCompletion/KComboBox>
 
 
 class Smb4KHomesUsers
@@ -45,13 +47,13 @@ class Smb4KHomesUsers
     /**
      * Constructor
      */
-    Smb4KHomesUsers( const Smb4KShare &share,
-                     const QStringList &users );
+    Smb4KHomesUsers(const Smb4KShare &share,
+                     const QStringList &users);
     
     /**
      * Copy constructor
      */
-    Smb4KHomesUsers( const Smb4KHomesUsers &users );
+    Smb4KHomesUsers(const Smb4KHomesUsers &users);
     
     /**
      * Empty constructor
@@ -133,7 +135,7 @@ class Smb4KHomesUsers
 };
 
 
-class Smb4KHomesUserDialog : public KDialog
+class Smb4KHomesUserDialog : public QDialog
 {
   Q_OBJECT
   
@@ -141,7 +143,7 @@ class Smb4KHomesUserDialog : public KDialog
     /**
      * Constructor
      */
-    explicit Smb4KHomesUserDialog( Smb4KShare *share, QWidget *parent = 0 );
+    explicit Smb4KHomesUserDialog(Smb4KShare *share, QWidget *parent = 0);
     
     /**
      * Destructor
@@ -151,7 +153,7 @@ class Smb4KHomesUserDialog : public KDialog
     /**
      * Set the user names
      */
-    void setUserNames( const QStringList &users );
+    void setUserNames(const QStringList &users);
     
     /**
      * Get the user names
@@ -170,7 +172,7 @@ class Smb4KHomesUserDialog : public KDialog
      *
      * @param text        The text in the combo box
      */
-    void slotTextChanged( const QString &text );
+    void slotTextChanged(const QString &text);
 
     /**
      * This slot is called if the User1 button, i.e. the "Clear" button
@@ -192,6 +194,9 @@ class Smb4KHomesUserDialog : public KDialog
     
   private:
     void setupView();
+    QPushButton *m_clear_button;
+    QPushButton *m_ok_button;
+    QPushButton *m_cancel_button;
     KComboBox *m_user_combo;
     Smb4KShare *m_share;
 };

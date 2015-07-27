@@ -33,18 +33,23 @@
 #include "smb4ksettings.h"
 
 // Qt includes
-#include <QtGui/QWidget>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QGridLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QLineEdit>
+#include <QtCore/QString>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QDialogButtonBox>
 
 // KDE includes
-#include <klocale.h>
+#define TRANSLATION_DOMAIN "smb4k-core"
+#include <KI18n/KLocalizedString>
+#include <KIconThemes/KIconLoader>
+#include <KConfigGui/KWindowConfig>
 
-
-Smb4KHomesUsers::Smb4KHomesUsers( const Smb4KShare &s, const QStringList &u )
+Smb4KHomesUsers::Smb4KHomesUsers(const Smb4KShare &s, const QStringList &u)
 {
   m_workgroup_name = s.workgroupName();
   m_host_name      = s.hostName();
@@ -54,7 +59,7 @@ Smb4KHomesUsers::Smb4KHomesUsers( const Smb4KShare &s, const QStringList &u )
 }
 
 
-Smb4KHomesUsers::Smb4KHomesUsers( const Smb4KHomesUsers &u )
+Smb4KHomesUsers::Smb4KHomesUsers(const Smb4KHomesUsers &u)
 {
   m_workgroup_name = u.workgroupName();
   m_host_name      = u.hostName();
@@ -148,28 +153,18 @@ void Smb4KHomesUsers::setProfile(const QString& profile)
 
 
 
-Smb4KHomesUserDialog::Smb4KHomesUserDialog( Smb4KShare *share, QWidget *parent ) 
-: KDialog( parent ), m_share(share)
+Smb4KHomesUserDialog::Smb4KHomesUserDialog(Smb4KShare *share, QWidget *parent) 
+: QDialog(parent), m_share(share)
 {
-  setCaption( i18n( "Specify User" ) );
-  setButtons( KDialog::User1|KDialog::Ok|KDialog::Cancel );
-  setDefaultButton( KDialog::Ok );
-  setButtonGuiItem( KDialog::User1, KGuiItem( i18n( "Clear List" ), "edit-clear", 0, 0 ) );
-  enableButton( KDialog::Ok, false );
-  enableButton( KDialog::User1, false );
+  setWindowTitle(i18n("Specify User"));
   
   setupView();
   
-  connect( m_user_combo, SIGNAL(textChanged(QString)), SLOT(slotTextChanged(QString)) );
-  connect( m_user_combo->lineEdit(), SIGNAL(editingFinished()), SLOT(slotHomesUserEntered()) );
-  connect( this, SIGNAL(user1Clicked()), SLOT(slotClearClicked()) );
-  connect( this, SIGNAL(okClicked()), SLOT(slotOkClicked()) );
+  setMinimumWidth(sizeHint().width() > 350 ? sizeHint().width() : 350);
   
-  setMinimumWidth( sizeHint().width() > 350 ? sizeHint().width() : 350 );
-  
-  KConfigGroup group( Smb4KSettings::self()->config(), "HomesUserDialog" );
-  restoreDialogSize( group );
-  m_user_combo->completionObject()->setItems( group.readEntry( "HomesUsersCompletion", QStringList() ) );
+  KConfigGroup group(Smb4KSettings::self()->config(), "HomesUserDialog");
+  KWindowConfig::restoreWindowSize(windowHandle(), group);
+  m_user_combo->completionObject()->setItems(group.readEntry("HomesUsersCompletion", QStringList()));
 }
 
 
@@ -180,62 +175,78 @@ Smb4KHomesUserDialog::~Smb4KHomesUserDialog()
 
 void Smb4KHomesUserDialog::setupView()
 {
-  QWidget *main_widget = new QWidget( this );
-  setMainWidget( main_widget );
+  QVBoxLayout *layout = new QVBoxLayout(this);
+  layout->setSpacing(5);
 
-  QVBoxLayout *layout = new QVBoxLayout( main_widget );
-  layout->setSpacing( 5 );
-  layout->setMargin( 0 );
+  QWidget *description = new QWidget(this);
 
-  QWidget *description = new QWidget( main_widget );
+  QHBoxLayout *desc_layout = new QHBoxLayout(description);
+  desc_layout->setSpacing(5);
+  desc_layout->setMargin(0);
 
-  QHBoxLayout *desc_layout = new QHBoxLayout( description );
-  desc_layout->setSpacing( 5 );
-  desc_layout->setMargin( 0 );
+  QLabel *pixmap = new QLabel(description);
+  QPixmap user_pix = KDE::icon("user-identity").pixmap(KIconLoader::SizeHuge);
+  pixmap->setPixmap(user_pix);
+  pixmap->setAlignment(Qt::AlignBottom);
 
-  QLabel *pixmap = new QLabel( description );
-  QPixmap user_pix = KIcon( "user-identity" ).pixmap( KIconLoader::SizeHuge );
-  pixmap->setPixmap( user_pix );
-  pixmap->setAlignment( Qt::AlignBottom );
+  QLabel *label = new QLabel(i18n("Please specify a username for share<br><b>%1</b>.", m_share->unc()), description);
+  label->setWordWrap(true);
+  label->setAlignment(Qt::AlignBottom);
 
-  QLabel *label = new QLabel( i18n( "Please specify a username for share <b>%1</b>." ).arg(m_share->unc()), description );
-  label->setWordWrap( true );
-  label->setAlignment( Qt::AlignBottom );
-
-  desc_layout->addWidget( pixmap, 0 );
-  desc_layout->addWidget( label, Qt::AlignBottom );
+  desc_layout->addWidget(pixmap, 0);
+  desc_layout->addWidget(label, Qt::AlignBottom);
   
-  QWidget *input = new QWidget( main_widget );
+  QWidget *input = new QWidget(this);
   
-  QGridLayout *input_layout = new QGridLayout( input );
-  input_layout->setSpacing( 5 );
-  input_layout->setMargin( 0 );
-  input_layout->setColumnStretch( 0, 0 );
-  input_layout->setColumnStretch( 1, 1 );
+  QGridLayout *input_layout = new QGridLayout(input);
+  input_layout->setSpacing(5);
+  input_layout->setMargin(0);
+  input_layout->setColumnStretch(0, 0);
+  input_layout->setColumnStretch(1, 1);
   
-  QLabel *input_label = new QLabel( i18n( "User:" ), input );
+  QLabel *input_label = new QLabel(i18n("User:"), input);
 
-  m_user_combo = new KComboBox( true, input );
-  m_user_combo->setDuplicatesEnabled( false );
-  m_user_combo->setEditable( true );
+  m_user_combo = new KComboBox(true, input);
+  m_user_combo->setDuplicatesEnabled(false);
+  m_user_combo->setEditable(true);
   
-  input_layout->addWidget( input_label, 0, 0, 0 );
-  input_layout->addWidget( m_user_combo, 0, 1, 0 );
+  input_layout->addWidget(input_label, 0, 0, 0);
+  input_layout->addWidget(m_user_combo, 0, 1, 0);
+  
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Horizontal, this);
+  m_clear_button = buttonBox->addButton(i18n("Clear List"), QDialogButtonBox::ActionRole);
+  m_clear_button->setIcon(KDE::icon("edit-clear"));
+  m_clear_button->setEnabled(false);
+  m_ok_button = buttonBox->addButton(QDialogButtonBox::Ok);
+  m_ok_button->setEnabled(false);
+  m_cancel_button = buttonBox->addButton(QDialogButtonBox::Cancel);
+  
+  m_ok_button->setShortcut(Qt::CTRL|Qt::Key_Return);
+  m_cancel_button->setShortcut(Qt::Key_Escape);
+  
+  m_ok_button->setDefault(true);
 
-  layout->addWidget( description, 0 );
-  layout->addWidget( input, 0 );
+  layout->addWidget(description, 0);
+  layout->addWidget(input, 0);
+  layout->addWidget(buttonBox, 0);
   
   m_user_combo->setFocus();
+  
+  connect(m_user_combo, SIGNAL(currentTextChanged(QString)), SLOT(slotTextChanged(QString)));
+  connect(m_user_combo->lineEdit(), SIGNAL(editingFinished()), SLOT(slotHomesUserEntered()));
+  connect(m_clear_button, SIGNAL(clicked()), SLOT(slotClearClicked()));
+  connect(m_ok_button, SIGNAL(clicked()), SLOT(slotOkClicked()));
+  connect(m_cancel_button, SIGNAL(clicked()), SLOT(reject()));
 }
 
 
-void Smb4KHomesUserDialog::setUserNames( const QStringList &users )
+void Smb4KHomesUserDialog::setUserNames(const QStringList &users)
 {
-  if ( !users.isEmpty() )
+  if (!users.isEmpty())
   {
-    m_user_combo->addItems( users );
-    m_user_combo->setCurrentItem( "" );
-    enableButton( KDialog::User1, true );
+    m_user_combo->addItems(users);
+    m_user_combo->setCurrentItem("");
+    m_clear_button->setEnabled(true);
   }
   else
   {
@@ -248,12 +259,12 @@ QStringList Smb4KHomesUserDialog::userNames()
 {
   QStringList users;
   
-  for ( int i = 0; i < m_user_combo->count(); ++i )
+  for (int i = 0; i < m_user_combo->count(); ++i)
   {
-    users << m_user_combo->itemText( i );
+    users << m_user_combo->itemText(i);
   }
   
-  if ( !users.contains( m_user_combo->currentText() ) )
+  if (!users.contains(m_user_combo->currentText()))
   {
     users << m_user_combo->currentText();
   }
@@ -266,16 +277,9 @@ QStringList Smb4KHomesUserDialog::userNames()
 }
 
 
-void Smb4KHomesUserDialog::slotTextChanged( const QString &text )
+void Smb4KHomesUserDialog::slotTextChanged(const QString &text)
 {
-  if ( !text.isEmpty() )
-  {
-    enableButtonOk( true );
-  }
-  else
-  {
-    enableButtonOk( false );
-  }
+  m_ok_button->setEnabled(!text.isEmpty());
 }
 
 
@@ -283,15 +287,16 @@ void Smb4KHomesUserDialog::slotClearClicked()
 {
   m_user_combo->clearEditText();
   m_user_combo->clear();
-  enableButton( KDialog::User1, false );
+  m_clear_button->setEnabled(false);
 }
 
 
 void Smb4KHomesUserDialog::slotOkClicked()
 {
-  KConfigGroup group( Smb4KSettings::self()->config(), "HomesUserDialog" );
-  saveDialogSize( group, KConfigGroup::Normal );
-  group.writeEntry( "HomesUsersCompletion", m_user_combo->completionObject()->items() );
+  KConfigGroup group(Smb4KSettings::self()->config(), "HomesUserDialog");
+  KWindowConfig::saveWindowSize(windowHandle(), group);
+  group.writeEntry("HomesUsersCompletion", m_user_combo->completionObject()->items());
+  accept();
 }
 
 
@@ -299,9 +304,9 @@ void Smb4KHomesUserDialog::slotHomesUserEntered()
 {
   KCompletion *completion = m_user_combo->completionObject();
 
-  if ( !m_user_combo->currentText().isEmpty() )
+  if (!m_user_combo->currentText().isEmpty())
   {
-    completion->addItem( m_user_combo->currentText() );
+    completion->addItem(m_user_combo->currentText());
   }
   else
   {
@@ -309,4 +314,3 @@ void Smb4KHomesUserDialog::slotHomesUserEntered()
   }
 }
 
-#include "smb4khomesshareshandler_p.moc"
