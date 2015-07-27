@@ -1,10 +1,10 @@
-project( smb4k-qml )
+project(smb4k-qml)
 
-install( DIRECTORY package/
-         DESTINATION ${DATA_INSTALL_DIR}/plasma/plasmoids/smb4k-qml 
-         PATTERN .svn EXCLUDE )
+install(DIRECTORY package/
+        DESTINATION ${KDE_INSTALL_DATADIR}/plasma/plasmoids/smb4k-qml 
+        PATTERN .svn EXCLUDE)
  
-install( FILES package/metadata.desktop
-         DESTINATION ${SERVICES_INSTALL_DIR} RENAME plasma-applet-smb4k-qml.desktop)
+install(FILES package/metadata.desktop
+        DESTINATION ${KDE_INSTALL_KSERVICES5DIR} RENAME plasma-applet-smb4k-qml.desktop)
 
-add_subdirectory( plugin )
+add_subdirectory(plugin)

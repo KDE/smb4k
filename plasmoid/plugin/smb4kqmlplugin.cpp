@@ -38,7 +38,7 @@
 #include "core/smb4kdeclarative.h"
 
 // Qt includes
-#include <QtDeclarative/qdeclarative.h>
+#include <QtQml/QtQml>
 
 
 void Smb4KQMLPlugin::registerTypes(const char *uri)
@@ -49,4 +49,3 @@ void Smb4KQMLPlugin::registerTypes(const char *uri)
   qmlRegisterType<Smb4KDeclarative>(uri, 1, 0, "CoreInterface");
 }
 
-Q_EXPORT_PLUGIN2( Smb4KQML, Smb4KQMLPlugin );

@@ -27,14 +27,16 @@
 #define SMB4KQMLPLUGIN_H
 
 // Qt includes
-#include <QtDeclarative/QDeclarativeExtensionPlugin>
+#include <QtCore/QtPlugin>
+#include <QtQml/QQmlExtensionPlugin>
 
-class Smb4KQMLPlugin : public QDeclarativeExtensionPlugin
+class Smb4KQMLPlugin : public QQmlExtensionPlugin
 {
   Q_OBJECT
+  Q_PLUGIN_METADATA(IID "net.sourceforge.smb4k.smb4kqml")
 
   public:
-    void registerTypes( const char *uri );
+    void registerTypes(const char *uri);
 };
 
 #endif
