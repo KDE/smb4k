@@ -2,7 +2,7 @@
     smb4kbookmarkhandler  -  This class handles the bookmarks.
                              -------------------
     begin                : Fr Jan 9 2004
-    copyright            : (C) 2004-2014 by Alexander Reinholdt
+    copyright            : (C) 2004-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -31,11 +31,7 @@
 #include <QtCore/QList>
 #include <QtCore/QScopedPointer>
 #include <QtCore/QUrl>
-#include <QtGui/QWidget>
-#include <QtDeclarative/QDeclarativeListProperty>
-
-// KDE includes
-#include <kdemacros.h>
+#include <QtWidgets/QWidget>
 
 // forward declarations
 class Smb4KBookmark;
@@ -53,7 +49,7 @@ class Smb4KProfileManager;
  * @author         Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class KDE_EXPORT Smb4KBookmarkHandler : public QObject
+class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
 {
   Q_OBJECT  
   
