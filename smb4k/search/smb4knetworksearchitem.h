@@ -3,7 +3,7 @@
     box item for Smb4K.
                              -------------------
     begin                : So Jun 3 2007
-    copyright            : (C) 2007-2012 by Alexander Reinholdt
+    copyright            : (C) 2007-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -31,10 +31,8 @@
 #include "core/smb4kshare.h"
 
 // Qt includes
-#include <QListWidgetItem>
-
-// KDE includes
-#include <klistwidget.h>
+#include <QtWidgets/QListWidget>
+#include <QtWidgets/QListWidgetItem>
 
 /**
  * This class is an enhanced version of QListWidgetItem, that is used
@@ -63,8 +61,7 @@ class Smb4KNetworkSearchItem : public QListWidgetItem
      * @param share             The share item that represents the search
      *                          result.
      */
-    Smb4KNetworkSearchItem( KListWidget *listWidget,
-                            Smb4KShare *share );
+    Smb4KNetworkSearchItem(QListWidget *listWidget, Smb4KShare *share);
 
     /**
      * The constructor for a "The network search returned no results."
@@ -72,7 +69,7 @@ class Smb4KNetworkSearchItem : public QListWidgetItem
      *
      * @param listWidget        The parent list widget.
      */
-    explicit Smb4KNetworkSearchItem( KListWidget *listWidget );
+    explicit Smb4KNetworkSearchItem(QListWidget *listWidget);
 
     /**
      * The destructor
@@ -95,7 +92,7 @@ class Smb4KNetworkSearchItem : public QListWidgetItem
      * @param share             The share that is to be used to update 
      *                          this item.
      */
-    void update( Smb4KShare *share );
+    void update(Smb4KShare *share);
 
   private:
     /**

@@ -3,7 +3,7 @@
     of Smb4K.
                              -------------------
     begin                : Fr Jun 1 2007
-    copyright            : (C) 2007-2013 by Alexander Reinholdt
+    copyright            : (C) 2007-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -27,11 +27,13 @@
 #ifndef SMB4KNETWORKSEARCHPART_H
 #define SMB4KNETWORKSEARCHPART_H
 
+// Qt includes
+#include <QtWidgets/QAction>
+#include <QtWidgets/QListWidgetItem>
+
 // KDE includes
-#include <kparts/part.h>
-#include <kparts/genericfactory.h>
-#include <klistwidget.h>
-#include <kactionmenu.h>
+#include <KParts/Part>
+#include <KWidgetsAddons/KActionMenu>
 
 // forward declarations
 class Smb4KNetworkSearch;
@@ -60,9 +62,9 @@ class Smb4KNetworkSearchPart : public KParts::Part
      *                            arguments are recognized:
      *                            silent="true"|"false"
      */
-    explicit Smb4KNetworkSearchPart( QWidget *parentWidget = 0,
-                                     QObject *parent = 0,
-                                     const QList<QVariant> &args = QList<QVariant>() );
+    explicit Smb4KNetworkSearchPart(QWidget *parentWidget = 0,
+                                    QObject *parent = 0,
+                                    const QList<QVariant> &args = QList<QVariant>());
 
     /**
      * The destructor.
@@ -80,7 +82,7 @@ class Smb4KNetworkSearchPart : public KParts::Part
     /**
      * Reimplemented from KParts::Part.
      */
-    void customEvent( QEvent *e );
+    void customEvent(QEvent *e);
 
   protected slots:
     /**
@@ -91,14 +93,14 @@ class Smb4KNetworkSearchPart : public KParts::Part
      *
      * @param known               TRUE if item is known and FALSE otherwise
      */
-    void slotReceivedSearchResult( Smb4KShare *share );
+    void slotReceivedSearchResult(Smb4KShare *share);
     /**
      * This slot is connected to the Smb4KSearch::aboutToStart() signal.
      *
      * @param string              The search string for that the search is to
      *                            be performed.
      */
-    void slotSearchAboutToStart( const QString &string );
+    void slotSearchAboutToStart(const QString &string);
 
     /**
      * This slot is connected to the Smb4KSearch::finished() signal.
@@ -106,7 +108,7 @@ class Smb4KNetworkSearchPart : public KParts::Part
      * @param string              The search string for that the search was
      *                            performed.
      */
-    void slotSearchFinished( const QString &string );
+    void slotSearchFinished(const QString &string);
 
     /**
      * This slot is connected to the Smb4KMounter::mounted() signal and marks
@@ -114,7 +116,7 @@ class Smb4KNetworkSearchPart : public KParts::Part
      * 
      * @param share               The share item
      */
-    void slotShareMounted( Smb4KShare *share );
+    void slotShareMounted(Smb4KShare *share);
     
     /**
      * This slot is connected to the Smb4KMounter::unmounted() signal and unmarks
@@ -122,7 +124,7 @@ class Smb4KNetworkSearchPart : public KParts::Part
      * 
      * @param share               The share item
      */
-    void slotShareUnmounted( Smb4KShare *share );
+    void slotShareUnmounted(Smb4KShare *share);
 
     /**
      * This slot is invoked, when a user double clicks an item. It adds the item
@@ -130,7 +132,7 @@ class Smb4KNetworkSearchPart : public KParts::Part
      *
      * @param item                The item that has been double clicked.
      */
-    void slotItemDoubleClicked( QListWidgetItem *item );
+    void slotItemDoubleClicked(QListWidgetItem *item);
 
     /**
      * This slot is invoked when the user pressed the return keyboard key. It
@@ -144,7 +146,7 @@ class Smb4KNetworkSearchPart : public KParts::Part
      *
      * @param checked             TRUE if the action is checked.
      */
-    void slotClearActionTriggered( bool checked );
+    void slotClearActionTriggered(bool checked);
 
     /**
      * This slot is invoked when the Mount action is triggered. It mounts the
@@ -152,14 +154,14 @@ class Smb4KNetworkSearchPart : public KParts::Part
      *
      * @param checked             TRUE if the action is checked.
      */
-    void slotMountActionTriggered( bool checked );
+    void slotMountActionTriggered(bool checked);
 
     /**
      * Change the state of the 'Mount'/'Unmount' dual action.
      *
      * @param active              TRUE if the action is in the active state.
      */
-    void slotMountActionChanged( bool active );
+    void slotMountActionChanged(bool active);
 
     /**
      * This slot is invoked when the text in the combo box changed. It enables
@@ -167,7 +169,7 @@ class Smb4KNetworkSearchPart : public KParts::Part
      *
      * @param text                The text in the line edit of the combo box.
      */
-    void slotComboBoxTextChanged( const QString &text );
+    void slotComboBoxTextChanged(const QString &text);
 
     /**
      * This slot is invoked when the item selection changed. It enables and
@@ -182,7 +184,7 @@ class Smb4KNetworkSearchPart : public KParts::Part
      * @param pos                 The postition where the context menu should
      *                            be opened.
      */
-    void slotContextMenuRequested( const QPoint &pos );
+    void slotContextMenuRequested(const QPoint &pos);
     
     /**
      * This slot is called when the application is about to quit.
@@ -194,14 +196,14 @@ class Smb4KNetworkSearchPart : public KParts::Part
      *
      * @param group               The icon group
      */
-    void slotIconSizeChanged( int group );
+    void slotIconSizeChanged(int group);
     
     /**
      * This action is invoked when the Search/Abort dual action is triggered
      *
      * @param checked             TRUE if the action is checked
      */
-    void slotSearchAbortActionTriggered( bool checked );
+    void slotSearchAbortActionTriggered(bool checked);
     
     /**
      * This action is invoked when the active state of the Search/Abort
@@ -209,7 +211,7 @@ class Smb4KNetworkSearchPart : public KParts::Part
      * 
      * @param active              active or inactive
      */
-    void slotSearchAbortActionChanged( bool active );
+    void slotSearchAbortActionChanged(bool active);
     
     /**
      * This slot is invoked when a mount or unmount finished. It is used
@@ -219,7 +221,7 @@ class Smb4KNetworkSearchPart : public KParts::Part
      * 
      * @param process             The kind of process
      */
-    void slotMounterFinished( Smb4KShare *share, int process );
+    void slotMounterFinished(Smb4KShare *share, int process);
 
   private:
     /**
@@ -237,11 +239,6 @@ class Smb4KNetworkSearchPart : public KParts::Part
      */
     KActionMenu *m_menu;
 
-    /**
-     * The menu title action
-     */
-    QAction *m_menu_title;
-    
     /**
      * Emit status messages
      */

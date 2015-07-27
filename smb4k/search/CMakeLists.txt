@@ -1,25 +1,31 @@
-include_directories( 
-  ${KDE4_INCLUDES} 
-  ${KDE4_INCLUDE_DIR} 
-  ${QT_INCLUDES} )
+include_directories(
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_BINARY_DIR}
+  ${CMAKE_SOURCE_DIR} 
+  ${CMAKE_BINARY_DIR}  
+  ${CMAKE_SOURCE_DIR}/core 
+  ${CMAKE_BINARY_DIR}/core
+  ${CMAKE_SOURCE_DIR}/smb4k 
+  ${CMAKE_BINARY_DIR}/smb4k)
 
-########### next target ###############
-
-set( smb4knetworksearch_PART_SRCS 
+set(smb4knetworksearch_PART_SRCS 
   smb4knetworksearch.cpp 
   smb4knetworksearch_part.cpp 
-  smb4knetworksearchitem.cpp )
+  smb4knetworksearchitem.cpp)
 
-kde4_add_plugin( smb4knetworksearch ${smb4knetworksearch_PART_SRCS} )
+add_library(smb4knetworksearch MODULE ${smb4knetworksearch_PART_SRCS})
 
-target_link_libraries( smb4knetworksearch 
-  ${KDE4_KDECORE_LIBS} 
-  smb4kcore 
-  ${KDE4_KPARTS_LIBS} )
+target_link_libraries(smb4knetworksearch 
+  Qt5::Core
+  Qt5::Gui
+  Qt5::Widgets
+  KF5::CoreAddons
+  KF5::WidgetsAddons
+  KF5::XmlGui
+  KF5::I18n
+  KF5::IconThemes
+  KF5::Parts
+  smb4kcore)
 
-install( TARGETS smb4knetworksearch DESTINATION ${PLUGIN_INSTALL_DIR} )
-
-
-########### install files ###############
-
-install( FILES  smb4knetworksearch_part.rc DESTINATION ${DATA_INSTALL_DIR}/smb4k )
+install(TARGETS smb4knetworksearch DESTINATION ${KDE_INSTALL_PLUGINDIR})
+install(FILES  smb4knetworksearch_part.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/smb4k)

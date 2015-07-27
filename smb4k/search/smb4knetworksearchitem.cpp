@@ -3,7 +3,7 @@
     box item for Smb4K.
                              -------------------
     begin                : So Jun 3 2007
-    copyright            : (C) 2007-2012 by Alexander Reinholdt
+    copyright            : (C) 2007-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -33,23 +33,22 @@
 #include "smb4knetworksearch.h"
 
 // KDE includes
-#include <kiconloader.h>
-#include <klocale.h>
-#include <kicon.h>
+#include <KIconThemes/KIconLoader>
+#include <KI18n/KLocalizedString>
 
 
-Smb4KNetworkSearchItem::Smb4KNetworkSearchItem( KListWidget *listWidget, Smb4KShare *share )
-: QListWidgetItem( listWidget, Share )
+Smb4KNetworkSearchItem::Smb4KNetworkSearchItem(QListWidget *listWidget, Smb4KShare *share)
+: QListWidgetItem(listWidget, Share)
 {
-  m_share = new Smb4KShare( *share );
+  m_share = new Smb4KShare(*share);
   setupItem();
 }
 
 
-Smb4KNetworkSearchItem::Smb4KNetworkSearchItem( KListWidget *listWidget )
-: QListWidgetItem( listWidget, Failure )
+Smb4KNetworkSearchItem::Smb4KNetworkSearchItem(QListWidget *listWidget)
+: QListWidgetItem(listWidget, Failure)
 {
-  m_share = NULL;
+  m_share = 0;
   setupItem();
 }
 
@@ -62,29 +61,29 @@ Smb4KNetworkSearchItem::~Smb4KNetworkSearchItem()
 
 void Smb4KNetworkSearchItem::setupItem()
 {
-  switch( type() )
+  switch(type())
   {
     case Share:
     {
-      setText( m_share->unc() );
+      setText(m_share->unc());
 
-      if ( m_share->isMounted() )
+      if (m_share->isMounted())
       {
         QStringList overlays;
-        overlays.append( "emblem-mounted" );
-        setIcon( KIcon( "folder-remote", KIconLoader::global(), overlays ) );
+        overlays.append("emblem-mounted");
+        setIcon(KDE::icon("folder-remote", overlays));
       }
       else
       {
-        setIcon( KIcon( "folder-remote" ) );
+        setIcon(KDE::icon("folder-remote"));
       }
 
       break;
     }
     case Failure:
     {
-      setText( i18n( "The search returned no results." ) );
-      setIcon( KIcon( "dialog-error" ) );
+      setText(i18n("The search returned no results."));
+      setIcon(KDE::icon("dialog-error"));
       break;
     }
     default:
@@ -95,11 +94,11 @@ void Smb4KNetworkSearchItem::setupItem()
 }
 
 
-void Smb4KNetworkSearchItem::update( Smb4KShare *share )
+void Smb4KNetworkSearchItem::update(Smb4KShare *share)
 {
-  m_share->setIsMounted( share->isMounted() );
-  m_share->setPath( share->path() );
-  m_share->setForeign( share->isForeign() );
+  m_share->setIsMounted(share->isMounted());
+  m_share->setPath(share->path());
+  m_share->setForeign(share->isForeign());
 
   setupItem();
 }

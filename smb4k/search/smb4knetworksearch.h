@@ -2,7 +2,7 @@
     smb4ksearchdialog  -  The search dialog widget of Smb4K.
                              -------------------
     begin                : Sa Jun 2 2007
-    copyright            : (C) 2007-2012 by Alexander Reinholdt
+    copyright            : (C) 2007-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -27,20 +27,20 @@
 #define SMB4KNETWORKSEARCH_H
 
 // Qt includes
-#include <QWidget>
-#include <QString>
+#include <QtCore/QString>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QListWidget>
 
 // KDE includes
-#include <klistwidget.h>
-#include <kcombobox.h>
-#include <ktoolbar.h>
+#include <KCompletion/KComboBox>
+#include <KXmlGui/KToolBar>
 
 
 /**
  * This is the search dialog. It enables the user to find servers,
  * that were not found by the regular network scan.
  *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
 
@@ -55,7 +55,7 @@ class Smb4KNetworkSearch : public QWidget
      * @param parent      The parent widget
      */
     
-    explicit Smb4KNetworkSearch( QWidget *parent = 0 );
+    explicit Smb4KNetworkSearch(QWidget *parent = 0);
 
     /**
      * The destructor.
@@ -67,7 +67,7 @@ class Smb4KNetworkSearch : public QWidget
      *
      * @returns a pointer to the list view of this widget.
      */
-    KListWidget *listWidget() { return m_list_widget; }
+    QListWidget *listWidget() { return m_list_widget; }
 
     /**
      * This function returns a pointer to the combo box.
@@ -88,7 +88,7 @@ class Smb4KNetworkSearch : public QWidget
     /**
      * The list box of this widget
      */
-    KListWidget *m_list_widget;
+    QListWidget *m_list_widget;
 
     /**
      * The search combo box.

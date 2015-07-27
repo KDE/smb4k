@@ -2,7 +2,7 @@
     smb4knetworksearch  -  The network search widget of Smb4K.
                              -------------------
     begin                : Sa Jun 2 2007
-    copyright            : (C) 2007-2012 by Alexander Reinholdt
+    copyright            : (C) 2007-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -32,46 +32,45 @@
 #include "smb4knetworksearchitem.h"
 
 // Qt includes
-#include <QGridLayout>
-#include <QLabel>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QLabel>
 
 // KDE includes
-#include <klocale.h>
-#include <kdebug.h>
-#include <kicon.h>
+#include <KI18n/KLocalizedString>
 
-Smb4KNetworkSearch::Smb4KNetworkSearch( QWidget *parent )
-: QWidget( parent )
+
+Smb4KNetworkSearch::Smb4KNetworkSearch(QWidget *parent)
+: QWidget(parent)
 {
-  setFocusPolicy( Qt::WheelFocus );
+  setFocusPolicy(Qt::WheelFocus);
   
-  QGridLayout *layout = new QGridLayout( this );
-  layout->setSpacing( 5 );
+  QGridLayout *layout = new QGridLayout(this);
+  layout->setSpacing(5);
 
   // Tool bar
-  m_toolbar = new KToolBar( this );
-  m_toolbar->setToolBarsLocked( true );
-  m_toolbar->setToolBarsEditable( false );
+  m_toolbar = new KToolBar(this);
+  m_toolbar->setToolBarsLocked(true);
+  m_toolbar->setToolBarsEditable(false);
   
   // Search combo box
-  QLabel *search_item = new QLabel( i18n( "Search item:" ), m_toolbar );
+  QLabel *search_item = new QLabel(i18n("Search item:"), m_toolbar);
 
-  m_combo = new KComboBox( true, m_toolbar );
-  m_combo->setToolTip( i18n( "Enter the search string here." ) );
-  m_combo->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Preferred );
-  m_combo->setCompletionMode( KGlobalSettings::CompletionPopupAuto );
+  m_combo = new KComboBox(true, m_toolbar);
+  m_combo->setToolTip(i18n("Enter the search string here."));
+  m_combo->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+  m_combo->setCompletionMode(KCompletion::CompletionPopupAuto);
   
-  (void) m_toolbar->addWidget( search_item );
-  (void) m_toolbar->addWidget( m_combo );
+  (void) m_toolbar->addWidget(search_item);
+  (void) m_toolbar->addWidget(m_combo);
 
   // List view
-  m_list_widget = new KListWidget( this );
-  m_list_widget->setResizeMode( KListWidget::Adjust );
-  m_list_widget->setWrapping( true );
-  m_list_widget->setContextMenuPolicy( Qt::CustomContextMenu );
+  m_list_widget = new QListWidget(this);
+  m_list_widget->setResizeMode(QListWidget::Adjust);
+  m_list_widget->setWrapping(true);
+  m_list_widget->setContextMenuPolicy(Qt::CustomContextMenu);
 
-  layout->addWidget( m_toolbar, 0, 0, 0 );
-  layout->addWidget( m_list_widget, 1, 0, 0 );
+  layout->addWidget(m_toolbar, 0, 0, 0);
+  layout->addWidget(m_list_widget, 1, 0, 0);
 }
 
 
@@ -79,4 +78,3 @@ Smb4KNetworkSearch::~Smb4KNetworkSearch()
 {
 }
 
-#include "smb4knetworksearch.moc"
