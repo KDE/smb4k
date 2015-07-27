@@ -2,7 +2,7 @@
     smb4knotification  -  This class provides notifications for Smb4K.
                              -------------------
     begin                : Son Jun 27 2010
-    copyright            : (C) 2010-2014 by Alexander Reinholdt
+    copyright            : (C) 2010-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -32,9 +32,7 @@
 #include <QtCore/QDir>
 #include <QtCore/QProcess>
 #include <QtCore/QScopedPointer>
-
-// KDE includes
-#include <kurl.h>
+#include <QtCore/QUrl>
 
 // forward declarations
 class Smb4KBookmark;
@@ -57,14 +55,14 @@ namespace Smb4KNotification
    *
    * @param share     The share that has been mounted
    */
-  KDE_EXPORT void shareMounted( Smb4KShare *share );
+  Q_DECL_EXPORT void shareMounted(Smb4KShare *share);
 
   /**
    * Notify the user that a share has been unmounted.
    *
    * @param share     The share that has been unmounted
    */
-  KDE_EXPORT void shareUnmounted( Smb4KShare *share );
+  Q_DECL_EXPORT void shareUnmounted(Smb4KShare *share);
   
   /**
    * Notify the user that multiple shares have been mounted.
@@ -74,7 +72,7 @@ namespace Smb4KNotification
    * @param actual    The number of mounts that were actually
    *                  mounted.
    */
-  KDE_EXPORT void sharesMounted( int total, int actual );
+  Q_DECL_EXPORT void sharesMounted(int total, int actual);
 
   /**
    * Notify the user that multiple shares have been unmounted at once.
@@ -84,20 +82,20 @@ namespace Smb4KNotification
    * @param actual    The number of unmounts that actually finished
    *                  successfully.
    */
-  KDE_EXPORT void sharesUnmounted( int total, int actual );
+  Q_DECL_EXPORT void sharesUnmounted(int total, int actual);
 
   /**
    * Warn the user that the wallet could not be opened.
    *
    * @param name      The name of the wallet
    */
-  KDE_EXPORT void openingWalletFailed( const QString &name );
+  Q_DECL_EXPORT void openingWalletFailed(const QString &name);
   
   /**
    * Warn the user that the credentials stored in the wallet could not
    * be accessed.
    */
-  KDE_EXPORT void credentialsNotAccessible();
+  Q_DECL_EXPORT void credentialsNotAccessible();
   
   /**
    * Tell the user that the mimetype is not supported and that he/she
@@ -105,7 +103,7 @@ namespace Smb4KNotification
    *
    * @param mimetype  The mimetype
    */
-  KDE_EXPORT void mimetypeNotSupported( const QString &mimetype );
+  Q_DECL_EXPORT void mimetypeNotSupported(const QString &mimetype);
   
   /**
    * Tell the user that this bookmark is already present and that it will
@@ -113,7 +111,7 @@ namespace Smb4KNotification
    *
    * @param bookmark  The bookmark
    */
-  KDE_EXPORT void bookmarkExists( Smb4KBookmark *bookmark );
+  Q_DECL_EXPORT void bookmarkExists(Smb4KBookmark *bookmark);
   
   /**
    * Tell the user that the label he/she chose for the bookmark is already
@@ -121,19 +119,19 @@ namespace Smb4KNotification
    *
    * @param bookmark  The bookmark
    */
-  KDE_EXPORT void bookmarkLabelInUse( Smb4KBookmark *bookmark );
+  Q_DECL_EXPORT void bookmarkLabelInUse(Smb4KBookmark *bookmark);
   
   /**
    * This warning is shown if the entry of the custom master browser
    * is empty.
    */
-  KDE_EXPORT void emptyCustomMasterBrowser();
+  Q_DECL_EXPORT void emptyCustomMasterBrowser();
   
   /**
    * This warning is shown if the configuration file for the Samba suite
    * (smb.conf) could not be loaded.
    */
-  KDE_EXPORT void sambaConfigFileMissing();
+  Q_DECL_EXPORT void sambaConfigFileMissing();
   
   /**
    * This error message is shown if the list of workgroups could not
@@ -141,7 +139,7 @@ namespace Smb4KNotification
    *
    * @param err_msg   The error message
    */
-  KDE_EXPORT void retrievingDomainsFailed( const QString &err_msg );
+  Q_DECL_EXPORT void retrievingDomainsFailed(const QString &err_msg);
   
   /**
    * This error message is shown if the scanning of the broadcast
@@ -149,7 +147,7 @@ namespace Smb4KNotification
    *
    * @param err_msg   The error message
    */
-  KDE_EXPORT void scanningBroadcastAreaFailed( const QString &err_msg );
+  Q_DECL_EXPORT void scanningBroadcastAreaFailed(const QString &err_msg);
   
   /**
    * This error message is shown if the list of hosts could not
@@ -157,7 +155,7 @@ namespace Smb4KNotification
    *
    * @param err_msg   The error message
    */
-  KDE_EXPORT void retrievingHostsFailed( Smb4KWorkgroup *workgroup, const QString &err_msg );
+  Q_DECL_EXPORT void retrievingHostsFailed(Smb4KWorkgroup *workgroup, const QString &err_msg);
   
   /**
    * This error message is shown if the list of shares could not
@@ -167,15 +165,15 @@ namespace Smb4KNotification
    *
    * @param err_msg   The error message
    */
-  KDE_EXPORT void retrievingSharesFailed( Smb4KHost *host, const QString &err_msg );
+  Q_DECL_EXPORT void retrievingSharesFailed(Smb4KHost *host, const QString &err_msg);
   
   /**
    * This error message is shown if the preview could not be
    * retrieved.
    *
-   * @param err_meg   The error message
+   * @param err_msg   The error message
    */
-  KDE_EXPORT void retrievingPreviewFailed( Smb4KShare *share, const QString &err_msg );
+  Q_DECL_EXPORT void retrievingPreviewFailed(Smb4KShare *share, const QString &err_msg);
   
   /**
    * This error message is shown if the mounting of a share failed.
@@ -184,7 +182,7 @@ namespace Smb4KNotification
    *
    * @param err_msg   The error message
    */
-  KDE_EXPORT void mountingFailed( Smb4KShare *share, const QString &err_msg );
+  Q_DECL_EXPORT void mountingFailed(Smb4KShare *share, const QString &err_msg);
   
   /**
    * This error message is shown if the unmounting of a share failed.
@@ -193,7 +191,7 @@ namespace Smb4KNotification
    *
    * @param err_msg   The error message
    */
-  KDE_EXPORT void unmountingFailed( Smb4KShare *share, const QString &err_msg );
+  Q_DECL_EXPORT void unmountingFailed(Smb4KShare *share, const QString &err_msg);
   
   /**
    * This error message is shown if the unmounting of a certain share
@@ -201,7 +199,7 @@ namespace Smb4KNotification
    *
    * @param share     The share that was to be unmounted
    */
-  KDE_EXPORT void unmountingNotAllowed( Smb4KShare *share );
+  Q_DECL_EXPORT void unmountingNotAllowed(Smb4KShare *share);
   
   /**
    * This error message is shown if printing failed.
@@ -210,7 +208,7 @@ namespace Smb4KNotification
    *
    * @param err_msg   The error message
    */
-  KDE_EXPORT void printingFailed( Smb4KShare *printer, const QString &err_msg );
+  Q_DECL_EXPORT void printingFailed(Smb4KShare *printer, const QString &err_msg);
   
   /**
    * This error message is shown if the synchronization failed.
@@ -221,9 +219,9 @@ namespace Smb4KNotification
    *
    * @param err_msg   The error message
    */
-  KDE_EXPORT void synchronizationFailed( const KUrl &src,
-                                         const KUrl &dest,
-                                         const QString &err_msg );
+  Q_DECL_EXPORT void synchronizationFailed(const QUrl &src,
+                                           const QUrl &dest,
+                                           const QString &err_msg);
   
   /**
    * This error message is shown if the searching of the network
@@ -233,35 +231,35 @@ namespace Smb4KNotification
    *
    * @param err_msg   The error message
    */
-  KDE_EXPORT void searchingFailed( const QString &item, const QString &err_msg );
+  Q_DECL_EXPORT void searchingFailed(const QString &item, const QString &err_msg);
   
   /**
    * This error message is shown if a command could not be found.
    *
    * @param command   The command that could not be found
    */
-  KDE_EXPORT void commandNotFound( const QString &command );
+  Q_DECL_EXPORT void commandNotFound(const QString &command);
   
   /**
    * This error message is shown if the user tried to bookmark a printer.
    *
    * @param share     The Smb4KShare object
    */
-  KDE_EXPORT void cannotBookmarkPrinter( Smb4KShare *share );
+  Q_DECL_EXPORT void cannotBookmarkPrinter(Smb4KShare *share);
   
   /**
    * This error message is shown if a file could not be found.
    *
    * @param fileName  The file name
    */
-  KDE_EXPORT void fileNotFound( const QString &fileName );
+  Q_DECL_EXPORT void fileNotFound(const QString &fileName);
   
   /**
    * This error message is shown if a file could not be opened.
    *
    * @param file      The QFile object
    */
-  KDE_EXPORT void openingFileFailed( const QFile &file );
+  Q_DECL_EXPORT void openingFileFailed(const QFile &file);
   
   /**
    * This error message is shown if a file could not be read.
@@ -270,7 +268,7 @@ namespace Smb4KNotification
    *
    * @param err_msg   The error message (optional)
    */
-  KDE_EXPORT void readingFileFailed( const QFile &file, const QString &err_msg );
+  Q_DECL_EXPORT void readingFileFailed(const QFile &file, const QString &err_msg);
   
   /**
    * This error message is shown if the creation of a directory
@@ -278,14 +276,14 @@ namespace Smb4KNotification
    *
    * @param path      The path
    */
-  KDE_EXPORT void mkdirFailed( const QDir &dir );
+  Q_DECL_EXPORT void mkdirFailed(const QDir &dir);
   
   /**
    * This error message is shown if a process threw an error.
    *
    * @param proc_err  The code describing the process error
    */
-  KDE_EXPORT void processError( QProcess::ProcessError error );
+  Q_DECL_EXPORT void processError(QProcess::ProcessError error);
   
   /**
    * This error message is shown if a KAuth action could not be
@@ -295,19 +293,19 @@ namespace Smb4KNotification
    *
    * @param err_code  The error code
    */
-  KDE_EXPORT void actionFailed( int err_code = -1 );
+  Q_DECL_EXPORT void actionFailed(int err_code = -1);
   
   /**
    * This error message is shown when an invalid URL was passed to some core
    * class that refuses to process it.
    */
-  KDE_EXPORT void invalidURLPassed();
+  Q_DECL_EXPORT void invalidURLPassed();
   
   /**
    * This error message is emitted if the entry of the broadcast areas
    * is empty.
    */
-  KDE_EXPORT void emptyBroadcastAreas();
+  Q_DECL_EXPORT void emptyBroadcastAreas();
 };
 
 

@@ -3,7 +3,7 @@
     Smb4KNotification namespace.
                              -------------------
     begin                : So Jun 22 2014
-    copyright            : (C) 2014 by Alexander Reinholdt
+    copyright            : (C) 2014-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -29,10 +29,7 @@
 
 // Qt includes
 #include <QtCore/QObject>
-
-// KDE includes
-#include <kurl.h>
-
+#include <QtCore/QUrl>
 
 class Smb4KNotificationActionRunner : public QObject
 {
@@ -41,14 +38,14 @@ class Smb4KNotificationActionRunner : public QObject
   public:
     Smb4KNotificationActionRunner(QObject *parent = 0);
     ~Smb4KNotificationActionRunner();
-    void setMountpoint(const KUrl &mountpoint);
-    KUrl mountpoint() const;
+    void setMountpoint(const QUrl &mountpoint);
+    QUrl mountpoint() const;
     
   public Q_SLOTS:
     void slotOpenShare();
     
   private:
-    KUrl m_mountpoint;
+    QUrl m_mountpoint;
 };
 
 

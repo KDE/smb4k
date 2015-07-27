@@ -3,7 +3,7 @@
     Smb4KNotification namespace.
                              -------------------
     begin                : So Jun 22 2014
-    copyright            : (C) 2014 by Alexander Reinholdt
+    copyright            : (C) 2014-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,7 +28,7 @@
 #include "smb4knotification_p.h"
 
 // KDE includes
-#include "krun.h"
+#include <KIOWidgets/KRun>
 
 
 Smb4KNotificationActionRunner::Smb4KNotificationActionRunner(QObject *parent)
@@ -42,13 +42,13 @@ Smb4KNotificationActionRunner::~Smb4KNotificationActionRunner()
 }
 
 
-void Smb4KNotificationActionRunner::setMountpoint(const KUrl& mountpoint)
+void Smb4KNotificationActionRunner::setMountpoint(const QUrl& mountpoint)
 {
   m_mountpoint = mountpoint;
 }
 
 
-KUrl Smb4KNotificationActionRunner::mountpoint() const
+QUrl Smb4KNotificationActionRunner::mountpoint() const
 {
   return m_mountpoint;
 }
@@ -56,9 +56,6 @@ KUrl Smb4KNotificationActionRunner::mountpoint() const
 
 void Smb4KNotificationActionRunner::slotOpenShare()
 {
-  KRun::runUrl( m_mountpoint, "inode/directory", 0 );
+  KRun::runUrl(m_mountpoint, "inode/directory", 0);
 }
-
-
-#include "smb4knotification_p.moc"
 
