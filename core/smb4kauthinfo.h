@@ -3,7 +3,7 @@
     authentication data.
                              -------------------
     begin                : Sa Feb 28 2004
-    copyright            : (C) 2004-2012 by Alexander Reinholdt
+    copyright            : (C) 2004-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -35,10 +35,7 @@
 // Qt includes
 #include <QtCore/QString>
 #include <QtCore/QScopedPointer>
-
-// KDE includes
-#include <kdemacros.h>
-#include <kurl.h>
+#include <QtCore/QUrl>
 
 // forward declarations
 class Smb4KAuthInfoPrivate;
@@ -52,7 +49,7 @@ using namespace Smb4KGlobal;
  */
 
 
-class KDE_EXPORT Smb4KAuthInfo
+class Q_DECL_EXPORT Smb4KAuthInfo
 {
   friend class Smb4KAuthInfoPrivate;
   
@@ -62,7 +59,7 @@ class KDE_EXPORT Smb4KAuthInfo
      *
      * @param host      The Smb4KHost item.
      */
-    explicit Smb4KAuthInfo( const Smb4KHost *host );
+    explicit Smb4KAuthInfo(const Smb4KHost *host);
 
 
     /**
@@ -73,7 +70,7 @@ class KDE_EXPORT Smb4KAuthInfo
      *
      * @param share     The Smb4KShare item.
      */
-    explicit Smb4KAuthInfo( const Smb4KShare *share );
+    explicit Smb4KAuthInfo(const Smb4KShare *share);
 
     /**
      * The empty constructor.
@@ -85,7 +82,7 @@ class KDE_EXPORT Smb4KAuthInfo
      *
      * @param info      The Smb4KAuthInfo object that will be copied.
      */
-    Smb4KAuthInfo( const Smb4KAuthInfo &info );
+    Smb4KAuthInfo(const Smb4KAuthInfo &info);
 
     /**
      * The destructor
@@ -98,7 +95,7 @@ class KDE_EXPORT Smb4KAuthInfo
      *
      * @param host      The Smb4KHost item
      */
-    void setHost( Smb4KHost *host );
+    void setHost(Smb4KHost *host);
 
     /**
      * Set the share item. This overwrites all previous data that this object
@@ -109,7 +106,7 @@ class KDE_EXPORT Smb4KAuthInfo
      *
      * @param share     The Smb4KShare item
      */
-    void setShare( Smb4KShare *share );
+    void setShare(Smb4KShare *share);
 
     /**
      * Sets the workgroup name. This function should only be used if you neither can
@@ -117,7 +114,7 @@ class KDE_EXPORT Smb4KAuthInfo
      *
      * @param workgroup The name of the workgroup
      */
-    void setWorkgroupName( const QString &workgroup );
+    void setWorkgroupName(const QString &workgroup);
 
     /**
      * Returns the name of the workgroup.
@@ -171,7 +168,7 @@ class KDE_EXPORT Smb4KAuthInfo
      *
      * @param username  The login for the server/share
      */
-    void setUserName( const QString &username );
+    void setUserName(const QString &username);
 
     /**
      * Returns the username.
@@ -185,7 +182,7 @@ class KDE_EXPORT Smb4KAuthInfo
      *
      * @param passwd    The password for the server/share
      */
-    void setPassword( const QString &passwd );
+    void setPassword(const QString &passwd);
 
     /**
      * Returns the password.
@@ -216,40 +213,40 @@ class KDE_EXPORT Smb4KAuthInfo
      *
      * @returns TRUE if the data that was compared is the same.
      */
-    bool equals( Smb4KAuthInfo *info ) const;
+    bool equals(Smb4KAuthInfo *info) const;
     
     /**
      * Operator to check if two authentication information objects are equal.
      */
-    bool operator==( Smb4KAuthInfo info ) const { return equals( &info ); }
+    bool operator==(Smb4KAuthInfo info) const { return equals(&info); }
 
     /**
      * Sets the URL of the share after some checks are passed.
      *
      * @param url             The URL of the network item
      */
-    void setURL( const KUrl &url );
+    void setURL(const QUrl &url);
     
     /**
      * Sets the URL of the share.
      *
      * @param url             The URL of the network item
      */
-    void setURL( const QString &url );
+    void setURL(const QString &url);
 
     /**
      * Returns the URL of the network item
      *
      * @returns the URL
      */
-    KUrl url() const;
+    QUrl url() const;
 
     /**
      * Sets the IP address for this authentication information object
      *
      * @param ip          The IP address
      */
-    void setIP( const QString &ip );
+    void setIP(const QString &ip);
 
     /**
      * Returns the IP address

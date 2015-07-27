@@ -3,7 +3,7 @@
     authentication data.
                              -------------------
     begin                : Sa Feb 28 2004
-    copyright            : (C) 2004-2012 by Alexander Reinholdt
+    copyright            : (C) 2004-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -33,15 +33,13 @@
 
 // Qt includes
 #include <QtNetwork/QHostAddress>
-
-// KDE includes
-#include <kdebug.h>
+#include <QtCore/QDebug>
 
 
 class Smb4KAuthInfoPrivate
 {
   public:
-    KUrl url;
+    QUrl url;
     QString workgroup;
     NetworkItem type;
     bool homesShare;
@@ -217,13 +215,13 @@ QString Smb4KAuthInfo::hostUNC() const
 }
 
 
-void Smb4KAuthInfo::setURL( const KUrl &url )
+void Smb4KAuthInfo::setURL(const QUrl &url)
 {
   d->url = url;
-  d->url.setProtocol( "smb" );
+  d->url.setScheme("smb");
 
   // Set the type.
-  if ( d->url.hasPath() && !d->url.path(KUrl::RemoveTrailingSlash).endsWith('/') )
+  if (!d->url.path().isEmpty() && d->url.path().length() > 1 && !d->url.path().endsWith('/'))
   {
     d->type = Share;
   }
@@ -233,17 +231,18 @@ void Smb4KAuthInfo::setURL( const KUrl &url )
   }
   
   // Determine whether this is a homes share.
-  d->homesShare = (QString::compare( d->url.path(KUrl::RemoveTrailingSlash).remove( 0, 1 ), "homes", Qt::CaseSensitive ) == 0);
+  qDebug() << "Smb4KAuthInfo::setURL(): Check if determination of homes share works";
+  d->homesShare = (QString::compare(d->url.path().remove(0, 1), "homes", Qt::CaseSensitive) == 0);
 }
 
 
-void Smb4KAuthInfo::setURL( const QString &url )
+void Smb4KAuthInfo::setURL(const QString &url)
 {
-  d->url.setUrl( url, KUrl::TolerantMode );
-  d->url.setProtocol( "smb" );
+  d->url.setUrl(url, QUrl::TolerantMode);
+  d->url.setScheme("smb");
   
   // Set the type.
-  if ( d->url.hasPath() && !d->url.path(KUrl::RemoveTrailingSlash).endsWith('/') )
+  if (!d->url.path().isEmpty() && d->url.path().length() > 1 && !d->url.path().endsWith('/'))
   {
     d->type = Share;
   }
@@ -253,12 +252,13 @@ void Smb4KAuthInfo::setURL( const QString &url )
   }
   
   // Determine whether this is a homes share.
-  d->homesShare = (QString::compare( d->url.path(KUrl::RemoveTrailingSlash).remove( 0, 1 ), "homes", Qt::CaseSensitive ) == 0);
+  qDebug() << "Smb4KAuthInfo::setURL(): Check if determination of homes share works";
+  d->homesShare = (QString::compare(d->url.path().remove(0, 1), "homes", Qt::CaseSensitive) == 0);
 }
 
 
 
-KUrl Smb4KAuthInfo::url() const
+QUrl Smb4KAuthInfo::url() const
 {
   return d->url;
 }
