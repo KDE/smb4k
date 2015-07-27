@@ -3,7 +3,7 @@
     Smb4KPrint class
                              -------------------
     begin                : Fr Okt 31 2008
-    copyright            : (C) 2008-2013 by Alexander Reinholdt
+    copyright            : (C) 2008-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -32,15 +32,16 @@
 #include "smb4kprocess.h"
 
 // Qt includes
-#include <QtGui/QPrinter>
+#include <QtCore/QTemporaryDir>
+#include <QtPrintSupport/QPrinter>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QSpinBox>
+#include <QtWidgets/QGroupBox>
+#include <QtWidgets/QPushButton>
 
 // KDE includes
-#include <kdialog.h>
-#include <kurlrequester.h>
-#include <knuminput.h>
-#include <kurl.h>
-#include <kjob.h>
-#include <ktempdir.h>
+#include <KCoreAddons/KJob>
+#include <KIOWidgets/KUrlRequester>
 
 // forward declarations
 class Smb4KAuthInfo;
@@ -55,7 +56,7 @@ class Smb4KPrintJob : public KJob
     /**
      * The constructor
      */
-    explicit Smb4KPrintJob( QObject *parent = 0 );
+    explicit Smb4KPrintJob(QObject *parent = 0);
     
     /**
      * The destructor
@@ -84,8 +85,8 @@ class Smb4KPrintJob : public KJob
      * 
      * @param parentWidget  The parent widget
      */
-    void setupPrinting( Smb4KShare *printer,
-                        QWidget *parentWidget = 0 );
+    void setupPrinting(Smb4KShare *printer,
+                        QWidget *parentWidget = 0);
     
     /**
      * Returns the printer share object
@@ -105,17 +106,17 @@ class Smb4KPrintJob : public KJob
     /**
      * Emitted when an authentication error happened.
      */
-    void authError( Smb4KPrintJob *job );
+    void authError(Smb4KPrintJob *job);
     
     /**
      * Emitted when the printing is about to begin.
      */
-    void aboutToStart( Smb4KShare *share );
+    void aboutToStart(Smb4KShare *share);
     
     /**
      * Emitted after the printing finished.
      */
-    void finished( Smb4KShare *share );
+    void finished(Smb4KShare *share);
     
   protected:
     /**
@@ -128,18 +129,19 @@ class Smb4KPrintJob : public KJob
     void slotStartPrinting();
     void slotReadStandardOutput();
     void slotReadStandardError();
-    void slotProcessFinished( int exitCode, QProcess::ExitStatus status );
+    void slotProcessFinished(int exitCode, QProcess::ExitStatus status);
     
   private:
     bool m_started;
     Smb4KProcess *m_proc;
     Smb4KShare *m_share;
     QWidget *m_parent_widget;
-    QString m_temp_dir;
+    QTemporaryDir m_temp_dir;
+    
 };
 
 
-class Smb4KPrintDialog : public KDialog
+class Smb4KPrintDialog : public QDialog
 {
   Q_OBJECT
 
@@ -151,9 +153,9 @@ class Smb4KPrintDialog : public KDialog
      *
      * @param parent      The parent widget of this dialog.P
      */
-    Smb4KPrintDialog( Smb4KShare *share,
+    Smb4KPrintDialog(Smb4KShare *share,
                       QPrinter *printer,
-                      QWidget *parent = 0 );
+                      QWidget *parent = 0);
 
     /**
      * The destructor
@@ -165,7 +167,7 @@ class Smb4KPrintDialog : public KDialog
      * 
      * @returns the URL of the file
      */
-    const KUrl &fileURL() { return m_url; }
+    const QUrl &fileURL() { return m_url; }
     
     /**
      * Returns the QPrinter object
@@ -175,29 +177,30 @@ class Smb4KPrintDialog : public KDialog
     QPrinter *printer() { return m_printer; }
     
   protected Q_SLOTS:
-    /**
-     * This slot is called when the User1 (i.e. the "Close") button
-     * has been clicked.
-     */
-    void slotUser1Clicked();
-
-    /**
-     * This slot is called when the User2 (i.e. the "Print") button has been clicked.
-     */
-    void slotUser2Clicked();
-
-    /**
-     * This slot is being enabled if there is input text.
-     *
-     * @param text        The input text.
-     */
-    void slotInputValueChanged( const QString &text );
+    void slotPrintClicked();
+    void slotCancelClicked();
+    void slotInputValueChanged(const QString &text);
 
   private:
     /**
      * Set up the view.
      */
-    void setupView( Smb4KShare *share );
+    void setupView(Smb4KShare *share);
+    
+    /**
+     * The Print button
+     */
+    QPushButton *m_print_button;
+    
+    /**
+     * The Cancel button
+     */
+    QPushButton *m_cancel_button;
+    
+    /**
+     * The Details widget
+     */
+    QGroupBox *m_options_box;
     
     /**
      * The printer object
@@ -212,12 +215,12 @@ class Smb4KPrintDialog : public KDialog
     /**
      * The copies input
      */
-    KIntNumInput *m_copies;
+    QSpinBox *m_copies;
     
     /**
      * The file URL
      */
-    KUrl m_url;
+    QUrl m_url;
 };
 
 

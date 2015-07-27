@@ -2,7 +2,7 @@
     smb4kprint  -  The (new) printing core class.
                              -------------------
     begin                : Son Feb 20 2011
-    copyright            : (C) 2011-2012 by Alexander Reinholdt
+    copyright            : (C) 2011-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,11 +28,10 @@
 
 // Qt includes
 #include <QtCore/QUrl>
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 
-// KDE specific includes
-#include <kcompositejob.h>
-#include <kdemacros.h>
+// KDE includes
+#include <KCoreAddons/KCompositeJob>
 
 // forward declarations
 class Smb4KPrintPrivate;
@@ -49,7 +48,7 @@ class Smb4KNetworkObject;
  */
 
 
-class KDE_EXPORT Smb4KPrint : public KCompositeJob
+class Q_DECL_EXPORT Smb4KPrint : public KCompositeJob
 {
   Q_OBJECT
   
@@ -59,7 +58,7 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
     /**
      * The constructor
      */
-    explicit Smb4KPrint( QObject *parent = 0 );
+    explicit Smb4KPrint(QObject *parent = 0);
 
     /**
      * The destructor
@@ -85,8 +84,8 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
      *
      * @param parent        The parent widget
      */
-    void print( Smb4KShare *printer,
-                QWidget *parent = 0 );
+    void print(Smb4KShare *printer,
+                QWidget *parent = 0);
     
     /**
      * This function tells you whether print jobs are running
@@ -102,7 +101,7 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
      * 
      * @returns TRUE if a print job is already running
      */
-    bool isRunning( Smb4KShare *share );
+    bool isRunning(Smb4KShare *share);
     
     /**
      * This function aborts all print jobs at once.
@@ -114,7 +113,7 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
      *
      * @param share         The Smb4KShare object
      */
-    void abort( Smb4KShare *share );
+    void abort(Smb4KShare *share);
     
     /**
      * This function starts the composite job
@@ -127,14 +126,14 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
      *
      * @param printer      The remote printer
      */
-    void aboutToStart( Smb4KShare *printer );
+    void aboutToStart(Smb4KShare *printer);
 
     /**
      * This signal is emitted when a job has finished.
      *
      * @param printer      The remote printer
      */
-    void finished( Smb4KShare *printer );
+    void finished(Smb4KShare *printer);
     
   protected Q_SLOTS:
     /**
@@ -145,12 +144,12 @@ class KDE_EXPORT Smb4KPrint : public KCompositeJob
     /**
      * Called when a job finished
      */
-    void slotJobFinished( KJob *job );
+    void slotJobFinished(KJob *job);
     
     /**
      * Called when an authentication error occurred
      */
-    void slotAuthError( Smb4KPrintJob *job );
+    void slotAuthError(Smb4KPrintJob *job);
 
     /**
      * Called when the application exits

@@ -2,7 +2,7 @@
     smb4kprint  -  The (new) printing core class.
                              -------------------
     begin                : Son Feb 20 2011
-    copyright            : (C) 2011-2012 by Alexander Reinholdt
+    copyright            : (C) 2011-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -41,22 +41,17 @@
 #include <QDebug>
 #include <QCoreApplication>
 
-// KDE specific includes
-#include <kglobal.h>
-#include <kstandarddirs.h>
-
 using namespace Smb4KGlobal;
 
 
-K_GLOBAL_STATIC( Smb4KPrintStatic, p );
+Q_GLOBAL_STATIC(Smb4KPrintStatic, p);
 
 
-Smb4KPrint::Smb4KPrint( QObject *parent )
-: KCompositeJob( parent )
+Smb4KPrint::Smb4KPrint(QObject *parent) : KCompositeJob(parent)
 {
-  setAutoDelete( false );
+  setAutoDelete(false);
 
-  if ( !coreIsInitialized() )
+  if (!coreIsInitialized())
   {
     setDefaultSettings();
   }
@@ -65,7 +60,7 @@ Smb4KPrint::Smb4KPrint( QObject *parent )
     // Do nothing
   }
   
-  connect( QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()) );
+  connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()));
 }
 
 
@@ -80,10 +75,10 @@ Smb4KPrint *Smb4KPrint::self()
 }
 
 
-void Smb4KPrint::print( Smb4KShare *printer, QWidget *parent )
+void Smb4KPrint::print(Smb4KShare *printer, QWidget *parent)
 {
   // Check that we actually have a printer share
-  if ( !printer->isPrinter() )
+  if (!printer->isPrinter())
   {
     return;
   }
@@ -93,19 +88,19 @@ void Smb4KPrint::print( Smb4KShare *printer, QWidget *parent )
   }
   
   // Get the authentication information.
-  Smb4KWalletManager::self()->readAuthInfo( printer );
+  Smb4KWalletManager::self()->readAuthInfo(printer);
   
   // Create a new job and add it to the subjobs 
-  Smb4KPrintJob *job = new Smb4KPrintJob( this );
-  job->setObjectName( QString( "PrintJob_%1" ).arg( printer->unc() ) );
-  job->setupPrinting( printer, parent );
+  Smb4KPrintJob *job = new Smb4KPrintJob(this);
+  job->setObjectName(QString("PrintJob_%1").arg(printer->unc()));
+  job->setupPrinting(printer, parent);
   
-  connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
-  connect( job, SIGNAL(authError(Smb4KPrintJob*)), SLOT(slotAuthError(Smb4KPrintJob*)) );
-  connect( job, SIGNAL(aboutToStart(Smb4KShare*)), SIGNAL(aboutToStart(Smb4KShare*)) );
-  connect( job, SIGNAL(finished(Smb4KShare*)), SIGNAL(finished(Smb4KShare*)) );
+  connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
+  connect(job, SIGNAL(authError(Smb4KPrintJob*)), SLOT(slotAuthError(Smb4KPrintJob*)));
+  connect(job, SIGNAL(aboutToStart(Smb4KShare*)), SIGNAL(aboutToStart(Smb4KShare*)));
+  connect(job, SIGNAL(finished(Smb4KShare*)), SIGNAL(finished(Smb4KShare*)));
   
-  addSubjob( job );
+  addSubjob(job);
   
   job->start();
 }
@@ -117,13 +112,13 @@ bool Smb4KPrint::isRunning()
 }
 
 
-bool Smb4KPrint::isRunning( Smb4KShare *share )
+bool Smb4KPrint::isRunning(Smb4KShare *share)
 {
   bool running = false;
 
-  for ( int i = 0; i < subjobs().size(); ++i )
+  for (int i = 0; i < subjobs().size(); ++i)
   {
-    if ( QString::compare( QString( "PrintJob_%1" ).arg( share->unc() ), subjobs().at( i )->objectName() ) == 0 )
+    if (QString::compare(QString("PrintJob_%1").arg(share->unc()), subjobs().at(i)->objectName()) == 0)
     {
       running = true;
       break;
@@ -140,20 +135,20 @@ bool Smb4KPrint::isRunning( Smb4KShare *share )
 
 void Smb4KPrint::abortAll()
 {
-  for ( int i = 0; i < subjobs().size(); ++i )
+  for (int i = 0; i < subjobs().size(); ++i)
   {
-    subjobs().at( i )->kill( KJob::EmitResult );
+    subjobs().at(i)->kill(KJob::EmitResult);
   }
 }
 
 
-void Smb4KPrint::abort( Smb4KShare *share )
+void Smb4KPrint::abort(Smb4KShare *share)
 {
-  for ( int i = 0; i < subjobs().size(); ++i )
+  for (int i = 0; i < subjobs().size(); ++i)
   {
-    if ( QString::compare( QString( "PrintJob_%1" ).arg( share->unc() ), subjobs().at( i )->objectName() ) == 0 )
+    if (QString::compare(QString("PrintJob_%1").arg(share->unc()), subjobs().at(i)->objectName()) == 0)
     {
-      subjobs().at( i )->kill( KJob::EmitResult );
+      subjobs().at(i)->kill(KJob::EmitResult);
       break;
     }
     else
@@ -166,7 +161,7 @@ void Smb4KPrint::abort( Smb4KShare *share )
 
 void Smb4KPrint::start()
 {
-  QTimer::singleShot( 0, this, SLOT(slotStartJobs()) );
+  QTimer::singleShot(0, this, SLOT(slotStartJobs()));
 }
 
 
@@ -180,17 +175,17 @@ void Smb4KPrint::slotStartJobs()
 }
 
 
-void Smb4KPrint::slotJobFinished( KJob *job )
+void Smb4KPrint::slotJobFinished(KJob *job)
 {
-  removeSubjob( job );
+  removeSubjob(job);
 }
 
 
-void Smb4KPrint::slotAuthError( Smb4KPrintJob *job )
+void Smb4KPrint::slotAuthError(Smb4KPrintJob *job)
 {
-  if ( Smb4KWalletManager::self()->showPasswordDialog( job->printer(), job->parentWidget() ) )
+  if (Smb4KWalletManager::self()->showPasswordDialog(job->printer(), job->parentWidget()))
   {
-    print( job->printer(), job->parentWidget() );
+    print(job->printer(), job->parentWidget());
   }
   else
   {
@@ -204,4 +199,3 @@ void Smb4KPrint::slotAboutToQuit()
   abortAll();
 }
 
-#include "smb4kprint.moc"
