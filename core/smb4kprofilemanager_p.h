@@ -3,7 +3,7 @@
     manager.
                              -------------------
     begin                : Mi Aug 12 2014
-    copyright            : (C) 2014 by Alexander Reinholdt
+    copyright            : (C) 2014-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -33,14 +33,15 @@
 // Qt includes
 #include <QtCore/QString>
 #include <QtCore/QStringList>
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QPushButton>
 
 // KDE includes
-#include <kdialog.h>
-#include <kcombobox.h>
+#include <KCompletion/KComboBox>
 
 
-class Smb4KProfileMigrationDialog : public KDialog
+class Smb4KProfileMigrationDialog : public QDialog
 {
   Q_OBJECT
   
@@ -78,6 +79,8 @@ class Smb4KProfileMigrationDialog : public KDialog
     
   private:
     void setupView();
+    QPushButton *m_ok_button;
+    QPushButton *m_cancel_button;
     QStringList m_from_list;
     QStringList m_to_list;
     KComboBox *m_from_box;

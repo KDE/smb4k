@@ -3,7 +3,7 @@
     defined by the user.
                              -------------------
     begin                : Mi Aug 06 2014
-    copyright            : (C) 2014 by Alexander Reinholdt
+    copyright            : (C) 2014-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -40,11 +40,8 @@
 #include <QtCore/QPointer>
 #include <QtTest/QTest>
 
-// KDE includes
-#include <kglobal.h>
 
-
-K_GLOBAL_STATIC(Smb4KProfileManagerStatic, p);
+Q_GLOBAL_STATIC(Smb4KProfileManagerStatic, p);
 
 
 //
@@ -264,7 +261,7 @@ void Smb4KProfileManager::removeProfiles(const QStringList& list, QWidget* paren
         {
           QPointer<Smb4KProfileMigrationDialog> dlg = new Smb4KProfileMigrationDialog(QStringList(name), d->profiles, parent);
             
-          if (dlg->exec() == KDialog::Accepted)
+          if (dlg->exec() == QDialog::Accepted)
           {
             migrateProfile(dlg->from(), dlg->to());
           }
@@ -366,7 +363,7 @@ void Smb4KProfileManager::slotConfigChanged()
     // Now, launch the migration dialog.
     QPointer<Smb4KProfileMigrationDialog> dlg = new Smb4KProfileMigrationDialog(from, to, 0);
           
-    if (dlg->exec() == KDialog::Accepted)
+    if (dlg->exec() == QDialog::Accepted)
     {
       migrateProfile(dlg->from(), dlg->to());
     }
@@ -394,5 +391,3 @@ void Smb4KProfileManager::slotConfigChanged()
   }
 }
 
-
-#include "smb4kprofilemanager.moc"

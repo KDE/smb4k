@@ -3,7 +3,7 @@
     defined by the user.
                              -------------------
     begin                : Mi Aug 06 2014
-    copyright            : (C) 2014 by Alexander Reinholdt
+    copyright            : (C) 2014-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -33,10 +33,7 @@
 #include <QtCore/QString>
 #include <QtCore/QStringList>
 #include <QtCore/QPair>
-#include <QtGui/QWidget>
-
-// KDE includes
-#include <kdemacros.h>
+#include <QtWidgets/QWidget>
 
 // forward declarations
 class Smb4KProfileManagerPrivate;
@@ -55,7 +52,7 @@ class Smb4KProfileManagerPrivate;
  */
 
 
-class KDE_EXPORT Smb4KProfileManager : public QObject
+class Q_DECL_EXPORT Smb4KProfileManager : public QObject
 {
   Q_OBJECT
   

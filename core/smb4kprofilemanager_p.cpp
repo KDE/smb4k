@@ -3,7 +3,7 @@
     manager.
                              -------------------
     begin                : Mi Aug 12 2014
-    copyright            : (C) 2014 by Alexander Reinholdt
+    copyright            : (C) 2014-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -33,34 +33,31 @@
 #include "smb4ksettings.h"
 
 // Qt includes
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QGridLayout>
-#include <QtGui/QLabel>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QDialogButtonBox>
 #include <QtGui/QPixmap>
 
 // KDE includes
-#include <klocale.h>
-#include <kcombobox.h>
-#include <klineedit.h>
-#include <kconfiggroup.h>
+#define TRANSLATION_DOMAIN "smb4k-core"
+#include <KI18n/KLocalizedString>
+#include <KIconThemes/KIconLoader>
+#include <KConfigGui/KWindowConfig>
 
 
 Smb4KProfileMigrationDialog::Smb4KProfileMigrationDialog(const QStringList& from, const QStringList& to, QWidget* parent)
-: KDialog(parent), m_from_list(from), m_to_list(to)
+: QDialog(parent), m_from_list(from), m_to_list(to)
 {
-  setCaption(i18n("Profile Migration Assistant"));
-  setButtons(Ok|Cancel);
-  setDefaultButton(Ok);
+  setWindowTitle(i18n("Profile Migration Assistant"));
   
   setupView();
   
   setMinimumWidth(sizeHint().width() > 350 ? sizeHint().width() : 350);
   
   KConfigGroup group(Smb4KSettings::self()->config(), "ProfileMigrationDialog");
-  restoreDialogSize(group);
-  
-  connect(this, SIGNAL(okClicked()), this, SLOT(slotOkClicked()));
+  KWindowConfig::restoreWindowSize(windowHandle(), group);
 }
 
 
@@ -71,22 +68,18 @@ Smb4KProfileMigrationDialog::~Smb4KProfileMigrationDialog()
 
 void Smb4KProfileMigrationDialog::setupView()
 {
-  QWidget *main = new QWidget(this);
-  setMainWidget(main);
-  
-  QVBoxLayout *layout = new QVBoxLayout(main);
+  QVBoxLayout *layout = new QVBoxLayout(this);
   layout->setSpacing(5);
-  layout->setMargin(0);
   
   // Description
-  QWidget *description = new QWidget(main);
+  QWidget *description = new QWidget(this);
 
   QHBoxLayout *desc_layout = new QHBoxLayout(description);
   desc_layout->setSpacing(5);
   desc_layout->setMargin(0);
 
   QLabel *pixmap = new QLabel(description);
-  QPixmap pix = KIcon("format-list-unordered").pixmap(KIconLoader::SizeHuge);
+  QPixmap pix = KDE::icon("format-list-unordered").pixmap(KIconLoader::SizeHuge);
   pixmap->setPixmap(pix);
   pixmap->setAlignment(Qt::AlignBottom);
 
@@ -97,7 +90,7 @@ void Smb4KProfileMigrationDialog::setupView()
   desc_layout->addWidget(pixmap, 0);
   desc_layout->addWidget(label, Qt::AlignBottom);
   
-  QWidget *editors = new QWidget(main);
+  QWidget *editors = new QWidget(this);
   
   QGridLayout *editors_layout = new QGridLayout(editors);
   editors_layout->setSpacing(5);
@@ -145,8 +138,21 @@ void Smb4KProfileMigrationDialog::setupView()
   
   editors_layout->addWidget(m_to_box, 1, 1, 0);
   
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Horizontal, this);
+  m_ok_button = buttonBox->addButton(QDialogButtonBox::Ok);
+  m_cancel_button = buttonBox->addButton(QDialogButtonBox::Cancel);
+  
+  m_ok_button->setShortcut(Qt::CTRL|Qt::Key_Return);
+  m_cancel_button->setShortcut(Qt::Key_Escape);
+  
+  m_ok_button->setDefault(true);
+  
   layout->addWidget(description, 0);
   layout->addWidget(editors, 0);
+  layout->addWidget(buttonBox, 0);
+  
+  connect(m_ok_button, SIGNAL(clicked()), this, SLOT(slotOkClicked()));
+  connect(m_cancel_button, SIGNAL(clicked()), this, SLOT(reject()));  
 }
 
 
@@ -165,8 +171,7 @@ QString Smb4KProfileMigrationDialog::to() const
 void Smb4KProfileMigrationDialog::slotOkClicked()
 {
   KConfigGroup group(Smb4KSettings::self()->config(), "ProfileMigrationDialog");
-  saveDialogSize(group, KConfigGroup::Normal);
+  KWindowConfig::saveWindowSize(windowHandle(), group);
+  accept();
 }
 
-
-#include "smb4kprofilemanager_p.moc"
