@@ -5,7 +5,7 @@
                           http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
   <include>QString</include>
   <include>QDir</include>
-  <include>kurl.h</include>
+  <include>QUrl</include>
   <kcfgfile name="smb4krc" />
 
 <!-- User Interface -->
@@ -201,7 +201,7 @@
     <entry name="MountPrefix" type="Url">
       <label>Mount prefix:</label>
       <whatsthis>This is the prefix where Smb4K will create the mount points and mount the remote shares.</whatsthis>
-      <default code="true">KUrl::fromPath( QDir::homePath()+"/smb4k/" )</default>
+      <default code="true">QUrl::fromLocalFile(QDir::homePath()+"/smb4k/")</default>
     </entry>
     <entry name="ForceLowerCaseSubdirs" type="Bool">
       <label>Force generated subdirectories to be lower case</label>
@@ -397,7 +397,7 @@
     <entry name="RsyncPrefix" type="Url">
       <label>Synchronization prefix:</label>
       <whatsthis>Under this prefix the destination directory for the synchronization will be created. However, if you want to store the data of a particular share elsewhere, you will be able to choose a different path before the actual synchronization begins.</whatsthis>
-      <default code="true">KUrl::fromPath( QDir::homePath()+"/smb4k_sync/" )</default>
+      <default code="true">QUrl::fromLocalFile(QDir::homePath()+"/smb4k_sync/")</default>
     </entry>
     <entry name="ArchiveMode" type="Bool">
       <label>Archive mode</label>
@@ -586,7 +586,7 @@
     <entry name="PartialDirectory" type="Url">
       <label>The data for the UsePartialDirectory option</label>
       <whatsthis></whatsthis>
-      <default code="true">KUrl::fromPath( QDir::homePath() )</default>
+      <default code="true">QUrl::fromLocalFile(QDir::homePath())</default>
     </entry>
     <entry name="UseCVSExclude" type="Bool">
       <label>Auto-ignore files in the same way CVS does</label>
@@ -611,7 +611,7 @@
     <entry name="ExcludeFrom" type="Url">
       <label>The file from which the exclude patterns are read</label>
       <whatsthis></whatsthis>
-      <default code="true">KUrl::fromPath( QDir::homePath()+"/exclude.txt" )</default>
+      <default code="true">QUrl::fromLocalFile(QDir::homePath()+"/exclude.txt")</default>
     </entry>
     <entry name="UseIncludePattern" type="Bool">
       <label>Do not exclude files matching this pattern:</label>
@@ -631,7 +631,7 @@
     <entry name="IncludeFrom" type="Url">
       <label>The file from which the include patterns are read</label>
       <whatsthis></whatsthis>
-      <default code="true">KUrl::fromPath( QDir::homePath()+"/include.txt" )</default>
+      <default code="true">QUrl::fromLocalFile(QDir::homePath()+"/include.txt")</default>
     </entry>
     <entry name="CustomFilteringRules" type="String">
       <label>Custom filter rules:</label>
@@ -701,7 +701,7 @@
     <entry name="BackupDirectory" type="Url">
       <label>Backup directory</label>
       <whatsthis></whatsthis>
-      <default code="true">KUrl::fromPath( QDir::homePath() )</default>
+      <default code="true">QUrl::fromLocalFile(QDir::homePath())</default>
     </entry>
     <entry name="UseBlockSize" type="Bool">
       <label>Force fixed checksum block size:</label>
