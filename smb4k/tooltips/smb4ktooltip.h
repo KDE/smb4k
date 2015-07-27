@@ -2,7 +2,7 @@
     smb4ktooltip  -  Provides tooltips for Smb4K
                              -------------------
     begin                : Sa Dez 23 2010
-    copyright            : (C) 2010-2013 by Alexander Reinholdt
+    copyright            : (C) 2010-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -27,20 +27,18 @@
 #define SMB4KTOOLTIP_H
 
 // Qt includes
-#include <QWidget>
-#include <QGridLayout>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
-#include <QPoint>
-#include <QLabel>
+#include <QtCore/QPoint>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QLabel>
 
-// KDE includes
-#include <kdemacros.h>
 
 // forward declarations
 class Smb4KBasicNetworkItem;
 
-class KDE_EXPORT Smb4KToolTip : public QWidget
+class Q_DECL_EXPORT Smb4KToolTip : public QWidget
 {
   Q_OBJECT
   
@@ -50,16 +48,16 @@ class KDE_EXPORT Smb4KToolTip : public QWidget
       SharesView,
       UnknownParent
     };
-    explicit Smb4KToolTip( QWidget *parent = 0 );
+    explicit Smb4KToolTip(QWidget *parent = 0);
     ~Smb4KToolTip();
-    void setup( Parent parent, Smb4KBasicNetworkItem *item );
-    void update( Parent parent, Smb4KBasicNetworkItem *item );
-    void show( const QPoint &pos );
+    void setup(Parent parent, Smb4KBasicNetworkItem *item);
+    void update(Parent parent, Smb4KBasicNetworkItem *item);
+    void show(const QPoint &pos);
     void hide();
     Smb4KBasicNetworkItem *networkItem() { return m_item; }
     
   protected:
-    void paintEvent( QPaintEvent *e );
+    void paintEvent(QPaintEvent *e);
     
   protected slots:
     void slotHideToolTip();
@@ -73,10 +71,10 @@ class KDE_EXPORT Smb4KToolTip : public QWidget
     void updateNetworkBrowserToolTip();
     void setupSharesViewToolTip();
     void updateSharesViewToolTip();
-    static void arc( QPainterPath& path,
+    static void arc(QPainterPath& path,
                      qreal cx, qreal cy,
                      qreal radius, qreal angle,
-                     qreal sweepLength );
+                     qreal sweepLength);
     QLabel *m_master_browser_label;
     QLabel *m_comment_label;
     QLabel *m_server_label;
