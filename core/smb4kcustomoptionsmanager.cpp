@@ -42,8 +42,6 @@
 #include "smb4kmountsettings_linux.h"
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
 #include "smb4kmountsettings_freebsd.h"
-#elif defined(Q_OS_SOLARIS)
-#include "smb4kmountsettings_solaris.h"
 #endif
 
 // Qt includes
@@ -52,26 +50,32 @@
 #include <QtCore/QDebug>
 #include <QtCore/QCoreApplication>
 #include <QtCore/QPointer>
+#include <QtCore/QStandardPaths>
 
 // KDE includes
-#include <kglobal.h>
-#include <kstandarddirs.h>
-#include <klocale.h>
+#define TRANSLATION_DOMAIN "smb4k-core"
+#include <KI18n/KLocalizedString>
 
 using namespace Smb4KGlobal;
 
-K_GLOBAL_STATIC(Smb4KCustomOptionsManagerStatic, p);
+Q_GLOBAL_STATIC(Smb4KCustomOptionsManagerStatic, p);
 
 
 Smb4KCustomOptionsManager::Smb4KCustomOptionsManager(QObject *parent)
 : QObject(parent), d(new Smb4KCustomOptionsManagerPrivate)
 {
-  // We need the directory.
-  QString dir = KGlobal::dirs()->locateLocal("data", "smb4k", KGlobal::mainComponent());
-
-  if (!KGlobal::dirs()->exists(dir))
+  // First we need the directory.
+  QString path = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+  
+  QDir dir;
+  
+  if (!dir.exists(path))
   {
-    KGlobal::dirs()->makeDir(dir);
+    dir.mkpath(path);
+  }
+  else
+  {
+    // Do nothing
   }
   
   readCustomOptions(&d->options, false);
@@ -140,7 +144,7 @@ void Smb4KCustomOptionsManager::removeRemount(Smb4KShare *share, bool force)
   
   if (share)
   {
-    Smb4KCustomOptions *options = NULL;
+    Smb4KCustomOptions *options = 0;
     
     if ((options = findOptions(share, true)))
     {
@@ -228,7 +232,7 @@ Smb4KCustomOptions *Smb4KCustomOptionsManager::findOptions(Smb4KBasicNetworkItem
 {
   Q_ASSERT(networkItem);
   
-  Smb4KCustomOptions *options = NULL;
+  Smb4KCustomOptions *options = 0;
   
   if (networkItem)
   {
@@ -329,16 +333,16 @@ Smb4KCustomOptions *Smb4KCustomOptionsManager::findOptions(Smb4KBasicNetworkItem
 }
 
 
-Smb4KCustomOptions* Smb4KCustomOptionsManager::findOptions(const KUrl &url)
+Smb4KCustomOptions* Smb4KCustomOptionsManager::findOptions(const QUrl &url)
 {
-  Smb4KCustomOptions *options = NULL;
+  Smb4KCustomOptions *options = 0;
   
-  if (url.isValid() && QString::compare(url.protocol(), "smb") == 0)
+  if (url.isValid() && QString::compare(url.scheme(), "smb") == 0)
   {
     for (int i = 0; i < d->options.size(); ++i)
     {
       if (QString::compare(d->options.at(i)->url().host(), url.host(), Qt::CaseInsensitive) == 0 &&
-           QString::compare(d->options.at(i)->url().path(), url.path(), Qt::CaseInsensitive) == 0)
+          QString::compare(d->options.at(i)->url().path(), url.path(), Qt::CaseInsensitive) == 0)
       {
         options = d->options[i];
         break;
@@ -361,7 +365,7 @@ Smb4KCustomOptions* Smb4KCustomOptionsManager::findOptions(const KUrl &url)
 void Smb4KCustomOptionsManager::readCustomOptions(QList<Smb4KCustomOptions *> *optionsList, bool allOptions)
 {
   // Locate the XML file.
-  QFile xmlFile(KGlobal::dirs()->locateLocal("data", "smb4k/custom_options.xml", KGlobal::mainComponent()));
+  QFile xmlFile(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)+QDir::separator()+"custom_options.xml");
 
   if (xmlFile.open(QIODevice::ReadOnly | QIODevice::Text))
   {
@@ -526,8 +530,6 @@ void Smb4KCustomOptionsManager::readCustomOptions(QList<Smb4KCustomOptions *> *o
                             options->setSecurityMode(Smb4KCustomOptions::UndefinedSecurityMode);
                           }
                         }
-#endif
-#if defined(Q_OS_LINUX) || defined(Q_OS_SOLARIS)
                         else if (xmlReader.name() == "write_access")
                         {
                           QString write_access = xmlReader.readElementText();
@@ -565,11 +567,11 @@ void Smb4KCustomOptionsManager::readCustomOptions(QList<Smb4KCustomOptions *> *o
                         }
                         else if (xmlReader.name() == "uid")
                         {
-                          options->setUID((K_UID)xmlReader.readElementText().toInt());
+                          options->setUser(KUser((K_UID)xmlReader.readElementText().toInt()));
                         }
                         else if (xmlReader.name() == "gid")
                         {
-                          options->setGID((K_GID)xmlReader.readElementText().toInt());
+                          options->setGroup(KUserGroup((K_GID)xmlReader.readElementText().toInt()));
                         }
                         else if (xmlReader.name() == "mac_address")
                         {
@@ -701,7 +703,7 @@ void Smb4KCustomOptionsManager::writeCustomOptions(const QList<Smb4KCustomOption
     allOptions << new Smb4KCustomOptions(*list[i]);
   }
   
-  QFile xmlFile(KGlobal::dirs()->locateLocal("data", "smb4k/custom_options.xml", KGlobal::mainComponent()));
+  QFile xmlFile(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)+QDir::separator()+"custom_options.xml");
 
   if (!allOptions.isEmpty())
   {
@@ -847,7 +849,7 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(Smb4KBasicNetworkItem *i
 {
   Q_ASSERT(item);
   
-  Smb4KCustomOptions *options = NULL;
+  Smb4KCustomOptions *options = 0;
   bool delete_options = false;
   
   if (item)
@@ -950,7 +952,7 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(Smb4KBasicNetworkItem *i
     
     QPointer<Smb4KCustomOptionsDialog> dlg = new Smb4KCustomOptionsDialog(options, parent);
       
-    if (dlg->exec() == KDialog::Accepted)
+    if (dlg->exec() == QDialog::Accepted)
     {
       if (hasCustomOptions(options))
       {
@@ -1000,7 +1002,7 @@ void Smb4KCustomOptionsManager::addCustomOptions(Smb4KCustomOptions *options)
     if (known_options)
     {
       // Remove the known options from the list and add the ones that
-      // were passed. We can do this, because findOptions(KUrl) returns
+      // were passed. We can do this, because findOptions(QUrl) returns
       // the exact match.
       int index = d->options.indexOf(known_options);
       
@@ -1046,13 +1048,11 @@ void Smb4KCustomOptionsManager::addCustomOptions(Smb4KCustomOptions *options)
 #if defined(Q_OS_LINUX)
           d->options[i]->setFileSystemPort(o->fileSystemPort());
           d->options[i]->setSecurityMode(o->securityMode());
-#endif
-#if defined(Q_OS_LINUX) || defined(Q_OS_SOLARIS)
           d->options[i]->setWriteAccess(o->writeAccess());
 #endif
           d->options[i]->setProtocolHint(o->protocolHint());
-          d->options[i]->setUID(o->uid());
-          d->options[i]->setGID(o->gid());
+          d->options[i]->setUser(o->user());
+          d->options[i]->setGroup(o->group());
           d->options[i]->setUseKerberos(o->useKerberos());
           d->options[i]->setMACAddress(o->macAddress());
           d->options[i]->setWOLSendBeforeNetworkScan(o->wolSendBeforeNetworkScan());
@@ -1246,8 +1246,8 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
       default_options.setUseKerberos(Smb4KCustomOptions::NoKerberos);
     }
 
-    default_options.setUID((K_UID)Smb4KMountSettings::userID().toInt());
-    default_options.setGID((K_GID)Smb4KMountSettings::groupID().toInt());
+    default_options.setUser(KUser((K_UID)Smb4KMountSettings::userID().toInt()));
+    default_options.setGroup(KUserGroup((K_GID)Smb4KMountSettings::groupID().toInt()));
 
     // NOTE: WOL features and remounting do not have default values.
     //
@@ -1331,8 +1331,8 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
     }
 
     // UID
-    if (empty_options.uid() != options->uid() &&
-        default_options.uid() != options->uid())
+    if (empty_options.user().userId() != options->user().userId() &&
+        default_options.user().userId() != options->user().userId())
     {
       return true;
     }
@@ -1342,8 +1342,8 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
     }
 
     // GID
-    if (empty_options.gid() != options->gid() &&
-        default_options.gid() != options->gid())
+    if (empty_options.group().groupId() != options->group().groupId() &&
+        default_options.group().groupId() != options->group().groupId())
     {
       return true;
     }
@@ -1470,206 +1470,6 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
     // SMB port
     if (empty_options.smbPort() != options->smbPort() && 
         default_options.smbPort() != options->smbPort())
-    {
-      return true;
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    // Protocol hint
-    if (empty_options.protocolHint() != options->protocolHint() &&
-        default_options.protocolHint() != options->protocolHint())
-    {
-      return true;
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    // Kerberos
-    if (empty_options.useKerberos() != options->useKerberos() &&
-        default_options.useKerberos() != options->useKerberos())
-    {
-      return true;
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    // UID
-    if (empty_options.uid() != options->uid() &&
-        default_options.uid() != options->uid())
-    {
-      return true;
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    // GID
-    if (empty_options.gid() != options->gid() &&
-        default_options.gid() != options->gid())
-    {
-      return true;
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    // MAC address
-    if (QString::compare(empty_options.macAddress(), options->macAddress()) != 0 &&
-        QString::compare(default_options.macAddress(), options->macAddress()) != 0)
-    {
-      return true;
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    // Send before first scan
-    if (empty_options.wolSendBeforeNetworkScan() != options->wolSendBeforeNetworkScan() &&
-        default_options.wolSendBeforeNetworkScan() != options->wolSendBeforeNetworkScan())
-    {
-      return true;
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    // Send before mount
-    if (empty_options.wolSendBeforeMount() != options->wolSendBeforeMount() &&
-        default_options.wolSendBeforeMount() != options->wolSendBeforeMount())
-    {
-      return true;
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  return false;
-}
-#elif defined(Q_OS_SOLARIS)
-//
-// Solaris/illumos
-//
-bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
-{
-  Q_ASSERT(options);
-
-  if (options)
-  {
-    // Check if there are custom options defined.
-    // Checks are performed against an empty and a default custom
-    // options object. Default means that the values of the global
-    // settings are honored.
-    Smb4KCustomOptions empty_options, default_options;
-
-    // Set up the default options
-    default_options.setSMBPort(Smb4KSettings::remoteSMBPort());
-
-    switch (Smb4KMountSettings::writeAccess())
-    {
-      case Smb4KMountSettings::EnumWriteAccess::ReadWrite:
-      {
-        default_options.setWriteAccess(Smb4KCustomOptions::ReadWrite);
-        break;
-      }
-      case Smb4KMountSettings::EnumWriteAccess::ReadOnly:
-      {
-        default_options.setWriteAccess(Smb4KCustomOptions::ReadOnly);
-        break;
-      }
-      default:
-      {
-        default_options.setWriteAccess(Smb4KCustomOptions::UndefinedWriteAccess);
-        break;
-      }
-    }
-
-    switch (Smb4KSettings::protocolHint())
-    {
-      case Smb4KSettings::EnumProtocolHint::Automatic:
-      {
-        default_options.setProtocolHint(Smb4KCustomOptions::Automatic);
-        break;
-      }
-      case Smb4KSettings::EnumProtocolHint::RPC:
-      {
-        default_options.setProtocolHint(Smb4KCustomOptions::RPC);
-        break;
-      }
-      case Smb4KSettings::EnumProtocolHint::RAP:
-      {
-        default_options.setProtocolHint(Smb4KCustomOptions::RAP);
-        break;
-      }
-      case Smb4KSettings::EnumProtocolHint::ADS:
-      {
-        default_options.setProtocolHint(Smb4KCustomOptions::ADS);
-        break;
-      }
-      default:
-      {
-        default_options.setProtocolHint(Smb4KCustomOptions::UndefinedProtocolHint);
-        break;
-      }
-    }
-
-    if (Smb4KSettings::useKerberos())
-    {
-      default_options.setUseKerberos(Smb4KCustomOptions::UseKerberos);
-    }
-    else
-    {
-      default_options.setUseKerberos(Smb4KCustomOptions::NoKerberos);
-    }
-
-    default_options.setUID((K_UID)Smb4KMountSettings::userID().toInt());
-    default_options.setGID((K_GID)Smb4KMountSettings::groupID().toInt());
-
-    // NOTE: WOL features and remounting do not have default values.
-    //
-    // Do the actual checks
-    //
-
-    // Remounting
-    if (options->remount() == Smb4KCustomOptions::RemountAlways)
-    {
-      return true;
-    }
-    else
-    {
-      // Do nothing
-    }    
-
-    // SMB port
-    if (empty_options.smbPort() != options->smbPort() && 
-        default_options.smbPort() != options->smbPort())
-    {
-      return true;
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    // Write access
-    if (empty_options.writeAccess() != options->writeAccess() &&
-        default_options.writeAccess() != options->writeAccess())
     {
       return true;
     }
@@ -2025,5 +1825,3 @@ void Smb4KCustomOptionsManager::slotActiveProfileChanged(const QString& /*active
   readCustomOptions(&d->options, false);
 }
 
-
-#include "smb4kcustomoptionsmanager.moc"

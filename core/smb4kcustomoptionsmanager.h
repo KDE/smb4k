@@ -32,10 +32,7 @@
 // Qt includes
 #include <QtCore/QObject>
 #include <QtCore/QScopedPointer>
-#include <QtGui/QWidget>
-
-// KDE includes
-#include <kdemacros.h>
+#include <QtWidgets/QWidget>
 
 // forward declarations
 class Smb4KCustomOptionsManagerPrivate;
@@ -51,7 +48,7 @@ class Smb4KProfileManager;
  * @since 1.0.0
  */
 
-class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
+class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
 {
   Q_OBJECT
   
@@ -148,7 +145,7 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
      *
      * @returns the custom options
      */
-    Smb4KCustomOptions *findOptions(const KUrl &url);
+    Smb4KCustomOptions *findOptions(const QUrl &url);
     
     /**
      * Get the list of custom options. By default, the list not only comprises of those 
