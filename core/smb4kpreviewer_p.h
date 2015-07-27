@@ -2,7 +2,7 @@
     smb4kpreviewer_p  -  Private helper classes for Smb4KPreviewer class.
                              -------------------
     begin                : So Dez 21 2008
-    copyright            : (C) 2008-2014 by Alexander Reinholdt
+    copyright            : (C) 2008-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -33,15 +33,16 @@
 // Qt includes
 #include <QtCore/QStringList>
 #include <QtCore/QListIterator>
+#include <QtCore/QUrl>
+#include <QtGui/QIcon>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QListWidget>
+#include <QtWidgets/QPushButton>
 
 // KDE includes
-#include <kjob.h>
-#include <kdialog.h>
-#include <klistwidget.h>
-#include <khistorycombobox.h>
-#include <kaction.h>
-#include <kdualaction.h>
-#include <kicon.h>
+#include <KCoreAddons/KJob>
+#include <KCompletion/KHistoryComboBox>
+#include <KWidgetsAddons/KDualAction>
 
 // forward declarations
 class Smb4KShare;
@@ -63,7 +64,7 @@ class Smb4KPreviewFileItem
     /**
      * Set the item name.
      */
-    void setItemName( const QString &name );
+    void setItemName(const QString &name);
     
     /**
      * Returns the name of the item.
@@ -73,7 +74,7 @@ class Smb4KPreviewFileItem
     /**
      * Set the modification date of the file or directory.
      */
-    void setDate( const QString &date );
+    void setDate(const QString &date);
     
     /**
      * Returns the modification date.
@@ -83,7 +84,7 @@ class Smb4KPreviewFileItem
     /**
      * Set the file size.
      */
-    void setItemSize( const QString &size );
+    void setItemSize(const QString &size);
     
     /**
      * Returns the file size.
@@ -93,7 +94,7 @@ class Smb4KPreviewFileItem
     /**
      * Mark the item as directory.
      */
-    void setDir( bool dir );
+    void setDir(bool dir);
     
     /**
      * Returns TRUE if the item is a directory.
@@ -113,7 +114,7 @@ class Smb4KPreviewFileItem
     /**
      * Returns the icon for the item.
      */
-    KIcon itemIcon() const;
+    QIcon itemIcon() const;
     
   private:
     QString m_name;
@@ -131,7 +132,7 @@ class Smb4KPreviewJob : public KJob
     /**
      * Constructor
      */
-    explicit Smb4KPreviewJob( QObject *parent = 0 );
+    explicit Smb4KPreviewJob(QObject *parent = 0);
 
     /**
      * Destructor
@@ -161,9 +162,9 @@ class Smb4KPreviewJob : public KJob
      *
      * @param parent      The parent widget
      */
-    void setupPreview( Smb4KShare *share,
-                       const KUrl &url,
-                       QWidget *parent );
+    void setupPreview(Smb4KShare *share,
+                       const QUrl &url,
+                       QWidget *parent);
 
     /**
      * Returns the share object
@@ -184,25 +185,25 @@ class Smb4KPreviewJob : public KJob
      *
      * @returns the path
      */
-    const KUrl &location() { return m_url; }
+    const QUrl &location() { return m_url; }
 
   Q_SIGNALS:
     /**
      * Emitted when an authentication error happened.
      */
-    void authError( Smb4KPreviewJob *job );
+    void authError(Smb4KPreviewJob *job);
 
     /**
      * Emitted when the printing is about to begin.
      */
-    void aboutToStart( Smb4KShare *share,
-                       const KUrl &url );
+    void aboutToStart(Smb4KShare *share,
+                       const QUrl &url);
 
     /**
      * Emitted after the printing finished.
      */
-    void finished( Smb4KShare *share,
-                   const KUrl &url );
+    void finished(Smb4KShare *share,
+                   const QUrl &url);
 
     /**
      * Emits the contents of the directory just listed
@@ -211,8 +212,8 @@ class Smb4KPreviewJob : public KJob
      *
      * @param contents  The contents of the URL
      */
-    void preview( const KUrl &url,
-                  const QList<Smb4KPreviewFileItem> &contents );
+    void preview(const QUrl &url,
+                  const QList<Smb4KPreviewFileItem> &contents);
 
   protected:
     bool doKill();
@@ -221,18 +222,18 @@ class Smb4KPreviewJob : public KJob
     void slotStartPreview();
     void slotReadStandardOutput();
     void slotReadStandardError();
-    void slotProcessFinished( int exitCode, QProcess::ExitStatus status );
+    void slotProcessFinished(int exitCode, QProcess::ExitStatus status);
 
   private:
     bool m_started;
     Smb4KShare *m_share;
     QWidget *m_parent_widget;
     Smb4KProcess *m_proc;
-    KUrl m_url;
+    QUrl m_url;
 };
 
 
-class KDE_EXPORT Smb4KPreviewDialog : public KDialog
+class Q_DECL_EXPORT Smb4KPreviewDialog : public QDialog
 {
   Q_OBJECT
 
@@ -244,8 +245,8 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
      *
      * @param parent        The parent of this widget
      */
-    explicit Smb4KPreviewDialog( Smb4KShare *share,
-                                 QWidget *parent = 0 );
+    explicit Smb4KPreviewDialog(Smb4KShare *share,
+                                 QWidget *parent = 0);
 
     /**
      * The destructor.
@@ -265,7 +266,7 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
      *
      * @param dialog        This dialog
      */
-    void aboutToClose( Smb4KPreviewDialog *dialog );
+    void aboutToClose(Smb4KPreviewDialog *dialog);
 
     /**
      * This signal requests a preview for the given share and URL.
@@ -278,9 +279,9 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
      *
      * @param parent        The parent widget that should be used
      */
-    void requestPreview( Smb4KShare *share,
-                         const KUrl &url,
-                         QWidget *parent = 0 );
+    void requestPreview(Smb4KShare *share,
+                         const QUrl &url,
+                         QWidget *parent = 0);
 
     /**
      * This signal is emitted when the user wants to abort the acquisition
@@ -288,7 +289,7 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
      *
      * @param share         The share
      */
-    void abortPreview( Smb4KShare *share );
+    void abortPreview(Smb4KShare *share);
 
   protected Q_SLOTS:
     void slotReloadAbortActionTriggered(bool);
@@ -310,8 +311,8 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
      * 
      * @param contents      The contents of a certain directory
      */
-    void slotDisplayPreview( const KUrl &url,
-                             const QList<Smb4KPreviewFileItem> &contents );
+    void slotDisplayPreview(const QUrl &url,
+                             const QList<Smb4KPreviewFileItem> &contents);
     
     /**
      * This slot is called when the preview process is about to start.
@@ -321,8 +322,8 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
      * @param url           The location for which the preview should be 
      *                      acquired
      */
-    void slotAboutToStart( Smb4KShare *share,
-                           const KUrl &url );
+    void slotAboutToStart(Smb4KShare *share,
+                           const QUrl &url);
 
     /**
      * This slot is called when the preview process finished.
@@ -332,20 +333,20 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
      * @param url           The location for which the preview should be
      *                      acquired
      */
-    void slotFinished( Smb4KShare *share,
-                       const KUrl &url );
+    void slotFinished(Smb4KShare *share,
+                       const QUrl &url);
 
     /**
      * Is called, if an item has been executed.
      *
      * @param item          The item that has been exected.
      */
-    void slotItemExecuted( QListWidgetItem *item );
+    void slotItemExecuted(QListWidgetItem *item);
 
     /**
      * Is called, if an item in the combo box is activated.
      */
-    void slotItemActivated( const QString &item );
+    void slotItemActivated(const QString &item);
 
     /**
      * This slot is called when the close button was clicked.
@@ -357,9 +358,11 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
      *
      * @param group               The icon group
      */
-    void slotIconSizeChanged( int group );
+    void slotIconSizeChanged(int group);
 
   private:
+    QPushButton *m_close_button;
+    
     /**
      * The share object
      */
@@ -368,7 +371,7 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
     /**
      * The current URL
      */
-    KUrl m_url;
+    QUrl m_url;
     
     /**
      * Enumeration for the items in the list view.
@@ -384,7 +387,7 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
     /**
      * The icon view.
      */
-    KListWidget *m_view;
+    QListWidget *m_view;
 
     /**
      * The combo box.
@@ -399,17 +402,17 @@ class KDE_EXPORT Smb4KPreviewDialog : public KDialog
     /**
      * Back action
      */
-    KAction *m_back;
+    QAction *m_back;
 
     /**
      * Forward action
      */
-    KAction *m_forward;
+    QAction *m_forward;
 
     /**
      * Up action
      */
-    KAction *m_up;
+    QAction *m_up;
 
     /**
      * The current history

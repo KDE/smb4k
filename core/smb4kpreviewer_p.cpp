@@ -2,7 +2,7 @@
     smb4kpreviewer_p  -  Private helper classes for Smb4KPreviewer class.
                              -------------------
     begin                : So Dez 21 2008
-    copyright            : (C) 2008-2014 by Alexander Reinholdt
+    copyright            : (C) 2008-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -41,17 +41,20 @@
 #include <QtCore/QTimer>
 #include <QtCore/QDateTime>
 #include <QtCore/QLatin1String>
-#include <QtGui/QGridLayout>
+#include <QtCore/QString>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QDialogButtonBox>
+#include <QtWidgets/QPushButton>
 
 // KDE includes
-#include <kdebug.h>
-#include <klocale.h>
-#include <kstandarddirs.h>
-#include <kmimetype.h>
-#include <ktoolbar.h>
-#include <kstatusbar.h>
-#include <kshell.h>
-#include <kguiitem.h>
+#define TRANSLATION_DOMAIN "smb4k-core"
+#include <KIconThemes/KIconLoader>
+#include <KIOCore/KIO/Global>
+#include <KConfigGui/KWindowConfig>
+#include <KCoreAddons/KShell>
+#include <KI18n/KLocalizedString>
+#include <KXmlGui/KToolBar>
+#include <KWidgetsAddons/KGuiItem>
 
 using namespace Smb4KGlobal;
 
@@ -123,22 +126,22 @@ bool Smb4KPreviewFileItem::isFile() const
 
 bool Smb4KPreviewFileItem::isHidden() const
 {
-  return (m_name.startsWith( '.' ) && QString::compare( m_name, "." ) != 0 && QString::compare( m_name, ".." ) != 0);
+  return (m_name.startsWith('.') && QString::compare(m_name, ".") != 0 && QString::compare(m_name, "..") != 0);
 }
 
 
-KIcon Smb4KPreviewFileItem::itemIcon() const
+QIcon Smb4KPreviewFileItem::itemIcon() const
 {
-  KIcon icon;
+  QIcon icon;
   
-  if ( m_dir )
+  if (m_dir)
   {
-    icon = KIcon( "folder" );
+    icon = KDE::icon("folder");
   }
   else
   {
-    KUrl url( m_name );
-    icon = KIcon( KMimeType::iconNameForUrl( url, 0 ) );
+    QUrl url(m_name);
+    icon = KDE::icon(KIO::iconNameForUrl(url));
   }
   
   return icon;
@@ -147,8 +150,8 @@ KIcon Smb4KPreviewFileItem::itemIcon() const
 
 
 
-Smb4KPreviewJob::Smb4KPreviewJob( QObject *parent ) : KJob( parent ),
-  m_started( false ), m_share( NULL ), m_parent_widget( NULL ), m_proc( NULL )
+Smb4KPreviewJob::Smb4KPreviewJob(QObject *parent) : KJob(parent),
+  m_started(false), m_share(0), m_parent_widget(0), m_proc(0)
 {
 }
 
@@ -161,13 +164,13 @@ Smb4KPreviewJob::~Smb4KPreviewJob()
 void Smb4KPreviewJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT(slotStartPreview()) );
+  QTimer::singleShot(0, this, SLOT(slotStartPreview()));
 }
 
 
-void Smb4KPreviewJob::setupPreview( Smb4KShare *share, const KUrl &url, QWidget *parent )
+void Smb4KPreviewJob::setupPreview(Smb4KShare *share, const QUrl &url, QWidget *parent)
 {
-  Q_ASSERT( share );
+  Q_ASSERT(share);
   m_share = share;
   m_url   = url;
   m_parent_widget = parent;
@@ -176,7 +179,7 @@ void Smb4KPreviewJob::setupPreview( Smb4KShare *share, const KUrl &url, QWidget 
 
 bool Smb4KPreviewJob::doKill()
 {
-  if ( m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting) )
+  if (m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting))
   {
     m_proc->abort();
   }
@@ -192,9 +195,9 @@ bool Smb4KPreviewJob::doKill()
 void Smb4KPreviewJob::slotStartPreview()
 {
   // Find the smbclient program
-  QString smbclient = KStandardDirs::findExe( "smbclient" );
+  QString smbclient = QStandardPaths::findExecutable("smbclient");
 
-  if ( smbclient.isEmpty() )
+  if (smbclient.isEmpty())
   {
     Smb4KNotification::commandNotFound("smbclient");
     emitResult();
@@ -206,18 +209,18 @@ void Smb4KPreviewJob::slotStartPreview()
   }
 
   // Start the preview process
-  emit aboutToStart( m_share, m_url );
+  emit aboutToStart(m_share, m_url);
 
   // Get the path that has to be listed.
   QString path = m_url.path();
   
-  if ( !m_share->isHomesShare() )
+  if (!m_share->isHomesShare())
   {
-    path.remove( m_share->shareName(), Qt::CaseInsensitive ); 
+    path.remove(m_share->shareName(), Qt::CaseInsensitive); 
   }
   else
   {
-    path.remove( m_share->login(), Qt::CaseInsensitive );
+    path.remove(m_share->login(), Qt::CaseInsensitive);
   }
   
   // Compile the command line arguments
@@ -230,18 +233,18 @@ void Smb4KPreviewJob::slotStartPreview()
   arguments << m_share->unc();
 
   // Workgroup
-  arguments << QString( "-W %1" ).arg( KShell::quoteArg( m_share->workgroupName() ) );
+  arguments << QString("-W %1").arg(KShell::quoteArg(m_share->workgroupName()));
 
   // Directory
-  arguments << QString( "-D %1" ).arg( KShell::quoteArg( path.isEmpty() ? "/" : path ) );
+  arguments << QString("-D %1").arg(KShell::quoteArg(path.isEmpty() ? "/" : path));
 
   // Command to perform (here: ls)
-  arguments << QString( "-c %1" ).arg( KShell::quoteArg( "ls" ) );
+  arguments << QString("-c %1").arg(KShell::quoteArg("ls"));
 
   // IP address
-  if ( !m_share->hostIP().isEmpty() )
+  if (!m_share->hostIP().isEmpty())
   {
-    arguments << QString( "-I %1" ).arg( m_share->hostIP() );
+    arguments << QString("-I %1").arg(m_share->hostIP());
   }
   else
   {
@@ -249,7 +252,7 @@ void Smb4KPreviewJob::slotStartPreview()
   }
 
   // Machine account
-  if ( Smb4KSettings::machineAccount() )
+  if (Smb4KSettings::machineAccount())
   {
     arguments << "-P";
   }
@@ -259,7 +262,7 @@ void Smb4KPreviewJob::slotStartPreview()
   }
 
   // Signing state
-  switch ( Smb4KSettings::signingState() )
+  switch (Smb4KSettings::signingState())
   {
     case Smb4KSettings::EnumSigningState::None:
     {
@@ -287,9 +290,9 @@ void Smb4KPreviewJob::slotStartPreview()
   }
 
   // Buffer size
-  if ( Smb4KSettings::bufferSize() != 65520 )
+  if (Smb4KSettings::bufferSize() != 65520)
   {
-    arguments << QString( "-b %1" ).arg( Smb4KSettings::bufferSize() );
+    arguments << QString("-b %1").arg(Smb4KSettings::bufferSize());
   }
   else
   {
@@ -298,22 +301,22 @@ void Smb4KPreviewJob::slotStartPreview()
 
   // Get global Samba and custom options
   QMap<QString,QString> samba_options = globalSambaOptions();
-  Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions( m_share );
+  Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions(m_share);
 
   // Port
-  if ( options && options->smbPort() != Smb4KSettings::remoteSMBPort() )
+  if (options && options->smbPort() != Smb4KSettings::remoteSMBPort())
   {
-    arguments << QString( "-p %1" ).arg( options->smbPort() );
+    arguments << QString("-p %1").arg(options->smbPort());
   }
   else
   {
-    arguments << QString( "-p %1" ).arg( Smb4KSettings::remoteSMBPort() );
+    arguments << QString("-p %1").arg(Smb4KSettings::remoteSMBPort());
   }
 
   // Kerberos
-  if ( options )
+  if (options)
   {
-    switch ( options->useKerberos() )
+    switch (options->useKerberos())
     {
       case Smb4KCustomOptions::UseKerberos:
       {
@@ -327,7 +330,7 @@ void Smb4KPreviewJob::slotStartPreview()
       }
       case Smb4KCustomOptions::UndefinedKerberos:
       {
-        if ( Smb4KSettings::useKerberos() )
+        if (Smb4KSettings::useKerberos())
         {
           arguments << "-k";
         }
@@ -345,7 +348,7 @@ void Smb4KPreviewJob::slotStartPreview()
   }
   else
   {
-    if ( Smb4KSettings::useKerberos() )
+    if (Smb4KSettings::useKerberos())
     {
       arguments << "-k";
     }
@@ -356,10 +359,10 @@ void Smb4KPreviewJob::slotStartPreview()
   }
 
   // Resolve order
-  if ( !Smb4KSettings::nameResolveOrder().isEmpty() &&
-        QString::compare( Smb4KSettings::nameResolveOrder(), samba_options["name resolve order"] ) != 0 )
+  if (!Smb4KSettings::nameResolveOrder().isEmpty() &&
+        QString::compare(Smb4KSettings::nameResolveOrder(), samba_options["name resolve order"]) != 0)
   {
-    arguments << QString( "-R %1" ).arg( KShell::quoteArg( Smb4KSettings::nameResolveOrder() ) );
+    arguments << QString("-R %1").arg(KShell::quoteArg(Smb4KSettings::nameResolveOrder()));
   }
   else
   {
@@ -367,10 +370,10 @@ void Smb4KPreviewJob::slotStartPreview()
   }
 
   // NetBIOS name
-  if ( !Smb4KSettings::netBIOSName().isEmpty() &&
-       QString::compare( Smb4KSettings::netBIOSName(), samba_options["netbios name"] ) != 0 )
+  if (!Smb4KSettings::netBIOSName().isEmpty() &&
+       QString::compare(Smb4KSettings::netBIOSName(), samba_options["netbios name"]) != 0)
   {
-    arguments << QString( "-n %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSName() ) );
+    arguments << QString("-n %1").arg(KShell::quoteArg(Smb4KSettings::netBIOSName()));
   }
   else
   {
@@ -378,10 +381,10 @@ void Smb4KPreviewJob::slotStartPreview()
   }
 
   // NetBIOS scope
-  if ( !Smb4KSettings::netBIOSScope().isEmpty() &&
-       QString::compare( Smb4KSettings::netBIOSScope(), samba_options["netbios scope"] ) != 0 )
+  if (!Smb4KSettings::netBIOSScope().isEmpty() &&
+       QString::compare(Smb4KSettings::netBIOSScope(), samba_options["netbios scope"]) != 0)
   {
-    arguments << QString( "-i %1" ).arg( KShell::quoteArg( Smb4KSettings::netBIOSScope() ) );
+    arguments << QString("-i %1").arg(KShell::quoteArg(Smb4KSettings::netBIOSScope()));
   }
   else
   {
@@ -389,10 +392,10 @@ void Smb4KPreviewJob::slotStartPreview()
   }
 
   // Socket options
-  if ( !Smb4KSettings::socketOptions().isEmpty() &&
-       QString::compare( Smb4KSettings::socketOptions(), samba_options["socket options"] ) != 0 )
+  if (!Smb4KSettings::socketOptions().isEmpty() &&
+       QString::compare(Smb4KSettings::socketOptions(), samba_options["socket options"]) != 0)
   {
-    arguments << QString( "-O %1" ).arg( KShell::quoteArg( Smb4KSettings::socketOptions() ) );
+    arguments << QString("-O %1").arg(KShell::quoteArg(Smb4KSettings::socketOptions()));
   }
   else
   {
@@ -400,7 +403,7 @@ void Smb4KPreviewJob::slotStartPreview()
   }
 
   // Use Winbind CCache
-  if ( Smb4KSettings::useWinbindCCache() )
+  if (Smb4KSettings::useWinbindCCache())
   {
     arguments << "-C";
   }
@@ -410,7 +413,7 @@ void Smb4KPreviewJob::slotStartPreview()
   }
 
   // Use encryption
-  if ( Smb4KSettings::encryptSMBTransport() )
+  if (Smb4KSettings::encryptSMBTransport())
   {
     arguments << "-e";
   }
@@ -419,23 +422,23 @@ void Smb4KPreviewJob::slotStartPreview()
     // Do nothing
   }
 
-  if ( !m_share->login().isEmpty() )
+  if (!m_share->login().isEmpty())
   {
-    arguments << QString( "-U %1" ).arg( m_share->login() );
+    arguments << QString("-U %1").arg(m_share->login());
   }
   else
   {
     arguments << "-U %";
   }
 
-  m_proc = new Smb4KProcess( this );
-  m_proc->setOutputChannelMode( KProcess::SeparateChannels );
-  m_proc->setEnv( "PASSWD", m_share->password(), true );
-  m_proc->setShellCommand( arguments.join( " " ) );
+  m_proc = new Smb4KProcess(this);
+  m_proc->setOutputChannelMode(KProcess::SeparateChannels);
+  m_proc->setEnv("PASSWD", m_share->password(), true);
+  m_proc->setShellCommand(arguments.join(" "));
   
-  connect( m_proc, SIGNAL(readyReadStandardOutput()), SLOT(slotReadStandardOutput()) );
-  connect( m_proc, SIGNAL(readyReadStandardError()),  SLOT(slotReadStandardError()) );
-  connect( m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(slotProcessFinished(int,QProcess::ExitStatus)) );
+  connect(m_proc, SIGNAL(readyReadStandardOutput()), SLOT(slotReadStandardOutput()));
+  connect(m_proc, SIGNAL(readyReadStandardError()),  SLOT(slotReadStandardError()));
+  connect(m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(slotProcessFinished(int,QProcess::ExitStatus)));
 
   m_proc->start();
 }
@@ -443,23 +446,23 @@ void Smb4KPreviewJob::slotStartPreview()
 
 void Smb4KPreviewJob::slotReadStandardOutput()
 {
-  QString stdOut = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 );
+  QString stdOut = QString::fromUtf8(m_proc->readAllStandardOutput(), -1);
   
-  if ( stdOut.contains( "NT_STATUS_ACCESS_DENIED", Qt::CaseSensitive ) || 
-       stdOut.contains( "NT_STATUS_LOGON_FAILURE", Qt::CaseSensitive ) )
+  if (stdOut.contains("NT_STATUS_ACCESS_DENIED", Qt::CaseSensitive) || 
+       stdOut.contains("NT_STATUS_LOGON_FAILURE", Qt::CaseSensitive))
   {
     // This might happen if a directory cannot be accessed due to missing
     // read permissions.
-    emit authError( this );
+    emit authError(this);
   }
   else
   {
-    QStringList list = stdOut.split( '\n', QString::SkipEmptyParts );
+    QStringList list = stdOut.split('\n', QString::SkipEmptyParts);
     QList<Smb4KPreviewFileItem> items;
 
-    foreach ( const QString &line, list )
+    foreach (const QString &line, list)
     {
-      if ( line.contains( "blocks of size" ) || line.contains( "Domain=[" ) )
+      if (line.contains("blocks of size") || line.contains("Domain=["))
       {
         continue;
       }
@@ -467,29 +470,29 @@ void Smb4KPreviewJob::slotReadStandardOutput()
       {
         QString entry = line;
         
-        QString left = entry.trimmed().section( "     ", 0, -2 ).trimmed();
-        QString right = entry.remove( left );
+        QString left = entry.trimmed().section("     ", 0, -2).trimmed();
+        QString right = entry.remove(left);
 
-        QString name = left.section( "  ", 0, -2 ).trimmed().isEmpty() ?
+        QString name = left.section("  ", 0, -2).trimmed().isEmpty() ?
                        left :
-                       left.section( "  ", 0, -2 ).trimmed();
+                       left.section("  ", 0, -2).trimmed();
 
-        QString dir_string = left.right( 3 ).trimmed();
-        bool is_dir = (!dir_string.isEmpty() && dir_string.contains( "D" ));
+        QString dir_string = left.right(3).trimmed();
+        bool is_dir = (!dir_string.isEmpty() && dir_string.contains("D"));
 
-        QString tmp_size = right.trimmed().section( "  ", 0, 0 ).trimmed();
+        QString tmp_size = right.trimmed().section("  ", 0, 0).trimmed();
         QString size;
 
-        if ( tmp_size[0].isLetter() )
+        if (tmp_size[0].isLetter())
         {
-          size = right.trimmed().section( "  ", 1, 1 ).trimmed();
+          size = right.trimmed().section("  ", 1, 1).trimmed();
         }
         else
         {
           size = tmp_size;
         }
 
-        QString date = QDateTime::fromString( right.section( QString( " %1 " ).arg( size ), 1, 1 ).trimmed() ).toString();
+        QString date = QDateTime::fromString(right.section(QString(" %1 ").arg(size), 1, 1).trimmed()).toString();
         
         if (!name.isEmpty())
         {
@@ -530,7 +533,7 @@ void Smb4KPreviewJob::slotReadStandardOutput()
       }
     }
 
-    emit preview( m_url, items );
+    emit preview(m_url, items);
   }
 }
 
@@ -550,7 +553,7 @@ void Smb4KPreviewJob::slotReadStandardError()
   {
     QString line = it.next();
 
-    if (line.contains( "DEBUG" ))
+    if (line.contains("DEBUG"))
     {
       it.remove();
     }
@@ -588,21 +591,21 @@ void Smb4KPreviewJob::slotReadStandardError()
 
   // Avoid reporting an error if the process was killed by calling the abort() function
   // or if only debug and other information was reported.
-  if ( !m_proc->isAborted() && !err_msg.isEmpty() )
+  if (!m_proc->isAborted() && !err_msg.isEmpty())
   {
     m_proc->abort();
 
-    if ( stdErr.contains( "NT_STATUS_LOGON_FAILURE" ) ||
-         stdErr.contains( "NT_STATUS_ACCESS_DENIED" ) )
+    if (stdErr.contains("NT_STATUS_LOGON_FAILURE") ||
+         stdErr.contains("NT_STATUS_ACCESS_DENIED"))
     {
       // Authentication error
-      emit authError( this );
+      emit authError(this);
     }
     else
     {
-      if ( !err_msg.isEmpty() )
+      if (!err_msg.isEmpty())
       {
-        Smb4KNotification::retrievingPreviewFailed(m_share, err_msg.join( "\n" ));
+        Smb4KNotification::retrievingPreviewFailed(m_share, err_msg.join("\n"));
       }
       else
       {
@@ -617,13 +620,13 @@ void Smb4KPreviewJob::slotReadStandardError()
 }
 
 
-void Smb4KPreviewJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitStatus status )
+void Smb4KPreviewJob::slotProcessFinished(int /*exitCode*/, QProcess::ExitStatus status)
 {
-  switch ( status )
+  switch (status)
   {
     case QProcess::CrashExit:
     {
-      if ( !m_proc->isAborted() )
+      if (!m_proc->isAborted())
       {
         Smb4KNotification::processError(m_proc->error());
       }
@@ -640,15 +643,15 @@ void Smb4KPreviewJob::slotProcessFinished( int /*exitCode*/, QProcess::ExitStatu
   }
 
   emitResult();
-  emit finished( m_share, m_url );
+  emit finished(m_share, m_url);
 }
 
 
 
-Smb4KPreviewDialog::Smb4KPreviewDialog( Smb4KShare *share, QWidget *parent )
-: KDialog( parent ), m_share( share ), m_iterator( QStringList() )
+Smb4KPreviewDialog::Smb4KPreviewDialog(Smb4KShare *share, QWidget *parent)
+: QDialog(parent), m_share(share), m_iterator(QStringList())
 {
-  if ( !share->isHomesShare() )
+  if (!share->isHomesShare())
   {
     m_url = share->url();
   }
@@ -657,17 +660,15 @@ Smb4KPreviewDialog::Smb4KPreviewDialog( Smb4KShare *share, QWidget *parent )
     m_url = share->homeURL();
   }
   
-  setAttribute( Qt::WA_DeleteOnClose, true );
+  setAttribute(Qt::WA_DeleteOnClose, true);
 
-  setCaption( i18n( "Preview of %1" ).arg( share->unc() ) );
-  setButtons( Close );
-  setDefaultButton( Close );
-
+  setWindowTitle(i18n("Preview of %1").arg(share->unc()));
+  
   // Set the IP address if necessary.
-  if ( share->hostIP().isEmpty() )
+  if (share->hostIP().isEmpty())
   {
-    Smb4KHost *host = findHost( share->hostName(), share->workgroupName() );
-    share->setHostIP( host->ip() );
+    Smb4KHost *host = findHost(share->hostName(), share->workgroupName());
+    share->setHostIP(host->ip());
   }
   else
   {
@@ -676,15 +677,12 @@ Smb4KPreviewDialog::Smb4KPreviewDialog( Smb4KShare *share, QWidget *parent )
 
   setupView();
 
-  connect( this, SIGNAL(closeClicked()),
-           this, SLOT(slotCloseClicked()) );
+  setMinimumWidth(sizeHint().width() > 350 ? sizeHint().width() : 350);
 
-  setMinimumWidth( sizeHint().width() > 350 ? sizeHint().width() : 350 );
+  KConfigGroup group(Smb4KSettings::self()->config(), "PreviewDialog");
+  KWindowConfig::restoreWindowSize(windowHandle(), group);
 
-  KConfigGroup group( Smb4KSettings::self()->config(), "PreviewDialog" );
-  restoreDialogSize( group );
-
-  QTimer::singleShot( 0, this, SLOT(slotRequestPreview()) );
+  QTimer::singleShot(0, this, SLOT(slotRequestPreview()));
 }
 
 
@@ -696,71 +694,83 @@ Smb4KPreviewDialog::~Smb4KPreviewDialog()
 void Smb4KPreviewDialog::setupView()
 {
   // Main widget
-  QWidget *main_widget = new QWidget( this );
-  setMainWidget( main_widget );
+  QVBoxLayout *layout = new QVBoxLayout(this);
+  layout->setSpacing(5);
 
-  QGridLayout *layout = new QGridLayout( main_widget );
-  layout->setSpacing( 5 );
-  layout->setMargin( 0 );
+  m_view = new QListWidget(this);
+  m_view->setResizeMode(QListWidget::Adjust);
+  m_view->setWrapping(true);
+  m_view->setSortingEnabled(true);
+  m_view->setWhatsThis(i18n("The preview is displayed here."));
+  int icon_size = KIconLoader::global()->currentSize(KIconLoader::Small);
+  m_view->setIconSize(QSize(icon_size, icon_size));
 
-  m_view = new KListWidget( main_widget );
-  m_view->setResizeMode( KListWidget::Adjust );
-  m_view->setWrapping( true );
-  m_view->setSortingEnabled( true );
-  m_view->setWhatsThis( i18n( "The preview is displayed here." ) );
-  int icon_size = KIconLoader::global()->currentSize( KIconLoader::Small );
-  m_view->setIconSize( QSize( icon_size, icon_size ) );
-
-  KToolBar *toolbar = new KToolBar( main_widget, true, false );
+  KToolBar *toolbar = new KToolBar(this, true, false);
   
   m_reload_abort = new KDualAction(toolbar);
-  KGuiItem reload_item(i18n( "Reload" ), KIcon( "view-refresh" ));
-  KGuiItem abort_item(i18n( "Abort" ), KIcon( "process-stop" ));
+  KGuiItem reload_item(i18n("Reload"), KDE::icon("view-refresh"));
+  KGuiItem abort_item(i18n("Abort"), KDE::icon("process-stop"));
   m_reload_abort->setActiveGuiItem(reload_item);
   m_reload_abort->setInactiveGuiItem(abort_item);
   m_reload_abort->setActive(true);
   m_reload_abort->setAutoToggle(false);
 //   m_reload_abort->setEnabled(false);
   
-  m_back    = new KAction( KIcon( "go-previous" ), i18n( "Back" ), toolbar );
-  m_back->setEnabled( false );
+  m_back    = new QAction(KDE::icon("go-previous"), i18n("Back"), toolbar);
+  m_back->setEnabled(false);
   
-  m_forward = new KAction( KIcon( "go-next" ), i18n( "Forward" ), toolbar );
-  m_forward->setEnabled( false );
+  m_forward = new QAction(KDE::icon("go-next"), i18n("Forward"), toolbar);
+  m_forward->setEnabled(false);
   
-  m_up      = new KAction( KIcon( "go-up" ), i18n( "Up" ), toolbar );
-  m_up->setEnabled( false );
+  m_up      = new QAction(KDE::icon("go-up"), i18n("Up"), toolbar);
+  m_up->setEnabled(false);
   
-  m_combo   = new KHistoryComboBox( true, toolbar );
-  m_combo->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Preferred );
-  m_combo->setEditable( false );
-  m_combo->setWhatsThis( i18n( "The current UNC address is shown here. You can also choose one of "
+  m_combo   = new KHistoryComboBox(true, toolbar);
+  m_combo->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+  m_combo->setEditable(false);
+  m_combo->setWhatsThis(i18n("The current UNC address is shown here. You can also choose one of "
     "the previously visited locations from the drop-down menu that will then be displayed in the "
-    "view above." ) );
+    "view above."));
 
-  toolbar->addAction( m_reload_abort );
-  toolbar->addAction( m_back );
-  toolbar->addAction( m_forward );
-  toolbar->addAction( m_up );
-  toolbar->insertSeparator( toolbar->addWidget( m_combo ) );
+  toolbar->addAction(m_reload_abort);
+  toolbar->addAction(m_back);
+  toolbar->addAction(m_forward);
+  toolbar->addAction(m_up);
+  toolbar->insertSeparator(toolbar->addWidget(m_combo));
+  
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Horizontal, this);
+  m_close_button = buttonBox->addButton(QDialogButtonBox::Close);
+  
+  m_close_button->setShortcut(Qt::Key_Escape);
+  m_close_button->setDefault(true);
 
-  layout->addWidget( m_view, 0, 0, 0 );
-  layout->addWidget( toolbar, 1, 0, 0 );
+  layout->addWidget(m_view, 0);
+  layout->addWidget(toolbar, 0);
+  layout->addWidget(buttonBox, 0);
 
   connect(m_reload_abort, SIGNAL(triggered(bool)), 
-          this,           SLOT(slotReloadAbortActionTriggered(bool)));
-  connect(m_back,         SIGNAL(triggered(bool)),
-          this,           SLOT(slotBackActionTriggered(bool)));
-  connect(m_forward,      SIGNAL(triggered(bool)),
-          this,           SLOT(slotForwardActionTriggered(bool)));
-  connect(m_up,           SIGNAL(triggered(bool)),
-          this,           SLOT(slotUpActionTriggered(bool)));
-  connect(m_combo,        SIGNAL(activated(QString)),
-          this,           SLOT(slotItemActivated(QString)) );
-  connect(m_view,         SIGNAL(executed(QListWidgetItem*)),
-          this,           SLOT(slotItemExecuted(QListWidgetItem*)) );
-  connect( KGlobalSettings::self(), SIGNAL(iconChanged(int)),
-           this,                    SLOT(slotIconSizeChanged(int)) );
+          this, SLOT(slotReloadAbortActionTriggered(bool)));
+  
+  connect(m_back, SIGNAL(triggered(bool)),
+          this, SLOT(slotBackActionTriggered(bool)));
+  
+  connect(m_forward, SIGNAL(triggered(bool)),
+          this, SLOT(slotForwardActionTriggered(bool)));
+  
+  connect(m_up, SIGNAL(triggered(bool)),
+          this, SLOT(slotUpActionTriggered(bool)));
+  
+  connect(m_combo, SIGNAL(activated(QString)),
+          this, SLOT(slotItemActivated(QString)));
+  
+  connect(m_view, SIGNAL(itemActivated(QListWidgetItem*)),
+          this, SLOT(slotItemExecuted(QListWidgetItem*)));
+  
+  connect(KIconLoader::global(), SIGNAL(iconChanged(int)),
+          this, SLOT(slotIconSizeChanged(int)));
+  
+  connect(m_close_button, SIGNAL(clicked()), 
+          this, SLOT(slotCloseClicked()));
 }
 
 
@@ -770,7 +780,7 @@ void Smb4KPreviewDialog::setupView()
 
 void Smb4KPreviewDialog::slotReloadAbortActionTriggered(bool /*t*/)
 {
-  if ( m_reload_abort->isActive() )
+  if (m_reload_abort->isActive())
   {
     // Clear the history
     m_history.clear();
@@ -781,7 +791,7 @@ void Smb4KPreviewDialog::slotReloadAbortActionTriggered(bool /*t*/)
   else
   {
     // Emit signal to kill the preview job.
-    emit abortPreview( m_share );
+    emit abortPreview(m_share);
   }
 }
 
@@ -790,35 +800,35 @@ void Smb4KPreviewDialog::slotBackActionTriggered(bool /*t*/)
 {
   // Get the current history if necessary,
   // shift one item back and request a preview.
-  if ( m_history.isEmpty() )
+  if (m_history.isEmpty())
   {
     m_history = m_combo->historyItems();
-    m_iterator = QStringListIterator( m_history );
+    m_iterator = QStringListIterator(m_history);
   }
   else
   {
     // Do nothing
   }
 
-  if ( m_iterator.hasNext() )
+  if (m_iterator.hasNext())
   {
     // Jump behind the current item.
     QString location = m_iterator.next();
 
-    if ( QString::compare( location, m_combo->currentText(), Qt::CaseInsensitive ) == 0 )
+    if (QString::compare(location, m_combo->currentText(), Qt::CaseInsensitive) == 0)
     {
-      if ( m_iterator.hasNext() )
+      if (m_iterator.hasNext())
       {
         location = m_iterator.next();
-        QString path = location.remove( m_share->unc(), Qt::CaseInsensitive );
+        QString path = location.remove(m_share->unc(), Qt::CaseInsensitive);
 
-        if ( !path.isEmpty() )
+        if (!path.isEmpty())
         {
-          m_url.setPath( QString( "%1%2" ).arg( m_share->shareName() ).arg( path ) );
+          m_url.setPath(QString("%1%2").arg(m_share->shareName()).arg(path));
         }
         else
         {
-          m_url.setPath( m_share->shareName() );
+          m_url.setPath(m_share->shareName());
         }
 
         // Request the preview.
@@ -826,20 +836,20 @@ void Smb4KPreviewDialog::slotBackActionTriggered(bool /*t*/)
       }
       else
       {
-        m_back->setEnabled( false );
+        m_back->setEnabled(false);
       }
     }
     else
     {
-      QString path = location.remove( m_share->unc(), Qt::CaseInsensitive );
+      QString path = location.remove(m_share->unc(), Qt::CaseInsensitive);
 
-      if ( !path.isEmpty() )
+      if (!path.isEmpty())
       {
-        m_url.setPath( QString( "%1%2" ).arg( m_share->shareName() ).arg( path ) );
+        m_url.setPath(QString("%1%2").arg(m_share->shareName()).arg(path));
       }
       else
       {
-        m_url.setPath( m_share->shareName() );
+        m_url.setPath(m_share->shareName());
       }
 
       // Request the preview.
@@ -856,26 +866,26 @@ void Smb4KPreviewDialog::slotBackActionTriggered(bool /*t*/)
 void Smb4KPreviewDialog::slotForwardActionTriggered(bool /*t*/)
 {
   // Shift one item forward an request a preview.
-  if ( !m_history.isEmpty() && m_iterator.hasPrevious() )
+  if (!m_history.isEmpty() && m_iterator.hasPrevious())
   {
     // Jump in front of the current item
     QString location = m_iterator.previous();
 
-    if ( QString::compare( location, m_combo->currentText(), Qt::CaseInsensitive ) == 0 )
+    if (QString::compare(location, m_combo->currentText(), Qt::CaseInsensitive) == 0)
     {
       // Now get the next location.
-      if ( m_iterator.hasPrevious() )
+      if (m_iterator.hasPrevious())
       {
         location = m_iterator.previous();
-        QString path = location.remove( m_share->unc(), Qt::CaseInsensitive );
+        QString path = location.remove(m_share->unc(), Qt::CaseInsensitive);
 
-        if ( !path.isEmpty() )
+        if (!path.isEmpty())
         {
-          m_url.setPath( QString( "%1%2" ).arg( m_share->shareName() ).arg( path ) );
+          m_url.setPath(QString("%1%2").arg(m_share->shareName()).arg(path));
         }
         else
         {
-          m_url.setPath( m_share->shareName() );
+          m_url.setPath(m_share->shareName());
         }
 
         // Request the preview
@@ -883,20 +893,20 @@ void Smb4KPreviewDialog::slotForwardActionTriggered(bool /*t*/)
       }
       else
       {
-        m_forward->setEnabled( false );
+        m_forward->setEnabled(false);
       }
     }
     else
     {
-      QString path = location.remove( m_share->unc(), Qt::CaseInsensitive );
+      QString path = location.remove(m_share->unc(), Qt::CaseInsensitive);
 
-      if ( !path.isEmpty() )
+      if (!path.isEmpty())
       {
-        m_url.setPath( QString( "%1%2" ).arg( m_share->shareName() ).arg( path ) );
+        m_url.setPath(QString("%1%2").arg(m_share->shareName()).arg(path));
       }
       else
       {
-        m_url.setPath( m_share->shareName() );
+        m_url.setPath(m_share->shareName());
       }
 
       // Request the preview
@@ -915,25 +925,25 @@ void Smb4KPreviewDialog::slotUpActionTriggered(bool /*t*/)
   QString test = QString("//%1%2%3")
                  .arg(m_url.host())
                  .arg(m_url.path().startsWith('/') ? "" : "/")
-                 .arg(m_url.path(KUrl::RemoveTrailingSlash));
+                 .arg(m_url.path());
       
-  if ( QString::compare( m_share->unc(), test, Qt::CaseInsensitive ) != 0 )
+  if (QString::compare(m_share->unc(), test, Qt::CaseInsensitive) != 0)
   {
     // Clear the history
     m_history.clear();
 
     // Adjust the path
-    // FIXME: Use KUrl::upUrl() here when we have found to adjust 
+    // FIXME: Use QUrl::upUrl() here when we have found to adjust 
     // the path
     QString path = m_url.path();
-    m_url.setPath( path.section( '/', 0, -2 ) );
+    m_url.setPath(path.section('/', 0, -2));
 
     // Request the preview
     slotRequestPreview();
   }
   else
   {
-    m_up->setEnabled( false );
+    m_up->setEnabled(false);
   }
 }
 
@@ -941,18 +951,18 @@ void Smb4KPreviewDialog::slotUpActionTriggered(bool /*t*/)
 void Smb4KPreviewDialog::slotRequestPreview()
 {
   // Set the current item
-  KUrl u = m_url;
-  u.setProtocol( QString() );
-  u.setUserInfo( QString() );
-  u.setPort( -1 );
+  QUrl u = m_url;
+  u.setScheme(QString());
+  u.setUserInfo(QString());
+  u.setPort(-1);
   
-  QString current = u.url().replace( u.host(), u.host().toUpper() );
+  QString current = u.url().replace(u.host(), u.host().toUpper());
     
   // Set the history
   QStringList history;
 
-  if ( m_combo->historyItems().isEmpty() ||
-       QString::compare( m_combo->historyItems().first(), current, Qt::CaseInsensitive ) != 0 )
+  if (m_combo->historyItems().isEmpty() ||
+       QString::compare(m_combo->historyItems().first(), current, Qt::CaseInsensitive) != 0)
   {
     history << current;
   }
@@ -963,20 +973,20 @@ void Smb4KPreviewDialog::slotRequestPreview()
   
   history << m_combo->historyItems();
 
-  m_combo->setHistoryItems( history, true );
-  m_combo->setCurrentItem( current, false );
+  m_combo->setHistoryItems(history, true);
+  m_combo->setCurrentItem(current, false);
 
   // Clear the view
   m_view->clear();
   
   // Request the preview for the current URL
-  emit requestPreview( m_share, m_url, parentWidget() );
+  emit requestPreview(m_share, m_url, parentWidget());
 }
 
 
-void Smb4KPreviewDialog::slotDisplayPreview( const KUrl &url, const QList<Smb4KPreviewFileItem> &contents )
+void Smb4KPreviewDialog::slotDisplayPreview(const QUrl &url, const QList<Smb4KPreviewFileItem> &contents)
 {
-  if ( m_url != url )
+  if (m_url != url)
   {
     return;
   }
@@ -986,37 +996,37 @@ void Smb4KPreviewDialog::slotDisplayPreview( const KUrl &url, const QList<Smb4KP
   }
 
   // Display the preview
-  for ( int i = 0; i < contents.size(); ++i )
+  for (int i = 0; i < contents.size(); ++i)
   {
-    QListWidgetItem *listItem = new QListWidgetItem( contents.at(i).itemIcon(), 
+    QListWidgetItem *listItem = new QListWidgetItem(contents.at(i).itemIcon(), 
                                                      contents.at(i).itemName(), 
                                                      m_view,
-                                                     (contents.at(i).isDir() ? Directory : File) );
-    listItem->setData( Qt::UserRole, contents.at(i).itemName() );
+                                                     (contents.at(i).isDir() ? Directory : File));
+    listItem->setData(Qt::UserRole, contents.at(i).itemName());
   }
 
   // Enable/disable the back action.
   bool enable_back = (m_combo->historyItems().size() > 1 &&
                      (m_history.isEmpty() || m_iterator.hasNext()));
-  m_back->setEnabled( enable_back );
+  m_back->setEnabled(enable_back);
 
   // Enable/disable the forward action.
   bool enable_forward = (!m_history.isEmpty() && m_iterator.hasPrevious());
-  m_forward->setEnabled( enable_forward );
+  m_forward->setEnabled(enable_forward);
 
   // Enable/disable the up action.
   QString test = QString("//%1%2%3")
                  .arg(m_url.host())
                  .arg(m_url.path().startsWith('/') ? "" : "/")
-                 .arg(m_url.path(KUrl::RemoveTrailingSlash));
-  bool enable_up = (QString::compare( m_share->unc(), test, Qt::CaseInsensitive ) != 0);
-  m_up->setEnabled( enable_up );
+                 .arg(m_url.path());
+  bool enable_up = (QString::compare(m_share->unc(), test, Qt::CaseInsensitive) != 0);
+  m_up->setEnabled(enable_up);
 }
 
 
-void Smb4KPreviewDialog::slotAboutToStart( Smb4KShare *share, const KUrl &url )
+void Smb4KPreviewDialog::slotAboutToStart(Smb4KShare *share, const QUrl &url)
 {
-  if ( share == m_share && url == m_url )
+  if (share == m_share && url == m_url)
   {
     m_reload_abort->setActive(false);
   }
@@ -1027,9 +1037,9 @@ void Smb4KPreviewDialog::slotAboutToStart( Smb4KShare *share, const KUrl &url )
 }
 
 
-void Smb4KPreviewDialog::slotFinished( Smb4KShare *share, const KUrl &url )
+void Smb4KPreviewDialog::slotFinished(Smb4KShare *share, const QUrl &url)
 {
-  if ( share == m_share && url == m_url )
+  if (share == m_share && url == m_url)
   {
     m_reload_abort->setActive(true);
   }
@@ -1040,21 +1050,21 @@ void Smb4KPreviewDialog::slotFinished( Smb4KShare *share, const KUrl &url )
 }
 
 
-void Smb4KPreviewDialog::slotItemExecuted( QListWidgetItem *item )
+void Smb4KPreviewDialog::slotItemExecuted(QListWidgetItem *item)
 {
-  if ( item )
+  if (item)
   {
-    switch ( item->type() )
+    switch (item->type())
     {
       case Directory:
       {
         // Clear the history
         m_history.clear();
         
-        if ( !Smb4KPreviewer::self()->isRunning( m_share ) )
+        if (!Smb4KPreviewer::self()->isRunning(m_share))
         {
           QString old_path = m_url.path();
-          m_url.setPath( QString( "%1/%2" ).arg( old_path ).arg( item->data( Qt::UserRole ).toString() ) );
+          m_url.setPath(QString("%1/%2").arg(old_path).arg(item->data(Qt::UserRole).toString()));
           slotRequestPreview();
         }
         else
@@ -1076,18 +1086,18 @@ void Smb4KPreviewDialog::slotItemExecuted( QListWidgetItem *item )
 }
 
 
-void Smb4KPreviewDialog::slotItemActivated( const QString &item )
+void Smb4KPreviewDialog::slotItemActivated(const QString &item)
 {
-  if ( !Smb4KPreviewer::self()->isRunning( m_share ) )
+  if (!Smb4KPreviewer::self()->isRunning(m_share))
   {
     // Clear the history
     m_history.clear();
 
-    KUrl u;
-    u.setUrl( item, KUrl::TolerantMode );
-    u.setProtocol( "smb" );
+    QUrl u;
+    u.setUrl(item, QUrl::TolerantMode);
+    u.setScheme("smb");
     
-    m_url.setPath( u.path() );
+    m_url.setPath(u.path());
     slotRequestPreview();
   }
   else
@@ -1099,20 +1109,21 @@ void Smb4KPreviewDialog::slotItemActivated( const QString &item )
 
 void Smb4KPreviewDialog::slotCloseClicked()
 {
-  KConfigGroup group( Smb4KSettings::self()->config(), "PreviewDialog" );
-  saveDialogSize( group, KConfigGroup::Normal );
-  emit aboutToClose( this );
+  KConfigGroup group(Smb4KSettings::self()->config(), "PreviewDialog");
+  KWindowConfig::saveWindowSize(windowHandle(), group);
+  emit aboutToClose(this);
+  accept();
 }
 
 
-void Smb4KPreviewDialog::slotIconSizeChanged( int group )
+void Smb4KPreviewDialog::slotIconSizeChanged(int group)
 {
-  switch ( group )
+  switch (group)
   {
     case KIconLoader::Small:
     {
-      int icon_size = KIconLoader::global()->currentSize( KIconLoader::Small );
-      m_view->setIconSize( QSize( icon_size, icon_size ) );
+      int icon_size = KIconLoader::global()->currentSize(KIconLoader::Small);
+      m_view->setIconSize(QSize(icon_size, icon_size));
       break;
     }
     default:
@@ -1121,7 +1132,4 @@ void Smb4KPreviewDialog::slotIconSizeChanged( int group )
     }
   }
 }
-
-
-#include "smb4kpreviewer_p.moc"
 

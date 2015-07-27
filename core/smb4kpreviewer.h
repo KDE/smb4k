@@ -2,7 +2,7 @@
     smb4kpreviewer  -  This class queries a remote share for a preview
                              -------------------
     begin                : Sa Mär 05 2011
-    copyright            : (C) 2011-2012 by Alexander Reinholdt
+    copyright            : (C) 2011-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,12 +28,11 @@
 
 // Qt includes
 #include <QtCore/QScopedPointer>
-#include <QtGui/QWidget>
+#include <QtCore/QUrl>
+#include <QtWidgets/QWidget>
 
 // KDE includes
-#include <kdemacros.h>
-#include <kcompositejob.h>
-#include <kurl.h>
+#include <KCoreAddons/KCompositeJob>
 
 // forward declarations
 class Smb4KPreviewerPrivate;
@@ -48,7 +47,7 @@ class Smb4KPreviewDialog;
  * @since 1.0.0
  */
 
-class KDE_EXPORT Smb4KPreviewer : public KCompositeJob
+class Q_DECL_EXPORT Smb4KPreviewer : public KCompositeJob
 {
   Q_OBJECT
 
@@ -58,7 +57,7 @@ class KDE_EXPORT Smb4KPreviewer : public KCompositeJob
     /**
      * Constructor
      */
-    explicit Smb4KPreviewer( QObject *parent = 0 );
+    explicit Smb4KPreviewer(QObject *parent = 0);
 
     /**
      * Destructor
@@ -81,8 +80,8 @@ class KDE_EXPORT Smb4KPreviewer : public KCompositeJob
      *
      * @param parent      The parent widget
      */
-    void preview( Smb4KShare *share,
-                  QWidget *parent = 0 );
+    void preview(Smb4KShare *share,
+                  QWidget *parent = 0);
 
     /**
      * This function tells you whether preview jobs are running
@@ -98,7 +97,7 @@ class KDE_EXPORT Smb4KPreviewer : public KCompositeJob
      *
      * @returns TRUE if a preview job is already running
      */
-    bool isRunning( Smb4KShare *share );
+    bool isRunning(Smb4KShare *share);
 
     /**
      * This function aborts all print jobs at once.
@@ -114,7 +113,7 @@ class KDE_EXPORT Smb4KPreviewer : public KCompositeJob
      *
      * @param share         The Smb4KShare object
      */
-    void abort( Smb4KShare *share );
+    void abort(Smb4KShare *share);
 
     /**
      * This function starts the composite job
@@ -130,8 +129,8 @@ class KDE_EXPORT Smb4KPreviewer : public KCompositeJob
      * @param url           The location for which the preview should be
      *                      acquired
      */
-    void aboutToStart( Smb4KShare *share,
-                       const KUrl &url );
+    void aboutToStart(Smb4KShare *share,
+                       const QUrl &url);
 
     /**
      * Emitted after the acquisition process finished.
@@ -141,8 +140,8 @@ class KDE_EXPORT Smb4KPreviewer : public KCompositeJob
      * @param url           The location for which the preview should be
      *                      acquired
      */
-    void finished( Smb4KShare *share,
-                   const KUrl &url );
+    void finished(Smb4KShare *share,
+                   const QUrl &url);
 
   protected Q_SLOTS:
     /**
@@ -153,17 +152,17 @@ class KDE_EXPORT Smb4KPreviewer : public KCompositeJob
     /**
      * Called when a job finished
      */
-    void slotJobFinished( KJob *job );
+    void slotJobFinished(KJob *job);
 
     /**
      * Called when an authentication error occurred
      */
-    void slotAuthError( Smb4KPreviewJob *job );
+    void slotAuthError(Smb4KPreviewJob *job);
 
     /**
      * Called when a preview dialog is closed
      */
-    void slotDialogClosed( Smb4KPreviewDialog *dialog );
+    void slotDialogClosed(Smb4KPreviewDialog *dialog);
 
     /**
      * This slot starts the acquisition of a preview. It is
@@ -175,9 +174,9 @@ class KDE_EXPORT Smb4KPreviewer : public KCompositeJob
      *
      * @param parent      The parent widget
      */
-    void slotAcquirePreview( Smb4KShare *share,
-                             const KUrl &url,
-                             QWidget *parent );
+    void slotAcquirePreview(Smb4KShare *share,
+                             const QUrl &url,
+                             QWidget *parent);
 
     /**
      * This slot kills the acquisition of the preview for the
@@ -185,7 +184,7 @@ class KDE_EXPORT Smb4KPreviewer : public KCompositeJob
      *
      * @param share       The remote share
      */
-    void slotAbortPreview( Smb4KShare *share );
+    void slotAbortPreview(Smb4KShare *share);
 
     /**
      * Called when the application exits

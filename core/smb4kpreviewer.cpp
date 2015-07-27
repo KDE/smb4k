@@ -2,7 +2,7 @@
     smb4kpreviewer  -  This class queries a remote share for a preview
                              -------------------
     begin                : Sa Mär 05 2011
-    copyright            : (C) 2011-2012 by Alexander Reinholdt
+    copyright            : (C) 2011-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -41,20 +41,17 @@
 #include <QtCore/QDebug>
 #include <QtCore/QCoreApplication>
 
-// KDE includes
-#include <kglobal.h>
-
 using namespace Smb4KGlobal;
 
-K_GLOBAL_STATIC( Smb4KPreviewerStatic, p );
+Q_GLOBAL_STATIC(Smb4KPreviewerStatic, p);
 
 
-Smb4KPreviewer::Smb4KPreviewer( QObject *parent )
-: KCompositeJob( parent ), d( new Smb4KPreviewerPrivate )
+Smb4KPreviewer::Smb4KPreviewer(QObject *parent)
+: KCompositeJob(parent), d(new Smb4KPreviewerPrivate)
 {
-  setAutoDelete( false );
+  setAutoDelete(false);
 
-  if ( !coreIsInitialized() )
+  if (!coreIsInitialized())
   {
     setDefaultSettings();
   }
@@ -63,7 +60,7 @@ Smb4KPreviewer::Smb4KPreviewer( QObject *parent )
     // Do nothing
   }
   
-  connect( QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()) );
+  connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()));
 }
 
 
@@ -78,9 +75,9 @@ Smb4KPreviewer *Smb4KPreviewer::self()
 }
 
 
-void Smb4KPreviewer::preview( Smb4KShare *share, QWidget *parent )
+void Smb4KPreviewer::preview(Smb4KShare *share, QWidget *parent)
 {
-  if ( share->isPrinter() )
+  if (share->isPrinter())
   {
     return;
   }
@@ -90,9 +87,9 @@ void Smb4KPreviewer::preview( Smb4KShare *share, QWidget *parent )
   }
   
   // Process homes shares.
-  if( share->isHomesShare() )
+  if(share->isHomesShare())
   {
-    if ( !Smb4KHomesSharesHandler::self()->specifyUser( share, true, parent ) )
+    if (!Smb4KHomesSharesHandler::self()->specifyUser(share, true, parent))
     {
       return;
     }
@@ -108,13 +105,13 @@ void Smb4KPreviewer::preview( Smb4KShare *share, QWidget *parent )
 
   // Check if a preview dialog has already been set up 
   // for this share and reuse it, if appropriate.
-  Smb4KPreviewDialog *dlg = NULL;
+  Smb4KPreviewDialog *dlg = 0;
   
-  for ( int i = 0; i < d->dialogs.size(); ++i )
+  for (int i = 0; i < d->dialogs.size(); ++i)
   {
-    if ( share == d->dialogs.at( i )->share() )
+    if (share == d->dialogs.at(i)->share())
     {
-      dlg = d->dialogs.at( i );
+      dlg = d->dialogs.at(i);
     }
     else
     {
@@ -122,30 +119,30 @@ void Smb4KPreviewer::preview( Smb4KShare *share, QWidget *parent )
     }
   }
 
-  if ( !dlg )
+  if (!dlg)
   {
     // Create the preview dialog..
-    dlg = new Smb4KPreviewDialog( share, parent );
-    connect( dlg,  SIGNAL(aboutToClose(Smb4KPreviewDialog*)),
-             this, SLOT(slotDialogClosed(Smb4KPreviewDialog*)) );
-    connect( dlg,  SIGNAL(requestPreview(Smb4KShare*,KUrl,QWidget*)),
-             this, SLOT(slotAcquirePreview(Smb4KShare*,KUrl,QWidget*)) );
-    connect( this, SIGNAL(aboutToStart(Smb4KShare*,KUrl)),
-             dlg,  SLOT(slotAboutToStart(Smb4KShare*,KUrl)) );
-    connect( this, SIGNAL(finished(Smb4KShare*,KUrl)),
-             dlg,  SLOT(slotFinished(Smb4KShare*,KUrl)) );
-    connect( dlg,  SIGNAL(abortPreview(Smb4KShare*)),
-             this, SLOT(slotAbortPreview(Smb4KShare*)) );
-    d->dialogs.append( dlg );
+    dlg = new Smb4KPreviewDialog(share, parent);
+    connect(dlg,  SIGNAL(aboutToClose(Smb4KPreviewDialog*)),
+             this, SLOT(slotDialogClosed(Smb4KPreviewDialog*)));
+    connect(dlg,  SIGNAL(requestPreview(Smb4KShare*,QUrl,QWidget*)),
+             this, SLOT(slotAcquirePreview(Smb4KShare*,QUrl,QWidget*)));
+    connect(this, SIGNAL(aboutToStart(Smb4KShare*,QUrl)),
+             dlg,  SLOT(slotAboutToStart(Smb4KShare*,QUrl)));
+    connect(this, SIGNAL(finished(Smb4KShare*,QUrl)),
+             dlg,  SLOT(slotFinished(Smb4KShare*,QUrl)));
+    connect(dlg,  SIGNAL(abortPreview(Smb4KShare*)),
+             this, SLOT(slotAbortPreview(Smb4KShare*)));
+    d->dialogs.append(dlg);
   }
   else
   {
     // Do nothing
   }
   
-  if ( !dlg->isVisible() )
+  if (!dlg->isVisible())
   {
-    dlg->setVisible( true );
+    dlg->setVisible(true);
   }
   else
   {
@@ -160,12 +157,12 @@ bool Smb4KPreviewer::isRunning()
 }
 
 
-bool Smb4KPreviewer::isRunning( Smb4KShare *share )
+bool Smb4KPreviewer::isRunning(Smb4KShare *share)
 {
   bool running = false;
   QString unc;
   
-  if ( !share->isHomesShare() )
+  if (!share->isHomesShare())
   {
     unc = share->unc();
   }
@@ -174,9 +171,9 @@ bool Smb4KPreviewer::isRunning( Smb4KShare *share )
     unc = share->homeUNC();
   }
 
-  for ( int i = 0; i < subjobs().size(); ++i )
+  for (int i = 0; i < subjobs().size(); ++i)
   {
-    if ( QString::compare( QString( "PreviewJob_%1" ).arg( unc ), subjobs().at( i )->objectName() ) == 0 )
+    if (QString::compare(QString("PreviewJob_%1").arg(unc), subjobs().at(i)->objectName()) == 0)
     {
       running = true;
       break;
@@ -193,18 +190,18 @@ bool Smb4KPreviewer::isRunning( Smb4KShare *share )
 
 void Smb4KPreviewer::abortAll()
 {
-  for ( int i = 0; i < subjobs().size(); ++i )
+  for (int i = 0; i < subjobs().size(); ++i)
   {
-    subjobs().at( i )->kill( KJob::EmitResult );
+    subjobs().at(i)->kill(KJob::EmitResult);
   }
 }
 
 
-void Smb4KPreviewer::abort( Smb4KShare *share )
+void Smb4KPreviewer::abort(Smb4KShare *share)
 {
   QString unc;
   
-  if ( !share->isHomesShare() )
+  if (!share->isHomesShare())
   {
     unc = share->unc();
   }
@@ -213,11 +210,11 @@ void Smb4KPreviewer::abort( Smb4KShare *share )
     unc = share->homeUNC();
   }
   
-  for ( int i = 0; i < subjobs().size(); ++i )
+  for (int i = 0; i < subjobs().size(); ++i)
   {
-    if ( QString::compare( QString( "PreviewJob_%1" ).arg( unc ), subjobs().at( i )->objectName() ) == 0 )
+    if (QString::compare(QString("PreviewJob_%1").arg(unc), subjobs().at(i)->objectName()) == 0)
     {
-      subjobs().at( i )->kill( KJob::EmitResult );
+      subjobs().at(i)->kill(KJob::EmitResult);
       break;
     }
     else
@@ -230,7 +227,7 @@ void Smb4KPreviewer::abort( Smb4KShare *share )
 
 void Smb4KPreviewer::start()
 {
-  QTimer::singleShot( 0, this, SLOT(slotStartJobs()) );
+  QTimer::singleShot(0, this, SLOT(slotStartJobs()));
 }
 
 
@@ -244,24 +241,24 @@ void Smb4KPreviewer::slotStartJobs()
 }
 
 
-void Smb4KPreviewer::slotJobFinished( KJob *job )
+void Smb4KPreviewer::slotJobFinished(KJob *job)
 {
-  disconnect( job );
-  removeSubjob( job );
+  disconnect(job);
+  removeSubjob(job);
 }
 
 
-void Smb4KPreviewer::slotAuthError( Smb4KPreviewJob *job )
+void Smb4KPreviewer::slotAuthError(Smb4KPreviewJob *job)
 {
   // To avoid a crash here because after the password dialog closed
   // the job is gone, immediately get the needed data.
   Smb4KShare *share = job->share();
   QWidget *parent   = job->parentWidget();
-  KUrl location     = job->location();
+  QUrl location     = job->location();
   
-  if ( Smb4KWalletManager::self()->showPasswordDialog( share, parent ) )
+  if (Smb4KWalletManager::self()->showPasswordDialog(share, parent))
   {
-    slotAcquirePreview( share, location, parent );
+    slotAcquirePreview(share, location, parent);
   }
   else
   {
@@ -270,15 +267,15 @@ void Smb4KPreviewer::slotAuthError( Smb4KPreviewJob *job )
 }
 
 
-void Smb4KPreviewer::slotDialogClosed( Smb4KPreviewDialog *dialog )
+void Smb4KPreviewer::slotDialogClosed(Smb4KPreviewDialog *dialog)
 {
-  if ( dialog )
+  if (dialog)
   {
     // Find the dialog in the list and take it from the list.
     // It will automatically be deleted on close, so there is
     // no need to delete the dialog here.
-    int i = d->dialogs.indexOf( dialog );
-    d->dialogs.takeAt( i );
+    int i = d->dialogs.indexOf(dialog);
+    d->dialogs.takeAt(i);
   }
   else
   {
@@ -287,41 +284,41 @@ void Smb4KPreviewer::slotDialogClosed( Smb4KPreviewDialog *dialog )
 }
 
 
-void Smb4KPreviewer::slotAcquirePreview( Smb4KShare *share, const KUrl &url, QWidget *parent )
+void Smb4KPreviewer::slotAcquirePreview(Smb4KShare *share, const QUrl &url, QWidget *parent)
 {
   // Get the authentication information
-  Smb4KWalletManager::self()->readAuthInfo( share );
+  Smb4KWalletManager::self()->readAuthInfo(share);
   
   // Create a new job and add it to the subjobs
-  Smb4KPreviewJob *job = new Smb4KPreviewJob( this );
+  Smb4KPreviewJob *job = new Smb4KPreviewJob(this);
   
-  if ( !share->isHomesShare() )
+  if (!share->isHomesShare())
   {
-    job->setObjectName( QString( "PreviewJob_%1" ).arg( share->unc() ) );
+    job->setObjectName(QString("PreviewJob_%1").arg(share->unc()));
   }
   else
   {
-    job->setObjectName( QString( "PreviewJob_%1" ).arg( share->homeUNC() ) );
+    job->setObjectName(QString("PreviewJob_%1").arg(share->homeUNC()));
   }
   
-  job->setupPreview( share, url, parent );
+  job->setupPreview(share, url, parent);
 
-  connect( job,  SIGNAL(result(KJob*)),
-           this, SLOT(slotJobFinished(KJob*)) );
-  connect( job,  SIGNAL(authError(Smb4KPreviewJob*)),
-           this, SLOT(slotAuthError(Smb4KPreviewJob*)) );
-  connect( job,  SIGNAL(aboutToStart(Smb4KShare*,KUrl)),
-           this, SIGNAL(aboutToStart(Smb4KShare*,KUrl)) );
-  connect( job,  SIGNAL(finished(Smb4KShare*,KUrl)),
-           this, SIGNAL(finished(Smb4KShare*,KUrl)) );
+  connect(job,  SIGNAL(result(KJob*)),
+           this, SLOT(slotJobFinished(KJob*)));
+  connect(job,  SIGNAL(authError(Smb4KPreviewJob*)),
+           this, SLOT(slotAuthError(Smb4KPreviewJob*)));
+  connect(job,  SIGNAL(aboutToStart(Smb4KShare*,QUrl)),
+           this, SIGNAL(aboutToStart(Smb4KShare*,QUrl)));
+  connect(job,  SIGNAL(finished(Smb4KShare*,QUrl)),
+           this, SIGNAL(finished(Smb4KShare*,QUrl)));
 
   // Get the preview dialog, so that the result of the query
   // can be sent.
-  Smb4KPreviewDialog *dlg = NULL;
+  Smb4KPreviewDialog *dlg = 0;
 
-  for ( int i = 0; i < d->dialogs.size(); ++i )
+  for (int i = 0; i < d->dialogs.size(); ++i)
   {
-    if ( d->dialogs.at( i ) && d->dialogs.at( i )->share() == share )
+    if (d->dialogs.at(i) && d->dialogs.at(i)->share() == share)
     {
       dlg = d->dialogs[i];
       break;
@@ -332,25 +329,25 @@ void Smb4KPreviewer::slotAcquirePreview( Smb4KShare *share, const KUrl &url, QWi
     }
   }
   
-  if ( dlg )
+  if (dlg)
   {
-    connect( job, SIGNAL(preview(KUrl,QList<Smb4KPreviewFileItem>)),
-             dlg, SLOT(slotDisplayPreview(KUrl,QList<Smb4KPreviewFileItem>)) );
+    connect(job, SIGNAL(preview(QUrl,QList<Smb4KPreviewFileItem>)),
+             dlg, SLOT(slotDisplayPreview(QUrl,QList<Smb4KPreviewFileItem>)));
   }
   else
   {
     // Do nothing
   }
 
-  addSubjob( job );
+  addSubjob(job);
 
   job->start();
 }
 
 
-void Smb4KPreviewer::slotAbortPreview( Smb4KShare *share )
+void Smb4KPreviewer::slotAbortPreview(Smb4KShare *share)
 {
-  abort( share );
+  abort(share);
 }
 
 
@@ -359,4 +356,3 @@ void Smb4KPreviewer::slotAboutToQuit()
   abortAll();
 }
 
-#include "smb4kpreviewer.moc"
