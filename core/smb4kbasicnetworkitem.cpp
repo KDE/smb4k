@@ -33,9 +33,7 @@
 
 // Qt includes
 #include <QtCore/QtGlobal>
-
-// KDE includes
-#include <kdebug.h>
+#include <QtCore/QDebug>
 
 
 class Smb4KBasicNetworkItemPrivate

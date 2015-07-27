@@ -35,9 +35,6 @@
 #include <QtCore/QScopedPointer>
 #include <QtGui/QIcon>
 
-// KDE includes
-#include <kdemacros.h>
-
 // forward declarations
 class Smb4KBasicNetworkItemPrivate;
 
@@ -51,7 +48,7 @@ using namespace Smb4KGlobal;
  * @since 1.0.0
  */
 
-class KDE_EXPORT Smb4KBasicNetworkItem
+class Q_DECL_EXPORT Smb4KBasicNetworkItem
 {
   public:
     /**
