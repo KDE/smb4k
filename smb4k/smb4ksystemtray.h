@@ -2,7 +2,7 @@
     smb4ksystemtray  -  This is the system tray window class of Smb4K.
                              -------------------
     begin                : Mi Jun 13 2007
-    copyright            : (C) 2007-2014 by Alexander Reinholdt
+    copyright            : (C) 2007-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -27,12 +27,11 @@
 #define SMB4KSYSTEMTRAY_H
 
 // Qt includes
-#include <QWidget>
-#include <QString>
+#include <QtCore/QString>
+#include <QtWidgets/QWidget>
 
 // KDE includes
-#include <kstatusnotifieritem.h>
-
+#include <KNotifications/KStatusNotifierItem>
 
 class Smb4KSystemTray : public KStatusNotifierItem
 {
@@ -46,7 +45,7 @@ class Smb4KSystemTray : public KStatusNotifierItem
      *
      * @param parent        The parent widget of the system tray window
      */
-    explicit Smb4KSystemTray( QWidget *parent = 0 );
+    explicit Smb4KSystemTray(QWidget *parent = 0);
 
     /**
      * The destructor.
@@ -65,7 +64,7 @@ class Smb4KSystemTray : public KStatusNotifierItem
      *
      * This signal is forwared from @see Smb4KConfigDialog.
      */
-    void settingsChanged( const QString &dialogName );
+    void settingsChanged(const QString &dialogName);
 
   protected slots:
     /**
@@ -74,7 +73,7 @@ class Smb4KSystemTray : public KStatusNotifierItem
      * @param checked         TRUE if the action can be and is checked and FALSE
      *                        otherwise.
      */
-    void slotMountDialog( bool checked );
+    void slotMountDialog(bool checked);
 
     /**
      * This slot opens the configurations dialog.
@@ -88,7 +87,7 @@ class Smb4KSystemTray : public KStatusNotifierItem
      *
      * @param dialogName      The name of the dialog.
      */
-    void slotSettingsChanged( const QString &dialogName );
+    void slotSettingsChanged(const QString &dialogName);
 
     /**
      * Set the status of the system tray icon. This slot checks the global

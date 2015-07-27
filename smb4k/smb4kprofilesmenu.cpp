@@ -2,7 +2,7 @@
     smb4kprofilesmenu  -  The menu for the profiles
                              -------------------
     begin                : Do Aug 10 2014
-    copyright            : (C) 2014 by Alexander Reinholdt
+    copyright            : (C) 2014-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -34,22 +34,20 @@
 
 // Qt includes
 #include <QtCore/QStringList>
-#include <QtGui/QAction>
+#include <QtWidgets/QAction>
 
 // KDE includes
-#include <kicon.h>
-#include <klocale.h>
-#include <kaction.h>
-
+#include <KIconThemes/KIconLoader>
+#include <KI18n/KLocalizedString>
 
 Smb4KProfilesMenu::Smb4KProfilesMenu(QObject* parent)
-: KSelectAction(KIcon("format-list-unordered"), i18n("Profiles"), parent)
+: KSelectAction(KDE::icon("format-list-unordered"), i18n("Profiles"), parent)
 {
   QStringList profiles = Smb4KProfileManager::self()->profilesList();
   
   for (int i = 0; i < profiles.size(); ++i)
   {
-    KAction *action = addAction(profiles.at(i));
+    QAction *action = addAction(profiles.at(i));
     
     if (action)
     {
@@ -92,7 +90,7 @@ void Smb4KProfilesMenu::slotProfilesListChanged(const QStringList& profiles)
   
   for (int i = 0; i < profiles.size(); ++i)
   {
-    KAction *action = addAction(profiles.at(i));
+    QAction *action = addAction(profiles.at(i));
     
     if (action)
     {
@@ -131,4 +129,3 @@ void Smb4KProfilesMenu::slotActionTriggered(const QString& name)
   Smb4KProfileManager::self()->setActiveProfile(name);
 }
 
-#include "smb4kprofilesmenu.moc"

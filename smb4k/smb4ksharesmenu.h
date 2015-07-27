@@ -27,12 +27,12 @@
 #define SMB4KSHARESMENU_H
 
 // Qt includes
-#include <QAction>
-#include <QActionGroup>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QActionGroup>
 
 // KDE includes
-#include <kactionmenu.h>
-#include <kactioncollection.h>
+#include <KWidgetsAddons/KActionMenu>
+#include <KXmlGui/KActionCollection>
 
 // forward declarations
 class Smb4KShare;
@@ -45,8 +45,8 @@ class Smb4KSharesMenu : public KActionMenu
     /**
      * Constructor
      */
-    explicit Smb4KSharesMenu( QWidget *parentWidget = 0,
-                              QObject *parent = 0 );
+    explicit Smb4KSharesMenu(QWidget *parentWidget = 0,
+                              QObject *parent = 0);
 
     /**
      * Destructor
@@ -65,7 +65,7 @@ class Smb4KSharesMenu : public KActionMenu
      *
      * @param share         The share that has been mounted
      */
-    void slotShareMounted( Smb4KShare *share );
+    void slotShareMounted(Smb4KShare *share);
 
     /**
      * Connected to Smb4KMounter::unmounted() signal. Removes
@@ -73,7 +73,7 @@ class Smb4KSharesMenu : public KActionMenu
      *
      * @param share         The share that has been unmounted
      */
-    void slotShareUnmounted( Smb4KShare *share );
+    void slotShareUnmounted(Smb4KShare *share);
 
     /**
      * This slot unmounts all shares at once.
@@ -85,7 +85,7 @@ class Smb4KSharesMenu : public KActionMenu
      *
      * @param action        The action that was triggered
      */
-    void slotShareAction( QAction *action );
+    void slotShareAction(QAction *action);
 
   private:
     /**

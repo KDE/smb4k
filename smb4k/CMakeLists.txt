@@ -1,44 +1,49 @@
-
 include_directories(
-  ${KDE4_INCLUDES}
-  ${KDE4_INCLUDE_DIR}
-  ${QT_INCLUDES}
-  ${CMAKE_CURRENT_SOURCE_DIR}/../core
-  ${CMAKE_CURRENT_BINARY_DIR}/../core )
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_BINARY_DIR}
+  ${CMAKE_CURRENT_SOURCE_DIR}/configdlg
+  ${CMAKE_CURRENT_BINARY_DIR}/configdlg
+  ${CMAKE_SOURCE_DIR}/core 
+  ${CMAKE_BINARY_DIR}/core
+  ${CMAKE_SOURCE_DIR}
+  ${CMAKE_BINARY_DIR})
 
-add_subdirectory( icons )
-add_subdirectory( configdlg )
-add_subdirectory( tooltips )
-add_subdirectory( browser )
-add_subdirectory( sharesview )
-add_subdirectory( search )
+add_subdirectory(icons)
+add_subdirectory(configdlg)
+add_subdirectory(tooltips)
+add_subdirectory(browser)
+add_subdirectory(sharesview)
+add_subdirectory(search)
 
 
 ########### next target ###############
 
-set( smb4k_SRCS
+set(smb4k_SRCS
   main.cpp
   smb4kbookmarkmenu.cpp
   smb4kprofilesmenu.cpp
   smb4ksharesmenu.cpp
   smb4kmainwindow.cpp
-  smb4ksystemtray.cpp )
+  smb4ksystemtray.cpp)
 
-kde4_add_executable( smb4k ${smb4k_SRCS} )
+add_executable(smb4k ${smb4k_SRCS})
 
-target_link_libraries( smb4k
-  ${QT_QTCORE_LIBRARY}
-  ${KDE4_KDECORE_LIBS}
-  smb4kcore
-  ${KDE4_KDEUI_LIBS}
-  ${KDE4_KPARTS_LIBS} )
+target_link_libraries(smb4k
+  Qt5::Core
+  Qt5::Widgets
+  KF5::CoreAddons
+  KF5::DBusAddons
+  KF5::XmlGui
+  KF5::Parts
+  KF5::ConfigWidgets
+  smb4kcore)
 
-install( TARGETS smb4k DESTINATION ${BIN_INSTALL_DIR} )
+install(TARGETS smb4k DESTINATION ${KDE_INSTALL_BINDIR})
 
 ########### install files ###############
 
-install( PROGRAMS smb4k.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
-install( FILES smb4k_shell.rc DESTINATION ${DATA_INSTALL_DIR}/smb4k )
-install( FILES smb4k.appdata.xml DESTINATION share/appdata )
+install(PROGRAMS smb4k.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+install(FILES smb4k_shell.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/smb4k)
+install(FILES smb4k.appdata.xml DESTINATION share/appdata)
 
-kde4_install_icons( ${ICON_INSTALL_DIR} )
+# kde4_install_icons(${ICON_INSTALL_DIR})

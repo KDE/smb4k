@@ -37,39 +37,38 @@
 #include "core/smb4kbookmarkhandler.h"
 
 // Qt includes
-#include <QMap>
-#include <QVariant>
-#include <QString>
-#include <QStringList>
+#include <QtCore/QMap>
+#include <QtCore/QVariant>
+#include <QtCore/QString>
+#include <QtCore/QStringList>
+#include <QtCore/QStandardPaths>
 
 // KDE includes
-#include <klocale.h>
-#include <kiconloader.h>
-#include <kaction.h>
-#include <kstandarddirs.h>
+#include <KIconThemes/KIconLoader>
+#include <KI18n/KLocalizedString>
 
 using namespace Smb4KGlobal;
 
 
-Smb4KSharesMenu::Smb4KSharesMenu( QWidget *parentWidget, QObject *parent )
-: KActionMenu( KIcon( "folder-remote", KIconLoader::global(), QStringList( "emblem-mounted" ) ), i18n( "Mounted Shares" ), parent ),
-  m_parent_widget( parentWidget )
+Smb4KSharesMenu::Smb4KSharesMenu(QWidget *parentWidget, QObject *parent)
+: KActionMenu(KDE::icon("folder-remote", QStringList("emblem-mounted")), i18n("Mounted Shares"), parent),
+  m_parent_widget(parentWidget)
 {
   // Set up action collection
-  m_action_collection = new KActionCollection( this );
+  m_action_collection = new KActionCollection(this);
 
   // Set up action group for the shares menus
-  m_menus = new QActionGroup( m_action_collection );
+  m_menus = new QActionGroup(m_action_collection);
 
   // Set up action group for the shares actions
-  m_actions = new QActionGroup( m_action_collection );
+  m_actions = new QActionGroup(m_action_collection);
 
   // Setup the menu
   setupMenu();
 
-  connect( m_actions, SIGNAL(triggered(QAction*)), SLOT(slotShareAction(QAction*)) );
-  connect( Smb4KMounter::self(), SIGNAL(mounted(Smb4KShare*)), SLOT(slotShareMounted(Smb4KShare*)) );
-  connect( Smb4KMounter::self(), SIGNAL(unmounted(Smb4KShare*)), SLOT(slotShareUnmounted(Smb4KShare*)) );
+  connect(m_actions, SIGNAL(triggered(QAction*)), SLOT(slotShareAction(QAction*)));
+  connect(Smb4KMounter::self(), SIGNAL(mounted(Smb4KShare*)), SLOT(slotShareMounted(Smb4KShare*)));
+  connect(Smb4KMounter::self(), SIGNAL(unmounted(Smb4KShare*)), SLOT(slotShareUnmounted(Smb4KShare*)));
 }
 
 
@@ -80,23 +79,23 @@ Smb4KSharesMenu::~Smb4KSharesMenu()
 
 void Smb4KSharesMenu::refreshMenu()
 {
-  m_action_collection->action( "unmount_all" )->setEnabled(
-    ((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && !m_menus->actions().isEmpty()) );
+  m_action_collection->action("unmount_all")->setEnabled(
+    ((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && !m_menus->actions().isEmpty()));
 
-  if ( !Smb4KSettings::showMountPoint() )
+  if (!Smb4KSettings::showMountPoint())
   {
-    for ( int i = 0; i < m_menus->actions().size(); ++i )
+    for (int i = 0; i < m_menus->actions().size(); ++i)
     {
-      QString text = m_menus->actions()[i]->data().toMap().value( "unc" ).toString();
-      m_menus->actions()[i]->setText( text );
+      QString text = m_menus->actions()[i]->data().toMap().value("unc").toString();
+      m_menus->actions()[i]->setText(text);
     }
   }
   else
   {
-    for ( int i = 0; i < m_menus->actions().size(); ++i )
+    for (int i = 0; i < m_menus->actions().size(); ++i)
     {
-      QString text = m_menus->actions()[i]->data().toMap().value( "mountpoint" ).toString();
-      m_menus->actions()[i]->setText( text );
+      QString text = m_menus->actions()[i]->data().toMap().value("mountpoint").toString();
+      m_menus->actions()[i]->setText(text);
     }
   }
 }
@@ -105,21 +104,21 @@ void Smb4KSharesMenu::refreshMenu()
 void Smb4KSharesMenu::setupMenu()
 {
   // Unmount All action
-  KAction *unmount_all = new KAction( KIcon( "system-run" ), i18n( "U&nmount All" ), m_action_collection );
-  unmount_all->setEnabled( false );
-  m_action_collection->addAction( "unmount_all", unmount_all );
+  QAction *unmount_all = new QAction(KDE::icon("system-run"), i18n("U&nmount All"), m_action_collection);
+  unmount_all->setEnabled(false);
+  m_action_collection->addAction("unmount_all", unmount_all);
 
-  connect( unmount_all, SIGNAL(triggered(bool)), SLOT(slotUnmountAllShares()) );
+  connect(unmount_all, SIGNAL(triggered(bool)), SLOT(slotUnmountAllShares()));
 
-  addAction( unmount_all );
+  addAction(unmount_all);
 
   // Separator
   addSeparator();
 
   // Shares
-  for ( int i = 0; i < mountedSharesList().size(); ++i )
+  for (int i = 0; i < mountedSharesList().size(); ++i)
   {
-    slotShareMounted( mountedSharesList().at( i ) );
+    slotShareMounted(mountedSharesList().at(i));
   }
 }
 
@@ -128,22 +127,22 @@ void Smb4KSharesMenu::setupMenu()
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
 
-void Smb4KSharesMenu::slotShareMounted( Smb4KShare *share )
+void Smb4KSharesMenu::slotShareMounted(Smb4KShare *share)
 {
-  Q_ASSERT( share );
+  Q_ASSERT(share);
 
   // Create the share menu.
   KActionMenu *share_menu = new KActionMenu(
     (Smb4KSettings::showMountPoint() ? share->canonicalPath() : share->unc()),
-    m_menus );
-  share_menu->setIcon( share->icon() );
-  share_menu->setObjectName( share->canonicalPath() );
+    m_menus);
+  share_menu->setIcon(share->icon());
+  share_menu->setObjectName(share->canonicalPath());
 
   QMap<QString,QVariant> data;
   data["unc"] = share->unc();
   data["mountpoint"] = share->path();
   data["foreign"] = share->isForeign();
-  share_menu->setData( data );
+  share_menu->setData(data);
 
   // Put the share at the right position in the menu. For
   // this we get the object names of the share menus and
@@ -153,50 +152,50 @@ void Smb4KSharesMenu::slotShareMounted( Smb4KShare *share )
   QList<QAction *> share_menus = m_menus->actions();
 
   // Insert the new action menu
-  if ( share_menus.size() != 1 )
+  if (share_menus.size() != 1)
   {
     // NOTE: We do not need to add the new share to the QActionGroup
     // here, because this was already done by the creation of the
     // menu above.
     QStringList names;
 
-    for ( int i = 0; i < share_menus.size(); ++i )
+    for (int i = 0; i < share_menus.size(); ++i)
     {
-      QMap<QString,QVariant> share_data = share_menus.at( i )->data().toMap();
+      QMap<QString,QVariant> share_data = share_menus.at(i)->data().toMap();
 
-      if ( !Smb4KSettings::showMountPoint() )
+      if (!Smb4KSettings::showMountPoint())
       {
-        names << share_data.value( "unc" ).toString();
+        names << share_data.value("unc").toString();
       }
       else
       {
-        names << share_data.value( "mountpoint" ).toString();
+        names << share_data.value("mountpoint").toString();
       }
     }
 
     names.sort();
 
     QString name;
-    int index = names.indexOf( (!Smb4KSettings::showMountPoint() ? share->unc() : share->path()) );
+    int index = names.indexOf((!Smb4KSettings::showMountPoint() ? share->unc() : share->path()));
 
-    if ( index < names.size() - 1 )
+    if (index < names.size() - 1)
     {
       index++;
-      name = names.at( index );
+      name = names.at(index);
     }
     else
     {
       // Do nothing
     }
 
-    if ( !name.isEmpty() )
+    if (!name.isEmpty())
     {
-      for ( int i = 0; i < share_menus.size(); ++i )
+      for (int i = 0; i < share_menus.size(); ++i)
       {
-        if ( QString::localeAwareCompare( name, share_menus.at( i )->data().toMap().value( "unc" ).toString() ) == 0 ||
-             QString::localeAwareCompare( name, share_menus.at( i )->data().toMap().value( "mountpoint" ).toString() ) == 0 )
+        if (QString::localeAwareCompare(name, share_menus.at(i)->data().toMap().value("unc").toString()) == 0 ||
+             QString::localeAwareCompare(name, share_menus.at(i)->data().toMap().value("mountpoint").toString()) == 0)
         {
-          insertAction( share_menus.at( i ), share_menu );
+          insertAction(share_menus.at(i), share_menu);
           break;
         }
         else
@@ -207,79 +206,79 @@ void Smb4KSharesMenu::slotShareMounted( Smb4KShare *share )
     }
     else
     {
-      insertAction( 0, share_menu );
+      insertAction(0, share_menu);
     }
   }
   else
   {
-    insertAction( 0, share_menu );
+    insertAction(0, share_menu);
   }
 
-  m_action_collection->addAction( share_menu->objectName(), share_menu );
+  m_action_collection->addAction(share_menu->objectName(), share_menu);
 
   // Now add the actions for this share.
-  KAction *unmount = new KAction( KIcon( "emblem-unmounted" ), i18n( "Unmount" ), m_actions );
-  unmount->setObjectName( QString( "[unmount]_%1" ).arg( share->canonicalPath() ) );
-  unmount->setEnabled( !share->isForeign() || Smb4KSettings::unmountForeignShares() );
-  share_menu->addAction( unmount );
-  m_action_collection->addAction( unmount->objectName(), unmount );
+  QAction *unmount = new QAction(KDE::icon("emblem-unmounted"), i18n("Unmount"), m_actions);
+  unmount->setObjectName(QString("[unmount]_%1").arg(share->canonicalPath()));
+  unmount->setEnabled(!share->isForeign() || Smb4KSettings::unmountForeignShares());
+  share_menu->addAction(unmount);
+  m_action_collection->addAction(unmount->objectName(), unmount);
 
   share_menu->addSeparator();
 
-  KAction *add_bookmark = new KAction( KIcon( "bookmark-new" ), i18n( "Add Bookmark" ), m_actions );
-  add_bookmark->setObjectName( QString( "[bookmark]_%1" ).arg( share->canonicalPath() ) );
-  share_menu->addAction( add_bookmark );
-  m_action_collection->addAction( add_bookmark->objectName(), add_bookmark );
+  QAction *add_bookmark = new QAction(KDE::icon("bookmark-new"), i18n("Add Bookmark"), m_actions);
+  add_bookmark->setObjectName(QString("[bookmark]_%1").arg(share->canonicalPath()));
+  share_menu->addAction(add_bookmark);
+  m_action_collection->addAction(add_bookmark->objectName(), add_bookmark);
 
-  KAction *synchronize = new KAction( KIcon( "folder-sync" ), i18n( "Synchronize" ), m_actions );
-  synchronize->setObjectName( QString( "[synchronize]_%1" ).arg( share->canonicalPath() ) );
-  synchronize->setEnabled( !KStandardDirs::findExe( "rsync" ).isEmpty() && !share->isInaccessible() );
-  share_menu->addAction( synchronize );
-  m_action_collection->addAction( synchronize->objectName(), synchronize );
+  QAction *synchronize = new QAction(KDE::icon("folder-sync"), i18n("Synchronize"), m_actions);
+  synchronize->setObjectName(QString("[synchronize]_%1").arg(share->canonicalPath()));
+  synchronize->setEnabled(!QStandardPaths::findExecutable("rsync").isEmpty() && !share->isInaccessible());
+  share_menu->addAction(synchronize);
+  m_action_collection->addAction(synchronize->objectName(), synchronize);
 
   share_menu->addSeparator();
 
-  KAction *konsole = new KAction( KIcon( "utilities-terminal" ), i18n( "Open with Konsole" ), m_actions );
-  konsole->setObjectName( QString( "[konsole]_%1" ).arg( share->canonicalPath() ) );
-  konsole->setEnabled( !KStandardDirs::findExe( "konsole" ).isEmpty() && !share->isInaccessible() );
-  share_menu->addAction( konsole );
-  m_action_collection->addAction( konsole->objectName(), konsole );
+  QAction *konsole = new QAction(KDE::icon("utilities-terminal"), i18n("Open with Konsole"), m_actions);
+  konsole->setObjectName(QString("[konsole]_%1").arg(share->canonicalPath()));
+  konsole->setEnabled(!QStandardPaths::findExecutable("konsole").isEmpty() && !share->isInaccessible());
+  share_menu->addAction(konsole);
+  m_action_collection->addAction(konsole->objectName(), konsole);
 
-  KAction *filemanager = new KAction( KIcon( "system-file-manager" ), i18n( "Open with File Manager" ), m_actions );
-  filemanager->setObjectName( QString( "[filemanager]_%1" ).arg( share->canonicalPath() ) );
-  filemanager->setEnabled( !share->isInaccessible() );
-  share_menu->addAction( filemanager );
-  m_action_collection->addAction( filemanager->objectName(), filemanager );
+  QAction *filemanager = new QAction(KDE::icon("system-file-manager"), i18n("Open with File Manager"), m_actions);
+  filemanager->setObjectName(QString("[filemanager]_%1").arg(share->canonicalPath()));
+  filemanager->setEnabled(!share->isInaccessible());
+  share_menu->addAction(filemanager);
+  m_action_collection->addAction(filemanager->objectName(), filemanager);
 
-  m_action_collection->action( "unmount_all" )->setEnabled(
-    ((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && !m_menus->actions().isEmpty()) );
+  m_action_collection->action("unmount_all")->setEnabled(
+    ((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && !m_menus->actions().isEmpty()));
 }
 
 
-void Smb4KSharesMenu::slotShareUnmounted( Smb4KShare *share )
+void Smb4KSharesMenu::slotShareUnmounted(Smb4KShare *share)
 {
-  Q_ASSERT( share );
+  Q_ASSERT(share);
 
   // Get the shares action menu
-  KActionMenu *share_menu = static_cast<KActionMenu *>( m_action_collection->action( share->canonicalPath() ) );
+  KActionMenu *share_menu = static_cast<KActionMenu *>(m_action_collection->action(share->canonicalPath()));
 
-  if ( share_menu )
+  if (share_menu)
   {
     // Remove all actions belonging to this share
     QList<QAction *> actions = m_actions->actions();
-    QMutableListIterator<QAction *> a( actions );
+    QMutableListIterator<QAction *> a(actions);
 
-    while ( a.hasNext() )
+    while (a.hasNext())
     {
       QAction *action = a.next();
 
-      if ( action->objectName().endsWith( QString( "]_%1" ).arg( share->canonicalPath() ) ) )
+      if (action->objectName().endsWith(QString("]_%1").arg(share->canonicalPath())))
       {
-        share_menu->removeAction( action );
-        m_actions->removeAction( action );
+        share_menu->removeAction(action);
+        m_actions->removeAction(action);
         a.remove();
 
-        if ( action )
+        if (action)
         {
           delete action;
         }
@@ -295,10 +294,10 @@ void Smb4KSharesMenu::slotShareUnmounted( Smb4KShare *share )
     }
 
     // Remove the share's action menu
-    removeAction( share_menu );
-    m_menus->removeAction( share_menu );
+    removeAction(share_menu);
+    m_menus->removeAction(share_menu);
 
-    if ( share_menu )
+    if (share_menu)
     {
       delete share_menu;
     }
@@ -312,52 +311,52 @@ void Smb4KSharesMenu::slotShareUnmounted( Smb4KShare *share )
     // Do nothing
   }
 
-  m_action_collection->action( "unmount_all" )->setEnabled(
-    ((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && !m_menus->actions().isEmpty()) );
+  m_action_collection->action("unmount_all")->setEnabled(
+    ((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && !m_menus->actions().isEmpty()));
 }
 
 
 void Smb4KSharesMenu::slotUnmountAllShares()
 {
-  Smb4KMounter::self()->unmountAllShares( m_parent_widget );
+  Smb4KMounter::self()->unmountAllShares(m_parent_widget);
 }
 
 
-void Smb4KSharesMenu::slotShareAction( QAction *action )
+void Smb4KSharesMenu::slotShareAction(QAction *action)
 {
-  Smb4KShare *share = NULL;
+  Smb4KShare *share = 0;
 
-  if ( action->objectName().contains( "]_" ) )
+  if (action->objectName().contains("]_"))
   {
-    QString path = action->objectName().section( "]_", 1, -1 ).trimmed();
-    share = findShareByPath( path );
+    QString path = action->objectName().section("]_", 1, -1).trimmed();
+    share = findShareByPath(path);
   }
   else
   {
     // Do nothing
   }
 
-  if ( share )
+  if (share)
   {
-    if ( action->objectName().startsWith( QLatin1String( "[unmount]" ) ) )
+    if (action->objectName().startsWith(QLatin1String("[unmount]")))
     {
-      Smb4KMounter::self()->unmountShare( share, false, m_parent_widget );
+      Smb4KMounter::self()->unmountShare(share, false, m_parent_widget);
     }
-    else if ( action->objectName().startsWith( QLatin1String( "[bookmark]" ) ) )
+    else if (action->objectName().startsWith(QLatin1String("[bookmark]")))
     {
-      Smb4KBookmarkHandler::self()->addBookmark( share, m_parent_widget );
+      Smb4KBookmarkHandler::self()->addBookmark(share, m_parent_widget);
     }
-    else if ( action->objectName().startsWith( QLatin1String( "[synchronize]" ) ) )
+    else if (action->objectName().startsWith(QLatin1String("[synchronize]")))
     {
-      Smb4KSynchronizer::self()->synchronize( share, m_parent_widget );
+      Smb4KSynchronizer::self()->synchronize(share, m_parent_widget);
     }
-    else if ( action->objectName().startsWith( QLatin1String( "[konsole]" ) ) )
+    else if (action->objectName().startsWith(QLatin1String("[konsole]")))
     {
-      openShare( share, Smb4KGlobal::Konsole );
+      openShare(share, Smb4KGlobal::Konsole);
     }
-    else if ( action->objectName().startsWith( QLatin1String( "[filemanager]" ) ) )
+    else if (action->objectName().startsWith(QLatin1String("[filemanager]")))
     {
-      openShare( share, Smb4KGlobal::FileManager );
+      openShare(share, Smb4KGlobal::FileManager);
     }
     else
     {
@@ -370,4 +369,3 @@ void Smb4KSharesMenu::slotShareAction( QAction *action )
   }
 }
 
-#include "smb4ksharesmenu.moc"

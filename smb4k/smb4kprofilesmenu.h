@@ -2,7 +2,7 @@
     smb4kprofilesmenu  -  The menu for the profiles
                              -------------------
     begin                : Do Aug 10 2014
-    copyright            : (C) 2014 by Alexander Reinholdt
+    copyright            : (C) 2014-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -31,7 +31,7 @@
 #include <QStringList>
 
 // KDE includes
-#include <kselectaction.h>
+#include <KWidgetsAddons/KSelectAction>
 
 
 class Smb4KProfilesMenu : public KSelectAction
@@ -54,9 +54,6 @@ class Smb4KProfilesMenu : public KSelectAction
     void slotProfilesListChanged(const QStringList &profiles);
     void slotProfileUsageChanged(bool use);
     void slotActionTriggered(const QString &name);
-    
-  private:
-    
 };
 
 #endif

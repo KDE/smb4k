@@ -2,7 +2,7 @@
     smb4kmainwindow  -  The main window of Smb4K.
                              -------------------
     begin                : Di Jan 1 2008
-    copyright            : (C) 2008-2013 by Alexander Reinholdt
+    copyright            : (C) 2008-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -46,58 +46,53 @@
 #include "core/smb4ksearch.h"
 
 // Qt includes
-#include <QSize>
-#include <QVariantList>
-#include <QDockWidget>
-#include <QMenu>
-#include <QActionGroup>
-#include <QLabel>
-#include <QTimer>
-#include <QTabBar>
-#include <QMenuBar>
+#include <QtCore/QVariantList>
+#include <QtCore/QTimer>
+#include <QtCore/QSize>
+#include <QtWidgets/QDockWidget>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QActionGroup>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTabBar>
+#include <QtWidgets/QMenuBar>
+#include <QtWidgets/QStatusBar>
+#include <QtWidgets/QApplication>
 
 // KDE includes
-#include <kstandardaction.h>
-#include <kactioncollection.h>
-#include <kpluginloader.h>
-#include <kpluginfactory.h>
-#include <kmessagebox.h>
-#include <kapplication.h>
-#include <klocale.h>
-#include <kxmlguifactory.h>
-#include <kconfigdialog.h>
-#include <kactionmenu.h>
-#include <kstatusbar.h>
-#include <kiconeffect.h>
-#include <kmenubar.h>
-#include <kmenu.h>
-#include <kdualaction.h>
+#include <KConfigWidgets/KStandardAction>
+#include <KConfigWidgets/KConfigDialog>
+#include <KIconThemes/KIconLoader>
+#include <KI18n/KLocalizedString>
+#include <KCoreAddons/KPluginLoader>
+#include <KCoreAddons/KPluginFactory>
+#include <KXmlGui/KXMLGUIFactory>
+#include <KWidgetsAddons/KMessageBox>
 
 using namespace Smb4KGlobal;
 using namespace KParts;
 
 
 Smb4KMainWindow::Smb4KMainWindow()
-: KParts::MainWindow(), m_system_tray_widget( NULL )
+: KParts::MainWindow(), m_system_tray_widget(0)
 {
   // Part manager
-  m_manager = new KParts::PartManager( this );
-  m_manager->setAllowNestedParts( true );
-  connect( m_manager, SIGNAL(activePartChanged(KParts::Part*)), SLOT(slotActivePartChanged(KParts::Part*)) );
+  m_manager = new KParts::PartManager(this);
+  m_manager->setAllowNestedParts(true);
+  connect(m_manager, SIGNAL(activePartChanged(KParts::Part*)), SLOT(slotActivePartChanged(KParts::Part*)));
 
   // Set up main window
-  setStandardToolBarMenuEnabled( true );
+  setStandardToolBarMenuEnabled(true);
   createStandardStatusBarAction();
-  setDockNestingEnabled( true );
+  setDockNestingEnabled(true);
   setupActions();
-  setupGUI( QSize( 800, 600 ), Default, "smb4k_shell.rc" );
+  setupGUI(QSize(800, 600), Default, "smb4k_shell.rc");
   setupView();
   setupMenuBar();
   setupStatusBar();
   setupSystemTrayWidget();
 
   // Apply the main window settings
-  setAutoSaveSettings( KConfigGroup( Smb4KSettings::self()->config(), "MainWindow" ), true );
+  setAutoSaveSettings(KConfigGroup(Smb4KSettings::self()->config(), "MainWindow"), true);
 }
 
 
@@ -109,52 +104,52 @@ Smb4KMainWindow::~Smb4KMainWindow()
 void Smb4KMainWindow::setupActions()
 {
   // Quit action
-  KAction *quit_action = KStandardAction::quit( this, SLOT(slotQuit()), actionCollection() );
-  actionCollection()->addAction( "quit_action", quit_action );
+  QAction *quit_action = KStandardAction::quit(this, SLOT(slotQuit()), actionCollection());
+  actionCollection()->addAction("quit_action", quit_action);
 
   // Configure action
-  KAction *configure_action = KStandardAction::preferences( this, SLOT(slotConfigDialog()), actionCollection() );
-  actionCollection()->addAction( "configure_action", configure_action );
+  QAction *configure_action = KStandardAction::preferences(this, SLOT(slotConfigDialog()), actionCollection());
+  actionCollection()->addAction("configure_action", configure_action);
 
   // Dock widgets action menu
-  KActionMenu *dock_widgets_menu = new KActionMenu( KIcon( "tab-duplicate" ), i18n( "Dock Widgets" ), actionCollection() );
-  actionCollection()->addAction( "dock_widgets_menu", dock_widgets_menu );
+  KActionMenu *dock_widgets_menu = new KActionMenu(KDE::icon("tab-duplicate"), i18n("Dock Widgets"), actionCollection());
+  actionCollection()->addAction("dock_widgets_menu", dock_widgets_menu);
 
-  m_dock_widgets = new QActionGroup( actionCollection() );
-  m_dock_widgets->setExclusive( false );
+  m_dock_widgets = new QActionGroup(actionCollection());
+  m_dock_widgets->setExclusive(false);
 
   //
   // FIXME: Move the shares view actionmenu to its own class
   //  
   
   // Shares view action menu
-  KActionMenu *shares_view_menu = new KActionMenu( KIcon( "view-choose" ), i18n( "Shares View" ), actionCollection() );
-  actionCollection()->addAction( "shares_view_menu", shares_view_menu );
+  KActionMenu *shares_view_menu = new KActionMenu(KDE::icon("view-choose"), i18n("Shares View"), actionCollection());
+  actionCollection()->addAction("shares_view_menu", shares_view_menu);
 
-  QActionGroup *view_modes_group = new QActionGroup( actionCollection() );
-  view_modes_group->setExclusive( true );
-  connect( view_modes_group, SIGNAL(triggered(QAction*)), this, SLOT(slotViewModeTriggered(QAction*)) );
+  QActionGroup *view_modes_group = new QActionGroup(actionCollection());
+  view_modes_group->setExclusive(true);
+  connect(view_modes_group, SIGNAL(triggered(QAction*)), this, SLOT(slotViewModeTriggered(QAction*)));
 
-  KAction *icon_view_action = new KAction( i18n( "Icon View" ), view_modes_group );
-  icon_view_action->setCheckable( true );
-  view_modes_group->addAction( icon_view_action );
-  actionCollection()->addAction( "icon_view_action", icon_view_action );
+  QAction *icon_view_action = new QAction(i18n("Icon View"), view_modes_group);
+  icon_view_action->setCheckable(true);
+  view_modes_group->addAction(icon_view_action);
+  actionCollection()->addAction("icon_view_action", icon_view_action);
 
-  KAction *list_view_action = new KAction( i18n( "List View" ), view_modes_group );
-  list_view_action->setCheckable( true );
-  view_modes_group->addAction( list_view_action );
-  actionCollection()->addAction( "list_view_action", list_view_action );
+  QAction *list_view_action = new QAction(i18n("List View"), view_modes_group);
+  list_view_action->setCheckable(true);
+  view_modes_group->addAction(list_view_action);
+  actionCollection()->addAction("list_view_action", list_view_action);
 
-  shares_view_menu->addAction( icon_view_action );
-  shares_view_menu->addAction( list_view_action );
+  shares_view_menu->addAction(icon_view_action);
+  shares_view_menu->addAction(list_view_action);
 
-  if ( Smb4KSettings::sharesIconView() )
+  if (Smb4KSettings::sharesIconView())
   {
-    actionCollection()->action( "icon_view_action" )->setChecked( true );
+    actionCollection()->action("icon_view_action")->setChecked(true);
   }
-  else if ( Smb4KSettings::sharesListView() )
+  else if (Smb4KSettings::sharesListView())
   {
-    actionCollection()->action( "list_view_action" )->setChecked( true );
+    actionCollection()->action("list_view_action")->setChecked(true);
   }
   else
   {
@@ -162,11 +157,11 @@ void Smb4KMainWindow::setupActions()
   }
 
   // Bookmarks menu and action
-  Smb4KBookmarkMenu *bookmarks = new Smb4KBookmarkMenu( Smb4KBookmarkMenu::MainWindow, this, this );
-  bookmarks->addBookmarkAction()->setEnabled( false );
-  actionCollection()->addAction( "bookmarks_menu", bookmarks );
-  actionCollection()->addAction( "bookmark_action", bookmarks->addBookmarkAction() );
-  connect( bookmarks->addBookmarkAction(), SIGNAL(triggered(bool)), SLOT(slotAddBookmark()) );
+  Smb4KBookmarkMenu *bookmarks = new Smb4KBookmarkMenu(Smb4KBookmarkMenu::MainWindow, this, this);
+  bookmarks->addBookmarkAction()->setEnabled(false);
+  actionCollection()->addAction("bookmarks_menu", bookmarks);
+  actionCollection()->addAction("bookmark_action", bookmarks->addBookmarkAction());
+  connect(bookmarks->addBookmarkAction(), SIGNAL(triggered(bool)), SLOT(slotAddBookmark()));
   
   // Profiles menu
   Smb4KProfilesMenu *profiles = new Smb4KProfilesMenu(this);
@@ -177,253 +172,262 @@ void Smb4KMainWindow::setupActions()
 void Smb4KMainWindow::setupStatusBar()
 {
   // Set up the progress bar.
-  m_progress_bar = new QProgressBar( statusBar() );
-  m_progress_bar->setFixedWidth( 100 );
-  m_progress_bar->setMaximum( 0 );
-  m_progress_bar->setMinimum( 0 );
-  m_progress_bar->setFixedHeight( statusBar()->fontMetrics().height() );
-  m_progress_bar->setAlignment( Qt::AlignCenter );
-  m_progress_bar->setVisible( false );
+  m_progress_bar = new QProgressBar(statusBar());
+  m_progress_bar->setFixedWidth(100);
+  m_progress_bar->setMaximum(0);
+  m_progress_bar->setMinimum(0);
+  m_progress_bar->setFixedHeight(statusBar()->fontMetrics().height());
+  m_progress_bar->setAlignment(Qt::AlignCenter);
+  m_progress_bar->setVisible(false);
 
   // Set the icon on the right side that represents the initial
   // state of the wallet manager.
-  m_pass_icon = new QLabel( statusBar() );
-  m_pass_icon->setContentsMargins( 0, 0, 0, 0 );
-  m_pass_icon->setAlignment( Qt::AlignCenter );
+  m_pass_icon = new QLabel(statusBar());
+  m_pass_icon->setContentsMargins(0, 0, 0, 0);
+  m_pass_icon->setAlignment(Qt::AlignCenter);
 
   // The feedback icon.
-  m_feedback_icon = new QLabel( statusBar() );
-  m_feedback_icon->setContentsMargins( 0, 0, 0, 0 );
-  m_feedback_icon->setAlignment( Qt::AlignCenter );
+  m_feedback_icon = new QLabel(statusBar());
+  m_feedback_icon->setContentsMargins(0, 0, 0, 0);
+  m_feedback_icon->setAlignment(Qt::AlignCenter);
 
-  statusBar()->addPermanentWidget( m_progress_bar );
-  statusBar()->addPermanentWidget( m_feedback_icon );
-  statusBar()->addPermanentWidget( m_pass_icon );
+  statusBar()->addPermanentWidget(m_progress_bar);
+  statusBar()->addPermanentWidget(m_feedback_icon);
+  statusBar()->addPermanentWidget(m_pass_icon);
 
   slotWalletManagerInitialized();
   setupMountIndicator();
 
-  connect( Smb4KWalletManager::self(), SIGNAL(initialized()),
-           this,                       SLOT(slotWalletManagerInitialized()) );
+  connect(Smb4KWalletManager::self(), SIGNAL(initialized()),
+          this, SLOT(slotWalletManagerInitialized()));
+  
+  connect(Smb4KMounter::self(), SIGNAL(mounted(Smb4KShare*)),
+          this, SLOT(slotVisualMountFeedback(Smb4KShare*)));
+  
+  connect(Smb4KMounter::self(), SIGNAL(unmounted(Smb4KShare*)),
+          this, SLOT(slotVisualUnmountFeedback(Smb4KShare*)));
+  
+  connect(Smb4KScanner::self(), SIGNAL(aboutToStart(Smb4KBasicNetworkItem*,int)),
+          this, SLOT(slotScannerAboutToStart(Smb4KBasicNetworkItem*,int)));
+  
+  connect(Smb4KScanner::self(), SIGNAL(finished(Smb4KBasicNetworkItem*,int)),
+          this, SLOT(slotScannerFinished(Smb4KBasicNetworkItem*,int)));
+  
+  connect(Smb4KMounter::self(), SIGNAL(aboutToStart(Smb4KShare*,int)),
+          this, SLOT(slotMounterAboutToStart(Smb4KShare*,int)));
+  
+  connect(Smb4KMounter::self(), SIGNAL(finished(Smb4KShare*,int)),
+          this, SLOT(slotMounterFinished(Smb4KShare*,int)));
 
-  connect( Smb4KMounter::self(),       SIGNAL(mounted(Smb4KShare*)),
-           this,                       SLOT(slotVisualMountFeedback(Smb4KShare*)) );
+  connect(Smb4KSearch::self(), SIGNAL(aboutToStart(QString)),
+          this, SLOT(slotSearchAboutToStart(QString)));
 
-  connect( Smb4KMounter::self(),       SIGNAL(unmounted(Smb4KShare*)),
-           this,                       SLOT(slotVisualUnmountFeedback(Smb4KShare*)) );
+  connect(Smb4KSearch::self(), SIGNAL(finished(QString)),
+          this, SLOT(slotSearchFinished(QString)));
 
-  connect( Smb4KScanner::self(),       SIGNAL(aboutToStart(Smb4KBasicNetworkItem*,int)),
-           this,                       SLOT(slotScannerAboutToStart(Smb4KBasicNetworkItem*,int)) );
+  connect(Smb4KPrint::self(), SIGNAL(aboutToStart(Smb4KShare*)),
+          this, SLOT(slotPrintingAboutToStart(Smb4KShare*)));
 
-  connect( Smb4KScanner::self(),       SIGNAL(finished(Smb4KBasicNetworkItem*,int)),
-           this,                       SLOT(slotScannerFinished(Smb4KBasicNetworkItem*,int)) );
+  connect(Smb4KPrint::self(), SIGNAL(finished(Smb4KShare*)),
+          this, SLOT(slotPrintingFinished(Smb4KShare*)));
 
-  connect( Smb4KMounter::self(),       SIGNAL(aboutToStart(Smb4KShare*,int)),
-           this,                       SLOT(slotMounterAboutToStart(Smb4KShare*,int)) );
+  connect(Smb4KSynchronizer::self(), SIGNAL(aboutToStart(QString)),
+          this, SLOT(slotSynchronizerAboutToStart(QString)));
 
-  connect( Smb4KMounter::self(),       SIGNAL(finished(Smb4KShare*,int)),
-           this,                       SLOT(slotMounterFinished(Smb4KShare*,int)) );
+  connect(Smb4KSynchronizer::self(), SIGNAL(finished(QString)),
+          this, SLOT(slotSynchronizerFinished(QString)));
 
-  connect( Smb4KSearch::self(),        SIGNAL(aboutToStart(QString)),
-           this,                       SLOT(slotSearchAboutToStart(QString)) );
+  connect(Smb4KPreviewer::self(), SIGNAL(aboutToStart(Smb4KShare*,QUrl)),
+          this, SLOT(slotPreviewerAboutToStart(Smb4KShare*,QUrl)));
 
-  connect( Smb4KSearch::self(),        SIGNAL(finished(QString)),
-           this,                       SLOT(slotSearchFinished(QString)) );
-
-  connect( Smb4KPrint::self(),         SIGNAL(aboutToStart(Smb4KShare*)),
-           this,                       SLOT(slotPrintingAboutToStart(Smb4KShare*)) );
-
-  connect( Smb4KPrint::self(),         SIGNAL(finished(Smb4KShare*)),
-           this,                       SLOT(slotPrintingFinished(Smb4KShare*)) );
-
-  connect( Smb4KSynchronizer::self(),  SIGNAL(aboutToStart(QString)),
-           this,                       SLOT(slotSynchronizerAboutToStart(QString)) );
-
-  connect( Smb4KSynchronizer::self(),  SIGNAL(finished(QString)),
-           this,                       SLOT(slotSynchronizerFinished(QString)) );
-
-  connect( Smb4KPreviewer::self(),     SIGNAL(aboutToStart(Smb4KShare*,KUrl)),
-           this,                       SLOT(slotPreviewerAboutToStart(Smb4KShare*,KUrl)) );
-
-  connect( Smb4KPreviewer::self(),     SIGNAL(finished(Smb4KShare*,KUrl)),
-           this,                       SLOT(slotPreviewerFinished(Smb4KShare*,KUrl)) );
+  connect(Smb4KPreviewer::self(), SIGNAL(finished(Smb4KShare*,QUrl)),
+          this, SLOT(slotPreviewerFinished(Smb4KShare*,QUrl)));
 }
 
 
 void Smb4KMainWindow::setupView()
 {
-  // There is no active part initially. Set it NULL.
-  m_active_part = NULL;
+  // There is no active part initially. Set it 0.
+  m_active_part = 0;
 
   // We do not set a central widget, because it causes "problems"
   // with the dock widgets. We have the nested dock widget property
   // set to true, so we can arrange the dock widgets as we like,
   // nonetheless.
 
-  QDockWidget *browser_dock = NULL;
-  QDockWidget *search_dock = NULL;
-  QDockWidget *shares_dock = NULL;
+  QDockWidget *browser_dock = 0;
+  QDockWidget *search_dock = 0;
+  QDockWidget *shares_dock = 0;
 
-  // Load the network browser.
-  KPluginLoader browser_loader( "smb4knetworkbrowser" );
+  //
+  // Network browser part
+  //
+  KPluginLoader browser_loader("smb4knetworkbrowser");
   KPluginFactory *browser_factory = browser_loader.factory();
 
-  if ( browser_factory )
+  if (browser_factory)
   {
     QVariantList args;
-    args << QString( "bookmark_shortcut=\"false\"" );
-    args << QString( "silent=\"true\"" );
+    args << QString("bookmark_shortcut=\"false\"");
+    args << QString("silent=\"true\"");
 
-    m_browser_part = browser_factory->create<KParts::Part>( this, args );
-    m_browser_part->setObjectName( "NetworkBrowserPart" );
+    m_browser_part = browser_factory->create<KParts::Part>(this, args);
+    m_browser_part->setObjectName("NetworkBrowserPart");
 
-    if ( m_browser_part )
+    if (m_browser_part)
     {
       // Add dock widget to the main window.
-      browser_dock = new QDockWidget( i18n( "Network Neighborhood" ), this );
-      browser_dock->setObjectName( "NetworkBrowserDockWidget" );
-      browser_dock->setWidget( m_browser_part->widget() );
-      browser_dock->setAllowedAreas( Qt::LeftDockWidgetArea );
-      connect( browser_dock, SIGNAL(visibilityChanged(bool)), this, SLOT(slotNetworkBrowserVisibilityChanged(bool)) );
+      browser_dock = new QDockWidget(i18n("Network Neighborhood"), this);
+      browser_dock->setObjectName("NetworkBrowserDockWidget");
+      browser_dock->setWidget(m_browser_part->widget());
+      browser_dock->setAllowedAreas(Qt::LeftDockWidgetArea);
+      connect(browser_dock, SIGNAL(visibilityChanged(bool)), this, SLOT(slotNetworkBrowserVisibilityChanged(bool)));
 
-      addDockWidget( Qt::LeftDockWidgetArea, browser_dock );
+      addDockWidget(Qt::LeftDockWidgetArea, browser_dock);
 
       // Make the menu and the tool bar working.
-      guiFactory()->addClient( m_browser_part );
+      guiFactory()->addClient(m_browser_part);
 
       // Insert the toggle view mode action to the action group.
-      m_dock_widgets->addAction( browser_dock->toggleViewAction() );
-      static_cast<KActionMenu *>( actionCollection()->action( "dock_widgets_menu" ) )->addAction( browser_dock->toggleViewAction() );
+      m_dock_widgets->addAction(browser_dock->toggleViewAction());
+      static_cast<KActionMenu *>(actionCollection()->action("dock_widgets_menu"))->addAction(browser_dock->toggleViewAction());
 
       // Add the Part object to the manager
-      m_manager->addPart( m_browser_part, false );
+      m_manager->addPart(m_browser_part, false);
     }
     else
     {
-      KMessageBox::error( this, i18n( "The network browser could not be created." ) );
+      KMessageBox::error(this, i18n("The network browser could not be created."));
 
       // We will continue without the network browser.
     }
   }
   else
   {
-    KMessageBox::error( this, "<qt>"+browser_loader.errorString()+"</qt>" );
-    KApplication::exit( 1 );
+    KMessageBox::error(this, "<qt>"+browser_loader.errorString()+"</qt>");
+    QApplication::exit(1);
     return;
   }
 
-  // Load the search dialog.
-  KPluginLoader search_loader( "smb4knetworksearch" );
+  //
+  // Network search part
+  //
+  KPluginLoader search_loader("smb4knetworksearch");
   KPluginFactory *search_factory = search_loader.factory();
 
-  if ( search_factory )
+  if (search_factory)
   {
     QVariantList args;
-    args << QString( "silent=\"true\"" );
+    args << QString("silent=\"true\"");
 
-    m_search_part = search_factory->create<KParts::Part>( this, args );
-    m_search_part->setObjectName( "NetworkSearchPart" );
+    m_search_part = search_factory->create<KParts::Part>(this, args);
+    m_search_part->setObjectName("NetworkSearchPart");
 
-    if ( m_search_part )
+    if (m_search_part)
     {
       // Add dock widget to the main window.
-      search_dock = new QDockWidget( i18n( "Network Search" ), this );
-      search_dock->setObjectName( "NetworkSearchDockWidget" );
-      search_dock->setWidget( m_search_part->widget() );
-      search_dock->setAllowedAreas( Qt::LeftDockWidgetArea );
-      connect( search_dock, SIGNAL(visibilityChanged(bool)), this, SLOT(slotSearchDialogVisibilityChanged(bool)) );
+      search_dock = new QDockWidget(i18n("Network Search"), this);
+      search_dock->setObjectName("NetworkSearchDockWidget");
+      search_dock->setWidget(m_search_part->widget());
+      search_dock->setAllowedAreas(Qt::LeftDockWidgetArea);
+      connect(search_dock, SIGNAL(visibilityChanged(bool)), this, SLOT(slotSearchDialogVisibilityChanged(bool)));
 
-      addDockWidget( Qt::LeftDockWidgetArea, search_dock );
+      addDockWidget(Qt::LeftDockWidgetArea, search_dock);
 
       // Make the menu and the tool bar working.
-      guiFactory()->addClient( m_search_part );
+      guiFactory()->addClient(m_search_part);
 
       // Insert the toggle view mode action to the action group.
-      m_dock_widgets->addAction( search_dock->toggleViewAction() );
-      static_cast<KActionMenu *>( actionCollection()->action( "dock_widgets_menu" ) )->addAction( search_dock->toggleViewAction() );
+      m_dock_widgets->addAction(search_dock->toggleViewAction());
+      static_cast<KActionMenu *>(actionCollection()->action("dock_widgets_menu"))->addAction(search_dock->toggleViewAction());
 
       // Add the Part object to the manager
-      m_manager->addPart( m_search_part, false );
+      m_manager->addPart(m_search_part, false);
     }
     else
     {
-      KMessageBox::error( this, i18n( "The search dialog could not be created." ) );
+      KMessageBox::error(this, i18n("The search dialog could not be created."));
 
       // We will continue without the search dialog.
     }
   }
   else
   {
-    KMessageBox::error( this, "<qt>"+search_loader.errorString()+"</qt>" );
-    KApplication::exit( 1 );
+    KMessageBox::error(this, "<qt>"+search_loader.errorString()+"</qt>");
+    QApplication::exit(1);
     return;
   }
-
-  KPluginLoader shares_loader( "smb4ksharesview" );
+  
+  //
+  // Shares view part
+  //
+  KPluginLoader shares_loader("smb4ksharesview");
   KPluginFactory *shares_factory = shares_loader.factory();
 
-  if ( shares_factory )
+  if (shares_factory)
   {
     QVariantList args;
-    args << QString( "bookmark_shortcut=\"false\"" );
-    args << QString( "silent=\"true\"" );
+    args << QString("bookmark_shortcut=\"false\"");
+    args << QString("silent=\"true\"");
 
-    m_shares_part = shares_factory->create<KParts::Part>( this, args );
-    m_shares_part->setObjectName( "SharesViewPart" );
+    m_shares_part = shares_factory->create<KParts::Part>(this, args);
+    m_shares_part->setObjectName("SharesViewPart");
 
-    if ( m_shares_part )
+    if (m_shares_part)
     {
       // Add dock widget to the main window.
-      shares_dock = new QDockWidget( i18n( "Mounted Shares" ), this );
-      shares_dock->setObjectName( "SharesViewDockWidget" );
-      shares_dock->setWidget( m_shares_part->widget() );
-      shares_dock->setAllowedAreas( Qt::LeftDockWidgetArea );
-      connect( shares_dock, SIGNAL(visibilityChanged(bool)), this, SLOT(slotSharesViewVisibilityChanged(bool)) );
+      shares_dock = new QDockWidget(i18n("Mounted Shares"), this);
+      shares_dock->setObjectName("SharesViewDockWidget");
+      shares_dock->setWidget(m_shares_part->widget());
+      shares_dock->setAllowedAreas(Qt::LeftDockWidgetArea);
+      connect(shares_dock, SIGNAL(visibilityChanged(bool)), this, SLOT(slotSharesViewVisibilityChanged(bool)));
 
-      addDockWidget( Qt::LeftDockWidgetArea, shares_dock );
+      addDockWidget(Qt::LeftDockWidgetArea, shares_dock);
 
       // Make the menu and the tool bar working.
-      guiFactory()->addClient( m_shares_part );
+      guiFactory()->addClient(m_shares_part);
 
       // Insert the toggle view mode action to the action group.
-      m_dock_widgets->addAction( shares_dock->toggleViewAction() );
-      static_cast<KActionMenu *>( actionCollection()->action( "dock_widgets_menu" ) )->addAction( shares_dock->toggleViewAction() );
+      m_dock_widgets->addAction(shares_dock->toggleViewAction());
+      static_cast<KActionMenu *>(actionCollection()->action("dock_widgets_menu"))->addAction(shares_dock->toggleViewAction());
 
       // Add the Part object to the manager
-      m_manager->addPart( m_shares_part, false );
+      m_manager->addPart(m_shares_part, false);
     }
     else
     {
-      KMessageBox::error( this, i18n( "The shares view could not be created." ) );
+      KMessageBox::error(this, i18n("The shares view could not be created."));
 
       // We will continue without the shares view.
     }
   }
   else
   {
-    KMessageBox::error( this, "<qt>"+shares_loader.errorString()+"</qt>" );
-    KApplication::exit( 1 );
+    KMessageBox::error(this, "<qt>"+search_loader.errorString()+"</qt>");
+    QApplication::exit(1);
     return;
   }
   
-  // Initial main window look.
-  KConfigGroup config_group( Smb4KSettings::self()->config(), "MainWindow" );
+  //
+  // Initial main window look
+  //
+  KConfigGroup config_group(Smb4KSettings::self()->config(), "MainWindow");
 
-  if ( !config_group.exists() )
+  if (!config_group.exists())
   {
     QList<QDockWidget *> docks = findChildren<QDockWidget *>();
     
-    for ( int i = 1; i < docks.size(); ++i )
+    for (int i = 1; i < docks.size(); ++i)
     {
-      tabifyDockWidget( docks.at( i-1 ), docks.at( i ) );
+      tabifyDockWidget(docks.at(i-1), docks.at(i));
     }
     
     // Set the part of the last tabified dock widget active.
-    for ( int i = 0; i < m_manager->parts().size(); ++i )
+    for (int i = 0; i < m_manager->parts().size(); ++i)
     {
-      if ( m_manager->parts().at( i )->widget() == docks.last()->widget() )
+      if (m_manager->parts().at(i)->widget() == docks.last()->widget())
       {
-        m_manager->setActivePart( m_manager->parts().at( i ) );
+        m_manager->setActivePart(m_manager->parts().at(i));
         break;
       }
       else
@@ -434,16 +438,16 @@ void Smb4KMainWindow::setupView()
   }
   else
   {
-    QString active_part = config_group.readEntry( "ActivePart", QString() );
+    QString active_part = config_group.readEntry("ActivePart", QString());
     
-    if ( !active_part.isEmpty() )
+    if (!active_part.isEmpty())
     {
       // Set the part of the last tabified dock widget active.
-      for ( int i = 0; i < m_manager->parts().size(); ++i )
+      for (int i = 0; i < m_manager->parts().size(); ++i)
       {
-        if ( QString::compare( active_part, m_manager->parts().at( i )->objectName() ) == 0 )
+        if (QString::compare(active_part, m_manager->parts().at(i)->objectName()) == 0)
         {
-          m_manager->setActivePart( m_manager->parts().at( i ) );
+          m_manager->setActivePart(m_manager->parts().at(i));
           break;
         }
         else
@@ -464,16 +468,16 @@ void Smb4KMainWindow::setupMenuBar()
 {
   // Get the "Bookmarks" menu
   QList<QAction *> actions = menuBar()->actions();
-  QListIterator<QAction *> it( actions );
+  QListIterator<QAction *> it(actions);
 
-  while ( it.hasNext() )
+  while (it.hasNext())
   {
     QAction *action = it.next();
 
-    if ( QString::compare( "bookmarks", action->objectName() ) == 0 )
+    if (QString::compare("bookmarks", action->objectName()) == 0)
     {
-      Smb4KBookmarkMenu *menu = static_cast<Smb4KBookmarkMenu *>( actionCollection()->action( "bookmarks_menu" ) );
-      action->setMenu( menu->menu() );
+      Smb4KBookmarkMenu *menu = static_cast<Smb4KBookmarkMenu *>(actionCollection()->action("bookmarks_menu"));
+      action->setMenu(menu->menu());
       break;
     }
     else
@@ -486,17 +490,17 @@ void Smb4KMainWindow::setupMenuBar()
 
 void Smb4KMainWindow::setupSystemTrayWidget()
 {
-  if ( !m_system_tray_widget )
+  if (!m_system_tray_widget)
   {
-    m_system_tray_widget = new Smb4KSystemTray( this );
+    m_system_tray_widget = new Smb4KSystemTray(this);
   }
   else
   {
     // Do nothing
   }
 
-  connect( m_system_tray_widget, SIGNAL(settingsChanged(QString)),
-           this,                 SLOT(slotSettingsChanged(QString)) );
+  connect(m_system_tray_widget, SIGNAL(settingsChanged(QString)),
+           this,                 SLOT(slotSettingsChanged(QString)));
 }
 
 
@@ -504,30 +508,30 @@ void Smb4KMainWindow::loadSettings()
 {
   // Send custom event to the dock widgets, so that they know
   // that they have to reload their settings.
-  if ( m_browser_part )
+  if (m_browser_part)
   {
-    Smb4KEvent *customBrowserEvent = new Smb4KEvent( Smb4KEvent::LoadSettings );
-    KApplication::postEvent( m_browser_part, customBrowserEvent );
+    Smb4KEvent *customBrowserEvent = new Smb4KEvent(Smb4KEvent::LoadSettings);
+    QApplication::postEvent(m_browser_part, customBrowserEvent);
   }
   else
   {
     // Do nothing
   }
 
-  if ( m_search_part )
+  if (m_search_part)
   {
-    Smb4KEvent *customSearchEvent = new Smb4KEvent( Smb4KEvent::LoadSettings );
-    KApplication::postEvent( m_search_part, customSearchEvent );
+    Smb4KEvent *customSearchEvent = new Smb4KEvent(Smb4KEvent::LoadSettings);
+    QApplication::postEvent(m_search_part, customSearchEvent);
   }
   else
   {
     // Do nothing
   }
 
-  if ( m_shares_part )
+  if (m_shares_part)
   {
-    Smb4KEvent *customSharesEvent = new Smb4KEvent( Smb4KEvent::LoadSettings );
-    KApplication::postEvent( m_shares_part, customSharesEvent );
+    Smb4KEvent *customSharesEvent = new Smb4KEvent(Smb4KEvent::LoadSettings);
+    QApplication::postEvent(m_shares_part, customSharesEvent);
   }
   else
   {
@@ -535,13 +539,13 @@ void Smb4KMainWindow::loadSettings()
   }
 
   // Check the right view mode action.
-  if ( Smb4KSettings::sharesIconView() )
+  if (Smb4KSettings::sharesIconView())
   {
-    actionCollection()->action( "icon_view_action" )->setChecked( true );
+    actionCollection()->action("icon_view_action")->setChecked(true);
   }
-  else if ( Smb4KSettings::sharesListView() )
+  else if (Smb4KSettings::sharesListView())
   {
-    actionCollection()->action( "list_view_action" )->setChecked( true );
+    actionCollection()->action("list_view_action")->setChecked(true);
   }
   else
   {
@@ -551,7 +555,7 @@ void Smb4KMainWindow::loadSettings()
   // Reload the list of bookmarks.
   Smb4KBookmarkMenu *bookmark_menu = findChild<Smb4KBookmarkMenu *>();
 
-  if ( bookmark_menu )
+  if (bookmark_menu)
   {
     bookmark_menu->refreshMenu();
   }
@@ -572,11 +576,11 @@ void Smb4KMainWindow::loadSettings()
 void Smb4KMainWindow::saveSettings()
 {
   // Save the active part.
-  KConfigGroup config_group( Smb4KSettings::self()->config(), "MainWindow" );
+  KConfigGroup config_group(Smb4KSettings::self()->config(), "MainWindow");
   
   if (m_manager->activePart())
   {
-    config_group.writeEntry( "ActivePart", m_manager->activePart()->objectName() );
+    config_group.writeEntry("ActivePart", m_manager->activePart()->objectName());
   }
   else
   {
@@ -584,20 +588,20 @@ void Smb4KMainWindow::saveSettings()
   }
 
   // Save if the main window should be started docked.
-  Smb4KSettings::setStartMainWindowDocked( !isVisible() );
+  Smb4KSettings::setStartMainWindowDocked(!isVisible());
 }
 
 
 bool Smb4KMainWindow::queryClose()
 {
-  if ( !kapp->sessionSaving() && isVisible() )
+  if (!qApp->isSavingSession() && isVisible())
   {
     // This part has been 'stolen' from JuK application.
     KMessageBox::information(this,
-            i18n( "<p>Closing the main window will keep Smb4K running in the system tray. "
+            i18n("<p>Closing the main window will keep Smb4K running in the system tray. "
                   "Use 'Quit' from the 'File' menu to quit the application.</p>"),
-            i18n( "Docking" ), "DockToSystemTrayInfo" );
-    setVisible( false );
+            i18n("Docking"), "DockToSystemTrayInfo");
+    setVisible(false);
     return false;
   }
   else
@@ -611,17 +615,17 @@ void Smb4KMainWindow::setupMountIndicator()
 {
   QStringList overlays;
 
-  if ( mountedSharesList().size() == 0 )
+  if (mountedSharesList().size() == 0)
   {
-    m_feedback_icon->setToolTip( i18n( "There are currently no shares mounted." ) );
+    m_feedback_icon->setToolTip(i18n("There are currently no shares mounted."));
   }
   else
   {
-    overlays.append( "emblem-mounted" );
-    m_feedback_icon->setToolTip( i18np( "There is currently %1 share mounted.", "There are currently %1 shares mounted.", mountedSharesList().size() ) );
+    overlays.append("emblem-mounted");
+    m_feedback_icon->setToolTip(i18np("There is currently %1 share mounted.", "There are currently %1 shares mounted.", mountedSharesList().size()));
   }
 
-  m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "folder-remote", KIconLoader::Small, 0, KIconLoader::DefaultState, overlays ) );
+  m_feedback_icon->setPixmap(KIconLoader::global()->loadIcon("folder-remote", KIconLoader::Small, 0, KIconLoader::DefaultState, overlays));
 }
 
 
@@ -631,7 +635,7 @@ void Smb4KMainWindow::setupMountIndicator()
 
 void Smb4KMainWindow::slotQuit()
 {
-  kapp->quit();
+  qApp->quit();
 }
 
 
@@ -641,23 +645,23 @@ void Smb4KMainWindow::slotConfigDialog()
   // we do not create a new one but show the old instead:
   KConfigDialog *dlg = NULL;
 
-  if ( (dlg = KConfigDialog::exists( "ConfigDialog" )) && KConfigDialog::showDialog( "ConfigDialog" ) )
+  if ((dlg = KConfigDialog::exists("ConfigDialog")) && KConfigDialog::showDialog("ConfigDialog"))
   {
     // To make sure we do not connect the config dialog several times
     // to slotSettingsChanged(), we break the connection first and re-
     // establish it afterwards:
-    disconnect( dlg,  SIGNAL(settingsChanged(QString)),
-                this, SLOT(slotSettingsChanged(QString)) );
+    disconnect(dlg,  SIGNAL(settingsChanged(QString)),
+                this, SLOT(slotSettingsChanged(QString)));
 
-    connect( dlg,  SIGNAL(settingsChanged(QString)),
-             this, SLOT(slotSettingsChanged(QString)) );
+    connect(dlg,  SIGNAL(settingsChanged(QString)),
+             this, SLOT(slotSettingsChanged(QString)));
 
     // Same procedure for the system tray widget:
-    disconnect( dlg, SIGNAL(settingsChanged(QString)),
-                m_system_tray_widget, SLOT(slotSettingsChanged(QString)) );
+    disconnect(dlg, SIGNAL(settingsChanged(QString)),
+                m_system_tray_widget, SLOT(slotSettingsChanged(QString)));
 
-    connect( dlg, SIGNAL(settingsChanged(QString)),
-             m_system_tray_widget, SLOT(slotSettingsChanged(QString)) );
+    connect(dlg, SIGNAL(settingsChanged(QString)),
+             m_system_tray_widget, SLOT(slotSettingsChanged(QString)));
 
     return;
   }
@@ -667,22 +671,22 @@ void Smb4KMainWindow::slotConfigDialog()
   }
 
   // Load the configuration dialog:
-  KPluginLoader loader( "smb4kconfigdialog" );
+  KPluginLoader loader("smb4kconfigdialog");
   KPluginFactory *config_factory = loader.factory();
 
-  if ( config_factory )
+  if (config_factory)
   {
-    dlg = config_factory->create<KConfigDialog>( this );
-    dlg->setObjectName( "ConfigDialog" );
+    dlg = config_factory->create<KConfigDialog>(this);
+    dlg->setObjectName("ConfigDialog");
 
     // ... and show it.
-    if ( dlg )
+    if (dlg)
     {
-      connect( dlg,  SIGNAL(settingsChanged(QString)),
-               this, SLOT(slotSettingsChanged(QString)) );
+      connect(dlg,  SIGNAL(settingsChanged(QString)),
+               this, SLOT(slotSettingsChanged(QString)));
 
-      connect( dlg, SIGNAL(settingsChanged(QString)),
-               m_system_tray_widget, SLOT(slotSettingsChanged(QString)) );
+      connect(dlg, SIGNAL(settingsChanged(QString)),
+               m_system_tray_widget, SLOT(slotSettingsChanged(QString)));
 
       dlg->show();
     }
@@ -693,13 +697,13 @@ void Smb4KMainWindow::slotConfigDialog()
   }
   else
   {
-    KMessageBox::error( 0, "<qt>"+loader.errorString()+"</qt>" );
+    KMessageBox::error(0, "<qt>"+loader.errorString()+"</qt>");
     return;
   }
 }
 
 
-void Smb4KMainWindow::slotSettingsChanged( const QString & )
+void Smb4KMainWindow::slotSettingsChanged(const QString &)
 {
   loadSettings();
 }
@@ -707,10 +711,10 @@ void Smb4KMainWindow::slotSettingsChanged( const QString & )
 
 void Smb4KMainWindow::slotAddBookmark()
 {
-  if ( m_active_part )
+  if (m_active_part)
   {
-    Smb4KEvent *customEvent = new Smb4KEvent( Smb4KEvent::AddBookmark );
-    KApplication::postEvent( m_active_part, customEvent );
+    Smb4KEvent *customEvent = new Smb4KEvent(Smb4KEvent::AddBookmark);
+    QApplication::postEvent(m_active_part, customEvent);
   }
   else
   {
@@ -719,27 +723,27 @@ void Smb4KMainWindow::slotAddBookmark()
 }
 
 
-void Smb4KMainWindow::slotViewModeTriggered( QAction *action )
+void Smb4KMainWindow::slotViewModeTriggered(QAction *action)
 {
   // Change the settings if necessary.
-  if ( QString::compare( action->objectName(), "icon_view_action" ) == 0 )
+  if (QString::compare(action->objectName(), "icon_view_action") == 0)
   {
-    if ( !Smb4KSettings::sharesIconView() )
+    if (!Smb4KSettings::sharesIconView())
     {
-      Smb4KSettings::setSharesIconView( true );
-      Smb4KSettings::setSharesListView( false );
+      Smb4KSettings::setSharesIconView(true);
+      Smb4KSettings::setSharesListView(false);
     }
     else
     {
       return;
     }
   }
-  else if ( QString::compare( action->objectName(), "list_view_action" ) == 0 )
+  else if (QString::compare(action->objectName(), "list_view_action") == 0)
   {
-    if ( !Smb4KSettings::sharesListView() )
+    if (!Smb4KSettings::sharesListView())
     {
-      Smb4KSettings::setSharesIconView( false );
-      Smb4KSettings::setSharesListView( true );
+      Smb4KSettings::setSharesIconView(false);
+      Smb4KSettings::setSharesListView(true);
     }
     else
     {
@@ -752,13 +756,13 @@ void Smb4KMainWindow::slotViewModeTriggered( QAction *action )
   }
 
   // Write the new configuration to the configuration file.
-  Smb4KSettings::self()->writeConfig();
+  Smb4KSettings::self()->save();
 
   // Notify the part that it has to reload its settings.
-  if ( m_shares_part )
+  if (m_shares_part)
   {
-    Smb4KEvent *customSharesEvent = new Smb4KEvent( Smb4KEvent::LoadSettings );
-    KApplication::postEvent( m_shares_part, customSharesEvent );
+    Smb4KEvent *customSharesEvent = new Smb4KEvent(Smb4KEvent::LoadSettings);
+    QApplication::postEvent(m_shares_part, customSharesEvent);
   }
   else
   {
@@ -769,62 +773,62 @@ void Smb4KMainWindow::slotViewModeTriggered( QAction *action )
 
 void Smb4KMainWindow::slotWalletManagerInitialized()
 {
-  if ( Smb4KWalletManager::self()->useWalletSystem() )
+  if (Smb4KWalletManager::self()->useWalletSystem())
   {
-    if ( Smb4KWalletManager::self()->walletIsOpen() )
+    if (Smb4KWalletManager::self()->walletIsOpen())
     {
-      m_pass_icon->setPixmap( KIconLoader::global()->loadIcon( "wallet-open",
-                              KIconLoader::Small, 0, KIconLoader::DefaultState ) );
-      m_pass_icon->setToolTip( i18n( "The wallet is in use." ) );
+      m_pass_icon->setPixmap(KIconLoader::global()->loadIcon("wallet-open",
+                              KIconLoader::Small, 0, KIconLoader::DefaultState));
+      m_pass_icon->setToolTip(i18n("The wallet is in use."));
     }
     else
     {
-      m_pass_icon->setPixmap( KIconLoader::global()->loadIcon( "wallet-closed",
-                              KIconLoader::Small, 0, KIconLoader::DefaultState ) );
-      m_pass_icon->setToolTip( i18n( "The wallet is not in use." ) );
+      m_pass_icon->setPixmap(KIconLoader::global()->loadIcon("wallet-closed",
+                              KIconLoader::Small, 0, KIconLoader::DefaultState));
+      m_pass_icon->setToolTip(i18n("The wallet is not in use."));
     }
   }
   else
   {
-    m_pass_icon->setPixmap( KIconLoader::global()->loadIcon( "dialog-password",
-                            KIconLoader::Small, 0, KIconLoader::DefaultState ) );
-    m_pass_icon->setToolTip( i18n( "The password dialog mode is used." ) );
+    m_pass_icon->setPixmap(KIconLoader::global()->loadIcon("dialog-password",
+                            KIconLoader::Small, 0, KIconLoader::DefaultState));
+    m_pass_icon->setToolTip(i18n("The password dialog mode is used."));
   }
 }
 
 
-void Smb4KMainWindow::slotScannerAboutToStart( Smb4KBasicNetworkItem *item, int process )
+void Smb4KMainWindow::slotScannerAboutToStart(Smb4KBasicNetworkItem *item, int process)
 {
-  Q_ASSERT( item );
+  Q_ASSERT(item);
 
-  switch ( process )
+  switch (process)
   {
     case LookupDomains:
     {
-      statusBar()->showMessage( i18n( "Looking for workgroups and domains..." ), 0 );
+      statusBar()->showMessage(i18n("Looking for workgroups and domains..."), 0);
       break;
     }
     case LookupDomainMembers:
     {
-      Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>( item );
-      statusBar()->showMessage( i18n( "Looking for hosts in domain %1...", workgroup->workgroupName() ), 0 );
+      Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>(item);
+      statusBar()->showMessage(i18n("Looking for hosts in domain %1...", workgroup->workgroupName()), 0);
       break;
     }
     case LookupShares:
     {
-      Smb4KHost *host = static_cast<Smb4KHost *>( item );
-      statusBar()->showMessage( i18n( "Looking for shares provided by host %1...", host->hostName() ), 0 );
+      Smb4KHost *host = static_cast<Smb4KHost *>(item);
+      statusBar()->showMessage(i18n("Looking for shares provided by host %1...", host->hostName()), 0);
       break;
     }
     case LookupInfo:
     {
-      Smb4KHost *host = static_cast<Smb4KHost *>( item );
-      statusBar()->showMessage( i18n( "Looking for more information about host %1...", host->hostName() ), 0 );
+      Smb4KHost *host = static_cast<Smb4KHost *>(item);
+      statusBar()->showMessage(i18n("Looking for more information about host %1...", host->hostName()), 0);
       break;
     }
     case WakeUp:
     {
-      statusBar()->showMessage( i18n( "Waking up remote hosts..." ), 0 );
+      statusBar()->showMessage(i18n("Waking up remote hosts..."), 0);
       break;
     }
     default:
@@ -833,9 +837,9 @@ void Smb4KMainWindow::slotScannerAboutToStart( Smb4KBasicNetworkItem *item, int 
     }
   }
 
-  if ( !m_progress_bar->isVisible() )
+  if (!m_progress_bar->isVisible())
   {
-    m_progress_bar->setVisible( true );
+    m_progress_bar->setVisible(true);
   }
   else
   {
@@ -844,13 +848,13 @@ void Smb4KMainWindow::slotScannerAboutToStart( Smb4KBasicNetworkItem *item, int 
 }
 
 
-void Smb4KMainWindow::slotScannerFinished( Smb4KBasicNetworkItem */*item*/, int /*process*/ )
+void Smb4KMainWindow::slotScannerFinished(Smb4KBasicNetworkItem */*item*/, int /*process*/)
 {
-  if ( !coreIsRunning() )
+  if (!coreIsRunning())
   {
-    m_progress_bar->setVisible( false );
+    m_progress_bar->setVisible(false);
     m_progress_bar->reset();
-    statusBar()->showMessage( i18n( "Done." ), 2000 );
+    statusBar()->showMessage(i18n("Done."), 2000);
   }
   else
   {
@@ -859,23 +863,23 @@ void Smb4KMainWindow::slotScannerFinished( Smb4KBasicNetworkItem */*item*/, int 
 }
 
 
-void Smb4KMainWindow::slotMounterAboutToStart( Smb4KShare *share, int process )
+void Smb4KMainWindow::slotMounterAboutToStart(Smb4KShare *share, int process)
 {
-  Q_ASSERT( share );
+  Q_ASSERT(share);
 
-  switch ( process )
+  switch (process)
   {
     case MountShare:
     {
       // Show the right UNC to the user. If the share is a 'homes'
       // share, we display Smb4KShare::homeUNC().
-      if ( !share->isHomesShare() )
+      if (!share->isHomesShare())
       {
-        statusBar()->showMessage( i18n( "Mounting share %1...", share->unc() ), 0 );
+        statusBar()->showMessage(i18n("Mounting share %1...", share->unc()), 0);
       }
       else
       {
-        statusBar()->showMessage( i18n( "Mounting share %1...", share->homeUNC() ), 0 );
+        statusBar()->showMessage(i18n("Mounting share %1...", share->homeUNC()), 0);
       }
       break;
     }
@@ -883,14 +887,14 @@ void Smb4KMainWindow::slotMounterAboutToStart( Smb4KShare *share, int process )
     {
       // When unmounting a share, there won't be a share where we
       // have to look up which UNC we present to the user.
-      statusBar()->showMessage( i18n( "Unmounting share %1...", share->unc() ), 0 );
+      statusBar()->showMessage(i18n("Unmounting share %1...", share->unc()), 0);
       break;
     }
     case WakeUp:
     {
       // The mounter sends a magic WOL package to the host where the share is
       // located to wake it up before mounting share.
-      statusBar()->showMessage( i18n( "Waking up host %1...", share->hostName() ), 0);
+      statusBar()->showMessage(i18n("Waking up host %1...", share->hostName()), 0);
       break;
     }
     default:
@@ -899,9 +903,9 @@ void Smb4KMainWindow::slotMounterAboutToStart( Smb4KShare *share, int process )
     }
   }
 
-  if ( !m_progress_bar->isVisible() )
+  if (!m_progress_bar->isVisible())
   {
-    m_progress_bar->setVisible( true );
+    m_progress_bar->setVisible(true);
   }
   else
   {
@@ -910,29 +914,29 @@ void Smb4KMainWindow::slotMounterAboutToStart( Smb4KShare *share, int process )
 }
 
 
-void Smb4KMainWindow::slotVisualMountFeedback( Smb4KShare *share )
+void Smb4KMainWindow::slotVisualMountFeedback(Smb4KShare *share)
 {
-  Q_ASSERT( share );
+  Q_ASSERT(share);
 
-  m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "dialog-ok",
-                              KIconLoader::Small, 0, KIconLoader::DefaultState ) );
-  m_feedback_icon->setToolTip( i18n( "%1 has been mounted successfully.", share->unc() ) );
+  m_feedback_icon->setPixmap(KIconLoader::global()->loadIcon("dialog-ok",
+                              KIconLoader::Small, 0, KIconLoader::DefaultState));
+  m_feedback_icon->setToolTip(i18n("%1 has been mounted successfully.", share->unc()));
 
   QList<QTabBar *> list = findChildren<QTabBar *>();
-  QDockWidget *shares_dock = findChild<QDockWidget *>( "SharesViewDockWidget" );
+  QDockWidget *shares_dock = findChild<QDockWidget *>("SharesViewDockWidget");
 
-  if ( shares_dock )
+  if (shares_dock)
   {
-    for ( int i = 0; i < list.size(); ++i )
+    for (int i = 0; i < list.size(); ++i)
     {
-      if ( list.at( i )->count() != 0 )
+      if (list.at(i)->count() != 0)
       {
-        for ( int j = 0; j < list.at( i )->count(); ++j )
+        for (int j = 0; j < list.at(i)->count(); ++j)
         {
-          if ( QString::compare( shares_dock->windowTitle(), list.at( i )->tabText( j ) ) == 0 &&
-               list.at( i )->currentIndex() != j )
+          if (QString::compare(shares_dock->windowTitle(), list.at(i)->tabText(j)) == 0 &&
+               list.at(i)->currentIndex() != j)
           {
-            list.at( i )->setTabTextColor( j, palette().highlightedText().color() ) ;
+            list.at(i)->setTabTextColor(j, palette().highlightedText().color()) ;
             break;
           }
           else
@@ -953,33 +957,33 @@ void Smb4KMainWindow::slotVisualMountFeedback( Smb4KShare *share )
     // Do nothing
   }
 
-  QTimer::singleShot( 2000, this, SLOT(slotEndVisualFeedback()) );
+  QTimer::singleShot(2000, this, SLOT(slotEndVisualFeedback()));
 }
 
 
-void Smb4KMainWindow::slotVisualUnmountFeedback( Smb4KShare *share )
+void Smb4KMainWindow::slotVisualUnmountFeedback(Smb4KShare *share)
 {
-  Q_ASSERT( share );
+  Q_ASSERT(share);
 
-  m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "dialog-ok",
-                              KIconLoader::Small, 0, KIconLoader::DefaultState ) );
-  m_feedback_icon->setToolTip( i18n( "%1 has been unmounted successfully.", share->unc() ) );
+  m_feedback_icon->setPixmap(KIconLoader::global()->loadIcon("dialog-ok",
+                              KIconLoader::Small, 0, KIconLoader::DefaultState));
+  m_feedback_icon->setToolTip(i18n("%1 has been unmounted successfully.", share->unc()));
 
   QList<QTabBar *> list = findChildren<QTabBar *>();
-  QDockWidget *shares_dock = findChild<QDockWidget *>( "SharesViewDockWidget" );
+  QDockWidget *shares_dock = findChild<QDockWidget *>("SharesViewDockWidget");
 
-  if ( shares_dock )
+  if (shares_dock)
   {
-    for ( int i = 0; i < list.size(); ++i )
+    for (int i = 0; i < list.size(); ++i)
     {
-      if ( list.at( i )->count() != 0 )
+      if (list.at(i)->count() != 0)
       {
-        for ( int j = 0; j < list.at( i )->count(); ++j )
+        for (int j = 0; j < list.at(i)->count(); ++j)
         {
-          if ( QString::compare( shares_dock->windowTitle(), list.at( i )->tabText( j ) ) == 0 &&
-               list.at( i )->currentIndex() != j )
+          if (QString::compare(shares_dock->windowTitle(), list.at(i)->tabText(j)) == 0 &&
+               list.at(i)->currentIndex() != j)
           {
-            list.at( i )->setTabTextColor( j, palette().highlightedText().color() ) ;
+            list.at(i)->setTabTextColor(j, palette().highlightedText().color()) ;
             break;
           }
           else
@@ -1000,26 +1004,26 @@ void Smb4KMainWindow::slotVisualUnmountFeedback( Smb4KShare *share )
     // Do nothing
   }
 
-  QTimer::singleShot( 2000, this, SLOT(slotEndVisualFeedback()) );
+  QTimer::singleShot(2000, this, SLOT(slotEndVisualFeedback()));
 }
 
 
-void Smb4KMainWindow::slotMounterFinished( Smb4KShare *share, int process )
+void Smb4KMainWindow::slotMounterFinished(Smb4KShare *share, int process)
 {
-  Q_ASSERT( share );
+  Q_ASSERT(share);
 
   // Give visual feedback if the mounting/unmounting failed.
-  switch( process )
+  switch(process)
   {
     case MountShare:
     {
-      if ( !share->isMounted() )
+      if (!share->isMounted())
       {
-        m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "dialog-cancel",
-                                    KIconLoader::Small, 0, KIconLoader::DefaultState ) );
-        m_feedback_icon->setToolTip( i18n( "Mounting %1 failed.", share->unc() ) );
+        m_feedback_icon->setPixmap(KIconLoader::global()->loadIcon("dialog-cancel",
+                                   KIconLoader::Small, 0, KIconLoader::DefaultState));
+        m_feedback_icon->setToolTip(i18n("Mounting %1 failed.", share->unc()));
 
-        QTimer::singleShot( 2000, this, SLOT(slotEndVisualFeedback()) );
+        QTimer::singleShot(2000, this, SLOT(slotEndVisualFeedback()));
       }
       else
       {
@@ -1029,13 +1033,13 @@ void Smb4KMainWindow::slotMounterFinished( Smb4KShare *share, int process )
     }
     case UnmountShare:
     {
-      if ( share->isMounted() )
+      if (share->isMounted())
       {
-        m_feedback_icon->setPixmap( KIconLoader::global()->loadIcon( "dialog-cancel",
-                                    KIconLoader::Small, 0, KIconLoader::DefaultState ) );
-        m_feedback_icon->setToolTip( i18n( "Unmounting %1 failed.", share->unc() ) );
+        m_feedback_icon->setPixmap(KIconLoader::global()->loadIcon("dialog-cancel",
+                                   KIconLoader::Small, 0, KIconLoader::DefaultState));
+        m_feedback_icon->setToolTip(i18n("Unmounting %1 failed.", share->unc()));
 
-        QTimer::singleShot( 2000, this, SLOT(slotEndVisualFeedback()) );
+        QTimer::singleShot(2000, this, SLOT(slotEndVisualFeedback()));
       }
       else
       {
@@ -1049,11 +1053,11 @@ void Smb4KMainWindow::slotMounterFinished( Smb4KShare *share, int process )
     }
   }
 
-  if ( !coreIsRunning()  )
+  if (!coreIsRunning())
   {
-    m_progress_bar->setVisible( false );
+    m_progress_bar->setVisible(false);
     m_progress_bar->reset();
-    statusBar()->showMessage( i18n( "Done." ), 2000 );
+    statusBar()->showMessage(i18n("Done."), 2000);
   }
   else
   {
@@ -1062,15 +1066,15 @@ void Smb4KMainWindow::slotMounterFinished( Smb4KShare *share, int process )
 }
 
 
-void Smb4KMainWindow::slotSearchAboutToStart( const QString &string )
+void Smb4KMainWindow::slotSearchAboutToStart(const QString &string)
 {
-  Q_ASSERT( !string.isEmpty() );
+  Q_ASSERT(!string.isEmpty());
 
-  statusBar()->showMessage( i18n( "Searching for \"%1\"...", string ) );
+  statusBar()->showMessage(i18n("Searching for \"%1\"...", string));
 
-  if ( !m_progress_bar->isVisible() )
+  if (!m_progress_bar->isVisible())
   {
-    m_progress_bar->setVisible( true );
+    m_progress_bar->setVisible(true);
   }
   else
   {
@@ -1079,13 +1083,13 @@ void Smb4KMainWindow::slotSearchAboutToStart( const QString &string )
 }
 
 
-void Smb4KMainWindow::slotSearchFinished( const QString &/*string*/ )
+void Smb4KMainWindow::slotSearchFinished(const QString &/*string*/)
 {
-  if ( !coreIsRunning()  )
+  if (!coreIsRunning())
   {
-    m_progress_bar->setVisible( false );
+    m_progress_bar->setVisible(false);
     m_progress_bar->reset();
-    statusBar()->showMessage( i18n( "Done." ), 2000 );
+    statusBar()->showMessage(i18n("Done."), 2000);
   }
   else
   {
@@ -1094,13 +1098,13 @@ void Smb4KMainWindow::slotSearchFinished( const QString &/*string*/ )
 }
 
 
-void Smb4KMainWindow::slotPrintingAboutToStart( Smb4KShare *printer )
+void Smb4KMainWindow::slotPrintingAboutToStart(Smb4KShare *printer)
 {
-  statusBar()->showMessage( i18n( "Sending file to printer %1...", printer->unc() ), 0 );
+  statusBar()->showMessage(i18n("Sending file to printer %1...", printer->unc()), 0);
 
-  if ( !m_progress_bar->isVisible() )
+  if (!m_progress_bar->isVisible())
   {
-    m_progress_bar->setVisible( true );
+    m_progress_bar->setVisible(true);
   }
   else
   {
@@ -1109,13 +1113,13 @@ void Smb4KMainWindow::slotPrintingAboutToStart( Smb4KShare *printer )
 }
 
 
-void Smb4KMainWindow::slotPrintingFinished( Smb4KShare */*printer*/ )
+void Smb4KMainWindow::slotPrintingFinished(Smb4KShare */*printer*/)
 {
-  if ( !coreIsRunning()  )
+  if (!coreIsRunning())
   {
-    m_progress_bar->setVisible( false );
+    m_progress_bar->setVisible(false);
     m_progress_bar->reset();
-    statusBar()->showMessage( i18n( "Done." ), 2000 );
+    statusBar()->showMessage(i18n("Done."), 2000);
   }
   else
   {
@@ -1124,13 +1128,13 @@ void Smb4KMainWindow::slotPrintingFinished( Smb4KShare */*printer*/ )
 }
 
 
-void Smb4KMainWindow::slotSynchronizerAboutToStart( const QString &dest )
+void Smb4KMainWindow::slotSynchronizerAboutToStart(const QString &dest)
 {
-  statusBar()->showMessage( i18n( "Synchronizing %1", dest ), 0 );
+  statusBar()->showMessage(i18n("Synchronizing %1", dest), 0);
 
-  if ( !m_progress_bar->isVisible() )
+  if (!m_progress_bar->isVisible())
   {
-    m_progress_bar->setVisible( true );
+    m_progress_bar->setVisible(true);
   }
   else
   {
@@ -1139,13 +1143,13 @@ void Smb4KMainWindow::slotSynchronizerAboutToStart( const QString &dest )
 }
 
 
-void Smb4KMainWindow::slotSynchronizerFinished( const QString &/*dest*/ )
+void Smb4KMainWindow::slotSynchronizerFinished(const QString &/*dest*/)
 {
-  if ( !coreIsRunning()  )
+  if (!coreIsRunning())
   {
-    m_progress_bar->setVisible( false );
+    m_progress_bar->setVisible(false);
     m_progress_bar->reset();
-    statusBar()->showMessage( i18n( "Done." ), 2000 );
+    statusBar()->showMessage(i18n("Done."), 2000);
   }
   else
   {
@@ -1154,15 +1158,15 @@ void Smb4KMainWindow::slotSynchronizerFinished( const QString &/*dest*/ )
 }
 
 
-void Smb4KMainWindow::slotPreviewerAboutToStart( Smb4KShare *share, const KUrl &/*url*/ )
+void Smb4KMainWindow::slotPreviewerAboutToStart(Smb4KShare *share, const QUrl &/*url*/)
 {
-  Q_ASSERT( share );
+  Q_ASSERT(share);
 
-  statusBar()->showMessage( i18n( "Retrieving preview from %1...", share->unc() ), 0 );
+  statusBar()->showMessage(i18n("Retrieving preview from %1...", share->unc()), 0);
 
-  if ( !m_progress_bar->isVisible() )
+  if (!m_progress_bar->isVisible())
   {
-    m_progress_bar->setVisible( true );
+    m_progress_bar->setVisible(true);
   }
   else
   {
@@ -1171,13 +1175,13 @@ void Smb4KMainWindow::slotPreviewerAboutToStart( Smb4KShare *share, const KUrl &
 }
 
 
-void Smb4KMainWindow::slotPreviewerFinished( Smb4KShare */*share*/, const KUrl &/*url*/ )
+void Smb4KMainWindow::slotPreviewerFinished(Smb4KShare */*share*/, const QUrl &/*url*/)
 {
-  if ( !coreIsRunning()  )
+  if (!coreIsRunning())
   {
-    m_progress_bar->setVisible( false );
+    m_progress_bar->setVisible(false);
     m_progress_bar->reset();
-    statusBar()->showMessage( i18n( "Done." ), 2000 );
+    statusBar()->showMessage(i18n("Done."), 2000);
   }
   else
   {
@@ -1189,19 +1193,19 @@ void Smb4KMainWindow::slotPreviewerFinished( Smb4KShare */*share*/, const KUrl &
 void Smb4KMainWindow::slotEndVisualFeedback()
 {
   QList<QTabBar *> list = findChildren<QTabBar *>();
-  QDockWidget *shares_dock = findChild<QDockWidget *>( "SharesViewDockWidget" );
+  QDockWidget *shares_dock = findChild<QDockWidget *>("SharesViewDockWidget");
 
-  if ( shares_dock )
+  if (shares_dock)
   {
-    for ( int i = 0; i < list.size(); ++i )
+    for (int i = 0; i < list.size(); ++i)
     {
-      if ( list.at( i )->count() != 0 )
+      if (list.at(i)->count() != 0)
       {
-        for ( int j = 0; j < list.at( i )->count(); ++j )
+        for (int j = 0; j < list.at(i)->count(); ++j)
         {
-          if ( QString::compare( shares_dock->windowTitle(), list.at( i )->tabText( j ) ) == 0 )
+          if (QString::compare(shares_dock->windowTitle(), list.at(i)->tabText(j)) == 0)
           {
-            list.at( i )->setTabTextColor( j, palette().text().color() ) ;
+            list.at(i)->setTabTextColor(j, palette().text().color()) ;
             break;
           }
           else
@@ -1223,20 +1227,20 @@ void Smb4KMainWindow::slotEndVisualFeedback()
 }
 
 
-void Smb4KMainWindow::slotActivePartChanged( KParts::Part *part )
+void Smb4KMainWindow::slotActivePartChanged(KParts::Part *part)
 {
-  Q_ASSERT( part );
+  Q_ASSERT(part);
 
   // First break the connections and disable the actions
-  if ( m_active_part )
+  if (m_active_part)
   {
     // Bookmark action
-    QAction *bookmark_action = m_active_part->actionCollection()->action( "bookmark_action" );
+    QAction *bookmark_action = m_active_part->actionCollection()->action("bookmark_action");
 
-    if ( bookmark_action )
+    if (bookmark_action)
     {
-      disconnect( bookmark_action, SIGNAL(changed()), this, SLOT(slotEnableBookmarkAction()) );
-      actionCollection()->action( "bookmark_action" )->setEnabled( false );
+      disconnect(bookmark_action, SIGNAL(changed()), this, SLOT(slotEnableBookmarkAction()));
+      actionCollection()->action("bookmark_action")->setEnabled(false);
     }
     else
     {
@@ -1254,18 +1258,18 @@ void Smb4KMainWindow::slotActivePartChanged( KParts::Part *part )
   // Setup actions
   QList<QAction *> dynamic_list;
 
-  for ( int i = 0; i < m_active_part->actionCollection()->actions().size(); ++i )
+  for (int i = 0; i < m_active_part->actionCollection()->actions().size(); ++i)
   {
     QAction *action = m_active_part->actionCollection()->action(i);
 
-    if ( QString::compare( action->objectName(), "bookmark_action" ) == 0 )
+    if (QString::compare(action->objectName(), "bookmark_action") == 0)
     {
-      actionCollection()->action( "bookmark_action" )->setEnabled( action->isEnabled() );
-      connect( action, SIGNAL(changed()), this, SLOT(slotEnableBookmarkAction()) );
+      actionCollection()->action("bookmark_action")->setEnabled(action->isEnabled());
+      connect(action, SIGNAL(changed()), this, SLOT(slotEnableBookmarkAction()));
       continue;
     }
-    else if ( QString::compare( action->objectName(), "filemanager_action" ) == 0 ||
-              QString::compare( action->objectName(), "konsole_action" ) == 0 )
+    else if (QString::compare(action->objectName(), "filemanager_action") == 0 ||
+              QString::compare(action->objectName(), "konsole_action") == 0)
     {
       continue;
     }
@@ -1277,18 +1281,18 @@ void Smb4KMainWindow::slotActivePartChanged( KParts::Part *part )
     dynamic_list << action;
   }
 
-  unplugActionList( "dynamic_list" );
-  plugActionList( "dynamic_list", dynamic_list );
+  unplugActionList("dynamic_list");
+  plugActionList("dynamic_list", dynamic_list);
 }
 
 
 void Smb4KMainWindow::slotEnableBookmarkAction()
 {
-  QAction *action = m_active_part->actionCollection()->action( "bookmark_action" );
+  QAction *action = m_active_part->actionCollection()->action("bookmark_action");
 
-  if ( action )
+  if (action)
   {
-    actionCollection()->action( "bookmark_action" )->setEnabled( action->isEnabled() );
+    actionCollection()->action("bookmark_action")->setEnabled(action->isEnabled());
   }
   else
   {
@@ -1299,13 +1303,13 @@ void Smb4KMainWindow::slotEnableBookmarkAction()
 
 void Smb4KMainWindow::slotNetworkBrowserVisibilityChanged(bool visible)
 {
-  QDockWidget *dock = findChild<QDockWidget *>( "NetworkBrowserDockWidget" );
+  QDockWidget *dock = findChild<QDockWidget *>("NetworkBrowserDockWidget");
   
-  if ( dock )
+  if (dock)
   {
-    if ( visible && m_browser_part != m_active_part )
+    if (visible && m_browser_part != m_active_part)
     {
-      m_manager->setActivePart( m_browser_part );
+      m_manager->setActivePart(m_browser_part);
     }
     else
     {
@@ -1321,13 +1325,13 @@ void Smb4KMainWindow::slotNetworkBrowserVisibilityChanged(bool visible)
 
 void Smb4KMainWindow::slotSharesViewVisibilityChanged(bool visible)
 {
-  QDockWidget *dock = findChild<QDockWidget *>( "SharesViewDockWidget" );
+  QDockWidget *dock = findChild<QDockWidget *>("SharesViewDockWidget");
   
-  if ( dock )
+  if (dock)
   {
-    if ( visible && m_shares_part != m_active_part )
+    if (visible && m_shares_part != m_active_part)
     {
-      m_manager->setActivePart( m_shares_part );
+      m_manager->setActivePart(m_shares_part);
     }
     else
     {
@@ -1343,13 +1347,13 @@ void Smb4KMainWindow::slotSharesViewVisibilityChanged(bool visible)
 
 void Smb4KMainWindow::slotSearchDialogVisibilityChanged(bool visible)
 {
-  QDockWidget *dock = findChild<QDockWidget *>( "NetworkSearchDockWidget" );
+  QDockWidget *dock = findChild<QDockWidget *>("NetworkSearchDockWidget");
   
-  if ( dock )
+  if (dock)
   {
-    if ( visible && m_search_part != m_active_part )
+    if (visible && m_search_part != m_active_part)
     {
-      m_manager->setActivePart( m_search_part );
+      m_manager->setActivePart(m_search_part);
     }
     else
     {
@@ -1362,5 +1366,3 @@ void Smb4KMainWindow::slotSearchDialogVisibilityChanged(bool visible)
   }
 }
 
-
-#include "smb4kmainwindow.moc"

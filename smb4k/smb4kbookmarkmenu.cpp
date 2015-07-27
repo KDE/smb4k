@@ -2,7 +2,7 @@
     smb4kbookmarkmenu  -  Bookmark menu
                              -------------------
     begin                : Sat Apr 02 2011
-    copyright            : (C) 2011-2012 by Alexander Reinholdt
+    copyright            : (C) 2011-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -37,38 +37,36 @@
 #include "core/smb4kglobal.h"
 
 // Qt includes
-#include <QDebug>
+#include <QtCore/QDebug>
 
 // KDE includes
-#include <klocale.h>
-#include <kaction.h>
-#include <kicon.h>
-#include <kmenu.h>
+#include <KIconThemes/KIconLoader>
+#include <KI18n/KLocalizedString>
 
 using namespace Smb4KGlobal;
 
 
-Smb4KBookmarkMenu::Smb4KBookmarkMenu( int type, QWidget *parentWidget, QObject *parent )
-: KActionMenu( KIcon( "folder-favorites" ), i18n( "Bookmarks" ), parent ), m_type( type ),
-  m_parent_widget( parentWidget )
+Smb4KBookmarkMenu::Smb4KBookmarkMenu(int type, QWidget *parentWidget, QObject *parent)
+: KActionMenu(KDE::icon("folder-favorites"), i18n("Bookmarks"), parent), m_type(type),
+  m_parent_widget(parentWidget)
 {
   // Set up action collection
-  m_action_collection = new KActionCollection( this );
+  m_action_collection = new KActionCollection(this);
 
   // Set up action group for the bookmark groups
-  m_groups = new QActionGroup( m_action_collection );
+  m_groups = new QActionGroup(m_action_collection);
 
   // Set up action group for the bookmarks
-  m_bookmarks = new QActionGroup( m_action_collection );
+  m_bookmarks = new QActionGroup(m_action_collection);
 
   // Set up the menu
   setupMenu();
 
   // Connections
-  connect( m_action_collection, SIGNAL(actionTriggered(QAction*)), SLOT(slotActionTriggered(QAction*)) );
-  connect( Smb4KBookmarkHandler::self(), SIGNAL(updated()), SLOT(slotBookmarksUpdated()) );
-  connect( Smb4KMounter::self(), SIGNAL(mounted(Smb4KShare*)), SLOT(slotDisableBookmark(Smb4KShare*)) );
-  connect( Smb4KMounter::self(), SIGNAL(unmounted(Smb4KShare*)), SLOT(slotEnableBookmark(Smb4KShare*)) );
+  connect(m_action_collection, SIGNAL(actionTriggered(QAction*)), SLOT(slotActionTriggered(QAction*)));
+  connect(Smb4KBookmarkHandler::self(), SIGNAL(updated()), SLOT(slotBookmarksUpdated()));
+  connect(Smb4KMounter::self(), SIGNAL(mounted(Smb4KShare*)), SLOT(slotDisableBookmark(Smb4KShare*)));
+  connect(Smb4KMounter::self(), SIGNAL(unmounted(Smb4KShare*)), SLOT(slotEnableBookmark(Smb4KShare*)));
 }
 
 
@@ -79,36 +77,36 @@ Smb4KBookmarkMenu::~Smb4KBookmarkMenu()
 
 QAction *Smb4KBookmarkMenu::addBookmarkAction()
 {
-  return m_action_collection->action( "add_action" );
+  return m_action_collection->action("add_action");
 }
 
 
 void Smb4KBookmarkMenu::refreshMenu()
 {
   // Delete all bookmarks
-  while ( !m_bookmarks->actions().isEmpty() )
+  while (!m_bookmarks->actions().isEmpty())
   {
     QAction *action = m_bookmarks->actions().first();
-    m_action_collection->takeAction( action );
-    removeAction( action );
+    m_action_collection->takeAction(action);
+    removeAction(action);
     delete action;
   }
   
   // Delete all groups
-  while ( !m_groups->actions().isEmpty() )
+  while (!m_groups->actions().isEmpty())
   {
     QAction *action = m_groups->actions().first();
-    m_action_collection->takeAction( action );
-    removeAction( action );
+    m_action_collection->takeAction(action);
+    removeAction(action);
     delete action;
   }
   
-  QAction *mount_action = m_action_collection->action( "mount_toplevel" );
+  QAction *mount_action = m_action_collection->action("mount_toplevel");
   
-  if ( mount_action )
+  if (mount_action)
   {
-    m_action_collection->takeAction( mount_action );
-    removeAction( mount_action );
+    m_action_collection->takeAction(mount_action);
+    removeAction(mount_action);
     delete mount_action;
   }
   else
@@ -116,12 +114,12 @@ void Smb4KBookmarkMenu::refreshMenu()
     // Do nothing
   }
   
-  QAction *separator = m_action_collection->action( "separator" );
+  QAction *separator = m_action_collection->action("separator");
   
-  if ( separator )
+  if (separator)
   {
-    m_action_collection->takeAction( separator );
-    removeAction( separator );
+    m_action_collection->takeAction(separator);
+    removeAction(separator);
     delete separator;
   }
   else
@@ -130,33 +128,33 @@ void Smb4KBookmarkMenu::refreshMenu()
   }
     
   // Set up menu again
-  setupMenu( false );
+  setupMenu(false);
 }
 
 
-void Smb4KBookmarkMenu::setupMenu( bool setup_all )
+void Smb4KBookmarkMenu::setupMenu(bool setup_all)
 {
   // Set up the actions for managing the bookmarks.
-  if ( setup_all )
+  if (setup_all)
   {
-    switch ( m_type )
+    switch (m_type)
     {
       case MainWindow:
       {
-        KAction *edit_action =  m_action_collection->addAction( "edit_action",
-                                new KAction( KIcon( "bookmarks-organize" ), i18n( "&Edit Bookmarks" ), m_action_collection ) );
-        KAction *add_action = m_action_collection->addAction( "add_action",
-                              new KAction( KIcon( "bookmark-new" ), i18n( "Add &Bookmark" ), m_action_collection ) );
-        add_action->setShortcut( QKeySequence( Qt::CTRL+Qt::Key_B ) );
-        addAction( edit_action );
-        addAction( add_action );
+        QAction *edit_action = m_action_collection->addAction("edit_action",
+                                new QAction(KDE::icon("bookmarks-organize"), i18n("&Edit Bookmarks"), m_action_collection));
+        QAction *add_action = m_action_collection->addAction("add_action",
+                              new QAction(KDE::icon("bookmark-new"), i18n("Add &Bookmark"), m_action_collection));
+        add_action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_B));
+        addAction(edit_action);
+        addAction(add_action);
         break;
       }
       case SystemTray:
       {
-        KAction *edit_action =  m_action_collection->addAction( "edit_action",
-                                new KAction( KIcon( "bookmarks-organize" ), i18n( "&Edit Bookmarks" ), m_action_collection ) );
-        addAction( edit_action );
+        QAction *edit_action =  m_action_collection->addAction("edit_action",
+                                new QAction(KDE::icon("bookmarks-organize"), i18n("&Edit Bookmarks"), m_action_collection));
+        addAction(edit_action);
         break;
       }
       default:
@@ -175,24 +173,24 @@ void Smb4KBookmarkMenu::setupMenu( bool setup_all )
 
   // Add a mount action if there were no groups defined and
   // there are bookmarks present (i.e. there is one empty group).
-  if ( groups.size() == 0 || (groups.size() == 1 && groups.first().isEmpty()) )
+  if (groups.size() == 0 || (groups.size() == 1 && groups.first().isEmpty()))
   {
-    KAction *mount_toplevel = new KAction( KIcon( "emblem-mounted" ), i18n( "Mount All Bookmarks" ), m_action_collection );
-    m_action_collection->addAction( "mount_toplevel", mount_toplevel );
-    addAction( mount_toplevel );
+    QAction *mount_toplevel = new QAction(KDE::icon("emblem-mounted"), i18n("Mount All Bookmarks"), m_action_collection);
+    m_action_collection->addAction("mount_toplevel", mount_toplevel);
+    addAction(mount_toplevel);
     
     QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList();
     int number = 0;
     
-    for ( int i = 0; i < bookmarks.size(); ++i )
+    for (int i = 0; i < bookmarks.size(); ++i)
     {
-      QList<Smb4KShare *> mounted = findShareByUNC( bookmarks.at( i )->unc() );
+      QList<Smb4KShare *> mounted = findShareByUNC(bookmarks.at(i)->unc());
       
-      if ( !mounted.isEmpty() )
+      if (!mounted.isEmpty())
       {
-        for ( int j = 0; j < mounted.size(); ++j )
+        for (int j = 0; j < mounted.size(); ++j)
         {
-          if ( !mounted.at( j )->isForeign() )
+          if (!mounted.at(j)->isForeign())
           {
             number++;
             break;
@@ -209,44 +207,44 @@ void Smb4KBookmarkMenu::setupMenu( bool setup_all )
       }
     }
     
-    mount_toplevel->setEnabled( !(number == bookmarks.size()) );
+    mount_toplevel->setEnabled(!(number == bookmarks.size()));
   }
   else
   {
     // Do nothing
   }
 
-  QAction *separator = insertSeparator( 0 );
-  m_action_collection->addAction( "separator", separator );
+  QAction *separator = insertSeparator(0);
+  m_action_collection->addAction("separator", separator);
 
   // Now add the groups and their bookmarks
-  for ( int i = 0; i < groups.size(); ++i )
+  for (int i = 0; i < groups.size(); ++i)
   {
-    if ( !groups.at( i ).isEmpty() )
+    if (!groups.at(i).isEmpty())
     {
-      KAction *group = new KAction( KIcon( "folder-favorites" ), groups.at( i ), m_groups );
-      m_action_collection->addAction( groups.at( i ), group );
-      addAction( group );
+      QAction *group = new QAction(KDE::icon("folder-favorites"), groups.at(i), m_groups);
+      m_action_collection->addAction(groups.at(i), group);
+      addAction(group);
 
-      KActionMenu *group_menu = new KActionMenu( group );
-      group->setMenu( group_menu->menu() );
+      KActionMenu *group_menu = new KActionMenu(group);
+      group->setMenu(group_menu->menu());
 
-      KAction *group_mount = new KAction( KIcon( "emblem-mounted" ), i18n( "Mount All Bookmarks" ), m_action_collection );
-      m_action_collection->addAction( QString( "mount_%1" ).arg( groups.at( i ) ), group_mount );
-      group_menu->addAction( group_mount );
+      QAction *group_mount = new QAction(KDE::icon("emblem-mounted"), i18n("Mount All Bookmarks"), m_action_collection);
+      m_action_collection->addAction(QString("mount_%1").arg(groups.at(i)), group_mount);
+      group_menu->addAction(group_mount);
       
-      QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList( groups.at( i ) );
+      QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList(groups.at(i));
       int number = 0;
     
-      for ( int i = 0; i < bookmarks.size(); ++i )
+      for (int i = 0; i < bookmarks.size(); ++i)
       {
-        QList<Smb4KShare *> mounted = findShareByUNC( bookmarks.at( i )->unc() );
+        QList<Smb4KShare *> mounted = findShareByUNC(bookmarks.at(i)->unc());
       
-        if ( !mounted.isEmpty() )
+        if (!mounted.isEmpty())
         {
-          for ( int j = 0; j < mounted.size(); ++j )
+          for (int j = 0; j < mounted.size(); ++j)
           {
-            if ( !mounted.at( j )->isForeign() )
+            if (!mounted.at(j)->isForeign())
             {
               number++;
               break;
@@ -263,37 +261,37 @@ void Smb4KBookmarkMenu::setupMenu( bool setup_all )
         }
       }
     
-      group_mount->setEnabled( !(number == bookmarks.size()) );
+      group_mount->setEnabled(!(number == bookmarks.size()));
       
       group_menu->addSeparator();
 
       QStringList sorted_bookmarks;
       
-      for ( int j = 0; j < bookmarks.size(); ++j )
+      for (int j = 0; j < bookmarks.size(); ++j)
       {
-        KAction *bookmark = NULL;
+        QAction *bookmark = 0;
         QString item;
 
-        if ( !bookmarks.at( j )->label().isEmpty() && Smb4KSettings::showCustomBookmarkLabel() )
+        if (!bookmarks.at(j)->label().isEmpty() && Smb4KSettings::showCustomBookmarkLabel())
         {
-          bookmark = new KAction( KIcon( bookmarks.at( j )->icon() ), bookmarks.at( j )->label(), m_bookmarks );
-          item = bookmarks.at( j )->label();
+          bookmark = new QAction(bookmarks.at(j)->icon(), bookmarks.at(j)->label(), m_bookmarks);
+          item = bookmarks.at(j)->label();
         }
         else
         {
-          bookmark = new KAction( KIcon( bookmarks.at( j )->icon() ), bookmarks.at( j )->unc(), m_bookmarks );
-          item = bookmarks.at( j )->unc();
+          bookmark = new QAction(bookmarks.at(j)->icon(), bookmarks.at(j)->unc(), m_bookmarks);
+          item = bookmarks.at(j)->unc();
         }
 
-        QList<Smb4KShare *> mounted = findShareByUNC( bookmarks.at( j )->unc() );
+        QList<Smb4KShare *> mounted = findShareByUNC(bookmarks.at(j)->unc());
 
-        if ( !mounted.isEmpty() )
+        if (!mounted.isEmpty())
         {
-          for ( int k = 0; k < mounted.size(); ++k )
+          for (int k = 0; k < mounted.size(); ++k)
           {
-            if ( !mounted.at( k )->isForeign() )
+            if (!mounted.at(k)->isForeign())
             {
-              bookmark->setEnabled( false );
+              bookmark->setEnabled(false);
               break;
             }
             else
@@ -304,31 +302,31 @@ void Smb4KBookmarkMenu::setupMenu( bool setup_all )
         }
         else
         {
-          bookmark->setEnabled( true );
+          bookmark->setEnabled(true);
         }
         
-        bookmark->setData( bookmarks.at( j )->url() );
-        m_action_collection->addAction( QString( "[%1]_%2" ).arg( bookmarks.at( j )->groupName() ).arg( bookmarks.at( j )->unc() ), bookmark );
+        bookmark->setData(bookmarks.at(j)->url());
+        m_action_collection->addAction(QString("[%1]_%2").arg(bookmarks.at(j)->groupName()).arg(bookmarks.at(j)->unc()), bookmark);
         sorted_bookmarks << item;
       }
 
       sorted_bookmarks.sort();
 
-      for ( int j = 0; j < sorted_bookmarks.size(); ++j )
+      for (int j = 0; j < sorted_bookmarks.size(); ++j)
       {
-        Smb4KBookmark *bookmark = Smb4KBookmarkHandler::self()->findBookmarkByLabel( sorted_bookmarks.at( j ) );
+        Smb4KBookmark *bookmark = Smb4KBookmarkHandler::self()->findBookmarkByLabel(sorted_bookmarks.at(j));
 
-        if ( bookmark )
+        if (bookmark)
         {
-          group_menu->addAction( m_action_collection->action( QString( "[%1]_%2" ).arg( bookmark->groupName() ).arg( bookmark->unc() ) ) );
+          group_menu->addAction(m_action_collection->action(QString("[%1]_%2").arg(bookmark->groupName()).arg(bookmark->unc())));
         }
         else
         {
-          bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC( sorted_bookmarks.at( j ) );
+          bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC(sorted_bookmarks.at(j));
 
-          if ( bookmark )
+          if (bookmark)
           {
-            group_menu->addAction( m_action_collection->action( QString( "[%1]_%2" ).arg( bookmark->groupName() ).arg( bookmark->unc() ) ) );
+            group_menu->addAction(m_action_collection->action(QString("[%1]_%2").arg(bookmark->groupName()).arg(bookmark->unc())));
           }
           else
           {
@@ -344,34 +342,34 @@ void Smb4KBookmarkMenu::setupMenu( bool setup_all )
   }
 
   // Now add all bookmarks that have no group.
-  QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList( "" );
+  QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList("");
   QStringList sorted_bookmarks;
 
-  for ( int j = 0; j < bookmarks.size(); ++j )
+  for (int j = 0; j < bookmarks.size(); ++j)
   {
-    KAction *bookmark = NULL;
+    QAction *bookmark = 0;
     QString item;
 
-    if ( !bookmarks.at( j )->label().isEmpty() && Smb4KSettings::showCustomBookmarkLabel() )
+    if (!bookmarks.at(j)->label().isEmpty() && Smb4KSettings::showCustomBookmarkLabel())
     {
-      bookmark = new KAction( KIcon( bookmarks.at( j )->icon() ), bookmarks.at( j )->label(), m_bookmarks );
-      item = bookmarks.at( j )->label();
+      bookmark = new QAction(bookmarks.at(j)->icon(), bookmarks.at(j)->label(), m_bookmarks);
+      item = bookmarks.at(j)->label();
     }
     else
     {
-      bookmark = new KAction( KIcon( bookmarks.at( j )->icon() ), bookmarks.at( j )->unc(), m_bookmarks );
-      item = bookmarks.at( j )->unc();
+      bookmark = new QAction(bookmarks.at(j)->icon(), bookmarks.at(j)->unc(), m_bookmarks);
+      item = bookmarks.at(j)->unc();
     }
 
-    QList<Smb4KShare *> mounted = findShareByUNC( bookmarks.at( j )->unc() );
+    QList<Smb4KShare *> mounted = findShareByUNC(bookmarks.at(j)->unc());
 
-    if ( !mounted.isEmpty() )
+    if (!mounted.isEmpty())
     {
-      for ( int k = 0; k < mounted.size(); ++k )
+      for (int k = 0; k < mounted.size(); ++k)
       {
-        if ( !mounted.at( k )->isForeign() )
+        if (!mounted.at(k)->isForeign())
         {
-          bookmark->setEnabled( false );
+          bookmark->setEnabled(false);
           break;
         }
         else
@@ -382,31 +380,31 @@ void Smb4KBookmarkMenu::setupMenu( bool setup_all )
     }
     else
     {
-      bookmark->setEnabled( true );
+      bookmark->setEnabled(true);
     }
 
-    bookmark->setData( bookmarks.at( j )->url() );
-    m_action_collection->addAction( QString( "[%1]_%2" ).arg( bookmarks.at( j )->groupName() ).arg( bookmarks.at( j )->unc() ), bookmark );
+    bookmark->setData(bookmarks.at(j)->url());
+    m_action_collection->addAction(QString("[%1]_%2").arg(bookmarks.at(j)->groupName()).arg(bookmarks.at(j)->unc()), bookmark);
     sorted_bookmarks << item;
   }
 
   sorted_bookmarks.sort();
 
-  for ( int j = 0; j < sorted_bookmarks.size(); ++j )
+  for (int j = 0; j < sorted_bookmarks.size(); ++j)
   {
-    Smb4KBookmark *bookmark = Smb4KBookmarkHandler::self()->findBookmarkByLabel( sorted_bookmarks.at( j ) );
+    Smb4KBookmark *bookmark = Smb4KBookmarkHandler::self()->findBookmarkByLabel(sorted_bookmarks.at(j));
 
-    if ( bookmark )
+    if (bookmark)
     {
-      addAction( m_action_collection->action( QString( "[%1]_%2" ).arg( bookmark->groupName() ).arg( bookmark->unc() ) ) );
+      addAction(m_action_collection->action(QString("[%1]_%2").arg(bookmark->groupName()).arg(bookmark->unc())));
     }
     else
     {
-      bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC( sorted_bookmarks.at( j ) );
+      bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC(sorted_bookmarks.at(j));
 
-      if ( bookmark )
+      if (bookmark)
       {
-        addAction( m_action_collection->action( QString( "[%1]_%2" ).arg( bookmark->groupName() ).arg( bookmark->unc() ) ) );
+        addAction(m_action_collection->action(QString("[%1]_%2").arg(bookmark->groupName()).arg(bookmark->unc())));
       }
       else
       {
@@ -421,80 +419,80 @@ void Smb4KBookmarkMenu::setupMenu( bool setup_all )
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
 
-void Smb4KBookmarkMenu::slotActionTriggered( QAction *action )
+void Smb4KBookmarkMenu::slotActionTriggered(QAction *action)
 {
-  if ( QString::compare( "edit_action", action->objectName() ) == 0 )
+  if (QString::compare("edit_action", action->objectName()) == 0)
   {
     // Edit the bookmarks
-    Smb4KBookmarkHandler::self()->editBookmarks( m_parent_widget );
+    Smb4KBookmarkHandler::self()->editBookmarks(m_parent_widget);
   }
-  else if ( QString::compare( "add_action", action->objectName() ) == 0 )
+  else if (QString::compare("add_action", action->objectName()) == 0)
   {
     // Use addBookmarkAction() and connect the triggered() signal
     // in your application.
   }
-  else if ( QString::compare( "mount_toplevel", action->objectName() ) == 0 )
+  else if (QString::compare("mount_toplevel", action->objectName()) == 0)
   {
     // Mount all shares belonging to the top level bookmarks. This will only be 
     // called if there are not groups defined.
     QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList();
     QList<Smb4KShare *> mounts;
 
-    for ( int i = 0; i < bookmarks.size(); ++i )
+    for (int i = 0; i < bookmarks.size(); ++i)
     {
       // FIXME: Check if the bookmarked share has already been mounted.
-      Smb4KShare *share = new Smb4KShare( bookmarks.at( i )->hostName(), bookmarks.at( i )->shareName() );
-      share->setWorkgroupName( bookmarks.at( i )->workgroupName() );
-      share->setHostIP( bookmarks.at( i )->hostIP() );
-      share->setLogin( bookmarks.at( i )->login() );
+      Smb4KShare *share = new Smb4KShare(bookmarks.at(i)->hostName(), bookmarks.at(i)->shareName());
+      share->setWorkgroupName(bookmarks.at(i)->workgroupName());
+      share->setHostIP(bookmarks.at(i)->hostIP());
+      share->setLogin(bookmarks.at(i)->login());
       mounts << share;
     }
 
-    Smb4KMounter::self()->mountShares( mounts );
+    Smb4KMounter::self()->mountShares(mounts);
 
-    while ( !mounts.isEmpty() )
+    while (!mounts.isEmpty())
     {
       delete mounts.takeFirst();
     }
   }
-  else if ( action->objectName().startsWith( QLatin1String( "mount_" ) ) && QString::compare( "mount_toplevel", action->objectName() ) != 0 )
+  else if (action->objectName().startsWith(QLatin1String("mount_")) && QString::compare("mount_toplevel", action->objectName()) != 0)
   {
     // Mount all bookmarked share that belong to this group.
-    QString group_name = action->objectName().section( '_', 1, -1 ).trimmed();
-    QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList( group_name );
+    QString group_name = action->objectName().section('_', 1, -1).trimmed();
+    QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList(group_name);
     QList<Smb4KShare *> mounts;
 
-    for ( int i = 0; i < bookmarks.size(); ++i )
+    for (int i = 0; i < bookmarks.size(); ++i)
     {
-      Smb4KShare *share = new Smb4KShare( bookmarks.at( i )->hostName(), bookmarks.at( i )->shareName() );
-      share->setWorkgroupName( bookmarks.at( i )->workgroupName() );
-      share->setHostIP( bookmarks.at( i )->hostIP() );
-      share->setLogin( bookmarks.at( i )->login() );
+      Smb4KShare *share = new Smb4KShare(bookmarks.at(i)->hostName(), bookmarks.at(i)->shareName());
+      share->setWorkgroupName(bookmarks.at(i)->workgroupName());
+      share->setHostIP(bookmarks.at(i)->hostIP());
+      share->setLogin(bookmarks.at(i)->login());
       mounts << share;
     }
 
-    Smb4KMounter::self()->mountShares( mounts );
+    Smb4KMounter::self()->mountShares(mounts);
 
-    while ( !mounts.isEmpty() )
+    while (!mounts.isEmpty())
     {
       delete mounts.takeFirst();
     }
   }
-  else if ( action->objectName().startsWith( '[' ) && action->objectName().contains( "]_//" ) )
+  else if (action->objectName().startsWith('[') && action->objectName().contains("]_//"))
   {
     // Mount a single bookmarked share.
-    QString group_name = action->objectName().section( '[', 1, 1 ).section( "]_", 0, 0 ).trimmed();
-    QString unc = action->objectName().section( "]_", 1, -1 ).trimmed();
+    QString group_name = action->objectName().section('[', 1, 1).section("]_", 0, 0).trimmed();
+    QString unc = action->objectName().section("]_", 1, -1).trimmed();
 
-    Smb4KBookmark *bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC( unc );
+    Smb4KBookmark *bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC(unc);
 
-    if ( bookmark && QString::compare( group_name, bookmark->groupName() ) == 0 )
+    if (bookmark && QString::compare(group_name, bookmark->groupName()) == 0)
     {
-      Smb4KShare *share = new Smb4KShare( bookmark->hostName(), bookmark->shareName() );
-      share->setWorkgroupName( bookmark->workgroupName() );
-      share->setHostIP( bookmark->hostIP() );
-      share->setLogin( bookmark->login() );
-      Smb4KMounter::self()->mountShare( share );
+      Smb4KShare *share = new Smb4KShare(bookmark->hostName(), bookmark->shareName());
+      share->setWorkgroupName(bookmark->workgroupName());
+      share->setHostIP(bookmark->hostIP());
+      share->setLogin(bookmark->login());
+      Smb4KMounter::self()->mountShare(share);
     }
     else
     {
@@ -514,25 +512,25 @@ void Smb4KBookmarkMenu::slotBookmarksUpdated()
 }
 
 
-void Smb4KBookmarkMenu::slotDisableBookmark( Smb4KShare *share )
+void Smb4KBookmarkMenu::slotDisableBookmark(Smb4KShare *share)
 {
-  if ( !share->isForeign() && !m_bookmarks->actions().isEmpty() )
+  if (!share->isForeign() && !m_bookmarks->actions().isEmpty())
   {
     QList<QAction *> bookmarks = m_bookmarks->actions();
     QString group_name;
     
-    for ( int i = 0; i < bookmarks.size(); ++i )
+    for (int i = 0; i < bookmarks.size(); ++i)
     {
-      QAction *bookmark = bookmarks.at( i );
+      QAction *bookmark = bookmarks.at(i);
       
-      if ( bookmark->isEnabled() && bookmark->objectName().startsWith( '[' ) && bookmark->objectName().contains( "]_//" ) )
+      if (bookmark->isEnabled() && bookmark->objectName().startsWith('[') && bookmark->objectName().contains("]_//"))
       {
-        QString unc = bookmark->objectName().section( "]_", 1, -1 ).trimmed();
+        QString unc = bookmark->objectName().section("]_", 1, -1).trimmed();
         
-        if ( QString::compare( unc, share->unc(), Qt::CaseInsensitive ) == 0 )
+        if (QString::compare(unc, share->unc(), Qt::CaseInsensitive) == 0)
         {
-          bookmark->setEnabled( !share->isMounted() );
-          group_name = bookmark->objectName().section( '[', 1, -1 ).section( "]_", 0, 0 ).trimmed();
+          bookmark->setEnabled(!share->isMounted());
+          group_name = bookmark->objectName().section('[', 1, -1).section("]_", 0, 0).trimmed();
           break;
         }
         else
@@ -548,11 +546,11 @@ void Smb4KBookmarkMenu::slotDisableBookmark( Smb4KShare *share )
     
     bool all_mounted = true;
     
-    for ( int i = 0; i < bookmarks.size(); ++i )
+    for (int i = 0; i < bookmarks.size(); ++i)
     {
-      QAction *bookmark = bookmarks.at( i );
+      QAction *bookmark = bookmarks.at(i);
       
-      if ( bookmark->objectName().startsWith( QString( "[%1]" ).arg( group_name ) ) && bookmark->isEnabled() )
+      if (bookmark->objectName().startsWith(QString("[%1]").arg(group_name)) && bookmark->isEnabled())
       {
         all_mounted = false;
         break;
@@ -563,15 +561,15 @@ void Smb4KBookmarkMenu::slotDisableBookmark( Smb4KShare *share )
       }
     }
     
-    if ( all_mounted )
+    if (all_mounted)
     {
-      if ( group_name.isEmpty() )
+      if (group_name.isEmpty())
       {
-        QAction *action = m_action_collection->action( "mount_toplevel" );
+        QAction *action = m_action_collection->action("mount_toplevel");
 
-        if ( action )
+        if (action)
         {
-          action->setEnabled( false );
+          action->setEnabled(false);
         }
         else
         {
@@ -580,11 +578,11 @@ void Smb4KBookmarkMenu::slotDisableBookmark( Smb4KShare *share )
       }
       else
       {
-        QAction *action = m_action_collection->action( QString( "mount_%1" ).arg( group_name ) );
+        QAction *action = m_action_collection->action(QString("mount_%1").arg(group_name));
 
-        if ( action )
+        if (action)
         {
-          action->setEnabled( false );
+          action->setEnabled(false);
         }
         else
         {
@@ -604,25 +602,25 @@ void Smb4KBookmarkMenu::slotDisableBookmark( Smb4KShare *share )
 }
 
 
-void Smb4KBookmarkMenu::slotEnableBookmark( Smb4KShare *share )
+void Smb4KBookmarkMenu::slotEnableBookmark(Smb4KShare *share)
 {
-  if ( !share->isForeign() && !m_bookmarks->actions().isEmpty() )
+  if (!share->isForeign() && !m_bookmarks->actions().isEmpty())
   {
     QList<QAction *> bookmarks = m_bookmarks->actions();
     QString group_name;
     
-    for ( int i = 0; i < bookmarks.size(); ++i )
+    for (int i = 0; i < bookmarks.size(); ++i)
     {
-      QAction *bookmark = bookmarks.at( i );
+      QAction *bookmark = bookmarks.at(i);
       
-      if ( !bookmark->isEnabled() && bookmark->objectName().startsWith( '[' ) && bookmark->objectName().contains( "]_//" ) )
+      if (!bookmark->isEnabled() && bookmark->objectName().startsWith('[') && bookmark->objectName().contains("]_//"))
       {
-        QString unc = bookmark->objectName().section( "]_", 1, -1 ).trimmed();
+        QString unc = bookmark->objectName().section("]_", 1, -1).trimmed();
         
-        if ( QString::compare( unc, share->unc(), Qt::CaseInsensitive ) == 0 )
+        if (QString::compare(unc, share->unc(), Qt::CaseInsensitive) == 0)
         {
-          bookmark->setEnabled( !share->isMounted() );
-          group_name = bookmark->objectName().section( '[', 1, -1 ).section( "]_", 0, 0 ).trimmed();
+          bookmark->setEnabled(!share->isMounted());
+          group_name = bookmark->objectName().section('[', 1, -1).section("]_", 0, 0).trimmed();
           break;
         }
         else
@@ -638,11 +636,11 @@ void Smb4KBookmarkMenu::slotEnableBookmark( Smb4KShare *share )
     
     bool all_mounted = true;
     
-    for ( int i = 0; i < bookmarks.size(); ++i )
+    for (int i = 0; i < bookmarks.size(); ++i)
     {
-      QAction *bookmark = bookmarks.at( i );
+      QAction *bookmark = bookmarks.at(i);
       
-      if ( bookmark->objectName().startsWith( QString( "[%1]" ).arg( group_name ) ) && bookmark->isEnabled() )
+      if (bookmark->objectName().startsWith(QString("[%1]").arg(group_name)) && bookmark->isEnabled())
       {
         all_mounted = false;
         break;
@@ -653,15 +651,15 @@ void Smb4KBookmarkMenu::slotEnableBookmark( Smb4KShare *share )
       }
     }
     
-    if ( !all_mounted )
+    if (!all_mounted)
     {
-      if ( group_name.isEmpty() )
+      if (group_name.isEmpty())
       {
-        QAction *action = m_action_collection->action( "mount_toplevel" );
+        QAction *action = m_action_collection->action("mount_toplevel");
 
-        if ( action )
+        if (action)
         {
-          action->setEnabled( true );
+          action->setEnabled(true);
         }
         else
         {
@@ -670,11 +668,11 @@ void Smb4KBookmarkMenu::slotEnableBookmark( Smb4KShare *share )
       }
       else
       {
-        QAction *action = m_action_collection->action( QString( "mount_%1" ).arg( group_name ) );
+        QAction *action = m_action_collection->action(QString("mount_%1").arg(group_name));
 
-        if ( action )
+        if (action)
         {
-          action->setEnabled( true );
+          action->setEnabled(true);
         }
         else
         {
@@ -692,7 +690,4 @@ void Smb4KBookmarkMenu::slotEnableBookmark( Smb4KShare *share )
     // Do nothing
   }
 }
-
-
-#include "smb4kbookmarkmenu.moc"
 

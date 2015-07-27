@@ -2,7 +2,7 @@
     smb4kbookmarkmenu  -  Bookmark menu
                              -------------------
     begin                : Sat Apr 02 2011
-    copyright            : (C) 2011-2012 by Alexander Reinholdt
+    copyright            : (C) 2011-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -27,13 +27,12 @@
 #define SMB4KBOOKMARKMENU_H
 
 // Qt includes
-#include <QAction>
-#include <QActionGroup>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QActionGroup>
 
 // KDE includes
-#include <kactionmenu.h>
-#include <kactioncollection.h>
-#include <kshortcut.h>
+#include <KWidgetsAddons/KActionMenu>
+#include <KXmlGui/KActionCollection>
 
 // forward declarations
 class Smb4KBookmark;
@@ -54,9 +53,9 @@ class Smb4KBookmarkMenu : public KActionMenu
     /**
      * Constructor
      */
-    explicit Smb4KBookmarkMenu( int type,
+    explicit Smb4KBookmarkMenu(int type,
                                 QWidget *parentWidget = 0,
-                                QObject *parent = 0 );
+                                QObject *parent = 0);
 
     /**
      * Destructor
@@ -82,7 +81,7 @@ class Smb4KBookmarkMenu : public KActionMenu
     /**
      * Called when a bookmark has been triggered
      */
-    void slotActionTriggered( QAction *action );
+    void slotActionTriggered(QAction *action);
 
     /**
      * Called when the list bookmarks has been updated
@@ -92,18 +91,18 @@ class Smb4KBookmarkMenu : public KActionMenu
     /**
      * Called when a bookmark was mounted
      */
-    void slotDisableBookmark( Smb4KShare *share );
+    void slotDisableBookmark(Smb4KShare *share);
 
     /**
      * Called when a bookmark was unmounted
      */
-    void slotEnableBookmark( Smb4KShare *share );
+    void slotEnableBookmark(Smb4KShare *share);
 
   private:
     /**
      * Set up the menu
      */
-    void setupMenu( bool setup_all = true );
+    void setupMenu(bool setup_all = true);
     
     /**
      * Type

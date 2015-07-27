@@ -2,7 +2,7 @@
     smb4kmainwindow  -  The main window of Smb4K.
                              -------------------
     begin                : Di Jan 1 2008
-    copyright            : (C) 2008-2013 by Alexander Reinholdt
+    copyright            : (C) 2008-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -27,15 +27,15 @@
 #define SMB4KMAINWINDOW_H
 
 // Qt includes
-#include <QActionGroup>
-#include <QLabel>
-#include <QProgressBar>
+#include <QtCore/QUrl>
+#include <QtWidgets/QActionGroup>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QProgressBar>
 
 // KDE includes
-#include <kxmlguiwindow.h>
-#include <kparts/mainwindow.h>
-#include <kparts/part.h>
-#include <kparts/partmanager.h>
+#include <KParts/MainWindow>
+#include <KParts/Part>
+#include <KParts/PartManager>
 
 // forward declarations
 class Smb4KSystemTray;
@@ -90,7 +90,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param dialogName      The name of the configuration dialog
      */
-    void slotSettingsChanged( const QString &dialogName );
+    void slotSettingsChanged(const QString &dialogName);
 
     /**
      * This slot is called when a bookmark should be added.
@@ -105,7 +105,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param action        The triggered action
      */
-    void slotViewModeTriggered( QAction *action );
+    void slotViewModeTriggered(QAction *action);
 
     /**
      * This slot is connected to the Smb4KWalletManager::initialized() signal.
@@ -123,8 +123,8 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param process       The process
      */
-    void slotScannerAboutToStart( Smb4KBasicNetworkItem *item,
-                                  int process );
+    void slotScannerAboutToStart(Smb4KBasicNetworkItem *item,
+                                  int process);
                                   
     /**
      * This shows a status message according to the action that was just finished by
@@ -135,8 +135,8 @@ class Smb4KMainWindow : public KParts::MainWindow
      * 
      * @param process       The process
      */
-    void slotScannerFinished( Smb4KBasicNetworkItem *item,
-                              int process );
+    void slotScannerFinished(Smb4KBasicNetworkItem *item,
+                              int process);
                                    
     /**
      * This slot shows a status message according to the action performed by the 
@@ -147,8 +147,8 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param process       The process
      */
-    void slotMounterAboutToStart( Smb4KShare *share,
-                                  int process );
+    void slotMounterAboutToStart(Smb4KShare *share,
+                                  int process);
                                   
     /**
      * This slot gives the visual mount feedback in the status bar. It is 
@@ -156,7 +156,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      * 
      * @param share         The Smb4KShare object
      */
-    void slotVisualMountFeedback( Smb4KShare *share );
+    void slotVisualMountFeedback(Smb4KShare *share);
     
     /**
      * This slot gives the visual unmount feedback in the status bar. It is 
@@ -164,7 +164,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      * 
      * @param share         The Smb4KShare object
      */
-    void slotVisualUnmountFeedback( Smb4KShare *share );
+    void slotVisualUnmountFeedback(Smb4KShare *share);
                                   
     /**
      * This shows a status message according to the action that was just finished by
@@ -175,8 +175,8 @@ class Smb4KMainWindow : public KParts::MainWindow
      * 
      * @param process       The process
      */
-    void slotMounterFinished( Smb4KShare *share,
-                              int process );
+    void slotMounterFinished(Smb4KShare *share,
+                              int process);
                               
     /**
      * This slot shows a status message as well as a busy bar. It is connected to the 
@@ -184,7 +184,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param string        The search string
      */
-    void slotSearchAboutToStart( const QString &string );
+    void slotSearchAboutToStart(const QString &string);
     
     /**
      * This shows a status message and hides the busy bar if appropriate. It is 
@@ -192,7 +192,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      * 
      * @param string        The search string
      */
-   void slotSearchFinished( const QString &string );
+   void slotSearchFinished(const QString &string);
      
     /**
      * This slot shows a status message as well as a busy bar. It is connected to the 
@@ -200,7 +200,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param printer       The remote printer
      */
-    void slotPrintingAboutToStart( Smb4KShare *printer );
+    void slotPrintingAboutToStart(Smb4KShare *printer);
 
     /**
      * This shows a status message and hides the busy bar if appropriate. It is 
@@ -208,7 +208,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param printer       The remote printer
      */
-    void slotPrintingFinished( Smb4KShare *printer );
+    void slotPrintingFinished(Smb4KShare *printer);
 
     /**
      * This slot shows a message according to the action performed by the synchronizer.
@@ -216,7 +216,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param dest          The path of the destination
      */
-    void slotSynchronizerAboutToStart( const QString &dest );
+    void slotSynchronizerAboutToStart(const QString &dest);
 
     /**
      * This slot shows a message according to the finished action that were reported
@@ -224,7 +224,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param dest          The path of the destination
      */
-    void slotSynchronizerFinished( const QString &dest );
+    void slotSynchronizerFinished(const QString &dest);
 
     /**
      * This slot shows a message according to the action performed by the previewer.
@@ -234,8 +234,8 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param url           The URL of the current location
      */
-    void slotPreviewerAboutToStart( Smb4KShare *share,
-                                    const KUrl &url );
+    void slotPreviewerAboutToStart(Smb4KShare *share,
+                                    const QUrl &url);
 
     /**
      * This slot shows a message according to the finished action that was reported
@@ -245,8 +245,8 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param url           The URL of the current location
      */
-    void slotPreviewerFinished( Smb4KShare *share,
-                                const KUrl &url );
+    void slotPreviewerFinished(Smb4KShare *share,
+                                const QUrl &url);
 
     /**
      * This slot hides the feedback icon in the status bar. It is connected to
@@ -261,7 +261,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param part          The now active KPart
      */
-    void slotActivePartChanged( KParts::Part *part );
+    void slotActivePartChanged(KParts::Part *part);
 
     /**
      * Enable/disable the "Add Bookmark" action
@@ -274,7 +274,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param visible         If the dock widget is visible.
      */
-    void slotNetworkBrowserVisibilityChanged( bool visible );
+    void slotNetworkBrowserVisibilityChanged(bool visible);
     
     /**
      * This slot is connected to the visibilityChanged() signals of the shares view
@@ -282,7 +282,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param visible         If the dock widget is visible.
      */
-    void slotSharesViewVisibilityChanged( bool visible );
+    void slotSharesViewVisibilityChanged(bool visible);
     
     
     /**
@@ -291,7 +291,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param visible         If the dock widget is visible.
      */
-    void slotSearchDialogVisibilityChanged( bool visible );
+    void slotSearchDialogVisibilityChanged(bool visible);
 
   private:
     /**
