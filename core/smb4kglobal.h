@@ -2,7 +2,7 @@
     smb4kglobal  -  This is the global namespace for Smb4K.
                              -------------------
     begin                : Sa Apr 2 2005
-    copyright            : (C) 2005-2014 by Alexander Reinholdt
+    copyright            : (C) 2005-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -26,15 +26,16 @@
 #ifndef SMB4KGLOBAL_H
 #define SMB4KGLOBAL_H
 
+#ifndef SMB4K_DEPRECATED
+#define SMB4K_DEPRECATED __attribute__ ((__deprecated__))
+#endif
+
 // Qt includes
 #include <QtCore/QMap>
 #include <QtCore/QString>
 #include <QtCore/QList>
 #include <QtCore/QEvent>
 #include <QtCore/QStringList>
-
-// KDE includes
-#include <kdemacros.h>
 
 // forward declarations
 class Smb4KWorkgroup;
@@ -90,7 +91,7 @@ namespace Smb4KGlobal
   /**
    * This class extends the QEvent class with Smb4K specific events
    */
-  class KDE_EXPORT Smb4KEvent : public QEvent
+  class Q_DECL_EXPORT Smb4KEvent : public QEvent
   {
     public:
       static const QEvent::Type LoadSettings;
@@ -99,7 +100,7 @@ namespace Smb4KGlobal
       static const QEvent::Type AddBookmark;
       static const QEvent::Type MountOrUnmountShare;
       
-      explicit Smb4KEvent( QEvent::Type type );
+      explicit Smb4KEvent(QEvent::Type type);
       ~Smb4KEvent();
   };
 
@@ -119,12 +120,12 @@ namespace Smb4KGlobal
    *
    * You should execute this function before starting your main application.
    */
-  KDE_EXPORT void initCore(bool modifyCursor = false, bool initClasses = true);
+  Q_DECL_EXPORT void initCore(bool modifyCursor = false, bool initClasses = true);
 
   /**
    * Aborts all actions that are run by the core classes and that can be aborted.
    */
-  KDE_EXPORT void abortCore();
+  Q_DECL_EXPORT void abortCore();
 
   /**
    * Check if at least one of the core classes that use KJobs (scanner, mounter, etc.) 
@@ -132,7 +133,7 @@ namespace Smb4KGlobal
    *
    * @returns TRUE if at least one of the core classes is doing something.
    */
-  KDE_EXPORT bool coreIsRunning();
+  Q_DECL_EXPORT bool coreIsRunning();
 
   /**
    * Set the necessary default values.
@@ -140,14 +141,14 @@ namespace Smb4KGlobal
    * You only need to run this function if you do not use the initCore() function.
    * Check if the core has been initialized by the coreIsInitialized() function.
    */
-  KDE_EXPORT void setDefaultSettings();
+  Q_DECL_EXPORT void setDefaultSettings();
 
   /**
    * Check if the core has been initialized through the initCore() function.
    *
    * @returns TRUE if the core has already been initialized.
    */
-  KDE_EXPORT bool coreIsInitialized();
+  Q_DECL_EXPORT bool coreIsInitialized();
   
   /**
    * This function returns the global list of workgroups that were discovered by
@@ -155,7 +156,7 @@ namespace Smb4KGlobal
    *
    * @returns the global list of known workgroups.
    */
-  KDE_EXPORT const QList<Smb4KWorkgroup *> &workgroupsList();
+  Q_DECL_EXPORT const QList<Smb4KWorkgroup *> &workgroupsList();
 
   /**
    * This function returns the workgroup or domain that matches the name @p name or
@@ -163,7 +164,7 @@ namespace Smb4KGlobal
    *
    * @returns a pointer to the workgroup with name @p name.
    */
-  KDE_EXPORT Smb4KWorkgroup *findWorkgroup( const QString &name );
+  Q_DECL_EXPORT Smb4KWorkgroup *findWorkgroup(const QString &name);
 
   /**
    * This function takes a workgroup @p workgroup, checks whether it is already
@@ -176,7 +177,7 @@ namespace Smb4KGlobal
    *
    * @returns TRUE if the workgroup was added and FALSE otherwise.
    */
-  KDE_EXPORT bool addWorkgroup( Smb4KWorkgroup *workgroup );
+  Q_DECL_EXPORT bool addWorkgroup(Smb4KWorkgroup *workgroup);
 
   /**
    * This function removes a workgroup @p workgroup from the list of domains. The
@@ -190,12 +191,12 @@ namespace Smb4KGlobal
    *
    * @returns TRUE if the workgroup was removed and FALSE otherwise.
    */
-  KDE_EXPORT bool removeWorkgroup( Smb4KWorkgroup *workgroup );
+  Q_DECL_EXPORT bool removeWorkgroup(Smb4KWorkgroup *workgroup);
 
   /**
    * This function clears the global list of workgroups.
    */
-  KDE_EXPORT void clearWorkgroupsList();
+  Q_DECL_EXPORT void clearWorkgroupsList();
 
   /**
    * This function returns the global list of hosts that were discovered by
@@ -203,7 +204,7 @@ namespace Smb4KGlobal
    *
    * @returns the global list of known hosts.
    */
-  KDE_EXPORT const QList<Smb4KHost *> &hostsList();
+  Q_DECL_EXPORT const QList<Smb4KHost *> &hostsList();
 
   /**
    * This function returns the host matching the name @p name or NULL if there is no
@@ -216,8 +217,8 @@ namespace Smb4KGlobal
    *
    * @returns an Smb4KHost item of NULL if none was found that matches @p name.
    */
-  KDE_EXPORT Smb4KHost *findHost( const QString &name,
-                                  const QString &workgroup = QString() );
+  Q_DECL_EXPORT Smb4KHost *findHost(const QString &name,
+                                  const QString &workgroup = QString());
 
   /**
    * This function takes a host @p host, checks whether it is already
@@ -230,7 +231,7 @@ namespace Smb4KGlobal
    *
    * @returns TRUE if the host was added and FALSE otherwise.
    */
-  KDE_EXPORT bool addHost( Smb4KHost *host );
+  Q_DECL_EXPORT bool addHost(Smb4KHost *host);
 
   /**
    * This function removes a host @p host from the list of hosts. The
@@ -244,12 +245,12 @@ namespace Smb4KGlobal
    *
    * @returns TRUE if the host was removed and FALSE otherwise.
    */
-  KDE_EXPORT bool removeHost( Smb4KHost *host );
+  Q_DECL_EXPORT bool removeHost(Smb4KHost *host);
 
   /**
    * This function clears the global list of hosts.
    */
-  KDE_EXPORT void clearHostsList();
+  Q_DECL_EXPORT void clearHostsList();
 
   /**
    * This function returns all hosts that belong to the workgroup or domain
@@ -261,7 +262,7 @@ namespace Smb4KGlobal
    *
    * @returns the list of hosts belonging to the workgroup or domain @param workgroup.
    */
-  KDE_EXPORT QList<Smb4KHost *> workgroupMembers( Smb4KWorkgroup *workgroup );
+  Q_DECL_EXPORT QList<Smb4KHost *> workgroupMembers(Smb4KWorkgroup *workgroup);
 
   /**
    * This function returns the list of shares that were discovered by Smb4K.
@@ -269,25 +270,17 @@ namespace Smb4KGlobal
    *
    * @returns the global list of known shares.
    */
-  KDE_EXPORT const QList<Smb4KShare *> &sharesList();
+  Q_DECL_EXPORT const QList<Smb4KShare *> &sharesList();
 
   /**
-   * This function returns the share located at host @p host matching the name
-   * @p name or NULL if there is no such share. The name of the share and host
-   * are mandatory. The workgroup entry may be empty.
-   *
-   * @param name          The name of the share
-   *
-   * @param host          The name of the host
-   *
-   * @param workgroup     The name of the workgroup
-   *
-   * @returns an Smb4KShare item of NULL if none was found that matches @p name
-   * and @p host.
+   * This function returns the share with UNC @p unc located in the workgroup or
+   * domain @p workgroup. If there is no such share, 0 is returned. The workgroup
+   * entry may be empty.
+   * @param unc           The UNC of the share
+   * @param wokgroup      The workgroup
+   * @returns the share that matches @p unc and optionally @p workgroup or 0.
    */
-  KDE_EXPORT Smb4KShare *findShare( const QString &name,
-                                    const QString &host,
-                                    const QString &workgroup = QString() );
+  Q_DECL_EXPORT Smb4KShare *findNetworkShare(const QString &unc, const QString &workgroup = QString());
 
   /**
    * This function takes a share @p share, checks whether it is already
@@ -300,7 +293,7 @@ namespace Smb4KGlobal
    *
    * @returns TRUE if the share was added and FALSE otherwise.
    */
-  KDE_EXPORT bool addShare( Smb4KShare *share );
+  Q_DECL_EXPORT bool addShare(Smb4KShare *share);
 
   /**
    * This function removes a share @p share from the list of shares. The
@@ -314,12 +307,12 @@ namespace Smb4KGlobal
    *
    * @returns TRUE if the share was removed and FALSE otherwise.
    */
-  KDE_EXPORT bool removeShare( Smb4KShare *share );
+  Q_DECL_EXPORT bool removeShare(Smb4KShare *share);
 
   /**
    * This function clears the global list of shares.
    */
-  KDE_EXPORT void clearSharesList();
+  Q_DECL_EXPORT void clearSharesList();
 
   /**
    * This function returns the list of shares that is provided by one specific host
@@ -331,7 +324,7 @@ namespace Smb4KGlobal
    *
    * @returns the list of shares that are provided by the host @p host.
    */
-  KDE_EXPORT QList<Smb4KShare *> sharedResources( Smb4KHost *host );
+  Q_DECL_EXPORT QList<Smb4KShare *> sharedResources(Smb4KHost *host);
 
   /**
    * This function returns the global list of mounted shares that were discovered by
@@ -339,14 +332,14 @@ namespace Smb4KGlobal
    *
    * @returns the global list of known mounted shares.
    */
-  KDE_EXPORT const QList<Smb4KShare *> &mountedSharesList();
+  Q_DECL_EXPORT const QList<Smb4KShare *> &mountedSharesList();
 
   /**
    * Find a mounted share by its path (i.e. mount point).
    *
    * @returns the share that is mounted to @p path.
    */
-  KDE_EXPORT Smb4KShare *findShareByPath( const QString &path );
+  Q_DECL_EXPORT Smb4KShare *findShareByPath(const QString &path);
 
   /**
    * Find all mounts of a particular share with UNC @p unc on the system.
@@ -361,14 +354,14 @@ namespace Smb4KGlobal
    *
    * @returns the complete list of mounts with the UNC @p unc.
    */
-  KDE_EXPORT QList<Smb4KShare *> findShareByUNC( const QString &unc );
+  Q_DECL_EXPORT QList<Smb4KShare *> findShareByUNC(const QString &unc);
 
   /**
    * This function returns the list of inaccessible shares.
    *
    * @returns the list of inaccessible shares.
    */
-  KDE_EXPORT QList<Smb4KShare *> findInaccessibleShares();
+  Q_DECL_EXPORT QList<Smb4KShare *> findInaccessibleShares();
 
   /**
    * This function takes a mounted share @p share, checks whether it is
@@ -381,7 +374,7 @@ namespace Smb4KGlobal
    *
    * @returns TRUE if the share was added and FALSE otherwise.
    */
-  KDE_EXPORT bool addMountedShare( Smb4KShare *share );
+  Q_DECL_EXPORT bool addMountedShare(Smb4KShare *share);
 
   /**
    * This function removes a mounted share @p share from the list of mounted
@@ -395,7 +388,7 @@ namespace Smb4KGlobal
    *
    * @returns TRUE if the share was removed and FALSE otherwise.
    */
-  KDE_EXPORT bool removeMountedShare( Smb4KShare *share );
+  Q_DECL_EXPORT bool removeMountedShare(Smb4KShare *share);
 
   /**
    * This function returns TRUE if only shares are present that are owned by 
@@ -403,7 +396,7 @@ namespace Smb4KGlobal
    *
    * @returns TRUE if there are only shares that are owned by other users.
    */
-  KDE_EXPORT bool onlyForeignMountedShares();
+  Q_DECL_EXPORT bool onlyForeignMountedShares();
   
   /**
    * This enumeration determines with which application the mount point
@@ -422,7 +415,7 @@ namespace Smb4KGlobal
    * @param openWith      Integer of type Smb4KCore::OpenWith. Determines with which
    *                      application the share should be opened.
    */
-  KDE_EXPORT void openShare( Smb4KShare *share, OpenWith openWith = FileManager );
+  Q_DECL_EXPORT void openShare(Smb4KShare *share, OpenWith openWith = FileManager);
   
   /**
    * Get the entries of the [global] section of the smb.conf file. By setting @p read 
@@ -430,7 +423,7 @@ namespace Smb4KGlobal
    * 
    * @returns the entries of the [global] section of the smb.conf file
    */
-  KDE_EXPORT const QMap<QString,QString> &globalSambaOptions( bool read = false );
+  Q_DECL_EXPORT const QMap<QString,QString> &globalSambaOptions(bool read = false);
   
   /**
    * Get the WINS server's name or IP address. Returns an empty string if there is no
@@ -438,7 +431,7 @@ namespace Smb4KGlobal
    * 
    * @returns the WINS server
    */
-  KDE_EXPORT const QString winsServer();
+  Q_DECL_EXPORT const QString winsServer();
   
   /**
    * This function returns TRUE if the core classes should set a busy cursor when 
@@ -446,14 +439,14 @@ namespace Smb4KGlobal
    * 
    * @returns TRUE in case a busy cursor should be set.
    */
-  KDE_EXPORT bool modifyCursor();
+  Q_DECL_EXPORT bool modifyCursor();
   
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_LINUX)
   /**
    * This list contains all whitelisted arguments for the mount.cifs binary and
    * is only present under the Linux operatin system.
    */
-  KDE_EXPORT QStringList whitelistedMountArguments();
+  Q_DECL_EXPORT QStringList whitelistedMountArguments();
 #endif
 };
 

@@ -81,7 +81,7 @@ class Smb4KGlobalPrivate : public QObject
     /**
      * The global options defined in smb.conf
      */
-    const QMap<QString,QString> &globalSambaOptions( bool read );
+    const QMap<QString,QString> &globalSambaOptions(bool read);
 
     /**
      * Boolean that is TRUE when only foreign shares

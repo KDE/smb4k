@@ -77,32 +77,32 @@ Smb4KGlobalPrivate::Smb4KGlobalPrivate()
 Smb4KGlobalPrivate::~Smb4KGlobalPrivate()
 {
   // Clear the workgroup list.
-  while ( !workgroupsList.isEmpty() )
+  while (!workgroupsList.isEmpty())
   {
     delete workgroupsList.takeFirst();
   }
 
   // Clear the host list.
-  while ( !hostsList.isEmpty() )
+  while (!hostsList.isEmpty())
   {
     delete hostsList.takeFirst();
   }
 
   // Clear the list of mounted shares.
-  while ( !mountedSharesList.isEmpty() )
+  while (!mountedSharesList.isEmpty())
   {
     delete mountedSharesList.takeFirst();
   }
 
   // Clear the list of shares.
-  while ( !sharesList.isEmpty() )
+  while (!sharesList.isEmpty())
   {
     delete sharesList.takeFirst();
   }
 }
 
 
-const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions( bool read )
+const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
 {
   if (!m_samba_options_read || read)
   {
@@ -118,26 +118,26 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions( bool read )
     paths << "/usr/local/etc";
     paths << "/usr/local/etc/samba";
 
-    QFile file( "smb.conf" );
+    QFile file("smb.conf");
     bool file_exists = false;
     QStringList contents;
 
     // Locate the file and read its contents:
-    for ( int i = 0; i < paths.size(); ++i )
+    for (int i = 0; i < paths.size(); ++i)
     {
-      QDir::setCurrent( paths.at( i ) );
+      QDir::setCurrent(paths.at(i));
 
-      if ( (file_exists = file.exists()) )
+      if ((file_exists = file.exists()))
       {
-        if ( file.open( QIODevice::ReadOnly | QIODevice::Text ) )
+        if (file.open(QIODevice::ReadOnly | QIODevice::Text))
         {
-          QTextStream ts( &file );
+          QTextStream ts(&file);
           // Note: With Qt 4.3 this seems to be obsolete, we'll keep
-          ts.setCodec( QTextCodec::codecForLocale() );
+          ts.setCodec(QTextCodec::codecForLocale());
 
-          while ( !ts.atEnd() )
+          while (!ts.atEnd())
           {
-            contents.append( ts.readLine( 0 ) );
+            contents.append(ts.readLine(0));
           }
 
           file.close();
@@ -167,12 +167,12 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions( bool read )
       // Do nothing
     }
 
-    if ( !contents.isEmpty() )
+    if (!contents.isEmpty())
     {
       // Process the file contents.
-      for ( int i = contents.indexOf( "[global]", 0 ); i < contents.size(); ++i )
+      for (int i = contents.indexOf("[global]", 0); i < contents.size(); ++i)
       {
-        if ( i == -1 )
+        if (i == -1)
         {
           // The smb.conf file does not contain a global section.
           break;
@@ -182,41 +182,41 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions( bool read )
           // Do nothing
         }
         
-        if ( contents.at( i ).trimmed().startsWith( '#' ) ||
-             contents.at( i ).trimmed().startsWith( ';' ) )
+        if (contents.at(i).trimmed().startsWith('#') ||
+             contents.at(i).trimmed().startsWith(';'))
         {
           // This is a comment. We do not need it.
           continue;
         }
-        else if ( contents.at( i ).trimmed().startsWith( QLatin1String( "include" ) ) )
+        else if (contents.at(i).trimmed().startsWith(QLatin1String("include")))
         {
           // Look for the include file and put its contents into the
           // m_samba_options map.
-          file.setFileName( contents.at( i ).section( '=', 1, 1 ).trimmed() );
+          file.setFileName(contents.at(i).section('=', 1, 1).trimmed());
 
-          if ( file.exists() )
+          if (file.exists())
           {
-            if ( file.open( QIODevice::ReadOnly | QIODevice::Text ) )
+            if (file.open(QIODevice::ReadOnly | QIODevice::Text))
             {
-              QTextStream ts( &file );
+              QTextStream ts(&file);
               // Note: With Qt 4.3 this seems to be obsolete, we'll keep
               // it for now.
-              ts.setCodec( QTextCodec::codecForLocale() );
+              ts.setCodec(QTextCodec::codecForLocale());
 
               QString buffer;
 
-              while( !ts.atEnd() )
+              while(!ts.atEnd())
               {
-                buffer = ts.readLine( 0 ).trimmed();
+                buffer = ts.readLine(0).trimmed();
 
-                if ( buffer.startsWith( '#' ) || buffer.startsWith( ';' ) )
+                if (buffer.startsWith('#') || buffer.startsWith(';'))
                 {
                   continue;
                 }
                 else
                 {
-                  QString key = buffer.section( '=', 0, 0 ).trimmed().toLower();
-                  m_samba_options[key] = buffer.section( '=', 1, 1 ).trimmed().toUpper();
+                  QString key = buffer.section('=', 0, 0).trimmed().toLower();
+                  m_samba_options[key] = buffer.section('=', 1, 1).trimmed().toUpper();
 
                   continue;
                 }
@@ -229,8 +229,8 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions( bool read )
             }
           }
         }
-        else if ( contents.at( i ).startsWith( '[' ) &&
-                  !contents.at( i ).contains( "[global]", Qt::CaseSensitive ) )
+        else if (contents.at(i).startsWith('[') &&
+                  !contents.at(i).contains("[global]", Qt::CaseSensitive))
         {
           // We reached the end of the [global] section. Stop here.
           break;
@@ -239,8 +239,8 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions( bool read )
         {
           // Put the entries of the [global] section into the m_samba_options
           // map.
-          QString key = contents.at( i ).section( '=', 0, 0 ).trimmed().toLower();
-          m_samba_options[key] = contents.at( i ).section( '=', 1, 1 ).trimmed().toUpper();
+          QString key = contents.at(i).section('=', 0, 0).trimmed().toLower();
+          m_samba_options[key] = contents.at(i).section('=', 1, 1).trimmed().toUpper();
         }
       }
     }
@@ -274,63 +274,63 @@ void Smb4KGlobalPrivate::setDefaultSettings()
   // Samba options that have to be dynamically imported from smb.conf:
   QMap<QString, QString> opts = globalSambaOptions(!m_samba_options_read);
 
-  if ( !opts["netbios name"].isEmpty() )
+  if (!opts["netbios name"].isEmpty())
   {
-    Smb4KSettings::self()->netBIOSNameItem()->setDefaultValue( opts["netbios name"] );
+    Smb4KSettings::self()->netBIOSNameItem()->setDefaultValue(opts["netbios name"]);
 
-    if ( Smb4KSettings::netBIOSName().isEmpty() )
+    if (Smb4KSettings::netBIOSName().isEmpty())
     {
       Smb4KSettings::self()->netBIOSNameItem()->setDefault();
     }
   }
 
-  if ( !opts["workgroup"].isEmpty() )
+  if (!opts["workgroup"].isEmpty())
   {
-    Smb4KSettings::self()->domainNameItem()->setDefaultValue( opts["workgroup"] );
+    Smb4KSettings::self()->domainNameItem()->setDefaultValue(opts["workgroup"]);
 
-    if ( Smb4KSettings::domainName().isEmpty() )
+    if (Smb4KSettings::domainName().isEmpty())
     {
       Smb4KSettings::self()->domainNameItem()->setDefault();
     }
   }
 
-  if ( !opts["socket options"].isEmpty() )
+  if (!opts["socket options"].isEmpty())
   {
-    Smb4KSettings::self()->socketOptionsItem()->setDefaultValue( opts["socket options"] );
+    Smb4KSettings::self()->socketOptionsItem()->setDefaultValue(opts["socket options"]);
 
-    if ( Smb4KSettings::socketOptions().isEmpty() )
+    if (Smb4KSettings::socketOptions().isEmpty())
     {
       Smb4KSettings::self()->socketOptionsItem()->setDefault();
     }
   }
 
-  if ( !opts["netbios scope"].isEmpty() )
+  if (!opts["netbios scope"].isEmpty())
   {
-    Smb4KSettings::self()->netBIOSScopeItem()->setDefaultValue( opts["netbios scope"] );
+    Smb4KSettings::self()->netBIOSScopeItem()->setDefaultValue(opts["netbios scope"]);
 
-    if ( Smb4KSettings::netBIOSScope().isEmpty() )
+    if (Smb4KSettings::netBIOSScope().isEmpty())
     {
       Smb4KSettings::self()->netBIOSScopeItem()->setDefault();
     }
   }
 
-  if ( !opts["name resolve order"].isEmpty() )
+  if (!opts["name resolve order"].isEmpty())
   {
-    Smb4KSettings::self()->nameResolveOrderItem()->setDefaultValue( opts["name resolve order"] );
+    Smb4KSettings::self()->nameResolveOrderItem()->setDefaultValue(opts["name resolve order"]);
 
-    if ( Smb4KSettings::nameResolveOrder().isEmpty() )
+    if (Smb4KSettings::nameResolveOrder().isEmpty())
     {
       Smb4KSettings::self()->nameResolveOrderItem()->setDefault();
     }
   }
 
-  QHostAddress address( opts["interfaces"].section( ' ', 0, 0 ) );
+  QHostAddress address(opts["interfaces"].section(' ', 0, 0));
 
-  if ( address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol )
+  if (address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol)
   {
-    Smb4KSettings::self()->broadcastAddressItem()->setDefaultValue( address.toString() );
+    Smb4KSettings::self()->broadcastAddressItem()->setDefaultValue(address.toString());
 
-    if ( Smb4KSettings::broadcastAddress().isEmpty() )
+    if (Smb4KSettings::broadcastAddress().isEmpty())
     {
       Smb4KSettings::self()->broadcastAddressItem()->setDefault();
     }
@@ -346,10 +346,6 @@ void Smb4KGlobalPrivate::makeConnections()
 
 void Smb4KGlobalPrivate::slotAboutToQuit()
 {
-  Smb4KSettings::self()->writeConfig();
+  Smb4KSettings::self()->save();
 }
-
-
-#include "smb4kglobal_p.moc"
-
 

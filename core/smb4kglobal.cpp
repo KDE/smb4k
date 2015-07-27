@@ -40,20 +40,16 @@
 
 // Qt includes
 #include <QtCore/QMutex>
+#include <QtCore/QUrl>
+#include <QtCore/QStandardPaths>
+#include <QtCore/QDebug>
 
 // KDE includes
-#include <kdebug.h>
-#include <kurl.h>
-#include <krun.h>
-#include <kglobal.h>
-#include <kstandarddirs.h>
-#include <kshell.h>
-#include <KGlobal>
+#include <KCoreAddons/KShell>
+#include <KIOWidgets/KRun>
 
-static const KCatalogLoader catalogLoader( QLatin1String("smb4k-core") );
-
-K_GLOBAL_STATIC( Smb4KGlobalPrivate, p );
-QMutex mutex( QMutex::Recursive /* needed to avoid dead-locks */ );
+Q_GLOBAL_STATIC(Smb4KGlobalPrivate, p);
+QMutex mutex(QMutex::Recursive /* needed to avoid dead-locks */);
 
 
 const QEvent::Type Smb4KGlobal::Smb4KEvent::LoadSettings =        (QEvent::Type)QEvent::registerEventType();
@@ -63,7 +59,7 @@ const QEvent::Type Smb4KGlobal::Smb4KEvent::AddBookmark =         (QEvent::Type)
 const QEvent::Type Smb4KGlobal::Smb4KEvent::MountOrUnmountShare = (QEvent::Type)QEvent::registerEventType();
 
 
-Smb4KGlobal::Smb4KEvent::Smb4KEvent( QEvent::Type type ): QEvent( type )
+Smb4KGlobal::Smb4KEvent::Smb4KEvent(QEvent::Type type): QEvent(type)
 {
 }
 
@@ -138,18 +134,18 @@ const QList<Smb4KWorkgroup *> &Smb4KGlobal::workgroupsList()
 }
 
 
-Smb4KWorkgroup *Smb4KGlobal::findWorkgroup( const QString &name )
+Smb4KWorkgroup *Smb4KGlobal::findWorkgroup(const QString &name)
 {
-  Smb4KWorkgroup *workgroup = NULL;
+  Smb4KWorkgroup *workgroup = 0;
 
   mutex.lock();
 
-  for ( int i = 0; i < p->workgroupsList.size(); ++i )
+  for (int i = 0; i < p->workgroupsList.size(); ++i)
   {
-    if ( QString::compare( p->workgroupsList.at( i )->workgroupName(),
-         name, Qt::CaseInsensitive ) == 0 )
+    if (QString::compare(p->workgroupsList.at(i)->workgroupName(),
+         name, Qt::CaseInsensitive) == 0)
     {
-      workgroup = p->workgroupsList.at( i );
+      workgroup = p->workgroupsList.at(i);
       break;
     }
     else
@@ -164,17 +160,17 @@ Smb4KWorkgroup *Smb4KGlobal::findWorkgroup( const QString &name )
 }
 
 
-bool Smb4KGlobal::addWorkgroup( Smb4KWorkgroup *workgroup )
+bool Smb4KGlobal::addWorkgroup(Smb4KWorkgroup *workgroup)
 {
-  Q_ASSERT( workgroup );
+  Q_ASSERT(workgroup);
 
   bool added = false;
 
   mutex.lock();
 
-  if ( !findWorkgroup( workgroup->workgroupName() ) )
+  if (!findWorkgroup(workgroup->workgroupName()))
   {
-    p->workgroupsList.append( workgroup );
+    p->workgroupsList.append(workgroup);
     added = true;
   }
   else
@@ -188,34 +184,34 @@ bool Smb4KGlobal::addWorkgroup( Smb4KWorkgroup *workgroup )
 }
 
 
-bool Smb4KGlobal::removeWorkgroup( Smb4KWorkgroup *workgroup )
+bool Smb4KGlobal::removeWorkgroup(Smb4KWorkgroup *workgroup)
 {
-  Q_ASSERT( workgroup );
+  Q_ASSERT(workgroup);
 
   bool removed = false;
 
   mutex.lock();
 
-  int index = p->workgroupsList.indexOf( workgroup );
+  int index = p->workgroupsList.indexOf(workgroup);
 
-  if ( index != -1 )
+  if (index != -1)
   {
     // The workgroup was found. Remove it.
-    delete p->workgroupsList.takeAt( index );
+    delete p->workgroupsList.takeAt(index);
     removed = true;
   }
   else
   {
     // Try harder to find the workgroup.
-    Smb4KWorkgroup *wg = findWorkgroup( workgroup->workgroupName() );
+    Smb4KWorkgroup *wg = findWorkgroup(workgroup->workgroupName());
 
-    if ( wg )
+    if (wg)
     {
-      index = p->workgroupsList.indexOf( wg );
+      index = p->workgroupsList.indexOf(wg);
 
-      if ( index != -1 )
+      if (index != -1)
       {
-        delete p->workgroupsList.takeAt( index );
+        delete p->workgroupsList.takeAt(index);
         removed = true;
       }
       else
@@ -241,7 +237,7 @@ void Smb4KGlobal::clearWorkgroupsList()
 {
   mutex.lock();
 
-  while ( !p->workgroupsList.isEmpty() )
+  while (!p->workgroupsList.isEmpty())
   {
     delete p->workgroupsList.takeFirst();
   }
@@ -256,21 +252,21 @@ const QList<Smb4KHost *> &Smb4KGlobal::hostsList()
 }
 
 
-Smb4KHost *Smb4KGlobal::findHost( const QString &name, const QString &workgroup )
+Smb4KHost *Smb4KGlobal::findHost(const QString &name, const QString &workgroup)
 {
-  Smb4KHost *host = NULL;
+  Smb4KHost *host = 0;
 
   mutex.lock();
 
-  for ( int i = 0; i < p->hostsList.size(); ++i )
+  for (int i = 0; i < p->hostsList.size(); ++i)
   {
-    if ( (workgroup.isEmpty() ||
-         QString::compare( p->hostsList.at( i )->workgroupName(),
-         workgroup, Qt::CaseInsensitive ) == 0) &&
-         QString::compare( p->hostsList.at( i )->hostName(), name,
-         Qt::CaseInsensitive ) == 0 )
+    if ((workgroup.isEmpty() ||
+         QString::compare(p->hostsList.at(i)->workgroupName(),
+         workgroup, Qt::CaseInsensitive) == 0) &&
+         QString::compare(p->hostsList.at(i)->hostName(), name,
+         Qt::CaseInsensitive) == 0)
     {
-      host = p->hostsList.at( i );
+      host = p->hostsList.at(i);
       break;
     }
     else
@@ -285,17 +281,17 @@ Smb4KHost *Smb4KGlobal::findHost( const QString &name, const QString &workgroup 
 }
 
 
-bool Smb4KGlobal::addHost( Smb4KHost *host )
+bool Smb4KGlobal::addHost(Smb4KHost *host)
 {
-  Q_ASSERT( host );
+  Q_ASSERT(host);
 
   bool added = false;
 
   mutex.lock();
 
-  if ( !findHost( host->hostName(), host->workgroupName() ) )
+  if (!findHost(host->hostName(), host->workgroupName()))
   {
-    p->hostsList.append( host );
+    p->hostsList.append(host);
     added = true;
   }
   else
@@ -309,34 +305,34 @@ bool Smb4KGlobal::addHost( Smb4KHost *host )
 }
 
 
-bool Smb4KGlobal::removeHost( Smb4KHost *host )
+bool Smb4KGlobal::removeHost(Smb4KHost *host)
 {
-  Q_ASSERT( host );
+  Q_ASSERT(host);
 
   bool removed = false;
 
   mutex.lock();
 
-  int index = p->hostsList.indexOf( host );
+  int index = p->hostsList.indexOf(host);
 
-  if ( index != -1 )
+  if (index != -1)
   {
     // The host was found. Remove it.
-    delete p->hostsList.takeAt( index );
+    delete p->hostsList.takeAt(index);
     removed = true;
   }
   else
   {
     // Try harder to find the host.
-    Smb4KHost *h = findHost( host->hostName(), host->workgroupName() );
+    Smb4KHost *h = findHost(host->hostName(), host->workgroupName());
 
-    if ( h )
+    if (h)
     {
-      index = p->hostsList.indexOf( h );
+      index = p->hostsList.indexOf(h);
 
-      if ( index != -1 )
+      if (index != -1)
       {
-        delete p->hostsList.takeAt( index );
+        delete p->hostsList.takeAt(index);
         removed = true;
       }
       else
@@ -362,7 +358,7 @@ void Smb4KGlobal::clearHostsList()
 {
   mutex.lock();
 
-  while ( !p->hostsList.isEmpty() )
+  while (!p->hostsList.isEmpty())
   {
     delete p->hostsList.takeFirst();
   }
@@ -371,17 +367,17 @@ void Smb4KGlobal::clearHostsList()
 }
 
 
-QList<Smb4KHost *> Smb4KGlobal::workgroupMembers( Smb4KWorkgroup *workgroup )
+QList<Smb4KHost *> Smb4KGlobal::workgroupMembers(Smb4KWorkgroup *workgroup)
 {
   QList<Smb4KHost *> hosts;
 
   mutex.lock();
 
-  for ( int i = 0; i < p->hostsList.size(); ++i )
+  for (int i = 0; i < p->hostsList.size(); ++i)
   {
-    if ( QString::compare( p->hostsList.at( i )->workgroupName(), workgroup->workgroupName(), Qt::CaseInsensitive ) == 0 )
+    if (QString::compare(p->hostsList.at(i)->workgroupName(), workgroup->workgroupName(), Qt::CaseInsensitive) == 0)
     {
-      hosts += p->hostsList.at( i );
+      hosts += p->hostsList.at(i);
       continue;
     }
     else
@@ -402,45 +398,53 @@ const QList<Smb4KShare *> &Smb4KGlobal::sharesList()
 }
 
 
-Smb4KShare *Smb4KGlobal::findShare( const QString &name, const QString &host, const QString &workgroup )
+Smb4KShare *Smb4KGlobal::findNetworkShare(const QString& unc, const QString& workgroup)
 {
-  Smb4KShare *share = NULL;
-
+  qDebug() << "Smb4KGlobal::findNetworkShare(): Rename after porting to FreeBSD to findShare()!";
+  Smb4KShare *share = 0;
+  
   mutex.lock();
-
-  for ( int i = 0; i < p->sharesList.size(); ++i )
+  
+  for (int i = 0; i < p->sharesList.size(); ++i)
   {
-    if ( (workgroup.isEmpty() ||
-         QString::compare( p->sharesList.at( i )->workgroupName(), workgroup, Qt::CaseInsensitive ) == 0) &&
-         QString::compare( p->sharesList.at( i )->hostName(), host, Qt::CaseInsensitive ) == 0 &&
-         QString::compare( p->sharesList.at( i )->shareName(), name, Qt::CaseInsensitive ) == 0 )
+    if (QString::compare(p->sharesList.at(i)->unc(), unc) == 0 &&
+        (workgroup.isEmpty() || QString::compare(p->sharesList.at(i)->workgroupName(), workgroup) == 0))
     {
-      share = p->sharesList.at( i );
+      share = p->sharesList[i];
+      break;
     }
     else
     {
-      continue;
+      // Do nothing
     }
   }
-
+  
   mutex.unlock();
-
+  
   return share;
 }
 
 
-bool Smb4KGlobal::addShare( Smb4KShare *share )
+
+bool Smb4KGlobal::addShare(Smb4KShare *share)
 {
-  Q_ASSERT( share );
+  Q_ASSERT(share);
 
   bool added = false;
-
-  mutex.lock();
-
-  if ( !findShare( share->shareName(), share->hostName(), share->workgroupName() ) )
+  
+  if (share)
   {
-    p->sharesList.append( share );
-    added = true;
+    mutex.lock();
+
+    if (!findNetworkShare(share->unc(), share->workgroupName()))
+    {
+      p->sharesList.append(share);
+      added = true;
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
@@ -453,50 +457,57 @@ bool Smb4KGlobal::addShare( Smb4KShare *share )
 }
 
 
-bool Smb4KGlobal::removeShare( Smb4KShare *share )
+bool Smb4KGlobal::removeShare(Smb4KShare *share)
 {
-  Q_ASSERT( share );
+  Q_ASSERT(share);
 
   bool removed = false;
-
-  mutex.lock();
-
-  int index = p->sharesList.indexOf( share );
-
-  if ( index != -1 )
+  
+  if (share)
   {
-    // The share was found. Remove it.
-    delete p->sharesList.takeAt( index );
-    removed = true;
-  }
-  else
-  {
-    // Try harder to find the share.
-    Smb4KShare *s = findShare( share->shareName(), share->hostName(), share->workgroupName() );
+    mutex.lock();
 
-    if ( s )
+    int index = p->sharesList.indexOf(share);
+
+    if (index != -1)
     {
-      index = p->sharesList.indexOf( s );
+      // The share was found. Remove it.
+      delete p->sharesList.takeAt(index);
+      removed = true;
+    }
+    else
+    {
+      // Try harder to find the share.
+      Smb4KShare *s = findNetworkShare(share->unc(), share->workgroupName());
 
-      if ( index != -1 )
+      if (s)
       {
-        delete p->sharesList.takeAt( index );
-        removed = true;
+        index = p->sharesList.indexOf(s);
+
+        if (index != -1)
+        {
+          delete p->sharesList.takeAt(index);
+          removed = true;
+        }
+        else
+        {
+          // Do nothing
+        }
       }
       else
       {
         // Do nothing
       }
-    }
-    else
-    {
-      // Do nothing
+
+      delete share;
     }
 
-    delete share;
+    mutex.unlock();
   }
-
-  mutex.unlock();
+  else
+  {
+    // Do nothing
+  }
 
   return removed;
 }
@@ -506,7 +517,7 @@ void Smb4KGlobal::clearSharesList()
 {
   mutex.lock();
 
-  while ( !p->sharesList.isEmpty() )
+  while (!p->sharesList.isEmpty())
   {
     delete p->sharesList.takeFirst();
   }
@@ -515,18 +526,18 @@ void Smb4KGlobal::clearSharesList()
 }
 
 
-QList<Smb4KShare *> Smb4KGlobal::sharedResources( Smb4KHost *host )
+QList<Smb4KShare *> Smb4KGlobal::sharedResources(Smb4KHost *host)
 {
   QList<Smb4KShare *> shares;
 
   mutex.lock();
 
-  for ( int i = 0; i < p->sharesList.size(); ++i )
+  for (int i = 0; i < p->sharesList.size(); ++i)
   {
-    if ( QString::compare( p->sharesList.at( i )->hostName(), host->hostName(), Qt::CaseInsensitive ) == 0 &&
-         QString::compare( p->sharesList.at( i )->workgroupName(), host->workgroupName(), Qt::CaseInsensitive ) == 0 )
+    if (QString::compare(p->sharesList.at(i)->hostName(), host->hostName(), Qt::CaseInsensitive) == 0 &&
+         QString::compare(p->sharesList.at(i)->workgroupName(), host->workgroupName(), Qt::CaseInsensitive) == 0)
     {
-      shares += p->sharesList.at( i );
+      shares += p->sharesList.at(i);
       continue;
     }
     else
@@ -547,20 +558,20 @@ const QList<Smb4KShare *> &Smb4KGlobal::mountedSharesList()
 }
 
 
-Smb4KShare* Smb4KGlobal::findShareByPath( const QString &path )
+Smb4KShare* Smb4KGlobal::findShareByPath(const QString &path)
 {
-  Smb4KShare *share = NULL;
+  Smb4KShare *share = 0;
 
   mutex.lock();
 
-  if ( !path.isEmpty() && !p->mountedSharesList.isEmpty() )
+  if (!path.isEmpty() && !p->mountedSharesList.isEmpty())
   {
-    for ( int i = 0; i < p->mountedSharesList.size(); ++i )
+    for (int i = 0; i < p->mountedSharesList.size(); ++i)
     {
-      if ( QString::compare( path, p->mountedSharesList.at( i )->path(), Qt::CaseInsensitive ) == 0 ||
-           QString::compare( path, p->mountedSharesList.at( i )->canonicalPath(), Qt::CaseInsensitive ) == 0 )
+      if (QString::compare(path, p->mountedSharesList.at(i)->path(), Qt::CaseInsensitive) == 0 ||
+           QString::compare(path, p->mountedSharesList.at(i)->canonicalPath(), Qt::CaseInsensitive) == 0)
       {
-        share = p->mountedSharesList.at( i );
+        share = p->mountedSharesList.at(i);
         break;
       }
       else
@@ -580,20 +591,20 @@ Smb4KShare* Smb4KGlobal::findShareByPath( const QString &path )
 }
 
 
-QList<Smb4KShare *> Smb4KGlobal::findShareByUNC( const QString &unc )
+QList<Smb4KShare *> Smb4KGlobal::findShareByUNC(const QString &unc)
 {
   QList<Smb4KShare *> list;
 
   mutex.lock();
 
-  if ( !unc.isEmpty() && !p->mountedSharesList.isEmpty() )
+  if (!unc.isEmpty() && !p->mountedSharesList.isEmpty())
   {
-    for ( int i = 0; i < p->mountedSharesList.size(); ++i )
+    for (int i = 0; i < p->mountedSharesList.size(); ++i)
     {
-      if ( QString::compare( unc, p->mountedSharesList.at( i )->unc(), Qt::CaseInsensitive ) == 0 ||
-           QString::compare( QString( unc ).replace( ' ', '_' ), p->mountedSharesList.at( i )->unc(), Qt::CaseInsensitive ) == 0  )
+      if (QString::compare(unc, p->mountedSharesList.at(i)->unc(), Qt::CaseInsensitive) == 0 ||
+           QString::compare(QString(unc).replace(' ', '_'), p->mountedSharesList.at(i)->unc(), Qt::CaseInsensitive) == 0)
       {
-        list.append( p->mountedSharesList.at( i ) );
+        list.append(p->mountedSharesList.at(i));
         continue;
       }
       else
@@ -619,11 +630,11 @@ QList<Smb4KShare*> Smb4KGlobal::findInaccessibleShares()
 
   mutex.lock();
 
-  for ( int i = 0; i < p->mountedSharesList.size(); ++i )
+  for (int i = 0; i < p->mountedSharesList.size(); ++i)
   {
-    if ( p->mountedSharesList.at( i )->isInaccessible() )
+    if (p->mountedSharesList.at(i)->isInaccessible())
     {
-      inaccessible_shares.append( p->mountedSharesList.at( i ) );
+      inaccessible_shares.append(p->mountedSharesList.at(i));
 
       continue;
     }
@@ -639,24 +650,24 @@ QList<Smb4KShare*> Smb4KGlobal::findInaccessibleShares()
 }
 
 
-bool Smb4KGlobal::addMountedShare( Smb4KShare *share )
+bool Smb4KGlobal::addMountedShare(Smb4KShare *share)
 {
-  Q_ASSERT( share );
+  Q_ASSERT(share);
 
   bool added = false;
 
   mutex.lock();
 
-  if ( !findShareByPath( share->path() ) )
+  if (!findShareByPath(share->path()))
   {
-    p->mountedSharesList.append( share );
+    p->mountedSharesList.append(share);
     added = true;
 
     p->onlyForeignShares = true;
 
-    for ( int i = 0; i < p->mountedSharesList.size(); ++i )
+    for (int i = 0; i < p->mountedSharesList.size(); ++i)
     {
-      if ( !p->mountedSharesList.at( i )->isForeign() )
+      if (!p->mountedSharesList.at(i)->isForeign())
       {
         p->onlyForeignShares = false;
         break;
@@ -678,27 +689,27 @@ bool Smb4KGlobal::addMountedShare( Smb4KShare *share )
 }
 
 
-bool Smb4KGlobal::removeMountedShare( Smb4KShare *share )
+bool Smb4KGlobal::removeMountedShare(Smb4KShare *share)
 {
-  Q_ASSERT( share );
+  Q_ASSERT(share);
 
   bool removed = false;
 
   mutex.lock();
 
-  int index = p->mountedSharesList.indexOf( share );
+  int index = p->mountedSharesList.indexOf(share);
 
-  if ( index != -1 )
+  if (index != -1)
   {
     // The share was found. Remove it.
-    delete p->mountedSharesList.takeAt( index );
+    delete p->mountedSharesList.takeAt(index);
     removed = true;
 
     p->onlyForeignShares = true;
 
-    for ( int i = 0; i < p->mountedSharesList.size(); ++i )
+    for (int i = 0; i < p->mountedSharesList.size(); ++i)
     {
-      if ( !p->mountedSharesList.at( i )->isForeign() )
+      if (!p->mountedSharesList.at(i)->isForeign())
       {
         p->onlyForeignShares = false;
         break;
@@ -712,22 +723,22 @@ bool Smb4KGlobal::removeMountedShare( Smb4KShare *share )
   else
   {
     // Try harder to find the mounted share.
-    Smb4KShare *s = findShareByPath( share->path() );
+    Smb4KShare *s = findShareByPath(share->path());
 
-    if ( s )
+    if (s)
     {
-      index = p->mountedSharesList.indexOf( s );
+      index = p->mountedSharesList.indexOf(s);
 
-      if ( index != -1 )
+      if (index != -1)
       {
-        delete p->mountedSharesList.takeAt( index );
+        delete p->mountedSharesList.takeAt(index);
         removed = true;
 
         p->onlyForeignShares = true;
 
-        for ( int i = 0; i < p->mountedSharesList.size(); ++i )
+        for (int i = 0; i < p->mountedSharesList.size(); ++i)
         {
-          if ( !p->mountedSharesList.at( i )->isForeign() )
+          if (!p->mountedSharesList.at(i)->isForeign())
           {
             p->onlyForeignShares = false;
             break;
@@ -763,35 +774,35 @@ bool Smb4KGlobal::onlyForeignMountedShares()
 }
 
 
-void Smb4KGlobal::openShare( Smb4KShare *share, OpenWith openWith )
+void Smb4KGlobal::openShare(Smb4KShare *share, OpenWith openWith)
 {
-  if ( !share || share->isInaccessible() )
+  if (!share || share->isInaccessible())
   {
     return;
   }
 
-  switch ( openWith )
+  switch (openWith)
   {
     case FileManager:
     {
-      KUrl url;
-      url.setPath( share->canonicalPath() );
+      QUrl url;
+      url.setPath(share->canonicalPath());
 
-      (void) new KRun( url, 0, 0, true );
+      (void) new KRun(url, 0);
 
       break;
     }
     case Konsole:
     {
-      QString konsole = KGlobal::dirs()->findResource( "exe", "konsole" );
+      QString konsole = QStandardPaths::findExecutable("konsole");
 
-      if ( konsole.isEmpty() )
+      if (konsole.isEmpty())
       {
         Smb4KNotification::commandNotFound("konsole");
       }
       else
       {
-        KRun::runCommand( konsole+" --workdir "+KShell::quoteArg( share->canonicalPath() ), 0 );
+        KRun::runCommand(konsole+" --workdir "+KShell::quoteArg(share->canonicalPath()), 0);
       }
 
       break;
@@ -804,26 +815,26 @@ void Smb4KGlobal::openShare( Smb4KShare *share, OpenWith openWith )
 }
 
 
-const QMap<QString,QString> &Smb4KGlobal::globalSambaOptions( bool read )
+const QMap<QString,QString> &Smb4KGlobal::globalSambaOptions(bool read)
 {
-  return p->globalSambaOptions( read );
+  return p->globalSambaOptions(read);
 }
 
 
 const QString Smb4KGlobal::winsServer()
 {
-  QMap<QString,QString> global_opts = p->globalSambaOptions( false );
+  QMap<QString,QString> global_opts = p->globalSambaOptions(false);
   QString wins_server;
   
-  if ( global_opts.contains( "wins server" ) )
+  if (global_opts.contains("wins server"))
   {
-    wins_server = global_opts.value( "wins server" );
+    wins_server = global_opts.value("wins server");
   }
   else
   {
-    if ( global_opts.contains( "wins support" ) &&
-         (QString::compare( global_opts.value( "wins support" ), "yes", Qt::CaseInsensitive ) == 0 ||
-          QString::compare( global_opts.value( "wins support" ), "true", Qt::CaseInsensitive ) == 0) )
+    if (global_opts.contains("wins support") &&
+         (QString::compare(global_opts.value("wins support"), "yes", Qt::CaseInsensitive) == 0 ||
+          QString::compare(global_opts.value("wins support"), "true", Qt::CaseInsensitive) == 0))
     {
       wins_server = "127.0.0.1";
     }
@@ -843,7 +854,7 @@ bool Smb4KGlobal::modifyCursor()
 }
 
 
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_LINUX)
 QStringList Smb4KGlobal::whitelistedMountArguments()
 {
   return p->whitelistedMountArguments;
