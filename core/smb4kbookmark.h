@@ -3,7 +3,7 @@
     generation).
                              -------------------
     begin                : So Jun 8 2008
-    copyright            : (C) 2008-2012 by Alexander Reinholdt
+    copyright            : (C) 2008-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,11 +30,9 @@
 // Qt includes
 #include <QtCore/QString>
 #include <QtCore/QScopedPointer>
+#include <QtCore/QUrl>
 #include <QtGui/QIcon>
 
-// KDE includes
-#include <kdemacros.h>
-#include <kurl.h>
 
 // forward declarations
 class Smb4KShare;
@@ -47,7 +45,7 @@ class Smb4KBookmarkPrivate;
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class KDE_EXPORT Smb4KBookmark
+class Q_DECL_EXPORT Smb4KBookmark
 {
   friend class Smb4KBookmarkPrivate;
   
@@ -60,15 +58,15 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @param label           The optional bookmark label.
      */
-    explicit Smb4KBookmark( Smb4KShare *share,
-                            const QString &label = QString() );
+    explicit Smb4KBookmark(Smb4KShare *share,
+                           const QString &label = QString());
 
     /**
      * The copy constructor.
      *
      * @param bookmark        The bookmark that should be copied.
      */
-    Smb4KBookmark( const Smb4KBookmark &bookmark );
+    Smb4KBookmark(const Smb4KBookmark &bookmark);
 
     /**
      * The empty constructor.
@@ -85,7 +83,7 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @param workgroup       The workgroup where the share is located.
      */
-    void setWorkgroupName( const QString &workgroup );
+    void setWorkgroupName(const QString &workgroup);
 
     /**
      * Returns the workgroup/domain name.
@@ -99,7 +97,7 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @param host            The host where the share is located.
      */
-    void setHostName( const QString &host );
+    void setHostName(const QString &host);
 
     /**
      * Returns the host name.
@@ -113,7 +111,7 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @param share           The share name
      */
-    void setShareName( const QString &share );
+    void setShareName(const QString &share);
 
     /**
      * Returns the share name.
@@ -127,7 +125,7 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @param ip              The host's IP address
      */
-    void setHostIP( const QString &ip );
+    void setHostIP(const QString &ip);
 
     /**
      * Returns the host's IP address.
@@ -141,7 +139,7 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @param type            The type of the share.
      */
-    void setTypeString( const QString &type );
+    void setTypeString(const QString &type);
 
     /**
      * Returns the share's type.
@@ -177,7 +175,7 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @param label           The bookmark's label
      */
-    void setLabel( const QString &label );
+    void setLabel(const QString &label);
 
     /**
      * Returns the bookmark's label.
@@ -191,7 +189,7 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @param login           The login
      */
-    void setLogin( const QString &login );
+    void setLogin(const QString &login);
 
     /**
      * Returns the login that is used to mount this share.
@@ -205,28 +203,28 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @param url             The URL of the network item
      */
-    void setURL( const KUrl &url );
+    void setURL(const QUrl &url);
     
     /**
      * Sets the URL of the share.
      *
      * @param url             The URL of the network item
      */
-    void setURL( const QString &url );
+    void setURL(const QString &url);
 
     /**
      * Returns the URL of this bookmark.
      *
      * @returns the URL
      */
-    KUrl url() const;
+    QUrl url() const;
 
     /**
      * Set the group this bookmark belongs to.
      *
      * @param name            The group name
      */
-    void setGroupName( const QString &name );
+    void setGroupName(const QString &name);
 
     /**
      * Returns the group name of this bookmark.
@@ -242,7 +240,7 @@ class KDE_EXPORT Smb4KBookmark
      * 
      * @param profile         The profile name
      */
-    void setProfile( const QString &profile );
+    void setProfile(const QString &profile);
     
     /**
      * Returns the name of the profile this bookmark belongs to.
@@ -260,19 +258,19 @@ class KDE_EXPORT Smb4KBookmark
      *
      * @returns TRUE if the data that was compared is the same.
      */
-    bool equals( Smb4KBookmark *bookmark ) const;
+    bool equals(Smb4KBookmark *bookmark) const;
     
     /**
      * Operator to check if two bookmark objects are equal.
      */
-    bool operator==( Smb4KBookmark bookmark ) const { return equals( &bookmark ); }
+    bool operator==(Smb4KBookmark bookmark) const { return equals(&bookmark); }
 
     /**
      * This function sets the icon of the bookmark.
      *
      * @param icon          The icon
      */
-    void setIcon( const QIcon &icon );
+    void setIcon(const QIcon &icon);
 
     /**
      * This function returns the icon of the network item. By default, it
