@@ -3,7 +3,7 @@
     the Smb4KSynchronizer class.
                              -------------------
     begin                : Fr Okt 24 2008
-    copyright            : (C) 2008-2014 by Alexander Reinholdt
+    copyright            : (C) 2008-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -38,25 +38,27 @@
 // Qt includes
 #include <QtCore/QTimer>
 #include <QtCore/QPointer>
-#include <QtGui/QGridLayout>
-#include <QtGui/QLabel>
+#include <QtCore/QStandardPaths>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QDialogButtonBox>
 
 // KDE includes
-#include <kdebug.h>
-#include <kprocess.h>
-#include <klocale.h>
-#include <kstandarddirs.h>
-#include <klineedit.h>
-#include <kurlcompletion.h>
+#define TRANSLATION_DOMAIN "smb4k-core"
+#include <KCompletion/KLineEdit>
+#include <KIOWidgets/KUrlCompletion>
+#include <KI18n/KLocalizedString>
+#include <KIconThemes/KIconLoader>
+#include <KConfigGui/KWindowConfig>
 
 using namespace Smb4KGlobal;
 
 
-Smb4KSyncJob::Smb4KSyncJob( QObject *parent ) : KJob( parent ),
-  m_started( false ), m_share( NULL ), m_parent_widget( NULL ), m_proc( NULL )
+Smb4KSyncJob::Smb4KSyncJob(QObject *parent) : KJob(parent),
+  m_started(false), m_share(0), m_parent_widget(0), m_proc(0)
 {
-  setCapabilities( KJob::Killable );
-  m_job_tracker = new KUiServerJobTracker( this );
+  setCapabilities(KJob::Killable);
+  m_job_tracker = new KUiServerJobTracker(this);
 }
 
 
@@ -68,13 +70,13 @@ Smb4KSyncJob::~Smb4KSyncJob()
 void Smb4KSyncJob::start()
 {
   m_started = true;
-  QTimer::singleShot( 0, this, SLOT(slotStartSynchronization()) );
+  QTimer::singleShot(0, this, SLOT(slotStartSynchronization()));
 }
 
 
-void Smb4KSyncJob::setupSynchronization( Smb4KShare *share, QWidget *parent )
+void Smb4KSyncJob::setupSynchronization(Smb4KShare *share, QWidget *parent)
 {
-  Q_ASSERT( share );
+  Q_ASSERT(share);
   m_share = share;
   m_parent_widget = parent;
 }
@@ -82,7 +84,7 @@ void Smb4KSyncJob::setupSynchronization( Smb4KShare *share, QWidget *parent )
 
 bool Smb4KSyncJob::doKill()
 {
-  if ( m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting) )
+  if (m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting))
   {
     m_proc->abort();
   }
@@ -98,9 +100,9 @@ bool Smb4KSyncJob::doKill()
 void Smb4KSyncJob::slotStartSynchronization()
 {
   // Find rsync program.
-  QString rsync = KStandardDirs::findExe( "rsync" );
+  QString rsync = QStandardPaths::findExecutable("rsync");
 
-  if ( rsync.isEmpty() )
+  if (rsync.isEmpty())
   {
     Smb4KNotification::commandNotFound("rsync");
     emitResult();
@@ -111,19 +113,19 @@ void Smb4KSyncJob::slotStartSynchronization()
     // Go ahead
   }
 
-  if ( m_share )
+  if (m_share)
   {
     // Show the user an URL input dialog.
-    QPointer<Smb4KSynchronizationDialog> dlg = new Smb4KSynchronizationDialog( m_share, m_parent_widget );
+    QPointer<Smb4KSynchronizationDialog> dlg = new Smb4KSynchronizationDialog(m_share, m_parent_widget);
 
-    if ( dlg->exec() == KDialog::Accepted )
+    if (dlg->exec() == QDialog::Accepted)
     {
       // Create the destination directory if it does not already exits.
-      if ( !QFile::exists( dlg->destination().path() ) )
+      if (!QFile::exists(dlg->destination().path()))
       {
-        QDir sync_dir( dlg->destination().path() );
+        QDir sync_dir(dlg->destination().path());
 
-        if ( !sync_dir.mkpath( dlg->destination().path() ) )
+        if (!sync_dir.mkpath(dlg->destination().path()))
         {
           Smb4KNotification::mkdirFailed(sync_dir);
           emitResult();
@@ -141,8 +143,8 @@ void Smb4KSyncJob::slotStartSynchronization()
       
       // Make sure that we have got the trailing slash present.
       // rsync is very picky regarding it.
-      m_src = dlg->source().path(KUrl::AddTrailingSlash);
-      m_dest = dlg->destination().path(KUrl::AddTrailingSlash);
+      m_src = dlg->source();
+      m_dest = dlg->destination();
     }
     else
     {
@@ -153,23 +155,23 @@ void Smb4KSyncJob::slotStartSynchronization()
     delete dlg;
 
     // Start the synchronization process
-    emit aboutToStart( m_dest.path() );
+    emit aboutToStart(m_dest.path());
 
     // Register the job with the job tracker
-    m_job_tracker->registerJob( this );
-    connect( this, SIGNAL(result(KJob*)), m_job_tracker, SLOT(unregisterJob(KJob*)) );
+    m_job_tracker->registerJob(this);
+    connect(this, SIGNAL(result(KJob*)), m_job_tracker, SLOT(unregisterJob(KJob*)));
     
     // Get the list of arguments
     QStringList arguments;
     arguments << "--progress";
 
-    if ( Smb4KSettings::archiveMode() )
+    if (Smb4KSettings::archiveMode())
     {
       arguments << "--archive";
     }
     else
     {
-      if ( Smb4KSettings::recurseIntoDirectories() )
+      if (Smb4KSettings::recurseIntoDirectories())
       {
         arguments << "--recursive";
       }
@@ -178,7 +180,7 @@ void Smb4KSyncJob::slotStartSynchronization()
         // Do nothing
       }
 
-      if ( Smb4KSettings::preserveSymlinks() )
+      if (Smb4KSettings::preserveSymlinks())
       {
         arguments << "--links";
       }
@@ -187,7 +189,7 @@ void Smb4KSyncJob::slotStartSynchronization()
         // Do nothing
       }
 
-      if ( Smb4KSettings::preservePermissions() )
+      if (Smb4KSettings::preservePermissions())
       {
         arguments << "--perms";
       }
@@ -196,7 +198,7 @@ void Smb4KSyncJob::slotStartSynchronization()
         // Do nothing
       }
 
-      if ( Smb4KSettings::preserveTimes() )
+      if (Smb4KSettings::preserveTimes())
       {
         arguments << "--times";
       }
@@ -205,7 +207,7 @@ void Smb4KSyncJob::slotStartSynchronization()
         // Do nothing
       }
 
-      if ( Smb4KSettings::preserveGroup() )
+      if (Smb4KSettings::preserveGroup())
       {
         arguments << "--group";
       }
@@ -214,7 +216,7 @@ void Smb4KSyncJob::slotStartSynchronization()
         // Do nothing
       }
 
-      if ( Smb4KSettings::preserveOwner() )
+      if (Smb4KSettings::preserveOwner())
       {
         arguments << "--owner";
       }
@@ -223,7 +225,7 @@ void Smb4KSyncJob::slotStartSynchronization()
         // Do nothing
       }
 
-      if ( Smb4KSettings::preserveDevicesAndSpecials() )
+      if (Smb4KSettings::preserveDevicesAndSpecials())
       {
         // Alias -D
         arguments << "--devices";
@@ -235,7 +237,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       }
     }
 
-    if ( Smb4KSettings::relativePathNames() )
+    if (Smb4KSettings::relativePathNames())
     {
       arguments << "--relative";
     }
@@ -244,7 +246,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::omitDirectoryTimes() )
+    if (Smb4KSettings::omitDirectoryTimes())
     {
       arguments << "--omit-dir-times";
     }
@@ -253,7 +255,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::noImpliedDirectories() )
+    if (Smb4KSettings::noImpliedDirectories())
     {
       arguments << "--no-implied-dirs";
     }
@@ -262,7 +264,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::updateTarget() )
+    if (Smb4KSettings::updateTarget())
     {
       arguments << "--update";
     }
@@ -271,7 +273,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::updateInPlace() )
+    if (Smb4KSettings::updateInPlace())
     {
       arguments << "--inplace";
     }
@@ -280,7 +282,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::transferDirectories() )
+    if (Smb4KSettings::transferDirectories())
     {
       arguments << "--dirs";
     }
@@ -289,7 +291,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::transformSymlinks() )
+    if (Smb4KSettings::transformSymlinks())
     {
       arguments << "--copy-links";
     }
@@ -298,7 +300,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::transformUnsafeSymlinks() )
+    if (Smb4KSettings::transformUnsafeSymlinks())
     {
       arguments << "--copy-unsafe-links";
     }
@@ -307,7 +309,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::ignoreUnsafeSymlinks() )
+    if (Smb4KSettings::ignoreUnsafeSymlinks())
     {
       arguments << "--safe-links";
     }
@@ -316,7 +318,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::preserveHardLinks() )
+    if (Smb4KSettings::preserveHardLinks())
     {
       arguments << "--hard-links";
     }
@@ -325,7 +327,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::keepDirectorySymlinks() )
+    if (Smb4KSettings::keepDirectorySymlinks())
     {
       arguments << "--keep-dirlinks";
     }
@@ -334,7 +336,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::deleteExtraneous() )
+    if (Smb4KSettings::deleteExtraneous())
     {
       arguments << "--delete";
     }
@@ -343,7 +345,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::removeSourceFiles() )
+    if (Smb4KSettings::removeSourceFiles())
     {
       arguments << "--remove-source-files";
     }
@@ -352,7 +354,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::deleteBefore() )
+    if (Smb4KSettings::deleteBefore())
     {
       arguments << "--delete-before";
     }
@@ -361,7 +363,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::deleteDuring() )
+    if (Smb4KSettings::deleteDuring())
     {
       arguments << "--delete-during";
     }
@@ -370,7 +372,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::deleteAfter() )
+    if (Smb4KSettings::deleteAfter())
     {
       arguments << "--delete-after";
     }
@@ -379,7 +381,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::deleteExcluded() )
+    if (Smb4KSettings::deleteExcluded())
     {
       arguments << "--delete-excluded";
     }
@@ -388,7 +390,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::ignoreErrors() )
+    if (Smb4KSettings::ignoreErrors())
     {
       arguments << "--ignore-errors";
     }
@@ -397,7 +399,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::forceDirectoryDeletion() )
+    if (Smb4KSettings::forceDirectoryDeletion())
     {
       arguments << "--force";
     }
@@ -406,7 +408,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::copyFilesWhole() )
+    if (Smb4KSettings::copyFilesWhole())
     {
       arguments << "--whole-file";
     }
@@ -415,7 +417,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::efficientSparseFileHandling() )
+    if (Smb4KSettings::efficientSparseFileHandling())
     {
       arguments << "--sparse";
     }
@@ -424,7 +426,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::oneFileSystem() )
+    if (Smb4KSettings::oneFileSystem())
     {
       arguments << "--one-file-system";
     }
@@ -433,7 +435,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::updateExisting() )
+    if (Smb4KSettings::updateExisting())
     {
       arguments << "--existing";
     }
@@ -442,7 +444,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::ignoreExisting() )
+    if (Smb4KSettings::ignoreExisting())
     {
       arguments << "--ignore-existing";
     }
@@ -451,7 +453,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::delayUpdates() )
+    if (Smb4KSettings::delayUpdates())
     {
       arguments << "--delay-updates";
     }
@@ -460,7 +462,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::compressData() )
+    if (Smb4KSettings::compressData())
     {
       arguments << "--compress";
     }
@@ -469,22 +471,22 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::makeBackups() )
+    if (Smb4KSettings::makeBackups())
     {
       arguments << "--backup";
 
-      if ( Smb4KSettings::useBackupDirectory() )
+      if (Smb4KSettings::useBackupDirectory())
       {
-        arguments << QString( "--backup-dir=%1" ).arg( Smb4KSettings::backupDirectory().path() );
+        arguments << QString("--backup-dir=%1").arg(Smb4KSettings::backupDirectory().path());
       }
       else
       {
         // Do nothing
       }
 
-      if ( Smb4KSettings::useBackupSuffix() )
+      if (Smb4KSettings::useBackupSuffix())
       {
-        arguments << QString( "--suffix=%1" ).arg( Smb4KSettings::backupSuffix() );
+        arguments << QString("--suffix=%1").arg(Smb4KSettings::backupSuffix());
       }
       else
       {
@@ -496,16 +498,16 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::useMaximumDelete() )
+    if (Smb4KSettings::useMaximumDelete())
     {
-      arguments << QString( "--max-delete=%1" ).arg( Smb4KSettings::maximumDeleteValue() );
+      arguments << QString("--max-delete=%1").arg(Smb4KSettings::maximumDeleteValue());
     }
     else
     {
       // Do nothing
     }
 
-    if ( Smb4KSettings::useChecksum() )
+    if (Smb4KSettings::useChecksum())
     {
       arguments << "--checksum";
     }
@@ -514,58 +516,58 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::useBlockSize() )
+    if (Smb4KSettings::useBlockSize())
     {
-      arguments << QString( "--block-size=%1" ).arg( Smb4KSettings::blockSize() );
+      arguments << QString("--block-size=%1").arg(Smb4KSettings::blockSize());
     }
     else
     {
       // Do nothing
     }
 
-    if ( Smb4KSettings::useChecksumSeed() )
+    if (Smb4KSettings::useChecksumSeed())
     {
-      arguments << QString( "--checksum-seed=%1" ).arg( Smb4KSettings::checksumSeed() );
+      arguments << QString("--checksum-seed=%1").arg(Smb4KSettings::checksumSeed());
     }
     else
     {
       // Do nothing
     }
 
-    if ( !Smb4KSettings::customFilteringRules().isEmpty() )
+    if (!Smb4KSettings::customFilteringRules().isEmpty())
     {
-      arguments << Smb4KSettings::customFilteringRules().split( ' ' );
+      arguments << Smb4KSettings::customFilteringRules().split(' ');
     }
     else
     {
       // Do nothing
     }
 
-    if ( Smb4KSettings::useMinimalTransferSize() )
+    if (Smb4KSettings::useMinimalTransferSize())
     {
-      arguments << QString( "--min-size=%1K" ).arg( Smb4KSettings::minimalTransferSize() );
+      arguments << QString("--min-size=%1K").arg(Smb4KSettings::minimalTransferSize());
     }
     else
     {
       // Do nothing
     }
 
-    if ( Smb4KSettings::useMaximalTransferSize() )
+    if (Smb4KSettings::useMaximalTransferSize())
     {
-      arguments << QString( "--max-size=%1K" ).arg( Smb4KSettings::maximalTransferSize() );
+      arguments << QString("--max-size=%1K").arg(Smb4KSettings::maximalTransferSize());
     }
     else
     {
       // Do nothing
     }
 
-    if ( Smb4KSettings::keepPartial() )
+    if (Smb4KSettings::keepPartial())
     {
       arguments << " --partial";
 
-      if ( Smb4KSettings::usePartialDirectory() )
+      if (Smb4KSettings::usePartialDirectory())
       {
-        arguments << QString( "--partial-dir=%1" ).arg( Smb4KSettings::partialDirectory().path() );
+        arguments << QString("--partial-dir=%1").arg(Smb4KSettings::partialDirectory().path());
       }
       else
       {
@@ -577,7 +579,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::useCVSExclude() )
+    if (Smb4KSettings::useCVSExclude())
     {
       arguments << "--cvs-exclude";
     }
@@ -586,7 +588,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::useFFilterRule() )
+    if (Smb4KSettings::useFFilterRule())
     {
       arguments << "-F";
     }
@@ -595,7 +597,7 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::useFFFilterRule() )
+    if (Smb4KSettings::useFFFilterRule())
     {
       arguments << "-F";
       arguments << "-F";
@@ -605,60 +607,65 @@ void Smb4KSyncJob::slotStartSynchronization()
       // Do nothing
     }
 
-    if ( Smb4KSettings::useExcludePattern() )
+    if (Smb4KSettings::useExcludePattern())
     {
-      arguments << QString( "--exclude=%1" ).arg( Smb4KSettings::excludePattern() );
+      arguments << QString("--exclude=%1").arg(Smb4KSettings::excludePattern());
     }
     else
     {
       // Do nothing
     }
 
-    if ( Smb4KSettings::useExcludeFrom() )
+    if (Smb4KSettings::useExcludeFrom())
     {
-      arguments << QString( "--exclude-from=%1" ).arg( Smb4KSettings::excludeFrom().path() );
+      arguments << QString("--exclude-from=%1").arg(Smb4KSettings::excludeFrom().path());
     }
     else
     {
       // Do nothing
     }
 
-    if ( Smb4KSettings::useIncludePattern() )
+    if (Smb4KSettings::useIncludePattern())
     {
-      arguments << QString( "--include=%1" ).arg( Smb4KSettings::includePattern() );
+      arguments << QString("--include=%1").arg(Smb4KSettings::includePattern());
     }
     else
     {
       // Do nothing
     }
 
-    if ( Smb4KSettings::useIncludeFrom() )
+    if (Smb4KSettings::useIncludeFrom())
     {
-      arguments << QString( "--include-from=%1" ).arg( Smb4KSettings::includeFrom().path() );
+      arguments << QString("--include-from=%1").arg(Smb4KSettings::includeFrom().path());
     }
     else
     {
       // Do nothing
     }
 
-    arguments << m_src.path();
-    arguments << m_dest.path();
+    // Make sure that the trailling slash is present. rsync is very 
+    // picky regarding it.
+    QString source = m_src.path() + (!m_src.path().endsWith('/') ? "/" : "");
+    QString destination = m_dest.path() + (!m_dest.path().endsWith('/') ? "/" : "");
+    
+    arguments << source;
+    arguments << destination;
 
     // Send description to the GUI
-    emit description( this, i18n( "Synchronizing" ),
-                      qMakePair( i18n( "Source" ), m_src.path() ),
-                      qMakePair( i18n( "Destination" ), m_dest.path() ) );
+    emit description(this, i18n("Synchronizing"),
+                     qMakePair(i18n("Source"), source),
+                     qMakePair(i18n("Destination"), destination));
     
     // Dummy to show 0 %
-    emitPercent( 0, 100 );
+    emitPercent(0, 100);
 
-    m_proc = new Smb4KProcess( this );
-    m_proc->setOutputChannelMode( KProcess::SeparateChannels );
-    m_proc->setProgram( rsync, arguments );
+    m_proc = new Smb4KProcess(this);
+    m_proc->setOutputChannelMode(KProcess::SeparateChannels);
+    m_proc->setProgram(rsync, arguments);
 
-    connect( m_proc, SIGNAL(readyReadStandardOutput()), SLOT(slotReadStandardOutput()) );
-    connect( m_proc, SIGNAL(readyReadStandardError()),  SLOT(slotReadStandardError()) );
-    connect( m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(slotProcessFinished(int,QProcess::ExitStatus)) );
+    connect(m_proc, SIGNAL(readyReadStandardOutput()), SLOT(slotReadStandardOutput()));
+    connect(m_proc, SIGNAL(readyReadStandardError()),  SLOT(slotReadStandardError()));
+    connect(m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(slotProcessFinished(int,QProcess::ExitStatus)));
 
     m_proc->start();
   }
@@ -671,72 +678,72 @@ void Smb4KSyncJob::slotStartSynchronization()
 
 void Smb4KSyncJob::slotReadStandardOutput()
 {
-  QStringList stdOut = QString::fromUtf8( m_proc->readAllStandardOutput(), -1 ).split( '\n', QString::SkipEmptyParts );
+  QStringList stdOut = QString::fromUtf8(m_proc->readAllStandardOutput(), -1).split('\n', QString::SkipEmptyParts);
 
-  for ( int i = 0; i < stdOut.size(); ++i )
+  for (int i = 0; i < stdOut.size(); ++i)
   {
-    if ( stdOut.at( i )[0].isSpace() )
+    if (stdOut.at(i)[0].isSpace())
     {
       // Get the overall transfer progress
-      if ( stdOut.at( i ).contains( " to-check=" ) )
+      if (stdOut.at(i).contains(" to-check="))
       {
-        QString tmp = stdOut.at( i ).section( " to-check=", 1, 1 ).section( ')', 0, 0 ).trimmed();
+        QString tmp = stdOut.at(i).section(" to-check=", 1, 1).section(')', 0, 0).trimmed();
 
         bool success1 = true;
         bool success2 = true;
 
-        qulonglong files = tmp.section( '/', 0, 0 ).trimmed().toLongLong( &success1 );
-        qulonglong total = tmp.section( '/', 1, 1 ).trimmed().toLongLong( &success2 );
+        qulonglong files = tmp.section('/', 0, 0).trimmed().toLongLong(&success1);
+        qulonglong total = tmp.section('/', 1, 1).trimmed().toLongLong(&success2);
 
-        if ( success1 && success2 )
+        if (success1 && success2)
         {
-          setProcessedAmount( KJob::Files, total - files );
-          setTotalAmount( KJob::Files, total );
-          emitPercent( total - files, total );
+          setProcessedAmount(KJob::Files, total - files);
+          setTotalAmount(KJob::Files, total);
+          emitPercent(total - files, total);
         }
         else
         {
           // Do nothing
         }
       }
-      else if ( stdOut.at( i ).contains( " to-chk=" ) )
+      else if (stdOut.at(i).contains(" to-chk="))
       {
         // Make Smb4K work with rsync >= 3.1.
-        QString tmp = stdOut.at( i ).section( " to-chk=", 1, 1 ).section( ')', 0, 0 ).trimmed();
+        QString tmp = stdOut.at(i).section(" to-chk=", 1, 1).section(')', 0, 0).trimmed();
 
         bool success1 = true;
         bool success2 = true;
 
-        qulonglong files = tmp.section( '/', 0, 0 ).trimmed().toLongLong( &success1 );
-        qulonglong total = tmp.section( '/', 1, 1 ).trimmed().toLongLong( &success2 );
+        qulonglong files = tmp.section('/', 0, 0).trimmed().toLongLong(&success1);
+        qulonglong total = tmp.section('/', 1, 1).trimmed().toLongLong(&success2);
 
-        if ( success1 && success2 )
+        if (success1 && success2)
         {
-          setProcessedAmount( KJob::Files, total - files );
-          setTotalAmount( KJob::Files, total );
-          emitPercent( total - files, total );
+          setProcessedAmount(KJob::Files, total - files);
+          setTotalAmount(KJob::Files, total);
+          emitPercent(total - files, total);
         }
         else
         {
           // Do nothing
         }
       }
-      else if ( stdOut.at( i ).contains( " ir-chk=" ) )
+      else if (stdOut.at(i).contains(" ir-chk="))
       {
         // Make Smb4K work with rsync >= 3.1.
-        QString tmp = stdOut.at( i ).section( " ir-chk=", 1, 1 ).section( ')', 0, 0 ).trimmed();
+        QString tmp = stdOut.at(i).section(" ir-chk=", 1, 1).section(')', 0, 0).trimmed();
 
         bool success1 = true;
         bool success2 = true;
 
-        qulonglong files = tmp.section( '/', 0, 0 ).trimmed().toLongLong( &success1 );
-        qulonglong total = tmp.section( '/', 1, 1 ).trimmed().toLongLong( &success2 );
+        qulonglong files = tmp.section('/', 0, 0).trimmed().toLongLong(&success1);
+        qulonglong total = tmp.section('/', 1, 1).trimmed().toLongLong(&success2);
 
-        if ( success1 && success2 )
+        if (success1 && success2)
         {
-          setProcessedAmount( KJob::Files, total - files );
-          setTotalAmount( KJob::Files, total );
-          emitPercent( total - files, total );
+          setProcessedAmount(KJob::Files, total - files);
+          setTotalAmount(KJob::Files, total);
+          emitPercent(total - files, total);
         }
         else
         {
@@ -749,20 +756,20 @@ void Smb4KSyncJob::slotReadStandardOutput()
       }
 
       // Get transfer rate
-      if ( stdOut.at( i ).contains( "/s ", Qt::CaseSensitive ) )
+      if (stdOut.at(i).contains("/s ", Qt::CaseSensitive))
       {
         bool success = true;
         
-        double tmp_speed = stdOut.at( i ).section( QRegExp( "../s" ), 0, 0 ).section( ' ', -1 -1 ).trimmed().toDouble( &success );
+        double tmp_speed = stdOut.at(i).section(QRegExp("../s"), 0, 0).section(' ', -1 -1).trimmed().toDouble(&success);
 
-        if ( success )
+        if (success)
         {
           // MB == 1000000 B and kB == 1000 B per definitionem!
-          if ( stdOut.at( i ).contains( "MB/s" ) )
+          if (stdOut.at(i).contains("MB/s"))
           {
             tmp_speed *= 1e6;
           }
-          else if ( stdOut.at( i ).contains( "kB/s" ) )
+          else if (stdOut.at(i).contains("kB/s"))
           {
             tmp_speed *= 1e3;
           }
@@ -772,7 +779,7 @@ void Smb4KSyncJob::slotReadStandardOutput()
           }
 
           ulong speed = (ulong)tmp_speed;
-          emitSpeed( speed /* B/s */ );
+          emitSpeed(speed /* B/s */);
         }
         else
         {
@@ -786,20 +793,18 @@ void Smb4KSyncJob::slotReadStandardOutput()
     }
     else if (!stdOut.at(i).contains("sending incremental file list"))
     {
-      QString file = stdOut.at( i ).trimmed();
+      QString file = stdOut.at(i).trimmed();
 
-      KUrl src_url = m_src;
-      src_url.setFileName( file );
-      src_url.cleanPath();
+      QUrl src_url = m_src;
+      src_url.setPath(QDir::cleanPath(src_url.path() + "/" + file));
 
-      KUrl dest_url = m_dest;
-      dest_url.setFileName( file );
-      dest_url.cleanPath();
+      QUrl dest_url = m_dest;
+      dest_url.setPath(QDir::cleanPath(dest_url.path() + "/" + file));
       
       // Send description to the GUI
-      emit description( this, i18n( "Synchronizing" ),
-                        qMakePair( i18n( "Source" ), src_url.path() ),
-                        qMakePair( i18n( "Destination" ), dest_url.path() ) );
+      emit description(this, i18n("Synchronizing"),
+                       qMakePair(i18n("Source"), src_url.path()),
+                       qMakePair(i18n("Destination"), dest_url.path()));
     }
     else
     {
@@ -811,11 +816,11 @@ void Smb4KSyncJob::slotReadStandardOutput()
 
 void Smb4KSyncJob::slotReadStandardError()
 {
-  QString stdErr = QString::fromUtf8( m_proc->readAllStandardError(), -1 ).trimmed();
+  QString stdErr = QString::fromUtf8(m_proc->readAllStandardError(), -1).trimmed();
 
   // Avoid reporting an error if the process was killed by calling the abort() function.
-  if ( !m_proc->isAborted() && (stdErr.contains( "rsync error:" ) && !stdErr.contains( "(code 23)" )
-       /*ignore "some files were not transferred" error*/) )
+  if (!m_proc->isAborted() && (stdErr.contains("rsync error:") && !stdErr.contains("(code 23)")
+       /*ignore "some files were not transferred" error*/))
   {
     m_proc->abort();
     Smb4KNotification::synchronizationFailed(m_src, m_dest, stdErr);
@@ -827,17 +832,17 @@ void Smb4KSyncJob::slotReadStandardError()
 }
 
 
-void Smb4KSyncJob::slotProcessFinished( int, QProcess::ExitStatus status )
+void Smb4KSyncJob::slotProcessFinished(int, QProcess::ExitStatus status)
 {
   // Dummy to show 100 %
-  emitPercent( 100, 100 );
+  emitPercent(100, 100);
   
   // Handle error.
-  switch ( status )
+  switch (status)
   {
     case QProcess::CrashExit:
     {
-      if ( !m_proc->isAborted() )
+      if (!m_proc->isAborted())
       {
         Smb4KNotification::processError(m_proc->error());
       }
@@ -855,91 +860,81 @@ void Smb4KSyncJob::slotProcessFinished( int, QProcess::ExitStatus status )
 
   // Finish job
   emitResult();
-  emit finished( m_dest.path() );
+  emit finished(m_dest.path());
 }
 
 
 
-Smb4KSynchronizationDialog::Smb4KSynchronizationDialog( Smb4KShare *share, QWidget *parent )
-: KDialog( parent ), m_share( share )
+Smb4KSynchronizationDialog::Smb4KSynchronizationDialog(Smb4KShare *share, QWidget *parent)
+: QDialog(parent), m_share(share)
 {
-  setCaption( i18n( "Synchronization" ) );
-  setButtons( User3|User2|User1 );
-  setDefaultButton( User2 );
+  setWindowTitle(i18n("Synchronization"));
+  
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Horizontal, this);
+  m_swap_button = buttonBox->addButton(i18n("Swap Paths"), QDialogButtonBox::ActionRole);
+  m_swap_button->setToolTip(i18n("Swap source and destination"));
+  m_synchronize_button = buttonBox->addButton(i18n("Synchronize"), QDialogButtonBox::ActionRole);
+  m_synchronize_button->setToolTip(i18n("Synchronize the destination with the source"));
+  m_cancel_button = buttonBox->addButton(QDialogButtonBox::Cancel);
+  
+  m_cancel_button->setShortcut(Qt::Key_Escape);
+  
+  m_synchronize_button->setDefault(true);
 
-  setButtonGuiItem( User1, KStandardGuiItem::cancel() );
-  setButtonGuiItem( User2, KGuiItem( i18n( "Synchronize" ), "folder-sync",
-                    i18n( "Synchronize the destination with the source" ) ) );
-  setButtonGuiItem( User3, KGuiItem( i18n( "Swap Paths" ), "document-swap",
-                    i18n( "Swap source and destination" ) ) );
+  QGridLayout *layout = new QGridLayout(this);
+  layout->setSpacing(5);
 
-  QWidget *main_widget      = new QWidget( this );
-  setMainWidget( main_widget );
+  QLabel *pixmap = new QLabel(this);
+  QPixmap sync_pix = KDE::icon("folder-sync").pixmap(KIconLoader::SizeHuge);
+  pixmap->setPixmap(sync_pix);
+  pixmap->setAlignment(Qt::AlignBottom);
 
-  QGridLayout *layout  = new QGridLayout( main_widget );
-  layout->setSpacing( 5 );
-  layout->setMargin( 0 );
+  QLabel *description = new QLabel(i18n("Please provide the source and destination "
+                                        "directory for the synchronization."), this);
+  description->setWordWrap(true);
+  description->setAlignment(Qt::AlignBottom);
 
-  QLabel *pixmap            = new QLabel( main_widget );
-  QPixmap sync_pix          = KIcon( "folder-sync" ).pixmap( KIconLoader::SizeHuge );
-  pixmap->setPixmap( sync_pix );
-  pixmap->setAlignment( Qt::AlignBottom );
+  QUrl src_url  = QUrl(QDir::cleanPath(m_share->path()));
+  QUrl dest_url = QUrl(QDir::cleanPath(QString("%1/%2/%3").arg(Smb4KSettings::rsyncPrefix().path())
+                       .arg(m_share->hostName()).arg(m_share->shareName())));
 
-  QLabel *description       = new QLabel( i18n( "Please provide the source and destination "
-                                                "directory for the synchronization." ), main_widget );
-  description->setWordWrap( true );
-  description->setAlignment( Qt::AlignBottom );
+  QLabel *source_label = new QLabel(i18n("Source:"), this);
+  m_source = new KUrlRequester(this);
+  m_source->setUrl(src_url);
+  m_source->setMode(KFile::Directory | KFile::LocalOnly);
+  m_source->lineEdit()->setSqueezedTextEnabled(true);
+  m_source->completionObject()->setCompletionMode(KCompletion::CompletionPopupAuto);
+  m_source->completionObject()->setMode(KUrlCompletion::FileCompletion);
+  m_source->setWhatsThis(i18n("This is the source directory. The data that it contains is to be written "
+    "to the destination directory."));
 
-  KUrl src_url  = KUrl(m_share->path());
-  src_url.cleanPath();
-  KUrl dest_url = KUrl( QString( "%1/%2/%3" ).arg( Smb4KSettings::rsyncPrefix().path() )
-                                             .arg( m_share->hostName() )
-                                             .arg( m_share->shareName() ) );
-  dest_url.cleanPath();
+  QLabel *destination_label = new QLabel(i18n("Destination:"), this);
+  m_destination = new KUrlRequester(this);
+  m_destination->setUrl(dest_url);
+  m_destination->setMode(KFile::Directory | KFile::LocalOnly);
+  m_destination->lineEdit()->setSqueezedTextEnabled(true);
+  m_destination->completionObject()->setCompletionMode(KCompletion::CompletionPopupAuto);
+  m_destination->completionObject()->setMode(KUrlCompletion::FileCompletion);
+  m_destination->setWhatsThis(i18n("This is the destination directory. It will be updated with the data "
+    "from the source directory."));
 
-  QLabel *source_label      = new QLabel( i18n( "Source:" ), main_widget );
-  m_source                  = new KUrlRequester( main_widget );
-  m_source->setUrl( src_url );
-  m_source->setMode( KFile::Directory | KFile::LocalOnly );
-  m_source->lineEdit()->setSqueezedTextEnabled( true );
-  m_source->completionObject()->setCompletionMode( KGlobalSettings::CompletionPopupAuto );
-  m_source->completionObject()->setMode( KUrlCompletion::FileCompletion );
-  m_source->setWhatsThis( i18n( "This is the source directory. The data that it contains is to be written "
-    "to the destination directory." ) );
-
-  QLabel *destination_label = new QLabel( i18n( "Destination:" ), main_widget );
-  m_destination             = new KUrlRequester( main_widget );
-  m_destination->setUrl( dest_url );
-  m_destination->setMode( KFile::Directory | KFile::LocalOnly );
-  m_destination->lineEdit()->setSqueezedTextEnabled( true );
-  m_destination->completionObject()->setCompletionMode( KGlobalSettings::CompletionPopupAuto );
-  m_destination->completionObject()->setMode( KUrlCompletion::FileCompletion );
-  m_destination->setWhatsThis( i18n( "This is the destination directory. It will be updated with the data "
-    "from the source directory." ) );
-
-  layout->addWidget( pixmap, 0, 0, 0 );
-  layout->addWidget( description, 0, 1, Qt::AlignBottom );
-  layout->addWidget( source_label, 1, 0, 0 );
-  layout->addWidget( m_source, 1, 1, 0 );
-  layout->addWidget( destination_label, 2, 0, 0 );
-  layout->addWidget( m_destination, 2, 1, 0 );
+  layout->addWidget(pixmap, 0, 0, 0);
+  layout->addWidget(description, 0, 1, Qt::AlignBottom);
+  layout->addWidget(source_label, 1, 0, 0);
+  layout->addWidget(m_source, 1, 1, 0);
+  layout->addWidget(destination_label, 2, 0, 0);
+  layout->addWidget(m_destination, 2, 1, 0);
+  layout->addWidget(buttonBox, 3, 0, 1, 2, 0);
 
   // Connections
-  connect( this,                      SIGNAL(user1Clicked()),
-           this,                      SLOT(slotUser1Clicked()) );
+  connect(m_cancel_button, SIGNAL(clicked()), SLOT(slotCancelClicked()));
+  connect(m_synchronize_button, SIGNAL(clicked()), SLOT(slotSynchronizeClicked()));
+  connect(m_swap_button, SIGNAL(clicked()), SLOT(slotSwapPathsClicked()));
 
-  connect( this,                      SIGNAL(user2Clicked()),
-           this,                      SLOT(slotUser2Clicked()) );
+  setMinimumSize((sizeHint().width() > 350 ? sizeHint().width() : 350), sizeHint().height());
 
-  connect( this,                      SIGNAL(user3Clicked()),
-           this,                      SLOT(slotUser3Clicked()) );
-
-  setMinimumSize( (sizeHint().width() > 350 ? sizeHint().width() : 350), sizeHint().height() );
-
-  setInitialSize( QSize( minimumWidth(), minimumHeight() ) );
-
-  KConfigGroup group( Smb4KSettings::self()->config(), "SynchronizationDialog" );
-  restoreDialogSize( group );
+  KConfigGroup group(Smb4KSettings::self()->config(), "SynchronizationDialog");
+  KWindowConfig::restoreWindowSize(windowHandle(), group);
 }
 
 
@@ -948,13 +943,13 @@ Smb4KSynchronizationDialog::~Smb4KSynchronizationDialog()
 }
 
 
-const KUrl Smb4KSynchronizationDialog::source()
+const QUrl Smb4KSynchronizationDialog::source()
 {
   return m_source->url();
 }
 
 
-const KUrl Smb4KSynchronizationDialog::destination()
+const QUrl Smb4KSynchronizationDialog::destination()
 {
   return m_destination->url();
 }
@@ -965,30 +960,27 @@ const KUrl Smb4KSynchronizationDialog::destination()
 /////////////////////////////////////////////////////////////////////////////
 
 
-void Smb4KSynchronizationDialog::slotUser1Clicked()
+void Smb4KSynchronizationDialog::slotCancelClicked()
 {
-  KConfigGroup group( Smb4KSettings::self()->config(), "SynchronizationDialog" );
-  saveDialogSize( group, KConfigGroup::Normal );
-  close();
+  reject();
 }
 
 
-void Smb4KSynchronizationDialog::slotUser2Clicked()
+void Smb4KSynchronizationDialog::slotSynchronizeClicked()
 {
+  KConfigGroup group(Smb4KSettings::self()->config(), "SynchronizationDialog");
+  KWindowConfig::saveWindowSize(windowHandle(), group);
   accept();
 }
 
 
-void Smb4KSynchronizationDialog::slotUser3Clicked()
+void Smb4KSynchronizationDialog::slotSwapPathsClicked()
 {
   // Swap URLs.
   QString sourceURL = m_source->url().path();
   QString destinationURL = m_destination->url().path();
 
-  m_source->setUrl( KUrl( destinationURL ) );
-  m_destination->setUrl( KUrl( sourceURL ) );
+  m_source->setUrl(QUrl(destinationURL));
+  m_destination->setUrl(QUrl(sourceURL));
 }
-
-
-#include "smb4ksynchronizer_p.moc"
 

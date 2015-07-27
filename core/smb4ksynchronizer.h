@@ -2,7 +2,7 @@
     smb4ksynchronizer  -  This is the new synchronizer of Smb4K.
                              -------------------
     begin                : Fr Feb 04 2011
-    copyright            : (C) 2011-2012 by Alexander Reinholdt
+    copyright            : (C) 2011-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -29,18 +29,16 @@
 // Qt includes
 #include <QtCore/QString>
 #include <QtCore/QScopedPointer>
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 
 // KDE includes
-#include <kdemacros.h>
-#include <kjob.h>
-#include <kcompositejob.h>
+#include <KCoreAddons/KCompositeJob>
 
 // forward declarations
 class Smb4KShare;
 class Smb4KSynchronizerPrivate;
 
-class KDE_EXPORT Smb4KSynchronizer : public KCompositeJob
+class Q_DECL_EXPORT Smb4KSynchronizer : public KCompositeJob
 {
   Q_OBJECT
 
@@ -50,7 +48,7 @@ class KDE_EXPORT Smb4KSynchronizer : public KCompositeJob
     /**
      * The constructor
      */
-    explicit Smb4KSynchronizer( QObject *parent = 0 );
+    explicit Smb4KSynchronizer(QObject *parent = 0);
 
     /**
      * The destructor
@@ -73,8 +71,8 @@ class KDE_EXPORT Smb4KSynchronizer : public KCompositeJob
      * 
      * @param parent        The parent widget of the URL input dialog
      */
-    void synchronize( Smb4KShare *share,
-                      QWidget *parent = 0 );
+    void synchronize(Smb4KShare *share,
+                      QWidget *parent = 0);
 
     /**
      * This function tells you whether the synchronizer is running
@@ -90,7 +88,7 @@ class KDE_EXPORT Smb4KSynchronizer : public KCompositeJob
      * 
      * @returns TRUE if a synchronization process is already running
      */
-    bool isRunning( Smb4KShare *share );
+    bool isRunning(Smb4KShare *share);
 
     /**
      * This function aborts all synchronizations at once.
@@ -106,7 +104,7 @@ class KDE_EXPORT Smb4KSynchronizer : public KCompositeJob
      *
      * @param share         The Smb4KShare object
      */
-    void abort( Smb4KShare *share );
+    void abort(Smb4KShare *share);
 
     /**
      * This function starts the composite job
@@ -120,7 +118,7 @@ class KDE_EXPORT Smb4KSynchronizer : public KCompositeJob
      *
      * @param dest        The destination's URL
      */
-    void aboutToStart( const QString &dest );
+    void aboutToStart(const QString &dest);
 
     /**
      * This signal is emitted when a job has finished. The emitted
@@ -128,7 +126,7 @@ class KDE_EXPORT Smb4KSynchronizer : public KCompositeJob
      *
      * @param dest        The destination's URL
      */
-    void finished( const QString &dest );
+    void finished(const QString &dest);
     
   protected Q_SLOTS:
     /**
@@ -139,7 +137,7 @@ class KDE_EXPORT Smb4KSynchronizer : public KCompositeJob
     /**
      * Invoked when a job finished
      */
-    void slotJobFinished( KJob *job );
+    void slotJobFinished(KJob *job);
 
     /**
      * Invoked when the application goes down

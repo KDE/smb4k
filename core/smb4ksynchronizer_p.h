@@ -3,7 +3,7 @@
     the Smb4KSynchronizer class.
                              -------------------
     begin                : Fr Okt 24 2008
-    copyright            : (C) 2008-2014 by Alexander Reinholdt
+    copyright            : (C) 2008-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -31,12 +31,16 @@
 #include "smb4ksynchronizer.h"
 #include "smb4kprocess.h"
 
-// KDE includes
-#include <kjob.h>
-#include <kurlrequester.h>
-#include <kdialog.h>
-#include <kuiserverjobtracker.h>
+// Qt includes
+#include <QtCore/QUrl>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QPushButton>
 
+// KDE includes
+#include <KCoreAddons/KJob>
+#include <KIOWidgets/KUrlRequester>
+#include <KJobWidgets/KUiServerJobTracker>
+    
 // forward declarations
 class Smb4KShare;
 
@@ -48,7 +52,7 @@ class Smb4KSyncJob : public KJob
     /**
      * Constructor
      */
-    explicit Smb4KSyncJob( QObject *parent = 0 );
+    explicit Smb4KSyncJob(QObject *parent = 0);
 
     /**
      * Destructor
@@ -78,22 +82,22 @@ class Smb4KSyncJob : public KJob
      *
      * @param dest      The destination
      */
-    void setupSynchronization( Smb4KShare *share,
-                               QWidget *parent = 0 );
+    void setupSynchronization(Smb4KShare *share,
+                               QWidget *parent = 0);
 
     /**
      * Returns the source directory.
      *
      * @returns the source directory.
      */
-    const KUrl &source() { return m_src; }
+    const QUrl &source() { return m_src; }
 
     /**
      * Returns the destination directory.
      *
      * @returns the destination directory.
      */
-    const KUrl &destination() { return m_dest; }
+    const QUrl &destination() { return m_dest; }
 
   Q_SIGNALS:
     /**
@@ -102,7 +106,7 @@ class Smb4KSyncJob : public KJob
      *
      * @param dest        The destination's URL
      */
-    void aboutToStart( const QString &dest );
+    void aboutToStart(const QString &dest);
 
     /**
      * This signal is emitted when a job has finished. The emitted
@@ -110,7 +114,7 @@ class Smb4KSyncJob : public KJob
      *
      * @param dest        The destination's URL
      */
-    void finished( const QString &dest );
+    void finished(const QString &dest);
      
   protected:
     /**
@@ -123,20 +127,20 @@ class Smb4KSyncJob : public KJob
     void slotStartSynchronization();
     void slotReadStandardOutput();
     void slotReadStandardError();
-    void slotProcessFinished( int exitCode, QProcess::ExitStatus status );
+    void slotProcessFinished(int exitCode, QProcess::ExitStatus status);
 
   private:
     bool m_started;
     Smb4KShare *m_share;
     QWidget *m_parent_widget;
-    KUrl m_src;
-    KUrl m_dest;
+    QUrl m_src;
+    QUrl m_dest;
     Smb4KProcess *m_proc;
     KUiServerJobTracker *m_job_tracker;
 };
 
 
-class Smb4KSynchronizationDialog : public KDialog
+class Smb4KSynchronizationDialog : public QDialog
 {
   Q_OBJECT
 
@@ -148,7 +152,7 @@ class Smb4KSynchronizationDialog : public KDialog
      *
      * @param parent        The parent widget
      */
-    explicit Smb4KSynchronizationDialog( Smb4KShare *share, QWidget *parent = 0 );
+    explicit Smb4KSynchronizationDialog(Smb4KShare *share, QWidget *parent = 0);
 
     /**
      * The destructor
@@ -158,33 +162,23 @@ class Smb4KSynchronizationDialog : public KDialog
     /**
      * The source URL
      */
-    const KUrl source();
+    const QUrl source();
 
     /**
      * The destination URL
      */
-    const KUrl destination();
+    const QUrl destination();
 
   protected Q_SLOTS:
-    /**
-     * This slot is called when the User1 button is clicked.
-     * It initializes the synchronization.
-     */
-    void slotUser1Clicked();
-
-    /**
-     * This slot is called when the User2 button is clicked.
-     * It swaps the source and destination.
-     */
-    void slotUser2Clicked();
-
-    /**
-     * This slot is called when the Cancel button is clicked.
-     * It aborts any action the synchronizer is performing.
-     */
-    void slotUser3Clicked();
+    void slotCancelClicked();
+    void slotSynchronizeClicked();
+    void slotSwapPathsClicked();
 
   private:
+    QPushButton *m_swap_button;
+    QPushButton *m_synchronize_button;
+    QPushButton *m_cancel_button;
+    
     /**
      * A pointer to the share object
      */

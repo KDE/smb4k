@@ -2,7 +2,7 @@
     smb4ksynchronizer  -  This is the new synchronizer of Smb4K.
                              -------------------
     begin                : Fr Feb 04 2011
-    copyright            : (C) 2011-2012 by Alexander Reinholdt
+    copyright            : (C) 2011-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -42,20 +42,18 @@
 #include <QtCore/QCoreApplication>
 
 // KDE includes
-#include <kglobal.h>
-#include <kstandarddirs.h>
-#include <kshell.h>
+#include <KCoreAddons/KShell>
 
 using namespace Smb4KGlobal;
 
-K_GLOBAL_STATIC( Smb4KSynchronizerStatic, p );
+Q_GLOBAL_STATIC(Smb4KSynchronizerStatic, p);
 
 
-Smb4KSynchronizer::Smb4KSynchronizer( QObject *parent )
-: KCompositeJob( parent ), d( new Smb4KSynchronizerPrivate )
+Smb4KSynchronizer::Smb4KSynchronizer(QObject *parent)
+: KCompositeJob(parent), d(new Smb4KSynchronizerPrivate)
 {
-  setAutoDelete( false );
-  connect( QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()) );
+  setAutoDelete(false);
+  connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()));
 }
 
 
@@ -70,21 +68,21 @@ Smb4KSynchronizer *Smb4KSynchronizer::self()
 }
 
 
-void Smb4KSynchronizer::synchronize( Smb4KShare *share, QWidget *parent )
+void Smb4KSynchronizer::synchronize(Smb4KShare *share, QWidget *parent)
 {
-  if ( !isRunning( share ) )
+  if (!isRunning(share))
   {
     // Create a new job, add it to the subjobs and register it
     // with the job tracker.
-    Smb4KSyncJob *job = new Smb4KSyncJob( this );
-    job->setObjectName( QString( "SyncJob_%1" ).arg( share->canonicalPath() ) );
-    job->setupSynchronization( share, parent );
+    Smb4KSyncJob *job = new Smb4KSyncJob(this);
+    job->setObjectName(QString("SyncJob_%1").arg(share->canonicalPath()));
+    job->setupSynchronization(share, parent);
     
-    connect( job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)) );
-    connect( job, SIGNAL(aboutToStart(QString)), SIGNAL(aboutToStart(QString)) );
-    connect( job, SIGNAL(finished(QString)), SIGNAL(finished(QString)) );
+    connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
+    connect(job, SIGNAL(aboutToStart(QString)), SIGNAL(aboutToStart(QString)));
+    connect(job, SIGNAL(finished(QString)), SIGNAL(finished(QString)));
 
-    addSubjob( job );
+    addSubjob(job);
     
     job->start();
   }
@@ -101,13 +99,13 @@ bool Smb4KSynchronizer::isRunning()
 }
 
 
-bool Smb4KSynchronizer::isRunning( Smb4KShare *share )
+bool Smb4KSynchronizer::isRunning(Smb4KShare *share)
 {
   bool running = false;
 
-  for ( int i = 0; i < subjobs().size(); ++i )
+  for (int i = 0; i < subjobs().size(); ++i)
   {
-    if ( QString::compare( QString( "SyncJob_%1" ).arg( share->canonicalPath() ), subjobs().at( i )->objectName() ) == 0 )
+    if (QString::compare(QString("SyncJob_%1").arg(share->canonicalPath()), subjobs().at(i)->objectName()) == 0)
     {
       running = true;
       break;
@@ -124,20 +122,20 @@ bool Smb4KSynchronizer::isRunning( Smb4KShare *share )
 
 void Smb4KSynchronizer::abortAll()
 {
-  for ( int i = 0; i < subjobs().size(); ++i )
+  for (int i = 0; i < subjobs().size(); ++i)
   {
-    subjobs().at( i )->kill( KJob::EmitResult );
+    subjobs().at(i)->kill(KJob::EmitResult);
   }
 }
 
 
-void Smb4KSynchronizer::abort( Smb4KShare *share )
+void Smb4KSynchronizer::abort(Smb4KShare *share)
 {
-  for ( int i = 0; i < subjobs().size(); ++i )
+  for (int i = 0; i < subjobs().size(); ++i)
   {
-    if ( QString::compare( QString( "SyncJob_%1" ).arg( share->canonicalPath() ), subjobs().at( i )->objectName() ) == 0 )
+    if (QString::compare(QString("SyncJob_%1").arg(share->canonicalPath()), subjobs().at(i)->objectName()) == 0)
     {
-      subjobs().at( i )->kill( KJob::EmitResult );
+      subjobs().at(i)->kill(KJob::EmitResult);
       break;
     }
     else
@@ -150,7 +148,7 @@ void Smb4KSynchronizer::abort( Smb4KShare *share )
 
 void Smb4KSynchronizer::start()
 {
-  QTimer::singleShot( 0, this, SLOT(slotStartJobs()) );
+  QTimer::singleShot(0, this, SLOT(slotStartJobs()));
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -163,10 +161,10 @@ void Smb4KSynchronizer::slotStartJobs()
 }
 
 
-void Smb4KSynchronizer::slotJobFinished( KJob *job )
+void Smb4KSynchronizer::slotJobFinished(KJob *job)
 {
   // Remove the job.
-  removeSubjob( job );
+  removeSubjob(job);
 }
 
 
@@ -175,5 +173,3 @@ void Smb4KSynchronizer::slotAboutToQuit()
   abortAll();
 }
 
-
-#include "smb4ksynchronizer.moc"
