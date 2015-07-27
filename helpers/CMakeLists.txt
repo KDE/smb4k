@@ -1,10 +1,17 @@
-set( smb4kmounthelper_SRCS smb4kmounthelper.cpp )
+set(smb4kmounthelper_SRCS smb4kmounthelper.cpp)
 
-kde4_add_executable( mounthelper ${smb4kmounthelper_SRCS} )
-target_link_libraries( mounthelper ${KDE4_KDECORE_LIBS} ${KDE4_KIO_LIBS} )
-install( TARGETS mounthelper DESTINATION ${LIBEXEC_INSTALL_DIR} )
+add_executable(mounthelper ${smb4kmounthelper_SRCS})
 
-kde4_install_auth_helper_files( mounthelper net.sourceforge.smb4k.mounthelper root )
-kde4_install_auth_actions( net.sourceforge.smb4k.mounthelper smb4kmounthelper.actions )
+target_link_libraries(mounthelper
+  Qt5::Core
+  KF5::Auth
+  KF5::CoreAddons
+  KF5::I18n
+  KF5::KIOCore)
+
+install(TARGETS mounthelper DESTINATION ${KAUTH_HELPER_INSTALL_DIR})
+
+kauth_install_helper_files(mounthelper net.sourceforge.smb4k.mounthelper root)
+kauth_install_actions(net.sourceforge.smb4k.mounthelper smb4kmounthelper.actions)
 
 
