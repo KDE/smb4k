@@ -34,17 +34,16 @@
 #include <QtCore/QStringList>
 #include <QtCore/QtGlobal>
 #include <QtCore/QScopedPointer>
+#include <QtCore/QUrl>
 
 // KDE includes
-#include <kurl.h>
-#include <kuser.h>
-#include <kdemacros.h>
+#include <KCoreAddons/KUser>
 
 // forward declarations
 class Smb4KAuthInfo;
 class Smb4KSharePrivate;
 
-class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
+class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
 {
   friend class Smb4KSharePrivate;
   
@@ -62,7 +61,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * @param shareName     The name of the share.
      */
     Smb4KShare(const QString &hostName,
-                const QString &shareName);
+               const QString &shareName);
 
     /**
      * This constructor takes the UNC @p unc (in the form [smb:]//[USER@]HOST/SHARE) as
@@ -154,46 +153,12 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      */
     QString homeUNC() const;
     
-#if defined(Q_OS_SOLARIS)
-    /**
-     * Returns the UNC (Uniform Naming Convention string) in the Solaris-specific
-     * form //WORKGROUP;user@HOST/Share.
-     * 
-     * This function should only be used for mounting and is only available under 
-     * Solaris/illumos.
-     * 
-     * Please note that this function returns a modified URL string (uppercase
-     * hostname, etc.) and automatically strips a trailing slash if one is present.
-     *
-     * @returns the UNC.
-     */
-    QString fullUNC() const;
-                                                   
-    /**
-     * In case of a 'homes' share, this function returns the UNC (Uniform 
-     * Naming Convention string) of the user's home repository in the 
-     * Solaris-specific form //WORKGROUP;user@HOST/User.
-     * 
-     * If the share is not a 'homes' share or no user name for the homes share
-     * has been defined, this function returns an empty string.
-     * 
-     * This function should only be used for mounting and is only available under 
-     * Solaris/illumos.
-     * 
-     * Please note that this function returns a modified URL string (uppercase
-     * hostname, etc.) and automatically strips a trailing slash if one is present.
-     *
-     * @returns the UNC.
-     */
-    QString fullHomeUNC() const;
-#endif
-                                                       
     /**
      * Sets the URL of the share after some checks are passed.
      * 
      * @param url             The URL of the network item
      */
-    void setURL(const KUrl &url);
+    void setURL(const QUrl &url);
     
     /**
      * Sets the URL of the share.
@@ -207,7 +172,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * 
      * @returns the URL of the share.
      */
-    KUrl url() const;
+    QUrl url() const;
                                                        
     /**
      * In case of a 'homes' share, this function returns the URL of the user's 
@@ -218,7 +183,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * 
      * @returns the user's home repository's URL.
      */
-    KUrl homeURL() const;
+    QUrl homeURL() const;
 
     /**
      * Returns the host's UNC (Uniform Naming Convention string) in the form //HOST.
@@ -407,50 +372,30 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     QString fileSystemString() const;
 
     /**
-     * Sets the UID of the owner of this share.
-     *
-     * @param uid             The UID of the owner
+     * Sets the owner of this share.
+     * @param user             The UID of the owner
      */
-    void setUID(K_UID uid);
+    void setUser(const KUser &user);
 
     /**
-     * Returns the UID of the owner of this share or the UID of the user, if
-     * the UID was not set.
-     *
-     * @returns the UID of the owner.
+     * Returns the owner of this share or the current user, if
+     * the owner was not set using @see setUser().
+     * @returns the owner.
      */
-    K_UID uid() const;
+    KUser user() const;
     
     /**
-     * Returns the owner's login name. If the owner's UID was not set, the login
-     * name of the user is returned.
-     *
-     * @returns the owner's login name.
+     * Set the group that owns this share.
+     * @param group            The owning GID
      */
-    QString owner() const;
+    void setGroup(const KUserGroup &group);
 
     /**
-     * Set the owning GID of this share.
-     *
-     * @param gid             The owning GID
+     * Returns the group that owns this share or the current group, if
+     * the group was not set using @see setGroup().
+     * @returns the group.
      */
-    void setGID(K_GID gid);
-
-    /**
-     * Returns the GID of the owner of this share or the GID of the user, if
-     * the GID was not set.
-     *
-     * @returns the GID of the owner.
-     */
-    K_GID gid() const;
-
-    /**
-     * Returns the owning group name. If the owning GID was not set, the group
-     * name of the user is returned.
-     *
-     * @returns the owning group name.
-     */
-    QString group() const;
+    KUserGroup group() const;
 
     /**
      * Sets the value of the total disk space that is available on the share. If 

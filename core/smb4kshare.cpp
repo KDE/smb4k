@@ -36,17 +36,17 @@
 #include <QtNetwork/QHostAddress>
 
 // KDE includes
-#include <klocale.h>
-#include <kdebug.h>
-#include <kicon.h>
-#include <kiconloader.h>
-#include <kio/global.h>
+#define TRANSLATION_DOMAIN "smb4k-core"
+#include <KI18n/KLocalizedString>
+#include <KIOCore/KIO/Global>
+#include <KIconThemes/KIconLoader>
 
 
 class Smb4KSharePrivate
 {
   public:
-    KUrl url;
+    QUrl url;
+    QUrl homeUrl;
     QString workgroup;
     QString typeString;
     QString comment;
@@ -96,8 +96,8 @@ Smb4KShare::Smb4KShare(const QString &unc)
   d->freeSpace    = -1;
   d->usedSpace    = -1;
   d->mounted      = false;
-  d->url.setUrl(unc, KUrl::TolerantMode);
-  d->url.setProtocol("smb");
+  d->url.setUrl(unc, QUrl::TolerantMode);
+  d->url.setScheme("smb");
   setShareIcon();
 }
 
@@ -132,7 +132,7 @@ Smb4KShare::Smb4KShare()
   d->freeSpace    = -1;
   d->usedSpace    = -1;
   d->mounted      = false;
-  d->url.setProtocol("smb");
+  d->url.setScheme("smb");
 }
 
 
@@ -152,34 +152,21 @@ void Smb4KShare::setShareName(const QString &name)
     d->url.setPath('/'+name.trimmed());
   }
   
-  d->url.setProtocol("smb");
+  d->url.setScheme("smb");
 }
 
 
 QString Smb4KShare::shareName() const
 {
-  // Since users might come up with very weird share names,
-  // we are careful and do not use QString::remove("/"), but
-  // only remove preceding and trailing slashes.
-  QString share_name = d->url.path(KUrl::RemoveTrailingSlash);
-  
-  if (share_name.startsWith('/'))
-  {
-    share_name = share_name.remove(0, 1);
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  return share_name;
+  QString share_name = d->url.path();
+  return share_name.remove("/");
 }
 
 
 void Smb4KShare::setHostName(const QString &hostName)
 {
   d->url.setHost(hostName.trimmed());
-  d->url.setProtocol("smb");
+  d->url.setScheme("smb");
 }
 
 
@@ -223,49 +210,7 @@ QString Smb4KShare::homeUNC() const
 }
 
 
-#if defined(Q_OS_SOLARIS)
-QString Smb4KShare::fullUNC() const
-{
-  QString unc;
-  
-  if (!hostName().isEmpty() && !shareName().isEmpty())
-  {
-    unc = QString("//%1%2%3/%4").arg(!workgroupName().isEmpty() ? workgroupName()+";" : "")
-                                 .arg(!d->url.userName().isEmpty() ? d->url.userName()+"@" : "")
-                                 .arg(hostName())
-                                 .arg(shareName());
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  return unc;
-}
-
-
-QString Smb4KShare::fullHomeUNC() const
-{
-  QString unc;
-  
-  if (isHomesShare() && !hostName().isEmpty() && !d->url.userName().isEmpty())
-  {
-    unc = QString("//%1%2%3/%4").arg(!workgroupName().isEmpty() ? workgroupName()+";" : "")
-                                 .arg(!d->url.userName().isEmpty() ? d->url.userName()+"@" : "")
-                                 .arg(hostName())
-                                 .arg(d->url.userName());
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  return unc;
-}
-#endif
-
-
-void Smb4KShare::setURL(const KUrl &url)
+void Smb4KShare::setURL(const QUrl &url)
 {
   // Check validity.
   if (!url.isValid())
@@ -278,7 +223,7 @@ void Smb4KShare::setURL(const KUrl &url)
   }
 
   // Check protocol
-  if (url.protocol().isEmpty() || QString::compare(url.protocol(), "smb") == 0)
+  if (url.scheme().isEmpty() || QString::compare(url.scheme(), "smb") == 0)
   {
     // Do nothing
   }
@@ -288,7 +233,7 @@ void Smb4KShare::setURL(const KUrl &url)
   }
   
   // Check that the share name is present
-  if (!url.hasPath() || url.path(KUrl::RemoveTrailingSlash).endsWith('/'))
+  if (url.path().isEmpty() || (url.path().size() == 1 && url.path().endsWith('/')))
   {
     return;
   }
@@ -301,33 +246,33 @@ void Smb4KShare::setURL(const KUrl &url)
   d->url = url;
   
   // Force the protocol
-  d->url.setProtocol("smb");
+  d->url.setScheme("smb");
 }
 
 
 void Smb4KShare::setURL(const QString &url)
 {
-  KUrl u;
-  u.setUrl(url, KUrl::TolerantMode);
+  QUrl u;
+  u.setUrl(url, QUrl::TolerantMode);
 
   setURL(u);
 }
 
 
-KUrl Smb4KShare::url() const
+QUrl Smb4KShare::url() const
 {
   return d->url;
 }
 
 
-KUrl Smb4KShare::homeURL() const
+QUrl Smb4KShare::homeURL() const
 {
-  KUrl url;
+  QUrl url;
   
   if (isHomesShare() && !d->url.userName().isEmpty())
   {
     url = d->url;
-    url.setPath(d->url.userName());
+    url.setPath('/'+d->url.userName(), QUrl::TolerantMode);
   }
   else
   {
@@ -387,7 +332,7 @@ QString Smb4KShare::translatedTypeString() const
     return i18n("Disk");
   }
   else if (QString::compare(d->typeString, "Print") == 0 ||
-            QString::compare(d->typeString, "Printer") == 0)
+           QString::compare(d->typeString, "Printer") == 0)
   {
     return i18n("Printer");
   }
@@ -524,39 +469,27 @@ QString Smb4KShare::fileSystemString() const
 }
 
 
-void Smb4KShare::setUID(K_UID uid)
+void Smb4KShare::setUser(const KUser &user)
 {
-  d->user = KUser(uid);
+  d->user = user;
 }
 
 
-uid_t Smb4KShare::uid() const
+KUser Smb4KShare::user() const
 {
-  return d->user.uid();
+  return d->user;
 }
 
 
-QString Smb4KShare::owner() const
+void Smb4KShare::setGroup(const KUserGroup &group)
 {
-  return d->user.loginName();
+  d->group = group;
 }
 
 
-void Smb4KShare::setGID(K_GID gid)
+KUserGroup Smb4KShare::group() const
 {
-  d->group = KUserGroup(gid);
-}
-
-
-K_GID Smb4KShare::gid() const
-{
-  return d->group.gid();
-}
-
-
-QString Smb4KShare::group() const
-{
-  return d->group.name();
+  return d->group;
 }
 
 
@@ -763,7 +696,7 @@ bool Smb4KShare::equals(Smb4KShare *share, CheckFlags flag) const
       }
 
       // UID
-      if (uid() != share->uid())
+      if (user().userId().nativeId() != share->user().userId().nativeId())
       {
         return false;
       }
@@ -773,7 +706,7 @@ bool Smb4KShare::equals(Smb4KShare *share, CheckFlags flag) const
       }
 
       // GID
-      if (gid() != share->gid())
+      if (group().groupId().nativeId() != share->group().groupId().nativeId())
       {
         return false;
       }
@@ -975,7 +908,7 @@ bool Smb4KShare::equals(Smb4KShare *share, CheckFlags flag) const
       }
 
       // UID
-      if (uid() != share->uid())
+      if (user().userId().nativeId() != share->user().userId().nativeId())
       {
         return false;
       }
@@ -985,7 +918,7 @@ bool Smb4KShare::equals(Smb4KShare *share, CheckFlags flag) const
       }
 
       // GID
-      if (gid() != share->gid())
+      if (group().groupId().nativeId() != share->group().groupId().nativeId())
       {
         return false;
       }
@@ -1216,8 +1149,8 @@ void Smb4KShare::setMountData(Smb4KShare *share)
     d->inaccessible = share->isInaccessible();
     d->foreign      = share->isForeign();
     d->filesystem   = share->fileSystem();
-    d->user         = KUser(share->uid());
-    d->group        = KUserGroup(share->gid());
+    d->user         = share->user();
+    d->group        = share->group();
     d->totalSpace   = share->totalDiskSpace();
     d->freeSpace    = share->freeDiskSpace();
     d->usedSpace    = share->usedDiskSpace();
@@ -1354,9 +1287,7 @@ void Smb4KShare::setShareIcon()
     if (isForeign())
     {
       overlays << "";
-      overlays << "flag-red";
-      // FIXME (Smb4K 2.0): Use 'view-media-artist' instead of 'flag-red'.
-//       overlays << "view-media-artist";
+      overlays << "view-media-artist";
     }
     else
     {
@@ -1364,34 +1295,31 @@ void Smb4KShare::setShareIcon()
     }
 
     // The icon
-    KIcon icon;
+    QIcon icon;
     
     if (!isInaccessible())
     {
-      icon = KIcon("folder-remote", KIconLoader::global(), overlays);
+      icon = KDE::icon("folder-network", overlays);
       
-      // FIXME (Smb4K 2.0): Use 'folder-network' instead of 'folder-remote'.
-//       icon = KIcon("folder-network", KIconLoader::global(), overlays);
-//       
-//       if (icon.isNull())
-//       {
-//         icon = KIcon("folder-remote", KIconLoader::global(), overlays);
-//       }
-//       else
-//       {
-//         // Nichts tun
-//       }
+      if (icon.isNull())
+      {
+        icon = KDE::icon("folder-remote", overlays);
+      }
+      else
+      {
+        // Nichts tun
+      }
     }
     else
     {
-      icon = KIcon("folder-locked", KIconLoader::global(), overlays);
+      icon = KDE::icon("folder-locked", overlays);
     }
     
     setIcon(icon);
   }
   else
   {
-    setIcon(KIcon("printer"));
+    setIcon(KDE::icon("printer"));
   }
 }
 
