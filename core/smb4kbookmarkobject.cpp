@@ -32,14 +32,14 @@
 #include "smb4kbookmarkobject.h"
 
 // KDE includes
-#include "kicon.h"
+#include <KIconThemes/KIconLoader>
 
 
 class Smb4KBookmarkObjectPrivate
 {
   public:
     QString workgroup;
-    KUrl url;
+    QUrl url;
     QIcon icon;
     QString label;
     QString group;
@@ -49,7 +49,7 @@ class Smb4KBookmarkObjectPrivate
 
 
 Smb4KBookmarkObject::Smb4KBookmarkObject(Smb4KBookmark* bookmark, QObject* parent)
-: QObject(parent), d( new Smb4KBookmarkObjectPrivate )
+: QObject(parent), d(new Smb4KBookmarkObjectPrivate)
 {
   d->workgroup  = bookmark->workgroupName();
   d->url        = bookmark->url();
@@ -62,9 +62,9 @@ Smb4KBookmarkObject::Smb4KBookmarkObject(Smb4KBookmark* bookmark, QObject* paren
 
 
 Smb4KBookmarkObject::Smb4KBookmarkObject(const QString& groupName, QObject* parent)
-: QObject(parent), d( new Smb4KBookmarkObjectPrivate )
+: QObject(parent), d(new Smb4KBookmarkObjectPrivate)
 {
-  d->icon       = KIcon("folder-favorites");
+  d->icon       = KDE::icon("folder-favorites");
   d->group      = groupName;
   d->isGroup    = true;
   d->isMounted  = false;
@@ -73,7 +73,7 @@ Smb4KBookmarkObject::Smb4KBookmarkObject(const QString& groupName, QObject* pare
 
 
 Smb4KBookmarkObject::Smb4KBookmarkObject(QObject* parent)
-: QObject(parent), d( new Smb4KBookmarkObjectPrivate )
+: QObject(parent), d(new Smb4KBookmarkObjectPrivate)
 {
   d->isGroup    = false;
   d->isMounted  = false;
@@ -100,8 +100,8 @@ void Smb4KBookmarkObject::setWorkgroupName(const QString& name)
 
 QString Smb4KBookmarkObject::unc() const
 {
-  QString path = (d->url.path().startsWith( '/' ) ? d->url.path().remove( 0, 1 ) : d->url.path());
-  return QString( "//%1/%2" ).arg( d->url.host().toUpper() ).arg( path );
+  QString path = (d->url.path().startsWith('/') ? d->url.path().remove(0, 1) : d->url.path());
+  return QString("//%1/%2").arg(d->url.host().toUpper()).arg(path);
 }
 
 
@@ -118,13 +118,13 @@ void Smb4KBookmarkObject::setLabel(const QString& label)
 }
 
 
-KUrl Smb4KBookmarkObject::url() const
+QUrl Smb4KBookmarkObject::url() const
 {
   return d->url;
 }
 
 
-void Smb4KBookmarkObject::setURL(const KUrl& url)
+void Smb4KBookmarkObject::setURL(const QUrl& url)
 {
   d->url = url;
   emit changed();
@@ -182,5 +182,3 @@ void Smb4KBookmarkObject::setMounted(bool mounted)
   emit changed();
 }
 
-
-#include "smb4kbookmarkobject.moc"

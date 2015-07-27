@@ -3,7 +3,7 @@
     encapsulates a bookmark item. It is for use with QtQuick.
                              -------------------
     begin                : Fr Mai 11 2013
-    copyright            : (C) 2013 by Alexander Reinholdt
+    copyright            : (C) 2013-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -34,11 +34,8 @@
 #include <QtCore/QObject>
 #include <QtCore/QString>
 #include <QtCore/QScopedPointer>
+#include <QtCore/QUrl>
 #include <QtGui/QIcon>
-
-// KDE includes
-#include <kdemacros.h>
-#include <kurl.h>
 
 // forward declarations
 class Smb4KBookmarkObjectPrivate;
@@ -52,36 +49,36 @@ class Smb4KBookmarkObjectPrivate;
  * @since 1.1.0
  */
 
-class KDE_EXPORT Smb4KBookmarkObject : public QObject
+class Q_DECL_EXPORT Smb4KBookmarkObject : public QObject
 {
   Q_OBJECT
   
   friend class Smb4KBookmarkObjectPrivate;
   
-  Q_PROPERTY( QString workgroupName READ workgroupName WRITE setWorkgroupName NOTIFY changed )
-  Q_PROPERTY( QString unc READ unc CONSTANT )
-  Q_PROPERTY( QString label READ label WRITE setLabel NOTIFY changed )
-  Q_PROPERTY( QUrl url READ url WRITE setURL NOTIFY changed )
-  Q_PROPERTY( QIcon icon READ icon WRITE setIcon NOTIFY changed )
-  Q_PROPERTY( QString groupName READ groupName WRITE setGroupName NOTIFY changed )
-  Q_PROPERTY( bool isGroup READ isGroup WRITE setGroup NOTIFY changed )
-  Q_PROPERTY( bool isMounted READ isMounted WRITE setMounted NOTIFY changed )
+  Q_PROPERTY(QString workgroupName READ workgroupName WRITE setWorkgroupName NOTIFY changed)
+  Q_PROPERTY(QString unc READ unc CONSTANT)
+  Q_PROPERTY(QString label READ label WRITE setLabel NOTIFY changed)
+  Q_PROPERTY(QUrl url READ url WRITE setURL NOTIFY changed)
+  Q_PROPERTY(QIcon icon READ icon WRITE setIcon NOTIFY changed)
+  Q_PROPERTY(QString groupName READ groupName WRITE setGroupName NOTIFY changed)
+  Q_PROPERTY(bool isGroup READ isGroup WRITE setGroup NOTIFY changed)
+  Q_PROPERTY(bool isMounted READ isMounted WRITE setMounted NOTIFY changed)
   
   public:
     /**
      * Constructor
      */
-    explicit Smb4KBookmarkObject( Smb4KBookmark *bookmark, QObject *parent = 0 );
+    explicit Smb4KBookmarkObject(Smb4KBookmark *bookmark, QObject *parent = 0);
     
     /**
      * Constructor for a bookmark group
      */
-    explicit Smb4KBookmarkObject( const QString &groupName, QObject *parent = 0 );
+    explicit Smb4KBookmarkObject(const QString &groupName, QObject *parent = 0);
     
     /**
      * Empty constructor
      */
-    explicit Smb4KBookmarkObject( QObject *parent = 0 );
+    explicit Smb4KBookmarkObject(QObject *parent = 0);
     
     /**
      * Destructor
@@ -101,7 +98,7 @@ class KDE_EXPORT Smb4KBookmarkObject : public QObject
      * 
      * @param name      The workgroup name
      */
-    void setWorkgroupName( const QString &name );
+    void setWorkgroupName(const QString &name);
     
     /**
      * This function returns the UNC of the bookmarked share.
@@ -123,21 +120,21 @@ class KDE_EXPORT Smb4KBookmarkObject : public QObject
      * 
      * @param label     The label
      */
-    void setLabel( const QString &label );
+    void setLabel(const QString &label);
     
     /**
      * This function returns the URL of this bookmark.
      * 
      * @returns the URL
      */
-    KUrl url() const;
+    QUrl url() const;
     
     /**
      * Set the URL of this bookmark.
      * 
      * @param url       The URL
      */
-    void setURL( const KUrl &url );
+    void setURL(const QUrl &url);
     
     /**
      * This function returns the icon of the bookmark.
@@ -151,7 +148,7 @@ class KDE_EXPORT Smb4KBookmarkObject : public QObject
      * 
      * @param icon      The icon
      */
-    void setIcon( const QIcon &icon );
+    void setIcon(const QIcon &icon);
     
     /**
      * This function returns the name of the group the bookmark is
@@ -166,7 +163,7 @@ class KDE_EXPORT Smb4KBookmarkObject : public QObject
      * 
      * @param name      The group name
      */
-    void setGroupName( const QString &name );
+    void setGroupName(const QString &name);
     
     /**
      * This function returns TRUE if this object represents a bookmark
@@ -181,7 +178,7 @@ class KDE_EXPORT Smb4KBookmarkObject : public QObject
      * 
      * @param group     TRUE for a bookmark group and FALSE otherwise
      */
-    void setGroup( bool group );
+    void setGroup(bool group);
     
     /**
      * Returns TRUE if the share that is represented by this bookmark 
@@ -196,7 +193,7 @@ class KDE_EXPORT Smb4KBookmarkObject : public QObject
      * 
      * @param mounted   Set to TRUE for a mounted share
      */
-    void setMounted( bool mounted );
+    void setMounted(bool mounted);
     
   Q_SIGNALS:
     /**
