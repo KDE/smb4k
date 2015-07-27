@@ -2,7 +2,7 @@
     smb4ksharesiconviewitem  -  The items for Smb4K's shares icon view.
                              -------------------
     begin                : Di Dez 5 2006
-    copyright            : (C) 2006-2012 by Alexander Reinholdt
+    copyright            : (C) 2006-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -31,7 +31,7 @@
 #include "../tooltips/smb4ktooltip.h"
 
 // Qt includes
-#include <QListWidgetItem>
+#include <QtWidgets/QListWidgetItem>
 
 // forward declarations
 class Smb4KSharesIconView;
@@ -40,7 +40,7 @@ class Smb4KSharesIconView;
  * This class provides the items for the shares icon view
  * of Smb4K.
  *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
 class Smb4KSharesIconViewItem : public QListWidgetItem
@@ -53,9 +53,9 @@ class Smb4KSharesIconViewItem : public QListWidgetItem
      *
      * @param parent        The parent widget of this item.
      */
-    Smb4KSharesIconViewItem( Smb4KSharesIconView *parent,
+    Smb4KSharesIconViewItem(Smb4KSharesIconView *parent,
                              Smb4KShare *share,
-                             bool mountpoint = false );
+                             bool mountpoint = false);
 
     /**
      * The destructor
@@ -76,14 +76,14 @@ class Smb4KSharesIconViewItem : public QListWidgetItem
      * @param show          TRUE if the mount point is to be shown and FALSE
      *                      otherwise.
      */
-    void setShowMountPoint( bool show );
+    void setShowMountPoint(bool show);
 
     /**
      * This function updates the encapsulated Smb4KShare object.
      * 
      * @param share         The Smb4KShare item that is used for the update
      */
-    void update( Smb4KShare *share );
+    void update(Smb4KShare *share);
     
     /**
      * This function returns the tool tip of this item.

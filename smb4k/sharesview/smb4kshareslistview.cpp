@@ -2,7 +2,7 @@
     smb4kshareslistview  -  This is the shares list view of Smb4K.
                              -------------------
     begin                : Sa Jun 30 2007
-    copyright            : (C) 2007-2014 by Alexander Reinholdt
+    copyright            : (C) 2007-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -34,72 +34,58 @@
 #include "core/smb4ksettings.h"
 
 // Qt includes
-#include <QMouseEvent>
-#include <QWheelEvent>
-#include <QDesktopWidget>
-#include <QApplication>
-#include <QHeaderView>
-#include <QDrag>
+#include <QtGui/QMouseEvent>
+#include <QtGui/QWheelEvent>
+#include <QtGui/QDrag>
+#include <QtCore/QUrl>
+#include <QtWidgets/QDesktopWidget>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QHeaderView>
 
 // KDE includes
-#include <klocale.h>
-#include <kdebug.h>
-#include <kapplication.h>
-#include <kglobalsettings.h>
-#include <kiconloader.h>
-#include <kicon.h>
+#include <KI18n/KLocalizedString>
+#include <KIconThemes/KIconLoader>
 
 
-Smb4KSharesListView::Smb4KSharesListView( QWidget *parent )
-: QTreeWidget( parent )
+Smb4KSharesListView::Smb4KSharesListView(QWidget *parent)
+: QTreeWidget(parent)
 {
-  setAllColumnsShowFocus( false );
-  setMouseTracking( true );
-  setRootIsDecorated( false );
-  setSelectionMode( ExtendedSelection );
-  setAcceptDrops( true );
-  setDragEnabled( true );
-  setDropIndicatorShown( true );
+  setAllColumnsShowFocus(false);
+  setMouseTracking(true);
+  setRootIsDecorated(false);
+  setSelectionMode(ExtendedSelection);
+  setAcceptDrops(true);
+  setDragEnabled(true);
+  setDropIndicatorShown(true);
 
-  setContextMenuPolicy( Qt::CustomContextMenu );
+  setContextMenuPolicy(Qt::CustomContextMenu);
 
-  m_tooltip_item = NULL;
-  m_auto_select_timer = new QTimer( this );
+  m_tooltip_item = 0;
   m_mouse_inside = false;
 
   QStringList header_labels;
-  header_labels.append( i18n( "Item" ) );
-#ifdef Q_OS_LINUX
-  header_labels.append( i18n( "Login" ) );
+  header_labels.append(i18n("Item"));
+#if defined(Q_OS_LINUX)
+  header_labels.append(i18n("Login"));
 #endif
-  header_labels.append( i18n( "File System" ) );
-  header_labels.append( i18n( "Owner" ) );
-  header_labels.append( i18n( "Free" ) );
-  header_labels.append( i18n( "Used" ) );
-  header_labels.append( i18n( "Total" ) );
-  header_labels.append( i18n( "Usage" ) );
-  setHeaderLabels( header_labels );
+  header_labels.append(i18n("File System"));
+  header_labels.append(i18n("Owner"));
+  header_labels.append(i18n("Free"));
+  header_labels.append(i18n("Used"));
+  header_labels.append(i18n("Total"));
+  header_labels.append(i18n("Usage"));
+  setHeaderLabels(header_labels);
 
-  header()->setStretchLastSection( false );
-  header()->setResizeMode( QHeaderView::ResizeToContents );
-  header()->setResizeMode( Item, QHeaderView::Stretch );
+  header()->setStretchLastSection(false);
+  header()->setResizeMode(QHeaderView::ResizeToContents);
+  header()->setResizeMode(Item, QHeaderView::Stretch);
 
   // Connections:
-  connect( this, SIGNAL(itemEntered(QTreeWidgetItem*,int)),
-           this, SLOT(slotItemEntered(QTreeWidgetItem*,int)) );
-
-  connect( this, SIGNAL(viewportEntered()),
-           this, SLOT(slotViewportEntered()) );
-
-  // We need to conform with KDE's settings (see also slotKDESettingsChanged(),
-  // slotItemEntered() and slotViewportEntered()).
-  slotKDESettingsChanged( KGlobalSettings::SETTINGS_MOUSE );
-
-  connect( KGlobalSettings::self(), SIGNAL(settingsChanged(int)),
-           this,                    SLOT(slotKDESettingsChanged(int)) );
-
-  connect( m_auto_select_timer,     SIGNAL(timeout()),
-           this,                    SLOT(slotAutoSelectItem()) );
+  connect(this, SIGNAL(itemEntered(QTreeWidgetItem*,int)),
+          this, SLOT(slotItemEntered(QTreeWidgetItem*,int)));
+  
+  connect(this, SIGNAL(viewportEntered()),
+          this, SLOT(slotViewportEntered()));
 }
 
 
@@ -108,19 +94,19 @@ Smb4KSharesListView::~Smb4KSharesListView()
 }
 
 
-bool Smb4KSharesListView::event( QEvent *e )
+bool Smb4KSharesListView::event(QEvent *e)
 {
-  switch ( e->type() )
+  switch (e->type())
   {
     case QEvent::ToolTip:
     {
       // Intercept the tool tip event and show our own tool tip.
-      QPoint pos = viewport()->mapFromGlobal( cursor().pos() );
-      Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>( itemAt( pos ) );
+      QPoint pos = viewport()->mapFromGlobal(cursor().pos());
+      Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>(itemAt(pos));
       
-      if ( item )
+      if (item)
       {
-        if ( Smb4KSettings::showShareToolTip() )
+        if (Smb4KSettings::showShareToolTip())
         {
           m_tooltip_item = item;
           emit aboutToShowToolTip(m_tooltip_item);
@@ -128,11 +114,11 @@ bool Smb4KSharesListView::event( QEvent *e )
         }
         else
         {
-          if ( m_tooltip_item )
+          if (m_tooltip_item)
           {
             emit aboutToHideToolTip(m_tooltip_item);
             m_tooltip_item->tooltip()->hide();
-            m_tooltip_item = NULL;
+            m_tooltip_item = 0;
           }
           else
           {
@@ -142,11 +128,11 @@ bool Smb4KSharesListView::event( QEvent *e )
       }
       else
       {
-        if ( m_tooltip_item )
+        if (m_tooltip_item)
         {
           emit aboutToHideToolTip(m_tooltip_item);
           m_tooltip_item->tooltip()->hide();
-          m_tooltip_item = NULL;
+          m_tooltip_item = 0;
         }
         else
         {
@@ -161,64 +147,63 @@ bool Smb4KSharesListView::event( QEvent *e )
     }
   }
 
-  return QTreeWidget::event( e );
+  return QTreeWidget::event(e);
 }
 
 
-void Smb4KSharesListView::mouseMoveEvent( QMouseEvent *e )
+void Smb4KSharesListView::mouseMoveEvent(QMouseEvent *e)
 {
-  QPoint pos = viewport()->mapFromGlobal( cursor().pos() );
+  QPoint pos = viewport()->mapFromGlobal(cursor().pos());
 
   // Find the item over which the user moved the mouse:
-  Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>( itemAt( pos ) );
+  Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>(itemAt(pos));
 
-  if ( item )
+  if (item)
   {
-    emit itemEntered( item, columnAt( pos.x() ) );
+    emit itemEntered(item, columnAt(pos.x()));
   }
   else
   {
     // Do nothing
   }
 
-  QTreeWidget::mouseMoveEvent( e );
+  QTreeWidget::mouseMoveEvent(e);
 }
 
 
-void Smb4KSharesListView::leaveEvent( QEvent *e )
+void Smb4KSharesListView::leaveEvent(QEvent *e)
 {
-  if ( m_tooltip_item )
+  if (m_tooltip_item)
   {
     emit aboutToHideToolTip(m_tooltip_item);
     m_tooltip_item->tooltip()->hide();
-    m_tooltip_item = NULL;
+    m_tooltip_item = 0;
   }
   else
   {
     // Do nothing
   }
   
-  m_auto_select_timer->stop();
   m_mouse_inside = false;
-  QTreeWidget::leaveEvent( e );
+  QTreeWidget::leaveEvent(e);
 }
 
 
-void Smb4KSharesListView::enterEvent( QEvent *e )
+void Smb4KSharesListView::enterEvent(QEvent *e)
 {
   m_mouse_inside = true;
-  QTreeWidget::enterEvent( e );
+  QTreeWidget::enterEvent(e);
 }
 
 
-void Smb4KSharesListView::mousePressEvent( QMouseEvent *e )
+void Smb4KSharesListView::mousePressEvent(QMouseEvent *e)
 {
   // Hide the current tool tip so that it is not in the way.
-  if ( m_tooltip_item )
+  if (m_tooltip_item)
   {
     emit aboutToHideToolTip(m_tooltip_item);
     m_tooltip_item->tooltip()->hide();
-    m_tooltip_item = NULL;
+    m_tooltip_item = 0;
   }
   else
   {
@@ -227,50 +212,49 @@ void Smb4KSharesListView::mousePressEvent( QMouseEvent *e )
 
   // Get the item that is under the mouse. If there is no
   // item, unselect the current item.
-  QTreeWidgetItem *item = itemAt( e->pos() );
+  QTreeWidgetItem *item = itemAt(e->pos());
 
-  if ( !item && !selectedItems().isEmpty() )
+  if (!item && !selectedItems().isEmpty())
   {
     clearSelection();
-    setCurrentItem( NULL );
-    emit itemPressed( currentItem(), -1 );
+    setCurrentItem(0);
+    emit itemPressed(currentItem(), -1);
   }
   else
   {
     // Do nothing
   }
 
-  QTreeWidget::mousePressEvent( e );
+  QTreeWidget::mousePressEvent(e);
 }
 
 
-void Smb4KSharesListView::focusOutEvent( QFocusEvent *e )
+void Smb4KSharesListView::focusOutEvent(QFocusEvent *e)
 {
-  m_auto_select_timer->stop();
-  QTreeWidget::focusOutEvent( e );
+  QTreeWidget::focusOutEvent(e);
 }
 
 
-void Smb4KSharesListView::wheelEvent( QWheelEvent *e )
+void Smb4KSharesListView::wheelEvent(QWheelEvent *e)
 {
-  if ( m_tooltip_item )
+  if (m_tooltip_item)
   {
     emit aboutToHideToolTip(m_tooltip_item);
     m_tooltip_item->tooltip()->hide();
-    m_tooltip_item = NULL;
+    m_tooltip_item = 0;
   }
   else
   {
     // Do nothing
   }
   
-  QTreeWidget::wheelEvent( e );
+  QTreeWidget::wheelEvent(e);
 }
 
 
-void Smb4KSharesListView::dragEnterEvent( QDragEnterEvent *e )
+void Smb4KSharesListView::dragEnterEvent(QDragEnterEvent *e)
 {
-  if ( e->mimeData()->hasUrls() )
+  if (e->mimeData()->hasUrls())
   {
     e->accept();
   }
@@ -281,20 +265,20 @@ void Smb4KSharesListView::dragEnterEvent( QDragEnterEvent *e )
 }
 
 
-void Smb4KSharesListView::dragMoveEvent( QDragMoveEvent *e )
+void Smb4KSharesListView::dragMoveEvent(QDragMoveEvent *e)
 {
   // Let the QAbstractItemView do the highlighting of the item, etc.
-  QAbstractItemView::dragMoveEvent( e );
+  QAbstractItemView::dragMoveEvent(e);
 
   // Now we do our thing.
-  Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>( itemAt( e->pos() ) );
+  Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>(itemAt(e->pos()));
 
-  if ( item && (item->flags() & Qt::ItemIsDropEnabled) &&
-       (e->proposedAction() & (Qt::CopyAction | Qt::MoveAction)) )
+  if (item && (item->flags() & Qt::ItemIsDropEnabled) &&
+       (e->proposedAction() & (Qt::CopyAction | Qt::MoveAction)))
   {
-    KUrl url( item->shareItem()->path() );
+    QUrl url(item->shareItem()->path());
 
-    if ( e->source() == this && e->mimeData()->urls().first() == url )
+    if (e->source() == this && e->mimeData()->urls().first() == url)
     {
       e->ignore();
     }
@@ -311,15 +295,15 @@ void Smb4KSharesListView::dragMoveEvent( QDragMoveEvent *e )
 }
 
 
-void Smb4KSharesListView::dropEvent( QDropEvent *e )
+void Smb4KSharesListView::dropEvent(QDropEvent *e)
 {
-  Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>( itemAt( e->pos() ) );
+  Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>(itemAt(e->pos()));
 
-  if ( item && (e->proposedAction() & (Qt::CopyAction | Qt::MoveAction)) )
+  if (item && (e->proposedAction() & (Qt::CopyAction | Qt::MoveAction)))
   {
-    KUrl url( item->shareItem()->path() );
+    QUrl url(item->shareItem()->path());
 
-    if ( e->source() == this && e->mimeData()->urls().first() == url )
+    if (e->source() == this && e->mimeData()->urls().first() == url)
     {
       e->ignore();
     }
@@ -327,7 +311,7 @@ void Smb4KSharesListView::dropEvent( QDropEvent *e )
     {
       e->acceptProposedAction();
 
-      emit acceptedDropEvent( item, e );
+      emit acceptedDropEvent(item, e);
     }
   }
   else
@@ -344,30 +328,30 @@ Qt::DropActions Smb4KSharesListView::supportedDropActions() const
 }
 
 
-QMimeData *Smb4KSharesListView::mimeData( const QList<QTreeWidgetItem *> list ) const
+QMimeData *Smb4KSharesListView::mimeData(const QList<QTreeWidgetItem *> list) const
 {
   QMimeData *mimeData = new QMimeData();
   QList<QUrl> urls;
 
-  for ( int i = 0; i < list.count(); ++i )
+  for (int i = 0; i < list.count(); ++i)
   {
-    Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>( list.at( i ) );
-    urls.append( KUrl( item->shareItem()->path() ) );
+    Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>(list.at(i));
+    urls.append(QUrl(item->shareItem()->path()));
   }
 
-  mimeData->setUrls( urls );
+  mimeData->setUrls(urls);
 
   return mimeData;
 }
 
 
-void Smb4KSharesListView::startDrag( Qt::DropActions supported )
+void Smb4KSharesListView::startDrag(Qt::DropActions supported)
 {
-  if ( m_tooltip_item )
+  if (m_tooltip_item)
   {
     emit aboutToHideToolTip(m_tooltip_item);
     m_tooltip_item->tooltip()->hide();
-    m_tooltip_item = NULL;
+    m_tooltip_item = 0;
   }
   else
   {
@@ -376,33 +360,33 @@ void Smb4KSharesListView::startDrag( Qt::DropActions supported )
 
   QList<QTreeWidgetItem *> list = selectedItems();
 
-  if ( !list.isEmpty() )
+  if (!list.isEmpty())
   {
-    QMimeData *data = mimeData( list );
+    QMimeData *data = mimeData(list);
 
-    if ( !data )
+    if (!data)
     {
       return;
     }
 
-    QDrag *drag = new QDrag( this );
+    QDrag *drag = new QDrag(this);
 
     QPixmap pixmap;
 
-    if ( list.count() == 1 )
+    if (list.count() == 1)
     {
-      Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>( list.first() );
-      pixmap = item->shareItem()->icon().pixmap( KIconLoader::SizeMedium );
+      Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>(list.first());
+      pixmap = item->shareItem()->icon().pixmap(KIconLoader::SizeMedium);
     }
     else
     {
-      pixmap = KIcon( "document-multiple" ).pixmap( KIconLoader::SizeMedium );
+      pixmap = KDE::icon("document-multiple").pixmap(KIconLoader::SizeMedium);
     }
 
-    drag->setPixmap( pixmap );
-    drag->setMimeData( data );
+    drag->setPixmap(pixmap);
+    drag->setMimeData(data);
 
-    drag->exec( supported, Qt::IgnoreAction );
+    drag->exec(supported, Qt::IgnoreAction);
   }
   else
   {
@@ -415,35 +399,15 @@ void Smb4KSharesListView::startDrag( Qt::DropActions supported )
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
 
-void Smb4KSharesListView::slotItemEntered( QTreeWidgetItem *item, int /*column*/ )
+void Smb4KSharesListView::slotItemEntered(QTreeWidgetItem *item, int /*column*/)
 {
-  // Comply with KDE's settings.
-  if ( item && m_use_single_click )
-  {
-    if ( m_change_cursor_over_icon )
-    {
-      viewport()->setCursor( QCursor( Qt::PointingHandCursor ) );
-    }
-
-    if ( m_auto_select_delay > -1 )
-    {
-      m_auto_select_item = item;
-      m_auto_select_timer->setSingleShot( true );
-      m_auto_select_timer->start( m_auto_select_delay );
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
+  Smb4KSharesListViewItem *share_item = static_cast<Smb4KSharesListViewItem *>(item);
   
-  Smb4KSharesListViewItem *share_item = static_cast<Smb4KSharesListViewItem *>( item );
-  
-  if ( m_tooltip_item && m_tooltip_item != share_item )
+  if (m_tooltip_item && m_tooltip_item != share_item)
   {
     emit aboutToHideToolTip(m_tooltip_item);
     m_tooltip_item->tooltip()->hide();
-    m_tooltip_item = NULL;
+    m_tooltip_item = 0;
   }
   else
   {
@@ -454,24 +418,11 @@ void Smb4KSharesListView::slotItemEntered( QTreeWidgetItem *item, int /*column*/
 
 void Smb4KSharesListView::slotViewportEntered()
 {
-  // Comply with KDE's settings.
-  if ( m_change_cursor_over_icon )
-  {
-    viewport()->unsetCursor();
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  m_auto_select_timer->stop();
-  m_auto_select_item = 0;
-
-  if ( m_tooltip_item )
+  if (m_tooltip_item)
   {
     emit aboutToHideToolTip(m_tooltip_item);
     m_tooltip_item->tooltip()->hide();
-    m_tooltip_item = NULL;
+    m_tooltip_item = 0;
   }
   else
   {
@@ -479,172 +430,3 @@ void Smb4KSharesListView::slotViewportEntered()
   }
 }
 
-
-void Smb4KSharesListView::slotKDESettingsChanged( int category )
-{
-  // Adjust to KDE's default mouse settings.
-  if ( category != KGlobalSettings::SETTINGS_MOUSE )
-  {
-    return;
-  }
-
-  disconnect( this, SIGNAL(itemClicked(QTreeWidgetItem*,int)) );
-  disconnect( this, SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)) );
-
-  m_use_single_click        = KGlobalSettings::singleClick();
-  m_change_cursor_over_icon = KGlobalSettings::changeCursorOverIcon();
-  m_auto_select_delay       = KGlobalSettings::autoSelectDelay();
-
-  if ( m_use_single_click )
-  {
-    connect( this, SIGNAL(itemClicked(QTreeWidgetItem*,int)),
-             this, SIGNAL(itemExecuted(QTreeWidgetItem*,int)) );
-  }
-  else
-  {
-    connect( this, SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),
-             this, SIGNAL(itemExecuted(QTreeWidgetItem*,int)) );
-  }
-
-  if ( !m_use_single_click || !m_change_cursor_over_icon )
-  {
-    viewport()->unsetCursor();
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KSharesListView::slotAutoSelectItem()
-{
-  // Check that the item is still valid.
-  QPoint pos = viewport()->mapFromGlobal( cursor().pos() );
-  QTreeWidgetItem *item = itemAt( pos );
-
-  if ( !m_auto_select_item || !item || m_auto_select_item != item )
-  {
-    return;
-  }
-  else
-  {
-    // Do nothing. We are OK.
-  }
-
-  // Give the widget the keyboard focus.
-  if ( !hasFocus() )
-  {
-    setFocus();
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Now set up the auto selection. Most of this has been "stolen" from
-  // the KListWidget code.
-  Qt::KeyboardModifiers modifiers = QApplication::keyboardModifiers();
-
-  QTreeWidgetItem *previousItem = currentItem();
-  setCurrentItem( m_auto_select_item );
-
-  if ( m_auto_select_item )
-  {
-    if ( (modifiers & Qt::ShiftModifier) )
-    {
-      bool block = signalsBlocked();
-      blockSignals( true );
-
-      // If no CTRL is pressed, clear before.
-      if ( !(modifiers & Qt::ControlModifier ) )
-      {
-        clearSelection();
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      bool select = !m_auto_select_item->isSelected();
-      bool update = viewport()->updatesEnabled();
-      viewport()->setUpdatesEnabled( false );
-
-      bool down = indexFromItem( previousItem ).row() < indexFromItem( m_auto_select_item ).row();
-
-      QTreeWidgetItem *indexItem = down ? previousItem : m_auto_select_item;
-
-      QTreeWidgetItemIterator it( indexItem );
-
-      while ( *it )
-      {
-        if ( down && *it == m_auto_select_item )
-        {
-          m_auto_select_item->setSelected( select );
-
-          break;
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        if ( !down && *it == previousItem )
-        {
-          previousItem->setSelected( select );
-          break;
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        indexItem->setSelected( select );
-
-        ++it;
-      }
-
-      blockSignals( block );
-      viewport()->setUpdatesEnabled( update );
-
-      emit itemSelectionChanged();
-
-      if ( selectionMode() == QTreeWidget::SingleSelection )
-      {
-        emit itemSelectionChanged();
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else if ( (modifiers & Qt::ControlModifier) )
-    {
-      m_auto_select_item->setSelected( !m_auto_select_item->isSelected() );
-    }
-    else
-    {
-      bool block = signalsBlocked();
-      blockSignals( true );
-
-      if ( !m_auto_select_item->isSelected() )
-      {
-        clearSelection();
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      blockSignals( block );
-
-      m_auto_select_item->setSelected( true );
-    }
-  }
-  else
-  {
-    // Do nothing. This should never happen, however.
-  }
-}
-
-#include "smb4kshareslistview.moc"

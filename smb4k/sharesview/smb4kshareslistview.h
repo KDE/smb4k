@@ -2,7 +2,7 @@
     smb4kshareslistview  -  This is the shares list view of Smb4K.
                              -------------------
     begin                : Sa Jun 30 2007
-    copyright            : (C) 2007-2014 by Alexander Reinholdt
+    copyright            : (C) 2007-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -27,10 +27,9 @@
 #define SMB4KSHARESLISTVIEW_H
 
 // Qt includes
-#include <QTreeWidget>
-#include <QTimer>
-
-// KDE includes
+#include <QtCore/QTimer>
+#include <QtCore/QMimeData>
+#include <QtWidgets/QTreeWidget>
 
 // forward declarations
 class Smb4KSharesListViewItem;
@@ -39,7 +38,7 @@ class Smb4KToolTip;
 /**
  * This widget class provides the shares list view of Smb4K.
  *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
 class Smb4KSharesListView : public QTreeWidget
@@ -52,7 +51,7 @@ class Smb4KSharesListView : public QTreeWidget
      *
      * @param parent        The parent widget
      */
-    explicit Smb4KSharesListView( QWidget *parent = 0 );
+    explicit Smb4KSharesListView(QWidget *parent = 0);
 
     /**
      * The destructor
@@ -62,7 +61,7 @@ class Smb4KSharesListView : public QTreeWidget
     /**
      * Enumeration for the columns.
      */
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_LINUX)
     enum Columns { Item = 0,
                    Login = 1,
                    FileSystem = 2,
@@ -83,16 +82,6 @@ class Smb4KSharesListView : public QTreeWidget
 
   signals:
     /**
-     * This signal is emitted when an item has been executed.
-     *
-     * @param item          The item that was executed.
-     *
-     * @param column        The column where the item was executed.
-     */
-    void itemExecuted( QTreeWidgetItem *item,
-                       int column );
-
-    /**
      * This signal is emitted when something has been dropped onto
      * @p item and the drop event was accepted.
      *
@@ -100,34 +89,33 @@ class Smb4KSharesListView : public QTreeWidget
      *
      * @param e             The drop event.
      */
-    void acceptedDropEvent( Smb4KSharesListViewItem *item,
-                            QDropEvent *e );
+    void acceptedDropEvent(Smb4KSharesListViewItem *item, QDropEvent *e);
     
     /**
      * This signal is emitted when a tool tip is about to be shown.
      * 
      * @param item          The shares list view item
      */
-    void aboutToShowToolTip( Smb4KSharesListViewItem *item );
+    void aboutToShowToolTip(Smb4KSharesListViewItem *item);
     
     /**
      * This signal is emitted when a tool tip is about to be hidden.
      * 
      * @param item          The shares list view item
      */
-    void aboutToHideToolTip( Smb4KSharesListViewItem *item );
+    void aboutToHideToolTip(Smb4KSharesListViewItem *item);
 
   protected:
     /**
      * Reimplemented from QTreeWidget.
      */
-    bool event( QEvent *e );
+    bool event(QEvent *e);
 
     /**
      * Reimplemented from QTreeWidget. This function is used to
      * show the tooltips.
      */
-    void mouseMoveEvent( QMouseEvent *e );
+    void mouseMoveEvent(QMouseEvent *e);
 
     /**
      * Reimplemented from QWidget. This function emits the signal
@@ -135,7 +123,7 @@ class Smb4KSharesListView : public QTreeWidget
      *
      * @param e             The event object
      */
-    void leaveEvent( QEvent *e );
+    void leaveEvent(QEvent *e);
 
     /**
      * Reimplemented from QWidget. This function emits the signal
@@ -143,7 +131,7 @@ class Smb4KSharesListView : public QTreeWidget
      *
      * @param e             The event object
      */
-    void enterEvent( QEvent *e );
+    void enterEvent(QEvent *e);
 
     /**
      * Reimplemented from QAbstractItemView. This function handles
@@ -151,7 +139,7 @@ class Smb4KSharesListView : public QTreeWidget
      *
      * @param e             The mouse event object
      */
-    void mousePressEvent( QMouseEvent *e );
+    void mousePressEvent(QMouseEvent *e);
 
     /**
      * Reimplemented from QAbstractItemView. This function is used
@@ -159,7 +147,7 @@ class Smb4KSharesListView : public QTreeWidget
      *
      * @param e             The focus event
      */
-    void focusOutEvent( QFocusEvent *e );
+    void focusOutEvent(QFocusEvent *e);
 
     /**
      * Reimplemented from QWidget. This function is used to handle
@@ -167,28 +155,28 @@ class Smb4KSharesListView : public QTreeWidget
      *
      * @param e             The wheel event
      */
-    void wheelEvent( QWheelEvent *e );
+    void wheelEvent(QWheelEvent *e);
 
     /**
      * Reimplemented to allow dragging and dropping.
      *
      * @param e             The drag event
      */
-    void dragEnterEvent( QDragEnterEvent *e );
+    void dragEnterEvent(QDragEnterEvent *e);
 
     /**
      * Reimplemented to allow dragging and dropping.
      *
      * @param e             The drag move event
      */
-    void dragMoveEvent( QDragMoveEvent *e );
+    void dragMoveEvent(QDragMoveEvent *e);
 
     /**
      * Reimplemented to allow dragging and dropping.
      *
      * @param e             The drop event
      */
-    void dropEvent( QDropEvent *e );
+    void dropEvent(QDropEvent *e);
 
     /**
      * Reimplemented to allow only the copy drop action.
@@ -198,12 +186,12 @@ class Smb4KSharesListView : public QTreeWidget
     /**
      * Reimplemented to allow dragging.
      */
-    QMimeData *mimeData( const QList<QTreeWidgetItem *> list ) const;
+    QMimeData *mimeData(const QList<QTreeWidgetItem *> list) const;
 
     /**
      * Reimplemented to allow dragging.
      */
-    void startDrag( Qt::DropActions supported );
+    void startDrag(Qt::DropActions supported);
 
   protected slots:
     /**
@@ -214,26 +202,13 @@ class Smb4KSharesListView : public QTreeWidget
      *
      * @param column          The column where the mouse entered the item.
      */
-    void slotItemEntered( QTreeWidgetItem *item,
-                          int column );
+    void slotItemEntered(QTreeWidgetItem *item, int column);
 
     /**
      * This slot is invoked when the viewport is entered. It is used
      * to hide the tool tip if needed.
      */
     void slotViewportEntered();
-
-    /**
-     * This slot is used to adjust to KDE's settings.
-     *
-     * @param category      The category where the settings changed.
-     */
-    void slotKDESettingsChanged( int category );
-
-    /**
-     * This slot is used to auto select the item under the mouse.
-     */
-    void slotAutoSelectItem();
 
   private:
     /**
@@ -242,35 +217,9 @@ class Smb4KSharesListView : public QTreeWidget
     Smb4KSharesListViewItem *m_tooltip_item;
 
     /**
-     * Auto-selection timer
-     */
-    QTimer *m_auto_select_timer;
-
-    /**
      * Is the mouse inside the widget?
      */
     bool m_mouse_inside;
-
-    /**
-     * Determines if single or double click is used.
-     */
-    bool m_use_single_click;
-
-    /**
-     * Determines if the cursor is changed over an
-     * item in single click mode.
-     */
-    bool m_change_cursor_over_icon;
-
-    /**
-     * Carries the auto select delay.
-     */
-    int m_auto_select_delay;
-
-    /**
-     * The item for auto selection.
-     */
-    QTreeWidgetItem *m_auto_select_item;
 };
 
 #endif

@@ -2,7 +2,7 @@
     smb4ksharesiconviewitem  -  The items for Smb4K's shares icon view.
                              -------------------
     begin                : Di Dez 5 2006
-    copyright            : (C) 2006-2012 by Alexander Reinholdt
+    copyright            : (C) 2006-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -31,32 +31,27 @@
 #include "smb4ksharesiconviewitem.h"
 #include "smb4ksharesiconview.h"
 
-// KDE includes
-#include <kiconeffect.h>
-#include <kdebug.h>
-#include <kicon.h>
-#include <kiconloader.h>
 
-Smb4KSharesIconViewItem::Smb4KSharesIconViewItem( Smb4KSharesIconView *parent, Smb4KShare *share, bool mountpoint )
-: QListWidgetItem( parent ), m_mountpoint( mountpoint )
+Smb4KSharesIconViewItem::Smb4KSharesIconViewItem(Smb4KSharesIconView *parent, Smb4KShare *share, bool mountpoint)
+: QListWidgetItem(parent), m_mountpoint(mountpoint)
 {
-  setFlags( flags() | Qt::ItemIsDropEnabled );
+  setFlags(flags() | Qt::ItemIsDropEnabled);
 
-  m_share = new Smb4KShare( *share );
+  m_share = new Smb4KShare(*share);
   
   m_tooltip   = new Smb4KToolTip();
-  m_tooltip->setup( Smb4KToolTip::SharesView, m_share );
+  m_tooltip->setup(Smb4KToolTip::SharesView, m_share);
   
-  if ( !m_mountpoint )
+  if (!m_mountpoint)
   {
-    setText( m_share->unc() );
+    setText(m_share->unc());
   }
   else
   {
-    setText( m_share->path() );
+    setText(m_share->path());
   }
 
-  setIcon( m_share->icon() );
+  setIcon(m_share->icon());
 }
 
 
@@ -67,30 +62,30 @@ Smb4KSharesIconViewItem::~Smb4KSharesIconViewItem()
 }
 
 
-void Smb4KSharesIconViewItem::setShowMountPoint( bool show )
+void Smb4KSharesIconViewItem::setShowMountPoint(bool show)
 {
   m_mountpoint = show;
-  update( m_share );
+  update(m_share);
 }
 
 
-void Smb4KSharesIconViewItem::update( Smb4KShare *share )
+void Smb4KSharesIconViewItem::update(Smb4KShare *share)
 {
   delete m_share;
-  m_share = new Smb4KShare( *share );
+  m_share = new Smb4KShare(*share);
   
-  m_tooltip->update( Smb4KToolTip::SharesView, m_share );
+  m_tooltip->update(Smb4KToolTip::SharesView, m_share);
   
-  if ( !m_mountpoint )
+  if (!m_mountpoint)
   {
-    setText( m_share->unc() );
+    setText(m_share->unc());
   }
   else
   {
-    setText( m_share->path() );
+    setText(m_share->path());
   }
 
-  setIcon( m_share->icon() );
+  setIcon(m_share->icon());
 }
 
 

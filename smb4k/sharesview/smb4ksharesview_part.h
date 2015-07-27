@@ -2,7 +2,7 @@
     smb4ksharesview_part  -This Part includes the shares view of Smb4K.
                              -------------------
     begin                : Sa Jun 30 2007
-    copyright            : (C) 2007-2014 by Alexander Reinholdt
+    copyright            : (C) 2007-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -26,17 +26,16 @@
 #ifndef SMB4KSHARESVIEW_PART_H
 #define SMB4KSHARESVIEW_PART_H
 
+// applications specific includes
+#include "smb4kshareslistview.h"
+#include "smb4ksharesiconview.h"
+
 // Qt includes
-#include <QGridLayout>
+#include <QtWidgets/QGridLayout>
 
 // KDE includes
-#include <kparts/part.h>
-#include <kparts/genericfactory.h>
-#include <kactionmenu.h>
-
-// applications specific includes
-#include <smb4kshareslistview.h>
-#include <smb4ksharesiconview.h>
+#include <KParts/Part>
+#include <KWidgetsAddons/KActionMenu>
 
 // forward declarations
 class Smb4KShare;
@@ -44,10 +43,10 @@ class Smb4KShare;
 /**
  * This is one of the parts of Smb4K. It contains the shares view.
  *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class Smb4KSharesViewPart : public KParts::Part
+class Q_DECL_EXPORT Smb4KSharesViewPart : public KParts::Part
 {
   Q_OBJECT
 
@@ -65,9 +64,9 @@ class Smb4KSharesViewPart : public KParts::Part
      *                            bookmark_shortcut="true"|"false"
      *                            silent="true"|"false"
      */
-    explicit Smb4KSharesViewPart( QWidget *parentWidget = 0,
-                                  QObject *parent = 0,
-                                  const QList<QVariant> &args = QList<QVariant>() );
+    explicit Smb4KSharesViewPart(QWidget *parentWidget = 0,
+                                 QObject *parent = 0,
+                                 const QList<QVariant> &args = QList<QVariant>());
 
     /**
      * The destructor.
@@ -85,7 +84,7 @@ class Smb4KSharesViewPart : public KParts::Part
     /**
      * Reimplemented from KParts::Part.
      */
-    void customEvent( QEvent *e );
+    void customEvent(QEvent *e);
 
   protected slots:
     /**
@@ -94,7 +93,7 @@ class Smb4KSharesViewPart : public KParts::Part
      *
      * @param pos                 The position where user clicked.
      */
-    void slotContextMenuRequested( const QPoint &pos );
+    void slotContextMenuRequested(const QPoint &pos);
 
     /**
      * Is called when the selection changed. This slot takes care of the
@@ -116,8 +115,7 @@ class Smb4KSharesViewPart : public KParts::Part
      * @param column              The column where the user pressed the mouse
      *                            button.
      */
-    void slotItemPressed( QTreeWidgetItem *item,
-                          int column );
+    void slotItemPressed(QTreeWidgetItem *item, int column);
 
     /**
      * Is called when the user pressed a mouse button somewhere over a icon view item.
@@ -127,26 +125,22 @@ class Smb4KSharesViewPart : public KParts::Part
      *
      * @param item                The icon view item where the mouse button was pressed.
      */
-    void slotItemPressed( QListWidgetItem *item );
+    void slotItemPressed(QListWidgetItem *item);
 
     /**
-     * This slot is invoked when the user executed a list view item. It is used to mount
+     * This slot is invoked when the user activated a list view item. It is used to mount
      * shares.
-     *
      * @param item                The item that was executed.
-     *
      * @param column              The column where the item was executed.
      */
-    void slotItemExecuted( QTreeWidgetItem *item,
-                           int column );
+    void slotItemActivated(QTreeWidgetItem *item, int column);
 
     /**
-     * This slot is invoked when the user executed an icon view item. It is used to mount
+     * This slot is invoked when the user activated an icon view item. It is used to mount
      * shares.
-     *
      * @param item                The item that was executed.
      */
-    void slotItemExecuted( QListWidgetItem *item );
+    void slotItemActivated(QListWidgetItem *item);
 
     /**
      * This slot is used to process an accepted drop event in the list view.
@@ -155,8 +149,7 @@ class Smb4KSharesViewPart : public KParts::Part
      *
      * @param e                   The drop event that encapsulates the necessary data.
      */
-    void slotListViewDropEvent( Smb4KSharesListViewItem *item,
-                                QDropEvent *e );
+    void slotListViewDropEvent(Smb4KSharesListViewItem *item, QDropEvent *e);
 
     /**
      * This slot is used to process an accepted drop event in the icon view.
@@ -165,8 +158,7 @@ class Smb4KSharesViewPart : public KParts::Part
      *
      * @param e                   The drop event that encapsulates the necessary data.
      */
-    void slotIconViewDropEvent( Smb4KSharesIconViewItem *item,
-                                QDropEvent *e );
+    void slotIconViewDropEvent(Smb4KSharesIconViewItem *item, QDropEvent *e);
                                 
     /**
      * This slot is connected to the Smb4KMounter::mounted() signal and adds the 
@@ -174,7 +166,7 @@ class Smb4KSharesViewPart : public KParts::Part
      * 
      * @param share               The Smb4KShare item
      */
-    void slotShareMounted( Smb4KShare *share );
+    void slotShareMounted(Smb4KShare *share);
     
     /**
      * This slot is connected to the Smb4KMounter::unmounted() signal and removes
@@ -182,7 +174,7 @@ class Smb4KSharesViewPart : public KParts::Part
      * 
      * @param share               The Smb4KShare item
      */
-    void slotShareUnmounted( Smb4KShare *share );
+    void slotShareUnmounted(Smb4KShare *share);
     
     /**
      * This slot is connected to the Smb4KMounter::updated() signal and updates
@@ -193,7 +185,7 @@ class Smb4KSharesViewPart : public KParts::Part
      * 
      * @param share               The Smb4KShare item
      */
-    void slotShareUpdated( Smb4KShare *share );
+    void slotShareUpdated(Smb4KShare *share);
 
     /**
      * This slot is connected to the 'Unmount action'. You will be able to
@@ -201,7 +193,7 @@ class Smb4KSharesViewPart : public KParts::Part
      *
      * @param checked             TRUE if the action is checked and FALSE otherwise.
      */
-    void slotUnmountShare( bool checked );
+    void slotUnmountShare(bool checked);
 
     /**
      * This slot is connected to the 'Unmount All' action. All shares - either of
@@ -210,7 +202,7 @@ class Smb4KSharesViewPart : public KParts::Part
      *
      * @param checked             TRUE if the action is checked and FALSE otherwise.
      */
-    void slotUnmountAllShares( bool checked );
+    void slotUnmountAllShares(bool checked);
 
     /**
      * This slot is connected to the 'Synchronize' action. The current item will be
@@ -218,7 +210,7 @@ class Smb4KSharesViewPart : public KParts::Part
      *
      * @param checked             TRUE if the action is checked and FALSE otherwise.
      */
-    void slotSynchronize( bool checked );
+    void slotSynchronize(bool checked);
 
     /**
      * This slot is connected to the 'Konsole' action. The mount point of the current
@@ -226,7 +218,7 @@ class Smb4KSharesViewPart : public KParts::Part
      *
      * @param checked             TRUE if the action is checked and FALSE otherwise.
      */
-    void slotKonsole( bool checked );
+    void slotKonsole(bool checked);
 
     /**
      * This slot is connected to the 'Konqueror' action. The contents of the current
@@ -234,14 +226,14 @@ class Smb4KSharesViewPart : public KParts::Part
      *
      * @param checked             TRUE if the action is checked and FALSE otherwise.
      */
-    void slotFileManager( bool checked );
+    void slotFileManager(bool checked);
 
     /**
      * This slot lets you add a share to the bookmarks.
      *
      * @param checked             TRUE if the action is checked and FALSE otherwise.
      */
-    void slotAddBookmark( bool checked );
+    void slotAddBookmark(bool checked);
 
     /**
      * This slot is connected to the Smb4KMounter::aboutToStart() signal.
@@ -250,8 +242,7 @@ class Smb4KSharesViewPart : public KParts::Part
      *
      * @param process             The process
      */
-    void slotMounterAboutToStart( Smb4KShare *share,
-                                  int process );
+    void slotMounterAboutToStart(Smb4KShare *share, int process);
 
     /**
      * This slot is connected to the Smb4KMounter::finished() signal.
@@ -260,8 +251,7 @@ class Smb4KSharesViewPart : public KParts::Part
      *
      * @param process             The process
      */
-    void slotMounterFinished( Smb4KShare *share,
-                              int process );
+    void slotMounterFinished(Smb4KShare *share, int process);
 
     /**
      * This slot is invoked shortly before the application quits. It is used
@@ -274,7 +264,7 @@ class Smb4KSharesViewPart : public KParts::Part
      *
      * @param group               The icon group
      */
-    void slotIconSizeChanged( int group );
+    void slotIconSizeChanged(int group);
     
     /**
      * Enable or disable the Open With action
@@ -349,11 +339,6 @@ class Smb4KSharesViewPart : public KParts::Part
      * The action menu.
      */
     KActionMenu *m_menu;
-
-    /**
-     * The menu title
-     */
-    QAction *m_menu_title;
 };
 
 #endif

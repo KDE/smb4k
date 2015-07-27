@@ -2,7 +2,7 @@
     smb4kshareslistviewitem  -  The shares list view item class of Smb4K.
                              -------------------
     begin                : Sa Jun 30 2007
-    copyright            : (C) 2007-2014 by Alexander Reinholdt
+    copyright            : (C) 2007-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -31,7 +31,7 @@
 #include "../tooltips/smb4ktooltip.h"
 
 // Qt includes
-#include <QTreeWidgetItem>
+#include <QtWidgets/QTreeWidgetItem>
 
 // forward declarations
 class Smb4KSharesListView;
@@ -40,7 +40,7 @@ class Smb4KSharesListView;
  * This class provides the items for the shares icon view
  * of Smb4K.
  *
- * @author Alexander Reinholdt <dustpuppy@users.berlios.de>
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
 class Smb4KSharesListViewItem : public QTreeWidgetItem
