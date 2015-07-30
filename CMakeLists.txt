@@ -16,6 +16,7 @@ include(KDEInstallDirs)
 include(KDECompilerSettings)
 include(KDECMakeSettings)
 include(FeatureSummary)
+include(ECMInstallIcons)
 
 # Qt5 modules
 find_package(Qt5Core 5.4.0 REQUIRED)

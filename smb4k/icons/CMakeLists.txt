@@ -1,1 +1,2 @@
-# kde4_install_icons( ${ICON_INSTALL_DIR}  )
+add_subdirectory( hicolor )
+add_subdirectory( oxygen )
