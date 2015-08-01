@@ -467,6 +467,7 @@
       <li xml:lang="uk">Підтримка ноутбуків за допомогою оболонки для роботи з пристроями Solid.</li>
       <li xml:lang="x-test">xxLaptop support through the Solid hardware device frameworkxx</li>
       <li>Wake-On-LAN capabilities</li>
+      <li xml:lang="ast">Capacidaes Wake-On-Lan</li>
       <li xml:lang="bs">Wake-On-LAN mogućnosti</li>
       <li xml:lang="ca">Funcionalitats d'activació per LAN (Wake-On-LAN)</li>
       <li xml:lang="de">„Wake-On-LAN“-Fähigkeiten</li>
@@ -484,6 +485,7 @@
       <li xml:lang="uk">Можливості пробудження сигналом з локальної мережі.</li>
       <li xml:lang="x-test">xxWake-On-LAN capabilitiesxx</li>
       <li>Plasmoid for desktop integration</li>
+      <li xml:lang="ast">Plasmoide pa la integración d'escritoriu</li>
       <li xml:lang="bs">Plasmoid za integraciju radne površine</li>
       <li xml:lang="ca">Plasmoide per a la integració a l'escriptori</li>
       <li xml:lang="de">Plasmoid für die Integration in die Arbeitsfläche</li>
@@ -504,6 +506,7 @@
     <p>
       If you are working in a Windows dominated network environment, you may want to install this application to be able to easily access the provided Windows shares.
     </p>
+    <p xml:lang="ast">Si tas trabayando nun entornu de rede domináu por Windows, quiciabes quieras instalar esta aplicación pa ser quien a acceder cenciellamente a les comparticiones Windows apurríes.</p>
     <p xml:lang="bs">Ako radite sa Windows dominiranim mrežnim okruženjem, možda ćete željeti instalirati aplikaciju kako biste lako pristupili omogućenim Windows razmjenama.</p>
     <p xml:lang="ca">Si esteu treballant en un entorn de xarxa dominat per Windows, és possible que vulgueu instal·lar aquesta aplicació per a poder accedir amb facilitat a les comparticions proporcionades per Windows.</p>
     <p xml:lang="de">Wenn Sie in einer Windows-dominierten Netzwerkumgebung arbeiten, sollten Sie diese Anwendung installieren, um leicht auf die vorhandenen Windows-Freigaben zuzugreifen.</p>
@@ -524,6 +527,7 @@
   <screenshots>
     <screenshot type="default">
       <caption>The main window</caption>
+      <caption xml:lang="ast">La ventana principal</caption>
       <caption xml:lang="bs">Glavni prozor</caption>
       <caption xml:lang="ca">La finestra principal</caption>
       <caption xml:lang="de">Das Hauptfenster</caption>
@@ -544,6 +548,7 @@
     </screenshot>
     <screenshot>
       <caption>The plasmoid</caption>
+      <caption xml:lang="ast">El plasmoide</caption>
       <caption xml:lang="bs">Plazmoid</caption>
       <caption xml:lang="ca">El plasmoide</caption>
       <caption xml:lang="cs">Plasmoid</caption>
