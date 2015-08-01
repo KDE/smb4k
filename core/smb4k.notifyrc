@@ -1,6 +1,7 @@
 [Global]
 IconName=smb4k
 Name=Smb4K
+Name[ast]=Smb4K
 Name[bs]=Smb4K
 Name[ca]=Smb4K
 Name[ca@valencia]=Smb4K
@@ -63,6 +64,7 @@ Version=1
 
 [Context/Notification]
 Name=Notification
+Name[ast]=Notificación
 Name[bs]=Obavještenje
 Name[ca]=Notificació
 Name[ca@valencia]=Notificació
@@ -124,6 +126,7 @@ Comment[zh_TW]=使用者被通知某些動作
 
 [Context/Warning]
 Name=Warning
+Name[ast]=Avisu
 Name[bs]=Upozorenje
 Name[ca]=Avís
 Name[ca@valencia]=Avís
@@ -155,6 +158,7 @@ Name[uk]=Попередження
 Name[x-test]=xxWarningxx
 Name[zh_TW]=警告
 Comment=A warning is shown to the user
+Comment[ast]=Amuésase-y un avisu al usuariu
 Comment[bs]=Prikazana je upozoravajuća poruka korisniku
 Comment[ca]=Es mostra un avís a l'usuari
 Comment[ca@valencia]=Es mostra un avís a l'usuari
@@ -218,6 +222,7 @@ Name[uk]=Помилка
 Name[x-test]=xxErrorxx
 Name[zh_TW]=錯誤
 Comment=An error message is shown to the user
+Comment[ast]=Amuésase-y un mensaxe de fallu al usuariu
 Comment[bs]=Poruka greške je prikazana korisniku
 Comment[ca]=Es mostra un missatge d'error a l'usuari
 Comment[ca@valencia]=Es mostra un missatge d'error a l'usuari
@@ -248,6 +253,7 @@ Comment[zh_TW]=錯誤訊息已顯示給使用者
 
 [Event/shareMounted]
 Name=Share mounted
+Name[ast]=Compartición montada
 Name[bs]=Dijeljeni disk je montiran
 Name[ca]=Compartició muntada
 Name[da]=Ressource monteret
@@ -270,6 +276,7 @@ Name[uk]=Змонтовано ресурс
 Name[x-test]=xxShare mountedxx
 Name[zh_TW]=分享資料夾已掛載
 Comment=A share has been mounted
+Comment[ast]=Montóse una compartición
 Comment[bs]=Dijeljeni disk je bio montiran
 Comment[ca]=S'ha muntat una compartició
 Comment[da]=En ressource er blevet monteret
@@ -296,6 +303,7 @@ Action=Popup
 
 [Event/shareUnmounted]
 Name=Share unmounted
+Name[ast]=Compartición desmontada
 Name[bs]=Dijeljeni disk je demontiran
 Name[ca]=Compartició desmuntada
 Name[da]=Ressource afmonteret
@@ -318,6 +326,7 @@ Name[uk]=Демонтовано ресурс
 Name[x-test]=xxShare unmountedxx
 Name[zh_TW]=分享資料夾已卸載
 Comment=A share has been unmounted
+Comment[ast]=Desmontóse una compartición
 Comment[bs]=Dijeljeni disk je bio demontiran
 Comment[ca]=S'ha desmuntat una compartició
 Comment[da]=En ressource er blevet afmonteret
@@ -344,6 +353,7 @@ Action=Popup
 
 [Event/sharesMounted]
 Name=Shares mounted
+Name[ast]=Comparticiones montaes
 Name[bs]=Dijeljeni disk je montiran
 Name[ca]=Comparticions muntades
 Name[da]=Ressourcer monteret
@@ -366,6 +376,7 @@ Name[uk]=Змонтовано ресурси
 Name[x-test]=xxShares mountedxx
 Name[zh_TW]=分享資料夾已掛載
 Comment=Multiple shares have been mounted
+Comment[ast]=Montáronse comparticiones múltiples
 Comment[bs]=Višestruka dijeljenja diska su bila montirana
 Comment[ca]=S'han muntat múltiples comparticions
 Comment[da]=Flere ressourcer er blevet monteret
@@ -392,6 +403,7 @@ Action=Popup
 
 [Event/sharesUnmounted]
 Name=Shares unmounted
+Name[ast]=Comparticiones desmontaes
 Name[bs]=Dijeljenja diska su demontirana
 Name[ca]=Comparticions desmuntades
 Name[da]=Ressourcer afmonteret
@@ -414,6 +426,7 @@ Name[uk]=Демонтовано ресурси
 Name[x-test]=xxShares unmountedxx
 Name[zh_TW]=分享資料夾已卸載
 Comment=Multiple shares have been unmounted
+Comment[ast]=Desmontáronse comparticiones múltiples
 Comment[bs]=Višestruka dijeljenja su bila demontirana
 Comment[ca]=S'han desmuntat múltiples comparticions
 Comment[da]=Flere ressourcer er blevet afmonteret
@@ -440,6 +453,7 @@ Action=Popup
 
 [Event/openingWalletFailed]
 Name=Opening wallet failed
+Name[ast]=Fallu abriendo la cartera
 Name[bs]=Otvaranje novčanika s lozinkama neuspješno
 Name[ca]=Ha fallat l'obertura de la cartera
 Name[da]=Åbning af tegnebogen mislykkedes
@@ -462,6 +476,7 @@ Name[uk]=Спроба відкриття сховища паролів зазн�
 Name[x-test]=xxOpening wallet failedxx
 Name[zh_TW]=開啟錢包失敗
 Comment=The network wallet could not be opened
+Comment[ast]=Nun pudo abrise la rede de carteres
 Comment[bs]=Mrežni novčanik s lozinkama nije se mogao otvoriti
 Comment[ca]=No s'ha pogut obrir la cartera de xarxa
 Comment[da]=Netværkstegnebogen kunne ikke åbnes
@@ -489,6 +504,7 @@ Action=Popup|Sound
 
 [Event/credentialsNotAccessible]
 Name=Credentials not accessible
+Name[ast]=Nun tán accesibles les credenciales
 Name[bs]=Dokumenti nedostupni
 Name[ca]=Credencials no accessibles
 Name[da]=Akkreditiver ikke tilgængelige
@@ -511,6 +527,7 @@ Name[uk]=Немає реєстраційних даних
 Name[x-test]=xxCredentials not accessiblexx
 Name[zh_TW]=無法取得帳號密碼資訊
 Comment=The credentials could not be read from the wallet
+Comment[ast]=Nun pudieron lleese de la cartera les credenciales
 Comment[bs]=Dokumenti se nisu mogli pročitati iz spremnika
 Comment[ca]=No s'han pogut llegir les credencials de la cartera
 Comment[da]=Akkreditiverne kunne ikke læses fra tegnebogen
@@ -538,6 +555,7 @@ Action=Popup|Sound
 
 [Event/mimetypeNotSupported]
 Name=Mimetype not supported
+Name[ast]=Tiba MIME non sofitada
 Name[bs]=Mimetype nije podržan
 Name[ca]=Tipus MIME no implementat
 Name[da]=MIME-type ikke understøttet
@@ -608,6 +626,7 @@ Name[uk]=Така закладка вже існує
 Name[x-test]=xxBookmark existsxx
 Name[zh_TW]=書籤已存在
 Comment=The bookmark exists
+Comment[ast]=Esiste'l marcador
 Comment[bs]=Zabilješka postoji
 Comment[ca]=L'adreça d'interès existeix
 Comment[da]=Bogmærket findes
@@ -657,6 +676,7 @@ Name[uk]=Мітку закладки вже використано
 Name[x-test]=xxBookmark label in usexx
 Name[zh_TW]=書籤標記已在使用中
 Comment=The label for the bookmark already exists
+Comment[ast]=Yá esiste la etiqueta pal marcador
 Comment[bs]=Oznaka za zabilješku već postoji
 Comment[ca]=L'etiqueta de l'adreça d'interès ja existeix
 Comment[da]=Etiketten for bogmærket findes allerede
@@ -684,6 +704,7 @@ Action=Popup|Sound
 
 [Event/emptyMasterBrowser]
 Name=No master browser provided
+Name[ast]=Nun s'apurrió dal restolador maestru
 Name[bs]=Nijedan glavni pretraživač nije osiguran
 Name[ca]=No s'ha proporcionat cap explorador mestre
 Name[da]=Ingen hovedadgangskode angivet
@@ -705,6 +726,7 @@ Name[uk]=Не надано основного переглядача
 Name[x-test]=xxNo master browser providedxx
 Name[zh_TW]=未提供主要瀏覽器
 Comment=The custom master browser has not been provided
+Comment[ast]=Nun s'apurrió'l restolador maestru personalizáu
 Comment[bs]=Korisnički glavni pretraživač nije bio osiguran
 Comment[ca]=No s'ha proporcionat cap explorador mestre personalitzat
 Comment[da]=Den brugervalgte masterbrowser er ikke blevet oplyst
@@ -731,6 +753,7 @@ Action=Popup|Sound
 
 [Event/sambaConfigFileMissing]
 Name=Configuration file for Samba missing
+Name[ast]=Falta'l ficheru de configuración pa SAMBA
 Name[bs]=Konfiguracijska datoteka za Samba-u nedostaje
 Name[ca]=Falta el fitxer de configuració de la suite Samba
 Name[da]=Konfigurationsfil til Samba mangler
@@ -1594,6 +1617,7 @@ Action=Popup|Sound
 
 [Event/processError]
 Name=Process error
+Name[ast]=Fallu del procesu
 Name[bs]=Greška u procesu
 Name[ca]=Error de procés
 Name[cs]=Chyba procesu
@@ -1617,6 +1641,7 @@ Name[uk]=Помилка процесу
 Name[x-test]=xxProcess errorxx
 Name[zh_TW]=行程錯誤
 Comment=A process error occurred
+Comment[ast]=Asocedió un fallu del procesu
 Comment[bs]=Greška u procesu se pojavila
 Comment[ca]=Hi ha hagut un error de procés
 Comment[da]=Der opstod en procesfejl
