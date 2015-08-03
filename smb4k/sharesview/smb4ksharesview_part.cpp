@@ -285,28 +285,20 @@ void Smb4KSharesViewPart::setupView()
 void Smb4KSharesViewPart::setupActions()
 {
   QAction *unmount_action = new QAction(KDE::icon("emblem-unmounted"), i18n("&Unmount"), this);
-  unmount_action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_U));
   connect(unmount_action, SIGNAL(triggered(bool)), this, SLOT(slotUnmountShare(bool)));
 
   QAction *unmount_all_action = new QAction(KDE::icon("system-run"), i18n("U&nmount All"), this);
-  unmount_all_action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_N));
   connect(unmount_all_action, SIGNAL(triggered(bool)), this, SLOT(slotUnmountAllShares(bool)));
 
   QAction *synchronize_action = new QAction(KDE::icon("folder-sync"), i18n("S&ynchronize"), this);
-  synchronize_action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_Y));
   connect(synchronize_action, SIGNAL(triggered(bool)), this, SLOT(slotSynchronize(bool)));
   
   KActionMenu *open_with_menu = new KActionMenu(KDE::icon("folder-open"), i18n("Open With"), this);
 
   QAction *konsole_action = new QAction(KDE::icon("utilities-terminal"), i18n("Open with Konso&le"), this);
-  konsole_action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_L));
   connect(konsole_action, SIGNAL(triggered(bool)), this, SLOT(slotKonsole(bool)));
 
   QAction *filemanager_action = new QAction(KDE::icon("system-file-manager"), i18n("Open with F&ile Manager"), this);
-  QList<QKeySequence> shortcuts;
-  shortcuts.append(QKeySequence(Qt::CTRL+Qt::Key_I));
-  shortcuts.append(QKeySequence(Qt::CTRL+Qt::Key_K));  // legacy shortcut
-  filemanager_action->setShortcuts(shortcuts);
   connect(filemanager_action, SIGNAL(triggered(bool)), this, SLOT(slotFileManager(bool)));
   
   open_with_menu->addAction(konsole_action);
@@ -314,15 +306,7 @@ void Smb4KSharesViewPart::setupActions()
 
   QAction *bookmark_action = new QAction(KDE::icon("bookmark-new"), i18n("Add &Bookmark"), this);
   
-  if (m_bookmark_shortcut)
-  {
-    bookmark_action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_B));
-  }
-  else
-  {
-    // Do nothing
-  }
-
+  // Add the actions
   actionCollection()->addAction("unmount_action", unmount_action);
   actionCollection()->addAction("unmount_all_action", unmount_all_action);
   actionCollection()->addAction("bookmark_action", bookmark_action);
@@ -330,6 +314,25 @@ void Smb4KSharesViewPart::setupActions()
   actionCollection()->addAction("open_with", open_with_menu);
   actionCollection()->addAction("konsole_action", konsole_action);
   actionCollection()->addAction("filemanager_action", filemanager_action);
+  
+  // Set the shortcuts
+  actionCollection()->setDefaultShortcut(unmount_action, QKeySequence(Qt::CTRL+Qt::Key_U));
+  actionCollection()->setDefaultShortcut(unmount_all_action, QKeySequence(Qt::CTRL+Qt::Key_N));
+  actionCollection()->setDefaultShortcut(synchronize_action, QKeySequence(Qt::CTRL+Qt::Key_Y));
+  actionCollection()->setDefaultShortcut(konsole_action, QKeySequence(Qt::CTRL+Qt::Key_L));
+  QList<QKeySequence> shortcuts;
+  shortcuts.append(QKeySequence(Qt::CTRL+Qt::Key_I));
+  shortcuts.append(QKeySequence(Qt::CTRL+Qt::Key_K));  // legacy shortcut
+  actionCollection()->setDefaultShortcuts(filemanager_action, shortcuts);
+  
+  if (m_bookmark_shortcut)
+  {
+    actionCollection()->setDefaultShortcut(bookmark_action, QKeySequence(Qt::CTRL+Qt::Key_B));
+  }
+  else
+  {
+    // Do nothing
+  }
 
   // Disable all actions for now:
   unmount_action->setEnabled(false);
