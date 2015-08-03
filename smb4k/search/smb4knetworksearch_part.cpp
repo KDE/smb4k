@@ -42,6 +42,7 @@
 
 // Qt includes
 #include <QtCore/QCoreApplication>
+#include <QtCore/QString>
 #include <QtGui/QKeySequence>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QMenu>
@@ -105,7 +106,7 @@ Smb4KNetworkSearchPart::Smb4KNetworkSearchPart(QWidget *parentWidget, QObject *p
   // Connections:
   connect(m_widget->comboBox(), SIGNAL(returnPressed()),
           this, SLOT(slotReturnPressed()));
-  connect(m_widget->comboBox(), SIGNAL(textChanged(QString)),
+  connect(m_widget->comboBox(), SIGNAL(editTextChanged(QString)),
           this, SLOT(slotComboBoxTextChanged(QString)));
   connect(m_widget->listWidget(), SIGNAL(itemDoubleClicked(QListWidgetItem*)),
           this, SLOT(slotItemDoubleClicked(QListWidgetItem*)));
@@ -142,14 +143,12 @@ void Smb4KNetworkSearchPart::setupActions()
   KGuiItem abort_item(i18n("Abort"), KDE::icon("process-stop"));
   search_abort_action->setActiveGuiItem(search_item);
   search_abort_action->setInactiveGuiItem(abort_item);
-  search_abort_action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_S));
   search_abort_action->setActive(true);
   search_abort_action->setAutoToggle(false);
   connect(search_abort_action, SIGNAL(triggered(bool)), this, SLOT(slotSearchAbortActionTriggered(bool)));
   connect(search_abort_action, SIGNAL(activeChanged(bool)), this, SLOT(slotSearchAbortActionChanged(bool)));
   
   QAction *clear_action  = new QAction(KDE::icon("edit-clear-history"), i18n("&Clear"), this);
-  // No shortcut.
   connect(clear_action, SIGNAL(triggered(bool)), this, SLOT(slotClearActionTriggered(bool)));
 
   KDualAction *mount_action = new KDualAction(this);
@@ -157,15 +156,19 @@ void Smb4KNetworkSearchPart::setupActions()
   KGuiItem unmount_item(i18n("&Unmount"), KDE::icon("emblem-unmounted"));
   mount_action->setActiveGuiItem(mount_item);
   mount_action->setInactiveGuiItem(unmount_item);
-  mount_action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_M));
   mount_action->setActive(true);
   mount_action->setAutoToggle(false);
   connect(mount_action, SIGNAL(triggered(bool)), this, SLOT(slotMountActionTriggered(bool)));
   connect(mount_action, SIGNAL(activeChanged(bool)), this, SLOT(slotMountActionChanged(bool)));
   
+  // Add the actions
   actionCollection()->addAction("search_abort_action", search_abort_action);
   actionCollection()->addAction("clear_search_action", clear_action);
   actionCollection()->addAction("mount_action", mount_action);
+  
+  // Set the shortcuts
+  actionCollection()->setDefaultShortcut(search_abort_action, QKeySequence(Qt::CTRL+Qt::Key_S));
+  actionCollection()->setDefaultShortcut(mount_action, QKeySequence(Qt::CTRL+Qt::Key_M));
 
   // Disable all actions.
   search_abort_action->setEnabled(false);
@@ -344,11 +347,13 @@ void Smb4KNetworkSearchPart::slotSearchAbortActionChanged(bool active)
 {
   if (active)
   {
-    actionCollection()->action("search_abort_action")->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_S));
+    QAction *search_abort_action = actionCollection()->action("search_abort_action");
+    actionCollection()->setDefaultShortcut(search_abort_action, QKeySequence(Qt::CTRL+Qt::Key_S));
   }
   else
   {
-    actionCollection()->action("search_abort_action")->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_A));
+    QAction *search_abort_action = actionCollection()->action("search_abort_action");
+    actionCollection()->setDefaultShortcut(search_abort_action, QKeySequence(Qt::CTRL+Qt::Key_A));
   }
 }
 
@@ -398,11 +403,13 @@ void Smb4KNetworkSearchPart::slotMountActionChanged(bool active)
 {
   if (active)
   {
-    actionCollection()->action("mount_action")->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_M));
+    QAction *mount_action = actionCollection()->action("mount_action");
+    actionCollection()->setDefaultShortcut(mount_action, QKeySequence(Qt::CTRL+Qt::Key_M));
   }
   else
   {
-    actionCollection()->action("mount_action")->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_U));
+    QAction *mount_action = actionCollection()->action("mount_action");
+    actionCollection()->setDefaultShortcut(mount_action, QKeySequence(Qt::CTRL+Qt::Key_U));
   }
 }
 
