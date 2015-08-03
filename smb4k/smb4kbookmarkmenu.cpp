@@ -142,10 +142,10 @@ void Smb4KBookmarkMenu::setupMenu(bool setup_all)
       case MainWindow:
       {
         QAction *edit_action = m_action_collection->addAction("edit_action",
-                                new QAction(KDE::icon("bookmarks-organize"), i18n("&Edit Bookmarks"), m_action_collection));
+                               new QAction(KDE::icon("bookmarks-organize"), i18n("&Edit Bookmarks"), m_action_collection));
         QAction *add_action = m_action_collection->addAction("add_action",
                               new QAction(KDE::icon("bookmark-new"), i18n("Add &Bookmark"), m_action_collection));
-        add_action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_B));
+        m_action_collection->setDefaultShortcut(add_action, QKeySequence(Qt::CTRL+Qt::Key_B));
         addAction(edit_action);
         addAction(add_action);
         break;
