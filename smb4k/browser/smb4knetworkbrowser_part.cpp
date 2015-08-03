@@ -199,41 +199,26 @@ void Smb4KNetworkBrowserPart::setupActions()
   KGuiItem abort_item(i18n("&Abort"), KDE::icon("process-stop"));
   rescan_abort_action->setActiveGuiItem(rescan_item);
   rescan_abort_action->setInactiveGuiItem(abort_item);
-  rescan_abort_action->setShortcut(QKeySequence::Refresh);
   rescan_abort_action->setActive(true);
   rescan_abort_action->setAutoToggle(false);
   connect(rescan_abort_action, SIGNAL(triggered(bool)), this, SLOT(slotRescanAbortActionTriggered(bool)));
   
   QAction *manual_action = new QAction(KDE::icon("view-form", QStringList("emblem-mounted")), i18n("&Open Mount Dialog"), this);
-  manual_action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_O));
   connect(manual_action, SIGNAL(triggered(bool)), this, SLOT(slotMountManually(bool)));
 
   QAction *auth_action = new QAction(KDE::icon("dialog-password"), i18n("Au&thentication"), this);
-  auth_action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_T));
   connect(auth_action, SIGNAL(triggered(bool)), this, SLOT(slotAuthentication(bool)));
 
   QAction *custom_action = new QAction(KDE::icon("preferences-system-network"), i18n("&Custom Options"), this);
-  custom_action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_C));
   connect(custom_action, SIGNAL(triggered(bool)), this, SLOT(slotCustomOptions(bool)));
 
   QAction *bookmark_action = new QAction(KDE::icon("bookmark-new"), i18n("Add &Bookmark"), this);
-  
-  if (m_bookmark_shortcut)
-  {
-    bookmark_action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_B));
-  }
-  else
-  {
-    // Do nothing
-  }
   connect(bookmark_action, SIGNAL(triggered(bool)), this, SLOT(slotAddBookmark(bool)));
 
   QAction *preview_action  = new QAction(KDE::icon("view-list-icons"), i18n("Pre&view"), this);
-  preview_action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_V));
   connect(preview_action, SIGNAL(triggered(bool)), this, SLOT(slotPreview(bool)));
 
   QAction *print_action = new QAction(KDE::icon("printer"), i18n("&Print File"), this);
-  print_action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_P));
   connect(print_action, SIGNAL(triggered(bool)), this, SLOT(slotPrint(bool)));
 
   KDualAction *mount_action = new KDualAction(this);
@@ -241,12 +226,12 @@ void Smb4KNetworkBrowserPart::setupActions()
   KGuiItem unmount_item(i18n("&Unmount"), KDE::icon("emblem-unmounted"));
   mount_action->setActiveGuiItem(mount_item);
   mount_action->setInactiveGuiItem(unmount_item);
-  mount_action->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_M));
   mount_action->setActive(true);
   mount_action->setAutoToggle(false);
   connect(mount_action, SIGNAL(triggered(bool)), this, SLOT(slotMountActionTriggered(bool)));
   connect(mount_action, SIGNAL(activeChanged(bool)), this, SLOT(slotMountActionChanged(bool)));
-
+  
+  // Add the action to the action collection
   actionCollection()->addAction("rescan_abort_action", rescan_abort_action);
   actionCollection()->addAction("mount_manually_action", manual_action);
   actionCollection()->addAction("authentication_action", auth_action);
@@ -255,6 +240,25 @@ void Smb4KNetworkBrowserPart::setupActions()
   actionCollection()->addAction("preview_action", preview_action);
   actionCollection()->addAction("print_action", print_action);
   actionCollection()->addAction("mount_action", mount_action);
+  
+  // Set the shortcuts
+  actionCollection()->setDefaultShortcut(rescan_abort_action, QKeySequence::Refresh);
+  actionCollection()->setDefaultShortcut(manual_action, QKeySequence(Qt::CTRL+Qt::Key_O));
+  actionCollection()->setDefaultShortcut(auth_action, QKeySequence(Qt::CTRL+Qt::Key_T));
+  actionCollection()->setDefaultShortcut(custom_action, QKeySequence(Qt::CTRL+Qt::Key_C));
+  
+  if (m_bookmark_shortcut)
+  {
+    actionCollection()->setDefaultShortcut(bookmark_action, QKeySequence(Qt::CTRL+Qt::Key_B));
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  actionCollection()->setDefaultShortcut(preview_action, QKeySequence(Qt::CTRL+Qt::Key_V));
+  actionCollection()->setDefaultShortcut(print_action, QKeySequence(Qt::CTRL+Qt::Key_P));
+  actionCollection()->setDefaultShortcut(mount_action, QKeySequence(Qt::CTRL+Qt::Key_M));
 
   // Enable/disable the actions:
   rescan_abort_action->setEnabled(true);
@@ -1875,11 +1879,13 @@ void Smb4KNetworkBrowserPart::slotMountActionChanged(bool active)
 {
   if (active)
   {
-    actionCollection()->action("mount_action")->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_M));
+    QAction *mount_action = actionCollection()->action("mount_action");
+    actionCollection()->setDefaultShortcut(mount_action, QKeySequence(Qt::CTRL+Qt::Key_M));
   }
   else
   {
-    actionCollection()->action("mount_action")->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_U));
+    QAction *mount_action = actionCollection()->action("mount_action");
+    actionCollection()->setDefaultShortcut(mount_action, QKeySequence(Qt::CTRL+Qt::Key_U));
   }
 }
 
@@ -1968,14 +1974,14 @@ void Smb4KNetworkBrowserPart::slotScannerAboutToStart(Smb4KBasicNetworkItem *ite
       QList<QKeySequence> rescan_shortcuts;
       rescan_shortcuts += QKeySequence::Refresh;
       rescan_shortcuts += QKeySequence(Qt::CTRL+Qt::Key_R);
-      rescan_abort_action->setShortcuts(rescan_shortcuts);
+      actionCollection()->setDefaultShortcuts(rescan_abort_action, rescan_shortcuts);
     }
     else
     {
       QList<QKeySequence> abort_shortcuts;
       abort_shortcuts += QKeySequence(Qt::Key_Escape);
       abort_shortcuts += QKeySequence(Qt::CTRL+Qt::Key_A);
-      rescan_abort_action->setShortcuts(abort_shortcuts);
+      actionCollection()->setDefaultShortcuts(rescan_abort_action, abort_shortcuts);
     }
   }
   else
@@ -2007,14 +2013,14 @@ void Smb4KNetworkBrowserPart::slotScannerFinished(Smb4KBasicNetworkItem */*item*
       QList<QKeySequence> rescan_shortcuts;
       rescan_shortcuts += QKeySequence::Refresh;
       rescan_shortcuts += QKeySequence(Qt::CTRL+Qt::Key_R);
-      rescan_abort_action->setShortcuts(rescan_shortcuts);
+      actionCollection()->setDefaultShortcuts(rescan_abort_action, rescan_shortcuts);
     }
     else
     {
       QList<QKeySequence> abort_shortcuts;
       abort_shortcuts += QKeySequence(Qt::Key_Escape);
       abort_shortcuts += QKeySequence(Qt::CTRL+Qt::Key_A);
-      rescan_abort_action->setShortcuts(abort_shortcuts);
+      actionCollection()->setDefaultShortcuts(rescan_abort_action, abort_shortcuts);
     }
   }
   else
