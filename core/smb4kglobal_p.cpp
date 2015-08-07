@@ -48,7 +48,6 @@ Smb4KGlobalPrivate::Smb4KGlobalPrivate()
 {
   onlyForeignShares = false;
   coreInitialized = false;
-  m_samba_options_read = false;
   
 #ifdef Q_OS_LINUX
   whitelistedMountArguments << "dynperm";
@@ -104,50 +103,40 @@ Smb4KGlobalPrivate::~Smb4KGlobalPrivate()
 
 const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
 {
-  if (!m_samba_options_read || read)
+  if (read)
   {
-    // We are about to read the samba options. Set m_samba_options_read = true.
-    m_samba_options_read = true;
-    
-    // Clear the options list before reading.
+    // Clear the options.
     m_samba_options.clear();
-
+    
+    // Now search the smb.conf file and read the [global] section
+    // from it.
+    // With the introduction of Samba 4, the smb.conf file might also
+    // be named smb4.conf. Thus we need to search for two filenames.
+    // Please note that the file named smb.conf will always be picked
+    // if it exists.
     QStringList paths;
     paths << "/etc";
     paths << "/etc/samba";
     paths << "/usr/local/etc";
     paths << "/usr/local/etc/samba";
-
-    QFile file("smb.conf");
-    bool file_exists = false;
+    
+    QFile smbConf;
     QStringList contents;
 
-    // Locate the file and read its contents:
     for (int i = 0; i < paths.size(); ++i)
     {
       QDir::setCurrent(paths.at(i));
-
-      if ((file_exists = file.exists()))
+      QFile file1("smb.conf");
+      QFile file2("smb4.conf");
+      
+      if (file1.exists())
       {
-        if (file.open(QIODevice::ReadOnly | QIODevice::Text))
-        {
-          QTextStream ts(&file);
-          // Note: With Qt 4.3 this seems to be obsolete, we'll keep
-          ts.setCodec(QTextCodec::codecForLocale());
-
-          while (!ts.atEnd())
-          {
-            contents.append(ts.readLine(0));
-          }
-
-          file.close();
-        }
-        else
-        {
-          Smb4KNotification::openingFileFailed(file);
-          return m_samba_options;
-        }
-
+        smbConf.setFileName(QDir::currentPath()+QDir::separator()+file1.fileName());
+        break;
+      }
+      else if (file2.exists())
+      {
+        smbConf.setFileName(QDir::currentPath()+QDir::separator()+file2.fileName());
         break;
       }
       else
@@ -156,17 +145,32 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
       }
     }
     
-    // Notify the user if the configuration file could not be found
-    // in the standard locations.
-    if (!file_exists)
+    if (smbConf.exists())
     {
-      Smb4KNotification::sambaConfigFileMissing();
+      if (smbConf.open(QIODevice::ReadOnly | QIODevice::Text))
+      {
+        QTextStream ts(&smbConf);
+        
+        while (!ts.atEnd())
+        {
+          contents.append(ts.readLine(0));
+        }
+        
+        smbConf.close();
+      }
+      else
+      {
+        Smb4KNotification::openingFileFailed(smbConf);
+        return m_samba_options;
+      }
     }
     else
     {
-      // Do nothing
+      Smb4KNotification::sambaConfigFileMissing();
+      return m_samba_options;
     }
-
+    
+    // Now process the contents of the smb.conf file.
     if (!contents.isEmpty())
     {
       // Process the file contents.
@@ -182,8 +186,7 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
           // Do nothing
         }
         
-        if (contents.at(i).trimmed().startsWith('#') ||
-             contents.at(i).trimmed().startsWith(';'))
+        if (contents.at(i).trimmed().startsWith('#') || contents.at(i).trimmed().startsWith(';'))
         {
           // This is a comment. We do not need it.
           continue;
@@ -192,16 +195,13 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
         {
           // Look for the include file and put its contents into the
           // m_samba_options map.
-          file.setFileName(contents.at(i).section('=', 1, 1).trimmed());
+          QFile includeFile(contents.at(i).section('=', 1, 1).trimmed());
 
-          if (file.exists())
+          if (includeFile.exists())
           {
-            if (file.open(QIODevice::ReadOnly | QIODevice::Text))
+            if (includeFile.open(QIODevice::ReadOnly | QIODevice::Text))
             {
-              QTextStream ts(&file);
-              // Note: With Qt 4.3 this seems to be obsolete, we'll keep
-              // it for now.
-              ts.setCodec(QTextCodec::codecForLocale());
+              QTextStream ts(&includeFile);
 
               QString buffer;
 
@@ -217,20 +217,18 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
                 {
                   QString key = buffer.section('=', 0, 0).trimmed().toLower();
                   m_samba_options[key] = buffer.section('=', 1, 1).trimmed().toUpper();
-
                   continue;
                 }
               }
             }
             else
             {
-              Smb4KNotification::openingFileFailed(file);
+              Smb4KNotification::openingFileFailed(includeFile);
               continue;
             }
           }
         }
-        else if (contents.at(i).startsWith('[') &&
-                  !contents.at(i).contains("[global]", Qt::CaseSensitive))
+        else if (contents.at(i).startsWith('[') && !contents.at(i).contains("[global]", Qt::CaseSensitive))
         {
           // We reached the end of the [global] section. Stop here.
           break;
@@ -272,7 +270,7 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
 void Smb4KGlobalPrivate::setDefaultSettings()
 {
   // Samba options that have to be dynamically imported from smb.conf:
-  QMap<QString, QString> opts = globalSambaOptions(!m_samba_options_read);
+  QMap<QString, QString> opts = globalSambaOptions(true);
 
   if (!opts["netbios name"].isEmpty())
   {

@@ -678,7 +678,7 @@ void Smb4KCustomOptionsDialog::setupView()
   // Tab widget with settings
   //
 
-  KTabWidget *tab_widget = new KTabWidget(this);
+  QTabWidget *tab_widget = new QTabWidget(this);
 
   //
   // Custom options for Samba
@@ -803,9 +803,9 @@ void Smb4KCustomOptionsDialog::setupView()
   for (int i = 0; i < all_groups.size(); ++i)
   {
     KUserGroup group = all_groups.at(i);
-    m_group_id->insertItem(i, QString("%1 (%2)").arg(group.name()).arg(group.groupId().nativeId()), QVariant::fromValue<K_UID>(group.groupId().nativeId()));
+    m_group_id->insertItem(i, QString("%1 (%2)").arg(group.name()).arg(group.groupId().nativeId()), QVariant::fromValue<K_GID>(group.groupId().nativeId()));
 
-    if (m_options->group().nativeId() == group.groupId().nativeId())
+    if (m_options->group().groupId() == group.groupId())
     {
       m_group_id->setCurrentIndex(i);
     }

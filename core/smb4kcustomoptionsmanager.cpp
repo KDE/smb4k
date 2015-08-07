@@ -1330,7 +1330,7 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
       // Do nothing
     }
 
-    // UID
+    // User / UID
     if (empty_options.user().userId() != options->user().userId() &&
         default_options.user().userId() != options->user().userId())
     {
@@ -1341,7 +1341,7 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
       // Do nothing
     }
 
-    // GID
+    // Group / GID
     if (empty_options.group().groupId() != options->group().groupId() &&
         default_options.group().groupId() != options->group().groupId())
     {
@@ -1449,8 +1449,8 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
       default_options.setUseKerberos(Smb4KCustomOptions::NoKerberos);
     }
 
-    default_options.setUID((K_UID)Smb4KMountSettings::userID().toInt());
-    default_options.setGID((K_GID)Smb4KMountSettings::groupID().toInt());
+    default_options.setUser(KUser((K_UID)Smb4KMountSettings::userID().toInt()));
+    default_options.setGroup(KUserGroup((K_GID)Smb4KMountSettings::groupID().toInt()));
 
     // NOTE: WOL features and remounting do not have default values.
     //
@@ -1500,9 +1500,9 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
       // Do nothing
     }
 
-    // UID
-    if (empty_options.uid() != options->uid() &&
-        default_options.uid() != options->uid())
+    // User / UID
+    if (empty_options.user().userId() != options->user().userId() &&
+        default_options.user().userId() != options->user().userId())
     {
       return true;
     }
@@ -1511,9 +1511,9 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
       // Do nothing
     }
 
-    // GID
-    if (empty_options.gid() != options->gid() &&
-        default_options.gid() != options->gid())
+    // Group / GID
+    if (empty_options.group().groupId() != options->group().groupId() &&
+        default_options.group().groupId() != options->group().groupId())
     {
       return true;
     }

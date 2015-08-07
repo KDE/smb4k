@@ -515,7 +515,7 @@ void Smb4KCustomOptionsPage::setupWidget()
   for (int i = 0; i < all_users.size(); ++i)
   {
     KUser user = all_users.at(i);
-    m_user_id->insertItem(i, QString("%1 (%2)").arg(user.loginName()).arg(user.uid()), QVariant::fromValue<K_UID>(user.uid()));
+    m_user_id->insertItem(i, QString("%1 (%2)").arg(user.loginName()).arg(user.userId().nativeId()), QVariant::fromValue<K_UID>(user.userId().nativeId()));
   }
 
   uid_label->setBuddy(m_user_id);
@@ -528,7 +528,7 @@ void Smb4KCustomOptionsPage::setupWidget()
   for (int i = 0; i < all_groups.size(); ++i)
   {
     KUserGroup group = all_groups.at(i);
-    m_group_id->insertItem(i, QString("%1 (%2)").arg(group.name()).arg(group.gid()), QVariant::fromValue<K_GID>(group.gid()));
+    m_group_id->insertItem(i, QString("%1 (%2)").arg(group.name()).arg(group.groupId().nativeId()), QVariant::fromValue<K_GID>(group.groupId().nativeId()));
   }
 
   gid_label->setBuddy(m_group_id);
@@ -1047,9 +1047,9 @@ void Smb4KCustomOptionsPage::clearEditors()
   }
       
   KUser user(KUser::UseRealUserID);
-  m_user_id->setCurrentItem(QString("%1 (%2)").arg(user.loginName()).arg(user.userId().currentUserId().nativeId()));
+  m_user_id->setCurrentItem(QString("%1 (%2)").arg(user.loginName()).arg(user.userId().nativeId()));
   KUserGroup group(KUser::UseRealUserID);
-  m_group_id->setCurrentItem(QString("%1 (%2)").arg(group.name()).arg(group.groupId().currentGroupId().nativeId()));
+  m_group_id->setCurrentItem(QString("%1 (%2)").arg(group.name()).arg(group.groupId().nativeId()));
   m_kerberos->setChecked(false);
   m_mac_address->clear();
   m_send_before_scan->setChecked(false);
@@ -1103,9 +1103,9 @@ void Smb4KCustomOptionsPage::clearEditors()
   }
       
   KUser user(KUser::UseRealUserID);
-  m_user_id->setCurrentItem(QString("%1 (%2)").arg(user.loginName()).arg(user.uid()));
+  m_user_id->setCurrentItem(QString("%1 (%2)").arg(user.loginName()).arg(user.userId().nativeId()));
   KUserGroup group(KUser::UseRealUserID);
-  m_group_id->setCurrentItem(QString("%1 (%2)").arg(group.name()).arg(group.gid()));
+  m_group_id->setCurrentItem(QString("%1 (%2)").arg(group.name()).arg(group.groupId().nativeId()));
   m_kerberos->setChecked(false);
   m_mac_address->clear();
   m_send_before_scan->setChecked(false);
@@ -1454,8 +1454,8 @@ void Smb4KCustomOptionsPage::populateEditors(Smb4KCustomOptions* options)
     }
   }
   
-  m_user_id->setCurrentItem(QString("%1 (%2)").arg(m_current_options->user().loginName()).arg(m_current_options->user().userId().currentUserId().nativeId()));
-  m_group_id->setCurrentItem(QString("%1 (%2)").arg(m_current_options->group().name()).arg(m_current_options->group().groupId().currentGroupId().nativeId()));
+  m_user_id->setCurrentItem(QString("%1 (%2)").arg(m_current_options->user().loginName()).arg(m_current_options->user().userId().nativeId()));
+  m_group_id->setCurrentItem(QString("%1 (%2)").arg(m_current_options->group().name()).arg(m_current_options->group().groupId().nativeId()));
   
   if (m_current_options->useKerberos() == Smb4KCustomOptions::UndefinedKerberos)
   {
@@ -1607,11 +1607,8 @@ void Smb4KCustomOptionsPage::populateEditors(Smb4KCustomOptions* options)
     }
   }
   
-  KUser user(m_current_options->uid());
-  m_user_id->setCurrentItem(QString("%1 (%2)").arg(user.loginName()).arg(user.uid()));
-  
-  KUserGroup group(m_current_options->gid());
-  m_group_id->setCurrentItem(QString("%1 (%2)").arg(group.name()).arg(group.gid()));
+  m_user_id->setCurrentItem(QString("%1 (%2)").arg(m_current_options->user().loginName()).arg(m_current_options->user().userId().nativeId()));
+  m_group_id->setCurrentItem(QString("%1 (%2)").arg(m_current_options->group().name()).arg(m_current_options->group().groupId().nativeId()));
   
   if (m_current_options->useKerberos() == Smb4KCustomOptions::UndefinedKerberos)
   {
@@ -1938,8 +1935,8 @@ void Smb4KCustomOptionsPage::commitChanges()
     
     options->setSMBPort(m_smb_port->value());
     options->setProtocolHint((Smb4KCustomOptions::ProtocolHint)m_protocol_hint->itemData(m_protocol_hint->currentIndex()).toInt());
-    options->setUID(m_user_id->itemData(m_user_id->currentIndex()).toInt());
-    options->setGID(m_group_id->itemData(m_group_id->currentIndex()).toInt());
+    options->setUser(KUser(m_user_id->itemData(m_user_id->currentIndex()).toInt()));
+    options->setGroup(KUserGroup(m_group_id->itemData(m_group_id->currentIndex()).toInt()));
 
     if (m_kerberos->isChecked())
     {
@@ -1977,8 +1974,8 @@ void Smb4KCustomOptionsPage::commitChanges()
           // They overwrite the ones defined for the shares.
           m_options_list[i]->setSMBPort(options->smbPort());
           m_options_list[i]->setProtocolHint(options->protocolHint());
-          m_options_list[i]->setUID(options->uid());
-          m_options_list[i]->setGID(options->gid());
+          m_options_list[i]->setUser(options->user());
+          m_options_list[i]->setGroup(options->group());
           m_options_list[i]->setUseKerberos(options->useKerberos());
           m_options_list[i]->setMACAddress(options->macAddress());
           m_options_list[i]->setWOLSendBeforeNetworkScan(options->wolSendBeforeNetworkScan());

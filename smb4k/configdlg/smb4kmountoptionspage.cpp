@@ -1,7 +1,7 @@
 /***************************************************************************
     smb4kmountoptionspage  -  The configuration page for the mount options
                              -------------------
-    begin                : So Mär 22 2015
+    begin                : So M??r 22 2015
     copyright            : (C) 2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
@@ -443,8 +443,8 @@ void Smb4KMountOptionsPage::setupWidget()
 
   for (int i = 0; i < user_list.size(); ++i)
   {
-    users.insert(QString("%1 (%2)").arg(user_list.at(i).loginName()).arg(user_list.at(i).uid()),
-                 QString("%1").arg(user_list.at(i).uid()));
+    users.insert(QString("%1 (%2)").arg(user_list.at(i).loginName()).arg(user_list.at(i).userId().nativeId()),
+                 QString("%1").arg(user_list.at(i).userId().nativeId()));
   }
 
   QMap<QString,QString>::const_iterator u_it = users.constBegin();
@@ -487,8 +487,8 @@ void Smb4KMountOptionsPage::setupWidget()
 
   for (int i = 0; i < group_list.size(); ++i)
   {
-    groups.insert(QString("%1 (%2)").arg(group_list.at(i).name()).arg(group_list.at(i).gid()),
-                  QString("%1").arg(group_list.at(i).gid()));
+    groups.insert(QString("%1 (%2)").arg(group_list.at(i).name()).arg(group_list.at(i).groupId().nativeId()),
+                  QString("%1").arg(group_list.at(i).groupId().nativeId()));
   }
 
   QMap<QString,QString>::const_iterator g_it = groups.constBegin();

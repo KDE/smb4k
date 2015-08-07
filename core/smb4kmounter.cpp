@@ -1268,7 +1268,7 @@ bool Smb4KMounter::fillMountActionArgs(Smb4KShare *share, QVariantMap& map)
   }
   
   // GID
-  args_list << QString("gid=%1").arg(options ? options->group().groupId().currentGroupId().nativeId() : (K_GID)Smb4KMountSettings::groupID().toInt());
+  args_list << QString("gid=%1").arg(options ? options->group().groupId().nativeId() : (K_GID)Smb4KMountSettings::groupID().toInt());
   
   // Force GID
   if (Smb4KMountSettings::forceGID())
@@ -1692,7 +1692,7 @@ bool Smb4KMounter::fillMountActionArgs(Smb4KShare *share, QVariantMap& map)
 //
 // FreeBSD and NetBSD arguments
 //
-void Smb4KMounter::fillMountActionArgs(Smb4KShare *share, QVariantMap& map)
+bool Smb4KMounter::fillMountActionArgs(Smb4KShare *share, QVariantMap& map)
 {
   // Find the mount program.
   QString mount;
@@ -1748,29 +1748,13 @@ void Smb4KMounter::fillMountActionArgs(Smb4KShare *share, QVariantMap& map)
     // Do nothing
   }
   
-  // UID
-  if (options)
-  {
-    args_list << "-u";
-    args_list << QString("%1").arg(options->uid());
-  }
-  else
-  {
-    args_list << "-u";
-    args_list << QString("%1").arg((K_UID)Smb4KMountSettings::userID().toInt());
-  }
+  // UID 
+  args_list << "-u";
+  args_list << QString("%1").arg(options ? options->user().userId().nativeId() : (K_UID)Smb4KMountSettings::userID().toInt());
   
-  // GID
-  if (options)
-  {
-    args_list << "-g";
-    args_list << QString("%1").arg(options->gid());
-  }
-  else
-  {
-    args_list << "-g";
-    args_list << QString("%1").arg((K_GID)Smb4KMountSettings::groupID().toInt());
-  }
+  // GID 
+  args_list << "-g";
+  args_list << QString("%1").arg(options ? options->group().groupId().nativeId() : (K_GID)Smb4KMountSettings::groupID().toInt());
   
   // Character sets for the client and server
   QString client_charset, server_charset;
@@ -1867,15 +1851,18 @@ void Smb4KMounter::fillMountActionArgs(Smb4KShare *share, QVariantMap& map)
 
   map.insert("mh_workgroup", share->workgroupName());
   map.insert("mh_ip", share->hostIP());
+  
+  return true;
 }
 #else
 //
 // Dummy 
 //
-void Smb4KMounter::fillMountActionArgs(Smb4KShare *, QVariantMap&)
+bool Smb4KMounter::fillMountActionArgs(Smb4KShare *, QVariantMap&)
 {
   qWarning() << "Smb4KMounter::fillMountActionArgs() is not implemented!";
   qWarning() << "Mounting under this operating system is not supported...";
+  return false
 }
 #endif
 
@@ -2209,7 +2196,7 @@ void Smb4KMounter::slotMountJobFinished(KJob *job)
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
         if (errorMsg.contains("Authentication error") || errorMsg.contains("Permission denied"))
         {
-          if (Smb4KWalletManager::self()->showPasswordDialog(share, 0))
+          if (Smb4KWalletManager::self()->showPasswordDialog(networkShare, 0))
           {
             d->retries << new Smb4KShare(*networkShare);
           }
@@ -2230,7 +2217,7 @@ void Smb4KMounter::slotMountJobFinished(KJob *job)
     }
     else
     {
-      Smb4KNotification::actionFailed();
+      Smb4KNotification::actionFailed(errorCode);
     }
     
     emit finished(networkShare, MountShare);
