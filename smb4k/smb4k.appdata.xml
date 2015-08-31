@@ -23,6 +23,7 @@
   <name xml:lang="sv">Smb4K</name>
   <name xml:lang="uk">Smb4K</name>
   <name xml:lang="x-test">xxSmb4Kxx</name>
+  <name xml:lang="zh-CN">Smb4K</name>
   <summary>Advanced Network Neighborhood Browser and Samba Share Mounting Utility</summary>
   <summary xml:lang="bs">Napredni pretraživač mrežnih susjeda i Samba dijeljeni ugrađeni uslužni program</summary>
   <summary xml:lang="ca">Explorador avançat del veïnatge de xarxa i utilitat per a muntar les comparticions de Samba</summary>
@@ -102,6 +103,7 @@
     <p xml:lang="sv">Funktioner:</p>
     <p xml:lang="uk">Можливості:</p>
     <p xml:lang="x-test">xxFeatures:xx</p>
+    <p xml:lang="zh-CN">功能：</p>
     <ul>
       <li>Scanning for (active) workgroups, hosts, and shares</li>
       <li xml:lang="bs">Pretraživanje (aktivnih) radnih grupa, hostova i razmjena</li>
