@@ -2022,30 +2022,51 @@ void Smb4KMounter::slotAboutToQuit()
     // Do nothing
   }
 
+  //
   // Clean up the mount prefix.
+  //
+  KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions);
+  
   QDir dir;
-  QStringList mountpoints;
   dir.cd(Smb4KSettings::mountPrefix().path());
-  QStringList dirs = dir.entryList(QDir::Dirs|QDir::NoDotAndDotDot, QDir::NoSort);
-
-  QList<Smb4KShare *> inaccessible = findInaccessibleShares();
-
-  // Remove all directories from the list that belong to
-  // inaccessible shares.
-  for (int i = 0; i < inaccessible.size(); ++i)
+  QStringList hostDirs = dir.entryList(QDir::Dirs|QDir::NoDotAndDotDot, QDir::NoSort);
+  QStringList mountpoints;
+  
+  for (int i = 0; i < hostDirs.size(); ++i)
   {
-    int index = dirs.indexOf(inaccessible.at(i)->hostName(), 0);
-
-    if (index != -1)
+    dir.cd(hostDirs.at(i));
+    
+    QStringList shareDirs = dir.entryList(QDir::Dirs|QDir::NoDotAndDotDot, QDir::NoSort);
+    
+    for (int j = 0; j < shareDirs.size(); ++j)
     {
-      dirs.removeAt(index);
-      continue;
+      dir.cd(shareDirs.at(j));
+      mountpoints << dir.absolutePath();
+      dir.cdUp();
+    }
+    
+    dir.cdUp();
+  }
+  
+  // Remove those mountpoints where a share is actually mounted.
+  for (int i = 0; i < mountPoints.size(); ++i)
+  {
+    mountpoints.removeOne(mountPoints.at(i)->mountPoint());
+  }
+  
+  // Remove the empty mountpoints.
+  for (int i = 0; i < mountpoints.size(); ++i)
+  {
+    dir.cd(mountpoints.at(i));
+    dir.rmdir(dir.canonicalPath());
+    
+    if (dir.cdUp())
+    {
+      dir.rmdir(dir.canonicalPath());
     }
     else
     {
-      dir.cd(dirs.at(i));
-      mountpoints += dir.entryList(QDir::Dirs|QDir::NoDotAndDotDot, QDir::NoSort);
-      continue;
+      // Do nothing
     }
   }
   
