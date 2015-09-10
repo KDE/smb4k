@@ -50,7 +50,7 @@
     <p xml:lang="ca">El Smb4K és un explorador avançat del veïnatge de xarxa i utilitat per a muntar les comparticions de Samba pel KDE Software Compilation. Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
     <p xml:lang="de">Smb4K ist ein erweiterter Browser für die Netzwerkumgebung und Dienstprogramm für das Einbinden von Samba-Freigaben für die KDE-Softwaresammlung. Es durchsucht Ihre Netzwerkumgebung nach allen verfügbaren Arbeitsgruppen, Server und Freigaben und kann alle gewünschten Freigaben in Ihr lokales Dateisystem einbinden.</p>
     <p xml:lang="en-GB">Smb4K is an advanced network neighborhood browser and Samba share mounting utility for the KDE Software Compilation. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.</p>
-    <p xml:lang="es">Smb4K es un navegador avanzado del entorno de red y una utilidad de montaje de recursos compartidos Samba para «KDE Software Compilation». Escanea su entorno de red en busca de cualquier grupo de trabajo, servidor y recurso compartido disponible y puede montar todos los recursos compartidos deseados en su sistema de archivos local.</p>
+    <p xml:lang="es">Smb4K es un navegador avanzado del entorno de red y una utilidad de montaje de recursos compartidos Samba para «KDE Software Compilation». Escanea su entorno de red en busca de cualquier grupo de trabajo, servidores y recursos compartidos disponible y puede montar todos los recursos compartidos deseados en su sistema de archivos local.</p>
     <p xml:lang="fr">Smb4K est un navigateur de voisinage réseau avancé et un utilitaire de montage Samba pour KDE SC. Il balaye votre voisinage réseau à la recherche des groupes de travail, serveurs et partages disponibles et peut montrer tous les partages désirés sur votre système de fichier local.</p>
     <p xml:lang="gl">Smb4K é un navegador avanzado da veciñanza de rede e unha ferramenta para montar comparticións de Samba que forma parte da colección de software de KDE. Examina a veciñanza de rede en busca de grupos de traballo, servidores e comparticións dispoñíbeis, e pode montar todas as comparticións que queira no seu sistema de ficheiros local.</p>
     <p xml:lang="nds">Smb4K is en verwiedert Nettwarkümgeven-Kieker un Inhangwarktüüch för Samba-Freegaven för de KDE-Software-Tosamenstellen. Dat kiekt Dien Nettwarkümgeven na verföögbor Arbeitkoppeln, Servers un Freegaven dör un kann de Freegaven na Dien lokaal Dateisysteem inhangen.</p>
@@ -249,7 +249,7 @@
       <li xml:lang="da">WINS-server-understøttelse</li>
       <li xml:lang="de">Unterstützung für WINS-Server</li>
       <li xml:lang="en-GB">WINS server support</li>
-      <li xml:lang="es">Soporte para servidores WINS</li>
+      <li xml:lang="es">Apoyo para servidores WINS</li>
       <li xml:lang="fr">Prise en charge d'un serveur WINS</li>
       <li xml:lang="gl">É compatíbel con servidores WINS.</li>
       <li xml:lang="nds">WINS-Server-Ünnerstütten</li>
@@ -266,7 +266,7 @@
       <li xml:lang="ca">Vista prèvia dels continguts d'una compartició</li>
       <li xml:lang="de">Vorschau des Inhalts einer Freigabe</li>
       <li xml:lang="en-GB">Preview of the contents of a share</li>
-      <li xml:lang="es">Visualización previa del contenido de un recurso compartido</li>
+      <li xml:lang="es">Vista previa del contenido de un recurso compartido</li>
       <li xml:lang="fr">Prévisualisation des contenus d'un partage</li>
       <li xml:lang="gl">Permite obter unha vista previa dos contidos dunha compartición.</li>
       <li xml:lang="nds">Vöransicht vun de Freegaav ehr Inholt</li>
@@ -336,7 +336,7 @@
       <li xml:lang="ca">La possibilitat d'apuntar les comparticions a les adreces d'interès</li>
       <li xml:lang="de">Lesezeichen für bevorzugte Freigaben</li>
       <li xml:lang="en-GB">Ability to bookmark favorite shares</li>
-      <li xml:lang="es">Capacidad para marcar recursos compartidos como favoritos</li>
+      <li xml:lang="es">Capacidad para poner como marcadores los recursos compartidos favoritos</li>
       <li xml:lang="fr">Possibilité d'avoir des partages favoris</li>
       <li xml:lang="gl">Fornece un sistema de marcadores para gardar comparticións.</li>
       <li xml:lang="nds">Leestekens för vörtrocken Freegaven</li>
@@ -370,7 +370,7 @@
       <li xml:lang="ca">Implementació de les opcions avançades de Samba</li>
       <li xml:lang="de">Unterstützung der erweiterten Samba-Einstellungen</li>
       <li xml:lang="en-GB">Support of advanced Samba options</li>
-      <li xml:lang="es">Soporte para las opciones avanzadas de Samba</li>
+      <li xml:lang="es">Apoyo para las opciones avanzadas de Samba</li>
       <li xml:lang="fr">Prise en charge des options avancées de Samba</li>
       <li xml:lang="gl">Permite usar opcións avanzadas de Samba.</li>
       <li xml:lang="nds">Ünnerstütt verwieder Samba-Optschonen</li>
@@ -387,7 +387,7 @@
       <li xml:lang="ca">Implementació de les impressores compartides</li>
       <li xml:lang="de">Unterstützung für Drucker-Freigaben</li>
       <li xml:lang="en-GB">Support of printer shares</li>
-      <li xml:lang="es">Soporte de impresoras compartidas</li>
+      <li xml:lang="es">Apoyo de impresoras compartidas</li>
       <li xml:lang="fr">Prise en charge des imprimantes partagées</li>
       <li xml:lang="gl">Permite usar impresoras compartidas.</li>
       <li xml:lang="nds">Ünnerstütten vun Druckerfreegaven</li>
@@ -405,7 +405,7 @@
       <li xml:lang="cs">Podpora KWallet</li>
       <li xml:lang="de">Unterstützung für KWallet</li>
       <li xml:lang="en-GB">KWallet support</li>
-      <li xml:lang="es">Soporte para KWallet</li>
+      <li xml:lang="es">Apoyo para KWallet</li>
       <li xml:lang="fr">Prise en charge de KWallet</li>
       <li xml:lang="gl">Intégrase con KWallet.</li>
       <li xml:lang="nds">KWallet-Ünnerstütten</li>
@@ -456,7 +456,7 @@
       <li xml:lang="ca">Implementació de l'ordinador portàtil a través del marc de treball per a dispositius Solid</li>
       <li xml:lang="de">Laptop-Unterstützung durch das Solid-Framework für Hardware-Geräte</li>
       <li xml:lang="en-GB">Laptop support through the Solid hardware device framework</li>
-      <li xml:lang="es">Soporte de portátiles a través de la infraestructura de dispositivos hardware Solid</li>
+      <li xml:lang="es">Apoyo para portátiles a través de la infraestructura de dispositivos hardware Solid</li>
       <li xml:lang="fr">Prise en charge des ordinateurs portables avec le framework de gestion matérielle Solid</li>
       <li xml:lang="gl">Compatíbel con portátiles mediante a infraestrutura de dispositivos de hardware Solid.</li>
       <li xml:lang="nds">Klappreekner-Ünnerstütten över't Hardware-Rahmenwark Solid</li>
