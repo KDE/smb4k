@@ -34,6 +34,7 @@
 // Qt includes
 #include <QtCore/QThread>
 #include <QtCore/QString>
+#include <QtCore/QVariant>
 #include <QtGui/QCheckBox>
 
 // KDE includes
@@ -167,8 +168,8 @@ class Smb4KMountJob : public KJob
     QList<Smb4KShare *> m_auth_errors;
     QList<Smb4KShare *> m_retries;
     QWidget *m_parent_widget;
-    bool createMountAction( Smb4KShare *share,
-                            Action *action );
+    bool createMountAction(Smb4KShare *share, Action *action);
+    bool fillArgs(Smb4KShare *share, QMap<QString, QVariant> &mountArgs);
     int m_processed;
 };
 

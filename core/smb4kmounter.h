@@ -398,11 +398,6 @@ class KDE_EXPORT Smb4KMounter : public KCompositeJob
     void saveSharesForRemount();
     
     /**
-     * Clean up the mount prefix.
-     */
-    void cleanup();
-
-    /**
      * Pointer to the Smb4KMounterPrivate class.
      */
     const QScopedPointer<Smb4KMounterPrivate> d;

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+                          http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <include>KUser</include>
+  <kcfgfile name="smb4krc" />
+  
+  <group name="Samba">
+    <entry name="ClientCharset" type="Enum">
+      <label>Client character set:</label>
+      <whatsthis>This is the character set that is used by the client side (i.e. your side) for codepage to charset translations. If you keep the default setting, Smb4K will try to automatically determine the charset by looking up the "unix charset" option in the smb.conf.</whatsthis>
+      <choices>
+        <choice name="default_charset">
+          <label>default</label>
+        </choice>
+        <choice name="iso8859_1">
+          <label>iso8859-1</label>
+        </choice>
+        <choice name="iso8859_2">
+          <label>iso8859-2</label>
+        </choice>
+        <choice name="iso8859_3">
+          <label>iso8859-3</label>
+        </choice>
+        <choice name="iso8859_4">
+          <label>iso8859-4</label>
+        </choice>
+        <choice name="iso8859_5">
+          <label>iso8859-5</label>
+        </choice>
+        <choice name="iso8859_6">
+          <label>iso8859-6</label>
+        </choice>
+        <choice name="iso8859_7">
+          <label>iso8859-7</label>
+        </choice>
+        <choice name="iso8859_8">
+          <label>iso8859-8</label>
+        </choice>
+        <choice name="iso8859_9">
+          <label>iso8859-9</label>
+        </choice>
+        <choice name="iso8859_13">
+          <label>iso8859-13</label>
+        </choice>
+        <choice name="iso8859_14">
+          <label>iso8859-14</label>
+        </choice>
+        <choice name="iso8859_15">
+          <label>iso8859-15</label>
+        </choice>
+        <choice name="utf8">
+          <label>utf8</label>
+        </choice>
+        <choice name="koi8_r">
+          <label>koi8-r</label>
+        </choice>
+        <choice name="koi8_u">
+          <label>koi8-u</label>
+        </choice>
+        <choice name="koi8_ru">
+          <label>koi8-ru</label>
+        </choice>
+        <choice name="cp1251">
+          <label>cp1251</label>
+        </choice>
+        <choice name="gb2312">
+          <label>gb2312</label>
+        </choice>
+        <choice name="big5">
+          <label>big5</label>
+        </choice>
+        <choice name="euc_jp">
+          <label>euc-jp</label>
+        </choice>
+        <choice name="euc_kr">
+          <label>euc-kr</label>
+        </choice>
+        <choice name="tis_620">
+          <label>tis-620</label>
+        </choice>
+      </choices>
+      <default>default_charset</default>
+    </entry>
+    <entry name="ServerCodepage" type="Enum">
+      <label>Server codepage:</label>
+      <whatsthis>This is the codepage that is used by the server. The setting is only available with the SMBFS file system. If you keep the default setting, Smb4K will try to automatically determine the codepage by looking up the "dos charset" option in the smb.conf file.</whatsthis>
+      <choices>
+        <choice name="default_codepage">
+          <label>default</label>
+        </choice>
+        <choice name="cp437">
+          <label>cp437</label>
+        </choice>
+        <choice name="cp720">
+          <label>cp720</label>
+        </choice>
+        <choice name="cp737">
+          <label>cp737</label>
+        </choice>
+        <choice name="cp775">
+          <label>cp775</label>
+        </choice>
+        <choice name="cp850">
+          <label>cp850</label>
+        </choice>
+        <choice name="cp852">
+          <label>cp852</label>
+        </choice>
+        <choice name="cp855">
+          <label>cp855</label>
+        </choice>
+        <choice name="cp857">
+          <label>cp857</label>
+        </choice>
+        <choice name="cp858">
+          <label>cp858</label>
+        </choice>
+        <choice name="cp860">
+          <label>cp860</label>
+        </choice>
+        <choice name="cp861">
+          <label>cp861</label>
+        </choice>
+        <choice name="cp862">
+          <label>cp862</label>
+        </choice>
+        <choice name="cp863">
+          <label>cp863</label>
+        </choice>
+        <choice name="cp864">
+          <label>cp864</label>
+        </choice>
+        <choice name="cp865">
+          <label>cp865</label>
+        </choice>
+        <choice name="cp866">
+          <label>cp866</label>
+        </choice>
+        <choice name="cp869">
+          <label>cp869</label>
+        </choice>
+        <choice name="cp874">
+          <label>cp874</label>
+        </choice>
+        <choice name="cp932">
+          <label>cp932</label>
+        </choice>
+        <choice name="cp936">
+          <label>cp936</label>
+        </choice>
+        <choice name="cp949">
+          <label>cp949</label>
+        </choice>
+        <choice name="cp950">
+          <label>cp950</label>
+        </choice>
+        <choice name="cp1250">
+          <label>cp1250</label>
+        </choice>
+        <choice name="cp1251">
+          <label>cp1251</label>
+        </choice>
+        <choice name="cp1252">
+          <label>cp1252</label>
+        </choice>
+        <choice name="cp1253">
+          <label>cp1253</label>
+        </choice>
+        <choice name="cp1254">
+          <label>cp1254</label>
+        </choice>
+        <choice name="cp1255">
+          <label>cp1255</label>
+        </choice>
+        <choice name="cp1256">
+          <label>cp1256</label>
+        </choice>
+        <choice name="cp1257">
+          <label>cp1257</label>
+        </choice>
+        <choice name="cp1258">
+          <label>cp1258</label>
+        </choice>
+        <choice name="unicode">
+          <label>unicode</label>
+        </choice>
+      </choices>
+      <default>default_codepage</default>
+    </entry>
+    <entry name="UserID" type="String">
+      <label>User ID:</label>
+      <whatsthis>This is the user ID (a number) that the files and directories of the mounted share will have.</whatsthis>
+      <default code="true">QString("%1").arg(KUser(KUser::UseRealUserID).uid())</default>
+    </entry>
+    <entry name="GroupID" type="String">
+      <label>Group ID:</label>
+      <whatsthis>This is the group ID (a number) that the files and directories of the mounted share will have.</whatsthis>
+      <default code="true">QString("%1").arg(KUserGroup(KUser::UseRealUserID).gid())</default>
+    </entry>
+    <entry name="FileMask" type="String">
+      <label>File mask:</label>
+      <whatsthis>This is the mask that will be used for creating files. It must be defined in octal.</whatsthis>
+      <default>0755</default>
+    </entry>
+    <entry name="DirectoryMask" type="String">
+      <label>Directory mask:</label>
+      <whatsthis>This is the mask that will be used for creating directories. It must be defined in octal.</whatsthis>
+      <default>0755</default>
+    </entry>
+  </group>
+</kcfg>

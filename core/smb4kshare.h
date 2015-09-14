@@ -61,8 +61,8 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param shareName     The name of the share.
      */
-    Smb4KShare( const QString &hostName,
-                const QString &shareName );
+    Smb4KShare(const QString &hostName,
+                const QString &shareName);
 
     /**
      * This constructor takes the UNC @p unc (in the form [smb:]//[USER@]HOST/SHARE) as
@@ -72,7 +72,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param unc           The UNC in the form [smb:]//[USER@]HOST/SHARE.
      */
-    explicit Smb4KShare( const QString &unc );
+    explicit Smb4KShare(const QString &unc);
 
     /**
      * This is the copy constructor. It takes another Smb4KShare item and copies all
@@ -80,7 +80,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param share         The Smb4KShare item that is to be copied
      */
-    Smb4KShare( const Smb4KShare &share );
+    Smb4KShare(const Smb4KShare &share);
 
     /**
      * The empty constructor. You need to set all information by the functions that
@@ -98,7 +98,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param name          The share name
      */
-    void setShareName( const QString &name );
+    void setShareName(const QString &name);
 
     /**
      * Returns the name of the share, e.g. "Music", "Data", etc.
@@ -112,7 +112,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param hostName      The host name
      */
-    void setHostName( const QString &hostName );
+    void setHostName(const QString &hostName);
 
     /**
      * Returns the name of the host where the share is located.
@@ -153,20 +153,54 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * @returns the UNC.
      */
     QString homeUNC() const;
+    
+#if defined(Q_OS_SOLARIS)
+    /**
+     * Returns the UNC (Uniform Naming Convention string) in the Solaris-specific
+     * form //WORKGROUP;user@HOST/Share.
+     * 
+     * This function should only be used for mounting and is only available under 
+     * Solaris/illumos.
+     * 
+     * Please note that this function returns a modified URL string (uppercase
+     * hostname, etc.) and automatically strips a trailing slash if one is present.
+     *
+     * @returns the UNC.
+     */
+    QString fullUNC() const;
+                                                   
+    /**
+     * In case of a 'homes' share, this function returns the UNC (Uniform 
+     * Naming Convention string) of the user's home repository in the 
+     * Solaris-specific form //WORKGROUP;user@HOST/User.
+     * 
+     * If the share is not a 'homes' share or no user name for the homes share
+     * has been defined, this function returns an empty string.
+     * 
+     * This function should only be used for mounting and is only available under 
+     * Solaris/illumos.
+     * 
+     * Please note that this function returns a modified URL string (uppercase
+     * hostname, etc.) and automatically strips a trailing slash if one is present.
+     *
+     * @returns the UNC.
+     */
+    QString fullHomeUNC() const;
+#endif
                                                        
     /**
      * Sets the URL of the share after some checks are passed.
      * 
      * @param url             The URL of the network item
      */
-    void setURL( const KUrl &url );
+    void setURL(const KUrl &url);
     
     /**
      * Sets the URL of the share.
      *
      * @param url             The URL of the network item
      */
-    void setURL( const QString &url );
+    void setURL(const QString &url);
     
     /**
      * Returns the URL of the share.
@@ -205,7 +239,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param workgroup     The name of the workgroup
      */
-    void setWorkgroupName( const QString &workgroup );
+    void setWorkgroupName(const QString &workgroup);
 
     /**
      * Returns the name of the workgroup where the host is located that
@@ -220,7 +254,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param type          The string defining the type of the share
      */
-    void setTypeString( const QString &typeString );
+    void setTypeString(const QString &typeString);
 
     /**
      * Returns the type string of the share as reported by the server. If you are
@@ -244,7 +278,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param comment       The comment for the share
      */
-    void setComment( const QString &comment );
+    void setComment(const QString &comment);
 
     /**
      * Returns the comment that was defined for this share.
@@ -259,7 +293,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param ip              The host's IP address
      */
-    void setHostIP( const QString &ip );
+    void setHostIP(const QString &ip);
 
     /**
      * Returns the IP address of the host. If the IP address was not compatible
@@ -290,7 +324,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param mountpoint      The mount point of the share.
      */
-    void setPath( const QString &mountpoint );
+    void setPath(const QString &mountpoint);
 
     /**
      * Returns the path to the mounted share (aka the mount point) as it was gathered
@@ -317,7 +351,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param in              Tells if the share is inaccessible or not.
      */
-    void setInaccessible( bool in );
+    void setInaccessible(bool in);
 
     /**
      * Returns TRUE if the share is not accessible by the user and FALSE otherwise.
@@ -333,7 +367,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param foreign         TRUE if the share is foreign and FALSE otherwise.
      */
-    void setForeign( bool foreign );
+    void setForeign(bool foreign);
 
     /**
      * Returns TRUE if the share was mounted and is owned by another user.
@@ -354,7 +388,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param filesystem      The file system of the mounted share.
      */
-    void setFileSystem( FileSystem filesystem );
+    void setFileSystem(FileSystem filesystem);
 
     /**
      * Returns the file system of the share. If it wasn't set, FileSystem::Unknown
@@ -377,7 +411,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param uid             The UID of the owner
      */
-    void setUID( K_UID uid );
+    void setUID(K_UID uid);
 
     /**
      * Returns the UID of the owner of this share or the UID of the user, if
@@ -400,7 +434,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param gid             The owning GID
      */
-    void setGID( K_GID gid );
+    void setGID(K_GID gid);
 
     /**
      * Returns the GID of the owner of this share or the GID of the user, if
@@ -424,7 +458,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param total           The total disk space that is available on the share
      */
-    void setTotalDiskSpace( qulonglong size );
+    void setTotalDiskSpace(qulonglong size);
 
     /**
      * Returns the total disk space that is available on the share or 0 if the
@@ -450,7 +484,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param free            The free disk space that is available on the share
      */
-    void setFreeDiskSpace( qulonglong size );
+    void setFreeDiskSpace(qulonglong size);
 
     /**
      * Returns the free disk space that is available on the share or 0 if the
@@ -476,7 +510,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param free            The free disk space that is available on the share
      */
-    void setUsedDiskSpace( qulonglong size );
+    void setUsedDiskSpace(qulonglong size);
 
     /**
      * Returns the used disk space that is used on the share or 0 if the
@@ -545,13 +579,13 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns TRUE if the data that was compared is the same.
      */
-    bool equals( Smb4KShare *share,
-                 CheckFlags flag ) const;
+    bool equals(Smb4KShare *share,
+                 CheckFlags flag) const;
                  
     /**
      * Operator to check if two shares are equal. This operator performs a full check.
      */
-    bool operator==( Smb4KShare share ) const { return equals( &share, Full ); }
+    bool operator==(Smb4KShare share) const { return equals(&share, Full); }
 
     /**
      * Returns TRUE if values that were checked according to @p flag are empty.
@@ -564,7 +598,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns TRUE if the item is empty.
      */
-    bool isEmpty( CheckFlags flag = Full ) const;
+    bool isEmpty(CheckFlags flag = Full) const;
 
     /**
      * If this share was mounted, set @p mounted to TRUE. This function will not
@@ -572,7 +606,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param mounted         Should be set to TRUE if the share was mounted.
      */
-    void setIsMounted( bool mounted );
+    void setIsMounted(bool mounted);
 
     /**
      * This function returns TRUE if the share has been mounted and FALSE
@@ -589,7 +623,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * @param share           The share object from where the mount related
      *                        data should be copied.
      */
-    void setMountData( Smb4KShare *share );
+    void setMountData(Smb4KShare *share);
 
     /**
      * This convenience function resets the mount related data (mount point,
@@ -610,7 +644,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param port            The port
      */
-    void setPort( int port );
+    void setPort(int port);
 
     /**
      * Returns the port that is used in the UNC.
@@ -626,7 +660,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param authInfo    The authentication information
      */
-    void setAuthInfo( Smb4KAuthInfo *authInfo );
+    void setAuthInfo(Smb4KAuthInfo *authInfo);
     
     /**
      * Set the login for the share. This function will add the login name
@@ -634,7 +668,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * 
      * @param login       The login name
      */
-    void setLogin( const QString &login );
+    void setLogin(const QString &login);
     
     /**
      * Returns the login.
@@ -648,7 +682,7 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * 
      * @param passwd              The password
      */
-    void setPassword( const QString &passwd );
+    void setPassword(const QString &passwd);
     
     /**
      * Returns the password.

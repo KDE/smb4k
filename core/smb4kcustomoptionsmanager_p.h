@@ -3,7 +3,7 @@
     Smb4KCustomOptionsManager class
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2014 by Alexander Reinholdt
+    copyright            : (C) 2011-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -65,14 +65,18 @@ class Smb4KCustomOptionsDialog : public KDialog
     
   private:
     void setupView();
-    bool defaultValues();
+    bool checkDefaultValues();
+    void setDefaultValues();
+    void saveValues();
     Smb4KCustomOptions *m_options;
     QCheckBox *m_remount;
     KIntNumInput *m_smb_port;
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_LINUX)
     KIntNumInput *m_fs_port;
-    KComboBox *m_write_access;
     KComboBox *m_security_mode;
+#endif
+#if defined(Q_OS_LINUX) || defined(Q_OS_SOLARIS)
+    KComboBox *m_write_access;
 #endif
     KComboBox *m_protocol_hint;
     KComboBox *m_user_id;

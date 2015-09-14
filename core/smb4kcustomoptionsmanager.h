@@ -2,7 +2,7 @@
     smb4kcustomoptionsmanager - Manage custom options
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2014 by Alexander Reinholdt
+    copyright            : (C) 2011-2015 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -62,7 +62,7 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
     /**
      * Constructor
      */
-    explicit Smb4KCustomOptionsManager( QObject *parent = 0 );
+    explicit Smb4KCustomOptionsManager(QObject *parent = 0);
 
     /**
      * Destructor
@@ -85,7 +85,7 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
      * @param always    If set to TRUE the share is always mounted 
      *                  when Smb4K is restarted.
      */
-    void addRemount( Smb4KShare *share, bool always = false );
+    void addRemount(Smb4KShare *share, bool always = false);
     
     /**
      * Remove the share @p share from the list of shares that are to be 
@@ -99,7 +99,7 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
      * @param force     If set to TRUE, the share is removed regardless of the
      *                  remount setting.
      */
-    void removeRemount( Smb4KShare *share, bool force = false );
+    void removeRemount(Smb4KShare *share, bool force = false);
     
     /**
      * Removes all remounts from the list of custom options. If @p force
@@ -108,7 +108,7 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
      * @param force     If set to TRUE, even those shares are removed that should
      *                  always be remounted.
      */
-    void clearRemounts( bool force );
+    void clearRemounts(bool force);
     
     /**
      * Returns the list of shares that are to be remounted.
@@ -134,8 +134,8 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
      *
      * @returns the custom options for the network item
      */
-    Smb4KCustomOptions *findOptions( Smb4KBasicNetworkItem *networkItem,
-                                     bool exactMatch = false );
+    Smb4KCustomOptions *findOptions(Smb4KBasicNetworkItem *networkItem,
+                                     bool exactMatch = false);
 
     /**
      * Find custom options for the provided @p url.
@@ -148,7 +148,7 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
      *
      * @returns the custom options
      */
-    Smb4KCustomOptions *findOptions( const KUrl &url );
+    Smb4KCustomOptions *findOptions(const KUrl &url);
     
     /**
      * Get the list of custom options. By default, the list not only comprises of those 
@@ -160,7 +160,7 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
      * 
      * @returns the list of custom options objects.
      */
-    const QList<Smb4KCustomOptions *> customOptions( bool optionsOnly = false );
+    const QList<Smb4KCustomOptions *> customOptions(bool optionsOnly = false);
     
     /**
      * Replace all previously defined custom options with a list of new ones. If you
@@ -168,7 +168,7 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
      * 
      * @param options_list        The list of new or updated options
      */
-    void replaceCustomOptions( const QList<Smb4KCustomOptions *> &options_list );
+    void replaceCustomOptions(const QList<Smb4KCustomOptions *> &options_list);
     
     /**
      * This function opens the custom options dialog.
@@ -177,8 +177,8 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
      * 
      * @param parent              The parent widget
      */
-    void openCustomOptionsDialog( Smb4KBasicNetworkItem *item,
-                                  QWidget *parent = 0 );
+    void openCustomOptionsDialog(Smb4KBasicNetworkItem *item,
+                                  QWidget *parent = 0);
     
     /**
      * This function adds custom options for a single network item to the list
@@ -190,7 +190,7 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
      * 
      * @param options             The custom options
      */
-    void addCustomOptions( Smb4KCustomOptions *options );
+    void addCustomOptions(Smb4KCustomOptions *options);
     
     /**
      * This function removes custom options for a single network item from the
@@ -198,16 +198,16 @@ class KDE_EXPORT Smb4KCustomOptionsManager : public QObject
      * 
      * @param options             The custom options
      */
-    void removeCustomOptions( Smb4KCustomOptions *options );
+    void removeCustomOptions(Smb4KCustomOptions *options);
     
     /**
      * This functions checks if the options object indeed carries custom
      * options. It does not test for the value of remount(), so you need 
      * do check it, too.
-     * 
      * @param options       The custom options object
+     * @returns TRUE if there are custom options defined and FALSE otherwise.
      */
-    bool hasCustomOptions( Smb4KCustomOptions *options );
+    bool hasCustomOptions(Smb4KCustomOptions *options);
     
     /**
      * This function returns a list of custom option objects that have 

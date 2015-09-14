@@ -80,14 +80,7 @@ class KDE_EXPORT Smb4KCustomOptions
                         ADS,
                         UndefinedProtocolHint };
 
-#ifdef Q_OS_LINUX
-    /**
-     * The WriteAccess enumeration
-     */
-    enum WriteAccess { ReadWrite,
-                       ReadOnly,
-                       UndefinedWriteAccess };
-
+#if defined(Q_OS_LINUX)
     /**
      * The SecurityMode enumeration
      */
@@ -102,6 +95,15 @@ class KDE_EXPORT Smb4KCustomOptions
                         Ntlmsspi,
                         UndefinedSecurityMode };
 #endif
+                        
+#if defined(Q_OS_LINUX) || defined(Q_OS_SOLARIS)
+    /**
+     * The WriteAccess enumeration
+     */
+    enum WriteAccess { ReadWrite,
+                       ReadOnly,
+                       UndefinedWriteAccess };
+#endif
                        
     /**
      * The Kerberos enumeration
@@ -113,17 +115,17 @@ class KDE_EXPORT Smb4KCustomOptions
     /**
      * Constructor for a host
      */
-    explicit Smb4KCustomOptions( Smb4KHost *host );
+    explicit Smb4KCustomOptions(Smb4KHost *host);
                 
     /**
      * Constructor for a share
      */
-    explicit Smb4KCustomOptions( Smb4KShare *share );
+    explicit Smb4KCustomOptions(Smb4KShare *share);
     
     /**
      * Copy constructor
      */
-    Smb4KCustomOptions( const Smb4KCustomOptions &options );
+    Smb4KCustomOptions(const Smb4KCustomOptions &options);
     
     /**
      * Empty constructor
@@ -141,7 +143,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @param host          The host object
      */
-    void setHost( Smb4KHost *host );
+    void setHost(Smb4KHost *host);
     
     /**
      * Sets the share object. If you already set a host item before,
@@ -151,7 +153,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @param share         The host object
      */
-    void setShare( Smb4KShare *share );
+    void setShare(Smb4KShare *share);
     
     /**
      * Returns the type of the network item for that the options
@@ -167,7 +169,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @param remount       One entry of the Remount enumeration
      */
-    void setRemount( Remount remount );
+    void setRemount(Remount remount);
     
     /**
      * Returns if the network item should be remounted.
@@ -183,7 +185,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @param profile         The profile name
      */
-    void setProfile( const QString &profile );
+    void setProfile(const QString &profile);
     
     /**
      * Returns the name of the profile this custom options object belongs to.
@@ -197,7 +199,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @param workgroup       The workgroup name
      */
-    void setWorkgroupName( const QString &workgroup );
+    void setWorkgroupName(const QString &workgroup);
     
     /**
      * Returns the workgroup name.
@@ -211,14 +213,14 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @param url             The URL
      */
-    void setURL( const KUrl &url );
+    void setURL(const KUrl &url);
     
     /**
      * Sets the UNC/URL of the network item
      *
      * @param url             The URL of the network item
      */
-    void setURL( const QString &url );
+    void setURL(const QString &url);
     
     /**
      * Returns the URL of the network item
@@ -257,7 +259,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @param ip              The IP address
      */
-    void setIP( const QString &ip );
+    void setIP(const QString &ip);
     
     /**
      * Returns the IP address of the network item
@@ -271,7 +273,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @param port            The SMB port
      */
-    void setSMBPort( int port );
+    void setSMBPort(int port);
     
     /**
      * Returns the SMB port. The default value is 139.
@@ -280,14 +282,14 @@ class KDE_EXPORT Smb4KCustomOptions
      */
     int smbPort() const;
     
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_LINUX)
     /**
      * Set the port that is to be used with mounting for a single share or all
      * shares of a host.
      * 
      * @param port            The file system port
      */
-    void setFileSystemPort( int port );
+    void setFileSystemPort(int port);
     
     /**
      * Returns the file system port. The default value is 445.
@@ -297,25 +299,11 @@ class KDE_EXPORT Smb4KCustomOptions
     int fileSystemPort() const;
     
     /**
-     * Set the write access for either a single share or all shares of a host. 
-     * 
-     * @param access          The write access
-     */
-    void setWriteAccess( WriteAccess access );
-    
-    /**
-     * Returns the write access for the share.
-     * 
-     * @returns the write access
-     */
-    WriteAccess writeAccess() const;
-
-    /**
      * Set the security mode for mounting.
      *
      * @param mode            The security mode
      */
-    void setSecurityMode( SecurityMode mode );
+    void setSecurityMode(SecurityMode mode);
 
     /**
      * Returns the security mode for mounting a specific share.
@@ -324,13 +312,29 @@ class KDE_EXPORT Smb4KCustomOptions
      */
     SecurityMode securityMode() const;
 #endif
+    
+#if defined(Q_OS_LINUX) || defined(Q_OS_SOLARIS)
+    /**
+     * Set the write access for either a single share or all shares of a host. 
+     * 
+     * @param access          The write access
+     */
+    void setWriteAccess(WriteAccess access);
+    
+    /**
+     * Returns the write access for the share.
+     * 
+     * @returns the write access
+     */
+    WriteAccess writeAccess() const;
+#endif
 
     /**
      * Set the protocol hint for this network item.
      * 
      * @param protocol        The protocol hint
      */
-    void setProtocolHint( ProtocolHint protocol );
+    void setProtocolHint(ProtocolHint protocol);
     
     /**
      * Returns the protocol hint for this item.
@@ -344,7 +348,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @param kerberos          Kerberos usage
      */
-    void setUseKerberos( Kerberos kerberos );
+    void setUseKerberos(Kerberos kerberos);
     
     /**
      * Returns the usage of Kerberos for this network item.
@@ -358,7 +362,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @param uid               The user id
      */
-    void setUID( K_UID uid );
+    void setUID(K_UID uid);
     
     /**
      * Returns the user id that is to be used.
@@ -380,7 +384,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @param gid               The group id
      */
-    void setGID( K_GID gid );
+    void setGID(K_GID gid);
     
     /**
      * Returns the group id that is to be used.
@@ -404,7 +408,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * 
      * @param macAddress        The MAC address of the host
      */
-    void setMACAddress( const QString &macAddress );
+    void setMACAddress(const QString &macAddress);
     
     /**
      * This function returns the MAC address of the host or an empty string if 
@@ -422,7 +426,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * @param send              Boolean that determines if a magic WOL package
      *                          is to be sent.
      */
-    void setWOLSendBeforeNetworkScan( bool send );
+    void setWOLSendBeforeNetworkScan(bool send);
     
     /**
      * Send a magic WOL package to the host that this network item represents
@@ -441,7 +445,7 @@ class KDE_EXPORT Smb4KCustomOptions
      * @param send              Boolean that determines if a magic WOL package
      *                          is to be sent.
      */
-    void setWOLSendBeforeMount( bool send );
+    void setWOLSendBeforeMount(bool send);
     
     /**
      * Send a magic WOL package to the host that this network item represents
@@ -480,7 +484,7 @@ class KDE_EXPORT Smb4KCustomOptions
     /**
      * Operator to check if two custom options objects are equal.
      */
-    bool operator==( Smb4KCustomOptions options ) const { return equals(&options, true); }
+    bool operator==(Smb4KCustomOptions options) const { return equals(&options, true); }
     
     /**
      * Check if the custom options are empty.

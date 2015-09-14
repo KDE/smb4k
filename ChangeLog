@@ -2,7 +2,7 @@ Smb4K 1.2.0 (2015-02-21):
 
 See the summary of changes below. For a full list of changes, please
 refer to the Git log at
-https://projects.kde.org/projects/extragear/network/smb4k/repository/show?rev=1.2
+https://projects.kde.org/projects/extragear/network/smb4k/repository/revisions/1.2/changes
 
 - Added support for NetBSD.
 - Added support for profiles.

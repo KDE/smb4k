@@ -64,6 +64,7 @@
 #include <kio/job.h>
 #include <kio/jobclasses.h>
 #include <kdiskfreespaceinfo.h>
+#include <KUser>
 
 using namespace Smb4KGlobal;
 
@@ -344,7 +345,7 @@ void Smb4KMounter::import( bool check_inaccessible )
 
   for ( int i = 0; i < mount_points.size(); ++i )
   {
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_LINUX)
     if ( QString::compare( mount_points.at( i )->mountType(), "cifs" ) == 0 )
 #else
     if ( QString::compare( mount_points.at( i )->mountType(), "smbfs" ) == 0 )
@@ -353,7 +354,7 @@ void Smb4KMounter::import( bool check_inaccessible )
       Smb4KShare *share = new Smb4KShare( mount_points.at( i )->mountedFrom() );
       share->setPath( mount_points.at( i )->mountPoint() );
 
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_LINUX)
       share->setFileSystem( Smb4KShare::CIFS );
 
       // Check if the share is new and we have to open /proc/mounts (if it exists)
@@ -526,7 +527,6 @@ void Smb4KMounter::import( bool check_inaccessible )
       {
         // Do nothing
       }
-//       qDebug() << "Domain and ip address?";
 #endif
       share->setIsMounted( true );
       d->importedShares << share;
@@ -579,7 +579,7 @@ void Smb4KMounter::import( bool check_inaccessible )
     found = false;
   }
   
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_LINUX)
   // Now stat the imported shares to get information about them.
   // Do not use Smb4KShare::canonicalPath() here, otherwise we might
   // get lock-ups with inaccessible shares.
@@ -1110,7 +1110,7 @@ void Smb4KMounter::unmountShare( Smb4KShare *share, bool silent, QWidget *parent
   // inaccessible share (Linux only)
   bool force = false;
 
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_LINUX)
   if ( share->isInaccessible() )
   {
     force = Smb4KSettings::forceUnmountInaccessible();
@@ -1249,7 +1249,7 @@ void Smb4KMounter::unmountShares( const QList<Smb4KShare *> &shares, bool silent
   // inaccessible share
   bool force = false;
 
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_LINUX)
   if ( have_inaccessible_shares )
   {
     force = Smb4KSettings::forceUnmountInaccessible();
@@ -1375,79 +1375,6 @@ void Smb4KMounter::saveSharesForRemount()
   {
     delete d->remounts.takeFirst();
   }  
-}
-
-
-void Smb4KMounter::cleanup()
-{
-  // Get the current and previous mountpoints in the mount prefix.
-  QDir dir(Smb4KSettings::mountPrefix().path());
-  QFileInfoList hostDirs = dir.entryInfoList(QDir::AllDirs|QDir::NoDotAndDotDot, QDir::Name);
-  QFileInfoList mountpoints;
-  
-  for (int i = 0; i < hostDirs.size(); ++i)
-  {
-    if (!dir.cd(hostDirs.at(i).absoluteFilePath()))
-    {
-      continue;
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    mountpoints << dir.entryInfoList(QDir::AllDirs|QDir::NoDotAndDotDot, QDir::Name);
-    
-    dir.cdUp();
-  }
-
-  // Now check which mountpoints are still in use and remove
-  // the others. Do not rely on the internal list of Smb4K here,
-  // because even on exit we want to be absolutely sure that a 
-  // certain mountpoint is not used anymore.
-  KMountPoint::List list = KMountPoint::currentMountPoints();
-  QMutableListIterator<QFileInfo> it(mountpoints);
-  
-  while (it.hasNext())
-  {
-    QFileInfo info = it.next();
-    
-    for (int i = 0; i < list.size(); ++i)
-    {
-      if (QString::compare(list.at(i)->mountPoint(), info.absoluteFilePath(), Qt::CaseSensitive) == 0)
-      {
-        it.remove();
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-  }
-  
-  for (int i = 0; i < mountpoints.size(); ++i)
-  {
-    dir.rmdir(mountpoints.at(i).absoluteFilePath());
-  }
-  
-  for (int i = 0; i < hostDirs.size(); ++i)
-  {
-    if (dir.cd(hostDirs.at(i).absoluteFilePath()))
-    {
-      if (dir.entryList(QDir::AllDirs|QDir::NoDotAndDotDot, QDir::Name).size() == 0)
-      {
-        dir.rmdir(hostDirs.at(i).absoluteFilePath());
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
 }
 
 
@@ -1626,9 +1553,6 @@ void Smb4KMounter::slotAboutToQuit()
     }
   }
   
-  // Clean up the mount prefix.
-  cleanup();
-  
   // Unset internal reason
   d->internalReason = false;
 }
@@ -1695,55 +1619,62 @@ void Smb4KMounter::slotRetryMounting( Smb4KMountJob *job )
 }
 
 
-void Smb4KMounter::slotShareMounted( Smb4KShare *share )
+void Smb4KMounter::slotShareMounted(Smb4KShare *share)
 {
-  Q_ASSERT( share );
-
-  // Remove the share from the list of shares that are to be remounted.
-  QMutableListIterator<Smb4KShare *> s( d->remounts );
-
-  while ( s.hasNext() )
-  {
-    Smb4KShare *remount = s.next();
-
-    if ( !share->isForeign() && QString::compare( remount->unc(), share->unc(), Qt::CaseInsensitive ) == 0 )
-    {
-      s.remove();
-      break;
-    }
-    else
-    {
-      continue;
-    }
-  }
+  Q_ASSERT(share);
   
-  // Check that the share has not already been entered into the list.
-  Smb4KShare *known_share = findShareByPath( share->canonicalPath() );
-
-  if ( !known_share )
+  if (share)
   {
-    // Copy incoming share, because it will be deleted shortly
-    // after Smb4KMountJob::mounted() signal was emitted.
-    known_share = new Smb4KShare( *share );
+    // Remove the share from the list of shares that are to be remounted.
+    QMutableListIterator<Smb4KShare *> s(d->remounts);
 
-    // Check the usage, etc.
-    check( known_share );
-
-    // Add the share
-    addMountedShare( known_share );
-
-    if ( Smb4KSettings::remountShares() )
+    while (s.hasNext())
     {
-      Smb4KCustomOptionsManager::self()->removeRemount( known_share, false );
+      Smb4KShare *remount = s.next();
+
+      if (!share->isForeign() && QString::compare( remount->unc(), share->unc(), Qt::CaseInsensitive ) == 0)
+      {
+        s.remove();
+        break;
+      }
+      else
+      {
+        continue;
+      }
+    }
+    
+    // Check that the share has not already been entered into the list.
+    Smb4KShare *known_share = findShareByPath(share->canonicalPath());
+
+    if (!known_share)
+    {
+      // Copy incoming share, because it will be deleted shortly
+      // after Smb4KMountJob::mounted() signal was emitted.
+      known_share = new Smb4KShare(*share);
+
+      // Check the usage, etc.
+      check(known_share);
+
+      // Add the share
+      addMountedShare(known_share);
+
+      if (Smb4KSettings::remountShares())
+      {
+        Smb4KCustomOptionsManager::self()->removeRemount(known_share, false);
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // Emit the mounted() and mountedSharesListChanged() signals.
+      emit mounted(known_share);
+      emit mountedSharesListChanged();
     }
     else
     {
       // Do nothing
     }
-
-    // Emit the mounted() signal.
-    emit mounted( known_share );
-    emit mountedSharesListChanged();
   }
   else
   {
@@ -1752,35 +1683,39 @@ void Smb4KMounter::slotShareMounted( Smb4KShare *share )
 }
 
 
-void Smb4KMounter::slotShareUnmounted( Smb4KShare *share )
+void Smb4KMounter::slotShareUnmounted(Smb4KShare *share)
 {
-  Q_ASSERT( share );
+  Q_ASSERT(share);
   
-  // Get the share that was unmounted.
-  Smb4KShare *known_share = findShareByPath( share->canonicalPath() );
-
-  if ( known_share )
+  if (share)
   {
-    // Set the share as unmounted. Since the unmount job
-    // works with an internal copy, we have to set this here!
-    known_share->setIsMounted( false );
+    // Get the share that was unmounted.
+    Smb4KShare *known_share = findShareByPath(share->canonicalPath());
 
-    // Emit the unmounted() signal. We do it here, because if we do it
-    // after the mount prefix was cleaned up, Smb4KShare::canonicalPath()
-    // would return an empty string.
-    emit unmounted( known_share );
+    if (known_share)
+    {
+      // Set the share as unmounted. Since the unmount job
+      // works with an internal copy, we have to set this here!
+      known_share->setIsMounted(false);
 
-    // Remove the share from the list of mounted shares.
-    removeMountedShare( known_share );
-    emit mountedSharesListChanged();
+      // Emit the unmounted() signal.
+      emit unmounted(known_share);
+
+      // Remove the share from the list of mounted shares.
+      removeMountedShare(known_share);
+      
+      // Emit the mountedSharesListChanged() signal.
+      emit mountedSharesListChanged();
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
     // Do nothing
   }
-  
-  // Clean up the mount prefix.
-  cleanup();
 }
 
 
@@ -1967,7 +1902,7 @@ void Smb4KMounter::slotStatResult( KJob *job )
 
     // Is this a mount that was done by the user or by
     // someone else (or the system)?
-    if ( (share->uid() == getuid() && share->gid() == getgid()) ||
+    if ( (share->uid() == KUser(KUser::UseRealUserID).uid() && share->gid() == KUserGroup(KUser::UseRealUserID).gid()) ||
          (share->path().startsWith( Smb4KSettings::mountPrefix().path() ) || share->path().startsWith( QDir::homePath() )) ||
          (share->canonicalPath().startsWith( QDir( Smb4KSettings::mountPrefix().path() ).canonicalPath() ) ||
          share->canonicalPath().startsWith( QDir::home().canonicalPath() )) )

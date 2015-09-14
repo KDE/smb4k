@@ -8,6 +8,7 @@ set(smb4kconfigdialog_LIB_SRCS
    smb4kauthoptionspage.cpp
    smb4kconfigdialog.cpp
    smb4kcustomoptionspage.cpp
+   smb4kmountoptionspage.cpp
    smb4knetworkoptionspage.cpp
    smb4kprofilespage.cpp
    smb4krsyncoptionspage.cpp
