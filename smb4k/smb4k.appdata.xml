@@ -51,7 +51,7 @@
     <p xml:lang="de">Smb4K ist ein erweiterter Browser für die Netzwerkumgebung und Dienstprogramm für das Einbinden von Samba-Freigaben für die KDE-Softwaresammlung. Es durchsucht Ihre Netzwerkumgebung nach allen verfügbaren Arbeitsgruppen, Server und Freigaben und kann alle gewünschten Freigaben in Ihr lokales Dateisystem einbinden.</p>
     <p xml:lang="en-GB">Smb4K is an advanced network neighborhood browser and Samba share mounting utility for the KDE Software Compilation. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.</p>
     <p xml:lang="es">Smb4K es un navegador avanzado del entorno de red y una utilidad de montaje de recursos compartidos Samba para «KDE Software Compilation». Escanea su entorno de red en busca de cualquier grupo de trabajo, servidores y recursos compartidos disponible y puede montar todos los recursos compartidos deseados en su sistema de archivos local.</p>
-    <p xml:lang="fr">Smb4K est un navigateur de voisinage réseau avancé et un utilitaire de montage Samba pour KDE SC. Il balaye votre voisinage réseau à la recherche des groupes de travail, serveurs et partages disponibles et peut montrer tous les partages désirés sur votre système de fichier local.</p>
+    <p xml:lang="fr">Smb4K est un navigateur de voisinage réseau avancé et un utilitaire de montage Samba pour KDE SC. Il balaye votre voisinage réseau à la recherche des groupes de travail, serveurs et partages disponibles et peut afficher tous les partages désirés sur votre système de fichiers local.</p>
     <p xml:lang="gl">Smb4K é un navegador avanzado da veciñanza de rede e unha ferramenta para montar comparticións de Samba que forma parte da colección de software de KDE. Examina a veciñanza de rede en busca de grupos de traballo, servidores e comparticións dispoñíbeis, e pode montar todas as comparticións que queira no seu sistema de ficheiros local.</p>
     <p xml:lang="nds">Smb4K is en verwiedert Nettwarkümgeven-Kieker un Inhangwarktüüch för Samba-Freegaven för de KDE-Software-Tosamenstellen. Dat kiekt Dien Nettwarkümgeven na verföögbor Arbeitkoppeln, Servers un Freegaven dör un kann de Freegaven na Dien lokaal Dateisysteem inhangen.</p>
     <p xml:lang="nl">Smb4K is een geavanceerde browser voor de netwerkomgeving en hulpmiddel voor aankoppelen van Samba shares voor de KDE Software Compilation. Het scant uw netwerkomgeving voor alle beschikbare werkgroepen, servers en shares en kan alle gewenste shares aankoppelen aan uw lokale bestandssysteem.</p>
@@ -128,7 +128,7 @@
       <li xml:lang="de">Unterstützung für CIFS-Dateisysteme unter Linux und SMBFS-Dateisysteme unter FreeBSD</li>
       <li xml:lang="en-GB">Support of the CIFS (Linux) and SMBFS (FreeBSD) file system</li>
       <li xml:lang="es">Admite los sistemas de archivo CIFS (Linux) y SMBFS (FreeBSD)</li>
-      <li xml:lang="fr">Prise en charge des systèmes de fichier CIFS (Linux) et SMBFS (FreeBSD)</li>
+      <li xml:lang="fr">Prise en charge des systèmes de fichiers CIFS (Linux) et SMBFS (FreeBSD)</li>
       <li xml:lang="gl">É compatíbel cos sistemas de ficheiros CIFS (Linux) e SMBFS (FreeBSD).</li>
       <li xml:lang="nds">Ünnerstütt dat CIFS- (op Linux) un SMBFS-Dateisysteem (op FreeBSD)</li>
       <li xml:lang="nl">Ondersteuning van het CIFS (Linux) en SMBFS (FreeBSD) bestandssysteem</li>
@@ -162,7 +162,7 @@
       <li xml:lang="de">Zugriff auf die Dateien einer eingebundenen Freigabe mit einem Dateiverwaltungsprogramm oder einem Terminal</li>
       <li xml:lang="en-GB">Access to the files of a mounted share using a file manager or terminal</li>
       <li xml:lang="es">Acceso a los archivos de un recurso compartido montado utilizando un gestor de archivos o un terminal</li>
-      <li xml:lang="fr">Accès aux fichiers d'un partage à travers un gestionnaire de fichier ou un terminal</li>
+      <li xml:lang="fr">Accès aux fichiers d'un partage à travers un gestionnaire de fichiers ou un terminal</li>
       <li xml:lang="gl">Permite acceder aos ficheiros dunha compartición montada usando un xestor de ficheiros ou un terminal.</li>
       <li xml:lang="nds">Togriep op de Dateien binnen en inhangt Freegaav över Dateipleger oder Konsool</li>
       <li xml:lang="nl">Toegang tot de bestanden van een aangekoppeld gedeelde map met gebruik van een bestandsbeheerder of terminal</li>
@@ -267,7 +267,7 @@
       <li xml:lang="de">Vorschau des Inhalts einer Freigabe</li>
       <li xml:lang="en-GB">Preview of the contents of a share</li>
       <li xml:lang="es">Vista previa del contenido de un recurso compartido</li>
-      <li xml:lang="fr">Prévisualisation des contenus d'un partage</li>
+      <li xml:lang="fr">Aperçu des contenus d'un partage</li>
       <li xml:lang="gl">Permite obter unha vista previa dos contidos dunha compartición.</li>
       <li xml:lang="nds">Vöransicht vun de Freegaav ehr Inholt</li>
       <li xml:lang="nl">Voorbeschouwing van de inhoud van een share</li>
@@ -354,7 +354,7 @@
       <li xml:lang="de">Symbol im Systemabschnitt der Kontrollleiste</li>
       <li xml:lang="en-GB">System tray widget</li>
       <li xml:lang="es">Elemento gráfico de la bandeja del sistema</li>
-      <li xml:lang="fr">Icône dans la barre d'état</li>
+      <li xml:lang="fr">Composant graphique dans la barre d'état</li>
       <li xml:lang="gl">Fornece un trebello na área de notificación.</li>
       <li xml:lang="nds">Systeemafsnitt-Lüttprogramm</li>
       <li xml:lang="nl">Widget in systeemvak</li>
