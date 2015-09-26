@@ -1470,6 +1470,7 @@ void Smb4KScanBAreasJob::slotStartScan()
     arguments << QString( "-B %1" ).arg( addresses.at( i ) );
     arguments << "--";
     arguments << QString( "%1" ).arg( KShell::quoteArg( "*" ) );
+    arguments << "|";
     arguments << sed;
     arguments << "-e /querying/d";
     arguments << "|";
