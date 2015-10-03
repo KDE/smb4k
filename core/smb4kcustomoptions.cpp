@@ -51,8 +51,6 @@ class Smb4KCustomOptionsPrivate
 #if defined(Q_OS_LINUX)
     int fileSystemPort;
     Smb4KCustomOptions::SecurityMode securityMode;
-#endif
-#if defined(Q_OS_LINUX) || defined(Q_OS_SOLARIS)
     Smb4KCustomOptions::WriteAccess writeAccess;
 #endif
     Smb4KCustomOptions::ProtocolHint protocolHint;
@@ -76,8 +74,6 @@ Smb4KCustomOptions::Smb4KCustomOptions(Smb4KHost *host)
 #if defined(Q_OS_LINUX)
   d->fileSystemPort = 445;
   d->securityMode   = UndefinedSecurityMode;
-#endif
-#if defined(Q_OS_LINUX) || defined(Q_OS_SOLARIS)
   d->writeAccess    = UndefinedWriteAccess;
 #endif
   d->protocolHint   = UndefinedProtocolHint;
@@ -100,8 +96,6 @@ Smb4KCustomOptions::Smb4KCustomOptions(Smb4KShare *share)
 #if defined(Q_OS_LINUX)
   d->fileSystemPort = share->port() != -1 ? share->port() : 445;
   d->securityMode   = UndefinedSecurityMode;
-#endif
-#if defined(Q_OS_LINUX) || defined(Q_OS_SOLARIS)
   d->writeAccess    = UndefinedWriteAccess;
 #endif
   d->protocolHint   = UndefinedProtocolHint;
@@ -130,8 +124,6 @@ Smb4KCustomOptions::Smb4KCustomOptions()
 #if defined(Q_OS_LINUX)
   d->fileSystemPort = 445;
   d->securityMode   = UndefinedSecurityMode;
-#endif
-#if defined(Q_OS_LINUX) || defined(Q_OS_SOLARIS)
   d->writeAccess    = UndefinedWriteAccess;
 #endif
   d->protocolHint   = UndefinedProtocolHint;
@@ -427,10 +419,8 @@ Smb4KCustomOptions::SecurityMode Smb4KCustomOptions::securityMode() const
 {
   return d->securityMode;
 }
-#endif
 
 
-#if defined(Q_OS_LINUX) || defined(Q_OS_SOLARIS)
 void Smb4KCustomOptions::setWriteAccess(Smb4KCustomOptions::WriteAccess access)
 {
   d->writeAccess = access;
@@ -633,9 +623,7 @@ QMap<QString, QString> Smb4KCustomOptions::customOptions() const
       break;
     }
   }
-#endif
 
-#if defined(Q_OS_LINUX) || defined(Q_OS_SOLARIS)
   switch (d->writeAccess)
   {
     case ReadWrite:
@@ -823,9 +811,7 @@ bool Smb4KCustomOptions::equals(Smb4KCustomOptions *options, bool fullCheck) con
     {
       // Do nothing
     }
-#endif
 
-#if defined(Q_OS_LINUX) || defined(Q_OS_SOLARIS)
     // Write access
     if (d->writeAccess != options->writeAccess())
     {
@@ -1008,9 +994,7 @@ bool Smb4KCustomOptions::isEmpty()
   {
     // Do nothing
   }
-#endif
 
-#if defined(Q_OS_LINUX) || defined(Q_OS_SOLARIS)
   // Write access
   if (d->writeAccess != UndefinedWriteAccess)
   {

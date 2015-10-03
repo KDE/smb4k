@@ -223,48 +223,6 @@ QString Smb4KShare::homeUNC() const
 }
 
 
-#if defined(Q_OS_SOLARIS)
-QString Smb4KShare::fullUNC() const
-{
-  QString unc;
-  
-  if (!hostName().isEmpty() && !shareName().isEmpty())
-  {
-    unc = QString("//%1%2%3/%4").arg(!workgroupName().isEmpty() ? workgroupName()+";" : "")
-                                 .arg(!d->url.userName().isEmpty() ? d->url.userName()+"@" : "")
-                                 .arg(hostName())
-                                 .arg(shareName());
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  return unc;
-}
-
-
-QString Smb4KShare::fullHomeUNC() const
-{
-  QString unc;
-  
-  if (isHomesShare() && !hostName().isEmpty() && !d->url.userName().isEmpty())
-  {
-    unc = QString("//%1%2%3/%4").arg(!workgroupName().isEmpty() ? workgroupName()+";" : "")
-                                 .arg(!d->url.userName().isEmpty() ? d->url.userName()+"@" : "")
-                                 .arg(hostName())
-                                 .arg(d->url.userName());
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  return unc;
-}
-#endif
-
-
 void Smb4KShare::setURL(const KUrl &url)
 {
   // Check validity.

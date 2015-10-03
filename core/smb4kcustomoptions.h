@@ -94,9 +94,7 @@ class KDE_EXPORT Smb4KCustomOptions
                         Ntlmssp,
                         Ntlmsspi,
                         UndefinedSecurityMode };
-#endif
-                        
-#if defined(Q_OS_LINUX) || defined(Q_OS_SOLARIS)
+
     /**
      * The WriteAccess enumeration
      */
@@ -311,9 +309,6 @@ class KDE_EXPORT Smb4KCustomOptions
      * @returns the security mode
      */
     SecurityMode securityMode() const;
-#endif
-    
-#if defined(Q_OS_LINUX) || defined(Q_OS_SOLARIS)
     /**
      * Set the write access for either a single share or all shares of a host. 
      * 

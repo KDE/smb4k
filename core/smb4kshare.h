@@ -154,40 +154,6 @@ class KDE_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      */
     QString homeUNC() const;
     
-#if defined(Q_OS_SOLARIS)
-    /**
-     * Returns the UNC (Uniform Naming Convention string) in the Solaris-specific
-     * form //WORKGROUP;user@HOST/Share.
-     * 
-     * This function should only be used for mounting and is only available under 
-     * Solaris/illumos.
-     * 
-     * Please note that this function returns a modified URL string (uppercase
-     * hostname, etc.) and automatically strips a trailing slash if one is present.
-     *
-     * @returns the UNC.
-     */
-    QString fullUNC() const;
-                                                   
-    /**
-     * In case of a 'homes' share, this function returns the UNC (Uniform 
-     * Naming Convention string) of the user's home repository in the 
-     * Solaris-specific form //WORKGROUP;user@HOST/User.
-     * 
-     * If the share is not a 'homes' share or no user name for the homes share
-     * has been defined, this function returns an empty string.
-     * 
-     * This function should only be used for mounting and is only available under 
-     * Solaris/illumos.
-     * 
-     * Please note that this function returns a modified URL string (uppercase
-     * hostname, etc.) and automatically strips a trailing slash if one is present.
-     *
-     * @returns the UNC.
-     */
-    QString fullHomeUNC() const;
-#endif
-                                                       
     /**
      * Sets the URL of the share after some checks are passed.
      * 

@@ -74,8 +74,6 @@ class Smb4KCustomOptionsDialog : public KDialog
 #if defined(Q_OS_LINUX)
     KIntNumInput *m_fs_port;
     KComboBox *m_security_mode;
-#endif
-#if defined(Q_OS_LINUX) || defined(Q_OS_SOLARIS)
     KComboBox *m_write_access;
 #endif
     KComboBox *m_protocol_hint;
