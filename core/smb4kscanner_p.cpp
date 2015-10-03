@@ -1038,6 +1038,33 @@ void Smb4KQueryMasterJob::slotReadStandardError()
   {
     // Do nothing
   }
+  
+  // Remove irrelevant error messages
+  if (stdErr.contains("messaging_tdb_init failed:"))
+  {
+    QStringList tmp = stdErr.split('\n');
+    QMutableStringListIterator it(tmp);
+
+    while (it.hasNext())
+    {
+      QString test = it.next();
+
+      if (test.trimmed().startsWith(QLatin1String("messaging_tdb_init failed:")))
+      {
+        it.remove();
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+
+    stdErr = tmp.join("\n");
+  }
+  else
+  {
+    // Do nothing
+  }
 
   if ( !stdErr.isEmpty() )
   {
