@@ -50,7 +50,7 @@
     <p xml:lang="en-GB">Smb4K is an advanced network neighborhood browser and Samba share mounting utility for the KDE Software Compilation. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.</p>
     <p xml:lang="es">Smb4K es un navegador avanzado del entorno de red y una utilidad de montaje de recursos compartidos Samba para «KDE Software Compilation». Escanea su entorno de red en busca de cualquier grupo de trabajo, servidor y recurso compartido disponible y puede montar todos los recursos compartidos deseados en su sistema de archivos local.</p>
     <p xml:lang="et">Smb4K on KDE tarkvarakomplekti täiustatud võrgunaabruse sirvija ja Samba ressursside ühendamise töövahend. See võib uurida võrgunaabruses välja kõik saadaolevad töögrupid, serverid ja jagatud ressursid ning ühendada kõik vajalikud ressursid sinu kohaliku failisüsteemiga.</p>
-    <p xml:lang="fr">Smb4K est un navigateur de voisinage réseau avancé et un utilitaire de montage Samba pour KDE SC. Il balaye votre voisinage réseau à la recherche des groupes de travail, serveurs et partages disponibles et peut montrer tous les partages désirés sur votre système de fichier local.</p>
+    <p xml:lang="fr">Smb4K est un navigateur de voisinage réseau avancé et un utilitaire de montage Samba pour KDE SC. Il balaye votre voisinage réseau à la recherche des groupes de travail, serveurs et partages disponibles et peut afficher tous les partages désirés sur votre système de fichiers local.</p>
     <p xml:lang="nl">Smb4K is een geavanceerde browser voor de netwerkomgeving en hulpmiddel voor aankoppelen van Samba shares voor de KDE Software Compilation. Het scant uw netwerkomgeving voor alle beschikbare werkgroepen, servers en shares en kan alle gewenste shares aankoppelen aan uw lokale bestandssysteem.</p>
     <p xml:lang="pl">Smb4K jest zaawansowaną przeglądarką otoczenia sieciowego i narzędziem do montowania udziałów Samby dla Zbioru Oprogramowania KDE. Przegląda twoje otoczenie sieciowe w poszukiwaniu wszystkich dostępnych grup roboczych, serwerów i udziałów, żeby umożliwić zamontowanie wszystkich tych udziałów w lokalnym systemie plików.</p>
     <p xml:lang="pt">O Smb4K é um navegador avançado da vizinhança da rede e um utilitário de montagem de partilhas do Samba para a Compilação de Aplicações do KDE. Ele sonda a sua vizinhança da rede à procura de todos os grupos de trabalho, servidores e partilhas disponíveis, podendo montar todas as partilhas desejadas no seu sistema de ficheiros local.</p>
@@ -124,7 +124,7 @@
       <li xml:lang="en-GB">Support of the CIFS (Linux) and SMBFS (FreeBSD) file system</li>
       <li xml:lang="es">Admite los sistemas de archivo CIFS (Linux) y SMBFS (FreeBSD)</li>
       <li xml:lang="et">CIFS (Linux) ja SMBFS (FreeBSD) failisüsteemide toetamine</li>
-      <li xml:lang="fr">Prise en charge des systèmes de fichier CIFS (Linux) et SMBFS (FreeBSD)</li>
+      <li xml:lang="fr">Prise en charge des systèmes de fichiers CIFS (Linux) et SMBFS (FreeBSD)</li>
       <li xml:lang="nl">Ondersteuning van het CIFS (Linux) en SMBFS (FreeBSD) bestandssysteem</li>
       <li xml:lang="pl">Obsługa systemu plików CIFS (Linux) oraz SMBFS (FreeBSD)</li>
       <li xml:lang="pt">Suporte para os sistemas de ficheiros CIFS (Linux) e SMBFS (FreeBSD)</li>
@@ -158,7 +158,7 @@
       <li xml:lang="en-GB">Access to the files of a mounted share using a file manager or terminal</li>
       <li xml:lang="es">Acceso a los archivos de un recurso compartido montado utilizando un gestor de archivos o un terminal</li>
       <li xml:lang="et">Ligipääs ühendatud jagatud ressursi failidele failihalduri või terminali vahendusel</li>
-      <li xml:lang="fr">Accès aux fichiers d'un partage à travers un gestionnaire de fichier ou un terminal</li>
+      <li xml:lang="fr">Accès aux fichiers d'un partage à travers un gestionnaire de fichiers ou un terminal</li>
       <li xml:lang="nl">Toegang tot de bestanden van een aangekoppeld gedeelde map met gebruik van een bestandsbeheerder of terminal</li>
       <li xml:lang="pl">Dostęp do plików zamontowanego udziału przy użyciu programu do zarządzania plikami lub terminalu</li>
       <li xml:lang="pt">Aceder aos ficheiros de uma partilha montada com um gestor de ficheiros ou terminal</li>
@@ -261,7 +261,7 @@
       <li xml:lang="en-GB">Preview of the contents of a share</li>
       <li xml:lang="es">Visualización previa del contenido de un recurso compartido</li>
       <li xml:lang="et">Jagatud ressursi sisu eelvaatlus</li>
-      <li xml:lang="fr">Prévisualisation des contenus d'un partage</li>
+      <li xml:lang="fr">Aperçu des contenus d'un partage</li>
       <li xml:lang="nl">Voorbeschouwing van de inhoud van een share</li>
       <li xml:lang="pl">Podgląd zawartości udziału</li>
       <li xml:lang="pt">Antevisão do conteúdo de uma partilha</li>
@@ -347,7 +347,7 @@
       <li xml:lang="en-GB">System tray widget</li>
       <li xml:lang="es">Elemento gráfico de la bandeja del sistema</li>
       <li xml:lang="et">Süsteemisalve vidin</li>
-      <li xml:lang="fr">Icône dans la barre d'état</li>
+      <li xml:lang="fr">Composant graphique dans la barre d'état</li>
       <li xml:lang="nl">Widget in systeemvak</li>
       <li xml:lang="pl">Element interfejsu w tacce systemowej</li>
       <li xml:lang="pt">Item gráfico da bandeja do sistema</li>
