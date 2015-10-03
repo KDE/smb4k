@@ -49,8 +49,6 @@
 #include "core/smb4kmountsettings_linux.h"
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
 #include "core/smb4kmountsettings_freebsd.h"
-#elif defined(Q_OS_SOLARIS)
-#include "core/smb4kmountsettings_solaris.h"
 #else
 #define UNSUPPORTED_PLATFORM
 #endif
