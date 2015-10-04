@@ -1,3 +1,27 @@
+Smb4K 1.2.1 (2015-09-04):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at
+https://projects.kde.org/projects/extragear/network/smb4k/repository/revisions/1.2/changes
+
+- Fixed the "authentication dialog is missing the host name" error
+  (closes SF ticket #37).
+- Fixed scanning of broadcast areas (added missing pipe).
+- Updated license text to the current version of GPL v2 
+  (closes SF ticket #40).
+- Make Smb4K also useful with operating systems that are not supported.
+  You can now do anything with it except mounting.
+- Fixed code under FreeBSD/NetBSD.
+- Split the mount options off the other options. Adjusted the code accordingly.
+  The reason for this is that we want to support more operating systems and that
+  is is now easier to deal with different mount options.
+- Use KIO::convertSize() instead self written code.
+- Refactored and improved code responsible for mounting.
+- Fix out-of-source builds when po is present.
+  When building out-of-source, ALLOW_DUPLICATE_CUSTOM_TARGETS never gets turned on
+  because the po directory doesn't exist in the build directory, causing a build
+  failure. This ensures that the correct source directory is always checked.
+
 Smb4K 1.2.0 (2015-02-21):
 
 See the summary of changes below. For a full list of changes, please
