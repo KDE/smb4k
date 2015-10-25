@@ -71,15 +71,6 @@ class Q_DECL_EXPORT Smb4KCustomOptions
                    RemountNever,
                    UndefinedRemount };
                   
-    /**
-     * ProtocolHint enumeration
-     */
-    enum ProtocolHint { Automatic,
-                        RAP,
-                        RPC,
-                        ADS,
-                        UndefinedProtocolHint };
-
 #if defined(Q_OS_LINUX)
     /**
      * The SecurityMode enumeration
@@ -325,20 +316,6 @@ class Q_DECL_EXPORT Smb4KCustomOptions
     WriteAccess writeAccess() const;
 #endif
 
-    /**
-     * Set the protocol hint for this network item.
-     * 
-     * @param protocol        The protocol hint
-     */
-    void setProtocolHint(ProtocolHint protocol);
-    
-    /**
-     * Returns the protocol hint for this item.
-     * 
-     * @returns the protocol hint
-     */
-    ProtocolHint protocolHint() const;
-    
     /**
      * Sets the useage of Kerberos for this network item.
      * 

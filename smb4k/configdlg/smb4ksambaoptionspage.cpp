@@ -160,30 +160,6 @@ Smb4KSambaOptionsPage::Smb4KSambaOptionsPage(QWidget *parent) : QTabWidget(paren
   client_layout->setSpacing(5);
   client_layout->setMargin(0);
 
-  // 'net' program
-  QGroupBox *net_box = new QGroupBox(i18n("net"), clients_tab);
-
-  QGridLayout *net_layout = new QGridLayout(net_box);
-  net_layout->setSpacing(5);
-
-  QLabel *proto_hint_label = new QLabel(Smb4KSettings::self()->protocolHintItem()->label(), net_box);
-
-  KComboBox *protocol_hint = new KComboBox(net_box);
-  protocol_hint->setObjectName("kcfg_ProtocolHint");
-  protocol_hint->insertItem(Smb4KSettings::EnumProtocolHint::Automatic,
-                             Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::Automatic).label);
-  protocol_hint->insertItem(Smb4KSettings::EnumProtocolHint::RPC,
-                             Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::RPC).label);
-  protocol_hint->insertItem(Smb4KSettings::EnumProtocolHint::RAP,
-                             Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::RAP).label);
-  protocol_hint->insertItem(Smb4KSettings::EnumProtocolHint::ADS,
-                             Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::ADS).label);
-
-  proto_hint_label->setBuddy(protocol_hint);
-
-  net_layout->addWidget(proto_hint_label, 0, 0, 0);
-  net_layout->addWidget(protocol_hint, 0, 1, 0);
-
   // 'smbclient' program
   QGroupBox *smbclient_box = new QGroupBox(i18n("smbclient"), clients_tab);
 
@@ -242,7 +218,6 @@ Smb4KSambaOptionsPage::Smb4KSambaOptionsPage(QWidget *parent) : QTabWidget(paren
 
   smbtree_layout->addWidget(smbtree_bcasts, 0, 0, 0);
 
-  client_layout->addWidget(net_box);
   client_layout->addWidget(nmblookup_box);
   client_layout->addWidget(smbclient_box);
   client_layout->addWidget(smbtree_box);

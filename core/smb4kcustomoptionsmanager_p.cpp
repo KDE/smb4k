@@ -367,79 +367,6 @@ void Smb4KCustomOptionsDialog::setupView()
     }
   }
 
-  QLabel *protocol_label = new QLabel(i18n("Protocol Hint:"), samba_editors);
-  m_protocol_hint        = new KComboBox(samba_editors);
-  m_protocol_hint->insertItem(0, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::Automatic).label,
-                              QVariant::fromValue<int>(Smb4KCustomOptions::Automatic));
-  m_protocol_hint->insertItem(1, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::RPC).label,
-                              QVariant::fromValue<int>(Smb4KCustomOptions::RPC));
-  m_protocol_hint->insertItem(2, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::RAP).label,
-                              QVariant::fromValue<int>(Smb4KCustomOptions::RAP));
-  m_protocol_hint->insertItem(3, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::ADS).label,
-                              QVariant::fromValue<int>(Smb4KCustomOptions::ADS));
-  protocol_label->setBuddy(m_protocol_hint);
-
-  if (m_options->protocolHint() == Smb4KCustomOptions::UndefinedProtocolHint)
-  {
-    switch (Smb4KSettings::protocolHint())
-    {
-      case Smb4KSettings::EnumProtocolHint::Automatic:
-      {
-        m_protocol_hint->setCurrentIndex(0);
-        break;
-      }
-      case Smb4KSettings::EnumProtocolHint::RPC:
-      {
-        m_protocol_hint->setCurrentIndex(1);
-        break;
-      }
-      case Smb4KSettings::EnumProtocolHint::RAP:
-      {
-        m_protocol_hint->setCurrentIndex(2);
-        break;
-      }
-      case Smb4KSettings::EnumProtocolHint::ADS:
-      {
-        m_protocol_hint->setCurrentIndex(3);
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-  else
-  {
-    switch (m_options->protocolHint())
-    {
-      case Smb4KCustomOptions::Automatic:
-      {
-        m_protocol_hint->setCurrentIndex(0);
-        break;
-      }
-      case Smb4KCustomOptions::RPC:
-      {
-        m_protocol_hint->setCurrentIndex(1);
-        break;
-      }
-      case Smb4KCustomOptions::RAP:
-      {
-        m_protocol_hint->setCurrentIndex(2);
-        break;
-      }
-      case Smb4KCustomOptions::ADS:
-      {
-        m_protocol_hint->setCurrentIndex(3);
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-
   QLabel *uid_label = new QLabel(i18n("User ID:"), samba_editors);
   m_user_id = new KComboBox(samba_editors);
   uid_label->setBuddy(m_user_id);
@@ -519,13 +446,11 @@ void Smb4KCustomOptionsDialog::setupView()
   samba_editors_layout->addWidget(m_write_access, 2, 1, 0);
   samba_editors_layout->addWidget(security_label, 3, 0, 0);
   samba_editors_layout->addWidget(m_security_mode, 3, 1, 0);
-  samba_editors_layout->addWidget(protocol_label, 4, 0, 0);
-  samba_editors_layout->addWidget(m_protocol_hint, 4, 1, 0);
-  samba_editors_layout->addWidget(uid_label, 5, 0, 0);
-  samba_editors_layout->addWidget(m_user_id, 5, 1, 0);
-  samba_editors_layout->addWidget(gid_label, 6, 0, 0);
-  samba_editors_layout->addWidget(m_group_id, 6, 1, 0);
-  samba_editors_layout->addWidget(m_kerberos, 7, 0, 1, 2, 0);
+  samba_editors_layout->addWidget(uid_label, 4, 0, 0);
+  samba_editors_layout->addWidget(m_user_id, 4, 1, 0);
+  samba_editors_layout->addWidget(gid_label, 5, 0, 0);
+  samba_editors_layout->addWidget(m_group_id, 5, 1, 0);
+  samba_editors_layout->addWidget(m_kerberos, 6, 0, 1, 2, 0);
 
   tab_widget->addTab(samba_editors, i18n("Samba"));
 
@@ -580,7 +505,6 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(m_fs_port, SIGNAL(valueChanged(int)), SLOT(slotCheckValues()));
   connect(m_write_access, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
   connect(m_security_mode, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
-  connect(m_protocol_hint, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
   connect(m_user_id, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
   connect(m_group_id, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
   connect(m_kerberos, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
@@ -698,79 +622,6 @@ void Smb4KCustomOptionsDialog::setupView()
 //   m_smb_port->setSliderEnabled(true);
   smb_label->setBuddy(m_smb_port);
 
-  QLabel *protocol_label = new QLabel(i18n("Protocol Hint:"), samba_editors);
-  m_protocol_hint        = new KComboBox(samba_editors);
-  m_protocol_hint->insertItem(0, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::Automatic).label,
-                              QVariant::fromValue<int>(Smb4KCustomOptions::Automatic));
-  m_protocol_hint->insertItem(1, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::RPC).label,
-                              QVariant::fromValue<int>(Smb4KCustomOptions::RPC));
-  m_protocol_hint->insertItem(2, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::RAP).label,
-                              QVariant::fromValue<int>(Smb4KCustomOptions::RAP));
-  m_protocol_hint->insertItem(3, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::ADS).label,
-                              QVariant::fromValue<int>(Smb4KCustomOptions::ADS));
-  protocol_label->setBuddy(m_protocol_hint);
-
-  if (m_options->protocolHint() == Smb4KCustomOptions::UndefinedProtocolHint)
-  {
-    switch (Smb4KSettings::protocolHint())
-    {
-      case Smb4KSettings::EnumProtocolHint::Automatic:
-      {
-        m_protocol_hint->setCurrentIndex(0);
-        break;
-      }
-      case Smb4KSettings::EnumProtocolHint::RPC:
-      {
-        m_protocol_hint->setCurrentIndex(1);
-        break;
-      }
-      case Smb4KSettings::EnumProtocolHint::RAP:
-      {
-        m_protocol_hint->setCurrentIndex(2);
-        break;
-      }
-      case Smb4KSettings::EnumProtocolHint::ADS:
-      {
-        m_protocol_hint->setCurrentIndex(3);
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-  else
-  {
-    switch (m_options->protocolHint())
-    {
-      case Smb4KCustomOptions::Automatic:
-      {
-        m_protocol_hint->setCurrentIndex(0);
-        break;
-      }
-      case Smb4KCustomOptions::RPC:
-      {
-        m_protocol_hint->setCurrentIndex(1);
-        break;
-      }
-      case Smb4KCustomOptions::RAP:
-      {
-        m_protocol_hint->setCurrentIndex(2);
-        break;
-      }
-      case Smb4KCustomOptions::ADS:
-      {
-        m_protocol_hint->setCurrentIndex(3);
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-
   QLabel *uid_label = new QLabel(i18n("User ID:"), samba_editors);
   m_user_id = new KComboBox(samba_editors);
   uid_label->setBuddy(m_user_id);
@@ -844,13 +695,11 @@ void Smb4KCustomOptionsDialog::setupView()
 
   samba_editors_layout->addWidget(smb_label, 0, 0, 0);
   samba_editors_layout->addWidget(m_smb_port, 0, 1, 0);
-  samba_editors_layout->addWidget(protocol_label, 1, 0, 0);
-  samba_editors_layout->addWidget(m_protocol_hint, 1, 1, 0);
-  samba_editors_layout->addWidget(uid_label, 2, 0, 0);
-  samba_editors_layout->addWidget(m_user_id, 2, 1, 0);
-  samba_editors_layout->addWidget(gid_label, 3, 0, 0);
-  samba_editors_layout->addWidget(m_group_id, 3, 1, 0);
-  samba_editors_layout->addWidget(m_kerberos, 4, 0, 1, 2, 0);
+  samba_editors_layout->addWidget(uid_label, 1, 0, 0);
+  samba_editors_layout->addWidget(m_user_id, 1, 1, 0);
+  samba_editors_layout->addWidget(gid_label, 2, 0, 0);
+  samba_editors_layout->addWidget(m_group_id, 2, 1, 0);
+  samba_editors_layout->addWidget(m_kerberos, 3, 0, 1, 2, 0);
 
   tab_widget->addTab(samba_editors, i18n("Samba"));
 
@@ -902,7 +751,6 @@ void Smb4KCustomOptionsDialog::setupView()
   layout->addWidget(buttonBox, 0);
 
   connect(m_smb_port, SIGNAL(valueChanged(int)), SLOT(slotCheckValues()));
-  connect(m_protocol_hint, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
   connect(m_user_id, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
   connect(m_group_id, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
   connect(m_kerberos, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
@@ -1009,79 +857,6 @@ void Smb4KCustomOptionsDialog::setupView()
 //   m_smb_port->setSliderEnabled(true);
   smb_label->setBuddy(m_smb_port);
 
-  QLabel *protocol_label = new QLabel(i18n("Protocol Hint:"), samba_editors);
-  m_protocol_hint        = new KComboBox(samba_editors);
-  m_protocol_hint->insertItem(0, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::Automatic).label,
-                              QVariant::fromValue<int>(Smb4KCustomOptions::Automatic));
-  m_protocol_hint->insertItem(1, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::RPC).label,
-                              QVariant::fromValue<int>(Smb4KCustomOptions::RPC));
-  m_protocol_hint->insertItem(2, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::RAP).label,
-                              QVariant::fromValue<int>(Smb4KCustomOptions::RAP));
-  m_protocol_hint->insertItem(3, Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::EnumProtocolHint::ADS).label,
-                              QVariant::fromValue<int>(Smb4KCustomOptions::ADS));
-  protocol_label->setBuddy(m_protocol_hint);
-
-  if (m_options->protocolHint() == Smb4KCustomOptions::UndefinedProtocolHint)
-  {
-    switch (Smb4KSettings::protocolHint())
-    {
-      case Smb4KSettings::EnumProtocolHint::Automatic:
-      {
-        m_protocol_hint->setCurrentIndex(0);
-        break;
-      }
-      case Smb4KSettings::EnumProtocolHint::RPC:
-      {
-        m_protocol_hint->setCurrentIndex(1);
-        break;
-      }
-      case Smb4KSettings::EnumProtocolHint::RAP:
-      {
-        m_protocol_hint->setCurrentIndex(2);
-        break;
-      }
-      case Smb4KSettings::EnumProtocolHint::ADS:
-      {
-        m_protocol_hint->setCurrentIndex(3);
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-  else
-  {
-    switch (m_options->protocolHint())
-    {
-      case Smb4KCustomOptions::Automatic:
-      {
-        m_protocol_hint->setCurrentIndex(0);
-        break;
-      }
-      case Smb4KCustomOptions::RPC:
-      {
-        m_protocol_hint->setCurrentIndex(1);
-        break;
-      }
-      case Smb4KCustomOptions::RAP:
-      {
-        m_protocol_hint->setCurrentIndex(2);
-        break;
-      }
-      case Smb4KCustomOptions::ADS:
-      {
-        m_protocol_hint->setCurrentIndex(3);
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-
   m_kerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), samba_editors);
 
   if (m_options->useKerberos() == Smb4KCustomOptions::UndefinedKerberos)
@@ -1111,9 +886,7 @@ void Smb4KCustomOptionsDialog::setupView()
 
   samba_editors_layout->addWidget(smb_label, 0, 0, 0);
   samba_editors_layout->addWidget(m_smb_port, 0, 1, 0);
-  samba_editors_layout->addWidget(protocol_label, 4, 0, 0);
-  samba_editors_layout->addWidget(m_protocol_hint, 4, 1, 0);
-  samba_editors_layout->addWidget(m_kerberos, 7, 0, 1, 2, 0);
+  samba_editors_layout->addWidget(m_kerberos, 1, 0, 1, 2, 0);
 
   tab_widget->addTab(samba_editors, i18n("Samba"));
 
@@ -1165,7 +938,6 @@ void Smb4KCustomOptionsDialog::setupView()
   layout->addWidget(buttonBox, 0);
 
   connect(m_smb_port, SIGNAL(valueChanged(int)), SLOT(slotCheckValues()));
-  connect(m_protocol_hint, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
   connect(m_kerberos, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
   connect(m_mac_address, SIGNAL(textChanged(QString)), SLOT(slotCheckValues()));
   connect(m_mac_address, SIGNAL(textChanged(QString)), SLOT(slotEnableWOLFeatures(QString)));
@@ -1236,17 +1008,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
   if (QString::compare(m_write_access->currentText(),
       Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::self()->writeAccess()).label,
       Qt::CaseInsensitive) != 0)
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if (QString::compare(m_protocol_hint->currentText(),
-       Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::self()->protocolHint()).label,
-       Qt::CaseInsensitive) != 0)
   {
     return false;
   }
@@ -1353,17 +1114,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     // Do nothing
   }
 
-  if (QString::compare(m_protocol_hint->currentText(),
-       Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::self()->protocolHint()).label,
-       Qt::CaseInsensitive) != 0)
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
   K_UID uid = (K_UID)m_user_id->itemData(m_user_id->currentIndex()).toInt();
 
   if (uid != (K_UID)Smb4KMountSettings::userID().toInt())
@@ -1438,17 +1188,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
 bool Smb4KCustomOptionsDialog::checkDefaultValues()
 {
   if (m_smb_port->value() != Smb4KSettings::remoteSMBPort())
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if (QString::compare(m_protocol_hint->currentText(),
-       Smb4KSettings::self()->protocolHintItem()->choices().value(Smb4KSettings::self()->protocolHint()).label,
-       Qt::CaseInsensitive) != 0)
   {
     return false;
   }
@@ -1594,34 +1333,6 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
     }
   }
 
-  switch (Smb4KSettings::protocolHint())
-  {
-    case Smb4KSettings::EnumProtocolHint::Automatic:
-    {
-      m_protocol_hint->setCurrentIndex(0);
-      break;
-    }
-    case Smb4KSettings::EnumProtocolHint::RPC:
-    {
-      m_protocol_hint->setCurrentIndex(1);
-      break;
-    }
-    case Smb4KSettings::EnumProtocolHint::RAP:
-    {
-      m_protocol_hint->setCurrentIndex(2);
-      break;
-    }
-    case Smb4KSettings::EnumProtocolHint::ADS:
-    {
-      m_protocol_hint->setCurrentIndex(3);
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-
   for (int i = 0; i < m_user_id->count(); ++i)
   {
     if (m_user_id->itemData(i).toInt() == Smb4KMountSettings::userID().toInt())
@@ -1679,34 +1390,6 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
 
   m_smb_port->setValue(Smb4KSettings::remoteSMBPort());
 
-  switch (Smb4KSettings::protocolHint())
-  {
-    case Smb4KSettings::EnumProtocolHint::Automatic:
-    {
-      m_protocol_hint->setCurrentIndex(0);
-      break;
-    }
-    case Smb4KSettings::EnumProtocolHint::RPC:
-    {
-      m_protocol_hint->setCurrentIndex(1);
-      break;
-    }
-    case Smb4KSettings::EnumProtocolHint::RAP:
-    {
-      m_protocol_hint->setCurrentIndex(2);
-      break;
-    }
-    case Smb4KSettings::EnumProtocolHint::ADS:
-    {
-      m_protocol_hint->setCurrentIndex(3);
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-
   for (int i = 0; i < m_user_id->count(); ++i)
   {
     if (m_user_id->itemData(i).toInt() == Smb4KMountSettings::userID().toInt())
@@ -1755,34 +1438,6 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
 {
   m_smb_port->setValue(Smb4KSettings::remoteSMBPort());
 
-  switch (Smb4KSettings::protocolHint())
-  {
-    case Smb4KSettings::EnumProtocolHint::Automatic:
-    {
-      m_protocol_hint->setCurrentIndex(0);
-      break;
-    }
-    case Smb4KSettings::EnumProtocolHint::RPC:
-    {
-      m_protocol_hint->setCurrentIndex(1);
-      break;
-    }
-    case Smb4KSettings::EnumProtocolHint::RAP:
-    {
-      m_protocol_hint->setCurrentIndex(2);
-      break;
-    }
-    case Smb4KSettings::EnumProtocolHint::ADS:
-    {
-      m_protocol_hint->setCurrentIndex(3);
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-
   m_kerberos->setChecked(Smb4KSettings::self()->useKerberos());
 
   if (m_options->type() == Host)
@@ -1826,7 +1481,6 @@ void Smb4KCustomOptionsDialog::saveValues()
   m_options->setFileSystemPort(m_fs_port->value());
   m_options->setWriteAccess((Smb4KCustomOptions::WriteAccess)m_write_access->itemData(m_write_access->currentIndex()).toInt());
   m_options->setSecurityMode((Smb4KCustomOptions::SecurityMode)m_security_mode->itemData(m_security_mode->currentIndex()).toInt());
-  m_options->setProtocolHint((Smb4KCustomOptions::ProtocolHint)m_protocol_hint->itemData(m_protocol_hint->currentIndex()).toInt());
   m_options->setUser(KUser(m_user_id->itemData(m_user_id->currentIndex()).toInt()));
   m_options->setGroup(KUserGroup(m_group_id->itemData(m_group_id->currentIndex()).toInt()));
 
@@ -1869,7 +1523,6 @@ void Smb4KCustomOptionsDialog::saveValues()
   }
   
   m_options->setSMBPort(m_smb_port->value());
-  m_options->setProtocolHint((Smb4KCustomOptions::ProtocolHint)m_protocol_hint->itemData(m_protocol_hint->currentIndex()).toInt());
   m_options->setUser(KUser(m_user_id->itemData(m_user_id->currentIndex()).toInt()));
   m_options->setGroup(KUserGroup(m_group_id->itemData(m_group_id->currentIndex()).toInt()));
 
@@ -1896,7 +1549,6 @@ void Smb4KCustomOptionsDialog::saveValues()
 void Smb4KCustomOptionsDialog::saveValues()
 {
   m_options->setSMBPort(m_smb_port->value());
-  m_options->setProtocolHint((Smb4KCustomOptions::ProtocolHint)m_protocol_hint->itemData(m_protocol_hint->currentIndex()).toInt());
 
   if (m_kerberos->isChecked())
   {

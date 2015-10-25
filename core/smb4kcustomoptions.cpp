@@ -53,7 +53,6 @@ class Smb4KCustomOptionsPrivate
     Smb4KCustomOptions::SecurityMode securityMode;
     Smb4KCustomOptions::WriteAccess writeAccess;
 #endif
-    Smb4KCustomOptions::ProtocolHint protocolHint;
     Smb4KCustomOptions::Kerberos kerberos;
     KUser user;
     KUserGroup group;
@@ -76,7 +75,6 @@ Smb4KCustomOptions::Smb4KCustomOptions(Smb4KHost *host)
   d->securityMode   = UndefinedSecurityMode;
   d->writeAccess    = UndefinedWriteAccess;
 #endif
-  d->protocolHint   = UndefinedProtocolHint;
   d->kerberos       = UndefinedKerberos;
   d->user           = KUser(KUser::UseRealUserID);
   d->group          = KUserGroup(KUser::UseRealUserID);
@@ -98,7 +96,6 @@ Smb4KCustomOptions::Smb4KCustomOptions(Smb4KShare *share)
   d->securityMode   = UndefinedSecurityMode;
   d->writeAccess    = UndefinedWriteAccess;
 #endif
-  d->protocolHint   = UndefinedProtocolHint;
   d->kerberos       = UndefinedKerberos;
   d->user           = share->user();
   d->group          = share->group();
@@ -126,7 +123,6 @@ Smb4KCustomOptions::Smb4KCustomOptions()
   d->securityMode   = UndefinedSecurityMode;
   d->writeAccess    = UndefinedWriteAccess;
 #endif
-  d->protocolHint   = UndefinedProtocolHint;
   d->kerberos       = UndefinedKerberos;
   d->user           = KUser(KUser::UseRealUserID);
   d->group          = KUserGroup(KUser::UseRealUserID);
@@ -434,18 +430,6 @@ Smb4KCustomOptions::WriteAccess Smb4KCustomOptions::writeAccess() const
 #endif
 
 
-void Smb4KCustomOptions::setProtocolHint(Smb4KCustomOptions::ProtocolHint protocol)
-{
-  d->protocolHint = protocol;
-}
-
-
-Smb4KCustomOptions::ProtocolHint Smb4KCustomOptions::protocolHint() const
-{
-  return d->protocolHint;
-}
-
-
 void Smb4KCustomOptions::setUseKerberos(Smb4KCustomOptions::Kerberos kerberos)
 {
   d->kerberos = kerberos;
@@ -636,39 +620,6 @@ QMap<QString, QString> Smb4KCustomOptions::customOptions() const
   }
 #endif
 
-  switch (d->protocolHint)
-  {
-    case Automatic:
-    {
-      entries.insert("protocol", "auto");
-      break;
-    }
-    case RPC:
-    {
-      entries.insert("protocol", "rpc");
-      break;
-    }
-    case RAP:
-    {
-      entries.insert("protocol", "rap");
-      break;
-    }
-    case ADS:
-    {
-      entries.insert("protocol", "ads");
-      break;
-    }
-    case UndefinedProtocolHint:
-    {
-      entries.insert("protocol", QString());
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-
   switch (d->kerberos)
   {
     case UseKerberos:
@@ -811,16 +762,6 @@ bool Smb4KCustomOptions::equals(Smb4KCustomOptions *options, bool fullCheck) con
     }
 #endif
 
-    // Protocol hint
-    if (d->protocolHint != options->protocolHint())
-    {
-      return false;
-    }
-    else
-    {
-      // Do nothing
-    }
-    
     // Kerberos
     if (d->kerberos != options->useKerberos())
     {
@@ -994,16 +935,6 @@ bool Smb4KCustomOptions::isEmpty()
   }
 #endif
 
-  // Protocol hint
-  if (d->protocolHint != UndefinedProtocolHint)
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
   // Kerberos
   if (d->kerberos != UndefinedKerberos)
   {

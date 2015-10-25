@@ -455,31 +455,6 @@ void Smb4KCustomOptionsManager::readCustomOptions(QList<Smb4KCustomOptions *> *o
                         {
                           options->setSMBPort(xmlReader.readElementText().toInt());
                         }
-                        else if (xmlReader.name() == "protocol")
-                        {
-                          QString protocol = xmlReader.readElementText();
-  
-                          if (QString::compare(protocol, "auto") == 0)
-                          {
-                            options->setProtocolHint(Smb4KCustomOptions::Automatic);
-                          }
-                          else if (QString::compare(protocol, "rpc") == 0)
-                          {
-                            options->setProtocolHint(Smb4KCustomOptions::RPC);
-                          }
-                          else if (QString::compare(protocol, "rap") == 0)
-                          {
-                            options->setProtocolHint(Smb4KCustomOptions::RAP);
-                          }
-                          else if (QString::compare(protocol, "ads") == 0)
-                          {
-                            options->setProtocolHint(Smb4KCustomOptions::ADS);
-                          }
-                          else
-                          {
-                            options->setProtocolHint(Smb4KCustomOptions::UndefinedProtocolHint);
-                          }
-                        }
 #if defined(Q_OS_LINUX)
                         else if (xmlReader.name() == "filesystem_port")
                         {
@@ -1050,7 +1025,6 @@ void Smb4KCustomOptionsManager::addCustomOptions(Smb4KCustomOptions *options)
           d->options[i]->setSecurityMode(o->securityMode());
           d->options[i]->setWriteAccess(o->writeAccess());
 #endif
-          d->options[i]->setProtocolHint(o->protocolHint());
           d->options[i]->setUser(o->user());
           d->options[i]->setGroup(o->group());
           d->options[i]->setUseKerberos(o->useKerberos());
@@ -1208,35 +1182,6 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
       }
     }
 
-    switch (Smb4KSettings::protocolHint())
-    {
-      case Smb4KSettings::EnumProtocolHint::Automatic:
-      {
-        default_options.setProtocolHint(Smb4KCustomOptions::Automatic);
-        break;
-      }
-      case Smb4KSettings::EnumProtocolHint::RPC:
-      {
-        default_options.setProtocolHint(Smb4KCustomOptions::RPC);
-        break;
-      }
-      case Smb4KSettings::EnumProtocolHint::RAP:
-      {
-        default_options.setProtocolHint(Smb4KCustomOptions::RAP);
-        break;
-      }
-      case Smb4KSettings::EnumProtocolHint::ADS:
-      {
-        default_options.setProtocolHint(Smb4KCustomOptions::ADS);
-        break;
-      }
-      default:
-      {
-        default_options.setProtocolHint(Smb4KCustomOptions::UndefinedProtocolHint);
-        break;
-      }
-    }
-
     if (Smb4KSettings::useKerberos())
     {
       default_options.setUseKerberos(Smb4KCustomOptions::UseKerberos);
@@ -1300,17 +1245,6 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
     // Write access
     if (empty_options.writeAccess() != options->writeAccess() &&
         default_options.writeAccess() != options->writeAccess())
-    {
-      return true;
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    // Protocol hint
-    if (empty_options.protocolHint() != options->protocolHint() &&
-        default_options.protocolHint() != options->protocolHint())
     {
       return true;
     }

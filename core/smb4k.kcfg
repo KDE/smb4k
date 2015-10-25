@@ -340,25 +340,6 @@
       <whatsthis>Encrypt the SMB transport (Unix extended servers only). This setting affects the net, smbclient and smbtree command.</whatsthis>
       <default>false</default>
     </entry>  
-    <entry name="ProtocolHint" type="Enum">
-      <label>Protocol hint:</label>
-      <whatsthis>Here you can choose the protocol that will be used by the net command for the communication with remote servers if appropriate. In most cases the automatic detection will work fine and you should not need to change the default setting. However, if you experience problems, use the RPC protocol for newer operating systems (Windows NT4 and above) and the RAP protocol for older ones (Windows 98/NT3 and below). Functions that need the ADS protocol (for Active Directory environments) have not been implemented yet, so you can ignore that one for now.</whatsthis>
-      <choices>
-        <choice name="Automatic">
-          <label>Automatic detection</label>
-        </choice>
-        <choice name="RPC">
-          <label>RPC: Modern operating systems</label>
-        </choice>
-        <choice name="RAP">
-          <label>RAP: Older operating systems</label>
-        </choice>
-        <choice name="ADS">
-          <label>ADS: Active Directory environment (LDAP/Kerberos)</label>
-        </choice>
-      </choices>
-      <default>Automatic</default>
-    </entry>
     <entry name="NameResolveOrder" type="String">
       <label>Name resolve order:</label>
       <whatsthis>This option is used to determine what naming services and in what order are used to resolve host names and IP addresses. It takes a space-separated list of up to four different name resolution options. Those are: lmhost, host, wins, bcast. See the manual page of smbclient for further information.</whatsthis>

@@ -2344,55 +2344,10 @@ void Smb4KLookupSharesJob::slotStartLookup()
   // net program
   arguments << net;
   
-  // Protocol hint & command.
-  if (options && options->protocolHint() != Smb4KCustomOptions::UndefinedProtocolHint)
-  {
-    switch (options->protocolHint())
-    {
-      case Smb4KCustomOptions::RAP:
-      {
-        arguments << "rap";
-        arguments << "share";
-        break;
-      }
-      default:
-      {
-        // Since version 1.0.0 we use the RPC protocol as a default
-        // when querying a server for its shares (ignoring the 'Automatic
-        // detection' choice of the user. Because this way we can avoid 
-        // the 'Invalid command: net rap share list' error, that occurred 
-        // under certain circumstances in earlier versions.
-        arguments << "rpc";
-        arguments << "share";
-        arguments << "list";
-        break;
-      }
-    }
-  }
-  else
-  {
-    switch (Smb4KSettings::protocolHint())
-    {
-      case Smb4KSettings::EnumProtocolHint::RAP:
-      {
-        arguments << "rap";
-        arguments << "share";
-        break;
-      }
-      default:
-      {
-        // Since version 1.0.0 we use the RPC protocol as a default
-        // when querying a server for its shares (ignoring the 'Automatic
-        // detection' choice of the user. Because this way we can avoid 
-        // the 'Invalid command: net rap share list' error, that occurred 
-        // under certain circumstances in earlier versions.
-        arguments << "rpc";
-        arguments << "share";
-        arguments << "list";
-        break;
-      }
-    }
-  }
+  // Command
+  arguments << "rpc";
+  arguments << "share";
+  arguments << "list";
   
   // Long output. We need this, because we want to know the type and
   // the comment, too.

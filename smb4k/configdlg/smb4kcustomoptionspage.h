@@ -198,7 +198,6 @@ class Smb4KCustomOptionsPage : public QWidget
     KComboBox *m_security_mode;
     KComboBox *m_write_access;
 #endif
-    KComboBox *m_protocol_hint;
     KComboBox *m_user_id;
     KComboBox *m_group_id;
     QCheckBox *m_kerberos;
