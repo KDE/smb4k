@@ -220,11 +220,11 @@ class Smb4KPreviewJob : public KJob
 
   protected Q_SLOTS:
     void slotStartPreview();
-    void slotReadStandardOutput();
-    void slotReadStandardError();
     void slotProcessFinished(int exitCode, QProcess::ExitStatus status);
 
   private:
+    void processStandardOutput();
+    void processStandardError();
     bool m_started;
     Smb4KShare *m_share;
     QWidget *m_parent_widget;
@@ -413,16 +413,21 @@ class Q_DECL_EXPORT Smb4KPreviewDialog : public QDialog
      * Up action
      */
     QAction *m_up;
+    
+    /**
+     * The history
+     */
+    QList<QUrl> m_history;
+    
+    /**
+     * The iterator used to iterate through the history
+     */
+    QList<QUrl>::const_iterator m_iterator;
 
     /**
-     * The current history
+     * An action from the toolbar was used
      */
-    QStringList m_history;
-
-    /**
-     * The current position in the history.
-     */
-    QStringListIterator m_iterator;
+    bool m_actionUsed;
 };
 
 
