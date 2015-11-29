@@ -157,6 +157,11 @@ int main(int argc, char **argv)
                       i18n("Developer"),
                       QStringLiteral("alexander.reinholdt@kdemail.net"));
   
+  // Credits:
+  // People who supported the Smb4K development by donating
+  // money
+  aboutData.addCredit(i18n("Wolfgang Geisendörfer"), i18n("Donator"), QStringLiteral("wdm-lin@gmx.net"));
+  
   // Register about data
   KAboutData::setApplicationData(aboutData);
   
