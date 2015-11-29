@@ -128,7 +128,7 @@ Comment[zh_TW]=使用者被通知某些動作
 
 [Context/Warning]
 Name=Warning
-Name[ast]=Avisu
+Name[ast]=Alvertencia
 Name[bs]=Upozorenje
 Name[ca]=Avís
 Name[ca@valencia]=Avís
