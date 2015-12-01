@@ -1345,35 +1345,6 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
     // Set up the default options
     default_options.setSMBPort(Smb4KSettings::remoteSMBPort());
 
-    switch (Smb4KSettings::protocolHint())
-    {
-      case Smb4KSettings::EnumProtocolHint::Automatic:
-      {
-        default_options.setProtocolHint(Smb4KCustomOptions::Automatic);
-        break;
-      }
-      case Smb4KSettings::EnumProtocolHint::RPC:
-      {
-        default_options.setProtocolHint(Smb4KCustomOptions::RPC);
-        break;
-      }
-      case Smb4KSettings::EnumProtocolHint::RAP:
-      {
-        default_options.setProtocolHint(Smb4KCustomOptions::RAP);
-        break;
-      }
-      case Smb4KSettings::EnumProtocolHint::ADS:
-      {
-        default_options.setProtocolHint(Smb4KCustomOptions::ADS);
-        break;
-      }
-      default:
-      {
-        default_options.setProtocolHint(Smb4KCustomOptions::UndefinedProtocolHint);
-        break;
-      }
-    }
-
     if (Smb4KSettings::useKerberos())
     {
       default_options.setUseKerberos(Smb4KCustomOptions::UseKerberos);
@@ -1404,17 +1375,6 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
     // SMB port
     if (empty_options.smbPort() != options->smbPort() && 
         default_options.smbPort() != options->smbPort())
-    {
-      return true;
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    // Protocol hint
-    if (empty_options.protocolHint() != options->protocolHint() &&
-        default_options.protocolHint() != options->protocolHint())
     {
       return true;
     }
@@ -1515,35 +1475,6 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
     // Set up the default options
     default_options.setSMBPort(Smb4KSettings::remoteSMBPort());
 
-    switch (Smb4KSettings::protocolHint())
-    {
-      case Smb4KSettings::EnumProtocolHint::Automatic:
-      {
-        default_options.setProtocolHint(Smb4KCustomOptions::Automatic);
-        break;
-      }
-      case Smb4KSettings::EnumProtocolHint::RPC:
-      {
-        default_options.setProtocolHint(Smb4KCustomOptions::RPC);
-        break;
-      }
-      case Smb4KSettings::EnumProtocolHint::RAP:
-      {
-        default_options.setProtocolHint(Smb4KCustomOptions::RAP);
-        break;
-      }
-      case Smb4KSettings::EnumProtocolHint::ADS:
-      {
-        default_options.setProtocolHint(Smb4KCustomOptions::ADS);
-        break;
-      }
-      default:
-      {
-        default_options.setProtocolHint(Smb4KCustomOptions::UndefinedProtocolHint);
-        break;
-      }
-    }
-
     if (Smb4KSettings::useKerberos())
     {
       default_options.setUseKerberos(Smb4KCustomOptions::UseKerberos);
@@ -1571,17 +1502,6 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
     // SMB port
     if (empty_options.smbPort() != options->smbPort() && 
         default_options.smbPort() != options->smbPort())
-    {
-      return true;
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    // Protocol hint
-    if (empty_options.protocolHint() != options->protocolHint() &&
-        default_options.protocolHint() != options->protocolHint())
     {
       return true;
     }
