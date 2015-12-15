@@ -65,7 +65,7 @@ Version=1
 
 [Context/Notification]
 Name=Notification
-Name[ast]=Notificación
+Name[ast]=Avisu
 Name[bs]=Obavještenje
 Name[ca]=Notificació
 Name[ca@valencia]=Notificació
@@ -98,6 +98,7 @@ Name[x-test]=xxNotificationxx
 Name[zh_CN]=通知
 Name[zh_TW]=通知
 Comment=The user is notified about an action
+Comment[ast]=Avísase al usuariu tocante a una aición
 Comment[bs]=Korisnik je obavješten o akciji
 Comment[ca]=L'usuari ha estat notificat quant a una acció
 Comment[ca@valencia]=L'usuari ha estat notificat quant a una acció
@@ -636,6 +637,7 @@ Action=Popup|Sound
 
 [Event/bookmarkExists]
 Name=Bookmark exists
+Name[ast]=Esiste'l marcador
 Name[bs]=Zabilješka postoji
 Name[ca]=L'adreça d'interès existeix
 Name[ca@valencia]=L'adreça d'interés existeix
@@ -1104,6 +1106,7 @@ Action=Popup|Sound
 
 [Event/mountingFailed]
 Name=Mounting failed
+Name[ast]=Falló'l montaxe
 Name[bs]=Montiranje neuspješno
 Name[ca]=Ha fallat el muntatge
 Name[ca@valencia]=Ha fallat el muntatge
@@ -1129,6 +1132,7 @@ Name[uk]=Невдала спроба монтування
 Name[x-test]=xxMounting failedxx
 Name[zh_TW]=掛載失敗
 Comment=Mounting a share failed
+Comment[ast]=Falló'l montaxe d'una partición
 Comment[bs]=Montiranje dijela neuspješno
 Comment[ca]=Ha fallat el muntatge d'una compartició
 Comment[ca@valencia]=Ha fallat el muntatge d'una compartició
@@ -1158,6 +1162,7 @@ Action=Popup|Sound
 
 [Event/unmountingFailed]
 Name=Unmounting failed
+Name[ast]=Falló'l desmontaxe
 Name[bs]=Demontiranje neuspješno
 Name[ca]=Ha fallat el desmuntatge
 Name[ca@valencia]=Ha fallat el desmuntatge
@@ -1183,6 +1188,7 @@ Name[uk]=Помилка демонтування
 Name[x-test]=xxUnmounting failedxx
 Name[zh_TW]=卸載失敗
 Comment=Unmounting a share failed
+Comment[ast]=Falló'l desmontaxe d'una compartición
 Comment[bs]=Demontiranje dijela neuspješno
 Comment[ca]=Ha fallat el desmuntatge d'una compartició
 Comment[ca@valencia]=Ha fallat el desmuntatge d'una compartició
@@ -1212,6 +1218,7 @@ Action=Popup|Sound
 
 [Event/unmountingNotAllowed]
 Name=Unmounting not allowed
+Name[ast]=Nun s'almite'l desmontaxe
 Name[bs]=Demontiranje nije dozvoljeno
 Name[ca]=No s'ha permès el desmuntatge
 Name[ca@valencia]=No s'ha permés el desmuntatge
@@ -1318,6 +1325,7 @@ Action=Popup|Sound
 
 [Event/synchronizationFailed]
 Name=Synchronization failed
+Name[ast]=Falló la sincronización
 Name[bs]=Sinhronizacija nije uspjela
 Name[ca]=Ha fallat la sincronització
 Name[ca@valencia]=Ha fallat la sincronització
@@ -1370,6 +1378,7 @@ Action=Popup|Sound
 
 [Event/searchingFailed]
 Name=Searching failed
+Name[ast]=Falló la gueta
 Name[bs]=Pretraga neuspješna
 Name[ca]=Ha fallat la cerca
 Name[ca@valencia]=Ha fallat la cerca
@@ -1423,6 +1432,7 @@ Action=Popup|Sound
 
 [Event/commandNotFound]
 Name=Command not found
+Name[ast]=Nun s'alcontró'l comandu
 Name[bs]=Naredba nije nađena
 Name[ca]=No s'ha trobat l'ordre
 Name[ca@valencia]=No s'ha trobat l'orde
@@ -1447,6 +1457,7 @@ Name[uk]=Команду не знайдено
 Name[x-test]=xxCommand not foundxx
 Name[zh_TW]=找不到指令
 Comment=A required command could not be found
+Comment[ast]=Nun pudo alcontrase un comandu riquíu
 Comment[bs]=Tražena komanda nije pronađena
 Comment[ca]=No s'ha pogut trobar l'ordre requerida
 Comment[ca@valencia]=No s'ha pogut trobar l'orde requerida
@@ -1526,6 +1537,7 @@ Action=Popup|Sound
 
 [Event/fileNotFound]
 Name=File not found
+Name[ast]=Nun s'alcontró'l ficheru
 Name[bs]=Datoteka nije pronađena.
 Name[ca]=No s'ha trobat el fitxer
 Name[ca@valencia]=No s'ha trobat el fitxer
@@ -1551,6 +1563,7 @@ Name[uk]=Файл не знайдено
 Name[x-test]=xxFile not foundxx
 Name[zh_TW]=找不到檔案
 Comment=A file could not be found
+Comment[ast]=Nun pudo alcontrase un ficheru
 Comment[bs]=Datoteka niej pronađena
 Comment[ca]=No s'ha pogut trobar un fitxer
 Comment[ca@valencia]=No s'ha pogut trobar un fitxer
@@ -1788,6 +1801,7 @@ Action=Popup|Sound
 
 [Event/actionFailed]
 Name=Action failed
+Name[ast]=Falló l'aición
 Name[bs]=Radnja nije uspjela
 Name[ca]=L'acció ha fallat
 Name[ca@valencia]=L'acció ha fallat
@@ -1812,6 +1826,7 @@ Name[uk]=Спроба виконання дії зазнала невдачі
 Name[x-test]=xxAction failedxx
 Name[zh_TW]=動作失敗
 Comment=A KAuth action failed
+Comment[ast]=Falló una aición de KAuth
 Comment[bs]=KAuth radnja nije uspjela
 Comment[ca]=L'acció del KAuth ha fallat
 Comment[ca@valencia]=L'acció del KAuth ha fallat
@@ -1840,6 +1855,7 @@ Action=Popup|Sound
 
 [Event/invalidURL]
 Name=Invalid URL
+Name[ast]=URL non válida
 Name[bs]=Pogrešan URL
 Name[ca]=URL no vàlid
 Name[ca@valencia]=URL no vàlid
