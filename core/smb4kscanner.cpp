@@ -632,38 +632,6 @@ void Smb4KScanner::lookupDomains(QWidget *parent)
 
     job->start();
   }
-  else if (Smb4KSettings::scanBroadcastAreas())
-  {
-    if (!Smb4KSettings::broadcastAreas().isEmpty())
-    {
-      Smb4KScanBAreasJob *job = new Smb4KScanBAreasJob(this);
-      job->setObjectName("ScanBAreasJob");
-      job->setupScan(parent);
-
-      connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
-      connect(job, SIGNAL(aboutToStart()), SLOT(slotAboutToStartDomainsLookup()));
-      connect(job, SIGNAL(finished()), SLOT(slotDomainsLookupFinished()));
-      connect(job, SIGNAL(workgroups(QList<Smb4KWorkgroup*>)), SLOT(slotWorkgroups(QList<Smb4KWorkgroup*>)));
-      connect(job, SIGNAL(hosts(QList<Smb4KHost*>)), SLOT(slotHosts(QList<Smb4KHost*>)));
-
-      if (!hasSubjobs() && modifyCursor())
-      {
-        QApplication::setOverrideCursor(Qt::BusyCursor);
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      addSubjob(job);
-
-      job->start();
-    }
-    else
-    {
-      Smb4KNotification::emptyBroadcastAreas();
-    }
-  }
   else
   {
     // Do nothing
@@ -871,7 +839,7 @@ void Smb4KScanner::timerEvent(QTimerEvent */*e*/)
   // 60 seconds. The latter is done to retrieve IP addresses for
   // hosts for which the IP address was not discovered in the
   // first run.
-  if (!hasSubjobs() && ((d->haveNewHosts && !hostsList().isEmpty() && !Smb4KSettings::scanBroadcastAreas()) || d->elapsedTimeIP >= 60000))
+  if (!hasSubjobs() && ((d->haveNewHosts && !hostsList().isEmpty()) || d->elapsedTimeIP >= 60000))
   {
     for (int i = 0; i < hostsList().size(); ++i)
     {
