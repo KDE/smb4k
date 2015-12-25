@@ -114,15 +114,19 @@ class Smb4KLookupDomainsJob : public KJob
 
   protected Q_SLOTS:
     void slotStartLookup();
-    void slotReadStandardError();
-    void slotProcessFinished(int exitCode,
-                              QProcess::ExitStatus exitStatus);
+    void slotProcess1Finished(int exitCode, QProcess::ExitStatus exitStatus);
+    void slotProcess2Finished(int exitCode, QProcess::ExitStatus exitStatus);
 
   private:
-    void processWorkgroups();
+    void startProcess1();
+    void startProcess2(const QStringList &ipAddresses);
+    void processErrors(const QString &stdErr);
+    void processMasterBrowsers(const QString &stdOut);
+    void processWorkgroups(const QString &stdOut);
     bool m_started;
     QWidget *m_parent_widget;
-    Smb4KProcess *m_proc;
+    Smb4KProcess *m_process1;
+    Smb4KProcess *m_process2;
     QList<Smb4KWorkgroup *> m_workgroups_list;
 };
 
@@ -221,117 +225,21 @@ class Smb4KQueryMasterJob : public KJob
 
   protected Q_SLOTS:
     void slotStartLookup();
-    void slotReadStandardError();
-    void slotProcessFinished(int exitCode,
-                              QProcess::ExitStatus exitStatus);
+    void slotProcess1Finished(int exitCode, QProcess::ExitStatus exitStatus);
+    void slotProcess2Finished(int exitCode, QProcess::ExitStatus exitStatus);
     
   private:
-    void processWorkgroups();
+    void startProcess1();
+    void startProcess2(const QString &ipAddress);
+    void processErrors(const QString &stdErr);
+    void processMasterBrowser(const QString &stdOut);
+    void processWorkgroups(const QString &stdOut);
     bool m_started;
     QWidget *m_parent_widget;
     QString m_master_browser;
-    Smb4KProcess *m_proc;
+    Smb4KProcess *m_process1;
+    Smb4KProcess *m_process2;
     QList<Smb4KWorkgroup *> m_workgroups_list;
-};
-
-
-class Smb4KScanBAreasJob : public KJob
-{
-  Q_OBJECT
-
-  public:
-    /**
-     * Constructor
-     */
-    explicit Smb4KScanBAreasJob(QObject *parent = 0);
-
-    /**
-     * Destructor
-     */
-    ~Smb4KScanBAreasJob();
-
-    /**
-     * Returns TRUE if the job has been started and FALSE otherwise
-     *
-     * @returns TRUE if the job has been started
-     */
-    bool isStarted() { return m_started; }
-
-    /**
-     * Starts the job
-     */
-    void start();
-
-    /**
-     * Sets up the scan job
-     *
-     * @param parent        The parent widget
-     */
-    void setupScan(QWidget *parent = 0);
-
-    /**
-     * Returns the parent widget
-     *
-     * @returns the parent widget
-     */
-    QWidget *parentWidget() { return m_parent_widget; }
-
-    /**
-     * Returns the list of discovered workgroups. You can use this function 
-     * after the finished() signal has been emitted to retrieve the complete
-     * list of workgroups.
-     *
-     * @returns the list of workgroups
-     */
-    const QList<Smb4KWorkgroup *> &workgroupsList() { return m_workgroups_list; }
-
-    /**
-     * Returns the list of discovered hosts. You can use this function
-     * after the finished() signal has been emitted to retrieve the complete
-     * list of hosts.
-     *
-     * @returns the list of hosts
-     */
-    const QList<Smb4KHost *> &hostsList() { return m_hosts_list; }
-
-  Q_SIGNALS:
-    /**
-     * This signal is emitted when a scan process is about
-     * to start
-     */
-    void aboutToStart();
-
-    /**
-     * This signal is emitted when a scan process finished
-     */
-    void finished();
-
-    /**
-     * Emitted when workgroups/domains were found
-     */
-    void workgroups(const QList<Smb4KWorkgroup *> &list);
-
-    /**
-     * Emitted when hosts were found
-     */
-    void hosts(const QList<Smb4KHost *> &list);
-
-  protected:
-    bool doKill();
-
-  protected Q_SLOTS:
-    void slotStartScan();
-    void slotReadStandardError();
-    void slotProcessFinished(int exitCode,
-                              QProcess::ExitStatus exitStatus);
-
-  private:
-    void processScan();
-    bool m_started;
-    QWidget *m_parent_widget;
-    Smb4KProcess *m_proc;
-    QList<Smb4KWorkgroup *> m_workgroups_list;
-    QList<Smb4KHost *> m_hosts_list;
 };
 
 
@@ -430,15 +338,15 @@ class Smb4KLookupDomainMembersJob : public KJob
 
   protected Q_SLOTS:
     void slotStartLookup();
-    void slotReadStandardError();
-    void slotProcessFinished(int exitCode,
-                              QProcess::ExitStatus exitStatus);
+    void slotProcessFinished(int exitCode, QProcess::ExitStatus exitStatus);
+    
   private:
-    void processHosts();
+    void processErrors(const QString &stdErr);
+    void processHosts(const QString &stdOut);
     bool m_started;
     QWidget *m_parent_widget;
     Smb4KWorkgroup *m_workgroup;
-    Smb4KProcess *m_proc;
+    Smb4KProcess *m_process;
     QList<Smb4KHost *> m_hosts_list;
     Smb4KHost *m_master_browser;
 };
@@ -530,16 +438,15 @@ class Smb4KLookupSharesJob : public KJob
     
   protected Q_SLOTS:
     void slotStartLookup();
-    void slotReadStandardError();
-    void slotProcessFinished(int exitCode,
-                              QProcess::ExitStatus exitStatus);
+    void slotProcessFinished(int exitCode, QProcess::ExitStatus exitStatus);
     
   private:
-    void processShares();
+    void processErrors(const QString &stdErr);
+    void processShares(const QString &stdOut);
     bool m_started;
     Smb4KHost *m_host;
     QWidget *m_parent_widget;
-    Smb4KProcess *m_proc;
+    Smb4KProcess *m_process;
     QList<Smb4KShare *> m_shares_list;
 };
 
@@ -621,15 +528,14 @@ class Smb4KLookupInfoJob : public KJob
     
   protected Q_SLOTS:
     void slotStartLookup();
-    void slotProcessFinished(int exitCode,
-                              QProcess::ExitStatus exitStatus);
+    void slotProcessFinished(int exitCode, QProcess::ExitStatus exitStatus);
     
   private:
-    void processInfo();
+    void processInfo(const QString &stdOut, const QString &stdErr);
     bool m_started;
     Smb4KHost *m_host;
     QWidget *m_parent_widget;
-    Smb4KProcess *m_proc;
+    Smb4KProcess *m_process;
 };
 
 
@@ -668,8 +574,7 @@ class Smb4KLookupIPAddressJob : public KJob
      *
      * @param parent      The parent widget
      */
-    void setupLookup(Smb4KHost *host,
-                      QWidget *parent = 0);
+    void setupLookup(Smb4KHost *host, QWidget *parent = 0);
 
     /**
      * Returns the parent widget
@@ -695,18 +600,17 @@ class Smb4KLookupIPAddressJob : public KJob
 
   protected Q_SLOTS:
     void slotStartLookup();
-    void slotProcessFinished(int exitCode,
-                              QProcess::ExitStatus exitStatus);
+    void slotProcessFinished(int exitCode, QProcess::ExitStatus exitStatus);
 
   private:
-    void useNmblookup(QStringList &args);
-    void useNet(QStringList &args);
+    void useNmblookup(QStringList &command);
+    void useNet(QStringList &command);
     void processNmblookupOutput();
     void processNetOutput();
     bool m_started;
     Smb4KHost *m_host;
     QWidget *m_parent_widget;
-    Smb4KProcess *m_proc;
+    Smb4KProcess *m_process;
 };
 
 
