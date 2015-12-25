@@ -162,9 +162,7 @@ class Smb4KPreviewJob : public KJob
      *
      * @param parent      The parent widget
      */
-    void setupPreview(Smb4KShare *share,
-                       const QUrl &url,
-                       QWidget *parent);
+    void setupPreview(Smb4KShare *share, const QUrl &url, QWidget *parent);
 
     /**
      * Returns the share object
@@ -223,12 +221,12 @@ class Smb4KPreviewJob : public KJob
     void slotProcessFinished(int exitCode, QProcess::ExitStatus status);
 
   private:
-    void processStandardOutput();
-    void processStandardError();
+    void processOutput(const QString &stdOut);
+    void processErrors(const QString &stdErr);
     bool m_started;
     Smb4KShare *m_share;
     QWidget *m_parent_widget;
-    Smb4KProcess *m_proc;
+    Smb4KProcess *m_process;
     QUrl m_url;
 };
 

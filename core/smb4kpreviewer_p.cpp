@@ -151,7 +151,7 @@ QIcon Smb4KPreviewFileItem::itemIcon() const
 
 
 Smb4KPreviewJob::Smb4KPreviewJob(QObject *parent) : KJob(parent),
-  m_started(false), m_share(0), m_parent_widget(0), m_proc(0)
+  m_started(false), m_share(0), m_parent_widget(0), m_process(0)
 {
 }
 
@@ -179,9 +179,9 @@ void Smb4KPreviewJob::setupPreview(Smb4KShare *share, const QUrl &url, QWidget *
 
 bool Smb4KPreviewJob::doKill()
 {
-  if (m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting))
+  if (m_process && m_process->state() != KProcess::NotRunning)
   {
-    m_proc->abort();
+    m_process->abort();
   }
   else
   {
@@ -194,7 +194,9 @@ bool Smb4KPreviewJob::doKill()
 
 void Smb4KPreviewJob::slotStartPreview()
 {
-  // Find the smbclient program
+  //
+  // Find shell program
+  //
   QString smbclient = QStandardPaths::findExecutable("smbclient");
 
   if (smbclient.isEmpty())
@@ -207,28 +209,27 @@ void Smb4KPreviewJob::slotStartPreview()
   {
     // Go ahead
   }
-
-  // Start the preview process
-  emit aboutToStart(m_share, m_url);
-
-  // Compile the command line arguments
-  QStringList arguments;
   
-  // smbclient command
-  arguments << smbclient;
+  //
+  // Global Samba and custom options
+  //
+  QMap<QString,QString> samba_options = globalSambaOptions();
+  Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions(m_share);
+
+  //
+  // The command
+  //
+  QStringList command;
+  command << smbclient;
 
   // UNC
-  arguments << m_share->unc();
+  command << m_share->unc();
 
   // Workgroup
-  arguments << "-W";
-  arguments << KShell::quoteArg(m_share->workgroupName());
+  command << "-W";
+  command << m_share->workgroupName();
 
   // Directory
-  // NOTE (2015-11-15, pre-2.0.0): It turned out that - when using
-  // KProcess::setProgram() - quoting the directory with KShell::quoteArg()
-  // will/can lead to a not found error. Removal of the quotation fixed
-  // the issue.
   QString path = m_url.path();
   
   if (!m_share->isHomesShare())
@@ -240,18 +241,18 @@ void Smb4KPreviewJob::slotStartPreview()
     path.remove(m_share->login(), Qt::CaseInsensitive);
   }
   
-  arguments << "-D";
-  arguments << (path.isEmpty() ? "/" : path);
+  command << "-D";
+  command << (path.isEmpty() ? "/" : path);
 
   // Command to perform (here: ls)
-  arguments << "-c";
-  arguments << KShell::quoteArg("ls");
+  command << "-c";
+  command << "ls";
 
   // IP address
   if (!m_share->hostIP().isEmpty())
   {
-    arguments << "-I";
-    arguments << m_share->hostIP();
+    command << "-I";
+    command << m_share->hostIP();
   }
   else
   {
@@ -261,7 +262,7 @@ void Smb4KPreviewJob::slotStartPreview()
   // Machine account
   if (Smb4KSettings::machineAccount())
   {
-    arguments << "-P";
+    command << "-P";
   }
   else
   {
@@ -277,20 +278,20 @@ void Smb4KPreviewJob::slotStartPreview()
     }
     case Smb4KSettings::EnumSigningState::On:
     {
-      arguments << "-S";
-      arguments << "on";
+      command << "-S";
+      command << "on";
       break;
     }
     case Smb4KSettings::EnumSigningState::Off:
     {
-      arguments << "-S";
-      arguments << "off";
+      command << "-S";
+      command << "off";
       break;
     }
     case Smb4KSettings::EnumSigningState::Required:
     {
-      arguments << "-S";
-      arguments << "required";
+      command << "-S";
+      command << "required";
       break;
     }
     default:
@@ -302,28 +303,24 @@ void Smb4KPreviewJob::slotStartPreview()
   // Buffer size
   if (Smb4KSettings::bufferSize() != 65520)
   {
-    arguments << "-b";
-    arguments << QString("%1").arg(Smb4KSettings::bufferSize());
+    command << "-b";
+    command << QString("%1").arg(Smb4KSettings::bufferSize());
   }
   else
   {
     // Do nothing
   }
 
-  // Get global Samba and custom options
-  QMap<QString,QString> samba_options = globalSambaOptions();
-  Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions(m_share);
-
   // Port
   if (options && options->smbPort() != Smb4KSettings::remoteSMBPort())
   {
-    arguments << "-p";
-    arguments << QString("%1").arg(options->smbPort());
+    command << "-p";
+    command << QString("%1").arg(options->smbPort());
   }
   else
   {
-    arguments << "-p";
-    arguments << QString("%1").arg(Smb4KSettings::remoteSMBPort());
+    command << "-p";
+    command << QString("%1").arg(Smb4KSettings::remoteSMBPort());
   }
 
   // Kerberos
@@ -333,7 +330,7 @@ void Smb4KPreviewJob::slotStartPreview()
     {
       case Smb4KCustomOptions::UseKerberos:
       {
-        arguments << " -k";
+        command << " -k";
         break;
       }
       case Smb4KCustomOptions::NoKerberos:
@@ -345,7 +342,7 @@ void Smb4KPreviewJob::slotStartPreview()
       {
         if (Smb4KSettings::useKerberos())
         {
-          arguments << "-k";
+          command << "-k";
         }
         else
         {
@@ -363,7 +360,7 @@ void Smb4KPreviewJob::slotStartPreview()
   {
     if (Smb4KSettings::useKerberos())
     {
-      arguments << "-k";
+      command << "-k";
     }
     else
     {
@@ -375,8 +372,8 @@ void Smb4KPreviewJob::slotStartPreview()
   if (!Smb4KSettings::nameResolveOrder().isEmpty() &&
       QString::compare(Smb4KSettings::nameResolveOrder(), samba_options["name resolve order"]) != 0)
   {
-    arguments << "-R";
-    arguments << KShell::quoteArg(Smb4KSettings::nameResolveOrder());
+    command << "-R";
+    command << Smb4KSettings::nameResolveOrder();
   }
   else
   {
@@ -387,8 +384,8 @@ void Smb4KPreviewJob::slotStartPreview()
   if (!Smb4KSettings::netBIOSName().isEmpty() &&
       QString::compare(Smb4KSettings::netBIOSName(), samba_options["netbios name"]) != 0)
   {
-    arguments << "-n";
-    arguments << KShell::quoteArg(Smb4KSettings::netBIOSName());
+    command << "-n";
+    command << Smb4KSettings::netBIOSName();
   }
   else
   {
@@ -399,8 +396,8 @@ void Smb4KPreviewJob::slotStartPreview()
   if (!Smb4KSettings::netBIOSScope().isEmpty() &&
       QString::compare(Smb4KSettings::netBIOSScope(), samba_options["netbios scope"]) != 0)
   {
-    arguments << "-i";
-    arguments << KShell::quoteArg(Smb4KSettings::netBIOSScope());
+    command << "-i";
+    command << Smb4KSettings::netBIOSScope();
   }
   else
   {
@@ -411,8 +408,8 @@ void Smb4KPreviewJob::slotStartPreview()
   if (!Smb4KSettings::socketOptions().isEmpty() &&
       QString::compare(Smb4KSettings::socketOptions(), samba_options["socket options"]) != 0)
   {
-    arguments << "-O";
-    arguments << KShell::quoteArg(Smb4KSettings::socketOptions());
+    command << "-O";
+    command << Smb4KSettings::socketOptions();
   }
   else
   {
@@ -422,7 +419,7 @@ void Smb4KPreviewJob::slotStartPreview()
   // Use Winbind CCache
   if (Smb4KSettings::useWinbindCCache())
   {
-    arguments << "-C";
+    command << "-C";
   }
   else
   {
@@ -432,7 +429,7 @@ void Smb4KPreviewJob::slotStartPreview()
   // Use encryption
   if (Smb4KSettings::encryptSMBTransport())
   {
-    arguments << "-e";
+    command << "-e";
   }
   else
   {
@@ -441,32 +438,38 @@ void Smb4KPreviewJob::slotStartPreview()
 
   if (!m_share->login().isEmpty())
   {
-    arguments << "-U";
-    arguments << m_share->login();
+    command << "-U";
+    command << m_share->login();
   }
   else
   {
-    arguments << "-U";
-    arguments << "%";
+    command << "-U";
+    command << "%";
   }
 
-  m_proc = new Smb4KProcess(this);
-  m_proc->setOutputChannelMode(KProcess::SeparateChannels);
-  m_proc->setEnv("PASSWD", m_share->password(), true);
-  m_proc->setProgram(arguments);
+  //
+  // The process
+  //
+  m_process = new Smb4KProcess(this);
+  m_process->setOutputChannelMode(KProcess::SeparateChannels);
+  m_process->setEnv("PASSWD", m_share->password(), true);
+  m_process->setProgram(command);
   
-  connect(m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(slotProcessFinished(int,QProcess::ExitStatus)));
+  connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(slotProcessFinished(int,QProcess::ExitStatus)));
+  
+  // Start the preview process
+  emit aboutToStart(m_share, m_url);
 
-  m_proc->start();
+  m_process->start();
 }
 
 
-void Smb4KPreviewJob::processStandardOutput()
+void Smb4KPreviewJob::processOutput(const QString &stdOut)
 {
-  QString stdOut = QString::fromUtf8(m_proc->readAllStandardOutput(), -1);
+  QStringList stdOutList = stdOut.split('\n', QString::SkipEmptyParts);
   
-  if (stdOut.contains("NT_STATUS_ACCESS_DENIED", Qt::CaseSensitive) || 
-      stdOut.contains("NT_STATUS_LOGON_FAILURE", Qt::CaseSensitive))
+  if (!stdOutList.filter("NT_STATUS_ACCESS_DENIED").isEmpty() || 
+      !stdOutList.filter("NT_STATUS_LOGON_FAILURE").isEmpty())
   {
     // This might happen if a directory cannot be accessed due to missing
     // read permissions.
@@ -474,10 +477,9 @@ void Smb4KPreviewJob::processStandardOutput()
   }
   else
   {
-    QStringList list = stdOut.split('\n', QString::SkipEmptyParts);
     QList<Smb4KPreviewFileItem> items;
 
-    foreach (const QString &line, list)
+    Q_FOREACH(const QString &line, stdOutList)
     {
       if (line.contains("blocks of size") || line.contains("Domain=["))
       {
@@ -555,15 +557,13 @@ void Smb4KPreviewJob::processStandardOutput()
 }
 
 
-void Smb4KPreviewJob::processStandardError()
+void Smb4KPreviewJob::processErrors(const QString &stdErr)
 {
-  QString stdErr = QString::fromUtf8(m_proc->readAllStandardError(), -1).trimmed();
-
   // Remove DEBUG messages, the additional information
   // that smbclient unfortunately reports to stderr and
   // error messages due to a missing smb.conf file.
-  QStringList err_msg = stdErr.split('\n', QString::SkipEmptyParts);
-  QMutableStringListIterator it(err_msg);
+  QStringList stdErrList = stdErr.split('\n', QString::SkipEmptyParts);
+  QMutableStringListIterator it(stdErrList);
   bool delete_next = false;
 
   while (it.hasNext())
@@ -608,21 +608,21 @@ void Smb4KPreviewJob::processStandardError()
 
   // Avoid reporting an error if the process was killed by calling the abort() function
   // or if only debug and other information was reported.
-  if (!m_proc->isAborted() && !err_msg.isEmpty())
+  if (!m_process->isAborted() && !stdErrList.isEmpty())
   {
-    m_proc->abort();
+    m_process->abort();
 
-    if (stdErr.contains("NT_STATUS_LOGON_FAILURE") ||
-        stdErr.contains("NT_STATUS_ACCESS_DENIED"))
+    if (!stdErrList.filter("NT_STATUS_LOGON_FAILURE").isEmpty() ||
+        !stdErrList.filter("NT_STATUS_ACCESS_DENIED").isEmpty())
     {
       // Authentication error
       emit authError(this);
     }
     else
     {
-      if (!err_msg.isEmpty())
+      if (!stdErrList.isEmpty())
       {
-        Smb4KNotification::retrievingPreviewFailed(m_share, err_msg.join("\n"));
+        Smb4KNotification::retrievingPreviewFailed(m_share, stdErrList.join("\n"));
       }
       else
       {
@@ -643,9 +643,9 @@ void Smb4KPreviewJob::slotProcessFinished(int /*exitCode*/, QProcess::ExitStatus
   {
     case QProcess::CrashExit:
     {
-      if (!m_proc->isAborted())
+      if (!m_process->isAborted())
       {
-        Smb4KNotification::processError(m_proc->error());
+        Smb4KNotification::processError(m_process->error());
       }
       else
       {
@@ -655,8 +655,13 @@ void Smb4KPreviewJob::slotProcessFinished(int /*exitCode*/, QProcess::ExitStatus
     }
     default:
     {
-      processStandardError();
-      processStandardOutput();
+      // Process errors
+      QString stdErr = QString::fromUtf8(m_process->readAllStandardError(), -1).trimmed();
+      processErrors(stdErr);
+      
+      // Process output
+      QString stdOut = QString::fromUtf8(m_process->readAllStandardOutput(), -1).trimmed();
+      processOutput(stdOut);
       break;
     }
   }
@@ -978,13 +983,11 @@ void Smb4KPreviewDialog::slotDisplayPreview(const QUrl &url, const QList<Smb4KPr
   }
 
   // Display the preview
-  for (int i = 0; i < contents.size(); ++i)
+  Q_FOREACH(const Smb4KPreviewFileItem &item, contents)
   {
-    QListWidgetItem *listItem = new QListWidgetItem(contents.at(i).itemIcon(), 
-                                                    contents.at(i).itemName(), 
-                                                    m_view,
-                                                    (contents.at(i).isDir() ? Directory : File));
-    listItem->setData(Qt::UserRole, contents.at(i).itemName());
+    QListWidgetItem *listItem = new QListWidgetItem(item.itemIcon(), item.itemName(), m_view,
+                                                    (item.isDir() ? Directory : File));
+    listItem->setData(Qt::UserRole, item.itemName());    
   }
   
   // Enable/disable the back action
