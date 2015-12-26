@@ -892,28 +892,8 @@ void Smb4KNetworkBrowserPart::slotWorkgroups(const QList<Smb4KWorkgroup *> &list
   }
   else
   {
-    // If we are in IP scan mode, there might be the case, that
-    // the master browser could not be discovered (That's right!
-    // This happened in one of the networks that I used for testing.).
-    // In this case, we should have a look whether the list of
-    // host is empty or not.before clearing the tree widget.
-    if (!Smb4KSettings::scanBroadcastAreas())
-    {
-      // Clear the tree widget.
-      m_widget->clear();
-    }
-    else
-    {
-      if (hostsList().isEmpty())
-      {
-        // Clear the tree widget.
-        m_widget->clear();
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
+    // Clear the tree widget.
+    m_widget->clear();
   }
 }
 

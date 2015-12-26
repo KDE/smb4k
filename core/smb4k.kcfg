@@ -126,16 +126,6 @@
       <whatsthis>Enter the name or IP address of a master browser here that should be queried to compile the initial browse list.</whatsthis>
       <default></default>
     </entry>
-    <entry name="ScanBroadcastAreas" type="Bool">
-      <label>Scan these broadcast areas:</label>
-      <whatsthis>This method will scan the given broadcast areas and look for all registered hosts.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="BroadcastAreas" type="String">
-      <label>A custom list of broadcast addresses</label>
-      <whatsthis>Enter a comma-separated list of broadcast addresses here (e.g. 192.168.0.255, 192.168.1.255). It is used to scan for all known hosts in the respective broadcast areas.</whatsthis>
-      <default></default>
-    </entry>
     <entry name="MasterBrowsersRequireAuth" type="Bool">
       <label>The master browsers require authentication to return the browse list</label>
       <whatsthis>The master browsers in your network neighborhood require a login to return the browse list. This setting is rarely needed and might even cause a master browser to return an empty browse list. It will not have any effect when you let Smb4K scan broadcast areas.</whatsthis>

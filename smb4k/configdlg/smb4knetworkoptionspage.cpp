@@ -79,23 +79,14 @@ Smb4KNetworkOptionsPage::Smb4KNetworkOptionsPage(QWidget *parent)
   KLineEdit *custom_name = new KLineEdit(browse_list_box);
   custom_name->setObjectName("kcfg_CustomMasterBrowser");
 
-  QRadioButton *scan_broadcast = new QRadioButton(Smb4KSettings::self()->scanBroadcastAreasItem()->label(), browse_list_box);
-  scan_broadcast->setObjectName("kcfg_ScanBroadcastAreas");
-
-  KLineEdit *broadcast_areas = new KLineEdit(browse_list_box);
-  broadcast_areas->setObjectName("kcfg_BroadcastAreas");
-
   browse_list_buttons->addButton(lookup_workgroups);
   browse_list_buttons->addButton(query_current);
   browse_list_buttons->addButton(query_custom);
-  browse_list_buttons->addButton(scan_broadcast);
 
   browse_box_layout->addWidget(lookup_workgroups, 0, 0, 1, 3, 0);
   browse_box_layout->addWidget(query_current, 1, 0, 1, 3, 0);
   browse_box_layout->addWidget(query_custom, 2, 0, 0);
   browse_box_layout->addWidget(custom_name, 2, 1, 1, 2, 0);
-  browse_box_layout->addWidget(scan_broadcast, 3, 0, 0);
-  browse_box_layout->addWidget(broadcast_areas, 3, 1, 1, 2, 0);
 
   // The authentication group box.
   QGroupBox *auth_box = new QGroupBox(i18n("Authentication"), tab1);
