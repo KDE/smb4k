@@ -58,7 +58,7 @@ using namespace Smb4KGlobal;
 
 
 Smb4KPrintJob::Smb4KPrintJob(QObject *parent) : KJob(parent),
-  m_started(false), m_proc(0), m_share(0), m_parent_widget(0)
+  m_started(false), m_process(0), m_share(0), m_parent_widget(0)
 {
   setCapabilities(KJob::Killable);
 }
@@ -86,9 +86,9 @@ void Smb4KPrintJob::setupPrinting(Smb4KShare *printer, QWidget *parentWidget)
 
 bool Smb4KPrintJob::doKill()
 {
-  if (m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting))
+  if (m_process && m_process->state() != KProcess::NotRunning)
   {
-    m_proc->abort();
+    m_process->abort();
   }
   else
   {
@@ -99,9 +99,63 @@ bool Smb4KPrintJob::doKill()
 }
 
 
+void Smb4KPrintJob::processErrors(const QString& stdErr)
+{
+  QStringList stdErrList = stdErr.split('\n', QString::SkipEmptyParts);
+  
+  if (!stdErrList.filter("NT_STATUS_LOGON_FAILURE").isEmpty() ||
+      !stdErrList.filter("NT_STATUS_ACCESS_DENIED").isEmpty())
+  {
+    // Authentication error
+    emit authError(this);
+  }
+  else
+  {
+    // Remove DEBUG messages.
+    QMutableStringListIterator it(stdErrList);
+
+    while (it.hasNext())
+    {
+      QString line = it.next();
+        
+      if (line.contains("DEBUG"))
+      {
+        it.remove();
+      }
+      else if (line.trimmed().startsWith(QLatin1String("Ignoring unknown parameter")))
+      {
+        it.remove();
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+      
+    if (!stdErrList.isEmpty())
+    {
+      Smb4KNotification::printingFailed(m_share, stdErrList.join("\n"));
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+}
+
+
+void Smb4KPrintJob::processOutput(const QString& stdOut)
+{
+  qDebug() << stdOut;
+}
+
+
+
 void Smb4KPrintJob::slotStartPrinting()
 {
-  // Find the smbspool program
+  //
+  // Find the shell command
+  //
   QString smbspool = QStandardPaths::findExecutable("smbspool");
 
   if (smbspool.isEmpty())
@@ -115,19 +169,22 @@ void Smb4KPrintJob::slotStartPrinting()
     // Go ahead
   }
   
+  //
+  // Show the print dialog and start the printing
+  //  
   if (m_share)
   {
     // The URL and path of the document that is going to be printed
     QUrl fileURL;
     
     // Temporary directory
-    m_temp_dir.setAutoRemove(false);
+    m_tempDir.setAutoRemove(false);
     
     // The printer
     QPrinter *printer = new QPrinter(QPrinter::HighResolution);
     printer->setCreator("Smb4K");
     printer->setOutputFormat(QPrinter::NativeFormat);
-    printer->setOutputFileName(QString("%1/smb4k_print.ps").arg(m_temp_dir.path()));
+    printer->setOutputFileName(QString("%1/smb4k_print.ps").arg(m_tempDir.path()));
     
     // Open the print dialog
     QPointer<Smb4KPrintDialog> dlg = new Smb4KPrintDialog(m_share, printer, m_parent_widget);
@@ -156,9 +213,6 @@ void Smb4KPrintJob::slotStartPrinting()
     }
     
     delete dlg;
-
-    // Start the print process
-    emit aboutToStart(m_share);
 
     // Get the file name.
     KFileItem file_item = KFileItem(fileURL);
@@ -219,96 +273,40 @@ void Smb4KPrintJob::slotStartPrinting()
       return;
     }
     
-    // Send the document to the printer.
-    QStringList arguments;
-    arguments << "111";                                       // job ID number; not used at the moment
-    arguments << KUser(KUser::UseRealUserID).loginName();     // user name; not used at the moment
-    arguments << "Smb4K print job";                           // job name
-    arguments << QString("%1").arg(printer->copyCount());     // number of copies
-    arguments << "";                                          // options; not used at the moment
-    arguments << fileURL.path();                              // file to print
+    //
+    // The command
+    //
+    QStringList command;
+    command << smbspool;                                    // The shell command
+    command << "111";                                       // job ID number; not used at the moment
+    command << KUser(KUser::UseRealUserID).loginName();     // user name; not used at the moment
+    command << "Smb4K print job";                           // job name
+    command << QString("%1").arg(printer->copyCount());     // number of copies
+    command << "";                                          // options; not used at the moment
+    command << fileURL.path();                              // file to print
     
     delete printer;
     
-    m_proc = new Smb4KProcess(this);
-    m_proc->setOutputChannelMode(KProcess::SeparateChannels);
-    m_proc->setEnv("DEVICE_URI", m_share->url().url(), true);
-    m_proc->setEnv("PASSWD", m_share->password(), true);
-    m_proc->setProgram(smbspool, arguments);
+    // Start the print process
+    emit aboutToStart(m_share);
+    
+    //
+    // The process
+    //
+    m_process = new Smb4KProcess(this);
+    m_process->setOutputChannelMode(KProcess::SeparateChannels);
+    m_process->setEnv("DEVICE_URI", m_share->url().url(), true);
+    m_process->setEnv("PASSWD", m_share->password(), true);
+    m_process->setProgram(command);
 
-    connect(m_proc, SIGNAL(readyReadStandardOutput()), SLOT(slotReadStandardOutput()));
-    connect(m_proc, SIGNAL(readyReadStandardError()),  SLOT(slotReadStandardError()));
-    connect(m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(slotProcessFinished(int,QProcess::ExitStatus)));
+    connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(slotProcessFinished(int,QProcess::ExitStatus)));
 
-    m_proc->start();
+    m_process->start();
   }
   else
   {
     emitResult();
     return;
-  }
-}
-
-
-void Smb4KPrintJob::slotReadStandardOutput()
-{
-  qDebug() << m_proc->readAllStandardOutput();
-}
-
-
-void Smb4KPrintJob::slotReadStandardError()
-{
-  QString stdErr = QString::fromUtf8(m_proc->readAllStandardError(), -1).trimmed();
-
-  // Avoid reporting an error if the process was killed by calling the abort() function.
-  if (!m_proc->isAborted())
-  {
-    m_proc->abort();
-    
-    if (stdErr.contains("NT_STATUS_LOGON_FAILURE") ||
-         stdErr.contains("NT_STATUS_ACCESS_DENIED"))
-    {
-      // Authentication error
-      emit authError(this);
-    }
-    else
-    {
-      // Remove DEBUG messages.
-      QStringList err_msg = stdErr.split('\n', QString::SkipEmptyParts);
-      
-      QMutableStringListIterator it(err_msg);
-      
-      while (it.hasNext())
-      {
-        QString line = it.next();
-        
-        if (line.contains("DEBUG"))
-        {
-          it.remove();
-        }
-        else if (line.trimmed().startsWith(QLatin1String("Ignoring unknown parameter")))
-        {
-          it.remove();
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-      
-      if (!err_msg.isEmpty())
-      {
-        Smb4KNotification::printingFailed(m_share, err_msg.join("\n"));
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-  }
-  else
-  {
-    // Go ahead
   }
 }
 
@@ -320,9 +318,9 @@ void Smb4KPrintJob::slotProcessFinished(int /*exitCode*/, QProcess::ExitStatus s
   {
     case QProcess::CrashExit:
     {
-      if (!m_proc->isAborted())
+      if (!m_process->isAborted())
       {
-        Smb4KNotification::processError(m_proc->error());
+        Smb4KNotification::processError(m_process->error());
       }
       else
       {
@@ -332,12 +330,19 @@ void Smb4KPrintJob::slotProcessFinished(int /*exitCode*/, QProcess::ExitStatus s
     }
     default:
     {
+      // Process errors
+      QString stdErr = QString::fromUtf8(m_process->readAllStandardError(), -1).trimmed();
+      processErrors(stdErr);
+      
+      // Process output
+      QString stdOut = QString::fromUtf8(m_process->readAllStandardOutput(), -1).trimmed();
+      processOutput(stdOut);
       break;
     }
   }
 
   // Finish job
-  m_temp_dir.remove();
+  m_tempDir.remove();
   emitResult();
   emit finished(m_share);
 }

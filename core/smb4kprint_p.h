@@ -85,8 +85,7 @@ class Smb4KPrintJob : public KJob
      * 
      * @param parentWidget  The parent widget
      */
-    void setupPrinting(Smb4KShare *printer,
-                        QWidget *parentWidget = 0);
+    void setupPrinting(Smb4KShare *printer, QWidget *parentWidget = 0);
     
     /**
      * Returns the printer share object
@@ -126,17 +125,17 @@ class Smb4KPrintJob : public KJob
     bool doKill();
     
   protected Q_SLOTS:
+    void processErrors(const QString &stdErr);
+    void processOutput(const QString &stdOut);
     void slotStartPrinting();
-    void slotReadStandardOutput();
-    void slotReadStandardError();
     void slotProcessFinished(int exitCode, QProcess::ExitStatus status);
     
   private:
     bool m_started;
-    Smb4KProcess *m_proc;
+    Smb4KProcess *m_process;
     Smb4KShare *m_share;
     QWidget *m_parent_widget;
-    QTemporaryDir m_temp_dir;
+    QTemporaryDir m_tempDir;
     
 };
 
