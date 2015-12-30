@@ -215,19 +215,19 @@ void Smb4KPrintJob::slotStartPrinting()
     delete dlg;
 
     // Get the file name.
-    KFileItem file_item = KFileItem(fileURL);
+    KFileItem fileItem = KFileItem(fileURL);
     
     // Check whether we can directly print or convert the file.
-    if (QString::compare(file_item.mimetype(), "application/postscript") == 0 ||
-        QString::compare(file_item.mimetype(), "application/pdf") == 0 ||
-        file_item.mimetype().startsWith(QLatin1String("image")))
+    if (QString::compare(fileItem.mimetype(), "application/postscript") == 0 ||
+        QString::compare(fileItem.mimetype(), "application/pdf") == 0 ||
+        fileItem.mimetype().startsWith(QLatin1String("image")))
     {
       // Nothing to do here. These mimetypes can be directly
       // printed.
     }
-    else if (file_item.mimetype().startsWith(QLatin1String("text")) || 
-             file_item.mimetype().startsWith(QLatin1String("message")) ||
-             QString::compare(file_item.mimetype(), "application/x-shellscript") == 0)
+    else if (fileItem.mimetype().startsWith(QLatin1String("text")) || 
+             fileItem.mimetype().startsWith(QLatin1String("message")) ||
+             QString::compare(fileItem.mimetype(), "application/x-shellscript") == 0)
     {
       QStringList contents;
       
@@ -250,7 +250,7 @@ void Smb4KPrintJob::slotStartPrinting()
       
       // Convert this file to PostScript.
       QTextDocument doc;
-      if (file_item.mimetype().endsWith(QLatin1String("html")))
+      if (fileItem.mimetype().endsWith(QLatin1String("html")))
       {
         doc.setHtml(contents.join(" "));
       }
@@ -268,7 +268,7 @@ void Smb4KPrintJob::slotStartPrinting()
     }
     else
     {
-      Smb4KNotification::mimetypeNotSupported(file_item.mimetype());
+      Smb4KNotification::mimetypeNotSupported(fileItem.mimetype());
       emitResult();
       return;
     }
