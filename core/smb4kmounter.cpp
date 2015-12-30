@@ -201,7 +201,7 @@ void Smb4KMounter::abortAll()
   }
   else
   {
-    // p has already been deleted
+    // Do nothing
   }
 }
 
@@ -602,6 +602,13 @@ void Smb4KMounter::mountShare(Smb4KShare *share, QWidget *parent)
       return;
     }
     
+    // Now wait until all subjobs ended. This is necessary, because 
+    // the KAuth::ExecuteJobs cannot do anything in parallel...
+    while (hasSubjobs())
+    {
+      QTest::qWait(TIMEOUT);
+    }
+    
     // Check if the host should be woken up before we start mounting the
     // share.
     if (Smb4KSettings::enableWakeOnLAN())
@@ -868,6 +875,13 @@ void Smb4KMounter::unmountShare(Smb4KShare *share, bool silent, QWidget *parent)
     else
     {
       // Do nothing
+    }
+    
+    // Now wait until all subjobs ended. This is necessary, because 
+    // the KAuth::ExecuteJobs cannot do anything in parallel...
+    while (hasSubjobs())
+    {
+      QTest::qWait(TIMEOUT);
     }
     
     // Forcibly unmount an inaccessible share if the user set
@@ -2010,12 +2024,6 @@ void Smb4KMounter::slotAboutToQuit()
   if (Smb4KSettings::unmountSharesOnExit())
   {
     unmountAllShares();
-    
-    // Wait until done.
-    while (hasSubjobs())
-    {
-      QTest::qWait(TIMEOUT);
-    }
   }
   else
   {
