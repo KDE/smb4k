@@ -140,7 +140,7 @@ class Smb4KSearchJob : public KJob
     QString m_string;
     Smb4KHost *m_master;
     QWidget *m_parent_widget;
-    Smb4KProcess *m_proc;
+    Smb4KProcess *m_process;
 };
 
 

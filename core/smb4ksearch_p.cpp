@@ -47,7 +47,7 @@ using namespace Smb4KGlobal;
 
 
 Smb4KSearchJob::Smb4KSearchJob(QObject *parent) : KJob(parent),
-  m_started(false), m_master(0), m_parent_widget(0), m_proc(0)
+  m_started(false), m_master(0), m_parent_widget(0), m_process(0)
 {
   setCapabilities(KJob::Killable);
 }
@@ -77,9 +77,9 @@ void Smb4KSearchJob::setupSearch(const QString &string, Smb4KHost *master, QWidg
 
 bool Smb4KSearchJob::doKill()
 {
-  if (m_proc && (m_proc->state() == KProcess::Running || m_proc->state() == KProcess::Starting))
+  if (m_process && m_process->state() != KProcess::NotRunning)
   {
-    m_proc->abort();
+    m_process->abort();
   }
   else
   {
@@ -92,11 +92,9 @@ bool Smb4KSearchJob::doKill()
 
 void Smb4KSearchJob::slotStartSearch()
 {
-  QStringList arguments;
-
-  emit aboutToStart(m_string);
-
-  // Find smbtree program.
+  //
+  // Find shell command
+  //
   QString smbtree = QStandardPaths::findExecutable("smbtree");
 
   if (smbtree.isEmpty())
@@ -111,7 +109,9 @@ void Smb4KSearchJob::slotStartSearch()
     // Go ahead
   }
 
-  // Lookup the custom options that are defined for the master browser.
+  //
+  // The custom options
+  //
   Smb4KCustomOptions *options = 0;
 
   if (m_master)
@@ -123,9 +123,12 @@ void Smb4KSearchJob::slotStartSearch()
     // Do nothing
   }
 
-  // Compile the command
-  arguments << smbtree;
-  arguments << "-d2";
+  //
+  // The command
+  //
+  QStringList command;
+  command << smbtree;
+  command << "-d2";
 
   // Kerberos
   if (options)
@@ -134,7 +137,7 @@ void Smb4KSearchJob::slotStartSearch()
     {
       case Smb4KCustomOptions::UseKerberos:
       {
-        arguments << "-k";
+        command << "-k";
         break;
       }
       case Smb4KCustomOptions::NoKerberos:
@@ -146,7 +149,7 @@ void Smb4KSearchJob::slotStartSearch()
       {
         if (Smb4KSettings::useKerberos())
         {
-          arguments << "-k";
+          command << "-k";
         }
         else
         {
@@ -164,7 +167,7 @@ void Smb4KSearchJob::slotStartSearch()
   {
     if (Smb4KSettings::useKerberos())
     {
-      arguments << "-k";
+      command << "-k";
     }
     else
     {
@@ -175,7 +178,7 @@ void Smb4KSearchJob::slotStartSearch()
   // Machine account
   if (Smb4KSettings::machineAccount())
   {
-    arguments << "-P";
+    command << "-P";
   }
   else
   {
@@ -191,17 +194,20 @@ void Smb4KSearchJob::slotStartSearch()
     }
     case Smb4KSettings::EnumSigningState::On:
     {
-      arguments << "-S on";
+      command << "-S";
+      command << "on";
       break;
     }
     case Smb4KSettings::EnumSigningState::Off:
     {
-      arguments << "-S off";
+      command << "-S";
+      command << "off";
       break;
     }
     case Smb4KSettings::EnumSigningState::Required:
     {
-      arguments << "-S required";
+      command << "-S";
+      command << "required";
       break;
     }
     default:
@@ -213,7 +219,7 @@ void Smb4KSearchJob::slotStartSearch()
   // Send broadcasts
   if (Smb4KSettings::smbtreeSendBroadcasts())
   {
-    arguments << "-b";
+    command << "-b";
   }
   else
   {
@@ -223,7 +229,7 @@ void Smb4KSearchJob::slotStartSearch()
   // Use Winbind CCache
   if (Smb4KSettings::useWinbindCCache())
   {
-    arguments << "-C";
+    command << "-C";
   }
   else
   {
@@ -233,7 +239,7 @@ void Smb4KSearchJob::slotStartSearch()
   // Use encryption
   if (Smb4KSettings::encryptSMBTransport())
   {
-    arguments << "-e";
+    command << "-e";
   }
   else
   {
@@ -242,29 +248,34 @@ void Smb4KSearchJob::slotStartSearch()
 
   if (m_master && !m_master->login().isEmpty())
   {
-    arguments << QString("-U %1").arg(m_master->login());
+    command << "-U";
+    command << m_master->login();
   }
   else
   {
-    arguments << "-U %";
+    command << "-U";
+    command << "%";
   }
 
-  m_proc = new Smb4KProcess(this);
-  m_proc->setOutputChannelMode(KProcess::SeparateChannels);
-  m_proc->setEnv("PASSWD", (m_master && !m_master->password().isEmpty()) ? m_master->password() : "", true);
-  m_proc->setShellCommand(arguments.join(" "));
+  m_process = new Smb4KProcess(this);
+  m_process->setOutputChannelMode(KProcess::SeparateChannels);
+  m_process->setEnv("PASSWD", (m_master && !m_master->password().isEmpty()) ? m_master->password() : "", true);
+  m_process->setProgram(command);
   
-  connect(m_proc, SIGNAL(readyReadStandardOutput()), this, SLOT(slotReadStandardOutput()));
-  connect(m_proc, SIGNAL(readyReadStandardError()), this, SLOT(slotReadStandardError()));
-  connect(m_proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotProcessFinished(int,QProcess::ExitStatus)));
+  // NOTE: Since the search might take longer, we connect to the readyRead*() signals here.
+  connect(m_process, SIGNAL(readyReadStandardOutput()), this, SLOT(slotReadStandardOutput()));
+  connect(m_process, SIGNAL(readyReadStandardError()), this, SLOT(slotReadStandardError()));
+  connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotProcessFinished(int,QProcess::ExitStatus)));
+
+  emit aboutToStart(m_string);
   
-  m_proc->start();
+  m_process->start();
 }
 
 
 void Smb4KSearchJob::slotReadStandardOutput()
 {
-  QStringList stdOut = QString::fromUtf8(m_proc->readAllStandardOutput(), -1).split('\n', QString::SkipEmptyParts, Qt::CaseSensitive);
+  QStringList stdOut = QString::fromUtf8(m_process->readAllStandardOutput(), -1).split('\n', QString::SkipEmptyParts, Qt::CaseSensitive);
 
   // Process output from smbtree.
   QString workgroup_name;
@@ -318,7 +329,7 @@ void Smb4KSearchJob::slotReadStandardOutput()
 
 void Smb4KSearchJob::slotReadStandardError()
 {
-  QString stdErr = QString::fromUtf8(m_proc->readAllStandardError(), -1);
+  QString stdErr = QString::fromUtf8(m_process->readAllStandardError(), -1);
 
   // Remove unimportant warnings
   if (stdErr.contains("Ignoring unknown parameter"))
@@ -354,7 +365,8 @@ void Smb4KSearchJob::slotReadStandardError()
        stdErr.contains("NT_STATUS_ACCESS_DENIED") ||
        stdErr.contains("NT_STATUS_LOGON_FAILURE"))
   {
-    m_proc->abort();
+    // FIXME: Do we need to call abort() here?
+    m_process->abort();
     emit authError(this);
   }
   else if (stdErr.contains("NT_STATUS"))
@@ -374,9 +386,9 @@ void Smb4KSearchJob::slotProcessFinished(int /*exitCode*/, QProcess::ExitStatus 
   {
     case QProcess::CrashExit:
     {
-      if (!m_proc->isAborted())
+      if (!m_process->isAborted())
       {
-        Smb4KNotification::processError(m_proc->error());
+        Smb4KNotification::processError(m_process->error());
       }
       else
       {
