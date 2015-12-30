@@ -135,7 +135,7 @@ class Smb4KSyncJob : public KJob
     QWidget *m_parent_widget;
     QUrl m_src;
     QUrl m_dest;
-    Smb4KProcess *m_proc;
+    Smb4KProcess *m_process;
     KUiServerJobTracker *m_job_tracker;
 };
 
