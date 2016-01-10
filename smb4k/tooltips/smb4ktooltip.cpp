@@ -240,7 +240,7 @@ void Smb4KToolTip::update(Smb4KToolTip::Parent parent, Smb4KBasicNetworkItem* it
         
         if (share->totalDiskSpace() != 0 && share->freeDiskSpace() != 0)
         {
-          m_size_label->setText(i18n("%1 free of %2 (%3 used)",
+          m_size_label->setText(i18n("%1 of %2 free (%3 used)",
                                  share->freeDiskSpaceString(),
                                  share->totalDiskSpaceString(),
                                  share->diskUsageString()));
@@ -266,29 +266,36 @@ void Smb4KToolTip::update(Smb4KToolTip::Parent parent, Smb4KBasicNetworkItem* it
  
 void Smb4KToolTip::show(const QPoint &pos)
 {
-  QPoint p;
+  // Get the geometry of the screen where the cursor is
+  const QRect screenRect = QApplication::desktop()->screenGeometry(pos);
   
-  QDesktopWidget *d = QApplication::desktop();
+  // Adjust the size
+  adjustSize();
 
-  if (pos.x() + width() > d->width())
+  // The position where the tooltip is to be shown
+  QPoint tooltipPos;  
+  
+  // Correct the position of the tooltip, so that it is completely 
+  // shown.
+  if (pos.x() + width() + 5 >= screenRect.x() + screenRect.width())
   {
-    p.setX(pos.x() - width() - 5);
+    tooltipPos.setX(pos.x() - width() - 5);
   }
   else
   {
-    p.setX(pos.x() + 5);
+    tooltipPos.setX(pos.x() + 5);
   }
-
-  if (pos.y() + height() > d->height())
+  
+  if (pos.y() + height() + 5 >= screenRect.y() + screenRect.height())
   {
-    p.setY(pos.y() - height() - 5);
+    tooltipPos.setY(pos.y() - height() - 5);
   }
   else
   {
-    p.setY(pos.y() + 5);
+    tooltipPos.setY(pos.y() + 5);
   }
 
-  move(p);
+  move(tooltipPos);
   setVisible(true);
   
   QTimer::singleShot(10000, this, SLOT(slotHideToolTip()));
@@ -626,26 +633,13 @@ void Smb4KToolTip::setupSharesViewToolTip()
       
   m_text_layout->addWidget(log_label, 2, 0, Qt::AlignRight);
       
-  switch (share->fileSystem())
+  if (!share->login().isEmpty())
   {
-    case Smb4KShare::CIFS:
-    case Smb4KShare::SMBFS:
-    {
-      if (!share->login().isEmpty())
-      {
-        m_text_layout->addWidget(new QLabel(share->login(), this), 2, 1, 0);
-      }
-      else
-      {
-        m_text_layout->addWidget(new QLabel(i18n("unknown"), this), 2, 1, 0);
-      }
-      break;
-    }
-    default:
-    {
-      m_text_layout->addWidget(new QLabel("-", this), 2, 1, 0);
-      break;
-    }
+    m_text_layout->addWidget(new QLabel(share->login(), this), 2, 1, 0);
+  }
+  else
+  {
+    m_text_layout->addWidget(new QLabel(i18n("unknown"), this), 2, 1, 0);
   }
   
   QLabel *own_label = new QLabel(i18n("Owner"), this);
@@ -661,9 +655,9 @@ void Smb4KToolTip::setupSharesViewToolTip()
       
   QLabel *fs_label = new QLabel(i18n("File system"), this);
   fs_label->setPalette(p);
-      
+  
   m_text_layout->addWidget(fs_label, 4, 0, Qt::AlignRight);
-  m_text_layout->addWidget(new QLabel(share->fileSystemString().toUpper()), 4, 1, 0);
+  m_text_layout->addWidget(new QLabel(share->fileSystemString()), 4, 1, 0);
   
   QLabel *s_label = new QLabel(i18n("Size"), this);
   s_label->setPalette(p);
@@ -894,26 +888,13 @@ void Smb4KToolTip::updateSharesViewToolTip()
     QLayoutItem *log_item = m_text_layout->itemAtPosition(2, 1);
     QLabel *log_label = static_cast<QLabel *>(log_item->widget());
     
-    switch (share->fileSystem())
+    if (!share->login().isEmpty())
     {
-      case Smb4KShare::CIFS:
-      case Smb4KShare::SMBFS:
-      {
-        if (!share->login().isEmpty())
-        {
-          log_label->setText(share->login());
-        }
-        else
-        {
-          log_label->setText(i18n("unknown"));
-        }
-        break;
-      }
-      default:
-      {
-        log_label->setText("-");
-        break;
-      }
+      log_label->setText(share->login());
+    }
+    else
+    {
+      log_label->setText(i18n("unknown"));
     }
     
     QLayoutItem *s_item = m_text_layout->itemAtPosition(5, 1);
