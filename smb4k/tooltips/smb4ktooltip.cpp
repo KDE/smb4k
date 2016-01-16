@@ -2,7 +2,7 @@
     smb4ktooltip  -  Provides tooltips for Smb4K
                              -------------------
     begin                : Sa Dez 23 2010
-    copyright            : (C) 2010-2015 by Alexander Reinholdt
+    copyright            : (C) 2010-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
