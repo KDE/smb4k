@@ -114,82 +114,6 @@ Smb4KUserInterfaceOptionsPage::Smb4KUserInterfaceOptionsPage(QWidget *parent)
   shares_view_layout->setSpacing(5);
   shares_view_layout->setMargin(0);
 
-  // Shares view
-  QGroupBox *view_box = new QGroupBox(i18n("View"), shares_view_tab);
-
-  QGridLayout *view_layout = new QGridLayout(view_box);
-  view_layout->setSpacing(5);
-
-  QButtonGroup *shares_buttons = new QButtonGroup(view_box);
-
-  QRadioButton *shares_icon_view = new QRadioButton(Smb4KSettings::self()->sharesIconViewItem()->label(), view_box);
-  shares_icon_view->setObjectName("kcfg_SharesIconView");
-
-  QRadioButton *shares_list_view  = new QRadioButton(Smb4KSettings::self()->sharesListViewItem()->label(), view_box);
-  shares_list_view->setObjectName("kcfg_SharesListView");
-
-  shares_buttons->addButton(shares_icon_view);
-  shares_buttons->addButton(shares_list_view);
-
-  QSpacerItem *spacer3 = new QSpacerItem(7, 7, QSizePolicy::Preferred, QSizePolicy::Fixed);
-
-  QLabel *list_view_label = new QLabel(i18n("Settings for the list view:"), view_box);
-
-  QCheckBox *show_owner = new QCheckBox(Smb4KSettings::self()->showOwnerItem()->label(), view_box);
-  show_owner->setObjectName("kcfg_ShowOwner");
-
-#if defined(Q_OS_LINUX)
-  QCheckBox *show_login = new QCheckBox(Smb4KSettings::self()->showLoginNameItem()->label(), view_box);
-  show_login->setObjectName("kcfg_ShowLoginName");
-#endif
-
-  QCheckBox *show_filesystem = new QCheckBox(Smb4KSettings::self()->showFileSystemItem()->label(), view_box);
-  show_filesystem->setObjectName("kcfg_ShowFileSystem");
-
-  QCheckBox *show_free_space = new QCheckBox(Smb4KSettings::self()->showFreeDiskSpaceItem()->label(), view_box);
-  show_free_space->setObjectName("kcfg_ShowFreeDiskSpace");
-
-  QCheckBox *show_used_space = new QCheckBox(Smb4KSettings::self()->showUsedDiskSpaceItem()->label(), view_box);
-  show_used_space->setObjectName("kcfg_ShowUsedDiskSpace");
-
-  QCheckBox *show_total_space = new QCheckBox(Smb4KSettings::self()->showTotalDiskSpaceItem()->label(), view_box);
-  show_total_space->setObjectName("kcfg_ShowTotalDiskSpace");
-
-  QCheckBox *show_usage = new QCheckBox(Smb4KSettings::self()->showDiskUsageItem()->label(), view_box);
-  show_usage->setObjectName("kcfg_ShowDiskUsage");
-
-  view_layout->addWidget(shares_icon_view, 0, 0, 1, 2, 0);
-  view_layout->addWidget(shares_list_view, 1, 0, 1, 2, 0);
-  view_layout->addItem(spacer3, 2, 0, 1, 2);
-  view_layout->addWidget(list_view_label, 3, 0, 1, 2, 0);
-#if defined(Q_OS_LINUX)
-  view_layout->addWidget(show_owner, 4, 0, 0);
-  view_layout->addWidget(show_login, 4, 1, 0);
-  view_layout->addWidget(show_filesystem, 5, 0, 0);
-  view_layout->addWidget(show_free_space, 5, 1, 0);
-  view_layout->addWidget(show_used_space, 6, 0, 0);
-  view_layout->addWidget(show_total_space, 6, 1, 0);
-  view_layout->addWidget(show_usage, 7, 0, 0);
-#else
-  view_layout->addWidget(show_owner, 4, 0, 0);
-  view_layout->addWidget(show_filesystem, 4, 1, 0);
-  view_layout->addWidget(show_free_space, 5, 0, 0);
-  view_layout->addWidget(show_used_space, 5, 1, 0);
-  view_layout->addWidget(show_total_space, 6, 0, 0);
-  view_layout->addWidget(show_usage, 6, 1, 0);
-#endif
-
-  // Mounted shares
-  QGroupBox *mounted_shares_box = new QGroupBox(i18n("Mounted Shares"), shares_view_tab);
-
-  QGridLayout *mounted_layout = new QGridLayout(mounted_shares_box);
-  mounted_layout->setSpacing(5);
-
-  QCheckBox *show_mountpoint = new QCheckBox(Smb4KSettings::self()->showMountPointItem()->label(), mounted_shares_box);
-  show_mountpoint->setObjectName("kcfg_ShowMountPoint");
-
-  mounted_layout->addWidget(show_mountpoint, 0, 0, 0);
-
   // Share tooltips
   QGroupBox *share_tooltips_box = new QGroupBox(i18n("Tooltips"), shares_view_tab);
 
@@ -203,10 +127,8 @@ Smb4KUserInterfaceOptionsPage::Smb4KUserInterfaceOptionsPage(QWidget *parent)
 
   QSpacerItem *spacer4 = new QSpacerItem(10, 10, QSizePolicy::Preferred, QSizePolicy::Expanding);
 
-  shares_view_layout->addWidget(view_box, 0, 0, 0);
-  shares_view_layout->addWidget(mounted_shares_box, 1, 0, 0);
-  shares_view_layout->addWidget(share_tooltips_box, 2, 0, 0);
-  shares_view_layout->addItem(spacer4, 3, 0);
+  shares_view_layout->addWidget(share_tooltips_box, 0, 0, 0);
+  shares_view_layout->addItem(spacer4, 1, 0);
 
   addTab(shares_view_tab, i18n("Mounted Shares"));
   
