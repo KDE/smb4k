@@ -29,8 +29,7 @@
 
 // application specific includes
 #include "smb4ksharesview_part.h"
-#include "smb4kshareslistviewitem.h"
-#include "smb4ksharesiconviewitem.h"
+#include "smb4ksharesviewitem.h"
 #include "../tooltips/smb4ktooltip.h"
 #include "core/smb4kshare.h"
 #include "core/smb4ksettings.h"
@@ -65,25 +64,12 @@ K_PLUGIN_FACTORY(Smb4KSharesViewPartFactory, registerPlugin<Smb4KSharesViewPart>
 
 
 Smb4KSharesViewPart::Smb4KSharesViewPart(QWidget *parentWidget, QObject *parent, const QList<QVariant> &args)
-: KParts::Part(parent), m_mode(IconMode), m_bookmark_shortcut(true), m_silent(false)
+: KParts::Part(parent), m_bookmark_shortcut(true), m_silent(false)
 {
   // Parse the arguments.
   for (int i = 0; i < args.size(); ++i)
   {
-    if (args.at(i).toString().startsWith(QLatin1String("viewmode")))
-    {
-      if (QString::compare(args.at(i).toString().section('=', 1, 1).trimmed(), "list") == 0)
-      {
-        m_mode = ListMode;
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      continue;
-    }
-    else if (args.at(i).toString().startsWith(QLatin1String("bookmark_shortcut")))
+    if (args.at(i).toString().startsWith(QLatin1String("bookmark_shortcut")))
     {
       if (QString::compare(args.at(i).toString().section('=', 1, 1).trimmed(), "\"false\"") == 0)
       {
@@ -129,9 +115,6 @@ Smb4KSharesViewPart::Smb4KSharesViewPart(QWidget *parentWidget, QObject *parent,
   setWidget(m_container);
 
   // Set up the actual view.
-  m_icon_view = 0;
-  m_list_view = 0;
-
   setupView();
 
   // Set up the actions.
@@ -167,118 +150,26 @@ Smb4KSharesViewPart::~Smb4KSharesViewPart()
 
 void Smb4KSharesViewPart::setupView()
 {
-  // Set the widget of this part:
-  switch (m_mode)
-  {
-    case IconMode:
-    {
-      if (m_list_view)
-      {
-        disconnect(m_list_view, SIGNAL(customContextMenuRequested(QPoint)),
-                   this, SLOT(slotContextMenuRequested(QPoint)));
-        disconnect(m_list_view, SIGNAL(itemSelectionChanged()),
-                   this, SLOT(slotItemSelectionChanged()));
-        disconnect(m_list_view, SIGNAL(itemPressed(QTreeWidgetItem*,int)),
-                   this, SLOT(slotItemPressed(QTreeWidgetItem*,int)));
-        disconnect(m_list_view, SIGNAL(itemActivated(QTreeWidgetItem*,int)),
-                   this, SLOT(slotItemActivated(QTreeWidgetItem*,int)));
-        disconnect(m_list_view, SIGNAL(acceptedDropEvent(Smb4KSharesListViewItem*,QDropEvent*)),
-                   this, SLOT(slotListViewDropEvent(Smb4KSharesListViewItem*,QDropEvent*)));
-    
-        delete m_list_view;
-        m_list_view = 0;
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      if (!m_icon_view)
-      {
-        m_icon_view = new Smb4KSharesIconView(m_container);
-        m_layout->addWidget(m_icon_view, 0, 0, 0);
-        m_icon_view->setVisible(true);
-        m_container->setFocusProxy(m_icon_view);
+  // Set the widget of this part
+  m_view = new Smb4KSharesView(m_container);
+  m_layout->addWidget(m_view, 0, 0, 0);
+  m_view->setVisible(true);
+  m_container->setFocusProxy(m_view);
         
-        // Set the icon size
-        int icon_size = KIconLoader::global()->currentSize(KIconLoader::Desktop);
-        m_icon_view->setIconSize(QSize(icon_size, icon_size));
+  // Set the icon size
+  int icon_size = KIconLoader::global()->currentSize(KIconLoader::Desktop);
+  m_view->setIconSize(QSize(icon_size, icon_size));
 
-        connect(m_icon_view, SIGNAL(customContextMenuRequested(QPoint)),
-                this, SLOT(slotContextMenuRequested(QPoint)));
-        connect(m_icon_view, SIGNAL(itemSelectionChanged()),
-                this, SLOT(slotItemSelectionChanged()));
-        connect(m_icon_view, SIGNAL(itemPressed(QListWidgetItem*)),
-                this, SLOT(slotItemPressed(QListWidgetItem*)));
-        connect(m_icon_view, SIGNAL(itemActivated(QListWidgetItem*)),
-                this, SLOT(slotItemActivated(QListWidgetItem*)));
-        connect(m_icon_view, SIGNAL(acceptedDropEvent(Smb4KSharesIconViewItem*,QDropEvent*)),
-                this, SLOT(slotIconViewDropEvent(Smb4KSharesIconViewItem*,QDropEvent*)));
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      break;
-    }
-    case ListMode:
-    {
-      if (m_icon_view)
-      {
-        disconnect(m_icon_view, SIGNAL(customContextMenuRequested(QPoint)),
-                   this, SLOT(slotContextMenuRequested(QPoint)));
-        disconnect(m_icon_view, SIGNAL(itemSelectionChanged()),
-                   this, SLOT(slotItemSelectionChanged()));
-        disconnect(m_icon_view, SIGNAL(itemPressed(QListWidgetItem*)),
-                   this, SLOT(slotItemPressed(QListWidgetItem*)));
-        disconnect(m_icon_view, SIGNAL(itemActivated(QListWidgetItem*)),
-                   this, SLOT(slotItemActivated(QListWidgetItem*)));
-        disconnect(m_icon_view, SIGNAL(acceptedDropEvent(Smb4KSharesIconViewItem*,QDropEvent*)),
-                   this, SLOT(slotIconViewDropEvent(Smb4KSharesIconViewItem*,QDropEvent*)));
-        
-        delete m_icon_view;
-        m_icon_view = 0;
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      if (!m_list_view)
-      {
-        m_list_view = new Smb4KSharesListView(m_container);
-        m_layout->addWidget(m_list_view, 0, 0, 0);
-        m_list_view->setVisible(true);
-        m_container->setFocusProxy(m_list_view);
-        
-        // Set the icon size
-        int icon_size = KIconLoader::global()->currentSize(KIconLoader::Small);
-        m_list_view->setIconSize(QSize(icon_size, icon_size));
-
-        connect(m_list_view, SIGNAL(customContextMenuRequested(QPoint)),
-                this, SLOT(slotContextMenuRequested(QPoint)));
-        connect(m_list_view, SIGNAL(itemSelectionChanged()),
-                this, SLOT(slotItemSelectionChanged()));
-        connect(m_list_view, SIGNAL(itemPressed(QTreeWidgetItem*,int)),
-                this, SLOT(slotItemPressed(QTreeWidgetItem*,int)));
-        connect(m_list_view, SIGNAL(itemActivated(QTreeWidgetItem*,int)),
-                this, SLOT(slotItemActivated(QTreeWidgetItem*,int)));
-        connect(m_list_view, SIGNAL(acceptedDropEvent(Smb4KSharesListViewItem*,QDropEvent*)),
-                this, SLOT(slotListViewDropEvent(Smb4KSharesListViewItem*,QDropEvent*)));
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
+  connect(m_view, SIGNAL(customContextMenuRequested(QPoint)),
+          this, SLOT(slotContextMenuRequested(QPoint)));
+  connect(m_view, SIGNAL(itemSelectionChanged()),
+          this, SLOT(slotItemSelectionChanged()));
+  connect(m_view, SIGNAL(itemPressed(QListWidgetItem*)),
+          this, SLOT(slotItemPressed(QListWidgetItem*)));
+  connect(m_view, SIGNAL(itemActivated(QListWidgetItem*)),
+          this, SLOT(slotItemActivated(QListWidgetItem*)));
+  connect(m_view, SIGNAL(acceptedDropEvent(Smb4KSharesViewItem*,QDropEvent*)),
+          this, SLOT(slotIconViewDropEvent(Smb4KSharesViewItem*,QDropEvent*)));
 }
 
 
@@ -364,117 +255,14 @@ void Smb4KSharesViewPart::setupActions()
 
 void Smb4KSharesViewPart::loadSettings()
 {
-  if (Smb4KSettings::sharesIconView())
-  {
-    m_mode = IconMode;
-
-    setupView();
-
-    // Change the text of the share (first column):
-    Smb4KSharesIconViewItem *item = 0;
-
-    for (int i = 0; i < m_icon_view->count(); ++i)
-    {
-      item = static_cast<Smb4KSharesIconViewItem *>(m_icon_view->item(i));
-
-      item->setShowMountPoint(Smb4KSettings::showMountPoint());
-    }
-  }
-  else
-  {
-    m_mode = ListMode;
-
-    setupView();
-
-    m_list_view->setColumnHidden(Smb4KSharesListView::Owner, !Smb4KSettings::showOwner());
-#ifdef Q_OS_LINUX
-    m_list_view->setColumnHidden(Smb4KSharesListView::Login, !Smb4KSettings::showLoginName());
-#endif
-    m_list_view->setColumnHidden(Smb4KSharesListView::FileSystem, !Smb4KSettings::showFileSystem());
-    m_list_view->setColumnHidden(Smb4KSharesListView::Free, !Smb4KSettings::showFreeDiskSpace());
-    m_list_view->setColumnHidden(Smb4KSharesListView::Used, !Smb4KSettings::showUsedDiskSpace());
-    m_list_view->setColumnHidden(Smb4KSharesListView::Total, !Smb4KSettings::showTotalDiskSpace());
-    m_list_view->setColumnHidden(Smb4KSharesListView::Usage, !Smb4KSettings::showDiskUsage());
-
-    // Change the text of the share (first column):
-    Smb4KSharesListViewItem *item = 0;
-
-    for (int i = 0; i < m_list_view->topLevelItemCount(); ++i)
-    {
-      item = static_cast<Smb4KSharesListViewItem *>(m_list_view->topLevelItem(i));
-
-      item->setShowMountPoint(Smb4KSettings::showMountPoint());
-    }
-
-    // Load and apply the positions of the columns.
-    KConfigGroup configGroup(Smb4KSettings::self()->config(), "SharesViewPart");
-
-    QMap<int, int> map;
-    map.insert(configGroup.readEntry("ColumnPositionItem", (int)Smb4KSharesListView::Item), Smb4KSharesListView::Item);
-#ifdef Q_OS_LINUX
-    map.insert(configGroup.readEntry("ColumnPositionLogin", (int)Smb4KSharesListView::Login), Smb4KSharesListView::Login);
-#endif
-    map.insert(configGroup.readEntry("ColumnPositionFileSystem", (int)Smb4KSharesListView::FileSystem), Smb4KSharesListView::FileSystem);
-    map.insert(configGroup.readEntry("ColumnPositionOwner", (int)Smb4KSharesListView::Owner), Smb4KSharesListView::Owner);
-    map.insert(configGroup.readEntry("ColumnPositionFree", (int)Smb4KSharesListView::Free), Smb4KSharesListView::Free);
-    map.insert(configGroup.readEntry("ColumnPositionUsed", (int)Smb4KSharesListView::Used), Smb4KSharesListView::Used);
-    map.insert(configGroup.readEntry("ColumnPositionTotal", (int)Smb4KSharesListView::Total), Smb4KSharesListView::Total);
-    map.insert(configGroup.readEntry("ColumnPositionUsage", (int)Smb4KSharesListView::Usage), Smb4KSharesListView::Usage);
-
-    QMap<int, int>::const_iterator it = map.constBegin();
-
-    while (it != map.constEnd())
-    {
-      if (it.key() != m_list_view->header()->visualIndex(it.value()))
-      {
-        m_list_view->header()->moveSection(m_list_view->header()->visualIndex(it.value()), it.key());
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      ++it;
-    }
-  }
-
+  setupView();
   // The rest of the settings will be applied on the fly.
 }
 
 
 void Smb4KSharesViewPart::saveSettings()
 {
-  switch (m_mode)
-  {
-    case IconMode:
-    {
-      break;
-    }
-    case ListMode:
-    {
-      // Save the position of the columns.
-      KConfigGroup configGroup(Smb4KSettings::self()->config(), "SharesViewPart");
-
-      configGroup.writeEntry("ColumnPositionItem", m_list_view->header()->visualIndex(Smb4KSharesListView::Item));
-#ifdef Q_OS_LINUX
-      configGroup.writeEntry("ColumnPositionLogin", m_list_view->header()->visualIndex(Smb4KSharesListView::Login));
-#endif
-      configGroup.writeEntry("ColumnPositionFileSystem", m_list_view->header()->visualIndex(Smb4KSharesListView::FileSystem));
-      configGroup.writeEntry("ColumnPositionOwner", m_list_view->header()->visualIndex(Smb4KSharesListView::Owner));
-      configGroup.writeEntry("ColumnPositionFree", m_list_view->header()->visualIndex(Smb4KSharesListView::Free));
-      configGroup.writeEntry("ColumnPositionUsed", m_list_view->header()->visualIndex(Smb4KSharesListView::Used));
-      configGroup.writeEntry("ColumnPositionTotal", m_list_view->header()->visualIndex(Smb4KSharesListView::Total));
-      configGroup.writeEntry("ColumnPositionUsage", m_list_view->header()->visualIndex(Smb4KSharesListView::Usage));
-
-      configGroup.sync();
-
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
+  // Not used at the moment
 }
 
 
@@ -501,30 +289,9 @@ void Smb4KSharesViewPart::customEvent(QEvent *e)
     loadSettings();
 
     // (Re-)load the list of shares.
-    switch (m_mode)
+    while (m_view->count() != 0)
     {
-      case IconMode:
-      {
-        while (m_icon_view->count() != 0)
-        {
-          delete m_icon_view->takeItem(0);
-        }
-          
-        break;
-      }
-      case ListMode:
-      {
-        while (m_list_view->topLevelItemCount() != 0)
-        {
-          delete m_list_view->takeTopLevelItem(0);
-        }
-         
-        break;
-      }
-      default:
-      {
-        break;
-      }
+      delete m_view->takeItem(0);
     }
       
     for (int i = 0; i < mountedSharesList().size(); ++i)
@@ -534,41 +301,7 @@ void Smb4KSharesViewPart::customEvent(QEvent *e)
   }
   else if (e->type() == Smb4KEvent::SetFocus)
   {
-    switch (m_mode)
-    {
-      case IconMode:
-      {
-        if (m_icon_view->count() != 0)
-        {
-          qDebug() << "Do we need to port the selection stuff?";
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        m_icon_view->setFocus(Qt::OtherFocusReason);
-        break;
-      }
-      case ListMode:
-      {
-        if (m_list_view->topLevelItemCount() != 0)
-        {
-          qDebug() << "Do we need to port the selection stuff?";
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        m_list_view->setFocus(Qt::OtherFocusReason);
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
+    m_view->setFocus(Qt::OtherFocusReason);
   }
   else if (e->type() == Smb4KEvent::AddBookmark)
   {
@@ -593,178 +326,65 @@ void Smb4KSharesViewPart::customEvent(QEvent *e)
 
 void Smb4KSharesViewPart::slotContextMenuRequested(const QPoint &pos)
 {
-  switch (m_mode)
+  QListWidgetItem *item = m_view->itemAt(pos);
+
+  if (item)
   {
-    case IconMode:
-    {
-      QListWidgetItem *item = m_icon_view->itemAt(pos);
-
-      if (item)
-      {
-        m_menu->menu()->setTitle(item->text());
-        m_menu->menu()->setIcon(item->icon());
-      }
-      else
-      {
-        m_menu->menu()->setTitle(i18n("Shares"));
-        m_menu->menu()->setIcon(KDE::icon("folder-remote"));
-      }
-
-      m_menu->menu()->popup(m_icon_view->viewport()->mapToGlobal(pos));
-
-      break;
-    }
-    case ListMode:
-    {
-      QTreeWidgetItem *item = m_list_view->itemAt(pos);
-
-      if (item)
-      {
-        m_menu->menu()->setTitle(item->text(Smb4KSharesListViewItem::Item));
-        m_menu->menu()->setIcon(item->icon(Smb4KSharesListViewItem::Item));
-      }
-      else
-      {
-        m_menu->menu()->setTitle(i18n("Shares"));
-        m_menu->menu()->setIcon(KDE::icon("folder-remote"));
-      }
-
-      m_menu->menu()->popup(m_list_view->viewport()->mapToGlobal(pos));
-
-      break;
-    }
-    default:
-    {
-      break;
-    }
+    m_menu->menu()->setTitle(item->text());
+    m_menu->menu()->setIcon(item->icon());
   }
+  else
+  {
+    m_menu->menu()->setTitle(i18n("Shares"));
+    m_menu->menu()->setIcon(KDE::icon("folder-remote"));
+  }
+
+  m_menu->menu()->popup(m_view->viewport()->mapToGlobal(pos));
 }
 
 
 void Smb4KSharesViewPart::slotItemSelectionChanged()
 {
-  switch (m_mode)
+  QList<QListWidgetItem *> items = m_view->selectedItems();
+
+  if (!items.isEmpty())
   {
-    case IconMode:
-    {
-      QList<QListWidgetItem *> items = m_icon_view->selectedItems();
+    Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(items.first());
+    bool sync_running = Smb4KSynchronizer::self()->isRunning(item->shareItem());
 
-      if (!items.isEmpty())
-      {
-        Smb4KSharesIconViewItem *item = static_cast<Smb4KSharesIconViewItem *>(items.first());
-        bool sync_running = Smb4KSynchronizer::self()->isRunning(item->shareItem());
-
-        actionCollection()->action("unmount_action")->setEnabled((!item->shareItem()->isForeign() ||
+    actionCollection()->action("unmount_action")->setEnabled((!item->shareItem()->isForeign() ||
                                                                     Smb4KSettings::unmountForeignShares()));
-        actionCollection()->action("bookmark_action")->setEnabled(true);
+    actionCollection()->action("bookmark_action")->setEnabled(true);
 
-        if (!item->shareItem()->isInaccessible())
-        {
-          actionCollection()->action("synchronize_action")->setEnabled(!QStandardPaths::findExecutable("rsync").isEmpty() && !sync_running);
-          actionCollection()->action("konsole_action")->setEnabled(!QStandardPaths::findExecutable("konsole").isEmpty());
-          actionCollection()->action("filemanager_action")->setEnabled(true);
-        }
-        else
-        {
-          actionCollection()->action("synchronize_action")->setEnabled(false);
-          actionCollection()->action("konsole_action")->setEnabled(false);
-          actionCollection()->action("filemanager_action")->setEnabled(false);
-        }
-      }
-      else
-      {
-        actionCollection()->action("unmount_action")->setEnabled(false);
-        actionCollection()->action("bookmark_action")->setEnabled(false);
-        actionCollection()->action("synchronize_action")->setEnabled(false);
-        actionCollection()->action("konsole_action")->setEnabled(false);
-        actionCollection()->action("filemanager_action")->setEnabled(false);
-      }
-
-      break;
-    }
-    case ListMode:
+    if (!item->shareItem()->isInaccessible())
     {
-      // Get the selected item.
-      QList<QTreeWidgetItem *> items = m_list_view->selectedItems();
-
-      if (!items.isEmpty())
-      {
-        Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>(items.first());
-        bool sync_running = Smb4KSynchronizer::self()->isRunning(item->shareItem());
-
-        actionCollection()->action("unmount_action")->setEnabled((!item->shareItem()->isForeign() ||
-                                                                    Smb4KSettings::unmountForeignShares()));
-        actionCollection()->action("bookmark_action")->setEnabled(true);
-
-        if (!item->shareItem()->isInaccessible())
-        {
-          actionCollection()->action("synchronize_action")->setEnabled(!QStandardPaths::findExecutable("rsync").isEmpty() && !sync_running);
-          actionCollection()->action("konsole_action")->setEnabled(!QStandardPaths::findExecutable("konsole").isEmpty());
-          actionCollection()->action("filemanager_action")->setEnabled(true);
-        }
-        else
-        {
-          actionCollection()->action("synchronize_action")->setEnabled(false);
-          actionCollection()->action("konsole_action")->setEnabled(false);
-          actionCollection()->action("filemanager_action")->setEnabled(false);
-        }
-      }
-      else
-      {
-        actionCollection()->action("unmount_action")->setEnabled(false);
-        actionCollection()->action("bookmark_action")->setEnabled(false);
-        actionCollection()->action("synchronize_action")->setEnabled(false);
-        actionCollection()->action("konsole_action")->setEnabled(false);
-        actionCollection()->action("filemanager_action")->setEnabled(false);
-      }
-
-      break;
+      actionCollection()->action("synchronize_action")->setEnabled(!QStandardPaths::findExecutable("rsync").isEmpty() && !sync_running);
+      actionCollection()->action("konsole_action")->setEnabled(!QStandardPaths::findExecutable("konsole").isEmpty());
+      actionCollection()->action("filemanager_action")->setEnabled(true);
     }
-    default:
+    else
     {
-      break;
+      actionCollection()->action("synchronize_action")->setEnabled(false);
+      actionCollection()->action("konsole_action")->setEnabled(false);
+      actionCollection()->action("filemanager_action")->setEnabled(false);
     }
   }
-}
-
-
-void Smb4KSharesViewPart::slotItemPressed(QTreeWidgetItem *item, int /*column*/)
-{
-  Smb4KSharesListViewItem *shareItem = static_cast<Smb4KSharesListViewItem *>(item);
-
-  if (!shareItem && m_list_view->selectedItems().isEmpty())
+  else
   {
     actionCollection()->action("unmount_action")->setEnabled(false);
     actionCollection()->action("bookmark_action")->setEnabled(false);
     actionCollection()->action("synchronize_action")->setEnabled(false);
     actionCollection()->action("konsole_action")->setEnabled(false);
     actionCollection()->action("filemanager_action")->setEnabled(false);
-  }
-  else
-  {
-    if (shareItem)
-    {
-      bool sync_running = Smb4KSynchronizer::self()->isRunning(shareItem->shareItem());
-
-      actionCollection()->action("synchronize_action")->setEnabled(!QStandardPaths::findExecutable("rsync").isEmpty() &&
-                                                                   !sync_running &&
-                                                                   !shareItem->shareItem()->isInaccessible());
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    // The rest will be done elsewhere.
   }
 }
 
 
 void Smb4KSharesViewPart::slotItemPressed(QListWidgetItem *item)
 {
-  Smb4KSharesIconViewItem *shareItem = static_cast<Smb4KSharesIconViewItem *>(item);
+  Smb4KSharesViewItem *shareItem = static_cast<Smb4KSharesViewItem *>(item);
 
-  if (!shareItem && m_icon_view->selectedItems().isEmpty())
+  if (!shareItem && m_view->selectedItems().isEmpty())
   {
     actionCollection()->action("unmount_action")->setEnabled(false);
     actionCollection()->action("bookmark_action")->setEnabled(false);
@@ -788,29 +408,6 @@ void Smb4KSharesViewPart::slotItemPressed(QListWidgetItem *item)
     }
 
     // The rest will be done elsewhere.
-  }
-}
-
-
-void Smb4KSharesViewPart::slotItemActivated(QTreeWidgetItem *item, int /*column*/)
-{
-  if (QApplication::keyboardModifiers() == Qt::NoModifier)
-  {
-    // This is a precaution.
-    if (item != m_list_view->currentItem())
-    {
-      m_list_view->setCurrentItem(item);
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    slotFileManager(false);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -822,9 +419,9 @@ void Smb4KSharesViewPart::slotItemActivated(QListWidgetItem *item)
   if (QApplication::keyboardModifiers() == Qt::NoModifier)
   {
     // This is a precaution.
-    if (item != m_icon_view->currentItem())
+    if (item != m_view->currentItem())
     {
-      m_icon_view->setCurrentItem(item);
+      m_view->setCurrentItem(item);
     }
     else
     {
@@ -840,68 +437,7 @@ void Smb4KSharesViewPart::slotItemActivated(QListWidgetItem *item)
 }
 
 
-void Smb4KSharesViewPart::slotListViewDropEvent(Smb4KSharesListViewItem *item, QDropEvent *e)
-{
-  if (item && e)
-  {
-    switch (e->proposedAction())
-    {
-      case Qt::CopyAction:
-      {
-        if (e->mimeData()->hasUrls())
-        {
-          QList<QUrl> urlList = e->mimeData()->urls();
-
-          QUrl dest;
-          dest.setPath(item->shareItem()->path());
-
-          KIO::CopyJob *job = KIO::copy(urlList, dest, KIO::DefaultFlags);
-
-          job->uiDelegate()->setAutoErrorHandlingEnabled(true);
-          job->uiDelegate()->setAutoWarningHandlingEnabled(true);
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        break;
-      }
-      case Qt::MoveAction:
-      {
-        if (e->mimeData()->hasUrls())
-        {
-          QList<QUrl> urlList = e->mimeData()->urls();
-
-          QUrl dest;
-          dest.setPath(item->shareItem()->path());
-
-          KIO::CopyJob *job = KIO::move(urlList, dest, KIO::DefaultFlags);
-
-          job->uiDelegate()->setAutoErrorHandlingEnabled(true);
-          job->uiDelegate()->setAutoWarningHandlingEnabled(true);
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KSharesViewPart::slotIconViewDropEvent(Smb4KSharesIconViewItem *item, QDropEvent *e)
+void Smb4KSharesViewPart::slotIconViewDropEvent(Smb4KSharesViewItem *item, QDropEvent *e)
 {
   if (item && e)
   {
@@ -964,169 +500,68 @@ void Smb4KSharesViewPart::slotIconViewDropEvent(Smb4KSharesIconViewItem *item, Q
 
 void Smb4KSharesViewPart::slotShareMounted(Smb4KShare *share)
 {
-  qDebug() << "About to show share.";
-  
   Q_ASSERT(share);
-  
-  switch (m_mode)
-  {
-    case IconMode:
-    {
-      qDebug() << "IconMode";
-      (void) new Smb4KSharesIconViewItem(m_icon_view, share, Smb4KSettings::showMountPoint());
-      m_icon_view->sortItems(Qt::AscendingOrder);
-      actionCollection()->action("unmount_all_action")->setEnabled(
-        ((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && m_icon_view->count() != 0));
-      break;
-    }
-    case ListMode:
-    {
-      qDebug() << "ListMode";
-      (void) new Smb4KSharesListViewItem(m_list_view, share, Smb4KSettings::showMountPoint());
-      m_list_view->sortItems(Smb4KSharesListView::Item, Qt::AscendingOrder);
-      actionCollection()->action("unmount_all_action")->setEnabled(
-        ((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && m_list_view->topLevelItemCount() != 0));
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
+
+  (void) new Smb4KSharesViewItem(m_view, share);
+  m_view->sortItems(Qt::AscendingOrder);
+  actionCollection()->action("unmount_all_action")->setEnabled(
+    ((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && m_view->count() != 0));
 }
 
 
 void Smb4KSharesViewPart::slotShareUnmounted(Smb4KShare *share)
 {
   Q_ASSERT(share);
-  
-  switch (m_mode)
+
+  Smb4KSharesViewItem *item = 0;
+      
+  for (int i = 0; i < m_view->count(); ++i)
   {
-    case IconMode:
-    {
-      Smb4KSharesIconViewItem *item = 0;
-      
-      for (int i = 0; i < m_icon_view->count(); ++i)
-      {
-        item = static_cast<Smb4KSharesIconViewItem *>(m_icon_view->item(i));
+    item = static_cast<Smb4KSharesViewItem *>(m_view->item(i));
         
-        if (item && (QString::compare(item->shareItem()->path(), share->path()) == 0 ||
-             QString::compare(item->shareItem()->canonicalPath(), share->canonicalPath()) == 0))
-        {
-          if (item == m_icon_view->currentItem())
-          {
-            m_icon_view->setCurrentItem(0);
-          }
-          else
-          {
-            // Do nothing
-          }
-          
-          delete m_icon_view->takeItem(i);
-          break;
-        }
-        else
-        {
-          continue;
-        }
+    if (item && (QString::compare(item->shareItem()->path(), share->path()) == 0 ||
+        QString::compare(item->shareItem()->canonicalPath(), share->canonicalPath()) == 0))
+    {
+      if (item == m_view->currentItem())
+      {
+        m_view->setCurrentItem(0);
       }
-      
-      actionCollection()->action("unmount_all_action")->setEnabled(
-        ((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && m_icon_view->count() != 0));
-      
+      else
+      {
+        // Do nothing
+      }
+          
+      delete m_view->takeItem(i);
       break;
     }
-    case ListMode:
+    else
     {
-      Smb4KSharesListViewItem *item = 0;
-      
-      for (int i = 0; i < m_list_view->topLevelItemCount(); ++i)
-      {
-        item = static_cast<Smb4KSharesListViewItem *>(m_list_view->topLevelItem(i));
-        
-        if (item && (QString::compare(item->shareItem()->path(), share->path()) == 0 ||
-             QString::compare(item->shareItem()->canonicalPath(), share->canonicalPath()) == 0))
-        {
-          if (item == m_list_view->currentItem())
-          {
-            m_list_view->setCurrentItem(0);
-          }
-          else
-          {
-            // Do nothing
-          }
-          
-          delete m_list_view->takeTopLevelItem(i);
-          break;
-        }
-        else
-        {
-          continue;
-        }
-      }
-      
-      actionCollection()->action("unmount_all_action")->setEnabled(
-        ((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && m_list_view->topLevelItemCount() != 0));
-      
-      break;
-    }
-    default:
-    {
-      break;
+      continue;
     }
   }
+      
+  actionCollection()->action("unmount_all_action")->setEnabled(
+    ((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && m_view->count() != 0));
 }
 
 
 void Smb4KSharesViewPart::slotShareUpdated(Smb4KShare *share)
 {
-  switch (m_mode)
+  Smb4KSharesViewItem *item = 0;
+      
+  for (int i = 0; i < m_view->count(); ++i)
   {
-    case IconMode:
-    {
-      Smb4KSharesIconViewItem *item = 0;
-      
-      for (int i = 0; i < m_icon_view->count(); ++i)
-      {
-        item = static_cast<Smb4KSharesIconViewItem *>(m_icon_view->item(i));
+    item = static_cast<Smb4KSharesViewItem *>(m_view->item(i));
         
-        if (item && (QString::compare(item->shareItem()->path(), share->path()) == 0 ||
-             QString::compare(item->shareItem()->canonicalPath(), share->canonicalPath()) == 0))
-        {
-          item->update(share);
-          break;
-        }
-        else
-        {
-          continue;
-        }
-      }
+    if (item && (QString::compare(item->shareItem()->path(), share->path()) == 0 ||
+        QString::compare(item->shareItem()->canonicalPath(), share->canonicalPath()) == 0))
+    {
+      item->update(share);
       break;
     }
-    case ListMode:
+    else
     {
-      Smb4KSharesListViewItem *item = 0;
-      
-      for (int i = 0; i < m_list_view->topLevelItemCount(); ++i)
-      {
-        item = static_cast<Smb4KSharesListViewItem *>(m_list_view->topLevelItem(i));
-        
-        if (item && (QString::compare(item->shareItem()->path(), share->path()) == 0 ||
-             QString::compare(item->shareItem()->canonicalPath(), share->canonicalPath()) == 0))
-        {
-          item->update(share);
-          break;
-        }
-        else
-        {
-          continue;
-        }
-      }
-      break;
-    }
-    default:
-    {
-      break;
+      continue;
     }
   }
 }
@@ -1134,182 +569,67 @@ void Smb4KSharesViewPart::slotShareUpdated(Smb4KShare *share)
 
 void Smb4KSharesViewPart::slotUnmountShare(bool /*checked*/)
 {
-  switch (m_mode)
+  QList<QListWidgetItem *> selected_items = m_view->selectedItems();
+  QList<Smb4KShare *> shares;
+
+  for (int i = 0; i < selected_items.size(); ++i)
   {
-    case IconMode:
+    Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selected_items.at(i));
+
+    if (item)
     {
-      QList<QListWidgetItem *> selected_items = m_icon_view->selectedItems();
-      QList<Smb4KShare *> shares;
-
-      for (int i = 0; i < selected_items.size(); ++i)
-      {
-        Smb4KSharesIconViewItem *item = static_cast<Smb4KSharesIconViewItem *>(selected_items.at(i));
-
-        if (item)
-        {
-          shares << item->shareItem();
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-
-      Smb4KMounter::self()->unmountShares(shares, false, m_icon_view);
-
-      break;
+      shares << item->shareItem();
     }
-    case ListMode:
+    else
     {
-      QList<QTreeWidgetItem *> selected_items = m_list_view->selectedItems();
-      QList<Smb4KShare *> shares;
-
-      for (int i = 0; i < selected_items.size(); ++i)
-      {
-        Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>(selected_items.at(i));
-
-        if (item)
-        {
-          shares << item->shareItem();
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-
-      Smb4KMounter::self()->unmountShares(shares, false, m_list_view);
-
-      break;
-    }
-    default:
-    {
-      break;
+      // Do nothing
     }
   }
+
+  Smb4KMounter::self()->unmountShares(shares, false, m_view);
 }
 
 
 void Smb4KSharesViewPart::slotUnmountAllShares(bool /*checked*/)
 {
-  switch (m_mode)
-  {
-    case IconMode:
-    {
-      Smb4KMounter::self()->unmountAllShares(m_icon_view);
-      break;
-    }
-    case ListMode:
-    {
-      Smb4KMounter::self()->unmountAllShares(m_list_view);
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
+  Smb4KMounter::self()->unmountAllShares(m_view);
 }
 
 
 void Smb4KSharesViewPart::slotSynchronize(bool /*checked*/)
 {
-  switch (m_mode)
+  QList<QListWidgetItem *> selected_items = m_view->selectedItems();
+
+  for (int i = 0; i < selected_items.size(); ++i)
   {
-    case IconMode:
+    Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selected_items.at(i));
+
+    if (item && !item->shareItem()->isInaccessible())
     {
-      QList<QListWidgetItem *> selected_items = m_icon_view->selectedItems();
-
-      for (int i = 0; i < selected_items.size(); ++i)
-      {
-        Smb4KSharesIconViewItem *item = static_cast<Smb4KSharesIconViewItem *>(selected_items.at(i));
-
-        if (item && !item->shareItem()->isInaccessible())
-        {
-          Smb4KSynchronizer::self()->synchronize(item->shareItem(), m_icon_view);
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-
-      break;
+      Smb4KSynchronizer::self()->synchronize(item->shareItem(), m_view);
     }
-    case ListMode:
+    else
     {
-      QList<QTreeWidgetItem *> selected_items = m_list_view->selectedItems();
-
-      for (int i = 0; i < selected_items.size(); ++i)
-      {
-        Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>(selected_items.at(i));
-
-        if (item && !item->shareItem()->isInaccessible())
-        {
-          Smb4KSynchronizer::self()->synchronize(item->shareItem(), m_list_view);
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-
-      break;
-    }
-    default:
-    {
-      break;
+      // Do nothing
     }
   }
 }
 
 void Smb4KSharesViewPart::slotKonsole(bool /*checked*/)
 {
-  switch (m_mode)
+  QList<QListWidgetItem *> selected_items = m_view->selectedItems();
+
+  for (int i = 0; i < selected_items.size(); ++i)
   {
-    case IconMode:
+    Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selected_items.at(i));
+
+    if (item && !item->shareItem()->isInaccessible())
     {
-      QList<QListWidgetItem *> selected_items = m_icon_view->selectedItems();
-
-      for (int i = 0; i < selected_items.size(); ++i)
-      {
-        Smb4KSharesIconViewItem *item = static_cast<Smb4KSharesIconViewItem *>(selected_items.at(i));
-
-        if (item && !item->shareItem()->isInaccessible())
-        {
-          openShare(item->shareItem(), Konsole);
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-
-      break;
+      openShare(item->shareItem(), Konsole);
     }
-    case ListMode:
+    else
     {
-      QList<QTreeWidgetItem *> selected_items = m_list_view->selectedItems();
-
-      for (int i = 0; i < selected_items.size(); ++i)
-      {
-        Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>(selected_items.at(i));
-
-        if (item && !item->shareItem()->isInaccessible())
-        {
-          openShare(item->shareItem(), Konsole);
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-
-      break;
-    }
-    default:
-    {
-      break;
+      // Do nothing
     }
   }
 }
@@ -1317,51 +637,19 @@ void Smb4KSharesViewPart::slotKonsole(bool /*checked*/)
 
 void Smb4KSharesViewPart::slotFileManager(bool /*checked*/)
 {
-  switch (m_mode)
+  QList<QListWidgetItem *> selected_items = m_view->selectedItems();
+
+  for (int i = 0; i < selected_items.size(); ++i)
   {
-    case IconMode:
+    Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selected_items.at(i));
+
+    if (item && !item->shareItem()->isInaccessible())
     {
-      QList<QListWidgetItem *> selected_items = m_icon_view->selectedItems();
-
-      for (int i = 0; i < selected_items.size(); ++i)
-      {
-        Smb4KSharesIconViewItem *item = static_cast<Smb4KSharesIconViewItem *>(selected_items.at(i));
-
-        if (item && !item->shareItem()->isInaccessible())
-        {
-          openShare(item->shareItem(), FileManager);
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-
-      break;
+      openShare(item->shareItem(), FileManager);
     }
-    case ListMode:
+    else
     {
-      QList<QTreeWidgetItem *> selected_items = m_list_view->selectedItems();
-
-      for (int i = 0; i < selected_items.size(); ++i)
-      {
-        Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>(selected_items.at(i));
-
-        if (item && !item->shareItem()->isInaccessible())
-        {
-          openShare(item->shareItem(), FileManager);
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-
-      break;
-    }
-    default:
-    {
-      break;
+      // Do nothing
     }
   }
 }
@@ -1369,74 +657,31 @@ void Smb4KSharesViewPart::slotFileManager(bool /*checked*/)
 
 void Smb4KSharesViewPart::slotAddBookmark(bool /*checked */)
 {
-  switch (m_mode)
+  QList<QListWidgetItem *> selected_items = m_view->selectedItems();
+  QList<Smb4KShare *> shares;
+
+  if (!selected_items.isEmpty())
   {
-    case IconMode:
+    for (int i = 0; i < selected_items.size(); ++i)
     {
-      QList<QListWidgetItem *> selected_items = m_icon_view->selectedItems();
-      QList<Smb4KShare *> shares;
-
-      if (!selected_items.isEmpty())
-      {
-        for (int i = 0; i < selected_items.size(); ++i)
-        {
-          Smb4KSharesIconViewItem *item = static_cast<Smb4KSharesIconViewItem *>(selected_items.at(i));
-          shares << item->shareItem();
-          continue;
-        }
-      }
-      else
-      {
-        // No selected items. Just return.
-        return;
-      }
-
-      if (!shares.isEmpty())
-      {
-        Smb4KBookmarkHandler::self()->addBookmarks(shares, m_icon_view);
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      break;
+      Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selected_items.at(i));
+      shares << item->shareItem();
+      continue;
     }
-    case ListMode:
-    {
-      QList<QTreeWidgetItem *> selected_items = m_list_view->selectedItems();
-      QList<Smb4KShare *> shares;
+  }
+  else
+  {
+    // No selected items. Just return.
+    return;
+  }
 
-      if (!selected_items.isEmpty())
-      {
-        for (int i = 0; i < selected_items.size(); ++i)
-        {
-          Smb4KSharesListViewItem *item = static_cast<Smb4KSharesListViewItem *>(selected_items.at(i));
-          shares << item->shareItem();
-          continue;
-        }
-      }
-      else
-      {
-        // No selected items. Just return.
-        return;
-      }
-
-      if (!shares.isEmpty())
-      {
-        Smb4KBookmarkHandler::self()->addBookmarks(shares, m_list_view);
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      break;
-    }
-    default:
-    {
-      break;
-    }
+  if (!shares.isEmpty())
+  {
+    Smb4KBookmarkHandler::self()->addBookmarks(shares, m_view);
+  }
+  else
+  {
+    // Do nothing
   }
 }
 
@@ -1502,28 +747,8 @@ void Smb4KSharesViewPart::slotIconSizeChanged(int group)
   {
     case KIconLoader::Desktop:
     {
-      if (m_icon_view)
-      {
-        int icon_size = KIconLoader::global()->currentSize(KIconLoader::Desktop);
-        m_icon_view->setIconSize(QSize(icon_size, icon_size));
-      }
-      else
-      {
-        // Do nothing
-      }
-      break;
-    }
-    case KIconLoader::Small:
-    {
-      if (m_list_view)
-      {
-        int icon_size = KIconLoader::global()->currentSize(KIconLoader::Small);
-        m_list_view->setIconSize(QSize(icon_size, icon_size));
-      }
-      else
-      {
-        // Do nothing
-      }
+      int icon_size = KIconLoader::global()->currentSize(KIconLoader::Desktop);
+      m_view->setIconSize(QSize(icon_size, icon_size));
       break;
     }
     default:

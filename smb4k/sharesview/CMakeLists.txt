@@ -9,11 +9,9 @@ include_directories(
   ${CMAKE_BINARY_DIR}/smb4k)
 
 set(smb4ksharesview_PART_SRCS
-   smb4kshareslistview.cpp
-   smb4ksharesiconview.cpp
+   smb4ksharesview.cpp
    smb4ksharesview_part.cpp
-   smb4kshareslistviewitem.cpp
-   smb4ksharesiconviewitem.cpp)
+   smb4ksharesviewitem.cpp)
 
 add_library(smb4ksharesview MODULE ${smb4ksharesview_PART_SRCS})
 

@@ -27,8 +27,7 @@
 #define SMB4KSHARESVIEW_PART_H
 
 // applications specific includes
-#include "smb4kshareslistview.h"
-#include "smb4ksharesiconview.h"
+#include "smb4ksharesview.h"
 
 // Qt includes
 #include <QtWidgets/QGridLayout>
@@ -60,7 +59,6 @@ class Q_DECL_EXPORT Smb4KSharesViewPart : public KParts::Part
      *
      * @param args                A list of arguments. At the moment there are
      *                            the following arguments defined:
-     *                            viewmode="icon"|"list"
      *                            bookmark_shortcut="true"|"false"
      *                            silent="true"|"false"
      */
@@ -105,19 +103,6 @@ class Q_DECL_EXPORT Smb4KSharesViewPart : public KParts::Part
     void slotItemSelectionChanged();
 
     /**
-     * Is called when the user pressed a mouse button somewhere over a list view item.
-     * In addition to Smb4KNetworkBrowserPart::slotSelectionChanged() this slot
-     * takes care of the actions being enabled or disabled accordingly. All
-     * widget specific stuff has to be done in the shares view widget itself.
-     *
-     * @param item                The list view item where the mouse button was pressed.
-     *
-     * @param column              The column where the user pressed the mouse
-     *                            button.
-     */
-    void slotItemPressed(QTreeWidgetItem *item, int column);
-
-    /**
      * Is called when the user pressed a mouse button somewhere over a icon view item.
      * In addition to Smb4KNetworkBrowserPart::slotSelectionChanged() this slot
      * takes care of the actions being enabled or disabled accordingly. All
@@ -128,28 +113,11 @@ class Q_DECL_EXPORT Smb4KSharesViewPart : public KParts::Part
     void slotItemPressed(QListWidgetItem *item);
 
     /**
-     * This slot is invoked when the user activated a list view item. It is used to mount
-     * shares.
-     * @param item                The item that was executed.
-     * @param column              The column where the item was executed.
-     */
-    void slotItemActivated(QTreeWidgetItem *item, int column);
-
-    /**
      * This slot is invoked when the user activated an icon view item. It is used to mount
      * shares.
      * @param item                The item that was executed.
      */
     void slotItemActivated(QListWidgetItem *item);
-
-    /**
-     * This slot is used to process an accepted drop event in the list view.
-     *
-     * @param item                The item where the drop event occurred.
-     *
-     * @param e                   The drop event that encapsulates the necessary data.
-     */
-    void slotListViewDropEvent(Smb4KSharesListViewItem *item, QDropEvent *e);
 
     /**
      * This slot is used to process an accepted drop event in the icon view.
@@ -158,7 +126,7 @@ class Q_DECL_EXPORT Smb4KSharesViewPart : public KParts::Part
      *
      * @param e                   The drop event that encapsulates the necessary data.
      */
-    void slotIconViewDropEvent(Smb4KSharesIconViewItem *item, QDropEvent *e);
+    void slotIconViewDropEvent(Smb4KSharesViewItem *item, QDropEvent *e);
                                 
     /**
      * This slot is connected to the Smb4KMounter::mounted() signal and adds the 
@@ -273,17 +241,6 @@ class Q_DECL_EXPORT Smb4KSharesViewPart : public KParts::Part
 
   private:
     /**
-     * View mode enumeration
-     */
-    enum ViewMode{ IconMode,
-                   ListMode };
-
-    /**
-     * The current view mode
-     */
-    ViewMode m_mode;
-
-    /**
      * The bookmark action has got a shortcut
      */
     bool m_bookmark_shortcut;
@@ -326,14 +283,9 @@ class Q_DECL_EXPORT Smb4KSharesViewPart : public KParts::Part
     void saveSettings();
 
     /**
-     * The list view.
-     */
-    Smb4KSharesListView *m_list_view;
-
-    /**
      * The icon view.
      */
-    Smb4KSharesIconView *m_icon_view;
+    Smb4KSharesView *m_view;
 
     /**
      * The action menu.
