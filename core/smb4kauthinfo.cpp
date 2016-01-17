@@ -80,7 +80,7 @@ Smb4KAuthInfo::Smb4KAuthInfo( const Smb4KShare *share )
 Smb4KAuthInfo::Smb4KAuthInfo()
 : d( new Smb4KAuthInfoPrivate )
 {
-  d->type       = Unknown;
+  d->type       = UnknownNetworkItem;
   d->homesShare = false;
   d->url.clear();
   d->workgroup.clear();

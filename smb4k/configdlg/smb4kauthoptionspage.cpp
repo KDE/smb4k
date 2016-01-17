@@ -267,7 +267,7 @@ void Smb4KAuthOptionsPage::displayWalletEntries()
   {
     switch (m_entries_list.at(i)->type())
     {
-      case Unknown:
+      case UnknownNetworkItem:
       {
         (void) new QListWidgetItem(KDE::icon("dialog-password"), i18n("Default Login"), m_entries_widget);
         break;
@@ -484,7 +484,7 @@ void Smb4KAuthOptionsPage::slotDetailsClicked(bool checked)
     {
       if (QString::compare(selected_items.first()->text(), m_entries_list.at(i)->unc()) == 0 ||
            (QString::compare(selected_items.first()->text(), i18n("Default Login")) == 0 &&
-            m_entries_list.at(i)->type() == Unknown))
+            m_entries_list.at(i)->type() == UnknownNetworkItem))
       {
         showDetails(m_entries_list.at(i));
         break;
@@ -520,7 +520,7 @@ void Smb4KAuthOptionsPage::slotDetailsChanged(int row, int column)
     {
       if (QString::compare(m_details_widget->item(0, 1)->text(), m_entries_list.at(i)->unc()) == 0 ||
            (QString::compare(m_details_widget->item(0, 1)->text(), i18n("Default Login")) == 0 &&
-           m_entries_list.at(i)->type() == Unknown))
+           m_entries_list.at(i)->type() == UnknownNetworkItem))
       {
         switch (m_entries_list.at(i)->type())
         {
@@ -637,11 +637,11 @@ void Smb4KAuthOptionsPage::slotRemoveActionTriggered(bool /*checked*/)
   {
     if (QString::compare(m_entries_widget->currentItem()->text(), m_entries_list.at(i)->unc()) == 0 ||
          (QString::compare(m_entries_widget->currentItem()->text(), i18n("Default Login")) == 0 &&
-         m_entries_list.at(i)->type() == Unknown))
+         m_entries_list.at(i)->type() == UnknownNetworkItem))
     {
       switch (m_entries_list.at(i)->type())
       {
-        case Unknown:
+        case UnknownNetworkItem:
         {
           QCheckBox *default_login = findChild<QCheckBox *>("kcfg_UseDefaultLogin");
           m_default_login = default_login->isChecked();
@@ -730,7 +730,7 @@ void Smb4KAuthOptionsPage::slotUndoDetailsActionTriggered(bool /*checked*/)
   for (int i = 0; i < m_entries_list.size(); ++i)
   {
     if (QString::compare(m_auth_info->unc(), m_entries_list.at(i)->unc()) == 0 ||
-         (m_auth_info->type() == Unknown && m_auth_info->type() == m_entries_list.at(i)->type()))
+         (m_auth_info->type() == UnknownNetworkItem && m_auth_info->type() == m_entries_list.at(i)->type()))
     {
       switch (m_auth_info->type())
       {

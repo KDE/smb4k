@@ -660,7 +660,7 @@ void Smb4KWalletManager::writeWalletEntries(const QList<Smb4KAuthInfo *> &entrie
     {
       QMap<QString,QString> map;
 
-      if (entries.at(i)->type() == Unknown)
+      if (entries.at(i)->type() == UnknownNetworkItem)
       {
         // Default login
         map["Login"] = entries.at(i)->userName();

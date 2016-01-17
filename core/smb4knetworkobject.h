@@ -84,7 +84,7 @@ class Q_DECL_EXPORT Smb4KNetworkObject : public QObject
       Workgroup = Smb4KGlobal::Workgroup,
       Host = Smb4KGlobal::Host,
       Share = Smb4KGlobal::Share,
-      Unknown = Smb4KGlobal::Unknown };
+      Unknown = Smb4KGlobal::UnknownNetworkItem };
     
     /**
      * Constructor for a workgroup.

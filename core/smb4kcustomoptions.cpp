@@ -115,7 +115,7 @@ Smb4KCustomOptions::Smb4KCustomOptions(const Smb4KCustomOptions &o)
 Smb4KCustomOptions::Smb4KCustomOptions()
 : d(new Smb4KCustomOptionsPrivate)
 {
-  d->type           = Unknown;
+  d->type           = UnknownNetworkItem;
   d->remount        = UndefinedRemount;
   d->smbPort        = 139;
 #if defined(Q_OS_LINUX)
@@ -142,7 +142,7 @@ void Smb4KCustomOptions::setHost(Smb4KHost *host)
   
   switch (d->type)
   {
-    case Unknown:
+    case UnknownNetworkItem:
     {
       d->workgroup      = host->workgroupName();
       d->url            = host->url();
@@ -168,7 +168,7 @@ void Smb4KCustomOptions::setShare(Smb4KShare *share)
   
   switch (d->type)
   {
-    case Unknown:
+    case UnknownNetworkItem:
     {
       d->url = share->url();
       d->workgroup = share->workgroupName();
@@ -834,7 +834,7 @@ bool Smb4KCustomOptions::equals(Smb4KCustomOptions *options, bool fullCheck) con
 bool Smb4KCustomOptions::isEmpty()
 {
   // Type
-  if (d->type != Unknown)
+  if (d->type != UnknownNetworkItem)
   {
     return false;
   }
