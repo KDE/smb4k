@@ -86,7 +86,7 @@ namespace Smb4KGlobal
     Workgroup,
     Host,
     Share,
-    Unknown };
+    UnknownNetworkItem };
      
   /**
    * This class extends the QEvent class with Smb4K specific events
@@ -217,8 +217,7 @@ namespace Smb4KGlobal
    *
    * @returns an Smb4KHost item of NULL if none was found that matches @p name.
    */
-  Q_DECL_EXPORT Smb4KHost *findHost(const QString &name,
-                                  const QString &workgroup = QString());
+  Q_DECL_EXPORT Smb4KHost *findHost(const QString &name, const QString &workgroup = QString());
 
   /**
    * This function takes a host @p host, checks whether it is already
