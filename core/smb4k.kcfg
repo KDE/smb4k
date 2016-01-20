@@ -21,29 +21,19 @@
       <whatsthis>Start the application docked to the system tray, i.e. only the system tray widget is shown and the main window is hidden. You can bring the main window up by clicking on the system tray widget or by choosing "Restore" from its popup menu.</whatsthis>
       <default>false</default>
     </entry>
-    <entry name="SharesIconView" type="Bool">
-      <label>Show mounted shares in an icon view</label>
-      <whatsthis>The mounted shares will be displayed in an icon view.</whatsthis>
-      <default>true</default>
-    </entry>
-    <entry name="SharesListView" type="Bool">
-      <label>Show mounted shares in a list view</label>
-      <whatsthis>The mounted shares will be displayed in a list view.</whatsthis>
-      <default>false</default>
-    </entry>
     <entry name="ShowType" type="Bool">
       <label>Show the type of the share</label>
-      <whatsthis>The type of a share will be displayed in a separate column in the network browser. It can either be Disk, Print or IPC.</whatsthis>
+      <whatsthis>The type of a share will be displayed in a separate column in the network neighborhood browser. It can either be Disk, Print or IPC.</whatsthis>
       <default>true</default>
     </entry>
     <entry name="ShowIPAddress" type="Bool">
       <label>Show the IP address of the server</label>
-      <whatsthis>The IP address of the server will be displayed in a separate column in the network browser.</whatsthis>
+      <whatsthis>The IP address of the server will be displayed in a separate column in the network neighborhood browser.</whatsthis>
       <default>true</default>
     </entry>
     <entry name="ShowComment" type="Bool">
       <label>Show the comment</label>
-      <whatsthis>The comment describing the server or share will be displayed in a separate column in the network browser.</whatsthis>
+      <whatsthis>The comment describing the server or share will be displayed in a separate column in the network neighborhood browser.</whatsthis>
       <default>true</default>
     </entry>
     <entry name="ShowNetworkItemToolTip" type="Bool">
@@ -56,49 +46,9 @@
       <whatsthis>Automatically expand domain and host items when a list of associated network items (domain members or shares) is added or updated. Please note that a domain or host item will always be expanded when you execute it.</whatsthis>
       <default>true</default>
     </entry>
-    <entry name="ShowMountPoint" type="Bool">
-      <label>Show the mount point instead of the share name</label>
-      <whatsthis>A share is normally displayed with its name in the shares view. Choosing this feature will cause the exchange of the share name by the mount point.</whatsthis>
-      <default>false</default>
-    </entry>
     <entry name="ShowShareToolTip" type="Bool">
       <label>Show a tooltip with information about the share</label>
       <whatsthis>The tooltip shows various information about the current share.</whatsthis>
-      <default>true</default>
-    </entry>
-    <entry name="ShowOwner" type="Bool">
-      <label>Show the owner and group</label>
-      <whatsthis>Show the UID and GID that own all files on the mounted file system.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="ShowLoginName" type="Bool">
-      <label>Show the login name</label>
-      <whatsthis>Show the login name that was used to authenticate to the server. The column will only contain an entry if the share was mounted with the CIFS file system.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="ShowFileSystem" type="Bool">
-      <label>Show the file system</label>
-      <whatsthis>Show the file system that was used for mounting the share.</whatsthis>
-      <default>true</default>
-    </entry>
-    <entry name="ShowFreeDiskSpace" type="Bool">
-      <label>Show the free disk space</label>
-      <whatsthis>Show the free disk space that is left on the share.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="ShowUsedDiskSpace" type="Bool">
-      <label>Show the used disk space</label>
-      <whatsthis>Show the disk space that is already used on the share.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="ShowTotalDiskSpace" type="Bool">
-      <label>Show the total disk space</label>
-      <whatsthis>Show the total disk space of the share.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="ShowDiskUsage" type="Bool">
-      <label>Show the disk usage</label>
-      <whatsthis>Show the space that is used on the share (as a percentage.)</whatsthis>
       <default>true</default>
     </entry>
   </group>
