@@ -54,12 +54,12 @@ class Q_DECL_EXPORT Smb4KBasicNetworkItem
     /**
      * The constructor
      */
-    explicit Smb4KBasicNetworkItem( NetworkItem type = Unknown );
+    explicit Smb4KBasicNetworkItem(NetworkItem type = UnknownNetworkItem);
 
     /**
      * The copy constructor
      */
-    Smb4KBasicNetworkItem( const Smb4KBasicNetworkItem &item );
+    Smb4KBasicNetworkItem(const Smb4KBasicNetworkItem &item);
     
     /**
      * The destructor
@@ -80,7 +80,7 @@ class Q_DECL_EXPORT Smb4KBasicNetworkItem
      *
      * @param key           The key
      */
-    void setKey( const QString &key );
+    void setKey(const QString &key);
 
     /**
      * This function returns the key for this network item. By default,
@@ -95,7 +95,7 @@ class Q_DECL_EXPORT Smb4KBasicNetworkItem
      * 
      * @param icon          The icon
      */
-    void setIcon( const QIcon &icon );
+    void setIcon(const QIcon &icon);
     
     /**
      * This function returns the icon of the network item. By default, it
