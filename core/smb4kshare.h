@@ -60,8 +60,7 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param shareName     The name of the share.
      */
-    Smb4KShare(const QString &hostName,
-               const QString &shareName);
+    Smb4KShare(const QString &hostName, const QString &shareName);
 
     /**
      * This constructor takes the UNC @p unc (in the form [smb:]//[USER@]HOST/SHARE) as
@@ -198,6 +197,13 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * @returns the UNC of the host.
      */
     QString hostUNC() const;
+    
+    /**
+     * Returns the display string. Prefer this over all other alternatives in your
+     * GUI.
+     * @returns the display string.
+     */
+    QString displayString() const;
 
     /**
      * Set the workgroup where the host is located that offers this share.
@@ -268,6 +274,13 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * @returns the IP address of the host or an empty string.
      */
     QString hostIP() const;
+    
+    /**
+     * Returns TRUE if the host's IP address is set and FALSE otherwise.
+     * 
+     * @returns TRUE if the host's IP address is set and FALSE otherwise.
+     */
+    bool hasHostIP() const;
 
     /**
      * If the share is a hidden one, i.e. it ends with a '$', this function returns
@@ -340,28 +353,6 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * @returns TRUE if this is a foreign share.
      */
     bool isForeign() const;
-
-    /**
-     * Enumeration for the file system
-     */
-    enum FileSystem{ CIFS,
-                     SMBFS,
-                     Unknown };
-
-    /**
-     * Set the file system with which the share is mounted.
-     *
-     * @param filesystem      The file system of the mounted share.
-     */
-    void setFileSystem(FileSystem filesystem);
-
-    /**
-     * Returns the file system of the share. If it wasn't set, FileSystem::Unknown
-     * is returned.
-     *
-     * @returns the file system of the share.
-     */
-    FileSystem fileSystem() const;
 
     /**
      * Returns the file system as string in capital letters. If no file system
@@ -524,8 +515,7 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns TRUE if the data that was compared is the same.
      */
-    bool equals(Smb4KShare *share,
-                 CheckFlags flag) const;
+    bool equals(Smb4KShare *share, CheckFlags flag) const;
                  
     /**
      * Operator to check if two shares are equal. This operator performs a full check.
@@ -636,13 +626,6 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      */
     QString password() const;
     
-    /**
-     * Returns TRUE if the host's IP address is set and FALSE otherwise.
-     * 
-     * @returns TRUE if the host's IP address is set and FALSE otherwise.
-     */
-    bool hasHostIP() const;
-
   private:
     /**
      * Set up the shares icon.

@@ -40,6 +40,7 @@
 #include <KI18n/KLocalizedString>
 #include <KIOCore/KIO/Global>
 #include <KIconThemes/KIconLoader>
+#include <KIOCore/KMountPoint>
 
 
 class Smb4KSharePrivate
@@ -54,13 +55,13 @@ class Smb4KSharePrivate
     QString path;
     bool inaccessible;
     bool foreign;
-    int filesystem;
     KUser user;
     KUserGroup group;
     qulonglong totalSpace;
     qulonglong freeSpace;
     qulonglong usedSpace;
     bool mounted;
+    QString filesystem;
 };
 
 
@@ -70,7 +71,7 @@ Smb4KShare::Smb4KShare(const QString &host, const QString &name)
   d->typeString   = "Disk";
   d->inaccessible = false;
   d->foreign      = false;
-  d->filesystem   = Unknown;
+  d->filesystem   = QString();
   d->user         = KUser(KUser::UseRealUserID);
   d->group        = KUserGroup(KUser::UseRealUserID);
   d->totalSpace   = -1;
@@ -89,7 +90,7 @@ Smb4KShare::Smb4KShare(const QString &unc)
   d->typeString   = "Disk";
   d->inaccessible = false;
   d->foreign      = false;
-  d->filesystem   = Unknown;
+  d->filesystem   = QString();
   d->user         = KUser(KUser::UseRealUserID);
   d->group        = KUserGroup(KUser::UseRealUserID);
   d->totalSpace   = -1;
@@ -125,7 +126,7 @@ Smb4KShare::Smb4KShare()
   d->typeString   = "Disk";
   d->inaccessible = false;
   d->foreign      = false;
-  d->filesystem   = Unknown;
+  d->filesystem   = QString();
   d->user         = KUser(KUser::UseRealUserID);
   d->group        = KUserGroup(KUser::UseRealUserID);
   d->totalSpace   = -1;
@@ -300,6 +301,12 @@ QString Smb4KShare::hostUNC() const
 }
 
 
+QString Smb4KShare::displayString() const
+{
+  return i18n("%1 on %2", shareName(), hostName());
+}
+
+
 void Smb4KShare::setWorkgroupName(const QString &workgroup)
 {
   d->workgroup = workgroup;
@@ -369,6 +376,12 @@ QString Smb4KShare::hostIP() const
 }
 
 
+bool Smb4KShare::hasHostIP() const
+{
+  return !d->ip.isNull();
+}
+
+
 bool Smb4KShare::isHidden() const
 {
   return d->url.path().endsWith('$');
@@ -435,37 +448,19 @@ bool Smb4KShare::isForeign() const
 }
 
 
-void Smb4KShare::setFileSystem(FileSystem filesystem)
-{
-  d->filesystem = filesystem;
-}
-
-
-Smb4KShare::FileSystem Smb4KShare::fileSystem() const
-{
-  return static_cast<FileSystem>(d->filesystem);
-}
-
-
 QString Smb4KShare::fileSystemString() const
 {
-  switch (d->filesystem)
+  if (!path().isEmpty() && d->filesystem.isEmpty())
   {
-    case CIFS:
-    {
-      return "cifs";
-    }
-    case SMBFS:
-    {
-      return "smbfs";
-    }
-    default:
-    {
-      break;
-    }
+    KMountPoint::Ptr mp = KMountPoint::currentMountPoints().findByPath(path());
+    d->filesystem = mp->mountType().toUpper();
   }
-
-  return QString();
+  else
+  {
+    // Do nothing
+  }
+  
+  return d->filesystem;
 }
 
 
@@ -685,16 +680,6 @@ bool Smb4KShare::equals(Smb4KShare *share, CheckFlags flag) const
         // Do nothing
       }
 
-      // File system
-      if (fileSystem() != share->fileSystem())
-      {
-        return false;
-      }
-      else
-      {
-        // do nothing
-      }
-
       // UID
       if (user().userId().nativeId() != share->user().userId().nativeId())
       {
@@ -897,16 +882,6 @@ bool Smb4KShare::equals(Smb4KShare *share, CheckFlags flag) const
         // Do nothing
       }
 
-      // File system
-      if (fileSystem() != share->fileSystem())
-      {
-        return false;
-      }
-      else
-      {
-        // do nothing
-      }
-
       // UID
       if (user().userId().nativeId() != share->user().userId().nativeId())
       {
@@ -981,16 +956,6 @@ bool Smb4KShare::equals(Smb4KShare *share, CheckFlags flag) const
         // Do nothing
       }
 
-      // File system
-      if (fileSystem() != share->fileSystem())
-      {
-        return false;
-      }
-      else
-      {
-        // do nothing
-      }
-
       // Mounted
       if (isMounted() != share->isMounted())
       {
@@ -1049,7 +1014,7 @@ bool Smb4KShare::isEmpty(CheckFlags flag) const
         return false;
       }
 
-      if (d->filesystem != Unknown)
+      if (!d->filesystem.isEmpty())
       {
         return false;
       }
@@ -1107,7 +1072,7 @@ bool Smb4KShare::isEmpty(CheckFlags flag) const
         return false;
       }
 
-      if (d->filesystem != Unknown)
+      if (!d->filesystem.isEmpty())
       {
         return false;
       }
@@ -1148,7 +1113,6 @@ void Smb4KShare::setMountData(Smb4KShare *share)
     d->path         = share->path();
     d->inaccessible = share->isInaccessible();
     d->foreign      = share->isForeign();
-    d->filesystem   = share->fileSystem();
     d->user         = share->user();
     d->group        = share->group();
     d->totalSpace   = share->totalDiskSpace();
@@ -1172,7 +1136,7 @@ void Smb4KShare::resetMountData()
   d->path.clear();
   d->inaccessible = false;
   d->foreign      = false;
-  d->filesystem   = Unknown;
+  d->filesystem   = QString();
   d->user         = KUser(KUser::UseRealUserID);
   d->group        = KUserGroup(KUser::UseRealUserID);
   d->totalSpace   = -1;
@@ -1257,12 +1221,6 @@ void Smb4KShare::setPassword(const QString &passwd)
 QString Smb4KShare::password() const
 {
   return d->url.password();
-}
-
-
-bool Smb4KShare::hasHostIP() const
-{
-  return !d->ip.isNull();
 }
 
 
