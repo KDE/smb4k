@@ -82,21 +82,10 @@ void Smb4KSharesMenu::refreshMenu()
   m_action_collection->action("unmount_all")->setEnabled(
     ((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && !m_menus->actions().isEmpty()));
 
-  if (!Smb4KSettings::showMountPoint())
+  for (int i = 0; i < m_menus->actions().size(); ++i)
   {
-    for (int i = 0; i < m_menus->actions().size(); ++i)
-    {
-      QString text = m_menus->actions()[i]->data().toMap().value("unc").toString();
-      m_menus->actions()[i]->setText(text);
-    }
-  }
-  else
-  {
-    for (int i = 0; i < m_menus->actions().size(); ++i)
-    {
-      QString text = m_menus->actions()[i]->data().toMap().value("mountpoint").toString();
-      m_menus->actions()[i]->setText(text);
-    }
+    QString text = m_menus->actions()[i]->data().toMap().value("unc").toString();
+    m_menus->actions()[i]->setText(text);
   }
 }
 
@@ -132,9 +121,7 @@ void Smb4KSharesMenu::slotShareMounted(Smb4KShare *share)
   Q_ASSERT(share);
 
   // Create the share menu.
-  KActionMenu *share_menu = new KActionMenu(
-    (Smb4KSettings::showMountPoint() ? share->canonicalPath() : share->unc()),
-    m_menus);
+  KActionMenu *share_menu = new KActionMenu(share->unc(), m_menus);
   share_menu->setIcon(share->icon());
   share_menu->setObjectName(share->canonicalPath());
 
@@ -162,21 +149,13 @@ void Smb4KSharesMenu::slotShareMounted(Smb4KShare *share)
     for (int i = 0; i < share_menus.size(); ++i)
     {
       QMap<QString,QVariant> share_data = share_menus.at(i)->data().toMap();
-
-      if (!Smb4KSettings::showMountPoint())
-      {
-        names << share_data.value("unc").toString();
-      }
-      else
-      {
-        names << share_data.value("mountpoint").toString();
-      }
+      names << share_data.value("unc").toString();
     }
 
     names.sort();
 
     QString name;
-    int index = names.indexOf((!Smb4KSettings::showMountPoint() ? share->unc() : share->path()));
+    int index = names.indexOf(share->unc());
 
     if (index < names.size() - 1)
     {
@@ -193,7 +172,7 @@ void Smb4KSharesMenu::slotShareMounted(Smb4KShare *share)
       for (int i = 0; i < share_menus.size(); ++i)
       {
         if (QString::localeAwareCompare(name, share_menus.at(i)->data().toMap().value("unc").toString()) == 0 ||
-             QString::localeAwareCompare(name, share_menus.at(i)->data().toMap().value("mountpoint").toString()) == 0)
+            QString::localeAwareCompare(name, share_menus.at(i)->data().toMap().value("mountpoint").toString()) == 0)
         {
           insertAction(share_menus.at(i), share_menu);
           break;
