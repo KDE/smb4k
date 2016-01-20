@@ -100,14 +100,6 @@ class Smb4KMainWindow : public KParts::MainWindow
     void slotAddBookmark();
 
     /**
-     * This slot is called when an action from the "Shares View" menu was triggered.
-     * It changes the view mode of the shares view part.
-     *
-     * @param action        The triggered action
-     */
-    void slotViewModeTriggered(QAction *action);
-
-    /**
      * This slot is connected to the Smb4KWalletManager::initialized() signal.
      * It checks the state of the wallet manager and sets the icon in the status
      * bar accordingly.

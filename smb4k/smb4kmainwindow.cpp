@@ -122,40 +122,6 @@ void Smb4KMainWindow::setupActions()
   // FIXME: Move the shares view actionmenu to its own class
   //  
   
-  // Shares view action menu
-  KActionMenu *shares_view_menu = new KActionMenu(KDE::icon("view-choose"), i18n("Shares View"), actionCollection());
-  actionCollection()->addAction("shares_view_menu", shares_view_menu);
-
-  QActionGroup *view_modes_group = new QActionGroup(actionCollection());
-  view_modes_group->setExclusive(true);
-  connect(view_modes_group, SIGNAL(triggered(QAction*)), this, SLOT(slotViewModeTriggered(QAction*)));
-
-  QAction *icon_view_action = new QAction(i18n("Icon View"), view_modes_group);
-  icon_view_action->setCheckable(true);
-  view_modes_group->addAction(icon_view_action);
-  actionCollection()->addAction("icon_view_action", icon_view_action);
-
-  QAction *list_view_action = new QAction(i18n("List View"), view_modes_group);
-  list_view_action->setCheckable(true);
-  view_modes_group->addAction(list_view_action);
-  actionCollection()->addAction("list_view_action", list_view_action);
-
-  shares_view_menu->addAction(icon_view_action);
-  shares_view_menu->addAction(list_view_action);
-
-  if (Smb4KSettings::sharesIconView())
-  {
-    actionCollection()->action("icon_view_action")->setChecked(true);
-  }
-  else if (Smb4KSettings::sharesListView())
-  {
-    actionCollection()->action("list_view_action")->setChecked(true);
-  }
-  else
-  {
-    // Do nothing
-  }
-
   // Bookmarks menu and action
   Smb4KBookmarkMenu *bookmarks = new Smb4KBookmarkMenu(Smb4KBookmarkMenu::MainWindow, this, this);
   bookmarks->addBookmarkAction()->setEnabled(false);
@@ -538,20 +504,6 @@ void Smb4KMainWindow::loadSettings()
     // Do nothing
   }
 
-  // Check the right view mode action.
-  if (Smb4KSettings::sharesIconView())
-  {
-    actionCollection()->action("icon_view_action")->setChecked(true);
-  }
-  else if (Smb4KSettings::sharesListView())
-  {
-    actionCollection()->action("list_view_action")->setChecked(true);
-  }
-  else
-  {
-    // Do nothing
-  }
-
   // Reload the list of bookmarks.
   Smb4KBookmarkMenu *bookmark_menu = findChild<Smb4KBookmarkMenu *>();
 
@@ -715,54 +667,6 @@ void Smb4KMainWindow::slotAddBookmark()
   {
     Smb4KEvent *customEvent = new Smb4KEvent(Smb4KEvent::AddBookmark);
     QApplication::postEvent(m_active_part, customEvent);
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KMainWindow::slotViewModeTriggered(QAction *action)
-{
-  // Change the settings if necessary.
-  if (QString::compare(action->objectName(), "icon_view_action") == 0)
-  {
-    if (!Smb4KSettings::sharesIconView())
-    {
-      Smb4KSettings::setSharesIconView(true);
-      Smb4KSettings::setSharesListView(false);
-    }
-    else
-    {
-      return;
-    }
-  }
-  else if (QString::compare(action->objectName(), "list_view_action") == 0)
-  {
-    if (!Smb4KSettings::sharesListView())
-    {
-      Smb4KSettings::setSharesIconView(false);
-      Smb4KSettings::setSharesListView(true);
-    }
-    else
-    {
-      return;
-    }
-  }
-  else
-  {
-    return;
-  }
-
-  // Write the new configuration to the configuration file.
-  Smb4KSettings::self()->save();
-
-  // Notify the part that it has to reload its settings.
-  if (m_shares_part)
-  {
-    Smb4KEvent *customSharesEvent = new Smb4KEvent(Smb4KEvent::LoadSettings);
-    QApplication::postEvent(m_shares_part, customSharesEvent);
   }
   else
   {
@@ -1052,7 +956,9 @@ void Smb4KMainWindow::slotMounterFinished(Smb4KShare *share, int process)
       break;
     }
   }
-
+  
+  qDebug() << "Check core";
+  
   if (!coreIsRunning())
   {
     m_progress_bar->setVisible(false);
