@@ -375,19 +375,6 @@ void Smb4KMounter::import(bool check_inaccessible)
       share->setPath(mountPoints.at(i)->mountPoint());
       share->setIsMounted(true);
       
-      if (QString::compare(mountPoints.at(i)->mountType(), "cifs") == 0)
-      {
-        share->setFileSystem(Smb4KShare::CIFS);
-      }
-      else if (QString::compare(mountPoints.at(i)->mountType(), "smbfs") == 0)
-      {
-        share->setFileSystem(Smb4KShare::SMBFS);
-      }
-      else
-      {
-        share->setFileSystem(Smb4KShare::Unknown);
-      }
-      
       // Try to acquire all needed mount options from KMountPoint::mountOptions()
       QStringList mountOptions = mountPoints.at(i)->mountOptions();
       
@@ -1190,9 +1177,6 @@ bool Smb4KMounter::fillMountActionArgs(Smb4KShare *share, QVariantMap& map)
   QMap<QString, QString> global_options = globalSambaOptions();
   Smb4KCustomOptions *options  = Smb4KCustomOptionsManager::self()->findOptions(share);
 
-  // Set some settings for the share.
-  share->setFileSystem(Smb4KShare::CIFS);
-  
   if (options)
   {
     share->setPort(options->fileSystemPort() != Smb4KMountSettings::remoteFileSystemPort() ?
@@ -1734,9 +1718,6 @@ bool Smb4KMounter::fillMountActionArgs(Smb4KShare *share, QVariantMap& map)
   QMap<QString, QString> global_options = globalSambaOptions();
   Smb4KCustomOptions *options  = Smb4KCustomOptionsManager::self()->findOptions(share);
 
-  // Set some settings for the share.
-  share->setFileSystem(Smb4KShare::SMBFS);
-  
   // Compile the list of arguments.
   QStringList args_list;
   
@@ -2139,19 +2120,6 @@ void Smb4KMounter::slotMountJobFinished(KJob *job)
           {
             mountedShare->setPath(mountpoint);
             mountedShare->setIsMounted(true);
-            
-            if (QString::compare(mountPoints.at(i)->mountType(), "cifs") == 0)
-            {
-              mountedShare->setFileSystem(Smb4KShare::CIFS);
-            }
-            else if (QString::compare(mountPoints.at(i)->mountType(), "smbfs") == 0)
-            {
-              mountedShare->setFileSystem(Smb4KShare::SMBFS);
-            }
-            else
-            {
-              mountedShare->setFileSystem(Smb4KShare::Unknown);
-            }
             break;
           }
           else
