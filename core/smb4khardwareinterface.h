@@ -87,19 +87,6 @@ class Q_DECL_EXPORT Smb4KHardwareInterface : public QObject
      */
     bool isOnline() const;
     
-    /**
-     * This function suppresses the automatic sleeping of the system.
-     * @param reason      The reason for the sleep inhibition
-     * @returns a 'cookie' representing the suppression request.
-     */
-    SMB4K_DEPRECATED int beginSuppressingSleep(const QString &reason);
-    
-    /**
-     * This function allows automatic sleeping of the system again.
-     * @param cookie      The 'cookie' representing the former suppression request
-     */
-    SMB4K_DEPRECATED void endSuppressingSleep(int cookie);
-    
   Q_SIGNALS:
     /**
      * This signal is emitted when a network share is added to the system

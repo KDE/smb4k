@@ -34,12 +34,12 @@
 
 // Qt includes
 #include <QtCore/QDebug>
+#include <QtTest/QTest>
 
 // KDE includes
 #include <Solid/DeviceNotifier>
 #include <Solid/Device>
 #include <Solid/NetworkShare>
-#include <KDELibs4Support/solid/powermanagement.h>
 
 Q_GLOBAL_STATIC(Smb4KHardwareInterfaceStatic, p);
 
@@ -82,18 +82,6 @@ bool Smb4KHardwareInterface::networkConfigIsUpdated() const
 bool Smb4KHardwareInterface::isOnline() const
 {
   return d->networkConfigManager.isOnline();
-}
-
-
-int Smb4KHardwareInterface::beginSuppressingSleep(const QString& reason)
-{
-  return Solid::PowerManagement::beginSuppressingSleep(reason);
-}
-
-
-void Smb4KHardwareInterface::endSuppressingSleep(int cookie)
-{
-  Solid::PowerManagement::stopSuppressingSleep(cookie);
 }
 
 
@@ -143,6 +131,5 @@ void Smb4KHardwareInterface::slotDeviceRemoved(const QString& udi)
     }
   }
 }
-
 
 
