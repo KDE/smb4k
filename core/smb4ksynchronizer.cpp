@@ -95,7 +95,7 @@ void Smb4KSynchronizer::synchronize(Smb4KShare *share, QWidget *parent)
 
 bool Smb4KSynchronizer::isRunning()
 {
-  return !subjobs().isEmpty();
+  return hasSubjobs();
 }
 
 
