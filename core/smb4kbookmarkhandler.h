@@ -60,7 +60,7 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
     /**
      * The constructor.
      */
-    explicit Smb4KBookmarkHandler( QObject *parent = 0 );
+    explicit Smb4KBookmarkHandler(QObject *parent = 0);
 
     /**
      * The destructor.
@@ -81,8 +81,7 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
      * 
      * @param parent        The parent widget
      */
-    void addBookmark( Smb4KShare *share,
-                      QWidget *parent = 0 );
+    void addBookmark(Smb4KShare *share, QWidget *parent = 0);
 
     /**
      * This function adds several bookmarks at once. It takes a list of 
@@ -92,22 +91,21 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
      *
      * @param parent        The parent widget
      */
-    void addBookmarks( const QList<Smb4KShare *> &list,
-                       QWidget *parent = 0 );
+    void addBookmarks(const QList<Smb4KShare *> &list, QWidget *parent = 0);
     
     /**
      * Remove a bookmark.
      * 
      * @param bookmark      The bookmark that is to be removed
      */
-    void removeBookmark( Smb4KBookmark *bookmark );
+    void removeBookmark(Smb4KBookmark *bookmark);
     
     /**
      * This function removes a group and all the bookmarks it contains.
      * 
      * @param name          The group name
      */
-    void removeGroup( const QString &name );
+    void removeGroup(const QString &name);
 
     /**
      * Get the list of bookmarks.
@@ -124,7 +122,7 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
      *
      * @returns a list of bookmarks belonging to a certain group
      */
-    QList<Smb4KBookmark *> bookmarksList( const QString &group ) const;
+    QList<Smb4KBookmark *> bookmarksList(const QString &group) const;
     
     /**
      * This function searches for a bookmark using its UNC and returns a pointer
@@ -135,7 +133,7 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
      * @returns the bookmark object that was searched for or NULL if it was not
      * found.
      */
-    Smb4KBookmark *findBookmarkByUNC( const QString &unc );
+    Smb4KBookmark *findBookmarkByUNC(const QString &unc);
 
     /**
      * This function searches for a bookmark using its label and returns a pointer
@@ -146,7 +144,7 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
      * @returns             The bookmark object that was searched for or NULL if it
      *                      wasn't found.
      */
-    Smb4KBookmark *findBookmarkByLabel( const QString &label );
+    Smb4KBookmark *findBookmarkByLabel(const QString &label);
 
     /**
      * Returns the sorted list of bookmark groups.
@@ -160,7 +158,7 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
      * 
      * @param parent          The parent widget
      */
-    void editBookmarks( QWidget *parent = 0 );
+    void editBookmarks(QWidget *parent = 0);
 
   Q_SIGNALS:
     /**
@@ -217,8 +215,7 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
      * @param replace       If TRUE the old list of bookmarks is replaced by
      *                      @p list.
      */
-    void addBookmarks( const QList<Smb4KBookmark *> &list,
-                       bool replace = false );
+    void addBookmarks(const QList<Smb4KBookmark *> &list, bool replace = false);
     
     /**
      * Migrates one profile to another.
