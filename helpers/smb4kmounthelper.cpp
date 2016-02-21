@@ -47,9 +47,6 @@ KAUTH_HELPER_MAIN("net.sourceforge.smb4k.mounthelper", Smb4KMountHelper);
 
 ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
 {
-  qDebug() << "Inside the helper!";
-  qDebug() << args;
-  
   ActionReply reply;
   // The mountpoint is a unique and can be used to
   // find the share.
