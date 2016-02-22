@@ -393,9 +393,8 @@ const QList<Smb4KShare *> &Smb4KGlobal::sharesList()
 }
 
 
-Smb4KShare *Smb4KGlobal::findNetworkShare(const QString& unc, const QString& workgroup)
+Smb4KShare *Smb4KGlobal::findShare(const QString& unc, const QString& workgroup)
 {
-  qDebug() << "Smb4KGlobal::findNetworkShare(): Rename after porting to FreeBSD to findShare()!";
   Smb4KShare *share = 0;
   
   mutex.lock();
@@ -431,7 +430,7 @@ bool Smb4KGlobal::addShare(Smb4KShare *share)
   {
     mutex.lock();
 
-    if (!findNetworkShare(share->unc(), share->workgroupName()))
+    if (!findShare(share->unc(), share->workgroupName()))
     {
       p->sharesList.append(share);
       added = true;
@@ -473,7 +472,7 @@ bool Smb4KGlobal::removeShare(Smb4KShare *share)
     else
     {
       // Try harder to find the share.
-      Smb4KShare *s = findNetworkShare(share->unc(), share->workgroupName());
+      Smb4KShare *s = findShare(share->unc(), share->workgroupName());
 
       if (s)
       {

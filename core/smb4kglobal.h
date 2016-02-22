@@ -279,7 +279,7 @@ namespace Smb4KGlobal
    * @param wokgroup      The workgroup
    * @returns the share that matches @p unc and optionally @p workgroup or 0.
    */
-  Q_DECL_EXPORT Smb4KShare *findNetworkShare(const QString &unc, const QString &workgroup = QString());
+  Q_DECL_EXPORT Smb4KShare *findShare(const QString &unc, const QString &workgroup = QString());
 
   /**
    * This function takes a share @p share, checks whether it is already

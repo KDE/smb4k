@@ -1440,7 +1440,7 @@ void Smb4KScanner::slotShares(Smb4KHost *host, const QList<Smb4KShare *> &shares
       // lookup job. 
       if (!shares_list.at(i)->hasHostIP())
       {
-        Smb4KShare *s = findNetworkShare(shares_list.at(i)->unc(), shares_list.at(i)->workgroupName());
+        Smb4KShare *s = findShare(shares_list.at(i)->unc(), shares_list.at(i)->workgroupName());
         
         if (s)
         {
