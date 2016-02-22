@@ -1491,7 +1491,7 @@ void Smb4KNetworkBrowserPart::slotAuthError(Smb4KHost *host, int process)
       // Get the workgroup where the master browser is not accessible 
       // and clear the whole list of hosts. Then, reinsert the master 
       // browser.
-      if (!m_widget->topLevelItemCount() != 0)
+      if (m_widget->topLevelItemCount() != 0)
       {
         for (int i = 0; i < m_widget->topLevelItemCount(); ++i)
         {
