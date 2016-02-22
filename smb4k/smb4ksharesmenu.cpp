@@ -297,7 +297,7 @@ void Smb4KSharesMenu::slotShareUnmounted(Smb4KShare *share)
 
 void Smb4KSharesMenu::slotUnmountAllShares()
 {
-  Smb4KMounter::self()->unmountAllShares(m_parent_widget);
+  Smb4KMounter::self()->unmountAllShares(false, m_parent_widget);
 }
 
 

@@ -140,7 +140,7 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
      * 
      * @param parent      The parent widget
      */
-    void unmountAllShares(QWidget *parent = 0);
+    void unmountAllShares(bool silent, QWidget *parent = 0);
 
     /**
      * Mount a share via a mount dialog. The mount dialog is opened and you have
@@ -149,15 +149,6 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
      * @param parent      The parent widget of this dialog
      */
     void openMountDialog(QWidget *parent = 0);
-
-    /**
-     * This function reports if the mount process for @p share is running.
-     *
-     * @param share       The Smb4KShare object
-     *
-     * @returns TRUE if the process is running.
-     */
-    bool isRunning(Smb4KShare *share);
 
     /**
      * This function reports if the mounter is running or not.
@@ -250,20 +241,12 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
      * really exits.
      */
     void slotAboutToQuit();
-    
+
     /**
-     * This slot is called when a mount job finished
-     * 
+     * This slot is called when a job finished.
      * @param job         The job that finished
      */
-    void slotMountJobFinished(KJob *job);
-    
-    /**
-     * This slot is called when an unmount job finished
-     * 
-     * @param job         The job that finished
-     */
-    void slotUnmountJobFinished(KJob *job);
+    void slotJobFinished(KJob *job);
     
     /**
      * This slot is called when the online status changed. It is used 
@@ -296,7 +279,7 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
      * This slot is called whenever a network share is mounted or 
      * unmounted.
      */
-    void slotTriggerImport();    
+    void slotTriggerImport();
     
   private:
     /**
@@ -312,20 +295,7 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
     /**
      * Imports mounted shares.
      */
-    void import(bool check_inaccessible);
-
-    /**
-     * Checks the accessibility, the UID and GID and the usage of
-     * a share.
-     * 
-     * Only use this function when you are absolutely sure that a 
-     * share did not vanish, i.e. the server was not shut down. 
-     * Otherwise you will provoke lock-ups that render the 
-     * application at least temporarily useless.
-     * 
-     * @param share           The share that should be checked.
-     */
-    void check(Smb4KShare *share);
+    void import(bool checkInaccessible);
 
     /**
      * Save all shares that need to be remounted.

@@ -592,7 +592,7 @@ void Smb4KSharesViewPart::slotUnmountShare(bool /*checked*/)
 
 void Smb4KSharesViewPart::slotUnmountAllShares(bool /*checked*/)
 {
-  Smb4KMounter::self()->unmountAllShares(m_view);
+  Smb4KMounter::self()->unmountAllShares(false, m_view);
 }
 
 

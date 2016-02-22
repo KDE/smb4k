@@ -337,7 +337,7 @@ void Smb4KDeclarative::mount(Smb4KNetworkObject *object)
       share->setHostIP(bookmark->hostIP());
       Smb4KMounter::self()->mountShare(share);
       
-      while (Smb4KMounter::self()->isRunning(share))
+      while (Smb4KMounter::self()->isRunning())
       {
         QTest::qWait(50);
       }
@@ -379,7 +379,7 @@ void Smb4KDeclarative::unmount(Smb4KNetworkObject *object)
 
 void Smb4KDeclarative::unmountAll()
 {
-  Smb4KMounter::self()->unmountAllShares();
+  Smb4KMounter::self()->unmountAllShares(false, 0);
 }
 
 

@@ -769,43 +769,43 @@ void Smb4KMainWindow::slotScannerFinished(Smb4KBasicNetworkItem */*item*/, int /
 
 void Smb4KMainWindow::slotMounterAboutToStart(Smb4KShare *share, int process)
 {
-  Q_ASSERT(share);
-
-  switch (process)
-  {
-    case MountShare:
-    {
-      // Show the right UNC to the user. If the share is a 'homes'
-      // share, we display Smb4KShare::homeUNC().
-      if (!share->isHomesShare())
-      {
-        statusBar()->showMessage(i18n("Mounting share %1...", share->unc()), 0);
-      }
-      else
-      {
-        statusBar()->showMessage(i18n("Mounting share %1...", share->homeUNC()), 0);
-      }
-      break;
-    }
-    case UnmountShare:
-    {
-      // When unmounting a share, there won't be a share where we
-      // have to look up which UNC we present to the user.
-      statusBar()->showMessage(i18n("Unmounting share %1...", share->unc()), 0);
-      break;
-    }
-    case WakeUp:
-    {
-      // The mounter sends a magic WOL package to the host where the share is
-      // located to wake it up before mounting share.
-      statusBar()->showMessage(i18n("Waking up host %1...", share->hostName()), 0);
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
+//   Q_ASSERT(share);
+// 
+//   switch (process)
+//   {
+//     case MountShare:
+//     {
+//       // Show the right UNC to the user. If the share is a 'homes'
+//       // share, we display Smb4KShare::homeUNC().
+//       if (!share->isHomesShare())
+//       {
+//         statusBar()->showMessage(i18n("Mounting share %1...", share->unc()), 0);
+//       }
+//       else
+//       {
+//         statusBar()->showMessage(i18n("Mounting share %1...", share->homeUNC()), 0);
+//       }
+//       break;
+//     }
+//     case UnmountShare:
+//     {
+//       // When unmounting a share, there won't be a share where we
+//       // have to look up which UNC we present to the user.
+//       statusBar()->showMessage(i18n("Unmounting share %1...", share->unc()), 0);
+//       break;
+//     }
+//     case WakeUp:
+//     {
+//       // The mounter sends a magic WOL package to the host where the share is
+//       // located to wake it up before mounting share.
+//       statusBar()->showMessage(i18n("Waking up host %1...", share->hostName()), 0);
+//       break;
+//     }
+//     default:
+//     {
+//       break;
+//     }
+//   }
 
   if (!m_progress_bar->isVisible())
   {

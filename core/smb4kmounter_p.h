@@ -168,15 +168,13 @@ class Smb4KMounterPrivate
   public:
     int remountTimeout;
     int remountAttempts;
-    int checks;
     int timerId;
     Smb4KMountDialog *dialog;
     QList<Smb4KShare *> importedShares;
     QList<Smb4KShare *> retries;
     QList<Smb4KShare *> remounts;
     bool firstImportDone;
-    bool importsAllowed;
-    bool internalReason;
+//     bool internalReason;
     QString activeProfile;
 };
 
