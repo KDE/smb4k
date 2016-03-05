@@ -319,7 +319,7 @@ void Smb4KDeclarative::mount(Smb4KNetworkObject *object)
       // Do nothing
     }
       
-    Smb4KShare *share = findNetworkShare("//"+object->hostName()+'/'+object->shareName(), object->workgroupName());
+    Smb4KShare *share = findShare("//"+object->hostName()+'/'+object->shareName(), object->workgroupName());
     
     if (share)
     {
@@ -428,7 +428,7 @@ void Smb4KDeclarative::print(Smb4KNetworkObject* object)
 {
   if (object && object->type() == Smb4KNetworkObject::Share)
   {
-    Smb4KShare *printer = findNetworkShare("//"+object->hostName()+"/"+object->shareName(), object->workgroupName());
+    Smb4KShare *printer = findShare("//"+object->hostName()+"/"+object->shareName(), object->workgroupName());
     
     if (printer)
     {
