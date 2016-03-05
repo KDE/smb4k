@@ -1931,10 +1931,9 @@ void Smb4KMounter::slotAboutToQuit()
   }
   
   // Remove those mountpoints where a share is actually mounted.
-  // FIXME: Port to Q_FOREACH!
-  for (int i = 0; i < mountPoints.size(); ++i)
+  Q_FOREACH(QExplicitlySharedDataPointer<KMountPoint> mountPoint, mountPoints)
   {
-    mountpoints.removeOne(mountPoints.at(i)->mountPoint());
+    mountpoints.removeOne(mountPoint->mountPoint());
   }
   
   // Remove the empty mountpoints.
@@ -1962,6 +1961,16 @@ void Smb4KMounter::slotJobFinished(KJob* job)
   //
   KAuth::ExecuteJob *execJob = static_cast<KAuth::ExecuteJob *>(job);
   int errorCode = execJob->error();
+  Smb4KGlobal::Process process;
+  
+  if (execJob->objectName().startsWith(QLatin1String("MountJob")))
+  {
+    process = MountShare;
+  }
+  else
+  {
+    process = UnmountShare;
+  }
   
   //
   // Process the returned data
@@ -1988,7 +1997,7 @@ void Smb4KMounter::slotJobFinished(KJob* job)
       
       if (!errorMsg.isEmpty())
       {
-        if (job->objectName().startsWith(QLatin1String("MountJob")))
+        if (process == MountShare)
         {
 #if defined(Q_OS_LINUX)
           if (errorMsg.contains("mount error 13") || errorMsg.contains("mount error(13)") /* authentication error */)
@@ -2033,7 +2042,7 @@ void Smb4KMounter::slotJobFinished(KJob* job)
           
           Smb4KNotification::mountingFailed(&share, errorMsg);
         }
-        else if (job->objectName().startsWith(QLatin1String("UnmountJob")))
+        else if (process == UnmountShare)
         {
           // No error handling needed, just report the error message.
           Smb4KNotification::unmountingFailed(&share, errorMsg);
@@ -2054,10 +2063,14 @@ void Smb4KMounter::slotJobFinished(KJob* job)
     Smb4KNotification::actionFailed(errorCode);
   }
   
+  //
   // Remove the job from the job list
+  //
   removeSubjob(job);
     
+  //
   // Reset the busy cursor
+  //
   if (!hasSubjobs() && modifyCursor())
   {
     QApplication::restoreOverrideCursor();
@@ -2066,6 +2079,9 @@ void Smb4KMounter::slotJobFinished(KJob* job)
   {
     // Do nothing
   }
+  
+  Smb4KShare share;
+  emit finished(&share, process);
 }
 
 
