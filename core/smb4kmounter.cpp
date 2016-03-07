@@ -365,11 +365,13 @@ void Smb4KMounter::import(bool checkInaccessible)
     }
   }
   
-  // Check which shares were unmounted, emit the unmounted() signal
-  // on each of the unmounted shares and remove them from the global
-  // list.
+  //
+  // Check which shares were unmounted. Remove all obsolete mountpoints, emit
+  // the unmounted() signal on each of the unmounted shares and remove them
+  // from the global list.
   // NOTE: The unmount() signal is emitted *BEFORE* the share is removed
   // from the global list! You need to account for that in your application.
+  //
   bool found = false;
   
   Q_FOREACH(Smb4KShare *mountedShare, mountedSharesList())
@@ -392,6 +394,27 @@ void Smb4KMounter::import(bool checkInaccessible)
     
     if (!found)
     {
+      // Remove the mountpoint if the share is not a foreign one
+      if (!mountedShare->isForeign())
+      {
+        QDir dir;
+        dir.cd(mountedShare->canonicalPath());
+        dir.rmdir(dir.canonicalPath());
+        
+        if (dir.cdUp())
+        {
+          dir.rmdir(dir.canonicalPath());
+        }
+        else
+        {
+          // Do nothing
+        }        
+      }
+      else
+      {
+        // Do nothing
+      }
+      
       mountedShare->setIsMounted(false);
       emit unmounted(mountedShare);
       Smb4KNotification::shareUnmounted(mountedShare);
@@ -406,9 +429,11 @@ void Smb4KMounter::import(bool checkInaccessible)
     found = false;
   }
   
+  //
   // Now stat the imported shares to get information about them.
   // Do not use Smb4KShare::canonicalPath() here, otherwise we might
   // get lock-ups with inaccessible shares.
+  //
   if (Smb4KHardwareInterface::self()->isOnline())
   {
     Q_FOREACH(Smb4KShare *share, d->importedShares)
@@ -937,14 +962,18 @@ void Smb4KMounter::openMountDialog(QWidget *parent)
 
 void Smb4KMounter::start()
 {
+  //
   // Check the network configurations
+  //
   Smb4KHardwareInterface::self()->updateNetworkConfig();
 }
 
 
 void Smb4KMounter::saveSharesForRemount()
 {
-  // Save the shares for remount.
+  //
+  // Save the shares for remount
+  //
   Q_FOREACH(Smb4KShare *share, mountedSharesList())
   {
     if (!share->isForeign())
@@ -957,7 +986,9 @@ void Smb4KMounter::saveSharesForRemount()
     }
   }
   
-  // Also save each failed remountand remove it from the list.
+  //
+  // Also save each failed remount and remove it from the list
+  //
   while (!d->remounts.isEmpty())
   {
     Smb4KShare *share = d->remounts.takeFirst();
@@ -2333,6 +2364,7 @@ void Smb4KMounter::slotStatResult(KJob *job)
     }
     else
     {
+      qDebug() << "Unmounted share detected... :)";
       mountedShare->setIsMounted(false);
       emit unmounted(mountedShare);
       Smb4KNotification::shareUnmounted(mountedShare);
