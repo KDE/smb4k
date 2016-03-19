@@ -37,7 +37,7 @@
   <summary xml:lang="gl">Navegador avanzado da veciñanza de rede e ferramenta para montar comparticións de Samba</summary>
   <summary xml:lang="nds">Verwiedert Nettwarkümgeven-Kieker un Inhangwrktüüch för Samba-Freegaven</summary>
   <summary xml:lang="nl">Geavanceerde browser voor de netwerkomgeving en hulpmiddel voor aankoppelen van Samba shares</summary>
-  <summary xml:lang="pl">Zaawansowana przeglądarka otoczenia sieciowego i narzędzie do montowania udziałów Samby</summary>
+  <summary xml:lang="pl">Zaawansowana przeglądarka otoczenia sieciowego i narzędzie do podpinania udziałów Samby</summary>
   <summary xml:lang="pt">Navegador Avançado da Vizinhança na Rede e Utilitário de Montagem de Partilhas de Samba</summary>
   <summary xml:lang="pt-BR">Navegador avançado da vizinhança da rede e utilitário de montagem de compartilhamentos Samba</summary>
   <summary xml:lang="sk">Pokročilý prehliadač sieťového okolia a nástroj na pripojenie zdieľaní Samba</summary>
@@ -58,7 +58,7 @@
     <p xml:lang="gl">Smb4K é un navegador avanzado da veciñanza de rede e unha ferramenta para montar comparticións de Samba que forma parte da colección de software de KDE. Examina a veciñanza de rede en busca de grupos de traballo, servidores e comparticións dispoñíbeis, e pode montar todas as comparticións que queira no seu sistema de ficheiros local.</p>
     <p xml:lang="nds">Smb4K is en verwiedert Nettwarkümgeven-Kieker un Inhangwarktüüch för Samba-Freegaven för de KDE-Software-Tosamenstellen. Dat kiekt Dien Nettwarkümgeven na verföögbor Arbeitkoppeln, Servers un Freegaven dör un kann de Freegaven na Dien lokaal Dateisysteem inhangen.</p>
     <p xml:lang="nl">Smb4K is een geavanceerde browser voor de netwerkomgeving en hulpmiddel voor aankoppelen van Samba shares voor de KDE Software Compilation. Het scant uw netwerkomgeving voor alle beschikbare werkgroepen, servers en shares en kan alle gewenste shares aankoppelen aan uw lokale bestandssysteem.</p>
-    <p xml:lang="pl">Smb4K jest zaawansowaną przeglądarką otoczenia sieciowego i narzędziem do montowania udziałów Samby dla Zbioru Oprogramowania KDE. Przegląda twoje otoczenie sieciowe w poszukiwaniu wszystkich dostępnych grup roboczych, serwerów i udziałów, żeby umożliwić zamontowanie wszystkich tych udziałów w lokalnym systemie plików.</p>
+    <p xml:lang="pl">Smb4K jest zaawansowaną przeglądarką otoczenia sieciowego i narzędziem do podpinania udziałów Samby dla Zbioru Oprogramowania KDE. Przegląda twoje otoczenie sieciowe w poszukiwaniu wszystkich dostępnych grup roboczych, serwerów i udziałów, żeby umożliwić podpięcie wszystkich tych udziałów w lokalnym systemie plików.</p>
     <p xml:lang="pt">O Smb4K é um navegador avançado da vizinhança da rede e um utilitário de montagem de partilhas do Samba para a Compilação de Aplicações do KDE. Ele sonda a sua vizinhança da rede à procura de todos os grupos de trabalho, servidores e partilhas disponíveis, podendo montar todas as partilhas desejadas no seu sistema de ficheiros local.</p>
     <p xml:lang="pt-BR">Smb4K é um navegador avançado da vizinhança da rede e um utilitário de montagem de compartilhamentos do Samba para aplicativos do KDE. Ele verifica a vizinhança da rede à procura de todos os grupos de trabalho, servidores e compartilhamentos disponíveis, podendo montar todos os compartilhamentos desejados no seu sistema de arquivos local.</p>
     <p xml:lang="sk">Smb4K je pokročilý prehliadač siete a nástroj na pripájanie Samba zdieľaní pre softvérovú kompiláciu KDE. Prehľadá vašu sieť, nájde všetky dostupné pracovné skupiny, servery a zdieľania a môže pripojiť všetky želané zdieľania do vášho miestneho súborového systému.</p>
@@ -157,7 +157,7 @@
       <li xml:lang="gl">Permite montar e desmontar comparticións.</li>
       <li xml:lang="nds">Freegaven in- un uthangen</li>
       <li xml:lang="nl">Aan- en afkoppelen van gedeelde mappen</li>
-      <li xml:lang="pl">Montowanie i odmontowywanie udziałów</li>
+      <li xml:lang="pl">Podpinanie i odpinanie udziałów</li>
       <li xml:lang="pt">Montagem e desmontagem de partilhas</li>
       <li xml:lang="pt-BR">Montagem e desmontagem de compartilhamentos</li>
       <li xml:lang="sk">Pripájanie a odpájanie zdieľaní</li>
@@ -175,7 +175,7 @@
       <li xml:lang="gl">Permite acceder aos ficheiros dunha compartición montada usando un xestor de ficheiros ou un terminal.</li>
       <li xml:lang="nds">Togriep op de Dateien binnen en inhangt Freegaav över Dateipleger oder Konsool</li>
       <li xml:lang="nl">Toegang tot de bestanden van een aangekoppeld gedeelde map met gebruik van een bestandsbeheerder of terminal</li>
-      <li xml:lang="pl">Dostęp do plików zamontowanego udziału przy użyciu programu do zarządzania plikami lub terminalu</li>
+      <li xml:lang="pl">Dostęp do plików podpiętego udziału przy użyciu programu do zarządzania plikami lub terminalu</li>
       <li xml:lang="pt">Aceder aos ficheiros de uma partilha montada com um gestor de ficheiros ou terminal</li>
       <li xml:lang="pt-BR">Acessar aos arquivos de um compartilhamento montado com um gerenciador de arquivos ou terminal</li>
       <li xml:lang="sk">Prístup k súborom pripojených zdieľaní pomocou správcu súborov alebo terminálu</li>
@@ -193,7 +193,7 @@
       <li xml:lang="gl">Pode detectar automaticamente montaxes e desmontaxes externos.</li>
       <li xml:lang="nds">Automaatsch Opdecken vun In- un Uthangen vun buten ut</li>
       <li xml:lang="nl">Autodetectie van externe aan- en afkoppelingen</li>
-      <li xml:lang="pl">Samoczynne wykrywanie zewnętrznych działań montowania i odmontowywania</li>
+      <li xml:lang="pl">Samoczynne wykrywanie zewnętrznych działań podpinania i odpinania</li>
       <li xml:lang="pt">Detectar automaticamente as montagens e desmontagens externas</li>
       <li xml:lang="pt-BR">Detectar automaticamente as montagens e desmontagens externas</li>
       <li xml:lang="sk">Automatická detekcia externých pripojení a odpojení</li>
@@ -211,7 +211,7 @@
       <li xml:lang="gl">Pode volver a montar comparticións usadas previamente ao iniciar o programa.</li>
       <li xml:lang="nds">Wedderinhangen vun al vördem bruukt Freegaven bi Programmstart</li>
       <li xml:lang="nl">Recent gebruikte gedeelde mappen opnieuw tijdens het laden van het programma aankoppelen</li>
-      <li xml:lang="pl">Montowanie poprzednio zamontowanych udziałów przy starcie</li>
+      <li xml:lang="pl">Podpinanie poprzednio podpiętych udziałów przy starcie</li>
       <li xml:lang="pt">Voltar a montar as partilhas usadas anteriormente ao iniciar o programa</li>
       <li xml:lang="pt-BR">Remontar os compartilhamentos usados anteriormente ao iniciar o programa</li>
       <li xml:lang="sk">Znovupripojenie predtým použitých zdieľaní pri spustení programu</li>
@@ -229,7 +229,7 @@
       <li xml:lang="gl">Fornece información variada sobre elementos remotos da rede e comparticións montadas.</li>
       <li xml:lang="nds">En Reeg verscheden Informatschonen över Indrääg binnen Nettwarken un inhangt Freegaven</li>
       <li xml:lang="nl">Allerlei informatie over netwerk-items en aangekoppelde shares</li>
-      <li xml:lang="pl">Różne informacje o elementach w zdalnej sieci i zamontowanych udziałach</li>
+      <li xml:lang="pl">Różne informacje o elementach w zdalnej sieci i podpiętych udziałach</li>
       <li xml:lang="pt">Diversas informações acerca dos itens de rede remotos e das partilhas montadas</li>
       <li xml:lang="pt-BR">Diversas informações sobre os itens de rede remotos e dos compartilhamentos montados</li>
       <li xml:lang="sk">Rôzne informácie o vzdialených sieťových položkách a pripojených zdieľaniach</li>
