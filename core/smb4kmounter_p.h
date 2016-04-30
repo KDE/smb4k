@@ -174,7 +174,7 @@ class Smb4KMounterPrivate
     QList<Smb4KShare *> retries;
     QList<Smb4KShare *> remounts;
     bool firstImportDone;
-//     bool internalReason;
+    bool aboutToQuit;
     QString activeProfile;
 };
 

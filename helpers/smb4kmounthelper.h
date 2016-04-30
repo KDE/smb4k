@@ -48,6 +48,17 @@ class Smb4KMountHelper : public QObject
      * Unmounts a CIFS/SMBFS share.
      */
     ActionReply unmount(const QVariantMap &args);
+    
+  private:
+    /**
+     * Unmount the shares one by one.
+     */
+    ActionReply unmountOneByOne(const QVariantMap &args);
+    
+    /**
+     * Unmount all shares at once.
+     */
+    ActionReply unmountAtOnce(const QVariantMap &args);
 };
 
 #endif

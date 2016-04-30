@@ -101,6 +101,7 @@ Smb4KMounter::Smb4KMounter(QObject *parent)
   d->remountAttempts = 0;
   d->dialog = 0;
   d->firstImportDone = false;
+  d->aboutToQuit = false;
   d->activeProfile = Smb4KProfileManager::self()->activeProfile();
 
   connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()),
@@ -839,22 +840,30 @@ void Smb4KMounter::unmountShares(const QList<Smb4KShare *> &shares, bool silent,
       // Do nothing
     }
     
+    
     //
-    // Forcibly unmount an inaccessible share if the user set
-    // the appropriate setting (Linux only).
+    // Force the unmounting of the shares either if the system went offline
+    // or if the user chose to forcibly unmount inaccessible shares (Linux only).
     //
     bool force = false;
-
-#if defined(Q_OS_LINUX)
-    if (share->isInaccessible())
+    
+    if (Smb4KHardwareInterface::self()->isOnline())
     {
-      force = Smb4KSettings::forceUnmountInaccessible();
+#if defined(Q_OS_LINUX)
+      if (share->isInaccessible())
+      {
+        force = Smb4KSettings::forceUnmountInaccessible();
+      }
+      else
+      {
+        // Do nothing
+      }
+#endif
     }
     else
     {
-      // Do nothing
+      force = true;
     }
-#endif
 
     //
     // Unmount arguments
@@ -872,6 +881,10 @@ void Smb4KMounter::unmountShares(const QList<Smb4KShare *> &shares, bool silent,
 
     map.insert(QString("%1").arg(map.size()), args);
   }
+  
+  // Should the unmount helper function unmount all shares at once or 
+  // loop through the whole list.
+  map.insert("mh_unmount_at_once", !Smb4KHardwareInterface::self()->isOnline() || d->aboutToQuit);
   
   //
   // Emit the aboutToStart() signal
@@ -1777,7 +1790,9 @@ bool Smb4KMounter::fillMountActionArgs(Smb4KShare *, QVariantMap&)
 //
 bool Smb4KMounter::fillUnmountActionArgs(Smb4KShare *share, bool force, bool silent, QVariantMap &map)
 {
-  // Find the umount program.
+  //
+  // The umount program
+  //
   QStringList paths;
   paths << "/bin";
   paths << "/sbin";
@@ -1797,7 +1812,10 @@ bool Smb4KMounter::fillUnmountActionArgs(Smb4KShare *share, bool force, bool sil
   {
     // Do nothing
   }
-
+  
+  //
+  // The options
+  //
   QStringList options;
 
   if (force)
@@ -1809,6 +1827,9 @@ bool Smb4KMounter::fillUnmountActionArgs(Smb4KShare *share, bool force, bool sil
     // Do nothing
   }
 
+  //
+  // Insert data into the map
+  //
   map.insert("mh_command", umount);
   map.insert("mh_url", share->url());
   map.insert("mh_unc", share->unc());
@@ -1828,9 +1849,11 @@ bool Smb4KMounter::fillUnmountActionArgs(Smb4KShare *share, bool force, bool sil
 //
 // FreeBSD and NetBSD arguments
 //
-bool Smb4KMounter::fillUnmountActionArgs(Smb4KShare *share, bool /*force*/, bool silent, QVariantMap &map)
+bool Smb4KMounter::fillUnmountActionArgs(Smb4KShare *share, bool force, bool silent, QVariantMap &map)
 {
-  // Find the umount program.
+  //
+  // The umount program
+  //
   QStringList paths;
   paths << "/bin";
   paths << "/sbin";
@@ -1851,8 +1874,23 @@ bool Smb4KMounter::fillUnmountActionArgs(Smb4KShare *share, bool /*force*/, bool
     // Do nothing
   }
 
+  //
+  // The options
+  //
   QStringList options;
+  
+  if (force)
+  {
+    options << "-f";
+  }
+  else
+  {
+    // Do nothing
+  }
 
+  //
+  // Insert data into the map
+  //
   map.insert("mh_command", umount);
   map.insert("mh_url", share->url());
   map.insert("mh_unc", share->unc());
@@ -1906,11 +1944,20 @@ void Smb4KMounter::slotStartJobs()
 
 void Smb4KMounter::slotAboutToQuit()
 {
-  // Abort any actions.
+  //
+  // The application is about to quit. 
+  //
+  d->aboutToQuit = true;
+  
+  //
+  // Abort any actions
+  //
   abortAll();
 
+  //
   // Check if the user wants to remount shares and save the
   // shares for remount if so.
+  //
   if (Smb4KSettings::remountShares())
   {
     saveSharesForRemount();
@@ -1920,7 +1967,9 @@ void Smb4KMounter::slotAboutToQuit()
     // Do nothing
   }
 
+  //
   // Unmount the shares if the user chose to do so.
+  //
   if (Smb4KSettings::unmountSharesOnExit())
   {
     unmountAllShares(true, 0);
