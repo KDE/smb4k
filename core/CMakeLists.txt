@@ -66,6 +66,7 @@ target_link_libraries(smb4kcore
   Qt5::Test
   Qt5::PrintSupport
   Qt5::Network
+  Qt5::Qml
   KF5::ConfigCore
   KF5::ConfigGui
   KF5::Auth
