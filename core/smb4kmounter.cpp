@@ -99,6 +99,7 @@ Smb4KMounter::Smb4KMounter(QObject *parent)
   d->timerId = -1;
   d->remountTimeout = 0;
   d->remountAttempts = 0;
+  d->checkTimeout = 0;
   d->dialog = 0;
   d->firstImportDone = false;
   d->aboutToQuit = false;
@@ -1026,8 +1027,7 @@ void Smb4KMounter::timerEvent(QTimerEvent *)
       {
         triggerRemounts(true);
       }
-      else if (!d->remounts.isEmpty() &&
-                d->remountTimeout >= (60000 * Smb4KSettings::remountInterval()))
+      else if (!d->remounts.isEmpty() && d->remountTimeout >= (60000 * Smb4KSettings::remountInterval()))
       {
         triggerRemounts(false);
         d->remountTimeout = -TIMEOUT;
@@ -1063,6 +1063,30 @@ void Smb4KMounter::timerEvent(QTimerEvent *)
   else
   {
     // Do nothing
+  }
+  
+  //
+  // Check the size, accessibility, etc. of the shares
+  // 
+  // FIXME: Hopefully we can replace this with a recursive QFileSystemWatcher 
+  // approach in the future. However, using the existing QFileSystemWatcher
+  // and a QDirIterator to add all the subdirectories of a share to the watcher
+  // seems to be too resource consuming...
+  //
+  if (d->checkTimeout >= 2500 && !isRunning() && d->importedShares.isEmpty())
+  {
+    for (int i = 0; i < mountedSharesList().size(); ++i)
+    {
+      Smb4KShare *share = mountedSharesList()[i];
+      check(share);
+      emit updated(share);
+    }
+    
+    d->checkTimeout = 0;
+  }
+  else
+  {
+    d->checkTimeout += TIMEOUT;
   }
 }
 
@@ -1919,6 +1943,53 @@ bool Smb4KMounter::fillUnmountActionArgs(Smb4KShare *, bool, bool, QVariantMap &
 #endif
 
 
+void Smb4KMounter::check(Smb4KShare* share)
+{
+  // Get the info about the usage, etc.
+  KDiskFreeSpaceInfo spaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(share->path());
+    
+  if (spaceInfo.isValid())
+  {
+    // Accessibility
+    share->setInaccessible(false);
+       
+    // Size information
+    share->setFreeDiskSpace(spaceInfo.available());
+    share->setTotalDiskSpace(spaceInfo.size());
+    share->setUsedDiskSpace(spaceInfo.used());
+      
+    // Get the owner an group, if possible.
+    QFileInfo fileInfo(share->path());
+    fileInfo.setCaching(false);
+
+    if (fileInfo.exists())
+    {
+      share->setUser(KUser(static_cast<K_UID>(fileInfo.ownerId())));
+      share->setGroup(KUserGroup(static_cast<K_GID>(fileInfo.groupId())));
+      share->setInaccessible(!(fileInfo.isDir() && fileInfo.isExecutable()));
+    }
+    else
+    {
+      share->setInaccessible(true);
+      share->setFreeDiskSpace(0);
+      share->setTotalDiskSpace(0);
+      share->setUsedDiskSpace(0);
+      share->setUser(KUser(KUser::UseRealUserID));
+      share->setGroup(KUserGroup(KUser::UseRealUserID));
+    }
+  }
+  else
+  {
+    share->setInaccessible(true);
+    share->setFreeDiskSpace(0);
+    share->setTotalDiskSpace(0);
+    share->setUsedDiskSpace(0);
+    share->setUser(KUser(KUser::UseRealUserID));
+    share->setGroup(KUserGroup(KUser::UseRealUserID));
+  } 
+}
+
+
 
 /////////////////////////////////////////////////////////////////////////////
 // SLOT IMPLEMENTATIONS
@@ -1927,12 +1998,23 @@ bool Smb4KMounter::fillUnmountActionArgs(Smb4KShare *, bool, bool, QVariantMap &
 
 void Smb4KMounter::slotStartJobs()
 {
+  //
   // Import the mounted shares
-  import(true);
+  //
+  if (!d->firstImportDone)
+  {
+    import(true);
+  }
+  else
+  {
+    // Do nothing
+  }
   
+  //
+  // Start the timer
+  //
   if (d->timerId == -1)
   {
-    // Start the timer
     d->timerId = startTimer(TIMEOUT);
   }
   else
@@ -2241,48 +2323,7 @@ void Smb4KMounter::slotStatResult(KJob *job)
   //
   if (statJob->error() == 0 /* no error */)
   {
-    // Get the info about the usage, etc.
-    KDiskFreeSpaceInfo spaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(importedShare->path());
-    
-    if (spaceInfo.isValid())
-    {
-      // Accessibility
-      importedShare->setInaccessible(false);
-        
-      // Size information
-      importedShare->setFreeDiskSpace(spaceInfo.available());
-      importedShare->setTotalDiskSpace(spaceInfo.size());
-      importedShare->setUsedDiskSpace(spaceInfo.used());
-      
-      // Get the owner an group, if possible.
-      QFileInfo fileInfo(importedShare->path());
-      fileInfo.setCaching(false);
-
-      if (fileInfo.exists())
-      {
-        importedShare->setUser(KUser(static_cast<K_UID>(fileInfo.ownerId())));
-        importedShare->setGroup(KUserGroup(static_cast<K_GID>(fileInfo.groupId())));
-        importedShare->setInaccessible(!(fileInfo.isDir() && fileInfo.isExecutable()));
-      }
-      else
-      {
-        importedShare->setInaccessible(true);
-        importedShare->setFreeDiskSpace(0);
-        importedShare->setTotalDiskSpace(0);
-        importedShare->setUsedDiskSpace(0);
-        importedShare->setUser(KUser(KUser::UseRealUserID));
-        importedShare->setGroup(KUserGroup(KUser::UseRealUserID));
-      }
-    }
-    else
-    {
-      importedShare->setInaccessible(true);
-      importedShare->setFreeDiskSpace(0);
-      importedShare->setTotalDiskSpace(0);
-      importedShare->setUsedDiskSpace(0);
-      importedShare->setUser(KUser(KUser::UseRealUserID));
-      importedShare->setGroup(KUserGroup(KUser::UseRealUserID));
-    } 
+    check(importedShare);
   }
   else
   {
@@ -2576,4 +2617,5 @@ void Smb4KMounter::slotTriggerImport()
   // Initialize an import
   import(true);
 }
+
 

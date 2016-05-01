@@ -164,8 +164,7 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
     
   Q_SIGNALS:
     /**
-     * This signal is emitted whenever a share item was updated. This mainly happens
-     * from within the import process.
+     * This signal is emitted whenever a share item was updated.
      * 
      * @param share             The share item that was just updated.
      */ 
@@ -311,6 +310,11 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
      * Fill the unmount action arguments into a map.
      */
     bool fillUnmountActionArgs(Smb4KShare *share, bool force, bool silent, QVariantMap &unmountArgs);
+    
+    /**
+     * Check the size, accessibility, ids, etc. of the share(s)
+     */
+    void check(Smb4KShare *share);
     
     /**
      * Pointer to the Smb4KMounterPrivate class.
