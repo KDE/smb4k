@@ -2,7 +2,7 @@
     smb4kglobal  -  This is the global namespace for Smb4K.
                              -------------------
     begin                : Sa Apr 2 2005
-    copyright            : (C) 2005-2015 by Alexander Reinholdt
+    copyright            : (C) 2005-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -374,6 +374,15 @@ namespace Smb4KGlobal
    * @returns TRUE if the share was added and FALSE otherwise.
    */
   Q_DECL_EXPORT bool addMountedShare(Smb4KShare *share);
+  
+  /**
+   * This function takes a mounted share @p share and updates the share that
+   * is already present in the internal list.
+   * 
+   * @param share       The share item
+   * @returns TRUE if a share was found and updated. Returns FALSE otherwise.
+   */
+  Q_DECL_EXPORT bool updateMountedShare(Smb4KShare *share);
 
   /**
    * This function removes a mounted share @p share from the list of mounted

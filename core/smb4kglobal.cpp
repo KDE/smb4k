@@ -2,7 +2,7 @@
     smb4kglobal  -  This is the global namespace for Smb4K.
                              -------------------
     begin                : Sa Apr 2 2005
-    copyright            : (C) 2005-2014 by Alexander Reinholdt
+    copyright            : (C) 2005-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -682,6 +682,36 @@ bool Smb4KGlobal::addMountedShare(Smb4KShare *share)
   }
 
   return added;
+}
+
+
+bool Smb4KGlobal::updateMountedShare(Smb4KShare* share)
+{
+  Q_ASSERT(share);
+  
+  bool updated = false;
+  
+  if (share)
+  {
+    Smb4KShare *mountedShare = findShareByPath(share->path());
+    
+    if (mountedShare)
+    {
+      // Update share
+      mountedShare->setMountData(share);
+      updated = true;
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  return updated;
 }
 
 
