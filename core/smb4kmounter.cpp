@@ -2,7 +2,7 @@
     smb4kmounter.cpp  -  The core class that mounts the shares.
                              -------------------
     begin                : Die Jun 10 2003
-    copyright            : (C) 2003-2015 by Alexander Reinholdt
+    copyright            : (C) 2003-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -2448,18 +2448,20 @@ void Smb4KMounter::slotStatResult(KJob *job)
     if (!importedShare->isForeign() || Smb4KSettings::detectAllShares())
     {
       // This share was previouly mounted.
-      removeMountedShare(mountedShare);
-      addMountedShare(importedShare);
-      emit updated(importedShare);
+      if (updateMountedShare(importedShare))
+      {
+        emit updated(mountedShare);
+        delete importedShare;
+      }
+      else
+      {
+        // Do nothing
+      }
     }
     else
     {
-      qDebug() << "Unmounted share detected... :)";
-      mountedShare->setMounted(false);
-      emit unmounted(mountedShare);
-      Smb4KNotification::shareUnmounted(mountedShare);
-      removeMountedShare(mountedShare);
-      emit mountedSharesListChanged();
+      // This won't happen, since unmounted shares are covered by the
+      // import function. So, do nothing.
     }    
   }
   else
