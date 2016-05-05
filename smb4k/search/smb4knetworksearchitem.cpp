@@ -96,7 +96,7 @@ void Smb4KNetworkSearchItem::setupItem()
 
 void Smb4KNetworkSearchItem::update(Smb4KShare *share)
 {
-  m_share->setIsMounted(share->isMounted());
+  m_share->setMounted(share->isMounted());
   m_share->setPath(share->path());
   m_share->setForeign(share->isForeign());
 

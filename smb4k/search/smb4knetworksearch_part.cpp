@@ -213,7 +213,7 @@ void Smb4KNetworkSearchPart::customEvent(QEvent *e)
         {
           // First unmark the share.
           Smb4KShare *share = new Smb4KShare(*item->shareItem());
-          share->setIsMounted(false);
+          share->setMounted(false);
           item->update(share);
           delete share;
             

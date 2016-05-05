@@ -541,7 +541,7 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param mounted         Should be set to TRUE if the share was mounted.
      */
-    void setIsMounted(bool mounted);
+    void setMounted(bool mounted);
 
     /**
      * This function returns TRUE if the share has been mounted and FALSE

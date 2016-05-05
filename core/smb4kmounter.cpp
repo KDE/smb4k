@@ -326,7 +326,7 @@ void Smb4KMounter::import(bool checkInaccessible)
       // Create new share and set the mountpoint and the filesystem
       Smb4KShare *share = new Smb4KShare(mountPoint->mountedFrom());
       share->setPath(mountPoint->mountPoint());
-      share->setIsMounted(true);
+      share->setMounted(true);
       
       // Get all mount options
       Q_FOREACH(const QString &option, mountPoint->mountOptions())
@@ -417,7 +417,7 @@ void Smb4KMounter::import(bool checkInaccessible)
         // Do nothing
       }
       
-      mountedShare->setIsMounted(false);
+      mountedShare->setMounted(false);
       emit unmounted(mountedShare);
       Smb4KNotification::shareUnmounted(mountedShare);
       removeMountedShare(mountedShare);
@@ -2455,7 +2455,7 @@ void Smb4KMounter::slotStatResult(KJob *job)
     else
     {
       qDebug() << "Unmounted share detected... :)";
-      mountedShare->setIsMounted(false);
+      mountedShare->setMounted(false);
       emit unmounted(mountedShare);
       Smb4KNotification::shareUnmounted(mountedShare);
       removeMountedShare(mountedShare);

@@ -488,7 +488,7 @@ KUserGroup Smb4KShare::group() const
 }
 
 
-void Smb4KShare::setIsMounted(bool mounted)
+void Smb4KShare::setMounted(bool mounted)
 {
   if (!isPrinter())
   {
