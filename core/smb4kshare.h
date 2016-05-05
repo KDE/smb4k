@@ -2,7 +2,7 @@
     smb4kshare  -  Smb4K's container class for information about a share.
                              -------------------
     begin                : Mo Jan 28 2008
-    copyright            : (C) 2008-2015 by Alexander Reinholdt
+    copyright            : (C) 2008-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -492,7 +492,7 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * @enum LocalOnly          Only those values are compared that are of local 
      *                          importance
      * @enum MinimalLocalOnly   Only those values are compared that have local importance
-     *                          and are absolutely for a comparison
+     *                          and are absolutely necessary for a comparison
      */
     enum CheckFlags{ Full,
                      NetworkOnly,
@@ -559,12 +559,6 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *                        data should be copied.
      */
     void setMountData(Smb4KShare *share);
-
-    /**
-     * This convenience function resets the mount related data (mount point,
-     * file system, etc.).
-     */
-    void resetMountData();
 
     /**
      * Returns TRUE if the share is or *was* a 'homes' share. That means that

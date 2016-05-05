@@ -2,7 +2,7 @@
     smb4kshare  -  Smb4K's container class for information about a share.
                              -------------------
     begin                : Mo Jan 28 2008
-    copyright            : (C) 2008-2015 by Alexander Reinholdt
+    copyright            : (C) 2008-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -956,16 +956,6 @@ bool Smb4KShare::equals(Smb4KShare *share, CheckFlags flag) const
         // Do nothing
       }
 
-      // Mounted
-      if (isMounted() != share->isMounted())
-      {
-        return false;
-      }
-      else
-      {
-        // Do nothing
-      }
-
       break;
     }    
     default:
@@ -1108,7 +1098,7 @@ void Smb4KShare::setMountData(Smb4KShare *share)
 {
   Q_ASSERT(share);
 
-  if (equals(share, MinimalNetworkOnly))
+  if (equals(share, MinimalLocalOnly))
   {
     d->path         = share->path();
     d->inaccessible = share->isInaccessible();
@@ -1126,25 +1116,6 @@ void Smb4KShare::setMountData(Smb4KShare *share)
   {
     // Do nothing
   }
-}
-
-
-void Smb4KShare::resetMountData()
-{
-  // The login name is not reset here, because it is also
-  // needed for things that are not mount-related.
-  d->path.clear();
-  d->inaccessible = false;
-  d->foreign      = false;
-  d->filesystem   = QString();
-  d->user         = KUser(KUser::UseRealUserID);
-  d->group        = KUserGroup(KUser::UseRealUserID);
-  d->totalSpace   = -1;
-  d->freeSpace    = -1;
-  d->usedSpace    = -1;
-  d->mounted      = false;
-  d->typeString   = "Disk";
-  setShareIcon();
 }
 
 
