@@ -2479,13 +2479,13 @@ void Smb4KMounter::slotStatResult(KJob *job)
         {
           // Do nothing
         }
+        
+        emit mountedSharesListChanged();
       }
       else
       {
-        // Do nothing
+        delete importedShare;
       }
-      
-      emit mountedSharesListChanged();
     }
   }
   else
