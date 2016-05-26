@@ -100,6 +100,7 @@ Smb4KMounter::Smb4KMounter(QObject *parent)
   d->remountTimeout = 0;
   d->remountAttempts = 0;
   d->checkTimeout = 0;
+  d->newlyMounted = 0;
   d->dialog = 0;
   d->firstImportDone = false;
   d->aboutToQuit = false;
@@ -314,7 +315,21 @@ void Smb4KMounter::triggerRemounts(bool fill_list)
 
 void Smb4KMounter::import(bool checkInaccessible)
 {
-  // Get the mountpoints that are present on the system.
+  //
+  // Immediately return here if we are still processing imported shares
+  //
+  if (!d->importedShares.isEmpty())
+  {
+    return;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // Get the mountpoints that are present on the system
+  //
   KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions);
   
   // Now determine all mountpoints that have the SMBFS or the CIFS
@@ -374,6 +389,7 @@ void Smb4KMounter::import(bool checkInaccessible)
   // NOTE: The unmount() signal is emitted *BEFORE* the share is removed
   // from the global list! You need to account for that in your application.
   //
+  QList<Smb4KShare *> unmountedShares;
   bool found = false;
   
   Q_FOREACH(Smb4KShare *mountedShare, mountedSharesList())
@@ -418,10 +434,7 @@ void Smb4KMounter::import(bool checkInaccessible)
       }
       
       mountedShare->setMounted(false);
-      emit unmounted(mountedShare);
-      Smb4KNotification::shareUnmounted(mountedShare);
-      removeMountedShare(mountedShare);
-      emit mountedSharesListChanged();
+      unmountedShares << mountedShare;
     }
     else
     {
@@ -429,6 +442,34 @@ void Smb4KMounter::import(bool checkInaccessible)
     }
     
     found = false;
+  }
+  
+  if (!unmountedShares.isEmpty())
+  {
+    if (unmountedShares.size() > 1)
+    {
+      int size = unmountedShares.size();
+      
+      Q_FOREACH(Smb4KShare *share, unmountedShares)
+      {
+        emit unmounted(share);
+        removeMountedShare(share);
+      }
+      
+      Smb4KNotification::sharesUnmounted(size);
+    }
+    else
+    {
+      emit unmounted(unmountedShares.first());
+      Smb4KNotification::shareUnmounted(unmountedShares.first());
+      removeMountedShare(unmountedShares.first());
+    }
+    
+    emit mountedSharesListChanged();
+  }
+  else
+  {
+    // Do nothing
   }
   
   //
@@ -2353,121 +2394,12 @@ void Smb4KMounter::slotStatResult(KJob *job)
   {
     importedShare->setForeign(true);
   }
-
-  //
-  // Get the mounted share and copy its data to the imported one.
-  // We can use Smb4KShare::canonicalPath() here, because setInaccessible() has already
-  // been called.
-  // 
-  Smb4KShare *mountedShare = findShareByPath(importedShare->canonicalPath());
   
-  if (mountedShare)
+  //
+  // Check if we need to add an IP address or a workgroup/domain name
+  //
+  if (importedShare->workgroupName().isEmpty() || !importedShare->hasHostIP())
   {
-    if (!mountedShare->login().isEmpty() && QString::compare(mountedShare->login(), importedShare->login()) != 0)
-    {
-      importedShare->setLogin(mountedShare->login());
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    if (!mountedShare->workgroupName().isEmpty() && !mountedShare->hostIP().isEmpty())
-    {
-      if (importedShare->workgroupName().isEmpty())
-      {
-        importedShare->setWorkgroupName(mountedShare->workgroupName());
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      if (importedShare->hostIP().isEmpty())
-      {
-        importedShare->setHostIP(mountedShare->hostIP());
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Get the host that shares this resource and check if we
-      // need to set the IP address or workgroup/domain.
-      Smb4KHost *host = findHost(importedShare->hostName(), importedShare->workgroupName());
-
-      if (host)
-      {
-        // Set the IP address if necessary.
-        if (importedShare->hostIP().isEmpty() || QString::compare(host->ip(), importedShare->hostIP()) != 0)
-        {
-          importedShare->setHostIP(host->ip());
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        // Set the workgroup/domain name if necessary.
-        if (importedShare->workgroupName().isEmpty())
-        {
-          importedShare->setWorkgroupName(host->workgroupName());
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        if (!mountedShare->hostIP().isEmpty() && importedShare->hostIP().isEmpty())
-        {
-          importedShare->setHostIP(mountedShare->hostIP());
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        if (!mountedShare->workgroupName().isEmpty() && importedShare->workgroupName().isEmpty())
-        {
-          importedShare->setWorkgroupName(mountedShare->workgroupName());
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-    }
-
-    // Now remove the obsolete share entry from the global list
-    // of shares and add the stat'ed one. Emit the appropriate
-    // signal when done.
-    if (!importedShare->isForeign() || Smb4KSettings::detectAllShares())
-    {
-      // This share was previouly mounted.
-      if (updateMountedShare(importedShare))
-      {
-        emit updated(mountedShare);
-        delete importedShare;
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // This won't happen, since unmounted shares are covered by the
-      // import function. So, do nothing.
-    }    
-  }
-  else
-  {
-    // Get the host that shares this resource and check if we
-    // need to set the IP address or workgroup/domain.
     Smb4KHost *host = findHost(importedShare->hostName(), importedShare->workgroupName());
 
     if (host)
@@ -2496,21 +2428,69 @@ void Smb4KMounter::slotStatResult(KJob *job)
     {
       // Do nothing
     }
-
-    // Now add the stat'ed share to the global list of shares.
-    // Emit the appropriate signal when done.
-    if (!importedShare->isForeign() || Smb4KSettings::detectAllShares())
+  }
+  else
+  {
+    // Do nothing
+  }  
+  
+  //
+  // Search for a previously added mounted share and try to update it. If this fails,
+  // add the share to the global list.
+  //
+  if (!importedShare->isForeign() || Smb4KSettings::detectAllShares())
+  {
+    if (updateMountedShare(importedShare))
     {
-      // This is a new share.
-      addMountedShare(importedShare);
-      emit mounted(importedShare);
-      Smb4KNotification::shareMounted(importedShare);
-      emit mountedSharesListChanged();
+      Smb4KShare *updatedShare = findShareByPath(importedShare->path());
+      
+      if (updatedShare)
+      {
+        emit updated(updatedShare);
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      delete importedShare;
     }
     else
     {
-      // Do nothing
+      if (addMountedShare(importedShare))
+      {
+        d->newlyMounted += 1;
+        emit mounted(importedShare);
+        
+        if (d->importedShares.isEmpty())
+        {
+          if (d->newlyMounted == 1)
+          {
+            Smb4KNotification::shareMounted(importedShare);
+          }
+          else
+          {
+            Smb4KNotification::sharesMounted(d->newlyMounted);
+          }
+          
+          d->newlyMounted = 0;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      emit mountedSharesListChanged();
     }
+  }
+  else
+  {
+    delete importedShare;
   }
   
   //
