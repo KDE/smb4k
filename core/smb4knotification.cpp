@@ -97,51 +97,25 @@ void Smb4KNotification::shareUnmounted(Smb4KShare* share)
 }
 
 
-void Smb4KNotification::sharesMounted(int total, int actual)
+void Smb4KNotification::sharesMounted(int number)
 {
-  if (total != actual)
-  {
-    KNotification *notification = new KNotification("sharesMounted");
-    notification->setText(i18np("<p>%1 share out of %2 has been mounted.</p>", 
-                                 "<p>%1 shares out of %2 have been mounted.</p>", actual, total));
-    notification->setPixmap(KIconLoader::global()->loadIcon("folder-remote", 
-                            KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList("emblem-mounted")));
-    notification->setFlags(KNotification::CloseOnTimeout);
-    notification->sendEvent();
-  }
-  else
-  {
-    KNotification *notification = new KNotification("sharesMounted");
-    notification->setText(i18n("<p>All shares have been mounted.</p>"));
-    notification->setPixmap(KIconLoader::global()->loadIcon("folder-remote", 
-                            KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList("emblem-mounted")));
-    notification->setFlags(KNotification::CloseOnTimeout);
-    notification->sendEvent();
-  }
+  KNotification *notification = new KNotification("sharesMounted");
+  notification->setText(i18np("<p>%1 share has been mounted.</p>", "<p>%1 shares have been mounted.</p>", number));
+  notification->setPixmap(KIconLoader::global()->loadIcon("folder-remote", 
+                          KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList("emblem-mounted")));
+  notification->setFlags(KNotification::CloseOnTimeout);
+  notification->sendEvent();
 }
 
 
-void Smb4KNotification::sharesUnmounted(int total, int actual)
+void Smb4KNotification::sharesUnmounted(int number)
 {
-  if (total != actual)
-  {
-    KNotification *notification = new KNotification("sharesUnmounted");
-    notification->setText(i18np("<p>%1 share out of %2 has been unmounted.</p>", 
-                                 "<p>%1 shares out of %2 have been unmounted.</p>", actual, total));
-    notification->setPixmap(KIconLoader::global()->loadIcon("folder-remote", KIconLoader::NoGroup, 0, 
-                            KIconLoader::DefaultState, QStringList("emblem-unmounted")));
-    notification->setFlags(KNotification::CloseOnTimeout);
-    notification->sendEvent();
-  }
-  else
-  {
-    KNotification *notification = new KNotification("sharesUnmounted");
-    notification->setText(i18n("<p>All shares have been unmounted.</p>"));
-    notification->setPixmap(KIconLoader::global()->loadIcon("folder-remote", KIconLoader::NoGroup, 0, 
-                            KIconLoader::DefaultState, QStringList("emblem-unmounted")));
-    notification->setFlags(KNotification::CloseOnTimeout);
-    notification->sendEvent();
-  }
+  KNotification *notification = new KNotification("sharesUnmounted");
+  notification->setText(i18np("<p>%1 share has been unmounted.</p>", "<p>%1 shares have been unmounted.", number));
+  notification->setPixmap(KIconLoader::global()->loadIcon("folder-remote", KIconLoader::NoGroup, 0, 
+                          KIconLoader::DefaultState, QStringList("emblem-unmounted")));
+  notification->setFlags(KNotification::CloseOnTimeout);
+  notification->sendEvent();
 }
 
 

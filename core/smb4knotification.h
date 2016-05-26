@@ -66,23 +66,15 @@ namespace Smb4KNotification
   
   /**
    * Notify the user that multiple shares have been mounted.
-   *
-   * @param total     The number of mounts that were scheduled
-   *
-   * @param actual    The number of mounts that were actually
-   *                  mounted.
+   * @param number    The number of mounts
    */
-  Q_DECL_EXPORT void sharesMounted(int total, int actual);
+  Q_DECL_EXPORT void sharesMounted(int number);
 
   /**
    * Notify the user that multiple shares have been unmounted at once.
-   *
-   * @param total     The number of unmounts that were scheduled
-   *
-   * @param actual    The number of unmounts that actually finished
-   *                  successfully.
+   * @param number    The number of unmounts
    */
-  Q_DECL_EXPORT void sharesUnmounted(int total, int actual);
+  Q_DECL_EXPORT void sharesUnmounted(int number);
 
   /**
    * Warn the user that the wallet could not be opened.
