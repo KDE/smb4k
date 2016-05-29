@@ -2459,6 +2459,26 @@ void Smb4KMounter::slotStatResult(KJob *job)
     {
       if (addMountedShare(importedShare))
       {
+        // Remove the share from the list of shares that are to be remounted
+        QMutableListIterator<Smb4KShare *> s(d->remounts);
+
+        while (s.hasNext())
+        {
+          Smb4KShare *remount = s.next();
+
+          if (!importedShare->isForeign() && QString::compare(remount->unc(), importedShare->unc(), Qt::CaseInsensitive) == 0)
+          {
+            s.remove();
+            break;
+          }
+          else
+          {
+            continue;
+          }
+        }
+        
+        // Tell the program and the user that the share was mounted. Also, reset the
+        // counter of newly mounted shares, if necessary.
         d->newlyMounted += 1;
         emit mounted(importedShare);
         
@@ -2491,26 +2511,6 @@ void Smb4KMounter::slotStatResult(KJob *job)
   else
   {
     delete importedShare;
-  }
-  
-  //
-  // Remove the share from the list of shares that are to be remounted
-  //
-  QMutableListIterator<Smb4KShare *> s(d->remounts);
-
-  while (s.hasNext())
-  {
-    Smb4KShare *remount = s.next();
-
-    if (!importedShare->isForeign() && QString::compare(remount->unc(), importedShare->unc(), Qt::CaseInsensitive) == 0)
-    {
-      s.remove();
-      break;
-    }
-    else
-    {
-      continue;
-    }
   }
   
   if (!d->firstImportDone && d->importedShares.isEmpty())
