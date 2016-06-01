@@ -586,7 +586,7 @@ Action=Popup|Sound
 [Event/mimetypeNotSupported]
 Name=Mimetype not supported
 Name[bs]=Mimetype nije podržan
-Name[ca]=Tipus MIME no implementat
+Name[ca]=Tipus MIME no admès
 Name[ca@valencia]=Tipus MIME no implementat
 Name[da]=MIME-type ikke understøttet
 Name[de]=MIME-Typ wird nicht unterstützt
@@ -612,7 +612,7 @@ Name[x-test]=xxMimetype not supportedxx
 Name[zh_TW]=MIME 型態不支援
 Comment=The mimetype of the file that is to be printed is not supported
 Comment[bs]=Mimetype datoteke koji je trebao biti ispisan nije podržan
-Comment[ca]=El tipus MIME del fitxer a imprimir no està implementat
+Comment[ca]=El tipus MIME del fitxer a imprimir no està admès
 Comment[ca@valencia]=El tipus MIME del fitxer a imprimir no està implementat
 Comment[da]=MIME-typen for den fil der skal udskrives, er ikke understøttet
 Comment[de]=Der MIME-Typ der zu druckenden Datei wird nicht unterstützt
