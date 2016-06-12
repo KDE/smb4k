@@ -2484,13 +2484,20 @@ void Smb4KMounter::slotStatResult(KJob *job)
         
         if (d->importedShares.isEmpty())
         {
-          if (d->newlyMounted == 1)
+          if (d->firstImportDone)
           {
-            Smb4KNotification::shareMounted(importedShare);
+            if (d->newlyMounted == 1)
+            {
+              Smb4KNotification::shareMounted(importedShare);
+            }
+            else
+            {
+              Smb4KNotification::sharesMounted(d->newlyMounted);
+            }
           }
           else
           {
-            Smb4KNotification::sharesMounted(d->newlyMounted);
+            // Do nothing
           }
           
           d->newlyMounted = 0;
