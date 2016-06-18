@@ -124,18 +124,6 @@ QString Smb4KWorkgroup::masterBrowserIP() const
 }
 
 
-void Smb4KWorkgroup::setHasPseudoMasterBrowser(bool pseudo)
-{
-  d->pseudoMaster = pseudo;
-}
-
-
-bool Smb4KWorkgroup::hasPseudoMasterBrowser() const
-{
-  return d->pseudoMaster;
-}
-
-
 bool Smb4KWorkgroup::isEmpty() const
 {
   // Ignore all booleans.
@@ -192,15 +180,6 @@ bool Smb4KWorkgroup::equals(Smb4KWorkgroup *workgroup) const
     // Do nothing
   }
 
-  if (hasPseudoMasterBrowser() != workgroup->hasPseudoMasterBrowser())
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
   // Do not include the icon here.
 
   return true;

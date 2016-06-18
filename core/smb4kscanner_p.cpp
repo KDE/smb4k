@@ -522,13 +522,6 @@ void Smb4KLookupDomainsJob::processWorkgroups(const QString &stdOut)
 
         continue;
       }
-      else if (line.contains("__MSBROWSE__", Qt::CaseSensitive) &&
-               line.contains(" <01> ", Qt::CaseSensitive))
-      {
-        // The host is a master browser.
-        workgroup->setHasPseudoMasterBrowser(false);
-        continue;
-      }
       else
       {
         continue;
@@ -1256,7 +1249,6 @@ void Smb4KQueryMasterJob::processWorkgroups(const QString &stdOut)
         // This is the workgroup and master entry. Process it.
         workgroup->setWorkgroupName(line.section("   ", 0, 0).trimmed());
         workgroup->setMasterBrowserName(line.section("   ", 1, -1).trimmed());
-        workgroup->setHasPseudoMasterBrowser(false);
 
         m_workgroups_list << new Smb4KWorkgroup(*workgroup);
 

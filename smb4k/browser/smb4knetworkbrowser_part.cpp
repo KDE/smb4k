@@ -1112,7 +1112,7 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers(Smb4KWorkgroup *workgroup, co
 
                 if (workgroup_item)
                 {
-                  // FIXME: Do we need to change the (pseudo) master browser here?
+                  // FIXME: Do we need to change the ·ðmaster browser here?
                   (void) new Smb4KNetworkBrowserItem(workgroup_item, list.at(i));
                   
                   if (Smb4KSettings::autoExpandNetworkItems() && !workgroup_item->isExpanded())
@@ -1144,7 +1144,6 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers(Smb4KWorkgroup *workgroup, co
               {
                 workgroup.setMasterBrowserName(list.at(i)->hostName());
                 workgroup.setMasterBrowserIP(list.at(i)->ip());
-                workgroup.setHasPseudoMasterBrowser(!list.at(i)->isMasterBrowser());
               }
               else
               {
@@ -1216,7 +1215,6 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers(Smb4KWorkgroup *workgroup, co
             {
               workgroup.setMasterBrowserName(list.at(i)->hostName());
               workgroup.setMasterBrowserIP(list.at(i)->ip());
-              workgroup.setHasPseudoMasterBrowser(!list.at(i)->isMasterBrowser());
             }
             else
             {

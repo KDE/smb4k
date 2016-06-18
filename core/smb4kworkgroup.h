@@ -59,7 +59,7 @@ class Q_DECL_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      *
      * @param name            The name of the workgroup or domain.
      */
-    explicit Smb4KWorkgroup( const QString &name );
+    explicit Smb4KWorkgroup(const QString &name);
 
     /**
      * The copy contructor. This constructor takes another Smb4KWorkgroup item
@@ -67,7 +67,7 @@ class Q_DECL_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      *
      * @param workgroup       The Smb4KWorkgroup item that is to be copied.
      */
-    Smb4KWorkgroup( const Smb4KWorkgroup &workgroup );
+    Smb4KWorkgroup(const Smb4KWorkgroup &workgroup);
 
     /**
      * The empty constructor. It does not take any argument and you have to
@@ -85,7 +85,7 @@ class Q_DECL_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      *
      * @param name            The name of the workgroup
      */
-    void setWorkgroupName( const QString &name );
+    void setWorkgroupName(const QString &name);
 
     /**
      * This function returns the name of the workgroup.
@@ -99,7 +99,7 @@ class Q_DECL_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      *
      * @param masterName      The name of the master browser
      */
-    void setMasterBrowserName( const QString &name );
+    void setMasterBrowserName(const QString &name);
 
     /**
      * Returns the name of the master browser of this workgroup or domain.
@@ -114,7 +114,7 @@ class Q_DECL_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      *
      * @param ip              The master browser's IP address
      */
-    void setMasterBrowserIP( const QString &ip );
+    void setMasterBrowserIP(const QString &ip);
 
     /**
      * Returns the IP address of the master browser of this workgroup
@@ -124,24 +124,6 @@ class Q_DECL_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      * @returns the IP address of the master browser or an empty string.
      */
     QString masterBrowserIP() const;
-
-    /**
-     * Set @p pseudo to TRUE if the master browser of this workgroup is a
-     * pseudo-master, i.e. the master browser indeed carries a browse list but you
-     * could not figure out if it is the workgroup master browser.
-     *
-     * @param pseudo          Should be set to TRUE if the workgroup has a pseudo-master
-     *                        browser.
-     */
-    void setHasPseudoMasterBrowser( bool pseudo );
-
-    /**
-     * Returns TRUE if the workgroup has a pseudo (i.e. a faked) master browser.
-     * Otherwise it returns FALSE.
-     *
-     * @returns TRUE if the workgroup has a pseudo master browser.
-     */
-    bool hasPseudoMasterBrowser() const;
 
     /**
      * Returns TRUE if the item is empty and FALSE otherwise. An item is not
@@ -161,12 +143,12 @@ class Q_DECL_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      *
      * @returns TRUE if the data that was compared is the same.
      */
-    bool equals( Smb4KWorkgroup *workgroup ) const;
+    bool equals(Smb4KWorkgroup *workgroup) const;
     
     /**
      * Operator to check if two items are equal.
      */
-    bool operator==( Smb4KWorkgroup workgroup ) const { return equals( &workgroup ); }
+    bool operator==(Smb4KWorkgroup workgroup) const { return equals(&workgroup); }
     
     /**
      * Returns TRUE if the workgroup/domain master browsers IP address is set and 
