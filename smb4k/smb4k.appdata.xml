@@ -11,6 +11,7 @@
   <name xml:lang="cs">Smb4K</name>
   <name xml:lang="da">Smb4K</name>
   <name xml:lang="de">Smb4K</name>
+  <name xml:lang="el">Smb4K</name>
   <name xml:lang="en-GB">Smb4K</name>
   <name xml:lang="es">Smb4K</name>
   <name xml:lang="fr">Smb4K</name>
@@ -32,6 +33,7 @@
   <summary xml:lang="ca-valencia">Explorador avançat del veïnatge de xarxa i utilitat per a muntar les comparticions de Samba</summary>
   <summary xml:lang="cs">Pokročilý prohlížeč síťového okolí a nástroj na připojování úložišť samba</summary>
   <summary xml:lang="de">Erweiterter Browser für die Netzwerkumgebung und Dienstprogramm zum Einbinden von Samba-Freigaben</summary>
+  <summary xml:lang="el">Προηγμένος περιηγητής τοπικού δικτύου και εργαλείο προσάρτησης κοινών πόρων Samba</summary>
   <summary xml:lang="en-GB">Advanced Network Neighborhood Browser and Samba Share Mounting Utility</summary>
   <summary xml:lang="es">Navegador avanzado del entorno de red y utilidad para montar recursos compartidos de Samba</summary>
   <summary xml:lang="fr">Navigateur avancé de voisinage réseau et utilitaire pour le montage des partages Samba</summary>
@@ -54,6 +56,7 @@
     <p xml:lang="ca">El Smb4K és un explorador avançat del veïnatge de xarxa i utilitat per a muntar les comparticions de Samba per a la compilació de programari KDE. Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
     <p xml:lang="ca-valencia">El Smb4K és un explorador avançat del veïnatge de xarxa i utilitat per a muntar les comparticions de Samba per a la compilació de programari KDE. Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
     <p xml:lang="de">Smb4K ist ein erweiterter Browser für die Netzwerkumgebung und Dienstprogramm für das Einbinden von Samba-Freigaben für die KDE-Softwaresammlung. Es durchsucht Ihre Netzwerkumgebung nach allen verfügbaren Arbeitsgruppen, Server und Freigaben und kann alle gewünschten Freigaben in Ihr lokales Dateisystem einbinden.</p>
+    <p xml:lang="el">Το Smb4K είναι ένας προηγμένος περιηγητής τοπικού δικτύου και το εργαλείο προσάρτησης κοινών πόρων Samba για το KDE Software Compilation. Σαρώνει το τοπικό σας δίκτυο για όλες τις διαθέσιμες ομάδες εργασίας, εξυπηρετητές και κοινούς πόρους και μπορεί να προσαρτά όλους τους επιθυμητούς κοινούς πόρους στο σύστημα αρχείων του υπολογιστή σας.</p>
     <p xml:lang="en-GB">Smb4K is an advanced network neighborhood browser and Samba share mounting utility for the KDE Software Compilation. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.</p>
     <p xml:lang="es">Smb4K es un navegador avanzado del entorno de red y una utilidad de montaje de recursos compartidos Samba para «KDE Software Compilation». Escanea su entorno de red en busca de cualquier grupo de trabajo, servidores y recursos compartidos disponible y puede montar todos los recursos compartidos deseados en su sistema de archivos local.</p>
     <p xml:lang="fr">Smb4K est un navigateur de voisinage réseau avancé et un utilitaire de montage Samba pour KDE SC. Il balaye votre voisinage réseau à la recherche des groupes de travail, serveurs et partages disponibles et peut afficher tous les partages désirés sur votre système de fichiers local.</p>
@@ -75,6 +78,7 @@
     <p xml:lang="ca">El Smb4K utilitza els programes de la suite de programari Samba. El seu propòsit és proporcionar un programa de fàcil ús i contenir tantes característiques com sigui possible.</p>
     <p xml:lang="ca-valencia">El Smb4K utilitza els programes de la suite de programari Samba. El seu propòsit és proporcionar un programa de fàcil ús i contindre tantes característiques com siga possible.</p>
     <p xml:lang="de">Smb4K benutzt die Programme der Samba-Softwaresammlung, um ein Programm mit leichter Handhabung und möglichst vielen Funktionen zur Verfügung zu stellen.</p>
+    <p xml:lang="el">Το Smb4K χρηασιμοποιεί τα προγράμματα της σουίτας λογισμικού Samba. Ο σκοπός του είναι να παρέχει ένα πρόγραμμα εύκολο στη χρήση και με όσο το δυνατόν περισσότερα χαρακτηριστικά.</p>
     <p xml:lang="en-GB">Smb4K utilises the programs of the Samba software suite. Its purpose is to provide a program that is easy to use and has as many features as possible.</p>
     <p xml:lang="es">Smb4K utiliza los programas de la suite de programas Samba. Su objetivo es proporcionar un programa que sea sencillo de usar y tenga tantas prestaciones como sea posible.</p>
     <p xml:lang="fr">Smb4K utilise les programmes de la suite logicielle Samba. Son objectif est de fournir un programme facile à utiliser et fournissant le plus de fonctionnalités possibles.</p>
@@ -99,6 +103,7 @@
     <p xml:lang="cs">Vlastnosti:</p>
     <p xml:lang="da">Funktioner:</p>
     <p xml:lang="de">Funktionen:</p>
+    <p xml:lang="el">Χαρακτηριστικά:</p>
     <p xml:lang="en-GB">Features:</p>
     <p xml:lang="es">Características:</p>
     <p xml:lang="fr">Fonctionnalité :</p>
@@ -120,6 +125,7 @@
       <li xml:lang="ca">Exploració per a grups de treball, ordinadors i comparticions (actius)</li>
       <li xml:lang="ca-valencia">Exploració per a grups de treball, ordinadors i comparticions (actius)</li>
       <li xml:lang="de">Suche nach (aktiven) Arbeitsgruppen, Rechnern und Freigaben</li>
+      <li xml:lang="el">Σαρώνει για (ενεργές) ομάδες εργασίας, υπολογιστές και κοινούς πόρους</li>
       <li xml:lang="en-GB">Scanning for (active) workgroups, hosts, and shares</li>
       <li xml:lang="es">Escaneo de grupos de trabajo, servidores y recursos compartidos (activos)</li>
       <li xml:lang="fr">Balayage des groupes de travail (actifs), hôtes et partages</li>
@@ -139,6 +145,7 @@
       <li xml:lang="ca">Implementació dels sistemes de fitxers CIFS (Linux) i SMBFS (FreeBSD)</li>
       <li xml:lang="ca-valencia">Implementació dels sistemes de fitxers CIFS (Linux) i SMBFS (FreeBSD)</li>
       <li xml:lang="de">Unterstützung für CIFS-Dateisysteme unter Linux und SMBFS-Dateisysteme unter FreeBSD</li>
+      <li xml:lang="el">Υποστηρίζει τα συστήματα αρχείων CIFS (Linux) και SMBFS (FreeBSD)</li>
       <li xml:lang="en-GB">Support of the CIFS (Linux) and SMBFS (FreeBSD) file system</li>
       <li xml:lang="es">Admite los sistemas de archivo CIFS (Linux) y SMBFS (FreeBSD)</li>
       <li xml:lang="fr">Prise en charge des systèmes de fichiers CIFS (Linux) et SMBFS (FreeBSD)</li>
@@ -158,6 +165,7 @@
       <li xml:lang="ca">El muntatge i desmuntatge de les comparticions</li>
       <li xml:lang="ca-valencia">El muntatge i desmuntatge de les comparticions</li>
       <li xml:lang="de">Einbinden und Lösen von Freigaben</li>
+      <li xml:lang="el">Προσαρτά και απομακρύνει κοινούς πόρους</li>
       <li xml:lang="en-GB">Mounting and unmounting of shares</li>
       <li xml:lang="es">Montaje y desmontaje de recursos compartidos</li>
       <li xml:lang="fr">Montage et démontage des partages</li>
@@ -177,6 +185,7 @@
       <li xml:lang="ca">Accés als fitxers d'una compartició muntada utilitzant un gestor de fitxers o terminal</li>
       <li xml:lang="ca-valencia">Accés als fitxers d'una compartició muntada utilitzant un gestor de fitxers o terminal</li>
       <li xml:lang="de">Zugriff auf die Dateien einer eingebundenen Freigabe mit einem Dateiverwaltungsprogramm oder einem Terminal</li>
+      <li xml:lang="el">Παρέχει πρόσβαση στα αρχεία ενός προσαρτημένου κοινού πόρου με χρήση του διαχειριστή αρχείων ή του τερματικού</li>
       <li xml:lang="en-GB">Access to the files of a mounted share using a file manager or terminal</li>
       <li xml:lang="es">Acceso a los archivos de un recurso compartido montado utilizando un gestor de archivos o un terminal</li>
       <li xml:lang="fr">Accès aux fichiers d'un partage à travers un gestionnaire de fichiers ou un terminal</li>
@@ -196,6 +205,7 @@
       <li xml:lang="ca">Detecció automàtica de muntatges i desmuntatges externs</li>
       <li xml:lang="ca-valencia">Detecció automàtica de muntatges i desmuntatges externs</li>
       <li xml:lang="de">Automatische Erkennung externer Medien, die eingebunden oder ausgehängt werden</li>
+      <li xml:lang="el">Αυτόματος εντοπισμός εξωτερικών προσαρτήσεων και απομακρύνσεων</li>
       <li xml:lang="en-GB">Auto-detection of external mounts and unmounts</li>
       <li xml:lang="es">Detección automática de montajes y desmontajes externos</li>
       <li xml:lang="fr">Auto-détection des montages et démontages externes</li>
@@ -215,6 +225,7 @@
       <li xml:lang="ca">Tornar a muntar comparticions utilitzades anteriorment en iniciar el programa</li>
       <li xml:lang="ca-valencia">Tornar a muntar comparticions utilitzades anteriorment en iniciar el programa</li>
       <li xml:lang="de">Erneute Einbindung von vorher benutzten Freigaben beim Start des Programms</li>
+      <li xml:lang="el">Αναπροσαρτά κοινούς πόρους προηγούμενης χρήσης στην εκκίνηση του προγράμματος</li>
       <li xml:lang="en-GB">Remounting of previously used shares on program start</li>
       <li xml:lang="es">Vuelve a montar los recursos compartidos utilizados anteriormente al iniciar el programa</li>
       <li xml:lang="fr">Remontage de partages précédemment utilisés lors du démarrage du programme</li>
@@ -234,6 +245,7 @@
       <li xml:lang="ca">Informacions diverses sobre els elements de xarxa remots i les comparticions muntades</li>
       <li xml:lang="ca-valencia">Informacions diverses sobre els elements de xarxa remots i les comparticions muntades</li>
       <li xml:lang="de">Verschiedene Informationen über Netzwerke auf anderen Rechnern und eingebundene Freigaben</li>
+      <li xml:lang="el">Διάφορες πληροφορίες για απομακρυσμένα δικτυακά αντικείμενα και προσαρτημένους κοινούς πόρους</li>
       <li xml:lang="en-GB">Miscellaneous information about remote network items and mounted shares</li>
       <li xml:lang="es">Información variada sobre los elementos remotos de la red y los recursos compartidos montados</li>
       <li xml:lang="fr">Infos diverses sur les éléments réseau distants et les partages montés</li>
@@ -255,6 +267,7 @@
       <li xml:lang="cs">Prohledání sítě</li>
       <li xml:lang="da">Netværkssøgning</li>
       <li xml:lang="de">Netzwerksuche</li>
+      <li xml:lang="el">Αναζήτηση στο δίκτυο</li>
       <li xml:lang="en-GB">Network search</li>
       <li xml:lang="es">Búsqueda en la red</li>
       <li xml:lang="fr">Recherche sur le réseau</li>
@@ -275,6 +288,7 @@
       <li xml:lang="ca-valencia">Implementació del servidor WINS</li>
       <li xml:lang="da">WINS-server-understøttelse</li>
       <li xml:lang="de">Unterstützung für WINS-Server</li>
+      <li xml:lang="el">Υποστήριξη εξυπηρετητή WINS</li>
       <li xml:lang="en-GB">WINS server support</li>
       <li xml:lang="es">Apoyo para servidores WINS</li>
       <li xml:lang="fr">Prise en charge d'un serveur WINS</li>
@@ -294,6 +308,7 @@
       <li xml:lang="ca">Vista prèvia dels continguts d'una compartició</li>
       <li xml:lang="ca-valencia">Vista prèvia dels continguts d'una compartició</li>
       <li xml:lang="de">Vorschau des Inhalts einer Freigabe</li>
+      <li xml:lang="el">Προεπισκόπηση περιεχομένων κοινού πόρου</li>
       <li xml:lang="en-GB">Preview of the contents of a share</li>
       <li xml:lang="es">Vista previa del contenido de un recurso compartido</li>
       <li xml:lang="fr">Aperçu des contenus d'un partage</li>
@@ -313,6 +328,7 @@
       <li xml:lang="ca">Hi ha diversos mètodes per cercar la llista inicial dels grups de treball i dominis</li>
       <li xml:lang="ca-valencia">Hi ha diversos mètodes per cercar la llista inicial dels grups de treball i dominis</li>
       <li xml:lang="de">Mehrere Methoden zur Suche nach der anfänglichen Liste von Arbeitsgruppen und Domänen</li>
+      <li xml:lang="el">Πολλές μέθοδοι αναζήτησης στην αρχική λίστα ομάδων εργασίας και τομέων</li>
       <li xml:lang="en-GB">Several methods to look up the initial list of workgroups and domains</li>
       <li xml:lang="es">Varios métodos para buscar la lista inicial de grupos de trabajo y dominios</li>
       <li xml:lang="fr">Plusieurs méthodes pour découvrir la liste initiale des groupes de travail et des domaines</li>
@@ -334,6 +350,7 @@
       <li xml:lang="cs">Výchozí přihlášení</li>
       <li xml:lang="da">Standard-login</li>
       <li xml:lang="de">Standardanmeldung</li>
+      <li xml:lang="el">Προκαθορισμένη σύνδεση</li>
       <li xml:lang="en-GB">Default login</li>
       <li xml:lang="es">Inicio de sesión predeterminado</li>
       <li xml:lang="fr">Identificateur de connexion par défaut</li>
@@ -353,6 +370,7 @@
       <li xml:lang="ca">Gestió especial per a les comparticions personals</li>
       <li xml:lang="ca-valencia">Gestió especial per a les comparticions personals</li>
       <li xml:lang="de">Besondere Behandlung freigegebener persönlicher Ordner</li>
+      <li xml:lang="el">Ειδικός χειρισμός πόρων περιοχών χρηστών</li>
       <li xml:lang="en-GB">Special handling of homes shares</li>
       <li xml:lang="es">Manejo especial de los directorios personales compartidos</li>
       <li xml:lang="fr">Prise en charge spéciale des répertoires personnels partagés</li>
@@ -372,6 +390,7 @@
       <li xml:lang="ca">La possibilitat d'apuntar les comparticions a les adreces d'interès</li>
       <li xml:lang="ca-valencia">La possibilitat d'apuntar les comparticions a les adreces d'interés</li>
       <li xml:lang="de">Lesezeichen für bevorzugte Freigaben</li>
+      <li xml:lang="el">Δυνατότητα αποθήκευσης πόρων σε σελιδοδείκτες</li>
       <li xml:lang="en-GB">Ability to bookmark favorite shares</li>
       <li xml:lang="es">Capacidad para poner como marcadores los recursos compartidos favoritos</li>
       <li xml:lang="fr">Possibilité d'avoir des partages favoris</li>
@@ -391,6 +410,7 @@
       <li xml:lang="ca">Un estri per a la safata del sistema</li>
       <li xml:lang="ca-valencia">Un estri per a la safata del sistema</li>
       <li xml:lang="de">Symbol im Systemabschnitt der Kontrollleiste</li>
+      <li xml:lang="el">Γραφικό συστατικό πλαισίου συστήματος</li>
       <li xml:lang="en-GB">System tray widget</li>
       <li xml:lang="es">Elemento gráfico de la bandeja del sistema</li>
       <li xml:lang="fr">Composant graphique dans la barre d'état</li>
@@ -410,6 +430,7 @@
       <li xml:lang="ca">Implementació de les opcions avançades de Samba</li>
       <li xml:lang="ca-valencia">Implementació de les opcions avançades de Samba</li>
       <li xml:lang="de">Unterstützung der erweiterten Samba-Einstellungen</li>
+      <li xml:lang="el">Υποστήριξη προχωρημένων επιλογών Samba</li>
       <li xml:lang="en-GB">Support of advanced Samba options</li>
       <li xml:lang="es">Apoyo para las opciones avanzadas de Samba</li>
       <li xml:lang="fr">Prise en charge des options avancées de Samba</li>
@@ -429,6 +450,7 @@
       <li xml:lang="ca">Implementació de les impressores compartides</li>
       <li xml:lang="ca-valencia">Implementació de les impressores compartides</li>
       <li xml:lang="de">Unterstützung für Drucker-Freigaben</li>
+      <li xml:lang="el">Υποστήριξη κοινών πόρων εκτυπωτών</li>
       <li xml:lang="en-GB">Support of printer shares</li>
       <li xml:lang="es">Apoyo de impresoras compartidas</li>
       <li xml:lang="fr">Prise en charge des imprimantes partagées</li>
@@ -449,6 +471,7 @@
       <li xml:lang="ca-valencia">Implementació per al KWallet</li>
       <li xml:lang="cs">Podpora KWallet</li>
       <li xml:lang="de">Unterstützung für KWallet</li>
+      <li xml:lang="el">Υποστήριξη KWallet</li>
       <li xml:lang="en-GB">KWallet support</li>
       <li xml:lang="es">Apoyo para KWallet</li>
       <li xml:lang="fr">Prise en charge de KWallet</li>
@@ -468,6 +491,7 @@
       <li xml:lang="ca">Sincronització d'una compartició remota amb una còpia local i viceversa</li>
       <li xml:lang="ca-valencia">Sincronització d'una compartició remota amb una còpia local i viceversa</li>
       <li xml:lang="de">Abgleich einer entfernten Freigabe mit einer lokalen Kopie und umgekehrt</li>
+      <li xml:lang="el">Συγχρονισμός απομακρυσμένου πόρου με τοπικό αντίγραφο και αντίστροφα</li>
       <li xml:lang="en-GB">Synchronisation of a remote share with a local copy and vice versa</li>
       <li xml:lang="es">Sincronización de un recurso compartido remoto con una copia local y viceversa</li>
       <li xml:lang="fr">Synchronisation d'un partage distant avec une copie locale et vice-versa</li>
@@ -487,6 +511,7 @@
       <li xml:lang="ca">La possibilitat de definir individualment opcions personalitzades per a servidors i comparticions</li>
       <li xml:lang="ca-valencia">La possibilitat de definir individualment opcions personalitzades per a servidors i comparticions</li>
       <li xml:lang="de">Fähigkeit zur Definition von benutzerdefinierten Einstellungen für einzelne Server und Freigaben.</li>
+      <li xml:lang="el">Δυνατότητα καθορισμού προσαρμοσμένων επιλογών για ξεχωριστούς εξυπηρετητές και κοινούς πόρους</li>
       <li xml:lang="en-GB">Ability to define custom options for individual servers and shares</li>
       <li xml:lang="es">Capacidad para definir opciones personalizadas para servidores y recursos compartidos individuales</li>
       <li xml:lang="fr">Possibilité de définir des options personnalisées pour des serveurs et des partages individuels</li>
@@ -506,6 +531,7 @@
       <li xml:lang="ca">Admet els portàtils a través del marc de treball per a dispositius Solid</li>
       <li xml:lang="ca-valencia">Implementació de l'ordinador portàtil a través del marc de treball per a dispositius Solid</li>
       <li xml:lang="de">Laptop-Unterstützung durch das Solid-Framework für Hardware-Geräte</li>
+      <li xml:lang="el">Υποστήριξη φορητού υπολογιστή μέσω του πλαισίου Solid για συσκευές</li>
       <li xml:lang="en-GB">Laptop support through the Solid hardware device framework</li>
       <li xml:lang="es">Apoyo para portátiles a través de la infraestructura de dispositivos hardware Solid</li>
       <li xml:lang="fr">Prise en charge des ordinateurs portables avec le framework de gestion matérielle Solid</li>
@@ -526,6 +552,7 @@
       <li xml:lang="ca">Funcionalitats d'activació per LAN (Wake-On-LAN)</li>
       <li xml:lang="ca-valencia">Funcionalitats d'activació per LAN (Wake-On-LAN)</li>
       <li xml:lang="de">„Wake-On-LAN“-Fähigkeiten</li>
+      <li xml:lang="el">Δυνατότητες απομακρυσμένης αφύπνισης</li>
       <li xml:lang="en-GB">Wake-On-LAN capabilities</li>
       <li xml:lang="es">Capacidades «Despertar en LAN»</li>
       <li xml:lang="fr">Capacités de réveil par le réseau (Wake-on-LAN)</li>
@@ -546,6 +573,7 @@
       <li xml:lang="ca">Plasmoide per a la integració a l'escriptori</li>
       <li xml:lang="ca-valencia">Plasmoide per a la integració a l'escriptori</li>
       <li xml:lang="de">Plasmoid für die Integration in die Arbeitsfläche</li>
+      <li xml:lang="el">Πλασμοειδές για ενοποίηση με το γραφικό περιβάλλον</li>
       <li xml:lang="en-GB">Plasmoid for desktop integration</li>
       <li xml:lang="es">Plasmoide para integración en el escritorio</li>
       <li xml:lang="fr">Plasmoïde pour l'intégration sur le bureau</li>
@@ -569,6 +597,7 @@
     <p xml:lang="ca">Si esteu treballant en un entorn de xarxa dominat per Windows, és possible que vulgueu instal·lar aquesta aplicació per a poder accedir amb facilitat a les comparticions proporcionades per Windows.</p>
     <p xml:lang="ca-valencia">Si esteu treballant en un entorn de xarxa dominat per Windows, és possible que vulgueu instal·lar esta aplicació per a poder accedir amb facilitat a les comparticions proporcionades per Windows.</p>
     <p xml:lang="de">Wenn Sie in einer Windows-dominierten Netzwerkumgebung arbeiten, sollten Sie diese Anwendung installieren, um leicht auf die vorhandenen Windows-Freigaben zuzugreifen.</p>
+    <p xml:lang="el">Αν εργάζεστε σε ένα περιβάλλον δικτύου υπό την κυριαρχία των Windows, θα θέλατε να εγκαταστήσετε την εφαρμογή αυτή για να μπορείτε να έχετε άνετηπρόσβαση στους κοινούς πόρους που παρέχουν τα Windows.</p>
     <p xml:lang="en-GB">If you are working in a Windows dominated network environment, you may want to install this application to be able to easily access the provided Windows shares.</p>
     <p xml:lang="es">Si estás trabajando en un entorno de red dominado por Windows, es posible que desees instalar esta aplicación para poder acceder fácilmente a los recursos Windows compartidos.</p>
     <p xml:lang="fr">Si vous travaillez dans un réseau contenant majoritairement des PC sous Windows, vous voudrez sans doute installer cette application pour accéder facilement aux partages Windows.</p>
@@ -592,6 +621,7 @@
       <caption xml:lang="ca">La finestra principal</caption>
       <caption xml:lang="ca-valencia">La finestra principal</caption>
       <caption xml:lang="de">Das Hauptfenster</caption>
+      <caption xml:lang="el">Το κύριο παράθυρο</caption>
       <caption xml:lang="en-GB">The main window</caption>
       <caption xml:lang="es">La ventana principal</caption>
       <caption xml:lang="fr">La fenêtre principale</caption>
@@ -616,6 +646,7 @@
       <caption xml:lang="ca-valencia">El plasmoide</caption>
       <caption xml:lang="cs">Plasmoid</caption>
       <caption xml:lang="de">Das Plasmoid</caption>
+      <caption xml:lang="el">Το πλασμοειδές</caption>
       <caption xml:lang="en-GB">The plasmoid</caption>
       <caption xml:lang="es">El plasmoide</caption>
       <caption xml:lang="fr">Le plasmoïde</caption>
