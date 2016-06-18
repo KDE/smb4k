@@ -88,11 +88,6 @@ class Smb4KSharesViewItem : public QListWidgetItem
     Smb4KShare *m_share;
     
     /**
-     * Show the mountpoint
-     */
-//     bool m_mountpoint;
-    
-    /**
      * The tool tip
      */
     Smb4KToolTip *m_tooltip;

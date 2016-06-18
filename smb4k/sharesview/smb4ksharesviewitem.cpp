@@ -40,7 +40,7 @@ Smb4KSharesViewItem::Smb4KSharesViewItem(Smb4KSharesView *parent, Smb4KShare *sh
 
   m_share = new Smb4KShare(*share);
   
-  m_tooltip   = new Smb4KToolTip();
+  m_tooltip = new Smb4KToolTip();
   m_tooltip->setup(Smb4KToolTip::SharesView, m_share);
   
   setText(m_share->displayString());
@@ -57,9 +57,7 @@ Smb4KSharesViewItem::~Smb4KSharesViewItem()
 
 void Smb4KSharesViewItem::update(Smb4KShare *share)
 {
-  delete m_share;
-  m_share = new Smb4KShare(*share);
-  
+  m_share->setMountData(share);
   m_tooltip->update(Smb4KToolTip::SharesView, m_share);
   
   setText(m_share->displayString());
