@@ -160,13 +160,6 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     void setURL(const QUrl &url);
     
     /**
-     * Sets the URL of the share.
-     *
-     * @param url             The URL of the network item
-     */
-    void setURL(const QString &url);
-    
-    /**
      * Returns the URL of the share.
      * 
      * @returns the URL of the share.
@@ -552,7 +545,7 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     bool isMounted() const;
 
     /**
-     * This convenience function sets the mount related data. It is copied
+     * This convenience function sets the mount related data that is copied
      * from @p share.
      *
      * @param share           The share object from where the mount related

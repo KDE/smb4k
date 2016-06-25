@@ -251,15 +251,6 @@ void Smb4KShare::setURL(const QUrl &url)
 }
 
 
-void Smb4KShare::setURL(const QString &url)
-{
-  QUrl u;
-  u.setUrl(url, QUrl::TolerantMode);
-
-  setURL(u);
-}
-
-
 QUrl Smb4KShare::url() const
 {
   return d->url;
@@ -1096,6 +1087,7 @@ bool Smb4KShare::isEmpty(CheckFlags flag) const
 
 void Smb4KShare::setMountData(Smb4KShare *share)
 {
+  qDebug() << "FIXME: Smb4KShare::setMountData() - Do not overwrite existing entries with empty ones";
   Q_ASSERT(share);
 
   if (equals(share, MinimalLocalOnly))
