@@ -36,7 +36,7 @@ Smb4KSharesViewItem::Smb4KSharesViewItem(Smb4KSharesView *parent, Smb4KShare *sh
 : QListWidgetItem(parent)
 {
   setFlags(flags() | Qt::ItemIsDropEnabled);
-  setTextAlignment(Qt::AlignHCenter|Qt::AlignTop);
+//   setTextAlignment(Qt::AlignHCenter|Qt::AlignTop);
 
   m_share = new Smb4KShare(*share);
   

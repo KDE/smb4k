@@ -60,7 +60,6 @@ class Q_DECL_EXPORT Smb4KSharesViewPart : public KParts::Part
      * @param args                A list of arguments. At the moment there are
      *                            the following arguments defined:
      *                            bookmark_shortcut="true"|"false"
-     *                            silent="true"|"false"
      */
     explicit Smb4KSharesViewPart(QWidget *parentWidget = 0,
                                  QObject *parent = 0,
@@ -103,30 +102,30 @@ class Q_DECL_EXPORT Smb4KSharesViewPart : public KParts::Part
     void slotItemSelectionChanged();
 
     /**
-     * Is called when the user pressed a mouse button somewhere over a icon view item.
+     * Is called when the user pressed a mouse button somewhere over an item.
      * In addition to Smb4KNetworkBrowserPart::slotSelectionChanged() this slot
      * takes care of the actions being enabled or disabled accordingly. All
      * widget specific stuff has to be done in the shares view widget itself.
      *
-     * @param item                The icon view item where the mouse button was pressed.
+     * @param item                The item where the mouse button was pressed.
      */
     void slotItemPressed(QListWidgetItem *item);
 
     /**
-     * This slot is invoked when the user activated an icon view item. It is used to mount
+     * This slot is invoked when the user activated an item. It is used to mount
      * shares.
      * @param item                The item that was executed.
      */
     void slotItemActivated(QListWidgetItem *item);
 
     /**
-     * This slot is used to process an accepted drop event in the icon view.
+     * This slot is used to process an accepted drop event in the view.
      *
      * @param item                The item where the drop event occurred.
      *
      * @param e                   The drop event that encapsulates the necessary data.
      */
-    void slotIconViewDropEvent(Smb4KSharesViewItem *item, QDropEvent *e);
+    void slotDropEvent(Smb4KSharesViewItem *item, QDropEvent *e);
                                 
     /**
      * This slot is connected to the Smb4KMounter::mounted() signal and adds the 
@@ -238,6 +237,11 @@ class Q_DECL_EXPORT Smb4KSharesViewPart : public KParts::Part
      * Enable or disable the Open With action
      */
     void slotEnableOpenWithAction();
+    
+    /**
+     * Change the view mode
+     */
+    void slotViewModeChanged(QAction *action);
 
   private:
     /**
@@ -245,23 +249,6 @@ class Q_DECL_EXPORT Smb4KSharesViewPart : public KParts::Part
      */
     bool m_bookmark_shortcut;
     
-    /**
-     * Emit status messages
-     */
-    bool m_silent;
-
-    /**
-     * This is the container widget for the
-     * shares views.
-     */
-    QWidget *m_container;
-
-    /**
-     * This is the layout of the container
-     * widget.
-     */
-    QGridLayout *m_layout;
-
     /**
      * Set up the actions
      */
@@ -283,7 +270,7 @@ class Q_DECL_EXPORT Smb4KSharesViewPart : public KParts::Part
     void saveSettings();
 
     /**
-     * The icon view.
+     * The view.
      */
     Smb4KSharesView *m_view;
 

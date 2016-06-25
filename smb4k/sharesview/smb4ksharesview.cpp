@@ -48,17 +48,16 @@
 Smb4KSharesView::Smb4KSharesView(QWidget *parent)
 : QListWidget(parent)
 {
-  setViewMode(IconMode);
   setMouseTracking(true);
   setSelectionMode(ExtendedSelection);
   setResizeMode(Adjust);
   setSortingEnabled(true);
   setWordWrap(true);
-  setSpacing(5);
   setAcceptDrops(true);
   setDragEnabled(true);
   setDropIndicatorShown(true);
   setUniformItemSizes(true);
+  setWrapping(true);
   
   setContextMenuPolicy(Qt::CustomContextMenu);
 

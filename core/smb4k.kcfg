@@ -51,6 +51,19 @@
       <whatsthis>The tooltip shows various information about the current share.</whatsthis>
       <default>true</default>
     </entry>
+    <entry name="SharesViewMode" type="Enum">
+      <label>View mode of the shares view</label>
+      <whatsthis>This setting determines the view mode of the shares view. There are two modes: the icon view and the list view.</whatsthis>
+      <choices>
+        <choice name="IconView">
+          <label>Icon View</label>
+        </choice>
+        <choice name="ListView">
+          <label>List View</label>
+        </choice>
+      </choices>
+      <default>IconView</default>
+    </entry>
   </group>
 
 <!-- Network -->

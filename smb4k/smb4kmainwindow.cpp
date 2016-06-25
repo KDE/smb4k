@@ -1174,8 +1174,19 @@ void Smb4KMainWindow::slotActivePartChanged(KParts::Part *part)
       connect(action, SIGNAL(changed()), this, SLOT(slotEnableBookmarkAction()));
       continue;
     }
-    else if (QString::compare(action->objectName(), "filemanager_action") == 0 ||
-              QString::compare(action->objectName(), "konsole_action") == 0)
+    else if (QString::compare(action->objectName(), "filemanager_action") == 0)
+    {
+      continue;
+    }
+    else if (QString::compare(action->objectName(), "konsole_action") == 0)
+    {
+      continue;
+    }
+    else if (QString::compare(action->objectName(), "icon_view_action") == 0)
+    {
+      continue;
+    }
+    else if (QString::compare(action->objectName(), "list_view_action") == 0)
     {
       continue;
     }

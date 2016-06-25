@@ -2,6 +2,8 @@
 <gui name="smb4ksharesview_part" version="1">
 <MenuBar>
   <Menu name="shares"><text>&amp;Shares</text>
+    <Action name="shares_view_modes"/>
+    <Separator/>
     <Action name="unmount_action"/>
     <Action name="unmount_all_action"/>
     <Separator/>
@@ -12,6 +14,8 @@
   </Menu>
 </MenuBar>
 <ToolBar name="sharesViewToolBar">
+  <Action name="shares_view_modes"/>
+  <Separator/>
   <Action name="unmount_action"/>
   <Action name="unmount_all_action"/>
   <Separator/>
