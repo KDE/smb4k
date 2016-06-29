@@ -131,12 +131,20 @@ Smb4KSharesViewPart::~Smb4KSharesViewPart()
 
 void Smb4KSharesViewPart::setupView()
 {
+  //
+  // For the icon view as well as the list view we use the icon size
+  // defined for the desktop. The 'small' icon size is a bit too small,
+  // I think...
+  //
+  int icon_size = KIconLoader::global()->currentSize(KIconLoader::Desktop);
+  
+  //
+  // Adjust the view according to the setting chosen
+  //
   switch (Smb4KSettings::sharesViewMode())
   {
     case Smb4KSettings::EnumSharesViewMode::IconView:
     {
-      int icon_size = KIconLoader::global()->currentSize(KIconLoader::Desktop);
-      
       m_view->setViewMode(Smb4KSharesView::IconMode);
       m_view->setUniformItemSizes(true);
       m_view->setIconSize(QSize(icon_size, icon_size));
@@ -145,8 +153,6 @@ void Smb4KSharesViewPart::setupView()
     }
     case Smb4KSettings::EnumSharesViewMode::ListView:
     {
-      int icon_size = KIconLoader::global()->currentSize(KIconLoader::Small);
-      
       m_view->setViewMode(Smb4KSharesView::ListMode);
       m_view->setUniformItemSizes(false);
       m_view->setIconSize(QSize(icon_size, icon_size));
@@ -159,6 +165,10 @@ void Smb4KSharesViewPart::setupView()
     }
   }
 
+  //
+  // Connections. 
+  // Qt::UniqueConnection ensures that the connection is only made once.
+  //
   connect(m_view, SIGNAL(customContextMenuRequested(QPoint)), 
           this, SLOT(slotContextMenuRequested(QPoint)), Qt::UniqueConnection);
   connect(m_view, SIGNAL(itemSelectionChanged()), 
