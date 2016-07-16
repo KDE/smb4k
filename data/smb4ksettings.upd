@@ -57,3 +57,10 @@ File=smb4krc
 Group=Samba
 Options=overwrite
 Script=samba3.sh,sh
+
+Id=userinterface5
+File=smb4krc
+Group=UserInterface
+Options=overwrite
+Script=userinterface5.sh,sh
+
