@@ -30,7 +30,7 @@
 // application specific includes
 #include "smb4ksharesview_part.h"
 #include "smb4ksharesviewitem.h"
-#include "../tooltips/smb4ktooltip.h"
+#include "../smb4ktooltip.h"
 #include "core/smb4kshare.h"
 #include "core/smb4ksettings.h"
 #include "core/smb4kglobal.h"

@@ -32,10 +32,9 @@
 #include "core/smb4kglobal.h"
 
 // Qt includes
+#include <QtCore/QDebug>
 #include <QtGui/QBrush>
 #include <QtWidgets/QApplication>
-
-// KDE includes
 
 
 
@@ -166,6 +165,8 @@ Smb4KBasicNetworkItem* Smb4KNetworkBrowserItem::networkItem()
 
 void Smb4KNetworkBrowserItem::update(Smb4KBasicNetworkItem *item)
 {
+  qDebug() << "FIXME: Update item without deleting the internal network item";
+  
   if (item)
   {
     switch (item->type())
@@ -240,9 +241,23 @@ void Smb4KNetworkBrowserItem::update(Smb4KBasicNetworkItem *item)
           // Do nothing
         }
         
+        //
+        // FIXME: Update all appropriate values
+        // 
+        
         // Update the share and the tooltip
         Smb4KShare *share = static_cast<Smb4KShare *>(item);
         m_share->setMountData(share);
+        
+        if (m_share->url() != share->url())
+        {
+          m_share->setURL(share->url());
+        }
+        else
+        {
+          // Do nothing
+        }
+        
         m_tooltip->update(Smb4KToolTip::NetworkBrowser, m_share);
 
         // Set the comment

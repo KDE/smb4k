@@ -10,11 +10,26 @@ include_directories(
 
 add_subdirectory(icons)
 add_subdirectory(configdlg)
-add_subdirectory(tooltips)
 add_subdirectory(browser)
 add_subdirectory(sharesview)
 add_subdirectory(search)
 
+########### next target ###############
+
+set(smb4ktooltips_LIB_SRCS
+  smb4ktooltip.cpp)
+
+add_library(smb4ktooltips SHARED ${smb4ktooltips_LIB_SRCS})
+
+target_link_libraries(smb4ktooltips
+  Qt5::Core
+  Qt5::Gui
+  Qt5::Widgets
+  KF5::ConfigWidgets
+  KF5::WidgetsAddons
+  KF5::IconThemes
+  KF5::I18n
+  smb4kcore)
 
 ########### next target ###############
 
@@ -24,7 +39,8 @@ set(smb4k_SRCS
   smb4kprofilesmenu.cpp
   smb4ksharesmenu.cpp
   smb4kmainwindow.cpp
-  smb4ksystemtray.cpp)
+  smb4ksystemtray.cpp
+  smb4ktooltip.cpp)
 
 add_executable(smb4k ${smb4k_SRCS})
 
@@ -41,6 +57,8 @@ target_link_libraries(smb4k
 install(TARGETS smb4k DESTINATION ${KDE_INSTALL_BINDIR})
 
 ########### install files ###############
+
+install(TARGETS smb4ktooltips DESTINATION ${KDE_INSTALL_LIBDIR})
 
 install(PROGRAMS smb4k.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 install(FILES smb4k_shell.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/smb4k)

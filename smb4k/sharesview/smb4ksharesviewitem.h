@@ -28,7 +28,7 @@
 
 // application specific includes
 #include "core/smb4kshare.h"
-#include "../tooltips/smb4ktooltip.h"
+#include "../smb4ktooltip.h"
 
 // Qt includes
 #include <QtWidgets/QListWidgetItem>
