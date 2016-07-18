@@ -1087,7 +1087,6 @@ bool Smb4KShare::isEmpty(CheckFlags flag) const
 
 void Smb4KShare::setMountData(Smb4KShare *share)
 {
-  qDebug() << "FIXME: Smb4KShare::setMountData() - Do not overwrite existing entries with empty ones";
   Q_ASSERT(share);
 
   if (equals(share, MinimalLocalOnly))
