@@ -2,7 +2,7 @@
     smb4knetworkbrowseritem  -  Smb4K's network browser list item.
                              -------------------
     begin                : Mo Jan 8 2007
-    copyright            : (C) 2007-2015 by Alexander Reinholdt
+    copyright            : (C) 2007-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -240,12 +240,12 @@ void Smb4KNetworkBrowserItem::update(Smb4KBasicNetworkItem *item)
           // Do nothing
         }
         
-        delete m_share;
-        m_share = new Smb4KShare(*(static_cast<Smb4KShare *>(item)));
-        
+        // Update the share and the tooltip
+        Smb4KShare *share = static_cast<Smb4KShare *>(item);
+        m_share->setMountData(share);
         m_tooltip->update(Smb4KToolTip::NetworkBrowser, m_share);
 
-        // Set the comment.
+        // Set the comment
         setText(Comment, m_share->comment());
     
         // Set the icon
