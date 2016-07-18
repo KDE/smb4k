@@ -3,7 +3,7 @@
     browser of Smb4K.
                              -------------------
     begin                : Fr Jan 5 2007
-    copyright            : (C) 2007-2015 by Alexander Reinholdt
+    copyright            : (C) 2007-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -1037,7 +1037,7 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers(Smb4KWorkgroup *workgroup, co
             for (int i = 0; i < list.size(); ++i)
             {
               if (QString::compare(list.at(i)->workgroupName(), item->hostItem()->workgroupName(), Qt::CaseInsensitive) == 0 &&
-                   QString::compare(list.at(i)->unc(), item->hostItem()->unc(), Qt::CaseInsensitive) == 0)
+                  QString::compare(list.at(i)->unc(), item->hostItem()->unc(), Qt::CaseInsensitive) == 0)
               {
                 item->update(list.at(i));
                 found = true;

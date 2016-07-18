@@ -3,7 +3,7 @@
     browser of Smb4K.
                              -------------------
     begin                : Fr Jan 5 2007
-    copyright            : (C) 2007-2015 by Alexander Reinholdt
+    copyright            : (C) 2007-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
