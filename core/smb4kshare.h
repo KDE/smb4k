@@ -552,6 +552,11 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *                        data should be copied.
      */
     void setMountData(Smb4KShare *share);
+    
+    /**
+     * This convenience function resets the mount related data.
+     */
+    void resetMountData();
 
     /**
      * Returns TRUE if the share is or *was* a 'homes' share. That means that

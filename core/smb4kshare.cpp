@@ -1089,7 +1089,7 @@ void Smb4KShare::setMountData(Smb4KShare *share)
 {
   Q_ASSERT(share);
 
-  if (equals(share, MinimalLocalOnly))
+  if (equals(share, MinimalNetworkOnly))
   {
     d->path         = share->path();
     d->inaccessible = share->isInaccessible();
@@ -1107,6 +1107,22 @@ void Smb4KShare::setMountData(Smb4KShare *share)
   {
     // Do nothing
   }
+}
+
+
+void Smb4KShare::resetMountData()
+{
+  d->path.clear();
+  d->inaccessible = false;
+  d->foreign      = false;
+  d->user         = KUser(KUser::UseRealUserID);
+  d->group        = KUserGroup(KUser::UseRealUserID);
+  d->totalSpace   = -1;
+  d->freeSpace    = -1;
+  d->usedSpace    = -1;
+  d->mounted      = false;
+  d->typeString   = "Disk";
+  setShareIcon();
 }
 
 
