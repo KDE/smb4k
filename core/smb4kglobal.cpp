@@ -788,8 +788,7 @@ void Smb4KGlobal::openShare(Smb4KShare *share, OpenWith openWith)
   {
     case FileManager:
     {
-      QUrl url;
-      url.setPath(share->canonicalPath());
+      QUrl url = QUrl::fromLocalFile(share->canonicalPath());
 
       (void) new KRun(url, 0);
 
