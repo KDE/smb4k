@@ -178,6 +178,7 @@ class Smb4KMounterPrivate
     bool firstImportDone;
     bool aboutToQuit;
     QString activeProfile;
+    bool detectAllShares;
 };
 
 

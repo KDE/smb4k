@@ -280,6 +280,12 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
      */
     void slotTriggerImport();
     
+    /**
+     * This slot is called whenever the configuration changed. It is used
+     * to trigger the importing of shares when certain settings changed.
+     */
+    void slotConfigChanged();
+    
   private:
     /**
      * Trigger the remounting of shares. If the parameter @p fill_list is

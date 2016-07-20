@@ -105,6 +105,7 @@ Smb4KMounter::Smb4KMounter(QObject *parent)
   d->firstImportDone = false;
   d->aboutToQuit = false;
   d->activeProfile = Smb4KProfileManager::self()->activeProfile();
+  d->detectAllShares = Smb4KSettings::detectAllShares();
 
   connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()),
           this, SLOT(slotAboutToQuit()));
@@ -126,6 +127,9 @@ Smb4KMounter::Smb4KMounter(QObject *parent)
   
   connect(Smb4KProfileManager::self(), SIGNAL(activeProfileChanged(QString)),
           this, SLOT(slotActiveProfileChanged(QString)));
+  
+  connect(Smb4KSettings::self(), SIGNAL(configChanged()),
+          this, SLOT(slotConfigChanged()));
 }
 
 
@@ -2606,5 +2610,20 @@ void Smb4KMounter::slotTriggerImport()
   // Initialize an import
   import(true);
 }
+
+
+void Smb4KMounter::slotConfigChanged()
+{
+  if (d->detectAllShares != Smb4KSettings::detectAllShares())
+  {
+    slotTriggerImport();
+    d->detectAllShares = Smb4KSettings::detectAllShares();
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
 
 
