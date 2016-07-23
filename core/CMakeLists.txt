@@ -79,8 +79,7 @@ target_link_libraries(smb4kcore
   KF5::KIOWidgets
   KF5::Notifications
   KF5::JobWidgets
-  KF5::Wallet
-  KF5::KDELibs4Support)
+  KF5::Wallet)
 
 set_target_properties(smb4kcore PROPERTIES VERSION 5.0.0 SOVERSION 5)
 install(TARGETS smb4kcore DESTINATION ${KDE_INSTALL_LIBDIR})

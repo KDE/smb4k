@@ -37,7 +37,6 @@ find_package(KF5I18n 5.9.0 REQUIRED)
 find_package(KF5Completion 5.9.0 REQUIRED)
 find_package(KF5CoreAddons 5.9.0 REQUIRED)
 find_package(KF5Solid 5.9.0 REQUIRED)
-find_package(KF5KDELibs4Support 5.9.0 REQUIRED) # FIXME: Remove as soon as possible
 find_package(KF5KIO 5.9.0 REQUIRED)
 find_package(KF5Notifications 5.9.0 REQUIRED)
 find_package(KF5XmlGui 5.9.0 REQUIRED)
