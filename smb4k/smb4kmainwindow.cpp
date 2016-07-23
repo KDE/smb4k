@@ -681,21 +681,21 @@ void Smb4KMainWindow::slotWalletManagerInitialized()
   {
     if (Smb4KWalletManager::self()->walletIsOpen())
     {
-      m_pass_icon->setPixmap(KIconLoader::global()->loadIcon("wallet-open",
-                              KIconLoader::Small, 0, KIconLoader::DefaultState));
+      m_pass_icon->setPixmap(KIconLoader::global()->loadIcon("user-available",
+                             KIconLoader::Small, 0, KIconLoader::DefaultState));
       m_pass_icon->setToolTip(i18n("The wallet is in use."));
     }
     else
     {
-      m_pass_icon->setPixmap(KIconLoader::global()->loadIcon("wallet-closed",
-                              KIconLoader::Small, 0, KIconLoader::DefaultState));
+      m_pass_icon->setPixmap(KIconLoader::global()->loadIcon("user-identity",
+                             KIconLoader::Small, 0, KIconLoader::DefaultState));
       m_pass_icon->setToolTip(i18n("The wallet is not in use."));
     }
   }
   else
   {
     m_pass_icon->setPixmap(KIconLoader::global()->loadIcon("dialog-password",
-                            KIconLoader::Small, 0, KIconLoader::DefaultState));
+                           KIconLoader::Small, 0, KIconLoader::DefaultState));
     m_pass_icon->setToolTip(i18n("The password dialog mode is used."));
   }
 }
