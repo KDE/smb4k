@@ -147,9 +147,9 @@ Smb4KAuthOptionsPage::Smb4KAuthOptionsPage(QWidget *parent) : QTabWidget(parent)
   m_details_widget = new QTableWidget(logins_tab);
   m_details_widget->setContextMenuPolicy(Qt::CustomContextMenu);
   m_details_widget->horizontalHeader()->setVisible(false);
-  m_details_widget->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
+  m_details_widget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
   m_details_widget->verticalHeader()->setVisible(false);
-  m_details_widget->verticalHeader()->setResizeMode(QHeaderView::ResizeToContents);
+  m_details_widget->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
   m_details_widget->viewport()->installEventFilter(this);
   m_details_widget->setEnabled(false);
   

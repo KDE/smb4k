@@ -29,6 +29,7 @@ target_link_libraries(smb4ktooltips
   KF5::WidgetsAddons
   KF5::IconThemes
   KF5::I18n
+  KF5::WindowSystem
   smb4kcore)
 
 ########### next target ###############
@@ -39,8 +40,7 @@ set(smb4k_SRCS
   smb4kprofilesmenu.cpp
   smb4ksharesmenu.cpp
   smb4kmainwindow.cpp
-  smb4ksystemtray.cpp
-  smb4ktooltip.cpp)
+  smb4ksystemtray.cpp)
 
 add_executable(smb4k ${smb4k_SRCS})
 

@@ -46,6 +46,7 @@ find_package(KF5DBusAddons 5.9.0 REQUIRED)
 find_package(KF5Parts 5.9.0 REQUIRED)
 find_package(KF5ConfigWidgets 5.9.0 REQUIRED)
 find_package(KF5Notifications 5.9.0 REQUIRED)
+find_package(KF5WindowSystem 5.9.0 REQUIRED)
 
 # Make sure that Smb4K builds when several custom targets
 # with the same name exist (happens in the po directory).

@@ -2,7 +2,7 @@
     smb4kwalletmanager  -  This is the wallet manager of Smb4K.
                              -------------------
     begin                : Sa Dez 27 2008
-    copyright            : (C) 2008-2015 by Alexander Reinholdt
+    copyright            : (C) 2008-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

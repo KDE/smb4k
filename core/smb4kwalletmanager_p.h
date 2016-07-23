@@ -3,7 +3,7 @@
                              of Smb4K.
                              -------------------
     begin                : Mo Dez 31 2012
-    copyright            : (C) 2012-2015 by Alexander Reinholdt
+    copyright            : (C) 2012-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -32,7 +32,7 @@
 #include "smb4kbasicnetworkitem.h"
 
 // KDE includes
-#include <KWallet/Wallet>
+#include <KWallet/KWallet>
 #include <KWidgetsAddons/KPasswordDialog>
 
 
@@ -48,8 +48,8 @@ class Smb4KPasswordDialog : public KPasswordDialog
 
   protected Q_SLOTS:
     void slotGotUsernameAndPassword(const QString &user,
-                                     const QString &pass,
-                                     bool keep);
+                                    const QString &pass,
+                                    bool keep);
 
   private:
     Smb4KBasicNetworkItem *m_item;

@@ -500,7 +500,7 @@ void Smb4KScanner::lookupDomains(QWidget *parent)
           // 6 times 0xFF
           for (int j = 0; j < 6; ++j)
           {
-            sequence.append(QChar(0xFF).toAscii());
+            sequence.append(QChar(0xFF).toLatin1());
           }
           
           // 16 times the MAC address
@@ -510,7 +510,7 @@ void Smb4KScanner::lookupDomains(QWidget *parent)
           {
             for (int k = 0; k < parts.size(); ++k)
             {
-              sequence.append(QChar(QString("0x%1").arg(parts.at(k)).toInt(0, 16)).toAscii());
+              sequence.append(QChar(QString("0x%1").arg(parts.at(k)).toInt(0, 16)).toLatin1());
             }
           }
           

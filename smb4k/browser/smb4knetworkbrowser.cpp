@@ -70,7 +70,7 @@ Smb4KNetworkBrowser::Smb4KNetworkBrowser(QWidget *parent)
   header_labels.append(i18n("Comment"));
   setHeaderLabels(header_labels);
 
-  header()->setResizeMode(QHeaderView::ResizeToContents);
+  header()->setSectionResizeMode(QHeaderView::ResizeToContents);
 
   // Add some connections:
   connect(this, SIGNAL(itemActivated(QTreeWidgetItem*, int)),
