@@ -30,7 +30,7 @@
 // application specific includes
 #include "smb4ksharesview_part.h"
 #include "smb4ksharesviewitem.h"
-#include "../smb4ktooltip.h"
+#include "smb4ktooltip.h"
 #include "core/smb4kshare.h"
 #include "core/smb4ksettings.h"
 #include "core/smb4kglobal.h"
@@ -113,10 +113,10 @@ Smb4KSharesViewPart::Smb4KSharesViewPart(QWidget *parentWidget, QObject *parent,
           this, SLOT(slotShareUnmounted(Smb4KShare*)));
   connect(Smb4KMounter::self(), SIGNAL(updated(Smb4KShare*)),
           this, SLOT(slotShareUpdated(Smb4KShare*)));
-  connect(Smb4KMounter::self(), SIGNAL(aboutToStart(Smb4KShare*,int)),
-          this, SLOT(slotMounterAboutToStart(Smb4KShare*,int)));
-  connect(Smb4KMounter::self(), SIGNAL(finished(Smb4KShare*,int)),
-          this, SLOT(slotMounterFinished(Smb4KShare*,int)));
+  connect(Smb4KMounter::self(), SIGNAL(aboutToStart(int)),
+          this, SLOT(slotMounterAboutToStart(int)));
+  connect(Smb4KMounter::self(), SIGNAL(finished(int)),
+          this, SLOT(slotMounterFinished(int)));
   connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()),
           this, SLOT(slotAboutToQuit()));
   connect(KIconLoader::global(), SIGNAL(iconChanged(int)),
@@ -754,36 +754,29 @@ void Smb4KSharesViewPart::slotAddBookmark(bool /*checked */)
 }
 
 
-void Smb4KSharesViewPart::slotMounterAboutToStart(Smb4KShare *share, int process)
+void Smb4KSharesViewPart::slotMounterAboutToStart(int process)
 {
-  if (share)
+  switch (process)
   {
-    switch (process)
+    case MountShare:
     {
-      case MountShare:
-      {
-        emit setStatusBarText(i18n("Mounting share %1...", share->unc()));
-        break;
-      }
-      case UnmountShare:
-      {
-        emit setStatusBarText(i18n("Unmounting share %1...", share->unc()));
-        break;
-      }
-      default:
-      {
-        break;
-      }
+      emit setStatusBarText(i18n("Mounting share..."));
+      break;
     }
-  }
-  else
-  {
-    // Do nothing
+    case UnmountShare:
+    {
+      emit setStatusBarText(i18n("Unmounting share..."));
+      break;
+    }
+    default:
+    {
+      break;
+    }
   }
 }
 
 
-void Smb4KSharesViewPart::slotMounterFinished(Smb4KShare */*share*/, int /*process*/)
+void Smb4KSharesViewPart::slotMounterFinished(int /*process*/)
 {
   emit setStatusBarText(i18n("Done."));
 }

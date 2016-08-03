@@ -299,23 +299,15 @@ class Smb4KNetworkBrowserPart : public KParts::Part
 
     /**
      * This slot is connected to the Smb4KMounter::aboutToStart() signal.
-     *
-     * @param share               The Smb4KShare object
-     *
      * @param process             The process
      */
-    void slotMounterAboutToStart(Smb4KShare *share,
-                                  int process);
+    void slotMounterAboutToStart(int process);
 
     /**
      * This slot is connected to the Smb4KMounter::finished() signal.
-     *
-     * @param share               The Smb4KShare object
-     *
      * @param process             The process
      */
-    void slotMounterFinished(Smb4KShare *share,
-                              int process);
+    void slotMounterFinished(int process);
 
     /**
      * This slot is called whenever a share has been mounted. It marks the

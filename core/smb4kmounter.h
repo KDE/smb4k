@@ -189,24 +189,16 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
     void unmounted(Smb4KShare *share);
     
     /**
-     * This signal is emitted when a mount/unmount process for the share 
-     * @p share is about to be started.
-     *
-     * @param share             The Smb4KShare object
-     *
+     * This signal is emitted when a process is about to start.
      * @param process           The kind of process
      */
-    void aboutToStart(Smb4KShare *share, int process);
+    void aboutToStart(int process);
 
     /**
-     * This signal is emitted when the mount/unmount process for the share 
-     * @p share finished.
-     *
-     * @param share             The Smb4KShare object
-     *
+     * This signal is emitted when a process finished.
      * @param process           The kind of process
      */
-    void finished(Smb4KShare *share, int process);
+    void finished(int process);
     
     /**
      * This signal is emitted every time a share was added to or removed

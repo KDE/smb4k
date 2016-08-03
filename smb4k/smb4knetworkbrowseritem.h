@@ -30,7 +30,7 @@
 #include "core/smb4kworkgroup.h"
 #include "core/smb4khost.h"
 #include "core/smb4kshare.h"
-#include "../smb4ktooltip.h"
+#include "smb4ktooltip.h"
 
 // Qt includes
 #include <QtWidgets/QTreeWidgetItem>

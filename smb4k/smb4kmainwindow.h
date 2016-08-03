@@ -134,14 +134,18 @@ class Smb4KMainWindow : public KParts::MainWindow
      * This slot shows a status message according to the action performed by the 
      * mounter as well as a busy bar. It is connected to the Smb4KMounter::aboutToStart() 
      * signal.
-     * 
-     * @param share         The share item
-     *
      * @param process       The process
      */
-    void slotMounterAboutToStart(Smb4KShare *share,
-                                  int process);
-                                  
+    void slotMounterAboutToStart(int process);
+    
+    /**
+     * This shows a status message according to the action that was just finished by
+     * the mounter and hides the busy bar if appropriate. It is connected to the 
+     * Smb4KMounter::finished() signal.
+     * @param process       The process
+     */
+    void slotMounterFinished(int process);
+                                                                
     /**
      * This slot gives the visual mount feedback in the status bar. It is 
      * connected to the Smb4KMounter::mounted() signal.
@@ -158,18 +162,6 @@ class Smb4KMainWindow : public KParts::MainWindow
      */
     void slotVisualUnmountFeedback(Smb4KShare *share);
                                   
-    /**
-     * This shows a status message according to the action that was just finished by
-     * the mounter and hides the busy bar if appropriate. It is connected to the 
-     * Smb4KMounter::finished() signal.
-     * 
-     * @param share         The share item
-     * 
-     * @param process       The process
-     */
-    void slotMounterFinished(Smb4KShare *share,
-                              int process);
-                              
     /**
      * This slot shows a status message as well as a busy bar. It is connected to the 
      * Smb4KSearch::aboutToStart() signal.

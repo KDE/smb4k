@@ -621,7 +621,7 @@ void Smb4KMounter::mountShares(const QList<Smb4KShare *> &shares, QWidget *paren
 
       if (options && options->wolSendBeforeMount())
       {
-        emit aboutToStart(share, WakeUp);
+        emit aboutToStart(WakeUp);
 
         QUdpSocket *socket = new QUdpSocket(this);
         QHostAddress addr;
@@ -669,7 +669,7 @@ void Smb4KMounter::mountShares(const QList<Smb4KShare *> &shares, QWidget *paren
           QTest::qWait(250);
         }
         
-        emit finished(share, WakeUp);
+        emit finished(WakeUp);
       }
       else
       {
@@ -765,7 +765,7 @@ void Smb4KMounter::mountShares(const QList<Smb4KShare *> &shares, QWidget *paren
   //
   // Emit the aboutToStart() signal
   //
-  emit aboutToStart(0, MountShare);
+  emit aboutToStart(MountShare);
 
   //
   // Create the mount action
@@ -935,7 +935,7 @@ void Smb4KMounter::unmountShares(const QList<Smb4KShare *> &shares, bool silent,
   //
   // Emit the aboutToStart() signal
   //
-  emit aboutToStart(0, UnmountShare);
+  emit aboutToStart(UnmountShare);
 
   //
   // Create the unmount action
@@ -2287,8 +2287,7 @@ void Smb4KMounter::slotJobFinished(KJob* job)
     // Do nothing
   }
   
-  Smb4KShare share;
-  emit finished(&share, process);
+  emit finished(process);
 }
 
 

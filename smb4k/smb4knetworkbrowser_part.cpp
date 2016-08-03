@@ -32,7 +32,7 @@
 #include "smb4knetworkbrowser_part.h"
 #include "smb4knetworkbrowser.h"
 #include "smb4knetworkbrowseritem.h"
-#include "../smb4ktooltip.h"
+#include "smb4ktooltip.h"
 #include "core/smb4kglobal.h"
 #include "core/smb4ksettings.h"
 #include "core/smb4kbookmark.h"
@@ -167,11 +167,11 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart(QWidget *parentWidget, QObject 
   connect(Smb4KScanner::self(), SIGNAL(ipAddress(Smb4KHost*)),
           this, SLOT(slotAddIPAddress(Smb4KHost*)));
   
-  connect(Smb4KMounter::self(), SIGNAL(aboutToStart(Smb4KShare*,int)),
-          this, SLOT(slotMounterAboutToStart(Smb4KShare*,int)));
+  connect(Smb4KMounter::self(), SIGNAL(aboutToStart(int)),
+          this, SLOT(slotMounterAboutToStart(int)));
   
-  connect(Smb4KMounter::self(), SIGNAL(finished(Smb4KShare*,int)),
-          this, SLOT(slotMounterFinished(Smb4KShare*,int)));
+  connect(Smb4KMounter::self(), SIGNAL(finished(int)),
+          this, SLOT(slotMounterFinished(int)));
   
   connect(Smb4KMounter::self(), SIGNAL(mounted(Smb4KShare*)),
           this, SLOT(slotShareMounted(Smb4KShare*)));
@@ -2008,7 +2008,7 @@ void Smb4KNetworkBrowserPart::slotScannerFinished(Smb4KBasicNetworkItem */*item*
 }
 
 
-void Smb4KNetworkBrowserPart::slotMounterAboutToStart(Smb4KShare */*share*/, int /*process*/)
+void Smb4KNetworkBrowserPart::slotMounterAboutToStart(int /*process*/)
 {
   // Do not change the state of the rescan action here, because it has
   // nothing to do with the mounter.
@@ -2016,7 +2016,7 @@ void Smb4KNetworkBrowserPart::slotMounterAboutToStart(Smb4KShare */*share*/, int
 }
 
 
-void Smb4KNetworkBrowserPart::slotMounterFinished(Smb4KShare */*share*/, int process)
+void Smb4KNetworkBrowserPart::slotMounterFinished(int process)
 {
   switch (process)
   {
