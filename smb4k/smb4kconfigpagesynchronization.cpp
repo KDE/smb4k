@@ -1,8 +1,8 @@
 /***************************************************************************
-    smb4ksynchronizeoptions  -  The configuration page for the rsync options
+    The configuration page for the synchronization options
                              -------------------
     begin                : So Nov 20 2005
-    copyright            : (C) 2005-2015 by Alexander Reinholdt
+    copyright            : (C) 2005-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,7 +28,7 @@
 #endif
 
 // application specific includes
-#include "smb4krsyncoptionspage.h"
+#include "smb4kconfigpagesynchronization.h"
 #include "core/smb4ksettings.h"
 
 // Qt includes
@@ -44,7 +44,7 @@
 #include <KCompletion/KLineEdit>
 
 
-Smb4KRsyncOptionsPage::Smb4KRsyncOptionsPage(QWidget *parent)
+Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
 : QTabWidget(parent)
 {
   //
@@ -579,7 +579,7 @@ Smb4KRsyncOptionsPage::Smb4KRsyncOptionsPage(QWidget *parent)
 }
 
 
-Smb4KRsyncOptionsPage::~Smb4KRsyncOptionsPage()
+Smb4KConfigPageSynchronization::~Smb4KConfigPageSynchronization()
 {
 }
 
@@ -588,7 +588,7 @@ Smb4KRsyncOptionsPage::~Smb4KRsyncOptionsPage()
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
 
-void Smb4KRsyncOptionsPage::slotArchiveToggled(bool checked)
+void Smb4KConfigPageSynchronization::slotArchiveToggled(bool checked)
 {
   if (checked)
   {
@@ -603,7 +603,7 @@ void Smb4KRsyncOptionsPage::slotArchiveToggled(bool checked)
 }
 
 
-void Smb4KRsyncOptionsPage::slotUncheckArchive(bool checked)
+void Smb4KConfigPageSynchronization::slotUncheckArchive(bool checked)
 {
   if (!checked)
   {
@@ -612,7 +612,7 @@ void Smb4KRsyncOptionsPage::slotUncheckArchive(bool checked)
 }
 
 
-void Smb4KRsyncOptionsPage::slotBackupToggled(bool checked)
+void Smb4KConfigPageSynchronization::slotBackupToggled(bool checked)
 {
   findChild<QCheckBox *>("kcfg_UseBackupDirectory")->setEnabled(checked);
   findChild<KUrlRequester *>("kcfg_BackupDirectory")->setEnabled(checked);
@@ -621,7 +621,7 @@ void Smb4KRsyncOptionsPage::slotBackupToggled(bool checked)
 }
 
 
-void Smb4KRsyncOptionsPage::slotFShortcutToggled(bool on)
+void Smb4KConfigPageSynchronization::slotFShortcutToggled(bool on)
 {
   QCheckBox *ff_filter = findChild<QCheckBox *>("kcfg_UseFFFilterRule");
 
@@ -632,7 +632,7 @@ void Smb4KRsyncOptionsPage::slotFShortcutToggled(bool on)
 }
 
 
-void Smb4KRsyncOptionsPage::slotFFShortcutToggled(bool on)
+void Smb4KConfigPageSynchronization::slotFFShortcutToggled(bool on)
 {
   QCheckBox *f_filter = findChild<QCheckBox *>("kcfg_UseFFilterRule");
 

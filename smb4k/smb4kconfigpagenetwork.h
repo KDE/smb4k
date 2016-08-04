@@ -1,9 +1,8 @@
 /***************************************************************************
-    smb4knetworkoptions  -  The configuration page for the network
-    settings of Smb4K
+    The configuration page for the network settings of Smb4K
                              -------------------
     begin                : Sa Nov 15 2003
-    copyright            : (C) 2003-2015 by Alexander Reinholdt
+    copyright            : (C) 2003-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -24,8 +23,8 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifndef SMB4KNETWORKOPTIONSPAGE_H
-#define SMB4KNETWORKOPTIONSPAGE_H
+#ifndef SMB4KCONFIGPAGENETWORK_H
+#define SMB4KCONFIGPAGENETWORK_H
 
 // Qt includes
 #include <QtWidgets/QTabWidget>
@@ -37,7 +36,7 @@
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class Smb4KNetworkOptionsPage : public QTabWidget
+class Smb4KConfigPageNetwork : public QTabWidget
 {
   Q_OBJECT
 
@@ -47,11 +46,11 @@ class Smb4KNetworkOptionsPage : public QTabWidget
      *
      * @param parent        The parent widget
      */
-    explicit Smb4KNetworkOptionsPage(QWidget *parent = 0);
+    explicit Smb4KConfigPageNetwork(QWidget *parent = 0);
 
     /**
      * The destructor
      */
-    ~Smb4KNetworkOptionsPage();
+    ~Smb4KConfigPageNetwork();
 };
 #endif

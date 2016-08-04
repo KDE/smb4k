@@ -1,9 +1,9 @@
 /***************************************************************************
-    smb4kuserinterfaceoptions  -  This configuration page takes care
-    of all settings concerning the user interface of Smb4K
+    This configuration page takes care of all settings concerning the 
+    user interface
                              -------------------
     begin                : Mi Aug 30 2006
-    copyright            : (C) 2006-2015 by Alexander Reinholdt
+    copyright            : (C) 2006-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -24,8 +24,8 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifndef SMB4KUSERINTERFACEOPTIONSPAGE_H
-#define SMB4KUSERINTERFACEOPTIONSPAGE_H
+#ifndef SMB4KCONFIGPAGEUSERINTERFACE_H
+#define SMB4KCONFIGPAGEUSERINTERFACE_H
 
 // Qt includes
 #include <QtWidgets/QTabWidget>
@@ -38,7 +38,7 @@
  * @author Alexander Reinholdt  <alexander.reinholdt@kdemail.net>
  */
 
-class Smb4KUserInterfaceOptionsPage : public QTabWidget
+class Smb4KConfigPageUserInterface : public QTabWidget
 {
   Q_OBJECT
 
@@ -48,12 +48,12 @@ class Smb4KUserInterfaceOptionsPage : public QTabWidget
      *
      * @param parent          The parent widget of this class.
      */
-    explicit Smb4KUserInterfaceOptionsPage(QWidget *parent = 0);
+    explicit Smb4KConfigPageUserInterface(QWidget *parent = 0);
 
     /**
      * The destructor
      */
-    ~Smb4KUserInterfaceOptionsPage();
+    ~Smb4KConfigPageUserInterface();
 };
 
 #endif

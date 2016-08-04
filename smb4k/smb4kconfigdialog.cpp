@@ -1,8 +1,8 @@
 /***************************************************************************
-    smb4kconfigdialog  -  The configuration dialog of Smb4K
+    The configuration dialog of Smb4K
                              -------------------
     begin                : Sa Apr 14 2007
-    copyright            : (C) 2004-2015 by Alexander Reinholdt
+    copyright            : (C) 2004-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -29,15 +29,15 @@
 
 // application specific includes
 #include "smb4kconfigdialog.h"
-#include "smb4kuserinterfaceoptionspage.h"
-#include "smb4knetworkoptionspage.h"
-#include "smb4kshareoptionspage.h"
-#include "smb4kauthoptionspage.h"
-#include "smb4ksambaoptionspage.h"
-#include "smb4krsyncoptionspage.h"
-#include "smb4kcustomoptionspage.h"
-#include "smb4kprofilespage.h"
-#include "smb4kmountoptionspage.h"
+#include "smb4kconfigpageauthentication.h"
+#include "smb4kconfigpagecustomoptions.h"
+#include "smb4kconfigpagemounting.h"
+#include "smb4kconfigpagenetwork.h"
+#include "smb4kconfigpageprofiles.h"
+#include "smb4kconfigpagesamba.h"
+#include "smb4kconfigpageshares.h"
+#include "smb4kconfigpagesynchronization.h"
+#include "smb4kconfigpageuserinterface.h"
 #include "core/smb4ksettings.h"
 #include "core/smb4kglobal.h"
 #include "core/smb4kauthinfo.h"
@@ -99,45 +99,45 @@ void Smb4KConfigDialog::setupDialog()
   setAttribute(Qt::WA_DeleteOnClose, true);
 
   // Add the pages:
-  Smb4KUserInterfaceOptionsPage *interface_options = new Smb4KUserInterfaceOptionsPage(this);
+  Smb4KConfigPageUserInterface *interface_options = new Smb4KConfigPageUserInterface(this);
   QScrollArea *interface_area = new QScrollArea(this);
   interface_area->setWidget(interface_options);
   interface_area->setWidgetResizable(true);
   interface_area->setFrameStyle(QFrame::NoFrame);
 
-  Smb4KNetworkOptionsPage *network_options = new Smb4KNetworkOptionsPage(this);
+  Smb4KConfigPageNetwork *network_options = new Smb4KConfigPageNetwork(this);
   QScrollArea *network_area = new QScrollArea(this);
   network_area->setWidget(network_options);
   network_area->setWidgetResizable(true);
   network_area->setFrameStyle(QFrame::NoFrame);
 
-  Smb4KShareOptionsPage *share_options = new Smb4KShareOptionsPage(this);
+  Smb4KConfigPageShares *share_options = new Smb4KConfigPageShares(this);
   QScrollArea *share_area = new QScrollArea(this);
   share_area->setWidget(share_options);
   share_area->setWidgetResizable(true);
   share_area->setFrameStyle(QFrame::NoFrame);
 
-  Smb4KAuthOptionsPage *auth_options = new Smb4KAuthOptionsPage(this);
+  Smb4KConfigPageAuthentication *auth_options = new Smb4KConfigPageAuthentication(this);
   QScrollArea *auth_area = new QScrollArea(this);
   auth_area->setWidget(auth_options);
   auth_area->setWidgetResizable(true);
   auth_area->setFrameStyle(QFrame::NoFrame);
 
-  Smb4KSambaOptionsPage *samba_options = new Smb4KSambaOptionsPage(this);
+  Smb4KConfigPageSamba *samba_options = new Smb4KConfigPageSamba(this);
   QScrollArea *samba_area = new QScrollArea(this);
   samba_area->setWidget(samba_options);
   samba_area->setWidgetResizable(true);
   samba_area->setFrameStyle(QFrame::NoFrame);
 
 #if !defined(UNSUPPORTED_PLATFORM)  
-  Smb4KMountOptionsPage *mount_options = new Smb4KMountOptionsPage(this);
+  Smb4KConfigPageMounting *mount_options = new Smb4KConfigPageMounting(this);
   QScrollArea *mount_area = new QScrollArea(this);
   mount_area->setWidget(mount_options);
   mount_area->setWidgetResizable(true);
   mount_area->setFrameStyle(QFrame::NoFrame);
 #endif
 
-  Smb4KRsyncOptionsPage *rsync_options = new Smb4KRsyncOptionsPage(this);
+  Smb4KConfigPageSynchronization *rsync_options = new Smb4KConfigPageSynchronization(this);
   QScrollArea *rsync_area = new QScrollArea(this);
   rsync_area->setWidget(rsync_options);
   rsync_area->setWidgetResizable(true);
@@ -145,13 +145,13 @@ void Smb4KConfigDialog::setupDialog()
   
   rsync_options->setEnabled(!QStandardPaths::findExecutable("rsync").isEmpty());
 
-  Smb4KCustomOptionsPage *custom_options = new Smb4KCustomOptionsPage(this);
+  Smb4KConfigPageCustomOptions *custom_options = new Smb4KConfigPageCustomOptions(this);
   QScrollArea *custom_area = new QScrollArea(this);
   custom_area->setWidget(custom_options);
   custom_area->setWidgetResizable(true);
   custom_area->setFrameStyle(QFrame::NoFrame);
   
-  Smb4KProfilesPage *profiles_page = new Smb4KProfilesPage(this);
+  Smb4KConfigPageProfiles *profiles_page = new Smb4KConfigPageProfiles(this);
   QScrollArea *profiles_area = new QScrollArea(this);
   profiles_area->setWidget(profiles_page);
   profiles_area->setWidgetResizable(true);
@@ -204,7 +204,7 @@ void Smb4KConfigDialog::loadCustomOptions()
   if (m_custom_options)
   {
     QList<Smb4KCustomOptions *> options = Smb4KCustomOptionsManager::self()->customOptions();
-    m_custom_options->widget()->findChild<Smb4KCustomOptionsPage *>()->insertCustomOptions(options);
+    m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>()->insertCustomOptions(options);
   }
   else
   {
@@ -217,7 +217,7 @@ void Smb4KConfigDialog::saveCustomOptions()
 {
   if (m_custom_options)
   {
-    QList<Smb4KCustomOptions *> options = m_custom_options->widget()->findChild<Smb4KCustomOptionsPage *>()->getCustomOptions();
+    QList<Smb4KCustomOptions *> options = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>()->getCustomOptions();
     Smb4KCustomOptionsManager::self()->replaceCustomOptions(options);
   }
   else
@@ -229,7 +229,7 @@ void Smb4KConfigDialog::saveCustomOptions()
 
 void Smb4KConfigDialog::propagateProfilesChanges()
 {
-  Smb4KProfilesPage *profiles_page = m_profiles->widget()->findChild<Smb4KProfilesPage *>();
+  Smb4KConfigPageProfiles *profiles_page = m_profiles->widget()->findChild<Smb4KConfigPageProfiles *>();
   
   if (profiles_page)
   {
@@ -387,11 +387,11 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
     KMessageBox::sorry(this, msg);
     setCurrentPage(m_synchronization);
     
-    Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
+    Smb4KConfigPageSynchronization *sync_options = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
     
     if (sync_options)
     {
-      sync_options->setCurrentIndex(Smb4KRsyncOptionsPage::CopyingTab);
+      sync_options->setCurrentIndex(Smb4KConfigPageSynchronization::CopyingTab);
     }
     else
     {
@@ -414,11 +414,11 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
     KMessageBox::sorry(this, msg);
     setCurrentPage(m_synchronization);
     
-    Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
+    Smb4KConfigPageSynchronization *sync_options = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
     
     if (sync_options)
     {
-      sync_options->setCurrentIndex(Smb4KRsyncOptionsPage::DelTransTab);
+      sync_options->setCurrentIndex(Smb4KConfigPageSynchronization::DelTransTab);
     }
     else
     {
@@ -441,11 +441,11 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
     KMessageBox::sorry(this, msg);
     setCurrentPage(m_synchronization);
     
-    Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
+    Smb4KConfigPageSynchronization *sync_options = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
     
     if (sync_options)
     {
-      sync_options->setCurrentIndex(Smb4KRsyncOptionsPage::DelTransTab);
+      sync_options->setCurrentIndex(Smb4KConfigPageSynchronization::DelTransTab);
     }
     else
     {
@@ -468,11 +468,11 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
     KMessageBox::sorry(this, msg);
     setCurrentPage(m_synchronization);
     
-    Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
+    Smb4KConfigPageSynchronization *sync_options = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
     
     if (sync_options)
     {
-      sync_options->setCurrentIndex(Smb4KRsyncOptionsPage::DelTransTab);
+      sync_options->setCurrentIndex(Smb4KConfigPageSynchronization::DelTransTab);
     }
     else
     {
@@ -496,11 +496,11 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
     KMessageBox::sorry(this, msg);
     setCurrentPage(m_synchronization);
     
-    Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
+    Smb4KConfigPageSynchronization *sync_options = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
     
     if (sync_options)
     {
-      sync_options->setCurrentIndex(Smb4KRsyncOptionsPage::DelTransTab);
+      sync_options->setCurrentIndex(Smb4KConfigPageSynchronization::DelTransTab);
     }
     else
     {
@@ -524,11 +524,11 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
     KMessageBox::sorry(this, msg);
     setCurrentPage(m_synchronization);
     
-    Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
+    Smb4KConfigPageSynchronization *sync_options = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
     
     if (sync_options)
     {
-      sync_options->setCurrentIndex(Smb4KRsyncOptionsPage::FilteringTab);
+      sync_options->setCurrentIndex(Smb4KConfigPageSynchronization::FilteringTab);
     }
     else
     {
@@ -552,11 +552,11 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
     KMessageBox::sorry(this, msg);
     setCurrentPage(m_synchronization);
     
-    Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
+    Smb4KConfigPageSynchronization *sync_options = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
     
     if (sync_options)
     {
-      sync_options->setCurrentIndex(Smb4KRsyncOptionsPage::FilteringTab);
+      sync_options->setCurrentIndex(Smb4KConfigPageSynchronization::FilteringTab);
     }
     else
     {
@@ -580,11 +580,11 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
     KMessageBox::sorry(this, msg);
     setCurrentPage(m_synchronization);
     
-    Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
+    Smb4KConfigPageSynchronization *sync_options = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
     
     if (sync_options)
     {
-      sync_options->setCurrentIndex(Smb4KRsyncOptionsPage::FilteringTab);
+      sync_options->setCurrentIndex(Smb4KConfigPageSynchronization::FilteringTab);
     }
     else
     {
@@ -608,11 +608,11 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
     KMessageBox::sorry(this, msg);
     setCurrentPage(m_synchronization);
     
-    Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
+    Smb4KConfigPageSynchronization *sync_options = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
     
     if (sync_options)
     {
-      sync_options->setCurrentIndex(Smb4KRsyncOptionsPage::FilteringTab);
+      sync_options->setCurrentIndex(Smb4KConfigPageSynchronization::FilteringTab);
     }
     else
     {
@@ -640,11 +640,11 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
       KMessageBox::sorry(this, msg);
       setCurrentPage(m_synchronization);
       
-      Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
+      Smb4KConfigPageSynchronization *sync_options = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
       
       if (sync_options)
       {
-        sync_options->setCurrentIndex(Smb4KRsyncOptionsPage::AdvancedTab);
+        sync_options->setCurrentIndex(Smb4KConfigPageSynchronization::AdvancedTab);
       }
       else
       {
@@ -668,11 +668,11 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
       KMessageBox::sorry(this, msg);
       setCurrentPage(m_synchronization);
       
-      Smb4KRsyncOptionsPage *sync_options = m_synchronization->widget()->findChild<Smb4KRsyncOptionsPage *>();
+      Smb4KConfigPageSynchronization *sync_options = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
       
       if (sync_options)
       {
-        sync_options->setCurrentIndex(Smb4KRsyncOptionsPage::AdvancedTab);
+        sync_options->setCurrentIndex(Smb4KConfigPageSynchronization::AdvancedTab);
       }
       else
       {
@@ -777,7 +777,7 @@ void Smb4KConfigDialog::updateWidgets()
 
 void Smb4KConfigDialog::slotLoadAuthenticationInformation()
 {
-  Smb4KAuthOptionsPage *auth_options = m_authentication->widget()->findChild<Smb4KAuthOptionsPage *>();
+  Smb4KConfigPageAuthentication *auth_options = m_authentication->widget()->findChild<Smb4KConfigPageAuthentication *>();
   QList<Smb4KAuthInfo *> entries = Smb4KWalletManager::self()->walletEntries();
   auth_options->insertWalletEntries(entries);
   auth_options->displayWalletEntries();
@@ -786,7 +786,7 @@ void Smb4KConfigDialog::slotLoadAuthenticationInformation()
 
 void Smb4KConfigDialog::slotSaveAuthenticationInformation()
 {
-  Smb4KAuthOptionsPage *auth_options = m_authentication->widget()->findChild<Smb4KAuthOptionsPage *>();
+  Smb4KConfigPageAuthentication *auth_options = m_authentication->widget()->findChild<Smb4KConfigPageAuthentication *>();
   
   if (auth_options->walletEntriesDisplayed())
   {
@@ -802,7 +802,7 @@ void Smb4KConfigDialog::slotSaveAuthenticationInformation()
 
 void Smb4KConfigDialog::slotSetDefaultLogin()
 {
-  Smb4KAuthOptionsPage *auth_options = m_authentication->widget()->findChild<Smb4KAuthOptionsPage *>();
+  Smb4KConfigPageAuthentication *auth_options = m_authentication->widget()->findChild<Smb4KConfigPageAuthentication *>();
   
   if (!auth_options->undoRemoval())
   {
@@ -854,7 +854,7 @@ void Smb4KConfigDialog::slotEnableApplyButton()
   bool enable = false;
   
   // Check the wallet entries.
-  Smb4KAuthOptionsPage *auth_options = m_authentication->widget()->findChild<Smb4KAuthOptionsPage *>();
+  Smb4KConfigPageAuthentication *auth_options = m_authentication->widget()->findChild<Smb4KConfigPageAuthentication *>();
 
   if (auth_options->walletEntriesMaybeChanged())
   {
@@ -903,7 +903,7 @@ void Smb4KConfigDialog::slotEnableApplyButton()
   }
   
   // Check the custom settings.
-  Smb4KCustomOptionsPage *custom_options = m_custom_options->widget()->findChild<Smb4KCustomOptionsPage *>();
+  Smb4KConfigPageCustomOptions *custom_options = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>();
   
   if (!enable && custom_options && custom_options->customSettingsMaybeChanged())
   {

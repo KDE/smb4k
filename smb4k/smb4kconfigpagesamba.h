@@ -1,9 +1,8 @@
 /***************************************************************************
-    smb4kshareoptions  -  The configuration page for the settings of
-    Smb4K regarding share management
+    This is the configuration page for the Samba settings of Smb4K
                              -------------------
-    begin                : Sa Nov 15 2003
-    copyright            : (C) 2003-2015 by Alexander Reinholdt
+    begin                : Mo Jan 26 2004
+    copyright            : (C) 2004-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -24,34 +23,44 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifndef SMB4KSHAREOPTIONSPAGE_H
-#define SMB4KSHAREOPTIONSPAGE_H
+#ifndef SMB4KCONFIGPAGESAMBA_H
+#define SMB4KCONFIGPAGESAMBA_H
 
 // Qt includes
-#include <QtWidgets/QWidget>
+#include <QtCore/QList>
+#include <QtWidgets/QListWidgetItem>
+#include <QtWidgets/QTabWidget>
 
 /**
- * This is the configuration tab for the settings that are
- * used to manage the mounted shares.
+ * This class manages the configuration dialog of the options
+ * that can be passed to smbmount and other programs of the
+ * Samba software suite.
  *
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class Smb4KShareOptionsPage : public QWidget
+
+class Smb4KConfigPageSamba : public QTabWidget
 {
   Q_OBJECT
 
   public:
+    enum Tabs{ GeneralTab = 0,
+               ClientProgramsTab = 1 };
+
     /**
      * The constructor.
      *
-     * @param parent          The parent of this widget
+     * @param parent            The parent widget
+     *
+     * @param name              This widget's name
      */
-    explicit Smb4KShareOptionsPage(QWidget *parent = 0);
+    explicit Smb4KConfigPageSamba(QWidget *parent = 0);
 
     /**
      * The destructor.
      */
-    ~Smb4KShareOptionsPage();
+    ~Smb4KConfigPageSamba();
 };
+
 #endif

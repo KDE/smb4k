@@ -1,9 +1,9 @@
 /***************************************************************************
-    smb4kuserinterfaceoptions  -  This configuration page takes care
-    of all settings concerning the user interface of Smb4K
+    This configuration page takes care of all settings concerning the 
+    user interface
                              -------------------
     begin                : Mi Aug 30 2006
-    copyright            : (C) 2006-2015 by Alexander Reinholdt
+    copyright            : (C) 2006-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -29,7 +29,7 @@
 #endif
 
 // application specific includes
-#include "smb4kuserinterfaceoptionspage.h"
+#include "smb4kconfigpageuserinterface.h"
 #include "core/smb4ksettings.h"
 
 // Qt includes
@@ -45,7 +45,7 @@
 #include <KI18n/KLocalizedString>
 
 
-Smb4KUserInterfaceOptionsPage::Smb4KUserInterfaceOptionsPage(QWidget *parent)
+Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
 : QTabWidget(parent)
 {
   //
@@ -159,7 +159,7 @@ Smb4KUserInterfaceOptionsPage::Smb4KUserInterfaceOptionsPage(QWidget *parent)
 }
 
 
-Smb4KUserInterfaceOptionsPage::~Smb4KUserInterfaceOptionsPage()
+Smb4KConfigPageUserInterface::~Smb4KConfigPageUserInterface()
 {
 }
 

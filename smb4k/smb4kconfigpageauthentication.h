@@ -1,9 +1,8 @@
 /***************************************************************************
-    smb4kauthoptionspage  -  The configuration page for the authentication
-    settings of Smb4K
+    The configuration page for the authentication settings of Smb4K
                              -------------------
     begin                : Sa Nov 15 2003
-    copyright            : (C) 2003-2015 by Alexander Reinholdt
+    copyright            : (C) 2003-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -24,8 +23,8 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifndef SMB4KAUTHOPTIONSPAGE_H
-#define SMB4KAUTHOPTIONSPAGE_H
+#ifndef SMB4KCONFIGPAGEAUTHENTICATION_H
+#define SMB4KCONFIGPAGEAUTHENTICATION_H
 
 // Application specific includes
 #include "core/smb4kauthinfo.h"
@@ -50,7 +49,7 @@
  */
 
 
-class Smb4KAuthOptionsPage : public QTabWidget
+class Smb4KConfigPageAuthentication : public QTabWidget
 {
   Q_OBJECT
 
@@ -66,12 +65,12 @@ class Smb4KAuthOptionsPage : public QTabWidget
      *
      * @param parent          The parent widget
      */
-    explicit Smb4KAuthOptionsPage(QWidget *parent = 0);
+    explicit Smb4KConfigPageAuthentication(QWidget *parent = 0);
 
     /**
      * The destructor.
      */
-    ~Smb4KAuthOptionsPage();
+    virtual ~Smb4KConfigPageAuthentication();
     
     /**
      * Insert the list of authentication information entries into the internal

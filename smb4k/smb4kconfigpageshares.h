@@ -1,8 +1,8 @@
 /***************************************************************************
-    smb4kprofilespage  -  The configuration page for the profiles
+    The configuration page for the settings regarding share management
                              -------------------
-    begin                : Do Aug 07 2014
-    copyright            : (C) 2014-2015 by Alexander Reinholdt
+    begin                : Sa Nov 15 2003
+    copyright            : (C) 2003-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -23,68 +23,34 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifndef SMB4KPROFILESPAGE_H
-#define SMB4KPROFILESPAGE_H
+#ifndef SMB4KCONFIGPAGESHARES_H
+#define SMB4KCONFIGPAGESHARES_H
 
 // Qt includes
-#include <QtCore/QList>
-#include <QtCore/QPair>
 #include <QtWidgets/QWidget>
 
-// KDE includes
-#include <KWidgetsAddons/KEditListWidget>
+/**
+ * This is the configuration tab for the settings that are
+ * used to manage the mounted shares.
+ *
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ */
 
-
-class Smb4KProfilesPage : public QWidget
+class Smb4KConfigPageShares : public QWidget
 {
   Q_OBJECT
-  
+
   public:
     /**
-     * Constructor
+     * The constructor.
+     *
+     * @param parent          The parent of this widget
      */
-    explicit Smb4KProfilesPage(QWidget *parent = 0);
-    
-    /**
-     * Destructor
-     */
-    virtual ~Smb4KProfilesPage();
-    
-    /**
-     * This function returns a list of pairs that contains the
-     * renamed profiles. The first entry of the pair is the old name
-     * of the profile and the second entry is the new name.
-     * 
-     * @returns a list of name pairs
-     */
-    QList< QPair<QString,QString> > renamedProfiles() const;
-    
-    /**
-     * Clear the list of renamed profiles.
-     */
-    void clearRenamedProfiles();
-    
-    /**
-     * This function returns the list of removed profiles.
-     * 
-     * @returns the removed profiles
-     */
-    QStringList removedProfiles() const;
-    
-    /**
-     * Clear the list of removed profiles.
-     */
-    void clearRemovedProfiles();
+    explicit Smb4KConfigPageShares(QWidget *parent = 0);
 
-  protected Q_SLOTS:
-    void slotEnableWidget(int state);
-    void slotProfileRemoved(const QString &name);
-    void slotProfileChanged();
-
-  private:
-    KEditListWidget *m_profiles;
-    QList< QPair<QString,QString> > m_renamed;
-    QStringList m_removed;
+    /**
+     * The destructor.
+     */
+    ~Smb4KConfigPageShares();
 };
-
 #endif

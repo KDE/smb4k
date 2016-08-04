@@ -1,9 +1,8 @@
 /***************************************************************************
-    smb4kshareoptions  -  The configuration page for the settings of
-    Smb4K regarding share management
+    The configuration page for the settings regarding share management
                              -------------------
     begin                : Sa Nov 15 2003
-    copyright            : (C) 2003-2015 by Alexander Reinholdt
+    copyright            : (C) 2003-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -29,7 +28,7 @@
 #endif
 
 // applications specific includes
-#include "smb4kshareoptionspage.h"
+#include "smb4kconfigpageshares.h"
 #include "core/smb4ksettings.h"
 
 // Qt includes
@@ -46,7 +45,7 @@
 #include <KIOWidgets/KUrlRequester>
 
 
-Smb4KShareOptionsPage::Smb4KShareOptionsPage(QWidget *parent)
+Smb4KConfigPageShares::Smb4KConfigPageShares(QWidget *parent)
 : QWidget(parent)
 {
   QVBoxLayout *layout = new QVBoxLayout(this);
@@ -158,7 +157,7 @@ Smb4KShareOptionsPage::Smb4KShareOptionsPage(QWidget *parent)
   layout->addStretch(100);
 }
 
-Smb4KShareOptionsPage::~Smb4KShareOptionsPage()
+Smb4KConfigPageShares::~Smb4KConfigPageShares()
 {
 }
 

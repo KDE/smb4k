@@ -9,8 +9,6 @@ include_directories(
   ${CMAKE_BINARY_DIR})
 
 add_subdirectory(icons)
-add_subdirectory(configdlg)
-add_subdirectory(search)
 
 ########### Tooltips #################################
 
@@ -95,6 +93,37 @@ target_link_libraries(smb4ksharesview
   KF5::KIOCore
   smb4kcore 
   smb4ktooltips)
+  
+########### Configuration dialog #####################
+
+set(smb4kconfigdialog_LIB_SRCS
+  smb4kconfigdialog.cpp
+  smb4kconfigpageauthentication.cpp
+  smb4kconfigpagecustomoptions.cpp
+  smb4kconfigpagemounting.cpp
+  smb4kconfigpagenetwork.cpp
+  smb4kconfigpageprofiles.cpp
+  smb4kconfigpagesamba.cpp
+  smb4kconfigpageshares.cpp
+  smb4kconfigpagesynchronization.cpp
+  smb4kconfigpageuserinterface.cpp)
+  
+add_library(smb4kconfigdialog MODULE ${smb4kconfigdialog_LIB_SRCS})
+
+target_link_libraries(smb4kconfigdialog
+  Qt5::Core
+  Qt5::Widgets
+  Qt5::Gui
+  KF5::WidgetsAddons
+  KF5::CoreAddons
+  KF5::XmlGui
+  KF5::IconThemes
+  KF5::I18n
+  KF5::ConfigCore
+  KF5::ConfigGui
+  KF5::KIOCore
+  KF5::KIOWidgets
+  smb4kcore)
 
 ########### Main Application #########################
 
@@ -124,6 +153,7 @@ install(TARGETS smb4ktooltips DESTINATION ${KDE_INSTALL_LIBDIR})
 install(TARGETS smb4knetworkbrowser DESTINATION ${KDE_INSTALL_PLUGINDIR})
 install(TARGETS smb4knetworksearch DESTINATION ${KDE_INSTALL_PLUGINDIR})
 install(TARGETS smb4ksharesview DESTINATION ${KDE_INSTALL_PLUGINDIR})
+install(TARGETS smb4kconfigdialog DESTINATION ${KDE_INSTALL_PLUGINDIR})
 install(TARGETS smb4k DESTINATION ${KDE_INSTALL_BINDIR})
 
 install(PROGRAMS smb4k.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})

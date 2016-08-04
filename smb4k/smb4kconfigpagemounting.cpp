@@ -1,8 +1,8 @@
 /***************************************************************************
-    smb4kmountoptionspage  -  The configuration page for the mount options
+    The configuration page for the mount options
                              -------------------
-    begin                : So M??r 22 2015
-    copyright            : (C) 2015 by Alexander Reinholdt
+    begin                : So Mär 22 2015
+    copyright            : (C) 2015-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,7 +28,7 @@
 #endif
 
 // application specific includes
-#include "smb4kmountoptionspage.h"
+#include "smb4kconfigpagemounting.h"
 #include "core/smb4kglobal.h"
 
 #if defined(Q_OS_LINUX)
@@ -57,13 +57,13 @@
 using namespace Smb4KGlobal;
 
 
-Smb4KMountOptionsPage::Smb4KMountOptionsPage(QWidget* parent): QWidget(parent)
+Smb4KConfigPageMounting::Smb4KConfigPageMounting(QWidget* parent): QWidget(parent)
 {
   setupWidget();
 }
 
 
-Smb4KMountOptionsPage::~Smb4KMountOptionsPage()
+Smb4KConfigPageMounting::~Smb4KConfigPageMounting()
 {
 }
 
@@ -72,7 +72,7 @@ Smb4KMountOptionsPage::~Smb4KMountOptionsPage()
 //
 // Linux
 //
-void Smb4KMountOptionsPage::setupWidget()
+void Smb4KConfigPageMounting::setupWidget()
 {
   QVBoxLayout *mount_layout = new QVBoxLayout(this);
   mount_layout->setSpacing(5);
@@ -403,7 +403,7 @@ void Smb4KMountOptionsPage::setupWidget()
 //
 // FreeBSD and NetBSD
 //
-void Smb4KMountOptionsPage::setupWidget()
+void Smb4KConfigPageMounting::setupWidget()
 {
   QVBoxLayout *mount_layout = new QVBoxLayout(this);
   mount_layout->setSpacing(5);
@@ -674,13 +674,13 @@ void Smb4KMountOptionsPage::setupWidget()
 //
 // Dummy
 //
-void Smb4KMountOptionsPage::setupWidget()
+void Smb4KConfigPageMounting::setupWidget()
 {
 }
 #endif
 
 
-void Smb4KMountOptionsPage::slotNewUserTriggered(QAction *action)
+void Smb4KConfigPageMounting::slotNewUserTriggered(QAction *action)
 {
   KLineEdit *user_id = findChild<KLineEdit *>("kcfg_UserID");
 
@@ -695,7 +695,7 @@ void Smb4KMountOptionsPage::slotNewUserTriggered(QAction *action)
 }
 
 
-void Smb4KMountOptionsPage::slotNewGroupTriggered(QAction *action)
+void Smb4KConfigPageMounting::slotNewGroupTriggered(QAction *action)
 {
   KLineEdit *group_id = findChild<KLineEdit *>("kcfg_GroupID");
 
@@ -710,7 +710,7 @@ void Smb4KMountOptionsPage::slotNewGroupTriggered(QAction *action)
 }
 
 
-void Smb4KMountOptionsPage::slotAdditionalCIFSOptions()
+void Smb4KConfigPageMounting::slotAdditionalCIFSOptions()
 {
 #if defined (Q_OS_LINUX)
   KLineEdit *cifs_opts = findChild<KLineEdit *>("kcfg_CustomCIFSOptions");

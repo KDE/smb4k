@@ -1,9 +1,8 @@
 /***************************************************************************
-    smb4kcustomoptionspage  -  The configuration page for the custom 
-    options
+    The configuration page for the custom options
                              -------------------
     begin                : Sa Jan 19 2013
-    copyright            : (C) 2013-2015 by Alexander Reinholdt
+    copyright            : (C) 2013-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -25,7 +24,7 @@
  ***************************************************************************/
 
 // application specific includes
-#include "smb4kcustomoptionspage.h"
+#include "smb4kconfigpagecustomoptions.h"
 #include "core/smb4ksettings.h"
 #include "core/smb4kcustomoptions.h"
 #include "core/smb4kglobal.h"
@@ -51,7 +50,7 @@
 using namespace Smb4KGlobal;
 
 
-Smb4KCustomOptionsPage::Smb4KCustomOptionsPage(QWidget *parent) : QWidget(parent)
+Smb4KConfigPageCustomOptions::Smb4KConfigPageCustomOptions(QWidget *parent) : QWidget(parent)
 {
   m_collection = new KActionCollection(this);
   m_maybe_changed = false;
@@ -62,7 +61,7 @@ Smb4KCustomOptionsPage::Smb4KCustomOptionsPage(QWidget *parent) : QWidget(parent
 }
 
 
-Smb4KCustomOptionsPage::~Smb4KCustomOptionsPage()
+Smb4KConfigPageCustomOptions::~Smb4KConfigPageCustomOptions()
 {
   while (!m_options_list.isEmpty())
   {
@@ -74,7 +73,7 @@ Smb4KCustomOptionsPage::~Smb4KCustomOptionsPage()
 //
 // Linux
 //
-void Smb4KCustomOptionsPage::setupWidget()
+void Smb4KConfigPageCustomOptions::setupWidget()
 {
   QHBoxLayout *custom_layout = new QHBoxLayout(this);
   custom_layout->setSpacing(5);
@@ -369,7 +368,7 @@ void Smb4KCustomOptionsPage::setupWidget()
 //
 // FreeBSD and NetBSD
 //
-void Smb4KCustomOptionsPage::setupWidget()
+void Smb4KConfigPageCustomOptions::setupWidget()
 {
   QHBoxLayout *custom_layout = new QHBoxLayout(this);
   custom_layout->setSpacing(5);
@@ -608,7 +607,7 @@ void Smb4KCustomOptionsPage::setupWidget()
 //
 // Generic (without mount options)
 //
-void Smb4KCustomOptionsPage::setupWidget()
+void Smb4KConfigPageCustomOptions::setupWidget()
 {
   QHBoxLayout *custom_layout = new QHBoxLayout(this);
   custom_layout->setSpacing(5);
@@ -807,7 +806,7 @@ void Smb4KCustomOptionsPage::setupWidget()
 #endif
 
 
-void Smb4KCustomOptionsPage::insertCustomOptions(const QList<Smb4KCustomOptions*> &list)
+void Smb4KConfigPageCustomOptions::insertCustomOptions(const QList<Smb4KCustomOptions*> &list)
 {
   // Insert those options that are not there.
   for (int i = 0; i < list.size(); ++i)
@@ -871,7 +870,7 @@ void Smb4KCustomOptionsPage::insertCustomOptions(const QList<Smb4KCustomOptions*
 }
 
 
-const QList< Smb4KCustomOptions* > Smb4KCustomOptionsPage::getCustomOptions()
+const QList< Smb4KCustomOptions* > Smb4KConfigPageCustomOptions::getCustomOptions()
 {
   return m_options_list;
 }
@@ -881,7 +880,7 @@ const QList< Smb4KCustomOptions* > Smb4KCustomOptionsPage::getCustomOptions()
 //
 // Linux
 //
-void Smb4KCustomOptionsPage::clearEditors()
+void Smb4KConfigPageCustomOptions::clearEditors()
 {
   // Do not reset the current custom options object here,
   // so that we can undo the last changes!
@@ -981,7 +980,7 @@ void Smb4KCustomOptionsPage::clearEditors()
 //
 // FreeBSD and NetBSD
 //
-void Smb4KCustomOptionsPage::clearEditors()
+void Smb4KConfigPageCustomOptions::clearEditors()
 {
   // Do not reset the current custom options object here,
   // so that we can undo the last changes!
@@ -1009,7 +1008,7 @@ void Smb4KCustomOptionsPage::clearEditors()
 //
 // Generic (without mount options)
 //
-void Smb4KCustomOptionsPage::clearEditors()
+void Smb4KConfigPageCustomOptions::clearEditors()
 {
   // Do not reset the current custom options object here,
   // so that we can undo the last changes!
@@ -1031,7 +1030,7 @@ void Smb4KCustomOptionsPage::clearEditors()
 #endif
 
 
-Smb4KCustomOptions* Smb4KCustomOptionsPage::findOptions(const QString& url)
+Smb4KCustomOptions* Smb4KConfigPageCustomOptions::findOptions(const QString& url)
 {
   Smb4KCustomOptions *options = NULL;
   
@@ -1056,7 +1055,7 @@ Smb4KCustomOptions* Smb4KCustomOptionsPage::findOptions(const QString& url)
 //
 // Linux
 //
-void Smb4KCustomOptionsPage::populateEditors(Smb4KCustomOptions* options)
+void Smb4KConfigPageCustomOptions::populateEditors(Smb4KCustomOptions* options)
 {
   // Commit changes
   commitChanges();
@@ -1309,7 +1308,7 @@ void Smb4KCustomOptionsPage::populateEditors(Smb4KCustomOptions* options)
 //
 // FreeBSD and NetBSD
 //
-void Smb4KCustomOptionsPage::populateEditors(Smb4KCustomOptions* options)
+void Smb4KConfigPageCustomOptions::populateEditors(Smb4KCustomOptions* options)
 {
   // Commit changes
   commitChanges();
@@ -1401,7 +1400,7 @@ void Smb4KCustomOptionsPage::populateEditors(Smb4KCustomOptions* options)
 //
 // Generic (without mount options)
 //
-void Smb4KCustomOptionsPage::populateEditors(Smb4KCustomOptions *options)
+void Smb4KConfigPageCustomOptions::populateEditors(Smb4KCustomOptions *options)
 {
   // Commit changes
   commitChanges();
@@ -1481,7 +1480,7 @@ void Smb4KCustomOptionsPage::populateEditors(Smb4KCustomOptions *options)
 //
 // Linux
 //
-void Smb4KCustomOptionsPage::commitChanges()
+void Smb4KConfigPageCustomOptions::commitChanges()
 {
   if (m_current_options && !m_options_list.isEmpty() &&
       QString::compare(m_current_options->unc(), m_unc_address->text()) == 0)
@@ -1583,7 +1582,7 @@ void Smb4KCustomOptionsPage::commitChanges()
 //
 // FreeBSD and NetBSD
 //
-void Smb4KCustomOptionsPage::commitChanges()
+void Smb4KConfigPageCustomOptions::commitChanges()
 {
   if (m_current_options && !m_options_list.isEmpty() &&
       QString::compare(m_current_options->unc(), m_unc_address->text()) == 0)
@@ -1679,7 +1678,7 @@ void Smb4KCustomOptionsPage::commitChanges()
 //
 // Generic (without mount options)
 //
-void Smb4KCustomOptionsPage::commitChanges()
+void Smb4KConfigPageCustomOptions::commitChanges()
 {
   if (m_current_options && !m_options_list.isEmpty() &&
       QString::compare(m_current_options->unc(), m_unc_address->text()) == 0)
@@ -1761,7 +1760,7 @@ void Smb4KCustomOptionsPage::commitChanges()
 #endif
 
 
-bool Smb4KCustomOptionsPage::eventFilter(QObject* obj, QEvent* e)
+bool Smb4KConfigPageCustomOptions::eventFilter(QObject* obj, QEvent* e)
 {
   if (obj == m_custom_options->viewport())
   {
@@ -1796,7 +1795,7 @@ bool Smb4KCustomOptionsPage::eventFilter(QObject* obj, QEvent* e)
 
 
 
-void Smb4KCustomOptionsPage::slotEditCustomItem(QListWidgetItem *item)
+void Smb4KConfigPageCustomOptions::slotEditCustomItem(QListWidgetItem *item)
 {
   Smb4KCustomOptions *options = findOptions(item->data(Qt::UserRole).toString());
   
@@ -1811,13 +1810,13 @@ void Smb4KCustomOptionsPage::slotEditCustomItem(QListWidgetItem *item)
 }
 
 
-void Smb4KCustomOptionsPage::slotItemSelectionChanged()
+void Smb4KConfigPageCustomOptions::slotItemSelectionChanged()
 {
   clearEditors();
 }
 
 
-void Smb4KCustomOptionsPage::slotCustomContextMenuRequested(const QPoint& pos)
+void Smb4KConfigPageCustomOptions::slotCustomContextMenuRequested(const QPoint& pos)
 {
   QListWidgetItem *item = m_custom_options->itemAt(pos);
   
@@ -1839,13 +1838,13 @@ void Smb4KCustomOptionsPage::slotCustomContextMenuRequested(const QPoint& pos)
 }
 
 
-void Smb4KCustomOptionsPage::slotEditActionTriggered(bool /*checked*/)
+void Smb4KConfigPageCustomOptions::slotEditActionTriggered(bool /*checked*/)
 {
   slotEditCustomItem(m_custom_options->currentItem());
 }
 
 
-void Smb4KCustomOptionsPage::slotRemoveActionTriggered(bool /*checked*/)
+void Smb4KConfigPageCustomOptions::slotRemoveActionTriggered(bool /*checked*/)
 {
   QListWidgetItem *item = m_custom_options->currentItem();
   Smb4KCustomOptions *options = findOptions(item->data(Qt::UserRole).toString());
@@ -1895,7 +1894,7 @@ void Smb4KCustomOptionsPage::slotRemoveActionTriggered(bool /*checked*/)
 }
 
 
-void Smb4KCustomOptionsPage::slotClearActionTriggered(bool /*checked*/)
+void Smb4KConfigPageCustomOptions::slotClearActionTriggered(bool /*checked*/)
 {
   clearEditors();
 
@@ -1918,7 +1917,7 @@ void Smb4KCustomOptionsPage::slotClearActionTriggered(bool /*checked*/)
 }
 
 
-void Smb4KCustomOptionsPage::slotUndoActionTriggered(bool /*checked*/)
+void Smb4KConfigPageCustomOptions::slotUndoActionTriggered(bool /*checked*/)
 {
   if (m_removed)
   {
@@ -1974,13 +1973,13 @@ void Smb4KCustomOptionsPage::slotUndoActionTriggered(bool /*checked*/)
 }
 
 
-void Smb4KCustomOptionsPage::slotEntryChanged()
+void Smb4KConfigPageCustomOptions::slotEntryChanged()
 {
   commitChanges();
 }
 
 
-void Smb4KCustomOptionsPage::slotEnableWOLFeatures(const QString &mac_address)
+void Smb4KConfigPageCustomOptions::slotEnableWOLFeatures(const QString &mac_address)
 {
   QRegExp exp("..\\:..\\:..\\:..\\:..\\:..");
     

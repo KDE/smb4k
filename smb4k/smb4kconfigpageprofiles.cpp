@@ -1,8 +1,8 @@
 /***************************************************************************
-    smb4kprofilespage  -  The configuration page for the profiles
+    The configuration page for the profiles
                              -------------------
     begin                : Do Aug 07 2014
-    copyright            : (C) 2014-2015 by Alexander Reinholdt
+    copyright            : (C) 2014-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,7 +28,7 @@
 #endif
 
 // application specific includes
-#include "smb4kprofilespage.h"
+#include "smb4kconfigpageprofiles.h"
 #include "core/smb4ksettings.h"
 #include "core/smb4kprofilemanager.h"
 
@@ -42,7 +42,7 @@
 #include <KCompletion/KLineEdit>
 
 
-Smb4KProfilesPage::Smb4KProfilesPage(QWidget* parent)
+Smb4KConfigPageProfiles::Smb4KConfigPageProfiles(QWidget* parent)
 : QWidget(parent)
 {
   // Layout
@@ -88,36 +88,36 @@ Smb4KProfilesPage::Smb4KProfilesPage(QWidget* parent)
 }
 
 
-Smb4KProfilesPage::~Smb4KProfilesPage()
+Smb4KConfigPageProfiles::~Smb4KConfigPageProfiles()
 {
 }
 
 
-QList< QPair<QString,QString> > Smb4KProfilesPage::renamedProfiles() const
+QList< QPair<QString,QString> > Smb4KConfigPageProfiles::renamedProfiles() const
 {
   return m_renamed;
 }
 
 
-void Smb4KProfilesPage::clearRenamedProfiles()
+void Smb4KConfigPageProfiles::clearRenamedProfiles()
 {
   m_renamed.clear();
 }
 
 
-QStringList Smb4KProfilesPage::removedProfiles() const
+QStringList Smb4KConfigPageProfiles::removedProfiles() const
 {
   return m_removed;
 }
 
 
-void Smb4KProfilesPage::clearRemovedProfiles()
+void Smb4KConfigPageProfiles::clearRemovedProfiles()
 {
   m_removed.clear();
 }
 
 
-void Smb4KProfilesPage::slotEnableWidget(int state)
+void Smb4KConfigPageProfiles::slotEnableWidget(int state)
 {
   switch (state)
   {
@@ -139,7 +139,7 @@ void Smb4KProfilesPage::slotEnableWidget(int state)
 }
 
 
-void Smb4KProfilesPage::slotProfileRemoved(const QString& name)
+void Smb4KConfigPageProfiles::slotProfileRemoved(const QString& name)
 {
   // If the removed profile was renamed before, remove it from 
   // the list.
@@ -163,7 +163,7 @@ void Smb4KProfilesPage::slotProfileRemoved(const QString& name)
 }
 
 
-void Smb4KProfilesPage::slotProfileChanged()
+void Smb4KConfigPageProfiles::slotProfileChanged()
 {
   QStringList savedProfiles = Smb4KProfileManager::self()->profilesList();
   QStringList currentProfiles = m_profiles->items();

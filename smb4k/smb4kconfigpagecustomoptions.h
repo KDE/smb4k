@@ -1,9 +1,8 @@
 /***************************************************************************
-    smb4kcustomoptionspage  -  The configuration page for the custom 
-    options
+    The configuration page for the custom options
                              -------------------
     begin                : Sa Jan 19 2013
-    copyright            : (C) 2013-2015 by Alexander Reinholdt
+    copyright            : (C) 2013-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -24,8 +23,8 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifndef SMB4KCUSTOMOPTIONSPAGE_H
-#define SMB4KCUSTOMOPTIONSPAGE_H
+#ifndef SMB4KCONFIGPAGECUSTOMOPTIONS_H
+#define SMB4KCONFIGPAGECUSTOMOPTIONS_H
 
 // Qt includes
 #include <QtCore/QEvent>
@@ -52,7 +51,7 @@ class Smb4KCustomOptions;
  * @since 1.1.0
  */
 
-class Smb4KCustomOptionsPage : public QWidget
+class Smb4KConfigPageCustomOptions : public QWidget
 {
   Q_OBJECT
   
@@ -60,12 +59,12 @@ class Smb4KCustomOptionsPage : public QWidget
     /**
      * Constructor
      */
-    explicit Smb4KCustomOptionsPage( QWidget *parent = 0 );
+    explicit Smb4KConfigPageCustomOptions( QWidget *parent = 0 );
     
     /**
      * Destructor
      */
-    virtual ~Smb4KCustomOptionsPage();
+    virtual ~Smb4KConfigPageCustomOptions();
     
     /**
      * This function inserts a list of custom option items into the list widget.

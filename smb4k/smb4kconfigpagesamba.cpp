@@ -1,9 +1,8 @@
 /***************************************************************************
-    smb4ksambaoptions.cpp  -  This is the configuration page for the
-    Samba settings of Smb4K
+    This is the configuration page for the Samba settings of Smb4K
                              -------------------
     begin                : Mo Jan 26 2004
-    copyright            : (C) 2004-2015 by Alexander Reinholdt
+    copyright            : (C) 2004-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -29,7 +28,7 @@
 #endif
 
 // application specific includes
-#include "smb4ksambaoptionspage.h"
+#include "smb4kconfigpagesamba.h"
 #include "core/smb4ksettings.h"
 
 // Qt includes
@@ -46,7 +45,7 @@
 #include <KCompletion/KComboBox>
 
 
-Smb4KSambaOptionsPage::Smb4KSambaOptionsPage(QWidget *parent) : QTabWidget(parent)
+Smb4KConfigPageSamba::Smb4KConfigPageSamba(QWidget *parent) : QTabWidget(parent)
 {
   //
   // General
@@ -227,7 +226,7 @@ Smb4KSambaOptionsPage::Smb4KSambaOptionsPage(QWidget *parent) : QTabWidget(paren
 }
 
 
-Smb4KSambaOptionsPage::~Smb4KSambaOptionsPage()
+Smb4KConfigPageSamba::~Smb4KConfigPageSamba()
 {
 }
 

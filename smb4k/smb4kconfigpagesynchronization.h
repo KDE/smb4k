@@ -1,8 +1,8 @@
 /***************************************************************************
-    smb4krsyncoptions  -  The configuration page for the rsync options
+    The configuration page for the synchronization options
                              -------------------
     begin                : So Nov 20 2005
-    copyright            : (C) 2005-2015 by Alexander Reinholdt
+    copyright            : (C) 2005-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -23,8 +23,8 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifndef SMB4KRSYNCOPTIONSPAGE_H
-#define SMB4KRSYNCOPTIONSPAGE_H
+#ifndef SMB4KCONFIGPAGESYNCHRONIZATION_H
+#define SMB4KCONFIGPAGESYNCHRONIZATION_H
 
 // Qt includes
 #include <QtWidgets/QTabWidget>
@@ -36,7 +36,7 @@
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class Smb4KRsyncOptionsPage : public QTabWidget
+class Smb4KConfigPageSynchronization : public QTabWidget
 {
   Q_OBJECT
 
@@ -54,12 +54,12 @@ class Smb4KRsyncOptionsPage : public QTabWidget
      *
      * @param parent        The parent widget
      */
-    explicit Smb4KRsyncOptionsPage(QWidget *parent = 0);
+    explicit Smb4KConfigPageSynchronization(QWidget *parent = 0);
 
     /**
      * The destructor
      */
-    ~Smb4KRsyncOptionsPage();
+    ~Smb4KConfigPageSynchronization();
     
   protected slots:
     /**

@@ -1,9 +1,8 @@
 /***************************************************************************
-    smb4ksambaoptions.cpp  -  This is the configuration page for the
-    Samba settings of Smb4K
+    The configuration page for the profiles
                              -------------------
-    begin                : Mo Jan 26 2004
-    copyright            : (C) 2004-2015 by Alexander Reinholdt
+    begin                : Do Aug 07 2014
+    copyright            : (C) 2014-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -24,44 +23,68 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifndef SMB4KSAMBAOPTIONSPAGE_H
-#define SMB4KSAMBAOPTIONSPAGE_H
+#ifndef SMB4KCONFIGPAGEPROFILES_H
+#define SMB4KCONFIGPAGEPROFILES_H
 
 // Qt includes
 #include <QtCore/QList>
-#include <QtWidgets/QListWidgetItem>
-#include <QtWidgets/QTabWidget>
+#include <QtCore/QPair>
+#include <QtWidgets/QWidget>
 
-/**
- * This class manages the configuration dialog of the options
- * that can be passed to smbmount and other programs of the
- * Samba software suite.
- *
- * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
- */
+// KDE includes
+#include <KWidgetsAddons/KEditListWidget>
 
 
-class Smb4KSambaOptionsPage : public QTabWidget
+class Smb4KConfigPageProfiles : public QWidget
 {
   Q_OBJECT
-
+  
   public:
-    enum Tabs{ GeneralTab = 0,
-               ClientProgramsTab = 1 };
-
     /**
-     * The constructor.
-     *
-     * @param parent            The parent widget
-     *
-     * @param name              This widget's name
+     * Constructor
      */
-    explicit Smb4KSambaOptionsPage(QWidget *parent = 0);
-
+    explicit Smb4KConfigPageProfiles(QWidget *parent = 0);
+    
     /**
-     * The destructor.
+     * Destructor
      */
-    ~Smb4KSambaOptionsPage();
+    virtual ~Smb4KConfigPageProfiles();
+    
+    /**
+     * This function returns a list of pairs that contains the
+     * renamed profiles. The first entry of the pair is the old name
+     * of the profile and the second entry is the new name.
+     * 
+     * @returns a list of name pairs
+     */
+    QList< QPair<QString,QString> > renamedProfiles() const;
+    
+    /**
+     * Clear the list of renamed profiles.
+     */
+    void clearRenamedProfiles();
+    
+    /**
+     * This function returns the list of removed profiles.
+     * 
+     * @returns the removed profiles
+     */
+    QStringList removedProfiles() const;
+    
+    /**
+     * Clear the list of removed profiles.
+     */
+    void clearRemovedProfiles();
+
+  protected Q_SLOTS:
+    void slotEnableWidget(int state);
+    void slotProfileRemoved(const QString &name);
+    void slotProfileChanged();
+
+  private:
+    KEditListWidget *m_profiles;
+    QList< QPair<QString,QString> > m_renamed;
+    QStringList m_removed;
 };
 
 #endif

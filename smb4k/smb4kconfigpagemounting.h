@@ -1,8 +1,8 @@
 /***************************************************************************
-    smb4kmountoptionspage  -  The configuration page for the mount options
+    The configuration page for the mount options
                              -------------------
     begin                : So Mär 22 2015
-    copyright            : (C) 2015 by Alexander Reinholdt
+    copyright            : (C) 2015-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -23,8 +23,8 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifndef SMB4KMOUNTOPTIONSPAGE_H
-#define SMB4KMOUNTOPTIONSPAGE_H
+#ifndef SMB4KCONFIGPAGEMOUNTING_H
+#define SMB4KCONFIGPAGEMOUNTING_H
 
 // Qt includes
 #include <QtWidgets/QWidget>
@@ -36,13 +36,13 @@
  * @since 2.0.0
  */
 
-class Smb4KMountOptionsPage : public QWidget
+class Smb4KConfigPageMounting : public QWidget
 {
   Q_OBJECT
   
   public:
-    explicit Smb4KMountOptionsPage(QWidget* parent = 0);
-    virtual ~Smb4KMountOptionsPage();
+    explicit Smb4KConfigPageMounting(QWidget* parent = 0);
+    virtual ~Smb4KConfigPageMounting();
     
   protected Q_SLOTS:
     /**

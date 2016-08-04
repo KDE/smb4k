@@ -3,7 +3,7 @@
     settings of Smb4K
                              -------------------
     begin                : Sa Nov 15 2003
-    copyright            : (C) 2003-2015 by Alexander Reinholdt
+    copyright            : (C) 2003-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -29,7 +29,7 @@
 #endif
 
 // application specific includes
-#include "smb4knetworkoptionspage.h"
+#include "smb4kconfigpagenetwork.h"
 #include "core/smb4ksettings.h"
 
 // Qt includes
@@ -49,7 +49,7 @@
 #include <KCompletion/KComboBox>
 
 
-Smb4KNetworkOptionsPage::Smb4KNetworkOptionsPage(QWidget *parent)
+Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
 : QTabWidget(parent)
 {
   //
@@ -218,7 +218,7 @@ Smb4KNetworkOptionsPage::Smb4KNetworkOptionsPage(QWidget *parent)
 }
 
 
-Smb4KNetworkOptionsPage::~Smb4KNetworkOptionsPage()
+Smb4KConfigPageNetwork::~Smb4KConfigPageNetwork()
 {
 }
 

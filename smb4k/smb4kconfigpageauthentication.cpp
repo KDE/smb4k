@@ -1,9 +1,8 @@
 /***************************************************************************
-    smb4kauthoptionspage  -  The configuration page for the authentication
-    settings of Smb4K
+    The configuration page for the authentication settings of Smb4K
                              -------------------
     begin                : Sa Nov 15 2003
-    copyright            : (C) 2003-2015 by Alexander Reinholdt
+    copyright            : (C) 2003-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -29,7 +28,7 @@
 #endif
 
 // application specific includes
-#include "smb4kauthoptionspage.h"
+#include "smb4kconfigpageauthentication.h"
 #include "core/smb4ksettings.h"
 
 // Qt includes
@@ -49,7 +48,7 @@
 #include <KIconThemes/KIconLoader>
 
 
-Smb4KAuthOptionsPage::Smb4KAuthOptionsPage(QWidget *parent) : QTabWidget(parent)
+Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : QTabWidget(parent)
 {
   m_entries_displayed = false;
   m_loading_details = false;
@@ -238,12 +237,12 @@ Smb4KAuthOptionsPage::Smb4KAuthOptionsPage(QWidget *parent) : QTabWidget(parent)
 }
 
 
-Smb4KAuthOptionsPage::~Smb4KAuthOptionsPage()
+Smb4KConfigPageAuthentication::~Smb4KConfigPageAuthentication()
 {
 }
 
 
-void Smb4KAuthOptionsPage::insertWalletEntries(const QList<Smb4KAuthInfo *> &list)
+void Smb4KConfigPageAuthentication::insertWalletEntries(const QList<Smb4KAuthInfo *> &list)
 {
   m_entries_list = list;
   m_maybe_changed = false;
@@ -251,7 +250,7 @@ void Smb4KAuthOptionsPage::insertWalletEntries(const QList<Smb4KAuthInfo *> &lis
 }
 
 
-void Smb4KAuthOptionsPage::displayWalletEntries()
+void Smb4KConfigPageAuthentication::displayWalletEntries()
 {
   // Clear the list widget if necessary
   if (m_entries_widget->count() != 0)
@@ -288,7 +287,7 @@ void Smb4KAuthOptionsPage::displayWalletEntries()
 }
 
 
-bool Smb4KAuthOptionsPage::eventFilter(QObject *object, QEvent *e)
+bool Smb4KConfigPageAuthentication::eventFilter(QObject *object, QEvent *e)
 {
   if (object == m_entries_widget->viewport())
   {
@@ -351,7 +350,7 @@ bool Smb4KAuthOptionsPage::eventFilter(QObject *object, QEvent *e)
 }
 
 
-void Smb4KAuthOptionsPage::showDetails(Smb4KAuthInfo *authInfo)
+void Smb4KConfigPageAuthentication::showDetails(Smb4KAuthInfo *authInfo)
 {
   m_loading_details = true;
   
@@ -431,7 +430,7 @@ void Smb4KAuthOptionsPage::showDetails(Smb4KAuthInfo *authInfo)
 }
 
 
-void Smb4KAuthOptionsPage::clearDetails()
+void Smb4KConfigPageAuthentication::clearDetails()
 {
   // Uncheck the "Show details" check box and enable/disable it.
   m_details_box->setChecked(false);
@@ -453,13 +452,13 @@ void Smb4KAuthOptionsPage::clearDetails()
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
 
-void Smb4KAuthOptionsPage::slotKWalletButtonToggled(bool checked)
+void Smb4KConfigPageAuthentication::slotKWalletButtonToggled(bool checked)
 {
   findChild<QGroupBox *>("DefaultLoginBox")->setEnabled(checked);
 }
 
 
-void Smb4KAuthOptionsPage::slotDefaultLoginToggled(bool checked)
+void Smb4KConfigPageAuthentication::slotDefaultLoginToggled(bool checked)
 {
   if (checked && !Smb4KSettings::useDefaultLogin())
   {
@@ -472,7 +471,7 @@ void Smb4KAuthOptionsPage::slotDefaultLoginToggled(bool checked)
 }
 
 
-void Smb4KAuthOptionsPage::slotDetailsClicked(bool checked)
+void Smb4KConfigPageAuthentication::slotDetailsClicked(bool checked)
 {
   QList<QListWidgetItem *> selected_items = m_entries_widget->selectedItems();
   
@@ -502,7 +501,7 @@ void Smb4KAuthOptionsPage::slotDetailsClicked(bool checked)
 }
 
 
-void Smb4KAuthOptionsPage::slotItemSelectionChanged()
+void Smb4KConfigPageAuthentication::slotItemSelectionChanged()
 {
   // Clear details stuff
   clearDetails();
@@ -512,7 +511,7 @@ void Smb4KAuthOptionsPage::slotItemSelectionChanged()
 }
 
 
-void Smb4KAuthOptionsPage::slotDetailsChanged(int row, int column)
+void Smb4KConfigPageAuthentication::slotDetailsChanged(int row, int column)
 {
   if (!m_loading_details)
   {
@@ -609,19 +608,19 @@ void Smb4KAuthOptionsPage::slotDetailsChanged(int row, int column)
 }
 
 
-void Smb4KAuthOptionsPage::slotShowListWidgetContextMenu(const QPoint &pos)
+void Smb4KConfigPageAuthentication::slotShowListWidgetContextMenu(const QPoint &pos)
 {
   m_entries_menu->menu()->popup(m_entries_widget->viewport()->mapToGlobal(pos));
 }
 
 
-void Smb4KAuthOptionsPage::slotShowTableWidgetContextMenu(const QPoint &pos)
+void Smb4KConfigPageAuthentication::slotShowTableWidgetContextMenu(const QPoint &pos)
 {
   m_details_menu->menu()->popup(m_details_widget->viewport()->mapToGlobal(pos));
 }
 
 
-void Smb4KAuthOptionsPage::slotRemoveActionTriggered(bool /*checked*/)
+void Smb4KConfigPageAuthentication::slotRemoveActionTriggered(bool /*checked*/)
 {
   if ((m_details_widget->rowCount() != 0 && m_details_widget->columnCount() != 0) &&
        QString::compare(m_entries_widget->currentItem()->text(), m_details_widget->item(0, 1)->text()) == 0)
@@ -673,7 +672,7 @@ void Smb4KAuthOptionsPage::slotRemoveActionTriggered(bool /*checked*/)
 }
 
 
-void Smb4KAuthOptionsPage::slotClearActionTriggered(bool /*checked*/)
+void Smb4KConfigPageAuthentication::slotClearActionTriggered(bool /*checked*/)
 {
   clearDetails();
   
@@ -699,7 +698,7 @@ void Smb4KAuthOptionsPage::slotClearActionTriggered(bool /*checked*/)
 }
 
 
-void Smb4KAuthOptionsPage::slotUndoListActionTriggered(bool /*checked*/)
+void Smb4KConfigPageAuthentication::slotUndoListActionTriggered(bool /*checked*/)
 {
   m_undo_removal = true;
   emit loadWalletEntries();
@@ -708,7 +707,7 @@ void Smb4KAuthOptionsPage::slotUndoListActionTriggered(bool /*checked*/)
 }
 
 
-void Smb4KAuthOptionsPage::slotEditActionTriggered(bool /*checked*/)
+void Smb4KConfigPageAuthentication::slotEditActionTriggered(bool /*checked*/)
 {
   QPoint pos = m_details_widget->mapFromGlobal(cursor().pos());
   
@@ -723,7 +722,7 @@ void Smb4KAuthOptionsPage::slotEditActionTriggered(bool /*checked*/)
 }
 
 
-void Smb4KAuthOptionsPage::slotUndoDetailsActionTriggered(bool /*checked*/)
+void Smb4KConfigPageAuthentication::slotUndoDetailsActionTriggered(bool /*checked*/)
 {
   showDetails(m_auth_info);
   
@@ -767,7 +766,7 @@ void Smb4KAuthOptionsPage::slotUndoDetailsActionTriggered(bool /*checked*/)
 }
 
 
-void Smb4KAuthOptionsPage::slotSaveClicked(bool /*checked*/)
+void Smb4KConfigPageAuthentication::slotSaveClicked(bool /*checked*/)
 {
   m_collection->action("remove_action")->setEnabled(false);
   m_collection->action("clear_action")->setEnabled((m_entries_widget->count() != 0));
