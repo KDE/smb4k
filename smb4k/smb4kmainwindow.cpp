@@ -2,7 +2,7 @@
     smb4kmainwindow  -  The main window of Smb4K.
                              -------------------
     begin                : Di Jan 1 2008
-    copyright            : (C) 2008-2015 by Alexander Reinholdt
+    copyright            : (C) 2008-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -466,7 +466,7 @@ void Smb4KMainWindow::setupSystemTrayWidget()
   }
 
   connect(m_system_tray_widget, SIGNAL(settingsChanged(QString)),
-           this,                 SLOT(slotSettingsChanged(QString)));
+          this,                 SLOT(slotSettingsChanged(QString)));
 }
 
 
@@ -550,8 +550,8 @@ bool Smb4KMainWindow::queryClose()
   {
     // This part has been 'stolen' from JuK application.
     KMessageBox::information(this,
-            i18n("<p>Closing the main window will keep Smb4K running in the system tray. "
-                  "Use 'Quit' from the 'File' menu to quit the application.</p>"),
+            i18n("<qt>Closing the main window will keep Smb4K running in the system tray. "
+                  "Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"),
             i18n("Docking"), "DockToSystemTrayInfo");
     setVisible(false);
     return false;
@@ -593,53 +593,34 @@ void Smb4KMainWindow::slotQuit()
 
 void Smb4KMainWindow::slotConfigDialog()
 {
-  // If the config dialog is already created and cached,
-  // we do not create a new one but show the old instead:
-  KConfigDialog *dlg = NULL;
-
-  if ((dlg = KConfigDialog::exists("ConfigDialog")) && KConfigDialog::showDialog("ConfigDialog"))
+  //
+  // Check if the configuration dialog exists and try to show it.
+  //
+  if (KConfigDialog::exists("ConfigDialog"))
   {
-    // To make sure we do not connect the config dialog several times
-    // to slotSettingsChanged(), we break the connection first and re-
-    // establish it afterwards:
-    disconnect(dlg,  SIGNAL(settingsChanged(QString)),
-                this, SLOT(slotSettingsChanged(QString)));
-
-    connect(dlg,  SIGNAL(settingsChanged(QString)),
-             this, SLOT(slotSettingsChanged(QString)));
-
-    // Same procedure for the system tray widget:
-    disconnect(dlg, SIGNAL(settingsChanged(QString)),
-                m_system_tray_widget, SLOT(slotSettingsChanged(QString)));
-
-    connect(dlg, SIGNAL(settingsChanged(QString)),
-             m_system_tray_widget, SLOT(slotSettingsChanged(QString)));
-
+    KConfigDialog::showDialog("ConfigDialog");
     return;
   }
   else
   {
     // Do nothing
   }
-
-  // Load the configuration dialog:
+  
+  //
+  // If the dialog does not exist, load and show it:
+  //
   KPluginLoader loader("smb4kconfigdialog");
-  KPluginFactory *config_factory = loader.factory();
+  KPluginFactory *configFactory = loader.factory();
 
-  if (config_factory)
+  if (configFactory)
   {
-    dlg = config_factory->create<KConfigDialog>(this);
-    dlg->setObjectName("ConfigDialog");
-
-    // ... and show it.
+    KConfigDialog *dlg = configFactory->create<KConfigDialog>(this);
+    
     if (dlg)
     {
-      connect(dlg,  SIGNAL(settingsChanged(QString)),
-               this, SLOT(slotSettingsChanged(QString)));
-
-      connect(dlg, SIGNAL(settingsChanged(QString)),
-               m_system_tray_widget, SLOT(slotSettingsChanged(QString)));
-
+      dlg->setObjectName("ConfigDialog");
+      connect(dlg, SIGNAL(settingsChanged(QString)), this, SLOT(slotSettingsChanged(QString)), Qt::UniqueConnection);
+      connect(dlg, SIGNAL(settingsChanged(QString)), m_system_tray_widget, SLOT(slotSettingsChanged(QString)), Qt::UniqueConnection);
       dlg->show();
     }
     else
@@ -677,17 +658,19 @@ void Smb4KMainWindow::slotAddBookmark()
 
 void Smb4KMainWindow::slotWalletManagerInitialized()
 {
+  qDebug() << "Smb4KMainWindow::slotWalletManagerInitialized(): Use different icons";
+  
   if (Smb4KWalletManager::self()->useWalletSystem())
   {
     m_pass_icon->setPixmap(KIconLoader::global()->loadIcon("security-high",
-                             KIconLoader::Small, 0, KIconLoader::DefaultState));
+                           KIconLoader::Small, 0, KIconLoader::DefaultState));
     m_pass_icon->setToolTip(i18n("The wallet is used."));    
   }
   else
   {
     m_pass_icon->setPixmap(KIconLoader::global()->loadIcon("dialog-password",
                            KIconLoader::Small, 0, KIconLoader::DefaultState));
-    m_pass_icon->setToolTip(i18n("The password dialog mode is used."));
+    m_pass_icon->setToolTip(i18n("The password dialog is used."));
   }
 }
 
@@ -766,12 +749,12 @@ void Smb4KMainWindow::slotMounterAboutToStart(int process)
   {
     case MountShare:
     {
-      statusBar()->showMessage(i18n("Mounting share..."), 0);
+      statusBar()->showMessage(i18n("Mounting..."), 0);
       break;
     }
     case UnmountShare:
     {
-      statusBar()->showMessage(i18n("Unmounting share..."), 0);
+      statusBar()->showMessage(i18n("Unmounting..."), 0);
       break;
     }
     case WakeUp:
@@ -796,7 +779,7 @@ void Smb4KMainWindow::slotMounterAboutToStart(int process)
 }
 
 
-void Smb4KMainWindow::slotMounterFinished(int process)
+void Smb4KMainWindow::slotMounterFinished(int /*process*/)
 {
   if (!coreIsRunning())
   {
