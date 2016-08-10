@@ -760,12 +760,12 @@ void Smb4KSharesViewPart::slotMounterAboutToStart(int process)
   {
     case MountShare:
     {
-      emit setStatusBarText(i18n("Mounting share..."));
+      emit setStatusBarText(i18n("Mounting..."));
       break;
     }
     case UnmountShare:
     {
-      emit setStatusBarText(i18n("Unmounting share..."));
+      emit setStatusBarText(i18n("Unmounting..."));
       break;
     }
     default:
