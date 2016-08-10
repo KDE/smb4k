@@ -1,5 +1,5 @@
 /***************************************************************************
-    smb4kglobal  -  This is the global namespace for Smb4K.
+    This is the global namespace for Smb4K.
                              -------------------
     begin                : Sa Apr 2 2005
     copyright            : (C) 2005-2016 by Alexander Reinholdt
@@ -58,7 +58,6 @@ namespace Smb4KGlobal
    * @enum LookupDomains          Look up domains
    * @enum LookupDomainMembers    Look up those servers that belong to a domain/workgroup
    * @enum LookupShares           Look up shares on a server
-   * @enum LookupInfo             Lookup additional info about a server
    * @enum WakeUp                 Send magic Wake-On-LAN packages
    * @enum MountShare             Mount a share
    * @enum UnmountShare           Unmount a share
@@ -67,7 +66,6 @@ namespace Smb4KGlobal
     LookupDomains,
     LookupDomainMembers,
     LookupShares,
-    LookupInfo,
     WakeUp,
     MountShare,
     UnmountShare };

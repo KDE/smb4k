@@ -1,9 +1,9 @@
 /***************************************************************************
-    smb4kscanner  -  This class retrieves all workgroups, servers and
-    shares found on the network neighborhood
+    This class retrieves all workgroups, servers and shares found on the 
+    network neighborhood
                              -------------------
     begin                : So Mai 22 2011
-    copyright            : (C) 2011-2013 by Alexander Reinholdt
+    copyright            : (C) 2011-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -218,53 +218,6 @@ bool Smb4KScanner::isRunning(Smb4KGlobal::Process process, Smb4KBasicNetworkItem
       }
       break;
     }
-    case LookupInfo:
-    {
-      if (item && item->type() == Host)
-      {
-        // Only return TRUE if a job for the passed host is running.
-        Smb4KHost *host = static_cast<Smb4KHost *>(item);
-        
-        if (host)
-        {
-          for (int i = 0; i < subjobs().size(); ++i)
-          {
-            if (QString::compare(subjobs().at(i)->objectName(),
-                 QString("LookupInfoJob_%1").arg(host->hostName()), Qt::CaseInsensitive) == 0)
-            {
-              running = true;
-              break;
-            }
-            else
-            {
-              continue;
-            }
-          }
-        }
-        else
-        {
-          // Do nothing --- This should not happen.
-        }
-      }
-      else
-      {
-        // If no item is defined, we just loop through the subjobs
-        // and search for a "LookupInfoJob".
-        for (int i = 0; i < subjobs().size(); ++i)
-        {
-          if (subjobs().at(i)->objectName().startsWith(QLatin1String("LookupInfoJob")))
-          {
-            running = true;
-            break;
-          }
-          else
-          {
-            continue;
-          }
-        }
-      }
-      break;
-    }
     default:
     {
       break;
@@ -401,53 +354,6 @@ void Smb4KScanner::abort(Smb4KGlobal::Process process, Smb4KBasicNetworkItem *it
         }
       }
 
-      break;
-    }
-    case LookupInfo:
-    {
-      if (item && item->type() == Host)
-      {
-        // Only return TRUE if a job for the passed host is running.
-        Smb4KHost *host = static_cast<Smb4KHost *>(item);
-        
-        if (host)
-        {
-          for (int i = 0; i < subjobs().size(); ++i)
-          {
-            if (QString::compare(subjobs().at(i)->objectName(),
-                 QString("LookupInfoJob_%1").arg(host->hostName()), Qt::CaseInsensitive) == 0)
-            {
-              subjobs().at(i)->kill(KJob::EmitResult);
-              break;
-            }
-            else
-            {
-              continue;
-            }
-          }
-        }
-        else
-        {
-          // Do nothing --- This should not happen.
-        }
-      }
-      else
-      {
-        // If no item is defined, we just loop through the subjobs
-        // and search for a "LookupInfoJob".
-        for (int i = 0; i < subjobs().size(); ++i)
-        {
-          if (subjobs().at(i)->objectName().startsWith(QLatin1String("LookupInfoJob")))
-          {
-            subjobs().at(i)->kill(KJob::EmitResult);
-            continue;
-          }
-          else
-          {
-            continue;
-          }
-        }
-      }
       break;
     }
     default:
@@ -682,48 +588,6 @@ void Smb4KScanner::lookupShares(Smb4KHost *host, QWidget *parent)
   connect(job, SIGNAL(shares(Smb4KHost*,QList<Smb4KShare*>)), SLOT(slotShares(Smb4KHost*,QList<Smb4KShare*>)));
   connect(job, SIGNAL(authError(Smb4KLookupSharesJob*)), SLOT(slotAuthError(Smb4KLookupSharesJob*)));
   
-  if (!hasSubjobs() && modifyCursor())
-  {
-    QApplication::setOverrideCursor(Qt::BusyCursor);
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  addSubjob(job);
-
-  job->start();
-}
-
-
-void Smb4KScanner::lookupInfo(Smb4KHost *host, QWidget *parent)
-{
-  Q_ASSERT(host);
-  
-  // Check if the additional information (Server, OS) has already been
-  // acquired previously or if we need to start a lookup job.
-  Smb4KHost *known_host = findHost(host->hostName(), host->workgroupName());
-  
-  if (known_host && known_host->hasInfo())
-  {
-    emit info(known_host);
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  Smb4KLookupInfoJob *job = new Smb4KLookupInfoJob(this);
-  job->setObjectName(QString("LookupInfoJob_%1").arg(host->hostName()));
-  job->setupLookup(host, parent);
-    
-  connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
-  connect(job, SIGNAL(aboutToStart(Smb4KHost*)), SLOT(slotAboutToStartSharesLookup(Smb4KHost*)));
-  connect(job, SIGNAL(finished(Smb4KHost*)), SLOT(slotSharesLookupFinished(Smb4KHost*)));
-  connect(job, SIGNAL(info(Smb4KHost*)), SLOT(slotInfo(Smb4KHost*)));
-    
   if (!hasSubjobs() && modifyCursor())
   {
     QApplication::setOverrideCursor(Qt::BusyCursor);
@@ -1084,18 +948,6 @@ void Smb4KScanner::slotAboutToStartSharesLookup(Smb4KHost *host)
 void Smb4KScanner::slotSharesLookupFinished(Smb4KHost *host)
 {
   emit finished(host, LookupShares);
-}
-
-
-void Smb4KScanner::slotAboutToStartInfoLookup(Smb4KHost *host)
-{
-  emit aboutToStart(host, LookupInfo);
-}
-
-
-void Smb4KScanner::slotInfoLookupFinished(Smb4KHost *host)
-{
-  emit finished(host, LookupInfo);
 }
 
 
@@ -1497,40 +1349,6 @@ void Smb4KScanner::slotShares(Smb4KHost *host, const QList<Smb4KShare *> &shares
   {
     // Do nothing
   }
-}
-
-
-void Smb4KScanner::slotInfo(Smb4KHost *host)
-{
-  Q_ASSERT(host);
-  
-  Smb4KHost *known_host = 0;
-  
-  if (host->hasInfo())
-  {
-    // Copy the information also to host in the global list, if present,
-    // or copy 'host' to the global list.
-    known_host = findHost(host->hostName(), host->workgroupName());
-
-    if (known_host)
-    {
-      known_host->setInfo(host->serverString(), host->osString());
-    }
-    else
-    {
-      known_host = new Smb4KHost(*host);
-      addHost(known_host);
-      
-      d->haveNewHosts = true;
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Emit the host here.
-  emit info(known_host);
 }
 
 

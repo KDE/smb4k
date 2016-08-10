@@ -130,26 +130,6 @@ class Smb4KNetworkBrowserPart : public KParts::Part
     void slotItemActivated(QTreeWidgetItem *item, int column);
 
     /**
-     * This slot is called when the user moved the mouse over an @p item in the
-     * network browser and a tool tip is about to be shown. It will initiate any
-     * actions that have to be taken by the scanner to complete the information
-     * on the network items shown in the browser.
-     *
-     * @param item                The item for which the additional info is to
-     *                            be retrieved
-     */
-    void slotAboutToShowToolTip(Smb4KNetworkBrowserItem *item);
-
-    /**
-     * This slot is called when the tool tip is about to be closed. It stops the
-     * search for addtitional information if necessary.
-     * 
-     * @param item                The item for which the additional info was to
-     *                            be retrieved
-     */
-    void slotAboutToHideToolTip(Smb4KNetworkBrowserItem *item);
-
-    /**
      * This slot receives the workgroups/domains found by the scanner. It takes
      * a list of workgroup items @p list and inserts the respective workgroups
      * into the browser window. Obsolete items will be deleted from the network
@@ -189,15 +169,6 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      */
     void slotAddIPAddress(Smb4KHost *host);
 
-    /**
-     * This slot adds additional information to a browser item. It takes an
-     * Smb4KHostItem @p item, searches the assossiated browser item and updates its
-     * contents.
-     *
-     * @param host                A Smb4KHost item with updated contents.
-     */
-    void slotAddInformation(Smb4KHost *host);
-    
     /**
      * This slot is called when an authentication error occurred. Depending on
      * the @p process parameter it will take respective actions.

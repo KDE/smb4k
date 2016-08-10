@@ -77,8 +77,6 @@ class Q_DECL_EXPORT Smb4KToolTip : public QWidget
                     qreal sweepLength);
     QLabel *m_master_browser_label;
     QLabel *m_comment_label;
-    QLabel *m_server_label;
-    QLabel *m_os_label;
     QLabel *m_ip_label;
     QLabel *m_mounted_label;
     QLabel *m_size_label;

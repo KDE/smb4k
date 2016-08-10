@@ -64,8 +64,6 @@ Smb4KToolTip::Smb4KToolTip(QWidget* parent)
 {
   m_master_browser_label = 0;
   m_comment_label        = 0;
-  m_server_label         = 0;
-  m_os_label             = 0;
   m_ip_label             = 0;
   m_mounted_label        = 0;
   m_size_label           = 0;
@@ -157,24 +155,6 @@ void Smb4KToolTip::update(Smb4KToolTip::Parent parent, Smb4KBasicNetworkItem* it
             else
             {
               m_comment_label->setText("-");
-            }
-            
-            if (!host->serverString().isEmpty())
-            {
-              m_server_label->setText(host->serverString());
-            }
-            else
-            {
-              m_server_label->setText("-");
-            }
-            
-            if (!host->osString().isEmpty())
-            {
-              m_os_label->setText(host->osString());
-            }
-            else
-            {
-              m_os_label->setText("-");
             }
             
             if (!host->ip().isEmpty())
@@ -415,59 +395,27 @@ void Smb4KToolTip::setupNetworkBrowserToolTip()
         m_text_layout->addWidget(m_comment_label, 1, 1, 0);
       }
       
-      QLabel *srv_label = new QLabel(i18n("Server"), this);
-      srv_label->setPalette(p);
-      
-      m_text_layout->addWidget(srv_label, 2, 0, Qt::AlignRight);
-      
-      if (!host->serverString().isEmpty())
-      {
-        m_server_label = new QLabel(host->serverString(), this);
-        m_text_layout->addWidget(m_server_label, 2, 1, 0);
-      }
-      else
-      {
-        m_server_label = new QLabel("-", this);
-        m_text_layout->addWidget(m_server_label, 2, 1, 0);
-      }
-      
-      QLabel *os_label = new QLabel(i18n("Operating system"), this);
-      os_label->setPalette(p);
-      
-      m_text_layout->addWidget(os_label, 3, 0, Qt::AlignRight);
-      
-      if (!host->osString().isEmpty())
-      {
-        m_os_label = new QLabel(host->osString(), this);
-        m_text_layout->addWidget(m_os_label, 3, 1, 0);
-      }
-      else
-      {
-        m_os_label = new QLabel("-", this);
-        m_text_layout->addWidget(m_os_label, 3, 1, 0);
-      }
-      
       QLabel *ip_label = new QLabel(i18n("IP Address"), this);
       ip_label->setPalette(p);
       
-      m_text_layout->addWidget(ip_label, 4, 0, Qt::AlignRight);
+      m_text_layout->addWidget(ip_label, 2, 0, Qt::AlignRight);
       
       if (!host->ip().isEmpty())
       {
         m_ip_label = new QLabel(host->ip(), this);
-        m_text_layout->addWidget(m_ip_label, 4, 1, 0);
+        m_text_layout->addWidget(m_ip_label, 2, 1, 0);
       }
       else
       {
         m_ip_label = new QLabel("-", this);
-        m_text_layout->addWidget(m_ip_label, 4, 1, 0);
+        m_text_layout->addWidget(m_ip_label, 2, 1, 0);
       }
       
       QLabel *wg_label = new QLabel(i18n("Workgroup"), this);
       wg_label->setPalette(p);
       
-      m_text_layout->addWidget(wg_label, 5, 0, Qt::AlignRight);
-      m_text_layout->addWidget(new QLabel(host->workgroupName(), this), 5, 1, 0);
+      m_text_layout->addWidget(wg_label, 3, 0, Qt::AlignRight);
+      m_text_layout->addWidget(new QLabel(host->workgroupName(), this), 3, 1, 0);
       
       m_info_layout->addLayout(m_text_layout);
       m_info_layout->addSpacerItem(new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding));
@@ -739,48 +687,8 @@ void Smb4KToolTip::updateNetworkBrowserToolTip()
           // Do nothing
         }
       
-        // Server
-        QLayoutItem *srv_item = m_text_layout->itemAtPosition(2, 1);
-        QLabel *srv_label = static_cast<QLabel *>(srv_item->widget());
-        
-        if (srv_label)
-        {
-          if (!host->serverString().isEmpty())
-          {
-            srv_label->setText(host->serverString());
-          }
-          else
-          {
-            srv_label->setText("-");
-          }
-        }
-        else
-        {
-          // Do nothing
-        }
-        
-        // Operating system
-        QLayoutItem *os_item = m_text_layout->itemAtPosition(3, 1);
-        QLabel *os_label = static_cast<QLabel *>(os_item->widget());
-        
-        if (os_label)
-        {        
-          if (!host->osString().isEmpty())
-          {
-            os_label->setText(host->osString());
-          }
-          else
-          {
-            os_label->setText("-");
-          }
-        }
-        else
-        {
-          // Do nothing
-        }
-        
         // IP address
-        QLayoutItem *ip_item = m_text_layout->itemAtPosition(4, 1);
+        QLayoutItem *ip_item = m_text_layout->itemAtPosition(2, 1);
         QLabel *ip_label = static_cast<QLabel *>(ip_item->widget());
         
         if (ip_label)

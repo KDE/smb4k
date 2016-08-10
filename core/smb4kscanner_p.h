@@ -1,8 +1,8 @@
 /***************************************************************************
-    smb4kscanner_p  -  Private helper classes for the scanner
+    Private helper classes for the scanner
                              -------------------
     begin                : So Mai 22 2011
-    copyright            : (C) 2011-2015 by Alexander Reinholdt
+    copyright            : (C) 2011-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -448,94 +448,6 @@ class Smb4KLookupSharesJob : public KJob
     QWidget *m_parent_widget;
     Smb4KProcess *m_process;
     QList<Smb4KShare *> m_shares_list;
-};
-
-
-class Smb4KLookupInfoJob : public KJob
-{
-  Q_OBJECT
-  
-  public:
-    /**
-     * Constructor
-     */
-    explicit Smb4KLookupInfoJob(QObject *parent = 0);
-    
-    /**
-     * Destructor
-     */
-    ~Smb4KLookupInfoJob();
-    
-    /**
-     * Returns TRUE if the job has been started and FALSE otherwise
-     *
-     * @returns TRUE if the job has been started
-     */
-    bool isStarted() { return m_started; }
-
-    /**
-     * Starts the job
-     */
-    void start();
-
-    /**
-     * Sets up the lookup job.
-     *
-     * @param host          The host that is to be asked for its information
-     *
-     * @param parent        The parent widget
-     */
-    void setupLookup(Smb4KHost *host,
-                      QWidget *parent = 0);
-    
-    /**
-     * Returns the parent widget
-     *
-     * @returns the parent widget
-     */
-    QWidget *parentWidget() { return m_parent_widget; }
-
-    /**
-     * Returns the host for which the additional information
-     * was acquired.
-     */
-    Smb4KHost *host() { return m_host; }
-    
-  Q_SIGNALS:
-    /**
-     * This signal is emitted when the lookup process is about to start.
-     *
-     * @param host          The host that is queried for the additional
-     *                      information
-     */
-    void aboutToStart(Smb4KHost *host);
-
-    /**
-     * This signal is emitted when the lookup process finished.
-     *
-     * @param host          The host that was queried for the additional
-     *                      information
-     */
-    void finished(Smb4KHost *host);
-    
-    /**
-     * This signal is emitted when additional information was found.
-     */
-    void info(Smb4KHost *host);
-    
-  protected:
-    bool doKill();
-    
-  protected Q_SLOTS:
-    void slotStartLookup();
-    void slotProcessFinished(int exitCode, QProcess::ExitStatus exitStatus);
-    
-  private:
-    void processInfo(const QString &stdOut, const QString &stdErr);
-    bool m_started;
-    Smb4KHost *m_host;
-    QWidget *m_parent_widget;
-    Smb4KProcess *m_process;
 };
 
 

@@ -137,12 +137,6 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart(QWidget *parentWidget, QObject 
   connect(m_widget, SIGNAL(itemActivated(QTreeWidgetItem*,int)),
           this, SLOT(slotItemActivated(QTreeWidgetItem*,int)));
   
-  connect(m_widget, SIGNAL(aboutToShowToolTip(Smb4KNetworkBrowserItem*)),
-          this, SLOT(slotAboutToShowToolTip(Smb4KNetworkBrowserItem*)));
-  
-  connect(m_widget, SIGNAL(aboutToHideToolTip(Smb4KNetworkBrowserItem*)),
-          this, SLOT(slotAboutToHideToolTip(Smb4KNetworkBrowserItem*)));
-  
   connect(Smb4KScanner::self(), SIGNAL(workgroups(QList<Smb4KWorkgroup*>)),
           this, SLOT(slotWorkgroups(QList<Smb4KWorkgroup*>)));
   
@@ -151,9 +145,6 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart(QWidget *parentWidget, QObject 
   
   connect(Smb4KScanner::self(), SIGNAL(shares(Smb4KHost*,QList<Smb4KShare*>)),
           this, SLOT(slotShares(Smb4KHost*,QList<Smb4KShare*>)));
-  
-  connect(Smb4KScanner::self(), SIGNAL(info(Smb4KHost*)),
-          this, SLOT(slotAddInformation(Smb4KHost*)));
   
   connect(Smb4KScanner::self(), SIGNAL(authError(Smb4KHost*,int)),
           this, SLOT(slotAuthError(Smb4KHost*,int)));
@@ -699,63 +690,6 @@ void Smb4KNetworkBrowserPart::slotItemActivated(QTreeWidgetItem *item, int /*col
   else
   {
     // Do nothing
-  }
-}
-
-
-void Smb4KNetworkBrowserPart::slotAboutToShowToolTip(Smb4KNetworkBrowserItem *item)
-{
-  if (item)
-  {
-    switch (item->type())
-    {
-      case Host:
-      {
-        if (!item->hostItem()->hasInfo())
-        {
-          Smb4KScanner::self()->lookupInfo(item->hostItem(), m_widget);
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-  else
-  {
-    // Do nothing --- BTW: Will this case occur at all?
-  }
-}
-
-
-void Smb4KNetworkBrowserPart::slotAboutToHideToolTip(Smb4KNetworkBrowserItem *item)
-{
-  if (item)
-  {
-    switch (item->type())
-    {
-      case Host:
-      {
-        // Kill the lookup process for the additional information.
-        Smb4KScanner::self()->abort(LookupInfo, item->hostItem());
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-  else
-  {
-    // Do nothing --- BTW: Will this case occur at all?
   }
 }
 
@@ -1440,36 +1374,6 @@ void Smb4KNetworkBrowserPart::slotAddIPAddress(Smb4KHost *host)
 }
 
 
-void Smb4KNetworkBrowserPart::slotAddInformation(Smb4KHost *host)
-{
-  if (host)
-  {
-    // Find the host.
-    QList<QTreeWidgetItem *> hosts = m_widget->findItems(host->hostName(), Qt::MatchFixedString|Qt::MatchRecursive, Smb4KNetworkBrowser::Network);
-
-    for (int i = 0; i < hosts.size(); ++i)
-    {
-      Smb4KNetworkBrowserItem *workgroupItem = static_cast<Smb4KNetworkBrowserItem *>(hosts.at(i)->parent());
-
-      if (QString::compare(host->workgroupName(), workgroupItem->text(Smb4KNetworkBrowserItem::Network)) == 0)
-      {
-        Smb4KNetworkBrowserItem *hostItem = static_cast<Smb4KNetworkBrowserItem *>(hosts.at(i));
-        hostItem->update(host);
-        break;
-      }
-      else
-      {
-        continue;
-      }
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
 void Smb4KNetworkBrowserPart::slotAuthError(Smb4KHost *host, int process)
 {
   switch (process)
@@ -1903,19 +1807,6 @@ void Smb4KNetworkBrowserPart::slotScannerAboutToStart(Smb4KBasicNetworkItem *ite
       {
         Smb4KHost *host = static_cast<Smb4KHost *>(item);
         emit setStatusBarText(i18n("Looking for shares provided by host %1...", host->hostName()));
-      }
-      else
-      {
-        // Do nothing
-      }
-      break;
-    }
-    case LookupInfo:
-    {
-      if (!m_silent)
-      {
-        Smb4KHost *host = static_cast<Smb4KHost *>(item);
-        emit setStatusBarText(i18n("Looking for more information about host %1...", host->hostName()));
       }
       else
       {

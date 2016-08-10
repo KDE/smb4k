@@ -698,12 +698,6 @@ void Smb4KMainWindow::slotScannerAboutToStart(Smb4KBasicNetworkItem *item, int p
       statusBar()->showMessage(i18n("Looking for shares provided by host %1...", host->hostName()), 0);
       break;
     }
-    case LookupInfo:
-    {
-      Smb4KHost *host = static_cast<Smb4KHost *>(item);
-      statusBar()->showMessage(i18n("Looking for more information about host %1...", host->hostName()), 0);
-      break;
-    }
     case WakeUp:
     {
       statusBar()->showMessage(i18n("Waking up remote hosts..."), 0);

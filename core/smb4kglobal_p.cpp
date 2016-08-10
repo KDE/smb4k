@@ -1,9 +1,8 @@
 /***************************************************************************
-    smb4kglobal_p  -  This is the private helper class of the Smb4KGlobal
-    namespace.
+    These are the private helper classes of the Smb4KGlobal namespace.
                              -------------------
     begin                : Di Jul 24 2007
-    copyright            : (C) 2007-2015 by Alexander Reinholdt
+    copyright            : (C) 2007-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

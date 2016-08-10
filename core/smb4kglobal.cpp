@@ -1,5 +1,5 @@
 /***************************************************************************
-    smb4kglobal  -  This is the global namespace for Smb4K.
+    This is the global namespace for Smb4K.
                              -------------------
     begin                : Sa Apr 2 2005
     copyright            : (C) 2005-2016 by Alexander Reinholdt

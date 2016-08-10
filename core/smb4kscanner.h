@@ -1,9 +1,9 @@
 /***************************************************************************
-    smb4kscanner  -  This class retrieves all workgroups, servers and
-    shares found on the network neighborhood
+    This class retrieves all workgroups, servers and shares found on the 
+    network neighborhood
                              -------------------
     begin                : So Mai 22 2011
-    copyright            : (C) 2011-2015 by Alexander Reinholdt
+    copyright            : (C) 2011-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -156,17 +156,6 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
      */
     void lookupShares(Smb4KHost *host,
                        QWidget *parent = 0);
-
-    /**
-     * This function looks up additional information from a
-     * certain @p host.
-     *
-     * @param host            The host object
-     * 
-     * @param parent          The parent widget
-     */
-    void lookupInfo(Smb4KHost *host,
-                     QWidget *parent = 0);
     
   protected:
     /**
@@ -232,14 +221,6 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
      */
     void shares(Smb4KHost *host,
                  const QList<Smb4KShare *> &shares);
-    
-    /**
-     * This signal is emitted when the additional information has been
-     * acquired from a certain host.
-     * 
-     * @param host        The host with the acquired information
-     */
-    void info(Smb4KHost *host);
     
     /**
      * This signal is emitted when an authentication error occurred.
@@ -324,16 +305,6 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
     void slotSharesLookupFinished(Smb4KHost *host );
     
     /**
-     * A lookup process for shares is about to be started
-     */
-    void slotAboutToStartInfoLookup(Smb4KHost *host);
-
-    /**
-     * A lookup process for shares has finished
-     */
-    void slotInfoLookupFinished(Smb4KHost *host );
-
-    /**
      * Is called when workgroups and domains have been looked
      * up
      */
@@ -348,20 +319,13 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
      * Is called when hosts have been looked up by the normal lookup
      * method
      */
-    void slotHosts(Smb4KWorkgroup *workgroup,
-                    const QList<Smb4KHost *> &hosts_list);
+    void slotHosts(Smb4KWorkgroup *workgroup, const QList<Smb4KHost *> &hosts_list);
     
     /**
      * Is called when shares have been looked up
      */
-    void slotShares(Smb4KHost *host,
-                     const QList<Smb4KShare *> &shares_list);
+    void slotShares(Smb4KHost *host, const QList<Smb4KShare *> &shares_list);
     
-    /**
-     * Is called when additional information has been acquired
-     */
-    void slotInfo(Smb4KHost *host);
-
     /**
      * Is called when an IP address was looked up
      */
