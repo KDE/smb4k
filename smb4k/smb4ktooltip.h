@@ -72,9 +72,9 @@ class Q_DECL_EXPORT Smb4KToolTip : public QWidget
     void setupSharesViewToolTip();
     void updateSharesViewToolTip();
     static void arc(QPainterPath& path,
-                     qreal cx, qreal cy,
-                     qreal radius, qreal angle,
-                     qreal sweepLength);
+                    qreal cx, qreal cy,
+                    qreal radius, qreal angle,
+                    qreal sweepLength);
     QLabel *m_master_browser_label;
     QLabel *m_comment_label;
     QLabel *m_server_label;
