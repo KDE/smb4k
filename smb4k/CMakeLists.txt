@@ -10,30 +10,13 @@ include_directories(
 
 add_subdirectory(icons)
 
-########### Tooltips #################################
-
-set(smb4ktooltips_LIB_SRCS
-  smb4ktooltip.cpp)
-
-add_library(smb4ktooltips SHARED ${smb4ktooltips_LIB_SRCS})
-
-target_link_libraries(smb4ktooltips
-  Qt5::Core
-  Qt5::Gui
-  Qt5::Widgets
-  KF5::ConfigWidgets
-  KF5::WidgetsAddons
-  KF5::IconThemes
-  KF5::I18n
-  KF5::WindowSystem
-  smb4kcore)
-  
 ########### Browser dock widget ######################
 
 set(smb4knetworkbrowser_PART_SRCS
   smb4knetworkbrowser_part.cpp
   smb4knetworkbrowser.cpp
-  smb4knetworkbrowseritem.cpp)
+  smb4knetworkbrowseritem.cpp
+  smb4ktooltip.cpp)
   
 add_library(smb4knetworkbrowser MODULE ${smb4knetworkbrowser_PART_SRCS})
 
@@ -47,8 +30,8 @@ target_link_libraries(smb4knetworkbrowser
   KF5::I18n
   KF5::IconThemes
   KF5::Parts
-  smb4kcore 
-  smb4ktooltips)
+  KF5::WindowSystem
+  smb4kcore)
   
 ########### Search dock widget #######################
 
@@ -76,7 +59,8 @@ target_link_libraries(smb4knetworksearch
 set(smb4ksharesview_PART_SRCS
    smb4ksharesview.cpp
    smb4ksharesview_part.cpp
-   smb4ksharesviewitem.cpp)
+   smb4ksharesviewitem.cpp
+   smb4ktooltip.cpp)
    
 add_library(smb4ksharesview MODULE ${smb4ksharesview_PART_SRCS})
 
@@ -91,8 +75,8 @@ target_link_libraries(smb4ksharesview
   KF5::IconThemes
   KF5::Parts
   KF5::KIOCore
-  smb4kcore 
-  smb4ktooltips)
+  KF5::WindowSystem
+  smb4kcore)
   
 ########### Configuration dialog #####################
 
@@ -149,7 +133,6 @@ target_link_libraries(smb4k
 
 ########### install files ###############
 
-install(TARGETS smb4ktooltips DESTINATION ${KDE_INSTALL_LIBDIR})
 install(TARGETS smb4knetworkbrowser DESTINATION ${KDE_INSTALL_PLUGINDIR})
 install(TARGETS smb4knetworksearch DESTINATION ${KDE_INSTALL_PLUGINDIR})
 install(TARGETS smb4ksharesview DESTINATION ${KDE_INSTALL_PLUGINDIR})
