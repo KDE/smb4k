@@ -1,5 +1,5 @@
 /***************************************************************************
-    smb4ksharesiconviewitem  -  The items for Smb4K's shares icon view.
+    The item for Smb4K's shares view.
                              -------------------
     begin                : Di Dez 5 2006
     copyright            : (C) 2006-2016 by Alexander Reinholdt
@@ -80,6 +80,12 @@ class Smb4KSharesViewItem : public QListWidgetItem
      * @returns the tool tip.
      */
     Smb4KToolTip *tooltip();
+    
+    /**
+     * This funtion modifies the alignment according to the @p mode used in
+     * the parent list widget.
+     */
+    void setItemAlignment(QListView::ViewMode mode);
     
   private:
     /**

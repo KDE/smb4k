@@ -1,5 +1,5 @@
 /***************************************************************************
-    smb4ksharesiconview  -  This is the shares icon view of Smb4K.
+    This is the shares view of Smb4K.
                              -------------------
     begin                : Mo Dez 4 2006
     copyright            : (C) 2006-2016 by Alexander Reinholdt
@@ -75,6 +75,49 @@ Smb4KSharesView::Smb4KSharesView(QWidget *parent)
 
 Smb4KSharesView::~Smb4KSharesView()
 {
+}
+
+
+void Smb4KSharesView::setViewMode(QListView::ViewMode mode, int iconSize)
+{
+  //
+  // Set the view mode
+  //
+  QListWidget::setViewMode(mode);
+  
+  //
+  // Make adjustments
+  //
+  switch(mode)
+  {
+    case IconMode:
+    {
+      setUniformItemSizes(true);
+      setIconSize(QSize(iconSize, iconSize));
+      setSpacing(5);
+      break;
+    }
+    case ListMode:
+    {
+      setUniformItemSizes(false);
+      setIconSize(QSize(iconSize, iconSize));
+      setSpacing(0);
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+  
+  //
+  // Align the items 
+  //
+  for (int i = 0; i < count(); ++i)
+  {
+    Smb4KSharesViewItem *viewItem = static_cast<Smb4KSharesViewItem *>(item(i));
+    viewItem->setItemAlignment(mode);
+  }
 }
 
 

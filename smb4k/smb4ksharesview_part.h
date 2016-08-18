@@ -1,5 +1,5 @@
 /***************************************************************************
-    smb4ksharesview_part  -This Part includes the shares view of Smb4K.
+    This Part includes the shares view of Smb4K.
                              -------------------
     begin                : Sa Jun 30 2007
     copyright            : (C) 2007-2016 by Alexander Reinholdt

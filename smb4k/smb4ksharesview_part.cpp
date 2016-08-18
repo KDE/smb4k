@@ -1,5 +1,5 @@
 /***************************************************************************
-    smb4ksharesview_part  -  This Part includes the shares view of Smb4K.
+    This Part includes the shares view of Smb4K.
                              -------------------
     begin                : Sa Jun 30 2007
     copyright            : (C) 2007-2016 by Alexander Reinholdt
@@ -136,7 +136,7 @@ void Smb4KSharesViewPart::setupView()
   // defined for the desktop. The 'small' icon size is a bit too small,
   // I think...
   //
-  int icon_size = KIconLoader::global()->currentSize(KIconLoader::Desktop);
+  int iconSize = KIconLoader::global()->currentSize(KIconLoader::Desktop);
   
   //
   // Adjust the view according to the setting chosen
@@ -145,18 +145,12 @@ void Smb4KSharesViewPart::setupView()
   {
     case Smb4KSettings::EnumSharesViewMode::IconView:
     {
-      m_view->setViewMode(Smb4KSharesView::IconMode);
-      m_view->setUniformItemSizes(true);
-      m_view->setIconSize(QSize(icon_size, icon_size));
-      m_view->setSpacing(5);
+      m_view->setViewMode(Smb4KSharesView::IconMode, iconSize);
       break;
     }
     case Smb4KSettings::EnumSharesViewMode::ListView:
     {
-      m_view->setViewMode(Smb4KSharesView::ListMode);
-      m_view->setUniformItemSizes(false);
-      m_view->setIconSize(QSize(icon_size, icon_size));
-      m_view->setSpacing(0);
+      m_view->setViewMode(Smb4KSharesView::ListMode, iconSize);
       break;
     }
     default:

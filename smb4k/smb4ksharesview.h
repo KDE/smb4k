@@ -1,5 +1,5 @@
 /***************************************************************************
-    smb4ksharesiconview  -  This is the shares icon view of Smb4K.
+    This is the shares view of Smb4K.
                              -------------------
     begin                : Mo Dez 4 2006
     copyright            : (C) 2006-2016 by Alexander Reinholdt
@@ -50,7 +50,7 @@ class Smb4KSharesView : public QListWidget
     /**
      * The constructor.
      *
-     * @param parent          The parent widget
+     * @param parent        The parent widget
      */
     explicit Smb4KSharesView(QWidget *parent = 0);
 
@@ -58,6 +58,14 @@ class Smb4KSharesView : public QListWidget
      * The destructor.
      */
     ~Smb4KSharesView();
+    
+    /**
+     * Set the view mode.
+     * 
+     * @param mode          The view mode
+     * @param iconSize      The size of the icons
+     */
+    void setViewMode(ViewMode mode, int iconSize);
 
   signals:
     /**

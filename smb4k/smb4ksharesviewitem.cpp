@@ -1,5 +1,5 @@
 /***************************************************************************
-    smb4ksharesiconviewitem  -  The items for Smb4K's shares icon view.
+    The item for Smb4K's shares view.
                              -------------------
     begin                : Di Dez 5 2006
     copyright            : (C) 2006-2016 by Alexander Reinholdt
@@ -36,13 +36,13 @@ Smb4KSharesViewItem::Smb4KSharesViewItem(Smb4KSharesView *parent, Smb4KShare *sh
 : QListWidgetItem(parent)
 {
   setFlags(flags() | Qt::ItemIsDropEnabled);
-//   setTextAlignment(Qt::AlignHCenter|Qt::AlignTop);
+  setItemAlignment(parent->viewMode());
 
   m_share = new Smb4KShare(*share);
   
   m_tooltip = new Smb4KToolTip();
   m_tooltip->setup(Smb4KToolTip::SharesView, m_share);
-  
+ 
   setText(m_share->displayString());
   setIcon(m_share->icon());
 }
@@ -69,4 +69,27 @@ Smb4KToolTip* Smb4KSharesViewItem::tooltip()
 {
   return m_tooltip;
 }
+
+
+void Smb4KSharesViewItem::setItemAlignment(QListView::ViewMode mode)
+{
+  switch (mode)
+  {
+    case QListView::IconMode:
+    {
+      setTextAlignment(Qt::AlignHCenter|Qt::AlignTop);
+      break;
+    }
+    case QListView::ListMode:
+    {
+      setTextAlignment(Qt::AlignAbsolute|Qt::AlignVCenter);
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+}
+
 
