@@ -6,8 +6,9 @@ set(VERSION_PATCH 75)
 
 set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 
-cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
-cmake_policy(SET CMP0037 OLD)
+cmake_minimum_required(VERSION 3.3 FATAL_ERROR)
+cmake_policy(SET CMP0037 NEW)
+cmake_policy(SET CMP0063 NEW)
 
 find_package(ECM 1.1.0 REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
