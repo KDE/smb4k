@@ -2,7 +2,7 @@ project(smb4k)
 
 set(VERSION_MAJOR 1)
 set(VERSION_MINOR 9)
-set(VERSION_PATCH 65)
+set(VERSION_PATCH 75)
 
 set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 
@@ -91,23 +91,3 @@ endif(INSTALL_HEADER_FILES)
 
 ########### install files ###############
 
-
-
-########### CPack part ##################
-
-set(CPACK_PACKAGE_VERSION_MAJOR ${VERSION_MAJOR})
-set(CPACK_PACKAGE_VERSION_MINOR ${VERSION_MINOR})
-set(CPACK_PACKAGE_VERSION_PATCH ${VERSION_PATCH})
-
-set(CPACK_SOURCE_PACKAGE_FILE_NAME smb4k-${VERSION}
-     CACHE INTERNAL "source package base name")
-set(CPACK_SOURCE_GENERATOR TBZ2)
-set(CPACK_SOURCE_IGNORE_FILES
-     "~$"
-     "^${PROJECT_SOURCE_DIR}/Messages.sh"
-     "^${PROJECT_SOURCE_DIR}/po/scripts/"
-     "^${PROJECT_SOURCE_DIR}/*.kdev4" 
-     "^${PROJECT_SOURCE_DIR}.*/.svn/" 
-     "^${PROJECT_SOURCE_DIR}/build/")
-
-include(CPack)
