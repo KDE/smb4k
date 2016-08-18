@@ -1,5 +1,5 @@
 /***************************************************************************
-    smb4kmainwindow  -  The main window of Smb4K.
+    The main window of Smb4K.
                              -------------------
     begin                : Di Jan 1 2008
     copyright            : (C) 2008-2016 by Alexander Reinholdt
@@ -118,10 +118,6 @@ void Smb4KMainWindow::setupActions()
   m_dock_widgets = new QActionGroup(actionCollection());
   m_dock_widgets->setExclusive(false);
 
-  //
-  // FIXME: Move the shares view actionmenu to its own class
-  //  
-  
   // Bookmarks menu and action
   Smb4KBookmarkMenu *bookmarks = new Smb4KBookmarkMenu(Smb4KBookmarkMenu::MainWindow, this, this);
   bookmarks->addBookmarkAction()->setEnabled(false);
@@ -164,6 +160,9 @@ void Smb4KMainWindow::setupStatusBar()
   slotWalletManagerInitialized();
   setupMountIndicator();
 
+  //
+  // Connections
+  //
   connect(Smb4KWalletManager::self(), SIGNAL(initialized()),
           this, SLOT(slotWalletManagerInitialized()));
   
@@ -173,18 +172,18 @@ void Smb4KMainWindow::setupStatusBar()
   connect(Smb4KMounter::self(), SIGNAL(unmounted(Smb4KShare*)),
           this, SLOT(slotVisualUnmountFeedback(Smb4KShare*)));
   
+  connect(Smb4KMounter::self(), SIGNAL(aboutToStart(int)),
+          this, SLOT(slotMounterAboutToStart(int)));
+  
+  connect(Smb4KMounter::self(), SIGNAL(finished(int)),
+          this, SLOT(slotMounterFinished(int)));
+  
   connect(Smb4KScanner::self(), SIGNAL(aboutToStart(Smb4KBasicNetworkItem*,int)),
           this, SLOT(slotScannerAboutToStart(Smb4KBasicNetworkItem*,int)));
   
   connect(Smb4KScanner::self(), SIGNAL(finished(Smb4KBasicNetworkItem*,int)),
           this, SLOT(slotScannerFinished(Smb4KBasicNetworkItem*,int)));
   
-  connect(Smb4KMounter::self(), SIGNAL(aboutToStart(int)),
-          this, SLOT(slotMounterAboutToStart(int)));
-  
-  connect(Smb4KMounter::self(), SIGNAL(finished(int)),
-          this, SLOT(slotMounterFinished(int)));
-
   connect(Smb4KSearch::self(), SIGNAL(aboutToStart(QString)),
           this, SLOT(slotSearchAboutToStart(QString)));
 
@@ -658,8 +657,6 @@ void Smb4KMainWindow::slotAddBookmark()
 
 void Smb4KMainWindow::slotWalletManagerInitialized()
 {
-  qDebug() << "Smb4KMainWindow::slotWalletManagerInitialized(): Use different icons";
-  
   if (Smb4KWalletManager::self()->useWalletSystem())
   {
     m_pass_icon->setPixmap(KIconLoader::global()->loadIcon("security-high",
