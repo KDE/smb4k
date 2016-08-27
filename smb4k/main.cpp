@@ -147,7 +147,7 @@ int main(int argc, char **argv)
   KAboutData aboutData(QStringLiteral("smb4k"), i18n("Smb4K"), QStringLiteral(VERSION),
     i18n("The advanced network neighborhood browser and Samba share mounting utility."),
     KAboutLicense::GPL_V2, i18n("\u00A9 2003-2016 Alexander Reinholdt"), QString(), 
-    QStringLiteral("http://smb4k.sourceforge.net"), QStringLiteral("smb4k-bugs@lists.sourceforge.net"));
+    QStringLiteral("http://smb4k.sourceforge.net"));
   
   // DBus prefix
   aboutData.setOrganizationDomain("sourceforge.net");
