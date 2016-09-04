@@ -175,45 +175,6 @@ class Q_DECL_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
     QString comment() const;
 
     /**
-     * Set the "Server" and the "OS" (operating system) strings as
-     * they are reported by the host.
-     *
-     * @param serverString        The "Server" string
-     *
-     * @param osString            The "OS" string
-     */
-    void setInfo(const QString &serverString = QString(),
-                  const QString &osString = QString());
-
-    /**
-     * With this function clears the server and OS string.
-     */
-    void resetInfo();
-    
-    /**
-     * Returns TRUE if additional information, i.e. the server and OS string, 
-     * has been acquired and is non-null.
-     * 
-     * @returns TRUE if information is present.
-     */
-    bool hasInfo() const;
-
-    /**
-     * Returns the "Server" string as reported by the host.
-     *
-     * @returns the "Server" string.
-     */
-    QString serverString() const;
-
-    /**
-     * Returns the "OS" (operating system) string as reported by the
-     * host.
-     *
-     * @returns the OS string.
-     */
-    QString osString() const;
-
-    /**
      * Set this host to be a master browser.
      *
      * @param master              Set this to TRUE if the host is a master
