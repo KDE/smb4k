@@ -4453,7 +4453,7 @@ of the &kde; Fundamentals.</para>
 <listitem><para>If you experienced a crash, attach a full backtrace. For this it is recommended that you (re-)compile &smb4k; with debugging symbols. How this is done is mentioned in the <link linkend="appendix_compilation">Configuration, Compilation and Installation</link> chapter in the appendix.</para></listitem>
 <listitem><para>Add additional data, &eg; send a screen shot if you are reporting a &GUI; related problem.</para></listitem>
 </itemizedlist>
-<para>The recommended method to report a bug is to go to our <ulink url="https://sourceforge.net/p/smb4k/tickets/">bug tracking system</ulink> and fill out the form. But you can also use the dialog that opens when you click the <menuchoice><guimenu>Help</guimenu><guimenuitem>Report Bug...</guimenuitem></menuchoice> menu item.</para>
+<para>The recommended method to report a bug is to use the dialog that opens when you click the <menuchoice><guimenu>Help</guimenu><guimenuitem>Report Bug...</guimenuitem></menuchoice> menu item. But you can also go directly to the <ulink url="https://bugs.kde.org/enter_bug.cgi?product=Smb4k&amp;format=guided">KDE Bugtracking System</ulink> and fill out the form.</para>
 </chapter>
 
 
