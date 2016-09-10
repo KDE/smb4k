@@ -47,8 +47,6 @@ class Smb4KHostPrivate
     QString workgroup;
     QHostAddress ip;
     QString comment;
-    QString serverString;
-    QString osString;
     bool isMaster;
 };
 
@@ -209,38 +207,6 @@ QString Smb4KHost::comment() const
 }
 
 
-void Smb4KHost::setInfo(const QString &serverString, const QString &osString)
-{
-  d->serverString = serverString;
-  d->osString     = osString;
-}
-
-
-void Smb4KHost::resetInfo()
-{
-  d->serverString.clear();
-  d->osString.clear();
-}
-
-
-bool Smb4KHost::hasInfo() const
-{
-  return (!d->osString.isEmpty() && !d->serverString.isEmpty());
-}
-
-
-QString Smb4KHost::serverString() const
-{
-  return d->serverString;
-}
-
-
-QString Smb4KHost::osString() const
-{
-  return d->osString;
-}
-
-
 void Smb4KHost::setIsMasterBrowser(bool master)
 {
   d->isMaster = master;
@@ -291,24 +257,6 @@ bool Smb4KHost::isEmpty() const
     // Do nothing
   }
 
-  if (!d->serverString.isEmpty())
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if (!d->osString.isEmpty())
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
   // Do not include icon here.
 
   return true;
@@ -391,24 +339,6 @@ bool Smb4KHost::equals(Smb4KHost *host) const
     // Do nothing
   }
 
-  if (QString::compare(serverString(), host->serverString()) != 0)
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if (QString::compare(osString(), host->osString()) != 0)
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
   // Do not include icon here.
 
   return true;

@@ -1129,16 +1129,6 @@ void Smb4KScanner::slotHosts(Smb4KWorkgroup *workgroup, const QList<Smb4KHost *>
           // Do nothing
         }
 
-        // Set the additional information
-        if (!hosts_list.at(i)->hasInfo() && host->hasInfo())
-        {
-          hosts_list[i]->setInfo(host->serverString(), host->osString());
-        }
-        else
-        {
-          // Do nothing
-        }
-
         // Set the IP addresses
         if (!hosts_list.at(i)->hasIP() && host->hasIP())
         {
