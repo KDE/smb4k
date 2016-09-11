@@ -61,8 +61,7 @@ int main( int argc, char **argv )
                         KAboutData::License_GPL_V2,
                         ki18n( authors ),
                         KLocalizedString(),
-                        "http://smb4k.sourceforge.net",
-                        "smb4k-bugs@lists.sourceforge.net" );
+                        "http://smb4k.sourceforge.net" );
 
   // Authors:
   aboutData.addAuthor( ki18n( "Alexander Reinholdt" ),
