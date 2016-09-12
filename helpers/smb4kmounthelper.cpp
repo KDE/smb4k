@@ -42,7 +42,7 @@
 #include <KI18n/KLocalizedString>
 #include <KIOCore/KMountPoint>
 
-KAUTH_HELPER_MAIN("net.sourceforge.smb4k.mounthelper", Smb4KMountHelper);
+KAUTH_HELPER_MAIN("org.kde.smb4k.mounthelper", Smb4KMountHelper);
 
 
 ActionReply Smb4KMountHelper::mount(const QVariantMap &args)

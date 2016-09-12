@@ -1,4 +1,4 @@
-[net.sourceforge.smb4k.mounthelper.mount]
+[org.kde.smb4k.mounthelper.mount]
 Name=Mount action
 Name[ast]=Aición de montaxe
 Name[bs]=Akcija montiranja
@@ -57,7 +57,7 @@ Description[x-test]=xxMounts a sharexx
 Description[zh_TW]=掛載分享資料夾
 Policy=yes
 
-[net.sourceforge.smb4k.mounthelper.unmount]
+[org.kde.smb4k.mounthelper.unmount]
 Name=Unmount action
 Name[ast]=Aición de desmontaxe
 Name[bs]=Akcija demontiranja

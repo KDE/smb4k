@@ -770,8 +770,8 @@ void Smb4KMounter::mountShares(const QList<Smb4KShare *> &shares, QWidget *paren
   //
   // Create the mount action
   //
-  KAuth::Action mountAction("net.sourceforge.smb4k.mounthelper.mount");
-  mountAction.setHelperId("net.sourceforge.smb4k.mounthelper");
+  KAuth::Action mountAction("org.kde.smb4k.mounthelper.mount");
+  mountAction.setHelperId("org.kde.smb4k.mounthelper");
   mountAction.setArguments(map);
     
   KAuth::ExecuteJob *job = mountAction.execute();
@@ -940,8 +940,8 @@ void Smb4KMounter::unmountShares(const QList<Smb4KShare *> &shares, bool silent,
   //
   // Create the unmount action
   //
-  KAuth::Action unmountAction("net.sourceforge.smb4k.mounthelper.unmount");
-  unmountAction.setHelperId("net.sourceforge.smb4k.mounthelper");
+  KAuth::Action unmountAction("org.kde.smb4k.mounthelper.unmount");
+  unmountAction.setHelperId("org.kde.smb4k.mounthelper");
   unmountAction.setArguments(map);
     
   KAuth::ExecuteJob *job = unmountAction.execute();

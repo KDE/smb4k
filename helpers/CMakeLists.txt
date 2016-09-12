@@ -11,7 +11,7 @@ target_link_libraries(mounthelper
 
 install(TARGETS mounthelper DESTINATION ${KAUTH_HELPER_INSTALL_DIR})
 
-kauth_install_helper_files(mounthelper net.sourceforge.smb4k.mounthelper root)
-kauth_install_actions(net.sourceforge.smb4k.mounthelper smb4kmounthelper.actions)
+kauth_install_helper_files(mounthelper org.kde.smb4k.mounthelper root)
+kauth_install_actions(org.kde.smb4k.mounthelper smb4kmounthelper.actions)
 
 
