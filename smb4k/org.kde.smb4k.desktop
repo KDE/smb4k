@@ -95,4 +95,4 @@ X-DocPath=smb4k/index.html
 Type=Application
 Terminal=false
 Categories=Qt;KDE;Utility;
-X-DBUS-ServiceName=net.sourceforge.smb4k
+X-DBUS-ServiceName=org.kde.smb4k
