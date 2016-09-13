@@ -139,12 +139,12 @@ install(TARGETS smb4ksharesview DESTINATION ${KDE_INSTALL_PLUGINDIR})
 install(TARGETS smb4kconfigdialog DESTINATION ${KDE_INSTALL_PLUGINDIR})
 install(TARGETS smb4k DESTINATION ${KDE_INSTALL_BINDIR})
 
-install(PROGRAMS smb4k.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+install(PROGRAMS org.kde.smb4k.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 
 install(FILES smb4knetworkbrowser_part.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/smb4k)
 install(FILES smb4knetworksearch_part.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/smb4k)
 install(FILES smb4ksharesview_part.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/smb4k)
 install(FILES smb4k_shell.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/smb4k)
 
-install(FILES smb4k.appdata.xml DESTINATION share/appdata)
+install(FILES org.kde.smb4k.appdata.xml DESTINATION share/appdata)
 
