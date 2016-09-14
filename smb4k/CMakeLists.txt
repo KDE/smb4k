@@ -146,5 +146,5 @@ install(FILES smb4knetworksearch_part.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/
 install(FILES smb4ksharesview_part.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/smb4k)
 install(FILES smb4k_shell.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/smb4k)
 
-install(FILES org.kde.smb4k.appdata.xml DESTINATION share/appdata)
+install(FILES org.kde.smb4k.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 
