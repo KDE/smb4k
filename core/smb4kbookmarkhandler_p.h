@@ -31,13 +31,13 @@
 #include "smb4kbookmarkobject.h"
 
 // Qt includes
-#include <QtCore/QString>
-#include <QtCore/QUrl>
-#include <QtWidgets/QTreeWidget>
-#include <QtWidgets/QDialog>
-#include <QtWidgets/QListWidget>
-#include <QtWidgets/QAction>
-#include <QtWidgets/QPushButton>
+#include <QString>
+#include <QUrl>
+#include <QTreeWidget>
+#include <QDialog>
+#include <QListWidget>
+#include <QAction>
+#include <QPushButton>
 
 // KDE includes
 #include <KCompletion/KLineEdit>

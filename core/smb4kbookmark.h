@@ -28,10 +28,10 @@
 #define SMB4KBOOKMARK_H
 
 // Qt includes
-#include <QtCore/QString>
-#include <QtCore/QScopedPointer>
-#include <QtCore/QUrl>
-#include <QtGui/QIcon>
+#include <QString>
+#include <QScopedPointer>
+#include <QUrl>
+#include <QIcon>
 
 
 // forward declarations

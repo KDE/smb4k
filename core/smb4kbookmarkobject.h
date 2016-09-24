@@ -31,11 +31,11 @@
 #include "smb4kbookmark.h"
 
 // Qt includes
-#include <QtCore/QObject>
-#include <QtCore/QString>
-#include <QtCore/QScopedPointer>
-#include <QtCore/QUrl>
-#include <QtGui/QIcon>
+#include <QObject>
+#include <QString>
+#include <QScopedPointer>
+#include <QUrl>
+#include <QIcon>
 
 // forward declarations
 class Smb4KBookmarkObjectPrivate;

@@ -33,8 +33,8 @@
 #include "smb4kshare.h"
 
 // Qt includes
-#include <QtCore/QDebug>
-#include <QtNetwork/QHostAddress>
+#include <QDebug>
+#include <QHostAddress>
 
 // KDE includes
 #include <KIconThemes/KIconLoader>

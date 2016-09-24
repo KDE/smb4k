@@ -32,8 +32,8 @@
 #include "smb4kauthinfo.h"
 
 // Qt includes
-#include <QtNetwork/QHostAddress>
-#include <QtCore/QDebug>
+#include <QHostAddress>
+#include <QDebug>
 
 
 class Smb4KAuthInfoPrivate

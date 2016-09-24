@@ -32,8 +32,8 @@
 #include "smb4kglobal.h"
 
 // Qt includes
-#include <QtCore/QScopedPointer>
-#include <QtCore/QUrl>
+#include <QScopedPointer>
+#include <QUrl>
 
 // KDE includes
 #include <KCoreAddons/KUser>

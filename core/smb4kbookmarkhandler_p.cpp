@@ -33,22 +33,22 @@
 #include "smb4kbookmark.h"
 
 // Qt includes
-#include <QtCore/QEvent>
-#include <QtCore/QTimer>
-#include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QGridLayout>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QHeaderView>
-#include <QtWidgets/QTreeWidgetItemIterator>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QInputDialog>
-#include <QtWidgets/QDialogButtonBox>
-#include <QtGui/QDropEvent>
-#include <QtGui/QDragMoveEvent>
-#include <QtGui/QDragEnterEvent>
-#include <QtGui/QDragLeaveEvent>
+#include <QEvent>
+#include <QTimer>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QGridLayout>
+#include <QLabel>
+#include <QHeaderView>
+#include <QTreeWidgetItemIterator>
+#include <QPushButton>
+#include <QMenu>
+#include <QInputDialog>
+#include <QDialogButtonBox>
+#include <QDropEvent>
+#include <QDragMoveEvent>
+#include <QDragEnterEvent>
+#include <QDragLeaveEvent>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"

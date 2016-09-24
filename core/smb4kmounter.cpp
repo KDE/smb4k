@@ -338,7 +338,7 @@ void Smb4KMounter::import(bool checkInaccessible)
   
   // Now determine all mountpoints that have the SMBFS or the CIFS
   // filesystem.
-  Q_FOREACH(QExplicitlySharedDataPointer<KMountPoint> mountPoint, mountPoints)
+  Q_FOREACH(const QExplicitlySharedDataPointer<KMountPoint> mountPoint, mountPoints)
   {
     if (QString::compare(mountPoint->mountType(), "cifs") == 0 || QString::compare(mountPoint->mountType(), "smbfs") == 0)
     {
@@ -2138,7 +2138,7 @@ void Smb4KMounter::slotAboutToQuit()
   }
   
   // Remove those mountpoints where a share is actually mounted.
-  Q_FOREACH(QExplicitlySharedDataPointer<KMountPoint> mountPoint, mountPoints)
+  Q_FOREACH(const QExplicitlySharedDataPointer<KMountPoint> mountPoint, mountPoints)
   {
     mountpoints.removeOne(mountPoint->mountPoint());
   }

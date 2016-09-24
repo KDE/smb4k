@@ -27,11 +27,11 @@
 #define SMB4KBOOKMARKHANDLER_H
 
 // Qt includes
-#include <QtCore/QObject>
-#include <QtCore/QList>
-#include <QtCore/QScopedPointer>
-#include <QtCore/QUrl>
-#include <QtWidgets/QWidget>
+#include <QObject>
+#include <QList>
+#include <QScopedPointer>
+#include <QUrl>
+#include <QWidget>
 
 // forward declarations
 class Smb4KBookmark;

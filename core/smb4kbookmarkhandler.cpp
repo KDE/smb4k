@@ -40,15 +40,15 @@
 #include "smb4kprofilemanager.h"
 
 // Qt includes
-#include <QtCore/QDir>
-#include <QtCore/QFile>
-#include <QtCore/QTextCodec>
-#include <QtCore/QTextStream>
-#include <QtCore/QXmlStreamWriter>
-#include <QtCore/QXmlStreamReader>
-#include <QtCore/QPointer>
-#include <QtCore/QMutableListIterator>
-#include <QtCore/QStandardPaths>
+#include <QDir>
+#include <QFile>
+#include <QTextCodec>
+#include <QTextStream>
+#include <QXmlStreamWriter>
+#include <QXmlStreamReader>
+#include <QPointer>
+#include <QMutableListIterator>
+#include <QStandardPaths>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"

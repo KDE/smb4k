@@ -31,9 +31,9 @@
 #include "smb4kglobal.h"
 
 // Qt includes
-#include <QtCore/QString>
-#include <QtCore/QScopedPointer>
-#include <QtGui/QIcon>
+#include <QString>
+#include <QScopedPointer>
+#include <QIcon>
 
 // forward declarations
 class Smb4KBasicNetworkItemPrivate;

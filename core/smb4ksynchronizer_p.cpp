@@ -121,16 +121,16 @@ void Smb4KSyncJob::slotStartSynchronization()
   if (m_share)
   {
     // Show the user an URL input dialog.
-    Smb4KSynchronizationDialog dlg(m_share, m_parent_widget);
+    QPointer<Smb4KSynchronizationDialog> dlg = new Smb4KSynchronizationDialog(m_share, m_parent_widget);
 
-    if (dlg.exec() == QDialog::Accepted)
+    if (dlg->exec() == QDialog::Accepted)
     {
       // Create the destination directory if it does not already exits.
-      if (!QFile::exists(dlg.destination().path()))
+      if (!QFile::exists(dlg->destination().path()))
       {
-        QDir syncDir(dlg.destination().path());
+        QDir syncDir(dlg->destination().path());
 
-        if (!syncDir.mkpath(dlg.destination().path()))
+        if (!syncDir.mkpath(dlg->destination().path()))
         {
           Smb4KNotification::mkdirFailed(syncDir);
           emitResult();
@@ -148,11 +148,14 @@ void Smb4KSyncJob::slotStartSynchronization()
       
       // Make sure that we have got the trailing slash present.
       // rsync is very picky regarding it.
-      m_src = dlg.source();
-      m_dest = dlg.destination();
+      m_src = dlg->source();
+      m_dest = dlg->destination();
+
+      delete dlg;
     }
     else
     {
+      delete dlg;
       emitResult();
       return;
     }
@@ -781,10 +784,10 @@ void Smb4KSyncJob::slotReadStandardOutput()
       QString file = stdOut.at(i).trimmed();
 
       QUrl src_url = m_src;
-      src_url.setPath(QDir::cleanPath(src_url.path() + "/" + file));
+      src_url.setPath(QDir::cleanPath(src_url.path() + '/' + file));
 
       QUrl dest_url = m_dest;
-      dest_url.setPath(QDir::cleanPath(dest_url.path() + "/" + file));
+      dest_url.setPath(QDir::cleanPath(dest_url.path() + '/' + file));
       
       // Send description to the GUI
       emit description(this, i18n("Synchronizing"),

@@ -36,7 +36,7 @@ class Smb4KNotificationActionRunner : public QObject
   Q_OBJECT
   
   public:
-    Smb4KNotificationActionRunner(QObject *parent = 0);
+    explicit Smb4KNotificationActionRunner(QObject *parent = 0);
     ~Smb4KNotificationActionRunner();
     void setMountpoint(const QUrl &mountpoint);
     QUrl mountpoint() const;

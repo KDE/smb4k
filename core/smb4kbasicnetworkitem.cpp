@@ -32,8 +32,8 @@
 #include "smb4kbasicnetworkitem.h"
 
 // Qt includes
-#include <QtCore/QtGlobal>
-#include <QtCore/QDebug>
+#include <QtGlobal>
+#include <QDebug>
 
 
 class Smb4KBasicNetworkItemPrivate
