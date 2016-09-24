@@ -659,9 +659,18 @@ void Smb4KMainWindow::slotWalletManagerInitialized()
 {
   if (Smb4KWalletManager::self()->useWalletSystem())
   {
-    m_pass_icon->setPixmap(KIconLoader::global()->loadIcon("security-high",
-                           KIconLoader::Small, 0, KIconLoader::DefaultState));
-    m_pass_icon->setToolTip(i18n("The wallet is used."));    
+    if (KIconLoader::global()->hasIcon("kwalletmanager"))
+    {
+      m_pass_icon->setPixmap(KIconLoader::global()->loadIcon("kwalletmanager",
+			     KIconLoader::Small, 0, KIconLoader::DefaultState));
+    }
+    else
+    {
+      m_pass_icon->setPixmap(KIconLoader::global()->loadIcon("security-high",
+			     KIconLoader::Small, 0, KIconLoader::DefaultState));
+    }
+    
+    m_pass_icon->setToolTip(i18n("The wallet is used."));
   }
   else
   {
