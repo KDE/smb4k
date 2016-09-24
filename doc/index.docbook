@@ -76,7 +76,7 @@
   <listitem><para>Profiles for different network neighborhood setups</para></listitem>
 </itemizedlist>
 
- <para>If you encounter problems while using &smb4k;, please visit our <ulink url="https://sourceforge.net/p/smb4k/wiki/Home/">wiki</ulink> first. If you cannot find your problem described there, please post a help request to our <ulink url="https://sourceforge.net/p/smb4k/discussion/help/">Help</ulink> forum. In case you find a bug, please report it to our <ulink url="https://sourceforge.net/p/smb4k/tickets/">bug tracker</ulink>.</para>
+ <para>If you encounter problems while using &smb4k;, please visit our <ulink url="https://sourceforge.net/p/smb4k/wiki/Home/">wiki</ulink> first. If you cannot find your problem described there, please post a help request to our <ulink url="https://sourceforge.net/p/smb4k/discussion/help/">Help</ulink> forum. In case you find a bug, please report it to our <ulink url="https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=smb4k">bug tracker</ulink>.</para>
  <para>For discussions about &smb4k;-related topics there is the <ulink url="https://sourceforge.net/p/smb4k/discussion/general/">General Discussion</ulink> forum and we invite every user to participate.</para>
 </chapter>
 
