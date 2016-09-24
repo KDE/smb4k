@@ -1,8 +1,8 @@
 /***************************************************************************
-    main.cpp  -  Main file of the Smb4K program.
+    Main file of the Smb4K program.
                              -------------------
     begin                : Sam Mär  1 14:57:21 CET 2003
-    copyright            : (C) 2003-2015 by Alexander Reinholdt
+    copyright            : (C) 2003-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -137,7 +137,7 @@ int main(int argc, char **argv)
     // Do nothing
   }
   
-  // Create the application.
+  // Create the application
   QApplication app(argc, argv);
   
   // Connect the application with the translation catalog
@@ -184,8 +184,8 @@ int main(int argc, char **argv)
   app.setWindowIcon(QIcon::fromTheme(QLatin1String("smb4k")));
   
   // Launch the main window
-  Smb4KMainWindow *main_window = new Smb4KMainWindow();
-  main_window->setVisible(!Smb4KSettings::startMainWindowDocked());
+  Smb4KMainWindow *mainWindow = new Smb4KMainWindow();
+  mainWindow->setVisible(!Smb4KSettings::startMainWindowDocked());
 
   // Initialize the core. Use a busy cursor.
   initCore(true);
