@@ -32,9 +32,9 @@
 #include "smb4kauthinfo.h"
 
 // Qt includes
-#include <QtCore/QStringList>
-#include <QtCore/QDebug>
-#include <QtNetwork/QHostAddress>
+#include <QStringList>
+#include <QDebug>
+#include <QHostAddress>
 
 // KDE includes
 #include <KIconThemes/KIconLoader>

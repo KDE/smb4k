@@ -45,12 +45,12 @@
 #endif
 
 // Qt includes
-#include <QtCore/QXmlStreamReader>
-#include <QtCore/QXmlStreamWriter>
-#include <QtCore/QDebug>
-#include <QtCore/QCoreApplication>
-#include <QtCore/QPointer>
-#include <QtCore/QStandardPaths>
+#include <QXmlStreamReader>
+#include <QXmlStreamWriter>
+#include <QDebug>
+#include <QCoreApplication>
+#include <QPointer>
+#include <QStandardPaths>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"

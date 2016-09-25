@@ -39,10 +39,10 @@
 #include "smb4ksearch.h"
 
 // Qt includes
-#include <QtCore/QMutex>
-#include <QtCore/QUrl>
-#include <QtCore/QStandardPaths>
-#include <QtCore/QDebug>
+#include <QMutex>
+#include <QUrl>
+#include <QStandardPaths>
+#include <QDebug>
 
 // KDE includes
 #include <KCoreAddons/KShell>

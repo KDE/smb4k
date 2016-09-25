@@ -32,11 +32,11 @@
 #include "smb4kcustomoptions.h"
 
 // Qt includes
-#include <QtCore/QList>
-#include <QtWidgets/QCheckBox>
-#include <QtWidgets/QDialog>
-#include <QtWidgets/QSpinBox>
-#include <QtWidgets/QPushButton>
+#include <QList>
+#include <QCheckBox>
+#include <QDialog>
+#include <QSpinBox>
+#include <QPushButton>
 
 // KDE includes
 #include <KCompletion/KLineEdit>

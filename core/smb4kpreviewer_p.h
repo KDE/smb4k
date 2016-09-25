@@ -31,13 +31,13 @@
 #include "smb4kprocess.h"
 
 // Qt includes
-#include <QtCore/QStringList>
-#include <QtCore/QListIterator>
-#include <QtCore/QUrl>
-#include <QtGui/QIcon>
-#include <QtWidgets/QDialog>
-#include <QtWidgets/QListWidget>
-#include <QtWidgets/QPushButton>
+#include <QStringList>
+#include <QListIterator>
+#include <QUrl>
+#include <QIcon>
+#include <QDialog>
+#include <QListWidget>
+#include <QPushButton>
 
 // KDE includes
 #include <KCoreAddons/KJob>

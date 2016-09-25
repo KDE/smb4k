@@ -27,13 +27,13 @@
 #define SMB4KMOUNTER_H
 
 // Qt includes
-#include <QtCore/QObject>
-#include <QtCore/QFile>
-#include <QtCore/QString>
-#include <QtCore/QStringList>
-#include <QtCore/QScopedPointer>
-#include <QtCore/QMap>
-#include <QtCore/QVariant>
+#include <QObject>
+#include <QFile>
+#include <QString>
+#include <QStringList>
+#include <QScopedPointer>
+#include <QMap>
+#include <QVariant>
 
 // KDE includes
 #include <KCoreAddons/KCompositeJob>

@@ -27,9 +27,9 @@
 #define SMB4KPREVIEWER_H
 
 // Qt includes
-#include <QtCore/QScopedPointer>
-#include <QtCore/QUrl>
-#include <QtWidgets/QWidget>
+#include <QScopedPointer>
+#include <QUrl>
+#include <QWidget>
 
 // KDE includes
 #include <KCoreAddons/KCompositeJob>

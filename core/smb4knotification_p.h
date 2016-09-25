@@ -28,8 +28,8 @@
 #define SMB4KNOTIFICATION_P_H
 
 // Qt includes
-#include <QtCore/QObject>
-#include <QtCore/QUrl>
+#include <QObject>
+#include <QUrl>
 
 class Smb4KNotificationActionRunner : public QObject
 {

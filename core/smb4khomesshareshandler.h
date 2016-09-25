@@ -27,12 +27,12 @@
 #define SMB4KHOMESSHARESHANDLER_H
 
 // Qt includes
-#include <QtCore/QObject>
-#include <QtCore/QString>
-#include <QtCore/QStringList>
-#include <QtCore/QList>
-#include <QtCore/QScopedPointer>
-#include <QtWidgets/QDialog>
+#include <QObject>
+#include <QString>
+#include <QStringList>
+#include <QList>
+#include <QScopedPointer>
+#include <QDialog>
 
 
 // forward declarations

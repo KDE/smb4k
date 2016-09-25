@@ -32,9 +32,9 @@
 #include "smb4kshare.h"
 
 // Qt includes
-#include <QtCore/QList>
-#include <QtCore/QMap>
-#include <QtCore/QObject>
+#include <QList>
+#include <QMap>
+#include <QObject>
 
 /**
  * This class is a private helper for the Smb4KGlobal namespace.

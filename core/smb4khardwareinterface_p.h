@@ -31,8 +31,8 @@
 #include "smb4khardwareinterface.h"
 
 // Qt includes
-#include <QtCore/QStringList>
-#include <QtNetwork/QNetworkConfigurationManager>
+#include <QStringList>
+#include <QNetworkConfigurationManager>
 
 class Smb4KHardwareInterfacePrivate
 {

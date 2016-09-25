@@ -39,14 +39,14 @@
 #endif
 
 // Qt includes
-#include <QtCore/QCoreApplication>
-#include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QGroupBox>
-#include <QtWidgets/QTabWidget>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QDialogButtonBox>
+#include <QCoreApplication>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QGroupBox>
+#include <QTabWidget>
+#include <QPushButton>
+#include <QDialogButtonBox>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"

@@ -38,13 +38,13 @@
 #include "smb4kcustomoptions.h"
 
 // Qt includes
-#include <QtCore/QTimer>
-#include <QtCore/QDateTime>
-#include <QtCore/QLatin1String>
-#include <QtCore/QString>
-#include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QDialogButtonBox>
-#include <QtWidgets/QPushButton>
+#include <QTimer>
+#include <QDateTime>
+#include <QLatin1String>
+#include <QString>
+#include <QVBoxLayout>
+#include <QDialogButtonBox>
+#include <QPushButton>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"

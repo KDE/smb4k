@@ -33,7 +33,7 @@
 #include "smb4kglobal.h"
 
 // Qt includes
-#include <QtCore/QDebug>
+#include <QDebug>
 
 using namespace Smb4KGlobal;
 

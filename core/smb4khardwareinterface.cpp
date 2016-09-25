@@ -33,8 +33,8 @@
 #include "smb4khardwareinterface_p.h"
 
 // Qt includes
-#include <QtCore/QDebug>
-#include <QtTest/QTest>
+#include <QDebug>
+#include <QTest>
 
 // KDE includes
 #include <Solid/DeviceNotifier>

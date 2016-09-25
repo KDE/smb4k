@@ -30,9 +30,9 @@
 #include "smb4kcustomoptions.h"
 
 // Qt includes
-#include <QtCore/QObject>
-#include <QtCore/QScopedPointer>
-#include <QtWidgets/QWidget>
+#include <QObject>
+#include <QScopedPointer>
+#include <QWidget>
 
 // forward declarations
 class Smb4KCustomOptionsManagerPrivate;

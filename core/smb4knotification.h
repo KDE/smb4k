@@ -27,12 +27,12 @@
 #define SMB4KNOTIFICATION_H
 
 // Qt includes
-#include <QtCore/QObject>
-#include <QtCore/QFile>
-#include <QtCore/QDir>
-#include <QtCore/QProcess>
-#include <QtCore/QScopedPointer>
-#include <QtCore/QUrl>
+#include <QObject>
+#include <QFile>
+#include <QDir>
+#include <QProcess>
+#include <QScopedPointer>
+#include <QUrl>
 
 // forward declarations
 class Smb4KBookmark;

@@ -32,14 +32,14 @@
 #include "smb4kshare.h"
 
 // Qt includes
-#include <QtCore/QString>
-#include <QtCore/QVariant>
-#include <QtCore/QDebug>
-#include <QtWidgets/QCheckBox>
-#include <QtWidgets/QDialog>
-#include <QtWidgets/QPushButton>
-#include <QtNetwork/QNetworkConfiguration>
-#include <QtNetwork/QNetworkConfigurationManager>
+#include <QString>
+#include <QVariant>
+#include <QDebug>
+#include <QCheckBox>
+#include <QDialog>
+#include <QPushButton>
+#include <QNetworkConfiguration>
+#include <QNetworkConfigurationManager>
 
 // KDE includes
 #include <KCompletion/KLineEdit>

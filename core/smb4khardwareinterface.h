@@ -31,10 +31,10 @@
 #include "smb4kglobal.h"
 
 // Qt includes
-#include <QtCore/QObject>
-#include <QtCore/QScopedPointer>
-#include <QtCore/QUrl>
-#include <QtNetwork/QNetworkConfigurationManager>
+#include <QObject>
+#include <QScopedPointer>
+#include <QUrl>
+#include <QNetworkConfigurationManager>
 
 class Smb4KHardwareInterfacePrivate;
 

@@ -28,9 +28,9 @@
 #define SMB4KDECLARATIVE_H
 
 // Qt includes
-#include <QtCore/QObject>
-#include <QtCore/QUrl>
-#include <QtQml/QQmlListProperty>
+#include <QObject>
+#include <QUrl>
+#include <QQmlListProperty>
 
 // forward declarations
 class Smb4KDeclarativePrivate;

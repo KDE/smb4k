@@ -33,14 +33,14 @@
 #include "smb4ksettings.h"
 
 // Qt includes
-#include <QtCore/QDir>
-#include <QtCore/QTextStream>
-#include <QtCore/QTextCodec>
-#include <QtCore/QFile>
-#include <QtCore/QCoreApplication>
-#include <QtNetwork/QHostAddress>
-#include <QtNetwork/QAbstractSocket>
-#include <QtNetwork/QHostInfo>
+#include <QDir>
+#include <QTextStream>
+#include <QTextCodec>
+#include <QFile>
+#include <QCoreApplication>
+#include <QHostAddress>
+#include <QAbstractSocket>
+#include <QHostInfo>
 
 
 Smb4KGlobalPrivate::Smb4KGlobalPrivate()

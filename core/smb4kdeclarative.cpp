@@ -45,8 +45,8 @@
 #include "smb4kprofilemanager.h"
 
 // Qt includes
-#include <QtCore/QDebug>
-#include <QtTest/QTest>
+#include <QDebug>
+#include <QTest>
 
 using namespace Smb4KGlobal;
 

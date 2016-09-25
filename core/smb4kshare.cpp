@@ -160,7 +160,7 @@ void Smb4KShare::setShareName(const QString &name)
 QString Smb4KShare::shareName() const
 {
   QString share_name = d->url.path();
-  return share_name.remove("/");
+  return share_name.remove('/');
 }
 
 

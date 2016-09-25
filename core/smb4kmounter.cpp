@@ -52,15 +52,15 @@
 #endif
 
 // Qt includes
-#include <QtCore/QDir>
-#include <QtCore/QTextStream>
-#include <QtCore/QTextCodec>
-#include <QtCore/QTimer>
-#include <QtCore/QFileInfo>
-#include <QtCore/QDebug>
-#include <QtWidgets/QApplication>
-#include <QtTest/QTest>
-#include <QtNetwork/QUdpSocket>
+#include <QDir>
+#include <QTextStream>
+#include <QTextCodec>
+#include <QTimer>
+#include <QFileInfo>
+#include <QDebug>
+#include <QApplication>
+#include <QTest>
+#include <QUdpSocket>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"

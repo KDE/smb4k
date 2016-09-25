@@ -31,11 +31,11 @@
 #endif
 
 // Qt includes
-#include <QtCore/QMap>
-#include <QtCore/QString>
-#include <QtCore/QList>
-#include <QtCore/QEvent>
-#include <QtCore/QStringList>
+#include <QMap>
+#include <QString>
+#include <QList>
+#include <QEvent>
+#include <QStringList>
 
 // forward declarations
 class Smb4KWorkgroup;

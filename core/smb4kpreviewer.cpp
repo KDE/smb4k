@@ -37,9 +37,9 @@
 #include "smb4kglobal.h"
 
 // Qt includes
-#include <QtCore/QTimer>
-#include <QtCore/QDebug>
-#include <QtCore/QCoreApplication>
+#include <QTimer>
+#include <QDebug>
+#include <QCoreApplication>
 
 using namespace Smb4KGlobal;
 

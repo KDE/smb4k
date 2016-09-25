@@ -37,12 +37,12 @@
 #include "smb4kprofilemanager.h"
 
 // Qt includes
-#include <QtCore/QFile>
-#include <QtCore/QTextCodec>
-#include <QtCore/QXmlStreamWriter>
-#include <QtCore/QXmlStreamReader>
-#include <QtCore/QCoreApplication>
-#include <QtCore/QPointer>
+#include <QFile>
+#include <QTextCodec>
+#include <QXmlStreamWriter>
+#include <QXmlStreamReader>
+#include <QCoreApplication>
+#include <QPointer>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"

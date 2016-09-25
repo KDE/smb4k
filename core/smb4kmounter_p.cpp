@@ -44,18 +44,18 @@
 #endif
 
 // Qt includes
-#include <QtCore/QFileInfo>
-#include <QtCore/QFile>
-#include <QtCore/QTimer>
-#include <QtCore/QDir>
-#include <QtCore/QUrl>
-#include <QtCore/QProcessEnvironment>
-#include <QtCore/QStandardPaths>
-#include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QGridLayout>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QDialogButtonBox>
+#include <QFileInfo>
+#include <QFile>
+#include <QTimer>
+#include <QDir>
+#include <QUrl>
+#include <QProcessEnvironment>
+#include <QStandardPaths>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QGridLayout>
+#include <QLabel>
+#include <QDialogButtonBox>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"

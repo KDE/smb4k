@@ -32,10 +32,10 @@
 #include "smb4kshare.h"
 
 // Qt includes
-#include <QtCore/QStringList>
-#include <QtWidgets/QDialog>
-#include <QtWidgets/QPushButton>
-#include <QtNetwork/QHostAddress>
+#include <QStringList>
+#include <QDialog>
+#include <QPushButton>
+#include <QHostAddress>
 
 // KDE includes
 #include <KCompletion/KComboBox>

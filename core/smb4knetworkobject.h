@@ -34,11 +34,11 @@
 #include "smb4kglobal.h"
 
 // Qt includes
-#include <QtCore/QObject>
-#include <QtCore/QString>
-#include <QtCore/QScopedPointer>
-#include <QtCore/QUrl>
-#include <QtGui/QIcon>
+#include <QObject>
+#include <QString>
+#include <QScopedPointer>
+#include <QUrl>
+#include <QIcon>
 
 // forward declaration
 class Smb4KNetworkObjectPrivate;
