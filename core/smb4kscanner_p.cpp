@@ -40,12 +40,12 @@
 #include "smb4kwalletmanager.h"
 
 // Qt includes
-#include <QtCore/QTimer>
-#include <QtCore/QDebug>
-#include <QtCore/QLatin1String>
-#include <QtCore/QStandardPaths>
-#include <QtNetwork/QHostAddress>
-#include <QtNetwork/QAbstractSocket>
+#include <QTimer>
+#include <QDebug>
+#include <QLatin1String>
+#include <QStandardPaths>
+#include <QHostAddress>
+#include <QAbstractSocket>
 
 // KDE includes
 #include <KCoreAddons/KShell>

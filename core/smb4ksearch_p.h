@@ -32,7 +32,7 @@
 #include "smb4khost.h"
 
 // KDE includes
-#include <kjob.h>
+#include <KCoreAddons/KJob>
 
 // forward declarations
 class Smb4KShare;

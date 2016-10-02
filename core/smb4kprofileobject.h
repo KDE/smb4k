@@ -28,9 +28,9 @@
 #define SMB4KPROFILEOBJECT_H
 
 // Qt includes
-#include <QtCore/QObject>
-#include <QtCore/QString>
-#include <QtCore/QScopedPointer>
+#include <QObject>
+#include <QString>
+#include <QScopedPointer>
 
 // forward declarations
 class Smb4KProfileObjectPrivate;

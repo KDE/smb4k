@@ -33,7 +33,7 @@
 #include "smb4kauthinfo.h"
 
 // Qt includes
-#include <QtWidgets/QWidget>
+#include <QWidget>
 
 // KDE includes
 #include <KCoreAddons/KJob>

@@ -31,9 +31,9 @@
 #include "smb4kglobal.h"
 
 // Qt includes
-#include <QtCore/QTimerEvent>
-#include <QtCore/QScopedPointer>
-#include <QtWidgets/QWidget>
+#include <QTimerEvent>
+#include <QScopedPointer>
+#include <QWidget>
 
 // KDE includes
 #include <KCoreAddons/KCompositeJob>

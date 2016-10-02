@@ -27,8 +27,8 @@
 #define SMB4KPRINT_H
 
 // Qt includes
-#include <QtCore/QUrl>
-#include <QtWidgets/QWidget>
+#include <QUrl>
+#include <QWidget>
 
 // KDE includes
 #include <KCoreAddons/KCompositeJob>

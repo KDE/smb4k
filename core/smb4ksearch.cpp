@@ -38,9 +38,9 @@
 #include "smb4khomesshareshandler.h"
 
 // Qt includes
-#include <QtCore/QTimer>
-#include <QtCore/QDebug>
-#include <QtWidgets/QApplication>
+#include <QTimer>
+#include <QDebug>
+#include <QApplication>
 
 using namespace Smb4KGlobal;
 

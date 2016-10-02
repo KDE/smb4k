@@ -39,9 +39,9 @@
 #include "smb4kcustomoptions.h"
 
 // Qt includes
-#include <QtCore/QTimer>
-#include <QtCore/QLatin1String>
-#include <QtCore/QStandardPaths>
+#include <QTimer>
+#include <QLatin1String>
+#include <QStandardPaths>
 
 using namespace Smb4KGlobal;
 

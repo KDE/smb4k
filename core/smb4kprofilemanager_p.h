@@ -31,11 +31,11 @@
 #include "smb4kprofilemanager.h"
 
 // Qt includes
-#include <QtCore/QString>
-#include <QtCore/QStringList>
-#include <QtWidgets/QWidget>
-#include <QtWidgets/QDialog>
-#include <QtWidgets/QPushButton>
+#include <QString>
+#include <QStringList>
+#include <QWidget>
+#include <QDialog>
+#include <QPushButton>
 
 // KDE includes
 #include <KCompletion/KComboBox>

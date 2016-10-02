@@ -32,12 +32,12 @@
 #include "smb4kprocess.h"
 
 // Qt includes
-#include <QtCore/QTemporaryDir>
-#include <QtPrintSupport/QPrinter>
-#include <QtWidgets/QDialog>
-#include <QtWidgets/QSpinBox>
-#include <QtWidgets/QGroupBox>
-#include <QtWidgets/QPushButton>
+#include <QTemporaryDir>
+#include <QPrinter>
+#include <QDialog>
+#include <QSpinBox>
+#include <QGroupBox>
+#include <QPushButton>
 
 // KDE includes
 #include <KCoreAddons/KJob>

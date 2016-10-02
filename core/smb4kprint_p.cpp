@@ -36,16 +36,16 @@
 #include "smb4kglobal.h"
 
 // Qt includes
-#include <QtCore/QTimer>
-#include <QtCore/QPointer>
-#include <QtCore/QLatin1String>
-#include <QtCore/QStandardPaths>
-#include <QtCore/QString>
-#include <QtWidgets/QGridLayout>
-#include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QDialogButtonBox>
-#include <QtGui/QTextDocument>
+#include <QTimer>
+#include <QPointer>
+#include <QLatin1String>
+#include <QStandardPaths>
+#include <QString>
+#include <QGridLayout>
+#include <QVBoxLayout>
+#include <QLabel>
+#include <QDialogButtonBox>
+#include <QTextDocument>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"

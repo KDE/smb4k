@@ -28,12 +28,12 @@
 #define SMB4KPROFILEMANAGER_H
 
 // Qt includes
-#include <QtCore/QObject>
-#include <QtCore/QScopedPointer>
-#include <QtCore/QString>
-#include <QtCore/QStringList>
-#include <QtCore/QPair>
-#include <QtWidgets/QWidget>
+#include <QObject>
+#include <QScopedPointer>
+#include <QString>
+#include <QStringList>
+#include <QPair>
+#include <QWidget>
 
 // forward declarations
 class Smb4KProfileManagerPrivate;

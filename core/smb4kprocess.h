@@ -27,7 +27,7 @@
 #define SMB4KPROCESS_H
 
 // Qt includes
-#include <QtCore/QScopedPointer>
+#include <QScopedPointer>
 
 // KDE includes
 #include <KCoreAddons/KProcess>

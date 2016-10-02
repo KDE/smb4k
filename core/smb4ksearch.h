@@ -27,8 +27,8 @@
 #define SMB4KSEARCH_H
 
 // Qt includes
-#include <QtCore/QScopedPointer>
-#include <QtWidgets/QWidget>
+#include <QScopedPointer>
+#include <QWidget>
 
 // KDE includes
 #include <KCoreAddons/KCompositeJob>

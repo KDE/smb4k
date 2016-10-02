@@ -37,8 +37,8 @@
 #include "smb4kbookmarkhandler.h"
 
 // Qt includes
-#include <QtCore/QPointer>
-#include <QtTest/QTest>
+#include <QPointer>
+#include <QTest>
 
 
 Q_GLOBAL_STATIC(Smb4KProfileManagerStatic, p);

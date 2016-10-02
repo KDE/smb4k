@@ -43,12 +43,12 @@
 #include "smb4kcustomoptionsmanager.h"
 
 // Qt includes
-#include <QtCore/QTimer>
-#include <QtCore/QDebug>
-#include <QtNetwork/QHostAddress>
-#include <QtNetwork/QAbstractSocket>
-#include <QtNetwork/QUdpSocket>
-#include <QtTest/QTest>
+#include <QTimer>
+#include <QDebug>
+#include <QHostAddress>
+#include <QAbstractSocket>
+#include <QUdpSocket>
+#include <QTest>
 
 using namespace Smb4KGlobal;
 

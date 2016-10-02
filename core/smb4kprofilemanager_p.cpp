@@ -33,12 +33,12 @@
 #include "smb4ksettings.h"
 
 // Qt includes
-#include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QGridLayout>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QDialogButtonBox>
-#include <QtGui/QPixmap>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QGridLayout>
+#include <QLabel>
+#include <QDialogButtonBox>
+#include <QPixmap>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"
