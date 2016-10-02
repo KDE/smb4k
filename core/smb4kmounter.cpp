@@ -1848,7 +1848,7 @@ bool Smb4KMounter::fillMountActionArgs(Smb4KShare *, QVariantMap&)
 {
   qWarning() << "Smb4KMounter::fillMountActionArgs() is not implemented!";
   qWarning() << "Mounting under this operating system is not supported...";
-  return false
+  return false;
 }
 #endif
 
