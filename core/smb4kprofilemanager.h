@@ -94,7 +94,7 @@ class Q_DECL_EXPORT Smb4KProfileManager : public QObject
     
     /**
      * Returns the list of profiles or an empty string list if the 
-     * the use of profiles is diabled.
+     * the use of profiles is disabled.
      * 
      * @returns the list of profiles.
      */

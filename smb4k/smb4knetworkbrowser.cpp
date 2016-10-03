@@ -73,7 +73,7 @@ Smb4KNetworkBrowser::Smb4KNetworkBrowser(QWidget *parent)
   header()->setSectionResizeMode(QHeaderView::ResizeToContents);
 
   // Add some connections:
-  connect(this, SIGNAL(itemActivated(QTreeWidgetItem*, int)),
+  connect(this, SIGNAL(itemActivated(QTreeWidgetItem*,int)),
           this, SLOT(slotItemActivated(QTreeWidgetItem*,int)));
 
   connect(this, SIGNAL(itemEntered(QTreeWidgetItem*,int)),

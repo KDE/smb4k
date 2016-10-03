@@ -31,10 +31,10 @@
 #include "smb4kmounthelper.h"
 
 // Qt includes
-#include <QtCore/QProcessEnvironment>
-#include <QtCore/QDebug>
-#include <QtCore/QLatin1String>
-#include <QtCore/QUrl>
+#include <QProcessEnvironment>
+#include <QDebug>
+#include <QLatin1String>
+#include <QUrl>
 
 // KDE includes
 #include <KAuth/KAuthHelperSupport>
@@ -224,7 +224,7 @@ ActionReply Smb4KMountHelper::unmountOneByOne(const QVariantMap& args)
     bool mountPointOk = false;
     KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions);
       
-    Q_FOREACH(const QExplicitlySharedDataPointer<KMountPoint> mountPoint, mountPoints)
+    Q_FOREACH(const QExplicitlySharedDataPointer<KMountPoint> &mountPoint, mountPoints)
     {
 #if defined(Q_OS_LINUX)
       if (QString::compare(entry.value("mh_mountpoint").toString(), mountPoint->mountPoint()) == 0 &&
@@ -355,7 +355,7 @@ ActionReply Smb4KMountHelper::unmountAtOnce(const QVariantMap& args)
     bool mountPointOk = false;
     KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions);
       
-    Q_FOREACH(const QExplicitlySharedDataPointer<KMountPoint> mountPoint, mountPoints)
+    Q_FOREACH(const QExplicitlySharedDataPointer<KMountPoint> &mountPoint, mountPoints)
     {
 #if defined(Q_OS_LINUX)
       if (QString::compare(entry.value("mh_mountpoint").toString(), mountPoint->mountPoint()) == 0 &&

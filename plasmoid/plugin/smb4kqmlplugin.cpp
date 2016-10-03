@@ -38,7 +38,7 @@
 #include "core/smb4kdeclarative.h"
 
 // Qt includes
-#include <QtQml/QtQml>
+#include <QtQml>
 
 
 void Smb4KQMLPlugin::registerTypes(const char *uri)

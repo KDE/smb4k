@@ -27,7 +27,7 @@
 #define SMB4KMOUNTHELPER_H
 
 // Qt includes
-#include <QtCore/QObject>
+#include <QObject>
 
 // KDE includes
 #include <KAuth/KAuthActionReply>
