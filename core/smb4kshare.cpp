@@ -32,8 +32,8 @@
 #include "smb4kauthinfo.h"
 
 // Qt include
-#include <QtCore/QDir>
-#include <QtNetwork/QHostAddress>
+#include <QDir>
+#include <QHostAddress>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"

@@ -36,12 +36,12 @@
 #include "smb4kshare.h"
 
 // Qt includes
-#include <QtCore/QTimer>
-#include <QtCore/QPointer>
-#include <QtCore/QStandardPaths>
-#include <QtWidgets/QGridLayout>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QDialogButtonBox>
+#include <QTimer>
+#include <QPointer>
+#include <QStandardPaths>
+#include <QGridLayout>
+#include <QLabel>
+#include <QDialogButtonBox>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"

@@ -30,7 +30,7 @@
 #include "smb4ksharesview.h"
 
 // Qt includes
-#include <QtWidgets/QGridLayout>
+#include <QGridLayout>
 
 // KDE includes
 #include <KParts/Part>

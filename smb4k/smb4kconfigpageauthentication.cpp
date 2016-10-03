@@ -32,15 +32,15 @@
 #include "core/smb4ksettings.h"
 
 // Qt includes
-#include <QtGui/QMouseEvent>
-#include <QtGui/QCursor>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QHeaderView>
-#include <QtWidgets/QListWidgetItem>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QCheckBox>
-#include <QtWidgets/QGroupBox>
-#include <QtWidgets/QGridLayout>
+#include <QMouseEvent>
+#include <QCursor>
+#include <QMenu>
+#include <QHeaderView>
+#include <QListWidgetItem>
+#include <QLabel>
+#include <QCheckBox>
+#include <QGroupBox>
+#include <QGridLayout>
 
 // KDE includes
 #include <KI18n/KLocalizedString>

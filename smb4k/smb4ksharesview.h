@@ -27,9 +27,9 @@
 #define SMB4KSHARESICONVIEW_H
 
 // Qt includes
-#include <QtCore/QTimer>
-#include <QtCore/QMimeData>
-#include <QtWidgets/QListWidget>
+#include <QTimer>
+#include <QMimeData>
+#include <QListWidget>
 
 // forward declarations
 class Smb4KSharesViewItem;

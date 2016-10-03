@@ -36,17 +36,17 @@
 #include "core/smb4kglobal.h"
 
 // Qt includes
-#include <QtCore/QTimer>
-#include <QtCore/QDebug>
-#include <QtGui/QPalette>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QToolTip>
-#include <QtWidgets/QApplication>
-#include <QtWidgets/QDesktopWidget>
-#include <QtWidgets/QStylePainter>
-#include <QtWidgets/QStyle>
-#include <QtWidgets/QStyleOptionFrame>
-#include <QtWidgets/QAbstractScrollArea>
+#include <QTimer>
+#include <QDebug>
+#include <QPalette>
+#include <QLabel>
+#include <QToolTip>
+#include <QApplication>
+#include <QDesktopWidget>
+#include <QStylePainter>
+#include <QStyle>
+#include <QStyleOptionFrame>
+#include <QAbstractScrollArea>
 
 // KDE includes
 #include <KI18n/KLocalizedString>

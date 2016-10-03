@@ -28,8 +28,7 @@
 #define SMB4KCONFIGPAGEUSERINTERFACE_H
 
 // Qt includes
-#include <QtWidgets/QTabWidget>
-
+#include <QTabWidget>
 
 
 /**

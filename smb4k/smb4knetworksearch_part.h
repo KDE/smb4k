@@ -28,8 +28,8 @@
 #define SMB4KNETWORKSEARCHPART_H
 
 // Qt includes
-#include <QtWidgets/QAction>
-#include <QtWidgets/QListWidgetItem>
+#include <QAction>
+#include <QListWidgetItem>
 
 // KDE includes
 #include <KParts/Part>

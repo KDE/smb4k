@@ -27,13 +27,12 @@
 #define SMB4KTOOLTIP_H
 
 // Qt includes
-#include <QtCore/QPoint>
-#include <QtWidgets/QWidget>
-#include <QtWidgets/QGridLayout>
-#include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QLabel>
-
+#include <QPoint>
+#include <QWidget>
+#include <QGridLayout>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QLabel>
 
 // forward declarations
 class Smb4KBasicNetworkItem;

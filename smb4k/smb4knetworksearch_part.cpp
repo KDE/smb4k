@@ -41,12 +41,12 @@
 #include "core/smb4ksearch.h"
 
 // Qt includes
-#include <QtCore/QCoreApplication>
-#include <QtCore/QString>
-#include <QtGui/QKeySequence>
-#include <QtWidgets/QAction>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QLineEdit>
+#include <QCoreApplication>
+#include <QString>
+#include <QKeySequence>
+#include <QAction>
+#include <QMenu>
+#include <QLineEdit>
 
 // KDE includes
 #include <KCoreAddons/KPluginFactory>

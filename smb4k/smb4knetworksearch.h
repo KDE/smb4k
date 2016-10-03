@@ -27,9 +27,9 @@
 #define SMB4KNETWORKSEARCH_H
 
 // Qt includes
-#include <QtCore/QString>
-#include <QtWidgets/QWidget>
-#include <QtWidgets/QListWidget>
+#include <QString>
+#include <QWidget>
+#include <QListWidget>
 
 // KDE includes
 #include <KCompletion/KComboBox>

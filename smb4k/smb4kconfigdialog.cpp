@@ -54,16 +54,16 @@
 #endif
 
 // Qt includes
-#include <QtCore/QPointer>
-#include <QtCore/QPair>
-#include <QtCore/QList>
-#include <QtCore/QSize>
-#include <QtCore/QStandardPaths>
-#include <QtWidgets/QRadioButton>
-#include <QtWidgets/QCheckBox>
-#include <QtWidgets/QTreeWidget>
-#include <QtWidgets/QScrollArea>
-#include <QtGui/QShowEvent>
+#include <QPointer>
+#include <QPair>
+#include <QList>
+#include <QSize>
+#include <QStandardPaths>
+#include <QRadioButton>
+#include <QCheckBox>
+#include <QTreeWidget>
+#include <QScrollArea>
+#include <QShowEvent>
 
 // KDE includes
 #include <KCoreAddons/KPluginFactory>

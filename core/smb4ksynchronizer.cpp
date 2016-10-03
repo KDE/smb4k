@@ -35,11 +35,11 @@
 #include "smb4kshare.h"
 
 // Qt includes
-#include <QtCore/QTimer>
-#include <QtCore/QDebug>
-#include <QtCore/QFile>
-#include <QtCore/QDir>
-#include <QtCore/QCoreApplication>
+#include <QTimer>
+#include <QDebug>
+#include <QFile>
+#include <QDir>
+#include <QCoreApplication>
 
 // KDE includes
 #include <KCoreAddons/KShell>

@@ -36,12 +36,12 @@
 #endif
 
 // Qt includes
-#include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QMenu>
-#include <QtGui/QMouseEvent>
-#include <QtNetwork/QHostAddress>
-#include <QtNetwork/QAbstractSocket>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QMenu>
+#include <QMouseEvent>
+#include <QHostAddress>
+#include <QAbstractSocket>
 
 // KDE includes
 #include <KI18n/KLocalizedString>

@@ -38,14 +38,14 @@
 #endif
 
 // Qt includes
-#include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QGroupBox>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QToolButton>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QCheckBox>
-#include <QtWidgets/QInputDialog>
-#include <QtWidgets/QSpinBox>
+#include <QVBoxLayout>
+#include <QGroupBox>
+#include <QLabel>
+#include <QToolButton>
+#include <QMenu>
+#include <QCheckBox>
+#include <QInputDialog>
+#include <QSpinBox>
 
 // KDE includes
 #include <KI18n/KLocalizedString>

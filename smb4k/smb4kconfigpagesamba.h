@@ -27,9 +27,9 @@
 #define SMB4KCONFIGPAGESAMBA_H
 
 // Qt includes
-#include <QtCore/QList>
-#include <QtWidgets/QListWidgetItem>
-#include <QtWidgets/QTabWidget>
+#include <QList>
+#include <QListWidgetItem>
+#include <QTabWidget>
 
 /**
  * This class manages the configuration dialog of the options

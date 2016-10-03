@@ -31,7 +31,7 @@
 #include "smb4khomesshareshandler.h"
 
 // Qt includes
-#include <QtCore/QDebug>
+#include <QDebug>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"

@@ -33,9 +33,9 @@
 #include "core/smb4kprofilemanager.h"
 
 // Qt includes
-#include <QtWidgets/QCheckBox>
-#include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QGroupBox>
+#include <QCheckBox>
+#include <QVBoxLayout>
+#include <QGroupBox>
 
 // KDE includes
 #include <KI18n/KLocalizedString>

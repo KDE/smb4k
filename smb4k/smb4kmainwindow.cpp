@@ -46,17 +46,17 @@
 #include "core/smb4ksearch.h"
 
 // Qt includes
-#include <QtCore/QVariantList>
-#include <QtCore/QTimer>
-#include <QtCore/QSize>
-#include <QtWidgets/QDockWidget>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QActionGroup>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QTabBar>
-#include <QtWidgets/QMenuBar>
-#include <QtWidgets/QStatusBar>
-#include <QtWidgets/QApplication>
+#include <QVariantList>
+#include <QTimer>
+#include <QSize>
+#include <QDockWidget>
+#include <QMenu>
+#include <QActionGroup>
+#include <QLabel>
+#include <QTabBar>
+#include <QMenuBar>
+#include <QStatusBar>
+#include <QApplication>
 
 // KDE includes
 #include <KConfigWidgets/KStandardAction>

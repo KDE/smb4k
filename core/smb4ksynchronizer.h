@@ -27,9 +27,9 @@
 #define SMB4KSYNCHRONIZER_H
 
 // Qt includes
-#include <QtCore/QString>
-#include <QtCore/QScopedPointer>
-#include <QtWidgets/QWidget>
+#include <QString>
+#include <QScopedPointer>
+#include <QWidget>
 
 // KDE includes
 #include <KCoreAddons/KCompositeJob>

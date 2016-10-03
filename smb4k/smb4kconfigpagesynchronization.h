@@ -27,7 +27,7 @@
 #define SMB4KCONFIGPAGESYNCHRONIZATION_H
 
 // Qt includes
-#include <QtWidgets/QTabWidget>
+#include <QTabWidget>
 
 /**
  * This class belongs to the configuration dialog and takes

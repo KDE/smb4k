@@ -27,7 +27,7 @@
 #define SMB4KCONFIGDIALOG_H
 
 // Qt includes
-#include <QtWidgets/QAbstractButton>
+#include <QAbstractButton>
 
 // KDE includes
 #include <KConfigWidgets/KConfigDialog>

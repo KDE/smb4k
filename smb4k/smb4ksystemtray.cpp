@@ -39,7 +39,7 @@
 #include "core/smb4kscanner.h"
 
 // Qt includes
-#include <QtWidgets/QMenu>
+#include <QMenu>
 
 // KDE specific includes
 #include <KIconThemes/KIconLoader>

@@ -27,8 +27,8 @@
 #define SMB4KSYSTEMTRAY_H
 
 // Qt includes
-#include <QtCore/QString>
-#include <QtWidgets/QWidget>
+#include <QString>
+#include <QWidget>
 
 // KDE includes
 #include <KNotifications/KStatusNotifierItem>

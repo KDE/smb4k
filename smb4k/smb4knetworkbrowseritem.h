@@ -33,8 +33,8 @@
 #include "smb4ktooltip.h"
 
 // Qt includes
-#include <QtWidgets/QTreeWidgetItem>
-#include <QtWidgets/QTreeWidget>
+#include <QTreeWidgetItem>
+#include <QTreeWidget>
 
 
 class Smb4KNetworkBrowser;

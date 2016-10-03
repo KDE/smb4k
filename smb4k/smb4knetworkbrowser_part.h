@@ -28,9 +28,9 @@
 #define SMB4KNETWORKBROWSERPART_H
 
 // Qt includes
-#include <QtCore/QList>
-#include <QtWidgets/QAction>
-#include <QtWidgets/QTreeWidgetItem>
+#include <QList>
+#include <QAction>
+#include <QTreeWidgetItem>
 
 // KDE includes
 #include <KParts/Part>

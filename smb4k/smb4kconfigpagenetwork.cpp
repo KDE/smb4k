@@ -33,14 +33,14 @@
 #include "core/smb4ksettings.h"
 
 // Qt includes
-#include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QGridLayout>
-#include <QtWidgets/QGroupBox>
-#include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QRadioButton>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QCheckBox>
-#include <QtWidgets/QSpinBox>
+#include <QVBoxLayout>
+#include <QGridLayout>
+#include <QGroupBox>
+#include <QButtonGroup>
+#include <QRadioButton>
+#include <QLabel>
+#include <QCheckBox>
+#include <QSpinBox>
 
 // KDE includes
 #include <KIconThemes/KIconLoader>

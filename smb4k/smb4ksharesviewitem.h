@@ -31,7 +31,7 @@
 #include "smb4ktooltip.h"
 
 // Qt includes
-#include <QtWidgets/QListWidgetItem>
+#include <QListWidgetItem>
 
 // forward declarations
 class Smb4KSharesView;

@@ -27,13 +27,13 @@
 #define SMB4KCONFIGPAGECUSTOMOPTIONS_H
 
 // Qt includes
-#include <QtCore/QEvent>
-#include <QtWidgets/QWidget>
-#include <QtWidgets/QCheckBox>
-#include <QtWidgets/QGroupBox>
-#include <QtWidgets/QListWidget>
-#include <QtWidgets/QSpinBox>
-#include <QtWidgets/QTabWidget>
+#include <QEvent>
+#include <QWidget>
+#include <QCheckBox>
+#include <QGroupBox>
+#include <QListWidget>
+#include <QSpinBox>
+#include <QTabWidget>
 
 // KDE includes
 #include <KCompletion/KComboBox>
