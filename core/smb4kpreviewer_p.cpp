@@ -570,8 +570,14 @@ void Smb4KPreviewJob::processErrors(const QString &stdErr)
   {
     QString line = it.next();
 
-    if (line.contains("DEBUG"))
+    if (line.contains(QLatin1String("DEBUG")))
     {
+      // Remove debug messages
+      it.remove();
+    }
+    else if (line.contains(QLatin1String("WARNING")) && line.contains(QLatin1String("deprecated")))
+    {
+      // Remove warnings
       it.remove();
     }
     else if (line.trimmed().startsWith(QLatin1String("Domain")) || line.trimmed().startsWith(QLatin1String("OS")))
