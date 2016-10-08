@@ -1386,6 +1386,20 @@
 <sect1 id="special_remarks">
   <title>Special Remarks</title>
   
+<!-- Using Smb4K : Special Remarks : Samba Security Fixes of April 12, 2016 -->
+   
+<sect2 id="special_remarks_samba_security_ułpdates">
+  <title>Remarks Regarding the Samba Security Fixes of April 12, 2016</title>
+  <para>On April 12, 2016 the Samba team released security fixes for the <ulink url="http://www.badlock.org">Badlock bug</ulink>. Unfortunately, they also introduced a regression that causes the <command>net</command> command to fail on many systems when querying remote hosts. If you experience this issue, you can add two lines to the [global] section of your <filename>smb.conf</filename> file to make browsing work again:</para>
+  <programlisting>
+    [global]
+    ...
+    client max protocol = SMB3
+    client ipc max protocol = NT1
+    ...</programlisting>
+  <para>Unfortunately, this fix for &smb4k; breaks the possibility to connect to the network neighborhood with &dolphin; and maybe also other programs.</para>
+</sect2>
+  
 <!-- Using Smb4K : Special Remarks : Remarks for FreeBSD Users -->
   
 <sect2 id="special_remarks_freebsd">
@@ -1432,9 +1446,10 @@
 <userinput><prompt>$</prompt> <command>sudo ln</command> -s \
 <filename>/usr/pkg/share/examples/kde4-dbus/net.sourceforge.smb4k.mounthelper.conf</filename> .</userinput></screen></para></listitem>
 <listitem><para>Edit the file <filename>/usr/pkg/etc/PolicyKit/PolicyKit.conf</filename> and add the following paragraph in the &lt;config version="0.1"&gt; section:</para>
-<para><screen>&lt;match action="net.sourceforge.smb4k.mounthelper.*"&gt;
+  <programlisting>
+    &lt;match action="net.sourceforge.smb4k.mounthelper.*"&gt;
         &lt;return result="yes"&gt;
-&lt;/match&gt;</screen></para>
+    &lt;/match&gt;</programlisting>
 <para>This will allow everyone to mount and unmount remote Samba shares with &smb4k;.</para></listitem>
 </itemizedlist>
 </sect3>
