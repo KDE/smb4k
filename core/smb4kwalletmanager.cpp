@@ -39,9 +39,9 @@
 #include "smb4kshare.h"
 
 // Qt includes
-#include <QtCore/QPointer>
-#include <QtTest/QTest>
-#include <QtWidgets/QApplication>
+#include <QPointer>
+#include <QTest>
+#include <QApplication>
 
 // KDE includes
 

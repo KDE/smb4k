@@ -32,9 +32,9 @@
 #include "smb4kprocess.h"
 
 // Qt includes
-#include <QtCore/QUrl>
-#include <QtWidgets/QDialog>
-#include <QtWidgets/QPushButton>
+#include <QUrl>
+#include <QDialog>
+#include <QPushButton>
 
 // KDE includes
 #include <KCoreAddons/KJob>

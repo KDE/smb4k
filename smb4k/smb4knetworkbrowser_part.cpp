@@ -47,14 +47,14 @@
 #include "core/smb4kcustomoptions.h"
 
 // Qt includes
-#include <QtCore/QEvent>
-#include <QtCore/QDebug>
-#include <QtGui/QKeySequence>
-#include <QtWidgets/QTreeWidget>
-#include <QtWidgets/QTreeWidgetItemIterator>
-#include <QtWidgets/QHeaderView>
-#include <QtWidgets/QApplication>
-#include <QtWidgets/QMenu>
+#include <QEvent>
+#include <QDebug>
+#include <QKeySequence>
+#include <QTreeWidget>
+#include <QTreeWidgetItemIterator>
+#include <QHeaderView>
+#include <QApplication>
+#include <QMenu>
 
 // KDE includes
 #include <KCoreAddons/KPluginFactory>

@@ -27,7 +27,7 @@
 #define SMB4KNETWORKBROWSER_H
 
 // Qt includes
-#include <QtWidgets/QTreeWidget>
+#include <QTreeWidget>
 
 // forward declarations
 class Smb4KNetworkBrowserItem;

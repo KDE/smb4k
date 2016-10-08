@@ -31,8 +31,8 @@
 #include "core/smb4kshare.h"
 
 // Qt includes
-#include <QtWidgets/QListWidget>
-#include <QtWidgets/QListWidgetItem>
+#include <QListWidget>
+#include <QListWidgetItem>
 
 /**
  * This class is an enhanced version of QListWidgetItem, that is used

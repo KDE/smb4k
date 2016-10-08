@@ -27,8 +27,8 @@
 #define SMB4KSHARESMENU_H
 
 // Qt includes
-#include <QtWidgets/QAction>
-#include <QtWidgets/QActionGroup>
+#include <QAction>
+#include <QActionGroup>
 
 // KDE includes
 #include <KWidgetsAddons/KActionMenu>

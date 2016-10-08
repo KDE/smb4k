@@ -27,10 +27,10 @@
 #define SMB4KMAINWINDOW_H
 
 // Qt includes
-#include <QtCore/QUrl>
-#include <QtWidgets/QActionGroup>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QProgressBar>
+#include <QUrl>
+#include <QActionGroup>
+#include <QLabel>
+#include <QProgressBar>
 
 // KDE includes
 #include <KParts/MainWindow>

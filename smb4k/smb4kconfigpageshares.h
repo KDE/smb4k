@@ -27,7 +27,7 @@
 #define SMB4KCONFIGPAGESHARES_H
 
 // Qt includes
-#include <QtWidgets/QWidget>
+#include <QWidget>
 
 /**
  * This is the configuration tab for the settings that are

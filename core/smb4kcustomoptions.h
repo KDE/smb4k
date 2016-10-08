@@ -61,7 +61,7 @@ class Q_DECL_EXPORT Smb4KCustomOptions
      * 
      * @param RemountOnce       Remount the share only next time the application
      *                          is started.
-     * @param RemountAlways     Remount the share everytime the application is
+     * @param RemountAlways     Remount the share every time the application is
      *                          started.
      * @param RemountNever      Never remount the share.
      * @param UndefinedRemount  No remount option is defined.

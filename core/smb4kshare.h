@@ -30,11 +30,11 @@
 #include "smb4kbasicnetworkitem.h"
 
 // Qt includes
-#include <QtCore/QString>
-#include <QtCore/QStringList>
-#include <QtCore/QtGlobal>
-#include <QtCore/QScopedPointer>
-#include <QtCore/QUrl>
+#include <QString>
+#include <QStringList>
+#include <QtGlobal>
+#include <QScopedPointer>
+#include <QUrl>
 
 // KDE includes
 #include <KCoreAddons/KUser>

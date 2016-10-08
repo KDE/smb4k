@@ -27,7 +27,7 @@
 #define SMB4KCONFIGPAGENETWORK_H
 
 // Qt includes
-#include <QtWidgets/QTabWidget>
+#include <QTabWidget>
 
 /**
  * This is the configuration tab for the network settings

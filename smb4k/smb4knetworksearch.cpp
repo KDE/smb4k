@@ -32,8 +32,8 @@
 #include "smb4knetworksearchitem.h"
 
 // Qt includes
-#include <QtWidgets/QGridLayout>
-#include <QtWidgets/QLabel>
+#include <QGridLayout>
+#include <QLabel>
 
 // KDE includes
 #include <KI18n/KLocalizedString>

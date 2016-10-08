@@ -33,8 +33,8 @@
 #include "core/smb4kprofilemanager.h"
 
 // Qt includes
-#include <QtCore/QStringList>
-#include <QtWidgets/QAction>
+#include <QStringList>
+#include <QAction>
 
 // KDE includes
 #include <KIconThemes/KIconLoader>

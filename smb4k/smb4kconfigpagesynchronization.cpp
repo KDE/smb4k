@@ -32,11 +32,11 @@
 #include "core/smb4ksettings.h"
 
 // Qt includes
-#include <QtWidgets/QGridLayout>
-#include <QtWidgets/QGroupBox>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QCheckBox>
-#include <QtWidgets/QSpinBox>
+#include <QGridLayout>
+#include <QGroupBox>
+#include <QLabel>
+#include <QCheckBox>
+#include <QSpinBox>
 
 // KDE includes
 #include <KI18n/KLocalizedString>

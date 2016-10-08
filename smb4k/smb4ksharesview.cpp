@@ -35,11 +35,11 @@
 #include "core/smb4ksettings.h"
 
 // Qt includes
-#include <QtGui/QMouseEvent>
-#include <QtGui/QWheelEvent>
-#include <QtGui/QDrag>
-#include <QtWidgets/QDesktopWidget>
-#include <QtWidgets/QApplication>
+#include <QMouseEvent>
+#include <QWheelEvent>
+#include <QDrag>
+#include <QDesktopWidget>
+#include <QApplication>
 
 // KDE includes
 #include <KIconThemes/KIconLoader>

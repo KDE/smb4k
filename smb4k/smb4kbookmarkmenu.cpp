@@ -37,7 +37,7 @@
 #include "core/smb4kglobal.h"
 
 // Qt includes
-#include <QtCore/QDebug>
+#include <QDebug>
 
 // KDE includes
 #include <KIconThemes/KIconLoader>

@@ -30,12 +30,12 @@
 #include "core/smb4kauthinfo.h"
 
 // Qt includes
-#include <QtCore/QList>
-#include <QtWidgets/QTableWidget>
-#include <QtWidgets/QCheckBox>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QTabWidget>
-#include <QtWidgets/QListWidget>
+#include <QList>
+#include <QTableWidget>
+#include <QCheckBox>
+#include <QPushButton>
+#include <QTabWidget>
+#include <QListWidget>
 
 // KDE includes
 #include <KWidgetsAddons/KActionMenu>

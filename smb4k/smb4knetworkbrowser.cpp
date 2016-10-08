@@ -35,15 +35,15 @@
 #include "core/smb4kglobal.h"
 
 // Qt includes
-#include <QtCore/QTimer>
-#include <QtGui/QMouseEvent>
-#include <QtGui/QFocusEvent>
-#include <QtGui/QWheelEvent>
-#include <QtGui/QCursor>
-#include <QtGui/QHelpEvent>
-#include <QtWidgets/QHeaderView>
-#include <QtWidgets/QDesktopWidget>
-#include <QtWidgets/QApplication>
+#include <QTimer>
+#include <QMouseEvent>
+#include <QFocusEvent>
+#include <QWheelEvent>
+#include <QCursor>
+#include <QHelpEvent>
+#include <QHeaderView>
+#include <QDesktopWidget>
+#include <QApplication>
 
 // KDE includes
 #include <KI18n/KLocalizedString>
@@ -73,7 +73,7 @@ Smb4KNetworkBrowser::Smb4KNetworkBrowser(QWidget *parent)
   header()->setSectionResizeMode(QHeaderView::ResizeToContents);
 
   // Add some connections:
-  connect(this, SIGNAL(itemActivated(QTreeWidgetItem*, int)),
+  connect(this, SIGNAL(itemActivated(QTreeWidgetItem*,int)),
           this, SLOT(slotItemActivated(QTreeWidgetItem*,int)));
 
   connect(this, SIGNAL(itemEntered(QTreeWidgetItem*,int)),

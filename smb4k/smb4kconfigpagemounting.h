@@ -27,7 +27,7 @@
 #define SMB4KCONFIGPAGEMOUNTING_H
 
 // Qt includes
-#include <QtWidgets/QWidget>
+#include <QWidget>
 
 /**
  * This configuration page contains the mount options

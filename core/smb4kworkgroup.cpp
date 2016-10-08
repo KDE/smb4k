@@ -32,7 +32,7 @@
 #include "smb4kworkgroup.h"
 
 // Qt includes
-#include <QtNetwork/QHostAddress>
+#include <QHostAddress>
 
 // KDE includes
 #include <KIconThemes/KIconLoader>

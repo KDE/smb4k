@@ -32,9 +32,9 @@
 #include "core/smb4kglobal.h"
 
 // Qt includes
-#include <QtCore/QDebug>
-#include <QtGui/QBrush>
-#include <QtWidgets/QApplication>
+#include <QDebug>
+#include <QBrush>
+#include <QApplication>
 
 
 

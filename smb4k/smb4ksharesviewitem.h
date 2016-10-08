@@ -31,7 +31,7 @@
 #include "smb4ktooltip.h"
 
 // Qt includes
-#include <QtWidgets/QListWidgetItem>
+#include <QListWidgetItem>
 
 // forward declarations
 class Smb4KSharesView;
@@ -82,7 +82,7 @@ class Smb4KSharesViewItem : public QListWidgetItem
     Smb4KToolTip *tooltip();
     
     /**
-     * This funtion modifies the alignment according to the @p mode used in
+     * This function modifies the alignment according to the @p mode used in
      * the parent list widget.
      */
     void setItemAlignment(QListView::ViewMode mode);

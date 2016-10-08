@@ -37,11 +37,11 @@
 #include "core/smb4kbookmarkhandler.h"
 
 // Qt includes
-#include <QtCore/QMap>
-#include <QtCore/QVariant>
-#include <QtCore/QString>
-#include <QtCore/QStringList>
-#include <QtCore/QStandardPaths>
+#include <QMap>
+#include <QVariant>
+#include <QString>
+#include <QStringList>
+#include <QStandardPaths>
 
 // KDE includes
 #include <KIconThemes/KIconLoader>

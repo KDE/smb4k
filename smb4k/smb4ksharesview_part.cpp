@@ -39,14 +39,14 @@
 #include "core/smb4kbookmarkhandler.h"
 
 // Qt includes
-#include <QtCore/QUrl>
-#include <QtCore/QDebug>
-#include <QtCore/QStandardPaths>
-#include <QtGui/QDropEvent>
-#include <QtWidgets/QHeaderView>
-#include <QtWidgets/QAction>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QApplication>
+#include <QUrl>
+#include <QDebug>
+#include <QStandardPaths>
+#include <QDropEvent>
+#include <QHeaderView>
+#include <QAction>
+#include <QMenu>
+#include <QApplication>
 
 // KDE includes
 #include <KCoreAddons/KPluginFactory>

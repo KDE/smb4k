@@ -27,9 +27,9 @@
 #define SMB4KCONFIGPAGEPROFILES_H
 
 // Qt includes
-#include <QtCore/QList>
-#include <QtCore/QPair>
-#include <QtWidgets/QWidget>
+#include <QList>
+#include <QPair>
+#include <QWidget>
 
 // KDE includes
 #include <KWidgetsAddons/KEditListWidget>

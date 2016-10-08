@@ -27,8 +27,8 @@
 #define SMB4KQMLPLUGIN_H
 
 // Qt includes
-#include <QtCore/QtPlugin>
-#include <QtQml/QQmlExtensionPlugin>
+#include <QtPlugin>
+#include <QQmlExtensionPlugin>
 
 class Smb4KQMLPlugin : public QQmlExtensionPlugin
 {

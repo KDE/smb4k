@@ -27,8 +27,8 @@
 #define SMB4KWALLETMANAGER_H
 
 // Qt includes
-#include <QtCore/QList>
-#include <QtWidgets/QWidget>
+#include <QList>
+#include <QWidget>
 
 // forward declarations
 class Smb4KAuthInfo;
