@@ -24,12 +24,12 @@
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
 </authorgroup>
 <copyright>
-<year>2005-2015</year>
+<year>2005-2016</year>
 <holder>Alexander Reinholdt</holder>
 </copyright>
 <legalnotice>&underFDL;</legalnotice>
-<date>2015-02-15</date>
-<releaseinfo>5.1.0</releaseinfo>
+<date>2015-10-09</date>
+<releaseinfo>5.1.1</releaseinfo>
 <abstract>
 <para>&smb4k; is an advanced network neighborhood browser and Samba share mounting utility for KDE.</para>
 </abstract>
@@ -76,7 +76,7 @@
   <listitem><para>Profiles for different network neighborhood setups</para></listitem>
 </itemizedlist>
 
- <para>If you encounter problems while using &smb4k;, please visit our <ulink url="https://sourceforge.net/p/smb4k/wiki/Home/">wiki</ulink> first. If you cannot find your problem described there, please post a help request to our <ulink url="https://sourceforge.net/p/smb4k/discussion/help/">Help</ulink> forum. In case you find a bug, please report it to our <ulink url="https://sourceforge.net/p/smb4k/tickets/">bug tracker</ulink>.</para>
+<para>If you encounter problems while using &smb4k;, please visit our <ulink url="https://sourceforge.net/p/smb4k/wiki/Home/">wiki</ulink> first. If you cannot find your problem described there, please post a help request to our <ulink url="https://sourceforge.net/p/smb4k/discussion/help/">Help</ulink> forum. In case you find a bug, please report it to the <ulink url="https://bugs.kde.org/enter_bug.cgi?product=Smb4k&amp;format=guided">KDE Bugtracking System</ulink>.</para>
  <para>For discussions about &smb4k;-related topics there is the <ulink url="https://sourceforge.net/p/smb4k/discussion/general/">General Discussion</ulink> forum and we invite every user to participate.</para>
 </chapter>
 
@@ -173,7 +173,7 @@
 
 <para>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic package to each server that is to be woken up and waits the defined time until it starts the lookup of the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_network_wake_on_lan">configuration dialog</link>. The servers that should to be woken up have to be defined in the <link linkend="network_neighborhood_browser_custom">Custom Options</link> dialog.</para>
 
-<note><para>Under normal circumstances you should not have any trouble browsing the network neighborhood. In case you experience problems, please read our <ulink url="https://sourceforge.net/p/smb4k/wiki/Home/">wiki</ulink> first before thinking about <ulink url="https://sourceforge.net/p/smb4k/tickets/">reporting a bug</ulink>. It lists some common problems and their solutions.</para></note>
+<note><para>Under normal circumstances you should not have any trouble browsing the network neighborhood. In case you experience problems, please read our <ulink url="https://sourceforge.net/p/smb4k/wiki/Home/">wiki</ulink> first before thinking about <ulink url="https://bugs.kde.org/enter_bug.cgi?product=Smb4k&amp;format=guided">reporting a bug</ulink>. It lists some common problems and their solutions.</para></note>
 </sect2>
 
 <!-- Using Smb4K : The Network Neighborhood Browser : Actions and Popup Menu -->
@@ -1385,6 +1385,20 @@
 
 <sect1 id="special_remarks">
   <title>Special Remarks</title>
+  
+<!-- Using Smb4K : Special Remarks : Samba Security Fixes of April 12, 2016 -->
+   
+<sect2 id="special_remarks_samba_security_ułpdates">
+  <title>Remarks Regarding the Samba Security Fixes of April 12, 2016</title>
+  <para>On April 12, 2016 the Samba team released security fixes for the <ulink url="http://www.badlock.org">Badlock bug</ulink>. Unfortunately, they also introduced a regression that causes the <command>net</command> command to fail on many systems when querying remote hosts. If you experience this issue, you can add two lines to the [global] section of your <filename>smb.conf</filename> file to make browsing work again:</para>
+  <programlisting>
+    [global]
+    ...
+    client max protocol = SMB3
+    client ipc max protocol = NT1
+    ...</programlisting>
+  <para>Unfortunately, this fix for &smb4k; breaks the possibility to connect to the network neighborhood with &dolphin; and maybe also other programs.</para>
+</sect2>
   
 <!-- Using Smb4K : Special Remarks : Remarks for FreeBSD Users -->
   
@@ -4453,7 +4467,7 @@ of the &kde; Fundamentals.</para>
 <listitem><para>If you experienced a crash, attach a full backtrace. For this it is recommended that you (re-)compile &smb4k; with debugging symbols. How this is done is mentioned in the <link linkend="appendix_compilation">Configuration, Compilation and Installation</link> appendix.</para></listitem>
 <listitem><para>Add additional data, &eg; send a screen shot if you are reporting a &GUI; related problem.</para></listitem>
 </itemizedlist>
-<para>The recommended method to report a bug is to go to our <ulink url="https://sourceforge.net/p/smb4k/tickets/">bug tracking system</ulink> and fill out the form. But you can also use the dialog that opens when you click the <menuchoice><guimenu>Help</guimenu><guimenuitem>Report Bug...</guimenuitem></menuchoice> menu item.</para>
+<para>The recommended method to report a bug is to go to the <ulink url="https://bugs.kde.org/enter_bug.cgi?product=Smb4k&amp;format=guided">KDE Bugtracking System</ulink> and fill out the form. But you can also use the dialog that opens when you click the <menuchoice><guimenu>Help</guimenu><guimenuitem>Report Bug...</guimenuitem></menuchoice> menu item.</para>
 </chapter>
 
 
