@@ -23,8 +23,8 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifndef SMB4KSHARESICONVIEW_H
-#define SMB4KSHARESICONVIEW_H
+#ifndef SMB4KSHARESVIEW_H
+#define SMB4KSHARESVIEW_H
 
 // Qt includes
 #include <QTimer>

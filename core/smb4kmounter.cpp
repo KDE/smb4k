@@ -350,15 +350,15 @@ void Smb4KMounter::import(bool checkInaccessible)
       // Get all mount options
       Q_FOREACH(const QString &option, mountPoint->mountOptions())
       {
-        if (option.startsWith("domain=") || option.startsWith("workgroup="))
+        if (option.startsWith(QLatin1String("domain=")) || option.startsWith(QLatin1String("workgroup=")))
         {
           share->setWorkgroupName(option.section('=', 1, 1).trimmed());
         }
-        else if (option.startsWith("addr="))
+        else if (option.startsWith(QLatin1String("addr=")))
         {
           share->setHostIP(option.section('=', 1, 1).trimmed());
         }
-        else if (option.startsWith("username=") || option.startsWith("user="))
+        else if (option.startsWith(QLatin1String("username=")) || option.startsWith(QLatin1String("user=")))
         {
           share->setLogin(option.section('=', 1, 1).trimmed());
         }

@@ -23,8 +23,8 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifndef SMB4KSHARESICONVIEWITEM_H
-#define SMB4KSHARESICONVIEWITEM_H
+#ifndef SMB4KSHARESVIEWITEM_H
+#define SMB4KSHARESVIEWITEM_H
 
 // application specific includes
 #include "core/smb4kshare.h"
