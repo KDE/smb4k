@@ -72,14 +72,14 @@ add_subdirectory(doc)
 
 ########### Plasmoid ####################
 
-option(INSTALL_PLASMOID "Install plasmoid" ON)
-
-if (INSTALL_PLASMOID)
-  message(STATUS "Installing plasmoid (-DINSTALL_PLASMOID=false to disable)")
-  add_subdirectory(plasmoid)
-elseif (NOT INSTALL_PLASMOID)
-  message(STATUS "Not installing plasmoid (-DINSTALL_PLASMOID=true to enable)")
-endif(INSTALL_PLASMOID)
+# option(INSTALL_PLASMOID "Install plasmoid" ON)
+# 
+# if (INSTALL_PLASMOID)
+#   message(STATUS "Installing plasmoid (-DINSTALL_PLASMOID=false to disable)")
+#   add_subdirectory(plasmoid)
+# elseif (NOT INSTALL_PLASMOID)
+#   message(STATUS "Not installing plasmoid (-DINSTALL_PLASMOID=true to enable)")
+# endif(INSTALL_PLASMOID)
 
 ########### Header files ################
 
