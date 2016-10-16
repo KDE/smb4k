@@ -1385,7 +1385,9 @@
   </sect2>
 </sect1>
 
-<!-- Using Smb4K : Special Remarks -->
+<!-- 
+      Using Smb4K : Special Remarks 
+-->
 
 <sect1 id="special_remarks">
   <title>Special Remarks</title>
@@ -1395,12 +1397,13 @@
 <sect2 id="special_remarks_samba_security_updates">
   <title>Remarks Regarding the Samba Security Fixes of April 12, 2016</title>
   <para>On April 12, 2016 the Samba team released security fixes for the <ulink url="http://www.badlock.org">Badlock bug</ulink>. Unfortunately, they also introduced a regression that causes the <command>net</command> command to fail on many systems when querying remote hosts. If you experience this issue, you can add two lines to the [global] section of your <filename>smb.conf</filename> file to make browsing work again:</para>
-  <programlisting>
-    [global]
-    ...
-    client max protocol = SMB3
-    client ipc max protocol = NT1
-    ...</programlisting>
+  
+<programlisting>[global]
+...
+client max protocol = SMB3
+client ipc max protocol = NT1
+...</programlisting>
+  
   <para>Unfortunately, this fix for &smb4k; breaks the possibility to connect to the network neighborhood with &dolphin; and maybe also other programs.</para>
 </sect2>
   
@@ -2475,7 +2478,7 @@ Default: not selected
             <menuchoice><guibutton>Broadcast address</guibutton></menuchoice>
           </term>
           <listitem>
-            <para>Send a query to the given broadcast address. Without this option the default behavior of nmblookup is to send the query to the broadcast address of the network interfaces as either auto-detected or defined in the <screen>interfaces = ...</screen> parameter of the <filename>smb.conf</filename> file.</para>
+            <para>Send a query to the given broadcast address. Without this option the default behavior of nmblookup is to send the query to the broadcast address of the network interfaces as either auto-detected or defined in the <programlisting>interfaces = ...</programlisting> parameter of the <filename>smb.conf</filename> file.</para>
             <para>Default: options defined in <filename>smb.conf</filename></para>
           </listitem>
         </varlistentry>
