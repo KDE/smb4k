@@ -1411,11 +1411,15 @@ void Smb4KLookupDomainMembersJob::processErrors(const QString& stdErr)
       {
         it.remove();
       }
-      else if (line.contains("tdb_transaction_recover:"))
+      else if (line.contains(QLatin1String("tdb_transaction_recover:")))
       {
         it.remove();
       }
-      else if (line.contains("tdb_log"))
+      else if (line.contains(QLatin1String("tdb_log")))
+      {
+        it.remove();
+      }
+      else if (line.contains(QLatin1String("packet check failed")))
       {
         it.remove();
       }
