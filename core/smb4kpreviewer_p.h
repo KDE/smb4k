@@ -1,8 +1,8 @@
 /***************************************************************************
-    smb4kpreviewer_p  -  Private helper classes for Smb4KPreviewer class.
+    Private helper classes for Smb4KPreviewer class
                              -------------------
     begin                : So Dez 21 2008
-    copyright            : (C) 2008-2015 by Alexander Reinholdt
+    copyright            : (C) 2008-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
