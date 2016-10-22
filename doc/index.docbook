@@ -405,7 +405,7 @@
 </textobject>
 </mediaobject>
 </screenshot>
-<para>If a user name has already been provided, it will be shown in the respective field. If it is wrong or no user name was provided, you have to enter one. The password, however, may be left blank. Clicking the <guibutton>OK</guibutton> button will commit the data. Depending on your choice in the <link linkend="configuration_authentication">configuration dialog</link>, the user name and password will be stored permanently in a digital wallet or not all. In the latter case you will have to provide them <emphasis>every time</emphasis> they are needed.</para>
+<para>If a user name has already been provided, it will be shown in the respective field. If it is wrong or no user name was provided, you have to enter one. The password, however, may be left blank. Clicking the <guibutton>OK</guibutton> button will commit the data. Depending on your choice in the <link linkend="configuration_page_authentication">configuration dialog</link>, the user name and password will be stored permanently in a digital wallet or not all. In the latter case you will have to provide them <emphasis>every time</emphasis> they are needed.</para>
 </sect2>
 
 <!-- Using Smb4K : The Network Neighborhood Browser : Defining Custom Options -->
@@ -1394,7 +1394,7 @@
   
 <!-- Using Smb4K : Special Remarks : Samba Security Fixes of April 12, 2016 -->
    
-<sect2 id="special_remarks_samba_security_updates">
+  <sect2 id="special_remarks_samba_security_updates">
   <title>Remarks Regarding the Samba Security Fixes of April 12, 2016</title>
   <para>On April 12, 2016 the Samba team released security fixes for the <ulink url="http://www.badlock.org">Badlock bug</ulink>. Unfortunately, they also introduced a regression that causes the <command>net</command> command to fail on many systems when querying remote hosts. If you experience this issue, you can add two lines to the [global] section of your <filename>smb.conf</filename> file to make browsing work again:</para>
   
@@ -2027,7 +2027,7 @@ If periodic scanning is enabled, this is the time in minutes that elapses until 
 <sect3 id="configuration_network_wake_on_lan">
 <title>Wake-On-LAN</title>
 
-<para>To be able to use the Wake-On_LAN capability of &smb4k;, you have to enable the setting in this section. The hosts that should to be woken up have to be defined through the <link linkend="configuration_custom_options">custom options dialog</link>.</para>
+<para>To be able to use the Wake-On_LAN capability of &smb4k;, you have to enable the setting in this section. The hosts that should to be woken up have to be defined through the <link linkend="configuration_page_custom_options">custom options dialog</link>.</para>
 
 <variablelist>
   <varlistentry>
@@ -2208,86 +2208,95 @@ Default: not selected
 </sect2>
 </sect1>
 
-<!-- Configuration: Authentication -->
+<!-- 
+      Configuration: Authentication 
+-->
 
-<sect1 id="configuration_authentication">
-<title>Authentication</title>
+<sect1 id="configuration_page_authentication">
+  <title>Authentication</title>
 
-<para>Here you can change the settings affecting the authentication.</para>
+  <para>Here you can change the settings affecting the authentication.</para>
 
-<screenshot>
-<screeninfo>Screenshot of the "Authentication" configuration tab</screeninfo>
-<mediaobject>
-<imageobject>
-<imagedata fileref="configuration_page_authentication.png" format="PNG" />
-</imageobject>
-<textobject>
-<phrase>The "Authentication" configuration tab</phrase>
-</textobject>
-</mediaobject>
-</screenshot>
-
-<!-- Configuring Smb4K : Authentication : General Settings -->
-
-<sect2 id="configuration_authentication_general">
-<title>General Settings</title>
-  
-<sect3 id="configuration_authentication_general_storage">
-  <title>Password Storage</title>
-  <variablelist>
-    <varlistentry>
-      <term>
-        <menuchoice><guibutton>Save logins in a wallet</guibutton></menuchoice>
-      </term>
-      <listitem>
-        <para>The login names and passwords are stored in a subfolder named <filename role="directory">Smb4K</filename> of the current network wallet (default: "kdewallet"). The advantage of this method is, that the authentication data is stored permanently and encrypted on your hard drive. You only have to provide it once and the next time it is needed, &smb4k; will read it from the wallet. If you uncheck this option, the authentication data won't be stored at all.</para>
-        <para>Default: selected</para>
-      </listitem>
-    </varlistentry>
-  </variablelist>
-</sect3>
-
-<sect3 id="configuration_authentication_general_default">
-  <title>Default Login</title>
-  <variablelist>
-    <varlistentry>
-      <term>
-        <menuchoice><guibutton>Use a default login</guibutton></menuchoice>
-      </term>
-      <listitem>
-        <para>The default login is used by default to authenticate to the servers in your network neighborhood. If you enable this feature, a password dialog pops up, where you can provide the default login information.</para>
-        <screenshot>
-          <screeninfo>Screenshot of the default login input dialog</screeninfo>
-          <mediaobject>
-            <imageobject><imagedata fileref="dialog_default_login.png" format="PNG" /></imageobject>
-            <textobject><phrase>The default login input dialog</phrase></textobject>
-          </mediaobject>
-        </screenshot>
-        <para>You have to fill in at least the user name. Empty passwords are supported.</para>
-        <para>Default: not selected</para>
-      </listitem>
-    </varlistentry>
-  </variablelist>
-</sect3>
-</sect2>
-
-<!-- Configuring Smb4K : Authentication : Wallet Entries -->
-
-<sect2 id="configuration_authentication_wallet_entries">
-  <title>Wallet Entries</title>
-  <para>The <guilabel>Wallet Entries</guilabel> tab contains an editor with that you can modify or remove existing wallet entries.</para>
   <screenshot>
-    <screeninfo>Screenshot of the wallet entries editor</screeninfo>
+    <screeninfo>Screenshot of the "Authentication" configuration page</screeninfo>
     <mediaobject>
-      <imageobject><imagedata fileref="configuration_wallet_entries.png" format="PNG" /></imageobject>
-      <textobject><phrase>The wallet entries editor</phrase></textobject>
+      <imageobject>
+        <imagedata fileref="configuration_page_authentication.png" format="PNG" />
+      </imageobject>
+      <textobject>
+        <phrase>The "Authentication" configuration page</phrase>
+      </textobject>
     </mediaobject>
   </screenshot>
-  <para>Before you can edit the wallet entries, you have to load them from the wallet by pressing the <guibutton>Load</guibutton> button. The list of entries appears then on the left. An entry can be edited by selecting it and checking the <guibutton>Show details</guibutton> button. The details are then shown on the right and can be modified.</para>
-  <para>An entry can be removed by right clicking it and choosing the <guimenuitem>Remove</guimenuitem> item from the popup menu. All wallet entries may be removed at once by choosing the <guimenuitem>Clear List</guimenuitem> item.</para>
-  <para>Changes can be reset by choosing the <guimenuitem>Undo</guimenuitem> item from the popup menu either in the wallet entries list widget or in the details widget.</para>
-  <para>After you finished editing, the changes have to be committed to the wallet by pressing <guibutton>Save</guibutton>.</para>
-</sect2>
+
+<!-- 
+      Configuring Smb4K : Authentication : General Settings
+-->
+
+  <sect2 id="configuration_page_authentication_general">
+    <title>General Settings</title>
+  
+    <sect3 id="configuration_page_authentication_general_storage">
+      <title>Password Storage</title>
+      
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Save logins in a wallet</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>The login names and passwords are stored in a subfolder named <filename role="directory">Smb4K</filename> of the current network wallet (default: "kdewallet"). The advantage of this method is, that the authentication data is stored permanently and encrypted on your hard drive. You only have to provide it once and the next time it is needed, &smb4k; will read it from the wallet. If you uncheck this option, the authentication data won't be stored at all.</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect3>
+
+    <sect3 id="configuration_page_authentication_general_default">
+      <title>Default Login</title>
+      
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Use a default login</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>The default login is used by default to authenticate to the servers in your network neighborhood. If you enable this feature, a password dialog pops up, where you can provide the default login information.</para>
+            <screenshot>
+              <screeninfo>Screenshot of the default login input dialog</screeninfo>
+              <mediaobject>
+                <imageobject><imagedata fileref="dialog_default_login.png" format="PNG" /></imageobject>
+                <textobject><phrase>The default login input dialog</phrase></textobject>
+              </mediaobject>
+            </screenshot>
+            <para>You have to fill in at least the user name. Empty passwords are supported.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect3>
+  </sect2>
+
+<!-- 
+      Configuring Smb4K : Authentication : Wallet Entries 
+-->
+
+  <sect2 id="configuration_page_authentication_wallet_entries">
+    <title>Wallet Entries</title>
+    
+    <para>The <guilabel>Wallet Entries</guilabel> tab contains an editor with that you can modify or remove existing wallet entries.</para>
+    <screenshot>
+      <screeninfo>Screenshot of the wallet entries editor</screeninfo>
+      <mediaobject>
+        <imageobject><imagedata fileref="configuration_wallet_entries.png" format="PNG" /></imageobject>
+        <textobject><phrase>The wallet entries editor</phrase></textobject>
+      </mediaobject>
+    </screenshot>
+    <para>Before you can edit the wallet entries, you have to load them from the wallet by pressing the <guibutton>Load</guibutton> button. The list of entries appears then on the left. An entry can be edited by selecting it and checking the <guibutton>Show details</guibutton> button. The details are then shown on the right and can be modified.</para>
+    <para>An entry can be removed by right clicking it and choosing the <guimenuitem>Remove</guimenuitem> item from the popup menu. All wallet entries may be removed at once by choosing the <guimenuitem>Clear List</guimenuitem> item.</para>
+    <para>Changes can be reset by choosing the <guimenuitem>Undo</guimenuitem> item from the popup menu either in the wallet entries list widget or in the details widget.</para>
+    <para>After you finished editing, the changes have to be committed to the wallet by pressing <guibutton>Save</guibutton>.</para>
+  </sect2>
 </sect1>
 
 <!-- 
@@ -3787,7 +3796,7 @@ Default: not selected
 
 <!-- Configuring Smb4K : Custom Options -->
 
-<sect1 id="configuration_custom_options">
+<sect1 id="configuration_page_custom_options">
 <title>Custom Options</title>
 <para>All servers and shares for which you defined custom options are listed here.</para>
 
@@ -3795,7 +3804,7 @@ Default: not selected
   <screeninfo>Screenshot of the "Custom Options" configuration tab</screeninfo>
   <mediaobject>
     <imageobject>
-      <imagedata fileref="configuration_custom_options.png" format="PNG" />
+      <imagedata fileref="configuration_page_custom_options.png" format="PNG" />
     </imageobject>
     <textobject>
       <phrase>The "Custom Options" configuration tab</phrase>
@@ -3809,7 +3818,7 @@ Default: not selected
 
 <!-- Configuring Smb4K : Custom Options : Samba -->
 
-<sect2 id="configuration_custom_options_samba">
+<sect2 id="configuration_page_custom_options_samba">
   <title>Samba</title>
   
   <para>You can edit various Samba settings here. Which ones are available depends on the operating system you are using. For more information, have a look at the description of the <link linkend="configuration_page_samba">Samba</link> configuration page.</para>
@@ -3817,7 +3826,7 @@ Default: not selected
 
 <!-- Configuring Smb4K : Custom Options : Wake-On-LAN -->
 
-<sect2 id="configuration_custom_options_wol">
+<sect2 id="configuration_page_custom_options_wol">
   <title>Wake-On-LAN</title>
   
   <para>Here you can edit the options that you previously defined through the <link linkend="network_neighborhood_browser_custom">Custom Options</link> dialog.</para>
