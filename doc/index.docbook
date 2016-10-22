@@ -1392,11 +1392,14 @@
 <sect1 id="special_remarks">
   <title>Special Remarks</title>
   
-<!-- Using Smb4K : Special Remarks : Samba Security Fixes of April 12, 2016 -->
+<!-- 
+      Using Smb4K : Special Remarks : Samba Security Fixes of April 12, 2016 
+-->
    
   <sect2 id="special_remarks_samba_security_updates">
-  <title>Remarks Regarding the Samba Security Fixes of April 12, 2016</title>
-  <para>On April 12, 2016 the Samba team released security fixes for the <ulink url="http://www.badlock.org">Badlock bug</ulink>. Unfortunately, they also introduced a regression that causes the <command>net</command> command to fail on many systems when querying remote hosts. If you experience this issue, you can add two lines to the [global] section of your <filename>smb.conf</filename> file to make browsing work again:</para>
+    <title>Remarks Regarding the Samba Security Fixes of April 12, 2016</title>
+  
+    <para>On April 12, 2016 the Samba team released security fixes for the <ulink url="http://www.badlock.org">Badlock bug</ulink>. Unfortunately, they also introduced a regression that causes the <command>net</command> command to fail on many systems when querying remote hosts. If you experience this issue, you can add two lines to the [global] section of your <filename>smb.conf</filename> file to make browsing work again:</para>
   
 <programlisting>[global]
 ...
@@ -1404,63 +1407,52 @@ client max protocol = SMB3
 client ipc max protocol = NT1
 ...</programlisting>
   
-  <para>Unfortunately, this fix for &smb4k; breaks the possibility to connect to the network neighborhood with &dolphin; and maybe also other programs.</para>
-</sect2>
+    <para>Unfortunately, this fix for &smb4k; breaks the possibility to connect to the network neighborhood with &dolphin; and maybe also other programs.</para>
+  </sect2>
   
-<!-- Using Smb4K : Special Remarks : Remarks for FreeBSD Users -->
+<!-- 
+      Using Smb4K : Special Remarks : Remarks for FreeBSD Users 
+-->
   
-<sect2 id="special_remarks_freebsd">
-<title>Remarks for FreeBSD Users</title>
+  <sect2 id="special_remarks_freebsd">
+    <title>Remarks for FreeBSD Users</title>
 
-<sect3 id="special_remarks_freebsd_installation">
-<title>DBUS and PolKit-1</title>
-<para>&smb4k; makes use of the &kde; authorization API (KAuth) to enable mounting of remote shares. KAuth uses DBUS and PolKit-1 (or PolicyKit) for privilege escalation, so it is necessary that &smb4k; is set up properly. When installing &smb4k; under FreeBSD, it might be necessary to manually adjust some things to achieve this (With version 1.0.10 of package <application>kdehier4</application> this seems to be fixed!):</para>
-<itemizedlist>
-  <listitem>
-    <para>Check that the file <filename>net.sourceforge.smb4k.mounthelper.policy</filename> exists in the directory <filename class="directory">/usr/local/share/polkit-1/actions/</filename>. If it is not present, you need to link (or copy) it to that location:
-<screen><userinput><prompt>$</prompt> <command>cd</command> <filename class="directory">/usr/local/share/polkit-1/actions/</filename></userinput>
-<userinput><prompt>$</prompt> <command>sudo ln</command> -s \
-<filename>/usr/local/kde4/share/polkit-1/actions/net.sourceforge.smb4k.mounthelper.policy</filename> .</userinput></screen></para>
-  </listitem>
-  <listitem>
-    <para>The installation most likely put the DBUS files into the wrong location, so you have to link (or copy) them to the right one:
-<screen><userinput><prompt>$</prompt> <command>cd</command> <filename class="directory">/usr/local/share/dbus-1/system-services</filename></userinput>
-<userinput><prompt>$</prompt> <command>sudo ln</command> -s \
-<filename>/usr/local/kde4/share/dbus-1/system-services/net.sourceforge.smb4k.mounthelper.service</filename> .</userinput></screen></para>
-  </listitem>
-</itemizedlist>
-</sect3>
+    <sect3 id="special_remarks_freebsd_mounting">
+      <title>Mounting of Shares (Smb4K >= 1.2.0)</title>
 
-<sect3 id="special_remarks_freebsd_mounting">
-<title>Mounting of Shares (Smb4K >= 1.2.0)</title>
-<para>Since version 1.2.0, the password for a share is directly passed to <command>mount_smbfs</command>, so that the <filename>~/.nsmbrc</filename> is not necessary anymore for mounting to work. Moreover, &smb4k; will not write any data to that file anymore.</para>
-</sect3>
-</sect2>
+      <para>Since version 1.2.0, the password for a share is directly passed to <command>mount_smbfs</command>, so that the <filename>~/.nsmbrc</filename> is not necessary anymore for mounting to work. Moreover, &smb4k; will not write any data to that file anymore.</para>
+    </sect3>
+  </sect2>
 
-<!-- Using Smb4K : Special Remarks : Remarks for NetBSD Users -->
+<!-- 
+      Using Smb4K : Special Remarks : Remarks for NetBSD Users 
+-->
 
-<sect2 id="special_remarks_netbsd">
-<title>Remarks for NetBSD Users</title>
+  <sect2 id="special_remarks_netbsd">
+    <title>Remarks for NetBSD Users</title>
 
-<sect3 id="special_remarks_netbsd_installation">
-  <title>DBUS and PolicyKit</title>
-<para>Under NetBSD, &smb4k; is able to run since version 1.2.0. However, some modifications have to be made in order to be able to mount and unmount shares:</para>
-<para>Assuming that the prefix of your &kde; installation is <filename class="directory">/usr/pkg</filename>, the following steps have to be taken to make &smb4k; work properly:</para>
-<itemizedlist>
-  <listitem><para>Configure, compile and install &smb4k; according to the directions given in the <link linkend="appendix_compilation">Configuration, Compilation and Installation</link> section of the appendix.</para></listitem>
-  <listitem><para>After installation, link (or copy) the file <filename>net.sourceforge.smb4k.mounthelper.conf</filename> from the <filename class="directory">examples</filename> directory to the right location:</para>
-<para><screen><userinput><prompt>$</prompt> <command>cd</command> <filename class="directory">/usr/pkg/etc/dbus-1/system.d/</filename></userinput>
-<userinput><prompt>$</prompt> <command>sudo ln</command> -s \
-<filename>/usr/pkg/share/examples/kde4-dbus/net.sourceforge.smb4k.mounthelper.conf</filename> .</userinput></screen></para></listitem>
-<listitem><para>Edit the file <filename>/usr/pkg/etc/PolicyKit/PolicyKit.conf</filename> and add the following paragraph in the &lt;config version="0.1"&gt; section:</para>
-  <programlisting>
-    &lt;match action="net.sourceforge.smb4k.mounthelper.*"&gt;
-        &lt;return result="yes"&gt;
-    &lt;/match&gt;</programlisting>
-<para>This will allow everyone to mount and unmount remote Samba shares with &smb4k;.</para></listitem>
-</itemizedlist>
-</sect3>
-</sect2>
+    <sect3 id="special_remarks_netbsd_installation">
+      <title>DBUS and PolicyKit</title>
+
+      <para>Under NetBSD, &smb4k; is able to run since version 1.2.0. However, some modifications have to be made in order to be able to mount and unmount shares:</para>
+      <para>Assuming that the prefix of your &kde; installation is <filename class="directory">/usr/pkg</filename>, the following steps have to be taken to make &smb4k; work properly:</para>
+      <itemizedlist>
+	<listitem><para>Configure, compile and install &smb4k; according to the directions given in the <link linkend="appendix_compilation">Configuration, Compilation and Installation</link> section of the appendix.</para></listitem>
+	<listitem><para>After installation, link (or copy) the file <filename>net.sourceforge.smb4k.mounthelper.conf</filename> from the <filename class="directory">examples</filename> directory to the right location:</para>
+	<para><screen><userinput><prompt>$</prompt> <command>cd</command> <filename class="directory">/usr/pkg/etc/dbus-1/system.d/</filename></userinput>
+	<userinput><prompt>$</prompt> <command>sudo ln</command> -s \
+	<filename>/usr/pkg/share/examples/kde4-dbus/net.sourceforge.smb4k.mounthelper.conf</filename> .</userinput></screen></para></listitem>
+	<listitem><para>Edit the file <filename>/usr/pkg/etc/PolicyKit/PolicyKit.conf</filename> and add the following paragraph in the &lt;config version="0.1"&gt; section:</para>
+   
+<programlisting>
+&lt;match action="org.kde.smb4k.mounthelper.*"&gt;
+&lt;return result="yes"&gt;
+&lt;/match&gt;</programlisting>
+
+        <para>This will allow everyone to mount and unmount remote Samba shares with &smb4k;.</para></listitem>
+      </itemizedlist>
+    </sect3>
+  </sect2>
 </sect1>
 </chapter>
 
