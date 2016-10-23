@@ -564,13 +564,21 @@ void Smb4KLookupDomainsJob::slotProcess1Finished(int /*exitCode*/, QProcess::Exi
     }
     default:
     {
-      // Process errors
-      QString stdErr = QString::fromUtf8(m_process1->readAllStandardError(), -1).trimmed();
-      processErrors(stdErr);
-      
       // Process output
       QString stdOut = QString::fromUtf8(m_process1->readAllStandardOutput(), -1).trimmed();
-      processMasterBrowsers(stdOut);
+
+      // Process errors
+      QString stdErr = QString::fromUtf8(m_process1->readAllStandardError(), -1).trimmed();
+      
+      if (stdOut.trimmed().isEmpty() && !stdErr.trimmed().isEmpty())
+      {
+        processErrors(stdErr);
+      }
+      else
+      {
+        processMasterBrowsers(stdOut);
+      }
+      
       break;
     }
   }
@@ -596,13 +604,21 @@ void Smb4KLookupDomainsJob::slotProcess2Finished(int /*exitCode*/, QProcess::Exi
     }
     default:
     {
-      // Process errors
-      QString stdErr = QString::fromUtf8(m_process2->readAllStandardError(), -1).trimmed();
-      processErrors(stdErr);
-      
       // Process output
       QString stdOut = QString::fromUtf8(m_process2->readAllStandardOutput(), -1).trimmed();
-      processWorkgroups(stdOut);
+
+      // Process errors
+      QString stdErr = QString::fromUtf8(m_process2->readAllStandardError(), -1).trimmed();
+      
+      if (stdOut.trimmed().isEmpty() && !stdErr.trimmed().isEmpty())
+      {
+        processErrors(stdErr);
+      }
+      else
+      {
+        processWorkgroups(stdOut);
+      }
+      
       break;
     }
   }
@@ -1295,13 +1311,21 @@ void Smb4KQueryMasterJob::slotProcess1Finished(int /*exitCode*/, QProcess::ExitS
     }
     default:
     {
-      // Process errors
-      QString stdErr = QString::fromUtf8(m_process1->readAllStandardError(), -1).trimmed();
-      processErrors(stdErr);
-      
       // Process output
       QString stdOut = QString::fromUtf8(m_process1->readAllStandardOutput(), -1).trimmed();
-      processMasterBrowser(stdOut);
+
+      // Process errors
+      QString stdErr = QString::fromUtf8(m_process1->readAllStandardError(), -1).trimmed();
+      
+      if (stdOut.trimmed().isEmpty() && !stdErr.trimmed().isEmpty())
+      {
+        processErrors(stdErr);
+      }
+      else
+      {
+        processMasterBrowser(stdOut);
+      }
+      
       break;
     }
   }
@@ -1326,13 +1350,21 @@ void Smb4KQueryMasterJob::slotProcess2Finished(int /*exitCode*/, QProcess::ExitS
     }
     default:
     {
-      // Process errors
-      QString stdErr = QString::fromUtf8(m_process2->readAllStandardError(), -1).trimmed();
-      processErrors(stdErr);
-      
       // Process output
       QString stdOut = QString::fromUtf8(m_process2->readAllStandardOutput(), -1).trimmed();
-      processWorkgroups(stdOut);
+
+      // Process errors
+      QString stdErr = QString::fromUtf8(m_process2->readAllStandardError(), -1).trimmed();
+      
+      if (stdOut.trimmed().isEmpty() && !stdErr.trimmed().isEmpty())
+      {
+        processErrors(stdErr);
+      }
+      else
+      {
+        processWorkgroups(stdOut);
+      }
+      
       break;
     }
   }
@@ -1770,13 +1802,21 @@ void Smb4KLookupDomainMembersJob::slotProcessFinished(int /*exitCode*/, QProcess
     }
     default:
     {
-      // Process errors
-      QString stdErr = QString::fromUtf8(m_process->readAllStandardError(), -1).trimmed();
-      processErrors(stdErr);
-      
       // Process output
       QString stdOut = QString::fromUtf8(m_process->readAllStandardOutput(), -1).trimmed();
-      processHosts(stdOut);
+
+      // Process errors
+      QString stdErr = QString::fromUtf8(m_process->readAllStandardError(), -1).trimmed();
+      
+      if (stdOut.trimmed().isEmpty() && !stdErr.trimmed().isEmpty())
+      {
+        processErrors(stdErr);
+      }
+      else
+      {
+        processHosts(stdOut);
+      }
+      
       break;
     }
   }
@@ -2258,13 +2298,21 @@ void Smb4KLookupSharesJob::slotProcessFinished(int /*exitCode*/, QProcess::ExitS
     }
     default:
     {
-      // Process errors
-      QString stdErr = QString::fromUtf8(m_process->readAllStandardError(), -1).trimmed();
-      processErrors(stdErr);
-      
       // Process output
       QString stdOut = QString::fromUtf8(m_process->readAllStandardOutput(), -1).trimmed();
-      processShares(stdOut);
+
+      // Process errors
+      QString stdErr = QString::fromUtf8(m_process->readAllStandardError(), -1).trimmed();
+      
+      if (stdOut.trimmed().isEmpty() && !stdErr.trimmed().isEmpty())
+      {
+        processErrors(stdErr);
+      }
+      else
+      {
+        processShares(stdOut);
+      }
+      
       break;
     }
   }
