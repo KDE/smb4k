@@ -175,7 +175,7 @@
 
 <para>There are <link linkend="configuration_network_browselist">four methods</link> to retrieve the browse list: The default one is to scan the network neighborhood for all available master browsers. The second and third method directly query a master browser to get the browse list. The difference is that the former is a dynamic one, where the current master browser of your workgroup or domain is looked up and used, and the latter is a static one, where a fixed name or IP address is used. It is recommended that you choose the dynamic method. However, there might be circumstances that make it necessary to use a static name or IP address. The last method searches for all registered IP addresses within a given broadcast area. This might come in handy on poorly performing network neighborhoods.</para>
 
-<para>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic package to each server that is to be woken up and waits the defined time until it starts the lookup of the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_network_wake_on_lan">configuration dialog</link>. The servers that should to be woken up have to be defined in the <link linkend="network_neighborhood_browser_custom">Custom Options</link> dialog.</para>
+<para>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic package to each server that is to be woken up and waits the defined time until it starts the lookup of the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_network_wake_on_lan">configuration dialog</link>. The servers that should to be woken up have to be defined in the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
 
 <note><para>Under normal circumstances you should not have any trouble browsing the network neighborhood. In case you experience problems, please read our <ulink url="https://sourceforge.net/p/smb4k/wiki/Home/">wiki</ulink> first before thinking about <ulink url="https://sourceforge.net/p/smb4k/tickets/">reporting a bug</ulink>. It lists some common problems and their solutions.</para></note>
 </sect2>
@@ -251,7 +251,7 @@
       </menuchoice>
     </term>
     <listitem>
-      <para>Open the <link linkend="network_neighborhood_browser_custom">Custom Options</link> dialog. You can set several custom options for the selected server or share. If a workgroup or no item is selected, this menu entry is disabled.</para>
+      <para>Open the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog. You can set several custom options for the selected server or share. If a workgroup or no item is selected, this menu entry is disabled.</para>
     </listitem>
   </varlistentry>
   <varlistentry>
@@ -408,46 +408,49 @@
 <para>If a user name has already been provided, it will be shown in the respective field. If it is wrong or no user name was provided, you have to enter one. The password, however, may be left blank. Clicking the <guibutton>OK</guibutton> button will commit the data. Depending on your choice in the <link linkend="configuration_page_authentication">configuration dialog</link>, the user name and password will be stored permanently in a digital wallet or not all. In the latter case you will have to provide them <emphasis>every time</emphasis> they are needed.</para>
 </sect2>
 
-<!-- Using Smb4K : The Network Neighborhood Browser : Defining Custom Options -->
+<!-- 
+      Using Smb4K : The Network Neighborhood Browser : Defining Custom Options 
+-->
 
-<sect2 id="network_neighborhood_browser_custom">
-<title>Defining Custom Options</title>
-<para>Use the <guilabel>Custom Options</guilabel> dialog if you want to</para>
-<itemizedlist>
-  <listitem><para>define custom Samba options for a single server or share that deviate from the ones defined in the configuration dialog,</para></listitem>
-  <listitem><para>define a server that should be woken up prior to network scans or mount attempts (Wake-On-LAN feature, see <link linkend="configuration_network_wake_on_lan">here</link>),</para></listitem>
-  <listitem><para>always mount a certain share on start-up or if the corresponding profile is loaded.</para></listitem>
-</itemizedlist>
-<para>The dialog is opened by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Custom Options</guimenuitem></menuchoice> menu entry.</para>
+  <sect2 id="network_neighborhood_browser_defining_custom_options">
+    <title>Defining Custom Options</title>
 
-<screenshot>
-  <screeninfo>Screenshot of the custom options dialog for a share</screeninfo>
-  <mediaobject>
-    <imageobject>
-      <imagedata fileref="dialog_custom_options.png" format="PNG" />
-    </imageobject>
-    <textobject>
-      <phrase>The custom options dialog</phrase>
-    </textobject>
-  </mediaobject>
-</screenshot>
+    <para>Use the <guilabel>Custom Options</guilabel> dialog if you want to</para>
+    <itemizedlist>
+      <listitem><para>define custom Samba options for a single server or share that deviate from the ones defined in the configuration dialog,</para></listitem>
+      <listitem><para>define a server that should be woken up prior to network scans or mount attempts (Wake-On-LAN feature, see <link linkend="configuration_network_wake_on_lan">here</link>),</para></listitem>
+      <listitem><para>always mount a certain share on start-up or if the corresponding profile is loaded.</para></listitem>
+    </itemizedlist>
+    <para>The dialog is opened by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Custom Options</guimenuitem></menuchoice> menu entry.</para>
 
-<para>The <guibutton>Default</guibutton> button is enabled if the entries in the dialog deviate from the settings you defined in the configuration dialog. By clicking it, you can reset the entries in the dialog to their default values. The <guibutton>OK</guibutton> button is enabled if you changed the settings in the dialog. Clicking it will commit the custom settings and close the dialog.</para>
+    <screenshot>
+      <screeninfo>Screenshot of the custom options dialog for a share</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="dialog_custom_options.png" format="PNG" />
+        </imageobject>
+        <textobject>
+          <phrase>The custom options dialog</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
 
-<note><para>Under FreeBSD and NetBSD, the dialog contains less entries than if you run a different operating system, because several of the options are not supported.</para></note>
+    <para>The <guibutton>Default</guibutton> button is enabled if the entries in the dialog deviate from the settings you defined in the configuration dialog. By clicking it, you can reset the entries in the dialog to their default values. The <guibutton>OK</guibutton> button is enabled if you changed the settings in the dialog. Clicking it will commit the custom settings and close the dialog.</para>
 
-<sect3 id="network_neighborhood_browser_custom_samba">
-  <title>Samba</title>
+    <note><para>Under FreeBSD and NetBSD, the dialog contains less entries than if you run a different operating system, because several of the options are not supported.</para></note>
 
-  <para>Depending on your selection, the settings in the custom options dialog either apply to all shares of a server or to a single one. You can define the SMB port, the file system port (&Linux; only), the write access, the user ID, the group ID and if Kerberos should be used for authentication. For detailed information on the individual settings, please see <link linkend="configuration_page_samba">here</link>.</para>
-</sect3>
+    <sect3 id="network_neighborhood_browser_defining_custom_options_samba">
+      <title>Samba</title>
 
-<sect3 id="network_neighborhood_browser_custom_wol">
-  <title>Wake-On-LAN</title>
+      <para>Depending on your selection, the settings in the custom options dialog either apply to all shares of a server or to a single one. You can define the SMB port, the file system port (&Linux; only), the write access, the user ID, the group ID and if Kerberos should be used for authentication. For detailed information on the individual settings, please see <link linkend="configuration_page_samba">here</link>.</para>
+    </sect3>
+
+    <sect3 id="network_neighborhood_browser_defining_custom_options_wol">
+      <title>Wake-On-LAN</title>
   
-  <para>To make the Wake-On-LAN feature work, you need to provide the MAC address of the server you selected. Currently, &smb4k; has no way to determine the MAC address, so you need to find it out on your own. Afterwards, you can define if &smb4k; should send a magic Wake-On-LAN package to the selected host before the network neighborhood is scanned and/or one of its shares is mounted.</para>
-</sect3>
-</sect2>
+      <para>To make the Wake-On-LAN feature work, you need to provide the MAC address of the server you selected. Currently, &smb4k; has no way to determine the MAC address, so you need to find it out on your own. Afterwards, you can define if &smb4k; should send a magic Wake-On-LAN package to the selected host before the network neighborhood is scanned and/or one of its shares is mounted.</para>
+    </sect3>
+  </sect2>
 
 <!-- Using Smb4K : The Network Neighborhood Browser : Adding Bookmarks -->
 
@@ -1063,7 +1066,7 @@
 
 <para>By clicking an entry you either enter the level below (&eg; clicking a workgroup or domain item will show a list of all hosts belonging to it), mount the selected share or invoke the print dialog. To go one level up again, you need to click the <guibutton>Up</guibutton> button in the toolbar.</para>
 
-<para>For hosts and shares, to the right of the name of the network item some action buttons are arranged. For hosts, there is one button with that you can open the <link linkend="network_neighborhood_browser_custom">Custom Options</link> dialog. For shares, there is an additional button with that you can <link linkend="mainwindow_add_bookmarks">add the share to the bookmarks</link>. The action buttons are transparent by default and change to opaque when you move your mouse over them. By left clicking you initiate the respective action.</para>
+<para>For hosts and shares, to the right of the name of the network item some action buttons are arranged. For hosts, there is one button with that you can open the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog. For shares, there is an additional button with that you can <link linkend="mainwindow_add_bookmarks">add the share to the bookmarks</link>. The action buttons are transparent by default and change to opaque when you move your mouse over them. By left clicking you initiate the respective action.</para>
  
 <para>Besides the already mentioned <guibutton>Up</guibutton> button, the toolbar contains three more entries: <guibutton>Rescan</guibutton>, <guibutton>Abort</guibutton> and <guibutton>Mount Dialog</guibutton>. With them you can do a rescan, abort any running action or open the <link linkend="mainwindow_network_mounting">dialog for "manual" mounts</link>.</para>
 
@@ -1457,7 +1460,9 @@ client ipc max protocol = NT1
 </chapter>
 
 
-<!-- Configuring Smb4K -->
+<!-- 
+      Configuring Smb4K 
+-->
 
 <chapter id="configuration">
 <title>Configuring &smb4k;</title>
@@ -1802,251 +1807,210 @@ Default: selected
 </sect2>
 </sect1>
 
-<!-- Configuring Smb4K : Network -->
+<!-- 
+      Configuring Smb4K : Network 
+-->
 
 <sect1 id="configuration_network">
-<title>Network</title>
+  <title>Network</title>
 
-<para>The options located here can be used to change the lookup method for the browse list, to make &smb4k; send authentication information when querying the workgroup master browsers, to modify the behavior when previewing or looking up remote shares, and to enable periodic scanning as well as the Wake-On-LAN features. If you want to adjust the behavior of Samba programs, see the <link linkend="configuration_page_samba">Samba</link> section.</para>
+  <para>The options located here can be used to change the lookup method for the browse list, to make &smb4k; send authentication information when querying the workgroup master browsers, to modify the behavior when previewing or looking up remote shares, and to enable periodic scanning as well as the Wake-On-LAN features. If you want to adjust the behavior of Samba programs, see the <link linkend="configuration_page_samba">Samba</link> section.</para>
 
-<screenshot>
-<screeninfo>Screenshot of the "Network" configuration tab</screeninfo>
-<mediaobject>
-<imageobject>
-<imagedata fileref="configuration_page_network.png" format="PNG" />
-</imageobject>
-<textobject>
-<phrase>The "Network" configuration tab</phrase>
-</textobject>
-</mediaobject>
-</screenshot>
+  <screenshot>
+    <screeninfo>Screenshot of the "Network" configuration tab</screeninfo>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="configuration_page_network.png" format="PNG" />
+      </imageobject>
+      <textobject>
+        <phrase>The "Network" configuration tab</phrase>
+      </textobject>
+    </mediaobject>
+  </screenshot>
 
-<!-- Configuring Smb4K : Network : General Settings -->
+<!-- 
+      Configuring Smb4K : Network : General Settings 
+-->
 
-<sect2 id="configuration_network_general">
-  <title>General Settings</title>
+  <sect2 id="configuration_network_general">
+    <title>General Settings</title>
 
-<sect3 id="configuration_network_browselist">
-<title>Browse List</title>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Scan the network neighborhood for available workgroups and domains</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-&smb4k; will search for all available master browsers on the network by using <ulink url="man:/nmblookup"><citerefentry><refentrytitle>nmblookup</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink>. This is the default method and it is very reliable in finding all workgroups and domains of your network neighborhood. However, it suffers a few shortcomings like poor unicode support (&eg; umlauts might be replaced by dots).
-</para>
-<para>
-Default: selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Query the current workgroup master browser</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-The current master browser of your workgroup or domain is looked up and queried for the browse list. If some of the workgroup names of your network neighborhood contain umlauts or other special characters, you might want to try this method, since unicode is supported. However, sometimes outdated workgroup master browsers might be returned.
-</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Query this custom master browser</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-The master browser entered in the text box will be queried to retrieve the browse list. It can be specified by using either its NetBIOS name or its IP address. This option might be of use if you have an uncommonly configured network neighborhood.
-</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Scan these broadcast areas</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-&smb4k; will scan for and return all IP addresses that are registered within the given broadcast area(s). Please note that this is not a "real" IP address scan, because that would take ages. The broadcast areas have to be given in a comma-separated list and in the form x.y.z.255:
-<screen>192.168.1.255, 192.168.2.255, 10.0.0.255</screen>
-The IP address/mask pair (192.168.1.1/24) does not work.
-</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect3>
+    <sect3 id="configuration_network_browselist">
+      <title>Browse List</title>
 
-<sect3 id="configuration_network_master_authentication">
-<title>Authentication</title>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>The master browsers require authentication to return the browse list</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-If the workgroup master browsers require authentication to return the browse list, you need to check this button. This may be the case for example with some NAS devices. This setting is rarely needed and might even cause a master browser to return an empty browse list. It will not have any effect when you let &smb4k; scan broadcast areas.
-</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect3>
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Scan the network neighborhood for available workgroups and domains</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>&smb4k; will search for all available master browsers on the network by using <ulink url="man:/nmblookup"><citerefentry><refentrytitle>nmblookup</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink>. This is the default method and it is very reliable in finding all workgroups and domains of your network neighborhood. However, it suffers a few shortcomings like poor unicode support (&eg; umlauts might be replaced by dots).</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Query the current workgroup master browser</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>The current master browser of your workgroup or domain is looked up and queried for the browse list. If some of the workgroup names of your network neighborhood contain umlauts or other special characters, you might want to try this method, since unicode is supported. However, sometimes outdated workgroup master browsers might be returned.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Query this custom master browser</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>The master browser entered in the text box will be queried to retrieve the browse list. It can be specified by using either its NetBIOS name or its IP address. This option might be of use if you have an uncommonly configured network neighborhood.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+      
+      <note>
+        <para>The <guibutton>Scan these broadcast areas</guibutton> method was removed prior to the release of &smb4k; 2.0.0, because it was buggy.</para>
+      </note>
+    </sect3>
 
-<sect3 id="configuration_network_general_behavior">
-  <title>Behavior</title>
-  <variablelist>
-    <varlistentry>
-      <term>
-        <menuchoice><guibutton>Lookup method for IP addresses</guibutton></menuchoice>
-      </term>
-      <listitem>
-        <para>Define the method that is to be used to detect the IP addresses of the hosts. By default, <ulink url="man:/nmblookup"><citerefentry><refentrytitle>nmblookup</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> is used.</para>
-        <para>The following options are available:</para>
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Use nmblookup command</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Use the <ulink url="man:/nmblookup"><citerefentry><refentrytitle>nmblookup</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> command.</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Use net command</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Use the <ulink url="man:/net"><citerefentry><refentrytitle>net</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> command.</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-        <para>Default: <guibutton>Use nmblookup command</guibutton></para>
-      </listitem>
-    </varlistentry>
-    <varlistentry>
-      <term>
-        <menuchoice><guibutton>Detect printer shares</guibutton></menuchoice>
-      </term>
-      <listitem>
-        <para>Printer shares are detected.</para>
-        <para>Default: selected</para>
-      </listitem>
-    </varlistentry>
-    <varlistentry>
-      <term>
-        <menuchoice><guibutton>Detect hidden shares</guibutton></menuchoice>
-      </term>
-      <listitem>
-        <para>Hidden shares are detected. Hidden shares are ending with a $ sign, e.g. Musik$ or IPC$.</para>
-        <para>Default: selected</para>
-      </listitem>
-    </varlistentry>    
-    <varlistentry>
-      <term>
-        <menuchoice><guibutton>Preview hidden files and directories</guibutton></menuchoice>
-      </term>
-      <listitem>
-        <para>Show all files and directories including the hidden ones when opening a share's contents in the preview dialog.</para>
-        <para>Default: not selected</para>
-      </listitem>
-    </varlistentry>
-  </variablelist>
-</sect3>
-</sect2>
+    <sect3 id="configuration_network_master_authentication">
+      <title>Authentication</title>
 
-<!-- Configuring Smb4K : Network : Advanced Settings -->
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>The master browsers require authentication to return the browse list</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>If the workgroup master browsers require authentication to return the browse list, you need to check this button. This may be the case for example with some NAS devices. This setting is rarely needed and might even cause a master browser to return an empty browse list.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect3>
 
-<sect2 id="configuration_network_advanced">
-  <title>Advanced Settings</title>
+    <sect3 id="configuration_network_general_behavior">
+      <title>Behavior</title>
+    
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Lookup method for IP addresses</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Define the method that is to be used to detect the IP addresses of the hosts. By default, <ulink url="man:/nmblookup"><citerefentry><refentrytitle>nmblookup</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> is used.</para>
+            <para>The following options are available:</para>
+            <variablelist>
+              <varlistentry>
+                <term>
+                  <menuchoice><guibutton>Use nmblookup command</guibutton></menuchoice>
+                </term>
+                <listitem>
+                  <para>Use the <ulink url="man:/nmblookup"><citerefentry><refentrytitle>nmblookup</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> command.</para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  <menuchoice><guibutton>Use net command</guibutton></menuchoice>
+                </term>
+                <listitem>
+                  <para>Use the <ulink url="man:/net"><citerefentry><refentrytitle>net</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> command.</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+            <para>Default: <guibutton>Use nmblookup command</guibutton></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Detect printer shares</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Printer shares are detected.</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Detect hidden shares</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Hidden shares are detected. Hidden shares are ending with a $ sign, e.g. Musik$ or IPC$.</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>    
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Preview hidden files and directories</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Show all files and directories including the hidden ones when opening a share's contents in the preview dialog.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect3>
+  </sect2>
+
+<!-- 
+      Configuring Smb4K : Network : Advanced Settings 
+-->
+
+  <sect2 id="configuration_network_advanced">
+    <title>Advanced Settings</title>
   
-<sect3 id="configuration_network_periodic_scanning">
-<title>Periodic Scanning</title>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Scan the network neighborhood periodically</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-If you want to enable periodic scanning of the network neighborhood, you need to check this button. With this method, all available network items are looked up, &ie; workgroups and domains, servers and shares.
-</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Interval between scans</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-If periodic scanning is enabled, this is the time in minutes that elapses until a new scan is triggered.
-</para>
-<para>Default: 5 min</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect3>
+    <sect3 id="configuration_network_periodic_scanning">
+      <title>Periodic Scanning</title>
 
-<sect3 id="configuration_network_wake_on_lan">
-<title>Wake-On-LAN</title>
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Scan the network neighborhood periodically</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>If you want to enable periodic scanning of the network neighborhood, you need to check this button. With this method, all available network items are looked up, &ie; workgroups and domains, servers and shares.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Interval between scans</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>If periodic scanning is enabled, this is the time in minutes that elapses until a new scan is triggered.</para>
+            <para>Default: 5 min</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect3>
 
-<para>To be able to use the Wake-On_LAN capability of &smb4k;, you have to enable the setting in this section. The hosts that should to be woken up have to be defined through the <link linkend="configuration_page_custom_options">custom options dialog</link>.</para>
+    <sect3 id="configuration_network_wake_on_lan">
+      <title>Wake-On-LAN</title>
 
-<variablelist>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <guibutton>Enable Wake-On-LAN features</guibutton>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Enable Wake-on-LAN (WOL) features. Wake-On-LAN is an ethernet computer networking standard that allows a computer to be turned on or woken up by a network message. Smb4K uses a magic package send via a UDP socket to wake up remote servers. If you want to take advantage of the Wake-On-LAN feature, you need to enable this option.</para>
-      <para>Default: not selected</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <guibutton>Waiting time</guibutton>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>This is the waiting time in seconds between the sending of the magic Wake-On-LAN packages and the scanning of the network neighborhood or the mounting of a share.</para>
-      <para>Default: 5 s</para>
-    </listitem>
-  </varlistentry>
-</variablelist>
-</sect3>
-</sect2>
+      <para>To be able to use the Wake-On-LAN capability of &smb4k;, you have to enable the setting in this section. The hosts that should to be woken up have to be defined through the <link linkend="network_neighborhood_browser_defining_custom_options">custom options dialog</link>.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Enable Wake-On-LAN features</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Enable Wake-on-LAN (WOL) features. Wake-On-LAN is an ethernet computer networking standard that allows a computer to be turned on or woken up by a network message. Smb4K uses a magic package send via a UDP socket to wake up remote servers. If you want to take advantage of the Wake-On-LAN feature, you need to enable this option.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Waiting time</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>This is the waiting time in seconds between the sending of the magic Wake-On-LAN packages and the scanning of the network neighborhood or the mounting of a share.</para>
+            <para>Default: 5 s</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect3>
+  </sect2>
 </sect1>
 
 <!-- Configuring Smb4K : Shares -->
@@ -2636,7 +2600,7 @@ Default: not selected
           <menuchoice><guibutton>File system port</guibutton></menuchoice>
         </term>
         <listitem>
-          <para>Sets the file system port number that is used by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> when mounting a remote share. The default port number (445) should work for all modern operating systems. If you experience problems, try setting the port number to 139. If the problems only occur with a few hosts, it is recommended to leave this option untouched and to use the <link linkend="network_neighborhood_browser_custom">Custom Options</link> dialog to define individual port numbers for the problematic hosts.</para>
+          <para>Sets the file system port number that is used by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> when mounting a remote share. The default port number (445) should work for all modern operating systems. If you experience problems, try setting the port number to 139. If the problems only occur with a few hosts, it is recommended to leave this option untouched and to use the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog to define individual port numbers for the problematic hosts.</para>
           <para>This option is only available under &Linux;. Under FreeBSD, the port for mounting shares is set with the <guibutton>SMB port</guibutton> option.</para>
           <para>Default: 445</para>
         </listitem>
@@ -3821,7 +3785,7 @@ Default: not selected
 <sect2 id="configuration_page_custom_options_wol">
   <title>Wake-On-LAN</title>
   
-  <para>Here you can edit the options that you previously defined through the <link linkend="network_neighborhood_browser_custom">Custom Options</link> dialog.</para>
+  <para>Here you can edit the options that you previously defined through the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
 </sect2>
 </sect1>
 
