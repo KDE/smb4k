@@ -303,11 +303,12 @@ void Smb4KSharesView::dragMoveEvent(QDragMoveEvent *e)
 
 void Smb4KSharesView::dropEvent(QDropEvent *e)
 {
+  // Get the item and process the drop event
   Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(itemAt(e->pos()));
 
-  if (item && (e->proposedAction() & (Qt::CopyAction | Qt::MoveAction)))
+  if (item && (e->proposedAction() & (Qt::CopyAction|Qt::MoveAction)))
   {
-    QUrl url(item->shareItem()->path());
+    QUrl url = QUrl::fromLocalFile(item->shareItem()->path());
 
     if (e->source() == this && e->mimeData()->urls().first() == url)
     {
@@ -316,8 +317,8 @@ void Smb4KSharesView::dropEvent(QDropEvent *e)
     else
     {
       e->acceptProposedAction();
-
       emit acceptedDropEvent(item, e);
+      e->accept();
     }
   }
   else
@@ -330,7 +331,7 @@ void Smb4KSharesView::dropEvent(QDropEvent *e)
 Qt::DropActions Smb4KSharesView::supportedDropActions() const
 {
   // Only allow copying and linking.
-  return Qt::CopyAction | Qt::LinkAction;
+  return (Qt::CopyAction|Qt::LinkAction);
 }
 
 

@@ -56,7 +56,7 @@
 #include <KI18n/KLocalizedString>
 #include <KWidgetsAddons/KActionMenu>
 #include <KXmlGui/KActionCollection>
-#include <KIOCore/KIO/CopyJob>
+#include <KIOWidgets/KIO/DropJob>
 
 using namespace Smb4KGlobal;
 
@@ -480,54 +480,16 @@ void Smb4KSharesViewPart::slotDropEvent(Smb4KSharesViewItem *item, QDropEvent *e
 {
   if (item && e)
   {
-    switch (e->proposedAction())
+    if (e->mimeData()->hasUrls())
     {
-      case Qt::CopyAction:
-      {
-        if (e->mimeData()->hasUrls())
-        {
-          QList<QUrl> urlList = e->mimeData()->urls();
-
-          QUrl dest;
-          dest.setPath(item->shareItem()->path());
-
-          KIO::CopyJob *job = KIO::copy(urlList, dest, KIO::DefaultFlags);
-
-          job->uiDelegate()->setAutoErrorHandlingEnabled(true);
-          job->uiDelegate()->setAutoWarningHandlingEnabled(true);
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        break;
-      }
-      case Qt::MoveAction:
-      {
-        if (e->mimeData()->hasUrls())
-        {
-          QList<QUrl> urlList = e->mimeData()->urls();
-
-          QUrl dest;
-          dest.setPath(item->shareItem()->path());
-
-          KIO::CopyJob *job = KIO::move(urlList, dest, KIO::DefaultFlags);
-
-          job->uiDelegate()->setAutoErrorHandlingEnabled(true);
-          job->uiDelegate()->setAutoWarningHandlingEnabled(true);
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        break;
-      }
-      default:
-      {
-        break;
-      }
+      QUrl dest = QUrl::fromLocalFile(item->shareItem()->path());
+      KIO::DropJob *job = drop(e, dest, KIO::DefaultFlags);
+      job->uiDelegate()->setAutoErrorHandlingEnabled(true);
+      job->uiDelegate()->setAutoWarningHandlingEnabled(true);
+    }
+    else
+    {
+      // Do nothing
     }
   }
   else
