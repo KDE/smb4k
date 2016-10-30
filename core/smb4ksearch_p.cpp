@@ -280,13 +280,13 @@ void Smb4KSearchJob::slotReadStandardOutput()
   // Process output from smbtree.
   QString workgroup_name;
 
-  foreach (const QString &line, stdOut)
+  for (const QString &line : stdOut)
   {
     if (!line.contains("added interface", Qt::CaseInsensitive) &&
-         !line.contains("tdb(", Qt::CaseInsensitive) &&
-         !line.contains("Got a positive", Qt::CaseInsensitive) &&
-         !line.contains("error connecting", Qt::CaseInsensitive) &&
-         !line.isEmpty())
+        !line.contains("tdb(", Qt::CaseInsensitive) &&
+        !line.contains("Got a positive", Qt::CaseInsensitive) &&
+        !line.contains("error connecting", Qt::CaseInsensitive) &&
+        !line.isEmpty())
     {
       if (!line.contains("\\") && !line.trimmed().isEmpty())
       {
@@ -361,9 +361,9 @@ void Smb4KSearchJob::slotReadStandardError()
 
   // Process authentication errors:
   if (stdErr.contains("The username or password was not correct.") ||
-       stdErr.contains("NT_STATUS_ACCOUNT_DISABLED") /* AD error */ ||
-       stdErr.contains("NT_STATUS_ACCESS_DENIED") ||
-       stdErr.contains("NT_STATUS_LOGON_FAILURE"))
+      stdErr.contains("NT_STATUS_ACCOUNT_DISABLED") /* AD error */ ||
+      stdErr.contains("NT_STATUS_ACCESS_DENIED") ||
+      stdErr.contains("NT_STATUS_LOGON_FAILURE"))
   {
     // FIXME: Do we need to call abort() here?
     m_process->abort();

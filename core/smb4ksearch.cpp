@@ -256,7 +256,7 @@ void Smb4KSearch::slotProcessSearchResult(Smb4KShare *share)
 
   QList<Smb4KShare *> shares = findShareByUNC(share->unc());
 
-  foreach (Smb4KShare *s, shares)
+  for (Smb4KShare *s : shares)
   {
     if ((!s->isForeign() || Smb4KSettings::detectAllShares()) && s->isMounted())
     {
