@@ -114,12 +114,12 @@ class Smb4KLookupDomainsJob : public KJob
 
   protected Q_SLOTS:
     void slotStartLookup();
-    void slotReadStandardError();
     void slotProcessFinished( int exitCode,
                               QProcess::ExitStatus exitStatus );
 
   private:
-    void processWorkgroups();
+    void processWorkgroups(const QString &stdOut);
+    void processErrors(const QString &stdErr);
     bool m_started;
     QWidget *m_parent_widget;
     Smb4KProcess *m_proc;
@@ -221,12 +221,12 @@ class Smb4KQueryMasterJob : public KJob
 
   protected Q_SLOTS:
     void slotStartLookup();
-    void slotReadStandardError();
     void slotProcessFinished( int exitCode,
                               QProcess::ExitStatus exitStatus );
     
   private:
-    void processWorkgroups();
+    void processWorkgroups(const QString &stdOut);
+    void processErrors(const QString &stdErr);
     bool m_started;
     QWidget *m_parent_widget;
     QString m_master_browser;
@@ -321,12 +321,12 @@ class Smb4KScanBAreasJob : public KJob
 
   protected Q_SLOTS:
     void slotStartScan();
-    void slotReadStandardError();
     void slotProcessFinished( int exitCode,
                               QProcess::ExitStatus exitStatus );
 
   private:
-    void processScan();
+    void processScan(const QString &stdOut);
+    void processErrors(const QString &stdErr);
     bool m_started;
     QWidget *m_parent_widget;
     Smb4KProcess *m_proc;
@@ -430,11 +430,11 @@ class Smb4KLookupDomainMembersJob : public KJob
 
   protected Q_SLOTS:
     void slotStartLookup();
-    void slotReadStandardError();
     void slotProcessFinished( int exitCode,
                               QProcess::ExitStatus exitStatus );
   private:
-    void processHosts();
+    void processHosts(const QString &stdOut);
+    void processErrors(const QString &stdErr);
     bool m_started;
     QWidget *m_parent_widget;
     Smb4KWorkgroup *m_workgroup;
@@ -530,12 +530,12 @@ class Smb4KLookupSharesJob : public KJob
     
   protected Q_SLOTS:
     void slotStartLookup();
-    void slotReadStandardError();
     void slotProcessFinished( int exitCode,
                               QProcess::ExitStatus exitStatus );
     
   private:
-    void processShares();
+    void processShares(const QString &stdOut);
+    void processErrors(const QString &stdErr);
     bool m_started;
     Smb4KHost *m_host;
     QWidget *m_parent_widget;
