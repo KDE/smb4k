@@ -292,8 +292,8 @@ void Smb4KSharesIconView::dropEvent( QDropEvent *e )
     else
     {
       e->acceptProposedAction();
-
       emit acceptedDropEvent( item, e );
+      e->accept();
     }
   }
   else
