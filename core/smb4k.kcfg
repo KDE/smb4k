@@ -200,13 +200,6 @@
       <whatsthis>You will not only see the shares that were mounted and are owned by you, but also all other mounts using the SMBFS and CIFS file system that are present on the system.</whatsthis>
       <default>false</default>
     </entry>
-    <entry name="CheckInterval" type="Int">
-      <label>Interval between checks:</label>
-      <whatsthis>This is the time in milliseconds that elapses until Smb4K checks again for new mounts and unmounts. The lower limit is 500 ms, the upper one 300000 ms. Please note that the smaller the interval gets the higher is your system load.</whatsthis>
-      <min>500</min>
-      <max>300000</max>
-      <default>2500</default>
-    </entry>    
   </group>
 
 <!-- Authentication -->

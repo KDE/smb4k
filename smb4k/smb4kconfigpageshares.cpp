@@ -131,29 +131,8 @@ Smb4KConfigPageShares::Smb4KConfigPageShares(QWidget *parent)
   behavior_layout->addWidget(retrieve_all, 5, 0, 1, 2, 0);
 #endif
 
-  // Checks
-  QGroupBox *checks_box = new QGroupBox(i18n("Checks"), this);
-
-  QGridLayout *checks_layout = new QGridLayout(checks_box);
-  checks_layout->setSpacing(5);
-
-  QLabel *check_interval_label = new QLabel(Smb4KSettings::self()->checkIntervalItem()->label(), checks_box);
-  QSpinBox *check_interval  = new QSpinBox(checks_box);
-  check_interval->setObjectName("kcfg_CheckInterval");
-  check_interval->setSuffix(" ms");
-  // Set the step width. If you change this, also change the TIMEOUT definition
-  // in Smb4KMounter!
-  check_interval->setSingleStep(50);
-//   check_interval->setSliderEnabled(true);
-
-  check_interval_label->setBuddy(check_interval);
-  
-  checks_layout->addWidget(check_interval_label, 0, 0, 0);
-  checks_layout->addWidget(check_interval, 0, 1, 0);
-
   layout->addWidget(directory_box, 0, 0);
   layout->addWidget(behavior_box, 1, 0);
-  layout->addWidget(checks_box, 2, 0);
   layout->addStretch(100);
 }
 
