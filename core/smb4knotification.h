@@ -1,8 +1,8 @@
 /***************************************************************************
-    smb4knotification  -  This class provides notifications for Smb4K.
+    This class provides notifications for Smb4K
                              -------------------
     begin                : Son Jun 27 2010
-    copyright            : (C) 2010-2015 by Alexander Reinholdt
+    copyright            : (C) 2010-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

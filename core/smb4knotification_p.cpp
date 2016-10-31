@@ -1,9 +1,9 @@
 /***************************************************************************
-    smb4knotification_p  -  These are the private helper classes of the 
-    Smb4KNotification namespace.
+    These are the private helper classes of the Smb4KNotification 
+    namespace.
                              -------------------
     begin                : So Jun 22 2014
-    copyright            : (C) 2014-2015 by Alexander Reinholdt
+    copyright            : (C) 2014-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

@@ -1,9 +1,8 @@
 /***************************************************************************
-    smb4kprofilemanager_p  -  Private helper class(es) for the profile 
-    manager.
+    Private helper class(es) for the profile manager.
                              -------------------
     begin                : Mi Aug 12 2014
-    copyright            : (C) 2014-2015 by Alexander Reinholdt
+    copyright            : (C) 2014-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

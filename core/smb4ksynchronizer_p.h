@@ -1,9 +1,9 @@
 /***************************************************************************
-    smb4ksynchronizer_p  -  This file contains private helper classes for
-    the Smb4KSynchronizer class.
+    This file contains private helper classes for the Smb4KSynchronizer 
+    class.
                              -------------------
     begin                : Fr Okt 24 2008
-    copyright            : (C) 2008-2015 by Alexander Reinholdt
+    copyright            : (C) 2008-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

@@ -1,8 +1,8 @@
 /***************************************************************************
-    smb4ksynchronizer  -  This is the new synchronizer of Smb4K.
+    This is the new synchronizer of Smb4K.
                              -------------------
     begin                : Fr Feb 04 2011
-    copyright            : (C) 2011-2015 by Alexander Reinholdt
+    copyright            : (C) 2011-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

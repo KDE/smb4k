@@ -1,9 +1,8 @@
 /***************************************************************************
-    smb4kauthinfo.cpp  -  This class provides a container for the
-    authentication data.
+    This class provides a container for the authentication data.
                              -------------------
     begin                : Sa Feb 28 2004
-    copyright            : (C) 2004-2015 by Alexander Reinholdt
+    copyright            : (C) 2004-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

@@ -1,9 +1,8 @@
 /***************************************************************************
-    smb4kdeclarative - This class provides the interface for Plasma and
-    QtQuick
+    This class provides the interface for Plasma and QtQuick
                              -------------------
     begin                : Mo 02 Sep 2013
-    copyright            : (C) 2013-2015 by Alexander Reinholdt
+    copyright            : (C) 2013-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
