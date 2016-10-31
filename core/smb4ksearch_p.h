@@ -1,8 +1,8 @@
 /***************************************************************************
-    smb4ksearch_p  -  Private helper classes for Smb4KSearch class.
+    Private helper classes for Smb4KSearch class.
                              -------------------
     begin                : Mo Dez 22 2008
-    copyright            : (C) 2008-2015 by Alexander Reinholdt
+    copyright            : (C) 2008-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

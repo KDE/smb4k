@@ -1,8 +1,8 @@
 /***************************************************************************
-    smb4ksearch  -  This class does custom searches
+    This class does custom searches
                              -------------------
     begin                : Tue Mar 08 2011
-    copyright            : (C) 2011-2015 by Alexander Reinholdt
+    copyright            : (C) 2011-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -256,7 +256,7 @@ void Smb4KSearch::slotProcessSearchResult(Smb4KShare *share)
 
   QList<Smb4KShare *> shares = findShareByUNC(share->unc());
 
-  foreach (Smb4KShare *s, shares)
+  for (Smb4KShare *s : shares)
   {
     if ((!s->isForeign() || Smb4KSettings::detectAllShares()) && s->isMounted())
     {

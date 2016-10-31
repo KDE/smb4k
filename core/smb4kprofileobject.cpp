@@ -1,9 +1,9 @@
 /***************************************************************************
-    smb4kprofileobject - This class derives from QObject and
-    encapsulates a profile item/name. It is for use with QtQuick.
+    This class derives from QObject and encapsulates a profile item/name. 
+    It is for use with QtQuick.
                              -------------------
     begin                : So 23 Nov 2014
-    copyright            : (C) 2014-2015 by Alexander Reinholdt
+    copyright            : (C) 2014-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

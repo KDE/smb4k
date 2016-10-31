@@ -1,9 +1,9 @@
 /***************************************************************************
-    smb4kbookmarkobject -  This class derives from QObject and
-    encapsulates a bookmark item. It is for use with QtQuick.
+    This class derives from QObject and encapsulates a bookmark item. It
+    is for use with QtQuick.
                              -------------------
     begin                : Fr Mai 11 2013
-    copyright            : (C) 2013-2015 by Alexander Reinholdt
+    copyright            : (C) 2013-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

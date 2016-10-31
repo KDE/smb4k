@@ -1,8 +1,8 @@
 /***************************************************************************
-    smb4kbookmarkhandler  -  This class handles the bookmarks.
+    This class handles the bookmarks.
                              -------------------
     begin                : Fr Jan 9 2004
-    copyright            : (C) 2004-2015 by Alexander Reinholdt
+    copyright            : (C) 2004-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

@@ -1,8 +1,8 @@
 /***************************************************************************
-    smb4khomesshareshandler  -  This class handles the homes shares.
+    This class handles the homes shares
                              -------------------
     begin                : Do Aug 10 2006
-    copyright            : (C) 2006-2015 by Alexander Reinholdt
+    copyright            : (C) 2006-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

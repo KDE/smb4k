@@ -350,61 +350,9 @@ void Smb4KLookupDomainsJob::startProcess2(const QStringList& ipAddresses)
 
 void Smb4KLookupDomainsJob::processErrors(const QString& stdErr)
 {
-  QString errorMessage;
-  
-  // Remove unimportant warnings
-  if (stdErr.contains("Ignoring unknown parameter"))
+  if (!stdErr.isEmpty())
   {
-    QStringList list = stdErr.split('\n');
-    QMutableStringListIterator it(list);
-
-    while (it.hasNext())
-    {
-      QString test = it.next();
-
-      if (test.trimmed().startsWith(QLatin1String("Ignoring unknown parameter")))
-      {
-        it.remove();
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-
-    errorMessage = list.join("\n");
-  }
-  else if (stdErr.contains("smb.conf"))
-  {
-    QStringList list = stdErr.split('\n');
-    QMutableStringListIterator it(list);
-    
-    while (it.hasNext())
-    {
-      QString test = it.next();
-      
-      if (test.contains(QLatin1String("smb.conf")) && test.contains(QLatin1String("Can't load")))
-      {
-        // smb.conf is missing.
-        // Output from nmblookup (1 line)
-        it.remove();
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    
-    errorMessage = list.join('\n');
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  if (!errorMessage.isEmpty())
-  {
-    Smb4KNotification::retrievingDomainsFailed(errorMessage);
+    Smb4KNotification::retrievingDomainsFailed(stdErr);
   }
   else
   {
@@ -422,7 +370,7 @@ void Smb4KLookupDomainsJob::processMasterBrowsers(const QString &stdOut)
   // Get the IP addresses of the workgroup master browsers
   if (!stdOutList.isEmpty())
   {
-    Q_FOREACH(const QString &line, stdOutList)
+    for (const QString &line : stdOutList)
     {
       if (line.contains("<01>"))
       {        
@@ -452,7 +400,7 @@ void Smb4KLookupDomainsJob::processWorkgroups(const QString &stdOut)
   {
     Smb4KWorkgroup *workgroup = new Smb4KWorkgroup();
 
-    Q_FOREACH(const QString &line, stdOutList)
+    for (const QString &line : stdOutList)
     {
       if (line.startsWith(QLatin1String("Looking up status of")))
       {
@@ -564,13 +512,21 @@ void Smb4KLookupDomainsJob::slotProcess1Finished(int /*exitCode*/, QProcess::Exi
     }
     default:
     {
-      // Process errors
-      QString stdErr = QString::fromUtf8(m_process1->readAllStandardError(), -1).trimmed();
-      processErrors(stdErr);
-      
       // Process output
       QString stdOut = QString::fromUtf8(m_process1->readAllStandardOutput(), -1).trimmed();
-      processMasterBrowsers(stdOut);
+
+      // Process errors
+      QString stdErr = QString::fromUtf8(m_process1->readAllStandardError(), -1).trimmed();
+      
+      if (stdOut.trimmed().isEmpty() && !stdErr.trimmed().isEmpty())
+      {
+        processErrors(stdErr);
+      }
+      else
+      {
+        processMasterBrowsers(stdOut);
+      }
+      
       break;
     }
   }
@@ -596,13 +552,21 @@ void Smb4KLookupDomainsJob::slotProcess2Finished(int /*exitCode*/, QProcess::Exi
     }
     default:
     {
-      // Process errors
-      QString stdErr = QString::fromUtf8(m_process2->readAllStandardError(), -1).trimmed();
-      processErrors(stdErr);
-      
       // Process output
       QString stdOut = QString::fromUtf8(m_process2->readAllStandardOutput(), -1).trimmed();
-      processWorkgroups(stdOut);
+
+      // Process errors
+      QString stdErr = QString::fromUtf8(m_process2->readAllStandardError(), -1).trimmed();
+      
+      if (stdOut.trimmed().isEmpty() && !stdErr.trimmed().isEmpty())
+      {
+        processErrors(stdErr);
+      }
+      else
+      {
+        processWorkgroups(stdOut);
+      }
+      
       break;
     }
   }
@@ -1142,41 +1106,19 @@ void Smb4KQueryMasterJob::startProcess2(const QString& ipAddress)
 
 void Smb4KQueryMasterJob::processErrors(const QString& stdErr)
 {
-  QStringList stdErrList = stdErr.split('\n', QString::SkipEmptyParts);
-  
-  if (!stdErrList.isEmpty())
+  if (!stdErr.isEmpty())
   {
-    QMutableStringListIterator it(stdErrList);
-    
-    while (it.hasNext())
-    {
-      // Remove unimportant warnings and irrelevant error
-      // messages.
-      QString line = it.next().trimmed();
-      
-      if (line.startsWith(QLatin1String("Ignoring unknown parameter")))
-      {
-        it.remove();
-      }
-      else if (line.startsWith(QLatin1String("messaging_tdb_init failed:")))
-      {
-        it.remove();
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    
     // Show the error message, if necessary.
-    if (!stdErrList.filter("The username or password was not correct.").isEmpty() ||
-        !stdErrList.filter("NT_STATUS_ACCOUNT_DISABLED").isEmpty() /* AD error */ ||
-        !stdErrList.filter("NT_STATUS_ACCESS_DENIED").isEmpty() ||
-        !stdErrList.filter("NT_STATUS_LOGON_FAILURE").isEmpty())
+    if (stdErr.contains("The username or password was not correct.") ||
+        stdErr.contains("NT_STATUS_ACCOUNT_DISABLED") /* AD error */ ||
+        stdErr.contains("NT_STATUS_ACCESS_DENIED") ||
+        stdErr.contains("NT_STATUS_LOGON_FAILURE"))
     {
       if (m_master_browser.isEmpty())
       {
-        Q_FOREACH(const QString &line, stdErrList)
+        QStringList stdErrList = stdErr.split('\n', QString::SkipEmptyParts);
+        
+        for (const QString &line : stdErrList)
         {
           if (line.contains("Connecting to host="))
           {
@@ -1196,9 +1138,9 @@ void Smb4KQueryMasterJob::processErrors(const QString& stdErr)
 
       emit authError(this);
     }
-    else if (!stdErrList.filter("NT_STATUS").isEmpty())
+    else if (stdErr.contains("NT_STATUS"))
     {
-      Smb4KNotification::retrievingDomainsFailed(stdErrList.join('\n'));
+      Smb4KNotification::retrievingDomainsFailed(stdErr);
     }
     else
     {
@@ -1226,7 +1168,7 @@ void Smb4KQueryMasterJob::processWorkgroups(const QString &stdOut)
   {
     Smb4KWorkgroup *workgroup = new Smb4KWorkgroup();
 
-    Q_FOREACH(const QString &line, stdOutList)
+    for (const QString &line : stdOutList)
     {
       if (line.trimmed().startsWith(QLatin1String("Enumerating")))
       {
@@ -1295,13 +1237,21 @@ void Smb4KQueryMasterJob::slotProcess1Finished(int /*exitCode*/, QProcess::ExitS
     }
     default:
     {
-      // Process errors
-      QString stdErr = QString::fromUtf8(m_process1->readAllStandardError(), -1).trimmed();
-      processErrors(stdErr);
-      
       // Process output
       QString stdOut = QString::fromUtf8(m_process1->readAllStandardOutput(), -1).trimmed();
-      processMasterBrowser(stdOut);
+
+      // Process errors
+      QString stdErr = QString::fromUtf8(m_process1->readAllStandardError(), -1).trimmed();
+      
+      if (stdOut.trimmed().isEmpty() && !stdErr.trimmed().isEmpty())
+      {
+        processErrors(stdErr);
+      }
+      else
+      {
+        processMasterBrowser(stdOut);
+      }
+      
       break;
     }
   }
@@ -1326,13 +1276,21 @@ void Smb4KQueryMasterJob::slotProcess2Finished(int /*exitCode*/, QProcess::ExitS
     }
     default:
     {
-      // Process errors
-      QString stdErr = QString::fromUtf8(m_process2->readAllStandardError(), -1).trimmed();
-      processErrors(stdErr);
-      
       // Process output
       QString stdOut = QString::fromUtf8(m_process2->readAllStandardOutput(), -1).trimmed();
-      processWorkgroups(stdOut);
+
+      // Process errors
+      QString stdErr = QString::fromUtf8(m_process2->readAllStandardError(), -1).trimmed();
+      
+      if (stdOut.trimmed().isEmpty() && !stdErr.trimmed().isEmpty())
+      {
+        processErrors(stdErr);
+      }
+      else
+      {
+        processWorkgroups(stdOut);
+      }
+      
       break;
     }
   }
@@ -1395,51 +1353,19 @@ bool Smb4KLookupDomainMembersJob::doKill()
 
 void Smb4KLookupDomainMembersJob::processErrors(const QString& stdErr)
 {
-  QStringList stdErrList = stdErr.split('\n', QString::SkipEmptyParts);
-  
-  if (!stdErrList.isEmpty())
+  if (!stdErr.isEmpty())
   {
-    QMutableStringListIterator it(stdErrList);
-    
-    while (it.hasNext())
-    {
-      // Remove unimportant warnings and irrelevant error
-      // messages.
-      QString line = it.next().trimmed();
-      
-      if (line.startsWith(QLatin1String("Ignoring unknown parameter")))
-      {
-        it.remove();
-      }
-      else if (line.contains(QLatin1String("tdb_transaction_recover:")))
-      {
-        it.remove();
-      }
-      else if (line.contains(QLatin1String("tdb_log")))
-      {
-        it.remove();
-      }
-      else if (line.contains(QLatin1String("packet check failed")))
-      {
-        it.remove();
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-      
-    if (!stdErrList.filter("The username or password was not correct.").isEmpty() ||
-        !stdErrList.filter("NT_STATUS_ACCOUNT_DISABLED").isEmpty() /* AD error */ ||
-        !stdErrList.filter("NT_STATUS_ACCESS_DENIED").isEmpty() ||
-        !stdErrList.filter("NT_STATUS_LOGON_FAILURE").isEmpty())
+    if (stdErr.contains("The username or password was not correct.") ||
+        stdErr.contains("NT_STATUS_ACCOUNT_DISABLED") /* AD error */ ||
+        stdErr.contains("NT_STATUS_ACCESS_DENIED") ||
+        stdErr.contains("NT_STATUS_LOGON_FAILURE"))
     {
       emit authError(this);
     }
     else
     {
       // Notify the user that an error occurred.
-      Smb4KNotification::retrievingHostsFailed(m_workgroup, stdErrList.join('\n'));
+      Smb4KNotification::retrievingHostsFailed(m_workgroup, stdErr);
     }
   }
   else
@@ -1455,7 +1381,7 @@ void Smb4KLookupDomainMembersJob::processHosts(const QString &stdOut)
   
   if (!stdOutList.isEmpty())
   {
-    Q_FOREACH(const QString &line, stdOutList)
+    for (const QString &line : stdOutList)
     {
       if (line.trimmed().startsWith(QLatin1String("Enumerating")))
       {
@@ -1770,13 +1696,21 @@ void Smb4KLookupDomainMembersJob::slotProcessFinished(int /*exitCode*/, QProcess
     }
     default:
     {
-      // Process errors
-      QString stdErr = QString::fromUtf8(m_process->readAllStandardError(), -1).trimmed();
-      processErrors(stdErr);
-      
       // Process output
       QString stdOut = QString::fromUtf8(m_process->readAllStandardOutput(), -1).trimmed();
-      processHosts(stdOut);
+
+      // Process errors
+      QString stdErr = QString::fromUtf8(m_process->readAllStandardError(), -1).trimmed();
+      
+      if (stdOut.trimmed().isEmpty() && !stdErr.trimmed().isEmpty())
+      {
+        processErrors(stdErr);
+      }
+      else
+      {
+        processHosts(stdOut);
+      }
+      
       break;
     }
   }
@@ -1836,40 +1770,12 @@ bool Smb4KLookupSharesJob::doKill()
 
 void Smb4KLookupSharesJob::processErrors(const QString& stdErr)
 {
-  QStringList stdErrList = stdErr.split('\n', QString::SkipEmptyParts);
-  
-  if (!stdErrList.isEmpty())
+  if (!stdErr.isEmpty())
   {
-    QMutableStringListIterator it(stdErrList);
-    
-    while (it.hasNext())
-    {
-      // Remove unimportant warnings and irrelevant error
-      // messages.
-      QString line = it.next().trimmed();
-
-      if (line.startsWith(QLatin1String("Ignoring unknown parameter")))
-      {
-        it.remove();
-      }
-      else if (line.contains("creating lame", Qt::CaseSensitive))
-      {
-        it.remove();
-      }
-      else if (line.contains("could not obtain sid for domain", Qt::CaseSensitive))
-      {
-        it.remove();
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    
-    if (!stdErrList.filter("The username or password was not correct.").isEmpty() ||
-        !stdErrList.filter("NT_STATUS_ACCOUNT_DISABLED").isEmpty() /* AD error */ ||
-        !stdErrList.filter("NT_STATUS_ACCESS_DENIED").isEmpty() ||
-        !stdErrList.filter("NT_STATUS_LOGON_FAILURE").isEmpty())
+    if (stdErr.contains("The username or password was not correct.") ||
+        stdErr.contains("NT_STATUS_ACCOUNT_DISABLED") /* AD error */ ||
+        stdErr.contains("NT_STATUS_ACCESS_DENIED") ||
+        stdErr.contains("NT_STATUS_LOGON_FAILURE"))
     {
       emit authError(this);
     }
@@ -1892,7 +1798,7 @@ void Smb4KLookupSharesJob::processShares(const QString &stdOut)
   
   if (!stdOutList.isEmpty())
   {
-    Q_FOREACH(const QString &line, stdOutList)
+    for (const QString &line : stdOutList)
     {
       if (line.trimmed().startsWith(QLatin1String("Enumerating")))
       {
@@ -2258,13 +2164,21 @@ void Smb4KLookupSharesJob::slotProcessFinished(int /*exitCode*/, QProcess::ExitS
     }
     default:
     {
-      // Process errors
-      QString stdErr = QString::fromUtf8(m_process->readAllStandardError(), -1).trimmed();
-      processErrors(stdErr);
-      
       // Process output
       QString stdOut = QString::fromUtf8(m_process->readAllStandardOutput(), -1).trimmed();
-      processShares(stdOut);
+
+      // Process errors
+      QString stdErr = QString::fromUtf8(m_process->readAllStandardError(), -1).trimmed();
+      
+      if (stdOut.trimmed().isEmpty() && !stdErr.trimmed().isEmpty())
+      {
+        processErrors(stdErr);
+      }
+      else
+      {
+        processShares(stdOut);
+      }
+      
       break;
     }
   }
@@ -2598,7 +2512,7 @@ void Smb4KLookupIPAddressJob::processNmblookupOutput()
   // set the IP address to an empty string.
   QStringList output = QString::fromUtf8(m_process->readAllStandardOutput(), -1).split('\n', QString::SkipEmptyParts);
 
-  Q_FOREACH(const QString &line, output)
+  for (const QString &line : output)
   {
     if (line.contains("<00>"))
     {

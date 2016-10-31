@@ -1,5 +1,5 @@
 /***************************************************************************
-    smb4kwalletmanager  -  This is the wallet manager of Smb4K.
+    This is the wallet manager of Smb4K.
                              -------------------
     begin                : Sa Dez 27 2008
     copyright            : (C) 2008-2016 by Alexander Reinholdt

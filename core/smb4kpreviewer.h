@@ -1,8 +1,8 @@
 /***************************************************************************
-    smb4kpreviewer  -  This class queries a remote share for a preview
+    This class queries a remote share for a preview
                              -------------------
     begin                : Sa Mär 05 2011
-    copyright            : (C) 2011-2015 by Alexander Reinholdt
+    copyright            : (C) 2011-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

@@ -338,7 +338,7 @@ void Smb4KMounter::import(bool checkInaccessible)
   
   // Now determine all mountpoints that have the SMBFS or the CIFS
   // filesystem.
-  Q_FOREACH(const QExplicitlySharedDataPointer<KMountPoint> &mountPoint, mountPoints)
+  for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : mountPoints)
   {
     if (QString::compare(mountPoint->mountType(), "cifs") == 0 || QString::compare(mountPoint->mountType(), "smbfs") == 0)
     {
@@ -348,7 +348,7 @@ void Smb4KMounter::import(bool checkInaccessible)
       share->setMounted(true);
       
       // Get all mount options
-      Q_FOREACH(const QString &option, mountPoint->mountOptions())
+      for (const QString &option : mountPoint->mountOptions())
       {
         if (option.startsWith(QLatin1String("domain=")) || option.startsWith(QLatin1String("workgroup=")))
         {
@@ -396,9 +396,9 @@ void Smb4KMounter::import(bool checkInaccessible)
   QList<Smb4KShare *> unmountedShares;
   bool found = false;
   
-  Q_FOREACH(Smb4KShare *mountedShare, mountedSharesList())
+  for (Smb4KShare *mountedShare : mountedSharesList())
   {
-    Q_FOREACH(Smb4KShare *importedShare, d->importedShares)
+    for (Smb4KShare *importedShare : d->importedShares)
     {
       // Check the mountpoint, since that one is unique. We will only use
       // Smb4KShare::path(), so that we do not run into trouble if a share 
@@ -454,7 +454,7 @@ void Smb4KMounter::import(bool checkInaccessible)
     {
       int size = unmountedShares.size();
       
-      Q_FOREACH(Smb4KShare *share, unmountedShares)
+      for (Smb4KShare *share : unmountedShares)
       {
         emit unmounted(share);
         removeMountedShare(share);
@@ -483,7 +483,7 @@ void Smb4KMounter::import(bool checkInaccessible)
   //
   if (Smb4KHardwareInterface::self()->isOnline())
   {
-    Q_FOREACH(Smb4KShare *share, d->importedShares)
+    for (Smb4KShare *share : d->importedShares)
     {
       Smb4KShare *mountedShare = findShareByPath(share->path());
       
@@ -549,7 +549,7 @@ void Smb4KMounter::mountShares(const QList<Smb4KShare *> &shares, QWidget *paren
 {
   QVariantMap map;
   
-  Q_FOREACH(Smb4KShare *share, shares)
+  for (Smb4KShare *share : shares)
   {
     //
     // Check that the URL is valid.
@@ -591,7 +591,7 @@ void Smb4KMounter::mountShares(const QList<Smb4KShare *> &shares, QWidget *paren
     QList<Smb4KShare *> mountedShares = findShareByUNC(unc);
     bool mounted = false;
     
-    Q_FOREACH(Smb4KShare *s, mountedShares)
+    for (Smb4KShare *s : mountedShares)
     {
       if (!s->isForeign())
       {
@@ -824,7 +824,7 @@ void Smb4KMounter::unmountShares(const QList<Smb4KShare *> &shares, bool silent,
 {
   QVariantMap map;
   
-  Q_FOREACH(Smb4KShare *share, shares)
+  for (Smb4KShare *share : shares)
   {
     //
     // Check that the URL is valid.
@@ -1033,7 +1033,7 @@ void Smb4KMounter::saveSharesForRemount()
   //
   // Save the shares for remount
   //
-  Q_FOREACH(Smb4KShare *share, mountedSharesList())
+  for (Smb4KShare *share : mountedSharesList())
   {
     if (!share->isForeign())
     {
@@ -2121,13 +2121,13 @@ void Smb4KMounter::slotAboutToQuit()
   QStringList hostDirs = dir.entryList(QDir::Dirs|QDir::NoDotAndDotDot, QDir::NoSort);
   QStringList mountpoints;
   
-  Q_FOREACH(const QString &hostDir, hostDirs)
+  for (const QString &hostDir : hostDirs)
   {
     dir.cd(hostDir);
     
     QStringList shareDirs = dir.entryList(QDir::Dirs|QDir::NoDotAndDotDot, QDir::NoSort);
     
-    Q_FOREACH(const QString &shareDir, shareDirs)
+    for (const QString &shareDir : shareDirs)
     {
       dir.cd(shareDir);
       mountpoints << dir.absolutePath();
@@ -2138,13 +2138,13 @@ void Smb4KMounter::slotAboutToQuit()
   }
   
   // Remove those mountpoints where a share is actually mounted.
-  Q_FOREACH(const QExplicitlySharedDataPointer<KMountPoint> &mountPoint, mountPoints)
+  for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : mountPoints)
   {
     mountpoints.removeOne(mountPoint->mountPoint());
   }
   
   // Remove the empty mountpoints.
-  Q_FOREACH(const QString &mp, mountpoints)
+  for (const QString &mp : mountpoints)
   {
     dir.cd(mp);
     dir.rmdir(dir.canonicalPath());
@@ -2312,7 +2312,7 @@ void Smb4KMounter::slotOnlineStateChanged(bool online)
     abortAll();
     
     // Mark all mounted shares as inaccessible
-    Q_FOREACH(Smb4KShare *share, mountedSharesList())
+    for (Smb4KShare *share : mountedSharesList())
     {
       share->setInaccessible(true);
     }

@@ -140,7 +140,7 @@ Smb4KWorkgroup *Smb4KGlobal::findWorkgroup(const QString &name)
 
   mutex.lock();
   
-  Q_FOREACH(Smb4KWorkgroup *w, p->workgroupsList)
+  for (Smb4KWorkgroup *w : p->workgroupsList)
   {
     if (QString::compare(w->workgroupName(), name, Qt::CaseInsensitive) == 0)
     {
@@ -257,7 +257,7 @@ Smb4KHost *Smb4KGlobal::findHost(const QString &name, const QString &workgroup)
 
   mutex.lock();
   
-  Q_FOREACH(Smb4KHost *h, p->hostsList)
+  for (Smb4KHost *h : p->hostsList)
   {
     if ((workgroup.isEmpty() || QString::compare(h->workgroupName(), workgroup, Qt::CaseInsensitive) == 0) &&
         QString::compare(h->hostName(), name, Qt::CaseInsensitive) == 0)
@@ -369,7 +369,7 @@ QList<Smb4KHost *> Smb4KGlobal::workgroupMembers(Smb4KWorkgroup *workgroup)
 
   mutex.lock();
   
-  Q_FOREACH(Smb4KHost *h, p->hostsList)
+  for (Smb4KHost *h : p->hostsList)
   {
     if (QString::compare(h->workgroupName(), workgroup->workgroupName(), Qt::CaseInsensitive) == 0)
     {
@@ -399,7 +399,7 @@ Smb4KShare *Smb4KGlobal::findShare(const QString& unc, const QString& workgroup)
   
   mutex.lock();
 
-  Q_FOREACH(Smb4KShare *s, p->sharesList)
+  for (Smb4KShare *s : p->sharesList)
   {
     if (QString::compare(s->unc(), unc, Qt::CaseInsensitive) == 0 &&
         (workgroup.isEmpty() || QString::compare(s->workgroupName(), workgroup, Qt::CaseInsensitive) == 0))
@@ -526,7 +526,7 @@ QList<Smb4KShare *> Smb4KGlobal::sharedResources(Smb4KHost *host)
 
   mutex.lock();
   
-  Q_FOREACH(Smb4KShare *s, p->sharesList)
+  for (Smb4KShare *s : p->sharesList)
   {
     if (QString::compare(s->hostName(), host->hostName(), Qt::CaseInsensitive) == 0 &&
         QString::compare(s->workgroupName(), host->workgroupName(), Qt::CaseInsensitive) == 0)
@@ -559,7 +559,7 @@ Smb4KShare* Smb4KGlobal::findShareByPath(const QString &path)
 
   if (!path.isEmpty() && !p->mountedSharesList.isEmpty())
   {
-    Q_FOREACH(Smb4KShare *s, p->mountedSharesList)
+    for (Smb4KShare *s : p->mountedSharesList)
     {
       if (QString::compare(s->path(), path, Qt::CaseInsensitive) == 0 ||
           QString::compare(s->canonicalPath(), path, Qt::CaseInsensitive) == 0)
@@ -592,7 +592,7 @@ QList<Smb4KShare *> Smb4KGlobal::findShareByUNC(const QString &unc)
 
   if (!unc.isEmpty() && !p->mountedSharesList.isEmpty())
   {
-    Q_FOREACH(Smb4KShare *s, p->mountedSharesList)
+    for (Smb4KShare *s : p->mountedSharesList)
     {
       if (QString::compare(s->unc(), unc, Qt::CaseInsensitive) == 0)
       {
@@ -621,7 +621,7 @@ QList<Smb4KShare*> Smb4KGlobal::findInaccessibleShares()
 
   mutex.lock();
   
-  Q_FOREACH(Smb4KShare *s, p->mountedSharesList)
+  for (Smb4KShare *s : p->mountedSharesList)
   {
     if (s->isInaccessible())
     {
@@ -656,7 +656,7 @@ bool Smb4KGlobal::addMountedShare(Smb4KShare *share)
 
       p->onlyForeignShares = true;
     
-      Q_FOREACH(Smb4KShare *s, p->mountedSharesList)
+      for (Smb4KShare *s : p->mountedSharesList)
       {
         if (!s->isForeign())
         {
@@ -745,7 +745,7 @@ bool Smb4KGlobal::removeMountedShare(Smb4KShare *share)
       }
     }
     
-    Q_FOREACH(Smb4KShare *s, p->mountedSharesList)
+    for (Smb4KShare *s : p->mountedSharesList)
     {
       if (!s->isForeign())
       {

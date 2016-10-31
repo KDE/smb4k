@@ -1,8 +1,8 @@
 /***************************************************************************
-    smb4kpreviewer_p  -  Private helper classes for Smb4KPreviewer class.
+    Private helper classes for Smb4KPreviewer class.
                              -------------------
     begin                : So Dez 21 2008
-    copyright            : (C) 2008-2015 by Alexander Reinholdt
+    copyright            : (C) 2008-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -479,7 +479,7 @@ void Smb4KPreviewJob::processOutput(const QString &stdOut)
   {
     QList<Smb4KPreviewFileItem> items;
 
-    Q_FOREACH(const QString &line, stdOutList)
+    for (const QString &line : stdOutList)
     {
       if (line.contains("blocks of size") || line.contains("Domain=["))
       {
@@ -989,7 +989,7 @@ void Smb4KPreviewDialog::slotDisplayPreview(const QUrl &url, const QList<Smb4KPr
   }
 
   // Display the preview
-  Q_FOREACH(const Smb4KPreviewFileItem &item, contents)
+  for (const Smb4KPreviewFileItem &item : contents)
   {
     QListWidgetItem *listItem = new QListWidgetItem(item.itemIcon(), item.itemName(), m_view,
                                                     (item.isDir() ? Directory : File));

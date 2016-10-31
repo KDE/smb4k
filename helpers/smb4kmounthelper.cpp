@@ -1,8 +1,8 @@
 /***************************************************************************
-    smb4kmounthelper  -  The helper that mounts and unmounts shares.
+    The helper that mounts and unmounts shares.
                              -------------------
     begin                : Sa Okt 16 2010
-    copyright            : (C) 2010-2015 by Alexander Reinholdt
+    copyright            : (C) 2010-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -224,7 +224,7 @@ ActionReply Smb4KMountHelper::unmountOneByOne(const QVariantMap& args)
     bool mountPointOk = false;
     KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions);
       
-    Q_FOREACH(const QExplicitlySharedDataPointer<KMountPoint> &mountPoint, mountPoints)
+    for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : mountPoints)
     {
 #if defined(Q_OS_LINUX)
       if (QString::compare(entry.value("mh_mountpoint").toString(), mountPoint->mountPoint()) == 0 &&
@@ -355,7 +355,7 @@ ActionReply Smb4KMountHelper::unmountAtOnce(const QVariantMap& args)
     bool mountPointOk = false;
     KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions);
       
-    Q_FOREACH(const QExplicitlySharedDataPointer<KMountPoint> &mountPoint, mountPoints)
+    for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : mountPoints)
     {
 #if defined(Q_OS_LINUX)
       if (QString::compare(entry.value("mh_mountpoint").toString(), mountPoint->mountPoint()) == 0 &&

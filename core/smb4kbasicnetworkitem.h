@@ -1,9 +1,9 @@
 /***************************************************************************
-    smb4kbasicnetworkitem  -  This class provides the basic network item
-    for the core library of Smb4K.
+    This class provides the basic network item for the core library of 
+    Smb4K.
                              -------------------
     begin                : Do Apr 2 2009
-    copyright            : (C) 2009-2015 by Alexander Reinholdt
+    copyright            : (C) 2009-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

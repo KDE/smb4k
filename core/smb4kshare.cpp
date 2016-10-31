@@ -1,5 +1,5 @@
 /***************************************************************************
-    smb4kshare  -  Smb4K's container class for information about a share.
+    Smb4K's container class for information about a share.
                              -------------------
     begin                : Mo Jan 28 2008
     copyright            : (C) 2008-2016 by Alexander Reinholdt

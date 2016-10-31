@@ -1,6 +1,5 @@
 /***************************************************************************
-    smb4kwalletmanager_p  -  Private helper classes for the wallet manager
-                             of Smb4K.
+    Private helper classes for the wallet manager of Smb4K.
                              -------------------
     begin                : Mo Dez 31 2012
     copyright            : (C) 2012-2016 by Alexander Reinholdt

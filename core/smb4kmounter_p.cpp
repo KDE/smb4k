@@ -1,9 +1,8 @@
 /***************************************************************************
-    smb4kmounter_p  -  This file contains private helper classes for the
-    Smb4KMounter class.
+    This file contains private helper classes for the Smb4KMounter class.
                              -------------------
     begin                : Do Jul 19 2007
-    copyright            : (C) 2007-2015 by Alexander Reinholdt
+    copyright            : (C) 2007-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
