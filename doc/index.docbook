@@ -2288,7 +2288,7 @@ Default: not selected
     <screenshot>
       <screeninfo>Screenshot of the wallet entries editor</screeninfo>
       <mediaobject>
-        <imageobject><imagedata fileref="configuration_wallet_entries.png" format="PNG" /></imageobject>
+        <imageobject><imagedata fileref="configuration_page_authentication_wallet_entries.png" format="PNG" /></imageobject>
         <textobject><phrase>The wallet entries editor</phrase></textobject>
       </mediaobject>
     </screenshot>
