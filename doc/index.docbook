@@ -608,7 +608,7 @@
 <para>The default view is the icon view where the shares are displayed as icons along with their name or mount point. In the list view all shares are displayed with their name or mount point, the file system and the disk usage. More information can be included by adjusting the <link linkend="configuration_user_interface_shares_view">settings</link>.</para>
 
 <para>You can switch between the two views by either selecting an entry from the <link linkend="mainwindow_overview"><guibutton>Shares View</guibutton></link> menu or by changing the settings in the <link linkend="configuration_user_interface_shares_view">configuration dialog</link>.</para>
-<para>By default, only your own mounts are displayed in the shares view. However, you can tell &smb4k; to show all mounts by altering the <link linkend="configuration_shares_behavior">respective settings</link>.</para>
+<para>By default, only your own mounts are displayed in the shares view. However, you can tell &smb4k; to show all mounts by altering the <link linkend="conmfiguration_page_shares_behavior">respective settings</link>.</para>
 </sect2>
 
 <!-- Using Smb4K : The Mounted Shares View : Actions and Popup Menu -->
@@ -627,8 +627,8 @@
       </menuchoice>
     </term>
     <listitem>
-      <para>Unmount one or multiple selected shares. The ability to unmount shares is by default restricted to the ones that are owned by you. However, you can change this behavior by changing the <link linkend="configuration_shares_behavior">settings</link> in the configuration dialog. If no share is selected in the shares view, this button is disabled.</para>
-      <para>&smb4k; also provides the ability to force the unmounting of shares (&Linux; only). This might be useful with inaccessible shares that cannot be unmounted the normal way. To enable this feature, you need to modify the <link linkend="configuration_shares_behavior">settings</link> in the configuration dialog.</para>
+      <para>Unmount one or multiple selected shares. The ability to unmount shares is by default restricted to the ones that are owned by you. However, you can change this behavior by changing the <link linkend="conmfiguration_page_shares_behavior">settings</link> in the configuration dialog. If no share is selected in the shares view, this button is disabled.</para>
+      <para>&smb4k; also provides the ability to force the unmounting of shares (&Linux; only). This might be useful with inaccessible shares that cannot be unmounted the normal way. To enable this feature, you need to modify the <link linkend="conmfiguration_page_shares_behavior">settings</link> in the configuration dialog.</para>
       <para>Read the <link linkend="mainwindow_shares_unmounting">Unmounting Shares</link> section for more details.</para>
     </listitem>
   </varlistentry>
@@ -740,7 +740,7 @@
 <itemizedlist>
 <listitem><para>The icon on the left hand side indicates that this share is not accessible. &smb4k; won't allow you to open it or to do synchronization with it. You will only be able to unmount or add a bookmark to it.</para></listitem>
 <listitem><para>The central icon indicates that the share is online, accessible, and owned by you. You may perform all available actions on it.</para></listitem>
-<listitem><para>All shares marked with a red flag like the one on the right hand side are owned by another user. They are only shown if you adjusted the <link linkend="configuration_shares_behavior">settings</link> to display them. In the default configuration, you are not allowed to unmount these shares, but you can <link linkend="configuration_shares_behavior">change this behavior</link>, too.</para></listitem>
+<listitem><para>All shares marked with a red flag like the one on the right hand side are owned by another user. They are only shown if you adjusted the <link linkend="conmfiguration_page_shares_behavior">settings</link> to display them. In the default configuration, you are not allowed to unmount these shares, but you can <link linkend="conmfiguration_page_shares_behavior">change this behavior</link>, too.</para></listitem>
 </itemizedlist>
 </sect2>
 
@@ -757,7 +757,7 @@
 
 <sect2 id="mainwindow_shares_unmounting">
 <title>Unmounting Shares</title>
-<para>One or multiple selected shares may be unmounted by either clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut><guimenuitem>Unmount</guimenuitem></menuchoice> action or by pressing its keyboard shortcut. By default, the ability to unmount a share is restricted to the ones that are owned by you. This behavior can be altered in the <link linkend="configuration_shares">configuration dialog</link>. If you enabled the unmounting of shares that are owned by other users, you will be presented with a warning dialog prior to the actual unmount:</para>
+<para>One or multiple selected shares may be unmounted by either clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut><guimenuitem>Unmount</guimenuitem></menuchoice> action or by pressing its keyboard shortcut. By default, the ability to unmount a share is restricted to the ones that are owned by you. This behavior can be altered in the <link linkend="conmfiguration_page_shares">configuration dialog</link>. If you enabled the unmounting of shares that are owned by other users, you will be presented with a warning dialog prior to the actual unmount:</para>
 <screenshot>
   <screeninfo>Screenshot of the warning dialog that is shown when a foreign share is to be unmounted</screeninfo>
   <mediaobject>
@@ -770,7 +770,7 @@
   </mediaobject>
 </screenshot>
 <para>If you click the <guibutton>Yes</guibutton> button, the share will definitely be unmounted. So, please think twice before you decide to unmount shares that are owned by other users!</para>
-<para>Inaccessible shares are unmounted with a "normal" unmount by default. If this should fail, you can <link linkend="configuration_shares_behavior">configure</link> &smb4k; so as to perform a <ulink url="man:/umount">lazy unmount</ulink> on inaccessible shares (&Linux; only).</para>
+<para>Inaccessible shares are unmounted with a "normal" unmount by default. If this should fail, you can <link linkend="conmfiguration_page_shares_behavior">configure</link> &smb4k; so as to perform a <ulink url="man:/umount">lazy unmount</ulink> on inaccessible shares (&Linux; only).</para>
 <para>All shares can be unmounted at once by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>N</keycap></keycombo></shortcut><guimenuitem>Unmount All</guimenuitem></menuchoice> action. Depending on your settings, this will also unmount foreign and inaccessible shares.</para>
 <para>After a successful unmount process, the user is notified. If unmounting fails, a notification with the returned error message will be shown.</para>
 </sect2>
@@ -883,7 +883,7 @@
       </menuchoice>
     </term>
     <listitem>
-      <para>Unmount all shares at once. Depending on your <link linkend="configuration_shares_behavior">settings</link>, &smb4k; attempts to unmount either only those shares that are owned by you or all that are listed.</para>
+      <para>Unmount all shares at once. Depending on your <link linkend="conmfiguration_page_shares_behavior">settings</link>, &smb4k; attempts to unmount either only those shares that are owned by you or all that are listed.</para>
     </listitem>
   </varlistentry>
 </variablelist>
@@ -2013,155 +2013,131 @@ Default: selected
   </sect2>
 </sect1>
 
-<!-- Configuring Smb4K : Shares -->
+<!-- 
+      Configuring Smb4K : Shares 
+-->
 
-<sect1 id="configuration_shares">
-<title>Shares</title>
+<sect1 id="conmfiguration_page_shares">
+  <title>Shares</title>
 
-<para>These options determine where &smb4k; will mount the remote shares and how it behaves &eg; on start-up and exit. If you want to configure the mount options, please see the <link linkend="configuration_page_samba">Samba</link> section.</para>
+  <para>These options determine where &smb4k; will mount the remote shares and how it behaves &eg; on start-up and exit. If you want to configure the mount options, please see the <link linkend="configuration_page_samba">Samba</link> section.</para>
 
-<screenshot>
-<screeninfo>Screenshot of the "Shares" configuration tab</screeninfo>
-<mediaobject>
-<imageobject>
-<imagedata fileref="configuration_page_shares.png" format="PNG" />
-</imageobject>
-<textobject>
-<phrase>The "Shares" configuration tab</phrase>
-</textobject>
-</mediaobject>
-</screenshot>
+  <screenshot>
+    <screeninfo>Screenshot of the "Shares" configuration tab</screeninfo>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="configuration_page_shares.png" format="PNG" />
+      </imageobject>
+      <textobject>
+        <phrase>The "Shares" configuration tab</phrase>
+      </textobject>
+    </mediaobject>
+  </screenshot>
 
-<!-- Configuring Smb4K : Shares : Directories -->
+<!-- 
+      Configuring Smb4K : Shares : Directories 
+-->
 
-<sect2 id="configuration_shares_directories">
-<title>Directories</title>
+  <sect2 id="conmfiguration_page_shares_directories">
+    <title>Directories</title>
 
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Mount prefix</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-This is the base folder (mount prefix) where &smb4k; will mount the remote shares. It can be changed by using the &URL; requester (Click the button with the folder icon.) or by directly entering the new path into the text box. Path variables like <envar>$HOME</envar> are recognized.
-</para>
-<para>
-Default: <filename class="directory">$HOME/smb4k/</filename>
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Force generated subdirectories to be lower case</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>
-All subdirectories that are created by &smb4k; below the mount prefix will be lower case.
-</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect2>
+    <variablelist>
+      <varlistentry>
+        <term>
+          <menuchoice><guibutton>Mount prefix</guibutton></menuchoice>
+        </term>
+        <listitem>
+          <para>This is the base folder (mount prefix) where &smb4k; will mount the remote shares. It can be changed by using the &URL; requester (Click the button with the folder icon.) or by directly entering the new path into the text box. Path variables like <envar>$HOME</envar> are recognized.</para>
+          <para>Default: <filename class="directory">$HOME/smb4k/</filename></para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice><guibutton>Force generated subdirectories to be lower case</guibutton></menuchoice>
+        </term>
+        <listitem>
+          <para>All subdirectories that are created by &smb4k; below the mount prefix will be lower case.</para>
+          <para>Default: not selected</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
 
-<!-- Configuring Smb4K : Shares : Behavior -->
+<!-- 
+      Configuring Smb4K : Shares : Behavior 
+-->
 
-<sect2 id="configuration_shares_behavior">
-<title>Behavior</title>
+  <sect2 id="conmfiguration_page_shares_behavior">
+    <title>Behavior</title>
 
-<variablelist>
-  <varlistentry>
-    <term>
-      <menuchoice><guibutton>Remount shares</guibutton></menuchoice>
-    </term>
-    <listitem>
-      <para>Remount all your shares that were mounted when you exited the program or changed a profile. If the remounting of a share fails, Smb4K will retry the next time it is started. Shares that were mounted by other users are ignored.</para>
-      <note><para>This setting does not affect the automatic remounting of shares when your computer woke up from a sleep state.</para></note>
-      <para>Default: not selected</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice><guilabel>Number of remount attempts</guilabel></menuchoice>
-    </term>
-    <listitem>
-      <para>Set the number of attempts that are made to remount shares before Smb4K gives up.</para>
-      <para>Default: 1</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice><guilabel>Interval between remount attempts</guilabel></menuchoice>
-    </term>
-    <listitem>
-      <para>Set the time that elapses between attempts to remount shares.</para>
-      <para>Default: 5 min</para>
-    </listitem>
-  </varlistentry>  
-  <varlistentry>
-    <term>
-      <menuchoice><guibutton>Unmount all personal shares on exit</guibutton></menuchoice>
-    </term>
-    <listitem>
-      <para>Unmount all shares that belong to you when the program exits. Shares that are owned by other users are ignored.</para>
-      <para>Default: not selected</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice><guibutton>Force the unmounting of inaccessible shares</guibutton></menuchoice>
-    </term>
-    <listitem>
-      <para>Force the unmounting of inaccessible shares (&Linux; only). In case a share is inaccessible, a lazy unmount is performed. Before the actual unmounting is done, a warning dialog is shown asking to approve the unmount.</para>
-      <para>Default: not selected</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice><guibutton>Allow the unmounting of shares that are owned by other users</guibutton></menuchoice>
-    </term>
-    <listitem>
-      <para>This option will allow you to unmount shares that were mounted by other users.</para>
-      <para>USE WITH EXTREME CAUTION!</para>
-      <para>Default: not selected</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice><guibutton>Detect all shares that are mounted on the system</guibutton></menuchoice>
-    </term>
-    <listitem>
-      <para>You will not only see the shares that were mounted and are owned by you, but also all other mounts using the SMBFS (FreeBSD) and CIFS (&Linux;) file system that are present on the system.</para>
-      <para>Default: not selected</para>
-    </listitem>
-  </varlistentry>  
-</variablelist>
-</sect2>
-
-<!-- Configuring Smb4K : Shares : Checks -->
-
-<sect2 id="configuration_shares_checks">
-<title>Checks</title>
-
-<variablelist>
-  <varlistentry>
-    <term>
-      <menuchoice><guibutton>Interval between checks</guibutton></menuchoice>
-    </term>
-    <listitem>
-      <para>&smb4k; periodically checks for newly mounted and inaccessable shares with an interval that can be defined here. Under normal circumstances, you do not need to change it. But if the server you connected to suffers from high load, you should increase the interval to ease it's situation. The effect on your system's load is generally rather small unless you set the interval below 1000 ms (not recommended).</para>
-      <para>Default: 2500 ms</para>
-    </listitem>
-  </varlistentry>
-</variablelist>
-</sect2>
+    <variablelist>
+      <varlistentry>
+        <term>
+          <menuchoice><guibutton>Remount shares</guibutton></menuchoice>
+        </term>
+        <listitem>
+          <para>Remount all your shares that were mounted when you exited the program or changed a profile. If the remounting of a share fails, Smb4K will retry the next time it is started. Shares that were mounted by other users are ignored.</para>
+          <note><para>This setting does not affect the automatic remounting of shares when your computer woke up from a sleep state.</para></note>
+          <para>Default: not selected</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice><guilabel>Number of remount attempts</guilabel></menuchoice>
+        </term>
+        <listitem>
+          <para>Set the number of attempts that are made to remount shares before Smb4K gives up.</para>
+          <para>Default: 1</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice><guilabel>Interval between remount attempts</guilabel></menuchoice>
+        </term>
+        <listitem>
+          <para>Set the time that elapses between attempts to remount shares.</para>
+          <para>Default: 5 min</para>
+        </listitem>
+      </varlistentry>  
+      <varlistentry>
+        <term>
+          <menuchoice><guibutton>Unmount all personal shares on exit</guibutton></menuchoice>
+        </term>
+        <listitem>
+          <para>Unmount all shares that belong to you when the program exits. Shares that are owned by other users are ignored.</para>
+          <para>Default: not selected</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice><guibutton>Force the unmounting of inaccessible shares</guibutton></menuchoice>
+        </term>
+        <listitem>
+          <para>Force the unmounting of inaccessible shares (&Linux; only). In case a share is inaccessible, a lazy unmount is performed. Before the actual unmounting is done, a warning dialog is shown asking to approve the unmount.</para>
+          <para>Default: not selected</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice><guibutton>Allow the unmounting of shares that are owned by other users</guibutton></menuchoice>
+        </term>
+        <listitem>
+          <para>This option will allow you to unmount shares that were mounted by other users.</para>
+          <para>USE WITH EXTREME CAUTION!</para>
+          <para>Default: not selected</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice><guibutton>Detect all shares that are mounted on the system</guibutton></menuchoice>
+        </term>
+        <listitem>
+          <para>You will not only see the shares that were mounted and are owned by you, but also all other mounts using the SMBFS (FreeBSD) and CIFS (&Linux;) file system that are present on the system.</para>
+          <para>Default: not selected</para>
+        </listitem>
+      </varlistentry>  
+    </variablelist>
+  </sect2>
 </sect1>
 
 <!-- 
@@ -2866,930 +2842,742 @@ Default: not selected
 -->
 
 <sect1 id="configuration_page_synchronization">
-<title>Synchronization</title>
+  <title>Synchronization</title>
 
-<para>This configuration page contains options that influence the behavior of the <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> command that is used to synchronize remote shares with local copies and vice versa. It is only available, if <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> is installed on your system. It is recommend, that you read the <ulink url="man:/rsync">manual page</ulink> before you use the synchronization feature the first time. However, safe settings are pre-defined. You will do no harm, if you start right away.</para>
+  <para>This configuration page contains options that influence the behavior of the <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> command that is used to synchronize remote shares with local copies and vice versa. It is only available, if <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> is installed on your system. It is recommended that you read the <ulink url="man:/rsync">manual page</ulink> before you use the synchronization feature the first time. However, safe settings are pre-defined. You will do no harm, if you start right away.</para>
 
-<screenshot>
-<screeninfo>Screenshot of the "Synchronization" configuration page</screeninfo>
-<mediaobject>
-<imageobject>
-<imagedata fileref="configuration_page_synchronization.png" format="PNG" />
-</imageobject>
-<textobject>
-<phrase>The "Synchronization" configuration page</phrase>
-</textobject>
-</mediaobject>
-</screenshot>
+  <screenshot>
+    <screeninfo>Screenshot of the "Synchronization" configuration page</screeninfo>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="configuration_page_synchronization.png" format="PNG" />
+      </imageobject>
+      <textobject>
+        <phrase>The "Synchronization" configuration page</phrase>
+      </textobject>
+    </mediaobject>
+  </screenshot>
 
-<!-- Configuring Smb4K : Synchronization : Copying -->
+<!-- 
+      Configuring Smb4K : Synchronization : Copying 
+-->
 
-<sect2 id="configuration_page_synchronization_copying">
-<title>Copying</title>
+  <sect2 id="configuration_page_synchronization_copying">
+    <title>Copying</title>
    
-<sect3 id="configuration_page_synchronization_copying_defdest">
-<title>Default Destination</title>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Synchronization prefix</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>This is the base folder below which &smb4k; stores the transferred data using <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink>. It can be changed by using the &URL; requester (Click the button with the folder icon.) or by directly entering the new path into the text box. Path variables like $HOME are recognized.</para>
-<para>For each share you synchronize, a new subdirectory below this prefix will be generated. If you want to synchronize the contents of a share to a different folder, you can define it in the <link linkend="mainwindow_shares_synchronization">synchronization dialog</link>.</para>
-<para>
-Default: <filename class="directory">$HOME/smb4k_sync/</filename>
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect3>
+    <sect3 id="configuration_page_synchronization_copying_defdest">
+      <title>Default Destination</title>
 
-<sect3 id="configuration_page_synchronization_copying_general">
-<title>General</title>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Archive mode</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-a</option>/<option>--archive</option>, same as <option>-rlptgoD</option> (no <option>-H</option>)</para>
-<para>Switch the archive mode on. This is a quick way of saying you want recursion and want to preserve almost everything. Note that <option>-a</option> does not preserve hardlinks, because finding multiply-linked files is expensive. You must separately specify  <option>-H</option>.</para>
-<para>
-Default: selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Recurse into subdirectories</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-r</option>/<option>--recursive</option></para>
-<para>Recurse into subdirectories.</para>
-<para>
-Default: selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Update files</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-u</option>/<option>--update</option></para>
-<para>This forces <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to skip any files that exist on the destination and have a modification time that is newer than the one of the source file. (If an existing destination file has a modification time equal to the source file's, it will be updated if the sizes are different.)</para>
-<para>
-Default: selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Update files in place</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--inplace</option></para>
-<para>This causes <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> not to create a new copy of the file and then move it into place. Instead <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> will overwrite the  existing file, meaning that the rsync algorithm cannot accomplish the full amount of network reduction it might be able to otherwise.  One exception to this is if you combine the option with <option>--backup</option>, since <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> is smart enough to use the backup file as the basis file for the transfer.</para>
-<para>For further information you ought to read the <ulink url="man:/rsync">manual page</ulink>.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Use relative path names</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-R</option>/<option>--relative</option></para>
-<para>Use relative path names. This means that the full path names specified on the command line are sent to the server rather than just the last parts of the file names.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Do not send implied directories</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--no-implied-dirs</option></para>
-<para>This option affects the default behavior of the <option>--relative</option> option. When it is specified, the attributes of the implied directories from the source names are not included in the transfer. This means that the corresponding path elements on the destination system are left unchanged if  they  exist, and any missing implied directories are created with default attributes. This even allows these implied path elements to have big differences, such as being a symlink to a folder on one side of the transfer, and a real folder on the other side.</para>
-<para>For further information you ought to read the <ulink url="man:/rsync">manual page</ulink>.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Transfer directories without recursing</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-d</option>/<option>--dirs</option></para>
-<para>Tell the sending side to include any directories that are encountered. Unlike <option>--recursive</option>, a folders contents is not copied unless the folder name specified is "." or ends with a trailing slash (&eg; ".", "dir/.", "dir/", &etc;). Without this option or the <option>--recursive</option> option, <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> will skip all directories it encounters (and output a message to that effect for each one). If you specify both <option>--dirs</option> and <option>--recursive</option>, <option>--recursive</option> takes precedence.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Compress data during transfer</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-z</option>/<option>--compress</option></para>
-<para>Compress file data during the transfer.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect3>
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Synchronization prefix</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>This is the base folder below which &smb4k; stores the transferred data using <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink>. It can be changed by using the &URL; requester (Click the button with the folder icon.) or by directly entering the new path into the text box. Path variables like $HOME are recognized.</para>
+            <para>For each share you synchronize, a new subdirectory below this prefix will be generated. If you want to synchronize the contents of a share to a different folder, you can define it in the <link linkend="mainwindow_shares_synchronization">synchronization dialog</link>.</para>
+            <para>Default: <filename class="directory">$HOME/smb4k_sync/</filename></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect3>
 
-<sect3 id="configuration_page_synchronization_copying_links">
-<title>Links</title>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Preserve symlinks</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-l</option>/<option>--links</option></para>
-<para>Copy symlinks as symlinks.</para>
-<para>
-Default: selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Transform symlinks</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-L</option>/<option>--copy-links</option></para>
-<para>When symlinks are encountered, the item that they point to is copied, rather than the symlink.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Only transform unsafe symlinks</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--copy-unsafe-links</option></para>
-<para>Only transform "unsafe" symlinks. This means if a symlink is encountered that is pointing outside the copied tree, the referenced item is transferred rather than the symlink itself.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Ignore unsafe symlinks</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--safe-links</option></para>
-<para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to ignore any symbolic links which point outside the copied tree. All absolute symlinks are also ignored. Using this option in conjunction with <option>--relative</option> may give unexpected results.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Preserve hard links</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-H</option>/<option>--hard-links</option></para>
-<para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to look for hard-linked files in the transfer and link together the corresponding files on the receiving side. Without this option, hard-linked files in the transfer are treated as though they were separate files.</para>
-<para>Note that <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> can only detect hard links if both parts of the link are in the list of files being sent.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Keep directory symlinks</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-K</option>/<option>--keep-dirlinks</option></para>
-<para>This option causes the receiving side to treat a symlink to a directory as though it were a real directory, but only if it matches a real directory from the sender. Without this option, the receiver's symlink would be deleted and replaced with a real directory.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect3>
+    <sect3 id="configuration_page_synchronization_copying_general">
+      <title>General</title>
 
-<sect3 id="configuration_page_synchronization_copying_perms">
-<title>File Permissions, &etc;</title>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Preserve permissions</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-p</option>/<option>--perms</option></para>
-<para>This option causes the receiving side to set the destination permissions to be the same as the source permissions.</para>
-<para>
-Default: selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Preserve group</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-g</option>/<option>--group</option></para>
-<para>This option causes <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to set the group of the destination file to be the same as the on of the source file. If the receiving program is not running as the super-user (or with the <option>--no-super</option> option), only groups that the receiver is a member of will be preserved.</para>
-<para>
-Default: selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Preserve owner</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-o</option>/<option>--owner</option></para>
-<para>This option causes <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to set the owner of the destination file to be the same as the source file. By default, the preservation is done by name, but may fall back to using the ID number in some circumstances (see the <option>--numeric-ids</option> option for a full discussion). This option has no effect if the receiving <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> is not run as the super user and <option>--super</option> is not specified.</para>
-<para>
-Default: selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Preserve device and special files</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-D</option>/<option>--devices --specials</option></para>
-<para>This option causes <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to transfer character and block device files as well as special files (such as named sockets and fifos) to the remote system. This option has no effect if the receiving side is not run as the super user and <option>--super</option> is not specified.</para>
-<para>
-Default: selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Preserve times</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-t</option>/<option>--times</option></para>
-<para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to transfer modification times along with the files and update them on the remote system.</para>
-<para>
-Default: selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Omit directories when preserving times</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-O</option>/<option>--omit-dir-times</option></para>
-<para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to omit directories when it is preserving modification times (see <option>--times</option>).</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect3>
-</sect2>
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Archive mode</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-a</option>/<option>--archive</option>, same as <option>-rlptgoD</option> (no <option>-H</option>)</para>
+            <para>Switch the archive mode on. This is a quick way of saying you want recursion and want to preserve almost everything. Note that <option>-a</option> does not preserve hardlinks, because finding multiply-linked files is expensive. You must separately specify <option>-H</option>.</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Recurse into subdirectories</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-r</option>/<option>--recursive</option></para>
+            <para>Recurse into subdirectories.</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Update files</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-u</option>/<option>--update</option></para>
+            <para>This forces <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to skip any files that exist on the destination and have a modification time that is newer than the one of the source file. (If an existing destination file has a modification time equal to the source file's, it will be updated if the sizes are different.)</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Update files in place</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--inplace</option></para>
+            <para>This causes <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> not to create a new copy of the file and then move it into place. Instead <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> will overwrite the  existing file, meaning that the rsync algorithm cannot accomplish the full amount of network reduction it might be able to otherwise.  One exception to this is if you combine the option with <option>--backup</option>, since <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> is smart enough to use the backup file as the basis file for the transfer.</para>
+            <para>For further information you ought to read the <ulink url="man:/rsync">manual page</ulink>.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Use relative path names</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-R</option>/<option>--relative</option></para>
+            <para>Use relative path names. This means that the full path names specified on the command line are sent to the server rather than just the last parts of the file names.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Do not send implied directories</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--no-implied-dirs</option></para>
+            <para>This option affects the default behavior of the <option>--relative</option> option. When it is specified, the attributes of the implied directories from the source names are not included in the transfer. This means that the corresponding path elements on the destination system are left unchanged if  they  exist, and any missing implied directories are created with default attributes. This even allows these implied path elements to have big differences, such as being a symlink to a folder on one side of the transfer, and a real folder on the other side.</para>
+            <para>For further information you ought to read the <ulink url="man:/rsync">manual page</ulink>.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Transfer directories without recursing</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-d</option>/<option>--dirs</option></para>
+            <para>Tell the sending side to include any directories that are encountered. Unlike <option>--recursive</option>, a folders contents is not copied unless the folder name specified is "." or ends with a trailing slash (&eg; ".", "dir/.", "dir/", &etc;). Without this option or the <option>--recursive</option> option, <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> will skip all directories it encounters (and output a message to that effect for each one). If you specify both <option>--dirs</option> and <option>--recursive</option>, <option>--recursive</option> takes precedence.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Compress data during transfer</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-z</option>/<option>--compress</option></para>
+            <para>Compress file data during the transfer.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect3>
 
-<!-- Configuring Smb4K : Synchronization : File Deletion & Transfer -->
+    <sect3 id="configuration_page_synchronization_copying_links">
+      <title>Links</title>
 
-<sect2 id="configuration_page_synchronization_filedel">
-<title>File Deletion &amp; Transfer</title>
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Preserve symlinks</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-l</option>/<option>--links</option></para>
+            <para>Copy symlinks as symlinks.</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Transform symlinks</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-L</option>/<option>--copy-links</option></para>
+            <para>When symlinks are encountered, the item that they point to is copied, rather than the symlink.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Only transform unsafe symlinks</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--copy-unsafe-links</option></para>
+            <para>Only transform "unsafe" symlinks. This means if a symlink is encountered that is pointing outside the copied tree, the referenced item is transferred rather than the symlink itself.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Ignore unsafe symlinks</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--safe-links</option></para>
+            <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to ignore any symbolic links which point outside the copied tree. All absolute symlinks are also ignored. Using this option in conjunction with <option>--relative</option> may give unexpected results.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Preserve hard links</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-H</option>/<option>--hard-links</option></para>
+            <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to look for hard-linked files in the transfer and link together the corresponding files on the receiving side. Without this option, hard-linked files in the transfer are treated as though they were separate files.</para>
+            <para>Note that <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> can only detect hard links if both parts of the link are in the list of files being sent.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Keep directory symlinks</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-K</option>/<option>--keep-dirlinks</option></para>
+            <para>This option causes the receiving side to treat a symlink to a directory as though it were a real directory, but only if it matches a real directory from the sender. Without this option, the receiver's symlink would be deleted and replaced with a real directory.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect3>
 
-<sect3 id="configuration_page_synchronization_filedel_filedel">
-<title>File Deletion</title>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Remove synchronized source files</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--remove-source-files</option></para>
-<para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to remove from the sending side the files (meaning non-directories) that are a part of the transfer and have been successfully duplicated on the receiving side.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Delete extraneous files</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--delete</option></para>
-<para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to delete extraneous files from  the  receiving side (ones  that  aren't on the sending side), but only for the directories that are being synchronized.  You must have asked <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to send the whole folder (&eg; "<filename class="directory">dir</filename>" or "<filename class="directory">dir/</filename>") without using a wildcard for the folders contents (&eg; "<filename class="directory">dir/*</filename>") since the wildcard is expanded by the shell and <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> thus gets a request to transfer individual files, not the files' parent folder. Files that are excluded from transfer are also excluded from being deleted unless you use the <option>--
-delete-excluded</option> option or mark the rules as only matching on the sending side.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Delete files before transfer</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--delete-before</option></para>
-<para>Request that the file deletions on the receiving side be done before the transfer starts. This is the default if <option>--delete</option> or <option>--delete-excluded</option> is specified without one of the <option>--delete-WHEN</option> options.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Delete files after transfer</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--delete-after</option></para>
-<para>Request that the file deletions on the receiving side be done after the transfer has completed.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Delete files during transfer</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--delete-during</option></para>
-<para>Request that the file deletions on the receiving side be done incrementally as the transfer happens. This is a faster method than choosing the before- or after-transfer algorithm, but it is only supported beginning with <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> version 2.6.4.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Also delete excluded files</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--delete-excluded</option></para>
-<para>In addition to deleting the files on the receiving side that are not on the sending side, this tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to also delete any files on the receiving side that are excluded (see <option>--exclude</option>).</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Delete even if I/O errors occur</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--ignore-errors</option></para>
-<para>Tells <option>--delete</option> to go ahead and delete files even when there are I/O errors.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Force deletion of non-void directories</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--force</option></para>
-<para>This option tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to delete a non-empty folder when it is to be replaced by a non-folder. This is only relevant if deletions are not active (see <option>--delete</option>).</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect3>
+    <sect3 id="configuration_page_synchronization_copying_perms">
+      <title>File Permissions, &etc;</title>
 
-<sect3 id="configuration_page_synchronization_filedel_restrict">
-<title>Restrictions</title>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Do not delete more than this many files</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--max-delete=NUM</option></para>
-<para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> not to delete more than NUM files or directories (NUM must be non-zero). This is useful when mirroring very large trees to prevent disasters.</para>
-<para>
-Default: not selected; NUM: 0
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect3>
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Preserve permissions</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-p</option>/<option>--perms</option></para>
+            <para>This option causes the receiving side to set the destination permissions to be the same as the source permissions.</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Preserve group</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-g</option>/<option>--group</option></para>
+            <para>This option causes <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to set the group of the destination file to be the same as the on of the source file. If the receiving program is not running as the super-user (or with the <option>--no-super</option> option), only groups that the receiver is a member of will be preserved.</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Preserve owner</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-o</option>/<option>--owner</option></para>
+            <para>This option causes <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to set the owner of the destination file to be the same as the one of the source file. By default, the preservation is done by name, but may fall back to using the ID number in some circumstances (see the <option>--numeric-ids</option> option for a full discussion). This option has no effect if the receiving <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> is not run as the super user and <option>--super</option> is not specified.</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Preserve device and special files</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-D</option>/<option>--devices --specials</option></para>
+            <para>This option causes <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to transfer character and block device files as well as special files (such as named sockets and fifos) to the remote system. This option has no effect if the receiving side is not run as the super user and <option>--super</option> is not specified.</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Preserve times</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-t</option>/<option>--times</option></para>
+            <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to transfer modification times along with the files and update them on the remote system.</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Omit directories when preserving times</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-O</option>/<option>--omit-dir-times</option></para>
+            <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to omit directories when it is preserving modification times (see <option>--times</option>).</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect3>
+  </sect2>
 
-<sect3 id="configuration_page_synchronization_filedel_transfer">
-<title>File Transfer</title>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Do not transfer any file smaller than</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--min-size=NUM</option></para>
-<para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to avoid transferring any file that is smaller than the specified SIZE, which can help in not transferring small, junk files.</para>
-<para>
-Default: not selected; NUM: 0 kB
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Do not transfer any file larger than</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--max-size=NUM</option></para>
-<para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to avoid transferring any file that is larger than the specified SIZE.</para>
-<para>
-Default: not selected; NUM: 0 kB
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Keep partially transferred files</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--partial</option></para>
-<para>By default, <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> will delete any partially transferred file if the transfer is interrupted. In some circumstances it is more desirable to keep partially transferred files. Using the <option>--partial</option> option tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to keep the partial file which should make a subsequent transfer of the rest of the file much faster.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Put partially transferred files into</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--partial-dir=DIR</option></para>
-<para>A better way to keep partial files than the <option>--partial</option> option is to specify a folder DIR that will be used to hold the partial data (instead of writing it out to the  destination file). On the next transfer, <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> will use a file found in this folder as data to speed up the resumption of the transfer and then delete it after it has served its purpose. Before you tick this option, you should read the <ulink url="man:/rsync">manual page</ulink>.</para>
-<para>
-Default: not selected; DIR: <filename class="directory">$HOME</filename>
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect3>
-</sect2>
+<!-- 
+      Configuring Smb4K : Synchronization : File Deletion & Transfer 
+-->
 
-<!-- Configuring Smb4K : Synchronization : Filtering -->
+  <sect2 id="configuration_page_synchronization_filedel">
+    <title>File Deletion &amp; Transfer</title>
 
-<sect2 id="configuration_page_synchronization_filter">
-<title>Filtering</title>   
+    <sect3 id="configuration_page_synchronization_filedel_filedel">
+      <title>File Deletion</title>
+    
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Remove synchronized source files</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--remove-source-files</option></para>
+            <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to remove from the sending side the files (meaning non-directories) that are a part of the transfer and have been successfully duplicated on the receiving side.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Delete extraneous files</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--delete</option></para>
+            <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to delete extraneous files from  the  receiving side (ones  that  aren't on the sending side), but only for the directories that are being synchronized.  You must have asked <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to send the whole folder (&eg; "<filename class="directory">dir</filename>" or "<filename class="directory">dir/</filename>") without using a wildcard for the folders contents (&eg; "<filename class="directory">dir/*</filename>") since the wildcard is expanded by the shell and <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> thus gets a request to transfer individual files, not the files' parent folder. Files that are excluded from transfer are also excluded from being deleted unless you use the <option>--delete-excluded</option> option or mark the rules as only matching on the sending side.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Delete files before transfer</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--delete-before</option></para>
+            <para>Request that the file deletions on the receiving side be done before the transfer starts. This is the default if <option>--delete</option> or <option>--delete-excluded</option> is specified without one of the <option>--delete-WHEN</option> options.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Delete files after transfer</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--delete-after</option></para>
+            <para>Request that the file deletions on the receiving side be done after the transfer has completed.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Delete files during transfer</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--delete-during</option></para>
+            <para>Request that the file deletions on the receiving side be done incrementally as the transfer happens. This is a faster method than choosing the before- or after-transfer algorithm, but it is only supported beginning with <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> version 2.6.4.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Also delete excluded files</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--delete-excluded</option></para>
+            <para>In addition to deleting the files on the receiving side that are not on the sending side, this tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to also delete any files on the receiving side that are excluded (see <option>--exclude</option>).</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Delete even if I/O errors occur</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--ignore-errors</option></para>
+            <para>Tells <option>--delete</option> to go ahead and delete files even when there are I/O errors.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Force deletion of non-void directories</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--force</option></para>
+            <para>This option tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to delete a non-empty folder when it is to be replaced by a non-folder. This is only relevant if deletions are not active (see <option>--delete</option>).</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect3>
 
-<sect3 id="configuration_page_synchronization_filter_general">
-<title>General</title>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Auto-ignore files in the same way CVS does</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-C</option>/<option>--cvs-exclude</option></para>
-<para>This is a useful shorthand for excluding a broad range of files that you often don't want to transfer between systems. It uses the same algorithm that CVS uses to determine if a file should be ignored.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Exclude files matching this pattern</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--exclude=PATTERN</option></para>
-<para>This  option is a simplified form of the <option>--filter</option> option that defaults to an exclude rule and does not allow the full rule-parsing syntax of normal filter rules.</para>
-<para>
-Default: not selected; PATTERN: empty
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Read exclude patterns from</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--exclude-from=FILE</option></para>
-<para>This option is related to the <option>--exclude</option> option, but it specifies a FILE that contains exclude patterns (one per line). Blank lines in the file  and lines starting with ';' or '#' are ignored. You have to choose an existing file to make this option work.</para>
-<para>
-Default: not selected; FILE: <filename>$HOME/exclude.txt</filename>
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Do not exclude files matching this pattern</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--include=PATTERN</option></para>
-<para>This option is a simplified form of the <option>--filter</option> option that defaults to an include rule and does not allow the full rule-parsing syntax of normal filter rules.</para>
-<para>
-Default: not selected; PATTERN: empty
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Read include patterns from</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--include-from=FILE</option></para>
-<para>This option is related to the <option>--include</option> option, but it specifies a FILE that contains include patterns (one  per  line). Blank lines in the file and lines starting with ';' or '#' are ignored. You have to choose an existing file to make this option work.</para>
-<para>
-Default: not selected; FILE: <filename>$HOME/include.txt</filename>
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect3>
+    <sect3 id="configuration_page_synchronization_filedel_restrict">
+      <title>Restrictions</title>
 
-<sect3 id="configuration_page_synchronization_filter_rules">
-<title>Filter Rules</title>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Custom filter rules</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-f</option>/<option>--filter=RULE</option></para>
-<para>You can define one or more filter rules here. Each rule has to be prefixed with the <option>--filter=</option> or <option>-f</option> option string, because the contents of the text box will be passed to the <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> command AS IS.</para>
-<para>This option allows you to add rules to selectively exclude  certain  files  from  the  list of files to be transferred. This is most useful in combination with a recursive transfer.</para>
-<para>You may use as many <option>--filter</option> options as you like to build up the list of files to exclude.</para>
-<para>See  the  FILTER  RULES section of the <ulink url="man:/rsync">manual page</ulink> for detailed information on this option.</para>
-<para>
-Default: empty
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Use --filter='dir-merge /.rsync-filter' filter rule</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-F</option></para>
-<para>This option tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to look for per-folder <filename>.rsync-filter</filename> files that have been sprinkled through the hierarchy and use their rules to filter the files in the transfer.</para>
-<para>See the FILTER RULES section of the <ulink url="man:/rsync">manual page</ulink> for detailed information on how this option works.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Use --filter='exclude .rsync-filter' filter rule</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-FF</option></para>
-<para>This option filters out the <filename>.rsync-filter</filename> files themselves from the transfer.</para>
-<para>See the FILTER RULES section of the <ulink url="man:/rsync">manual page</ulink> for detailed information on how this option works.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect3>
-</sect2>
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Do not delete more than this many files</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--max-delete=NUM</option></para>
+            <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> not to delete more than NUM files or directories (NUM must be non-zero). This is useful when mirroring very large trees to prevent disasters.</para>
+            <para>Default: not selected; NUM: 0</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect3>
 
-<!-- Configuring Smb4K : Synchronization : Advanced Settings -->
+    <sect3 id="configuration_page_synchronization_filedel_transfer">
+      <title>File Transfer</title>
 
-<sect2 id="configuration_page_synchronization_advanced">
-<title>Advanced Settings</title>
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Do not transfer any file smaller than</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--min-size=NUM</option></para>
+            <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to avoid transferring any file that is smaller than the specified SIZE, which can help in not transferring small, junk files.</para>
+            <para>Default: not selected; NUM: 0 kB</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Do not transfer any file larger than</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--max-size=NUM</option></para>
+            <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to avoid transferring any file that is larger than the specified SIZE.</para>
+            <para>Default: not selected; NUM: 0 kB</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Keep partially transferred files</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--partial</option></para>
+            <para>By default, <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> will delete any partially transferred file if the transfer is interrupted. In some circumstances it is more desirable to keep partially transferred files. Using the <option>--partial</option> option tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to keep the partial file which should make a subsequent transfer of the rest of the file much faster.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Put partially transferred files into</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--partial-dir=DIR</option></para>
+            <para>A better way to keep partial files than the <option>--partial</option> option is to specify a folder DIR that will be used to hold the partial data (instead of writing it out to the  destination file). On the next transfer, <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> will use a file found in this folder as data to speed up the resumption of the transfer and then delete it after it has served its purpose. Before you tick this option, you should read the <ulink url="man:/rsync">manual page</ulink>.</para>
+            <para>Default: not selected; DIR: <filename class="directory">$HOME</filename></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect3>
+  </sect2>
 
-<sect3 id="configuration_page_synchronization_advanced_general">
-<title>General</title>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Handle sparse files efficiently</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-S</option>/<option>--sparse</option></para>
-<para>Try to handle sparse files efficiently so they take up less space on the destination. Conflicts with <option>--inplace</option> because it's not possible to overwrite data in a sparse fashion.</para>
-<note><para>Do not use this option when the destination is a &Solaris; "tmpfs" file system. It doesn't seem to handle seeks over null regions correctly and ends up corrupting the files.</para></note>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Copy files whole (no rsync algorithm)</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-W</option>/<option>--whole-file</option></para>
-<para>With this option the incremental <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> algorithm is not used and the whole file is sent as-is instead. The transfer may be faster if this option is used when the bandwidth between the source and destination machines is higher than the bandwidth to disk (especially when the "disk" is actually a networked file system). This is the default when both the source and destination are specified as local paths.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Do not cross file system boundaries</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-x</option>/<option>--one-file-system</option></para>
-<para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to avoid crossing a file system boundary when recursing. This does not limit the user's ability to specify items to copy from multiple file systems, just <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink>'s recursion through the hierarchy of each folder that the user specified, and also the analogous recursion on the receiving side during deletion. Also keep in mind that <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> treats a "bind" mount to the same device as being on the same file system.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Only update files that already exist</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--existing</option>/<option>--ignore-non-existing</option></para>
-<para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to skip updating files that do not exist yet on the destination. If this option is combined with the <option>--ignore-existing</option> option, no files will be updated (which can be useful if all you want to do is to delete missing files).</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Ignore files that already exist</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--ignore-existing</option></para>
-<para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to skip updating files that already exist on the destination. See also <option>--ignore-non-existing</option>.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Delay updates until the end of transfer</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--delay-updates</option></para>
-<para>This option puts the temporary file from each updated file into a holding folder until the end of the transfer, at which time all the files are renamed into place in rapid succession.</para>
-<para>It is strongly recommended that you read the <ulink url="man:/rsync">manual page</ulink> before using this option.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect3>
+<!-- 
+      Configuring Smb4K : Synchronization : Filtering 
+-->
 
-<sect3 id="configuration_page_synchronization_advanced_backup">
-<title>Backup</title>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Make backups</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-b</option>/<option>--backups</option></para>
-<para>With this option, preexisting destination files are renamed as each file is transferred or deleted. You can control where the backup file goes and what (if any) suffix gets appended using the <option>--backup-dir</option> and <option>--suffix</option> options.</para>
-<para>Note that if you don't specify <option>--backup-dir</option>, (1) the <option>--omit-dir-times</option> option will be implied, and (2) if <option>--delete</option> is also in effect (without <option>--delete-excluded</option>),  <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> will add a "protect" filter-rule for the backup suffix to the end of all your existing excludes (&eg; <option>-f "P *~"</option>). This will prevent previously backed-up files from being deleted. Note that if you are supplying your own filter rules, you may  need  to  manually insert your own exclude/protect rule somewhere higher up in the list so that it has a high enough priority to be effective (&eg;, if  your rules specify a trailing inclusion/exclusion of '*', the auto-added rule would never be reached).</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Backup suffix</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--suffix=SUFFIX</option></para>
-<para>This  option  allows  you  to override the default backup suffix used with the <option>--backup</option> option. The default suffix is a <emphasis>~</emphasis> if no <option>--backup-dir</option> was specified, otherwise it is an empty string.</para>
-<para>This option is only available if you ticked the <guilabel>Make backups</guilabel> option above.</para>
-<para>
-Default: not selected; SUFFIX: ~
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Backup directory</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--backup-dir=DIR</option></para>
-<para>In combination with the <option>--backup</option> option, this tells rsync to store all backups in the specified folder. This is very useful for incremental backups. You can additionally specify a backup suffix using the <option>--suffix</option> option (otherwise the files backed up in the specified folder will keep  their original filenames).</para>
-<para>This option is only available if you ticked the <guilabel>Make backups</guilabel> option above.</para>
-<para>
-Default: not selected; DIR: <envar>$HOME</envar>
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect3>
+  <sect2 id="configuration_page_synchronization_filter">
+    <title>Filtering</title>   
 
-<sect3 id="configuration_page_synchronization_advanced_checksums">
-<title>Checksums</title>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Force fixed checksum block size</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-B</option>/<option>--block-size=SIZE</option></para>
-<para>This forces the block size used in the rsync algorithm to a fixed value. It is normally selected based on the size of each file being updated. See the <ulink url="http://rsync.samba.org/tech_report/">technical report</ulink> for details.</para>
-<para>
-Default: not selected; SIZE: 0
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Set block/file checksum seed</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>--checksum-seed=NUM</option></para>
-<para>Set the MD4 checksum seed to the integer NUM. This 4 byte checksum seed is included in each block and file MD4 checksum calculation. By default the checksum seed is generated by the server and defaults to the current time(). This option is used to set a specific checksum seed, which is useful for applications that want repeatable block and file checksums, or in the case where the user wants a more random checksum seed. Note that setting NUM to 0 causes rsync to use the default of  time() for checksum seed.</para>
-<para>
-Default: not selected; NUM: 0
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guibutton>Skip files based on checksum</guibutton>
-</menuchoice>
-</term>
-<listitem>
-<para>Option: <option>-c</option>/<option>--checksum</option></para>
-<para>This forces the sender to checksum every regular file using a 128-bit MD4 checksum. It does this during the initial file system scan as it builds the list of all available files. The receiver then checksums its version of each file (if it exists and  it  has  the  same  size as its sender-side counterpart) in order to decide which files  need  to  be  updated: files with either a changed size or a changed checksum are selected for transfer. Since this whole-file checksumming of  all files on both sides of the connection occurs in addition to the automatic checksum verifications that occur during a file's transfer, this option can be quite slow.</para>
-<para>
-Default: not selected
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect3>
-</sect2>
+    <sect3 id="configuration_page_synchronization_filter_general">
+      <title>General</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Auto-ignore files in the same way CVS does</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-C</option>/<option>--cvs-exclude</option></para>
+            <para>This is a useful shorthand for excluding a broad range of files that you often don't want to transfer between systems. It uses the same algorithm that CVS uses to determine if a file should be ignored.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Exclude files matching this pattern</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--exclude=PATTERN</option></para>
+            <para>This  option is a simplified form of the <option>--filter</option> option that defaults to an exclude rule and does not allow the full rule-parsing syntax of normal filter rules.</para>
+            <para>Default: not selected; PATTERN: empty</para>
+          </listitem>             
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Read exclude patterns from</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--exclude-from=FILE</option></para>
+            <para>This option is related to the <option>--exclude</option> option, but it specifies a FILE that contains exclude patterns (one per line). Blank lines in the file  and lines starting with ';' or '#' are ignored. You have to choose an existing file to make this option work.</para>
+            <para>Default: not selected; FILE: <filename>$HOME/exclude.txt</filename></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Do not exclude files matching this pattern</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--include=PATTERN</option></para>
+            <para>This option is a simplified form of the <option>--filter</option> option that defaults to an include rule and does not allow the full rule-parsing syntax of normal filter rules.</para>
+            <para>Default: not selected; PATTERN: empty</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Read include patterns from</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--include-from=FILE</option></para>
+            <para>This option is related to the <option>--include</option> option, but it specifies a FILE that contains include patterns (one  per  line). Blank lines in the file and lines starting with ';' or '#' are ignored. You have to choose an existing file to make this option work.</para>
+            <para>Default: not selected; FILE: <filename>$HOME/include.txt</filename></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect3>
+
+    <sect3 id="configuration_page_synchronization_filter_rules">
+      <title>Filter Rules</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Custom filter rules</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-f</option>/<option>--filter=RULE</option></para>
+            <para>You can define one or more filter rules here. Each rule has to be prefixed with the <option>--filter=</option> or <option>-f</option> option string, because the contents of the text box will be passed to the <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> command AS IS.</para>
+            <para>This option allows you to add rules to selectively exclude  certain  files  from  the  list of files to be transferred. This is most useful in combination with a recursive transfer.</para>
+            <para>You may use as many <option>--filter</option> options as you like to build up the list of files to exclude.</para>
+            <para>See  the  FILTER  RULES section of the <ulink url="man:/rsync">manual page</ulink> for detailed information on this option.</para>
+            <para>Default: empty</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Use --filter='dir-merge /.rsync-filter' filter rule</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-F</option></para>
+            <para>This option tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to look for per-folder <filename>.rsync-filter</filename> files that have been sprinkled through the hierarchy and use their rules to filter the files in the transfer.</para>
+            <para>See the FILTER RULES section of the <ulink url="man:/rsync">manual page</ulink> for detailed information on how this option works.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Use --filter='exclude .rsync-filter' filter rule</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-FF</option></para>
+            <para>This option filters out the <filename>.rsync-filter</filename> files themselves from the transfer.</para>
+            <para>See the FILTER RULES section of the <ulink url="man:/rsync">manual page</ulink> for detailed information on how this option works.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect3>
+  </sect2>
+
+<!-- 
+      Configuring Smb4K : Synchronization : Advanced Settings
+-->
+
+  <sect2 id="configuration_page_synchronization_advanced">
+    <title>Advanced Settings</title>
+
+    <sect3 id="configuration_page_synchronization_advanced_general">
+      <title>General</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Handle sparse files efficiently</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-S</option>/<option>--sparse</option></para>
+            <para>Try to handle sparse files efficiently so they take up less space on the destination. Conflicts with <option>--inplace</option> because it's not possible to overwrite data in a sparse fashion.</para>
+            <note><para>Do not use this option when the destination is a &Solaris; "tmpfs" file system. It doesn't seem to handle seeks over null regions correctly and ends up corrupting the files.</para></note>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Copy files whole (no rsync algorithm)</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-W</option>/<option>--whole-file</option></para>
+            <para>With this option the incremental <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> algorithm is not used and the whole file is sent as-is instead. The transfer may be faster if this option is used when the bandwidth between the source and destination machines is higher than the bandwidth to disk (especially when the "disk" is actually a networked file system). This is the default when both the source and destination are specified as local paths.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Do not cross file system boundaries</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-x</option>/<option>--one-file-system</option></para>
+            <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to avoid crossing a file system boundary when recursing. This does not limit the user's ability to specify items to copy from multiple file systems, just <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink>'s recursion through the hierarchy of each folder that the user specified, and also the analogous recursion on the receiving side during deletion. Also keep in mind that <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> treats a "bind" mount to the same device as being on the same file system.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Only update files that already exist</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--existing</option>/<option>--ignore-non-existing</option></para>
+            <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to skip updating files that do not exist yet on the destination. If this option is combined with the <option>--ignore-existing</option> option, no files will be updated (which can be useful if all you want to do is to delete missing files).</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Ignore files that already exist</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--ignore-existing</option></para>
+            <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to skip updating files that already exist on the destination. See also <option>--ignore-non-existing</option>.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Delay updates until the end of transfer</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--delay-updates</option></para>
+            <para>This option puts the temporary file from each updated file into a holding folder until the end of the transfer, at which time all the files are renamed into place in rapid succession.</para>
+            <para>It is strongly recommended that you read the <ulink url="man:/rsync">manual page</ulink> before using this option.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect3>
+
+    <sect3 id="configuration_page_synchronization_advanced_backup">
+      <title>Backup</title>
+  
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Make backups</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-b</option>/<option>--backups</option></para>
+            <para>With this option, preexisting destination files are renamed as each file is transferred or deleted. You can control where the backup file goes and what (if any) suffix gets appended using the <option>--backup-dir</option> and <option>--suffix</option> options.</para>
+            <para>Note that if you don't specify <option>--backup-dir</option>, (1) the <option>--omit-dir-times</option> option will be implied, and (2) if <option>--delete</option> is also in effect (without <option>--delete-excluded</option>),  <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> will add a "protect" filter-rule for the backup suffix to the end of all your existing excludes (&eg; <option>-f "P *~"</option>). This will prevent previously backed-up files from being deleted. Note that if you are supplying your own filter rules, you may  need  to  manually insert your own exclude/protect rule somewhere higher up in the list so that it has a high enough priority to be effective (&eg;, if  your rules specify a trailing inclusion/exclusion of '*', the auto-added rule would never be reached).</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Backup suffix</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--suffix=SUFFIX</option></para>
+            <para>This  option  allows  you  to override the default backup suffix used with the <option>--backup</option> option. The default suffix is a <emphasis>~</emphasis> if no <option>--backup-dir</option> was specified, otherwise it is an empty string.</para>
+            <para>This option is only available if you ticked the <guilabel>Make backups</guilabel> option above.</para>
+            <para>Default: not selected; SUFFIX: ~</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Backup directory</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--backup-dir=DIR</option></para>
+            <para>In combination with the <option>--backup</option> option, this tells rsync to store all backups in the specified folder. This is very useful for incremental backups. You can additionally specify a backup suffix using the <option>--suffix</option> option (otherwise the files backed up in the specified folder will keep  their original filenames).</para>
+            <para>This option is only available if you ticked the <guilabel>Make backups</guilabel> option above.</para>
+            <para>Default: not selected; DIR: <envar>$HOME</envar></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect3>
+
+    <sect3 id="configuration_page_synchronization_advanced_checksums">
+      <title>Checksums</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Force fixed checksum block size</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-B</option>/<option>--block-size=SIZE</option></para>
+            <para>This forces the block size used in the rsync algorithm to a fixed value. It is normally selected based on the size of each file being updated. See the <ulink url="http://rsync.samba.org/tech_report/">technical report</ulink> for details.</para>
+            <para>Default: not selected; SIZE: 0</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Set block/file checksum seed</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>--checksum-seed=NUM</option></para>
+            <para>Set the MD4 checksum seed to the integer NUM. This 4 byte checksum seed is included in each block and file MD4 checksum calculation. By default the checksum seed is generated by the server and defaults to the current time(). This option is used to set a specific checksum seed, which is useful for applications that want repeatable block and file checksums, or in the case where the user wants a more random checksum seed. Note that setting NUM to 0 causes rsync to use the default of  time() for checksum seed.</para>
+            <para>Default: not selected; NUM: 0</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Skip files based on checksum</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Option: <option>-c</option>/<option>--checksum</option></para>
+            <para>This forces the sender to checksum every regular file using a 128-bit MD4 checksum. It does this during the initial file system scan as it builds the list of all available files. The receiver then checksums its version of each file (if it exists and  it  has  the  same  size as its sender-side counterpart) in order to decide which files  need  to  be  updated: files with either a changed size or a changed checksum are selected for transfer. Since this whole-file checksumming of  all files on both sides of the connection occurs in addition to the automatic checksum verifications that occur during a file's transfer, this option can be quite slow.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect3>
+  </sect2>
 </sect1>
 
 
-<!-- Configuring Smb4K : Custom Options -->
+<!-- 
+      Configuring Smb4K : Custom Options
+-->
 
 <sect1 id="configuration_page_custom_options">
-<title>Custom Options</title>
-<para>All servers and shares for which you defined custom options are listed here.</para>
+  <title>Custom Options</title>
 
-<screenshot>
-  <screeninfo>Screenshot of the "Custom Options" configuration tab</screeninfo>
-  <mediaobject>
-    <imageobject>
-      <imagedata fileref="configuration_page_custom_options.png" format="PNG" />
-    </imageobject>
-    <textobject>
-      <phrase>The "Custom Options" configuration tab</phrase>
-    </textobject>
-  </mediaobject>
-</screenshot>
+  <para>All servers and shares for which you defined custom options are listed here.</para>
 
-<para>The options defined for a network item can be edited by either double clicking an entry in the list view or by choosing the <guimenuitem>Edit</guimenuitem> item from the popup menu (right click on the selected item). The custom options are then being loaded and can be edited. To remove an entry, right click it and choose the <guimenuitem>Remove</guimenuitem> item from the popup menu. All network items may be removed at once by choosing the <guimenuitem>Clear List</guimenuitem> item. Changes can be reset by choosing the <guimenuitem>Undo</guimenuitem> item from the popup menu.</para>
+  <screenshot>
+    <screeninfo>Screenshot of the "Custom Options" configuration tab</screeninfo>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="configuration_page_custom_options.png" format="PNG" />
+      </imageobject>
+      <textobject>
+        <phrase>The "Custom Options" configuration tab</phrase>
+      </textobject>
+    </mediaobject>
+  </screenshot>
 
-<para>The custom options are accessible through the editor widgets on the right. In the <guilabel>General</guilabel> section the UNC address of the network item and its editable IP address are shown. In case of a share, you can also define whether it should always be remounted. Below, the custom options are arranged in two tabs:</para>
+  <para>The options defined for a network item can be edited by either double clicking an entry in the list view or by choosing the <guimenuitem>Edit</guimenuitem> item from the popup menu (right click on the selected item). The custom options are then being loaded and can be edited. To remove an entry, right click it and choose the <guimenuitem>Remove</guimenuitem> item from the popup menu. All network items may be removed at once by choosing the <guimenuitem>Clear List</guimenuitem> item. Changes can be reset by choosing the <guimenuitem>Undo</guimenuitem> item from the popup menu.</para>
 
-<!-- Configuring Smb4K : Custom Options : Samba -->
+  <para>The custom options are accessible through the editor widgets on the right. In the <guilabel>General</guilabel> section the UNC address of the network item and its editable IP address are shown. In case of a share, you can also define whether it should always be remounted. Below, the custom options are arranged in two tabs:</para>
 
-<sect2 id="configuration_page_custom_options_samba">
-  <title>Samba</title>
+<!-- 
+      Configuring Smb4K : Custom Options : Samba
+-->
+
+  <sect2 id="configuration_page_custom_options_samba">
+    <title>Samba</title>
   
-  <para>You can edit various Samba settings here. Which ones are available depends on the operating system you are using. For more information, have a look at the description of the <link linkend="configuration_page_samba">Samba</link> configuration page.</para>
-</sect2>
+    <para>You can edit various Samba settings here. Which ones are available depends on the operating system you are using. For more information, have a look at the description of the <link linkend="configuration_page_samba">Samba</link> configuration page.</para>
+  </sect2>
 
-<!-- Configuring Smb4K : Custom Options : Wake-On-LAN -->
+<!-- 
+      Configuring Smb4K : Custom Options : Wake-On-LAN 
+-->
 
-<sect2 id="configuration_page_custom_options_wol">
-  <title>Wake-On-LAN</title>
+  <sect2 id="configuration_page_custom_options_wol">
+    <title>Wake-On-LAN</title>
   
-  <para>Here you can edit the options that you previously defined through the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
-</sect2>
+    <para>Here you can edit the options that you previously defined through the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
+  </sect2>
 </sect1>
 
-<!-- Configuring Smb4K : Profiles -->
+<!-- 
+      Configuring Smb4K : Profiles 
+-->
 
 <sect1 id="configuration_profiles">
   <title>Profiles</title>
@@ -3808,17 +3596,20 @@ Default: not selected
     </mediaobject>
   </screenshot>
 
-<!-- Configuring Smb4K : Profiles : Settings -->
+<!--
+      Configuring Smb4K : Profiles : Settings 
+-->
 
   <sect2 id="configuration_profiles_settings">
     <title>Settings</title>
+
     <variablelist>
       <varlistentry>
         <term>
           <menuchoice><guibutton>Use profiles</guibutton></menuchoice>
         </term>
         <listitem>
-          <para>Make Smb4K use profiles. This enables you to define different bookmarks and custom options for each profile. This is especially useful if you are using a laptop in different network neighborhoods, e. g. at home and at work. When enabling this setting the first time, the first entry in the <link linkend="configuration_profiles_profiles">profiles list</link> will be the active profile.</para>
+          <para>Make Smb4K use profiles. This enables you to define different bookmarks and custom options for each profile. This is especially useful if you are using a laptop in different network neighborhoods, &eg; at home and at work. When enabling this setting the first time, the first entry in the <link linkend="configuration_profiles_profiles">profiles list</link> will be the active profile.</para>
           <para>Default: not selected</para>
         </listitem>
       </varlistentry>
@@ -3838,6 +3629,7 @@ Default: not selected
 
   <sect2 id="configuration_profiles_profiles">
     <title>Profiles</title>
+
     <para>Here, you can manage your profiles. By default, there are two pre-defined ones (<guilabel>Home</guilabel> and <guilabel>Work</guilabel>), but you can add your own ones. When you enabled the use of profiles the first time, the first entry in the list will be the active profile.</para>
     <para>When you rename a profile, the settings are migrated automatically (without showing the migration assistant). If you enabled the use of the migration assistant, it is shown when you remove a profile giving you the opportunity to migrate the stored settings to another profile. If the use of the migration assistant is disabled, the profile and all of its settings are removed.</para>
   </sect2>
@@ -4146,7 +3938,7 @@ Default: not selected
 </term>
 <listitem>
 <para>
-<action>Unmount all of the mounted shares at once. In the default configuration this is restricted to the user's shares, but this can be altered in the <link linkend="configuration_shares_behavior">configuration dialog</link>. For further information read the <link linkend="mainwindow_shares_unmounting">Unmounting Shares</link> section.</action>
+<action>Unmount all of the mounted shares at once. In the default configuration this is restricted to the user's shares, but this can be altered in the <link linkend="conmfiguration_page_shares_behavior">configuration dialog</link>. For further information read the <link linkend="mainwindow_shares_unmounting">Unmounting Shares</link> section.</action>
 </para>
 </listitem>
 </varlistentry>
