@@ -281,7 +281,7 @@ bool Smb4KConfigDialog::checkNetworkPage()
   QRadioButton *query_custom_master = m_network->widget()->findChild<QRadioButton *>("kcfg_QueryCustomMaster");
   KLineEdit *custom_master_input    = m_network->widget()->findChild<KLineEdit *>("kcfg_CustomMasterBrowser");
   
-  QString msg = i18n("An incorrect setting has been found. You are now taken to the corresponding dialog page to fix it.");
+  QString msg = i18n("<qt>An incorrect setting has been found. You are now taken to the corresponding configuration page to fix it.</qt>");
 
   if ((query_custom_master && query_custom_master->isChecked()) &&
       (custom_master_input && custom_master_input->text().trimmed().isEmpty()))
@@ -320,7 +320,7 @@ bool Smb4KConfigDialog::checkSharesPage()
 {
   KUrlRequester *mount_prefix = m_shares->widget()->findChild<KUrlRequester *>("kcfg_MountPrefix");
   
-  QString msg = i18n("An incorrect setting has been found. You are now taken to the corresponding dialog page to fix it.");
+  QString msg = i18n("<qt>An incorrect setting has been found. You are now taken to the corresponding configuration page to fix it.</qt>");
   
   if (mount_prefix && mount_prefix->url().path().trimmed().isEmpty())
   {
@@ -343,7 +343,7 @@ bool Smb4KConfigDialog::checkMountingPage()
 #if !defined(UNSUPPORTED_PLATFORM)
   KLineEdit *file_mask = m_mounting->widget()->findChild<KLineEdit *>("kcfg_FileMask");
   
-  QString msg = i18n("An incorrect setting has been found. You are now taken to the corresponding dialog page to fix it.");
+  QString msg = i18n("<qt>An incorrect setting has been found. You are now taken to the corresponding configuration page to fix it.</qt>");
   
   if (file_mask && file_mask->text().trimmed().isEmpty())
   {
@@ -380,7 +380,7 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
 {
   KUrlRequester *sync_prefix = m_synchronization->widget()->findChild<KUrlRequester *>("kcfg_RsyncPrefix");
   
-  QString msg = i18n("An incorrect setting has been found. You are now taken to the corresponding dialog page to fix it.");
+  QString msg = i18n("<qt>An incorrect setting has been found. You are now taken to the corresponding configuration page to fix it.</qt>");
   
   if (sync_prefix && sync_prefix->url().path().trimmed().isEmpty())
   {
@@ -757,11 +757,10 @@ void Smb4KConfigDialog::updateSettings()
   saveCustomOptions();
   slotSaveAuthenticationInformation();
   propagateProfilesChanges();
+  (void)checkSettings();
   
   KConfigGroup group(Smb4KSettings::self()->config(), "ConfigDialog");
   KWindowConfig::saveWindowSize(windowHandle(), group);
-  
-  qDebug() << "Smb4KConfigDialog::updateSettings(): Implement checkSettings()!";
       
   KConfigDialog::updateSettings();
 }
