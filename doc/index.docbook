@@ -133,7 +133,7 @@
   </mediaobject>
 </screenshot>
 
-<para>&smb4k; comes with a compact unified toolbar as the default, but the user can still choose to use multiple toolbars. If you wish to use the classical way, four toolbars are defined, for each widget one: the main toolbar, the toolbars for the <guilabel>Network Neighborhood</guilabel> widget, the <guilabel>Shares View</guilabel> widget and the <guilabel>Network Search</guilabel> widget. The unified toolbar contains some of the main actions, like <guimenuitem>Configure &smb4k;</guimenuitem> and <guimenuitem>Quit</guimenuitem>. It also dynamically loads the actions of the dock widget that currently has got the focus. For additional information and some important warnings, please have a look at the sections discussing the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, <link linkend="network_search_dialog">search dialog</link>, and <link linkend="mounted_shares_view">mounted shares view</link>.</para>
+<para>&smb4k; comes with a compact unified toolbar as the default, but the user can still choose to use multiple toolbars. If you wish to use the classical way, four toolbars are defined, for each widget one: the main toolbar, the toolbars for the <guilabel>Network Neighborhood</guilabel> widget, the <guilabel>Shares View</guilabel> widget and the <guilabel>Network Search</guilabel> widget. The unified toolbar contains some of the main actions, like <guimenuitem>Configure &smb4k;</guimenuitem> and <guimenuitem>Quit</guimenuitem>. It also dynamically loads the actions of the dock widget that currently has got the focus. For additional information and some important warnings, please have a look at the sections discussing the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, <link linkend="network_search_dialog">search dialog</link>, and <link linkend="shares_view">mounted shares view</link>.</para>
 
 <para>The status bar gives some information about the current status of &smb4k;. If the application is processing a user request (&eg; mounting a share), a descriptive message is displayed in the leftmost section and a progress bar is shown with a busy indicator. The two icons on the right hand side indicate if there are shares mounted (remote folder icon) and the status of the authentication system (wallet or key icon).</para>
 
@@ -346,7 +346,7 @@
   <para>Here you can enter the location of the share either as <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention">Uniform Naming Convention (UNC)</ulink> address in the form <screen>//[USER@]SERVER/SHARE</screen> or <screen>\\[USER@]SERVER\SHARE</screen> or as URL in the form <screen>[smb:]//[user@]server:port/share</screen> The <guibutton>OK</guibutton> button will be enabled and you can press it to mount the share. However, it is advisable to enter the IP address and the workgroup of the server, too. If you want to add the share to the bookmarks at the same time, tick the <guibutton>Add this share to the bookmarks</guibutton> check box.</para></listitem>
 </orderedlist>
 
-<para>Often a share is password protected. In this case, an <link linkend="mainwindow_network_authentication">authentication dialog</link> will appear and you have to enter the correct user name (if not already provided) and password. &smb4k; will proceed mounting the share unless a wrong user name or password was supplied. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="mounted_shares_view">mounted shares view</link>. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (&Linux;) or <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (FreeBSD, NetBSD) will be shown.</para>
+<para>Often a share is password protected. In this case, an <link linkend="mainwindow_network_authentication">authentication dialog</link> will appear and you have to enter the correct user name (if not already provided) and password. &smb4k; will proceed mounting the share unless a wrong user name or password was supplied. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="shares_view">mounted shares view</link>. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (&Linux;) or <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (FreeBSD, NetBSD) will be shown.</para>
 </sect2>
 
 <!-- Using Smb4K : The Network Neighborhood Browser : Printing Files -->
@@ -569,161 +569,198 @@
 </sect2>
 </sect1>
 
-<!-- Using Smb4K : The Mounted Shares View -->
+<!-- 
+      Using Smb4K : The Mounted Shares View 
+-->
 
-<sect1 id="mounted_shares_view">
-<title>The Mounted Shares View</title>
-<para>In the shares view, you can interact with the mounted shares on your system.</para>
+<sect1 id="shares_view">
+  <title>The Mounted Shares View</title>
+  <para>In the shares view, you can interact with the mounted shares on your system.</para>
 
-<!-- Using Smb4K : The Mounted Shares View : Different Views -->
+<!-- 
+      Using Smb4K : The Mounted Shares View : Different Views 
+-->
 
-<sect2 id="mounted_shares_view_views">
-<title>Different Views</title>
-<para>&smb4k; comes with two alternative views: an icon and a list view. They are both shown below.</para>
-<para>The icon view:</para>
-<screenshot>
-  <screeninfo>Screenshot of the shares icon view</screeninfo>
-  <mediaobject>
-  <imageobject>
-  <imagedata fileref="shares_icon_view.png" format="PNG" />
-  </imageobject>
-  <textobject>
-  <phrase>The shares icon view</phrase>
-  </textobject>
-  </mediaobject>
-</screenshot>
-<para>The list view:</para>
-<screenshot>
-  <screeninfo>Screenshot of the shares list view</screeninfo>
-  <mediaobject>
-  <imageobject>
-  <imagedata fileref="shares_list_view.png" format="PNG" />
-  </imageobject>
-  <textobject>
-  <phrase>The shares list view</phrase>
-  </textobject>
-  </mediaobject>
-</screenshot>
+  <sect2 id="shares_view_views">
+    <title>Different Views</title>
 
-<para>The default view is the icon view where the shares are displayed as icons along with their name or mount point. In the list view all shares are displayed with their name or mount point, the file system and the disk usage. More information can be included by adjusting the <link linkend="configuration_user_interface_shares_view">settings</link>.</para>
+    <para>&smb4k; comes with two alternative views: an icon and a list view. They are both shown below. The default one is the icon view.</para>
+    <para>The icon view:</para>
+    <screenshot>
+      <screeninfo>Screenshot of the shares icon view</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="shares_view_icon_view.png" format="PNG" />
+        </imageobject>
+        <textobject>
+          <phrase>The shares icon view</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+    <para>The list view:</para>
+    <screenshot>
+      <screeninfo>Screenshot of the shares list view</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="shares_view_list_view.png" format="PNG" />
+        </imageobject>
+        <textobject>
+          <phrase>The shares list view</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
 
-<para>You can switch between the two views by either selecting an entry from the <link linkend="mainwindow_overview"><guibutton>Shares View</guibutton></link> menu or by changing the settings in the <link linkend="configuration_user_interface_shares_view">configuration dialog</link>.</para>
-<para>By default, only your own mounts are displayed in the shares view. However, you can tell &smb4k; to show all mounts by altering the <link linkend="conmfiguration_page_shares_behavior">respective settings</link>.</para>
-</sect2>
+    <para>You can switch between the two views by selecting either the appropriate entry in the <guimenuitem>View Modes</guimenuitem> from the <link linkend="mainwindow_overview"><guimenu>Shares View</guimenu></link> menu of the main window or in the shares view's <link linkend="shares_view_actions_popup_menu">popup menu</link>.</para>
+    <para>By default, only your own mounts are displayed. However, you can tell &smb4k; to show all mounts by altering the <link linkend="conmfiguration_page_shares_behavior">respective settings</link>.</para>
+  </sect2>
 
-<!-- Using Smb4K : The Mounted Shares View : Actions and Popup Menu -->
+<!-- 
+      Using Smb4K : The Mounted Shares View : Actions and Popup Menu
+-->
 
-<sect2 id="mounted_shares_view_menu">
-  <title>Actions and Popup Menu</title>
+  <sect2 id="shares_view_actions_popup_menu">
+    <title>Actions and Popup Menu</title>
 
-<para>For the shares view several actions are defined. They are present in the menu bar under <guimenu>Shares</guimenu>, the tool bar and in its popup menu. The following ones are available:</para>
+    <para>For the shares view several actions are defined. They are present in the menu bar under <guimenu>Shares</guimenu>, the tool bar and in its popup menu. The following ones are available:</para>
 
-<variablelist>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut>
-        <guimenuitem>Unmount</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Unmount one or multiple selected shares. The ability to unmount shares is by default restricted to the ones that are owned by you. However, you can change this behavior by changing the <link linkend="conmfiguration_page_shares_behavior">settings</link> in the configuration dialog. If no share is selected in the shares view, this button is disabled.</para>
-      <para>&smb4k; also provides the ability to force the unmounting of shares (&Linux; only). This might be useful with inaccessible shares that cannot be unmounted the normal way. To enable this feature, you need to modify the <link linkend="conmfiguration_page_shares_behavior">settings</link> in the configuration dialog.</para>
-      <para>Read the <link linkend="mainwindow_shares_unmounting">Unmounting Shares</link> section for more details.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <shortcut><keycombo action="simul">&Ctrl; <keycap>N</keycap></keycombo></shortcut>
-        <guimenuitem>Unmount All</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Unmount all shares at once. The restrictions noted above also apply here. If you do not have any shares mounted, this button is disabled.</para>
-      <para>Read the <link linkend="mainwindow_shares_unmounting">Unmounting Shares</link> section for more details.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <guimenuitem>Add Bookmark</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Add a bookmark to the currently selected mounted share. This action is disabled if no share is selected.</para>
-      <para>Read the <link linkend="mainwindow_add_bookmarks">Adding Bookmarks</link> section for more details.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <shortcut><keycombo action="simul">&Ctrl; <keycap>Y</keycap></keycombo></shortcut>
-        <guimenuitem>Synchronize</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Start the <link linkend="mainwindow_shares_synchronization">synchronization</link> of a share with a local copy or vice versa. This menu entry is only enabled if you installed the program <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink>.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <shortcut><keycombo action="simul">&Ctrl; <keycap>L</keycap></keycombo></shortcut>
-        <guimenuitem>Open with Konsole</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Open the base folder of a share in &konsole;. This menu item is useful if you need to run shell scripts, &etc;</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <shortcut><keycombo action="simul">&Ctrl; <keycap>I</keycap></keycombo></shortcut>
-        <guimenuitem>Open with File Manager</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Open the contents of a share in the default file manager.</para>
-    </listitem>
-  </varlistentry>
-</variablelist>
+    <variablelist>
+      <varlistentry>
+        <term>
+          <menuchoice><guimenuitem>View Modes</guimenuitem></menuchoice>
+        </term>
+        <listitem>
+          <para>Choose the view mode from the submenu.</para>
+          <variablelist>
+            <varlistentry>
+              <term>
+                <menuchoice><guimenuitem>Icon View</guimenuitem></menuchoice>
+              </term>
+              <listitem>
+                <para>The shares are shown in an icon view.</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term>
+                <menuchoice><guimenuitem>List View</guimenuitem></menuchoice>
+              </term>
+              <listitem>
+                <para>The shares are shown in a list view.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut>
+            <guimenuitem>Unmount</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Unmount one or multiple selected shares. The ability to unmount shares is by default restricted to the ones that are owned by you. However, you can change this behavior by changing the <link linkend="conmfiguration_page_shares_behavior">settings</link> in the configuration dialog. If no share is selected in the shares view, this button is disabled.</para>
+          <para>&smb4k; also provides the ability to force the unmounting of shares (&Linux; only). This might be useful with inaccessible shares that cannot be unmounted the normal way. To enable this feature, you need to modify the <link linkend="conmfiguration_page_shares_behavior">settings</link> in the configuration dialog.</para>
+          <para>Read the <link linkend="mainwindow_shares_unmounting">Unmounting Shares</link> section for more details.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>N</keycap></keycombo></shortcut>
+            <guimenuitem>Unmount All</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Unmount all shares at once. The restrictions noted above also apply here. If you do not have any shares mounted, this button is disabled.</para>
+          <para>Read the <link linkend="mainwindow_shares_unmounting">Unmounting Shares</link> section for more details.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <guimenuitem>Add Bookmark</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Add a bookmark to the currently selected mounted share. This action is disabled if no share is selected.</para>
+          <para>Read the <link linkend="mainwindow_add_bookmarks">Adding Bookmarks</link> section for more details.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>Y</keycap></keycombo></shortcut>
+            <guimenuitem>Synchronize</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Start the <link linkend="mainwindow_shares_synchronization">synchronization</link> of a share with a local copy or vice versa. This menu entry is only enabled if you installed the program <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> and a share is selected.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>L</keycap></keycombo></shortcut>
+            <guimenuitem>Open with Konsole</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Open the base folder of a share in &konsole;. This menu item is useful if you need to run shell scripts, &etc;</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>I</keycap></keycombo></shortcut>
+            <guimenuitem>Open with File Manager</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Open the contents of a share in the default file manager.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
 
-<para>The popup menu includes all actions that can be performed on a mounted share:</para>
-<screenshot>
-  <screeninfo>Screenshot of the popup menu of the shares view</screeninfo>
-  <mediaobject>
-    <imageobject>
-      <imagedata fileref="popup_menu_shares_view.png" format="PNG" />
-    </imageobject>
-    <textobject>
-      <phrase>The popup menu of the shares view</phrase>
-    </textobject>
-  </mediaobject>
-</screenshot>
-<para>It can be opened by clicking the right mouse button.</para>
-</sect2>
+    <para>The popup menu includes all actions that can be performed on a mounted share:</para>
+    <screenshot>
+      <screeninfo>Screenshot of the popup menu of the shares view</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="shares_view_popup_menu.png" format="PNG" />
+        </imageobject>
+        <textobject>
+          <phrase>The popup menu of the shares view</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+    <para>It can be opened by clicking the right mouse button.</para>
+  </sect2>
 
-<!-- Using Smb4K : The Mounted Shares View : Tooltips -->
+<!-- 
+      Using Smb4K : The Mounted Shares View : Tooltips 
+-->
 
-<sect2 id="mounted_shares_view_tooltips">
-<title>Tooltips</title>
-<para>The tooltips provide information about the share name, the mount point, the user and group, the login, the file system, the disk usage, and the free disk space. If the share is <link linkend="mounted_shares_view_inaccessible_shares">inaccessible</link>, these values are marked as unknown.</para>
-<para>Tooltips are enabled by default. You can deactivate them in the <link linkend="configuration_user_interface_shares_tooltips">configuration dialog</link>.</para>
-</sect2>
+  <sect2 id="shares_view_tooltips">
+    <title>Tooltips</title>
 
-<!-- Using Smb4K : The Mounted Shares View : Inaccessible Shares -->
+    <para>The tooltips provide information about the share name, the mount point, the user and group, the login, the file system, the disk usage, and the free disk space. If the share is <link linkend="shares_view_inaccessible_shares">inaccessible</link>, these values are marked as unknown.</para>
+    <para>Tooltips are enabled by default. You can deactivate them in the <link linkend="configuration_user_interface_shares_tooltips">configuration dialog</link>.</para>
+  </sect2>
 
-<sect2 id="mounted_shares_view_inaccessible_shares">
-<title>Inaccessible Shares</title>
-<para>&smb4k; periodically checks all mounted shares if they are still accessible. If an inaccessible share is encountered, it will be marked with a <link linkend="mounted_shares_view_icons">modified icon</link> and you will not be able to open or synchronize it anymore. Unmounting and adding a bookmark is still possible.</para>
-<note><para>The program might freeze for a short period of time due to an inaccessible share. It will recover afterwards.</para></note>
-</sect2>
+<!-- 
+      Using Smb4K : The Mounted Shares View : Inaccessible Shares 
+-->
+
+  <sect2 id="shares_view_inaccessible_shares">
+    <title>Inaccessible Shares</title>
+
+    <para>&smb4k; periodically checks all mounted shares if they are still accessible. If an inaccessible share is encountered, it will be marked with a <link linkend="shares_view_icons">modified icon</link> and you will not be able to open or synchronize it anymore. Unmounting and adding a bookmark is still possible.</para>
+    <note><para>The program might freeze for a short period of time due to an inaccessible share. It will recover afterwards.</para></note>
+  </sect2>
 
 <!-- Using Smb4K : The Mounted Shares View : Icons -->
 
-<sect2 id="mounted_shares_view_icons">
+<sect2 id="shares_view_icons">
 <title>Icons</title>
 <para>The shares views know three different icons that may be presented to the user:</para>
 <screenshot>
@@ -744,14 +781,28 @@
 </itemizedlist>
 </sect2>
 
-<!-- Using Smb4K : The Mounted Shares View : Drag-and-Drop -->
+<!-- 
+      Using Smb4K : The Mounted Shares View : Drag-and-Drop 
+-->
 
-<sect2 id="mainwindow_shares_dnd">
-<title>Drag-and-Drop</title>
-<para>&smb4k; supports drag-and-drop in the shares views:</para>
-<para>You can drag a share icon from within the shares view onto the desktop or into another application (&eg; &dolphin;) and drop it there. You will then maybe get a popup menu asking you if you want to copy, link or move the contents of the share. When choosing the appropriate operation please remember that under most circumstances moving and linking the share might not be a good idea. The popup menu can be avoided if you hold down the &Ctrl; key while you are dragging and dropping the share.</para>
-<para>Files and directories can be transferred to a mounted share by dragging them over its icon in the view and drop them there. By default the data will be moved to the share. To copy it, hold down the &Ctrl; key while you are dragging and dropping it. The transfer will only be successful if the share was mounted with read and write permissions.</para>
-</sect2>
+  <sect2 id="shares_view_drag_and_drop">
+    <title>Drag-and-Drop</title>
+
+    <para>&smb4k; supports drag-and-drop in the shares view. To transfer or link data to a share, drag the files and/or folders over the share icon and drop them there. A popup menu will open asking you what you want to do. Choose the appropriate action (copy, move or link).</para>
+    <screenshot>
+      <screeninfo>Screenshot of the shares view with after the user dropped a file</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="shares_view_drop_popup_menu.png" format="PNG" />
+        </imageobject>
+        <textobject>
+          <phrase>A popup menu opened after the user dropped a file onto a share</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+    <para>To avoid the popup menu, press the &Shift; key for moving, the &Ctrl; key for copying and the <keycombo>&Ctrl;&Shift;</keycombo> key combination for linking while dragging and dropping. The transfer will only be successful if the share was mounted with read and write permissions.</para>
+    <para>You can also drag and drop the whole share to the desktop or to another application (&eg; dolphin;). Again, a popup menu will open asking you, what you want to do. When choosing the appropriate operation, please remember that under most circumstances moving and linking the share might not be a good idea.</para>
+  </sect2>
 
 <!-- Using Smb4K : The Mounted Shares View : Unmounting Shares -->
 
@@ -888,7 +939,7 @@
   </varlistentry>
 </variablelist>
   
-<para>For each mounted share you can open a submenu that contains the following entries. For further information read <link linkend="mounted_shares_view_menu">here</link>.</para>
+<para>For each mounted share you can open a submenu that contains the following entries. For further information read <link linkend="shares_view_actions_popup_menu">here</link>.</para>
 
 <variablelist>
   <varlistentry>
@@ -918,7 +969,7 @@
       </menuchoice>
     </term>
     <listitem>
-      <para>Synchronize the mounted share with a local copy or vice versa. For further information read <link linkend="mounted_shares_view_menu">here</link> and <link linkend="mainwindow_shares_synchronization">here</link>.</para>
+      <para>Synchronize the mounted share with a local copy or vice versa. For further information read <link linkend="shares_view_actions_popup_menu">here</link> and <link linkend="mainwindow_shares_synchronization">here</link>.</para>
     </listitem>
   </varlistentry>
   <varlistentry>
@@ -1146,7 +1197,7 @@
 
 <sect2 id="mainwindow_add_bookmarks">
 <title>Adding Bookmarks</title>
-<para>You can add bookmarks to your favorite shares from within the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, the <link linkend="mounted_shares_view">shares view</link> and the <link linkend="plasmoid">&plasmoid;</link>. In the dock widgets of the main window, this is done by selecting one or multiple shares and clicking the <menuchoice><guimenuitem>Add Bookmark</guimenuitem></menuchoice> action. In the &plasmoid;, you click the respective bookmark action next to the item's name. A dialog will then pop up where you can add a label and/or assign a group to the bookmark.</para>
+<para>You can add bookmarks to your favorite shares from within the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, the <link linkend="shares_view">shares view</link> and the <link linkend="plasmoid">&plasmoid;</link>. In the dock widgets of the main window, this is done by selecting one or multiple shares and clicking the <menuchoice><guimenuitem>Add Bookmark</guimenuitem></menuchoice> action. In the &plasmoid;, you click the respective bookmark action next to the item's name. A dialog will then pop up where you can add a label and/or assign a group to the bookmark.</para>
 <screenshot>
 <screeninfo>Screenshot of the bookmarks addition dialog</screeninfo>
 <mediaobject>
