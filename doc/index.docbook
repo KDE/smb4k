@@ -790,7 +790,7 @@
 
     <para>&smb4k; supports drag-and-drop in the shares view. To transfer or link data to a share, drag the files and/or folders over the share icon and drop them there. A popup menu will open asking you what you want to do. Choose the appropriate action (copy, move or link).</para>
     <screenshot>
-      <screeninfo>Screenshot of the shares view with after the user dropped a file</screeninfo>
+      <screeninfo>Screenshot of the shares view after the user dropped a file</screeninfo>
       <mediaobject>
         <imageobject>
           <imagedata fileref="shares_view_drop_popup_menu.png" format="PNG" />
@@ -801,7 +801,7 @@
       </mediaobject>
     </screenshot>
     <para>To avoid the popup menu, press the &Shift; key for moving, the &Ctrl; key for copying and the <keycombo>&Ctrl;&Shift;</keycombo> key combination for linking while dragging and dropping. The transfer will only be successful if the share was mounted with read and write permissions.</para>
-    <para>You can also drag and drop the whole share to the desktop or to another application (&eg; dolphin;). Again, a popup menu will open asking you, what you want to do. When choosing the appropriate operation, please remember that under most circumstances moving and linking the share might not be a good idea.</para>
+    <para>You can also drag and drop the whole share to the desktop or to another application (&eg; &dolphin;). Again, a popup menu will open asking you, what you want to do. When choosing the appropriate operation, please remember that under most circumstances moving and linking the share might not be a good idea.</para>
   </sect2>
 
 <!-- 
