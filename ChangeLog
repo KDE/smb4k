@@ -1,3 +1,18 @@
+Smb4K 1.2.2 (2016-11-12):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at
+https://quickgit.kde.org/?p=smb4k.git&a=shortlog&h=49babc09bf94b732c5bce85c9d825ca14e1eb138
+
+- Improved error message handling in the scanner. Mostly backported 
+  changes from master.
+- Accept the drop events (QEvent::accept()) in the shares views. 
+- Added remarks regarding the regession introduced by the security fixes 
+  released on April 12, 2016 to the handbook. Changed URL of the bug tracker 
+  to the KDE Bugtracking System. Bumped version number (and modification date)
+  of the handbook.
+- Now that Smb4K is on bugs.kde.org, remove the custom bug report address.
+
 Smb4K 1.2.1 (2015-09-04):
 
 See the summary of changes below. For a full list of changes, please
