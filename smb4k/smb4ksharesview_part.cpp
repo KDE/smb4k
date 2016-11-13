@@ -37,6 +37,7 @@
 #include "core/smb4kmounter.h"
 #include "core/smb4ksynchronizer.h"
 #include "core/smb4kbookmarkhandler.h"
+#include "core/smb4khardwareinterface.h"
 
 // Qt includes
 #include <QUrl>
@@ -55,8 +56,10 @@
 #include <KIconThemes/KIconLoader>
 #include <KI18n/KLocalizedString>
 #include <KWidgetsAddons/KActionMenu>
+#include <KWidgetsAddons/KMessageBox>
 #include <KXmlGui/KActionCollection>
 #include <KIOWidgets/KIO/DropJob>
+
 
 using namespace Smb4KGlobal;
 
@@ -482,10 +485,17 @@ void Smb4KSharesViewPart::slotDropEvent(Smb4KSharesViewItem *item, QDropEvent *e
   {
     if (e->mimeData()->hasUrls())
     {
-      QUrl dest = QUrl::fromLocalFile(item->shareItem()->path());
-      KIO::DropJob *job = drop(e, dest, KIO::DefaultFlags);
-      job->uiDelegate()->setAutoErrorHandlingEnabled(true);
-      job->uiDelegate()->setAutoWarningHandlingEnabled(true);
+      if (Smb4KHardwareInterface::self()->isOnline())
+      {
+        QUrl dest = QUrl::fromLocalFile(item->shareItem()->path());
+        KIO::DropJob *job = drop(e, dest, KIO::DefaultFlags);
+        job->uiDelegate()->setAutoErrorHandlingEnabled(true);
+        job->uiDelegate()->setAutoWarningHandlingEnabled(true);
+      }
+      else
+      {
+        KMessageBox::sorry(m_view, i18n("<qt>There is no active connection to the share <b>%1</b>! You cannot drop anything here.</qt>").arg(item->shareItem()->unc()));
+      }
     }
     else
     {

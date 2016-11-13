@@ -281,7 +281,7 @@ void Smb4KSharesView::dragMoveEvent(QDragMoveEvent *e)
   // Now we do our thing.
   Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(itemAt(e->pos()));
 
-  if (item && (item->flags() & Qt::ItemIsDropEnabled) && (e->proposedAction() & (Qt::CopyAction | Qt::MoveAction)))
+  if (item && !item->shareItem()->isInaccessible() && (item->flags() & Qt::ItemIsDropEnabled) && (e->proposedAction() & (Qt::CopyAction | Qt::MoveAction)))
   {
     QUrl url = QUrl::fromLocalFile(item->shareItem()->path());
 
@@ -306,7 +306,7 @@ void Smb4KSharesView::dropEvent(QDropEvent *e)
   // Get the item and process the drop event
   Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(itemAt(e->pos()));
 
-  if (item && (e->proposedAction() & (Qt::CopyAction|Qt::MoveAction)))
+  if (item && !item->shareItem()->isInaccessible() && (e->proposedAction() & (Qt::CopyAction|Qt::MoveAction)))
   {
     QUrl url = QUrl::fromLocalFile(item->shareItem()->path());
 
