@@ -13,6 +13,7 @@
   <name xml:lang="en-GB">Smb4K</name>
   <name xml:lang="es">Smb4K</name>
   <name xml:lang="et">Smb4K</name>
+  <name xml:lang="fi">Smb4K</name>
   <name xml:lang="fr">Smb4K</name>
   <name xml:lang="gl">Smb4K</name>
   <name xml:lang="it">Smb4K</name>
@@ -34,6 +35,7 @@
   <summary xml:lang="en-GB">Advanced Network Neighborhood Browser and Samba Share Mounting Utility</summary>
   <summary xml:lang="es">Navegador avanzado del entorno de red y utilidad para montar recursos compartidos de Samba</summary>
   <summary xml:lang="et">Täiustatud võrgunaabruse sirvija ja Samba ressursside ühendamise töövahend</summary>
+  <summary xml:lang="fi">Edistynyt verkkoympäristöselain ja Samba-jakoliitostyökalu</summary>
   <summary xml:lang="fr">Navigateur avancé de voisinage réseau et utilitaire pour le montage des partages Samba</summary>
   <summary xml:lang="gl">Navegador avanzado da veciñanza de rede e ferramenta para montar comparticións de Samba</summary>
   <summary xml:lang="it">Browser di rete avanzato e front-end per i programmi della suite software Samba</summary>
@@ -57,6 +59,7 @@
     <p xml:lang="en-GB">Smb4K is an advanced network neighborhood browser and Samba share mounting utility for the KDE Software Compilation. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.</p>
     <p xml:lang="es">Smb4K es un navegador avanzado del entorno de red y una utilidad de montaje de recursos compartidos Samba para «KDE Software Compilation». Escanea su entorno de red en busca de cualquier grupo de trabajo, servidor y recurso compartido disponible y puede montar todos los recursos compartidos deseados en su sistema de archivos local.</p>
     <p xml:lang="et">Smb4K on KDE tarkvarakomplekti täiustatud võrgunaabruse sirvija ja Samba ressursside ühendamise töövahend. See võib uurida võrgunaabruses välja kõik saadaolevad töögrupid, serverid ja jagatud ressursid ning ühendada kõik vajalikud ressursid sinu kohaliku failisüsteemiga.</p>
+    <p xml:lang="fi">Smb4K on edistynyt verkkoympäristöselain ja Samba-jakoliitostyökalu KDE-ohjelmistokokonaisuuteen. Se etsii verkostasi käytettävissä olevia työryhmiä, palvelimia ja jakoja sekä osaa liittää haluamasi jaot paikalliseen tiedostojärjestelmään.</p>
     <p xml:lang="fr">Smb4K est un navigateur de voisinage réseau avancé et un utilitaire de montage Samba pour KDE SC. Il balaye votre voisinage réseau à la recherche des groupes de travail, serveurs et partages disponibles et peut afficher tous les partages désirés sur votre système de fichiers local.</p>
     <p xml:lang="gl">Smb4K é un navegador avanzado da veciñanza de rede e unha ferramenta para montar comparticións de Samba que forma parte da colección de software de KDE. Examina a veciñanza de rede en busca de grupos de traballo, servidores e comparticións dispoñíbeis, e pode montar todas as comparticións que queira no seu sistema de ficheiros local.</p>
     <p xml:lang="it">Smb4K è un browser di rete avanzato e un front-end per i programmi della suite software Samba per KDE Software Compilation. Scansiona la tua rete per cercare tutti i gruppi di lavoro disponibili, i server e le condivisioni, e può montare tutte le condivisioni che desideri nel tuo file system.</p>
@@ -79,6 +82,7 @@
     <p xml:lang="en-GB">Smb4K utilises the programs of the Samba software suite. Its purpose is to provide a program that is easy to use and has as many features as possible.</p>
     <p xml:lang="es">Smb4K utiliza los programas de la suite de programas Samba. Su objetivo es proporcionar un programa que sea sencillo de usar y tenga tantas prestaciones como sea posible.</p>
     <p xml:lang="et">Smb4K kasutab ära Samba tarkvarakomplekti kuuluvaid programme. Selle eesmärk on pakkuda rakendust, mida oleks hõlpus kasutada ja millel oleks võimalikult palju väärt omadusi.</p>
+    <p xml:lang="fi">Smb4K käyttää Samba-ohjelmiston ohjelmia. Sen on tarkoitus olla helppokäyttöinen ja monipuolinen.</p>
     <p xml:lang="fr">Smb4K utilise les programmes de la suite logicielle Samba. Son objectif est de fournir un programme facile à utiliser et fournissant le plus de fonctionnalités possibles.</p>
     <p xml:lang="gl">Smb4K fai uso dos programas da colección de software Samba. O seu obxectivo é o de fornecer un programa fácil de usar que forneza tantas funcionalidades como sexa posíbel.</p>
     <p xml:lang="it">Smb4K utilizza i programmi della suite Samba. Il suo scopo è quello di fornire un programma che sia facile da usare, e che abbia più funzionalità possibili.</p>
@@ -102,6 +106,7 @@
     <p xml:lang="en-GB">Features:</p>
     <p xml:lang="es">Características:</p>
     <p xml:lang="et">Omadused:</p>
+    <p xml:lang="fi">Ominaisuuksia:</p>
     <p xml:lang="fr">Fonctionnalité :</p>
     <p xml:lang="gl">Funcionalidades:</p>
     <p xml:lang="it">Funzionalità:</p>
@@ -123,6 +128,7 @@
       <li xml:lang="en-GB">Scanning for (active) workgroups, hosts, and shares</li>
       <li xml:lang="es">Escaneo de grupos de trabajo, servidores y recursos compartidos (activos)</li>
       <li xml:lang="et">(Aktiivsete) töögruppide, masinate ja jagatud ressursside otsimine</li>
+      <li xml:lang="fi">(Aktiivisten) työryhmien, verkkokoneiden ja -jakojen etsintä</li>
       <li xml:lang="fr">Balayage des groupes de travail (actifs), hôtes et partages</li>
       <li xml:lang="gl">Pode atopar grupos de traballo (activos), servidores e comparticións.</li>
       <li xml:lang="it">Ricerca di gruppi di lavoro, host e condivisioni (attivi)</li>
@@ -143,6 +149,7 @@
       <li xml:lang="en-GB">Support of the CIFS (Linux) and SMBFS (FreeBSD) file system</li>
       <li xml:lang="es">Admite los sistemas de archivo CIFS (Linux) y SMBFS (FreeBSD)</li>
       <li xml:lang="et">CIFS (Linux) ja SMBFS (FreeBSD) failisüsteemide toetamine</li>
+      <li xml:lang="fi">CIFS- (Linux) ja SMBFS-tiedostojärjestelmien (FreeBSD) tuki</li>
       <li xml:lang="fr">Prise en charge des systèmes de fichiers CIFS (Linux) et SMBFS (FreeBSD)</li>
       <li xml:lang="gl">É compatíbel cos sistemas de ficheiros CIFS (Linux) e SMBFS (FreeBSD).</li>
       <li xml:lang="it">Supporta i file system CIFS (Linux) e SMBFS (FreeBSD)</li>
@@ -163,6 +170,7 @@
       <li xml:lang="en-GB">Mounting and unmounting of shares</li>
       <li xml:lang="es">Montaje y desmontaje de recursos compartidos</li>
       <li xml:lang="et">Jagatud ressursside ühendamine ja lahutamine</li>
+      <li xml:lang="fi">Jakojen liittäminen ja irrottaminen</li>
       <li xml:lang="fr">Montage et démontage des partages</li>
       <li xml:lang="gl">Permite montar e desmontar comparticións.</li>
       <li xml:lang="it">Montaggio e smontaggio delle condivisioni</li>
@@ -183,6 +191,7 @@
       <li xml:lang="en-GB">Access to the files of a mounted share using a file manager or terminal</li>
       <li xml:lang="es">Acceso a los archivos de un recurso compartido montado utilizando un gestor de archivos o un terminal</li>
       <li xml:lang="et">Ligipääs ühendatud jagatud ressursi failidele failihalduri või terminali vahendusel</li>
+      <li xml:lang="fi">Pääsy liitetyn jaon tiedostoihin tiedostonhallinnasta tai päätteestä</li>
       <li xml:lang="fr">Accès aux fichiers d'un partage à travers un gestionnaire de fichiers ou un terminal</li>
       <li xml:lang="gl">Permite acceder aos ficheiros dunha compartición montada usando un xestor de ficheiros ou un terminal.</li>
       <li xml:lang="it">Accesso ai file di una condivisione montata usando un file manager o un terminale</li>
@@ -203,6 +212,7 @@
       <li xml:lang="en-GB">Auto-detection of external mounts and unmounts</li>
       <li xml:lang="es">Detección automática de montajes y desmontajes externos</li>
       <li xml:lang="et">Väliste ühendamiste ja lahutamiste automaatne tuvastamine</li>
+      <li xml:lang="fi">Ulkoisten liitosten ja irrotusten automaattinen havaitseminen</li>
       <li xml:lang="fr">Auto-détection des montages et démontages externes</li>
       <li xml:lang="gl">Pode detectar automaticamente montaxes e desmontaxes externos.</li>
       <li xml:lang="it">Auto-rilevazione di montaggi o smontaggi esterni</li>
@@ -223,6 +233,7 @@
       <li xml:lang="en-GB">Remounting of previously used shares on program start</li>
       <li xml:lang="es">Vuelve a montar los recursos compartidos utilizados anteriormente al iniciar el programa</li>
       <li xml:lang="et">Varem kasutatud jagatud ressursside taasühendamine rakenduse käivitamisel</li>
+      <li xml:lang="fi">Aiemmin käytettyjen jakojen uudelleenliittäminen ohjelman käynnistyessä</li>
       <li xml:lang="fr">Remontage de partages précédemment utilisés lors du démarrage du programme</li>
       <li xml:lang="gl">Pode volver a montar comparticións usadas previamente ao iniciar o programa.</li>
       <li xml:lang="it">Rimontaggio di una condivisione usata in precedenza all'avvio del programma</li>
@@ -243,6 +254,7 @@
       <li xml:lang="en-GB">Miscellaneous information about remote network items and mounted shares</li>
       <li xml:lang="es">Información variada sobre los elementos remotos de la red y los recursos compartidos montados</li>
       <li xml:lang="et">Mitmesugune teave võrguelementide ja ühendatud jagatud ressursside kohta</li>
+      <li xml:lang="fi">Erilaiset tiedot etäverkkokohteista ja liitetyistä jaoista</li>
       <li xml:lang="fr">Infos diverses sur les éléments réseau distants et les partages montés</li>
       <li xml:lang="gl">Fornece información variada sobre elementos remotos da rede e comparticións montadas.</li>
       <li xml:lang="it">Informazioni varie su elementi di rete remoti e sulle condivisioni montate</li>
@@ -264,6 +276,7 @@
       <li xml:lang="en-GB">Network search</li>
       <li xml:lang="es">Búsqueda en la red</li>
       <li xml:lang="et">Võrguotsing</li>
+      <li xml:lang="fi">Verkkohaku</li>
       <li xml:lang="fr">Recherche sur le réseau</li>
       <li xml:lang="gl">Permite realizar buscas na rede.</li>
       <li xml:lang="it">Ricerca in rete</li>
@@ -284,6 +297,7 @@
       <li xml:lang="en-GB">WINS server support</li>
       <li xml:lang="es">Soporte para servidores WINS</li>
       <li xml:lang="et">WINS serveri toetamine</li>
+      <li xml:lang="fi">WINS-palvelintuki</li>
       <li xml:lang="fr">Prise en charge d'un serveur WINS</li>
       <li xml:lang="gl">É compatíbel con servidores WINS.</li>
       <li xml:lang="it">Supporta i server WINS</li>
@@ -304,6 +318,7 @@
       <li xml:lang="en-GB">Preview of the contents of a share</li>
       <li xml:lang="es">Visualización previa del contenido de un recurso compartido</li>
       <li xml:lang="et">Jagatud ressursi sisu eelvaatlus</li>
+      <li xml:lang="fi">Jaon sisällön esikatselu</li>
       <li xml:lang="fr">Aperçu des contenus d'un partage</li>
       <li xml:lang="gl">Permite obter unha vista previa dos contidos dunha compartición.</li>
       <li xml:lang="it">Anteprima dei contenuti di una condivisione</li>
@@ -324,6 +339,7 @@
       <li xml:lang="en-GB">Several methods to look up the initial list of workgroups and domains</li>
       <li xml:lang="es">Varios métodos para buscar la lista inicial de grupos de trabajo y dominios</li>
       <li xml:lang="et">Mitu meetodit otsida algset töögruppide ja domeenide loendit</li>
+      <li xml:lang="fi">Useampia tapoja etsiä työryhmien ja aluenimien alustavaa luetteloa</li>
       <li xml:lang="fr">Plusieurs méthodes pour découvrir la liste initiale des groupes de travail et des domaines</li>
       <li xml:lang="gl">Fornece varios métodos de busca na lista inicial de grupos de traballo e dominios.</li>
       <li xml:lang="it">Vari metodi per consultare la lista iniziale dei gruppi di lavoro e dei domini</li>
@@ -345,6 +361,7 @@
       <li xml:lang="en-GB">Default login</li>
       <li xml:lang="es">Inicio de sesión predeterminado</li>
       <li xml:lang="et">Vaikimisi sisselogimine</li>
+      <li xml:lang="fi">Oletuskirjautuminen</li>
       <li xml:lang="fr">Identificateur de connexion par défaut</li>
       <li xml:lang="gl">Permite configurar credenciais predeterminadas de acceso.</li>
       <li xml:lang="it">Nome utente predefinito</li>
@@ -365,6 +382,7 @@
       <li xml:lang="en-GB">Special handling of homes shares</li>
       <li xml:lang="es">Manejo especial de los directorios personales compartidos</li>
       <li xml:lang="et">Välja jagatud kodukataloogide spetsiaalne käitlemine</li>
+      <li xml:lang="fi">Kotikansiojakojen erityiskäsittely</li>
       <li xml:lang="fr">Prise en charge spéciale des répertoires personnels partagés</li>
       <li xml:lang="gl">Xestiona de forma especial as particións de cartafoles persoais.</li>
       <li xml:lang="it">Gestione speciale delle condivisioni delle home</li>
@@ -385,6 +403,7 @@
       <li xml:lang="en-GB">Ability to bookmark favorite shares</li>
       <li xml:lang="es">Capacidad para marcar recursos compartidos como favoritos</li>
       <li xml:lang="et">Lemmikressursside järjehoidjatesse lisamise võimalus</li>
+      <li xml:lang="fi">Mahdollisuus tehdä suosikkijaoista kirjanmerkkejä</li>
       <li xml:lang="fr">Possibilité d'avoir des partages favoris</li>
       <li xml:lang="gl">Fornece un sistema de marcadores para gardar comparticións.</li>
       <li xml:lang="it">Possibilità di aggiungere le condivisioni nei preferiti</li>
@@ -405,6 +424,7 @@
       <li xml:lang="en-GB">System tray widget</li>
       <li xml:lang="es">Elemento gráfico de la bandeja del sistema</li>
       <li xml:lang="et">Süsteemisalve vidin</li>
+      <li xml:lang="fi">Ilmoitusaluekuvake</li>
       <li xml:lang="fr">Composant graphique dans la barre d'état</li>
       <li xml:lang="gl">Fornece un trebello na área de notificación.</li>
       <li xml:lang="it">Oggetto per il vassoio di sistema</li>
@@ -425,6 +445,7 @@
       <li xml:lang="en-GB">Support of advanced Samba options</li>
       <li xml:lang="es">Soporte para las opciones avanzadas de Samba</li>
       <li xml:lang="et">Samba põhjalikumate valikute toetamine</li>
+      <li xml:lang="fi">Edistyneiden Samba-asetusten tuki</li>
       <li xml:lang="fr">Prise en charge des options avancées de Samba</li>
       <li xml:lang="gl">Permite usar opcións avanzadas de Samba.</li>
       <li xml:lang="it">Supporto ad opzioni Samba avanzate</li>
@@ -445,6 +466,7 @@
       <li xml:lang="en-GB">Support of printer shares</li>
       <li xml:lang="es">Soporte de impresoras compartidas</li>
       <li xml:lang="et">Jagatud printerite toetamine</li>
+      <li xml:lang="fi">Tulostinjakojen tuki</li>
       <li xml:lang="fr">Prise en charge des imprimantes partagées</li>
       <li xml:lang="gl">Permite usar impresoras compartidas.</li>
       <li xml:lang="it">Supporto alla condivisione di stampanti</li>
@@ -466,6 +488,7 @@
       <li xml:lang="en-GB">KWallet support</li>
       <li xml:lang="es">Soporte para KWallet</li>
       <li xml:lang="et">KWalleti toetamine</li>
+      <li xml:lang="fi">KWallet-tuki</li>
       <li xml:lang="fr">Prise en charge de KWallet</li>
       <li xml:lang="gl">Intégrase con KWallet.</li>
       <li xml:lang="it">Supporto a KWallet</li>
@@ -486,6 +509,7 @@
       <li xml:lang="en-GB">Synchronisation of a remote share with a local copy and vice versa</li>
       <li xml:lang="es">Sincronización de un recurso compartido remoto con una copia local y viceversa</li>
       <li xml:lang="et">Võrguressursi sünkroonimine kohaliku koopiaga ja vastupidi</li>
+      <li xml:lang="fi">Etäjakojen synkronointi paikallisen kopion kanssa ja päinvastoin</li>
       <li xml:lang="fr">Synchronisation d'un partage distant avec une copie locale et vice-versa</li>
       <li xml:lang="gl">Permite sincronizar comparticións remotas con copias locais en ambos sentidos.</li>
       <li xml:lang="it">Sincronizzazione di una condivisione remota con una copia locale e viceversa</li>
@@ -506,6 +530,7 @@
       <li xml:lang="en-GB">Ability to define custom options for individual servers and shares</li>
       <li xml:lang="es">Capacidad para definir opciones personalizadas para servidores y recursos compartidos individuales</li>
       <li xml:lang="et">Võimalus määrata konkreetsetele serveritele ja ressurssidele kohandatud valikuid</li>
+      <li xml:lang="fi">Mahdollisuus mukauttaa määräpalvelinten ja -jakojen asetuksia</li>
       <li xml:lang="fr">Possibilité de définir des options personnalisées pour des serveurs et des partages individuels</li>
       <li xml:lang="gl">Permite definir configuracións personalizadas para servidores e comparticións concretas.</li>
       <li xml:lang="it">Capacità di definire opzioni personalizzate per server individuali e condivisioni</li>
@@ -526,6 +551,7 @@
       <li xml:lang="en-GB">Laptop support through the Solid hardware device framework</li>
       <li xml:lang="es">Soporte de portátiles a través de la infraestructura de dispositivos hardware Solid</li>
       <li xml:lang="et">Sülearvutite toetus Solidi riistvaraliste seadmete raamistiku vahendusel</li>
+      <li xml:lang="fi">Kannettavan tietokoneen tuki Solid-laitteistokehyksen avulla</li>
       <li xml:lang="fr">Prise en charge des ordinateurs portables avec le framework de gestion matérielle Solid</li>
       <li xml:lang="gl">Compatíbel con portátiles mediante a infraestrutura de dispositivos de hardware Solid.</li>
       <li xml:lang="it">Supporto ai computer portatili per mezzo dell'infrastruttura per i dispositivi hardware Solid</li>
@@ -546,6 +572,7 @@
       <li xml:lang="en-GB">Wake-On-LAN capabilities</li>
       <li xml:lang="es">Capacidades «Wake on LAN»</li>
       <li xml:lang="et">Wake-On-LAN võimalused</li>
+      <li xml:lang="fi">Wake-On-LAN-ominaisuudet</li>
       <li xml:lang="fr">Capacités de réveil par le réseau (Wake-on-LAN)</li>
       <li xml:lang="gl">Ofrece funcionalidades de espertar na rede (Wake-On-LAN).</li>
       <li xml:lang="it">Funzionalità Wake-On-LAN</li>
@@ -566,6 +593,7 @@
       <li xml:lang="en-GB">Plasmoid for desktop integration</li>
       <li xml:lang="es">Plasmoide para integración en el escritorio</li>
       <li xml:lang="et">Plasmoid töölauaga lõimimiseks</li>
+      <li xml:lang="fi">Plasmoidi työpöytäintegrointia varten</li>
       <li xml:lang="fr">Plasmoïde pour l'intégration sur le bureau</li>
       <li xml:lang="gl">Ofrece integración co escritorio mediante un plasmoide.</li>
       <li xml:lang="it">Plasmoide per l'integrazione desktop</li>
@@ -589,6 +617,7 @@
     <p xml:lang="en-GB">If you are working in a Windows dominated network environment, you may want to install this application to be able to easily access the provided Windows shares.</p>
     <p xml:lang="es">Si estás trabajando en un entorno de red dominado por Windows, es posible que desees instalar esta aplicación para poder acceder fácilmente a los recursos Windows compartidos.</p>
     <p xml:lang="et">Kui töötad võrgukeskkonnas, kus domineerib Windows, on sellest rakendusest palju abi välja jagatud Windowsi ressursside võimalikult lihtsaks kasutamiseks.</p>
+    <p xml:lang="fi">Jos työskentelet Windowsin hallitsemassa verkkoympäristössä, halunnet asentaa tämän sovelluksen käyttääksesi helposti tarjolla olevia Windows-jakoja.</p>
     <p xml:lang="fr">Si vous travaillez dans un réseau contenant majoritairement des PC sous Windows, vous voudrez sans doute installer cette application pour accéder facilement aux partages Windows.</p>
     <p xml:lang="gl">Se traballa nun ambiente de rede dominado por Windows, este programa axudarao a acceder facilmente aos recursos compartidos desde Windows.</p>
     <p xml:lang="it">Se stai lavorando in una rete dominata da Windows potresti voler installare questa applicazione, per essere in grado di accedere facilmente alle condivisioni fornite da Windows.</p>
@@ -612,6 +641,7 @@
       <caption xml:lang="en-GB">The main window</caption>
       <caption xml:lang="es">La ventana principal</caption>
       <caption xml:lang="et">Peaaken</caption>
+      <caption xml:lang="fi">Pääikkuna</caption>
       <caption xml:lang="fr">La fenêtre principale</caption>
       <caption xml:lang="gl">A xanela principal</caption>
       <caption xml:lang="it">La finestra principale</caption>
@@ -636,6 +666,7 @@
       <caption xml:lang="en-GB">The plasmoid</caption>
       <caption xml:lang="es">El plasmoide</caption>
       <caption xml:lang="et">Plasmoid</caption>
+      <caption xml:lang="fi">Plasmoidi</caption>
       <caption xml:lang="fr">Le plasmoïde</caption>
       <caption xml:lang="gl">O plasmoide</caption>
       <caption xml:lang="it">Il plasmoide</caption>
