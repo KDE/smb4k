@@ -1126,7 +1126,7 @@ void Smb4KMounter::timerEvent(QTimerEvent *)
       check(share);
       emit updated(share);
     }
-    
+
     d->checkTimeout = 0;
   }
   else

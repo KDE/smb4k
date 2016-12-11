@@ -39,6 +39,9 @@ class Smb4KHardwareInterfacePrivate
     QNetworkConfigurationManager networkConfigManager;
     bool networkConfigUpdated;
     QStringList udis;
+#if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+    QStringList mountPoints;
+#endif
 };
 
 
