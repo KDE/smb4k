@@ -108,6 +108,11 @@ void Smb4KSearchJob::slotStartSearch()
   {
     // Go ahead
   }
+  
+  //
+  // Global Samba options
+  //
+  QMap<QString, QString> globalSambaOpions = globalSambaOptions();
 
   //
   // The custom options
@@ -257,6 +262,20 @@ void Smb4KSearchJob::slotStartSearch()
     command << "%";
   }
 
+  //
+  // Workaround problems with security fixes of April 12, 2016.
+  //
+  if (globalSambaOpions.contains("client max protocol") && globalSambaOpions.value("client max protocol").startsWith(QLatin1String("SMB")))
+  {
+    qDebug() << "Smb4KSearchJob::slotStartSearch(): Using workaround '--option='client max protocol = NT1'' ...";
+    command << "--option";
+    command << "client max protocol=NT1";
+  }
+  else
+  {
+    // Do nothing
+  }
+
   m_process = new Smb4KProcess(this);
   m_process->setOutputChannelMode(KProcess::SeparateChannels);
   m_process->setEnv("PASSWD", (m_master && !m_master->password().isEmpty()) ? m_master->password() : "", true);
@@ -330,7 +349,7 @@ void Smb4KSearchJob::slotReadStandardOutput()
 void Smb4KSearchJob::slotReadStandardError()
 {
   QString stdErr = QString::fromUtf8(m_process->readAllStandardError(), -1);
-
+  
   // Remove unimportant warnings
   if (stdErr.contains("Ignoring unknown parameter"))
   {
