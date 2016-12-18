@@ -135,24 +135,19 @@ Smb4KSharesViewPart::~Smb4KSharesViewPart()
 void Smb4KSharesViewPart::setupView()
 {
   //
-  // For the icon view as well as the list view we use the icon size
-  // defined for the desktop. The 'small' icon size is a bit too small,
-  // I think...
-  //
-  int iconSize = KIconLoader::global()->currentSize(KIconLoader::Desktop);
-  
-  //
   // Adjust the view according to the setting chosen
   //
   switch (Smb4KSettings::sharesViewMode())
   {
     case Smb4KSettings::EnumSharesViewMode::IconView:
     {
+      int iconSize = KIconLoader::global()->currentSize(KIconLoader::Desktop);
       m_view->setViewMode(Smb4KSharesView::IconMode, iconSize);
       break;
     }
     case Smb4KSettings::EnumSharesViewMode::ListView:
     {
+      int iconSize = KIconLoader::global()->currentSize(KIconLoader::Small);
       m_view->setViewMode(Smb4KSharesView::ListMode, iconSize);
       break;
     }
