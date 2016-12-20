@@ -5,6 +5,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+ and GFDL-1.2</project_license>
   <name>Smb4K</name>
+  <name xml:lang="ast">Smb4K</name>
   <name xml:lang="bs">Smb4K</name>
   <name xml:lang="ca">Smb4K</name>
   <name xml:lang="ca-valencia">Smb4K</name>
@@ -105,7 +106,6 @@
     <p>
       Features:
     </p>
-    <p xml:lang="ast">Carauterístiques:</p>
     <p xml:lang="bs">Svojstva:</p>
     <p xml:lang="ca">Característiques:</p>
     <p xml:lang="ca-valencia">Característiques:</p>
@@ -600,7 +600,6 @@
       <li xml:lang="x-test">xxLaptop support through the Solid hardware device frameworkxx</li>
       <li xml:lang="zh-TW">透過 Solid 硬體裝置框架支援筆記型電腦</li>
       <li>Wake-On-LAN capabilities</li>
-      <li xml:lang="ast">Capacidaes Wake-On-Lan</li>
       <li xml:lang="bs">Wake-On-LAN mogućnosti</li>
       <li xml:lang="ca">Funcionalitats d'activació per LAN (Wake-On-LAN)</li>
       <li xml:lang="ca-valencia">Funcionalitats d'activació per LAN (Wake-On-LAN)</li>
@@ -623,7 +622,6 @@
       <li xml:lang="x-test">xxWake-On-LAN capabilitiesxx</li>
       <li xml:lang="zh-TW">LAN 喚醒的能力</li>
       <li>Plasmoid for desktop integration</li>
-      <li xml:lang="ast">Plasmoide pa la integración d'escritoriu</li>
       <li xml:lang="bs">Plasmoid za integraciju radne površine</li>
       <li xml:lang="ca">Plasmoide per a la integració a l'escriptori</li>
       <li xml:lang="ca-valencia">Plasmoide per a la integració a l'escriptori</li>
@@ -649,7 +647,6 @@
     <p>
       If you are working in a Windows dominated network environment, you may want to install this application to be able to easily access the provided Windows shares.
     </p>
-    <p xml:lang="ast">Si tas trabayando nun entornu de rede domináu por Windows, quiciabes quieras instalar esta aplicación pa ser quien a acceder cenciellamente a les comparticiones Windows apurríes.</p>
     <p xml:lang="bs">Ako radite sa Windows dominiranim mrežnim okruženjem, možda ćete željeti instalirati aplikaciju kako biste lako pristupili omogućenim Windows razmjenama.</p>
     <p xml:lang="ca">Si esteu treballant en un entorn de xarxa dominat per Windows, és possible que vulgueu instal·lar aquesta aplicació per a poder accedir amb facilitat a les comparticions proporcionades per Windows.</p>
     <p xml:lang="ca-valencia">Si esteu treballant en un entorn de xarxa dominat per Windows, és possible que vulgueu instal·lar esta aplicació per a poder accedir amb facilitat a les comparticions proporcionades per Windows.</p>
@@ -675,7 +672,6 @@
   <screenshots>
     <screenshot type="default">
       <caption>The main window</caption>
-      <caption xml:lang="ast">La ventana principal</caption>
       <caption xml:lang="bs">Glavni prozor</caption>
       <caption xml:lang="ca">La finestra principal</caption>
       <caption xml:lang="ca-valencia">La finestra principal</caption>
@@ -701,7 +697,6 @@
     </screenshot>
     <screenshot>
       <caption>The plasmoid</caption>
-      <caption xml:lang="ast">El plasmoide</caption>
       <caption xml:lang="bs">Plazmoid</caption>
       <caption xml:lang="ca">El plasmoide</caption>
       <caption xml:lang="ca-valencia">El plasmoide</caption>
