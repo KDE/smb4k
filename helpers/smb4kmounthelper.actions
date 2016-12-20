@@ -1,6 +1,5 @@
 [org.kde.smb4k.mounthelper.mount]
 Name=Mount action
-Name[ast]=Aición de montaxe
 Name[bs]=Akcija montiranja
 Name[ca]=Acció de muntatge
 Name[ca@valencia]=Acció de muntatge
@@ -28,7 +27,6 @@ Name[uk]=Дія з монтування
 Name[x-test]=xxMount actionxx
 Name[zh_TW]=掛載動作
 Description=Mounts a share
-Description[ast]=Monta una compartición
 Description[bs]=Montira dijeljenja
 Description[ca]=Munta una compartició
 Description[ca@valencia]=Munta una compartició
@@ -59,7 +57,6 @@ Policy=yes
 
 [org.kde.smb4k.mounthelper.unmount]
 Name=Unmount action
-Name[ast]=Aición de desmontaxe
 Name[bs]=Akcija demontiranja
 Name[ca]=Acció de desmuntatge
 Name[ca@valencia]=Acció de desmuntatge
@@ -87,7 +84,6 @@ Name[uk]=Дія з демонтування
 Name[x-test]=xxUnmount actionxx
 Name[zh_TW]=卸載動作
 Description=Unmounts a share
-Description[ast]=Desmonta una compartición
 Description[bs]=Demontira dijeljenje
 Description[ca]=Desmunta una compartició
 Description[ca@valencia]=Desmunta una compartició
