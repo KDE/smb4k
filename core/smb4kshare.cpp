@@ -1222,8 +1222,7 @@ void Smb4KShare::setShareIcon()
 
     if (isForeign())
     {
-      overlays << "";
-      overlays << "view-media-artist";
+      overlays << "task-attention";
     }
     else
     {
