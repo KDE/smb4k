@@ -446,7 +446,10 @@ void Smb4KPrintDialog::setupView(Smb4KShare *share)
   options_box_layout->addWidget(copies_label, 0, 0, 0);
   options_box_layout->addWidget(m_copies, 0, 1, 0);
   
+  m_options_box->setVisible(false);
+  
   QDialogButtonBox *buttonBox = new QDialogButtonBox(this);
+  m_optionsButton = buttonBox->addButton(i18n("Options >>"), QDialogButtonBox::ResetRole);
   m_print_button = buttonBox->addButton(i18n("Print"), QDialogButtonBox::ActionRole);
   m_cancel_button = buttonBox->addButton(QDialogButtonBox::Cancel);
   
@@ -457,6 +460,7 @@ void Smb4KPrintDialog::setupView(Smb4KShare *share)
 
   main_widget_layout->addWidget(printer_box, 0);
   main_widget_layout->addWidget(file_box, 0);
+  main_widget_layout->addWidget(m_options_box, 0);
   main_widget_layout->addWidget(buttonBox, 0);
 
 //   printer_box->adjustSize();
@@ -465,6 +469,7 @@ void Smb4KPrintDialog::setupView(Smb4KShare *share)
   connect(m_file, SIGNAL(textChanged(QString)), this, SLOT(slotInputValueChanged(QString)));
   connect(m_print_button, SIGNAL(clicked()), this, SLOT(slotPrintClicked()));
   connect(m_cancel_button, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
+  connect(m_optionsButton, SIGNAL(clicked()), this, SLOT(slotOptionsClicked()));
 }
 
 
@@ -485,6 +490,23 @@ void Smb4KPrintDialog::slotCancelClicked()
   KConfigGroup group(Smb4KSettings::self()->config(), "PrintDialog");
   KWindowConfig::saveWindowSize(windowHandle(), group);
   reject();
+}
+
+
+void Smb4KPrintDialog::slotOptionsClicked()
+{
+  if (m_options_box->isVisible())
+  {
+    m_options_box->setVisible(false);
+    m_optionsButton->setText(i18n("Options >>"));
+  }
+  else
+  {
+    m_options_box->setVisible(true);
+    m_optionsButton->setText(i18n("Options <<"));
+  }
+  
+//   adjustSize();
 }
 
 
