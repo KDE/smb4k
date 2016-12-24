@@ -240,7 +240,7 @@
           </menuchoice>
         </term>
         <listitem>
-          <para>Open the <link linkend="mainwindow_network_authentication">authentication dialog</link>. You can provide the login and password for the selected server or share. If a workgroup or no item is selected, this action is disabled.</para>
+          <para>Open the <link linkend="network_neighborhood_browser_authentication">authentication dialog</link>. You can provide the login and password for the selected server or share. If a workgroup or no item is selected, this action is disabled.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -349,7 +349,7 @@
       <para>Here you can enter the location of the share either as <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention">Uniform Naming Convention (UNC)</ulink> address in the form <programlisting>//[USER@]SERVER/SHARE</programlisting> or <programlisting>\\[USER@]SERVER\SHARE</programlisting> or as URL in the form <programlisting>[smb:]//[user@]server:port/share</programlisting> The <guibutton>OK</guibutton> button will be enabled and you can press it to mount the share. However, it is advisable to enter the IP address and the workgroup of the server, too. If you want to add the share to the bookmarks at the same time, tick the <guibutton>Add this share to the bookmarks</guibutton> check box.</para></listitem>
     </orderedlist>
 
-    <para>Often a share is password protected. In this case, an <link linkend="mainwindow_network_authentication">authentication dialog</link> will appear and you have to enter the correct user name (if not already provided) and password. &smb4k; will proceed mounting the share unless a wrong user name or password was supplied. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="shares_view">mounted shares view</link>. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (&Linux;) or <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (FreeBSD, NetBSD) will be shown.</para>
+    <para>Often a share is password protected. In this case, an <link linkend="network_neighborhood_browser_authentication">authentication dialog</link> will appear and you have to enter the correct user name (if not already provided) and password. &smb4k; will proceed mounting the share unless a wrong user name or password was supplied. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="shares_view">mounted shares view</link>. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (&Linux;) or <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (FreeBSD, NetBSD) will be shown.</para>
   </sect2>
 
 <!-- 
@@ -377,7 +377,7 @@
 
   <sect2 id="network_neighborhood_browser_previewing">
     <title>Previewing Shares</title>
-
+    
     <para>&smb4k; provides the ability to preview remote shares. If you click the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>V</keycap></keycombo></shortcut><guimenuitem>Preview</guimenuitem></menuchoice> menu entry, the contents of the selected remote share will be opened in a preview dialog.</para>
     <screenshot>
       <screeninfo>Screenshot of the preview dialog</screeninfo>
@@ -390,23 +390,22 @@
     <para>By default, the preview dialog only shows folders and files that are not hidden. You can change this behavior in the <link linkend="configuration_network_general_behavior">configuration dialog</link>. File transfers or the like are not possible.</para>
   </sect2>
 
-<!-- Using Smb4K : The Network Neighborhood Browser : Providing Authentication Information -->
+<!-- 
+      Using Smb4K : The Network Neighborhood Browser : Providing Authentication Information 
+-->
 
-<sect2 id="mainwindow_network_authentication">
-<title>Providing Authentication Information</title>
-<para>Many servers or remote shares are password protected. In that case, a password dialog appears asking you for the user name and password. The same happens, if you click the  <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>T</keycap></keycombo></shortcut><guimenuitem>Authentication</guimenuitem></menuchoice> menu entry.</para>
-<screenshot>
-<screeninfo>Screenshot of the authentication dialog</screeninfo>
-<mediaobject>
-<imageobject>
-<imagedata fileref="dialog_authentication.png" format="PNG" />
-</imageobject>
-<textobject>
-<phrase>The authentication dialog</phrase>
-</textobject>
-</mediaobject>
-</screenshot>
-<para>If a user name has already been provided, it will be shown in the respective field. If it is wrong or no user name was provided, you have to enter one. The password, however, may be left blank. Clicking the <guibutton>OK</guibutton> button will commit the data. Depending on your choice in the <link linkend="configuration_page_authentication">configuration dialog</link>, the user name and password will be stored permanently in a digital wallet or not all. In the latter case you will have to provide them <emphasis>every time</emphasis> they are needed.</para>
+  <sect2 id="network_neighborhood_browser_authentication">
+    <title>Providing Authentication Information</title>
+
+    <para>Many servers or remote shares are password protected. In that case, a password dialog appears asking you for the user name and password. The same happens, if you click the  <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>T</keycap></keycombo></shortcut><guimenuitem>Authentication</guimenuitem></menuchoice> menu entry.</para>
+    <screenshot>
+      <screeninfo>Screenshot of the authentication dialog</screeninfo>
+      <mediaobject>
+        <imageobject><imagedata fileref="network_neighborhood_browser_authentication_dialog.png" format="PNG" /></imageobject>
+        <textobject><phrase>The authentication dialog</phrase></textobject>
+      </mediaobject>
+    </screenshot>
+    <para>If a user name has already been provided, it will be shown in the respective field. If it is wrong or no user name was provided, you have to enter one. The password, however, may be left blank. Clicking the <guibutton>OK</guibutton> button will commit the data. Depending on your choice in the <link linkend="configuration_page_authentication">configuration dialog</link>, the user name and password will be stored permanently in a digital wallet or not all. In the latter case you will have to provide them <emphasis>every time</emphasis> they are needed.</para>
 </sect2>
 
 <!-- 
@@ -428,7 +427,7 @@
       <screeninfo>Screenshot of the custom options dialog for a share</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="dialog_custom_options.png" format="PNG" />
+          <imagedata fileref="network_neighborhood_browser_custom_options_dialog.png" format="PNG" />
         </imageobject>
         <textobject>
           <phrase>The custom options dialog</phrase>
@@ -437,7 +436,6 @@
     </screenshot>
 
     <para>The <guibutton>Default</guibutton> button is enabled if the entries in the dialog deviate from the settings you defined in the configuration dialog. By clicking it, you can reset the entries in the dialog to their default values. The <guibutton>OK</guibutton> button is enabled if you changed the settings in the dialog. Clicking it will commit the custom settings and close the dialog.</para>
-
     <note><para>Under FreeBSD and NetBSD, the dialog contains less entries than if you run a different operating system, because several of the options are not supported.</para></note>
 
     <sect3 id="network_neighborhood_browser_defining_custom_options_samba">
@@ -453,13 +451,16 @@
     </sect3>
   </sect2>
 
-<!-- Using Smb4K : The Network Neighborhood Browser : Adding Bookmarks -->
+<!-- 
+      Using Smb4K : The Network Neighborhood Browser : Adding Bookmarks
+-->
 
-<sect2 id="mainwindow_network_bookmark">
-<title>Adding Bookmarks</title>
-<para>A bookmark is added by selecting a remote share (only these can be bookmarked) and pressing the <keycombo action="simul">&Ctrl; <keycap>B</keycap></keycombo> keyboard shortcut or selecting the <guimenuitem>Add Bookmark</guimenuitem> menu item. The bookmark will then be accessible through the <guimenu>Bookmarks</guimenu> menu. See the section <link linkend="mainwindow_bookmarks">Handling Bookmarks</link> for more details.</para>
-<para>The bookmarks can be used to mount remote shares.</para>
-</sect2>
+  <sect2 id="network_neighborhood_browser_adding_bookmarks">
+    <title>Adding Bookmarks</title>
+
+    <para>A bookmark is added by selecting a remote share (only these can be bookmarked) and pressing the <keycombo action="simul">&Ctrl; <keycap>B</keycap></keycombo> keyboard shortcut or selecting the <guimenuitem>Add Bookmark</guimenuitem> menu item. The bookmark will then be accessible through the <guimenu>Bookmarks</guimenu> menu. See the section <link linkend="mainwindow_bookmarks">Handling Bookmarks</link> for more details.</para>
+    <para>The bookmarks can be used to mount remote shares.</para>
+  </sect2>
 </sect1>
 
 <!-- 
