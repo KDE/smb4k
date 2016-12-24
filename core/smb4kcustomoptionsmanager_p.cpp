@@ -104,7 +104,7 @@ void Smb4KCustomOptionsDialog::setupView()
     }
     case Share:
     {
-      label = new QLabel(i18n("<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>",
+      label = new QLabel(i18n("<p>Define custom options for share <b>%1</b> on host <b>%2</b>.</p>",
                          m_options->shareName(), m_options->hostName()), description);
       break;
     }
