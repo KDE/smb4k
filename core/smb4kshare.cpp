@@ -1235,15 +1235,6 @@ void Smb4KShare::setShareIcon()
     if (!isInaccessible())
     {
       icon = KDE::icon("folder-network", overlays);
-      
-      if (icon.isNull())
-      {
-        icon = KDE::icon("folder-remote", overlays);
-      }
-      else
-      {
-        // Nichts tun
-      }
     }
     else
     {

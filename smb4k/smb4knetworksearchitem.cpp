@@ -71,11 +71,11 @@ void Smb4KNetworkSearchItem::setupItem()
       {
         QStringList overlays;
         overlays.append("emblem-mounted");
-        setIcon(KDE::icon("folder-remote", overlays));
+        setIcon(KDE::icon("folder-network", overlays));
       }
       else
       {
-        setIcon(KDE::icon("folder-remote"));
+        setIcon(KDE::icon("folder-network"));
       }
 
       break;

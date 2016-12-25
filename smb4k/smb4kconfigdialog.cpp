@@ -160,7 +160,7 @@ void Smb4KConfigDialog::setupDialog()
   // Now add the pages to the configuration dialog
   m_user_interface  = addPage(interface_area, Smb4KSettings::self(), i18n("User Interface"), "view-choose");
   m_network         = addPage(network_area, Smb4KSettings::self(), i18n("Network"), "network-workgroup");
-  m_shares          = addPage(share_area, Smb4KSettings::self(), i18n("Shares"), "folder-remote");
+  m_shares          = addPage(share_area, Smb4KSettings::self(), i18n("Shares"), "folder-network");
   m_authentication  = addPage(auth_area, Smb4KSettings::self(), i18n("Authentication"), "dialog-password");
   m_samba           = addPage(samba_area, Smb4KSettings::self(), i18n("Samba"), "preferences-system-network");
 #if !defined(UNSUPPORTED_PLATFORM)

@@ -68,7 +68,7 @@ Smb4KBookmark::Smb4KBookmark(Smb4KShare *share, const QString &label)
   d->workgroup = share->workgroupName();
   d->type      = share->typeString();
   d->label     = label;
-  d->icon      = KDE::icon("folder-remote");
+  d->icon      = KDE::icon("folder-network");
   d->ip.setAddress(share->hostIP());
 }
 
@@ -84,7 +84,7 @@ Smb4KBookmark::Smb4KBookmark()
 : d(new Smb4KBookmarkPrivate)
 {
   d->type = "Disk";
-  d->icon = KDE::icon("folder-remote");
+  d->icon = KDE::icon("folder-network");
 }
 
 
