@@ -2,7 +2,7 @@
     smb4kbookmarkmenu  -  Bookmark menu
                              -------------------
     begin                : Sat Apr 02 2011
-    copyright            : (C) 2011-2015 by Alexander Reinholdt
+    copyright            : (C) 2011-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -102,7 +102,7 @@ class Smb4KBookmarkMenu : public KActionMenu
     /**
      * Set up the menu
      */
-    void setupMenu(bool setup_all = true);
+    void setupMenu();
     
     /**
      * Type

@@ -2,7 +2,7 @@
     smb4kbookmarkmenu  -  Bookmark menu
                              -------------------
     begin                : Sat Apr 02 2011
-    copyright            : (C) 2011-2015 by Alexander Reinholdt
+    copyright            : (C) 2011-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -83,89 +83,46 @@ QAction *Smb4KBookmarkMenu::addBookmarkAction()
 
 void Smb4KBookmarkMenu::refreshMenu()
 {
-  // Delete all bookmarks
-  while (!m_bookmarks->actions().isEmpty())
+  // Delete all entries.
+  while (!m_action_collection->actions().isEmpty())
   {
-    QAction *action = m_bookmarks->actions().first();
+    QAction *action = m_action_collection->actions().first();
     m_action_collection->takeAction(action);
     removeAction(action);
     delete action;
   }
   
-  // Delete all groups
-  while (!m_groups->actions().isEmpty())
-  {
-    QAction *action = m_groups->actions().first();
-    m_action_collection->takeAction(action);
-    removeAction(action);
-    delete action;
-  }
-  
-  QAction *mount_action = m_action_collection->action("mount_toplevel");
-  
-  if (mount_action)
-  {
-    m_action_collection->takeAction(mount_action);
-    removeAction(mount_action);
-    delete mount_action;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  QAction *separator = m_action_collection->action("separator");
-  
-  if (separator)
-  {
-    m_action_collection->takeAction(separator);
-    removeAction(separator);
-    delete separator;
-  }
-  else
-  {
-    // Do nothing
-  }
-    
-  // Set up menu again
-  setupMenu(false);
+  // Set up the menu
+  setupMenu();
 }
 
 
-void Smb4KBookmarkMenu::setupMenu(bool setup_all)
+void Smb4KBookmarkMenu::setupMenu()
 {
-  // Set up the actions for managing the bookmarks.
-  if (setup_all)
+  switch (m_type)
   {
-    switch (m_type)
+    case MainWindow:
     {
-      case MainWindow:
-      {
-        QAction *edit_action = m_action_collection->addAction("edit_action",
-                               new QAction(KDE::icon("bookmarks-organize"), i18n("&Edit Bookmarks"), m_action_collection));
-        QAction *add_action = m_action_collection->addAction("add_action",
-                              new QAction(KDE::icon("bookmark-new"), i18n("Add &Bookmark"), m_action_collection));
-        m_action_collection->setDefaultShortcut(add_action, QKeySequence(Qt::CTRL+Qt::Key_B));
-        addAction(edit_action);
-        addAction(add_action);
-        break;
-      }
-      case SystemTray:
-      {
-        QAction *edit_action =  m_action_collection->addAction("edit_action",
-                                new QAction(KDE::icon("bookmarks-organize"), i18n("&Edit Bookmarks"), m_action_collection));
-        addAction(edit_action);
-        break;
-      }
-      default:
-      {
-        break;
-      }
+      QAction *edit_action = m_action_collection->addAction("edit_action",
+                             new QAction(KDE::icon("bookmarks-organize"), i18n("&Edit Bookmarks"), m_action_collection));
+      QAction *add_action = m_action_collection->addAction("add_action",
+                            new QAction(KDE::icon("bookmark-new"), i18n("Add &Bookmark"), m_action_collection));
+      m_action_collection->setDefaultShortcut(add_action, QKeySequence(Qt::CTRL+Qt::Key_B));
+      addAction(edit_action);
+      addAction(add_action);
+      break;
     }
-  }
-  else
-  {
-    // Do nothing
+    case SystemTray:
+    {
+      QAction *edit_action =  m_action_collection->addAction("edit_action",
+                              new QAction(KDE::icon("bookmarks-organize"), i18n("&Edit Bookmarks"), m_action_collection));
+      addAction(edit_action);
+      break;
+    }
+    default:
+    {
+      break;
+    }
   }
 
   // Get the groups

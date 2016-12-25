@@ -2,7 +2,7 @@
     smb4ksharesmenu  -  Shares menu
                              -------------------
     begin                : Mon Sep 05 2011
-    copyright            : (C) 2011-2015 by Alexander Reinholdt
+    copyright            : (C) 2011-2016 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -51,7 +51,7 @@ using namespace Smb4KGlobal;
 
 
 Smb4KSharesMenu::Smb4KSharesMenu(QWidget *parentWidget, QObject *parent)
-: KActionMenu(KDE::icon("folder-remote", QStringList("emblem-mounted")), i18n("Mounted Shares"), parent),
+: KActionMenu(KDE::icon("folder-network", QStringList("emblem-mounted")), i18n("Mounted Shares"), parent),
   m_parent_widget(parentWidget)
 {
   // Set up action collection
@@ -79,14 +79,17 @@ Smb4KSharesMenu::~Smb4KSharesMenu()
 
 void Smb4KSharesMenu::refreshMenu()
 {
-  m_action_collection->action("unmount_all")->setEnabled(
-    ((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && !m_menus->actions().isEmpty()));
-
-  for (int i = 0; i < m_menus->actions().size(); ++i)
+  // Delete all entries.
+  while (!m_action_collection->actions().isEmpty())
   {
-    QString text = m_menus->actions()[i]->data().toMap().value("unc").toString();
-    m_menus->actions()[i]->setText(text);
+    QAction *action = m_action_collection->actions().first();
+    m_action_collection->takeAction(action);
+    removeAction(action);
+    delete action;
   }
+  
+  // Set up the menu
+  setupMenu();
 }
 
 
