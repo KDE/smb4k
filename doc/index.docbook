@@ -832,7 +832,7 @@
       <screeninfo>Screenshot of the warning dialog that is shown when a foreign share is to be unmounted</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="dialog_warning_unmount_foreign_share.png" format="PNG" />
+          <imagedata fileref="shares_view_warning_dialog_foreign_share.png" format="PNG" />
         </imageobject>
         <textobject>
           <phrase>The warning dialog that is shown when unmounting foreign shares</phrase>
@@ -857,7 +857,7 @@
       <screeninfo>Screenshot of the synchronization input dialog</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="dialog_synchronization_input.png" format="PNG" />
+          <imagedata fileref="shares_view_synchronization_input_dialog.png" format="PNG" />
         </imageobject>
         <textobject>
           <phrase>&URL; requester for sync'ing</phrase>
@@ -869,7 +869,7 @@
       <screeninfo>Screenshot of the synchronization progress dialog</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="dialog_synchronization_progress.png" format="PNG" />
+          <imagedata fileref="synchronization_progress.png" format="PNG" />
         </imageobject>
         <textobject>
           <phrase>Progress dialog</phrase>
@@ -905,202 +905,165 @@
   </sect2>
 </sect1>
 
-<!-- Using Smb4K : The System Tray Widget -->
+<!-- 
+      Using Smb4K : The System Tray Widget 
+-->
 
 <sect1 id="systemtray">
-<title>The System Tray Widget</title>
+  <title>The System Tray Widget</title>
 
-<!-- Using Smb4K : The System Tray Widget : Location and Usage -->
+<!-- 
+      Using Smb4K : The System Tray Widget : Location and Usage 
+-->
 
-<sect2 id="systemtray_location_usage">
-<title>Location and Usage</title>
+  <sect2 id="systemtray_location_usage">
+    <title>Location and Usage</title>
 
-<para>When &smb4k; is started, an icon appears in your system tray.</para>
+    <para>When &smb4k; is started, an icon appears in your system tray.</para>
 
-<screenshot>
-  <screeninfo>Screenshot of the system tray widget</screeninfo>
-  <mediaobject>
-    <imageobject>
-      <imagedata fileref="system_tray_icon.png" format="PNG" />
-    </imageobject>
-    <textobject>
-      <phrase>System tray widget</phrase>
-    </textobject>
-  </mediaobject>
-</screenshot>
+    <screenshot>
+      <screeninfo>Screenshot of the system tray widget</screeninfo>
+      <mediaobject>
+        <imageobject><imagedata fileref="systemtray_location.png" format="PNG" /></imageobject>
+        <textobject><phrase>System tray widget</phrase></textobject>
+      </mediaobject>
+    </screenshot>
 
-<para>By left clicking the icon, you can minimize or restore the main window. A right click brings up a popup menu that contains several menu items allowing you to work with the mounted shares, manage or mount your bookmarks, select the profile you want to use and to configure &smb4k; without the need to open the main window.</para>
-</sect2>
+    <para>By left clicking the icon, you can minimize or restore the main window. A right click brings up a popup menu that contains several menu items allowing you to work with the mounted shares, manage or mount your bookmarks, select the profile you want to use and to configure &smb4k; without the need to open the main window.</para>
+  </sect2>
 
-<!-- Using Smb4K : The System Tray Widget : Menus and Menu Items -->
+<!-- 
+      Using Smb4K : The System Tray Widget : Menus and Menu Items 
+-->
 
-<sect2 id="systemtray_menus">
-<title>Menus and Menu Items</title>
+  <sect2 id="systemtray_menus">
+    <title>Menus and Menu Items</title>
 
-<para>The <guimenuitem>Mounted Shares</guimenuitem> menu lists all mounted shares and some actions that can be performed on them.</para>
+    <para>The <guimenuitem>Mounted Shares</guimenuitem> menu lists all mounted shares and some actions that can be performed on them.</para>
 
-<screenshot>
-  <screeninfo>Screenshot 1 of the popup menu of the system tray icon</screeninfo>
-  <mediaobject>
-    <imageobject>
-      <imagedata fileref="system_tray_icon_popup_menu1.png" format="PNG" />
-    </imageobject>
-    <textobject>
-      <phrase>System tray icon's popup menu 1</phrase>
-    </textobject>
-  </mediaobject>
-</screenshot>
+    <screenshot>
+      <screeninfo>Screenshot of the Mounted Shares popup menu of the system tray widget</screeninfo>
+      <mediaobject>
+        <imageobject><imagedata fileref="systemtray_mounted_shares_menu.png" format="PNG" /></imageobject>
+        <textobject><phrase>System tray widget's Mounted Shares menu</phrase></textobject>
+      </mediaobject>
+    </screenshot>
 
-<variablelist>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <guimenuitem>Unmount All</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Unmount all shares at once. Depending on your <link linkend="configuration_page_shares_behavior">settings</link>, &smb4k; attempts to unmount either only those shares that are owned by you or all that are listed.</para>
-    </listitem>
-  </varlistentry>
-</variablelist>
+    <variablelist>
+      <varlistentry>
+        <term>
+          <menuchoice><guimenuitem>Unmount All</guimenuitem></menuchoice>
+        </term>
+        <listitem>
+          <para>Unmount all shares at once. Depending on your <link linkend="configuration_page_shares_behavior">settings</link>, &smb4k; attempts to unmount either only those shares that are owned by you or all that are listed.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
   
-<para>For each mounted share you can open a submenu that contains the following entries. For further information read <link linkend="shares_view_actions_popup_menu">here</link>.</para>
+    <para>For each mounted share you can open a submenu that contains the following entries. For further information read <link linkend="shares_view_actions_popup_menu">here</link>.</para>
 
-<variablelist>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <guimenuitem>Unmount</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Unmount the share.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <guimenuitem>Add Bookmark</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Add the selected share to the bookmarks.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <guimenuitem>Synchronize</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Synchronize the mounted share with a local copy or vice versa. For further information read <link linkend="shares_view_actions_popup_menu">here</link> and <link linkend="shares_view_synchronization">here</link>.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <guimenuitem>Open with &konsole;</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Open the base folder of the share in &konsole;.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <guimenuitem>Open with File Manager</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Open the contents of the share in the default file manager (&eg; &dolphin;).</para>
-    </listitem>
-  </varlistentry>
-</variablelist>
+    <variablelist>
+      <varlistentry>
+        <term>
+          <menuchoice><guimenuitem>Unmount</guimenuitem></menuchoice>
+        </term>
+        <listitem>
+          <para>Unmount the share.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice><guimenuitem>Add Bookmark</guimenuitem></menuchoice>
+        </term>
+        <listitem>
+          <para>Add the selected share to the bookmarks.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice><guimenuitem>Synchronize</guimenuitem></menuchoice>
+        </term>
+        <listitem>
+          <para>Synchronize the mounted share with a local copy or vice versa. For further information read <link linkend="shares_view_actions_popup_menu">here</link> and <link linkend="shares_view_synchronization">here</link>.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice><guimenuitem>Open with &konsole;</guimenuitem></menuchoice>
+        </term>
+        <listitem>
+          <para>Open the base folder of the share in &konsole;.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice><guimenuitem>Open with File Manager</guimenuitem></menuchoice>
+        </term>
+        <listitem>
+          <para>Open the contents of the share in the default file manager (&eg; &dolphin;).</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
 
-<para>The <guimenuitem>Bookmarks</guimenuitem> menu contains all your bookmarks organized according to the structure you gave them (see also <link linkend="mainwindow_add_bookmarks">here</link> and <link linkend="mainwindow_bookmarks_editor">here</link>).</para>
+    <para>The <guimenuitem>Bookmarks</guimenuitem> menu contains all your bookmarks organized according to the structure you gave them (see also <link linkend="mainwindow_add_bookmarks">here</link> and <link linkend="mainwindow_bookmarks_editor">here</link>).</para>
 
-<screenshot>
-  <screeninfo>Screenshot 2 of the popup menu of the system tray icon</screeninfo>
-  <mediaobject>
-    <imageobject>
-      <imagedata fileref="system_tray_icon_popup_menu2.png" format="PNG" />
-    </imageobject>
-    <textobject>
-      <phrase>System tray icon's popup menu 2</phrase>
-    </textobject>
-  </mediaobject>
-</screenshot>
+    <screenshot>
+      <screeninfo>Screenshot of the Bookmarks menu of the system tray widget</screeninfo>
+      <mediaobject>
+        <imageobject><imagedata fileref="systemtray_bookmarks_menu.png" format="PNG" /></imageobject>
+        <textobject><phrase>System tray widget's Bookmarks menu</phrase></textobject>
+      </mediaobject>
+    </screenshot>
 
-<para>Its layout is as described <link linkend="mainwindow_bookmarks_menu">here</link> except that the <guimenuitem>Add Bookmark</guimenuitem> menu item is not present.</para>
+    <para>Its layout is as described <link linkend="mainwindow_bookmarks_menu">here</link> except that the <guimenuitem>Add Bookmark</guimenuitem> menu item is not present.</para>
+    <para>In the <guimenuitem>Profiles</guimenuitem> menu, all profiles you <link linkend="profiles">defined</link> are listed:</para>
 
-<para>In the <guimenuitem>Profiles</guimenuitem> menu, all profiles you <link linkend="profiles">defined</link> are listed:</para>
+    <screenshot>
+      <screeninfo>Screenshot of the Profiles menu of the system tray widget</screeninfo>
+      <mediaobject>
+        <imageobject><imagedata fileref="systemtray_profiles_menu.png" format="PNG" /></imageobject>
+        <textobject><phrase>System tray icon's popup menu 3</phrase></textobject>
+      </mediaobject>
+    </screenshot>
 
-<screenshot>
-  <screeninfo>Screenshot 3 of the popup menu of the system tray icon</screeninfo>
-  <mediaobject>
-    <imageobject>
-      <imagedata fileref="system_tray_icon_popup_menu3.png" format="PNG" />
-    </imageobject>
-    <textobject>
-      <phrase>System tray icon's popup menu 3</phrase>
-    </textobject>
-  </mediaobject>
-</screenshot>
+    <para>You can activate a profile by clicking it. The profiles can be <link linkend="profiles">managed</link> via the <link linkend="configuration_profiles">configuration dialog</link>.</para>
+    <para>The other menu entries are:</para>
 
-<para>You can activate a profile by clicking it. The profiles can be <link linkend="profiles">managed</link> via the <link linkend="configuration_profiles">configuration dialog</link>.</para>
-
-<para>The other menu entries are:</para>
-
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guimenuitem>Open Mount Dialog</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>Open the <link linkend="network_neighborhood_browser_mounting">dialog</link> for "manual" mounts.</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guimenuitem>Configure &smb4k;...</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>Open the configuration dialog. See <link linkend="configuration">here</link> for a full list of available settings.</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guimenuitem>Minimize | Restore</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>Hide (minimize) or show (restore) the main window. Which text is shown depends on the state of the main window.</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<shortcut>
-<keycombo action="simul">
-&Ctrl; <keycap>Q</keycap>
-</keycombo>
-</shortcut>
-<guimenuitem>Quit</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>Quit the application.</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect2>
+    <variablelist>
+      <varlistentry>
+        <term>
+          <menuchoice><guimenuitem>Open Mount Dialog</guimenuitem></menuchoice>
+        </term>
+        <listitem>
+          <para>Open the <link linkend="network_neighborhood_browser_mounting">dialog</link> for "manual" mounts.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice><guimenuitem>Configure &smb4k;...</guimenuitem></menuchoice>
+        </term>
+        <listitem>
+          <para>Open the configuration dialog. See <link linkend="configuration">here</link> for a full list of available settings.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice><guimenuitem>Minimize | Restore</guimenuitem></menuchoice>
+        </term>
+        <listitem>
+          <para>Hide (minimize) or show (restore) the main window. Which text is shown depends on the state of the main window.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>Q</keycap></keycombo></shortcut><guimenuitem>Quit</guimenuitem></menuchoice>
+        </term>
+        <listitem>
+          <para>Quit the application.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
 </sect1>
 
 <!-- Using Smb4K : The Plasmoid -->
