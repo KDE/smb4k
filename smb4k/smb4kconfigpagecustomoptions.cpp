@@ -846,7 +846,7 @@ void Smb4KConfigPageCustomOptions::insertCustomOptions(const QList<Smb4KCustomOp
         }
         case Share:
         {
-          QListWidgetItem *item = new QListWidgetItem(KDE::icon("folder-remote"), 
+          QListWidgetItem *item = new QListWidgetItem(KDE::icon("folder-network"), 
                                       m_options_list.at(i)->unc(),
                                       m_custom_options, Share);
           item->setData(Qt::UserRole, m_options_list.at(i)->url().toDisplayString());

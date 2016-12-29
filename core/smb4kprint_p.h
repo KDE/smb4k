@@ -177,6 +177,7 @@ class Smb4KPrintDialog : public QDialog
   protected Q_SLOTS:
     void slotPrintClicked();
     void slotCancelClicked();
+    void slotOptionsClicked();
     void slotInputValueChanged(const QString &text);
 
   private:
@@ -194,6 +195,11 @@ class Smb4KPrintDialog : public QDialog
      * The Cancel button
      */
     QPushButton *m_cancel_button;
+    
+    /**
+     * The Options button
+     */
+    QPushButton *m_optionsButton;
     
     /**
      * The Details widget

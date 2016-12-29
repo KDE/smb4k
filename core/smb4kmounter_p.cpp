@@ -97,7 +97,6 @@ void Smb4KMountDialog::setupView()
 
   QHBoxLayout *desc_layout = new QHBoxLayout(description);
   desc_layout->setSpacing(5);
-  desc_layout->setMargin(0);
 
   QLabel *pixmap = new QLabel(description);
   QPixmap mount_pix = KDE::icon("view-form", QStringList("emblem-mounted")).pixmap(KIconLoader::SizeHuge);
@@ -116,7 +115,6 @@ void Smb4KMountDialog::setupView()
 
   QGridLayout *edit_layout = new QGridLayout(edit_widget);
   layout->setSpacing(5);
-  layout->setMargin(0);
 
   QLabel *shareLabel = new QLabel(i18n("UNC Address:"), edit_widget);
   m_share_input = new KLineEdit(edit_widget);

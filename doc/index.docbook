@@ -133,7 +133,7 @@
   </mediaobject>
 </screenshot>
 
-<para>&smb4k; comes with a compact unified toolbar as the default, but the user can still choose to use multiple toolbars. If you wish to use the classical way, four toolbars are defined, for each widget one: the main toolbar, the toolbars for the <guilabel>Network Neighborhood</guilabel> widget, the <guilabel>Shares View</guilabel> widget and the <guilabel>Network Search</guilabel> widget. The unified toolbar contains some of the main actions, like <guimenuitem>Configure &smb4k;</guimenuitem> and <guimenuitem>Quit</guimenuitem>. It also dynamically loads the actions of the dock widget that currently has got the focus. For additional information and some important warnings, please have a look at the sections discussing the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, <link linkend="network_search_dialog">search dialog</link>, and <link linkend="shares_view">mounted shares view</link>.</para>
+<para>&smb4k; comes with a compact unified toolbar as the default, but the user can still choose to use multiple toolbars. If you wish to use the classical way, four toolbars are defined, for each widget one: the main toolbar, the toolbars for the <guilabel>Network Neighborhood</guilabel> widget, the <guilabel>Shares View</guilabel> widget and the <guilabel>Network Search</guilabel> widget. The unified toolbar contains some of the main actions, like <guimenuitem>Configure &smb4k;</guimenuitem> and <guimenuitem>Quit</guimenuitem>. It also dynamically loads the actions of the dock widget that currently has got the focus. For additional information and some important warnings, please have a look at the sections discussing the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, <link linkend="network_search_view">search dialog</link>, and <link linkend="shares_view">mounted shares view</link>.</para>
 
 <para>The status bar gives some information about the current status of &smb4k;. If the application is processing a user request (&eg; mounting a share), a descriptive message is displayed in the leftmost section and a progress bar is shown with a busy indicator. The two icons on the right hand side indicate if there are shares mounted (remote folder icon) and the status of the authentication system (wallet or key icon).</para>
 
@@ -142,270 +142,270 @@
 <para>The main window is highly configurable. You can hide or show all tabbed widgets (<menuchoice><guimenu>Settings</guimenu><guimenuitem>Dock Widgets</guimenuitem></menuchoice>). They can also be dragged around with the mouse and docked to different areas in the main window. You can even detach them from the main window. The status bar and the toolbars can be hidden/shown by toggling the menu entry <menuchoice><guimenu>Settings</guimenu><guimenuitem>Show Statusbar</guimenuitem></menuchoice> and the ones under <menuchoice><guimenu>Settings</guimenu><guimenuitem>Toolbars Shown</guimenuitem></menuchoice>, respectively.</para>
 </sect1>
 
-<!-- Using Smb4K : The Network Neighborhood Browser -->
+<!-- 
+      Using Smb4K : The Network Neighborhood Browser 
+-->
 
 <sect1 id="network_neighborhood_browser">
-<title>The Network Neighborhood Browser</title>
+  <title>The Network Neighborhood Browser</title>
 
-<para>The interaction with the network neighborhood is done with the <guilabel>Network Neighborhood</guilabel> browser. It contains all network items &#8212; &ie; workgroups, servers, and shares &#8212; &smb4k; was able to find. They are organized in a network tree, and you can navigate through it by either clicking the [+] next to the item name or by executing the item itself.</para>
+  <para>The interaction with the network neighborhood is done with the <guilabel>Network Neighborhood</guilabel> browser. It contains all network items &#8212; &ie; workgroups, servers, and shares &#8212; &smb4k; was able to find. They are organized in a network tree, and you can navigate through it by either clicking the control next to the item name or by executing the item itself.</para>
+  <para>In the network tree, the master browser of each workgroup or domain is highlighted by blue font color. Mounted shares are marked with the respective folder icon and an italic font.</para>
 
-<para>In the network tree, the master browser of each workgroup or domain is highlighted by blue font color. Mounted shares are marked with the respective folder icon and an italic font.</para>
-
-<screenshot>
-  <screeninfo>Screenshot of the network neighborhood browser</screeninfo>
-  <mediaobject>
-  <imageobject>
-  <imagedata fileref="network_neighborhood_browser.png" format="PNG" />
-  </imageobject>
-  <textobject>
-  <phrase>The network neighborhood browser</phrase>
-  </textobject>
-  </mediaobject>
-</screenshot>
-
-<para>The selection of multiple network items is supported. So, it is possible to &eg; mount or preview several shares at once.</para>
-
-<!-- Using Smb4K : The Network Neighborhood Browser : Browsing -->
-
-<sect2 id="network_neighborhood_browser_browsing">
-<title>Browsing</title>
-<para>&smb4k; automatically scans the network neighborhood for active workgroups and domains on start-up and presents them in the network neighborhood browser. Opening a workgroup item shows the servers belonging to it. If you want to access the shares of one of the servers, you have to open the desired server.</para>
-
-<para>There are two scan modes available. The traditional one, where initially only workgroups and domains are looked up and scans are only made when necessary &#8212; &ie; when you execute a network item &#8212;, and one, where the network is scanned periodically for <emphasis>all</emphasis> available network items including servers and shares. While the former one is the default, the latter one can be enabled in the <link linkend="configuration_network_periodic_scanning">configuration dialog</link>.</para>
-
-<para>There are <link linkend="configuration_network_browselist">four methods</link> to retrieve the browse list: The default one is to scan the network neighborhood for all available master browsers. The second and third method directly query a master browser to get the browse list. The difference is that the former is a dynamic one, where the current master browser of your workgroup or domain is looked up and used, and the latter is a static one, where a fixed name or IP address is used. It is recommended that you choose the dynamic method. However, there might be circumstances that make it necessary to use a static name or IP address. The last method searches for all registered IP addresses within a given broadcast area. This might come in handy on poorly performing network neighborhoods.</para>
-
-<para>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic package to each server that is to be woken up and waits the defined time until it starts the lookup of the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_network_wake_on_lan">configuration dialog</link>. The servers that should to be woken up have to be defined in the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
-
-<note><para>Under normal circumstances you should not have any trouble browsing the network neighborhood. In case you experience problems, please read our <ulink url="https://sourceforge.net/p/smb4k/wiki/Home/">wiki</ulink> first before thinking about <ulink url="https://sourceforge.net/p/smb4k/tickets/">reporting a bug</ulink>. It lists some common problems and their solutions.</para></note>
-</sect2>
-
-<!-- Using Smb4K : The Network Neighborhood Browser : Actions and Popup Menu -->
-
-<sect2 id="mainwindow_network_menu">
-<title>Actions and Popup Menu</title>
-
-<para>For the network neighborhood browser several actions are defined. They are present in the menubar under <guimenu>Network</guimenu>, in the toolbar and the popup menu. The following ones are available:</para>
-  
-<variablelist>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <shortcut><keycap>F5</keycap></shortcut>
-        <guimenuitem>Scan Network|Workgroup|Computer</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Scan the whole network neighborhood, the highlighted workgroup/domain or computer for new entries. This action is visible by default and will be replaced by the <guimenuitem>Abort</guimenuitem> action if a network scan is running.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <shortcut><keycombo action="simul">&Ctrl; <keycap>A</keycap></keycombo></shortcut>
-        <guimenuitem>Abort</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Abort any running process of the network neighborhood browser. This action is invisible by default and will only be visible instead of the <guimenuitem>Scan Network|Workgroup|Computer</guimenuitem> action when a network scan is running.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <guimenuitem>Add Bookmark</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Add a bookmark to the currently selected remote share. This action is disabled if no share is selected.</para>
-      <para>Read the <link linkend="mainwindow_add_bookmarks">Adding Bookmarks</link> section for more details.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <shortcut><keycombo action="simul">&Ctrl; <keycap>O</keycap></keycombo></shortcut>
-        <guimenuitem>Open Mount Dialog</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Open the <link linkend="mainwindow_network_mounting">dialog</link> for mounting shares "manually". This feature may be needed if &smb4k; cannot find a server from which you want to mount a certain shared resource.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <shortcut><keycombo action="simul">&Ctrl; <keycap>T</keycap></keycombo></shortcut>
-        <guimenuitem>Authentication</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Open the <link linkend="mainwindow_network_authentication">authentication dialog</link>. You can provide the login and password for the selected server or share. If a workgroup or no item is selected, this action is disabled.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut>
-        <guimenuitem>Custom Options</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Open the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog. You can set several custom options for the selected server or share. If a workgroup or no item is selected, this menu entry is disabled.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <shortcut><keycombo action="simul">&Ctrl; <keycap>V</keycap></keycombo></shortcut>
-        <guimenuitem>Preview</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para><link linkend="mainwindow_network_preview">Preview</link> the contents of the selected remote share. This action is only enabled if a share is selected. Printer shares cannot be previewed.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <shortcut><keycombo action="simul">&Ctrl; <keycap>P</keycap></keycombo></shortcut>
-        <guimenuitem>Print File</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para><link linkend="mainwindow_network_printing">Print</link> a file on a remote printer. This action is only available if a printer share is selected.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <shortcut><keycombo action="simul">&Ctrl; <keycap>M</keycap></keycombo></shortcut>
-        <guimenuitem>Mount</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Mount the selected remote share. By default and if you clicked anything different than a share with type "Disk" or "IPC", this action is disabled. If you selected a mounted share, this action is replaced by the <guimenuitem>Unmount</guimenuitem> action.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut>
-        <guimenuitem>Unmount</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Unmount the selected share. This action is invisible by default and will only be visible instead of the <guimenuitem>Mount</guimenuitem> action when the share is currently mounted.</para>
-    </listitem>
-  </varlistentry>
-</variablelist>
-
-<para>Although you can interact with the network neighborhood using the keyboard shortcuts mentioned above, in most cases it is more convenient to use the mouse. By right clicking you can open a popup menu. It contains all actions that are available in the network neighborhood browser. Depending on the position where you clicked (on a network item or on the viewport), some of them may be disabled. The figure below shows the popup menu opened on a remote share.</para>
-
-<screenshot>
-  <screeninfo>Screenshot of the popup menu of the network neighborhood browser</screeninfo>
-    <mediaobject>
-      <imageobject>
-        <imagedata fileref="popup_menu_browser.png" format="PNG" />
-      </imageobject>
-      <textobject>
-        <phrase>The popup menu of the network neighborhood browser</phrase>
-      </textobject>
-    </mediaobject>
-</screenshot>
-
-<para>The title of the popup menu is set to the name of the network item or displays <guilabel>Network</guilabel> if you clicked on the viewport.</para>
-</sect2>
-
-<!-- Using Smb4K : The Network Neighborhood Browser : Tooltips -->
-
-<sect2 id="mainwindow_network_tooltips">
-<title>Tooltips</title>
-<para>For each network item a tooltip is provided that contains various information like the name of the workgroup and master browser, the name and IP address of the host, the name of the share, &etc; If a tooltip is requested for a server, it is queried for additional information about the operating system and the server (&eg; Samba).</para>
-<para>The tooltips can be disabled in the <link linkend="configuration_user_interface_network_tooltips">configuration dialog</link>.</para>
-</sect2>
-
-<!-- Using Smb4K : The Network Neighborhood Browser : Mounting a Share -->
-
-<sect2 id="mainwindow_network_mounting">
-<title>Mounting a Share</title>
-
-<para>There are three options available to mount a remote share:</para>
-
-<orderedlist>
-  <listitem><para>Execute the icon representing the remote share in the network neighborhood browser. (Depending on your &kde; settings, this is done by either single or double clicking the icon.)</para></listitem>
-  <listitem><para>Select the remote share and click the <guimenuitem>Mount</guimenuitem> menu entry. Alternatively, you can press the <keycombo action="simul">&Ctrl; <keycap>M</keycap></keycombo> keyboard shortcut.</para></listitem>
-  <listitem><para>If &smb4k; was not able to find the server where the share is located, you can press the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>O</keycap></keycombo></shortcut><guimenuitem>Open Mount Dialog</guimenuitem></menuchoice> menu entry and a mount dialog will be opened:</para>
   <screenshot>
-    <screeninfo>Screenshot of the "Mount Share" dialog</screeninfo>
+    <screeninfo>Screenshot of the network neighborhood browser</screeninfo>
     <mediaobject>
-      <imageobject><imagedata fileref="dialog_manual_mount.png" format="PNG" /></imageobject>
-      <textobject><phrase>The "Mount Share" dialog</phrase></textobject>
+      <imageobject><imagedata fileref="network_neighborhood_browser.png" format="PNG" /></imageobject>
+      <textobject><phrase>The network neighborhood browser</phrase></textobject>
     </mediaobject>
   </screenshot>
-  <para>Here you can enter the location of the share either as <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention">Uniform Naming Convention (UNC)</ulink> address in the form <screen>//[USER@]SERVER/SHARE</screen> or <screen>\\[USER@]SERVER\SHARE</screen> or as URL in the form <screen>[smb:]//[user@]server:port/share</screen> The <guibutton>OK</guibutton> button will be enabled and you can press it to mount the share. However, it is advisable to enter the IP address and the workgroup of the server, too. If you want to add the share to the bookmarks at the same time, tick the <guibutton>Add this share to the bookmarks</guibutton> check box.</para></listitem>
-</orderedlist>
 
-<para>Often a share is password protected. In this case, an <link linkend="mainwindow_network_authentication">authentication dialog</link> will appear and you have to enter the correct user name (if not already provided) and password. &smb4k; will proceed mounting the share unless a wrong user name or password was supplied. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="shares_view">mounted shares view</link>. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (&Linux;) or <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (FreeBSD, NetBSD) will be shown.</para>
-</sect2>
+  <para>The selection of multiple network items is supported. So, it is possible to &eg; mount or preview several shares at once.</para>
 
-<!-- Using Smb4K : The Network Neighborhood Browser : Printing Files -->
+<!-- 
+      Using Smb4K : The Network Neighborhood Browser : Browsing 
+-->
 
-<sect2 id="mainwindow_network_printing">
-<title>Printing Files on Remote Printers</title>
-<para>To print a file on a remote printer, open the print dialog by clicking the printer icon or choosing the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>P</keycap></keycombo></shortcut><guimenuitem>Print File</guimenuitem></menuchoice> menu item.</para>
-<screenshot>
-<screeninfo>Screenshot of the print dialog</screeninfo>
-<mediaobject>
-<imageobject>
-<imagedata fileref="dialog_print_file.png" format="PNG" />
-</imageobject>
-<textobject>
-<phrase>The print dialog</phrase>
-</textobject>
-</mediaobject>
-</screenshot>
-<para>In the <guilabel>Printer</guilabel> section various information about the printer is shown. Under <guilabel>File</guilabel> you have to provide the name of the file you want to print. The number of copies can be defined under <guibutton>Options >></guibutton>. Press <guibutton>Print...</guibutton> to start the print process.</para>
-<para>&smb4k; currently supports PDF, Postscript, image, and text files. If you try to print a file with an unsupported mimetype, a notification with an error message will appear telling you the mimetype is not supported. In this case you have to convert the file manually to Postscript or PDF and try again.</para>
-</sect2>
+  <sect2 id="network_neighborhood_browser_browsing">
+    <title>Browsing</title>
 
-<!-- Using Smb4K : The Network Neighborhood Browser : Previewing Shares -->
+    <para>&smb4k; automatically scans the network neighborhood for active workgroups and domains on start-up and presents them in the network neighborhood browser. Opening a workgroup item shows the servers belonging to it. If you want to access the shares of one of the servers, you have to open the desired server.</para>
 
-<sect2 id="mainwindow_network_preview">
-<title>Previewing Shares</title>
-<para>&smb4k; provides the ability to preview remote shares. If you click the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>V</keycap></keycombo></shortcut><guimenuitem>Preview</guimenuitem></menuchoice> menu entry, the contents of the selected remote share will be opened in a preview dialog.</para>
-<screenshot>
-<screeninfo>Screenshot of the preview dialog</screeninfo>
-<mediaobject>
-<imageobject>
-<imagedata fileref="dialog_preview.png" format="PNG" />
-</imageobject>
-<textobject>
-<phrase>The preview dialog</phrase>
-</textobject>
-</mediaobject>
-</screenshot>
-<para>The preview dialog acts like a simple file manager. You can navigate through the contents of the remote share by clicking the folder icons in the list view and the <guibutton>Up</guibutton>, <guibutton>Back</guibutton>, and <guibutton>Forward</guibutton> button. The current location is displayed in the combo box on the right hand side. The <guibutton>Reload</guibutton> button reloads the contents of the current folder.</para>
-<para> By default, the preview dialog only shows folders and files that are not hidden. You can change this behavior in the <link linkend="configuration_network_general_behavior">configuration dialog</link>. File transfers or the like are not possible.</para>
-</sect2>
+    <para>There are two scan modes available. The traditional one, where initially only workgroups and domains are looked up and scans are only made when necessary &#8212; &ie; when you execute a network item &#8212;, and one, where the network is scanned periodically for <emphasis>all</emphasis> available network items including servers and shares. While the former one is the default, the latter one can be enabled in the <link linkend="configuration_network_periodic_scanning">configuration dialog</link>.</para>
 
-<!-- Using Smb4K : The Network Neighborhood Browser : Providing Authentication Information -->
+    <para>There are <link linkend="configuration_network_browselist">three methods</link> to retrieve the browse list: The default one is to scan the network neighborhood for all available master browsers. The second and third method directly query a master browser to get the browse list. The difference is that the former is a dynamic one, where the current master browser of your workgroup or domain is looked up and used, and the latter is a static one, where a fixed name or IP address is used. It is recommended that you choose the dynamic method. However, there might be circumstances that make it necessary to use a static name or IP address.</para>
 
-<sect2 id="mainwindow_network_authentication">
-<title>Providing Authentication Information</title>
-<para>Many servers or remote shares are password protected. In that case, a password dialog appears asking you for the user name and password. The same happens, if you click the  <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>T</keycap></keycombo></shortcut><guimenuitem>Authentication</guimenuitem></menuchoice> menu entry.</para>
-<screenshot>
-<screeninfo>Screenshot of the authentication dialog</screeninfo>
-<mediaobject>
-<imageobject>
-<imagedata fileref="dialog_authentication.png" format="PNG" />
-</imageobject>
-<textobject>
-<phrase>The authentication dialog</phrase>
-</textobject>
-</mediaobject>
-</screenshot>
-<para>If a user name has already been provided, it will be shown in the respective field. If it is wrong or no user name was provided, you have to enter one. The password, however, may be left blank. Clicking the <guibutton>OK</guibutton> button will commit the data. Depending on your choice in the <link linkend="configuration_page_authentication">configuration dialog</link>, the user name and password will be stored permanently in a digital wallet or not all. In the latter case you will have to provide them <emphasis>every time</emphasis> they are needed.</para>
+    <para>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic package to each server that is to be woken up and waits the defined time until it starts the lookup of the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_network_wake_on_lan">configuration dialog</link>. The servers that should to be woken up have to be defined in the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
+  </sect2>
+
+<!-- 
+      Using Smb4K : The Network Neighborhood Browser : Actions and Popup Menu 
+-->
+
+  <sect2 id="network_neighborhood_browser_actions_popup_menu">
+    <title>Actions and Popup Menu</title>
+
+    <para>For the network neighborhood browser several actions are defined. They are present in the menubar under <guimenu>Network</guimenu>, in the toolbar and the popup menu. The following ones are available:</para>
+  
+    <variablelist>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycap>F5</keycap></shortcut>
+            <guimenuitem>Scan Network|Workgroup|Computer</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Scan the whole network neighborhood, the highlighted workgroup/domain or computer for new entries. This action is visible by default and will be replaced by the <guimenuitem>Abort</guimenuitem> action if a network scan is running.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>A</keycap></keycombo></shortcut>
+            <guimenuitem>Abort</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Abort any running process of the network neighborhood browser. This action is invisible by default and will only be visible instead of the <guimenuitem>Scan Network|Workgroup|Computer</guimenuitem> action when a network scan is running.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <guimenuitem>Add Bookmark</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Add a bookmark to the currently selected remote share. This action is disabled if no share is selected.</para>
+          <para>Read the <link linkend="mainwindow_add_bookmarks">Adding Bookmarks</link> section for more details.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>O</keycap></keycombo></shortcut>
+            <guimenuitem>Open Mount Dialog</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Open the <link linkend="network_neighborhood_browser_mounting">dialog</link> for mounting shares "manually". This feature may be needed if &smb4k; cannot find a server from which you want to mount a certain shared resource.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>T</keycap></keycombo></shortcut>
+            <guimenuitem>Authentication</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Open the <link linkend="network_neighborhood_browser_authentication">authentication dialog</link>. You can provide the login and password for the selected server or share. If a workgroup or no item is selected, this action is disabled.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut>
+            <guimenuitem>Custom Options</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Open the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog. You can set several custom options for the selected server or share. If a workgroup or no item is selected, this menu entry is disabled.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>V</keycap></keycombo></shortcut>
+            <guimenuitem>Preview</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para><link linkend="network_neighborhood_browser_previewing">Preview</link> the contents of the selected remote share. This action is only enabled if a share is selected. Printer shares cannot be previewed.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>P</keycap></keycombo></shortcut>
+            <guimenuitem>Print File</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para><link linkend="network_neighborhood_browser_printing">Print</link> a file on a remote printer. This action is only available if a printer share is selected.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>M</keycap></keycombo></shortcut>
+            <guimenuitem>Mount</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Mount the selected remote share. By default and if you clicked anything different than a share with type "Disk" or "IPC", this action is disabled. If you selected a mounted share, this action is replaced by the <guimenuitem>Unmount</guimenuitem> action.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut>
+            <guimenuitem>Unmount</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Unmount the selected share. This action is invisible by default and will only be visible instead of the <guimenuitem>Mount</guimenuitem> action when the share is currently mounted.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>Although you can interact with the network neighborhood using the keyboard shortcuts mentioned above, in most cases it is more convenient to use the mouse. By right clicking you can open a popup menu. It contains all actions that are available in the network neighborhood browser. Depending on the position where you clicked (on a network item or on the viewport), some of them may be disabled. The figure below shows the popup menu opened on a remote share.</para>
+
+    <screenshot>
+      <screeninfo>Screenshot of the popup menu of the network neighborhood browser</screeninfo>
+        <mediaobject>
+        <imageobject>
+          <imagedata fileref="network_neighborhood_browser_popup_menu.png" format="PNG" />
+        </imageobject>
+        <textobject>
+          <phrase>The popup menu of the network neighborhood browser</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+  </sect2>
+
+<!-- 
+      Using Smb4K : The Network Neighborhood Browser : Tooltips 
+-->
+
+  <sect2 id="network_neighborhood_browser_tooltips">
+    <title>Tooltips</title>
+
+    <para>For each network item a tooltip is provided that contains various information like the name of the workgroup and master browser, the name and IP address of the host, the name of the share, &etc;</para>
+    <para>The tooltips can be disabled in the <link linkend="configuration_user_interface_network_tooltips">configuration dialog</link>.</para>
+  </sect2>
+
+<!-- 
+      Using Smb4K : The Network Neighborhood Browser : Mounting a Share 
+-->
+
+  <sect2 id="network_neighborhood_browser_mounting">
+    <title>Mounting a Share</title>
+
+    <para>There are three options available to mount a remote share:</para>
+
+    <orderedlist>
+      <listitem><para>Execute the icon representing the remote share in the network neighborhood browser. (Depending on your &kde; settings, this is done by either single or double clicking the icon.)</para></listitem>
+      <listitem><para>Select the remote share and click the <guimenuitem>Mount</guimenuitem> menu entry. Alternatively, you can press the <keycombo action="simul">&Ctrl; <keycap>M</keycap></keycombo> keyboard shortcut.</para></listitem>
+      <listitem><para>If &smb4k; was not able to find the server where the share is located, you can press the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>O</keycap></keycombo></shortcut><guimenuitem>Open Mount Dialog</guimenuitem></menuchoice> menu entry and a mount dialog will be opened:</para>
+      <screenshot>
+        <screeninfo>Screenshot of the "Mount Share" dialog</screeninfo>
+        <mediaobject>
+          <imageobject><imagedata fileref="network_neighborhood_browser_mount_dialog.png" format="PNG" /></imageobject>
+          <textobject><phrase>The "Mount Share" dialog</phrase></textobject>
+        </mediaobject>
+      </screenshot>
+      <para>Here you can enter the location of the share either as <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention">Uniform Naming Convention (UNC)</ulink> address in the form <programlisting>//[USER@]SERVER/SHARE</programlisting> or <programlisting>\\[USER@]SERVER\SHARE</programlisting> or as URL in the form <programlisting>[smb:]//[user@]server:port/share</programlisting> The <guibutton>OK</guibutton> button will be enabled and you can press it to mount the share. However, it is advisable to enter the IP address and the workgroup of the server, too. If you want to add the share to the bookmarks at the same time, tick the <guibutton>Add this share to the bookmarks</guibutton> check box.</para></listitem>
+    </orderedlist>
+
+    <para>Often a share is password protected. In this case, an <link linkend="network_neighborhood_browser_authentication">authentication dialog</link> will appear and you have to enter the correct user name (if not already provided) and password. &smb4k; will proceed mounting the share unless a wrong user name or password was supplied. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="shares_view">mounted shares view</link>. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (&Linux;) or <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (FreeBSD, NetBSD) will be shown.</para>
+  </sect2>
+
+<!-- 
+      Using Smb4K : The Network Neighborhood Browser : Printing Files 
+-->
+
+  <sect2 id="network_neighborhood_browser_printing">
+    <title>Printing Files on Remote Printers</title>
+
+    <para>To print a file on a remote printer, open the print dialog by clicking the printer icon or choosing the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>P</keycap></keycombo></shortcut><guimenuitem>Print File</guimenuitem></menuchoice> menu item.</para>
+    <screenshot>
+      <screeninfo>Screenshot of the print dialog</screeninfo>
+      <mediaobject>
+        <imageobject><imagedata fileref="network_neighborhood_browser_print_dialog.png" format="PNG" /></imageobject>
+        <textobject><phrase>The print dialog</phrase></textobject>
+      </mediaobject>
+    </screenshot>
+    <para>In the <guilabel>Printer</guilabel> section various information about the printer is shown. Under <guilabel>File</guilabel> you have to provide the path to the file you want to print. The number of copies can be defined under <guibutton>Options >></guibutton>. Press <guibutton>Print...</guibutton> to start the print process.</para>
+    <para>&smb4k; currently supports PDF, Postscript, image, and text files. If you try to print a file with an unsupported mimetype, a notification with an error message will appear telling you the mimetype is not supported. In this case you have to convert the file manually to Postscript or PDF and try again.</para>
+  </sect2>
+
+<!-- 
+      Using Smb4K : The Network Neighborhood Browser : Previewing Shares 
+-->
+
+  <sect2 id="network_neighborhood_browser_previewing">
+    <title>Previewing Shares</title>
+    
+    <para>&smb4k; provides the ability to preview remote shares. If you click the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>V</keycap></keycombo></shortcut><guimenuitem>Preview</guimenuitem></menuchoice> menu entry, the contents of the selected remote share will be opened in a preview dialog.</para>
+    <screenshot>
+      <screeninfo>Screenshot of the preview dialog</screeninfo>
+      <mediaobject>
+        <imageobject><imagedata fileref="network_neighborhood_browser_preview_dialog.png" format="PNG" /></imageobject>
+        <textobject><phrase>The preview dialog</phrase></textobject>
+      </mediaobject>
+    </screenshot>
+    <para>The preview dialog acts like a simple file manager. You can navigate through the contents of the remote share by clicking the folder icons in the list view and the <guibutton>Up</guibutton>, <guibutton>Back</guibutton>, and <guibutton>Forward</guibutton> button. The current location is displayed in the combo box on the right hand side. The <guibutton>Reload</guibutton> button reloads the contents of the current folder.</para>
+    <para>By default, the preview dialog only shows folders and files that are not hidden. You can change this behavior in the <link linkend="configuration_network_general_behavior">configuration dialog</link>. File transfers or the like are not possible.</para>
+  </sect2>
+
+<!-- 
+      Using Smb4K : The Network Neighborhood Browser : Providing Authentication Information 
+-->
+
+  <sect2 id="network_neighborhood_browser_authentication">
+    <title>Providing Authentication Information</title>
+
+    <para>Many servers or remote shares are password protected. In that case, a password dialog appears asking you for the user name and password. The same happens, if you click the  <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>T</keycap></keycombo></shortcut><guimenuitem>Authentication</guimenuitem></menuchoice> menu entry.</para>
+    <screenshot>
+      <screeninfo>Screenshot of the authentication dialog</screeninfo>
+      <mediaobject>
+        <imageobject><imagedata fileref="network_neighborhood_browser_authentication_dialog.png" format="PNG" /></imageobject>
+        <textobject><phrase>The authentication dialog</phrase></textobject>
+      </mediaobject>
+    </screenshot>
+    <para>If a user name has already been provided, it will be shown in the respective field. If it is wrong or no user name was provided, you have to enter one. The password, however, may be left blank. Clicking the <guibutton>OK</guibutton> button will commit the data. Depending on your choice in the <link linkend="configuration_page_authentication">configuration dialog</link>, the user name and password will be stored permanently in a digital wallet or not all. In the latter case you will have to provide them <emphasis>every time</emphasis> they are needed.</para>
 </sect2>
 
 <!-- 
@@ -427,7 +427,7 @@
       <screeninfo>Screenshot of the custom options dialog for a share</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="dialog_custom_options.png" format="PNG" />
+          <imagedata fileref="network_neighborhood_browser_custom_options_dialog.png" format="PNG" />
         </imageobject>
         <textobject>
           <phrase>The custom options dialog</phrase>
@@ -436,7 +436,6 @@
     </screenshot>
 
     <para>The <guibutton>Default</guibutton> button is enabled if the entries in the dialog deviate from the settings you defined in the configuration dialog. By clicking it, you can reset the entries in the dialog to their default values. The <guibutton>OK</guibutton> button is enabled if you changed the settings in the dialog. Clicking it will commit the custom settings and close the dialog.</para>
-
     <note><para>Under FreeBSD and NetBSD, the dialog contains less entries than if you run a different operating system, because several of the options are not supported.</para></note>
 
     <sect3 id="network_neighborhood_browser_defining_custom_options_samba">
@@ -452,121 +451,135 @@
     </sect3>
   </sect2>
 
-<!-- Using Smb4K : The Network Neighborhood Browser : Adding Bookmarks -->
+<!-- 
+      Using Smb4K : The Network Neighborhood Browser : Adding Bookmarks
+-->
 
-<sect2 id="mainwindow_network_bookmark">
-<title>Adding Bookmarks</title>
-<para>A bookmark is added by selecting a remote share (only these can be bookmarked) and pressing the <keycombo action="simul">&Ctrl; <keycap>B</keycap></keycombo> keyboard shortcut or selecting the <guimenuitem>Add Bookmark</guimenuitem> menu item. The bookmark will then be accessible through the <guimenu>Bookmarks</guimenu> menu. See the section <link linkend="mainwindow_bookmarks">Handling Bookmarks</link> for more details.</para>
-<para>The bookmarks can be used to mount remote shares.</para>
-</sect2>
+  <sect2 id="network_neighborhood_browser_adding_bookmarks">
+    <title>Adding Bookmarks</title>
+
+    <para>A bookmark is added by selecting a remote share (only these can be bookmarked) and pressing the <keycombo action="simul">&Ctrl; <keycap>B</keycap></keycombo> keyboard shortcut or selecting the <guimenuitem>Add Bookmark</guimenuitem> menu item. The bookmark will then be accessible through the <guimenu>Bookmarks</guimenu> menu. See the section <link linkend="mainwindow_bookmarks">Handling Bookmarks</link> for more details.</para>
+    <para>The bookmarks can be used to mount remote shares.</para>
+  </sect2>
 </sect1>
 
-<!-- Using Smb4K : The Network Search Dialog -->
+<!-- 
+      Using Smb4K : The Network Search View
+-->
 
-<sect1 id="network_search_dialog">
-<title>The Network Search Dialog</title>
-<para>The <guilabel>Network Search</guilabel> dialog consists of the combo box where you can enter the search item and a list view where the search results are shown.</para>
-<screenshot>
-  <screeninfo>Screenshot of the network search dialog</screeninfo>
-  <mediaobject>
-    <imageobject><imagedata fileref="network_search_dialog.png" format="PNG" /></imageobject>
-    <textobject><phrase>The network search dialog</phrase></textobject>
-  </mediaobject>
-</screenshot>
+<sect1 id="network_search_view">
+  <title>The Network Search View</title>
 
-<!-- Using Smb4K : The Network Search Dialog : Searching -->
+  <para>The <guilabel>Network Search</guilabel> view consists of the combo box where you can enter the search item and a list view where the search results are shown.</para>
+  <screenshot>
+    <screeninfo>Screenshot of the network search view</screeninfo>
+    <mediaobject>
+      <imageobject><imagedata fileref="network_search_view.png" format="PNG" /></imageobject>
+      <textobject><phrase>The network search view</phrase></textobject>
+    </mediaobject>
+  </screenshot>
 
-<sect2 id="network_search_dialog_searching">
-<title>Searching</title>
-<para>&smb4k; searches the network neighborhood for shares that match or contain the search string. To start a search, enter the term and either press the &Enter; key or click the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut><guimenuitem>Search</guimenuitem></menuchoice> action next to the input box. All network shares that match the search criterion are listed in the list view. If they are already mounted on the system, they are marked accordingly. If the search fails, an error message is displayed. Starting a new search will clear the list view. If you need to abort a search, click the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>A</keycap></keycombo></shortcut><guimenuitem>Abort</guimenuitem></menuchoice> action.</para>
-</sect2>
+<!-- 
+      Using Smb4K : The Network Search View : Searching 
+-->
 
-<!-- Using Smb4K : The Network Search Dialog : Actions and Popup Menu -->
+  <sect2 id="network_search_view_searching">
+    <title>Searching</title>
 
-<sect2 id="network_search_dialog_menu">
-  <title>Actions and Popup Menu</title>
+    <para>&smb4k; searches the network neighborhood for shares that match or contain the search string. To start a search, enter the term into the input box 
+      and either press the &Enter; key or click the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut><guimenuitem>Search</guimenuitem></menuchoice> action next to the input box. All network shares that match the search criterion are listed in the list view. If they are already mounted on the system, they are marked accordingly. If the search fails, an error message is displayed. Starting a new search will clear the list view. If you need to abort a search, click the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>A</keycap></keycombo></shortcut><guimenuitem>Abort</guimenuitem></menuchoice> action.</para>
+  </sect2>
 
-<para>For the network search also several actions are defined. They are present in the menu bar under <guimenu>Search</guimenu>, the tool bar, in the widget itself and in its popup menu. The following ones are available:</para>
+<!-- 
+      Using Smb4K : The Network Search View : Actions and Popup Menu 
+-->
 
-<variablelist>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <shortcut><keycombo action="simul">&Ctrl; <keycap>S</keycap></keycombo></shortcut>
-        <guimenuitem>Search</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Search for the item that was entered in the search dialog. This action is visible by default and will be replaced by the <guimenuitem>Abort</guimenuitem> action if a network search is running.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <shortcut><keycombo action="simul">&Ctrl; <keycap>A</keycap></keycombo></shortcut>
-        <guimenuitem>Abort</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Abort the network search. This action is invisible by default and will only be visible instead of the <guimenuitem>Search</guimenuitem> action if a network search is running.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <guimenuitem>Clear</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Clear the whole network search dialog. This action does not only clear the list view, but also the search item history in the combo box.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <shortcut><keycombo action="simul">&Ctrl; <keycap>M</keycap></keycombo></shortcut>
-        <guimenuitem>Mount</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Mount a remote share from within the search dialog. Alternatively, you can double click the network share in the list view.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut>
-        <guimenuitem>Unmount</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Unmount the selected share. This action is invisible by default and will only be visible instead of the <guimenuitem>Mount</guimenuitem> action when the share is currently mounted.</para>
-    </listitem>
-  </varlistentry>
-</variablelist>
+  <sect2 id="network_search_view_menu">
+    <title>Actions and Popup Menu</title>
 
-<para>The popup menu contains two entries: The <menuchoice><guimenuitem>Clear</guimenuitem></menuchoice> action and the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>M</keycap></keycombo></shortcut><guimenuitem>Mount</guimenuitem></menuchoice> | <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut><guimenuitem>Unmount</guimenuitem></menuchoice> dual action. The <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut><guimenuitem>Search</guimenuitem></menuchoice> | <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>A</keycap></keycombo></shortcut><guimenuitem>Abort</guimenuitem></menuchoice> dual action is located next to the search input box (as well as in the menu bar and tool bar).</para>
+    <para>For the network search also several actions are defined. They are present in the menu bar under <guimenu>Search</guimenu>, the tool bar, in the widget itself and in its popup menu. The following ones are available:</para>
 
-<screenshot>
-  <screeninfo>Screenshot of the network search's popup menu</screeninfo>
-  <mediaobject>
-    <imageobject>
-      <imagedata fileref="popup_menu_network_search.png" format="PNG" />
-    </imageobject>
-    <textobject>
-      <phrase>The network search's popup menu</phrase>
-    </textobject>
-  </mediaobject>
-</screenshot>
-</sect2>
+    <variablelist>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>S</keycap></keycombo></shortcut>
+            <guimenuitem>Search</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Search for the item that was entered in the search dialog. This action is visible by default and will be replaced by the <guimenuitem>Abort</guimenuitem> action if a network search is running.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>A</keycap></keycombo></shortcut>
+            <guimenuitem>Abort</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Abort the network search. This action is invisible by default and will only be visible instead of the <guimenuitem>Search</guimenuitem> action if a network search is running.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <guimenuitem>Clear</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Clear the whole network search dialog. This action does not only clear the list view, but also the search item history in the combo box.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>M</keycap></keycombo></shortcut>
+            <guimenuitem>Mount</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Mount a remote share from within the search dialog. Alternatively, you can double click the network share in the list view.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut>
+            <guimenuitem>Unmount</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Unmount the selected share. This action is invisible by default and will only be visible instead of the <guimenuitem>Mount</guimenuitem> action when the share is currently mounted.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
 
-<sect2 id="network_search_dialog_adding">
-<title>Mounting a Share</title>
-<para>A discovered share can directly be mounted by either double clicking it or by selecting it and choosing the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>D</keycap></keycombo></shortcut><guimenuitem>Mount</guimenuitem></menuchoice> action from the popup menu. Due to a shortcoming of the utility program that does the actual search (the <ulink url="man:/smbtree"><citerefentry><refentrytitle>smbtree</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> command), &smb4k; cannot discriminate between printer and normal shares. Mounting a printer share will fail and an error notification will be shown.</para>
-<note>
-  <para>When mounting a homes share, you are asked to provide the user name and a share with that name is mounted. The homes share itself will, thus, not be labeled as mounted afterwards.</para>
-</note>
-</sect2>
+    <para>The popup menu contains two entries: The <menuchoice><guimenuitem>Clear</guimenuitem></menuchoice> action and the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>M</keycap></keycombo></shortcut><guimenuitem>Mount</guimenuitem></menuchoice> | <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut><guimenuitem>Unmount</guimenuitem></menuchoice> dual action. The <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut><guimenuitem>Search</guimenuitem></menuchoice> | <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>A</keycap></keycombo></shortcut><guimenuitem>Abort</guimenuitem></menuchoice> dual action is located next to the search input box (as well as in the menu bar and tool bar).</para>
+
+    <screenshot>
+      <screeninfo>Screenshot of the network search view's popup menu</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="network_search_view_popup_menu.png" format="PNG" />
+        </imageobject>
+        <textobject>
+          <phrase>The network search view's popup menu</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+  </sect2>
+  
+<!-- 
+      Using Smb4K : The Network Search View : Mounting a Share
+-->
+
+  <sect2 id="network_search_view_adding">
+    <title>Mounting a Share</title>
+
+    <para>A discovered share can directly be mounted by either double clicking it or by selecting it and choosing the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>D</keycap></keycombo></shortcut><guimenuitem>Mount</guimenuitem></menuchoice> action from the popup menu. When mounting a homes share, you are asked to provide the user name and a share with that name is mounted. The homes share itself will, thus, not be labeled as mounted afterwards. Due to a shortcoming of the utility program that does the actual search (the <ulink url="man:/smbtree"><citerefentry><refentrytitle>smbtree</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> command), &smb4k; cannot discriminate between printer and normal shares. Mounting a printer share will fail and an error notification will be shown.</para>
+  </sect2>
 </sect1>
 
 <!-- 
@@ -754,32 +767,35 @@
   <sect2 id="shares_view_inaccessible_shares">
     <title>Inaccessible Shares</title>
 
-    <para>&smb4k; periodically checks all mounted shares if they are still accessible. If an inaccessible share is encountered, it will be marked with a <link linkend="shares_view_icons">modified icon</link> and you will not be able to open or synchronize it anymore. Unmounting and adding a bookmark is still possible.</para>
+    <para>&smb4k; periodically checks all mounted shares if they are still accessible. If an inaccessible share is encountered, it will be marked with a <link linkend="shares_view_icons">locked folder icon</link> and you will not be able to open or synchronize it anymore. Unmounting and adding a bookmark is still possible.</para>
     <note><para>The program might freeze for a short period of time due to an inaccessible share. It will recover afterwards.</para></note>
   </sect2>
 
-<!-- Using Smb4K : The Mounted Shares View : Icons -->
+<!-- 
+      Using Smb4K : The Mounted Shares View : Icons 
+-->
 
-<sect2 id="shares_view_icons">
-<title>Icons</title>
-<para>The shares views know three different icons that may be presented to the user:</para>
-<screenshot>
-  <screeninfo>Screenshot of three different icons</screeninfo>
-  <mediaobject>
-  <imageobject>
-  <imagedata fileref="shares_view_icons.png" format="PNG" />
-  </imageobject>
-  <textobject>
-  <phrase>Three different icons</phrase>
-  </textobject>
-  </mediaobject>
-</screenshot>
-<itemizedlist>
-<listitem><para>The icon on the left hand side indicates that this share is not accessible. &smb4k; won't allow you to open it or to do synchronization with it. You will only be able to unmount or add a bookmark to it.</para></listitem>
-<listitem><para>The central icon indicates that the share is online, accessible, and owned by you. You may perform all available actions on it.</para></listitem>
-<listitem><para>All shares marked with a red flag like the one on the right hand side are owned by another user. They are only shown if you adjusted the <link linkend="configuration_page_shares_behavior">settings</link> to display them. In the default configuration, you are not allowed to unmount these shares, but you can <link linkend="configuration_page_shares_behavior">change this behavior</link>, too.</para></listitem>
-</itemizedlist>
-</sect2>
+  <sect2 id="shares_view_icons">
+    <title>Icons</title>
+
+    <para>Three different icons may be presented to the user:</para>
+    <screenshot>
+      <screeninfo>Screenshot of three different icons</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="shares_view_icons.png" format="PNG" />
+        </imageobject>
+        <textobject>
+          <phrase>Three different icons</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+    <itemizedlist>
+      <listitem><para>The icon on the left hand side indicates that this share is not accessible. &smb4k; won't allow you to open it or to do synchronization with it. You will only be able to unmount it or add a bookmark.</para></listitem>
+      <listitem><para>The central icon indicates that the share is online, accessible, and owned by you. You may perform all available actions on it.</para></listitem>
+      <listitem><para>All shares marked with a warning sign like the one on the right hand side are owned by another user. They are only shown if you adjusted the <link linkend="configuration_page_shares_behavior">settings</link> to display them. In the default configuration, you are not allowed to unmount these shares, but you can <link linkend="configuration_page_shares_behavior">change this behavior</link>, too.</para></listitem>
+    </itemizedlist>
+  </sect2>
 
 <!-- 
       Using Smb4K : The Mounted Shares View : Drag-and-Drop 
@@ -816,7 +832,7 @@
       <screeninfo>Screenshot of the warning dialog that is shown when a foreign share is to be unmounted</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="dialog_warning_unmount_foreign_share.png" format="PNG" />
+          <imagedata fileref="shares_view_warning_dialog_foreign_share.png" format="PNG" />
         </imageobject>
         <textobject>
           <phrase>The warning dialog that is shown when unmounting foreign shares</phrase>
@@ -841,7 +857,7 @@
       <screeninfo>Screenshot of the synchronization input dialog</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="dialog_synchronization_input.png" format="PNG" />
+          <imagedata fileref="shares_view_synchronization_input_dialog.png" format="PNG" />
         </imageobject>
         <textobject>
           <phrase>&URL; requester for sync'ing</phrase>
@@ -853,7 +869,7 @@
       <screeninfo>Screenshot of the synchronization progress dialog</screeninfo>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="dialog_synchronization_progress.png" format="PNG" />
+          <imagedata fileref="synchronization_progress.png" format="PNG" />
         </imageobject>
         <textobject>
           <phrase>Progress dialog</phrase>
@@ -889,202 +905,165 @@
   </sect2>
 </sect1>
 
-<!-- Using Smb4K : The System Tray Widget -->
+<!-- 
+      Using Smb4K : The System Tray Widget 
+-->
 
 <sect1 id="systemtray">
-<title>The System Tray Widget</title>
+  <title>The System Tray Widget</title>
 
-<!-- Using Smb4K : The System Tray Widget : Location and Usage -->
+<!-- 
+      Using Smb4K : The System Tray Widget : Location and Usage 
+-->
 
-<sect2 id="systemtray_location_usage">
-<title>Location and Usage</title>
+  <sect2 id="systemtray_location_usage">
+    <title>Location and Usage</title>
 
-<para>When &smb4k; is started, an icon appears in your system tray.</para>
+    <para>When &smb4k; is started, an icon appears in your system tray.</para>
 
-<screenshot>
-  <screeninfo>Screenshot of the system tray widget</screeninfo>
-  <mediaobject>
-    <imageobject>
-      <imagedata fileref="system_tray_icon.png" format="PNG" />
-    </imageobject>
-    <textobject>
-      <phrase>System tray widget</phrase>
-    </textobject>
-  </mediaobject>
-</screenshot>
+    <screenshot>
+      <screeninfo>Screenshot of the system tray widget</screeninfo>
+      <mediaobject>
+        <imageobject><imagedata fileref="systemtray_location.png" format="PNG" /></imageobject>
+        <textobject><phrase>System tray widget</phrase></textobject>
+      </mediaobject>
+    </screenshot>
 
-<para>By left clicking the icon, you can minimize or restore the main window. A right click brings up a popup menu that contains several menu items allowing you to work with the mounted shares, manage or mount your bookmarks, select the profile you want to use and to configure &smb4k; without the need to open the main window.</para>
-</sect2>
+    <para>By left clicking the icon, you can minimize or restore the main window. A right click brings up a popup menu that contains several menu items allowing you to work with the mounted shares, manage or mount your bookmarks, select the profile you want to use and to configure &smb4k; without the need to open the main window.</para>
+  </sect2>
 
-<!-- Using Smb4K : The System Tray Widget : Menus and Menu Items -->
+<!-- 
+      Using Smb4K : The System Tray Widget : Menus and Menu Items 
+-->
 
-<sect2 id="systemtray_menus">
-<title>Menus and Menu Items</title>
+  <sect2 id="systemtray_menus">
+    <title>Menus and Menu Items</title>
 
-<para>The <guimenuitem>Mounted Shares</guimenuitem> menu lists all mounted shares and some actions that can be performed on them.</para>
+    <para>The <guimenuitem>Mounted Shares</guimenuitem> menu lists all mounted shares and some actions that can be performed on them.</para>
 
-<screenshot>
-  <screeninfo>Screenshot 1 of the popup menu of the system tray icon</screeninfo>
-  <mediaobject>
-    <imageobject>
-      <imagedata fileref="system_tray_icon_popup_menu1.png" format="PNG" />
-    </imageobject>
-    <textobject>
-      <phrase>System tray icon's popup menu 1</phrase>
-    </textobject>
-  </mediaobject>
-</screenshot>
+    <screenshot>
+      <screeninfo>Screenshot of the Mounted Shares popup menu of the system tray widget</screeninfo>
+      <mediaobject>
+        <imageobject><imagedata fileref="systemtray_mounted_shares_menu.png" format="PNG" /></imageobject>
+        <textobject><phrase>System tray widget's Mounted Shares menu</phrase></textobject>
+      </mediaobject>
+    </screenshot>
 
-<variablelist>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <guimenuitem>Unmount All</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Unmount all shares at once. Depending on your <link linkend="configuration_page_shares_behavior">settings</link>, &smb4k; attempts to unmount either only those shares that are owned by you or all that are listed.</para>
-    </listitem>
-  </varlistentry>
-</variablelist>
+    <variablelist>
+      <varlistentry>
+        <term>
+          <menuchoice><guimenuitem>Unmount All</guimenuitem></menuchoice>
+        </term>
+        <listitem>
+          <para>Unmount all shares at once. Depending on your <link linkend="configuration_page_shares_behavior">settings</link>, &smb4k; attempts to unmount either only those shares that are owned by you or all that are listed.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
   
-<para>For each mounted share you can open a submenu that contains the following entries. For further information read <link linkend="shares_view_actions_popup_menu">here</link>.</para>
+    <para>For each mounted share you can open a submenu that contains the following entries. For further information read <link linkend="shares_view_actions_popup_menu">here</link>.</para>
 
-<variablelist>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <guimenuitem>Unmount</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Unmount the share.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <guimenuitem>Add Bookmark</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Add the selected share to the bookmarks.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <guimenuitem>Synchronize</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Synchronize the mounted share with a local copy or vice versa. For further information read <link linkend="shares_view_actions_popup_menu">here</link> and <link linkend="shares_view_synchronization">here</link>.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <guimenuitem>Open with &konsole;</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Open the base folder of the share in &konsole;.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <guimenuitem>Open with File Manager</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Open the contents of the share in the default file manager (&eg; &dolphin;).</para>
-    </listitem>
-  </varlistentry>
-</variablelist>
+    <variablelist>
+      <varlistentry>
+        <term>
+          <menuchoice><guimenuitem>Unmount</guimenuitem></menuchoice>
+        </term>
+        <listitem>
+          <para>Unmount the share.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice><guimenuitem>Add Bookmark</guimenuitem></menuchoice>
+        </term>
+        <listitem>
+          <para>Add the selected share to the bookmarks.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice><guimenuitem>Synchronize</guimenuitem></menuchoice>
+        </term>
+        <listitem>
+          <para>Synchronize the mounted share with a local copy or vice versa. For further information read <link linkend="shares_view_actions_popup_menu">here</link> and <link linkend="shares_view_synchronization">here</link>.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice><guimenuitem>Open with &konsole;</guimenuitem></menuchoice>
+        </term>
+        <listitem>
+          <para>Open the base folder of the share in &konsole;.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice><guimenuitem>Open with File Manager</guimenuitem></menuchoice>
+        </term>
+        <listitem>
+          <para>Open the contents of the share in the default file manager (&eg; &dolphin;).</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
 
-<para>The <guimenuitem>Bookmarks</guimenuitem> menu contains all your bookmarks organized according to the structure you gave them (see also <link linkend="mainwindow_add_bookmarks">here</link> and <link linkend="mainwindow_bookmarks_editor">here</link>).</para>
+    <para>The <guimenuitem>Bookmarks</guimenuitem> menu contains all your bookmarks organized according to the structure you gave them (see also <link linkend="mainwindow_add_bookmarks">here</link> and <link linkend="mainwindow_bookmarks_editor">here</link>).</para>
 
-<screenshot>
-  <screeninfo>Screenshot 2 of the popup menu of the system tray icon</screeninfo>
-  <mediaobject>
-    <imageobject>
-      <imagedata fileref="system_tray_icon_popup_menu2.png" format="PNG" />
-    </imageobject>
-    <textobject>
-      <phrase>System tray icon's popup menu 2</phrase>
-    </textobject>
-  </mediaobject>
-</screenshot>
+    <screenshot>
+      <screeninfo>Screenshot of the Bookmarks menu of the system tray widget</screeninfo>
+      <mediaobject>
+        <imageobject><imagedata fileref="systemtray_bookmarks_menu.png" format="PNG" /></imageobject>
+        <textobject><phrase>System tray widget's Bookmarks menu</phrase></textobject>
+      </mediaobject>
+    </screenshot>
 
-<para>Its layout is as described <link linkend="mainwindow_bookmarks_menu">here</link> except that the <guimenuitem>Add Bookmark</guimenuitem> menu item is not present.</para>
+    <para>Its layout is as described <link linkend="mainwindow_bookmarks_menu">here</link> except that the <guimenuitem>Add Bookmark</guimenuitem> menu item is not present.</para>
+    <para>In the <guimenuitem>Profiles</guimenuitem> menu, all profiles you <link linkend="profiles">defined</link> are listed:</para>
 
-<para>In the <guimenuitem>Profiles</guimenuitem> menu, all profiles you <link linkend="profiles">defined</link> are listed:</para>
+    <screenshot>
+      <screeninfo>Screenshot of the Profiles menu of the system tray widget</screeninfo>
+      <mediaobject>
+        <imageobject><imagedata fileref="systemtray_profiles_menu.png" format="PNG" /></imageobject>
+        <textobject><phrase>System tray icon's popup menu 3</phrase></textobject>
+      </mediaobject>
+    </screenshot>
 
-<screenshot>
-  <screeninfo>Screenshot 3 of the popup menu of the system tray icon</screeninfo>
-  <mediaobject>
-    <imageobject>
-      <imagedata fileref="system_tray_icon_popup_menu3.png" format="PNG" />
-    </imageobject>
-    <textobject>
-      <phrase>System tray icon's popup menu 3</phrase>
-    </textobject>
-  </mediaobject>
-</screenshot>
+    <para>You can activate a profile by clicking it. The profiles can be <link linkend="profiles">managed</link> via the <link linkend="configuration_profiles">configuration dialog</link>.</para>
+    <para>The other menu entries are:</para>
 
-<para>You can activate a profile by clicking it. The profiles can be <link linkend="profiles">managed</link> via the <link linkend="configuration_profiles">configuration dialog</link>.</para>
-
-<para>The other menu entries are:</para>
-
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guimenuitem>Open Mount Dialog</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>Open the <link linkend="mainwindow_network_mounting">dialog</link> for "manual" mounts.</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guimenuitem>Configure &smb4k;...</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>Open the configuration dialog. See <link linkend="configuration">here</link> for a full list of available settings.</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guimenuitem>Minimize | Restore</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>Hide (minimize) or show (restore) the main window. Which text is shown depends on the state of the main window.</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<shortcut>
-<keycombo action="simul">
-&Ctrl; <keycap>Q</keycap>
-</keycombo>
-</shortcut>
-<guimenuitem>Quit</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>Quit the application.</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect2>
+    <variablelist>
+      <varlistentry>
+        <term>
+          <menuchoice><guimenuitem>Open Mount Dialog</guimenuitem></menuchoice>
+        </term>
+        <listitem>
+          <para>Open the <link linkend="network_neighborhood_browser_mounting">dialog</link> for "manual" mounts.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice><guimenuitem>Configure &smb4k;...</guimenuitem></menuchoice>
+        </term>
+        <listitem>
+          <para>Open the configuration dialog. See <link linkend="configuration">here</link> for a full list of available settings.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice><guimenuitem>Minimize | Restore</guimenuitem></menuchoice>
+        </term>
+        <listitem>
+          <para>Hide (minimize) or show (restore) the main window. Which text is shown depends on the state of the main window.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>Q</keycap></keycombo></shortcut><guimenuitem>Quit</guimenuitem></menuchoice>
+        </term>
+        <listitem>
+          <para>Quit the application.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
 </sect1>
 
 <!-- Using Smb4K : The Plasmoid -->
@@ -1128,7 +1107,7 @@
 
 <para>For hosts and shares, to the right of the name of the network item some action buttons are arranged. For hosts, there is one button with that you can open the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog. For shares, there is an additional button with that you can <link linkend="mainwindow_add_bookmarks">add the share to the bookmarks</link>. The action buttons are transparent by default and change to opaque when you move your mouse over them. By left clicking you initiate the respective action.</para>
  
-<para>Besides the already mentioned <guibutton>Up</guibutton> button, the toolbar contains three more entries: <guibutton>Rescan</guibutton>, <guibutton>Abort</guibutton> and <guibutton>Mount Dialog</guibutton>. With them you can do a rescan, abort any running action or open the <link linkend="mainwindow_network_mounting">dialog for "manual" mounts</link>.</para>
+<para>Besides the already mentioned <guibutton>Up</guibutton> button, the toolbar contains three more entries: <guibutton>Rescan</guibutton>, <guibutton>Abort</guibutton> and <guibutton>Mount Dialog</guibutton>. With them you can do a rescan, abort any running action or open the <link linkend="network_neighborhood_browser_mounting">dialog for "manual" mounts</link>.</para>
 
 <note><para>In the current development state, the &plasmoid; is not able to handle the <link linkend="configuration_network_periodic_scanning">automatic scanning feature</link>, &smb4k; provides. Funny things will happen, if you use it with the &plasmoid; and will probably render it mostly unusable.</para></note>
 </sect2>
@@ -3694,494 +3673,6 @@ Default: selected
     <para>When you rename a profile, the settings are migrated automatically (without showing the migration assistant). If you enabled the use of the migration assistant, it is shown when you remove a profile giving you the opportunity to migrate the stored settings to another profile. If the use of the migration assistant is disabled, the profile and all of its settings are removed.</para>
   </sect2>
 </sect1>
-</chapter>
-
-<!-- Command Reference -->
-
-<chapter id="commands" >
-<title>Command Reference</title>
-
-<!-- Command Reference : Menu Items -->
-
-<sect1 id="menu_items">
-<title>Menu Items</title>
-
-<!-- Command Reference : Menu Items : The File Menu -->
-
-<sect2 id="file_menu">
-<title>The File Menu</title>
-<variablelist>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <guimenu>File</guimenu>
-        <guimenuitem>Profiles</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Select the profile to use. This menu entry is disabled if the user did not enabled the use of profiles.</para>
-    </listitem>
-  </varlistentry>
-  <varlistentry>
-    <term>
-      <menuchoice>
-        <shortcut><keycombo action="simul" >&Ctrl; <keycap>Q</keycap></keycombo></shortcut>
-        <guimenu>File</guimenu>
-        <guimenuitem>Quit</guimenuitem>
-      </menuchoice>
-    </term>
-    <listitem>
-      <para>Quit &smb4k;.</para>
-    </listitem>
-  </varlistentry>
-</variablelist>
-</sect2>
-
-<sect2 id="network_menu">
-<title>The Network Menu</title>
-<para>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<shortcut>
-<keycap>F5</keycap>
-</shortcut>
-<guimenu>Network</guimenu>
-<guimenuitem>Scan Network|Workgroup|Computer</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-(Re-)scan the network neighborhood, a workgroup, or a computer.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<shortcut>
-<keycombo action="simul">
-&Ctrl; <keycap>A</keycap>
-</keycombo>
-</shortcut>
-<guimenu>Network</guimenu>
-<guimenuitem>Abort</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Abort the scanning for new workgroups/domains, servers or shares.</action>
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<shortcut>
-<keycombo action="simul">
-&Ctrl; <keycap>O</keycap>
-</keycombo>
-</shortcut>
-<guimenu>Network</guimenu>
-<guimenuitem>Open Mount Dialog</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Open the dialog to "manually" mount a remote share.</action>
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<shortcut>
-<keycombo action="simul">
-&Ctrl; <keycap>T</keycap>
-</keycombo>
-</shortcut>
-<guimenu>Network</guimenu>
-<guimenuitem>Authentication</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Open the authentication dialog where you can enter login information.</action>
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<shortcut>
-<keycombo action="simul">
-&Ctrl; <keycap>C</keycap>
-</keycombo>
-</shortcut>
-<guimenu>Network</guimenu>
-<guimenuitem>Custom Options</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Open a dialog where you can define custom options for a server or share.</action>
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<shortcut>
-<keycombo action="simul">
-&Ctrl; <keycap>V</keycap>
-</keycombo>
-</shortcut>
-<guimenu>Network</guimenu>
-<guimenuitem>Preview</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Open the preview dialog that contains a preview of the contents of the selected share.</action>
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<shortcut>
-<keycombo action="simul">
-&Ctrl; <keycap>P</keycap>
-</keycombo>
-</shortcut>
-<guimenu>Network</guimenu>
-<guimenuitem>Print File</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Open the print dialog.</action>
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<shortcut>
-<keycombo action="simul">
-&Ctrl; <keycap>M</keycap>
-</keycombo>
-</shortcut>
-<guimenu>Network</guimenu>
-<guimenuitem>Mount</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Mount the selected remote share.</action>
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</para>
-</sect2>
-
-<sect2 id="search_menu">
-<title>The Search Menu</title>
-<para>
-  <variablelist>
-    <varlistentry>
-      <term>
-	<menuchoice>
-	  <shortcut>
-	    <keycombo action="simul">
-	      &Ctrl; <keycap>S</keycap>
-	    </keycombo>
-	  </shortcut>
-	  <guimenu>Search</guimenu>
-	  <guimenuitem>Search</guimenuitem>
-	</menuchoice>
-      </term>
-      <listitem>
-	<para>
-	  <action>Search the network for the entered search string.</action>
-	</para>
-      </listitem>
-    </varlistentry>
-    <varlistentry>
-      <term>
-	<menuchoice>
-	  <shortcut>
-	    <keycombo action="simul">
-	      &Ctrl; <keycap>A</keycap>
-	    </keycombo>
-	  </shortcut>
-	  <guimenu>Search</guimenu>
-	  <guimenuitem>Abort</guimenuitem>
-	</menuchoice>
-      </term>
-      <listitem>
-	<para>
-	  <action>Abort the network search.</action>
-	</para>
-      </listitem>
-    </varlistentry>
-    <varlistentry>
-      <term>
-	<menuchoice>
-	  <guimenu>Search</guimenu>
-	  <guimenuitem>Clear</guimenuitem>
-	</menuchoice>
-      </term>
-      <listitem>
-	<para>
-	  <action>Clear the network search widget, &ie; the combo box, the history and the list view.</action>
-	</para>
-      </listitem>
-    </varlistentry>
-    <varlistentry>
-      <term>
-	<menuchoice>
-	  <shortcut>
-	    <keycombo action="simul">
-	      &Ctrl; <keycap>D</keycap>
-	    </keycombo>
-	  </shortcut>
-	  <guimenu>Search</guimenu>
-	  <guimenuitem>Mount</guimenuitem>
-	</menuchoice>
-      </term>
-      <listitem>
-	<para>
-	  <action>Mount the selected share.</action>
-	</para>
-      </listitem>
-    </varlistentry>
-  </variablelist>
-</para>
-</sect2> 
-
-<sect2 id="shares_menu">
-<title>The Shares Menu</title>
-<para>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<shortcut>
-<keycombo action="simul">
-&Ctrl; <keycap>U</keycap>
-</keycombo>
-</shortcut>
-<guimenu>Shares</guimenu>
-<guimenuitem>Unmount</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Unmount the selected share.</action>
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<shortcut>
-<keycombo action="simul">
-&Ctrl; <keycap>N</keycap>
-</keycombo>
-</shortcut>
-<guimenu>Shares</guimenu>
-<guimenuitem>Unmount All</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Unmount all of the mounted shares at once. In the default configuration this is restricted to the user's shares, but this can be altered in the <link linkend="configuration_page_shares_behavior">configuration dialog</link>. For further information read the <link linkend="shares_view_unmounting">Unmounting Shares</link> section.</action>
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<shortcut>
-<keycombo action="simul">
-&Ctrl; <keycap>Y</keycap>
-</keycombo>
-</shortcut>
-<guimenu>Shares</guimenu>
-<guimenuitem>Synchronize</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Initiate a synchronization.</action>
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<shortcut>
-<keycombo action="simul">
-&Ctrl; <keycap>L</keycap>
-</keycombo>
-</shortcut>
-<guimenu>Shares</guimenu>
-<guimenuitem>Open with Konsole</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Open the base folder of the selected share in &konsole;.</action>
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<shortcut>
-<keycombo action="simul">
-&Ctrl; <keycap>I</keycap>
-</keycombo>
-</shortcut>
-<guimenu>Shares</guimenu>
-<guimenuitem>Open with File Manager</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Open the contents of the selected share in the default file manager (&eg; &dolphin;).</action>
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</para>
-</sect2>
-
-<sect2 id="bookmarks_menu">
-<title>The Bookmarks Menu</title>
-<para>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guimenu>Bookmarks</guimenu>
-<guimenuitem>Edit Bookmarks</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Open the bookmark editor.</action>
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<shortcut>
-<keycombo action="simul">
-&Ctrl; <keycap>B</keycap>
-</keycombo>
-</shortcut>
-<guimenu>Bookmarks</guimenu>
-<guimenuitem>Add Bookmark</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Add the selected share to the bookmarks.</action>
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</para>
-</sect2>
-
-<sect2 id="settings_menu">
-<title>The Settings Menu</title>
-<para>
-<variablelist>
-<varlistentry>
-<term>
-<menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Toolbars Shown</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>In this submenu you can enable or disable the toolbars.</action>
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Show Statusbar</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Hide or show the status bar.</action>
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Dock Widgets</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Hide or show the dock widgets in the main window.</action>
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Shares View</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Select between the shares icon and list view.</action>
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
-<menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Configure &smb4k;...</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-<action>Open the configuration dialog.</action>
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</para>
-</sect2>
-
-<sect2 id="help-menu">
-<title>The Help Menu</title>
-<para>Additionally &smb4k; has the common &kde; <guimenu>Help</guimenu>
-menu items, for more information read the section about the 
-<ulink url="help:/fundamentals/ui.html#menus-help">Help Menu</ulink>
-of the &kde; Fundamentals.</para>
-</sect2>
-
-</sect1>
-
 </chapter>
 
 <!-- Reporting bugs -->

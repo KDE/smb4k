@@ -135,24 +135,19 @@ Smb4KSharesViewPart::~Smb4KSharesViewPart()
 void Smb4KSharesViewPart::setupView()
 {
   //
-  // For the icon view as well as the list view we use the icon size
-  // defined for the desktop. The 'small' icon size is a bit too small,
-  // I think...
-  //
-  int iconSize = KIconLoader::global()->currentSize(KIconLoader::Desktop);
-  
-  //
   // Adjust the view according to the setting chosen
   //
   switch (Smb4KSettings::sharesViewMode())
   {
     case Smb4KSettings::EnumSharesViewMode::IconView:
     {
+      int iconSize = KIconLoader::global()->currentSize(KIconLoader::Desktop);
       m_view->setViewMode(Smb4KSharesView::IconMode, iconSize);
       break;
     }
     case Smb4KSettings::EnumSharesViewMode::ListView:
     {
+      int iconSize = KIconLoader::global()->currentSize(KIconLoader::Small);
       m_view->setViewMode(Smb4KSharesView::ListMode, iconSize);
       break;
     }
@@ -277,7 +272,7 @@ void Smb4KSharesViewPart::setupActions()
   // Insert the actions into the menu:
   m_menu = new KActionMenu(this);
   m_menu->menu()->setTitle(i18n("Shares"));
-  m_menu->menu()->setIcon(KDE::icon("folder-remote"));
+  m_menu->menu()->setIcon(KDE::icon("folder-network"));
   m_menu->addAction(viewModesMenu);
   m_menu->addSeparator();
   m_menu->addAction(unmount_action);
@@ -378,7 +373,7 @@ void Smb4KSharesViewPart::slotContextMenuRequested(const QPoint &pos)
   else
   {
     m_menu->menu()->setTitle(i18n("Shares"));
-    m_menu->menu()->setIcon(KDE::icon("folder-remote"));
+    m_menu->menu()->setIcon(KDE::icon("folder-network"));
   }
 
   m_menu->menu()->popup(m_view->viewport()->mapToGlobal(pos));

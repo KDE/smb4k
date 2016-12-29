@@ -576,7 +576,7 @@ void Smb4KMainWindow::setupMountIndicator()
     m_feedback_icon->setToolTip(i18np("There is currently %1 share mounted.", "There are currently %1 shares mounted.", mountedSharesList().size()));
   }
 
-  m_feedback_icon->setPixmap(KIconLoader::global()->loadIcon("folder-remote", KIconLoader::Small, 0, KIconLoader::DefaultState, overlays));
+  m_feedback_icon->setPixmap(KIconLoader::global()->loadIcon("folder-network", KIconLoader::Small, 0, KIconLoader::DefaultState, overlays));
 }
 
 

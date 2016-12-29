@@ -85,6 +85,15 @@ class Q_DECL_EXPORT Smb4KHardwareInterface : public QObject
      * @returns TRUE if the system is online.
      */
     bool isOnline() const;
+
+#if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+  protected:
+    /**
+     * Reimplemented from QObject to check for mounts and unmounts on operating
+     * systems that are not fully supported by Solid, yet.
+     */
+    void timerEvent(QTimerEvent *e);
+#endif
     
   Q_SIGNALS:
     /**

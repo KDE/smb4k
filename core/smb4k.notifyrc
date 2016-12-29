@@ -65,7 +65,6 @@ Version=1
 
 [Context/Notification]
 Name=Notification
-Name[ast]=Avisu
 Name[bs]=Obavještenje
 Name[ca]=Notificació
 Name[ca@valencia]=Notificació
@@ -98,7 +97,6 @@ Name[x-test]=xxNotificationxx
 Name[zh_CN]=通知
 Name[zh_TW]=通知
 Comment=The user is notified about an action
-Comment[ast]=Avísase al usuariu tocante a una aición
 Comment[bs]=Korisnik je obavješten o akciji
 Comment[ca]=L'usuari ha estat notificat quant a una acció
 Comment[ca@valencia]=L'usuari ha estat notificat quant a una acció
@@ -129,7 +127,6 @@ Comment[zh_TW]=使用者被通知某些動作
 
 [Context/Warning]
 Name=Warning
-Name[ast]=Alvertencia
 Name[bs]=Upozorenje
 Name[ca]=Avís
 Name[ca@valencia]=Avís
@@ -162,7 +159,6 @@ Name[x-test]=xxWarningxx
 Name[zh_CN]=警告
 Name[zh_TW]=警告
 Comment=A warning is shown to the user
-Comment[ast]=Amuésase-y un avisu al usuariu
 Comment[bs]=Prikazana je upozoravajuća poruka korisniku
 Comment[ca]=Es mostra un avís a l'usuari
 Comment[ca@valencia]=Es mostra un avís a l'usuari
@@ -194,7 +190,6 @@ Comment[zh_TW]=警告已顯示給使用者
 
 [Context/Error]
 Name=Error
-Name[ast]=Fallu
 Name[bs]=Greška
 Name[ca]=Error
 Name[ca@valencia]=Error
@@ -227,7 +222,6 @@ Name[x-test]=xxErrorxx
 Name[zh_CN]=错误
 Name[zh_TW]=錯誤
 Comment=An error message is shown to the user
-Comment[ast]=Amuésase-y un mensaxe de fallu al usuariu
 Comment[bs]=Poruka greške je prikazana korisniku
 Comment[ca]=Es mostra un missatge d'error a l'usuari
 Comment[ca@valencia]=Es mostra un missatge d'error a l'usuari
@@ -258,7 +252,6 @@ Comment[zh_TW]=錯誤訊息已顯示給使用者
 
 [Event/shareMounted]
 Name=Share mounted
-Name[ast]=Compartición montada
 Name[bs]=Dijeljeni disk je montiran
 Name[ca]=Compartició muntada
 Name[ca@valencia]=Compartició muntada
@@ -284,7 +277,6 @@ Name[uk]=Змонтовано ресурс
 Name[x-test]=xxShare mountedxx
 Name[zh_TW]=分享資料夾已掛載
 Comment=A share has been mounted
-Comment[ast]=Montóse una compartición
 Comment[bs]=Dijeljeni disk je bio montiran
 Comment[ca]=S'ha muntat una compartició
 Comment[ca@valencia]=S'ha muntat una compartició
@@ -314,7 +306,6 @@ Action=Popup
 
 [Event/shareUnmounted]
 Name=Share unmounted
-Name[ast]=Compartición desmontada
 Name[bs]=Dijeljeni disk je demontiran
 Name[ca]=Compartició desmuntada
 Name[ca@valencia]=Compartició desmuntada
@@ -340,7 +331,6 @@ Name[uk]=Демонтовано ресурс
 Name[x-test]=xxShare unmountedxx
 Name[zh_TW]=分享資料夾已卸載
 Comment=A share has been unmounted
-Comment[ast]=Desmontóse una compartición
 Comment[bs]=Dijeljeni disk je bio demontiran
 Comment[ca]=S'ha desmuntat una compartició
 Comment[ca@valencia]=S'ha desmuntat una compartició
@@ -370,7 +360,6 @@ Action=Popup
 
 [Event/sharesMounted]
 Name=Shares mounted
-Name[ast]=Comparticiones montaes
 Name[bs]=Dijeljeni disk je montiran
 Name[ca]=Comparticions muntades
 Name[ca@valencia]=Comparticions muntades
@@ -396,7 +385,6 @@ Name[uk]=Змонтовано ресурси
 Name[x-test]=xxShares mountedxx
 Name[zh_TW]=分享資料夾已掛載
 Comment=Multiple shares have been mounted
-Comment[ast]=Montáronse comparticiones múltiples
 Comment[bs]=Višestruka dijeljenja diska su bila montirana
 Comment[ca]=S'han muntat múltiples comparticions
 Comment[ca@valencia]=S'han muntat múltiples comparticions
@@ -426,7 +414,6 @@ Action=Popup
 
 [Event/sharesUnmounted]
 Name=Shares unmounted
-Name[ast]=Comparticiones desmontaes
 Name[bs]=Dijeljenja diska su demontirana
 Name[ca]=Comparticions desmuntades
 Name[ca@valencia]=Comparticions desmuntades
@@ -452,7 +439,6 @@ Name[uk]=Демонтовано ресурси
 Name[x-test]=xxShares unmountedxx
 Name[zh_TW]=分享資料夾已卸載
 Comment=Multiple shares have been unmounted
-Comment[ast]=Desmontáronse comparticiones múltiples
 Comment[bs]=Višestruka dijeljenja su bila demontirana
 Comment[ca]=S'han desmuntat múltiples comparticions
 Comment[ca@valencia]=S'han desmuntat múltiples comparticions
@@ -482,7 +468,6 @@ Action=Popup
 
 [Event/openingWalletFailed]
 Name=Opening wallet failed
-Name[ast]=Fallu abriendo la cartera
 Name[bs]=Otvaranje novčanika s lozinkama neuspješno
 Name[ca]=Ha fallat l'obertura de la cartera
 Name[ca@valencia]=Ha fallat l'obertura de la cartera
@@ -508,7 +493,6 @@ Name[uk]=Спроба відкриття сховища паролів зазн�
 Name[x-test]=xxOpening wallet failedxx
 Name[zh_TW]=開啟錢包失敗
 Comment=The network wallet could not be opened
-Comment[ast]=Nun pudo abrise la rede de carteres
 Comment[bs]=Mrežni novčanik s lozinkama nije se mogao otvoriti
 Comment[ca]=No s'ha pogut obrir la cartera de xarxa
 Comment[ca@valencia]=No s'ha pogut obrir la cartera de xarxa
@@ -539,7 +523,6 @@ Action=Popup|Sound
 
 [Event/credentialsNotAccessible]
 Name=Credentials not accessible
-Name[ast]=Nun tán accesibles les credenciales
 Name[bs]=Dokumenti nedostupni
 Name[ca]=Credencials no accessibles
 Name[ca@valencia]=Credencials no accessibles
@@ -565,7 +548,6 @@ Name[uk]=Немає реєстраційних даних
 Name[x-test]=xxCredentials not accessiblexx
 Name[zh_TW]=無法取得帳號密碼資訊
 Comment=The credentials could not be read from the wallet
-Comment[ast]=Nun pudieron lleese de la cartera les credenciales
 Comment[bs]=Dokumenti se nisu mogli pročitati iz spremnika
 Comment[ca]=No s'han pogut llegir les credencials de la cartera
 Comment[ca@valencia]=No s'han pogut llegir les credencials de la cartera
@@ -596,7 +578,6 @@ Action=Popup|Sound
 
 [Event/mimetypeNotSupported]
 Name=Mimetype not supported
-Name[ast]=Tiba MIME non sofitada
 Name[bs]=Mimetype nije podržan
 Name[ca]=Tipus MIME no admès
 Name[ca@valencia]=Tipus MIME no admés
@@ -651,7 +632,6 @@ Action=Popup|Sound
 
 [Event/bookmarkExists]
 Name=Bookmark exists
-Name[ast]=Esiste'l marcador
 Name[bs]=Zabilješka postoji
 Name[ca]=L'adreça d'interès existeix
 Name[ca@valencia]=L'adreça d'interés existeix
@@ -677,7 +657,6 @@ Name[uk]=Така закладка вже існує
 Name[x-test]=xxBookmark existsxx
 Name[zh_TW]=書籤已存在
 Comment=The bookmark exists
-Comment[ast]=Esiste'l marcador
 Comment[bs]=Zabilješka postoji
 Comment[ca]=L'adreça d'interès existeix
 Comment[ca@valencia]=L'adreça d'interés existeix
@@ -733,7 +712,6 @@ Name[uk]=Мітку закладки вже використано
 Name[x-test]=xxBookmark label in usexx
 Name[zh_TW]=書籤標記已在使用中
 Comment=The label for the bookmark already exists
-Comment[ast]=Yá esiste la etiqueta pal marcador
 Comment[bs]=Oznaka za zabilješku već postoji
 Comment[ca]=L'etiqueta de l'adreça d'interès ja existeix
 Comment[ca@valencia]=L'etiqueta de l'adreça d'interés ja existeix
@@ -764,7 +742,6 @@ Action=Popup|Sound
 
 [Event/emptyMasterBrowser]
 Name=No master browser provided
-Name[ast]=Nun s'apurrió dal restolador maestru
 Name[bs]=Nijedan glavni pretraživač nije osiguran
 Name[ca]=No s'ha proporcionat cap explorador mestre
 Name[ca@valencia]=No s'ha proporcionat cap explorador mestre
@@ -789,7 +766,6 @@ Name[uk]=Не надано основного переглядача
 Name[x-test]=xxNo master browser providedxx
 Name[zh_TW]=未提供主要瀏覽器
 Comment=The custom master browser has not been provided
-Comment[ast]=Nun s'apurrió'l restolador maestru personalizáu
 Comment[bs]=Korisnički glavni pretraživač nije bio osiguran
 Comment[ca]=No s'ha proporcionat cap explorador mestre personalitzat
 Comment[ca@valencia]=No s'ha proporcionat cap explorador mestre personalitzat
@@ -819,7 +795,6 @@ Action=Popup|Sound
 
 [Event/sambaConfigFileMissing]
 Name=Configuration file for Samba missing
-Name[ast]=Falta'l ficheru de configuración pa SAMBA
 Name[bs]=Konfiguracijska datoteka za Samba-u nedostaje
 Name[ca]=Falta el fitxer de configuració de la suite Samba
 Name[ca@valencia]=Falta el fitxer de configuració de la suite Samba
@@ -1140,7 +1115,6 @@ Action=Popup|Sound
 
 [Event/mountingFailed]
 Name=Mounting failed
-Name[ast]=Falló'l montaxe
 Name[bs]=Montiranje neuspješno
 Name[ca]=Ha fallat el muntatge
 Name[ca@valencia]=Ha fallat el muntatge
@@ -1167,7 +1141,6 @@ Name[uk]=Невдала спроба монтування
 Name[x-test]=xxMounting failedxx
 Name[zh_TW]=掛載失敗
 Comment=Mounting a share failed
-Comment[ast]=Falló'l montaxe d'una partición
 Comment[bs]=Montiranje dijela neuspješno
 Comment[ca]=Ha fallat el muntatge d'una compartició
 Comment[ca@valencia]=Ha fallat el muntatge d'una compartició
@@ -1198,7 +1171,6 @@ Action=Popup|Sound
 
 [Event/unmountingFailed]
 Name=Unmounting failed
-Name[ast]=Falló'l desmontaxe
 Name[bs]=Demontiranje neuspješno
 Name[ca]=Ha fallat el desmuntatge
 Name[ca@valencia]=Ha fallat el desmuntatge
@@ -1225,7 +1197,6 @@ Name[uk]=Помилка демонтування
 Name[x-test]=xxUnmounting failedxx
 Name[zh_TW]=卸載失敗
 Comment=Unmounting a share failed
-Comment[ast]=Falló'l desmontaxe d'una compartición
 Comment[bs]=Demontiranje dijela neuspješno
 Comment[ca]=Ha fallat el desmuntatge d'una compartició
 Comment[ca@valencia]=Ha fallat el desmuntatge d'una compartició
@@ -1256,7 +1227,6 @@ Action=Popup|Sound
 
 [Event/unmountingNotAllowed]
 Name=Unmounting not allowed
-Name[ast]=Nun s'almite'l desmontaxe
 Name[bs]=Demontiranje nije dozvoljeno
 Name[ca]=No s'ha permès el desmuntatge
 Name[ca@valencia]=No s'ha permés el desmuntatge
@@ -1367,7 +1337,6 @@ Action=Popup|Sound
 
 [Event/synchronizationFailed]
 Name=Synchronization failed
-Name[ast]=Falló la sincronización
 Name[bs]=Sinhronizacija nije uspjela
 Name[ca]=Ha fallat la sincronització
 Name[ca@valencia]=Ha fallat la sincronització
@@ -1422,7 +1391,6 @@ Action=Popup|Sound
 
 [Event/searchingFailed]
 Name=Searching failed
-Name[ast]=Falló la gueta
 Name[bs]=Pretraga neuspješna
 Name[ca]=Ha fallat la cerca
 Name[ca@valencia]=Ha fallat la cerca
@@ -1478,7 +1446,6 @@ Action=Popup|Sound
 
 [Event/commandNotFound]
 Name=Command not found
-Name[ast]=Nun s'alcontró'l comandu
 Name[bs]=Naredba nije nađena
 Name[ca]=No s'ha trobat l'ordre
 Name[ca@valencia]=No s'ha trobat l'orde
@@ -1504,7 +1471,6 @@ Name[uk]=Команду не знайдено
 Name[x-test]=xxCommand not foundxx
 Name[zh_TW]=找不到指令
 Comment=A required command could not be found
-Comment[ast]=Nun pudo alcontrase un comandu riquíu
 Comment[bs]=Tražena komanda nije pronađena
 Comment[ca]=No s'ha pogut trobar l'ordre requerida
 Comment[ca@valencia]=No s'ha pogut trobar l'orde requerida
@@ -1587,7 +1553,6 @@ Action=Popup|Sound
 
 [Event/fileNotFound]
 Name=File not found
-Name[ast]=Nun s'alcontró'l ficheru
 Name[bs]=Datoteka nije pronađena.
 Name[ca]=No s'ha trobat el fitxer
 Name[ca@valencia]=No s'ha trobat el fitxer
@@ -1614,7 +1579,6 @@ Name[uk]=Файл не знайдено
 Name[x-test]=xxFile not foundxx
 Name[zh_TW]=找不到檔案
 Comment=A file could not be found
-Comment[ast]=Nun pudo alcontrase un ficheru
 Comment[bs]=Datoteka niej pronađena
 Comment[ca]=No s'ha pogut trobar un fitxer
 Comment[ca@valencia]=No s'ha pogut trobar un fitxer
@@ -1804,7 +1768,6 @@ Action=Popup|Sound
 
 [Event/processError]
 Name=Process error
-Name[ast]=Fallu del procesu
 Name[bs]=Greška u procesu
 Name[ca]=Error de procés
 Name[ca@valencia]=Error de procés
@@ -1831,7 +1794,6 @@ Name[uk]=Помилка процесу
 Name[x-test]=xxProcess errorxx
 Name[zh_TW]=行程錯誤
 Comment=A process error occurred
-Comment[ast]=Asocedió un fallu del procesu
 Comment[bs]=Greška u procesu se pojavila
 Comment[ca]=Hi ha hagut un error de procés
 Comment[ca@valencia]=Hi ha hagut un error de procés
@@ -1861,7 +1823,6 @@ Action=Popup|Sound
 
 [Event/actionFailed]
 Name=Action failed
-Name[ast]=Falló l'aición
 Name[bs]=Radnja nije uspjela
 Name[ca]=L'acció ha fallat
 Name[ca@valencia]=L'acció ha fallat
@@ -1887,7 +1848,6 @@ Name[uk]=Спроба виконання дії зазнала невдачі
 Name[x-test]=xxAction failedxx
 Name[zh_TW]=動作失敗
 Comment=A KAuth action failed
-Comment[ast]=Falló una aición de KAuth
 Comment[bs]=KAuth radnja nije uspjela
 Comment[ca]=L'acció del KAuth ha fallat
 Comment[ca@valencia]=L'acció del KAuth ha fallat
@@ -1917,7 +1877,6 @@ Action=Popup|Sound
 
 [Event/invalidURL]
 Name=Invalid URL
-Name[ast]=URL non válida
 Name[bs]=Pogrešan URL
 Name[ca]=URL no vàlid
 Name[ca@valencia]=URL no vàlid

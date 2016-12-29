@@ -58,7 +58,7 @@ void Smb4KNotification::shareMounted(Smb4KShare* share)
     KNotification *notification = new KNotification("shareMounted");
     notification->setText(i18n("<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>", 
                           share->unc(), share->path()));
-    notification->setPixmap(KIconLoader::global()->loadIcon("folder-remote", KIconLoader::NoGroup, 0, 
+    notification->setPixmap(KIconLoader::global()->loadIcon("folder-network", KIconLoader::NoGroup, 0, 
                             KIconLoader::DefaultState, QStringList("emblem-mounted")));
     notification->setActions(QStringList(i18n("Open")));
     notification->setFlags(KNotification::CloseOnTimeout);
@@ -85,7 +85,7 @@ void Smb4KNotification::shareUnmounted(Smb4KShare* share)
     KNotification *notification = new KNotification("shareUnmounted");
     notification->setText(i18n("<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>", 
                           share->unc(), share->path()));
-    notification->setPixmap(KIconLoader::global()->loadIcon("folder-remote", KIconLoader::NoGroup, 0, 
+    notification->setPixmap(KIconLoader::global()->loadIcon("folder-network", KIconLoader::NoGroup, 0, 
                             KIconLoader::DefaultState, QStringList("emblem-unmounted")));
     notification->setFlags(KNotification::CloseOnTimeout);
     notification->sendEvent();
@@ -101,7 +101,7 @@ void Smb4KNotification::sharesMounted(int number)
 {
   KNotification *notification = new KNotification("sharesMounted");
   notification->setText(i18np("<p>%1 share has been mounted.</p>", "<p>%1 shares have been mounted.</p>", number));
-  notification->setPixmap(KIconLoader::global()->loadIcon("folder-remote", 
+  notification->setPixmap(KIconLoader::global()->loadIcon("folder-network", 
                           KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList("emblem-mounted")));
   notification->setFlags(KNotification::CloseOnTimeout);
   notification->sendEvent();
@@ -112,7 +112,7 @@ void Smb4KNotification::sharesUnmounted(int number)
 {
   KNotification *notification = new KNotification("sharesUnmounted");
   notification->setText(i18np("<p>%1 share has been unmounted.</p>", "<p>%1 shares have been unmounted.</p>", number));
-  notification->setPixmap(KIconLoader::global()->loadIcon("folder-remote", KIconLoader::NoGroup, 0, 
+  notification->setPixmap(KIconLoader::global()->loadIcon("folder-network", KIconLoader::NoGroup, 0, 
                           KIconLoader::DefaultState, QStringList("emblem-unmounted")));
   notification->setFlags(KNotification::CloseOnTimeout);
   notification->sendEvent();

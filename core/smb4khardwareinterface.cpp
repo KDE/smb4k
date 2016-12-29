@@ -39,6 +39,9 @@
 #include <Solid/DeviceNotifier>
 #include <Solid/Device>
 #include <Solid/NetworkShare>
+#if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+#include <KIOCore/KMountPoint>
+#endif
 
 Q_GLOBAL_STATIC(Smb4KHardwareInterfaceStatic, p);
 
@@ -52,6 +55,10 @@ Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
   connect(&d->networkConfigManager, SIGNAL(onlineStateChanged(bool)), this, SIGNAL(onlineStateChanged(bool)));
   connect(Solid::DeviceNotifier::instance(), SIGNAL(deviceAdded(QString)), this, SLOT(slotDeviceAdded(QString)));
   connect(Solid::DeviceNotifier::instance(), SIGNAL(deviceRemoved(QString)), this, SLOT(slotDeviceRemoved(QString)));
+
+#if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+  startTimer(2000);
+#endif
 }
 
 
@@ -82,6 +89,71 @@ bool Smb4KHardwareInterface::isOnline() const
 {
   return d->networkConfigManager.isOnline();
 }
+
+
+#if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+// Using FreeBSD 11 with KF 5.27, Solid is not able to detect mounted shares.
+// Thus, we check here whether shares have been mounted or unmounted.
+// This is a hack and should be removed as soon as possible.
+void Smb4KHardwareInterface::timerEvent(QTimerEvent *e)
+{
+  KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions);
+  QStringList mountPointList, alreadyMounted;
+  
+  for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : mountPoints)
+  {
+    if (QString::compare(mountPoint->mountType(), "smbfs") == 0 || QString::compare(mountPoint->mountType(), "cifs") == 0)
+    {
+      mountPointList.append(mountPoint->mountPoint());
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  QMutableStringListIterator it(mountPointList);
+  
+  while (it.hasNext())
+  {
+    QString mp = it.next();
+    int index = -1;
+    
+    if ((index = d->mountPoints.indexOf(mp)) != -1)
+    {
+      d->mountPoints.removeAt(index);
+      alreadyMounted.append(mp);
+      it.remove();
+    }
+    else
+    {
+      // Do nothing
+    }    
+  }
+  
+  if (!d->mountPoints.isEmpty())
+  {
+    emit networkShareRemoved();
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  if (!mountPointList.isEmpty())
+  {
+    emit networkShareAdded();
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  d->mountPoints.clear();
+  d->mountPoints.append(alreadyMounted);
+  d->mountPoints.append(mountPointList);
+}
+#endif
 
 
 void Smb4KHardwareInterface::slotNetworkConfigUpdated()
