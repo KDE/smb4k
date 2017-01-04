@@ -40,48 +40,49 @@
 </keywordset>
 </bookinfo>
 
-<!-- Introduction -->
+<!-- 
+      Introduction 
+-->
 
 <chapter id="introduction" >
-<title>Introduction</title>
+  <title>Introduction</title>
 
-<para>This handbook describes &smb4k; 2.0.x and to some extent earlier versions.</para>
+  <para>This handbook describes &smb4k; 2.0.x and to some extent earlier versions.</para>
+  <para>&smb4k; is an advanced network neighborhood browser and <ulink url="http://www.samba.org">Samba</ulink> share mounting utility. It provides many handy features that ease your life in a mostly &Windows;-dominated network environment:</para>
 
-<para>&smb4k; is an advanced network neighborhood browser and <ulink url="http://www.samba.org">Samba</ulink> share mounting utility. It provides many handy features that ease your life in a mostly &Windows;-dominated network environment:</para>
-
-<itemizedlist>
-  <listitem><para>Scanning for (active) workgroups, hosts, and shares</para></listitem>
-  <listitem><para>Support of the CIFS (&Linux;) and SMBFS (FreeBSD, NetBSD) file system</para></listitem>
-  <listitem><para>Mounting and unmounting of shares</para></listitem>
-  <listitem><para>Access to the files of a mounted share using a file manager or terminal</para></listitem>
-  <listitem><para>Auto-detection of external mounts and unmounts</para></listitem>
-  <listitem><para>Remounting of previously used shares on program start</para></listitem>
-  <listitem><para>Miscellaneous infos about remote network items and mounted shares</para></listitem>
-  <listitem><para>Network search</para></listitem>
-  <listitem><para>WINS server support</para></listitem>
-  <listitem><para>Preview of the contents of a remote share</para></listitem>
-  <listitem><para>Several methods to look up the initial list of workgroups and domains</para></listitem>
-  <listitem><para>Default login</para></listitem>
-  <listitem><para>Special handling of homes shares</para></listitem>
-  <listitem><para>Ability to bookmark favorite shares</para></listitem>
-  <listitem><para>System tray widget</para></listitem>
-  <listitem><para>Support of advanced Samba options</para></listitem>
-  <listitem><para>Support of printer shares</para></listitem>
-  <listitem><para>KWallet support</para></listitem>
-  <listitem><para>Synchronization of a remote share with a local copy and vice versa</para></listitem>
-  <listitem><para>Ability to define custom options for individual servers and shares</para></listitem>
-  <listitem><para>Laptop support through the Solid hardware device framework</para></listitem>
-  <listitem><para>Wake-On-LAN capabilities</para></listitem>
+  <itemizedlist>
+    <listitem><para>Scanning for (active) workgroups, hosts, and shares</para></listitem>
+    <listitem><para>Support of the CIFS (&Linux;) and SMBFS (FreeBSD, NetBSD) file system</para></listitem>
+    <listitem><para>Mounting and unmounting of shares</para></listitem>
+    <listitem><para>Access to the files of a mounted share using a file manager or terminal</para></listitem>
+    <listitem><para>Auto-detection of external mounts and unmounts</para></listitem>
+    <listitem><para>Remounting of previously used shares on program start</para></listitem>
+    <listitem><para>Miscellaneous infos about remote network items and mounted shares</para></listitem>
+    <listitem><para>Network search</para></listitem>
+    <listitem><para>WINS server support</para></listitem>
+    <listitem><para>Preview of the contents of a remote share</para></listitem>
+    <listitem><para>Several methods to look up the initial list of workgroups and domains</para></listitem>
+    <listitem><para>Default login</para></listitem>
+    <listitem><para>Special handling of homes shares</para></listitem>
+    <listitem><para>Ability to bookmark favorite shares</para></listitem>
+    <listitem><para>System tray widget</para></listitem>
+    <listitem><para>Support of advanced Samba options</para></listitem>
+    <listitem><para>Support of printer shares</para></listitem>
+    <listitem><para>KWallet support</para></listitem>
+    <listitem><para>Synchronization of a remote share with a local copy and vice versa</para></listitem>
+    <listitem><para>Ability to define custom options for individual servers and shares</para></listitem>
+    <listitem><para>Laptop support through the Solid hardware device framework</para></listitem>
+    <listitem><para>Wake-On-LAN capabilities</para></listitem>
 <!--   <listitem><para>&plasmoid; for desktop integration</para></listitem> -->
-  <listitem><para>Profiles for different network neighborhood setups</para></listitem>
-</itemizedlist>
+    <listitem><para>Profiles for different network neighborhood setups</para></listitem>
+  </itemizedlist>
 
-<note>
-  <para>The plasmoid has not been ported to &plasma; and QtQuick 2 yet. Thus, it has been disabled in this release. We are currently working on bringing this functionality back.</para>
-</note>  
+  <note>
+    <para>The plasmoid has not been ported to &plasma; and QtQuick 2 yet. Thus, it has been disabled in this release. We are currently working on bringing this functionality back.</para>
+  </note>  
 
-<para>If you encounter problems while using &smb4k;, please visit our <ulink url="https://sourceforge.net/p/smb4k/wiki/Home/">wiki</ulink> first. If you cannot find your problem described there, please post a help request to our <ulink url="https://sourceforge.net/p/smb4k/discussion/help/">Help</ulink> forum. In case you find a bug, please report it to our <ulink url="https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=smb4k">bug tracker</ulink>.</para>
-<para>For discussions about &smb4k;-related topics there is the <ulink url="https://sourceforge.net/p/smb4k/discussion/general/">General Discussion</ulink> forum and we invite every user to participate.</para>
+  <para>If you encounter problems while using &smb4k;, please visit our <ulink url="https://sourceforge.net/p/smb4k/wiki/Home/">wiki</ulink> first. If you cannot find your problem described there, please post a help request to our <ulink url="https://sourceforge.net/p/smb4k/discussion/help/">Help</ulink> forum. In case you find a bug, please report it to our <ulink url="https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=smb4k">bug tracker</ulink>.</para>
+  <para>For discussions about &smb4k;-related topics there is the <ulink url="https://sourceforge.net/p/smb4k/discussion/general/">General Discussion</ulink> forum and we invite every user to participate.</para>
 </chapter>
 
 <!-- Using Smb4K -->
@@ -97,7 +98,7 @@
 <para>After the installation, you can run &smb4k; either from the K menu or from the command prompt by typing</para>
 <screen><prompt>$</prompt> <userinput><command>smb4k</command></userinput></screen>
 <para>&smb4k; does not take any arguments, except those that are known to all &kde; programs.</para>
-<para>&smb4k; also comes with a <link linkend="plasmoid">&plasmoid;</link> for better desktop integration. It can be added as widget to the desktop or the panel.</para>
+<!--<para>&smb4k; also comes with a <link linkend="plasmoid">&plasmoid;</link> for better desktop integration. It can be added as widget to the desktop or the panel.</para>-->
 
 <note><para>If your system is missing some of the programs &smb4k; needs to operate properly, it notifies the user:</para>
 <screenshot id="notification_missing_program">
@@ -218,7 +219,7 @@
         </term>
         <listitem>
           <para>Add a bookmark to the currently selected remote share. This action is disabled if no share is selected.</para>
-          <para>Read the <link linkend="mainwindow_add_bookmarks">Adding Bookmarks</link> section for more details.</para>
+          <para>Read the <link linkend="bookmarks_adding">Adding Bookmarks</link> section for more details.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -458,7 +459,7 @@
   <sect2 id="network_neighborhood_browser_adding_bookmarks">
     <title>Adding Bookmarks</title>
 
-    <para>A bookmark is added by selecting a remote share (only these can be bookmarked) and pressing the <keycombo action="simul">&Ctrl; <keycap>B</keycap></keycombo> keyboard shortcut or selecting the <guimenuitem>Add Bookmark</guimenuitem> menu item. The bookmark will then be accessible through the <guimenu>Bookmarks</guimenu> menu. See the section <link linkend="mainwindow_bookmarks">Handling Bookmarks</link> for more details.</para>
+    <para>A bookmark is added by selecting a remote share (only these can be bookmarked) and pressing the <keycombo action="simul">&Ctrl; <keycap>B</keycap></keycombo> keyboard shortcut or selecting the <guimenuitem>Add Bookmark</guimenuitem> menu item. The bookmark will then be accessible through the <guimenu>Bookmarks</guimenu> menu. See the section <link linkend="bookmarks">Bookmarks</link> for more details.</para>
     <para>The bookmarks can be used to mount remote shares.</para>
   </sect2>
 </sect1>
@@ -696,7 +697,7 @@
         </term>
         <listitem>
           <para>Add a bookmark to the currently selected mounted share. This action is disabled if no share is selected.</para>
-          <para>Read the <link linkend="mainwindow_add_bookmarks">Adding Bookmarks</link> section for more details.</para>
+          <para>Read the <link linkend="bookmarks_adding">Adding Bookmarks</link> section for more details.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -1005,7 +1006,7 @@
       </varlistentry>
     </variablelist>
 
-    <para>The <guimenuitem>Bookmarks</guimenuitem> menu contains all your bookmarks organized according to the structure you gave them (see also <link linkend="mainwindow_add_bookmarks">here</link> and <link linkend="mainwindow_bookmarks_editor">here</link>).</para>
+    <para>The <guimenuitem>Bookmarks</guimenuitem> menu contains all your bookmarks organized according to the structure you gave them (see also <link linkend="bookmarks_adding">here</link> and <link linkend="bookmarks_editor">here</link>).</para>
 
     <screenshot>
       <screeninfo>Screenshot of the Bookmarks menu of the system tray widget</screeninfo>
@@ -1015,7 +1016,7 @@
       </mediaobject>
     </screenshot>
 
-    <para>Its layout is as described <link linkend="mainwindow_bookmarks_menu">here</link> except that the <guimenuitem>Add Bookmark</guimenuitem> menu item is not present.</para>
+    <para>Its layout is as described <link linkend="bookmarks_menu">here</link> except that the <guimenuitem>Add Bookmark</guimenuitem> menu item is not present.</para>
     <para>In the <guimenuitem>Profiles</guimenuitem> menu, all <link linkend="profiles">defined</link> profiles are listed:</para>
 
     <screenshot>
@@ -1070,12 +1071,6 @@
       Using Smb4K : The Plasmoid 
 -->
 
-<sect1 id="plasmoid">
-  <title>The &plasmoid;</title>
-  
-  <para>In version 2.0 the &plasmoid; of &smb4k; has not been ported to QtQuick2 and &plasma; yet and is, thus, not available.</para>
-</sect1>
-
 <!--<sect1 id="plasmoid">
   <title>The &plasmoid;</title>
 
@@ -1107,7 +1102,7 @@
     </screenshot>
 
     <para>By clicking an entry you either enter the level below (&eg; clicking a workgroup or domain item will show a list of all hosts belonging to it), mount the selected share or invoke the print dialog. To go one level up again, you need to click the <guibutton>Up</guibutton> button in the toolbar.</para>
-    <para>For hosts and shares, to the right of the name of the network item some action buttons are arranged. For hosts, there is one button with that you can open the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog. For shares, there is an additional button with that you can <link linkend="mainwindow_add_bookmarks">add the share to the bookmarks</link>. The action buttons are transparent by default and change to opaque when you move your mouse over them. By left clicking you initiate the respective action.</para>
+    <para>For hosts and shares, to the right of the name of the network item some action buttons are arranged. For hosts, there is one button with that you can open the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog. For shares, there is an additional button with that you can <link linkend="bookmarks_adding">add the share to the bookmarks</link>. The action buttons are transparent by default and change to opaque when you move your mouse over them. By left clicking you initiate the respective action.</para>
     <para>Besides the already mentioned <guibutton>Up</guibutton> button, the toolbar contains three more entries: <guibutton>Rescan</guibutton>, <guibutton>Abort</guibutton> and <guibutton>Mount Dialog</guibutton>. With them you can do a rescan, abort any running action or open the <link linkend="network_neighborhood_browser_mounting">dialog for "manual" mounts</link>.</para>
     <note><para>In the current development state, the &plasmoid; is not able to handle the <link linkend="configuration_network_periodic_scanning">automatic scanning feature</link>, &smb4k; provides. Funny things will happen, if you use it with the &plasmoid; and will probably render it mostly unusable.</para></note>
   </sect2>-->
@@ -1128,7 +1123,7 @@
         <textobject><phrase>Bookmarks tab of the plasmoid</phrase></textobject></mediaobject>
     </screenshot>
 
-    <para>Right to the name of the share and its host, two action buttons are arranged. The first one is for <link linkend="mainwindow_add_bookmarks">adding a bookmark</link> and the second for unmounting the share. The action buttons are transparent by default and change to opaque when you move your mouse over them. By left clicking you initiate the respective action.</para>
+    <para>Right to the name of the share and its host, two action buttons are arranged. The first one is for <link linkend="bookmarks_adding">adding a bookmark</link> and the second for unmounting the share. The action buttons are transparent by default and change to opaque when you move your mouse over them. By left clicking you initiate the respective action.</para>
     <para>The toolbar only contains the <guibutton>Unmount All</guibutton> action that lets you unmount all shares at once.</para>
   </sect2>-->
 
@@ -1150,7 +1145,7 @@
     </screenshot>
 
     <para>Bookmarked shares can be mounted by left clicking the respective bookmark. Bookmark groups can be entered the same way.</para>
-    <para>To edit or remove the bookmarks, you can press the <guibutton>Edit</guibutton> action button in the toolbar to open the <link linkend="mainwindow_bookmarks_editor">Bookmark Editor</link>. To get back to the toplevel the <guibutton>Back</guibutton> button is used.</para>
+    <para>To edit or remove the bookmarks, you can press the <guibutton>Edit</guibutton> action button in the toolbar to open the <link linkend="bookmarks_editor">Bookmark Editor</link>. To get back to the toplevel the <guibutton>Back</guibutton> button is used.</para>
   </sect2>-->
 
 <!-- 
@@ -1179,31 +1174,31 @@
       Using Smb4K : Bookmarks 
 -->
 
-<sect1 id="mainwindow_bookmarks">
-  <title>Handling Bookmarks</title>
+<sect1 id="bookmarks">
+  <title>Bookmarks</title>
 
 <!--
       Using Bookmarks : Adding Bookmarks
 -->
   
-  <sect2 id="mainwindow_add_bookmarks">
+  <sect2 id="bookmarks_adding">
     <title>Adding Bookmarks</title>
 
-    <para>You can add bookmarks to your favorite shares from within the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, the <link linkend="shares_view">shares view</link> and the <link linkend="plasmoid">&plasmoid;</link>. In the dock widgets of the main window, this is done by selecting one or multiple shares and clicking the <menuchoice><guimenuitem>Add Bookmark</guimenuitem></menuchoice> action. In the &plasmoid;, you click the respective bookmark action next to the item's name. A dialog will then pop up where you can add a label and/or assign a group to the bookmark.</para>
+    <para>You can add bookmarks to your favorite shares from within the <link linkend="network_neighborhood_browser">network neighborhood browser</link><!-- Remove the following in favor of the commented part --> and the <link linkend="shares_view">shares view</link><!--, the <link linkend="shares_view">shares view</link> and the <link linkend="plasmoid">&plasmoid;</link>-->. In the dock widgets of the main window, this is done by selecting one or multiple shares and clicking the <menuchoice><guimenuitem>Add Bookmark</guimenuitem></menuchoice> action. <!--In the &plasmoid;, you click the respective bookmark action next to the item's name.--> A dialog will then pop up where you can add a label and/or assign a group to the bookmark.</para>
 
     <screenshot>
       <screeninfo>Screenshot of the bookmarks addition dialog</screeninfo>
       <mediaobject>
-        <imageobject><imagedata fileref="dialog_bookmark_addition.png" format="PNG" /></imageobject>
+        <imageobject><imagedata fileref="bookmarks_add_bookmark_dialog.png" format="PNG" /></imageobject>
         <textobject><phrase>Bookmarks addition dialog</phrase></textobject>
       </mediaobject>
     </screenshot>
 
-    <para>Especially adding a group may help you to organize the bookmarks. In the bookmark menu, all bookmarks belonging to one group will be arranged in a submenu with the group entry as parent (see <link linkend="mainwindow_bookmarks_menu">below</link>).</para>
+    <para>Especially adding a group may help you to organize the bookmarks. In the bookmark menu, all bookmarks belonging to one group will be arranged in a submenu with the group entry as parent (see <link linkend="bookmarks_menu">below</link>).</para>
     <para>The label can be any text describing the share. In case you define a label, it will be displayed in the bookmarks menu instead of the UNC by default. If you want to change this behavior, you can do so in the <link linkend="configuration_user_interface_misc_bookmarks">configuration dialog</link>.</para>
   </sect2>
 
-  <sect2 id="mainwindow_bookmarks_menu">
+  <sect2 id="bookmarks_menu">
     <title>Accessing and Managing Bookmarks</title>
 
     <para>In the main window, the bookmarks can be accessed and managed through the <guilabel>Bookmarks</guilabel> menu:</para>
@@ -1211,7 +1206,7 @@
     <screenshot>
       <screeninfo>Screenshot of the bookmark popup menu</screeninfo>
       <mediaobject>
-        <imageobject><imagedata fileref="popup_menu_bookmarks.png" format="PNG" /></imageobject>
+        <imageobject><imagedata fileref="bookmarks_popup_menu.png" format="PNG" /></imageobject>
         <textobject><phrase>Bookmark popup menu</phrase></textobject>
       </mediaobject>
     </screenshot>
@@ -1224,7 +1219,7 @@
           <menuchoice><guimenuitem>Edit Bookmarks</guimenuitem></menuchoice>
         </term>
         <listitem>
-          <para>Open the <link linkend="mainwindow_bookmarks_editor">bookmark editor</link>. This action is disabled if there are no bookmarks.</para>
+          <para>Open the <link linkend="bookmarks_editor">bookmark editor</link>. This action is disabled if there are no bookmarks.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -1255,10 +1250,10 @@
 
     <para>All other entries are either group submenus or shares that do not belong to a group. All entries are listed alphabetically and the bookmarks may either appear with their UNC address or descriptive label. By clicking a bookmark, the respective share is mounted. If a bookmarked share is mounted on the system, the bookmark entry is disabled.</para>
     <para>For each group there is a submenu. It contains all bookmarks belonging to the group and a <guimenuitem>Mount All Bookmarks</guimenuitem> menu item. The latter one can be used to mount all bookmarks in that submenu at once.</para>
-    <para>In the system tray widget, there is an identical <guilabel>Bookmarks</guilabel> <link linkend="systemtray_menus">submenu</link> except that the <guilabel>Add Bookmark</guilabel> entry is missing. <!--The plasmoid provides a <guilabel>Bookmarks</guilabel> <link linkend="plasmoid_bookmarks">tab</link> where all bookmarks are arranged in a similar way as in the bookmark menu.--> The bookmark groups and the bookmarks are listed in the view. Bookmarked shares can be mounted by clicking the respective entry. In the tool bar two actions are present: <guimenuitem>Back</guimenuitem> and <guimenuitem>Edit</guimenuitem>. By clicking <guimenuitem>Back</guimenuitem> you can get back to the top level if you entered a group folder. The <guimenuitem>Edit</guimenuitem> action will open the <link linkend="mainwindow_bookmarks_editor">bookmark editor</link>.</para>
+    <para>In the system tray widget, there is an identical <guilabel>Bookmarks</guilabel> <link linkend="systemtray_menus">submenu</link> except that the <guilabel>Add Bookmark</guilabel> entry is missing. <!--The plasmoid provides a <guilabel>Bookmarks</guilabel> <link linkend="plasmoid_bookmarks">tab</link> where all bookmarks are arranged in a similar way as in the bookmark menu.--> The bookmark groups and the bookmarks are listed in the view. Bookmarked shares can be mounted by clicking the respective entry. In the tool bar two actions are present: <guimenuitem>Back</guimenuitem> and <guimenuitem>Edit</guimenuitem>. By clicking <guimenuitem>Back</guimenuitem> you can get back to the top level if you entered a group folder. The <guimenuitem>Edit</guimenuitem> action will open the <link linkend="bookmarks_editor">bookmark editor</link>.</para>
   </sect2>
 
-  <sect2 id="mainwindow_bookmarks_editor">
+  <sect2 id="bookmarks_editor">
     <title>Editing Bookmarks</title>
 
     <para>The bookmarks may be edited or removed via the bookmark editor. It can be opened by clicking the <guimenuitem>Edit Bookmarks</guimenuitem> entry in the <guilabel>Bookmarks</guilabel> menu or the <guimenuitem>Edit</guimenuitem> action in the <guilabel>Bookmarks</guilabel> tab of the &plasmoid;.</para>
@@ -1266,7 +1261,7 @@
     <screenshot>
       <screeninfo>Screenshot of the bookmark editor</screeninfo>
       <mediaobject>
-        <imageobject><imagedata fileref="dialog_bookmark_editor.png" format="PNG" /></imageobject>
+        <imageobject><imagedata fileref="bookmarks_editor.png" format="PNG" /></imageobject>
         <textobject><phrase>Bookmark editor</phrase></textobject>
       </mediaobject>
     </screenshot>
@@ -1278,7 +1273,7 @@
     <screenshot>
       <screeninfo>Screenshot of the popup menu of the bookmark editor</screeninfo>
       <mediaobject>
-        <imageobject><imagedata fileref="popup_menu_bookmark_editor.png" format="PNG" /></imageobject>
+        <imageobject><imagedata fileref="bookmarks_editor_popup_menu.png" format="PNG" /></imageobject>
         <textobject><phrase>Popup menu of the bookmark editor</phrase></textobject>
       </mediaobject>
     </screenshot>
@@ -1819,7 +1814,7 @@ Default: selected
 </term>
 <listitem>
 <para>
-The custom description (label) of the bookmark is shown. It can be defined in the <link linkend="mainwindow_bookmarks_editor">bookmark editor</link>.
+The custom description (label) of the bookmark is shown. It can be defined in the <link linkend="bookmarks_editor">bookmark editor</link>.
 </para>
 <para>
 Default: selected
