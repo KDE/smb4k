@@ -47,6 +47,7 @@ Smb4KGlobalPrivate::Smb4KGlobalPrivate()
 {
   onlyForeignShares = false;
   coreInitialized = false;
+  m_sambaConfigMissing = false;
   
 #ifdef Q_OS_LINUX
   whitelistedMountArguments << "dynperm";
@@ -105,7 +106,7 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
   if (read)
   {
     // Clear the options.
-    m_samba_options.clear();
+    m_sambaOptions.clear();
     
     // Now search the smb.conf file and read the [global] section
     // from it.
@@ -160,13 +161,23 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
       else
       {
         Smb4KNotification::openingFileFailed(smbConf);
-        return m_samba_options;
+        return m_sambaOptions;
       }
+
+      m_sambaConfigMissing = false;
     }
     else
     {
-      Smb4KNotification::sambaConfigFileMissing();
-      return m_samba_options;
+      if (!m_sambaConfigMissing)
+      {
+        Smb4KNotification::sambaConfigFileMissing();
+        m_sambaConfigMissing = true;
+        return m_sambaOptions;
+      }
+      else
+      {
+        // Do nothing
+      }
     }
     
     // Now process the contents of the smb.conf file.
@@ -193,7 +204,7 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
         else if (contents.at(i).trimmed().startsWith(QLatin1String("include")))
         {
           // Look for the include file and put its contents into the
-          // m_samba_options map.
+          // m_sambaOptions map.
           QFile includeFile(contents.at(i).section('=', 1, 1).trimmed());
 
           if (includeFile.exists())
@@ -215,7 +226,7 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
                 else
                 {
                   QString key = buffer.section('=', 0, 0).trimmed().toLower();
-                  m_samba_options[key] = buffer.section('=', 1, 1).trimmed().toUpper();
+                  m_sambaOptions[key] = buffer.section('=', 1, 1).trimmed().toUpper();
                   continue;
                 }
               }
@@ -234,10 +245,10 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
         }
         else
         {
-          // Put the entries of the [global] section into the m_samba_options
+          // Put the entries of the [global] section into the m_sambaOptions
           // map.
           QString key = contents.at(i).section('=', 0, 0).trimmed().toLower();
-          m_samba_options[key] = contents.at(i).section('=', 1, 1).trimmed().toUpper();
+          m_sambaOptions[key] = contents.at(i).section('=', 1, 1).trimmed().toUpper();
         }
       }
     }
@@ -248,9 +259,9 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
 
     // Post-processing. Some values should be entered with their defaults, if they are
     // not already present.
-    if (!m_samba_options.contains("netbios name"))
+    if (!m_sambaOptions.contains("netbios name"))
     {
-      m_samba_options["netbios name"] = QHostInfo::localHostName().toUpper();
+      m_sambaOptions["netbios name"] = QHostInfo::localHostName().toUpper();
     }
     else
     {
@@ -262,7 +273,7 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
     // Do nothing
   }
   
-  return m_samba_options;
+  return m_sambaOptions;
 }
 
 
@@ -345,4 +356,3 @@ void Smb4KGlobalPrivate::slotAboutToQuit()
 {
   Smb4KSettings::self()->save();
 }
-
