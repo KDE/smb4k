@@ -116,7 +116,7 @@ Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
   shares_view_layout->setMargin(0);
   
   // View
-  QGroupBox *viewBox = new QGroupBox(i18n("View"), shares_view_tab);
+  QGroupBox *viewBox = new QGroupBox(i18n("View Mode"), shares_view_tab);
   QHBoxLayout *viewBoxLayout = new QHBoxLayout(viewBox);
   viewBoxLayout->setSpacing(5);
   
