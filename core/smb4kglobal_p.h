@@ -125,8 +125,8 @@ class Smb4KGlobalPrivate : public QObject
     void slotAboutToQuit();
     
   private:
-    QMap<QString,QString> m_samba_options;
-    bool m_samba_options_read;
+    QMap<QString,QString> m_sambaOptions;
+    bool m_sambaConfigMissing;
 };
 
 #endif
