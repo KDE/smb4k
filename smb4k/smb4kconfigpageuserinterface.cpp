@@ -43,6 +43,7 @@
 
 // KDE includes
 #include <KI18n/KLocalizedString>
+#include <KCompletion/KComboBox>
 
 
 Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
@@ -110,9 +111,26 @@ Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
   //
   QWidget *shares_view_tab = new QWidget(this);
 
-  QGridLayout *shares_view_layout = new QGridLayout(shares_view_tab);
+  QVBoxLayout *shares_view_layout = new QVBoxLayout(shares_view_tab);
   shares_view_layout->setSpacing(5);
   shares_view_layout->setMargin(0);
+  
+  // View
+  QGroupBox *viewBox = new QGroupBox(i18n("View"), shares_view_tab);
+  QHBoxLayout *viewBoxLayout = new QHBoxLayout(viewBox);
+  viewBoxLayout->setSpacing(5);
+  
+  QLabel *viewModeLabel = new QLabel(Smb4KSettings::self()->sharesViewModeItem()->label(), viewBox);
+  KComboBox *viewMode = new KComboBox(viewBox);
+  viewMode->setObjectName("kcfg_SharesViewMode");
+  viewMode->insertItem(Smb4KSettings::EnumSharesViewMode::IconView,
+                       Smb4KSettings::self()->sharesViewModeItem()->choices().value(Smb4KSettings::EnumSharesViewMode::IconView).label);
+  viewMode->insertItem(Smb4KSettings::EnumSharesViewMode::ListView,
+                       Smb4KSettings::self()->sharesViewModeItem()->choices().value(Smb4KSettings::EnumSharesViewMode::ListView).label);  
+  viewModeLabel->setBuddy(viewMode);
+  
+  viewBoxLayout->addWidget(viewModeLabel);
+  viewBoxLayout->addWidget(viewMode);
 
   // Share tooltips
   QGroupBox *share_tooltips_box = new QGroupBox(i18n("Tooltips"), shares_view_tab);
@@ -127,8 +145,9 @@ Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
 
   QSpacerItem *spacer4 = new QSpacerItem(10, 10, QSizePolicy::Preferred, QSizePolicy::Expanding);
 
-  shares_view_layout->addWidget(share_tooltips_box, 0, 0, 0);
-  shares_view_layout->addItem(spacer4, 1, 0);
+  shares_view_layout->addWidget(viewBox);
+  shares_view_layout->addWidget(share_tooltips_box);
+  shares_view_layout->addItem(spacer4);
 
   addTab(shares_view_tab, i18n("Mounted Shares"));
   
