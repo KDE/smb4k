@@ -499,7 +499,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Search for the item that was entered in the search dialog. This action is visible by default and will be replaced by the <guimenuitem>Abort</guimenuitem> action if a network search is running.</para>
+            <para>Search for the string that was entered in the search dialog. This action is visible by default and will be replaced by the <guimenuitem>Abort</guimenuitem> action if a network search is running.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -3508,11 +3508,38 @@ client ipc max protocol = NT1
         <term>
           <menuchoice>
             <guimenu>File</guimenu>
-            <guimenuitem>Profiles</guimenuitem>
+            <guisubmenu>Profiles</guisubmenu>
           </menuchoice>
         </term>
         <listitem>
           <para>Select the profile to use. This menu entry is disabled if the user did not enabled the use of profiles.</para>
+          <para>Two profiles are predefined:</para>
+          <variablelist>
+            <varlistentry>
+              <term>
+                <menuchoice>
+                  <guimenu>File</guimenu>
+                  <guisubmenu>Profiles</guisubmenu>
+                  <guimenuitem>Home</guimenuitem>
+                </menuchoice>
+              </term>
+              <listitem>
+                <para>A profile for use at home</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term>
+                <menuchoice>
+                  <guimenu>File</guimenu>
+                  <guisubmenu>Profiles</guisubmenu>
+                  <guimenuitem>Work</guimenuitem>
+                </menuchoice>
+              </term>
+              <listitem>
+                <para>A profile for use at work</para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -3565,12 +3592,12 @@ client ipc max protocol = NT1
       <varlistentry>
         <term>
           <menuchoice>
+            <guimenu>Network</guimenu>
             <guimenuitem>Add Bookmark</guimenuitem>
           </menuchoice>
         </term>
         <listitem>
-          <para>Add a bookmark to the currently selected remote share. This action is disabled if no share is selected.</para>
-           <para>Read the <link linkend="bookmarks_adding">Adding Bookmarks</link> section for more details.</para>
+          <para>Add a bookmark to the currently selected remote share. This action is disabled if no share is selected. Read the <link linkend="bookmarks_adding">Adding Bookmarks</link> section for more details.</para>
         </listitem>
       </varlistentry>      
       <varlistentry>
@@ -3594,7 +3621,7 @@ client ipc max protocol = NT1
           </menuchoice>
         </term>
         <listitem>
-          <para>Open the authentication dialog where you can enter login information.</para>
+          <para>Open the <link linkend="network_neighborhood_browser_authentication">authentication dialog</link>. You can provide the login and password for the selected server or share. If a workgroup or no item is selected, this action is disabled.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -3606,7 +3633,7 @@ client ipc max protocol = NT1
           </menuchoice>
         </term>
         <listitem>
-          <para>Open a dialog where you can define custom options for a server or share.</para>
+          <para>Open the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog. You can set several custom options for the selected server or share. If a workgroup or no item is selected, this menu entry is disabled.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -3618,7 +3645,7 @@ client ipc max protocol = NT1
           </menuchoice>
         </term>
         <listitem>
-          <para>Open the preview dialog that contains a preview of the contents of the selected share.</para>
+          <para><link linkend="network_neighborhood_browser_previewing">Preview</link> the contents of the selected remote share. This action is only enabled if a share is selected. Printer shares cannot be previewed.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -3630,7 +3657,7 @@ client ipc max protocol = NT1
           </menuchoice>
         </term>
         <listitem>
-          <para>Open the print dialog.</para>
+          <para><link linkend="network_neighborhood_browser_printing">Print</link> a file on a remote printer. This action is only available if a printer share is selected.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -3642,7 +3669,19 @@ client ipc max protocol = NT1
           </menuchoice>
         </term>
         <listitem>
-          <para>Mount the selected remote share.</para>
+          <para>Mount the selected remote share. By default and if you clicked anything different than a share with type "Disk" or "IPC", this action is disabled. If you selected a mounted share, this action is replaced by the <guimenuitem>Unmount</guimenuitem> action.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut>
+            <guimenu>Network</guimenu>
+            <guimenuitem>Unmount</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Unmount the selected share. This action is invisible by default and will only be visible instead of the <guimenuitem>Mount</guimenuitem> action when the share is currently mounted.</para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -3665,7 +3704,7 @@ client ipc max protocol = NT1
           </menuchoice>
         </term>
         <listitem>
-          <para>Search the network for the entered search string.</para>
+          <para>Search for the string that was entered in the search dialog. This action is visible by default and will be replaced by the <guimenuitem>Abort</guimenuitem> action if a network search is running.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -3677,7 +3716,7 @@ client ipc max protocol = NT1
           </menuchoice>
         </term>
         <listitem>
-          <para>Abort the network search.</para>
+          <para>Abort the network search. This action is invisible by default and will only be visible instead of the <guimenuitem>Search</guimenuitem> action if a network search is running.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -3688,7 +3727,7 @@ client ipc max protocol = NT1
           </menuchoice>
         </term>
         <listitem>
-          <para>Clear the network search widget, &ie; the combo box, the history and the list view.</para>
+          <para>Clear the whole network search dialog. This action does not only clear the list view, but also the search item history in the combo box.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -3700,9 +3739,21 @@ client ipc max protocol = NT1
           </menuchoice>
         </term>
         <listitem>
-          <para>Mount the selected share.</para>
+          <para>Mount a remote share from within the search dialog. Alternatively, you can double click the network share in the list view.</para>
         </listitem>
       </varlistentry>
+       <varlistentry>
+          <term>
+            <menuchoice>
+              <shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut>
+              <guimenu>Search</guimenu>
+              <guimenuitem>Unmount</guimenuitem>
+            </menuchoice>
+          </term>
+          <listitem>
+            <para>Unmount the selected share. This action is invisible by default and will only be visible instead of the <guimenuitem>Mount</guimenuitem> action when the share is currently mounted.</para>
+          </listitem>
+        </varlistentry>
     </variablelist>
   </sect1>
   
@@ -3717,13 +3768,52 @@ client ipc max protocol = NT1
       <varlistentry>
         <term>
           <menuchoice>
+            <guimenu>Shares</guimenu>
+            <guisubmenu>View Modes</guisubmenu>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Choose the view mode from the submenu.</para>
+          <variablelist>
+            <varlistentry>
+              <term>
+                <menuchoice>
+                  <guimenu>Shares</guimenu>
+                  <guisubmenu>View Modes</guisubmenu>
+                  <guimenuitem>Icon View</guimenuitem>
+                </menuchoice>
+              </term>
+              <listitem>
+                <para>The shares are shown in an icon view.</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term>
+                <menuchoice>
+                  <guimenu>Shares</guimenu>
+                  <guisubmenu>View Modes</guisubmenu>
+                  <guimenuitem>List View</guimenuitem>
+                </menuchoice>
+              </term>
+              <listitem>
+                <para>The shares are shown in a list view.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
             <shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut>
             <guimenu>Shares</guimenu>
             <guimenuitem>Unmount</guimenuitem>
           </menuchoice>
         </term>
         <listitem>
-          <para>Unmount the selected share.</para>
+          <para>Unmount one or multiple selected shares. The ability to unmount shares is by default restricted to the ones that are owned by the user. However, you can change this behavior by changing the <link linkend="configuration_page_shares_behavior">settings</link> in the configuration dialog. If no share is selected in the shares view, this button is disabled.</para>
+            <para>&smb4k; also provides the ability to force the unmounting of shares (&Linux; only). This might be useful with inaccessible shares that cannot be unmounted the normal way. To enable this feature, you need to modify the <link linkend="configuration_page_shares_behavior">settings</link> in the configuration dialog.</para>
+            <para>Read the <link linkend="shares_view_unmounting">Unmounting Shares</link> section for more details.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -3735,9 +3825,20 @@ client ipc max protocol = NT1
           </menuchoice>
         </term>
         <listitem>
-          <para>Unmount all of the mounted shares at once. In the default configuration this is restricted to the user's shares, but this can be altered in the <link linkend="configuration_page_shares_behavior">configuration dialog</link>. For further information read the <link linkend="shares_view_unmounting">Unmounting Shares</link> section.</para>
+          <para>Unmount all shares at once. The restrictions noted above also apply here. If you do not have any shares mounted, this button is disabled.</para>
         </listitem>
       </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <guimenu>Shares</guimenu>
+            <guimenuitem>Add Bookmark</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Add a bookmark to the currently selected mounted share. This action is disabled if no share is selected. Read the <link linkend="bookmarks_adding">Adding Bookmarks</link> section for more details.</para>
+        </listitem>
+      </varlistentry>   
       <varlistentry>
         <term>
           <menuchoice>
@@ -3747,7 +3848,7 @@ client ipc max protocol = NT1
           </menuchoice>
         </term>
         <listitem>
-          <para>Initiate a synchronization.</para>
+          <para>Start the <link linkend="shares_view_synchronization">synchronization</link> of a share with a local copy or vice versa. This menu entry is only enabled if you installed the program <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> and a share is selected.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
