@@ -3547,7 +3547,7 @@ client ipc max protocol = NT1
           </menuchoice>
         </term>
         <listitem>
-          <para>can the whole network neighborhood, the highlighted workgroup/domain or computer for new entries. This action is visible by default and will be replaced by the <guimenuitem>Abort</guimenuitem> action if a network scan is running.</para>
+          <para>Scan the whole network neighborhood, the highlighted workgroup/domain or computer for new entries. This action is visible by default and will be replaced by the <guimenuitem>Abort</guimenuitem> action if a network scan is running.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
