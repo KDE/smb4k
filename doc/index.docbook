@@ -1225,7 +1225,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Add a bookmark. A share has to be selected to enable this action.</para>
+            <para>Add one or several bookmarks. At least one share has to be selected to enable this action.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -3894,7 +3894,7 @@ client ipc max protocol = NT1
           </menuchoice>
         </term>
         <listitem>
-          <para>Open the bookmark editor.</para>
+          <para>Open the <link linkend="bookmarks_editor">bookmark editor</link>. This action is disabled if there are no bookmarks.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -3906,7 +3906,18 @@ client ipc max protocol = NT1
           </menuchoice>
         </term>
         <listitem>
-          <para>Add the selected share to the bookmarks.</para>
+          <para>Add one or several bookmarks. At least one share has to be selected to enable this action.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <guimenu>Bookmarks</guimenu>
+            <guimenuitem>Mount All Bookmarks</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Mount all top-level bookmarks at once. It is disabled if all bookmarked shares are mounted. This action is not present if there are no toplevel bookmarks.</para>
         </listitem>
       </varlistentry>
     </variablelist>
