@@ -499,7 +499,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Search for the item that was entered in the search dialog. This action is visible by default and will be replaced by the <guimenuitem>Abort</guimenuitem> action if a network search is running.</para>
+            <para>Search for the string that was entered in the search dialog. This action is visible by default and will be replaced by the <guimenuitem>Abort</guimenuitem> action if a network search is running.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1225,7 +1225,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Add a bookmark. A share has to be selected to enable this action.</para>
+            <para>Add one or several bookmarks. At least one share has to be selected to enable this action.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -3486,6 +3486,506 @@ client ipc max protocol = NT1
       <para>Here, you can manage your profiles. By default, there are two pre-defined ones (<guilabel>Home</guilabel> and <guilabel>Work</guilabel>), but you can add your own ones. When you enabled the use of profiles the first time, the first entry in the list will be the active profile.</para>
       <para>When you rename a profile, the settings are migrated automatically (without showing the migration assistant). If you enabled the use of the migration assistant, it is shown when you remove a profile giving you the opportunity to migrate the stored settings to another profile. If the use of the migration assistant is disabled, the profile and all of its settings are removed.</para>
     </sect2>
+  </sect1>
+</chapter>
+
+<!-- 
+      Command Reference 
+-->
+
+<chapter id="command_reference" >
+  <title>Command Reference</title>
+
+<!-- 
+      Command Reference : The File Menu 
+  -->
+
+  <sect1 id="command_reference_file_menu">
+    <title>The File Menu</title>
+
+    <variablelist>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <guimenu>File</guimenu>
+            <guisubmenu>Profiles</guisubmenu>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Select the profile to use. This menu entry is disabled if the user did not enabled the use of profiles.</para>
+          <para>Two profiles are predefined:</para>
+          <variablelist>
+            <varlistentry>
+              <term>
+                <menuchoice>
+                  <guimenu>File</guimenu>
+                  <guisubmenu>Profiles</guisubmenu>
+                  <guimenuitem>Home</guimenuitem>
+                </menuchoice>
+              </term>
+              <listitem>
+                <para>A profile for use at home</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term>
+                <menuchoice>
+                  <guimenu>File</guimenu>
+                  <guisubmenu>Profiles</guisubmenu>
+                  <guimenuitem>Work</guimenuitem>
+                </menuchoice>
+              </term>
+              <listitem>
+                <para>A profile for use at work</para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul" >&Ctrl; <keycap>Q</keycap></keycombo></shortcut>
+            <guimenu>File</guimenu>
+            <guimenuitem>Quit</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Quit &smb4k;.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect1>
+  
+<!--
+      Command Reference : The Network Menu
+  -->
+
+  <sect1 id="command_reference_network_menu">
+    <title>The Network Menu</title>
+
+    <variablelist>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycap>F5</keycap></shortcut>
+            <guimenu>Network</guimenu>
+            <guimenuitem>Scan Network|Workgroup|Computer</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Scan the whole network neighborhood, the highlighted workgroup/domain or computer for new entries. This action is visible by default and will be replaced by the <guimenuitem>Abort</guimenuitem> action if a network scan is running.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>A</keycap></keycombo></shortcut>
+            <guimenu>Network</guimenu>
+            <guimenuitem>Abort</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Abort any running process of the network neighborhood browser. This action is invisible by default and will only be visible instead of the <guimenuitem>Scan Network|Workgroup|Computer</guimenuitem> action when a network scan is running.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <guimenu>Network</guimenu>
+            <guimenuitem>Add Bookmark</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Add a bookmark to the currently selected remote share. This action is disabled if no share is selected. Read the <link linkend="bookmarks_adding">Adding Bookmarks</link> section for more details.</para>
+        </listitem>
+      </varlistentry>      
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>O</keycap></keycombo></shortcut>
+            <guimenu>Network</guimenu>
+            <guimenuitem>Open Mount Dialog</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Open the <link linkend="network_neighborhood_browser_mounting">dialog</link> for mounting shares "manually". This feature may be needed if &smb4k; cannot find a server from which you want to mount a certain shared resource.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>T</keycap></keycombo></shortcut>
+            <guimenu>Network</guimenu>
+            <guimenuitem>Authentication</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Open the <link linkend="network_neighborhood_browser_authentication">authentication dialog</link>. You can provide the login and password for the selected server or share. If a workgroup or no item is selected, this action is disabled.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut>
+            <guimenu>Network</guimenu>
+            <guimenuitem>Custom Options</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Open the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog. You can set several custom options for the selected server or share. If a workgroup or no item is selected, this menu entry is disabled.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>V</keycap></keycombo></shortcut>
+            <guimenu>Network</guimenu>
+            <guimenuitem>Preview</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para><link linkend="network_neighborhood_browser_previewing">Preview</link> the contents of the selected remote share. This action is only enabled if a share is selected. Printer shares cannot be previewed.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>P</keycap></keycombo></shortcut>
+            <guimenu>Network</guimenu>
+            <guimenuitem>Print File</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para><link linkend="network_neighborhood_browser_printing">Print</link> a file on a remote printer. This action is only available if a printer share is selected.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>M</keycap></keycombo></shortcut>
+            <guimenu>Network</guimenu>
+            <guimenuitem>Mount</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Mount the selected remote share. By default and if you clicked anything different than a share with type "Disk" or "IPC", this action is disabled. If you selected a mounted share, this action is replaced by the <guimenuitem>Unmount</guimenuitem> action.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut>
+            <guimenu>Network</guimenu>
+            <guimenuitem>Unmount</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Unmount the selected share. This action is invisible by default and will only be visible instead of the <guimenuitem>Mount</guimenuitem> action when the share is currently mounted.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect1>
+  
+<!--
+      Command Reference : The Search Menu
+  -->
+
+  <sect1 id="command_reference_search_menu">
+    <title>The Search Menu</title>
+
+    <variablelist>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>S</keycap></keycombo></shortcut>
+            <guimenu>Search</guimenu>
+            <guimenuitem>Search</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Search for the string that was entered in the search dialog. This action is visible by default and will be replaced by the <guimenuitem>Abort</guimenuitem> action if a network search is running.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>A</keycap></keycombo></shortcut>
+            <guimenu>Search</guimenu>
+            <guimenuitem>Abort</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Abort the network search. This action is invisible by default and will only be visible instead of the <guimenuitem>Search</guimenuitem> action if a network search is running.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <guimenu>Search</guimenu>
+            <guimenuitem>Clear</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Clear the whole network search dialog. This action does not only clear the list view, but also the search item history in the combo box.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>D</keycap></keycombo></shortcut>
+            <guimenu>Search</guimenu>
+            <guimenuitem>Mount</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Mount a remote share from within the search dialog. Alternatively, you can double click the network share in the list view.</para>
+        </listitem>
+      </varlistentry>
+       <varlistentry>
+          <term>
+            <menuchoice>
+              <shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut>
+              <guimenu>Search</guimenu>
+              <guimenuitem>Unmount</guimenuitem>
+            </menuchoice>
+          </term>
+          <listitem>
+            <para>Unmount the selected share. This action is invisible by default and will only be visible instead of the <guimenuitem>Mount</guimenuitem> action when the share is currently mounted.</para>
+          </listitem>
+        </varlistentry>
+    </variablelist>
+  </sect1>
+  
+<!--
+      Command Reference : The Shares Menu
+  -->
+
+  <sect1 id="command_reference_shares_menu">
+    <title>The Shares Menu</title>
+
+    <variablelist>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <guimenu>Shares</guimenu>
+            <guisubmenu>View Modes</guisubmenu>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Choose the view mode from the submenu.</para>
+          <variablelist>
+            <varlistentry>
+              <term>
+                <menuchoice>
+                  <guimenu>Shares</guimenu>
+                  <guisubmenu>View Modes</guisubmenu>
+                  <guimenuitem>Icon View</guimenuitem>
+                </menuchoice>
+              </term>
+              <listitem>
+                <para>The shares are shown in an icon view.</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term>
+                <menuchoice>
+                  <guimenu>Shares</guimenu>
+                  <guisubmenu>View Modes</guisubmenu>
+                  <guimenuitem>List View</guimenuitem>
+                </menuchoice>
+              </term>
+              <listitem>
+                <para>The shares are shown in a list view.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut>
+            <guimenu>Shares</guimenu>
+            <guimenuitem>Unmount</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Unmount one or multiple selected shares. The ability to unmount shares is by default restricted to the ones that are owned by the user. However, you can change this behavior by changing the <link linkend="configuration_page_shares_behavior">settings</link> in the configuration dialog. If no share is selected in the shares view, this button is disabled.</para>
+            <para>&smb4k; also provides the ability to force the unmounting of shares (&Linux; only). This might be useful with inaccessible shares that cannot be unmounted the normal way. To enable this feature, you need to modify the <link linkend="configuration_page_shares_behavior">settings</link> in the configuration dialog.</para>
+            <para>Read the <link linkend="shares_view_unmounting">Unmounting Shares</link> section for more details.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>N</keycap></keycombo></shortcut>
+            <guimenu>Shares</guimenu>
+            <guimenuitem>Unmount All</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Unmount all shares at once. The restrictions noted above also apply here. If you do not have any shares mounted, this button is disabled.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <guimenu>Shares</guimenu>
+            <guimenuitem>Add Bookmark</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Add a bookmark to the currently selected mounted share. This action is disabled if no share is selected. Read the <link linkend="bookmarks_adding">Adding Bookmarks</link> section for more details.</para>
+        </listitem>
+      </varlistentry>   
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>Y</keycap></keycombo></shortcut>
+            <guimenu>Shares</guimenu>
+            <guimenuitem>Synchronize</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Start the <link linkend="shares_view_synchronization">synchronization</link> of a share with a local copy or vice versa. This menu entry is only enabled if you installed the program <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> and a share is selected.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>L</keycap></keycombo></shortcut>
+            <guimenu>Shares</guimenu>
+            <guimenuitem>Open with Konsole</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Open the base folder of the selected share in &konsole;.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>I</keycap></keycombo></shortcut>
+            <guimenu>Shares</guimenu>
+            <guimenuitem>Open with File Manager</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Open the contents of the selected share in the default file manager (&eg; &dolphin;).</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect1>
+  
+<!--
+      Command Reference : The Bookmarks Menu
+  -->
+
+  <sect1 id="command_reference_bookmarks_menu">
+    <title>The Bookmarks Menu</title>
+
+    <variablelist>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <guimenu>Bookmarks</guimenu>
+            <guimenuitem>Edit Bookmarks</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Open the <link linkend="bookmarks_editor">bookmark editor</link>. This action is disabled if there are no bookmarks.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>B</keycap></keycombo></shortcut>
+            <guimenu>Bookmarks</guimenu>
+            <guimenuitem>Add Bookmark</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Add one or several bookmarks. At least one share has to be selected to enable this action.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <guimenu>Bookmarks</guimenu>
+            <guimenuitem>Mount All Bookmarks</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Mount all top-level bookmarks at once. It is disabled if all bookmarked shares are mounted. This action is not present if there are no toplevel bookmarks.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect1>
+  
+<!--
+      Command Reference : The Settings Menu
+  -->
+
+  <sect1 id="command_reference_settings_menu">
+    <title>The Settings Menu</title>
+
+    <variablelist>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <guimenu>Settings</guimenu>
+            <guimenuitem>Toolbars Shown</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>In this submenu you can enable or disable the toolbars.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <guimenu>Settings</guimenu>
+            <guimenuitem>Show Statusbar</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Hide or show the status bar.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <guimenu>Settings</guimenu>
+            <guimenuitem>Dock Widgets</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Hide or show the dock widgets in the main window.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <guimenu>Settings</guimenu>
+            <guimenuitem>Configure &smb4k;...</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Open the configuration dialog.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect1>
+
+<!--
+      Command Reference : The Help Menu
+  -->
+  
+  <sect1 id="command_reference_help_menu">
+    <title>The Help Menu</title>
+
+    <para>Additionally &smb4k; has the common &kde; <guimenu>Help</guimenu> menu items, for more information read the section about the <ulink url="help:/fundamentals/ui.html#menus-help">Help Menu</ulink> of the &kde; Fundamentals.</para>
   </sect1>
 </chapter>
 

@@ -5,7 +5,7 @@
     <Action name="search_abort_action"/>
     <Separator/>
     <Action name="clear_search_action"/>
-    <Action name="item_action"/>
+    <Action name="mount_action"/>
   </Menu>
 </MenuBar>
 <ToolBar name="searchToolBar">

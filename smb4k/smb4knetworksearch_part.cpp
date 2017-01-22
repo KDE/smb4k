@@ -177,8 +177,6 @@ void Smb4KNetworkSearchPart::setupActions()
 
   // Put the actions in the context menu.
   m_menu = new KActionMenu(this);
-  m_menu->menu()->setTitle(i18n("Search Results"));
-  m_menu->menu()->setIcon(KDE::icon("system-search"));
   m_menu->addAction(clear_action);
   m_menu->addAction(mount_action);
   

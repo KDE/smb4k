@@ -7,6 +7,7 @@
     <Action name="unmount_action"/>
     <Action name="unmount_all_action"/>
     <Separator/>
+    <Action name="bookmark_action"/>
     <Action name="synchronize_action"/>
     <Separator/>
     <Action name="konsole_action"/>
@@ -19,6 +20,7 @@
   <Action name="unmount_action"/>
   <Action name="unmount_all_action"/>
   <Separator/>
+  <Action name="bookmark_action"/>
   <Action name="synchronize_action"/>
   <Separator/>
   <Action name="konsole_action"/>
