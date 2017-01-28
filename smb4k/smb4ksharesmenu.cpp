@@ -80,25 +80,17 @@ Smb4KSharesMenu::~Smb4KSharesMenu()
 
 void Smb4KSharesMenu::refreshMenu()
 {
-  m_action_collection->action( "unmount_all" )->setEnabled(
-    ((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && !m_menus->actions().isEmpty()) );
-
-  if ( !Smb4KSettings::showMountPoint() )
+  // Delete all entries
+  while (!m_action_collection->actions().isEmpty())
   {
-    for ( int i = 0; i < m_menus->actions().size(); ++i )
-    {
-      QString text = m_menus->actions()[i]->data().toMap().value( "unc" ).toString();
-      m_menus->actions()[i]->setText( text );
-    }
+    QAction *action = m_action_collection->actions().first();
+    m_action_collection->takeAction(action);
+    removeAction(action);
+    delete action;
   }
-  else
-  {
-    for ( int i = 0; i < m_menus->actions().size(); ++i )
-    {
-      QString text = m_menus->actions()[i]->data().toMap().value( "mountpoint" ).toString();
-      m_menus->actions()[i]->setText( text );
-    }
-  }
+  
+  // Set up the menu
+  setupMenu();
 }
 
 
