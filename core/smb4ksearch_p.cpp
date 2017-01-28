@@ -112,7 +112,7 @@ void Smb4KSearchJob::slotStartSearch()
   //
   // Global Samba options
   //
-  QMap<QString, QString> globalSambaOpions = globalSambaOptions();
+  QMap<QString, QString> globalOptions = globalSambaOptions();
 
   //
   // The custom options
@@ -265,7 +265,7 @@ void Smb4KSearchJob::slotStartSearch()
   //
   // Workaround problems with security fixes of April 12, 2016.
   //
-  if (globalSambaOpions.contains("client max protocol") && globalSambaOpions.value("client max protocol").startsWith(QLatin1String("SMB")))
+  if (globalOptions.contains("client max protocol") && globalOptions.value("client max protocol").startsWith(QLatin1String("SMB")))
   {
     qDebug() << "Smb4KSearchJob::slotStartSearch(): Using workaround '--option='client max protocol = NT1'' ...";
     command << "--option";
