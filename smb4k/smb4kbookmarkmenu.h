@@ -103,7 +103,7 @@ class Smb4KBookmarkMenu : public KActionMenu
     /**
      * Set up the menu
      */
-    void setupMenu( bool setup_all = true );
+    void setupMenu();
     
     /**
      * Type
