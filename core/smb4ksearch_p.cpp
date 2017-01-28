@@ -113,6 +113,11 @@ void Smb4KSearchJob::slotStartSearch()
   {
     // Go ahead
   }
+  
+  //
+  // Global Samba options
+  //
+  QMap<QString,QString> globalOptions = globalSambaOptions();
 
   // Lookup the custom options that are defined for the master browser.
   Smb4KCustomOptions *options = NULL;
@@ -251,11 +256,25 @@ void Smb4KSearchJob::slotStartSearch()
   {
     arguments << "-U %";
   }
+  
+  //
+  // Workaround problems with security fixes of April 12, 2016.
+  //
+  if (globalOptions.contains("client max protocol") && globalOptions.value("client max protocol").startsWith(QLatin1String("SMB")))
+  {
+    arguments << "--option='client max protocol=NT1'";
+  }
+  else
+  {
+    // Do nothing
+  }
 
   m_proc = new Smb4KProcess( this );
   m_proc->setOutputChannelMode( KProcess::SeparateChannels );
   m_proc->setEnv( "PASSWD", (m_master && !m_master->password().isEmpty()) ? m_master->password() : "", true );
   m_proc->setShellCommand( arguments.join( " " ) );
+  
+  qDebug() << arguments.join(" ");
   
   connect( m_proc, SIGNAL(readyReadStandardOutput()), this, SLOT(slotReadStandardOutput()) );
   connect( m_proc, SIGNAL(readyReadStandardError()), this, SLOT(slotReadStandardError()) );
