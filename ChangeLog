@@ -1,3 +1,14 @@
+Smb4K 1.2.3 (2017-02-05):
+
+See the summury of changes below. For a full list of changes, please
+refer to the Git log at https://cgit.kde.org/smb4k.git/log/?h=1.2
+
+- Fix Smb4KSharesMenu::refreshMenu() function. Backported from master.
+- Fix Smb4KBookmarkMenu::refreshMenu() and simplify Smb4KBookmarkMenu::setupMenu() 
+  functions. Backported from master.
+- Introduce workaround to search code so that network search is also working with 
+  option 'client max protocol = SMB3' defined in smb.conf. Backported fix from master.
+
 Smb4K 1.2.2 (2016-11-12):
 
 See the summary of changes below. For a full list of changes, please
