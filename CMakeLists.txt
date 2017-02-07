@@ -70,6 +70,13 @@ add_subdirectory(smb4k)
 add_subdirectory(data)
 add_subdirectory(doc)
 
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
+  ki18n_install(po)
+  if(KF5DocTools_FOUND)
+    kdoctools_install(po)
+  endif(KF5DocTools_FOUND)
+endif(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
+
 ########### Plasmoid ####################
 
 # option(INSTALL_PLASMOID "Install plasmoid" ON)
