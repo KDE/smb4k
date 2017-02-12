@@ -410,7 +410,7 @@
       <li xml:lang="es">Manejo especial de los directorios personales compartidos</li>
       <li xml:lang="fi">Kotikansiojakojen erityiskäsittely</li>
       <li xml:lang="fr">Prise en charge spéciale des répertoires personnels partagés</li>
-      <li xml:lang="gl">Xestiona de forma especial as particións de cartafoles persoais.</li>
+      <li xml:lang="gl">Xestiona de forma especial as comparticións de cartafoles persoais.</li>
       <li xml:lang="it">Gestione speciale delle condivisioni delle home</li>
       <li xml:lang="nds">Besünner Hanteren vun Tohuus-Freegaven</li>
       <li xml:lang="nl">Speciale behandeling van shares van hoofdmappen</li>
@@ -656,7 +656,7 @@
     <p xml:lang="es">Si estás trabajando en un entorno de red dominado por Windows, es posible que desees instalar esta aplicación para poder acceder fácilmente a los recursos Windows compartidos.</p>
     <p xml:lang="fi">Jos työskentelet Windowsin hallitsemassa verkkoympäristössä, halunnet asentaa tämän sovelluksen käyttääksesi helposti tarjolla olevia Windows-jakoja.</p>
     <p xml:lang="fr">Si vous travaillez dans un réseau contenant majoritairement des PC sous Windows, vous voudrez sans doute installer cette application pour accéder facilement aux partages Windows.</p>
-    <p xml:lang="gl">Se traballa nun ambiente de rede dominado por Windows, este programa axudarao a acceder facilmente aos recursos compartidos desde Windows.</p>
+    <p xml:lang="gl">Se traballa nun ambiente de rede dominado por Windows, este aplicativo axudarao a acceder facilmente aos recursos compartidos desde Windows.</p>
     <p xml:lang="it">Se stai lavorando in una rete dominata da Windows potresti voler installare questa applicazione, per essere in grado di accedere facilmente alle condivisioni fornite da Windows.</p>
     <p xml:lang="nds">Arbeidst Du binnen en vun Windows präägt Nettwarkümgeven, kannst Du dit Programm installeren, wenn Du eenfach op de praatstahn Windows-Freegaven togriepen wullt.</p>
     <p xml:lang="nl">Als u werkt in een door Windows gedomineerde netwerkomgeving, dan zou u deze toepassing willen installeren om in staat te zijn gemakkelijk toegang tot de geboden Windows shares te krijgen.</p>
