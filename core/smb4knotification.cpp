@@ -246,7 +246,7 @@ void Smb4KNotification::retrievingDomainsFailed(const QString& err_msg)
   notification->setText(text);
   notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                           KIconLoader::DefaultState));
-  notification->setFlags(KNotification::Persistent);
+  notification->setFlags(KNotification::CloseOnTimeout);
   notification->sendEvent();
 }
 
@@ -268,7 +268,7 @@ void Smb4KNotification::scanningBroadcastAreaFailed(const QString& err_msg)
   notification->setText(text);
   notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                           KIconLoader::DefaultState));
-  notification->setFlags(KNotification::Persistent);
+  notification->setFlags(KNotification::CloseOnTimeout);
   notification->sendEvent();
 }
 
@@ -294,7 +294,7 @@ void Smb4KNotification::retrievingHostsFailed(Smb4KWorkgroup* workgroup, const Q
     notification->setText(text);
     notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                             KIconLoader::DefaultState));
-    notification->setFlags(KNotification::Persistent);
+    notification->setFlags(KNotification::CloseOnTimeout);
     notification->sendEvent();
   }
   else
@@ -325,7 +325,7 @@ void Smb4KNotification::retrievingSharesFailed(Smb4KHost* host, const QString& e
     notification->setText(text);
     notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                             KIconLoader::DefaultState));
-    notification->setFlags(KNotification::Persistent);
+    notification->setFlags(KNotification::CloseOnTimeout);
     notification->sendEvent();
   }
   else
@@ -356,7 +356,7 @@ void Smb4KNotification::retrievingPreviewFailed(Smb4KShare* share, const QString
     notification->setText(text);
     notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                             KIconLoader::DefaultState));
-    notification->setFlags(KNotification::Persistent);
+    notification->setFlags(KNotification::CloseOnTimeout);
     notification->sendEvent();
   }
   else
@@ -387,7 +387,7 @@ void Smb4KNotification::mountingFailed(Smb4KShare* share, const QString& err_msg
     notification->setText(text);
     notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                             KIconLoader::DefaultState));
-    notification->setFlags(KNotification::Persistent);
+    notification->setFlags(KNotification::CloseOnTimeout);
     notification->sendEvent();
   }
   else
@@ -418,7 +418,7 @@ void Smb4KNotification::unmountingFailed(Smb4KShare* share, const QString& err_m
     notification->setText(text);
     notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                             KIconLoader::DefaultState));
-    notification->setFlags(KNotification::Persistent);
+    notification->setFlags(KNotification::CloseOnTimeout);
     notification->sendEvent();
   }
   else
@@ -439,7 +439,7 @@ void Smb4KNotification::unmountingNotAllowed(Smb4KShare* share)
                                 "It is owned by the user <b>%3</b>.</p>", share->unc(), share->path(), share->user().loginName()));
     notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                             KIconLoader::DefaultState));
-    notification->setFlags(KNotification::Persistent);
+    notification->setFlags(KNotification::CloseOnTimeout);
     notification->sendEvent();
   }
   else
@@ -470,7 +470,7 @@ void Smb4KNotification::printingFailed(Smb4KShare* printer, const QString& err_m
     notification->setText(text);
     notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                             KIconLoader::DefaultState));
-    notification->setFlags(KNotification::Persistent);
+    notification->setFlags(KNotification::CloseOnTimeout);
     notification->sendEvent();
   }
   else
@@ -497,7 +497,7 @@ void Smb4KNotification::synchronizationFailed(const QUrl& src, const QUrl& dest,
   notification->setText(text);
   notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                           KIconLoader::DefaultState));
-  notification->setFlags(KNotification::Persistent);
+  notification->setFlags(KNotification::CloseOnTimeout);
   notification->sendEvent();  
 }
 
@@ -519,7 +519,7 @@ void Smb4KNotification::searchingFailed(const QString& item, const QString& err_
   notification->setText(text);
   notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                           KIconLoader::DefaultState));
-  notification->setFlags(KNotification::Persistent);
+  notification->setFlags(KNotification::CloseOnTimeout);
   notification->sendEvent();  
 }
 
@@ -530,7 +530,7 @@ void Smb4KNotification::commandNotFound(const QString& command)
   notification->setText(i18n("<p>The command <b>%1</b> could not be found. Please check your installation.</p>", command));
   notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                           KIconLoader::DefaultState));
-  notification->setFlags(KNotification::Persistent);
+  notification->setFlags(KNotification::CloseOnTimeout);
   notification->sendEvent(); 
 }
 
@@ -545,7 +545,7 @@ void Smb4KNotification::cannotBookmarkPrinter(Smb4KShare* share)
     notification->setText(i18n("<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>", share->unc()));
     notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                             KIconLoader::DefaultState));
-    notification->setFlags(KNotification::Persistent);
+    notification->setFlags(KNotification::CloseOnTimeout);
     notification->sendEvent(); 
   }
   else
@@ -561,7 +561,7 @@ void Smb4KNotification::fileNotFound(const QString& fileName)
   notification->setText(i18n("<p>The file <b>%1</b> could not be found.</p>", fileName));
   notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                           KIconLoader::DefaultState));
-  notification->setFlags(KNotification::Persistent);
+  notification->setFlags(KNotification::CloseOnTimeout);
   notification->sendEvent(); 
 }
 
@@ -583,7 +583,7 @@ void Smb4KNotification::openingFileFailed(const QFile& file)
   notification->setText(text);
   notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                           KIconLoader::DefaultState));
-  notification->setFlags(KNotification::Persistent);
+  notification->setFlags(KNotification::CloseOnTimeout);
   notification->sendEvent();
 }
 
@@ -613,7 +613,7 @@ void Smb4KNotification::readingFileFailed(const QFile& file, const QString& err_
   notification->setText(text);
   notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                           KIconLoader::DefaultState));
-  notification->setFlags(KNotification::Persistent);
+  notification->setFlags(KNotification::CloseOnTimeout);
   notification->sendEvent();
 }
 
@@ -624,7 +624,7 @@ void Smb4KNotification::mkdirFailed(const QDir& dir)
   notification->setText(i18n("<p>The following directory could not be created:</p><p><tt>%1</tt></p>", dir.absolutePath()));
   notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                           KIconLoader::DefaultState));
-  notification->setFlags(KNotification::Persistent);
+  notification->setFlags(KNotification::CloseOnTimeout);
   notification->sendEvent(); 
 }
 
@@ -672,7 +672,7 @@ void Smb4KNotification::processError(QProcess::ProcessError error)
   notification->setText(text);
   notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                           KIconLoader::DefaultState));
-  notification->setFlags(KNotification::Persistent);
+  notification->setFlags(KNotification::CloseOnTimeout);
   notification->sendEvent();
 }
 
@@ -747,7 +747,7 @@ void Smb4KNotification::actionFailed(int err_code)
   notification->setText(text);
   notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                           KIconLoader::DefaultState));
-  notification->setFlags(KNotification::Persistent);
+  notification->setFlags(KNotification::CloseOnTimeout);
   notification->sendEvent();  
 }
 
@@ -758,7 +758,7 @@ void Smb4KNotification::invalidURLPassed()
   notification->setText(i18n("<p>The URL that was passed is invalid.</p>"));
   notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                           KIconLoader::DefaultState));
-  notification->setFlags(KNotification::Persistent);
+  notification->setFlags(KNotification::CloseOnTimeout);
   notification->sendEvent(); 
 }
 
@@ -769,7 +769,7 @@ void Smb4KNotification::emptyBroadcastAreas()
   notification->setText(i18n("<p>There are no broadcast areas defined.</p>"));
   notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                           KIconLoader::DefaultState));
-  notification->setFlags(KNotification::Persistent);
+  notification->setFlags(KNotification::CloseOnTimeout);
   notification->sendEvent();
 }
 
