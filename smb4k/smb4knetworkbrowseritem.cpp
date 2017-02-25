@@ -165,8 +165,6 @@ Smb4KBasicNetworkItem* Smb4KNetworkBrowserItem::networkItem()
 
 void Smb4KNetworkBrowserItem::update(Smb4KBasicNetworkItem *item)
 {
-  qDebug() << "FIXME: Update item without deleting the internal network item";
-  
   if (item)
   {
     switch (item->type())
