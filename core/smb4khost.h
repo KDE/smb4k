@@ -264,6 +264,14 @@ class Q_DECL_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      * @returns the password.
      */
     QString password() const;
+    
+    /**
+     * Updates the host item if the workgroup and host name of @p host and
+     * of this item is equal. Otherwise it does nothing.
+     * @param host            The share object that is used to update
+     *                        this object
+     */
+    void update(Smb4KHost *host);    
 
   private:
     const QScopedPointer<Smb4KHostPrivate> d;

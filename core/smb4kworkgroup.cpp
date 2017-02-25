@@ -197,3 +197,17 @@ QUrl Smb4KWorkgroup::url() const
 }
 
 
+void Smb4KWorkgroup::update(Smb4KWorkgroup* workgroup)
+{
+  if (QString::compare(workgroupName(), workgroup->workgroupName()) == 0)
+  {
+    setMasterBrowserName(workgroup->masterBrowserName());
+    setMasterBrowserIP(workgroup->masterBrowserIP());
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+

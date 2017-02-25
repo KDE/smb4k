@@ -1249,3 +1249,21 @@ void Smb4KShare::setShareIcon()
   }
 }
 
+
+void Smb4KShare::update(Smb4KShare* share)
+{
+  if (QString::compare(workgroupName(), share->workgroupName()) == 0 &&
+      (QString::compare(unc(), share->unc()) == 0 || QString::compare(homeUNC(), share->homeUNC()) == 0))
+  {
+    setMountData(share);
+    setURL(share->url());
+    setTypeString(share->typeString());
+    setComment(share->comment());
+    setHostIP(share->hostIP());
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
