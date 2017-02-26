@@ -2,7 +2,7 @@
     This file contains private helper classes for the Smb4KMounter class.
                              -------------------
     begin                : Do Jul 19 2007
-    copyright            : (C) 2007-2016 by Alexander Reinholdt
+    copyright            : (C) 2007-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -253,7 +253,7 @@ void Smb4KMountDialog::slotOkClicked()
 
 void Smb4KMountDialog::slotCancelClicked()
 {
-  Smb4KMounter::self()->abort(m_share);
+  Smb4KMounter::self()->abortAll();
   reject();
 }
 

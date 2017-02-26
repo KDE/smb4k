@@ -2,7 +2,7 @@
     The core class that mounts the shares.
                              -------------------
     begin                : Die Jun 10 2003
-    copyright            : (C) 2003-2016 by Alexander Reinholdt
+    copyright            : (C) 2003-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -150,45 +150,6 @@ Smb4KMounter::~Smb4KMounter()
 Smb4KMounter *Smb4KMounter::self()
 {
   return &p->instance;
-}
-
-
-void Smb4KMounter::abort(Smb4KShare *share)
-{
-  Q_ASSERT(share);
-  
-  QString unc;
-
-  if (!share->isHomesShare())
-  {
-    unc = share->unc();
-  }
-  else
-  {
-    unc = share->homeUNC();
-  }
-
-  QListIterator<KJob *> it(subjobs());
-  
-  while (it.hasNext())
-  {
-    KJob *job = it.next();
-    
-    if (QString::compare(job->objectName(), QString("MountJob_%1").arg(unc), Qt::CaseInsensitive) == 0)
-    {
-      job->kill(KJob::EmitResult);
-      continue;
-    }
-    else if (QString::compare(job->objectName(), QString("UnmountJob_%1").arg(share->canonicalPath()), Qt::CaseInsensitive) == 0)
-    {
-      job->kill(KJob::EmitResult);
-      continue;
-    }
-    else
-    {
-      continue;
-    }
-  }
 }
 
 
