@@ -19,8 +19,8 @@ include(KDECMakeSettings)
 include(FeatureSummary)
 include(ECMInstallIcons)
 
-set(QT_MIN_VERSION "5.4.0")
-set(KF5_MIN_VERSION "5.9.0")
+set(QT_MIN_VERSION "5.7.0")
+set(KF5_MIN_VERSION "5.31.0")
 
 # Qt5 modules
 find_package(Qt5Core ${QT_MIN_VERSION} REQUIRED)
