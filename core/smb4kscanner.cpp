@@ -230,9 +230,11 @@ bool Smb4KScanner::isRunning(Smb4KGlobal::Process process, Smb4KBasicNetworkItem
 
 void Smb4KScanner::abortAll()
 {
-  for (int i = 0; i < subjobs().size(); ++i)
+  QListIterator<KJob *> it(subjobs());
+    
+  while (it.hasNext())
   {
-    subjobs().at(i)->kill(KJob::EmitResult);
+    it.next()->kill(KJob::EmitResult);
   }
 }
 

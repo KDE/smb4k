@@ -2,7 +2,7 @@
     The core class that mounts the shares.
                              -------------------
     begin                : Die Jun 10 2003
-    copyright            : (C) 2003-2016 by Alexander Reinholdt
+    copyright            : (C) 2003-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -77,13 +77,6 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
      */
     static Smb4KMounter *self();
     
-    /**
-     * Aborts the mount/unmount process that is running for the share @p share.
-     *
-     * @param share           The Smb4KShare object
-     */
-    void abort(Smb4KShare *share);
-
     /**
      * Aborts all running processes at once.
      */

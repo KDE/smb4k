@@ -135,9 +135,11 @@ bool Smb4KPrint::isRunning(Smb4KShare *share)
 
 void Smb4KPrint::abortAll()
 {
-  for (int i = 0; i < subjobs().size(); ++i)
+  QListIterator<KJob *> it(subjobs());
+    
+  while (it.hasNext())
   {
-    subjobs().at(i)->kill(KJob::EmitResult);
+    it.next()->kill(KJob::EmitResult);
   }
 }
 

@@ -182,9 +182,11 @@ bool Smb4KSearch::isRunning(const QString &string)
 
 void Smb4KSearch::abortAll()
 {
-  for (int i = 0; i < subjobs().size(); ++i)
+  QListIterator<KJob *> it(subjobs());
+    
+  while (it.hasNext())
   {
-    subjobs().at(i)->kill(KJob::EmitResult);
+    it.next()->kill(KJob::EmitResult);
   }
 }
 

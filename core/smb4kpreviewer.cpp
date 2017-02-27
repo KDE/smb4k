@@ -190,9 +190,11 @@ bool Smb4KPreviewer::isRunning(Smb4KShare *share)
 
 void Smb4KPreviewer::abortAll()
 {
-  for (int i = 0; i < subjobs().size(); ++i)
+  QListIterator<KJob *> it(subjobs());
+    
+  while (it.hasNext())
   {
-    subjobs().at(i)->kill(KJob::EmitResult);
+    it.next()->kill(KJob::EmitResult);
   }
 }
 
@@ -210,11 +212,11 @@ void Smb4KPreviewer::abort(Smb4KShare *share)
     unc = share->homeUNC();
   }
   
-  for (int i = 0; i < subjobs().size(); ++i)
+  for (KJob *job : subjobs())
   {
-    if (QString::compare(QString("PreviewJob_%1").arg(unc), subjobs().at(i)->objectName()) == 0)
+    if (QString::compare(QString("PreviewJob_%1").arg(unc), job->objectName()) == 0)
     {
-      subjobs().at(i)->kill(KJob::EmitResult);
+      job->kill(KJob::EmitResult);
       break;
     }
     else
@@ -332,7 +334,7 @@ void Smb4KPreviewer::slotAcquirePreview(Smb4KShare *share, const QUrl &url, QWid
   if (dlg)
   {
     connect(job, SIGNAL(preview(QUrl,QList<Smb4KPreviewFileItem>)),
-             dlg, SLOT(slotDisplayPreview(QUrl,QList<Smb4KPreviewFileItem>)));
+            dlg, SLOT(slotDisplayPreview(QUrl,QList<Smb4KPreviewFileItem>)));
   }
   else
   {

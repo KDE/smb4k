@@ -163,6 +163,14 @@ class Q_DECL_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      * @returns the URL of the network item.
      */
     QUrl url() const;
+    
+    /**
+     * Updates the workgroup item if the workgroup name of @p workgroup and
+     * of this item is equal. Otherwise it does nothing.
+     * @param workgroup       The workgroup object that is used to update
+     *                        this object
+     */
+    void update(Smb4KWorkgroup *workgroup);
 
   private:
     const QScopedPointer<Smb4KWorkgroupPrivate> d;

@@ -56,6 +56,6 @@ QUrl Smb4KNotificationActionRunner::mountpoint() const
 
 void Smb4KNotificationActionRunner::slotOpenShare()
 {
-  KRun::runUrl(m_mountpoint, "inode/directory", 0);
+  KRun::runUrl(m_mountpoint, "inode/directory", 0, KRun::RunFlags());
 }
 

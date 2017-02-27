@@ -618,6 +618,14 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      */
     QString password() const;
     
+    /**
+     * Updates the share item if the workgroup name and the UNC of @p share and
+     * of this item is equal. Otherwise it does nothing.
+     * @param share           The share object that is used to update
+     *                        this object
+     */
+    void update(Smb4KShare *share);
+    
   private:
     /**
      * Set up the shares icon.
