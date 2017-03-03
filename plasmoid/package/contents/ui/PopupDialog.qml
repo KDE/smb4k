@@ -23,19 +23,71 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.components 2.0 as PlasmaComponents
 
-Item {
-  id: root
+FocusScope {
+  id: popupDialog
+  anchors.fill: parent
   
-  Plasmoid.toolTipMainText: i18n("Network Neighborhood")
-//   Plasmoid.toolTipSubText: sinkModel.preferredSink ? i18n("Volume at %1%\n%2", volumePercent(sinkModel.preferredSink.volume), sinkModel.preferredSink.description) : ""
-//   Plasmoid.icon: "smb4k"
-  
-//   Plasmoid.compactRepresentation: {}
-  Plasmoid.fullRepresentation: PopupDialog {
-    id: main
-    Layout.minimumWidth: units.iconSizes.medium * 10
-    Layout.minimumHeight: units.gridUnit * 20
-    anchors.fill: parent
-    focus: true
+  ColumnLayout {
+    //
+    // Tab bar
+    //
+    PlasmaComponents.TabBar {
+      id: tabBar
+      Layout.maximumWidth: popupDialog.width
+        
+      PlasmaComponents.TabButton {
+        id: browserTabButton
+        text: i18n("Network Neighborhood")
+        iconSource: "network-workgroup-symbolic"
+        tab: networkBrowserPage
+      }
+        
+      PlasmaComponents.TabButton {
+        id: sharesTabButton
+        text: i18n("Mounted Shares")
+        iconSource: "folder-network"
+        tab: sharesViewPage
+      }
+      
+      PlasmaComponents.TabButton {
+        id: bookmarkTabButton
+        text: i18n("Bookmarks")
+        iconSource: "favorite"
+        tab: bookmarksPage
+      }
+      
+      PlasmaComponents.TabButton {
+        id: profilesTabButton
+        text: i18n("Profiles")
+        iconSource: "format-list-unordered"
+        tab: profilesPage
+      }
+    }
+    
+    //
+    // Tab group
+    //
+    PlasmaComponents.TabGroup {
+      id: tabGroup
+      currentTab: networkBrowserPage
+      Layout.fillHeight: true
+      Layout.fillWidth: true
+        
+      NetworkBrowserPage {
+        id: networkBrowserPage
+      }
+        
+      SharesViewPage {
+        id: sharesViewPage
+      }
+        
+      BookmarksPage {
+        id: bookmarksPage
+      }
+        
+      ProfilesPage {
+        id: profilesPage
+      }
+    }
   }
 }

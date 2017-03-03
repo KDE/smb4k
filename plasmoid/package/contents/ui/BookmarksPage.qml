@@ -22,20 +22,50 @@ import QtQuick.Layouts 1.1
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.plasma.extras 2.0 as PlasmaExtras
 
-Item {
-  id: root
+PlasmaComponents.Page {
+  id: bookmarksPage
   
-  Plasmoid.toolTipMainText: i18n("Network Neighborhood")
-//   Plasmoid.toolTipSubText: sinkModel.preferredSink ? i18n("Volume at %1%\n%2", volumePercent(sinkModel.preferredSink.volume), sinkModel.preferredSink.description) : ""
-//   Plasmoid.icon: "smb4k"
+  //
+  // Tool bar
+  //
+  PlasmaComponents.ToolBar {
+    id: bookmarksToolBar
+    anchors {
+      top: parent.top
+      left: parent.left
+      right: parent.right
+    }
+    
+    tools: PlasmaComponents.ToolBarLayout {
+      PlasmaComponents.ToolButton {
+        id: backButton
+        tooltip: i18n("Go back")
+        iconSource: "go-previous"
+        width: minimumWidth
+        onClicked: {} // FIXME
+      }
+      PlasmaComponents.ToolButton {
+        id: editButton
+        tooltip: i18n("Edit bookmarks")
+        iconSource: "bookmarks-organize"
+        width: minimumWidth
+        onClicked: {}
+      }
+    }
+  }
   
-//   Plasmoid.compactRepresentation: {}
-  Plasmoid.fullRepresentation: PopupDialog {
-    id: main
-    Layout.minimumWidth: units.iconSizes.medium * 10
-    Layout.minimumHeight: units.gridUnit * 20
-    anchors.fill: parent
-    focus: true
+  //
+  // List view
+  //
+  PlasmaExtras.ScrollArea {
+    id: bookmarksScrollArea
+    anchors {
+      top: bookmarksToolBar.bottom
+      left: parent.left
+      right: parent.right
+      bottom: parent.bottom
+    }
   }
 }

@@ -22,20 +22,10 @@ import QtQuick.Layouts 1.1
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.plasma.extras 2.0 as PlasmaExtras
 
-Item {
-  id: root
+PlasmaComponents.ListItem {
+  id: delegate
   
-  Plasmoid.toolTipMainText: i18n("Network Neighborhood")
-//   Plasmoid.toolTipSubText: sinkModel.preferredSink ? i18n("Volume at %1%\n%2", volumePercent(sinkModel.preferredSink.volume), sinkModel.preferredSink.description) : ""
-//   Plasmoid.icon: "smb4k"
-  
-//   Plasmoid.compactRepresentation: {}
-  Plasmoid.fullRepresentation: PopupDialog {
-    id: main
-    Layout.minimumWidth: units.iconSizes.medium * 10
-    Layout.minimumHeight: units.gridUnit * 20
-    anchors.fill: parent
-    focus: true
-  }
+  // FIXME
 }
