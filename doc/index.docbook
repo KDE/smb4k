@@ -1255,7 +1255,7 @@
     <sect2 id="bookmarks_editor">
       <title>Editing Bookmarks</title>
 
-      <para>The bookmarks may be edited or removed via the bookmark editor. It can be opened by clicking the <guimenuitem>Edit Bookmarks</guimenuitem> entry in the <guilabel>Bookmarks</guilabel> menu or the <guimenuitem>Edit</guimenuitem> action in the <guilabel>Bookmarks</guilabel> tab of the &plasmoid;.</para>
+      <para>The bookmarks may be edited or removed via the bookmark editor. It can be opened by clicking the <guimenuitem>Edit Bookmarks</guimenuitem> entry in the <guilabel>Bookmarks</guilabel> menu<!-- or the <guimenuitem>Edit</guimenuitem> action in the <guilabel>Bookmarks</guilabel> tab of the &plasmoid;-->.</para>
     
       <screenshot>
         <screeninfo>Screenshot of the bookmark editor</screeninfo>
@@ -1365,7 +1365,7 @@
   
     <sect2 id="profiles_activate_profile">
       <title>Activating a Profile</title>
-      <para>By default, the first profile in the list is set active when you enable the use of profiles. The active profile can be changed in the <guimenu>Profiles</guimenu> menu of the main window or the system tray widget or on the <guilabel>Profiles</guilabel> page of the plasmoid.</para>
+      <para>By default, the first profile in the list is set active when you enable the use of profiles. The active profile can be changed in the <guimenu>Profiles</guimenu> menu of the main window or the system tray widget<!-- or on the <guilabel>Profiles</guilabel> page of the plasmoid-->.</para>
       <para>When a profile is activated, several things happen:</para>
       <itemizedlist>
         <listitem><para>All currently mounted shares are unmounted and are scheduled for remount.</para></listitem>
