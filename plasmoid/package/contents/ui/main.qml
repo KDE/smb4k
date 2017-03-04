@@ -17,11 +17,12 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA .        *
  ***************************************************************************/
 
-import QtQuick 2.2
-import QtQuick.Layouts 1.1
+import QtQuick 2.3
+import QtQuick.Layouts 1.3
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.smb4k.smb4kqmlplugin 2.0
 
 Item {
   id: root
@@ -30,12 +31,62 @@ Item {
 //   Plasmoid.toolTipSubText: sinkModel.preferredSink ? i18n("Volume at %1%\n%2", volumePercent(sinkModel.preferredSink.volume), sinkModel.preferredSink.description) : ""
 //   Plasmoid.icon: "smb4k"
   
-//   Plasmoid.compactRepresentation: {}
+  //
+  // Smb4K interface
+  //
+  Interface {
+    id: iface
+  }
+  
+  Connections {
+    target: iface
+    onBusy: busy()
+    onIdle: idle()
+  }
+  
+  //
+  // Plasmoid representations
+  //
+  Plasmoid.compactRepresentation: {}
   Plasmoid.fullRepresentation: PopupDialog {
     id: main
     Layout.minimumWidth: units.iconSizes.medium * 10
     Layout.minimumHeight: units.gridUnit * 20
     anchors.fill: parent
     focus: true
+  }
+  
+  //
+  // Busy indicator
+  //
+  PlasmaComponents.BusyIndicator {
+    id: busyIndicator
+    running: false
+    visible: false
+//     opacity: 0.5
+    anchors.verticalCenter: parent.verticalCenter
+    anchors.horizontalCenter: parent.horizontalCenter
+  }
+  
+  //
+  // Start interface
+  //
+  Component.onCompleted: {
+    iface.startScanner();
+    iface.startMounter();
+    iface.startPrinter();
+  }
+  
+  //
+  // Functions
+  //
+  function busy() {
+    busyIndicator.visible = true
+    busyIndicator.running = true
+  }
+  
+  function idle() {
+    busyIndicator.visible = false
+    busyIndicator.running = false
   }
 }

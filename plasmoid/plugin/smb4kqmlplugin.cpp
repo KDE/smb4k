@@ -43,9 +43,9 @@
 
 void Smb4KQMLPlugin::registerTypes(const char *uri)
 {
-  qmlRegisterType<Smb4KNetworkObject>(uri, 1, 0, "NetworkObject");
-  qmlRegisterType<Smb4KBookmarkObject>(uri, 1, 0, "BookmarkObject");
-  qmlRegisterType<Smb4KProfileObject>(uri, 1, 0, "ProfileObject");
-  qmlRegisterType<Smb4KDeclarative>(uri, 1, 0, "CoreInterface");
+  qmlRegisterType<Smb4KNetworkObject>(uri, 2, 0, "NetworkObject");
+  qmlRegisterType<Smb4KBookmarkObject>(uri, 2, 0, "BookmarkObject");
+  qmlRegisterType<Smb4KProfileObject>(uri, 2, 0, "ProfileObject");
+  qmlRegisterType<Smb4KDeclarative>(uri, 2, 0, "Interface");
 }
 

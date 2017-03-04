@@ -33,7 +33,7 @@
 class Smb4KQMLPlugin : public QQmlExtensionPlugin
 {
   Q_OBJECT
-  Q_PLUGIN_METADATA(IID "net.sourceforge.smb4k.smb4kqml")
+  Q_PLUGIN_METADATA(IID "org.kde.smb4k.smb4kqmlplugin")
 
   public:
     void registerTypes(const char *uri);
