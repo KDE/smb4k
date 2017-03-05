@@ -73,6 +73,7 @@ add_subdirectory(helpers)
 add_subdirectory(smb4k)
 add_subdirectory(data)
 add_subdirectory(doc)
+add_subdirectory(plasmoid)
 
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
   ki18n_install(po)
@@ -80,17 +81,6 @@ if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
     kdoctools_install(po)
   endif(KF5DocTools_FOUND)
 endif(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
-
-########### Plasmoid ####################
-
-option(INSTALL_PLASMOID "Install plasmoid" ON)
-
-if (INSTALL_PLASMOID)
-  message(STATUS "Installing plasmoid (-DINSTALL_PLASMOID=false to disable)")
-  add_subdirectory(plasmoid)
-elseif (NOT INSTALL_PLASMOID)
-  message(STATUS "Not installing plasmoid (-DINSTALL_PLASMOID=true to enable)")
-endif(INSTALL_PLASMOID)
 
 ########### Header files ################
 
