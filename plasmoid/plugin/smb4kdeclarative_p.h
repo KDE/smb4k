@@ -2,7 +2,7 @@
     This class provides helper classes for Smb4KDeclarative
                              -------------------
     begin                : Mo 02 Sep 2013
-    copyright            : (C) 2013-2016 by Alexander Reinholdt
+    copyright            : (C) 2013-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -23,10 +23,24 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
+#ifndef SMB4KDECLARATIVE_P_H
+#define SMB4KDECLARATIVE_P_H
 
 // application specific includes
-#include "smb4kdeclarative_p.h"
+#include "smb4knetworkobject.h"
+#include "smb4kbookmarkobject.h"
+#include "smb4kprofileobject.h"
 
+class Smb4KDeclarativePrivate
+{
+  public:
+    QList<Smb4KNetworkObject *> workgroupObjects;
+    QList<Smb4KNetworkObject *> hostObjects;
+    QList<Smb4KNetworkObject *> shareObjects;
+    QList<Smb4KNetworkObject *> mountedObjects;
+    QList<Smb4KBookmarkObject *> bookmarkObjects;
+    QList<Smb4KBookmarkObject *> bookmarkGroupObjects;
+    QList<Smb4KProfileObject *> profileObjects;
+};
+
+#endif

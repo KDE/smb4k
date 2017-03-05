@@ -2,7 +2,7 @@
     smb4kqmlplugin - The QML plugin for use with Plasma/QtQuick
                              -------------------
     begin                : Di Feb 21 2012
-    copyright            : (C) 2012 by Alexander Reinholdt
+    copyright            : (C) 2012-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -29,13 +29,13 @@
 
 // application specific includes
 #include "smb4kqmlplugin.h"
+#include "smb4kbookmarkobject.h"
+#include "smb4kdeclarative.h"
+#include "smb4knetworkobject.h"
+#include "smb4kprofileobject.h"
 #include "core/smb4kglobal.h"
-#include "core/smb4knetworkobject.h"
 #include "core/smb4kbookmarkhandler.h"
 #include "core/smb4kcustomoptionsmanager.h"
-#include "core/smb4kbookmarkobject.h"
-#include "core/smb4kprofileobject.h"
-#include "core/smb4kdeclarative.h"
 
 // Qt includes
 #include <QtQml>

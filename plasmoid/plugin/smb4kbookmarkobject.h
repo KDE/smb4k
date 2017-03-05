@@ -3,7 +3,7 @@
     is for use with QtQuick.
                              -------------------
     begin                : Fr Mai 11 2013
-    copyright            : (C) 2013-2016 by Alexander Reinholdt
+    copyright            : (C) 2013-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,7 +28,7 @@
 #define SMB4KBOOKMARKOBJECT_H
 
 // application specific includes
-#include "smb4kbookmark.h"
+#include "core/smb4kbookmark.h"
 
 // Qt includes
 #include <QObject>

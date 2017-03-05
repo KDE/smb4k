@@ -2,7 +2,7 @@
     smb4kqmlplugin - The QML plugin for use with Plasma/QtQuick
                              -------------------
     begin                : Di Feb 21 2012
-    copyright            : (C) 2012 by Alexander Reinholdt
+    copyright            : (C) 2012-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

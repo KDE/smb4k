@@ -30,6 +30,8 @@ Item {
   Plasmoid.toolTipMainText: i18n("Network Neighborhood")
 //   Plasmoid.toolTipSubText: sinkModel.preferredSink ? i18n("Volume at %1%\n%2", volumePercent(sinkModel.preferredSink.volume), sinkModel.preferredSink.description) : ""
 //   Plasmoid.icon: "smb4k"
+//   Plasmoid.switchWidth: units.gridUnit * 10
+//   Plasmoid.switchHeight: units.gridUnit * 10
   
   //
   // Smb4K interface
@@ -38,16 +40,10 @@ Item {
     id: iface
   }
   
-  Connections {
-    target: iface
-    onBusy: busy()
-    onIdle: idle()
-  }
-  
   //
   // Plasmoid representations
   //
-  Plasmoid.compactRepresentation: {}
+//   Plasmoid.compactRepresentation: {} // FIXME: Look at plasma-nm how this can be done
   Plasmoid.fullRepresentation: PopupDialog {
     id: main
     Layout.minimumWidth: units.iconSizes.medium * 10
@@ -57,36 +53,11 @@ Item {
   }
   
   //
-  // Busy indicator
-  //
-  PlasmaComponents.BusyIndicator {
-    id: busyIndicator
-    running: false
-    visible: false
-//     opacity: 0.5
-    anchors.verticalCenter: parent.verticalCenter
-    anchors.horizontalCenter: parent.horizontalCenter
-  }
-  
-  //
   // Start interface
   //
   Component.onCompleted: {
     iface.startScanner();
     iface.startMounter();
     iface.startPrinter();
-  }
-  
-  //
-  // Functions
-  //
-  function busy() {
-    busyIndicator.visible = true
-    busyIndicator.running = true
-  }
-  
-  function idle() {
-    busyIndicator.visible = false
-    busyIndicator.running = false
   }
 }

@@ -2,7 +2,7 @@
     This class provides the interface for Plasma and QtQuick
                              -------------------
     begin                : Mo 02 Sep 2013
-    copyright            : (C) 2013-2016 by Alexander Reinholdt
+    copyright            : (C) 2013-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,18 +30,21 @@
 // application specific includes
 #include "smb4kdeclarative.h"
 #include "smb4kdeclarative_p.h"
-#include "smb4kscanner.h"
-#include "smb4kglobal.h"
-#include "smb4kworkgroup.h"
-#include "smb4khost.h"
-#include "smb4kshare.h"
-#include "smb4kbasicnetworkitem.h"
-#include "smb4kbookmarkhandler.h"
-#include "smb4kbookmark.h"
-#include "smb4kprint.h"
 #include "smb4kbookmarkobject.h"
-#include "smb4kcustomoptionsmanager.h"
-#include "smb4kprofilemanager.h"
+#include "smb4knetworkobject.h"
+#include "smb4kprofileobject.h"
+#include "core/smb4kscanner.h"
+#include "core/smb4kmounter.h"
+#include "core/smb4kglobal.h"
+#include "core/smb4kworkgroup.h"
+#include "core/smb4khost.h"
+#include "core/smb4kshare.h"
+#include "core/smb4kbasicnetworkitem.h"
+#include "core/smb4kbookmarkhandler.h"
+#include "core/smb4kbookmark.h"
+#include "core/smb4kprint.h"
+#include "core/smb4kcustomoptionsmanager.h"
+#include "core/smb4kprofilemanager.h"
 
 // Qt includes
 #include <QDebug>
@@ -65,8 +68,8 @@ Smb4KDeclarative::Smb4KDeclarative(QObject* parent)
   
   connect(Smb4KMounter::self(), SIGNAL(mounted(Smb4KShare*)), this, SLOT(slotMountedSharesListChanged()));
   connect(Smb4KMounter::self(), SIGNAL(unmounted(Smb4KShare*)), this, SLOT(slotMountedSharesListChanged()));
-  connect(Smb4KMounter::self(), SIGNAL(aboutToStart(Smb4KShare*,int)), this, SIGNAL(busy()));
-  connect(Smb4KMounter::self(), SIGNAL(finished(Smb4KShare*,int)), this, SIGNAL(idle()));
+  connect(Smb4KMounter::self(), SIGNAL(aboutToStart(int)), this, SIGNAL(busy()));
+  connect(Smb4KMounter::self(), SIGNAL(finished(int)), this, SIGNAL(idle()));
   
   connect(Smb4KPrint::self(), SIGNAL(aboutToStart(Smb4KShare*)), this, SIGNAL(busy()));
   connect(Smb4KPrint::self(), SIGNAL(finished(Smb4KShare*)), this, SIGNAL(idle()));
@@ -388,22 +391,14 @@ Smb4KNetworkObject* Smb4KDeclarative::findMountedShare(const QUrl& url, bool exa
   
   if (url.isValid())
   {
-    QUrl u1 = url;
-    u1.setUserInfo(QString());
-    u1.setPort(-1);
-    
     for (int i = 0; i < d->mountedObjects.size(); ++i)
     {
-      QUrl u2 =  d->mountedObjects.at(i)->url();
-      u2.setUserInfo(QString());
-      u2.setPort(-1);
-      
-      if (url == d->mountedObjects.at(i)->url())
+      if (url.matches(d->mountedObjects.at(i)->url(), QUrl::None))
       {
         object = d->mountedObjects[i];
         break;
       }
-      else if (u1 == u2 && !exactMatch)
+      else if (!exactMatch && url.matches(d->mountedObjects.at(i)->url(), QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::StripTrailingSlash))
       {
         object = d->mountedObjects[i];
         continue;

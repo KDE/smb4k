@@ -23,7 +23,7 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.extras 2.0 as PlasmaExtras
-import org.kde.kquickcontrolsaddons 2.0
+import org.kde.smb4k.smb4kqmlplugin 2.0
 
 PlasmaComponents.ListItem {
   id: delegate
@@ -34,14 +34,15 @@ PlasmaComponents.ListItem {
   
   width: parent.width
   height: theme.mediumIconSize + 8
+  focus: true
   
   Row {
     spacing: 10
     Column {
       anchors.verticalCenter: parent.verticalCenter
-      QIconItem { // FIXME: Port away from QIconItem
+      PlasmaCore.IconItem {
         id: delegateItemIcon
-        icon: object.icon
+        source: object.icon
         width: theme.mediumIconSize
         height: theme.mediumIconSice
         MouseArea {
@@ -56,8 +57,8 @@ PlasmaComponents.ListItem {
       anchors.verticalCenter: parent.verticalCenter
       PlasmaComponents.Label {
         id: delegateItemText
+        elide: Text.ElideRight
         text: object.name+(object.comment.length != 0 ? "<br><font size=\"-1\">"+object.comment+"</font>" : "")
-        clip: true
         MouseArea {
           anchors.fill: parent
           onClicked: {
@@ -67,15 +68,22 @@ PlasmaComponents.ListItem {
       }
     }
   }
+  
   PlasmaComponents.ButtonRow {
-    PlasmaComponents.Button {
+    anchors {
+      verticalCenter: parent.verticalCenter
+      right: parent.right
+    }
+    exclusive: false
+    spacing: 1
+    
+    PlasmaComponents.ToolButton {
       id: bookmarkButton
       iconSource: "favorite"
-      height: theme.smallIconSize
-      width: theme.smallIconSize
+      flat: true
       opacity: 0.2
-      visible: (object.type == 3 && !object.isPrinter) ? true : false // FIXME: Use enumeration
-      enabled: (object.type == 3 && !object.isPrinter) ? true : false // FIXME: Use enumeration
+      visible: (object.type == NetworkObject.Share && !object.isPrinter) ? true : false
+      enabled: (object.type == NetworkObject.Share && !object.isPrinter) ? true : false
       MouseArea {
         anchors.fill: parent
         hoverEnabled: true
@@ -85,19 +93,19 @@ PlasmaComponents.ListItem {
         onExited: {
           parent.opacity = 0.2
         }
-      }
-      onClicked: {
-        delegate.bookmarkClicked()
+        onClicked: {
+          delegate.bookmarkClicked()
+        }
       }      
     }
-    PlasmaComponents.Button {
+    
+    PlasmaComponents.ToolButton {
       id: configureButton
       iconSource: "preferences-system-network"
-      height: theme.smallIconSize
-      width: theme.smallIconSize
+      flat: true
       opacity: 0.2
-      visible: object.type > 1 ? true : false // FIXME: Use enumeration
-      enabled: object.type > 1 ? true : false // FIXME: Use enumeration
+      visible: (object.type != NetworkObject.Network && object.type != NetworkObject.Workgroup) ? true : false
+      enabled: (object.type != NetworkObject.Network && object.type != NetworkObject.Workgroup) ? true : false
       MouseArea {
         anchors.fill: parent
         hoverEnabled: true
@@ -107,10 +115,10 @@ PlasmaComponents.ListItem {
         onExited: {
           parent.opacity = 0.2
         }
+        onClicked: {
+          delegate.configureClicked()
+        }      
       }
-      onClicked: {
-        delegate.configureClicked()
-      }      
     }
-  }
+  }      
 }

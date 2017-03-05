@@ -4,7 +4,13 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/core
   ${CMAKE_BINARY_DIR}/core)
   
-set(smb4kqmlplugin_LIB_SRC smb4kqmlplugin.cpp)
+set(smb4kqmlplugin_LIB_SRC
+  smb4kbookmarkobject.cpp
+  smb4kdeclarative.cpp
+  smb4kdeclarative_p.cpp
+  smb4knetworkobject.cpp
+  smb4kprofileobject.cpp
+  smb4kqmlplugin.cpp)
 
 add_library(smb4kqmlplugin SHARED ${smb4kqmlplugin_LIB_SRC})
 
