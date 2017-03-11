@@ -46,7 +46,9 @@ PlasmaComponents.Page {
         tooltip: i18n("Unmount all shares")
         iconSource: "system-run"
         width: minimumWidth
-        onClicked: {} // FIXME
+        onClicked: {
+          iface.unmountAll()
+        }
       }
     }
   }
@@ -82,9 +84,35 @@ PlasmaComponents.Page {
           }
         }
         
-        onUnmountClicked: {} // FIXME
+        onUnmountClicked: {
+          var object = sharesViewListView.model.get(index).object
+          if (object !== null) {
+            iface.unmount(object)
+          }
+          else {
+            // Do nothing
+          }
+        }
         
-        onBookmarkClicked: {} // FIXME
+        onBookmarkClicked: {
+          var object = sharesViewListView.model.get(index).object
+          if (object !== null) {
+            iface.addBookmark(object)
+          }
+          else {
+            // Do nothing
+          }
+        }
+        
+        onSyncClicked: {
+          var object = sharesViewListView.model.get(index).object
+          if (object !== null) {
+            iface.synchronize(object)
+          }
+          else {
+            // Do nothing
+          }
+        }
       }      
       
       model: ListModel {}
