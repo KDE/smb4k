@@ -23,6 +23,7 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.extras 2.0 as PlasmaExtras
+import org.kde.smb4k.smb4kqmlplugin 2.0
 
 PlasmaComponents.Page {
   id: sharesViewPage
@@ -32,6 +33,7 @@ PlasmaComponents.Page {
   //
   PlasmaComponents.ToolBar {
     id: sharesViewToolBar
+    
     anchors {
       top: parent.top
       left: parent.left
@@ -49,14 +51,74 @@ PlasmaComponents.Page {
     }
   }
   
+  //
   // List view
+  //
   PlasmaExtras.ScrollArea {
     id: sharesViewScrollArea
+    
     anchors {
       top: sharesViewToolBar.bottom
       left: parent.left
       right: parent.right
       bottom: parent.bottom
+    }
+    
+    ListView {
+      id: sharesViewListView
+      anchors.fill: parent
+      clip: true
+      
+      delegate: SharesViewItemDelegate {
+        id: sharesViewItemDelegate
+        
+        onItemClicked: {
+          var object = sharesViewListView.model.get(index).object
+          if (object !== null) {
+            Qt.openUrlExternally(object.mountpoint)
+          }
+          else {
+            // Do nothing
+          }
+        }
+        
+        onUnmountClicked: {} // FIXME
+        
+        onBookmarkClicked: {} // FIXME
+      }      
+      
+      model: ListModel {}
+      focus: true
+      highlightRangeMode: ListView.StrictlyEnforceRange
+    }
+  }
+  
+  //
+  // Connections
+  //
+  Connections {
+    target: iface
+    onMountedSharesChanged: shareMountedOrUnmounted()
+  }
+  
+  //
+  // Functions
+  //
+  function shareMountedOrUnmounted() {
+    while (sharesViewListView.model.count != 0) {
+      sharesViewListView.model.remove(0)
+    }
+    
+    for (var i = 0; i < iface.mountedShares.length; i++) {
+      // The unmounted() signal is emitted before the share is
+      // actually removed from the list. So, we need to check 
+      // here, if the share is still mounted.
+      if (iface.mountedShares[i].isMounted) {
+        sharesViewListView.model.append({"object": iface.mountedShares[i]})
+      }
+      else {
+        // Do nothing
+      }
     }
   }
 }

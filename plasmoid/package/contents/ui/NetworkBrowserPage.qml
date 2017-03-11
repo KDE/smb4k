@@ -90,7 +90,7 @@ PlasmaComponents.Page {
   }
       
   //
-  // List view (the scroll area adjusts itself around the listview)
+  // List view 
   //
   PlasmaExtras.ScrollArea {
     id: networkBrowserScrollArea
@@ -311,10 +311,11 @@ PlasmaComponents.Page {
           if (object.type == NetworkObject.Share) {
             var mountedShare = iface.findMountedShare(object.url, false)
             if (mountedShare !== null) {
-//               object.icon = mountedShare.icon
+              object.icon = mountedShare.icon
             }
             else {
-//               object.icon = // FIXME
+              console.log("FIXME: Implement iface.defaultIcon()")
+              object.icon = QIcon("folder-network")
             }
           }
           else {

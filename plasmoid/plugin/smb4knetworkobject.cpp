@@ -91,8 +91,7 @@ Smb4KNetworkObject::Smb4KNetworkObject(Smb4KShare *share, QObject *parent)
   d->mounted    = share->isMounted();
   d->printer    = share->isPrinter();
   d->isMaster   = false;
-  d->mountpoint.setUrl(share->path(), QUrl::TolerantMode);
-  d->mountpoint.setScheme("file");
+  d->mountpoint = QUrl::fromLocalFile(share->path());
   setType(Share);
 }
 
