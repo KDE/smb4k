@@ -1,6 +1,59 @@
+Smb4K 2.0.0 (2017-03-11):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at https://cgit.kde.org/smb4k.git/log/?h=2.0
+
+- Ported Smb4K to Qt5 and KF5. 
+- Removed the plasmoid from this release, because it has not been ported yet.
+- Added migration of config and XML files.
+- Bumped required CMake version to 3.3. Set policies for CMP0037 and CMP0063 to NEW.
+- Implemented new org.kde.appname format for desktop and xml files.
+- Added support for high DPI screens.
+- Removed the IP scan job and setting, since that method did not to work properly.
+- Got rid of all dependencies to other shell programs except the Samba ones.
+- Revised the shares view: 
+  - The old list view was removed and replaced by a new one based on the default 
+    icon widget. 
+  - A new 'Shares View' action menu to was added to the shares view and the dynamic 
+    main tool bar. 
+  - The mount point is not shown anymore in the shares view.
+  - Make sure no drops can be performed if either the computer is offline or the 
+    share is inaccessible.
+- Revised the mounter and the mount helper:
+  - Rely on Solid to nofify the application that a share was added or removed.
+  - Under Linux, the /proc/mounts file for imports is not needed anymore, because 
+    all the needed information is present in the KMountPoint::mountOptions() string 
+    list. 
+  - However, under FreeBSD/NetBSD a workaround for detecting mounts and unmounts had 
+    to be implemented for now, since on my FreeBSD system Solid was not able to detect 
+    mounts and unmounts of Samba shares.
+- Replaced the choice of the view mode of the shares view by a combo box in the 
+  configuration dialog.
+- Removed the setting for showing the mount point instead of the UNC.
+- Removed the protocol hint, since it is not needed anymore. Adjust the code
+  accordingly. As a consequence, we are now using the RPC protocol when listing
+  the shares of a server.
+- Removed obsolete configuration option that was used to determine an interval
+  between checks for mounted shares.
+- The smbclient program of Samba 4.x does not report the server and operating system 
+  anymore. The support of this extra information has now been removed.
+- Suppress error messages and warnings when a browse/hosts/shares list could be
+  retrieved.
+- Do not report those shares that were initially imported as being mounted.
+- Close all notifications on timeout.
+- Changed some status bar texts.
+- Fixed several issues in the preview dialog.
+- Improved hardware support.
+- Changed overlay for the icon of a foreign share.
+- Added a donator to the about dialog.
+- Remove "for KDE" in the description of SmbK as suggested by Burkhard Lück.
+- Updated handbook.
+- Removed CPack support.
+- And many other changes under the hood ...
+
 Smb4K 1.2.3 (2017-02-05):
 
-See the summury of changes below. For a full list of changes, please
+See the summary of changes below. For a full list of changes, please
 refer to the Git log at https://cgit.kde.org/smb4k.git/log/?h=1.2
 
 - Fix Smb4KSharesMenu::refreshMenu() function. Backported from master.
