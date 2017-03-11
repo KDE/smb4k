@@ -45,6 +45,7 @@
 #include "core/smb4kprint.h"
 #include "core/smb4kcustomoptionsmanager.h"
 #include "core/smb4kprofilemanager.h"
+#include "core/smb4ksynchronizer.h"
 
 // Qt includes
 #include <QDebug>
@@ -534,6 +535,29 @@ void Smb4KDeclarative::removeBookmarkGroup(const QString& name)
 void Smb4KDeclarative::editBookmarks()
 {
   Smb4KBookmarkHandler::self()->editBookmarks();
+}
+
+
+void Smb4KDeclarative::synchronize(Smb4KNetworkObject* object)
+{
+  if (object && object->type() == Smb4KNetworkObject::Share)
+  {
+    for (Smb4KShare *share : mountedSharesList())
+    {
+      if (share->url() == object->url())
+      {
+        Smb4KSynchronizer::self()->synchronize(share);
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 

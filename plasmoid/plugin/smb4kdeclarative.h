@@ -251,6 +251,12 @@ class Q_DECL_EXPORT Smb4KDeclarative : public QObject
     Q_INVOKABLE void editBookmarks();
     
     /**
+     * This function starts the synchronization of a local and a 
+     * remote folder.
+     */
+    Q_INVOKABLE void synchronize(Smb4KNetworkObject *object);
+    
+    /**
      * This function opens the custom options dialog.
      * 
      * @param object              The network object
