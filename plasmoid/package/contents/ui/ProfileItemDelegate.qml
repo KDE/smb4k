@@ -25,74 +25,48 @@ import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 import org.kde.smb4k.smb4kqmlplugin 2.0
 
-PlasmaComponents.Page {
-  id: profilesPage
+PlasmaComponents.ListItem {
+  id: delegate
   
-  //
-  // Tool bar
-  //
-  // FIXME: Include tool bar
+  signal itemClicked()
   
-  //
-  // List view
-  //
-  PlasmaExtras.ScrollArea {
-    id: profilesScrollArea
-    
-    anchors {
-      top: parent.top
-      left: parent.left
-      right: parent.right
-      bottom: parent.bottom
-    }
-    
-    ListView {
-      id: profilesListView
-      delegate: ProfileItemDelegate {
-        id: profileItemDelegate
-        
-        onItemClicked: {
-          iface.activeProfile = object.profileName
+  width: parent.width
+  height: theme.mediumIconSize + 8
+  focus: true
+  
+  Row {
+    spacing: 10
+    Column {
+      anchors.verticalCenter: parent.verticalCenter
+      PlasmaCore.IconItem {
+        id: delegateItemIcon
+        source: "format-list-unordered"
+        width: theme.mediumIconSize
+        height: theme.mediumIconSize
+        MouseArea {
+          anchors.fill: parent
+          onClicked: {
+            delegate.itemClicked()
+          }
         }
       }
-
-      model: ListModel {}
-      focus: true
-      highlightRangeMode: ListView.StrictlyEnforceRange
     }
-  }
-  
-  //
-  // Connections
-  // 
-  Connections {
-    target: iface
-    onProfilesListChanged: fillView()
-    onActiveProfileChanged: fillView()
-  }
-  
-  //
-  // Initialization
-  //
-  Component.onCompleted: {
-    fillView()
-  }
-  
-  //
-  // Functions
-  //
-  function fillView() {
-    while (profilesListView.model.count != 0) {
-      profilesListView.model.remove(0)
-    }
-    
-    if (iface.profileUsage && iface.profiles.length != 0) {
-      for (var i = 0; i < iface.profiles.length; i++) {
-        profilesListView.model.append({"object": iface.profiles[i]})
+    Column {
+      anchors.verticalCenter: parent.verticalCenter
+      PlasmaComponents.Label {
+        id: delegateItemText
+        elide: Text.ElideRight
+        text: {
+          object.profileName+(object.isActiveProfile ? " "+i18n("(active)") : "")
+        }
+        MouseArea {
+          anchors.fill: parent
+          onClicked: {
+            delegate.itemClicked()
+          }
+        }
       }
     }
-    else {
-      // Do nothing
-    }
-  }  
+  }
 }
+
