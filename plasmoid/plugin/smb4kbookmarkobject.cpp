@@ -98,10 +98,15 @@ void Smb4KBookmarkObject::setWorkgroupName(const QString& name)
 }
 
 
-QString Smb4KBookmarkObject::unc() const
+QString Smb4KBookmarkObject::hostName() const
 {
-  QString path = (d->url.path().startsWith('/') ? d->url.path().remove(0, 1) : d->url.path());
-  return QString("//%1/%2").arg(d->url.host().toUpper()).arg(path);
+  return d->url.host().toUpper();
+}
+
+
+QString Smb4KBookmarkObject::shareName() const
+{
+  return d->url.path().remove('/');
 }
 
 

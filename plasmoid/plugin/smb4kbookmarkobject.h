@@ -56,13 +56,14 @@ class Q_DECL_EXPORT Smb4KBookmarkObject : public QObject
   friend class Smb4KBookmarkObjectPrivate;
   
   Q_PROPERTY(QString workgroupName READ workgroupName WRITE setWorkgroupName NOTIFY changed)
-  Q_PROPERTY(QString unc READ unc CONSTANT)
   Q_PROPERTY(QString label READ label WRITE setLabel NOTIFY changed)
   Q_PROPERTY(QUrl url READ url WRITE setURL NOTIFY changed)
   Q_PROPERTY(QIcon icon READ icon WRITE setIcon NOTIFY changed)
   Q_PROPERTY(QString groupName READ groupName WRITE setGroupName NOTIFY changed)
   Q_PROPERTY(bool isGroup READ isGroup WRITE setGroup NOTIFY changed)
   Q_PROPERTY(bool isMounted READ isMounted WRITE setMounted NOTIFY changed)
+  Q_PROPERTY(QString hostName READ hostName CONSTANT)
+  Q_PROPERTY(QString shareName READ shareName CONSTANT)
   
   public:
     /**
@@ -101,11 +102,17 @@ class Q_DECL_EXPORT Smb4KBookmarkObject : public QObject
     void setWorkgroupName(const QString &name);
     
     /**
-     * This function returns the UNC of the bookmarked share.
-     * 
-     * @returns the UNC
+     * This function returns the name of the host where the bookmarked
+     * share is located.
+     * @returns the host name
      */
-    QString unc() const;
+    QString hostName() const;
+    
+    /**
+     * This function returns the name of the bookmarked share.
+     * @returns the share name
+     */    
+    QString shareName() const;
     
     /**
      * This function returns the optional label of the bookmarked
