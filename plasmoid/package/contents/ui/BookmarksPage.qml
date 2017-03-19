@@ -44,14 +44,18 @@ PlasmaComponents.Page {
         tooltip: i18n("Go back")
         iconSource: "go-previous"
         width: minimumWidth
-        onClicked: {} // FIXME
+        onClicked: {
+          back()
+        }
       }
       PlasmaComponents.ToolButton {
         id: editButton
         tooltip: i18n("Edit bookmarks")
         iconSource: "bookmarks-organize"
         width: minimumWidth
-        onClicked: {}
+        onClicked: {
+          iface.editBookmarks()
+        }
       }
     }
   }
@@ -61,11 +65,129 @@ PlasmaComponents.Page {
   //
   PlasmaExtras.ScrollArea {
     id: bookmarksScrollArea
+    
     anchors {
       top: bookmarksToolBar.bottom
       left: parent.left
       right: parent.right
       bottom: parent.bottom
+    }
+    
+    ListView {
+      id: bookmarksListView
+      delegate: BookmarkItemDelegate {
+        id: bookmarkItemDelegate
+        
+        onItemClicked: {
+          var object = bookmarksListView.model.get(index).object
+          if (object !== null) {
+            bookmarkOrGroupClicked(object)
+          }
+          else {
+            // Do nothing
+          }
+        }
+      }
+
+      model: ListModel {}
+      focus: true
+      highlightRangeMode: ListView.StrictlyEnforceRange
+    }
+  }
+  
+  //
+  // Connections
+  //
+  Connections {
+    target: iface
+    onMountedSharesChanged: shareMountedOrUnmounted()
+    onBookmarksListChanged: fillView()
+  }
+  
+  //
+  // Initialization
+  //
+  Component.onCompleted: {
+    fillView()
+  }
+  
+  //
+  // Functions
+  //
+  function back() {
+    // Since the 'Back' button is only useful when you
+    // are currently in a group subfolder and want to 
+    // go back to the toplevel, just run fillView() here.
+    fillView()
+  }
+  
+  function bookmarkOrGroupClicked(object) {
+    if (object.isGroup) {
+      while (bookmarksListView.model.count != 0) {
+        bookmarksListView.model.remove(0)
+      }
+      
+      getBookmarks(object.groupName)
+    }
+    else {
+      iface.mount(object.url)
+    }
+  }
+  
+  function shareMountedOrUnmounted() {
+    for (var i = 0; i < bookmarksListView.model.count; i++) {
+      if (!bookmarksListView.model.get(i).object.isGroup) {
+        var object = iface.findMountedShare(bookmarksListView.model.get(i).object.url, false)
+        if (object !== null) {
+          bookmarksListView.model.get(i).object.icon = object.icon
+        }
+        else {
+          // Do nothing
+        }
+      }
+      else {
+        // Do nothing
+      }
+    }
+  }
+  
+  function fillView() {
+    while (bookmarksListView.model.count != 0) {
+      bookmarksListView.model.remove(0)
+    }
+    
+    // Get groups
+    if (iface.bookmarkGroups.length != 0) {
+      for (var i = 0; i < iface.bookmarkGroups.length; i++) {
+        if (iface.bookmarkGroups[i].groupName.length != 0) {
+          bookmarksListView.model.append({"object": iface.bookmarkGroups[i]})
+        }
+        else {
+          // Do nothing
+        }
+      }
+    }
+    else {
+      // Do nothing
+    }
+    
+    // Get toplevel bookmarks
+    getBookmarks("")
+  }
+  
+  function getBookmarks(groupName) {
+    if (iface.bookmarks.length != 0) {
+      for (var i = 0; i < iface.bookmarks.length; i++) {
+        if (iface.bookmarks[i].groupName == groupName) {
+          bookmarksListView.model.append({"object": iface.bookmarks[i]})
+        }
+        else {
+          // Do nothing
+        }
+      }
+    }
+    else {
+      // Do nothing
     }
   }
 }
