@@ -670,7 +670,12 @@
     <entry name="ProfilesList" type="StringList">
       <label>Profiles</label>
       <whatsthis>The list of profiles.</whatsthis>
-      <default>Home,Work</default>
+      <code>
+        QStringList defaultProfiles;
+        defaultProfiles.append(i18nc("default profile name for use at home", "Home"));
+        defaultProfiles.append(i18nc("default profile name for use at work", "Work"));
+      </code>
+      <default code="true">defaultProfiles</default>
     </entry>
     <entry name="ActiveProfile" type="String">
       <label>Active profile</label>

@@ -22,42 +22,77 @@ import QtQuick.Layouts 1.3
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.plasma.extras 2.0 as PlasmaExtras
 import org.kde.smb4k.smb4kqmlplugin 2.0
 
-Item {
-  id: root
-  
-  Plasmoid.toolTipMainText: i18n("Network Neighborhood")
-//   Plasmoid.toolTipSubText: sinkModel.preferredSink ? i18n("Volume at %1%\n%2", volumePercent(sinkModel.preferredSink.volume), sinkModel.preferredSink.description) : ""
-//   Plasmoid.icon: "smb4k"
-//   Plasmoid.switchWidth: units.gridUnit * 10
-//   Plasmoid.switchHeight: units.gridUnit * 10
+PlasmaComponents.Page {
+  id: profilesPage
   
   //
-  // Smb4K interface
+  // Tool bar
   //
-  Interface {
-    id: iface
+  // FIXME: Include tool bar
+  
+  //
+  // List view
+  //
+  PlasmaExtras.ScrollArea {
+    id: profilesScrollArea
+    
+    anchors {
+      top: parent.top
+      left: parent.left
+      right: parent.right
+      bottom: parent.bottom
+    }
+    
+    ListView {
+      id: profilesListView
+      delegate: ProfileItemDelegate {
+        id: profileItemDelegate
+        
+        onItemClicked: {
+          iface.activeProfile = object.profileName
+        }
+      }
+
+      model: ListModel {}
+      focus: true
+      highlightRangeMode: ListView.StrictlyEnforceRange
+    }
   }
   
   //
-  // Plasmoid representations
-  //
-//   Plasmoid.compactRepresentation: {} // FIXME: Look at plasma-nm how this can be done
-  Plasmoid.fullRepresentation: PopupDialog {
-    id: main
-    Layout.minimumWidth: units.iconSizes.medium * 10
-    Layout.minimumHeight: units.gridUnit * 20
-    anchors.fill: parent
-    focus: true
+  // Connections
+  // 
+  Connections {
+    target: iface
+    onProfilesListChanged: fillView()
+    onActiveProfileChanged: fillView()
   }
   
   //
-  // Start interface
+  // Initialization
   //
   Component.onCompleted: {
-    iface.startScanner();
-    iface.startMounter();
-    iface.startPrinter();
+    fillView()
   }
+  
+  //
+  // Functions
+  //
+  function fillView() {
+    while (profilesListView.model.count != 0) {
+      profilesListView.model.remove(0)
+    }
+    
+    if (iface.profileUsage && iface.profiles.length != 0) {
+      for (var i = 0; i < iface.profiles.length; i++) {
+        profilesListView.model.append({"object": iface.profiles[i]})
+      }
+    }
+    else {
+      // Do nothing
+    }
+  }  
 }

@@ -2,7 +2,7 @@
     This class provides the interface for Plasma and QtQuick
                              -------------------
     begin                : Mo 02 Sep 2013
-    copyright            : (C) 2013-2016 by Alexander Reinholdt
+    copyright            : (C) 2013-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,18 +30,22 @@
 // application specific includes
 #include "smb4kdeclarative.h"
 #include "smb4kdeclarative_p.h"
-#include "smb4kscanner.h"
-#include "smb4kglobal.h"
-#include "smb4kworkgroup.h"
-#include "smb4khost.h"
-#include "smb4kshare.h"
-#include "smb4kbasicnetworkitem.h"
-#include "smb4kbookmarkhandler.h"
-#include "smb4kbookmark.h"
-#include "smb4kprint.h"
 #include "smb4kbookmarkobject.h"
-#include "smb4kcustomoptionsmanager.h"
-#include "smb4kprofilemanager.h"
+#include "smb4knetworkobject.h"
+#include "smb4kprofileobject.h"
+#include "core/smb4kscanner.h"
+#include "core/smb4kmounter.h"
+#include "core/smb4kglobal.h"
+#include "core/smb4kworkgroup.h"
+#include "core/smb4khost.h"
+#include "core/smb4kshare.h"
+#include "core/smb4kbasicnetworkitem.h"
+#include "core/smb4kbookmarkhandler.h"
+#include "core/smb4kbookmark.h"
+#include "core/smb4kprint.h"
+#include "core/smb4kcustomoptionsmanager.h"
+#include "core/smb4kprofilemanager.h"
+#include "core/smb4ksynchronizer.h"
 
 // Qt includes
 #include <QDebug>
@@ -65,8 +69,8 @@ Smb4KDeclarative::Smb4KDeclarative(QObject* parent)
   
   connect(Smb4KMounter::self(), SIGNAL(mounted(Smb4KShare*)), this, SLOT(slotMountedSharesListChanged()));
   connect(Smb4KMounter::self(), SIGNAL(unmounted(Smb4KShare*)), this, SLOT(slotMountedSharesListChanged()));
-  connect(Smb4KMounter::self(), SIGNAL(aboutToStart(Smb4KShare*,int)), this, SIGNAL(busy()));
-  connect(Smb4KMounter::self(), SIGNAL(finished(Smb4KShare*,int)), this, SIGNAL(idle()));
+  connect(Smb4KMounter::self(), SIGNAL(aboutToStart(int)), this, SIGNAL(busy()));
+  connect(Smb4KMounter::self(), SIGNAL(finished(int)), this, SIGNAL(idle()));
   
   connect(Smb4KPrint::self(), SIGNAL(aboutToStart(Smb4KShare*)), this, SIGNAL(busy()));
   connect(Smb4KPrint::self(), SIGNAL(finished(Smb4KShare*)), this, SIGNAL(idle()));
@@ -236,11 +240,11 @@ Smb4KNetworkObject *Smb4KDeclarative::findNetworkItem(const QUrl &url, int type)
     {
       case Workgroup:
       {
-        for (int i = 0; i < d->workgroupObjects.size(); ++i)
+        for (Smb4KNetworkObject *obj : d->workgroupObjects)
         {
-          if (url == d->workgroupObjects.at(i)->url())
+          if (url == obj->url())
           {
-            object = d->workgroupObjects[i];
+            object = obj;
             break;
           }
           else
@@ -252,11 +256,11 @@ Smb4KNetworkObject *Smb4KDeclarative::findNetworkItem(const QUrl &url, int type)
       }
       case Host:
       {
-        for (int i = 0; i < d->hostObjects.size(); ++i)
+        for (Smb4KNetworkObject *obj : d->hostObjects)
         {
-          if (url == d->hostObjects.at(i)->url())
+          if (url == obj->url())
           {
-            object = d->hostObjects[i];
+            object = obj;
             break;
           }
           else
@@ -268,11 +272,11 @@ Smb4KNetworkObject *Smb4KDeclarative::findNetworkItem(const QUrl &url, int type)
       }
       case Share:
       {
-        for (int i = 0; i < d->shareObjects.size(); ++i)
+        for (Smb4KNetworkObject *obj : d->shareObjects)
         {
-          if (url == d->shareObjects.at(i)->url())
+          if (url == obj->url())
           {
-            object = d->shareObjects[i];
+            object = obj;
             break;
           }
           else
@@ -388,24 +392,16 @@ Smb4KNetworkObject* Smb4KDeclarative::findMountedShare(const QUrl& url, bool exa
   
   if (url.isValid())
   {
-    QUrl u1 = url;
-    u1.setUserInfo(QString());
-    u1.setPort(-1);
-    
-    for (int i = 0; i < d->mountedObjects.size(); ++i)
+    for (Smb4KNetworkObject *obj : d->mountedObjects)
     {
-      QUrl u2 =  d->mountedObjects.at(i)->url();
-      u2.setUserInfo(QString());
-      u2.setPort(-1);
-      
-      if (url == d->mountedObjects.at(i)->url())
+      if (url.matches(obj->url(), QUrl::None))
       {
-        object = d->mountedObjects[i];
+        object = obj;
         break;
       }
-      else if (u1 == u2 && !exactMatch)
+      else if (!exactMatch && url.matches(obj->url(), QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::StripTrailingSlash))
       {
-        object = d->mountedObjects[i];
+        object = obj;
         continue;
       }
       else
@@ -451,13 +447,12 @@ void Smb4KDeclarative::addBookmark(Smb4KNetworkObject* object)
   {
     QList<Smb4KShare *> shares; 
     
-    // First, search the list of shares gathered by 
-    // the scanner.
-    for (int i = 0; i < sharesList().size(); ++i)
+    // First, search the list of shares gathered by the scanner.
+    for (Smb4KShare *share : sharesList())
     {
-      if (sharesList().at(i)->url() == object->url())
+      if (share->url() == object->url())
       {
-        shares << sharesList().at(i);
+        shares << share;
         break;
       }
       else
@@ -466,15 +461,14 @@ void Smb4KDeclarative::addBookmark(Smb4KNetworkObject* object)
       }
     }
     
-    // Second, if the list is still empty, try the list 
-    // of mounted shares.
+    // Second, if the list is still empty, try the list of mounted shares.
     if (shares.isEmpty())
     {
-      for (int i = 0; i < mountedSharesList().size(); ++i)
+      for (Smb4KShare *mountedShare : mountedSharesList())
       {
-        if (mountedSharesList().at(i)->url() == object->url())
+        if (mountedShare->url() == object->url())
         {
-          shares << mountedSharesList().at(i);
+          shares << mountedShare;
           break;
         }
         else
@@ -542,6 +536,29 @@ void Smb4KDeclarative::editBookmarks()
 }
 
 
+void Smb4KDeclarative::synchronize(Smb4KNetworkObject* object)
+{
+  if (object && object->type() == Smb4KNetworkObject::Share)
+  {
+    for (Smb4KShare *share : mountedSharesList())
+    {
+      if (share->url() == object->url())
+      {
+        Smb4KSynchronizer::self()->synchronize(share);
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
 void Smb4KDeclarative::openCustomOptionsDialog(Smb4KNetworkObject *object)
 {
   if (object)
@@ -550,11 +567,11 @@ void Smb4KDeclarative::openCustomOptionsDialog(Smb4KNetworkObject *object)
     {
       case Host:
       {
-        for (int i = 0; i < hostsList().size(); ++i)
+        for (Smb4KHost *host : hostsList())
         {
-          if (hostsList().at(i)->url() == object->url())
+          if (host->url() == object->url())
           {
-            Smb4KCustomOptionsManager::self()->openCustomOptionsDialog(hostsList().at(i));
+            Smb4KCustomOptionsManager::self()->openCustomOptionsDialog(host);
             break;
           }
           else
@@ -566,11 +583,11 @@ void Smb4KDeclarative::openCustomOptionsDialog(Smb4KNetworkObject *object)
       }
       case Share:
       {
-        for (int i = 0; i < sharesList().size(); ++i)
+        for (Smb4KShare *share : sharesList())
         {
-          if (sharesList().at(i)->url() == object->url())
+          if (share->url() == object->url())
           {
-            Smb4KCustomOptionsManager::self()->openCustomOptionsDialog(sharesList().at(i));
+            Smb4KCustomOptionsManager::self()->openCustomOptionsDialog(share);
             break;
           }
           else
@@ -633,15 +650,16 @@ QString Smb4KDeclarative::activeProfile() const
 {
   QString activeProfile;
   
-  for (int i = 0; i < d->profileObjects.size(); ++i)
+  for (Smb4KProfileObject *profile : d->profileObjects)
   {
-    if (d->profileObjects.at(i)->isActiveProfile())
+    if (profile->isActiveProfile())
     {
-      activeProfile = d->profileObjects.at(i)->profileName();
+      activeProfile = profile->profileName();
+      break;
     }
     else
     {
-      // Do nothing
+      continue;
     }
   }
   
@@ -669,9 +687,9 @@ void Smb4KDeclarative::slotWorkgroupsListChanged()
     delete d->workgroupObjects.takeFirst();
   }
 
-  for (int i = 0; i < workgroupsList().size(); ++i)
+  for (Smb4KWorkgroup *workgroup : workgroupsList())
   {
-    d->workgroupObjects << new Smb4KNetworkObject(workgroupsList().at(i));
+    d->workgroupObjects << new Smb4KNetworkObject(workgroup);
   }
   
   emit workgroupsListChanged();
@@ -685,11 +703,11 @@ void Smb4KDeclarative::slotHostsListChanged()
   {
     delete d->hostObjects.takeFirst();
   }
-
-  for (int i = 0; i < hostsList().size(); ++i)
+  
+  for (Smb4KHost *host : hostsList())
   {
-    d->hostObjects << new Smb4KNetworkObject(hostsList().at(i));
-  } 
+    d->hostObjects << new Smb4KNetworkObject(host);
+  }
   
   emit hostsListChanged();
 }
@@ -703,9 +721,9 @@ void Smb4KDeclarative::slotSharesListChanged()
     delete d->shareObjects.takeFirst();
   }
 
-  for (int i = 0; i < sharesList().size(); ++i)
+  for (Smb4KShare *share : sharesList())
   {
-    d->shareObjects << new Smb4KNetworkObject(sharesList().at(i));
+    d->shareObjects << new Smb4KNetworkObject(share);
   }
   
   emit sharesListChanged();
@@ -719,10 +737,10 @@ void Smb4KDeclarative::slotMountedSharesListChanged()
   {
     delete d->mountedObjects.takeFirst();
   }
-
-  for (int i = 0; i < mountedSharesList().size(); ++i)
+  
+  for (Smb4KShare *mountedShare : mountedSharesList())
   {
-    d->mountedObjects << new Smb4KNetworkObject(mountedSharesList().at(i));
+    d->mountedObjects << new Smb4KNetworkObject(mountedShare);
   }
   
   emit mountedSharesListChanged();
@@ -742,14 +760,14 @@ void Smb4KDeclarative::slotBookmarksListChanged()
     delete d->bookmarkGroupObjects.takeFirst();
   }
   
-  for (int i = 0; i < Smb4KBookmarkHandler::self()->bookmarksList().size(); ++i)
+  for (Smb4KBookmark *bookmark : Smb4KBookmarkHandler::self()->bookmarksList())
   {
-    d->bookmarkObjects << new Smb4KBookmarkObject(Smb4KBookmarkHandler::self()->bookmarksList().at(i));
+    d->bookmarkObjects << new Smb4KBookmarkObject(bookmark);
   }
   
-  for (int i = 0; i < Smb4KBookmarkHandler::self()->groupsList().size(); ++i)
+  for (const QString &group : Smb4KBookmarkHandler::self()->groupsList())
   {
-    d->bookmarkGroupObjects << new Smb4KBookmarkObject(Smb4KBookmarkHandler::self()->groupsList().at(i));
+    d->bookmarkGroupObjects << new Smb4KBookmarkObject(group);
   }
   
   emit bookmarksListChanged();
@@ -763,12 +781,12 @@ void Smb4KDeclarative::slotProfilesListChanged(const QStringList& profiles)
     delete d->profileObjects.takeFirst();
   }
   
-  for (int i = 0; i < profiles.size(); ++i)
+  for (const QString &p : profiles)
   {
     Smb4KProfileObject *profile = new Smb4KProfileObject();
-    profile->setProfileName(profiles.at(i));
+    profile->setProfileName(p);
     
-    if (QString::compare(profiles.at(i), Smb4KProfileManager::self()->activeProfile()) == 0)
+    if (QString::compare(p, Smb4KProfileManager::self()->activeProfile()) == 0)
     {
       profile->setActiveProfile(true);
     }
@@ -786,17 +804,18 @@ void Smb4KDeclarative::slotProfilesListChanged(const QStringList& profiles)
 
 void Smb4KDeclarative::slotActiveProfileChanged(const QString& activeProfile)
 {
-  for (int i = 0; i < d->profileObjects.size(); ++i)
+  for (Smb4KProfileObject *profile : d->profileObjects)
   {
-    if (QString::compare(d->profileObjects.at(i)->profileName(), activeProfile) == 0)
+    if (QString::compare(profile->profileName(), activeProfile) == 0)
     {
-      d->profileObjects[i]->setActiveProfile(true);
+      profile->setActiveProfile(true);
     }
     else
     {
-      d->profileObjects[i]->setActiveProfile(false);
+      profile->setActiveProfile(false);
     }
   }
+
   emit activeProfileChanged();
 }
 

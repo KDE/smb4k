@@ -10,12 +10,9 @@ set(smb4kcore_LIB_SRCS
   smb4kbookmark.cpp
   smb4kbookmarkhandler.cpp
   smb4kbookmarkhandler_p.cpp
-  smb4kbookmarkobject.cpp
   smb4kcustomoptions.cpp
   smb4kcustomoptionsmanager.cpp
   smb4kcustomoptionsmanager_p.cpp
-  smb4kdeclarative.cpp
-  smb4kdeclarative_p.cpp
   smb4kglobal.cpp
   smb4kglobal_p.cpp
   smb4khardwareinterface.cpp
@@ -25,7 +22,6 @@ set(smb4kcore_LIB_SRCS
   smb4khost.cpp
   smb4kmounter.cpp
   smb4kmounter_p.cpp
-  smb4knetworkobject.cpp
   smb4knotification.cpp
   smb4knotification_p.cpp
   smb4kpreviewer.cpp
@@ -35,7 +31,6 @@ set(smb4kcore_LIB_SRCS
   smb4kprocess.cpp
   smb4kprofilemanager.cpp
   smb4kprofilemanager_p.cpp
-  smb4kprofileobject.cpp
   smb4kscanner.cpp
   smb4kscanner_p.cpp
   smb4ksearch.cpp
@@ -97,7 +92,6 @@ if (INSTALL_HEADER_FILES)
     smb4kbasicnetworkitem.h
     smb4kbookmark.h
     smb4kbookmarkhandler.h
-    smb4kbookmarkobject.h
     smb4kcustomoptions.h
     smb4kcustomoptionsmanager.h
     smb4kdeclarative.h
@@ -106,13 +100,11 @@ if (INSTALL_HEADER_FILES)
     smb4khomesshareshandler.h
     smb4khost.h
     smb4kmounter.h
-    smb4knetworkobject.h
     smb4knotification.h
     smb4kpreviewer.h
     smb4kprint.h
     smb4kprocess.h
     smb4kprofilemanager.h
-    smb4kprofileobject.h
     smb4kscanner.h
     smb4ksearch.h
     smb4kshare.h

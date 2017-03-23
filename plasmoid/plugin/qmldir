@@ -1,1 +1,2 @@
-plugin smb4kqml
+module org.kde.smb4k.smb4kqmlplugin
+plugin smb4kqmlplugin

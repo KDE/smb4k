@@ -22,42 +22,51 @@ import QtQuick.Layouts 1.3
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.plasma.extras 2.0 as PlasmaExtras
 import org.kde.smb4k.smb4kqmlplugin 2.0
 
-Item {
-  id: root
+PlasmaComponents.ListItem {
+  id: delegate
   
-  Plasmoid.toolTipMainText: i18n("Network Neighborhood")
-//   Plasmoid.toolTipSubText: sinkModel.preferredSink ? i18n("Volume at %1%\n%2", volumePercent(sinkModel.preferredSink.volume), sinkModel.preferredSink.description) : ""
-//   Plasmoid.icon: "smb4k"
-//   Plasmoid.switchWidth: units.gridUnit * 10
-//   Plasmoid.switchHeight: units.gridUnit * 10
+  signal itemClicked()
   
-  //
-  // Smb4K interface
-  //
-  Interface {
-    id: iface
-  }
+  width: parent.width
+  height: theme.mediumIconSize + 8
+  focus: true
   
-  //
-  // Plasmoid representations
-  //
-//   Plasmoid.compactRepresentation: {} // FIXME: Look at plasma-nm how this can be done
-  Plasmoid.fullRepresentation: PopupDialog {
-    id: main
-    Layout.minimumWidth: units.iconSizes.medium * 10
-    Layout.minimumHeight: units.gridUnit * 20
-    anchors.fill: parent
-    focus: true
-  }
-  
-  //
-  // Start interface
-  //
-  Component.onCompleted: {
-    iface.startScanner();
-    iface.startMounter();
-    iface.startPrinter();
+  Row {
+    spacing: 10
+    Column {
+      anchors.verticalCenter: parent.verticalCenter
+      PlasmaCore.IconItem {
+        id: delegateItemIcon
+        source: "format-list-unordered"
+        width: theme.mediumIconSize
+        height: theme.mediumIconSize
+        MouseArea {
+          anchors.fill: parent
+          onClicked: {
+            delegate.itemClicked()
+          }
+        }
+      }
+    }
+    Column {
+      anchors.verticalCenter: parent.verticalCenter
+      PlasmaComponents.Label {
+        id: delegateItemText
+        elide: Text.ElideRight
+        text: {
+          object.profileName+(object.isActiveProfile ? " "+i18n("(active)") : "")
+        }
+        MouseArea {
+          anchors.fill: parent
+          onClicked: {
+            delegate.itemClicked()
+          }
+        }
+      }
+    }
   }
 }
+

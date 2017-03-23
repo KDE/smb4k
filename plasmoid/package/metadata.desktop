@@ -55,21 +55,24 @@ Comment[tr]=Smb4K tabanlı ağ komşuları tarayıcısı
 Comment[uk]=Переглядач мережевого середовища на основі Smb4K
 Comment[x-test]=xxNetwork neighborhood browser based on Smb4Kxx
 Comment[zh_TW]=網路
-Icon=smb4k
 
-X-Plasma-API=declarativeappletscript
-X-Plasma-MainScript=ui/main.qml
-X-Plasma-DefaultSize=300,200
+Icon=smb4k
+Type=Service
+ServiceTypes=Plasma/Applet
 
 X-KDE-PluginInfo-Author=Alexander Reinholdt
 X-KDE-PluginInfo-Email=alexander.reinholdt@kdemail.net
-X-KDE-PluginInfo-Website=http://smb4k.sourceforge.net
-X-KDE-PluginInfo-Category=Examples
-X-KDE-PluginInfo-Name=smb4k-qml
-X-KDE-PluginInfo-Version=0.1
-
+X-KDE-PluginInfo-Name=smb4kqml
+X-KDE-PluginInfo-Version=1.0
+X-KDE-PluginInfo-Website=http://plasma.kde.org/
+X-KDE-PluginInfo-Category=Utilities
 X-KDE-PluginInfo-Depends=
 X-KDE-PluginInfo-License=GPL
 X-KDE-PluginInfo-EnabledByDefault=true
-X-KDE-ServiceTypes=Plasma/Applet,Plasma/PopupApplet
-Type=Service
+X-KDE-PluginInfo-Name=org.kde.smb4kqml
+
+X-Plasma-API=declarativeappletscript
+X-Plasma-MainScript=ui/main.qml
+X-Plasma-Requires-FileDialog=Unused
+X-Plasma-Requires-LaunchApp=Unused
+X-Plasma-DefaultSize=200,300

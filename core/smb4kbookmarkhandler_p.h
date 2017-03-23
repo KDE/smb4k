@@ -28,7 +28,6 @@
 
 // application specific includes
 #include "smb4kbookmarkhandler.h"
-#include "smb4kbookmarkobject.h"
 
 // Qt includes
 #include <QString>

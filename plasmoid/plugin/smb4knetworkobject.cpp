@@ -3,7 +3,7 @@
     It is for use with QtQuick.
                              -------------------
     begin                : Fr Mär 02 2012
-    copyright            : (C) 2012-2016 by Alexander Reinholdt
+    copyright            : (C) 2012-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,7 +30,7 @@
 
 // application specific includes
 #include "smb4knetworkobject.h"
-#include "smb4kglobal.h"
+#include "core/smb4kglobal.h"
 
 // Qt includes
 #include <QDebug>
@@ -91,8 +91,7 @@ Smb4KNetworkObject::Smb4KNetworkObject(Smb4KShare *share, QObject *parent)
   d->mounted    = share->isMounted();
   d->printer    = share->isPrinter();
   d->isMaster   = false;
-  d->mountpoint.setUrl(share->path(), QUrl::TolerantMode);
-  d->mountpoint.setScheme("file");
+  d->mountpoint = QUrl::fromLocalFile(share->path());
   setType(Share);
 }
 

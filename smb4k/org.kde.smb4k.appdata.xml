@@ -36,7 +36,7 @@
   <summary xml:lang="ca-valencia">Explorador avançat del veïnatge de xarxa i utilitat per a muntar les comparticions de Samba</summary>
   <summary xml:lang="cs">Pokročilý prohlížeč síťového okolí a nástroj na připojování úložišť samba</summary>
   <summary xml:lang="da">Den avancerede browser til netværksnabolag og værktøj til montering af Samba-ressourcer</summary>
-  <summary xml:lang="de">Erweiterter Browser für die Netzwerkumgebung und Dienstprogramm zum Einbinden von Samba-Freigaben</summary>
+  <summary xml:lang="de">Erweiterter Browser für die Netzwerkumgebung und Dienstprogramm zum Einhängen von Samba-Freigaben</summary>
   <summary xml:lang="el">Προηγμένος περιηγητής τοπικού δικτύου και εργαλείο προσάρτησης κοινών πόρων Samba</summary>
   <summary xml:lang="en-GB">Advanced Network Neighborhood Browser and Samba Share Mounting Utility</summary>
   <summary xml:lang="es">Navegador avanzado del entorno de red y utilidad para montar recursos compartidos de Samba</summary>
@@ -61,7 +61,7 @@
     <p xml:lang="bs">Smb4k je napredni pretraživač mrežnih susjeda i Samba dijeljeni ugrađeni uslužni program za KDE softver kompilaciju. On skenira vašu mrežu susjeda za sve dostupne radne grupe, servere i razmjene i može ugraditi sve željene razmjene na vaš lokalni sistem datoteka.</p>
     <p xml:lang="ca">El Smb4K és un explorador avançat del veïnatge de xarxa i utilitat per a muntar les comparticions de Samba per a la compilació de programari KDE. Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
     <p xml:lang="ca-valencia">El Smb4K és un explorador avançat del veïnatge de xarxa i utilitat per a muntar les comparticions de Samba per a la compilació de programari KDE. Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
-    <p xml:lang="de">Smb4K ist ein erweiterter Browser für die Netzwerkumgebung und Dienstprogramm für das Einbinden von Samba-Freigaben für die KDE-Softwaresammlung. Es durchsucht Ihre Netzwerkumgebung nach allen verfügbaren Arbeitsgruppen, Server und Freigaben und kann alle gewünschten Freigaben in Ihr lokales Dateisystem einbinden.</p>
+    <p xml:lang="de">Smb4K ist ein erweiterter Browser für die Netzwerkumgebung und Dienstprogramm für das Einhängen von Samba-Freigaben für die KDE-Softwaresammlung. Es durchsucht Ihre Netzwerkumgebung nach allen verfügbaren Arbeitsgruppen, Server und Freigaben und kann alle gewünschten Freigaben in Ihr lokales Dateisystem einhängen.</p>
     <p xml:lang="el">Το Smb4K είναι ένας προηγμένος περιηγητής τοπικού δικτύου και το εργαλείο προσάρτησης κοινών πόρων Samba για το KDE Software Compilation. Σαρώνει το τοπικό σας δίκτυο για όλες τις διαθέσιμες ομάδες εργασίας, εξυπηρετητές και κοινούς πόρους και μπορεί να προσαρτά όλους τους επιθυμητούς κοινούς πόρους στο σύστημα αρχείων του υπολογιστή σας.</p>
     <p xml:lang="en-GB">Smb4K is an advanced network neighborhood browser and Samba share mounting utility for the KDE Software Compilation. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.</p>
     <p xml:lang="es">Smb4K es un navegador avanzado del entorno de red y una utilidad de montaje de recursos compartidos Samba para «KDE Software Compilation». Escanea su entorno de red en busca de cualquier grupo de trabajo, servidores y recursos compartidos disponible y puede montar todos los recursos compartidos deseados en su sistema de archivos local.</p>
@@ -179,7 +179,7 @@
       <li xml:lang="bs">Namještanje i razmještanje razmjena</li>
       <li xml:lang="ca">El muntatge i desmuntatge de les comparticions</li>
       <li xml:lang="ca-valencia">El muntatge i desmuntatge de les comparticions</li>
-      <li xml:lang="de">Einbinden und Lösen von Freigaben</li>
+      <li xml:lang="de">Ein- und Aushängen von Freigaben</li>
       <li xml:lang="el">Προσαρτά και απομακρύνει κοινούς πόρους</li>
       <li xml:lang="en-GB">Mounting and unmounting of shares</li>
       <li xml:lang="es">Montaje y desmontaje de recursos compartidos</li>
@@ -201,7 +201,7 @@
       <li xml:lang="bs">Pristup datotekama namještene razmjene koristeći upravitelj datotekom ili terminal</li>
       <li xml:lang="ca">Accés als fitxers d'una compartició muntada utilitzant un gestor de fitxers o terminal</li>
       <li xml:lang="ca-valencia">Accés als fitxers d'una compartició muntada utilitzant un gestor de fitxers o terminal</li>
-      <li xml:lang="de">Zugriff auf die Dateien einer eingebundenen Freigabe mit einem Dateiverwaltungsprogramm oder einem Terminal</li>
+      <li xml:lang="de">Zugriff auf die Dateien einer eingehängten Freigabe mit einem Dateiverwaltungsprogramm oder einem Terminal</li>
       <li xml:lang="el">Παρέχει πρόσβαση στα αρχεία ενός προσαρτημένου κοινού πόρου με χρήση του διαχειριστή αρχείων ή του τερματικού</li>
       <li xml:lang="en-GB">Access to the files of a mounted share using a file manager or terminal</li>
       <li xml:lang="es">Acceso a los archivos de un recurso compartido montado utilizando un gestor de archivos o un terminal</li>
@@ -223,7 +223,7 @@
       <li xml:lang="bs">Auto-detekcija vanjskih namještanja i razmještanja</li>
       <li xml:lang="ca">Detecció automàtica de muntatges i desmuntatges externs</li>
       <li xml:lang="ca-valencia">Detecció automàtica de muntatges i desmuntatges externs</li>
-      <li xml:lang="de">Automatische Erkennung externer Medien, die eingebunden oder ausgehängt werden</li>
+      <li xml:lang="de">Automatische Erkennung externer Medien, die ein- oder ausgehängt werden</li>
       <li xml:lang="el">Αυτόματος εντοπισμός εξωτερικών προσαρτήσεων και απομακρύνσεων</li>
       <li xml:lang="en-GB">Auto-detection of external mounts and unmounts</li>
       <li xml:lang="es">Detección automática de montajes y desmontajes externos</li>
@@ -245,7 +245,7 @@
       <li xml:lang="bs">Ponovno namještanje prethodno korištenih razmjena na početak programa</li>
       <li xml:lang="ca">Tornar a muntar comparticions utilitzades anteriorment en iniciar el programa</li>
       <li xml:lang="ca-valencia">Tornar a muntar comparticions utilitzades anteriorment en iniciar el programa</li>
-      <li xml:lang="de">Erneute Einbindung von vorher benutzten Freigaben beim Start des Programms</li>
+      <li xml:lang="de">Erneutes Einhängen von vorher benutzten Freigaben beim Start des Programms</li>
       <li xml:lang="el">Αναπροσαρτά κοινούς πόρους προηγούμενης χρήσης στην εκκίνηση του προγράμματος</li>
       <li xml:lang="en-GB">Remounting of previously used shares on program start</li>
       <li xml:lang="es">Vuelve a montar los recursos compartidos utilizados anteriormente al iniciar el programa</li>
@@ -267,7 +267,7 @@
       <li xml:lang="bs">Raznovrsne informacije o udaljenim mrežnim stavkama i namještenim razmjenama</li>
       <li xml:lang="ca">Informacions diverses sobre els elements de xarxa remots i les comparticions muntades</li>
       <li xml:lang="ca-valencia">Informacions diverses sobre els elements de xarxa remots i les comparticions muntades</li>
-      <li xml:lang="de">Verschiedene Informationen über Netzwerke auf anderen Rechnern und eingebundene Freigaben</li>
+      <li xml:lang="de">Verschiedene Informationen über Netzwerke auf anderen Rechnern und eingehängte Freigaben</li>
       <li xml:lang="el">Διάφορες πληροφορίες για απομακρυσμένα δικτυακά αντικείμενα και προσαρτημένους κοινούς πόρους</li>
       <li xml:lang="en-GB">Miscellaneous information about remote network items and mounted shares</li>
       <li xml:lang="es">Información variada sobre los elementos remotos de la red y los recursos compartidos montados</li>
@@ -675,6 +675,7 @@
       <caption xml:lang="bs">Glavni prozor</caption>
       <caption xml:lang="ca">La finestra principal</caption>
       <caption xml:lang="ca-valencia">La finestra principal</caption>
+      <caption xml:lang="cs">Hlavní okno</caption>
       <caption xml:lang="de">Das Hauptfenster</caption>
       <caption xml:lang="el">Το κύριο παράθυρο</caption>
       <caption xml:lang="en-GB">The main window</caption>

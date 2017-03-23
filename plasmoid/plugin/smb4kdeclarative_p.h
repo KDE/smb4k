@@ -1,9 +1,8 @@
 /***************************************************************************
-    profileitemdelegate.qml - The item delegate for the profiles view
-    in Smb4K's plasmoid
+    This class provides helper classes for Smb4KDeclarative
                              -------------------
-    begin                : Mo Dez 01 2014
-    copyright            : (C) 2014 by Alexander Reinholdt
+    begin                : Mo 02 Sep 2013
+    copyright            : (C) 2013-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -24,54 +23,24 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-import QtQuick 1.1
-import org.kde.plasma.core 0.1 as PlasmaCore
-import org.kde.plasma.graphicswidgets 0.1 as PlasmaWidgets
-import org.kde.plasma.components 0.1 as PlasmaComponents
-import org.kde.qtextracomponents 0.1
+#ifndef SMB4KDECLARATIVE_P_H
+#define SMB4KDECLARATIVE_P_H
 
-//
-// Delegate for the profile items in the profiles view
-//
-PlasmaComponents.ListItem {
-  id: delegate
-  
-  signal itemClicked()
-  
-  width: profilesView.width
-  height: theme.mediumIconSize + 8
-  
-  Row {
-    spacing: 10
-    Column {
-      anchors.verticalCenter: parent.verticalCenter
-      QIconItem {
-        id: delegateItemIcon
-        icon: "format-list-unordered"
-        width: theme.mediumIconSize
-        height: theme.mediumIconSize
-        MouseArea {
-          anchors.fill: parent
-          onClicked: {
-            delegate.itemClicked()
-          }
-        }
-      }
-    }
-    Column {
-      anchors.verticalCenter: parent.verticalCenter
-      PlasmaComponents.Label {
-        id: delegateItemText
-        text: object.profileName+(object.isActiveProfile ? " "+i18n("(active)") : "")
-        clip: true
-        MouseArea {
-          anchors.fill: parent
-          onClicked: {
-            delegate.itemClicked()
-          }
-        }
-      }
-    }
-  }
-}
+// application specific includes
+#include "smb4knetworkobject.h"
+#include "smb4kbookmarkobject.h"
+#include "smb4kprofileobject.h"
 
+class Smb4KDeclarativePrivate
+{
+  public:
+    QList<Smb4KNetworkObject *> workgroupObjects;
+    QList<Smb4KNetworkObject *> hostObjects;
+    QList<Smb4KNetworkObject *> shareObjects;
+    QList<Smb4KNetworkObject *> mountedObjects;
+    QList<Smb4KBookmarkObject *> bookmarkObjects;
+    QList<Smb4KBookmarkObject *> bookmarkGroupObjects;
+    QList<Smb4KProfileObject *> profileObjects;
+};
+
+#endif

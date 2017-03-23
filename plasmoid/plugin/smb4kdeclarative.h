@@ -2,7 +2,7 @@
     This class provides the interface for Plasma and QtQuick
                              -------------------
     begin                : Mo 02 Sep 2013
-    copyright            : (C) 2013-2016 by Alexander Reinholdt
+    copyright            : (C) 2013-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -249,6 +249,12 @@ class Q_DECL_EXPORT Smb4KDeclarative : public QObject
      * This function invokes the bookmark editor.
      */
     Q_INVOKABLE void editBookmarks();
+    
+    /**
+     * This function starts the synchronization of a local and a 
+     * remote folder.
+     */
+    Q_INVOKABLE void synchronize(Smb4KNetworkObject *object);
     
     /**
      * This function opens the custom options dialog.

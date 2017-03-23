@@ -3,7 +3,7 @@
     It is for use with QtQuick.
                              -------------------
     begin                : Fr Mär 02 2012
-    copyright            : (C) 2012-2016 by Alexander Reinholdt
+    copyright            : (C) 2012-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,10 +28,10 @@
 #define SMB4KNETWORKOBJECT_H
 
 // application specific includes
-#include "smb4kworkgroup.h"
-#include "smb4khost.h"
-#include "smb4kshare.h"
-#include "smb4kglobal.h"
+#include "core/smb4kworkgroup.h"
+#include "core/smb4khost.h"
+#include "core/smb4kshare.h"
+#include "core/smb4kglobal.h"
 
 // Qt includes
 #include <QObject>
@@ -70,7 +70,6 @@ class Q_DECL_EXPORT Smb4KNetworkObject : public QObject
   Q_PROPERTY(bool isPrinter READ isPrinter WRITE setPrinter NOTIFY changed)
   Q_PROPERTY(QUrl mountpoint READ mountpoint WRITE setMountpoint NOTIFY changed)
   Q_PROPERTY(bool isMasterBrowser READ isMasterBrowser WRITE setMasterBrowser NOTIFY changed)
-  Q_ENUMS(NetworkItem)
   
   friend class Smb4KNetworkObjectPrivate;
   
@@ -85,6 +84,7 @@ class Q_DECL_EXPORT Smb4KNetworkObject : public QObject
       Host = Smb4KGlobal::Host,
       Share = Smb4KGlobal::Share,
       Unknown = Smb4KGlobal::UnknownNetworkItem };
+    Q_ENUM(NetworkItem)
     
     /**
      * Constructor for a workgroup.

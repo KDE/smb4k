@@ -1,8 +1,9 @@
 /***************************************************************************
-    This class provides helper classes for Smb4KDeclarative
+    This class derives from QObject and encapsulates a profile item/name. 
+    It is for use with QtQuick.
                              -------------------
-    begin                : Mo 02 Sep 2013
-    copyright            : (C) 2013-2016 by Alexander Reinholdt
+    begin                : So 23 Nov 2014
+    copyright            : (C) 2014-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,5 +29,52 @@
 #endif
 
 // application specific includes
-#include "smb4kdeclarative_p.h"
+#include "smb4kprofileobject.h"
+
+
+class Smb4KProfileObjectPrivate
+{
+  public:
+    QString profileName;
+    bool activeProfile;
+};
+
+
+Smb4KProfileObject::Smb4KProfileObject(QObject* parent)
+: QObject(parent), d(new Smb4KProfileObjectPrivate)
+{
+  d->profileName = QString();
+  d->activeProfile = false;
+}
+
+
+Smb4KProfileObject::~Smb4KProfileObject()
+{
+}
+
+
+QString Smb4KProfileObject::profileName() const
+{
+  return d->profileName;
+}
+
+
+void Smb4KProfileObject::setProfileName(const QString& profileName)
+{
+  d->profileName = profileName;
+  emit changed();
+}
+
+
+bool Smb4KProfileObject::isActiveProfile() const
+{
+  return d->activeProfile;
+}
+
+
+void Smb4KProfileObject::setActiveProfile(bool active)
+{
+  d->activeProfile = active;
+  emit changed();
+}
 
