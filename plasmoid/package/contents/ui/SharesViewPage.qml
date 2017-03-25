@@ -75,6 +75,7 @@ PlasmaComponents.Page {
         id: sharesViewItemDelegate
         
         onItemClicked: {
+          sharesViewListView.currentIndex = index
           var object = sharesViewListView.model.get(index).object
           if (object !== null) {
             Qt.openUrlExternally(object.mountpoint)
@@ -85,6 +86,7 @@ PlasmaComponents.Page {
         }
         
         onUnmountClicked: {
+          sharesViewListView.currentIndex = index
           var object = sharesViewListView.model.get(index).object
           if (object !== null) {
             iface.unmount(object)
@@ -95,6 +97,7 @@ PlasmaComponents.Page {
         }
         
         onBookmarkClicked: {
+          sharesViewListView.currentIndex = index
           var object = sharesViewListView.model.get(index).object
           if (object !== null) {
             iface.addBookmark(object)
@@ -105,6 +108,7 @@ PlasmaComponents.Page {
         }
         
         onSyncClicked: {
+          sharesViewListView.currentIndex = index
           var object = sharesViewListView.model.get(index).object
           if (object !== null) {
             iface.synchronize(object)

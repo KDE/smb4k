@@ -31,38 +31,38 @@ PlasmaComponents.ListItem {
   signal itemClicked()
   
   width: parent.width
-  height: theme.mediumIconSize + 8
+  implicitWidth: parent.implicitWidth
+  // FIXME: Use something like margin instead of the 3 * units.smallSpacing that was found
+  // by trial and error ...
+  height: Math.max(delegateItemIcon.paintedHeight + 3 * units.smallSpacing, delegateItemText.height + 3 * units.smallSpacing) 
+  implicitHeight: Math.max(delegateItemIcon.paintedHeight + 3 * units.smallSpacing, delegateItemText.height + 3 * units.smallSpacing) 
   focus: true
   
-  Row {
-    spacing: 10
-    Column {
-      anchors.verticalCenter: parent.verticalCenter
-      PlasmaCore.IconItem {
-        id: delegateItemIcon
-        source: "format-list-unordered"
-        width: theme.mediumIconSize
-        height: theme.mediumIconSize
-        MouseArea {
-          anchors.fill: parent
-          onClicked: {
-            delegate.itemClicked()
-          }
+  MouseArea {
+    anchors.fill: parent
+    
+    onClicked: {
+      delegate.itemClicked()
+    }
+  
+    Row {
+      spacing: units.largeSpacing
+      Column {
+        anchors.verticalCenter: parent.verticalCenter
+        PlasmaCore.IconItem {
+          id: delegateItemIcon
+          source: "format-list-unordered"
+          width: units.iconSizes.medium
+          height: units.iconSizes.medium
         }
       }
-    }
-    Column {
-      anchors.verticalCenter: parent.verticalCenter
-      PlasmaComponents.Label {
-        id: delegateItemText
-        elide: Text.ElideRight
-        text: {
-          object.profileName+(object.isActiveProfile ? " "+i18n("(active)") : "")
-        }
-        MouseArea {
-          anchors.fill: parent
-          onClicked: {
-            delegate.itemClicked()
+      Column {
+        anchors.verticalCenter: parent.verticalCenter
+        PlasmaComponents.Label {
+          id: delegateItemText
+          elide: Text.ElideRight
+          text: {
+            object.profileName+(object.isActiveProfile ? " "+i18n("(active)") : "")
           }
         }
       }

@@ -31,51 +31,52 @@ PlasmaComponents.ListItem {
   signal itemClicked()
   
   width: parent.width
-  height: theme.mediumIconSize + 8
-  enabled: !object.isMounted
+  implicitWidth: parent.implicitWidth
+  // FIXME: Use something like margin instead of the 3 * units.smallSpacing that was found
+  // by trial and error ...
+  height: Math.max(delegateItemIcon.paintedHeight + 3 * units.smallSpacing, delegateItemText.height + 3 * units.smallSpacing) 
+  implicitHeight: Math.max(delegateItemIcon.paintedHeight + 3 * units.smallSpacing, delegateItemText.height + 3 * units.smallSpacing) 
   focus: true
+  enabled: !object.isMounted
   
-  Row {
-    spacing: 10
-    Column {
-      anchors.verticalCenter: parent.verticalCenter
-      PlasmaCore.IconItem {
-        id: delegateItemIcon
-        source: (object.isGroup ? "folder-favorites" : "folder-network")
-        overlays: [
-          (object.isMounted ? "emblem-mounted" : "")
-        ]
-        width: theme.mediumIconSize
-        height: theme.mediumIconSize
-        enabled: delegate.enabled
-        MouseArea {
-          anchors.fill: parent
-          onClicked: {
-            delegate.itemClicked()
-          }
+  MouseArea {
+    anchors.fill: parent
+    
+    onClicked: {
+      delegate.itemClicked()
+    }
+  
+  
+    Row {
+      spacing: units.largeSpacing
+      Column {
+        anchors.verticalCenter: parent.verticalCenter
+        PlasmaCore.IconItem {
+          id: delegateItemIcon
+          source: (object.isGroup ? "folder-favorites" : "folder-network")
+          overlays: [
+            (object.isMounted ? "emblem-mounted" : "")
+          ]
+          width: units.iconSizes.medium
+          height: units.iconSizes.medium
+          enabled: delegate.enabled
         }
       }
-    }
-    Column {
-      anchors.verticalCenter: parent.verticalCenter
-      PlasmaComponents.Label {
-        id: delegateItemText
-        elide: Text.ElideRight
-        text: {
-          if (!object.isGroup) {
-            object.shareName+(object.label.length != 0 ? " ("+object.label+")" : "")+
-            "<br>"+i18n("<font size=\"-1\">on %1</font>", object.hostName)
+      Column {
+        anchors.verticalCenter: parent.verticalCenter
+        PlasmaComponents.Label {
+          id: delegateItemText
+          elide: Text.ElideRight
+          text: {
+            if (!object.isGroup) {
+              object.shareName+(object.label.length != 0 ? " ("+object.label+")" : "")+
+              "<br>"+i18n("<font size=\"-1\">on %1</font>", object.hostName)
+            }
+            else {
+              object.groupName
+            }
           }
-          else {
-            object.groupName
-          }
-        }
-        enabled: delegate.enabled
-        MouseArea {
-          anchors.fill: parent
-          onClicked: {
-            delegate.itemClicked()
-          }
+          enabled: delegate.enabled
         }
       }
     }

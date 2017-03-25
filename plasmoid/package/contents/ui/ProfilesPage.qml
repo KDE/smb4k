@@ -52,6 +52,7 @@ PlasmaComponents.Page {
         id: profileItemDelegate
         
         onItemClicked: {
+          profilesListView.currentIndex = index
           iface.activeProfile = object.profileName
         }
       }

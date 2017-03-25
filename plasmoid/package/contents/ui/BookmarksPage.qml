@@ -79,6 +79,7 @@ PlasmaComponents.Page {
         id: bookmarkItemDelegate
         
         onItemClicked: {
+          bookmarksListView.currentIndex = index
           var object = bookmarksListView.model.get(index).object
           if (object !== null) {
             bookmarkOrGroupClicked(object)
