@@ -422,7 +422,7 @@ void Smb4KShare::setInaccessible(bool in)
 
 bool Smb4KShare::isInaccessible() const
 {
-  return d->inaccessible;
+  return (d->mounted && d->inaccessible);
 }
 
 
@@ -435,7 +435,7 @@ void Smb4KShare::setForeign(bool foreign)
 
 bool Smb4KShare::isForeign() const
 {
-  return d->foreign;
+  return (d->mounted && d->foreign);
 }
 
 
