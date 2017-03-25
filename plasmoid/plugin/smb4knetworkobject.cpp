@@ -45,24 +45,24 @@ class Smb4KNetworkObjectPrivate
     QUrl url;
     int type;
     int parentType;
-    QIcon icon;
     QString comment;
     bool mounted;
     QUrl mountpoint;
     bool printer;
     bool isMaster;
+    bool inaccessible;
 };
 
 
 Smb4KNetworkObject::Smb4KNetworkObject(Smb4KWorkgroup *workgroup, QObject *parent)
 : QObject(parent), d(new Smb4KNetworkObjectPrivate)
 {
-  d->workgroup = workgroup->workgroupName();
-  d->url       = workgroup->url();
-  d->icon      = workgroup->icon();
-  d->mounted   = false;
-  d->printer   = false;
-  d->isMaster  = false;
+  d->workgroup    = workgroup->workgroupName();
+  d->url          = workgroup->url();
+  d->mounted      = false;
+  d->inaccessible = false;
+  d->printer      = false;
+  d->isMaster     = false;
   setType(Workgroup);
 }
 
@@ -70,13 +70,13 @@ Smb4KNetworkObject::Smb4KNetworkObject(Smb4KWorkgroup *workgroup, QObject *paren
 Smb4KNetworkObject::Smb4KNetworkObject(Smb4KHost *host, QObject *parent)
 : QObject(parent), d(new Smb4KNetworkObjectPrivate)
 {
-  d->workgroup = host->workgroupName();
-  d->url       = host->url();
-  d->icon      = host->icon();
-  d->comment   = host->comment();
-  d->mounted   = false;
-  d->printer   = false;
-  d->isMaster  = host->isMasterBrowser();
+  d->workgroup    = host->workgroupName();
+  d->url          = host->url();
+  d->comment      = host->comment();
+  d->mounted      = false;
+  d->inaccessible = false;
+  d->printer      = false;
+  d->isMaster     = host->isMasterBrowser();
   setType(Host);
 }
 
@@ -84,14 +84,14 @@ Smb4KNetworkObject::Smb4KNetworkObject(Smb4KHost *host, QObject *parent)
 Smb4KNetworkObject::Smb4KNetworkObject(Smb4KShare *share, QObject *parent)
 : QObject(parent), d(new Smb4KNetworkObjectPrivate)
 {
-  d->workgroup  = share->workgroupName();
-  d->url        = share->url();
-  d->icon       = share->icon();
-  d->comment    = share->comment();
-  d->mounted    = share->isMounted();
-  d->printer    = share->isPrinter();
-  d->isMaster   = false;
-  d->mountpoint = QUrl::fromLocalFile(share->path());
+  d->workgroup    = share->workgroupName();
+  d->url          = share->url();
+  d->comment      = share->comment();
+  d->mounted      = share->isMounted();
+  d->inaccessible = share->isInaccessible();
+  d->printer      = share->isPrinter();
+  d->isMaster     = false;
+  d->mountpoint   = QUrl::fromLocalFile(share->path());
   setType(Share);
 }
 
@@ -100,9 +100,10 @@ Smb4KNetworkObject::Smb4KNetworkObject(QObject *parent)
 : QObject(parent), d(new Smb4KNetworkObjectPrivate)
 {
   d->url.setUrl("smb://", QUrl::TolerantMode);
-  d->mounted   = false;
-  d->printer   = false;
-  d->isMaster  = false;
+  d->mounted      = false;
+  d->inaccessible = false;
+  d->printer      = false;
+  d->isMaster     = false;
   setType(Network);
 }
 
@@ -263,19 +264,6 @@ QString Smb4KNetworkObject::name() const
 }
 
 
-QIcon Smb4KNetworkObject::icon() const
-{
-  return d->icon;
-}
-
-
-void Smb4KNetworkObject::setIcon(const QIcon& icon)
-{
-  d->icon = icon;
-  emit changed();
-}
-
-
 QString Smb4KNetworkObject::comment() const
 {
   return d->comment;
@@ -356,12 +344,12 @@ void Smb4KNetworkObject::update(Smb4KBasicNetworkItem *networkItem)
       // Check that we update with the correct item.
       if (QString::compare(workgroupName(), workgroup->workgroupName(), Qt::CaseInsensitive) == 0)
       {
-        d->workgroup = workgroup->workgroupName();
-        d->url       = workgroup->url();
-        d->icon      = workgroup->icon();
-        d->type      = Workgroup;
-        d->mounted   = false;
-        d->printer   = false;
+        d->workgroup    = workgroup->workgroupName();
+        d->url          = workgroup->url();
+        d->type         = Workgroup;
+        d->mounted      = false;
+        d->inaccessible = false;
+        d->printer      = false;
       }
       else
       {
@@ -383,13 +371,13 @@ void Smb4KNetworkObject::update(Smb4KBasicNetworkItem *networkItem)
       if (QString::compare(workgroupName(), host->workgroupName(), Qt::CaseInsensitive) == 0 &&
           QString::compare(hostName(), host->hostName(), Qt::CaseInsensitive) == 0)
       {
-        d->workgroup = host->workgroupName();
-        d->url       = host->url();
-        d->icon      = host->icon();
-        d->comment   = host->comment();
-        d->type      = Host;
-        d->mounted   = false;
-        d->printer   = false;
+        d->workgroup    = host->workgroupName();
+        d->url          = host->url();
+        d->comment      = host->comment();
+        d->type         = Host;
+        d->mounted      = false;
+        d->inaccessible = false;
+        d->printer      = false;
       }
       else
       {
@@ -412,13 +400,13 @@ void Smb4KNetworkObject::update(Smb4KBasicNetworkItem *networkItem)
           QString::compare(hostName(), share->hostName(), Qt::CaseInsensitive) == 0 &&
           QString::compare(shareName(), share->shareName(), Qt::CaseInsensitive) == 0)
       {
-        d->workgroup  = share->workgroupName();
-        d->url        = share->url();
-        d->icon       = share->icon();
-        d->comment    = share->comment();
-        d->type       = Share;
-        d->mounted    = share->isMounted();
-        d->printer    = share->isPrinter();
+        d->workgroup    = share->workgroupName();
+        d->url          = share->url();
+        d->comment      = share->comment();
+        d->type         = Share;
+        d->mounted      = share->isMounted();
+        d->inaccessible = share->isInaccessible();
+        d->printer      = share->isPrinter();
         d->mountpoint.setUrl(share->path(), QUrl::TolerantMode);
         d->mountpoint.setScheme("file");
       }
@@ -465,4 +453,18 @@ void Smb4KNetworkObject::setMountpoint(const QUrl &mountpoint)
   d->mountpoint = mountpoint;
   emit changed();
 }
+
+
+bool Smb4KNetworkObject::isInaccessible() const
+{
+  return (d->mounted && d->inaccessible);
+}
+
+
+void Smb4KNetworkObject::setInaccessible(bool inaccessible)
+{
+  d->inaccessible = inaccessible;
+}
+
+
 
