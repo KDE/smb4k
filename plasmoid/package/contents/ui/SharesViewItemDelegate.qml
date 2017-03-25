@@ -43,9 +43,14 @@ PlasmaComponents.ListItem {
       anchors.verticalCenter: parent.verticalCenter
       PlasmaCore.IconItem {
         id: delegateItemIcon
-        source: object.icon
+        source: {
+          (!object.isInaccessible ? "folder-network" : "folder-locked")
+        }
+        overlays: [
+          (object.isMounted ? "emblem-mounted" : "")
+        ]
         width: theme.mediumIconSize
-        height: theme.mediumIconSice
+        height: theme.mediumIconSize
         MouseArea {
           anchors.fill: parent
           onClicked: {
@@ -81,6 +86,7 @@ PlasmaComponents.ListItem {
     PlasmaComponents.ToolButton {
       id: bookmarkButton
       iconSource: "favorite"
+      tooltip: i18n("Bookmark")
       flat: true
       opacity: 0.2
       MouseArea {
@@ -101,6 +107,7 @@ PlasmaComponents.ListItem {
     PlasmaComponents.ToolButton {
       id: syncButton
       iconSource: "folder-sync"
+      tooltip: i18n("Synchrionize")
       flat: true
       opacity: 0.2
       MouseArea {
@@ -120,7 +127,8 @@ PlasmaComponents.ListItem {
     
     PlasmaComponents.ToolButton {
       id: unmountButton
-      iconSource: "emblem-unmounted"
+      iconSource: "media-eject"
+      tooltip: i18n("Unmount")
       flat: true
       opacity: 0.2
       MouseArea {

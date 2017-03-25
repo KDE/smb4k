@@ -41,9 +41,13 @@ PlasmaComponents.ListItem {
       anchors.verticalCenter: parent.verticalCenter
       PlasmaCore.IconItem {
         id: delegateItemIcon
-        source: object.icon
+        source: (object.isGroup ? "folder-favorites" : "folder-network")
+        overlays: [
+          (object.isMounted ? "emblem-mounted" : "")
+        ]
         width: theme.mediumIconSize
-        height: theme.mediumIconSice
+        height: theme.mediumIconSize
+        enabled: delegate.enabled
         MouseArea {
           anchors.fill: parent
           onClicked: {
@@ -66,6 +70,7 @@ PlasmaComponents.ListItem {
             object.groupName
           }
         }
+        enabled: delegate.enabled
         MouseArea {
           anchors.fill: parent
           onClicked: {

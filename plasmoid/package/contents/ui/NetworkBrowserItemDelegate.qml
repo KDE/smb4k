@@ -42,9 +42,27 @@ PlasmaComponents.ListItem {
       anchors.verticalCenter: parent.verticalCenter
       PlasmaCore.IconItem {
         id: delegateItemIcon
-        source: object.icon
+        source: {
+          switch (object.type) {
+            case NetworkObject.Workgroup:
+              "network-workgroup"
+              break
+            case NetworkObject.Host:
+              "network-server"
+              break
+            case NetworkObject.Share:
+              "folder-network"
+              break
+            default:
+              ""
+              break
+          }
+        }
+        overlays: [
+          (object.isMounted ? "emblem-mounted" : "")
+        ]
         width: theme.mediumIconSize
-        height: theme.mediumIconSice
+        height: theme.mediumIconSize
         MouseArea {
           anchors.fill: parent
           onClicked: {
@@ -80,6 +98,7 @@ PlasmaComponents.ListItem {
     PlasmaComponents.ToolButton {
       id: bookmarkButton
       iconSource: "favorite"
+      tooltip: i18n("Bookmark")
       flat: true
       opacity: 0.2
       visible: (object.type == NetworkObject.Share && !object.isPrinter) ? true : false
@@ -101,7 +120,7 @@ PlasmaComponents.ListItem {
     
     PlasmaComponents.ToolButton {
       id: configureButton
-      iconSource: "preferences-system-network"
+      iconSource: "settings-configure"
       flat: true
       opacity: 0.2
       visible: (object.type != NetworkObject.Network && object.type != NetworkObject.Workgroup) ? true : false

@@ -304,33 +304,21 @@ PlasmaComponents.Page {
   }
   
   function shareMountedOrUnmounted() {
-    if (networkBrowserListView.model.count != 0) {
-      for (var i = 0; i < networkBrowserListView.model.count; i++) {
-        var object = networkBrowserListView.model.get(i).object
-        if (object !== null) {
-          if (object.type == NetworkObject.Share) {
-            var mountedShare = iface.findMountedShare(object.url, false)
-            if (mountedShare !== null) {
-              object.icon = mountedShare.icon
-            }
-            else {
-              console.log("FIXME: Implement iface.defaultIcon()")
-              object.icon = QIcon("folder-network")
-            }
-          }
-          else {
-            break
-          }
+    for (var i = 0; i < networkBrowserListView.model.count; i++) {
+      var object = networkBrowserListView.model.get(i).object
+      if (object !== null && object.type == NetworkObject.Share) {
+        var mountedShare = iface.findMountedShare(object.url, false)
+        if (mountedShare !== null) {
+          object.isMounted = mountedShare.isMounted
         }
         else {
-          // Do nothing
+          object.isMounted = false
         }
+        networkBrowserListView.model.set(i, {"object": object})
+      }
+      else {
+        // Do nothing
       }
     }
-    else {
-      // Do nothing
-    }
-    
-    networkBrowserListView.model.sync
   }
 }

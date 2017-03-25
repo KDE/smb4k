@@ -136,14 +136,16 @@ PlasmaComponents.Page {
   
   function shareMountedOrUnmounted() {
     for (var i = 0; i < bookmarksListView.model.count; i++) {
-      if (!bookmarksListView.model.get(i).object.isGroup) {
-        var object = iface.findMountedShare(bookmarksListView.model.get(i).object.url, false)
-        if (object !== null) {
-          bookmarksListView.model.get(i).object.icon = object.icon
+      var object = bookmarksListView.model.get(i).object
+      if (!object.isGroup) {
+        var mountedShare = iface.findMountedShare(object.url, false)
+        if (mountedShare !== null) {
+          object.isMounted = mountedShare.isMounted
         }
         else {
-          // Do nothing
+          object.isMounted = false
         }
+        bookmarksListView.model.set(i, {"object": object})
       }
       else {
         // Do nothing
@@ -179,7 +181,15 @@ PlasmaComponents.Page {
     if (iface.bookmarks.length != 0) {
       for (var i = 0; i < iface.bookmarks.length; i++) {
         if (iface.bookmarks[i].groupName == groupName) {
-          bookmarksListView.model.append({"object": iface.bookmarks[i]})
+          var bookmark = iface.bookmarks[i]
+          var mountedShare = iface.findMountedShare(bookmark.url, false)
+          if (mountedShare !== null) {
+            bookmark.isMounted = mountedShare.isMounted
+            bookmarksListView.model.append({"object": bookmark})
+          }
+          else {
+            // Do nothing
+          }
         }
         else {
           // Do nothing

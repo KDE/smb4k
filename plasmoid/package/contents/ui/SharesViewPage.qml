@@ -141,7 +141,8 @@ PlasmaComponents.Page {
       // The unmounted() signal is emitted before the share is
       // actually removed from the list. So, we need to check 
       // here, if the share is still mounted.
-      if (iface.mountedShares[i].isMounted) {
+      var mountedShare = iface.mountedShares[i]
+      if (mountedShare !== null && mountedShare.isMounted) {
         sharesViewListView.model.append({"object": iface.mountedShares[i]})
       }
       else {
