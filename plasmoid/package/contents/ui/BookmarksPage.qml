@@ -186,11 +186,11 @@ PlasmaComponents.Page {
           var mountedShare = iface.findMountedShare(bookmark.url, false)
           if (mountedShare !== null) {
             bookmark.isMounted = mountedShare.isMounted
-            bookmarksListView.model.append({"object": bookmark})
           }
           else {
             // Do nothing
           }
+          bookmarksListView.model.append({"object": bookmark})
         }
         else {
           // Do nothing

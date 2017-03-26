@@ -133,6 +133,11 @@ PlasmaComponents.Page {
       model: ListModel {}
       focus: true
       highlightRangeMode: ListView.StrictlyEnforceRange
+//       highlight: Rectangle {
+//         color: theme.highlightColor
+//         radius: 5
+//         opacity: 0.2
+//       }
     }
   }
   

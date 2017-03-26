@@ -53,7 +53,7 @@ PlasmaComponents.ListItem {
         anchors.verticalCenter: parent.verticalCenter
         PlasmaCore.IconItem {
           id: delegateItemIcon
-          source: (object.isGroup ? "folder-favorites" : "folder-network")
+          source: (object.isGroup ? "folder-bookmark" : "folder-network")
           overlays: [
             (object.isMounted ? "emblem-mounted" : "")
           ]
