@@ -107,7 +107,7 @@ PlasmaComponents.ListItem {
     PlasmaComponents.ToolButton {
       id: syncButton
       iconSource: "folder-sync"
-      tooltip: i18n("Synchrionize")
+      tooltip: i18n("Synchronize")
       flat: true
       opacity: 0.2
       MouseArea {
