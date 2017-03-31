@@ -75,6 +75,7 @@ PlasmaComponents.Page {
         id: sharesViewItemDelegate
         
         onItemClicked: {
+          sharesViewListView.currentIndex = index
           var object = sharesViewListView.model.get(index).object
           if (object !== null) {
             Qt.openUrlExternally(object.mountpoint)
@@ -85,6 +86,7 @@ PlasmaComponents.Page {
         }
         
         onUnmountClicked: {
+          sharesViewListView.currentIndex = index
           var object = sharesViewListView.model.get(index).object
           if (object !== null) {
             iface.unmount(object)
@@ -95,6 +97,7 @@ PlasmaComponents.Page {
         }
         
         onBookmarkClicked: {
+          sharesViewListView.currentIndex = index
           var object = sharesViewListView.model.get(index).object
           if (object !== null) {
             iface.addBookmark(object)
@@ -105,6 +108,7 @@ PlasmaComponents.Page {
         }
         
         onSyncClicked: {
+          sharesViewListView.currentIndex = index
           var object = sharesViewListView.model.get(index).object
           if (object !== null) {
             iface.synchronize(object)
@@ -141,7 +145,8 @@ PlasmaComponents.Page {
       // The unmounted() signal is emitted before the share is
       // actually removed from the list. So, we need to check 
       // here, if the share is still mounted.
-      if (iface.mountedShares[i].isMounted) {
+      var mountedShare = iface.mountedShares[i]
+      if (mountedShare !== null && mountedShare.isMounted) {
         sharesViewListView.model.append({"object": iface.mountedShares[i]})
       }
       else {

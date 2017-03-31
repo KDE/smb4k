@@ -34,53 +34,59 @@ PlasmaComponents.ListItem {
   signal syncClicked()
   
   width: parent.width
-  height: theme.mediumIconSize + 8
+  implicitWidth: parent.implicitWidth
+  // FIXME: Use something like margin instead of the 3 * units.smallSpacing that was found
+  // by trial and error ...
+  height: Math.max(delegateItemIcon.paintedHeight + 3 * units.smallSpacing, delegateItemText.height + 3 * units.smallSpacing) 
+  implicitHeight: Math.max(delegateItemIcon.paintedHeight + 3 * units.smallSpacing, delegateItemText.height + 3 * units.smallSpacing) 
   focus: true
   
-  Row {
-    spacing: 10
-    Column {
-      anchors.verticalCenter: parent.verticalCenter
-      PlasmaCore.IconItem {
-        id: delegateItemIcon
-        source: object.icon
-        width: theme.mediumIconSize
-        height: theme.mediumIconSice
-        MouseArea {
-          anchors.fill: parent
-          onClicked: {
-            delegate.itemClicked()
+  MouseArea {
+    anchors.fill: parent
+    
+    onClicked: {
+      delegate.itemClicked()
+    }
+    
+    Row {
+      spacing: units.largeSpacing
+      Column {
+        anchors.verticalCenter: parent.verticalCenter
+        PlasmaCore.IconItem {
+          id: delegateItemIcon
+          source: {
+            (!object.isInaccessible ? "folder-network" : "folder-locked")
           }
+          overlays: [
+            (object.isMounted ? "emblem-mounted" : "")
+          ]
+          width: units.iconSizes.medium
+          height: units.iconSizes.medium
+        }
+      }
+      Column {
+        anchors.verticalCenter: parent.verticalCenter
+        PlasmaComponents.Label {
+          id: delegateItemText
+          elide: Text.ElideRight
+          text: object.shareName+"<br>"+i18n("<font size=\"-1\">on %1</font>", object.hostName)
         }
       }
     }
-    Column {
-      anchors.verticalCenter: parent.verticalCenter
-      PlasmaComponents.Label {
-        id: delegateItemText
-        elide: Text.ElideRight
-        text: object.shareName+"<br>"+i18n("<font size=\"-1\">on %1</font>", object.hostName)
-        MouseArea {
-          anchors.fill: parent
-          onClicked: {
-            delegate.itemClicked()
-          }
-        }        
-      }
-    }
   }
-    
+  
   PlasmaComponents.ButtonRow {
     anchors {
      verticalCenter: parent.verticalCenter
       right: parent.right
     }
     exclusive: false
-    spacing: 1
+    spacing: 0
     
     PlasmaComponents.ToolButton {
       id: bookmarkButton
       iconSource: "favorite"
+      tooltip: i18n("Bookmark")
       flat: true
       opacity: 0.2
       MouseArea {
@@ -101,6 +107,7 @@ PlasmaComponents.ListItem {
     PlasmaComponents.ToolButton {
       id: syncButton
       iconSource: "folder-sync"
+      tooltip: i18n("Synchronize")
       flat: true
       opacity: 0.2
       MouseArea {
@@ -120,7 +127,8 @@ PlasmaComponents.ListItem {
     
     PlasmaComponents.ToolButton {
       id: unmountButton
-      iconSource: "emblem-unmounted"
+      iconSource: "media-eject"
+      tooltip: i18n("Unmount")
       flat: true
       opacity: 0.2
       MouseArea {

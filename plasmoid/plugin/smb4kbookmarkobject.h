@@ -58,7 +58,6 @@ class Q_DECL_EXPORT Smb4KBookmarkObject : public QObject
   Q_PROPERTY(QString workgroupName READ workgroupName WRITE setWorkgroupName NOTIFY changed)
   Q_PROPERTY(QString label READ label WRITE setLabel NOTIFY changed)
   Q_PROPERTY(QUrl url READ url WRITE setURL NOTIFY changed)
-  Q_PROPERTY(QIcon icon READ icon WRITE setIcon NOTIFY changed)
   Q_PROPERTY(QString groupName READ groupName WRITE setGroupName NOTIFY changed)
   Q_PROPERTY(bool isGroup READ isGroup WRITE setGroup NOTIFY changed)
   Q_PROPERTY(bool isMounted READ isMounted WRITE setMounted NOTIFY changed)
@@ -142,20 +141,6 @@ class Q_DECL_EXPORT Smb4KBookmarkObject : public QObject
      * @param url       The URL
      */
     void setURL(const QUrl &url);
-    
-    /**
-     * This function returns the icon of the bookmark.
-     *
-     * @returns the icon
-     */
-    QIcon icon() const;
-    
-    /**
-     * Set the icon of the bookmark.
-     * 
-     * @param icon      The icon
-     */
-    void setIcon(const QIcon &icon);
     
     /**
      * This function returns the name of the group the bookmark is

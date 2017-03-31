@@ -29,8 +29,6 @@ PlasmaComponents.Page {
   id: networkBrowserPage
   anchors.fill: parent
   
-  property var currentObject: 0
-
   //
   // Tool bar
   //
@@ -67,13 +65,7 @@ PlasmaComponents.Page {
         tooltip: i18n("Go one level up")
         iconSource: "go-up-symbolic"
         onClicked: {
-          if (networkBrowserListView.model.count != 0) {
-            var object = networkBrowserListView.model.get(0).object
-            up(object)
-          }
-          else {
-            // Do nothing
-          }
+          up()
         }
       }
       
@@ -111,15 +103,15 @@ PlasmaComponents.Page {
         id: networkBrowserItemDelegate
         
         onItemClicked: {
-          currentObject = networkBrowserListView.model.get(index).object
-          networkItemClicked(currentObject)
+          networkBrowserListView.currentIndex = index
+          networkItemClicked()
         }
         
         onBookmarkClicked: {
+          networkBrowserListView.currentIndex = index
           var object = networkBrowserListView.model.get(index).object
           if (object !== null) {
-            currentObject = object
-            iface.addBookmark(object)
+            iface.addBookmark()
           }
           else {
             // Do nothing
@@ -127,9 +119,9 @@ PlasmaComponents.Page {
         }
         
         onConfigureClicked: {
+          networkBrowserListView.currentIndex = index
           var object = networkBrowserListView.model.get(index).object
-          if (object !== null) {
-            currentObject = object
+          if (object !== 0) {
             iface.openCustomOptionsDialog(object)
           }
           else {
@@ -141,6 +133,11 @@ PlasmaComponents.Page {
       model: ListModel {}
       focus: true
       highlightRangeMode: ListView.StrictlyEnforceRange
+//       highlight: Rectangle {
+//         color: theme.highlightColor
+//         radius: 5
+//         opacity: 0.2
+//       }
     }
   }
   
@@ -159,8 +156,8 @@ PlasmaComponents.Page {
   // Functions
   //
   function rescan() {
-    if (currentObject !== null) {
-      iface.lookup(currentObject)
+    if (networkBrowserListView.currentIndex != -1) {
+      iface.lookup(networkBrowserListView.currentItem.object)
     }
     else {
       iface.lookup()
@@ -174,24 +171,23 @@ PlasmaComponents.Page {
     iface.stopPrinter()
   }
   
-  function up(object) {
-    if (object !== null) {
+  function up() {
+    if (networkBrowserListView.currentIndex != -1) {
+      var object = networkBrowserListView.model.get(networkBrowserListView.currentIndex).object
+      
       switch (object.type) {
         case NetworkObject.Workgroup:
-          currentObject = null
+          networkBrowserListView.currentIndex = -1
           break
         case NetworkObject.Host:
-          currentObject = null
+          networkBrowserListView.currentIndex = -1
           iface.lookup()
-          break
+          break;
         case NetworkObject.Share:
           var parentObject = iface.findNetworkItem(object.parentURL, object.parentType)
-          
-          if (parentObject !== null) {
+          if (parentObject !== 0) {
             var grandparentObject = iface.findNetworkItem(parentObject.parentURL, parentObject.parentType)
-            
             if (grandparentObject !== null) {
-              currentObject = grandparentObject
               iface.lookup(grandparentObject)
             }
             else {
@@ -211,8 +207,10 @@ PlasmaComponents.Page {
     }
   }
   
-  function networkItemClicked(object) {
-    if (object !== null) {
+  function networkItemClicked() {
+    if (networkBrowserListView.currentIndex != -1) {
+      var object = networkBrowserListView.model.get(networkBrowserListView.currentIndex).object
+      
       if (object.type == NetworkObject.Share) {
         if (!object.isPrinter) {
           iface.mount(object)
@@ -248,8 +246,8 @@ PlasmaComponents.Page {
   function getHosts() {
     var workgroupName = ""
     
-    if (currentObject !== null) {
-      workgroupName = currentObject.workgroupName
+    if (networkBrowserListView.currentIndex != -1) {
+      workgroupName = networkBrowserListView.model.get(networkBrowserListView.currentIndex).object.workgroupName
     }
     else {
       // Do nothing
@@ -277,12 +275,12 @@ PlasmaComponents.Page {
   function getShares() {
     var hostName = ""
     
-    if (currentObject !== null) {
-      hostName = currentObject.hostName
+    if (networkBrowserListView.currentIndex != -1) {
+      hostName = networkBrowserListView.model.get(networkBrowserListView.currentIndex).object.hostName
     }
     else {
       // Do nothing
-    }
+    }    
     
     while (networkBrowserListView.model.count != 0) {
       networkBrowserListView.model.remove(0)
@@ -304,33 +302,21 @@ PlasmaComponents.Page {
   }
   
   function shareMountedOrUnmounted() {
-    if (networkBrowserListView.model.count != 0) {
-      for (var i = 0; i < networkBrowserListView.model.count; i++) {
-        var object = networkBrowserListView.model.get(i).object
-        if (object !== null) {
-          if (object.type == NetworkObject.Share) {
-            var mountedShare = iface.findMountedShare(object.url, false)
-            if (mountedShare !== null) {
-              object.icon = mountedShare.icon
-            }
-            else {
-              console.log("FIXME: Implement iface.defaultIcon()")
-              object.icon = QIcon("folder-network")
-            }
-          }
-          else {
-            break
-          }
+    for (var i = 0; i < networkBrowserListView.model.count; i++) {
+      var object = networkBrowserListView.model.get(i).object
+      if (object !== null && object.type == NetworkObject.Share) {
+        var mountedShare = iface.findMountedShare(object.url, false)
+        if (mountedShare !== null) {
+          object.isMounted = mountedShare.isMounted
         }
         else {
-          // Do nothing
+          object.isMounted = false
         }
+        networkBrowserListView.model.set(i, {"object": object})
+      }
+      else {
+        // Do nothing
       }
     }
-    else {
-      // Do nothing
-    }
-    
-    networkBrowserListView.model.sync
   }
 }

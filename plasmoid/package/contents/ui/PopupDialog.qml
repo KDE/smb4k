@@ -49,14 +49,14 @@ FocusScope {
     PlasmaComponents.TabButton {
       id: sharesTabButton
       text: i18n("Mounted Shares")
-      iconSource: "folder-network"
+      iconSource: "folder-network-symbolic"
       tab: sharesViewPage
     }
       
     PlasmaComponents.TabButton {
       id: bookmarkTabButton
       text: i18n("Bookmarks")
-      iconSource: "favorite"
+      iconSource: "bookmarks"
       tab: bookmarksPage
     }
       

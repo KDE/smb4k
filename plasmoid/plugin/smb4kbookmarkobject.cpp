@@ -40,7 +40,6 @@ class Smb4KBookmarkObjectPrivate
   public:
     QString workgroup;
     QUrl url;
-    QIcon icon;
     QString label;
     QString group;
     bool isGroup;
@@ -53,7 +52,6 @@ Smb4KBookmarkObject::Smb4KBookmarkObject(Smb4KBookmark* bookmark, QObject* paren
 {
   d->workgroup  = bookmark->workgroupName();
   d->url        = bookmark->url();
-  d->icon       = bookmark->icon();
   d->label      = bookmark->label();
   d->group      = bookmark->groupName();
   d->isGroup    = false;
@@ -64,7 +62,6 @@ Smb4KBookmarkObject::Smb4KBookmarkObject(Smb4KBookmark* bookmark, QObject* paren
 Smb4KBookmarkObject::Smb4KBookmarkObject(const QString& groupName, QObject* parent)
 : QObject(parent), d(new Smb4KBookmarkObjectPrivate)
 {
-  d->icon       = KDE::icon("folder-favorites");
   d->group      = groupName;
   d->isGroup    = true;
   d->isMounted  = false;
@@ -132,19 +129,6 @@ QUrl Smb4KBookmarkObject::url() const
 void Smb4KBookmarkObject::setURL(const QUrl& url)
 {
   d->url = url;
-  emit changed();
-}
-
-
-QIcon Smb4KBookmarkObject::icon() const
-{
-  return d->icon;
-}
-
-
-void Smb4KBookmarkObject::setIcon(const QIcon& icon)
-{
-  d->icon = icon;
   emit changed();
 }
 

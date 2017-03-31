@@ -62,7 +62,6 @@ class Q_DECL_EXPORT Smb4KNetworkObject : public QObject
   Q_PROPERTY(QString hostName READ hostName WRITE setHostName NOTIFY changed)
   Q_PROPERTY(QString shareName READ shareName WRITE setShareName NOTIFY changed)
   Q_PROPERTY(QString name READ name CONSTANT)
-  Q_PROPERTY(QIcon icon READ icon WRITE setIcon NOTIFY changed)
   Q_PROPERTY(QString comment READ comment WRITE setComment NOTIFY changed)
   Q_PROPERTY(QUrl url READ url WRITE setURL NOTIFY changed)
   Q_PROPERTY(QUrl parentURL READ parentURL CONSTANT)
@@ -70,6 +69,7 @@ class Q_DECL_EXPORT Smb4KNetworkObject : public QObject
   Q_PROPERTY(bool isPrinter READ isPrinter WRITE setPrinter NOTIFY changed)
   Q_PROPERTY(QUrl mountpoint READ mountpoint WRITE setMountpoint NOTIFY changed)
   Q_PROPERTY(bool isMasterBrowser READ isMasterBrowser WRITE setMasterBrowser NOTIFY changed)
+  Q_PROPERTY(bool isInaccessible READ isInaccessible WRITE setInaccessible NOTIFY changed)
   
   friend class Smb4KNetworkObjectPrivate;
   
@@ -205,20 +205,6 @@ class Q_DECL_EXPORT Smb4KNetworkObject : public QObject
     QString name() const;
 
     /**
-     * This function returns the icon of the network item.
-     *
-     * @returns the icon
-     */
-    QIcon icon() const;
-    
-    /**
-     * Set this icon for this network item.
-     * 
-     * @param icon        The icon
-     */
-    void setIcon(const QIcon &icon);
-    
-    /**
      * This function returns the comment of a network item or an
      * empty string if there is no comment defined.
      * 
@@ -310,6 +296,20 @@ class Q_DECL_EXPORT Smb4KNetworkObject : public QObject
      * @param mountpoint  The mountpoint
      */
     void setMountpoint(const QUrl &url);
+    
+    /**
+     * Returns TRUE if the the network item is a share that is mounted and became
+     * inaccessible. Otherwise this function returns FALSE.
+     * @returns TRUE is the mounted share is inaccessible
+     */
+    bool isInaccessible() const;
+    
+    /**
+     * Mark this network item as inaccessible. This is only reasonable with a 
+     * mounted share.
+     * @param inaccessible  Should be TRUE if the mounted share is inaccessible
+     */
+    void setInaccessible(bool inaccessible);
     
   Q_SIGNALS:
     /**

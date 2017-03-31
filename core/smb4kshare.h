@@ -325,9 +325,9 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     void setInaccessible(bool in);
 
     /**
-     * Returns TRUE if the share is not accessible by the user and FALSE otherwise.
+     * Returns TRUE if the share is mounted and not accessible by the user.
      *
-     * @returns TRUE if the share is inaccessible.
+     * @returns TRUE if the share is mounted and inaccessible.
      */
     bool isInaccessible() const;
 
@@ -341,7 +341,7 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     void setForeign(bool foreign);
 
     /**
-     * Returns TRUE if the share was mounted and is owned by another user.
+     * Returns TRUE if the share is mounted and is owned by another user.
      *
      * @returns TRUE if this is a foreign share.
      */
