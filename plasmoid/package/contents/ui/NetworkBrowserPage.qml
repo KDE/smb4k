@@ -118,6 +118,17 @@ PlasmaComponents.Page {
           }
         }
         
+        onPreviewClicked: {
+          networkBrowserListView.currentIndex = index
+          var object = networkBrowserListView.model.get(index).object
+          if (object !== null) {
+            iface.preview(object)
+          }
+          else {
+            // Do nothing
+          }
+        }
+        
         onConfigureClicked: {
           networkBrowserListView.currentIndex = index
           var object = networkBrowserListView.model.get(index).object

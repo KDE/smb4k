@@ -313,6 +313,13 @@ class Q_DECL_EXPORT Smb4KDeclarative : public QObject
      * @returns the profile usage.
      */
     bool profileUsage() const;
+    
+    /**
+     * Open the preview dialog with the contents of the passed network
+     * item.
+     * @param object        The network object
+     */
+    Q_INVOKABLE void preview(Smb4KNetworkObject *object);
 
   Q_SIGNALS:
     /**

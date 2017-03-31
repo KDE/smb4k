@@ -46,6 +46,7 @@
 #include "core/smb4kcustomoptionsmanager.h"
 #include "core/smb4kprofilemanager.h"
 #include "core/smb4ksynchronizer.h"
+#include "core/smb4kpreviewer.h"
 
 // Qt includes
 #include <QDebug>
@@ -564,7 +565,7 @@ void Smb4KDeclarative::openCustomOptionsDialog(Smb4KNetworkObject *object)
   {
     switch (object->type())
     {
-      case Host:
+      case Smb4KNetworkObject::Host:
       {
         for (Smb4KHost *host : hostsList())
         {
@@ -580,7 +581,7 @@ void Smb4KDeclarative::openCustomOptionsDialog(Smb4KNetworkObject *object)
         }
         break;
       }
-      case Share:
+      case Smb4KNetworkObject::Share:
       {
         for (Smb4KShare *share : sharesList())
         {
@@ -676,6 +677,30 @@ bool Smb4KDeclarative::profileUsage() const
 {
   return Smb4KProfileManager::self()->useProfiles();
 }
+
+
+void Smb4KDeclarative::preview(Smb4KNetworkObject* object)
+{
+  if (object->type() == Smb4KNetworkObject::Share)
+  {
+    QString unc = object->url().toString(QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::StripTrailingSlash);
+    Smb4KShare *share = findShare(unc, object->workgroupName());
+    
+    if (share)
+    {
+      Smb4KPreviewer::self()->preview(share);
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
 
 
 void Smb4KDeclarative::slotWorkgroupsListChanged()
