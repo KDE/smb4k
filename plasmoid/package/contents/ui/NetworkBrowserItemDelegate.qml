@@ -30,6 +30,7 @@ PlasmaComponents.ListItem {
   
   signal itemClicked()
   signal bookmarkClicked()
+  signal previewClicked()
   signal configureClicked()
   
   width: parent.width
@@ -57,13 +58,13 @@ PlasmaComponents.ListItem {
           source: {
             switch (object.type) {
               case NetworkObject.Workgroup:
-                "network-workgroup"
+                "network-workgroup-symbolic"
                 break
               case NetworkObject.Host:
-                "network-server"
+                "network-server-symbolic"
                 break
               case NetworkObject.Share:
-                "folder-network"
+                "folder-network-symbolic"
                 break
               default:
                 ""
@@ -119,6 +120,28 @@ PlasmaComponents.ListItem {
           delegate.bookmarkClicked()
         }
       }      
+    }
+    
+    PlasmaComponents.ToolButton {
+      id: previewButton
+      iconSource: "preview"
+      flat: true
+      opacity: 0.2
+      visible: (object.type == NetworkObject.Share && !object.isPrinter) ? true : false
+      enabled: (object.type == NetworkObject.Share && !object.isPrinter) ? true : false
+      MouseArea {
+        anchors.fill: parent
+        hoverEnabled: true
+        onEntered: {
+          parent.opacity = 1.0
+        }
+        onExited: {
+          parent.opacity = 0.2
+        }
+        onClicked: {
+          delegate.previewClicked()
+        }      
+      }
     }
     
     PlasmaComponents.ToolButton {

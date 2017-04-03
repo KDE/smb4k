@@ -27,77 +27,88 @@ FocusScope {
   id: popupDialog
   anchors.fill: parent
   
-  //
-  // Tab bar
-  //
-  PlasmaComponents.TabBar {
-    id: tabBar
+  ColumnLayout {
+    anchors.fill: parent
     
-    anchors {
-      top: parent.top
-      left:parent.left
-      right: parent.right
-    }
+    //
+    // Tab bar
+    //
+    PlasmaComponents.TabBar {
+      id: tabBar
+      
+      Layout.maximumWidth: parent.width
+      Layout.fillWidth: true
+      Layout.fillHeight: false
+          
+      PlasmaComponents.TabButton {
+        id: browserTabButton
+        text: i18n("Network Neighborhood")
+        iconSource: "network-workgroup-symbolic"
+        tab: networkBrowserPage
+      }
+          
+      PlasmaComponents.TabButton {
+        id: sharesTabButton
+        text: i18n("Mounted Shares")
+        iconSource: "folder-network-symbolic"
+        tab: sharesViewPage
+      }
         
-    PlasmaComponents.TabButton {
-      id: browserTabButton
-      text: i18n("Network Neighborhood")
-      iconSource: "network-workgroup-symbolic"
-      tab: networkBrowserPage
-    }
+      PlasmaComponents.TabButton {
+        id: bookmarkTabButton
+        text: i18n("Bookmarks")
+        iconSource: "bookmarks"
+        tab: bookmarksPage
+      }
         
-    PlasmaComponents.TabButton {
-      id: sharesTabButton
-      text: i18n("Mounted Shares")
-      iconSource: "folder-network-symbolic"
-      tab: sharesViewPage
+      PlasmaComponents.TabButton {
+        id: profilesTabButton
+        text: i18n("Profiles")
+        iconSource: "format-list-unordered"
+        tab: profilesPage
+      }
     }
       
-    PlasmaComponents.TabButton {
-      id: bookmarkTabButton
-      text: i18n("Bookmarks")
-      iconSource: "bookmarks"
-      tab: bookmarksPage
-    }
+    //
+    // Tab group
+    //
+    PlasmaComponents.TabGroup {
+      id: tabGroup
       
-    PlasmaComponents.TabButton {
-      id: profilesTabButton
-      text: i18n("Profiles")
-      iconSource: "format-list-unordered"
-      tab: profilesPage
-    }
-  }
-    
-  //
-  // Tab group
-  //
-  PlasmaComponents.TabGroup {
-    id: tabGroup
-    
-    anchors {
-      top: tabBar.bottom
-      left: parent.left
-      right: parent.right
-      bottom: parent.bottom
-    }
-    
-    currentTab: networkBrowserPage
-       
-    NetworkBrowserPage {
-      id: networkBrowserPage
-    }
+      Layout.fillWidth: true
+      Layout.fillHeight: true
+      
+      currentTab: networkBrowserPage
         
-    SharesViewPage {
-      id: sharesViewPage
+      NetworkBrowserPage {
+        id: networkBrowserPage
+      }
+          
+      SharesViewPage {
+        id: sharesViewPage
+      }
+          
+      BookmarksPage {
+        id: bookmarksPage
+      }
+          
+      ProfilesPage {
+        id: profilesPage
+      }
     }
-        
-    BookmarksPage {
-      id: bookmarksPage
-    }
-        
-    ProfilesPage {
-      id: profilesPage
-    }
+    
+//     //
+//     // Information
+//     //
+//     PlasmaComponents.Label {
+//       id: infoLabel
+//       
+//       Layout.fillWidth: true
+//       Layout.fillHeight: false
+//       
+//       color: "red"
+//       text: "lalala"
+//     }
   }
   
   //
