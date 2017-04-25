@@ -152,8 +152,8 @@ void Smb4KNetworkSearchPart::setupActions()
   connect(clear_action, SIGNAL(triggered(bool)), this, SLOT(slotClearActionTriggered(bool)));
 
   KDualAction *mount_action = new KDualAction(this);
-  KGuiItem mount_item(i18n("&Mount"), KDE::icon("emblem-mounted"));
-  KGuiItem unmount_item(i18n("&Unmount"), KDE::icon("emblem-unmounted"));
+  KGuiItem mount_item(i18n("&Mount"), KDE::icon("media-mount"));
+  KGuiItem unmount_item(i18n("&Unmount"), KDE::icon("media-eject"));
   mount_action->setActiveGuiItem(mount_item);
   mount_action->setInactiveGuiItem(unmount_item);
   mount_action->setActive(true);

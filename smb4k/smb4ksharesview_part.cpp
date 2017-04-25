@@ -210,7 +210,7 @@ void Smb4KSharesViewPart::setupActions()
     }
   }
   
-  QAction *unmount_action = new QAction(KDE::icon("emblem-unmounted"), i18n("&Unmount"), this);
+  QAction *unmount_action = new QAction(KDE::icon("media-eject"), i18n("&Unmount"), this);
   connect(unmount_action, SIGNAL(triggered(bool)), this, SLOT(slotUnmountShare(bool)));
 
   QAction *unmount_all_action = new QAction(KDE::icon("system-run"), i18n("U&nmount All"), this);
