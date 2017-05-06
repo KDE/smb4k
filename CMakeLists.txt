@@ -6,7 +6,7 @@ set(VERSION_PATCH 90)
 
 set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 
-cmake_minimum_required(VERSION 3.3 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 cmake_policy(SET CMP0037 NEW)
 cmake_policy(SET CMP0063 NEW)
 
