@@ -199,7 +199,7 @@ void Smb4KSharesMenu::slotShareMounted(Smb4KShare *share)
   m_action_collection->addAction(share_menu->objectName(), share_menu);
 
   // Now add the actions for this share.
-  QAction *unmount = new QAction(KDE::icon("emblem-unmounted"), i18n("Unmount"), m_actions);
+  QAction *unmount = new QAction(KDE::icon("media-eject"), i18n("Unmount"), m_actions);
   unmount->setObjectName(QString("[unmount]_%1").arg(share->canonicalPath()));
   unmount->setEnabled(!share->isForeign() || Smb4KSettings::unmountForeignShares());
   share_menu->addAction(unmount);

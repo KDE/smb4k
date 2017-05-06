@@ -132,7 +132,7 @@ void Smb4KBookmarkMenu::setupMenu()
   // there are bookmarks present (i.e. there is one empty group).
   if (groups.size() == 0 || (groups.size() == 1 && groups.first().isEmpty()))
   {
-    QAction *mount_toplevel = new QAction(KDE::icon("emblem-mounted"), i18n("Mount All Bookmarks"), m_action_collection);
+    QAction *mount_toplevel = new QAction(KDE::icon("media-mount"), i18n("Mount All Bookmarks"), m_action_collection);
     m_action_collection->addAction("mount_toplevel", mount_toplevel);
     addAction(mount_toplevel);
     
@@ -186,7 +186,7 @@ void Smb4KBookmarkMenu::setupMenu()
       KActionMenu *group_menu = new KActionMenu(group);
       group->setMenu(group_menu->menu());
 
-      QAction *group_mount = new QAction(KDE::icon("emblem-mounted"), i18n("Mount All Bookmarks"), m_action_collection);
+      QAction *group_mount = new QAction(KDE::icon("media-mount"), i18n("Mount All Bookmarks"), m_action_collection);
       m_action_collection->addAction(QString("mount_%1").arg(groups.at(i)), group_mount);
       group_menu->addAction(group_mount);
       
