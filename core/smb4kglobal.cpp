@@ -2,7 +2,7 @@
     smb4kglobal  -  This is the global namespace for Smb4K.
                              -------------------
     begin                : Sa Apr 2 2005
-    copyright            : (C) 2005-2014 by Alexander Reinholdt
+    copyright            : (C) 2005-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -849,5 +849,68 @@ QStringList Smb4KGlobal::whitelistedMountArguments()
   return p->whitelistedMountArguments;
 }
 #endif
+
+
+const QString Smb4KGlobal::findMountExecutable()
+{
+  QString mount;
+  QStringList paths;
+  paths << "/bin";
+  paths << "/sbin";
+  paths << "/usr/bin";
+  paths << "/usr/sbin";
+  paths << "/usr/local/bin";
+  paths << "/usr/local/sbin";
+
+  for (int i = 0; i < paths.size(); ++i)
+  {
+#if defined(Q_OS_LINUX)
+    mount = KGlobal::dirs()->findExe("mount.cifs", paths.at(i));
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+    mount = KGlobal::dirs()->findExe("mount_smbfs", paths.at(i));
+#endif
+
+    if (!mount.isEmpty())
+    {
+      break;
+    }
+    else
+    {
+      continue;
+    }
+  }
+  
+  return mount;
+}
+
+
+const QString Smb4KGlobal::findUmountExecutable()
+{
+  // Find the umount program.
+  QString umount;
+  QStringList paths;
+  paths << "/bin";
+  paths << "/sbin";
+  paths << "/usr/bin";
+  paths << "/usr/sbin";
+  paths << "/usr/local/bin";
+  paths << "/usr/local/sbin";
+
+  for ( int i = 0; i < paths.size(); ++i )
+  {
+    umount = KGlobal::dirs()->findExe("umount", paths.at(i));
+
+    if (!umount.isEmpty())
+    {
+      break;
+    }
+    else
+    {
+      continue;
+    }
+  }
+  
+  return umount;
+}
 
 

@@ -29,6 +29,7 @@
 
 // application specific includes
 #include "smb4kmounthelper.h"
+#include "core/smb4kglobal.h"
 
 // Qt includes
 #include <QProcessEnvironment>
@@ -43,12 +44,35 @@
 #include <kmountpoint.h>
 #include <kurl.h>
 
+using namespace Smb4KGlobal;
+
 KDE4_AUTH_HELPER_MAIN( "net.sourceforge.smb4k.mounthelper", Smb4KMountHelper )
 
 
 ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
 {
   ActionReply reply;
+  
+  //
+  // Get the mount executable
+  //
+  const QString mount = findMountExecutable();
+  
+  //
+  // Check the executable
+  //
+  if (mount != args["mh_command"].toString())
+  {
+    // Something weird is going on, bail out.
+    reply.setErrorCode(ActionReply::HelperError);
+    reply.setErrorDescription(i18n("Wrong executable passed. Bailing out."));
+    return reply;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
   // The mountpoint is a unique and can be used to
   // find the share.
   reply.addData("mh_mountpoint", args["mh_mountpoint"]);
@@ -75,12 +99,12 @@ ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
   // Set the mount command here.
   QStringList command;
 #if defined(Q_OS_LINUX)
-  command << args["mh_command"].toString();
+  command << mount;
   command << args["mh_unc"].toString();
   command << args["mh_mountpoint"].toString();
   command << args["mh_options"].toStringList();
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-  command << args["mh_command"].toString();
+  command << mount;
   command << args["mh_options"].toStringList();
   command << args["mh_unc"].toString();
   command << args["mh_mountpoint"].toString();
@@ -161,6 +185,27 @@ ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
 ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
 {
   ActionReply reply;
+  
+  //
+  // Get the umount executable
+  //
+  const QString umount = findUmountExecutable();
+  
+  //
+  // Check the executable
+  //
+  if (umount != args["mh_command"].toString())
+  {
+    // Something weird is going on, bail out.
+    reply.setErrorCode(ActionReply::HelperError);
+    reply.setErrorDescription(i18n("Wrong executable passed. Bailing out."));
+    return reply;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
   // The mountpoint is a unique and can be used to
   // find the share.
   reply.addData("mh_mountpoint", args["mh_mountpoint"]);
@@ -208,7 +253,7 @@ ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
   
   // Set the umount command here.
   QStringList command;
-  command << args["mh_command"].toString();
+  command << umount;
   command << args["mh_options"].toStringList();
   command << args["mh_mountpoint"].toString();
 

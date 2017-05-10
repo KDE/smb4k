@@ -207,30 +207,7 @@ bool Smb4KMountJob::createMountAction(Smb4KShare *share, Action *action)
 //
 bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
 {
-  // Find the mount program.
-  QString mount;
-  QStringList paths;
-  paths << "/bin";
-  paths << "/sbin";
-  paths << "/usr/bin";
-  paths << "/usr/sbin";
-  paths << "/usr/local/bin";
-  paths << "/usr/local/sbin";
-
-  for (int i = 0; i < paths.size(); ++i)
-  {
-    mount = KGlobal::dirs()->findExe("mount.cifs", paths.at(i));
-
-    if (!mount.isEmpty())
-    {
-      map.insert("mh_command", mount);
-      break;
-    }
-    else
-    {
-      continue;
-    }
-  }
+  const QString mount = findMountExecutable();
 
   if (mount.isEmpty())
   {
@@ -241,6 +218,8 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   {
     // Do nothing
   }
+  
+  map.insert("mh_command", mount);
   
   // Mount arguments.
   QMap<QString, QString> global_options = globalSambaOptions();
@@ -729,30 +708,7 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
 //
 bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
 {
-  // Find the mount program.
-  QString mount;
-  QStringList paths;
-  paths << "/bin";
-  paths << "/sbin";
-  paths << "/usr/bin";
-  paths << "/usr/sbin";
-  paths << "/usr/local/bin";
-  paths << "/usr/local/sbin";
-
-  for (int i = 0; i < paths.size(); ++i)
-  {
-    mount = KGlobal::dirs()->findExe("mount_smbfs", paths.at(i));
-
-    if (!mount.isEmpty())
-    {
-      map.insert("mh_command", mount);
-      break;
-    }
-    else
-    {
-      continue;
-    }
-  }
+  const QString mount = findMountExecutable();
 
   if (mount.isEmpty())
   {
@@ -763,6 +719,8 @@ bool Smb4KMountJob::fillArgs(Smb4KShare *share, QMap<QString, QVariant>& map)
   {
     // Do nothing
   }
+  
+  map.insert("mh_command", mount);
   
   // Mount arguments.
   QMap<QString, QString> global_options = globalSambaOptions();
@@ -1253,29 +1211,7 @@ bool Smb4KUnmountJob::createUnmountAction(Smb4KShare *share, Action *action)
     // Do nothing
   }
   
-  // Find the umount program.
-  QString umount;
-  QStringList paths;
-  paths << "/bin";
-  paths << "/sbin";
-  paths << "/usr/bin";
-  paths << "/usr/sbin";
-  paths << "/usr/local/bin";
-  paths << "/usr/local/sbin";
-
-  for ( int i = 0; i < paths.size(); ++i )
-  {
-    umount = KGlobal::dirs()->findExe("umount", paths.at(i));
-
-    if (!umount.isEmpty())
-    {
-      break;
-    }
-    else
-    {
-      continue;
-    }
-  }
+  const QString umount = findUmountExecutable();
 
   if (umount.isEmpty() && !m_silent)
   {

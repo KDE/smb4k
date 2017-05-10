@@ -2,7 +2,7 @@
     smb4kglobal  -  This is the global namespace for Smb4K.
                              -------------------
     begin                : Sa Apr 2 2005
-    copyright            : (C) 2005-2014 by Alexander Reinholdt
+    copyright            : (C) 2005-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -455,6 +455,20 @@ namespace Smb4KGlobal
    */
   KDE_EXPORT QStringList whitelistedMountArguments();
 #endif
+  
+  /**
+   * Find the mount executable on the system.
+   * 
+   * @returns the path of the mount executable.
+   */
+  KDE_EXPORT const QString findMountExecutable();
+  
+  /**
+   * Find the umount executable on the system.
+   * 
+   * @returns the path of the umount executable.
+   */
+  KDE_EXPORT const QString findUmountExecutable();
 };
 
 #endif
