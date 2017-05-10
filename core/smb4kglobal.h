@@ -454,6 +454,20 @@ namespace Smb4KGlobal
    */
   Q_DECL_EXPORT QStringList whitelistedMountArguments();
 #endif
+  
+  /**
+   * Find the mount executable on the system.
+   * 
+   * @returns the path of the mount executable.
+   */
+  Q_DECL_EXPORT const QString findMountExecutable();
+  
+  /**
+   * Find the umount executable on the system.
+   * 
+   * @returns the path of the umount executable.
+   */
+  Q_DECL_EXPORT const QString findUmountExecutable();
 };
 
 #endif

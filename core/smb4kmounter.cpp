@@ -1104,16 +1104,7 @@ void Smb4KMounter::timerEvent(QTimerEvent *)
 bool Smb4KMounter::fillMountActionArgs(Smb4KShare *share, QVariantMap& map)
 {
   // Find the mount program.
-  QString mount;
-  QStringList paths;
-  paths << "/bin";
-  paths << "/sbin";
-  paths << "/usr/bin";
-  paths << "/usr/sbin";
-  paths << "/usr/local/bin";
-  paths << "/usr/local/sbin";
-
-  mount = QStandardPaths::findExecutable("mount.cifs", paths);
+  const QString mount = findMountExecutable();
 
   if (!mount.isEmpty())
   {
@@ -1645,16 +1636,7 @@ bool Smb4KMounter::fillMountActionArgs(Smb4KShare *share, QVariantMap& map)
 bool Smb4KMounter::fillMountActionArgs(Smb4KShare *share, QVariantMap& map)
 {
   // Find the mount program.
-  QString mount;
-  QStringList paths;
-  paths << "/bin";
-  paths << "/sbin";
-  paths << "/usr/bin";
-  paths << "/usr/sbin";
-  paths << "/usr/local/bin";
-  paths << "/usr/local/sbin";
-
-  mount = QStandardPaths::findExecutable("mount_smbfs", paths);
+  const QString mount = findMountExecutable();
 
   if (!mount.isEmpty())
   {
@@ -1823,15 +1805,7 @@ bool Smb4KMounter::fillUnmountActionArgs(Smb4KShare *share, bool force, bool sil
   //
   // The umount program
   //
-  QStringList paths;
-  paths << "/bin";
-  paths << "/sbin";
-  paths << "/usr/bin";
-  paths << "/usr/sbin";
-  paths << "/usr/local/bin";
-  paths << "/usr/local/sbin";
-
-  QString umount = QStandardPaths::findExecutable("umount", paths);
+  const QString umount = findUmountExecutable();
 
   if (umount.isEmpty() && !silent)
   {
@@ -1884,15 +1858,7 @@ bool Smb4KMounter::fillUnmountActionArgs(Smb4KShare *share, bool force, bool sil
   //
   // The umount program
   //
-  QStringList paths;
-  paths << "/bin";
-  paths << "/sbin";
-  paths << "/usr/bin";
-  paths << "/usr/sbin";
-  paths << "/usr/local/bin";
-  paths << "/usr/local/sbin";
-
-  QString umount = QStandardPaths::findExecutable("umount", paths);
+  const QString umount = findUmountExecutable();
 
   if (umount.isEmpty() && !silent)
   {

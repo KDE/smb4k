@@ -2,7 +2,7 @@
     The helper that mounts and unmounts shares.
                              -------------------
     begin                : Sa Okt 16 2010
-    copyright            : (C) 2010-2016 by Alexander Reinholdt
+    copyright            : (C) 2010-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -29,6 +29,7 @@
 
 // application specific includes
 #include "smb4kmounthelper.h"
+#include "../core/smb4kglobal.h"
 
 // Qt includes
 #include <QProcessEnvironment>
@@ -42,12 +43,22 @@
 #include <KI18n/KLocalizedString>
 #include <KIOCore/KMountPoint>
 
+using namespace Smb4KGlobal;
+
 KAUTH_HELPER_MAIN("org.kde.smb4k.mounthelper", Smb4KMountHelper);
 
 
 ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
 {
+  //
+  // The action reply
+  //
   ActionReply reply;
+  
+  //
+  // Get the mount executable
+  //
+  const QString mount = findMountExecutable();
   
   //
   // Iterate through the entries.
@@ -59,6 +70,20 @@ ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
     it.next();
     QString index = it.key();
     QVariantMap entry = it.value().toMap();
+    
+    //
+    // Check the executable
+    //
+    if (mount != entry["mh_command"].toString())
+    {
+      // Something weird is going on, bail out.
+      reply.setType(ActionReply::HelperErrorType);
+      return reply;
+    }
+    else
+    {
+      // Do nothing
+    }
     
     //
     // The process
@@ -87,12 +112,12 @@ ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
     //
     QStringList command;
 #if defined(Q_OS_LINUX)
-    command << entry["mh_command"].toString();
+    command << mount;
     command << entry["mh_unc"].toString();
     command << entry["mh_mountpoint"].toString();
     command << entry["mh_options"].toStringList();
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-    command << entry["mh_command"].toString();
+    command << mount;
     command << entry["mh_options"].toStringList();
     command << entry["mh_unc"].toString();
     command << entry["mh_mountpoint"].toString();
@@ -208,6 +233,11 @@ ActionReply Smb4KMountHelper::unmountOneByOne(const QVariantMap& args)
   ActionReply reply;
   
   //
+  // Get the mount executable
+  //
+  const QString umount = findUmountExecutable();
+  
+  //
   // Iterate through the entries.
   //
   QMapIterator<QString, QVariant> it(args);
@@ -217,6 +247,20 @@ ActionReply Smb4KMountHelper::unmountOneByOne(const QVariantMap& args)
     it.next();
     QString index = it.key();
     QVariantMap entry = it.value().toMap();
+    
+    //
+    // Check the executable
+    //
+    if (umount != entry["mh_command"].toString())
+    {
+      // Something weird is going on, bail out.
+      reply.setType(ActionReply::HelperErrorType);
+      return reply;
+    }
+    else
+    {
+      // Do nothing
+    }
       
     //
     // Check if the mountpoint is valid and the filesystem is correct.
@@ -261,7 +305,7 @@ ActionReply Smb4KMountHelper::unmountOneByOne(const QVariantMap& args)
     // The command
     //
     QStringList command;
-    command << entry["mh_command"].toString();
+    command << umount;
     command << entry["mh_options"].toStringList();
     command << entry["mh_mountpoint"].toString();
     
@@ -342,6 +386,11 @@ ActionReply Smb4KMountHelper::unmountAtOnce(const QVariantMap& args)
   ActionReply reply;
   
   //
+  // Get the mount executable
+  //
+  const QString umount = findUmountExecutable();
+  
+  //
   // Check the mountpoints and put the valid ones into a string list
   //
   QStringList validMountPoints;
@@ -351,7 +400,7 @@ ActionReply Smb4KMountHelper::unmountAtOnce(const QVariantMap& args)
   {
     it.next();
     QVariantMap entry = it.value().toMap();
-      
+    
     bool mountPointOk = false;
     KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions);
       
@@ -399,9 +448,23 @@ ActionReply Smb4KMountHelper::unmountAtOnce(const QVariantMap& args)
     
   if (!validMountPoints.isEmpty())
   {
+    //
+    // Check the executable
+    //
+    if (umount != args.first().toMap().value("mh_command").toString()) 
+    {
+      // Something weird is going on, bail output
+      reply.setType(ActionReply::HelperErrorType);
+      return reply;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
     // The command
     QStringList command;
-    command << args.first().toMap().value("mh_command").toString();
+    command << umount;
     command << args.first().toMap().value("mh_options").toStringList();
     command << validMountPoints;
       

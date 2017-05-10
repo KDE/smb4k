@@ -1,8 +1,15 @@
+include_directories(
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_BINARY_DIR}
+  ${CMAKE_SOURCE_DIR}/core 
+  ${CMAKE_BINARY_DIR}/core)
+
 set(smb4kmounthelper_SRCS smb4kmounthelper.cpp)
 
 add_executable(mounthelper ${smb4kmounthelper_SRCS})
 
 target_link_libraries(mounthelper
+  smb4kcore
   Qt5::Core
   KF5::Auth
   KF5::CoreAddons
