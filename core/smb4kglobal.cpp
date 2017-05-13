@@ -864,3 +864,35 @@ QStringList Smb4KGlobal::whitelistedMountArguments()
 #endif
 
 
+const QString Smb4KGlobal::findMountExecutable()
+{
+  QStringList paths;
+  paths << "/bin";
+  paths << "/sbin";
+  paths << "/usr/bin";
+  paths << "/usr/sbin";
+  paths << "/usr/local/bin";
+  paths << "/usr/local/sbin";
+
+#if defined(Q_OS_LINUX)
+  return QStandardPaths::findExecutable("mount.cifs", paths);
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+  return QStandardPaths::findExecutable("mount_smbfs", paths);
+#else
+  return QString();
+#endif
+}
+
+
+const QString Smb4KGlobal::findUmountExecutable()
+{
+  QStringList paths;
+  paths << "/bin";
+  paths << "/sbin";
+  paths << "/usr/bin";
+  paths << "/usr/sbin";
+  paths << "/usr/local/bin";
+  paths << "/usr/local/sbin";
+
+  return QStandardPaths::findExecutable("umount", paths);
+}
