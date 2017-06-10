@@ -19,6 +19,7 @@
 
 import QtQuick 2.3
 import QtQuick.Layouts 1.3
+import QtQml.Models 2.3
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.components 2.0 as PlasmaComponents
@@ -80,6 +81,120 @@ PlasmaComponents.Page {
       }
     }
   }
+  
+  //
+  // Delegate Model (used for sorting)
+  //
+  DelegateModel {
+    id: networkBrowserItemDelegateModel
+    
+    function lessThan(left, right) {
+      var less = false
+      
+      switch (left.type) {
+        case NetworkObject.Workgroup:
+          less = (left.workgroupName < right.workgroupName)
+          break
+        case NetworkObject.Host:
+          less = (left.hostName < right.hostName)
+          break
+        case NetworkObject.Share:
+          less = (left.shareName < right.shareName)
+          break
+        default:
+          break          
+      }
+      return less
+    }
+    
+    function insertPosition(item) {
+      var lower = 0
+      var upper = items.count
+      
+      while (lower < upper) {
+        var middle = Math.floor(lower + (upper - lower) / 2)
+        var result = lessThan(item.model.object, items.get(middle).model.object)
+        if (result) {
+          upper = middle
+        }
+        else {
+          lower = middle + 1
+        }
+      }
+      return lower
+    }
+    
+    function sort() {
+      while (unsortedItems.count > 0) {
+        var item = unsortedItems.get(0)
+        var index = insertPosition(item)
+        
+        item.groups = "items"
+        items.move(item.itemsIndex, index)
+      }
+    }
+    
+    items.includeByDefault: false
+    
+    groups: [ 
+      DelegateModelGroup {
+        id: unsortedItems
+        name: "unsorted"
+      
+        includeByDefault: true
+      
+        onChanged: {
+          networkBrowserItemDelegateModel.sort()
+        }
+      }
+    ]
+
+    filterOnGroup: "items"
+    
+    model: ListModel {}
+    
+    delegate: NetworkBrowserItemDelegate {
+      id: networkBrowserItemDelegate
+        
+      onItemClicked: {
+        networkBrowserListView.currentIndex = DelegateModel.itemsIndex
+        networkItemClicked()
+      }
+        
+      onBookmarkClicked: {
+        networkBrowserListView.currentIndex = DelegateModel.itemsIndex
+        var object = networkBrowserItemDelegateModel.items.get(DelegateModel.itemsIndex).model.object
+        if (object !== null) {
+          iface.addBookmark(object)
+        }
+        else {
+          // Do nothing
+        }
+      }
+        
+      onPreviewClicked: {
+        networkBrowserListView.currentIndex = DelegateModel.itemsIndex
+        var object = networkBrowserItemDelegateModel.items.get(DelegateModel.itemsIndex).model.object
+        if (object !== null) {
+          iface.preview(object)
+        }
+        else {
+          // Do nothing
+        }
+      }
+        
+      onConfigureClicked: {
+        networkBrowserListView.currentIndex = DelegateModel.itemsIndex
+        var object = networkBrowserItemDelegateModel.items.get(DelegateModel.itemsIndex).model.object
+        if (object !== 0) {
+          iface.openCustomOptionsDialog(object)
+        }
+        else {
+          // Do nothing
+        }
+      }
+    }
+  }
       
   //
   // List view 
@@ -97,51 +212,8 @@ PlasmaComponents.Page {
     ListView {
       id: networkBrowserListView
       anchors.fill: parent
+      model: networkBrowserItemDelegateModel
       clip: true
-      
-      delegate: NetworkBrowserItemDelegate {
-        id: networkBrowserItemDelegate
-        
-        onItemClicked: {
-          networkBrowserListView.currentIndex = index
-          networkItemClicked()
-        }
-        
-        onBookmarkClicked: {
-          networkBrowserListView.currentIndex = index
-          var object = networkBrowserListView.model.get(index).object
-          if (object !== null) {
-            iface.addBookmark()
-          }
-          else {
-            // Do nothing
-          }
-        }
-        
-        onPreviewClicked: {
-          networkBrowserListView.currentIndex = index
-          var object = networkBrowserListView.model.get(index).object
-          if (object !== null) {
-            iface.preview(object)
-          }
-          else {
-            // Do nothing
-          }
-        }
-        
-        onConfigureClicked: {
-          networkBrowserListView.currentIndex = index
-          var object = networkBrowserListView.model.get(index).object
-          if (object !== 0) {
-            iface.openCustomOptionsDialog(object)
-          }
-          else {
-            // Do nothing
-          }
-        }
-      }
-      
-      model: ListModel {}
       focus: true
       highlightRangeMode: ListView.StrictlyEnforceRange
 //       highlight: Rectangle {
@@ -168,7 +240,13 @@ PlasmaComponents.Page {
   //
   function rescan() {
     if (networkBrowserListView.currentIndex != -1) {
-      iface.lookup(networkBrowserListView.currentItem.object)
+      var object = networkBrowserItemDelegateModel.items.get(networkBrowserListView.currentIndex).model.object
+      if (object !== null) {
+        iface.lookup(object)
+      }
+      else {
+        // Do nothing
+      }
     }
     else {
       iface.lookup()
@@ -184,7 +262,7 @@ PlasmaComponents.Page {
   
   function up() {
     if (networkBrowserListView.currentIndex != -1) {
-      var object = networkBrowserListView.model.get(networkBrowserListView.currentIndex).object
+      var object = networkBrowserItemDelegateModel.items.get(networkBrowserListView.currentIndex).model.object
       
       switch (object.type) {
         case NetworkObject.Workgroup:
@@ -220,7 +298,7 @@ PlasmaComponents.Page {
   
   function networkItemClicked() {
     if (networkBrowserListView.currentIndex != -1) {
-      var object = networkBrowserListView.model.get(networkBrowserListView.currentIndex).object
+      var object = networkBrowserItemDelegateModel.items.get(networkBrowserListView.currentIndex).model.object
       
       if (object.type == NetworkObject.Share) {
         if (!object.isPrinter) {
@@ -240,38 +318,40 @@ PlasmaComponents.Page {
   }
   
   function getWorkgroups() {
-    while (networkBrowserListView.model.count != 0) {
-      networkBrowserListView.model.remove(0)
+    while (networkBrowserItemDelegateModel.model.count != 0) {
+      networkBrowserItemDelegateModel.model.remove(0)
     }
     
     if (iface.workgroups.length != 0) {
       for (var i = 0; i < iface.workgroups.length; i++) {
-        networkBrowserListView.model.append({"object": iface.workgroups[i]})
+        networkBrowserItemDelegateModel.model.append({"object": iface.workgroups[i]})
       }
     }
     else {
       // Do nothing
     }
+    
+    networkBrowserListView.currentIndex = -1
   }
   
   function getHosts() {
     var workgroupName = ""
     
     if (networkBrowserListView.currentIndex != -1) {
-      workgroupName = networkBrowserListView.model.get(networkBrowserListView.currentIndex).object.workgroupName
+      workgroupName = networkBrowserItemDelegateModel.items.get(networkBrowserListView.currentIndex).model.object.workgroupName
     }
     else {
       // Do nothing
     }
     
-    while (networkBrowserListView.model.count != 0) {
-      networkBrowserListView.model.remove(0)
+    while (networkBrowserItemDelegateModel.model.count != 0) {
+      networkBrowserItemDelegateModel.model.remove(0)
     }
     
     if (iface.hosts.length != 0) {
       for (var i = 0; i < iface.hosts.length; i++) {
         if (workgroupName.length != 0 && workgroupName == iface.hosts[i].workgroupName) {
-          networkBrowserListView.model.append({"object": iface.hosts[i]})
+          networkBrowserItemDelegateModel.model.append({"object": iface.hosts[i]})
         }
         else {
           // Do nothing
@@ -281,26 +361,28 @@ PlasmaComponents.Page {
     else {
       // Do nothing
     }
+    
+    networkBrowserListView.currentIndex = -1
   }
   
   function getShares() {
     var hostName = ""
     
     if (networkBrowserListView.currentIndex != -1) {
-      hostName = networkBrowserListView.model.get(networkBrowserListView.currentIndex).object.hostName
+      hostName = networkBrowserItemDelegateModel.items.get(networkBrowserListView.currentIndex).model.object.hostName
     }
     else {
       // Do nothing
     }    
     
-    while (networkBrowserListView.model.count != 0) {
-      networkBrowserListView.model.remove(0)
+    while (networkBrowserItemDelegateModel.model.count != 0) {
+      networkBrowserItemDelegateModel.model.remove(0)
     }
     
     if (iface.shares.length != 0) {
       for (var i = 0; i < iface.shares.length; i++) {
         if (hostName.length != 0 && hostName == iface.shares[i].hostName) {
-          networkBrowserListView.model.append({"object": iface.shares[i]})
+          networkBrowserItemDelegateModel.model.append({"object": iface.shares[i]})
         }
         else {
           // Do nothing
@@ -310,20 +392,24 @@ PlasmaComponents.Page {
     else {
       // Do nothing
     }
+    
+    networkBrowserListView.currentIndex = -1
   }
   
   function shareMountedOrUnmounted() {
-    for (var i = 0; i < networkBrowserListView.model.count; i++) {
-      var object = networkBrowserListView.model.get(i).object
+    for (var i = 0; i < networkBrowserItemDelegateModel.model.count; i++) {
+      var object = networkBrowserItemDelegateModel.model.get(i).object
+      
       if (object !== null && object.type == NetworkObject.Share) {
         var mountedShare = iface.findMountedShare(object.url, false)
+        
         if (mountedShare !== null) {
           object.isMounted = mountedShare.isMounted
         }
         else {
           object.isMounted = false
         }
-        networkBrowserListView.model.set(i, {"object": object})
+        networkBrowserItemDelegateModel.model.set(i, {"object": object})
       }
       else {
         // Do nothing
