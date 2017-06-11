@@ -19,6 +19,7 @@
 
 import QtQuick 2.3
 import QtQuick.Layouts 1.3
+import QtQml.Models 2.3
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.components 2.0 as PlasmaComponents
@@ -54,6 +55,120 @@ PlasmaComponents.Page {
   }
   
   //
+  // Delegate Model (used for sorting)
+  //
+  DelegateModel {
+    id: sharesViewItemDelegateModel
+    
+    function lessThan(left, right) {
+      var less = false
+      
+      if (left.hostName == right.hostName) {
+        less = (left.shareName < right.shareName)
+      }
+      else {
+        less = (left.shareName < right.shareName && left.hostName < right.hostName)
+      }
+
+      return less
+    }
+    
+    function insertPosition(item) {
+      var lower = 0
+      var upper = items.count
+      
+      while (lower < upper) {
+        var middle = Math.floor(lower + (upper - lower) / 2)
+        var result = lessThan(item.model.object, items.get(middle).model.object)
+        if (result) {
+          upper = middle
+        }
+        else {
+          lower = middle + 1
+        }
+      }
+      return lower
+    }
+    
+    function sort() {
+      while (unsortedItems.count > 0) {
+        var item = unsortedItems.get(0)
+        var index = insertPosition(item)
+        
+        item.groups = "items"
+        items.move(item.itemsIndex, index)
+      }
+    }
+    
+    items.includeByDefault: false
+    
+    groups: [ 
+      DelegateModelGroup {
+        id: unsortedItems
+        name: "unsorted"
+      
+        includeByDefault: true
+      
+        onChanged: {
+          sharesViewItemDelegateModel.sort()
+        }
+      }
+    ]
+
+    filterOnGroup: "items"
+    
+    model: ListModel {}
+    
+    delegate: SharesViewItemDelegate {
+      id: sharesViewItemDelegate
+        
+      onItemClicked: {
+        sharesViewListView.currentIndex = DelegateModel.itemsIndex
+        var object = sharesViewItemDelegateModel.items.get(DelegateModel.itemsIndex).model.object
+        if (object !== null) {
+          Qt.openUrlExternally(object.mountpoint)
+        }
+        else {
+          // Do nothing
+        }
+      }
+        
+      onUnmountClicked: {
+        sharesViewListView.currentIndex = DelegateModel.itemsIndex
+        var object = sharesViewItemDelegateModel.items.get(DelegateModel.itemsIndex).model.object
+        if (object !== null) {
+          iface.unmount(object)
+        }
+        else {
+          // Do nothing
+        }
+      }
+        
+      onBookmarkClicked: {
+        sharesViewListView.currentIndex = DelegateModel.itemsIndex
+        var object = sharesViewItemDelegateModel.items.get(DelegateModel.itemsIndex).model.object
+        if (object !== null) {
+          iface.addBookmark(object)
+        }
+        else {
+          // Do nothing
+        }
+      }
+        
+      onSyncClicked: {
+        sharesViewListView.currentIndex = DelegateModel.itemsIndex
+        var object = sharesViewItemDelegateModel.items.get(DelegateModel.itemsIndex).model.object
+        if (object !== null) {
+          iface.synchronize(object)
+        }
+        else {
+          // Do nothing
+        }
+      }
+    }
+  }
+  
+  //
   // List view
   //
   PlasmaExtras.ScrollArea {
@@ -69,57 +184,8 @@ PlasmaComponents.Page {
     ListView {
       id: sharesViewListView
       anchors.fill: parent
+      model: sharesViewItemDelegateModel
       clip: true
-      
-      delegate: SharesViewItemDelegate {
-        id: sharesViewItemDelegate
-        
-        onItemClicked: {
-          sharesViewListView.currentIndex = index
-          var object = sharesViewListView.model.get(index).object
-          if (object !== null) {
-            Qt.openUrlExternally(object.mountpoint)
-          }
-          else {
-            // Do nothing
-          }
-        }
-        
-        onUnmountClicked: {
-          sharesViewListView.currentIndex = index
-          var object = sharesViewListView.model.get(index).object
-          if (object !== null) {
-            iface.unmount(object)
-          }
-          else {
-            // Do nothing
-          }
-        }
-        
-        onBookmarkClicked: {
-          sharesViewListView.currentIndex = index
-          var object = sharesViewListView.model.get(index).object
-          if (object !== null) {
-            iface.addBookmark(object)
-          }
-          else {
-            // Do nothing
-          }
-        }
-        
-        onSyncClicked: {
-          sharesViewListView.currentIndex = index
-          var object = sharesViewListView.model.get(index).object
-          if (object !== null) {
-            iface.synchronize(object)
-          }
-          else {
-            // Do nothing
-          }
-        }
-      }      
-      
-      model: ListModel {}
       focus: true
       highlightRangeMode: ListView.StrictlyEnforceRange
     }
@@ -137,8 +203,8 @@ PlasmaComponents.Page {
   // Functions
   //
   function shareMountedOrUnmounted() {
-    while (sharesViewListView.model.count != 0) {
-      sharesViewListView.model.remove(0)
+    while (sharesViewItemDelegateModel.model.count != 0) {
+      sharesViewItemDelegateModel.model.remove(0)
     }
     
     for (var i = 0; i < iface.mountedShares.length; i++) {
@@ -147,7 +213,7 @@ PlasmaComponents.Page {
       // here, if the share is still mounted.
       var mountedShare = iface.mountedShares[i]
       if (mountedShare !== null && mountedShare.isMounted) {
-        sharesViewListView.model.append({"object": iface.mountedShares[i]})
+        sharesViewItemDelegateModel.model.append({"object": iface.mountedShares[i]})
       }
       else {
         // Do nothing
