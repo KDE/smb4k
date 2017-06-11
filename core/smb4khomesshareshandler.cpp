@@ -55,7 +55,7 @@ Smb4KHomesSharesHandler::Smb4KHomesSharesHandler(QObject *parent)
 : QObject(parent), d(new Smb4KHomesSharesHandlerPrivate)
 {
   // First we need the directory.
-  QString path = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+  QString path = dataLocation();
   
   QDir dir;
   
@@ -166,7 +166,7 @@ QStringList Smb4KHomesSharesHandler::homesUsers(Smb4KShare *share)
 void Smb4KHomesSharesHandler::readUserNames(QList<Smb4KHomesUsers *> *list, bool allUsers)
 {
   // Locate the XML file.
-  QFile xmlFile(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)+QDir::separator()+"homes_shares.xml");
+  QFile xmlFile(dataLocation()+QDir::separator()+"homes_shares.xml");
 
   if (xmlFile.open(QIODevice::ReadOnly | QIODevice::Text))
   {
@@ -330,7 +330,7 @@ void Smb4KHomesSharesHandler::writeUserNames(const QList<Smb4KHomesUsers *> &lis
     allUsers << new Smb4KHomesUsers(*list[i]);
   }
   
-  QFile xmlFile(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)+QDir::separator()+"homes_shares.xml");
+  QFile xmlFile(dataLocation()+QDir::separator()+"homes_shares.xml");
 
   if (!allUsers.isEmpty())
   {

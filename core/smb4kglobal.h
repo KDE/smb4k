@@ -468,6 +468,12 @@ namespace Smb4KGlobal
    * @returns the path of the umount executable.
    */
   Q_DECL_EXPORT const QString findUmountExecutable();
+  
+  /**
+   * This function returns the directory where data is to be placed.
+   * @returns the data location
+   */
+  Q_DECL_EXPORT const QString dataLocation();
 };
 
 #endif

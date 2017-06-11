@@ -50,7 +50,6 @@
 #include <QDebug>
 #include <QCoreApplication>
 #include <QPointer>
-#include <QStandardPaths>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"
@@ -65,7 +64,7 @@ Smb4KCustomOptionsManager::Smb4KCustomOptionsManager(QObject *parent)
 : QObject(parent), d(new Smb4KCustomOptionsManagerPrivate)
 {
   // First we need the directory.
-  QString path = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+  QString path = dataLocation();
   
   QDir dir;
   
@@ -365,7 +364,7 @@ Smb4KCustomOptions* Smb4KCustomOptionsManager::findOptions(const QUrl &url)
 void Smb4KCustomOptionsManager::readCustomOptions(QList<Smb4KCustomOptions *> *optionsList, bool allOptions)
 {
   // Locate the XML file.
-  QFile xmlFile(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)+QDir::separator()+"custom_options.xml");
+  QFile xmlFile(dataLocation()+QDir::separator()+"custom_options.xml");
 
   if (xmlFile.open(QIODevice::ReadOnly | QIODevice::Text))
   {
@@ -678,7 +677,7 @@ void Smb4KCustomOptionsManager::writeCustomOptions(const QList<Smb4KCustomOption
     allOptions << new Smb4KCustomOptions(*list[i]);
   }
   
-  QFile xmlFile(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)+QDir::separator()+"custom_options.xml");
+  QFile xmlFile(dataLocation()+QDir::separator()+"custom_options.xml");
 
   if (!allOptions.isEmpty())
   {

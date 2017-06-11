@@ -48,7 +48,6 @@
 #include <QXmlStreamReader>
 #include <QPointer>
 #include <QMutableListIterator>
-#include <QStandardPaths>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"
@@ -69,7 +68,7 @@ Smb4KBookmarkHandler::Smb4KBookmarkHandler(QObject *parent)
   d->editor = 0;
   
   // First we need the directory.
-  QString path = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+  QString path = dataLocation();
   
   QDir dir;
   
@@ -399,7 +398,7 @@ void Smb4KBookmarkHandler::writeBookmarkList(const QList<Smb4KBookmark *> &list,
     allBookmarks << new Smb4KBookmark(*bookmark);
   }
   
-  QFile xmlFile(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)+QDir::separator()+"bookmarks.xml");
+  QFile xmlFile(dataLocation()+QDir::separator()+"bookmarks.xml");
 
   if (!allBookmarks.isEmpty())
   {
@@ -463,7 +462,7 @@ void Smb4KBookmarkHandler::writeBookmarkList(const QList<Smb4KBookmark *> &list,
 void Smb4KBookmarkHandler::readBookmarks(QList<Smb4KBookmark *> *bookmarks, QStringList *groups, bool allBookmarks)
 {
   // Locate the XML file.
-  QFile xmlFile(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)+QDir::separator()+"bookmarks.xml");
+  QFile xmlFile(dataLocation()+QDir::separator()+"bookmarks.xml");
 
   if (xmlFile.open(QIODevice::ReadOnly | QIODevice::Text))
   {

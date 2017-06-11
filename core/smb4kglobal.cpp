@@ -896,3 +896,10 @@ const QString Smb4KGlobal::findUmountExecutable()
 
   return QStandardPaths::findExecutable("umount", paths);
 }
+
+
+const QString Smb4KGlobal::dataLocation()
+{
+  return QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+QDir::separator()+"smb4k";
+}
+
