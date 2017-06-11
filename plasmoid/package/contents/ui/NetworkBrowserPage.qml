@@ -331,7 +331,7 @@ PlasmaComponents.Page {
       // Do nothing
     }
     
-    networkBrowserListView.currentIndex = -1
+    networkBrowserListView.currentIndex = 0
   }
   
   function getHosts() {
@@ -362,7 +362,7 @@ PlasmaComponents.Page {
       // Do nothing
     }
     
-    networkBrowserListView.currentIndex = -1
+    networkBrowserListView.currentIndex = 0
   }
   
   function getShares() {
@@ -393,7 +393,7 @@ PlasmaComponents.Page {
       // Do nothing
     }
     
-    networkBrowserListView.currentIndex = -1
+    networkBrowserListView.currentIndex = 0
   }
   
   function shareMountedOrUnmounted() {
