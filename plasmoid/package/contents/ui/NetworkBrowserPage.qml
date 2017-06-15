@@ -163,35 +163,17 @@ PlasmaComponents.Page {
         
       onBookmarkClicked: {
         networkBrowserListView.currentIndex = DelegateModel.itemsIndex
-        var object = networkBrowserItemDelegateModel.items.get(DelegateModel.itemsIndex).model.object
-        if (object !== null) {
-          iface.addBookmark(object)
-        }
-        else {
-          // Do nothing
-        }
+        iface.addBookmark(object)
       }
         
       onPreviewClicked: {
         networkBrowserListView.currentIndex = DelegateModel.itemsIndex
-        var object = networkBrowserItemDelegateModel.items.get(DelegateModel.itemsIndex).model.object
-        if (object !== null) {
-          iface.preview(object)
-        }
-        else {
-          // Do nothing
-        }
+        iface.preview(object)
       }
         
       onConfigureClicked: {
         networkBrowserListView.currentIndex = DelegateModel.itemsIndex
-        var object = networkBrowserItemDelegateModel.items.get(DelegateModel.itemsIndex).model.object
-        if (object !== 0) {
-          iface.openCustomOptionsDialog(object)
-        }
-        else {
-          // Do nothing
-        }
+        iface.openCustomOptionsDialog(object)
       }
     }
   }
