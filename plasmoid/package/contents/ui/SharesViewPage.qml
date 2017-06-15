@@ -91,8 +91,8 @@ PlasmaComponents.Page {
     }
     
     function sort() {
-      while (unsortedItems.count > 0) {
-        var item = unsortedItems.get(0)
+      while (unsortedMountedShares.count > 0) {
+        var item = unsortedMountedShares.get(0)
         var index = insertPosition(item)
         
         item.groups = "items"
@@ -104,7 +104,7 @@ PlasmaComponents.Page {
     
     groups: [ 
       DelegateModelGroup {
-        id: unsortedItems
+        id: unsortedMountedShares
         name: "unsorted"
       
         includeByDefault: true
@@ -124,46 +124,22 @@ PlasmaComponents.Page {
         
       onItemClicked: {
         sharesViewListView.currentIndex = DelegateModel.itemsIndex
-        var object = sharesViewItemDelegateModel.items.get(DelegateModel.itemsIndex).model.object
-        if (object !== null) {
-          Qt.openUrlExternally(object.mountpoint)
-        }
-        else {
-          // Do nothing
-        }
+        Qt.openUrlExternally(object.mountpoint)
       }
         
       onUnmountClicked: {
         sharesViewListView.currentIndex = DelegateModel.itemsIndex
-        var object = sharesViewItemDelegateModel.items.get(DelegateModel.itemsIndex).model.object
-        if (object !== null) {
-          iface.unmount(object)
-        }
-        else {
-          // Do nothing
-        }
+        iface.unmount(object)
       }
         
       onBookmarkClicked: {
         sharesViewListView.currentIndex = DelegateModel.itemsIndex
-        var object = sharesViewItemDelegateModel.items.get(DelegateModel.itemsIndex).model.object
-        if (object !== null) {
-          iface.addBookmark(object)
-        }
-        else {
-          // Do nothing
-        }
+        iface.addBookmark(object)
       }
         
       onSyncClicked: {
         sharesViewListView.currentIndex = DelegateModel.itemsIndex
-        var object = sharesViewItemDelegateModel.items.get(DelegateModel.itemsIndex).model.object
-        if (object !== null) {
-          iface.synchronize(object)
-        }
-        else {
-          // Do nothing
-        }
+        iface.synchronize(object)
       }
     }
   }
@@ -208,16 +184,16 @@ PlasmaComponents.Page {
     }
     
     for (var i = 0; i < iface.mountedShares.length; i++) {
-      // The unmounted() signal is emitted before the share is
-      // actually removed from the list. So, we need to check 
-      // here, if the share is still mounted.
       var mountedShare = iface.mountedShares[i]
-      if (mountedShare !== null && mountedShare.isMounted) {
-        sharesViewItemDelegateModel.model.append({"object": iface.mountedShares[i]})
+      
+      if (mountedShare !== null) {
+        sharesViewItemDelegateModel.model.append({"object": mountedShare})
       }
       else {
         // Do nothing
       }
     }
+    
+    sharesViewListView.currentIndex = 0
   }
 }
