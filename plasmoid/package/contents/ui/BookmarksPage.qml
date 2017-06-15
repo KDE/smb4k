@@ -19,6 +19,7 @@
 
 import QtQuick 2.3
 import QtQuick.Layouts 1.3
+import QtQml.Models 2.3
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.components 2.0 as PlasmaComponents
@@ -61,6 +62,89 @@ PlasmaComponents.Page {
   }
   
   //
+  // Delegate Model (used for sorting)
+  //
+  DelegateModel {
+    id: bookmarkItemDelegateModel
+    
+    function lessThan(left, right) {
+      var less = false
+
+      if (left.isGroup && right.isGroup) {
+        less = (left.groupName < right.groupName)
+      }
+      else if (!left.isGroup && !right.isGroup) {        
+        if (left.hostName == right.hostName) {
+          less = (left.shareName < right.shareName)
+        }
+        else {
+          less = (left.shareName < right.shareName && left.hostName < right.hostName)
+        }
+      }
+      else {
+        less = true
+      }
+
+      return less
+    }
+    
+    function insertPosition(item) {
+      var lower = 0
+      var upper = items.count
+      
+      while (lower < upper) {
+        var middle = Math.floor(lower + (upper - lower) / 2)
+        var result = lessThan(item.model.object, items.get(middle).model.object)
+        if (result) {
+          upper = middle
+        }
+        else {
+          lower = middle + 1
+        }
+      }
+      return lower
+    }
+    
+    function sort() {
+      while (unsortedItems.count > 0) {
+        var item = unsortedItems.get(0)
+        var index = insertPosition(item)
+        
+        item.groups = "items"
+        items.move(item.itemsIndex, index)
+      }
+    }
+    
+    items.includeByDefault: false
+    
+    groups: [ 
+      DelegateModelGroup {
+        id: unsortedItems
+        name: "unsorted"
+      
+        includeByDefault: true
+      
+        onChanged: {
+          bookmarkItemDelegateModel.sort()
+        }
+      }
+    ]
+
+    filterOnGroup: "items"
+    
+    model: ListModel {}
+    
+    delegate: BookmarkItemDelegate {
+      id: bookmarkItemDelegate
+        
+      onItemClicked: {
+        bookmarksListView.currentIndex = DelegateModel.itemsIndex
+        bookmarkOrGroupClicked(object)
+      }
+    }
+  }
+  
+  //
   // List view
   //
   PlasmaExtras.ScrollArea {
@@ -75,22 +159,8 @@ PlasmaComponents.Page {
     
     ListView {
       id: bookmarksListView
-      delegate: BookmarkItemDelegate {
-        id: bookmarkItemDelegate
-        
-        onItemClicked: {
-          bookmarksListView.currentIndex = index
-          var object = bookmarksListView.model.get(index).object
-          if (object !== null) {
-            bookmarkOrGroupClicked(object)
-          }
-          else {
-            // Do nothing
-          }
-        }
-      }
-
-      model: ListModel {}
+      model: bookmarkItemDelegateModel
+      clip: true
       focus: true
       highlightRangeMode: ListView.StrictlyEnforceRange
     }
@@ -124,8 +194,8 @@ PlasmaComponents.Page {
   
   function bookmarkOrGroupClicked(object) {
     if (object.isGroup) {
-      while (bookmarksListView.model.count != 0) {
-        bookmarksListView.model.remove(0)
+      while (bookmarkItemDelegateModel.model.count != 0) {
+        bookmarkItemDelegateModel.model.remove(0)
       }
       
       getBookmarks(object.groupName)
@@ -136,17 +206,25 @@ PlasmaComponents.Page {
   }
   
   function shareMountedOrUnmounted() {
-    for (var i = 0; i < bookmarksListView.model.count; i++) {
-      var object = bookmarksListView.model.get(i).object
-      if (!object.isGroup) {
-        var mountedShare = iface.findMountedShare(object.url, false)
-        if (mountedShare !== null) {
-          object.isMounted = mountedShare.isMounted
+    for (var i = 0; i < bookmarkItemDelegateModel.model.count; i++) {
+      var object = bookmarkItemDelegateModel.model.get(i).object
+      
+      if (object !== null) {
+        if (!object.isGroup) {
+          var mountedShare = iface.findMountedShare(object.url, false)
+          
+          if (mountedShare !== null) {
+            object.isMounted = mountedShare.isMounted
+          }
+          else {
+            object.isMounted = false
+          }
+          
+          bookmarkItemDelegateModel.model.set(i, {"object": object})
         }
         else {
-          object.isMounted = false
+          // Do nothing
         }
-        bookmarksListView.model.set(i, {"object": object})
       }
       else {
         // Do nothing
@@ -155,15 +233,15 @@ PlasmaComponents.Page {
   }
   
   function fillView() {
-    while (bookmarksListView.model.count != 0) {
-      bookmarksListView.model.remove(0)
+    while (bookmarkItemDelegateModel.model.count != 0) {
+      bookmarkItemDelegateModel.model.remove(0)
     }
     
     // Get groups
     if (iface.bookmarkGroups.length != 0) {
       for (var i = 0; i < iface.bookmarkGroups.length; i++) {
         if (iface.bookmarkGroups[i].groupName.length != 0) {
-          bookmarksListView.model.append({"object": iface.bookmarkGroups[i]})
+          bookmarkItemDelegateModel.model.append({"object": iface.bookmarkGroups[i]})
         }
         else {
           // Do nothing
@@ -190,7 +268,7 @@ PlasmaComponents.Page {
           else {
             // Do nothing
           }
-          bookmarksListView.model.append({"object": bookmark})
+          bookmarkItemDelegateModel.model.append({"object": bookmark})
         }
         else {
           // Do nothing
