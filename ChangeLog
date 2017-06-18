@@ -1,3 +1,11 @@
+Smb4K 2.0.1 (2017-05-13):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at https://cgit.kde.org/smb4k.git/log/?h=2.0
+
+- Fix a logic flaw in the mount helper (CVE-2017-8849).
+- Fix build system.
+
 Smb4K 2.0.0 (2017-03-11):
 
 See the summary of changes below. For a full list of changes, please
