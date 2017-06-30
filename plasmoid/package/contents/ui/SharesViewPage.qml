@@ -176,6 +176,18 @@ PlasmaComponents.Page {
   }
   
   //
+  // Initialization
+  //
+  Component.onCompleted: {
+    if (sharesViewListView.count == 0) {
+      shareMountedOrUnmounted()
+    }
+    else {
+      // Do nothing
+    }
+  }
+  
+  //
   // Functions
   //
   function shareMountedOrUnmounted() {

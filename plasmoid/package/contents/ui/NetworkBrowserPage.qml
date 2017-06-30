@@ -218,6 +218,18 @@ PlasmaComponents.Page {
   }
   
   //
+  // Initialization
+  //
+  Component.onCompleted: {
+    if (networkBrowserListView.count == 0) {
+      getWorkgroups()
+    }
+    else {
+      // Do nothing
+    }
+  }
+  
+  //
   // Functions
   //
   function rescan() {
