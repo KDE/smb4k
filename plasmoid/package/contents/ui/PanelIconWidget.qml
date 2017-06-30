@@ -24,40 +24,70 @@ import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.smb4k.smb4kqmlplugin 2.0
 
-Item {
-  id: root
+
+MouseArea {
+  id: panelIconWidget
+  anchors.fill: parent
   
-  Plasmoid.toolTipMainText: i18n("Network Neighborhood")
-//   Plasmoid.toolTipSubText: sinkModel.preferredSink ? i18n("Volume at %1%\n%2", volumePercent(sinkModel.preferredSink.volume), sinkModel.preferredSink.description) : ""
-//   Plasmoid.icon: "smb4k"
-  Plasmoid.switchWidth: units.gridUnit * 10
-  Plasmoid.switchHeight: units.gridUnit * 10
-  
-  //
-  // Smb4K interface
-  //
-  Interface {
-    id: iface
-  }
-  
-  //
-  // Plasmoid representations
-  //
-  Plasmoid.compactRepresentation: PanelIconWidget {} // FIXME: Look at plasma-nm how this can be done
-  Plasmoid.fullRepresentation: PopupDialog {
-    id: main
-    Layout.minimumWidth: units.iconSizes.medium * 10
-    Layout.minimumHeight: units.gridUnit * 20
+  PlasmaCore.IconItem {
+    id: panelIcon
     anchors.fill: parent
-    focus: true
+    source: "smb4k"
+    colorGroup: PlasmaCore.ColorScope.colorGroup
+    
+    //
+    // Busy indicator
+    //
+    PlasmaComponents.BusyIndicator {
+      id: busyIndicator
+      running: false
+      visible: false
+      anchors.verticalCenter: parent.verticalCenter
+      anchors.horizontalCenter: parent.horizontalCenter
+    }
+  }
+  
+  onClicked: {
+    plasmoid.expanded = !plasmoid.expanded
+    
+    if (!plasmoid.expanded && busyIndicator.running) {
+      busyIndicator.visible = false
+      busyIndicator.running = false
+    }
+    else {
+      // Do nothing
+    }
   }
   
   //
-  // Start interface
+  // Connections
   //
-  Component.onCompleted: {
-    iface.startScanner();
-    iface.startMounter();
-    iface.startPrinter();
+  Connections {
+    target: iface
+    onBusy: busy()
+    onIdle: idle()
+  }
+  
+  //
+  // Functions
+  //
+  function busy() {
+    if (!plasmoid.expanded) {
+      busyIndicator.visible = true
+      busyIndicator.running = true
+    }
+    else {
+      // Do nothing
+    }
+  }
+  
+  function idle() {
+    if (!plasmoid.expanded) {
+      busyIndicator.visible = false
+      busyIndicator.running = false
+    }
+    else {
+      // Do nothing
+    }
   }
 }
