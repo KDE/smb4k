@@ -32,13 +32,10 @@
 
 // Qt includes
 #include <QString>
-#include <QVariant>
 #include <QDebug>
 #include <QCheckBox>
 #include <QDialog>
 #include <QPushButton>
-#include <QNetworkConfiguration>
-#include <QNetworkConfigurationManager>
 
 // KDE includes
 #include <KCompletion/KLineEdit>

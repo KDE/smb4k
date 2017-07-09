@@ -43,13 +43,7 @@
 #endif
 
 // Qt includes
-#include <QFileInfo>
-#include <QFile>
-#include <QTimer>
-#include <QDir>
 #include <QUrl>
-#include <QProcessEnvironment>
-#include <QStandardPaths>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QGridLayout>
