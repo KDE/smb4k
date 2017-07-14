@@ -226,12 +226,6 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
     void slotAboutToQuit();
 
     /**
-     * This slot is called when a job finished.
-     * @param job         The job that finished
-     */
-    void slotJobFinished(KJob *job);
-    
-    /**
      * This slot is called when the online status changed. It is used 
      * to initialize network actions when the network becomes available.
      * @param online          TRUE if online otherwise FALSE

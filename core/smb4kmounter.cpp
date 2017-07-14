@@ -495,25 +495,8 @@ void Smb4KMounter::mountShare(Smb4KShare *share, QWidget *parent)
   
   if (share)
   {
-    QList<Smb4KShare *> shares;
-    shares << share;
-    mountShares(shares, parent);
-  }
-  else
-  {
-    // Do nothing
-  }  
-}
-
-
-void Smb4KMounter::mountShares(const QList<Smb4KShare *> &shares, QWidget *parent)
-{
-  QVariantMap map;
-  
-  for (Smb4KShare *share : shares)
-  {
     //
-    // Check that the URL is valid.
+    // Check that the URL is valid
     //
     if (!share->url().isValid())
     {
@@ -527,7 +510,7 @@ void Smb4KMounter::mountShares(const QList<Smb4KShare *> &shares, QWidget *paren
     
     //
     // Check if the share has already been mounted. If it is already present,
-    // do not process this share and move on to the next.
+    // do not process it and return.
     //
     QString unc;
     
@@ -535,7 +518,7 @@ void Smb4KMounter::mountShares(const QList<Smb4KShare *> &shares, QWidget *paren
     {
       if (!Smb4KHomesSharesHandler::self()->specifyUser(share, true, parent))
       {
-        continue;
+        return;
       }
       else
       {
@@ -550,13 +533,13 @@ void Smb4KMounter::mountShares(const QList<Smb4KShare *> &shares, QWidget *paren
     }
     
     QList<Smb4KShare *> mountedShares = findShareByUNC(unc);
-    bool mounted = false;
-    
+    bool isMounted = false;
+      
     for (Smb4KShare *s : mountedShares)
     {
       if (!s->isForeign())
       {
-        mounted = true;
+        isMounted = true;
       }
       else
       {
@@ -564,15 +547,15 @@ void Smb4KMounter::mountShares(const QList<Smb4KShare *> &shares, QWidget *paren
       }
     }
     
-    if (mounted)
+    if (isMounted)
     {
-      continue;
+      return;
     }
     else
     {
       // Do nothing
     }
-    
+
     //
     // Wake-On-LAN: Wake up the host before mounting 
     //
@@ -705,7 +688,7 @@ void Smb4KMounter::mountShares(const QList<Smb4KShare *> &shares, QWidget *paren
     // Get the authentication information
     //
     Smb4KWalletManager::self()->readAuthInfo(share);
- 
+
     //
     // Mount arguments
     //
@@ -713,54 +696,152 @@ void Smb4KMounter::mountShares(const QList<Smb4KShare *> &shares, QWidget *paren
     
     if (!fillMountActionArgs(share, args))
     {
-      continue;
+      return;
     }
     else
     {
       // Do nothing
     }
     
-    map.insert(QString("%1").arg(map.size()), args);
-  }
-  
-  //
-  // Emit the aboutToStart() signal
-  //
-  emit aboutToStart(MountShare);
+    //
+    // Emit the aboutToStart() signal
+    //
+    emit aboutToStart(MountShare);
 
-  //
-  // Create the mount action
-  //
-  KAuth::Action mountAction("org.kde.smb4k.mounthelper.mount");
-  mountAction.setHelperId("org.kde.smb4k.mounthelper");
-  mountAction.setArguments(map);
-  
-  KAuth::ExecuteJob *job = mountAction.execute();
-  job->setObjectName("MountJob");
+    //
+    // Create the mount action
+    //
+    KAuth::Action mountAction("org.kde.smb4k.mounthelper.mount");
+    mountAction.setHelperId("org.kde.smb4k.mounthelper");
+    mountAction.setArguments(args);
     
-  connect(job, SIGNAL(finished(KJob*)), this, SLOT(slotJobFinished(KJob*)));
+    KAuth::ExecuteJob *job = mountAction.execute();
+      
+    //
+    // Modify the cursor, if necessary.
+    //
+    if (!hasSubjobs() && modifyCursor())
+    {
+      QApplication::setOverrideCursor(Qt::BusyCursor);
+    }
+    else
+    {
+      // Do nothing
+    }
+      
+    //
+    // Add the job
+    //
+    addSubjob(job);
+
+    //
+    // Start the job and process the returned result.
+    //
+    bool success = job->exec();
     
-  //
-  // Modify the cursor, if necessary.
-  //
-  if (!hasSubjobs() && modifyCursor())
-  {
-    QApplication::setOverrideCursor(Qt::BusyCursor);
+    if (!success)
+    {
+      int errorCode = job->error();
+      
+      if (errorCode == 0)
+      {
+        // Get the error message
+        QString errorMsg = job->data()["mh_error_message"].toString();
+        
+        if (!errorMsg.isEmpty())
+        {
+#if defined(Q_OS_LINUX)
+          if (errorMsg.contains("mount error 13") || errorMsg.contains("mount error(13)") /* authentication error */)
+          {
+            if (Smb4KWalletManager::self()->showPasswordDialog(share, 0))
+            {
+              d->retries << new Smb4KShare(*share);
+            }
+            else
+            {
+              // Do nothing
+            }
+          }
+          else if (errorMsg.contains("Unable to find suitable address."))
+          {
+            // Swallow this
+          }
+          else
+          {
+            Smb4KNotification::mountingFailed(share, errorMsg);
+          }
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+          if (errorMsg.contains("Authentication error") || errorMsg.contains("Permission denied"))
+          {
+            if (Smb4KWalletManager::self()->showPasswordDialog(share, 0))
+            {
+              d->retries << new Smb4KShare(*share);
+            }
+            else
+            {
+              // Do nothing
+            }
+          }
+          else
+          {
+            Smb4KNotification::mountingFailed(share, errorMsg);
+          }
+#else
+          qWarning() << "Smb4KMounter::slotMountJobFinished(): Error handling not implemented!";
+          Smb4KNotification::mountingFailed(&share, errorMsg);
+#endif
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        Smb4KNotification::actionFailed(errorCode);
+      }
+    }
+    else
+    {
+      // Do nothing.
+      // Signals are emitted by the import() function or the slotStatResult() slot.
+    }
+    
+    //
+    // Remove the job from the job list
+    //
+    removeSubjob(job);
+      
+    //
+    // Reset the busy cursor
+    //
+    if (!hasSubjobs() && modifyCursor())
+    {
+      QApplication::restoreOverrideCursor();
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    //
+    // Emit the finished() signal
+    //
+    emit finished(MountShare);
   }
   else
   {
     // Do nothing
   }
-    
-  //
-  // Add the job
-  //
-  addSubjob(job);
+}
 
-  //
-  // Start the job
-  //
-  job->start(); 
+
+void Smb4KMounter::mountShares(const QList<Smb4KShare *> &shares, QWidget *parent)
+{
+  for (Smb4KShare *share : shares)
+  {
+    mountShare(share, parent);
+  }
 }
 
 
@@ -769,23 +850,6 @@ void Smb4KMounter::unmountShare(Smb4KShare *share, bool silent, QWidget *parent)
   Q_ASSERT(share);
   
   if (share)
-  {
-    QList<Smb4KShare *> shares;
-    shares << share;
-    unmountShares(shares, silent, parent);
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KMounter::unmountShares(const QList<Smb4KShare *> &shares, bool silent, QWidget *parent)
-{
-  QVariantMap map;
-  
-  for (Smb4KShare *share : shares)
   {
     //
     // Check that the URL is valid.
@@ -815,7 +879,7 @@ void Smb4KMounter::unmountShares(const QList<Smb4KShare *> &shares, bool silent,
         {
           // Do nothing
         }
-        continue;
+        return;
       }
       else
       {
@@ -827,7 +891,7 @@ void Smb4KMounter::unmountShares(const QList<Smb4KShare *> &shares, bool silent,
                   share->unc(), share->path(), share->user().loginName()),
               i18n("Foreign Share")) == KMessageBox::No)
           {
-            continue;
+            return;
           }
           else
           {
@@ -838,7 +902,7 @@ void Smb4KMounter::unmountShares(const QList<Smb4KShare *> &shares, bool silent,
         {
           // Without the confirmation of the user, we are not
           // unmounting a foreign share!
-          continue;
+          return;
         }
       }
     }
@@ -847,9 +911,8 @@ void Smb4KMounter::unmountShares(const QList<Smb4KShare *> &shares, bool silent,
       // Do nothing
     }
     
-    
     //
-    // Force the unmounting of the shares either if the system went offline
+    // Force the unmounting of the share either if the system went offline
     // or if the user chose to forcibly unmount inaccessible shares (Linux only).
     //
     bool force = false;
@@ -871,7 +934,7 @@ void Smb4KMounter::unmountShares(const QList<Smb4KShare *> &shares, bool silent,
     {
       force = true;
     }
-
+    
     //
     // Unmount arguments
     //
@@ -879,58 +942,115 @@ void Smb4KMounter::unmountShares(const QList<Smb4KShare *> &shares, bool silent,
 
     if (!fillUnmountActionArgs(share, force, silent, args))
     {
-      continue;
+      return;
     }
     else
     {
       // Do nothing
     }
-
-    map.insert(QString("%1").arg(map.size()), args);
-  }
-  
-  // Should the unmount helper function unmount all shares at once or 
-  // loop through the whole list.
-  map.insert("mh_unmount_at_once", !Smb4KHardwareInterface::self()->isOnline() || d->aboutToQuit);
-  
-  //
-  // Emit the aboutToStart() signal
-  //
-  emit aboutToStart(UnmountShare);
-
-  //
-  // Create the unmount action
-  //
-  KAuth::Action unmountAction("org.kde.smb4k.mounthelper.unmount");
-  unmountAction.setHelperId("org.kde.smb4k.mounthelper");
-  unmountAction.setArguments(map);
     
-  KAuth::ExecuteJob *job = unmountAction.execute();
-  job->setObjectName("UnmountJob");
+    //
+    // Emit the aboutToStart() signal
+    //
+    emit aboutToStart(UnmountShare);
+
+    //
+    // Create the unmount action
+    //
+    KAuth::Action unmountAction("org.kde.smb4k.mounthelper.unmount");
+    unmountAction.setHelperId("org.kde.smb4k.mounthelper");
+    unmountAction.setArguments(args);
+      
+    KAuth::ExecuteJob *job = unmountAction.execute();
     
-  connect(job, SIGNAL(finished(KJob*)), this, SLOT(slotJobFinished(KJob*)));
-  
-  //
-  // Modify the cursor, if necessary.
-  //
-  if (!hasSubjobs() && modifyCursor())
-  {
-    QApplication::setOverrideCursor(Qt::BusyCursor);
+    //
+    // Modify the cursor, if necessary.
+    //
+    if (!hasSubjobs() && modifyCursor())
+    {
+      QApplication::setOverrideCursor(Qt::BusyCursor);
+    }
+    else
+    {
+      // Do nothing
+    }
+      
+    //
+    // Add the job
+    //
+    addSubjob(job);
+
+    //
+    // Start the job and process the returned result.
+    //
+    bool success = job->exec();
+    
+    if (!success)
+    {
+      int errorCode = job->error();
+      
+      if (errorCode == 0)
+      {
+        // Get the error message
+        QString errorMsg = job->data()["mh_error_message"].toString();
+        
+        if (!errorMsg.isEmpty())
+        {
+          // No error handling needed, just report the error message.
+          Smb4KNotification::unmountingFailed(share, errorMsg);
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        Smb4KNotification::actionFailed(errorCode);
+      }
+
+    }
+    else
+    {
+      // Do nothing.
+      // Signals are emitted by the import() function or the slotStatResult() slot.
+    }
+    
+    //
+    // Remove the job from the job list
+    //
+    removeSubjob(job);
+      
+    //
+    // Reset the busy cursor
+    //
+    if (!hasSubjobs() && modifyCursor())
+    {
+      QApplication::restoreOverrideCursor();
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    //
+    // Emit the finished() signal
+    //
+    emit finished(UnmountShare);
   }
   else
   {
     // Do nothing
   }
-    
-  //
-  // Add the job
-  //
-  addSubjob(job);
+}
 
-  //
-  // Start the job
-  //
-  job->start();  
+
+void Smb4KMounter::unmountShares(const QList<Smb4KShare *> &shares, bool silent, QWidget *parent)
+{
+  for (Smb4KShare *share : shares)
+  {
+    unmountShare(share, silent, parent);
+  }
 }
 
 
@@ -2027,11 +2147,6 @@ void Smb4KMounter::slotAboutToQuit()
   if (Smb4KSettings::unmountSharesOnExit())
   {
     unmountAllShares(true, 0);
-    
-    while (isRunning())
-    {
-      QTest::qWait(TIMEOUT);
-    }
   }
   else
   {
@@ -2085,136 +2200,6 @@ void Smb4KMounter::slotAboutToQuit()
       // Do nothing
     }
   }
-}
-
-
-void Smb4KMounter::slotJobFinished(KJob* job)
-{
-  qDebug() << "Job finished";
-  
-  //
-  // The execute job
-  //
-  KAuth::ExecuteJob *execJob = static_cast<KAuth::ExecuteJob *>(job);
-  int errorCode = execJob->error();
-  Smb4KGlobal::Process process;
-  
-  if (execJob->objectName().startsWith(QLatin1String("MountJob")))
-  {
-    process = MountShare;
-  }
-  else
-  {
-    process = UnmountShare;
-  }
-  
-  //
-  // Process the returned data
-  //
-  if (errorCode == 0)
-  {
-    QVariantMap arguments = execJob->action().arguments();
-    QVariantMap returnedData = execJob->data();
-    QMapIterator<QString, QVariant> it(arguments);
-    
-    while (it.hasNext())
-    {
-      it.next();
-      QString index = it.key();
-      
-      // Get the data from the  action to create a share object that can be
-      // used subsequently to initiate a retry, to show notifications, etc.
-      Smb4KShare share;
-      share.setURL(it.value().toMap().value("mh_url").toUrl());
-      share.setWorkgroupName(it.value().toMap().value("mh_workgroup").toString());
-      share.setPath(it.value().toMap().value("mh_mountpoint").toString());
-      
-      QString errorMsg = returnedData.value(QString("mh_error_message_%1").arg(index)).toString();
-      
-      if (!errorMsg.isEmpty())
-      {
-        if (process == MountShare)
-        {
-#if defined(Q_OS_LINUX)
-          if (errorMsg.contains("mount error 13") || errorMsg.contains("mount error(13)") /* authentication error */)
-          {
-            if (Smb4KWalletManager::self()->showPasswordDialog(&share, 0))
-            {
-              d->retries << new Smb4KShare(share);
-            }
-            else
-            {
-              // Do nothing
-            }
-          }
-          else if (errorMsg.contains("Unable to find suitable address."))
-          {
-            // Swallow this
-          }
-          else
-          {
-            Smb4KNotification::mountingFailed(&share, errorMsg);
-          }
-#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-          if (errorMsg.contains("Authentication error") || errorMsg.contains("Permission denied"))
-          {
-            if (Smb4KWalletManager::self()->showPasswordDialog(&share, 0))
-            {
-              d->retries << new Smb4KShare(share);
-            }
-            else
-            {
-              // Do nothing
-            }
-          }
-          else
-          {
-            Smb4KNotification::mountingFailed(&share, errorMsg);
-          }
-#else
-          qWarning() << "Smb4KMounter::slotMountJobFinished(): Error handling not implemented!";
-          Smb4KNotification::mountingFailed(&share, errorMsg);
-#endif
-        }
-        else if (process == UnmountShare)
-        {
-          // No error handling needed, just report the error message.
-          Smb4KNotification::unmountingFailed(&share, errorMsg);
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-  }
-  else
-  {
-    Smb4KNotification::actionFailed(errorCode);
-  }
-  
-  //
-  // Remove the job from the job list
-  //
-  removeSubjob(job);
-    
-  //
-  // Reset the busy cursor
-  //
-  if (!hasSubjobs() && modifyCursor())
-  {
-    QApplication::restoreOverrideCursor();
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  emit finished(process);
 }
 
 
