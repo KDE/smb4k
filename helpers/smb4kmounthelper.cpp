@@ -47,8 +47,7 @@ using namespace Smb4KGlobal;
 
 KAUTH_HELPER_MAIN("org.kde.smb4k.mounthelper", Smb4KMountHelper);
 
-
-ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
+KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap& args)
 {
   //
   // The action reply
@@ -61,480 +60,141 @@ ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
   const QString mount = findMountExecutable();
   
   //
-  // Iterate through the entries.
+  // Check the mount executable
   //
-  QMapIterator<QString, QVariant> it(args);
-  
-  while (it.hasNext())
+  if (mount != args["mh_command"].toString())
   {
-    it.next();
-    QString index = it.key();
-    QVariantMap entry = it.value().toMap();
-    
-    //
-    // Check the executable
-    //
-    if (mount != entry["mh_command"].toString())
-    {
-      // Something weird is going on, bail out.
-      reply.setType(ActionReply::HelperErrorType);
-      return reply;
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    //
-    // The process
-    //
-    KProcess proc(this);
-    proc.setOutputChannelMode(KProcess::SeparateChannels);
-    proc.setProcessEnvironment(QProcessEnvironment::systemEnvironment());
+    // Something weird is going on, bail out.
+    reply.setType(ActionReply::HelperErrorType);
+    return reply;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // Mount command
+  //
+  QStringList command;
 #if defined(Q_OS_LINUX)
-    proc.setEnv("PASSWD", entry["mh_url"].toUrl().password(), true);
-#endif
-    // We need this to avoid a translated password prompt.
-    proc.setEnv("LANG", "C");
-    // If the location of a Kerberos ticket is passed, it needs to
-    // be passed to the process environment here.
-    if (args.contains("mh_krb5ticket"))
-    {
-      proc.setEnv("KRB5CCNAME", entry["mh_krb5ticket"].toString());
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    //
-    // Mount command
-    //
-    QStringList command;
-#if defined(Q_OS_LINUX)
-    command << mount;
-    command << entry["mh_unc"].toString();
-    command << entry["mh_mountpoint"].toString();
-    command << entry["mh_options"].toStringList();
+  command << mount;
+  command << args["mh_unc"].toString();
+  command << args["mh_mountpoint"].toString();
+  command << args["mh_options"].toStringList();
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-    command << mount;
-    command << entry["mh_options"].toStringList();
-    command << entry["mh_unc"].toString();
-    command << entry["mh_mountpoint"].toString();
+  command << mount;
+  command << args["mh_options"].toStringList();
+  command << args["mh_unc"].toString();
+  command << args["mh_mountpoint"].toString();
 #else
     // Do nothing.
 #endif
-    proc.setProgram(command);
-
-    //
-    // Run the mount process
-    //
-    proc.start();
-    
-    if (proc.waitForStarted(-1))
-    {
-      bool userKill = false;
-
-      while (!proc.waitForFinished(10))
-      {
-        // Check if there is a password prompt. If there is one, pass
-        // the password to it.
-        QByteArray out = proc.readAllStandardError();
-
-        if (out.startsWith("Password:"))
-        {
-          proc.write(args["mh_url"].toUrl().password().toUtf8());
-          proc.write("\r");
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        // We want to be able to terminate the process from outside.
-        // Thus, we implement a loop that checks periodically, if we
-        // need to kill the process.
-        if (HelperSupport::isStopped())
-        {
-          proc.kill();
-          userKill = true;
-          break;
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-
-      if (proc.exitStatus() == KProcess::CrashExit)
-      {
-        if (!userKill)
-        {
-          reply.setType(ActionReply::HelperErrorType);
-          reply.setErrorDescription(i18n("The mount process crashed."));
-          break;
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Check if there is output on stderr.
-        QString stdErr = QString::fromUtf8(proc.readAllStandardError());
-        reply.addData(QString("mh_error_message_%1").arg(index), stdErr.trimmed());
-      }
-    }
-    else
-    {
-      reply.setType(ActionReply::HelperErrorType);
-      reply.setErrorDescription(i18n("The mount process could not be started."));
-      break;
-    }
-  }
-  
-  return reply;
-}
-
-
-ActionReply Smb4KMountHelper::unmount(const QVariantMap& args)
-{
-  //
-  // The action reply
-  //
-  ActionReply reply;
   
   //
-  // Check if the helper function should unmount all shares 
-  // one by one or at once.
+  // The process
   //
-  if (!args.value("mh_unmount_at_once").toBool())
-  {
-    reply = unmountOneByOne(args);
-  }
-  else
-  {
-    reply = unmountAtOnce(args);
-  }
-  
-  //
-  // Return the action reply
-  //
-  return reply;
-}
-
-
-ActionReply Smb4KMountHelper::unmountOneByOne(const QVariantMap& args)
-{
-  //
-  // Action reply
-  //
-  ActionReply reply;
-  
-  //
-  // Get the mount executable
-  //
-  const QString umount = findUmountExecutable();
-  
-  //
-  // Iterate through the entries.
-  //
-  QMapIterator<QString, QVariant> it(args);
-    
-  while (it.hasNext())
-  {
-    it.next();
-    QString index = it.key();
-    QVariantMap entry = it.value().toMap();
-    
-    //
-    // Check the executable
-    //
-    if (umount != entry["mh_command"].toString())
-    {
-      // Something weird is going on, bail out.
-      reply.setType(ActionReply::HelperErrorType);
-      return reply;
-    }
-    else
-    {
-      // Do nothing
-    }
-      
-    //
-    // Check if the mountpoint is valid and the filesystem is correct.
-    //
-    bool mountPointOk = false;
-    KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions);
-      
-    for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : mountPoints)
-    {
+  KProcess proc(this);
+  proc.setOutputChannelMode(KProcess::SeparateChannels);
+  proc.setProcessEnvironment(QProcessEnvironment::systemEnvironment());
 #if defined(Q_OS_LINUX)
-      if (QString::compare(entry.value("mh_mountpoint").toString(), mountPoint->mountPoint()) == 0 &&
-          QString::compare(mountPoint->mountType(), "cifs", Qt::CaseInsensitive) == 0)
-#else
-      if (QString::compare(entry.value("mh_mountpoint").toString(), mountPoint->mountPoint()) == 0 &&
-          QString::compare(mountPoint->mountType(), "smbfs", Qt::CaseInsensitive) == 0)
+  proc.setEnv("PASSWD", args["mh_url"].toUrl().password(), true);
 #endif
-      {
-        mountPointOk = true;
-        break;
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-      
-    //
-    // Stop here if the mountpoint is not valid
-    //
-    if (!mountPointOk)
-    {
-      reply.setType(ActionReply::HelperErrorType);
-      reply.setErrorDescription(i18n("The mountpoint %1 is invalid.", entry.value("mh_mountpoint").toString()));
-      break;
-    }
-    else
-    {
-      // Do nothing
-    }
-      
-    //
-    // The command
-    //
-    QStringList command;
-    command << umount;
-    command << entry["mh_options"].toStringList();
-    command << entry["mh_mountpoint"].toString();
-    
-    //
-    // The process
-    //
-    KProcess proc(this);
-    proc.setOutputChannelMode(KProcess::SeparateChannels);
-    proc.setProcessEnvironment(QProcessEnvironment::systemEnvironment());
-    proc.setProgram(command);
-      
-    //
-    // Run the unmount process
-    //
-    proc.start();
-      
-    if (proc.waitForStarted(-1))
-    {
-      // We want to be able to terminate the process from outside.
-      // Thus, we implement a loop that checks periodically, if we
-      // need to kill the process.
-      bool userKill = false;
-
-      while (!proc.waitForFinished(10))
-      {
-        if (HelperSupport::isStopped())
-        {
-          proc.kill();
-          userKill = true;
-          break;
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-
-      if (proc.exitStatus() == KProcess::CrashExit)
-      {
-        if (!userKill)
-        {
-          reply.setType(ActionReply::HelperErrorType);
-          reply.setErrorDescription(i18n("The unmount process crashed."));
-          break;
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Check if there is output on stderr.
-        QString stdErr = QString::fromUtf8(proc.readAllStandardError());
-        reply.addData(QString("mh_error_message_%1").arg(index), stdErr.trimmed());
-      }
-    }
-    else
-    {
-      reply.setType(ActionReply::HelperErrorType);
-      reply.setErrorDescription(i18n("The unmount process could not be started."));
-      break;
-    }
-  }
-  
-  //
-  // Return the reply
-  //
-  return reply;
-}
-
-
-ActionReply Smb4KMountHelper::unmountAtOnce(const QVariantMap& args)
-{
-  //
-  // Action reply
-  //
-  ActionReply reply;
-  
-  //
-  // Get the mount executable
-  //
-  const QString umount = findUmountExecutable();
-  
-  //
-  // Check the mountpoints and put the valid ones into a string list
-  //
-  QStringList validMountPoints;
-  QMapIterator<QString, QVariant> it(args);
-    
-  while (it.hasNext())
+  // We need this to avoid a translated password prompt.
+  proc.setEnv("LANG", "C");
+  // If the location of a Kerberos ticket is passed, it needs to
+  // be passed to the process environment here.
+  if (args.contains("mh_krb5ticket"))
   {
-    it.next();
-    QVariantMap entry = it.value().toMap();
-    
-    bool mountPointOk = false;
-    KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions);
-      
-    for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : mountPoints)
-    {
-#if defined(Q_OS_LINUX)
-      if (QString::compare(entry.value("mh_mountpoint").toString(), mountPoint->mountPoint()) == 0 &&
-          QString::compare(mountPoint->mountType(), "cifs", Qt::CaseInsensitive) == 0)
-#else
-      if (QString::compare(entry.value("mh_mountpoint").toString(), mountPoint->mountPoint()) == 0 &&
-          QString::compare(mountPoint->mountType(), "smbfs", Qt::CaseInsensitive) == 0)
-#endif
-      {
-        validMountPoints << mountPoint->mountPoint();
-        mountPointOk = true;
-        break;
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-      
-    //
-    // Stop here if the mountpoint is not valid
-    //
-    if (!mountPointOk)
-    {
-      reply.setType(ActionReply::HelperErrorType);
-      reply.setErrorDescription(i18n("The mountpoint %1 is invalid.", entry.value("mh_mountpoint").toString()));
-      break;
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-    
-  //
-  // If everything went fine, create the process and unmount the shares. For the
-  // path of the unmount program and the options we use the first entry in the 
-  // map.
-  //
-  QStringList errorMessages;
-    
-  if (!validMountPoints.isEmpty())
-  {
-    //
-    // Check the executable
-    //
-    if (umount != args.first().toMap().value("mh_command").toString()) 
-    {
-      // Something weird is going on, bail output
-      reply.setType(ActionReply::HelperErrorType);
-      return reply;
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    // The command
-    QStringList command;
-    command << umount;
-    command << args.first().toMap().value("mh_options").toStringList();
-    command << validMountPoints;
-      
-    // The process
-    KProcess proc(this);
-    proc.setOutputChannelMode(KProcess::SeparateChannels);
-    proc.setProcessEnvironment(QProcessEnvironment::systemEnvironment());
-    proc.setProgram(command);
-      
-    // Start the process
-    proc.start();
-      
-    if (proc.waitForStarted(-1))
-    {
-      // We want to be able to terminate the process from outside.
-      // Thus, we implement a loop that checks periodically, if we
-      // need to kill the process.
-      bool userKill = false;
-
-      while (!proc.waitForFinished(10))
-      {
-        if (HelperSupport::isStopped())
-        {
-          proc.kill();
-          userKill = true;
-          break;
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-
-      if (proc.exitStatus() == KProcess::CrashExit)
-      {
-        if (!userKill)
-        {
-          reply.setType(ActionReply::HelperErrorType);
-          reply.setErrorDescription(i18n("The unmount process crashed."));
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Check if there is output on stderr.
-        QString stdErr = QString::fromUtf8(proc.readAllStandardError());
-        errorMessages << stdErr.trimmed();
-        errorMessages << "";
-      }
-    }
-    else
-    {
-      reply.setType(ActionReply::HelperErrorType);
-      reply.setErrorDescription(i18n("The unmount process could not be started."));
-    }
+    proc.setEnv("KRB5CCNAME", args["mh_krb5ticket"].toString());
   }
   else
   {
     // Do nothing
   }
+  proc.setProgram(command);
+  proc.start();
     
-  //
-  // Pass the error messages to the reply object
-  //  
-  if (!errorMessages.isEmpty())
+  if (proc.waitForStarted(-1))
   {
-    reply.addData("mh_error_message_0", errorMessages);
+    bool userKill = false;
+
+    while (!proc.waitForFinished(10))
+    {
+      // Check if there is a password prompt. If there is one, pass
+      // the password to it.
+      QByteArray out = proc.readAllStandardError();
+
+      if (out.startsWith("Password:"))
+      {
+        proc.write(args["mh_url"].toUrl().password().toUtf8());
+        proc.write("\r");
+      }
+      else
+      {
+        // Do nothing
+      }
+
+      // We want to be able to terminate the process from outside.
+      // Thus, we implement a loop that checks periodically, if we
+      // need to kill the process.
+      if (HelperSupport::isStopped())
+      {
+        proc.kill();
+        userKill = true;
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+
+    if (proc.exitStatus() == KProcess::CrashExit)
+    {
+      if (!userKill)
+      {
+        reply.setType(ActionReply::HelperErrorType);
+        reply.setErrorDescription(i18n("The mount process crashed."));
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      // Check if there is output on stderr.
+      QString stdErr = QString::fromUtf8(proc.readAllStandardError());
+      reply.addData("mh_error_message", stdErr.trimmed());
+    }
+  }
+  else
+  {
+    reply.setType(ActionReply::HelperErrorType);
+    reply.setErrorDescription(i18n("The mount process could not be started."));
+  }  
+  
+  return reply;
+}
+
+
+KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap& args)
+{
+  ActionReply reply;
+  
+  //
+  // Get the umount executable
+  //
+  const QString umount = findUmountExecutable();
+  
+  //
+  // Check the mount executable
+  //
+  if (umount != args["mh_command"].toString())
+  {
+    // Something weird is going on, bail out.
+    reply.setType(ActionReply::HelperErrorType);
+    return reply;
   }
   else
   {
@@ -542,8 +202,106 @@ ActionReply Smb4KMountHelper::unmountAtOnce(const QVariantMap& args)
   }
   
   //
-  // Return the reply
+  // Check if the mountpoint is valid and the filesystem is correct.
   //
+  bool mountPointOk = false;
+  KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions);
+      
+  for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : mountPoints)
+  {
+#if defined(Q_OS_LINUX)
+    if (QString::compare(args["mh_mountpoint"].toString(), mountPoint->mountPoint()) == 0 &&
+        QString::compare(mountPoint->mountType(), "cifs", Qt::CaseInsensitive) == 0)
+#else
+    if (QString::compare(args["mh_mountpoint"].toString(), mountPoint->mountPoint()) == 0 &&
+        QString::compare(mountPoint->mountType(), "smbfs", Qt::CaseInsensitive) == 0)
+#endif
+    {
+      mountPointOk = true;
+      break;
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  //
+  // Stop here if the mountpoint is not valid
+  //
+  if (!mountPointOk)
+  {
+    reply.setType(ActionReply::HelperErrorType);
+    reply.setErrorDescription(i18n("The mountpoint %1 is invalid.", args["mh_mountpoint"].toString()));
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // The command
+  //
+  QStringList command;
+  command << umount;
+  command << args["mh_options"].toStringList();
+  command << args["mh_mountpoint"].toString();
+  
+  //
+  // The process
+  //
+  KProcess proc(this);
+  proc.setOutputChannelMode(KProcess::SeparateChannels);
+  proc.setProcessEnvironment(QProcessEnvironment::systemEnvironment());
+  proc.setProgram(command);
+  proc.start();
+  
+  if (proc.waitForStarted(-1))
+  {
+    // We want to be able to terminate the process from outside.
+    // Thus, we implement a loop that checks periodically, if we
+    // need to kill the process.
+    bool userKill = false;
+
+    while (!proc.waitForFinished(10))
+    {
+      if (HelperSupport::isStopped())
+      {
+        proc.kill();
+        userKill = true;
+        break;
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+
+    if (proc.exitStatus() == KProcess::CrashExit)
+    {
+      if (!userKill)
+      {
+        reply.setType(ActionReply::HelperErrorType);
+        reply.setErrorDescription(i18n("The unmount process crashed."));
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      // Check if there is output on stderr.
+      QString stdErr = QString::fromUtf8(proc.readAllStandardError());
+      reply.addData("mh_error_message", stdErr.trimmed());
+    }
+  }
+  else
+  {
+    reply.setType(ActionReply::HelperErrorType);
+    reply.setErrorDescription(i18n("The unmount process could not be started."));
+  }
+  
   return reply;
 }
 
