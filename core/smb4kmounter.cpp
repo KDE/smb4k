@@ -2406,6 +2406,7 @@ void Smb4KMounter::slotStatResult(KJob *job)
 
           if (!importedShare->isForeign() && QString::compare(remount->unc(), importedShare->unc(), Qt::CaseInsensitive) == 0)
           {
+            Smb4KCustomOptionsManager::self()->removeRemount(remount);
             s.remove();
             break;
           }
