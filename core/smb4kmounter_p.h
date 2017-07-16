@@ -167,14 +167,16 @@ class Smb4KMounterPrivate
     int timerId;
     int checkTimeout;
     int newlyMounted;
+    int newlyUnmounted;
     Smb4KMountDialog *dialog;
     QList<Smb4KShare *> importedShares;
     QList<Smb4KShare *> retries;
     QList<Smb4KShare *> remounts;
-    bool firstImportDone;
-    bool aboutToQuit;
     QString activeProfile;
     bool detectAllShares;
+    bool mountShares;
+    bool unmountShares;
+    bool firstImportDone;
 };
 
 

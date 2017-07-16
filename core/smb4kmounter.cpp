@@ -101,9 +101,11 @@ Smb4KMounter::Smb4KMounter(QObject *parent)
   d->remountAttempts = 0;
   d->checkTimeout = 0;
   d->newlyMounted = 0;
+  d->newlyUnmounted = 0;
   d->dialog = 0;
   d->firstImportDone = false;
-  d->aboutToQuit = false;
+  d->mountShares = false;
+  d->unmountShares = false;
   d->activeProfile = Smb4KProfileManager::self()->activeProfile();
   d->detectAllShares = Smb4KSettings::detectAllShares();
 
@@ -411,30 +413,43 @@ void Smb4KMounter::import(bool checkInaccessible)
   
   if (!unmountedShares.isEmpty())
   {
-    if (unmountedShares.size() > 1)
+    d->newlyUnmounted += unmountedShares.size();
+    
+    if (!d->mountShares && !d->unmountShares)
     {
-      int size = unmountedShares.size();
+      if (d->newlyUnmounted == 1)
+      {
+        emit unmounted(unmountedShares.first());
+        Smb4KNotification::shareUnmounted(unmountedShares.first());
+        removeMountedShare(unmountedShares.first());
+      }
+      else
+      {
+        for (Smb4KShare *share : unmountedShares)
+        {
+          emit unmounted(share);
+          removeMountedShare(share);
+        }
+        
+        Smb4KNotification::sharesUnmounted(d->newlyUnmounted);
+      }
       
+      d->newlyUnmounted = 0;
+    }
+    else
+    {
       for (Smb4KShare *share : unmountedShares)
       {
         emit unmounted(share);
         removeMountedShare(share);
       }
-      
-      Smb4KNotification::sharesUnmounted(size);
-    }
-    else
-    {
-      emit unmounted(unmountedShares.first());
-      Smb4KNotification::shareUnmounted(unmountedShares.first());
-      removeMountedShare(unmountedShares.first());
     }
     
     emit mountedSharesListChanged();
   }
   else
   {
-    // Do nothing
+    d->newlyUnmounted = 0;
   }
   
   //
@@ -444,14 +459,18 @@ void Smb4KMounter::import(bool checkInaccessible)
   //
   if (Smb4KHardwareInterface::self()->isOnline())
   {
-    for (Smb4KShare *share : d->importedShares)
+    QMutableListIterator<Smb4KShare *> it(d->importedShares);
+    
+    while (it.hasNext())
     {
+      Smb4KShare *share = it.next();
       Smb4KShare *mountedShare = findShareByPath(share->path());
       
       if (mountedShare)
       {
         if (mountedShare->isInaccessible() && !checkInaccessible)
         {
+          it.remove();
           continue;
         }
         else
@@ -468,8 +487,9 @@ void Smb4KMounter::import(bool checkInaccessible)
       KIO::StatJob *job = KIO::stat(url, KIO::HideProgressInfo);
       job->setDetails(0);
       connect(job, SIGNAL(result(KJob*)), this, SLOT(slotStatResult(KJob*)));
-      
+       
       // Do not use addSubJob(), because that would confuse isRunning(), etc.
+      
       job->start();
     }
     
@@ -838,10 +858,14 @@ void Smb4KMounter::mountShare(Smb4KShare *share, QWidget *parent)
 
 void Smb4KMounter::mountShares(const QList<Smb4KShare *> &shares, QWidget *parent)
 {
+  d->mountShares = true;
+  
   for (Smb4KShare *share : shares)
   {
     mountShare(share, parent);
   }
+  
+  d->mountShares = false;
 }
 
 
@@ -1047,10 +1071,37 @@ void Smb4KMounter::unmountShare(Smb4KShare *share, bool silent, QWidget *parent)
 
 void Smb4KMounter::unmountShares(const QList<Smb4KShare *> &shares, bool silent, QWidget *parent)
 {
+#if defined(Q_OS_LINUX)
+  //
+  // Under Linux, we have to take an approach that is a bit awkward in this function. 
+  // Since the import function is invoked via Smb4KHardwareInterface::networkShareRemoved()
+  // before mountShare() returns, no unmount of multiple shares will ever be reported
+  // when d->unmountShares is set to FALSE *after* the loop ended. To make the reporting
+  // work correctly, we need to set d->unmountShares to FALSE before the last unmount
+  // is started.
+  //
+  d->unmountShares = true;
+  int number = shares.size();
+  
+  for (Smb4KShare *share : shares)
+  {
+    number--;
+    d->unmountShares = (number != 0);
+    unmountShare(share, silent, parent);
+  }
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSB)
+  //
+  // Since under FreeBSD the emission of Smb4KHardwareInterface::networkShareRemoved() is 
+  // triggered by a timer, we can use a nice approach here.
+  d->unmountShares = true;
+  
   for (Smb4KShare *share : shares)
   {
     unmountShare(share, silent, parent);
   }
+  
+  d->unmountShares = false;
+#endif
 }
 
 
@@ -1147,7 +1198,7 @@ void Smb4KMounter::timerEvent(QTimerEvent *)
   if ((Smb4KSettings::remountShares() || !Smb4KCustomOptionsManager::self()->sharesToRemount().isEmpty()) && 
        Smb4KSettings::remountAttempts() > d->remountAttempts)
   {
-    if (d->firstImportDone && !hasSubjobs())
+    if (d->firstImportDone && !isRunning())
     {
       if (d->remountAttempts == 0)
       {
@@ -1201,9 +1252,8 @@ void Smb4KMounter::timerEvent(QTimerEvent *)
   //
   if (d->checkTimeout >= 2500 && !isRunning() && d->importedShares.isEmpty())
   {
-    for (int i = 0; i < mountedSharesList().size(); ++i)
+    for (Smb4KShare *share : mountedSharesList())
     {
-      Smb4KShare *share = mountedSharesList()[i];
       check(share);
       emit updated(share);
     }
@@ -2119,11 +2169,6 @@ void Smb4KMounter::slotStartJobs()
 void Smb4KMounter::slotAboutToQuit()
 {
   //
-  // The application is about to quit. 
-  //
-  d->aboutToQuit = true;
-  
-  //
   // Abort any actions
   //
   abortAll();
@@ -2391,6 +2436,7 @@ void Smb4KMounter::slotStatResult(KJob *job)
 
           if (!importedShare->isForeign() && QString::compare(remount->unc(), importedShare->unc(), Qt::CaseInsensitive) == 0)
           {
+            Smb4KCustomOptionsManager::self()->removeRemount(remount);
             s.remove();
             break;
           }
@@ -2405,7 +2451,7 @@ void Smb4KMounter::slotStatResult(KJob *job)
         d->newlyMounted += 1;
         emit mounted(importedShare);
         
-        if (d->importedShares.isEmpty())
+        if (d->importedShares.isEmpty() && !d->mountShares && !d->unmountShares)
         {
           if (d->firstImportDone)
           {
