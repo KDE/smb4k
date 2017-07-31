@@ -27,8 +27,8 @@
     <holder>Alexander Reinholdt</holder>
   </copyright>
   <legalnotice>&underFDL;</legalnotice>
-  <date>2017-03-03</date>
-  <releaseinfo>&smb4k; 2.0.0</releaseinfo><!--FIXME change releaseinfo number-->
+  <date>2017-07-25</date>
+  <releaseinfo>&smb4k; 2.0.2</releaseinfo><!--FIXME change releaseinfo number-->
   <abstract>
     <para>&smb4k; is an advanced network neighborhood browser and Samba share mounting utility.</para>
   </abstract>
@@ -1440,6 +1440,32 @@ client ipc max protocol = NT1
 ...</programlisting>
   
       <para>Unfortunately, this fix for &smb4k; breaks the possibility to connect to the network neighborhood with &dolphin; and maybe also other programs.</para>
+    </sect2>
+    
+<!--
+    Using Smb4K : Special Remarks : Remarks Regarding polkit-1
+-->
+    
+    <sect2 id="special_remarks_polkit-1">
+      <title>Remarks Regarding Denied Privilege Escalation</title>
+      
+      <para>In case the mount and unmount actions fail with an <guilabel>AuthorizationDeniedError</guilabel>, your polkit-1 setup might need to be adjusted: Add a file, &eg; named <filename>10-mounthelper.rules</filename>, to the <filename class="directory">$PREFIX/etc/polkit-1/rules.d/</filename> directory with the following content:</para>
+
+<programlisting>polkit.addRule(function(action, subject) {
+        if (action.id == "org.kde.smb4k.mounthelper.mount" &amp;&amp; 
+            subject.isInGroup("wheel")) {
+                return polkit.Result.YES;
+        }
+});
+
+polkit.addRule(function(action, subject) {
+        if (action.id == "org.kde.smb4k.mounthelper.unmount" &amp;&amp;
+            subject.isInGroup("wheel")) {
+                return polkit.Result.YES;
+        }
+});</programlisting>
+      
+      <para>This allows all users in the Unix group <emphasis>wheel</emphasis> to execute the mount and unmount action. You may adjust the group of authorized users to any group you need (&eg; <emphasis>sudo</emphasis> or <emphasis>operator</emphasis>).</para>
     </sect2>
   
 <!-- 
