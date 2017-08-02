@@ -2364,45 +2364,6 @@ void Smb4KMounter::slotStatResult(KJob *job)
   }
   
   //
-  // Check if we need to add an IP address or a workgroup/domain name
-  //
-  if (importedShare->workgroupName().isEmpty() || !importedShare->hasHostIP())
-  {
-    Smb4KHost *host = findHost(importedShare->hostName(), importedShare->workgroupName());
-
-    if (host)
-    {
-      // Set the IP address if necessary.
-      if (importedShare->hostIP().isEmpty() || QString::compare(host->ip(), importedShare->hostIP()) != 0)
-      {
-        importedShare->setHostIP(host->ip());
-      }
-      else
-      {
-        // Do nothing
-      }
-
-      // Set the workgroup/domain name if necessary.
-      if (importedShare->workgroupName().isEmpty())
-      {
-        importedShare->setWorkgroupName(host->workgroupName());
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
-  }  
-  
-  //
   // Search for a previously added mounted share and try to update it. If this fails,
   // add the share to the global list.
   //

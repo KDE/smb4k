@@ -2,7 +2,7 @@
     This is the global namespace for Smb4K.
                              -------------------
     begin                : Sa Apr 2 2005
-    copyright            : (C) 2005-2016 by Alexander Reinholdt
+    copyright            : (C) 2005-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -429,7 +429,7 @@ bool Smb4KGlobal::addShare(Smb4KShare *share)
   if (share)
   {
     mutex.lock();
-
+    
     if (!findShare(share->unc(), share->workgroupName()))
     {
       p->sharesList.append(share);
@@ -651,6 +651,38 @@ bool Smb4KGlobal::addMountedShare(Smb4KShare *share)
 
     if (!findShareByPath(share->path()))
     {
+      //
+      // Check if we have to add a workgroup name and/or IP address
+      //
+      Smb4KHost *networkHost = findHost(share->hostName(), share->workgroupName());
+      
+      if (networkHost)
+      {
+        // Set the IP address
+        if (!share->hasHostIP() || networkHost->ip() != share->hostIP())
+        {
+          share->setHostIP(networkHost->ip());
+        }
+        else
+        {
+          // Do nothing
+        }
+        
+        // Set the workgroup name
+        if (share->workgroupName().isEmpty())
+        {
+          share->setWorkgroupName(networkHost->workgroupName());
+        }
+        else
+        {
+          // Do nothing
+        }          
+      }
+      else
+      {
+        // Do nothing
+      }
+      
       p->mountedSharesList.append(share);
       added = true;
 
@@ -697,7 +729,42 @@ bool Smb4KGlobal::updateMountedShare(Smb4KShare* share)
     
     if (mountedShare)
     {
+      //
+      // Check if we have to add a workgroup name and/or IP address
+      //
+      Smb4KHost *networkHost = findHost(share->hostName(), share->workgroupName());
+      
+      if (networkHost)
+      {
+        // Set the IP address
+        if (!share->hasHostIP() || networkHost->ip() != share->hostIP())
+        {
+          share->setHostIP(networkHost->ip());
+        }
+        else
+        {
+          // Do nothing
+        }
+        
+        // Set the workgroup name
+        if (share->workgroupName().isEmpty())
+        {
+          share->setWorkgroupName(networkHost->workgroupName());
+        }
+        else
+        {
+          // Do nothing
+        }          
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      
+      //
       // Update share
+      //
       mountedShare->setMountData(share);
       updated = true;
     }
@@ -724,6 +791,8 @@ bool Smb4KGlobal::removeMountedShare(Smb4KShare *share)
   if (share)
   {
     mutex.lock();
+    
+    qDebug() << "FIXME: Smb4KGlobal::removeMountedShare(): Set the network share unmounted";
   
     // Find the share by its path and remove it.
     QMutableListIterator<Smb4KShare *> it(p->mountedSharesList);
