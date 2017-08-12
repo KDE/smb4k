@@ -358,10 +358,18 @@ void Smb4KHost::update(Smb4KHost* host)
       QString::compare(hostName(), host->hostName()) == 0)
   {
     setURL(host->url());
-    setWorkgroupName(host->workgroupName());
-    setIP(host->ip());
     setComment(host->comment());
     setIsMasterBrowser(host->isMasterBrowser());
+    
+    // Do not kill the already discovered IP address
+    if (!hasIP() && host->hasIP())
+    {
+      setIP(host->ip());
+    }
+    else
+    {
+      // Do nothing
+    }    
   }
   else
   {
