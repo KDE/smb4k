@@ -29,6 +29,7 @@
 
 // application specific includes
 #include "smb4kworkgroup.h"
+#include "smb4kglobal.h"
 
 // Qt includes
 #include <QHostAddress>
@@ -36,20 +37,20 @@
 // KDE includes
 #include <KIconThemes/KIconLoader>
 
+using namespace Smb4KGlobal;
+
 class Smb4KWorkgroupPrivate
 {
   public:
     QUrl url;
     QUrl masterURL;
     QHostAddress masterIP;
-    bool pseudoMaster;
 };
 
 
 Smb4KWorkgroup::Smb4KWorkgroup(const QString &name)
 : Smb4KBasicNetworkItem(Workgroup), d(new Smb4KWorkgroupPrivate)
 {
-  d->pseudoMaster = false;
   d->url.setHost(name);
   d->url.setScheme("smb");
   setIcon(KDE::icon("network-workgroup"));
@@ -75,7 +76,6 @@ Smb4KWorkgroup::Smb4KWorkgroup(const Smb4KWorkgroup &w)
 Smb4KWorkgroup::Smb4KWorkgroup()
 : Smb4KBasicNetworkItem(Workgroup), d(new Smb4KWorkgroupPrivate)
 {
-  d->pseudoMaster = false;
   setIcon(KDE::icon("network-workgroup"));  
 }
 
