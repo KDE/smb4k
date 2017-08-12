@@ -28,6 +28,7 @@
 #include "smb4khost.h"
 #include "smb4kshare.h"
 #include "smb4khomesshareshandler.h"
+#include "smb4kglobal.h"
 
 // Qt includes
 #include <QDebug>
@@ -35,6 +36,9 @@
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"
 #include <KI18n/KLocalizedString>
+
+using namespace Smb4KGlobal;
+
 
 Smb4KPasswordDialog::Smb4KPasswordDialog(Smb4KBasicNetworkItem* networkItem, const QMap<QString,QString> &knownLogins, QWidget* parent)
 : KPasswordDialog(parent, KPasswordDialog::ShowUsernameLine)
