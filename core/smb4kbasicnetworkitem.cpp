@@ -35,25 +35,24 @@
 #include <QtGlobal>
 #include <QDebug>
 
+using namespace Smb4KGlobal;
 
 class Smb4KBasicNetworkItemPrivate
 {
   public:
     NetworkItem type;
-    QString key;
     QIcon icon;
 };
 
 
-Smb4KBasicNetworkItem::Smb4KBasicNetworkItem( NetworkItem type )
-: d( new Smb4KBasicNetworkItemPrivate )
+Smb4KBasicNetworkItem::Smb4KBasicNetworkItem(NetworkItem type)
+: d(new Smb4KBasicNetworkItemPrivate)
 {
   d->type = type;
-  d->key  = QString("%1").arg(qrand());
 }
 
-Smb4KBasicNetworkItem::Smb4KBasicNetworkItem( const Smb4KBasicNetworkItem &item )
-: d( new Smb4KBasicNetworkItemPrivate )
+Smb4KBasicNetworkItem::Smb4KBasicNetworkItem(const Smb4KBasicNetworkItem &item)
+: d(new Smb4KBasicNetworkItemPrivate)
 {
   *d = *item.d;
 }
@@ -70,19 +69,7 @@ Smb4KGlobal::NetworkItem Smb4KBasicNetworkItem::type() const
 }
 
 
-void Smb4KBasicNetworkItem::setKey( const QString &key )
-{
-  d->key = key;
-}
-
-
-QString Smb4KBasicNetworkItem::key() const
-{
-  return d->key;
-}
-
-
-void Smb4KBasicNetworkItem::setIcon( const QIcon &icon )
+void Smb4KBasicNetworkItem::setIcon(const QIcon &icon)
 {
   d->icon = icon;
 }
