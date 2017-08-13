@@ -27,9 +27,7 @@
 #define SMB4KNETWORKBROWSERITEM_H
 
 // application specific includes
-#include "core/smb4kworkgroup.h"
-#include "core/smb4khost.h"
-#include "core/smb4kshare.h"
+#include "core/smb4kbasicnetworkitem.h"
 #include "smb4ktooltip.h"
 
 // Qt includes
@@ -42,35 +40,20 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
 {
   public:
     /**
-     * The constructor for toplevel (workgroup) items.
+     * The constructor for toplevel items.
      *
-     * @param parent        The parent tree widget.
-     *
-     * @param workgroup     The Smb4KWorkgroup item that carries all the data
-     *                      needed to set up a "workgroup item".
+     * @param parent        The parent tree widget
+     * @param item          The Smb4KBasicNetworkItem item
      */
-    Smb4KNetworkBrowserItem(QTreeWidget *parent,
-                            Smb4KWorkgroup *workgroup);
+    Smb4KNetworkBrowserItem(QTreeWidget *parent, Smb4KBasicNetworkItem *item);
 
     /**
-     * The constructor for the host items.
+     * The constructor for child items.
      *
      * @param parent        The parent tree widget item.
-     *
-     * @param host          The Smb4KHost item that carries all the data.
+     * @param item          The Smb4KBasicNetworkItem item
      */
-    Smb4KNetworkBrowserItem(QTreeWidgetItem *parent,
-                            Smb4KHost *host);
-
-    /**
-     * The constructor for the share items.
-     *
-     * @param parent        The parent tree widget item.
-     *
-     * @param share         The Smb4KShare item that carries all the data.
-     */
-    Smb4KNetworkBrowserItem(QTreeWidgetItem *parent,
-                            Smb4KShare *share);
+    Smb4KNetworkBrowserItem(QTreeWidgetItem *parent, Smb4KBasicNetworkItem *item);
 
     /**
      * The destructor.
@@ -119,10 +102,8 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
     
     /**
      * This function updates the internal network item.
-     * 
-     * @param item          A Smb4KBasicNetworkItem object
      */
-    void update(Smb4KBasicNetworkItem *item);
+    void update();
     
     /**
      * This function returns the tool tip of this item.
@@ -133,19 +114,9 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
 
   private:
     /**
-     * The workgroup item
+     * The network item
      */
-    Smb4KWorkgroup *m_workgroup;
-
-    /**
-     * The host item
-     */
-    Smb4KHost *m_host;
-
-    /**
-     * The share item
-     */
-    Smb4KShare *m_share;
+    Smb4KBasicNetworkItem *m_item;
     
     /**
      * The tool tip of this item
