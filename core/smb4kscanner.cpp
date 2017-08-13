@@ -550,7 +550,7 @@ void Smb4KScanner::lookupDomains(QWidget *parent)
 void Smb4KScanner::lookupDomainMembers(Smb4KWorkgroup *workgroup, QWidget *parent)
 {
   Q_ASSERT(workgroup);
-
+  
   Smb4KLookupDomainMembersJob *job = new Smb4KLookupDomainMembersJob(this);
   job->setObjectName(QString("LookupDomainMembersJob_%1").arg(workgroup->workgroupName()));
   job->setupLookup(workgroup, parent);
@@ -705,7 +705,7 @@ void Smb4KScanner::timerEvent(QTimerEvent */*e*/)
   // 60 seconds. The latter is done to retrieve IP addresses for
   // hosts for which the IP address was not discovered in the
   // first run.
-  if (!hasSubjobs() && ((d->haveNewHosts && !hostsList().isEmpty()) || d->elapsedTimeIP >= 60000))
+  if (!isRunning() && ((d->haveNewHosts && !hostsList().isEmpty()) || d->elapsedTimeIP >= 60000))
   {
     for (int i = 0; i < hostsList().size(); ++i)
     {
@@ -955,192 +955,141 @@ void Smb4KScanner::slotSharesLookupFinished(Smb4KHost *host)
 
 void Smb4KScanner::slotWorkgroups(const QList<Smb4KWorkgroup *> &workgroups_list)
 {
-  // The new workgroup list will be used as global workgroup list.
-  // We do some checks and adjustments now, so that the host list 
-  // is also correctly updated.
-  if (!workgroups_list.isEmpty())
+  //
+  // Remove obsolete workgroups and their members
+  //
+  QListIterator<Smb4KWorkgroup *> wIt(workgroupsList());
+  
+  while (wIt.hasNext())
   {
-    for (int i = 0; i < workgroups_list.size(); ++i)
+    Smb4KWorkgroup *workgroup = wIt.next();
+    
+    bool found = false;
+    
+    for (Smb4KWorkgroup *w : workgroups_list)
     {
-      Smb4KWorkgroup *workgroup = findWorkgroup(workgroups_list.at(i)->workgroupName());
-
-      // Check if the master browser changed.
-      if (workgroup)
+      if (w->workgroupName() == workgroup->workgroupName())
       {
-        if (QString::compare(workgroups_list.at(i)->masterBrowserName(), workgroup->masterBrowserName(), Qt::CaseInsensitive) != 0)
-        {
-          // Get the old master browser and reset the master browser flag.
-          Smb4KHost *old_master_browser = findHost(workgroup->masterBrowserName(), workgroup->workgroupName());
-
-          if (old_master_browser)
-          {
-            old_master_browser->setIsMasterBrowser(false);
-          }
-          else
-          {
-            // Do nothing
-          }
-
-          // Lookup new master browser and either set the master browser flag
-          // or insert it if it does not exit yet.
-          Smb4KHost *new_master_browser = findHost(workgroups_list.at(i)->masterBrowserName(), workgroups_list.at(i)->workgroupName());
-
-          if (new_master_browser)
-          {
-            if (workgroups_list.at(i)->hasMasterBrowserIP())
-            {
-              new_master_browser->setIP(workgroups_list.at(i)->masterBrowserIP());
-            }
-            else
-            {
-              // Do nothing
-            }
-
-            new_master_browser->setIsMasterBrowser(true);
-          }
-          else
-          {
-            new_master_browser = new Smb4KHost();
-            new_master_browser->setHostName(workgroups_list.at(i)->masterBrowserName());
-
-            if (workgroups_list.at(i)->hasMasterBrowserIP())
-            {
-              new_master_browser->setIP(workgroups_list.at(i)->masterBrowserIP());
-            }
-            else
-            {
-              // Do nothing
-            }
-
-            new_master_browser->setWorkgroupName(workgroups_list.at(i)->workgroupName());
-            new_master_browser->setIsMasterBrowser(true);
-
-            addHost(new_master_browser);
-          }
-        }
-        else
-        {
-          // Do nothing
-        }
-
-        removeWorkgroup(workgroup);
+        found = true;
+        break;
       }
       else
       {
-        // Check if the master browser of the new workgroup list is by chance
-        // already in the list of hosts. If it exists, set the master browser
-        // flag, else insert it.
-        Smb4KHost *new_master_browser = findHost(workgroups_list.at(i)->masterBrowserName(), workgroups_list.at(i)->workgroupName());
-
-        if (new_master_browser)
+        continue;
+      }        
+    }
+    
+    if (!found)
+    {
+      QList<Smb4KHost *> obsoleteHosts = workgroupMembers(workgroup);
+      QListIterator<Smb4KHost *> hIt(obsoleteHosts);
+      
+      while (hIt.hasNext())
+      {
+        removeHost(hIt.next());
+      }
+      
+      removeWorkgroup(workgroup);
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  //
+  // Add new workgroups and update existing ones.
+  // 
+  for (Smb4KWorkgroup *workgroup : workgroups_list)
+  {
+    if (!findWorkgroup(workgroup->workgroupName()))
+    {
+      addWorkgroup(new Smb4KWorkgroup(*workgroup));
+      
+      // Since this is a new workgroup, no master browser is present.
+      Smb4KHost *masterBrowser = new Smb4KHost();
+      masterBrowser->setWorkgroupName(workgroup->workgroupName());
+      masterBrowser->setHostName(workgroup->masterBrowserName());
+      masterBrowser->setIP(workgroup->masterBrowserIP());
+      masterBrowser->setIsMasterBrowser(true);
+      
+      addHost(masterBrowser);
+    }
+    else
+    {
+      updateWorkgroup(workgroup);
+      
+      // Check if the master browser changed
+      QList<Smb4KHost *> members = workgroupMembers(workgroup);
+      
+      for (Smb4KHost *host : members)
+      {
+        if (workgroup->masterBrowserName() == host->hostName())
         {
-          if (workgroups_list.at(i)->hasMasterBrowserIP())
+          host->setIsMasterBrowser(true);
+          
+          if (!host->hasIP() && workgroup->hasMasterBrowserIP())
           {
-            new_master_browser->setIP(workgroups_list.at(i)->masterBrowserIP());
+            host->setIP(workgroup->masterBrowserIP());
           }
           else
           {
             // Do nothing
-          }
-
-          new_master_browser->setIsMasterBrowser(true);
+          }          
         }
         else
         {
-          new_master_browser = new Smb4KHost();
-          new_master_browser->setHostName(workgroups_list.at(i)->masterBrowserName());
-
-          if (workgroups_list.at(i)->hasMasterBrowserIP())
-          {
-            new_master_browser->setIP(workgroups_list.at(i)->masterBrowserIP());
-          }
-          else
-          {
-            // Do nothing
-          }
-
-          new_master_browser->setWorkgroupName(workgroups_list.at(i)->workgroupName());
-          new_master_browser->setIsMasterBrowser(true);
-
-          addHost(new_master_browser);
+          host->setIsMasterBrowser(false);
         }
       }
     }
-    
-    d->haveNewHosts = true;
   }
-  else
-  {
-    // Do nothing
-  }
-
-  // The global workgroup list only contains obsolete workgroups now.
-  // Remove all hosts belonging to those obsolete workgroups from the
-  // host list and then also the workgroups themselves.
-  while (!workgroupsList().isEmpty())
-  {
-    Smb4KWorkgroup *workgroup = workgroupsList().first();
-    QList<Smb4KHost *> obsolete_hosts = workgroupMembers(workgroup);
-    QListIterator<Smb4KHost *> h(obsolete_hosts);
-    
-    while (h.hasNext())
-    {
-      Smb4KHost *host = h.next();
-      removeHost(host);
-    }
-
-    removeWorkgroup(workgroup);
-  }
-
-  // Add a copy of all workgroups to the global list.
-  for (int i = 0; i < workgroups_list.size(); ++i)
-  {
-    addWorkgroup(new Smb4KWorkgroup(*workgroups_list.at(i)));
-  }
-
-  emit workgroups(workgroupsList());
-}
-
-
-void Smb4KScanner::slotHosts(const QList<Smb4KHost *> &hosts_list)
-{
-  slotHosts(0, hosts_list);
+  
+  emit workgroups();
 }
 
 
 void Smb4KScanner::slotHosts(Smb4KWorkgroup *workgroup, const QList<Smb4KHost *> &hosts_list)
 {
-  if (!hosts_list.isEmpty())
+  Q_ASSERT(workgroup);
+  
+  if (workgroup && !hosts_list.isEmpty())
   {
-    // Copy any information we might need to the internal list and
-    // remove the host from the global list. It will be added again
-    // in an instant.
-    for (int i = 0; i < hosts_list.size(); ++i)
+    //
+    // Remove obsolete hosts and their shares
+    //
+    QList<Smb4KHost *> members = workgroupMembers(workgroup);
+    QListIterator<Smb4KHost *> hIt(members);
+    
+    while (hIt.hasNext())
     {
-      Smb4KHost *host = findHost(hosts_list.at(i)->hostName(), hosts_list.at(i)->workgroupName());
-
-      if (host)
+      Smb4KHost *host = hIt.next();
+      
+      bool found = false;
+      
+      for (Smb4KHost *h : hosts_list)
       {
-        // Set comment
-        if (hosts_list.at(i)->comment().isEmpty() && !host->comment().isEmpty())
+        if (h->workgroupName() == host->workgroupName() && h->hostName() == host->hostName())
         {
-          hosts_list[i]->setComment(host->comment());
+          found = true;
+          break;
         }
         else
         {
-          // Do nothing
-        }
-
-        // Set the IP addresses
-        if (!hosts_list.at(i)->hasIP() && host->hasIP())
+          continue;
+        }        
+      }
+      
+      if (!found)
+      {
+        QList<Smb4KShare *> obsoleteShares = sharedResources(host);
+        QListIterator<Smb4KShare *> sIt(obsoleteShares);
+        
+        while (sIt.hasNext())
         {
-          hosts_list[i]->setIP(host->ip());
+          removeShare(sIt.next());
         }
-        else
-        {
-          // Do nothing
-        }
-
+        
         removeHost(host);
       }
       else
@@ -1148,74 +1097,37 @@ void Smb4KScanner::slotHosts(Smb4KWorkgroup *workgroup, const QList<Smb4KHost *>
         // Do nothing
       }
     }
+    
+    //
+    // Add new hosts and update existing ones
+    //
+    for (Smb4KHost *host : hosts_list)
+    {
+      if (host->hostName() == workgroup->masterBrowserName())
+      {
+        host->setIsMasterBrowser(true);
+      }
+      else
+      {
+        host->setIsMasterBrowser(false);
+      }
+      
+      if (!findHost(host->hostName(), host->workgroupName()))
+      {
+        addHost(new Smb4KHost(*host));
+        d->haveNewHosts = true;
+      }
+      else
+      {
+        updateHost(host);
+      }
+    }
+    
+    emit hosts(workgroup);
   }
   else
   {
     // Do nothing
-  }
-
-  if (workgroup)
-  {
-    // Now remove all (obsolete) hosts of the scanned workgroup from
-    // the global list as well as their shares.
-    QList<Smb4KHost *> obsolete_hosts = workgroupMembers(workgroup);
-    QListIterator<Smb4KHost *> h(obsolete_hosts);
-    
-    while (h.hasNext())
-    {
-      Smb4KHost *host = h.next();
-      
-      QList<Smb4KShare *> obsolete_shares = sharedResources(host);
-      QListIterator<Smb4KShare *> s(obsolete_shares);
-      
-      while (s.hasNext())
-      {
-        Smb4KShare *share = s.next();
-        removeShare(share);
-      }
-      
-      removeHost(host);
-    }
-  }
-  else
-  {
-    // If no workgroup was passed it means that we are doing an IP scan
-    // or at least members of more than one workgroup were looked up. In
-    // this case the global hosts list is considered to carry obsolete
-    // host entries at this point. Remove them as well as their shares.
-    while (!hostsList().isEmpty())
-    {
-      Smb4KHost *host = hostsList().first();
-
-      QList<Smb4KShare *> obsolete_shares = sharedResources(host);
-      QListIterator<Smb4KShare *> s(obsolete_shares);
-      
-      while (s.hasNext())
-      {
-        Smb4KShare *share = s.next();
-        removeShare(share);
-      }
-      
-      removeHost(host);
-    }
-  }
-  
-  // Add a copy of all hosts to the global list.
-  for (int i = 0; i < hosts_list.size(); ++i)
-  {
-    addHost(new Smb4KHost(*hosts_list.at(i)));
-  }
-  
-  d->haveNewHosts = true;
-
-  if (workgroup)
-  {
-    QList<Smb4KHost *> workgroup_members = workgroupMembers(workgroup);
-    emit hosts(workgroup, workgroup_members);
-  }
-  else
-  {
-    emit hosts(workgroup, hostsList());
   }
 }
 
@@ -1226,73 +1138,98 @@ void Smb4KScanner::slotShares(Smb4KHost *host, const QList<Smb4KShare *> &shares
   
   if (host && !shares_list.isEmpty())
   {
-    // Process list of shares:
-    QList<Smb4KShare *> new_shares;
+    //
+    // Remove obsolete shares
+    //
+    QList<Smb4KShare *> sharedRes = sharedResources(host);
+    QListIterator<Smb4KShare *> sIt(sharedRes);
     
-    // Copy all shares that the user wishes to retrieve and set the mount data
-    // as well as the IP address (if not already present).
-    for (int i = 0; i < shares_list.size(); ++i)
+    while (sIt.hasNext())
     {
-      if (shares_list.at(i)->isPrinter() && !Smb4KSettings::detectPrinterShares())
-      {
-        continue;
-      }
-      else if (shares_list.at(i)->isHidden() && !Smb4KSettings::detectHiddenShares())
-      {
-        continue;
-      }
-      else
-      {
-        // Do nothing
-      }
+      Smb4KShare *share = sIt.next();
       
-      // Check if the share has already been mounted.
-      QList<Smb4KShare *> mounted_shares = findShareByUNC(shares_list.at(i)->unc());
+      bool found = false;
       
-      if (!mounted_shares.isEmpty())
+      for (Smb4KShare *s : shares_list)
       {
-        // FIXME: We cannot honor Smb4KSettings::detectAllShares() here, because 
-        // in case the setting is changed, there will be no automatic rescan
-        // (in case of an automatic or periodical rescan that would be the 
-        // favorable method...
-        //
-        // For now, we prefer the share mounted by the user or use the first
-        // occurrence if he/she did not mount it.
-        Smb4KShare *mounted_share = mounted_shares.first();
-        
-        for (int j = 0; j < mounted_shares.size(); ++j)
+        if (s->workgroupName() == share->workgroupName() && s->unc() == share->unc())
         {
-          if (!mounted_shares.at(j)->isForeign())
-          {
-            mounted_share = mounted_shares[j];
-            break;
-          }
-          else
-          {
-            continue;
-          }
-        }
-
-        shares_list[i]->setMountData(mounted_share);
-      }
-      else
-      {
-        // Do nothing
-      }      
- 
-      // Now set the IP address, if none could be retrieved by the
-      // lookup job. 
-      if (!shares_list.at(i)->hasHostIP())
-      {
-        Smb4KShare *s = findShare(shares_list.at(i)->unc(), shares_list.at(i)->workgroupName());
-        
-        if (s)
-        {
-          shares_list[i]->setHostIP(s->hostIP());
+          found = true;
+          break;
         }
         else
         {
-          // Do nothing
+          continue;
+        }
+      }
+      
+      if (!found || 
+          (share->isHidden() && !Smb4KSettings::detectHiddenShares()) ||
+          (share->isPrinter() && !Smb4KSettings::detectPrinterShares()))
+      {
+        removeShare(share);
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    
+    //
+    // Add new shares and update existing ones
+    //
+    for (Smb4KShare *share : shares_list)
+    {
+      //
+      // Process only those shares that the user wants to see
+      //
+      if (share->isHidden() && !Smb4KSettings::detectHiddenShares())
+      {
+        continue;
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      if (share->isPrinter() && !Smb4KSettings::detectPrinterShares())
+      {
+        continue;
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      //
+      // Check if the share has already been mounted. Since version 2.1.0
+      //
+      QList<Smb4KShare *> mountedShares = findShareByUNC(share->unc());
+      bool mounted = false;
+      
+      if (!mountedShares.isEmpty())
+      {
+        if (Smb4KSettings::detectAllShares())
+        {
+          //
+          // FIXME: Add all mounts of this share
+          //          
+          share->setMountData(mountedShares.first());
+        }
+        else
+        {
+          for (Smb4KShare *mountedShare : mountedShares)
+          {
+            if (!mountedShare->isForeign())
+            {
+              share->setMountData(mountedShare);
+              break;
+            }
+            else
+            {
+              continue;
+            }
+          }
         }
       }
       else
@@ -1300,42 +1237,36 @@ void Smb4KScanner::slotShares(Smb4KHost *host, const QList<Smb4KShare *> &shares
         // Do nothing
       }
       
-      new_shares << shares_list[i];
+      //
+      // Add the host's IP address and authentication information
+      //
+      Smb4KHost *host = findHost(share->hostName(), share->workgroupName());
+      
+      if (host)
+      {
+        share->setHostIP(host->ip());
+        share->setLogin(host->login());
+        share->setPassword(host->password());
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      //
+      // Add or update the shares
+      //      
+      if (!findShare(share->unc(), share->workgroupName()))
+      {
+        addShare(new Smb4KShare(*share));
+      }
+      else
+      {
+        updateShare(share);
+      }
     }
     
-    // Process the host:
-    // Copy the authentication information.
-    Smb4KHost *known_host = findHost(host->hostName(), host->workgroupName());
-    
-    if(known_host)
-    {
-      known_host->setLogin(host->login());
-      known_host->setPassword(host->password());
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    // Now remove all shares of this host from the global list.
-    QList<Smb4KShare *> known_shares = sharedResources(known_host);
-    QListIterator<Smb4KShare *> it(known_shares);
-    
-    while(it.hasNext())
-    {
-      Smb4KShare *s = it.next();
-      removeShare(s);
-    }
-    
-    // Add a copy of all desired shares to the global list.
-    for (int i = 0; i < new_shares.size(); ++i)
-    {
-      addShare(new Smb4KShare(*new_shares[i]));
-    }
-    
-    // Now emit the list of shared resources.
-    QList<Smb4KShare *> shared_resources = sharedResources(host);
-    emit shares(host, shared_resources);
+    emit shares(host);
   }
   else
   {
@@ -1347,18 +1278,52 @@ void Smb4KScanner::slotShares(Smb4KHost *host, const QList<Smb4KShare *> &shares
 void Smb4KScanner::slotProcessIPAddress(Smb4KHost *host)
 {
   Q_ASSERT(host);
+  
+  //
+  // Find the host in the hosts list
+  //
+  Smb4KHost *knownHost = findHost(host->hostName(), host->workgroupName());
 
-  Smb4KHost *known_host = findHost(host->hostName(), host->workgroupName());
-
-  if (known_host)
+  //
+  // Update the host, its shares, and, if applicable, the workgroup master browser's IP address
+  //
+  if (knownHost)
   {
-    known_host->setIP(host->ip());
+    // Update host
+    knownHost->setIP(host->ip());
+    
+    // Update shares
+    QList<Smb4KShare *> shares = sharedResources(knownHost);
+    
+    for (Smb4KShare *share : shares)
+    {
+      share->setHostIP(host->ip());
+    }
+    
+    // Update workgroup master browser's IP address
+    if (knownHost->isMasterBrowser())
+    {
+      Smb4KWorkgroup *workgroup = findWorkgroup(knownHost->workgroupName());
+      
+      if (workgroup && !workgroup->hasMasterBrowserIP() && workgroup->masterBrowserName() == knownHost->hostName())
+      {
+        workgroup->setMasterBrowserIP(knownHost->ip());
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
     // Do nothing
   }
 
-  emit ipAddress(known_host);
+  emit ipAddress(knownHost);
 }
 

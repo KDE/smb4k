@@ -3,7 +3,7 @@
     browser of Smb4K.
                              -------------------
     begin                : Fr Jan 5 2007
-    copyright            : (C) 2007-2016 by Alexander Reinholdt
+    copyright            : (C) 2007-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -130,36 +130,25 @@ class Smb4KNetworkBrowserPart : public KParts::Part
     void slotItemActivated(QTreeWidgetItem *item, int column);
 
     /**
-     * This slot receives the workgroups/domains found by the scanner. It takes
-     * a list of workgroup items @p list and inserts the respective workgroups
-     * into the browser window. Obsolete items will be deleted from the network
-     * browser.
-     *
-     * @param list                A list of Smb4KWorkgroup item objects
+     * This slot is called when the scanner updated the list of workgroups/domains.
      */
-    void slotWorkgroups(const QList<Smb4KWorkgroup *> &list);
+    void slotWorkgroups();
 
     /**
-     * This slot receives the list of workgroup/domain members that were found
-     * by the scanner. It takes this @p list and inserts it into the list view.
-     * Obsolete items will be deleted from the network browser.
+     * This slot is called when the list of members of workgroup @p workgroup was
+     * discovered. 
      *
-     * @param list                A list of Smb4KHostItem objects
+     * @param workgroup           The workgroup that was queried
      */
-    void slotWorkgroupMembers(Smb4KWorkgroup *workgroup,
-                               const QList<Smb4KHost *> &list);
+    void slotWorkgroupMembers(Smb4KWorkgroup *workgroup);
 
     /**
-     * This slot receives the list of shared resources a host provides. It takes
-     * this @p list and inserts its items as children of @p host into the list
-     * view. Obsolete items will be deleted from the network browser.
+     * This slot is called when the list of shared resources of host @p host was
+     * queried.
      *
-     * @param host                The host where the shares belong
-     *
-     * @param list                The list of shares that belong to @p host
+     * @param host                The host that was queried
      */
-    void slotShares(Smb4KHost *host,
-                     const QList<Smb4KShare *> &list);
+    void slotShares(Smb4KHost *host);
 
     /**
      * This slot takes a Smb4KHostItem object @p item, reads the IP address entry

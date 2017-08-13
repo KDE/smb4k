@@ -176,6 +176,17 @@ namespace Smb4KGlobal
    * @returns TRUE if the workgroup was added and FALSE otherwise.
    */
   Q_DECL_EXPORT bool addWorkgroup(Smb4KWorkgroup *workgroup);
+  
+  /**
+   * This function takes a workgroup @p workgroup, and updates the respective workgroup
+   * in the global list, if it exists. It returns TRUE on success and FALSE otherwise.
+   * If you want to add a workgroup to the global list, use @see addWorkgroup().
+   *
+   * Please prefer this function over per class solutions.
+   * 
+   * @returns TRUE if the workgroup was updated and FALSE otherwise
+   */
+  Q_DECL_EXPORT bool updateWorkgroup(Smb4KWorkgroup *workgroup);
 
   /**
    * This function removes a workgroup @p workgroup from the list of domains. The
@@ -229,6 +240,17 @@ namespace Smb4KGlobal
    * @returns TRUE if the host was added and FALSE otherwise.
    */
   Q_DECL_EXPORT bool addHost(Smb4KHost *host);
+  
+  /**
+   * This function takes an host @p host, and updates the respective host
+   * in the global list, if it exists. It returns TRUE on success and FALSE otherwise.
+   * If you want to add an host to the global list, use @see addHost().
+   *
+   * Please prefer this function over per class solutions.
+   * 
+   * @returns TRUE if the host was updated and FALSE otherwise
+   */
+  Q_DECL_EXPORT bool updateHost(Smb4KHost *host);
 
   /**
    * This function removes a host @p host from the list of hosts. The
@@ -291,6 +313,17 @@ namespace Smb4KGlobal
    * @returns TRUE if the share was added and FALSE otherwise.
    */
   Q_DECL_EXPORT bool addShare(Smb4KShare *share);
+  
+  /**
+   * This function takes a share @p share, and updates the respective share
+   * in the global list, if it exists. It returns TRUE on success and FALSE otherwise.
+   * If you want to add a share to the global list, use @see addShare().
+   *
+   * Please prefer this function over per class solutions.
+   * 
+   * @returns TRUE if the share was updated and FALSE otherwise
+   */
+  Q_DECL_EXPORT bool updateShare(Smb4KShare *share);
 
   /**
    * This function removes a share @p share from the list of shares. The

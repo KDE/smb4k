@@ -193,42 +193,32 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
                    int process);
 
     /**
-     * This signal emits the list of workgroups that were discovered.
-     *
-     * @param workgroups   The list of workgroups
+     * This signal is emitted when the list of workgroups was updated/changed.
      */
-    void workgroups(const QList<Smb4KWorkgroup *> &workgroups);
+    void workgroups();
 
     /**
-     * This signal emits the list of hosts that were discovered.
+     * This signal is emitted when the list of members of the workgroup @p workgroup 
+     * was discovered.
      *
-     * @param workgroup   The workgroup that was scanned. This argument
-     *                    is NULL in case several workgroups are present
-     *                    in the hosts list.
-     *
-     * @param hosts       The list of hosts
+     * @param workgroup   The workgroup that was scanned
      */
-    void hosts(Smb4KWorkgroup *workgroup,
-                const QList<Smb4KHost *> &hosts);
+    void hosts(Smb4KWorkgroup *workgroup);
     
     /**
-     * This signal is emitted when the list of shares are certain host 
-     * offers has been acquired.
+     * This signal is emitted when the list of shares a certain host @p host offers 
+     * has been acquired.
      * 
      * @param host        The host that was queried
-     * 
-     * @param shares      The list of shares belonging to @p host
      */
-    void shares(Smb4KHost *host,
-                 const QList<Smb4KShare *> &shares);
+    void shares(Smb4KHost *host);
     
     /**
      * This signal is emitted when an authentication error occurred.
      * 
      * @param host        The host that is affected
      */
-    void authError(Smb4KHost *host,
-                    int process);
+    void authError(Smb4KHost *host, int process);
 
     /**
      * This signal is emitted when an IP address was successfully looked
@@ -309,11 +299,6 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
      * up
      */
     void slotWorkgroups(const QList<Smb4KWorkgroup *> &workgroups_list);
-
-    /**
-     * Is called when hosts have been looked up by the IP scan method
-     */
-    void slotHosts(const QList<Smb4KHost *> &hosts_list);
 
     /**
      * Is called when hosts have been looked up by the normal lookup

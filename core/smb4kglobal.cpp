@@ -162,25 +162,66 @@ Smb4KWorkgroup *Smb4KGlobal::findWorkgroup(const QString &name)
 bool Smb4KGlobal::addWorkgroup(Smb4KWorkgroup *workgroup)
 {
   Q_ASSERT(workgroup);
-
+  
   bool added = false;
 
-  mutex.lock();
-
-  if (!findWorkgroup(workgroup->workgroupName()))
+  if (workgroup)
   {
-    p->workgroupsList.append(workgroup);
-    added = true;
+    mutex.lock();
+
+    if (!findWorkgroup(workgroup->workgroupName()))
+    {
+      p->workgroupsList.append(workgroup);
+      added = true;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    mutex.unlock();
   }
   else
   {
     // Do nothing
   }
 
-  mutex.unlock();
-
   return added;
 }
+
+
+bool Smb4KGlobal::updateWorkgroup(Smb4KWorkgroup* workgroup)
+{
+  Q_ASSERT(workgroup);
+  
+  bool updated = false;
+  
+  if (workgroup)
+  {
+    mutex.lock();
+    
+    Smb4KWorkgroup *existingWorkgroup = findWorkgroup(workgroup->workgroupName());
+    
+    if (existingWorkgroup)
+    {
+      existingWorkgroup->update(workgroup);
+      updated = true;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    mutex.unlock();
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  return updated;
+}
+
 
 
 bool Smb4KGlobal::removeWorkgroup(Smb4KWorkgroup *workgroup)
@@ -188,45 +229,52 @@ bool Smb4KGlobal::removeWorkgroup(Smb4KWorkgroup *workgroup)
   Q_ASSERT(workgroup);
 
   bool removed = false;
-
-  mutex.lock();
-
-  int index = p->workgroupsList.indexOf(workgroup);
-
-  if (index != -1)
+  
+  if (workgroup)
   {
-    // The workgroup was found. Remove it.
-    delete p->workgroupsList.takeAt(index);
-    removed = true;
-  }
-  else
-  {
-    // Try harder to find the workgroup.
-    Smb4KWorkgroup *wg = findWorkgroup(workgroup->workgroupName());
+    mutex.lock();
 
-    if (wg)
+    int index = p->workgroupsList.indexOf(workgroup);
+
+    if (index != -1)
     {
-      index = p->workgroupsList.indexOf(wg);
+      // The workgroup was found. Remove it.
+      delete p->workgroupsList.takeAt(index);
+      removed = true;
+    }
+    else
+    {
+      // Try harder to find the workgroup.
+      Smb4KWorkgroup *wg = findWorkgroup(workgroup->workgroupName());
 
-      if (index != -1)
+      if (wg)
       {
-        delete p->workgroupsList.takeAt(index);
-        removed = true;
+        index = p->workgroupsList.indexOf(wg);
+
+        if (index != -1)
+        {
+          delete p->workgroupsList.takeAt(index);
+          removed = true;
+        }
+        else
+        {
+          // Do nothing
+        }
       }
       else
       {
         // Do nothing
       }
-    }
-    else
-    {
-      // Do nothing
+
+      delete workgroup;
     }
 
-    delete workgroup;
+    mutex.unlock();
   }
-
-  mutex.unlock();
+  else
+  {
+    // Do nothing
+  }
 
   return removed;
 }
@@ -280,25 +328,66 @@ Smb4KHost *Smb4KGlobal::findHost(const QString &name, const QString &workgroup)
 bool Smb4KGlobal::addHost(Smb4KHost *host)
 {
   Q_ASSERT(host);
-
+  
   bool added = false;
 
-  mutex.lock();
-
-  if (!findHost(host->hostName(), host->workgroupName()))
+  if (host)
   {
-    p->hostsList.append(host);
-    added = true;
+    mutex.lock();
+
+    if (!findHost(host->hostName(), host->workgroupName()))
+    {
+      p->hostsList.append(host);
+      added = true;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    mutex.unlock();
   }
   else
   {
     // Do nothing
   }
 
-  mutex.unlock();
-
   return added;
 }
+
+
+bool Smb4KGlobal::updateHost(Smb4KHost* host)
+{
+  Q_ASSERT(host);
+  
+  bool updated = false;
+  
+  if (host)
+  {
+    mutex.lock();
+    
+    Smb4KHost *existingHost = findHost(host->hostName(), host->workgroupName());
+    
+    if (existingHost)
+    {
+      existingHost->update(host);
+      updated = true;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    mutex.unlock();
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  return updated;
+}
+
 
 
 bool Smb4KGlobal::removeHost(Smb4KHost *host)
@@ -306,45 +395,52 @@ bool Smb4KGlobal::removeHost(Smb4KHost *host)
   Q_ASSERT(host);
 
   bool removed = false;
-
-  mutex.lock();
-
-  int index = p->hostsList.indexOf(host);
-
-  if (index != -1)
+  
+  if (host)
   {
-    // The host was found. Remove it.
-    delete p->hostsList.takeAt(index);
-    removed = true;
-  }
-  else
-  {
-    // Try harder to find the host.
-    Smb4KHost *h = findHost(host->hostName(), host->workgroupName());
+    mutex.lock();
 
-    if (h)
+    int index = p->hostsList.indexOf(host);
+
+    if (index != -1)
     {
-      index = p->hostsList.indexOf(h);
+      // The host was found. Remove it.
+      delete p->hostsList.takeAt(index);
+      removed = true;
+    }
+    else
+    {
+      // Try harder to find the host.
+      Smb4KHost *h = findHost(host->hostName(), host->workgroupName());
 
-      if (index != -1)
+      if (h)
       {
-        delete p->hostsList.takeAt(index);
-        removed = true;
+        index = p->hostsList.indexOf(h);
+
+        if (index != -1)
+        {
+          delete p->hostsList.takeAt(index);
+          removed = true;
+        }
+        else
+        {
+          // Do nothing
+        }
       }
       else
       {
         // Do nothing
       }
-    }
-    else
-    {
-      // Do nothing
+
+      delete host;
     }
 
-    delete host;
+    mutex.unlock();
   }
-
-  mutex.unlock();
+  else
+  {
+    // Do nothing
+  }
 
   return removed;
 }
@@ -430,6 +526,8 @@ bool Smb4KGlobal::addShare(Smb4KShare *share)
   {
     mutex.lock();
     
+    qDebug() << "Smb4KGlobal::addShare(): Set share mounted if necessary";
+    
     if (!findShare(share->unc(), share->workgroupName()))
     {
       p->sharesList.append(share);
@@ -449,6 +547,40 @@ bool Smb4KGlobal::addShare(Smb4KShare *share)
 
   return added;
 }
+
+
+bool Smb4KGlobal::updateShare(Smb4KShare* share)
+{
+  Q_ASSERT(share);
+  
+  bool updated = false;
+  
+  if (share)
+  {
+    mutex.lock();
+    
+    Smb4KShare *existingShare = findShare(share->unc(), share->workgroupName());
+    
+    if (existingShare)
+    {
+      existingShare->update(share);
+      updated = true;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    mutex.unlock();
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  return updated;
+}
+
 
 
 bool Smb4KGlobal::removeShare(Smb4KShare *share)
@@ -648,6 +780,8 @@ bool Smb4KGlobal::addMountedShare(Smb4KShare *share)
   if (share)
   {
     mutex.lock();
+    
+    qDebug() << "Smb4KGlobal::addMountedShare(): Set network share mounted if necessary";
 
     if (!findShareByPath(share->path()))
     {
@@ -725,6 +859,10 @@ bool Smb4KGlobal::updateMountedShare(Smb4KShare* share)
   
   if (share)
   {
+    mutex.lock();
+    
+    qDebug() << "Smb4KGlobal::updateMountedShare(): Set network share mounted if necessary";
+    
     Smb4KShare *mountedShare = findShareByPath(share->path());
     
     if (mountedShare)
@@ -772,6 +910,8 @@ bool Smb4KGlobal::updateMountedShare(Smb4KShare* share)
     {
       // Do nothing
     }
+    
+    mutex.unlock();
   }
   else
   {
@@ -792,7 +932,7 @@ bool Smb4KGlobal::removeMountedShare(Smb4KShare *share)
   {
     mutex.lock();
     
-    qDebug() << "FIXME: Smb4KGlobal::removeMountedShare(): Set the network share unmounted";
+    qDebug() << "Smb4KGlobal::removeMountedShare(): Set network share unmounted if necessary";
   
     // Find the share by its path and remove it.
     QMutableListIterator<Smb4KShare *> it(p->mountedSharesList);
