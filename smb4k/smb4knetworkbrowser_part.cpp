@@ -987,78 +987,6 @@ void Smb4KNetworkBrowserPart::slotShares(Smb4KHost *host)
   {
     // Do nothing
   }
-  
-//   if (host)
-//   {
-//     QList<QTreeWidgetItem *> network_items = m_widget->findItems(host->hostName(), Qt::MatchFixedString|Qt::MatchRecursive, Smb4KNetworkBrowser::Network);
-//     
-//     // Find the host and process it.
-//     for (int i = 0; i < network_items.size(); ++i)
-//     {
-//       Smb4KNetworkBrowserItem *network_item = static_cast<Smb4KNetworkBrowserItem *>(network_items[i]);
-//       
-//       if (network_item && network_item->type() == Host &&
-//           QString::compare(network_item->hostItem()->workgroupName(), host->workgroupName(), Qt::CaseInsensitive) == 0)
-//       {
-//         QStringList selected_items;
-//         
-//         // Delete all shares of the host.
-//         while (network_item->childCount() != 0)
-//         {
-//           if (network_item->child(0)->isSelected())
-//           {
-//             // Add item to the list of selected items.
-//             selected_items << static_cast<Smb4KNetworkBrowserItem *>(network_item->child(0))->shareItem()->unc();
-//           }
-//           else
-//           {
-//             // Do nothing
-//           }
-//           delete network_item->child(0);
-//         }
-//         
-//         // Add the newly discovered shares to the host.
-//         if (!list.isEmpty())
-//         {
-//           // Expand the list of shares.
-//           if (Smb4KSettings::autoExpandNetworkItems() && !network_item->isExpanded())
-//           {
-//             m_widget->expandItem(network_item);
-//           }
-//           else
-//           {
-//             // Do nothing
-//           }
-//           
-//           // Add the shares to the host.
-//           for (int j = 0; j < list.size(); ++j)
-//           {
-//             Smb4KNetworkBrowserItem *item = new Smb4KNetworkBrowserItem(network_item, list.at(j));
-//             item->setSelected(selected_items.contains(list.at(j)->unc()));
-//           }
-//         }
-//         else
-//         {
-//           // Collapse the list of shares.
-//           m_widget->collapseItem(network_item);
-//         }
-// 
-//         // Stop the loop.
-//         break;
-//       }
-//       else
-//       {
-//         // Do nothing
-//       }
-//     }
-//     
-//     // Sort the items.
-//     m_widget->sortItems(Smb4KNetworkBrowser::Network, Qt::AscendingOrder);
-//   }
-//   else
-//   {
-//     // Do nothing
-//   }
 }
 
 
@@ -1696,61 +1624,61 @@ void Smb4KNetworkBrowserPart::slotMounterFinished(int process)
 
 void Smb4KNetworkBrowserPart::slotShareMounted(Smb4KShare *share)
 {
-//   QTreeWidgetItemIterator it(m_widget);
-//   
-//   while (*it)
-//   {
-//     Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(*it);
-//     
-//     if (item->type() == Share)
-//     {
-//       if (QString::compare(item->shareItem()->unc(), share->unc(), Qt::CaseInsensitive) == 0)
-//       {
-//         item->update(share);
-//         break;
-//       }
-//       else
-//       {
-//         // Do nothing
-//       }
-//     }
-//     else
-//     {
-//       // Do nothing
-//     }
-//     
-//     ++it;
-//   }
+  QTreeWidgetItemIterator it(m_widget);
+  
+  while (*it)
+  {
+    Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(*it);
+    
+    if (item->type() == Share)
+    {
+      if (QString::compare(item->shareItem()->unc(), share->unc(), Qt::CaseInsensitive) == 0)
+      {
+        item->update();
+        break;
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    ++it;
+  }
 }
 
 
 void Smb4KNetworkBrowserPart::slotShareUnmounted(Smb4KShare *share)
 {
-//   QTreeWidgetItemIterator it(m_widget);
-//   
-//   while (*it)
-//   {
-//     Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(*it);
-//     
-//     if (item->type() == Share)
-//     {
-//       if (QString::compare(item->shareItem()->unc(), share->unc(), Qt::CaseInsensitive) == 0)
-//       {
-//         item->update(share);
-//         break;
-//       }
-//       else
-//       {
-//         // Do nothing
-//       }
-//     }
-//     else
-//     {
-//       // Do nothing
-//     }
-//     
-//     ++it;
-//   }
+  QTreeWidgetItemIterator it(m_widget);
+  
+  while (*it)
+  {
+    Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(*it);
+    
+    if (item->type() == Share)
+    {
+      if (QString::compare(item->shareItem()->unc(), share->unc(), Qt::CaseInsensitive) == 0)
+      {
+        item->update();
+        break;
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    ++it;
+  }
 }
 
 

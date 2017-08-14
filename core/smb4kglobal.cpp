@@ -780,8 +780,17 @@ bool Smb4KGlobal::addMountedShare(Smb4KShare *share)
   if (share)
   {
     mutex.lock();
+
+    Smb4KShare *networkShare = findShare(share->unc(), share->workgroupName());
     
-    qDebug() << "Smb4KGlobal::addMountedShare(): Set network share mounted if necessary";
+    if (networkShare)
+    {
+      networkShare->setMountData(share);
+    }
+    else
+    {
+      // Do nothing
+    }
 
     if (!findShareByPath(share->path()))
     {
@@ -861,7 +870,16 @@ bool Smb4KGlobal::updateMountedShare(Smb4KShare* share)
   {
     mutex.lock();
     
-    qDebug() << "Smb4KGlobal::updateMountedShare(): Set network share mounted if necessary";
+    Smb4KShare *networkShare = findShare(share->unc(), share->workgroupName());
+    
+    if (networkShare)
+    {
+      networkShare->setMountData(share);
+    }
+    else
+    {
+      // Do nothing
+    }
     
     Smb4KShare *mountedShare = findShareByPath(share->path());
     
@@ -932,8 +950,17 @@ bool Smb4KGlobal::removeMountedShare(Smb4KShare *share)
   {
     mutex.lock();
     
-    qDebug() << "Smb4KGlobal::removeMountedShare(): Set network share unmounted if necessary";
-  
+    Smb4KShare *networkShare = findShare(share->unc(), share->workgroupName());
+    
+    if (networkShare)
+    {
+      networkShare->resetMountData();
+    }
+    else
+    {
+      // Do nothing
+    }
+    
     // Find the share by its path and remove it.
     QMutableListIterator<Smb4KShare *> it(p->mountedSharesList);
     
