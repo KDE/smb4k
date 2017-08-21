@@ -419,18 +419,27 @@ void Smb4KMounter::import(bool checkInaccessible)
     {
       if (d->newlyUnmounted == 1)
       {
-        emit unmounted(unmountedShares.first());
-        Smb4KNotification::shareUnmounted(unmountedShares.first());
+        // Copy the share
+        Smb4KShare unmountedShare(*unmountedShares.first());
+        
+        // Remove the share from the global list and notify the program and user
         removeMountedShare(unmountedShares.first());
+        emit unmounted(&unmountedShare);
+        Smb4KNotification::shareUnmounted(&unmountedShare);
       }
       else
       {
         for (Smb4KShare *share : unmountedShares)
         {
-          emit unmounted(share);
+          // Copy the share
+          Smb4KShare unmountedShare(*share);
+          
+          // Remove the share from the global list and notify the program
           removeMountedShare(share);
+          emit unmounted(&unmountedShare);
         }
         
+        // Notify the user
         Smb4KNotification::sharesUnmounted(d->newlyUnmounted);
       }
       
@@ -440,8 +449,12 @@ void Smb4KMounter::import(bool checkInaccessible)
     {
       for (Smb4KShare *share : unmountedShares)
       {
-        emit unmounted(share);
+        // Copy the share
+        Smb4KShare unmountedShare(*share);
+        
+        // Remove the share from the global list and notify the program
         removeMountedShare(share);
+        emit unmounted(&unmountedShare);
       }
     }
     

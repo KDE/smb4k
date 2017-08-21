@@ -781,6 +781,9 @@ bool Smb4KGlobal::addMountedShare(Smb4KShare *share)
   {
     mutex.lock();
 
+    //
+    // Copy the mount data to the network share (needed for unmounting from the network browser)
+    //
     Smb4KShare *networkShare = findShare(share->unc(), share->workgroupName());
     
     if (networkShare)
@@ -870,6 +873,9 @@ bool Smb4KGlobal::updateMountedShare(Smb4KShare* share)
   {
     mutex.lock();
     
+    //
+    // Copy the mount data to the network share (needed for unmounting from the network browser)
+    //
     Smb4KShare *networkShare = findShare(share->unc(), share->workgroupName());
     
     if (networkShare)

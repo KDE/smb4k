@@ -580,7 +580,7 @@ void Smb4KSharesViewPart::slotShareUpdated(Smb4KShare *share)
       if (item && (QString::compare(item->shareItem()->path(), share->path()) == 0 ||
           QString::compare(item->shareItem()->canonicalPath(), share->canonicalPath()) == 0))
       {
-        item->update(share);
+        item->update();
         break;
       }
       else

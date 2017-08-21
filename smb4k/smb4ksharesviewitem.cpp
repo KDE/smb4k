@@ -33,12 +33,10 @@
 
 
 Smb4KSharesViewItem::Smb4KSharesViewItem(Smb4KSharesView *parent, Smb4KShare *share)
-: QListWidgetItem(parent)
+: QListWidgetItem(parent), m_share(share)
 {
   setFlags(flags() | Qt::ItemIsDropEnabled);
   setItemAlignment(parent->viewMode());
-
-  m_share = new Smb4KShare(*share);
   
   m_tooltip = new Smb4KToolTip();
   m_tooltip->setup(Smb4KToolTip::SharesView, m_share);
@@ -50,14 +48,12 @@ Smb4KSharesViewItem::Smb4KSharesViewItem(Smb4KSharesView *parent, Smb4KShare *sh
 
 Smb4KSharesViewItem::~Smb4KSharesViewItem()
 {
-  delete m_share;
   delete m_tooltip;
 }
 
 
-void Smb4KSharesViewItem::update(Smb4KShare *share)
+void Smb4KSharesViewItem::update()
 {
-  m_share->setMountData(share);
   m_tooltip->update(Smb4KToolTip::SharesView, m_share);
   
   setText(m_share->displayString());

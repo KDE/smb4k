@@ -69,10 +69,8 @@ class Smb4KSharesViewItem : public QListWidgetItem
 
     /**
      * This function updates the encapsulated Smb4KShare object.
-     * 
-     * @param share         The Smb4KShare item that is used for the update
      */
-    void update(Smb4KShare *share);
+    void update();
     
     /**
      * This function returns the tool tip of this item.

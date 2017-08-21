@@ -170,13 +170,9 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
     void mounted(Smb4KShare *share);
 
     /**
-     * This signal is emitted after a share was unmounted and directly before
-     * it is removed from the global list of mounted shares.
-     * 
-     * Please note that this signal may be emitted BEFORE a share is actually
-     * removed from the global list of shares! 
+     * This signal is emitted after a share has successfully been unmounted.
      *
-     * @param share            The share that is going to be unmounted.
+     * @param share            The share that was unmounted.
      */
     void unmounted(Smb4KShare *share);
     
