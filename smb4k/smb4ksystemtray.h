@@ -73,7 +73,7 @@ class Smb4KSystemTray : public KStatusNotifierItem
      * @param checked         TRUE if the action can be and is checked and FALSE
      *                        otherwise.
      */
-    void slotMountDialog(bool checked);
+    void slotMountDialog();
 
     /**
      * This slot opens the configurations dialog.
