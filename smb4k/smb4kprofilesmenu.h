@@ -42,7 +42,7 @@ class Smb4KProfilesMenu : public KSelectAction
     /**
      * Constructor
      */
-    explicit Smb4KProfilesMenu(QObject* parent);
+    explicit Smb4KProfilesMenu(QObject* parent = 0);
     
     /**
      * Destructor
