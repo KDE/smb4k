@@ -28,7 +28,7 @@
   </copyright>
   <legalnotice>&underFDL;</legalnotice>
   <date>2017-07-25</date>
-  <releaseinfo>&smb4k; 2.0.2</releaseinfo><!--FIXME change releaseinfo number-->
+  <releaseinfo>&smb4k; 2.1.0</releaseinfo><!--FIXME change releaseinfo number-->
   <abstract>
     <para>&smb4k; is an advanced network neighborhood browser and Samba share mounting utility.</para>
   </abstract>
@@ -46,7 +46,7 @@
 <chapter id="introduction" >
   <title>Introduction</title>
 
-  <para>This handbook describes &smb4k; 2.0.x and to some extent earlier versions.</para>
+  <para>This handbook describes &smb4k; 2.1.x and to some extent earlier versions.</para>
   <para>&smb4k; is an advanced network neighborhood browser and <ulink url="http://www.samba.org">Samba</ulink> share mounting utility. It provides many handy features that ease your life in a mostly &Windows;-dominated network environment:</para>
 
   <itemizedlist>
@@ -1474,12 +1474,8 @@ polkit.addRule(function(action, subject) {
   
     <sect2 id="special_remarks_freebsd">
       <title>Remarks for FreeBSD Users</title>
-
-      <sect3 id="special_remarks_freebsd_mounting">
-        <title>Mounting of Shares (Smb4K >= 1.2.0)</title>
-
-        <para>Since version 1.2.0, the password for a share is directly passed to <command>mount_smbfs</command>, so that the <filename>~/.nsmbrc</filename> is not necessary anymore for mounting to work. Moreover, &smb4k; will not write any data to that file anymore.</para>
-      </sect3>
+      
+      <para>Since version 1.2.0, the password for a share is directly passed to <command>mount_smbfs</command>, so that the <filename>~/.nsmbrc</filename> is not necessary anymore for mounting. Moreover, &smb4k; will not write any data to that file anymore.</para>
     </sect2>
 
 <!-- 
@@ -4017,7 +4013,7 @@ polkit.addRule(function(action, subject) {
 <chapter id="credits" >
   <title>Credits and License</title>
 
-  <para>Copyright &copy; 2003 - 2016, Alexander Reinholdt <email>alexander.reinholdt@kdemail.net</email></para>
+  <para>Copyright &copy; 2003 - 2017, Alexander Reinholdt <email>alexander.reinholdt@kdemail.net</email></para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
   &underFDL;
@@ -4055,7 +4051,7 @@ polkit.addRule(function(action, subject) {
   <sect1 id="appendix_getting_smb4k" >
     <title>How to obtain &smb4k;</title>
     
-    <para>The latest stable release is available at <ulink url="http://sourceforge.net/projects/smb4k/files/">http://sourceforge.net/projects/smb4k/files/</ulink>.</para>
+    <para>The latest stable release is available at <ulink url="https://sourceforge.net/projects/smb4k/files/">https://sourceforge.net/projects/smb4k/files/</ulink>.</para>
   </sect1>
 
   <sect1 id="appendix_requirements" >
@@ -4064,7 +4060,7 @@ polkit.addRule(function(action, subject) {
     <para>&smb4k; officially supports &Linux;, FreeBSD and NetBSD. Other operating systems might work as well, but haven't been tested.</para>
     <para>To compile &smb4k;, you need:</para>
     <itemizedlist>
-      <listitem><para><ulink url="http://www.cmake.org">CMake</ulink> (&ge; 3.3)</para></listitem>
+      <listitem><para><ulink url="http://www.cmake.org">CMake</ulink> (&ge; 3.2)</para></listitem>
       <listitem><para><ulink url="http://gcc.gnu.org">GNU Compiler Collection</ulink> (g++ &ge; 4.0) or <ulink url="http://clang.llvm.org">clang/LLVM</ulink> (&ge; 3.0)</para></listitem>
     </itemizedlist>
     <para>&smb4k; depends on the following <ulink url="http://www.qt.io">&Qt;</ulink> (&ge; 5.7.0) and <ulink url="http://www.kde.org">&kf5;</ulink> (&ge; 5.31.0) modules:</para>
@@ -4072,9 +4068,14 @@ polkit.addRule(function(action, subject) {
       <listitem><para>QtCore, QtGui, QtWidgets, QtTest, QtNetwork, QtPrintSupport, QtQml</para></listitem>
       <listitem><para>KConfig, KAuth, KDocTools, KIconThemes, KWidgetsAddons, KI18n, KCompletion, KCoreAddons, Solid, KIO, KNotifications, KXmlGui, KJobWidgets, KWallet, KDBusAddons, KParts, KConfigWidgets, KNotifications, KWindowSystem</para></listitem>
     </itemizedlist>
+    <para>It also runtime depends on the following <ulink url="http://www.kde.org">&kf5;</ulink> (&ge; 5.31.0) modules:</para>
+    <itemizedlist>
+      <listitem><para>Plasma</para></listitem>
+    </itemizedlist>
     <para>For a proper operation, you also need:</para>
     <itemizedlist>
       <listitem><para><ulink url="http://www.samba.org">Samba</ulink> (3.x or 4.x, 4.x recommended)</para></listitem>
+      <listitem><para><ulink url="https://wiki.samba.org/index.php/LinuxCIFS_utils">LinuxCIFS utils</ulink> (&Linux; only)</para></listitem>
     </itemizedlist>
     <para>To enable full functionality, you may also want to install these programs:</para>
     <itemizedlist>
@@ -4119,7 +4120,7 @@ polkit.addRule(function(action, subject) {
      -DKDE_INSTALL_PLUGINDIR=`qtpaths --plugin-dir` -DCMAKE_BUILD_TYPE=Release <filename class="directory">..</filename></userinput>
 </screen>
 
-    <para>If you want to compile Smb4K with debug symbols, replace Release by Debug. You should consider this if you experience &ie; a crash and want to either debug &smb4k; yourself or report a bug including a full backtrace</para>
+    <para>If you want to compile Smb4K with debug symbols, replace Release by Debug. You should consider this if you experience &ie; a crash and want to either debug &smb4k; yourself or report a bug including a full backtrace.</para>
     <para>There are also some &smb4k; specific arguments you might be interested in:</para>
     <para>
       <informaltable frame="all">
@@ -4140,7 +4141,7 @@ polkit.addRule(function(action, subject) {
           <row>
             <entry>-DINSTALL_PLASMOID=yes|no</entry>
             <entry align="center">1.1.0</entry>
-            <entry>Install the plasmoid. KDE SC 4.10 or higher is required. This is on by default, if the right KDE version is detected.</entry><!--FIXME KF5 version?-->
+            <entry>Install the plasmoid. This is on by default. For versions 2.0.x this option was removed, because the plasmoid was not ported yet.</entry>
           </row>
         </tbody>
       </tgroup>
