@@ -62,9 +62,9 @@ Smb4KDeclarative::Smb4KDeclarative(QObject* parent)
   Smb4KGlobal::initCore(true, false);
   
   // Connections
-  connect(Smb4KScanner::self(), SIGNAL(workgroups(QList<Smb4KWorkgroup*>)), this, SLOT(slotWorkgroupsListChanged()));
-  connect(Smb4KScanner::self(), SIGNAL(hosts(Smb4KWorkgroup*,QList<Smb4KHost*>)), this, SLOT(slotHostsListChanged()));
-  connect(Smb4KScanner::self(), SIGNAL(shares(Smb4KHost*,QList<Smb4KShare*>)), this, SLOT(slotSharesListChanged()));
+  connect(Smb4KScanner::self(), SIGNAL(workgroups()), this, SLOT(slotWorkgroupsListChanged()));
+  connect(Smb4KScanner::self(), SIGNAL(hosts(Smb4KWorkgroup*)), this, SLOT(slotHostsListChanged()));
+  connect(Smb4KScanner::self(), SIGNAL(shares(Smb4KHost*)), this, SLOT(slotSharesListChanged()));
   connect(Smb4KScanner::self(), SIGNAL(aboutToStart(Smb4KBasicNetworkItem*,int)), this, SIGNAL(busy()));
   connect(Smb4KScanner::self(), SIGNAL(finished(Smb4KBasicNetworkItem*,int)), this, SIGNAL(idle()));
   
