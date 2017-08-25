@@ -526,10 +526,40 @@ bool Smb4KGlobal::addShare(Smb4KShare *share)
   {
     mutex.lock();
     
-    qDebug() << "Smb4KGlobal::addShare(): Set share mounted if necessary";
-    
+    //
+    // Add the share
+    //
     if (!findShare(share->unc(), share->workgroupName()))
     {
+      // 
+      // Set the share mounted
+      // Only honor shares that are owned by the user
+      // 
+      QList<Smb4KShare *> mountedShares = findShareByUNC(share->unc());
+      
+      if (!mountedShares.isEmpty())
+      {
+        for (Smb4KShare *s : mountedShares)
+        {
+          if (!s->isForeign())
+          {
+            share->setMountData(s);
+            break;
+          }
+          else
+          {
+            continue;
+          }
+        }
+      }
+      else
+      {
+        // Do nothing
+      }  
+      
+      // 
+      // Add it
+      // 
       p->sharesList.append(share);
       added = true;
     }
@@ -559,10 +589,42 @@ bool Smb4KGlobal::updateShare(Smb4KShare* share)
   {
     mutex.lock();
     
+    //
+    // Updated the share
+    //
     Smb4KShare *existingShare = findShare(share->unc(), share->workgroupName());
     
     if (existingShare)
     {
+      // 
+      // Set the share mounted
+      // Only honor shares that are owned by the user
+      // 
+      QList<Smb4KShare *> mountedShares = findShareByUNC(share->unc());
+      
+      if (!mountedShares.isEmpty())
+      {
+        for (Smb4KShare *s : mountedShares)
+        {
+          if (!s->isForeign())
+          {
+            share->setMountData(s);
+            break;
+          }
+          else
+          {
+            continue;
+          }
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      // 
+      // Update it
+      // 
       existingShare->update(share);
       updated = true;
     }
@@ -783,12 +845,20 @@ bool Smb4KGlobal::addMountedShare(Smb4KShare *share)
 
     //
     // Copy the mount data to the network share (needed for unmounting from the network browser)
+    // Only honor shares that were mounted by the user.
     //
-    Smb4KShare *networkShare = findShare(share->unc(), share->workgroupName());
-    
-    if (networkShare)
+    if (!share->isForeign())
     {
-      networkShare->setMountData(share);
+      Smb4KShare *networkShare = findShare(share->unc(), share->workgroupName());
+      
+      if (networkShare)
+      {
+        networkShare->setMountData(share);
+      }
+      else
+      {
+        // Do nothing
+      }
     }
     else
     {
@@ -875,12 +945,20 @@ bool Smb4KGlobal::updateMountedShare(Smb4KShare* share)
     
     //
     // Copy the mount data to the network share (needed for unmounting from the network browser)
+    // Only honor shares that were mounted by the user.
     //
-    Smb4KShare *networkShare = findShare(share->unc(), share->workgroupName());
-    
-    if (networkShare)
+    if (!share->isForeign())
     {
-      networkShare->setMountData(share);
+      Smb4KShare *networkShare = findShare(share->unc(), share->workgroupName());
+      
+      if (networkShare)
+      {
+        networkShare->setMountData(share);
+      }
+      else
+      {
+        // Do nothing
+      }
     }
     else
     {
