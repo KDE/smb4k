@@ -1202,42 +1202,6 @@ void Smb4KScanner::slotShares(Smb4KHost *host, const QList<Smb4KShare *> &shares
       }
       
       //
-      // Check if the share has already been mounted. Since version 2.1.0
-      //
-      QList<Smb4KShare *> mountedShares = findShareByUNC(share->unc());
-      bool mounted = false;
-      
-      if (!mountedShares.isEmpty())
-      {
-        if (Smb4KSettings::detectAllShares())
-        {
-          //
-          // FIXME: Add all mounts of this share
-          //          
-          share->setMountData(mountedShares.first());
-        }
-        else
-        {
-          for (Smb4KShare *mountedShare : mountedShares)
-          {
-            if (!mountedShare->isForeign())
-            {
-              share->setMountData(mountedShare);
-              break;
-            }
-            else
-            {
-              continue;
-            }
-          }
-        }
-      }
-      else
-      {
-        // Do nothing
-      }
-      
-      //
       // Add the host's IP address and authentication information
       //
       Smb4KHost *host = findHost(share->hostName(), share->workgroupName());
