@@ -9,7 +9,10 @@ set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 cmake_policy(SET CMP0037 NEW)
 
-find_package(ECM 1.1.0 REQUIRED NO_MODULE)
+set(QT_MIN_VERSION "5.7.0")
+set(KF5_MIN_VERSION "5.31.0")
+
+find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
 include(KDEInstallDirs)
@@ -17,9 +20,6 @@ include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 include(FeatureSummary)
 include(ECMInstallIcons)
-
-set(QT_MIN_VERSION "5.7.0")
-set(KF5_MIN_VERSION "5.31.0")
 
 # Qt5 modules
 find_package(Qt5Core ${QT_MIN_VERSION} REQUIRED)
