@@ -8,15 +8,12 @@ set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 
 cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 cmake_policy(SET CMP0037 NEW)
-if(POLICY CMP0063)
-  cmake_policy(SET CMP0063 NEW)
-endif()
 
 find_package(ECM 1.1.0 REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
 include(KDEInstallDirs)
-include(KDECompilerSettings)
+include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 include(FeatureSummary)
 include(ECMInstallIcons)
