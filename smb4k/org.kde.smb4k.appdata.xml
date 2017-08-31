@@ -724,7 +724,7 @@
       <caption xml:lang="uk">Головне вікно.</caption>
       <caption xml:lang="x-test">xxThe main windowxx</caption>
       <caption xml:lang="zh-TW">主視窗</caption>
-      <image>https://sourceforge.net/p/smb4k/screenshot/main_window_1-1-1_hp.png</image>
+      <image>https://cdn.kde.org/screenshots/smb4k/screenshot_smb4k_mainwindow_1.png</image>
     </screenshot>
     <screenshot>
       <caption>The plasmoid</caption>
@@ -751,7 +751,7 @@
       <caption xml:lang="uk">Плазмоїд.</caption>
       <caption xml:lang="x-test">xxThe plasmoidxx</caption>
       <caption xml:lang="zh-TW">Plasmoid 元件</caption>
-      <image>https://sourceforge.net/p/smb4k/screenshot/plasmoid.png</image>
+      <image>https://cdn.kde.org/screenshots/smb4k/screenshot_smb4k_plasmoid_1.png</image>
     </screenshot>
   </screenshots>
   <url type="homepage">http://smb4k.sourceforge.net</url>
