@@ -2,7 +2,7 @@
     This is the configuration page for the Samba settings of Smb4K
                              -------------------
     begin                : Mo Jan 26 2004
-    copyright            : (C) 2004-2016 by Alexander Reinholdt
+    copyright            : (C) 2004-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

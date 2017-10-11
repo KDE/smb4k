@@ -2,7 +2,7 @@
     The configuration page for the synchronization options
                              -------------------
     begin                : So Nov 20 2005
-    copyright            : (C) 2005-2016 by Alexander Reinholdt
+    copyright            : (C) 2005-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

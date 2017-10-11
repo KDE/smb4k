@@ -2,7 +2,7 @@
     The configuration dialog of Smb4K
                              -------------------
     begin                : Sa Apr 14 2007
-    copyright            : (C) 2004-2016 by Alexander Reinholdt
+    copyright            : (C) 2004-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -71,16 +71,6 @@ class Q_DECL_EXPORT Smb4KConfigDialog : public KConfigDialog
      */
     void updateWidgets();
     
-//     /**
-//      * Reimplemented from KDialog. This slot overwrites the standard
-//      * behavior of the "Apply" and "OK" button, so that application
-//      * actions can be executed like saving the super user settings to
-//      * the system files.
-//      *
-//      * @param button        The button code
-//      */
-//     void slotButtonClicked(int button);
-
     /**
      * This slot is connected to the "Load" button of the "Wallet Entries" tab
      * of the "Authentication" configuration page. It loads the authentication
