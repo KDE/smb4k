@@ -2,7 +2,7 @@
     This Part includes the shares view of Smb4K.
                              -------------------
     begin                : Sa Jun 30 2007
-    copyright            : (C) 2007-2016 by Alexander Reinholdt
+    copyright            : (C) 2007-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -110,12 +110,12 @@ Smb4KSharesViewPart::Smb4KSharesViewPart(QWidget *parentWidget, QObject *parent,
 //   loadSettings();
 
   // Add some connections:
-  connect(Smb4KMounter::self(), SIGNAL(mounted(Smb4KShare*)),
-          this, SLOT(slotShareMounted(Smb4KShare*)));
-  connect(Smb4KMounter::self(), SIGNAL(unmounted(Smb4KShare*)),
-          this, SLOT(slotShareUnmounted(Smb4KShare*)));
-  connect(Smb4KMounter::self(), SIGNAL(updated(Smb4KShare*)),
-          this, SLOT(slotShareUpdated(Smb4KShare*)));
+  connect(Smb4KMounter::self(), SIGNAL(mounted(SharePtr)),
+          this, SLOT(slotShareMounted(SharePtr)));
+  connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)),
+          this, SLOT(slotShareUnmounted(SharePtr)));
+  connect(Smb4KMounter::self(), SIGNAL(updated(SharePtr)),
+          this, SLOT(slotShareUpdated(SharePtr)));
   connect(Smb4KMounter::self(), SIGNAL(aboutToStart(int)),
           this, SLOT(slotMounterAboutToStart(int)));
   connect(Smb4KMounter::self(), SIGNAL(finished(int)),
@@ -330,10 +330,10 @@ void Smb4KSharesViewPart::customEvent(QEvent *e)
     {
       delete m_view->takeItem(0);
     }
-      
-    for (int i = 0; i < mountedSharesList().size(); ++i)
+    
+    for (const SharePtr &share : mountedSharesList())
     {
-      slotShareMounted(mountedSharesList().at(i));
+      slotShareMounted(share);
     }
   }
   else if (e->type() == Smb4KEvent::SetFocus)
@@ -504,7 +504,7 @@ void Smb4KSharesViewPart::slotDropEvent(Smb4KSharesViewItem *item, QDropEvent *e
 }
 
 
-void Smb4KSharesViewPart::slotShareMounted(Smb4KShare *share)
+void Smb4KSharesViewPart::slotShareMounted(const SharePtr &share)
 {
   Q_ASSERT(share);
   
@@ -522,7 +522,7 @@ void Smb4KSharesViewPart::slotShareMounted(Smb4KShare *share)
 }
 
 
-void Smb4KSharesViewPart::slotShareUnmounted(Smb4KShare *share)
+void Smb4KSharesViewPart::slotShareUnmounted(const SharePtr &share)
 {
   Q_ASSERT(share);
   
@@ -565,7 +565,7 @@ void Smb4KSharesViewPart::slotShareUnmounted(Smb4KShare *share)
 }
 
 
-void Smb4KSharesViewPart::slotShareUpdated(Smb4KShare *share)
+void Smb4KSharesViewPart::slotShareUpdated(const SharePtr &share)
 {
   Q_ASSERT(share);
   
@@ -599,7 +599,7 @@ void Smb4KSharesViewPart::slotShareUpdated(Smb4KShare *share)
 void Smb4KSharesViewPart::slotUnmountShare(bool /*checked*/)
 {
   QList<QListWidgetItem *> selected_items = m_view->selectedItems();
-  QList<Smb4KShare *> shares;
+  QList<SharePtr> shares;
 
   for (int i = 0; i < selected_items.size(); ++i)
   {
@@ -687,7 +687,7 @@ void Smb4KSharesViewPart::slotFileManager(bool /*checked*/)
 void Smb4KSharesViewPart::slotAddBookmark(bool /*checked */)
 {
   QList<QListWidgetItem *> selected_items = m_view->selectedItems();
-  QList<Smb4KShare *> shares;
+  QList<SharePtr> shares;
 
   if (!selected_items.isEmpty())
   {
@@ -695,7 +695,6 @@ void Smb4KSharesViewPart::slotAddBookmark(bool /*checked */)
     {
       Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selected_items.at(i));
       shares << item->shareItem();
-      continue;
     }
   }
   else

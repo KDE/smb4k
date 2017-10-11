@@ -28,7 +28,7 @@
 #define SMB4KNETWORKSEARCHITEM_H
 
 // application specific includes
-#include "core/smb4kshare.h"
+#include "core/smb4kglobal.h"
 
 // Qt includes
 #include <QListWidget>
@@ -61,7 +61,7 @@ class Smb4KNetworkSearchItem : public QListWidgetItem
      * @param share             The share item that represents the search
      *                          result.
      */
-    Smb4KNetworkSearchItem(QListWidget *listWidget, Smb4KShare *share);
+    Smb4KNetworkSearchItem(QListWidget *listWidget, const SharePtr &share);
 
     /**
      * The constructor for a "The network search returned no results."
@@ -82,23 +82,18 @@ class Smb4KNetworkSearchItem : public QListWidgetItem
      *
      * @returns the encapsulated Smb4KShare object.
      */
-    Smb4KShare *shareItem() { return m_share; }
+    const SharePtr &shareItem() { return m_share; }
 
     /**
-     * Update the item. Use this function instead of the pointer to the 
-     * share item to update the share item, because this function also
-     * sets up the displayed item.
-     * 
-     * @param share             The share that is to be used to update 
-     *                          this item.
+     * Update the item.
      */
-    void update(Smb4KShare *share);
+    void update();
 
   private:
     /**
      * The Smb4KShare object
      */
-    Smb4KShare *m_share;
+    SharePtr m_share;
 
     /**
      * This function sets up the item.

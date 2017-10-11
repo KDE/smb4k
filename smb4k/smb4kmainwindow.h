@@ -26,6 +26,9 @@
 #ifndef SMB4KMAINWINDOW_H
 #define SMB4KMAINWINDOW_H
 
+// application specific includes
+#include "core/smb4kglobal.h"
+
 // Qt includes
 #include <QUrl>
 #include <QActionGroup>
@@ -39,8 +42,6 @@
 
 // forward declarations
 class Smb4KSystemTray;
-class Smb4KBasicNetworkItem;
-class Smb4KShare;
 class Smb4KPrintInfo;
 class Smb4KSynchronizationInfo;
 class Smb4KPreviewItem;
@@ -115,8 +116,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param process       The process
      */
-    void slotScannerAboutToStart(Smb4KBasicNetworkItem *item,
-                                  int process);
+    void slotScannerAboutToStart(const NetworkItemPtr &item, int process);
                                   
     /**
      * This shows a status message according to the action that was just finished by
@@ -127,8 +127,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      * 
      * @param process       The process
      */
-    void slotScannerFinished(Smb4KBasicNetworkItem *item,
-                              int process);
+    void slotScannerFinished(const NetworkItemPtr &item, int process);
                                    
     /**
      * This slot shows a status message according to the action performed by the 
@@ -150,17 +149,17 @@ class Smb4KMainWindow : public KParts::MainWindow
      * This slot gives the visual mount feedback in the status bar. It is 
      * connected to the Smb4KMounter::mounted() signal.
      * 
-     * @param share         The Smb4KShare object
+     * @param share         The share object
      */
-    void slotVisualMountFeedback(Smb4KShare *share);
+    void slotVisualMountFeedback(const SharePtr &share);
     
     /**
      * This slot gives the visual unmount feedback in the status bar. It is 
      * connected to the Smb4KMounter::unmounted() signal.
      * 
-     * @param share         The Smb4KShare object
+     * @param share         The share object
      */
-    void slotVisualUnmountFeedback(Smb4KShare *share);
+    void slotVisualUnmountFeedback(const SharePtr &share);
                                   
     /**
      * This slot shows a status message as well as a busy bar. It is connected to the 
@@ -184,7 +183,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param printer       The remote printer
      */
-    void slotPrintingAboutToStart(Smb4KShare *printer);
+    void slotPrintingAboutToStart(const SharePtr &printer);
 
     /**
      * This shows a status message and hides the busy bar if appropriate. It is 
@@ -192,7 +191,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param printer       The remote printer
      */
-    void slotPrintingFinished(Smb4KShare *printer);
+    void slotPrintingFinished(const SharePtr &printer);
 
     /**
      * This slot shows a message according to the action performed by the synchronizer.
@@ -218,8 +217,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param url           The URL of the current location
      */
-    void slotPreviewerAboutToStart(Smb4KShare *share,
-                                    const QUrl &url);
+    void slotPreviewerAboutToStart(const SharePtr &share, const QUrl &url);
 
     /**
      * This slot shows a message according to the finished action that was reported
@@ -229,8 +227,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param url           The URL of the current location
      */
-    void slotPreviewerFinished(Smb4KShare *share,
-                                const QUrl &url);
+    void slotPreviewerFinished(const SharePtr &share, const QUrl &url);
 
     /**
      * This slot hides the feedback icon in the status bar. It is connected to

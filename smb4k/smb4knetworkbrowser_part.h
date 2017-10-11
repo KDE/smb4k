@@ -27,6 +27,9 @@
 #ifndef SMB4KNETWORKBROWSERPART_H
 #define SMB4KNETWORKBROWSERPART_H
 
+// application specific includes
+#include "core/smb4kglobal.h"
+
 // Qt includes
 #include <QList>
 #include <QAction>
@@ -40,10 +43,6 @@
 // forward declarations
 class Smb4KNetworkBrowser;
 class Smb4KNetworkBrowserItem;
-class Smb4KWorkgroup;
-class Smb4KHost;
-class Smb4KShare;
-class Smb4KBasicNetworkItem;
 
 /**
  * This is one of the parts of Smb4K. It contains the network neighborhood browser.
@@ -140,7 +139,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param workgroup           The workgroup that was queried
      */
-    void slotWorkgroupMembers(Smb4KWorkgroup *workgroup);
+    void slotWorkgroupMembers(const WorkgroupPtr &workgroup);
 
     /**
      * This slot is called when the list of shared resources of host @p host was
@@ -148,7 +147,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param host                The host that was queried
      */
-    void slotShares(Smb4KHost *host);
+    void slotShares(const HostPtr &host);
 
     /**
      * This slot takes a Smb4KHostItem object @p item, reads the IP address entry
@@ -156,7 +155,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param host                A Smb4KHost item with an updated IP address.
      */
-    void slotAddIPAddress(Smb4KHost *host);
+    void slotAddIPAddress(const HostPtr &host);
 
     /**
      * This slot is called when an authentication error occurred. Depending on
@@ -167,7 +166,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      * @param process             The process (action) that was running while the
      *                            authentication error occurred
      */
-    void slotAuthError(Smb4KHost *host, int process);
+    void slotAuthError(const HostPtr &host, int process);
 
     /**
      * Rescan the network or abort a network scan.
@@ -244,8 +243,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param process             The process
      */
-    void slotScannerAboutToStart(Smb4KBasicNetworkItem *item,
-                                  int process);
+    void slotScannerAboutToStart(const NetworkItemPtr &item, int process);
 
     /**
      * This slot is connected to the Smb4KScanner::finished() signal.
@@ -254,8 +252,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param process             The process
      */
-    void slotScannerFinished(Smb4KBasicNetworkItem *item,
-                              int process);
+    void slotScannerFinished(const NetworkItemPtr &item, int process);
 
     /**
      * This slot is connected to the Smb4KMounter::aboutToStart() signal.
@@ -275,7 +272,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param share               The Smb4KShare object
      */
-    void slotShareMounted(Smb4KShare *share);
+    void slotShareMounted(const SharePtr &share);
 
     /**
      * This slot is called whenever a share has been unmounted. It marks the
@@ -283,7 +280,7 @@ class Smb4KNetworkBrowserPart : public KParts::Part
      *
      * @param share               The Smb4KShare object
      */
-    void slotShareUnmounted(Smb4KShare *share);
+    void slotShareUnmounted(const SharePtr &share);
 
     /**
      * This slot is invoked shortly before the application quits. It is used

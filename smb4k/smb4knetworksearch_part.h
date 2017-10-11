@@ -3,7 +3,7 @@
     of Smb4K.
                              -------------------
     begin                : Fr Jun 1 2007
-    copyright            : (C) 2007-2015 by Alexander Reinholdt
+    copyright            : (C) 2007-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -26,6 +26,9 @@
 
 #ifndef SMB4KNETWORKSEARCHPART_H
 #define SMB4KNETWORKSEARCHPART_H
+
+// application specific includes
+#include "core/smb4kglobal.h"
 
 // Qt includes
 #include <QAction>
@@ -93,7 +96,7 @@ class Smb4KNetworkSearchPart : public KParts::Part
      *
      * @param known               TRUE if item is known and FALSE otherwise
      */
-    void slotReceivedSearchResult(Smb4KShare *share);
+    void slotReceivedSearchResult(const SharePtr &share);
     /**
      * This slot is connected to the Smb4KSearch::aboutToStart() signal.
      *
@@ -116,7 +119,7 @@ class Smb4KNetworkSearchPart : public KParts::Part
      * 
      * @param share               The share item
      */
-    void slotShareMounted(Smb4KShare *share);
+    void slotShareMounted(const SharePtr &share);
     
     /**
      * This slot is connected to the Smb4KMounter::unmounted() signal and unmarks
@@ -124,7 +127,7 @@ class Smb4KNetworkSearchPart : public KParts::Part
      * 
      * @param share               The share item
      */
-    void slotShareUnmounted(Smb4KShare *share);
+    void slotShareUnmounted(const SharePtr &share);
 
     /**
      * This slot is invoked, when a user double clicks an item. It adds the item
@@ -221,7 +224,7 @@ class Smb4KNetworkSearchPart : public KParts::Part
      * 
      * @param process             The kind of process
      */
-    void slotMounterFinished(Smb4KShare *share, int process);
+    void slotMounterFinished(const SharePtr &share, int process);
 
   private:
     /**

@@ -27,7 +27,7 @@
 #define SMB4KNETWORKBROWSERITEM_H
 
 // application specific includes
-#include "core/smb4kbasicnetworkitem.h"
+#include "core/smb4kglobal.h"
 #include "smb4ktooltip.h"
 
 // Qt includes
@@ -43,17 +43,17 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
      * The constructor for toplevel items.
      *
      * @param parent        The parent tree widget
-     * @param item          The Smb4KBasicNetworkItem item
+     * @param item          The network item
      */
-    Smb4KNetworkBrowserItem(QTreeWidget *parent, Smb4KBasicNetworkItem *item);
+    Smb4KNetworkBrowserItem(QTreeWidget *parent, const NetworkItemPtr &item);
 
     /**
      * The constructor for child items.
      *
      * @param parent        The parent tree widget item.
-     * @param item          The Smb4KBasicNetworkItem item
+     * @param item          The network item
      */
-    Smb4KNetworkBrowserItem(QTreeWidgetItem *parent, Smb4KBasicNetworkItem *item);
+    Smb4KNetworkBrowserItem(QTreeWidgetItem *parent, const NetworkItemPtr &item);
 
     /**
      * The destructor.
@@ -74,7 +74,7 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
      *
      * @returns a pointer to the workgroup item or NULL.
      */
-    Smb4KWorkgroup *workgroupItem();
+    WorkgroupPtr workgroupItem();
 
     /**
      * This function is provided for convenience. It returns a pointer to 
@@ -82,7 +82,7 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
      *
      * @returns a pointer to the host item or NULL.
      */
-    Smb4KHost *hostItem();
+    HostPtr hostItem();
 
     /**
      * This function is provided for convenience. It returns a pointer to 
@@ -90,15 +90,15 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
      *
      * @returns a pointer to the share item or NULL.
      */
-    Smb4KShare *shareItem();
+    SharePtr shareItem();
     
     /**
-     * This function returns the encapsulated Smb4KBasicNetworkItem object.
+     * This function returns the encapsulated network item.
      * 
      * @returns a pointer to the encapsulated Smb4KBasicNetworkItem object
      * or NULL if there is no item defined (this should never happen).
      */
-    Smb4KBasicNetworkItem *networkItem();
+    const NetworkItemPtr &networkItem();
     
     /**
      * This function updates the internal network item.
@@ -116,7 +116,7 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
     /**
      * The network item
      */
-    Smb4KBasicNetworkItem *m_item;
+    NetworkItemPtr m_item;
     
     /**
      * The tool tip of this item

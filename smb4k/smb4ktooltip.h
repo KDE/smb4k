@@ -2,7 +2,7 @@
     smb4ktooltip  -  Provides tooltips for Smb4K
                              -------------------
     begin                : Sa Dez 23 2010
-    copyright            : (C) 2010-2016 by Alexander Reinholdt
+    copyright            : (C) 2010-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -25,6 +25,9 @@
 
 #ifndef SMB4KTOOLTIP_H
 #define SMB4KTOOLTIP_H
+
+// application specific includes
+#include "core/smb4kglobal.h"
 
 // Qt includes
 #include <QPoint>
@@ -49,11 +52,11 @@ class Q_DECL_EXPORT Smb4KToolTip : public QWidget
     };
     explicit Smb4KToolTip(QWidget *parent = 0);
     ~Smb4KToolTip();
-    void setup(Parent parent, Smb4KBasicNetworkItem *item);
-    void update(Parent parent, Smb4KBasicNetworkItem *item);
+    void setup(Parent parent, const NetworkItemPtr &item);
+    void update(Parent parent, const NetworkItemPtr &item);
     void show(const QPoint &pos);
     void hide();
-    Smb4KBasicNetworkItem *networkItem() { return m_item; }
+    const NetworkItemPtr &networkItem() { return m_item; }
     
   protected:
     void paintEvent(QPaintEvent *e);
@@ -62,7 +65,7 @@ class Q_DECL_EXPORT Smb4KToolTip : public QWidget
     void slotHideToolTip();
     
   private:
-    Smb4KBasicNetworkItem *m_item;
+    NetworkItemPtr m_item;
     QHBoxLayout *m_tip_layout;
     QVBoxLayout *m_info_layout;
     QGridLayout *m_text_layout;

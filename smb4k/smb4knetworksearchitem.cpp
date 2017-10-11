@@ -29,6 +29,7 @@
 #endif
 
 // application specific includes
+#include "core/smb4kshare.h"
 #include "smb4knetworksearchitem.h"
 #include "smb4knetworksearch.h"
 
@@ -37,10 +38,10 @@
 #include <KI18n/KLocalizedString>
 
 
-Smb4KNetworkSearchItem::Smb4KNetworkSearchItem(QListWidget *listWidget, Smb4KShare *share)
+Smb4KNetworkSearchItem::Smb4KNetworkSearchItem(QListWidget *listWidget, const SharePtr &share)
 : QListWidgetItem(listWidget, Share)
 {
-  m_share = new Smb4KShare(*share);
+  m_share = share;
   setupItem();
 }
 
@@ -55,7 +56,7 @@ Smb4KNetworkSearchItem::Smb4KNetworkSearchItem(QListWidget *listWidget)
 
 Smb4KNetworkSearchItem::~Smb4KNetworkSearchItem()
 {
-  delete m_share;
+  m_share.clear();
 }
 
 
@@ -94,12 +95,8 @@ void Smb4KNetworkSearchItem::setupItem()
 }
 
 
-void Smb4KNetworkSearchItem::update(Smb4KShare *share)
+void Smb4KNetworkSearchItem::update()
 {
-  m_share->setMounted(share->isMounted());
-  m_share->setPath(share->path());
-  m_share->setForeign(share->isForeign());
-
   setupItem();
 }
 

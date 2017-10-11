@@ -2,7 +2,7 @@
     smb4ktooltip  -  Provides tooltips for Smb4K
                              -------------------
     begin                : Sa Dez 23 2010
-    copyright            : (C) 2010-2016 by Alexander Reinholdt
+    copyright            : (C) 2010-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -60,7 +60,7 @@ using namespace Smb4KGlobal;
 
 Smb4KToolTip::Smb4KToolTip(QWidget* parent)
 : QWidget(parent, Qt::ToolTip|Qt::BypassGraphicsProxyWidget|Qt::FramelessWindowHint),
-  m_item(0), m_tip_layout(0), m_info_layout(0), m_text_layout(0)
+  m_item(NetworkItemPtr()), m_tip_layout(0), m_info_layout(0), m_text_layout(0)
 {
   m_master_browser_label = 0;
   m_comment_label        = 0;
@@ -86,7 +86,7 @@ Smb4KToolTip::~Smb4KToolTip()
 }
 
 
-void Smb4KToolTip::setup(Smb4KToolTip::Parent parent, Smb4KBasicNetworkItem* item)
+void Smb4KToolTip::setup(Smb4KToolTip::Parent parent, const NetworkItemPtr &item)
 {
   if (item)
   {
@@ -118,7 +118,7 @@ void Smb4KToolTip::setup(Smb4KToolTip::Parent parent, Smb4KBasicNetworkItem* ite
 }
 
 
-void Smb4KToolTip::update(Smb4KToolTip::Parent parent, Smb4KBasicNetworkItem* item)
+void Smb4KToolTip::update(Smb4KToolTip::Parent parent, const NetworkItemPtr &item)
 {
   if (item)
   {
@@ -132,7 +132,7 @@ void Smb4KToolTip::update(Smb4KToolTip::Parent parent, Smb4KBasicNetworkItem* it
         {
           case Workgroup:
           {
-            Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>(item);
+            WorkgroupPtr workgroup = item.staticCast<Smb4KWorkgroup>();
             
             if (!workgroup->masterBrowserIP().isEmpty())
             {
@@ -146,7 +146,7 @@ void Smb4KToolTip::update(Smb4KToolTip::Parent parent, Smb4KBasicNetworkItem* it
           }
           case Host:
           {
-            Smb4KHost *host = static_cast<Smb4KHost *>(item);
+            HostPtr host = item.staticCast<Smb4KHost>();
             
             if (!host->comment().isEmpty())
             {
@@ -169,7 +169,7 @@ void Smb4KToolTip::update(Smb4KToolTip::Parent parent, Smb4KBasicNetworkItem* it
           }
           case Share:
           {
-            Smb4KShare *share = static_cast<Smb4KShare *>(item);
+            SharePtr share = item.staticCast<Smb4KShare>();
             
             if (!share->comment().isEmpty())
             {
@@ -216,7 +216,7 @@ void Smb4KToolTip::update(Smb4KToolTip::Parent parent, Smb4KBasicNetworkItem* it
       }
       case SharesView:
       {
-        Smb4KShare *share = static_cast<Smb4KShare *>(item);
+        SharePtr share = item.staticCast<Smb4KShare>();
         
         if (share->totalDiskSpace() != 0 && share->freeDiskSpace() != 0)
         {
@@ -319,7 +319,7 @@ void Smb4KToolTip::setupNetworkBrowserToolTip()
   {
     case Workgroup:
     {
-      Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>(m_item);
+      WorkgroupPtr workgroup = m_item.staticCast<Smb4KWorkgroup>();
       
       QLabel *caption = new QLabel(workgroup->workgroupName(), this);
       caption->setAlignment(Qt::AlignHCenter);
@@ -360,7 +360,7 @@ void Smb4KToolTip::setupNetworkBrowserToolTip()
     }
     case Host:
     {
-      Smb4KHost *host = static_cast<Smb4KHost *>(m_item);
+      HostPtr host = m_item.staticCast<Smb4KHost>();
       
       QLabel *caption = new QLabel(host->hostName(), this);
       caption->setAlignment(Qt::AlignHCenter);
@@ -423,7 +423,7 @@ void Smb4KToolTip::setupNetworkBrowserToolTip()
     }
     case Share:
     {
-      Smb4KShare *share = static_cast<Smb4KShare *>(m_item);
+      SharePtr share = m_item.staticCast<Smb4KShare>();
       
       QLabel *caption = new QLabel(share->shareName(), this);
       caption->setAlignment(Qt::AlignHCenter);
@@ -528,7 +528,7 @@ void Smb4KToolTip::setupSharesViewToolTip()
 {
   // NOTE: If you change the layout here, adjust also the update function!
   
-  Smb4KShare *share = static_cast<Smb4KShare *>(m_item);
+  SharePtr share = m_item.staticCast<Smb4KShare>();
   
   m_tip_layout = new QHBoxLayout(this);
   m_tip_layout->setAlignment(Qt::AlignTop);
@@ -639,7 +639,7 @@ void Smb4KToolTip::updateNetworkBrowserToolTip()
     {
       case Workgroup:
       {
-        Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>(m_item);
+        WorkgroupPtr workgroup = m_item.staticCast<Smb4KWorkgroup>();
         
         // Master browser name and IP address
         QLayoutItem *mb_item = m_text_layout->itemAtPosition(1, 1);
@@ -665,7 +665,7 @@ void Smb4KToolTip::updateNetworkBrowserToolTip()
       }
       case Host:
       {
-        Smb4KHost *host = static_cast<Smb4KHost *>(m_item);
+        HostPtr host = m_item.staticCast<Smb4KHost>();
 
         // Comment
         QLayoutItem *co_item = m_text_layout->itemAtPosition(1, 1);
@@ -711,7 +711,7 @@ void Smb4KToolTip::updateNetworkBrowserToolTip()
       }
       case Share:
       {
-        Smb4KShare *share = static_cast<Smb4KShare *>(m_item);
+        SharePtr share = m_item.staticCast<Smb4KShare>();
         
         // Icon
         QLayoutItem *icon_item = m_tip_layout->itemAt(0);
@@ -786,7 +786,7 @@ void Smb4KToolTip::updateSharesViewToolTip()
 {
   if (m_item && m_text_layout && m_tip_layout)
   {
-    Smb4KShare *share = static_cast<Smb4KShare *>(m_item);
+    SharePtr share = m_item.staticCast<Smb4KShare>();
     
     // Set the icon
     QLayoutItem *icon_item = m_tip_layout->itemAt(0);

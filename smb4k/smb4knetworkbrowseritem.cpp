@@ -42,7 +42,7 @@
 using namespace Smb4KGlobal;
 
 
-Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidget *parent, Smb4KBasicNetworkItem *item)
+Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidget *parent, const NetworkItemPtr &item)
 : QTreeWidgetItem(parent, item->type()), m_item(item)
 {
   m_tooltip   = new Smb4KToolTip();
@@ -52,14 +52,14 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidget *parent, Smb4KBasic
   {
     case Workgroup:
     {
-      Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>(m_item);
+      WorkgroupPtr workgroup = m_item.staticCast<Smb4KWorkgroup>();
       setText(Network, workgroup->workgroupName());
       setIcon(Network, workgroup->icon());
       break;
     }
     case Host:
     {
-      Smb4KHost *host = static_cast<Smb4KHost *>(m_item);
+      HostPtr host = m_item.staticCast<Smb4KHost>();
       setText(Network, host->hostName());
       setText(IP, host->ip());
       setText(Comment, host->comment());
@@ -82,7 +82,7 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidget *parent, Smb4KBasic
     }
     case Share:
     {
-      Smb4KShare *share = static_cast<Smb4KShare *>(m_item);
+      SharePtr share = m_item.staticCast<Smb4KShare>();
       setText(Network, share->shareName());
       setText(Type, share->translatedTypeString());
       setText(Comment, share->comment());
@@ -112,7 +112,7 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidget *parent, Smb4KBasic
 }
 
 
-Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidgetItem *parent, Smb4KBasicNetworkItem *item)
+Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidgetItem *parent, const NetworkItemPtr &item)
 : QTreeWidgetItem(parent, item->type()), m_item(item)
 {
   m_tooltip   = new Smb4KToolTip();
@@ -122,14 +122,14 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidgetItem *parent, Smb4KB
   {
     case Workgroup:
     {
-      Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>(m_item);
+      WorkgroupPtr workgroup = m_item.staticCast<Smb4KWorkgroup>();
       setText(Network, workgroup->workgroupName());
       setIcon(Network, workgroup->icon());
       break;
     }
     case Host:
     {
-      Smb4KHost *host = static_cast<Smb4KHost *>(m_item);
+      HostPtr host = m_item.staticCast<Smb4KHost>();
       setText(Network, host->hostName());
       setText(IP, host->ip());
       setText(Comment, host->comment());
@@ -152,7 +152,7 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidgetItem *parent, Smb4KB
     }
     case Share:
     {
-      Smb4KShare *share = static_cast<Smb4KShare *>(m_item);
+      SharePtr share = m_item.staticCast<Smb4KShare>();
       setText(Network, share->shareName());
       setText(Type, share->translatedTypeString());
       setText(Comment, share->comment());
@@ -189,52 +189,52 @@ Smb4KNetworkBrowserItem::~Smb4KNetworkBrowserItem()
 }
 
 
-Smb4KWorkgroup *Smb4KNetworkBrowserItem::workgroupItem()
+WorkgroupPtr Smb4KNetworkBrowserItem::workgroupItem()
 {
   if (!m_item || (m_item && m_item->type() != Workgroup))
   {
-    return 0;
+    return WorkgroupPtr();
   }
   else
   {
     // Do nothing
   }
   
-  return static_cast<Smb4KWorkgroup *>(m_item);
+  return m_item.staticCast<Smb4KWorkgroup>();
 }
 
 
-Smb4KHost *Smb4KNetworkBrowserItem::hostItem()
+HostPtr Smb4KNetworkBrowserItem::hostItem()
 {
   if (!m_item || (m_item && m_item->type() != Host))
   {
-    return 0;
+    return HostPtr();
   }
   else
   {
     // Do nothing
   }
   
-  return static_cast<Smb4KHost *>(m_item);
+  return m_item.staticCast<Smb4KHost>();
 }
 
 
-Smb4KShare *Smb4KNetworkBrowserItem::shareItem()
+SharePtr Smb4KNetworkBrowserItem::shareItem()
 {
   if (!m_item || (m_item && m_item->type() != Share))
   {
-    return 0;
+    return SharePtr();
   }
   else
   {
     // Do nothing
   }
   
-  return static_cast<Smb4KShare *>(m_item);
+  return m_item.staticCast<Smb4KShare>();
 }
 
 
-Smb4KBasicNetworkItem* Smb4KNetworkBrowserItem::networkItem()
+const NetworkItemPtr &Smb4KNetworkBrowserItem::networkItem()
 {
   return m_item;
 }
@@ -246,7 +246,7 @@ void Smb4KNetworkBrowserItem::update()
   {
     case Host:
     {
-      Smb4KHost *host = static_cast<Smb4KHost *>(m_item);
+      HostPtr host = m_item.staticCast<Smb4KHost>();
       
       // Adjust the item's color.
       if (host->isMasterBrowser())
@@ -275,7 +275,7 @@ void Smb4KNetworkBrowserItem::update()
     }
     case Share:
     {
-      Smb4KShare *share = static_cast<Smb4KShare *>(m_item);
+      SharePtr share = m_item.staticCast<Smb4KShare>();
       
       // Set the comment
       setText(Comment, share->comment());

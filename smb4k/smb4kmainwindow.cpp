@@ -166,11 +166,11 @@ void Smb4KMainWindow::setupStatusBar()
   connect(Smb4KWalletManager::self(), SIGNAL(initialized()),
           this, SLOT(slotWalletManagerInitialized()));
   
-  connect(Smb4KMounter::self(), SIGNAL(mounted(Smb4KShare*)),
-          this, SLOT(slotVisualMountFeedback(Smb4KShare*)));
+  connect(Smb4KMounter::self(), SIGNAL(mounted(SharePtr)),
+          this, SLOT(slotVisualMountFeedback(SharePtr)));
   
-  connect(Smb4KMounter::self(), SIGNAL(unmounted(Smb4KShare*)),
-          this, SLOT(slotVisualUnmountFeedback(Smb4KShare*)));
+  connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)),
+          this, SLOT(slotVisualUnmountFeedback(SharePtr)));
   
   connect(Smb4KMounter::self(), SIGNAL(aboutToStart(int)),
           this, SLOT(slotMounterAboutToStart(int)));
@@ -178,11 +178,11 @@ void Smb4KMainWindow::setupStatusBar()
   connect(Smb4KMounter::self(), SIGNAL(finished(int)),
           this, SLOT(slotMounterFinished(int)));
   
-  connect(Smb4KScanner::self(), SIGNAL(aboutToStart(Smb4KBasicNetworkItem*,int)),
-          this, SLOT(slotScannerAboutToStart(Smb4KBasicNetworkItem*,int)));
+  connect(Smb4KScanner::self(), SIGNAL(aboutToStart(NetworkItemPtr,int)),
+          this, SLOT(slotScannerAboutToStart(NetworkItemPtr,int)));
   
-  connect(Smb4KScanner::self(), SIGNAL(finished(Smb4KBasicNetworkItem*,int)),
-          this, SLOT(slotScannerFinished(Smb4KBasicNetworkItem*,int)));
+  connect(Smb4KScanner::self(), SIGNAL(finished(NetworkItemPtr,int)),
+          this, SLOT(slotScannerFinished(NetworkItemPtr,int)));
   
   connect(Smb4KSearch::self(), SIGNAL(aboutToStart(QString)),
           this, SLOT(slotSearchAboutToStart(QString)));
@@ -190,11 +190,11 @@ void Smb4KMainWindow::setupStatusBar()
   connect(Smb4KSearch::self(), SIGNAL(finished(QString)),
           this, SLOT(slotSearchFinished(QString)));
 
-  connect(Smb4KPrint::self(), SIGNAL(aboutToStart(Smb4KShare*)),
-          this, SLOT(slotPrintingAboutToStart(Smb4KShare*)));
+  connect(Smb4KPrint::self(), SIGNAL(aboutToStart(SharePtr)),
+          this, SLOT(slotPrintingAboutToStart(SharePtr)));
 
-  connect(Smb4KPrint::self(), SIGNAL(finished(Smb4KShare*)),
-          this, SLOT(slotPrintingFinished(Smb4KShare*)));
+  connect(Smb4KPrint::self(), SIGNAL(finished(SharePtr)),
+          this, SLOT(slotPrintingFinished(SharePtr)));
 
   connect(Smb4KSynchronizer::self(), SIGNAL(aboutToStart(QString)),
           this, SLOT(slotSynchronizerAboutToStart(QString)));
@@ -202,11 +202,11 @@ void Smb4KMainWindow::setupStatusBar()
   connect(Smb4KSynchronizer::self(), SIGNAL(finished(QString)),
           this, SLOT(slotSynchronizerFinished(QString)));
 
-  connect(Smb4KPreviewer::self(), SIGNAL(aboutToStart(Smb4KShare*,QUrl)),
-          this, SLOT(slotPreviewerAboutToStart(Smb4KShare*,QUrl)));
+  connect(Smb4KPreviewer::self(), SIGNAL(aboutToStart(SharePtr,QUrl)),
+          this, SLOT(slotPreviewerAboutToStart(SharePtr,QUrl)));
 
-  connect(Smb4KPreviewer::self(), SIGNAL(finished(Smb4KShare*,QUrl)),
-          this, SLOT(slotPreviewerFinished(Smb4KShare*,QUrl)));
+  connect(Smb4KPreviewer::self(), SIGNAL(finished(SharePtr,QUrl)),
+          this, SLOT(slotPreviewerFinished(SharePtr,QUrl)));
 }
 
 
@@ -681,7 +681,7 @@ void Smb4KMainWindow::slotWalletManagerInitialized()
 }
 
 
-void Smb4KMainWindow::slotScannerAboutToStart(Smb4KBasicNetworkItem *item, int process)
+void Smb4KMainWindow::slotScannerAboutToStart(const NetworkItemPtr &item, int process)
 {
   Q_ASSERT(item);
 
@@ -694,13 +694,13 @@ void Smb4KMainWindow::slotScannerAboutToStart(Smb4KBasicNetworkItem *item, int p
     }
     case LookupDomainMembers:
     {
-      Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>(item);
+      WorkgroupPtr workgroup = item.staticCast<Smb4KWorkgroup>();
       statusBar()->showMessage(i18n("Looking for hosts in domain %1...", workgroup->workgroupName()), 0);
       break;
     }
     case LookupShares:
     {
-      Smb4KHost *host = static_cast<Smb4KHost *>(item);
+      HostPtr host = item.staticCast<Smb4KHost>();
       statusBar()->showMessage(i18n("Looking for shares provided by host %1...", host->hostName()), 0);
       break;
     }
@@ -726,7 +726,7 @@ void Smb4KMainWindow::slotScannerAboutToStart(Smb4KBasicNetworkItem *item, int p
 }
 
 
-void Smb4KMainWindow::slotScannerFinished(Smb4KBasicNetworkItem */*item*/, int /*process*/)
+void Smb4KMainWindow::slotScannerFinished(const NetworkItemPtr &/*item*/, int /*process*/)
 {
   if (!coreIsRunning())
   {
@@ -794,7 +794,7 @@ void Smb4KMainWindow::slotMounterFinished(int /*process*/)
 }
 
 
-void Smb4KMainWindow::slotVisualMountFeedback(Smb4KShare *share)
+void Smb4KMainWindow::slotVisualMountFeedback(const SharePtr &share)
 {
   Q_ASSERT(share);
   
@@ -848,7 +848,7 @@ void Smb4KMainWindow::slotVisualMountFeedback(Smb4KShare *share)
 }
 
 
-void Smb4KMainWindow::slotVisualUnmountFeedback(Smb4KShare *share)
+void Smb4KMainWindow::slotVisualUnmountFeedback(const SharePtr &share)
 {
   Q_ASSERT(share);
   
@@ -971,7 +971,7 @@ void Smb4KMainWindow::slotSearchFinished(const QString &/*string*/)
 }
 
 
-void Smb4KMainWindow::slotPrintingAboutToStart(Smb4KShare *printer)
+void Smb4KMainWindow::slotPrintingAboutToStart(const SharePtr &printer)
 {
   statusBar()->showMessage(i18n("Sending file to printer %1...", printer->unc()), 0);
 
@@ -986,7 +986,7 @@ void Smb4KMainWindow::slotPrintingAboutToStart(Smb4KShare *printer)
 }
 
 
-void Smb4KMainWindow::slotPrintingFinished(Smb4KShare */*printer*/)
+void Smb4KMainWindow::slotPrintingFinished(const SharePtr &/*printer*/)
 {
   if (!coreIsRunning())
   {
@@ -1031,7 +1031,7 @@ void Smb4KMainWindow::slotSynchronizerFinished(const QString &/*dest*/)
 }
 
 
-void Smb4KMainWindow::slotPreviewerAboutToStart(Smb4KShare *share, const QUrl &/*url*/)
+void Smb4KMainWindow::slotPreviewerAboutToStart(const SharePtr &share, const QUrl &/*url*/)
 {
   Q_ASSERT(share);
 
@@ -1048,7 +1048,7 @@ void Smb4KMainWindow::slotPreviewerAboutToStart(Smb4KShare *share, const QUrl &/
 }
 
 
-void Smb4KMainWindow::slotPreviewerFinished(Smb4KShare */*share*/, const QUrl &/*url*/)
+void Smb4KMainWindow::slotPreviewerFinished(const SharePtr &/*share*/, const QUrl &/*url*/)
 {
   if (!coreIsRunning())
   {

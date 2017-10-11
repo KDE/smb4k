@@ -3,7 +3,7 @@
     of Smb4K.
                              -------------------
     begin                : Fr Jun 1 2007
-    copyright            : (C) 2007-2015 by Alexander Reinholdt
+    copyright            : (C) 2007-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -106,26 +106,37 @@ Smb4KNetworkSearchPart::Smb4KNetworkSearchPart(QWidget *parentWidget, QObject *p
   // Connections:
   connect(m_widget->comboBox(), SIGNAL(returnPressed()),
           this, SLOT(slotReturnPressed()));
+  
   connect(m_widget->comboBox(), SIGNAL(editTextChanged(QString)),
           this, SLOT(slotComboBoxTextChanged(QString)));
+  
   connect(m_widget->listWidget(), SIGNAL(itemDoubleClicked(QListWidgetItem*)),
           this, SLOT(slotItemDoubleClicked(QListWidgetItem*)));
+  
   connect(m_widget->listWidget(), SIGNAL(itemSelectionChanged()),
           this, SLOT(slotItemSelectionChanged()));
+  
   connect(m_widget->listWidget(), SIGNAL(customContextMenuRequested(QPoint)),
           this, SLOT(slotContextMenuRequested(QPoint)));
-  connect(Smb4KMounter::self(), SIGNAL(mounted(Smb4KShare*)),
-          this, SLOT(slotShareMounted(Smb4KShare*)));
-  connect(Smb4KMounter::self(),   SIGNAL(unmounted(Smb4KShare*)),
-          this, SLOT(slotShareUnmounted(Smb4KShare*)));
-  connect(Smb4KSearch::self(), SIGNAL(result(Smb4KShare*)),
-          this, SLOT(slotReceivedSearchResult(Smb4KShare*)));
+  
+  connect(Smb4KMounter::self(), SIGNAL(mounted(SharePtr)),
+          this, SLOT(slotShareMounted(SharePtr)));
+  
+  connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)),
+          this, SLOT(slotShareUnmounted(SharePtr)));
+  
+  connect(Smb4KSearch::self(), SIGNAL(result(SharePtr)),
+          this, SLOT(slotReceivedSearchResult(SharePtr)));
+  
   connect(Smb4KSearch::self(), SIGNAL(aboutToStart(QString)),
           this, SLOT(slotSearchAboutToStart(QString)));
+  
   connect(Smb4KSearch::self(), SIGNAL(finished(QString)),
           this, SLOT(slotSearchFinished(QString)));
+  
   connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()),
           this, SLOT(slotAboutToQuit()));
+  
   connect(KIconLoader::global(), SIGNAL(iconChanged(int)),
           this, SLOT(slotIconSizeChanged(int)));
 }
@@ -209,22 +220,19 @@ void Smb4KNetworkSearchPart::customEvent(QEvent *e)
       {
         case Smb4KNetworkSearchItem::Share:
         {
-          // First unmark the share.
-          Smb4KShare *share = new Smb4KShare(*item->shareItem());
-          share->setMounted(false);
-          item->update(share);
-          delete share;
+          // First update the share.
+          item->update();
             
           // Now either mark it again or leave it unmarked.
-          QList<Smb4KShare *> list = findShareByUNC(item->shareItem()->unc());
-            
-          for (int j = 0; j < list.size(); ++j)
+          QList<SharePtr> list = findShareByUNC(item->shareItem()->unc());
+          
+          for (const SharePtr &share : list)
           {
-            if (list.at(j)->isMounted())
+            if (share->isMounted())
             {
-              slotShareMounted(list.at(j));
+              slotShareMounted(share);
                
-              if (!list.at(j)->isForeign())
+              if (!share->isForeign())
               {
                 break;
               }
@@ -542,7 +550,7 @@ void Smb4KNetworkSearchPart::slotContextMenuRequested(const QPoint &pos)
 }
 
 
-void Smb4KNetworkSearchPart::slotReceivedSearchResult(Smb4KShare *share)
+void Smb4KNetworkSearchPart::slotReceivedSearchResult(const SharePtr &share)
 {
   Q_ASSERT(share);
 
@@ -625,7 +633,7 @@ void Smb4KNetworkSearchPart::slotSearchFinished(const QString &/*string*/)
 }
 
 
-void Smb4KNetworkSearchPart::slotShareMounted(Smb4KShare *share)
+void Smb4KNetworkSearchPart::slotShareMounted(const SharePtr &share)
 {
   Q_ASSERT(share);
   
@@ -639,7 +647,7 @@ void Smb4KNetworkSearchPart::slotShareMounted(Smb4KShare *share)
       {
         if (QString::compare(searchItem->shareItem()->unc(), share->unc(), Qt::CaseInsensitive) == 0)
         {
-          searchItem->update(share);
+          searchItem->update();
         }
         else
         {
@@ -656,7 +664,7 @@ void Smb4KNetworkSearchPart::slotShareMounted(Smb4KShare *share)
 }
 
 
-void Smb4KNetworkSearchPart::slotShareUnmounted(Smb4KShare *share)
+void Smb4KNetworkSearchPart::slotShareUnmounted(const SharePtr &share)
 {
   Q_ASSERT(share);
   
@@ -670,7 +678,7 @@ void Smb4KNetworkSearchPart::slotShareUnmounted(Smb4KShare *share)
       {
         if (QString::compare(item->shareItem()->unc(), share->unc(), Qt::CaseInsensitive) == 0)
         {
-          item->update(share);
+          item->update();
         }
         else
         {
@@ -712,7 +720,7 @@ void Smb4KNetworkSearchPart::slotIconSizeChanged(int group)
 }
 
 
-void Smb4KNetworkSearchPart::slotMounterFinished(Smb4KShare* /*share*/, int process)
+void Smb4KNetworkSearchPart::slotMounterFinished(const SharePtr &, int process)
 {
   switch (process)
   {

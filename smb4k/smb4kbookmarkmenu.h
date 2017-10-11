@@ -2,7 +2,7 @@
     smb4kbookmarkmenu  -  Bookmark menu
                              -------------------
     begin                : Sat Apr 02 2011
-    copyright            : (C) 2011-2016 by Alexander Reinholdt
+    copyright            : (C) 2011-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -26,6 +26,9 @@
 #ifndef SMB4KBOOKMARKMENU_H
 #define SMB4KBOOKMARKMENU_H
 
+// application specific includes
+#include "smb4kglobal.h"
+
 // Qt includes
 #include <QAction>
 #include <QActionGroup>
@@ -36,7 +39,6 @@
 
 // forward declarations
 class Smb4KBookmark;
-class Smb4KShare;
 
 
 class Smb4KBookmarkMenu : public KActionMenu
@@ -91,12 +93,12 @@ class Smb4KBookmarkMenu : public KActionMenu
     /**
      * Called when a bookmark was mounted
      */
-    void slotDisableBookmark(Smb4KShare *share);
+    void slotDisableBookmark(const SharePtr &share);
 
     /**
      * Called when a bookmark was unmounted
      */
-    void slotEnableBookmark(Smb4KShare *share);
+    void slotEnableBookmark(const SharePtr &share);
 
   private:
     /**

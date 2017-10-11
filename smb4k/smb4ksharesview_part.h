@@ -2,7 +2,7 @@
     This Part includes the shares view of Smb4K.
                              -------------------
     begin                : Sa Jun 30 2007
-    copyright            : (C) 2007-2016 by Alexander Reinholdt
+    copyright            : (C) 2007-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,6 +28,7 @@
 
 // applications specific includes
 #include "smb4ksharesview.h"
+#include "core/smb4kglobal.h"
 
 // Qt includes
 #include <QGridLayout>
@@ -133,7 +134,7 @@ class Q_DECL_EXPORT Smb4KSharesViewPart : public KParts::Part
      * 
      * @param share               The Smb4KShare item
      */
-    void slotShareMounted(Smb4KShare *share);
+    void slotShareMounted(const SharePtr &share);
     
     /**
      * This slot is connected to the Smb4KMounter::unmounted() signal and removes
@@ -141,7 +142,7 @@ class Q_DECL_EXPORT Smb4KSharesViewPart : public KParts::Part
      * 
      * @param share               The Smb4KShare item
      */
-    void slotShareUnmounted(Smb4KShare *share);
+    void slotShareUnmounted(const SharePtr &share);
     
     /**
      * This slot is connected to the Smb4KMounter::updated() signal and updates
@@ -152,7 +153,7 @@ class Q_DECL_EXPORT Smb4KSharesViewPart : public KParts::Part
      * 
      * @param share               The Smb4KShare item
      */
-    void slotShareUpdated(Smb4KShare *share);
+    void slotShareUpdated(const SharePtr &share);
 
     /**
      * This slot is connected to the 'Unmount action'. You will be able to

@@ -2,7 +2,7 @@
     The item for Smb4K's shares view.
                              -------------------
     begin                : Di Dez 5 2006
-    copyright            : (C) 2006-2016 by Alexander Reinholdt
+    copyright            : (C) 2006-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,11 +28,12 @@
 #endif
 
 // application specific includes
+#include "core/smb4kshare.h"
 #include "smb4ksharesviewitem.h"
 #include "smb4ksharesview.h"
 
 
-Smb4KSharesViewItem::Smb4KSharesViewItem(Smb4KSharesView *parent, Smb4KShare *share)
+Smb4KSharesViewItem::Smb4KSharesViewItem(Smb4KSharesView *parent, const SharePtr &share)
 : QListWidgetItem(parent), m_share(share)
 {
   setFlags(flags() | Qt::ItemIsDropEnabled);

@@ -141,23 +141,23 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart(QWidget *parentWidget, QObject 
   connect(Smb4KScanner::self(), SIGNAL(workgroups()),
           this, SLOT(slotWorkgroups()));
   
-  connect(Smb4KScanner::self(), SIGNAL(hosts(Smb4KWorkgroup*)),
-          this, SLOT(slotWorkgroupMembers(Smb4KWorkgroup*)));
+  connect(Smb4KScanner::self(), SIGNAL(hosts(WorkgroupPtr)),
+          this, SLOT(slotWorkgroupMembers(WorkgroupPtr)));
   
-  connect(Smb4KScanner::self(), SIGNAL(shares(Smb4KHost*)),
-          this, SLOT(slotShares(Smb4KHost*)));
+  connect(Smb4KScanner::self(), SIGNAL(shares(HostPtr)),
+          this, SLOT(slotShares(HostPtr)));
   
-  connect(Smb4KScanner::self(), SIGNAL(authError(Smb4KHost*,int)),
-          this, SLOT(slotAuthError(Smb4KHost*,int)));
+  connect(Smb4KScanner::self(), SIGNAL(authError(HostPtr,int)),
+          this, SLOT(slotAuthError(HostPtr,int)));
   
-  connect(Smb4KScanner::self(), SIGNAL(aboutToStart(Smb4KBasicNetworkItem*,int)),
-          this, SLOT(slotScannerAboutToStart(Smb4KBasicNetworkItem*,int)));
+  connect(Smb4KScanner::self(), SIGNAL(aboutToStart(NetworkItemPtr,int)),
+          this, SLOT(slotScannerAboutToStart(NetworkItemPtr,int)));
   
-  connect(Smb4KScanner::self(), SIGNAL(finished(Smb4KBasicNetworkItem*,int)),
-          this, SLOT(slotScannerFinished(Smb4KBasicNetworkItem*,int)));
+  connect(Smb4KScanner::self(), SIGNAL(finished(NetworkItemPtr,int)),
+          this, SLOT(slotScannerFinished(NetworkItemPtr,int)));
   
-  connect(Smb4KScanner::self(), SIGNAL(ipAddress(Smb4KHost*)),
-          this, SLOT(slotAddIPAddress(Smb4KHost*)));
+  connect(Smb4KScanner::self(), SIGNAL(ipAddress(HostPtr)),
+          this, SLOT(slotAddIPAddress(HostPtr)));
   
   connect(Smb4KMounter::self(), SIGNAL(aboutToStart(int)),
           this, SLOT(slotMounterAboutToStart(int)));
@@ -165,11 +165,11 @@ Smb4KNetworkBrowserPart::Smb4KNetworkBrowserPart(QWidget *parentWidget, QObject 
   connect(Smb4KMounter::self(), SIGNAL(finished(int)),
           this, SLOT(slotMounterFinished(int)));
   
-  connect(Smb4KMounter::self(), SIGNAL(mounted(Smb4KShare*)),
-          this, SLOT(slotShareMounted(Smb4KShare*)));
+  connect(Smb4KMounter::self(), SIGNAL(mounted(SharePtr)),
+          this, SLOT(slotShareMounted(SharePtr)));
   
-  connect(Smb4KMounter::self(), SIGNAL(unmounted(Smb4KShare*)),
-          this, SLOT(slotShareUnmounted(Smb4KShare*)));
+  connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)),
+          this, SLOT(slotShareUnmounted(SharePtr)));
   
   connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()),
           this, SLOT(slotAboutToQuit()));
@@ -713,11 +713,9 @@ void Smb4KNetworkBrowserPart::slotWorkgroups()
       
       if (networkItem->type() == Workgroup)
       {
-        if (!networkItem->workgroupItem())
-        {
-          delete networkItem;
-        }
-        else
+        WorkgroupPtr workgroup = findWorkgroup(networkItem->workgroupItem()->workgroupName());
+        
+        if (workgroup)
         {
           networkItem->update();
           
@@ -727,6 +725,10 @@ void Smb4KNetworkBrowserPart::slotWorkgroups()
             Smb4KNetworkBrowserItem *host = static_cast<Smb4KNetworkBrowserItem *>(networkItem->child(i));
             host->update();
           }
+        }
+        else
+        {
+          delete networkItem;
         }
       }
       else
@@ -740,7 +742,7 @@ void Smb4KNetworkBrowserPart::slotWorkgroups()
     //
     // Add new workgroups to the tree widget
     //
-    for (Smb4KWorkgroup *workgroup : workgroupsList())
+    for (const WorkgroupPtr &workgroup : workgroupsList())
     {
       QList<QTreeWidgetItem *> items = m_widget->findItems(workgroup->workgroupName(), Qt::MatchFixedString, Smb4KNetworkBrowser::Network);
       
@@ -769,7 +771,7 @@ void Smb4KNetworkBrowserPart::slotWorkgroups()
 }
 
 
-void Smb4KNetworkBrowserPart::slotWorkgroupMembers(Smb4KWorkgroup *workgroup)
+void Smb4KNetworkBrowserPart::slotWorkgroupMembers(const WorkgroupPtr &workgroup)
 {
   if (workgroup)
   {
@@ -797,13 +799,15 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers(Smb4KWorkgroup *workgroup)
           
           if (networkItem->type() == Host)
           {
-            if (!networkItem->hostItem())
+            HostPtr host = findHost(networkItem->hostItem()->hostName(), networkItem->hostItem()->workgroupName());
+            
+            if (host)
             {
-              delete networkItem;
+              networkItem->update();
             }
             else
             {
-              networkItem->update();
+              delete networkItem;
             }
           }
           else
@@ -818,11 +822,11 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers(Smb4KWorkgroup *workgroup)
         // Add new hosts to the workgroup item and remove obsolete workgroups if
         // necessary.
         //
-        QList<Smb4KHost *> members = workgroupMembers(workgroupItem->workgroupItem());
+        QList<HostPtr> members = workgroupMembers(workgroupItem->workgroupItem());
         
         if (!members.isEmpty())
         {
-          for (Smb4KHost *host : members)
+          for (const HostPtr &host : members)
           {
             bool foundHost = false;
             
@@ -881,7 +885,7 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers(Smb4KWorkgroup *workgroup)
 }
 
 
-void Smb4KNetworkBrowserPart::slotShares(Smb4KHost *host)
+void Smb4KNetworkBrowserPart::slotShares(const HostPtr &host)
 {
   if (host)
   {
@@ -908,13 +912,15 @@ void Smb4KNetworkBrowserPart::slotShares(Smb4KHost *host)
           
           if (shareItem->type() == Share)
           {
-            if (!shareItem->shareItem())
+            SharePtr share = findShare(shareItem->shareItem()->unc(), shareItem->shareItem()->workgroupName());
+            
+            if (share)
             {
-              delete shareItem;
+              shareItem->update();
             }
             else
             {
-              shareItem->update();
+              delete shareItem;
             }
           }
           else
@@ -929,11 +935,11 @@ void Smb4KNetworkBrowserPart::slotShares(Smb4KHost *host)
         // Add new shares to the host item. The host will not be removed from the
         // view when it has no shares.
         //
-        QList<Smb4KShare *> shares = sharedResources(host);
+        QList<SharePtr> shares = sharedResources(host);
         
         if (!shares.isEmpty())
         {
-          for (Smb4KShare *share : shares)
+          for (const SharePtr &share : shares)
           {
             bool foundShare = false;
             
@@ -990,7 +996,7 @@ void Smb4KNetworkBrowserPart::slotShares(Smb4KHost *host)
 }
 
 
-void Smb4KNetworkBrowserPart::slotAddIPAddress(Smb4KHost *host)
+void Smb4KNetworkBrowserPart::slotAddIPAddress(const HostPtr &host)
 {
   Q_ASSERT(host);
   
@@ -1049,7 +1055,7 @@ void Smb4KNetworkBrowserPart::slotAddIPAddress(Smb4KHost *host)
 }
 
 
-void Smb4KNetworkBrowserPart::slotAuthError(Smb4KHost *host, int process)
+void Smb4KNetworkBrowserPart::slotAuthError(const HostPtr &host, int process)
 {
   switch (process)
   {
@@ -1272,7 +1278,7 @@ void Smb4KNetworkBrowserPart::slotCustomOptions(bool /*checked*/)
 void Smb4KNetworkBrowserPart::slotAddBookmark(bool /*checked*/)
 {
   QList<QTreeWidgetItem *> items = m_widget->selectedItems();
-  QList<Smb4KShare *> shares;
+  QList<SharePtr> shares;
 
   if (!items.isEmpty())
   {
@@ -1364,7 +1370,7 @@ void Smb4KNetworkBrowserPart::slotMountActionTriggered(bool /*checked*/)
     // mounted shares, we use the number of unmounted shares. If that is
     // greater than 0, we mount all shares that need to be mounted, otherwise
     // we unmount all selected shares.
-    QList<Smb4KShare *> unmounted, mounted;
+    QList<SharePtr> unmounted, mounted;
     
     for (int i = 0; i < items.size(); ++i)
     {
@@ -1447,7 +1453,7 @@ void Smb4KNetworkBrowserPart::slotMountActionChanged(bool active)
 }
 
 
-void Smb4KNetworkBrowserPart::slotScannerAboutToStart(Smb4KBasicNetworkItem *item, int process)
+void Smb4KNetworkBrowserPart::slotScannerAboutToStart(const NetworkItemPtr &item, int process)
 {
   switch (process)
   {
@@ -1467,7 +1473,7 @@ void Smb4KNetworkBrowserPart::slotScannerAboutToStart(Smb4KBasicNetworkItem *ite
     {
       if (!m_silent)
       {
-        Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>(item);
+        WorkgroupPtr workgroup = item.staticCast<Smb4KWorkgroup>();
         emit setStatusBarText(i18n("Looking for hosts in domain %1...", workgroup->workgroupName()));
       }
       else
@@ -1480,7 +1486,7 @@ void Smb4KNetworkBrowserPart::slotScannerAboutToStart(Smb4KBasicNetworkItem *ite
     {
       if (!m_silent)
       {
-        Smb4KHost *host = static_cast<Smb4KHost *>(item);
+        HostPtr host = item.staticCast<Smb4KHost>();
         emit setStatusBarText(i18n("Looking for shares provided by host %1...", host->hostName()));
       }
       else
@@ -1535,7 +1541,7 @@ void Smb4KNetworkBrowserPart::slotScannerAboutToStart(Smb4KBasicNetworkItem *ite
 }
 
 
-void Smb4KNetworkBrowserPart::slotScannerFinished(Smb4KBasicNetworkItem */*item*/, int /*process*/)
+void Smb4KNetworkBrowserPart::slotScannerFinished(const NetworkItemPtr &/*item*/, int /*process*/)
 {
   if (!m_silent)
   {
@@ -1622,7 +1628,7 @@ void Smb4KNetworkBrowserPart::slotMounterFinished(int process)
 }
 
 
-void Smb4KNetworkBrowserPart::slotShareMounted(Smb4KShare *share)
+void Smb4KNetworkBrowserPart::slotShareMounted(const SharePtr &share)
 {
   QTreeWidgetItemIterator it(m_widget);
   
@@ -1652,7 +1658,7 @@ void Smb4KNetworkBrowserPart::slotShareMounted(Smb4KShare *share)
 }
 
 
-void Smb4KNetworkBrowserPart::slotShareUnmounted(Smb4KShare *share)
+void Smb4KNetworkBrowserPart::slotShareUnmounted(const SharePtr &share)
 {
   QTreeWidgetItemIterator it(m_widget);
   

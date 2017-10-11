@@ -2,7 +2,7 @@
     smb4ksharesmenu  -  Shares menu
                              -------------------
     begin                : Mon Sep 05 2011
-    copyright            : (C) 2011-2016 by Alexander Reinholdt
+    copyright            : (C) 2011-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -67,8 +67,8 @@ Smb4KSharesMenu::Smb4KSharesMenu(QWidget *parentWidget, QObject *parent)
   setupMenu();
 
   connect(m_actions, SIGNAL(triggered(QAction*)), SLOT(slotShareAction(QAction*)));
-  connect(Smb4KMounter::self(), SIGNAL(mounted(Smb4KShare*)), SLOT(slotShareMounted(Smb4KShare*)));
-  connect(Smb4KMounter::self(), SIGNAL(unmounted(Smb4KShare*)), SLOT(slotShareUnmounted(Smb4KShare*)));
+  connect(Smb4KMounter::self(), SIGNAL(mounted(SharePtr)), SLOT(slotShareMounted(SharePtr)));
+  connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)), SLOT(slotShareUnmounted(SharePtr)));
 }
 
 
@@ -108,9 +108,9 @@ void Smb4KSharesMenu::setupMenu()
   addSeparator();
 
   // Shares
-  for (int i = 0; i < mountedSharesList().size(); ++i)
+  for (const SharePtr &share : mountedSharesList())
   {
-    slotShareMounted(mountedSharesList().at(i));
+    slotShareMounted(share);
   }
 }
 
@@ -119,7 +119,7 @@ void Smb4KSharesMenu::setupMenu()
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
 
-void Smb4KSharesMenu::slotShareMounted(Smb4KShare *share)
+void Smb4KSharesMenu::slotShareMounted(const SharePtr &share)
 {
   Q_ASSERT(share);
 
@@ -237,7 +237,7 @@ void Smb4KSharesMenu::slotShareMounted(Smb4KShare *share)
 }
 
 
-void Smb4KSharesMenu::slotShareUnmounted(Smb4KShare *share)
+void Smb4KSharesMenu::slotShareUnmounted(const SharePtr &share)
 {
   Q_ASSERT(share);
 
@@ -306,7 +306,7 @@ void Smb4KSharesMenu::slotUnmountAllShares()
 
 void Smb4KSharesMenu::slotShareAction(QAction *action)
 {
-  Smb4KShare *share = 0;
+  SharePtr share;
 
   if (action->objectName().contains("]_"))
   {

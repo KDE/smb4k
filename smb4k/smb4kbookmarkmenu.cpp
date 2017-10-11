@@ -2,7 +2,7 @@
     smb4kbookmarkmenu  -  Bookmark menu
                              -------------------
     begin                : Sat Apr 02 2011
-    copyright            : (C) 2011-2016 by Alexander Reinholdt
+    copyright            : (C) 2011-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -65,8 +65,8 @@ Smb4KBookmarkMenu::Smb4KBookmarkMenu(int type, QWidget *parentWidget, QObject *p
   // Connections
   connect(m_action_collection, SIGNAL(actionTriggered(QAction*)), SLOT(slotActionTriggered(QAction*)));
   connect(Smb4KBookmarkHandler::self(), SIGNAL(updated()), SLOT(slotBookmarksUpdated()));
-  connect(Smb4KMounter::self(), SIGNAL(mounted(Smb4KShare*)), SLOT(slotDisableBookmark(Smb4KShare*)));
-  connect(Smb4KMounter::self(), SIGNAL(unmounted(Smb4KShare*)), SLOT(slotEnableBookmark(Smb4KShare*)));
+  connect(Smb4KMounter::self(), SIGNAL(mounted(SharePtr)), SLOT(slotDisableBookmark(SharePtr)));
+  connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)), SLOT(slotEnableBookmark(SharePtr)));
 }
 
 
@@ -141,13 +141,13 @@ void Smb4KBookmarkMenu::setupMenu()
     
     for (int i = 0; i < bookmarks.size(); ++i)
     {
-      QList<Smb4KShare *> mounted = findShareByUNC(bookmarks.at(i)->unc());
+      QList<SharePtr> mounted = findShareByUNC(bookmarks.at(i)->unc());
       
       if (!mounted.isEmpty())
       {
-        for (int j = 0; j < mounted.size(); ++j)
+        for (const SharePtr &share : mounted)
         {
-          if (!mounted.at(j)->isForeign())
+          if (!share->isForeign())
           {
             number++;
             break;
@@ -195,13 +195,13 @@ void Smb4KBookmarkMenu::setupMenu()
     
       for (int i = 0; i < bookmarks.size(); ++i)
       {
-        QList<Smb4KShare *> mounted = findShareByUNC(bookmarks.at(i)->unc());
+        QList<SharePtr> mounted = findShareByUNC(bookmarks.at(i)->unc());
       
         if (!mounted.isEmpty())
         {
-          for (int j = 0; j < mounted.size(); ++j)
+          for (const SharePtr &share : mounted)
           {
-            if (!mounted.at(j)->isForeign())
+            if (!share->isForeign())
             {
               number++;
               break;
@@ -240,13 +240,13 @@ void Smb4KBookmarkMenu::setupMenu()
           item = bookmarks.at(j)->unc();
         }
 
-        QList<Smb4KShare *> mounted = findShareByUNC(bookmarks.at(j)->unc());
+        QList<SharePtr> mounted = findShareByUNC(bookmarks.at(j)->unc());
 
         if (!mounted.isEmpty())
         {
-          for (int k = 0; k < mounted.size(); ++k)
+          for (const SharePtr &share : mounted)
           {
-            if (!mounted.at(k)->isForeign())
+            if (!share->isForeign())
             {
               bookmark->setEnabled(false);
               break;
@@ -318,13 +318,13 @@ void Smb4KBookmarkMenu::setupMenu()
       item = bookmarks.at(j)->unc();
     }
 
-    QList<Smb4KShare *> mounted = findShareByUNC(bookmarks.at(j)->unc());
+    QList<SharePtr> mounted = findShareByUNC(bookmarks.at(j)->unc());
 
     if (!mounted.isEmpty())
     {
-      for (int k = 0; k < mounted.size(); ++k)
+      for (const SharePtr &share : mounted)
       {
-        if (!mounted.at(k)->isForeign())
+        if (!share->isForeign())
         {
           bookmark->setEnabled(false);
           break;
@@ -391,14 +391,16 @@ void Smb4KBookmarkMenu::slotActionTriggered(QAction *action)
   else if (QString::compare("mount_toplevel", action->objectName()) == 0)
   {
     // Mount all shares belonging to the top level bookmarks. This will only be 
-    // called if there are not groups defined.
+    // called if there are no groups defined.
     QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList();
-    QList<Smb4KShare *> mounts;
+    QList<SharePtr> mounts;
 
     for (int i = 0; i < bookmarks.size(); ++i)
     {
       // FIXME: Check if the bookmarked share has already been mounted.
-      Smb4KShare *share = new Smb4KShare(bookmarks.at(i)->hostName(), bookmarks.at(i)->shareName());
+      SharePtr share = SharePtr(new Smb4KShare());
+      share->setHostName(bookmarks.at(i)->hostName());
+      share->setShareName(bookmarks.at(i)->shareName());
       share->setWorkgroupName(bookmarks.at(i)->workgroupName());
       share->setHostIP(bookmarks.at(i)->hostIP());
       share->setLogin(bookmarks.at(i)->login());
@@ -409,7 +411,7 @@ void Smb4KBookmarkMenu::slotActionTriggered(QAction *action)
 
     while (!mounts.isEmpty())
     {
-      delete mounts.takeFirst();
+      mounts.takeFirst().clear();
     }
   }
   else if (action->objectName().startsWith(QLatin1String("mount_")) && QString::compare("mount_toplevel", action->objectName()) != 0)
@@ -417,11 +419,13 @@ void Smb4KBookmarkMenu::slotActionTriggered(QAction *action)
     // Mount all bookmarked share that belong to this group.
     QString group_name = action->objectName().section('_', 1, -1).trimmed();
     QList<Smb4KBookmark *> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList(group_name);
-    QList<Smb4KShare *> mounts;
+    QList<SharePtr> mounts;
 
     for (int i = 0; i < bookmarks.size(); ++i)
     {
-      Smb4KShare *share = new Smb4KShare(bookmarks.at(i)->hostName(), bookmarks.at(i)->shareName());
+      SharePtr share = SharePtr(new Smb4KShare());
+      share->setHostName(bookmarks.at(i)->hostName());
+      share->setShareName(bookmarks.at(i)->shareName());
       share->setWorkgroupName(bookmarks.at(i)->workgroupName());
       share->setHostIP(bookmarks.at(i)->hostIP());
       share->setLogin(bookmarks.at(i)->login());
@@ -432,7 +436,7 @@ void Smb4KBookmarkMenu::slotActionTriggered(QAction *action)
 
     while (!mounts.isEmpty())
     {
-      delete mounts.takeFirst();
+      mounts.takeFirst().clear();
     }
   }
   else if (action->objectName().startsWith('[') && action->objectName().contains("]_//"))
@@ -445,11 +449,14 @@ void Smb4KBookmarkMenu::slotActionTriggered(QAction *action)
 
     if (bookmark && QString::compare(group_name, bookmark->groupName()) == 0)
     {
-      Smb4KShare *share = new Smb4KShare(bookmark->hostName(), bookmark->shareName());
+      SharePtr share = SharePtr(new Smb4KShare());
+      share->setHostName(bookmark->hostName());
+      share->setShareName(bookmark->shareName());
       share->setWorkgroupName(bookmark->workgroupName());
       share->setHostIP(bookmark->hostIP());
       share->setLogin(bookmark->login());
       Smb4KMounter::self()->mountShare(share);
+      share.clear();
     }
     else
     {
@@ -469,7 +476,7 @@ void Smb4KBookmarkMenu::slotBookmarksUpdated()
 }
 
 
-void Smb4KBookmarkMenu::slotDisableBookmark(Smb4KShare *share)
+void Smb4KBookmarkMenu::slotDisableBookmark(const SharePtr &share)
 {
   if (!share->isForeign() && !m_bookmarks->actions().isEmpty())
   {
@@ -559,7 +566,7 @@ void Smb4KBookmarkMenu::slotDisableBookmark(Smb4KShare *share)
 }
 
 
-void Smb4KBookmarkMenu::slotEnableBookmark(Smb4KShare *share)
+void Smb4KBookmarkMenu::slotEnableBookmark(const SharePtr &share)
 {
   if (!share->isForeign() && !m_bookmarks->actions().isEmpty())
   {

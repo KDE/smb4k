@@ -2,7 +2,7 @@
     The item for Smb4K's shares view.
                              -------------------
     begin                : Di Dez 5 2006
-    copyright            : (C) 2006-2016 by Alexander Reinholdt
+    copyright            : (C) 2006-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -27,7 +27,7 @@
 #define SMB4KSHARESVIEWITEM_H
 
 // application specific includes
-#include "core/smb4kshare.h"
+#include "core/smb4kglobal.h"
 #include "smb4ktooltip.h"
 
 // Qt includes
@@ -53,7 +53,7 @@ class Smb4KSharesViewItem : public QListWidgetItem
      *
      * @param parent        The parent widget of this item.
      */
-    Smb4KSharesViewItem(Smb4KSharesView *parent, Smb4KShare *share);
+    Smb4KSharesViewItem(Smb4KSharesView *parent, const SharePtr &share);
 
     /**
      * The destructor
@@ -65,7 +65,7 @@ class Smb4KSharesViewItem : public QListWidgetItem
      * 
      * @returns the encapsulated Smb4KShare item.
      */
-    Smb4KShare *shareItem() { return m_share; }
+    const SharePtr &shareItem() { return m_share; }
 
     /**
      * This function updates the encapsulated Smb4KShare object.
@@ -89,7 +89,7 @@ class Smb4KSharesViewItem : public QListWidgetItem
     /**
      * The Smb4KShare item
      */
-    Smb4KShare *m_share;
+    SharePtr m_share;
     
     /**
      * The tool tip

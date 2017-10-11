@@ -2,7 +2,7 @@
     smb4ksharesmenu  -  Shares menu
                              -------------------
     begin                : Mon Sep 05 2011
-    copyright            : (C) 2011-2016 by Alexander Reinholdt
+    copyright            : (C) 2011-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -26,6 +26,9 @@
 #ifndef SMB4KSHARESMENU_H
 #define SMB4KSHARESMENU_H
 
+// application specific includes
+#include "core/smb4kglobal.h"
+
 // Qt includes
 #include <QAction>
 #include <QActionGroup>
@@ -45,8 +48,7 @@ class Smb4KSharesMenu : public KActionMenu
     /**
      * Constructor
      */
-    explicit Smb4KSharesMenu(QWidget *parentWidget = 0,
-                              QObject *parent = 0);
+    explicit Smb4KSharesMenu(QWidget *parentWidget = 0, QObject *parent = 0);
 
     /**
      * Destructor
@@ -65,7 +67,7 @@ class Smb4KSharesMenu : public KActionMenu
      *
      * @param share         The share that has been mounted
      */
-    void slotShareMounted(Smb4KShare *share);
+    void slotShareMounted(const SharePtr &share);
 
     /**
      * Connected to Smb4KMounter::unmounted() signal. Removes
@@ -73,7 +75,7 @@ class Smb4KSharesMenu : public KActionMenu
      *
      * @param share         The share that has been unmounted
      */
-    void slotShareUnmounted(Smb4KShare *share);
+    void slotShareUnmounted(const SharePtr &share);
 
     /**
      * This slot unmounts all shares at once.
