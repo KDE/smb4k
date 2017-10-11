@@ -2,7 +2,7 @@
     This class executes shell processes.
                              -------------------
     begin                : Mi Mär 4 2009
-    copyright            : (C) 2009-2016 by Alexander Reinholdt
+    copyright            : (C) 2009-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
