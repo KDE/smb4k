@@ -2,7 +2,7 @@
     Provides an interface to the computer's hardware
                              -------------------
     begin                : Die Jul 14 2015
-    copyright            : (C) 2015-2016 by Alexander Reinholdt
+    copyright            : (C) 2015-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
