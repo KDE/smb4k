@@ -2,7 +2,7 @@
     smb4kprofilesmenu  -  The menu for the profiles
                              -------------------
     begin                : Do Aug 10 2014
-    copyright            : (C) 2014-2015 by Alexander Reinholdt
+    copyright            : (C) 2014-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
