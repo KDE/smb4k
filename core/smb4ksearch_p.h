@@ -2,7 +2,7 @@
     Private helper classes for Smb4KSearch class.
                              -------------------
     begin                : Mo Dez 22 2008
-    copyright            : (C) 2008-2016 by Alexander Reinholdt
+    copyright            : (C) 2008-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,6 +30,7 @@
 #include "smb4ksearch.h"
 #include "smb4kprocess.h"
 #include "smb4khost.h"
+#include "smb4kglobal.h"
 
 // KDE includes
 #include <KCoreAddons/KJob>
@@ -77,8 +78,8 @@ class Smb4KSearchJob : public KJob
      * @param parent          The parent widget
      */
     void setupSearch(const QString &string,
-                      Smb4KHost *master = 0,
-                      QWidget *parentWidget = 0);
+                     const HostPtr &master = HostPtr(),
+                     QWidget *parentWidget = 0);
 
     /**
      * Returns the search string.
@@ -92,7 +93,7 @@ class Smb4KSearchJob : public KJob
      *
      * @returns the master browser
      */
-    Smb4KHost *masterBrowser() { return m_master; }
+    const HostPtr &masterBrowser() { return m_master; }
 
     /**
      * Returns that parent widget.
@@ -120,7 +121,7 @@ class Smb4KSearchJob : public KJob
     /**
      * Emitted with a search result
      */
-    void result(Smb4KShare *share);
+    void result(const SharePtr &share);
 
   protected:
     /**
@@ -138,7 +139,7 @@ class Smb4KSearchJob : public KJob
   private:
     bool m_started;
     QString m_string;
-    Smb4KHost *m_master;
+    HostPtr m_master;
     QWidget *m_parent_widget;
     Smb4KProcess *m_process;
 };

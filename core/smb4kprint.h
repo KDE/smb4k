@@ -2,7 +2,7 @@
     The (new) printing core class.
                              -------------------
     begin                : Son Feb 20 2011
-    copyright            : (C) 2011-2016 by Alexander Reinholdt
+    copyright            : (C) 2011-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -26,6 +26,9 @@
 #ifndef SMB4KPRINT_H
 #define SMB4KPRINT_H
 
+// application specific includes
+#include "smb4kglobal.h"
+
 // Qt includes
 #include <QUrl>
 #include <QWidget>
@@ -35,7 +38,6 @@
 
 // forward declarations
 class Smb4KPrintPrivate;
-class Smb4KShare;
 class Smb4KPrintJob;
 class Smb4KNetworkObject;
 
@@ -84,8 +86,7 @@ class Q_DECL_EXPORT Smb4KPrint : public KCompositeJob
      *
      * @param parent        The parent widget
      */
-    void print(Smb4KShare *printer,
-                QWidget *parent = 0);
+    void print(const SharePtr &printer, QWidget *parent = 0);
     
     /**
      * This function tells you whether print jobs are running
@@ -101,7 +102,7 @@ class Q_DECL_EXPORT Smb4KPrint : public KCompositeJob
      * 
      * @returns TRUE if a print job is already running
      */
-    bool isRunning(Smb4KShare *share);
+    bool isRunning(const SharePtr &share);
     
     /**
      * This function aborts all print jobs at once.
@@ -113,7 +114,7 @@ class Q_DECL_EXPORT Smb4KPrint : public KCompositeJob
      *
      * @param share         The Smb4KShare object
      */
-    void abort(Smb4KShare *share);
+    void abort(const SharePtr &share);
     
     /**
      * This function starts the composite job
@@ -126,14 +127,14 @@ class Q_DECL_EXPORT Smb4KPrint : public KCompositeJob
      *
      * @param printer      The remote printer
      */
-    void aboutToStart(Smb4KShare *printer);
+    void aboutToStart(const SharePtr &printer);
 
     /**
      * This signal is emitted when a job has finished.
      *
      * @param printer      The remote printer
      */
-    void finished(Smb4KShare *printer);
+    void finished(const SharePtr &printer);
     
   protected Q_SLOTS:
     /**

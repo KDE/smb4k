@@ -2,7 +2,7 @@
     This class handles the bookmarks.
                              -------------------
     begin                : Fr Jan 9 2004
-    copyright            : (C) 2004-2016 by Alexander Reinholdt
+    copyright            : (C) 2004-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -26,6 +26,9 @@
 #ifndef SMB4KBOOKMARKHANDLER_H
 #define SMB4KBOOKMARKHANDLER_H
 
+// application specific includes
+#include "smb4kglobal.h"
+
 // Qt includes
 #include <QObject>
 #include <QList>
@@ -35,7 +38,6 @@
 
 // forward declarations
 class Smb4KBookmark;
-class Smb4KShare;
 class Smb4KBookmarkHandlerPrivate;
 class Smb4KBookmarkDialog;
 class Smb4KBookmarkEditor;
@@ -81,17 +83,17 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
      * 
      * @param parent        The parent widget
      */
-    void addBookmark(Smb4KShare *share, QWidget *parent = 0);
+    void addBookmark(const SharePtr &share, QWidget *parent = 0);
 
     /**
      * This function adds several bookmarks at once. It takes a list of 
-     * Smb4KShare items and converts them internally to bookmark items.
+     * shares and converts them internally to bookmark items.
      *
      * @param list          The list of shares that are to be bookmarked
      *
      * @param parent        The parent widget
      */
-    void addBookmarks(const QList<Smb4KShare *> &list, QWidget *parent = 0);
+    void addBookmarks(const QList<SharePtr> &list, QWidget *parent = 0);
     
     /**
      * Remove a bookmark.

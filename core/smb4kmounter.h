@@ -26,6 +26,9 @@
 #ifndef SMB4KMOUNTER_H
 #define SMB4KMOUNTER_H
 
+// application specific includes
+#include "smb4kglobal.h"
+
 // Qt includes
 #include <QObject>
 #include <QFile>
@@ -89,7 +92,7 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
      * 
      * @param parent      The parent widget
      */
-    void mountShare(Smb4KShare *share, QWidget *parent = 0);
+    void mountShare(const SharePtr &share, QWidget *parent = 0);
 
     /**
      * Mounts a list of shares at once.
@@ -98,7 +101,7 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
      * 
      * @param parent      The parent widget
      */
-    void mountShares(const QList<Smb4KShare *> &shares, QWidget *parent = 0);
+    void mountShares(const QList<SharePtr> &shares, QWidget *parent = 0);
 
     /**
      * This function attempts to unmount a share. With the parameter @p silent you 
@@ -111,7 +114,7 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
      * 
      * @param parent      The parent widget
      */
-    void unmountShare(Smb4KShare *share, bool silent = false, QWidget *parent = 0);
+    void unmountShare(const SharePtr &share, bool silent = false, QWidget *parent = 0);
     
     /**
      * This function attempts to unmount a list of shares. With the parameter @p silent 
@@ -124,7 +127,7 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
      * 
      * @param parent      The parent widget
      */
-    void unmountShares(const QList<Smb4KShare *> &shares, bool silent = false, QWidget *parent = 0);
+    void unmountShares(const QList<SharePtr> &shares, bool silent = false, QWidget *parent = 0);
 
     /**
      * Unmounts all shares at once. This is a convenience function. It calls
@@ -160,21 +163,21 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
      * 
      * @param share             The share item that was just updated.
      */ 
-    void updated(Smb4KShare *share);
+    void updated(const SharePtr &share);
 
     /**
      * This signal is emitted when a share has successfully been mounted.
      *
      * @param share             The share that was just mounted.
      */
-    void mounted(Smb4KShare *share);
+    void mounted(const SharePtr &share);
 
     /**
      * This signal is emitted after a share has successfully been unmounted.
      *
      * @param share            The share that was unmounted.
      */
-    void unmounted(Smb4KShare *share);
+    void unmounted(const SharePtr &share);
     
     /**
      * This signal is emitted when a process is about to start.
@@ -284,17 +287,17 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
     /**
      * Fill the mount action arguments into a map.
      */
-    bool fillMountActionArgs(Smb4KShare *share, QVariantMap &mountArgs);
+    bool fillMountActionArgs(const SharePtr &share, QVariantMap &mountArgs);
     
     /**
      * Fill the unmount action arguments into a map.
      */
-    bool fillUnmountActionArgs(Smb4KShare *share, bool force, bool silent, QVariantMap &unmountArgs);
+    bool fillUnmountActionArgs(const SharePtr &share, bool force, bool silent, QVariantMap &unmountArgs);
     
     /**
      * Check the size, accessibility, ids, etc. of the share(s)
      */
-    void check(Smb4KShare *share);
+    void check(const SharePtr &share);
     
     /**
      * Pointer to the Smb4KMounterPrivate class.

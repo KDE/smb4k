@@ -2,7 +2,7 @@
     This file contains private helpers for the Smb4KPrint class
                              -------------------
     begin                : Fr Okt 31 2008
-    copyright            : (C) 2008-2016 by Alexander Reinholdt
+    copyright            : (C) 2008-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -29,6 +29,7 @@
 // application specific includes
 #include "smb4kprint.h"
 #include "smb4kprocess.h"
+#include "smb4kglobal.h"
 
 // Qt includes
 #include <QTemporaryDir>
@@ -84,14 +85,14 @@ class Smb4KPrintJob : public KJob
      * 
      * @param parentWidget  The parent widget
      */
-    void setupPrinting(Smb4KShare *printer, QWidget *parentWidget = 0);
+    void setupPrinting(const SharePtr &printer, QWidget *parentWidget = 0);
     
     /**
      * Returns the printer share object
      * 
      * @returns the printer share object
      */
-    Smb4KShare *printer() { return m_share; }
+    const SharePtr &printer() { return m_share; }
     
     /**
      * Returns the parent widget
@@ -109,12 +110,12 @@ class Smb4KPrintJob : public KJob
     /**
      * Emitted when the printing is about to begin.
      */
-    void aboutToStart(Smb4KShare *share);
+    void aboutToStart(const SharePtr &share);
     
     /**
      * Emitted after the printing finished.
      */
-    void finished(Smb4KShare *share);
+    void finished(const SharePtr &share);
     
   protected:
     /**
@@ -132,7 +133,7 @@ class Smb4KPrintJob : public KJob
   private:
     bool m_started;
     Smb4KProcess *m_process;
-    Smb4KShare *m_share;
+    SharePtr m_share;
     QWidget *m_parent_widget;
     QTemporaryDir m_tempDir;
     
@@ -148,12 +149,12 @@ class Smb4KPrintDialog : public QDialog
      * The constructor.
      *
      * @param share       The Smb4KShare item representing the printer.
+     * 
+     * @param printer     The QPrinter object
      *
-     * @param parent      The parent widget of this dialog.P
+     * @param parent      The parent widget of this dialog.
      */
-    Smb4KPrintDialog(Smb4KShare *share,
-                      QPrinter *printer,
-                      QWidget *parent = 0);
+    Smb4KPrintDialog(const SharePtr &share, QPrinter *printer, QWidget *parent = 0);
 
     /**
      * The destructor
@@ -184,7 +185,7 @@ class Smb4KPrintDialog : public QDialog
     /**
      * Set up the view.
      */
-    void setupView(Smb4KShare *share);
+    void setupView(const SharePtr &share);
     
     /**
      * The Print button

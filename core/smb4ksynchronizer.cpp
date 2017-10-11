@@ -2,7 +2,7 @@
     This is the new synchronizer of Smb4K.
                              -------------------
     begin                : Fr Feb 04 2011
-    copyright            : (C) 2011-2016 by Alexander Reinholdt
+    copyright            : (C) 2011-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -68,7 +68,7 @@ Smb4KSynchronizer *Smb4KSynchronizer::self()
 }
 
 
-void Smb4KSynchronizer::synchronize(Smb4KShare *share, QWidget *parent)
+void Smb4KSynchronizer::synchronize(const SharePtr &share, QWidget *parent)
 {
   if (!isRunning(share))
   {
@@ -99,7 +99,7 @@ bool Smb4KSynchronizer::isRunning()
 }
 
 
-bool Smb4KSynchronizer::isRunning(Smb4KShare *share)
+bool Smb4KSynchronizer::isRunning(const SharePtr &share)
 {
   bool running = false;
 
@@ -131,7 +131,7 @@ void Smb4KSynchronizer::abortAll()
 }
 
 
-void Smb4KSynchronizer::abort(Smb4KShare *share)
+void Smb4KSynchronizer::abort(const SharePtr &share)
 {
   for (int i = 0; i < subjobs().size(); ++i)
   {

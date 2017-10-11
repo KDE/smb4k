@@ -2,7 +2,7 @@
     This class queries a remote share for a preview
                              -------------------
     begin                : Sa Mär 05 2011
-    copyright            : (C) 2011-2016 by Alexander Reinholdt
+    copyright            : (C) 2011-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -26,6 +26,9 @@
 #ifndef SMB4KPREVIEWER_H
 #define SMB4KPREVIEWER_H
 
+// application specific includes
+#include "smb4kglobal.h"
+
 // Qt includes
 #include <QScopedPointer>
 #include <QUrl>
@@ -36,7 +39,6 @@
 
 // forward declarations
 class Smb4KPreviewerPrivate;
-class Smb4KShare;
 class Smb4KPreviewJob;
 class Smb4KPreviewDialog;
 
@@ -80,8 +82,7 @@ class Q_DECL_EXPORT Smb4KPreviewer : public KCompositeJob
      *
      * @param parent      The parent widget
      */
-    void preview(Smb4KShare *share,
-                  QWidget *parent = 0);
+    void preview(const SharePtr &share, QWidget *parent = 0);
 
     /**
      * This function tells you whether preview jobs are running
@@ -97,7 +98,7 @@ class Q_DECL_EXPORT Smb4KPreviewer : public KCompositeJob
      *
      * @returns TRUE if a preview job is already running
      */
-    bool isRunning(Smb4KShare *share);
+    bool isRunning(const SharePtr &share);
 
     /**
      * This function aborts all print jobs at once.
@@ -113,7 +114,7 @@ class Q_DECL_EXPORT Smb4KPreviewer : public KCompositeJob
      *
      * @param share         The Smb4KShare object
      */
-    void abort(Smb4KShare *share);
+    void abort(const SharePtr &share);
 
     /**
      * This function starts the composite job
@@ -129,8 +130,7 @@ class Q_DECL_EXPORT Smb4KPreviewer : public KCompositeJob
      * @param url           The location for which the preview should be
      *                      acquired
      */
-    void aboutToStart(Smb4KShare *share,
-                       const QUrl &url);
+    void aboutToStart(const SharePtr &share, const QUrl &url);
 
     /**
      * Emitted after the acquisition process finished.
@@ -140,8 +140,7 @@ class Q_DECL_EXPORT Smb4KPreviewer : public KCompositeJob
      * @param url           The location for which the preview should be
      *                      acquired
      */
-    void finished(Smb4KShare *share,
-                   const QUrl &url);
+    void finished(const SharePtr &share, const QUrl &url);
 
   protected Q_SLOTS:
     /**
@@ -174,9 +173,7 @@ class Q_DECL_EXPORT Smb4KPreviewer : public KCompositeJob
      *
      * @param parent      The parent widget
      */
-    void slotAcquirePreview(Smb4KShare *share,
-                             const QUrl &url,
-                             QWidget *parent);
+    void slotAcquirePreview(const SharePtr &share, const QUrl &url, QWidget *parent);
 
     /**
      * This slot kills the acquisition of the preview for the
@@ -184,7 +181,7 @@ class Q_DECL_EXPORT Smb4KPreviewer : public KCompositeJob
      *
      * @param share       The remote share
      */
-    void slotAbortPreview(Smb4KShare *share);
+    void slotAbortPreview(const SharePtr &share);
 
     /**
      * Called when the application exits

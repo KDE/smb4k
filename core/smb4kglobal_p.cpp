@@ -78,25 +78,25 @@ Smb4KGlobalPrivate::~Smb4KGlobalPrivate()
   // Clear the workgroup list.
   while (!workgroupsList.isEmpty())
   {
-    delete workgroupsList.takeFirst();
+    workgroupsList.takeFirst().clear();
   }
 
   // Clear the host list.
   while (!hostsList.isEmpty())
   {
-    delete hostsList.takeFirst();
+    hostsList.takeFirst().clear();
   }
 
   // Clear the list of mounted shares.
   while (!mountedSharesList.isEmpty())
   {
-    delete mountedSharesList.takeFirst();
+    mountedSharesList.takeFirst().clear();
   }
 
   // Clear the list of shares.
   while (!sharesList.isEmpty())
   {
-    delete sharesList.takeFirst();
+    sharesList.takeFirst().clear();
   }
 }
 

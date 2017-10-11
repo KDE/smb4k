@@ -59,7 +59,7 @@
 using namespace Smb4KGlobal;
 
 
-Smb4KMountDialog::Smb4KMountDialog(Smb4KShare *share, QWidget *parent)
+Smb4KMountDialog::Smb4KMountDialog(const SharePtr &share, QWidget *parent)
 : QDialog(parent), m_share(share), m_valid(true)
 {
   setWindowTitle(i18n("Mount Share"));

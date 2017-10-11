@@ -3,7 +3,7 @@
     class.
                              -------------------
     begin                : Fr Okt 24 2008
-    copyright            : (C) 2008-2016 by Alexander Reinholdt
+    copyright            : (C) 2008-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -74,7 +74,7 @@ void Smb4KSyncJob::start()
 }
 
 
-void Smb4KSyncJob::setupSynchronization(Smb4KShare *share, QWidget *parent)
+void Smb4KSyncJob::setupSynchronization(const SharePtr &share, QWidget *parent)
 {
   Q_ASSERT(share);
   m_share = share;
@@ -853,7 +853,7 @@ void Smb4KSyncJob::slotProcessFinished(int, QProcess::ExitStatus status)
 
 
 
-Smb4KSynchronizationDialog::Smb4KSynchronizationDialog(Smb4KShare *share, QWidget *parent)
+Smb4KSynchronizationDialog::Smb4KSynchronizationDialog(const SharePtr &share, QWidget *parent)
 : QDialog(parent), m_share(share)
 {
   setWindowTitle(i18n("Synchronization"));

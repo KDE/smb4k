@@ -2,7 +2,7 @@
     Private helper classes for Smb4KPreviewer class.
                              -------------------
     begin                : So Dez 21 2008
-    copyright            : (C) 2008-2016 by Alexander Reinholdt
+    copyright            : (C) 2008-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -168,7 +168,7 @@ void Smb4KPreviewJob::start()
 }
 
 
-void Smb4KPreviewJob::setupPreview(Smb4KShare *share, const QUrl &url, QWidget *parent)
+void Smb4KPreviewJob::setupPreview(const SharePtr &share, const QUrl &url, QWidget *parent)
 {
   Q_ASSERT(share);
   m_share = share;
@@ -678,7 +678,7 @@ void Smb4KPreviewJob::slotProcessFinished(int /*exitCode*/, QProcess::ExitStatus
 
 
 
-Smb4KPreviewDialog::Smb4KPreviewDialog(Smb4KShare *share, QWidget *parent)
+Smb4KPreviewDialog::Smb4KPreviewDialog(const SharePtr &share, QWidget *parent)
 : QDialog(parent), m_share(share), m_actionUsed(false)
 {
   // Set the URL
@@ -701,7 +701,7 @@ Smb4KPreviewDialog::Smb4KPreviewDialog(Smb4KShare *share, QWidget *parent)
   // Set the IP address if necessary.
   if (share->hostIP().isEmpty())
   {
-    Smb4KHost *host = findHost(share->hostName(), share->workgroupName());
+    HostPtr host = findHost(share->hostName(), share->workgroupName());
     share->setHostIP(host->ip());
   }
   else
@@ -1010,7 +1010,7 @@ void Smb4KPreviewDialog::slotDisplayPreview(const QUrl &url, const QList<Smb4KPr
 }
 
 
-void Smb4KPreviewDialog::slotAboutToStart(Smb4KShare *share, const QUrl &url)
+void Smb4KPreviewDialog::slotAboutToStart(const SharePtr &share, const QUrl &url)
 {
   if (share == m_share && m_url.matches(url, QUrl::StripTrailingSlash))
   {
@@ -1023,7 +1023,7 @@ void Smb4KPreviewDialog::slotAboutToStart(Smb4KShare *share, const QUrl &url)
 }
 
 
-void Smb4KPreviewDialog::slotFinished(Smb4KShare *share, const QUrl &url)
+void Smb4KPreviewDialog::slotFinished(const SharePtr &share, const QUrl &url)
 {
   if (share == m_share && m_url.matches(url, QUrl::StripTrailingSlash))
   {

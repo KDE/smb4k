@@ -2,7 +2,7 @@
     This is the wallet manager of Smb4K.
                              -------------------
     begin                : Sa Dez 27 2008
-    copyright            : (C) 2008-2016 by Alexander Reinholdt
+    copyright            : (C) 2008-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -26,13 +26,15 @@
 #ifndef SMB4KWALLETMANAGER_H
 #define SMB4KWALLETMANAGER_H
 
+// application specific includes
+#include "smb4kglobal.h"
+
 // Qt includes
 #include <QList>
 #include <QWidget>
 
 // forward declarations
 class Smb4KAuthInfo;
-class Smb4KBasicNetworkItem;
 class Smb4KWalletManagerPrivate;
 
 /**
@@ -78,7 +80,7 @@ class Q_DECL_EXPORT Smb4KWalletManager : public QObject
      * @param networkItem     The network item for that the authentication
      *                        information should be acquired
      */
-    void readAuthInfo(Smb4KBasicNetworkItem *networkItem);
+    void readAuthInfo(const NetworkItemPtr &networkItem);
 
     /**
      * This function reads the default authentication information and enters it
@@ -100,7 +102,7 @@ class Q_DECL_EXPORT Smb4KWalletManager : public QObject
      * @param networkItem     The network item for that the authentication
      *                        information should be saved
      */
-    void writeAuthInfo(Smb4KBasicNetworkItem *networkItem);
+    void writeAuthInfo(const NetworkItemPtr &networkItem);
 
     /**
      * This function writes the default authentication information to the
@@ -123,8 +125,7 @@ class Q_DECL_EXPORT Smb4KWalletManager : public QObject
      *
      * @returns TRUE if successful and FALSE otherwise
      */
-    bool showPasswordDialog(Smb4KBasicNetworkItem *networkItem,
-                             QWidget *parent = 0);
+    bool showPasswordDialog(const NetworkItemPtr &networkItem, QWidget *parent = 0);
 
     /**
      * This function returns TRUE if the wallet system can be/is used and

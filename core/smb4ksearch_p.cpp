@@ -2,7 +2,7 @@
     Private helper classes for Smb4KSearch class.
                              -------------------
     begin                : Mo Dez 22 2008
-    copyright            : (C) 2008-2016 by Alexander Reinholdt
+    copyright            : (C) 2008-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -55,7 +55,7 @@ Smb4KSearchJob::Smb4KSearchJob(QObject *parent) : KJob(parent),
 
 Smb4KSearchJob::~Smb4KSearchJob()
 {
-  delete m_master;
+  m_master.clear();
 }
 
 
@@ -66,11 +66,11 @@ void Smb4KSearchJob::start()
 }
 
 
-void Smb4KSearchJob::setupSearch(const QString &string, Smb4KHost *master, QWidget *parentWidget)
+void Smb4KSearchJob::setupSearch(const QString &string, const HostPtr &master, QWidget *parentWidget)
 {
   Q_ASSERT(!string.trimmed().isEmpty());
   m_string = string;
-  m_master = master ? new Smb4KHost(*master) : 0;
+  m_master = master;
   m_parent_widget = parentWidget;
 }
 
@@ -319,13 +319,13 @@ void Smb4KSearchJob::slotReadStandardOutput()
 
         if (unc.contains(m_string, Qt::CaseInsensitive))
         {
-          Smb4KShare *share = new Smb4KShare();
+          SharePtr share = SharePtr(new Smb4KShare());
           share->setURL(unc);
           share->setComment(comment);
           share->setWorkgroupName(workgroup_name);
 
           emit result(share);
-          delete share;
+          share.clear();
         }
         else
         {

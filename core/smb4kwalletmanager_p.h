@@ -2,7 +2,7 @@
     Private helper classes for the wallet manager of Smb4K.
                              -------------------
     begin                : Mo Dez 31 2012
-    copyright            : (C) 2012-2016 by Alexander Reinholdt
+    copyright            : (C) 2012-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -40,9 +40,9 @@ class Smb4KPasswordDialog : public KPasswordDialog
   Q_OBJECT
   
   public:
-    Smb4KPasswordDialog(Smb4KBasicNetworkItem *networkItem,
-                         const QMap<QString,QString> &knownLogins,
-                         QWidget *parent = 0);
+    Smb4KPasswordDialog(const NetworkItemPtr &networkItem,
+                        const QMap<QString,QString> &knownLogins,
+                        QWidget *parent = 0);
     virtual ~Smb4KPasswordDialog();
 
   protected Q_SLOTS:
@@ -51,7 +51,7 @@ class Smb4KPasswordDialog : public KPasswordDialog
                                     bool keep);
 
   private:
-    Smb4KBasicNetworkItem *m_item;
+    NetworkItemPtr m_item;
 };
 
 

@@ -2,7 +2,7 @@
     Manage custom options
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2016 by Alexander Reinholdt
+    copyright            : (C) 2011-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,6 +28,7 @@
 
 // application specific includes
 #include "smb4kcustomoptions.h"
+#include "smb4kglobal.h"
 
 // Qt includes
 #include <QObject>
@@ -36,8 +37,6 @@
 
 // forward declarations
 class Smb4KCustomOptionsManagerPrivate;
-class Smb4KShare;
-class Smb4KBasicNetworkItem;
 class Smb4KProfileManager;
 
 /**
@@ -82,7 +81,7 @@ class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
      * @param always    If set to TRUE the share is always mounted 
      *                  when Smb4K is restarted.
      */
-    void addRemount(Smb4KShare *share, bool always = false);
+    void addRemount(const SharePtr &share, bool always = false);
     
     /**
      * Remove the share @p share from the list of shares that are to be 
@@ -96,7 +95,7 @@ class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
      * @param force     If set to TRUE, the share is removed regardless of the
      *                  remount setting.
      */
-    void removeRemount(Smb4KShare *share, bool force = false);
+    void removeRemount(const SharePtr &share, bool force = false);
     
     /**
      * Removes all remounts from the list of custom options. If @p force
@@ -131,8 +130,7 @@ class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
      *
      * @returns the custom options for the network item
      */
-    Smb4KCustomOptions *findOptions(Smb4KBasicNetworkItem *networkItem,
-                                     bool exactMatch = false);
+    Smb4KCustomOptions *findOptions(const NetworkItemPtr &networkItem, bool exactMatch = false);
 
     /**
      * Find custom options for the provided @p url.
@@ -174,8 +172,7 @@ class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
      * 
      * @param parent              The parent widget
      */
-    void openCustomOptionsDialog(Smb4KBasicNetworkItem *item,
-                                  QWidget *parent = 0);
+    void openCustomOptionsDialog(const NetworkItemPtr &item, QWidget *parent = 0);
     
     /**
      * This function adds custom options for a single network item to the list

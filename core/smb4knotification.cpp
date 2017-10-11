@@ -2,7 +2,7 @@
     This class provides notifications for Smb4K.
                              -------------------
     begin                : Son Jun 27 2010
-    copyright            : (C) 2010-2016 by Alexander Reinholdt
+    copyright            : (C) 2010-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -49,7 +49,7 @@ using namespace KAuth;
 // Notifications
 //
 
-void Smb4KNotification::shareMounted(Smb4KShare* share)
+void Smb4KNotification::shareMounted(const SharePtr &share)
 {
   Q_ASSERT(share);
   
@@ -76,7 +76,7 @@ void Smb4KNotification::shareMounted(Smb4KShare* share)
 }
 
 
-void Smb4KNotification::shareUnmounted(Smb4KShare* share)
+void Smb4KNotification::shareUnmounted(const SharePtr &share)
 {
   Q_ASSERT(share);
   
@@ -273,7 +273,7 @@ void Smb4KNotification::scanningBroadcastAreaFailed(const QString& err_msg)
 }
 
 
-void Smb4KNotification::retrievingHostsFailed(Smb4KWorkgroup* workgroup, const QString& err_msg)
+void Smb4KNotification::retrievingHostsFailed(const WorkgroupPtr &workgroup, const QString& err_msg)
 {
   Q_ASSERT(workgroup);
   
@@ -304,7 +304,7 @@ void Smb4KNotification::retrievingHostsFailed(Smb4KWorkgroup* workgroup, const Q
 }
 
 
-void Smb4KNotification::retrievingSharesFailed(Smb4KHost* host, const QString& err_msg)
+void Smb4KNotification::retrievingSharesFailed(const HostPtr &host, const QString& err_msg)
 {
   Q_ASSERT(host);
   
@@ -335,7 +335,7 @@ void Smb4KNotification::retrievingSharesFailed(Smb4KHost* host, const QString& e
 }
 
 
-void Smb4KNotification::retrievingPreviewFailed(Smb4KShare* share, const QString& err_msg)
+void Smb4KNotification::retrievingPreviewFailed(const SharePtr &share, const QString& err_msg)
 {
   Q_ASSERT(share);
   
@@ -366,7 +366,7 @@ void Smb4KNotification::retrievingPreviewFailed(Smb4KShare* share, const QString
 }
 
 
-void Smb4KNotification::mountingFailed(Smb4KShare* share, const QString& err_msg)
+void Smb4KNotification::mountingFailed(const SharePtr &share, const QString& err_msg)
 {
   Q_ASSERT(share);
   
@@ -397,7 +397,7 @@ void Smb4KNotification::mountingFailed(Smb4KShare* share, const QString& err_msg
 }
 
 
-void Smb4KNotification::unmountingFailed(Smb4KShare* share, const QString& err_msg)
+void Smb4KNotification::unmountingFailed(const SharePtr &share, const QString& err_msg)
 {
   Q_ASSERT(share);
   
@@ -428,7 +428,7 @@ void Smb4KNotification::unmountingFailed(Smb4KShare* share, const QString& err_m
 }
 
 
-void Smb4KNotification::unmountingNotAllowed(Smb4KShare* share)
+void Smb4KNotification::unmountingNotAllowed(const SharePtr &share)
 {
   Q_ASSERT(share);
   
@@ -449,7 +449,7 @@ void Smb4KNotification::unmountingNotAllowed(Smb4KShare* share)
 }
 
 
-void Smb4KNotification::printingFailed(Smb4KShare* printer, const QString& err_msg)
+void Smb4KNotification::printingFailed(const SharePtr &printer, const QString& err_msg)
 {
   Q_ASSERT(printer);
   
@@ -535,7 +535,7 @@ void Smb4KNotification::commandNotFound(const QString& command)
 }
 
 
-void Smb4KNotification::cannotBookmarkPrinter(Smb4KShare* share)
+void Smb4KNotification::cannotBookmarkPrinter(const SharePtr &share)
 {
   Q_ASSERT(share);
   

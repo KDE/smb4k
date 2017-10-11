@@ -36,11 +36,19 @@
 #include <QList>
 #include <QEvent>
 #include <QStringList>
+#include <QSharedPointer>
 
 // forward declarations
+class Smb4KBasicNetworkItem;
 class Smb4KWorkgroup;
 class Smb4KHost;
 class Smb4KShare;
+
+// type definitions
+typedef QSharedPointer<Smb4KBasicNetworkItem> NetworkItemPtr;
+typedef QSharedPointer<Smb4KWorkgroup> WorkgroupPtr;
+typedef QSharedPointer<Smb4KHost> HostPtr;
+typedef QSharedPointer<Smb4KShare> SharePtr;
 
 /**
  * This is the global namespace. It provides access to the global lists
@@ -154,7 +162,7 @@ namespace Smb4KGlobal
    *
    * @returns the global list of known workgroups.
    */
-  Q_DECL_EXPORT const QList<Smb4KWorkgroup *> &workgroupsList();
+  Q_DECL_EXPORT const QList<WorkgroupPtr> &workgroupsList();
 
   /**
    * This function returns the workgroup or domain that matches the name @p name or
@@ -162,7 +170,7 @@ namespace Smb4KGlobal
    *
    * @returns a pointer to the workgroup with name @p name.
    */
-  Q_DECL_EXPORT Smb4KWorkgroup *findWorkgroup(const QString &name);
+  Q_DECL_EXPORT WorkgroupPtr findWorkgroup(const QString &name);
 
   /**
    * This function takes a workgroup @p workgroup, checks whether it is already
@@ -175,7 +183,7 @@ namespace Smb4KGlobal
    *
    * @returns TRUE if the workgroup was added and FALSE otherwise.
    */
-  Q_DECL_EXPORT bool addWorkgroup(Smb4KWorkgroup *workgroup);
+  Q_DECL_EXPORT bool addWorkgroup(WorkgroupPtr workgroup);
   
   /**
    * This function takes a workgroup @p workgroup, and updates the respective workgroup
@@ -186,7 +194,7 @@ namespace Smb4KGlobal
    * 
    * @returns TRUE if the workgroup was updated and FALSE otherwise
    */
-  Q_DECL_EXPORT bool updateWorkgroup(Smb4KWorkgroup *workgroup);
+  Q_DECL_EXPORT bool updateWorkgroup(WorkgroupPtr workgroup);
 
   /**
    * This function removes a workgroup @p workgroup from the list of domains. The
@@ -200,7 +208,7 @@ namespace Smb4KGlobal
    *
    * @returns TRUE if the workgroup was removed and FALSE otherwise.
    */
-  Q_DECL_EXPORT bool removeWorkgroup(Smb4KWorkgroup *workgroup);
+  Q_DECL_EXPORT bool removeWorkgroup(WorkgroupPtr workgroup);
 
   /**
    * This function clears the global list of workgroups.
@@ -213,7 +221,7 @@ namespace Smb4KGlobal
    *
    * @returns the global list of known hosts.
    */
-  Q_DECL_EXPORT const QList<Smb4KHost *> &hostsList();
+  Q_DECL_EXPORT const QList<HostPtr> &hostsList();
 
   /**
    * This function returns the host matching the name @p name or NULL if there is no
@@ -226,7 +234,7 @@ namespace Smb4KGlobal
    *
    * @returns an Smb4KHost item of NULL if none was found that matches @p name.
    */
-  Q_DECL_EXPORT Smb4KHost *findHost(const QString &name, const QString &workgroup = QString());
+  Q_DECL_EXPORT HostPtr findHost(const QString &name, const QString &workgroup = QString());
 
   /**
    * This function takes a host @p host, checks whether it is already
@@ -239,7 +247,7 @@ namespace Smb4KGlobal
    *
    * @returns TRUE if the host was added and FALSE otherwise.
    */
-  Q_DECL_EXPORT bool addHost(Smb4KHost *host);
+  Q_DECL_EXPORT bool addHost(HostPtr host);
   
   /**
    * This function takes an host @p host, and updates the respective host
@@ -250,7 +258,7 @@ namespace Smb4KGlobal
    * 
    * @returns TRUE if the host was updated and FALSE otherwise
    */
-  Q_DECL_EXPORT bool updateHost(Smb4KHost *host);
+  Q_DECL_EXPORT bool updateHost(HostPtr host);
 
   /**
    * This function removes a host @p host from the list of hosts. The
@@ -264,7 +272,7 @@ namespace Smb4KGlobal
    *
    * @returns TRUE if the host was removed and FALSE otherwise.
    */
-  Q_DECL_EXPORT bool removeHost(Smb4KHost *host);
+  Q_DECL_EXPORT bool removeHost(HostPtr host);
 
   /**
    * This function clears the global list of hosts.
@@ -281,7 +289,7 @@ namespace Smb4KGlobal
    *
    * @returns the list of hosts belonging to the workgroup or domain @param workgroup.
    */
-  Q_DECL_EXPORT QList<Smb4KHost *> workgroupMembers(Smb4KWorkgroup *workgroup);
+  Q_DECL_EXPORT QList<HostPtr> workgroupMembers(WorkgroupPtr workgroup);
 
   /**
    * This function returns the list of shares that were discovered by Smb4K.
@@ -289,7 +297,7 @@ namespace Smb4KGlobal
    *
    * @returns the global list of known shares.
    */
-  Q_DECL_EXPORT const QList<Smb4KShare *> &sharesList();
+  Q_DECL_EXPORT const QList<SharePtr> &sharesList();
 
   /**
    * This function returns the share with UNC @p unc located in the workgroup or
@@ -299,7 +307,7 @@ namespace Smb4KGlobal
    * @param wokgroup      The workgroup
    * @returns the share that matches @p unc and optionally @p workgroup or 0.
    */
-  Q_DECL_EXPORT Smb4KShare *findShare(const QString &unc, const QString &workgroup = QString());
+  Q_DECL_EXPORT SharePtr findShare(const QString &unc, const QString &workgroup = QString());
 
   /**
    * This function takes a share @p share, checks whether it is already
@@ -312,7 +320,7 @@ namespace Smb4KGlobal
    *
    * @returns TRUE if the share was added and FALSE otherwise.
    */
-  Q_DECL_EXPORT bool addShare(Smb4KShare *share);
+  Q_DECL_EXPORT bool addShare(SharePtr share);
   
   /**
    * This function takes a share @p share, and updates the respective share
@@ -323,7 +331,7 @@ namespace Smb4KGlobal
    * 
    * @returns TRUE if the share was updated and FALSE otherwise
    */
-  Q_DECL_EXPORT bool updateShare(Smb4KShare *share);
+  Q_DECL_EXPORT bool updateShare(SharePtr share);
 
   /**
    * This function removes a share @p share from the list of shares. The
@@ -337,7 +345,7 @@ namespace Smb4KGlobal
    *
    * @returns TRUE if the share was removed and FALSE otherwise.
    */
-  Q_DECL_EXPORT bool removeShare(Smb4KShare *share);
+  Q_DECL_EXPORT bool removeShare(SharePtr share);
 
   /**
    * This function clears the global list of shares.
@@ -354,7 +362,7 @@ namespace Smb4KGlobal
    *
    * @returns the list of shares that are provided by the host @p host.
    */
-  Q_DECL_EXPORT QList<Smb4KShare *> sharedResources(Smb4KHost *host);
+  Q_DECL_EXPORT QList<SharePtr> sharedResources(HostPtr host);
 
   /**
    * This function returns the global list of mounted shares that were discovered by
@@ -362,14 +370,14 @@ namespace Smb4KGlobal
    *
    * @returns the global list of known mounted shares.
    */
-  Q_DECL_EXPORT const QList<Smb4KShare *> &mountedSharesList();
+  Q_DECL_EXPORT const QList<SharePtr> &mountedSharesList();
 
   /**
    * Find a mounted share by its path (i.e. mount point).
    *
    * @returns the share that is mounted to @p path.
    */
-  Q_DECL_EXPORT Smb4KShare *findShareByPath(const QString &path);
+  Q_DECL_EXPORT SharePtr findShareByPath(const QString &path);
 
   /**
    * Find all mounts of a particular share with UNC @p unc on the system.
@@ -384,14 +392,14 @@ namespace Smb4KGlobal
    *
    * @returns the complete list of mounts with the UNC @p unc.
    */
-  Q_DECL_EXPORT QList<Smb4KShare *> findShareByUNC(const QString &unc);
+  Q_DECL_EXPORT QList<SharePtr> findShareByUNC(const QString &unc);
 
   /**
    * This function returns the list of inaccessible shares.
    *
    * @returns the list of inaccessible shares.
    */
-  Q_DECL_EXPORT QList<Smb4KShare *> findInaccessibleShares();
+  Q_DECL_EXPORT QList<SharePtr> findInaccessibleShares();
 
   /**
    * This function takes a mounted share @p share, checks whether it is
@@ -404,7 +412,7 @@ namespace Smb4KGlobal
    *
    * @returns TRUE if the share was added and FALSE otherwise.
    */
-  Q_DECL_EXPORT bool addMountedShare(Smb4KShare *share);
+  Q_DECL_EXPORT bool addMountedShare(SharePtr share);
   
   /**
    * This function takes a mounted share @p share and updates the share that
@@ -413,7 +421,7 @@ namespace Smb4KGlobal
    * @param share       The share item
    * @returns TRUE if a share was found and updated. Returns FALSE otherwise.
    */
-  Q_DECL_EXPORT bool updateMountedShare(Smb4KShare *share);
+  Q_DECL_EXPORT bool updateMountedShare(SharePtr share);
 
   /**
    * This function removes a mounted share @p share from the list of mounted
@@ -427,7 +435,7 @@ namespace Smb4KGlobal
    *
    * @returns TRUE if the share was removed and FALSE otherwise.
    */
-  Q_DECL_EXPORT bool removeMountedShare(Smb4KShare *share);
+  Q_DECL_EXPORT bool removeMountedShare(SharePtr share);
 
   /**
    * This function returns TRUE if only shares are present that are owned by 
@@ -454,7 +462,7 @@ namespace Smb4KGlobal
    * @param openWith      Integer of type Smb4KCore::OpenWith. Determines with which
    *                      application the share should be opened.
    */
-  Q_DECL_EXPORT void openShare(Smb4KShare *share, OpenWith openWith = FileManager);
+  Q_DECL_EXPORT void openShare(SharePtr share, OpenWith openWith = FileManager);
   
   /**
    * Get the entries of the [global] section of the smb.conf file. By setting @p read 

@@ -28,7 +28,7 @@
 
 // application specific includes
 #include "smb4kmounter.h"
-#include "smb4kshare.h"
+#include "smb4kglobal.h"
 
 // Qt includes
 #include <QString>
@@ -40,7 +40,6 @@
 // KDE includes
 #include <KCompletion/KLineEdit>
 
-class Smb4KShare;
 
 
 class Smb4KMountDialog : public QDialog
@@ -53,7 +52,7 @@ class Smb4KMountDialog : public QDialog
      *
      * @param parent      The parent widget
      */
-    explicit Smb4KMountDialog(Smb4KShare *share,
+    explicit Smb4KMountDialog(const SharePtr &share,
                               QWidget *parent = 0);
     /**
      * The destructor.
@@ -150,7 +149,7 @@ class Smb4KMountDialog : public QDialog
     /**
      * The share that is passed to the mounter.
      */
-    Smb4KShare *m_share;
+    SharePtr m_share;
     
     /**
      * Valid user input?
@@ -169,9 +168,9 @@ class Smb4KMounterPrivate
     int newlyMounted;
     int newlyUnmounted;
     Smb4KMountDialog *dialog;
-    QList<Smb4KShare *> importedShares;
-    QList<Smb4KShare *> retries;
-    QList<Smb4KShare *> remounts;
+    QList<SharePtr> importedShares;
+    QList<SharePtr> retries;
+    QList<SharePtr> remounts;
     QString activeProfile;
     bool detectAllShares;
     bool mountShares;

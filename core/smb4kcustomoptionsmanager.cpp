@@ -2,7 +2,7 @@
     Manage custom options
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2016 by Alexander Reinholdt
+    copyright            : (C) 2011-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -82,6 +82,7 @@ Smb4KCustomOptionsManager::Smb4KCustomOptionsManager(QObject *parent)
   // Connections
   connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), 
           this, SLOT(slotAboutToQuit()));
+  
   connect(Smb4KProfileManager::self(), SIGNAL(activeProfileChanged(QString)), 
           this, SLOT(slotActiveProfileChanged(QString)));
 }
@@ -98,7 +99,7 @@ Smb4KCustomOptionsManager *Smb4KCustomOptionsManager::self()
 }
 
 
-void Smb4KCustomOptionsManager::addRemount(Smb4KShare *share, bool always)
+void Smb4KCustomOptionsManager::addRemount(const SharePtr &share, bool always)
 {
   Q_ASSERT(share);
   
@@ -122,7 +123,7 @@ void Smb4KCustomOptionsManager::addRemount(Smb4KShare *share, bool always)
     }
     else
     {
-      options = new Smb4KCustomOptions(share);
+      options = new Smb4KCustomOptions(share.data());
       options->setProfile(Smb4KProfileManager::self()->activeProfile());
       options->setRemount(always ? Smb4KCustomOptions::RemountAlways : Smb4KCustomOptions::RemountOnce);
       d->options << options;      
@@ -137,7 +138,7 @@ void Smb4KCustomOptionsManager::addRemount(Smb4KShare *share, bool always)
 }
 
 
-void Smb4KCustomOptionsManager::removeRemount(Smb4KShare *share, bool force)
+void Smb4KCustomOptionsManager::removeRemount(const SharePtr &share, bool force)
 {
   Q_ASSERT(share);
   
@@ -227,7 +228,7 @@ QList<Smb4KCustomOptions *> Smb4KCustomOptionsManager::sharesToRemount()
 }
 
 
-Smb4KCustomOptions *Smb4KCustomOptionsManager::findOptions(Smb4KBasicNetworkItem *networkItem, bool exactMatch)
+Smb4KCustomOptions *Smb4KCustomOptionsManager::findOptions(const NetworkItemPtr &networkItem, bool exactMatch)
 {
   Q_ASSERT(networkItem);
   
@@ -239,7 +240,7 @@ Smb4KCustomOptions *Smb4KCustomOptionsManager::findOptions(Smb4KBasicNetworkItem
     {
       case Host:
       {
-        Smb4KHost *host = static_cast<Smb4KHost *>(networkItem);
+        HostPtr host = networkItem.staticCast<Smb4KHost>();
 
         if (host)
         {
@@ -272,7 +273,7 @@ Smb4KCustomOptions *Smb4KCustomOptionsManager::findOptions(Smb4KBasicNetworkItem
       }
       case Share:
       {
-        Smb4KShare *share = static_cast<Smb4KShare *>(networkItem);
+        SharePtr share = networkItem.staticCast<Smb4KShare>();
 
         if (share)
         {
@@ -819,7 +820,7 @@ void Smb4KCustomOptionsManager::replaceCustomOptions(const QList<Smb4KCustomOpti
 }
 
 
-void Smb4KCustomOptionsManager::openCustomOptionsDialog(Smb4KBasicNetworkItem *item, QWidget *parent)
+void Smb4KCustomOptionsManager::openCustomOptionsDialog(const NetworkItemPtr &item, QWidget *parent)
 {
   Q_ASSERT(item);
   
@@ -832,7 +833,7 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(Smb4KBasicNetworkItem *i
     {
       case Host:
       {
-        Smb4KHost *host = static_cast<Smb4KHost *>(item);
+        HostPtr host = item.staticCast<Smb4KHost>();
         
         if (host)
         {
@@ -840,7 +841,7 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(Smb4KBasicNetworkItem *i
         
           if (!options)
           {
-            options = new Smb4KCustomOptions(host);
+            options = new Smb4KCustomOptions(host.data());
             options->setProfile(Smb4KProfileManager::self()->activeProfile());
             delete_options = true;
           }
@@ -857,7 +858,7 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(Smb4KBasicNetworkItem *i
       }
       case Share:
       {
-        Smb4KShare *share = static_cast<Smb4KShare *>(item);
+        SharePtr share = item.staticCast<Smb4KShare>();
         
         if (share)
         {
@@ -890,7 +891,7 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(Smb4KBasicNetworkItem *i
           
           if (!options)
           {
-            options = new Smb4KCustomOptions(share);
+            options = new Smb4KCustomOptions(share.data());
             options->setProfile(Smb4KProfileManager::self()->activeProfile());
             delete_options = true;
             
@@ -909,7 +910,7 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(Smb4KBasicNetworkItem *i
             // In case the custom options object for the host has been 
             // returned, change its internal network item, otherwise we
             // will change the host's custom options...
-            options->setShare(share);
+            options->setShare(share.data());
           }
         }
         else

@@ -2,7 +2,7 @@
     This class handles the homes shares
                              -------------------
     begin                : Do Aug 10 2006
-    copyright            : (C) 2006-2016 by Alexander Reinholdt
+    copyright            : (C) 2006-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -68,7 +68,7 @@ Smb4KHomesSharesHandler::Smb4KHomesSharesHandler(QObject *parent)
     // Do nothing
   }
   
-  readUserNames(&d->homesUsers, false);
+  d->homesUsers = readUserNames(false);
   
   // Connections
   connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), 
@@ -93,7 +93,7 @@ Smb4KHomesSharesHandler *Smb4KHomesSharesHandler::self()
 }
 
 
-bool Smb4KHomesSharesHandler::specifyUser(Smb4KShare *share, bool overwrite, QWidget *parent)
+bool Smb4KHomesSharesHandler::specifyUser(const SharePtr &share, bool overwrite, QWidget *parent)
 {
   Q_ASSERT(share);
   bool success = false;
@@ -102,8 +102,7 @@ bool Smb4KHomesSharesHandler::specifyUser(Smb4KShare *share, bool overwrite, QWi
   // user name has already been defined.
   if (share->isHomesShare() && (share->homeUNC().isEmpty() || overwrite))
   {
-    QStringList users;
-    findHomesUsers(share, &users);
+    QStringList users = findHomesUsers(share);
     
     QPointer<Smb4KHomesUserDialog> dlg = new Smb4KHomesUserDialog(share, parent);
     dlg->setUserNames(users);
@@ -112,7 +111,7 @@ bool Smb4KHomesSharesHandler::specifyUser(Smb4KShare *share, bool overwrite, QWi
     {
       QString login = dlg->login();
       users = dlg->userNames();
-      addHomesUsers(share, &users);
+      addHomesUsers(share, users);
       
       if (!login.isEmpty())
       {
@@ -154,17 +153,18 @@ bool Smb4KHomesSharesHandler::specifyUser(Smb4KShare *share, bool overwrite, QWi
 }
 
 
-QStringList Smb4KHomesSharesHandler::homesUsers(Smb4KShare *share)
+QStringList Smb4KHomesSharesHandler::homesUsers(const SharePtr &share)
 {
   Q_ASSERT(share);
-  QStringList users;
-  findHomesUsers(share, &users);
+  QStringList users = findHomesUsers(share);
   return users;
 }
 
 
-void Smb4KHomesSharesHandler::readUserNames(QList<Smb4KHomesUsers *> *list, bool allUsers)
+const QList<Smb4KHomesUsers *> Smb4KHomesSharesHandler::readUserNames(bool allUsers)
 {
+  QList<Smb4KHomesUsers *> list;
+  
   // Locate the XML file.
   QFile xmlFile(dataLocation()+QDir::separator()+"homes_shares.xml");
 
@@ -250,7 +250,7 @@ void Smb4KHomesSharesHandler::readUserNames(QList<Smb4KHomesUsers *> *list, bool
                 }
               }
               
-              *list << users;   
+              list << users;   
             }
             else
             {
@@ -291,6 +291,8 @@ void Smb4KHomesSharesHandler::readUserNames(QList<Smb4KHomesUsers *> *list, bool
       // Do nothing
     }
   }
+  
+  return list;
 }
 
 
@@ -302,7 +304,7 @@ void Smb4KHomesSharesHandler::writeUserNames(const QList<Smb4KHomesUsers *> &lis
   {  
     // First read all entries. Then remove all, that belong to
     // the currently active profile.
-    readUserNames(&allUsers, true);
+    allUsers = readUserNames(true);
     
     QMutableListIterator<Smb4KHomesUsers *> it(allUsers);
     
@@ -392,10 +394,11 @@ void Smb4KHomesSharesHandler::writeUserNames(const QList<Smb4KHomesUsers *> &lis
 }
 
 
-void Smb4KHomesSharesHandler::findHomesUsers(Smb4KShare *share, QStringList *users)
+const QStringList Smb4KHomesSharesHandler::findHomesUsers(const SharePtr &share)
 {
   Q_ASSERT(share);
-  Q_ASSERT(users);
+  
+  QStringList users;
  
   if (!d->homesUsers.isEmpty())
   {
@@ -406,7 +409,7 @@ void Smb4KHomesSharesHandler::findHomesUsers(Smb4KShare *share, QStringList *use
            ((d->homesUsers.at(i)->workgroupName().isEmpty() || share->workgroupName().isEmpty()) ||
            QString::compare(share->workgroupName(), d->homesUsers.at(i)->workgroupName(), Qt::CaseInsensitive) == 0))
       {
-        *users = d->homesUsers.at(i)->users();
+        users = d->homesUsers.at(i)->users();
         break;
       }
       else
@@ -415,13 +418,14 @@ void Smb4KHomesSharesHandler::findHomesUsers(Smb4KShare *share, QStringList *use
       }
     }
   }
+  
+  return users;
 }
 
 
-void Smb4KHomesSharesHandler::addHomesUsers(Smb4KShare *share, QStringList *users)
+void Smb4KHomesSharesHandler::addHomesUsers(const SharePtr &share, const QStringList &users)
 {
   Q_ASSERT(share);
-  Q_ASSERT(users);
   
   bool found = false;
   
@@ -434,7 +438,7 @@ void Smb4KHomesSharesHandler::addHomesUsers(Smb4KShare *share, QStringList *user
           ((d->homesUsers.at(i)->workgroupName().isEmpty() || share->workgroupName().isEmpty()) ||
           QString::compare(share->workgroupName(), d->homesUsers.at(i)->workgroupName(), Qt::CaseInsensitive) == 0))
       {
-        d->homesUsers[i]->setUsers(*users);
+        d->homesUsers[i]->setUsers(users);
         found = true;
         break;
       }
@@ -451,7 +455,7 @@ void Smb4KHomesSharesHandler::addHomesUsers(Smb4KShare *share, QStringList *user
   
   if (!found)
   {
-    Smb4KHomesUsers *u = new Smb4KHomesUsers(*share, *users);
+    Smb4KHomesUsers *u = new Smb4KHomesUsers(share, users);
     u->setProfile(Smb4KProfileManager::self()->activeProfile());
     d->homesUsers << u;
   }
@@ -464,10 +468,8 @@ void Smb4KHomesSharesHandler::addHomesUsers(Smb4KShare *share, QStringList *user
 
 void Smb4KHomesSharesHandler::migrateProfile(const QString& from, const QString& to)
 {
-  QList<Smb4KHomesUsers *> allUsers;
- 
   // Read all entries for later conversion.
-  readUserNames(&allUsers, true);
+  QList<Smb4KHomesUsers *> allUsers = readUserNames(true);
   
   // Replace the old profile name with the new one.
   for (int i = 0; i < allUsers.size(); ++i)
@@ -498,11 +500,8 @@ void Smb4KHomesSharesHandler::migrateProfile(const QString& from, const QString&
 
 void Smb4KHomesSharesHandler::removeProfile(const QString& name)
 {
-  QList<Smb4KHomesUsers *> allUsers;
- 
   // Read all entries for later removal.
-  readUserNames(&allUsers, true);
-  
+  QList<Smb4KHomesUsers *> allUsers = readUserNames(true);
   QMutableListIterator<Smb4KHomesUsers *> it(allUsers);
   
   while (it.hasNext())
@@ -552,6 +551,6 @@ void Smb4KHomesSharesHandler::slotActiveProfileChanged(const QString& /*activePr
   }
   
   // Reload the list of homes users.
-  readUserNames(&d->homesUsers, false);
+  d->homesUsers = readUserNames(false);
 }
 

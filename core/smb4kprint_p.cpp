@@ -2,7 +2,7 @@
     This file contains private helpers for the Smb4KPrint class
                              -------------------
     begin                : Fr Okt 31 2008
-    copyright            : (C) 2008-2016 by Alexander Reinholdt
+    copyright            : (C) 2008-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -75,7 +75,7 @@ void Smb4KPrintJob::start()
 }
 
 
-void Smb4KPrintJob::setupPrinting(Smb4KShare *printer, QWidget *parentWidget)
+void Smb4KPrintJob::setupPrinting(const SharePtr &printer, QWidget *parentWidget)
 {
   Q_ASSERT(printer);
   m_share = printer;
@@ -348,7 +348,7 @@ void Smb4KPrintJob::slotProcessFinished(int /*exitCode*/, QProcess::ExitStatus s
 
 
 
-Smb4KPrintDialog::Smb4KPrintDialog(Smb4KShare *share, QPrinter *printer, QWidget *parent)
+Smb4KPrintDialog::Smb4KPrintDialog(const SharePtr &share, QPrinter *printer, QWidget *parent)
 : QDialog(parent), m_printer(printer)
 {
   setWindowTitle(i18n("Print File"));
@@ -370,7 +370,7 @@ Smb4KPrintDialog::~Smb4KPrintDialog()
 }
 
 
-void Smb4KPrintDialog::setupView(Smb4KShare *share)
+void Smb4KPrintDialog::setupView(const SharePtr &share)
 {
   QVBoxLayout *main_widget_layout = new QVBoxLayout(this);
 

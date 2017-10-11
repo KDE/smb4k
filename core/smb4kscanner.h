@@ -3,7 +3,7 @@
     network neighborhood
                              -------------------
     begin                : So Mai 22 2011
-    copyright            : (C) 2011-2016 by Alexander Reinholdt
+    copyright            : (C) 2011-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -90,17 +90,6 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
     bool isRunning();
 
     /**
-     * This function tests whether a process @p process is running. If you also
-     * define the network item, you can test if a certain process is running.
-     *
-     * @param process         The group of processes
-     *
-     * @param item            The network item for a more fine grained testing
-     */
-    bool isRunning(Smb4KGlobal::Process process,
-                    Smb4KBasicNetworkItem *item = NULL);
-
-    /**
      * This function aborts all scan jobs at once.
      */
     void abortAll();
@@ -118,8 +107,7 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
      *
      * @param item            The network item for a more fine grained killing
      */
-    void abort(Smb4KGlobal::Process process,
-                Smb4KBasicNetworkItem *item = NULL);
+    SMB4K_DEPRECATED void abort(Smb4KGlobal::Process process, NetworkItemPtr item = NetworkItemPtr());
 
     /**
      * This function starts the composite job
@@ -143,8 +131,7 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
      *
      * @param parent          The parent widget
      */
-    void lookupDomainMembers(Smb4KWorkgroup *workgroup,
-                              QWidget *parent = 0);
+    void lookupDomainMembers(WorkgroupPtr workgroup, QWidget *parent = 0);
 
     /**
      * This function looks up all shared resources a certain 
@@ -154,8 +141,7 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
      * 
      * @param parent          The parent widget
      */
-    void lookupShares(Smb4KHost *host,
-                       QWidget *parent = 0);
+    void lookupShares(HostPtr host, QWidget *parent = 0);
     
   protected:
     /**
@@ -175,8 +161,7 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
      *
      * @param process       The process that is used
      */
-    void aboutToStart(Smb4KBasicNetworkItem *item,
-                       int process);
+    void aboutToStart(const NetworkItemPtr &item, int process);
 
     /**
      * This signal is emitted when a scan process has finished. It passes the
@@ -189,8 +174,7 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
      *
      * @param process       The process that was used
      */
-    void finished(Smb4KBasicNetworkItem *item,
-                   int process);
+    void finished(const NetworkItemPtr &item, int process);
 
     /**
      * This signal is emitted when the list of workgroups was updated/changed.
@@ -203,7 +187,7 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
      *
      * @param workgroup   The workgroup that was scanned
      */
-    void hosts(Smb4KWorkgroup *workgroup);
+    void hosts(const WorkgroupPtr &workgroup);
     
     /**
      * This signal is emitted when the list of shares a certain host @p host offers 
@@ -211,14 +195,14 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
      * 
      * @param host        The host that was queried
      */
-    void shares(Smb4KHost *host);
+    void shares(const HostPtr &host);
     
     /**
      * This signal is emitted when an authentication error occurred.
      * 
      * @param host        The host that is affected
      */
-    void authError(Smb4KHost *host, int process);
+    void authError(const HostPtr &host, int process);
 
     /**
      * This signal is emitted when an IP address was successfully looked
@@ -226,7 +210,7 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
      *
      * @param host          The host
      */
-    void ipAddress(Smb4KHost *host);
+    void ipAddress(const HostPtr &host);
 
   protected Q_SLOTS:
     /**
@@ -277,44 +261,44 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
      * A lookup process for hosts (domain members) is about to
      * be started
      */
-    void slotAboutToStartHostsLookup(Smb4KWorkgroup *workgroup);
+    void slotAboutToStartHostsLookup(const WorkgroupPtr &workgroup);
 
     /**
      * A lookup process for hosts has finished
      */
-    void slotHostsLookupFinished(Smb4KWorkgroup *workgroup);
+    void slotHostsLookupFinished(const WorkgroupPtr &workgroup);
     
     /**
      * A lookup process for shares is about to be started
      */
-    void slotAboutToStartSharesLookup(Smb4KHost *host);
+    void slotAboutToStartSharesLookup(const HostPtr &host);
 
     /**
      * A lookup process for shares has finished
      */
-    void slotSharesLookupFinished(Smb4KHost *host );
+    void slotSharesLookupFinished(const HostPtr &host);
     
     /**
      * Is called when workgroups and domains have been looked
      * up
      */
-    void slotWorkgroups(const QList<Smb4KWorkgroup *> &workgroups_list);
+    void slotWorkgroups(const QList<WorkgroupPtr> &workgroups_list);
 
     /**
      * Is called when hosts have been looked up by the normal lookup
      * method
      */
-    void slotHosts(Smb4KWorkgroup *workgroup, const QList<Smb4KHost *> &hosts_list);
+    void slotHosts(const WorkgroupPtr &workgroup, const QList<HostPtr> &hosts_list);
     
     /**
      * Is called when shares have been looked up
      */
-    void slotShares(Smb4KHost *host, const QList<Smb4KShare *> &shares_list);
+    void slotShares(const HostPtr &host, const QList<SharePtr> &shares_list);
     
     /**
      * Is called when an IP address was looked up
      */
-    void slotProcessIPAddress(Smb4KHost *host);
+    void slotProcessIPAddress(const HostPtr &host);
 
   private:
     /**

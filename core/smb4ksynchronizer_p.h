@@ -3,7 +3,7 @@
     class.
                              -------------------
     begin                : Fr Okt 24 2008
-    copyright            : (C) 2008-2016 by Alexander Reinholdt
+    copyright            : (C) 2008-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,6 +30,7 @@
 // application specific includes
 #include "smb4ksynchronizer.h"
 #include "smb4kprocess.h"
+#include "smb4kglobal.h"
 
 // Qt includes
 #include <QUrl>
@@ -41,8 +42,6 @@
 #include <KIOWidgets/KUrlRequester>
 #include <KJobWidgets/KUiServerJobTracker>
     
-// forward declarations
-class Smb4KShare;
 
 class Smb4KSyncJob : public KJob
 {
@@ -82,8 +81,7 @@ class Smb4KSyncJob : public KJob
      *
      * @param dest      The destination
      */
-    void setupSynchronization(Smb4KShare *share,
-                               QWidget *parent = 0);
+    void setupSynchronization(const SharePtr &share, QWidget *parent = 0);
 
     /**
      * Returns the source directory.
@@ -131,7 +129,7 @@ class Smb4KSyncJob : public KJob
 
   private:
     bool m_started;
-    Smb4KShare *m_share;
+    SharePtr m_share;
     QWidget *m_parent_widget;
     QUrl m_src;
     QUrl m_dest;
@@ -152,7 +150,7 @@ class Smb4KSynchronizationDialog : public QDialog
      *
      * @param parent        The parent widget
      */
-    explicit Smb4KSynchronizationDialog(Smb4KShare *share, QWidget *parent = 0);
+    explicit Smb4KSynchronizationDialog(const SharePtr &share, QWidget *parent = 0);
 
     /**
      * The destructor
@@ -182,7 +180,7 @@ class Smb4KSynchronizationDialog : public QDialog
     /**
      * A pointer to the share object
      */
-    Smb4KShare *m_share;
+    SharePtr m_share;
 
     /**
      * The source URL requester

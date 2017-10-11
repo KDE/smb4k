@@ -2,7 +2,7 @@
     This class does custom searches
                              -------------------
     begin                : Tue Mar 08 2011
-    copyright            : (C) 2011-2016 by Alexander Reinholdt
+    copyright            : (C) 2011-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -25,6 +25,9 @@
 
 #ifndef SMB4KSEARCH_H
 #define SMB4KSEARCH_H
+
+// application specific includes
+#include "smb4kglobal.h"
 
 // Qt includes
 #include <QScopedPointer>
@@ -70,8 +73,7 @@ class Q_DECL_EXPORT Smb4KSearch : public KCompositeJob
      *
      * @param parent          The parent widget
      */
-    void search(const QString &string,
-                 QWidget *parent = 0);
+    void search(const QString &string, QWidget *parent = 0);
 
     /**
      * This function tells you whether searches are running
@@ -127,11 +129,9 @@ class Q_DECL_EXPORT Smb4KSearch : public KCompositeJob
     /**
      * This signal is emitted when the search returned a result.
      *
-     * @param item          The network item
-     *
-     * @param mounted       Is the item already known?
+     * @param share          The network share
      */
-    void result(Smb4KShare *share);
+    void result(const SharePtr &share);
 
   protected Q_SLOTS:
     /**
@@ -152,7 +152,7 @@ class Q_DECL_EXPORT Smb4KSearch : public KCompositeJob
     /**
      * Called when an search result was found
      */
-    void slotProcessSearchResult(Smb4KShare *share);
+    void slotProcessSearchResult(const SharePtr &share);
 
     /**
      * Called when the program is about to quit

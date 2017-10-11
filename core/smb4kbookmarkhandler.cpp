@@ -2,7 +2,7 @@
     This class handles the bookmarks.
                              -------------------
     begin                : Fr Jan 9 2004
-    copyright            : (C) 2004-2016 by Alexander Reinholdt
+    copyright            : (C) 2004-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -106,11 +106,11 @@ Smb4KBookmarkHandler *Smb4KBookmarkHandler::self()
 }
 
 
-void Smb4KBookmarkHandler::addBookmark(Smb4KShare *share, QWidget *parent)
+void Smb4KBookmarkHandler::addBookmark(const SharePtr &share, QWidget *parent)
 {
   if (share)
   {
-    QList<Smb4KShare *> shares;
+    QList<SharePtr> shares;
     shares << share;
     addBookmarks(shares, parent);
   }
@@ -121,12 +121,12 @@ void Smb4KBookmarkHandler::addBookmark(Smb4KShare *share, QWidget *parent)
 }
 
 
-void Smb4KBookmarkHandler::addBookmarks(const QList<Smb4KShare *> &list, QWidget *parent)
+void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list, QWidget *parent)
 {
   // Prepare the list of bookmarks and show the save dialog.
   QList<Smb4KBookmark *> new_bookmarks;
   
-  for (Smb4KShare *share : list)
+  for (const SharePtr &share : list)
   {
     // Check if the share is a printer
     if (share->isPrinter())
@@ -176,7 +176,7 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<Smb4KShare *> &list, QWidget
       // Do nothing
     }
     
-    Smb4KBookmark *bookmark = new Smb4KBookmark(share);
+    Smb4KBookmark *bookmark = new Smb4KBookmark(share.data());
     bookmark->setProfile(Smb4KProfileManager::self()->activeProfile());
     new_bookmarks << bookmark;
   }
@@ -715,12 +715,11 @@ void Smb4KBookmarkHandler::update() const
   // Get new IP addresses.
   for (Smb4KBookmark *bookmark : d->bookmarks)
   {
-    Smb4KHost *host = findHost(bookmark->hostName(), bookmark->workgroupName());
+    HostPtr host = findHost(bookmark->hostName(), bookmark->workgroupName());
     
     if (host)
     {
-      if (!host->ip().trimmed().isEmpty() &&
-          QString::compare(bookmark->hostIP(), host->ip()) != 0)
+      if (host->hasIP() && bookmark->hostIP() != host->ip())
       {
         bookmark->setHostIP(host->ip());
       }

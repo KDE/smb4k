@@ -2,7 +2,7 @@
     Private helper classes for the wallet manager of Smb4K.
                              -------------------
     begin                : Mo Dez 31 2012
-    copyright            : (C) 2012-2016 by Alexander Reinholdt
+    copyright            : (C) 2012-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -40,7 +40,7 @@
 using namespace Smb4KGlobal;
 
 
-Smb4KPasswordDialog::Smb4KPasswordDialog(Smb4KBasicNetworkItem* networkItem, const QMap<QString,QString> &knownLogins, QWidget* parent)
+Smb4KPasswordDialog::Smb4KPasswordDialog(const NetworkItemPtr &networkItem, const QMap<QString,QString> &knownLogins, QWidget* parent)
 : KPasswordDialog(parent, KPasswordDialog::ShowUsernameLine)
 {
   m_item = networkItem;
@@ -49,7 +49,7 @@ Smb4KPasswordDialog::Smb4KPasswordDialog(Smb4KBasicNetworkItem* networkItem, con
   {
     case Host:
     {
-      Smb4KHost *host = static_cast<Smb4KHost *>(m_item);
+      HostPtr host = m_item.staticCast<Smb4KHost>();
 
       if (host)
       {
@@ -65,7 +65,7 @@ Smb4KPasswordDialog::Smb4KPasswordDialog(Smb4KBasicNetworkItem* networkItem, con
     }
     case Share:
     {
-      Smb4KShare *share = static_cast<Smb4KShare *>(m_item);
+      SharePtr share = m_item.staticCast<Smb4KShare>();
 
       if (share)
       {
@@ -116,7 +116,7 @@ void Smb4KPasswordDialog::slotGotUsernameAndPassword(const QString &user, const 
   {
     case Host:
     {
-      Smb4KHost *host = static_cast<Smb4KHost *>(m_item);
+      HostPtr host = m_item.staticCast<Smb4KHost>();
 
       if (host)
       {
@@ -131,7 +131,7 @@ void Smb4KPasswordDialog::slotGotUsernameAndPassword(const QString &user, const 
     }
     case Share:
     {
-      Smb4KShare *share = static_cast<Smb4KShare *>(m_item);
+      SharePtr share = m_item.staticCast<Smb4KShare>();
 
       if (share)
       {

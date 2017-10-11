@@ -2,7 +2,7 @@
     Private helper classes for Smb4KPreviewer class
                              -------------------
     begin                : So Dez 21 2008
-    copyright            : (C) 2008-2016 by Alexander Reinholdt
+    copyright            : (C) 2008-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -29,6 +29,7 @@
 // application specific includes
 #include "smb4kpreviewer.h"
 #include "smb4kprocess.h"
+#include "smb4kglobal.h"
 
 // Qt includes
 #include <QStringList>
@@ -44,8 +45,6 @@
 #include <KCompletion/KHistoryComboBox>
 #include <KWidgetsAddons/KDualAction>
 
-// forward declarations
-class Smb4KShare;
 
 
 class Smb4KPreviewFileItem
@@ -162,14 +161,14 @@ class Smb4KPreviewJob : public KJob
      *
      * @param parent      The parent widget
      */
-    void setupPreview(Smb4KShare *share, const QUrl &url, QWidget *parent);
+    void setupPreview(const SharePtr &share, const QUrl &url, QWidget *parent);
 
     /**
      * Returns the share object
      *
      * @returns the share object
      */
-    Smb4KShare *share() { return m_share; }
+    const SharePtr &share() { return m_share; }
 
     /**
      * Returns the parent widget
@@ -194,14 +193,12 @@ class Smb4KPreviewJob : public KJob
     /**
      * Emitted when the printing is about to begin.
      */
-    void aboutToStart(Smb4KShare *share,
-                       const QUrl &url);
+    void aboutToStart(const SharePtr &share, const QUrl &url);
 
     /**
      * Emitted after the printing finished.
      */
-    void finished(Smb4KShare *share,
-                   const QUrl &url);
+    void finished(const SharePtr &share, const QUrl &url);
 
     /**
      * Emits the contents of the directory just listed
@@ -210,8 +207,7 @@ class Smb4KPreviewJob : public KJob
      *
      * @param contents  The contents of the URL
      */
-    void preview(const QUrl &url,
-                  const QList<Smb4KPreviewFileItem> &contents);
+    void preview(const QUrl &url, const QList<Smb4KPreviewFileItem> &contents);
 
   protected:
     bool doKill();
@@ -224,7 +220,7 @@ class Smb4KPreviewJob : public KJob
     void processOutput(const QString &stdOut);
     void processErrors(const QString &stdErr);
     bool m_started;
-    Smb4KShare *m_share;
+    SharePtr m_share;
     QWidget *m_parent_widget;
     Smb4KProcess *m_process;
     QUrl m_url;
@@ -243,8 +239,7 @@ class Q_DECL_EXPORT Smb4KPreviewDialog : public QDialog
      *
      * @param parent        The parent of this widget
      */
-    explicit Smb4KPreviewDialog(Smb4KShare *share,
-                                 QWidget *parent = 0);
+    explicit Smb4KPreviewDialog(const SharePtr &share, QWidget *parent = 0);
 
     /**
      * The destructor.
@@ -256,7 +251,7 @@ class Q_DECL_EXPORT Smb4KPreviewDialog : public QDialog
      *
      * @returns the share
      */
-    Smb4KShare *share() { return m_share; }
+    const SharePtr &share() { return m_share; }
 
   Q_SIGNALS:
     /**
@@ -277,9 +272,7 @@ class Q_DECL_EXPORT Smb4KPreviewDialog : public QDialog
      *
      * @param parent        The parent widget that should be used
      */
-    void requestPreview(Smb4KShare *share,
-                         const QUrl &url,
-                         QWidget *parent = 0);
+    void requestPreview(const SharePtr &share, const QUrl &url, QWidget *parent = 0);
 
     /**
      * This signal is emitted when the user wants to abort the acquisition
@@ -287,7 +280,7 @@ class Q_DECL_EXPORT Smb4KPreviewDialog : public QDialog
      *
      * @param share         The share
      */
-    void abortPreview(Smb4KShare *share);
+    void abortPreview(const SharePtr &share);
 
   protected Q_SLOTS:
     void slotReloadAbortActionTriggered(bool);
@@ -309,19 +302,17 @@ class Q_DECL_EXPORT Smb4KPreviewDialog : public QDialog
      * 
      * @param contents      The contents of a certain directory
      */
-    void slotDisplayPreview(const QUrl &url,
-                             const QList<Smb4KPreviewFileItem> &contents);
+    void slotDisplayPreview(const QUrl &url, const QList<Smb4KPreviewFileItem> &contents);
     
     /**
      * This slot is called when the preview process is about to start.
      *
-     * @param item          The Smb4KShare item
+     * @param item          The share item
      *
      * @param url           The location for which the preview should be 
      *                      acquired
      */
-    void slotAboutToStart(Smb4KShare *share,
-                           const QUrl &url);
+    void slotAboutToStart(const SharePtr &share, const QUrl &url);
 
     /**
      * This slot is called when the preview process finished.
@@ -331,8 +322,7 @@ class Q_DECL_EXPORT Smb4KPreviewDialog : public QDialog
      * @param url           The location for which the preview should be
      *                      acquired
      */
-    void slotFinished(Smb4KShare *share,
-                       const QUrl &url);
+    void slotFinished(const SharePtr &share, const QUrl &url);
 
     /**
      * Is called, if an item has been executed.
@@ -364,7 +354,7 @@ class Q_DECL_EXPORT Smb4KPreviewDialog : public QDialog
     /**
      * The share object
      */
-    Smb4KShare *m_share;
+    SharePtr m_share;
 
     /**
      * The current URL

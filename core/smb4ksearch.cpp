@@ -2,7 +2,7 @@
     This class does custom searches
                              -------------------
     begin                : Tue Mar 08 2011
-    copyright            : (C) 2011-2016 by Alexander Reinholdt
+    copyright            : (C) 2011-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -88,14 +88,14 @@ void Smb4KSearch::search(const QString &string, QWidget *parent)
   }
 
   // Get authentication information.
-  Smb4KHost *master_browser = 0;
+  HostPtr master_browser;
 
   if (Smb4KSettings::masterBrowsersRequireAuth())
   {
     // smbtree will be used and the master browser requires authentication. 
     // Lookup the authentication information for the master browser.
-    Smb4KWorkgroup *workgroup = findWorkgroup(Smb4KSettings::domainName());
-    Smb4KHost *host = 0;
+    WorkgroupPtr workgroup = findWorkgroup(Smb4KSettings::domainName());
+    HostPtr host;
 
     if (workgroup)
     {
@@ -104,7 +104,7 @@ void Smb4KSearch::search(const QString &string, QWidget *parent)
       if (host)
       {
         // Copy host item
-        master_browser = new Smb4KHost(*host);
+        master_browser = host;
         
         // Authentication information
         Smb4KWalletManager::self()->readAuthInfo(master_browser);
@@ -129,11 +129,11 @@ void Smb4KSearch::search(const QString &string, QWidget *parent)
   job->setObjectName(QString("SearchJob_%1").arg(string));
   job->setupSearch(string, master_browser, parent);
 
-  delete master_browser;
+  master_browser.clear();
 
   connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
   connect(job, SIGNAL(authError(Smb4KSearchJob*)), SLOT(slotAuthError(Smb4KSearchJob*)));
-  connect(job, SIGNAL(result(Smb4KShare*)), SLOT(slotProcessSearchResult(Smb4KShare*)));
+  connect(job, SIGNAL(result(SharePtr)), SLOT(slotProcessSearchResult(SharePtr)));
   connect(job, SIGNAL(aboutToStart(QString)), SIGNAL(aboutToStart(QString)));
   connect(job, SIGNAL(finished(QString)), SIGNAL(finished(QString)));
 
@@ -252,13 +252,13 @@ void Smb4KSearch::slotAuthError(Smb4KSearchJob *job)
 }
 
 
-void Smb4KSearch::slotProcessSearchResult(Smb4KShare *share)
+void Smb4KSearch::slotProcessSearchResult(const SharePtr &share)
 {
   Q_ASSERT(share);
 
-  QList<Smb4KShare *> shares = findShareByUNC(share->unc());
+  QList<SharePtr> shares = findShareByUNC(share->unc());
 
-  for (Smb4KShare *s : shares)
+  for (const SharePtr &s : shares)
   {
     if ((!s->isForeign() || Smb4KSettings::detectAllShares()) && s->isMounted())
     {
@@ -276,7 +276,7 @@ void Smb4KSearch::slotProcessSearchResult(Smb4KShare *share)
   // The host of this share should already be known. Set the IP address.
   if (share->hostIP().isEmpty())
   {
-    Smb4KHost *host = findHost(share->hostName(), share->workgroupName());
+    HostPtr host = findHost(share->hostName(), share->workgroupName());
 
     if (host)
     {

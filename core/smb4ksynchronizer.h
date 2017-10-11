@@ -2,7 +2,7 @@
     This is the new synchronizer of Smb4K.
                              -------------------
     begin                : Fr Feb 04 2011
-    copyright            : (C) 2011-2016 by Alexander Reinholdt
+    copyright            : (C) 2011-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -26,6 +26,9 @@
 #ifndef SMB4KSYNCHRONIZER_H
 #define SMB4KSYNCHRONIZER_H
 
+// application specific includes
+#include "smb4kglobal.h"
+
 // Qt includes
 #include <QString>
 #include <QScopedPointer>
@@ -35,7 +38,6 @@
 #include <KCoreAddons/KCompositeJob>
 
 // forward declarations
-class Smb4KShare;
 class Smb4KSynchronizerPrivate;
 
 class Q_DECL_EXPORT Smb4KSynchronizer : public KCompositeJob
@@ -71,8 +73,7 @@ class Q_DECL_EXPORT Smb4KSynchronizer : public KCompositeJob
      * 
      * @param parent        The parent widget of the URL input dialog
      */
-    void synchronize(Smb4KShare *share,
-                      QWidget *parent = 0);
+    void synchronize(const SharePtr &share, QWidget *parent = 0);
 
     /**
      * This function tells you whether the synchronizer is running
@@ -88,7 +89,7 @@ class Q_DECL_EXPORT Smb4KSynchronizer : public KCompositeJob
      * 
      * @returns TRUE if a synchronization process is already running
      */
-    bool isRunning(Smb4KShare *share);
+    bool isRunning(const SharePtr &share);
 
     /**
      * This function aborts all synchronizations at once.
@@ -104,7 +105,7 @@ class Q_DECL_EXPORT Smb4KSynchronizer : public KCompositeJob
      *
      * @param share         The Smb4KShare object
      */
-    void abort(Smb4KShare *share);
+    void abort(const SharePtr &share);
 
     /**
      * This function starts the composite job

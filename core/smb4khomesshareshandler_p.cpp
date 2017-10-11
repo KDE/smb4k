@@ -2,7 +2,7 @@
     Private helpers for the homes shares handler
                              -------------------
     begin                : Mo Apr 11 2011
-    copyright            : (C) 2011-2016 by Alexander Reinholdt
+    copyright            : (C) 2011-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,6 +30,7 @@
 // application specific includes
 #include "smb4khomesshareshandler_p.h"
 #include "smb4ksettings.h"
+#include "smb4kshare.h"
 
 // Qt includes
 #include <QString>
@@ -48,12 +49,12 @@
 #include <KIconThemes/KIconLoader>
 #include <KConfigGui/KWindowConfig>
 
-Smb4KHomesUsers::Smb4KHomesUsers(const Smb4KShare &s, const QStringList &u)
+Smb4KHomesUsers::Smb4KHomesUsers(const SharePtr &s, const QStringList &u)
 {
-  m_workgroup_name = s.workgroupName();
-  m_host_name      = s.hostName();
-  m_share_name     = s.shareName();
-  m_host_ip.setAddress(s.hostIP());
+  m_workgroup_name = s->workgroupName();
+  m_host_name      = s->hostName();
+  m_share_name     = s->shareName();
+  m_host_ip.setAddress(s->hostIP());
   m_users          = u;
 }
 
@@ -152,7 +153,7 @@ void Smb4KHomesUsers::setProfile(const QString& profile)
 
 
 
-Smb4KHomesUserDialog::Smb4KHomesUserDialog(Smb4KShare *share, QWidget *parent) 
+Smb4KHomesUserDialog::Smb4KHomesUserDialog(const SharePtr &share, QWidget *parent) 
 : QDialog(parent), m_share(share)
 {
   setWindowTitle(i18n("Specify User"));

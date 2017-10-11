@@ -2,7 +2,7 @@
     This class queries a remote share for a preview
                              -------------------
     begin                : Sa Mär 05 2011
-    copyright            : (C) 2011-2016 by Alexander Reinholdt
+    copyright            : (C) 2011-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -75,7 +75,7 @@ Smb4KPreviewer *Smb4KPreviewer::self()
 }
 
 
-void Smb4KPreviewer::preview(Smb4KShare *share, QWidget *parent)
+void Smb4KPreviewer::preview(const SharePtr &share, QWidget *parent)
 {
   if (share->isPrinter())
   {
@@ -123,16 +123,22 @@ void Smb4KPreviewer::preview(Smb4KShare *share, QWidget *parent)
   {
     // Create the preview dialog..
     dlg = new Smb4KPreviewDialog(share, parent);
+    
     connect(dlg,  SIGNAL(aboutToClose(Smb4KPreviewDialog*)),
             this, SLOT(slotDialogClosed(Smb4KPreviewDialog*)));
-    connect(dlg,  SIGNAL(requestPreview(Smb4KShare*,QUrl,QWidget*)),
-            this, SLOT(slotAcquirePreview(Smb4KShare*,QUrl,QWidget*)));
-    connect(this, SIGNAL(aboutToStart(Smb4KShare*,QUrl)),
-            dlg,  SLOT(slotAboutToStart(Smb4KShare*,QUrl)));
-    connect(this, SIGNAL(finished(Smb4KShare*,QUrl)),
-            dlg,  SLOT(slotFinished(Smb4KShare*,QUrl)));
-    connect(dlg,  SIGNAL(abortPreview(Smb4KShare*)),
-            this, SLOT(slotAbortPreview(Smb4KShare*)));
+    
+    connect(dlg,  SIGNAL(requestPreview(SharePtr,QUrl,QWidget*)),
+            this, SLOT(slotAcquirePreview(SharePtr,QUrl,QWidget*)));
+    
+    connect(this, SIGNAL(aboutToStart(SharePtr,QUrl)),
+            dlg,  SLOT(slotAboutToStart(SharePtr,QUrl)));
+    
+    connect(this, SIGNAL(finished(SharePtr,QUrl)),
+            dlg,  SLOT(slotFinished(SharePtr,QUrl)));
+    
+    connect(dlg,  SIGNAL(abortPreview(SharePtr)),
+            this, SLOT(slotAbortPreview(SharePtr)));
+    
     d->dialogs.append(dlg);
   }
   else
@@ -157,7 +163,7 @@ bool Smb4KPreviewer::isRunning()
 }
 
 
-bool Smb4KPreviewer::isRunning(Smb4KShare *share)
+bool Smb4KPreviewer::isRunning(const SharePtr &share)
 {
   bool running = false;
   QString unc;
@@ -199,7 +205,7 @@ void Smb4KPreviewer::abortAll()
 }
 
 
-void Smb4KPreviewer::abort(Smb4KShare *share)
+void Smb4KPreviewer::abort(const SharePtr &share)
 {
   QString unc;
   
@@ -254,7 +260,7 @@ void Smb4KPreviewer::slotAuthError(Smb4KPreviewJob *job)
 {
   // To avoid a crash here because after the password dialog closed
   // the job is gone, immediately get the needed data.
-  Smb4KShare *share = job->share();
+  SharePtr share    = job->share();
   QWidget *parent   = job->parentWidget();
   QUrl location     = job->location();
   
@@ -286,7 +292,7 @@ void Smb4KPreviewer::slotDialogClosed(Smb4KPreviewDialog *dialog)
 }
 
 
-void Smb4KPreviewer::slotAcquirePreview(Smb4KShare *share, const QUrl &url, QWidget *parent)
+void Smb4KPreviewer::slotAcquirePreview(const SharePtr &share, const QUrl &url, QWidget *parent)
 {
   // Get the authentication information
   Smb4KWalletManager::self()->readAuthInfo(share);
@@ -307,12 +313,15 @@ void Smb4KPreviewer::slotAcquirePreview(Smb4KShare *share, const QUrl &url, QWid
 
   connect(job,  SIGNAL(result(KJob*)),
           this, SLOT(slotJobFinished(KJob*)));
+  
   connect(job,  SIGNAL(authError(Smb4KPreviewJob*)),
           this, SLOT(slotAuthError(Smb4KPreviewJob*)));
-  connect(job,  SIGNAL(aboutToStart(Smb4KShare*,QUrl)),
-          this, SIGNAL(aboutToStart(Smb4KShare*,QUrl)));
-  connect(job,  SIGNAL(finished(Smb4KShare*,QUrl)),
-          this, SIGNAL(finished(Smb4KShare*,QUrl)));
+  
+  connect(job,  SIGNAL(aboutToStart(SharePtr,QUrl)),
+          this, SIGNAL(aboutToStart(SharePtr,QUrl)));
+  
+  connect(job,  SIGNAL(finished(SharePtr,QUrl)),
+          this, SIGNAL(finished(SharePtr,QUrl)));
 
   // Get the preview dialog, so that the result of the query
   // can be sent.
@@ -347,7 +356,7 @@ void Smb4KPreviewer::slotAcquirePreview(Smb4KShare *share, const QUrl &url, QWid
 }
 
 
-void Smb4KPreviewer::slotAbortPreview(Smb4KShare *share)
+void Smb4KPreviewer::slotAbortPreview(const SharePtr &share)
 {
   abort(share);
 }

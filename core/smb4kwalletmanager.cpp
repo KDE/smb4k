@@ -2,7 +2,7 @@
     This is the wallet manager of Smb4K.
                              -------------------
     begin                : Sa Dez 27 2008
-    copyright            : (C) 2008-2016 by Alexander Reinholdt
+    copyright            : (C) 2008-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -126,7 +126,7 @@ void Smb4KWalletManager::init()
 }
 
 
-void Smb4KWalletManager::readAuthInfo(Smb4KBasicNetworkItem *networkItem)
+void Smb4KWalletManager::readAuthInfo(const NetworkItemPtr &networkItem)
 {
   Q_ASSERT(networkItem);
 
@@ -142,7 +142,7 @@ void Smb4KWalletManager::readAuthInfo(Smb4KBasicNetworkItem *networkItem)
     {
       case Host:
       {
-        Smb4KHost *host = static_cast<Smb4KHost *>(networkItem);
+        HostPtr host = networkItem.staticCast<Smb4KHost>();
 
         if (host)
         {
@@ -219,7 +219,7 @@ void Smb4KWalletManager::readAuthInfo(Smb4KBasicNetworkItem *networkItem)
       }
       case Share:
       {
-        Smb4KShare *share = static_cast<Smb4KShare *>(networkItem);
+        SharePtr share = networkItem.staticCast<Smb4KShare>();
 
         if (share)
         {
@@ -358,7 +358,7 @@ void Smb4KWalletManager::readDefaultAuthInfo(Smb4KAuthInfo *authInfo)
 }
 
 
-void Smb4KWalletManager::writeAuthInfo(Smb4KBasicNetworkItem *networkItem)
+void Smb4KWalletManager::writeAuthInfo(const NetworkItemPtr &networkItem)
 {
   Q_ASSERT(networkItem);
 
@@ -372,7 +372,7 @@ void Smb4KWalletManager::writeAuthInfo(Smb4KBasicNetworkItem *networkItem)
     {
       case Host:
       {
-        Smb4KHost *host = static_cast<Smb4KHost *>(networkItem);
+        HostPtr host = networkItem.staticCast<Smb4KHost>();
 
         if (host)
         {
@@ -418,7 +418,7 @@ void Smb4KWalletManager::writeAuthInfo(Smb4KBasicNetworkItem *networkItem)
       }
       case Share:
       {
-        Smb4KShare *share = static_cast<Smb4KShare *>(networkItem);
+        SharePtr share = networkItem.staticCast<Smb4KShare>();
 
         if (share)
         {
@@ -509,7 +509,7 @@ void Smb4KWalletManager::writeDefaultAuthInfo(Smb4KAuthInfo *authInfo)
 }
 
 
-bool Smb4KWalletManager::showPasswordDialog(Smb4KBasicNetworkItem *networkItem, QWidget *parent)
+bool Smb4KWalletManager::showPasswordDialog(const NetworkItemPtr &networkItem, QWidget *parent)
 {
   Q_ASSERT(networkItem);
 
@@ -525,7 +525,7 @@ bool Smb4KWalletManager::showPasswordDialog(Smb4KBasicNetworkItem *networkItem, 
   {
     case Share:
     {
-      Smb4KShare *share = static_cast<Smb4KShare *>(networkItem);
+      SharePtr share = networkItem.staticCast<Smb4KShare>();
 
       if (share)
       {
@@ -533,15 +533,15 @@ bool Smb4KWalletManager::showPasswordDialog(Smb4KBasicNetworkItem *networkItem, 
 
         for (int i = 0; i < users.size(); ++i)
         {
-          Smb4KShare *tmp_share = new Smb4KShare(*share);
-          tmp_share->setLogin(users.at(i));
+          SharePtr tmpShare = share;
+          tmpShare->setLogin(users.at(i));
 
           // Read the authentication data for the share. If it does not
           // exist yet, login() and password() will be empty.
-          readAuthInfo(tmp_share);
-          known_logins.insert(tmp_share->login(), tmp_share->password());
+          readAuthInfo(tmpShare);
+          known_logins.insert(tmpShare->login(), tmpShare->password());
 
-          delete tmp_share;
+          tmpShare.clear();
         }
       }
       else

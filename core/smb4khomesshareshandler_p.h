@@ -2,7 +2,7 @@
     Private helpers for the homes shares handler
                              -------------------
     begin                : Mo Apr 11 2011
-    copyright            : (C) 2011-2016 by Alexander Reinholdt
+    copyright            : (C) 2011-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,7 +28,7 @@
 
 // application specific includes
 #include "smb4khomesshareshandler.h"
-#include "smb4kshare.h"
+#include "smb4kglobal.h"
 
 // Qt includes
 #include <QStringList>
@@ -46,8 +46,7 @@ class Smb4KHomesUsers
     /**
      * Constructor
      */
-    Smb4KHomesUsers(const Smb4KShare &share,
-                     const QStringList &users);
+    Smb4KHomesUsers(const SharePtr &share, const QStringList &users);
     
     /**
      * Copy constructor
@@ -142,7 +141,7 @@ class Smb4KHomesUserDialog : public QDialog
     /**
      * Constructor
      */
-    explicit Smb4KHomesUserDialog(Smb4KShare *share, QWidget *parent = 0);
+    explicit Smb4KHomesUserDialog(const SharePtr &share, QWidget *parent = 0);
     
     /**
      * Destructor
@@ -197,7 +196,7 @@ class Smb4KHomesUserDialog : public QDialog
     QPushButton *m_ok_button;
     QPushButton *m_cancel_button;
     KComboBox *m_user_combo;
-    Smb4KShare *m_share;
+    SharePtr m_share;
 };
 
 

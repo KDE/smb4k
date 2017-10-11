@@ -2,7 +2,7 @@
     The (new) printing core class.
                              -------------------
     begin                : Son Feb 20 2011
-    copyright            : (C) 2011-2016 by Alexander Reinholdt
+    copyright            : (C) 2011-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -75,7 +75,7 @@ Smb4KPrint *Smb4KPrint::self()
 }
 
 
-void Smb4KPrint::print(Smb4KShare *printer, QWidget *parent)
+void Smb4KPrint::print(const SharePtr &printer, QWidget *parent)
 {
   // Check that we actually have a printer share
   if (!printer->isPrinter())
@@ -97,8 +97,8 @@ void Smb4KPrint::print(Smb4KShare *printer, QWidget *parent)
   
   connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
   connect(job, SIGNAL(authError(Smb4KPrintJob*)), SLOT(slotAuthError(Smb4KPrintJob*)));
-  connect(job, SIGNAL(aboutToStart(Smb4KShare*)), SIGNAL(aboutToStart(Smb4KShare*)));
-  connect(job, SIGNAL(finished(Smb4KShare*)), SIGNAL(finished(Smb4KShare*)));
+  connect(job, SIGNAL(aboutToStart(SharePtr)), SIGNAL(aboutToStart(SharePtr)));
+  connect(job, SIGNAL(finished(SharePtr)), SIGNAL(finished(SharePtr)));
   
   addSubjob(job);
   
@@ -112,7 +112,7 @@ bool Smb4KPrint::isRunning()
 }
 
 
-bool Smb4KPrint::isRunning(Smb4KShare *share)
+bool Smb4KPrint::isRunning(const SharePtr &share)
 {
   bool running = false;
 
@@ -144,7 +144,7 @@ void Smb4KPrint::abortAll()
 }
 
 
-void Smb4KPrint::abort(Smb4KShare *share)
+void Smb4KPrint::abort(const SharePtr &share)
 {
   for (int i = 0; i < subjobs().size(); ++i)
   {

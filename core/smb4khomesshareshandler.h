@@ -2,7 +2,7 @@
     This class handles the homes shares
                              -------------------
     begin                : Do Aug 10 2006
-    copyright            : (C) 2006-2016 by Alexander Reinholdt
+    copyright            : (C) 2006-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -26,6 +26,9 @@
 #ifndef SMB4KHOMESSHARESHANDLER_H
 #define SMB4KHOMESSHARESHANDLER_H
 
+// application specific includes
+#include "smb4kglobal.h"
+
 // Qt includes
 #include <QObject>
 #include <QString>
@@ -36,7 +39,6 @@
 
 
 // forward declarations
-class Smb4KShare;
 class Smb4KAuthInfo;
 class Smb4KHomesUsers;
 class Smb4KHomesSharesHandlerPrivate;
@@ -90,9 +92,7 @@ class Q_DECL_EXPORT Smb4KHomesSharesHandler : public QObject
      *
      * @returns TRUE if user has been chosen and FALSE otherwise.
      */
-    bool specifyUser(Smb4KShare *share, 
-                      bool overwrite = true, 
-                      QWidget *parent = 0);
+    bool specifyUser(const SharePtr &share, bool overwrite = true, QWidget *parent = 0);
     
     /**
      * Return the list of users defined for a certain homes share.
@@ -101,7 +101,7 @@ class Q_DECL_EXPORT Smb4KHomesSharesHandler : public QObject
      * 
      * @returns a list of users
      */
-    QStringList homesUsers(Smb4KShare *share);
+    QStringList homesUsers(const SharePtr &share);
     
   protected Q_SLOTS:
     /**
@@ -120,8 +120,7 @@ class Q_DECL_EXPORT Smb4KHomesSharesHandler : public QObject
     /**
      * Load the host and user names into a map.
      */
-    void readUserNames(QList<Smb4KHomesUsers *> *list, 
-                       bool readAll);
+    const QList<Smb4KHomesUsers *> readUserNames(bool readAll);
 
     /**
      * This function writes the homes user entries to the disk. If @p listOnly 
@@ -139,14 +138,12 @@ class Q_DECL_EXPORT Smb4KHomesSharesHandler : public QObject
     /**
      * Find the homes user for a specific share
      */
-    void findHomesUsers(Smb4KShare *share, 
-                         QStringList *users);
+    const QStringList findHomesUsers(const SharePtr &share);
     
     /**
      * Add user to a homes share
      */
-    void addHomesUsers(Smb4KShare *share,
-                        QStringList *users);
+    void addHomesUsers(const SharePtr &share, const QStringList &users);
     
     /**
      * Migrates one profile to another.

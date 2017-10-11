@@ -3,7 +3,7 @@
     network neighborhood
                              -------------------
     begin                : So Mai 22 2011
-    copyright            : (C) 2011-2016 by Alexander Reinholdt
+    copyright            : (C) 2011-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -98,136 +98,6 @@ bool Smb4KScanner::isRunning()
 }
 
 
-bool Smb4KScanner::isRunning(Smb4KGlobal::Process process, Smb4KBasicNetworkItem *item)
-{
-  bool running = false;
-
-  switch (process)
-  {
-    case LookupDomains:
-    {
-      // We do not need a network item with this kind
-      // of process. We'll just test if at least on job labeled
-      // 'LookupDomainsJob' or 'ScanBAreasJob' is running.
-      for (int i = 0; i < subjobs().size(); ++i)
-      {
-        if (QString::compare(subjobs().at(i)->objectName(), "LookupDomainsJob") == 0 ||
-             QString::compare(subjobs().at(i)->objectName(), "ScanBAreasJob") == 0)
-        {
-          running = true;
-          break;
-        }
-        else
-        {
-          continue;
-        }
-      }
-      break;
-    }
-    case LookupDomainMembers:
-    {
-      if (item && item->type() == Workgroup)
-      {
-        // Only return TRUE if a job for the passed workgroup is running.
-        Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>(item);
-        
-        if (workgroup)
-        {
-          for (int i = 0; i < subjobs().size(); ++i)
-          {
-            if (QString::compare(subjobs().at(i)->objectName(),
-                 QString("LookupDomainMembersJob_%1").arg(workgroup->workgroupName()), Qt::CaseInsensitive) == 0)
-            {
-              running = true;
-              break;
-            }
-            else
-            {
-              continue;
-            }
-          }
-        }
-        else
-        {
-          // Do nothing --- This should not happen.
-        }
-      }
-      else
-      {
-        // If no item is defined, we just loop through the subjobs
-        // and search for a "LookupDomainMembersJob".
-        for (int i = 0; i < subjobs().size(); ++i)
-        {
-          if (subjobs().at(i)->objectName().startsWith(QLatin1String("LookupDomainMembersJob")))
-          {
-            running = true;
-            break;
-          }
-          else
-          {
-            continue;
-          }
-        }
-      }
-      break;
-    }
-    case LookupShares:
-    {
-      if (item && item->type() == Host)
-      {
-        // Only return TRUE if a job for the passed host is running.
-        Smb4KHost *host = static_cast<Smb4KHost *>(item);
-        
-        if (host)
-        {
-          for (int i = 0; i < subjobs().size(); ++i)
-          {
-            if (QString::compare(subjobs().at(i)->objectName(),
-                 QString("LookupSharesJob_%1").arg(host->hostName()), Qt::CaseInsensitive) == 0)
-            {
-              running = true;
-              break;
-            }
-            else
-            {
-              continue;
-            }
-          }
-        }
-        else
-        {
-          // Do nothing --- This should not happen.
-        }
-      }
-      else
-      {
-        // If no item is defined, we just loop through the subjobs
-        // and search for a "LookupSharesJob".
-        for (int i = 0; i < subjobs().size(); ++i)
-        {
-          if (subjobs().at(i)->objectName().startsWith(QLatin1String("LookupSharesJob")))
-          {
-            running = true;
-            break;
-          }
-          else
-          {
-            continue;
-          }
-        }
-      }
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-
-  return running;
-}
-
-
 void Smb4KScanner::abortAll()
 {
   QListIterator<KJob *> it(subjobs());
@@ -239,7 +109,7 @@ void Smb4KScanner::abortAll()
 }
 
 
-void Smb4KScanner::abort(Smb4KGlobal::Process process, Smb4KBasicNetworkItem *item)
+void Smb4KScanner::abort(Smb4KGlobal::Process process, NetworkItemPtr item)
 {
   switch (process)
   {
@@ -250,8 +120,7 @@ void Smb4KScanner::abort(Smb4KGlobal::Process process, Smb4KBasicNetworkItem *it
       // 'LookupDomainsJob' and 'ScanBAreasJob'.
       for (int i = 0; i < subjobs().size(); ++i)
       {
-        if (QString::compare(subjobs().at(i)->objectName(), "LookupDomainsJob") == 0 ||
-             QString::compare(subjobs().at(i)->objectName(), "ScanBAreasJob") == 0)
+        if (QString::compare(subjobs().at(i)->objectName(), "LookupDomainsJob") == 0)
         {
           subjobs().at(i)->kill(KJob::EmitResult);
           continue;
@@ -268,14 +137,14 @@ void Smb4KScanner::abort(Smb4KGlobal::Process process, Smb4KBasicNetworkItem *it
       if (item && item->type() == Workgroup)
       {
         // Only kill a job if the workgroup matches.
-        Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>(item);
+        WorkgroupPtr workgroup = item.staticCast<Smb4KWorkgroup>();
         
         if (workgroup)
         {
           for (int i = 0; i < subjobs().size(); ++i)
           {
             if (QString::compare(subjobs().at(i)->objectName(),
-                 QString("LookupDomainMembersJob_%1").arg(workgroup->workgroupName()), Qt::CaseInsensitive) == 0)
+                QString("LookupDomainMembersJob_%1").arg(workgroup->workgroupName()), Qt::CaseInsensitive) == 0)
             {
               subjobs().at(i)->kill(KJob::EmitResult);
               break;
@@ -315,14 +184,14 @@ void Smb4KScanner::abort(Smb4KGlobal::Process process, Smb4KBasicNetworkItem *it
       if (item && item->type() == Host)
       {
         // Only kill a job if the host matches
-        Smb4KHost *host = static_cast<Smb4KHost *>(item);
+        HostPtr host = item.staticCast<Smb4KHost>();
         
         if (host)
         {
           for (int i = 0; i < subjobs().size(); ++i)
           {
             if (QString::compare(subjobs().at(i)->objectName(),
-                 QString("LookupSharesJob_%1").arg(host->hostName()), Qt::CaseInsensitive) == 0)
+                QString("LookupSharesJob_%1").arg(host->hostName()), Qt::CaseInsensitive) == 0)
             {
               subjobs().at(i)->kill(KJob::EmitResult);
               break;
@@ -382,8 +251,8 @@ void Smb4KScanner::lookupDomains(QWidget *parent)
     
     if (!wol_entries.isEmpty())
     {
-      Smb4KBasicNetworkItem item;
-      emit aboutToStart(&item, WakeUp);
+      NetworkItemPtr item = NetworkItemPtr(new Smb4KBasicNetworkItem());
+      emit aboutToStart(item, WakeUp);
       
       QUdpSocket *socket = new QUdpSocket(this);
       
@@ -441,7 +310,8 @@ void Smb4KScanner::lookupDomains(QWidget *parent)
         QTest::qWait(250);
       }
       
-      emit finished(&item, WakeUp);
+      emit finished(item, WakeUp);
+      item.clear();
     }
     else
     {
@@ -463,7 +333,7 @@ void Smb4KScanner::lookupDomains(QWidget *parent)
     connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
     connect(job, SIGNAL(aboutToStart()), SLOT(slotAboutToStartDomainsLookup()));
     connect(job, SIGNAL(finished()), SLOT(slotDomainsLookupFinished()));
-    connect(job, SIGNAL(workgroups(QList<Smb4KWorkgroup*>)), SLOT(slotWorkgroups(QList<Smb4KWorkgroup*>)));
+    connect(job, SIGNAL(workgroups(QList<WorkgroupPtr>)), SLOT(slotWorkgroups(QList<WorkgroupPtr>)));
 
     if (!hasSubjobs() && modifyCursor())
     {
@@ -487,7 +357,7 @@ void Smb4KScanner::lookupDomains(QWidget *parent)
     connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
     connect(job, SIGNAL(aboutToStart()), SLOT(slotAboutToStartDomainsLookup()));
     connect(job, SIGNAL(finished()), SLOT(slotDomainsLookupFinished()));
-    connect(job, SIGNAL(workgroups(QList<Smb4KWorkgroup*>)), SLOT(slotWorkgroups(QList<Smb4KWorkgroup*>)));
+    connect(job, SIGNAL(workgroups(QList<WorkgroupPtr>)), SLOT(slotWorkgroups(QList<WorkgroupPtr>)));
     connect(job, SIGNAL(authError(Smb4KQueryMasterJob*)), SLOT(slotAuthError(Smb4KQueryMasterJob*)));
 
     if (!hasSubjobs() && modifyCursor())
@@ -524,7 +394,7 @@ void Smb4KScanner::lookupDomains(QWidget *parent)
     connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
     connect(job, SIGNAL(aboutToStart()), SLOT(slotAboutToStartDomainsLookup()));
     connect(job, SIGNAL(finished()), SLOT(slotDomainsLookupFinished()));
-    connect(job, SIGNAL(workgroups(QList<Smb4KWorkgroup*>)), SLOT(slotWorkgroups(QList<Smb4KWorkgroup*>)));
+    connect(job, SIGNAL(workgroups(QList<WorkgroupPtr>)), SLOT(slotWorkgroups(QList<WorkgroupPtr>)));
     connect(job, SIGNAL(authError(Smb4KQueryMasterJob*)), SLOT(slotAuthError(Smb4KQueryMasterJob*)));
 
     if (!hasSubjobs() && modifyCursor())
@@ -547,7 +417,7 @@ void Smb4KScanner::lookupDomains(QWidget *parent)
 }
 
 
-void Smb4KScanner::lookupDomainMembers(Smb4KWorkgroup *workgroup, QWidget *parent)
+void Smb4KScanner::lookupDomainMembers(WorkgroupPtr workgroup, QWidget *parent)
 {
   Q_ASSERT(workgroup);
   
@@ -556,9 +426,9 @@ void Smb4KScanner::lookupDomainMembers(Smb4KWorkgroup *workgroup, QWidget *paren
   job->setupLookup(workgroup, parent);
 
   connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
-  connect(job, SIGNAL(aboutToStart(Smb4KWorkgroup*)), SLOT(slotAboutToStartHostsLookup(Smb4KWorkgroup*)));
-  connect(job, SIGNAL(finished(Smb4KWorkgroup*)), SLOT(slotHostsLookupFinished(Smb4KWorkgroup*)));
-  connect(job, SIGNAL(hosts(Smb4KWorkgroup*,QList<Smb4KHost*>)), SLOT(slotHosts(Smb4KWorkgroup*,QList<Smb4KHost*>)));
+  connect(job, SIGNAL(aboutToStart(WorkgroupPtr)), SLOT(slotAboutToStartHostsLookup(WorkgroupPtr)));
+  connect(job, SIGNAL(finished(WorkgroupPtr)), SLOT(slotHostsLookupFinished(WorkgroupPtr)));
+  connect(job, SIGNAL(hosts(WorkgroupPtr,QList<HostPtr>)), SLOT(slotHosts(WorkgroupPtr,QList<HostPtr>)));
   connect(job, SIGNAL(authError(Smb4KLookupDomainMembersJob*)), SLOT(slotAuthError(Smb4KLookupDomainMembersJob*)));
 
   if (!hasSubjobs() && modifyCursor())
@@ -576,7 +446,7 @@ void Smb4KScanner::lookupDomainMembers(Smb4KWorkgroup *workgroup, QWidget *paren
 }
 
 
-void Smb4KScanner::lookupShares(Smb4KHost *host, QWidget *parent)
+void Smb4KScanner::lookupShares(HostPtr host, QWidget *parent)
 {
   Q_ASSERT(host);
   
@@ -585,9 +455,9 @@ void Smb4KScanner::lookupShares(Smb4KHost *host, QWidget *parent)
   job->setupLookup(host, parent);
   
   connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
-  connect(job, SIGNAL(aboutToStart(Smb4KHost*)), SLOT(slotAboutToStartSharesLookup(Smb4KHost*)));
-  connect(job, SIGNAL(finished(Smb4KHost*)), SLOT(slotSharesLookupFinished(Smb4KHost*)));
-  connect(job, SIGNAL(shares(Smb4KHost*,QList<Smb4KShare*>)), SLOT(slotShares(Smb4KHost*,QList<Smb4KShare*>)));
+  connect(job, SIGNAL(aboutToStart(HostPtr)), SLOT(slotAboutToStartSharesLookup(HostPtr)));
+  connect(job, SIGNAL(finished(HostPtr)), SLOT(slotSharesLookupFinished(HostPtr)));
+  connect(job, SIGNAL(shares(HostPtr,QList<SharePtr>)), SLOT(slotShares(HostPtr,QList<SharePtr>)));
   connect(job, SIGNAL(authError(Smb4KLookupSharesJob*)), SLOT(slotAuthError(Smb4KLookupSharesJob*)));
   
   if (!hasSubjobs() && modifyCursor())
@@ -656,17 +526,17 @@ void Smb4KScanner::timerEvent(QTimerEvent */*e*/)
         }
         case LookupDomainMembers:
         {
-          for (int i = 0; i < workgroupsList().size(); ++i)
+          for (const WorkgroupPtr &workgroup : workgroupsList())
           {
-            lookupDomainMembers(workgroupsList()[i]);
+            lookupDomainMembers(workgroup);
           }
           break;
         }
         case LookupShares:
         {
-          for (int i = 0; i < hostsList().size(); ++i)
+          for (const HostPtr &host : hostsList())
           {
-            lookupShares(hostsList()[i]);
+            lookupShares(host);
           }
           break;
         }
@@ -707,16 +577,16 @@ void Smb4KScanner::timerEvent(QTimerEvent */*e*/)
   // first run.
   if (!isRunning() && ((d->haveNewHosts && !hostsList().isEmpty()) || d->elapsedTimeIP >= 60000))
   {
-    for (int i = 0; i < hostsList().size(); ++i)
+    for (const HostPtr &host : hostsList())
     {
-      if (!hostsList().at(i)->hasIP())
+      if (!host->hasIP())
       {
         Smb4KLookupIPAddressJob *job = new Smb4KLookupIPAddressJob(this);
-        job->setObjectName(QString("LookupIPAddressJob_%1").arg(hostsList().at(i)->unc()));
-        job->setupLookup(hostsList().at(i), 0);
+        job->setObjectName(QString("LookupIPAddressJob_%1").arg(host->unc()));
+        job->setupLookup(host, 0);
 
         connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
-        connect(job, SIGNAL(ipAddress(Smb4KHost*)), SLOT(slotProcessIPAddress(Smb4KHost*)));
+        connect(job, SIGNAL(ipAddress(HostPtr)), SLOT(slotProcessIPAddress(HostPtr)));
 
         addSubjob(job);
 
@@ -795,39 +665,39 @@ void Smb4KScanner::slotAuthError(Smb4KQueryMasterJob *job)
   // item that might get invalidated during periodic scanning.
   d->scanningAllowed = false;
   
-  Smb4KHost master_browser;
+  HostPtr masterBrowser;
   
   if (!job->masterBrowser().isEmpty())
   {
-    master_browser.setIsMasterBrowser(true);
+    masterBrowser->setIsMasterBrowser(true);
 
     if (QHostAddress(job->masterBrowser()).protocol() == QAbstractSocket::UnknownNetworkLayerProtocol)
     {
-      master_browser.setHostName(job->masterBrowser());
+      masterBrowser->setHostName(job->masterBrowser());
     }
     else
     {
-      master_browser.setIP(job->masterBrowser());
+      masterBrowser->setIP(job->masterBrowser());
     }
     
-    emit authError (&master_browser, LookupDomains);
+    emit authError (masterBrowser, LookupDomains);
   }
   else
   {
     // Do nothing
   }
 
-  if (Smb4KWalletManager::self()->showPasswordDialog(&master_browser, job->parentWidget()))
+  if (Smb4KWalletManager::self()->showPasswordDialog(masterBrowser, job->parentWidget()))
   {
     // Start a query job with the returned master browser.
     Smb4KQueryMasterJob *job = new Smb4KQueryMasterJob(this);
     job->setObjectName("LookupDomainsJob");
-    job->setupLookup(master_browser.hostName().isEmpty() ? master_browser.ip() : master_browser.hostName(), job->parentWidget());
+    job->setupLookup(masterBrowser->hostName().isEmpty() ? masterBrowser->ip() : masterBrowser->hostName(), job->parentWidget());
 
     connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
     connect(job, SIGNAL(aboutToStart()), SLOT(slotAboutToStartDomainsLookup()));
     connect(job, SIGNAL(finished()), SLOT(slotDomainsLookupFinished()));
-    connect(job, SIGNAL(workgroups(QList<Smb4KWorkgroup*>)), SLOT(slotWorkgroups(QList<Smb4KWorkgroup*>)));
+    connect(job, SIGNAL(workgroups(QList<WorkgroupPtr>)), SLOT(slotWorkgroups(QList<WorkgroupPtr>)));
     connect(job, SIGNAL(authError(Smb4KQueryMasterJob*)), SLOT(slotAuthError(Smb4KQueryMasterJob*)));
 
     if (!hasSubjobs() && modifyCursor())
@@ -859,14 +729,14 @@ void Smb4KScanner::slotAuthError(Smb4KLookupDomainMembersJob *job)
   // item that might get invalidated during periodic scanning.
   d->scanningAllowed = false;
 
-  Smb4KWorkgroup *workgroup = findWorkgroup(job->workgroup()->workgroupName());
-  Smb4KHost *master_browser = findHost(job->workgroup()->masterBrowserName(), job->workgroup()->workgroupName());
+  WorkgroupPtr workgroup = findWorkgroup(job->workgroup()->workgroupName());
+  HostPtr masterBrowser = findHost(job->workgroup()->masterBrowserName(), job->workgroup()->workgroupName());
   
-  if (workgroup && master_browser)
+  if (workgroup && masterBrowser)
   {
-    emit authError(master_browser, LookupDomainMembers);
+    emit authError(masterBrowser, LookupDomainMembers);
     
-    if (Smb4KWalletManager::self()->showPasswordDialog(master_browser, job->parentWidget()))
+    if (Smb4KWalletManager::self()->showPasswordDialog(masterBrowser, job->parentWidget()))
     {
       lookupDomainMembers(workgroup, job->parentWidget());
     }
@@ -891,7 +761,7 @@ void Smb4KScanner::slotAuthError(Smb4KLookupSharesJob *job)
   // item that might get invalidated during periodic scanning.
   d->scanningAllowed = false;
   
-  Smb4KHost *host = findHost(job->host()->hostName(), job->host()->workgroupName());
+  HostPtr host = findHost(job->host()->hostName(), job->host()->workgroupName());
   
   if (host)
   {
@@ -917,56 +787,56 @@ void Smb4KScanner::slotAuthError(Smb4KLookupSharesJob *job)
 
 void Smb4KScanner::slotAboutToStartDomainsLookup()
 {
-  Smb4KBasicNetworkItem item;
-  emit aboutToStart(&item, LookupDomains);
+  NetworkItemPtr item = NetworkItemPtr(new Smb4KBasicNetworkItem());
+  emit aboutToStart(item, LookupDomains);
 }
 
 
 void Smb4KScanner::slotDomainsLookupFinished()
 {
-  Smb4KBasicNetworkItem item;
-  emit finished(&item, LookupDomains);
+  NetworkItemPtr item = NetworkItemPtr(new Smb4KBasicNetworkItem());
+  emit finished(item, LookupDomains);
 }
 
 
-void Smb4KScanner::slotAboutToStartHostsLookup(Smb4KWorkgroup *workgroup)
+void Smb4KScanner::slotAboutToStartHostsLookup(const WorkgroupPtr &workgroup)
 {
   emit aboutToStart(workgroup, LookupDomainMembers);
 }
 
 
-void Smb4KScanner::slotHostsLookupFinished(Smb4KWorkgroup *workgroup)
+void Smb4KScanner::slotHostsLookupFinished(const WorkgroupPtr &workgroup)
 {
   emit finished(workgroup, LookupDomainMembers);
 }
 
 
-void Smb4KScanner::slotAboutToStartSharesLookup(Smb4KHost *host)
+void Smb4KScanner::slotAboutToStartSharesLookup(const HostPtr &host)
 {
   emit aboutToStart(host, LookupShares);
 }
 
 
-void Smb4KScanner::slotSharesLookupFinished(Smb4KHost *host)
+void Smb4KScanner::slotSharesLookupFinished(const HostPtr &host)
 {
   emit finished(host, LookupShares);
 }
 
 
-void Smb4KScanner::slotWorkgroups(const QList<Smb4KWorkgroup *> &workgroups_list)
+void Smb4KScanner::slotWorkgroups(const QList<WorkgroupPtr> &workgroups_list)
 {
   //
   // Remove obsolete workgroups and their members
   //
-  QListIterator<Smb4KWorkgroup *> wIt(workgroupsList());
+  QListIterator<WorkgroupPtr> wIt(workgroupsList());
   
   while (wIt.hasNext())
   {
-    Smb4KWorkgroup *workgroup = wIt.next();
+    WorkgroupPtr workgroup = wIt.next();
     
     bool found = false;
     
-    for (Smb4KWorkgroup *w : workgroups_list)
+    for (const WorkgroupPtr &w : workgroups_list)
     {
       if (w->workgroupName() == workgroup->workgroupName())
       {
@@ -981,8 +851,8 @@ void Smb4KScanner::slotWorkgroups(const QList<Smb4KWorkgroup *> &workgroups_list
     
     if (!found)
     {
-      QList<Smb4KHost *> obsoleteHosts = workgroupMembers(workgroup);
-      QListIterator<Smb4KHost *> hIt(obsoleteHosts);
+      QList<HostPtr> obsoleteHosts = workgroupMembers(workgroup);
+      QListIterator<HostPtr> hIt(obsoleteHosts);
       
       while (hIt.hasNext())
       {
@@ -1000,14 +870,14 @@ void Smb4KScanner::slotWorkgroups(const QList<Smb4KWorkgroup *> &workgroups_list
   //
   // Add new workgroups and update existing ones.
   // 
-  for (Smb4KWorkgroup *workgroup : workgroups_list)
+  for (const WorkgroupPtr &workgroup : workgroups_list)
   {
     if (!findWorkgroup(workgroup->workgroupName()))
     {
-      addWorkgroup(new Smb4KWorkgroup(*workgroup));
+      addWorkgroup(workgroup);
       
       // Since this is a new workgroup, no master browser is present.
-      Smb4KHost *masterBrowser = new Smb4KHost();
+      HostPtr masterBrowser = HostPtr(new Smb4KHost());
       masterBrowser->setWorkgroupName(workgroup->workgroupName());
       masterBrowser->setHostName(workgroup->masterBrowserName());
       masterBrowser->setIP(workgroup->masterBrowserIP());
@@ -1020,9 +890,9 @@ void Smb4KScanner::slotWorkgroups(const QList<Smb4KWorkgroup *> &workgroups_list
       updateWorkgroup(workgroup);
       
       // Check if the master browser changed
-      QList<Smb4KHost *> members = workgroupMembers(workgroup);
+      QList<HostPtr> members = workgroupMembers(workgroup);
       
-      for (Smb4KHost *host : members)
+      for (const HostPtr &host : members)
       {
         if (workgroup->masterBrowserName() == host->hostName())
         {
@@ -1049,7 +919,7 @@ void Smb4KScanner::slotWorkgroups(const QList<Smb4KWorkgroup *> &workgroups_list
 }
 
 
-void Smb4KScanner::slotHosts(Smb4KWorkgroup *workgroup, const QList<Smb4KHost *> &hosts_list)
+void Smb4KScanner::slotHosts(const WorkgroupPtr &workgroup, const QList<HostPtr> &hosts_list)
 {
   Q_ASSERT(workgroup);
   
@@ -1058,16 +928,16 @@ void Smb4KScanner::slotHosts(Smb4KWorkgroup *workgroup, const QList<Smb4KHost *>
     //
     // Remove obsolete hosts and their shares
     //
-    QList<Smb4KHost *> members = workgroupMembers(workgroup);
-    QListIterator<Smb4KHost *> hIt(members);
+    QList<HostPtr> members = workgroupMembers(workgroup);
+    QListIterator<HostPtr> hIt(members);
     
     while (hIt.hasNext())
     {
-      Smb4KHost *host = hIt.next();
+      HostPtr host = hIt.next();
       
       bool found = false;
       
-      for (Smb4KHost *h : hosts_list)
+      for (const HostPtr &h : hosts_list)
       {
         if (h->workgroupName() == host->workgroupName() && h->hostName() == host->hostName())
         {
@@ -1082,8 +952,8 @@ void Smb4KScanner::slotHosts(Smb4KWorkgroup *workgroup, const QList<Smb4KHost *>
       
       if (!found)
       {
-        QList<Smb4KShare *> obsoleteShares = sharedResources(host);
-        QListIterator<Smb4KShare *> sIt(obsoleteShares);
+        QList<SharePtr> obsoleteShares = sharedResources(host);
+        QListIterator<SharePtr> sIt(obsoleteShares);
         
         while (sIt.hasNext())
         {
@@ -1101,7 +971,7 @@ void Smb4KScanner::slotHosts(Smb4KWorkgroup *workgroup, const QList<Smb4KHost *>
     //
     // Add new hosts and update existing ones
     //
-    for (Smb4KHost *host : hosts_list)
+    for (const HostPtr &host : hosts_list)
     {
       if (host->hostName() == workgroup->masterBrowserName())
       {
@@ -1114,7 +984,7 @@ void Smb4KScanner::slotHosts(Smb4KWorkgroup *workgroup, const QList<Smb4KHost *>
       
       if (!findHost(host->hostName(), host->workgroupName()))
       {
-        addHost(new Smb4KHost(*host));
+        addHost(host);
         d->haveNewHosts = true;
       }
       else
@@ -1132,7 +1002,7 @@ void Smb4KScanner::slotHosts(Smb4KWorkgroup *workgroup, const QList<Smb4KHost *>
 }
 
 
-void Smb4KScanner::slotShares(Smb4KHost *host, const QList<Smb4KShare *> &shares_list)
+void Smb4KScanner::slotShares(const HostPtr &host, const QList<SharePtr> &shares_list)
 {
   Q_ASSERT(host);
   
@@ -1141,16 +1011,16 @@ void Smb4KScanner::slotShares(Smb4KHost *host, const QList<Smb4KShare *> &shares
     //
     // Remove obsolete shares
     //
-    QList<Smb4KShare *> sharedRes = sharedResources(host);
-    QListIterator<Smb4KShare *> sIt(sharedRes);
+    QList<SharePtr> sharedRes = sharedResources(host);
+    QListIterator<SharePtr> sIt(sharedRes);
     
     while (sIt.hasNext())
     {
-      Smb4KShare *share = sIt.next();
+      SharePtr share = sIt.next();
       
       bool found = false;
       
-      for (Smb4KShare *s : shares_list)
+      for (const SharePtr &s : shares_list)
       {
         if (s->workgroupName() == share->workgroupName() && s->unc() == share->unc())
         {
@@ -1178,7 +1048,7 @@ void Smb4KScanner::slotShares(Smb4KHost *host, const QList<Smb4KShare *> &shares
     //
     // Add new shares and update existing ones
     //
-    for (Smb4KShare *share : shares_list)
+    for (const SharePtr &share : shares_list)
     {
       //
       // Process only those shares that the user wants to see
@@ -1204,7 +1074,7 @@ void Smb4KScanner::slotShares(Smb4KHost *host, const QList<Smb4KShare *> &shares
       //
       // Add the host's IP address and authentication information
       //
-      Smb4KHost *host = findHost(share->hostName(), share->workgroupName());
+      HostPtr host = findHost(share->hostName(), share->workgroupName());
       
       if (host)
       {
@@ -1222,7 +1092,7 @@ void Smb4KScanner::slotShares(Smb4KHost *host, const QList<Smb4KShare *> &shares
       //      
       if (!findShare(share->unc(), share->workgroupName()))
       {
-        addShare(new Smb4KShare(*share));
+        addShare(share);
       }
       else
       {
@@ -1239,14 +1109,14 @@ void Smb4KScanner::slotShares(Smb4KHost *host, const QList<Smb4KShare *> &shares
 }
 
 
-void Smb4KScanner::slotProcessIPAddress(Smb4KHost *host)
+void Smb4KScanner::slotProcessIPAddress(const HostPtr &host)
 {
   Q_ASSERT(host);
   
   //
   // Find the host in the hosts list
   //
-  Smb4KHost *knownHost = findHost(host->hostName(), host->workgroupName());
+  HostPtr knownHost = findHost(host->hostName(), host->workgroupName());
 
   //
   // Update the host, its shares, and, if applicable, the workgroup master browser's IP address
@@ -1257,9 +1127,9 @@ void Smb4KScanner::slotProcessIPAddress(Smb4KHost *host)
     knownHost->setIP(host->ip());
     
     // Update shares
-    QList<Smb4KShare *> shares = sharedResources(knownHost);
+    QList<SharePtr> shares = sharedResources(knownHost);
     
-    for (Smb4KShare *share : shares)
+    for (const SharePtr &share : shares)
     {
       share->setHostIP(host->ip());
     }
@@ -1267,7 +1137,7 @@ void Smb4KScanner::slotProcessIPAddress(Smb4KHost *host)
     // Update workgroup master browser's IP address
     if (knownHost->isMasterBrowser())
     {
-      Smb4KWorkgroup *workgroup = findWorkgroup(knownHost->workgroupName());
+      WorkgroupPtr workgroup = findWorkgroup(knownHost->workgroupName());
       
       if (workgroup && !workgroup->hasMasterBrowserIP() && workgroup->masterBrowserName() == knownHost->hostName())
       {

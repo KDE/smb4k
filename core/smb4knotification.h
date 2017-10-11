@@ -2,7 +2,7 @@
     This class provides notifications for Smb4K
                              -------------------
     begin                : Son Jun 27 2010
-    copyright            : (C) 2010-2016 by Alexander Reinholdt
+    copyright            : (C) 2010-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -26,6 +26,9 @@
 #ifndef SMB4KNOTIFICATION_H
 #define SMB4KNOTIFICATION_H
 
+// application specific includes
+#include "smb4kglobal.h"
+
 // Qt includes
 #include <QObject>
 #include <QFile>
@@ -36,9 +39,6 @@
 
 // forward declarations
 class Smb4KBookmark;
-class Smb4KWorkgroup;
-class Smb4KHost;
-class Smb4KShare;
 class Smb4KNotificationPrivate;
 
 /**
@@ -55,14 +55,14 @@ namespace Smb4KNotification
    *
    * @param share     The share that has been mounted
    */
-  Q_DECL_EXPORT void shareMounted(Smb4KShare *share);
+  Q_DECL_EXPORT void shareMounted(const SharePtr &share);
 
   /**
    * Notify the user that a share has been unmounted.
    *
    * @param share     The share that has been unmounted
    */
-  Q_DECL_EXPORT void shareUnmounted(Smb4KShare *share);
+  Q_DECL_EXPORT void shareUnmounted(const SharePtr &share);
   
   /**
    * Notify the user that multiple shares have been mounted.
@@ -147,7 +147,7 @@ namespace Smb4KNotification
    *
    * @param err_msg   The error message
    */
-  Q_DECL_EXPORT void retrievingHostsFailed(Smb4KWorkgroup *workgroup, const QString &err_msg);
+  Q_DECL_EXPORT void retrievingHostsFailed(const WorkgroupPtr &workgroup, const QString &err_msg);
   
   /**
    * This error message is shown if the list of shares could not
@@ -157,7 +157,7 @@ namespace Smb4KNotification
    *
    * @param err_msg   The error message
    */
-  Q_DECL_EXPORT void retrievingSharesFailed(Smb4KHost *host, const QString &err_msg);
+  Q_DECL_EXPORT void retrievingSharesFailed(const HostPtr &host, const QString &err_msg);
   
   /**
    * This error message is shown if the preview could not be
@@ -165,7 +165,7 @@ namespace Smb4KNotification
    *
    * @param err_msg   The error message
    */
-  Q_DECL_EXPORT void retrievingPreviewFailed(Smb4KShare *share, const QString &err_msg);
+  Q_DECL_EXPORT void retrievingPreviewFailed(const SharePtr &share, const QString &err_msg);
   
   /**
    * This error message is shown if the mounting of a share failed.
@@ -174,7 +174,7 @@ namespace Smb4KNotification
    *
    * @param err_msg   The error message
    */
-  Q_DECL_EXPORT void mountingFailed(Smb4KShare *share, const QString &err_msg);
+  Q_DECL_EXPORT void mountingFailed(const SharePtr &share, const QString &err_msg);
   
   /**
    * This error message is shown if the unmounting of a share failed.
@@ -183,7 +183,7 @@ namespace Smb4KNotification
    *
    * @param err_msg   The error message
    */
-  Q_DECL_EXPORT void unmountingFailed(Smb4KShare *share, const QString &err_msg);
+  Q_DECL_EXPORT void unmountingFailed(const SharePtr &share, const QString &err_msg);
   
   /**
    * This error message is shown if the unmounting of a certain share
@@ -191,7 +191,7 @@ namespace Smb4KNotification
    *
    * @param share     The share that was to be unmounted
    */
-  Q_DECL_EXPORT void unmountingNotAllowed(Smb4KShare *share);
+  Q_DECL_EXPORT void unmountingNotAllowed(const SharePtr &share);
   
   /**
    * This error message is shown if printing failed.
@@ -200,7 +200,7 @@ namespace Smb4KNotification
    *
    * @param err_msg   The error message
    */
-  Q_DECL_EXPORT void printingFailed(Smb4KShare *printer, const QString &err_msg);
+  Q_DECL_EXPORT void printingFailed(const SharePtr &printer, const QString &err_msg);
   
   /**
    * This error message is shown if the synchronization failed.
@@ -237,7 +237,7 @@ namespace Smb4KNotification
    *
    * @param share     The Smb4KShare object
    */
-  Q_DECL_EXPORT void cannotBookmarkPrinter(Smb4KShare *share);
+  Q_DECL_EXPORT void cannotBookmarkPrinter(const SharePtr &share);
   
   /**
    * This error message is shown if a file could not be found.

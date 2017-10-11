@@ -35,6 +35,7 @@
 #include <QList>
 #include <QMap>
 #include <QObject>
+#include <QSharedPointer>
 
 /**
  * This class is a private helper for the Smb4KGlobal namespace.
@@ -60,22 +61,22 @@ class Smb4KGlobalPrivate : public QObject
     /**
      * This is the global workgroup list.
      */
-    QList<Smb4KWorkgroup *> workgroupsList;
+    QList<QSharedPointer<Smb4KWorkgroup>> workgroupsList;
 
     /**
      * This is the global host list.
      */
-    QList<Smb4KHost *> hostsList;
+    QList<QSharedPointer<Smb4KHost>> hostsList;
 
     /**
      * This is global list of mounted shares.
      */
-    QList<Smb4KShare *> mountedSharesList;
+    QList<QSharedPointer<Smb4KShare>> mountedSharesList;
 
     /**
      * This is the global list of shares.
      */
-    QList<Smb4KShare *> sharesList;
+    QList<QSharedPointer<Smb4KShare>> sharesList;
     
     /**
      * The global options defined in smb.conf
