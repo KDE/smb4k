@@ -3,7 +3,7 @@
     namespace.
                              -------------------
     begin                : So Jun 22 2014
-    copyright            : (C) 2014-2016 by Alexander Reinholdt
+    copyright            : (C) 2014-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
