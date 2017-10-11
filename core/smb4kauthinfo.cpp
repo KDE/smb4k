@@ -2,7 +2,7 @@
     This class provides a container for the authentication data.
                              -------------------
     begin                : Sa Feb 28 2004
-    copyright            : (C) 2004-2016 by Alexander Reinholdt
+    copyright            : (C) 2004-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -46,21 +46,21 @@ class Smb4KAuthInfoPrivate
 };
 
 
-Smb4KAuthInfo::Smb4KAuthInfo( const Smb4KHost *host )
-: d( new Smb4KAuthInfoPrivate )
+Smb4KAuthInfo::Smb4KAuthInfo(const Smb4KHost *host)
+: d(new Smb4KAuthInfoPrivate)
 {
   d->url        = host->url();
   d->type       = Host;
   d->workgroup  = host->workgroupName();
   d->homesShare = false;
-  d->ip.setAddress( host->ip() );
+  d->ip.setAddress(host->ip());
 }
 
 
-Smb4KAuthInfo::Smb4KAuthInfo( const Smb4KShare *share )
-: d( new Smb4KAuthInfoPrivate )
+Smb4KAuthInfo::Smb4KAuthInfo(const Smb4KShare *share)
+: d(new Smb4KAuthInfoPrivate)
 {
-  if ( !share->isHomesShare() )
+  if (!share->isHomesShare())
   {
     d->url      = share->url();
   }
@@ -72,12 +72,12 @@ Smb4KAuthInfo::Smb4KAuthInfo( const Smb4KShare *share )
   d->type       = Share;
   d->workgroup  = share->workgroupName();
   d->homesShare = share->isHomesShare();
-  d->ip.setAddress( share->hostIP() );
+  d->ip.setAddress(share->hostIP());
 }
 
 
 Smb4KAuthInfo::Smb4KAuthInfo()
-: d( new Smb4KAuthInfoPrivate )
+: d(new Smb4KAuthInfoPrivate)
 {
   d->type       = UnknownNetworkItem;
   d->homesShare = false;
@@ -87,8 +87,8 @@ Smb4KAuthInfo::Smb4KAuthInfo()
 }
 
 
-Smb4KAuthInfo::Smb4KAuthInfo( const Smb4KAuthInfo &i )
-: d( new Smb4KAuthInfoPrivate )
+Smb4KAuthInfo::Smb4KAuthInfo(const Smb4KAuthInfo &i)
+: d(new Smb4KAuthInfoPrivate)
 {
   *d = *i.d;
 }
@@ -99,17 +99,17 @@ Smb4KAuthInfo::~Smb4KAuthInfo()
 }
 
 
-void Smb4KAuthInfo::setHost( Smb4KHost *host )
+void Smb4KAuthInfo::setHost(Smb4KHost *host)
 {
-  Q_ASSERT( host );
+  Q_ASSERT(host);
   
-  if ( host )
+  if (host)
   {
     d->url        = host->url();
     d->type       = Host;
     d->workgroup  = host->workgroupName();
     d->homesShare = false;
-    d->ip.setAddress( host->ip() );
+    d->ip.setAddress(host->ip());
   }
   else
   {
@@ -118,13 +118,13 @@ void Smb4KAuthInfo::setHost( Smb4KHost *host )
 }
 
 
-void Smb4KAuthInfo::setShare( Smb4KShare *share )
+void Smb4KAuthInfo::setShare(Smb4KShare *share)
 {
-  Q_ASSERT( share );
+  Q_ASSERT(share);
   
-  if ( share )
+  if (share)
   {
-    if ( !share->isHomesShare() )
+    if (!share->isHomesShare())
     {
       d->url      = share->url();
     }
@@ -136,7 +136,7 @@ void Smb4KAuthInfo::setShare( Smb4KShare *share )
     d->type       = Share;
     d->workgroup  = share->workgroupName();
     d->homesShare = share->isHomesShare();
-    d->ip.setAddress( share->hostIP() );
+    d->ip.setAddress(share->hostIP());
   }
   else
   {
@@ -145,7 +145,7 @@ void Smb4KAuthInfo::setShare( Smb4KShare *share )
 }
 
 
-void Smb4KAuthInfo::setWorkgroupName( const QString &workgroup )
+void Smb4KAuthInfo::setWorkgroupName(const QString &workgroup)
 {
   d->workgroup = workgroup;
 }
@@ -161,13 +161,13 @@ QString Smb4KAuthInfo::unc() const
 {
   QString unc;
   
-  switch ( d->type )
+  switch (d->type)
   {
     case Host:
     {
-      if ( !hostName().isEmpty() )
+      if (!hostName().isEmpty())
       {
-        unc = QString( "//%1" ).arg( hostName() );
+        unc = QString("//%1").arg(hostName());
       }
       else
       {
@@ -177,9 +177,9 @@ QString Smb4KAuthInfo::unc() const
     }
     case Share:
     {
-      if ( !hostName().isEmpty() && !shareName().isEmpty() )
+      if (!hostName().isEmpty() && !shareName().isEmpty())
       {
-        unc = QString( "//%1/%2" ).arg( hostName() ).arg( shareName() );
+        unc = QString("//%1/%2").arg(hostName()).arg(shareName());
       }
       else
       {
@@ -201,9 +201,9 @@ QString Smb4KAuthInfo::hostUNC() const
 {
   QString unc;
   
-  if ( !hostName().isEmpty() )
+  if (!hostName().isEmpty())
   {
-    unc = QString( "//%1" ).arg( hostName() );
+    unc = QString("//%1").arg(hostName());
   }
   else
   {
@@ -272,9 +272,9 @@ QString Smb4KAuthInfo::hostName() const
 
 QString Smb4KAuthInfo::shareName() const
 {
-  if ( d->url.path().startsWith('/') )
+  if (d->url.path().startsWith('/'))
   {
-    return d->url.path().remove( 0, 1 );
+    return d->url.path().remove(0, 1);
   }
   else
   {
@@ -285,13 +285,13 @@ QString Smb4KAuthInfo::shareName() const
 }
 
 
-void Smb4KAuthInfo::setUserName( const QString &username )
+void Smb4KAuthInfo::setUserName(const QString &username)
 {
-  d->url.setUserName( username );
+  d->url.setUserName(username);
 
-  if ( d->homesShare )
+  if (d->homesShare)
   {
-    d->url.setPath( username );
+    d->url.setPath(username);
   }
   else
   {
@@ -306,9 +306,9 @@ QString Smb4KAuthInfo::userName() const
 }
 
 
-void Smb4KAuthInfo::setPassword( const QString &passwd )
+void Smb4KAuthInfo::setPassword(const QString &passwd)
 {
-  d->url.setPassword( passwd );
+  d->url.setPassword(passwd);
 }
 
 
@@ -330,10 +330,10 @@ bool Smb4KAuthInfo::isHomesShare() const
 }
 
 
-bool Smb4KAuthInfo::equals( Smb4KAuthInfo *info ) const
+bool Smb4KAuthInfo::equals(Smb4KAuthInfo *info) const
 {
   // URL
-  if ( d->url != info->url() )
+  if (d->url != info->url())
   {
     return false;
   }
@@ -343,7 +343,7 @@ bool Smb4KAuthInfo::equals( Smb4KAuthInfo *info ) const
   }
   
   // Type
-  if ( d->type != info->type() )
+  if (d->type != info->type())
   {
     return false;
   }
@@ -353,7 +353,7 @@ bool Smb4KAuthInfo::equals( Smb4KAuthInfo *info ) const
   }
   
   // Workgroup
-  if ( QString::compare( d->workgroup, info->workgroupName(), Qt::CaseInsensitive ) != 0 )
+  if (QString::compare(d->workgroup, info->workgroupName(), Qt::CaseInsensitive) != 0)
   {
     return false;
   }
@@ -363,7 +363,7 @@ bool Smb4KAuthInfo::equals( Smb4KAuthInfo *info ) const
   }
   
   // Homes share?
-  if ( d->homesShare != info->isHomesShare() )
+  if (d->homesShare != info->isHomesShare())
   {
     return false;
   }
@@ -373,7 +373,7 @@ bool Smb4KAuthInfo::equals( Smb4KAuthInfo *info ) const
   }
 
   // IP address
-  if ( QString::compare( d->ip.toString(), info->ip() ) != 0 )
+  if (QString::compare(d->ip.toString(), info->ip()) != 0)
   {
     return false;
   }
@@ -386,9 +386,9 @@ bool Smb4KAuthInfo::equals( Smb4KAuthInfo *info ) const
 }
 
 
-void Smb4KAuthInfo::setIP( const QString &ip )
+void Smb4KAuthInfo::setIP(const QString &ip)
 {
-  d->ip.setAddress( ip );
+  d->ip.setAddress(ip);
 }
 
 
