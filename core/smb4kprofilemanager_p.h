@@ -2,7 +2,7 @@
     Private helper class(es) for the profile manager.
                              -------------------
     begin                : Mi Aug 12 2014
-    copyright            : (C) 2014-2016 by Alexander Reinholdt
+    copyright            : (C) 2014-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
