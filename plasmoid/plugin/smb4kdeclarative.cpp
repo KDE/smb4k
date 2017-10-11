@@ -184,7 +184,7 @@ void Smb4KDeclarative::lookup(Smb4KNetworkObject *object)
       case Workgroup:
       {
         // Check if the workgroup is known.
-        Smb4KWorkgroup *workgroup = findWorkgroup(object->url().host().toUpper());
+        WorkgroupPtr workgroup = findWorkgroup(object->url().host().toUpper());
         
         if (workgroup)
         {
@@ -199,7 +199,7 @@ void Smb4KDeclarative::lookup(Smb4KNetworkObject *object)
       case Host:
       {
         // Check if the host is known.
-        Smb4KHost *host = findHost(object->url().host().toUpper());
+        HostPtr host = findHost(object->url().host().toUpper());
         
         if (host)
         {
@@ -322,7 +322,7 @@ void Smb4KDeclarative::mount(Smb4KNetworkObject *object)
       // Do nothing
     }
       
-    Smb4KShare *share = findShare("//"+object->hostName()+'/'+object->shareName(), object->workgroupName());
+    SharePtr share = findShare("//"+object->hostName()+'/'+object->shareName(), object->workgroupName());
     
     if (share)
     {
@@ -334,7 +334,8 @@ void Smb4KDeclarative::mount(Smb4KNetworkObject *object)
       // try the list of bookmarks.
       QString unc("//"+object->hostName()+"/"+object->shareName());
       Smb4KBookmark *bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC(unc);
-      share = new Smb4KShare();
+      
+      share = SharePtr(new Smb4KShare());
       share->setURL(object->url());
       share->setWorkgroupName(bookmark->workgroupName());
       share->setHostIP(bookmark->hostIP());
@@ -345,7 +346,7 @@ void Smb4KDeclarative::mount(Smb4KNetworkObject *object)
         QTest::qWait(50);
       }
       
-      delete share;      
+      share.clear();      
     }
   }
   else
@@ -361,7 +362,7 @@ void Smb4KDeclarative::unmount(Smb4KNetworkObject *object)
   {
     if (object->mountpoint().isValid())
     {
-      Smb4KShare *share = findShareByPath(object->mountpoint().path());
+      SharePtr share = findShareByPath(object->mountpoint().path());
       
       if (share)
       {
@@ -423,7 +424,7 @@ void Smb4KDeclarative::print(Smb4KNetworkObject* object)
 {
   if (object && object->type() == Smb4KNetworkObject::Share)
   {
-    Smb4KShare *printer = findShare("//"+object->hostName()+"/"+object->shareName(), object->workgroupName());
+    SharePtr printer = findShare("//"+object->hostName()+"/"+object->shareName(), object->workgroupName());
     
     if (printer)
     {
@@ -445,10 +446,10 @@ void Smb4KDeclarative::addBookmark(Smb4KNetworkObject* object)
 {
   if (object)
   {
-    QList<Smb4KShare *> shares; 
+    QList<SharePtr> shares; 
     
     // First, search the list of shares gathered by the scanner.
-    for (Smb4KShare *share : sharesList())
+    for (const SharePtr &share : sharesList())
     {
       if (share->url() == object->url())
       {
@@ -464,7 +465,7 @@ void Smb4KDeclarative::addBookmark(Smb4KNetworkObject* object)
     // Second, if the list is still empty, try the list of mounted shares.
     if (shares.isEmpty())
     {
-      for (Smb4KShare *mountedShare : mountedSharesList())
+      for (const SharePtr &mountedShare : mountedSharesList())
       {
         if (mountedShare->url() == object->url())
         {
@@ -540,7 +541,7 @@ void Smb4KDeclarative::synchronize(Smb4KNetworkObject* object)
 {
   if (object && object->type() == Smb4KNetworkObject::Share)
   {
-    for (Smb4KShare *share : mountedSharesList())
+    for (const SharePtr &share : mountedSharesList())
     {
       if (share->url() == object->url())
       {
@@ -567,7 +568,7 @@ void Smb4KDeclarative::openCustomOptionsDialog(Smb4KNetworkObject *object)
     {
       case Smb4KNetworkObject::Host:
       {
-        for (Smb4KHost *host : hostsList())
+        for (const HostPtr &host : hostsList())
         {
           if (host->url() == object->url())
           {
@@ -583,7 +584,7 @@ void Smb4KDeclarative::openCustomOptionsDialog(Smb4KNetworkObject *object)
       }
       case Smb4KNetworkObject::Share:
       {
-        for (Smb4KShare *share : sharesList())
+        for (const SharePtr &share : sharesList())
         {
           if (share->url() == object->url())
           {
@@ -684,7 +685,7 @@ void Smb4KDeclarative::preview(Smb4KNetworkObject* object)
   if (object->type() == Smb4KNetworkObject::Share)
   {
     QString unc = object->url().toString(QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::StripTrailingSlash);
-    Smb4KShare *share = findShare(unc, object->workgroupName());
+    SharePtr share = findShare(unc, object->workgroupName());
     
     if (share)
     {
@@ -711,9 +712,9 @@ void Smb4KDeclarative::slotWorkgroupsListChanged()
     delete d->workgroupObjects.takeFirst();
   }
 
-  for (Smb4KWorkgroup *workgroup : workgroupsList())
+  for (const WorkgroupPtr &workgroup : workgroupsList())
   {
-    d->workgroupObjects << new Smb4KNetworkObject(workgroup);
+    d->workgroupObjects << new Smb4KNetworkObject(workgroup.data());
   }
   
   emit workgroupsListChanged();
@@ -728,9 +729,9 @@ void Smb4KDeclarative::slotHostsListChanged()
     delete d->hostObjects.takeFirst();
   }
   
-  for (Smb4KHost *host : hostsList())
+  for (const HostPtr &host : hostsList())
   {
-    d->hostObjects << new Smb4KNetworkObject(host);
+    d->hostObjects << new Smb4KNetworkObject(host.data());
   }
   
   emit hostsListChanged();
@@ -745,9 +746,9 @@ void Smb4KDeclarative::slotSharesListChanged()
     delete d->shareObjects.takeFirst();
   }
 
-  for (Smb4KShare *share : sharesList())
+  for (const SharePtr &share : sharesList())
   {
-    d->shareObjects << new Smb4KNetworkObject(share);
+    d->shareObjects << new Smb4KNetworkObject(share.data());
   }
   
   emit sharesListChanged();
@@ -762,9 +763,9 @@ void Smb4KDeclarative::slotMountedSharesListChanged()
     delete d->mountedObjects.takeFirst();
   }
   
-  for (Smb4KShare *mountedShare : mountedSharesList())
+  for (const SharePtr &mountedShare : mountedSharesList())
   {
-    d->mountedObjects << new Smb4KNetworkObject(mountedShare);
+    d->mountedObjects << new Smb4KNetworkObject(mountedShare.data());
   }
   
   emit mountedSharesListChanged();
