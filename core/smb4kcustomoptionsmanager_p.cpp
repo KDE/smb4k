@@ -2,7 +2,7 @@
     Private helper classes for Smb4KCustomOptionsManager class
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2016 by Alexander Reinholdt
+    copyright            : (C) 2011-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
