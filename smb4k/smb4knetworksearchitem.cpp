@@ -3,7 +3,7 @@
     box item for Smb4K.
                              -------------------
     begin                : So Jun 3 2007
-    copyright            : (C) 2007-2015 by Alexander Reinholdt
+    copyright            : (C) 2007-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -49,7 +49,7 @@ Smb4KNetworkSearchItem::Smb4KNetworkSearchItem(QListWidget *listWidget, const Sh
 Smb4KNetworkSearchItem::Smb4KNetworkSearchItem(QListWidget *listWidget)
 : QListWidgetItem(listWidget, Failure)
 {
-  m_share = 0;
+  m_share = SharePtr();
   setupItem();
 }
 
