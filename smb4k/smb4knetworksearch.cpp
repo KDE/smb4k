@@ -2,7 +2,7 @@
     smb4knetworksearch  -  The network search widget of Smb4K.
                              -------------------
     begin                : Sa Jun 2 2007
-    copyright            : (C) 2007-2015 by Alexander Reinholdt
+    copyright            : (C) 2007-2017 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
