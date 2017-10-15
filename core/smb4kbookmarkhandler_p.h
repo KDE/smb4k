@@ -28,6 +28,7 @@
 
 // application specific includes
 #include "smb4kbookmarkhandler.h"
+#include "smb4kglobal.h"
 
 // Qt includes
 #include <QString>
@@ -347,7 +348,6 @@ class Smb4KBookmarkHandlerPrivate
   public:
     Smb4KBookmarkEditor *editor;
     QList<Smb4KBookmark *> bookmarks;
-    QStringList groups;
 };
 
 

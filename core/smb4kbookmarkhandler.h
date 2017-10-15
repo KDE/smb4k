@@ -179,14 +179,8 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
   private:
     /**
      * This function reads the list of bookmarks from the bookmarks file.
-     * 
-     * @param bookmarks       The list that should be filled with the bookmarks
-     * @param groups          The list that should be filled with the bookmark groups 
-     * @param allBookmarks    Read all bookmarks ignoring profiles
      */
-    void readBookmarks(QList<Smb4KBookmark *> *bookmarks,
-                       QStringList *groups,
-                       bool allBookmarks);
+    void readBookmarks();
 
     /**
      * This function updates the data of the bookmarks, i.e. is searches for
@@ -196,17 +190,9 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
     void update() const;
 
     /**
-     * This function writes the bookmarks to the disk. If @p listOnly is
-     * set to TRUE, only the list that was passed will be written to the 
-     * file replacing the existing bookmarks. If it is FALSE (the default),
-     * the list will be merged with the existing bookmarks. 
-     *
-     * @param list          The (new) list of bookmarks that is to be written
-     *                      to the bookmark file
-     * @param listOnly      If TRUE only the passed list will be written to
-     *                      the file.
+     * This function writes the bookmarks to the disk. 
      */
-    void writeBookmarkList(const QList<Smb4KBookmark *> &list, bool listOnly = false);
+    void writeBookmarkList();
 
     /**
      * This function adds several bookmarks at once. It takes a list of
