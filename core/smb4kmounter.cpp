@@ -823,7 +823,7 @@ void Smb4KMounter::mountShare(const SharePtr &share, QWidget *parent)
           }
           else
           {
-            Smb4KNotification::mountingFailed(share.data(), errorMsg);
+            Smb4KNotification::mountingFailed(share, errorMsg);
           }
 #else
           qWarning() << "Smb4KMounter::slotMountJobFinished(): Error handling not implemented!";
@@ -1840,7 +1840,7 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   
   // Mount arguments.
   QMap<QString, QString> global_options = globalSambaOptions();
-  Smb4KCustomOptions *options  = Smb4KCustomOptionsManager::self()->findOptions(share.data());
+  Smb4KCustomOptions *options  = Smb4KCustomOptionsManager::self()->findOptions(share);
 
   // Compile the list of arguments.
   QStringList args_list;
