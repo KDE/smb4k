@@ -333,7 +333,7 @@ void Smb4KDeclarative::mount(Smb4KNetworkObject *object)
       // If the share is not in the global list of shares,
       // try the list of bookmarks.
       QString unc("//"+object->hostName()+"/"+object->shareName());
-      Smb4KBookmark *bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC(unc);
+      BookmarkPtr bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC(unc);
       
       share = SharePtr(new Smb4KShare());
       share->setURL(object->url());
@@ -507,7 +507,7 @@ void Smb4KDeclarative::removeBookmark(Smb4KBookmarkObject* object)
     // Find the bookmark in the list and remove it.
     QString path = (object->url().path().startsWith('/') ? object->url().path().remove(0, 1) : object->url().path());
     QString unc = QString("//%1/%2").arg(object->url().host().toUpper()).arg(path);
-    Smb4KBookmark *bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC(unc);
+    BookmarkPtr bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC(unc);
     
     if (bookmark)
     {
@@ -785,9 +785,9 @@ void Smb4KDeclarative::slotBookmarksListChanged()
     delete d->bookmarkGroupObjects.takeFirst();
   }
   
-  for (Smb4KBookmark *bookmark : Smb4KBookmarkHandler::self()->bookmarksList())
+  for (const BookmarkPtr &bookmark : Smb4KBookmarkHandler::self()->bookmarksList())
   {
-    d->bookmarkObjects << new Smb4KBookmarkObject(bookmark);
+    d->bookmarkObjects << new Smb4KBookmarkObject(bookmark.data());
   }
   
   for (const QString &group : Smb4KBookmarkHandler::self()->groupsList())

@@ -93,7 +93,7 @@ Smb4KBookmarkHandler::~Smb4KBookmarkHandler()
 {
   while (!d->bookmarks.isEmpty())
   {
-    delete d->bookmarks.takeFirst();
+    d->bookmarks.takeFirst().clear();
   }
   
   delete d->editor;
@@ -123,12 +123,16 @@ void Smb4KBookmarkHandler::addBookmark(const SharePtr &share, QWidget *parent)
 
 void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list, QWidget *parent)
 {
-  // Prepare the list of bookmarks and show the save dialog.
-  QList<Smb4KBookmark *> new_bookmarks;
+  //
+  // Prepare the list of bookmarks that should be added
+  //
+  QList<BookmarkPtr> newBookmarks;
   
   for (const SharePtr &share : list)
   {
-    // Check if the share is a printer
+    //
+    // Printer shares cannot be bookmarked
+    //
     if (share->isPrinter())
     {
       Smb4KNotification::cannotBookmarkPrinter(share);
@@ -138,12 +142,12 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list, QWidget *pa
     {
       // Do nothing
     }
-
+    
+    //
     // Process homes shares
+    //
     if (share->isHomesShare())
     {
-      // If the user provides a valid user name we set it and continue.
-      // Otherwise the share will be skipped.
       if (!Smb4KHomesSharesHandler::self()->specifyUser(share, true, parent))
       {
         continue;
@@ -153,22 +157,20 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list, QWidget *pa
         // Do nothing
       }
     }
-
-    Smb4KBookmark *known_bookmark = 0;
-    
-    if (!share->isHomesShare())
-    {
-      known_bookmark = findBookmarkByUNC(share->unc());
-    }
     else
     {
-      known_bookmark = findBookmarkByUNC(share->homeUNC());
+      // Do nothing
     }
-
-    // Skip bookmarks already present
-    if (known_bookmark)
+    
+    //
+    // Check if the share has already been bookmarked and skip it if it
+    // already exists
+    //
+    BookmarkPtr knownBookmark = findBookmarkByUNC(share->isHomesShare() ? share->homeUNC() : share->unc());
+    
+    if (knownBookmark)
     {
-      Smb4KNotification::bookmarkExists(known_bookmark);
+      Smb4KNotification::bookmarkExists(knownBookmark.data());
       continue;
     }
     else
@@ -176,15 +178,18 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list, QWidget *pa
       // Do nothing
     }
     
-    Smb4KBookmark *bookmark = new Smb4KBookmark(share.data());
+    BookmarkPtr bookmark = BookmarkPtr(new Smb4KBookmark(share.data()));
     bookmark->setProfile(Smb4KProfileManager::self()->activeProfile());
-    new_bookmarks << bookmark;
+    newBookmarks << bookmark;
   }
   
-  if (!new_bookmarks.isEmpty())
+  //
+  // Show the bookmark dialog, if necessary
+  //
+  if (!newBookmarks.isEmpty())
   {
-    QPointer<Smb4KBookmarkDialog> dlg = new Smb4KBookmarkDialog(new_bookmarks, groupsList(), parent);
-
+    QPointer<Smb4KBookmarkDialog> dlg = new Smb4KBookmarkDialog(newBookmarks, groupsList(), parent);
+    
     if (dlg->exec() == QDialog::Accepted)
     {
       // The bookmark dialog uses an internal list of bookmarks, 
@@ -204,22 +209,26 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list, QWidget *pa
     // Do nothing
   }
   
-  // Clear the list of bookmarks.
-  while (!new_bookmarks.isEmpty())
+  //
+  // Clear the temporary list of bookmarks
+  //
+  while (!newBookmarks.isEmpty())
   {
-    delete new_bookmarks.takeFirst();
+    newBookmarks.takeFirst().clear();
   }
 }
 
 
-void Smb4KBookmarkHandler::addBookmarks(const QList<Smb4KBookmark*>& list, bool replace)
+void Smb4KBookmarkHandler::addBookmarks(const QList<BookmarkPtr> &list, bool replace)
 {
-  // Clear the internal lists if desired.
+  //
+  // Clear the internal list if desired
+  //
   if (replace)
   {
     while (!d->bookmarks.isEmpty())
     {
-      delete d->bookmarks.takeFirst();
+      d->bookmarks.takeFirst().clear();
     }
   }
   else
@@ -227,30 +236,43 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<Smb4KBookmark*>& list, bool 
     // Do nothing
   }
   
-  // Append the new bookmarks to the internal list and check
-  // the label simultaneously.
-  for (Smb4KBookmark *bookmark : list)
+  //
+  // Append the new bookmarks to the internal list if it is a new one and 
+  // check the label simultaneously.
+  //
+  for (const BookmarkPtr &bookmark : list)
   {
-    if (!bookmark->label().isEmpty() && findBookmarkByLabel(bookmark->label()))
+    BookmarkPtr existingBookmark = findBookmarkByUNC(bookmark->unc());
+    
+    if (!existingBookmark)
     {
-      Smb4KNotification::bookmarkLabelInUse(bookmark);
-      Smb4KBookmark *new_bookmark = new Smb4KBookmark(*bookmark);
-      new_bookmark->setLabel(QString("%1 (1)").arg(bookmark->label()));
-      d->bookmarks << new_bookmark;
+      if (!bookmark->label().isEmpty() && findBookmarkByLabel(bookmark->label()))
+      {
+        Smb4KNotification::bookmarkLabelInUse(bookmark.data());
+        bookmark->setLabel(QString("%1 (1)").arg(bookmark->label()));
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      d->bookmarks << bookmark;
     }
     else
     {
-      d->bookmarks << new Smb4KBookmark(*bookmark);
+      // Do nothing
     }
   }
-      
-  // Save the bookmarks list.
-  writeBookmarkList();  
+  
+  //
+  // Save the bookmark list and emit the updated() signal
+  //
+  writeBookmarkList();
   emit updated();
 }
 
 
-void Smb4KBookmarkHandler::removeBookmark(Smb4KBookmark* bookmark)
+void Smb4KBookmarkHandler::removeBookmark(const BookmarkPtr &bookmark)
 {
   if (bookmark)
   {
@@ -260,7 +282,7 @@ void Smb4KBookmarkHandler::removeBookmark(Smb4KBookmark* bookmark)
           QString::compare(bookmark->unc(), d->bookmarks.at(i)->unc(), Qt::CaseInsensitive) == 0 &&
           QString::compare(bookmark->groupName(), d->bookmarks.at(i)->groupName(), Qt::CaseInsensitive) == 0)
       {
-        delete d->bookmarks.takeAt(i);
+        d->bookmarks.takeAt(i).clear();
         break;
       }
       else
@@ -282,11 +304,11 @@ void Smb4KBookmarkHandler::removeBookmark(Smb4KBookmark* bookmark)
 
 void Smb4KBookmarkHandler::removeGroup(const QString& name)
 {
-  QMutableListIterator<Smb4KBookmark *> it(d->bookmarks);
+  QMutableListIterator<BookmarkPtr> it(d->bookmarks);
   
   while (it.hasNext())
   {
-    Smb4KBookmark *b = it.next();
+    const BookmarkPtr &b = it.next();
     
     if ((!Smb4KSettings::useProfiles() || Smb4KSettings::activeProfile() == b->profile()) ||
         QString::compare(b->groupName(), name, Qt::CaseInsensitive) == 0)
@@ -319,7 +341,7 @@ void Smb4KBookmarkHandler::writeBookmarkList()
       xmlWriter.writeStartElement("bookmarks");
       xmlWriter.writeAttribute("version", "1.1");
 
-      for (Smb4KBookmark *bookmark : d->bookmarks)
+      for (const BookmarkPtr &bookmark : d->bookmarks)
       {
         if (!bookmark->url().isValid())
         {
@@ -388,7 +410,7 @@ void Smb4KBookmarkHandler::readBookmarks()
           {
             QString profile = xmlReader.attributes().value("profile").toString();
             
-            Smb4KBookmark *bookmark = new Smb4KBookmark();
+            BookmarkPtr bookmark = BookmarkPtr(new Smb4KBookmark());
             bookmark->setProfile(profile);
             bookmark->setGroupName(xmlReader.attributes().value("group").toString());
               
@@ -476,15 +498,15 @@ void Smb4KBookmarkHandler::readBookmarks()
 }
 
 
-Smb4KBookmark *Smb4KBookmarkHandler::findBookmarkByUNC(const QString &unc)
+BookmarkPtr Smb4KBookmarkHandler::findBookmarkByUNC(const QString &unc)
 {
   // Update the bookmarks:
   update();
 
   // Find the bookmark:
-  Smb4KBookmark *bookmark = 0;
+  BookmarkPtr bookmark;
 
-  for (Smb4KBookmark *b : bookmarksList())
+  for (const BookmarkPtr &b : bookmarksList())
   {
     if (QString::compare(b->unc().toUpper(), unc.toUpper()) == 0)
     {
@@ -501,15 +523,15 @@ Smb4KBookmark *Smb4KBookmarkHandler::findBookmarkByUNC(const QString &unc)
 }
 
 
-Smb4KBookmark *Smb4KBookmarkHandler::findBookmarkByLabel(const QString &label)
+BookmarkPtr Smb4KBookmarkHandler::findBookmarkByLabel(const QString &label)
 {
   // Update the bookmarks:
   update();
 
   // Find the bookmark:
-  Smb4KBookmark *bookmark = 0;
+  BookmarkPtr bookmark;
 
-  for (Smb4KBookmark *b : bookmarksList())
+  for (const BookmarkPtr &b : bookmarksList())
   {
     if (QString::compare(b->label().toUpper(), label.toUpper()) == 0)
     {
@@ -526,7 +548,7 @@ Smb4KBookmark *Smb4KBookmarkHandler::findBookmarkByLabel(const QString &label)
 }
 
 
-QList<Smb4KBookmark *> Smb4KBookmarkHandler::bookmarksList() const
+QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList() const
 {
   // Update the bookmarks:
   update();
@@ -534,9 +556,9 @@ QList<Smb4KBookmark *> Smb4KBookmarkHandler::bookmarksList() const
   // Get this list of the bookmarks
   if (Smb4KSettings::useProfiles())
   {
-    QList<Smb4KBookmark *> bookmarks;
+    QList<BookmarkPtr> bookmarks;
     
-    for (Smb4KBookmark *b : d->bookmarks)
+    for (const BookmarkPtr &b : d->bookmarks)
     {
       if (b->profile() == Smb4KSettings::activeProfile())
       {
@@ -560,15 +582,15 @@ QList<Smb4KBookmark *> Smb4KBookmarkHandler::bookmarksList() const
 }
 
 
-QList<Smb4KBookmark *> Smb4KBookmarkHandler::bookmarksList(const QString &group) const
+QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList(const QString &group) const
 {
   // Update bookmarks
   update();
 
   // Get the list of bookmarks organized in the given group
-  QList<Smb4KBookmark *> bookmarks;
+  QList<BookmarkPtr> bookmarks;
 
-  for (Smb4KBookmark *bookmark : bookmarksList())
+  for (const BookmarkPtr &bookmark : bookmarksList())
   {
     if (QString::compare(group, bookmark->groupName(), Qt::CaseInsensitive) == 0)
     {
@@ -588,7 +610,7 @@ QStringList Smb4KBookmarkHandler::groupsList() const
 {
   QStringList groups;
   
-  for (Smb4KBookmark *b : bookmarksList())
+  for (const BookmarkPtr &b : bookmarksList())
   {
     if (!groups.contains(b->groupName()))
     {
@@ -620,7 +642,7 @@ void Smb4KBookmarkHandler::editBookmarks(QWidget *parent)
     // Now replace the current list with the new one that is
     // passed by the editor. For this set the 'replace' argument
     // for addBookmarks() to TRUE.
-    QList<Smb4KBookmark *> bookmarks = d->editor->editedBookmarks();
+    QList<BookmarkPtr> bookmarks = d->editor->editedBookmarks();
     addBookmarks(bookmarks, true);
   }
   else
@@ -636,7 +658,7 @@ void Smb4KBookmarkHandler::editBookmarks(QWidget *parent)
 void Smb4KBookmarkHandler::update() const
 {
   // Get new IP addresses.
-  for (Smb4KBookmark *bookmark : d->bookmarks)
+  for (const BookmarkPtr &bookmark : d->bookmarks)
   {
     HostPtr host = findHost(bookmark->hostName(), bookmark->workgroupName());
     
@@ -662,7 +684,7 @@ void Smb4KBookmarkHandler::update() const
 void Smb4KBookmarkHandler::migrateProfile(const QString& from, const QString& to)
 {
   // Replace the old profile name with the new one.
-  for (Smb4KBookmark *bookmark : d->bookmarks)
+  for (const BookmarkPtr &bookmark : d->bookmarks)
   {
     if (QString::compare(bookmark->profile(), from, Qt::CaseSensitive) == 0)
     {
@@ -684,11 +706,11 @@ void Smb4KBookmarkHandler::migrateProfile(const QString& from, const QString& to
 
 void Smb4KBookmarkHandler::removeProfile(const QString& name)
 {
-  QMutableListIterator<Smb4KBookmark *> it(d->bookmarks);
+  QMutableListIterator<BookmarkPtr> it(d->bookmarks);
   
   while (it.hasNext())
   {
-    Smb4KBookmark *bookmark = it.next();
+    const BookmarkPtr &bookmark = it.next();
     
     if (QString::compare(bookmark->profile(), name, Qt::CaseSensitive) == 0)
     {

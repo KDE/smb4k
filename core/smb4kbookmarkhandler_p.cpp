@@ -57,7 +57,7 @@
 #include <KConfigGui/KWindowConfig>
 
 
-Smb4KBookmarkDialog::Smb4KBookmarkDialog(const QList<Smb4KBookmark *> &bookmarks, const QStringList &groups, QWidget *parent)
+Smb4KBookmarkDialog::Smb4KBookmarkDialog(const QList<BookmarkPtr> &bookmarks, const QStringList &groups, QWidget *parent)
 : QDialog(parent)
 {
   setWindowTitle(i18n("Add Bookmarks"));
@@ -78,12 +78,12 @@ Smb4KBookmarkDialog::~Smb4KBookmarkDialog()
 {
   while (!m_bookmarks.isEmpty())
   {
-    delete m_bookmarks.takeFirst();
+    m_bookmarks.takeFirst().clear();
   }
 }
 
 
-const QList<Smb4KBookmark *> &Smb4KBookmarkDialog::bookmarks()
+const QList<BookmarkPtr> &Smb4KBookmarkDialog::bookmarks()
 {
   return m_bookmarks;
 }
@@ -171,17 +171,16 @@ void Smb4KBookmarkDialog::setupView()
 }
 
 
-void Smb4KBookmarkDialog::loadLists(const QList<Smb4KBookmark *> &bookmarks, const QStringList &groups)
+void Smb4KBookmarkDialog::loadLists(const QList<BookmarkPtr> &bookmarks, const QStringList &groups)
 {
   // Copy the bookmarks to the internal list and add them to 
   // the list widget afterwards.
-  for (Smb4KBookmark *b : bookmarks)
+  for (const BookmarkPtr &b : bookmarks)
   {
-    Smb4KBookmark *bookmark = new Smb4KBookmark(*b);
-    QListWidgetItem *item = new QListWidgetItem(bookmark->icon(), bookmark->unc(), m_widget);
-    item->setData(Qt::UserRole, static_cast<QUrl>(bookmark->url()));
+    QListWidgetItem *item = new QListWidgetItem(b->icon(), b->unc(), m_widget);
+    item->setData(Qt::UserRole, static_cast<QUrl>(b->url()));
     
-    m_bookmarks << bookmark;
+    m_bookmarks << b;
   }
 
   m_groups = groups;
@@ -189,11 +188,11 @@ void Smb4KBookmarkDialog::loadLists(const QList<Smb4KBookmark *> &bookmarks, con
 }
 
 
-Smb4KBookmark *Smb4KBookmarkDialog::findBookmark(const QUrl &url)
+BookmarkPtr Smb4KBookmarkDialog::findBookmark(const QUrl &url)
 {
-  Smb4KBookmark *bookmark = 0;
+  BookmarkPtr bookmark;
   
-  for (Smb4KBookmark *b : m_bookmarks)
+  for (const BookmarkPtr &b : m_bookmarks)
   {
     if (b->url() == url)
     {
@@ -226,7 +225,7 @@ void Smb4KBookmarkDialog::slotBookmarkClicked(QListWidgetItem *bookmark_item)
 
     QUrl url = bookmark_item->data(Qt::UserRole).toUrl();
     
-    Smb4KBookmark *bookmark = findBookmark(url);
+    BookmarkPtr bookmark = findBookmark(url);
 
     if (bookmark)
     {
@@ -254,7 +253,7 @@ void Smb4KBookmarkDialog::slotLabelEdited()
   // Set the label
   QUrl url = m_widget->currentItem()->data(Qt::UserRole).toUrl();
 
-  Smb4KBookmark *bookmark = findBookmark(url);
+  BookmarkPtr bookmark = findBookmark(url);
 
   if (bookmark)
   {
@@ -283,8 +282,8 @@ void Smb4KBookmarkDialog::slotGroupEdited()
 {
   // Set the group
   QUrl url = m_widget->currentItem()->data(Qt::UserRole).toUrl();
-
-  Smb4KBookmark *bookmark = findBookmark(url);
+  
+  BookmarkPtr bookmark = findBookmark(url);
 
   if (bookmark)
   {
@@ -349,7 +348,7 @@ void Smb4KBookmarkDialog::slotIconSizeChanged(int group)
 
 
 
-Smb4KBookmarkEditor::Smb4KBookmarkEditor(const QList<Smb4KBookmark *> &bookmarks, QWidget *parent)
+Smb4KBookmarkEditor::Smb4KBookmarkEditor(const QList<BookmarkPtr> &bookmarks, QWidget *parent)
 : QDialog(parent)
 {
   setWindowTitle(i18n("Edit Bookmarks"));
@@ -374,12 +373,12 @@ Smb4KBookmarkEditor::~Smb4KBookmarkEditor()
 {
   while (!m_bookmarks.isEmpty())
   {
-    delete m_bookmarks.takeFirst();
+    m_bookmarks.takeFirst().clear();
   }
 }
 
 
-QList<Smb4KBookmark *> Smb4KBookmarkEditor::editedBookmarks() const
+QList<BookmarkPtr> Smb4KBookmarkEditor::editedBookmarks() const
 {
   return m_bookmarks;
 }
@@ -533,12 +532,12 @@ void Smb4KBookmarkEditor::setupView()
 }
 
 
-void Smb4KBookmarkEditor::loadBookmarks(const QList<Smb4KBookmark *> &bookmarks)
+void Smb4KBookmarkEditor::loadBookmarks(const QList<BookmarkPtr> &bookmarks)
 {
   // Copy the bookmarks and the groups to the internal lists.
-  for (Smb4KBookmark *bookmark : bookmarks)
+  for (const BookmarkPtr &bookmark : bookmarks)
   {
-    m_bookmarks << new Smb4KBookmark(*bookmark);
+    m_bookmarks << bookmark;
     
     if (!m_groups.contains(bookmark->groupName()))
     {
@@ -569,7 +568,7 @@ void Smb4KBookmarkEditor::loadBookmarks(const QList<Smb4KBookmark *> &bookmarks)
   }
   
   // Insert the bookmarks info the tree widget.
-  for (Smb4KBookmark *bookmark : m_bookmarks)
+  for (const BookmarkPtr &bookmark : m_bookmarks)
   {
     QTreeWidgetItem *bookmarkItem = new QTreeWidgetItem(QTreeWidgetItem::UserType);
     bookmarkItem->setData(0, QTreeWidgetItem::UserType, static_cast<QUrl>(bookmark->url()));
@@ -622,11 +621,11 @@ void Smb4KBookmarkEditor::loadBookmarks(const QList<Smb4KBookmark *> &bookmarks)
 }
 
 
-Smb4KBookmark *Smb4KBookmarkEditor::findBookmark(const QUrl &url)
+BookmarkPtr Smb4KBookmarkEditor::findBookmark(const QUrl &url)
 {
-  Smb4KBookmark *bookmark = 0;
+  BookmarkPtr bookmark;
 
-  for (Smb4KBookmark *b : m_bookmarks)
+  for (const BookmarkPtr &b : m_bookmarks)
   {
     if (b->url() == url)
     {
@@ -654,7 +653,7 @@ void Smb4KBookmarkEditor::slotItemClicked(QTreeWidgetItem *item, int /*col*/)
       // Bookmarks have an URL stored, group folders not.
       if (!item->data(0, QTreeWidgetItem::UserType).toUrl().isEmpty())
       {
-        Smb4KBookmark *bookmark = findBookmark(item->data(0, QTreeWidgetItem::UserType).toUrl());
+        BookmarkPtr bookmark = findBookmark(item->data(0, QTreeWidgetItem::UserType).toUrl());
 
         if (bookmark)
         {
@@ -685,7 +684,7 @@ void Smb4KBookmarkEditor::slotItemClicked(QTreeWidgetItem *item, int /*col*/)
     else
     {
       // This can only be a bookmark.
-      Smb4KBookmark *bookmark = findBookmark(item->data(0, QTreeWidgetItem::UserType).toUrl());
+      BookmarkPtr bookmark = findBookmark(item->data(0, QTreeWidgetItem::UserType).toUrl());
 
       if (bookmark)
       {
@@ -729,7 +728,7 @@ void Smb4KBookmarkEditor::slotLabelEdited()
   // Set the label
   QUrl url = m_tree_widget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl();
 
-  Smb4KBookmark *bookmark = findBookmark(url);
+  BookmarkPtr bookmark = findBookmark(url);
 
   if (bookmark)
   {
@@ -759,7 +758,7 @@ void Smb4KBookmarkEditor::slotLoginEdited()
   // Set the login
   QUrl url = m_tree_widget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl();
 
-  Smb4KBookmark *bookmark = findBookmark(url);
+  BookmarkPtr bookmark = findBookmark(url);
 
   if (bookmark)
   {
@@ -789,7 +788,7 @@ void Smb4KBookmarkEditor::slotIPEdited()
   // Set the ip address
   QUrl url = m_tree_widget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl();
 
-  Smb4KBookmark *bookmark = findBookmark(url);
+  BookmarkPtr bookmark = findBookmark(url);
 
   if (bookmark)
   {
@@ -842,7 +841,7 @@ void Smb4KBookmarkEditor::slotGroupEdited()
     // Do nothing
   }
   
-  Smb4KBookmark *bookmark = findBookmark(url);
+  BookmarkPtr bookmark = findBookmark(url);
 
   if (bookmark)
   {
@@ -1060,11 +1059,11 @@ void Smb4KBookmarkEditor::slotDialogAccepted()
   // Remove obsolete bookmarks.
   // We can assume that each server in the network has a unique 
   // name, so we only need to test for the UNC and are done.
-  QMutableListIterator<Smb4KBookmark *> it(m_bookmarks);
+  QMutableListIterator<BookmarkPtr> it(m_bookmarks);
 
   while (it.hasNext())
   {
-    Smb4KBookmark *bookmark = it.next();
+    BookmarkPtr bookmark = it.next();
         
     QList<QTreeWidgetItem *> items = m_tree_widget->findItems(bookmark->unc(), Qt::MatchFixedString|Qt::MatchCaseSensitive|Qt::MatchRecursive, 0);
 
@@ -1128,7 +1127,7 @@ void Smb4KBookmarkEditor::slotAdjust()
       }
       else
       {
-        Smb4KBookmark *bookmark = findBookmark((*it)->data(0, QTreeWidgetItem::UserType).toUrl());
+        BookmarkPtr bookmark = findBookmark((*it)->data(0, QTreeWidgetItem::UserType).toUrl());
       
         if (bookmark)
         {
@@ -1142,7 +1141,7 @@ void Smb4KBookmarkEditor::slotAdjust()
     }
     else
     {
-      Smb4KBookmark *bookmark = findBookmark((*it)->data(0, QTreeWidgetItem::UserType).toUrl());
+      BookmarkPtr bookmark = findBookmark((*it)->data(0, QTreeWidgetItem::UserType).toUrl());
       
       if (bookmark)
       {

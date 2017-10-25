@@ -53,13 +53,13 @@ class Q_DECL_EXPORT Smb4KBookmarkDialog : public QDialog
     /**
      * The constructor
      *
-     * @param list            The list of bookmarks that are to be saved
+     * @param bookmarks       The list of bookmarks that are to be saved
      * 
      * @param groups          The list of available bookmark groups
      *
      * @param parent          The parent widget
      */
-    Smb4KBookmarkDialog(const QList<Smb4KBookmark *> &bookmarks,
+    Smb4KBookmarkDialog(const QList<BookmarkPtr> &bookmarks,
                         const QStringList &groups,
                         QWidget *parent);
 
@@ -74,7 +74,7 @@ class Q_DECL_EXPORT Smb4KBookmarkDialog : public QDialog
     * 
     * @returns the list of bookmarks.
     */
-   const QList<Smb4KBookmark *> &bookmarks();
+   const QList<BookmarkPtr> &bookmarks();
 
   protected Q_SLOTS:
     /**
@@ -111,12 +111,12 @@ class Q_DECL_EXPORT Smb4KBookmarkDialog : public QDialog
     /**
      * Load the list of bookmarks and the one of the groups
      */
-    void loadLists(const QList<Smb4KBookmark *> &bookmarks, const QStringList &groups);
+    void loadLists(const QList<BookmarkPtr> &bookmarks, const QStringList &groups);
 
     /**
      * Finds the bookmark in the list
      */
-    Smb4KBookmark *findBookmark(const QUrl &url);
+    BookmarkPtr findBookmark(const QUrl &url);
     
     /**
      * Ok push button
@@ -131,7 +131,7 @@ class Q_DECL_EXPORT Smb4KBookmarkDialog : public QDialog
     /**
      * The list of bookmarks
      */
-    QList<Smb4KBookmark *> m_bookmarks;
+    QList<BookmarkPtr> m_bookmarks;
 
     /**
      * The list of groups
@@ -172,7 +172,7 @@ class Q_DECL_EXPORT Smb4KBookmarkEditor : public QDialog
      *
      * @param parent      The parent of this dialog.
      */
-    explicit Smb4KBookmarkEditor(const QList<Smb4KBookmark *> &bookmarks,
+    explicit Smb4KBookmarkEditor(const QList<BookmarkPtr> &bookmarks,
                                  QWidget *parent = 0);
 
     /**
@@ -187,7 +187,7 @@ class Q_DECL_EXPORT Smb4KBookmarkEditor : public QDialog
      *
      * @returns the list of bookmarks
      */
-    QList<Smb4KBookmark *> editedBookmarks() const;
+    QList<BookmarkPtr> editedBookmarks() const;
 
   protected:
     /**
@@ -263,12 +263,12 @@ class Q_DECL_EXPORT Smb4KBookmarkEditor : public QDialog
     /**
      * Load bookmarks
      */
-    void loadBookmarks(const QList<Smb4KBookmark *> &bookmarks);
+    void loadBookmarks(const QList<BookmarkPtr> &bookmarks);
 
     /**
      * Finds the bookmark in the list
      */
-    Smb4KBookmark *findBookmark(const QUrl &url);
+    BookmarkPtr findBookmark(const QUrl &url);
     
     /**
      * Ok push button
@@ -284,7 +284,7 @@ class Q_DECL_EXPORT Smb4KBookmarkEditor : public QDialog
     /**
      * List of the bookmarks that are being processed
      */
-    QList<Smb4KBookmark *> m_bookmarks;
+    QList<BookmarkPtr> m_bookmarks;
 
     /**
      * Tree widget
@@ -347,7 +347,7 @@ class Smb4KBookmarkHandlerPrivate
 {
   public:
     Smb4KBookmarkEditor *editor;
-    QList<Smb4KBookmark *> bookmarks;
+    QList<BookmarkPtr> bookmarks;
 };
 
 
