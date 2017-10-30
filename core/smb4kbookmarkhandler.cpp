@@ -222,45 +222,44 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list, QWidget *pa
 void Smb4KBookmarkHandler::addBookmarks(const QList<BookmarkPtr> &list, bool replace)
 {
   //
-  // Clear the internal list if desired
-  //
+  // Process the incoming list.
+  // In case the internal list should be replaced, clear the internal list and 
+  // copy the new one. Otherwise just add new bookmarks to the list and omit 
+  // already existing ones.
+  // 
   if (replace)
   {
     while (!d->bookmarks.isEmpty())
     {
       d->bookmarks.takeFirst().clear();
     }
+    
+    d->bookmarks = list;
   }
   else
   {
-    // Do nothing
-  }
-  
-  //
-  // Append the new bookmarks to the internal list if it is a new one and 
-  // check the label simultaneously.
-  //
-  for (const BookmarkPtr &bookmark : list)
-  {
-    BookmarkPtr existingBookmark = findBookmarkByUNC(bookmark->unc());
-    
-    if (!existingBookmark)
+    for (const BookmarkPtr &bookmark : list)
     {
-      if (!bookmark->label().isEmpty() && findBookmarkByLabel(bookmark->label()))
+      BookmarkPtr existingBookmark = findBookmarkByUNC(bookmark->unc());
+      
+      if (!existingBookmark)
       {
-        Smb4KNotification::bookmarkLabelInUse(bookmark.data());
-        bookmark->setLabel(QString("%1 (1)").arg(bookmark->label()));
+        if (!bookmark->label().isEmpty() && findBookmarkByLabel(bookmark->label()))
+        {
+          Smb4KNotification::bookmarkLabelInUse(bookmark.data());
+          bookmark->setLabel(QString("%1 (1)").arg(bookmark->label()));
+        }
+        else
+        {
+          // Do nothing
+        }
+        
+        d->bookmarks << bookmark;
       }
       else
       {
         // Do nothing
       }
-      
-      d->bookmarks << bookmark;
-    }
-    else
-    {
-      // Do nothing
     }
   }
   
@@ -639,9 +638,6 @@ void Smb4KBookmarkHandler::editBookmarks(QWidget *parent)
   
   if (d->editor->exec() == QDialog::Accepted)
   {
-    // Now replace the current list with the new one that is
-    // passed by the editor. For this set the 'replace' argument
-    // for addBookmarks() to TRUE.
     QList<BookmarkPtr> bookmarks = d->editor->editedBookmarks();
     addBookmarks(bookmarks, true);
   }
