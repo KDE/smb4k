@@ -81,9 +81,29 @@ class Smb4KBookmarkMenu : public KActionMenu
 
   protected slots:
     /**
-     * Called when a bookmark has been triggered
+     * Called when the edit action is triggered
      */
-    void slotActionTriggered(QAction *action);
+    void slotEditActionTriggered(bool checked);
+    
+    /**
+     * Called when the add action is triggered
+     */
+    void slotAddActionTriggered(bool checked);
+    
+    /**
+     * Called when the toplevel mount action is triggered
+     */
+    void slotToplevelMountActionTriggered(bool checked);
+    
+    /**
+     * Called when a group action is triggered
+     */
+    void slotGroupActionTriggered(QAction *action);
+    
+    /**
+     * Called when a bookmark action is triggered
+     */
+    void slotBookmarkActionTriggered(QAction *action);
 
     /**
      * Called when the list bookmarks has been updated
@@ -117,11 +137,6 @@ class Smb4KBookmarkMenu : public KActionMenu
     QWidget *m_parent_widget;
     
     /**
-     * The bookmarks
-     */
-    KActionCollection *m_action_collection;
-
-    /**
      * The bookmark groups
      */
     QActionGroup *m_groups;
@@ -130,6 +145,11 @@ class Smb4KBookmarkMenu : public KActionMenu
      * The bookmarks
      */
     QActionGroup *m_bookmarks;
+    
+    /**
+     * The action collection
+     */
+    KActionCollection *m_action_collection;
 };
 
 #endif
