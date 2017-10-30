@@ -172,8 +172,7 @@ class Q_DECL_EXPORT Smb4KBookmarkEditor : public QDialog
      *
      * @param parent      The parent of this dialog.
      */
-    explicit Smb4KBookmarkEditor(const QList<BookmarkPtr> &bookmarks,
-                                 QWidget *parent = 0);
+    explicit Smb4KBookmarkEditor(const QList<BookmarkPtr> &bookmarks, QWidget *parent = 0);
 
     /**
      * The destructor.
@@ -193,8 +192,7 @@ class Q_DECL_EXPORT Smb4KBookmarkEditor : public QDialog
     /**
      * Reimplemented from QObject
      */
-    bool eventFilter(QObject *obj,
-                     QEvent *e);
+    bool eventFilter(QObject *obj, QEvent *e);
 
   protected Q_SLOTS:
     /**
@@ -263,7 +261,7 @@ class Q_DECL_EXPORT Smb4KBookmarkEditor : public QDialog
     /**
      * Load bookmarks
      */
-    void loadBookmarks(const QList<BookmarkPtr> &bookmarks);
+    void loadBookmarks();
 
     /**
      * Finds the bookmark in the list

@@ -349,12 +349,12 @@ void Smb4KBookmarkDialog::slotIconSizeChanged(int group)
 
 
 Smb4KBookmarkEditor::Smb4KBookmarkEditor(const QList<BookmarkPtr> &bookmarks, QWidget *parent)
-: QDialog(parent)
+: QDialog(parent), m_bookmarks(bookmarks)
 {
   setWindowTitle(i18n("Edit Bookmarks"));
   
   setupView();
-  loadBookmarks(bookmarks);
+  loadBookmarks();
 
   setMinimumWidth(sizeHint().height() > sizeHint().width() ? sizeHint().height() : sizeHint().width());
 
@@ -532,13 +532,21 @@ void Smb4KBookmarkEditor::setupView()
 }
 
 
-void Smb4KBookmarkEditor::loadBookmarks(const QList<BookmarkPtr> &bookmarks)
+void Smb4KBookmarkEditor::loadBookmarks()
 {
-  // Copy the bookmarks and the groups to the internal lists.
-  for (const BookmarkPtr &bookmark : bookmarks)
-  {
-    m_bookmarks << bookmark;
+  //
+  // Clear the tree widget and the group combo box
+  //
+  m_tree_widget->clear();
+  m_group_combo->clear();
     
+  // 
+  // Copy the groups into the internal lists
+  // 
+  m_groups.clear();
+  
+  for (const BookmarkPtr &bookmark : m_bookmarks)
+  {
     if (!m_groups.contains(bookmark->groupName()))
     {
       m_groups << bookmark->groupName();
@@ -605,7 +613,7 @@ void Smb4KBookmarkEditor::loadBookmarks(const QList<BookmarkPtr> &bookmarks)
   
   m_tree_widget->sortItems((m_tree_widget->columnCount() - 1), Qt::AscendingOrder);
   
-  // Check that an empty goup entry is also present. If it is not there,
+  // Check that an empty group entry is also present. If it is not there,
   // add it now and insert the groups to the group combo box afterwards.
   if (!m_groups.contains("") && !m_groups.contains(QString()))
   {
@@ -815,23 +823,14 @@ void Smb4KBookmarkEditor::slotIPEdited()
 
 void Smb4KBookmarkEditor::slotGroupEdited()
 {
-  // Do not do anything if either there is no current item
-  // or the current item is not selected.
-  if (!(m_tree_widget->currentItem() && m_tree_widget->currentItem()->isSelected()))
-  {
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Get the URL of the current item. We need to do this
-  // here, because after the following operation there is
-  // no current item anymore.
+  //
+  // Get the URL of the current item.
+  //
   QUrl url = m_tree_widget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl();
-
-  // Return here if the item is a group
+  
+  //
+  // Return here, if the current item is a group
+  //
   if (url.isEmpty())
   {
     return;
@@ -841,8 +840,11 @@ void Smb4KBookmarkEditor::slotGroupEdited()
     // Do nothing
   }
   
+  //
+  // Set the group name to the bookmark
+  //
   BookmarkPtr bookmark = findBookmark(url);
-
+  
   if (bookmark)
   {
     bookmark->setGroupName(m_group_combo->currentText());
@@ -852,146 +854,35 @@ void Smb4KBookmarkEditor::slotGroupEdited()
     // Do nothing
   }
   
-  // Move the current item to the group
-  QList<QTreeWidgetItem *> items = m_tree_widget->findItems(m_group_combo->currentText(), Qt::MatchFixedString|Qt::MatchCaseSensitive, 0);
-
-  if (!items.isEmpty())
+  //
+  // Reload the bookmarks (The current item is cleared by this!)
+  //
+  loadBookmarks();
+  
+  //
+  // Reset the current item
+  // 
+  QTreeWidgetItemIterator it(m_tree_widget);
+  
+  while (*it)
   {
-    // There has to be only one entry in the items list, 
-    // because we let findItems() only search the top level.
-    // That is the group.
-
-    // Check if the current item is a top level item or already
-    // belongs to a group.
-    int index = 0;
+    if ((*it)->data(0, QTreeWidgetItem::UserType).toUrl() == url)
+    {
+      m_tree_widget->setCurrentItem(*it);
+      slotItemClicked(*it, 0);
+      break;
+    }
+    else
+    {
+      // Do nothing
+    }
     
-    if ((index = m_tree_widget->indexOfTopLevelItem(m_tree_widget->currentItem())) != -1)
-    {
-      // The current item is a top level item, so remove
-      // it from the top level...
-      QTreeWidgetItem *bookmark_item = m_tree_widget->takeTopLevelItem(index);
-
-      // ... and add it to the group
-      items.at(0)->addChild(bookmark_item);
-    }
-    else
-    {
-      // The current item is already in a group. First check
-      // that it is not the same as the one that is to be set.
-      if (m_tree_widget->currentItem()->parent() != items.first())
-      {
-        index = m_tree_widget->currentItem()->parent()->indexOfChild(m_tree_widget->currentItem());
-
-        // Remove the item from the current group...
-        QTreeWidgetItem *bookmark_item = m_tree_widget->currentItem()->parent()->takeChild(index);
-
-        // ... and add it to the new one
-        items.at(0)->addChild(bookmark_item);
-
-        // Finally expand the group
-        items.at(0)->setExpanded(true);
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-  }
-  else
-  {
-    // We do not create an empty group. In this case, the item is move 
-    // to the top level instead.
-    if (!m_group_combo->currentText().trimmed().isEmpty())
-    {
-      // Create a new group item and add it to the widget
-      QTreeWidgetItem *group = new QTreeWidgetItem(QTreeWidgetItem::UserType);
-      group->setIcon(0, KDE::icon("folder-bookmark"));
-      group->setText(0, m_group_combo->currentText());
-      group->setText((m_tree_widget->columnCount() - 1), QString("00_%1").arg(m_group_combo->currentText()));
-      m_tree_widget->addTopLevelItem(group);
-      m_tree_widget->sortItems((m_tree_widget->columnCount() - 1), Qt::AscendingOrder);
-
-      // Check if the current item is a top level item or already
-      // belongs to a group.
-      int index = 0;
-
-      if ((index = m_tree_widget->indexOfTopLevelItem(m_tree_widget->currentItem())) != -1)
-      {
-        // The current item is a top level item, so remove
-        // it from the top level...
-        QTreeWidgetItem *bookmark_item = m_tree_widget->takeTopLevelItem(index);
-
-        // ... and add it to the group
-        group->addChild(bookmark_item);
-      }
-      else
-      {
-        // The current item is already in a group. Get its index...
-        index = m_tree_widget->currentItem()->parent()->indexOfChild(m_tree_widget->currentItem());
-
-        // ... remove it from the current group...
-        QTreeWidgetItem *bookmark_item = m_tree_widget->currentItem()->parent()->takeChild(index);
-
-        // ... and add it to the new one
-        group->addChild(bookmark_item);
-
-        // Finally expand the group
-        group->setExpanded(true);
-      }
-
-      // Add the group to the combo box
-      m_group_combo->addItem(m_group_combo->currentText());
-      m_group_combo->completionObject()->addItem(m_group_combo->currentText());
-    }
-    else
-    {
-      // Check if the current item is a top level item or belongs to a group.
-      int index = 0;
-
-      if ((index = m_tree_widget->indexOfTopLevelItem(m_tree_widget->currentItem())) == -1)
-      {
-        // The current item is already in a group. Get its index...
-        index = m_tree_widget->currentItem()->parent()->indexOfChild(m_tree_widget->currentItem());
-
-        // ... remove it from the current group...
-        QTreeWidgetItem *bookmark_item = m_tree_widget->currentItem()->parent()->takeChild(index);
-
-        // ... and add it to the top level
-        m_tree_widget->addTopLevelItem(bookmark_item);
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
+    ++it;
   }
 
-  // Clear the editor widgets if necessary and disable them
-  if (!m_tree_widget->currentItem() ||
-       m_tree_widget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl() != url)
-  {
-    m_label_edit->clear();
-    m_login_edit->clear();
-    m_ip_edit->clear();
-    m_group_combo->clearEditText();
-    m_editors->setEnabled(false);
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Add the group name to the combo box
-  if (m_group_combo->findText(m_group_combo->currentText()) == -1)
-  {
-    m_group_combo->addItem(m_group_combo->currentText());
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Add group to completion object
+  // 
+  // Add the group to the completion object
+  // 
   KCompletion *completion = m_group_combo->completionObject();
 
   if (!m_group_combo->currentText().isEmpty())
@@ -1009,11 +900,9 @@ void Smb4KBookmarkEditor::slotAddGroupTriggered(bool /*checked*/)
 {
   bool ok = false;
   
-  QString group_name = QInputDialog::getText(this, i18n("Add Group"), i18n("Group name:"), 
-                                             QLineEdit::Normal, QString(), &ok);
+  QString group_name = QInputDialog::getText(this, i18n("Add Group"), i18n("Group name:"), QLineEdit::Normal, QString(), &ok);
 
-  if (ok && !group_name.isEmpty() &&
-       m_tree_widget->findItems(group_name, Qt::MatchFixedString|Qt::MatchCaseSensitive, 0).isEmpty())
+  if (ok && !group_name.isEmpty() && m_tree_widget->findItems(group_name, Qt::MatchFixedString|Qt::MatchCaseSensitive, 0).isEmpty())
   {
     // Create a new group item and add it to the widget
     QTreeWidgetItem *group = new QTreeWidgetItem(QTreeWidgetItem::UserType);
@@ -1037,46 +926,55 @@ void Smb4KBookmarkEditor::slotAddGroupTriggered(bool /*checked*/)
 
 void Smb4KBookmarkEditor::slotDeleteTriggered(bool /*checked*/)
 {
+  //
+  // Remove the bookmarks from the view and the internal list
+  //
   QList<QTreeWidgetItem *> selected = m_tree_widget->selectedItems();
-
+  
   while (!selected.isEmpty())
   {
-    delete selected.takeFirst();
+    QTreeWidgetItem *item = selected.takeFirst();    
+    QUrl url = item->data(0, QTreeWidgetItem::UserType).toUrl();
+    
+    QMutableListIterator<BookmarkPtr> it(m_bookmarks);
+    
+    while (it.hasNext())
+    {
+      BookmarkPtr bookmark = it.next();
+      
+      if (bookmark->url() == url)
+      {
+        it.remove();
+        break;
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    
+    delete item;
   }
+  
+  //
+  // Reload the bookmarks into the tree widget (We do not
+  // need to reset the current item, because it has just been
+  // removed.
+  //
+  loadBookmarks();
 }
 
 
 void Smb4KBookmarkEditor::slotClearTriggered(bool /*checked*/)
 {
-  // Clear the tree widget. Removing bookmarks is done when
-  // the dialog is closed.
   m_tree_widget->clear();
+  m_bookmarks.clear();
+  m_groups.clear();
 }
 
 
 void Smb4KBookmarkEditor::slotDialogAccepted()
 {
-  // Remove obsolete bookmarks.
-  // We can assume that each server in the network has a unique 
-  // name, so we only need to test for the UNC and are done.
-  QMutableListIterator<BookmarkPtr> it(m_bookmarks);
-
-  while (it.hasNext())
-  {
-    BookmarkPtr bookmark = it.next();
-        
-    QList<QTreeWidgetItem *> items = m_tree_widget->findItems(bookmark->unc(), Qt::MatchFixedString|Qt::MatchCaseSensitive|Qt::MatchRecursive, 0);
-
-    if (items.isEmpty())
-    {
-      it.remove();
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-
   KConfigGroup group(Smb4KSettings::self()->config(), "BookmarkEditor");
   KWindowConfig::saveWindowSize(windowHandle(), group);
   group.writeEntry("LabelCompletion", m_label_edit->completionObject()->items());
