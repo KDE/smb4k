@@ -1108,7 +1108,7 @@ void Smb4KMounter::unmountShares(const QList<SharePtr> &shares, bool silent, QWi
     d->unmountShares = (number != 0);
     unmountShare(share, silent, parent);
   }
-#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSB)
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
   //
   // Since under FreeBSD the emission of Smb4KHardwareInterface::networkShareRemoved() is 
   // triggered by a timer, we can use a nice approach here.
