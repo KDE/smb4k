@@ -262,7 +262,6 @@ void Smb4KBookmarkMenu::setupMenu()
       bookmarkGroupMount->setObjectName(QString("%1_mount_action").arg(group));
       bookmarkGroupMenu->addAction(bookmarkGroupMount);
       m_action_collection->addAction(QString("%1_mount_action").arg(group));
-      // FIXME: Add connection
 
       // Get the list of bookmarks belonging to this group.
       // Use it to decide whether the group mount action should be enabled 
