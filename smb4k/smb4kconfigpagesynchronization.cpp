@@ -289,7 +289,7 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
 
   QSpinBox *min_size = new QSpinBox(transfer_box);
   min_size->setObjectName("kcfg_MinimalTransferSize");
-  min_size->setSuffix(" kB");
+  min_size->setSuffix(i18n(" kB"));
 
   QCheckBox *max_size_button    = new QCheckBox(Smb4KSettings::self()->useMaximalTransferSizeItem()->label(),
                                   transfer_box);
@@ -297,7 +297,7 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
 
   QSpinBox *max_size = new QSpinBox(transfer_box);
   max_size->setObjectName("kcfg_MaximalTransferSize");
-  max_size->setSuffix(" kB");
+  max_size->setSuffix(i18n(" kB"));
 
   QCheckBox *keep_partial       = new QCheckBox(Smb4KSettings::self()->keepPartialItem()->label(),
                                   transfer_box);

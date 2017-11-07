@@ -155,7 +155,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
   
   QSpinBox *scan_interval = new QSpinBox(periodic_box);
   scan_interval->setObjectName("kcfg_ScanInterval");
-  scan_interval->setSuffix(" min");
+  scan_interval->setSuffix(i18n(" min"));
   scan_interval->setSingleStep(1);
 //   scan_interval->setSliderEnabled(true);
   
@@ -179,7 +179,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
   
   QSpinBox *waiting_time = new QSpinBox(wol_box);
   waiting_time->setObjectName("kcfg_WakeOnLANWaitingTime");
-  waiting_time->setSuffix(" s");
+  waiting_time->setSuffix(i18n(" s"));
   waiting_time->setSingleStep(1);
 //   waiting_time->setSliderEnabled(true);
   
