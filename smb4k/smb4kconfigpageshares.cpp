@@ -93,7 +93,7 @@ Smb4KConfigPageShares::Smb4KConfigPageShares(QWidget *parent)
   
   QSpinBox *remount_interval = new QSpinBox(behavior_box);
   remount_interval->setObjectName("kcfg_RemountInterval");
-  remount_interval->setSuffix(" min.");
+  remount_interval->setSuffix(i18n(" min"));
   rem_interval_label->setBuddy(remount_interval);
 
   QCheckBox *unmount_all_shares = new QCheckBox(Smb4KSettings::self()->unmountSharesOnExitItem()->label(), behavior_box);
