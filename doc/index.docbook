@@ -1485,7 +1485,12 @@ polkit.addRule(function(action, subject) {
     <sect2 id="special_remarks_netbsd">
       <title>Remarks for NetBSD Users</title>
 
-      <para>NetBSD users should stick to the &kde;4-based &smb4k; for now, since the &plasma; desktop is not available in <ulink url="http://www.pkgsrc.org">pkgsrc</ulink> yet.</para>
+      <para>To make &smb4k; run on NetBSD, you might need to adjust some things:</para>
+      <itemizedlist>
+        <listitem><para>If mounting does not work, you should add the polkit rules as described <link linkend="special_remarks_polkit-1">above</link>.</para></listitem>
+        <listitem><para>As of the November 2017, <ulink url="https://www.pkgsrc.org">pkgsrc</ulink> does not contain the &plasma; desktop. When using a different desktop environment, &Qt; and &kf5; applications might be missing the icons. In that case, you might want to download the sources of <ulink url="https://sourceforge.net/projects/qt5ct/"><application>qt5ct</application></ulink>, configure, compile and install it. Follow the directions in the README file.</para></listitem>
+        <listitem><para>If <application>qt5ct</application> does not start due to a missing <filename>libGL.so.2</filename> shared library file, create the <filename>/etc/ld.so.conf</filename> file and add the path <filename class="directory">/usr/X11R7/lib</filename> to it. This should fix the problem.</para></listitem>
+      </itemizedlist>
     </sect2>
   </sect1>
 </chapter>
