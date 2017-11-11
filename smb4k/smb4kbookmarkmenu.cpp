@@ -257,7 +257,7 @@ void Smb4KBookmarkMenu::setupMenu()
       bookmarkGroup->setMenu(bookmarkGroupMenu->menu());
       
       // Mount action for the group
-      QAction *bookmarkGroupMount = new QAction(KDE::icon("media-mount"), i18n("Mount All Bookmarks"), bookmarkGroupMenu);
+      QAction *bookmarkGroupMount = new QAction(KDE::icon("media-mount"), i18n("Mount All Bookmarks"), m_groups);
       bookmarkGroupMount->setData(group);
       bookmarkGroupMount->setObjectName(QString("%1_mount_action").arg(group));
       bookmarkGroupMenu->addAction(bookmarkGroupMount);

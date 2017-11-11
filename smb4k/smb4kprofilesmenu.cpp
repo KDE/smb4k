@@ -45,10 +45,10 @@ Smb4KProfilesMenu::Smb4KProfilesMenu(QObject* parent)
 {
   QStringList profiles = Smb4KProfileManager::self()->profilesList();
   
-  for (int i = 0; i < profiles.size(); ++i)
+  for (const QString &profile : profiles)
   {
-    QAction *action = addAction(profiles.at(i));
-    
+    QAction *action = addAction(profile);
+  
     if (action)
     {
       action->setEnabled(Smb4KProfileManager::self()->useProfiles());
@@ -58,6 +58,8 @@ Smb4KProfilesMenu::Smb4KProfilesMenu(QObject* parent)
       // Do nothing
     }
   }
+  
+  setEnabled(Smb4KProfileManager::self()->useProfiles());
   
   setCurrentAction(Smb4KProfileManager::self()->activeProfile());
   setToolBarMode(KSelectAction::MenuMode);
@@ -88,9 +90,9 @@ void Smb4KProfilesMenu::slotProfilesListChanged(const QStringList& profiles)
 {
   clear();
   
-  for (int i = 0; i < profiles.size(); ++i)
+  for (const QString &profile : profiles)
   {
-    QAction *action = addAction(profiles.at(i));
+    QAction *action = addAction(profile);
     
     if (action)
     {
@@ -102,16 +104,16 @@ void Smb4KProfilesMenu::slotProfilesListChanged(const QStringList& profiles)
     }
   }
   
+  setEnabled(Smb4KProfileManager::self()->useProfiles());
+  
   setCurrentAction(Smb4KProfileManager::self()->activeProfile());
 }
 
 
 void Smb4KProfilesMenu::slotProfileUsageChanged(bool use)
 {
-  for (int i = 0; i < actions().size(); ++i)
+  for (QAction *action : actions())
   {
-    QAction *action = actions()[i];
-    
     if (action)
     {
       action->setEnabled(use);
@@ -121,6 +123,8 @@ void Smb4KProfilesMenu::slotProfileUsageChanged(bool use)
       // Do nothing
     }
   }
+  
+  setEnabled(use);
 }
 
 
