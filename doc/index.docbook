@@ -1425,11 +1425,11 @@
     <title>Special Remarks</title>
   
 <!-- 
-      Using Smb4K : Special Remarks : Samba Security Fixes of April 12, 2016 
+      Using Smb4K : Special Remarks : Samba Security Fixes of April 12, 2016
 -->
    
     <sect2 id="special_remarks_samba_security_updates">
-      <title>Remarks Regarding the Samba Security Fixes of April 12, 2016</title>
+      <title>Samba Security Fixes of April 12, 2016</title>
     
       <para>On April 12, 2016 the Samba team released security fixes for the <ulink url="http://www.badlock.org">Badlock bug</ulink>. Unfortunately, they also introduced a regression that causes the <command>net</command> command to fail on many systems when querying remote hosts. If you experience this issue, you can add two lines to the [global] section of your <filename>smb.conf</filename> file to make browsing work again:</para>
   
@@ -1443,11 +1443,11 @@ client ipc max protocol = NT1
     </sect2>
     
 <!--
-    Using Smb4K : Special Remarks : Remarks Regarding polkit-1
+    Using Smb4K : Special Remarks : Denied Privilege Escalation
 -->
     
     <sect2 id="special_remarks_polkit-1">
-      <title>Remarks Regarding Denied Privilege Escalation</title>
+      <title>Denied Privilege Escalation</title>
       
       <para>In case the mount and unmount actions fail with an <guilabel>AuthorizationDeniedError</guilabel>, your polkit-1 setup might need to be adjusted: Add a file, &eg; named <filename>10-mounthelper.rules</filename>, to the <filename class="directory">$PREFIX/etc/polkit-1/rules.d/</filename> directory with the following content:</para>
 
@@ -1485,11 +1485,12 @@ polkit.addRule(function(action, subject) {
     <sect2 id="special_remarks_netbsd">
       <title>Remarks for NetBSD Users</title>
 
-      <para>To make &smb4k; run on NetBSD, you might need to adjust some things:</para>
+      <para>To make the &kf5;-based version of &smb4k; run on NetBSD, you might need to adjust some things:</para>
       <itemizedlist>
-        <listitem><para>If mounting does not work, you should add the polkit rules as described <link linkend="special_remarks_polkit-1">above</link>.</para></listitem>
-        <listitem><para>As of the November 2017, <ulink url="https://www.pkgsrc.org">pkgsrc</ulink> does not contain the &plasma; desktop. When using a different desktop environment, &Qt; and &kf5; applications might be missing the icons. In that case, you might want to download the sources of <ulink url="https://sourceforge.net/projects/qt5ct/"><application>qt5ct</application></ulink>, configure, compile and install it. Follow the directions in the README file.</para></listitem>
-        <listitem><para>If <application>qt5ct</application> does not start due to a missing <filename>libGL.so.2</filename> shared library file, create the <filename>/etc/ld.so.conf</filename> file and add the path <filename class="directory">/usr/X11R7/lib</filename> to it. This should fix the problem.</para></listitem>
+        <listitem><para>If mounting does not work, you should add the polkit-1 rules as described <link linkend="special_remarks_polkit-1">above</link>.</para></listitem>
+        <listitem><para>As of November 2017, <ulink url="https://www.pkgsrc.org">pkgsrc</ulink> does not contain the &plasma; desktop. When using a different desktop environment, &Qt; and &kf5; applications might be missing the icons. In that case, you might want to download the sources of <ulink url="https://sourceforge.net/projects/qt5ct/"><application>qt5ct</application></ulink>, configure, compile and install it. Therefor, follow the directions in the README file. To use <application>qt5ct</application> with your desktop environment, add the following line to your <filename>~/.xinitrc</filename> or <filename>~/.profile</filename> file:</para>
+<programlisting>export QT_QPA_PLATFORMTHEME=qt5ct</programlisting>
+        <para>If <application>qt5ct</application> does not start due to a missing <filename>libGL.so.2</filename> shared library file, create the <filename>/etc/ld.so.conf</filename> file and add the path <filename class="directory">/usr/X11R7/lib</filename> to it. This should fix the problem.</para></listitem>
       </itemizedlist>
     </sect2>
   </sect1>
