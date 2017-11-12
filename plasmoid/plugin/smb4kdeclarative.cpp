@@ -63,17 +63,17 @@ Smb4KDeclarative::Smb4KDeclarative(QObject* parent)
   
   // Connections
   connect(Smb4KScanner::self(), SIGNAL(workgroups()), this, SLOT(slotWorkgroupsListChanged()));
-  connect(Smb4KScanner::self(), SIGNAL(hosts(Smb4KWorkgroup*)), this, SLOT(slotHostsListChanged()));
-  connect(Smb4KScanner::self(), SIGNAL(shares(Smb4KHost*)), this, SLOT(slotSharesListChanged()));
-  connect(Smb4KScanner::self(), SIGNAL(aboutToStart(Smb4KBasicNetworkItem*,int)), this, SIGNAL(busy()));
-  connect(Smb4KScanner::self(), SIGNAL(finished(Smb4KBasicNetworkItem*,int)), this, SIGNAL(idle()));
+  connect(Smb4KScanner::self(), SIGNAL(hosts(WorkgroupPtr)), this, SLOT(slotHostsListChanged()));
+  connect(Smb4KScanner::self(), SIGNAL(shares(HostPtr)), this, SLOT(slotSharesListChanged()));
+  connect(Smb4KScanner::self(), SIGNAL(aboutToStart(NetworkItemPtr,int)), this, SIGNAL(busy()));
+  connect(Smb4KScanner::self(), SIGNAL(finished(NetworkItemPtr,int)), this, SIGNAL(idle()));
   
   connect(Smb4KMounter::self(), SIGNAL(mountedSharesListChanged()), this, SLOT(slotMountedSharesListChanged()));
   connect(Smb4KMounter::self(), SIGNAL(aboutToStart(int)), this, SIGNAL(busy()));
   connect(Smb4KMounter::self(), SIGNAL(finished(int)), this, SIGNAL(idle()));
   
-  connect(Smb4KPrint::self(), SIGNAL(aboutToStart(Smb4KShare*)), this, SIGNAL(busy()));
-  connect(Smb4KPrint::self(), SIGNAL(finished(Smb4KShare*)), this, SIGNAL(idle()));
+  connect(Smb4KPrint::self(), SIGNAL(aboutToStart(SharePtr)), this, SIGNAL(busy()));
+  connect(Smb4KPrint::self(), SIGNAL(finished(SharePtr)), this, SIGNAL(idle()));
   
   connect(Smb4KBookmarkHandler::self(), SIGNAL(updated()), this, SLOT(slotBookmarksListChanged()));
   
