@@ -24,6 +24,7 @@
   <name xml:lang="pl">Smb4K</name>
   <name xml:lang="pt">Smb4K</name>
   <name xml:lang="pt-BR">Smb4K</name>
+  <name xml:lang="ru">Smb4K</name>
   <name xml:lang="sk">Smb4K</name>
   <name xml:lang="sv">Smb4K</name>
   <name xml:lang="uk">Smb4K</name>
@@ -49,6 +50,7 @@
   <summary xml:lang="pl">Zaawansowana przeglądarka otoczenia sieciowego i narzędzie do podpinania udziałów Samby</summary>
   <summary xml:lang="pt">Navegador Avançado da Vizinhança na Rede e Utilitário de Montagem de Partilhas de Samba</summary>
   <summary xml:lang="pt-BR">Navegador avançado da vizinhança da rede e utilitário de montagem de compartilhamentos Samba</summary>
+  <summary xml:lang="ru">Диспетчер сетевого окружения и инструмент для подключения общих ресурсов с использованием протокола Samba</summary>
   <summary xml:lang="sk">Pokročilý prehliadač sieťového okolia a nástroj na pripojenie zdieľaní Samba</summary>
   <summary xml:lang="sv">Avancerad bläddrare för nätverksgrannskapet och verktyg för montering av delade Samba-resurser</summary>
   <summary xml:lang="uk">Переглядач мережевого оточення з додатковими можливостями та засіб для монтування спільних ресурсів Samba</summary>
@@ -124,6 +126,7 @@
     <p xml:lang="pl">Możliwości:</p>
     <p xml:lang="pt">Funcionalidades:</p>
     <p xml:lang="pt-BR">Funcionalidades:</p>
+    <p xml:lang="ru">Возможности:</p>
     <p xml:lang="sk">Funkcie:</p>
     <p xml:lang="sv">Funktioner:</p>
     <p xml:lang="uk">Можливості:</p>
@@ -304,6 +307,7 @@
       <li xml:lang="pl">Wyszukiwanie w sieci</li>
       <li xml:lang="pt">Pesquisa na rede</li>
       <li xml:lang="pt-BR">Pesquisa na rede</li>
+      <li xml:lang="ru">Поиск по сети</li>
       <li xml:lang="sk">Prehľadávanie siete</li>
       <li xml:lang="sv">Nätverkssökning</li>
       <li xml:lang="uk">Мережевий пошук.</li>
