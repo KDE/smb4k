@@ -145,13 +145,13 @@ bool Smb4KProfileManager::useProfiles() const
 
 void Smb4KProfileManager::migrateProfile(const QString& from, const QString& to)
 {
-  QList< QPair<QString,QString> > list;
+  QList<QPair<QString,QString>> list;
   list << QPair<QString,QString>(from, to);
   migrateProfiles(list);
 }
 
 
-void Smb4KProfileManager::migrateProfiles(const QList< QPair<QString,QString> >& list)
+void Smb4KProfileManager::migrateProfiles(const QList<QPair<QString,QString>>& list)
 {
   if (d->useProfiles || (list.size() == 1 && list.first().second.isEmpty()))
   {
@@ -163,7 +163,6 @@ void Smb4KProfileManager::migrateProfiles(const QList< QPair<QString,QString> >&
       if (!to.isEmpty()) 
       {
         // Migrate one/the default profile to another one.
-        // 
         // First exchange the old profile.
         for (int j = 0; j < d->profiles.size(); ++j)
         {
@@ -310,21 +309,25 @@ void Smb4KProfileManager::removeProfiles(const QStringList& list, QWidget* paren
 
 void Smb4KProfileManager::slotConfigChanged()
 {
-  bool use_changed = false;
+  bool usageChanged = false;
   
-  // Use of profiles
+  //
+  // Check if the usage of profiles changed
+  //
   if (d->useProfiles != Smb4KSettings::useProfiles())
   {
     d->useProfiles = Smb4KSettings::useProfiles();
     emit profileUsageChanged(d->useProfiles);
-    use_changed = true;
+    usageChanged = true;
   }
   else
   {
     // Do nothing
   }
   
-  // List of profiles
+  //
+  // Updated the list of profiles
+  //
   if (d->profiles != Smb4KSettings::profilesList())
   {
     d->profiles = Smb4KSettings::profilesList();
@@ -334,9 +337,13 @@ void Smb4KProfileManager::slotConfigChanged()
   {
     // Do nothing
   }
-
-  // Migrate profile(s), if necessary.
-  if (use_changed && Smb4KSettings::useMigrationAssistant())
+  
+  //
+  // Migrate profiles.
+  // Profiles are only migrated, if the usage changed and the 
+  // user chose to use the migration assistant.
+  // 
+  if (usageChanged && Smb4KSettings::useMigrationAssistant())
   {
     QStringList from, to;
     
@@ -378,9 +385,10 @@ void Smb4KProfileManager::slotConfigChanged()
     // Do nothing
   }
   
-  // Active profile
-  if (!Smb4KSettings::activeProfile().isEmpty() &&
-      d->profiles.contains(Smb4KSettings::activeProfile()))
+  //
+  // Set the active profile
+  //
+  if (!Smb4KSettings::activeProfile().isEmpty() && d->profiles.contains(Smb4KSettings::activeProfile()))
   {
     setActiveProfile(Smb4KSettings::activeProfile());
   }

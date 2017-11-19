@@ -123,7 +123,7 @@ class Q_DECL_EXPORT Smb4KProfileManager : public QObject
      *                    is the "from" profile, the second one the 
      *                    "to" profile.
      */
-    void migrateProfiles(const QList< QPair<QString,QString> > &list);
+    void migrateProfiles(const QList<QPair<QString,QString>> &list);
     
     /**
      * Remove a profile with all of its entries.
