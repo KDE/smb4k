@@ -778,7 +778,7 @@ void Smb4KMounter::mountShare(const SharePtr &share, QWidget *parent)
     //
     bool success = job->exec();
     
-    if (!success)
+    if (success)
     {
       int errorCode = job->error();
       
@@ -842,8 +842,8 @@ void Smb4KMounter::mountShare(const SharePtr &share, QWidget *parent)
     }
     else
     {
-      // Do nothing.
-      // Signals are emitted by the import() function or the slotStatResult() slot.
+      // FIXME: Report that the action could not be started
+      // Do nothing
     }
     
     //
@@ -1028,7 +1028,7 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent, QWidget *par
     //
     bool success = job->exec();
     
-    if (!success)
+    if (success)
     {
       int errorCode = job->error();
       
@@ -1055,8 +1055,8 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent, QWidget *par
     }
     else
     {
-      // Do nothing.
-      // Signals are emitted by the import() function or the slotStatResult() slot.
+      // FIXME: Report that the action could not be started
+      // Do nothing
     }
     
     //
