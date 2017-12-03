@@ -1093,39 +1093,44 @@ void Smb4KMainWindow::slotActivePartChanged(KParts::Part *part)
   
   // Setup actions
   QList<QAction *> dynamic_list;
-
-  for (int i = 0; i < m_active_part->actionCollection()->actions().size(); ++i)
+  
+  for (QAction *action : m_active_part->actionCollection()->actions())
   {
-    QAction *action = m_active_part->actionCollection()->action(i);
+    if (action)
+    {
+      if (QString::compare(action->objectName(), "bookmark_action") == 0)
+      {
+        actionCollection()->action("bookmark_action")->setEnabled(action->isEnabled());
+        connect(action, SIGNAL(changed()), this, SLOT(slotEnableBookmarkAction()));
+        continue;
+      }
+      else if (QString::compare(action->objectName(), "filemanager_action") == 0)
+      {
+        continue;
+      }
+      else if (QString::compare(action->objectName(), "konsole_action") == 0)
+      {
+        continue;
+      }
+      else if (QString::compare(action->objectName(), "icon_view_action") == 0)
+      {
+        continue;
+      }
+      else if (QString::compare(action->objectName(), "list_view_action") == 0)
+      {
+        continue;
+      }
+      else
+      {
+        // Do nothing
+      }
 
-    if (QString::compare(action->objectName(), "bookmark_action") == 0)
-    {
-      actionCollection()->action("bookmark_action")->setEnabled(action->isEnabled());
-      connect(action, SIGNAL(changed()), this, SLOT(slotEnableBookmarkAction()));
-      continue;
-    }
-    else if (QString::compare(action->objectName(), "filemanager_action") == 0)
-    {
-      continue;
-    }
-    else if (QString::compare(action->objectName(), "konsole_action") == 0)
-    {
-      continue;
-    }
-    else if (QString::compare(action->objectName(), "icon_view_action") == 0)
-    {
-      continue;
-    }
-    else if (QString::compare(action->objectName(), "list_view_action") == 0)
-    {
-      continue;
+      dynamic_list << action;
     }
     else
     {
       // Do nothing
     }
-
-    dynamic_list << action;
   }
 
   unplugActionList("dynamic_list");
