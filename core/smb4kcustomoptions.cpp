@@ -998,3 +998,23 @@ bool Smb4KCustomOptions::isEmpty()
   return true;
 }
 
+
+void Smb4KCustomOptions::update(Smb4KCustomOptions *options)
+{
+    d->ip.setAddress(options->ip());
+    d->remount = options->remount();
+    d->profile = options->profile();
+    d->smbPort = options->smbPort();
+#if defined(Q_OS_LINUX)
+    d->fileSystemPort = options->fileSystemPort();;
+    d->securityMode = options->securityMode();
+    d->writeAccess = options->writeAccess();
+#endif
+    d->kerberos = options->useKerberos();
+    d->user = options->user();
+    d->group = options->group();
+    d->mac = options->macAddress();
+    d->wol_first_scan = options->wolSendBeforeNetworkScan();
+    d->wol_mount = options->wolSendBeforeMount();
+}
+

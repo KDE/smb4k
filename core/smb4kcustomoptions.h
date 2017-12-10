@@ -446,6 +446,14 @@ class Q_DECL_EXPORT Smb4KCustomOptions
      */
     bool isEmpty();
     
+    /**
+     * Update this custom options object. You cannot change the workgroup,
+     * URL and type with this function.
+     * 
+     * @param options             The options that are used to update this object
+     */
+    void update(Smb4KCustomOptions *options);
+    
   private:
     const QScopedPointer<Smb4KCustomOptionsPrivate> d;
 };
