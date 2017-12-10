@@ -1840,7 +1840,7 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   
   // Mount arguments.
   QMap<QString, QString> global_options = globalSambaOptions();
-  Smb4KCustomOptions *options  = Smb4KCustomOptionsManager::self()->findOptions(share);
+  OptionsPtr options  = Smb4KCustomOptionsManager::self()->findOptions(share);
 
   // Compile the list of arguments.
   QStringList args_list;
