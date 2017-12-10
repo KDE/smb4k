@@ -55,7 +55,6 @@ Smb4KConfigPageCustomOptions::Smb4KConfigPageCustomOptions(QWidget *parent) : QW
   m_collection = new KActionCollection(this);
   m_maybe_changed = false;
   m_removed = false;
-  m_current_options = NULL;
   
   setupWidget();
 }
@@ -63,9 +62,9 @@ Smb4KConfigPageCustomOptions::Smb4KConfigPageCustomOptions(QWidget *parent) : QW
 
 Smb4KConfigPageCustomOptions::~Smb4KConfigPageCustomOptions()
 {
-  while (!m_options_list.isEmpty())
+  while (!m_optionsList.isEmpty())
   {
-    delete m_options_list.takeFirst();
+    m_optionsList.takeFirst().clear();
   }
 }
 
@@ -806,73 +805,67 @@ void Smb4KConfigPageCustomOptions::setupWidget()
 #endif
 
 
-void Smb4KConfigPageCustomOptions::insertCustomOptions(const QList<Smb4KCustomOptions*> &list)
+void Smb4KConfigPageCustomOptions::insertCustomOptions(const QList<OptionsPtr> &list)
 {
-  // Insert those options that are not there.
-  for (int i = 0; i < list.size(); ++i)
+  //
+  // Insert those custom options that are not there
+  // 
+  for (const OptionsPtr &o : list)
   {
-    Smb4KCustomOptions *options = findOptions(list.at(i)->url().toDisplayString());
+    OptionsPtr options = findOptions(o->url().toDisplayString());
     
     if (!options)
     {
-      m_options_list << new Smb4KCustomOptions(*list[i]);
+      m_optionsList << o;
     }
     else
     {
       // Do nothing
     }
   }
-  
+
+  //
   // Clear the list widget before (re)displaying the list
+  // 
   while (m_custom_options->count() != 0)
   {
     delete m_custom_options->item(0);
   }
   
-  // Display the list.
-  if (m_custom_options)
+  //
+  // Display the list
+  // 
+  for (const OptionsPtr &o : m_optionsList)
   {
-    for (int i = 0; i < m_options_list.size(); ++i)
+    switch (o->type())
     {
-      switch (m_options_list.at(i)->type())
+      case Host:
       {
-        case Host:
-        {
-          QListWidgetItem *item = new QListWidgetItem(KDE::icon("network-server"), 
-                                      m_options_list.at(i)->unc(),
-                                      m_custom_options, Host);
-          item->setData(Qt::UserRole, m_options_list.at(i)->url().toDisplayString());
-          break;
-        }
-        case Share:
-        {
-          QListWidgetItem *item = new QListWidgetItem(KDE::icon("folder-network"), 
-                                      m_options_list.at(i)->unc(),
-                                      m_custom_options, Share);
-          item->setData(Qt::UserRole, m_options_list.at(i)->url().toDisplayString());
-          break;
-        }
-        default:
-        {
-          break;
-        }
+        QListWidgetItem *item = new QListWidgetItem(KDE::icon("network-server"), o->unc(), m_custom_options, Host);
+        item->setData(Qt::UserRole, o->url().toDisplayString());
+        break;
+      }
+      case Share:
+      {
+        QListWidgetItem *item = new QListWidgetItem(KDE::icon("folder-network"), o->unc(), m_custom_options, Share);
+        item->setData(Qt::UserRole, o->url().toDisplayString());
+        break;
+      }
+      default:
+      {
+        break;
       }
     }
+  }
 
-    m_custom_options->sortItems(Qt::AscendingOrder);
-  }
-  else
-  {
-    // Do nothing
-  }
-  
+  m_custom_options->sortItems(Qt::AscendingOrder);
   m_removed = false;
 }
 
 
-const QList< Smb4KCustomOptions* > Smb4KConfigPageCustomOptions::getCustomOptions()
+const QList<OptionsPtr> Smb4KConfigPageCustomOptions::getCustomOptions()
 {
-  return m_options_list;
+  return m_optionsList;
 }
 
 
@@ -1030,20 +1023,20 @@ void Smb4KConfigPageCustomOptions::clearEditors()
 #endif
 
 
-Smb4KCustomOptions* Smb4KConfigPageCustomOptions::findOptions(const QString& url)
+OptionsPtr Smb4KConfigPageCustomOptions::findOptions(const QString& url)
 {
-  Smb4KCustomOptions *options = NULL;
+  OptionsPtr options;
   
-  for (int i = 0; i < m_options_list.size(); ++i)
+  for (const OptionsPtr &o : m_optionsList)
   {
-    if (QString::compare(url, m_options_list.at(i)->url().toDisplayString(), Qt::CaseInsensitive) == 0)
+    if (url == o->url().toDisplayString())
     {
-      options = m_options_list[i];
+      options = o;
       break;
     }
     else
     {
-      continue;
+      // Do nothing
     }
   }
   
@@ -1055,27 +1048,27 @@ Smb4KCustomOptions* Smb4KConfigPageCustomOptions::findOptions(const QString& url
 //
 // Linux
 //
-void Smb4KConfigPageCustomOptions::populateEditors(Smb4KCustomOptions* options)
+void Smb4KConfigPageCustomOptions::populateEditors(const OptionsPtr &options)
 {
   // Commit changes
   commitChanges();
   
   // Copy custom options object
-  m_current_options = new Smb4KCustomOptions(*options);
+  m_currentOptions = options;
   
   // Populate the editors with the stored values.
-  m_unc_address->setText(m_current_options->unc());
+  m_unc_address->setText(m_currentOptions->unc());
   
-  if (!m_current_options->ip().isEmpty())
+  if (!m_currentOptions->ip().isEmpty())
   {
-    m_ip_address->setText(m_current_options->ip());
+    m_ip_address->setText(m_currentOptions->ip());
   }
   else
   {
     // Do nothing
   }
   
-  if (m_current_options->remount() == Smb4KCustomOptions::RemountAlways)
+  if (m_currentOptions->remount() == Smb4KCustomOptions::RemountAlways)
   {
     m_remount_share->setChecked(true);
   }
@@ -1084,25 +1077,25 @@ void Smb4KConfigPageCustomOptions::populateEditors(Smb4KCustomOptions* options)
     m_remount_share->setChecked(false);
   }
   
-  if (m_current_options->smbPort() != -1)
+  if (m_currentOptions->smbPort() != -1)
   {
-    m_smb_port->setValue(m_current_options->smbPort());
+    m_smb_port->setValue(m_currentOptions->smbPort());
   }
   else
   {
     m_smb_port->setValue(Smb4KSettings::remoteSMBPort());
   }
   
-  if (m_current_options->fileSystemPort() != -1)
+  if (m_currentOptions->fileSystemPort() != -1)
   {
-    m_fs_port->setValue(m_current_options->fileSystemPort());
+    m_fs_port->setValue(m_currentOptions->fileSystemPort());
   }
   else
   {
     m_fs_port->setValue(Smb4KMountSettings::remoteFileSystemPort());
   }
   
-  if (m_current_options->writeAccess() == Smb4KCustomOptions::UndefinedWriteAccess)
+  if (m_currentOptions->writeAccess() == Smb4KCustomOptions::UndefinedWriteAccess)
   {
     switch (Smb4KMountSettings::writeAccess())
     {
@@ -1124,7 +1117,7 @@ void Smb4KConfigPageCustomOptions::populateEditors(Smb4KCustomOptions* options)
   }
   else
   {
-    switch (m_current_options->writeAccess())
+    switch (m_currentOptions->writeAccess())
     {
       case Smb4KCustomOptions::ReadWrite:
       {
@@ -1143,7 +1136,7 @@ void Smb4KConfigPageCustomOptions::populateEditors(Smb4KCustomOptions* options)
     }
   }
 
-  if (m_current_options->securityMode() == Smb4KCustomOptions::UndefinedSecurityMode)
+  if (m_currentOptions->securityMode() == Smb4KCustomOptions::UndefinedSecurityMode)
   {
     switch (Smb4KMountSettings::securityMode())
     {
@@ -1200,7 +1193,7 @@ void Smb4KConfigPageCustomOptions::populateEditors(Smb4KCustomOptions* options)
   }
   else
   {
-    switch (m_current_options->securityMode())
+    switch (m_currentOptions->securityMode())
     {
       case Smb4KCustomOptions::NoSecurityMode:
       {
@@ -1254,16 +1247,16 @@ void Smb4KConfigPageCustomOptions::populateEditors(Smb4KCustomOptions* options)
     }
   }
 
-  m_user_id->setCurrentItem(QString("%1 (%2)").arg(m_current_options->user().loginName()).arg(m_current_options->user().userId().nativeId()));
-  m_group_id->setCurrentItem(QString("%1 (%2)").arg(m_current_options->group().name()).arg(m_current_options->group().groupId().nativeId()));
+  m_user_id->setCurrentItem(QString("%1 (%2)").arg(m_currentOptions->user().loginName()).arg(m_currentOptions->user().userId().nativeId()));
+  m_group_id->setCurrentItem(QString("%1 (%2)").arg(m_currentOptions->group().name()).arg(m_currentOptions->group().groupId().nativeId()));
   
-  if (m_current_options->useKerberos() == Smb4KCustomOptions::UndefinedKerberos)
+  if (m_currentOptions->useKerberos() == Smb4KCustomOptions::UndefinedKerberos)
   {
     m_kerberos->setChecked(Smb4KSettings::useKerberos());
   }
   else
   {
-    switch (m_current_options->useKerberos())
+    switch (m_currentOptions->useKerberos())
     {
       case Smb4KCustomOptions::UseKerberos:
       {
@@ -1282,16 +1275,16 @@ void Smb4KConfigPageCustomOptions::populateEditors(Smb4KCustomOptions* options)
     }
   }
   
-  m_mac_address->setText(m_current_options->macAddress());
-  m_send_before_scan->setChecked(m_current_options->wolSendBeforeNetworkScan());
-  m_send_before_mount->setChecked(m_current_options->wolSendBeforeMount());
+  m_mac_address->setText(m_currentOptions->macAddress());
+  m_send_before_scan->setChecked(m_currentOptions->wolSendBeforeNetworkScan());
+  m_send_before_mount->setChecked(m_currentOptions->wolSendBeforeMount());
   
   // Enable widget
   m_general_editors->setEnabled(true);
   m_tab_widget->setEnabled(true);
   m_tab_widget->widget(SambaTab)->setEnabled(true);
   
-  if (m_current_options->type() == Host)
+  if (m_currentOptions->type() == Host)
   {
     m_tab_widget->widget(WolTab)->setEnabled(Smb4KSettings::enableWakeOnLAN());
     m_remount_share->setEnabled(false);
@@ -1308,27 +1301,27 @@ void Smb4KConfigPageCustomOptions::populateEditors(Smb4KCustomOptions* options)
 //
 // FreeBSD and NetBSD
 //
-void Smb4KConfigPageCustomOptions::populateEditors(Smb4KCustomOptions* options)
+void Smb4KConfigPageCustomOptions::populateEditors(const OptionsPtr &options)
 {
   // Commit changes
   commitChanges();
   
   // Copy custom options object
-  m_current_options = new Smb4KCustomOptions(*options);
+  m_currentOptions = options;
   
   // Populate the editors with the stored values.
-  m_unc_address->setText(m_current_options->unc());
+  m_unc_address->setText(m_currentOptions->unc());
   
-  if (!m_current_options->ip().isEmpty())
+  if (!m_currentOptions->ip().isEmpty())
   {
-    m_ip_address->setText(m_current_options->ip());
+    m_ip_address->setText(m_currentOptions->ip());
   }
   else
   {
     // Do nothing
   }
   
-  if (m_current_options->remount() == Smb4KCustomOptions::RemountAlways)
+  if (m_currentOptions->remount() == Smb4KCustomOptions::RemountAlways)
   {
     m_remount_share->setChecked(true);
   }
@@ -1337,25 +1330,25 @@ void Smb4KConfigPageCustomOptions::populateEditors(Smb4KCustomOptions* options)
     m_remount_share->setChecked(false);
   }
   
-  if (m_current_options->smbPort() != -1)
+  if (m_currentOptions->smbPort() != -1)
   {
-    m_smb_port->setValue(m_current_options->smbPort());
+    m_smb_port->setValue(m_currentOptions->smbPort());
   }
   else
   {
     m_smb_port->setValue(Smb4KSettings::remoteSMBPort());
   }
   
-  m_user_id->setCurrentItem(QString("%1 (%2)").arg(m_current_options->user().loginName()).arg(m_current_options->user().userId().nativeId()));
-  m_group_id->setCurrentItem(QString("%1 (%2)").arg(m_current_options->group().name()).arg(m_current_options->group().groupId().nativeId()));
+  m_user_id->setCurrentItem(QString("%1 (%2)").arg(m_currentOptions->user().loginName()).arg(m_currentOptions->user().userId().nativeId()));
+  m_group_id->setCurrentItem(QString("%1 (%2)").arg(m_currentOptions->group().name()).arg(m_currentOptions->group().groupId().nativeId()));
   
-  if (m_current_options->useKerberos() == Smb4KCustomOptions::UndefinedKerberos)
+  if (m_currentOptions->useKerberos() == Smb4KCustomOptions::UndefinedKerberos)
   {
     m_kerberos->setChecked(Smb4KSettings::useKerberos());
   }
   else
   {
-    switch (m_current_options->useKerberos())
+    switch (m_currentOptions->useKerberos())
     {
       case Smb4KCustomOptions::UseKerberos:
       {
@@ -1374,16 +1367,16 @@ void Smb4KConfigPageCustomOptions::populateEditors(Smb4KCustomOptions* options)
     }
   }
   
-  m_mac_address->setText(m_current_options->macAddress());
-  m_send_before_scan->setChecked(m_current_options->wolSendBeforeNetworkScan());
-  m_send_before_mount->setChecked(m_current_options->wolSendBeforeMount());
+  m_mac_address->setText(m_currentOptions->macAddress());
+  m_send_before_scan->setChecked(m_currentOptions->wolSendBeforeNetworkScan());
+  m_send_before_mount->setChecked(m_currentOptions->wolSendBeforeMount());
   
   // Enable widget
   m_general_editors->setEnabled(true);
   m_tab_widget->setEnabled(true);
   m_tab_widget->widget(SambaTab)->setEnabled(true);
   
-  if (m_current_options->type() == Host)
+  if (m_currentOptions->type() == Host)
   {
     m_tab_widget->widget(WolTab)->setEnabled(Smb4KSettings::enableWakeOnLAN());
     m_remount_share->setEnabled(false);
@@ -1400,42 +1393,42 @@ void Smb4KConfigPageCustomOptions::populateEditors(Smb4KCustomOptions* options)
 //
 // Generic (without mount options)
 //
-void Smb4KConfigPageCustomOptions::populateEditors(Smb4KCustomOptions *options)
+void Smb4KConfigPageCustomOptions::populateEditors(const OptionsPtr &options)
 {
   // Commit changes
   commitChanges();
   
   // Copy custom options object
-  m_current_options = new Smb4KCustomOptions(*options);
+  m_currentOptions = options;
   
   // Populate the editors with the stored values.
-  m_unc_address->setText(m_current_options->unc());
+  m_unc_address->setText(m_currentOptions->unc());
   
-  if (!m_current_options->ip().isEmpty())
+  if (!m_currentOptions->ip().isEmpty())
   {
-    m_ip_address->setText(m_current_options->ip());
+    m_ip_address->setText(m_currentOptions->ip());
   }
   else
   {
     // Do nothing
   }
   
-  if (m_current_options->smbPort() != -1)
+  if (m_currentOptions->smbPort() != -1)
   {
-    m_smb_port->setValue(m_current_options->smbPort());
+    m_smb_port->setValue(m_currentOptions->smbPort());
   }
   else
   {
     m_smb_port->setValue(Smb4KSettings::remoteSMBPort());
   }
   
-  if (m_current_options->useKerberos() == Smb4KCustomOptions::UndefinedKerberos)
+  if (m_currentOptions->useKerberos() == Smb4KCustomOptions::UndefinedKerberos)
   {
     m_kerberos->setChecked(Smb4KSettings::useKerberos());
   }
   else
   {
-    switch (m_current_options->useKerberos())
+    switch (m_currentOptions->useKerberos())
     {
       case Smb4KCustomOptions::UseKerberos:
       {
@@ -1454,16 +1447,16 @@ void Smb4KConfigPageCustomOptions::populateEditors(Smb4KCustomOptions *options)
     }
   }
   
-  m_mac_address->setText(m_current_options->macAddress());
-  m_send_before_scan->setChecked(m_current_options->wolSendBeforeNetworkScan());
-  m_send_before_mount->setChecked(m_current_options->wolSendBeforeMount());
+  m_mac_address->setText(m_currentOptions->macAddress());
+  m_send_before_scan->setChecked(m_currentOptions->wolSendBeforeNetworkScan());
+  m_send_before_mount->setChecked(m_currentOptions->wolSendBeforeMount());
   
   // Enable widget
   m_general_editors->setEnabled(true);
   m_tab_widget->setEnabled(true);
   m_tab_widget->widget(SambaTab)->setEnabled(true);
   
-  if (m_current_options->type() == Host)
+  if (m_currentOptions->type() == Host)
   {
     m_tab_widget->widget(WolTab)->setEnabled(Smb4KSettings::enableWakeOnLAN());
   }
@@ -1482,10 +1475,10 @@ void Smb4KConfigPageCustomOptions::populateEditors(Smb4KCustomOptions *options)
 //
 void Smb4KConfigPageCustomOptions::commitChanges()
 {
-  if (m_current_options && !m_options_list.isEmpty() &&
-      QString::compare(m_current_options->unc(), m_unc_address->text()) == 0)
+  if (m_currentOptions && !m_optionsList.isEmpty() &&
+      QString::compare(m_currentOptions->unc(), m_unc_address->text()) == 0)
   {
-    Smb4KCustomOptions *options = findOptions(m_current_options->url().toDisplayString());
+    OptionsPtr options = findOptions(m_currentOptions->url().toDisplayString());
     
     QHostAddress addr(m_ip_address->text());
     
@@ -1540,24 +1533,24 @@ void Smb4KConfigPageCustomOptions::commitChanges()
     // In case of a host, propagate the changes to its shares.
     if (options->type() == Host)
     {
-      for (int i = 0; i < m_options_list.size(); ++i)
+      for (int i = 0; i < m_optionsList.size(); ++i)
       {
-        if (m_options_list.at(i)->type() == Share &&
-            QString::compare(m_options_list.at(i)->hostName(), options->hostName(), Qt::CaseInsensitive) == 0 &&
-            QString::compare(m_options_list.at(i)->workgroupName(), options->workgroupName(), Qt::CaseInsensitive) == 0)
+        if (m_optionsList.at(i)->type() == Share &&
+            QString::compare(m_optionsList.at(i)->hostName(), options->hostName(), Qt::CaseInsensitive) == 0 &&
+            QString::compare(m_optionsList.at(i)->workgroupName(), options->workgroupName(), Qt::CaseInsensitive) == 0)
         {
           // Propagate the options to the shared resources of the host.
           // They overwrite the ones defined for the shares.
-          m_options_list[i]->setSMBPort(options->smbPort());
-          m_options_list[i]->setFileSystemPort(options->fileSystemPort());
-          m_options_list[i]->setWriteAccess(options->writeAccess());
-          m_options_list[i]->setSecurityMode(options->securityMode());
-          m_options_list[i]->setUser(options->user());
-          m_options_list[i]->setGroup(options->group());
-          m_options_list[i]->setUseKerberos(options->useKerberos());
-          m_options_list[i]->setMACAddress(options->macAddress());
-          m_options_list[i]->setWOLSendBeforeNetworkScan(options->wolSendBeforeNetworkScan());
-          m_options_list[i]->setWOLSendBeforeMount(options->wolSendBeforeMount());
+          m_optionsList[i]->setSMBPort(options->smbPort());
+          m_optionsList[i]->setFileSystemPort(options->fileSystemPort());
+          m_optionsList[i]->setWriteAccess(options->writeAccess());
+          m_optionsList[i]->setSecurityMode(options->securityMode());
+          m_optionsList[i]->setUser(options->user());
+          m_optionsList[i]->setGroup(options->group());
+          m_optionsList[i]->setUseKerberos(options->useKerberos());
+          m_optionsList[i]->setMACAddress(options->macAddress());
+          m_optionsList[i]->setWOLSendBeforeNetworkScan(options->wolSendBeforeNetworkScan());
+          m_optionsList[i]->setWOLSendBeforeMount(options->wolSendBeforeMount());
         }
         else
         {
@@ -1584,10 +1577,10 @@ void Smb4KConfigPageCustomOptions::commitChanges()
 //
 void Smb4KConfigPageCustomOptions::commitChanges()
 {
-  if (m_current_options && !m_options_list.isEmpty() &&
-      QString::compare(m_current_options->unc(), m_unc_address->text()) == 0)
+  if (m_currentOptions && !m_optionsList.isEmpty() &&
+      QString::compare(m_currentOptions->unc(), m_unc_address->text()) == 0)
   {
-    Smb4KCustomOptions *options = findOptions(m_current_options->url().toDisplayString());
+    OptionsPtr options = findOptions(m_currentOptions->url().toDisplayString());
     
     QHostAddress addr(m_ip_address->text());
     
@@ -1639,21 +1632,21 @@ void Smb4KConfigPageCustomOptions::commitChanges()
     // In case of a host, propagate the changes to its shares.
     if (options->type() == Host)
     {
-      for (int i = 0; i < m_options_list.size(); ++i)
+      for (int i = 0; i < m_optionsList.size(); ++i)
       {
-        if (m_options_list.at(i)->type() == Share &&
-            QString::compare(m_options_list.at(i)->hostName() , options->hostName(), Qt::CaseInsensitive) == 0 &&
-            QString::compare(m_options_list.at(i)->workgroupName() , options->workgroupName(), Qt::CaseInsensitive) == 0)
+        if (m_optionsList.at(i)->type() == Share &&
+            QString::compare(m_optionsList.at(i)->hostName() , options->hostName(), Qt::CaseInsensitive) == 0 &&
+            QString::compare(m_optionsList.at(i)->workgroupName() , options->workgroupName(), Qt::CaseInsensitive) == 0)
         {
           // Propagate the options to the shared resources of the host.
           // They overwrite the ones defined for the shares.
-          m_options_list[i]->setSMBPort(options->smbPort());
-          m_options_list[i]->setUser(options->user());
-          m_options_list[i]->setGroup(options->group());
-          m_options_list[i]->setUseKerberos(options->useKerberos());
-          m_options_list[i]->setMACAddress(options->macAddress());
-          m_options_list[i]->setWOLSendBeforeNetworkScan(options->wolSendBeforeNetworkScan());
-          m_options_list[i]->setWOLSendBeforeMount(options->wolSendBeforeMount());
+          m_optionsList[i]->setSMBPort(options->smbPort());
+          m_optionsList[i]->setUser(options->user());
+          m_optionsList[i]->setGroup(options->group());
+          m_optionsList[i]->setUseKerberos(options->useKerberos());
+          m_optionsList[i]->setMACAddress(options->macAddress());
+          m_optionsList[i]->setWOLSendBeforeNetworkScan(options->wolSendBeforeNetworkScan());
+          m_optionsList[i]->setWOLSendBeforeMount(options->wolSendBeforeMount());
         }
         else
         {
@@ -1680,10 +1673,10 @@ void Smb4KConfigPageCustomOptions::commitChanges()
 //
 void Smb4KConfigPageCustomOptions::commitChanges()
 {
-  if (m_current_options && !m_options_list.isEmpty() &&
-      QString::compare(m_current_options->unc(), m_unc_address->text()) == 0)
+  if (m_currentOptions && !m_optionsList.isEmpty() &&
+      QString::compare(m_currentOptions->unc(), m_unc_address->text()) == 0)
   {
-    Smb4KCustomOptions *options = findOptions(m_current_options->url().toDisplayString());
+    OptionsPtr options = findOptions(m_currentOptions->url().toDisplayString());
     
     QHostAddress addr(m_ip_address->text());
     
@@ -1724,19 +1717,19 @@ void Smb4KConfigPageCustomOptions::commitChanges()
     // In case of a host, propagate the changes to its shares.
     if (options->type() == Host)
     {
-      for (int i = 0; i < m_options_list.size(); ++i)
+      for (int i = 0; i < m_optionsList.size(); ++i)
       {
-        if (m_options_list.at(i)->type() == Share &&
-            QString::compare(m_options_list.at(i)->hostName(), options->hostName(), Qt::CaseInsensitive) == 0 &&
-            QString::compare(m_options_list.at(i)->workgroupName(), options->workgroupName(), Qt::CaseInsensitive) == 0)
+        if (m_optionsList.at(i)->type() == Share &&
+            QString::compare(m_optionsList.at(i)->hostName(), options->hostName(), Qt::CaseInsensitive) == 0 &&
+            QString::compare(m_optionsList.at(i)->workgroupName(), options->workgroupName(), Qt::CaseInsensitive) == 0)
         {
           // Propagate the options to the shared resources of the host.
           // They overwrite the ones defined for the shares.
-          m_options_list[i]->setSMBPort(options->smbPort());
-          m_options_list[i]->setUseKerberos(options->useKerberos());
-          m_options_list[i]->setMACAddress(options->macAddress());
-          m_options_list[i]->setWOLSendBeforeNetworkScan(options->wolSendBeforeNetworkScan());
-          m_options_list[i]->setWOLSendBeforeMount(options->wolSendBeforeMount());
+          m_optionsList[i]->setSMBPort(options->smbPort());
+          m_optionsList[i]->setUseKerberos(options->useKerberos());
+          m_optionsList[i]->setMACAddress(options->macAddress());
+          m_optionsList[i]->setWOLSendBeforeNetworkScan(options->wolSendBeforeNetworkScan());
+          m_optionsList[i]->setWOLSendBeforeMount(options->wolSendBeforeMount());
         }
         else
         {
@@ -1797,7 +1790,7 @@ bool Smb4KConfigPageCustomOptions::eventFilter(QObject* obj, QEvent* e)
 
 void Smb4KConfigPageCustomOptions::slotEditCustomItem(QListWidgetItem *item)
 {
-  Smb4KCustomOptions *options = findOptions(item->data(Qt::UserRole).toString());
+  OptionsPtr options = findOptions(item->data(Qt::UserRole).toString());
   
   if (options)
   {
@@ -1832,7 +1825,7 @@ void Smb4KConfigPageCustomOptions::slotCustomContextMenuRequested(const QPoint& 
   }
   
   m_collection->action("clear_action")->setEnabled(m_custom_options->count() != 0);
-  m_collection->action("undo_action")->setEnabled(m_current_options || m_removed);
+  m_collection->action("undo_action")->setEnabled(m_currentOptions || m_removed);
   
   m_menu->menu()->popup(m_custom_options->viewport()->mapToGlobal(pos));
 }
@@ -1847,25 +1840,24 @@ void Smb4KConfigPageCustomOptions::slotEditActionTriggered(bool /*checked*/)
 void Smb4KConfigPageCustomOptions::slotRemoveActionTriggered(bool /*checked*/)
 {
   QListWidgetItem *item = m_custom_options->currentItem();
-  Smb4KCustomOptions *options = findOptions(item->data(Qt::UserRole).toString());
+  OptionsPtr options = findOptions(item->data(Qt::UserRole).toString());
   
   if (item && options)
   {
-    if (m_current_options && m_current_options->url().matches(options->url(), QUrl::StripTrailingSlash))
+    if (m_currentOptions && m_currentOptions->url().matches(options->url(), QUrl::StripTrailingSlash))
     {
-      delete m_current_options;
-      m_current_options = 0;
+      m_currentOptions.clear();
     }
     else
     {
       // Do nothing
     }
     
-    int index = m_options_list.indexOf(options);
+    int index = m_optionsList.indexOf(options);
     
     if (index != -1)
     {
-      m_options_list.removeAt(index);
+      m_optionsList.removeAt(index);
     }
     else
     {
@@ -1903,13 +1895,12 @@ void Smb4KConfigPageCustomOptions::slotClearActionTriggered(bool /*checked*/)
     delete m_custom_options->item(0);
   }
   
-  while (!m_options_list.isEmpty())
+  while (!m_optionsList.isEmpty())
   {
-    delete m_options_list.takeFirst();
+    m_optionsList.takeFirst().clear();
   }
   
-  delete m_current_options;
-  m_current_options = NULL;
+  m_currentOptions.clear();
 
   m_removed = true;
   m_maybe_changed = true;
@@ -1925,36 +1916,36 @@ void Smb4KConfigPageCustomOptions::slotUndoActionTriggered(bool /*checked*/)
   }
   else
   {
-    if (m_current_options)
+    if (m_currentOptions)
     {
       if (QString::compare(m_custom_options->currentItem()->data(Qt::UserRole).toString(),
-                            m_current_options->url().toDisplayString(), Qt::CaseInsensitive) == 0)
+                            m_currentOptions->url().toDisplayString(), Qt::CaseInsensitive) == 0)
       {
         // Populate the editor with the original values and commit
         // the changes.
-        populateEditors(m_current_options);
+        populateEditors(m_currentOptions);
         commitChanges();
       }
       else
       {
         // Copy the original values to the appropriate options object
         // in the list.
-        Smb4KCustomOptions *options = findOptions(m_current_options->url().toDisplayString());
+        OptionsPtr options = findOptions(m_currentOptions->url().toDisplayString());
         
         if (options)
         {
-          options->setSMBPort(m_current_options->smbPort());
+          options->setSMBPort(m_currentOptions->smbPort());
 #ifdef Q_OS_LINUX
-          options->setFileSystemPort(m_current_options->fileSystemPort());
-          options->setWriteAccess(m_current_options->writeAccess());
-          options->setSecurityMode(m_current_options->securityMode());
+          options->setFileSystemPort(m_currentOptions->fileSystemPort());
+          options->setWriteAccess(m_currentOptions->writeAccess());
+          options->setSecurityMode(m_currentOptions->securityMode());
 #endif
-          options->setUser(m_current_options->user());
-          options->setGroup(m_current_options->group());
-          options->setUseKerberos(m_current_options->useKerberos());
-          options->setMACAddress(m_current_options->macAddress());
-          options->setWOLSendBeforeNetworkScan(m_current_options->wolSendBeforeNetworkScan());
-          options->setWOLSendBeforeMount(m_current_options->wolSendBeforeMount());
+          options->setUser(m_currentOptions->user());
+          options->setGroup(m_currentOptions->group());
+          options->setUseKerberos(m_currentOptions->useKerberos());
+          options->setMACAddress(m_currentOptions->macAddress());
+          options->setWOLSendBeforeNetworkScan(m_currentOptions->wolSendBeforeNetworkScan());
+          options->setWOLSendBeforeMount(m_currentOptions->wolSendBeforeMount());
         }
         else
         {

@@ -29,6 +29,7 @@
 // application specific includes
 #include "smb4kcustomoptionsmanager.h"
 #include "smb4kcustomoptions.h"
+#include "smb4kglobal.h"
 
 // Qt includes
 #include <QList>
@@ -49,8 +50,7 @@ class Smb4KCustomOptionsDialog : public QDialog
     /**
      * Constructor
      */
-    explicit Smb4KCustomOptionsDialog(Smb4KCustomOptions *options,
-                                       QWidget *parent = 0);
+    explicit Smb4KCustomOptionsDialog(const OptionsPtr &options, QWidget *parent = 0);
     
     /**
      * Destructor
@@ -71,7 +71,6 @@ class Smb4KCustomOptionsDialog : public QDialog
     QPushButton *m_restore_button;
     QPushButton *m_ok_button;
     QPushButton *m_cancel_button;
-    Smb4KCustomOptions *m_options;
     QCheckBox *m_remount;
     QSpinBox *m_smb_port;
 #if defined(Q_OS_LINUX)
@@ -85,13 +84,14 @@ class Smb4KCustomOptionsDialog : public QDialog
     KLineEdit *m_mac_address;
     QCheckBox *m_send_before_scan;
     QCheckBox *m_send_before_mount;
+    OptionsPtr m_options;
 };
 
 
 class Smb4KCustomOptionsManagerPrivate
 {
   public:
-    QList<Smb4KCustomOptions *> options;
+    QList<OptionsPtr> options;
 };
 
 

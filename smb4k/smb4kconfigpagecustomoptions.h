@@ -26,6 +26,9 @@
 #ifndef SMB4KCONFIGPAGECUSTOMOPTIONS_H
 #define SMB4KCONFIGPAGECUSTOMOPTIONS_H
 
+// application specific includes
+#include "core/smb4kglobal.h"
+
 // Qt includes
 #include <QEvent>
 #include <QWidget>
@@ -41,8 +44,6 @@
 #include <KWidgetsAddons/KActionMenu>
 #include <KXmlGui/KActionCollection>
 
-// forward declarations
-class Smb4KCustomOptions;
 
 /**
  * This configuration page contains the custom options
@@ -59,7 +60,7 @@ class Smb4KConfigPageCustomOptions : public QWidget
     /**
      * Constructor
      */
-    explicit Smb4KConfigPageCustomOptions( QWidget *parent = 0 );
+    explicit Smb4KConfigPageCustomOptions(QWidget *parent = 0);
     
     /**
      * Destructor
@@ -71,7 +72,7 @@ class Smb4KConfigPageCustomOptions : public QWidget
      *
      * @param list              The list with Smb4KSambaOptions objects
      */
-    void insertCustomOptions( const QList<Smb4KCustomOptions *> &list );
+    void insertCustomOptions(const QList<OptionsPtr> &list);
 
     /**
      * This function returns the list of custom option items that are currently
@@ -79,7 +80,7 @@ class Smb4KConfigPageCustomOptions : public QWidget
      *
      * @returns the list of custom option items.
      */
-    const QList<Smb4KCustomOptions *> getCustomOptions();
+    const QList<OptionsPtr> getCustomOptions();
     
     /**
      * Returns TRUE if there may be changed custom settings. You must check if
@@ -93,7 +94,7 @@ class Smb4KConfigPageCustomOptions : public QWidget
     /**
      * Reimplemented from QObject
      */
-    bool eventFilter( QObject *obj, QEvent *e );
+    bool eventFilter(QObject *obj, QEvent *e);
     
   Q_SIGNALS:
     /**
@@ -116,7 +117,7 @@ class Smb4KConfigPageCustomOptions : public QWidget
      *
      * @param item            The item that was double clicked.
      */
-    void slotEditCustomItem( QListWidgetItem *item );
+    void slotEditCustomItem(QListWidgetItem *item);
     
     /**
      * This slot is invoked when the selection in the custom list widget
@@ -130,7 +131,7 @@ class Smb4KConfigPageCustomOptions : public QWidget
      *
      * @param pos             The position where the context menu was requested.
      */
-    void slotCustomContextMenuRequested( const QPoint &pos );
+    void slotCustomContextMenuRequested(const QPoint &pos);
     
     /**
      * This slot is connected to the "Edit" action found in the context menu. 
@@ -138,7 +139,7 @@ class Smb4KConfigPageCustomOptions : public QWidget
      * 
      * @param checked         TRUE if the action is checked and FALSE otherwise.
      */
-    void slotEditActionTriggered( bool );
+    void slotEditActionTriggered(bool);
     
     /**
      * This slot is connected to the "Remove" action found in the context menu.
@@ -146,7 +147,7 @@ class Smb4KConfigPageCustomOptions : public QWidget
      *
      * @param checked         TRUE if the action is checked and FALSE otherwise.
      */
-    void slotRemoveActionTriggered( bool );
+    void slotRemoveActionTriggered(bool);
     
     /**
      * This slot is connected to the "Clear List" action found in the context
@@ -154,7 +155,7 @@ class Smb4KConfigPageCustomOptions : public QWidget
      * 
      * @param checked         TRUE if the action is checked and FALSE otherwise.
      */
-    void slotClearActionTriggered( bool );
+    void slotClearActionTriggered(bool);
     
     /**
      * This slot is connected to the "Undo" action found in the context
@@ -162,7 +163,7 @@ class Smb4KConfigPageCustomOptions : public QWidget
      * 
      * @param checked         TRUE if the action is checked and FALSE otherwise.
      */
-    void slotUndoActionTriggered( bool );
+    void slotUndoActionTriggered(bool);
     
     /**
      * This slot is called when a value was changed.
@@ -173,14 +174,14 @@ class Smb4KConfigPageCustomOptions : public QWidget
      * Enable the options for sending Wake-On-LAN magic packages, if the MAC
      * address was entered correctly.
      */
-    void slotEnableWOLFeatures( const QString &mac_address );
+    void slotEnableWOLFeatures(const QString &mac_address);
     
   private:
     enum Tabs { SambaTab = 0, WolTab = 1 };
     void setupWidget();
     void clearEditors();
-    Smb4KCustomOptions *findOptions( const QString &url );
-    void populateEditors( Smb4KCustomOptions *options );
+    OptionsPtr findOptions(const QString &url);
+    void populateEditors(const OptionsPtr &options);
     void commitChanges();
     
     QListWidget *m_custom_options;
@@ -205,8 +206,8 @@ class Smb4KConfigPageCustomOptions : public QWidget
     QCheckBox *m_remount_share;
     
     bool m_maybe_changed;
-    QList<Smb4KCustomOptions *> m_options_list;
-    Smb4KCustomOptions *m_current_options;
+    QList<OptionsPtr> m_optionsList;
+    OptionsPtr m_currentOptions;
     bool m_removed;
 };
 

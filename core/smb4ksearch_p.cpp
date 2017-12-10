@@ -117,7 +117,7 @@ void Smb4KSearchJob::slotStartSearch()
   //
   // The custom options
   //
-  Smb4KCustomOptions *options = 0;
+  OptionsPtr options;
 
   if (m_master)
   {

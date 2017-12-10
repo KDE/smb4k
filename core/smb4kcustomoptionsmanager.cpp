@@ -77,14 +77,11 @@ Smb4KCustomOptionsManager::Smb4KCustomOptionsManager(QObject *parent)
     // Do nothing
   }
   
-  readCustomOptions(&d->options, false);
+  readCustomOptions();
   
   // Connections
   connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), 
           this, SLOT(slotAboutToQuit()));
-  
-  connect(Smb4KProfileManager::self(), SIGNAL(activeProfileChanged(QString)), 
-          this, SLOT(slotActiveProfileChanged(QString)));
 }
 
 
@@ -101,11 +98,9 @@ Smb4KCustomOptionsManager *Smb4KCustomOptionsManager::self()
 
 void Smb4KCustomOptionsManager::addRemount(const SharePtr &share, bool always)
 {
-  Q_ASSERT(share);
-  
   if (share)
   {
-    Smb4KCustomOptions *options = findOptions(share, true);
+    OptionsPtr options = findOptions(share, true);
     
     if (options)
     {
@@ -123,13 +118,13 @@ void Smb4KCustomOptionsManager::addRemount(const SharePtr &share, bool always)
     }
     else
     {
-      options = new Smb4KCustomOptions(share.data());
+      options = OptionsPtr(new Smb4KCustomOptions(share.data()));
       options->setProfile(Smb4KProfileManager::self()->activeProfile());
       options->setRemount(always ? Smb4KCustomOptions::RemountAlways : Smb4KCustomOptions::RemountOnce);
       d->options << options;      
     }
     
-    writeCustomOptions(d->options);
+    writeCustomOptions();
   }
   else
   {
@@ -140,13 +135,11 @@ void Smb4KCustomOptionsManager::addRemount(const SharePtr &share, bool always)
 
 void Smb4KCustomOptionsManager::removeRemount(const SharePtr &share, bool force)
 {
-  Q_ASSERT(share);
-  
   if (share)
   {
-    Smb4KCustomOptions *options = 0;
+    OptionsPtr options = findOptions(share, true);
     
-    if ((options = findOptions(share, true)))
+    if (options)
     {
       if (options->remount() == Smb4KCustomOptions::RemountOnce)
       {
@@ -166,7 +159,7 @@ void Smb4KCustomOptionsManager::removeRemount(const SharePtr &share, bool force)
       // Do nothing
     }
     
-    writeCustomOptions(d->options);
+    writeCustomOptions();
   }
   else
   {
@@ -177,17 +170,25 @@ void Smb4KCustomOptionsManager::removeRemount(const SharePtr &share, bool force)
 
 void Smb4KCustomOptionsManager::clearRemounts(bool force)
 {
-  for (int i = 0; i < d->options.size(); ++i)
+  //
+  // List of relevant custom options
+  //
+  QList<OptionsPtr> options = customOptions(false);
+  
+  //
+  // Remove the remount flags
+  //
+  for (const OptionsPtr &o : options)
   {
-    if (d->options.at(i)->type() == Share)
+    if (o->type() == Share)
     {
-      if (d->options.at(i)->remount() == Smb4KCustomOptions::RemountOnce)
+      if (o->remount() == Smb4KCustomOptions::RemountOnce)
       {
-        d->options[i]->setRemount(Smb4KCustomOptions::RemountNever);
+        o->setRemount(Smb4KCustomOptions::RemountNever);
       }
-      else if (d->options.at(i)->remount() == Smb4KCustomOptions::RemountAlways && force)
+      else if (o->remount() == Smb4KCustomOptions::RemountAlways && force)
       {
-        d->options[i]->setRemount(Smb4KCustomOptions::RemountNever);
+        o->setRemount(Smb4KCustomOptions::RemountNever);
       }
       else
       {
@@ -200,122 +201,106 @@ void Smb4KCustomOptionsManager::clearRemounts(bool force)
     }
   }
   
-  writeCustomOptions(d->options);
+  //
+  // Write the options
+  //
+  writeCustomOptions();
 }
 
 
-QList<Smb4KCustomOptions *> Smb4KCustomOptionsManager::sharesToRemount()
+QList<OptionsPtr> Smb4KCustomOptionsManager::sharesToRemount()
 {
-  QList<Smb4KCustomOptions *> remounts;
+  //
+  // List of relevant custom options
+  //
+  QList<OptionsPtr> options = customOptions(false);
   
-  for (int i = 0; i < d->options.size(); ++i)
+  //
+  // List of remounts
+  //
+  QList<OptionsPtr> remounts;
+  
+  //
+  // Get the list of remounts
+  //
+  for (const OptionsPtr &o : options)
   {
-    if (d->options.at(i)->remount() == Smb4KCustomOptions::RemountOnce)
+    if (o->remount() == Smb4KCustomOptions::RemountOnce)
     {
-      remounts << d->options[i];
+      remounts << o;
     }
-    else if (d->options.at(i)->remount() == Smb4KCustomOptions::RemountAlways)
+    else if (o->remount() == Smb4KCustomOptions::RemountAlways)
     {
-      remounts << d->options[i];
+      remounts << o;
     }
     else
     {
       // Do nothing
-    }
+    }  
   }
   
+  //
+  // Return relevant options
+  //
   return remounts;
 }
 
 
-Smb4KCustomOptions *Smb4KCustomOptionsManager::findOptions(const NetworkItemPtr &networkItem, bool exactMatch)
+OptionsPtr Smb4KCustomOptionsManager::findOptions(const NetworkItemPtr &networkItem, bool exactMatch)
 {
-  Q_ASSERT(networkItem);
+  //
+  // The options that are to be returned
+  //
+  OptionsPtr options;
   
-  Smb4KCustomOptions *options = 0;
-  
+  //
+  // Search the options for the network item
+  //
   if (networkItem)
   {
+    //
+    // Get the relevant options
+    //
+    QList<OptionsPtr> optionsList = customOptions(false);
+    
+    //
+    // Get the UNC and the IP address
+    // 
+    QString unc, hostUNC, ipAddress;
+    
     switch (networkItem->type())
     {
       case Host:
       {
         HostPtr host = networkItem.staticCast<Smb4KHost>();
-
+        
         if (host)
         {
-          for (int i = 0; i < d->options.size(); ++i)
-          {
-            if (d->options.at(i)->type() == Host)
-            {
-              if (QString::compare(d->options.at(i)->unc(), host->unc(), Qt::CaseInsensitive) == 0 ||
-                  QString::compare(d->options.at(i)->ip(), host->ip()) == 0)
-              {
-                options = d->options[i];
-                break;
-              }
-              else
-              {
-                continue;
-              }
-            }
-            else
-            {
-              continue;
-            }
-          }
+          unc = host->unc();
+          ipAddress = host->ip();
         }
         else
         {
           // Do nothing
         }
+        
         break;
       }
       case Share:
       {
         SharePtr share = networkItem.staticCast<Smb4KShare>();
-
+        
         if (share)
         {
-          for (int i = 0; i < d->options.size(); ++i)
-          {
-            if (d->options.at(i)->type() == Share)
-            {
-              if (QString::compare(d->options.at(i)->unc(), share->unc(), Qt::CaseInsensitive) == 0 ||
-                  QString::compare(d->options.at(i)->unc(), share->homeUNC(), Qt::CaseInsensitive) == 0)
-              {
-                options = d->options[i];
-                break;
-              }
-              else
-              {
-                continue;
-              }
-            }
-            else if (d->options.at(i)->type() == Host && !exactMatch)
-            {
-              // FIXME: This might be problematic if the user uses a DHCP server.
-              if (QString::compare(d->options.at(i)->unc(), share->hostUNC(), Qt::CaseInsensitive) == 0 ||
-                  QString::compare(d->options.at(i)->ip(), share->hostIP()) == 0)
-              {
-                options = d->options[i];
-              }
-              else
-              {
-                // Do nothing
-              }
-              continue;
-            }
-            else
-            {
-              continue;
-            }
-          }
+          unc = share->isHomesShare() ? share->homeUNC() : share->unc();
+          hostUNC = share->hostUNC();
+          ipAddress = share->hostIP();
         }
         else
         {
           // Do nothing
         }
+        
         break;
       }
       default:
@@ -323,33 +308,25 @@ Smb4KCustomOptions *Smb4KCustomOptionsManager::findOptions(const NetworkItemPtr 
         break;
       }
     }
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  return options;
-}
-
-
-Smb4KCustomOptions* Smb4KCustomOptionsManager::findOptions(const QUrl &url)
-{
-  Smb4KCustomOptions *options = 0;
-  
-  if (url.isValid() && QString::compare(url.scheme(), "smb") == 0)
-  {
-    for (int i = 0; i < d->options.size(); ++i)
+    
+    //
+    // Get the options
+    //
+    for (const OptionsPtr &o : optionsList)
     {
-      if (QString::compare(d->options.at(i)->url().host(), url.host(), Qt::CaseInsensitive) == 0 &&
-          QString::compare(d->options.at(i)->url().path(), url.path(), Qt::CaseInsensitive) == 0)
+      if (QString::compare(unc, o->unc(), Qt::CaseInsensitive) == 0 || ipAddress == o->ip())
       {
-        options = d->options[i];
+        options = o;
         break;
+      }
+      else if (!exactMatch && o->type() == Host && (QString::compare(hostUNC, o->unc(), Qt::CaseInsensitive) == 0 || ipAddress == o->ip()))
+      {
+        options = o;
+        // Do not break here. The exact match is always favored.
       }
       else
       {
-        continue;
+        // Do nothing
       }
     }
   }
@@ -357,14 +334,73 @@ Smb4KCustomOptions* Smb4KCustomOptionsManager::findOptions(const QUrl &url)
   {
     // Do nothing
   }
-
+  
+  //
+  // Return the options
+  //
   return options;
 }
 
 
-void Smb4KCustomOptionsManager::readCustomOptions(QList<Smb4KCustomOptions *> *optionsList, bool allOptions)
+OptionsPtr Smb4KCustomOptionsManager::findOptions(const QUrl &url)
 {
-  // Locate the XML file.
+  //
+  // The options that are to be returned
+  //
+  OptionsPtr options;
+  
+  //
+  // Search the options for the given URL
+  //
+  if (url.isValid() && url.scheme() == "smb")
+  {
+    //
+    // Get the relevant options
+    //
+    QList<OptionsPtr> optionsList = customOptions(false);    
+    
+    //
+    // Get the options
+    //
+    for (const OptionsPtr &o : optionsList)
+    {
+      if (o->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::StripTrailingSlash) == 
+          url.toString(QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::StripTrailingSlash))
+      {
+        options = o;
+        break;
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // Return the options
+  //
+  return options;  
+}
+
+
+void Smb4KCustomOptionsManager::readCustomOptions()
+{
+  //
+  // Clear the list of options
+  //
+  while (!d->options.isEmpty())
+  {
+    d->options.takeFirst().clear();
+  }
+  
+  //
+  // Set the XML file
+  //
   QFile xmlFile(dataLocation()+QDir::separator()+"custom_options.xml");
 
   if (xmlFile.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -378,8 +414,7 @@ void Smb4KCustomOptionsManager::readCustomOptions(QList<Smb4KCustomOptions *> *o
       if (xmlReader.isStartElement())
       {
         if (xmlReader.name() == "custom_options" && 
-             (xmlReader.attributes().value("version") != "1.2" &&
-              xmlReader.attributes().value("version") != "2.0"))
+            (xmlReader.attributes().value("version") != "1.2" && xmlReader.attributes().value("version") != "2.0"))
         {
           xmlReader.raiseError(i18n("The format of %1 is not supported.", xmlFile.fileName()));
           break;
@@ -388,195 +423,189 @@ void Smb4KCustomOptionsManager::readCustomOptions(QList<Smb4KCustomOptions *> *o
         {
           if (xmlReader.name() == "options")
           {
-            QString profile = xmlReader.attributes().value("profile").toString();
+            OptionsPtr options = OptionsPtr(new Smb4KCustomOptions());
+            options->setProfile(xmlReader.attributes().value("profile").toString());
             
-            if (allOptions || QString::compare(Smb4KProfileManager::self()->activeProfile(), profile, Qt::CaseSensitive) == 0)
+            //
+            // Initialize the options 
+            // 
+            if (QString::compare(xmlReader.attributes().value("type").toString(), "host", Qt::CaseInsensitive) == 0)
             {
-              Smb4KCustomOptions *options = new Smb4KCustomOptions();
-              options->setProfile(profile);
-              
-              if (QString::compare(xmlReader.attributes().value("type").toString(), "host", Qt::CaseInsensitive) == 0)
-              {
-                options->setHost(new Smb4KHost());
-              }
-              else
-              {
-                options->setShare(new Smb4KShare());
-              }
-              
-              while (!(xmlReader.isEndElement() && xmlReader.name() == "options"))
-              {
-                xmlReader.readNext();
+              options->setHost(new Smb4KHost());
+            }
+            else
+            {
+              options->setShare(new Smb4KShare());
+            }
+
+            while (!(xmlReader.isEndElement() && xmlReader.name() == "options"))
+            {
+              xmlReader.readNext();
   
-                if (xmlReader.isStartElement())
+              if (xmlReader.isStartElement())
+              {
+                if (xmlReader.name() == "workgroup")
                 {
-                  if (xmlReader.name() == "workgroup")
+                  options->setWorkgroupName(xmlReader.readElementText());
+                }
+                else if (xmlReader.name() == "unc")
+                {
+                  options->setURL(xmlReader.readElementText());
+                }
+                else if (xmlReader.name() == "ip")
+                {
+                  options->setIP(xmlReader.readElementText());
+                }
+                else if (xmlReader.name() == "custom")
+                {
+                  while (!(xmlReader.isEndElement() && xmlReader.name() == "custom"))
                   {
-                    options->setWorkgroupName(xmlReader.readElementText());
-                  }
-                  else if (xmlReader.name() == "unc")
-                  {
-                    options->setURL(xmlReader.readElementText());
-                  }
-                  else if (xmlReader.name() == "ip")
-                  {
-                    options->setIP(xmlReader.readElementText());
-                  }
-                  else if (xmlReader.name() == "custom")
-                  {
-                    while (!(xmlReader.isEndElement() && xmlReader.name() == "custom"))
+                    xmlReader.readNext();
+                    
+                    if (xmlReader.isStartElement())
                     {
-                      xmlReader.readNext();
-  
-                      if (xmlReader.isStartElement())
+                      if (xmlReader.name() == "remount")
                       {
-                        if (xmlReader.name() == "remount")
-                        {
-                          QString remount = xmlReader.readElementText();
+                        QString remount = xmlReader.readElementText();
   
-                          if (QString::compare(remount, "once") == 0)
-                          {
-                            options->setRemount(Smb4KCustomOptions::RemountOnce);
-                          }
-                          else if (QString::compare(remount, "always") == 0)
-                          {
-                            options->setRemount(Smb4KCustomOptions::RemountAlways);
-                          }
-                          else if (QString::compare(remount, "never") == 0)
-                          {
-                            options->setRemount(Smb4KCustomOptions::RemountNever);
-                          }
-                          else
-                          {
-                            options->setRemount(Smb4KCustomOptions::UndefinedRemount);
-                          }
-                        }
-                        else if (xmlReader.name() == "smb_port")
+                        if (QString::compare(remount, "once") == 0)
                         {
-                          options->setSMBPort(xmlReader.readElementText().toInt());
+                          options->setRemount(Smb4KCustomOptions::RemountOnce);
                         }
-#if defined(Q_OS_LINUX)
-                        else if (xmlReader.name() == "filesystem_port")
+                        else if (QString::compare(remount, "always") == 0)
                         {
-                          options->setFileSystemPort(xmlReader.readElementText().toInt());
+                          options->setRemount(Smb4KCustomOptions::RemountAlways);
                         }
-                        else if (xmlReader.name() == "security_mode")
+                        else if (QString::compare(remount, "never") == 0)
                         {
-                          QString security_mode = xmlReader.readElementText();
-                          
-                          if (QString::compare(security_mode, "none") == 0)
-                          {
-                            options->setSecurityMode(Smb4KCustomOptions::NoSecurityMode);
-                          }
-                          else if (QString::compare(security_mode, "krb5") == 0)
-                          {
-                            options->setSecurityMode(Smb4KCustomOptions::Krb5);
-                          }
-                          else if (QString::compare(security_mode, "krb5i") == 0)
-                          {
-                            options->setSecurityMode(Smb4KCustomOptions::Krb5i);
-                          }                        
-                          else if (QString::compare(security_mode, "ntlm") == 0)
-                          {
-                            options->setSecurityMode(Smb4KCustomOptions::Ntlm);
-                          }
-                          else if (QString::compare(security_mode, "ntlmi") == 0)
-                          {
-                            options->setSecurityMode(Smb4KCustomOptions::Ntlmi);
-                          }
-                          else if (QString::compare(security_mode, "ntlmv2") == 0)
-                          {
-                            options->setSecurityMode(Smb4KCustomOptions::Ntlmv2);
-                          }
-                          else if (QString::compare(security_mode, "ntlmv2i") == 0)
-                          {
-                            options->setSecurityMode(Smb4KCustomOptions::Ntlmv2i);
-                          }
-                          else if (QString::compare(security_mode, "ntlmssp") == 0)
-                          {
-                            options->setSecurityMode(Smb4KCustomOptions::Ntlmssp);
-                          }
-                          else if (QString::compare(security_mode, "ntlmsspi") == 0)
-                          {
-                            options->setSecurityMode(Smb4KCustomOptions::Ntlmsspi);
-                          }
-                          else
-                          {
-                            options->setSecurityMode(Smb4KCustomOptions::UndefinedSecurityMode);
-                          }
-                        }
-                        else if (xmlReader.name() == "write_access")
-                        {
-                          QString write_access = xmlReader.readElementText();
-  
-                          if (QString::compare(write_access, "true") == 0)
-                          {
-                            options->setWriteAccess(Smb4KCustomOptions::ReadWrite);
-                          }
-                          else if (QString::compare(write_access, "false") == 0)
-                          {
-                            options->setWriteAccess(Smb4KCustomOptions::ReadOnly);
-                          }
-                          else
-                          {
-                            options->setWriteAccess(Smb4KCustomOptions::UndefinedWriteAccess);
-                          }
-                        }
-#endif
-                        else if (xmlReader.name() == "kerberos")
-                        {
-                          QString kerberos = xmlReader.readElementText();
-  
-                          if (QString::compare(kerberos, "true") == 0)
-                          {
-                            options->setUseKerberos(Smb4KCustomOptions::UseKerberos);
-                          }
-                          else if (QString::compare(kerberos, "false") == 0)
-                          {
-                            options->setUseKerberos(Smb4KCustomOptions::NoKerberos);
-                          }
-                          else
-                          {
-                            options->setUseKerberos(Smb4KCustomOptions::UndefinedKerberos);
-                          }
-                        }
-                        else if (xmlReader.name() == "uid")
-                        {
-                          options->setUser(KUser((K_UID)xmlReader.readElementText().toInt()));
-                        }
-                        else if (xmlReader.name() == "gid")
-                        {
-                          options->setGroup(KUserGroup((K_GID)xmlReader.readElementText().toInt()));
-                        }
-                        else if (xmlReader.name() == "mac_address")
-                        {
-                          options->setMACAddress(xmlReader.readElementText());
-                        }
-                        else if (xmlReader.name() == "wol_send_before_first_scan")
-                        {
-                          if (xmlReader.readElementText() == "true")
-                          {
-                            options->setWOLSendBeforeNetworkScan(true);
-                          }
-                          else
-                          {
-                            options->setWOLSendBeforeNetworkScan(false);
-                          }
-                        }
-                        else if (xmlReader.name() == "wol_send_before_mount")
-                        {
-                          if (xmlReader.readElementText() == "true")
-                          {
-                            options->setWOLSendBeforeMount(true);
-                          }
-                          else
-                          {
-                            options->setWOLSendBeforeMount(false);
-                          }
+                          options->setRemount(Smb4KCustomOptions::RemountNever);
                         }
                         else
                         {
-                          // Do nothing
+                          options->setRemount(Smb4KCustomOptions::UndefinedRemount);
+                        }
+                      }
+                      else if (xmlReader.name() == "smb_port")
+                      {
+                        options->setSMBPort(xmlReader.readElementText().toInt());
+                      }
+#if defined(Q_OS_LINUX)
+                      else if (xmlReader.name() == "filesystem_port")
+                      {
+                        options->setFileSystemPort(xmlReader.readElementText().toInt());
+                      }
+                      else if (xmlReader.name() == "security_mode")
+                      {
+                        QString security_mode = xmlReader.readElementText();
+                          
+                        if (QString::compare(security_mode, "none") == 0)
+                        {
+                          options->setSecurityMode(Smb4KCustomOptions::NoSecurityMode);
+                        }
+                        else if (QString::compare(security_mode, "krb5") == 0)
+                        {
+                          options->setSecurityMode(Smb4KCustomOptions::Krb5);
+                        }
+                        else if (QString::compare(security_mode, "krb5i") == 0)
+                        {
+                          options->setSecurityMode(Smb4KCustomOptions::Krb5i);
+                        }                        
+                        else if (QString::compare(security_mode, "ntlm") == 0)
+                        {
+                          options->setSecurityMode(Smb4KCustomOptions::Ntlm);
+                        }
+                        else if (QString::compare(security_mode, "ntlmi") == 0)
+                        {
+                          options->setSecurityMode(Smb4KCustomOptions::Ntlmi);
+                        }
+                        else if (QString::compare(security_mode, "ntlmv2") == 0)
+                        {
+                          options->setSecurityMode(Smb4KCustomOptions::Ntlmv2);
+                        }
+                        else if (QString::compare(security_mode, "ntlmv2i") == 0)
+                        {
+                          options->setSecurityMode(Smb4KCustomOptions::Ntlmv2i);
+                        }
+                        else if (QString::compare(security_mode, "ntlmssp") == 0)
+                        {
+                          options->setSecurityMode(Smb4KCustomOptions::Ntlmssp);
+                        }
+                        else if (QString::compare(security_mode, "ntlmsspi") == 0)
+                        {
+                          options->setSecurityMode(Smb4KCustomOptions::Ntlmsspi);
+                        }
+                        else
+                        {
+                          options->setSecurityMode(Smb4KCustomOptions::UndefinedSecurityMode);
+                        }
+                      }
+                      else if (xmlReader.name() == "write_access")
+                      {
+                        QString write_access = xmlReader.readElementText();
+  
+                        if (QString::compare(write_access, "true") == 0)
+                        {
+                          options->setWriteAccess(Smb4KCustomOptions::ReadWrite);
+                        }
+                        else if (QString::compare(write_access, "false") == 0)
+                        {
+                          options->setWriteAccess(Smb4KCustomOptions::ReadOnly);
+                        }
+                        else
+                        {
+                          options->setWriteAccess(Smb4KCustomOptions::UndefinedWriteAccess);
+                        }
+                      }
+#endif
+                      else if (xmlReader.name() == "kerberos")
+                      {
+                        QString kerberos = xmlReader.readElementText();
+  
+                        if (QString::compare(kerberos, "true") == 0)
+                        {
+                          options->setUseKerberos(Smb4KCustomOptions::UseKerberos);
+                        }
+                        else if (QString::compare(kerberos, "false") == 0)
+                        {
+                          options->setUseKerberos(Smb4KCustomOptions::NoKerberos);
+                        }
+                        else
+                        {
+                          options->setUseKerberos(Smb4KCustomOptions::UndefinedKerberos);
+                        }
+                      }
+                      else if (xmlReader.name() == "uid")
+                      {
+                        options->setUser(KUser((K_UID)xmlReader.readElementText().toInt()));
+                      }
+                      else if (xmlReader.name() == "gid")
+                      {
+                        options->setGroup(KUserGroup((K_GID)xmlReader.readElementText().toInt()));
+                      }
+                      else if (xmlReader.name() == "mac_address")
+                      {
+                        options->setMACAddress(xmlReader.readElementText());
+                      }
+                      else if (xmlReader.name() == "wol_send_before_first_scan")
+                      {
+                        if (xmlReader.readElementText() == "true")
+                        {
+                          options->setWOLSendBeforeNetworkScan(true);
+                        }
+                        else
+                        {
+                          options->setWOLSendBeforeNetworkScan(false);
+                        }
+                      }
+                      else if (xmlReader.name() == "wol_send_before_mount")
+                      {
+                        if (xmlReader.readElementText() == "true")
+                        {
+                          options->setWOLSendBeforeMount(true);
+                        }
+                        else
+                        {
+                          options->setWOLSendBeforeMount(false);
                         }
                       }
                       else
@@ -584,36 +613,36 @@ void Smb4KCustomOptionsManager::readCustomOptions(QList<Smb4KCustomOptions *> *o
                         // Do nothing
                       }
                     }
+                    else
+                    {
+                      // Do nothing
+                    }
                   }
-                  else
-                  {
-                    // Do nothing
-                  }
-  
-                  continue;
                 }
                 else
                 {
-                  continue;
+                  // Do nothing
                 }
-              }              
+  
+                continue;
+              }
+              else
+              {
+                continue;
+              }
+            }            
               
-              *optionsList << options;             
-            }
-            else
-            {
-              continue;
-            }
+            d->options << options;  
           }
           else
           {
-            continue;
+            // Do nothing
           }
         }
       }
       else
       {
-        continue;
+        // Do nothing
       }
     }
 
@@ -642,45 +671,17 @@ void Smb4KCustomOptionsManager::readCustomOptions(QList<Smb4KCustomOptions *> *o
 }
 
 
-void Smb4KCustomOptionsManager::writeCustomOptions(const QList<Smb4KCustomOptions *> &list, bool listOnly)
+void Smb4KCustomOptionsManager::writeCustomOptions()
 {
-  QList<Smb4KCustomOptions *> allOptions;
-  
-  if (!listOnly)
-  {
-    // First read all entries. Then remove all, that belong to
-    // the currently active profile.
-    readCustomOptions(&allOptions, true);
-    
-    QMutableListIterator<Smb4KCustomOptions *> it(allOptions);
-    
-    while (it.hasNext())
-    {
-      Smb4KCustomOptions *options = it.next();
-      
-      if (QString::compare(options->profile(), Smb4KProfileManager::self()->activeProfile()) == 0)
-      {
-        it.remove();
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  for (int i = 0; i < list.size(); ++i)
-  {
-    allOptions << new Smb4KCustomOptions(*list[i]);
-  }
-  
+  //
+  // Set the XML file
+  //
   QFile xmlFile(dataLocation()+QDir::separator()+"custom_options.xml");
-
-  if (!allOptions.isEmpty())
+  
+  //
+  // Write the options to the file
+  //
+  if (!d->options.isEmpty())
   {
     if (xmlFile.open(QIODevice::WriteOnly|QIODevice::Text))
     {
@@ -689,11 +690,9 @@ void Smb4KCustomOptionsManager::writeCustomOptions(const QList<Smb4KCustomOption
       xmlWriter.writeStartDocument();
       xmlWriter.writeStartElement("custom_options");
       xmlWriter.writeAttribute("version", "2.0");
-
-      for (int i = 0; i < allOptions.size(); ++i)
+      
+      for (const OptionsPtr &options : d->options)
       {
-        Smb4KCustomOptions *options = allOptions.at(i);
-        
         if (hasCustomOptions(options) || options->remount() == Smb4KCustomOptions::RemountOnce)
         {
           xmlWriter.writeStartElement("options");
@@ -728,42 +727,51 @@ void Smb4KCustomOptionsManager::writeCustomOptions(const QList<Smb4KCustomOption
         }
         else
         {
-          continue;
+          // Do nothing
         }
       }
-
+      
       xmlWriter.writeEndDocument();
       xmlFile.close();
     }
     else
     {
       Smb4KNotification::openingFileFailed(xmlFile);
-    }
+    }      
   }
   else
   {
     xmlFile.remove();
   }
   
-  while (!allOptions.isEmpty())
-  {
-    delete allOptions.takeFirst();
-  }
+  // FIXME: Flush the list of custom options and reload it?
 }
 
 
-const QList<Smb4KCustomOptions *> Smb4KCustomOptionsManager::customOptions(bool optionsOnly)
+const QList<OptionsPtr> Smb4KCustomOptionsManager::customOptions(bool optionsOnly)
 {
-  QList<Smb4KCustomOptions *> custom_options;
-  
-  for (int i = 0; i < d->options.size(); ++i)
+  //
+  // Options list
+  //
+  QList<OptionsPtr> options;
+
+  //
+  // Get this list of options
+  //
+  for (const OptionsPtr &o : d->options)
   {
-    Smb4KCustomOptions *options = d->options[i];
-    
-    if (hasCustomOptions(options) || 
-         (!optionsOnly && options->remount() == Smb4KCustomOptions::RemountOnce))
+    if (hasCustomOptions(o) || (!optionsOnly && o->remount() == Smb4KCustomOptions::RemountOnce))
     {
-      custom_options << options;
+      if (Smb4KSettings::useProfiles() && o->profile() != Smb4KSettings::activeProfile())
+      {
+        continue;
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      options << o;
     }
     else
     {
@@ -771,24 +779,44 @@ const QList<Smb4KCustomOptions *> Smb4KCustomOptionsManager::customOptions(bool 
     }
   }
   
-  return custom_options;
+  //
+  // Return the list of relevant options
+  //
+  return options;
 }
 
 
-void Smb4KCustomOptionsManager::replaceCustomOptions(const QList<Smb4KCustomOptions*> &options_list)
+void Smb4KCustomOptionsManager::replaceCustomOptions(const QList<OptionsPtr> &optionsList)
 {
-  while (!d->options.isEmpty())
+  //
+  // Clear the list of options. Honor profiles.
+  //
+  QMutableListIterator<OptionsPtr> it(d->options);
+  
+  while (it.hasNext())
   {
-    delete d->options.takeFirst();
+    OptionsPtr options = it.next();
+    
+    if (Smb4KSettings::useProfiles() && options->profile() != Smb4KProfileManager::self()->activeProfile())
+    {
+      continue;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    it.remove();
   }
   
-  if (!options_list.isEmpty())
+  //
+  // Append the new list
+  //
+  if (!optionsList.isEmpty())
   {
-    for (int i = 0; i < options_list.size(); ++i)
+    for (const OptionsPtr &options : optionsList)
     {
-      Smb4KCustomOptions *options = options_list[i];
-      
-      if (options->profile().isEmpty())
+      if (Smb4KSettings::useProfiles())
       {
         options->setProfile(Smb4KProfileManager::self()->activeProfile());
       }
@@ -797,13 +825,9 @@ void Smb4KCustomOptionsManager::replaceCustomOptions(const QList<Smb4KCustomOpti
         // Do nothing
       }
       
-      if (hasCustomOptions(options))
+      if (hasCustomOptions(options) || options->remount() == Smb4KCustomOptions::RemountOnce)
       {
-        d->options << new Smb4KCustomOptions(*options);
-      }
-      else if (options->remount() == Smb4KCustomOptions::RemountOnce)
-      {
-        d->options << new Smb4KCustomOptions(*options);
+        d->options << options;
       }
       else
       {
@@ -816,19 +840,16 @@ void Smb4KCustomOptionsManager::replaceCustomOptions(const QList<Smb4KCustomOpti
     // Do nothing
   }
   
-  writeCustomOptions(d->options);
+  writeCustomOptions();
 }
 
 
 void Smb4KCustomOptionsManager::openCustomOptionsDialog(const NetworkItemPtr &item, QWidget *parent)
 {
-  Q_ASSERT(item);
-  
-  Smb4KCustomOptions *options = 0;
-  bool delete_options = false;
-  
   if (item)
   {
+    OptionsPtr options;
+    
     switch (item->type())
     {
       case Host:
@@ -838,12 +859,11 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(const NetworkItemPtr &it
         if (host)
         {
           options = findOptions(host);
-        
+          
           if (!options)
           {
-            options = new Smb4KCustomOptions(host.data());
+            options = OptionsPtr(new Smb4KCustomOptions(host.data()));
             options->setProfile(Smb4KProfileManager::self()->activeProfile());
-            delete_options = true;
           }
           else
           {
@@ -852,25 +872,17 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(const NetworkItemPtr &it
         }
         else
         {
-          return;
+          // Do nothing
         }
+        
         break;
       }
       case Share:
       {
         SharePtr share = item.staticCast<Smb4KShare>();
         
-        if (share)
+        if (share && !share->isPrinter())
         {
-          if (share->isPrinter())
-          {
-            return;
-          }
-          else
-          {
-            // Do nothing
-          }
-          
           if (share->isHomesShare())
           {
             if (!Smb4KHomesSharesHandler::self()->specifyUser(share, true, parent))
@@ -891,9 +903,8 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(const NetworkItemPtr &it
           
           if (!options)
           {
-            options = new Smb4KCustomOptions(share.data());
+            options = OptionsPtr(new Smb4KCustomOptions(share.data()));
             options->setProfile(Smb4KProfileManager::self()->activeProfile());
-            delete_options = true;
             
             // Get rid of the 'homes' share
             if (share->isHomesShare())
@@ -915,8 +926,9 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(const NetworkItemPtr &it
         }
         else
         {
-          return;
+          // Do nothing
         }
+        
         break;
       }
       default:
@@ -925,30 +937,27 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(const NetworkItemPtr &it
       }
     }
     
-    QPointer<Smb4KCustomOptionsDialog> dlg = new Smb4KCustomOptionsDialog(options, parent);
-      
-    if (dlg->exec() == QDialog::Accepted)
+    if (options)
     {
-      if (hasCustomOptions(options))
+      QPointer<Smb4KCustomOptionsDialog> dlg = new Smb4KCustomOptionsDialog(options, parent);
+        
+      if (dlg->exec() == QDialog::Accepted)
       {
-        addCustomOptions(options);
+        if (hasCustomOptions(options))
+        {
+          addCustomOptions(options);
+        }
+        else
+        {
+          removeCustomOptions(options);
+        }
       }
       else
       {
-        removeCustomOptions(options);
+        // Do nothing
       }
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    delete dlg;
-    
-    // Delete the options object if necessary. 
-    if (delete_options)
-    {
-      delete options;
+      
+      delete dlg;
     }
     else
     {
@@ -962,75 +971,66 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(const NetworkItemPtr &it
 }
 
 
-void Smb4KCustomOptionsManager::addCustomOptions(Smb4KCustomOptions *options)
+void Smb4KCustomOptionsManager::addCustomOptions(const OptionsPtr &options)
 {
-  Q_ASSERT(options);
-  
   if (options)
   {
-    // Add the custom options. If the incoming options are those for a host, 
-    // propagate the host specific changes to its shares as well.
+    //
+    // Check if options for the URL already exist
+    // 
+    OptionsPtr knownOptions = findOptions(options->url());
     
-    // Find the options.
-    Smb4KCustomOptions *known_options = findOptions(options->url());
-    
-    if (known_options)
+    if (knownOptions)
     {
-      // Remove the known options from the list and add the ones that
-      // were passed. We can do this, because findOptions(QUrl) returns
-      // the exact match.
-      int index = d->options.indexOf(known_options);
-      
-      if (index != -1)
+      //
+      // Update the options
+      // 
+      knownOptions->update(options.data());
+    }
+    else
+    {
+      // 
+      // Add the options
+      //
+      if (options->profile().isEmpty())
       {
-        d->options.removeAt(index);
+        options->setProfile(Smb4KProfileManager::self()->activeProfile());
       }
       else
       {
         // Do nothing
       }
-    }
-    else
-    {
-      // Do nothing
+        
+      d->options << options;
     }
     
-    // Add the options to the list.
-    Smb4KCustomOptions *o = new Smb4KCustomOptions(*options);
-      
-    if (o->profile().isEmpty())
+    //
+    // In case the options are defined for a host, propagate them 
+    // to the options of shares belonging to that host. Overwrite 
+    // the settings
+    // 
+    if (options->type() == Host)
     {
-      o->setProfile(Smb4KProfileManager::self()->activeProfile());
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    d->options << o;
-    
-    // Propagate the options of the host item to its shared resources.
-    // Overwrite the settings.
-    if (o->type() == Host)
-    {
-      for (int i = 0; i < d->options.size(); ++i)
+      for (const OptionsPtr &o : d->options)
       {
-        if (d->options.at(i)->type() == Share &&
-            QString::compare(d->options.at(i)->hostName(), o->hostName(), Qt::CaseInsensitive) == 0 &&
-            QString::compare(d->options.at(i)->workgroupName(), o->workgroupName(), Qt::CaseInsensitive) == 0)
+        if (o->type() == Share && 
+            QString::compare(o->hostName(), options->hostName(), Qt::CaseInsensitive) == 0 &&
+            QString::compare(o->workgroupName(), options->workgroupName(), Qt::CaseInsensitive) == 0)
         {
-          d->options[i]->setSMBPort(o->smbPort());
+          // Do not use Smb4KCustomOptions::update() here, because that
+          // would overwrite more options than wanted.
+          o->setSMBPort(options->smbPort());
 #if defined(Q_OS_LINUX)
-          d->options[i]->setFileSystemPort(o->fileSystemPort());
-          d->options[i]->setSecurityMode(o->securityMode());
-          d->options[i]->setWriteAccess(o->writeAccess());
+          o->setFileSystemPort(options->fileSystemPort());
+          o->setSecurityMode(options->securityMode());
+          o->setWriteAccess(options->writeAccess());
 #endif
-          d->options[i]->setUser(o->user());
-          d->options[i]->setGroup(o->group());
-          d->options[i]->setUseKerberos(o->useKerberos());
-          d->options[i]->setMACAddress(o->macAddress());
-          d->options[i]->setWOLSendBeforeNetworkScan(o->wolSendBeforeNetworkScan());
-          d->options[i]->setWOLSendBeforeMount(o->wolSendBeforeMount());          
+          o->setUser(options->user());
+          o->setGroup(options->group());
+          o->setUseKerberos(options->useKerberos());
+          o->setMACAddress(options->macAddress());
+          o->setWOLSendBeforeNetworkScan(options->wolSendBeforeNetworkScan());
+          o->setWOLSendBeforeMount(options->wolSendBeforeMount());   
         }
         else
         {
@@ -1043,8 +1043,10 @@ void Smb4KCustomOptionsManager::addCustomOptions(Smb4KCustomOptions *options)
       // Do nothing
     }
     
-    // Now write the updated list.
-    writeCustomOptions(d->options);
+    //
+    // Write the custom options to the file
+    //
+    writeCustomOptions();
   }
   else
   {
@@ -1053,33 +1055,32 @@ void Smb4KCustomOptionsManager::addCustomOptions(Smb4KCustomOptions *options)
 }
 
 
-void Smb4KCustomOptionsManager::removeCustomOptions(Smb4KCustomOptions *options)
+void Smb4KCustomOptionsManager::removeCustomOptions(const OptionsPtr &options)
 {
-  Q_ASSERT(options);
-  
   if (options)
   {
-    Smb4KCustomOptions *known_options = findOptions(options->url());
-    
-    if (known_options)
+    // 
+    // Find the custom options and remove them
+    //
+    for (int i = 0; i < d->options.size(); ++i)
     {
-      int index = d->options.indexOf(known_options);
-      
-      if (index != -1)
+      if ((!Smb4KSettings::useProfiles() || Smb4KProfileManager::self()->activeProfile() == d->options.at(i)->profile()) &&
+          d->options.at(i)->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::StripTrailingSlash) == 
+          options->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::StripTrailingSlash))
       {
-        delete d->options.takeAt(index);
+        d->options.takeAt(i).clear();
+        break;
       }
       else
       {
         // Do nothing
       }
     }
-    else
-    {
-      // Do nothing
-    }
     
-    writeCustomOptions(d->options);
+    //
+    // Write the custom options to the file
+    //
+    writeCustomOptions();
   }
   else
   {
@@ -1092,10 +1093,8 @@ void Smb4KCustomOptionsManager::removeCustomOptions(Smb4KCustomOptions *options)
 //
 // Linux
 //
-bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
+bool Smb4KCustomOptionsManager::hasCustomOptions(const OptionsPtr &options)
 {
-  Q_ASSERT(options);
-
   if (options)
   {
     // Check if there are custom options defined.
@@ -1330,10 +1329,8 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
 //
 // FreeBSD or NetBSD
 //
-bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
+bool Smb4KCustomOptionsManager::hasCustomOptions(const OptionsPtr &options)
 {
-  Q_ASSERT(options);
-
   if (options)
   {
     // Check if there are custom options defined.
@@ -1460,10 +1457,8 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
 //
 // Generic (without mount options)
 //
-bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
+bool Smb4KCustomOptionsManager::hasCustomOptions(const OptionsPtr &options)
 {
-  Q_ASSERT(options);
-
   if (options)
   {
     // Check if there are custom options defined.
@@ -1565,16 +1560,18 @@ bool Smb4KCustomOptionsManager::hasCustomOptions(Smb4KCustomOptions *options)
 
 
 
-QList<Smb4KCustomOptions *> Smb4KCustomOptionsManager::wolEntries() const
+QList<OptionsPtr> Smb4KCustomOptionsManager::wolEntries() const
 {
-  QList<Smb4KCustomOptions *> list;
+  QList<OptionsPtr> list;
   
-  for (int i = 0; i < d->options.size(); ++i)
+  //
+  // Get the Wake-On-LAN entries
+  //
+  for (const OptionsPtr &options : d->options)
   {
-    if (!d->options.at(i)->macAddress().isEmpty() && 
-         (d->options.at(i)->wolSendBeforeNetworkScan() || d->options.at(i)->wolSendBeforeMount()))
+    if (!options->macAddress().isEmpty() && (options->wolSendBeforeNetworkScan() || options->wolSendBeforeMount()))
     {
-      list << d->options[i];
+      list << options;
     }
     else
     {
@@ -1582,23 +1579,23 @@ QList<Smb4KCustomOptions *> Smb4KCustomOptionsManager::wolEntries() const
     }
   }
   
+  // 
+  // Return them
+  //
   return list;
 }
 
 
 void Smb4KCustomOptionsManager::migrateProfile(const QString& from, const QString& to)
 {
-  QList<Smb4KCustomOptions *> allOptions;
- 
-  // Read all entries for later conversion.
-  readCustomOptions(&allOptions, true);
-  
-  // Replace the old profile name with the new one.
-  for (int i = 0; i < allOptions.size(); ++i)
+  //
+  // Replace the old with the new profile
+  //
+  for (const OptionsPtr &options : d->options)
   {
-    if (QString::compare(allOptions.at(i)->profile(), from, Qt::CaseSensitive) == 0)
+    if (options->profile() == from)
     {
-      allOptions[i]->setProfile(to);
+      options->setProfile(to);
     }
     else
     {
@@ -1606,32 +1603,23 @@ void Smb4KCustomOptionsManager::migrateProfile(const QString& from, const QStrin
     }
   }
   
-  // Write the new list to the file.
-  writeCustomOptions(allOptions, true);
-  
-  // Profile settings changed, so invoke the slot.
-  slotActiveProfileChanged(Smb4KProfileManager::self()->activeProfile());
-  
-  // Clear the temporary lists of custom options.
-  while (!allOptions.isEmpty())
-  {
-    delete allOptions.takeFirst();
-  }
+  //
+  // Write all custom options to the file.
+  //
+  writeCustomOptions();
 }
 
 
 void Smb4KCustomOptionsManager::removeProfile(const QString& name)
 {
-  QList<Smb4KCustomOptions *> allOptions;
- 
-  // Read all entries for later removal.
-  readCustomOptions(&allOptions, true);
-  
-  QMutableListIterator<Smb4KCustomOptions *> it(allOptions);
+  //
+  // Remove all entries belonging to the profile
+  // 
+  QMutableListIterator<OptionsPtr> it(d->options);
   
   while (it.hasNext())
   {
-    Smb4KCustomOptions *options = it.next();
+    OptionsPtr options = it.next();
     
     if (QString::compare(options->profile(), name, Qt::CaseSensitive) == 0)
     {
@@ -1643,17 +1631,10 @@ void Smb4KCustomOptionsManager::removeProfile(const QString& name)
     }
   }
   
-  // Write the new list to the file.
-  writeCustomOptions(allOptions, true);
-  
-  // Profile settings changed, so invoke the slot.
-  slotActiveProfileChanged(Smb4KProfileManager::self()->activeProfile());
-  
-  // Clear the temporary lists of bookmarks and groups.
-  while (!allOptions.isEmpty())
-  {
-    delete allOptions.takeFirst();
-  }
+  // 
+  // Write all custom options to the file.
+  // 
+  writeCustomOptions();
 }
 
 
@@ -1663,19 +1644,7 @@ void Smb4KCustomOptionsManager::removeProfile(const QString& name)
 
 void Smb4KCustomOptionsManager::slotAboutToQuit()
 {
-  writeCustomOptions(d->options);
+  writeCustomOptions();
 }
 
-
-void Smb4KCustomOptionsManager::slotActiveProfileChanged(const QString& /*activeProfile*/)
-{
-  // Clear the list of custom options.
-  while (!d->options.isEmpty())
-  {
-    delete d->options.takeFirst();
-  }
-  
-  // Reload the list.
-  readCustomOptions(&d->options, false);
-}
 

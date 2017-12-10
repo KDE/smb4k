@@ -111,7 +111,7 @@ class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
      * 
      * @returns the list of shares that are to be remounted
      */
-    QList<Smb4KCustomOptions *> sharesToRemount();
+    QList<OptionsPtr> sharesToRemount();
 
     /**
      * Find custom options for the network item @p networkItem.
@@ -130,7 +130,7 @@ class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
      *
      * @returns the custom options for the network item
      */
-    Smb4KCustomOptions *findOptions(const NetworkItemPtr &networkItem, bool exactMatch = false);
+    OptionsPtr findOptions(const NetworkItemPtr &networkItem, bool exactMatch = false);
 
     /**
      * Find custom options for the provided @p url.
@@ -143,7 +143,7 @@ class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
      *
      * @returns the custom options
      */
-    Smb4KCustomOptions *findOptions(const QUrl &url);
+    OptionsPtr findOptions(const QUrl &url);
     
     /**
      * Get the list of custom options. By default, the list not only comprises of those 
@@ -155,15 +155,15 @@ class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
      * 
      * @returns the list of custom options objects.
      */
-    const QList<Smb4KCustomOptions *> customOptions(bool optionsOnly = false);
+    const QList<OptionsPtr> customOptions(bool optionsOnly = false);
     
     /**
      * Replace all previously defined custom options with a list of new ones. If you
      * just want to change certain custom options, use the findOptions() functions.
      * 
-     * @param options_list        The list of new or updated options
+     * @param optionsList        The list of new or updated options
      */
-    void replaceCustomOptions(const QList<Smb4KCustomOptions *> &options_list);
+    void replaceCustomOptions(const QList<OptionsPtr> &optionsList);
     
     /**
      * This function opens the custom options dialog.
@@ -184,7 +184,7 @@ class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
      * 
      * @param options             The custom options
      */
-    void addCustomOptions(Smb4KCustomOptions *options);
+    void addCustomOptions(const OptionsPtr &options);
     
     /**
      * This function removes custom options for a single network item from the
@@ -192,7 +192,7 @@ class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
      * 
      * @param options             The custom options
      */
-    void removeCustomOptions(Smb4KCustomOptions *options);
+    void removeCustomOptions(const OptionsPtr &options);
     
     /**
      * This functions checks if the options object indeed carries custom
@@ -201,7 +201,7 @@ class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
      * @param options       The custom options object
      * @returns TRUE if there are custom options defined and FALSE otherwise.
      */
-    bool hasCustomOptions(Smb4KCustomOptions *options);
+    bool hasCustomOptions(const OptionsPtr &options);
     
     /**
      * This function returns a list of custom option objects that have 
@@ -209,7 +209,7 @@ class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
      * 
     * @returns a list of custom options objects with WOL features defined.
     */
-    QList<Smb4KCustomOptions *> wolEntries() const;
+    QList<OptionsPtr> wolEntries() const;
     
   protected Q_SLOTS:
     /**
@@ -217,31 +217,16 @@ class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
      */
     void slotAboutToQuit();
     
-    /**
-     * This slot is called if the active profile changed.
-     * 
-     * @param activeProfile   The name of the active profile
-     */
-    void slotActiveProfileChanged(const QString &activeProfile);
-    
   private:
     /**
      * Read custom options
      */
-    void readCustomOptions(QList<Smb4KCustomOptions *> *optionsList, bool allOptions);
+    void readCustomOptions();
     
     /**
-     * This function writes the custom options to the disk. If @p listOnly is
-     * set to TRUE, only the list that was passed will be written to the 
-     * file replacing the existing custom options. If it is FALSE (the default),
-     * the list will be merged with the existing custom options. 
-     *
-     * @param list          The (new) list of custom options that is to be 
-     *                      written to the file.
-     * @param listOnly      If TRUE only the passed list will be written to
-     *                      the file.
+     * This function writes the custom options to the disk.
      */
-    void writeCustomOptions(const QList<Smb4KCustomOptions *> &list, bool listOnly = false);
+    void writeCustomOptions();
     
     /**
      * Migrates one profile to another.

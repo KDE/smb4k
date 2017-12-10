@@ -214,7 +214,7 @@ void Smb4KPreviewJob::slotStartPreview()
   // Global Samba and custom options
   //
   QMap<QString,QString> samba_options = globalSambaOptions();
-  Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions(m_share);
+  OptionsPtr options = Smb4KCustomOptionsManager::self()->findOptions(m_share);
 
   //
   // The command

@@ -55,7 +55,7 @@
 #include <KIconThemes/KIconLoader>
 
 
-Smb4KCustomOptionsDialog::Smb4KCustomOptionsDialog(Smb4KCustomOptions *options, QWidget *parent)
+Smb4KCustomOptionsDialog::Smb4KCustomOptionsDialog(const OptionsPtr &options, QWidget *parent)
 : QDialog(parent), m_options(options)
 {
   setWindowTitle(i18n("Custom Options"));

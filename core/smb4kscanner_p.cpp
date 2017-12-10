@@ -654,7 +654,7 @@ void Smb4KQueryMasterJob::startProcess1()
   // The global Samba and custom options as well as the master browser
   //
   QMap<QString,QString> sambaOptions = globalSambaOptions();
-  Smb4KCustomOptions *options = 0;
+  OptionsPtr options;
   HostPtr host = HostPtr(new Smb4KHost());
   
   //
@@ -892,7 +892,7 @@ void Smb4KQueryMasterJob::startProcess2(const QString& ipAddress)
   // Global Samba and custom options as well as the master browser to query
   //
   QMap<QString,QString> sambaOptions = globalSambaOptions();
-  Smb4KCustomOptions *options = 0;
+  OptionsPtr options;
   HostPtr host = HostPtr(new Smb4KHost());
   
   if (!m_master_browser.isEmpty())
@@ -1527,7 +1527,7 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
   // Global Samba and custom options
   //
   QMap<QString,QString> samba_options = globalSambaOptions();
-  Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions(m_master_browser);  
+  OptionsPtr options = Smb4KCustomOptionsManager::self()->findOptions(m_master_browser);  
   
   //
   // The command
@@ -1964,7 +1964,7 @@ void Smb4KLookupSharesJob::slotStartLookup()
   // Global Samba and custom options
   //
   QMap<QString,QString> samba_options = globalSambaOptions();
-  Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions(m_host);
+  OptionsPtr options = Smb4KCustomOptionsManager::self()->findOptions(m_host);
   
   //
   // The command
@@ -2378,7 +2378,7 @@ void Smb4KLookupIPAddressJob::useNet(QStringList &command)
   // Global Samba and custom options
   // 
   QMap<QString,QString> samba_options = globalSambaOptions();
-  Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions(m_host);
+  OptionsPtr options = Smb4KCustomOptionsManager::self()->findOptions(m_host);
   
   //
   // The command

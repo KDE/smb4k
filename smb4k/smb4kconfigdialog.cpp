@@ -203,7 +203,7 @@ void Smb4KConfigDialog::loadCustomOptions()
 {
   if (m_custom_options)
   {
-    QList<Smb4KCustomOptions *> options = Smb4KCustomOptionsManager::self()->customOptions();
+    QList<OptionsPtr> options = Smb4KCustomOptionsManager::self()->customOptions();
     m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>()->insertCustomOptions(options);
   }
   else
@@ -217,7 +217,7 @@ void Smb4KConfigDialog::saveCustomOptions()
 {
   if (m_custom_options)
   {
-    QList<Smb4KCustomOptions *> options = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>()->getCustomOptions();
+    QList<OptionsPtr> options = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>()->getCustomOptions();
     Smb4KCustomOptionsManager::self()->replaceCustomOptions(options);
   }
   else
@@ -906,23 +906,23 @@ void Smb4KConfigDialog::slotEnableApplyButton()
   
   if (!enable && custom_options && custom_options->customSettingsMaybeChanged())
   {
-    QList<Smb4KCustomOptions *> new_list = custom_options->getCustomOptions();
-    QList<Smb4KCustomOptions *> old_list = Smb4KCustomOptionsManager::self()->customOptions();
+    QList<OptionsPtr> new_list = custom_options->getCustomOptions();
+    QList<OptionsPtr> old_list = Smb4KCustomOptionsManager::self()->customOptions();
     
     if (new_list.size() == old_list.size())
     {
-      for (int i = 0; i < new_list.size(); ++i)
+      for (const OptionsPtr &no : new_list)
       {
-        for (int j = 0; j < old_list.size(); ++j)
+        for (const OptionsPtr &oo : old_list)
         {
-          if (!new_list[i]->equals(old_list.at(j)))
+          if (!no->equals(oo.data()))
           {
             enable = true;
             break;
           }
           else
           {
-            continue;
+            // Do nothing
           }
         }
         
@@ -932,7 +932,7 @@ void Smb4KConfigDialog::slotEnableApplyButton()
         }
         else
         {
-          continue;
+          // Do nothing
         }
       }
     }

@@ -247,7 +247,7 @@ void Smb4KScanner::lookupDomains(QWidget *parent)
   // Send Wake On LAN magic packages
   if (Smb4KSettings::enableWakeOnLAN())
   {
-    QList<Smb4KCustomOptions *> wol_entries = Smb4KCustomOptionsManager::self()->wolEntries();
+    QList<OptionsPtr> wol_entries = Smb4KCustomOptionsManager::self()->wolEntries();
     
     if (!wol_entries.isEmpty())
     {

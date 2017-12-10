@@ -188,14 +188,14 @@ void Smb4KMounter::triggerRemounts(bool fill_list)
       //
       // Get the shares that are to be remounted
       //
-      QList<Smb4KCustomOptions *> list = Smb4KCustomOptionsManager::self()->sharesToRemount();
+      QList<OptionsPtr> list = Smb4KCustomOptionsManager::self()->sharesToRemount();
 
       if (!list.isEmpty())
       {
         //
         // Check which shares actually need to be remounted
         //
-        for (Smb4KCustomOptions *opt : list)
+        for (const OptionsPtr &opt : list)
         {
           QList<SharePtr> mountedShares = findShareByUNC(opt->unc());
           
@@ -600,7 +600,7 @@ void Smb4KMounter::mountShare(const SharePtr &share, QWidget *parent)
     //
     if (Smb4KSettings::enableWakeOnLAN())
     {
-      Smb4KCustomOptions *options = Smb4KCustomOptionsManager::self()->findOptions(KIO::upUrl(share->url()));
+      OptionsPtr options = Smb4KCustomOptionsManager::self()->findOptions(KIO::upUrl(share->url()));
 
       if (options && options->wolSendBeforeMount())
       {
@@ -1308,7 +1308,7 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
 
   // Mount arguments.
   QMap<QString, QString> global_options = globalSambaOptions();
-  Smb4KCustomOptions *options  = Smb4KCustomOptionsManager::self()->findOptions(share);
+  OptionsPtr options = Smb4KCustomOptionsManager::self()->findOptions(share);
 
   if (options)
   {

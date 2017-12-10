@@ -44,6 +44,7 @@ class Smb4KWorkgroup;
 class Smb4KHost;
 class Smb4KShare;
 class Smb4KBookmark;
+class Smb4KCustomOptions;
 
 // type definitions
 typedef QSharedPointer<Smb4KBasicNetworkItem> NetworkItemPtr;
@@ -51,6 +52,7 @@ typedef QSharedPointer<Smb4KWorkgroup> WorkgroupPtr;
 typedef QSharedPointer<Smb4KHost> HostPtr;
 typedef QSharedPointer<Smb4KShare> SharePtr;
 typedef QSharedPointer<Smb4KBookmark> BookmarkPtr;
+typedef QSharedPointer<Smb4KCustomOptions> OptionsPtr;
 
 /**
  * This is the global namespace. It provides access to the global lists
