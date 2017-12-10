@@ -82,10 +82,6 @@ Smb4KBookmarkHandler::Smb4KBookmarkHandler(QObject *parent)
   }
 
   readBookmarks();
-  
-  // Connections
-  connect(Smb4KProfileManager::self(), SIGNAL(activeProfileChanged(QString)), 
-          this, SLOT(slotActiveProfileChanged(QString)));
 }
 
 
@@ -229,12 +225,25 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<BookmarkPtr> &list, bool rep
   // 
   if (replace)
   {
-    while (!d->bookmarks.isEmpty())
+    QMutableListIterator<BookmarkPtr> it(d->bookmarks);
+    
+    while (it.hasNext())
     {
-      d->bookmarks.takeFirst().clear();
+      BookmarkPtr bookmark = it.next();
+      
+      if (Smb4KSettings::useProfiles() && bookmark->profile() != Smb4KProfileManager::self()->activeProfile())
+      {
+        continue;
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      it.remove();
     }
     
-    d->bookmarks = list;
+    d->bookmarks << list;
   }
   else
   {
@@ -694,9 +703,6 @@ void Smb4KBookmarkHandler::migrateProfile(const QString& from, const QString& to
   
   // Write the new list to the file.
   writeBookmarkList();
-  
-  // Profile settings changed, so invoke the slot.
-  slotActiveProfileChanged(Smb4KProfileManager::self()->activeProfile());
 }
 
 
@@ -720,14 +726,5 @@ void Smb4KBookmarkHandler::removeProfile(const QString& name)
   
   // Write the new list to the file.
   writeBookmarkList();
-  
-  // Profile settings changed, so invoke the slot.
-  slotActiveProfileChanged(Smb4KProfileManager::self()->activeProfile());
-}
-
-
-void Smb4KBookmarkHandler::slotActiveProfileChanged(const QString &/*activeProfile*/)
-{
-  readBookmarks();
 }
 

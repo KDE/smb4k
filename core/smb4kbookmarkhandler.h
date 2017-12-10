@@ -168,14 +168,6 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
      */
     void updated();
     
-  protected Q_SLOTS:
-    /**
-     * This slot is called if the active profile changed.
-     * 
-     * @param activeProfile   The name of the active profile
-     */
-    void slotActiveProfileChanged(const QString &activeProfile);
-    
   private:
     /**
      * This function reads the list of bookmarks from the bookmarks file.
