@@ -125,7 +125,7 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap& args)
       // the password to it.
       QByteArray out = proc.readAllStandardError();
 
-      if (out.startsWith("Password:"))
+      if (out.startsWith("Password"))
       {
         proc.write(args["mh_url"].toUrl().password().toUtf8());
         proc.write("\r");
