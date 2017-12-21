@@ -155,7 +155,7 @@ class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
      * 
      * @returns the list of custom options objects.
      */
-    const QList<OptionsPtr> customOptions(bool optionsOnly = false);
+    QList<OptionsPtr> customOptions(bool optionsOnly = false);
     
     /**
      * Replace all previously defined custom options with a list of new ones. If you

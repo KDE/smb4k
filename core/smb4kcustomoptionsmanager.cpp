@@ -748,7 +748,7 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
 }
 
 
-const QList<OptionsPtr> Smb4KCustomOptionsManager::customOptions(bool optionsOnly)
+QList<OptionsPtr> Smb4KCustomOptionsManager::customOptions(bool optionsOnly)
 {
   //
   // Options list
@@ -762,7 +762,7 @@ const QList<OptionsPtr> Smb4KCustomOptionsManager::customOptions(bool optionsOnl
   {
     if (hasCustomOptions(o) || (!optionsOnly && o->remount() == Smb4KCustomOptions::RemountOnce))
     {
-      if (Smb4KSettings::useProfiles() && o->profile() != Smb4KSettings::activeProfile())
+      if (Smb4KSettings::useProfiles() && o->profile() != Smb4KProfileManager::self()->activeProfile())
       {
         continue;
       }
