@@ -29,9 +29,9 @@
 #endif
 
 // application specific includes
-#include "core/smb4kshare.h"
 #include "smb4knetworksearchitem.h"
 #include "smb4knetworksearch.h"
+#include "core/smb4kshare.h"
 
 // KDE includes
 #include <KIconThemes/KIconLoader>

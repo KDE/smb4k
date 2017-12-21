@@ -298,7 +298,7 @@ class Q_DECL_EXPORT Smb4KNetworkObject : public QObject
     void setMountpoint(const QUrl &url);
     
     /**
-     * Returns TRUE if the the network item is a share that is mounted and became
+     * Returns TRUE if the network item is a share that is mounted and became
      * inaccessible. Otherwise this function returns FALSE.
      * @returns TRUE is the mounted share is inaccessible
      */

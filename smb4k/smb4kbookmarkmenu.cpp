@@ -39,6 +39,7 @@
 // Qt includes
 #include <QDebug>
 #include <QMenu>
+#include <QLatin1String>
 
 // KDE includes
 #include <KIconThemes/KIconLoader>
@@ -482,7 +483,7 @@ void Smb4KBookmarkMenu::slotToplevelMountActionTriggered(bool /*checked*/)
 
 void Smb4KBookmarkMenu::slotGroupActionTriggered(QAction *action)
 {
-  if (action->objectName().endsWith("_mount_action"))
+  if (action->objectName().endsWith(QLatin1String("_mount_action")))
   {
     //
     // Mount all bookmarks of one group

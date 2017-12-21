@@ -38,7 +38,7 @@
 #include "core/smb4kcustomoptionsmanager.h"
 
 // Qt includes
-#include <QtQml>
+#include <QQmlEngine>
 
 
 void Smb4KQMLPlugin::registerTypes(const char *uri)

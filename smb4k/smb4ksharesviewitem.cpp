@@ -28,9 +28,9 @@
 #endif
 
 // application specific includes
-#include "core/smb4kshare.h"
 #include "smb4ksharesviewitem.h"
 #include "smb4ksharesview.h"
+#include "core/smb4kshare.h"
 
 
 Smb4KSharesViewItem::Smb4KSharesViewItem(Smb4KSharesView *parent, const SharePtr &share)
