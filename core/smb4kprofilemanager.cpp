@@ -86,14 +86,19 @@ Smb4KProfileManager* Smb4KProfileManager::self()
 
 void Smb4KProfileManager::setActiveProfile(const QString& name)
 {
-  bool changed = false;
+  //
+  // Check if the active profile is going to be changed. If so, 
+  // notify the program so that things can be done before the 
+  // profile is actually changed.
+  // 
+  bool change = false;
   
   if (d->useProfiles)
   {
-    if (QString::compare(name, d->activeProfile, Qt::CaseSensitive) != 0)
+    if (name != d->activeProfile)
     {
-      d->activeProfile = name;
-      changed = true;
+      emit aboutToChangeProfile();
+      change = true;
     }
     else
     {
@@ -104,17 +109,21 @@ void Smb4KProfileManager::setActiveProfile(const QString& name)
   {
     if (!d->activeProfile.isEmpty())
     {
-      d->activeProfile.clear();
-      changed = true;
+      emit aboutToChangeProfile();
+      change = true;
     }
     else
     {
       // Do nothing
     }
   }
-    
-  if (changed)
+  
+  //
+  // Now change the profile
+  // 
+  if (change)
   {
+    d->activeProfile = d->useProfiles ? name : QString();
     Smb4KSettings::setActiveProfile(d->activeProfile);
     emit activeProfileChanged(d->activeProfile);
   }

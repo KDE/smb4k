@@ -161,6 +161,13 @@ class Q_DECL_EXPORT Smb4KProfileManager : public QObject
     void removedProfile(const QString &profile);
     
     /**
+     * This signal is emitted when the active profile is about 
+     * to be changed. You should connect to this signal, if you need 
+     * to save settings or the like to the OLD profile.
+     */
+    void aboutToChangeProfile();
+    
+    /**
      * This signal is emitted when the active profile changed.
      * 
      * @param newProfile  The name of the new profile
