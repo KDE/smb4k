@@ -126,6 +126,9 @@ Smb4KMounter::Smb4KMounter(QObject *parent)
   connect(Smb4KProfileManager::self(), SIGNAL(migratedProfile(QString,QString)),
           this, SLOT(slotProfileMigrated(QString,QString)));
   
+  connect(Smb4KProfileManager::self(), SIGNAL(aboutToChangeProfile()),
+          this, SLOT(slotAboutToChangeProfile()));
+  
   connect(Smb4KProfileManager::self(), SIGNAL(activeProfileChanged(QString)),
           this, SLOT(slotActiveProfileChanged(QString)));
   
@@ -2481,24 +2484,29 @@ void Smb4KMounter::slotStatResult(KJob *job)
 }
 
 
+void Smb4KMounter::slotAboutToChangeProfile()
+{
+  //
+  // Save those shares that are to be remounted
+  //
+  if (Smb4KSettings::remountShares())
+  {
+    saveSharesForRemount();
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
 void Smb4KMounter::slotActiveProfileChanged(const QString &newProfile)
 {
-  if (QString::compare(d->activeProfile, newProfile) != 0)
+  if (d->activeProfile != newProfile)
   {
     // Stop the timer.
     killTimer(d->timerId);
 
-    // Check if the user wants to remount shares and save the
-    // shares for remount if so.
-    if (Smb4KSettings::remountShares())
-    {
-      saveSharesForRemount();
-    }
-    else
-    {
-      // Do nothing
-    }
-    
     abortAll();
     
     // Clear all remounts.
@@ -2513,7 +2521,7 @@ void Smb4KMounter::slotActiveProfileChanged(const QString &newProfile)
       d->retries.takeFirst().clear();
     }
     
-    // Unmount all shares and wait until done.
+    // Unmount all shares
     unmountAllShares(true, 0);
     
     // Reset some variables.
@@ -2522,7 +2530,7 @@ void Smb4KMounter::slotActiveProfileChanged(const QString &newProfile)
     d->firstImportDone = false;
     d->activeProfile = newProfile;
     
-    // Start the timer again.
+    // Restart the timer
     d->timerId = startTimer(TIMEOUT);
   }
   else
