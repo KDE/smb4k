@@ -44,24 +44,8 @@ Smb4KProfilesMenu::Smb4KProfilesMenu(QObject* parent)
 : KSelectAction(KDE::icon("format-list-unordered"), i18n("Profiles"), parent)
 {
   QStringList profiles = Smb4KProfileManager::self()->profilesList();
+  slotProfilesListChanged(profiles);
   
-  for (const QString &profile : profiles)
-  {
-    QAction *action = addAction(profile);
-  
-    if (action)
-    {
-      action->setEnabled(Smb4KProfileManager::self()->useProfiles());
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-  
-  setEnabled(Smb4KProfileManager::self()->useProfiles());
-  
-  setCurrentAction(Smb4KProfileManager::self()->activeProfile());
   setToolBarMode(KSelectAction::MenuMode);
   
   // Connections
@@ -69,6 +53,8 @@ Smb4KProfilesMenu::Smb4KProfilesMenu(QObject* parent)
           this, SLOT(slotActiveProfileChanged(QString)));
   connect(Smb4KProfileManager::self(), SIGNAL(profilesListChanged(QStringList)),
           this, SLOT(slotProfilesListChanged(QStringList)));
+  connect(Smb4KProfileManager::self(), SIGNAL(profileUsageChanged(bool)),
+          this, SLOT(slotProfileUsageChanged(bool)));
   connect(this, SIGNAL(triggered(QString)), 
           this, SLOT(slotActionTriggered(QString)));
 }
