@@ -108,7 +108,7 @@
     </screenshot>
     
     <para>In this case, please install the specified program or, if it is already present, add its location to the <envar>PATH</envar> environment variable in your shell's configuration file (for the <ulink url="man:/bash"><citerefentry><refentrytitle>bash</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> shell it is the <filename>~/.bashrc</filename> file).</para>
-    <para>In addition, it is recommended that you configure Samba before using &smb4k;. You may use the web-based <ulink url="man:/swat"><citerefentry><refentrytitle>swat</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> utility for this purpose if you have Samba 3 installed. However, it was removed from Samba 4. With this version, you can use other graphical tools (&eg; <application>system-config-samba</application>) or configure the <ulink url="man:/smb.conf"><citerefentry><refentrytitle>smb.conf</refentrytitle><manvolnum>5</manvolnum></citerefentry></ulink> file manually.</para>
+    <para>In addition, it is recommended that you configure Samba before using &smb4k;. Consult the Samba Wiki's <ulink url="https://wiki.samba.org/index.php/User_Documentation">User Documentation</ulink> section, if you need help.</para>
   </sect1>
 
 <!-- 
@@ -871,7 +871,7 @@
 
       <note>
         <para>The total number of files that is shown in the progress dialog corresponds to the number of files present on the share and not necessarily to the total number of files that will actually be transferred.</para>
-        <para>The progress is calculated from the number of transferred files devided by the total number of files present on the share. Their size is not considered. That means that one very large file adds to the progress as much as a very small one does. Also, due to the way <application>rsync</application> displays the transfer progress, the progress bar is only updated after the transfer of the file.</para>
+        <para>The progress is calculated from the number of transferred files devided by the total number of files present on the share. Their size is not considered. That means that one very large file adds to the progress as much as a very small one does. Also, due to the way <application>rsync</application> displays the transfer progress, the progress bar is only updated after the transfer of the file finished.</para>
       </note>
     </sect2>
 
@@ -1091,8 +1091,8 @@
     </screenshot>
 
     <para>By clicking an entry you either enter the level below (&eg; clicking a workgroup or domain item will show a list of all hosts belonging to it), mount the selected share or invoke the print dialog. To go one level up again, you need to click the <guibutton>Up</guibutton> button in the toolbar.</para>
-    <para>For hosts and shares, to the right of the name of the network item some action buttons are arranged. For hosts, there is one button with that you can open the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog. For shares, there is an additional button with that you can <link linkend="bookmarks_adding">add the share to the bookmarks</link>. The action buttons are transparent by default and change to opaque when you move your mouse over them. By left clicking you initiate the respective action.</para>
-    <para>Besides the already mentioned <guibutton>Up</guibutton> button, the toolbar contains three more entries: <guibutton>Rescan</guibutton>, <guibutton>Abort</guibutton> and <guibutton>Mount Dialog</guibutton>. With them you can do a rescan, abort any running action or open the <link linkend="network_neighborhood_browser_mounting">dialog for "manual" mounts</link>.</para>
+    <para>For hosts and shares, to the right of the name of the network item some action buttons are arranged. For hosts, there is one button with that you can open the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog. For shares, there are additional buttons for <link linkend="network_neighborhood_browser_previewing">previewing the content of the selected share</link> and for <link linkend="bookmarks_adding">adding it to the bookmarks</link>, respectively. The action buttons are transparent by default and change to opaque when you move the mouse over them. By left clicking, you initiate the respective action.</para>
+    <para>Besides the <guibutton>Up</guibutton> button, the toolbar contains three more entries: <guibutton>Rescan</guibutton>, <guibutton>Abort</guibutton> and <guibutton>Mount Dialog</guibutton>. With them you can do a rescan, abort any running action or open the <link linkend="network_neighborhood_browser_mounting">dialog for "manual" mounts</link>.</para>
     <note><para>In the current development state, the &plasmoid; is not able to handle the <link linkend="configuration_network_periodic_scanning">automatic scanning feature</link>, &smb4k; provides. Funny things will happen, if you use it with the &plasmoid; and will probably render it mostly unusable.</para></note>
   </sect2>
 
@@ -1112,7 +1112,7 @@
         <textobject><phrase>Bookmarks tab of the plasmoid</phrase></textobject></mediaobject>
     </screenshot>
 
-    <para>Right to the name of the share and its host, two action buttons are arranged. The first one is for <link linkend="bookmarks_adding">adding a bookmark</link> and the second for unmounting the share. The action buttons are transparent by default and change to opaque when you move your mouse over them. By left clicking you initiate the respective action.</para>
+    <para>Right to the name of the share and its host, three action buttons are arranged. The first one is for <link linkend="bookmarks_adding">adding a bookmark</link>, the second for <link linkend="shares_view_synchronization">synchronization</link> and the third for <link linkend="shares_view_unmounting">unmounting the share</link>. The action buttons are transparent by default and change to opaque when you move your mouse over them. By left clicking you initiate the respective action.</para>
     <para>The toolbar only contains the <guibutton>Unmount All</guibutton> action that lets you unmount all shares at once.</para>
   </sect2>
 
