@@ -82,7 +82,7 @@ PlasmaComponents.Page {
         }
       }
       else {
-        less = true
+        // Do nothing
       }
 
       return less
