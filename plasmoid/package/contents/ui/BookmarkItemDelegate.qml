@@ -46,14 +46,13 @@ PlasmaComponents.ListItem {
       delegate.itemClicked()
     }
   
-  
     Row {
       spacing: units.largeSpacing
       Column {
         anchors.verticalCenter: parent.verticalCenter
         PlasmaCore.IconItem {
           id: delegateItemIcon
-          source: (object.isGroup ? "folder-bookmark" : "folder-network")
+          source: (object.isGroup ? "folder-bookmark" : "folder-network-symbolic")
           overlays: [
             (object.isMounted ? "emblem-mounted" : "")
           ]
