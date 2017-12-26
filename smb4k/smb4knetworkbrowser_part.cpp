@@ -820,7 +820,7 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers(const WorkgroupPtr &workgroup
         
         //
         // Add new hosts to the workgroup item and remove obsolete workgroups if
-        // necessary.
+        // necessary. Honor the auto-expand feature.
         //
         QList<HostPtr> members = workgroupMembers(workgroupItem->workgroupItem());
         
@@ -848,6 +848,16 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers(const WorkgroupPtr &workgroup
             if (!foundHost)
             {
               (void) new Smb4KNetworkBrowserItem(workgroupItem, host);
+            }
+            else
+            {
+              // Do nothing
+            }
+            
+            // Auto-expand the workgroup item, if applicable
+            if (Smb4KSettings::autoExpandNetworkItems() && !workgroupItem->isExpanded())
+            {
+              m_widget->expandItem(workgroupItem);
             }
             else
             {
@@ -933,7 +943,7 @@ void Smb4KNetworkBrowserPart::slotShares(const HostPtr &host)
         
         //
         // Add new shares to the host item. The host will not be removed from the
-        // view when it has no shares.
+        // view when it has no shares. Honor the auto-expand feature.
         //
         QList<SharePtr> shares = sharedResources(host);
         
@@ -961,6 +971,16 @@ void Smb4KNetworkBrowserPart::slotShares(const HostPtr &host)
             if (!foundShare)
             {
               (void) new Smb4KNetworkBrowserItem(hostItem, share);
+            }
+            else
+            {
+              // Do nothing
+            }
+            
+            // Auto-expand the host item, if applicable
+            if (Smb4KSettings::autoExpandNetworkItems() && !hostItem->isExpanded())
+            {
+              m_widget->expandItem(hostItem);
             }
             else
             {
