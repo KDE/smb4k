@@ -853,16 +853,16 @@ void Smb4KNetworkBrowserPart::slotWorkgroupMembers(const WorkgroupPtr &workgroup
             {
               // Do nothing
             }
-            
-            // Auto-expand the workgroup item, if applicable
-            if (Smb4KSettings::autoExpandNetworkItems() && !workgroupItem->isExpanded())
-            {
-              m_widget->expandItem(workgroupItem);
-            }
-            else
-            {
-              // Do nothing
-            }
+          }
+          
+          // Auto-expand the workgroup item, if applicable
+          if (Smb4KSettings::autoExpandNetworkItems() && !workgroupItem->isExpanded())
+          {
+            m_widget->expandItem(workgroupItem);
+          }
+          else
+          {
+            // Do nothing
           }
         }
         else
@@ -976,16 +976,16 @@ void Smb4KNetworkBrowserPart::slotShares(const HostPtr &host)
             {
               // Do nothing
             }
-            
-            // Auto-expand the host item, if applicable
-            if (Smb4KSettings::autoExpandNetworkItems() && !hostItem->isExpanded())
-            {
-              m_widget->expandItem(hostItem);
-            }
-            else
-            {
-              // Do nothing
-            }
+          }
+          
+          // Auto-expand the host item, if applicable
+          if (Smb4KSettings::autoExpandNetworkItems() && !hostItem->isExpanded())
+          {
+            m_widget->expandItem(hostItem);
+          }
+          else
+          {
+            // Do nothing
           }
         }
         else
