@@ -1736,10 +1736,6 @@ polkit.addRule(function(action, subject) {
             </listitem>
           </varlistentry>
         </variablelist>
-        
-        <note>
-          <para>The <guibutton>Scan these broadcast areas</guibutton> method was removed prior to the release of &smb4k; 2.0.0, because it was buggy.</para>
-        </note>
       </sect3>
 
       <sect3 id="configuration_network_master_authentication">
