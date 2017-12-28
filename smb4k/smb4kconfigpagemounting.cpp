@@ -57,7 +57,7 @@
 using namespace Smb4KGlobal;
 
 
-Smb4KConfigPageMounting::Smb4KConfigPageMounting(QWidget* parent): QWidget(parent)
+Smb4KConfigPageMounting::Smb4KConfigPageMounting(QWidget* parent): QTabWidget(parent)
 {
   setupWidget();
 }
@@ -74,19 +74,22 @@ Smb4KConfigPageMounting::~Smb4KConfigPageMounting()
 //
 void Smb4KConfigPageMounting::setupWidget()
 {
-  QVBoxLayout *mount_layout = new QVBoxLayout(this);
-  mount_layout->setSpacing(5);
-  mount_layout->setMargin(0);
+  //
+  // Common options
+  //
+  QWidget *commonTab = new QWidget(this);
+  QVBoxLayout *commonTabLayout = new QVBoxLayout(commonTab);
+  commonTabLayout->setSpacing(5);
+  commonTabLayout->setMargin(0);
 
-  // Common Options
-  QGroupBox *common_options = new QGroupBox(i18n("Common Options"), this);
+  QGroupBox *commonOptions = new QGroupBox(i18n("Common Options"), commonTab);
 
-  QGridLayout *common_layout = new QGridLayout(common_options);
-  common_layout->setSpacing(5);
+  QGridLayout *commonOptionsLayout = new QGridLayout(commonOptions);
+  commonOptionsLayout->setSpacing(5);
 
-  QLabel *user_id_label = new QLabel(Smb4KMountSettings::self()->userIDItem()->label(), common_options);
+  QLabel *user_id_label = new QLabel(Smb4KMountSettings::self()->userIDItem()->label(), commonOptions);
 
-  QWidget *user_widget = new QWidget(common_options);
+  QWidget *user_widget = new QWidget(commonOptions);
 
   QGridLayout *user_layout = new QGridLayout(user_widget);
   user_layout->setSpacing(5);
@@ -128,9 +131,9 @@ void Smb4KConfigPageMounting::setupWidget()
   user_layout->addWidget(user_id, 0, 0, 0);
   user_layout->addWidget(user_chooser, 0, 1, Qt::AlignCenter);
 
-  QLabel *group_id_label = new QLabel(Smb4KMountSettings::self()->groupIDItem()->label(), common_options);
+  QLabel *group_id_label = new QLabel(Smb4KMountSettings::self()->groupIDItem()->label(), commonOptions);
 
-  QWidget *group_widget = new QWidget(common_options);
+  QWidget *group_widget = new QWidget(commonOptions);
 
   QGridLayout *group_layout = new QGridLayout(group_widget);
   group_layout->setSpacing(5);
@@ -172,25 +175,25 @@ void Smb4KConfigPageMounting::setupWidget()
   group_layout->addWidget(group_id, 0, 0, 0);
   group_layout->addWidget(group_chooser, 0, 1, Qt::AlignCenter);
 
-  QLabel *fmask_label = new QLabel(Smb4KMountSettings::self()->fileMaskItem()->label(), common_options);
+  QLabel *fmask_label = new QLabel(Smb4KMountSettings::self()->fileMaskItem()->label(), commonOptions);
 
-  KLineEdit *fmask = new KLineEdit(common_options);
+  KLineEdit *fmask = new KLineEdit(commonOptions);
   fmask->setObjectName("kcfg_FileMask");
   fmask->setAlignment(Qt::AlignRight);
 
   fmask_label->setBuddy(fmask);
 
-  QLabel *dmask_label = new QLabel(Smb4KMountSettings::self()->directoryMaskItem()->label(), common_options);
+  QLabel *dmask_label = new QLabel(Smb4KMountSettings::self()->directoryMaskItem()->label(), commonOptions);
 
-  KLineEdit *dmask = new KLineEdit(common_options);
+  KLineEdit *dmask = new KLineEdit(commonOptions);
   dmask->setObjectName("kcfg_DirectoryMask");
   dmask->setAlignment(Qt::AlignRight);
 
   dmask_label->setBuddy(dmask);
   
-  QLabel *write_access_label = new QLabel(Smb4KMountSettings::self()->writeAccessItem()->label(), common_options);
+  QLabel *write_access_label = new QLabel(Smb4KMountSettings::self()->writeAccessItem()->label(), commonOptions);
 
-  KComboBox *write_access      = new KComboBox(common_options);
+  KComboBox *write_access      = new KComboBox(commonOptions);
   write_access->setObjectName("kcfg_WriteAccess");
   write_access->insertItem(Smb4KMountSettings::EnumWriteAccess::ReadWrite,
                            Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadWrite).label);
@@ -199,9 +202,9 @@ void Smb4KConfigPageMounting::setupWidget()
 
   write_access_label->setBuddy(write_access);
 
-  QLabel *charset_label = new QLabel(Smb4KMountSettings::self()->clientCharsetItem()->label(), common_options);
+  QLabel *charset_label = new QLabel(Smb4KMountSettings::self()->clientCharsetItem()->label(), commonOptions);
 
-  KComboBox *charset = new KComboBox(common_options);
+  KComboBox *charset = new KComboBox(commonOptions);
   charset->setObjectName("kcfg_ClientCharset");
   charset->insertItem(Smb4KMountSettings::EnumClientCharset::default_charset,
                       Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::default_charset).label);
@@ -251,55 +254,67 @@ void Smb4KConfigPageMounting::setupWidget()
                       Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::tis_620).label);
   charset_label->setBuddy(charset);
   
-  QLabel *remote_fs_port_label = new QLabel(Smb4KMountSettings::self()->remoteFileSystemPortItem()->label(), common_options);
+  QLabel *remote_fs_port_label = new QLabel(Smb4KMountSettings::self()->remoteFileSystemPortItem()->label(), commonOptions);
 
-  QSpinBox *remote_fs_port = new QSpinBox(common_options);
+  QSpinBox *remote_fs_port = new QSpinBox(commonOptions);
   remote_fs_port->setObjectName("kcfg_RemoteFileSystemPort");
 //   remote_fs_port->setSliderEnabled(true);
 
-  common_layout->addWidget(user_id_label, 0, 0, 0);
-  common_layout->addWidget(user_widget, 0, 1, 0);
-  common_layout->addWidget(group_id_label, 1, 0, 0);
-  common_layout->addWidget(group_widget, 1, 1, 0);
-  common_layout->addWidget(fmask_label, 2, 0, 0);
-  common_layout->addWidget(fmask, 2, 1, 0);
-  common_layout->addWidget(dmask_label, 3, 0, 0);
-  common_layout->addWidget(dmask, 3, 1, 0);
-  common_layout->addWidget(write_access_label, 4, 0, 0);
-  common_layout->addWidget(write_access, 4, 1, 0);
-  common_layout->addWidget(charset_label, 5, 0, 0);
-  common_layout->addWidget(charset, 5, 1, 0);
-  common_layout->addWidget(remote_fs_port_label, 6, 0, 0);
-  common_layout->addWidget(remote_fs_port, 6, 1, 0);
-
-  // Advanced CIFS options
-  QGroupBox *advanced_options = new QGroupBox(i18n("Advanced Options"), this);
-
-  QGridLayout *advanced_layout = new QGridLayout(advanced_options);
-  advanced_layout->setSpacing(5);
+  commonOptionsLayout->addWidget(user_id_label, 0, 0, 0);
+  commonOptionsLayout->addWidget(user_widget, 0, 1, 0);
+  commonOptionsLayout->addWidget(group_id_label, 1, 0, 0);
+  commonOptionsLayout->addWidget(group_widget, 1, 1, 0);
+  commonOptionsLayout->addWidget(fmask_label, 2, 0, 0);
+  commonOptionsLayout->addWidget(fmask, 2, 1, 0);
+  commonOptionsLayout->addWidget(dmask_label, 3, 0, 0);
+  commonOptionsLayout->addWidget(dmask, 3, 1, 0);
+  commonOptionsLayout->addWidget(write_access_label, 4, 0, 0);
+  commonOptionsLayout->addWidget(write_access, 4, 1, 0);
+  commonOptionsLayout->addWidget(charset_label, 5, 0, 0);
+  commonOptionsLayout->addWidget(charset, 5, 1, 0);
+  commonOptionsLayout->addWidget(remote_fs_port_label, 6, 0, 0);
+  commonOptionsLayout->addWidget(remote_fs_port, 6, 1, 0);
   
-  QCheckBox *force_uid = new QCheckBox(Smb4KMountSettings::self()->forceUIDItem()->label(), advanced_options);
+  commonTabLayout->addWidget(commonOptions, 0, 0);
+  commonTabLayout->addStretch(1000);
+  
+  addTab(commonTab, i18n("Common Settings"));
+
+  // 
+  // Advanced options
+  // 
+  QWidget *advancedTab = new QWidget(this);
+  QVBoxLayout *advancedTabLayout = new QVBoxLayout(advancedTab);
+  advancedTabLayout->setSpacing(5);
+  advancedTabLayout->setMargin(0);
+  
+  QGroupBox *advancedOptions = new QGroupBox(i18n("Advanced Options"), advancedTab);
+
+  QGridLayout *advancedOptionsLayout = new QGridLayout(advancedOptions);
+  advancedOptionsLayout->setSpacing(5);
+  
+  QCheckBox *force_uid = new QCheckBox(Smb4KMountSettings::self()->forceUIDItem()->label(), advancedOptions);
   force_uid->setObjectName("kcfg_ForceUID");
   
-  QCheckBox *force_gid = new QCheckBox(Smb4KMountSettings::self()->forceGIDItem()->label(), advanced_options);
+  QCheckBox *force_gid = new QCheckBox(Smb4KMountSettings::self()->forceGIDItem()->label(), advancedOptions);
   force_gid->setObjectName("kcfg_ForceGID");
 
-  QCheckBox *permission_checks = new QCheckBox(Smb4KMountSettings::self()->permissionChecksItem()->label(), advanced_options);
+  QCheckBox *permission_checks = new QCheckBox(Smb4KMountSettings::self()->permissionChecksItem()->label(), advancedOptions);
   permission_checks->setObjectName("kcfg_PermissionChecks");
 
-  QCheckBox *client_controls = new QCheckBox(Smb4KMountSettings::self()->clientControlsIDsItem()->label(), advanced_options);
+  QCheckBox *client_controls = new QCheckBox(Smb4KMountSettings::self()->clientControlsIDsItem()->label(), advancedOptions);
   client_controls->setObjectName("kcfg_ClientControlsIDs");
 
-  QCheckBox *server_inodes = new QCheckBox(Smb4KMountSettings::self()->serverInodeNumbersItem()->label(), advanced_options);
+  QCheckBox *server_inodes = new QCheckBox(Smb4KMountSettings::self()->serverInodeNumbersItem()->label(), advancedOptions);
   server_inodes->setObjectName("kcfg_ServerInodeNumbers");
 
-  QCheckBox *reserved_chars = new QCheckBox(Smb4KMountSettings::self()->translateReservedCharsItem()->label(), advanced_options);
+  QCheckBox *reserved_chars = new QCheckBox(Smb4KMountSettings::self()->translateReservedCharsItem()->label(), advancedOptions);
   reserved_chars->setObjectName("kcfg_TranslateReservedChars");
 
-  QCheckBox *no_locking = new QCheckBox(Smb4KMountSettings::self()->noLockingItem()->label(), advanced_options);
+  QCheckBox *no_locking = new QCheckBox(Smb4KMountSettings::self()->noLockingItem()->label(), advancedOptions);
   no_locking->setObjectName("kcfg_NoLocking");
 
-  QWidget *c_extra_widget = new QWidget(advanced_options);
+  QWidget *c_extra_widget = new QWidget(advancedOptions);
 
   QGridLayout *c_extra_layout = new QGridLayout(c_extra_widget);
   c_extra_layout->setSpacing(5);
@@ -376,28 +391,26 @@ void Smb4KConfigPageMounting::setupWidget()
   c_extra_layout->addWidget(additional_opts, 3, 1, 0);
   c_extra_layout->addWidget(additional_opts_edit, 3, 2, 0);
 
-  advanced_layout->addWidget(force_uid, 0, 0, 0);
-  advanced_layout->addWidget(force_gid, 0, 1, 0);
-  advanced_layout->addWidget(permission_checks, 1, 0, 0);
-  advanced_layout->addWidget(client_controls, 1, 1, 0);
-  advanced_layout->addWidget(server_inodes, 2, 0, 0);
-  advanced_layout->addWidget(reserved_chars, 2, 1, 0);
-  advanced_layout->addWidget(no_locking, 3, 0, 0);
-  advanced_layout->addWidget(c_extra_widget, 4, 0, 1, 2, 0);
-
-  mount_layout->addWidget(common_options);
-  mount_layout->addWidget(advanced_options);
-  mount_layout->addStretch(100);
+  advancedOptionsLayout->addWidget(force_uid, 0, 0, 0);
+  advancedOptionsLayout->addWidget(force_gid, 0, 1, 0);
+  advancedOptionsLayout->addWidget(permission_checks, 1, 0, 0);
+  advancedOptionsLayout->addWidget(client_controls, 1, 1, 0);
+  advancedOptionsLayout->addWidget(server_inodes, 2, 0, 0);
+  advancedOptionsLayout->addWidget(reserved_chars, 2, 1, 0);
+  advancedOptionsLayout->addWidget(no_locking, 3, 0, 0);
+  advancedOptionsLayout->addWidget(c_extra_widget, 4, 0, 1, 2, 0);
+  
+  advancedTabLayout->addWidget(advancedOptions, 0);
+  advancedTabLayout->addStretch(100);
+  
+  addTab(advancedTab, i18n("Advanced Settings"));
   
   //
   // Connections
   //
-  connect(user_menu, SIGNAL(triggered(QAction*)),
-          this, SLOT(slotNewUserTriggered(QAction*)));
-  connect(group_menu, SIGNAL(triggered(QAction*)),
-          this, SLOT(slotNewGroupTriggered(QAction*)));
-  connect(additional_opts_edit, SIGNAL(clicked(bool)),
-          this, SLOT(slotAdditionalCIFSOptions()));
+  connect(user_menu, SIGNAL(triggered(QAction*)), this, SLOT(slotNewUserTriggered(QAction*)));
+  connect(group_menu, SIGNAL(triggered(QAction*)), this, SLOT(slotNewGroupTriggered(QAction*)));
+  connect(additional_opts_edit, SIGNAL(clicked(bool)), this, SLOT(slotAdditionalCIFSOptions()));
 }
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
 //
@@ -410,14 +423,14 @@ void Smb4KConfigPageMounting::setupWidget()
   mount_layout->setMargin(0);
 
   // Common Options
-  QGroupBox *common_options = new QGroupBox(i18n("Common Options"), this);
+  QGroupBox *commonOptions = new QGroupBox(i18n("Common Options"), this);
 
-  QGridLayout *common_layout = new QGridLayout(common_options);
-  common_layout->setSpacing(5);
+  QGridLayout *commonOptionsLayout = new QGridLayout(commonOptions);
+  commonOptionsLayout->setSpacing(5);
 
-  QLabel *user_id_label = new QLabel(Smb4KMountSettings::self()->userIDItem()->label(), common_options);
+  QLabel *user_id_label = new QLabel(Smb4KMountSettings::self()->userIDItem()->label(), commonOptions);
 
-  QWidget *user_widget = new QWidget(common_options);
+  QWidget *user_widget = new QWidget(commonOptions);
 
   QGridLayout *user_layout = new QGridLayout(user_widget);
   user_layout->setSpacing(5);
@@ -459,9 +472,9 @@ void Smb4KConfigPageMounting::setupWidget()
   user_layout->addWidget(user_id, 0, 0, 0);
   user_layout->addWidget(user_chooser, 0, 1, Qt::AlignCenter);
 
-  QLabel *group_id_label = new QLabel(Smb4KMountSettings::self()->groupIDItem()->label(), common_options);
+  QLabel *group_id_label = new QLabel(Smb4KMountSettings::self()->groupIDItem()->label(), commonOptions);
 
-  QWidget *group_widget = new QWidget(common_options);
+  QWidget *group_widget = new QWidget(commonOptions);
 
   QGridLayout *group_layout = new QGridLayout(group_widget);
   group_layout->setSpacing(5);
@@ -503,25 +516,25 @@ void Smb4KConfigPageMounting::setupWidget()
   group_layout->addWidget(group_id, 0, 0, 0);
   group_layout->addWidget(group_chooser, 0, 1, Qt::AlignCenter);
 
-  QLabel *fmask_label = new QLabel(Smb4KMountSettings::self()->fileMaskItem()->label(), common_options);
+  QLabel *fmask_label = new QLabel(Smb4KMountSettings::self()->fileMaskItem()->label(), commonOptions);
 
-  KLineEdit *fmask = new KLineEdit(common_options);
+  KLineEdit *fmask = new KLineEdit(commonOptions);
   fmask->setObjectName("kcfg_FileMask");
   fmask->setAlignment(Qt::AlignRight);
 
   fmask_label->setBuddy(fmask);
 
-  QLabel *dmask_label = new QLabel(Smb4KMountSettings::self()->directoryMaskItem()->label(), common_options);
+  QLabel *dmask_label = new QLabel(Smb4KMountSettings::self()->directoryMaskItem()->label(), commonOptions);
 
-  KLineEdit *dmask = new KLineEdit(common_options);
+  KLineEdit *dmask = new KLineEdit(commonOptions);
   dmask->setObjectName("kcfg_DirectoryMask");
   dmask->setAlignment(Qt::AlignRight);
 
   dmask_label->setBuddy(dmask);
   
-  QLabel *charset_label = new QLabel(Smb4KMountSettings::self()->clientCharsetItem()->label(), common_options);
+  QLabel *charset_label = new QLabel(Smb4KMountSettings::self()->clientCharsetItem()->label(), commonOptions);
 
-  KComboBox *charset = new KComboBox(common_options);
+  KComboBox *charset = new KComboBox(commonOptions);
   charset->setObjectName("kcfg_ClientCharset");
   charset->insertItem(Smb4KMountSettings::EnumClientCharset::default_charset,
                       Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::default_charset).label);
@@ -572,10 +585,10 @@ void Smb4KConfigPageMounting::setupWidget()
 
   charset_label->setBuddy(charset);
 
-  QLabel *codepage_label = new QLabel(Smb4KMountSettings::self()->serverCodepageItem()->label(), common_options);
+  QLabel *codepage_label = new QLabel(Smb4KMountSettings::self()->serverCodepageItem()->label(), commonOptions);
   codepage_label->setObjectName("CodepageLabel");
 
-  KComboBox *codepage = new KComboBox(common_options);
+  KComboBox *codepage = new KComboBox(commonOptions);
   codepage->setObjectName("kcfg_ServerCodepage");
   codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::default_codepage,
                        Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::default_codepage).label);
@@ -646,20 +659,20 @@ void Smb4KConfigPageMounting::setupWidget()
 
   codepage_label->setBuddy(codepage);
 
-  common_layout->addWidget(user_id_label, 0, 0, 0);
-  common_layout->addWidget(user_widget, 0, 1, 0);
-  common_layout->addWidget(group_id_label, 1, 0, 0);
-  common_layout->addWidget(group_widget, 1, 1, 0);
-  common_layout->addWidget(fmask_label, 2, 0, 0);
-  common_layout->addWidget(fmask, 2, 1, 0);
-  common_layout->addWidget(dmask_label, 3, 0, 0);
-  common_layout->addWidget(dmask, 3, 1, 0);
-  common_layout->addWidget(charset_label, 4, 0, 0);
-  common_layout->addWidget(charset, 4, 1, 0);
-  common_layout->addWidget(codepage_label, 5, 0, 0);
-  common_layout->addWidget(codepage, 5, 1, 0);
+  commonOptionsLayout->addWidget(user_id_label, 0, 0, 0);
+  commonOptionsLayout->addWidget(user_widget, 0, 1, 0);
+  commonOptionsLayout->addWidget(group_id_label, 1, 0, 0);
+  commonOptionsLayout->addWidget(group_widget, 1, 1, 0);
+  commonOptionsLayout->addWidget(fmask_label, 2, 0, 0);
+  commonOptionsLayout->addWidget(fmask, 2, 1, 0);
+  commonOptionsLayout->addWidget(dmask_label, 3, 0, 0);
+  commonOptionsLayout->addWidget(dmask, 3, 1, 0);
+  commonOptionsLayout->addWidget(charset_label, 4, 0, 0);
+  commonOptionsLayout->addWidget(charset, 4, 1, 0);
+  commonOptionsLayout->addWidget(codepage_label, 5, 0, 0);
+  commonOptionsLayout->addWidget(codepage, 5, 1, 0);
 
-  mount_layout->addWidget(common_options);
+  mount_layout->addWidget(commonOptions);
   mount_layout->addStretch(100);
 
   //

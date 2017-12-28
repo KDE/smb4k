@@ -27,7 +27,7 @@
 #define SMB4KCONFIGPAGEMOUNTING_H
 
 // Qt includes
-#include <QWidget>
+#include <QTabWidget>
 
 /**
  * This configuration page contains the mount options
@@ -36,12 +36,19 @@
  * @since 2.0.0
  */
 
-class Smb4KConfigPageMounting : public QWidget
+class Smb4KConfigPageMounting : public QTabWidget
 {
   Q_OBJECT
   
   public:
+    /**
+     * The constructor
+     */
     explicit Smb4KConfigPageMounting(QWidget* parent = 0);
+    
+    /**
+     * The destructor
+     */
     virtual ~Smb4KConfigPageMounting();
     
   protected Q_SLOTS:
@@ -50,14 +57,14 @@ class Smb4KConfigPageMounting : public QWidget
      *
      * @param action              The action that represents the new user.
      */
-    void slotNewUserTriggered( QAction *action );
+    void slotNewUserTriggered(QAction *action);
 
     /**
      * Sets the new general group ID.
      *
      * @param action              The action that represents the new group.
      */
-    void slotNewGroupTriggered( QAction *action );
+    void slotNewGroupTriggered(QAction *action);
     
     /**
      * This slot is activated when the additional CIFS options are to be
@@ -66,6 +73,9 @@ class Smb4KConfigPageMounting : public QWidget
     void slotAdditionalCIFSOptions();
     
   private:
+    /**
+     * Set up the widget
+     */
     void setupWidget();
 };
 
