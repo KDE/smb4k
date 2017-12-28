@@ -157,8 +157,10 @@ void Smb4KConfigDialog::setupDialog()
   profiles_area->setWidgetResizable(true);
   profiles_area->setFrameStyle(QFrame::NoFrame);
 
-  // Now add the pages to the configuration dialog
-  m_user_interface  = addPage(interface_area, Smb4KSettings::self(), i18n("User Interface"), "view-choose");
+  // 
+  // Pages to the configuration dialog
+  // 
+  m_user_interface  = addPage(interface_area, Smb4KSettings::self(), i18n("User Interface"), "preferences-desktop");
   m_network         = addPage(network_area, Smb4KSettings::self(), i18n("Network"), "network-workgroup");
   m_shares          = addPage(share_area, Smb4KSettings::self(), i18n("Shares"), "folder-network");
   m_authentication  = addPage(auth_area, Smb4KSettings::self(), i18n("Authentication"), "dialog-password");
@@ -170,28 +172,22 @@ void Smb4KConfigDialog::setupDialog()
   m_custom_options  = addPage(custom_area, Smb4KSettings::self(), i18n("Custom Options"), "preferences-system-network");
   m_profiles        = addPage(profiles_area, Smb4KSettings::self(), i18n("Profiles"), "format-list-unordered");
 
+  // 
   // Connections
-  connect(custom_options, SIGNAL(customSettingsModified()),
-          this,           SLOT(slotEnableApplyButton()));
-  
-  connect(custom_options, SIGNAL(reloadCustomSettings()),
-          this,           SLOT(slotReloadCustomOptions()));
+  // 
+  connect(custom_options, SIGNAL(customSettingsModified()), this, SLOT(slotEnableApplyButton()));
+  connect(custom_options, SIGNAL(reloadCustomSettings()), this, SLOT(slotReloadCustomOptions()));
 
-  connect(auth_options,  SIGNAL(loadWalletEntries()),
-          this,          SLOT(slotLoadAuthenticationInformation()));
-           
-  connect(auth_options,  SIGNAL(saveWalletEntries()),
-          this,          SLOT(slotSaveAuthenticationInformation()));
-           
-  connect(auth_options,  SIGNAL(setDefaultLogin()),
-          this,          SLOT(slotSetDefaultLogin()));
-           
-  connect(auth_options,  SIGNAL(walletEntriesModified()),
-          this,          SLOT(slotEnableApplyButton()));
+  connect(auth_options, SIGNAL(loadWalletEntries()), this, SLOT(slotLoadAuthenticationInformation()));
+  connect(auth_options, SIGNAL(saveWalletEntries()), this, SLOT(slotSaveAuthenticationInformation()));
+  connect(auth_options, SIGNAL(setDefaultLogin()), this, SLOT(slotSetDefaultLogin()));
+  connect(auth_options, SIGNAL(walletEntriesModified()), this, SLOT(slotEnableApplyButton()));
   
-  connect(this,          SIGNAL(currentPageChanged(KPageWidgetItem*,KPageWidgetItem*)),
-          this,          SLOT(slotCheckPage(KPageWidgetItem*,KPageWidgetItem*)));
+  connect(this, SIGNAL(currentPageChanged(KPageWidgetItem*,KPageWidgetItem*)), this, SLOT(slotCheckPage(KPageWidgetItem*,KPageWidgetItem*)));
   
+  //
+  // Dialog size
+  //
   resize(QSize(800, 600));
 
   KConfigGroup group(Smb4KSettings::self()->config(), "ConfigDialog");
