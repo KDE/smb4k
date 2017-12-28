@@ -164,7 +164,7 @@ void Smb4KConfigDialog::setupDialog()
   m_network         = addPage(network_area, Smb4KSettings::self(), i18n("Network"), "network-workgroup");
   m_shares          = addPage(share_area, Smb4KSettings::self(), i18n("Shares"), "folder-network");
   m_authentication  = addPage(auth_area, Smb4KSettings::self(), i18n("Authentication"), "dialog-password");
-  m_samba           = addPage(samba_area, Smb4KSettings::self(), i18n("Samba"), "preferences-system-network");
+  m_samba           = addPage(samba_area, Smb4KSettings::self(), i18n("Samba"), "preferences-system-network-sharing");
 #if !defined(UNSUPPORTED_PLATFORM)
   m_mounting        = addPage(mount_area, Smb4KMountSettings::self(), i18n("Mounting"), "system-run");
 #endif
