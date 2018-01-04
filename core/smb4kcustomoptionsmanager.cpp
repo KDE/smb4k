@@ -1586,6 +1586,12 @@ QList<OptionsPtr> Smb4KCustomOptionsManager::wolEntries() const
 }
 
 
+void Smb4KCustomOptionsManager::resetCustomOptions()
+{
+  readCustomOptions();
+}
+
+
 void Smb4KCustomOptionsManager::migrateProfile(const QString& from, const QString& to)
 {
   //

@@ -72,6 +72,12 @@ class Q_DECL_EXPORT Smb4KConfigDialog : public KConfigDialog
     void updateWidgets();
     
     /**
+     * Reimplemented from QDialog. Used to reset things after the dialog was
+     * closed via the 'Cancel' button.
+     */
+    void reject();
+    
+    /**
      * This slot is connected to the "Load" button of the "Wallet Entries" tab
      * of the "Authentication" configuration page. It loads the authentication
      * information and puts it into the list view.

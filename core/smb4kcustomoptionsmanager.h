@@ -211,6 +211,11 @@ class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
     */
     QList<OptionsPtr> wolEntries() const;
     
+    /**
+     * Reload custom options from the file.              
+     */
+    void resetCustomOptions();
+    
   protected Q_SLOTS:
     /**
      * Called when the application exits

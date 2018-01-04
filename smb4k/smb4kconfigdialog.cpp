@@ -770,6 +770,13 @@ void Smb4KConfigDialog::updateWidgets()
 }
 
 
+void Smb4KConfigDialog::reject()
+{
+  Smb4KCustomOptionsManager::self()->resetCustomOptions();
+  QDialog::reject();
+}
+
+
 void Smb4KConfigDialog::slotLoadAuthenticationInformation()
 {
   Smb4KConfigPageAuthentication *auth_options = m_authentication->widget()->findChild<Smb4KConfigPageAuthentication *>();
