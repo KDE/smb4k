@@ -54,8 +54,6 @@ Smb4KConfigPageCustomOptions::Smb4KConfigPageCustomOptions(QWidget *parent) : QW
 {
   m_collection = new KActionCollection(this);
   m_maybe_changed = false;
-  m_removed = false;
-  
   setupWidget();
 }
 
@@ -65,6 +63,11 @@ Smb4KConfigPageCustomOptions::~Smb4KConfigPageCustomOptions()
   while (!m_optionsList.isEmpty())
   {
     m_optionsList.takeFirst().clear();
+  }
+  
+  if (m_currentOptions)
+  {
+    m_currentOptions.clear();
   }
 }
 
@@ -98,18 +101,13 @@ void Smb4KConfigPageCustomOptions::setupWidget()
   QAction *clear_action = new QAction(KDE::icon("edit-clear-list"), i18n("Clear List"), m_collection);
   clear_action->setEnabled(false);
   
-  QAction *undo_action = new QAction(KDE::icon("edit-undo"), i18n("Undo"), m_collection);
-  undo_action->setEnabled(false);
-  
   m_collection->addAction("edit_action", edit_action);
   m_collection->addAction("remove_action", remove_action);
   m_collection->addAction("clear_action", clear_action);
-  m_collection->addAction("undo_action", undo_action);
 
   m_menu->addAction(edit_action);
   m_menu->addAction(remove_action);
   m_menu->addAction(clear_action);
-  m_menu->addAction(undo_action);
   
   //
   // The editors
@@ -316,8 +314,6 @@ void Smb4KConfigPageCustomOptions::setupWidget()
 
   m_general_editors->setEnabled(false);
   m_tab_widget->setEnabled(false);
-
-  clearEditors();
   
   //
   // Connections
@@ -334,34 +330,6 @@ void Smb4KConfigPageCustomOptions::setupWidget()
           this,             SLOT(slotRemoveActionTriggered(bool)));
   connect(clear_action,     SIGNAL(triggered(bool)),
           this,             SLOT(slotClearActionTriggered(bool)));
-  connect(undo_action,      SIGNAL(triggered(bool)),
-          this,             SLOT(slotUndoActionTriggered(bool)));
-  connect(m_ip_address,     SIGNAL(textChanged(QString)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_remount_share,  SIGNAL(toggled(bool)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_smb_port,       SIGNAL(valueChanged(int)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_fs_port,        SIGNAL(valueChanged(int)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_write_access,   SIGNAL(currentIndexChanged(int)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_security_mode,  SIGNAL(currentIndexChanged(int)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_user_id,        SIGNAL(currentIndexChanged(int)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_group_id,       SIGNAL(currentIndexChanged(int)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_kerberos,       SIGNAL(toggled(bool)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_mac_address,    SIGNAL(textChanged(QString)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_send_before_scan,   SIGNAL(toggled(bool)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_send_before_mount,  SIGNAL(toggled(bool)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_mac_address,    SIGNAL(textChanged(QString)),
-          this,             SLOT(slotEnableWOLFeatures(QString)));
 }
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
 //
@@ -393,18 +361,13 @@ void Smb4KConfigPageCustomOptions::setupWidget()
   QAction *clear_action = new QAction(KDE::icon("edit-clear-list"), i18n("Clear List"), m_collection);
   clear_action->setEnabled(false);
   
-  QAction *undo_action = new QAction(KDE::icon("edit-undo"), i18n("Undo"), m_collection);
-  undo_action->setEnabled(false);
-  
   m_collection->addAction("edit_action", edit_action);
   m_collection->addAction("remove_action", remove_action);
   m_collection->addAction("clear_action", clear_action);
-  m_collection->addAction("undo_action", undo_action);
 
   m_menu->addAction(edit_action);
   m_menu->addAction(remove_action);
   m_menu->addAction(clear_action);
-  m_menu->addAction(undo_action);
   
   //
   // The editors
@@ -561,8 +524,6 @@ void Smb4KConfigPageCustomOptions::setupWidget()
 
   m_general_editors->setEnabled(false);
   m_tab_widget->setEnabled(false);
-
-  clearEditors();
   
   //
   // Connections
@@ -579,28 +540,6 @@ void Smb4KConfigPageCustomOptions::setupWidget()
           this,             SLOT(slotRemoveActionTriggered(bool)));
   connect(clear_action,     SIGNAL(triggered(bool)),
           this,             SLOT(slotClearActionTriggered(bool)));
-  connect(undo_action,      SIGNAL(triggered(bool)),
-          this,             SLOT(slotUndoActionTriggered(bool)));
-  connect(m_ip_address,     SIGNAL(textChanged(QString)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_remount_share,  SIGNAL(toggled(bool)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_smb_port,       SIGNAL(valueChanged(int)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_user_id,        SIGNAL(currentIndexChanged(int)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_group_id,       SIGNAL(currentIndexChanged(int)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_kerberos,       SIGNAL(toggled(bool)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_mac_address,    SIGNAL(textChanged(QString)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_send_before_scan,   SIGNAL(toggled(bool)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_send_before_mount,  SIGNAL(toggled(bool)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_mac_address,    SIGNAL(textChanged(QString)),
-          this,             SLOT(slotEnableWOLFeatures(QString)));
 }
 #else
 //
@@ -632,18 +571,13 @@ void Smb4KConfigPageCustomOptions::setupWidget()
   QAction *clear_action = new QAction(KDE::icon("edit-clear-list"), i18n("Clear List"), m_collection);
   clear_action->setEnabled(false);
   
-  QAction *undo_action = new QAction(KDE::icon("edit-undo"), i18n("Undo"), m_collection);
-  undo_action->setEnabled(false);
-  
   m_collection->addAction("edit_action", edit_action);
   m_collection->addAction("remove_action", remove_action);
   m_collection->addAction("clear_action", clear_action);
-  m_collection->addAction("undo_action", undo_action);
 
   m_menu->addAction(edit_action);
   m_menu->addAction(remove_action);
   m_menu->addAction(clear_action);
-  m_menu->addAction(undo_action);
   
   //
   // The editors
@@ -767,8 +701,6 @@ void Smb4KConfigPageCustomOptions::setupWidget()
 
   m_general_editors->setEnabled(false);
   m_tab_widget->setEnabled(false);
-
-  clearEditors();
   
   //
   // Connections
@@ -785,22 +717,6 @@ void Smb4KConfigPageCustomOptions::setupWidget()
           this,             SLOT(slotRemoveActionTriggered(bool)));
   connect(clear_action,     SIGNAL(triggered(bool)),
           this,             SLOT(slotClearActionTriggered(bool)));
-  connect(undo_action,      SIGNAL(triggered(bool)),
-          this,             SLOT(slotUndoActionTriggered(bool)));
-  connect(m_ip_address,     SIGNAL(textChanged(QString)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_smb_port,       SIGNAL(valueChanged(int)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_kerberos,       SIGNAL(toggled(bool)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_mac_address,    SIGNAL(textChanged(QString)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_send_before_scan,   SIGNAL(toggled(bool)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_send_before_mount,  SIGNAL(toggled(bool)),
-          this,             SLOT(slotEntryChanged()));
-  connect(m_mac_address,    SIGNAL(textChanged(QString)),
-          this,             SLOT(slotEnableWOLFeatures(QString)));
 }
 #endif
 
@@ -808,20 +724,11 @@ void Smb4KConfigPageCustomOptions::setupWidget()
 void Smb4KConfigPageCustomOptions::insertCustomOptions(const QList<OptionsPtr> &list)
 {
   //
-  // Insert those custom options that are not there
-  // 
-  for (const OptionsPtr &o : list)
+  // Clear the list of options
+  //
+  while (!m_optionsList.isEmpty())
   {
-    OptionsPtr options = findOptions(o->url().toDisplayString());
-    
-    if (!options)
-    {
-      m_optionsList << o;
-    }
-    else
-    {
-      // Do nothing
-    }
+    m_optionsList.takeFirst().clear();
   }
 
   //
@@ -830,6 +737,14 @@ void Smb4KConfigPageCustomOptions::insertCustomOptions(const QList<OptionsPtr> &
   while (m_custom_options->count() != 0)
   {
     delete m_custom_options->item(0);
+  }
+  
+  //
+  // Copy the list passed
+  //
+  for (const OptionsPtr &o : list)
+  {
+    m_optionsList << o;
   }
   
   //
@@ -859,7 +774,6 @@ void Smb4KConfigPageCustomOptions::insertCustomOptions(const QList<OptionsPtr> &
   }
 
   m_custom_options->sortItems(Qt::AscendingOrder);
-  m_removed = false;
 }
 
 
@@ -875,10 +789,44 @@ const QList<OptionsPtr> Smb4KConfigPageCustomOptions::getCustomOptions()
 //
 void Smb4KConfigPageCustomOptions::clearEditors()
 {
-  // Do not reset the current custom options object here,
-  // so that we can undo the last changes!
+  //
+  // Disconnect the editor widgets
+  //
+  disconnect(m_ip_address,     SIGNAL(textChanged(QString)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_remount_share,  SIGNAL(toggled(bool)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_smb_port,       SIGNAL(valueChanged(int)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_fs_port,        SIGNAL(valueChanged(int)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_write_access,   SIGNAL(currentIndexChanged(int)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_security_mode,  SIGNAL(currentIndexChanged(int)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_user_id,        SIGNAL(currentIndexChanged(int)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_group_id,       SIGNAL(currentIndexChanged(int)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_kerberos,       SIGNAL(toggled(bool)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_mac_address,    SIGNAL(textChanged(QString)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_send_before_scan,   SIGNAL(toggled(bool)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_send_before_mount,  SIGNAL(toggled(bool)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_mac_address,    SIGNAL(textChanged(QString)),
+             this,             SLOT(slotEnableWOLFeatures(QString)));
   
+  //
+  // Clear current options
+  //
+  m_currentOptions.clear();
+  
+  //
   // Clearing the editors means to reset them to their initial/default values.
+  //
   m_unc_address->clear();
   m_ip_address->clear();
   m_remount_share->setChecked(false);
@@ -965,7 +913,9 @@ void Smb4KConfigPageCustomOptions::clearEditors()
   m_send_before_scan->setChecked(false);
   m_send_before_mount->setChecked(false);
   
+  // 
   // Disable widgets
+  //
   m_general_editors->setEnabled(false);
   m_tab_widget->setEnabled(false);
 }
@@ -975,10 +925,38 @@ void Smb4KConfigPageCustomOptions::clearEditors()
 //
 void Smb4KConfigPageCustomOptions::clearEditors()
 {
-  // Do not reset the current custom options object here,
-  // so that we can undo the last changes!
+  //
+  // Disconnect the editor widgets
+  //  
+  disconnect(m_ip_address,     SIGNAL(textChanged(QString)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_remount_share,  SIGNAL(toggled(bool)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_smb_port,       SIGNAL(valueChanged(int)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_user_id,        SIGNAL(currentIndexChanged(int)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_group_id,       SIGNAL(currentIndexChanged(int)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_kerberos,       SIGNAL(toggled(bool)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_mac_address,    SIGNAL(textChanged(QString)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_send_before_scan,   SIGNAL(toggled(bool)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_send_before_mount,  SIGNAL(toggled(bool)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_mac_address,    SIGNAL(textChanged(QString)),
+             this,             SLOT(slotEnableWOLFeatures(QString)));
   
+  //
+  // Clear current options
+  //
+  m_currentOptions.clear();
+  
+  // 
   // Clearing the editors means to reset them to their initial/default values.
+  //
   m_unc_address->clear();
   m_ip_address->clear();
   m_remount_share->setChecked(false);
@@ -993,7 +971,9 @@ void Smb4KConfigPageCustomOptions::clearEditors()
   m_send_before_scan->setChecked(false);
   m_send_before_mount->setChecked(false);
   
+  // 
   // Disable widgets
+  // 
   m_general_editors->setEnabled(false);
   m_tab_widget->setEnabled(false);
 }
@@ -1003,10 +983,32 @@ void Smb4KConfigPageCustomOptions::clearEditors()
 //
 void Smb4KConfigPageCustomOptions::clearEditors()
 {
-  // Do not reset the current custom options object here,
-  // so that we can undo the last changes!
+  //
+  // Disconnect the editor widgets
+  //  
+  disconnect(m_ip_address,     SIGNAL(textChanged(QString)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_smb_port,       SIGNAL(valueChanged(int)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_kerberos,       SIGNAL(toggled(bool)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_mac_address,    SIGNAL(textChanged(QString)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_send_before_scan,   SIGNAL(toggled(bool)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_send_before_mount,  SIGNAL(toggled(bool)),
+             this,             SLOT(slotEntryChanged()));
+  disconnect(m_mac_address,    SIGNAL(textChanged(QString)),
+             this,             SLOT(slotEnableWOLFeatures(QString)));
   
+  //
+  // Clear current options
+  //
+  m_currentOptions.clear();
+  
+  // 
   // Clearing the editors means to reset them to their initial/default values.
+  // 
   m_unc_address->clear();
   m_ip_address->clear();
   m_smb_port->setValue(Smb4KSettings::remoteSMBPort());
@@ -1016,22 +1018,22 @@ void Smb4KConfigPageCustomOptions::clearEditors()
   m_send_before_scan->setChecked(false);
   m_send_before_mount->setChecked(false);
   
+  // 
   // Disable widgets
+  // 
   m_general_editors->setEnabled(false);
   m_tab_widget->setEnabled(false);
 }
 #endif
 
 
-OptionsPtr Smb4KConfigPageCustomOptions::findOptions(const QString& url)
+void Smb4KConfigPageCustomOptions::setCurrentOptions(const QString& url)
 {
-  OptionsPtr options;
-  
   for (const OptionsPtr &o : m_optionsList)
   {
     if (url == o->url().toDisplayString())
     {
-      options = o;
+      m_currentOptions = o;
       break;
     }
     else
@@ -1039,8 +1041,6 @@ OptionsPtr Smb4KConfigPageCustomOptions::findOptions(const QString& url)
       // Do nothing
     }
   }
-  
-  return options;
 }
 
 
@@ -1048,15 +1048,11 @@ OptionsPtr Smb4KConfigPageCustomOptions::findOptions(const QString& url)
 //
 // Linux
 //
-void Smb4KConfigPageCustomOptions::populateEditors(const OptionsPtr &options)
+void Smb4KConfigPageCustomOptions::populateEditors()
 {
-  // Commit changes
-  commitChanges();
-  
-  // Copy custom options object
-  m_currentOptions = options;
-  
+  //
   // Populate the editors with the stored values.
+  // 
   m_unc_address->setText(m_currentOptions->unc());
   
   if (!m_currentOptions->ip().isEmpty())
@@ -1279,7 +1275,9 @@ void Smb4KConfigPageCustomOptions::populateEditors(const OptionsPtr &options)
   m_send_before_scan->setChecked(m_currentOptions->wolSendBeforeNetworkScan());
   m_send_before_mount->setChecked(m_currentOptions->wolSendBeforeMount());
   
-  // Enable widget
+  // 
+  // Enable widgets
+  // 
   m_general_editors->setEnabled(true);
   m_tab_widget->setEnabled(true);
   m_tab_widget->widget(SambaTab)->setEnabled(true);
@@ -1296,20 +1294,46 @@ void Smb4KConfigPageCustomOptions::populateEditors(const OptionsPtr &options)
   }
   
   slotEnableWOLFeatures(m_mac_address->text());
+  
+  //
+  // Connections
+  //
+  connect(m_ip_address, SIGNAL(textChanged(QString)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_remount_share,  SIGNAL(toggled(bool)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_smb_port,       SIGNAL(valueChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_fs_port,        SIGNAL(valueChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_write_access,   SIGNAL(currentIndexChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_security_mode,  SIGNAL(currentIndexChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_user_id,        SIGNAL(currentIndexChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_group_id,       SIGNAL(currentIndexChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_kerberos,       SIGNAL(toggled(bool)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_mac_address,    SIGNAL(textChanged(QString)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_send_before_scan,   SIGNAL(toggled(bool)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_send_before_mount,  SIGNAL(toggled(bool)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_mac_address,    SIGNAL(textChanged(QString)),
+          this,             SLOT(slotEnableWOLFeatures(QString)));
 }
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
 //
 // FreeBSD and NetBSD
 //
-void Smb4KConfigPageCustomOptions::populateEditors(const OptionsPtr &options)
+void Smb4KConfigPageCustomOptions::populateEditors()
 {
-  // Commit changes
-  commitChanges();
-  
-  // Copy custom options object
-  m_currentOptions = options;
-  
+  // 
   // Populate the editors with the stored values.
+  // 
   m_unc_address->setText(m_currentOptions->unc());
   
   if (!m_currentOptions->ip().isEmpty())
@@ -1371,7 +1395,9 @@ void Smb4KConfigPageCustomOptions::populateEditors(const OptionsPtr &options)
   m_send_before_scan->setChecked(m_currentOptions->wolSendBeforeNetworkScan());
   m_send_before_mount->setChecked(m_currentOptions->wolSendBeforeMount());
   
-  // Enable widget
+  // 
+  // Enable widgets
+  // 
   m_general_editors->setEnabled(true);
   m_tab_widget->setEnabled(true);
   m_tab_widget->widget(SambaTab)->setEnabled(true);
@@ -1388,20 +1414,40 @@ void Smb4KConfigPageCustomOptions::populateEditors(const OptionsPtr &options)
   }
   
   slotEnableWOLFeatures(m_mac_address->text());
+  
+  //
+  // Connections
+  // 
+  connect(m_ip_address,     SIGNAL(textChanged(QString)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_remount_share,  SIGNAL(toggled(bool)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_smb_port,       SIGNAL(valueChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_user_id,        SIGNAL(currentIndexChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_group_id,       SIGNAL(currentIndexChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_kerberos,       SIGNAL(toggled(bool)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_mac_address,    SIGNAL(textChanged(QString)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_send_before_scan,   SIGNAL(toggled(bool)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_send_before_mount,  SIGNAL(toggled(bool)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_mac_address,    SIGNAL(textChanged(QString)),
+          this,             SLOT(slotEnableWOLFeatures(QString)));
 }
 #else
 //
 // Generic (without mount options)
 //
-void Smb4KConfigPageCustomOptions::populateEditors(const OptionsPtr &options)
+void Smb4KConfigPageCustomOptions::populateEditors()
 {
-  // Commit changes
-  commitChanges();
-  
-  // Copy custom options object
-  m_currentOptions = options;
-  
+  // 
   // Populate the editors with the stored values.
+  // 
   m_unc_address->setText(m_currentOptions->unc());
   
   if (!m_currentOptions->ip().isEmpty())
@@ -1451,7 +1497,9 @@ void Smb4KConfigPageCustomOptions::populateEditors(const OptionsPtr &options)
   m_send_before_scan->setChecked(m_currentOptions->wolSendBeforeNetworkScan());
   m_send_before_mount->setChecked(m_currentOptions->wolSendBeforeMount());
   
+  // 
   // Enable widget
+  // 
   m_general_editors->setEnabled(true);
   m_tab_widget->setEnabled(true);
   m_tab_widget->widget(SambaTab)->setEnabled(true);
@@ -1466,6 +1514,24 @@ void Smb4KConfigPageCustomOptions::populateEditors(const OptionsPtr &options)
   }
   
   slotEnableWOLFeatures(m_mac_address->text());
+  
+  //
+  // Connections
+  //
+  connect(m_ip_address,     SIGNAL(textChanged(QString)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_smb_port,       SIGNAL(valueChanged(int)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_kerberos,       SIGNAL(toggled(bool)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_mac_address,    SIGNAL(textChanged(QString)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_send_before_scan,   SIGNAL(toggled(bool)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_send_before_mount,  SIGNAL(toggled(bool)),
+          this,             SLOT(slotEntryChanged()));
+  connect(m_mac_address,    SIGNAL(textChanged(QString)),
+          this,             SLOT(slotEnableWOLFeatures(QString)));
 }
 #endif
 
@@ -1475,16 +1541,13 @@ void Smb4KConfigPageCustomOptions::populateEditors(const OptionsPtr &options)
 //
 void Smb4KConfigPageCustomOptions::commitChanges()
 {
-  if (m_currentOptions && !m_optionsList.isEmpty() &&
-      QString::compare(m_currentOptions->unc(), m_unc_address->text()) == 0)
+  if (m_currentOptions && !m_optionsList.isEmpty() && m_currentOptions->unc() == m_unc_address->text())
   {
-    OptionsPtr options = findOptions(m_currentOptions->url().toDisplayString());
-    
     QHostAddress addr(m_ip_address->text());
     
     if (addr.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol)
     {
-      options->setIP(m_ip_address->text());
+      m_currentOptions->setIP(m_ip_address->text());
     }
     else
     {
@@ -1493,64 +1556,62 @@ void Smb4KConfigPageCustomOptions::commitChanges()
     
     if (m_remount_share->isChecked())
     {
-      options->setRemount(Smb4KCustomOptions::RemountAlways);
+      m_currentOptions->setRemount(Smb4KCustomOptions::RemountAlways);
     }
     else
     {
-      options->setRemount(Smb4KCustomOptions::RemountNever);
+      m_currentOptions->setRemount(Smb4KCustomOptions::RemountNever);
     }
     
-    options->setSMBPort(m_smb_port->value());
-    options->setFileSystemPort(m_fs_port->value());
-    options->setWriteAccess((Smb4KCustomOptions::WriteAccess)m_write_access->itemData(m_write_access->currentIndex()).toInt());
-    options->setSecurityMode((Smb4KCustomOptions::SecurityMode)m_security_mode->itemData(m_security_mode->currentIndex()).toInt());
-    options->setUser(KUser(m_user_id->itemData(m_user_id->currentIndex()).toInt()));
-    options->setGroup(KUserGroup(m_group_id->itemData(m_group_id->currentIndex()).toInt()));
+    m_currentOptions->setSMBPort(m_smb_port->value());
+    m_currentOptions->setFileSystemPort(m_fs_port->value());
+    m_currentOptions->setWriteAccess((Smb4KCustomOptions::WriteAccess)m_write_access->itemData(m_write_access->currentIndex()).toInt());
+    m_currentOptions->setSecurityMode((Smb4KCustomOptions::SecurityMode)m_security_mode->itemData(m_security_mode->currentIndex()).toInt());
+    m_currentOptions->setUser(KUser(m_user_id->itemData(m_user_id->currentIndex()).toInt()));
+    m_currentOptions->setGroup(KUserGroup(m_group_id->itemData(m_group_id->currentIndex()).toInt()));
 
     if (m_kerberos->isChecked())
     {
-      options->setUseKerberos(Smb4KCustomOptions::UseKerberos);
+      m_currentOptions->setUseKerberos(Smb4KCustomOptions::UseKerberos);
     }
     else
     {
-      options->setUseKerberos(Smb4KCustomOptions::NoKerberos);
+      m_currentOptions->setUseKerberos(Smb4KCustomOptions::NoKerberos);
     }
     
     QRegExp exp("..\\:..\\:..\\:..\\:..\\:..");
     
     if (exp.exactMatch(m_mac_address->text()))
     {
-      options->setMACAddress(m_mac_address->text());
+      m_currentOptions->setMACAddress(m_mac_address->text());
     }
     else
     {
       // Do nothing
     }
     
-    options->setWOLSendBeforeNetworkScan(m_send_before_scan->isChecked());
-    options->setWOLSendBeforeMount(m_send_before_mount->isChecked());
+    m_currentOptions->setWOLSendBeforeNetworkScan(m_send_before_scan->isChecked());
+    m_currentOptions->setWOLSendBeforeMount(m_send_before_mount->isChecked());
     
     // In case of a host, propagate the changes to its shares.
-    if (options->type() == Host)
+    if (m_currentOptions->type() == Host)
     {
-      for (int i = 0; i < m_optionsList.size(); ++i)
+      for (const OptionsPtr &o : m_optionsList)
       {
-        if (m_optionsList.at(i)->type() == Share &&
-            QString::compare(m_optionsList.at(i)->hostName(), options->hostName(), Qt::CaseInsensitive) == 0 &&
-            QString::compare(m_optionsList.at(i)->workgroupName(), options->workgroupName(), Qt::CaseInsensitive) == 0)
+        if (o->type() == Share && o->hostName() == m_currentOptions->hostName() && o->workgroupName() == m_currentOptions->workgroupName())
         {
           // Propagate the options to the shared resources of the host.
           // They overwrite the ones defined for the shares.
-          m_optionsList[i]->setSMBPort(options->smbPort());
-          m_optionsList[i]->setFileSystemPort(options->fileSystemPort());
-          m_optionsList[i]->setWriteAccess(options->writeAccess());
-          m_optionsList[i]->setSecurityMode(options->securityMode());
-          m_optionsList[i]->setUser(options->user());
-          m_optionsList[i]->setGroup(options->group());
-          m_optionsList[i]->setUseKerberos(options->useKerberos());
-          m_optionsList[i]->setMACAddress(options->macAddress());
-          m_optionsList[i]->setWOLSendBeforeNetworkScan(options->wolSendBeforeNetworkScan());
-          m_optionsList[i]->setWOLSendBeforeMount(options->wolSendBeforeMount());
+          o->setSMBPort(m_currentOptions->smbPort());
+          o->setFileSystemPort(m_currentOptions->fileSystemPort());
+          o->setWriteAccess(m_currentOptions->writeAccess());
+          o->setSecurityMode(m_currentOptions->securityMode());
+          o->setUser(m_currentOptions->user());
+          o->setGroup(m_currentOptions->group());
+          o->setUseKerberos(m_currentOptions->useKerberos());
+          o->setMACAddress(m_currentOptions->macAddress());
+          o->setWOLSendBeforeNetworkScan(m_currentOptions->wolSendBeforeNetworkScan());
+          o->setWOLSendBeforeMount(m_currentOptions->wolSendBeforeMount());
         }
         else
         {
@@ -1577,16 +1638,13 @@ void Smb4KConfigPageCustomOptions::commitChanges()
 //
 void Smb4KConfigPageCustomOptions::commitChanges()
 {
-  if (m_currentOptions && !m_optionsList.isEmpty() &&
-      QString::compare(m_currentOptions->unc(), m_unc_address->text()) == 0)
+  if (m_currentOptions && !m_optionsList.isEmpty() && m_currentOptions->unc() == m_unc_address->text())
   {
-    OptionsPtr options = findOptions(m_currentOptions->url().toDisplayString());
-    
     QHostAddress addr(m_ip_address->text());
     
     if (addr.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol)
     {
-      options->setIP(m_ip_address->text());
+      m_currentOptions->setIP(m_ip_address->text());
     }
     else
     {
@@ -1595,58 +1653,56 @@ void Smb4KConfigPageCustomOptions::commitChanges()
     
     if (m_remount_share->isChecked())
     {
-      options->setRemount(Smb4KCustomOptions::RemountAlways);
+      m_currentOptions->setRemount(Smb4KCustomOptions::RemountAlways);
     }
     else
     {
-      options->setRemount(Smb4KCustomOptions::RemountNever);
+      m_currentOptions->setRemount(Smb4KCustomOptions::RemountNever);
     }
     
-    options->setSMBPort(m_smb_port->value());
-    options->setUser(KUser(m_user_id->itemData(m_user_id->currentIndex()).toInt()));
-    options->setGroup(KUserGroup(m_group_id->itemData(m_group_id->currentIndex()).toInt()));
+    m_currentOptions->setSMBPort(m_smb_port->value());
+    m_currentOptions->setUser(KUser(m_user_id->itemData(m_user_id->currentIndex()).toInt()));
+    m_currentOptions->setGroup(KUserGroup(m_group_id->itemData(m_group_id->currentIndex()).toInt()));
 
     if (m_kerberos->isChecked())
     {
-      options->setUseKerberos(Smb4KCustomOptions::UseKerberos);
+      m_currentOptions->setUseKerberos(Smb4KCustomOptions::UseKerberos);
     }
     else
     {
-      options->setUseKerberos(Smb4KCustomOptions::NoKerberos);
+      m_currentOptions->setUseKerberos(Smb4KCustomOptions::NoKerberos);
     }
     
     QRegExp exp("..\\:..\\:..\\:..\\:..\\:..");
     
     if (exp.exactMatch(m_mac_address->text()))
     {
-      options->setMACAddress(m_mac_address->text());
+      m_currentOptions->setMACAddress(m_mac_address->text());
     }
     else
     {
       // Do nothing
     }
     
-    options->setWOLSendBeforeNetworkScan(m_send_before_scan->isChecked());
-    options->setWOLSendBeforeMount(m_send_before_mount->isChecked());
+    m_currentOptions->setWOLSendBeforeNetworkScan(m_send_before_scan->isChecked());
+    m_currentOptions->setWOLSendBeforeMount(m_send_before_mount->isChecked());
     
     // In case of a host, propagate the changes to its shares.
-    if (options->type() == Host)
+    if (m_currentOptions->type() == Host)
     {
-      for (int i = 0; i < m_optionsList.size(); ++i)
+      for (const OptionsPtr &o : m_optionsList)
       {
-        if (m_optionsList.at(i)->type() == Share &&
-            QString::compare(m_optionsList.at(i)->hostName() , options->hostName(), Qt::CaseInsensitive) == 0 &&
-            QString::compare(m_optionsList.at(i)->workgroupName() , options->workgroupName(), Qt::CaseInsensitive) == 0)
+        if (o->type() == Share && o->hostName() == m_currentOptions->hostName() && o->workgroupName() == m_currentOptions->workgroupName())
         {
           // Propagate the options to the shared resources of the host.
           // They overwrite the ones defined for the shares.
-          m_optionsList[i]->setSMBPort(options->smbPort());
-          m_optionsList[i]->setUser(options->user());
-          m_optionsList[i]->setGroup(options->group());
-          m_optionsList[i]->setUseKerberos(options->useKerberos());
-          m_optionsList[i]->setMACAddress(options->macAddress());
-          m_optionsList[i]->setWOLSendBeforeNetworkScan(options->wolSendBeforeNetworkScan());
-          m_optionsList[i]->setWOLSendBeforeMount(options->wolSendBeforeMount());
+          o->setSMBPort(m_currentOptions->smbPort());
+          o->setUser(m_currentOptions->user());
+          o->setGroup(m_currentOptions->group());
+          o->setUseKerberos(m_currentOptions->useKerberos());
+          o->setMACAddress(m_currentOptions->macAddress());
+          o->setWOLSendBeforeNetworkScan(m_currentOptions->wolSendBeforeNetworkScan());
+          o->setWOLSendBeforeMount(m_currentOptions->wolSendBeforeMount());
         }
         else
         {
@@ -1673,63 +1729,58 @@ void Smb4KConfigPageCustomOptions::commitChanges()
 //
 void Smb4KConfigPageCustomOptions::commitChanges()
 {
-  if (m_currentOptions && !m_optionsList.isEmpty() &&
-      QString::compare(m_currentOptions->unc(), m_unc_address->text()) == 0)
+  if (m_currentOptions && !m_optionsList.isEmpty() && m_currentOptions->unc() == m_unc_address->text())
   {
-    OptionsPtr options = findOptions(m_currentOptions->url().toDisplayString());
-    
     QHostAddress addr(m_ip_address->text());
     
     if (addr.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol)
     {
-      options->setIP(m_ip_address->text());
+      m_currentOptions->setIP(m_ip_address->text());
     }
     else
     {
       // Do nothing
     }
     
-    options->setSMBPort(m_smb_port->value());
+    m_currentOptions->setSMBPort(m_smb_port->value());
 
     if (m_kerberos->isChecked())
     {
-      options->setUseKerberos(Smb4KCustomOptions::UseKerberos);
+      m_currentOptions->setUseKerberos(Smb4KCustomOptions::UseKerberos);
     }
     else
     {
-      options->setUseKerberos(Smb4KCustomOptions::NoKerberos);
+      m_currentOptions->setUseKerberos(Smb4KCustomOptions::NoKerberos);
     }
     
     QRegExp exp("..\\:..\\:..\\:..\\:..\\:..");
     
     if (exp.exactMatch(m_mac_address->text()))
     {
-      options->setMACAddress(m_mac_address->text());
+      m_currentOptions->setMACAddress(m_mac_address->text());
     }
     else
     {
       // Do nothing
     }
     
-    options->setWOLSendBeforeNetworkScan(m_send_before_scan->isChecked());
-    options->setWOLSendBeforeMount(m_send_before_mount->isChecked());
+    m_currentOptions->setWOLSendBeforeNetworkScan(m_send_before_scan->isChecked());
+    m_currentOptions->setWOLSendBeforeMount(m_send_before_mount->isChecked());
     
     // In case of a host, propagate the changes to its shares.
-    if (options->type() == Host)
+    if (m_currentOptions->type() == Host)
     {
-      for (int i = 0; i < m_optionsList.size(); ++i)
+      for (const OptionsPtr &o : m_optionsList)
       {
-        if (m_optionsList.at(i)->type() == Share &&
-            QString::compare(m_optionsList.at(i)->hostName(), options->hostName(), Qt::CaseInsensitive) == 0 &&
-            QString::compare(m_optionsList.at(i)->workgroupName(), options->workgroupName(), Qt::CaseInsensitive) == 0)
+        if (o->type() == Share && o->hostName() == m_currentOptions->hostName() && o->workgroupName() == m_currentOptions->workgroupName())
         {
           // Propagate the options to the shared resources of the host.
           // They overwrite the ones defined for the shares.
-          m_optionsList[i]->setSMBPort(options->smbPort());
-          m_optionsList[i]->setUseKerberos(options->useKerberos());
-          m_optionsList[i]->setMACAddress(options->macAddress());
-          m_optionsList[i]->setWOLSendBeforeNetworkScan(options->wolSendBeforeNetworkScan());
-          m_optionsList[i]->setWOLSendBeforeMount(options->wolSendBeforeMount());
+          o->setSMBPort(m_currentOptions->smbPort());
+          o->setUseKerberos(m_currentOptions->useKerberos());
+          o->setMACAddress(m_currentOptions->macAddress());
+          o->setWOLSendBeforeNetworkScan(m_currentOptions->wolSendBeforeNetworkScan());
+          o->setWOLSendBeforeMount(m_currentOptions->wolSendBeforeMount());
         }
         else
         {
@@ -1790,11 +1841,11 @@ bool Smb4KConfigPageCustomOptions::eventFilter(QObject* obj, QEvent* e)
 
 void Smb4KConfigPageCustomOptions::slotEditCustomItem(QListWidgetItem *item)
 {
-  OptionsPtr options = findOptions(item->data(Qt::UserRole).toString());
+  setCurrentOptions(item->data(Qt::UserRole).toString());
   
-  if (options)
+  if (m_currentOptions)
   {
-    populateEditors(options);
+    populateEditors();
   }
   else
   {
@@ -1825,7 +1876,6 @@ void Smb4KConfigPageCustomOptions::slotCustomContextMenuRequested(const QPoint& 
   }
   
   m_collection->action("clear_action")->setEnabled(m_custom_options->count() != 0);
-  m_collection->action("undo_action")->setEnabled(m_currentOptions || m_removed);
   
   m_menu->menu()->popup(m_custom_options->viewport()->mapToGlobal(pos));
 }
@@ -1840,20 +1890,11 @@ void Smb4KConfigPageCustomOptions::slotEditActionTriggered(bool /*checked*/)
 void Smb4KConfigPageCustomOptions::slotRemoveActionTriggered(bool /*checked*/)
 {
   QListWidgetItem *item = m_custom_options->currentItem();
-  OptionsPtr options = findOptions(item->data(Qt::UserRole).toString());
+  setCurrentOptions(item->data(Qt::UserRole).toString());
   
-  if (item && options)
+  if (item)
   {
-    if (m_currentOptions && m_currentOptions->url().matches(options->url(), QUrl::StripTrailingSlash))
-    {
-      m_currentOptions.clear();
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    int index = m_optionsList.indexOf(options);
+    int index = m_optionsList.indexOf(m_currentOptions);
     
     if (index != -1)
     {
@@ -1874,8 +1915,8 @@ void Smb4KConfigPageCustomOptions::slotRemoveActionTriggered(bool /*checked*/)
     }
     
     delete item;
+    m_currentOptions.clear();
     
-    m_removed = true;
     m_maybe_changed = true;
     emit customSettingsModified();
   }
@@ -1902,63 +1943,6 @@ void Smb4KConfigPageCustomOptions::slotClearActionTriggered(bool /*checked*/)
   
   m_currentOptions.clear();
 
-  m_removed = true;
-  m_maybe_changed = true;
-  emit customSettingsModified();
-}
-
-
-void Smb4KConfigPageCustomOptions::slotUndoActionTriggered(bool /*checked*/)
-{
-  if (m_removed)
-  {
-    emit reloadCustomSettings();
-  }
-  else
-  {
-    if (m_currentOptions)
-    {
-      if (QString::compare(m_custom_options->currentItem()->data(Qt::UserRole).toString(),
-                            m_currentOptions->url().toDisplayString(), Qt::CaseInsensitive) == 0)
-      {
-        // Populate the editor with the original values and commit
-        // the changes.
-        populateEditors(m_currentOptions);
-        commitChanges();
-      }
-      else
-      {
-        // Copy the original values to the appropriate options object
-        // in the list.
-        OptionsPtr options = findOptions(m_currentOptions->url().toDisplayString());
-        
-        if (options)
-        {
-          options->setSMBPort(m_currentOptions->smbPort());
-#ifdef Q_OS_LINUX
-          options->setFileSystemPort(m_currentOptions->fileSystemPort());
-          options->setWriteAccess(m_currentOptions->writeAccess());
-          options->setSecurityMode(m_currentOptions->securityMode());
-#endif
-          options->setUser(m_currentOptions->user());
-          options->setGroup(m_currentOptions->group());
-          options->setUseKerberos(m_currentOptions->useKerberos());
-          options->setMACAddress(m_currentOptions->macAddress());
-          options->setWOLSendBeforeNetworkScan(m_currentOptions->wolSendBeforeNetworkScan());
-          options->setWOLSendBeforeMount(m_currentOptions->wolSendBeforeMount());
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-  
   m_maybe_changed = true;
   emit customSettingsModified();
 }

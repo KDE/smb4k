@@ -158,14 +158,6 @@ class Smb4KConfigPageCustomOptions : public QWidget
     void slotClearActionTriggered(bool);
     
     /**
-     * This slot is connected to the "Undo" action found in the context
-     * menu. It is called when this action is triggered.
-     * 
-     * @param checked         TRUE if the action is checked and FALSE otherwise.
-     */
-    void slotUndoActionTriggered(bool);
-    
-    /**
      * This slot is called when a value was changed.
      */
     void slotEntryChanged();
@@ -180,8 +172,8 @@ class Smb4KConfigPageCustomOptions : public QWidget
     enum Tabs { SambaTab = 0, WolTab = 1 };
     void setupWidget();
     void clearEditors();
-    OptionsPtr findOptions(const QString &url);
-    void populateEditors(const OptionsPtr &options);
+    void setCurrentOptions(const QString &url);
+    void populateEditors();
     void commitChanges();
     
     QListWidget *m_custom_options;
@@ -205,10 +197,9 @@ class Smb4KConfigPageCustomOptions : public QWidget
     QCheckBox *m_send_before_mount;
     QCheckBox *m_remount_share;
     
-    bool m_maybe_changed;
     QList<OptionsPtr> m_optionsList;
     OptionsPtr m_currentOptions;
-    bool m_removed;
+    bool m_maybe_changed;
 };
 
 #endif
