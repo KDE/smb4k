@@ -954,7 +954,7 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(const NetworkItemPtr &it
       }
       else
       {
-        // Do nothing
+        resetCustomOptions();
       }
       
       delete dlg;
