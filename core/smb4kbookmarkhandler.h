@@ -161,6 +161,11 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
      * @param parent          The parent widget
      */
     void editBookmarks(QWidget *parent = 0);
+    
+    /**
+     * Reset the bookmarks by reloading them from the file.              
+     */
+    void resetBookmarks();
 
   Q_SIGNALS:
     /**

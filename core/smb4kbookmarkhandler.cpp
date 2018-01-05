@@ -652,11 +652,17 @@ void Smb4KBookmarkHandler::editBookmarks(QWidget *parent)
   }
   else
   {
-    // Do nothing
+    resetBookmarks();
   }
 
   delete d->editor;
   d->editor = 0;
+}
+
+
+void Smb4KBookmarkHandler::resetBookmarks()
+{
+  readBookmarks();
 }
 
 
