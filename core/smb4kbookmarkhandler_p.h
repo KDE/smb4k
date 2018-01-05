@@ -38,6 +38,7 @@
 #include <QListWidget>
 #include <QAction>
 #include <QPushButton>
+#include <QPointer>
 
 // KDE includes
 #include <KCompletion/KLineEdit>
@@ -344,7 +345,7 @@ class Q_DECL_EXPORT Smb4KBookmarkEditor : public QDialog
 class Smb4KBookmarkHandlerPrivate
 {
   public:
-    Smb4KBookmarkEditor *editor;
+    QPointer<Smb4KBookmarkEditor> editor;
     QList<BookmarkPtr> bookmarks;
 };
 
