@@ -1471,6 +1471,7 @@ Name[sv]=Kommandot hittades inte
 Name[tr]=Komut bulunamadı
 Name[uk]=Команду не знайдено
 Name[x-test]=xxCommand not foundxx
+Name[zh_CN]=找不到命令
 Name[zh_TW]=找不到指令
 Comment=A required command could not be found
 Comment[bs]=Tražena komanda nije pronađena
