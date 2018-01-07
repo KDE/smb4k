@@ -27,7 +27,7 @@
     <holder>Alexander Reinholdt</holder>
   </copyright>
   <legalnotice>&underFDL;</legalnotice>
-  <date>2017-07-25</date>
+  <date>2018-01-07</date>
   <releaseinfo>&smb4k; 2.1.0</releaseinfo><!--FIXME change releaseinfo number-->
   <abstract>
     <para>&smb4k; is an advanced network neighborhood browser and Samba share mounting utility.</para>
@@ -1431,7 +1431,7 @@
     <sect2 id="special_remarks_samba_security_updates">
       <title>Samba Security Fixes of April 12, 2016</title>
     
-      <para>On April 12, 2016 the Samba team released security fixes for the <ulink url="http://www.badlock.org">Badlock bug</ulink>. Unfortunately, they also introduced a regression that causes the <command>net</command> command to fail on many systems when querying remote hosts. If you experience this issue, you can add two lines to the [global] section of your <filename>smb.conf</filename> file to make browsing work again:</para>
+      <para>On April 12, 2016, the Samba team released security fixes for the <ulink url="https://en.wikipedia.org/wiki/Badlock">Badlock bug</ulink>. Unfortunately, they also introduced a regression that causes the <command>net</command> command to fail on many systems when querying remote hosts. If you experience this issue, you can add two lines to the [global] section of your <filename>smb.conf</filename> file to make browsing work again:</para>
   
 <programlisting>[global]
 ...
@@ -1439,7 +1439,7 @@ client max protocol = SMB3
 client ipc max protocol = NT1
 ...</programlisting>
   
-      <para>Unfortunately, this fix for &smb4k; breaks the possibility to connect to the network neighborhood with &dolphin; and maybe also other programs.</para>
+      <para>Unfortunately, this fix for &smb4k; might break the possibility to connect to the network neighborhood with earlier versions of &dolphin; and maybe also other programs.</para>
     </sect2>
     
 <!--
@@ -1449,7 +1449,7 @@ client ipc max protocol = NT1
     <sect2 id="special_remarks_polkit-1">
       <title>Denied Privilege Escalation</title>
       
-      <para>In case the mount and unmount actions fail with an <guilabel>AuthorizationDeniedError</guilabel>, your polkit-1 setup might need to be adjusted: Add a file, &eg; named <filename>10-mounthelper.rules</filename>, to the <filename class="directory">$PREFIX/etc/polkit-1/rules.d/</filename> directory with the following content:</para>
+      <para>In case the mount and unmount actions fail (most likely with an <guilabel>AuthorizationDeniedError</guilabel> message), your polkit-1 setup might need to be adjusted: Add a file, &eg; named <filename>10-mounthelper.rules</filename>, to the <filename class="directory">$PREFIX/etc/polkit-1/rules.d/</filename> directory with the following content:</para>
 
 <programlisting>polkit.addRule(function(action, subject) {
         if (action.id == "org.kde.smb4k.mounthelper.mount" &amp;&amp; 
@@ -1469,29 +1469,17 @@ polkit.addRule(function(action, subject) {
     </sect2>
   
 <!-- 
-      Using Smb4K : Special Remarks : Remarks for FreeBSD Users 
--->
-  
-    <sect2 id="special_remarks_freebsd">
-      <title>Remarks for FreeBSD Users</title>
-      
-      <para>Since version 1.2.0, the password for a share is directly passed to <command>mount_smbfs</command>, so that the <filename>~/.nsmbrc</filename> is not necessary anymore for mounting. Moreover, &smb4k; will not write any data to that file anymore.</para>
-    </sect2>
-
-<!-- 
-      Using Smb4K : Special Remarks : Remarks for NetBSD Users 
+      Using Smb4K : Special Remarks : Other Desktops Than Plasma
 -->
 
-    <sect2 id="special_remarks_netbsd">
-      <title>Remarks for NetBSD Users</title>
+    <sect2 id="special_remarks_other_desktop_environments">
+      <title>Other Desktop Environments Than &plasma;</title>
 
-      <para>To make the &kf5;-based version of &smb4k; run on NetBSD, you might need to adjust some things:</para>
-      <itemizedlist>
-        <listitem><para>If mounting does not work, you should add the polkit-1 rules as described <link linkend="special_remarks_polkit-1">above</link>.</para></listitem>
-        <listitem><para>As of November 2017, <ulink url="https://www.pkgsrc.org">pkgsrc</ulink> does not contain the &plasma; desktop. When using a different desktop environment, &Qt; and &kf5; applications might be missing the icons. In that case, you might want to download the sources of <ulink url="https://sourceforge.net/projects/qt5ct/"><application>qt5ct</application></ulink>, configure, compile and install it. Therefor, follow the directions in the README file. To use <application>qt5ct</application> with your desktop environment, add the following line to your <filename>~/.xinitrc</filename> or <filename>~/.profile</filename> file:</para>
+      <para>When using a different desktop environment than &plasma;, &Qt; and &kf5; applications might be missing the icons. In that case, you might want to download the sources of <ulink url="https://sourceforge.net/projects/qt5ct/"><application>qt5ct</application></ulink>, configure, compile and install it. Therefor, follow the directions in the README file. To use <application>qt5ct</application> with your desktop environment, add the following line to your <filename>~/.xinitrc</filename> or <filename>~/.profile</filename> file:</para>
 <programlisting>export QT_QPA_PLATFORMTHEME=qt5ct</programlisting>
-        <para>If <application>qt5ct</application> does not start due to a missing <filename>libfreetype.so.17</filename> or <filename>libGL.so.2</filename> shared library file, create the <filename>/etc/ld.so.conf</filename> file and add the path <filename class="directory">/usr/X11R7/lib</filename> to it. This should fix the problem.</para></listitem>
-      </itemizedlist>
+      <note>
+        <para>Under NetBSD <application>qt5ct</application> might complain about a missing <filename>libfreetype.so.17</filename> or <filename>libGL.so.2</filename> shared library file and refuse to start. To fix this problem, create the <filename>/etc/ld.so.conf</filename> file and add the path <filename class="directory">/usr/X11R7/lib</filename> to it.</para>
+      </note>
     </sect2>
   </sect1>
 </chapter>
@@ -2428,7 +2416,7 @@ polkit.addRule(function(action, subject) {
           </term>
           <listitem>
             <para>Sets the codepage the remote server uses.</para> 
-            <para>This option is only available under FreeBSD.</para>
+            <para>This option is only available under FreeBSD and NetBSD.</para>
             <para>Default: default</para>
           </listitem>
         </varlistentry>
@@ -4065,12 +4053,12 @@ polkit.addRule(function(action, subject) {
       <listitem><para><ulink url="http://www.cmake.org">CMake</ulink> (&ge; 3.2)</para></listitem>
       <listitem><para><ulink url="http://gcc.gnu.org">GNU Compiler Collection</ulink> (g++ &ge; 4.0) or <ulink url="http://clang.llvm.org">clang/LLVM</ulink> (&ge; 3.0)</para></listitem>
     </itemizedlist>
-    <para>&smb4k; depends on the following <ulink url="http://www.qt.io">&Qt;</ulink> (&ge; 5.7.0) and <ulink url="http://www.kde.org">&kf5;</ulink> (&ge; 5.31.0) modules:</para>
+    <para>&smb4k; depends on the following <ulink url="http://www.qt.io">&Qt;</ulink> (&ge; 5.5.0) and <ulink url="http://www.kde.org">&kf5;</ulink> (&ge; 5.25.0) modules:</para>
     <itemizedlist>
       <listitem><para>QtCore, QtGui, QtWidgets, QtTest, QtNetwork, QtPrintSupport, QtQml</para></listitem>
       <listitem><para>KConfig, KAuth, KDocTools, KIconThemes, KWidgetsAddons, KI18n, KCompletion, KCoreAddons, Solid, KIO, KNotifications, KXmlGui, KJobWidgets, KWallet, KDBusAddons, KParts, KConfigWidgets, KNotifications, KWindowSystem</para></listitem>
     </itemizedlist>
-    <para>It also runtime depends on the following <ulink url="http://www.kde.org">&kf5;</ulink> (&ge; 5.31.0) modules:</para>
+    <para>It also runtime depends on the following <ulink url="http://www.kde.org">&kf5;</ulink> (&ge; 5.25.0) modules:</para>
     <itemizedlist>
       <listitem><para>Plasma</para></listitem>
     </itemizedlist>
@@ -4083,7 +4071,7 @@ polkit.addRule(function(action, subject) {
     <itemizedlist>
       <listitem><para><ulink url="http://rsync.samba.org">rsync</ulink></para></listitem>
     </itemizedlist>
-    <para>The list of changes can be found in the <filename>ChangeLog</filename> file.</para>
+    <para>The full list of changes can be found in the Git log at <ulink url="https://cgit.kde.org/smb4k.git">cgit.kde.org</ulink>. A summary can be found in the <filename>ChangeLog</filename> file in the tarball.</para>
   </sect1>
 
 <!-- 
