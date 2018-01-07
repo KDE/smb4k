@@ -1490,7 +1490,7 @@ polkit.addRule(function(action, subject) {
         <listitem><para>If mounting does not work, you should add the polkit-1 rules as described <link linkend="special_remarks_polkit-1">above</link>.</para></listitem>
         <listitem><para>As of November 2017, <ulink url="https://www.pkgsrc.org">pkgsrc</ulink> does not contain the &plasma; desktop. When using a different desktop environment, &Qt; and &kf5; applications might be missing the icons. In that case, you might want to download the sources of <ulink url="https://sourceforge.net/projects/qt5ct/"><application>qt5ct</application></ulink>, configure, compile and install it. Therefor, follow the directions in the README file. To use <application>qt5ct</application> with your desktop environment, add the following line to your <filename>~/.xinitrc</filename> or <filename>~/.profile</filename> file:</para>
 <programlisting>export QT_QPA_PLATFORMTHEME=qt5ct</programlisting>
-        <para>If <application>qt5ct</application> does not start due to a missing <filename>libGL.so.2</filename> shared library file, create the <filename>/etc/ld.so.conf</filename> file and add the path <filename class="directory">/usr/X11R7/lib</filename> to it. This should fix the problem.</para></listitem>
+        <para>If <application>qt5ct</application> does not start due to a missing <filename>libfreetype.so.17</filename> or <filename>libGL.so.2</filename> shared library file, create the <filename>/etc/ld.so.conf</filename> file and add the path <filename class="directory">/usr/X11R7/lib</filename> to it. This should fix the problem.</para></listitem>
       </itemizedlist>
     </sect2>
   </sect1>
