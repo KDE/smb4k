@@ -2,7 +2,7 @@
     smb4kbookmarkmenu  -  Bookmark menu
                              -------------------
     begin                : Sat Apr 02 2011
-    copyright            : (C) 2011-2017 by Alexander Reinholdt
+    copyright            : (C) 2011-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -288,12 +288,12 @@ void Smb4KBookmarkMenu::setupMenu()
         }
         else
         {
-          bookmarkAction = new QAction(bookmark->icon(), bookmark->unc(), m_bookmarks);
+          bookmarkAction = new QAction(bookmark->icon(), bookmark->displayString(), m_bookmarks);
           QMap<QString,QVariant> info;
           info["group"] = group;
           info["unc"] = bookmark->unc();
           bookmarkAction->setData(info);
-          sortedBookmarks << bookmark->unc();
+          sortedBookmarks << bookmark->displayString();
           m_action_collection->addAction(bookmark->unc(), bookmarkAction);
         }
         
@@ -375,12 +375,12 @@ void Smb4KBookmarkMenu::setupMenu()
     }
     else
     {
-      bookmarkAction = new QAction(bookmark->icon(), bookmark->unc(), m_bookmarks);
+      bookmarkAction = new QAction(bookmark->icon(), bookmark->displayString(), m_bookmarks);
       QMap<QString,QVariant> info;
       info["group"] = "";
       info["unc"] = bookmark->unc();
       bookmarkAction->setData(info);
-      sortedBookmarks << bookmark->unc();
+      sortedBookmarks << bookmark->displayString();
       m_action_collection->addAction(bookmark->unc(), bookmarkAction);
     }
         
