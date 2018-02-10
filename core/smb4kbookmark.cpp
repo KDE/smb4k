@@ -2,7 +2,7 @@
     This is the bookmark container for Smb4K (next generation).
                              -------------------
     begin                : So Jun 8 2008
-    copyright            : (C) 2008-2017 by Alexander Reinholdt
+    copyright            : (C) 2008-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -36,6 +36,8 @@
 #include <QHostAddress>
 
 // KDE includes
+#define TRANSLATION_DOMAIN "smb4k-core"
+#include <KI18n/KLocalizedString>
 #include <KIconThemes/KIconLoader>
 
 
@@ -352,5 +354,10 @@ void Smb4KBookmark::setIcon(const QIcon &icon)
 QIcon Smb4KBookmark::icon() const
 {
   return d->icon;
+}
+
+QString Smb4KBookmark::displayString() const
+{
+  return i18n("%1 on %2", shareName(), hostName());
 }
 

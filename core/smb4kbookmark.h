@@ -2,7 +2,7 @@
     This is the bookmark container for Smb4K (next generation).
                              -------------------
     begin                : So Jun 8 2008
-    copyright            : (C) 2008-2017 by Alexander Reinholdt
+    copyright            : (C) 2008-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -57,8 +57,7 @@ class Q_DECL_EXPORT Smb4KBookmark
      *
      * @param label           The optional bookmark label.
      */
-    explicit Smb4KBookmark(Smb4KShare *share,
-                           const QString &label = QString());
+    explicit Smb4KBookmark(Smb4KShare *share, const QString &label = QString());
 
     /**
      * The copy constructor.
@@ -279,6 +278,13 @@ class Q_DECL_EXPORT Smb4KBookmark
      * @returns the network item's icon.
      */
     QIcon icon() const;
+    
+    /**
+     * Returns the display string. Prefer this over all other alternatives in your
+     * GUI.
+     * @returns the display string.
+     */
+    QString displayString() const;
 
   private:
     const QScopedPointer<Smb4KBookmarkPrivate> d;
