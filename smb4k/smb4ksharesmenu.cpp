@@ -264,8 +264,6 @@ void Smb4KSharesMenu::slotUnmountAllShares()
 
 void Smb4KSharesMenu::slotShareAction(QAction *action)
 {
-  qDebug() << action->data().toMap().value("type").toString();
-  
   //
   // Create a share
   //
