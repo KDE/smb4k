@@ -2,7 +2,7 @@
     smb4ksharesmenu  -  Shares menu
                              -------------------
     begin                : Mon Sep 05 2011
-    copyright            : (C) 2011-2017 by Alexander Reinholdt
+    copyright            : (C) 2011-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -62,20 +62,10 @@ class Smb4KSharesMenu : public KActionMenu
 
   protected slots:
     /**
-     * Connected to Smb4KMounter::mounted() signal. Adds a
-     * share to the menu.
-     *
-     * @param share         The share that has been mounted
+     * This slot is connected to the Smb4KMounter::mountedSharesListChanged()
+     * signal. It refreshes the menu.
      */
-    void slotShareMounted(const SharePtr &share);
-
-    /**
-     * Connected to Smb4KMounter::unmounted() signal. Removes
-     * a share from the menu.
-     *
-     * @param share         The share that has been unmounted
-     */
-    void slotShareUnmounted(const SharePtr &share);
+    void slotMountedSharesListChanged();
 
     /**
      * This slot unmounts all shares at once.
