@@ -111,11 +111,6 @@ class Smb4KBookmarkMenu : public KActionMenu
     void slotBookmarksUpdated();
     
     /**
-     * Called when a bookmark was mounted
-     */
-    void slotDisableBookmark(const SharePtr &share);
-
-    /**
      * Called when a bookmark was unmounted
      */
     void slotEnableBookmark(const SharePtr &share);
