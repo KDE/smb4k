@@ -66,7 +66,7 @@ Smb4KBookmarkMenu::Smb4KBookmarkMenu(int type, QWidget *parentWidget, QObject *p
 
   // Connections
   connect(Smb4KBookmarkHandler::self(), SIGNAL(updated()), SLOT(slotBookmarksUpdated()));
-  connect(Smb4KMounter::self(), SIGNAL(mounted(SharePtr)), SLOT(slotDisableBookmark(SharePtr)));
+  connect(Smb4KMounter::self(), SIGNAL(mounted(SharePtr)), SLOT(slotEnableBookmark(SharePtr)));
   connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)), SLOT(slotEnableBookmark(SharePtr)));
   connect(m_groups, SIGNAL(triggered(QAction*)), SLOT(slotGroupActionTriggered(QAction*)));
   connect(m_bookmarks, SIGNAL(triggered(QAction*)), SLOT(slotBookmarkActionTriggered(QAction*)));
@@ -536,87 +536,7 @@ void Smb4KBookmarkMenu::slotBookmarkActionTriggered(QAction *action)
 
 void Smb4KBookmarkMenu::slotBookmarksUpdated()
 {
-  if (m_type == SystemTray)
-  {
-    qDebug() << "SystemTray: Refreshing menu";
-  }
-  else
-  {
-    qDebug() << "MainWindow: Refreshing menu";
-  }
-  
   refreshMenu();
-}
-
-
-void Smb4KBookmarkMenu::slotDisableBookmark(const SharePtr &share)
-{
-  if (!share->isForeign() && !m_bookmarks->actions().isEmpty())
-  {
-    //
-    // Disable the bookmark
-    //
-    QList<QAction *> actions = m_bookmarks->actions();
-    QString bookmarkGroup;
-    
-    for (QAction *a : actions)
-    {
-      if (share->unc() == a->data().toMap().value("unc").toString())
-      {
-        a->setEnabled(!share->isMounted());
-        bookmarkGroup = a->data().toMap().value("group").toString();
-        break;
-      }
-      else
-      {
-        continue;
-      }
-    }
-    
-    //
-    // Check if all bookmarks belonging to this group are 
-    // mounted. Disable the respective mount action if necessary.
-    //
-    bool allMounted = true;
-      
-    for (QAction *a : actions)
-    {
-      if (a->data().toMap().value("group").toString() == bookmarkGroup && a->isEnabled())
-      {
-        allMounted = false;
-        break;
-      }
-      else
-      {
-        continue;
-      }
-    }
-      
-    QList<QAction *> allActions = m_action_collection->actions();
-      
-    for (QAction *a : allActions)
-    {
-      if (a->data().toMap().value("type").toString() == "toplevel_mount" && bookmarkGroup.isEmpty())
-      {
-        a->setEnabled(!allMounted);
-        break;
-      }
-      else if (a->data().toMap().value("type").toString() == "group_mount" &&
-               a->data().toMap().value("group").toString() == bookmarkGroup)
-      {
-        a->setEnabled(!allMounted);
-        break;
-      }
-      else
-      {
-        continue;
-      }
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -625,7 +545,7 @@ void Smb4KBookmarkMenu::slotEnableBookmark(const SharePtr &share)
   if (!share->isForeign() && !m_bookmarks->actions().isEmpty())
   {
     //
-    // Disable the bookmark
+    // Enable or disable the bookmark
     //
     QList<QAction *> actions = m_bookmarks->actions();
     QString bookmarkGroup;
@@ -640,7 +560,7 @@ void Smb4KBookmarkMenu::slotEnableBookmark(const SharePtr &share)
       }
       else
       {
-        continue;
+        // Do nothing
       }
     }
     
