@@ -42,6 +42,7 @@
 #include <QString>
 #include <QStringList>
 #include <QStandardPaths>
+#include <QMenu>
 
 // KDE includes
 #include <KIconThemes/KIconLoader>
@@ -90,9 +91,19 @@ void Smb4KSharesMenu::refreshMenu()
   }
   
   //
+  // Clear the rest of the menu
+  //
+  menu()->clear();
+  
+  //
   // Set up the menu
   // 
   setupMenu();
+  
+  //
+  // Make sure the correct menu entries are shown
+  //
+  menu()->update();
 }
 
 
