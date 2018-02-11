@@ -596,12 +596,13 @@ void Smb4KBookmarkMenu::slotDisableBookmark(const SharePtr &share)
       
     for (QAction *a : allActions)
     {
-      if (a->objectName() == "toplevel_mount_action" && bookmarkGroup.isEmpty())
+      if (a->data().toMap().value("type").toString() == "toplevel_mount" && bookmarkGroup.isEmpty())
       {
         a->setEnabled(!allMounted);
         break;
       }
-      else if (a->objectName() == QString("%1_mount_action").arg(bookmarkGroup))
+      else if (a->data().toMap().value("type").toString() == "group_mount" &&
+               a->data().toMap().value("group").toString() == bookmarkGroup)
       {
         a->setEnabled(!allMounted);
         break;
@@ -666,12 +667,13 @@ void Smb4KBookmarkMenu::slotEnableBookmark(const SharePtr &share)
       
     for (QAction *a : allActions)
     {
-      if (a->objectName() == "toplevel_mount_action" && bookmarkGroup.isEmpty())
+      if (a->data().toMap().value("type").toString() == "toplevel_mount" && bookmarkGroup.isEmpty())
       {
         a->setEnabled(!allMounted);
         break;
       }
-      else if (a->objectName() == QString("%1_mount_action").arg(bookmarkGroup))
+      else if (a->data().toMap().value("type").toString() == "group_mount" &&
+               a->data().toMap().value("group").toString() == bookmarkGroup)
       {
         a->setEnabled(!allMounted);
         break;
