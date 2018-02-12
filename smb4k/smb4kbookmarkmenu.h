@@ -65,19 +65,17 @@ class Smb4KBookmarkMenu : public KActionMenu
     ~Smb4KBookmarkMenu();
 
     /**
-     * Returns the pointer to the "Add Bookmark" action or NULL, if
-     * it is not present.
-     *
-     * @returns the pointer to the "Add Bookmark" action.
-     */
-    QAction *addBookmarkAction();
-
-    /**
      * Force the menu to be set up again. This should be called if 
      * the settings changed and the handling of bookmarks might be
      * affected.
      */
     void refreshMenu();
+    
+  protected:
+    /**
+     * Reimplemented
+     */
+    void customEvent(QEvent *e);
 
   protected slots:
     /**

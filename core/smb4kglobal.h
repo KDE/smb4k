@@ -109,6 +109,8 @@ namespace Smb4KGlobal
       static const QEvent::Type ScanNetwork;
       static const QEvent::Type AddBookmark;
       static const QEvent::Type MountOrUnmountShare;
+      static const QEvent::Type EnableBookmarkAction;
+      static const QEvent::Type DisableBookmarkAction;
       
       explicit Smb4KEvent(QEvent::Type type);
       ~Smb4KEvent();
