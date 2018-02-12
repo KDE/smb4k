@@ -40,6 +40,7 @@
 #include <KCoreAddons/Kdelibs4ConfigMigrator>
 #include <KCoreAddons/Kdelibs4Migration>
 #include <KDBusAddons/KDBusService>
+#include <KCrash/KCrash>
 
 using namespace Smb4KGlobal;
 
@@ -190,6 +191,9 @@ int main(int argc, char **argv)
   
   // Unique application
   const KDBusService service(KDBusService::Unique);
+  
+  // Use a crash handler
+  KCrash::setDrKonqiEnabled(true);
   
   // Start the application
   return app.exec();
