@@ -78,12 +78,6 @@ Smb4KBookmarkMenu::~Smb4KBookmarkMenu()
 }
 
 
-QAction *Smb4KBookmarkMenu::addBookmarkAction()
-{
-  return m_action_collection->action("add_action");
-}
-
-
 void Smb4KBookmarkMenu::refreshMenu()
 {
   //
@@ -112,6 +106,38 @@ void Smb4KBookmarkMenu::refreshMenu()
   //
   menu()->update();
 }
+
+
+void Smb4KBookmarkMenu::customEvent(QEvent* e)
+{
+  if (e->type() == Smb4KEvent::EnableBookmarkAction)
+  {
+    if (m_action_collection->action("add_action"))
+    {
+      m_action_collection->action("add_action")->setEnabled(true);
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else if (e->type() == Smb4KEvent::DisableBookmarkAction)
+  {
+    if (m_action_collection->action("add_action"))
+    {
+      m_action_collection->action("add_action")->setEnabled(false);
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
 
 
 void Smb4KBookmarkMenu::setupMenu()

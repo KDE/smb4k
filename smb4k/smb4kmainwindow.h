@@ -2,7 +2,7 @@
     The main window of Smb4K.
                              -------------------
     begin                : Di Jan 1 2008
-    copyright            : (C) 2008-2017 by Alexander Reinholdt
+    copyright            : (C) 2008-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -356,11 +356,6 @@ class Smb4KMainWindow : public KParts::MainWindow
      * The part manager
      */
     KParts::PartManager *m_manager;
-
-    /**
-     * The active part
-     */
-    KParts::Part *m_active_part;
 
     /**
      * Dock widgets action group;

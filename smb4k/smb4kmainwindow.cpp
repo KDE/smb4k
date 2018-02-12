@@ -2,7 +2,7 @@
     The main window of Smb4K.
                              -------------------
     begin                : Di Jan 1 2008
-    copyright            : (C) 2008-2017 by Alexander Reinholdt
+    copyright            : (C) 2008-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -103,29 +103,40 @@ Smb4KMainWindow::~Smb4KMainWindow()
 
 void Smb4KMainWindow::setupActions()
 {
+  // 
   // Quit action
+  // 
   QAction *quit_action = KStandardAction::quit(this, SLOT(slotQuit()), actionCollection());
   actionCollection()->addAction("quit_action", quit_action);
 
+  // 
   // Configure action
+  // 
   QAction *configure_action = KStandardAction::preferences(this, SLOT(slotConfigDialog()), actionCollection());
   actionCollection()->addAction("configure_action", configure_action);
 
+  // 
   // Dock widgets action menu
+  // 
   KActionMenu *dock_widgets_menu = new KActionMenu(KDE::icon("tab-duplicate"), i18n("Dock Widgets"), actionCollection());
   actionCollection()->addAction("dock_widgets_menu", dock_widgets_menu);
 
   m_dock_widgets = new QActionGroup(actionCollection());
   m_dock_widgets->setExclusive(false);
 
+  // 
   // Bookmarks menu and action
+  // 
   Smb4KBookmarkMenu *bookmarks = new Smb4KBookmarkMenu(Smb4KBookmarkMenu::MainWindow, this, this);
-  bookmarks->addBookmarkAction()->setEnabled(false);
+  QAction *addBookmarkAction = new QAction(KDE::icon("bookmark-new"), i18n("Add &Bookmark"), actionCollection());
+  addBookmarkAction->setEnabled(false);
   actionCollection()->addAction("bookmarks_menu", bookmarks);
-  actionCollection()->addAction("bookmark_action", bookmarks->addBookmarkAction());
-  connect(bookmarks->addBookmarkAction(), SIGNAL(triggered(bool)), SLOT(slotAddBookmark()));
+  actionCollection()->addAction("bookmark_action", addBookmarkAction);
+  connect(addBookmarkAction, SIGNAL(triggered(bool)), SLOT(slotAddBookmark()));
   
+  // 
   // Profiles menu
+  // 
   Smb4KProfilesMenu *profiles = new Smb4KProfilesMenu(this);
   actionCollection()->addAction("profiles_menu", profiles);
 }
@@ -212,9 +223,6 @@ void Smb4KMainWindow::setupStatusBar()
 
 void Smb4KMainWindow::setupView()
 {
-  // There is no active part initially. Set it 0.
-  m_active_part = 0;
-
   // We do not set a central widget, because it causes "problems"
   // with the dock widgets. We have the nested dock widget property
   // set to true, so we can arrange the dock widgets as we like,
@@ -643,10 +651,10 @@ void Smb4KMainWindow::slotSettingsChanged(const QString &)
 
 void Smb4KMainWindow::slotAddBookmark()
 {
-  if (m_active_part)
+  if (m_manager->activePart())
   {
     Smb4KEvent *customEvent = new Smb4KEvent(Smb4KEvent::AddBookmark);
-    QApplication::postEvent(m_active_part, customEvent);
+    QApplication::postEvent(m_manager->activePart(), customEvent);
   }
   else
   {
@@ -1065,86 +1073,134 @@ void Smb4KMainWindow::slotPreviewerFinished(const SharePtr &/*share*/, const QUr
 
 void Smb4KMainWindow::slotActivePartChanged(KParts::Part *part)
 {
-  Q_ASSERT(part);
+  if (part)
+  {    
+    //
+    // Remove all connections to Smb4KMainWindow::slotEnableBookmarkAction() and
+    // disable the bookmark action.
+    //
+    disconnect(this, SLOT(slotEnableBookmarkAction()));
+    actionCollection()->action("bookmark_action")->setEnabled(false);
 
-  // First break the connections and disable the actions
-  if (m_active_part)
-  {
-    // Bookmark action
-    QAction *bookmark_action = m_active_part->actionCollection()->action("bookmark_action");
+    Smb4KBookmarkMenu *bookmarkMenu = findChild<Smb4KBookmarkMenu *>();
 
-    if (bookmark_action)
+    if (bookmarkMenu)
     {
-      disconnect(bookmark_action, SIGNAL(changed()), this, SLOT(slotEnableBookmarkAction()));
-      actionCollection()->action("bookmark_action")->setEnabled(false);
+      Smb4KEvent *customEvent = new Smb4KEvent(Smb4KEvent::DisableBookmarkAction);
+      QApplication::postEvent(bookmarkMenu, customEvent);
     }
     else
     {
       // Do nothing
     }
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Let m_active_part point to the new active part.
-  m_active_part = part;
-  
-  // Setup actions
-  QList<QAction *> dynamic_list;
-  
-  for (QAction *action : m_active_part->actionCollection()->actions())
-  {
-    if (action)
+    
+    // 
+    // Prepare the dynamic action list for the main window
+    //
+    QList<QAction *> dynamicList;
+    
+    for (QAction *action : m_manager->activePart()->actionCollection()->actions())
     {
-      if (QString::compare(action->objectName(), "bookmark_action") == 0)
+      if (action)
       {
-        actionCollection()->action("bookmark_action")->setEnabled(action->isEnabled());
-        connect(action, SIGNAL(changed()), this, SLOT(slotEnableBookmarkAction()));
-        continue;
-      }
-      else if (QString::compare(action->objectName(), "filemanager_action") == 0)
-      {
-        continue;
-      }
-      else if (QString::compare(action->objectName(), "konsole_action") == 0)
-      {
-        continue;
-      }
-      else if (QString::compare(action->objectName(), "icon_view_action") == 0)
-      {
-        continue;
-      }
-      else if (QString::compare(action->objectName(), "list_view_action") == 0)
-      {
-        continue;
+        if (QString::compare(action->objectName(), "bookmark_action") == 0)
+        {
+          actionCollection()->action("bookmark_action")->setEnabled(action->isEnabled());
+          
+          if (bookmarkMenu)
+          {
+            Smb4KEvent *customEvent = 0;
+            
+            if (action->isEnabled())
+            {
+              customEvent = new Smb4KEvent(Smb4KEvent::EnableBookmarkAction);
+            }
+            else
+            {
+              customEvent = new Smb4KEvent(Smb4KEvent::DisableBookmarkAction);
+            }
+              
+            QApplication::postEvent(bookmarkMenu, customEvent);
+          }
+          else
+          {
+            // Do nothing
+          }          
+          
+          connect(action, SIGNAL(changed()), this, SLOT(slotEnableBookmarkAction()));
+          continue;
+        }
+        else if (QString::compare(action->objectName(), "filemanager_action") == 0)
+        {
+          continue;
+        }
+        else if (QString::compare(action->objectName(), "konsole_action") == 0)
+        {
+          continue;
+        }
+        else if (QString::compare(action->objectName(), "icon_view_action") == 0)
+        {
+          continue;
+        }
+        else if (QString::compare(action->objectName(), "list_view_action") == 0)
+        {
+          continue;
+        }
+        else
+        {
+          // Do nothing
+        }
+
+        dynamicList << action;
       }
       else
       {
         // Do nothing
       }
+    }
 
-      dynamic_list << action;
-    }
-    else
-    {
-      // Do nothing
-    }
+    //
+    // Remove old and insert new dynamic action list
+    // 
+    unplugActionList("dynamic_list");
+    plugActionList("dynamic_list", dynamicList);
   }
-
-  unplugActionList("dynamic_list");
-  plugActionList("dynamic_list", dynamic_list);
+  else
+  {
+    // Do nothing
+  }
 }
 
 
 void Smb4KMainWindow::slotEnableBookmarkAction()
 {
-  QAction *action = m_active_part->actionCollection()->action("bookmark_action");
+  QAction *action = m_manager->activePart()->actionCollection()->action("bookmark_action");
 
   if (action)
   {
     actionCollection()->action("bookmark_action")->setEnabled(action->isEnabled());
+    
+    Smb4KBookmarkMenu *bookmarkMenu = findChild<Smb4KBookmarkMenu *>();
+    
+    if (bookmarkMenu)
+    {
+      Smb4KEvent *customEvent = 0;
+      
+      if (action->isEnabled())
+      {
+        customEvent = new Smb4KEvent(Smb4KEvent::EnableBookmarkAction);
+      }
+      else
+      {
+        customEvent = new Smb4KEvent(Smb4KEvent::DisableBookmarkAction);
+      }
+        
+      QApplication::postEvent(bookmarkMenu, customEvent);
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
@@ -1159,7 +1215,7 @@ void Smb4KMainWindow::slotNetworkBrowserVisibilityChanged(bool visible)
   
   if (dock)
   {
-    if (visible && m_browser_part != m_active_part)
+    if (visible && m_manager->activePart() != m_browser_part)
     {
       m_manager->setActivePart(m_browser_part);
     }
@@ -1181,7 +1237,7 @@ void Smb4KMainWindow::slotSharesViewVisibilityChanged(bool visible)
   
   if (dock)
   {
-    if (visible && m_shares_part != m_active_part)
+    if (visible && m_manager->activePart() != m_shares_part)
     {
       m_manager->setActivePart(m_shares_part);
     }
@@ -1203,7 +1259,7 @@ void Smb4KMainWindow::slotSearchDialogVisibilityChanged(bool visible)
   
   if (dock)
   {
-    if (visible && m_search_part != m_active_part)
+    if (visible && m_manager->activePart() != m_search_part)
     {
       m_manager->setActivePart(m_search_part);
     }
