@@ -49,6 +49,7 @@ find_package(KF5Wallet ${KF5_MIN_VERSION} REQUIRED)
 find_package(KF5WidgetsAddons ${KF5_MIN_VERSION} REQUIRED)
 find_package(KF5WindowSystem ${KF5_MIN_VERSION} REQUIRED)
 find_package(KF5XmlGui ${KF5_MIN_VERSION} REQUIRED)
+find_package(KF5Crash ${KF5_MIN_VERSION} REQUIRED) 
 
 find_package(KF5Plasma ${KF5_MIN_VERSION})
 set_package_properties(KF5Plasma PROPERTIES TYPE RUNTIME)

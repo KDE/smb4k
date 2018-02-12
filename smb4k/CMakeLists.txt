@@ -129,6 +129,7 @@ target_link_libraries(smb4k
   KF5::XmlGui
   KF5::Parts
   KF5::ConfigWidgets
+  KF5::Crash
   smb4kcore)
 
 ########### install files ###############
