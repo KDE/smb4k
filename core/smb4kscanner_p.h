@@ -529,6 +529,7 @@ class Smb4KScannerPrivate
     int elapsedTimePS;
     // Elapsed time for IP address look-up
     int elapsedTimeIP;
+    int timerId;
     bool haveNewHosts;
     bool scanningAllowed;
     QList<Smb4KGlobal::Process> periodicJobs;
