@@ -3,7 +3,7 @@
     network neighborhood
                              -------------------
     begin                : So Mai 22 2011
-    copyright            : (C) 2011-2017 by Alexander Reinholdt
+    copyright            : (C) 2011-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -93,21 +93,6 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
      * This function aborts all scan jobs at once.
      */
     void abortAll();
-
-    /**
-     * This function aborts a scan jobs that match the combination
-     * of arguments passed. The network item entry may be NULL, the 
-     * process must always be defined.
-     *
-     * The @p item argument can be used to specifically define one single
-     * process to be killed. If you only define @p process, a whole group
-     * of processes is going to be killed.
-     *
-     * @param process         The group of processes that are to be killed
-     *
-     * @param item            The network item for a more fine grained killing
-     */
-    SMB4K_DEPRECATED void abort(Smb4KGlobal::Process process, NetworkItemPtr item = NetworkItemPtr());
 
     /**
      * This function starts the composite job
@@ -299,6 +284,12 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
      * Is called when an IP address was looked up
      */
     void slotProcessIPAddress(const HostPtr &host);
+    
+    /**
+     * This slot is called when the online state changed. It is connected
+     * to the Smb4KHardwareInterface::onlineStateChanged() signal.
+     */
+    void slotOnlineStateChanged(bool online);
 
   private:
     /**

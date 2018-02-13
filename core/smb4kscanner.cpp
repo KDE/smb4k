@@ -3,7 +3,7 @@
     network neighborhood
                              -------------------
     begin                : So Mai 22 2011
-    copyright            : (C) 2011-2017 by Alexander Reinholdt
+    copyright            : (C) 2011-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -41,6 +41,7 @@
 #include "smb4knotification.h"
 #include "smb4kcustomoptions.h"
 #include "smb4kcustomoptionsmanager.h"
+#include "smb4khardwareinterface.h"
 
 // Qt includes
 #include <QTimer>
@@ -76,6 +77,7 @@ Smb4KScanner::Smb4KScanner(QObject *parent)
   d->elapsedTimeIP   = 0;
   d->scanningAllowed = true;
   d->haveNewHosts    = false;
+  d->timerId         = 0;
   
   connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()));
 }
@@ -105,132 +107,6 @@ void Smb4KScanner::abortAll()
   while (it.hasNext())
   {
     it.next()->kill(KJob::EmitResult);
-  }
-}
-
-
-void Smb4KScanner::abort(Smb4KGlobal::Process process, NetworkItemPtr item)
-{
-  switch (process)
-  {
-    case LookupDomains:
-    {
-      // We do not need a network item with this kind
-      // of process. We'll just kill all jobs labeled
-      // 'LookupDomainsJob' and 'ScanBAreasJob'.
-      for (int i = 0; i < subjobs().size(); ++i)
-      {
-        if (QString::compare(subjobs().at(i)->objectName(), "LookupDomainsJob") == 0)
-        {
-          subjobs().at(i)->kill(KJob::EmitResult);
-          continue;
-        }
-        else
-        {
-          continue;
-        }
-      }
-      break;
-    }
-    case LookupDomainMembers:
-    {
-      if (item && item->type() == Workgroup)
-      {
-        // Only kill a job if the workgroup matches.
-        WorkgroupPtr workgroup = item.staticCast<Smb4KWorkgroup>();
-        
-        if (workgroup)
-        {
-          for (int i = 0; i < subjobs().size(); ++i)
-          {
-            if (QString::compare(subjobs().at(i)->objectName(),
-                QString("LookupDomainMembersJob_%1").arg(workgroup->workgroupName()), Qt::CaseInsensitive) == 0)
-            {
-              subjobs().at(i)->kill(KJob::EmitResult);
-              break;
-            }
-            else
-            {
-              continue;
-            }
-          }
-        }
-        else
-        {
-          // Do nothing --- This should not happen.
-        }
-      }
-      else
-      {
-        // If no item is defined, we just loop through the subjobs
-        // and search for a "LookupDomainMembersJob".
-        for (int i = 0; i < subjobs().size(); ++i)
-        {
-          if (subjobs().at(i)->objectName().startsWith(QLatin1String("LookupDomainMembersJob")))
-          {
-            subjobs().at(i)->kill(KJob::EmitResult);
-            continue;
-          }
-          else
-          {
-            continue;
-          }
-        }
-      }
-      break;
-    }
-    case LookupShares:
-    {
-      if (item && item->type() == Host)
-      {
-        // Only kill a job if the host matches
-        HostPtr host = item.staticCast<Smb4KHost>();
-        
-        if (host)
-        {
-          for (int i = 0; i < subjobs().size(); ++i)
-          {
-            if (QString::compare(subjobs().at(i)->objectName(),
-                QString("LookupSharesJob_%1").arg(host->hostName()), Qt::CaseInsensitive) == 0)
-            {
-              subjobs().at(i)->kill(KJob::EmitResult);
-              break;
-            }
-            else
-            {
-              continue;
-            }
-          }
-        }
-        else
-        {
-          // Do nothing --- This should not happen.
-        }
-      }
-      else
-      {
-        // If no item is defined, we just loop through the subjobs
-        // and search for a "LookupSharesJob".
-        for (int i = 0; i < subjobs().size(); ++i)
-        {
-          if (subjobs().at(i)->objectName().startsWith(QLatin1String("LookupSharesJob")))
-          {
-            subjobs().at(i)->kill(KJob::EmitResult);
-            continue;
-          }
-          else
-          {
-            continue;
-          }
-        }
-      }
-
-      break;
-    }
-    default:
-    {
-      break;
-    }
   }
 }
 
@@ -623,23 +499,32 @@ void Smb4KScanner::slotAboutToQuit()
 
 void Smb4KScanner::slotStartJobs()
 {
-  // If the user wants to have periodic scanning of the network
-  // neighborhood, set it up here here.
-  if (Smb4KSettings::periodicScanning())
+  if (Smb4KHardwareInterface::self()->isOnline())
   {
-    // Fill list
-    d->periodicJobs << LookupDomains;
-    d->periodicJobs << LookupDomainMembers;
-    d->periodicJobs << LookupShares;
+    // If the user wants to have periodic scanning of the network
+    // neighborhood, set it up here here.
+    if (Smb4KSettings::periodicScanning())
+    {
+      // Fill list
+      d->periodicJobs << LookupDomains;
+      d->periodicJobs << LookupDomainMembers;
+      d->periodicJobs << LookupShares;
+    }
+    else
+    {
+      lookupDomains(0);
+    }
+
+    // Start the timer in any case. Thus, we are able to switch
+    // to periodic scanning seamlessly in the timerEvent() function.
+    d->timerId = startTimer(TIMER_INTERVAL);
   }
   else
   {
-    lookupDomains(0);
+    // Do nothing
   }
-
-  // Start the timer in any case. Thus, we are able to switch
-  // to periodic scanning seamlessly in the timerEvent() function.
-  startTimer(TIMER_INTERVAL);
+  
+  connect(Smb4KHardwareInterface::self(), SIGNAL(onlineStateChanged(bool)), SLOT(slotOnlineStateChanged(bool)), Qt::UniqueConnection);
 }
 
 
@@ -1159,5 +1044,42 @@ void Smb4KScanner::slotProcessIPAddress(const HostPtr &host)
   }
 
   emit ipAddress(knownHost);
+}
+
+
+void Smb4KScanner::slotOnlineStateChanged(bool online)
+{
+  if (online)
+  {
+    //
+    // Start the jobs
+    //
+    slotStartJobs();
+  }
+  else
+  {
+    //
+    // Abort all actions currently performed
+    //
+    abortAll();
+    
+    //
+    // Kill the timer
+    //
+    killTimer(d->timerId);
+    d->timerId = 0;
+    
+    //
+    // Clear the list of periodic jobs, if necessary
+    //
+    if (Smb4KSettings::periodicScanning())
+    {
+      d->periodicJobs.clear();
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
 }
 
