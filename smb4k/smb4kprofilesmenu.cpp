@@ -65,16 +65,17 @@ Smb4KProfilesMenu::~Smb4KProfilesMenu()
 }
 
 
-
-void Smb4KProfilesMenu::slotActiveProfileChanged(const QString& newProfile)
+void Smb4KProfilesMenu::refreshMenu()
 {
-  setCurrentAction(newProfile);
-}
-
-
-void Smb4KProfilesMenu::slotProfilesListChanged(const QStringList& profiles)
-{
+  //
+  // Clear the select action
+  //
   clear();
+
+  //
+  // Get the list of profiles and add all profiles to the select action
+  //
+  QStringList profiles = Smb4KProfileManager::self()->profilesList();
   
   for (const QString &profile : profiles)
   {
@@ -90,9 +91,28 @@ void Smb4KProfilesMenu::slotProfilesListChanged(const QStringList& profiles)
     }
   }
   
+  //
+  // Enable the action if the user chose to use profiles
+  //
   setEnabled(Smb4KProfileManager::self()->useProfiles());
   
+  //
+  // Set the current action
+  // 
   setCurrentAction(Smb4KProfileManager::self()->activeProfile());
+}
+
+
+
+void Smb4KProfilesMenu::slotActiveProfileChanged(const QString& newProfile)
+{
+  setCurrentAction(newProfile);
+}
+
+
+void Smb4KProfilesMenu::slotProfilesListChanged(const QStringList& /*profiles*/)
+{
+  refreshMenu();
 }
 
 
