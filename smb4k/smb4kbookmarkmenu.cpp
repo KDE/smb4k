@@ -462,9 +462,8 @@ void Smb4KBookmarkMenu::slotEditActionTriggered(bool /*checked*/)
 void Smb4KBookmarkMenu::slotAddActionTriggered(bool /*checked*/)
 {
   //
-  // Use addBookmarkAction() and connect the triggered() signal
-  // in your application.
-  //
+  // Unused at the moment
+  // 
 }
 
 
