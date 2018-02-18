@@ -49,6 +49,13 @@ class Smb4KProfilesMenu : public KSelectAction
      */
     virtual ~Smb4KProfilesMenu();
     
+    /**
+     * Force the menu to be set up again. This should be called if 
+     * the settings changed and the handling of bookmarks might be
+     * affected.
+     */
+    void refreshMenu();
+    
   protected Q_SLOTS:
     void slotActiveProfileChanged(const QString &newProfile);
     void slotProfilesListChanged(const QStringList &profiles);
