@@ -40,6 +40,7 @@
 
 // Qt includes
 #include <QMenu>
+#include <QDebug>
 
 // KDE specific includes
 #include <KIconThemes/KIconLoader>
@@ -81,20 +82,32 @@ Smb4KSystemTray::Smb4KSystemTray(QWidget *parent)
   setCategory(ApplicationStatus);
   
   //
-  // Setup popup menu
+  // Add the actions to the action collection
   //
-  contextMenu()->addAction(new Smb4KSharesMenu(associatedWidget()));
-  contextMenu()->addAction(new Smb4KBookmarkMenu(Smb4KBookmarkMenu::SystemTray, associatedWidget()));
-  contextMenu()->addAction(new Smb4KProfilesMenu());
+  QAction *mountAction = new QAction(KDE::icon("view-form", QStringList("emblem-mounted")), i18n("&Open Mount Dialog"), this);
+  connect(mountAction, SIGNAL(triggered(bool)), SLOT(slotMountDialog()));
+    
+  addAction("shares_menu", new Smb4KSharesMenu(associatedWidget()));
+  addAction("bookmarks_menu", new Smb4KBookmarkMenu(Smb4KBookmarkMenu::SystemTray, associatedWidget()));
+  addAction("profiles_menu", new Smb4KProfilesMenu());
+  addAction("mount_action", mountAction);
+  addAction("config_action", KStandardAction::preferences(this, SLOT(slotConfigDialog()), this));
+  
+  //
+  // Set up the menu
+  //  
+  contextMenu()->addAction(action("shares_menu"));
+  contextMenu()->addAction(action("bookmarks_menu"));
+  contextMenu()->addAction(action("profiles_menu"));
   contextMenu()->addSeparator();
-  contextMenu()->addAction(KDE::icon("view-form", QStringList("emblem-mounted")), i18n("&Open Mount Dialog"), this, SLOT(slotMountDialog()));
-  contextMenu()->addAction(KStandardAction::preferences(this, SLOT(slotConfigDialog()), contextMenu()));
+  contextMenu()->addAction(action("mount_action"));
+  contextMenu()->addAction(action("config_action"));
   
   // 
   // Connections:
   // 
-  connect(Smb4KMounter::self(), SIGNAL(mountedSharesListChanged()), this, SLOT(slotSetStatus()));
-  connect(Smb4KScanner::self(), SIGNAL(workgroups()), this, SLOT(slotSetStatus()));
+  connect(Smb4KMounter::self(), SIGNAL(mountedSharesListChanged()), SLOT(slotSetStatus()));
+  connect(Smb4KScanner::self(), SIGNAL(workgroups()), SLOT(slotSetStatus()));
 }
 
 
@@ -108,7 +121,7 @@ void Smb4KSystemTray::loadSettings()
   //
   // Adjust the bookmarks menu
   //
-  Smb4KBookmarkMenu *bookmarkMenu = contextMenu()->findChild<Smb4KBookmarkMenu *>();
+  Smb4KBookmarkMenu *bookmarkMenu = static_cast<Smb4KBookmarkMenu *>(action("bookmarks_menu"));
 
   if (bookmarkMenu)
   {
@@ -122,11 +135,25 @@ void Smb4KSystemTray::loadSettings()
   // 
   // Adjust the shares menu
   //
-  Smb4KSharesMenu *sharesMenu = contextMenu()->findChild<Smb4KSharesMenu *>();
+  Smb4KSharesMenu *sharesMenu = static_cast<Smb4KSharesMenu *>(action("shares_menu"));
 
   if (sharesMenu)
   {
     sharesMenu->refreshMenu();
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // Adjust the profiles menu
+  //
+  Smb4KProfilesMenu *profilesMenu = static_cast<Smb4KProfilesMenu *>(action("profiles_menu"));
+  
+  if (profilesMenu)
+  {
+    profilesMenu->refreshMenu();
   }
   else
   {
@@ -223,4 +250,5 @@ void Smb4KSystemTray::slotSetStatus()
     setStatus(KStatusNotifierItem::Passive);
   }
 }
+
 
