@@ -33,6 +33,7 @@
 // KDE includes
 #include <KNotifications/KStatusNotifierItem>
 
+
 class Smb4KSystemTray : public KStatusNotifierItem
 {
   Q_OBJECT
