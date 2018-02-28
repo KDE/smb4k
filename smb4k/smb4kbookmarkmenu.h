@@ -130,19 +130,14 @@ class Smb4KBookmarkMenu : public KActionMenu
     QWidget *m_parent_widget;
     
     /**
-     * The bookmark groups
+     * The actions
      */
-    QActionGroup *m_groups;
+    QActionGroup *m_actions;
 
     /**
      * The bookmarks
      */
     QActionGroup *m_bookmarks;
-    
-    /**
-     * The action collection
-     */
-    KActionCollection *m_action_collection;
 };
 
 #endif
