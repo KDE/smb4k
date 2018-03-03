@@ -55,14 +55,15 @@ Smb4KSharesMenu::Smb4KSharesMenu(QWidget *parentWidget, QObject *parent)
 : KActionMenu(KDE::icon("folder-network", QStringList("emblem-mounted")), i18n("Mounted Shares"), parent),
   m_parent_widget(parentWidget)
 {
-  // Set up action collection
-  m_action_collection = new KActionCollection(this);
-
+  // 
   // Set up action group for the shares menus
-  m_menus = new QActionGroup(m_action_collection);
+  // 
+  m_menus = new QActionGroup(menu());
 
+  // 
   // Set up action group for the shares actions
-  m_actions = new QActionGroup(m_action_collection);
+  // 
+  m_actions = new QActionGroup(menu());
 
   // Setup the menu
   setupMenu();
@@ -82,10 +83,9 @@ void Smb4KSharesMenu::refreshMenu()
   //
   // Delete all entries from the menu
   //
-  while (!m_action_collection->actions().isEmpty())
+  while (!menu()->actions().isEmpty())
   {
-    QAction *action = m_action_collection->actions().first();
-    m_action_collection->takeAction(action);
+    QAction *action = menu()->actions().takeFirst();
     removeAction(action);
     delete action;
   }
@@ -93,7 +93,14 @@ void Smb4KSharesMenu::refreshMenu()
   //
   // Clear the rest of the menu
   //
-  menu()->clear();
+  if (!menu()->isEmpty())
+  {
+    menu()->clear();
+  }
+  else
+  {
+    // Do nothing
+  }
   
   //
   // Set up the menu
@@ -112,12 +119,9 @@ void Smb4KSharesMenu::setupMenu()
   //
   // Add the Unmount All action
   //
-  QAction *unmount_all = new QAction(KDE::icon("system-run"), i18n("U&nmount All"), m_action_collection);
+  QAction *unmount_all = new QAction(KDE::icon("system-run"), i18n("U&nmount All"), menu());
   unmount_all->setEnabled(false);
-  m_action_collection->addAction("unmount_all", unmount_all);
-
   connect(unmount_all, SIGNAL(triggered(bool)), SLOT(slotUnmountAllShares()));
-
   addAction(unmount_all);
 
   // 
@@ -146,19 +150,17 @@ void Smb4KSharesMenu::setupMenu()
     displayNames << share->displayString();
     
     // Create the share menu
-    KActionMenu *shareMenu = new KActionMenu(share->displayString(), m_menus);
+    KActionMenu *shareMenu = new KActionMenu(share->displayString(), menu());
     shareMenu->setIcon(share->icon());
     
     QMap<QString,QVariant> data;
     data["text"] = share->displayString();
     
     shareMenu->setData(data);
-    
-    // Add the menu to the action collection
-    m_action_collection->addAction(share->displayString(), shareMenu);
+    m_menus->addAction(shareMenu);
     
     // Add the unmount action to the menu
-    QAction *unmount = new QAction(KDE::icon("media-eject"), i18n("Unmount"), m_actions);
+    QAction *unmount = new QAction(KDE::icon("media-eject"), i18n("Unmount"), shareMenu->menu());
     
     QMap<QString,QVariant> unmountData;
     unmountData["type"] = "unmount";
@@ -167,13 +169,13 @@ void Smb4KSharesMenu::setupMenu()
     unmount->setData(unmountData);
     unmount->setEnabled(!share->isForeign() || Smb4KSettings::unmountForeignShares());
     shareMenu->addAction(unmount);
-    m_action_collection->addAction(QString("%1_%2").arg("[unmount]", share->path()), unmount);
+    m_actions->addAction(unmount);
     
     // Add a separator
     shareMenu->addSeparator();
     
     // Add the bookmark action to the menu
-    QAction *addBookmark = new QAction(KDE::icon("bookmark-new"), i18n("Add Bookmark"), m_actions);
+    QAction *addBookmark = new QAction(KDE::icon("bookmark-new"), i18n("Add Bookmark"), shareMenu->menu());
     
     QMap<QString,QVariant> bookmarkData;
     bookmarkData["type"] = "bookmark";
@@ -181,10 +183,10 @@ void Smb4KSharesMenu::setupMenu()
     
     addBookmark->setData(bookmarkData);
     shareMenu->addAction(addBookmark);
-    m_action_collection->addAction(QString("%1_%2").arg("[bookmark]", share->path()), addBookmark);
+    m_actions->addAction(addBookmark);
     
     // Add the synchronization action to the menu
-    QAction *synchronize = new QAction(KDE::icon("folder-sync"), i18n("Synchronize"), m_actions);
+    QAction *synchronize = new QAction(KDE::icon("folder-sync"), i18n("Synchronize"), shareMenu->menu());
     
     QMap<QString,QVariant> syncData;
     syncData["type"] = "sync";
@@ -193,13 +195,13 @@ void Smb4KSharesMenu::setupMenu()
     synchronize->setData(syncData);
     synchronize->setEnabled(!QStandardPaths::findExecutable("rsync").isEmpty() && !share->isInaccessible());
     shareMenu->addAction(synchronize);
-    m_action_collection->addAction(QString("%1_%2").arg("[sync]", share->path()), synchronize);
+    m_actions->addAction(synchronize);
     
     // Add a separator
     shareMenu->addSeparator();
     
     // Add the Open with Konsole action to the menu
-    QAction *konsole = new QAction(KDE::icon("utilities-terminal"), i18n("Open with Konsole"), m_actions);
+    QAction *konsole = new QAction(KDE::icon("utilities-terminal"), i18n("Open with Konsole"), shareMenu->menu());
     
     QMap<QString,QVariant> konsoleData;
     konsoleData["type"] = "konsole";
@@ -208,10 +210,10 @@ void Smb4KSharesMenu::setupMenu()
     konsole->setData(konsoleData);
     konsole->setEnabled(!QStandardPaths::findExecutable("konsole").isEmpty() && !share->isInaccessible());
     shareMenu->addAction(konsole);
-    m_action_collection->addAction(QString("%1_%2").arg("[konsole]", share->path()), konsole);
+    m_actions->addAction(konsole);
     
     // Add the Open with Filemanager action to the menu
-    QAction *filemanager = new QAction(KDE::icon("system-file-manager"), i18n("Open with File Manager"), m_actions);
+    QAction *filemanager = new QAction(KDE::icon("system-file-manager"), i18n("Open with File Manager"), shareMenu->menu());
     
     QMap<QString,QVariant> fmData;
     fmData["type"] = "filemanager";
@@ -220,7 +222,7 @@ void Smb4KSharesMenu::setupMenu()
     filemanager->setData(fmData);
     filemanager->setEnabled(!share->isInaccessible());
     shareMenu->addAction(filemanager);
-    m_action_collection->addAction(QString("%1_%2").arg("[filemanager]", share->path()), filemanager);
+    m_actions->addAction(filemanager);
   }
   
   //
@@ -249,8 +251,7 @@ void Smb4KSharesMenu::setupMenu()
   // Enable or disable the Unmount All action, depending on the number of 
   // mounted shares present.
   //
-  m_action_collection->action("unmount_all")->setEnabled(
-    ((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && !m_menus->actions().isEmpty()));
+  unmount_all->setEnabled(((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && !m_menus->actions().isEmpty()));
 }
 
 

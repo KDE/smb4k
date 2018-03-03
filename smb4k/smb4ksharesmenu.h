@@ -91,11 +91,6 @@ class Smb4KSharesMenu : public KActionMenu
     QWidget *m_parent_widget;
 
     /**
-     * The action collection
-     */
-    KActionCollection *m_action_collection;
-
-    /**
      * Share menus
      */
     QActionGroup *m_menus;
