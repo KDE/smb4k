@@ -231,11 +231,11 @@ void Smb4KSharesMenu::setupMenu()
   // 
   displayNames.sort();
   
-  for (int i = 0; i < displayNames.size(); i++)
+  for (const QString &name : displayNames)
   {
     for (QAction *action : m_menus->actions())
     {
-      if (action->data().toMap().value("text").toString() == displayNames.at(i))
+      if (action->data().toMap().value("text").toString() == name)
       {
         addAction(action);
         break;
