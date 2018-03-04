@@ -202,25 +202,35 @@ void Smb4KMountDialog::slotOkClicked()
 {
   if (!m_share_input->text().trimmed().isEmpty())
   {
-    QUrl url;
-
-    // Take care of Windows-like UNC addresses:
-    if (m_share_input->text().trimmed().startsWith(QLatin1String("\\")))
+    //
+    // Get the UNC/URL
+    // 
+    QString userInput = m_share_input->text().trimmed();
+    
+    //
+    // Take care of a Windows-like UNC addresses
+    // 
+    if (userInput.startsWith(QLatin1String("\\")))
     {
-      QString unc = m_share_input->text();
-      unc.replace("\\", "/");
-      url.setUrl(unc, QUrl::TolerantMode);
+      userInput.replace("\\", "/");
     }
     else
     {
-      url.setUrl(m_share_input->text().trimmed(), QUrl::TolerantMode);
+      // Do nothing
     }
-
-    url.setScheme("smb");
-
-    if (url.isValid() && !url.host().isEmpty() && !url.path().isEmpty() && !url.path().endsWith('/'))
+    
+    //
+    // Set the URL and adjust the scheme
+    // 
+    QUrl smbUrl = QUrl::fromUserInput(userInput);
+    smbUrl.setScheme("smb");
+    
+    //
+    // Set the URL of the share
+    // 
+    if (smbUrl.isValid() && !smbUrl.host().isEmpty() && !smbUrl.path().isEmpty() && !smbUrl.path().endsWith(QLatin1String("/")))
     {
-      m_share->setURL(url);
+      m_share->setURL(smbUrl);
       m_share->setWorkgroupName(m_workgroup_input->text().trimmed());
       m_share->setHostIP(m_ip_input->text().trimmed());
     }
@@ -234,7 +244,7 @@ void Smb4KMountDialog::slotOkClicked()
   {
     // Do nothing
   }
-
+  
   KConfigGroup group(Smb4KSettings::self()->config(), "MountDialog");
   KWindowConfig::saveWindowSize(windowHandle(), group);
   group.writeEntry("ShareNameCompletion", m_share_input->completionObject()->items());
