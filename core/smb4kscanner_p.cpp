@@ -212,7 +212,7 @@ void Smb4KLookupDomainsJob::startProcess1()
   m_process1 = new Smb4KProcess(this);
   m_process1->setOutputChannelMode(KProcess::SeparateChannels);
   m_process1->setProgram(command);
-
+  
   connect(m_process1, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(slotProcess1Finished(int,QProcess::ExitStatus)));
 
   emit aboutToStart();
@@ -514,19 +514,35 @@ void Smb4KLookupDomainsJob::slotProcess1Finished(int /*exitCode*/, QProcess::Exi
     }
     default:
     {
+      // 
       // Process output
+      // 
       QString stdOut = QString::fromUtf8(m_process1->readAllStandardOutput(), -1).trimmed();
 
+      // 
       // Process errors
+      // 
       QString stdErr = QString::fromUtf8(m_process1->readAllStandardError(), -1).trimmed();
       
+      //
+      // Either process the master browsers or report an error. Do not 
+      // pass an empty string, because that would cause the second nmblookup
+      // command to report an usage error (Bug 391150).
+      // 
       if (stdOut.trimmed().isEmpty() && !stdErr.trimmed().isEmpty())
       {
         processErrors(stdErr);
+        emitResult();
+        emit finished();
+      }
+      else if (!stdOut.trimmed().isEmpty())
+      {
+        processMasterBrowsers(stdOut);
       }
       else
       {
-        processMasterBrowsers(stdOut);
+        emitResult();
+        emit finished();
       }
       
       break;
@@ -554,10 +570,14 @@ void Smb4KLookupDomainsJob::slotProcess2Finished(int /*exitCode*/, QProcess::Exi
     }
     default:
     {
+      // 
       // Process output
+      // 
       QString stdOut = QString::fromUtf8(m_process2->readAllStandardOutput(), -1).trimmed();
 
+      // 
       // Process errors
+      // 
       QString stdErr = QString::fromUtf8(m_process2->readAllStandardError(), -1).trimmed();
       
       if (stdOut.trimmed().isEmpty() && !stdErr.trimmed().isEmpty())
@@ -1251,19 +1271,35 @@ void Smb4KQueryMasterJob::slotProcess1Finished(int /*exitCode*/, QProcess::ExitS
     }
     default:
     {
+      // 
       // Process output
+      // 
       QString stdOut = QString::fromUtf8(m_process1->readAllStandardOutput(), -1).trimmed();
 
+      // 
       // Process errors
+      // 
       QString stdErr = QString::fromUtf8(m_process1->readAllStandardError(), -1).trimmed();
       
+      //
+      // Either process the master browsers or report an error. Do not 
+      // pass an empty string, because that would cause the second
+      // command to report an usage error (Bug 391150).
+      //       
       if (stdOut.trimmed().isEmpty() && !stdErr.trimmed().isEmpty())
       {
         processErrors(stdErr);
+        emitResult();
+        emit finished();
+      }
+      else if (!stdOut.trimmed().isEmpty())
+      {
+        processMasterBrowser(stdOut);
       }
       else
       {
-        processMasterBrowser(stdOut);
+        emitResult();
+        emit finished();
       }
       
       break;
