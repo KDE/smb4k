@@ -8,7 +8,6 @@ set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 
 cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 cmake_policy(SET CMP0037 NEW)
-cmake_policy(SET CMP0071 NEW)
 
 set(QT_MIN_VERSION "5.5.0")
 set(KF5_MIN_VERSION "5.25.0")
