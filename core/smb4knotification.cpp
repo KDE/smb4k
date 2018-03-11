@@ -2,7 +2,7 @@
     This class provides notifications for Smb4K.
                              -------------------
     begin                : Son Jun 27 2010
-    copyright            : (C) 2010-2017 by Alexander Reinholdt
+    copyright            : (C) 2010-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -243,28 +243,6 @@ void Smb4KNotification::retrievingDomainsFailed(const QString& err_msg)
   }
   
   KNotification *notification = new KNotification("retrievingDomainsFailed");
-  notification->setText(text);
-  notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
-                          KIconLoader::DefaultState));
-  notification->setFlags(KNotification::CloseOnTimeout);
-  notification->sendEvent();
-}
-
-
-void Smb4KNotification::scanningBroadcastAreaFailed(const QString& err_msg)
-{
-  QString text;
-  
-  if (!err_msg.isEmpty())
-  {
-    text = i18n("<p>Scanning the defined broadcast area(s) failed:</p><p><tt>%1</tt></p>", err_msg);
-  }
-  else
-  {
-    text = i18n("<p>Scanning the defined broadcast area(s) failed.</p>");
-  }
-  
-  KNotification *notification = new KNotification("scanningBroadcastAreaFailed");
   notification->setText(text);
   notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                           KIconLoader::DefaultState));

@@ -2,7 +2,7 @@
     This class provides notifications for Smb4K
                              -------------------
     begin                : Son Jun 27 2010
-    copyright            : (C) 2010-2017 by Alexander Reinholdt
+    copyright            : (C) 2010-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -132,14 +132,6 @@ namespace Smb4KNotification
    * @param err_msg   The error message
    */
   Q_DECL_EXPORT void retrievingDomainsFailed(const QString &err_msg);
-  
-  /**
-   * This error message is shown if the scanning of the broadcast
-   * areas failed.
-   *
-   * @param err_msg   The error message
-   */
-  Q_DECL_EXPORT void scanningBroadcastAreaFailed(const QString &err_msg);
   
   /**
    * This error message is shown if the list of hosts could not
