@@ -1847,7 +1847,6 @@ void Smb4KLookupSharesJob::processErrors(const QString& stdErr)
     {
       Smb4KNotification::retrievingSharesFailed(m_host, stdErr);
     }
-    
   }
   else
   {
@@ -1858,118 +1857,132 @@ void Smb4KLookupSharesJob::processErrors(const QString& stdErr)
 
 void Smb4KLookupSharesJob::processShares(const QString &stdOut)
 {
-  QStringList stdOutList = stdOut.split('\n', QString::SkipEmptyParts);
-  
-  if (!stdOutList.isEmpty())
+  //
+  // Process the output. 
+  // 
+  // Check that no error is reported, because the net command also
+  // reports errors on stdout. Since something went really wrong in that
+  // case, just report the error.
+  // 
+  if (!stdOut.contains("NT_STATUS"))
   {
-    QString shareName;
-    QString comment;
-    QString typeString;
-
-    for (const QString &line : stdOutList)
+    QStringList stdOutList = stdOut.split('\n', QString::SkipEmptyParts);
+    
+    if (!stdOutList.isEmpty())
     {
-      if (line.trimmed().startsWith(QLatin1String("Enumerating")))
+      QString shareName;
+      QString comment;
+      QString typeString;
+
+      for (const QString &line : stdOutList)
       {
-        continue;
-      }
-      else if (line.trimmed().startsWith(QLatin1String("Share name")))
-      {
-        continue;
-      }
-      else if (line.trimmed().startsWith(QLatin1String("----------")))
-      {
-        continue;
-      }
-      else if (line.contains(" Disk     ", Qt::CaseSensitive) /* line has comment */ ||
-               (!line.contains(" Disk     ", Qt::CaseSensitive) &&
-                line.trimmed().endsWith(QLatin1String(" Disk"), Qt::CaseSensitive) /* line has no comment */))
-      {
-        if (!line.trimmed().endsWith(QLatin1String(" Disk"), Qt::CaseSensitive))
+        if (line.trimmed().startsWith(QLatin1String("Enumerating")))
         {
-          shareName = line.section(" Disk     ", 0, 0).trimmed();
-          comment = line.section(" Disk     ", 1, 1).trimmed();
+          continue;
+        }
+        else if (line.trimmed().startsWith(QLatin1String("Share name")))
+        {
+          continue;
+        }
+        else if (line.trimmed().startsWith(QLatin1String("----------")))
+        {
+          continue;
+        }
+        else if (line.contains(" Disk     ", Qt::CaseSensitive) /* line has comment */ ||
+                (!line.contains(" Disk     ", Qt::CaseSensitive) &&
+                  line.trimmed().endsWith(QLatin1String(" Disk"), Qt::CaseSensitive) /* line has no comment */))
+        {
+          if (!line.trimmed().endsWith(QLatin1String(" Disk"), Qt::CaseSensitive))
+          {
+            shareName = line.section(" Disk     ", 0, 0).trimmed();
+            comment = line.section(" Disk     ", 1, 1).trimmed();
+          }
+          else
+          {
+            shareName = line.section(" Disk", 0, 0).trimmed();
+            comment = "";
+          }
+          
+          typeString = "Disk";
+        }
+        else if (line.contains(" IPC      ", Qt::CaseSensitive) /* line has comment */ ||
+                (!line.contains(" IPC      ", Qt::CaseSensitive) &&
+                  line.trimmed().endsWith(QLatin1String(" IPC"), Qt::CaseSensitive) /* line has no comment */))
+        {
+          if (!line.trimmed().endsWith(QLatin1String(" IPC"), Qt::CaseSensitive))
+          {
+            shareName = line.section(" IPC      ", 0, 0).trimmed();
+            comment = line.section(" IPC      ", 1, 1).trimmed();
+          }
+          else
+          {
+            shareName = line.section(" IPC", 0, 0).trimmed();
+            comment = "";
+          }
+          
+          typeString = "IPC";
+        }
+        else if (line.contains(" Print    ", Qt::CaseSensitive) /* line has comment */ ||
+                (!line.contains(" Print    ", Qt::CaseSensitive) &&
+                  line.trimmed().endsWith(QLatin1String(" Print"), Qt::CaseSensitive) /* line has no comment */))
+        {
+          if (!line.trimmed().endsWith(QLatin1String(" Print"), Qt::CaseSensitive))
+          {
+            shareName = line.section(" Print    ", 0, 0).trimmed();
+            comment = line.section(" Print    ", 1, 1).trimmed();
+          }
+          else
+          {
+            shareName = line.section(" Print", 0, 0).trimmed();
+            comment = "";
+          }
+          
+          typeString = "Printer";
         }
         else
         {
-          shareName = line.section(" Disk", 0, 0).trimmed();
-          comment = "";
+          continue;
         }
         
-        typeString = "Disk";
-      }
-      else if (line.contains(" IPC      ", Qt::CaseSensitive) /* line has comment */ ||
-               (!line.contains(" IPC      ", Qt::CaseSensitive) &&
-                line.trimmed().endsWith(QLatin1String(" IPC"), Qt::CaseSensitive) /* line has no comment */))
-      {
-        if (!line.trimmed().endsWith(QLatin1String(" IPC"), Qt::CaseSensitive))
+        if (!shareName.isEmpty())
         {
-          shareName = line.section(" IPC      ", 0, 0).trimmed();
-          comment = line.section(" IPC      ", 1, 1).trimmed();
-        }
-        else
-        {
-          shareName = line.section(" IPC", 0, 0).trimmed();
-          comment = "";
-        }
-        
-        typeString = "IPC";
-      }
-      else if (line.contains(" Print    ", Qt::CaseSensitive) /* line has comment */ ||
-               (!line.contains(" Print    ", Qt::CaseSensitive) &&
-                line.trimmed().endsWith(QLatin1String(" Print"), Qt::CaseSensitive) /* line has no comment */))
-      {
-        if (!line.trimmed().endsWith(QLatin1String(" Print"), Qt::CaseSensitive))
-        {
-          shareName = line.section(" Print    ", 0, 0).trimmed();
-          comment = line.section(" Print    ", 1, 1).trimmed();
-        }
-        else
-        {
-          shareName = line.section(" Print", 0, 0).trimmed();
-          comment = "";
-        }
-        
-        typeString = "Printer";
-      }
-      else
-      {
-        continue;
-      }
-      
-      if (!shareName.isEmpty())
-      {
-        SharePtr share = SharePtr(new Smb4KShare());
-        share->setShareName(shareName);
-        share->setHostName(m_host->hostName());
-        share->setWorkgroupName(m_host->workgroupName());
-        share->setComment(comment);
-        share->setTypeString(typeString);
-        share->setLogin(m_host->login());
-        share->setPassword(m_host->password());
-        
-        if (m_host->hasIP())
-        {
-          share->setHostIP(m_host->ip());
+          SharePtr share = SharePtr(new Smb4KShare());
+          share->setShareName(shareName);
+          share->setHostName(m_host->hostName());
+          share->setWorkgroupName(m_host->workgroupName());
+          share->setComment(comment);
+          share->setTypeString(typeString);
+          share->setLogin(m_host->login());
+          share->setPassword(m_host->password());
+          
+          if (m_host->hasIP())
+          {
+            share->setHostIP(m_host->ip());
+          }
+          else
+          {
+            // Do nothing
+          }
+          
+          m_shares_list << share;
         }
         else
         {
           // Do nothing
         }
-        
-        m_shares_list << share;
-      }
-      else
-      {
-        // Do nothing
       }
     }
+    else
+    {
+      // Do nothing
+    }
+
+    emit shares(m_host, m_shares_list);
   }
   else
   {
-    // Do nothing
+    Smb4KNotification::retrievingSharesFailed(m_host, stdOut);
   }
-
-  emit shares(m_host, m_shares_list);
 }
 
 
