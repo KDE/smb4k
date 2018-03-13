@@ -303,7 +303,7 @@
       <li>Network search</li>
       <li xml:lang="bs">Pretraga mreže</li>
       <li xml:lang="ca">Cerca a la xarxa</li>
-      <li xml:lang="ca-valencia">Busca a la xarxa</li>
+      <li xml:lang="ca-valencia">Cerca a la xarxa</li>
       <li xml:lang="cs">Prohledání sítě</li>
       <li xml:lang="da">Netværkssøgning</li>
       <li xml:lang="de">Netzwerksuche</li>
@@ -376,7 +376,7 @@
       <li>Several methods to look up the initial list of workgroups and domains</li>
       <li xml:lang="bs">Nekoliko metoda za pregled početnih lista radnih grupa i domena</li>
       <li xml:lang="ca">Hi ha diversos mètodes per cercar la llista inicial dels grups de treball i dominis</li>
-      <li xml:lang="ca-valencia">Hi ha diversos mètodes per buscar la llista inicial dels grups de treball i dominis</li>
+      <li xml:lang="ca-valencia">Hi ha diversos mètodes per cercar la llista inicial dels grups de treball i dominis</li>
       <li xml:lang="de">Mehrere Methoden zur Suche nach der anfänglichen Liste von Arbeitsgruppen und Domänen</li>
       <li xml:lang="el">Πολλές μέθοδοι αναζήτησης στην αρχική λίστα ομάδων εργασίας και τομέων</li>
       <li xml:lang="en-GB">Several methods to look up the initial list of workgroups and domains</li>
@@ -681,7 +681,7 @@
     </p>
     <p xml:lang="bs">Ako radite sa Windows dominiranim mrežnim okruženjem, možda ćete željeti instalirati aplikaciju kako biste lako pristupili omogućenim Windows razmjenama.</p>
     <p xml:lang="ca">Si esteu treballant en un entorn de xarxa dominat per Windows, és possible que vulgueu instal·lar aquesta aplicació per a poder accedir amb facilitat a les comparticions proporcionades per Windows.</p>
-    <p xml:lang="ca-valencia">Si esteu treballant en un entorn de xarxa dominat per Windows, és possible que vulgueu instal·lar esta aplicació per a poder accedir amb facilitat a les comparticions proporcionades per Windows.</p>
+    <p xml:lang="ca-valencia">Si esteu treballant en un entorn de xarxa dominat per Windows, és possible que vulgueu instal·lar aquesta aplicació per a poder accedir amb facilitat a les comparticions proporcionades per Windows.</p>
     <p xml:lang="de">Wenn Sie in einer Windows-dominierten Netzwerkumgebung arbeiten, sollten Sie diese Anwendung installieren, um leicht auf die vorhandenen Windows-Freigaben zuzugreifen.</p>
     <p xml:lang="el">Αν εργάζεστε σε ένα περιβάλλον δικτύου υπό την κυριαρχία των Windows, θα θέλατε να εγκαταστήσετε την εφαρμογή αυτή για να μπορείτε να έχετε άνετηπρόσβαση στους κοινούς πόρους που παρέχουν τα Windows.</p>
     <p xml:lang="en-GB">If you are working in a Windows dominated network environment, you may want to install this application to be able to easily access the provided Windows shares.</p>
