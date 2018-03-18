@@ -27,7 +27,7 @@
     <holder>Alexander Reinholdt</holder>
   </copyright>
   <legalnotice>&underFDL;</legalnotice>
-  <date>2018-02-22</date>
+  <date>2018-03-18</date>
   <releaseinfo>&smb4k; 2.1.0</releaseinfo><!--FIXME change releaseinfo number-->
   <abstract>
     <para>&smb4k; is an advanced network neighborhood browser and Samba share mounting utility.</para>
@@ -1428,10 +1428,13 @@
       Using Smb4K : Special Remarks : Samba Security Fixes of April 12, 2016
 -->
    
-    <sect2 id="special_remarks_samba_security_updates">
-      <title>Samba Security Fixes of April 12, 2016</title>
+    <sect2 id="special_remarks_problems_browsing">
+      <title>Problems Browsing the Network Neighborhood</title>
+      
+      <sect3 id="special_remarks_samba_security_updates">
+        <title>Samba Security Fixes of April 12, 2016</title>
     
-      <para>On April 12, 2016, the Samba team released security fixes for the <ulink url="https://en.wikipedia.org/wiki/Badlock">Badlock bug</ulink>. Unfortunately, they also introduced a regression that causes the <command>net</command> command to fail on many systems when querying remote hosts. If you experience this issue, you can add two lines to the [global] section of your <filename>smb.conf</filename> file to make browsing work again:</para>
+        <para>On April 12, 2016, the Samba team released security fixes for the <ulink url="https://en.wikipedia.org/wiki/Badlock">Badlock bug</ulink>. Unfortunately, they also introduced a regression that causes the <command>net</command> command to fail on many systems when querying remote hosts. If you experience this issue, you can add two lines to the [global] section of your <filename>smb.conf</filename> file to make browsing work again:</para>
   
 <programlisting>[global]
 ...
@@ -1439,7 +1442,15 @@ client max protocol = SMB3
 client ipc max protocol = NT1
 ...</programlisting>
   
-      <para>Unfortunately, this fix for &smb4k; might break the possibility to connect to the network neighborhood with earlier versions of &dolphin; and maybe also other programs.</para>
+        <para>Unfortunately, this fix for &smb4k; might break the possibility to connect to the network neighborhood with earlier versions of &dolphin; and maybe also other programs.</para>
+      </sect3>
+      
+      <sect3 id="special_remarks_samba_4_6">
+        <title>Samba 4.6.x</title>
+        <para>If you are using <emphasis role="bold">Samba 4.6.x</emphasis>, there is most likely another reason for this: It seems that at some point in time during the development, a bug was introduced that causes the command</para>
+        <screen><prompt>$</prompt> <userinput>net rap server domain -S &lt;server&gt; -U%</userinput></screen>
+        <para>that is used by &smb4k; to retrieve the list of servers in a domain/workgroup to fail (see <ulink url="http://samba.2283325.n4.nabble.com/PATCH-libcli-smb-Parse-primary-domain-from-session-setup-td4723954.html">here</ulink> for more details). All versions of Samba 4.6 until at least version 4.6.14 are affected. Until this problem is not fixed, browsing the network neighborhood with Smb4K will not work. (Or, at least, I haven't found a workaround yet.)</para>
+      </sect3>
     </sect2>
     
 <!--
@@ -1475,7 +1486,7 @@ polkit.addRule(function(action, subject) {
     <sect2 id="special_remarks_other_desktop_environments">
       <title>Other Desktop Environments Than &plasma;</title>
 
-      <para>When using a different desktop environment than &plasma;, &Qt; and &kf5; applications might be missing the icons. In that case, you might want to download the sources of <ulink url="https://sourceforge.net/projects/qt5ct/"><application>qt5ct</application></ulink>, configure, compile and install it. Therefor, follow the directions in the README file. To use <application>qt5ct</application> with your desktop environment, add the following line to your <filename>~/.xinitrc</filename> or <filename>~/.profile</filename> file:</para>
+      <para>When using a different desktop environment than &plasma;, &Qt; and &kf5; applications might be missing the icons. In that case, you might want to install the application <application>qt5ct</application> (the source code can be obtained <ulink url="https://sourceforge.net/projects/qt5ct/">here</ulink>). To use <application>qt5ct</application> with your desktop environment, add the following line to your <filename>~/.xinitrc</filename> or <filename>~/.profile</filename> file:</para>
 <programlisting>export QT_QPA_PLATFORMTHEME=qt5ct</programlisting>
       <note>
         <para>Under NetBSD <application>qt5ct</application> might complain about a missing <filename>libfreetype.so.17</filename> or <filename>libGL.so.2</filename> shared library file and refuse to start. To fix this problem, create the <filename>/etc/ld.so.conf</filename> file and add the path <filename class="directory">/usr/X11R7/lib</filename> to it.</para>
