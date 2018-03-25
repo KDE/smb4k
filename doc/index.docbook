@@ -96,8 +96,8 @@
 
     <para>After the installation, you can run &smb4k; either from the K menu or from the command prompt by typing <screen><prompt>$</prompt> <userinput><command>smb4k</command></userinput></screen></para>
     <para>&smb4k; does not take any arguments, except those that are known to all &kde; applications.</para>
-    <para>&smb4k; also comes with a <link linkend="plasmoid">&plasmoid;</link> for better desktop integration. It can be added as widget to the desktop or the panel.</para>
-    <para>If your system is missing some of the programs &smb4k; needs to operate properly, it notifies the user:</para>
+    <para>&smb4k; also comes with a <link linkend="plasmoid">&plasmoid;</link> for better desktop integration. It can be added as widget to the desktop or panel.</para>
+    <para>If the system is missing some of the programs &smb4k; needs to operate properly, it notifies the user:</para>
     
     <screenshot id="notification_missing_program">
       <screeninfo>Screenshot of the missing program notification</screeninfo>
@@ -129,7 +129,7 @@
     </screenshot>
 
     <para>&smb4k; comes with a compact unified toolbar as the default, but the user can still choose to use multiple toolbars. If you wish to use the classical way, four toolbars are defined, for each widget one: the main toolbar, the toolbars for the <guilabel>Network Neighborhood</guilabel> widget, the <guilabel>Shares View</guilabel> widget and the <guilabel>Network Search</guilabel> widget. The unified toolbar contains some of the main actions, like <guimenuitem>Configure &smb4k;</guimenuitem> and <guimenuitem>Quit</guimenuitem>. It also dynamically loads the actions of the dock widget that currently has got the focus. For additional information and some important warnings, please have a look at the sections discussing the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, <link linkend="network_search_view">search dialog</link>, and <link linkend="shares_view">mounted shares view</link>.</para>
-    <para>The status bar gives some information about the current status of &smb4k;. If the application is processing a user request (&eg; mounting a share), a descriptive message is displayed in the leftmost section and a progress bar is shown with a busy indicator. The two icons on the right hand side indicate if there are shares mounted (remote folder icon) and the status of the authentication system (wallet or key icon).</para>
+    <para>The status bar gives some information about the current status of &smb4k;. If the application is processing a user request (&eg; mounting a share), a descriptive message is displayed in the leftmost section and a progress bar is shown with a busy indicator. The two icons on the right hand side indicate if there are shares mounted (network folder icon) and the status of the authentication system (wallet or key icon).</para>
     <para>If the dock widgets are arranged as tabs, the user gets additional visual feedback. Each time a share is mounted or unmounted, the <guilabel>Mounted Shares</guilabel> tab is highlighted for a few seconds.</para>
     <para>The main window is highly configurable. You can hide or show all tabbed widgets (<menuchoice><guimenu>Settings</guimenu><guimenuitem>Dock Widgets</guimenuitem></menuchoice>). They can also be dragged around with the mouse and docked to different areas in the main window. You can even detach them from the main window. The status bar and the toolbars can be hidden/shown by toggling the menu entry <menuchoice><guimenu>Settings</guimenu><guimenuitem>Show Statusbar</guimenuitem></menuchoice> and the ones under <menuchoice><guimenu>Settings</guimenu><guimenuitem>Toolbars Shown</guimenuitem></menuchoice>, respectively.</para>
   </sect1>
