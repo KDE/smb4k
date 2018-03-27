@@ -6,9 +6,21 @@ set(VERSION_PATCH 90)
 
 set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 
+# Minimum required CMake version
 cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
+
+# CMake policies
 cmake_policy(SET CMP0037 NEW)
 
+if (POLICY CMP0063)
+  cmake_policy(SET CMP0063 NEW)
+endif()
+
+if (POLICY CMP0071)
+  cmake_policy(SET CMP0071 NEW)
+endif()
+  
+# Minimum required versions of Qt5 and KF5
 set(QT_MIN_VERSION "5.6.0")
 set(KF5_MIN_VERSION "5.25.0")
 
