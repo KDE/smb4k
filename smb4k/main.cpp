@@ -139,7 +139,9 @@ int main(int argc, char **argv)
   }
   
   // Set attributes
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0))
   QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
+#endif
   
   // Create the application
   QApplication app(argc, argv);

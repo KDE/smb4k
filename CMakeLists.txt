@@ -21,7 +21,7 @@ if (POLICY CMP0071)
 endif()
   
 # Minimum required versions of Qt5 and KF5
-set(QT_MIN_VERSION "5.6.0")
+set(QT_MIN_VERSION "5.5.0")
 set(KF5_MIN_VERSION "5.25.0")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
