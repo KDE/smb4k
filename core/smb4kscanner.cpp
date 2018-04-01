@@ -79,7 +79,7 @@ Smb4KScanner::Smb4KScanner(QObject *parent)
   d->haveNewHosts    = false;
   d->timerId         = 0;
   
-  connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()));
+  connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), this, SLOT(slotAboutToQuit()));
 }
 
 
@@ -113,8 +113,15 @@ void Smb4KScanner::abortAll()
 
 void Smb4KScanner::start()
 {
-  // Avoid a race with QApplication and use 50 ms here.
-  QTimer::singleShot(50, this, SLOT(slotStartJobs()));
+  //
+  // Check the network configurations
+  //
+  Smb4KHardwareInterface::self()->updateNetworkConfig();
+ 
+  //
+  // Connect to Smb4KHardwareInterface to be able to get the response
+  // 
+  connect(Smb4KHardwareInterface::self(), SIGNAL(networkConfigUpdated()), this, SLOT(slotStartJobs()));
 }
 
 
@@ -486,18 +493,7 @@ void Smb4KScanner::timerEvent(QTimerEvent */*e*/)
 }
 
 
-
-/////////////////////////////////////////////////////////////////////////////
-// SLOT IMPLEMENTATIONS
-/////////////////////////////////////////////////////////////////////////////
-
-void Smb4KScanner::slotAboutToQuit()
-{
-  abortAll();
-}
-
-
-void Smb4KScanner::slotStartJobs()
+void Smb4KScanner::startScanning()
 {
   if (Smb4KHardwareInterface::self()->isOnline())
   {
@@ -523,8 +519,32 @@ void Smb4KScanner::slotStartJobs()
   {
     // Do nothing
   }
+}
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+// SLOT IMPLEMENTATIONS
+/////////////////////////////////////////////////////////////////////////////
+
+void Smb4KScanner::slotAboutToQuit()
+{
+  abortAll();
+}
+
+
+void Smb4KScanner::slotStartJobs()
+{
+  //
+  // Disconnect from Smb4KHardwareInterface.
+  //
+  disconnect(Smb4KHardwareInterface::self(), SIGNAL(networkConfigUpdated()), this, SLOT(slotStartJobs()));
   
-  connect(Smb4KHardwareInterface::self(), SIGNAL(onlineStateChanged(bool)), SLOT(slotOnlineStateChanged(bool)), Qt::UniqueConnection);
+  //
+  // Start the scanning
+  //
+  startScanning();
 }
 
 
@@ -1052,9 +1072,9 @@ void Smb4KScanner::slotOnlineStateChanged(bool online)
   if (online)
   {
     //
-    // Start the jobs
+    // Start the scanning of the network neighborhood
     //
-    slotStartJobs();
+    startScanning();
   }
   else
   {
