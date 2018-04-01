@@ -219,9 +219,8 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<BookmarkPtr> &list, bool rep
 {
   //
   // Process the incoming list.
-  // In case the internal list should be replaced, clear the internal list and 
-  // copy the new one. Otherwise just add new bookmarks to the list and omit 
-  // already existing ones.
+  // In case the internal list should be replaced, clear the internal 
+  // list first.
   // 
   if (replace)
   {
@@ -242,33 +241,43 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<BookmarkPtr> &list, bool rep
       
       it.remove();
     }
-    
-    d->bookmarks << list;
   }
   else
   {
-    for (const BookmarkPtr &bookmark : list)
+    // Do nothing
+  }
+  
+  //
+  // Copy all bookmarks that are not in the list
+  // 
+  for (const BookmarkPtr &bookmark : list)
+  {
+    //
+    // Check if the bookmark label is already in use
+    // 
+    if (!bookmark->label().isEmpty() && findBookmarkByLabel(bookmark->label()))
     {
-      BookmarkPtr existingBookmark = findBookmarkByUNC(bookmark->unc());
+      Smb4KNotification::bookmarkLabelInUse(bookmark.data());
+      bookmark->setLabel(QString("%1 (1)").arg(bookmark->label()));
+    }
+    else
+    {
+      // Do nothing
+    }
       
-      if (!existingBookmark)
-      {
-        if (!bookmark->label().isEmpty() && findBookmarkByLabel(bookmark->label()))
-        {
-          Smb4KNotification::bookmarkLabelInUse(bookmark.data());
-          bookmark->setLabel(QString("%1 (1)").arg(bookmark->label()));
-        }
-        else
-        {
-          // Do nothing
-        }
-        
-        d->bookmarks << bookmark;
-      }
-      else
-      {
-        // Do nothing
-      }
+    //
+    // Check if we have to add the bookmark
+    // 
+    BookmarkPtr existingBookmark = findBookmarkByUNC(bookmark->unc());
+      
+    if (!existingBookmark)
+    {
+      d->bookmarks << bookmark;
+    }
+    else
+    {
+      // We do not to update the bookmark, because we are
+      // operating on a shared pointer.
     }
   }
   
