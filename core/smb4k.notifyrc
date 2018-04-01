@@ -519,7 +519,7 @@ Comment[uk]=Не вдалося відкрити сховище паролів �
 Comment[x-test]=xxThe network wallet could not be openedxx
 Comment[zh_TW]=無法開啟網路錢包
 Contexts=Warning
-Sound=KDE-Sys-Warning.ogg
+Sound=Oxygen-Sys-Warning.ogg
 Action=Popup|Sound
 
 [Event/credentialsNotAccessible]
@@ -574,7 +574,7 @@ Comment[uk]=Не вдалося прочитати реєстраційні да
 Comment[x-test]=xxThe credentials could not be read from the walletxx
 Comment[zh_TW]=無法從錢包中讀取帳號密碼資訊
 Contexts=Warning
-Sound=KDE-Sys-Warning.ogg
+Sound=Oxygen-Sys-Warning.ogg
 Action=Popup|Sound
 
 [Event/mimetypeNotSupported]
@@ -628,7 +628,7 @@ Comment[uk]=Підтримки друку файлів з таким типом 
 Comment[x-test]=xxThe mimetype of the file that is to be printed is not supportedxx
 Comment[zh_TW]=要列印的檔案 MIME 型態未被支援
 Contexts=Warning
-Sound=KDE-Sys-Warning.ogg
+Sound=Oxygen-Sys-Warning.ogg
 Action=Popup|Sound
 
 [Event/bookmarkExists]
@@ -683,7 +683,7 @@ Comment[uk]=Закладка вже існує
 Comment[x-test]=xxThe bookmark existsxx
 Comment[zh_TW]=書籤已存在
 Contexts=Warning
-Sound=KDE-Sys-Warning.ogg
+Sound=Oxygen-Sys-Warning.ogg
 Action=Popup|Sound
 
 [Event/bookmarkLabelInUse]
@@ -738,7 +738,7 @@ Comment[uk]=Мітка для закладки вже існує
 Comment[x-test]=xxThe label for the bookmark already existsxx
 Comment[zh_TW]=書籤的標記已存在
 Contexts=Warning
-Sound=KDE-Sys-Warning.ogg
+Sound=Oxygen-Sys-Warning.ogg
 Action=Popup|Sound
 
 [Event/emptyMasterBrowser]
@@ -791,7 +791,7 @@ Comment[uk]=Не було надано нетипового основного �
 Comment[x-test]=xxThe custom master browser has not been providedxx
 Comment[zh_TW]=未提供自訂的主要瀏覽器
 Contexts=Warning
-Sound=KDE-Sys-Warning.ogg
+Sound=Oxygen-Sys-Warning.ogg
 Action=Popup|Sound
 
 [Event/sambaConfigFileMissing]
@@ -842,7 +842,7 @@ Comment[uk]=Не вистачає файла налаштувань для ко�
 Comment[x-test]=xxThe configuration file for the Samba suite is missingxx
 Comment[zh_TW]=Smaba 套件的設定檔遺失
 Contexts=Warning
-Sound=KDE-Sys-Warning.ogg
+Sound=Oxygen-Sys-Warning.ogg
 Action=Popup|Sound
 
 [Event/retrievingDomainsFailed]
@@ -897,7 +897,7 @@ Comment[uk]=Спроба отримати список доступних дом
 Comment[x-test]=xxRetrieving the available domains failedxx
 Comment[zh_TW]=取得可用的網域失敗
 Contexts=Error
-Sound=KDE-Sys-Error.ogg
+Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/scanningBroadcastAreaFailed]
@@ -950,7 +950,7 @@ Comment[uk]=Спроба сканування вказаних діапазон�
 Comment[x-test]=xxScanning the defined broadcast area(s) failedxx
 Comment[zh_TW]=掃描已定義的廣播區域失敗
 Contexts=Error
-Sound=KDE-Sys-App-Error.ogg
+Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/retrievingHostsFailed]
@@ -1004,7 +1004,7 @@ Comment[uk]=Спроба отримати список вузлів, що нал
 Comment[x-test]=xxRetrieving the list of hosts belonging to a domain failedxx
 Comment[zh_TW]=取得屬於某網域的主機清單失敗
 Contexts=Error
-Sound=KDE-Sys-App-Error.ogg
+Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/retrievingSharesFailed]
@@ -1058,7 +1058,7 @@ Comment[uk]=Спроба отримати список спільних ресу
 Comment[x-test]=xxRetrieving the list of shares provided by a host failedxx
 Comment[zh_TW]=取得某主機所提供的分享資源清單失敗
 Contexts=Error
-Sound=KDE-Sys-App-Error.ogg
+Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/retrievingPreviewFailed]
@@ -1111,7 +1111,7 @@ Comment[uk]=Спроба отримати дані попереднього пе
 Comment[x-test]=xxRetrieving the preview of a share failedxx
 Comment[zh_TW]=取得某分享資源的預覽失敗
 Contexts=Error
-Sound=KDE-Sys-App-Error.ogg
+Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/mountingFailed]
@@ -1167,7 +1167,7 @@ Comment[uk]=Спроба монтування спільного ресурсу 
 Comment[x-test]=xxMounting a share failedxx
 Comment[zh_TW]=掛載分享資料夾失敗
 Contexts=Error
-Sound=KDE-Sys-App-Error.ogg
+Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/unmountingFailed]
@@ -1224,7 +1224,7 @@ Comment[uk]=Помилка демонтування ресурсу
 Comment[x-test]=xxUnmounting a share failedxx
 Comment[zh_TW]=卸載分享資料夾失敗
 Contexts=Error
-Sound=KDE-Sys-App-Error.ogg
+Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/unmountingNotAllowed]
@@ -1279,7 +1279,7 @@ Comment[uk]=Демонтування певного ресурсу заборо�
 Comment[x-test]=xxThe unmounting of a certain share is not allowedxx
 Comment[zh_TW]=不允許卸載特定分享資料夾
 Contexts=Error
-Sound=KDE-Sys-App-Error.ogg
+Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/printingFailed]
@@ -1334,7 +1334,7 @@ Comment[uk]=Спроба друку на мережевому принтері �
 Comment[x-test]=xxPrinting on a network printer failedxx
 Comment[zh_TW]=透過網路印表機列印失敗
 Contexts=Error
-Sound=KDE-Sys-App-Error.ogg
+Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/synchronizationFailed]
@@ -1388,7 +1388,7 @@ Comment[uk]=Спроба виконання синхронізації між с
 Comment[x-test]=xxThe synchronization of a share and a local copy failedxx
 Comment[zh_TW]=將分享資源與本地端複本同步失敗
 Contexts=Error
-Sound=KDE-Sys-App-Error.ogg
+Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/searchingFailed]
@@ -1443,7 +1443,7 @@ Comment[uk]=Спроба пошуку у мережевому оточенні �
 Comment[x-test]=xxSearching the network neighborhood failedxx
 Comment[zh_TW]=搜尋網路芳鄰失敗
 Contexts=Error
-Sound=KDE-Sys-App-Error.ogg
+Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/commandNotFound]
@@ -1498,7 +1498,7 @@ Comment[uk]=Не вдалося знайти потрібної вам кома�
 Comment[x-test]=xxA required command could not be foundxx
 Comment[zh_TW]=找不到需要的指令
 Contexts=Error
-Sound=KDE-Sys-App-Error.ogg
+Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/cannotBookmarkPrinter]
@@ -1551,7 +1551,7 @@ Comment[uk]=Не можна створювати закладку на прин�
 Comment[x-test]=xxA printer cannot be bookmarkedxx
 Comment[zh_TW]=無法將印表機加入書籤
 Contexts=Error
-Sound=KDE-Sys-App-Error.ogg
+Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/fileNotFound]
@@ -1607,7 +1607,7 @@ Comment[uk]=Не вдалося знайти файл
 Comment[x-test]=xxA file could not be foundxx
 Comment[zh_TW]=找不到檔案
 Contexts=Error
-Sound=KDE-Sys-App-Error.ogg
+Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/openingFileFailed]
@@ -1661,7 +1661,7 @@ Comment[uk]=Не вдалося відкрити файл
 Comment[x-test]=xxA file could not be openedxx
 Comment[zh_TW]=無法開啟檔案
 Contexts=Error
-Sound=KDE-Sys-App-Error.ogg
+Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/readingFileFailed]
@@ -1714,7 +1714,7 @@ Comment[uk]=Не вдалося прочитати файл
 Comment[x-test]=xxA file could not be readxx
 Comment[zh_TW]=無法讀取檔案
 Contexts=Error
-Sound=KDE-Sys-App-Error.ogg
+Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/mkdirFailed]
@@ -1767,7 +1767,7 @@ Comment[uk]=Не вдалося створити каталог
 Comment[x-test]=xxA directory could not be createdxx
 Comment[zh_TW]=無法建立目錄
 Contexts=Error
-Sound=KDE-Sys-App-Error.ogg
+Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/processError]
@@ -1824,7 +1824,7 @@ Comment[uk]=Помилка під час роботи процесу
 Comment[x-test]=xxA process error occurredxx
 Comment[zh_TW]=行程發生錯誤
 Contexts=Error
-Sound=KDE-Sys-App-Error.ogg
+Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/actionFailed]
@@ -1878,7 +1878,7 @@ Comment[uk]=Спроба виконання дії KAuth зазнала невд
 Comment[x-test]=xxA KAuth action failedxx
 Comment[zh_TW]=KAuth 動作失敗
 Contexts=Error
-Sound=KDE-Sys-App-Error.ogg
+Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/invalidURL]
@@ -1934,7 +1934,7 @@ Comment[uk]=Було передано некоректну адресу
 Comment[x-test]=xxAn invalid URL was passedxx
 Comment[zh_TW]=傳遞了不合法的網址
 Contexts=Error
-Sound=KDE-Sys-App-Error.ogg
+Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
 
 [Event/emptyBroadcastAreas]
@@ -1987,5 +1987,5 @@ Comment[uk]=Порожній запис областей трансляції
 Comment[x-test]=xxThe entry of the broadcast areas is emptyxx
 Comment[zh_TW]=廣播區域的項目為空
 Contexts=Error
-Sound=KDE-Sys-App-Error.ogg
+Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
