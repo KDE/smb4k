@@ -293,6 +293,11 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
 
   private:
     /**
+     * Start the scanning of the network neighborhood
+     */
+    void startScanning();
+    
+    /**
      * Pointer to Smb4KScannerPrivate class
      */
     const QScopedPointer<Smb4KScannerPrivate> d;

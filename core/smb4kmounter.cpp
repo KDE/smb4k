@@ -111,9 +111,6 @@ Smb4KMounter::Smb4KMounter(QObject *parent)
   connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()),
           this, SLOT(slotAboutToQuit()));
   
-  connect(Smb4KHardwareInterface::self(), SIGNAL(networkConfigUpdated()), 
-          this, SLOT(slotStartJobs()));
-  
   connect(Smb4KHardwareInterface::self(), SIGNAL(onlineStateChanged(bool)),
           this, SLOT(slotOnlineStateChanged(bool)));
   
@@ -1180,6 +1177,11 @@ void Smb4KMounter::start()
   // Check the network configurations
   //
   Smb4KHardwareInterface::self()->updateNetworkConfig();
+  
+  //
+  // Connect to Smb4KHardwareInterface to be able to get the response
+  // 
+  connect(Smb4KHardwareInterface::self(), SIGNAL(networkConfigUpdated()), this, SLOT(slotStartJobs()));
 }
 
 
@@ -2164,23 +2166,38 @@ void Smb4KMounter::check(const SharePtr &share)
 void Smb4KMounter::slotStartJobs()
 {
   //
-  // Import the mounted shares
+  // Disconnect from Smb4KHardwareInterface.
   //
-  if (!d->firstImportDone)
-  {
-    import(true);
-  }
-  else
-  {
-    // Do nothing
-  }
+  disconnect(Smb4KHardwareInterface::self(), SIGNAL(networkConfigUpdated()), this, SLOT(slotStartJobs()));
   
   //
-  // Start the timer
-  //
-  if (d->timerId == -1)
+  // Start the import of shares
+  // 
+  if (Smb4KHardwareInterface::self()->isOnline())
   {
-    d->timerId = startTimer(TIMEOUT);
+    //
+    // Import the mounted shares
+    //
+    if (!d->firstImportDone)
+    {
+      import(true);
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    //
+    // Start the timer
+    //
+    if (d->timerId == -1)
+    {
+      d->timerId = startTimer(TIMEOUT);
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
