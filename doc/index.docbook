@@ -1183,8 +1183,8 @@
         </mediaobject>
       </screenshot>
 
-      <para>Especially adding a group may help you to organize the bookmarks. In the bookmark menu, all bookmarks belonging to one group will be arranged in a submenu with the group entry as parent (see <link linkend="bookmarks_menu">below</link>).</para>
-      <para>The label can be any text describing the share. In case you define a label, it will be displayed in the bookmarks menu instead of the UNC by default. If you want to change this behavior, you can do so in the <link linkend="configuration_user_interface_misc_bookmarks">configuration dialog</link>.</para>
+      <para>Adding a groups may help you to organize the bookmarks. In the bookmark menu, all bookmarks belonging to one group are arranged in a submenu with the group entry as parent (see <link linkend="bookmarks_menu">below</link>).</para>
+      <para>The label can be any text describing the share. In case you define a label, it will be displayed in the bookmarks menu instead of the location by default. If you want to change this behavior, you can do so in the <link linkend="configuration_user_interface_misc_bookmarks">configuration dialog</link>.</para>
     </sect2>
     
 <!--
@@ -1241,7 +1241,7 @@
         </varlistentry>
       </variablelist>
 
-      <para>All other entries are either group submenus or shares that do not belong to a group. All entries are listed alphabetically and the bookmarks may either appear with their UNC address or descriptive label. By clicking a bookmark, the respective share is mounted. If a bookmarked share is mounted on the system, the bookmark entry is disabled.</para>
+      <para>All other entries are either group submenus or shares that do not belong to a group. All entries are listed alphabetically and the bookmarks may either appear with their location or descriptive label. By clicking a bookmark, the respective share is mounted. If a bookmarked share is mounted on the system, the bookmark entry is disabled.</para>
       <para>For each group there is a submenu. It contains all bookmarks belonging to the group and a <guimenuitem>Mount All Bookmarks</guimenuitem> menu item. The latter one can be used to mount all bookmarks in that submenu at once.</para>
       <para>In the system tray widget, there is an identical <guilabel>Bookmarks</guilabel> <link linkend="systemtray_menus">submenu</link> except that the <guilabel>Add Bookmark</guilabel> entry is missing. The plasmoid provides a <guilabel>Bookmarks</guilabel> <link linkend="plasmoid_bookmarks">tab</link> where all bookmarks are arranged in a similar way as in the bookmark menu. The bookmark groups and the bookmarks are listed in the view. Bookmarked shares can be mounted by clicking the respective entry. In the tool bar two actions are present: <guimenuitem>Back</guimenuitem> and <guimenuitem>Edit</guimenuitem>. By clicking <guimenuitem>Back</guimenuitem> you can get back to the top level if you entered a group folder. The <guimenuitem>Edit</guimenuitem> action will open the <link linkend="bookmarks_editor">bookmark editor</link>.</para>
     </sect2>
@@ -1264,7 +1264,7 @@
       </screenshot>
 
       <para>In the tree view, the bookmarks are arranged according to the groups they belong to. Bookmarks without groups are located at the top level. To rearrange bookmarks, the tree view offers drag and drop capabilities, so that you can move bookmarks around using the mouse.</para>
-      <para>If you want to edit a bookmark, you can do so by selecting it. The stored label, login, IP address and group name appear in the input widgets and become editable. In most cases, you do not need to touch the IP address and the login, because &smb4k; stored the correct values at the time you bookmarked the share. However, if the server got a different IP address (&eg; because DHCP is used on your local network) or your login changed, these entries should be adjusted. With the label you can give each bookmark a custom description. It will be used for display <emphasis>instead</emphasis> of the UNC address, but this can be changed in the <link linkend="configuration_user_interface_misc_bookmarks">configuration dialog</link>. The group entry, finally, helps you to organize your bookmarks. Especially if you use &eg; your notebook at home and at work, and you do not want to use <link linkend="profiles">profiles</link>, it might be a good idea to create two groups "Home" and "Work" and save the bookmarks accordingly.</para>
+      <para>If you want to edit a bookmark, you can do so by selecting it. The stored label, login, IP address and group name appear in the input widgets and become editable. In most cases, you do not need to touch the IP address and the login, because &smb4k; stored the correct values at the time you bookmarked the share. However, if the server got a different IP address (&eg; because DHCP is used on your local network) or your login changed, these entries should be adjusted. With the label you can give each bookmark a custom description. It will be used for display <emphasis>instead</emphasis> of the location, but this can be changed in the <link linkend="configuration_user_interface_misc_bookmarks">configuration dialog</link>. The group entry, finally, helps you to organize your bookmarks. Especially if you use &eg; your notebook at home and at work, and you do not want to use <link linkend="profiles">profiles</link>, it might be a good idea to create two groups "Home" and "Work" and save the bookmarks accordingly.</para>
       <para>The tree view also offers a popup menu containing the following three actions. They can be used to add groups or remove groups and/or bookmarks.</para>
 
       <screenshot>
@@ -1447,9 +1447,9 @@ client ipc max protocol = NT1
       
       <sect3 id="special_remarks_samba_4_6">
         <title>Samba 4.6.x</title>
-        <para>If you are using <emphasis role="bold">Samba 4.6.x</emphasis>, there is most likely another reason for this: It seems that at some point in time during the development, a bug was introduced that causes the command</para>
+        <para>If you are using <emphasis role="bold">Samba 4.6.x</emphasis>, there is most likely an additional reason for this: It seems that at some point in time during the development, a bug was introduced that causes the command</para>
         <screen><prompt>$</prompt> <userinput>net rap server domain -S &lt;server&gt; -U%</userinput></screen>
-        <para>that is used by &smb4k; to retrieve the list of servers in a domain/workgroup to fail (see <ulink url="http://samba.2283325.n4.nabble.com/PATCH-libcli-smb-Parse-primary-domain-from-session-setup-td4723954.html">here</ulink> for more details). All versions of Samba 4.6 until at least version 4.6.14 are affected. Until this problem is not fixed, browsing the network neighborhood with Smb4K will not work. (Or, at least, I haven't found a workaround yet.)</para>
+        <para>to fail that is used by &smb4k; to retrieve the list of servers in a domain/workgroup (see <ulink url="http://samba.2283325.n4.nabble.com/PATCH-libcli-smb-Parse-primary-domain-from-session-setup-td4723954.html">here</ulink> for more details). All versions of Samba 4.6 until at least version 4.6.14 seem to be affected. Until this problem is not fixed, browsing the network neighborhood with Smb4K will not work. (Or, at least, I haven't found a workaround yet.)</para>
       </sect3>
     </sect2>
     
@@ -4142,7 +4142,7 @@ polkit.addRule(function(action, subject) {
           <row>
             <entry>-DINSTALL_PLASMOID=yes|no</entry>
             <entry align="center">1.1.0</entry>
-            <entry>Install the plasmoid. This is on by default. For versions 2.0.x this option was removed, because the plasmoid was not ported yet.</entry>
+            <entry>Install the plasmoid. This is on by default. For &smb4k; 2.0.x this option was removed, because the plasmoid was not ported yet.</entry>
           </row>
         </tbody>
       </tgroup>
