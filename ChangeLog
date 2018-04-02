@@ -1,3 +1,48 @@
+Smb4K 2.1.0 (2018-04-02):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at https://cgit.kde.org/smb4k.git/log/?h=2.1
+
+- Ported the plasmoid to Plasma 5 and extended its functionality.
+  Among others:
+  - Added ability to synchronize shares.
+  - Added ability to preview shares.
+  - Added sorting to the list views.
+  - Added a compact representation of the plasmoid.
+- Use the location ('SHARE on SERVER') instead of the UNC in most
+  widgets.
+- Made suffixes in the configutation dialog translatable (BUG 386434).
+- Fixed a crash in the bookmarks menu that was triggered by a null 
+  pointer access (BUG 391424).
+- Only start the domain lookup job when the computer is online 
+  (BUG 391150).
+- Fix mounting of shares with a UNC like //server/share/$user 
+  (BUG 390558).
+- Fixed several more bugs.
+- Improved the code resonsible for mounting.
+- Improved the code resonsible for the handling of profiles.
+- Improved the code resonsible for handling the custom options.
+- Removed the undo option for changes made to the custom options in 
+  the configuration dialog.
+- Improved code resonsible for the handling of bookmarks.
+- Did some major rewrites of the code of the core classes. 
+- Use smart pointers for shares, hosts, workgroups, etc.
+- Continue to replace normal for loops by range-based for loops
+  where appropriate.
+- Cleaned up code where necessary.
+- Improved handbook.
+- And many other changes ...
+
+Smb4K 2.0.2 (2017-08-22):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at https://cgit.kde.org/smb4k.git/log/?h=2.0
+
+- cmake: set the policy CMP0063 only if existing
+- cmake: lower required version to 3.2.
+- Add a remark regarding denied privilege escalation to the handbook.
+- Fixed removal of remounts in Smb4KMounter::slotStatResult().
+
 Smb4K 2.0.1 (2017-05-13):
 
 See the summary of changes below. For a full list of changes, please
