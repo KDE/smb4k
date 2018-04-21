@@ -402,6 +402,14 @@ void Smb4KBookmarkHandler::writeBookmarkList()
 
 void Smb4KBookmarkHandler::readBookmarks()
 {
+  //
+  // Clear the list of bookmarks
+  //
+  while (!d->bookmarks.isEmpty())
+  {
+    d->bookmarks.takeFirst().clear();
+  }
+
   // Locate the XML file.
   QFile xmlFile(dataLocation()+QDir::separator()+"bookmarks.xml");
 
