@@ -531,12 +531,6 @@ void Smb4KDeclarative::removeBookmarkGroup(const QString& name)
 }
 
 
-void Smb4KDeclarative::editBookmarks()
-{
-  Smb4KBookmarkHandler::self()->editBookmarks();
-}
-
-
 void Smb4KDeclarative::synchronize(Smb4KNetworkObject* object)
 {
   if (object && object->type() == Smb4KNetworkObject::Share)

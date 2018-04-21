@@ -64,9 +64,6 @@ Q_GLOBAL_STATIC(Smb4KBookmarkHandlerStatic, p);
 Smb4KBookmarkHandler::Smb4KBookmarkHandler(QObject *parent)
 : QObject(parent), d(new Smb4KBookmarkHandlerPrivate)
 {
-  // Bookmark editor
-  d->editor = 0;
-  
   // First we need the directory.
   QString path = dataLocation();
   
@@ -81,7 +78,7 @@ Smb4KBookmarkHandler::Smb4KBookmarkHandler(QObject *parent)
     // Do nothing
   }
 
-  readBookmarks();
+  readBookmarkList();
 }
 
 
@@ -91,8 +88,6 @@ Smb4KBookmarkHandler::~Smb4KBookmarkHandler()
   {
     d->bookmarks.takeFirst().clear();
   }
-  
-  delete d->editor;
 }
 
 
@@ -400,9 +395,19 @@ void Smb4KBookmarkHandler::writeBookmarkList()
 }
 
 
-void Smb4KBookmarkHandler::readBookmarks()
+void Smb4KBookmarkHandler::readBookmarkList()
 {
-  // Locate the XML file.
+  //
+  // Clear the list of bookmarks
+  //
+  while (!d->bookmarks.isEmpty())
+  {
+    d->bookmarks.takeFirst().clear();
+  }
+  
+  // 
+  // Locate the XML file and read the bookmarks
+  // 
   QFile xmlFile(dataLocation()+QDir::separator()+"bookmarks.xml");
 
   if (xmlFile.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -643,35 +648,9 @@ QStringList Smb4KBookmarkHandler::groupsList() const
 }
 
 
-void Smb4KBookmarkHandler::editBookmarks(QWidget *parent)
-{
-  if (!d->editor)
-  {
-    d->editor = new Smb4KBookmarkEditor(d->bookmarks, parent);
-  }
-  else
-  {
-    d->editor->raise();
-  }
-  
-  if (d->editor->exec() == QDialog::Accepted)
-  {
-    QList<BookmarkPtr> bookmarks = d->editor->editedBookmarks();
-    addBookmarks(bookmarks, true);
-  }
-  else
-  {
-    resetBookmarks();
-  }
-
-  delete d->editor;
-  d->editor = 0;
-}
-
-
 void Smb4KBookmarkHandler::resetBookmarks()
 {
-  readBookmarks();
+  readBookmarkList();
 }
 
 

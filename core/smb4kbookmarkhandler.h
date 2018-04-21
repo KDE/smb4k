@@ -96,6 +96,17 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
     void addBookmarks(const QList<SharePtr> &list, QWidget *parent = 0);
     
     /**
+     * This function adds several bookmarks at once. It takes a list of
+     * Smb4KBookmark items.
+     * 
+     * @param list          The list of bookmarks that are to be bookmarked
+     * 
+     * @param replace       If TRUE the old list of bookmarks is replaced by
+     *                      @p list.
+     */
+    void addBookmarks(const QList<BookmarkPtr> &list, bool replace = false);
+    
+    /**
      * Remove a bookmark.
      * 
      * @param bookmark      The bookmark that is to be removed
@@ -154,13 +165,6 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
      * @returns the list of groups
      */
     QStringList groupsList() const;  
-
-    /**
-     * Opens the bookmark editor
-     * 
-     * @param parent          The parent widget
-     */
-    void editBookmarks(QWidget *parent = 0);
     
     /**
      * Reset the bookmarks by reloading them from the file.              
@@ -177,7 +181,7 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
     /**
      * This function reads the list of bookmarks from the bookmarks file.
      */
-    void readBookmarks();
+    void readBookmarkList();
 
     /**
      * This function updates the data of the bookmarks, i.e. is searches for
@@ -191,17 +195,6 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
      */
     void writeBookmarkList();
 
-    /**
-     * This function adds several bookmarks at once. It takes a list of
-     * Smb4KBookmark items.
-     * 
-     * @param list          The list of bookmarks that are to be bookmarked
-     * 
-     * @param replace       If TRUE the old list of bookmarks is replaced by
-     *                      @p list.
-     */
-    void addBookmarks(const QList<BookmarkPtr> &list, bool replace = false);
-    
     /**
      * Migrates one profile to another.
      * 

@@ -1,8 +1,8 @@
 /***************************************************************************
-    Private classes for the bookmark handler
+    Bookmark editor for Smb4K
                              -------------------
-    begin                : Sun Mar 20 2011
-    copyright            : (C) 2011-2017 by Alexander Reinholdt
+    begin                : Sun Apr 14 2018
+    copyright            : (C) 2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -23,66 +23,62 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifndef SMB4KBOOKMARKHANDLER_P_H
-#define SMB4KBOOKMARKHANDLER_P_H
+#ifndef SMB4KBOOKMARKEDITOR_H
+#define SMB4KBOOKMARKEDITOR_H
 
-// application specific includes
-#include "smb4kbookmarkhandler.h"
-#include "smb4kglobal.h"
+// application spcific includes
+#include "core/smb4kglobal.h"
 
 // Qt includes
-#include <QString>
-#include <QUrl>
-#include <QTreeWidget>
 #include <QDialog>
-#include <QListWidget>
-#include <QAction>
-#include <QPushButton>
-#include <QPointer>
+#include <QTreeWidget>
 
 // KDE includes
 #include <KCompletion/KLineEdit>
 #include <KCompletion/KComboBox>
 #include <KWidgetsAddons/KActionMenu>
 
-
-class Q_DECL_EXPORT Smb4KBookmarkDialog : public QDialog
+class Smb4KBookmarkEditor : public QDialog
 {
   Q_OBJECT
 
   public:
     /**
-     * The constructor
+     * The constructor.
      *
-     * @param bookmarks       The list of bookmarks that are to be saved
-     * 
-     * @param groups          The list of available bookmark groups
+     * @param bookmarks   The list of all bookmarks
      *
-     * @param parent          The parent widget
+     * @param parent      The parent of this dialog.
      */
-    Smb4KBookmarkDialog(const QList<BookmarkPtr> &bookmarks,
-                        const QStringList &groups,
-                        QWidget *parent);
+    explicit Smb4KBookmarkEditor(QWidget *parent = 0);
 
-   /**
-    * The destructor
-    */
-   ~Smb4KBookmarkDialog();
-   
-   /**
-    * Returns the list of bookmarks including all changes that could
-    * be made in the bookmark dialog.
-    * 
-    * @returns the list of bookmarks.
-    */
-   const QList<BookmarkPtr> &bookmarks();
+    /**
+     * The destructor.
+     */
+    ~Smb4KBookmarkEditor();
+    
+    /**
+     * Load the bookmarks into the view
+     */
+    void loadBookmarks();
+
+  protected:
+    /**
+     * Reimplemented from QObject
+     */
+    bool eventFilter(QObject *obj, QEvent *e);
 
   protected Q_SLOTS:
     /**
-     * Called when a bookmark was clicked in the list widget.
+     * Called when a bookmark was clicked
      */
-    void slotBookmarkClicked(QListWidgetItem *bookmark_item);
+    void slotItemClicked(QTreeWidgetItem *item, int col);
 
+    /**
+     * Called when the context menu was requested
+     */
+    void slotContextMenuRequested(const QPoint &pos);
+    
     /**
      * Called when the label is edited by the user
      */
@@ -94,25 +90,55 @@ class Q_DECL_EXPORT Smb4KBookmarkDialog : public QDialog
     void slotGroupEdited();
 
     /**
-     * Called when the OK button was clicked
+     * Called when the IP address is edited by the user
+     */
+    void slotIPEdited();
+
+    /**
+     * Called when the login is edited by the user
+     */
+    void slotLoginEdited();
+
+    /**
+     * Called when the add action was triggered
+     */
+    void slotAddGroupTriggered(bool checked);
+
+    /**
+     * Called when the delete action was triggered
+     */
+    void slotDeleteTriggered(bool checked);
+
+    /**
+     * Called when the clear action was triggered
+     */
+    void slotClearTriggered(bool checked);
+    
+    /**
+     * Called when the Ok button was clicked
      */
     void slotDialogAccepted();
-
+    
+    /**
+     * Called when the Cancel button was clicked
+     */
+    void slotDialogRejected();
+    
     /**
      * Called when the icon size changed
      */
     void slotIconSizeChanged(int group);
     
+    /**
+     * Do adjustments in the list view
+     */
+    void slotAdjust();
+
   private:
     /**
-     * Sets up the view
+     * Set up the view
      */
     void setupView();
-    
-    /**
-     * Load the list of bookmarks and the one of the groups
-     */
-    void loadLists(const QList<BookmarkPtr> &bookmarks, const QStringList &groups);
 
     /**
      * Finds the bookmark in the list
@@ -130,19 +156,14 @@ class Q_DECL_EXPORT Smb4KBookmarkDialog : public QDialog
     QPushButton *m_cancel_button;
 
     /**
-     * The list of bookmarks
+     * List of the bookmarks that are being processed
      */
     QList<BookmarkPtr> m_bookmarks;
 
     /**
-     * The list of groups
+     * Tree widget
      */
-    QStringList m_groups;
-
-    /**
-     * The tree widget for the potential bookmarks
-     */
-    QListWidget *m_widget;
+    QTreeWidget *m_tree_widget;
 
     /**
      * The widget containing the editors
@@ -153,25 +174,46 @@ class Q_DECL_EXPORT Smb4KBookmarkDialog : public QDialog
      * The label
      */
     KLineEdit *m_label_edit;
-    
+
+    /**
+     * The IP address
+     */
+    KLineEdit *m_ip_edit;
+
+    /**
+     * The login
+     */
+    KLineEdit *m_login_edit;
+
     /**
      * The groups
      */
     KComboBox *m_group_combo;
-};
 
+    /**
+     * The list of groups
+     */
+    QStringList m_groups;
 
-class Smb4KBookmarkHandlerPrivate
-{
-  public:
-    QList<BookmarkPtr> bookmarks;
-};
+    /**
+     * Action menu
+     */
+    KActionMenu *m_menu;
 
+    /**
+     * Add group action
+     */
+    QAction *m_add_group;
 
-class Smb4KBookmarkHandlerStatic
-{
-  public:
-    Smb4KBookmarkHandler instance;
+    /**
+     * Delete action
+     */
+    QAction *m_delete;
+
+    /**
+     * Clear action
+     */
+    QAction *m_clear;
 };
 
 #endif

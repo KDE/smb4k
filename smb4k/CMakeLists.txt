@@ -113,6 +113,7 @@ target_link_libraries(smb4kconfigdialog
 
 set(smb4k_SRCS
   main.cpp
+  smb4kbookmarkeditor.cpp
   smb4kbookmarkmenu.cpp
   smb4kprofilesmenu.cpp
   smb4ksharesmenu.cpp

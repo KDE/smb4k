@@ -175,6 +175,7 @@ void Smb4KBookmarkMenu::setupMenu()
       QMap<QString,QVariant> addInfo;
       addInfo["type"] = "add";
       addBookmarkAction->setData(addInfo);
+      addBookmarkAction->setEnabled(false);
       connect(addBookmarkAction, SIGNAL(triggered(bool)), SLOT(slotAddActionTriggered(bool)));
       addAction(addBookmarkAction);
       m_actions->addAction(addBookmarkAction);
@@ -470,9 +471,22 @@ void Smb4KBookmarkMenu::setupMenu()
 void Smb4KBookmarkMenu::slotEditActionTriggered(bool /*checked*/)
 {
   //
-  // Edit the bookmarks
+  // Only allow one instance of the bookmark editor
+  // 
+  if (!m_editor)
+  {
+    m_editor = new Smb4KBookmarkEditor(m_parent_widget);
+    m_editor->exec();
+  }
+  else
+  {
+    m_editor->raise();
+  }
+  
   //
-  Smb4KBookmarkHandler::self()->editBookmarks(m_parent_widget);
+  // Delete the editor 
+  // 
+  delete m_editor;
 }
 
 

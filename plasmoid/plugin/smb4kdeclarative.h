@@ -246,11 +246,6 @@ class Q_DECL_EXPORT Smb4KDeclarative : public QObject
     Q_INVOKABLE void removeBookmarkGroup(const QString &name);
     
     /**
-     * This function invokes the bookmark editor.
-     */
-    Q_INVOKABLE void editBookmarks();
-    
-    /**
      * This function starts the synchronization of a local and a 
      * remote folder.
      */
