@@ -29,6 +29,13 @@ PlasmaComponents.Page {
   id: bookmarksPage
   
   //
+  // Bookmark editor
+  //
+  BookmarkEditor {
+    id: editor
+  }
+  
+  //
   // Tool bar
   //
   PlasmaComponents.ToolBar {
@@ -55,7 +62,7 @@ PlasmaComponents.Page {
         iconSource: "bookmarks-organize"
         width: minimumWidth
         onClicked: {
-          iface.editBookmarks()
+          editor.open()
         }
       }
     }
