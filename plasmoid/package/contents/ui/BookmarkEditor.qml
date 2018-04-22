@@ -26,7 +26,7 @@ import org.kde.plasma.extras 2.0 as PlasmaExtras
 
 PlasmaComponents.CommonDialog {
   titleText: i18n("Edit Bookmarks")
-  buttonTexts: {[i18n("Ok"), i18n("Cancel")]}
+  buttonTexts: {[i18n("OK"), i18n("Cancel")]}
   visualParent: parent
   
   content: ColumnLayout {
@@ -89,7 +89,7 @@ PlasmaComponents.CommonDialog {
   onButtonClicked: {
     switch(index) {
       case 0:
-        console.log("Ok")
+        console.log("OK")
         break
       case 1:
         console.log("Cancel")
