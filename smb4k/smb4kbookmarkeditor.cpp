@@ -140,7 +140,7 @@ void Smb4KBookmarkEditor::setupView()
   m_tree_widget->setIconSize(QSize(icon_size, icon_size));
   m_tree_widget->viewport()->installEventFilter(this);
 
-  m_add_group = new QAction(KDE::icon("folder-bookmark"), i18n("Add Group"), m_tree_widget);
+  m_add_group = new QAction(KDE::icon("bookmark-add-folder"), i18n("Add Group"), m_tree_widget);
   m_delete = new QAction(KDE::icon("edit-delete"), i18n("Remove"), m_tree_widget);
   m_clear = new QAction(KDE::icon("edit-clear"), i18n("Clear"), m_tree_widget);
   
