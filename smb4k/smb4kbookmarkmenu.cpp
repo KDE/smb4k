@@ -115,33 +115,31 @@ void Smb4KBookmarkMenu::refreshMenu()
 }
 
 
+void Smb4KBookmarkMenu::setBookmarkActionEnabled(bool enable)
+{
+  QAction *action = menu()->findChild<QAction *>("add_action");
+    
+  if (action)
+  {
+    action->setEnabled(enable);
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+
 void Smb4KBookmarkMenu::customEvent(QEvent* e)
 {
   if (e->type() == Smb4KEvent::EnableBookmarkAction)
   {
-    QAction *action = menu()->findChild<QAction *>("add_action");
-    
-    if (action)
-    {
-      action->setEnabled(true);
-    }
-    else
-    {
-      // Do nothing
-    }
+    setBookmarkActionEnabled(true);
   }
   else if (e->type() == Smb4KEvent::DisableBookmarkAction)
   {
-    QAction *action = menu()->findChild<QAction *>("add_action");
-    
-    if (action)
-    {
-      action->setEnabled(false);
-    }
-    else
-    {
-      // Do nothing
-    }
+    setBookmarkActionEnabled(false);
   }
   else
   {
@@ -492,9 +490,7 @@ void Smb4KBookmarkMenu::slotEditActionTriggered(bool /*checked*/)
 
 void Smb4KBookmarkMenu::slotAddActionTriggered(bool /*checked*/)
 {
-  //
-  // Unused at the moment
-  // 
+  emit addBookmark();
 }
 
 

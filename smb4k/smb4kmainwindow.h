@@ -1,5 +1,5 @@
 /***************************************************************************
-    The main window of Smb4K.
+    The main window of Smb4K
                              -------------------
     begin                : Di Jan 1 2008
     copyright            : (C) 2008-2018 by Alexander Reinholdt
@@ -34,11 +34,10 @@
 #include <QActionGroup>
 #include <QLabel>
 #include <QProgressBar>
+#include <QDockWidget>
 
 // KDE includes
-#include <KParts/MainWindow>
-#include <KParts/Part>
-#include <KParts/PartManager>
+#include <KXmlGui/KXmlGuiWindow>
 
 // forward declarations
 class Smb4KSystemTray;
@@ -53,7 +52,7 @@ class Smb4KPreviewItem;
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class Smb4KMainWindow : public KParts::MainWindow
+class Smb4KMainWindow : public KXmlGuiWindow
 {
   Q_OBJECT
 
@@ -73,6 +72,11 @@ class Smb4KMainWindow : public KParts::MainWindow
      * Reimplemented from KMainWindow.
      */
     bool queryClose();
+    
+    /**
+     * Reimplemented from KMainWindow
+     */
+    bool eventFilter(QObject *obj, QEvent *e);
 
   protected slots:
     /**
@@ -98,7 +102,7 @@ class Smb4KMainWindow : public KParts::MainWindow
      *
      * @param checked       TRUE if the action is checked
      */
-    void slotAddBookmark();
+    void slotAddBookmarks();
 
     /**
      * This slot is connected to the Smb4KWalletManager::initialized() signal.
@@ -236,15 +240,6 @@ class Smb4KMainWindow : public KParts::MainWindow
     void slotEndVisualFeedback();
 
     /**
-     * This slot is connected to the PartManager::activePartChanged() signal. It
-     * modifies the states of actions that are defined in the main window but 
-     * manage things in the parts.
-     *
-     * @param part          The now active KPart
-     */
-    void slotActivePartChanged(KParts::Part *part);
-
-    /**
      * Enable/disable the "Add Bookmark" action
      */
     void slotEnableBookmarkAction();
@@ -316,6 +311,11 @@ class Smb4KMainWindow : public KParts::MainWindow
     void setupMountIndicator();
     
     /**
+     * Setup the dynamic action list
+     */
+    void setupDynamicActionList(QDockWidget *dock);
+    
+    /**
      * This is the progress bar in the status bar.
      */
     QProgressBar *m_progress_bar;
@@ -336,31 +336,17 @@ class Smb4KMainWindow : public KParts::MainWindow
      * The system tray widget
      */
     Smb4KSystemTray *m_system_tray_widget;
-
+    
     /**
-     * The network browser part
+     * This is the widget (embedded into a dock widget) that has 
+     * the focus. 
      */
-    KParts::Part *m_browser_part;
-
-    /**
-     * The search dialog part
-     */
-    KParts::Part *m_search_part;
-
-    /**
-     * The shares view
-     */
-    KParts::Part *m_shares_part;
-
-    /**
-     * The part manager
-     */
-    KParts::PartManager *m_manager;
+    QWidget *m_focusWidget;
 
     /**
      * Dock widgets action group;
      */
-    QActionGroup *m_dock_widgets;
+    QActionGroup *m_dockWidgets;
 };
 
 #endif

@@ -1,5 +1,5 @@
 /***************************************************************************
-    The main window of Smb4K.
+    The main window of Smb4K
                              -------------------
     begin                : Di Jan 1 2008
     copyright            : (C) 2008-2018 by Alexander Reinholdt
@@ -32,6 +32,9 @@
 #include "smb4ksystemtray.h"
 #include "smb4kbookmarkmenu.h"
 #include "smb4kprofilesmenu.h"
+#include "smb4knetworkbrowserdockwidget.h"
+#include "smb4knetworksearchdockwidget.h"
+#include "smb4ksharesviewdockwidget.h"
 #include "core/smb4ksettings.h"
 #include "core/smb4kglobal.h"
 #include "core/smb4kwalletmanager.h"
@@ -73,14 +76,16 @@ using namespace KParts;
 
 
 Smb4KMainWindow::Smb4KMainWindow()
-: KParts::MainWindow(), m_system_tray_widget(0)
+: KXmlGuiWindow(), m_system_tray_widget(0)
 {
-  // Part manager
-  m_manager = new KParts::PartManager(this);
-  m_manager->setAllowNestedParts(true);
-  connect(m_manager, SIGNAL(activePartChanged(KParts::Part*)), SLOT(slotActivePartChanged(KParts::Part*)));
+  //
+  // The widget (embedded into the dock widgets) that has the focus
+  // 
+  m_focusWidget = 0;
 
+  // 
   // Set up main window
+  // 
   setStandardToolBarMenuEnabled(true);
   createStandardStatusBarAction();
   setDockNestingEnabled(true);
@@ -121,18 +126,19 @@ void Smb4KMainWindow::setupActions()
   KActionMenu *dock_widgets_menu = new KActionMenu(KDE::icon("tab-duplicate"), i18n("Dock Widgets"), actionCollection());
   actionCollection()->addAction("dock_widgets_menu", dock_widgets_menu);
 
-  m_dock_widgets = new QActionGroup(actionCollection());
-  m_dock_widgets->setExclusive(false);
+  m_dockWidgets = new QActionGroup(actionCollection());
+  m_dockWidgets->setExclusive(false);
 
   // 
   // Bookmarks menu and action
   // 
-  Smb4KBookmarkMenu *bookmarks = new Smb4KBookmarkMenu(Smb4KBookmarkMenu::MainWindow, this, this);
+  Smb4KBookmarkMenu *bookmarksMenu = new Smb4KBookmarkMenu(Smb4KBookmarkMenu::MainWindow, this, this);
   QAction *addBookmarkAction = new QAction(KDE::icon("bookmark-new"), i18n("Add &Bookmark"), actionCollection());
   addBookmarkAction->setEnabled(false);
-  actionCollection()->addAction("bookmarks_menu", bookmarks);
+  actionCollection()->addAction("bookmarks_menu", bookmarksMenu);
   actionCollection()->addAction("bookmark_action", addBookmarkAction);
-  connect(addBookmarkAction, SIGNAL(triggered(bool)), SLOT(slotAddBookmark()));
+  connect(addBookmarkAction, SIGNAL(triggered(bool)), this, SLOT(slotAddBookmarks()));
+  connect(bookmarksMenu, SIGNAL(addBookmark()), this, SLOT(slotAddBookmarks()));
   
   // 
   // Profiles menu
@@ -223,170 +229,84 @@ void Smb4KMainWindow::setupStatusBar()
 
 void Smb4KMainWindow::setupView()
 {
+  //
   // We do not set a central widget, because it causes "problems"
   // with the dock widgets. We have the nested dock widget property
   // set to true, so we can arrange the dock widgets as we like,
   // nonetheless.
-
-  QDockWidget *browser_dock = 0;
-  QDockWidget *search_dock = 0;
-  QDockWidget *shares_dock = 0;
+  //
 
   //
-  // Network browser part
+  // Network browser dock widget
   //
-  KPluginLoader browser_loader("smb4knetworkbrowser");
-  KPluginFactory *browser_factory = browser_loader.factory();
-
-  if (browser_factory)
-  {
-    QVariantList args;
-    args << QString("bookmark_shortcut=\"false\"");
-    args << QString("silent=\"true\"");
-
-    m_browser_part = browser_factory->create<KParts::Part>(this, args);
-    m_browser_part->setObjectName("NetworkBrowserPart");
-
-    if (m_browser_part)
-    {
-      // Add dock widget to the main window.
-      browser_dock = new QDockWidget(i18n("Network Neighborhood"), this);
-      browser_dock->setObjectName("NetworkBrowserDockWidget");
-      browser_dock->setWidget(m_browser_part->widget());
-      browser_dock->setAllowedAreas(Qt::LeftDockWidgetArea);
-      connect(browser_dock, SIGNAL(visibilityChanged(bool)), this, SLOT(slotNetworkBrowserVisibilityChanged(bool)));
-
-      addDockWidget(Qt::LeftDockWidgetArea, browser_dock);
-
-      // Make the menu and the tool bar working.
-      guiFactory()->addClient(m_browser_part);
-
-      // Insert the toggle view mode action to the action group.
-      m_dock_widgets->addAction(browser_dock->toggleViewAction());
-      static_cast<KActionMenu *>(actionCollection()->action("dock_widgets_menu"))->addAction(browser_dock->toggleViewAction());
-
-      // Add the Part object to the manager
-      m_manager->addPart(m_browser_part, false);
-    }
-    else
-    {
-      KMessageBox::error(this, i18n("The network browser could not be created."));
-
-      // We will continue without the network browser.
-    }
-  }
-  else
-  {
-    KMessageBox::error(this, "<qt>"+browser_loader.errorString()+"</qt>");
-    QApplication::exit(1);
-    return;
-  }
+  Smb4KNetworkBrowserDockWidget *networkBrowserDock = new Smb4KNetworkBrowserDockWidget(i18n("Network Neighborhood"), this);
+  networkBrowserDock->setObjectName("NetworkBrowserDockWidget");
+  networkBrowserDock->setAllowedAreas(Qt::LeftDockWidgetArea);
+ 
+  // Install event filter
+  networkBrowserDock->widget()->installEventFilter(this);
+  
+  // Connections
+  connect(networkBrowserDock, SIGNAL(visibilityChanged(bool)), SLOT(slotNetworkBrowserVisibilityChanged(bool)));
+  
+  // Add dock widget
+  addDockWidget(Qt::LeftDockWidgetArea, networkBrowserDock);
+  
+  // Insert the toggle view mode action to the action group.
+  m_dockWidgets->addAction(networkBrowserDock->toggleViewAction());
+  static_cast<KActionMenu *>(actionCollection()->action("dock_widgets_menu"))->addAction(networkBrowserDock->toggleViewAction());
 
   //
-  // Network search part
+  // Network search dock widget
   //
-  KPluginLoader search_loader("smb4knetworksearch");
-  KPluginFactory *search_factory = search_loader.factory();
-
-  if (search_factory)
+  Smb4KNetworkSearchDockWidget *networkSearchDock = new Smb4KNetworkSearchDockWidget(i18n("Network Search"), this);
+  networkSearchDock->setObjectName("NetworkSearchDockWidget");
+  networkSearchDock->setAllowedAreas(Qt::LeftDockWidgetArea);
+  
+  // Install event filters
+  for (QObject *obj : networkSearchDock->widget()->children())
   {
-    QVariantList args;
-    args << QString("silent=\"true\"");
-
-    m_search_part = search_factory->create<KParts::Part>(this, args);
-    m_search_part->setObjectName("NetworkSearchPart");
-
-    if (m_search_part)
-    {
-      // Add dock widget to the main window.
-      search_dock = new QDockWidget(i18n("Network Search"), this);
-      search_dock->setObjectName("NetworkSearchDockWidget");
-      search_dock->setWidget(m_search_part->widget());
-      search_dock->setAllowedAreas(Qt::LeftDockWidgetArea);
-      connect(search_dock, SIGNAL(visibilityChanged(bool)), this, SLOT(slotSearchDialogVisibilityChanged(bool)));
-
-      addDockWidget(Qt::LeftDockWidgetArea, search_dock);
-
-      // Make the menu and the tool bar working.
-      guiFactory()->addClient(m_search_part);
-
-      // Insert the toggle view mode action to the action group.
-      m_dock_widgets->addAction(search_dock->toggleViewAction());
-      static_cast<KActionMenu *>(actionCollection()->action("dock_widgets_menu"))->addAction(search_dock->toggleViewAction());
-
-      // Add the Part object to the manager
-      m_manager->addPart(m_search_part, false);
-    }
-    else
-    {
-      KMessageBox::error(this, i18n("The search dialog could not be created."));
-
-      // We will continue without the search dialog.
-    }
+    obj->installEventFilter(this);
   }
-  else
-  {
-    KMessageBox::error(this, "<qt>"+search_loader.errorString()+"</qt>");
-    QApplication::exit(1);
-    return;
-  }
+
+  networkSearchDock->widget()->installEventFilter(this);
+  
+  // Connections
+  connect(networkSearchDock, SIGNAL(visibilityChanged(bool)), this, SLOT(slotSearchDialogVisibilityChanged(bool)));
+  
+  // Add dock widget
+  addDockWidget(Qt::LeftDockWidgetArea, networkSearchDock);
+  
+  // Insert the toggle view mode action to the action group.
+  m_dockWidgets->addAction(networkSearchDock->toggleViewAction());
+  static_cast<KActionMenu *>(actionCollection()->action("dock_widgets_menu"))->addAction(networkSearchDock->toggleViewAction());
   
   //
-  // Shares view part
+  // Shares view dock widget
   //
-  KPluginLoader shares_loader("smb4ksharesview");
-  KPluginFactory *shares_factory = shares_loader.factory();
-
-  if (shares_factory)
-  {
-    QVariantList args;
-    args << QString("bookmark_shortcut=\"false\"");
-    args << QString("silent=\"true\"");
-
-    m_shares_part = shares_factory->create<KParts::Part>(this, args);
-    m_shares_part->setObjectName("SharesViewPart");
-
-    if (m_shares_part)
-    {
-      // Add dock widget to the main window.
-      shares_dock = new QDockWidget(i18n("Mounted Shares"), this);
-      shares_dock->setObjectName("SharesViewDockWidget");
-      shares_dock->setWidget(m_shares_part->widget());
-      shares_dock->setAllowedAreas(Qt::LeftDockWidgetArea);
-      connect(shares_dock, SIGNAL(visibilityChanged(bool)), this, SLOT(slotSharesViewVisibilityChanged(bool)));
-
-      addDockWidget(Qt::LeftDockWidgetArea, shares_dock);
-
-      // Make the menu and the tool bar working.
-      guiFactory()->addClient(m_shares_part);
-
-      // Insert the toggle view mode action to the action group.
-      m_dock_widgets->addAction(shares_dock->toggleViewAction());
-      static_cast<KActionMenu *>(actionCollection()->action("dock_widgets_menu"))->addAction(shares_dock->toggleViewAction());
-
-      // Add the Part object to the manager
-      m_manager->addPart(m_shares_part, false);
-    }
-    else
-    {
-      KMessageBox::error(this, i18n("The shares view could not be created."));
-
-      // We will continue without the shares view.
-    }
-  }
-  else
-  {
-    KMessageBox::error(this, "<qt>"+search_loader.errorString()+"</qt>");
-    QApplication::exit(1);
-    return;
-  }
+  Smb4KSharesViewDockWidget *sharesViewDock = new Smb4KSharesViewDockWidget(i18n("Mounted Shares"), this);
+  sharesViewDock->setObjectName("SharesViewDockWidget");
+  sharesViewDock->setAllowedAreas(Qt::LeftDockWidgetArea);
+  
+  // Install event filter
+  sharesViewDock->widget()->installEventFilter(this);
+  
+  // Connections
+  connect(sharesViewDock, SIGNAL(visibilityChanged(bool)), this, SLOT(slotSharesViewVisibilityChanged(bool)));
+  
+  // Add dock widget
+  addDockWidget(Qt::LeftDockWidgetArea, sharesViewDock);
+  
+  // Insert the toggle view mode action to the action group.
+  m_dockWidgets->addAction(sharesViewDock->toggleViewAction());
+  static_cast<KActionMenu *>(actionCollection()->action("dock_widgets_menu"))->addAction(sharesViewDock->toggleViewAction());  
   
   //
   // Initial main window look
   //
-  KConfigGroup config_group(Smb4KSettings::self()->config(), "MainWindow");
+  KConfigGroup configGroup(Smb4KSettings::self()->config(), "MainWindow");
 
-  if (!config_group.exists())
+  if (!configGroup.exists())
   {
     QList<QDockWidget *> docks = findChildren<QDockWidget *>();
     
@@ -394,45 +314,10 @@ void Smb4KMainWindow::setupView()
     {
       tabifyDockWidget(docks.at(i-1), docks.at(i));
     }
-    
-    // Set the part of the last tabified dock widget active.
-    for (int i = 0; i < m_manager->parts().size(); ++i)
-    {
-      if (m_manager->parts().at(i)->widget() == docks.last()->widget())
-      {
-        m_manager->setActivePart(m_manager->parts().at(i));
-        break;
-      }
-      else
-      {
-        continue;
-      }
-    }
   }
   else
   {
-    QString active_part = config_group.readEntry("ActivePart", QString());
-    
-    if (!active_part.isEmpty())
-    {
-      // Set the part of the last tabified dock widget active.
-      for (int i = 0; i < m_manager->parts().size(); ++i)
-      {
-        if (QString::compare(active_part, m_manager->parts().at(i)->objectName()) == 0)
-        {
-          m_manager->setActivePart(m_manager->parts().at(i));
-          break;
-        }
-        else
-        {
-          continue;
-        }
-      }
-    }
-    else
-    {
-      // Do nothing
-    }
+    // Do nothing
   }
 }
 
@@ -479,44 +364,56 @@ void Smb4KMainWindow::setupSystemTrayWidget()
 
 void Smb4KMainWindow::loadSettings()
 {
-  // Send custom event to the dock widgets, so that they know
-  // that they have to reload their settings.
-  if (m_browser_part)
+  //
+  // Let the network browser load its settings
+  // 
+  Smb4KNetworkBrowserDockWidget *networkBrowserDock = findChild<Smb4KNetworkBrowserDockWidget *>();
+  
+  if (networkBrowserDock)
   {
-    Smb4KEvent *customBrowserEvent = new Smb4KEvent(Smb4KEvent::LoadSettings);
-    QApplication::postEvent(m_browser_part, customBrowserEvent);
+    networkBrowserDock->loadSettings();
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // Let the network search widget load its settings
+  // 
+  Smb4KNetworkSearchDockWidget *networkSearchDock = findChild<Smb4KNetworkSearchDockWidget *>();
+  
+  if (networkSearchDock)
+  {
+    networkSearchDock->loadSettings();
   }
   else
   {
     // Do nothing
   }
 
-  if (m_search_part)
+  // 
+  // Let the shares view load its settings
+  // 
+  Smb4KSharesViewDockWidget *sharesViewDock = findChild<Smb4KSharesViewDockWidget *>();
+  
+  if (sharesViewDock)
   {
-    Smb4KEvent *customSearchEvent = new Smb4KEvent(Smb4KEvent::LoadSettings);
-    QApplication::postEvent(m_search_part, customSearchEvent);
+    sharesViewDock->loadSettings();
   }
   else
   {
     // Do nothing
   }
+  
+  //
+  // Reload the list of bookmarks
+  // 
+  Smb4KBookmarkMenu *bookmarkMenu = findChild<Smb4KBookmarkMenu *>();
 
-  if (m_shares_part)
+  if (bookmarkMenu)
   {
-    Smb4KEvent *customSharesEvent = new Smb4KEvent(Smb4KEvent::LoadSettings);
-    QApplication::postEvent(m_shares_part, customSharesEvent);
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Reload the list of bookmarks.
-  Smb4KBookmarkMenu *bookmark_menu = findChild<Smb4KBookmarkMenu *>();
-
-  if (bookmark_menu)
-  {
-    bookmark_menu->refreshMenu();
+    bookmarkMenu->refreshMenu();
   }
   else
   {
@@ -534,19 +431,51 @@ void Smb4KMainWindow::loadSettings()
 
 void Smb4KMainWindow::saveSettings()
 {
-  // Save the active part.
-  KConfigGroup config_group(Smb4KSettings::self()->config(), "MainWindow");
+  //
+  // Save the settings of the network browser
+  // 
+  Smb4KNetworkBrowserDockWidget *networkBrowserDock = findChild<Smb4KNetworkBrowserDockWidget *>();
   
-  if (m_manager->activePart())
+  if (networkBrowserDock)
   {
-    config_group.writeEntry("ActivePart", m_manager->activePart()->objectName());
+    networkBrowserDock->saveSettings();
   }
   else
   {
     // Do nothing
   }
-
+  
+  //
+  // Save the settings of the network search widget
+  // 
+  Smb4KNetworkSearchDockWidget *networkSearchDock = findChild<Smb4KNetworkSearchDockWidget *>();
+  
+  if (networkSearchDock)
+  {
+    networkSearchDock->saveSettings();
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // 
+  // Let the shares view load its settings
+  // 
+  Smb4KSharesViewDockWidget *sharesViewDock = findChild<Smb4KSharesViewDockWidget *>();
+  
+  if (sharesViewDock)
+  {
+    sharesViewDock->saveSettings();
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // 
   // Save if the main window should be started docked.
+  // 
   Smb4KSettings::setStartMainWindowDocked(!isVisible());
 }
 
@@ -570,6 +499,49 @@ bool Smb4KMainWindow::queryClose()
   }
 }
 
+
+bool Smb4KMainWindow::eventFilter(QObject *obj, QEvent* e)
+{
+  switch (e->type())
+  {
+    case QEvent::FocusIn:
+    {
+      if (QString::compare(obj->metaObject()->className(), "Smb4KNetworkBrowser") == 0 && m_focusWidget != obj)
+      {
+        m_focusWidget = static_cast<QWidget *>(obj);
+        setupDynamicActionList(static_cast<QDockWidget *>(m_focusWidget->parent()));
+      }
+      else if (QString::compare(obj->metaObject()->className(), "Smb4KNetworkSearch") == 0 && m_focusWidget != obj)
+      {
+        m_focusWidget = static_cast<QWidget *>(obj);
+        setupDynamicActionList(static_cast<QDockWidget *>(m_focusWidget->parent()));
+      }
+      else if (QString::compare(obj->parent()->metaObject()->className(), "Smb4KNetworkSearch") == 0 && m_focusWidget != obj->parent())
+      {
+        m_focusWidget = static_cast<QWidget *>(obj->parent());
+        setupDynamicActionList(static_cast<QDockWidget *>(m_focusWidget->parent()));
+      }
+      else if (QString::compare(obj->metaObject()->className(), "Smb4KSharesView") == 0 && m_focusWidget != obj)
+      {
+        m_focusWidget = static_cast<QWidget *>(obj);
+        setupDynamicActionList(static_cast<QDockWidget *>(m_focusWidget->parent()));
+      }
+      else
+      {
+        // Do nothing
+      }
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+  
+  return KXmlGuiWindow::eventFilter(obj, e);
+}
+
+
 void Smb4KMainWindow::setupMountIndicator()
 {
   QStringList overlays;
@@ -586,6 +558,108 @@ void Smb4KMainWindow::setupMountIndicator()
 
   m_feedback_icon->setPixmap(KIconLoader::global()->loadIcon("folder-network", KIconLoader::Small, 0, KIconLoader::DefaultState, overlays));
 }
+
+
+void Smb4KMainWindow::setupDynamicActionList(QDockWidget* dock)
+{
+  if (dock)
+  {
+    //
+    // Remove all connections to Smb4KMainWindow::slotEnableBookmarkAction() and
+    // disable the bookmark action.
+    //
+    disconnect(this, SLOT(slotEnableBookmarkAction()));
+    actionCollection()->action("bookmark_action")->setEnabled(false);
+
+    // 
+    // Get also the bookmark menu and disable the bookmark action
+    // there, too.
+    // 
+    Smb4KBookmarkMenu *bookmarkMenu = findChild<Smb4KBookmarkMenu *>();
+
+    if (bookmarkMenu)
+    {
+      bookmarkMenu->setBookmarkActionEnabled(false);
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // 
+    // Prepare the dynamic action list for the main window
+    //
+    QList<QAction *> dynamicList;
+    KActionCollection *dockActionCollection = 0;
+    
+    if (dock->objectName() == "NetworkBrowserDockWidget")
+    {
+      dockActionCollection = static_cast<Smb4KNetworkBrowserDockWidget *>(dock)->actionCollection();
+    }
+    else if (dock->objectName() == "NetworkSearchDockWidget")
+    {
+      dockActionCollection = static_cast<Smb4KNetworkSearchDockWidget *>(dock)->actionCollection();
+    }
+    else if (dock->objectName() == "SharesViewDockWidget")
+    {
+      dockActionCollection = static_cast<Smb4KSharesViewDockWidget *>(dock)->actionCollection();
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    for (QAction *action : dockActionCollection->actions())
+    {
+      if (action->objectName() == "bookmark_action")
+      {
+        if (bookmarkMenu)
+        {
+          bookmarkMenu->setBookmarkActionEnabled(action->isEnabled());
+          connect(action, SIGNAL(changed()), this, SLOT(slotEnableBookmarkAction()));
+          continue;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else if (QString::compare(action->objectName(), "filemanager_action") == 0)
+      {
+        continue;
+      }
+      else if (QString::compare(action->objectName(), "konsole_action") == 0)
+      {
+        continue;
+      }
+      else if (QString::compare(action->objectName(), "icon_view_action") == 0)
+      {
+        continue;
+      }
+      else if (QString::compare(action->objectName(), "list_view_action") == 0)
+      {
+        continue;
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      dynamicList << action;
+    }
+    
+    //
+    // Remove old and insert new dynamic action list
+    // 
+    unplugActionList("dynamic_list");
+    plugActionList("dynamic_list", dynamicList);
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -649,12 +723,87 @@ void Smb4KMainWindow::slotSettingsChanged(const QString &)
 }
 
 
-void Smb4KMainWindow::slotAddBookmark()
+void Smb4KMainWindow::slotAddBookmarks()
 {
-  if (m_manager->activePart())
+  //
+  // If we have a widget that has the focus, trigger its 'Add Bookmark' 
+  // action to add bookmarks.
+  // 
+  if (m_focusWidget)
   {
-    Smb4KEvent *customEvent = new Smb4KEvent(Smb4KEvent::AddBookmark);
-    QApplication::postEvent(m_manager->activePart(), customEvent);
+    if (QString::compare(m_focusWidget->parent()->metaObject()->className(), "Smb4KNetworkBrowserDockWidget") == 0)
+    {
+      Smb4KNetworkBrowserDockWidget *dockWidget = static_cast<Smb4KNetworkBrowserDockWidget *>(m_focusWidget->parent());
+      
+      if (dockWidget)
+      {
+        QAction *action = dockWidget->actionCollection()->action("bookmark_action");
+        
+        // Only trigger the action if it is enabled
+        if (action && action->isEnabled())
+        {
+          action->trigger();
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else if (QString::compare(m_focusWidget->parent()->metaObject()->className(), "Smb4KNetworkSearchDockWidget") == 0)
+    {
+      Smb4KNetworkSearchDockWidget *dockWidget = static_cast<Smb4KNetworkSearchDockWidget *>(m_focusWidget->parent());
+      
+      if (dockWidget)
+      {
+        QAction *action = dockWidget->actionCollection()->action("bookmark_action");
+        
+        // Only trigger the action if it is enabled
+        if (action && action->isEnabled())
+        {
+          action->trigger();
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    else if (QString::compare(m_focusWidget->parent()->metaObject()->className(), "Smb4KSharesViewDockWidget") == 0)
+    {
+      Smb4KSharesViewDockWidget *dockWidget = static_cast<Smb4KSharesViewDockWidget *>(m_focusWidget->parent());
+      
+      if (dockWidget)
+      {
+        QAction *action = dockWidget->actionCollection()->action("bookmark_action");
+        
+        // Only trigger the action if it is enabled
+        if (action && action->isEnabled())
+        {
+          action->trigger();
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }      
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
@@ -1071,41 +1220,30 @@ void Smb4KMainWindow::slotPreviewerFinished(const SharePtr &/*share*/, const QUr
 }
 
 
-void Smb4KMainWindow::slotActivePartChanged(KParts::Part *part)
+void Smb4KMainWindow::slotEnableBookmarkAction()
 {
-  if (part)
-  {    
-    //
-    // Remove all connections to Smb4KMainWindow::slotEnableBookmarkAction() and
-    // disable the bookmark action.
-    //
-    disconnect(this, SLOT(slotEnableBookmarkAction()));
-    actionCollection()->action("bookmark_action")->setEnabled(false);
-
-    Smb4KBookmarkMenu *bookmarkMenu = findChild<Smb4KBookmarkMenu *>();
-
-    if (bookmarkMenu)
+  //
+  // Get the fucused widget's 'Add Bookmark' acion and read its 
+  // isEnabled() property. Set the action of the main window and the
+  // bookmark menu respectively.
+  // 
+  if (m_focusWidget)
+  {
+    if (QString::compare(m_focusWidget->parent()->metaObject()->className(), "Smb4KNetworkBrowserDockWidget") == 0)
     {
-      Smb4KEvent *customEvent = new Smb4KEvent(Smb4KEvent::DisableBookmarkAction);
-      QApplication::postEvent(bookmarkMenu, customEvent);
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    // 
-    // Prepare the dynamic action list for the main window
-    //
-    QList<QAction *> dynamicList;
-    
-    for (QAction *action : m_manager->activePart()->actionCollection()->actions())
-    {
-      if (action)
+      Smb4KNetworkBrowserDockWidget *dockWidget = static_cast<Smb4KNetworkBrowserDockWidget *>(m_focusWidget->parent());
+      
+      if (dockWidget)
       {
-        if (QString::compare(action->objectName(), "bookmark_action") == 0)
+        QAction *action = dockWidget->actionCollection()->action("bookmark_action");
+        
+        if (action)
         {
+          // Bookmark action of the main window
           actionCollection()->action("bookmark_action")->setEnabled(action->isEnabled());
+          
+          // Bookmark action of the bookmark menu
+          Smb4KBookmarkMenu *bookmarkMenu = findChild<Smb4KBookmarkMenu *>();
           
           if (bookmarkMenu)
           {
@@ -1125,77 +1263,109 @@ void Smb4KMainWindow::slotActivePartChanged(KParts::Part *part)
           else
           {
             // Do nothing
-          }          
-          
-          connect(action, SIGNAL(changed()), this, SLOT(slotEnableBookmarkAction()));
-          continue;
-        }
-        else if (QString::compare(action->objectName(), "filemanager_action") == 0)
-        {
-          continue;
-        }
-        else if (QString::compare(action->objectName(), "konsole_action") == 0)
-        {
-          continue;
-        }
-        else if (QString::compare(action->objectName(), "icon_view_action") == 0)
-        {
-          continue;
-        }
-        else if (QString::compare(action->objectName(), "list_view_action") == 0)
-        {
-          continue;
+          }
         }
         else
         {
           // Do nothing
         }
-
-        dynamicList << action;
       }
       else
       {
         // Do nothing
       }
     }
-
-    //
-    // Remove old and insert new dynamic action list
-    // 
-    unplugActionList("dynamic_list");
-    plugActionList("dynamic_list", dynamicList);
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KMainWindow::slotEnableBookmarkAction()
-{
-  QAction *action = m_manager->activePart()->actionCollection()->action("bookmark_action");
-
-  if (action)
-  {
-    actionCollection()->action("bookmark_action")->setEnabled(action->isEnabled());
-    
-    Smb4KBookmarkMenu *bookmarkMenu = findChild<Smb4KBookmarkMenu *>();
-    
-    if (bookmarkMenu)
+    else if (QString::compare(m_focusWidget->parent()->metaObject()->className(), "Smb4KNetworkSearchDockWidget") == 0)
     {
-      Smb4KEvent *customEvent = 0;
+      Smb4KNetworkSearchDockWidget *dockWidget = static_cast<Smb4KNetworkSearchDockWidget *>(m_focusWidget->parent());
       
-      if (action->isEnabled())
+      if (dockWidget)
       {
-        customEvent = new Smb4KEvent(Smb4KEvent::EnableBookmarkAction);
+        QAction *action = dockWidget->actionCollection()->action("bookmark_action");
+        
+        if (action)
+        {
+          // Bookmark action of the main window
+          actionCollection()->action("bookmark_action")->setEnabled(action->isEnabled());
+          
+          // Bookmark action of the bookmark menu
+          Smb4KBookmarkMenu *bookmarkMenu = findChild<Smb4KBookmarkMenu *>();
+          
+          if (bookmarkMenu)
+          {
+            Smb4KEvent *customEvent = 0;
+            
+            if (action->isEnabled())
+            {
+              customEvent = new Smb4KEvent(Smb4KEvent::EnableBookmarkAction);
+            }
+            else
+            {
+              customEvent = new Smb4KEvent(Smb4KEvent::DisableBookmarkAction);
+            }
+              
+            QApplication::postEvent(bookmarkMenu, customEvent);
+          }
+          else
+          {
+            // Do nothing
+          }
+        }
+        else
+        {
+          // Do nothing
+        }
       }
       else
       {
-        customEvent = new Smb4KEvent(Smb4KEvent::DisableBookmarkAction);
+        // Do nothing
       }
+    }
+    else if (QString::compare(m_focusWidget->parent()->metaObject()->className(), "Smb4KSharesViewDockWidget") == 0)
+    {
+      Smb4KSharesViewDockWidget *dockWidget = static_cast<Smb4KSharesViewDockWidget *>(m_focusWidget->parent());
+      
+      if (dockWidget)
+      {
+        QAction *action = dockWidget->actionCollection()->action("bookmark_action");
         
-      QApplication::postEvent(bookmarkMenu, customEvent);
+        if (action)
+        {
+          // Bookmark action of the main window
+          actionCollection()->action("bookmark_action")->setEnabled(action->isEnabled());
+          
+          // Bookmark action of the bookmark menu
+          Smb4KBookmarkMenu *bookmarkMenu = findChild<Smb4KBookmarkMenu *>();
+          
+          if (bookmarkMenu)
+          {
+            Smb4KEvent *customEvent = 0;
+            
+            if (action->isEnabled())
+            {
+              customEvent = new Smb4KEvent(Smb4KEvent::EnableBookmarkAction);
+            }
+            else
+            {
+              customEvent = new Smb4KEvent(Smb4KEvent::DisableBookmarkAction);
+            }
+              
+            QApplication::postEvent(bookmarkMenu, customEvent);
+          }
+          else
+          {
+            // Do nothing
+          }
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }      
     }
     else
     {
@@ -1206,22 +1376,55 @@ void Smb4KMainWindow::slotEnableBookmarkAction()
   {
     // Do nothing
   }
+  
+//   QAction *action = m_manager->activePart()->actionCollection()->action("bookmark_action");
+// 
+//   if (action)
+//   {
+//     actionCollection()->action("bookmark_action")->setEnabled(action->isEnabled());
+//     
+//     Smb4KBookmarkMenu *bookmarkMenu = findChild<Smb4KBookmarkMenu *>();
+//     
+//     if (bookmarkMenu)
+//     {
+//       Smb4KEvent *customEvent = 0;
+//       
+//       if (action->isEnabled())
+//       {
+//         customEvent = new Smb4KEvent(Smb4KEvent::EnableBookmarkAction);
+//       }
+//       else
+//       {
+//         customEvent = new Smb4KEvent(Smb4KEvent::DisableBookmarkAction);
+//       }
+//         
+//       QApplication::postEvent(bookmarkMenu, customEvent);
+//     }
+//     else
+//     {
+//       // Do nothing
+//     }
+//   }
+//   else
+//   {
+//     // Do nothing
+//   }
 }
 
 
 void Smb4KMainWindow::slotNetworkBrowserVisibilityChanged(bool visible)
 {
-  QDockWidget *dock = findChild<QDockWidget *>("NetworkBrowserDockWidget");
+  QDockWidget *dock = findChild<Smb4KNetworkBrowserDockWidget *>();
   
   if (dock)
   {
-    if (visible && m_manager->activePart() != m_browser_part)
+    if (visible)
     {
-      m_manager->setActivePart(m_browser_part);
+      dock->widget()->setFocus();
     }
     else
     {
-      // Do nothing
+      dock->widget()->clearFocus();
     }
   }
   else
@@ -1233,17 +1436,17 @@ void Smb4KMainWindow::slotNetworkBrowserVisibilityChanged(bool visible)
 
 void Smb4KMainWindow::slotSharesViewVisibilityChanged(bool visible)
 {
-  QDockWidget *dock = findChild<QDockWidget *>("SharesViewDockWidget");
+  QDockWidget *dock = findChild<Smb4KSharesViewDockWidget *>();
   
   if (dock)
   {
-    if (visible && m_manager->activePart() != m_shares_part)
+    if (visible)
     {
-      m_manager->setActivePart(m_shares_part);
+      dock->widget()->setFocus();
     }
     else
     {
-      // Do nothing
+      dock->widget()->clearFocus();
     }
   }
   else
@@ -1255,17 +1458,17 @@ void Smb4KMainWindow::slotSharesViewVisibilityChanged(bool visible)
 
 void Smb4KMainWindow::slotSearchDialogVisibilityChanged(bool visible)
 {
-  QDockWidget *dock = findChild<QDockWidget *>("NetworkSearchDockWidget");
+  QDockWidget *dock = findChild<Smb4KNetworkSearchDockWidget *>();
   
   if (dock)
   {
-    if (visible && m_manager->activePart() != m_search_part)
+    if (visible)
     {
-      m_manager->setActivePart(m_search_part);
+      dock->widget()->setFocus();
     }
     else
     {
-      // Do nothing
+      dock->widget()->clearFocus();
     }
   }
   else

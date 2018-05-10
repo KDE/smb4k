@@ -2,7 +2,7 @@
     smb4knetworksearch  -  The network search widget of Smb4K.
                              -------------------
     begin                : Sa Jun 2 2007
-    copyright            : (C) 2007-2017 by Alexander Reinholdt
+    copyright            : (C) 2007-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -34,6 +34,7 @@
 // Qt includes
 #include <QGridLayout>
 #include <QLabel>
+#include <QLineEdit>
 
 // KDE includes
 #include <KI18n/KLocalizedString>
@@ -47,30 +48,33 @@ Smb4KNetworkSearch::Smb4KNetworkSearch(QWidget *parent)
   QGridLayout *layout = new QGridLayout(this);
   layout->setSpacing(5);
 
+  //
+  // Search combo box
+  //
+  m_combo = new KComboBox(true, this);
+  m_combo->lineEdit()->setPlaceholderText(i18n("Enter the search string here."));
+  m_combo->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+  m_combo->setCompletionMode(KCompletion::CompletionPopupAuto);
+  
+  // 
   // Tool bar
+  // 
   m_toolbar = new KToolBar(this);
   m_toolbar->setToolBarsLocked(true);
   m_toolbar->setToolBarsEditable(false);
   
-  // Search combo box
-  QLabel *search_item = new QLabel(i18n("Search item:"), m_toolbar);
-
-  m_combo = new KComboBox(true, m_toolbar);
-  m_combo->setToolTip(i18n("Enter the search string here."));
-  m_combo->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-  m_combo->setCompletionMode(KCompletion::CompletionPopupAuto);
-  
-  (void) m_toolbar->addWidget(search_item);
-  (void) m_toolbar->addWidget(m_combo);
-
+  // 
   // List view
+  // 
   m_list_widget = new QListWidget(this);
   m_list_widget->setResizeMode(QListWidget::Adjust);
   m_list_widget->setWrapping(true);
+  m_list_widget->setSelectionMode(QListWidget::ExtendedSelection);
   m_list_widget->setContextMenuPolicy(Qt::CustomContextMenu);
 
-  layout->addWidget(m_toolbar, 0, 0, 0);
-  layout->addWidget(m_list_widget, 1, 0, 0);
+  layout->addWidget(m_combo, 0, 0, 0);
+  layout->addWidget(m_toolbar, 0, 1, 0);
+  layout->addWidget(m_list_widget, 1, 0, 1, 2, 0);
 }
 
 
