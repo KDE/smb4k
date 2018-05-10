@@ -170,6 +170,13 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
      * Reset the bookmarks by reloading them from the file.              
      */
     void resetBookmarks();
+    
+    /**
+     * This function checks if the @p share is already bookmarked or not.
+     * @param share         The share item
+     * @returns TRUE if the share is bookmarked and FALSE otherwise.
+     */
+    bool isBookmarked(const SharePtr &share);
 
   Q_SIGNALS:
     /**

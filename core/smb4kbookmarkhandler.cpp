@@ -654,6 +654,21 @@ void Smb4KBookmarkHandler::resetBookmarks()
 }
 
 
+bool Smb4KBookmarkHandler::isBookmarked(const SharePtr& share)
+{
+  if (findBookmarkByUNC(share->unc()))
+  {
+    return true;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  return false;
+}
+
+
 void Smb4KBookmarkHandler::update() const
 {
   // Get new IP addresses.
