@@ -36,6 +36,7 @@
 #include <QCheckBox>
 #include <QDialog>
 #include <QPushButton>
+#include <QPointer>
 
 // KDE includes
 #include <KCompletion/KLineEdit>
@@ -167,7 +168,7 @@ class Smb4KMounterPrivate
     int checkTimeout;
     int newlyMounted;
     int newlyUnmounted;
-    Smb4KMountDialog *dialog;
+    QPointer<Smb4KMountDialog> dialog;
     QList<SharePtr> importedShares;
     QList<SharePtr> retries;
     QList<SharePtr> remounts;
