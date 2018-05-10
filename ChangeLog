@@ -11,7 +11,7 @@ refer to the Git log at https://cgit.kde.org/smb4k.git/log/?h=2.1
   - Added a compact representation of the plasmoid.
 - Use the location ('SHARE on SERVER') instead of the UNC in most
   widgets.
-- Made suffixes in the configutation dialog translatable (BUG 386434).
+- Made suffixes in the configuration dialog translatable (BUG 386434).
 - Fixed a crash in the bookmarks menu that was triggered by a null 
   pointer access (BUG 391424).
 - Only start the domain lookup job when the computer is online 
@@ -19,12 +19,12 @@ refer to the Git log at https://cgit.kde.org/smb4k.git/log/?h=2.1
 - Fix mounting of shares with a UNC like //server/share/$user 
   (BUG 390558).
 - Fixed several more bugs.
-- Improved the code resonsible for mounting.
-- Improved the code resonsible for the handling of profiles.
-- Improved the code resonsible for handling the custom options.
+- Improved the code responsible for mounting.
+- Improved the code responsible for the handling of profiles.
+- Improved the code responsible for handling the custom options.
 - Removed the undo option for changes made to the custom options in 
   the configuration dialog.
-- Improved code resonsible for the handling of bookmarks.
+- Improved code responsible for the handling of bookmarks.
 - Did some major rewrites of the code of the core classes. 
 - Use smart pointers for shares, hosts, workgroups, etc.
 - Continue to replace normal for loops by range-based for loops
