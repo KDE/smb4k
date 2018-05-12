@@ -1376,39 +1376,6 @@ void Smb4KMainWindow::slotEnableBookmarkAction()
   {
     // Do nothing
   }
-  
-//   QAction *action = m_manager->activePart()->actionCollection()->action("bookmark_action");
-// 
-//   if (action)
-//   {
-//     actionCollection()->action("bookmark_action")->setEnabled(action->isEnabled());
-//     
-//     Smb4KBookmarkMenu *bookmarkMenu = findChild<Smb4KBookmarkMenu *>();
-//     
-//     if (bookmarkMenu)
-//     {
-//       Smb4KEvent *customEvent = 0;
-//       
-//       if (action->isEnabled())
-//       {
-//         customEvent = new Smb4KEvent(Smb4KEvent::EnableBookmarkAction);
-//       }
-//       else
-//       {
-//         customEvent = new Smb4KEvent(Smb4KEvent::DisableBookmarkAction);
-//       }
-//         
-//       QApplication::postEvent(bookmarkMenu, customEvent);
-//     }
-//     else
-//     {
-//       // Do nothing
-//     }
-//   }
-//   else
-//   {
-//     // Do nothing
-//   }
 }
 
 
