@@ -846,11 +846,12 @@ bool Smb4KGlobal::addMountedShare(SharePtr share)
     mutex.lock();
 
     //
-    // Copy the mount data to the network share (needed for unmounting from the network browser)
+    // Copy the mount data to the network share and the search results.
     // Only honor shares that were mounted by the user.
     //
     if (!share->isForeign())
     {
+      // Network shares
       SharePtr networkShare = findShare(share->unc(), share->workgroupName());
       
       if (networkShare)
@@ -860,6 +861,19 @@ bool Smb4KGlobal::addMountedShare(SharePtr share)
       else
       {
         // Do nothing
+      }
+      
+      // Search results
+      for (SharePtr s : p->searchResults)
+      {
+        if (share->unc() == s->unc())
+        {
+          s->setMountData(share.data());
+        }
+        else
+        {
+          // Do nothing
+        }
       }
     }
     else
@@ -1003,7 +1017,6 @@ bool Smb4KGlobal::updateMountedShare(SharePtr share)
         // Do nothing
       }
       
-      
       //
       // Update share
       //
@@ -1036,17 +1049,46 @@ bool Smb4KGlobal::removeMountedShare(SharePtr share)
   {
     mutex.lock();
     
-    SharePtr networkShare = findShare(share->unc(), share->workgroupName());
-    
-    if (networkShare)
+    //
+    // Reset the mount data for the network share and the
+    // search result
+    // 
+    if (!share->isForeign())
     {
-      networkShare->resetMountData();
+      // Network share
+      SharePtr networkShare = findShare(share->unc(), share->workgroupName());
+      
+      if (networkShare)
+      {
+        networkShare->resetMountData();
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      // Search result
+      for (SharePtr searchResult : searchResults())
+      {
+        if (searchResult->unc() == share->unc())
+        {
+          searchResult->resetMountData();
+          break;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
     }
     else
     {
       // Do nothing
     }
 
+    //
+    // Remove the mounted share
+    // 
     int index = p->mountedSharesList.indexOf(share);
 
     if (index != -1)
@@ -1110,6 +1152,76 @@ bool Smb4KGlobal::onlyForeignMountedShares()
 {
   return p->onlyForeignShares;
 }
+
+
+bool Smb4KGlobal::addSearchResult(SharePtr share)
+{
+  bool added = false;
+  
+  if (share)
+  {
+    mutex.lock();
+    
+    //
+    // Check if the share is already mounted. Ignore foreign shares
+    // for that.
+    // 
+    QList<SharePtr> mountedShares = findShareByUNC(share->unc());
+    
+    if (!mountedShares.isEmpty())
+    {
+      for (const SharePtr &mountedShare : mountedShares)
+      {
+        if (!mountedShare->isForeign())
+        {
+          share->setMountData(mountedShare.data());
+          break;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    //
+    // Add the search result.
+    // 
+    p->searchResults.append(share);
+    added = true;
+    mutex.unlock();
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  return added;
+}
+
+
+void Smb4KGlobal::clearSearchResults()
+{
+  mutex.lock();
+  
+  while (!p->searchResults.isEmpty())
+  {
+    p->searchResults.takeFirst().clear();
+  }
+  
+  mutex.unlock();
+}
+
+
+QList<SharePtr> Smb4KGlobal::searchResults()
+{
+  return p->searchResults;
+}
+
 
 
 void Smb4KGlobal::openShare(SharePtr share, OpenWith openWith)

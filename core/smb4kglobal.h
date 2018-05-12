@@ -452,6 +452,25 @@ namespace Smb4KGlobal
   Q_DECL_EXPORT bool onlyForeignMountedShares();
   
   /**
+   * This functions adds a share to the search results.
+   * 
+   * @param share       The share item
+   */
+  Q_DECL_EXPORT bool addSearchResult(SharePtr share);
+  
+  /**
+   * This function clears the list of search results.
+   */
+  Q_DECL_EXPORT void clearSearchResults();
+  
+  /**
+   * This function returns the list of all search results
+   * 
+   * @returns the list of search results
+   */
+  Q_DECL_EXPORT QList<SharePtr> searchResults();
+  
+  /**
    * This enumeration determines with which application the mount point
    * of the current mounted share is to be opened.
    */

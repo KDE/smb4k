@@ -39,24 +39,29 @@
 
 
 Smb4KNetworkSearchItem::Smb4KNetworkSearchItem(QListWidget *listWidget, const SharePtr &share)
-: QListWidgetItem(listWidget, Share)
+: QListWidgetItem(listWidget, Share), m_share(share)
 {
-  m_share = share;
   setupItem();
 }
 
 
 Smb4KNetworkSearchItem::Smb4KNetworkSearchItem(QListWidget *listWidget)
-: QListWidgetItem(listWidget, Failure)
+: QListWidgetItem(listWidget, Failure), m_share(SharePtr())
 {
-  m_share = SharePtr();
   setupItem();
 }
 
 
 Smb4KNetworkSearchItem::~Smb4KNetworkSearchItem()
 {
-  m_share.clear();
+  if (m_share)
+  {
+    m_share.clear();
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
@@ -67,18 +72,7 @@ void Smb4KNetworkSearchItem::setupItem()
     case Share:
     {
       setText(m_share->unc());
-
-      if (m_share->isMounted())
-      {
-        QStringList overlays;
-        overlays.append("emblem-mounted");
-        setIcon(KDE::icon("folder-network", overlays));
-      }
-      else
-      {
-        setIcon(KDE::icon("folder-network"));
-      }
-
+      setIcon(m_share->icon());
       break;
     }
     case Failure:

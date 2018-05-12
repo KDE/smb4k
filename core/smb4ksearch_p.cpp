@@ -297,7 +297,7 @@ void Smb4KSearchJob::slotReadStandardOutput()
   QStringList stdOut = QString::fromUtf8(m_process->readAllStandardOutput(), -1).split('\n', QString::SkipEmptyParts, Qt::CaseSensitive);
 
   // Process output from smbtree.
-  QString workgroup_name;
+  static QString workgroupName;
 
   for (const QString &line : stdOut)
   {
@@ -307,10 +307,9 @@ void Smb4KSearchJob::slotReadStandardOutput()
         !line.contains("error connecting", Qt::CaseInsensitive) &&
         !line.isEmpty())
     {
-      if (!line.contains("\\") && !line.trimmed().isEmpty())
+      if (!line.trimmed().startsWith("\\") && !line.trimmed().isEmpty())
       {
-        workgroup_name = line.trimmed();
-        continue;
+        workgroupName = line.trimmed();
       }
       else if (line.count("\\") == 3)
       {
@@ -319,28 +318,24 @@ void Smb4KSearchJob::slotReadStandardOutput()
 
         if (unc.contains(m_string, Qt::CaseInsensitive))
         {
-          SharePtr share = SharePtr(new Smb4KShare());
-          share->setURL(unc);
+          SharePtr share = SharePtr(new Smb4KShare(unc));
           share->setComment(comment);
-          share->setWorkgroupName(workgroup_name);
-
+          share->setWorkgroupName(workgroupName);
           emit result(share);
-          share.clear();
         }
         else
         {
           // Do nothing
         }
-        continue;
       }
       else
       {
-        continue;
+        // Do nothing
       }
     }
     else
     {
-      continue;
+      // Do nothing
     }
   }
 }

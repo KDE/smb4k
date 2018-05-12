@@ -78,6 +78,9 @@ Smb4KSearch *Smb4KSearch::self()
 
 void Smb4KSearch::search(const QString &string, QWidget *parent)
 {
+  //
+  // Abort if the search string is empty
+  // 
   if (string.trimmed().isEmpty())
   {
     return;
@@ -86,9 +89,23 @@ void Smb4KSearch::search(const QString &string, QWidget *parent)
   {
     // Do nothing
   }
+  
+  //
+  // Clear the previous search results
+  // 
+  if (!searchResults().isEmpty())
+  {
+    clearSearchResults();
+  }
+  else
+  {
+    // Do nothing
+  }
 
-  // Get authentication information.
-  HostPtr master_browser;
+  // 
+  // Get authentication information for the master browser, if necessary
+  // 
+  HostPtr masterBrowser;
 
   if (Smb4KSettings::masterBrowsersRequireAuth())
   {
@@ -104,10 +121,10 @@ void Smb4KSearch::search(const QString &string, QWidget *parent)
       if (host)
       {
         // Copy host item
-        master_browser = host;
+        masterBrowser = host;
         
         // Authentication information
-        Smb4KWalletManager::self()->readAuthInfo(master_browser);
+        Smb4KWalletManager::self()->readAuthInfo(masterBrowser);
       }
       else
       {
@@ -124,19 +141,25 @@ void Smb4KSearch::search(const QString &string, QWidget *parent)
     // Do nothing
   }
 
+  // 
   // Create a new job and add it to the subjobs
+  // 
   Smb4KSearchJob *job = new Smb4KSearchJob(this);
   job->setObjectName(QString("SearchJob_%1").arg(string));
-  job->setupSearch(string, master_browser, parent);
+  job->setupSearch(string, masterBrowser, parent);
 
-  master_browser.clear();
-
+  //
+  // Connections
+  // 
   connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
   connect(job, SIGNAL(authError(Smb4KSearchJob*)), SLOT(slotAuthError(Smb4KSearchJob*)));
   connect(job, SIGNAL(result(SharePtr)), SLOT(slotProcessSearchResult(SharePtr)));
   connect(job, SIGNAL(aboutToStart(QString)), SIGNAL(aboutToStart(QString)));
   connect(job, SIGNAL(finished(QString)), SIGNAL(finished(QString)));
 
+  //
+  // Modify the cursor, if wanted
+  // 
   if (!hasSubjobs() && modifyCursor())
   {
     QApplication::setOverrideCursor(Qt::BusyCursor);
@@ -146,8 +169,14 @@ void Smb4KSearch::search(const QString &string, QWidget *parent)
     // Do nothing
   }
 
+  //
+  // Add the job to the subjobs
+  // 
   addSubjob(job);
 
+  //
+  // Start the job
+  // 
   job->start();
 }
 
@@ -254,45 +283,43 @@ void Smb4KSearch::slotAuthError(Smb4KSearchJob *job)
 
 void Smb4KSearch::slotProcessSearchResult(const SharePtr &share)
 {
-  Q_ASSERT(share);
-
-  QList<SharePtr> shares = findShareByUNC(share->unc());
-
-  for (const SharePtr &s : shares)
+  if (share)
   {
-    if ((!s->isForeign() || Smb4KSettings::detectAllShares()) && s->isMounted())
+    //
+    // Add the IP address of the host, if it is necessary and known
+    // 
+    if (share->hostIP().isEmpty())
     {
-      share->setMounted(s->isMounted());
-      share->setPath(s->path());
-      share->setForeign(s->isForeign());
-      break;
+      HostPtr host = findHost(share->hostName(), share->workgroupName());
+      
+      if (host)
+      {
+        share->setHostIP(host->ip());
+      }
+      else
+      {
+        // Do nothing
+      }
     }
     else
     {
-      continue;
+      // Do nothing
     }
-  }
+    
+    //
+    // Add the search result
+    // 
+    addSearchResult(share);
 
-  // The host of this share should already be known. Set the IP address.
-  if (share->hostIP().isEmpty())
-  {
-    HostPtr host = findHost(share->hostName(), share->workgroupName());
-
-    if (host)
-    {
-      share->setHostIP(host->ip());
-    }
-    else
-    {
-      // Should not occur. Do nothing.
-    }
+    //
+    // Emit the search result
+    // 
+    emit result(share);
   }
   else
   {
     // Do nothing
   }
-
-  emit result(share);
 }
 
 
