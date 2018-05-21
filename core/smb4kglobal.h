@@ -99,24 +99,6 @@ namespace Smb4KGlobal
     UnknownNetworkItem };
      
   /**
-   * This class extends the QEvent class with Smb4K specific events
-   */
-  class Q_DECL_EXPORT Smb4KEvent : public QEvent
-  {
-    public:
-      static const QEvent::Type LoadSettings;
-      static const QEvent::Type SetFocus;
-      static const QEvent::Type ScanNetwork;
-      static const QEvent::Type AddBookmark;
-      static const QEvent::Type MountOrUnmountShare;
-      static const QEvent::Type EnableBookmarkAction;
-      static const QEvent::Type DisableBookmarkAction;
-      
-      explicit Smb4KEvent(QEvent::Type type);
-      ~Smb4KEvent();
-  };
-
-  /**
    * Use this function to initialize the core classes. Besides starting several
    * core classes such as the scanner (for an initial browse list) and the mounter
    * (for the import of all externally mounted shares), it also sets some default

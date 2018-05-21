@@ -78,12 +78,6 @@ class Smb4KBookmarkMenu : public KActionMenu
      */
     void setBookmarkActionEnabled(bool enable);
     
-  protected:
-    /**
-     * Reimplemented
-     */
-    void customEvent(QEvent *e);
-    
   Q_SIGNALS:
     /**
      * This signal is emitted when the 'Add Bookmark' is triggered.

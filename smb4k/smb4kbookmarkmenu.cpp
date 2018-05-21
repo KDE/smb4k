@@ -130,25 +130,6 @@ void Smb4KBookmarkMenu::setBookmarkActionEnabled(bool enable)
 }
 
 
-
-void Smb4KBookmarkMenu::customEvent(QEvent* e)
-{
-  if (e->type() == Smb4KEvent::EnableBookmarkAction)
-  {
-    setBookmarkActionEnabled(true);
-  }
-  else if (e->type() == Smb4KEvent::DisableBookmarkAction)
-  {
-    setBookmarkActionEnabled(false);
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-
 void Smb4KBookmarkMenu::setupMenu()
 {
   //

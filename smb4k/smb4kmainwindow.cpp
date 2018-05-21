@@ -1247,18 +1247,7 @@ void Smb4KMainWindow::slotEnableBookmarkAction()
           
           if (bookmarkMenu)
           {
-            Smb4KEvent *customEvent = 0;
-            
-            if (action->isEnabled())
-            {
-              customEvent = new Smb4KEvent(Smb4KEvent::EnableBookmarkAction);
-            }
-            else
-            {
-              customEvent = new Smb4KEvent(Smb4KEvent::DisableBookmarkAction);
-            }
-              
-            QApplication::postEvent(bookmarkMenu, customEvent);
+            bookmarkMenu->setBookmarkActionEnabled(action->isEnabled());
           }
           else
           {
@@ -1293,18 +1282,7 @@ void Smb4KMainWindow::slotEnableBookmarkAction()
           
           if (bookmarkMenu)
           {
-            Smb4KEvent *customEvent = 0;
-            
-            if (action->isEnabled())
-            {
-              customEvent = new Smb4KEvent(Smb4KEvent::EnableBookmarkAction);
-            }
-            else
-            {
-              customEvent = new Smb4KEvent(Smb4KEvent::DisableBookmarkAction);
-            }
-              
-            QApplication::postEvent(bookmarkMenu, customEvent);
+            bookmarkMenu->setBookmarkActionEnabled(action->isEnabled());
           }
           else
           {
@@ -1339,18 +1317,7 @@ void Smb4KMainWindow::slotEnableBookmarkAction()
           
           if (bookmarkMenu)
           {
-            Smb4KEvent *customEvent = 0;
-            
-            if (action->isEnabled())
-            {
-              customEvent = new Smb4KEvent(Smb4KEvent::EnableBookmarkAction);
-            }
-            else
-            {
-              customEvent = new Smb4KEvent(Smb4KEvent::DisableBookmarkAction);
-            }
-              
-            QApplication::postEvent(bookmarkMenu, customEvent);
+            bookmarkMenu->setBookmarkActionEnabled(action->isEnabled());
           }
           else
           {
