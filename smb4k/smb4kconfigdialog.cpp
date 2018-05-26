@@ -374,323 +374,298 @@ bool Smb4KConfigDialog::checkMountingPage()
 
 bool Smb4KConfigDialog::checkSynchronizationPage()
 {
-  KUrlRequester *sync_prefix = m_synchronization->widget()->findChild<KUrlRequester *>("kcfg_RsyncPrefix");
+  //
+  // Config page 
+  // 
+  // Since the config page is embedded into a scroll area, use findChild() here.
+  // 
+  Smb4KConfigPageSynchronization *configPage = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
   
-  QString msg = i18n("<qt>An incorrect setting has been found. You are now taken to the corresponding configuration page to fix it.</qt>");
-  
-  if (sync_prefix && sync_prefix->url().path().trimmed().isEmpty())
+  if (configPage)
   {
-    KMessageBox::sorry(this, msg);
-    setCurrentPage(m_synchronization);
+    //
+    // The error message
+    // 
+    QString errorMessage = i18n("<qt>An incorrect setting has been found. You are now taken to the corresponding configuration page to fix it.</qt>");
     
-    Smb4KConfigPageSynchronization *sync_options = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
-    
-    if (sync_options)
+    // Find the tab number and the url requester
+    for (int i = 0; i < configPage->count(); i++)
     {
-      sync_options->setCurrentIndex(Smb4KConfigPageSynchronization::CopyingTab);
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    sync_prefix->setFocus();
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  QCheckBox *max_delete = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_UseMaximumDelete");
-  QSpinBox *max_delete_val = m_synchronization->widget()->findChild<QSpinBox *>("kcfg_MaximumDeleteValue");
-  
-  if ((max_delete && max_delete->isChecked()) && (max_delete_val && max_delete_val->value() == 0))
-  {
-    KMessageBox::sorry(this, msg);
-    setCurrentPage(m_synchronization);
-    
-    Smb4KConfigPageSynchronization *sync_options = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
-    
-    if (sync_options)
-    {
-      sync_options->setCurrentIndex(Smb4KConfigPageSynchronization::DelTransTab);
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    max_delete_val->setFocus();
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  QCheckBox *min_trans_size = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_UseMinimalTransferSize");
-  QSpinBox *min_trans_size_val = m_synchronization->widget()->findChild<QSpinBox *>("kcfg_MinimalTransferSize");
-  
-  if ((min_trans_size && min_trans_size->isChecked()) && (min_trans_size_val && min_trans_size_val->value() == 0))
-  {
-    KMessageBox::sorry(this, msg);
-    setCurrentPage(m_synchronization);
-    
-    Smb4KConfigPageSynchronization *sync_options = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
-    
-    if (sync_options)
-    {
-      sync_options->setCurrentIndex(Smb4KConfigPageSynchronization::DelTransTab);
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    min_trans_size_val->setFocus();
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  QCheckBox *max_trans_size = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_UseMaximalTransferSize");
-  QSpinBox *max_trans_size_val = m_synchronization->widget()->findChild<QSpinBox *>("kcfg_MaximalTransferSize");
-  
-  if ((max_trans_size && max_trans_size->isChecked()) && (max_trans_size_val && max_trans_size_val->value() == 0))
-  {
-    KMessageBox::sorry(this, msg);
-    setCurrentPage(m_synchronization);
-    
-    Smb4KConfigPageSynchronization *sync_options = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
-    
-    if (sync_options)
-    {
-      sync_options->setCurrentIndex(Smb4KConfigPageSynchronization::DelTransTab);
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    max_trans_size_val->setFocus();
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  QCheckBox *use_partial_directory = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_UsePartialDirectory");
-  KUrlRequester *partial_directory = m_synchronization->widget()->findChild<KUrlRequester *>("kcfg_PartialDirectory");
-  
-  if ((use_partial_directory && use_partial_directory->isChecked()) &&
-      (partial_directory && partial_directory->url().path().trimmed().isEmpty()))
-  {
-    KMessageBox::sorry(this, msg);
-    setCurrentPage(m_synchronization);
-    
-    Smb4KConfigPageSynchronization *sync_options = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
-    
-    if (sync_options)
-    {
-      sync_options->setCurrentIndex(Smb4KConfigPageSynchronization::DelTransTab);
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    partial_directory->setFocus();
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  QCheckBox *use_exclude_pattern = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_UseExcludePattern");
-  KLineEdit *exclude_pattern = m_synchronization->widget()->findChild<KLineEdit *>("kcfg_ExcludePattern");
-  
-  if ((use_exclude_pattern && use_exclude_pattern->isChecked()) &&
-      (exclude_pattern && exclude_pattern->text().trimmed().isEmpty()))
-  {
-    KMessageBox::sorry(this, msg);
-    setCurrentPage(m_synchronization);
-    
-    Smb4KConfigPageSynchronization *sync_options = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
-    
-    if (sync_options)
-    {
-      sync_options->setCurrentIndex(Smb4KConfigPageSynchronization::FilteringTab);
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    exclude_pattern->setFocus();
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  QCheckBox *use_exclude_file = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_UseExcludeFrom");
-  KUrlRequester *exclude_file = m_synchronization->widget()->findChild<KUrlRequester *>("kcfg_ExcludeFrom");
-  
-  if ((use_exclude_file && use_exclude_file->isChecked()) &&
-      (exclude_file && exclude_file->url().path().trimmed().isEmpty()))
-  {
-    KMessageBox::sorry(this, msg);
-    setCurrentPage(m_synchronization);
-    
-    Smb4KConfigPageSynchronization *sync_options = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
-    
-    if (sync_options)
-    {
-      sync_options->setCurrentIndex(Smb4KConfigPageSynchronization::FilteringTab);
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    exclude_file->setFocus();
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  QCheckBox *use_include_pattern = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_UseIncludePattern");
-  KLineEdit *include_pattern = m_synchronization->widget()->findChild<KLineEdit *>("kcfg_IncludePattern");
-  
-  if ((use_include_pattern && use_include_pattern->isChecked()) &&
-      (include_pattern && include_pattern->text().trimmed().isEmpty()))
-  {
-    KMessageBox::sorry(this, msg);
-    setCurrentPage(m_synchronization);
-    
-    Smb4KConfigPageSynchronization *sync_options = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
-    
-    if (sync_options)
-    {
-      sync_options->setCurrentIndex(Smb4KConfigPageSynchronization::FilteringTab);
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    include_pattern->setFocus();
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  QCheckBox *use_include_file = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_UseIncludeFrom");
-  KUrlRequester *include_file = m_synchronization->widget()->findChild<KUrlRequester *>("kcfg_IncludeFrom");
-  
-  if ((use_include_file && use_include_file->isChecked()) &&
-      (include_file && include_file->url().path().trimmed().isEmpty()))
-  {
-    KMessageBox::sorry(this, msg);
-    setCurrentPage(m_synchronization);
-    
-    Smb4KConfigPageSynchronization *sync_options = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
-    
-    if (sync_options)
-    {
-      sync_options->setCurrentIndex(Smb4KConfigPageSynchronization::FilteringTab);
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    include_file->setFocus();
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  QCheckBox *make_backups = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_MakeBackups");
-  
-  if (make_backups && make_backups->isChecked())
-  {
-    QCheckBox *use_backup_suffix = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_UseBackupSuffix");
-    KLineEdit *backup_suffix = m_synchronization->widget()->findChild<KLineEdit *>("kcfg_BackupSuffix");
-    
-    if ((use_backup_suffix && use_backup_suffix->isChecked()) &&
-        (backup_suffix && backup_suffix->text().trimmed().isEmpty()))
-    {
-      KMessageBox::sorry(this, msg);
-      setCurrentPage(m_synchronization);
+      // Synchronization prefix
+      KUrlRequester *syncPrefix = configPage->widget(i)->findChild<KUrlRequester *>("kcfg_RsyncPrefix");
       
-      Smb4KConfigPageSynchronization *sync_options = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
-      
-      if (sync_options)
+      if (syncPrefix && (!syncPrefix->url().isValid() || syncPrefix->url().path().trimmed().isEmpty()))
       {
-        sync_options->setCurrentIndex(Smb4KConfigPageSynchronization::AdvancedTab);
+        KMessageBox::sorry(this, errorMessage);
+        setCurrentPage(m_synchronization);
+        configPage->setCurrentIndex(i);
+        syncPrefix->setFocus();
+        return false;
+      }
+      else
+      {
+        // Do nothing
+      }
+    
+      // Backups
+      QCheckBox *makeBackups = configPage->widget(i)->findChild<QCheckBox *>("kcfg_MakeBackups");
+      QCheckBox *useBackupSuffix = configPage->widget(i)->findChild<QCheckBox *>("kcfg_UseBackupSuffix");
+      KLineEdit *backupSuffix = configPage->widget(i)->findChild<KLineEdit *>("kcfg_BackupSuffix");
+      QCheckBox *useBackupDir = configPage->widget(i)->findChild<QCheckBox *>("kcfg_UseBackupDirectory");
+      KUrlRequester *backupDir = configPage->widget(i)->findChild<KUrlRequester *>("kcfg_BackupDirectory");
+      
+      if (makeBackups && makeBackups->isChecked())
+      {
+        if (useBackupSuffix && useBackupSuffix->isChecked())
+        {
+          if (backupSuffix && backupSuffix->text().trimmed().isEmpty())
+          {
+            KMessageBox::sorry(this, errorMessage);
+            setCurrentPage(m_synchronization);
+            configPage->setCurrentIndex(i);
+            backupSuffix->setFocus();
+            return false;
+          }
+          else
+          {
+            // Do nothing
+          }
+        }
+        else
+        {
+          // Do nothing
+        }
+        
+        if (useBackupDir && useBackupDir->isChecked())
+        {
+          if (backupDir && (!backupDir->url().isValid() || backupDir->url().path().trimmed().isEmpty()))
+          {
+            KMessageBox::sorry(this, errorMessage);
+            setCurrentPage(m_synchronization);
+            configPage->setCurrentIndex(i);
+            backupDir->setFocus();
+            return false;
+          }
+          else
+          {
+            // Do nothing
+          }
+        }
+        else
+        {
+          // Do nothing
+        }
       }
       else
       {
         // Do nothing
       }
       
-      backup_suffix->setFocus();
-      return false;
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    QCheckBox *use_backup_dir = m_synchronization->widget()->findChild<QCheckBox *>("kcfg_UseBackupDirectory");
-    KUrlRequester *backup_dir = m_synchronization->widget()->findChild<KUrlRequester *>("kcfg_BackupDirectory");
-    
-    if ((use_backup_dir && use_backup_dir->isChecked()) &&
-        (backup_dir && backup_dir->url().path().trimmed().isEmpty()))
-    {
-      KMessageBox::sorry(this, msg);
-      setCurrentPage(m_synchronization);
+      // Minimal transfer size
+      QCheckBox *useMinTransferSize = configPage->widget(i)->findChild<QCheckBox *>("kcfg_UseMinimalTransferSize");
+      QSpinBox *minTransferSize = configPage->widget(i)->findChild<QSpinBox *>("kcfg_MinimalTransferSize");
       
-      Smb4KConfigPageSynchronization *sync_options = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
-      
-      if (sync_options)
+      if (useMinTransferSize && useMinTransferSize->isChecked())
       {
-        sync_options->setCurrentIndex(Smb4KConfigPageSynchronization::AdvancedTab);
+        if (minTransferSize && minTransferSize->value() == 0)
+        {
+          KMessageBox::sorry(this, errorMessage);
+          setCurrentPage(m_synchronization);
+          configPage->setCurrentIndex(i);
+          minTransferSize->setFocus();
+          return false;
+        }
+        else
+        {
+          // Do nothing
+        }
       }
       else
       {
         // Do nothing
       }
       
-      backup_dir->setFocus();
-      return false;
-    }
-    else
-    {
-      // Do nothing
+      // Maximal transfer size
+      QCheckBox *useMaxTransferSize = configPage->widget(i)->findChild<QCheckBox *>("kcfg_UseMaximalTransferSize");
+      QSpinBox *maxTransferSize = configPage->widget(i)->findChild<QSpinBox *>("kcfg_MaximalTransferSize");
+      
+      if (useMaxTransferSize && useMaxTransferSize->isChecked())
+      {
+        if (maxTransferSize && maxTransferSize->value() == 0)
+        {
+          KMessageBox::sorry(this, errorMessage);
+          setCurrentPage(m_synchronization);
+          configPage->setCurrentIndex(i);
+          maxTransferSize->setFocus();
+          return false;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      // Partial directory
+      QCheckBox *usePartialDirectory = configPage->widget(i)->findChild<QCheckBox *>("kcfg_UsePartialDirectory");
+      KUrlRequester *partialDirectory = configPage->widget(i)->findChild<KUrlRequester *>("kcfg_PartialDirectory");
+      
+      if (usePartialDirectory && usePartialDirectory->isChecked())
+      {
+        if (partialDirectory && (!partialDirectory->url().isValid() || partialDirectory->url().path().trimmed().isEmpty()))
+        {
+          KMessageBox::sorry(this, errorMessage);
+          setCurrentPage(m_synchronization);
+          configPage->setCurrentIndex(i);
+          partialDirectory->setFocus();
+          return false;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      // Exclude exclude
+      QCheckBox *useExcludePattern = configPage->widget(i)->findChild<QCheckBox *>("kcfg_UseExcludePattern");
+      KLineEdit *excludePattern = configPage->widget(i)->findChild<KLineEdit *>("kcfg_ExcludePattern");
+      
+      if (useExcludePattern && useExcludePattern->isChecked())
+      {
+        if (excludePattern && excludePattern->text().trimmed().isEmpty())
+        {
+          KMessageBox::sorry(this, errorMessage);
+          setCurrentPage(m_synchronization);
+          configPage->setCurrentIndex(i);
+          excludePattern->setFocus();
+          return false;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      // Read exclude pattern from file
+      QCheckBox *useExcludeFrom = configPage->widget(i)->findChild<QCheckBox *>("kcfg_UseExcludeFrom");
+      KUrlRequester *excludeFrom = configPage->widget(i)->findChild<KUrlRequester *>("kcfg_ExcludeFrom");
+      
+      if (useExcludeFrom && useExcludeFrom->isChecked())
+      {
+        if (excludeFrom && (!excludeFrom->url().isValid() || excludeFrom->url().path().trimmed().isEmpty()))
+        {
+          KMessageBox::sorry(this, errorMessage);
+          setCurrentPage(m_synchronization);
+          configPage->setCurrentIndex(i);
+          excludeFrom->setFocus();
+          return false;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      // Exclude exclude
+      QCheckBox *useIncludePattern = configPage->widget(i)->findChild<QCheckBox *>("kcfg_UseIncludePattern");
+      KLineEdit *includePattern = configPage->widget(i)->findChild<KLineEdit *>("kcfg_IncludePattern");
+      
+      if (useIncludePattern && useIncludePattern->isChecked())
+      {
+        if (includePattern && includePattern->text().trimmed().isEmpty())
+        {
+          KMessageBox::sorry(this, errorMessage);
+          setCurrentPage(m_synchronization);
+          configPage->setCurrentIndex(i);
+          includePattern->setFocus();
+          return false;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      // Read exclude pattern from file
+      QCheckBox *useIncludeFrom = configPage->widget(i)->findChild<QCheckBox *>("kcfg_UseIncludeFrom");
+      KUrlRequester *includeFrom = configPage->widget(i)->findChild<KUrlRequester *>("kcfg_IncludeFrom");
+      
+      if (useIncludeFrom && useIncludeFrom->isChecked())
+      {
+        if (includeFrom && (!includeFrom->url().isValid() || includeFrom->url().path().trimmed().isEmpty()))
+        {
+          KMessageBox::sorry(this, errorMessage);
+          setCurrentPage(m_synchronization);
+          configPage->setCurrentIndex(i);
+          includeFrom->setFocus();
+          return false;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      // Block size
+      QCheckBox *useFixedBlocksize = configPage->widget(i)->findChild<QCheckBox *>("kcfg_UseBlockSize");
+      QSpinBox *fixedBlocksize = configPage->widget(i)->findChild<QSpinBox *>("kcfg_BlockSize");
+      
+      if (useFixedBlocksize && useFixedBlocksize->isChecked())
+      {
+        if (fixedBlocksize && fixedBlocksize->value() == 0)
+        {
+          KMessageBox::sorry(this, errorMessage);
+          setCurrentPage(m_synchronization);
+          configPage->setCurrentIndex(i);
+          fixedBlocksize->setFocus();
+          return false;
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      // NOTE: The is no need to check the following settings, because they may be empty or 0:
+      // - kcfg_UseCompressionLevel & kcfg_CompressionLevel
+      // - kcfg_UseSkipCompression & kcfg_SkipCompression
+      // - kcfg_UseBandwidthLimit & kcfg_BandwidthLimit
+      // - kcfg_UseMaximumDelete & kcfg_MaximumDeleteValue
+      // - kcfg_CustomFilteringRules
+      // - kcfg_UseChecksumSeed & kcfg_ChecksumSeed
     }
   }
   else
   {
     // Do nothing
   }
-  
-  // FIXME: Also check --block-size (kcfg_UseBlockSize & kcfg_BlockSize) and 
-  // --checksum-seed (kcfg_UseChecksumSeed & kcfg_ChecksumSeed), if necessary.
-  // However, I need more info on what values are needed ...
 
   return true;
 }

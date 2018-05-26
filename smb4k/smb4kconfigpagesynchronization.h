@@ -42,14 +42,6 @@ class Smb4KConfigPageSynchronization : public QTabWidget
 
   public:
     /**
-     * Tab enumeration
-     */
-    enum Tabs{ CopyingTab = 0,
-               DelTransTab = 1,
-               FilteringTab = 2,
-               AdvancedTab = 3 };
-    
-    /**
      * The constructor.
      *
      * @param parent        The parent widget
@@ -88,14 +80,32 @@ class Smb4KConfigPageSynchronization : public QTabWidget
      *                      checked and FALSE otherwise.
      */
     void slotBackupToggled(bool checked);
-
+    
+    /**
+     * This slot is called when the compression checkbox has been toggled.
+     * It enables/disables all other compression settings according to the 
+     * state of the compression button.
+     * 
+     * @param checked       TRUE if checked and FALSE otherwise
+     */
+    void slotCompressToggled(bool checked);
+    
+    /**
+     * This slot is called when the 'keep partially transferred files' checkbox
+     * has been toggled. It enables/disables the dependend settings according
+     * to the state of the checkbox.
+     * 
+     * @param checked       TRUE if checked and FALSE otherwise
+     */
+    void slotKeepPartialToggled(bool checked);
+    
     /**
      * This slot is called if the '-F' shortcut has been toggled.
      * It unchecks the '-F -F' shortcut.
      *
      * @param checked       Is TRUE is m_f_filter is checked and FALSE otherwise.
      */
-    void slotFShortcutToggled(bool checked);
+    void slotFFilterRuleToggled(bool checked);
 
     /**
      * This slot is called if the '-F -F' shortcut has been toggled.
@@ -103,7 +113,7 @@ class Smb4KConfigPageSynchronization : public QTabWidget
      *
      * @param checked       Is TRUE is m_ff_filter is checked and FALSE otherwise.
      */
-    void slotFFShortcutToggled(bool checked);
+    void slotFFFilterRuleToggled(bool checked);
 };
 
 #endif
