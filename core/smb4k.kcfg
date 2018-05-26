@@ -339,7 +339,7 @@
     <entry name="UpdateTarget" type="Bool">
       <label>Update files</label>
       <whatsthis>Update files in the destination directory that are older than in the source directory (-u, --update).</whatsthis>
-      <default>true</default>
+      <default>false</default>
     </entry>
     <entry name="UpdateInPlace" type="Bool">
       <label>Update files in place</label>
@@ -367,6 +367,28 @@
       <whatsthis>Compress data during transfer (-z, --compress). This significantly reduces the amount of data that is being transferred. You may want to use this option, if you have a slow connection.</whatsthis>
       <default>false</default>
     </entry>
+    <entry name="UseCompressionLevel" type="Bool">
+      <label>Set compression level:</label>
+      <whatsthis>Explicitly set the compression level to use (--compress-level=NUM). If NUM is non-zero, the --compress argument is implied.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="CompressionLevel" type="Int">
+      <label>The value for the UseCompressionLevel config entry</label>
+      <whatsthis></whatsthis>
+      <min>0</min>
+      <max>9</max>
+      <default>0</default>
+    </entry>
+    <entry name="UseSkipCompression" type="Bool">
+      <label>Skip compression for following file suffixes:</label>
+      <whatsthis>Overwrite the list of file suffixes that will not be compressed (--skip-compress=LIST). The LIST should be one or more file suffixes (without the dot) separated by slashes. You may specify an empty string to indicate that no file should be skipped. The default list of suffixes will be replaced by this list. For further details, see the manaul page of rsync.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="SkipCompression" type="String">
+      <label>The value(s) for the UseSkipCompression config entry</label>
+      <whatsthis></whatsthis>
+      <default></default>
+    </entry>
     <entry name="PreserveSymlinks" type="Bool">
       <label>Preserve symlinks</label>
       <whatsthis>Copy symlinks as symlinks (-l, --links).</whatsthis>
@@ -378,7 +400,7 @@
       <default>false</default>
     </entry>
     <entry name="TransformUnsafeSymlinks" type="Bool">
-      <label>Only transform unsafe symlinks</label>
+      <label>Transform unsafe symlinks</label>
       <whatsthis>Transform unsafe symlinks into the items they are pointing to (--copy-unsafe-links). This means that only those symlinks are transformed that point to items that are outside the copied tree. Absolute symlinks are treated the same way. This option has no additional effect if --copy-links has also been specified.</whatsthis>
       <default>false</default>
     </entry>
@@ -387,14 +409,24 @@
       <whatsthis>Ignore symlinks that point outside the copied tree (--safe-links). All absolute symlinks are also ignored. If you use this option in conjunction with --relative you might get unexpected results.</whatsthis>
       <default>false</default>
     </entry>
+    <entry name="MungeSymlinks" type="Bool">
+      <label>Munge symlinks</label>
+      <whatsthis>This option tells rsync to (1) modify all symlinks on the receiving side in a way that makes them unusable but recoverable, or (2) to unmunge symlinks on the sending side that had been stored in a munged state (--munge-links). This is useful if you do not quite trust the source of the data to not try to slip in a symlink to an unexpected place. For more details, see the manual page of rsync.</whatsthis>
+      <default>false</default>
+    </entry>
     <entry name="PreserveHardLinks" type="Bool">
       <label>Preserve hard links</label>
       <whatsthis>Preserve hard links (-H, --hard-links). This options causes rsync to preserve the hard links that are found during the transfer. Without it, hard links are treated as though they were separate files.</whatsthis>
       <default>false</default>
     </entry>
+    <entry name="CopyDirectorySymlinks" type="Bool">
+      <label>Copy directory symlinks</label>
+      <whatsthis>Treat symlinks to directories on the sending side as though they were real ones (-k, --copy-dirlinks). This is useful if you do not want symlinks to non-directories to be affected, as they would be using --copy-links. Without this option, if the sending side has replaced a directory with a symlink to a directory, the receiving side will delete anything that is in the way of the new symlink, including a directory hirarchy(as long as --force or --delete is in effect). For more details, see the manual page of rsync.</whatsthis>
+      <default>false</default>
+    </entry>
     <entry name="KeepDirectorySymlinks" type="Bool">
       <label>Keep directory symlinks</label>
-      <whatsthis>Treat symlinked directories on the receiving side as though they were real ones (-K, --keep-dirlinks). This only works if the symlink matches a real directory from the sending side. Without this option, the receiver's symlink will be deleted and replaced with a real directory.</whatsthis>
+      <whatsthis>Treat symlinks to directories on the receiving side as though they were real ones (-K, --keep-dirlinks). This only works if the symlink matches a real directory from the sending side. Without this option, the receiver's symlink will be deleted and replaced with a real directory.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="PreservePermissions" type="Bool">
@@ -453,7 +485,7 @@
       <default>false</default>
     </entry>
     <entry name="DeleteExcluded" type="Bool">
-      <label>Also delete excluded files</label>
+      <label>Delete excluded files</label>
       <whatsthis>Also delete excluded files from destination directory (--delete-excluded). In addition to deleting the files on the receiving side that are not on the sending side, this tells rsync to also delete any files on the receiving side that are excluded. Refer to rsync's manual page for further information.</whatsthis>
       <default>false</default>
     </entry>
@@ -541,7 +573,7 @@
       <default code="true">QUrl::fromLocalFile(QDir::homePath()+"/exclude.txt")</default>
     </entry>
     <entry name="UseIncludePattern" type="Bool">
-      <label>Do not exclude files matching this pattern:</label>
+      <label>Include files matching this pattern:</label>
       <whatsthis>Do not exclude files matching a certain pattern (--include=PATTERN). This is a special filter rule. For further information on filter rules see rsync's manual page.</whatsthis>
       <default>false</default>
     </entry>
@@ -647,7 +679,7 @@
       <default>false</default>
     </entry>
     <entry name="ChecksumSeed" type="Int">
-      <label>The checksum seed</label>
+      <label>The value for the UseChecksumSeed config option</label>
       <whatsthis></whatsthis>
       <min>0</min>
       <default>0</default>
@@ -656,6 +688,18 @@
       <label>Skip files based on checksum</label>
       <whatsthis>Skip files based on a checksum and not based on modification time and size (-c, --checksum). For further information on how this feature works read rsync's manual page.</whatsthis>
       <default>false</default>
+    </entry>
+    <entry name="UseBandwidthLimit" type="Bool">
+      <label>Set bandwidth limit:</label>
+      <whatsthis>Set the maximum data transfer rate in kilobytes per second (--bwlimit=RATE).</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="BandwidthLimit" type="Int">
+      <label>The value for the UseBandwidthLimit config option</label>
+      <whatsthis></whatsthis>
+      <min>0</min>
+      <max>1073741824</max> <!-- 1024^3 -->
+      <default>0</default>
     </entry>
   </group>
 
