@@ -128,7 +128,7 @@ void Smb4KBookmarkDialog::setupView()
 
   QLabel *l_label = new QLabel(i18n("Label:"), m_editors);
   m_label_edit = new KLineEdit(m_editors);
-  m_label_edit->setClearButtonShown(true);
+  m_label_edit->setClearButtonEnabled(true);
 
   QLabel *g_label = new QLabel(i18n("Group:"), m_editors);
   m_group_combo = new KComboBox(true, m_editors);

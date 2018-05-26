@@ -117,7 +117,7 @@ void Smb4KMountDialog::setupView()
     "//[USER@]HOST/SHARE. The username is optional."));
 //   m_share_input->setToolTip(i18n("The UNC address of the share"));
   m_share_input->setCompletionMode(KCompletion::CompletionPopupAuto);
-  m_share_input->setClearButtonShown(true);
+  m_share_input->setClearButtonEnabled(true);
   m_share_input->setMinimumWidth(200);
   m_share_input->setFocus();
 
@@ -129,7 +129,7 @@ void Smb4KMountDialog::setupView()
     "(e.g. 2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."));
 //   m_ip_input->setToolTip(i18n("The IP address of the host where the share is located"));
   m_ip_input->setCompletionMode(KCompletion::CompletionPopupAuto);
-  m_ip_input->setClearButtonShown(true);
+  m_ip_input->setClearButtonEnabled(true);
   m_ip_input->setMinimumWidth(200);
 
   QLabel *workgroupLabel = new QLabel(i18n("Workgroup:"), edit_widget);
@@ -138,7 +138,7 @@ void Smb4KMountDialog::setupView()
     "peer-to-peer computer network the host is located in."));
 //   m_workgroup_input->setToolTip(i18n("The workgroup where the host is located"));
   m_workgroup_input->setCompletionMode(KCompletion::CompletionPopupAuto);
-  m_workgroup_input->setClearButtonShown(true);
+  m_workgroup_input->setClearButtonEnabled(true);
   m_workgroup_input->setMinimumWidth(200);
 
   edit_layout->addWidget(shareLabel, 0, 0, 0);
