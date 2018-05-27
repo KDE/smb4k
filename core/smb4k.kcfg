@@ -381,7 +381,7 @@
     </entry>
     <entry name="UseSkipCompression" type="Bool">
       <label>Skip compression for following file suffixes:</label>
-      <whatsthis>Overwrite the list of file suffixes that will not be compressed (--skip-compress=LIST). The LIST should be one or more file suffixes (without the dot) separated by slashes. You may specify an empty string to indicate that no file should be skipped. The default list of suffixes will be replaced by this list. For further details, see the manaul page of rsync.</whatsthis>
+      <whatsthis>Overwrite the list of file suffixes that will not be compressed (--skip-compress=LIST). The LIST should be one or more file suffixes (without the dot) separated by slashes. You may specify an empty string to indicate that no file should be skipped. The default list of suffixes will be replaced by this list. For further details, see the manual page of rsync.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="SkipCompression" type="String">
@@ -421,7 +421,7 @@
     </entry>
     <entry name="CopyDirectorySymlinks" type="Bool">
       <label>Copy directory symlinks</label>
-      <whatsthis>Treat symlinks to directories on the sending side as though they were real ones (-k, --copy-dirlinks). This is useful if you do not want symlinks to non-directories to be affected, as they would be using --copy-links. Without this option, if the sending side has replaced a directory with a symlink to a directory, the receiving side will delete anything that is in the way of the new symlink, including a directory hirarchy(as long as --force or --delete is in effect). For more details, see the manual page of rsync.</whatsthis>
+      <whatsthis>Treat symlinks to directories on the sending side as though they were real ones (-k, --copy-dirlinks). This is useful if you do not want symlinks to non-directories to be affected, as they would be using --copy-links. Without this option, if the sending side has replaced a directory with a symlink to a directory, the receiving side will delete anything that is in the way of the new symlink, including a directory hierarchy (as long as --force or --delete is in effect). For more details, see the manual page of rsync.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="KeepDirectorySymlinks" type="Bool">
