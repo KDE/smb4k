@@ -375,8 +375,7 @@ bool Smb4KConfigDialog::checkMountingPage()
 bool Smb4KConfigDialog::checkSynchronizationPage()
 {
   //
-  // Config page 
-  // 
+  // Get the config page 
   // Since the config page is embedded into a scroll area, use findChild() here.
   // 
   Smb4KConfigPageSynchronization *configPage = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
