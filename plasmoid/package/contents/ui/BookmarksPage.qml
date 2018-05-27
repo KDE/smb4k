@@ -63,6 +63,7 @@ PlasmaComponents.Page {
         width: minimumWidth
         onClicked: {
           editor.open()
+          editor.fillView()
         }
       }
     }

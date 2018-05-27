@@ -31,6 +31,9 @@
 // application specific includes
 #include "smb4kbookmarkobject.h"
 
+// Qt includes
+#include <QHostAddress>
+
 // KDE includes
 #include <KIconThemes/KIconLoader>
 
@@ -42,8 +45,10 @@ class Smb4KBookmarkObjectPrivate
     QUrl url;
     QString label;
     QString group;
+    QString login;
     bool isGroup;
     bool isMounted;
+    QHostAddress hostIP;
 };
 
 
@@ -54,8 +59,10 @@ Smb4KBookmarkObject::Smb4KBookmarkObject(Smb4KBookmark* bookmark, QObject* paren
   d->url        = bookmark->url();
   d->label      = bookmark->label();
   d->group      = bookmark->groupName();
+  d->login      = bookmark->login();
   d->isGroup    = false;
   d->isMounted  = false;
+  d->hostIP.setAddress(bookmark->hostIP());
 }
 
 
@@ -170,4 +177,38 @@ void Smb4KBookmarkObject::setMounted(bool mounted)
   d->isMounted = mounted;
   emit changed();
 }
+
+
+QString Smb4KBookmarkObject::login() const
+{
+  return d->login;
+}
+
+
+void Smb4KBookmarkObject::setLogin(const QString& name)
+{
+  d->login = name;
+  emit changed();
+}
+
+
+QString Smb4KBookmarkObject::hostIP() const
+{
+  return d->hostIP.toString();
+}
+
+
+void Smb4KBookmarkObject::setHostIP(const QString& ip)
+{
+  if (d->hostIP.setAddress(ip))
+  {
+    emit changed();
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
 
