@@ -30,6 +30,7 @@
 #include <QObject>
 #include <QUrl>
 #include <QQmlListProperty>
+#include <QQmlListReference>
 
 // forward declarations
 class Smb4KDeclarativePrivate;
@@ -237,6 +238,14 @@ class Q_DECL_EXPORT Smb4KDeclarative : public QObject
      * @param url           The bookmark object that is to be removed
      */
     Q_INVOKABLE void removeBookmark(Smb4KBookmarkObject *object);
+    
+    /**
+     * Replaces the current list of bookmarks by the one passed. This function
+     * should only be used for a bookmark editor and the like.
+     * 
+     * @param bookmarks     The new list of bookmarks
+     */
+    Q_INVOKABLE void replaceBookmarks(const QQmlListReference &bookmarks);
     
     /**
      * This function removes a bookmark group.

@@ -525,6 +525,50 @@ void Smb4KDeclarative::removeBookmark(Smb4KBookmarkObject* object)
 }
 
 
+void Smb4KDeclarative::replaceBookmarks(const QQmlListReference& bookmarks)
+{
+  //
+  // The list of bookmarks
+  // 
+  QList<BookmarkPtr> list;
+  
+  //
+  // Process the list of bookmarks
+  // 
+  if (bookmarks.isReadable() && bookmarks.isValid())
+  {
+    // Transfer the information of the bookmark objects and 
+    for (int i = 0; i < bookmarks.count(); i++)
+    {
+      Smb4KBookmarkObject *object = qobject_cast<Smb4KBookmarkObject *>(bookmarks.at(i));
+
+      if (object)
+      {
+        Smb4KBookmark *b = new Smb4KBookmark();
+        b->setWorkgroupName(object->workgroupName());
+        b->setURL(object->url());
+        b->setHostIP(object->hostIP());
+        b->setGroupName(object->groupName());
+        b->setLabel(object->label());
+        b->setProfile(Smb4KProfileManager::self()->activeProfile());
+        list << BookmarkPtr(b);
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    
+    // Replace the list of bookmarks
+    Smb4KBookmarkHandler::self()->addBookmarks(list, true);
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
 void Smb4KDeclarative::removeBookmarkGroup(const QString& name)
 {
   Smb4KBookmarkHandler::self()->removeGroup(name);
