@@ -24,6 +24,7 @@ import QtQml.Models 2.3
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.extras 2.0 as PlasmaExtras
+import org.kde.smb4k.smb4kqmlplugin 2.0
 
 
 PlasmaComponents.CommonDialog {
@@ -32,6 +33,13 @@ PlasmaComponents.CommonDialog {
   visualParent: parent
   
   property int editorWidth: units.iconSizes.medium * 15
+  property var bookmarkList: []
+  property var bookmarkGroups: []
+  
+  BookmarkObject { 
+    id: newGroup
+    isGroup: true
+  }
   
   content: ColumnLayout {
     //
@@ -106,6 +114,9 @@ PlasmaComponents.CommonDialog {
         Layout.minimumWidth: editorWidth
         Layout.alignment: Qt.AlignCenter
         Layout.fillWidth: true
+        onEditingFinished: {
+          changeBookmark()
+        }
       }
     
       //
@@ -120,6 +131,9 @@ PlasmaComponents.CommonDialog {
         Layout.minimumWidth: editorWidth
         Layout.alignment: Qt.AlignCenter
         Layout.fillWidth: true
+        onEditingFinished: {
+          changeBookmark()
+        }
       }
     
       //
@@ -134,6 +148,9 @@ PlasmaComponents.CommonDialog {
         Layout.minimumWidth: editorWidth
         Layout.alignment: Qt.AlignCenter
         Layout.fillWidth: true
+        onEditingFinished: {
+          changeBookmark()
+        }
       }
     
       //
@@ -151,17 +168,24 @@ PlasmaComponents.CommonDialog {
       
         editable: true
         model: ListModel {}
+        
+        onAccepted: {
+          changeBookmark()
+        }
+        onActivated: {
+          changeBookmark()
+        }
       }
     }
   }
 
   onButtonClicked: {
     switch(index) {
-      case 0:
-        console.log("OK")
+      case 0: // OK
+        changeBookmark()
+        iface.replaceBookmarks(bookmarkList)
         break
-      case 1:
-        console.log("Cancel")
+      case 1: // Cancel
         break
       default:
         break
@@ -177,14 +201,6 @@ PlasmaComponents.CommonDialog {
   }
   
   //
-  // Initialization
-  // 
-//   Component.onCompleted: {
-//     console.log("Dialog: component completed")
-//     fillView()
-//   }
-  
-  //
   // Delegate Model (used for sorting)
   //
   DelegateModel {
@@ -196,16 +212,11 @@ PlasmaComponents.CommonDialog {
       if (left.isGroup && right.isGroup) {
         less = (left.groupName < right.groupName)
       }
-      else if (!left.isGroup && !right.isGroup) {        
-        if (left.hostName == right.hostName) {
-          less = (left.shareName < right.shareName)
-        }
-        else {
-          less = (left.shareName < right.shareName && left.hostName < right.hostName)
-        }
+      else if (left.groupName == right.groupName) {
+        less = (left.hostName < right.hostName && left.shareName < right.shareName)
       }
       else {
-        // Do nothing
+        less = (left.groupName < right.groupName)
       }
 
       return less
@@ -269,51 +280,55 @@ PlasmaComponents.CommonDialog {
   
   //
   // Functions
-  //   
+  //
+  function setup() {
+    bookmarkList = iface.bookmarks
+    bookmarkGroups = iface.bookmarkGroups
+    fillView()
+  }
+  
+  
   function fillView() {
     // Clear the list view
     while (bookmarkEditorItemDelegateModel.model.count != 0) {
       bookmarkEditorItemDelegateModel.model.remove(0)
     }
-    
+
     // Insert groups and bookmarks
-    if (iface.bookmarkGroups.length != 0) {
-      for (var i = 0; i < iface.bookmarkGroups.length; i++) {
-        if (iface.bookmarkGroups[i].groupName.length != 0) {
-          bookmarkEditorItemDelegateModel.model.append({"object": iface.bookmarkGroups[i]})
-          getBookmarks(iface.bookmarkGroups[i].groupName)
-        }
-        else {
-          // Do nothing
-        }
+    if (bookmarkGroups.length != 0) {
+      for (var i = 0; i < bookmarkGroups.length; i++) {
+        // Insert groups and bookmarks into the view
+        bookmarkEditorItemDelegateModel.model.append({"object": bookmarkGroups[i]})
+        getBookmarks(bookmarkGroups[i].groupName)
+        // Insert groups into the group name combo box
+        bookmarkEditorGroupInput.model.append({"entry": bookmarkGroups[i].groupName})
       }
+    }
+    else {
+      // Insert toplevel bookmarks to the view
+      getBookmarks("")
+      // Insert an empty group into the combo box
+      bookmarkEditorGroupInput.model.append({"entry": ""})
+    }
+    
+    // Set the empty group as default in the combo box
+    var defaultIndex = bookmarkEditorGroupInput.find("")
+    if (defaultIndex != -1) {
+      bookmarkEditorGroupInput.currentIndex = defaultIndex
     }
     else {
       // Do nothing
     }
     
-    // Insert the toplevel bookmarks into the list view
-    // FIXME: Add title for toplevel bookmarks
-    getBookmarks("")
-    
-    // Fill the group combo box
-    bookmarkEditorGroupInput.model.append({"entry": ""})
-    
-    if (iface.bookmarkGroups.length != 0) {
-      for (var i = 0; i < iface.bookmarkGroups.length; i++) {
-        bookmarkEditorGroupInput.model.append({"entry": iface.bookmarkGroups[i].groupName})
-      }
-    }
-    else {
-      // Do nothing
-    }
+    // Set the dafault index of the view to the first item
+    bookmarkEditorListView.currentIndex = 0
   }
   
   function getBookmarks(groupName) {
-    if (iface.bookmarks.length != 0) {
-      for (var i = 0; i < iface.bookmarks.length; i++) {
-        if (iface.bookmarks[i].groupName == groupName) {
-          bookmarkEditorItemDelegateModel.model.append({"object": iface.bookmarks[i]})
+    if (bookmarkList.length != 0) {
+      for (var i = 0; i < bookmarkList.length; i++) {
+        if (bookmarkList[i].groupName == groupName) {
+          bookmarkEditorItemDelegateModel.model.append({"object": bookmarkList[i]})
         }
         else {
           // Do nothing
@@ -333,6 +348,40 @@ PlasmaComponents.CommonDialog {
     bookmarkEditorLabelInput.text = object.label
     bookmarkEditorLoginInput.text = object.login
     bookmarkEditorIPInput.text = object.hostIP
-    bookmarkEditorGroupInput.currentText = object.groupName
+    var newIndex = bookmarkEditorGroupInput.find(object.groupName)
+    if (newIndex != -1) {
+      bookmarkEditorGroupInput.currentIndex = newIndex
+    }
+    else {
+      // Do nothing
+    }
+  }
+  
+  function changeBookmark() {
+    // Get the selected bookmark and modify it according to the changes
+    // made in the editor widgets
+    var object = bookmarkEditorItemDelegateModel.items.get(bookmarkEditorListView.currentIndex).model.object
+    if (object !== 0) {
+      object.label = bookmarkEditorLabelInput.text
+      object.login = bookmarkEditorLoginInput.text
+      object.hostIP = bookmarkEditorIPInput.text
+      object.groupName = bookmarkEditorGroupInput.currentText
+    }
+    else {
+      // Do nothing
+    }
+    
+    // Add the new group name, if needed
+    var groupIndex = bookmarkEditorGroupInput.find(object.groupName)
+    if (groupIndex == -1) {
+      newGroup.groupName = object.groupName 
+      bookmarkGroups.push(newGroup)
+    }
+    else {
+      // Do nothing
+    }
+
+    // Fill the view
+    fillView()
   }
 }

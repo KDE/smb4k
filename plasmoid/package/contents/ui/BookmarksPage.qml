@@ -62,8 +62,8 @@ PlasmaComponents.Page {
         iconSource: "bookmarks-organize"
         width: minimumWidth
         onClicked: {
+          editor.setup()
           editor.open()
-          editor.fillView()
         }
       }
     }

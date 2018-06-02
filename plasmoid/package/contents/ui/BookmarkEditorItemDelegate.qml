@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2017 by A. Reinholdt <alexander.reinholdt@kdemail.net>  *
+ *   Copyright (C) 2018 by A. Reinholdt <alexander.reinholdt@kdemail.net>  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -69,7 +69,12 @@ PlasmaComponents.ListItem {
               "<br>"+i18n("<font size=\"-1\">on %1</font>", object.hostName)
             }
             else {
-              object.groupName
+              if (object.groupName.length != 0) {
+                object.groupName
+              }
+              else {
+                i18n("Toplevel Bookmarks")
+              }
             }
           }
         }
