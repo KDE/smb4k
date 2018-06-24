@@ -2,7 +2,7 @@
     This class handles the bookmarks.
                              -------------------
     begin                : Fr Jan 9 2004
-    copyright            : (C) 2004-2017 by Alexander Reinholdt
+    copyright            : (C) 2004-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -271,7 +271,7 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<BookmarkPtr> &list, bool rep
     }
     else
     {
-      // We do not to update the bookmark, because we are
+      // We do not need to update the bookmark, because we are
       // operating on a shared pointer.
     }
   }

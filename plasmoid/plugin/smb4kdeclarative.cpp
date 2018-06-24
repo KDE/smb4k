@@ -537,7 +537,7 @@ void Smb4KDeclarative::replaceBookmarks(const QQmlListReference& bookmarks)
   // 
   if (bookmarks.isReadable() && bookmarks.isValid())
   {
-    // Transfer the information of the bookmark objects and 
+    // Transfer the information of the bookmark objects
     for (int i = 0; i < bookmarks.count(); i++)
     {
       Smb4KBookmarkObject *object = qobject_cast<Smb4KBookmarkObject *>(bookmarks.at(i));

@@ -2,7 +2,7 @@
     This class handles the bookmarks.
                              -------------------
     begin                : Fr Jan 9 2004
-    copyright            : (C) 2004-2017 by Alexander Reinholdt
+    copyright            : (C) 2004-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
