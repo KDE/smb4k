@@ -29,6 +29,7 @@ PlasmaComponents.ListItem {
   id: delegate
   
   signal itemClicked()
+  signal removeClicked()
   
   width: parent.width
   implicitWidth: parent.implicitWidth
@@ -79,6 +80,38 @@ PlasmaComponents.ListItem {
           }
         }
       }
+    }
+  }
+  
+  PlasmaComponents.ButtonRow {
+    anchors {
+     verticalCenter: parent.verticalCenter
+      right: parent.right
+    }
+    exclusive: false
+    spacing: 0
+    
+    PlasmaComponents.ToolButton {
+      id: deleteButton
+      iconSource: "entry-delete"
+      tooltip: i18n("Delete Bookmark")
+      flat: true
+      opacity: 0.2
+      visible: !object.isGroup
+      enabled: !object.isGroup
+      MouseArea {
+        anchors.fill: parent
+        hoverEnabled: true
+        onEntered: {
+          parent.opacity = 1.0
+        }
+        onExited: {
+          parent.opacity = 0.2
+        }
+        onClicked: {
+          delegate.removeClicked()
+        }
+      }      
     }
   }
 }

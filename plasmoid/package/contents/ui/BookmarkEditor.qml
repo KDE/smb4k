@@ -54,21 +54,19 @@ PlasmaComponents.CommonDialog {
       
       tools: PlasmaComponents.ToolBarLayout {
         PlasmaComponents.ToolButton {
-          id: addGroupButton
-          tooltip: i18n("Add Group")
-          iconSource: "bookmark-add-folder"
-          width: minimumWidth
-          onClicked: {
-            // FIXME
-          }
-        }
-        PlasmaComponents.ToolButton {
           id: clearButton
           tooltip: i18n("Clear")
           iconSource: "edit-clear"
           width: minimumWidth
           onClicked: {
-            // FIXME
+            // Clear the list of bookmark groups
+            bookmarkGroups.length = 0
+    
+            // Clear the bookmarks list
+            bookmarkList.length = 0
+            
+            // Clear the editor widget
+            clearEditor()
           }
         }
       }
@@ -81,6 +79,7 @@ PlasmaComponents.CommonDialog {
       id: bookmarkEditorScrollArea
 
       Layout.minimumWidth: editorWidth
+      Layout.minimumHeight: editorWidth / 2 // Yes, that's correct.
       Layout.alignment: Qt.AlignCenter
       Layout.fillWidth: true
       
@@ -90,6 +89,7 @@ PlasmaComponents.CommonDialog {
         clip: true
         focus: true
         highlightRangeMode: ListView.StrictlyEnforceRange
+        highlightFollowsCurrentItem: true
       }
     }
 
@@ -275,6 +275,11 @@ PlasmaComponents.CommonDialog {
         bookmarkEditorListView.currentIndex = DelegateModel.itemsIndex
         bookmarkOrGroupClicked(object)
       }
+      
+      onRemoveClicked: {
+        bookmarkEditorListView.currentIndex = DelegateModel.itemsIndex
+        removeBookmark(object)
+      }
     }
   }
   
@@ -282,17 +287,18 @@ PlasmaComponents.CommonDialog {
   // Functions
   //
   function setup() {
+    // Get the lists
     bookmarkList = iface.bookmarks
     bookmarkGroups = iface.bookmarkGroups
+    
+    // Fill the view
     fillView()
   }
   
   
   function fillView() {
-    // Clear the list view
-    while (bookmarkEditorItemDelegateModel.model.count != 0) {
-      bookmarkEditorItemDelegateModel.model.remove(0)
-    }
+    // Clear the editor
+    clearEditor()
 
     // Insert groups and bookmarks
     if (bookmarkGroups.length != 0) {
@@ -320,7 +326,7 @@ PlasmaComponents.CommonDialog {
       // Do nothing
     }
     
-    // Set the dafault index of the view to the first item
+    // Set the default index of the view to the first item
     bookmarkEditorListView.currentIndex = 0
   }
   
@@ -358,28 +364,100 @@ PlasmaComponents.CommonDialog {
   }
   
   function changeBookmark() {
-    // Get the selected bookmark and modify it according to the changes
-    // made in the editor widgets
-    var object = bookmarkEditorItemDelegateModel.items.get(bookmarkEditorListView.currentIndex).model.object
-    if (object !== 0) {
-      object.label = bookmarkEditorLabelInput.text
-      object.login = bookmarkEditorLoginInput.text
-      object.hostIP = bookmarkEditorIPInput.text
-      object.groupName = bookmarkEditorGroupInput.currentText
+    if (bookmarkEditorItemDelegateModel.model.count != 0) {
+      // Get the selected bookmark and modify it according to the changes
+      // made in the editor widgets
+      var object = bookmarkEditorItemDelegateModel.items.get(bookmarkEditorListView.currentIndex).model.object
+      if (object !== 0) {
+        object.label = bookmarkEditorLabelInput.text
+        object.login = bookmarkEditorLoginInput.text
+        object.hostIP = bookmarkEditorIPInput.text
+        object.groupName = bookmarkEditorGroupInput.currentText
+      }
+      else {
+        // Do nothing
+      }
+      
+      // Add the new group name, if needed
+      var groupIndex = bookmarkEditorGroupInput.find(object.groupName)
+      if (groupIndex == -1) {
+        newGroup.groupName = object.groupName 
+        bookmarkGroups.push(newGroup)
+      }
+      else {
+        // Do nothing
+      }
     }
     else {
       // Do nothing
+    }
+
+    // Fill the view
+    fillView()
+  }
+  
+  function clearEditor() {
+    // Clear the list view
+    while (bookmarkEditorItemDelegateModel.model.count != 0) {
+      bookmarkEditorItemDelegateModel.model.remove(0)
     }
     
-    // Add the new group name, if needed
-    var groupIndex = bookmarkEditorGroupInput.find(object.groupName)
-    if (groupIndex == -1) {
-      newGroup.groupName = object.groupName 
-      bookmarkGroups.push(newGroup)
+    // Clear and disable the editor widgets
+    // Enable editor widgets
+    bookmarkEditorLabelInput.text = ""
+    bookmarkEditorLoginInput.text = ""
+    bookmarkEditorIPInput.text = ""
+    var newIndex = bookmarkEditorGroupInput.find("")
+    if (newIndex != -1) {
+      bookmarkEditorGroupInput.currentIndex = newIndex
     }
     else {
       // Do nothing
     }
+    bookmarkEditorInputWidgets.enabled = false
+  }
+  
+  function removeBookmark(object) {
+    // Create a new, temporal list without the object to be removed
+    var newBookmarkList = []
+    var groupNames = []
+    for (var i = 0; i < bookmarkList.length; i++) {
+      if (bookmarkList[i] !== object) {
+        newBookmarkList.push(bookmarkList[i])
+        if (groupNames.indexOf(bookmarkList[i].groupName) == -1) {
+          groupNames.push(object.groupName)
+        }
+        else {
+          // Do nothing
+        }
+      }
+      else {
+        // Do nothing
+      }
+    }
+    
+    // Clear the list of bookmarks
+    bookmarkList.length = 0
+    
+    // Assign the temporal list to the list property
+    bookmarkList = newBookmarkList
+    
+    // Create a temporal list of groups 
+    var newGroupList = []
+    for (var i = 0; i < bookmarkGroups.length; i++) {
+      if (groupNames.indexOf(bookmarkGroups[i].groupName) !== -1) {
+        newGroupList.push(bookmarkGroups[i])
+      }
+      else {
+        // Do nothing
+      }
+    }
+    
+    // Clear the list of bookmark groups
+    bookmarkGroups.length = 0
+    
+    // Assign the group list to the list property
+    bookmarkGroups = newGroupList
 
     // Fill the view
     fillView()
