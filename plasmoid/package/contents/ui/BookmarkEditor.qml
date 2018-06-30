@@ -213,7 +213,12 @@ PlasmaComponents.CommonDialog {
         less = (left.groupName < right.groupName)
       }
       else if (left.groupName == right.groupName) {
-        less = (left.hostName < right.hostName && left.shareName < right.shareName)
+        if (left.hostName == right.hostName) {
+          less = left.shareName < right.shareName
+        }
+        else {
+          less = (left.hostName < right.hostName && left.shareName < right.shareName)
+        }
       }
       else {
         less = (left.groupName < right.groupName)
