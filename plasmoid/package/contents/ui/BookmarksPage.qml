@@ -262,6 +262,9 @@ PlasmaComponents.Page {
     
     // Get toplevel bookmarks
     getBookmarks("")
+    
+    // Set the current item to 0
+    bookmarksListView.currentIndex = 0
   }
   
   function getBookmarks(groupName) {
