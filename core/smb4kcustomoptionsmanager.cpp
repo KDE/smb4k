@@ -121,7 +121,7 @@ void Smb4KCustomOptionsManager::addRemount(const SharePtr &share, bool always)
       options = OptionsPtr(new Smb4KCustomOptions(share.data()));
       options->setProfile(Smb4KProfileManager::self()->activeProfile());
       options->setRemount(always ? Smb4KCustomOptions::RemountAlways : Smb4KCustomOptions::RemountOnce);
-      d->options << options;      
+      d->options << options;
     }
     
     writeCustomOptions();
@@ -254,20 +254,15 @@ OptionsPtr Smb4KCustomOptionsManager::findOptions(const NetworkItemPtr &networkI
   OptionsPtr options;
   
   //
-  // Search the options for the network item
+  // Get the list of options
+  // 
+  QList<OptionsPtr> optionsList = customOptions(false);
+  
   //
-  if (networkItem)
+  // Only do something if the list of options is not empty.
+  // 
+  if (!optionsList.isEmpty())
   {
-    //
-    // Get the relevant options
-    //
-    QList<OptionsPtr> optionsList = customOptions(false);
-    
-    //
-    // Get the UNC and the IP address
-    // 
-    QString unc, hostUNC, ipAddress;
-    
     switch (networkItem->type())
     {
       case Host:
@@ -276,14 +271,24 @@ OptionsPtr Smb4KCustomOptionsManager::findOptions(const NetworkItemPtr &networkI
         
         if (host)
         {
-          unc = host->unc();
-          ipAddress = host->ip();
+          for (const OptionsPtr &o : optionsList)
+          {
+            // In case of a host, there can only be an exact match.
+            if (QString::compare(host->unc(), o->unc(), Qt::CaseInsensitive) == 0 || (host->unc().isEmpty() && host->ip() == o->ip()))
+            {
+              options = o;
+              break;
+            }
+            else
+            {
+              // Do nothing
+            }
+          }
         }
         else
         {
           // Do nothing
         }
-        
         break;
       }
       case Share:
@@ -292,41 +297,32 @@ OptionsPtr Smb4KCustomOptionsManager::findOptions(const NetworkItemPtr &networkI
         
         if (share)
         {
-          unc = share->isHomesShare() ? share->homeUNC() : share->unc();
-          hostUNC = share->hostUNC();
-          ipAddress = share->hostIP();
+          for (const OptionsPtr &o : optionsList)
+          {
+            if (QString::compare(share->unc(), o->unc(), Qt::CaseInsensitive) == 0)
+            {
+              options = o;
+              break;
+            }
+            else if (!exactMatch && o->type() == Host && QString::compare(share->hostUNC(), o->unc(), Qt::CaseInsensitive) == 0)
+            {
+              options = o;
+            }
+            else
+            {
+              // Do nothing
+            }
+          }
         }
         else
         {
           // Do nothing
         }
-        
         break;
       }
       default:
       {
         break;
-      }
-    }
-    
-    //
-    // Get the options
-    //
-    for (const OptionsPtr &o : optionsList)
-    {
-      if (QString::compare(unc, o->unc(), Qt::CaseInsensitive) == 0 || ipAddress == o->ip())
-      {
-        options = o;
-        break;
-      }
-      else if (!exactMatch && o->type() == Host && (QString::compare(hostUNC, o->unc(), Qt::CaseInsensitive) == 0 || ipAddress == o->ip()))
-      {
-        options = o;
-        // Do not break here. The exact match is always favored.
-      }
-      else
-      {
-        // Do nothing
       }
     }
   }
@@ -335,9 +331,6 @@ OptionsPtr Smb4KCustomOptionsManager::findOptions(const NetworkItemPtr &networkI
     // Do nothing
   }
   
-  //
-  // Return the options
-  //
   return options;
 }
 
