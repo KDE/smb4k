@@ -136,8 +136,8 @@
     <ul>
       <li>Scanning for (active) workgroups, hosts, and shares</li>
       <li xml:lang="bs">Pretraživanje (aktivnih) radnih grupa, hostova i razmjena</li>
-      <li xml:lang="ca">Exploració per a grups de treball, ordinadors i comparticions (actius)</li>
-      <li xml:lang="ca-valencia">Exploració per a grups de treball, ordinadors i comparticions (actius)</li>
+      <li xml:lang="ca">Escaneig per a grups de treball (actius), servidors i comparticions</li>
+      <li xml:lang="ca-valencia">Escaneig per a grups de treball (actius), servidors i comparticions</li>
       <li xml:lang="de">Suche nach (aktiven) Arbeitsgruppen, Rechnern und Freigaben</li>
       <li xml:lang="el">Σαρώνει για (ενεργές) ομάδες εργασίας, υπολογιστές και κοινούς πόρους</li>
       <li xml:lang="en-GB">Scanning for (active) workgroups, hosts, and shares</li>
@@ -202,8 +202,8 @@
       <li xml:lang="zh-TW">掛載與解除掛載分享</li>
       <li>Access to the files of a mounted share using a file manager or terminal</li>
       <li xml:lang="bs">Pristup datotekama namještene razmjene koristeći upravitelj datotekom ili terminal</li>
-      <li xml:lang="ca">Accés als fitxers d'una compartició muntada utilitzant un gestor de fitxers o terminal</li>
-      <li xml:lang="ca-valencia">Accés als fitxers d'una compartició muntada utilitzant un gestor de fitxers o terminal</li>
+      <li xml:lang="ca">Accés als fitxers d'una compartició muntada emprant un gestor de fitxers o terminal</li>
+      <li xml:lang="ca-valencia">Accés als fitxers d'una compartició muntada emprant un gestor de fitxers o terminal</li>
       <li xml:lang="de">Zugriff auf die Dateien einer eingehängten Freigabe mit einem Dateiverwaltungsprogramm oder einem Terminal</li>
       <li xml:lang="el">Παρέχει πρόσβαση στα αρχεία ενός προσαρτημένου κοινού πόρου με χρήση του διαχειριστή αρχείων ή του τερματικού</li>
       <li xml:lang="en-GB">Access to the files of a mounted share using a file manager or terminal</li>
@@ -246,8 +246,8 @@
       <li xml:lang="zh-TW">自動偵測外部掛載與解除掛載</li>
       <li>Remounting of previously used shares on program start</li>
       <li xml:lang="bs">Ponovno namještanje prethodno korištenih razmjena na početak programa</li>
-      <li xml:lang="ca">Tornar a muntar comparticions utilitzades anteriorment en iniciar el programa</li>
-      <li xml:lang="ca-valencia">Tornar a muntar comparticions utilitzades anteriorment en iniciar el programa</li>
+      <li xml:lang="ca">Tornar a muntar comparticions emprades anteriorment en iniciar el programa</li>
+      <li xml:lang="ca-valencia">Tornar a muntar comparticions emprades anteriorment en iniciar el programa</li>
       <li xml:lang="de">Erneutes Einhängen von vorher benutzten Freigaben beim Start des Programms</li>
       <li xml:lang="el">Αναπροσαρτά κοινούς πόρους προηγούμενης χρήσης στην εκκίνηση του προγράμματος</li>
       <li xml:lang="en-GB">Remounting of previously used shares on program start</li>
@@ -268,8 +268,8 @@
       <li xml:lang="zh-TW">在程式啟動時重新掛載先前使用過的分享</li>
       <li>Miscellaneous infos about remote network items and mounted shares</li>
       <li xml:lang="bs">Raznovrsne informacije o udaljenim mrežnim stavkama i namještenim razmjenama</li>
-      <li xml:lang="ca">Informacions diverses sobre els elements de xarxa remots i les comparticions muntades</li>
-      <li xml:lang="ca-valencia">Informacions diverses sobre els elements de xarxa remots i les comparticions muntades</li>
+      <li xml:lang="ca">Informacions diverses sobre elements de xarxa remots i les comparticions muntades</li>
+      <li xml:lang="ca-valencia">Informacions diverses sobre elements de xarxa remots i les comparticions muntades</li>
       <li xml:lang="de">Verschiedene Informationen über Netzwerke auf anderen Rechnern und eingehängte Freigaben</li>
       <li xml:lang="el">Διάφορες πληροφορίες για απομακρυσμένα δικτυακά αντικείμενα και προσαρτημένους κοινούς πόρους</li>
       <li xml:lang="en-GB">Miscellaneous information about remote network items and mounted shares</li>
@@ -361,8 +361,8 @@
       <li xml:lang="zh-TW">分享內容的預覽</li>
       <li>Several methods to look up the initial list of workgroups and domains</li>
       <li xml:lang="bs">Nekoliko metoda za pregled početnih lista radnih grupa i domena</li>
-      <li xml:lang="ca">Hi ha diversos mètodes per cercar la llista inicial dels grups de treball i dominis</li>
-      <li xml:lang="ca-valencia">Hi ha diversos mètodes per cercar la llista inicial dels grups de treball i dominis</li>
+      <li xml:lang="ca">Hi ha diversos mètodes per a cercar la llista inicial dels grups de treball i dominis</li>
+      <li xml:lang="ca-valencia">Hi ha diversos mètodes per a cercar la llista inicial dels grups de treball i dominis</li>
       <li xml:lang="de">Mehrere Methoden zur Suche nach der anfänglichen Liste von Arbeitsgruppen und Domänen</li>
       <li xml:lang="el">Πολλές μέθοδοι αναζήτησης στην αρχική λίστα ομάδων εργασίας και τομέων</li>
       <li xml:lang="en-GB">Several methods to look up the initial list of workgroups and domains</li>
@@ -383,8 +383,8 @@
       <li xml:lang="zh-TW">多種用來查詢工作群組與網域的初始清單的方法</li>
       <li>Default login</li>
       <li xml:lang="bs">Početna prijava</li>
-      <li xml:lang="ca">Inici de sessió per defecte</li>
-      <li xml:lang="ca-valencia">Inici de sessió per defecte</li>
+      <li xml:lang="ca">Inici de sessió predeterminat</li>
+      <li xml:lang="ca-valencia">Inici de sessió predeterminat</li>
       <li xml:lang="cs">Výchozí přihlášení</li>
       <li xml:lang="da">Standard-login</li>
       <li xml:lang="de">Standardanmeldung</li>
@@ -473,8 +473,8 @@
       <li xml:lang="zh-TW">系統匣小工具</li>
       <li>Support of advanced Samba options</li>
       <li xml:lang="bs">Podrška za napredne Samba opcije</li>
-      <li xml:lang="ca">Implementació de les opcions avançades de Samba</li>
-      <li xml:lang="ca-valencia">Implementació de les opcions avançades de Samba</li>
+      <li xml:lang="ca">Implementació per a les opcions avançades de Samba</li>
+      <li xml:lang="ca-valencia">Implementació per a les opcions avançades de Samba</li>
       <li xml:lang="de">Unterstützung der erweiterten Samba-Einstellungen</li>
       <li xml:lang="el">Υποστήριξη προχωρημένων επιλογών Samba</li>
       <li xml:lang="en-GB">Support of advanced Samba options</li>
@@ -495,8 +495,8 @@
       <li xml:lang="zh-TW">進階 Samba 選項的支援</li>
       <li>Support of printer shares</li>
       <li xml:lang="bs">Podrška za razmjene štampača</li>
-      <li xml:lang="ca">Implementació de les impressores compartides</li>
-      <li xml:lang="ca-valencia">Implementació de les impressores compartides</li>
+      <li xml:lang="ca">Implementació per a les impressores compartides</li>
+      <li xml:lang="ca-valencia">Implementació per a les impressores compartides</li>
       <li xml:lang="de">Unterstützung für Drucker-Freigaben</li>
       <li xml:lang="el">Υποστήριξη κοινών πόρων εκτυπωτών</li>
       <li xml:lang="en-GB">Support of printer shares</li>
@@ -562,8 +562,8 @@
       <li xml:lang="zh-TW">將遠端分享與本機複本同步的能力，反過來也可以</li>
       <li>Ability to define custom options for individual servers and shares</li>
       <li xml:lang="bs">Sposobnost definisanja prilagođenih opcija za individualne servere i razmjene</li>
-      <li xml:lang="ca">La possibilitat de definir individualment opcions personalitzades per a servidors i comparticions</li>
-      <li xml:lang="ca-valencia">La possibilitat de definir individualment opcions personalitzades per a servidors i comparticions</li>
+      <li xml:lang="ca">La capacitat per a definir opcions personalitzades individuals per a servidors i comparticions</li>
+      <li xml:lang="ca-valencia">La capacitat per a definir opcions personalitzades individuals per a servidors i comparticions</li>
       <li xml:lang="de">Fähigkeit zur Definition von benutzerdefinierten Einstellungen für einzelne Server und Freigaben.</li>
       <li xml:lang="el">Δυνατότητα καθορισμού προσαρμοσμένων επιλογών για ξεχωριστούς εξυπηρετητές και κοινούς πόρους</li>
       <li xml:lang="en-GB">Ability to define custom options for individual servers and shares</li>
@@ -584,8 +584,8 @@
       <li xml:lang="zh-TW">為每個伺服器與分享定義自訂選項的能力</li>
       <li>Laptop support through the Solid hardware device framework</li>
       <li xml:lang="bs">Laptop podrška preko čvrstog hardver uređajnog okruženja</li>
-      <li xml:lang="ca">Admet els portàtils a través del marc de treball per a dispositius Solid</li>
-      <li xml:lang="ca-valencia">Admet els portàtils a través del marc de treball per a dispositius Solid</li>
+      <li xml:lang="ca">Implementació per a portàtils a través del marc de treball Solid per a dispositius de maquinari</li>
+      <li xml:lang="ca-valencia">Implementació per a portàtils a través del marc de treball Solid per a dispositius de maquinari</li>
       <li xml:lang="de">Laptop-Unterstützung durch das Solid-Framework für Hardware-Geräte</li>
       <li xml:lang="el">Υποστήριξη φορητού υπολογιστή μέσω του πλαισίου Solid για συσκευές</li>
       <li xml:lang="en-GB">Laptop support through the Solid hardware device framework</li>
@@ -606,8 +606,8 @@
       <li xml:lang="zh-TW">透過 Solid 硬體裝置框架支援筆記型電腦</li>
       <li>Wake-On-LAN capabilities</li>
       <li xml:lang="bs">Wake-On-LAN mogućnosti</li>
-      <li xml:lang="ca">Funcionalitats d'activació per LAN (Wake-On-LAN)</li>
-      <li xml:lang="ca-valencia">Funcionalitats d'activació per LAN (Wake-On-LAN)</li>
+      <li xml:lang="ca">Capacitats de l'activació per LAN (Wake-On-LAN)</li>
+      <li xml:lang="ca-valencia">Capacitats de l'activació per LAN (Wake-On-LAN)</li>
       <li xml:lang="de">„Wake-On-LAN“-Fähigkeiten</li>
       <li xml:lang="el">Δυνατότητες απομακρυσμένης αφύπνισης</li>
       <li xml:lang="en-GB">Wake-On-LAN capabilities</li>
@@ -628,8 +628,8 @@
       <li xml:lang="zh-TW">LAN 喚醒的能力</li>
       <li>Plasmoid for desktop integration</li>
       <li xml:lang="bs">Plasmoid za integraciju radne površine</li>
-      <li xml:lang="ca">Plasmoide per a la integració a l'escriptori</li>
-      <li xml:lang="ca-valencia">Plasmoide per a la integració a l'escriptori</li>
+      <li xml:lang="ca">Plasmoide per a la integració amb l'escriptori</li>
+      <li xml:lang="ca-valencia">Plasmoide per a la integració amb l'escriptori</li>
       <li xml:lang="de">Plasmoid für die Integration in die Arbeitsfläche</li>
       <li xml:lang="el">Πλασμοειδές για ενοποίηση με το γραφικό περιβάλλον</li>
       <li xml:lang="en-GB">Plasmoid for desktop integration</li>
