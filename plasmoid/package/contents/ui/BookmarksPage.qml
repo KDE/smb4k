@@ -1,5 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2017 by A. Reinholdt <alexander.reinholdt@kdemail.net>  *
+ *   Copyright (C) 2017-2018 by A. Reinholdt                               *
+ *                 <alexander.reinholdt@kdemail.net>                       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -62,8 +63,7 @@ PlasmaComponents.Page {
         iconSource: "bookmarks-organize"
         width: minimumWidth
         onClicked: {
-          editor.setup()
-          editor.open()
+          iface.editBookmarks()
         }
       }
     }

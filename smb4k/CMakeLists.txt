@@ -45,7 +45,6 @@ target_link_libraries(smb4kconfigdialog
 
 set(smb4k_SRCS
   main.cpp
-  smb4kbookmarkeditor.cpp
   smb4kbookmarkmenu.cpp
   smb4kprofilesmenu.cpp
   smb4ksharesmenu.cpp
@@ -89,6 +88,5 @@ install(TARGETS smb4k DESTINATION ${KDE_INSTALL_BINDIR})
 install(PROGRAMS org.kde.smb4k.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 
 install(FILES smb4k_shell.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/smb4k)
-
 install(FILES org.kde.smb4k.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 

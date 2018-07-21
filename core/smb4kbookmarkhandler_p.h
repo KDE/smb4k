@@ -2,7 +2,7 @@
     Private classes for the bookmark handler
                              -------------------
     begin                : Sun Mar 20 2011
-    copyright            : (C) 2011-2017 by Alexander Reinholdt
+    copyright            : (C) 2011-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -161,10 +161,195 @@ class Q_DECL_EXPORT Smb4KBookmarkDialog : public QDialog
 };
 
 
+class Smb4KBookmarkEditor : public QDialog
+{
+  Q_OBJECT
+
+  public:
+    /**
+     * The constructor.
+     *
+     * @param bookmarks   The list of all bookmarks
+     *
+     * @param parent      The parent of this dialog.
+     */
+    explicit Smb4KBookmarkEditor(const QList<BookmarkPtr> &bookmarks, QWidget *parent = 0);
+
+    /**
+     * The destructor.
+     */
+    ~Smb4KBookmarkEditor();
+    
+    /**
+     * Load the bookmarks into the view
+     */
+    void loadBookmarks();
+    
+    /**
+     * Return the list of edited bookmarks
+     */
+    QList<BookmarkPtr> editedBookmarks();
+
+  protected:
+    /**
+     * Reimplemented from QObject
+     */
+    bool eventFilter(QObject *obj, QEvent *e);
+
+  protected Q_SLOTS:
+    /**
+     * Called when a bookmark was clicked
+     */
+    void slotItemClicked(QTreeWidgetItem *item, int col);
+
+    /**
+     * Called when the context menu was requested
+     */
+    void slotContextMenuRequested(const QPoint &pos);
+    
+    /**
+     * Called when the label is edited by the user
+     */
+    void slotLabelEdited();
+
+    /**
+     * Called when the group is edited by the user
+     */
+    void slotGroupEdited();
+
+    /**
+     * Called when the IP address is edited by the user
+     */
+    void slotIPEdited();
+
+    /**
+     * Called when the login is edited by the user
+     */
+    void slotLoginEdited();
+
+    /**
+     * Called when the add action was triggered
+     */
+    void slotAddGroupTriggered(bool checked);
+
+    /**
+     * Called when the delete action was triggered
+     */
+    void slotDeleteTriggered(bool checked);
+
+    /**
+     * Called when the clear action was triggered
+     */
+    void slotClearTriggered(bool checked);
+    
+    /**
+     * Called when the Ok button was clicked
+     */
+    void slotDialogAccepted();
+    
+    /**
+     * Called when the Cancel button was clicked
+     */
+    void slotDialogRejected();
+    
+    /**
+     * Called when the icon size changed
+     */
+    void slotIconSizeChanged(int group);
+    
+    /**
+     * Do adjustments in the list view
+     */
+    void slotAdjust();
+
+  private:
+    /**
+     * Set up the view
+     */
+    void setupView();
+
+    /**
+     * Finds the bookmark in the list
+     */
+    BookmarkPtr findBookmark(const QUrl &url);
+    
+    /**
+     * Ok push button
+     */
+    QPushButton *m_ok_button;
+    
+    /**
+     * Cancel push button
+     */
+    QPushButton *m_cancel_button;
+
+    /**
+     * List of the bookmarks that are being processed
+     */
+    QList<BookmarkPtr> m_bookmarks;
+
+    /**
+     * Tree widget
+     */
+    QTreeWidget *m_tree_widget;
+
+    /**
+     * The widget containing the editors
+     */
+    QWidget *m_editors;
+
+    /**
+     * The label
+     */
+    KLineEdit *m_label_edit;
+
+    /**
+     * The IP address
+     */
+    KLineEdit *m_ip_edit;
+
+    /**
+     * The login
+     */
+    KLineEdit *m_login_edit;
+
+    /**
+     * The groups
+     */
+    KComboBox *m_group_combo;
+
+    /**
+     * The list of groups
+     */
+    QStringList m_groups;
+
+    /**
+     * Action menu
+     */
+    KActionMenu *m_menu;
+
+    /**
+     * Add group action
+     */
+    QAction *m_add_group;
+
+    /**
+     * Delete action
+     */
+    QAction *m_delete;
+
+    /**
+     * Clear action
+     */
+    QAction *m_clear;
+};
+
+
 class Smb4KBookmarkHandlerPrivate
 {
   public:
     QList<BookmarkPtr> bookmarks;
+    QPointer<Smb4KBookmarkEditor> editor;
 };
 
 

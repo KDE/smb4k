@@ -177,6 +177,12 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
      * @returns TRUE if the share is bookmarked and FALSE otherwise.
      */
     bool isBookmarked(const SharePtr &share);
+    
+    /**
+     * This function opens the bookmark editor.
+     * @param parent        The parent widget of the bookmark editor
+     */
+    void editBookmarks(QWidget *parent = 0);
 
   Q_SIGNALS:
     /**

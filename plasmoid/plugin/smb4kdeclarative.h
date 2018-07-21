@@ -240,19 +240,9 @@ class Q_DECL_EXPORT Smb4KDeclarative : public QObject
     Q_INVOKABLE void removeBookmark(Smb4KBookmarkObject *object);
     
     /**
-     * Replaces the current list of bookmarks by the one passed. This function
-     * should only be used for a bookmark editor and the like.
-     * 
-     * @param bookmarks     The new list of bookmarks
+     * This function opens the bookmark editor.
      */
-    Q_INVOKABLE void replaceBookmarks(const QQmlListReference &bookmarks);
-    
-    /**
-     * This function removes a bookmark group.
-     * 
-     * @param name          The name of the bookmark group
-     */
-    Q_INVOKABLE void removeBookmarkGroup(const QString &name);
+    Q_INVOKABLE void editBookmarks();
     
     /**
      * This function starts the synchronization of a local and a 

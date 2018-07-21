@@ -28,7 +28,6 @@
 
 // application specific includes
 #include "smb4kglobal.h"
-#include "smb4kbookmarkeditor.h"
 
 // Qt includes
 #include <QAction>
@@ -145,11 +144,6 @@ class Smb4KBookmarkMenu : public KActionMenu
      * The bookmarks
      */
     QActionGroup *m_bookmarks;
-    
-    /**
-     * The bookmark editor
-     */
-    QPointer<Smb4KBookmarkEditor> m_editor;
 };
 
 #endif

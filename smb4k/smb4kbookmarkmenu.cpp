@@ -449,23 +449,7 @@ void Smb4KBookmarkMenu::setupMenu()
 
 void Smb4KBookmarkMenu::slotEditActionTriggered(bool /*checked*/)
 {
-  //
-  // Only allow one instance of the bookmark editor
-  // 
-  if (!m_editor)
-  {
-    m_editor = new Smb4KBookmarkEditor(m_parent_widget);
-    m_editor->exec();
-  }
-  else
-  {
-    m_editor->raise();
-  }
-  
-  //
-  // Delete the editor 
-  // 
-  delete m_editor;
+  Smb4KBookmarkHandler::self()->editBookmarks(menu());
 }
 
 
