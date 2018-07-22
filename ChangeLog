@@ -1,3 +1,13 @@
+Smb4K 2.1.1 (2018-07-22):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at https://cgit.kde.org/smb4k.git/log/?h=2.1
+
+- Fixed auto mounting of shares (BUG 396342).
+- Fixed missing rsync arguments in the synchronizer.
+- Fixed resetting of changes made to the bookmarks list. For this,
+  clear the list of bookmarks in the read function.
+
 Smb4K 2.1.0 (2018-04-02):
 
 See the summary of changes below. For a full list of changes, please
