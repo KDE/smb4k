@@ -348,7 +348,7 @@ void Smb4KBookmarkDialog::slotIconSizeChanged(int group)
 
 
 Smb4KBookmarkEditor::Smb4KBookmarkEditor(const QList<BookmarkPtr> &bookmarks, QWidget *parent)
-: m_bookmarks(bookmarks), QDialog(parent)
+: QDialog(parent), m_bookmarks(bookmarks)
 {
   //
   // Set the window title
@@ -473,15 +473,15 @@ void Smb4KBookmarkEditor::setupView()
 
   QLabel *l_label = new QLabel(i18n("Label:"), m_editors);
   m_label_edit = new KLineEdit(m_editors);
-  m_label_edit->setClearButtonShown(true);
+  m_label_edit->setClearButtonEnabled(true);
 
   QLabel *lg_label = new QLabel(i18n("Login:"), m_editors);
   m_login_edit = new KLineEdit(m_editors);
-  m_login_edit->setClearButtonShown(true);
+  m_login_edit->setClearButtonEnabled(true);
 
   QLabel *i_label = new QLabel(i18n("IP Address:"), m_editors);
   m_ip_edit = new KLineEdit(m_editors);
-  m_ip_edit->setClearButtonShown(true);
+  m_ip_edit->setClearButtonEnabled(true);
   
   QLabel *g_label = new QLabel(i18n("Group:"), m_editors);
   m_group_combo = new KComboBox(true, m_editors);
