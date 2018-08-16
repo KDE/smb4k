@@ -216,11 +216,18 @@ void Smb4KNetworkSearchDockWidget::setupActions()
   mountAction->setAutoToggle(false);
   connect(mountAction, SIGNAL(triggered(bool)), this, SLOT(slotMountActionTriggered(bool)));
   connect(mountAction, SIGNAL(activeChanged(bool)), this, SLOT(slotMountActionChanged(bool)));
+  
+  //
+  // One separator for the action collection
+  // 
+  QAction *separator1 = new QAction(this);
+  separator1->setSeparator(true);
 
   //
   // Add actions
   // 
   m_actionCollection->addAction("search_abort_action", searchAbortAction);
+  m_actionCollection->addAction("search_separator1", separator1);
   m_actionCollection->addAction("clear_search_action", clearAction);
   m_actionCollection->addAction("bookmark_action", bookmarkAction);
   m_actionCollection->addAction("mount_action", mountAction);

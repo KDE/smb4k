@@ -7,10 +7,13 @@
     <Action name="quit_action"/>
   </Menu>
   <Menu noMerge="1" name="network"><text>&amp;Network</text>
+    <ActionList name="network_menu"/>
   </Menu>
   <Menu noMerge="1" name="search"><text>&amp;Search</text>
+    <ActionList name="search_menu"/>
   </Menu>
   <Menu noMerge="1" name="shares"><text>Sh&amp;ares</text>
+    <ActionList name="shares_menu"/>
   </Menu>
   <Menu noMerge="1" name="bookmarks"><text>&amp;Bookmarks</text>
   </Menu>

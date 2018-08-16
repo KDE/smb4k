@@ -149,16 +149,18 @@ void Smb4KSharesViewDockWidget::setupActions()
   //
   KActionMenu *viewModesMenu = new KActionMenu(KDE::icon("view-choose"), i18n("View Modes"), this);
   
-  QActionGroup *viewModesGroup = new QActionGroup(m_actionCollection);
+  QActionGroup *viewModesGroup = new QActionGroup(this);
   viewModesGroup->setExclusive(true);
   connect(viewModesGroup, SIGNAL(triggered(QAction*)), this, SLOT(slotViewModeChanged(QAction*)));
   
   QAction *iconViewAction = new QAction(KDE::icon("view-list-icons"), i18n("Icon View"), this);
+  iconViewAction->setObjectName("icon_view_action");
   iconViewAction->setCheckable(true);
   viewModesGroup->addAction(iconViewAction);
   viewModesMenu->addAction(iconViewAction);
   
   QAction *listViewAction = new QAction(KDE::icon("view-list-details"), i18n("List View"), this);
+  listViewAction->setObjectName("list_view_action");
   listViewAction->setCheckable(true);
   viewModesGroup->addAction(listViewAction);
   viewModesMenu->addAction(listViewAction);
@@ -215,15 +217,29 @@ void Smb4KSharesViewDockWidget::setupActions()
   connect(filemanagerAction, SIGNAL(triggered(bool)), this, SLOT(slotFileManagerActionTriggered(bool)));
   
   //
+  // Three separators
+  // 
+  QAction *separator1 = new QAction(this);
+  separator1->setSeparator(true);
+  
+  QAction *separator2 = new QAction(this);
+  separator2->setSeparator(true);
+  
+  QAction *separator3 = new QAction(this);
+  separator3->setSeparator(true);
+  
+  
+  //
   // Add the actions
   // 
   m_actionCollection->addAction("shares_view_modes", viewModesMenu);
-  m_actionCollection->addAction("icon_view_action", iconViewAction);
-  m_actionCollection->addAction("list_view_action", listViewAction);
+  m_actionCollection->addAction("shares_separator1", separator1);
   m_actionCollection->addAction("unmount_action", unmountAction);
   m_actionCollection->addAction("unmount_all_action", unmountAllAction);
+  m_actionCollection->addAction("shares_separator2", separator2);
   m_actionCollection->addAction("bookmark_action", bookmarkAction);
   m_actionCollection->addAction("synchronize_action", synchronizeAction);
+  m_actionCollection->addAction("shares_separator3", separator3);
   m_actionCollection->addAction("konsole_action", konsoleAction);
   m_actionCollection->addAction("filemanager_action", filemanagerAction);
 
@@ -250,16 +266,10 @@ void Smb4KSharesViewDockWidget::setupActions()
   // 
   // Plug the actions into the context menu
   //
-  m_contextMenu->addAction(viewModesMenu);
-  m_contextMenu->addSeparator();
-  m_contextMenu->addAction(unmountAction);
-  m_contextMenu->addAction(unmountAllAction);
-  m_contextMenu->addSeparator();
-  m_contextMenu->addAction(bookmarkAction);
-  m_contextMenu->addAction(synchronizeAction);
-  m_contextMenu->addSeparator();
-  m_contextMenu->addAction(konsoleAction);
-  m_contextMenu->addAction(filemanagerAction);
+  for (QAction *a : m_actionCollection->actions())
+  {
+    m_contextMenu->addAction(a);
+  }
 }
 
 

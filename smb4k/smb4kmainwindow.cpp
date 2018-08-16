@@ -255,6 +255,9 @@ void Smb4KMainWindow::setupView()
   // Insert the toggle view mode action to the action group.
   m_dockWidgets->addAction(networkBrowserDock->toggleViewAction());
   static_cast<KActionMenu *>(actionCollection()->action("dock_widgets_menu"))->addAction(networkBrowserDock->toggleViewAction());
+  
+  // Insert the Network menu
+  plugActionList("network_menu", networkBrowserDock->actionCollection()->actions());
 
   //
   // Network search dock widget
@@ -281,6 +284,9 @@ void Smb4KMainWindow::setupView()
   m_dockWidgets->addAction(networkSearchDock->toggleViewAction());
   static_cast<KActionMenu *>(actionCollection()->action("dock_widgets_menu"))->addAction(networkSearchDock->toggleViewAction());
   
+  // Insert the Search menu
+  plugActionList("search_menu", networkSearchDock->actionCollection()->actions());
+  
   //
   // Shares view dock widget
   //
@@ -299,7 +305,10 @@ void Smb4KMainWindow::setupView()
   
   // Insert the toggle view mode action to the action group.
   m_dockWidgets->addAction(sharesViewDock->toggleViewAction());
-  static_cast<KActionMenu *>(actionCollection()->action("dock_widgets_menu"))->addAction(sharesViewDock->toggleViewAction());  
+  static_cast<KActionMenu *>(actionCollection()->action("dock_widgets_menu"))->addAction(sharesViewDock->toggleViewAction());
+  
+  // Insert the Shares menu
+  plugActionList("shares_menu", sharesViewDock->actionCollection()->actions());
   
   //
   // Initial main window look

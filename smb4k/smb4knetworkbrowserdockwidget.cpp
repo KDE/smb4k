@@ -178,11 +178,21 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
   connect(mountAction, SIGNAL(activeChanged(bool)), this, SLOT(slotMountActionChanged(bool)));
   
   //
+  // Two separators for the menu
+  // 
+  QAction *separator1 = new QAction(this);
+  separator1->setSeparator(true);
+  QAction *separator2 = new QAction(this);
+  separator2->setSeparator(true);
+  
+  //
   // Add the actions
   //
   m_actionCollection->addAction("rescan_abort_action", rescanAbortAction);
+  m_actionCollection->addAction("network_separator1", separator1);
   m_actionCollection->addAction("bookmark_action", bookmarkAction);
   m_actionCollection->addAction("mount_manually_action", manualAction);
+  m_actionCollection->addAction("network_separator2", separator2);
   m_actionCollection->addAction("authentication_action", authAction);
   m_actionCollection->addAction("custom_action", customAction);
   m_actionCollection->addAction("preview_action", previewAction);
@@ -216,16 +226,10 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
   // 
   // Plug the actions into the context menu
   //
-  m_contextMenu->addAction(rescanAbortAction);
-  m_contextMenu->addSeparator();
-  m_contextMenu->addAction(bookmarkAction);
-  m_contextMenu->addAction(manualAction);
-  m_contextMenu->addSeparator();
-  m_contextMenu->addAction(authAction);
-  m_contextMenu->addAction(customAction);
-  m_contextMenu->addAction(previewAction);
-  m_contextMenu->addAction(printAction);
-  m_contextMenu->addAction(mountAction);
+  for (QAction *a : m_actionCollection->actions())
+  {
+    m_contextMenu->addAction(a);
+  }
 }
 
 
