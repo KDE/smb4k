@@ -27,7 +27,7 @@
 #include <config.h>
 #endif
 
-// application specific inludes
+// application specific includes
 #include "smb4ksearch_p.h"
 #include "smb4knotification.h"
 #include "smb4kglobal.h"

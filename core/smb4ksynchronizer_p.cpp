@@ -715,7 +715,7 @@ void Smb4KSyncJob::slotStartSynchronization()
     // Do nothing
   }
   
-  // Make sure that the trailling slash is present. rsync is very 
+  // Make sure that the trailing slash is present. rsync is very 
   // picky regarding it.
   QString source = m_src.path() + (!m_src.path().endsWith('/') ? "/" : "");
   QString destination = m_dest.path() + (!m_dest.path().endsWith('/') ? "/" : "");
