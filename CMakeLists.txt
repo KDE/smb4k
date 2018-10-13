@@ -15,13 +15,13 @@ cmake_policy(SET CMP0037 NEW)
 if (POLICY CMP0071)
   cmake_policy(SET CMP0071 NEW)
 endif()
-  
+
 # Minimum required versions of Qt5 and KF5
 set(QT_MIN_VERSION "5.6.0")
 set(KF5_MIN_VERSION "5.25.0")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake/)
 
 include(KDEInstallDirs)
 include(KDECompilerSettings NO_POLICY_SCOPE)
@@ -61,6 +61,9 @@ find_package(KF5Crash ${KF5_MIN_VERSION} REQUIRED)
 
 find_package(KF5Plasma ${KF5_MIN_VERSION})
 set_package_properties(KF5Plasma PROPERTIES TYPE RUNTIME)
+
+# Find libsmbclient.h
+find_package(Libsmbclient REQUIRED MODULE)
 
 # Make sure that Smb4K builds when several custom targets
 # with the same name exist (happens in the po directory).

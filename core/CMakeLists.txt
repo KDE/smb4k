@@ -2,7 +2,8 @@ include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}
   ${CMAKE_SOURCE_DIR}
-  ${CMAKE_BINARY_DIR})
+  ${CMAKE_BINARY_DIR}
+  ${LIBSMBCLIENT_INCLUDE_DIRS})
 
 set(smb4kcore_LIB_SRCS  
   smb4kauthinfo.cpp
@@ -75,7 +76,8 @@ target_link_libraries(smb4kcore
   KF5::Notifications
   KF5::JobWidgets
   KF5::Wallet
-  KF5::XmlGui)
+  KF5::XmlGui
+  ${LIBSMBCLIENT_LIBRARIES})
 
 set_target_properties(smb4kcore PROPERTIES VERSION 5.1.0 SOVERSION 5)
 install(TARGETS smb4kcore DESTINATION ${KDE_INSTALL_LIBDIR})
