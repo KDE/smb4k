@@ -26,10 +26,6 @@
 #ifndef SMB4KGLOBAL_H
 #define SMB4KGLOBAL_H
 
-#ifndef SMB4K_DEPRECATED
-#define SMB4K_DEPRECATED __attribute__ ((__deprecated__))
-#endif
-
 // Qt includes
 #include <QMap>
 #include <QString>
@@ -53,6 +49,16 @@ typedef QSharedPointer<Smb4KHost> HostPtr;
 typedef QSharedPointer<Smb4KShare> SharePtr;
 typedef QSharedPointer<Smb4KBookmark> BookmarkPtr;
 typedef QSharedPointer<Smb4KCustomOptions> OptionsPtr;
+
+// Other definitions
+#ifndef SMB4K_DEPRECATED
+#define SMB4K_DEPRECATED __attribute__ ((__deprecated__))
+#endif
+
+#if !defined(Q_OS_LINUX) && !defined(Q_OS_FREEBSD) && !defined(Q_OS_NETBSD)
+#warning Defining SMB4K_UNSUPPORTED_PLATFORM
+#define SMB4K_UNSUPPORTED_PLATFORM
+#endif
 
 /**
  * This is the global namespace. It provides access to the global lists
