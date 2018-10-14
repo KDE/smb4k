@@ -38,6 +38,7 @@
 #include <QLabel>
 #include <QDialogButtonBox>
 #include <QPixmap>
+#include <QWindow>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"
@@ -55,8 +56,11 @@ Smb4KProfileMigrationDialog::Smb4KProfileMigrationDialog(const QStringList& from
   
   setMinimumWidth(sizeHint().width() > 350 ? sizeHint().width() : 350);
   
+  create();
+
   KConfigGroup group(Smb4KSettings::self()->config(), "ProfileMigrationDialog");
   KWindowConfig::restoreWindowSize(windowHandle(), group);
+  resize(windowHandle()->size()); // workaround for QTBUG-40584
 }
 
 
