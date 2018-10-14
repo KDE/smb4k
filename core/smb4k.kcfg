@@ -240,8 +240,12 @@
       <whatsthis>This sets the NetBIOS scope that nmblookup and smbclient will operate under. It should not be set unless every machine on your network neighborhood sets this value.</whatsthis>
       <!-- Will be filled by Smb4KCore::setDefaultConfigValues() -->
     </entry>
-    <entry name="RemoteSMBPort" type="Int">
+    <entry name="UseRemoteSmbPort" type="Bool">
       <label>SMB port:</label>
+      <whatsthis>This is the port that is used for connecting to remote servers with the client programs net, smbclient and smbtree. The default value is 139 (NetBIOS). Under FreeBSD, this setting is also used for mounting.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="RemoteSmbPort" type="Int">
       <whatsthis>This is the port that is used for connecting to remote servers with the client programs net, smbclient and smbtree. The default value is 139 (NetBIOS). Under FreeBSD, this setting is also used for mounting.</whatsthis>
       <min>1</min>
       <max>65535</max>
