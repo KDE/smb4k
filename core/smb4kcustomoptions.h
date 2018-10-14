@@ -57,51 +57,6 @@ class Q_DECL_EXPORT Smb4KCustomOptions
   
   public:
     /**
-     * Remount enumeration
-     * 
-     * @param RemountOnce       Remount the share only next time the application
-     *                          is started.
-     * @param RemountAlways     Remount the share every time the application is
-     *                          started.
-     * @param RemountNever      Never remount the share.
-     * @param UndefinedRemount  No remount option is defined.
-     */
-    enum Remount { RemountOnce,
-                   RemountAlways,
-                   RemountNever,
-                   UndefinedRemount };
-                  
-#if defined(Q_OS_LINUX)
-    /**
-     * The SecurityMode enumeration
-     */
-    enum SecurityMode { NoSecurityMode,
-                        Krb5,
-                        Krb5i,
-                        Ntlm,
-                        Ntlmi,
-                        Ntlmv2,
-                        Ntlmv2i,
-                        Ntlmssp,
-                        Ntlmsspi,
-                        UndefinedSecurityMode };
-
-    /**
-     * The WriteAccess enumeration
-     */
-    enum WriteAccess { ReadWrite,
-                       ReadOnly,
-                       UndefinedWriteAccess };
-#endif
-                       
-    /**
-     * The Kerberos enumeration
-     */
-    enum Kerberos { UseKerberos,
-                    NoKerberos,
-                    UndefinedKerberos };
-                  
-    /**
      * Constructor for a host
      */
     explicit Smb4KCustomOptions(Smb4KHost *host);
@@ -153,37 +108,6 @@ class Q_DECL_EXPORT Smb4KCustomOptions
     Smb4KGlobal::NetworkItem type() const;
     
     /**
-     * If the network item is of type Share, set if it should be remounted.
-     * If the network item is not of type Share, this function does nothing.
-     * 
-     * @param remount       One entry of the Remount enumeration
-     */
-    void setRemount(Remount remount);
-    
-    /**
-     * Returns if the network item should be remounted.
-     * 
-     * @returns if the network item should be remounted.
-     */
-    Remount remount() const;
-    
-    /**
-     * Set the profile this custom options object belongs to. The profile is 
-     * meant to distinguish between several network environments, like home
-     * and work.
-     * 
-     * @param profile         The profile name
-     */
-    void setProfile(const QString &profile);
-    
-    /**
-     * Returns the name of the profile this custom options object belongs to.
-     * 
-     * @returns the profile name
-     */
-    QString profile() const;
-    
-    /**
      * Sets the workgroup name.
      * 
      * @param workgroup       The workgroup name
@@ -203,13 +127,6 @@ class Q_DECL_EXPORT Smb4KCustomOptions
      * @param url             The URL
      */
     void setURL(const QUrl &url);
-    
-    /**
-     * Sets the UNC/URL of the network item
-     *
-     * @param url             The URL of the network item
-     */
-    void setURL(const QString &url);
     
     /**
      * Returns the URL of the network item
@@ -258,20 +175,189 @@ class Q_DECL_EXPORT Smb4KCustomOptions
     QString ip() const;
     
     /**
-     * Set the SMB port to use with this host or share.
-     * 
-     * @param port            The SMB port
+     * Returns the display string. Prefer this over all other alternatives in your
+     * GUI.
+     * @returns the display string.
      */
-    void setSMBPort(int port);
+    QString displayString() const;
+
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
+    /**
+     * Remount enumeration
+     * 
+     * @param RemountOnce       Remount the share only next time the application
+     *                          is started.
+     * @param RemountAlways     Remount the share every time the application is
+     *                          started.
+     * @param RemountNever      Never remount the share.
+     * @param UndefinedRemount  No remount option is defined.
+     */
+    enum Remount { RemountOnce,
+                   RemountAlways,
+                   RemountNever,
+                   UndefinedRemount };
     
     /**
-     * Returns the SMB port. The default value is 139.
+     * If the network item is of type Share, set if it should be remounted.
+     * If the network item is not of type Share, this function does nothing.
      * 
-     * @returns the SMB port
+     * @param remount       One entry of the Remount enumeration
      */
-    int smbPort() const;
+    void setRemount(Remount remount);
+    
+    /**
+     * Returns if the network item should be remounted.
+     * 
+     * @returns if the network item should be remounted.
+     */
+    Remount remount() const;
+    
+    /**
+     * Set if the information about the user that is to be owner of the share 
+     * should be used when mounting or not.
+     * 
+     * @param usage            Boolean that determines whether the uid should be
+     *                          used.
+     */
+    void setUseUser(bool use);
+    
+    /**
+     * Use the information about the user that is to be owner of the share.
+     * 
+     * @returns TRUE if the uid should be used when mounting.
+     */
+    bool useUser() const;
+    
+    /**
+     * Set the user who owns the share.
+     * @param user    The user
+     */
+    void setUser(const KUser &user);
+    
+    /**
+     * Returns the user who owns the share.
+     * @returns the user
+     */
+    KUser user() const;
+    
+    /**
+     * Set if the information about the group that is to be owner of the share 
+     * should be used when mounting or not.
+     * 
+     * @param use      Boolean that determines whether the gid should be used.
+     */
+    void setUseGroup(bool use);
+    
+    /**
+     * Use the information about the group that is to be owner of the share.
+     * 
+     * @returns TRUE if the gid should be used when mounting.
+     */
+    bool useGroup() const;
+    
+    /**
+     * Set the group that owns the share.
+     * 
+     * @param group   The group
+     */
+    void setGroup(const KUserGroup &group);
+    
+    /**
+     * Returns the group that owns the share.
+     * 
+     * @returns the group
+     */
+    KUserGroup group() const;
+    
+    /**
+     * Set if the file mode should be used.
+     * 
+     * @param use     Boolean that determines whether the file mode should be used.
+     */
+    void setUseFileMode(bool use);
+    
+    /**
+     * Returns if the file mode should be used.
+     * 
+     * @return TRUE if the file mode should be used
+     */
+    bool useFileMode() const;
+    
+    /**
+     * Set the file mode that should be used. The value must be defined in octal.
+     * 
+     * @param mode    The file mode
+     */
+    void setFileMode(const QString &mode);
+    
+    /**
+     * Returns the file mode that should be used. The value is returned in octal.
+     * 
+     * @returns the file mode
+     */
+    QString fileMode() const;
+    
+    /**
+     * Set if the directory mode should be used.
+     * 
+     * @param use     Boolean that determines whether the directory mode should be used.
+     */
+    void setUseDirectoryMode(bool use);
+    
+    /**
+     * Returns if the directory mode should be used.
+     * 
+     * @return TRUE if the file directory should be used
+     */
+    bool useDirectoryMode() const;
+    
+    /**
+     * Set the directory mode that should be used. The value must be defined in octal.
+     * 
+     * @param mode    The directory mode
+     */
+    void setDirectoryMode(const QString &mode);
+    
+    /**
+     * Returns the directory mode that should be used. The value is returned in octal.
+     * 
+     * @returns the directory mode
+     */
+    QString directoryMode() const;
+#endif
     
 #if defined(Q_OS_LINUX)
+    /**
+     * Set if the server supports the CIFS Unix Extensions. If this setting is set,
+     * the parameters that are not needed in the case of support are cleared.
+     * 
+     * @param supports          Boolean that determines if the server supports
+     *                          the CIFS Unix extensions.
+     */
+    void setCifsUnixExtensionsSupport(bool support);
+    
+    /**
+     * The server supports the CIFS Unix extensions.
+     * 
+     * @returns TRUE if the server supports the CIFS Unix Extensions.
+     */
+    bool cifsUnixExtensionsSupport() const;
+    
+    /**
+     * Set if the filesystem port should be used
+     * 
+     * @param use             Boolean that determines if the filesystem port should
+     *                        be used
+     */
+    void setUseFileSystemPort(bool use);
+    
+    /**
+     * Returns if the filesystem port should be used.
+     * 
+     * @returns TRUE if the filesystem port should be used
+     */
+    bool useFileSystemPort() const;
+    
     /**
      * Set the port that is to be used with mounting for a single share or all
      * shares of a host.
@@ -288,71 +374,121 @@ class Q_DECL_EXPORT Smb4KCustomOptions
     int fileSystemPort() const;
     
     /**
+     * Set if the security mode should be used.
+     * 
+     * @param use             Boolean that determines if the security mode should
+     *                        be used
+     */
+    void setUseSecurityMode(bool use);
+    
+    /**
+     * Returns if the security mode should be used
+     * 
+     * @returns TRUE if the security mode should be used
+     */
+    bool useSecurityMode() const;
+    
+    /**
      * Set the security mode for mounting.
      *
      * @param mode            The security mode
      */
-    void setSecurityMode(SecurityMode mode);
+    void setSecurityMode(int mode);
 
     /**
      * Returns the security mode for mounting a specific share.
      *
      * @returns the security mode
      */
-    SecurityMode securityMode() const;
+    int securityMode() const;
+    
+    /**
+     * Set if the write access setting should be used.
+     * 
+     * @param use             Boolean that determines if the write access setting
+     *                        should be used
+     */
+    void setUseWriteAccess(bool use);
+    
+    /**
+     * Returns if the write access setting should be used
+     * 
+     * @returns TRUE if the write access setting should be used
+     */
+    bool useWriteAccess() const;    
 
     /**
      * Set the write access for either a single share or all shares of a host. 
      * 
      * @param access          The write access
      */
-    void setWriteAccess(WriteAccess access);
+    void setWriteAccess(int access);
     
     /**
      * Returns the write access for the share.
      * 
      * @returns the write access
      */
-    WriteAccess writeAccess() const;
+    int writeAccess() const;
 #endif
 
     /**
+     * Set the profile this custom options object belongs to. The profile is 
+     * meant to distinguish between several network environments, like home
+     * and work.
+     * 
+     * @param profile         The profile name
+     */
+    void setProfile(const QString &profile);
+    
+    /**
+     * Returns the name of the profile this custom options object belongs to.
+     * 
+     * @returns the profile name
+     */
+    QString profile() const;
+    
+    /**
+     * Set whether the SMB port should be used.
+     * 
+     * @param use             True, if the SMB port should be used
+     */
+    void setUseSmbPort(bool use);
+    
+    /**
+     * Returns whether the SMB port should be used.
+     * 
+     * @returns TRUE if the SMB port should be used.
+     */
+    bool useSmbPort() const;
+    
+    /**
+     * Set the SMB port to use with this host or share.
+     * 
+     * @param port            The SMB port
+     */
+    void setSmbPort(int port);
+    
+    /**
+     * Returns the SMB port. The default value is 139.
+     * 
+     * @returns the SMB port
+     */
+    int smbPort() const;
+    
+    /**
      * Sets the useage of Kerberos for this network item.
      * 
-     * @param kerberos          Kerberos usage
+     * @param use               Boolean that determines the useage of Kerberos
      */
-    void setUseKerberos(Kerberos kerberos);
+    void setUseKerberos(bool use);
     
     /**
      * Returns the usage of Kerberos for this network item.
      * 
      * @returns the usage of Kerberos
      */
-    Kerberos useKerberos() const;
-    
-    /**
-     * Set the user who owns the share.
-     * @param user    The user
-     */
-    void setUser(const KUser &user);
-    
-    /**
-     * Returns the user who owns the share.
-     * @returns the user
-     */
-    KUser user() const;
-    
-    /**
-     * Set the group that owns the share.
-     * @param group   The group
-     */
-    void setGroup(const KUserGroup &group);
-    
-    /**
-     * Returns the group that owns the share.
-     * @returns the group
-     */
-    KUserGroup group() const;
+    bool useKerberos() const;
     
     /**
      * This function sets the MAC address of a host. In case the options 
@@ -440,11 +576,11 @@ class Q_DECL_EXPORT Smb4KCustomOptions
     bool operator==(Smb4KCustomOptions options) const { return equals(&options, true); }
     
     /**
-     * Check if the custom options are empty.
+     * Check if there are options defined
      * 
-     * @returns TRUE if the custom options object is empty
+     * @returns TRUE if there are options defined and FALSE otherwise
      */
-    bool isEmpty();
+    bool hasOptions() const;
     
     /**
      * Update this custom options object. You cannot change the workgroup,
