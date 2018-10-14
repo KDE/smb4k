@@ -2,7 +2,7 @@
     Private helper classes for Smb4KCustomOptionsManager class
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2017 by Alexander Reinholdt
+    copyright            : (C) 2011-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,19 +28,11 @@
 
 // application specific includes
 #include "smb4kcustomoptionsmanager.h"
-#include "smb4kcustomoptions.h"
 #include "smb4kglobal.h"
+#include "smb4kcustomoptions.h"
 
 // Qt includes
-#include <QList>
-#include <QCheckBox>
 #include <QDialog>
-#include <QSpinBox>
-#include <QPushButton>
-
-// KDE includes
-#include <KCompletion/KLineEdit>
-#include <KCompletion/KComboBox>
 
 class Smb4KCustomOptionsDialog : public QDialog
 {
@@ -62,28 +54,13 @@ class Smb4KCustomOptionsDialog : public QDialog
     void slotCheckValues();
     void slotOKClicked();
     void slotEnableWOLFeatures(const QString &mac);
+    void slotCifsExtensionsSupport(bool support);
     
   private:
     void setupView();
     bool checkDefaultValues();
     void setDefaultValues();
     void saveValues();
-    QPushButton *m_restore_button;
-    QPushButton *m_ok_button;
-    QPushButton *m_cancel_button;
-    QCheckBox *m_remount;
-    QSpinBox *m_smb_port;
-#if defined(Q_OS_LINUX)
-    QSpinBox *m_fs_port;
-    KComboBox *m_security_mode;
-    KComboBox *m_write_access;
-#endif
-    KComboBox *m_user_id;
-    KComboBox *m_group_id;
-    QCheckBox *m_kerberos;
-    KLineEdit *m_mac_address;
-    QCheckBox *m_send_before_scan;
-    QCheckBox *m_send_before_mount;
     OptionsPtr m_options;
 };
 

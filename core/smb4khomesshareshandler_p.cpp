@@ -42,6 +42,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QDialogButtonBox>
+#include <QWindow>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"
@@ -162,8 +163,12 @@ Smb4KHomesUserDialog::Smb4KHomesUserDialog(const SharePtr &share, QWidget *paren
   
   setMinimumWidth(sizeHint().width() > 350 ? sizeHint().width() : 350);
   
+  create();
+
   KConfigGroup group(Smb4KSettings::self()->config(), "HomesUserDialog");
   KWindowConfig::restoreWindowSize(windowHandle(), group);
+  resize(windowHandle()->size()); // workaround for QTBUG-40584
+
   m_user_combo->completionObject()->setItems(group.readEntry("HomesUsersCompletion", QStringList()));
 }
 

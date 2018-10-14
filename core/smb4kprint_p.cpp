@@ -45,6 +45,7 @@
 #include <QLabel>
 #include <QDialogButtonBox>
 #include <QTextDocument>
+#include <QWindow>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"
@@ -359,9 +360,12 @@ Smb4KPrintDialog::Smb4KPrintDialog(const SharePtr &share, QPrinter *printer, QWi
   m_print_button->setEnabled(false);
            
   setMinimumWidth(sizeHint().width() > 350 ? sizeHint().width() : 350);
+  
+  create();
 
   KConfigGroup group(Smb4KSettings::self()->config(), "PrintDialog");
   KWindowConfig::restoreWindowSize(windowHandle(), group);
+  resize(windowHandle()->size()); // workaround for QTBUG-40584
 }
 
 

@@ -48,7 +48,7 @@
 Smb4KConfigPageSamba::Smb4KConfigPageSamba(QWidget *parent) : QTabWidget(parent)
 {
   //
-  // General
+  // Common
   //
   QWidget *general_tab = new QWidget(this);
 
@@ -56,8 +56,8 @@ Smb4KConfigPageSamba::Smb4KConfigPageSamba(QWidget *parent) : QTabWidget(parent)
   general_layout->setSpacing(5);
   general_layout->setMargin(0);
 
-  // General options
-  QGroupBox *general_box = new QGroupBox(i18n("General Options"), general_tab);
+  // Common options
+  QGroupBox *general_box = new QGroupBox(i18n("Common Options"), general_tab);
 
   QGridLayout *gen_opt_layout = new QGridLayout(general_box);
   gen_opt_layout->setSpacing(5);
@@ -82,10 +82,11 @@ Smb4KConfigPageSamba::Smb4KConfigPageSamba(QWidget *parent) : QTabWidget(parent)
   netbios_scope->setObjectName("kcfg_NetBIOSScope");
   netbios_scope_label->setBuddy(netbios_scope);
   
-  QLabel *remote_smb_port_label = new QLabel(Smb4KSettings::self()->remoteSMBPortItem()->label(), general_box);
+  QCheckBox *useRemoteSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), general_box);
+  useRemoteSmbPort->setObjectName("kcfg_UseRemoteSmbPort");
 
   QSpinBox *remote_smb_port = new QSpinBox(general_box);
-  remote_smb_port->setObjectName("kcfg_RemoteSMBPort");
+  remote_smb_port->setObjectName("kcfg_RemoteSmbPort");
 //   remote_smb_port->setSliderEnabled(true); 
 
   gen_opt_layout->addWidget(netbios_name_label, 0, 0, 0);
@@ -96,10 +97,10 @@ Smb4KConfigPageSamba::Smb4KConfigPageSamba(QWidget *parent) : QTabWidget(parent)
   gen_opt_layout->addWidget(socket_options, 3, 1, 0);
   gen_opt_layout->addWidget(netbios_scope_label, 4, 0, 0);
   gen_opt_layout->addWidget(netbios_scope, 4, 1, 0);
-  gen_opt_layout->addWidget(remote_smb_port_label, 5, 0, 0);
+  gen_opt_layout->addWidget(useRemoteSmbPort, 5, 0, 0);
   gen_opt_layout->addWidget(remote_smb_port, 5, 1, 0);
 
-  // General client options
+  // Common client options
   QGroupBox *auth_box = new QGroupBox(i18n("Authentication"), general_tab);
 
   QGridLayout *auth_layout = new QGridLayout(auth_box);
@@ -148,7 +149,7 @@ Smb4KConfigPageSamba::Smb4KConfigPageSamba(QWidget *parent) : QTabWidget(parent)
   general_layout->addWidget(signing_box);
   general_layout->addStretch(100);
 
-  insertTab(GeneralTab, general_tab, i18n("General Settings"));
+  insertTab(GeneralTab, general_tab, i18n("Common Settings"));
 
   //
   // Options for the client programs

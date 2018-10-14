@@ -35,8 +35,8 @@
 #include "smb4khost.h"
 #include "smb4ksettings.h"
 #include "smb4kauthinfo.h"
-#include "smb4kcustomoptionsmanager.h"
 #include "smb4kcustomoptions.h"
+#include "smb4kcustomoptionsmanager.h"
 
 // Qt includes
 #include <QTimer>
@@ -138,34 +138,13 @@ void Smb4KSearchJob::slotStartSearch()
   // Kerberos
   if (options)
   {
-    switch (options->useKerberos())
+    if (options->useKerberos())
     {
-      case Smb4KCustomOptions::UseKerberos:
-      {
-        command << "-k";
-        break;
-      }
-      case Smb4KCustomOptions::NoKerberos:
-      {
-        // No kerberos
-        break;
-      }
-      case Smb4KCustomOptions::UndefinedKerberos:
-      {
-        if (Smb4KSettings::useKerberos())
-        {
-          command << "-k";
-        }
-        else
-        {
-          // Do nothing
-        }
-        break;
-      }
-      default:
-      {
-        break;
-      }
+      command << "-k";
+    }
+    else
+    {
+      // Do nothing
     }
   }
   else

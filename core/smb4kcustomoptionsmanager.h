@@ -27,7 +27,6 @@
 #define SMB4KCUSTOMOPTIONSMANAGER_H
 
 // application specific includes
-#include "smb4kcustomoptions.h"
 #include "smb4kglobal.h"
 
 // Qt includes
@@ -193,15 +192,6 @@ class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
      * @param options             The custom options
      */
     void removeCustomOptions(const OptionsPtr &options);
-    
-    /**
-     * This functions checks if the options object indeed carries custom
-     * options. It does not test for the value of remount(), so you need 
-     * do check it, too.
-     * @param options       The custom options object
-     * @returns TRUE if there are custom options defined and FALSE otherwise.
-     */
-    bool hasCustomOptions(const OptionsPtr &options);
     
     /**
      * This function returns a list of custom option objects that have 

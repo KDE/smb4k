@@ -5,7 +5,7 @@ include_directories(
   ${CMAKE_BINARY_DIR}
   ${LIBSMBCLIENT_INCLUDE_DIRS})
 
-set(smb4kcore_LIB_SRCS  
+set(smb4kcore_LIB_SRCS
   smb4kauthinfo.cpp
   smb4kbasicnetworkitem.cpp
   smb4kbookmark.cpp
@@ -46,9 +46,9 @@ set(smb4kcore_LIB_SRCS
 if (${CMAKE_HOST_SYSTEM_NAME} MATCHES "Linux")
   kconfig_add_kcfg_files(smb4kcore_LIB_SRCS smb4ksettings.kcfgc smb4kmountsettings_linux.kcfgc)
 elseif(${CMAKE_HOST_SYSTEM_NAME} MATCHES "FreeBSD")
-  kconfig_add_kcfg_files(smb4kcore_LIB_SRCS smb4ksettings.kcfgc smb4kmountsettings_freebsd.kcfgc)
+  kconfig_add_kcfg_files(smb4kcore_LIB_SRCS smb4ksettings.kcfgc smb4kmountsettings_bsd.kcfgc)
 elseif(${CMAKE_HOST_SYSTEM_NAME} MATCHES "NetBSD")
-  kconfig_add_kcfg_files(smb4kcore_LIB_SRCS smb4ksettings.kcfgc smb4kmountsettings_freebsd.kcfgc)
+  kconfig_add_kcfg_files(smb4kcore_LIB_SRCS smb4ksettings.kcfgc smb4kmountsettings_bsd.kcfgc)
 else ()
   kconfig_add_kcfg_files(smb4kcore_LIB_SRCS smb4ksettings.kcfgc)
 endif ()

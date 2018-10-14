@@ -7,8 +7,48 @@
   <kcfgfile name="smb4krc" />
   
   <group name="Samba">
-    <entry name="ClientCharset" type="Enum">
+    <entry name="UseUserId" type="Bool">
+      <label>User ID:</label>
+      <whatsthis>This is the user ID (a number) that the files and directories of the mounted share will have.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="UserId" type="String">
+      <whatsthis>This is the user ID (a number) that the files and directories of the mounted share will have.</whatsthis>
+      <default code="true">QString("%1").arg(KUser(KUser::UseRealUserID).userId().nativeId())</default>
+    </entry>
+    <entry name="UseGroupId" type="Bool">
+      <label>Group ID:</label>
+      <whatsthis>This is the group ID (a number) that the files and directories of the mounted share will have.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="GroupId" type="String">
+      <whatsthis>This is the group ID (a number) that the files and directories of the mounted share will have.</whatsthis>
+      <default code="true">QString("%1").arg(KUserGroup(KUser::UseRealUserID).groupId().nativeId())</default>
+    </entry>
+    <entry name="UseFileMode" type="Bool">
+      <label>File mode:</label>
+      <whatsthis>This is the file mode that will be used for creating files. It must be defined in octal.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="FileMode" type="String">
+      <whatsthis>This is the file mode that will be used for creating files. It must be defined in octal.</whatsthis>
+      <default>0755</default>
+    </entry>
+    <entry name="UseDirectoryMode" type="Bool">
+      <label>Directory mode:</label>
+      <whatsthis>This is the directory mode that will be used for creating directories. It must be defined in octal. In case the CIFS file system is used, this setting only takes effect if the server does not support the CIFS Unix Extensions.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="DirectoryMode" type="String">
+      <whatsthis>This is the directory mode that will be used for creating directories. It must be defined in octal.</whatsthis>
+      <default>0755</default>
+    </entry>
+    <entry name="UseClientCharset" type="Bool">
       <label>Client character set:</label>
+      <whatsthis>This is the character set that is used by the client side (i.e. your side) for codepage to charset translations. If you keep the default setting, Smb4K will try to automatically determine the charset by looking up the "unix charset" option in the smb.conf.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="ClientCharset" type="Enum">
       <whatsthis>This is the character set that is used by the client side (i.e. your side) for codepage to charset translations. If you keep the default setting, Smb4K will try to automatically determine the charset by looking up the "unix charset" option in the smb.conf.</whatsthis>
       <choices>
         <choice name="default_charset">
@@ -83,8 +123,12 @@
       </choices>
       <default>default_charset</default>
     </entry>
-    <entry name="ServerCodepage" type="Enum">
+    <entry name="UseServerCodepage" type="Bool">
       <label>Server codepage:</label>
+      <whatsthis>This is the codepage that is used by the server. The setting is only available with the SMBFS file system. If you keep the default setting, Smb4K will try to automatically determine the codepage by looking up the "dos charset" option in the smb.conf file.</whatsthis>
+      <default>false</default>      
+    </entry>
+    <entry name="ServerCodepage" type="Enum">
       <whatsthis>This is the codepage that is used by the server. The setting is only available with the SMBFS file system. If you keep the default setting, Smb4K will try to automatically determine the codepage by looking up the "dos charset" option in the smb.conf file.</whatsthis>
       <choices>
         <choice name="default_codepage">
@@ -188,26 +232,6 @@
         </choice>
       </choices>
       <default>default_codepage</default>
-    </entry>
-    <entry name="UserID" type="String">
-      <label>User ID:</label>
-      <whatsthis>This is the user ID (a number) that the files and directories of the mounted share will have.</whatsthis>
-      <default code="true">QString("%1").arg(KUser(KUser::UseRealUserID).userId().nativeId())</default>
-    </entry>
-    <entry name="GroupID" type="String">
-      <label>Group ID:</label>
-      <whatsthis>This is the group ID (a number) that the files and directories of the mounted share will have.</whatsthis>
-      <default code="true">QString("%1").arg(KUserGroup(KUser::UseRealUserID).groupId().nativeId())</default>
-    </entry>
-    <entry name="FileMask" type="String">
-      <label>File mask:</label>
-      <whatsthis>This is the mask that will be used for creating files. It must be defined in octal.</whatsthis>
-      <default>0755</default>
-    </entry>
-    <entry name="DirectoryMask" type="String">
-      <label>Directory mask:</label>
-      <whatsthis>This is the mask that will be used for creating directories. It must be defined in octal.</whatsthis>
-      <default>0755</default>
     </entry>
   </group>
 </kcfg>

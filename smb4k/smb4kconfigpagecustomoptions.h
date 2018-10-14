@@ -2,7 +2,7 @@
     The configuration page for the custom options
                              -------------------
     begin                : Sa Jan 19 2013
-    copyright            : (C) 2013-2017 by Alexander Reinholdt
+    copyright            : (C) 2013-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -104,11 +104,6 @@ class Smb4KConfigPageCustomOptions : public QWidget
      * one option.
      */
     void customSettingsModified();
-    
-    /**
-     * This signal is emitted when the settings should be reloaded.
-     */
-    void reloadCustomSettings();
 
   protected Q_SLOTS:
     /**
@@ -168,34 +163,18 @@ class Smb4KConfigPageCustomOptions : public QWidget
      */
     void slotEnableWOLFeatures(const QString &mac_address);
     
+    /**
+     * Enables / disables the settings use when the CIFS Unix extensions are
+     * not supported / supported.
+     */
+    void slotCifsUnixExtensionsSupport(bool on);
+    
   private:
-    enum Tabs { SambaTab = 0, WolTab = 1 };
-    void setupWidget();
+    void setupMountingTab();
     void clearEditors();
     void setCurrentOptions(const QString &url);
     void populateEditors();
     void commitChanges();
-    
-    QListWidget *m_custom_options;
-    KActionMenu *m_menu;
-    KActionCollection *m_collection;
-    QGroupBox *m_general_editors;
-    QTabWidget *m_tab_widget;
-    KLineEdit *m_unc_address;
-    KLineEdit *m_ip_address;
-    KLineEdit *m_mac_address;
-    QSpinBox *m_smb_port;
-#if defined(Q_OS_LINUX)
-    QSpinBox *m_fs_port;
-    KComboBox *m_security_mode;
-    KComboBox *m_write_access;
-#endif
-    KComboBox *m_user_id;
-    KComboBox *m_group_id;
-    QCheckBox *m_kerberos;
-    QCheckBox *m_send_before_scan;
-    QCheckBox *m_send_before_mount;
-    QCheckBox *m_remount_share;
     
     QList<OptionsPtr> m_optionsList;
     OptionsPtr m_currentOptions;

@@ -29,6 +29,13 @@
 
 // application specific includes
 #include "smb4kcustomoptions.h"
+#include "smb4ksettings.h"
+
+#if defined(Q_OS_LINUX)
+#include "smb4kmountsettings_linux.h"
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+#include "smb4kmountsettings_bsd.h"
+#endif
 
 // Qt includes
 #include <QDebug>
@@ -36,6 +43,7 @@
 
 // KDE includes
 #include <KCoreAddons/KUser>
+#include <KI18n/KLocalizedString>
 
 
 class Smb4KCustomOptionsPrivate
@@ -45,63 +53,102 @@ class Smb4KCustomOptionsPrivate
     QUrl url;
     QHostAddress ip;
     NetworkItem type;
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
     Smb4KCustomOptions::Remount remount;
-    QString profile;
-    int smbPort;
-#if defined(Q_OS_LINUX)
-    int fileSystemPort;
-    Smb4KCustomOptions::SecurityMode securityMode;
-    Smb4KCustomOptions::WriteAccess writeAccess;
-#endif
-    Smb4KCustomOptions::Kerberos kerberos;
+    bool useUser;
     KUser user;
+    bool useGroup;
     KUserGroup group;
+    bool useFileMode;
+    QString fileMode;
+    bool useDirectoryMode;
+    QString directoryMode;
+#endif
+#if defined(Q_OS_LINUX)
+    bool cifsUnixExtensionsSupport;
+    bool useFileSystemPort;
+    int fileSystemPort;
+    bool useSecurityMode;
+    int securityMode;
+    bool useWriteAccess;
+    int writeAccess;
+#endif
+    QString profile;
+    bool useSmbPort;
+    int smbPort;
+    bool useKerberos;
     QString mac;
-    bool wol_first_scan;
-    bool wol_mount;
+    bool wakeOnLanBeforeFirstScan;
+    bool wakeOnLanBeforeMount;
 };
 
 
 Smb4KCustomOptions::Smb4KCustomOptions(Smb4KHost *host)
 : d(new Smb4KCustomOptionsPrivate)
 {
-  d->workgroup      = host->workgroupName();
-  d->url            = host->url();
-  d->type           = Host;
-  d->remount        = UndefinedRemount;
-  d->smbPort        = host->port() != -1 ? host->port() : 139;
-#if defined(Q_OS_LINUX)
-  d->fileSystemPort = 445;
-  d->securityMode   = UndefinedSecurityMode;
-  d->writeAccess    = UndefinedWriteAccess;
+  d->workgroup = host->workgroupName();
+  d->url = host->url();
+  d->type = Host;
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
+  d->remount = UndefinedRemount;
+  d->useUser = Smb4KMountSettings::useUserId();
+  d->user = KUser(Smb4KMountSettings::userId());
+  d->useGroup = Smb4KMountSettings::useGroupId();
+  d->group = KUserGroup(Smb4KMountSettings::groupId());
+  d->useFileMode = Smb4KMountSettings::useFileMode();
+  d->fileMode = Smb4KMountSettings::fileMode();
+  d->useDirectoryMode = Smb4KMountSettings::useDirectoryMode();
+  d->directoryMode = Smb4KMountSettings::directoryMode();
 #endif
-  d->kerberos       = UndefinedKerberos;
-  d->user           = KUser(KUser::UseRealUserID);
-  d->group          = KUserGroup(KUser::UseRealUserID);
+#if defined(Q_OS_LINUX)
+  d->cifsUnixExtensionsSupport = Smb4KMountSettings::cifsUnixExtensionsSupport();
+  d->useFileSystemPort = Smb4KMountSettings::useRemoteFileSystemPort();
+  d->fileSystemPort = Smb4KMountSettings::remoteFileSystemPort();
+  d->useSecurityMode = Smb4KMountSettings::useSecurityMode();
+  d->securityMode = Smb4KMountSettings::securityMode();
+  d->useWriteAccess = Smb4KMountSettings::useWriteAccess();
+  d->writeAccess = Smb4KMountSettings::writeAccess();
+#endif
+  d->useSmbPort = Smb4KSettings::useRemoteSmbPort();
+  d->smbPort = host->port() != -1 ? host->port() : Smb4KSettings::remoteSmbPort();
+  d->useKerberos = Smb4KSettings::useKerberos();
   d->ip.setAddress(host->ip());
-  d->wol_first_scan = false;
-  d->wol_mount      = false;
+  d->wakeOnLanBeforeFirstScan = false;
+  d->wakeOnLanBeforeMount = false;
 }
 
 Smb4KCustomOptions::Smb4KCustomOptions(Smb4KShare *share)
 : d(new Smb4KCustomOptionsPrivate)
 {
-  d->url            = share->url();
-  d->workgroup      = share->workgroupName();
-  d->type           = Share;
-  d->remount        = UndefinedRemount;
-  d->smbPort        = 139;
-#if defined(Q_OS_LINUX)
-  d->fileSystemPort = share->port() != -1 ? share->port() : 445;
-  d->securityMode   = UndefinedSecurityMode;
-  d->writeAccess    = UndefinedWriteAccess;
+  d->url = share->url();
+  d->workgroup = share->workgroupName();
+  d->type = Share;
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
+  d->remount = UndefinedRemount;
+  d->useUser = Smb4KMountSettings::useUserId();
+  d->user = share->user();
+  d->useGroup = Smb4KMountSettings::useGroupId();
+  d->group = share->group();
+  d->useFileMode = Smb4KMountSettings::useFileMode();
+  d->fileMode = Smb4KMountSettings::fileMode();
+  d->useDirectoryMode = Smb4KMountSettings::useDirectoryMode();
+  d->directoryMode = Smb4KMountSettings::directoryMode();
 #endif
-  d->kerberos       = UndefinedKerberos;
-  d->user           = share->user();
-  d->group          = share->group();
+#if defined(Q_OS_LINUX)
+  d->cifsUnixExtensionsSupport = Smb4KMountSettings::cifsUnixExtensionsSupport();
+  d->useFileSystemPort = Smb4KMountSettings::useRemoteFileSystemPort();
+  d->fileSystemPort = share->port() != -1 ? share->port() : Smb4KMountSettings::remoteFileSystemPort();
+  d->useSecurityMode = Smb4KMountSettings::useSecurityMode();
+  d->securityMode = Smb4KMountSettings::securityMode();
+  d->useWriteAccess = Smb4KMountSettings::useWriteAccess();
+  d->writeAccess = Smb4KMountSettings::writeAccess();
+#endif
+  d->useSmbPort = Smb4KSettings::useRemoteSmbPort();
+  d->smbPort = Smb4KSettings::remoteSmbPort();
+  d->useKerberos = Smb4KSettings::useKerberos();
   d->ip.setAddress(share->hostIP());
-  d->wol_first_scan = false;
-  d->wol_mount      = false;
+  d->wakeOnLanBeforeFirstScan = false;
+  d->wakeOnLanBeforeMount = false;
 }
 
 
@@ -115,19 +162,32 @@ Smb4KCustomOptions::Smb4KCustomOptions(const Smb4KCustomOptions &o)
 Smb4KCustomOptions::Smb4KCustomOptions()
 : d(new Smb4KCustomOptionsPrivate)
 {
-  d->type           = UnknownNetworkItem;
-  d->remount        = UndefinedRemount;
-  d->smbPort        = 139;
-#if defined(Q_OS_LINUX)
-  d->fileSystemPort = 445;
-  d->securityMode   = UndefinedSecurityMode;
-  d->writeAccess    = UndefinedWriteAccess;
+  d->type = UnknownNetworkItem;
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
+  d->remount = UndefinedRemount;
+  d->useUser = Smb4KMountSettings::useUserId();
+  d->user = KUser(Smb4KMountSettings::userId());
+  d->useGroup = Smb4KMountSettings::useGroupId();
+  d->group = KUserGroup(Smb4KMountSettings::groupId());
+  d->useFileMode = Smb4KMountSettings::useFileMode();
+  d->fileMode = Smb4KMountSettings::fileMode();
+  d->useDirectoryMode = Smb4KMountSettings::useDirectoryMode();
+  d->directoryMode = Smb4KMountSettings::directoryMode();
 #endif
-  d->kerberos       = UndefinedKerberos;
-  d->user           = KUser(KUser::UseRealUserID);
-  d->group          = KUserGroup(KUser::UseRealUserID);
-  d->wol_first_scan = false;
-  d->wol_mount      = false;
+#if defined(Q_OS_LINUX)
+  d->cifsUnixExtensionsSupport = Smb4KMountSettings::cifsUnixExtensionsSupport();
+  d->useFileSystemPort = Smb4KMountSettings::useRemoteFileSystemPort();
+  d->fileSystemPort = Smb4KMountSettings::remoteFileSystemPort();
+  d->useSecurityMode = Smb4KMountSettings::useSecurityMode();
+  d->securityMode = Smb4KMountSettings::securityMode();
+  d->useWriteAccess = Smb4KMountSettings::useWriteAccess();
+  d->writeAccess = Smb4KMountSettings::writeAccess();
+#endif
+  d->useSmbPort = Smb4KSettings::useRemoteSmbPort();
+  d->smbPort = Smb4KSettings::remoteSmbPort();
+  d->useKerberos = Smb4KSettings::useKerberos();
+  d->wakeOnLanBeforeFirstScan = false;
+  d->wakeOnLanBeforeMount = false;
 }
 
 
@@ -138,73 +198,89 @@ Smb4KCustomOptions::~Smb4KCustomOptions()
 
 void Smb4KCustomOptions::setHost(Smb4KHost *host)
 {
-  Q_ASSERT(host);
-  
-  switch (d->type)
+  //
+  // Set all variables that can be extracted from the host item
+  //
+  if (host)
   {
-    case UnknownNetworkItem:
+    switch (d->type)
     {
-      d->workgroup      = host->workgroupName();
-      d->url            = host->url();
-      d->type           = Host;
-      d->smbPort        = host->port() != -1 ? host->port() : 139;
-#if defined(Q_OS_LINUX)
-      d->fileSystemPort = 445;
-#endif
-      d->ip.setAddress(host->ip());
-      break;
+      case UnknownNetworkItem:
+      {
+        d->workgroup = host->workgroupName();
+        d->url = host->url();
+        d->type = Host;
+        d->smbPort = host->port() != -1 ? host->port() : d->smbPort;
+        d->ip.setAddress(host->ip());
+        break;
+      }
+      default:
+      {
+        break;
+      }
     }
-    default:
-    {
-      break;
-    }
+  }
+  else
+  {
+    // Do nothing
   }
 }
 
 
 void Smb4KCustomOptions::setShare(Smb4KShare *share)
 {
-  Q_ASSERT(share);
-  
-  switch (d->type)
+  //
+  // Set all variables that can be extracted from the share item
+  // 
+  if (share)
   {
-    case UnknownNetworkItem:
+    switch (d->type)
     {
-      d->url = share->url();
-      d->workgroup = share->workgroupName();
-      d->type = Share;
-      d->smbPort = 139;
-#if defined(Q_OS_LINUX)
-      d->fileSystemPort = share->port() != -1 ? share->port() : 445;
-#endif
-      d->user = share->user();
-      d->group = share->group();
-      d->ip.setAddress(share->hostIP());
-      break;
-    }
-    case Host:
-    {
-      if (QString::compare(unc(), share->hostUNC(), Qt::CaseInsensitive) == 0)
+      case UnknownNetworkItem:
       {
         d->url = share->url();
+        d->workgroup = share->workgroupName();
         d->type = Share;
 #if defined(Q_OS_LINUX)
         d->fileSystemPort = share->port() != -1 ? share->port() : d->fileSystemPort;
 #endif
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
         d->user = share->user();
         d->group = share->group();
+#endif
         d->ip.setAddress(share->hostIP());
+        break;
       }
-      else
+      case Host:
       {
-        // Do nothing
+        if (QString::compare(unc(), share->hostUNC(), Qt::CaseInsensitive) == 0)
+        {
+          d->url = share->url();
+          d->type = Share;
+#if defined(Q_OS_LINUX)
+          d->fileSystemPort = share->port() != -1 ? share->port() : d->fileSystemPort;
+#endif
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
+          d->user = share->user();
+          d->group = share->group();
+#endif
+          d->ip.setAddress(share->hostIP());
+        }
+        else
+        {
+          // Do nothing
+        }
+        break;
       }
-      break;
-    }
-    default:
-    {
-      break;
-    }
+      default:
+      {
+        break;
+      }
+    }    
+  }
+  else
+  {
+    // Do nothing
   }
 }
 
@@ -215,46 +291,11 @@ Smb4KGlobal::NetworkItem Smb4KCustomOptions::type() const
 }
 
 
-void Smb4KCustomOptions::setRemount(Smb4KCustomOptions::Remount remount)
-{
-  switch (d->type)
-  {
-    case Share:
-    {
-      d->remount = remount;
-      break;
-    }
-    default:
-    {
-      d->remount = UndefinedRemount;
-      break;
-    }
-  }
-}
-
-
-Smb4KCustomOptions::Remount Smb4KCustomOptions::remount() const
-{
-  return d->remount;
-}
-
-
-void Smb4KCustomOptions::setProfile(const QString &profile)
-{
-  d->profile = profile;
-}
-
-
-QString Smb4KCustomOptions::profile() const
-{
-  return d->profile;
-}
-
-
 void Smb4KCustomOptions::setWorkgroupName(const QString &workgroup)
 {
   d->workgroup = workgroup;
 }
+
 
 QString Smb4KCustomOptions::workgroupName() const
 {
@@ -265,13 +306,6 @@ QString Smb4KCustomOptions::workgroupName() const
 void Smb4KCustomOptions::setURL(const QUrl &url)
 {
   d->url = url;
-}
-
-
-void Smb4KCustomOptions::setURL(const QString &url)
-{
-  d->url.setUrl(url, QUrl::TolerantMode);
-  d->url.setScheme("smb");
 }
 
 
@@ -354,15 +388,20 @@ QString Smb4KCustomOptions::ip() const
 }
 
 
-void Smb4KCustomOptions::setSMBPort(int port)
+QString Smb4KCustomOptions::displayString() const
 {
-  d->smbPort = port;
-
+  QString string;
+  
   switch (d->type)
   {
     case Host:
     {
-      d->url.setPort(port);
+      string = hostName();
+      break;
+    }
+    case Share:
+    {
+      string = i18n("%1 on %2", shareName(), hostName());
       break;
     }
     default:
@@ -370,16 +409,158 @@ void Smb4KCustomOptions::setSMBPort(int port)
       break;
     }
   }
+  
+  return string;
 }
 
 
-int Smb4KCustomOptions::smbPort() const
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
+void Smb4KCustomOptions::setRemount(Smb4KCustomOptions::Remount remount)
 {
-  return d->smbPort;
+  switch (d->type)
+  {
+    case Share:
+    {
+      d->remount = remount;
+      break;
+    }
+    default:
+    {
+      d->remount = UndefinedRemount;
+      break;
+    }
+  }
 }
+
+
+Smb4KCustomOptions::Remount Smb4KCustomOptions::remount() const
+{
+  return d->remount;
+}
+
+
+void Smb4KCustomOptions::setUseUser(bool use)
+{
+  d->useUser = use;
+}
+
+
+bool Smb4KCustomOptions::useUser() const
+{
+  return d->useUser;
+}
+
+
+void Smb4KCustomOptions::setUser(const KUser &user)
+{
+  d->user = user;
+}
+
+
+KUser Smb4KCustomOptions::user() const
+{
+  return d->user;
+}
+
+
+void Smb4KCustomOptions::setUseGroup(bool use)
+{
+  d->useGroup = use;
+}
+
+
+bool Smb4KCustomOptions::useGroup() const
+{
+  return d->useGroup;
+}
+
+
+void Smb4KCustomOptions::setGroup(const KUserGroup& group)
+{
+  d->group = group;
+}
+
+
+KUserGroup Smb4KCustomOptions::group() const
+{
+  return d->group;
+}
+
+
+void Smb4KCustomOptions::setUseFileMode(bool use)
+{
+  d->useFileMode = use;
+}
+
+
+bool Smb4KCustomOptions::useFileMode() const
+{
+  return d->useFileMode;
+}
+
+
+void Smb4KCustomOptions::setFileMode(const QString& mode)
+{
+  d->fileMode = mode;
+}
+
+
+QString Smb4KCustomOptions::fileMode() const
+{
+  return d->fileMode;
+}
+
+
+void Smb4KCustomOptions::setUseDirectoryMode(bool use)
+{
+  d->useDirectoryMode = use;
+}
+
+
+bool Smb4KCustomOptions::useDirectoryMode() const
+{
+  return d->useDirectoryMode;
+}
+
+
+void Smb4KCustomOptions::setDirectoryMode(const QString& mode)
+{
+  d->directoryMode = mode;
+}
+
+
+QString Smb4KCustomOptions::directoryMode() const
+{
+  return d->directoryMode;
+}
+#endif
 
 
 #if defined(Q_OS_LINUX)
+void Smb4KCustomOptions::setCifsUnixExtensionsSupport(bool support)
+{
+  d->cifsUnixExtensionsSupport = support;
+}
+
+
+bool Smb4KCustomOptions::cifsUnixExtensionsSupport() const
+{
+  return d->cifsUnixExtensionsSupport;
+}
+
+
+void Smb4KCustomOptions::setUseFileSystemPort(bool use)
+{
+  d->useFileSystemPort = use;
+}
+
+
+bool Smb4KCustomOptions::useFileSystemPort() const
+{
+  return d->useFileSystemPort;
+}
+
+
 void Smb4KCustomOptions::setFileSystemPort(int port)
 {
   d->fileSystemPort = port;
@@ -405,70 +586,128 @@ int Smb4KCustomOptions::fileSystemPort() const
 }
 
 
-void Smb4KCustomOptions::setSecurityMode(Smb4KCustomOptions::SecurityMode mode)
+void Smb4KCustomOptions::setUseSecurityMode(bool use)
+{
+  d->useSecurityMode = use;
+}
+
+
+bool Smb4KCustomOptions::useSecurityMode() const
+{
+  return d->useSecurityMode;
+}
+
+
+void Smb4KCustomOptions::setSecurityMode(int mode)
 {
   d->securityMode = mode;
 }
 
 
-Smb4KCustomOptions::SecurityMode Smb4KCustomOptions::securityMode() const
+int Smb4KCustomOptions::securityMode() const
 {
   return d->securityMode;
 }
 
 
-void Smb4KCustomOptions::setWriteAccess(Smb4KCustomOptions::WriteAccess access)
+void Smb4KCustomOptions::setUseWriteAccess(bool use)
+{
+  d->useWriteAccess = use;
+}
+
+
+bool Smb4KCustomOptions::useWriteAccess() const
+{
+  return d->useWriteAccess;
+}
+
+
+void Smb4KCustomOptions::setWriteAccess(int access)
 {
   d->writeAccess = access;
 }
 
 
-Smb4KCustomOptions::WriteAccess Smb4KCustomOptions::writeAccess() const
+int Smb4KCustomOptions::writeAccess() const
 {
   return d->writeAccess;
 }
 #endif
 
 
-void Smb4KCustomOptions::setUseKerberos(Smb4KCustomOptions::Kerberos kerberos)
+void Smb4KCustomOptions::setProfile(const QString &profile)
 {
-  d->kerberos = kerberos;
+  d->profile = profile;
 }
 
 
-Smb4KCustomOptions::Kerberos Smb4KCustomOptions::useKerberos() const
+QString Smb4KCustomOptions::profile() const
 {
-  return d->kerberos;
+  return d->profile;
 }
 
 
-void Smb4KCustomOptions::setUser(const KUser &user)
+void Smb4KCustomOptions::setUseSmbPort(bool use)
 {
-  d->user = user;
+  d->useSmbPort = use;
 }
 
 
-KUser Smb4KCustomOptions::user() const
+bool Smb4KCustomOptions::useSmbPort() const
 {
-  return d->user;
+  return d->useSmbPort;
 }
 
 
-void Smb4KCustomOptions::setGroup(const KUserGroup& group)
+void Smb4KCustomOptions::setSmbPort(int port)
 {
-  d->group = group;
+  d->smbPort = port;
+
+  switch (d->type)
+  {
+    case Host:
+    {
+      d->url.setPort(port);
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
 }
 
 
-KUserGroup Smb4KCustomOptions::group() const
+int Smb4KCustomOptions::smbPort() const
 {
-  return d->group;
+  return d->smbPort;
+}
+
+
+void Smb4KCustomOptions::setUseKerberos(bool use)
+{
+  d->useKerberos = use;
+}
+
+
+bool Smb4KCustomOptions::useKerberos() const
+{
+  return d->useKerberos;
 }
 
 
 void Smb4KCustomOptions::setMACAddress(const QString &macAddress)
 {
-  d->mac = macAddress;
+  QRegExp exp("..\\:..\\:..\\:..\\:..\\:..");
+  
+  if (exp.exactMatch(macAddress))
+  {
+    d->mac = macAddress;
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
@@ -480,25 +719,25 @@ QString Smb4KCustomOptions::macAddress() const
 
 void Smb4KCustomOptions::setWOLSendBeforeNetworkScan(bool send)
 {
-  d->wol_first_scan = send;
+  d->wakeOnLanBeforeFirstScan = send;
 }
 
 
 bool Smb4KCustomOptions::wolSendBeforeNetworkScan() const
 {
-  return d->wol_first_scan;
+  return d->wakeOnLanBeforeFirstScan;
 }
 
 
 void Smb4KCustomOptions::setWOLSendBeforeMount(bool send)
 {
-  d->wol_mount = send;
+  d->wakeOnLanBeforeMount = send;
 }
 
 
 bool Smb4KCustomOptions::wolSendBeforeMount() const
 {
-  return d->wol_mount;
+  return d->wakeOnLanBeforeMount;
 }
 
 
@@ -506,6 +745,7 @@ QMap<QString, QString> Smb4KCustomOptions::customOptions() const
 {
   QMap<QString,QString> entries;
 
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   switch (d->remount)
   {
     case RemountOnce:
@@ -533,61 +773,70 @@ QMap<QString, QString> Smb4KCustomOptions::customOptions() const
       break;
     }
   }
-
-  entries.insert("smb_port", QString("%1").arg(smbPort()));
+  
+  entries.insert("use_user", d->useUser ? "true" : "false");
+  entries.insert("uid", QString("%1").arg(d->user.userId().toString()));
+  entries.insert("owner", d->user.loginName());
+  entries.insert("use_group", d->useGroup ? "true" : "false");
+  entries.insert("gid", QString("%1").arg(d->group.groupId().toString()));
+  entries.insert("group", d->group.name());
+  entries.insert("use_file_mode", d->useFileMode ? "true" : "false");
+  entries.insert("file_mode", d->fileMode);
+  entries.insert("use_directory_mode", d->useDirectoryMode ? "true" : "false");
+  entries.insert("directory_mode", d->directoryMode);
+#endif
+  
 #if defined(Q_OS_LINUX)
+  entries.insert("cifs_unix_extensions_support", d->cifsUnixExtensionsSupport ? "true" : "false");
+  entries.insert("use_filesystem_port", d->useFileSystemPort ? "true" : "false");
   entries.insert("filesystem_port", QString("%1").arg(fileSystemPort()));
+  entries.insert("use_security_mode", d->useSecurityMode ? "true" : "false");
   
   switch (d->securityMode)
   {
-    case NoSecurityMode:
+    case Smb4KMountSettings::EnumSecurityMode::None:
     {
       entries.insert("security_mode", "none");
       break;
     }
-    case Krb5:
+    case Smb4KMountSettings::EnumSecurityMode::Krb5:
     {
       entries.insert("security_mode", "krb5");
       break;
     }
-    case Krb5i:
+    case Smb4KMountSettings::EnumSecurityMode::Krb5i:
     {
       entries.insert("security_mode", "krb5i");
       break;
     }
-    case Ntlm:
+    case Smb4KMountSettings::EnumSecurityMode::Ntlm:
     {
       entries.insert("security_mode", "ntlm");
       break;
     }
-    case Ntlmi:
+    case Smb4KMountSettings::EnumSecurityMode::Ntlmi:
     {
       entries.insert("security_mode", "ntlmi");
       break;
     }
-    case Ntlmv2:
+    case Smb4KMountSettings::EnumSecurityMode::Ntlmv2:
     {
       entries.insert("security_mode", "ntlmv2");
       break;
     }
-    case Ntlmv2i:
+    case Smb4KMountSettings::EnumSecurityMode::Ntlmv2i:
     {
       entries.insert("security_mode", "ntlmv2i");
       break;
     }
-    case Ntlmssp:
+    case Smb4KMountSettings::EnumSecurityMode::Ntlmssp:
     {
       entries.insert("security_mode", "ntlmssp");
       break;
     }
-    case Ntlmsspi:
+    case Smb4KMountSettings::EnumSecurityMode::Ntlmsspi:
     {
       entries.insert("security_mode", "ntlmsspi");
-      break;
-    }
-    case UndefinedSecurityMode:
-    {
-      entries.insert("security_mode", QString());
       break;
     }
     default:
@@ -595,22 +844,19 @@ QMap<QString, QString> Smb4KCustomOptions::customOptions() const
       break;
     }
   }
+  
+  entries.insert("use_write_access", d->useWriteAccess ? "true" : "false");
 
   switch (d->writeAccess)
   {
-    case ReadWrite:
+    case Smb4KMountSettings::EnumWriteAccess::ReadWrite:
     {
       entries.insert("write_access", "true");
       break;
     }
-    case ReadOnly:
+    case Smb4KMountSettings::EnumWriteAccess::ReadOnly:
     {
       entries.insert("write_access", "false");
-      break;
-    }
-    case UndefinedWriteAccess:
-    {
-      entries.insert("write_access", QString());
       break;
     }
     default:
@@ -619,37 +865,12 @@ QMap<QString, QString> Smb4KCustomOptions::customOptions() const
     }
   }
 #endif
-
-  switch (d->kerberos)
-  {
-    case UseKerberos:
-    {
-      entries.insert("kerberos", "true");
-      break;
-    }
-    case NoKerberos:
-    {
-      entries.insert("kerberos", "false");
-      break;
-    }
-    case UndefinedKerberos:
-    {
-      entries.insert("kerberos", QString());
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-  
-  entries.insert("uid", QString("%1").arg(d->user.userId().toString()));
-  entries.insert("owner", d->user.loginName());
-  entries.insert("gid", QString("%1").arg(d->group.groupId().toString()));
-  entries.insert("group", d->group.name());
+  entries.insert("use_smb_port", d->useSmbPort ? "true" : "false");
+  entries.insert("smb_port", QString("%1").arg(smbPort()));
+  entries.insert("kerberos", d->useKerberos ? "true" : "false");
   entries.insert("mac_address", d->mac);
-  entries.insert("wol_send_before_first_scan", d->wol_first_scan ? "true" : "false");
-  entries.insert("wol_send_before_mount", d->wol_mount ? "true" : "false");
+  entries.insert("wol_send_before_first_scan", d->wakeOnLanBeforeFirstScan ? "true" : "false");
+  entries.insert("wol_send_before_mount", d->wakeOnLanBeforeMount ? "true" : "false");
   
   return entries;
 }
@@ -709,7 +930,8 @@ bool Smb4KCustomOptions::equals(Smb4KCustomOptions *options, bool fullCheck) con
     {
       // Do nothing
     }
-    
+  
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
     // Remounting
     if (d->remount != options->remount())
     {
@@ -720,8 +942,8 @@ bool Smb4KCustomOptions::equals(Smb4KCustomOptions *options, bool fullCheck) con
       // Do nothing
     }
     
-    // SMB port
-    if (d->smbPort != options->smbPort())
+    // Use user information
+    if (d->useUser != options->useUser())
     {
       return false;
     }
@@ -730,7 +952,96 @@ bool Smb4KCustomOptions::equals(Smb4KCustomOptions *options, bool fullCheck) con
       // Do nothing
     }
     
+    // UID
+    if (d->user.userId() != options->user().userId())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // Use group information
+    if (d->useGroup != options->useGroup())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // GID
+    if (d->group.groupId() != options->group().groupId())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // Use file mask
+    if (d->useFileMode != options->useFileMode())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // File mode
+    if (d->fileMode != options->fileMode())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // Use directory mode
+    if (d->useDirectoryMode != options->useDirectoryMode())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    if (d->directoryMode != options->directoryMode())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+#endif
+    
 #if defined(Q_OS_LINUX)
+    // CIFS Unix Extension support
+    if (d->cifsUnixExtensionsSupport != options->cifsUnixExtensionsSupport())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    if (d->useFileSystemPort != options->useFileSystemPort())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+
     // File system port (used for mounting)
     if (d->fileSystemPort != options->fileSystemPort())
     {
@@ -741,8 +1052,28 @@ bool Smb4KCustomOptions::equals(Smb4KCustomOptions *options, bool fullCheck) con
       // Do nothing
     }
     
+    // Use security mode
+    if (d->useSecurityMode != options->useSecurityMode())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
     // Security mode
     if (d->securityMode != options->securityMode())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // Use write access
+    if (d->useWriteAccess != options->useWriteAccess())
     {
       return false;
     }
@@ -762,28 +1093,28 @@ bool Smb4KCustomOptions::equals(Smb4KCustomOptions *options, bool fullCheck) con
     }
 #endif
 
+    // Use SMB port
+    if (d->useSmbPort != options->useSmbPort())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    // SMB port
+    if (d->smbPort != options->smbPort())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+
     // Kerberos
-    if (d->kerberos != options->useKerberos())
-    {
-      return false;
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    // UID
-    if (d->user.userId() != options->user().userId())
-    {
-      return false;
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    // GID
-    if (d->group.groupId() != options->group().groupId())
+    if (d->useKerberos != options->useKerberos())
     {
       return false;
     }
@@ -803,7 +1134,7 @@ bool Smb4KCustomOptions::equals(Smb4KCustomOptions *options, bool fullCheck) con
     }
     
     // Send WOL packages before first scan
-    if (d->wol_first_scan != options->wolSendBeforeNetworkScan())
+    if (d->wakeOnLanBeforeFirstScan != options->wolSendBeforeNetworkScan())
     {
       return false;
     }
@@ -813,7 +1144,7 @@ bool Smb4KCustomOptions::equals(Smb4KCustomOptions *options, bool fullCheck) con
     }
     
     // Send WOL packages before mount
-    if (d->wol_mount != options->wolSendBeforeMount())
+    if (d->wakeOnLanBeforeMount != options->wolSendBeforeMount())
     {
       return false;
     }
@@ -831,83 +1162,136 @@ bool Smb4KCustomOptions::equals(Smb4KCustomOptions *options, bool fullCheck) con
 }
 
 
-bool Smb4KCustomOptions::isEmpty()
+bool Smb4KCustomOptions::hasOptions() const
 {
-  // Type
-  if (d->type != UnknownNetworkItem)
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Profile
-  if (!d->profile.isEmpty())
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Workgroup
-  if (!d->workgroup.isEmpty())
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // URL
-  if (!d->url.isEmpty())
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // IP address
-  if (!d->ip.isNull())
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Remounting
+  //
+  // NOTE: This function does not honor the workgroup, the url,
+  // the ip address, the type and the profile, because these things 
+  // are not custom options.
+  // 
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
+  // Perform remount
   if (d->remount != Smb4KCustomOptions::UndefinedRemount)
   {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // SMB port
-  if (d->smbPort != 139)
-  {
-    return false;
+    return true;
   }
   else
   {
     // Do nothing
   }
   
-#if defined(Q_OS_LINUX)
-  // File system port (used for mounting)
-  if (d->fileSystemPort != 445)
+  // Use user information
+  if (d->useUser != Smb4KMountSettings::useUserId())
   {
-    return false;
+    return true;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // User information
+  if (d->user.userId() != KUser(Smb4KMountSettings::userId()).userId())
+  {
+    return true;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Use group information
+  if (d->useGroup != Smb4KMountSettings::useGroupId())
+  {
+    return true;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Group information
+  if (d->group.groupId() != KUserGroup(Smb4KMountSettings::groupId()).groupId())
+  {
+    return true;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Use file mask
+  if (d->useFileMode != Smb4KMountSettings::useFileMode())
+  {
+    return true;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  if (d->fileMode != Smb4KMountSettings::fileMode())
+  {
+    return true;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  if (d->useDirectoryMode != Smb4KMountSettings::useDirectoryMode())
+  {
+    return true;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  if (d->directoryMode != Smb4KMountSettings::useDirectoryMode())
+  {
+    return true;
+  }
+  else
+  {
+    // Do nothing
+  }
+#endif
+#if defined(Q_OS_LINUX)
+  // CIFS Unix extension support
+  if (d->cifsUnixExtensionsSupport != Smb4KMountSettings::cifsUnixExtensionsSupport())
+  {
+    return true;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Use filesystem port
+  if (d->useFileSystemPort != Smb4KMountSettings::useRemoteFileSystemPort())
+  {
+    return true;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // File system port (used for mounting)
+  if (d->fileSystemPort != Smb4KMountSettings::remoteFileSystemPort())
+  {
+    return true;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Use security mode
+  if (d->useSecurityMode != Smb4KMountSettings::useSecurityMode())
+  {
+    return true;
   }
   else
   {
@@ -915,9 +1299,19 @@ bool Smb4KCustomOptions::isEmpty()
   }
   
   // Security mode
-  if (d->securityMode != Smb4KCustomOptions::UndefinedSecurityMode)
+  if (d->securityMode != Smb4KMountSettings::securityMode())
   {
-    return false;
+    return true;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // Use write access
+  if (d->useWriteAccess != Smb4KMountSettings::useWriteAccess())
+  {
+    return true;
   }
   else
   {
@@ -925,9 +1319,9 @@ bool Smb4KCustomOptions::isEmpty()
   }
 
   // Write access
-  if (d->writeAccess != UndefinedWriteAccess)
+  if (d->writeAccess != Smb4KMountSettings::writeAccess())
   {
-    return false;
+    return true;
   }
   else
   {
@@ -935,30 +1329,30 @@ bool Smb4KCustomOptions::isEmpty()
   }
 #endif
 
+  // Use SMB port
+  if (d->useSmbPort != Smb4KSettings::useRemoteSmbPort())
+  {
+    return true;
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  // SMB port
+  if (d->smbPort != Smb4KSettings::remoteSmbPort())
+  {
+    return true;
+  }
+  else
+  {
+    // Do nothing
+  }
+
   // Kerberos
-  if (d->kerberos != UndefinedKerberos)
+  if (d->useKerberos != Smb4KSettings::useKerberos())
   {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // UID
-  if (d->user.userId() != KUser(KUser::UseRealUserID).userId())
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // GID
-  if (d->group.groupId() != KUserGroup(KUser::UseRealUserID).groupId())
-  {
-    return false;
+    return true;
   }
   else
   {
@@ -966,9 +1360,9 @@ bool Smb4KCustomOptions::isEmpty()
   }
   
   // MAC address
-  if (!d->mac.isNull())
+  if (!d->mac.isEmpty())
   {
-    return false;
+    return true;
   }
   else
   {
@@ -976,9 +1370,9 @@ bool Smb4KCustomOptions::isEmpty()
   }
   
   // Send WOL packages before first scan
-  if (d->wol_first_scan)
+  if (d->wakeOnLanBeforeFirstScan)
   {
-    return false;
+    return true;
   }
   else
   {
@@ -986,35 +1380,49 @@ bool Smb4KCustomOptions::isEmpty()
   }
   
   // Send WOL packages before mount
-  if (d->wol_mount)
+  if (d->wakeOnLanBeforeMount)
   {
-    return false;
+    return true;
   }
   else
   {
     // Do nothing
   }
   
-  return true;
+  return false;
 }
+
 
 
 void Smb4KCustomOptions::update(Smb4KCustomOptions *options)
 {
     d->ip.setAddress(options->ip());
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
     d->remount = options->remount();
-    d->profile = options->profile();
-    d->smbPort = options->smbPort();
+    d->useUser = options->useUser();
+    d->user = options->user();
+    d->useGroup = options->useGroup();
+    d->group = options->group();
+    d->useFileMode = options->useFileMode();
+    d->fileMode = options->fileMode();
+    d->useDirectoryMode = options->useDirectoryMode();
+    d->directoryMode = options->directoryMode();
+#endif
 #if defined(Q_OS_LINUX)
-    d->fileSystemPort = options->fileSystemPort();;
+    d->cifsUnixExtensionsSupport = options->cifsUnixExtensionsSupport();
+    d->useFileSystemPort = options->useFileSystemPort();
+    d->fileSystemPort = options->fileSystemPort();
+    d->useSecurityMode = options->useSecurityMode();
     d->securityMode = options->securityMode();
+    d->useWriteAccess = options->useWriteAccess();
     d->writeAccess = options->writeAccess();
 #endif
-    d->kerberos = options->useKerberos();
-    d->user = options->user();
-    d->group = options->group();
+    d->profile = options->profile();
+    d->useSmbPort = options->useSmbPort();
+    d->smbPort = options->smbPort();
+    d->useKerberos = options->useKerberos();
     d->mac = options->macAddress();
-    d->wol_first_scan = options->wolSendBeforeNetworkScan();
-    d->wol_mount = options->wolSendBeforeMount();
+    d->wakeOnLanBeforeFirstScan = options->wolSendBeforeNetworkScan();
+    d->wakeOnLanBeforeMount = options->wolSendBeforeMount();
 }
 
