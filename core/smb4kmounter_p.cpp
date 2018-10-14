@@ -33,14 +33,8 @@
 #include "smb4knotification.h"
 #include "smb4khomesshareshandler.h"
 #include "smb4kglobal.h"
-#include "smb4kcustomoptionsmanager.h"
 #include "smb4kcustomoptions.h"
-
-#if defined(Q_OS_LINUX)
-#include "smb4kmountsettings_linux.h"
-#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-#include "smb4kmountsettings_freebsd.h"
-#endif
+#include "smb4kcustomoptionsmanager.h"
 
 // Qt includes
 #include <QUrl>

@@ -42,6 +42,7 @@
 #include <QGridLayout>
 #include <QLabel>
 #include <QDialogButtonBox>
+#include <QWindow>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"
@@ -1011,9 +1012,12 @@ Smb4KSynchronizationDialog::Smb4KSynchronizationDialog(const SharePtr &share, QW
   connect(m_swap_button, SIGNAL(clicked()), SLOT(slotSwapPathsClicked()));
 
   setMinimumSize((sizeHint().width() > 350 ? sizeHint().width() : 350), sizeHint().height());
+  
+  create();
 
   KConfigGroup group(Smb4KSettings::self()->config(), "SynchronizationDialog");
   KWindowConfig::restoreWindowSize(windowHandle(), group);
+  resize(windowHandle()->size()); // workaround for QTBUG-40584
 }
 
 

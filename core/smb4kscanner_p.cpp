@@ -31,8 +31,8 @@
 #include "smb4kscanner_p.h"
 #include "smb4ksettings.h"
 #include "smb4knotification.h"
-#include "smb4kcustomoptionsmanager.h"
 #include "smb4kcustomoptions.h"
+#include "smb4kcustomoptionsmanager.h"
 #include "smb4kworkgroup.h"
 #include "smb4khost.h"
 #include "smb4kshare.h"
@@ -797,37 +797,52 @@ void Smb4KQueryMasterJob::startProcess1()
     // Do nothing
   }
   
+  // Use Winbind's ccache
+  if (Smb4KSettings::useWinbindCCache())
+  {
+    command << "--use-ccache";
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // SMB port
+  if (options)
+  {
+    if (options->useSmbPort())
+    {
+      command << "-p";
+      command << QString("%1").arg(options->smbPort());
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    if (Smb4KSettings::useRemoteSmbPort())
+    {
+      command << "-p";
+      command << QString("%1").arg(Smb4KSettings::remoteSmbPort());
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
   // Use Kerberos
   if (options)
   {
-    switch (options->useKerberos())
+    if (options->useKerberos())
     {
-      case Smb4KCustomOptions::UseKerberos:
-      {
-        command << "-k";
-        break;
-      }
-      case Smb4KCustomOptions::NoKerberos:
-      {
-        // No kerberos 
-        break;
-      }
-      case Smb4KCustomOptions::UndefinedKerberos:
-      {
-        if (Smb4KSettings::useKerberos())
-        {
-          command << "-k";
-        }
-        else
-        {
-          // Do nothing
-        }
-        break;
-      }
-      default:
-      {
-        break;
-      }
+      command << "-k";
+    }
+    else
+    {
+      // Do nothing
     }
   }
   else
@@ -840,28 +855,6 @@ void Smb4KQueryMasterJob::startProcess1()
     {
       // Do nothing
     }
-  }
-  
-  // Use Winbind's ccache
-  if (Smb4KSettings::useWinbindCCache())
-  {
-    command << "--use-ccache";
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Port
-  if (options && options->smbPort() != Smb4KSettings::remoteSMBPort())
-  {
-    command << "-p";
-    command << QString("%1").arg(options->smbPort());
-  }
-  else
-  {
-    command << "-p";
-    command << QString("%1").arg(Smb4KSettings::remoteSMBPort());
   }
   
   //
@@ -1039,37 +1032,52 @@ void Smb4KQueryMasterJob::startProcess2(const QString& ipAddress)
     // Do nothing
   }
   
+  // Use Winbind's ccache
+  if (Smb4KSettings::useWinbindCCache())
+  {
+    command << "--use-ccache";
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // SMB port
+  if (options)
+  {
+    if (options->useSmbPort())
+    {
+      command << "-p";
+      command << QString("%1").arg(options->smbPort());
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    if (Smb4KSettings::useRemoteSmbPort())
+    {
+      command << "-p";
+      command << QString("%1").arg(Smb4KSettings::remoteSmbPort());
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
   // Use Kerberos
   if (options)
   {
-    switch (options->useKerberos())
+    if (options->useKerberos())
     {
-      case Smb4KCustomOptions::UseKerberos:
-      {
-        command << "-k";
-        break;
-      }
-      case Smb4KCustomOptions::NoKerberos:
-      {
-        // No kerberos 
-        break;
-      }
-      case Smb4KCustomOptions::UndefinedKerberos:
-      {
-        if (Smb4KSettings::useKerberos())
-        {
-          command << "-k";
-        }
-        else
-        {
-          // Do nothing
-        }
-        break;
-      }
-      default:
-      {
-        break;
-      }
+      command << "-k";
+    }
+    else
+    {
+      // Do nothing
     }
   }
   else
@@ -1082,28 +1090,6 @@ void Smb4KQueryMasterJob::startProcess2(const QString& ipAddress)
     {
       // Do nothing
     }
-  }
-  
-  // Use Winbind's ccache
-  if (Smb4KSettings::useWinbindCCache())
-  {
-    command << "--use-ccache";
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Port
-  if (options && options->smbPort() != Smb4KSettings::remoteSMBPort())
-  {
-    command << "-p";
-    command << QString("%1").arg(options->smbPort());
-  }
-  else
-  {
-    command << "-p";
-    command << QString("%1").arg(Smb4KSettings::remoteSMBPort());
   }
 
   //
@@ -1651,37 +1637,52 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
     // Do nothing
   }
   
+  // Use Winbind's ccache
+  if (Smb4KSettings::useWinbindCCache())
+  {
+    command << "--use-ccache";
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  // SMB port
+  if (options)
+  {
+    if (options->useSmbPort())
+    {
+      command << "-p";
+      command << QString("%1").arg(options->smbPort());
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    if (Smb4KSettings::useRemoteSmbPort())
+    {
+      command << "-p";
+      command << QString("%1").arg(Smb4KSettings::remoteSmbPort());
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
   // Use Kerberos
   if (options)
   {
-    switch (options->useKerberos())
+    if (options->useKerberos())
     {
-      case Smb4KCustomOptions::UseKerberos:
-      {
-        command << "-k";
-        break;
-      }
-      case Smb4KCustomOptions::NoKerberos:
-      {
-        // No kerberos 
-        break;
-      }
-      case Smb4KCustomOptions::UndefinedKerberos:
-      {
-        if (Smb4KSettings::useKerberos())
-        {
-          command << "-k";
-        }
-        else
-        {
-          // Do nothing
-        }
-        break;
-      }
-      default:
-      {
-        break;
-      }
+      command << "-k";
+    }
+    else
+    {
+      // Do nothing
     }
   }
   else
@@ -1694,28 +1695,6 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
     {
       // Do nothing
     }
-  }
-  
-  // Use Winbind's ccache
-  if (Smb4KSettings::useWinbindCCache())
-  {
-    command << "--use-ccache";
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Port
-  if (options && options->smbPort() != Smb4KSettings::remoteSMBPort())
-  {
-    command << "-p";
-    command << QString("%1").arg(options->smbPort());
-  }
-  else
-  {
-    command << "-p";
-    command << QString("%1").arg(Smb4KSettings::remoteSMBPort());
   }
   
   //
@@ -2028,7 +2007,7 @@ void Smb4KLookupSharesJob::slotStartLookup()
   // the comment, too.
   command << "-l";
   
-  // Port
+  // SMB port
   // If a port was defined for the host via Smb4KHost::port(), it will 
   // overwrite the other options.
   if (m_host->port() != -1)
@@ -2038,15 +2017,29 @@ void Smb4KLookupSharesJob::slotStartLookup()
   }
   else
   {
-    if (options && options->smbPort() != Smb4KSettings::remoteSMBPort())
+    if (options)
     {
-      command << "-p";
-      command << QString("%1").arg(options->smbPort());
+      if (options->useSmbPort())
+      {
+        command << "-p";
+        command << QString("%1").arg(options->smbPort());
+      }
+      else
+      {
+        // Do nothing
+      }
     }
     else
     {
-      command << "-p";
-      command << QString("%1").arg(Smb4KSettings::remoteSMBPort());
+      if (Smb4KSettings::useRemoteSmbPort())
+      {
+        command << "-p";
+        command << QString("%1").arg(Smb4KSettings::remoteSmbPort());
+      }
+      else
+      {
+        // Do nothing
+      }
     }
   }
   
@@ -2129,34 +2122,13 @@ void Smb4KLookupSharesJob::slotStartLookup()
   // Use Kerberos
   if (options)
   {
-    switch (options->useKerberos())
+    if (options->useKerberos())
     {
-      case Smb4KCustomOptions::UseKerberos:
-      {
-        command << "-k";
-        break;
-      }
-      case Smb4KCustomOptions::NoKerberos:
-      {
-        // No kerberos 
-        break;
-      }
-      case Smb4KCustomOptions::UndefinedKerberos:
-      {
-        if (Smb4KSettings::useKerberos())
-        {
-          command << "-k";
-        }
-        else
-        {
-          // Do nothing
-        }
-        break;
-      }
-      default:
-      {
-        break;
-      }
+      command << "-k";
+    }
+    else
+    {
+      // Do nothing
     }
   }
   else
@@ -2484,34 +2456,13 @@ void Smb4KLookupIPAddressJob::useNet(QStringList &command)
   // Use Kerberos
   if (options)
   {
-    switch (options->useKerberos())
+    if (options->useKerberos())
     {
-      case Smb4KCustomOptions::UseKerberos:
-      {
-        command << "-k";
-        break;
-      }
-      case Smb4KCustomOptions::NoKerberos:
-      {
-        // No kerberos 
-        break;
-      }
-      case Smb4KCustomOptions::UndefinedKerberos:
-      {
-        if (Smb4KSettings::useKerberos())
-        {
-          command << "-k";
-        }
-        else
-        {
-          // Do nothing
-        }
-        break;
-      }
-      default:
-      {
-        break;
-      }
+      command << "-k";
+    }
+    else
+    {
+      // Do nothing
     }
   }
   else
@@ -2536,7 +2487,7 @@ void Smb4KLookupIPAddressJob::useNet(QStringList &command)
     // Do nothing
   }
   
-  // Port
+  // SMB port
   // If a port was defined for the host via Smb4KHost::port(), it will 
   // overwrite the other options.
   if (m_host->port() != -1)
@@ -2546,15 +2497,29 @@ void Smb4KLookupIPAddressJob::useNet(QStringList &command)
   }
   else
   {
-    if (options && options->smbPort() != Smb4KSettings::remoteSMBPort())
+    if (options)
     {
-      command << "-p";
-      command << QString("%1").arg(options->smbPort());
+      if (options->useSmbPort())
+      {
+        command << "-p";
+        command << QString("%1").arg(options->smbPort());
+      }
+      else
+      {
+        // Do nothing
+      }
     }
     else
     {
-      command << "-p";
-      command << QString("%1").arg(Smb4KSettings::remoteSMBPort());
+      if (Smb4KSettings::useRemoteSmbPort())
+      {
+        command << "-p";
+        command << QString("%1").arg(Smb4KSettings::remoteSmbPort());
+      }
+      else
+      {
+        // Do nothing
+      }
     }
   }
 }

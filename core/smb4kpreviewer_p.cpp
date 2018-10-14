@@ -34,8 +34,8 @@
 #include "smb4kshare.h"
 #include "smb4kglobal.h"
 #include "smb4ksettings.h"
-#include "smb4kcustomoptionsmanager.h"
 #include "smb4kcustomoptions.h"
+#include "smb4kcustomoptionsmanager.h"
 
 // Qt includes
 #include <QTimer>
@@ -45,6 +45,7 @@
 #include <QVBoxLayout>
 #include <QDialogButtonBox>
 #include <QPushButton>
+#include <QWindow>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"
@@ -311,49 +312,42 @@ void Smb4KPreviewJob::slotStartPreview()
     // Do nothing
   }
 
-  // Port
-  if (options && options->smbPort() != Smb4KSettings::remoteSMBPort())
+  // SMB Port
+  if (options)
   {
-    command << "-p";
-    command << QString("%1").arg(options->smbPort());
+    if (options->useSmbPort())
+    {
+      command << "-p";
+      command << QString("%1").arg(options->smbPort());
+    }
+    else
+    {
+      // Do nothing
+    }
   }
   else
   {
-    command << "-p";
-    command << QString("%1").arg(Smb4KSettings::remoteSMBPort());
+    if (Smb4KSettings::useRemoteSmbPort())
+    {
+      command << "-p";
+      command << QString("%1").arg(Smb4KSettings::remoteSmbPort());
+    }
+    else
+    {
+      // Do nothing
+    }
   }
-
+  
   // Kerberos
   if (options)
   {
-    switch (options->useKerberos())
+    if (options->useKerberos())
     {
-      case Smb4KCustomOptions::UseKerberos:
-      {
-        command << " -k";
-        break;
-      }
-      case Smb4KCustomOptions::NoKerberos:
-      {
-        // No kerberos
-        break;
-      }
-      case Smb4KCustomOptions::UndefinedKerberos:
-      {
-        if (Smb4KSettings::useKerberos())
-        {
-          command << "-k";
-        }
-        else
-        {
-          // Do nothing
-        }
-        break;
-      }
-      default:
-      {
-        break;
-      }
+      command << "-k";
+    }
+    else
+    {
+      // Do nothing
     }
   }
   else
@@ -713,8 +707,11 @@ Smb4KPreviewDialog::Smb4KPreviewDialog(const SharePtr &share, QWidget *parent)
 
   setMinimumWidth(sizeHint().width() > 350 ? sizeHint().width() : 350);
 
+  create();
+
   KConfigGroup group(Smb4KSettings::self()->config(), "PreviewDialog");
   KWindowConfig::restoreWindowSize(windowHandle(), group);
+  resize(windowHandle()->size()); // workaround for QTBUG-40584
 
   QTimer::singleShot(0, this, SLOT(slotRequestPreview()));
 }
