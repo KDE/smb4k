@@ -119,6 +119,7 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
     paths << "/etc/samba";
     paths << "/usr/local/etc";
     paths << "/usr/local/etc/samba";
+    paths << "/usr/pkg/etc/samba";
     
     QFile smbConf;
     QStringList contents;

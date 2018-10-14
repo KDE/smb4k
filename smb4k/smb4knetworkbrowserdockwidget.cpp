@@ -497,7 +497,7 @@ void Smb4KNetworkBrowserDockWidget::slotItemSelectionChanged()
       if (browserItem && browserItem->shareItem()->isMounted() && !browserItem->shareItem()->isForeign())
       {
         //
-        // Substract shares mounted by the user
+        // Subtract shares mounted by the user
         // 
         unmountedShares--;
       }

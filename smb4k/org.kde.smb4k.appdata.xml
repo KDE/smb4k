@@ -5,7 +5,6 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+ and GFDL-1.2</project_license>
   <name>Smb4K</name>
-  <name xml:lang="ast">Smb4K</name>
   <name xml:lang="bs">Smb4K</name>
   <name xml:lang="ca">Smb4K</name>
   <name xml:lang="ca-valencia">Smb4K</name>
@@ -19,6 +18,7 @@
   <name xml:lang="fr">Smb4K</name>
   <name xml:lang="gl">Smb4K</name>
   <name xml:lang="it">Smb4K</name>
+  <name xml:lang="ko">Smb4K</name>
   <name xml:lang="nds">Smb4K</name>
   <name xml:lang="nl">Smb4K</name>
   <name xml:lang="pl">Smb4K</name>
@@ -46,6 +46,7 @@
   <summary xml:lang="fr">Navigateur avancé de voisinage réseau et utilitaire pour le montage des partages Samba</summary>
   <summary xml:lang="gl">Navegador avanzado da veciñanza de rede e ferramenta para montar comparticións de Samba</summary>
   <summary xml:lang="it">Browser di rete avanzato e front-end per i programmi della suite software Samba</summary>
+  <summary xml:lang="ko">고급 네트워크 환경 탐색 및 Samba 공유 마운트 유틸리티</summary>
   <summary xml:lang="nds">Verwiedert Nettwarkümgeven-Kieker un Inhangwrktüüch för Samba-Freegaven</summary>
   <summary xml:lang="nl">Geavanceerde browser voor de netwerkomgeving en hulpmiddel voor aankoppelen van Samba shares</summary>
   <summary xml:lang="pl">Zaawansowana przeglądarka otoczenia sieciowego i narzędzie do podpinania udziałów Samby</summary>
@@ -73,6 +74,7 @@
     <p xml:lang="fr">Smb4K est un navigateur de voisinage réseau avancé et un utilitaire de montage Samba pour KDE SC. Il balaye votre voisinage réseau à la recherche des groupes de travail, serveurs et partages disponibles et peut afficher tous les partages désirés sur votre système de fichiers local.</p>
     <p xml:lang="gl">Smb4K é un navegador avanzado da veciñanza de rede e unha ferramenta para montar comparticións de Samba que forma parte da colección de software de KDE. Examina a veciñanza de rede en busca de grupos de traballo, servidores e comparticións dispoñíbeis, e pode montar todas as comparticións que queira no seu sistema de ficheiros local.</p>
     <p xml:lang="it">Smb4K è un browser di rete avanzato e un front-end per i programmi della suite software Samba per KDE Software Compilation. Scansiona la tua rete per cercare tutti i gruppi di lavoro disponibili, i server e le condivisioni, e può montare tutte le condivisioni che desideri nel tuo file system.</p>
+    <p xml:lang="ko">Smb4K는 고급 네트워크 환경 탐색기 및 Samba 공유 마운트 도구입니다. 로컬 네트워크에 있는 작업 그룹, 서버, 공유 자원을 탐색할 수 있으며 로컬 파일 시스템에 공유를 마운트할 수 있습니다.</p>
     <p xml:lang="nds">Smb4K is en verwiedert Nettwarkümgeven-Kieker un Inhangwarktüüch för Samba-Freegaven för de KDE-Software-Tosamenstellen. Dat kiekt Dien Nettwarkümgeven na verföögbor Arbeitkoppeln, Servers un Freegaven dör un kann de Freegaven na Dien lokaal Dateisysteem inhangen.</p>
     <p xml:lang="nl">Smb4K is een geavanceerde browser voor de netwerkomgeving en hulpmiddel voor aankoppelen van Samba shares voor de KDE Software Compilation. Het scant uw netwerkomgeving voor alle beschikbare werkgroepen, servers en shares en kan alle gewenste shares aankoppelen aan uw lokale bestandssysteem.</p>
     <p xml:lang="pl">Smb4K jest zaawansowaną przeglądarką otoczenia sieciowego i narzędziem do podpinania udziałów Samby dla Zbioru Oprogramowania KDE. Przegląda twoje otoczenie sieciowe w poszukiwaniu wszystkich dostępnych grup roboczych, serwerów i udziałów, żeby umożliwić podpięcie wszystkich tych udziałów w lokalnym systemie plików.</p>
@@ -98,6 +100,7 @@
     <p xml:lang="fr">Smb4K utilise les programmes de la suite logicielle Samba. Son objectif est de fournir un programme facile à utiliser et fournissant le plus de fonctionnalités possibles.</p>
     <p xml:lang="gl">Smb4K fai uso dos programas da colección de software Samba. O seu obxectivo é o de fornecer un programa fácil de usar que forneza tantas funcionalidades como sexa posíbel.</p>
     <p xml:lang="it">Smb4K utilizza i programmi della suite Samba. Il suo scopo è quello di fornire un programma che sia facile da usare, e che abbia più funzionalità possibili.</p>
+    <p xml:lang="ko">Smb4K는 Samba 소프트웨어의 프로그램을 사용합니다. 사용하기 편하면서도 기능이 풍부한 프로그램을 목적으로 합니다.</p>
     <p xml:lang="nds">Smb4K bruukt de Programmen ut de Samba-Programmsammeln. Dat schaal sik eenfach bedenen laten un so veel Funkschonen hebben as mööglich.</p>
     <p xml:lang="nl">Smb4K gebruikt de programma's van de Samba software suite. Het doel is een programma te bieden dat gemakkelijk is te gebruiken to use en zoveel mogelijk functies heeft.</p>
     <p xml:lang="pl">Smb4K wykorzystuje programy z pakietu oprogramowania Samby. Jego zadaniem jest dostarczenie łatwego w użyciu programu jednocześnie posiadającego tak wiele możliwości jaka tylko jest możliwa.</p>
@@ -125,6 +128,7 @@
     <p xml:lang="fr">Fonctionnalité :</p>
     <p xml:lang="gl">Funcionalidades:</p>
     <p xml:lang="it">Funzionalità:</p>
+    <p xml:lang="ko">기능:</p>
     <p xml:lang="nds">Markmalen:</p>
     <p xml:lang="nl">Mogelijkheden:</p>
     <p xml:lang="pl">Możliwości:</p>
@@ -151,6 +155,7 @@
       <li xml:lang="fr">Balayage des groupes de travail (actifs), hôtes et partages</li>
       <li xml:lang="gl">Pode atopar grupos de traballo (activos), servidores e comparticións.</li>
       <li xml:lang="it">Ricerca di gruppi di lavoro, host e condivisioni (attivi)</li>
+      <li xml:lang="ko">(활성) 작업 그룹, 호스트, 공유 검색</li>
       <li xml:lang="nds">Kieken na (aktiev) Arbeitkoppeln, Reekners un Freegaven</li>
       <li xml:lang="nl">Scannen voor (actieve) werkgroepen, hosts en shares</li>
       <li xml:lang="pl">Przeszukiwanie (aktywnych) grup roboczych, gospodarzy oraz udziałów</li>
@@ -174,6 +179,7 @@
       <li xml:lang="fr">Prise en charge des systèmes de fichiers CIFS (Linux) et SMBFS (FreeBSD)</li>
       <li xml:lang="gl">É compatíbel cos sistemas de ficheiros CIFS (Linux) e SMBFS (FreeBSD).</li>
       <li xml:lang="it">Supporta i file system CIFS (Linux) e SMBFS (FreeBSD)</li>
+      <li xml:lang="ko">CIFS(리눅스) 및 SMBFS(FreeBSD) 파일 시스템 지원</li>
       <li xml:lang="nds">Ünnerstütt dat CIFS- (op Linux) un SMBFS-Dateisysteem (op FreeBSD)</li>
       <li xml:lang="nl">Ondersteuning van het CIFS (Linux) en SMBFS (FreeBSD) bestandssysteem</li>
       <li xml:lang="pl">Obsługa systemu plików CIFS (Linux) oraz SMBFS (FreeBSD)</li>
@@ -197,6 +203,7 @@
       <li xml:lang="fr">Montage et démontage des partages</li>
       <li xml:lang="gl">Permite montar e desmontar comparticións.</li>
       <li xml:lang="it">Montaggio e smontaggio delle condivisioni</li>
+      <li xml:lang="ko">공유 마운트 및 마운트 해제</li>
       <li xml:lang="nds">Freegaven in- un uthangen</li>
       <li xml:lang="nl">Aan- en afkoppelen van gedeelde mappen</li>
       <li xml:lang="pl">Podpinanie i odpinanie udziałów</li>
@@ -220,6 +227,7 @@
       <li xml:lang="fr">Accès aux fichiers d'un partage à travers un gestionnaire de fichiers ou un terminal</li>
       <li xml:lang="gl">Permite acceder aos ficheiros dunha compartición montada usando un xestor de ficheiros ou un terminal.</li>
       <li xml:lang="it">Accesso ai file di una condivisione montata usando un file manager o un terminale</li>
+      <li xml:lang="ko">파일 관리자나 터미널을 통해서 마운트된 공유 내 파일에 접근</li>
       <li xml:lang="nds">Togriep op de Dateien binnen en inhangt Freegaav över Dateipleger oder Konsool</li>
       <li xml:lang="nl">Toegang tot de bestanden van een aangekoppeld gedeelde map met gebruik van een bestandsbeheerder of terminal</li>
       <li xml:lang="pl">Dostęp do plików podpiętego udziału przy użyciu programu do zarządzania plikami lub terminalu</li>
@@ -243,6 +251,7 @@
       <li xml:lang="fr">Auto-détection des montages et démontages externes</li>
       <li xml:lang="gl">Pode detectar automaticamente montaxes e desmontaxes externos.</li>
       <li xml:lang="it">Auto-rilevazione di montaggi o smontaggi esterni</li>
+      <li xml:lang="ko">외부 마운트 및 마운트 해제 자동 감지</li>
       <li xml:lang="nds">Automaatsch Opdecken vun In- un Uthangen vun buten ut</li>
       <li xml:lang="nl">Autodetectie van externe aan- en afkoppelingen</li>
       <li xml:lang="pl">Samoczynne wykrywanie zewnętrznych działań podpinania i odpinania</li>
@@ -266,6 +275,7 @@
       <li xml:lang="fr">Remontage de partages précédemment utilisés lors du démarrage du programme</li>
       <li xml:lang="gl">Pode volver montar comparticións usadas previamente ao iniciar o programa.</li>
       <li xml:lang="it">Rimontaggio di una condivisione usata in precedenza all'avvio del programma</li>
+      <li xml:lang="ko">프로그램을 시작할 때 이전에 사용한 공유 다시 마운트</li>
       <li xml:lang="nds">Wedderinhangen vun al vördem bruukt Freegaven bi Programmstart</li>
       <li xml:lang="nl">Recent gebruikte gedeelde mappen opnieuw tijdens het laden van het programma aankoppelen</li>
       <li xml:lang="pl">Podpinanie poprzednio podpiętych udziałów przy starcie</li>
@@ -289,6 +299,7 @@
       <li xml:lang="fr">Infos diverses sur les éléments réseau distants et les partages montés</li>
       <li xml:lang="gl">Fornece información variada sobre elementos remotos da rede e comparticións montadas.</li>
       <li xml:lang="it">Informazioni varie su elementi di rete remoti e sulle condivisioni montate</li>
+      <li xml:lang="ko">원격 네트워크 항목과 마운트된 공유에 대한 정보 제공</li>
       <li xml:lang="nds">En Reeg verscheden Informatschonen över Indrääg binnen Nettwarken un inhangt Freegaven</li>
       <li xml:lang="nl">Allerlei informatie over netwerk-items en aangekoppelde shares</li>
       <li xml:lang="pl">Różne informacje o elementach w zdalnej sieci i podpiętych udziałach</li>
@@ -314,6 +325,7 @@
       <li xml:lang="fr">Recherche sur le réseau</li>
       <li xml:lang="gl">Permite realizar buscas na rede.</li>
       <li xml:lang="it">Ricerca in rete</li>
+      <li xml:lang="ko">네트워크 검색</li>
       <li xml:lang="nds">Nettwarksöök</li>
       <li xml:lang="nl">Netwerk doorzoeken</li>
       <li xml:lang="pl">Wyszukiwanie w sieci</li>
@@ -340,6 +352,7 @@
       <li xml:lang="fr">Prise en charge d'un serveur WINS</li>
       <li xml:lang="gl">É compatíbel con servidores WINS.</li>
       <li xml:lang="it">Supporta i server WINS</li>
+      <li xml:lang="ko">WINS 서버 지원</li>
       <li xml:lang="nds">WINS-Server-Ünnerstütten</li>
       <li xml:lang="nl">Ondersteuning voor WINS-server</li>
       <li xml:lang="pl">Obsługa serwera WINS</li>
@@ -363,6 +376,7 @@
       <li xml:lang="fr">Aperçu des contenus d'un partage</li>
       <li xml:lang="gl">Permite obter unha vista previa dos contidos dunha compartición.</li>
       <li xml:lang="it">Anteprima dei contenuti di una condivisione</li>
+      <li xml:lang="ko">공유 내용 미리 보기</li>
       <li xml:lang="nds">Vöransicht vun de Freegaav ehr Inholt</li>
       <li xml:lang="nl">Voorbeschouwing van de inhoud van een share</li>
       <li xml:lang="pl">Podgląd zawartości udziału</li>
@@ -386,6 +400,7 @@
       <li xml:lang="fr">Plusieurs méthodes pour découvrir la liste initiale des groupes de travail et des domaines</li>
       <li xml:lang="gl">Fornece varios métodos de busca na lista inicial de grupos de traballo e dominios.</li>
       <li xml:lang="it">Vari metodi per consultare la lista iniziale dei gruppi di lavoro e dei domini</li>
+      <li xml:lang="ko">작업 그룹과 도메인 목록을 가져오는 여러 방법</li>
       <li xml:lang="nds">Mehr Metoden för't Naslaan vun de eerste List mit Arbeitkoppeln un Domänen</li>
       <li xml:lang="nl">Verschillende methoden om de initiële lijst van werkgroepen en domeinen op te zoeken</li>
       <li xml:lang="pl">Kilka sposobów na znalezienie wstępnej listy grup roboczych i domen</li>
@@ -411,6 +426,7 @@
       <li xml:lang="fr">Identificateur de connexion par défaut</li>
       <li xml:lang="gl">Permite configurar credenciais predeterminadas de acceso.</li>
       <li xml:lang="it">Nome utente predefinito</li>
+      <li xml:lang="ko">기본 로그인</li>
       <li xml:lang="nds">Standardanmellen</li>
       <li xml:lang="nl">Standaard aanmelden</li>
       <li xml:lang="pl">Domyślny użytkownik</li>
@@ -434,6 +450,7 @@
       <li xml:lang="fr">Prise en charge spéciale des répertoires personnels partagés</li>
       <li xml:lang="gl">Xestiona de forma especial as comparticións de cartafoles persoais.</li>
       <li xml:lang="it">Gestione speciale delle condivisioni delle home</li>
+      <li xml:lang="ko">홈 공유 특수 처리</li>
       <li xml:lang="nds">Besünner Hanteren vun Tohuus-Freegaven</li>
       <li xml:lang="nl">Speciale behandeling van shares van hoofdmappen</li>
       <li xml:lang="pl">Wyjątkowa obsługa udziałów w postaci katalogów domowych</li>
@@ -457,6 +474,7 @@
       <li xml:lang="fr">Possibilité d'avoir des partages favoris</li>
       <li xml:lang="gl">Fornece un sistema de marcadores para gardar comparticións.</li>
       <li xml:lang="it">Possibilità di aggiungere le condivisioni nei preferiti</li>
+      <li xml:lang="ko">자주 찾는 공유 책갈피 추가</li>
       <li xml:lang="nds">Leestekens för vörtrocken Freegaven</li>
       <li xml:lang="nl">Vermogen om van favoriete shares een bladwijzer te maken</li>
       <li xml:lang="pl">Możliwość nadania zakładki ulubionym udziałom</li>
@@ -480,6 +498,7 @@
       <li xml:lang="fr">Composant graphique dans la barre d'état</li>
       <li xml:lang="gl">Fornece un trebello na área de notificación.</li>
       <li xml:lang="it">Oggetto per il vassoio di sistema</li>
+      <li xml:lang="ko">시스템 트레이 위젯</li>
       <li xml:lang="nds">Systeemafsnitt-Lüttprogramm</li>
       <li xml:lang="nl">Widget in systeemvak</li>
       <li xml:lang="pl">Element interfejsu w tacce systemowej</li>
@@ -503,6 +522,7 @@
       <li xml:lang="fr">Prise en charge des options avancées de Samba</li>
       <li xml:lang="gl">Permite usar opcións avanzadas de Samba.</li>
       <li xml:lang="it">Supporto ad opzioni Samba avanzate</li>
+      <li xml:lang="ko">고급 Samba 옵션 지원</li>
       <li xml:lang="nds">Ünnerstütt verwieder Samba-Optschonen</li>
       <li xml:lang="nl">Ondersteuning van geavanceerde Samba-opties</li>
       <li xml:lang="pl">Obsługa zaawansowanych możliwości Samby</li>
@@ -526,6 +546,7 @@
       <li xml:lang="fr">Prise en charge des imprimantes partagées</li>
       <li xml:lang="gl">Permite usar impresoras compartidas.</li>
       <li xml:lang="it">Supporto alla condivisione di stampanti</li>
+      <li xml:lang="ko">프린터 공유 지원</li>
       <li xml:lang="nds">Ünnerstütten vun Druckerfreegaven</li>
       <li xml:lang="nl">Ondersteuning van gedeelde printers</li>
       <li xml:lang="pl">Obsługa drukarek sieciowych</li>
@@ -550,6 +571,7 @@
       <li xml:lang="fr">Prise en charge de KWallet</li>
       <li xml:lang="gl">Compatibilidade con KWallet.</li>
       <li xml:lang="it">Supporto a KWallet</li>
+      <li xml:lang="ko">KWallet 지원</li>
       <li xml:lang="nds">KWallet-Ünnerstütten</li>
       <li xml:lang="nl">Ondersteuning van KWallet</li>
       <li xml:lang="pl">Obsługa KPortfela</li>
@@ -573,6 +595,7 @@
       <li xml:lang="fr">Synchronisation d'un partage distant avec une copie locale et vice-versa</li>
       <li xml:lang="gl">Permite sincronizar comparticións remotas con copias locais en ambos sentidos.</li>
       <li xml:lang="it">Sincronizzazione di una condivisione remota con una copia locale e viceversa</li>
+      <li xml:lang="ko">원격 공유와 로컬 사본 양방향 동기화</li>
       <li xml:lang="nds">Synkroniseren vun en feern Freegaav mit en lokaal Kopie, un ok ümdreiht</li>
       <li xml:lang="nl">Synchronisatie van een share op afstand met een lokale kopie en vice versa</li>
       <li xml:lang="pl">Synchronizacja zdalnego udziału z lokalną kopią i na odwrót</li>
@@ -596,6 +619,7 @@
       <li xml:lang="fr">Possibilité de définir des options personnalisées pour des serveurs et des partages individuels</li>
       <li xml:lang="gl">Permite definir configuracións personalizadas para servidores e comparticións concretas.</li>
       <li xml:lang="it">Capacità di definire opzioni personalizzate per server individuali e condivisioni</li>
+      <li xml:lang="ko">서버 및 공유 자원별 설정</li>
       <li xml:lang="nds">Lett Di Dien egen Optschonen för enkelte Servers un Freegaven fastleggen</li>
       <li xml:lang="nl">Vermogen om eigen opties voor individuele servers en shares te definiëren</li>
       <li xml:lang="pl">Możliwość określenia osobnych ustawień dla poszczególnych serwerów i udziałów</li>
@@ -619,6 +643,7 @@
       <li xml:lang="fr">Prise en charge des ordinateurs portables avec le framework de gestion matérielle Solid</li>
       <li xml:lang="gl">Compatíbel con portátiles mediante a infraestrutura de dispositivos de hardware Solid.</li>
       <li xml:lang="it">Supporto ai computer portatili per mezzo dell'infrastruttura per i dispositivi hardware Solid</li>
+      <li xml:lang="ko">Solid 하드웨어 장치 프레임워크를 통한 노트북 지원</li>
       <li xml:lang="nds">Klappreekner-Ünnerstütten över't Hardware-Rahmenwark Solid</li>
       <li xml:lang="nl">Ondersteuning van laptop via het framework voor hardware apparaten Solid</li>
       <li xml:lang="pl">Obsługa laptopa przez szkielet urządzenia sprzętowego Solid</li>
@@ -642,6 +667,7 @@
       <li xml:lang="fr">Capacités de réveil par le réseau (Wake-on-LAN)</li>
       <li xml:lang="gl">Ofrece funcionalidades de espertar na rede (Wake-On-LAN).</li>
       <li xml:lang="it">Funzionalità Wake-On-LAN</li>
+      <li xml:lang="ko">Wake-On-LAN 기능</li>
       <li xml:lang="nds">Kann OpWaken-op-LAN (WOL)</li>
       <li xml:lang="nl">Vermogen voor Wake-On-LAN</li>
       <li xml:lang="pl">Możliwość Wake-On-LAN</li>
@@ -665,6 +691,7 @@
       <li xml:lang="fr">Plasmoïde pour l'intégration sur le bureau</li>
       <li xml:lang="gl">Ofrece integración co escritorio mediante un plasmoide.</li>
       <li xml:lang="it">Plasmoide per l'integrazione desktop</li>
+      <li xml:lang="ko">Plasmoid를 통한 데스크톱 통합</li>
       <li xml:lang="nds">Plasma-Lüttprogramm för't Integreren na den Schriefdisch</li>
       <li xml:lang="nl">Plasmoid voor bureaubladintegratie</li>
       <li xml:lang="pl">Plazmoid do integracji z pulpitem</li>
@@ -691,6 +718,7 @@
     <p xml:lang="fr">Si vous travaillez dans un réseau contenant majoritairement des PC sous Windows, vous voudrez sans doute installer cette application pour accéder facilement aux partages Windows.</p>
     <p xml:lang="gl">Se traballa nun ambiente de rede dominado por Windows, este aplicativo axudarao a acceder facilmente aos recursos compartidos desde Windows.</p>
     <p xml:lang="it">Se stai lavorando in una rete dominata da Windows potresti voler installare questa applicazione, per essere in grado di accedere facilmente alle condivisioni fornite da Windows.</p>
+    <p xml:lang="ko">Windows가 대다수인 네트워크 환경에서 Windows 공유에 빠르게 접근하려면 이 프로그램을 사용할 수 있습니다.</p>
     <p xml:lang="nds">Arbeidst Du binnen en vun Windows präägt Nettwarkümgeven, kannst Du dit Programm installeren, wenn Du eenfach op de praatstahn Windows-Freegaven togriepen wullt.</p>
     <p xml:lang="nl">Als u werkt in een door Windows gedomineerde netwerkomgeving, dan zou u deze toepassing willen installeren om in staat te zijn gemakkelijk toegang tot de geboden Windows shares te krijgen.</p>
     <p xml:lang="pl">Jeśli pracujesz w otoczeniu sieciowym zdominowanym przez system Windows, to możesz wgrać program do łatwego uzyskiwania dostępu do udziałów Windowsa.</p>
@@ -718,6 +746,7 @@
       <caption xml:lang="fr">La fenêtre principale</caption>
       <caption xml:lang="gl">A xanela principal</caption>
       <caption xml:lang="it">La finestra principale</caption>
+      <caption xml:lang="ko">주 창</caption>
       <caption xml:lang="nds">Dat Hööftfinster</caption>
       <caption xml:lang="nl">Het hoofdvenster</caption>
       <caption xml:lang="pl">Główne okno</caption>
@@ -745,6 +774,7 @@
       <caption xml:lang="fr">Le plasmoïde</caption>
       <caption xml:lang="gl">O plasmoide</caption>
       <caption xml:lang="it">Il plasmoide</caption>
+      <caption xml:lang="ko">Plasmoid</caption>
       <caption xml:lang="nds">Dat Plasma-Lüttprogramm</caption>
       <caption xml:lang="nl">De plasmoid</caption>
       <caption xml:lang="pl">Plazmoid</caption>

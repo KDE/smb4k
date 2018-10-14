@@ -1,7 +1,6 @@
 # KDE Config File
 [Desktop Entry]
 Name=Smb4K
-Name[ast]=Smb4K
 Name[bs]=Smb4K
 Name[ca]=Smb4K
 Name[ca@valencia]=Smb4K
@@ -12,6 +11,7 @@ Name[el]=Smb4K
 Name[en_GB]=Smb4K
 Name[es]=Smb4K
 Name[et]=Smb4K
+Name[fi]=Smb4K
 Name[fr]=Smb4K
 Name[gl]=Smb4K
 Name[hu]=Smb4K
@@ -44,6 +44,7 @@ GenericName[el]=Προηγμένος περιηγητής περιοχής δι�
 GenericName[en_GB]=Advanced Network Neighbourhood Browser
 GenericName[es]=Navegador de entorno de red avanzado
 GenericName[et]=Täiustatud võrgunaabruse sirvija
+GenericName[fi]=Kehittynyt verkkoympäristöselain
 GenericName[fr]=Explorateur avancé de voisinage réseau
 GenericName[gl]=Navegador avanzado da veciñanza de rede
 GenericName[hu]=Speciális hálózati mappa böngésző
@@ -73,6 +74,7 @@ Comment[el]= περιηγητής περιοχής δικτύου
 Comment[en_GB]=Advanced Network Neighbourhood Browser
 Comment[es]=Navegador de entorno de red avanzado
 Comment[et]=Täiustatud võrgunaabruse sirvija
+Comment[fi]=Kehittynyt verkkoympäristöselain
 Comment[fr]=Explorateur avancé de voisinage réseau
 Comment[gl]=Navegador avanzado da veciñanza de rede
 Comment[hu]=Speciális hálózati mappa böngésző

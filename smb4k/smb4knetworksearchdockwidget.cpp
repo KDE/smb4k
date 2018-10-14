@@ -415,14 +415,14 @@ void Smb4KNetworkSearchDockWidget::slotItemSelectionChanged()
       if (searchItem && searchItem->shareItem()->isMounted() && !searchItem->shareItem()->isForeign())
       {
         //
-        // Substract shares mounted by the user
+        // Subtract shares mounted by the user
         // 
         unmountedShares--;
       }
       else if (searchItem && searchItem->shareItem()->isPrinter())
       {
         //
-        // Substract printer shares
+        // Subtract printer shares
         // 
         printerShares++;
       }

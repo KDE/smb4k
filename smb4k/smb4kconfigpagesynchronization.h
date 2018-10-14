@@ -92,7 +92,7 @@ class Smb4KConfigPageSynchronization : public QTabWidget
     
     /**
      * This slot is called when the 'keep partially transferred files' checkbox
-     * has been toggled. It enables/disables the dependend settings according
+     * has been toggled. It enables/disables the dependent settings according
      * to the state of the checkbox.
      * 
      * @param checked       TRUE if checked and FALSE otherwise
