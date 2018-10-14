@@ -7,15 +7,64 @@
   <kcfgfile name="smb4krc" />
   
   <group name="Samba">
-    <entry name="RemoteFileSystemPort" type="Int">
+    <entry name="CifsUnixExtensionsSupport" type="Bool">
+      <label>All or most of the servers support the CIFS Unix extensions</label>
+      <whatsthis>Most versions of Samba support the CIFS Unix or POSIX extensions. For these servers, some options are not needed, because the right values are negotiated during the mount process. For other servers, you might want to uncheck this options, so that predefined values can be passed to the server. Please note that if your computer is located in a Windows dominated network neighborhood with only a few Samba servers, you can safely uncheck this option and define custom options for the Samba servers.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="UseUserId" type="Bool">
+      <label>User ID:</label>
+      <whatsthis>This is the user ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS filesystem under Linux and the remote server supports the CIFS Unix Extensions, this setting will be ignored unless the assignment of the user ID is forced.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="UserId" type="String">
+      <whatsthis>This is the user ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS filesystem under Linux and the remote server supports the CIFS Unix Extensions, this setting will be ignored unless the assignment of the user ID is forced.</whatsthis>
+      <default code="true">QString("%1").arg(KUser(KUser::UseRealUserID).userId().nativeId())</default>
+    </entry>
+    <entry name="UseGroupId" type="Bool">
+      <label>Group ID:</label>
+      <whatsthis>This is the group ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS filesystem under Linux and the remote server supports the CIFS Unix Extensions, this setting will be ignored unless the assignment of the group ID is forced.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="GroupId" type="String">
+      <whatsthis>This is the group ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS filesystem under Linux and the remote server supports the CIFS Unix Extensions, this setting will be ignored unless the assignment of the group ID is forced.</whatsthis>
+      <default code="true">QString("%1").arg(KUserGroup(KUser::UseRealUserID).groupId().nativeId())</default>
+    </entry>
+    <entry name="UseFileMode" type="Bool">
+      <label>File mode:</label>
+      <whatsthis>This is the file mode that will be used for creating files. It must be defined in octal. In case the CIFS file system is used, this setting only takes effect if the server does not support the CIFS Unix Extensions.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="FileMode" type="String">
+      <whatsthis>This is the filemode that will be used for creating files. It must be defined in octal. In case the CIFS file system is used, this setting only takes effect if the server does not support the CIFS Unix Extensions.</whatsthis>
+      <default>0755</default>
+    </entry>
+    <entry name="UseDirectoryMode" type="Bool">
+      <label>Directory mask:</label>
+      <whatsthis>This is the directory mode that will be used for creating directories. It must be defined in octal. In case the CIFS file system is used, this setting only takes effect if the server does not support the CIFS Unix Extensions.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="DirectoryMode" type="String">
+      <whatsthis>This is the directory mode that will be used for creating directories. It must be defined in octal. In case the CIFS file system is used, this setting only takes effect if the server does not support the CIFS Unix Extensions.</whatsthis>
+      <default>0755</default>
+    </entry>
+    <entry name="UseRemoteFileSystemPort" type="Bool">
       <label>File system port:</label>
+      <whatsthis>This is the port that is exclusively used to mount shares from remote servers. The default value is 445 (CIFS file system).</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="RemoteFileSystemPort" type="Int">
       <whatsthis>This is the port that is exclusively used to mount shares from remote servers. The default value is 445 (CIFS file system).</whatsthis>
       <min>1</min>
       <max>65535</max>
       <default>445</default>
     </entry>
-    <entry name="ClientCharset" type="Enum">
+    <entry name="UseClientCharset" type="Bool">
       <label>Client character set:</label>
+      <whatsthis>This is the character set that is used by the client side (i.e. your side) either to convert local path names to and from Unicode (CIFS, Linux) or for codepage to charset translations (SMBFS, FreeBSD). If you keep the default setting, Smb4K will try to automatically determine the charset by looking up the "unix charset" option in the smb.conf.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="ClientCharset" type="Enum">
       <whatsthis>This is the character set that is used by the client side (i.e. your side) either to convert local path names to and from Unicode (CIFS, Linux) or for codepage to charset translations (SMBFS, FreeBSD). If you keep the default setting, Smb4K will try to automatically determine the charset by looking up the "unix charset" option in the smb.conf.</whatsthis>
       <choices>
         <choice name="default_charset">
@@ -90,28 +139,12 @@
       </choices>
       <default>default_charset</default>
     </entry>
-    <entry name="UserID" type="String">
-      <label>User ID:</label>
-      <whatsthis>This is the user ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS filesystem under Linux and the remote server supports the CIFS Unix Extensions, this setting will be ignored unless the assignment of the user ID is forced.</whatsthis>
-      <default code="true">QString("%1").arg(KUser(KUser::UseRealUserID).userId().nativeId())</default>
-    </entry>
-    <entry name="GroupID" type="String">
-      <label>Group ID:</label>
-      <whatsthis>This is the group ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS filesystem under Linux and the remote server supports the CIFS Unix Extensions, this setting will be ignored unless the assignment of the group ID is forced.</whatsthis>
-      <default code="true">QString("%1").arg(KUserGroup(KUser::UseRealUserID).groupId().nativeId())</default>
-    </entry>
-    <entry name="FileMask" type="String">
-      <label>File mask:</label>
-      <whatsthis>This is the mask that will be used for creating files. It must be defined in octal. In case the CIFS file system is used, this setting only takes effect if the server does not support the CIFS Unix Extensions.</whatsthis>
-      <default>0755</default>
-    </entry>
-    <entry name="DirectoryMask" type="String">
-      <label>Directory mask:</label>
-      <whatsthis>This is the mask that will be used for creating directories. It must be defined in octal. In case the CIFS file system is used, this setting only takes effect if the server does not support the CIFS Unix Extensions.</whatsthis>
-      <default>0755</default>
+    <entry name="UseWriteAccess" type="Bool">
+      <label>Write access:</label>
+      <whatsthis>Here you can choose if the shares should be mounted in read-write or read-only mode.</whatsthis>
+      <default>false</default>
     </entry>
     <entry name="WriteAccess" type="Enum">
-      <label>Write access:</label>
       <whatsthis>Here you can choose if the shares should be mounted in read-write or read-only mode.</whatsthis>
       <choices>
         <choice name="ReadWrite">
@@ -122,6 +155,16 @@
         </choice>
       </choices>
       <default>ReadWrite</default>
+    </entry>
+    <entry name="ForceUID" type="Bool">
+      <label>Definitely assign the UID</label>
+      <whatsthis>Instruct the client (i.e. your side) to ignore any user ID (UID) provided by the server for files and directories and to always assign the owner to be the value of the transmitted UID.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="ForceGID" type="Bool">
+      <label>Definitely assign the GID</label>
+      <whatsthis>Instruct the client (i.e. your side) to ignore any group ID (GID) provided by the server for files and directories and to always assign the owner to be the value of the transmitted GID.</whatsthis>
+      <default>false</default>
     </entry>
     <entry name="PermissionChecks" type="Bool">
       <label>Do permission checks</label>
@@ -136,10 +179,50 @@
     <entry name="ServerInodeNumbers" type="Bool">
       <label>Use server inode numbers</label>
       <whatsthis>Use inode numbers (unique persistent file identifiers) returned by the server instead of automatically generating temporary inode numbers on the client side.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="NoLocking" type="Bool">
+      <label>Do not use locking</label>
+      <whatsthis>Do not use locking. Do not start lockd.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="TranslateReservedChars" type="Bool">
+      <label>Translate reserved characters</label>
+      <whatsthis>Translate six of the seven reserved characters (including the colon, question mark, pipe, asterisk, greater than and less than characters but not the backslash) to remap range (above 0xF000). This allows you to open files that were created with such characters. This has no effect if the server does not support Unicode.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="UseSmbProtocolVersion" type="Bool">
+      <label>SMB protocol version:</label>
+      <whatsthis>Define which version of the SMB protocol is to be used.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="SmbProtocolVersion" type="Enum">
+      <whatsthis>Define which version of the SMB protocol is to be used.</whatsthis>
+      <choices>
+        <choice name="OnePointZero">
+          <label>1.0 (Classic CIFS/SMBv1 protocol)</label>
+        </choice>
+        <choice name="TwoPointZero">
+          <label>2.0 (Windows Vista SP1/Windows Server 2008)</label>
+        </choice>
+        <choice name="TwoPointOne">
+          <label>2.1 (Windows 7/Windows Server 2008R2)</label> 
+        </choice>
+        <choice name="ThreePointZero">
+          <label>3.0 (Windows 8/Windows Server 2012)</label>
+        </choice>
+        <choice name="ThreePointOnePointOne">
+          <label>3.1.1 (Windows Server 2016)</label>
+        </choice>
+      </choices>
+      <default>ThreePointZero</default>
+    </entry>
+    <entry name="UseCacheMode" type="Bool">
+      <label>Cache mode:</label>
+      <whatsthis>Define how read and write requests are handled. In case you choose to not cache file data at all, the client never utilizes the cache for normal reads and writes. It always accesses the server directly to satisfy a read or write request. If you choose to follow the CIFS/SMB2 protocol strictly, the cache is only trusted if the client holds an oplock. If the client does not hold an oplock, then the client bypasses the cache and accesses the server directly to satisfy a read or write request. Choosing to allow loose caching semantics can sometimes provide better performance on the expense of cache coherency. This option might cause data corruption, if several clients access the same set of files on the server at the same time. Because of this, the strict cache mode is recommended.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="CacheMode" type="Enum">
-      <label>Cache mode:</label>
       <whatsthis>Define how read and write requests are handled. In case you choose to not cache file data at all, the client never utilizes the cache for normal reads and writes. It always accesses the server directly to satisfy a read or write request. If you choose to follow the CIFS/SMB2 protocol strictly, the cache is only trusted if the client holds an oplock. If the client does not hold an oplock, then the client bypasses the cache and accesses the server directly to satisfy a read or write request. Choosing to allow loose caching semantics can sometimes provide better performance on the expense of cache coherency. This option might cause data corruption, if several clients access the same set of files on the server at the same time. Because of this, the strict cache mode is recommended.</whatsthis>
       <choices>
         <choice name="None">
@@ -154,23 +237,12 @@
       </choices>
       <default>Strict</default>
     </entry>
-    <entry name="TranslateReservedChars" type="Bool">
-      <label>Translate reserved characters</label>
-      <whatsthis>Translate six of the seven reserved characters (including the colon, question mark, pipe, asterisk, greater than and less than characters but not the backslash) to remap range (above 0xF000). This allows you to open files that were created with such characters. This has no effect if the server does not support Unicode.</whatsthis>
+    <entry name="UseSecurityMode" type="Enum">
+      <label>Security mode:</label>
+      <whatsthis>Security mode for mount.cifs. To be able to use this mode, the CIFS kernel module 1.40 or later is required.</whatsthis>
       <default>false</default>
-    </entry>
-    <entry name="NoLocking" type="Bool">
-      <label>Do not use locking</label>
-      <whatsthis>Do not use locking. Do not start lockd.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="CustomCIFSOptions" type="String">
-      <label>Additional options:</label>
-      <whatsthis>Here you can enter advanced options for the CIFS file system in a comma-separated list (refer to the manual page of mount.cifs to learn more). The list will be added AS IS to the "-o" argument of mount.cifs. Please do not enter options that have already been defined in the configuration dialog.</whatsthis>
-      <default></default>
     </entry>
     <entry name="SecurityMode" type="Enum">
-      <label>Security mode:</label>
       <whatsthis>Security mode for mount.cifs. To be able to use this mode, the CIFS kernel module 1.40 or later is required.</whatsthis>
       <choices>
         <choice name="None">
@@ -203,34 +275,10 @@
       </choices>
       <default>Ntlmssp</default>
     </entry>
-    <entry name="SmbProtocolVersion" type="Enum">
-      <label>SMB protocol version:</label>
-      <whatsthis>Define which version of the SMB protocol is to be used.</whatsthis>
-      <choices>
-        <choice name="OnePointZero">
-          <label>1.0 (Classic CIFS/SMBv1 protocol)</label>
-        </choice>
-        <choice name="TwoPointZero">
-          <label>2.0 (Windows Vista SP1/Windows Server 2008)</label>
-        </choice>
-        <choice name="TwoPointOne">
-          <label>2.1 (Windows 7/Windows Server 2008R2)</label> 
-        </choice>
-        <choice name="ThreePointZero">
-          <label>3.0 (Windows 8/Windows Server 2012)</label>
-        </choice>
-      </choices>
-      <default>OnePointZero</default>
-    </entry>
-    <entry name="ForceUID" type="Bool">
-      <label>Definitely assign the UID</label>
-      <whatsthis>Instruct the client (i.e. your side) to ignore any user ID (UID) provided by the server for files and directories and to always assign the owner to be the value of the transmitted UID.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="ForceGID" type="Bool">
-      <label>Definitely assign the GID</label>
-      <whatsthis>Instruct the client (i.e. your side) to ignore any group ID (GID) provided by the server for files and directories and to always assign the owner to be the value of the transmitted GID.</whatsthis>
-      <default>false</default>
+    <entry name="CustomCIFSOptions" type="String">
+      <label>Additional options:</label>
+      <whatsthis>Here you can enter advanced options for the CIFS file system in a comma-separated list (refer to the manual page of mount.cifs to learn more). The list will be added AS IS to the "-o" argument of mount.cifs. Please do not enter options that have already been defined in the configuration dialog.</whatsthis>
+      <default></default>
     </entry>
   </group>
 </kcfg>

@@ -1,4 +1,4 @@
-File=smb4kmountsettings_freebsd.kcfg
+File=smb4kmountsettings_bsd.kcfg
 ClassName=Smb4KMountSettings
 Singleton=true
 Mutators=true
