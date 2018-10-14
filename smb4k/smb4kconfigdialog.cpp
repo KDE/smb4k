@@ -42,15 +42,14 @@
 #include "core/smb4kglobal.h"
 #include "core/smb4kauthinfo.h"
 #include "core/smb4kwalletmanager.h"
+#include "core/smb4kcustomoptions.h"
 #include "core/smb4kcustomoptionsmanager.h"
 #include "core/smb4kprofilemanager.h"
 
 #if defined(Q_OS_LINUX)
-#include "core/smb4kmountsettings_linux.h"
+#include "smb4kmountsettings_linux.h"
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-#include "core/smb4kmountsettings_freebsd.h"
-#else
-#define UNSUPPORTED_PLATFORM
+#include "smb4kmountsettings_bsd.h"
 #endif
 
 // Qt includes
@@ -64,6 +63,7 @@
 #include <QTreeWidget>
 #include <QScrollArea>
 #include <QShowEvent>
+#include <QWindow>
 
 // KDE includes
 #include <KCoreAddons/KPluginFactory>
@@ -129,7 +129,7 @@ void Smb4KConfigDialog::setupDialog()
   samba_area->setWidgetResizable(true);
   samba_area->setFrameStyle(QFrame::NoFrame);
 
-#if !defined(UNSUPPORTED_PLATFORM)  
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)  
   Smb4KConfigPageMounting *mount_options = new Smb4KConfigPageMounting(this);
   QScrollArea *mount_area = new QScrollArea(this);
   mount_area->setWidget(mount_options);
@@ -165,7 +165,7 @@ void Smb4KConfigDialog::setupDialog()
   m_shares          = addPage(share_area, Smb4KSettings::self(), i18n("Shares"), "folder-network");
   m_authentication  = addPage(auth_area, Smb4KSettings::self(), i18n("Authentication"), "dialog-password");
   m_samba           = addPage(samba_area, Smb4KSettings::self(), i18n("Samba"), "preferences-system-network-sharing");
-#if !defined(UNSUPPORTED_PLATFORM)
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   m_mounting        = addPage(mount_area, Smb4KMountSettings::self(), i18n("Mounting"), "system-run");
 #endif
   m_synchronization = addPage(rsync_area, Smb4KSettings::self(),i18n("Synchronization"), "folder-sync");
@@ -176,7 +176,6 @@ void Smb4KConfigDialog::setupDialog()
   // Connections
   // 
   connect(custom_options, SIGNAL(customSettingsModified()), this, SLOT(slotEnableApplyButton()));
-  connect(custom_options, SIGNAL(reloadCustomSettings()), this, SLOT(slotReloadCustomOptions()));
 
   connect(auth_options, SIGNAL(loadWalletEntries()), this, SLOT(slotLoadAuthenticationInformation()));
   connect(auth_options, SIGNAL(saveWalletEntries()), this, SLOT(slotSaveAuthenticationInformation()));
@@ -188,10 +187,12 @@ void Smb4KConfigDialog::setupDialog()
   //
   // Dialog size
   //
-  resize(QSize(800, 600));
+  create();
+  windowHandle()->resize(QSize(800, 600));
 
   KConfigGroup group(Smb4KSettings::self()->config(), "ConfigDialog");
   KWindowConfig::restoreWindowSize(windowHandle(), group);
+  resize(windowHandle()->size()); // workaround for QTBUG-40584
 }
 
 
@@ -336,7 +337,7 @@ bool Smb4KConfigDialog::checkSharesPage()
 
 bool Smb4KConfigDialog::checkMountingPage()
 {
-#if !defined(UNSUPPORTED_PLATFORM)
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   KLineEdit *file_mask = m_mounting->widget()->findChild<KLineEdit *>("kcfg_FileMask");
   
   QString msg = i18n("<qt>An incorrect setting has been found. You are now taken to the corresponding configuration page to fix it.</qt>");
@@ -731,6 +732,8 @@ void Smb4KConfigDialog::updateSettings()
   
   KConfigGroup group(Smb4KSettings::self()->config(), "ConfigDialog");
   KWindowConfig::saveWindowSize(windowHandle(), group);
+  
+  qDebug() << "Saving ...";
       
   KConfigDialog::updateSettings();
 }
@@ -936,12 +939,6 @@ void Smb4KConfigDialog::slotEnableApplyButton()
 }
 
 
-void Smb4KConfigDialog::slotReloadCustomOptions()
-{
-  loadCustomOptions();
-}
-
-
 void Smb4KConfigDialog::slotCheckPage(KPageWidgetItem* /*current*/, KPageWidgetItem* before)
 {
   if (before == m_user_interface)
@@ -964,7 +961,7 @@ void Smb4KConfigDialog::slotCheckPage(KPageWidgetItem* /*current*/, KPageWidgetI
   {
     // Do nothing
   }
-#if !defined(UNSUPPORTED_PLATFORM)
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   else if (before == m_mounting)
   {
     (void)checkMountingPage();

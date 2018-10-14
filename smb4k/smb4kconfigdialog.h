@@ -104,11 +104,6 @@ class Q_DECL_EXPORT Smb4KConfigDialog : public KConfigDialog
     void slotEnableApplyButton();
     
     /**
-     * Reload custom options
-     */
-    void slotReloadCustomOptions();
-    
-    /**
      * This slot is used to check the settings of the different pages.
      * 
      * @param current     the current dialog page

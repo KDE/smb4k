@@ -2,7 +2,7 @@
     The configuration page for the mount options
                              -------------------
     begin                : So Mär 22 2015
-    copyright            : (C) 2015-2017 by Alexander Reinholdt
+    copyright            : (C) 2015-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -65,6 +65,14 @@ class Smb4KConfigPageMounting : public QTabWidget
      * @param action              The action that represents the new group.
      */
     void slotNewGroupTriggered(QAction *action);
+    
+    /**
+     * Enable / disable the options that are only necessary when the servers
+     * do not support the CIFS Unix extensions.
+     * 
+     * @param checked             TRUE if the button is checked
+     */
+    void slotCIFSUnixExtensionsSupport(bool checked);
     
     /**
      * This slot is activated when the additional CIFS options are to be
