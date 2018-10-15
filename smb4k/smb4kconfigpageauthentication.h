@@ -89,7 +89,7 @@ class Smb4KConfigPageAuthentication : public QTabWidget
     const QList<Smb4KAuthInfo *> &getWalletEntries() { return m_entries_list; }
     
     /**
-     * Display the autentication information in the list widget.
+     * Display the authentication information in the list widget.
      * Use this function AFTER setEntries() if necessary.
      */
     void displayWalletEntries();
@@ -105,7 +105,7 @@ class Smb4KConfigPageAuthentication : public QTabWidget
      * Returns TRUE if a removal in the list widget is undone and FALSE
      * otherwise.
      * 
-     * @returns TRUE a removal is undown.
+     * @returns TRUE a removal is undone.
      */
     bool undoRemoval() { return m_undo_removal; }
     

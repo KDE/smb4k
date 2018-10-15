@@ -844,7 +844,7 @@ void Smb4KSyncJob::slotReadStandardOutput()
 
         if (success)
         {
-          // MB == 1000000 B and kB == 1000 B per definitionem!
+          // MB == 1000000 B and kB == 1000 B per definition!
           if (stdOut.at(i).contains("MB/s"))
           {
             tmp_speed *= 1e6;

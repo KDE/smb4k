@@ -327,7 +327,7 @@ class Q_DECL_EXPORT Smb4KPreviewDialog : public QDialog
     /**
      * Is called, if an item has been executed.
      *
-     * @param item          The item that has been exected.
+     * @param item          The item that has been executed.
      */
     void slotItemExecuted(QListWidgetItem *item);
 

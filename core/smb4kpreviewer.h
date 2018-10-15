@@ -123,7 +123,7 @@ class Q_DECL_EXPORT Smb4KPreviewer : public KCompositeJob
 
   Q_SIGNALS:
     /**
-     * Emitted when the acquistition process is about to begin.
+     * Emitted when the acquisition process is about to begin.
      * 
      * @param item          The Smb4KShare item
      *

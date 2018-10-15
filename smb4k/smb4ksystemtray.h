@@ -63,7 +63,7 @@ class Smb4KSystemTray : public KStatusNotifierItem
      * This signal is emitted when the config dialog has been closed and the
      * settings changed.
      *
-     * This signal is forwared from @see Smb4KConfigDialog.
+     * This signal is forwarded from @see Smb4KConfigDialog.
      */
     void settingsChanged(const QString &dialogName);
 

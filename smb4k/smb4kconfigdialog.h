@@ -207,7 +207,7 @@ class Q_DECL_EXPORT Smb4KConfigDialog : public KConfigDialog
     bool checkSynchronizationPage();
 
     /**
-     * Checks that mandatorily needed input is provided for settings that
+     * Checks that mandatory needed input is provided for settings that
      * need it. This function will report all missing input to the user
      * via a message box.
      *

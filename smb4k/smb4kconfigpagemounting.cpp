@@ -144,7 +144,7 @@ void Smb4KConfigPageMounting::setupWidget()
   QGridLayout *cifsExtensionSupportLayout = new QGridLayout(cifsExtensionSupportBox);
   cifsExtensionSupportLayout->setSpacing(5);
   
-  // CIFS Unix entensions support
+  // CIFS Unix extensions support
   QCheckBox *cifsExtensionsSupport = new QCheckBox(Smb4KMountSettings::self()->cifsUnixExtensionsSupportItem()->label(), cifsExtensionSupportBox);
   cifsExtensionsSupport->setObjectName("kcfg_CifsUnixExtensionsSupport");
   
@@ -286,7 +286,7 @@ void Smb4KConfigPageMounting::setupWidget()
   
   advancedOptionsLayout->addWidget(permissionChecks, 1, 0, 0);
   
-  // Cliend controls Ids
+  // Client controls Ids
   QCheckBox *clientControlsIds = new QCheckBox(Smb4KMountSettings::self()->clientControlsIDsItem()->label(), advancedOptions);
   clientControlsIds->setObjectName("kcfg_ClientControlsIDs");
   
@@ -298,7 +298,7 @@ void Smb4KConfigPageMounting::setupWidget()
   
   advancedOptionsLayout->addWidget(useServerInodes, 2, 0, 0);
 
-  // Translate reserved charachters
+  // Translate reserved characters
   QCheckBox *translateReservedCharacters = new QCheckBox(Smb4KMountSettings::self()->translateReservedCharsItem()->label(), advancedOptions);
   translateReservedCharacters->setObjectName("kcfg_TranslateReservedChars");
   
