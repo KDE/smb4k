@@ -1232,7 +1232,7 @@ void Smb4KMainWindow::slotPreviewerFinished(const SharePtr &/*share*/, const QUr
 void Smb4KMainWindow::slotEnableBookmarkAction()
 {
   //
-  // Get the fucused widget's 'Add Bookmark' acion and read its 
+  // Get the focused widget's 'Add Bookmark' action and read its 
   // isEnabled() property. Set the action of the main window and the
   // bookmark menu respectively.
   // 

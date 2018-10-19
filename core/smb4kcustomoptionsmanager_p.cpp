@@ -118,7 +118,7 @@ Smb4KCustomOptionsDialog::Smb4KCustomOptionsDialog(const OptionsPtr &options, QW
   layout->addWidget(header, 0);
   
   //
-  // Set up the operating system dependend stuff
+  // Set up the operating system dependent stuff
   // 
   setupView();
   

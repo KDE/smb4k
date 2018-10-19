@@ -100,7 +100,7 @@ class Smb4KNetworkSearchDockWidget : public QDockWidget
     /**
      * This slot is invoked, when the context menu of the search dialog is
      * requested.
-     * @param pos                 The postition where the context menu should
+     * @param pos                 The position where the context menu should
      *                            be opened.
      */
     void slotContextMenuRequested(const QPoint &pos);
@@ -154,7 +154,7 @@ class Smb4KNetworkSearchDockWidget : public QDockWidget
     void slotSearchAbortActionChanged(bool active);
     
     /**
-     * This slot is invoked whent the Clear action is triggered. It clears the
+     * This slot is invoked when the Clear action is triggered. It clears the
      * combo box and the list widget and disables the actions.
      * @param checked             TRUE if the action is checked.
      */

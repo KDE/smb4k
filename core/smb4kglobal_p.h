@@ -119,7 +119,7 @@ class Smb4KGlobalPrivate : public QObject
 #ifdef Q_OS_LINUX
     /**
      * This list contains all whitelisted arguments for the mount.cifs binary and
-     * is only present under the Linux operatin system.
+     * is only present under the Linux operating system.
      */
     QStringList whitelistedMountArguments;
 #endif

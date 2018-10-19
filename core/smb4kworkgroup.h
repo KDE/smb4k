@@ -61,7 +61,7 @@ class Q_DECL_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
     explicit Smb4KWorkgroup(const QString &name);
 
     /**
-     * The copy contructor. This constructor takes another Smb4KWorkgroup item
+     * The copy constructor. This constructor takes another Smb4KWorkgroup item
      * as argument and copies its values.
      *
      * @param workgroup       The Smb4KWorkgroup item that is to be copied.
