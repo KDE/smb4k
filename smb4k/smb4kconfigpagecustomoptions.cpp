@@ -453,6 +453,102 @@ void Smb4KConfigPageCustomOptions::setupMountingTab()
 //
 void Smb4KConfigPageCustomOptions::setupMountingTab()
 {
+  //
+  // Get the tab widget
+  // 
+  QTabWidget *tabWidget = findChild<QTabWidget *>("TabWidget");
+  
+  //
+  // Custom options for mounting
+  // 
+  QWidget *mountingTab = new QWidget(tabWidget);
+  QVBoxLayout *mountingTabLayout = new QVBoxLayout(mountingTab);
+  mountingTabLayout->setSpacing(5);
+  
+  // 
+  // Remounting
+  // 
+  QGroupBox *remountGroupBox = new QGroupBox(i18n("Remounting"), mountingTab);
+  QVBoxLayout *remountGroupBoxLayout = new QVBoxLayout(remountGroupBox);
+  remountGroupBoxLayout->setSpacing(5);
+  
+  QCheckBox *remountAlways = new QCheckBox(i18n("Always remount this share"), remountGroupBox);
+  remountAlways->setObjectName("RemountAlways");
+  remountAlways->setEnabled(false);
+
+  remountGroupBoxLayout->addWidget(remountAlways, 0);
+
+  mountingTabLayout->addWidget(remountGroupBox, 0);
+  
+  //
+  // Common options
+  //
+  QGroupBox *commonBox = new QGroupBox(i18n("Common Options"), mountingTab);
+  QGridLayout *commonBoxLayout = new QGridLayout(commonBox);
+  commonBoxLayout->setSpacing(5);
+  
+  // User Id
+  QCheckBox *useUserId = new QCheckBox(Smb4KMountSettings::self()->useUserIdItem()->label(), commonBox);
+  useUserId->setObjectName("UseUserId");
+  
+  KComboBox *userId = new KComboBox(commonBox);
+  userId->setObjectName("UserId");
+  
+  QList<KUser> allUsers = KUser::allUsers();
+
+  for (const KUser &u : allUsers)
+  {
+    userId->addItem(QString("%1 (%2)").arg(u.loginName()).arg(u.userId().nativeId()), QVariant::fromValue<K_GID>(u.groupId().nativeId()));
+  }
+  
+  commonBoxLayout->addWidget(useUserId, 0, 0, 0);
+  commonBoxLayout->addWidget(userId, 0, 1, 0);
+  
+  // Group Id
+  QCheckBox *useGroupId = new QCheckBox(Smb4KMountSettings::self()->useGroupIdItem()->label(), commonBox);
+  useGroupId->setObjectName("UseGroupId");
+  
+  KComboBox *groupId = new KComboBox(commonBox);
+  groupId->setObjectName("GroupId");
+  
+  QList<KUserGroup> allGroups = KUserGroup::allGroups();
+
+  for (const KUserGroup &g : allGroups)
+  {
+    groupId->addItem(QString("%1 (%2)").arg(g.name()).arg(g.groupId().nativeId()), QVariant::fromValue<K_GID>(g.groupId().nativeId()));
+  }
+  
+  commonBoxLayout->addWidget(useGroupId, 1, 0, 0);
+  commonBoxLayout->addWidget(groupId, 1, 1, 0);
+  
+  // File mode
+  QCheckBox *useFileMode = new QCheckBox(Smb4KMountSettings::self()->useFileModeItem()->label(), commonBox);
+  useFileMode->setObjectName("UseFileMode");
+  
+  KLineEdit *fileMode = new KLineEdit(commonBox);
+  fileMode->setObjectName("FileMode");
+  fileMode->setClearButtonEnabled(true);
+  fileMode->setAlignment(Qt::AlignRight);
+  
+  commonBoxLayout->addWidget(useFileMode, 2, 0, 0);
+  commonBoxLayout->addWidget(fileMode, 2, 1, 0);
+  
+  // Directory mode
+  QCheckBox *useDirectoryMode = new QCheckBox(Smb4KMountSettings::self()->useDirectoryModeItem()->label(), commonBox);
+  useDirectoryMode->setObjectName("UseDirectoryMode");
+  
+  KLineEdit *directoryMode = new KLineEdit(commonBox);
+  directoryMode->setObjectName("DirectoryMode");
+  directoryMode->setClearButtonEnabled(true);
+  directoryMode->setAlignment(Qt::AlignRight);
+  
+  commonBoxLayout->addWidget(useDirectoryMode, 3, 0, 0);
+  commonBoxLayout->addWidget(directoryMode, 3, 1, 0);
+  
+  mountingTabLayout->addWidget(commonBox, 0);
+  mountingTabLayout->addStretch(100);  
+  
+  tabWidget->addTab(mountingTab, i18n("Mounting"));
 }
 #else
 //
@@ -581,6 +677,7 @@ void Smb4KConfigPageCustomOptions::clearEditors()
     // Do nothing
   }
   
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   //
   // Remounting
   // 
@@ -593,96 +690,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
   }
   else
   {                                                     
-    // Do nothing
-  }
-  
-  //
-  // Write access
-  // 
-  QCheckBox *useWriteAccess = findChild<QCheckBox *>("UseWriteAccess");
-  
-  if (useWriteAccess)
-  {
-    disconnect(useWriteAccess, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
-    useWriteAccess->setChecked(false);
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  KComboBox *writeAccess = findChild<KComboBox *>("WriteAccess");
-  
-  if (writeAccess)
-  {
-    disconnect(writeAccess, SIGNAL(currentIndexChanged(int)), this, SLOT(slotEntryChanged()));
-    
-    QString readWriteText = Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadWrite).label;
-    QString readOnlyText = Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadOnly).label;
-
-    switch (Smb4KMountSettings::writeAccess())
-    {
-      case Smb4KMountSettings::EnumWriteAccess::ReadWrite:
-      {
-        writeAccess->setCurrentText(readWriteText);
-        break;
-      }
-      case Smb4KMountSettings::EnumWriteAccess::ReadOnly:
-      {
-        writeAccess->setCurrentText(readOnlyText);
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  //
-  // File system port
-  // 
-  QCheckBox *useFilesystemPort = findChild<QCheckBox *>("UseFilesystemPort");
-  
-  if (useFilesystemPort)
-  {
-    disconnect(useFilesystemPort, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
-    useFilesystemPort->setChecked(false);
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  QSpinBox *filesystemPort = findChild<QSpinBox *>("FileSystemPort");
-  
-  if (filesystemPort)
-  {
-    disconnect(filesystemPort, SIGNAL(valueChanged(int)), this, SLOT(slotEntryChanged()));
-    filesystemPort->setValue(Smb4KMountSettings::remoteFileSystemPort());
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  //
-  // CIFS Unix Extensions Support
-  //
-  QCheckBox *cifsExtensionsSupport = findChild<QCheckBox *>("CifsExtensionsSupport");
-  
-  if (cifsExtensionsSupport)
-  {
-    disconnect(cifsExtensionsSupport, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
-    disconnect(cifsExtensionsSupport, SIGNAL(toggled(bool)), this, SLOT(slotCifsUnixExtensionsSupport(bool)));
-    cifsExtensionsSupport->setChecked(false);
-  }
-  else
-  {
     // Do nothing
   }
   
@@ -795,6 +802,98 @@ void Smb4KConfigPageCustomOptions::clearEditors()
   {
     // Do nothing
   }
+#endif
+  
+#if defined(Q_OS_LINUX)
+  //
+  // Write access
+  // 
+  QCheckBox *useWriteAccess = findChild<QCheckBox *>("UseWriteAccess");
+  
+  if (useWriteAccess)
+  {
+    disconnect(useWriteAccess, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
+    useWriteAccess->setChecked(false);
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  KComboBox *writeAccess = findChild<KComboBox *>("WriteAccess");
+  
+  if (writeAccess)
+  {
+    disconnect(writeAccess, SIGNAL(currentIndexChanged(int)), this, SLOT(slotEntryChanged()));
+    
+    QString readWriteText = Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadWrite).label;
+    QString readOnlyText = Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadOnly).label;
+
+    switch (Smb4KMountSettings::writeAccess())
+    {
+      case Smb4KMountSettings::EnumWriteAccess::ReadWrite:
+      {
+        writeAccess->setCurrentText(readWriteText);
+        break;
+      }
+      case Smb4KMountSettings::EnumWriteAccess::ReadOnly:
+      {
+        writeAccess->setCurrentText(readOnlyText);
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // File system port
+  // 
+  QCheckBox *useFilesystemPort = findChild<QCheckBox *>("UseFilesystemPort");
+  
+  if (useFilesystemPort)
+  {
+    disconnect(useFilesystemPort, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
+    useFilesystemPort->setChecked(false);
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  QSpinBox *filesystemPort = findChild<QSpinBox *>("FileSystemPort");
+  
+  if (filesystemPort)
+  {
+    disconnect(filesystemPort, SIGNAL(valueChanged(int)), this, SLOT(slotEntryChanged()));
+    filesystemPort->setValue(Smb4KMountSettings::remoteFileSystemPort());
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // CIFS Unix Extensions Support
+  //
+  QCheckBox *cifsExtensionsSupport = findChild<QCheckBox *>("CifsExtensionsSupport");
+  
+  if (cifsExtensionsSupport)
+  {
+    disconnect(cifsExtensionsSupport, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
+    disconnect(cifsExtensionsSupport, SIGNAL(toggled(bool)), this, SLOT(slotCifsUnixExtensionsSupport(bool)));
+    cifsExtensionsSupport->setChecked(false);
+  }
+  else
+  {
+    // Do nothing
+  }
   
   //
   // Security mode
@@ -884,6 +983,7 @@ void Smb4KConfigPageCustomOptions::clearEditors()
   {
     // Do nothing
   }
+#endif
   
   //
   // SMB port
@@ -1052,6 +1152,7 @@ void Smb4KConfigPageCustomOptions::populateEditors()
     // Do nothing
   }
   
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   //
   // Remounting
   // 
@@ -1071,96 +1172,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
     }
     
     connect(remountAlways, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  //
-  // Write access
-  // 
-  QCheckBox *useWriteAccess = findChild<QCheckBox *>("UseWriteAccess");
-  
-  if (useWriteAccess)
-  {
-    useWriteAccess->setChecked(m_currentOptions->useWriteAccess());
-    connect(useWriteAccess, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  KComboBox *writeAccess = findChild<KComboBox *>("WriteAccess");
-  
-  if (writeAccess)
-  {
-    QString readWriteText = Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadWrite).label;
-    QString readOnlyText = Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadOnly).label;
-    
-    switch (m_currentOptions->writeAccess())
-    {
-      case Smb4KMountSettings::EnumWriteAccess::ReadWrite:
-      {
-        writeAccess->setCurrentText(readWriteText);
-        break;
-      }
-      case Smb4KMountSettings::EnumWriteAccess::ReadOnly:
-      {
-        writeAccess->setCurrentText(readOnlyText);
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-    
-    connect(writeAccess, SIGNAL(currentIndexChanged(int)), this, SLOT(slotEntryChanged()));
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  //
-  // File system port
-  // 
-  QCheckBox *useFilesystemPort = findChild<QCheckBox *>("UseFilesystemPort");
-  
-  if (useFilesystemPort)
-  {
-    useFilesystemPort->setChecked(m_currentOptions->useFileSystemPort());
-    connect(useFilesystemPort, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  QSpinBox *filesystemPort = findChild<QSpinBox *>("FileSystemPort");
-  
-  if (filesystemPort)
-  {
-    filesystemPort->setValue(m_currentOptions->fileSystemPort());
-    connect(filesystemPort, SIGNAL(valueChanged(int)), this, SLOT(slotEntryChanged()));
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  //
-  // CIFS Unix Extensions Support
-  // 
-  QCheckBox *cifsExtensionsSupport = findChild<QCheckBox *>("CifsExtensionsSupport");
-  
-  if (cifsExtensionsSupport)
-  {
-    connect(cifsExtensionsSupport, SIGNAL(toggled(bool)), this, SLOT(slotCifsUnixExtensionsSupport(bool)));
-    cifsExtensionsSupport->setChecked(m_currentOptions->cifsUnixExtensionsSupport());
-    connect(cifsExtensionsSupport, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
   }
   else
   {
@@ -1274,6 +1285,98 @@ void Smb4KConfigPageCustomOptions::populateEditors()
   {
     // Do nothing
   }
+#endif
+  
+#if defined(Q_OS_LINUX)
+  //
+  // Write access
+  // 
+  QCheckBox *useWriteAccess = findChild<QCheckBox *>("UseWriteAccess");
+  
+  if (useWriteAccess)
+  {
+    useWriteAccess->setChecked(m_currentOptions->useWriteAccess());
+    connect(useWriteAccess, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  KComboBox *writeAccess = findChild<KComboBox *>("WriteAccess");
+  
+  if (writeAccess)
+  {
+    QString readWriteText = Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadWrite).label;
+    QString readOnlyText = Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadOnly).label;
+    
+    switch (m_currentOptions->writeAccess())
+    {
+      case Smb4KMountSettings::EnumWriteAccess::ReadWrite:
+      {
+        writeAccess->setCurrentText(readWriteText);
+        break;
+      }
+      case Smb4KMountSettings::EnumWriteAccess::ReadOnly:
+      {
+        writeAccess->setCurrentText(readOnlyText);
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+    
+    connect(writeAccess, SIGNAL(currentIndexChanged(int)), this, SLOT(slotEntryChanged()));
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // File system port
+  // 
+  QCheckBox *useFilesystemPort = findChild<QCheckBox *>("UseFilesystemPort");
+  
+  if (useFilesystemPort)
+  {
+    useFilesystemPort->setChecked(m_currentOptions->useFileSystemPort());
+    connect(useFilesystemPort, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  QSpinBox *filesystemPort = findChild<QSpinBox *>("FileSystemPort");
+  
+  if (filesystemPort)
+  {
+    filesystemPort->setValue(m_currentOptions->fileSystemPort());
+    connect(filesystemPort, SIGNAL(valueChanged(int)), this, SLOT(slotEntryChanged()));
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // CIFS Unix Extensions Support
+  // 
+  QCheckBox *cifsExtensionsSupport = findChild<QCheckBox *>("CifsExtensionsSupport");
+  
+  if (cifsExtensionsSupport)
+  {
+    connect(cifsExtensionsSupport, SIGNAL(toggled(bool)), this, SLOT(slotCifsUnixExtensionsSupport(bool)));
+    cifsExtensionsSupport->setChecked(m_currentOptions->cifsUnixExtensionsSupport());
+    connect(cifsExtensionsSupport, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
+  }
+  else
+  {
+    // Do nothing
+  }
   
   //
   // Security mode
@@ -1363,6 +1466,7 @@ void Smb4KConfigPageCustomOptions::populateEditors()
   {
     // Do nothing
   }
+#endif
 
   //
   // SMB port
@@ -1490,6 +1594,7 @@ void Smb4KConfigPageCustomOptions::commitChanges()
     // Do nothing
   }
   
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   //
   // Remounting
   // 
@@ -1505,84 +1610,6 @@ void Smb4KConfigPageCustomOptions::commitChanges()
     {
       m_currentOptions->setRemount(Smb4KCustomOptions::RemountNever);
     }
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  //
-  // Write access
-  // 
-  QCheckBox *useWriteAccess = findChild<QCheckBox *>("UseWriteAccess");
-  
-  if (useWriteAccess)
-  {
-    m_currentOptions->setUseWriteAccess(useWriteAccess->isChecked());
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  KComboBox *writeAccess = findChild<KComboBox *>("WriteAccess");
-  
-  if (writeAccess)
-  {
-    QString readWriteText = Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadWrite).label;
-    QString readOnlyText = Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadOnly).label;
-    
-    if (writeAccess->currentText() == readWriteText)
-    {
-      m_currentOptions->setWriteAccess(Smb4KMountSettings::EnumWriteAccess::ReadWrite);
-    }
-    else if (writeAccess->currentText() == readOnlyText)
-    {
-      m_currentOptions->setWriteAccess(Smb4KMountSettings::EnumWriteAccess::ReadOnly);
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  //
-  // File system port
-  // 
-  QCheckBox *useFilesystemPort = findChild<QCheckBox *>("UseFilesystemPort");
-  
-  if (useFilesystemPort)
-  {
-    m_currentOptions->setUseFileSystemPort(useFilesystemPort->isChecked());
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  QSpinBox *filesystemPort = findChild<QSpinBox *>("FileSystemPort");
-  
-  if (filesystemPort)
-  {
-    m_currentOptions->setFileSystemPort(filesystemPort->value());
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  //
-  // CIFS Unix Extensions Support
-  // 
-  QCheckBox *cifsExtensionsSupport = findChild<QCheckBox *>("CifsExtensionsSupport");
-  
-  if (cifsExtensionsSupport)
-  {
-    m_currentOptions->setCifsUnixExtensionsSupport(cifsExtensionsSupport->isChecked());
   }
   else
   {
@@ -1688,6 +1715,86 @@ void Smb4KConfigPageCustomOptions::commitChanges()
   {
     // Do nothing
   }
+#endif
+  
+#if defined(Q_OS_LINUX)
+  //
+  // Write access
+  // 
+  QCheckBox *useWriteAccess = findChild<QCheckBox *>("UseWriteAccess");
+  
+  if (useWriteAccess)
+  {
+    m_currentOptions->setUseWriteAccess(useWriteAccess->isChecked());
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  KComboBox *writeAccess = findChild<KComboBox *>("WriteAccess");
+  
+  if (writeAccess)
+  {
+    QString readWriteText = Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadWrite).label;
+    QString readOnlyText = Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadOnly).label;
+    
+    if (writeAccess->currentText() == readWriteText)
+    {
+      m_currentOptions->setWriteAccess(Smb4KMountSettings::EnumWriteAccess::ReadWrite);
+    }
+    else if (writeAccess->currentText() == readOnlyText)
+    {
+      m_currentOptions->setWriteAccess(Smb4KMountSettings::EnumWriteAccess::ReadOnly);
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // File system port
+  // 
+  QCheckBox *useFilesystemPort = findChild<QCheckBox *>("UseFilesystemPort");
+  
+  if (useFilesystemPort)
+  {
+    m_currentOptions->setUseFileSystemPort(useFilesystemPort->isChecked());
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  QSpinBox *filesystemPort = findChild<QSpinBox *>("FileSystemPort");
+  
+  if (filesystemPort)
+  {
+    m_currentOptions->setFileSystemPort(filesystemPort->value());
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // CIFS Unix Extensions Support
+  // 
+  QCheckBox *cifsExtensionsSupport = findChild<QCheckBox *>("CifsExtensionsSupport");
+  
+  if (cifsExtensionsSupport)
+  {
+    m_currentOptions->setCifsUnixExtensionsSupport(cifsExtensionsSupport->isChecked());
+  }
+  else
+  {
+    // Do nothing
+  }
   
   //
   // Security mode
@@ -1762,6 +1869,7 @@ void Smb4KConfigPageCustomOptions::commitChanges()
   {
     // Do nothing
   }
+#endif
   
   //
   // SMB port

@@ -34,7 +34,7 @@
 #if defined(Q_OS_LINUX)
 #include "core/smb4kmountsettings_linux.h"
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-#include "core/smb4kmountsettings_freebsd.h"
+#include "core/smb4kmountsettings_bsd.h"
 #endif
 
 // Qt includes
@@ -419,270 +419,185 @@ void Smb4KConfigPageMounting::setupWidget()
 //
 void Smb4KConfigPageMounting::setupWidget()
 {
-  QVBoxLayout *mount_layout = new QVBoxLayout(this);
-  mount_layout->setSpacing(5);
-  mount_layout->setMargin(0);
+  //
+  // The layout
+  //  
+  QVBoxLayout *layout = new QVBoxLayout(this);
+  layout->setSpacing(5);
+  layout->setMargin(0);
 
+  //
   // Common Options
-  QGroupBox *commonOptions = new QGroupBox(i18n("Common Options"), this);
+  //
+  QGroupBox *commonOptionsBox = new QGroupBox(i18n("Common Options"), this);
+  QGridLayout *commonOptionsBoxLayout = new QGridLayout(commonOptionsBox);
+  commonOptionsBoxLayout->setSpacing(5);
 
-  QGridLayout *commonOptionsLayout = new QGridLayout(commonOptions);
-  commonOptionsLayout->setSpacing(5);
+  // User information
+  QCheckBox *useUserId = new QCheckBox(Smb4KMountSettings::self()->useUserIdItem()->label(), commonOptionsBox);
+  useUserId->setObjectName("kcfg_UseUserId");
 
-  QLabel *user_id_label = new QLabel(Smb4KMountSettings::self()->userIDItem()->label(), commonOptions);
+  QWidget *userIdInputWidget = new QWidget(commonOptionsBox);
+  userIdInputWidget->setObjectName("UserIdInputWidget");
 
-  QWidget *user_widget = new QWidget(commonOptions);
+  QGridLayout *userLayout = new QGridLayout(userIdInputWidget);
+  userLayout->setSpacing(5);
+  userLayout->setMargin(0);
 
-  QGridLayout *user_layout = new QGridLayout(user_widget);
-  user_layout->setSpacing(5);
-  user_layout->setMargin(0);
+  KLineEdit *userId = new KLineEdit(userIdInputWidget);
+  userId->setObjectName("kcfg_UserId");
+  userId->setAlignment(Qt::AlignRight);
+  userId->setReadOnly(true);
 
-  KLineEdit *user_id = new KLineEdit(user_widget);
-  user_id->setObjectName("kcfg_UserId");
-  user_id->setAlignment(Qt::AlignRight);
-  user_id->setReadOnly(true);
+  QToolButton *userChooser = new QToolButton(userIdInputWidget);
+  userChooser->setIcon(KDE::icon("edit-find-user"));
+  userChooser->setToolTip(i18n("Choose a different user"));
+  userChooser->setPopupMode(QToolButton::InstantPopup);
 
-  QToolButton *user_chooser = new QToolButton(user_widget);
-  user_chooser->setIcon(KDE::icon("edit-find-user"));
-  user_chooser->setToolTip(i18n("Choose a different user"));
-  user_chooser->setPopupMode(QToolButton::InstantPopup);
-
-  user_id_label->setBuddy(user_chooser);
+  QMenu *userMenu = new QMenu(userChooser);
+  userChooser->setMenu(userMenu);
   
-  QMenu *user_menu = new QMenu(user_chooser);
-  user_chooser->setMenu(user_menu);
+  QList<KUser> allUsers = KUser::allUsers();
 
-  QList<KUser> user_list = KUser::allUsers();
-  QMap<QString,QString> users;
-
-  for (int i = 0; i < user_list.size(); ++i)
+  for (const KUser &u : allUsers)
   {
-    users.insert(QString("%1 (%2)").arg(user_list.at(i).loginName()).arg(user_list.at(i).userId().nativeId()),
-                 QString("%1").arg(user_list.at(i).userId().nativeId()));
+    QAction *userAction = userMenu->addAction(QString("%1 (%2)").arg(u.loginName()).arg(u.userId().nativeId()));
+    userAction->setData(u.userId().nativeId());
   }
 
-  QMap<QString,QString>::const_iterator u_it = users.constBegin();
-
-  while (u_it != users.constEnd())
-  {
-    QAction *user_action = user_menu->addAction(u_it.key());
-    user_action->setData(u_it.value());
-    ++u_it;
-  }
-
-  user_layout->addWidget(user_id, 0, 0, 0);
-  user_layout->addWidget(user_chooser, 0, 1, Qt::AlignCenter);
-
-  QLabel *group_id_label = new QLabel(Smb4KMountSettings::self()->groupIDItem()->label(), commonOptions);
-
-  QWidget *group_widget = new QWidget(commonOptions);
-
-  QGridLayout *group_layout = new QGridLayout(group_widget);
-  group_layout->setSpacing(5);
-  group_layout->setMargin(0);
-
-  KLineEdit *group_id = new KLineEdit(group_widget);
-  group_id->setObjectName("kcfg_GroupId");
-  group_id->setAlignment(Qt::AlignRight);
-  group_id->setReadOnly(true);
+  userLayout->addWidget(userId, 0, 0, 0);
+  userLayout->addWidget(userChooser, 0, 1, Qt::AlignCenter);
   
-  QToolButton *group_chooser = new QToolButton(group_widget);
-  group_chooser->setIcon(KDE::icon("edit-find-user"));
-  group_chooser->setToolTip(i18n("Choose a different group"));
-  group_chooser->setPopupMode(QToolButton::InstantPopup);
-
-  group_id_label->setBuddy(group_chooser);
-
-  QMenu *group_menu = new QMenu(group_chooser);
-  group_chooser->setMenu(group_menu);
-
-  QList<KUserGroup> group_list = KUserGroup::allGroups();
-  QMap<QString,QString> groups;
-
-  for (int i = 0; i < group_list.size(); ++i)
-  {
-    groups.insert(QString("%1 (%2)").arg(group_list.at(i).name()).arg(group_list.at(i).groupId().nativeId()),
-                  QString("%1").arg(group_list.at(i).groupId().nativeId()));
-  }
-
-  QMap<QString,QString>::const_iterator g_it = groups.constBegin();
-
-  while (g_it != groups.constEnd())
-  {
-    QAction *group_action = group_menu->addAction(g_it.key());
-    group_action->setData(g_it.value());
-    ++g_it;
-  }
-
-  group_layout->addWidget(group_id, 0, 0, 0);
-  group_layout->addWidget(group_chooser, 0, 1, Qt::AlignCenter);
-
-  QLabel *fmask_label = new QLabel(Smb4KMountSettings::self()->fileModeItem()->label(), commonOptions);
-
-  KLineEdit *fmask = new KLineEdit(commonOptions);
-  fmask->setObjectName("kcfg_FileMode");
-  fmask->setAlignment(Qt::AlignRight);
-
-  fmask_label->setBuddy(fmask);
-
-  QLabel *dmask_label = new QLabel(Smb4KMountSettings::self()->directoryModeItem()->label(), commonOptions);
-
-  KLineEdit *dmask = new KLineEdit(commonOptions);
-  dmask->setObjectName("kcfg_DirectoryMode");
-  dmask->setAlignment(Qt::AlignRight);
-
-  dmask_label->setBuddy(dmask);
+  commonOptionsBoxLayout->addWidget(useUserId, 0, 0, 0);
+  commonOptionsBoxLayout->addWidget(userIdInputWidget, 0, 1, 0);
   
-  QLabel *charset_label = new QLabel(Smb4KMountSettings::self()->clientCharsetItem()->label(), commonOptions);
+  // Group information
+  QCheckBox *useGroupId = new QCheckBox(Smb4KMountSettings::self()->useGroupIdItem()->label(), commonOptionsBox);
+  useGroupId->setObjectName("kcfg_UseGroupId");
 
-  KComboBox *charset = new KComboBox(commonOptions);
-  charset->setObjectName("kcfg_ClientCharset");
-  charset->insertItem(Smb4KMountSettings::EnumClientCharset::default_charset,
-                      Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::default_charset).label);
-  charset->insertItem(Smb4KMountSettings::EnumClientCharset::iso8859_1,
-                      Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::iso8859_1).label);
-  charset->insertItem(Smb4KMountSettings::EnumClientCharset::iso8859_2,
-                      Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::iso8859_2).label);
-  charset->insertItem(Smb4KMountSettings::EnumClientCharset::iso8859_3,
-                      Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::iso8859_3).label);
-  charset->insertItem(Smb4KMountSettings::EnumClientCharset::iso8859_4,
-                      Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::iso8859_4).label);
-  charset->insertItem(Smb4KMountSettings::EnumClientCharset::iso8859_5,
-                      Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::iso8859_5).label);
-  charset->insertItem(Smb4KMountSettings::EnumClientCharset::iso8859_6,
-                      Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::iso8859_6).label);
-  charset->insertItem(Smb4KMountSettings::EnumClientCharset::iso8859_7,
-                      Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::iso8859_7).label);
-  charset->insertItem(Smb4KMountSettings::EnumClientCharset::iso8859_8,
-                      Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset:: iso8859_8).label);
-  charset->insertItem(Smb4KMountSettings::EnumClientCharset::iso8859_9,
-                      Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::iso8859_9).label);
-  charset->insertItem(Smb4KMountSettings::EnumClientCharset::iso8859_13,
-                      Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::iso8859_13).label);
-  charset->insertItem(Smb4KMountSettings::EnumClientCharset::iso8859_14,
-                      Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::iso8859_14).label);
-  charset->insertItem(Smb4KMountSettings::EnumClientCharset::iso8859_15,
-                      Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::iso8859_15).label);
-  charset->insertItem(Smb4KMountSettings::EnumClientCharset::utf8,
-                      Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::utf8).label);
-  charset->insertItem(Smb4KMountSettings::EnumClientCharset::koi8_r,
-                      Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::koi8_r).label);
-  charset->insertItem(Smb4KMountSettings::EnumClientCharset::koi8_u,
-                      Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::koi8_u).label);
-  charset->insertItem(Smb4KMountSettings::EnumClientCharset::koi8_ru,
-                      Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::koi8_ru).label);
-  charset->insertItem(Smb4KMountSettings::EnumClientCharset::cp1251,
-                      Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::cp1251).label);
-  charset->insertItem(Smb4KMountSettings::EnumClientCharset::gb2312,
-                      Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::gb2312).label);
-  charset->insertItem(Smb4KMountSettings::EnumClientCharset::big5,
-                      Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::big5).label);
-  charset->insertItem(Smb4KMountSettings::EnumClientCharset::euc_jp,
-                      Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::euc_jp).label);
-  charset->insertItem(Smb4KMountSettings::EnumClientCharset::euc_kr,
-                      Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::euc_kr).label);
-  charset->insertItem(Smb4KMountSettings::EnumClientCharset::tis_620,
-                      Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::EnumClientCharset::tis_620).label);
+  QWidget *groupIdInputWidget = new QWidget(commonOptionsBox);
+  groupIdInputWidget->setObjectName("GroupIdInputWidget");
 
-  charset_label->setBuddy(charset);
+  QGridLayout *groupLayout = new QGridLayout(groupIdInputWidget);
+  groupLayout->setSpacing(5);
+  groupLayout->setMargin(0);
 
-  QLabel *codepage_label = new QLabel(Smb4KMountSettings::self()->serverCodepageItem()->label(), commonOptions);
-  codepage_label->setObjectName("CodepageLabel");
+  KLineEdit *groupId = new KLineEdit(groupIdInputWidget);
+  groupId->setObjectName("kcfg_GroupId");
+  groupId->setAlignment(Qt::AlignRight);
+  groupId->setReadOnly(true);
+  
+  QToolButton *groupChooser = new QToolButton(groupIdInputWidget);
+  groupChooser->setIcon(KDE::icon("edit-find-user"));
+  groupChooser->setToolTip(i18n("Choose a different group"));
+  groupChooser->setPopupMode(QToolButton::InstantPopup);
 
-  KComboBox *codepage = new KComboBox(commonOptions);
-  codepage->setObjectName("kcfg_ServerCodepage");
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::default_codepage,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::default_codepage).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp437,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp437).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp720,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp720).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp737,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp737).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp775,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp775).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp850,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp850).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp852,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp852).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp855,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp855).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp857,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp857).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp858,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp858).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp860,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp860).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp861,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp861).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp862,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp862).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp863,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp863).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp864,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp864).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp865,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp865).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp866,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp866).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp869,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp869).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp874,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp874).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp932,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp932).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp936,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp936).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp949,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp949).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp950,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp950).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp1250,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1250).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp1251,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1251).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp1252,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1252).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp1253,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1253).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp1254,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1254).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp1255,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1255).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp1256,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1256).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp1257,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1257).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::cp1258,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::cp1258).label);
-  codepage->insertItem(Smb4KMountSettings::EnumServerCodepage::unicode,
-                       Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::EnumServerCodepage::unicode).label);
+  QMenu *groupMenu = new QMenu(groupChooser);
+  groupChooser->setMenu(groupMenu);
 
-  codepage_label->setBuddy(codepage);
+  QList<KUserGroup> groupList = KUserGroup::allGroups();
+  
+  for (const KUserGroup &g : groupList)
+  {
+    QAction *groupAction = groupMenu->addAction(QString("%1 (%2)").arg(g.name()).arg(g.groupId().nativeId()));
+    groupAction->setData(g.groupId().nativeId());
+  }
 
-  commonOptionsLayout->addWidget(user_id_label, 0, 0, 0);
-  commonOptionsLayout->addWidget(user_widget, 0, 1, 0);
-  commonOptionsLayout->addWidget(group_id_label, 1, 0, 0);
-  commonOptionsLayout->addWidget(group_widget, 1, 1, 0);
-  commonOptionsLayout->addWidget(fmask_label, 2, 0, 0);
-  commonOptionsLayout->addWidget(fmask, 2, 1, 0);
-  commonOptionsLayout->addWidget(dmask_label, 3, 0, 0);
-  commonOptionsLayout->addWidget(dmask, 3, 1, 0);
-  commonOptionsLayout->addWidget(charset_label, 4, 0, 0);
-  commonOptionsLayout->addWidget(charset, 4, 1, 0);
-  commonOptionsLayout->addWidget(codepage_label, 5, 0, 0);
-  commonOptionsLayout->addWidget(codepage, 5, 1, 0);
+  groupLayout->addWidget(groupId, 0, 0, 0);
+  groupLayout->addWidget(groupChooser, 0, 1, Qt::AlignCenter);
+  
+  commonOptionsBoxLayout->addWidget(useGroupId, 1, 0, 0);
+  commonOptionsBoxLayout->addWidget(groupIdInputWidget, 1, 1, 0);
 
-  mount_layout->addWidget(commonOptions);
-  mount_layout->addStretch(100);
+  // File mask
+  QCheckBox *useFileMode = new QCheckBox(Smb4KMountSettings::self()->useFileModeItem()->label(), commonOptionsBox);
+  useFileMode->setObjectName("kcfg_UseFileMode");
 
+  KLineEdit *fileMode = new KLineEdit(commonOptionsBox);
+  fileMode->setObjectName("kcfg_FileMode");
+  fileMode->setClearButtonEnabled(true);
+  fileMode->setAlignment(Qt::AlignRight);
+  
+  commonOptionsBoxLayout->addWidget(useFileMode, 2, 0, 0);
+  commonOptionsBoxLayout->addWidget(fileMode, 2, 1, 0);
+
+  // Directory mask
+  QCheckBox *useDirectoryMode = new QCheckBox(Smb4KMountSettings::self()->useDirectoryModeItem()->label(), commonOptionsBox);
+  useDirectoryMode->setObjectName("kcfg_UseDirectoryMode");
+
+  KLineEdit *directoryMode = new KLineEdit(commonOptionsBox);
+  directoryMode->setObjectName("kcfg_DirectoryMode");
+  directoryMode->setClearButtonEnabled(true);
+  directoryMode->setAlignment(Qt::AlignRight);
+
+  commonOptionsBoxLayout->addWidget(useDirectoryMode, 3, 0, 0);
+  commonOptionsBoxLayout->addWidget(directoryMode, 3, 1, 0);
+  
+  // 
+  // Character sets
+  // 
+  QGroupBox *characterSetsBox = new QGroupBox(i18n("Character Sets"), this);
+  QGridLayout *characterSetsBoxLayout = new QGridLayout(characterSetsBox);
+  characterSetsBoxLayout->setSpacing(5);  
+  
+  // Client character set
+  QCheckBox *useCharacterSets = new QCheckBox(Smb4KMountSettings::self()->useCharacterSetsItem()->label(), characterSetsBox);
+  useCharacterSets->setObjectName("kcfg_UseCharacterSets");
+  
+  QLabel *clientCharacterSetLabel = new QLabel(Smb4KMountSettings::self()->clientCharsetItem()->label(), characterSetsBox);
+  clientCharacterSetLabel->setIndent(25);
+  clientCharacterSetLabel->setObjectName("ClientCharacterSetLabel");
+  
+  KComboBox *clientCharacterSet = new KComboBox(characterSetsBox);
+  clientCharacterSet->setObjectName("kcfg_ClientCharset");
+  
+  QList<KCoreConfigSkeleton::ItemEnum::Choice> charsetChoices = Smb4KMountSettings::self()->clientCharsetItem()->choices();
+  
+  for (const KCoreConfigSkeleton::ItemEnum::Choice &c : charsetChoices)
+  {
+    clientCharacterSet->addItem(c.label);
+  }
+  
+  clientCharacterSetLabel->setBuddy(clientCharacterSet);
+  
+  // Server character set
+  QLabel *serverCharacterSetLabel = new QLabel(Smb4KMountSettings::self()->serverCodepageItem()->label(), characterSetsBox);
+  serverCharacterSetLabel->setIndent(25);
+  serverCharacterSetLabel->setObjectName("ServerCodepageLabel");
+  
+  KComboBox *serverCharacterSet = new KComboBox(characterSetsBox);
+  serverCharacterSet->setObjectName("kcfg_ServerCodepage");
+  
+  QList<KCoreConfigSkeleton::ItemEnum::Choice> codepageChoices = Smb4KMountSettings::self()->serverCodepageItem()->choices();
+  
+  for (const KCoreConfigSkeleton::ItemEnum::Choice &c : codepageChoices)
+  {
+    serverCharacterSet->addItem(c.label);
+  }
+  
+  serverCharacterSetLabel->setBuddy(serverCharacterSet);
+  
+  characterSetsBoxLayout->addWidget(useCharacterSets, 0, 0, 1, 2, 0);
+  characterSetsBoxLayout->addWidget(clientCharacterSetLabel, 1, 0, 0);
+  characterSetsBoxLayout->addWidget(clientCharacterSet, 1, 1, 0);
+  characterSetsBoxLayout->addWidget(serverCharacterSetLabel, 2, 0, 0);
+  characterSetsBoxLayout->addWidget(serverCharacterSet, 2, 1, 0);  
+  
+  layout->addWidget(commonOptionsBox, 0);
+  layout->addWidget(characterSetsBox, 0);
+  layout->addStretch(100);
+  
   //
   // Connections
   //
-  connect(user_menu, SIGNAL(triggered(QAction*)),
-          this, SLOT(slotNewUserTriggered(QAction*)));
-  connect(group_menu, SIGNAL(triggered(QAction*)),
-          this, SLOT(slotNewGroupTriggered(QAction*)));
+  connect(userMenu, SIGNAL(triggered(QAction*)), this, SLOT(slotNewUserTriggered(QAction*)));
+  connect(groupMenu, SIGNAL(triggered(QAction*)), this, SLOT(slotNewGroupTriggered(QAction*)));
+  connect(useCharacterSets, SIGNAL(toggled(bool)), this, SLOT(slotCharacterSets(bool)));
+  
+  //
+  // Enable / disable widgets
+  //
+  slotCharacterSets(Smb4KMountSettings::useCharacterSets());
 }
 #else
 //
@@ -819,6 +734,7 @@ void Smb4KConfigPageMounting::slotCIFSUnixExtensionsSupport(bool checked)
 
 void Smb4KConfigPageMounting::slotAdditionalCIFSOptions()
 {
+#if defined(Q_OS_LINUX)
   KLineEdit *cifsOptions = findChild<KLineEdit *>("kcfg_CustomCIFSOptions");
   
   if (cifsOptions)
@@ -878,6 +794,61 @@ void Smb4KConfigPageMounting::slotAdditionalCIFSOptions()
     {
       // Do nothing
     }
+  }
+  else
+  {
+    // Do nothing
+  }
+#endif
+}
+
+
+void Smb4KConfigPageMounting::slotCharacterSets(bool on)
+{
+  //
+  // Client character set
+  // 
+  QLabel *clientCharacterSetLabel = findChild<QLabel *>("ClientCharacterSetLabel");
+  
+  if (clientCharacterSetLabel)
+  {
+    clientCharacterSetLabel->setEnabled(on);
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  KComboBox *clientCharacterSet = findChild<KComboBox *>("kcfg_ClientCharset");
+  
+  if (clientCharacterSet)
+  {
+    clientCharacterSet->setEnabled(on);
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // Server character set
+  // 
+  QLabel *serverCharacterSetLabel = findChild<QLabel *>("ServerCodepageLabel");
+  
+  if (serverCharacterSetLabel)
+  {
+    serverCharacterSetLabel->setEnabled(on);
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  KComboBox *serverCharacterSet = findChild<KComboBox *>("kcfg_ServerCodepage");
+  
+  if (serverCharacterSet)
+  {
+    serverCharacterSet->setEnabled(on);
   }
   else
   {

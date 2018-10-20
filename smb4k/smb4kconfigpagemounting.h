@@ -76,9 +76,15 @@ class Smb4KConfigPageMounting : public QTabWidget
     
     /**
      * This slot is activated when the additional CIFS options are to be
-     * edited.
+     * edited (Linux only).
      */
     void slotAdditionalCIFSOptions();
+    
+    /**
+     * This slot is activated when the setting of the character set usage is changed
+     * (BSD only).
+     */
+    void slotCharacterSets(bool on);
     
   private:
     /**

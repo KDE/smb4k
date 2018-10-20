@@ -43,12 +43,13 @@
       <whatsthis>This is the directory mode that will be used for creating directories. It must be defined in octal.</whatsthis>
       <default>0755</default>
     </entry>
-    <entry name="UseClientCharset" type="Bool">
-      <label>Client character set:</label>
+    <entry name="UseCharacterSets" type="Bool">
+      <label>Use character sets</label>
       <whatsthis>This is the character set that is used by the client side (i.e. your side) for codepage to charset translations. If you keep the default setting, Smb4K will try to automatically determine the charset by looking up the "unix charset" option in the smb.conf.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="ClientCharset" type="Enum">
+      <label>Client character set:</label>
       <whatsthis>This is the character set that is used by the client side (i.e. your side) for codepage to charset translations. If you keep the default setting, Smb4K will try to automatically determine the charset by looking up the "unix charset" option in the smb.conf.</whatsthis>
       <choices>
         <choice name="default_charset">
@@ -123,13 +124,9 @@
       </choices>
       <default>default_charset</default>
     </entry>
-    <entry name="UseServerCodepage" type="Bool">
-      <label>Server codepage:</label>
-      <whatsthis>This is the codepage that is used by the server. The setting is only available with the SMBFS file system. If you keep the default setting, Smb4K will try to automatically determine the codepage by looking up the "dos charset" option in the smb.conf file.</whatsthis>
-      <default>false</default>      
-    </entry>
     <entry name="ServerCodepage" type="Enum">
-      <whatsthis>This is the codepage that is used by the server. The setting is only available with the SMBFS file system. If you keep the default setting, Smb4K will try to automatically determine the codepage by looking up the "dos charset" option in the smb.conf file.</whatsthis>
+      <label>Server character set:</label>
+      <whatsthis>This is the character set that is used by the server. If you keep the default setting, Smb4K will try to automatically determine the codepage by looking up the "dos charset" option in the smb.conf file.</whatsthis>
       <choices>
         <choice name="default_codepage">
           <label>default</label>

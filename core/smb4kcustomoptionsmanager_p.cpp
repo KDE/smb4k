@@ -640,6 +640,289 @@ void Smb4KCustomOptionsDialog::setupView()
 //
 void Smb4KCustomOptionsDialog::setupView()
 {
+  //
+  // Tab widget with settings
+  //
+  QTabWidget *tabWidget = new QTabWidget(this);
+  
+  QVBoxLayout *dialogLayout = qobject_cast<QVBoxLayout *>(layout());
+  dialogLayout->addWidget(tabWidget, 0);
+  
+  //
+  // Custom options for mounting
+  // 
+  QWidget *mountingTab = new QWidget(tabWidget);
+  
+  QVBoxLayout *mountingTabLayout = new QVBoxLayout(mountingTab);
+  mountingTabLayout->setSpacing(5);
+  
+  // 
+  // Remounting
+  // 
+  QGroupBox *remountGroupBox = new QGroupBox(i18n("Remounting"), mountingTab);
+  QVBoxLayout *remountGroupBoxLayout = new QVBoxLayout(remountGroupBox);
+  remountGroupBoxLayout->setSpacing(5);
+  
+  QCheckBox *remountAlways = new QCheckBox(i18n("Always remount this share"), remountGroupBox);
+  remountAlways->setObjectName("RemountAlways");
+  remountAlways->setEnabled(m_options->type() == Share);
+  connect(remountAlways, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
+
+  remountGroupBoxLayout->addWidget(remountAlways, 0);
+
+  mountingTabLayout->addWidget(remountGroupBox, 0);
+  
+  //
+  // Common options
+  //
+  QGroupBox *commonBox = new QGroupBox(i18n("Common Options"), mountingTab);
+  QGridLayout *commonBoxLayout = new QGridLayout(commonBox);
+  commonBoxLayout->setSpacing(5);
+  
+  // User Id
+  QCheckBox *useUserId = new QCheckBox(Smb4KMountSettings::self()->useUserIdItem()->label(), commonBox);
+  useUserId->setObjectName("UseUserId");
+  
+  KComboBox *userId = new KComboBox(commonBox);
+  userId->setObjectName("UserId");
+  
+  QList<KUser> allUsers = KUser::allUsers();
+
+  for (const KUser &u : allUsers)
+  {
+    userId->addItem(QString("%1 (%2)").arg(u.loginName()).arg(u.userId().nativeId()), QVariant::fromValue<K_GID>(u.groupId().nativeId()));
+  }
+  
+  connect(useUserId, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
+  connect(userId, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
+
+  commonBoxLayout->addWidget(useUserId, 0, 0, 0);
+  commonBoxLayout->addWidget(userId, 0, 1, 0);
+  
+  // Group Id
+  QCheckBox *useGroupId = new QCheckBox(Smb4KMountSettings::self()->useGroupIdItem()->label(), commonBox);
+  useGroupId->setObjectName("UseGroupId");
+  
+  KComboBox *groupId = new KComboBox(commonBox);
+  groupId->setObjectName("GroupId");
+  
+  QList<KUserGroup> allGroups = KUserGroup::allGroups();
+
+  for (const KUserGroup &g : allGroups)
+  {
+    groupId->addItem(QString("%1 (%2)").arg(g.name()).arg(g.groupId().nativeId()), QVariant::fromValue<K_GID>(g.groupId().nativeId()));
+  }
+  
+  connect(useGroupId, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
+  connect(groupId, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
+  
+  commonBoxLayout->addWidget(useGroupId, 1, 0, 0);
+  commonBoxLayout->addWidget(groupId, 1, 1, 0);
+  
+  // File mode
+  QCheckBox *useFileMode = new QCheckBox(Smb4KMountSettings::self()->useFileModeItem()->label(), commonBox);
+  useFileMode->setObjectName("UseFileMode");
+  
+  KLineEdit *fileMode = new KLineEdit(commonBox);
+  fileMode->setObjectName("FileMode");
+  fileMode->setClearButtonEnabled(true);
+  fileMode->setAlignment(Qt::AlignRight);
+  
+  connect(useFileMode, SIGNAL(toggled(bool)), this, SLOT(slotCheckValues()));
+  connect(fileMode, SIGNAL(textEdited(QString)), this, SLOT(slotCheckValues()));
+  
+  commonBoxLayout->addWidget(useFileMode, 2, 0, 0);
+  commonBoxLayout->addWidget(fileMode, 2, 1, 0);
+  
+  // Directory mode
+  QCheckBox *useDirectoryMode = new QCheckBox(Smb4KMountSettings::self()->useDirectoryModeItem()->label(), commonBox);
+  useDirectoryMode->setObjectName("UseDirectoryMode");
+  
+  KLineEdit *directoryMode = new KLineEdit(commonBox);
+  directoryMode->setObjectName("DirectoryMode");
+  directoryMode->setClearButtonEnabled(true);
+  directoryMode->setAlignment(Qt::AlignRight);
+  
+  connect(useDirectoryMode, SIGNAL(toggled(bool)), this, SLOT(slotCheckValues()));
+  connect(directoryMode, SIGNAL(textEdited(QString)), this, SLOT(slotCheckValues()));
+  
+  commonBoxLayout->addWidget(useDirectoryMode, 3, 0, 0);
+  commonBoxLayout->addWidget(directoryMode, 3, 1, 0);
+  
+  mountingTabLayout->addWidget(commonBox, 0);
+  mountingTabLayout->addStretch(100);
+  
+  tabWidget->addTab(mountingTab, i18n("Mounting"));
+  
+  //
+  // Custom options for Samba
+  //
+  QWidget *sambaTab = new QWidget(tabWidget);
+  QVBoxLayout *sambaTabLayout = new QVBoxLayout(sambaTab);
+  sambaTabLayout->setSpacing(5);
+
+  //
+  // Common Options
+  //
+  QGroupBox *commonSambaOptionsBox = new QGroupBox(i18n("Common Options"), sambaTab);
+  QGridLayout *commonSambaOptionsBoxLayout = new QGridLayout(commonSambaOptionsBox);
+  commonSambaOptionsBoxLayout->setSpacing(5);
+  
+  // SMB port
+  QCheckBox *useSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), commonSambaOptionsBox);
+  useSmbPort->setObjectName("UseSmbPort");
+  
+  QSpinBox *smbPort = new QSpinBox(commonSambaOptionsBox);
+  smbPort->setObjectName("SmbPort");
+  smbPort->setMinimum(Smb4KSettings::self()->remoteSmbPortItem()->minValue().toInt());
+  smbPort->setMaximum(Smb4KSettings::self()->remoteSmbPortItem()->maxValue().toInt());
+//   smbPort->setSliderEnabled(true);
+  
+  connect(useSmbPort, SIGNAL(toggled(bool)), this, SLOT(slotCheckValues()));
+  connect(smbPort, SIGNAL(valueChanged(int)), this, SLOT(slotCheckValues()));
+  
+  commonSambaOptionsBoxLayout->addWidget(useSmbPort, 0, 0, 0);
+  commonSambaOptionsBoxLayout->addWidget(smbPort, 0, 1, 0);
+  
+  sambaTabLayout->addWidget(commonSambaOptionsBox, 0);
+  
+  //
+  // Authentication
+  // 
+  QGroupBox *authenticationBox = new QGroupBox(i18n("Authentication"), sambaTab);
+  QVBoxLayout *authenticationBoxLayout = new QVBoxLayout(authenticationBox);
+  authenticationBoxLayout->setSpacing(5);
+  
+  // Kerberos
+  QCheckBox *useKerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), authenticationBox);
+  useKerberos->setObjectName("UseKerberos");
+
+  connect(useKerberos, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
+  
+  authenticationBoxLayout->addWidget(useKerberos, 0);
+  
+  sambaTabLayout->addWidget(authenticationBox, 0);
+  sambaTabLayout->addStretch(100);
+
+  tabWidget->addTab(sambaTab, i18n("Samba"));
+
+  //
+  // Custom options for Wake-On-LAN
+  //
+  // NOTE: If you change the texts here, also alter them in the respective
+  // config page.
+  // 
+  QWidget *wakeOnLanTab = new QWidget(tabWidget);
+  QVBoxLayout *wakeOnLanTabLayout = new QVBoxLayout(wakeOnLanTab);
+  wakeOnLanTabLayout->setSpacing(5);
+  
+  // 
+  // MAC address
+  // 
+  QGroupBox *macAddressBox = new QGroupBox(i18n("MAC Address"), wakeOnLanTab);
+  QGridLayout *macAddressBoxLayout = new QGridLayout(macAddressBox);
+  macAddressBoxLayout->setSpacing(5);
+  
+  // MAC address
+  QLabel *macAddressLabel = new QLabel(i18n("MAC Address:"), macAddressBox);
+  KLineEdit *macAddress = new KLineEdit(macAddressBox);
+  macAddress->setObjectName("MACAddress");
+  macAddress->setClearButtonEnabled(true);
+  macAddress->setInputMask("HH:HH:HH:HH:HH:HH;_"); // MAC address, see QLineEdit doc
+  macAddressLabel->setBuddy(macAddress);
+  
+  connect(macAddress, SIGNAL(textEdited(QString)), SLOT(slotCheckValues()));
+  connect(macAddress, SIGNAL(textEdited(QString)), SLOT(slotEnableWOLFeatures(QString)));
+  
+  macAddressBoxLayout->addWidget(macAddressLabel, 0, 0, 0);
+  macAddressBoxLayout->addWidget(macAddress, 0, 1, 0);
+
+  wakeOnLanTabLayout->addWidget(macAddressBox, 0);
+  
+  //
+  // Wake-On-LAN Actions
+  // 
+  QGroupBox *wakeOnLANActionsBox = new QGroupBox(i18n("Actions"), wakeOnLanTab);
+  QVBoxLayout *wakeOnLANActionsBoxLayout = new QVBoxLayout(wakeOnLANActionsBox);
+  wakeOnLANActionsBoxLayout->setSpacing(5);
+  
+  // Send magic package before network scan
+  QCheckBox *sendPackageBeforeScan = new QCheckBox(i18n("Send magic package before scanning the network neighborhood"), wakeOnLANActionsBox);
+  sendPackageBeforeScan->setObjectName("SendPackageBeforeScan");
+  
+  connect(sendPackageBeforeScan, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
+  
+  wakeOnLANActionsBoxLayout->addWidget(sendPackageBeforeScan, 0);
+  
+  // Send magic package before mount
+  QCheckBox *sendPackageBeforeMount = new QCheckBox(i18n("Send magic package before mounting a share"), wakeOnLanTab);
+  sendPackageBeforeMount->setObjectName("SendPackageBeforeMount");
+  
+  connect(sendPackageBeforeMount, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
+  
+  wakeOnLANActionsBoxLayout->addWidget(sendPackageBeforeMount, 0);
+  
+  wakeOnLanTabLayout->addWidget(wakeOnLANActionsBox, 0);
+  wakeOnLanTabLayout->addStretch(100);
+
+  tabWidget->addTab(wakeOnLanTab, i18n("Wake-On-LAN"));
+  
+  //
+  // Load settings
+  // 
+  if (m_options->hasOptions())
+  {
+    if (m_options->type() == Share)
+    {
+      remountAlways->setChecked((m_options->remount() == Smb4KCustomOptions::RemountAlways));
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    // User information
+    useUserId->setChecked(m_options->useUser());
+    userId->setCurrentText(QString("%1 (%2)").arg(m_options->user().loginName()).arg(m_options->user().userId().nativeId()));
+    
+    // Group information
+    useGroupId->setChecked(m_options->useGroup());
+    groupId->setCurrentText(QString("%1 (%2)").arg(m_options->group().name()).arg(m_options->group().groupId().nativeId()));
+    
+    // File mode
+    useFileMode->setChecked(m_options->useFileMode());
+    fileMode->setText(m_options->fileMode());
+    
+    // Directory mode
+    useDirectoryMode->setChecked(m_options->useDirectoryMode());
+    directoryMode->setText(m_options->directoryMode());
+    
+    // Remote SMB port
+    useSmbPort->setChecked(m_options->useSmbPort());
+    smbPort->setValue(m_options->smbPort());
+
+    // Kerberos
+    useKerberos->setChecked(m_options->useKerberos());
+    
+    // MAC address
+    macAddress->setText(m_options->macAddress());
+    
+    // Send magic package before scan
+    sendPackageBeforeScan->setChecked(m_options->wolSendBeforeNetworkScan());
+    
+    // Send magic package before mount
+    sendPackageBeforeMount->setChecked(m_options->wolSendBeforeMount());
+  }
+  else
+  {
+    setDefaultValues();
+  }
+  
+  //
+  // Enable/disable features
+  // 
+  wakeOnLanTab->setEnabled((m_options->type() == Host && Smb4KSettings::enableWakeOnLAN()));
+  slotEnableWOLFeatures(macAddress->text());
 }
 #else
 //
@@ -647,12 +930,167 @@ void Smb4KCustomOptionsDialog::setupView()
 //
 void Smb4KCustomOptionsDialog::setupView()
 {
+  //
+  // Tab widget with settings
+  //
+  QTabWidget *tabWidget = new QTabWidget(this);
+  
+  QVBoxLayout *dialogLayout = qobject_cast<QVBoxLayout *>(layout());
+  dialogLayout->addWidget(tabWidget, 0);
+  
+  //
+  // Custom options for Samba
+  //
+  QWidget *sambaTab = new QWidget(tabWidget);
+  QVBoxLayout *sambaTabLayout = new QVBoxLayout(sambaTab);
+  sambaTabLayout->setSpacing(5);
+
+  //
+  // Common Options
+  //
+  QGroupBox *commonSambaOptionsBox = new QGroupBox(i18n("Common Options"), sambaTab);
+  QGridLayout *commonSambaOptionsBoxLayout = new QGridLayout(commonSambaOptionsBox);
+  commonSambaOptionsBoxLayout->setSpacing(5);
+  
+  // SMB port
+  QCheckBox *useSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), commonSambaOptionsBox);
+  useSmbPort->setObjectName("UseSmbPort");
+  
+  QSpinBox *smbPort = new QSpinBox(commonSambaOptionsBox);
+  smbPort->setObjectName("SmbPort");
+  smbPort->setMinimum(Smb4KSettings::self()->remoteSmbPortItem()->minValue().toInt());
+  smbPort->setMaximum(Smb4KSettings::self()->remoteSmbPortItem()->maxValue().toInt());
+//   smbPort->setSliderEnabled(true);
+  
+  connect(useSmbPort, SIGNAL(toggled(bool)), this, SLOT(slotCheckValues()));
+  connect(smbPort, SIGNAL(valueChanged(int)), this, SLOT(slotCheckValues()));
+  
+  commonSambaOptionsBoxLayout->addWidget(useSmbPort, 0, 0, 0);
+  commonSambaOptionsBoxLayout->addWidget(smbPort, 0, 1, 0);
+  
+  sambaTabLayout->addWidget(commonSambaOptionsBox, 0);
+  
+  //
+  // Authentication
+  // 
+  QGroupBox *authenticationBox = new QGroupBox(i18n("Authentication"), sambaTab);
+  QVBoxLayout *authenticationBoxLayout = new QVBoxLayout(authenticationBox);
+  authenticationBoxLayout->setSpacing(5);
+  
+  // Kerberos
+  QCheckBox *useKerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), authenticationBox);
+  useKerberos->setObjectName("UseKerberos");
+
+  connect(useKerberos, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
+  
+  authenticationBoxLayout->addWidget(useKerberos, 0);
+  
+  sambaTabLayout->addWidget(authenticationBox, 0);
+  sambaTabLayout->addStretch(100);
+
+  tabWidget->addTab(sambaTab, i18n("Samba"));
+
+  //
+  // Custom options for Wake-On-LAN
+  //
+  // NOTE: If you change the texts here, also alter them in the respective
+  // config page.
+  // 
+  QWidget *wakeOnLanTab = new QWidget(tabWidget);
+  QVBoxLayout *wakeOnLanTabLayout = new QVBoxLayout(wakeOnLanTab);
+  wakeOnLanTabLayout->setSpacing(5);
+  
+  // 
+  // MAC address
+  // 
+  QGroupBox *macAddressBox = new QGroupBox(i18n("MAC Address"), wakeOnLanTab);
+  QGridLayout *macAddressBoxLayout = new QGridLayout(macAddressBox);
+  macAddressBoxLayout->setSpacing(5);
+  
+  // MAC address
+  QLabel *macAddressLabel = new QLabel(i18n("MAC Address:"), macAddressBox);
+  KLineEdit *macAddress = new KLineEdit(macAddressBox);
+  macAddress->setObjectName("MACAddress");
+  macAddress->setClearButtonEnabled(true);
+  macAddress->setInputMask("HH:HH:HH:HH:HH:HH;_"); // MAC address, see QLineEdit doc
+  macAddressLabel->setBuddy(macAddress);
+  
+  connect(macAddress, SIGNAL(textEdited(QString)), SLOT(slotCheckValues()));
+  connect(macAddress, SIGNAL(textEdited(QString)), SLOT(slotEnableWOLFeatures(QString)));
+  
+  macAddressBoxLayout->addWidget(macAddressLabel, 0, 0, 0);
+  macAddressBoxLayout->addWidget(macAddress, 0, 1, 0);
+
+  wakeOnLanTabLayout->addWidget(macAddressBox, 0);
+  
+  //
+  // Wake-On-LAN Actions
+  // 
+  QGroupBox *wakeOnLANActionsBox = new QGroupBox(i18n("Actions"), wakeOnLanTab);
+  QVBoxLayout *wakeOnLANActionsBoxLayout = new QVBoxLayout(wakeOnLANActionsBox);
+  wakeOnLANActionsBoxLayout->setSpacing(5);
+  
+  // Send magic package before network scan
+  QCheckBox *sendPackageBeforeScan = new QCheckBox(i18n("Send magic package before scanning the network neighborhood"), wakeOnLANActionsBox);
+  sendPackageBeforeScan->setObjectName("SendPackageBeforeScan");
+  
+  connect(sendPackageBeforeScan, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
+  
+  wakeOnLANActionsBoxLayout->addWidget(sendPackageBeforeScan, 0);
+  
+  // Send magic package before mount
+  QCheckBox *sendPackageBeforeMount = new QCheckBox(i18n("Send magic package before mounting a share"), wakeOnLanTab);
+  sendPackageBeforeMount->setObjectName("SendPackageBeforeMount");
+  
+  connect(sendPackageBeforeMount, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
+  
+  wakeOnLANActionsBoxLayout->addWidget(sendPackageBeforeMount, 0);
+  
+  wakeOnLanTabLayout->addWidget(wakeOnLANActionsBox, 0);
+  wakeOnLanTabLayout->addStretch(100);
+
+  tabWidget->addTab(wakeOnLanTab, i18n("Wake-On-LAN"));
+  
+  //
+  // Load settings
+  // 
+  if (m_options->hasOptions())
+  {
+    // Remote SMB port
+    useSmbPort->setChecked(m_options->useSmbPort());
+    smbPort->setValue(m_options->smbPort());
+
+    // Kerberos
+    useKerberos->setChecked(m_options->useKerberos());
+    
+    // MAC address
+    macAddress->setText(m_options->macAddress());
+    
+    // Send magic package before scan
+    sendPackageBeforeScan->setChecked(m_options->wolSendBeforeNetworkScan());
+    
+    // Send magic package before mount
+    sendPackageBeforeMount->setChecked(m_options->wolSendBeforeMount());
+  }
+  else
+  {
+    setDefaultValues();
+  }
+  
+  //
+  // Enable/disable features
+  // 
+  wakeOnLanTab->setEnabled((m_options->type() == Host && Smb4KSettings::enableWakeOnLAN()));
+  slotEnableWOLFeatures(macAddress->text());
+  
+  
 }
 #endif
 
 
 bool Smb4KCustomOptionsDialog::checkDefaultValues()
 {
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   // 
   // Always remount the share
   // 
@@ -670,27 +1108,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
       {
         // Do nothing
       }
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // 
-  // CIFS Unix extensions support
-  // 
-  QCheckBox *cifsExtensionsSupport = findChild<QCheckBox *>("CifsExtensionsSupport");
-  
-  if (cifsExtensionsSupport)
-  {
-    if (cifsExtensionsSupport->isChecked() != Smb4KMountSettings::cifsUnixExtensionsSupport())
-    {
-      return false;
     }
     else
     {
@@ -861,6 +1278,29 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
   {
     // Do nothing
   }
+#endif
+
+#if defined(Q_OS_LINUX)
+  // 
+  // CIFS Unix extensions support
+  // 
+  QCheckBox *cifsExtensionsSupport = findChild<QCheckBox *>("CifsExtensionsSupport");
+  
+  if (cifsExtensionsSupport)
+  {
+    if (cifsExtensionsSupport->isChecked() != Smb4KMountSettings::cifsUnixExtensionsSupport())
+    {
+      return false;
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
   
   // 
   // Filesystem port
@@ -940,7 +1380,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     // Do nothing
   }
   
-  
   // 
   // Security mode
   // 
@@ -979,6 +1418,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
   {
     // Do nothing
   }
+#endif
   
   // 
   // SMB port
@@ -1112,6 +1552,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
 
 void Smb4KCustomOptionsDialog::setDefaultValues()
 {
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   // 
   // Always remount the share
   // 
@@ -1132,20 +1573,6 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
   {
     // Do nothing
   }
-  
-  // 
-  // CIFS Unix extensions support
-  // 
-  QCheckBox *cifsExtensionsSupport = findChild<QCheckBox *>("CifsExtensionsSupport");
-  
-  if (cifsExtensionsSupport)
-  {
-    cifsExtensionsSupport->setChecked(Smb4KMountSettings::cifsUnixExtensionsSupport());
-  }
-  else
-  {
-    // Do nothing
-  }  
   
   // 
   // User Id
@@ -1248,6 +1675,22 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
   {
     // Do nothing
   }
+#endif
+  
+#if defined(Q_OS_LINUX)
+  // 
+  // CIFS Unix extensions support
+  // 
+  QCheckBox *cifsExtensionsSupport = findChild<QCheckBox *>("CifsExtensionsSupport");
+  
+  if (cifsExtensionsSupport)
+  {
+    cifsExtensionsSupport->setChecked(Smb4KMountSettings::cifsUnixExtensionsSupport());
+  }
+  else
+  {
+    // Do nothing
+  }  
   
   // 
   // Filesystem port
@@ -1403,6 +1846,7 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
   {
     // Do nothing
   }
+#endif
   
   // 
   // SMB port
@@ -1491,6 +1935,7 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
 
 void Smb4KCustomOptionsDialog::saveValues()
 {
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   //
   // Always remount the share
   // 
@@ -1513,20 +1958,6 @@ void Smb4KCustomOptionsDialog::saveValues()
     {
       // Do nothing
     }
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // 
-  // CIFS Unix extensions support
-  // 
-  QCheckBox *cifsExtensionsSupport = findChild<QCheckBox *>("CifsExtensionsSupport");
-  
-  if (cifsExtensionsSupport)
-  {
-    m_options->setCifsUnixExtensionsSupport(cifsExtensionsSupport->isChecked());
   }
   else
   {
@@ -1627,6 +2058,22 @@ void Smb4KCustomOptionsDialog::saveValues()
   if (directoryMode)
   {
     m_options->setDirectoryMode(directoryMode->text());
+  }
+  else
+  {
+    // Do nothing
+  }
+#endif
+
+#if defined(Q_OS_LINUX)
+  // 
+  // CIFS Unix extensions support
+  // 
+  QCheckBox *cifsExtensionsSupport = findChild<QCheckBox *>("CifsExtensionsSupport");
+  
+  if (cifsExtensionsSupport)
+  {
+    m_options->setCifsUnixExtensionsSupport(cifsExtensionsSupport->isChecked());
   }
   else
   {
@@ -1770,6 +2217,7 @@ void Smb4KCustomOptionsDialog::saveValues()
   {
     // Do nothing
   }
+#endif
   
   // 
   // SMB port

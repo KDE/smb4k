@@ -2,7 +2,7 @@
     The core class that mounts the shares.
                              -------------------
     begin                : Die Jun 10 2003
-    copyright            : (C) 2003-2017 by Alexander Reinholdt
+    copyright            : (C) 2003-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

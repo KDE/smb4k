@@ -2,7 +2,7 @@
     The core class that mounts the shares.
                              -------------------
     begin                : Die Jun 10 2003
-    copyright            : (C) 2003-2017 by Alexander Reinholdt
+    copyright            : (C) 2003-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -47,7 +47,7 @@
 #if defined(Q_OS_LINUX)
 #include "smb4kmountsettings_linux.h"
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-#include "smb4kmountsettings_freebsd.h"
+#include "smb4kmountsettings_bsd.h"
 #endif
 
 // Qt includes
@@ -2065,151 +2065,262 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
 //
 bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
 {
-//   // Find the mount program.
-//   const QString mount = findMountExecutable();
-// 
-//   if (!mount.isEmpty())
-//   {
-//     map.insert("mh_command", mount);
-//   }
-//   else
-//   {
-//     Smb4KNotification::commandNotFound("mount_smbfs");
-//     return false;
-//   }
-//   
-//   // Mount arguments.
-//   QMap<QString, QString> global_options = globalSambaOptions();
-//   OptionsPtr options  = Smb4KCustomOptionsManager::self()->findOptions(share);
-// 
-//   // Compile the list of arguments.
-//   QStringList args_list;
-//   
-//   // Workgroup
-//   if (!share->workgroupName().isEmpty())
-//   {
-//     args_list << "-W";
-//     args_list << KShell::quoteArg(share->workgroupName());
-//   }
-//   else
-//   {
-//     // Do nothing
-//   }
-//   
-//   // Host IP
-//   if (!share->hostIP().isEmpty())
-//   {
-//     args_list << "-I";
-//     args_list << share->hostIP();
-//   }
-//   else
-//   {
-//     // Do nothing
-//   }
-//   
-//   // UID 
-//   args_list << "-u";
-//   args_list << QString("%1").arg(options ? options->user().userId().nativeId() : (K_UID)Smb4KMountSettings::userId().toInt());
-//   
-//   // GID 
-//   args_list << "-g";
-//   args_list << QString("%1").arg(options ? options->group().groupId().nativeId() : (K_GID)Smb4KMountSettings::groupId().toInt());
-//   
-//   // Character sets for the client and server
-//   QString client_charset, server_charset;
-// 
-//   switch (Smb4KMountSettings::clientCharset())
-//   {
-//     case Smb4KMountSettings::EnumClientCharset::default_charset:
-//     {
-//       client_charset = global_options["unix charset"].toLower(); // maybe empty
-//       break;
-//     }
-//     default:
-//     {
-//       client_charset = Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::clientCharset()).label;
-//       break;
-//     }
-//   }
-// 
-//   switch (Smb4KMountSettings::serverCodepage())
-//   {
-//     case Smb4KMountSettings::EnumServerCodepage::default_codepage:
-//     {
-//       server_charset = global_options["dos charset"].toLower(); // maybe empty
-//       break;
-//     }
-//     default:
-//     {
-//       server_charset = Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::serverCodepage()).label;
-//       break;
-//     }
-//   }
-// 
-//   if (!client_charset.isEmpty() && !server_charset.isEmpty())
-//   {
-//     args_list << "-E";
-//     args_list << QString("%1:%2").arg(client_charset, server_charset);
-//   }
-//   else
-//   {
-//     // Do nothing
-//   }
-//   
-//   // File mask
-//   if (!Smb4KMountSettings::fileMask().isEmpty())
-//   {
-//     args_list << "-f";
-//     args_list << QString("%1").arg(Smb4KMountSettings::fileMask());
-//   }
-//   else
-//   {
-//     // Do nothing
-//   }
-// 
-//   // Directory mask
-//   if (!Smb4KMountSettings::directoryMask().isEmpty())
-//   {
-//     args_list << "-d";
-//     args_list << QString("%1").arg(Smb4KMountSettings::directoryMask());
-//   }
-//   else
-//   {
-//     // Do nothing
-//   }
-//   
-//   // User name
-//   if (!share->login().isEmpty())
-//   {
-//     args_list << "-U";
-//     args_list << QString("%1").arg(share->login());
-//   }
-//   else
-//   {
-//     args_list << "-N";
-//   }
-//   
-//   // Mount options
-//   map.insert("mh_options", args_list);
-//   
-//   // Mount point
-//   map.insert("mh_mountpoint", share->canonicalPath());
-//   
-//   if (!share->isHomesShare())
-//   {
-//     map.insert("mh_url", share->url());
-//     map.insert("mh_unc", share->unc());
-//   }
-//   else
-//   {
-//     map.insert("mh_url", share->homeURL());
-//     map.insert("mh_homes_url", share->url());
-//     map.insert("mh_unc", share->homeUNC());
-//     map.insert("mh_homes_unc", share->unc());
-//   }  
-// 
-//   map.insert("mh_workgroup", share->workgroupName());
-//   map.insert("mh_ip", share->hostIP());
+  //
+  // Find the mount executable
+  // 
+  const QString mount = findMountExecutable();
+  
+  if (!mount.isEmpty())
+  {
+    map.insert("mh_command", mount);
+  }
+  else
+  {
+    Smb4KNotification::commandNotFound("mount_smbfs");
+    return false;
+  }
+  
+  //
+  // Global and custom options
+  // 
+  QMap<QString, QString> globalOptions = globalSambaOptions();
+  OptionsPtr options = Smb4KCustomOptionsManager::self()->findOptions(share);
+  
+  //
+  // List of arguments 
+  // 
+  QStringList argumentsList;
+  
+  //
+  // Workgroup
+  // 
+  if (!share->workgroupName().isEmpty())
+  {
+    argumentsList << "-W";
+    argumentsList << KShell::quoteArg(share->workgroupName());
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // IP address
+  // 
+  if (!share->hostIP().isEmpty())
+  {
+    argumentsList << "-I";
+    argumentsList << share->hostIP();
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // User Id
+  // 
+  if (options)
+  {
+    if (options->useUser())
+    {
+      argumentsList << "-u";
+      argumentsList << QString("%1").arg(options->user().userId().nativeId());
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    if (Smb4KMountSettings::useUserId())
+    {
+      argumentsList << "-u";
+      argumentsList << QString("%1").arg((K_UID)Smb4KMountSettings::userId().toInt());
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  //
+  // Group Id
+  // 
+  if (options)
+  {
+    if (options->useGroup())
+    {
+      argumentsList << "-g";
+      argumentsList << QString("%1").arg(options->group().groupId().nativeId());
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    if (Smb4KMountSettings::useGroupId())
+    {
+      argumentsList << "-g";
+      argumentsList << QString("%1").arg((K_GID)Smb4KMountSettings::groupId().toInt());
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  if (Smb4KMountSettings::useCharacterSets())
+  {
+    // Client character set
+    QString clientCharset, serverCharset;
+    
+    switch (Smb4KMountSettings::clientCharset())
+    {
+      case Smb4KMountSettings::EnumClientCharset::default_charset:
+      {
+        clientCharset = globalOptions["unix charset"].toLower(); // maybe empty
+        break;
+      }
+      default:
+      {
+        clientCharset = Smb4KMountSettings::self()->clientCharsetItem()->choices().value(Smb4KMountSettings::clientCharset()).label;
+        break;
+      }
+    }
+    
+    // Server character set
+    switch (Smb4KMountSettings::serverCodepage())
+    {
+      case Smb4KMountSettings::EnumServerCodepage::default_codepage:
+      {
+        serverCharset = globalOptions["dos charset"].toLower(); // maybe empty
+        break;
+      }
+      default:
+      {
+        serverCharset = Smb4KMountSettings::self()->serverCodepageItem()->choices().value(Smb4KMountSettings::serverCodepage()).label;
+        break;
+      }
+    }
+    
+    if (!clientCharset.isEmpty() && !serverCharset.isEmpty())
+    {
+      argumentsList << "-E";
+      argumentsList << QString("%1:%2").arg(clientCharset, serverCharset);
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  //
+  // File mode
+  // 
+  if (options)
+  {
+    if (options->useFileMode())
+    {
+      argumentsList << "-f";
+      argumentsList << options->fileMode();
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    if (Smb4KMountSettings::useFileMode())
+    {
+      argumentsList << "-f";
+      argumentsList << Smb4KMountSettings::fileMode();
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+
+  //
+  // Directory mode
+  // 
+  if (options)
+  {
+    if (options->useDirectoryMode())
+    {
+      argumentsList << "-d";
+      argumentsList << options->directoryMode();
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  else
+  {
+    if (Smb4KMountSettings::useDirectoryMode())
+    {
+      argumentsList << "-d";
+      argumentsList << Smb4KMountSettings::directoryMode();
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+
+  //
+  // User name (login)
+  // 
+  if (!share->login().isEmpty())
+  {
+    argumentsList << "-U";
+    argumentsList << share->login();
+  }
+  else
+  {
+    argumentsList << "-N";
+  }
+  
+  qDebug() << argumentsList.join(" ");
+
+  //
+  // Insert the mount options into the map
+  // 
+  map.insert("mh_options", argumentsList);
+
+  //
+  // Insert the mountpoint into the map
+  // 
+  map.insert("mh_mountpoint", share->canonicalPath());
+  
+  //
+  // Insert information about the share and its URL into the map
+  // 
+  if (!share->isHomesShare())
+  {
+    map.insert("mh_url", share->url());
+    map.insert("mh_unc", share->unc());
+  }
+  else
+  {
+    map.insert("mh_url", share->homeURL());
+    map.insert("mh_homes_url", share->url());
+    map.insert("mh_unc", share->homeUNC());
+    map.insert("mh_homes_unc", share->unc());
+  }  
+
+  map.insert("mh_workgroup", share->workgroupName());
+  map.insert("mh_ip", share->hostIP());
   
   return true;
 }
