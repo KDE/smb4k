@@ -5,10 +5,10 @@
 #
 
 # Find the include file
-find_path(LIBSMBCLIENT_INCLUDE_DIR NAMES libsmbclient.h PATH_SUFFIXES samba-4.0)
+find_path(LIBSMBCLIENT_INCLUDE_DIR NAMES libsmbclient.h PATH_SUFFIXES samba-4.0 samba4)
 
 # Find the library
-find_library(LIBSMBCLIENT_LIBRARY NAMES smbclient)
+find_library(LIBSMBCLIENT_LIBRARY NAMES smbclient libsmbclient PATH_SUFFIXES samba4)
 
 # Handle the arguments
 include(FindPackageHandleStandardArgs)
