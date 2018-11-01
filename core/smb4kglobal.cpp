@@ -37,6 +37,7 @@
 #include "smb4ksynchronizer.h"
 #include "smb4kpreviewer.h"
 #include "smb4ksearch.h"
+#include "smb4kclient.h"
 
 // Qt includes
 #include <QMutex>
@@ -54,30 +55,45 @@ QMutex mutex(QMutex::Recursive /* needed to avoid dead-locks */);
 
 void Smb4KGlobal::initCore(bool modifyCursor, bool initClasses)
 {
-  // Should the core use a busy cursor?
-  p->modifyCursor = modifyCursor;
-  
-  // Set default values for some settings.
-  p->setDefaultSettings();
-  
-  // Initialize the necessary core classes
-  if (initClasses)
+  if (!p->coreInitialized)
   {
-    Smb4KScanner::self()->start();
-    Smb4KMounter::self()->start();
+    // 
+    // Busy cursor
+    // 
+    p->modifyCursor = modifyCursor;
+    
+    // 
+    // Set default values
+    // 
+    p->setDefaultSettings();
+    
+    // 
+    // Initialize the necessary core classes
+    // 
+    if (initClasses)
+    {
+      Smb4KClient::self()->start();
+      Smb4KScanner::self()->start();
+      Smb4KMounter::self()->start();
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    p->makeConnections();
+    p->coreInitialized = true;
   }
   else
   {
     // Do nothing
   }
-
-  p->makeConnections();
-  p->coreInitialized = true;
 }
 
 
 void Smb4KGlobal::abortCore()
 {
+  Smb4KClient::self()->abort();
   Smb4KScanner::self()->abortAll();
   Smb4KMounter::self()->abortAll();
   Smb4KPrint::self()->abortAll();
@@ -89,7 +105,8 @@ void Smb4KGlobal::abortCore()
 
 bool Smb4KGlobal::coreIsRunning()
 {
-  return (Smb4KScanner::self()->isRunning() ||
+  return (Smb4KClient::self()->isRunning() ||
+          Smb4KScanner::self()->isRunning() ||
           Smb4KMounter::self()->isRunning() ||
           Smb4KPrint::self()->isRunning() ||
           Smb4KSynchronizer::self()->isRunning() ||
