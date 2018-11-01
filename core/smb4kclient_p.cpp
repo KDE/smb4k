@@ -225,6 +225,7 @@ void Smb4KClientJob::slotStartJob()
             
             for (const QHostAddress &addr : ipAddresses)
             {
+              // FIXME
             }
           }
           else

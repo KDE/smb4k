@@ -75,6 +75,19 @@ void Smb4KClient::start()
 }
 
 
+bool Smb4KClient::isRunning()
+{
+  return hasSubjobs();
+}
+
+
+void Smb4KClient::abort()
+{
+  qDebug() << "FIXME";
+}
+
+
+
 void Smb4KClient::lookupDomains()
 {
   //
@@ -184,6 +197,15 @@ void Smb4KClient::lookupDomains()
 
 void Smb4KClient::slotStartJobs()
 {
+  //
+  // Disconnect from Smb4KHardwareInterface::networkConfigUpdated() signal,
+  // otherwise we get unwanted periodic scanning.
+  //
+  disconnect(Smb4KHardwareInterface::self(), SIGNAL(networkConfigUpdated()), this, SLOT(slotStartJobs()));
+  
+  //
+  // Lookup domains as the first step
+  // 
   lookupDomains();
 }
 

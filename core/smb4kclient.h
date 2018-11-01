@@ -64,6 +64,18 @@ class Smb4KClient : public KCompositeJob
     void start();
     
     /**
+     * Returns TRUE, if jobs are running and FALSE otherwise
+     * 
+     * @returns TRUE if jobs are running
+     */
+    bool isRunning();
+    
+    /**
+     * Aborts all subjobs
+     */
+    void abort();
+    
+    /**
      * This function starts the scan for all available domains
      * on the network.
      */
