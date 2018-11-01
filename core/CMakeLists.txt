@@ -11,6 +11,8 @@ set(smb4kcore_LIB_SRCS
   smb4kbookmark.cpp
   smb4kbookmarkhandler.cpp
   smb4kbookmarkhandler_p.cpp
+  smb4kclient.cpp
+  smb4kclient_p.cpp
   smb4kcustomoptions.cpp
   smb4kcustomoptionsmanager.cpp
   smb4kcustomoptionsmanager_p.cpp
@@ -94,6 +96,7 @@ if (INSTALL_HEADER_FILES)
     smb4kbasicnetworkitem.h
     smb4kbookmark.h
     smb4kbookmarkhandler.h
+    smb4kclient.h
     smb4kcustomoptions.h
     smb4kcustomoptionsmanager.h
     smb4kdeclarative.h
