@@ -199,7 +199,7 @@ class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
      * 
     * @returns a list of custom options objects with WOL features defined.
     */
-    QList<OptionsPtr> wolEntries() const;
+    QList<OptionsPtr> wakeOnLanEntries() const;
     
     /**
      * Reload custom options from the file.              

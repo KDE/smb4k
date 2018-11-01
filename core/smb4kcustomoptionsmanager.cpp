@@ -1280,7 +1280,7 @@ void Smb4KCustomOptionsManager::removeCustomOptions(const OptionsPtr &options)
 }
 
 
-QList<OptionsPtr> Smb4KCustomOptionsManager::wolEntries() const
+QList<OptionsPtr> Smb4KCustomOptionsManager::wakeOnLanEntries() const
 {
   QList<OptionsPtr> list;
   
