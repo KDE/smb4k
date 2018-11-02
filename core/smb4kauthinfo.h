@@ -2,7 +2,7 @@
     This class provides a container for the authentication data.
                              -------------------
     begin                : Sa Feb 28 2004
-    copyright            : (C) 2004-2017 by Alexander Reinholdt
+    copyright            : (C) 2004-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -224,14 +224,14 @@ class Q_DECL_EXPORT Smb4KAuthInfo
      *
      * @param url             The URL of the network item
      */
-    void setURL(const QUrl &url);
+    void setUrl(const QUrl &url);
     
     /**
      * Sets the URL of the share.
      *
      * @param url             The URL of the network item
      */
-    void setURL(const QString &url);
+    void setUrl(const QString &url);
 
     /**
      * Returns the URL of the network item
@@ -245,14 +245,14 @@ class Q_DECL_EXPORT Smb4KAuthInfo
      *
      * @param ip          The IP address
      */
-    void setIP(const QString &ip);
+    void setIpAddress(const QString &ip);
 
     /**
      * Returns the IP address
      *
      * @returns the IP address
      */
-    QString ip() const;
+    QString ipAddress() const;
 
   private:
     /**

@@ -2,7 +2,7 @@
     This class provides a container for the authentication data.
                              -------------------
     begin                : Sa Feb 28 2004
-    copyright            : (C) 2004-2017 by Alexander Reinholdt
+    copyright            : (C) 2004-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -53,7 +53,7 @@ Smb4KAuthInfo::Smb4KAuthInfo(const Smb4KHost *host)
   d->type       = Host;
   d->workgroup  = host->workgroupName();
   d->homesShare = false;
-  d->ip.setAddress(host->ip());
+  d->ip.setAddress(host->ipAddress());
 }
 
 
@@ -66,13 +66,13 @@ Smb4KAuthInfo::Smb4KAuthInfo(const Smb4KShare *share)
   }
   else
   {
-    d->url      = share->homeURL();
+    d->url      = share->homeUrl();
   }
 
   d->type       = Share;
   d->workgroup  = share->workgroupName();
   d->homesShare = share->isHomesShare();
-  d->ip.setAddress(share->hostIP());
+  d->ip.setAddress(share->hostIpAddress());
 }
 
 
@@ -109,7 +109,7 @@ void Smb4KAuthInfo::setHost(Smb4KHost *host)
     d->type       = Host;
     d->workgroup  = host->workgroupName();
     d->homesShare = false;
-    d->ip.setAddress(host->ip());
+    d->ip.setAddress(host->ipAddress());
   }
   else
   {
@@ -130,13 +130,13 @@ void Smb4KAuthInfo::setShare(Smb4KShare *share)
     }
     else
     {
-      d->url      = share->homeURL();
+      d->url      = share->homeUrl();
     }
     
     d->type       = Share;
     d->workgroup  = share->workgroupName();
     d->homesShare = share->isHomesShare();
-    d->ip.setAddress(share->hostIP());
+    d->ip.setAddress(share->hostIpAddress());
   }
   else
   {
@@ -214,7 +214,7 @@ QString Smb4KAuthInfo::hostUNC() const
 }
 
 
-void Smb4KAuthInfo::setURL(const QUrl &url)
+void Smb4KAuthInfo::setUrl(const QUrl &url)
 {
   d->url = url;
   d->url.setScheme("smb");
@@ -230,12 +230,12 @@ void Smb4KAuthInfo::setURL(const QUrl &url)
   }
   
   // Determine whether this is a homes share.
-  qDebug() << "Smb4KAuthInfo::setURL(): Check if determination of homes share works";
+  qDebug() << "Smb4KAuthInfo::setUrl(): Check if determination of homes share works";
   d->homesShare = (QString::compare(d->url.path().remove(0, 1), "homes", Qt::CaseSensitive) == 0);
 }
 
 
-void Smb4KAuthInfo::setURL(const QString &url)
+void Smb4KAuthInfo::setUrl(const QString &url)
 {
   d->url.setUrl(url, QUrl::TolerantMode);
   d->url.setScheme("smb");
@@ -251,7 +251,7 @@ void Smb4KAuthInfo::setURL(const QString &url)
   }
   
   // Determine whether this is a homes share.
-  qDebug() << "Smb4KAuthInfo::setURL(): Check if determination of homes share works";
+  qDebug() << "Smb4KAuthInfo::setUrl(): Check if determination of homes share works";
   d->homesShare = (QString::compare(d->url.path().remove(0, 1), "homes", Qt::CaseSensitive) == 0);
 }
 
@@ -373,7 +373,7 @@ bool Smb4KAuthInfo::equals(Smb4KAuthInfo *info) const
   }
 
   // IP address
-  if (QString::compare(d->ip.toString(), info->ip()) != 0)
+  if (QString::compare(d->ip.toString(), info->ipAddress()) != 0)
   {
     return false;
   }
@@ -386,13 +386,13 @@ bool Smb4KAuthInfo::equals(Smb4KAuthInfo *info) const
 }
 
 
-void Smb4KAuthInfo::setIP(const QString &ip)
+void Smb4KAuthInfo::setIpAddress(const QString &ip)
 {
   d->ip.setAddress(ip);
 }
 
 
-QString Smb4KAuthInfo::ip() const
+QString Smb4KAuthInfo::ipAddress() const
 {
   return d->ip.toString();
 }
