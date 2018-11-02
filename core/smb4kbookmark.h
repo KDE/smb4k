@@ -26,6 +26,9 @@
 #ifndef SMB4KBOOKMARK_H
 #define SMB4KBOOKMARK_H
 
+// application specific includes
+#include "smb4kglobal.h"
+
 // Qt includes
 #include <QString>
 #include <QScopedPointer>
@@ -123,28 +126,28 @@ class Q_DECL_EXPORT Smb4KBookmark
      *
      * @param ip              The host's IP address
      */
-    void setHostIP(const QString &ip);
+    void setHostIpAddress(const QString &ip);
 
     /**
      * Returns the host's IP address.
      *
      * @returns the host's IP address.
      */
-    QString hostIP() const;
+    QString hostIpAddress() const;
 
     /**
      * Set the share's type.
      *
      * @param type            The type of the share.
      */
-    void setTypeString(const QString &type);
+    void setShareType(Smb4KGlobal::NetworkItem type);
 
     /**
      * Returns the share's type.
      *
      * @returns the type of the share.
      */
-    QString typeString() const;
+    Smb4KGlobal::NetworkItem shareType() const;
 
     /**
      * Returns the UNC in the form //HOST/Share.
@@ -201,14 +204,14 @@ class Q_DECL_EXPORT Smb4KBookmark
      *
      * @param url             The URL of the network item
      */
-    void setURL(const QUrl &url);
+    void setUrl(const QUrl &url);
     
     /**
      * Sets the URL of the share.
      *
      * @param url             The URL of the network item
      */
-    void setURL(const QString &url);
+    void setUrl(const QString &url);
 
     /**
      * Returns the URL of this bookmark.

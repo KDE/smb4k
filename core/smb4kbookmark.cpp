@@ -40,6 +40,8 @@
 #include <KI18n/KLocalizedString>
 #include <KIconThemes/KIconLoader>
 
+using namespace Smb4KGlobal;
+
 
 class Smb4KBookmarkPrivate
 {
@@ -47,11 +49,11 @@ class Smb4KBookmarkPrivate
     QUrl url;
     QString workgroup;
     QHostAddress ip;
-    QString type;
     QString label;
     QString group;
     QString profile;
     QIcon icon;
+    Smb4KGlobal::NetworkItem type;
 };
 
 
@@ -64,14 +66,14 @@ Smb4KBookmark::Smb4KBookmark(Smb4KShare *share, const QString &label)
   }
   else
   {
-    d->url = share->homeURL();
+    d->url = share->homeUrl();
   }
 
   d->workgroup = share->workgroupName();
-  d->type      = share->typeString();
+  d->type      = share->shareType();
   d->label     = label;
   d->icon      = KDE::icon("folder-network");
-  d->ip.setAddress(share->hostIP());
+  d->ip.setAddress(share->hostIpAddress());
 }
 
 
@@ -85,7 +87,7 @@ Smb4KBookmark::Smb4KBookmark(const Smb4KBookmark &b)
 Smb4KBookmark::Smb4KBookmark()
 : d(new Smb4KBookmarkPrivate)
 {
-  d->type = "Disk";
+  d->type = FileShare;
   d->icon = KDE::icon("folder-network");
 }
 
@@ -141,25 +143,25 @@ QString Smb4KBookmark::shareName() const
 }
 
 
-void Smb4KBookmark::setHostIP(const QString &ip)
+void Smb4KBookmark::setHostIpAddress(const QString &ip)
 {
   d->ip.setAddress(ip);
 }
 
 
-QString Smb4KBookmark::hostIP() const
+QString Smb4KBookmark::hostIpAddress() const
 {
   return d->ip.toString();
 }
 
 
-void Smb4KBookmark::setTypeString( const QString &type )
+void Smb4KBookmark::setShareType(Smb4KGlobal::NetworkItem type)
 {
   d->type = type;
 }
 
 
-QString Smb4KBookmark::typeString() const
+Smb4KGlobal::NetworkItem Smb4KBookmark::shareType() const
 {
   return d->type;
 }
@@ -223,14 +225,14 @@ QString Smb4KBookmark::login() const
 }
 
 
-void Smb4KBookmark::setURL(const QUrl &url)
+void Smb4KBookmark::setUrl(const QUrl &url)
 {
   d->url = url;
   d->url.setScheme("smb");
 }
 
 
-void Smb4KBookmark::setURL(const QString &url)
+void Smb4KBookmark::setUrl(const QString &url)
 {
   d->url.setUrl(url, QUrl::TolerantMode);
   d->url.setScheme("smb");
@@ -290,7 +292,7 @@ bool Smb4KBookmark::equals(Smb4KBookmark *bookmark) const
   }
   
   // IP address
-  if (QString::compare(d->ip.toString(), bookmark->hostIP()) != 0)
+  if (QString::compare(d->ip.toString(), bookmark->hostIpAddress()) != 0)
   {
     return false;
   }
@@ -299,8 +301,8 @@ bool Smb4KBookmark::equals(Smb4KBookmark *bookmark) const
     // Do nothing
   }
   
-  // Type string
-  if (QString::compare(d->type, bookmark->typeString()) != 0)
+  // Share type
+  if (d->type != bookmark->shareType())
   {
     return false;
   }
