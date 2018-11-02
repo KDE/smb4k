@@ -69,26 +69,6 @@
 <!-- Network -->
 
   <group name="Network">
-    <entry name="LookupDomains" type="Bool">
-      <label>Scan the network neighborhood for available workgroups and domains</label>
-      <whatsthis>This is the default method to retrieve the initial browse list. It discovers all workgroups and domains by looking for all known master browsers on your network neighborhood.</whatsthis>
-      <default>true</default>
-    </entry>
-    <entry name="QueryCurrentMaster" type="Bool">
-      <label>Query the current workgroup master browser</label>
-      <whatsthis>This method queries the current master browser of your workgroup or domain to retrieve the initial browse list.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="QueryCustomMaster" type="Bool">
-      <label>Query this custom master browser:</label>
-      <whatsthis>This method queries a custom master browser to retrieve the initial browse list.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="CustomMasterBrowser" type="String">
-      <label>A custom master browser that is to be queried</label>
-      <whatsthis>Enter the name or IP address of a master browser here that should be queried to compile the initial browse list.</whatsthis>
-      <default></default>
-    </entry>
     <entry name="MasterBrowsersRequireAuth" type="Bool">
       <label>The master browsers require authentication to return the browse list</label>
       <whatsthis>The master browsers in your network neighborhood require a login to return the browse list. This setting is rarely needed and might even cause a master browser to return an empty browse list. It will not have any effect when you let Smb4K scan broadcast areas.</whatsthis>
