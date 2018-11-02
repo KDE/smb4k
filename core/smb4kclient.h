@@ -26,6 +26,9 @@
 #ifndef SMB4KCLIENT_H
 #define SMB4KCLIENT_H
 
+// application specific includes
+#include "smb4kglobal.h"
+
 // Qt includes
 #include <QScopedPointer>
 
@@ -35,8 +38,9 @@
 // forward declarations
 class Smb4KClientPrivate;
 class Smb4KBasicNetworkItem;
+class Smb4KClientJob;
 
-class Smb4KClient : public KCompositeJob
+class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
 {
   Q_OBJECT
   
@@ -76,10 +80,24 @@ class Smb4KClient : public KCompositeJob
     void abort();
     
     /**
-     * This function starts the scan for all available domains
-     * on the network.
+     * This function starts the scan for all available workgroups and domains
+     * on the network neighborhood.
      */
     void lookupDomains();
+    
+    /**
+     * This function looks up all hosts in a certain domain or workgroup.
+     * 
+     * @param workgroup       The workgroup object
+     */
+    void lookupDomainMembers(WorkgroupPtr workgroup);
+    
+    /**
+     * This function looks up all shared resources a certain @p host provides.
+     * 
+     * @param host            The host object
+     */
+    void lookupShares(HostPtr host);
     
   Q_SIGNALS:
     /**
@@ -88,7 +106,34 @@ class Smb4KClient : public KCompositeJob
      * @param item          The network item
      * @param type          The type of work
      */
-    void aboutToStart(Smb4KBasicNetworkItem *item, int type);
+    void aboutToStart(const NetworkItemPtr &item, int type);
+    
+    /**
+     * This signal is emitted when the client finished its work.
+     * 
+     * @param item          The network item
+     * @param type          The type of work
+     */
+    void finished(const NetworkItemPtr &item, int type);
+    
+    /**
+     * Emitted when the list of workgroups was acquired
+     */
+    void workgroups();
+    
+    /**
+     * Emitted when the list of workgroup members was acquired
+     * 
+     * @param workgroup     The workgroup that was queried
+     */
+    void hosts(const WorkgroupPtr &workgroup);
+    
+    /**
+     * Emitted when the list of shares was acquired
+     * 
+     * @param host          The host that was queried
+     */
+    void shares(const HostPtr &host);
     
   protected Q_SLOTS:
     /**
@@ -102,6 +147,32 @@ class Smb4KClient : public KCompositeJob
     void slotJobFinished(KJob *job);
     
   private:
+    /**
+     * Process errors
+     */
+    void processErrors(KJob *job);
+    
+    /**
+     * Process the domains/workgroups retrieved from the network
+     * 
+     * @param job             The client job
+     */
+    void processWorkgroups(Smb4KClientJob *job);
+    
+    /**
+     * Process the domain/workgroup members
+     * 
+     * @param job             The client job
+     */
+    void processHosts(Smb4KClientJob *job);
+    
+    /**
+     * Process the shares
+     * 
+     * @param job             The client job
+     */
+    void processShares(Smb4KClientJob *job);
+      
     /**
      * Pointer to the Smb4KClientPrivate class
      */

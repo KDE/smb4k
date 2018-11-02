@@ -30,12 +30,15 @@
 #include "smb4kclient.h"
 #include "smb4kglobal.h"
 #include "smb4kworkgroup.h"
+#include "smb4khost.h"
+#include "smb4kshare.h"
 
 // Samba includes
 #include <libsmbclient.h>
 
 // Qt includes
 #include <QUrl>
+#include <QHostAddress>
 
 // KDE includes
 #include <KCoreAddons/KJob>
@@ -46,11 +49,72 @@ class Smb4KClientJob : public KJob
   Q_OBJECT
   
   public:
+    /**
+     * Constructor
+     */
     explicit Smb4KClientJob(QObject *parent = 0);
+    
+    /**
+     * Destructor
+     */
     ~Smb4KClientJob();
+    
+    /**
+     * Error enumeration
+     * 
+     * @param OutOfMemoryError  Out of memory
+     * @param NullContextError  The passed SMBCCTX context was a null pointer
+     * @param SmbConfError      The smb.conf file could not be read
+     * @param AccessDeniedError Permission denied
+     * @param InvalidUrlError   The URL that was passed is invalid
+     * @param UrlExistError     The URL does not exist
+     * @param NoDirectoryError  The name is not a directory
+     * @param NetPermittedError The operation is not permitted
+     * @param NotFoundError     The network item was not found
+     */
+    enum {
+      OutOfMemoryError = UserDefinedError,
+      NullContextError,
+      SmbConfError,
+      AccessDeniedError,
+      InvalidUrlError,
+      UrlExistError,
+      NoDirectoryError,
+      NotPermittedError,
+      NotFoundError,
+      UnknownError
+    };
+    
+    /**
+     * Starts the job.
+     */
     void start();
+    
+    /**
+     * Set the URL that should be queried. This function must be
+     * called before start().
+     */
     void setUrl(const QUrl &url);
+    
+    /**
+     * Return the given URL
+     */
+    QUrl url() const;
+    
+    /**
+     * Set the type of the network item that is associated with the
+     * passed URL.
+     */
     void setType(Smb4KGlobal::NetworkItem type);
+    
+    /**
+     * The type of the network item that was queried.
+     */
+    Smb4KGlobal::NetworkItem type() const;
+    
+    /**
+     * The authentication function for libsmbclient
+     */
     void get_auth_data_fn(const char *server, 
                           const char *share,
                           char *workgroup,
@@ -59,15 +123,38 @@ class Smb4KClientJob : public KJob
                           int maxLenUsername,
                           char *password,
                           int maxLenPassword);
+    /**
+     * The list of workgroups that was discovered.
+     */
+    QList<WorkgroupPtr> workgroups();
+    
+    /**
+     * The list of hosts that was discovered.
+     */
+    QList<HostPtr> hosts();
+    
+    /**
+     * The list shares that was discovered.
+     */
+    QList<SharePtr> shares();
+    
+    /**
+     * The workgroup
+     */
+    QString workgroup();
     
   protected Q_SLOTS:
     void slotStartJob();
     
   private:
+    QHostAddress lookupIpAddress(const QString &name);
     SMBCCTX *m_context;
     QUrl m_url;
     Smb4KGlobal::NetworkItem m_type;
-    QList<Smb4KWorkgroup *> m_workgroups;
+    QList<WorkgroupPtr> m_workgroups;
+    QList<HostPtr> m_hosts;
+    QList<SharePtr> m_shares;
+    QString m_workgroup;
 };
 
 
