@@ -694,7 +694,7 @@ void Smb4KBookmarkEditor::slotItemClicked(QTreeWidgetItem *item, int /*col*/)
         {
           m_label_edit->setText(bookmark->label());
           m_login_edit->setText(bookmark->login());
-          m_ip_edit->setText(bookmark->hostIP());
+          m_ip_edit->setText(bookmark->hostIpAddress());
           m_group_combo->setCurrentItem(bookmark->groupName());
           m_editors->setEnabled(true);
         }
@@ -725,7 +725,7 @@ void Smb4KBookmarkEditor::slotItemClicked(QTreeWidgetItem *item, int /*col*/)
       {
         m_label_edit->setText(bookmark->label());
         m_login_edit->setText(bookmark->login());
-        m_ip_edit->setText(bookmark->hostIP());
+        m_ip_edit->setText(bookmark->hostIpAddress());
         m_group_combo->setCurrentItem(bookmark->groupName());
         m_editors->setEnabled(true);
       }
@@ -827,7 +827,7 @@ void Smb4KBookmarkEditor::slotIPEdited()
 
   if (bookmark)
   {
-    bookmark->setHostIP(m_ip_edit->userText());
+    bookmark->setHostIpAddress(m_ip_edit->userText());
   }
   else
   {
