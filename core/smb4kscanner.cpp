@@ -125,237 +125,64 @@ void Smb4KScanner::start()
 }
 
 
-void Smb4KScanner::lookupDomains(QWidget *parent)
-{
-  // Send Wake On LAN magic packages
-  if (Smb4KSettings::enableWakeOnLAN())
-  {
-    QList<OptionsPtr> wol_entries = Smb4KCustomOptionsManager::self()->wakeOnLanEntries();
-    
-    if (!wol_entries.isEmpty())
-    {
-      NetworkItemPtr item = NetworkItemPtr(new Smb4KBasicNetworkItem());
-      emit aboutToStart(item, WakeUp);
-      
-      QUdpSocket *socket = new QUdpSocket(this);
-      
-      for (int i = 0; i < wol_entries.size(); ++i)
-      {
-        if (wol_entries.at(i)->wolSendBeforeNetworkScan())
-        {
-          QHostAddress addr;
-          
-          if (!wol_entries.at(i)->ip().isEmpty())
-          {
-            addr.setAddress(wol_entries.at(i)->ip());
-          }
-          else
-          {
-            addr.setAddress("255.255.255.255");
-          }
-          
-          // Construct magic sequence
-          QByteArray sequence;
-
-          // 6 times 0xFF
-          for (int j = 0; j < 6; ++j)
-          {
-            sequence.append(QChar(0xFF).toLatin1());
-          }
-          
-          // 16 times the MAC address
-          QStringList parts = wol_entries.at(i)->macAddress().split(':', QString::SkipEmptyParts);
-          
-          for (int j = 0; j < 16; ++j)
-          {
-            for (int k = 0; k < parts.size(); ++k)
-            {
-              sequence.append(QChar(QString("0x%1").arg(parts.at(k)).toInt(0, 16)).toLatin1());
-            }
-          }
-          
-          socket->writeDatagram(sequence, addr, 9);
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-      
-      delete socket;
-      
-      // Wait the defined time
-      int stop = 1000 * Smb4KSettings::wakeOnLANWaitingTime() / 250;
-      int i = 0;
-      
-      while (i++ < stop)
-      {
-        QTest::qWait(250);
-      }
-      
-      emit finished(item, WakeUp);
-      item.clear();
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Now look up the domains  
-  if (Smb4KSettings::lookupDomains())
-  {
-    Smb4KLookupDomainsJob *job = new Smb4KLookupDomainsJob(this);
-    job->setObjectName("LookupDomainsJob");
-    job->setupLookup(parent);
-
-    connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
-    connect(job, SIGNAL(aboutToStart()), SLOT(slotAboutToStartDomainsLookup()));
-    connect(job, SIGNAL(finished()), SLOT(slotDomainsLookupFinished()));
-    connect(job, SIGNAL(workgroups(QList<WorkgroupPtr>)), SLOT(slotWorkgroups(QList<WorkgroupPtr>)));
-
-    if (!hasSubjobs() && modifyCursor())
-    {
-      QApplication::setOverrideCursor(Qt::BusyCursor);
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    addSubjob(job);
-
-    job->start();
-  }
-  else if (Smb4KSettings::queryCurrentMaster())
-  {
-    Smb4KQueryMasterJob *job = new Smb4KQueryMasterJob(this);
-    job->setObjectName("LookupDomainsJob");
-    job->setupLookup(QString(), parent);
-
-    connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
-    connect(job, SIGNAL(aboutToStart()), SLOT(slotAboutToStartDomainsLookup()));
-    connect(job, SIGNAL(finished()), SLOT(slotDomainsLookupFinished()));
-    connect(job, SIGNAL(workgroups(QList<WorkgroupPtr>)), SLOT(slotWorkgroups(QList<WorkgroupPtr>)));
-    connect(job, SIGNAL(authError(Smb4KQueryMasterJob*)), SLOT(slotAuthError(Smb4KQueryMasterJob*)));
-
-    if (!hasSubjobs() && modifyCursor())
-    {
-      QApplication::setOverrideCursor(Qt::BusyCursor);
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    addSubjob(job);
-
-    job->start();
-  }
-  else if (Smb4KSettings::queryCustomMaster())
-  {
-    // If the custom master browser entry is empty, warn the user
-    // and tell him/her that we are going to query the current master
-    // browser instead.
-    if (Smb4KSettings::customMasterBrowser().isEmpty())
-    {
-      Smb4KNotification::emptyCustomMasterBrowser();
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    Smb4KQueryMasterJob *job = new Smb4KQueryMasterJob(this);
-    job->setObjectName("LookupDomainsJob");
-    job->setupLookup(Smb4KSettings::customMasterBrowser(), parent);
-
-    connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
-    connect(job, SIGNAL(aboutToStart()), SLOT(slotAboutToStartDomainsLookup()));
-    connect(job, SIGNAL(finished()), SLOT(slotDomainsLookupFinished()));
-    connect(job, SIGNAL(workgroups(QList<WorkgroupPtr>)), SLOT(slotWorkgroups(QList<WorkgroupPtr>)));
-    connect(job, SIGNAL(authError(Smb4KQueryMasterJob*)), SLOT(slotAuthError(Smb4KQueryMasterJob*)));
-
-    if (!hasSubjobs() && modifyCursor())
-    {
-      QApplication::setOverrideCursor(Qt::BusyCursor);
-    }
-    else
-    {
-      // Do nothing
-    }
-
-    addSubjob(job);
-
-    job->start();
-  }
-  else
-  {
-    // Do nothing
-  }
-}
 
 
-void Smb4KScanner::lookupDomainMembers(WorkgroupPtr workgroup, QWidget *parent)
-{
-  Q_ASSERT(workgroup);
-  
-  Smb4KLookupDomainMembersJob *job = new Smb4KLookupDomainMembersJob(this);
-  job->setObjectName(QString("LookupDomainMembersJob_%1").arg(workgroup->workgroupName()));
-  job->setupLookup(workgroup, parent);
+// void Smb4KScanner::lookupDomainMembers(WorkgroupPtr workgroup, QWidget *parent)
+// {
+//   Q_ASSERT(workgroup);
+//   
+//   Smb4KLookupDomainMembersJob *job = new Smb4KLookupDomainMembersJob(this);
+//   job->setObjectName(QString("LookupDomainMembersJob_%1").arg(workgroup->workgroupName()));
+//   job->setupLookup(workgroup, parent);
+// 
+//   connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
+//   connect(job, SIGNAL(aboutToStart(WorkgroupPtr)), SLOT(slotAboutToStartHostsLookup(WorkgroupPtr)));
+//   connect(job, SIGNAL(finished(WorkgroupPtr)), SLOT(slotHostsLookupFinished(WorkgroupPtr)));
+//   connect(job, SIGNAL(hosts(WorkgroupPtr,QList<HostPtr>)), SLOT(slotHosts(WorkgroupPtr,QList<HostPtr>)));
+//   connect(job, SIGNAL(authError(Smb4KLookupDomainMembersJob*)), SLOT(slotAuthError(Smb4KLookupDomainMembersJob*)));
+// 
+//   if (!hasSubjobs() && modifyCursor())
+//   {
+//     QApplication::setOverrideCursor(Qt::BusyCursor);
+//   }
+//   else
+//   {
+//     // Do nothing
+//   }
+// 
+//   addSubjob(job);
+// 
+//   job->start();
+// }
 
-  connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
-  connect(job, SIGNAL(aboutToStart(WorkgroupPtr)), SLOT(slotAboutToStartHostsLookup(WorkgroupPtr)));
-  connect(job, SIGNAL(finished(WorkgroupPtr)), SLOT(slotHostsLookupFinished(WorkgroupPtr)));
-  connect(job, SIGNAL(hosts(WorkgroupPtr,QList<HostPtr>)), SLOT(slotHosts(WorkgroupPtr,QList<HostPtr>)));
-  connect(job, SIGNAL(authError(Smb4KLookupDomainMembersJob*)), SLOT(slotAuthError(Smb4KLookupDomainMembersJob*)));
 
-  if (!hasSubjobs() && modifyCursor())
-  {
-    QApplication::setOverrideCursor(Qt::BusyCursor);
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  addSubjob(job);
-
-  job->start();
-}
-
-
-void Smb4KScanner::lookupShares(HostPtr host, QWidget *parent)
-{
-  Q_ASSERT(host);
-  
-  Smb4KLookupSharesJob *job = new Smb4KLookupSharesJob(this);
-  job->setObjectName(QString("LookupSharesJob_%1").arg(host->hostName()));
-  job->setupLookup(host, parent);
-  
-  connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
-  connect(job, SIGNAL(aboutToStart(HostPtr)), SLOT(slotAboutToStartSharesLookup(HostPtr)));
-  connect(job, SIGNAL(finished(HostPtr)), SLOT(slotSharesLookupFinished(HostPtr)));
-  connect(job, SIGNAL(shares(HostPtr,QList<SharePtr>)), SLOT(slotShares(HostPtr,QList<SharePtr>)));
-  connect(job, SIGNAL(authError(Smb4KLookupSharesJob*)), SLOT(slotAuthError(Smb4KLookupSharesJob*)));
-  
-  if (!hasSubjobs() && modifyCursor())
-  {
-    QApplication::setOverrideCursor(Qt::BusyCursor);
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  addSubjob(job);
-
-  job->start();
-}
+// void Smb4KScanner::lookupShares(HostPtr host, QWidget *parent)
+// {
+//   Q_ASSERT(host);
+//   
+//   Smb4KLookupSharesJob *job = new Smb4KLookupSharesJob(this);
+//   job->setObjectName(QString("LookupSharesJob_%1").arg(host->hostName()));
+//   job->setupLookup(host, parent);
+//   
+//   connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
+//   connect(job, SIGNAL(aboutToStart(HostPtr)), SLOT(slotAboutToStartSharesLookup(HostPtr)));
+//   connect(job, SIGNAL(finished(HostPtr)), SLOT(slotSharesLookupFinished(HostPtr)));
+//   connect(job, SIGNAL(shares(HostPtr,QList<SharePtr>)), SLOT(slotShares(HostPtr,QList<SharePtr>)));
+//   connect(job, SIGNAL(authError(Smb4KLookupSharesJob*)), SLOT(slotAuthError(Smb4KLookupSharesJob*)));
+//   
+//   if (!hasSubjobs() && modifyCursor())
+//   {
+//     QApplication::setOverrideCursor(Qt::BusyCursor);
+//   }
+//   else
+//   {
+//     // Do nothing
+//   }
+// 
+//   addSubjob(job);
+// 
+//   job->start();
+// }
 
 
 void Smb4KScanner::timerEvent(QTimerEvent */*e*/)
@@ -404,14 +231,14 @@ void Smb4KScanner::timerEvent(QTimerEvent */*e*/)
       {
         case LookupDomains:
         {
-          lookupDomains();
+//           lookupDomains();
           break;
         }
         case LookupDomainMembers:
         {
           for (const WorkgroupPtr &workgroup : workgroupsList())
           {
-            lookupDomainMembers(workgroup);
+//             lookupDomainMembers(workgroup);
           }
           break;
         }
@@ -419,7 +246,7 @@ void Smb4KScanner::timerEvent(QTimerEvent */*e*/)
         {
           for (const HostPtr &host : hostsList())
           {
-            lookupShares(host);
+//             lookupShares(host);
           }
           break;
         }
@@ -462,7 +289,7 @@ void Smb4KScanner::timerEvent(QTimerEvent */*e*/)
   {
     for (const HostPtr &host : hostsList())
     {
-      if (!host->hasIP())
+      if (!host->hasIpAddress())
       {
         Smb4KLookupIPAddressJob *job = new Smb4KLookupIPAddressJob(this);
         job->setObjectName(QString("LookupIPAddressJob_%1").arg(host->unc()));
@@ -508,7 +335,7 @@ void Smb4KScanner::startScanning()
     }
     else
     {
-      lookupDomains(0);
+//       lookupDomains(0);
     }
 
     // Start the timer in any case. Thus, we are able to switch
@@ -582,7 +409,7 @@ void Smb4KScanner::slotAuthError(Smb4KQueryMasterJob *job)
     }
     else
     {
-      masterBrowser->setIP(job->masterBrowser());
+      masterBrowser->setIpAddress(job->masterBrowser());
     }
     
     emit authError (masterBrowser, LookupDomains);
@@ -597,7 +424,7 @@ void Smb4KScanner::slotAuthError(Smb4KQueryMasterJob *job)
     // Start a query job with the returned master browser.
     Smb4KQueryMasterJob *job = new Smb4KQueryMasterJob(this);
     job->setObjectName("LookupDomainsJob");
-    job->setupLookup(masterBrowser->hostName().isEmpty() ? masterBrowser->ip() : masterBrowser->hostName(), job->parentWidget());
+    job->setupLookup(masterBrowser->hostName().isEmpty() ? masterBrowser->ipAddress() : masterBrowser->hostName(), job->parentWidget());
 
     connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
     connect(job, SIGNAL(aboutToStart()), SLOT(slotAboutToStartDomainsLookup()));
@@ -643,7 +470,7 @@ void Smb4KScanner::slotAuthError(Smb4KLookupDomainMembersJob *job)
     
     if (Smb4KWalletManager::self()->showPasswordDialog(masterBrowser, job->parentWidget()))
     {
-      lookupDomainMembers(workgroup, job->parentWidget());
+//       lookupDomainMembers(workgroup, job->parentWidget());
     }
     else
     {
@@ -674,7 +501,7 @@ void Smb4KScanner::slotAuthError(Smb4KLookupSharesJob *job)
     
     if (Smb4KWalletManager::self()->showPasswordDialog(host, job->parentWidget()))
     {
-      lookupShares(host, job->parentWidget());
+//       lookupShares(host, job->parentWidget());
     }
     else
     {
@@ -728,183 +555,183 @@ void Smb4KScanner::slotSharesLookupFinished(const HostPtr &host)
 }
 
 
-void Smb4KScanner::slotWorkgroups(const QList<WorkgroupPtr> &workgroups_list)
-{
-  //
-  // Remove obsolete workgroups and their members
-  //
-  QListIterator<WorkgroupPtr> wIt(workgroupsList());
-  
-  while (wIt.hasNext())
-  {
-    WorkgroupPtr workgroup = wIt.next();
-    
-    bool found = false;
-    
-    for (const WorkgroupPtr &w : workgroups_list)
-    {
-      if (w->workgroupName() == workgroup->workgroupName())
-      {
-        found = true;
-        break;
-      }
-      else
-      {
-        continue;
-      }        
-    }
-    
-    if (!found)
-    {
-      QList<HostPtr> obsoleteHosts = workgroupMembers(workgroup);
-      QListIterator<HostPtr> hIt(obsoleteHosts);
-      
-      while (hIt.hasNext())
-      {
-        removeHost(hIt.next());
-      }
-      
-      removeWorkgroup(workgroup);
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-  
-  //
-  // Add new workgroups and update existing ones.
-  // 
-  for (const WorkgroupPtr &workgroup : workgroups_list)
-  {
-    if (!findWorkgroup(workgroup->workgroupName()))
-    {
-      addWorkgroup(workgroup);
-      
-      // Since this is a new workgroup, no master browser is present.
-      HostPtr masterBrowser = HostPtr(new Smb4KHost());
-      masterBrowser->setWorkgroupName(workgroup->workgroupName());
-      masterBrowser->setHostName(workgroup->masterBrowserName());
-      masterBrowser->setIP(workgroup->masterBrowserIP());
-      masterBrowser->setIsMasterBrowser(true);
-      
-      addHost(masterBrowser);
-    }
-    else
-    {
-      updateWorkgroup(workgroup);
-      
-      // Check if the master browser changed
-      QList<HostPtr> members = workgroupMembers(workgroup);
-      
-      for (const HostPtr &host : members)
-      {
-        if (workgroup->masterBrowserName() == host->hostName())
-        {
-          host->setIsMasterBrowser(true);
-          
-          if (!host->hasIP() && workgroup->hasMasterBrowserIP())
-          {
-            host->setIP(workgroup->masterBrowserIP());
-          }
-          else
-          {
-            // Do nothing
-          }          
-        }
-        else
-        {
-          host->setIsMasterBrowser(false);
-        }
-      }
-    }
-  }
-  
-  emit workgroups();
-}
+// void Smb4KScanner::slotWorkgroups(const QList<WorkgroupPtr> &workgroups_list)
+// {
+//   //
+//   // Remove obsolete workgroups and their members
+//   //
+//   QListIterator<WorkgroupPtr> wIt(workgroupsList());
+//   
+//   while (wIt.hasNext())
+//   {
+//     WorkgroupPtr workgroup = wIt.next();
+//     
+//     bool found = false;
+//     
+//     for (const WorkgroupPtr &w : workgroups_list)
+//     {
+//       if (w->workgroupName() == workgroup->workgroupName())
+//       {
+//         found = true;
+//         break;
+//       }
+//       else
+//       {
+//         continue;
+//       }        
+//     }
+//     
+//     if (!found)
+//     {
+//       QList<HostPtr> obsoleteHosts = workgroupMembers(workgroup);
+//       QListIterator<HostPtr> hIt(obsoleteHosts);
+//       
+//       while (hIt.hasNext())
+//       {
+//         removeHost(hIt.next());
+//       }
+//       
+//       removeWorkgroup(workgroup);
+//     }
+//     else
+//     {
+//       // Do nothing
+//     }
+//   }
+//   
+//   //
+//   // Add new workgroups and update existing ones.
+//   // 
+//   for (const WorkgroupPtr &workgroup : workgroups_list)
+//   {
+//     if (!findWorkgroup(workgroup->workgroupName()))
+//     {
+//       addWorkgroup(workgroup);
+//       
+//       // Since this is a new workgroup, no master browser is present.
+//       HostPtr masterBrowser = HostPtr(new Smb4KHost());
+//       masterBrowser->setWorkgroupName(workgroup->workgroupName());
+//       masterBrowser->setHostName(workgroup->masterBrowserName());
+//       masterBrowser->setIP(workgroup->masterBrowserIP());
+//       masterBrowser->setIsMasterBrowser(true);
+//       
+//       addHost(masterBrowser);
+//     }
+//     else
+//     {
+//       updateWorkgroup(workgroup);
+//       
+//       // Check if the master browser changed
+//       QList<HostPtr> members = workgroupMembers(workgroup);
+//       
+//       for (const HostPtr &host : members)
+//       {
+//         if (workgroup->masterBrowserName() == host->hostName())
+//         {
+//           host->setIsMasterBrowser(true);
+//           
+//           if (!host->hasIP() && workgroup->hasMasterBrowserIP())
+//           {
+//             host->setIP(workgroup->masterBrowserIP());
+//           }
+//           else
+//           {
+//             // Do nothing
+//           }          
+//         }
+//         else
+//         {
+//           host->setIsMasterBrowser(false);
+//         }
+//       }
+//     }
+//   }
+//   
+// //   emit workgroups();
+// }
 
 
-void Smb4KScanner::slotHosts(const WorkgroupPtr &workgroup, const QList<HostPtr> &hosts_list)
-{
-  Q_ASSERT(workgroup);
-  
-  if (workgroup && !hosts_list.isEmpty())
-  {
-    //
-    // Remove obsolete hosts and their shares
-    //
-    QList<HostPtr> members = workgroupMembers(workgroup);
-    QListIterator<HostPtr> hIt(members);
-    
-    while (hIt.hasNext())
-    {
-      HostPtr host = hIt.next();
-      
-      bool found = false;
-      
-      for (const HostPtr &h : hosts_list)
-      {
-        if (h->workgroupName() == host->workgroupName() && h->hostName() == host->hostName())
-        {
-          found = true;
-          break;
-        }
-        else
-        {
-          continue;
-        }        
-      }
-      
-      if (!found)
-      {
-        QList<SharePtr> obsoleteShares = sharedResources(host);
-        QListIterator<SharePtr> sIt(obsoleteShares);
-        
-        while (sIt.hasNext())
-        {
-          removeShare(sIt.next());
-        }
-        
-        removeHost(host);
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    
-    //
-    // Add new hosts and update existing ones
-    //
-    for (const HostPtr &host : hosts_list)
-    {
-      if (host->hostName() == workgroup->masterBrowserName())
-      {
-        host->setIsMasterBrowser(true);
-      }
-      else
-      {
-        host->setIsMasterBrowser(false);
-      }
-      
-      if (!findHost(host->hostName(), host->workgroupName()))
-      {
-        addHost(host);
-        d->haveNewHosts = true;
-      }
-      else
-      {
-        updateHost(host);
-      }
-    }
-    
-    emit hosts(workgroup);
-  }
-  else
-  {
-    // Do nothing
-  }
-}
+// void Smb4KScanner::slotHosts(const WorkgroupPtr &workgroup, const QList<HostPtr> &hosts_list)
+// {
+//   Q_ASSERT(workgroup);
+//   
+//   if (workgroup && !hosts_list.isEmpty())
+//   {
+//     //
+//     // Remove obsolete hosts and their shares
+//     //
+//     QList<HostPtr> members = workgroupMembers(workgroup);
+//     QListIterator<HostPtr> hIt(members);
+//     
+//     while (hIt.hasNext())
+//     {
+//       HostPtr host = hIt.next();
+//       
+//       bool found = false;
+//       
+//       for (const HostPtr &h : hosts_list)
+//       {
+//         if (h->workgroupName() == host->workgroupName() && h->hostName() == host->hostName())
+//         {
+//           found = true;
+//           break;
+//         }
+//         else
+//         {
+//           continue;
+//         }        
+//       }
+//       
+//       if (!found)
+//       {
+//         QList<SharePtr> obsoleteShares = sharedResources(host);
+//         QListIterator<SharePtr> sIt(obsoleteShares);
+//         
+//         while (sIt.hasNext())
+//         {
+//           removeShare(sIt.next());
+//         }
+//         
+//         removeHost(host);
+//       }
+//       else
+//       {
+//         // Do nothing
+//       }
+//     }
+//     
+//     //
+//     // Add new hosts and update existing ones
+//     //
+//     for (const HostPtr &host : hosts_list)
+//     {
+//       if (host->hostName() == workgroup->masterBrowserName())
+//       {
+//         host->setIsMasterBrowser(true);
+//       }
+//       else
+//       {
+//         host->setIsMasterBrowser(false);
+//       }
+//       
+//       if (!findHost(host->hostName(), host->workgroupName()))
+//       {
+//         addHost(host);
+//         d->haveNewHosts = true;
+//       }
+//       else
+//       {
+//         updateHost(host);
+//       }
+//     }
+//     
+//     emit hosts(workgroup);
+//   }
+//   else
+//   {
+//     // Do nothing
+//   }
+// }
 
 
 void Smb4KScanner::slotShares(const HostPtr &host, const QList<SharePtr> &shares_list)
@@ -983,7 +810,7 @@ void Smb4KScanner::slotShares(const HostPtr &host, const QList<SharePtr> &shares
       
       if (host)
       {
-        share->setHostIP(host->ip());
+        share->setHostIpAddress(host->ipAddress());
         share->setLogin(host->login());
         share->setPassword(host->password());
       }
@@ -1005,7 +832,7 @@ void Smb4KScanner::slotShares(const HostPtr &host, const QList<SharePtr> &shares
       }
     }
     
-    emit shares(host);
+//     emit shares(host);
   }
   else
   {
@@ -1029,14 +856,14 @@ void Smb4KScanner::slotProcessIPAddress(const HostPtr &host)
   if (knownHost)
   {
     // Update host
-    knownHost->setIP(host->ip());
+    knownHost->setIpAddress(host->ipAddress());
     
     // Update shares
     QList<SharePtr> shares = sharedResources(knownHost);
     
     for (const SharePtr &share : shares)
     {
-      share->setHostIP(host->ip());
+      share->setHostIpAddress(host->ipAddress());
     }
     
     // Update workgroup master browser's IP address
@@ -1044,9 +871,9 @@ void Smb4KScanner::slotProcessIPAddress(const HostPtr &host)
     {
       WorkgroupPtr workgroup = findWorkgroup(knownHost->workgroupName());
       
-      if (workgroup && !workgroup->hasMasterBrowserIP() && workgroup->masterBrowserName() == knownHost->hostName())
+      if (workgroup && !workgroup->hasMasterBrowserIpAddress() && workgroup->masterBrowserName() == knownHost->hostName())
       {
-        workgroup->setMasterBrowserIP(knownHost->ip());
+        workgroup->setMasterBrowserIpAddress(knownHost->ipAddress());
       }
       else
       {

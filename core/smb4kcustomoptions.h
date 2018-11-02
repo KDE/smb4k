@@ -126,7 +126,7 @@ class Q_DECL_EXPORT Smb4KCustomOptions
      * 
      * @param url             The URL
      */
-    void setURL(const QUrl &url);
+    void setUrl(const QUrl &url);
     
     /**
      * Returns the URL of the network item
@@ -165,14 +165,21 @@ class Q_DECL_EXPORT Smb4KCustomOptions
      * 
      * @param ip              The IP address
      */
-    void setIP(const QString &ip);
+    void setIpAddress(const QString &ip);
     
     /**
      * Returns the IP address of the network item
      * 
      * @returns the IP address
      */
-    QString ip() const;
+    QString ipAddress() const;
+    
+    /**
+     * Returns TRUE if the IP address is set and FALSE otherwise.
+     * 
+     * @returns TRUE if the IP address is known.
+     */
+    bool hasIpAddress() const;
     
     /**
      * Returns the display string. Prefer this over all other alternatives in your

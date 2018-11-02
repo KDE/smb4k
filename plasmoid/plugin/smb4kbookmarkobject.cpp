@@ -62,7 +62,7 @@ Smb4KBookmarkObject::Smb4KBookmarkObject(Smb4KBookmark* bookmark, QObject* paren
   d->login      = bookmark->login();
   d->isGroup    = false;
   d->isMounted  = false;
-  d->hostIP.setAddress(bookmark->hostIP());
+  d->hostIP.setAddress(bookmark->hostIpAddress());
 }
 
 

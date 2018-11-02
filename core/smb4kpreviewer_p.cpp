@@ -250,10 +250,10 @@ void Smb4KPreviewJob::slotStartPreview()
   command << "ls";
 
   // IP address
-  if (!m_share->hostIP().isEmpty())
+  if (m_share->hasHostIpAddress())
   {
     command << "-I";
-    command << m_share->hostIP();
+    command << m_share->hostIpAddress();
   }
   else
   {
@@ -682,7 +682,7 @@ Smb4KPreviewDialog::Smb4KPreviewDialog(const SharePtr &share, QWidget *parent)
   }
   else
   {
-    m_url = share->homeURL();
+    m_url = share->homeUrl();
   }
   
   // Make the iterator operate on the history list
@@ -693,10 +693,10 @@ Smb4KPreviewDialog::Smb4KPreviewDialog(const SharePtr &share, QWidget *parent)
   setWindowTitle(i18n("Preview of %1", share->unc()));
   
   // Set the IP address if necessary.
-  if (share->hostIP().isEmpty())
+  if (!share->hasHostIpAddress())
   {
     HostPtr host = findHost(share->hostName(), share->workgroupName());
-    share->setHostIP(host->ip());
+    share->setHostIpAddress(host->ipAddress());
   }
   else
   {

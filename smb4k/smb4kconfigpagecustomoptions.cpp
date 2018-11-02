@@ -1144,7 +1144,7 @@ void Smb4KConfigPageCustomOptions::populateEditors()
   
   if (ipAddress)
   {
-    ipAddress->setText(m_currentOptions->ip());
+    ipAddress->setText(m_currentOptions->ipAddress());
     connect(ipAddress, SIGNAL(textEdited(QString)), this, SLOT(slotEntryChanged()));
   }
   else
@@ -1587,7 +1587,7 @@ void Smb4KConfigPageCustomOptions::commitChanges()
   
   if (ipAddress)
   {
-    m_currentOptions->setIP(ipAddress->text());
+    m_currentOptions->setIpAddress(ipAddress->text());
   }
   else
   {
@@ -1963,7 +1963,7 @@ void Smb4KConfigPageCustomOptions::commitChanges()
     {
       if (o->type() == Share && o->hostName() == m_currentOptions->hostName() && o->workgroupName() == m_currentOptions->workgroupName())
       {
-        o->setIP(m_currentOptions->ip());
+        o->setIpAddress(m_currentOptions->ipAddress());
 #if !defined(SMB4K_UNSUPPORTED_PLATFORM)
         o->setUseUser(m_currentOptions->useUser());
         o->setUser(m_currentOptions->user());

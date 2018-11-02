@@ -374,7 +374,7 @@ void Smb4KBookmarkHandler::writeBookmarkList()
         {
           // Do nothing
         }
-
+        
         xmlWriter.writeStartElement("bookmark");
         xmlWriter.writeAttribute("profile", bookmark->profile());
         xmlWriter.writeAttribute("group", bookmark->groupName());
@@ -382,8 +382,7 @@ void Smb4KBookmarkHandler::writeBookmarkList()
         xmlWriter.writeTextElement("workgroup", bookmark->workgroupName());
         xmlWriter.writeTextElement("unc", bookmark->unc());
         xmlWriter.writeTextElement("login", bookmark->login());
-        xmlWriter.writeTextElement("ip", bookmark->hostIP());
-        xmlWriter.writeTextElement("type", bookmark->typeString());
+        xmlWriter.writeTextElement("ip", bookmark->hostIpAddress());
         xmlWriter.writeTextElement("label", bookmark->label());
 
         xmlWriter.writeEndElement();
@@ -458,7 +457,7 @@ void Smb4KBookmarkHandler::readBookmarkList()
                 }
                 else if (xmlReader.name() == "unc")
                 {
-                  bookmark->setURL(xmlReader.readElementText());
+                  bookmark->setUrl(xmlReader.readElementText());
                 }
                 else if (xmlReader.name() == "login")
                 {
@@ -466,11 +465,7 @@ void Smb4KBookmarkHandler::readBookmarkList()
                 }
                 else if (xmlReader.name() == "ip")
                 {
-                  bookmark->setHostIP(xmlReader.readElementText());
-                }
-                else if (xmlReader.name() == "type")
-                {
-                  bookmark->setTypeString(xmlReader.readElementText());
+                  bookmark->setHostIpAddress(xmlReader.readElementText());
                 }
                 else if (xmlReader.name() == "label")
                 {
@@ -719,9 +714,9 @@ void Smb4KBookmarkHandler::update() const
     
     if (host)
     {
-      if (host->hasIP() && bookmark->hostIP() != host->ip())
+      if (host->hasIpAddress() && bookmark->hostIpAddress() != host->ipAddress())
       {
-        bookmark->setHostIP(host->ip());
+        bookmark->setHostIpAddress(host->ipAddress());
       }
       else
       {

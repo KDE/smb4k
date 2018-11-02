@@ -33,6 +33,7 @@
 #include <QString>
 #include <QScopedPointer>
 #include <QUrl>
+#include <QHostAddress>
 
 // forward declarations
 class Smb4KAuthInfo;
@@ -112,7 +113,7 @@ class Q_DECL_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      * 
      * @param url             The URL of the network item
      */
-    void setURL(const QUrl &url);
+    void setUrl(const QUrl &url);
     
     /**
      * Returns the URL (the full UNC) of the host item.
@@ -141,7 +142,15 @@ class Q_DECL_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @param ip                  The IP address of this host.
      */
-    void setIP(const QString &ip);
+    void setIpAddress(const QString &ip);
+    
+    /**
+     * Set the IP address of this host. @p ip will only be accepted
+     * if it is compatible with either IPv4 or IPv6.
+     *
+     * @param ip                  The IP address of this host.
+     */
+    void setIpAddress(const QHostAddress &address);
 
     /**
      * Returns the IP address of the host. If the IP address was not
@@ -150,14 +159,14 @@ class Q_DECL_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns the host's IP address or an empty string.
      */
-    QString ip() const;
+    QString ipAddress() const;
     
     /**
      * Returns TRUE if the host's IP address is set and FALSE otherwise.
      * 
      * @returns TRUE if the host's IP address is known.
      */
-    bool hasIP() const;
+    bool hasIpAddress() const;
 
     /**
      * Set the comment that was defined for the host.

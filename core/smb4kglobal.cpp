@@ -468,7 +468,7 @@ QList<HostPtr> Smb4KGlobal::workgroupMembers(WorkgroupPtr workgroup)
   {
     if (QString::compare(h->workgroupName(), workgroup->workgroupName(), Qt::CaseInsensitive) == 0)
     {
-      hosts += h;
+      hosts << h;
     }
     else
     {
@@ -888,9 +888,9 @@ bool Smb4KGlobal::addMountedShare(SharePtr share)
       if (networkHost)
       {
         // Set the IP address
-        if (!share->hasHostIP() || networkHost->ip() != share->hostIP())
+        if (!share->hasHostIpAddress() || networkHost->ipAddress() != share->hostIpAddress())
         {
-          share->setHostIP(networkHost->ip());
+          share->setHostIpAddress(networkHost->ipAddress());
         }
         else
         {
@@ -990,9 +990,9 @@ bool Smb4KGlobal::updateMountedShare(SharePtr share)
       if (networkHost)
       {
         // Set the IP address
-        if (!share->hasHostIP() || networkHost->ip() != share->hostIP())
+        if (!share->hasHostIpAddress() || networkHost->ipAddress() != share->hostIpAddress())
         {
-          share->setHostIP(networkHost->ip());
+          share->setHostIpAddress(networkHost->ipAddress());
         }
         else
         {

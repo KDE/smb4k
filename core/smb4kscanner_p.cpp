@@ -466,7 +466,7 @@ void Smb4KLookupDomainsJob::processWorkgroups(const QString &stdOut)
       {
         WorkgroupPtr workgroup = WorkgroupPtr(new Smb4KWorkgroup());
         workgroup->setWorkgroupName(workgroupName);
-        workgroup->setMasterBrowserIP(ipAddress);
+        workgroup->setMasterBrowserIpAddress(ipAddress);
         workgroup->setMasterBrowserName(masterBrowserName);
         m_workgroups_list << workgroup;
         
@@ -695,7 +695,7 @@ void Smb4KQueryMasterJob::startProcess1()
     }
     else
     {
-      host->setIP(m_master_browser);
+      host->setIpAddress(m_master_browser);
     }
 
     // Acquire the custom options for the master browser
@@ -919,7 +919,7 @@ void Smb4KQueryMasterJob::startProcess2(const QString& ipAddress)
     }
     else
     {
-      host->setIP(m_master_browser);
+      host->setIpAddress(m_master_browser);
     }
 
     // Acquire the custom options for the master browser
@@ -1463,9 +1463,9 @@ void Smb4KLookupDomainMembersJob::processHosts(const QString &stdOut)
           host->setPassword(m_master_browser->password());
           host->setIsMasterBrowser(true);
           
-          if (m_workgroup->hasMasterBrowserIP())
+          if (m_workgroup->hasMasterBrowserIpAddress())
           {
-            host->setIP(m_workgroup->masterBrowserIP());
+            host->setIpAddress(m_workgroup->masterBrowserIpAddress());
           }
           else
           {
@@ -1561,10 +1561,10 @@ void Smb4KLookupDomainMembersJob::slotStartLookup()
   command << "domain";
   
   // IP address or server name
-  if (m_workgroup->hasMasterBrowserIP())
+  if (m_workgroup->hasMasterBrowserIpAddress())
   {
     command << "-I";
-    command << m_workgroup->masterBrowserIP();
+    command << m_workgroup->masterBrowserIpAddress();
   }
   else
   {
@@ -1930,13 +1930,13 @@ void Smb4KLookupSharesJob::processShares(const QString &stdOut)
           share->setHostName(m_host->hostName());
           share->setWorkgroupName(m_host->workgroupName());
           share->setComment(comment);
-          share->setTypeString(typeString);
+//           share->setTypeString(typeString);
           share->setLogin(m_host->login());
           share->setPassword(m_host->password());
           
-          if (m_host->hasIP())
+          if (m_host->hasIpAddress())
           {
-            share->setHostIP(m_host->ip());
+            share->setHostIpAddress(m_host->ipAddress());
           }
           else
           {
@@ -2052,10 +2052,10 @@ void Smb4KLookupSharesJob::slotStartLookup()
   command << m_host->hostName();
 
   // IP address
-  if (m_host->hasIP())
+  if (m_host->hasIpAddress())
   {
     command << "-I";
-    command << m_host->ip();
+    command << m_host->ipAddress();
   }
   else
   {
@@ -2538,7 +2538,7 @@ void Smb4KLookupIPAddressJob::processNmblookupOutput()
     if (line.contains("<00>"))
     {
       QString ip_address = line.section(' ', 0, 0).trimmed();
-      m_host->setIP(ip_address);
+      m_host->setIpAddress(ip_address);
       break;
     }
     else
@@ -2555,7 +2555,7 @@ void Smb4KLookupIPAddressJob::processNetOutput()
 {
   // There is only one IP address reported:
   QString output = QString::fromUtf8(m_process->readAllStandardOutput(), -1).trimmed();
-  m_host->setIP(output);
+  m_host->setIpAddress(output);
   emit ipAddress(m_host);
 }
 

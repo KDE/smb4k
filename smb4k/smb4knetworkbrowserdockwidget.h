@@ -96,6 +96,22 @@ class Smb4KNetworkBrowserDockWidget : public QDockWidget
     void slotItemSelectionChanged();
     
     /**
+     * This slot is connected to the Smb4KClient::aboutToStart() signal.
+     * 
+     * @param item                The Smb4KBasicNetworkItem object
+     * @param process             The process
+     */
+    void slotClientAboutToStart(const NetworkItemPtr &item, int process);
+
+    /**
+     * This slot is connected to the Smb4KClient::finished() signal.
+     * 
+     * @param item                The Smb4KBasicNetworkItem object
+     * @param process             The process
+     */
+    void slotClientFinished(const NetworkItemPtr &item, int process);    
+    
+    /**
      * This slot is called when an authentication error occurred. Depending on
      * the @p process parameter it will take respective actions.
      * @param host                The host where the authentication error occurred
@@ -122,13 +138,6 @@ class Smb4KNetworkBrowserDockWidget : public QDockWidget
      * @param host                The host that was queried
      */
     void slotShares(const HostPtr &host);
-    
-    /**
-     * This slot takes a host item @p host, reads the IP address entry
-     * from it and updates the list view item representing the host with it.
-     * @param host                A host item with an updated IP address.
-     */
-    void slotAddIPAddress(const HostPtr &host);
     
     /**
      * Rescan the network or abort a network scan.
@@ -195,14 +204,14 @@ class Smb4KNetworkBrowserDockWidget : public QDockWidget
      * @param item                The Smb4KBasicNetworkItem object
      * @param process             The process
      */
-    void slotScannerAboutToStart(const NetworkItemPtr &item, int process);
+//     void slotScannerAboutToStart(const NetworkItemPtr &item, int process);
 
     /**
      * This slot is connected to the Smb4KScanner::finished() signal.
      * @param item                The Smb4KBasicNetworkItem object
      * @param process             The process
      */
-    void slotScannerFinished(const NetworkItemPtr &item, int process);
+//     void slotScannerFinished(const NetworkItemPtr &item, int process);
     
     /**
      * This slot is called whenever a share has been mounted. It marks the

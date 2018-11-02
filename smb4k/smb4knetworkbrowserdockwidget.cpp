@@ -41,6 +41,7 @@
 #include "core/smb4kcustomoptionsmanager.h"
 #include "core/smb4kpreviewer.h"
 #include "core/smb4kprint.h"
+#include "core/smb4kclient.h"
 
 // Qt includes
 #include <QApplication>
@@ -91,15 +92,15 @@ Smb4KNetworkBrowserDockWidget::Smb4KNetworkBrowserDockWidget(const QString& titl
   connect(m_networkBrowser, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(slotContextMenuRequested(QPoint)));
   connect(m_networkBrowser, SIGNAL(itemActivated(QTreeWidgetItem*,int)), this, SLOT(slotItemActivated(QTreeWidgetItem*,int)));
   connect(m_networkBrowser, SIGNAL(itemSelectionChanged()), this, SLOT(slotItemSelectionChanged()));
+  
+  connect(Smb4KClient::self(), SIGNAL(aboutToStart(NetworkItemPtr, int)), this, SLOT(slotClientAboutToStart(NetworkItemPtr, int)));
+  connect(Smb4KClient::self(), SIGNAL(finished(NetworkItemPtr, int)), this, SLOT(slotClientFinished(NetworkItemPtr,int)));
+  connect(Smb4KClient::self(), SIGNAL(workgroups()), this, SLOT(slotWorkgroups()));
+  connect(Smb4KClient::self(), SIGNAL(hosts(WorkgroupPtr)), this, SLOT(slotWorkgroupMembers(WorkgroupPtr)));
+  connect(Smb4KClient::self(), SIGNAL(shares(HostPtr)), this, SLOT(slotShares(HostPtr)));
           
   connect(Smb4KScanner::self(), SIGNAL(authError(HostPtr,int)), this, SLOT(slotAuthError(HostPtr,int)));
-  connect(Smb4KScanner::self(), SIGNAL(workgroups()), this, SLOT(slotWorkgroups()));
-  connect(Smb4KScanner::self(), SIGNAL(hosts(WorkgroupPtr)), this, SLOT(slotWorkgroupMembers(WorkgroupPtr)));
-  connect(Smb4KScanner::self(), SIGNAL(shares(HostPtr)), this, SLOT(slotShares(HostPtr)));
-  connect(Smb4KScanner::self(), SIGNAL(ipAddress(HostPtr)), this, SLOT(slotAddIPAddress(HostPtr)));
-  connect(Smb4KScanner::self(), SIGNAL(aboutToStart(NetworkItemPtr,int)), this, SLOT(slotScannerAboutToStart(NetworkItemPtr,int)));
-  connect(Smb4KScanner::self(), SIGNAL(finished(NetworkItemPtr, int)), this, SLOT(slotScannerFinished(NetworkItemPtr,int)));
-  
+
   connect(Smb4KMounter::self(), SIGNAL(mounted(SharePtr)), this, SLOT(slotShareMounted(SharePtr)));
   connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)), this, SLOT(slotShareUnmounted(SharePtr)));
   connect(Smb4KMounter::self(), SIGNAL(aboutToStart(int)), this, SLOT(slotMounterAboutToStart(int)));
@@ -332,7 +333,7 @@ void Smb4KNetworkBrowserDockWidget::slotItemActivated(QTreeWidgetItem* item, int
         {
           if (browserItem->isExpanded())
           {
-            Smb4KScanner::self()->lookupDomainMembers(browserItem->workgroupItem(), m_networkBrowser);
+            Smb4KClient::self()->lookupDomainMembers(browserItem->workgroupItem());
           }
           else
           {
@@ -344,7 +345,7 @@ void Smb4KNetworkBrowserDockWidget::slotItemActivated(QTreeWidgetItem* item, int
         {
           if (browserItem->isExpanded())
           {
-            Smb4KScanner::self()->lookupShares(browserItem->hostItem(), m_networkBrowser);
+            Smb4KClient::self()->lookupShares(browserItem->hostItem());
           }
           else
           {
@@ -534,6 +535,66 @@ void Smb4KNetworkBrowserDockWidget::slotItemSelectionChanged()
     m_actionCollection->action("print_action")->setEnabled(false);
     static_cast<KDualAction *>(m_actionCollection->action("mount_action"))->setActive(true);
     m_actionCollection->action("mount_action")->setEnabled(false);        
+  }
+}
+
+
+void Smb4KNetworkBrowserDockWidget::slotClientAboutToStart(const NetworkItemPtr& /*item*/, int /*process*/)
+{
+  //
+  // Get the rescan/abort action
+  // 
+  KDualAction *rescanAbortAction = static_cast<KDualAction *>(m_actionCollection->action("rescan_abort_action"));
+  
+  //
+  // Make adjustments
+  // 
+  if (rescanAbortAction)
+  {
+    rescanAbortAction->setActive(!rescanAbortAction->isActive());
+    
+    if (rescanAbortAction->isActive())
+    {
+      m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Refresh);
+    }
+    else
+    {
+      m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Cancel);
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KNetworkBrowserDockWidget::slotClientFinished(const NetworkItemPtr& /*item*/, int /*process*/)
+{
+  //
+  // Get the rescan/abort action
+  // 
+  KDualAction *rescanAbortAction = static_cast<KDualAction *>(m_actionCollection->action("rescan_abort_action"));
+  
+  //
+  // Make adjustments
+  // 
+  if (rescanAbortAction)
+  {
+    rescanAbortAction->setActive(!rescanAbortAction->isActive());
+    
+    if (rescanAbortAction->isActive())
+    {
+      m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Refresh);
+    }
+    else
+    {
+      m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Cancel);
+    }
+  }
+  else
+  {
+    // Do nothing
   }
 }
 
@@ -961,63 +1022,6 @@ void Smb4KNetworkBrowserDockWidget::slotShares(const HostPtr& host)
 }
 
 
-void Smb4KNetworkBrowserDockWidget::slotAddIPAddress(const HostPtr& host)
-{
-  //
-  // Process the IP address
-  //
-  if (host)
-  {
-    //
-    // Find the host and update it. Also set the IP address of the master 
-    // browser
-    //
-    QTreeWidgetItemIterator itemIt(m_networkBrowser);
-    
-    while (*itemIt)
-    {
-      Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(*itemIt);
-      
-      if (item->type() == Host && item->hostItem()->hostName() == host->hostName() 
-          && item->hostItem()->workgroupName() == host->workgroupName())
-      {
-        // Update the host
-        item->update();
-        
-        // Update the shares
-        for (int i = 0; i < item->childCount(); ++i)
-        {
-          Smb4KNetworkBrowserItem *shareItem = static_cast<Smb4KNetworkBrowserItem *>(item->child(i));
-          shareItem->update();
-        }
-        
-        // Update the workgroup master browser's IP address
-        Smb4KNetworkBrowserItem *workgroupItem = static_cast<Smb4KNetworkBrowserItem *>(item->parent());
-        
-        if (workgroupItem && host->isMasterBrowser())
-        {
-          workgroupItem->update();
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
-      }
-      
-      ++itemIt;
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
 void Smb4KNetworkBrowserDockWidget::slotRescanAbortActionTriggered(bool /*checked*/)
 {
   //
@@ -1047,18 +1051,18 @@ void Smb4KNetworkBrowserDockWidget::slotRescanAbortActionTriggered(bool /*checke
         {
           case Workgroup:
           {
-            Smb4KScanner::self()->lookupDomainMembers(browserItem->workgroupItem(), m_networkBrowser);
+            Smb4KClient::self()->lookupDomainMembers(browserItem->workgroupItem());
             break;
           }
           case Host:
           {
-            Smb4KScanner::self()->lookupShares(browserItem->hostItem(), m_networkBrowser);
+            Smb4KClient::self()->lookupShares(browserItem->hostItem());
             break;
           }
           case Share:
           {
             Smb4KNetworkBrowserItem *parentItem = static_cast<Smb4KNetworkBrowserItem *>(browserItem->parent());
-            Smb4KScanner::self()->lookupShares(parentItem->hostItem(), m_networkBrowser);
+            Smb4KClient::self()->lookupShares(parentItem->hostItem());
             break;
           }
           default:
@@ -1076,7 +1080,7 @@ void Smb4KNetworkBrowserDockWidget::slotRescanAbortActionTriggered(bool /*checke
     {
       // If several items are selected or no selected items,
       // only the network can be scanned.
-      Smb4KScanner::self()->lookupDomains(m_networkBrowser);
+      Smb4KClient::self()->lookupDomains();
     }
   }
   else
@@ -1348,66 +1352,6 @@ void Smb4KNetworkBrowserDockWidget::slotMountActionChanged(bool active)
     else
     {
       m_actionCollection->setDefaultShortcut(mountAction, QKeySequence(Qt::CTRL+Qt::Key_U));
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KNetworkBrowserDockWidget::slotScannerAboutToStart(const NetworkItemPtr& /*item*/, int /*process*/)
-{
-  //
-  // Get the rescan/abort action
-  // 
-  KDualAction *rescanAbortAction = static_cast<KDualAction *>(m_actionCollection->action("rescan_abort_action"));
-  
-  //
-  // Make adjustments
-  // 
-  if (rescanAbortAction)
-  {
-    rescanAbortAction->setActive(!rescanAbortAction->isActive());
-    
-    if (rescanAbortAction->isActive())
-    {
-      m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Refresh);
-    }
-    else
-    {
-      m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Cancel);
-    }
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KNetworkBrowserDockWidget::slotScannerFinished(const NetworkItemPtr& /*item*/, int /*process*/)
-{
-  //
-  // Get the rescan/abort action
-  // 
-  KDualAction *rescanAbortAction = static_cast<KDualAction *>(m_actionCollection->action("rescan_abort_action"));
-  
-  //
-  // Make adjustments
-  // 
-  if (rescanAbortAction)
-  {
-    rescanAbortAction->setActive(!rescanAbortAction->isActive());
-    
-    if (rescanAbortAction->isActive())
-    {
-      m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Refresh);
-    }
-    else
-    {
-      m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Cancel);
     }
   }
   else

@@ -35,6 +35,7 @@
 #include <QtGlobal>
 #include <QScopedPointer>
 #include <QUrl>
+#include <QHostAddress>
 
 // KDE includes
 #include <KCoreAddons/KUser>
@@ -157,7 +158,7 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * 
      * @param url             The URL of the network item
      */
-    void setURL(const QUrl &url);
+    void setUrl(const QUrl &url);
     
     /**
      * Returns the URL of the share.
@@ -175,7 +176,7 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * 
      * @returns the user's home repository's URL.
      */
-    QUrl homeURL() const;
+    QUrl homeUrl() const;
 
     /**
      * Returns the host's UNC (Uniform Naming Convention string) in the form //HOST.
@@ -212,22 +213,22 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * @returns the workgroup name
      */
     QString workgroupName() const;
-
+    
     /**
-     * Sets the type string (Disk, Print, IPC) of the share.
-     *
-     * @param type          The string defining the type of the share
+     * Set the type of the share as reported by the server.
+     * 
+     * @param type          The type of the string
      */
-    void setTypeString(const QString &typeString);
+    void setShareType(Smb4KGlobal::NetworkItem type);
 
     /**
-     * Returns the type string of the share as reported by the server. If you are
-     * looking for a translated type string, then use the translatedTypeString()
+     * Returns the type of the share as reported by the server. If you are
+     * looking for a translated type string, then use the shareTypeString()
      * function.
      *
      * @returns the type of the share.
      */
-    QString typeString() const;
+    Smb4KGlobal::NetworkItem shareType() const;
 
     /**
      * Returns the translated type string of the share. You can use this
@@ -235,7 +236,7 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns a translated type string.
      */
-    QString translatedTypeString() const;
+    QString shareTypeString() const;
 
     /**
      * Sets the comment that was defined for the share.
@@ -257,7 +258,15 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @param ip              The host's IP address
      */
-    void setHostIP(const QString &ip);
+    void setHostIpAddress(const QString &ip);
+    
+    /**
+     * Set the IP address of the host where the share is located. @p ip will only be accepted
+     * if it is compatible with either IPv4 or IPv6.
+     *
+     * @param ip              The host's IP address
+     */
+    void setHostIpAddress(const QHostAddress &address);
 
     /**
      * Returns the IP address of the host. If the IP address was not compatible
@@ -266,14 +275,14 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the IP address of the host or an empty string.
      */
-    QString hostIP() const;
+    QString hostIpAddress() const;
     
     /**
      * Returns TRUE if the host's IP address is set and FALSE otherwise.
      * 
      * @returns TRUE if the host's IP address is set and FALSE otherwise.
      */
-    bool hasHostIP() const;
+    bool hasHostIpAddress() const;
 
     /**
      * If the share is a hidden one, i.e. it ends with a '$', this function returns

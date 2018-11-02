@@ -224,9 +224,9 @@ void Smb4KMountDialog::slotOkClicked()
     // 
     if (smbUrl.isValid() && !smbUrl.host().isEmpty() && !smbUrl.path().isEmpty() && !smbUrl.path().endsWith(QLatin1String("/")))
     {
-      m_share->setURL(smbUrl);
+      m_share->setUrl(smbUrl);
       m_share->setWorkgroupName(m_workgroup_input->text().trimmed());
-      m_share->setHostIP(m_ip_input->text().trimmed());
+      m_share->setHostIpAddress(m_ip_input->text().trimmed());
     }
     else
     {

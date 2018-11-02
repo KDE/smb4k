@@ -397,9 +397,7 @@ void Smb4KPrintDialog::setupView(const SharePtr &share)
   QLabel *unc_label = new QLabel(i18n("UNC Address:"), desc_box);
   QLabel *unc = new QLabel(share->unc(), desc_box);
   QLabel *ip_label = new QLabel(i18n("IP Address:"), desc_box);
-  QLabel *ip = new QLabel(share->hostIP().trimmed().isEmpty() ?
-                          i18n("unknown") :
-                          share->hostIP(), desc_box);
+  QLabel *ip = new QLabel(!share->hasHostIpAddress() ? i18n("unknown") : share->hostIpAddress(), desc_box);
   QLabel *wg_label = new QLabel(i18n("Workgroup:"), desc_box);
   QLabel *workgroup = new QLabel(share->workgroupName(), desc_box);
 

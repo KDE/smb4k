@@ -33,6 +33,7 @@
 #include <QString>
 #include <QScopedPointer>
 #include <QUrl>
+#include <QHostAddress>
 
 
 // forward declarations
@@ -113,7 +114,15 @@ class Q_DECL_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      *
      * @param ip              The master browser's IP address
      */
-    void setMasterBrowserIP(const QString &ip);
+    void setMasterBrowserIpAddress(const QString &ip);
+    
+    /**
+     * Set the IP address of the master browser. @p address will only be accepted
+     * if it is compatible with either IPv4 or IPv6.
+     * 
+     * @param address         The master browser's IP address
+     */
+    void setMasterBrowserIpAddress(const QHostAddress &address);
 
     /**
      * Returns the IP address of the master browser of this workgroup
@@ -122,7 +131,15 @@ class Q_DECL_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      *
      * @returns the IP address of the master browser or an empty string.
      */
-    QString masterBrowserIP() const;
+    QString masterBrowserIpAddress() const;
+    
+    /**
+     * Returns TRUE if the workgroup/domain master browsers IP address is set and 
+     * FALSE otherwise.
+     *
+     * @returns TRUE if the master browsers IP address is known.
+     */
+    bool hasMasterBrowserIpAddress() const;
 
     /**
      * Returns TRUE if the item is empty and FALSE otherwise. An item is not
@@ -148,14 +165,6 @@ class Q_DECL_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      * Operator to check if two items are equal.
      */
     bool operator==(Smb4KWorkgroup workgroup) const { return equals(&workgroup); }
-    
-    /**
-     * Returns TRUE if the workgroup/domain master browsers IP address is set and 
-     * FALSE otherwise.
-     *
-     * @returns TRUE if the master browsers IP address is known.
-     */
-    bool hasMasterBrowserIP() const;
     
     /**
      * Returns the URL (the full UNC) of the workgroup item.

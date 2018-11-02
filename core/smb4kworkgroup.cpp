@@ -32,7 +32,7 @@
 #include "smb4kglobal.h"
 
 // Qt includes
-#include <QHostAddress>
+#include <QAbstractSocket>
 
 // KDE includes
 #include <KIconThemes/KIconLoader>
@@ -111,15 +111,34 @@ QString Smb4KWorkgroup::masterBrowserName() const
 }
 
 
-void Smb4KWorkgroup::setMasterBrowserIP(const QString &ip)
+void Smb4KWorkgroup::setMasterBrowserIpAddress(const QString &ip)
 {
   d->masterIP.setAddress(ip);
 }
 
 
-QString Smb4KWorkgroup::masterBrowserIP() const
+void Smb4KWorkgroup::setMasterBrowserIpAddress(const QHostAddress& address)
+{
+  if (!address.isNull() && address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol)
+  {
+    d->masterIP = address;
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+QString Smb4KWorkgroup::masterBrowserIpAddress() const
 {
   return d->masterIP.toString();
+}
+
+
+bool Smb4KWorkgroup::hasMasterBrowserIpAddress() const
+{
+  return !d->masterIP.isNull();
 }
 
 
@@ -170,7 +189,7 @@ bool Smb4KWorkgroup::equals(Smb4KWorkgroup *workgroup) const
     // Do nothing
   }
 
-  if (QString::compare(masterBrowserIP(), workgroup->masterBrowserIP()) != 0)
+  if (QString::compare(masterBrowserIpAddress(), workgroup->masterBrowserIpAddress()) != 0)
   {
     return false;
   }
@@ -185,12 +204,6 @@ bool Smb4KWorkgroup::equals(Smb4KWorkgroup *workgroup) const
 }
 
 
-bool Smb4KWorkgroup::hasMasterBrowserIP() const
-{
-  return !d->masterIP.isNull();
-}
-
-
 QUrl Smb4KWorkgroup::url() const
 {
   return d->url;
@@ -202,7 +215,7 @@ void Smb4KWorkgroup::update(Smb4KWorkgroup* workgroup)
   if (QString::compare(workgroupName(), workgroup->workgroupName()) == 0)
   {
     setMasterBrowserName(workgroup->masterBrowserName());
-    setMasterBrowserIP(workgroup->masterBrowserIP());
+    setMasterBrowserIpAddress(workgroup->masterBrowserIpAddress());
   }
   else
   {

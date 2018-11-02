@@ -55,7 +55,7 @@ Smb4KHomesUsers::Smb4KHomesUsers(const SharePtr &s, const QStringList &u)
   m_workgroup_name = s->workgroupName();
   m_host_name      = s->hostName();
   m_share_name     = s->shareName();
-  m_host_ip.setAddress(s->hostIP());
+  m_host_ip.setAddress(s->hostIpAddress());
   m_users          = u;
 }
 

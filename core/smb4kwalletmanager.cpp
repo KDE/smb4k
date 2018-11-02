@@ -393,9 +393,9 @@ void Smb4KWalletManager::writeAuthInfo(const NetworkItemPtr &networkItem)
               // Do nothing
             }
 
-            if (!host->ip().isEmpty())
+            if (host->hasIpAddress())
             {
-              map["IP Address"] = host->ip();
+              map["IP Address"] = host->ipAddress();
             }
             else
             {
@@ -439,9 +439,9 @@ void Smb4KWalletManager::writeAuthInfo(const NetworkItemPtr &networkItem)
               // Do nothing
             }
 
-            if (!share->hostIP().isEmpty())
+            if (share->hasHostIpAddress())
             {
-              map["IP Address"] = share->hostIP();
+              map["IP Address"] = share->hostIpAddress();
             }
             else
             {
@@ -615,8 +615,8 @@ QList<Smb4KAuthInfo *> Smb4KWalletManager::walletEntries()
         }
         else
         {
-          authInfo->setURL(entries.at(i));
-          authInfo->setIP(map["IP Address"]);
+          authInfo->setUrl(entries.at(i));
+          authInfo->setIpAddress(map["IP Address"]);
           authInfo->setWorkgroupName(map["Workgroup"]);
           authInfo->setUserName(map["Login"]);
           authInfo->setPassword(map["Password"]);
@@ -669,7 +669,7 @@ void Smb4KWalletManager::writeWalletEntries(const QList<Smb4KAuthInfo *> &entrie
       }
       else
       {
-        map["IP Address"] = entries.at(i)->ip();
+        map["IP Address"] = entries.at(i)->ipAddress();
         map["Workgroup"] = entries.at(i)->workgroupName();
         map["Login"] = entries.at(i)->userName();
         map["Password"] = entries.at(i)->password();

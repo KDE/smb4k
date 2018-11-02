@@ -134,9 +134,9 @@ void Smb4KToolTip::update(Smb4KToolTip::Parent parent, const NetworkItemPtr &ite
           {
             WorkgroupPtr workgroup = item.staticCast<Smb4KWorkgroup>();
             
-            if (!workgroup->masterBrowserIP().isEmpty())
+            if (workgroup->hasMasterBrowserIpAddress())
             {
-              m_master_browser_label->setText(workgroup->masterBrowserName()+" ("+workgroup->masterBrowserIP()+')');
+              m_master_browser_label->setText(workgroup->masterBrowserName()+" ("+workgroup->masterBrowserIpAddress()+')');
             }
             else
             {
@@ -157,9 +157,9 @@ void Smb4KToolTip::update(Smb4KToolTip::Parent parent, const NetworkItemPtr &ite
               m_comment_label->setText("-");
             }
             
-            if (!host->ip().isEmpty())
+            if (host->hasIpAddress())
             {
-              m_ip_label->setText(host->ip());
+              m_ip_label->setText(host->ipAddress());
             }
             else
             {
@@ -196,9 +196,9 @@ void Smb4KToolTip::update(Smb4KToolTip::Parent parent, const NetworkItemPtr &ite
               m_mounted_label->setText("-");
             }
             
-            if (!share->hostIP().isEmpty())
+            if (share->hasHostIpAddress())
             {
-              m_ip_label->setText(share->hostIP());
+              m_ip_label->setText(share->hostIpAddress());
             }
             else
             {
@@ -343,9 +343,9 @@ void Smb4KToolTip::setupNetworkBrowserToolTip()
       
       m_text_layout->addWidget(mb_label, 1, 0, Qt::AlignRight);
       
-      if (!workgroup->masterBrowserIP().isEmpty())
+      if (workgroup->hasMasterBrowserIpAddress())
       {
-        m_master_browser_label = new QLabel(workgroup->masterBrowserName()+" ("+workgroup->masterBrowserIP()+')', this);
+        m_master_browser_label = new QLabel(workgroup->masterBrowserName()+" ("+workgroup->masterBrowserIpAddress()+')', this);
         m_text_layout->addWidget(m_master_browser_label, 1, 1, 0);
       }
       else
@@ -400,9 +400,9 @@ void Smb4KToolTip::setupNetworkBrowserToolTip()
       
       m_text_layout->addWidget(ip_label, 2, 0, Qt::AlignRight);
       
-      if (!host->ip().isEmpty())
+      if (host->hasIpAddress())
       {
-        m_ip_label = new QLabel(host->ip(), this);
+        m_ip_label = new QLabel(host->ipAddress(), this);
         m_text_layout->addWidget(m_ip_label, 2, 1, 0);
       }
       else
@@ -440,7 +440,7 @@ void Smb4KToolTip::setupNetworkBrowserToolTip()
       type_label->setPalette(p);
       
       m_text_layout->addWidget(type_label, 0, 0, Qt::AlignRight);
-      m_text_layout->addWidget(new QLabel(i18n("Share (%1)", share->translatedTypeString()), this), 0, 1, 0);
+      m_text_layout->addWidget(new QLabel(i18n("Share (%1)", share->shareTypeString()), this), 0, 1, 0);
       
       QLabel *co_label = new QLabel(i18n("Comment"), this);
       co_label->setPalette(p);
@@ -493,9 +493,9 @@ void Smb4KToolTip::setupNetworkBrowserToolTip()
       
       m_text_layout->addWidget(ip_label, 4, 0, Qt::AlignRight);
       
-      if (!share->hostIP().isEmpty())
+      if (share->hasHostIpAddress())
       {
-        m_ip_label = new QLabel(share->hostIP(), this);
+        m_ip_label = new QLabel(share->hostIpAddress(), this);
         m_text_layout->addWidget(m_ip_label, 4, 1, 0);
       }
       else
@@ -647,9 +647,9 @@ void Smb4KToolTip::updateNetworkBrowserToolTip()
         
         if (mb_label)
         {
-          if (!workgroup->hasMasterBrowserIP())
+          if (!workgroup->hasMasterBrowserIpAddress())
           {
-            mb_label->setText(workgroup->masterBrowserName()+" ("+workgroup->masterBrowserIP()+')');
+            mb_label->setText(workgroup->masterBrowserName()+" ("+workgroup->masterBrowserIpAddress()+')');
           }
           else
           {
@@ -693,9 +693,9 @@ void Smb4KToolTip::updateNetworkBrowserToolTip()
         
         if (ip_label)
         {
-          if (!host->ip().isEmpty())
+          if (host->hasIpAddress())
           {
-            ip_label->setText(host->ip());
+            ip_label->setText(host->ipAddress());
           }
           else
           {

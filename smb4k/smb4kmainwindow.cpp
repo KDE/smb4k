@@ -47,6 +47,7 @@
 #include "core/smb4ksynchronizer.h"
 #include "core/smb4kpreviewer.h"
 #include "core/smb4ksearch.h"
+#include "core/smb4kclient.h"
 
 // Qt includes
 #include <QVariantList>
@@ -180,6 +181,10 @@ void Smb4KMainWindow::setupStatusBar()
   //
   // Connections
   //
+  connect(Smb4KClient::self(), SIGNAL(aboutToStart(NetworkItemPtr,int)), this, SLOT(slotClientAboutToStart(NetworkItemPtr,int)));
+  connect(Smb4KClient::self(), SIGNAL(finished(NetworkItemPtr,int)), this, SLOT(slotClientFinished(NetworkItemPtr,int)));
+  
+  
   connect(Smb4KWalletManager::self(), SIGNAL(initialized()),
           this, SLOT(slotWalletManagerInitialized()));
   
@@ -195,11 +200,11 @@ void Smb4KMainWindow::setupStatusBar()
   connect(Smb4KMounter::self(), SIGNAL(finished(int)),
           this, SLOT(slotMounterFinished(int)));
   
-  connect(Smb4KScanner::self(), SIGNAL(aboutToStart(NetworkItemPtr,int)),
-          this, SLOT(slotScannerAboutToStart(NetworkItemPtr,int)));
-  
-  connect(Smb4KScanner::self(), SIGNAL(finished(NetworkItemPtr,int)),
-          this, SLOT(slotScannerFinished(NetworkItemPtr,int)));
+//   connect(Smb4KScanner::self(), SIGNAL(aboutToStart(NetworkItemPtr,int)),
+//           this, SLOT(slotScannerAboutToStart(NetworkItemPtr,int)));
+//   
+//   connect(Smb4KScanner::self(), SIGNAL(finished(NetworkItemPtr,int)),
+//           this, SLOT(slotScannerFinished(NetworkItemPtr,int)));
   
   connect(Smb4KSearch::self(), SIGNAL(aboutToStart(QString)),
           this, SLOT(slotSearchAboutToStart(QString)));
@@ -847,7 +852,7 @@ void Smb4KMainWindow::slotWalletManagerInitialized()
 }
 
 
-void Smb4KMainWindow::slotScannerAboutToStart(const NetworkItemPtr &item, int process)
+void Smb4KMainWindow::slotClientAboutToStart(const NetworkItemPtr &item, int process)
 {
   Q_ASSERT(item);
 
@@ -892,7 +897,7 @@ void Smb4KMainWindow::slotScannerAboutToStart(const NetworkItemPtr &item, int pr
 }
 
 
-void Smb4KMainWindow::slotScannerFinished(const NetworkItemPtr &/*item*/, int /*process*/)
+void Smb4KMainWindow::slotClientFinished(const NetworkItemPtr &/*item*/, int /*process*/)
 {
   if (!coreIsRunning())
   {

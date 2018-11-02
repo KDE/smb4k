@@ -61,7 +61,7 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidget *parent, const Netw
     {
       HostPtr host = m_item.staticCast<Smb4KHost>();
       setText(Network, host->hostName());
-      setText(IP, host->ip());
+      setText(IP, host->ipAddress());
       setText(Comment, host->comment());
       
       if (host->isMasterBrowser())
@@ -84,7 +84,7 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidget *parent, const Netw
     {
       SharePtr share = m_item.staticCast<Smb4KShare>();
       setText(Network, share->shareName());
-      setText(Type, share->translatedTypeString());
+      setText(Type, share->shareTypeString());
       setText(Comment, share->comment());
 
       if (!share->isPrinter() && share->isMounted())
@@ -131,7 +131,7 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidgetItem *parent, const 
     {
       HostPtr host = m_item.staticCast<Smb4KHost>();
       setText(Network, host->hostName());
-      setText(IP, host->ip());
+      setText(IP, host->ipAddress());
       setText(Comment, host->comment());
       
       if (host->isMasterBrowser())
@@ -154,7 +154,7 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidgetItem *parent, const 
     {
       SharePtr share = m_item.staticCast<Smb4KShare>();
       setText(Network, share->shareName());
-      setText(Type, share->translatedTypeString());
+      setText(Type, share->shareTypeString());
       setText(Comment, share->comment());
 
       if (!share->isPrinter() && share->isMounted())
@@ -267,7 +267,7 @@ void Smb4KNetworkBrowserItem::update()
       }
         
       // Set the IP address
-      setText(IP, host->ip());
+      setText(IP, host->ipAddress());
 
       // Set the comment 
       setText(Comment, host->comment());

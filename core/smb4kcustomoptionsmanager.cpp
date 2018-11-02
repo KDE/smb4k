@@ -275,7 +275,7 @@ OptionsPtr Smb4KCustomOptionsManager::findOptions(const NetworkItemPtr &networkI
           for (const OptionsPtr &o : optionsList)
           {
             // In case of a host, there can only be an exact match.
-            if (QString::compare(host->unc(), o->unc(), Qt::CaseInsensitive) == 0 || (host->unc().isEmpty() && host->ip() == o->ip()))
+            if (QString::compare(host->unc(), o->unc(), Qt::CaseInsensitive) == 0 || (host->unc().isEmpty() && host->ipAddress() == o->ipAddress()))
             {
               options = o;
               break;
@@ -445,17 +445,17 @@ void Smb4KCustomOptionsManager::readCustomOptions()
                 else if (xmlReader.name() == "url")
                 {
                   QUrl url(xmlReader.readElementText());
-                  options->setURL(url);
+                  options->setUrl(url);
                 }
                 else if (xmlReader.name() == "unc")
                 {
                   QUrl url = QUrl::fromUserInput(xmlReader.readElementText());
                   url.setScheme("smb");
-                  options->setURL(url);
+                  options->setUrl(url);
                 }
                 else if (xmlReader.name() == "ip")
                 {
-                  options->setIP(xmlReader.readElementText());
+                  options->setIpAddress(xmlReader.readElementText());
                 }
                 else if (xmlReader.name() == "custom")
                 {
@@ -880,7 +880,7 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
 
           xmlWriter.writeTextElement("workgroup", options->workgroupName());
           xmlWriter.writeTextElement("url", options->url().toDisplayString());
-          xmlWriter.writeTextElement("ip", options->ip());
+          xmlWriter.writeTextElement("ip", options->ipAddress());
           
           xmlWriter.writeStartElement("custom");
 
@@ -1090,7 +1090,7 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(const NetworkItemPtr &it
             // Get rid of the 'homes' share
             if (share->isHomesShare())
             {
-              options->setURL(share->homeURL());
+              options->setUrl(share->homeUrl());
             }
             else
             {
@@ -1196,7 +1196,7 @@ void Smb4KCustomOptionsManager::addCustomOptions(const OptionsPtr &options)
       {
         if (o->type() == Share && o->hostName() == options->hostName() && o->workgroupName() == options->workgroupName())
         {
-          o->setIP(options->ip());
+          o->setIpAddress(options->ipAddress());
 #if !defined(SMB4K_UNSUPPORTED_PLATFORM)
           o->setUseUser(options->useUser());
           o->setUser(options->user());

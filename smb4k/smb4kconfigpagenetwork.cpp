@@ -60,34 +60,6 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
   tab1_layout->setSpacing(5);
   tab1_layout->setMargin(0);
 
-  // The browse list group box.
-  QGroupBox *browse_list_box = new QGroupBox(i18n("Browse List"), tab1);
-  QGridLayout *browse_box_layout = new QGridLayout(browse_list_box);
-  browse_box_layout->setSpacing(5);
-
-  QButtonGroup *browse_list_buttons = new QButtonGroup(browse_list_box);
-
-  QRadioButton *lookup_workgroups = new QRadioButton(Smb4KSettings::self()->lookupDomainsItem()->label(), browse_list_box);
-  lookup_workgroups->setObjectName("kcfg_LookupDomains");
-
-  QRadioButton *query_current = new QRadioButton(Smb4KSettings::self()->queryCurrentMasterItem()->label(), browse_list_box);
-  query_current->setObjectName("kcfg_QueryCurrentMaster");
-
-  QRadioButton *query_custom = new QRadioButton(Smb4KSettings::self()->queryCustomMasterItem()->label(), browse_list_box);
-  query_custom->setObjectName("kcfg_QueryCustomMaster");
-
-  KLineEdit *custom_name = new KLineEdit(browse_list_box);
-  custom_name->setObjectName("kcfg_CustomMasterBrowser");
-
-  browse_list_buttons->addButton(lookup_workgroups);
-  browse_list_buttons->addButton(query_current);
-  browse_list_buttons->addButton(query_custom);
-
-  browse_box_layout->addWidget(lookup_workgroups, 0, 0, 1, 3, 0);
-  browse_box_layout->addWidget(query_current, 1, 0, 1, 3, 0);
-  browse_box_layout->addWidget(query_custom, 2, 0, 0);
-  browse_box_layout->addWidget(custom_name, 2, 1, 1, 2, 0);
-
   // The authentication group box.
   QGroupBox *auth_box = new QGroupBox(i18n("Authentication"), tab1);
   QVBoxLayout *auth_box_layout = new QVBoxLayout(auth_box);
@@ -127,7 +99,6 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
   behavior_layout->addWidget(detect_hidden, 2, 0, 1, 2, 0);
   behavior_layout->addWidget(preview_hidden, 3, 0, 1, 2, 0);
   
-  tab1_layout->addWidget(browse_list_box, 0);
   tab1_layout->addWidget(auth_box, 0);
   tab1_layout->addWidget(behavior_box, 0);
   tab1_layout->addStretch(100);

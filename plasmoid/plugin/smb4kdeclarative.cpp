@@ -2,7 +2,7 @@
     This class provides the interface for Plasma and QtQuick
                              -------------------
     begin                : Mo 02 Sep 2013
-    copyright            : (C) 2013-2017 by Alexander Reinholdt
+    copyright            : (C) 2013-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -47,6 +47,7 @@
 #include "core/smb4kprofilemanager.h"
 #include "core/smb4ksynchronizer.h"
 #include "core/smb4kpreviewer.h"
+#include "core/smb4kclient.h"
 
 // Qt includes
 #include <QDebug>
@@ -58,15 +59,19 @@ using namespace Smb4KGlobal;
 Smb4KDeclarative::Smb4KDeclarative(QObject* parent)
 : QObject(parent), d(new Smb4KDeclarativePrivate)
 {
-  // Initialize the core.
+  // 
+  // Initialize the core
+  // 
   Smb4KGlobal::initCore(true, false);
   
+  // 
   // Connections
-  connect(Smb4KScanner::self(), SIGNAL(workgroups()), this, SLOT(slotWorkgroupsListChanged()));
-  connect(Smb4KScanner::self(), SIGNAL(hosts(WorkgroupPtr)), this, SLOT(slotHostsListChanged()));
-  connect(Smb4KScanner::self(), SIGNAL(shares(HostPtr)), this, SLOT(slotSharesListChanged()));
-  connect(Smb4KScanner::self(), SIGNAL(aboutToStart(NetworkItemPtr,int)), this, SIGNAL(busy()));
-  connect(Smb4KScanner::self(), SIGNAL(finished(NetworkItemPtr,int)), this, SIGNAL(idle()));
+  // 
+  connect(Smb4KClient::self(), SIGNAL(workgroups()), this, SLOT(slotWorkgroupsListChanged()));
+  connect(Smb4KClient::self(), SIGNAL(hosts(WorkgroupPtr)), this, SLOT(slotHostsListChanged()));
+  connect(Smb4KClient::self(), SIGNAL(shares(HostPtr)), this, SLOT(slotSharesListChanged()));
+  connect(Smb4KClient::self(), SIGNAL(aboutToStart(NetworkItemPtr,int)), this, SIGNAL(busy()));
+  connect(Smb4KClient::self(), SIGNAL(finished(NetworkItemPtr,int)), this, SIGNAL(idle()));
   
   connect(Smb4KMounter::self(), SIGNAL(mountedSharesListChanged()), this, SLOT(slotMountedSharesListChanged()));
   connect(Smb4KMounter::self(), SIGNAL(aboutToStart(int)), this, SIGNAL(busy()));
@@ -81,7 +86,9 @@ Smb4KDeclarative::Smb4KDeclarative(QObject* parent)
   connect(Smb4KProfileManager::self(), SIGNAL(activeProfileChanged(QString)), this, SLOT(slotActiveProfileChanged(QString)));
   connect(Smb4KProfileManager::self(), SIGNAL(profileUsageChanged(bool)), this, SLOT(slotProfileUsageChanged(bool)));
   
-  // Do the initial loading of items.
+  // 
+  // Do the initial loading of items
+  // 
   slotBookmarksListChanged();
   slotProfilesListChanged(Smb4KProfileManager::self()->profilesList());
   slotActiveProfileChanged(Smb4KProfileManager::self()->activeProfile());
@@ -178,7 +185,7 @@ void Smb4KDeclarative::lookup(Smb4KNetworkObject *object)
     {
       case Network:
       {
-        Smb4KScanner::self()->lookupDomains();
+        Smb4KClient::self()->lookupDomains();
         break;
       }
       case Workgroup:
@@ -188,7 +195,7 @@ void Smb4KDeclarative::lookup(Smb4KNetworkObject *object)
         
         if (workgroup)
         {
-          Smb4KScanner::self()->lookupDomainMembers(workgroup);
+          Smb4KClient::self()->lookupDomainMembers(workgroup);
         }
         else
         {
@@ -203,7 +210,7 @@ void Smb4KDeclarative::lookup(Smb4KNetworkObject *object)
         
         if (host)
         {
-          Smb4KScanner::self()->lookupShares(host);
+          Smb4KClient::self()->lookupShares(host);
         }
         else
         {
@@ -225,7 +232,7 @@ void Smb4KDeclarative::lookup(Smb4KNetworkObject *object)
   else
   {
     // If the object is 0, scan the whole network.
-    Smb4KScanner::self()->lookupDomains();
+    Smb4KClient::self()->lookupDomains();
   }
 }
 
@@ -336,9 +343,9 @@ void Smb4KDeclarative::mount(Smb4KNetworkObject *object)
       BookmarkPtr bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC(unc);
       
       share = SharePtr(new Smb4KShare());
-      share->setURL(object->url());
+      share->setUrl(object->url());
       share->setWorkgroupName(bookmark->workgroupName());
-      share->setHostIP(bookmark->hostIP());
+      share->setHostIpAddress(bookmark->hostIpAddress());
       Smb4KMounter::self()->mountShare(share);
       
       while (Smb4KMounter::self()->isRunning())

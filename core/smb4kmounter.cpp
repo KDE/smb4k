@@ -219,9 +219,9 @@ void Smb4KMounter::triggerRemounts(bool fill_list)
             if (mount)
             {
               SharePtr share = SharePtr(new Smb4KShare());
-              share->setURL(opt->url());
+              share->setUrl(opt->url());
               share->setWorkgroupName(opt->workgroupName());
-              share->setHostIP(opt->ip());
+              share->setHostIpAddress(opt->ipAddress());
               
               if (share->url().isValid() && !share->url().isEmpty())
               {
@@ -240,9 +240,9 @@ void Smb4KMounter::triggerRemounts(bool fill_list)
           else
           {
             SharePtr share = SharePtr(new Smb4KShare());
-            share->setURL(opt->url());
+            share->setUrl(opt->url());
             share->setWorkgroupName(opt->workgroupName());
-            share->setHostIP(opt->ip());
+            share->setHostIpAddress(opt->ipAddress());
               
             if (share->url().isValid() && !share->url().isEmpty())
             {
@@ -322,7 +322,7 @@ void Smb4KMounter::import(bool checkInaccessible)
         }
         else if (option.startsWith(QLatin1String("addr=")))
         {
-          share->setHostIP(option.section('=', 1, 1).trimmed());
+          share->setHostIpAddress(option.section('=', 1, 1).trimmed());
         }
         else if (option.startsWith(QLatin1String("username=")) || option.startsWith(QLatin1String("user=")))
         {
@@ -610,9 +610,9 @@ void Smb4KMounter::mountShare(const SharePtr &share, QWidget *parent)
         QHostAddress addr;
 
         // Use the host's IP address directly from the share object.
-        if (!share->hostIP().isEmpty())
+        if (share->hasHostIpAddress())
         {
-          addr.setAddress(share->hostIP());
+          addr.setAddress(share->hostIpAddress());
         }
         else
         {
@@ -1365,9 +1365,9 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   //
   // Host IP address
   // 
-  if (!share->hostIP().trimmed().isEmpty())
+  if (share->hasHostIpAddress())
   {
-    argumentsList << QString("ip=%1").arg(share->hostIP());
+    argumentsList << QString("ip=%1").arg(share->hostIpAddress());
   }
   else
   {
@@ -2022,14 +2022,14 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   }
   else
   {
-    map.insert("mh_url", share->homeURL());
+    map.insert("mh_url", share->homeUrl());
     map.insert("mh_homes_url", share->url());
     map.insert("mh_unc", share->homeUNC());
     map.insert("mh_homes_unc", share->unc());
   }  
 
   map.insert("mh_workgroup", share->workgroupName());
-  map.insert("mh_ip", share->hostIP());
+  map.insert("mh_ip", share->hostIpAddress());
   
   //
   // Location of the Kerberos ticket

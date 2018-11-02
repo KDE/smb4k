@@ -110,29 +110,28 @@ class Smb4KMainWindow : public KXmlGuiWindow
      * bar accordingly.
      */
     void slotWalletManagerInitialized();
-
+    
     /**
-     * This slot shows a status message according to the action performed by the 
-     * scanner as well as a busy bar. It is connected to the Smb4KScanner::aboutToStart() 
+     * This slot shows a busy bar and a status message according to the action performed by 
+     * the client. It is connected to the Smb4KClient::aboutToStart() signal.
+     *
+     * @param item          The network item
+     *
+     * @param process       The process
+     */
+    void slotClientAboutToStart(const NetworkItemPtr &item, int process);
+    
+    /**
+     * this slot shows a status message according to the action that was just finished by the 
+     * client and hides the status bar if appropriate. It is connected to the Smb4KClient::finished()
      * signal.
-     *
-     * @param item          The network item
-     *
-     * @param process       The process
-     */
-    void slotScannerAboutToStart(const NetworkItemPtr &item, int process);
-                                  
-    /**
-     * This shows a status message according to the action that was just finished by
-     * the scanner and hides the busy bar if appropriate. It is connected to the 
-     * Smb4KScanner::finished() signal.
      * 
      * @param item          The network item
      * 
      * @param process       The process
      */
-    void slotScannerFinished(const NetworkItemPtr &item, int process);
-                                   
+    void slotClientFinished(const NetworkItemPtr &item, int process);
+
     /**
      * This slot shows a status message according to the action performed by the 
      * mounter as well as a busy bar. It is connected to the Smb4KMounter::aboutToStart() 

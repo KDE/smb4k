@@ -112,7 +112,7 @@ Smb4KCustomOptions::Smb4KCustomOptions(Smb4KHost *host)
   d->useSmbPort = Smb4KSettings::useRemoteSmbPort();
   d->smbPort = host->port() != -1 ? host->port() : Smb4KSettings::remoteSmbPort();
   d->useKerberos = Smb4KSettings::useKerberos();
-  d->ip.setAddress(host->ip());
+  d->ip.setAddress(host->ipAddress());
   d->wakeOnLanBeforeFirstScan = false;
   d->wakeOnLanBeforeMount = false;
 }
@@ -146,7 +146,7 @@ Smb4KCustomOptions::Smb4KCustomOptions(Smb4KShare *share)
   d->useSmbPort = Smb4KSettings::useRemoteSmbPort();
   d->smbPort = Smb4KSettings::remoteSmbPort();
   d->useKerberos = Smb4KSettings::useKerberos();
-  d->ip.setAddress(share->hostIP());
+  d->ip.setAddress(share->hostIpAddress());
   d->wakeOnLanBeforeFirstScan = false;
   d->wakeOnLanBeforeMount = false;
 }
@@ -211,7 +211,7 @@ void Smb4KCustomOptions::setHost(Smb4KHost *host)
         d->url = host->url();
         d->type = Host;
         d->smbPort = host->port() != -1 ? host->port() : d->smbPort;
-        d->ip.setAddress(host->ip());
+        d->ip.setAddress(host->ipAddress());
         break;
       }
       default:
@@ -248,7 +248,7 @@ void Smb4KCustomOptions::setShare(Smb4KShare *share)
         d->user = share->user();
         d->group = share->group();
 #endif
-        d->ip.setAddress(share->hostIP());
+        d->ip.setAddress(share->hostIpAddress());
         break;
       }
       case Host:
@@ -264,7 +264,7 @@ void Smb4KCustomOptions::setShare(Smb4KShare *share)
           d->user = share->user();
           d->group = share->group();
 #endif
-          d->ip.setAddress(share->hostIP());
+          d->ip.setAddress(share->hostIpAddress());
         }
         else
         {
@@ -303,7 +303,7 @@ QString Smb4KCustomOptions::workgroupName() const
 }
 
 
-void Smb4KCustomOptions::setURL(const QUrl &url)
+void Smb4KCustomOptions::setUrl(const QUrl &url)
 {
   d->url = url;
 }
@@ -376,15 +376,21 @@ QString Smb4KCustomOptions::shareName() const
 }
 
 
-void Smb4KCustomOptions::setIP(const QString &ip)
+void Smb4KCustomOptions::setIpAddress(const QString &ip)
 {
   d->ip.setAddress(ip);
 }
 
 
-QString Smb4KCustomOptions::ip() const
+QString Smb4KCustomOptions::ipAddress() const
 {
   return d->ip.toString();
+}
+
+
+bool Smb4KCustomOptions::hasIpAddress() const
+{
+  return !d->ip.isNull();
 }
 
 
@@ -922,7 +928,7 @@ bool Smb4KCustomOptions::equals(Smb4KCustomOptions *options, bool fullCheck) con
   if (fullCheck)
   {
     // IP address
-    if (QString::compare(d->ip.toString(), options->ip()) != 0)
+    if (QString::compare(d->ip.toString(), options->ipAddress()) != 0)
     {
       return false;
     }
@@ -1396,7 +1402,7 @@ bool Smb4KCustomOptions::hasOptions() const
 
 void Smb4KCustomOptions::update(Smb4KCustomOptions *options)
 {
-    d->ip.setAddress(options->ip());
+    d->ip.setAddress(options->ipAddress());
 #if !defined(SMB4K_UNSUPPORTED_PLATFORM)
     d->remount = options->remount();
     d->useUser = options->useUser();

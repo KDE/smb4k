@@ -95,15 +95,21 @@ namespace Smb4KGlobal
    * @enum Workgroup              a workgroup
    * @enum Host                   a host
    * @enum Share                  a share
-   * @enum Unknown                an unknown network item 
+   * @enum FileShare              a file share
+   * @enum PrinterShare           a printer share
+   * @enum IpcShare               an IPC share
+   * @enum UnknownNetworkItem     an unknown network item 
    */
   enum NetworkItem { 
     Network,
     Workgroup,
     Host,
     Share,
+    FileShare,
+    PrinterShare,
+    IpcShare,
     UnknownNetworkItem };
-     
+    
   /**
    * Use this function to initialize the core classes. Besides starting several
    * core classes such as the scanner (for an initial browse list) and the mounter

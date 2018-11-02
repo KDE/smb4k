@@ -34,7 +34,6 @@
 // Qt includes
 #include <QStringList>
 #include <QDebug>
-#include <QHostAddress>
 
 // KDE includes
 #include <KIconThemes/KIconLoader>
@@ -119,7 +118,7 @@ QString Smb4KHost::unc() const
 }
 
 
-void Smb4KHost::setURL(const QUrl &url)
+void Smb4KHost::setUrl(const QUrl &url)
 {
   // Check validity.
   if (!url.isValid())
@@ -167,7 +166,7 @@ QUrl Smb4KHost::url() const
 
 void Smb4KHost::setWorkgroupName(const QString &workgroup)
 {
-  d->workgroup = workgroup;
+  d->workgroup = workgroup.toUpper();
 }
 
 
@@ -177,19 +176,32 @@ QString Smb4KHost::workgroupName() const
 }
 
 
-void Smb4KHost::setIP(const QString &ip)
+void Smb4KHost::setIpAddress(const QString &ip)
 {
   d->ip.setAddress(ip);
 }
 
 
-QString Smb4KHost::ip() const
+void Smb4KHost::setIpAddress(const QHostAddress& address)
+{
+  if (!address.isNull() && address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol)
+  {
+    d->ip = address;
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+QString Smb4KHost::ipAddress() const
 {
   return d->ip.toString();
 }
 
 
-bool Smb4KHost::hasIP() const
+bool Smb4KHost::hasIpAddress() const
 {
   return !d->ip.isNull();
 }
@@ -321,7 +333,7 @@ bool Smb4KHost::equals(Smb4KHost *host) const
     // Do nothing
   }
 
-  if (QString::compare(ip(), host->ip()) != 0)
+  if (QString::compare(ipAddress(), host->ipAddress()) != 0)
   {
     return false;
   }
@@ -357,14 +369,14 @@ void Smb4KHost::update(Smb4KHost* host)
   if (QString::compare(workgroupName(), host->workgroupName()) == 0 &&
       QString::compare(hostName(), host->hostName()) == 0)
   {
-    setURL(host->url());
+    setUrl(host->url());
     setComment(host->comment());
     setIsMasterBrowser(host->isMasterBrowser());
     
     // Do not kill the already discovered IP address
-    if (!hasIP() && host->hasIP())
+    if (!hasIpAddress() && host->hasIpAddress())
     {
-      setIP(host->ip());
+      setIpAddress(host->ipAddress());
     }
     else
     {

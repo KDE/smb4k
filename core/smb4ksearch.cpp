@@ -288,13 +288,13 @@ void Smb4KSearch::slotProcessSearchResult(const SharePtr &share)
     //
     // Add the IP address of the host, if it is necessary and known
     // 
-    if (share->hostIP().isEmpty())
+    if (!share->hasHostIpAddress())
     {
       HostPtr host = findHost(share->hostName(), share->workgroupName());
       
       if (host)
       {
-        share->setHostIP(host->ip());
+        share->setHostIpAddress(host->ipAddress());
       }
       else
       {

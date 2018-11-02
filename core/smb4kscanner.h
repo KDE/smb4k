@@ -100,15 +100,6 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
     void start();
 
     /**
-     * This function looks up all domains and workgroups in the 
-     * network neighborhood. Hown this is done depends on the 
-     * settings the user chose.
-     *
-     * @param parent          The parent widget
-     */
-    void lookupDomains(QWidget *parent = 0);
-
-    /**
      * This function looks up all hosts in a certain domain or
      * workgroup.
      * 
@@ -116,7 +107,7 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
      *
      * @param parent          The parent widget
      */
-    void lookupDomainMembers(WorkgroupPtr workgroup, QWidget *parent = 0);
+//     void lookupDomainMembers(WorkgroupPtr workgroup, QWidget *parent = 0);
 
     /**
      * This function looks up all shared resources a certain 
@@ -126,7 +117,7 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
      * 
      * @param parent          The parent widget
      */
-    void lookupShares(HostPtr host, QWidget *parent = 0);
+//     void lookupShares(HostPtr host, QWidget *parent = 0);
     
   protected:
     /**
@@ -164,7 +155,7 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
     /**
      * This signal is emitted when the list of workgroups was updated/changed.
      */
-    void workgroups();
+//     void workgroups();
 
     /**
      * This signal is emitted when the list of members of the workgroup @p workgroup 
@@ -172,7 +163,7 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
      *
      * @param workgroup   The workgroup that was scanned
      */
-    void hosts(const WorkgroupPtr &workgroup);
+//     void hosts(const WorkgroupPtr &workgroup);
     
     /**
      * This signal is emitted when the list of shares a certain host @p host offers 
@@ -180,7 +171,7 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
      * 
      * @param host        The host that was queried
      */
-    void shares(const HostPtr &host);
+//     void shares(const HostPtr &host);
     
     /**
      * This signal is emitted when an authentication error occurred.
@@ -267,13 +258,13 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
      * Is called when workgroups and domains have been looked
      * up
      */
-    void slotWorkgroups(const QList<WorkgroupPtr> &workgroups_list);
+//     void slotWorkgroups(const QList<WorkgroupPtr> &workgroups_list);
 
     /**
      * Is called when hosts have been looked up by the normal lookup
      * method
      */
-    void slotHosts(const WorkgroupPtr &workgroup, const QList<HostPtr> &hosts_list);
+//     void slotHosts(const WorkgroupPtr &workgroup, const QList<HostPtr> &hosts_list);
     
     /**
      * Is called when shares have been looked up
