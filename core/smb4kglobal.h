@@ -79,6 +79,7 @@ namespace Smb4KGlobal
    * @enum WakeUp                 Send magic Wake-On-LAN packages
    * @enum MountShare             Mount a share
    * @enum UnmountShare           Unmount a share
+   * @enum NoProcess              no process
    */
   enum Process { 
     LookupDomains,
@@ -86,7 +87,8 @@ namespace Smb4KGlobal
     LookupShares,
     WakeUp,
     MountShare,
-    UnmountShare };
+    UnmountShare,
+    NoProcess };
                  
   /**
    * The enumeration to determine the type of a network item.

@@ -2107,10 +2107,10 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   //
   // IP address
   // 
-  if (!share->hostIP().isEmpty())
+  if (!share->hostIpAddress().isEmpty())
   {
     argumentsList << "-I";
-    argumentsList << share->hostIP();
+    argumentsList << share->hostIpAddress();
   }
   else
   {
@@ -2291,8 +2291,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
     argumentsList << "-N";
   }
   
-  qDebug() << argumentsList.join(" ");
-
   //
   // Insert the mount options into the map
   // 
@@ -2313,14 +2311,14 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   }
   else
   {
-    map.insert("mh_url", share->homeURL());
+    map.insert("mh_url", share->homeUrl());
     map.insert("mh_homes_url", share->url());
     map.insert("mh_unc", share->homeUNC());
     map.insert("mh_homes_unc", share->unc());
   }  
 
   map.insert("mh_workgroup", share->workgroupName());
-  map.insert("mh_ip", share->hostIP());
+  map.insert("mh_ip", share->hostIpAddress());
   
   return true;
 }

@@ -309,6 +309,8 @@ void Smb4KClient::lookupShares(HostPtr host)
 
 void Smb4KClient::processErrors(KJob *job)
 {
+  qDebug() << "AN ERROR OCCURRED";
+  
   switch (job->error())
   {
     case Smb4KClientJob::AccessDeniedError:
@@ -611,7 +613,7 @@ void Smb4KClient::slotJobFinished(KJob *job)
   // finished() signal.
   // 
   NetworkItemPtr item;
-  Smb4KGlobal::Process process;
+  Smb4KGlobal::Process process = NoProcess;
   
   //
   // Get the result from the query and process it
