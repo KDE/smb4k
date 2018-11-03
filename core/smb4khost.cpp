@@ -53,9 +53,9 @@ class Smb4KHostPrivate
 Smb4KHost::Smb4KHost(const QString &name)
 : Smb4KBasicNetworkItem(Host), d(new Smb4KHostPrivate)
 {
-  d->isMaster     = false;
+  d->isMaster = false;
+  *pIcon = KDE::icon("network-server");
   setHostName(name);
-  setIcon(KDE::icon("network-server"));
 }
 
 
@@ -64,18 +64,9 @@ Smb4KHost::Smb4KHost(const Smb4KHost &h)
 {
   *d = *h.d;
   
-  if (icon().isNull())
+  if (pIcon->isNull())
   {
-    setIcon(KDE::icon("network-server"));
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  if (url().isEmpty())
-  {
-    qWarning() << "URL of the share item is empty";
+    *pIcon = KDE::icon("network-server");
   }
   else
   {
@@ -87,8 +78,8 @@ Smb4KHost::Smb4KHost(const Smb4KHost &h)
 Smb4KHost::Smb4KHost()
 : Smb4KBasicNetworkItem(Host), d(new Smb4KHostPrivate)
 {
-  d->isMaster     = false;
-  setIcon(KDE::icon("network-server"));
+  d->isMaster = false;
+  *pIcon = KDE::icon("network-server");
 }
 
 
@@ -99,16 +90,14 @@ Smb4KHost::~Smb4KHost()
 
 void Smb4KHost::setHostName(const QString &name)
 {
-  QUrl u = url();
-  u.setHost(name);
-  u.setScheme("smb");
-  setUrl(u);
+  pUrl->setHost(name);
+  pUrl->setScheme("smb");
 }
 
 
 QString Smb4KHost::hostName() const
 {
-  return url().host().toUpper();
+  return pUrl->host().toUpper();
 }
 
 
@@ -198,7 +187,7 @@ bool Smb4KHost::isMasterBrowser() const
 
 bool Smb4KHost::isEmpty() const
 {
-  if (!url().isEmpty())
+  if (!pUrl->isEmpty())
   {
     return false;
   }
@@ -242,43 +231,37 @@ bool Smb4KHost::isEmpty() const
 
 void Smb4KHost::setLogin(const QString &login)
 {
-  QUrl u = url();
-  u.setUserName(login);
-  setUrl(u);
+  pUrl->setUserName(login);
 }
 
 
 QString Smb4KHost::login() const
 {
-  return url().userName();
+  return pUrl->userName();
 }
 
 
 void Smb4KHost::setPassword(const QString &passwd)
 {
-  QUrl u = url();
-  u.setPassword(passwd);
-  setUrl(u);
+  pUrl->setPassword(passwd);
 }
 
 
 QString Smb4KHost::password() const
 {
-  return url().password();
+  return pUrl->password();
 }
 
 
 void Smb4KHost::setPort(int port)
 {
-  QUrl u = url();
-  u.setPort(port);
-  setUrl(u);
+  pUrl->setPort(port);
 }
 
 
 int Smb4KHost::port() const
 {
-  return url().port();
+  return pUrl->port();
 }
 
 
@@ -286,7 +269,7 @@ bool Smb4KHost::equals(Smb4KHost *host) const
 {
   Q_ASSERT(host);
 
-  if (url() != host->url())
+  if (*pUrl != host->url())
   {
     return false;
   }
@@ -330,10 +313,8 @@ bool Smb4KHost::equals(Smb4KHost *host) const
 
 void Smb4KHost::setAuthInfo(Smb4KAuthInfo *authInfo)
 {
-  QUrl u = url();
-  u.setUserName(authInfo->userName());
-  u.setPassword(authInfo->password());
-  setUrl(u);
+  pUrl->setUserName(authInfo->userName());
+  pUrl->setPassword(authInfo->password());
 }
 
 
@@ -342,7 +323,7 @@ void Smb4KHost::update(Smb4KHost* host)
   if (QString::compare(workgroupName(), host->workgroupName()) == 0 &&
       QString::compare(hostName(), host->hostName()) == 0)
   {
-    setUrl(host->url());
+    *pUrl = host->url();
     setComment(host->comment());
     setIsMasterBrowser(host->isMasterBrowser());
     

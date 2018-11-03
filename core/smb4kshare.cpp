@@ -33,6 +33,7 @@
 
 // Qt include
 #include <QDir>
+#include <QUrl>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"
@@ -101,10 +102,8 @@ Smb4KShare::Smb4KShare(const QString &unc)
   //
   // Set the URL
   // 
-  QUrl u;
-  u.setUrl(unc, QUrl::TolerantMode);
-  u.setScheme("smb");
-  setUrl(u);
+  pUrl->setUrl(unc, QUrl::TolerantMode);
+  pUrl->setScheme("smb");
     
   //
   // Set the icon
@@ -116,20 +115,17 @@ Smb4KShare::Smb4KShare(const QString &unc)
 Smb4KShare::Smb4KShare(const Smb4KShare &s)
 : Smb4KBasicNetworkItem(Share), d(new Smb4KSharePrivate)
 {
+  //
+  // Copy the private variables
+  // 
   *d = *s.d;
 
-  if (icon().isNull())
+  //
+  // Set the icon if necessary
+  // 
+  if (pIcon->isNull())
   {
     setShareIcon();
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  if (url().isEmpty())
-  {
-    qWarning() << "URL of the share item is empty";
   }
   else
   {
@@ -159,9 +155,7 @@ Smb4KShare::Smb4KShare()
   //
   // Set the URL
   //
-  QUrl u;
-  u.setScheme("smb");
-  setUrl(u);
+  pUrl->setScheme("smb");
   
   //
   // Set the icon
@@ -177,50 +171,44 @@ Smb4KShare::~Smb4KShare()
 
 void Smb4KShare::setShareName(const QString &name)
 {
-  QUrl u = url();
-  
   if (name.startsWith('/'))
   {
-    u.setPath(name.trimmed());
+    pUrl->setPath(name.trimmed());
   }
   else
   {
-    u.setPath('/'+name.trimmed());
+    pUrl->setPath('/'+name.trimmed());
   }
   
-  u.setScheme("smb");
-  
-  setUrl(u);
+  pUrl->setScheme("smb");
 }
 
 
 QString Smb4KShare::shareName() const
 {
-  if (url().path().startsWith('/'))
+  if (pUrl->path().startsWith('/'))
   {
-    return url().path().remove(0, 1);
+    return pUrl->path().remove(0, 1);
   }
   else
   {
     // Do nothing
   }
 
-  return url().path();
+  return pUrl->path();
 }
 
 
 void Smb4KShare::setHostName(const QString &hostName)
 {
-  QUrl u = url();
-  u.setHost(hostName.trimmed());
-  u.setScheme("smb");
-  setUrl(u);
+  pUrl->setHost(hostName.trimmed());
+  pUrl->setScheme("smb");
 }
 
 
 QString Smb4KShare::hostName() const
 {
-  return url().host().toUpper();
+  return pUrl->host().toUpper();
 }
 
 
@@ -245,9 +233,9 @@ QString Smb4KShare::homeUNC() const
 {
   QString unc;
 
-  if (isHomesShare() && !hostName().isEmpty() && !url().userName().isEmpty())
+  if (isHomesShare() && !hostName().isEmpty() && !pUrl->userName().isEmpty())
   {
-    unc = QString("//%1/%2").arg(hostName()).arg(url().userName());
+    unc = QString("//%1/%2").arg(hostName()).arg(pUrl->userName());
   }
   else
   {
@@ -262,10 +250,10 @@ QUrl Smb4KShare::homeUrl() const
 {
   QUrl u;
   
-  if (isHomesShare() && !url().userName().isEmpty())
+  if (isHomesShare() && !pUrl->userName().isEmpty())
   {
-    u = url();
-    u.setPath('/'+url().userName(), QUrl::TolerantMode);
+    u = *pUrl;
+    u.setPath('/'+pUrl->userName(), QUrl::TolerantMode);
   }
   else
   {
@@ -400,7 +388,7 @@ bool Smb4KShare::hasHostIpAddress() const
 
 bool Smb4KShare::isHidden() const
 {
-  return url().path().endsWith('$');
+  return pUrl->path().endsWith('$');
 }
 
 
@@ -1029,7 +1017,7 @@ bool Smb4KShare::isEmpty(CheckFlags flag) const
     }
     case NetworkOnly:
     {
-      if (!url().isEmpty())
+      if (!pUrl->isEmpty())
       {
         return false;
       }
@@ -1133,21 +1121,19 @@ void Smb4KShare::resetMountData()
 
 bool Smb4KShare::isHomesShare() const
 {
-  return url().path().endsWith(QLatin1String("homes"));
+  return pUrl->path().endsWith(QLatin1String("homes"));
 }
 
 
 void Smb4KShare::setPort(int port)
 {
-  QUrl u = url();
-  u.setPort(port);
-  setUrl(u);
+  pUrl->setPort(port);
 }
 
 
 int Smb4KShare::port() const
 {
-  return url().port();
+  return pUrl->port();
 }
 
 
@@ -1157,10 +1143,8 @@ void Smb4KShare::setAuthInfo(Smb4KAuthInfo *authInfo)
   // string if we have a homes share.
   if (!isHomesShare() || !authInfo->userName().isEmpty())
   {
-    QUrl u = url();
-    u.setUserName(authInfo->userName());
-    u.setPassword(authInfo->password());
-    setUrl(u);
+    pUrl->setUserName(authInfo->userName());
+    pUrl->setPassword(authInfo->password());
   }
   else
   {
@@ -1175,9 +1159,7 @@ void Smb4KShare::setLogin(const QString &login)
   // string if we have a homes share.
   if (!isHomesShare() || !login.isEmpty())
   {
-    QUrl u = url();
-    u.setUserName(login);
-    setUrl(u);
+    pUrl->setUserName(login);
   }
   else
   {
@@ -1188,7 +1170,7 @@ void Smb4KShare::setLogin(const QString &login)
 
 QString Smb4KShare::login() const
 {
-  return url().userName();
+  return pUrl->userName();
 }
 
 
@@ -1198,9 +1180,7 @@ void Smb4KShare::setPassword(const QString &passwd)
   // string if we have a homes share.
   if (!isHomesShare() || !passwd.isEmpty())
   {
-    QUrl u = url();
-    u.setPassword(passwd);
-    setUrl(u);
+    pUrl->setPassword(passwd);
   }
   else
   {
@@ -1211,14 +1191,18 @@ void Smb4KShare::setPassword(const QString &passwd)
 
 QString Smb4KShare::password() const
 {
-  return url().password();
+  return pUrl->password();
 }
 
 
 void Smb4KShare::setShareIcon()
 {
-  // We have three base icons: The remote folder, the locked folder
-  // and the printer icon.
+  // 
+  // We have three base icons: 
+  // - remote folder
+  // - locked folder
+  // - printer
+  //
   if (!isPrinter())
   {
     // Overlays
@@ -1242,23 +1226,18 @@ void Smb4KShare::setShareIcon()
       // Do nothing
     }
 
-    // The icon
-    QIcon icon;
-    
     if (!isInaccessible())
     {
-      icon = KDE::icon("folder-network", overlays);
+      *pIcon = KDE::icon("folder-network", overlays);
     }
     else
     {
-      icon = KDE::icon("folder-locked", overlays);
+      *pIcon = KDE::icon("folder-locked", overlays);
     }
-    
-    setIcon(icon);
   }
   else
   {
-    setIcon(KDE::icon("printer"));
+    *pIcon = KDE::icon("printer");
   }
 }
 
@@ -1268,8 +1247,8 @@ void Smb4KShare::update(Smb4KShare* share)
   if (QString::compare(workgroupName(), share->workgroupName()) == 0 &&
       (QString::compare(unc(), share->unc()) == 0 || QString::compare(homeUNC(), share->homeUNC()) == 0))
   {
+    *pUrl = share->url();
     setMountData(share);
-    setUrl(share->url());
     setShareType(share->shareType());
     setComment(share->comment());
     setHostIpAddress(share->hostIpAddress());

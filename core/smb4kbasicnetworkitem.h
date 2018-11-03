@@ -103,6 +103,17 @@ class Q_DECL_EXPORT Smb4KBasicNetworkItem
      */
     QUrl url() const;
     
+  protected:
+    /**
+     * Expose a pointer to the private URL variable.
+     */
+    QUrl *pUrl;
+    
+    /**
+     * Export a pointer to the private icon variable.
+     */
+    QIcon *pIcon;
+    
   private:
     const QScopedPointer<Smb4KBasicNetworkItemPrivate> d;
 };

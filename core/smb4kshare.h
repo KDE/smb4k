@@ -34,7 +34,6 @@
 #include <QStringList>
 #include <QtGlobal>
 #include <QScopedPointer>
-#include <QUrl>
 #include <QHostAddress>
 
 // KDE includes
@@ -622,12 +621,12 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     void update(Smb4KShare *share);
     
   private:
+    const QScopedPointer<Smb4KSharePrivate> d;
+    
     /**
      * Set up the shares icon.
      */
     void setShareIcon();
-
-    const QScopedPointer<Smb4KSharePrivate> d;
 };
 
 #endif

@@ -49,13 +49,31 @@ class Smb4KBasicNetworkItemPrivate
 Smb4KBasicNetworkItem::Smb4KBasicNetworkItem(NetworkItem type)
 : d(new Smb4KBasicNetworkItemPrivate)
 {
+  //
+  // Set the type
+  // 
   d->type = type;
+  
+  //
+  // Initialize the protected variables
+  // 
+  pUrl = &d->url;
+  pIcon = &d->icon;
 }
 
 Smb4KBasicNetworkItem::Smb4KBasicNetworkItem(const Smb4KBasicNetworkItem &item)
 : d(new Smb4KBasicNetworkItemPrivate)
 {
+  //
+  // Copy the private variables
+  // 
   *d = *item.d;
+  
+  //
+  // Initialize the protected variables
+  // 
+  pUrl = &d->url;
+  pIcon = &d->icon;
 }
 
 
