@@ -32,7 +32,6 @@
 // Qt includes
 #include <QString>
 #include <QScopedPointer>
-#include <QUrl>
 #include <QHostAddress>
 
 // forward declarations
@@ -108,20 +107,6 @@ class Q_DECL_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      */
     QString unc() const;
                                                    
-    /**
-     * Sets the URL of the network item after some checks are passed.
-     * 
-     * @param url             The URL of the network item
-     */
-    void setUrl(const QUrl &url);
-    
-    /**
-     * Returns the URL (the full UNC) of the host item.
-     * 
-     * @returns the URL of the network item.
-     */
-    QUrl url() const;
-
     /**
      * Set the workgroup where this host is located.
      *

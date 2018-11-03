@@ -41,6 +41,9 @@
 #include <QUdpSocket>
 #include <QHostAddress>
 #include <QTest>
+#include <QCoreApplication>
+
+#define TIMER_INTERVAL 250
 
 using namespace Smb4KGlobal;
 
@@ -50,6 +53,10 @@ Q_GLOBAL_STATIC(Smb4KClientStatic, p);
 Smb4KClient::Smb4KClient(QObject* parent) 
 : KCompositeJob(parent), d(new Smb4KClientPrivate)
 {
+  //
+  // Connections
+  // 
+  connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), this, SLOT(slotAboutToQuit()));
 }
 
 
@@ -182,17 +189,21 @@ void Smb4KClient::lookupDomains()
   // Emit the aboutToStart() signal
   // 
   NetworkItemPtr item = NetworkItemPtr(new Smb4KBasicNetworkItem(Network));
+  item->setUrl(QUrl("smb://"));
   emit aboutToStart(item, LookupDomains);
-  item.clear();
   
   // 
   // Create the job
   // 
   Smb4KClientJob *job = new Smb4KClientJob(this);
-  job->setUrl(QUrl("smb://"));
-  job->setType(Network);
+  job->setNetworkItem(item);
   
   connect(job, SIGNAL(result(KJob*)), this, SLOT(slotJobFinished(KJob*)));
+  
+  //
+  // Clear the pointer
+  // 
+  item.clear();
   
   //
   // Set the busy cursor
@@ -229,8 +240,7 @@ void Smb4KClient::lookupDomainMembers(WorkgroupPtr workgroup)
   // Create the job
   // 
   Smb4KClientJob *job = new Smb4KClientJob(this);
-  job->setUrl(workgroup->url());
-  job->setType(Workgroup);
+  job->setNetworkItem(workgroup);
   
   connect(job, SIGNAL(result(KJob*)), this, SLOT(slotJobFinished(KJob*)));
   
@@ -269,8 +279,7 @@ void Smb4KClient::lookupShares(HostPtr host)
   // Create the job
   // 
   Smb4KClientJob *job = new Smb4KClientJob(this);
-  job->setUrl(host->url());
-  job->setType(Host);
+  job->setNetworkItem(host);
   
   connect(job, SIGNAL(result(KJob*)), this, SLOT(slotJobFinished(KJob*)));
   
@@ -495,7 +504,7 @@ void Smb4KClient::processShares(Smb4KClientJob *job)
   //
   // Get the host pointer
   // 
-  HostPtr host = findHost(job->url().host(), job->workgroup());
+  HostPtr host = findHost(job->networkItem()->url().host(), job->workgroup());
 
   //
   // Remove obsolete shares
@@ -611,7 +620,7 @@ void Smb4KClient::slotJobFinished(KJob *job)
   {
     if (clientJob->error() == 0)
     {
-      switch (clientJob->type())
+      switch (clientJob->networkItem()->type())
       {
         case Network:
         {
@@ -619,7 +628,7 @@ void Smb4KClient::slotJobFinished(KJob *job)
           processWorkgroups(clientJob);
           
           // Set the network item and the process value
-          item = NetworkItemPtr(new Smb4KBasicNetworkItem(clientJob->type()));
+          item = NetworkItemPtr(new Smb4KBasicNetworkItem(clientJob->networkItem()->type()));
           process = LookupDomains;
           
           break;
@@ -644,7 +653,7 @@ void Smb4KClient::slotJobFinished(KJob *job)
           
           // Set the network item and the process value
           HostPtr host = HostPtr(new Smb4KHost());
-          host->setUrl(clientJob->url());
+          host->setUrl(clientJob->networkItem()->url());
           host->setWorkgroupName(clientJob->workgroup());
           item = host.staticCast<Smb4KBasicNetworkItem>();
           process = LookupShares;
@@ -694,6 +703,13 @@ void Smb4KClient::slotJobFinished(KJob *job)
     // Do nothing
   }
 }
+
+
+void Smb4KClient::slotAboutToQuit()
+{
+  abort();
+}
+
 
 
 

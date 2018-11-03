@@ -42,6 +42,7 @@ class Smb4KBasicNetworkItemPrivate
   public:
     NetworkItem type;
     QIcon icon;
+    QUrl url;
 };
 
 
@@ -79,4 +80,92 @@ QIcon Smb4KBasicNetworkItem::icon() const
 {
   return d->icon;
 }
+
+
+void Smb4KBasicNetworkItem::setUrl(const QUrl& url)
+{
+  //
+  // Check that the URL is valid
+  // 
+  if (!url.isValid())
+  {
+    return;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // Do some checks depending on the type of the network item
+  // 
+  switch (d->type)
+  {
+    case Network:
+    {
+      break;
+    }
+    case Workgroup:
+    case Host:
+    {
+      // 
+      // Check that the host name is present and there is no path
+      // 
+      if (url.host().isEmpty() || !url.path().isEmpty())
+      {
+        return;
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      break;
+    }
+    case Share:
+    {
+      //
+      // Check that the share name is present
+      // 
+      if (url.path().isEmpty() || (url.path().size() == 1 && url.path().endsWith('/')))
+      {
+        return;
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+  
+  //
+  // Set the URL
+  //
+  d->url = url;
+  
+  //
+  // Force the scheme
+  // 
+  if (d->url.scheme() != "smb")
+  {
+    d->url.setScheme("smb");
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+QUrl Smb4KBasicNetworkItem::url() const
+{
+  return d->url;
+}
+
 

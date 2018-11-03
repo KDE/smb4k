@@ -88,7 +88,7 @@ static void get_auth_data_with_context_fn(SMBCCTX *context,
 // Client job
 // 
 Smb4KClientJob::Smb4KClientJob(QObject* parent) 
-: KJob(parent), m_type(UnknownNetworkItem)
+: KJob(parent)
 {
 }
 
@@ -129,30 +129,16 @@ void Smb4KClientJob::start()
 }
 
 
-void Smb4KClientJob::setUrl(const QUrl& url)
+void Smb4KClientJob::setNetworkItem(NetworkItemPtr item)
 {
-  m_url = url;
+  m_item = item;
 }
 
 
-QUrl Smb4KClientJob::url() const
+NetworkItemPtr Smb4KClientJob::networkItem() const
 {
-  return m_url;
+  return m_item;
 }
-
-
-
-void Smb4KClientJob::setType(NetworkItem type)
-{
-  m_type = type;
-}
-
-
-Smb4KGlobal::NetworkItem Smb4KClientJob::type() const
-{
-  return m_type;
-}
-
 
 
 void Smb4KClientJob::get_auth_data_fn(const char* server, const char* share, char* workgroup, int maxLenWorkgroup, char* username, int maxLenUsername, char* password, int maxLenPassword)
@@ -160,7 +146,7 @@ void Smb4KClientJob::get_auth_data_fn(const char* server, const char* share, cha
   //
   // Authentication
   // 
-  switch (m_type)
+  switch (m_item->type())
   {
     case Network:
     {
@@ -243,10 +229,12 @@ void Smb4KClientJob::get_auth_data_fn(const char* server, const char* share, cha
       qstrncpy(password, host->password().toUtf8().data(), maxLenPassword);
       
       //
-      // Set the authentication data also in the URL
+      // Set the authentication data also for the network item
       // 
-      m_url.setUserName(host->login());
-      m_url.setPassword(host->password());
+      QUrl url = m_item->url();
+      url.setUserName(host->login());
+      url.setPassword(host->password());
+      m_item->setUrl(url);
       
       break;
     }
@@ -284,7 +272,7 @@ QString Smb4KClientJob::workgroup()
 {
   QString workgroup;
   
-  switch (m_type)
+  switch (m_item->type())
   {
     case Network:
     {
@@ -292,7 +280,7 @@ QString Smb4KClientJob::workgroup()
     }
     case Workgroup:
     {
-      workgroup = m_url.host().toUpper();
+      workgroup = m_item->url().host().toUpper();
       break;
     }
     default:
@@ -438,7 +426,7 @@ void Smb4KClientJob::slotStartJob()
   //
   // Set the NetBIOS name and the workgroup to make connections
   // 
-  switch (m_type)
+  switch (m_item->type())
   {
     case Network:
     {
@@ -453,7 +441,7 @@ void Smb4KClientJob::slotStartJob()
       //
       // Set the NetBIOS name of the master browser and the workgroup to be queried
       // 
-      WorkgroupPtr workgroup = findWorkgroup(m_url.host());
+      WorkgroupPtr workgroup = findWorkgroup(m_item->url().host());
       smbc_setNetbiosName(m_context, workgroup->masterBrowserName().toUtf8().data());
       smbc_setWorkgroup(m_context, workgroup->workgroupName().toUtf8().data());
       break;
@@ -463,7 +451,7 @@ void Smb4KClientJob::slotStartJob()
       //
       // Set both the NetBIOS name of the server and the workgroup to be queried
       // 
-      HostPtr host = findHost(m_url.host());
+      HostPtr host = findHost(m_item->url().host());
       smbc_setNetbiosName(m_context, host->hostName().toUtf8().data());
       smbc_setWorkgroup(m_context, host->workgroupName().toUtf8().data());
       break;
@@ -552,7 +540,7 @@ void Smb4KClientJob::slotStartJob()
   int dirfd;
   struct smbc_dirent *dirp = nullptr;
   
-  dirfd = smbc_opendir(m_url.toString().toLocal8Bit());
+  dirfd = smbc_opendir(m_item->url().toString().toUtf8().data());
   
   if (dirfd < 0)
   {
@@ -663,7 +651,7 @@ void Smb4KClientJob::slotStartJob()
           // 
           // Set the workgroup name
           // 
-          host->setWorkgroupName(m_url.host());
+          host->setWorkgroupName(m_item->url().host());
           
           // 
           // Set the host name
@@ -714,7 +702,7 @@ void Smb4KClientJob::slotStartJob()
           //
           // Set the host name
           // 
-          share->setHostName(m_url.host());
+          share->setHostName(m_item->url().host());
           
           //
           // Set the share name
@@ -734,13 +722,13 @@ void Smb4KClientJob::slotStartJob()
           //
           // Set the authentication data
           // 
-          share->setLogin(m_url.userName(QUrl::FullyEncoded));
-          share->setPassword(m_url.password(QUrl::FullyEncoded));
+          share->setLogin(m_item->url().userName(QUrl::FullyEncoded));
+          share->setPassword(m_item->url().password(QUrl::FullyEncoded));
           
           // 
           // Lookup IP address
           // 
-          QHostAddress address = lookupIpAddress(m_url.host());
+          QHostAddress address = lookupIpAddress(m_item->url().host());
           
           // 
           // Process the IP address. 
@@ -774,7 +762,7 @@ void Smb4KClientJob::slotStartJob()
           //
           // Set the host name
           // 
-          share->setHostName(m_url.host());
+          share->setHostName(m_item->url().host());
           
           //
           // Set the share name
@@ -794,13 +782,13 @@ void Smb4KClientJob::slotStartJob()
           //
           // Set the authentication data
           // 
-          share->setLogin(m_url.userName(QUrl::FullyEncoded));
-          share->setPassword(m_url.password(QUrl::FullyEncoded));
+          share->setLogin(m_item->url().userName(QUrl::FullyEncoded));
+          share->setPassword(m_item->url().password(QUrl::FullyEncoded));
           
           // 
           // Lookup IP address
           // 
-          QHostAddress address = lookupIpAddress(m_url.host());
+          QHostAddress address = lookupIpAddress(m_item->url().host());
           
           // 
           // Process the IP address. 
@@ -834,7 +822,7 @@ void Smb4KClientJob::slotStartJob()
           //
           // Set the host name
           // 
-          share->setHostName(m_url.host());
+          share->setHostName(m_item->url().host());
           
           //
           // Set the share name
@@ -854,13 +842,13 @@ void Smb4KClientJob::slotStartJob()
           //
           // Set the authentication data
           // 
-          share->setLogin(m_url.userName(QUrl::FullyEncoded));
-          share->setPassword(m_url.password(QUrl::FullyEncoded));
+          share->setLogin(m_item->url().userName(QUrl::FullyEncoded));
+          share->setPassword(m_item->url().password(QUrl::FullyEncoded));
           
           // 
           // Lookup IP address
           // 
-          QHostAddress address = lookupIpAddress(m_url.host());
+          QHostAddress address = lookupIpAddress(m_item->url().host());
           
           // 
           // Process the IP address. 

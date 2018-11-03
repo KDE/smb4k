@@ -32,7 +32,6 @@
 // Qt includes
 #include <QString>
 #include <QScopedPointer>
-#include <QUrl>
 #include <QHostAddress>
 
 
@@ -165,13 +164,6 @@ class Q_DECL_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      * Operator to check if two items are equal.
      */
     bool operator==(Smb4KWorkgroup workgroup) const { return equals(&workgroup); }
-    
-    /**
-     * Returns the URL (the full UNC) of the workgroup item.
-     * 
-     * @returns the URL of the network item.
-     */
-    QUrl url() const;
     
     /**
      * Updates the workgroup item if the workgroup name of @p workgroup and

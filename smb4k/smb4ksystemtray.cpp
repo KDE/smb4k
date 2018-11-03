@@ -2,7 +2,7 @@
     smb4ksystemtray  -  This is the system tray window class of Smb4K.
                              -------------------
     begin                : Mi Jun 13 2007
-    copyright            : (C) 2007-2017 by Alexander Reinholdt
+    copyright            : (C) 2007-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -37,6 +37,7 @@
 #include "core/smb4kglobal.h"
 #include "core/smb4kmounter.h"
 #include "core/smb4kscanner.h"
+#include "core/smb4kclient.h"
 
 // Qt includes
 #include <QMenu>
@@ -104,10 +105,10 @@ Smb4KSystemTray::Smb4KSystemTray(QWidget *parent)
   contextMenu()->addAction(action("config_action"));
   
   // 
-  // Connections:
+  // Connections
   // 
   connect(Smb4KMounter::self(), SIGNAL(mountedSharesListChanged()), SLOT(slotSetStatus()));
-  connect(Smb4KScanner::self(), SIGNAL(workgroups()), SLOT(slotSetStatus()));
+  connect(Smb4KClient::self(), SIGNAL(workgroups()), SLOT(slotSetStatus()));
 }
 
 

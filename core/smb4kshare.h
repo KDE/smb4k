@@ -154,20 +154,6 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     QString homeUNC() const;
     
     /**
-     * Sets the URL of the share after some checks are passed.
-     * 
-     * @param url             The URL of the network item
-     */
-    void setUrl(const QUrl &url);
-    
-    /**
-     * Returns the URL of the share.
-     * 
-     * @returns the URL of the share.
-     */
-    QUrl url() const;
-                                                       
-    /**
      * In case of a 'homes' share, this function returns the URL of the user's 
      * home repository.
      * 

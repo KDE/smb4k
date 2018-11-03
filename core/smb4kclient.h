@@ -146,6 +146,11 @@ class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
      */
     void slotJobFinished(KJob *job);
     
+    /**
+     * Called when the application is about to be closed
+     */
+    void slotAboutToQuit();
+    
   private:
     /**
      * Process errors

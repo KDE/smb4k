@@ -34,6 +34,7 @@
 // Qt includes
 #include <QStringList>
 #include <QDebug>
+#include <QUrl>
 
 // KDE includes
 #include <KIconThemes/KIconLoader>
@@ -42,7 +43,6 @@
 class Smb4KHostPrivate
 {
   public:
-    QUrl url;
     QString workgroup;
     QHostAddress ip;
     QString comment;
@@ -72,6 +72,15 @@ Smb4KHost::Smb4KHost(const Smb4KHost &h)
   {
     // Do nothing
   }
+  
+  if (url().isEmpty())
+  {
+    qWarning() << "URL of the share item is empty";
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
@@ -90,14 +99,16 @@ Smb4KHost::~Smb4KHost()
 
 void Smb4KHost::setHostName(const QString &name)
 {
-  d->url.setHost(name);
-  d->url.setScheme("smb");
+  QUrl u = url();
+  u.setHost(name);
+  u.setScheme("smb");
+  setUrl(u);
 }
 
 
 QString Smb4KHost::hostName() const
 {
-  return d->url.host().toUpper();
+  return url().host().toUpper();
 }
 
 
@@ -115,52 +126,6 @@ QString Smb4KHost::unc() const
   }
   
   return unc;
-}
-
-
-void Smb4KHost::setUrl(const QUrl &url)
-{
-  // Check validity.
-  if (!url.isValid())
-  {
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Check protocol
-  if (url.scheme().isEmpty() || QString::compare(url.scheme(), "smb") == 0)
-  {
-    // Do nothing
-  }
-  else
-  {
-    return;
-  }
-
-  // Check that this is a host item
-  if (!url.path().isEmpty())
-  {
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Set the URL
-  d->url = url;
-
-  // Force protocol
-  d->url.setScheme("smb");
-}
-
-
-QUrl Smb4KHost::url() const
-{
-  return d->url;
 }
 
 
@@ -233,7 +198,7 @@ bool Smb4KHost::isMasterBrowser() const
 
 bool Smb4KHost::isEmpty() const
 {
-  if (!d->url.isEmpty())
+  if (!url().isEmpty())
   {
     return false;
   }
@@ -277,37 +242,43 @@ bool Smb4KHost::isEmpty() const
 
 void Smb4KHost::setLogin(const QString &login)
 {
-  d->url.setUserName(login);
+  QUrl u = url();
+  u.setUserName(login);
+  setUrl(u);
 }
 
 
 QString Smb4KHost::login() const
 {
-  return d->url.userName();
+  return url().userName();
 }
 
 
 void Smb4KHost::setPassword(const QString &passwd)
 {
-  d->url.setPassword(passwd);
+  QUrl u = url();
+  u.setPassword(passwd);
+  setUrl(u);
 }
 
 
 QString Smb4KHost::password() const
 {
-  return d->url.password();
+  return url().password();
 }
 
 
 void Smb4KHost::setPort(int port)
 {
-  d->url.setPort(port);
+  QUrl u = url();
+  u.setPort(port);
+  setUrl(u);
 }
 
 
 int Smb4KHost::port() const
 {
-  return d->url.port();
+  return url().port();
 }
 
 
@@ -315,7 +286,7 @@ bool Smb4KHost::equals(Smb4KHost *host) const
 {
   Q_ASSERT(host);
 
-  if (d->url != host->url())
+  if (url() != host->url())
   {
     return false;
   }
@@ -359,8 +330,10 @@ bool Smb4KHost::equals(Smb4KHost *host) const
 
 void Smb4KHost::setAuthInfo(Smb4KAuthInfo *authInfo)
 {
-  d->url.setUserName(authInfo->userName());
-  d->url.setPassword(authInfo->password());
+  QUrl u = url();
+  u.setUserName(authInfo->userName());
+  u.setPassword(authInfo->password());
+  setUrl(u);
 }
 
 

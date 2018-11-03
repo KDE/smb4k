@@ -33,6 +33,7 @@
 
 // Qt includes
 #include <QAbstractSocket>
+#include <QUrl>
 
 // KDE includes
 #include <KIconThemes/KIconLoader>
@@ -42,7 +43,6 @@ using namespace Smb4KGlobal;
 class Smb4KWorkgroupPrivate
 {
   public:
-    QUrl url;
     QUrl masterURL;
     QHostAddress masterIP;
 };
@@ -51,8 +51,17 @@ class Smb4KWorkgroupPrivate
 Smb4KWorkgroup::Smb4KWorkgroup(const QString &name)
 : Smb4KBasicNetworkItem(Workgroup), d(new Smb4KWorkgroupPrivate)
 {
-  d->url.setHost(name);
-  d->url.setScheme("smb");
+  // 
+  // Set the URL of the workgroup
+  // 
+  QUrl u;
+  u.setScheme("smb");
+  u.setHost(name);
+  setUrl(u);
+  
+  //
+  // Set the icon
+  // 
   setIcon(KDE::icon("network-workgroup"));
 }
 
@@ -70,12 +79,31 @@ Smb4KWorkgroup::Smb4KWorkgroup(const Smb4KWorkgroup &w)
   {
     // Do nothing
   }
+  
+  if (url().isEmpty())
+  {
+    qWarning() << "URL of the workgroup item is empty";
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
 Smb4KWorkgroup::Smb4KWorkgroup()
 : Smb4KBasicNetworkItem(Workgroup), d(new Smb4KWorkgroupPrivate)
 {
+  //
+  // Set the URL
+  //
+  QUrl u;
+  u.setScheme("smb");
+  setUrl(u);
+  
+  //
+  // Set the icon
+  // 
   setIcon(KDE::icon("network-workgroup"));  
 }
 
@@ -87,14 +115,16 @@ Smb4KWorkgroup::~Smb4KWorkgroup()
 
 void Smb4KWorkgroup::setWorkgroupName(const QString &name)
 {
-  d->url.setHost(name);
-  d->url.setScheme("smb");
+  QUrl u;
+  u.setHost(name);
+  u.setScheme("smb");
+  setUrl(u);
 }
 
 
 QString Smb4KWorkgroup::workgroupName() const
 {
-  return d->url.host().toUpper();
+  return url().host().toUpper();
 }
 
 
@@ -146,7 +176,7 @@ bool Smb4KWorkgroup::isEmpty() const
 {
   // Ignore all booleans.
 
-  if (!d->url.host().isEmpty())
+  if (!url().host().isEmpty())
   {
     return false;
   }
@@ -201,12 +231,6 @@ bool Smb4KWorkgroup::equals(Smb4KWorkgroup *workgroup) const
   // Do not include the icon here.
 
   return true;
-}
-
-
-QUrl Smb4KWorkgroup::url() const
-{
-  return d->url;
 }
 
 

@@ -125,66 +125,6 @@ void Smb4KScanner::start()
 }
 
 
-
-
-// void Smb4KScanner::lookupDomainMembers(WorkgroupPtr workgroup, QWidget *parent)
-// {
-//   Q_ASSERT(workgroup);
-//   
-//   Smb4KLookupDomainMembersJob *job = new Smb4KLookupDomainMembersJob(this);
-//   job->setObjectName(QString("LookupDomainMembersJob_%1").arg(workgroup->workgroupName()));
-//   job->setupLookup(workgroup, parent);
-// 
-//   connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
-//   connect(job, SIGNAL(aboutToStart(WorkgroupPtr)), SLOT(slotAboutToStartHostsLookup(WorkgroupPtr)));
-//   connect(job, SIGNAL(finished(WorkgroupPtr)), SLOT(slotHostsLookupFinished(WorkgroupPtr)));
-//   connect(job, SIGNAL(hosts(WorkgroupPtr,QList<HostPtr>)), SLOT(slotHosts(WorkgroupPtr,QList<HostPtr>)));
-//   connect(job, SIGNAL(authError(Smb4KLookupDomainMembersJob*)), SLOT(slotAuthError(Smb4KLookupDomainMembersJob*)));
-// 
-//   if (!hasSubjobs() && modifyCursor())
-//   {
-//     QApplication::setOverrideCursor(Qt::BusyCursor);
-//   }
-//   else
-//   {
-//     // Do nothing
-//   }
-// 
-//   addSubjob(job);
-// 
-//   job->start();
-// }
-
-
-// void Smb4KScanner::lookupShares(HostPtr host, QWidget *parent)
-// {
-//   Q_ASSERT(host);
-//   
-//   Smb4KLookupSharesJob *job = new Smb4KLookupSharesJob(this);
-//   job->setObjectName(QString("LookupSharesJob_%1").arg(host->hostName()));
-//   job->setupLookup(host, parent);
-//   
-//   connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
-//   connect(job, SIGNAL(aboutToStart(HostPtr)), SLOT(slotAboutToStartSharesLookup(HostPtr)));
-//   connect(job, SIGNAL(finished(HostPtr)), SLOT(slotSharesLookupFinished(HostPtr)));
-//   connect(job, SIGNAL(shares(HostPtr,QList<SharePtr>)), SLOT(slotShares(HostPtr,QList<SharePtr>)));
-//   connect(job, SIGNAL(authError(Smb4KLookupSharesJob*)), SLOT(slotAuthError(Smb4KLookupSharesJob*)));
-//   
-//   if (!hasSubjobs() && modifyCursor())
-//   {
-//     QApplication::setOverrideCursor(Qt::BusyCursor);
-//   }
-//   else
-//   {
-//     // Do nothing
-//   }
-// 
-//   addSubjob(job);
-// 
-//   job->start();
-// }
-
-
 void Smb4KScanner::timerEvent(QTimerEvent */*e*/)
 {
   // Periodic scanning

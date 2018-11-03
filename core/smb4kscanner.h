@@ -99,26 +99,6 @@ class Q_DECL_EXPORT Smb4KScanner : public KCompositeJob
      */
     void start();
 
-    /**
-     * This function looks up all hosts in a certain domain or
-     * workgroup.
-     * 
-     * @param workgroup       The workgroup object
-     *
-     * @param parent          The parent widget
-     */
-//     void lookupDomainMembers(WorkgroupPtr workgroup, QWidget *parent = 0);
-
-    /**
-     * This function looks up all shared resources a certain 
-     * @p host provides.
-     * 
-     * @param host            The host object
-     * 
-     * @param parent          The parent widget
-     */
-//     void lookupShares(HostPtr host, QWidget *parent = 0);
-    
   protected:
     /**
      * Reimplemented from QObject

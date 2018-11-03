@@ -45,8 +45,6 @@
 class Smb4KSharePrivate
 {
   public:
-    QUrl url;
-    QUrl homeUrl;
     QString workgroup;
     QString comment;
     QHostAddress ip;
@@ -86,6 +84,9 @@ Smb4KShare::Smb4KShare(const QString &host, const QString &name)
 Smb4KShare::Smb4KShare(const QString &unc)
 : Smb4KBasicNetworkItem(Share), d(new Smb4KSharePrivate)
 {
+  //
+  // Set the private variables
+  // 
   d->inaccessible = false;
   d->foreign      = false;
   d->filesystem   = QString();
@@ -96,8 +97,18 @@ Smb4KShare::Smb4KShare(const QString &unc)
   d->usedSpace    = -1;
   d->mounted      = false;
   d->shareType    = FileShare;
-  d->url.setUrl(unc, QUrl::TolerantMode);
-  d->url.setScheme("smb");
+  
+  //
+  // Set the URL
+  // 
+  QUrl u;
+  u.setUrl(unc, QUrl::TolerantMode);
+  u.setScheme("smb");
+  setUrl(u);
+    
+  //
+  // Set the icon
+  // 
   setShareIcon();
 }
 
@@ -115,6 +126,15 @@ Smb4KShare::Smb4KShare(const Smb4KShare &s)
   {
     // Do nothing
   }
+  
+  if (url().isEmpty())
+  {
+    qWarning() << "URL of the share item is empty";
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
@@ -122,6 +142,9 @@ Smb4KShare::Smb4KShare(const Smb4KShare &s)
 Smb4KShare::Smb4KShare()
 : Smb4KBasicNetworkItem(Share), d(new Smb4KSharePrivate)
 {
+  //
+  // Set the private variables
+  // 
   d->inaccessible = false;
   d->foreign      = false;
   d->filesystem   = QString();
@@ -132,7 +155,18 @@ Smb4KShare::Smb4KShare()
   d->usedSpace    = -1;
   d->mounted      = false;
   d->shareType    = FileShare;
-  d->url.setScheme("smb");
+  
+  //
+  // Set the URL
+  //
+  QUrl u;
+  u.setScheme("smb");
+  setUrl(u);
+  
+  //
+  // Set the icon
+  // 
+  setShareIcon();
 }
 
 
@@ -143,44 +177,50 @@ Smb4KShare::~Smb4KShare()
 
 void Smb4KShare::setShareName(const QString &name)
 {
+  QUrl u = url();
+  
   if (name.startsWith('/'))
   {
-    d->url.setPath(name.trimmed());
+    u.setPath(name.trimmed());
   }
   else
   {
-    d->url.setPath('/'+name.trimmed());
+    u.setPath('/'+name.trimmed());
   }
   
-  d->url.setScheme("smb");
+  u.setScheme("smb");
+  
+  setUrl(u);
 }
 
 
 QString Smb4KShare::shareName() const
 {
-  if (d->url.path().startsWith('/'))
+  if (url().path().startsWith('/'))
   {
-    return d->url.path().remove(0, 1);
+    return url().path().remove(0, 1);
   }
   else
   {
     // Do nothing
   }
 
-  return d->url.path();
+  return url().path();
 }
 
 
 void Smb4KShare::setHostName(const QString &hostName)
 {
-  d->url.setHost(hostName.trimmed());
-  d->url.setScheme("smb");
+  QUrl u = url();
+  u.setHost(hostName.trimmed());
+  u.setScheme("smb");
+  setUrl(u);
 }
 
 
 QString Smb4KShare::hostName() const
 {
-  return d->url.host().toUpper();
+  return url().host().toUpper();
 }
 
 
@@ -205,9 +245,9 @@ QString Smb4KShare::homeUNC() const
 {
   QString unc;
 
-  if (isHomesShare() && !hostName().isEmpty() && !d->url.userName().isEmpty())
+  if (isHomesShare() && !hostName().isEmpty() && !url().userName().isEmpty())
   {
-    unc = QString("//%1/%2").arg(hostName()).arg(d->url.userName());
+    unc = QString("//%1/%2").arg(hostName()).arg(url().userName());
   }
   else
   {
@@ -218,67 +258,21 @@ QString Smb4KShare::homeUNC() const
 }
 
 
-void Smb4KShare::setUrl(const QUrl &url)
-{
-  // Check validity.
-  if (!url.isValid())
-  {
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Check protocol
-  if (url.scheme().isEmpty() || QString::compare(url.scheme(), "smb") == 0)
-  {
-    // Do nothing
-  }
-  else
-  {
-    return;
-  }
-  
-  // Check that the share name is present
-  if (url.path().isEmpty() || (url.path().size() == 1 && url.path().endsWith('/')))
-  {
-    return;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Set the URL
-  d->url = url;
-  
-  // Force the protocol
-  d->url.setScheme("smb");
-}
-
-
-QUrl Smb4KShare::url() const
-{
-  return d->url;
-}
-
-
 QUrl Smb4KShare::homeUrl() const
 {
-  QUrl url;
+  QUrl u;
   
-  if (isHomesShare() && !d->url.userName().isEmpty())
+  if (isHomesShare() && !url().userName().isEmpty())
   {
-    url = d->url;
-    url.setPath('/'+d->url.userName(), QUrl::TolerantMode);
+    u = url();
+    u.setPath('/'+url().userName(), QUrl::TolerantMode);
   }
   else
   {
     // Do nothing
   }
   
-  return url;
+  return u;
 }
 
 
@@ -406,7 +400,7 @@ bool Smb4KShare::hasHostIpAddress() const
 
 bool Smb4KShare::isHidden() const
 {
-  return d->url.path().endsWith('$');
+  return url().path().endsWith('$');
 }
 
 
@@ -986,7 +980,7 @@ bool Smb4KShare::isEmpty(CheckFlags flag) const
   {
     case Full:
     {
-      if (!d->url.isEmpty())
+      if (!url().isEmpty())
       {
         return false;
       }
@@ -1035,7 +1029,7 @@ bool Smb4KShare::isEmpty(CheckFlags flag) const
     }
     case NetworkOnly:
     {
-      if (!d->url.isEmpty())
+      if (!url().isEmpty())
       {
         return false;
       }
@@ -1139,19 +1133,21 @@ void Smb4KShare::resetMountData()
 
 bool Smb4KShare::isHomesShare() const
 {
-  return d->url.path().endsWith(QLatin1String("homes"));
+  return url().path().endsWith(QLatin1String("homes"));
 }
 
 
 void Smb4KShare::setPort(int port)
 {
-  d->url.setPort(port);
+  QUrl u = url();
+  u.setPort(port);
+  setUrl(u);
 }
 
 
 int Smb4KShare::port() const
 {
-  return d->url.port();
+  return url().port();
 }
 
 
@@ -1161,8 +1157,10 @@ void Smb4KShare::setAuthInfo(Smb4KAuthInfo *authInfo)
   // string if we have a homes share.
   if (!isHomesShare() || !authInfo->userName().isEmpty())
   {
-    d->url.setUserName(authInfo->userName());
-    d->url.setPassword(authInfo->password());
+    QUrl u = url();
+    u.setUserName(authInfo->userName());
+    u.setPassword(authInfo->password());
+    setUrl(u);
   }
   else
   {
@@ -1177,7 +1175,9 @@ void Smb4KShare::setLogin(const QString &login)
   // string if we have a homes share.
   if (!isHomesShare() || !login.isEmpty())
   {
-    d->url.setUserName(login);
+    QUrl u = url();
+    u.setUserName(login);
+    setUrl(u);
   }
   else
   {
@@ -1188,7 +1188,7 @@ void Smb4KShare::setLogin(const QString &login)
 
 QString Smb4KShare::login() const
 {
-  return d->url.userName();
+  return url().userName();
 }
 
 
@@ -1198,7 +1198,9 @@ void Smb4KShare::setPassword(const QString &passwd)
   // string if we have a homes share.
   if (!isHomesShare() || !passwd.isEmpty())
   {
-    d->url.setPassword(passwd);
+    QUrl u = url();
+    u.setPassword(passwd);
+    setUrl(u);
   }
   else
   {
@@ -1209,7 +1211,7 @@ void Smb4KShare::setPassword(const QString &passwd)
 
 QString Smb4KShare::password() const
 {
-  return d->url.password();
+  return url().password();
 }
 
 

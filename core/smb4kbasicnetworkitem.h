@@ -34,6 +34,7 @@
 #include <QString>
 #include <QScopedPointer>
 #include <QIcon>
+#include <QUrl>
 
 // forward declarations
 class Smb4KBasicNetworkItemPrivate;
@@ -87,6 +88,20 @@ class Q_DECL_EXPORT Smb4KBasicNetworkItem
      * @returns the network item's icon.
      */
     QIcon icon() const;
+    
+    /**
+     * Set the URL for this network item.
+     * 
+     * @param url           The URL
+     */
+    void setUrl(const QUrl &url);
+    
+    /**
+     * Return the URL for this network item.
+     * 
+     * @returns the URL
+     */
+    QUrl url() const;
     
   private:
     const QScopedPointer<Smb4KBasicNetworkItemPrivate> d;

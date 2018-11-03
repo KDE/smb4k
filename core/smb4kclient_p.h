@@ -91,26 +91,14 @@ class Smb4KClientJob : public KJob
     void start();
     
     /**
-     * Set the URL that should be queried. This function must be
-     * called before start().
+     * Set the basic network item
      */
-    void setUrl(const QUrl &url);
+    void setNetworkItem(NetworkItemPtr item);
     
     /**
-     * Return the given URL
+     * Return the basic network item
      */
-    QUrl url() const;
-    
-    /**
-     * Set the type of the network item that is associated with the
-     * passed URL.
-     */
-    void setType(Smb4KGlobal::NetworkItem type);
-    
-    /**
-     * The type of the network item that was queried.
-     */
-    Smb4KGlobal::NetworkItem type() const;
+    NetworkItemPtr networkItem() const;
     
     /**
      * The authentication function for libsmbclient
@@ -149,8 +137,7 @@ class Smb4KClientJob : public KJob
   private:
     QHostAddress lookupIpAddress(const QString &name);
     SMBCCTX *m_context;
-    QUrl m_url;
-    Smb4KGlobal::NetworkItem m_type;
+    NetworkItemPtr m_item;
     QList<WorkgroupPtr> m_workgroups;
     QList<HostPtr> m_hosts;
     QList<SharePtr> m_shares;
