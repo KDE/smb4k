@@ -426,7 +426,7 @@ void Smb4KClient::processHosts(Smb4KClientJob *job)
   // 
   // Get the workgroup pointer
   // 
-  WorkgroupPtr workgroup = findWorkgroup(job->workgroup());
+  WorkgroupPtr workgroup = job->networkItem().staticCast<Smb4KWorkgroup>();
 
   //
   // Remove obsolete workgroup members
@@ -504,7 +504,7 @@ void Smb4KClient::processShares(Smb4KClientJob *job)
   //
   // Get the host pointer
   // 
-  HostPtr host = findHost(job->networkItem()->url().host(), job->workgroup());
+  HostPtr host = job->networkItem().staticCast<Smb4KHost>();
 
   //
   // Remove obsolete shares

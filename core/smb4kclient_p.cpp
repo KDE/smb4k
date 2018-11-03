@@ -31,6 +31,8 @@
 #include "smb4kclient_p.h"
 #include "smb4ksettings.h"
 #include "smb4kwalletmanager.h"
+#include "smb4kcustomoptions.h"
+#include "smb4kcustomoptionsmanager.h"
 
 // System includes
 #include <string.h>
@@ -38,9 +40,6 @@
 
 // Samba includes
 #include <libsmbclient.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netdb.h>
 
 // Qt includes
 #include <QTimer>
@@ -49,7 +48,7 @@
 #include <QNetworkInterface>
 #include <QAbstractSocket>
 
-#define SMBC_DEBUG 2
+#define SMBC_DEBUG 1
 
 using namespace Smb4KGlobal;
 
@@ -118,8 +117,6 @@ Smb4KClientJob::~Smb4KClientJob()
   {
     m_shares.takeFirst().clear();
   }
-  
-  qDebug() << "Good bye.";
 }
 
 
@@ -418,6 +415,11 @@ void Smb4KClientJob::slotStartJob()
     emitResult();
   }
   
+  //
+  // Get the custom options
+  // 
+  OptionsPtr options = Smb4KCustomOptionsManager::self()->findOptions(m_item);
+  
   // 
   // Set debug level
   // 
@@ -441,9 +443,19 @@ void Smb4KClientJob::slotStartJob()
       //
       // Set the NetBIOS name of the master browser and the workgroup to be queried
       // 
-      WorkgroupPtr workgroup = findWorkgroup(m_item->url().host());
+      WorkgroupPtr workgroup = m_item.staticCast<Smb4KWorkgroup>();
       smbc_setNetbiosName(m_context, workgroup->masterBrowserName().toUtf8().data());
       smbc_setWorkgroup(m_context, workgroup->workgroupName().toUtf8().data());
+      break;
+    }
+    case Host:
+    {
+      //
+      // Set both the NetBIOS name of the server and the workgroup to be queried
+      // 
+      HostPtr host = m_item.staticCast<Smb4KHost>();
+      smbc_setNetbiosName(m_context, host->hostName().toUtf8().data());
+      smbc_setWorkgroup(m_context, host->workgroupName().toUtf8().data());
       break;
     }
     default:
@@ -479,14 +491,22 @@ void Smb4KClientJob::slotStartJob()
 //   smbc_setOptionSmbEncryptionLevel(m_context, );
   
   //
-  // Set the usage of the winbind cc cache
+  // Set the usage of the winbind ccache
   // 
   smbc_setOptionUseCCache(m_context, Smb4KSettings::useWinbindCCache());
   
   //
   // Set usage of Kerberos
   // 
-  smbc_setOptionUseKerberos(m_context, Smb4KSettings::useKerberos());
+  if (options)
+  {
+    smbc_setOptionUseKerberos(m_context, options->useKerberos());
+  }
+  else
+  {
+    smbc_setOptionUseKerberos(m_context, Smb4KSettings::useKerberos());
+  }
+  
   smbc_setOptionFallbackAfterKerberos(m_context, 1);
   
   //
