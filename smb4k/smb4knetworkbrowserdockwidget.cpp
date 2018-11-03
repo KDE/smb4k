@@ -30,7 +30,6 @@
 // application specific includes
 #include "smb4knetworkbrowserdockwidget.h"
 #include "smb4knetworkbrowseritem.h"
-#include "core/smb4kscanner.h"
 #include "core/smb4kmounter.h"
 #include "core/smb4kworkgroup.h"
 #include "core/smb4khost.h"
@@ -99,7 +98,7 @@ Smb4KNetworkBrowserDockWidget::Smb4KNetworkBrowserDockWidget(const QString& titl
   connect(Smb4KClient::self(), SIGNAL(hosts(WorkgroupPtr)), this, SLOT(slotWorkgroupMembers(WorkgroupPtr)));
   connect(Smb4KClient::self(), SIGNAL(shares(HostPtr)), this, SLOT(slotShares(HostPtr)));
           
-  connect(Smb4KScanner::self(), SIGNAL(authError(HostPtr,int)), this, SLOT(slotAuthError(HostPtr,int)));
+//   connect(Smb4KScanner::self(), SIGNAL(authError(HostPtr,int)), this, SLOT(slotAuthError(HostPtr,int)));
 
   connect(Smb4KMounter::self(), SIGNAL(mounted(SharePtr)), this, SLOT(slotShareMounted(SharePtr)));
   connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)), this, SLOT(slotShareUnmounted(SharePtr)));
@@ -607,7 +606,7 @@ void Smb4KNetworkBrowserDockWidget::slotAuthError(const HostPtr& host, int proce
     {
       //
       // We queried a master browser for the list of domains and
-      // workgroup. So, we can clear the whole list of domains.
+      // workgroups. So, we can clear the whole list of domains.
       // 
       while (m_networkBrowser->topLevelItemCount() != 0)
       {
@@ -1085,10 +1084,10 @@ void Smb4KNetworkBrowserDockWidget::slotRescanAbortActionTriggered(bool /*checke
   }
   else
   {
-    // Stop all actions performed by the scanner
-    if (Smb4KScanner::self()->isRunning())
+    // Stop all actions performed by the client
+    if (Smb4KClient::self()->isRunning())
     {
-      Smb4KScanner::self()->abortAll();
+      Smb4KClient::self()->abort();
     }
     else
     {

@@ -31,7 +31,6 @@
 #include "smb4kglobal.h"
 #include "smb4kglobal_p.h"
 #include "smb4knotification.h"
-#include "smb4kscanner.h"
 #include "smb4kmounter.h"
 #include "smb4kprint.h"
 #include "smb4ksynchronizer.h"
@@ -73,7 +72,6 @@ void Smb4KGlobal::initCore(bool modifyCursor, bool initClasses)
     if (initClasses)
     {
       Smb4KClient::self()->start();
-      Smb4KScanner::self()->start();
       Smb4KMounter::self()->start();
     }
     else
@@ -94,7 +92,6 @@ void Smb4KGlobal::initCore(bool modifyCursor, bool initClasses)
 void Smb4KGlobal::abortCore()
 {
   Smb4KClient::self()->abort();
-  Smb4KScanner::self()->abortAll();
   Smb4KMounter::self()->abortAll();
   Smb4KPrint::self()->abortAll();
   Smb4KSynchronizer::self()->abortAll();
@@ -106,7 +103,6 @@ void Smb4KGlobal::abortCore()
 bool Smb4KGlobal::coreIsRunning()
 {
   return (Smb4KClient::self()->isRunning() ||
-          Smb4KScanner::self()->isRunning() ||
           Smb4KMounter::self()->isRunning() ||
           Smb4KPrint::self()->isRunning() ||
           Smb4KSynchronizer::self()->isRunning() ||

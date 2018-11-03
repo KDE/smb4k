@@ -34,8 +34,6 @@ set(smb4kcore_LIB_SRCS
   smb4kprocess.cpp
   smb4kprofilemanager.cpp
   smb4kprofilemanager_p.cpp
-  smb4kscanner.cpp
-  smb4kscanner_p.cpp
   smb4ksearch.cpp
   smb4ksearch_p.cpp
   smb4kshare.cpp
@@ -110,7 +108,6 @@ if (INSTALL_HEADER_FILES)
     smb4kprint.h
     smb4kprocess.h
     smb4kprofilemanager.h
-    smb4kscanner.h
     smb4ksearch.h
     smb4kshare.h
     smb4ksynchronizer.h

@@ -41,7 +41,6 @@
 #include "core/smb4kworkgroup.h"
 #include "core/smb4khost.h"
 #include "core/smb4kshare.h"
-#include "core/smb4kscanner.h"
 #include "core/smb4kmounter.h"
 #include "core/smb4kprint.h"
 #include "core/smb4ksynchronizer.h"

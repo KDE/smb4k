@@ -33,7 +33,6 @@
 #include "smb4kbookmarkobject.h"
 #include "smb4knetworkobject.h"
 #include "smb4kprofileobject.h"
-#include "core/smb4kscanner.h"
 #include "core/smb4kmounter.h"
 #include "core/smb4kglobal.h"
 #include "core/smb4kworkgroup.h"
@@ -614,13 +613,13 @@ void Smb4KDeclarative::openCustomOptionsDialog(Smb4KNetworkObject *object)
 
 void Smb4KDeclarative::startScanner()
 {
-  Smb4KScanner::self()->start();
+  Smb4KClient::self()->start();
 }
 
 
 void Smb4KDeclarative::abortScanner()
 {
-  Smb4KScanner::self()->abortAll();
+  Smb4KClient::self()->abort();
 }
 
 

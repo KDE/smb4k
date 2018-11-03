@@ -36,7 +36,6 @@
 #include "core/smb4kshare.h"
 #include "core/smb4kglobal.h"
 #include "core/smb4kmounter.h"
-#include "core/smb4kscanner.h"
 #include "core/smb4kclient.h"
 
 // Qt includes
