@@ -27,7 +27,7 @@
 #define SMB4KCONFIGPAGENETWORK_H
 
 // Qt includes
-#include <QTabWidget>
+#include <QWidget>
 
 /**
  * This is the configuration tab for the network settings
@@ -36,7 +36,7 @@
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class Smb4KConfigPageNetwork : public QTabWidget
+class Smb4KConfigPageNetwork : public QWidget
 {
   Q_OBJECT
 

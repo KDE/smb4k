@@ -74,18 +74,6 @@
       <whatsthis>The master browsers in your network neighborhood require a login to return the browse list. This setting is rarely needed and might even cause a master browser to return an empty browse list. It will not have any effect when you let Smb4K scan broadcast areas.</whatsthis>
       <default>false</default>
     </entry>
-    <entry name="PeriodicScanning" type="Bool">
-      <label>Scan the network neighborhood periodically</label>
-      <whatsthis>Scan the network neighborhood periodically for all available workgroups, hosts and shares.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="ScanInterval" type="Int">
-      <label>Interval between scans:</label>
-      <whatsthis>This is the time in minutes that elapses until Smb4K rescans the network neighborhood for new workgroups, hosts and shares.</whatsthis>
-      <min>1</min>
-      <max>60</max>
-      <default>5</default>
-    </entry>
     <entry name="EnableWakeOnLAN" type="Bool">
       <label>Enable Wake-On-LAN features</label>
       <whatsthis>Wake-on-LAN (WOL) is an ethernet computer networking standard that allows a computer to be turned on or woken up by a network message. Smb4K uses a magic package send via a UDP socket to wake up remote servers. If you want to take advantage of the Wake-On-LAN feature, you need to enable this option.</whatsthis>
@@ -112,19 +100,6 @@
       <label>Detect hidden shares</label>
       <whatsthis>Hidden shares are detected. Hidden shares are ending with a $ sign, e.g. Musik$ or IPC$.</whatsthis>
       <default>true</default>
-    </entry>
-    <entry name="LookupIPs" type="Enum">
-      <label>Lookup method for IP addresses:</label>
-      <whatsthis>Define the method that is to be used to detect the IP addresses of the hosts.</whatsthis>
-      <choices>
-        <choice name="nmblookup">
-          <label>Use nmblookup command</label>
-        </choice>
-        <choice name="net">
-          <label>Use net command</label>
-        </choice>
-      </choices>
-      <default>nmblookup</default>
     </entry>
   </group>
 

@@ -36,8 +36,6 @@
 #include <QVBoxLayout>
 #include <QGridLayout>
 #include <QGroupBox>
-#include <QButtonGroup>
-#include <QRadioButton>
 #include <QLabel>
 #include <QCheckBox>
 #include <QSpinBox>
@@ -45,147 +43,100 @@
 // KDE includes
 #include <KIconThemes/KIconLoader>
 #include <KI18n/KLocalizedString>
-#include <KCompletion/KLineEdit>
-#include <KCompletion/KComboBox>
 
 
-Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
-: QTabWidget(parent)
+Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QWidget(parent)
 {
   //
-  // General Settings tab
-  //
-  QWidget *tab1 = new QWidget(this);
-  QVBoxLayout *tab1_layout = new QVBoxLayout(tab1);
-  tab1_layout->setSpacing(5);
-  tab1_layout->setMargin(0);
+  // Layout
+  // 
+  QVBoxLayout *layout = new QVBoxLayout(this);
+  layout->setSpacing(5);
+  layout->setMargin(0);
 
-  // The authentication group box.
-  QGroupBox *auth_box = new QGroupBox(i18n("Authentication"), tab1);
-  QVBoxLayout *auth_box_layout = new QVBoxLayout(auth_box);
-  auth_box_layout->setSpacing(5);
+  // 
+  // Authentication group box
+  // 
+  QGroupBox *authenticationBox = new QGroupBox(i18n("Authentication"), this);
+  QVBoxLayout *authenticationBoxLayout = new QVBoxLayout(authenticationBox);
+  authenticationBoxLayout->setSpacing(5);
 
-  QCheckBox *master_browser_auth = new QCheckBox(Smb4KSettings::self()->masterBrowsersRequireAuthItem()->label(), auth_box);
-  master_browser_auth->setObjectName("kcfg_MasterBrowsersRequireAuth");
+  QCheckBox *masterBrowsersRequireAuth = new QCheckBox(Smb4KSettings::self()->masterBrowsersRequireAuthItem()->label(), authenticationBox);
+  masterBrowsersRequireAuth->setObjectName("kcfg_MasterBrowsersRequireAuth");
 
-  auth_box_layout->addWidget(master_browser_auth, 0);
-  
-  // Behavior group box.
-  QGroupBox *behavior_box = new QGroupBox(i18n("Behavior"), tab1);
-  QGridLayout *behavior_layout = new QGridLayout(behavior_box);
-  behavior_layout->setSpacing(5);
-  
-  QLabel *lookup_ips_label = new QLabel(Smb4KSettings::self()->lookupIPsItem()->label(), behavior_box);
-  KComboBox *lookup_ips = new KComboBox(behavior_box);
-  lookup_ips->setObjectName("kcfg_LookupIPs");
-  lookup_ips->insertItem(Smb4KSettings::EnumLookupIPs::nmblookup,
-                         Smb4KSettings::self()->lookupIPsItem()->choices().value(Smb4KSettings::EnumLookupIPs::nmblookup).label);
-  lookup_ips->insertItem(Smb4KSettings::EnumLookupIPs::net,
-                         Smb4KSettings::self()->lookupIPsItem()->choices().value(Smb4KSettings::EnumLookupIPs::net).label);
-  lookup_ips_label->setBuddy(lookup_ips);
-  
-  QCheckBox *detect_printers = new QCheckBox(Smb4KSettings::self()->detectPrinterSharesItem()->label(), behavior_box);
-  detect_printers->setObjectName("kcfg_DetectPrinterShares");
+  authenticationBoxLayout->addWidget(masterBrowsersRequireAuth, 0);
 
-  QCheckBox *detect_hidden = new QCheckBox(Smb4KSettings::self()->detectHiddenSharesItem()->label(), behavior_box);
-  detect_hidden->setObjectName("kcfg_DetectHiddenShares");  
+  layout->addWidget(authenticationBox, 0);
   
-  QCheckBox *preview_hidden = new QCheckBox(Smb4KSettings::self()->previewHiddenItemsItem()->label(), behavior_box);
-  preview_hidden->setObjectName("kcfg_PreviewHiddenItems");
+  // 
+  // Behavior group box
+  // 
+  QGroupBox *behaviorBox = new QGroupBox(i18n("Behavior"), this);
+  QGridLayout *behaviorBoxLayout = new QGridLayout(behaviorBox);
+  behaviorBoxLayout->setSpacing(5);
   
-  behavior_layout->addWidget(lookup_ips_label, 0, 0, 0);
-  behavior_layout->addWidget(lookup_ips, 0, 1, 0);
-  behavior_layout->addWidget(detect_printers, 1, 0, 1, 2, 0);
-  behavior_layout->addWidget(detect_hidden, 2, 0, 1, 2, 0);
-  behavior_layout->addWidget(preview_hidden, 3, 0, 1, 2, 0);
-  
-  tab1_layout->addWidget(auth_box, 0);
-  tab1_layout->addWidget(behavior_box, 0);
-  tab1_layout->addStretch(100);
-  
-  addTab(tab1, i18n("General Settings"));
-  
-  //
-  // Advanced Settings tab
-  //
-  QWidget *tab2 = new QWidget(this);
-  QVBoxLayout *tab2_layout = new QVBoxLayout(tab2);
-  tab2_layout->setSpacing(5);
-  tab2_layout->setMargin(0);
-  
-  // Periodic scanning
-  QGroupBox *periodic_box = new QGroupBox(i18n("Periodic Scanning"), tab2);
-  QGridLayout *periodic_layout = new QGridLayout(periodic_box);
-  periodic_layout->setSpacing(5);
-  
-  QCheckBox *periodic_scanning = new QCheckBox(Smb4KSettings::self()->periodicScanningItem()->label(), periodic_box);
-  periodic_scanning->setObjectName("kcfg_PeriodicScanning");
-  
-  QLabel *interval_label = new QLabel(Smb4KSettings::self()->scanIntervalItem()->label(), periodic_box);
-  interval_label->setIndent(25);
-  
-  QSpinBox *scan_interval = new QSpinBox(periodic_box);
-  scan_interval->setObjectName("kcfg_ScanInterval");
-  scan_interval->setSuffix(i18n(" min"));
-  scan_interval->setSingleStep(1);
-//   scan_interval->setSliderEnabled(true);
-  
-  interval_label->setBuddy(scan_interval);
-  
-  periodic_layout->addWidget(periodic_scanning, 0, 0, 1, 2, 0);
-  periodic_layout->addWidget(interval_label, 1, 0, 0);
-  periodic_layout->addWidget(scan_interval, 1, 1, 0);  
-  
-  
-  // Wake-On-LAN
-  QGroupBox *wol_box = new QGroupBox(i18n("Wake-On-LAN"), tab2);
-  QGridLayout *wol_layout = new QGridLayout(wol_box);
-  wol_layout->setSpacing(5);
-  
-  QCheckBox *enable_wol = new QCheckBox(Smb4KSettings::self()->enableWakeOnLANItem()->label(), wol_box);
-  enable_wol->setObjectName("kcfg_EnableWakeOnLAN");
-  
-  QLabel *waiting_label = new QLabel(Smb4KSettings::self()->wakeOnLANWaitingTimeItem()->label(), wol_box);
-  waiting_label->setIndent(25);
-  
-  QSpinBox *waiting_time = new QSpinBox(wol_box);
-  waiting_time->setObjectName("kcfg_WakeOnLANWaitingTime");
-  waiting_time->setSuffix(i18n(" s"));
-  waiting_time->setSingleStep(1);
-//   waiting_time->setSliderEnabled(true);
-  
-  waiting_label->setBuddy(waiting_time);
-  
-  QFrame *note = new QFrame(wol_box);
-  QGridLayout *note_layout = new QGridLayout(note);
-  note_layout->setSpacing(10);
-  note_layout->setMargin(5);
+  QCheckBox *detectPrinters = new QCheckBox(Smb4KSettings::self()->detectPrinterSharesItem()->label(), behaviorBox);
+  detectPrinters->setObjectName("kcfg_DetectPrinterShares");
 
-  QLabel *important_pix = new QLabel(note);
-  important_pix->setPixmap(KIconLoader::global()->loadIcon("emblem-important", KIconLoader::Desktop, KIconLoader::SizeMedium));
-  important_pix->adjustSize();
+  QCheckBox *detectHiddenShares = new QCheckBox(Smb4KSettings::self()->detectHiddenSharesItem()->label(), behaviorBox);
+  detectHiddenShares->setObjectName("kcfg_DetectHiddenShares");  
+  
+  QCheckBox *previewHiddenItems = new QCheckBox(Smb4KSettings::self()->previewHiddenItemsItem()->label(), behaviorBox);
+  previewHiddenItems->setObjectName("kcfg_PreviewHiddenItems");
+  
+  behaviorBoxLayout->addWidget(detectPrinters, 0, 0, 0);
+  behaviorBoxLayout->addWidget(detectHiddenShares, 0, 1, 0);
+  behaviorBoxLayout->addWidget(previewHiddenItems, 1, 0, 0);
+  
+  layout->addWidget(behaviorBox, 0);
+  
+  // 
+  // Wake-On-LAN group box
+  // 
+  QGroupBox *wakeOnLanBox = new QGroupBox(i18n("Wake-On-LAN"), this);
+  QGridLayout *wakeOnLanBoxLayout = new QGridLayout(wakeOnLanBox);
+  wakeOnLanBoxLayout->setSpacing(5);
+  
+  QCheckBox *enableWakeOnLan = new QCheckBox(Smb4KSettings::self()->enableWakeOnLANItem()->label(), wakeOnLanBox);
+  enableWakeOnLan->setObjectName("kcfg_EnableWakeOnLAN");
+  
+  QLabel *wakeOnLanWaitingTimeLabel = new QLabel(Smb4KSettings::self()->wakeOnLANWaitingTimeItem()->label(), wakeOnLanBox);
+  wakeOnLanWaitingTimeLabel->setIndent(25);
+  
+  QSpinBox *wakeOnLanWaitingTime = new QSpinBox(wakeOnLanBox);
+  wakeOnLanWaitingTime->setObjectName("kcfg_WakeOnLANWaitingTime");
+  wakeOnLanWaitingTime->setSuffix(i18n(" s"));
+  wakeOnLanWaitingTime->setSingleStep(1);
+//   wakeOnLanWaitingTime->setSliderEnabled(true);
+  
+  wakeOnLanWaitingTimeLabel->setBuddy(wakeOnLanWaitingTime);
+  
+  QFrame *wakeOnLanNote = new QFrame(wakeOnLanBox);
+  QGridLayout *wakeOnLanNoteLayout = new QGridLayout(wakeOnLanNote);
+  wakeOnLanNoteLayout->setSpacing(10);
+  wakeOnLanNoteLayout->setMargin(5);
 
-  QLabel *message = new QLabel(note);
+  QLabel *importantPixmap = new QLabel(wakeOnLanNote);
+  importantPixmap->setPixmap(KIconLoader::global()->loadIcon("emblem-important", KIconLoader::Desktop, KIconLoader::SizeMedium));
+  importantPixmap->adjustSize();
+
+  QLabel *message = new QLabel(wakeOnLanNote);
   message->setText(i18n("<qt>Define the hosts that should be woken up via the custom options dialog.</qt>"));
   message->setTextFormat(Qt::AutoText);
   message->setWordWrap(true);
   message->setAlignment(Qt::AlignJustify);
 
-  note_layout->addWidget(important_pix, 0, 0, Qt::AlignCenter);
-  note_layout->addWidget(message, 0, 1, Qt::AlignVCenter);
-
-  note_layout->setColumnStretch(1, 1);  
+  wakeOnLanNoteLayout->addWidget(importantPixmap, 0, 0, Qt::AlignVCenter);
+  wakeOnLanNoteLayout->addWidget(message, 0, 1, Qt::AlignVCenter);
+  wakeOnLanNoteLayout->setColumnStretch(1, 1);
   
-  wol_layout->addWidget(enable_wol, 0, 0, 1, 2, 0);
-  wol_layout->addWidget(waiting_label, 1, 0, 0);
-  wol_layout->addWidget(waiting_time, 1, 1, 0);
-  wol_layout->addWidget(note, 2, 0, 1, 2, 0);
+  wakeOnLanBoxLayout->addWidget(enableWakeOnLan, 0, 0, 1, 2, 0);
+  wakeOnLanBoxLayout->addWidget(wakeOnLanWaitingTimeLabel, 1, 0, 0);
+  wakeOnLanBoxLayout->addWidget(wakeOnLanWaitingTime, 1, 1, 0);
+  wakeOnLanBoxLayout->addWidget(wakeOnLanNote, 2, 0, 1, 2, 0);
   
-  tab2_layout->addWidget(periodic_box, 0);
-  tab2_layout->addWidget(wol_box, 0);
-  tab2_layout->addStretch(100);
-  
-  addTab(tab2, i18n("Advanced Settings"));
+  layout->addWidget(wakeOnLanBox, 0);
+  layout->addStretch(100);
 }
 
 
