@@ -471,10 +471,43 @@ void Smb4KClientJob::slotStartJob()
   }
 
   //
-  // Set auth callback function
+  // Set the user for making the connection
   // 
-  smbc_setFunctionAuthDataWithContext(m_context, get_auth_data_with_context_fn);
+  if (!m_item->url().userName().isEmpty())
+  {
+    smbc_setUser(m_context, m_item->url().userName().toUtf8().data());
+  }
+  else
+  {
+    // Do nothing
+  }
   
+  //
+  // Set the port
+  // 
+  if (options)
+  {
+    if (options->useSmbPort())
+    {
+      smbc_setPort(m_context, options->smbPort());
+    }
+    else
+    {
+      smbc_setPort(m_context, 0 /* use the default */);
+    }
+  }
+  else
+  {
+    if (Smb4KSettings::useRemoteSmbPort())
+    {
+      smbc_setPort(m_context, Smb4KSettings::remoteSmbPort());
+    }
+    else
+    {
+      smbc_setPort(m_context, 0 /* use the default */);
+    }
+  }
+
   //
   // Set the user data (this class)
   // 
@@ -483,12 +516,42 @@ void Smb4KClientJob::slotStartJob()
   //
   // Set number of master browsers to be used
   // 
+  // TODO: Implement a setting asking the user if she/he is on a big network (0 -> 3)
+  // 
   smbc_setOptionBrowseMaxLmbCount(m_context, 0 /* all master browsers */);
   
   //
   // Set the encryption level
   // 
-//   smbc_setOptionSmbEncryptionLevel(m_context, );
+  if (Smb4KSettings::useEncryptionLevel())
+  {
+    switch (Smb4KSettings::encryptionLevel())
+    {
+      case Smb4KSettings::EnumEncryptionLevel::None:
+      {
+        smbc_setOptionSmbEncryptionLevel(m_context, SMBC_ENCRYPTLEVEL_NONE);
+        break;
+      }
+      case Smb4KSettings::EnumEncryptionLevel::Request:
+      {
+        smbc_setOptionSmbEncryptionLevel(m_context, SMBC_ENCRYPTLEVEL_REQUEST);
+        break;
+      }
+      case Smb4KSettings::EnumEncryptionLevel::Require:
+      {
+        smbc_setOptionSmbEncryptionLevel(m_context, SMBC_ENCRYPTLEVEL_REQUIRE);
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
   
   //
   // Set the usage of the winbind ccache
@@ -513,6 +576,11 @@ void Smb4KClientJob::slotStartJob()
   // Set the channel for debug output
   // 
   smbc_setOptionDebugToStderr(m_context, 1);
+  
+  //
+  // Set auth callback function
+  // 
+  smbc_setFunctionAuthDataWithContext(m_context, get_auth_data_with_context_fn);
   
   // 
   // Initialize context with the previously defined options
@@ -885,6 +953,12 @@ void Smb4KClientJob::slotStartJob()
             share.clear();
           } 
           
+          break;
+        }
+        case SMBC_DIR:
+        {
+          qDebug() << dirp->name;
+          qDebug() << dirp->comment;
           break;
         }
         default:

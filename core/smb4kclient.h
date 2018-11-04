@@ -99,6 +99,14 @@ class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
      */
     void lookupShares(HostPtr host);
     
+    /**
+     * This function previews a directory in a shared folder.
+     * 
+     * @param item            The network item of type Smb4KBasicNetworkItem::Share or
+     *                        Smb4KBasicNetworkItem::Directory.
+     */
+    void preview(NetworkItemPtr item);
+    
   Q_SIGNALS:
     /**
      * This signal is emitted when the client starts its work.

@@ -326,6 +326,10 @@ void Smb4KClient::processErrors(KJob *job)
 }
 
 
+void Smb4KClient::preview(NetworkItemPtr item)
+{
+}
+
 
 void Smb4KClient::processWorkgroups(Smb4KClientJob *job)
 {
@@ -588,16 +592,23 @@ void Smb4KClient::processShares(Smb4KClientJob *job)
 
 void Smb4KClient::slotStartJobs()
 {
-  //
-  // Disconnect from Smb4KHardwareInterface::networkConfigUpdated() signal,
-  // otherwise we get unwanted periodic scanning.
-  //
-  disconnect(Smb4KHardwareInterface::self(), SIGNAL(networkConfigUpdated()), this, SLOT(slotStartJobs()));
-  
-  //
-  // Lookup domains as the first step
-  // 
-  lookupDomains();
+  if (Smb4KHardwareInterface::self()->isOnline())
+  {
+    //
+    // Disconnect from Smb4KHardwareInterface::networkConfigUpdated() signal,
+    // otherwise we get unwanted periodic scanning.
+    //
+    disconnect(Smb4KHardwareInterface::self(), SIGNAL(networkConfigUpdated()), this, SLOT(slotStartJobs()));
+    
+    //
+    // Lookup domains as the first step
+    // 
+    lookupDomains();
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
