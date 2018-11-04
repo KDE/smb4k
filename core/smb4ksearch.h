@@ -97,14 +97,6 @@ class Q_DECL_EXPORT Smb4KSearch : public KCompositeJob
     void abortAll();
 
     /**
-     * This function aborts the searching for a certain search string 
-     * in the network neighborhood.
-     *
-     * @param string          The search string
-     */
-    void abort(const QString &string);
-
-    /**
      * This function starts the composite job
      */
     void start();

@@ -220,23 +220,6 @@ void Smb4KSearch::abortAll()
 }
 
 
-void Smb4KSearch::abort(const QString &string)
-{
-  for (int i = 0; i < subjobs().size(); ++i)
-  {
-    if (QString::compare(QString("SearchJob_%1").arg(string), subjobs().at(i)->objectName()) == 0)
-    {
-      subjobs().at(i)->kill(KJob::EmitResult);
-      break;
-    }
-    else
-    {
-      continue;
-    }
-  }
-}
-
-
 void Smb4KSearch::start()
 {
   QTimer::singleShot(0, this, SLOT(slotStartJobs()));
