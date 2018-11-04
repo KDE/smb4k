@@ -118,14 +118,31 @@ Smb4KConfigPageSamba::Smb4KConfigPageSamba(QWidget *parent) : QTabWidget(parent)
   auth_layout->addWidget(auth_kerberos, 0, 0, 0);
   auth_layout->addWidget(auth_machine_acc, 0, 1, 0);
   auth_layout->addWidget(use_ccache, 1, 0, 0);
+  
+  //
+  // Security group box
+  // 
+  QGroupBox *securityBox = new QGroupBox(i18n("Security"), general_tab);
+  QGridLayout *securityBoxLayout = new QGridLayout(securityBox);
+  securityBoxLayout->setSpacing(5);
+  
+  // Encryption level
+  QCheckBox *useEncryptionLevel = new QCheckBox(Smb4KSettings::self()->useEncryptionLevelItem()->label(), securityBox);
+  useEncryptionLevel->setObjectName("kcfg_UseEncryptionLevel");
+  
+  KComboBox *encryptionLevel = new KComboBox(securityBox);
+  encryptionLevel->setObjectName("kcfg_EncryptionLevel");
+  
+  QList<KCoreConfigSkeleton::ItemEnum::Choice> encryptionLevelChoices = Smb4KSettings::self()->encryptionLevelItem()->choices();
+  
+  for (const KCoreConfigSkeleton::ItemEnum::Choice &c : encryptionLevelChoices)
+  {
+    encryptionLevel->addItem(c.label);
+  }
 
-  QGroupBox *signing_box = new QGroupBox(i18n("Security"), general_tab);
-
-  QGridLayout *signing_layout = new QGridLayout(signing_box);
-  signing_layout->setSpacing(5);
-
-  QLabel *signing_state_label = new QLabel(Smb4KSettings::self()->signingStateItem()->label(), signing_box);
-  KComboBox *signing_state = new KComboBox(signing_box);
+  // Signing state
+  QLabel *signing_state_label = new QLabel(Smb4KSettings::self()->signingStateItem()->label(), securityBox);
+  KComboBox *signing_state = new KComboBox(securityBox);
   signing_state->setObjectName("kcfg_SigningState");
   signing_state->insertItem(Smb4KSettings::EnumSigningState::None,
                              Smb4KSettings::self()->signingStateItem()->choices().value(Smb4KSettings::EnumSigningState::None).label);
@@ -137,16 +154,19 @@ Smb4KConfigPageSamba::Smb4KConfigPageSamba(QWidget *parent) : QTabWidget(parent)
                              Smb4KSettings::self()->signingStateItem()->choices().value(Smb4KSettings::EnumSigningState::Required).label);
   signing_state_label->setBuddy(signing_state);
 
-  QCheckBox *encrypt_transport = new QCheckBox(Smb4KSettings::self()->encryptSMBTransportItem()->label(), signing_box);
+  // Encrypt SMB transport
+  QCheckBox *encrypt_transport = new QCheckBox(Smb4KSettings::self()->encryptSMBTransportItem()->label(), securityBox);
   encrypt_transport->setObjectName("kcfg_EncryptSMBTransport");
 
-  signing_layout->addWidget(signing_state_label, 0, 0, 0);
-  signing_layout->addWidget(signing_state, 0, 1, 0);
-  signing_layout->addWidget(encrypt_transport, 1, 0, 1, 2, 0);
+  securityBoxLayout->addWidget(useEncryptionLevel, 0, 0, 0);
+  securityBoxLayout->addWidget(encryptionLevel, 0, 1, 0);
+  securityBoxLayout->addWidget(signing_state_label, 1, 0, 0);
+  securityBoxLayout->addWidget(signing_state, 1, 1, 0);
+  securityBoxLayout->addWidget(encrypt_transport, 2, 0, 1, 2, 0);
 
   general_layout->addWidget(general_box);
   general_layout->addWidget(auth_box);
-  general_layout->addWidget(signing_box);
+  general_layout->addWidget(securityBox);
   general_layout->addStretch(100);
 
   insertTab(GeneralTab, general_tab, i18n("Common Settings"));
@@ -187,26 +207,6 @@ Smb4KConfigPageSamba::Smb4KConfigPageSamba(QWidget *parent) : QTabWidget(parent)
   smbclient_layout->addWidget(buffer_size_label, 2, 0, 0);
   smbclient_layout->addWidget(buffer_size, 2, 1, 0);
 
-  // 'nmblookup' program
-  QGroupBox *nmblookup_box = new QGroupBox(i18n("nmblookup"), clients_tab);
-
-  QGridLayout *nmblookup_layout = new QGridLayout(nmblookup_box);
-  nmblookup_layout->setSpacing(5);
-
-  QLabel *broadcast_add_label = new QLabel(Smb4KSettings::self()->broadcastAddressItem()->label(), nmblookup_box);
-
-  KLineEdit *broadcast_address = new KLineEdit(nmblookup_box);
-  broadcast_address->setObjectName("kcfg_BroadcastAddress");
-
-  broadcast_add_label->setBuddy(broadcast_address);
-
-  QCheckBox *port_137 = new QCheckBox(Smb4KSettings::self()->usePort137Item()->label(), nmblookup_box);
-  port_137->setObjectName("kcfg_UsePort137");
-
-  nmblookup_layout->addWidget(broadcast_add_label, 0, 0, 0);
-  nmblookup_layout->addWidget(broadcast_address, 0, 1, 0);
-  nmblookup_layout->addWidget(port_137, 1, 0, 1, 2, 0);
-
   // 'smbtree' program
   QGroupBox *smbtree_box = new QGroupBox(i18n("smbtree"), clients_tab);
 
@@ -218,7 +218,6 @@ Smb4KConfigPageSamba::Smb4KConfigPageSamba(QWidget *parent) : QTabWidget(parent)
 
   smbtree_layout->addWidget(smbtree_bcasts, 0, 0, 0);
 
-  client_layout->addWidget(nmblookup_box);
   client_layout->addWidget(smbclient_box);
   client_layout->addWidget(smbtree_box);
   client_layout->addStretch(100);
