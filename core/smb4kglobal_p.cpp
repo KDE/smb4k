@@ -332,18 +332,6 @@ void Smb4KGlobalPrivate::setDefaultSettings()
       Smb4KSettings::self()->nameResolveOrderItem()->setDefault();
     }
   }
-
-  QHostAddress address(opts["interfaces"].section(' ', 0, 0));
-
-  if (address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol)
-  {
-    Smb4KSettings::self()->broadcastAddressItem()->setDefaultValue(address.toString());
-
-    if (Smb4KSettings::broadcastAddress().isEmpty())
-    {
-      Smb4KSettings::self()->broadcastAddressItem()->setDefault();
-    }
-  }
 }
 
 
