@@ -221,6 +221,26 @@
       <whatsthis>Use the Winbind ccache for authentication. This setting affects the net, smbclient and smbtree command.</whatsthis>
       <default>false</default>
     </entry>
+    <entry name="UseEncryptionLevel" type="Bool">
+      <label>Encryption level:</label>
+      <whatsthis>Set the level of encryption that is used for making connections.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="EncryptionLevel" type="Enum">
+      <whatsthis>Set the level of encryption that is used for making connections.</whatsthis>
+      <choices>
+        <choice name="None">
+          <label>None</label>
+        </choice>
+        <choice name="Request">
+          <label>Request</label>
+        </choice>
+        <choice name="Require">
+          <label>Require</label>
+        </choice>
+      </choices>
+      <default>None</default>
+    </entry>
     <entry name="SigningState" type="Enum">
       <label>Signing state:</label>
       <whatsthis>Set the signing state. This setting affects the smbclient and smbtree command.</whatsthis>
@@ -256,16 +276,6 @@
       <min>1</min>
       <max>250000</max>
       <default>65520</default>
-    </entry>
-    <entry name="BroadcastAddress" type="String">
-      <label>Broadcast address:</label>
-      <whatsthis>Queries performed with nmblookup will be send to the given broadcast address. Without this option the default behavior is to send the queries to the broadcast address of the network interface that was either auto-detected or defined in the "interfaces" parameter of the smb.conf file.</whatsthis>
-      <!-- Will be filled by Smb4KCore::setDefaultConfigValues() -->
-    </entry>
-    <entry name="UsePort137" type="Bool">
-      <label>Try and bind to UDP port 137 to send and receive UDP datagrams</label>
-      <whatsthis>Try and bind to UDP port 137 to send and receive UDP datagrams. The reason for this option is a bug in Windows 95 where it ignores the source port of the requesting packet and only replies to UDP port 137. Unfortunately, on most Unix systems super user privileges are needed to bind to this port. Please read the manual page of nmblookup for more information.</whatsthis>
-      <default>false</default>
     </entry>
     <entry name="SmbtreeSendBroadcasts" type="Bool">
       <label>Send requests as broadcasts</label>
