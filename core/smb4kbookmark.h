@@ -140,14 +140,14 @@ class Q_DECL_EXPORT Smb4KBookmark
      *
      * @param type            The type of the share.
      */
-    void setShareType(Smb4KGlobal::NetworkItem type);
+    void setShareType(Smb4KGlobal::ShareType type);
 
     /**
      * Returns the share's type.
      *
      * @returns the type of the share.
      */
-    Smb4KGlobal::NetworkItem shareType() const;
+    Smb4KGlobal::ShareType shareType() const;
 
     /**
      * Returns the UNC in the form //HOST/Share.

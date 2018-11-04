@@ -97,9 +97,7 @@ namespace Smb4KGlobal
    * @enum Workgroup              a workgroup
    * @enum Host                   a host
    * @enum Share                  a share
-   * @enum FileShare              a file share
-   * @enum PrinterShare           a printer share
-   * @enum IpcShare               an IPC share
+   * @enum Directory              a directory in a shared folder
    * @enum UnknownNetworkItem     an unknown network item 
    */
   enum NetworkItem { 
@@ -107,10 +105,21 @@ namespace Smb4KGlobal
     Workgroup,
     Host,
     Share,
+    Directory,
+    UnknownNetworkItem };
+    
+  /**
+   * The enumeration that determines the share type
+   *    
+   * @enum FileShare              a file share
+   * @enum PrinterShare           a printer share
+   * @enum IpcShare               an IPC share
+   */
+  enum ShareType {
     FileShare,
     PrinterShare,
     IpcShare,
-    UnknownNetworkItem };
+  };
     
   /**
    * Use this function to initialize the core classes. Besides starting several

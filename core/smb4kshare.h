@@ -204,7 +204,7 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * 
      * @param type          The type of the string
      */
-    void setShareType(Smb4KGlobal::NetworkItem type);
+    void setShareType(Smb4KGlobal::ShareType type);
 
     /**
      * Returns the type of the share as reported by the server. If you are
@@ -213,7 +213,7 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *
      * @returns the type of the share.
      */
-    Smb4KGlobal::NetworkItem shareType() const;
+    Smb4KGlobal::ShareType shareType() const;
 
     /**
      * Returns the translated type string of the share. You can use this

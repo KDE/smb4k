@@ -53,7 +53,7 @@ class Smb4KBookmarkPrivate
     QString group;
     QString profile;
     QIcon icon;
-    Smb4KGlobal::NetworkItem type;
+    Smb4KGlobal::ShareType type;
 };
 
 
@@ -155,13 +155,13 @@ QString Smb4KBookmark::hostIpAddress() const
 }
 
 
-void Smb4KBookmark::setShareType(Smb4KGlobal::NetworkItem type)
+void Smb4KBookmark::setShareType(Smb4KGlobal::ShareType type)
 {
   d->type = type;
 }
 
 
-Smb4KGlobal::NetworkItem Smb4KBookmark::shareType() const
+Smb4KGlobal::ShareType Smb4KBookmark::shareType() const
 {
   return d->type;
 }

@@ -59,7 +59,7 @@ class Smb4KSharePrivate
     qulonglong usedSpace;
     bool mounted;
     QString filesystem;
-    Smb4KGlobal::NetworkItem shareType;
+    Smb4KGlobal::ShareType shareType;
 };
 
 
@@ -299,14 +299,14 @@ QString Smb4KShare::workgroupName() const
 }
 
 
-void Smb4KShare::setShareType(Smb4KGlobal::NetworkItem type)
+void Smb4KShare::setShareType(Smb4KGlobal::ShareType type)
 {
   d->shareType = type;
   setShareIcon();
 }
 
 
-Smb4KGlobal::NetworkItem Smb4KShare::shareType() const
+Smb4KGlobal::ShareType Smb4KShare::shareType() const
 {
   return d->shareType;
 }
