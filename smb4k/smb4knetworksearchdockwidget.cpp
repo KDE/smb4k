@@ -663,16 +663,7 @@ void Smb4KNetworkSearchDockWidget::slotSearchAbortActionTriggered(bool /*checked
       //
       // Stop the search
       // 
-      QString searchItem = m_networkSearch->comboBox()->currentText();
-    
-      if (!searchItem.isEmpty())
-      {
-        Smb4KSearch::self()->abort(m_networkSearch->comboBox()->currentText());
-      }
-      else
-      {
-        // Do nothing
-      }
+      Smb4KSearch::self()->abortAll();
     }
   }
   else
