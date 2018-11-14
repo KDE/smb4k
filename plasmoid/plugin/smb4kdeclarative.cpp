@@ -45,7 +45,6 @@
 #include "core/smb4kcustomoptionsmanager.h"
 #include "core/smb4kprofilemanager.h"
 #include "core/smb4ksynchronizer.h"
-#include "core/smb4kpreviewer.h"
 #include "core/smb4kclient.h"
 
 // Qt includes
@@ -689,7 +688,7 @@ void Smb4KDeclarative::preview(Smb4KNetworkObject* object)
     
     if (share)
     {
-      Smb4KPreviewer::self()->preview(share);
+      Smb4KClient::self()->openPreviewDialog(share);
     }
     else
     {

@@ -62,6 +62,8 @@ Smb4KToolTip::Smb4KToolTip(QWidget* parent)
 : QWidget(parent, Qt::ToolTip|Qt::BypassGraphicsProxyWidget|Qt::FramelessWindowHint),
   m_item(NetworkItemPtr()), m_tip_layout(0), m_info_layout(0), m_text_layout(0)
 {
+  qDebug() << "Use KToolTipWidget for the tooltips";
+  
   m_master_browser_label = 0;
   m_comment_label        = 0;
   m_ip_label             = 0;

@@ -43,7 +43,6 @@
 class Smb4KSystemTray;
 class Smb4KPrintInfo;
 class Smb4KSynchronizationInfo;
-class Smb4KPreviewItem;
 
 /**
  * This is the main window of Smb4K. It provides the network browser, the
@@ -211,26 +210,6 @@ class Smb4KMainWindow : public KXmlGuiWindow
      * @param dest          The path of the destination
      */
     void slotSynchronizerFinished(const QString &dest);
-
-    /**
-     * This slot shows a message according to the action performed by the previewer.
-     * It is connected to the Smb4KPreviewer::aboutToStart() signal.
-     *
-     * @param share         The share
-     *
-     * @param url           The URL of the current location
-     */
-    void slotPreviewerAboutToStart(const SharePtr &share, const QUrl &url);
-
-    /**
-     * This slot shows a message according to the finished action that was reported
-     * by the previewer. It is connected to the Smb4KPreviewer::finished() signal.
-     *
-     * @param share         The share
-     *
-     * @param url           The URL of the current location
-     */
-    void slotPreviewerFinished(const SharePtr &share, const QUrl &url);
 
     /**
      * This slot hides the feedback icon in the status bar. It is connected to

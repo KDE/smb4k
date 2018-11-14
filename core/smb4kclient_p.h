@@ -32,6 +32,7 @@
 #include "smb4kworkgroup.h"
 #include "smb4khost.h"
 #include "smb4kshare.h"
+#include "smb4kfile.h"
 
 // Samba includes
 #include <libsmbclient.h>
@@ -39,6 +40,8 @@
 // Qt includes
 #include <QUrl>
 #include <QHostAddress>
+#include <QDialog>
+#include <QListWidgetItem>
 
 // KDE includes
 #include <KCoreAddons/KJob>
@@ -62,15 +65,15 @@ class Smb4KClientJob : public KJob
     /**
      * Error enumeration
      * 
-     * @param OutOfMemoryError  Out of memory
-     * @param NullContextError  The passed SMBCCTX context was a null pointer
-     * @param SmbConfError      The smb.conf file could not be read
-     * @param AccessDeniedError Permission denied
-     * @param InvalidUrlError   The URL that was passed is invalid
-     * @param UrlExistError     The URL does not exist
-     * @param NoDirectoryError  The name is not a directory
-     * @param NetPermittedError The operation is not permitted
-     * @param NotFoundError     The network item was not found
+     * @param OutOfMemoryError    Out of memory
+     * @param NullContextError    The passed SMBCCTX context was a null pointer
+     * @param SmbConfError        The smb.conf file could not be read
+     * @param AccessDeniedError   Permission denied
+     * @param InvalidUrlError     The URL that was passed is invalid
+     * @param NonExistentUrlError The URL does not exist
+     * @param NoDirectoryError    The name is not a directory
+     * @param NetPermittedError   The operation is not permitted
+     * @param NotFoundError       The network item was not found
      */
     enum {
       OutOfMemoryError = UserDefinedError,
@@ -78,7 +81,7 @@ class Smb4KClientJob : public KJob
       SmbConfError,
       AccessDeniedError,
       InvalidUrlError,
-      UrlExistError,
+      NonExistentUrlError,
       NoDirectoryError,
       NotPermittedError,
       NotFoundError,
@@ -127,6 +130,11 @@ class Smb4KClientJob : public KJob
     QList<SharePtr> shares();
     
     /**
+     * The ist of files and directories that were discovered.
+     */
+    QList<FilePtr> files();
+    
+    /**
      * The workgroup
      */
     QString workgroup();
@@ -141,12 +149,92 @@ class Smb4KClientJob : public KJob
     QList<WorkgroupPtr> m_workgroups;
     QList<HostPtr> m_hosts;
     QList<SharePtr> m_shares;
-    QString m_workgroup;
+    QList<FilePtr> m_files;
+};
+
+
+class Smb4KPreviewDialog : public QDialog
+{
+  Q_OBJECT
+  
+  public:
+    /**
+     * Constructor
+     */
+    Smb4KPreviewDialog(const SharePtr &share, QWidget *parent = 0);
+    
+    /**
+     * Destructor
+     */
+    ~Smb4KPreviewDialog();
+    
+    /**
+     * Returns the share that is previewed
+     * 
+     * @returns the share
+     */
+    SharePtr share() const;
+    
+  Q_SIGNALS:
+    /**
+     * Request a preview
+     */
+    void requestPreview(NetworkItemPtr item);
+    
+  protected Q_SLOTS:
+    /**
+     * Do last things before the dialog is closed
+     */
+    void slotClosingDialog();
+    
+    /**
+     * Reload
+     */
+    void slotReloadActionTriggered();
+    
+    /**
+     * Go up
+     */
+    void slotUpActionTriggered();
+    
+    /**
+     * An URL was activated in the combo box
+     * 
+     * @param url         The activated URL
+     */
+    void slotUrlActivated(const QUrl &url);
+    
+    /**
+     * Process the selected item
+     * 
+     * @param item        The activated item
+     */
+    void slotItemActivated(QListWidgetItem *item);
+    
+    /**
+     * Initialize the preview
+     */
+    void slotInitializePreview();
+    
+    /**
+     * Get the preview results and process them
+     * 
+     * @param list        The list of the preview results
+     */
+    void slotPreviewResults(const QList<FilePtr> &list);
+    
+    
+  private:
+    SharePtr m_share;
+    NetworkItemPtr m_currentItem;
+    QList<FilePtr> m_listing;
 };
 
 
 class Smb4KClientPrivate
 {
+  public:
+    QList<Smb4KPreviewDialog *> previewDialogs;
 };
 
 

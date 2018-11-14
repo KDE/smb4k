@@ -34,7 +34,6 @@
 #include "smb4kmounter.h"
 #include "smb4kprint.h"
 #include "smb4ksynchronizer.h"
-#include "smb4kpreviewer.h"
 #include "smb4ksearch.h"
 #include "smb4kclient.h"
 
@@ -95,7 +94,6 @@ void Smb4KGlobal::abortCore()
   Smb4KMounter::self()->abortAll();
   Smb4KPrint::self()->abortAll();
   Smb4KSynchronizer::self()->abortAll();
-  Smb4KPreviewer::self()->abortAll();
   Smb4KSearch::self()->abortAll();
 }
 
@@ -106,7 +104,6 @@ bool Smb4KGlobal::coreIsRunning()
           Smb4KMounter::self()->isRunning() ||
           Smb4KPrint::self()->isRunning() ||
           Smb4KSynchronizer::self()->isRunning() ||
-          Smb4KPreviewer::self()->isRunning() ||
           Smb4KSearch::self()->isRunning());
 }
 

@@ -36,12 +36,13 @@
 #include "smb4kcustomoptions.h"
 #include "smb4kbasicnetworkitem.h"
 #include "smb4kglobal.h"
+#include "smb4khomesshareshandler.h"
 
 // Qt includes
 #include <QUdpSocket>
 #include <QHostAddress>
 #include <QTest>
-#include <QCoreApplication>
+#include <QApplication>
 
 #define TIMER_INTERVAL 250
 
@@ -229,7 +230,7 @@ void Smb4KClient::lookupDomains()
 }
 
 
-void Smb4KClient::lookupDomainMembers(WorkgroupPtr workgroup)
+void Smb4KClient::lookupDomainMembers(const WorkgroupPtr &workgroup)
 {
   //
   // Emit the aboutToStart() signal
@@ -268,7 +269,7 @@ void Smb4KClient::lookupDomainMembers(WorkgroupPtr workgroup)
 }
 
 
-void Smb4KClient::lookupShares(HostPtr host)
+void Smb4KClient::lookupShares(const HostPtr &host)
 {
   //
   // Emit the aboutToStart() signal
@@ -307,6 +308,135 @@ void Smb4KClient::lookupShares(HostPtr host)
 }
 
 
+void Smb4KClient::lookupFiles(const NetworkItemPtr &item)
+{
+  //
+  // Check that the network item has the correct type and process it.
+  // 
+  if (item->type() == Share || item->type() == Directory)
+  {
+    //
+    // Emit the aboutToStart() signal
+    // 
+    emit aboutToStart(item, LookupFiles);
+    
+    // 
+    // Create the job
+    // 
+    Smb4KClientJob *job = new Smb4KClientJob(this);
+    job->setNetworkItem(item);
+    
+    connect(job, SIGNAL(result(KJob*)), this, SLOT(slotJobFinished(KJob*)));
+    
+    //
+    // Set the busy cursor
+    //
+    if (!hasSubjobs() && modifyCursor())
+    {
+      QApplication::setOverrideCursor(Qt::BusyCursor);
+    }
+    else
+    {
+      // Do nothing
+    }
+
+    //
+    // Add the job to the subjobs
+    //
+    addSubjob(job);
+
+    //
+    // Start the job
+    // 
+    job->start();
+
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KClient::openPreviewDialog(const SharePtr &share)
+{
+  //
+  // Printer share check
+  // 
+  if (share->isPrinter())
+  {        
+    return;
+  }
+  else
+  {
+    // Do nothing
+  }
+      
+  //
+  // 'homes' share check
+  //
+  if (share->isHomesShare())
+  {
+    Smb4KHomesSharesHandler::self()->specifyUser(share, true, QApplication::activeWindow());
+  }
+  else
+  {
+    // Do nothing
+  }
+    
+  //
+  // Start the preview dialog
+  // 
+  // First, check if a preview dialog has already been set up for this share 
+  // and reuse it, if possible.
+  // 
+  QPointer<Smb4KPreviewDialog> dlg = 0;
+  
+  for (Smb4KPreviewDialog *p : d->previewDialogs)
+  {
+    if (share == p->share())
+    {
+      dlg = p;
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  //
+  // If there was no preview dialog present, create a new one
+  // 
+  if (!dlg)
+  {
+    dlg = new Smb4KPreviewDialog(share, QApplication::activeWindow());
+    d->previewDialogs << dlg;
+    
+    //
+    // Connections
+    // 
+    connect(dlg, SIGNAL(requestPreview(NetworkItemPtr)), this, SLOT(slotStartNetworkQuery(NetworkItemPtr)));
+    connect(this, SIGNAL(files(QList<FilePtr>)), dlg, SLOT(slotPreviewResults(QList<FilePtr>)));
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // Show the preview dialog
+  // 
+  if (!dlg->isVisible())
+  {
+    dlg->setVisible(true);
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
 void Smb4KClient::processErrors(KJob *job)
 {
   qDebug() << "AN ERROR OCCURRED";
@@ -320,14 +450,10 @@ void Smb4KClient::processErrors(KJob *job)
     }
     default:
     {
+      // Start Smb4KNotification here
       break;
     }
   }
-}
-
-
-void Smb4KClient::preview(NetworkItemPtr item)
-{
 }
 
 
@@ -575,7 +701,7 @@ void Smb4KClient::processShares(Smb4KClientJob *job)
       
     //
     // Add or update the shares
-    //      
+    //
     if (!findShare(share->unc(), share->workgroupName()))
     {
       addShare(share);
@@ -587,6 +713,28 @@ void Smb4KClient::processShares(Smb4KClientJob *job)
   }
     
   emit shares(host);
+}
+
+
+void Smb4KClient::processFiles(Smb4KClientJob *job)
+{
+  QList<FilePtr> list;
+  
+  for (const FilePtr &f : job->files())
+  {
+    if (f->isHidden() && !Smb4KSettings::previewHiddenItems())
+    {
+      continue;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    list << f;
+  }  
+  
+  emit files(list);
 }
 
 
@@ -623,7 +771,7 @@ void Smb4KClient::slotJobFinished(KJob *job)
   // Define a network item pointer and the process value for the 
   // finished() signal.
   // 
-  NetworkItemPtr item;
+  NetworkItemPtr item = clientJob->networkItem();
   Smb4KGlobal::Process process = NoProcess;
   
   //
@@ -639,9 +787,8 @@ void Smb4KClient::slotJobFinished(KJob *job)
         {
           // Process the discovered workgroups
           processWorkgroups(clientJob);
-          
-          // Set the network item and the process value
-          item = NetworkItemPtr(new Smb4KBasicNetworkItem(clientJob->networkItem()->type()));
+
+          // Set the process vlaue
           process = LookupDomains;
           
           break;
@@ -651,10 +798,7 @@ void Smb4KClient::slotJobFinished(KJob *job)
           // Process the discovered workgroup members
           processHosts(clientJob);
           
-          // Set the network item and the process value
-          WorkgroupPtr workgroup = WorkgroupPtr(new Smb4KWorkgroup());
-          workgroup->setWorkgroupName(clientJob->workgroup());
-          item = workgroup.staticCast<Smb4KBasicNetworkItem>();
+          // Set the process value
           process = LookupDomainMembers;
           
           break;
@@ -664,12 +808,19 @@ void Smb4KClient::slotJobFinished(KJob *job)
           // Process the discovered shares
           processShares(clientJob);
           
-          // Set the network item and the process value
-          HostPtr host = HostPtr(new Smb4KHost());
-          host->setUrl(clientJob->networkItem()->url());
-          host->setWorkgroupName(clientJob->workgroup());
-          item = host.staticCast<Smb4KBasicNetworkItem>();
+          // Set the process value
           process = LookupShares;
+          
+          break;
+        }
+        case Share:
+        case Directory:
+        {
+          // Process the discoveres files and directories
+          processFiles(clientJob);
+          
+          // Set the process value
+          process = LookupFiles;
           
           break;
         }
@@ -721,6 +872,15 @@ void Smb4KClient::slotJobFinished(KJob *job)
 void Smb4KClient::slotAboutToQuit()
 {
   abort();
+}
+
+
+void Smb4KClient::slotStartNetworkQuery(NetworkItemPtr item)
+{
+  //
+  // Look up files
+  //
+  lookupFiles(item);
 }
 
 

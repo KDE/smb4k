@@ -16,6 +16,7 @@ set(smb4kcore_LIB_SRCS
   smb4kcustomoptions.cpp
   smb4kcustomoptionsmanager.cpp
   smb4kcustomoptionsmanager_p.cpp
+  smb4kfile.cpp
   smb4kglobal.cpp
   smb4kglobal_p.cpp
   smb4khardwareinterface.cpp
@@ -27,8 +28,6 @@ set(smb4kcore_LIB_SRCS
   smb4kmounter_p.cpp
   smb4knotification.cpp
   smb4knotification_p.cpp
-  smb4kpreviewer.cpp
-  smb4kpreviewer_p.cpp
   smb4kprint.cpp
   smb4kprint_p.cpp
   smb4kprocess.cpp
@@ -97,14 +96,13 @@ if (INSTALL_HEADER_FILES)
     smb4kclient.h
     smb4kcustomoptions.h
     smb4kcustomoptionsmanager.h
-    smb4kdeclarative.h
+    smb4kfile.h
     smb4kglobal.h
     smb4khardwareinterface.h
     smb4khomesshareshandler.h
     smb4khost.h
     smb4kmounter.h
     smb4knotification.h
-    smb4kpreviewer.h
     smb4kprint.h
     smb4kprocess.h
     smb4kprofilemanager.h

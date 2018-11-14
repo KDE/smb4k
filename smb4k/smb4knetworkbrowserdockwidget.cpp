@@ -38,7 +38,6 @@
 #include "core/smb4kbookmarkhandler.h"
 #include "core/smb4kwalletmanager.h"
 #include "core/smb4kcustomoptionsmanager.h"
-#include "core/smb4kpreviewer.h"
 #include "core/smb4kprint.h"
 #include "core/smb4kclient.h"
 
@@ -1215,7 +1214,7 @@ void Smb4KNetworkBrowserDockWidget::slotPreview(bool /*checked*/)
 
       if (item && item->type() == Share && !item->shareItem()->isPrinter())
       {
-        Smb4KPreviewer::self()->preview(item->shareItem(), m_networkBrowser);
+        Smb4KClient::self()->openPreviewDialog(item->shareItem());
       }
       else
       {

@@ -44,7 +44,6 @@
 #include "core/smb4kmounter.h"
 #include "core/smb4kprint.h"
 #include "core/smb4ksynchronizer.h"
-#include "core/smb4kpreviewer.h"
 #include "core/smb4ksearch.h"
 #include "core/smb4kclient.h"
 
@@ -199,12 +198,6 @@ void Smb4KMainWindow::setupStatusBar()
   connect(Smb4KMounter::self(), SIGNAL(finished(int)),
           this, SLOT(slotMounterFinished(int)));
   
-//   connect(Smb4KScanner::self(), SIGNAL(aboutToStart(NetworkItemPtr,int)),
-//           this, SLOT(slotScannerAboutToStart(NetworkItemPtr,int)));
-//   
-//   connect(Smb4KScanner::self(), SIGNAL(finished(NetworkItemPtr,int)),
-//           this, SLOT(slotScannerFinished(NetworkItemPtr,int)));
-  
   connect(Smb4KSearch::self(), SIGNAL(aboutToStart(QString)),
           this, SLOT(slotSearchAboutToStart(QString)));
 
@@ -222,12 +215,6 @@ void Smb4KMainWindow::setupStatusBar()
 
   connect(Smb4KSynchronizer::self(), SIGNAL(finished(QString)),
           this, SLOT(slotSynchronizerFinished(QString)));
-
-  connect(Smb4KPreviewer::self(), SIGNAL(aboutToStart(SharePtr,QUrl)),
-          this, SLOT(slotPreviewerAboutToStart(SharePtr,QUrl)));
-
-  connect(Smb4KPreviewer::self(), SIGNAL(finished(SharePtr,QUrl)),
-          this, SLOT(slotPreviewerFinished(SharePtr,QUrl)));
 }
 
 
@@ -874,6 +861,32 @@ void Smb4KMainWindow::slotClientAboutToStart(const NetworkItemPtr &item, int pro
       statusBar()->showMessage(i18n("Looking for shares provided by host %1...", host->hostName()), 0);
       break;
     }
+    case LookupFiles:
+    {
+      QString message;
+      
+      switch (item->type())
+      {
+        case Share:
+        {
+          message = i18n("Looking for files and directories in %1...", item.staticCast<Smb4KShare>()->displayString());
+          break;
+        }
+        case Directory:
+        {
+          qDebug() << "FIXME: Add message to mainwindow's status bar";
+          break;
+        }
+        default:
+        {
+          break;
+        }
+      }
+      
+      statusBar()->showMessage(message, 0);
+      
+      break;
+    }
     case WakeUp:
     {
       statusBar()->showMessage(i18n("Waking up remote hosts..."), 0);
@@ -1187,38 +1200,6 @@ void Smb4KMainWindow::slotSynchronizerAboutToStart(const QString &dest)
 
 
 void Smb4KMainWindow::slotSynchronizerFinished(const QString &/*dest*/)
-{
-  if (!coreIsRunning())
-  {
-    m_progress_bar->setVisible(false);
-    m_progress_bar->reset();
-    statusBar()->showMessage(i18n("Done."), 2000);
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KMainWindow::slotPreviewerAboutToStart(const SharePtr &share, const QUrl &/*url*/)
-{
-  Q_ASSERT(share);
-
-  statusBar()->showMessage(i18n("Retrieving preview from %1...", share->unc()), 0);
-
-  if (!m_progress_bar->isVisible())
-  {
-    m_progress_bar->setVisible(true);
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KMainWindow::slotPreviewerFinished(const SharePtr &/*share*/, const QUrl &/*url*/)
 {
   if (!coreIsRunning())
   {

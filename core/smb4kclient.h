@@ -90,22 +90,30 @@ class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
      * 
      * @param workgroup       The workgroup object
      */
-    void lookupDomainMembers(WorkgroupPtr workgroup);
+    void lookupDomainMembers(const WorkgroupPtr &workgroup);
     
     /**
      * This function looks up all shared resources a certain @p host provides.
      * 
      * @param host            The host object
      */
-    void lookupShares(HostPtr host);
+    void lookupShares(const HostPtr &host);
     
     /**
-     * This function previews a directory in a shared folder.
+     * This function looks up all files and directories present at the location
+     * @p item points to. The network item must be of type Smb4KGlobal::Share or
+     * Smb4KGlobal::Directory.
      * 
-     * @param item            The network item of type Smb4KBasicNetworkItem::Share or
-     *                        Smb4KBasicNetworkItem::Directory.
+     * @param item            The network item object
      */
-    void preview(NetworkItemPtr item);
+    void lookupFiles(const NetworkItemPtr &item);
+    
+    /**
+     * This function opens the preview dialog for @p share.
+     * 
+     * @param share           The share object
+     */
+    void openPreviewDialog(const SharePtr &share);
     
   Q_SIGNALS:
     /**
@@ -125,23 +133,30 @@ class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
     void finished(const NetworkItemPtr &item, int type);
     
     /**
-     * Emitted when the list of workgroups was acquired
+     * Emitted when the requested list of workgroups was acquired
      */
     void workgroups();
     
     /**
-     * Emitted when the list of workgroup members was acquired
+     * Emitted when the requested list of workgroup members was acquired
      * 
      * @param workgroup     The workgroup that was queried
      */
     void hosts(const WorkgroupPtr &workgroup);
     
     /**
-     * Emitted when the list of shares was acquired
+     * Emitted when the requested list of shares was acquired
      * 
      * @param host          The host that was queried
      */
     void shares(const HostPtr &host);
+    
+    /**
+     * Emitted when the requested list of files and directories was acquired
+     * 
+     * @param list          The list of files and directories
+     */
+    void files(const QList<FilePtr> &list);
     
   protected Q_SLOTS:
     /**
@@ -158,6 +173,11 @@ class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
      * Called when the application is about to be closed
      */
     void slotAboutToQuit();
+    
+    /**
+     * Start a network query
+     */
+    void slotStartNetworkQuery(NetworkItemPtr item);
     
   private:
     /**
@@ -185,6 +205,13 @@ class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
      * @param job             The client job
      */
     void processShares(Smb4KClientJob *job);
+    
+    /**
+     * Process the files and directories
+     * 
+     * @param job             The client job
+     */
+    void processFiles(Smb4KClientJob *job);
       
     /**
      * Pointer to the Smb4KClientPrivate class
