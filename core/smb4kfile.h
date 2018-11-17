@@ -74,6 +74,13 @@ class Q_DECL_EXPORT Smb4KFile : public Smb4KBasicNetworkItem
     QString workgroupName() const;
     
     /**
+     * Returns the host's name.
+     * 
+     * @returns the name of the host.
+     */
+    QString hostName() const;
+    
+    /**
      * Set the host's IP address to @p ip.
      * 
      * @param ip            The IP address of the host
@@ -93,6 +100,13 @@ class Q_DECL_EXPORT Smb4KFile : public Smb4KBasicNetworkItem
      * @returns TRUE if the host's IP address is set and FALSE otherwise.
      */
     bool hasHostIpAddress() const;
+    
+    /**
+     * Returns the share's name.
+     * 
+     * @returns the name of the share.
+     */
+    QString shareName() const;
     
     /**
      * Set the login name for the share where this file or directory is located to @p name.

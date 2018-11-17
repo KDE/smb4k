@@ -90,6 +90,12 @@ QString Smb4KFile::workgroupName() const
 }
 
 
+QString Smb4KFile::hostName() const
+{
+  return pUrl->host().toUpper();
+}
+
+
 void Smb4KFile::setHostIpAddress(const QHostAddress &address)
 {
   if (!address.isNull() && address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol)
@@ -112,6 +118,12 @@ QString Smb4KFile::hostIpAddress() const
 bool Smb4KFile::hasHostIpAddress() const
 {
   return !d->ip.isNull();
+}
+
+
+QString Smb4KFile::shareName() const
+{
+  return pUrl->path().section('/', 1, 1);
 }
 
 
