@@ -39,6 +39,7 @@
 class Smb4KClientPrivate;
 class Smb4KBasicNetworkItem;
 class Smb4KClientJob;
+class Smb4KPreviewDialog;
 
 class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
 {
@@ -178,6 +179,11 @@ class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
      * Start a network query
      */
     void slotStartNetworkQuery(NetworkItemPtr item);
+    
+    /**
+     * Called when a preview dialog closed
+     */
+    void slotPreviewDialogClosed(Smb4KPreviewDialog *dialog);
     
   private:
     /**

@@ -1297,8 +1297,20 @@ SharePtr Smb4KPreviewDialog::share() const
 
 void Smb4KPreviewDialog::slotClosingDialog()
 {
+  //
+  // Save the dialog size
+  // 
   KConfigGroup group(Smb4KSettings::self()->config(), "PreviewDialog");
   KWindowConfig::saveWindowSize(windowHandle(), group);
+  
+  //
+  // Emit the aboutToClose() signal
+  // 
+  emit aboutToClose(this);
+  
+  // 
+  // Close the dialog
+  // 
   accept();
 }
 

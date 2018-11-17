@@ -416,6 +416,7 @@ void Smb4KClient::openPreviewDialog(const SharePtr &share)
     // Connections
     // 
     connect(dlg, SIGNAL(requestPreview(NetworkItemPtr)), this, SLOT(slotStartNetworkQuery(NetworkItemPtr)));
+    connect(dlg, SIGNAL(aboutToClose(Smb4KPreviewDialog *)), this, SLOT(slotPreviewDialogClosed(Smb4KPreviewDialog *)));
     connect(this, SIGNAL(files(QList<FilePtr>)), dlg, SLOT(slotPreviewResults(QList<FilePtr>)));
   }
   else
@@ -941,6 +942,26 @@ void Smb4KClient::slotStartNetworkQuery(NetworkItemPtr item)
   // Look up files
   //
   lookupFiles(item);
+}
+
+
+void Smb4KClient::slotPreviewDialogClosed(Smb4KPreviewDialog *dialog)
+{
+  //
+  // Remove the preview dialog from the list
+  // 
+  if (dialog)
+  {
+    // Find the dialog in the list and take it from the list.
+    // It will automatically be deleted on close, so there is
+    // no need to delete the dialog here.
+    int i = d->previewDialogs.indexOf(dialog);
+    d->previewDialogs.takeAt(i);
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 

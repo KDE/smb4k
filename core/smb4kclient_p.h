@@ -181,6 +181,11 @@ class Smb4KPreviewDialog : public QDialog
      */
     void requestPreview(NetworkItemPtr item);
     
+    /**
+     * Emitted when the dialog is about to close.
+     */
+    void aboutToClose(Smb4KPreviewDialog *dialog);
+    
   protected Q_SLOTS:
     /**
      * Do last things before the dialog is closed
