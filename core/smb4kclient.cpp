@@ -37,6 +37,7 @@
 #include "smb4kbasicnetworkitem.h"
 #include "smb4kglobal.h"
 #include "smb4khomesshareshandler.h"
+#include "smb4kwalletmanager.h"
 
 // Qt includes
 #include <QUdpSocket>
@@ -349,7 +350,6 @@ void Smb4KClient::lookupFiles(const NetworkItemPtr &item)
     // Start the job
     // 
     job->start();
-
   }
   else
   {
@@ -437,15 +437,75 @@ void Smb4KClient::openPreviewDialog(const SharePtr &share)
 }
 
 
-void Smb4KClient::processErrors(KJob *job)
+void Smb4KClient::processErrors(Smb4KClientJob *job)
 {
-  qDebug() << "AN ERROR OCCURRED";
+  qDebug() << "AN ERROR OCCURRED:" << job->errorText();
   
   switch (job->error())
   {
     case Smb4KClientJob::AccessDeniedError:
     {
-      qDebug() << "Authentication error";
+      switch (job->networkItem()->type())
+      {
+        case Host:
+        {
+          if (Smb4KWalletManager::self()->showPasswordDialog(job->networkItem(), QApplication::activeWindow()))
+          {
+            lookupShares(job->networkItem().staticCast<Smb4KHost>());
+          }
+          else
+          {
+            // Do nothing
+          }
+          
+          break;
+        }
+        case Share:
+        {
+          if (Smb4KWalletManager::self()->showPasswordDialog(job->networkItem(), QApplication::activeWindow()))
+          {
+            lookupFiles(job->networkItem().staticCast<Smb4KShare>());
+          }
+          else
+          {
+            // Do nothing
+          }
+          
+          break;
+        }
+        case Directory:
+        case File:
+        {
+          FilePtr file = job->networkItem().staticCast<Smb4KFile>();
+          
+          SharePtr share = SharePtr(new Smb4KShare());
+          share->setWorkgroupName(file->workgroupName());
+          share->setHostName(file->hostName());
+          share->setShareName(file->shareName());
+          share->setLogin(file->login());
+          share->setPassword(file->password());
+          
+          if (Smb4KWalletManager::self()->showPasswordDialog(share, QApplication::activeWindow()))
+          {
+            file->setLogin(share->login());
+            file->setPassword(share->password());
+            
+            lookupFiles(file);
+          }
+          else
+          {
+            // Do nothing
+          }
+
+          break;
+        }
+        default:
+        {
+          qDebug() << "Authentication error. URL:" << job->networkItem()->url();
+          break;
+        }
+      }
+      
       break;
     }
     default:

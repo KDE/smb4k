@@ -186,37 +186,29 @@ void Smb4KClientJob::get_auth_data_fn(const char* server, const char* share, cha
           // 
           // This is the master browser. Create a host object for it.
           // 
-          HostPtr host = HostPtr(new Smb4KHost());
-          host->setWorkgroupName(QString::fromUtf8(workgroup));
-          host->setHostName(QString::fromUtf8(server));
+          HostPtr h = HostPtr(new Smb4KHost());
+          h->setWorkgroupName(QString::fromUtf8(workgroup));
+          h->setHostName(QString::fromUtf8(server));
           
           // 
           // Get the authentication data
           // 
-          Smb4KWalletManager::self()->readAuthInfo(host);
+          Smb4KWalletManager::self()->readAuthInfo(h);
           
           // 
           // Copy the authentication data
           // 
-          qstrncpy(username, host->login().toUtf8().data(), maxLenUsername);
-          qstrncpy(password, host->password().toUtf8().data(), maxLenPassword);
+          qstrncpy(username, h->login().toUtf8().data(), maxLenUsername);
+          qstrncpy(password, h->password().toUtf8().data(), maxLenPassword);
         }
         else
         {
-          // 
-          // This is the workgroup name. Use anonymous login for it
-          // 
-          qstrncpy(username, "anonymous", sizeof("anonymous"));
+          // Do nothing
         }
       }
       else
       {
-        //
-        // If no authentication data is required to log on to the master browsers,
-        // use the anonymous login with an empty password.
-        // 
-        qstrncpy(username, "anonymous", sizeof("anonymous"));
-        qstrncpy(password, "", sizeof(""));
+        // Do nothing
       }
       
       break;
@@ -226,53 +218,69 @@ void Smb4KClientJob::get_auth_data_fn(const char* server, const char* share, cha
       //
       // The host object
       // 
-      HostPtr host = m_item.staticCast<Smb4KHost>();
+      HostPtr h = m_item.staticCast<Smb4KHost>();
       
       //
-      // Prefer the username (login) and password provided by the host item.
+      // Get the authentication data
+      //
+      Smb4KWalletManager::self()->readAuthInfo(h);
+        
       // 
-      if (!m_item->url().userInfo().isEmpty())
-      {
-        // 
-        // Copy the authentication data
-        // 
-        qstrncpy(username, m_item->url().userName().toUtf8().data(), maxLenUsername);
-        qstrncpy(password, m_item->url().password().toUtf8().data(), maxLenPassword);
-      }
-      else
-      {
-        //
-        // Get the authentication data
-        //
-        Smb4KWalletManager::self()->readAuthInfo(host);
-        
-        // 
-        // Copy the authentication data
-        // 
-        if (host->url().userInfo().isEmpty())
-        {
-          host->setLogin("anonymous");
-          host->setPassword("");
-        }
-        else
-        {
-          // Do nothing
-        }
-        
-        qstrncpy(username, host->login().toUtf8().data(), maxLenUsername);
-        qstrncpy(password, host->password().toUtf8().data(), maxLenPassword);
-      }
+      // Copy the authentication data
+      // 
+      qstrncpy(username, h->login().toUtf8().data(), maxLenUsername);
+      qstrncpy(password, h->password().toUtf8().data(), maxLenPassword);
       
       break;
     }
     case Share:
     {
-      // FIXME
+      //
+      // The share object
+      // 
+      SharePtr s = m_item.staticCast<Smb4KShare>();
+      
+      //
+      // Get the authentication data
+      //
+      Smb4KWalletManager::self()->readAuthInfo(s);
+        
+      // 
+      // Copy the authentication data
+      // 
+      qstrncpy(username, s->login().toUtf8().data(), maxLenUsername);
+      qstrncpy(password, s->password().toUtf8().data(), maxLenPassword);
+      
       break;
     }
     case Directory:
     {
-      // FIXME
+      //
+      // The file object
+      // 
+      FilePtr f = m_item.staticCast<Smb4KFile>();
+      
+      //
+      // Create a share object
+      // 
+      SharePtr s = SharePtr(new Smb4KShare());
+      s->setWorkgroupName(f->workgroupName());
+      s->setHostName(f->hostName());
+      s->setShareName(f->shareName());
+      s->setLogin(f->login());
+      s->setPassword(f->password());
+          
+      //
+      // Get the authentication data
+      //
+      Smb4KWalletManager::self()->readAuthInfo(s);
+        
+      // 
+      // Copy the authentication data
+      // 
+      qstrncpy(username, s->login().toUtf8().data(), maxLenUsername);
+      qstrncpy(password, s->password().toUtf8().data(), maxLenPassword);
+      
       break;
     }
     default:
@@ -517,14 +525,28 @@ void Smb4KClientJob::slotStartJob()
       smbc_setWorkgroup(m_context, host->workgroupName().toUtf8().data());
       break;
     }
-    default:
+    case Share:
     {
       //
       // Set both the NetBIOS name of the server and the workgroup to be queried
       // 
-      HostPtr host = findHost(m_item->url().host());
-      smbc_setNetbiosName(m_context, host->hostName().toUtf8().data());
-      smbc_setWorkgroup(m_context, host->workgroupName().toUtf8().data());
+      SharePtr share = m_item.staticCast<Smb4KShare>();
+      smbc_setNetbiosName(m_context, share->hostName().toUtf8().data());
+      smbc_setWorkgroup(m_context, share->workgroupName().toUtf8().data());
+      break;
+    }
+    case Directory:
+    {
+      //
+      // Set both the NetBIOS name of the server and the workgroup to be queried
+      // 
+      FilePtr file = m_item.staticCast<Smb4KFile>();
+      smbc_setNetbiosName(m_context, file->hostName().toUtf8().data());
+      smbc_setWorkgroup(m_context, file->workgroupName().toUtf8().data());
+      break;      
+    }
+    default:
+    {
       break;
     }
   }
@@ -611,6 +633,11 @@ void Smb4KClientJob::slotStartJob()
   {
     // Do nothing
   }
+  
+  //
+  // Set the usage of anonymous login 
+  // 
+  smbc_setOptionNoAutoAnonymousLogin(m_context, false);
   
   //
   // Set the usage of the winbind ccache
@@ -882,8 +909,8 @@ void Smb4KClientJob::slotStartJob()
           //
           // Set the authentication data
           // 
-          share->setLogin(m_item->url().userName(QUrl::FullyEncoded));
-          share->setPassword(m_item->url().password(QUrl::FullyEncoded));
+          share->setLogin(m_item->url().userName());
+          share->setPassword(m_item->url().password());
           
           // 
           // Lookup IP address
@@ -942,8 +969,8 @@ void Smb4KClientJob::slotStartJob()
           //
           // Set the authentication data
           // 
-          share->setLogin(m_item->url().userName(QUrl::FullyEncoded));
-          share->setPassword(m_item->url().password(QUrl::FullyEncoded));
+          share->setLogin(m_item->url().userName());
+          share->setPassword(m_item->url().password());
           
           // 
           // Lookup IP address
@@ -1002,8 +1029,8 @@ void Smb4KClientJob::slotStartJob()
           //
           // Set the authentication data
           // 
-          share->setLogin(m_item->url().userName(QUrl::FullyEncoded));
-          share->setPassword(m_item->url().password(QUrl::FullyEncoded));
+          share->setLogin(m_item->url().userName());
+          share->setPassword(m_item->url().password());
           
           // 
           // Lookup IP address
@@ -1055,8 +1082,8 @@ void Smb4KClientJob::slotStartJob()
             //
             // Set the authentication data
             // 
-            dir->setLogin(m_item->url().userName(QUrl::FullyEncoded));
-            dir->setPassword(m_item->url().password(QUrl::FullyEncoded));
+            dir->setLogin(m_item->url().userName());
+            dir->setPassword(m_item->url().password());
             
             // 
             // Lookup IP address
@@ -1110,8 +1137,8 @@ void Smb4KClientJob::slotStartJob()
           //
           // Set the authentication data
           // 
-          dir->setLogin(m_item->url().userName(QUrl::FullyEncoded));
-          dir->setPassword(m_item->url().password(QUrl::FullyEncoded));
+          dir->setLogin(m_item->url().userName());
+          dir->setPassword(m_item->url().password());
             
           // 
           // Lookup IP address

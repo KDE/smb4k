@@ -183,7 +183,7 @@ class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
     /**
      * Process errors
      */
-    void processErrors(KJob *job);
+    void processErrors(Smb4KClientJob *job);
     
     /**
      * Process the domains/workgroups retrieved from the network
