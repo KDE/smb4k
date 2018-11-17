@@ -417,7 +417,10 @@ void Smb4KClient::openPreviewDialog(const SharePtr &share)
     // 
     connect(dlg, SIGNAL(requestPreview(NetworkItemPtr)), this, SLOT(slotStartNetworkQuery(NetworkItemPtr)));
     connect(dlg, SIGNAL(aboutToClose(Smb4KPreviewDialog *)), this, SLOT(slotPreviewDialogClosed(Smb4KPreviewDialog *)));
+    connect(dlg, SIGNAL(requestAbort()), this, SLOT(slotAbort()));
     connect(this, SIGNAL(files(QList<FilePtr>)), dlg, SLOT(slotPreviewResults(QList<FilePtr>)));
+    connect(this, SIGNAL(aboutToStart(NetworkItemPtr,int)), dlg, SLOT(slotAboutToStart(NetworkItemPtr,int)));
+    connect(this, SIGNAL(finished(NetworkItemPtr,int)), dlg, SLOT(slotFinished(NetworkItemPtr,int)));
   }
   else
   {
@@ -962,6 +965,12 @@ void Smb4KClient::slotPreviewDialogClosed(Smb4KPreviewDialog *dialog)
   {
     // Do nothing
   }
+}
+
+
+void Smb4KClient::slotAbort()
+{
+  abort();
 }
 
 

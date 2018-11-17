@@ -186,6 +186,11 @@ class Smb4KPreviewDialog : public QDialog
      */
     void aboutToClose(Smb4KPreviewDialog *dialog);
     
+    /**
+     * Emitted when the process should be aborted
+     */
+    void requestAbort();
+    
   protected Q_SLOTS:
     /**
      * Do last things before the dialog is closed
@@ -228,6 +233,15 @@ class Smb4KPreviewDialog : public QDialog
      */
     void slotPreviewResults(const QList<FilePtr> &list);
     
+    /**
+     * Change the reload/abort dual action
+     */
+    void slotAboutToStart(const NetworkItemPtr &item, int type);
+    
+    /**
+     * Change the reload/abort dual action back
+     */
+    void slotFinished(const NetworkItemPtr &item, int type);
     
   private:
     SharePtr m_share;

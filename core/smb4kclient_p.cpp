@@ -60,6 +60,7 @@
 #include <KIconThemes/KIconLoader>
 #include <KIOWidgets/KUrlComboBox>
 #include <KIO/Global>
+#include <KWidgetsAddons/KDualAction>
 
 #define SMBC_DEBUG 1
 
@@ -1223,16 +1224,34 @@ Smb4KPreviewDialog::Smb4KPreviewDialog(const SharePtr& share, QWidget* parent)
   toolBar->setToolButtonStyle(Qt::ToolButtonFollowStyle);
   toolBar->setProperty("otherToolbar", true);
   
-  // FIXME: Make this a double action
-  QAction *reloadAction = toolBar->addAction(KDE::icon("view-refresh"), i18n("Reload"), this, SLOT(slotReloadActionTriggered()));
+  //
+  // Reload / cancel action
+  // 
+  KDualAction *reloadAction = new KDualAction(toolBar);
   reloadAction->setObjectName("reload_action");
+  reloadAction->setInactiveText(i18n("Reload"));
+  reloadAction->setInactiveIcon(KDE::icon("view-refresh"));
+  reloadAction->setActiveText(i18n("Abort"));
+  reloadAction->setActiveIcon(KDE::icon("process-stop"));
+  reloadAction->setActive(false);
+  reloadAction->setAutoToggle(false);
   
+  connect(reloadAction, SIGNAL(toggled(bool)), this, SLOT(slotReloadActionTriggered()));
+  
+  toolBar->addAction(reloadAction);
+  
+  //
+  // Up action
+  // 
   QAction *upAction =toolBar->addAction(KDE::icon("go-up"), i18n("Up"), this, SLOT(slotUpActionTriggered()));
   upAction->setObjectName("up_action");
   upAction->setEnabled(false);
   
   toolBar->addSeparator();
   
+  //
+  // URL combo box
+  // 
   KUrlComboBox *urlCombo = new KUrlComboBox(KUrlComboBox::Directories, toolBar);
   urlCombo->setEditable(false);
   toolBar->addWidget(urlCombo);
@@ -1317,7 +1336,16 @@ void Smb4KPreviewDialog::slotClosingDialog()
 
 void Smb4KPreviewDialog::slotReloadActionTriggered()
 {
-  emit requestPreview(m_currentItem);
+  KDualAction *reloadAction = findChild<KDualAction *>();
+  
+  if (reloadAction->isActive())
+  {
+    emit requestAbort();
+  }
+  else
+  {
+    emit requestPreview(m_currentItem);
+  }
 }
 
 
@@ -1332,20 +1360,26 @@ void Smb4KPreviewDialog::slotUpActionTriggered()
   // Create a new network item object, if necessary and set the new current
   // item. Also, disable the "Up" action, if necessary.
   // 
+  NetworkItemPtr item;
+  
   if (m_share->url().matches(u, QUrl::StripTrailingSlash))
   {
-    m_currentItem = m_share;
+    item = m_share;
     findChild<QAction *>("up_action")->setEnabled(false);
   }
   else if (m_share->url().path().length() < u.path().length())
   {
-    FilePtr file = FilePtr(new Smb4KFile(u, Directory));
-    m_currentItem = file;
+    item = FilePtr(new Smb4KFile(u, Directory));
   }
   else
   {
     return;
   }
+  
+  //
+  // Set the current item
+  // 
+  m_currentItem = item;
   
   //
   // Emit the requestPreview() signal
@@ -1431,61 +1465,174 @@ void Smb4KPreviewDialog::slotInitializePreview()
 void Smb4KPreviewDialog::slotPreviewResults(const QList<FilePtr> &list)
 {
   //
-  // Clear the internal listing
+  // Only process data the belongs to this dialog
   // 
-  while (!m_listing.isEmpty())
+  if (m_share->workgroupName() == list.first()->workgroupName() && m_share->hostName() == list.first()->hostName() && 
+      list.first()->url().path().startsWith(m_share->url().path()))
   {
-    m_listing.takeFirst().clear();
-  }  
-  
-  //
-  // Copy the list into the private variable
-  //
-  m_listing = list;
-  
-  //
-  // Get the list widget
-  // 
-  QListWidget *listWidget = findChild<QListWidget *>();
-  
-  //
-  // Clear the list widget
-  //
-  listWidget->clear();
-  
-  //
-  // Insert the new listing
-  // 
-  if (listWidget)
-  {
-    for (const FilePtr &f : list)
+    //
+    // Clear the internal listing
+    // 
+    while (!m_listing.isEmpty())
     {
-      QListWidgetItem *item = new QListWidgetItem(f->icon(), f->name(), listWidget, f->isDirectory() ? Directory : File);
-      item->setData(Qt::UserRole, f->url());
+      m_listing.takeFirst().clear();
+    }  
+    
+    //
+    // Copy the list into the private variable
+    //
+    m_listing = list;
+    
+    //
+    // Get the list widget
+    // 
+    QListWidget *listWidget = findChild<QListWidget *>();
+    
+    //
+    // Clear the list widget
+    //
+    listWidget->clear();
+    
+    //
+    // Insert the new listing
+    // 
+    if (listWidget)
+    {
+      for (const FilePtr &f : list)
+      {
+        QListWidgetItem *item = new QListWidgetItem(f->icon(), f->name(), listWidget, f->isDirectory() ? Directory : File);
+        item->setData(Qt::UserRole, f->url());
+      }
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    //
+    // Sort the list widget
+    // 
+    listWidget->sortItems();
+    
+    //
+    // Add the URL to the combo box and show it. Omit duplicates.
+    // 
+    KUrlComboBox *urlCombo = findChild<KUrlComboBox *>();
+    QStringList urls = urlCombo->urls();
+    urls << m_currentItem->url().toString();
+    urlCombo->setUrls(urls);
+    urlCombo->setUrl(m_currentItem->url());
+    
+    //
+    // Enable / disable the "Up" action
+    //
+    findChild<QAction *>("up_action")->setEnabled(!m_share->url().matches(m_currentItem->url(), QUrl::StripTrailingSlash));
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KPreviewDialog::slotAboutToStart(const NetworkItemPtr &item, int type)
+{
+  if (type == LookupFiles)
+  {
+    switch (item->type())
+    {
+      case Share:
+      {
+        SharePtr s = item.staticCast<Smb4KShare>();
+        
+        if (m_share->workgroupName() == s->workgroupName() && m_share->hostName() == s->hostName() && s->url().path().startsWith(m_share->url().path()))
+        {
+          KDualAction *reloadAction = findChild<KDualAction *>();
+          reloadAction->setActive(true);
+        }
+        else
+        {
+          // Do nothing
+        }
+        
+        break;
+      }
+      case Directory:
+      {
+        FilePtr f = item.staticCast<Smb4KFile>();
+        
+        if (m_share->workgroupName() == f->workgroupName() && m_share->hostName() == f->hostName() && f->url().path().startsWith(m_share->url().path()))
+        {
+          KDualAction *reloadAction = findChild<KDualAction *>();
+          reloadAction->setActive(true);
+        }
+        else
+        {
+          // Do nothing
+        }
+        
+        break;
+      }
+      default:
+      {
+        break;
+      }
     }
   }
   else
   {
     // Do nothing
   }
-  
-  //
-  // Sort the list widget
-  // 
-  listWidget->sortItems();
-  
-  //
-  // Add the URL to the combo box and show it. Omit duplicates.
-  // 
-  KUrlComboBox *urlCombo = findChild<KUrlComboBox *>();
-  QStringList urls = urlCombo->urls();
-  urls << m_currentItem->url().toString();
-  urlCombo->setUrls(urls);
-  urlCombo->setUrl(m_currentItem->url());
-  
-  //
-  // Enable / disable the "Up" action
-  //
-  findChild<QAction *>("up_action")->setEnabled(!m_share->url().matches(m_currentItem->url(), QUrl::StripTrailingSlash));
+}
+
+
+void Smb4KPreviewDialog::slotFinished(const NetworkItemPtr &item, int type)
+{
+  if (type == LookupFiles)
+  {
+    switch (item->type())
+    {
+      case Share:
+      {
+        SharePtr s = item.staticCast<Smb4KShare>();
+        
+        if (m_share->workgroupName() == s->workgroupName() && m_share->hostName() == s->hostName() && s->url().path().startsWith(m_share->url().path()))
+        {
+          KDualAction *reloadAction = findChild<KDualAction *>();
+          reloadAction->setActive(false);
+        }
+        else
+        {
+          // Do nothing
+        }
+        
+        break;
+      }
+      case Directory:
+      {
+        FilePtr f = item.staticCast<Smb4KFile>();
+        
+        if (m_share->workgroupName() == f->workgroupName() && m_share->hostName() == f->hostName() && f->url().path().startsWith(m_share->url().path()))
+        {
+          KDualAction *reloadAction = findChild<KDualAction *>();
+          reloadAction->setActive(false);
+        }
+        else
+        {
+          // Do nothing
+        }
+        
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 

@@ -185,6 +185,11 @@ class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
      */
     void slotPreviewDialogClosed(Smb4KPreviewDialog *dialog);
     
+    /**
+     * Called when a process should be aborted
+     */
+    void slotAbort();
+    
   private:
     /**
      * Process errors
