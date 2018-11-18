@@ -41,6 +41,7 @@
 #include "core/smb4kworkgroup.h"
 #include "core/smb4khost.h"
 #include "core/smb4kshare.h"
+#include "core/smb4kfile.h"
 #include "core/smb4kmounter.h"
 #include "core/smb4kprint.h"
 #include "core/smb4ksynchronizer.h"
@@ -874,7 +875,23 @@ void Smb4KMainWindow::slotClientAboutToStart(const NetworkItemPtr &item, int pro
         }
         case Directory:
         {
-          qDebug() << "FIXME: Add message to mainwindow's status bar";
+          qDebug() << "Smb4KMainWindow::slotClientAboutToStart(): Use Smb4KGlobal::findShare()";
+          
+          FilePtr file = item.staticCast<Smb4KFile>();
+          
+          for (const SharePtr &s : sharesList())
+          {
+            if (s->workgroupName() == file->workgroupName() && s->hostName() == file->hostName() && s->shareName() == file->shareName())
+            {
+              message = i18n("Looking for files and directories in %1...", s->displayString());   
+              break;
+            }
+            else
+            {
+              // Do nothing
+            }
+          }
+                 
           break;
         }
         default:
