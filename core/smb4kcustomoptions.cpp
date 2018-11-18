@@ -1254,7 +1254,7 @@ bool Smb4KCustomOptions::hasOptions() const
     // Do nothing
   }
   
-  if (d->directoryMode != Smb4KMountSettings::useDirectoryMode())
+  if (d->directoryMode != Smb4KMountSettings::directoryMode())
   {
     return true;
   }
