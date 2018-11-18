@@ -761,7 +761,7 @@ void Smb4KClientJob::slotStartJob()
       {
         setError(NotPermittedError);
         // Is the error message correct? 
-        setErrorText(i18n("The workgroup could not be found"));
+        setErrorText(i18n("Operation not permitted"));
         break;
       }
       case ENODEV:
@@ -1134,6 +1134,7 @@ void Smb4KClientJob::slotStartJob()
           //
           // Stat the file
           //
+          // FIXME
             
           //
           // Set the authentication data
@@ -1165,6 +1166,7 @@ void Smb4KClientJob::slotStartJob()
         }
         case SMBC_LINK:
         {
+          qDebug() << "Processing links is not implemented."
           qDebug() << dirp->name;
           qDebug() << dirp->comment;
           break;
@@ -1360,26 +1362,21 @@ void Smb4KPreviewDialog::slotUpActionTriggered()
   // Create a new network item object, if necessary and set the new current
   // item. Also, disable the "Up" action, if necessary.
   // 
-  NetworkItemPtr item;
-  
   if (m_share->url().matches(u, QUrl::StripTrailingSlash))
   {
-    item = m_share;
     findChild<QAction *>("up_action")->setEnabled(false);
+    m_currentItem = m_share;
   }
   else if (m_share->url().path().length() < u.path().length())
   {
-    item = FilePtr(new Smb4KFile(u, Directory));
+    FilePtr file = FilePtr(new Smb4KFile(u, Directory));
+    file->setWorkgroupName(m_share->workgroupName());
+    m_currentItem = file;
   }
   else
   {
     return;
   }
-  
-  //
-  // Set the current item
-  // 
-  m_currentItem = item;
   
   //
   // Emit the requestPreview() signal
@@ -1397,25 +1394,21 @@ void Smb4KPreviewDialog::slotUrlActivated(const QUrl &url)
   QUrl u = url;
   u.setUserName(m_share->login());
   u.setPassword(m_share->password());
-
-  //
-  // Create a network item
-  // 
-  NetworkItemPtr item;
   
+  //
+  // Create a new network item object, if necessary and set the new current
+  // item.
+  // 
   if (m_share->url().matches(u, QUrl::StripTrailingSlash))
   {
-    item = m_share;
+    m_currentItem = m_share;
   }
   else
   {
-    item = FilePtr(new Smb4KFile(u, Directory));
+    FilePtr file = FilePtr(new Smb4KFile(u, Directory));
+    file->setWorkgroupName(m_share->workgroupName());
+    m_currentItem = file;
   }
-  
-  //
-  // Set the current item
-  // 
-  m_currentItem = item;
   
   //
   // Emit the requestPreview() signal
