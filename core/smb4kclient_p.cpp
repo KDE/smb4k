@@ -1166,7 +1166,7 @@ void Smb4KClientJob::slotStartJob()
         }
         case SMBC_LINK:
         {
-          qDebug() << "Processing links is not implemented."
+          qDebug() << "Processing links is not implemented.";
           qDebug() << dirp->name;
           qDebug() << dirp->comment;
           break;

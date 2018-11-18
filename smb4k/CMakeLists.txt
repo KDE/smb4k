@@ -75,7 +75,6 @@ target_link_libraries(smb4k
   KF5::I18n
   KF5::IconThemes
   KF5::KIOCore
-  KF5::Parts
   KF5::ConfigWidgets
   KF5::Crash
   KF5::WindowSystem)
