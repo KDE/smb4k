@@ -45,7 +45,7 @@
   <summary xml:lang="fi">Edistynyt verkkoympäristöselain ja Samba-jakoliitostyökalu</summary>
   <summary xml:lang="fr">Navigateur avancé de voisinage réseau et utilitaire pour le montage des partages Samba</summary>
   <summary xml:lang="gl">Navegador avanzado da veciñanza de rede e ferramenta para montar comparticións de Samba</summary>
-  <summary xml:lang="it">Browser di rete avanzato e front-end per i programmi della suite software Samba</summary>
+  <summary xml:lang="it">Navigatore di risorse di rete avanzato e programma per montare le condivisioni Samba</summary>
   <summary xml:lang="ko">고급 네트워크 환경 탐색 및 Samba 공유 마운트 유틸리티</summary>
   <summary xml:lang="nds">Verwiedert Nettwarkümgeven-Kieker un Inhangwrktüüch för Samba-Freegaven</summary>
   <summary xml:lang="nl">Geavanceerde browser voor de netwerkomgeving en hulpmiddel voor aankoppelen van Samba shares</summary>
@@ -73,7 +73,7 @@
     <p xml:lang="fi">Smb4K on edistynyt verkkoympäristöselain ja Samba-jakoliitostyökalu KDE-ohjelmistokokonaisuuteen. Se etsii verkostasi käytettävissä olevia työryhmiä, palvelimia ja jakoja sekä osaa liittää haluamasi jaot paikalliseen tiedostojärjestelmään.</p>
     <p xml:lang="fr">Smb4K est un navigateur de voisinage réseau avancé et un utilitaire de montage Samba pour KDE SC. Il balaye votre voisinage réseau à la recherche des groupes de travail, serveurs et partages disponibles et peut afficher tous les partages désirés sur votre système de fichiers local.</p>
     <p xml:lang="gl">Smb4K é un navegador avanzado da veciñanza de rede e unha ferramenta para montar comparticións de Samba que forma parte da colección de software de KDE. Examina a veciñanza de rede en busca de grupos de traballo, servidores e comparticións dispoñíbeis, e pode montar todas as comparticións que queira no seu sistema de ficheiros local.</p>
-    <p xml:lang="it">Smb4K è un browser di rete avanzato e un front-end per i programmi della suite software Samba per KDE Software Compilation. Scansiona la tua rete per cercare tutti i gruppi di lavoro disponibili, i server e le condivisioni, e può montare tutte le condivisioni che desideri nel tuo file system.</p>
+    <p xml:lang="it">Smb4K è un navigatore di risorse di rete avanzato e un programma per montare le condivisioni Samba per KDE Software Compilation. Analizza la tue risorse di rete per trovare tutti i gruppi di lavoro disponibili, i server e le condivisioni, e può montare tutte le condivisioni che desideri nel tuo file system locale.</p>
     <p xml:lang="ko">Smb4K는 고급 네트워크 환경 탐색기 및 Samba 공유 마운트 도구입니다. 로컬 네트워크에 있는 작업 그룹, 서버, 공유 자원을 탐색할 수 있으며 로컬 파일 시스템에 공유를 마운트할 수 있습니다.</p>
     <p xml:lang="nds">Smb4K is en verwiedert Nettwarkümgeven-Kieker un Inhangwarktüüch för Samba-Freegaven för de KDE-Software-Tosamenstellen. Dat kiekt Dien Nettwarkümgeven na verföögbor Arbeitkoppeln, Servers un Freegaven dör un kann de Freegaven na Dien lokaal Dateisysteem inhangen.</p>
     <p xml:lang="nl">Smb4K is een geavanceerde browser voor de netwerkomgeving en hulpmiddel voor aankoppelen van Samba shares voor de KDE Software Compilation. Het scant uw netwerkomgeving voor alle beschikbare werkgroepen, servers en shares en kan alle gewenste shares aankoppelen aan uw lokale bestandssysteem.</p>
@@ -99,7 +99,7 @@
     <p xml:lang="fi">Smb4K käyttää Samba-ohjelmiston ohjelmia. Sen on tarkoitus olla helppokäyttöinen ja monipuolinen.</p>
     <p xml:lang="fr">Smb4K utilise les programmes de la suite logicielle Samba. Son objectif est de fournir un programme facile à utiliser et fournissant le plus de fonctionnalités possibles.</p>
     <p xml:lang="gl">Smb4K fai uso dos programas da colección de software Samba. O seu obxectivo é o de fornecer un programa fácil de usar que forneza tantas funcionalidades como sexa posíbel.</p>
-    <p xml:lang="it">Smb4K utilizza i programmi della suite Samba. Il suo scopo è quello di fornire un programma che sia facile da usare, e che abbia più funzionalità possibili.</p>
+    <p xml:lang="it">Smb4K utilizza i programmi della suite Samba. Il suo scopo è quello di fornire un programma che sia facile da usare e che abbia più funzionalità possibili.</p>
     <p xml:lang="ko">Smb4K는 Samba 소프트웨어의 프로그램을 사용합니다. 사용하기 편하면서도 기능이 풍부한 프로그램을 목적으로 합니다.</p>
     <p xml:lang="nds">Smb4K bruukt de Programmen ut de Samba-Programmsammeln. Dat schaal sik eenfach bedenen laten un so veel Funkschonen hebben as mööglich.</p>
     <p xml:lang="nl">Smb4K gebruikt de programma's van de Samba software suite. Het doel is een programma te bieden dat gemakkelijk is te gebruiken to use en zoveel mogelijk functies heeft.</p>
@@ -178,7 +178,7 @@
       <li xml:lang="fi">CIFS- (Linux) ja SMBFS-tiedostojärjestelmien (FreeBSD) tuki</li>
       <li xml:lang="fr">Prise en charge des systèmes de fichiers CIFS (Linux) et SMBFS (FreeBSD)</li>
       <li xml:lang="gl">É compatíbel cos sistemas de ficheiros CIFS (Linux) e SMBFS (FreeBSD).</li>
-      <li xml:lang="it">Supporta i file system CIFS (Linux) e SMBFS (FreeBSD)</li>
+      <li xml:lang="it">Supporto dei file system CIFS (Linux) e SMBFS (FreeBSD)</li>
       <li xml:lang="ko">CIFS(리눅스) 및 SMBFS(FreeBSD) 파일 시스템 지원</li>
       <li xml:lang="nds">Ünnerstütt dat CIFS- (op Linux) un SMBFS-Dateisysteem (op FreeBSD)</li>
       <li xml:lang="nl">Ondersteuning van het CIFS (Linux) en SMBFS (FreeBSD) bestandssysteem</li>
@@ -226,7 +226,7 @@
       <li xml:lang="fi">Pääsy liitetyn jaon tiedostoihin tiedostonhallinnasta tai päätteestä</li>
       <li xml:lang="fr">Accès aux fichiers d'un partage à travers un gestionnaire de fichiers ou un terminal</li>
       <li xml:lang="gl">Permite acceder aos ficheiros dunha compartición montada usando un xestor de ficheiros ou un terminal.</li>
-      <li xml:lang="it">Accesso ai file di una condivisione montata usando un file manager o un terminale</li>
+      <li xml:lang="it">Accesso ai file di una condivisione montata usando un gestore dei file o un terminale</li>
       <li xml:lang="ko">파일 관리자나 터미널을 통해서 마운트된 공유 내 파일에 접근</li>
       <li xml:lang="nds">Togriep op de Dateien binnen en inhangt Freegaav över Dateipleger oder Konsool</li>
       <li xml:lang="nl">Toegang tot de bestanden van een aangekoppeld gedeelde map met gebruik van een bestandsbeheerder of terminal</li>
@@ -250,7 +250,7 @@
       <li xml:lang="fi">Ulkoisten liitosten ja irrotusten automaattinen havaitseminen</li>
       <li xml:lang="fr">Auto-détection des montages et démontages externes</li>
       <li xml:lang="gl">Pode detectar automaticamente montaxes e desmontaxes externos.</li>
-      <li xml:lang="it">Auto-rilevazione di montaggi o smontaggi esterni</li>
+      <li xml:lang="it">Rilevazione automatica di montaggi o di smontaggi esterni</li>
       <li xml:lang="ko">외부 마운트 및 마운트 해제 자동 감지</li>
       <li xml:lang="nds">Automaatsch Opdecken vun In- un Uthangen vun buten ut</li>
       <li xml:lang="nl">Autodetectie van externe aan- en afkoppelingen</li>
@@ -274,7 +274,7 @@
       <li xml:lang="fi">Aiemmin käytettyjen jakojen uudelleenliittäminen ohjelman käynnistyessä</li>
       <li xml:lang="fr">Remontage de partages précédemment utilisés lors du démarrage du programme</li>
       <li xml:lang="gl">Pode volver montar comparticións usadas previamente ao iniciar o programa.</li>
-      <li xml:lang="it">Rimontaggio di una condivisione usata in precedenza all'avvio del programma</li>
+      <li xml:lang="it">Rimontaggio all'avvio del programma di una condivisione usata in precedenza</li>
       <li xml:lang="ko">프로그램을 시작할 때 이전에 사용한 공유 다시 마운트</li>
       <li xml:lang="nds">Wedderinhangen vun al vördem bruukt Freegaven bi Programmstart</li>
       <li xml:lang="nl">Recent gebruikte gedeelde mappen opnieuw tijdens het laden van het programma aankoppelen</li>
@@ -298,7 +298,7 @@
       <li xml:lang="fi">Erilaiset tiedot etäverkkokohteista ja liitetyistä jaoista</li>
       <li xml:lang="fr">Infos diverses sur les éléments réseau distants et les partages montés</li>
       <li xml:lang="gl">Fornece información variada sobre elementos remotos da rede e comparticións montadas.</li>
-      <li xml:lang="it">Informazioni varie su elementi di rete remoti e sulle condivisioni montate</li>
+      <li xml:lang="it">Informazioni varie sugli elementi di rete remoti e sulle condivisioni montate</li>
       <li xml:lang="ko">원격 네트워크 항목과 마운트된 공유에 대한 정보 제공</li>
       <li xml:lang="nds">En Reeg verscheden Informatschonen över Indrääg binnen Nettwarken un inhangt Freegaven</li>
       <li xml:lang="nl">Allerlei informatie over netwerk-items en aangekoppelde shares</li>
@@ -351,7 +351,7 @@
       <li xml:lang="fi">WINS-palvelintuki</li>
       <li xml:lang="fr">Prise en charge d'un serveur WINS</li>
       <li xml:lang="gl">É compatíbel con servidores WINS.</li>
-      <li xml:lang="it">Supporta i server WINS</li>
+      <li xml:lang="it">Supporto per server WINS</li>
       <li xml:lang="ko">WINS 서버 지원</li>
       <li xml:lang="nds">WINS-Server-Ünnerstütten</li>
       <li xml:lang="nl">Ondersteuning voor WINS-server</li>
@@ -473,7 +473,7 @@
       <li xml:lang="fi">Mahdollisuus tehdä suosikkijaoista kirjanmerkkejä</li>
       <li xml:lang="fr">Possibilité d'avoir des partages favoris</li>
       <li xml:lang="gl">Fornece un sistema de marcadores para gardar comparticións.</li>
-      <li xml:lang="it">Possibilità di aggiungere le condivisioni nei preferiti</li>
+      <li xml:lang="it">Possibilità di aggiungere le condivisioni preferite nei segnalibri</li>
       <li xml:lang="ko">자주 찾는 공유 책갈피 추가</li>
       <li xml:lang="nds">Leestekens för vörtrocken Freegaven</li>
       <li xml:lang="nl">Vermogen om van favoriete shares een bladwijzer te maken</li>
@@ -521,7 +521,7 @@
       <li xml:lang="fi">Edistyneiden Samba-asetusten tuki</li>
       <li xml:lang="fr">Prise en charge des options avancées de Samba</li>
       <li xml:lang="gl">Permite usar opcións avanzadas de Samba.</li>
-      <li xml:lang="it">Supporto ad opzioni Samba avanzate</li>
+      <li xml:lang="it">Supporto alle opzioni avanzate di Samba</li>
       <li xml:lang="ko">고급 Samba 옵션 지원</li>
       <li xml:lang="nds">Ünnerstütt verwieder Samba-Optschonen</li>
       <li xml:lang="nl">Ondersteuning van geavanceerde Samba-opties</li>
@@ -618,7 +618,7 @@
       <li xml:lang="fi">Mahdollisuus mukauttaa määräpalvelinten ja -jakojen asetuksia</li>
       <li xml:lang="fr">Possibilité de définir des options personnalisées pour des serveurs et des partages individuels</li>
       <li xml:lang="gl">Permite definir configuracións personalizadas para servidores e comparticións concretas.</li>
-      <li xml:lang="it">Capacità di definire opzioni personalizzate per server individuali e condivisioni</li>
+      <li xml:lang="it">Capacità di definire opzioni personalizzate per server individuali e per le condivisioni</li>
       <li xml:lang="ko">서버 및 공유 자원별 설정</li>
       <li xml:lang="nds">Lett Di Dien egen Optschonen för enkelte Servers un Freegaven fastleggen</li>
       <li xml:lang="nl">Vermogen om eigen opties voor individuele servers en shares te definiëren</li>
