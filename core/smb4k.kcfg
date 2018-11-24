@@ -265,18 +265,6 @@
       <whatsthis>Encrypt the SMB transport (Unix extended servers only). This setting affects the net, smbclient and smbtree command.</whatsthis>
       <default>false</default>
     </entry>  
-    <entry name="NameResolveOrder" type="String">
-      <label>Name resolve order:</label>
-      <whatsthis>This option is used to determine what naming services and in what order are used to resolve host names and IP addresses. It takes a space-separated list of up to four different name resolution options. Those are: lmhost, host, wins, bcast. See the manual page of smbclient for further information.</whatsthis>
-      <!-- Will be filled by Smb4KCore::setDefaultConfigValues() -->
-    </entry>
-    <entry name="BufferSize" type="Int">
-      <label>Buffer size:</label>
-      <whatsthis>This option changes the transmit/send buffer size when getting or putting a file from/to the server. The default is 65520 bytes. Setting this value smaller has been observed to speed up file transfers to and from Windows 9x servers.</whatsthis>
-      <min>1</min>
-      <max>250000</max>
-      <default>65520</default>
-    </entry>
     <entry name="SmbtreeSendBroadcasts" type="Bool">
       <label>Send requests as broadcasts</label>
       <whatsthis>Let smbtree query the network nodes by sending requests as broadcasts instead of querying the local master browser.</whatsthis>

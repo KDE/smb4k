@@ -180,33 +180,6 @@ Smb4KConfigPageSamba::Smb4KConfigPageSamba(QWidget *parent) : QTabWidget(parent)
   client_layout->setSpacing(5);
   client_layout->setMargin(0);
 
-  // 'smbclient' program
-  QGroupBox *smbclient_box = new QGroupBox(i18n("smbclient"), clients_tab);
-
-  QGridLayout *smbclient_layout = new QGridLayout(smbclient_box);
-  smbclient_layout->setSpacing(5);
-
-  QLabel *name_resolve_label = new QLabel(Smb4KSettings::self()->nameResolveOrderItem()->label(), smbclient_box);
-
-  KLineEdit *name_resolve = new KLineEdit(smbclient_box);
-  name_resolve->setObjectName("kcfg_NameResolveOrder");
-
-  name_resolve_label->setBuddy(name_resolve);
-
-  QLabel *buffer_size_label = new QLabel(Smb4KSettings::self()->bufferSizeItem()->label(), smbclient_box);
-
-  QSpinBox *buffer_size = new QSpinBox(smbclient_box);
-  buffer_size->setObjectName("kcfg_BufferSize");
-  buffer_size->setSuffix(i18n(" Bytes"));
-//   buffer_size->setSliderEnabled(true);
-
-  buffer_size_label->setBuddy(buffer_size);
-
-  smbclient_layout->addWidget(name_resolve_label, 0, 0, 0);
-  smbclient_layout->addWidget(name_resolve, 0, 1, 0);
-  smbclient_layout->addWidget(buffer_size_label, 2, 0, 0);
-  smbclient_layout->addWidget(buffer_size, 2, 1, 0);
-
   // 'smbtree' program
   QGroupBox *smbtree_box = new QGroupBox(i18n("smbtree"), clients_tab);
 
@@ -218,7 +191,6 @@ Smb4KConfigPageSamba::Smb4KConfigPageSamba(QWidget *parent) : QTabWidget(parent)
 
   smbtree_layout->addWidget(smbtree_bcasts, 0, 0, 0);
 
-  client_layout->addWidget(smbclient_box);
   client_layout->addWidget(smbtree_box);
   client_layout->addStretch(100);
 

@@ -322,16 +322,6 @@ void Smb4KGlobalPrivate::setDefaultSettings()
       Smb4KSettings::self()->netBIOSScopeItem()->setDefault();
     }
   }
-
-  if (!opts["name resolve order"].isEmpty())
-  {
-    Smb4KSettings::self()->nameResolveOrderItem()->setDefaultValue(opts["name resolve order"]);
-
-    if (Smb4KSettings::nameResolveOrder().isEmpty())
-    {
-      Smb4KSettings::self()->nameResolveOrderItem()->setDefault();
-    }
-  }
 }
 
 
