@@ -112,15 +112,6 @@ class Smb4KNetworkBrowserDockWidget : public QDockWidget
     void slotClientFinished(const NetworkItemPtr &item, int process);    
     
     /**
-     * This slot is called when an authentication error occurred. Depending on
-     * the @p process parameter it will take respective actions.
-     * @param host                The host where the authentication error occurred
-     * @param process             The process (action) that was running while the
-     *                            authentication error occurred
-     */
-    void slotAuthError(const HostPtr &host, int process);
-    
-    /**
      * This slot is called when workgroups/domains were discovered
      */
     void slotWorkgroups();
@@ -198,20 +189,6 @@ class Smb4KNetworkBrowserDockWidget : public QDockWidget
      * @param active              TRUE if the action is in the active state.
      */
     void slotMountActionChanged(bool active);
-    
-    /**
-     * This slot is connected to the Smb4KScanner::aboutToStart() signal.
-     * @param item                The Smb4KBasicNetworkItem object
-     * @param process             The process
-     */
-//     void slotScannerAboutToStart(const NetworkItemPtr &item, int process);
-
-    /**
-     * This slot is connected to the Smb4KScanner::finished() signal.
-     * @param item                The Smb4KBasicNetworkItem object
-     * @param process             The process
-     */
-//     void slotScannerFinished(const NetworkItemPtr &item, int process);
     
     /**
      * This slot is called whenever a share has been mounted. It marks the

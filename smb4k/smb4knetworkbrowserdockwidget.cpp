@@ -38,7 +38,6 @@
 #include "core/smb4kbookmarkhandler.h"
 #include "core/smb4kwalletmanager.h"
 #include "core/smb4kcustomoptionsmanager.h"
-#include "core/smb4kprint.h"
 #include "core/smb4kclient.h"
 
 // Qt includes
@@ -96,8 +95,6 @@ Smb4KNetworkBrowserDockWidget::Smb4KNetworkBrowserDockWidget(const QString& titl
   connect(Smb4KClient::self(), SIGNAL(workgroups()), this, SLOT(slotWorkgroups()));
   connect(Smb4KClient::self(), SIGNAL(hosts(WorkgroupPtr)), this, SLOT(slotWorkgroupMembers(WorkgroupPtr)));
   connect(Smb4KClient::self(), SIGNAL(shares(HostPtr)), this, SLOT(slotShares(HostPtr)));
-          
-//   connect(Smb4KScanner::self(), SIGNAL(authError(HostPtr,int)), this, SLOT(slotAuthError(HostPtr,int)));
 
   connect(Smb4KMounter::self(), SIGNAL(mounted(SharePtr)), this, SLOT(slotShareMounted(SharePtr)));
   connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)), this, SLOT(slotShareUnmounted(SharePtr)));
@@ -593,102 +590,6 @@ void Smb4KNetworkBrowserDockWidget::slotClientFinished(const NetworkItemPtr& /*i
   else
   {
     // Do nothing
-  }
-}
-
-
-void Smb4KNetworkBrowserDockWidget::slotAuthError(const HostPtr& host, int process)
-{
-  switch (process)
-  {
-    case LookupDomains:
-    {
-      //
-      // We queried a master browser for the list of domains and
-      // workgroups. So, we can clear the whole list of domains.
-      // 
-      while (m_networkBrowser->topLevelItemCount() != 0)
-      {
-        delete m_networkBrowser->takeTopLevelItem(0);
-      }
-      break;
-    }
-    case LookupDomainMembers:
-    {
-      //
-      // Get the workgroup and clear the list of domain members. 
-      // Then, reinsert the master browser.
-      //
-      if (m_networkBrowser->topLevelItemCount() != 0)
-      {
-        for (int i = 0; i < m_networkBrowser->topLevelItemCount(); ++i)
-        {
-          Smb4KNetworkBrowserItem *workgroup = static_cast<Smb4KNetworkBrowserItem *>(m_networkBrowser->topLevelItem(i));
-          
-          if (workgroup && workgroup->type() == Workgroup && 
-              QString::compare(host->workgroupName(), workgroup->workgroupItem()->workgroupName(), Qt::CaseInsensitive) == 0)
-          {
-            QList<QTreeWidgetItem *> hosts = workgroup->takeChildren();
-            
-            while (!hosts.isEmpty())
-            {
-              delete hosts.takeFirst();
-            }
-            break;
-          }
-          else
-          {
-            // Do nothing
-          }
-        }
-      }
-      else
-      {
-        // Do nothing
-      }
-      break;
-    }
-    case LookupShares:
-    {
-      //
-      // Get the host that could not be accessed.
-      // 
-      QTreeWidgetItemIterator it(m_networkBrowser);
-      
-      while (*it)
-      {
-        Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(*it);
-        
-        if (item && item->type() == Host)
-        {
-          if (QString::compare(host->hostName(), item->hostItem()->hostName(), Qt::CaseInsensitive) == 0 &&
-              QString::compare(host->workgroupName(), item->hostItem()->workgroupName(), Qt::CaseInsensitive) == 0)
-          {
-            QList<QTreeWidgetItem *> shares = item->takeChildren();
-            
-            while (!shares.isEmpty())
-            {
-              delete shares.takeFirst();
-            }
-            break;
-          }
-          else
-          {
-            // Do nothing
-          }
-        }
-        else
-        {
-          // Do nothing
-        }
-        ++it;
-      }
-      break;
-    }
-    default:
-    {
-      break;
-    }
   }
 }
 
@@ -1235,7 +1136,7 @@ void Smb4KNetworkBrowserDockWidget::slotPrint(bool /*checked*/)
   
   if (item && item->shareItem()->isPrinter())
   {
-    Smb4KPrint::self()->print(item->shareItem(), m_networkBrowser);
+    Smb4KClient::self()->openPrintDialog(item->shareItem());
   }
   else
   {
