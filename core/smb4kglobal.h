@@ -80,6 +80,7 @@ namespace Smb4KGlobal
    * @enum LookupShares           Look up shares on a server
    * @enum LookupFiles            Look up files and directories within a share
    * @enum WakeUp                 Send magic Wake-On-LAN packages
+   * @enum PrintFile              Print a file
    * @enum MountShare             Mount a share
    * @enum UnmountShare           Unmount a share
    * @enum NoProcess              No process
@@ -90,6 +91,7 @@ namespace Smb4KGlobal
     LookupShares,
     LookupFiles,
     WakeUp,
+    PrintFile,
     MountShare,
     UnmountShare,
     NoProcess };
