@@ -43,7 +43,6 @@
 #include "core/smb4kshare.h"
 #include "core/smb4kfile.h"
 #include "core/smb4kmounter.h"
-#include "core/smb4kprint.h"
 #include "core/smb4ksynchronizer.h"
 #include "core/smb4ksearch.h"
 #include "core/smb4kclient.h"
@@ -204,12 +203,6 @@ void Smb4KMainWindow::setupStatusBar()
 
   connect(Smb4KSearch::self(), SIGNAL(finished(QString)),
           this, SLOT(slotSearchFinished(QString)));
-
-  connect(Smb4KPrint::self(), SIGNAL(aboutToStart(SharePtr)),
-          this, SLOT(slotPrintingAboutToStart(SharePtr)));
-
-  connect(Smb4KPrint::self(), SIGNAL(finished(SharePtr)),
-          this, SLOT(slotPrintingFinished(SharePtr)));
 
   connect(Smb4KSynchronizer::self(), SIGNAL(aboutToStart(QString)),
           this, SLOT(slotSynchronizerAboutToStart(QString)));
@@ -909,6 +902,12 @@ void Smb4KMainWindow::slotClientAboutToStart(const NetworkItemPtr &item, int pro
       statusBar()->showMessage(i18n("Waking up remote hosts..."), 0);
       break;
     }
+    case PrintFile:
+    {
+      SharePtr share = item.staticCast<Smb4KShare>();
+      statusBar()->showMessage(i18n("Sending file to printer %1...", share->displayString()), 0);
+      break;
+    }
     default:
     {
       break;
@@ -1157,36 +1156,6 @@ void Smb4KMainWindow::slotSearchAboutToStart(const QString &string)
 
 
 void Smb4KMainWindow::slotSearchFinished(const QString &/*string*/)
-{
-  if (!coreIsRunning())
-  {
-    m_progress_bar->setVisible(false);
-    m_progress_bar->reset();
-    statusBar()->showMessage(i18n("Done."), 2000);
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KMainWindow::slotPrintingAboutToStart(const SharePtr &printer)
-{
-  statusBar()->showMessage(i18n("Sending file to printer %1...", printer->unc()), 0);
-
-  if (!m_progress_bar->isVisible())
-  {
-    m_progress_bar->setVisible(true);
-  }
-  else
-  {
-    // Do nothing
-  }
-}
-
-
-void Smb4KMainWindow::slotPrintingFinished(const SharePtr &/*printer*/)
 {
   if (!coreIsRunning())
   {

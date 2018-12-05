@@ -180,22 +180,6 @@ class Smb4KMainWindow : public KXmlGuiWindow
    void slotSearchFinished(const QString &string);
      
     /**
-     * This slot shows a status message as well as a busy bar. It is connected to the 
-     * Smb4KPrint::aboutToStart() signal.
-     *
-     * @param printer       The remote printer
-     */
-    void slotPrintingAboutToStart(const SharePtr &printer);
-
-    /**
-     * This shows a status message and hides the busy bar if appropriate. It is 
-     * connected to the Smb4KPrint::finished() signal.
-     *
-     * @param printer       The remote printer
-     */
-    void slotPrintingFinished(const SharePtr &printer);
-
-    /**
      * This slot shows a message according to the action performed by the synchronizer.
      * It is connected to the Smb4KSynchronizer::aboutToStart() signal.
      *
