@@ -45,6 +45,7 @@
 
 // KDE includes
 #include <KCoreAddons/KJob>
+#include <KIOCore/KFileItem>
 
 
 class Smb4KClientJob : public KJob
@@ -104,6 +105,26 @@ class Smb4KClientJob : public KJob
     NetworkItemPtr networkItem() const;
     
     /**
+     * Set the process
+     */
+    void setProcess(Smb4KGlobal::Process process);
+    
+    /**
+     * Return the process
+     */
+    Smb4KGlobal::Process process() const;
+    
+    /**
+     * Set the file to print
+     */
+    void setPrintFileUrl(const QUrl &url);
+    
+    /**
+     * Set the number of copies that are to be printed
+     */
+    void setPrintCopies(int copies);
+    
+    /**
      * The authentication function for libsmbclient
      */
     void get_auth_data_fn(const char *server, 
@@ -143,13 +164,18 @@ class Smb4KClientJob : public KJob
     void slotStartJob();
     
   private:
+    void doLookups();
+    void doPrinting();
     QHostAddress lookupIpAddress(const QString &name);
+    Smb4KGlobal::Process m_process;
     SMBCCTX *m_context;
     NetworkItemPtr m_item;
     QList<WorkgroupPtr> m_workgroups;
     QList<HostPtr> m_hosts;
     QList<SharePtr> m_shares;
     QList<FilePtr> m_files;
+    QUrl m_fileUrl;
+    int m_copies;
 };
 
 
@@ -250,10 +276,73 @@ class Smb4KPreviewDialog : public QDialog
 };
 
 
+class Smb4KPrintDialog : public QDialog
+{
+  Q_OBJECT
+  
+  public:
+    /**
+     * Constructor
+     */
+    Smb4KPrintDialog(const SharePtr &share, QWidget *parent = 0);
+    
+    /**
+     * Destructor
+     */
+    ~Smb4KPrintDialog();
+    
+    /**
+     * Returns the share that is printed to
+     * 
+     * @returns the share
+     */
+    SharePtr share() const;
+    
+    /**
+     * Returns the file item that is to be printed
+     * 
+     * @returns the file
+     */
+    KFileItem fileItem() const;
+    
+  Q_SIGNALS:
+    /**
+     * Emitted when a file is to be printed
+     */
+    void printFile(const SharePtr &printer, const KFileItem &file, int copies);
+    
+    /**
+     * Emitted when the dialog is about to close
+     */
+    void aboutToClose(Smb4KPrintDialog *dialog);
+    
+  protected Q_SLOTS:
+    /**
+     * Print button was clicked
+     */
+    void slotPrintButtonClicked();
+    
+    /**
+     * Cancel button clicked
+     */
+    void slotCancelButtonClicked();
+    
+    /**
+     * Called when the URL was changed
+     */
+    void slotUrlChanged();
+    
+  private:
+    SharePtr m_share;
+    KFileItem m_fileItem;
+};
+
+
 class Smb4KClientPrivate
 {
   public:
     QList<Smb4KPreviewDialog *> previewDialogs;
+    QList<Smb4KPrintDialog *> printDialogs;
 };
 
 

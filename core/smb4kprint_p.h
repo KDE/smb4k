@@ -140,93 +140,93 @@ class Smb4KPrintJob : public KJob
 };
 
 
-class Smb4KPrintDialog : public QDialog
-{
-  Q_OBJECT
-
-  public:
-    /**
-     * The constructor.
-     *
-     * @param share       The Smb4KShare item representing the printer.
-     * 
-     * @param printer     The QPrinter object
-     *
-     * @param parent      The parent widget of this dialog.
-     */
-    Smb4KPrintDialog(const SharePtr &share, QPrinter *printer, QWidget *parent = 0);
-
-    /**
-     * The destructor
-     */
-    ~Smb4KPrintDialog();
-    
-    /**
-     * Returns the URL of the file that was chosen to be printed.
-     * 
-     * @returns the URL of the file
-     */
-    const QUrl &fileURL() { return m_url; }
-    
-    /**
-     * Returns the QPrinter object
-     * 
-     * @returns the QPrinter object
-     */
-    QPrinter *printer() { return m_printer; }
-    
-  protected Q_SLOTS:
-    void slotPrintClicked();
-    void slotCancelClicked();
-    void slotOptionsClicked();
-    void slotInputValueChanged(const QString &text);
-
-  private:
-    /**
-     * Set up the view.
-     */
-    void setupView(const SharePtr &share);
-    
-    /**
-     * The Print button
-     */
-    QPushButton *m_print_button;
-    
-    /**
-     * The Cancel button
-     */
-    QPushButton *m_cancel_button;
-    
-    /**
-     * The Options button
-     */
-    QPushButton *m_optionsButton;
-    
-    /**
-     * The Details widget
-     */
-    QGroupBox *m_options_box;
-    
-    /**
-     * The printer object
-     */
-    QPrinter *m_printer;
-
-    /**
-     * The url requester
-     */
-    KUrlRequester *m_file;
-
-    /**
-     * The copies input
-     */
-    QSpinBox *m_copies;
-    
-    /**
-     * The file URL
-     */
-    QUrl m_url;
-};
+// class Smb4KPrintDialog : public QDialog
+// {
+//   Q_OBJECT
+// 
+//   public:
+//     /**
+//      * The constructor.
+//      *
+//      * @param share       The Smb4KShare item representing the printer.
+//      * 
+//      * @param printer     The QPrinter object
+//      *
+//      * @param parent      The parent widget of this dialog.
+//      */
+//     Smb4KPrintDialog(const SharePtr &share, QPrinter *printer, QWidget *parent = 0);
+// 
+//     /**
+//      * The destructor
+//      */
+//     ~Smb4KPrintDialog();
+//     
+//     /**
+//      * Returns the URL of the file that was chosen to be printed.
+//      * 
+//      * @returns the URL of the file
+//      */
+//     const QUrl &fileURL() { return m_url; }
+//     
+//     /**
+//      * Returns the QPrinter object
+//      * 
+//      * @returns the QPrinter object
+//      */
+//     QPrinter *printer() { return m_printer; }
+//     
+//   protected Q_SLOTS:
+//     void slotPrintClicked();
+//     void slotCancelClicked();
+//     void slotOptionsClicked();
+//     void slotInputValueChanged(const QString &text);
+// 
+//   private:
+//     /**
+//      * Set up the view.
+//      */
+//     void setupView(const SharePtr &share);
+//     
+//     /**
+//      * The Print button
+//      */
+//     QPushButton *m_print_button;
+//     
+//     /**
+//      * The Cancel button
+//      */
+//     QPushButton *m_cancel_button;
+//     
+//     /**
+//      * The Options button
+//      */
+//     QPushButton *m_optionsButton;
+//     
+//     /**
+//      * The Details widget
+//      */
+//     QGroupBox *m_options_box;
+//     
+//     /**
+//      * The printer object
+//      */
+//     QPrinter *m_printer;
+// 
+//     /**
+//      * The url requester
+//      */
+//     KUrlRequester *m_file;
+// 
+//     /**
+//      * The copies input
+//      */
+//     QSpinBox *m_copies;
+//     
+//     /**
+//      * The file URL
+//      */
+//     QUrl m_url;
+// };
 
 
 class Smb4KPrintStatic

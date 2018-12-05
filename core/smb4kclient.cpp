@@ -38,12 +38,16 @@
 #include "smb4kglobal.h"
 #include "smb4khomesshareshandler.h"
 #include "smb4kwalletmanager.h"
+#include "smb4knotification.h"
 
 // Qt includes
 #include <QUdpSocket>
 #include <QHostAddress>
 #include <QTest>
 #include <QApplication>
+#include <QPrinter>
+#include <QTemporaryDir>
+#include <QTextDocument>
 
 #define TIMER_INTERVAL 250
 
@@ -199,6 +203,7 @@ void Smb4KClient::lookupDomains()
   // 
   Smb4KClientJob *job = new Smb4KClientJob(this);
   job->setNetworkItem(item);
+  job->setProcess(LookupDomains);
   
   connect(job, SIGNAL(result(KJob*)), this, SLOT(slotJobFinished(KJob*)));
   
@@ -243,6 +248,7 @@ void Smb4KClient::lookupDomainMembers(const WorkgroupPtr &workgroup)
   // 
   Smb4KClientJob *job = new Smb4KClientJob(this);
   job->setNetworkItem(workgroup);
+  job->setProcess(LookupDomainMembers);
   
   connect(job, SIGNAL(result(KJob*)), this, SLOT(slotJobFinished(KJob*)));
   
@@ -282,6 +288,7 @@ void Smb4KClient::lookupShares(const HostPtr &host)
   // 
   Smb4KClientJob *job = new Smb4KClientJob(this);
   job->setNetworkItem(host);
+  job->setProcess(LookupShares);
   
   connect(job, SIGNAL(result(KJob*)), this, SLOT(slotJobFinished(KJob*)));
   
@@ -326,6 +333,7 @@ void Smb4KClient::lookupFiles(const NetworkItemPtr &item)
     // 
     Smb4KClientJob *job = new Smb4KClientJob(this);
     job->setNetworkItem(item);
+    job->setProcess(LookupFiles);
     
     connect(job, SIGNAL(result(KJob*)), this, SLOT(slotJobFinished(KJob*)));
     
@@ -355,6 +363,132 @@ void Smb4KClient::lookupFiles(const NetworkItemPtr &item)
   {
     // Do nothing
   }
+}
+
+
+void Smb4KClient::printFile(const SharePtr& share, const KFileItem& fileItem, int copies)
+{
+  //
+  // Set the URL of the file that is to be printed
+  // 
+  QUrl fileUrl;
+  
+  //
+  // Check if we can directly print the file
+  // 
+  if (fileItem.mimetype() == "application/postscript" || 
+      fileItem.mimetype() == "application/pdf" ||
+      fileItem.mimetype().startsWith(QLatin1String("image")))
+  {
+    //
+    // Set the URL of the file that is to be printed
+    // 
+    fileUrl = fileItem.url();
+  } 
+  else if (fileItem.mimetype() == "application/x-shellscript" ||
+           fileItem.mimetype().startsWith(QLatin1String("text")) || 
+           fileItem.mimetype().startsWith(QLatin1String("message")))
+  {
+    //
+    // Set the temporary directory
+    //
+    QTemporaryDir tempDir;
+    tempDir.setAutoRemove(false);
+    
+    //
+    // Set a printer object
+    //
+    QPrinter printer(QPrinter::HighResolution);
+    printer.setCreator("Smb4K");
+    printer.setOutputFormat(QPrinter::PdfFormat);
+    printer.setOutputFileName(QString("%1/smb4k_print.pdf").arg(tempDir.path()));
+    
+    //
+    // Open the file that is to be printed and read it
+    // 
+    QStringList contents;
+      
+    QFile file(fileItem.url().path());
+      
+    if (file.open(QFile::ReadOnly|QFile::Text))
+    {
+      QTextStream ts(&file);
+      
+      while (!ts.atEnd())
+      {
+        contents << ts.readLine();
+      }
+    }
+    else
+    {
+      return;
+    }
+    
+    //
+    // Convert the file to PDF
+    // 
+    QTextDocument doc;
+    
+    if (fileItem.mimetype().endsWith(QLatin1String("html")))
+    {
+      doc.setHtml(contents.join(" "));
+    }
+    else
+    {
+      doc.setPlainText(contents.join("\n"));
+    }
+      
+    doc.print(&printer);
+    
+    //
+    // Set the URL of the file that is to be printed
+    // 
+    fileUrl.setUrl(printer.outputFileName());
+    fileUrl.setScheme("file");
+  }
+  else
+  {
+    Smb4KNotification::mimetypeNotSupported(fileItem.mimetype());
+    return;
+  }
+  
+  //
+  // Emit the aboutToStart() signal
+  // 
+  emit aboutToStart(share, PrintFile);
+  
+  // 
+  // Create the job
+  // 
+  Smb4KClientJob *job = new Smb4KClientJob(this);
+  job->setNetworkItem(share);
+  job->setPrintFileUrl(fileUrl);
+  job->setPrintCopies(copies);
+  job->setProcess(PrintFile);
+    
+  connect(job, SIGNAL(result(KJob*)), this, SLOT(slotJobFinished(KJob*)));
+  
+  //
+  // Set the busy cursor
+  //
+  if (!hasSubjobs() && modifyCursor())
+  {
+    QApplication::setOverrideCursor(Qt::BusyCursor);
+  }
+  else
+  {
+    // Do nothing
+  }
+
+  //
+  // Add the job to the subjobs
+  //
+  addSubjob(job);
+
+  //
+  // Start the job
+  // 
+  job->start();
 }
 
 
@@ -421,6 +555,72 @@ void Smb4KClient::openPreviewDialog(const SharePtr &share)
     connect(this, SIGNAL(files(QList<FilePtr>)), dlg, SLOT(slotPreviewResults(QList<FilePtr>)));
     connect(this, SIGNAL(aboutToStart(NetworkItemPtr,int)), dlg, SLOT(slotAboutToStart(NetworkItemPtr,int)));
     connect(this, SIGNAL(finished(NetworkItemPtr,int)), dlg, SLOT(slotFinished(NetworkItemPtr,int)));
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // Show the preview dialog
+  // 
+  if (!dlg->isVisible())
+  {
+    dlg->setVisible(true);
+  }
+  else
+  {
+    // Do nothing
+  }
+}
+
+
+void Smb4KClient::openPrintDialog(const SharePtr& share)
+{
+  //
+  // Printer share check
+  // 
+  if (!share->isPrinter())
+  {        
+    return;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // Start the print dialog
+  // 
+  // First, check if a print dialog has already been set up for this share 
+  // and reuse it, if possible.
+  // 
+  QPointer<Smb4KPrintDialog> dlg = 0;
+  
+  for (Smb4KPrintDialog *p : d->printDialogs)
+  {
+    if (share == p->share())
+    {
+      dlg = p;
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  //
+  // If there was no print dialog present, create a new one
+  // 
+  if (!dlg)
+  {
+    Smb4KWalletManager::self()->readAuthInfo(share);
+    
+    dlg = new Smb4KPrintDialog(share, QApplication::activeWindow());
+    d->printDialogs << dlg;
+    
+    connect(dlg, SIGNAL(printFile(SharePtr, KFileItem, int)), this, SLOT(slotStartPrinting(SharePtr, KFileItem, int)));
+    connect(dlg, SIGNAL(aboutToClose(Smb4KPrintDialog *)), this, SLOT(slotPrintDialogClosed(Smb4KPrintDialog *)));
   }
   else
   {
@@ -971,6 +1171,35 @@ void Smb4KClient::slotPreviewDialogClosed(Smb4KPreviewDialog *dialog)
 void Smb4KClient::slotAbort()
 {
   abort();
+}
+
+
+void Smb4KClient::slotStartPrinting(const SharePtr& printer, const KFileItem& fileItem, int copies)
+{
+  //
+  // Start printing
+  // 
+  printFile(printer, fileItem, copies);
+}
+
+
+void Smb4KClient::slotPrintDialogClosed(Smb4KPrintDialog* dialog)
+{
+  //
+  // Remove the print dialog from the list
+  // 
+  if (dialog)
+  {
+    // Find the dialog in the list and take it from the list.
+    // It will automatically be deleted on close, so there is
+    // no need to delete the dialog here.
+    int i = d->printDialogs.indexOf(dialog);
+    d->printDialogs.takeAt(i);
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 

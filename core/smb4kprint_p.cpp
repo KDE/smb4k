@@ -153,161 +153,161 @@ void Smb4KPrintJob::processOutput(const QString& stdOut)
 
 void Smb4KPrintJob::slotStartPrinting()
 {
-  //
-  // Find the shell command
-  //
-  QString smbspool = QStandardPaths::findExecutable("smbspool");
-
-  if (smbspool.isEmpty())
-  {
-    Smb4KNotification::commandNotFound("smbspool");
-    emitResult();
-    return;
-  }
-  else
-  {
-    // Go ahead
-  }
-  
-  //
-  // Show the print dialog and start the printing
-  //  
-  if (m_share)
-  {
-    // The URL and path of the document that is going to be printed
-    QUrl fileURL;
-    
-    // Temporary directory
-    m_tempDir.setAutoRemove(false);
-    
-    // The printer
-    QPrinter *printer = new QPrinter(QPrinter::HighResolution);
-    printer->setCreator("Smb4K");
-    printer->setOutputFormat(QPrinter::NativeFormat);
-    printer->setOutputFileName(QString("%1/smb4k_print.ps").arg(m_tempDir.path()));
-    
-    // Open the print dialog
-    QPointer<Smb4KPrintDialog> dlg = new Smb4KPrintDialog(m_share, printer, m_parent_widget);
-    
-    if (dlg->exec() == QDialog::Accepted)
-    {
-      fileURL = dlg->fileURL();
-      
-      // Check that the file exists
-      if (!QFile::exists(fileURL.path()))
-      {
-        Smb4KNotification::fileNotFound(fileURL.path());
-        emitResult();
-        return;
-      }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // The user canceled. Kill the job.
-      emitResult();
-      return;
-    }
-    
-    delete dlg;
-
-    // Get the file name.
-    KFileItem fileItem = KFileItem(fileURL);
-    
-    // Check whether we can directly print or convert the file.
-    if (QString::compare(fileItem.mimetype(), "application/postscript") == 0 ||
-        QString::compare(fileItem.mimetype(), "application/pdf") == 0 ||
-        fileItem.mimetype().startsWith(QLatin1String("image")))
-    {
-      // Nothing to do here. These mimetypes can be directly
-      // printed.
-    }
-    else if (fileItem.mimetype().startsWith(QLatin1String("text")) || 
-             fileItem.mimetype().startsWith(QLatin1String("message")) ||
-             QString::compare(fileItem.mimetype(), "application/x-shellscript") == 0)
-    {
-      QStringList contents;
-      
-      QFile file(fileURL.path());
-      
-      if (file.open(QFile::ReadOnly|QFile::Text))
-      {
-        QTextStream ts(&file);
-        
-        while (!ts.atEnd())
-        {
-          contents << ts.readLine();
-        }
-      }
-      else
-      {
-        emitResult();
-        return;
-      }
-      
-      // Convert this file to PostScript.
-      QTextDocument doc;
-      if (fileItem.mimetype().endsWith(QLatin1String("html")))
-      {
-        doc.setHtml(contents.join(" "));
-      }
-      else
-      {
-        doc.setPlainText(contents.join("\n"));
-      }
-      
-      doc.print(printer);
-      
-      // Set the URL of the new file and make sure
-      // that the correct protocol is used.
-      fileURL.setUrl(printer->outputFileName());
-      fileURL.setScheme("file");
-    }
-    else
-    {
-      Smb4KNotification::mimetypeNotSupported(fileItem.mimetype());
-      emitResult();
-      return;
-    }
-    
-    //
-    // The command
-    //
-    QStringList command;
-    command << smbspool;                                    // The shell command
-    command << "111";                                       // job ID number; not used at the moment
-    command << KUser(KUser::UseRealUserID).loginName();     // user name; not used at the moment
-    command << "Smb4K print job";                           // job name
-    command << QString("%1").arg(printer->copyCount());     // number of copies
-    command << "";                                          // options; not used at the moment
-    command << fileURL.path();                              // file to print
-    
-    delete printer;
-    
-    // Start the print process
-    emit aboutToStart(m_share);
-    
-    //
-    // The process
-    //
-    m_process = new Smb4KProcess(this);
-    m_process->setOutputChannelMode(KProcess::SeparateChannels);
-    m_process->setEnv("DEVICE_URI", m_share->url().url(), true);
-    m_process->setEnv("PASSWD", m_share->password(), true);
-    m_process->setProgram(command);
-
-    connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(slotProcessFinished(int,QProcess::ExitStatus)));
-
-    m_process->start();
-  }
-  else
-  {
-    emitResult();
-    return;
-  }
+//   //
+//   // Find the shell command
+//   //
+//   QString smbspool = QStandardPaths::findExecutable("smbspool");
+// 
+//   if (smbspool.isEmpty())
+//   {
+//     Smb4KNotification::commandNotFound("smbspool");
+//     emitResult();
+//     return;
+//   }
+//   else
+//   {
+//     // Go ahead
+//   }
+//   
+//   //
+//   // Show the print dialog and start the printing
+//   //  
+//   if (m_share)
+//   {
+//     // The URL and path of the document that is going to be printed
+//     QUrl fileURL;
+//     
+//     // Temporary directory
+//     m_tempDir.setAutoRemove(false);
+//     
+//     // The printer
+//     QPrinter *printer = new QPrinter(QPrinter::HighResolution);
+//     printer->setCreator("Smb4K");
+//     printer->setOutputFormat(QPrinter::NativeFormat);
+//     printer->setOutputFileName(QString("%1/smb4k_print.ps").arg(m_tempDir.path()));
+//     
+//     // Open the print dialog
+//     QPointer<Smb4KPrintDialog> dlg = new Smb4KPrintDialog(m_share, printer, m_parent_widget);
+//     
+//     if (dlg->exec() == QDialog::Accepted)
+//     {
+//       fileURL = dlg->fileURL();
+//       
+//       // Check that the file exists
+//       if (!QFile::exists(fileURL.path()))
+//       {
+//         Smb4KNotification::fileNotFound(fileURL.path());
+//         emitResult();
+//         return;
+//       }
+//       else
+//       {
+//         // Do nothing
+//       }
+//     }
+//     else
+//     {
+//       // The user canceled. Kill the job.
+//       emitResult();
+//       return;
+//     }
+//     
+//     delete dlg;
+// 
+//     // Get the file name.
+//     KFileItem fileItem = KFileItem(fileURL);
+//     
+//     // Check whether we can directly print or convert the file.
+//     if (QString::compare(fileItem.mimetype(), "application/postscript") == 0 ||
+//         QString::compare(fileItem.mimetype(), "application/pdf") == 0 ||
+//         fileItem.mimetype().startsWith(QLatin1String("image")))
+//     {
+//       // Nothing to do here. These mimetypes can be directly
+//       // printed.
+//     }
+//     else if (fileItem.mimetype().startsWith(QLatin1String("text")) || 
+//              fileItem.mimetype().startsWith(QLatin1String("message")) ||
+//              QString::compare(fileItem.mimetype(), "application/x-shellscript") == 0)
+//     {
+//       QStringList contents;
+//       
+//       QFile file(fileURL.path());
+//       
+//       if (file.open(QFile::ReadOnly|QFile::Text))
+//       {
+//         QTextStream ts(&file);
+//         
+//         while (!ts.atEnd())
+//         {
+//           contents << ts.readLine();
+//         }
+//       }
+//       else
+//       {
+//         emitResult();
+//         return;
+//       }
+//       
+//       // Convert this file to PostScript.
+//       QTextDocument doc;
+//       if (fileItem.mimetype().endsWith(QLatin1String("html")))
+//       {
+//         doc.setHtml(contents.join(" "));
+//       }
+//       else
+//       {
+//         doc.setPlainText(contents.join("\n"));
+//       }
+//       
+//       doc.print(printer);
+//       
+//       // Set the URL of the new file and make sure
+//       // that the correct protocol is used.
+//       fileURL.setUrl(printer->outputFileName());
+//       fileURL.setScheme("file");
+//     }
+//     else
+//     {
+//       Smb4KNotification::mimetypeNotSupported(fileItem.mimetype());
+//       emitResult();
+//       return;
+//     }
+//     
+//     //
+//     // The command
+//     //
+//     QStringList command;
+//     command << smbspool;                                    // The shell command
+//     command << "111";                                       // job ID number; not used at the moment
+//     command << KUser(KUser::UseRealUserID).loginName();     // user name; not used at the moment
+//     command << "Smb4K print job";                           // job name
+//     command << QString("%1").arg(printer->copyCount());     // number of copies
+//     command << "";                                          // options; not used at the moment
+//     command << fileURL.path();                              // file to print
+//     
+//     delete printer;
+//     
+//     // Start the print process
+//     emit aboutToStart(m_share);
+//     
+//     //
+//     // The process
+//     //
+//     m_process = new Smb4KProcess(this);
+//     m_process->setOutputChannelMode(KProcess::SeparateChannels);
+//     m_process->setEnv("DEVICE_URI", m_share->url().url(), true);
+//     m_process->setEnv("PASSWD", m_share->password(), true);
+//     m_process->setProgram(command);
+// 
+//     connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(slotProcessFinished(int,QProcess::ExitStatus)));
+// 
+//     m_process->start();
+//   }
+//   else
+//   {
+//     emitResult();
+//     return;
+//   }
 }
 
 
@@ -349,174 +349,174 @@ void Smb4KPrintJob::slotProcessFinished(int /*exitCode*/, QProcess::ExitStatus s
 
 
 
-Smb4KPrintDialog::Smb4KPrintDialog(const SharePtr &share, QPrinter *printer, QWidget *parent)
-: QDialog(parent), m_printer(printer)
-{
-  setWindowTitle(i18n("Print File"));
-  
-  // Set up the view.
-  setupView(share);
-
-  m_print_button->setEnabled(false);
-           
-  setMinimumWidth(sizeHint().width() > 350 ? sizeHint().width() : 350);
-  
-  create();
-
-  KConfigGroup group(Smb4KSettings::self()->config(), "PrintDialog");
-  KWindowConfig::restoreWindowSize(windowHandle(), group);
-  resize(windowHandle()->size()); // workaround for QTBUG-40584
-}
-
-
-Smb4KPrintDialog::~Smb4KPrintDialog()
-{
-}
-
-
-void Smb4KPrintDialog::setupView(const SharePtr &share)
-{
-  QVBoxLayout *main_widget_layout = new QVBoxLayout(this);
-
-  // Printer box
-  QGroupBox *printer_box = new QGroupBox(i18n("Printer"), this);
-  QHBoxLayout *printer_box_layout = new QHBoxLayout(printer_box);
-  
-  // Icon 
-  QLabel *pixmap = new QLabel(printer_box);
-  QPixmap print_pix = share->icon().pixmap(KIconLoader::SizeHuge);
-  pixmap->setPixmap(print_pix);
-  pixmap->setAlignment(Qt::AlignBottom);
-
-  // Description
-  QWidget *desc_box = new QWidget(printer_box);
-
-  QGridLayout *desc_box_layout = new QGridLayout(desc_box);
-  desc_box_layout->setSpacing(5);
-
-  QLabel *unc_label = new QLabel(i18n("UNC Address:"), desc_box);
-  QLabel *unc = new QLabel(share->unc(), desc_box);
-  QLabel *ip_label = new QLabel(i18n("IP Address:"), desc_box);
-  QLabel *ip = new QLabel(!share->hasHostIpAddress() ? i18n("unknown") : share->hostIpAddress(), desc_box);
-  QLabel *wg_label = new QLabel(i18n("Workgroup:"), desc_box);
-  QLabel *workgroup = new QLabel(share->workgroupName(), desc_box);
-
-  desc_box_layout->addWidget(unc_label, 0, 0, 0);
-  desc_box_layout->addWidget(unc, 0, 1, 0);
-  desc_box_layout->addWidget(ip_label, 1, 0, 0);
-  desc_box_layout->addWidget(ip, 1, 1, 0);
-  desc_box_layout->addWidget(wg_label, 2, 0, 0);
-  desc_box_layout->addWidget(workgroup, 2, 1, 0);
-  desc_box_layout->setColumnMinimumWidth(2, 0);
-  desc_box_layout->setColumnStretch(2, 1);
-
-  desc_box->adjustSize();
-
-  printer_box_layout->addWidget(pixmap);
-  printer_box_layout->addWidget(desc_box, Qt::AlignBottom);
-
-  // File requester box
-  QGroupBox *file_box = new QGroupBox(i18n("File"), this);
-
-  QGridLayout *file_box_layout = new QGridLayout(file_box);
-  file_box_layout->setSpacing(5);
-
-  QLabel *file_label = new QLabel(i18n("File:"), file_box);
-  m_file = new KUrlRequester(file_box);
-  m_file->setMode(KFile::File | KFile::LocalOnly | KFile::ExistingOnly);
-  m_file->setWhatsThis(i18n("This is the file you want to print on the remote printer. " 
-    "Currently only a few mimetypes are supported such as PDF, Postscript, plain text, and " 
-    "images. If the file's mimetype is not supported, you need to convert it."));
-//   m_file->setToolTip(i18n("The file that is to be printed"));
-
-  file_box_layout->addWidget(file_label, 0, 0, 0);
-  file_box_layout->addWidget(m_file, 0, 1, 0);
-
-  // Options
-  m_options_box = new QGroupBox(i18n("Options"), this);
-
-  QGridLayout *options_box_layout = new QGridLayout(m_options_box);
-  options_box_layout->setSpacing(5);
-
-  QLabel *copies_label = new QLabel(i18n("Copies:"), m_options_box);
-  m_copies = new QSpinBox(m_options_box);
-  m_copies->setValue(1);
-  m_copies->setMinimum(1);
-  m_copies->setWhatsThis(i18n("This is the number of copies you want to print."));
-//   m_copies->setToolTip(i18n("The number of copies"));
-
-  options_box_layout->addWidget(copies_label, 0, 0, 0);
-  options_box_layout->addWidget(m_copies, 0, 1, 0);
-  
-  m_options_box->setVisible(false);
-  
-  QDialogButtonBox *buttonBox = new QDialogButtonBox(this);
-  m_optionsButton = buttonBox->addButton(i18n("Options >>"), QDialogButtonBox::ResetRole);
-  m_print_button = buttonBox->addButton(i18n("Print"), QDialogButtonBox::ActionRole);
-  m_cancel_button = buttonBox->addButton(QDialogButtonBox::Cancel);
-  
-  m_print_button->setShortcut(Qt::CTRL|Qt::Key_P);
-  m_cancel_button->setShortcut(Qt::Key_Escape);
-  
-  m_cancel_button->setDefault(true);
-
-  main_widget_layout->addWidget(printer_box, 0);
-  main_widget_layout->addWidget(file_box, 0);
-  main_widget_layout->addWidget(m_options_box, 0);
-  main_widget_layout->addWidget(buttonBox, 0);
-
-//   printer_box->adjustSize();
-  file_box->adjustSize();
-  
-  connect(m_file, SIGNAL(textChanged(QString)), this, SLOT(slotInputValueChanged(QString)));
-  connect(m_print_button, SIGNAL(clicked()), this, SLOT(slotPrintClicked()));
-  connect(m_cancel_button, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
-  connect(m_optionsButton, SIGNAL(clicked()), this, SLOT(slotOptionsClicked()));
-}
-
-
-/////////////////////////////////////////////////////////////////////////////
-//  SLOT IMPLEMENTATIONS
-/////////////////////////////////////////////////////////////////////////////
-
-void Smb4KPrintDialog::slotPrintClicked()
-{
-  m_url = m_file->url();
-  m_printer->setCopyCount(m_copies->value());
-  accept();
-}
-
-
-void Smb4KPrintDialog::slotCancelClicked()
-{
-  KConfigGroup group(Smb4KSettings::self()->config(), "PrintDialog");
-  KWindowConfig::saveWindowSize(windowHandle(), group);
-  reject();
-}
-
-
-void Smb4KPrintDialog::slotOptionsClicked()
-{
-  if (m_options_box->isVisible())
-  {
-    m_options_box->setVisible(false);
-    m_optionsButton->setText(i18n("Options >>"));
-  }
-  else
-  {
-    m_options_box->setVisible(true);
-    m_optionsButton->setText(i18n("Options <<"));
-  }
-  
-//   adjustSize();
-}
-
-
-void Smb4KPrintDialog::slotInputValueChanged(const QString &text)
-{
-  m_print_button->setEnabled(!text.isEmpty());
-  m_print_button->setDefault(!text.isEmpty());
-  m_cancel_button->setDefault(text.isEmpty());
-  m_options_box->setEnabled(!text.isEmpty());
-}
+// Smb4KPrintDialog::Smb4KPrintDialog(const SharePtr &share, QPrinter *printer, QWidget *parent)
+// : QDialog(parent), m_printer(printer)
+// {
+//   setWindowTitle(i18n("Print File"));
+//   
+//   // Set up the view.
+//   setupView(share);
+// 
+//   m_print_button->setEnabled(false);
+//            
+//   setMinimumWidth(sizeHint().width() > 350 ? sizeHint().width() : 350);
+//   
+//   create();
+// 
+//   KConfigGroup group(Smb4KSettings::self()->config(), "PrintDialog");
+//   KWindowConfig::restoreWindowSize(windowHandle(), group);
+//   resize(windowHandle()->size()); // workaround for QTBUG-40584
+// }
+// 
+// 
+// Smb4KPrintDialog::~Smb4KPrintDialog()
+// {
+// }
+// 
+// 
+// void Smb4KPrintDialog::setupView(const SharePtr &share)
+// {
+//   QVBoxLayout *main_widget_layout = new QVBoxLayout(this);
+// 
+//   // Printer box
+//   QGroupBox *printer_box = new QGroupBox(i18n("Printer"), this);
+//   QHBoxLayout *printer_box_layout = new QHBoxLayout(printer_box);
+//   
+//   // Icon 
+//   QLabel *pixmap = new QLabel(printer_box);
+//   QPixmap print_pix = share->icon().pixmap(KIconLoader::SizeHuge);
+//   pixmap->setPixmap(print_pix);
+//   pixmap->setAlignment(Qt::AlignBottom);
+// 
+//   // Description
+//   QWidget *desc_box = new QWidget(printer_box);
+// 
+//   QGridLayout *desc_box_layout = new QGridLayout(desc_box);
+//   desc_box_layout->setSpacing(5);
+// 
+//   QLabel *unc_label = new QLabel(i18n("UNC Address:"), desc_box);
+//   QLabel *unc = new QLabel(share->unc(), desc_box);
+//   QLabel *ip_label = new QLabel(i18n("IP Address:"), desc_box);
+//   QLabel *ip = new QLabel(!share->hasHostIpAddress() ? i18n("unknown") : share->hostIpAddress(), desc_box);
+//   QLabel *wg_label = new QLabel(i18n("Workgroup:"), desc_box);
+//   QLabel *workgroup = new QLabel(share->workgroupName(), desc_box);
+// 
+//   desc_box_layout->addWidget(unc_label, 0, 0, 0);
+//   desc_box_layout->addWidget(unc, 0, 1, 0);
+//   desc_box_layout->addWidget(ip_label, 1, 0, 0);
+//   desc_box_layout->addWidget(ip, 1, 1, 0);
+//   desc_box_layout->addWidget(wg_label, 2, 0, 0);
+//   desc_box_layout->addWidget(workgroup, 2, 1, 0);
+//   desc_box_layout->setColumnMinimumWidth(2, 0);
+//   desc_box_layout->setColumnStretch(2, 1);
+// 
+//   desc_box->adjustSize();
+// 
+//   printer_box_layout->addWidget(pixmap);
+//   printer_box_layout->addWidget(desc_box, Qt::AlignBottom);
+// 
+//   // File requester box
+//   QGroupBox *file_box = new QGroupBox(i18n("File"), this);
+// 
+//   QGridLayout *file_box_layout = new QGridLayout(file_box);
+//   file_box_layout->setSpacing(5);
+// 
+//   QLabel *file_label = new QLabel(i18n("File:"), file_box);
+//   m_file = new KUrlRequester(file_box);
+//   m_file->setMode(KFile::File | KFile::LocalOnly | KFile::ExistingOnly);
+//   m_file->setWhatsThis(i18n("This is the file you want to print on the remote printer. " 
+//     "Currently only a few mimetypes are supported such as PDF, Postscript, plain text, and " 
+//     "images. If the file's mimetype is not supported, you need to convert it."));
+// //   m_file->setToolTip(i18n("The file that is to be printed"));
+// 
+//   file_box_layout->addWidget(file_label, 0, 0, 0);
+//   file_box_layout->addWidget(m_file, 0, 1, 0);
+// 
+//   // Options
+//   m_options_box = new QGroupBox(i18n("Options"), this);
+// 
+//   QGridLayout *options_box_layout = new QGridLayout(m_options_box);
+//   options_box_layout->setSpacing(5);
+// 
+//   QLabel *copies_label = new QLabel(i18n("Copies:"), m_options_box);
+//   m_copies = new QSpinBox(m_options_box);
+//   m_copies->setValue(1);
+//   m_copies->setMinimum(1);
+//   m_copies->setWhatsThis(i18n("This is the number of copies you want to print."));
+// //   m_copies->setToolTip(i18n("The number of copies"));
+// 
+//   options_box_layout->addWidget(copies_label, 0, 0, 0);
+//   options_box_layout->addWidget(m_copies, 0, 1, 0);
+//   
+//   m_options_box->setVisible(false);
+//   
+//   QDialogButtonBox *buttonBox = new QDialogButtonBox(this);
+//   m_optionsButton = buttonBox->addButton(i18n("Options >>"), QDialogButtonBox::ResetRole);
+//   m_print_button = buttonBox->addButton(i18n("Print"), QDialogButtonBox::ActionRole);
+//   m_cancel_button = buttonBox->addButton(QDialogButtonBox::Cancel);
+//   
+//   m_print_button->setShortcut(Qt::CTRL|Qt::Key_P);
+//   m_cancel_button->setShortcut(Qt::Key_Escape);
+//   
+//   m_cancel_button->setDefault(true);
+// 
+//   main_widget_layout->addWidget(printer_box, 0);
+//   main_widget_layout->addWidget(file_box, 0);
+//   main_widget_layout->addWidget(m_options_box, 0);
+//   main_widget_layout->addWidget(buttonBox, 0);
+// 
+// //   printer_box->adjustSize();
+//   file_box->adjustSize();
+//   
+//   connect(m_file, SIGNAL(textChanged(QString)), this, SLOT(slotInputValueChanged(QString)));
+//   connect(m_print_button, SIGNAL(clicked()), this, SLOT(slotPrintClicked()));
+//   connect(m_cancel_button, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
+//   connect(m_optionsButton, SIGNAL(clicked()), this, SLOT(slotOptionsClicked()));
+// }
+// 
+// 
+// /////////////////////////////////////////////////////////////////////////////
+// //  SLOT IMPLEMENTATIONS
+// /////////////////////////////////////////////////////////////////////////////
+// 
+// void Smb4KPrintDialog::slotPrintClicked()
+// {
+//   m_url = m_file->url();
+//   m_printer->setCopyCount(m_copies->value());
+//   accept();
+// }
+// 
+// 
+// void Smb4KPrintDialog::slotCancelClicked()
+// {
+//   KConfigGroup group(Smb4KSettings::self()->config(), "PrintDialog");
+//   KWindowConfig::saveWindowSize(windowHandle(), group);
+//   reject();
+// }
+// 
+// 
+// void Smb4KPrintDialog::slotOptionsClicked()
+// {
+//   if (m_options_box->isVisible())
+//   {
+//     m_options_box->setVisible(false);
+//     m_optionsButton->setText(i18n("Options >>"));
+//   }
+//   else
+//   {
+//     m_options_box->setVisible(true);
+//     m_optionsButton->setText(i18n("Options <<"));
+//   }
+//   
+// //   adjustSize();
+// }
+// 
+// 
+// void Smb4KPrintDialog::slotInputValueChanged(const QString &text)
+// {
+//   m_print_button->setEnabled(!text.isEmpty());
+//   m_print_button->setDefault(!text.isEmpty());
+//   m_cancel_button->setDefault(text.isEmpty());
+//   m_options_box->setEnabled(!text.isEmpty());
+// }
 

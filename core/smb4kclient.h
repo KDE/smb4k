@@ -34,12 +34,14 @@
 
 // KDE includes
 #include <KCoreAddons/KCompositeJob>
+#include <KIOCore/KFileItem>
 
 // forward declarations
 class Smb4KClientPrivate;
 class Smb4KBasicNetworkItem;
 class Smb4KClientJob;
 class Smb4KPreviewDialog;
+class Smb4KPrintDialog;
 
 class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
 {
@@ -110,11 +112,30 @@ class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
     void lookupFiles(const NetworkItemPtr &item);
     
     /**
+     * This function starts the printing of a file @p file to the printer share
+     * @p printer.
+     *
+     * @param share           The printer share
+     * 
+     * @param fileItem        The file item
+     * 
+     * @param copies          Number of copies
+     */
+    void printFile(const SharePtr &share, const KFileItem &fileItem, int copies);
+    
+    /**
      * This function opens the preview dialog for @p share.
      * 
      * @param share           The share object
      */
     void openPreviewDialog(const SharePtr &share);
+    
+    /**
+     * This function opens the print dialog for @p share.
+     * 
+     * @param share           The share object (printer only)
+     */
+    void openPrintDialog(const SharePtr &share);
     
   Q_SIGNALS:
     /**
@@ -189,6 +210,16 @@ class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
      * Called when a process should be aborted
      */
     void slotAbort();
+    
+    /**
+     * Called when a file is about to be printed
+     */
+    void slotStartPrinting(const SharePtr &printer, const KFileItem &fileItem, int copies);
+    
+    /**
+     * Called when a print dialog closed
+     */
+    void slotPrintDialogClosed(Smb4KPrintDialog *dialog);
     
   private:
     /**
