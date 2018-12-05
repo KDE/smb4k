@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
   <!ENTITY smb4k "<application>Smb4K</application>">
-    <!ENTITY % addindex "IGNORE">
+  <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE">
 ]>
 
@@ -27,8 +27,8 @@
     <holder>Alexander Reinholdt</holder>
   </copyright>
   <legalnotice>&underFDL;</legalnotice>
-  <date>2018-03-18</date>
-  <releaseinfo>&smb4k; 2.1.0</releaseinfo><!--FIXME change releaseinfo number-->
+  <date>2018-11-25</date>
+  <releaseinfo>&smb4k; 2.9.71</releaseinfo><!--FIXME change releaseinfo number-->
   <abstract>
     <para>&smb4k; is an advanced network neighborhood browser and Samba share mounting utility.</para>
   </abstract>
@@ -51,7 +51,7 @@
 
   <itemizedlist>
     <listitem><para>Scanning for (active) workgroups, hosts, and shares</para></listitem>
-    <listitem><para>Support of the CIFS (&Linux;) and SMBFS (FreeBSD, NetBSD) file system</para></listitem>
+    <listitem><para>Support of the &CIFS; (&Linux;) and SMBFS (FreeBSD, NetBSD) file system</para></listitem>
     <listitem><para>Mounting and unmounting of shares</para></listitem>
     <listitem><para>Access to the files of a mounted share using a file manager or terminal</para></listitem>
     <listitem><para>Auto-detection of external mounts and unmounts</para></listitem>
@@ -67,10 +67,10 @@
     <listitem><para>System tray widget</para></listitem>
     <listitem><para>Support of advanced Samba options</para></listitem>
     <listitem><para>Support of printer shares</para></listitem>
-    <listitem><para>KWallet support</para></listitem>
+    <listitem><para>&kwallet5; support</para></listitem>
     <listitem><para>Synchronization of a remote share with a local copy and vice versa</para></listitem>
     <listitem><para>Ability to define custom options for individual servers and shares</para></listitem>
-    <listitem><para>Laptop support through the Solid hardware device framework</para></listitem>
+    <listitem><para>Laptop support through the &solid; hardware device framework</para></listitem>
     <listitem><para>Wake-On-LAN capabilities</para></listitem>
     <listitem><para>&plasmoid; for desktop integration</para></listitem>
     <listitem><para>Profiles for different network neighborhood setups</para></listitem>
@@ -162,8 +162,7 @@
       <title>Browsing</title>
 
       <para>&smb4k; automatically scans the network neighborhood for active workgroups and domains on start-up and presents them in the network neighborhood browser. Opening a workgroup item shows the servers belonging to it. If you want to access the shares of one of the servers, you have to open the desired server.</para>
-      <para>There are two scan modes available. The traditional one, where initially only workgroups and domains are looked up and scans are only made when necessary &#8212; &ie; when you execute a network item &#8212;, and one, where the network is scanned periodically for <emphasis>all</emphasis> available network items including servers and shares. While the former one is the default, the latter one can be enabled in the <link linkend="configuration_network_periodic_scanning">configuration dialog</link>.</para>
-      <para>There are <link linkend="configuration_network_browselist">three methods</link> to retrieve the browse list: The default one is to scan the network neighborhood for all available master browsers. The second and third method directly query a master browser to get the browse list. The difference is that the former is a dynamic one, where the current master browser of your workgroup or domain is looked up and used, and the latter is a static one, where a fixed name or IP address is used. It is recommended that you choose the dynamic method. However, there might be circumstances that make it necessary to use a static name or IP address.</para>
+      <para>&smb4k; uses a traditional scan mode, where initially only workgroups and domains are looked up and scans are only made when necessary &#8212; &ie; when you execute a network item &#8212;.</para>
       <para>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic package to each server that is to be woken up and waits the defined time until it starts the lookup of the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_network_wake_on_lan">configuration dialog</link>. The servers that should to be woken up have to be defined in the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
     </sect2>
 
@@ -486,7 +485,7 @@
     <sect2 id="network_search_view_menu">
       <title>Actions and Popup Menu</title>
 
-      <para>For the network search also several actions are defined. They are present in the menu bar under <guimenu>Search</guimenu>, the tool bar, in the widget itself and in its popup menu. The following ones are available:</para>
+      <para>For the network search also several actions are defined. They are present in the menubar under <guimenu>Search</guimenu>, the toolbar, in the widget itself and in its popup menu. The following ones are available:</para>
 
       <variablelist>
         <varlistentry>
@@ -545,7 +544,7 @@
         </varlistentry>
       </variablelist>
 
-      <para>The popup menu contains two entries: The <menuchoice><guimenuitem>Clear</guimenuitem></menuchoice> action and the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>M</keycap></keycombo></shortcut><guimenuitem>Mount</guimenuitem></menuchoice> | <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut><guimenuitem>Unmount</guimenuitem></menuchoice> dual action. The <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut><guimenuitem>Search</guimenuitem></menuchoice> | <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>A</keycap></keycombo></shortcut><guimenuitem>Abort</guimenuitem></menuchoice> dual action is located next to the search input box (as well as in the menu bar and tool bar).</para>
+      <para>The popup menu contains two entries: The <menuchoice><guimenuitem>Clear</guimenuitem></menuchoice> action and the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>M</keycap></keycombo></shortcut><guimenuitem>Mount</guimenuitem></menuchoice> | <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut><guimenuitem>Unmount</guimenuitem></menuchoice> dual action. The <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut><guimenuitem>Search</guimenuitem></menuchoice> | <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>A</keycap></keycombo></shortcut><guimenuitem>Abort</guimenuitem></menuchoice> dual action is located next to the search input box (as well as in the menubar and toolbar).</para>
 
       <screenshot>
         <screeninfo>Screenshot of the network search view's popup menu</screeninfo>
@@ -624,7 +623,7 @@
     <sect2 id="shares_view_actions_popup_menu">
       <title>Actions and Popup Menu</title>
 
-      <para>For the shares view several actions are defined. They are present in the menu bar under <guimenu>Shares</guimenu>, the tool bar and in its popup menu. The following ones are available:</para>
+      <para>For the shares view several actions are defined. They are present in the menubar under <guimenu>Shares</guimenu>, the toolbar and in its popup menu. The following ones are available:</para>
 
       <variablelist>
         <varlistentry>
@@ -842,7 +841,7 @@
     <sect2 id="shares_view_synchronization">
       <title>Synchronization</title>
 
-      <para>The <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>Y</keycap></keycombo></shortcut><guimenuitem>Synchronize</guimenuitem></menuchoice> menu item opens the synchronization dialog. It offers you the mount point of the share as source and a path below the <link linkend="configuration_page_synchronization_copying_defdest">synchronization prefix</link> as destination. To update the data on the share, you can swap the destination with the source by clicking the <guibutton>Swap Paths</guibutton> button.</para>
+      <para>The <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>Y</keycap></keycombo></shortcut><guimenuitem>Synchronize</guimenuitem></menuchoice> menu item opens the synchronization dialog. It offers you the mount point of the share as source and a path below the <link linkend="configuration_page_synchronization_basic_settings_defdest">synchronization prefix</link> as destination. To update the data on the share, you can swap the destination with the source by clicking the <guibutton>Swap Paths</guibutton> button.</para>
       <screenshot>
         <screeninfo>Screenshot of the synchronization input dialog</screeninfo>
         <mediaobject>
@@ -1093,7 +1092,6 @@
     <para>By clicking an entry you either enter the level below (&eg; clicking a workgroup or domain item will show a list of all hosts belonging to it), mount the selected share or invoke the print dialog. To go one level up again, you need to click the <guibutton>Up</guibutton> button in the toolbar.</para>
     <para>For hosts and shares, to the right of the name of the network item some action buttons are arranged. For hosts, there is one button with that you can open the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog. For shares, there are additional buttons for <link linkend="network_neighborhood_browser_previewing">previewing the content of the selected share</link> and for <link linkend="bookmarks_adding">adding it to the bookmarks</link>, respectively. The action buttons are transparent by default and change to opaque when you move the mouse over them. By left clicking, you initiate the respective action.</para>
     <para>Besides the <guibutton>Up</guibutton> button, the toolbar contains three more entries: <guibutton>Rescan</guibutton>, <guibutton>Abort</guibutton> and <guibutton>Mount Dialog</guibutton>. With them you can do a rescan, abort any running action or open the <link linkend="network_neighborhood_browser_mounting">dialog for "manual" mounts</link>.</para>
-    <note><para>In the current development state, the &plasmoid; is not able to handle the <link linkend="configuration_network_periodic_scanning">automatic scanning feature</link>, &smb4k; provides. Funny things will happen, if you use it with the &plasmoid; and will probably render it mostly unusable.</para></note>
   </sect2>
 
 <!-- 
@@ -1243,7 +1241,7 @@
 
       <para>All other entries are either group submenus or shares that do not belong to a group. All entries are listed alphabetically and the bookmarks may either appear with their location or descriptive label. By clicking a bookmark, the respective share is mounted. If a bookmarked share is mounted on the system, the bookmark entry is disabled.</para>
       <para>For each group there is a submenu. It contains all bookmarks belonging to the group and a <guimenuitem>Mount All Bookmarks</guimenuitem> menu item. The latter one can be used to mount all bookmarks in that submenu at once.</para>
-      <para>In the system tray widget, there is an identical <guilabel>Bookmarks</guilabel> <link linkend="systemtray_menus">submenu</link> except that the <guilabel>Add Bookmark</guilabel> entry is missing. The plasmoid provides a <guilabel>Bookmarks</guilabel> <link linkend="plasmoid_bookmarks">tab</link> where all bookmarks are arranged in a similar way as in the bookmark menu. The bookmark groups and the bookmarks are listed in the view. Bookmarked shares can be mounted by clicking the respective entry. In the tool bar two actions are present: <guimenuitem>Back</guimenuitem> and <guimenuitem>Edit</guimenuitem>. By clicking <guimenuitem>Back</guimenuitem> you can get back to the top level if you entered a group folder. The <guimenuitem>Edit</guimenuitem> action will open the <link linkend="bookmarks_editor">bookmark editor</link>.</para>
+      <para>In the system tray widget, there is an identical <guilabel>Bookmarks</guilabel> <link linkend="systemtray_menus">submenu</link> except that the <guilabel>Add Bookmark</guilabel> entry is missing. The plasmoid provides a <guilabel>Bookmarks</guilabel> <link linkend="plasmoid_bookmarks">tab</link> where all bookmarks are arranged in a similar way as in the bookmark menu. The bookmark groups and the bookmarks are listed in the view. Bookmarked shares can be mounted by clicking the respective entry. In the toolbar two actions are present: <guimenuitem>Back</guimenuitem> and <guimenuitem>Edit</guimenuitem>. By clicking <guimenuitem>Back</guimenuitem> you can get back to the top level if you entered a group folder. The <guimenuitem>Edit</guimenuitem> action will open the <link linkend="bookmarks_editor">bookmark editor</link>.</para>
     </sect2>
     
 <!--
@@ -1646,7 +1644,7 @@ polkit.addRule(function(action, subject) {
               <menuchoice><guibutton>Show a tooltip with information about the share</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>A tooltip will be shown if you move the mouse pointer over an item in the shares view. It contains information about the underlying item such as the share name, UNC address, mount point, owner and group, login (CIFS file system, &Linux; only), disk usage, &etc;</para>
+              <para>A tooltip will be shown if you move the mouse pointer over an item in the shares view. It contains information about the underlying item such as the share name, UNC address, mount point, owner and group, login (&CIFS; file system, &Linux; only), disk usage, &etc;</para>
               <para>Default: selected</para>
             </listitem>
           </varlistentry>
@@ -1686,7 +1684,7 @@ polkit.addRule(function(action, subject) {
   <sect1 id="configuration_network">
     <title>Network</title>
 
-    <para>The options located here can be used to change the lookup method for the browse list, to make &smb4k; send authentication information when querying the workgroup master browsers, to modify the behavior when previewing or looking up remote shares, and to enable periodic scanning as well as the Wake-On-LAN features. If you want to adjust the behavior of Samba programs, see the <link linkend="configuration_page_samba">Samba</link> section.</para>
+    <para>The options located here can be used to make &smb4k; send authentication information when querying the workgroup master browsers, to modify the behavior when previewing or looking up remote shares, and to enable the Wake-On-LAN features. If you want to adjust the behavior of Samba programs, see the <link linkend="configuration_page_samba">Samba</link> section.</para>
 
     <screenshot>
       <screeninfo>Screenshot of the "Network" configuration tab</screeninfo>
@@ -1697,183 +1695,84 @@ polkit.addRule(function(action, subject) {
     </screenshot>
 
 <!-- 
-      Configuring Smb4K : Network : General Settings 
+      Configuring Smb4K : Network 
 -->
 
-    <sect2 id="configuration_network_general">
-      <title>General Settings</title>
+    <sect2 id="configuration_network_master_authentication">
+      <title>Authentication</title>
 
-      <sect3 id="configuration_network_browselist">
-      <title>Browse List</title>
-
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Scan the network neighborhood for available workgroups and domains</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>&smb4k; will search for all available master browsers on the network by using <ulink url="man:/nmblookup"><citerefentry><refentrytitle>nmblookup</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink>. This is the default method and it is very reliable in finding all workgroups and domains of your network neighborhood. However, it suffers a few shortcomings like poor unicode support (&eg; umlauts might be replaced by dots).</para>
-              <para>Default: selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Query the current workgroup master browser</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>The current master browser of your workgroup or domain is looked up and queried for the browse list. If some of the workgroup names of your network neighborhood contain umlauts or other special characters, you might want to try this method, since unicode is supported. However, sometimes outdated workgroup master browsers might be returned.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Query this custom master browser</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>The master browser entered in the text box will be queried to retrieve the browse list. It can be specified by using either its NetBIOS name or its IP address. This option might be of use if you have an uncommonly configured network neighborhood.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-
-      <sect3 id="configuration_network_master_authentication">
-        <title>Authentication</title>
-
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>The master browsers require authentication to return the browse list</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>If the workgroup master browsers require authentication to return the browse list, you need to check this button. This may be the case for example with some NAS devices. This setting is rarely needed and might even cause a master browser to return an empty browse list.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-
-      <sect3 id="configuration_network_general_behavior">
-        <title>Behavior</title>
-      
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Lookup method for IP addresses</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Define the method that is to be used to detect the IP addresses of the hosts. By default, <ulink url="man:/nmblookup"><citerefentry><refentrytitle>nmblookup</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> is used.</para>
-              <para>The following options are available:</para>
-              <variablelist>
-                <varlistentry>
-                  <term>
-                    <menuchoice><guibutton>Use nmblookup command</guibutton></menuchoice>
-                  </term>
-                  <listitem>
-                    <para>Use the <ulink url="man:/nmblookup"><citerefentry><refentrytitle>nmblookup</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> command.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice><guibutton>Use net command</guibutton></menuchoice>
-                  </term>
-                  <listitem>
-                    <para>Use the <ulink url="man:/net"><citerefentry><refentrytitle>net</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> command.</para>
-                  </listitem>
-                </varlistentry>
-              </variablelist>
-              <para>Default: <guibutton>Use nmblookup command</guibutton></para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Detect printer shares</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Printer shares are detected.</para>
-              <para>Default: selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Detect hidden shares</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Hidden shares are detected. Hidden shares are ending with a $ sign, e.g. Musik$ or IPC$.</para>
-              <para>Default: selected</para>
-            </listitem>
-          </varlistentry>    
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Preview hidden files and directories</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Show all files and directories including the hidden ones when opening a share's contents in the preview dialog.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>The master browsers require authentication to return the browse list</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>If the workgroup master browsers require authentication to return the browse list, you need to check this button. This may be the case for example with some NAS devices. This setting is rarely needed and might even cause a master browser to return an empty browse list.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </sect2>
 
-<!-- 
-      Configuring Smb4K : Network : Advanced Settings 
--->
-
-    <sect2 id="configuration_network_advanced">
-      <title>Advanced Settings</title>
+    <sect2 id="configuration_network_general_behavior">
+      <title>Behavior</title>
     
-      <sect3 id="configuration_network_periodic_scanning">
-        <title>Periodic Scanning</title>
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Detect printer shares</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Printer shares are detected.</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Detect hidden shares</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Hidden shares are detected. Hidden shares are ending with a $ sign, &eg; Musik$ or IPC$.</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Preview hidden files and directories</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Show all files and directories including the hidden ones when opening a share's contents in the preview dialog.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
 
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Scan the network neighborhood periodically</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>If you want to enable periodic scanning of the network neighborhood, you need to check this button. With this method, all available network items are looked up, &ie; workgroups and domains, servers and shares.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Interval between scans</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>If periodic scanning is enabled, this is the time in minutes that elapses until a new scan is triggered.</para>
-              <para>Default: 5 min</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
+    <sect2 id="configuration_network_wake_on_lan">
+      <title>Wake-On-LAN</title>
 
-      <sect3 id="configuration_network_wake_on_lan">
-        <title>Wake-On-LAN</title>
+      <para>To be able to use the Wake-On-LAN capability of &smb4k;, you have to enable the setting in this section. The hosts that should to be woken up have to be defined through the <link linkend="network_neighborhood_browser_defining_custom_options">custom options dialog</link>.</para>
 
-        <para>To be able to use the Wake-On-LAN capability of &smb4k;, you have to enable the setting in this section. The hosts that should to be woken up have to be defined through the <link linkend="network_neighborhood_browser_defining_custom_options">custom options dialog</link>.</para>
-
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Enable Wake-On-LAN features</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Enable Wake-on-LAN (WOL) features. Wake-On-LAN is an ethernet computer networking standard that allows a computer to be turned on or woken up by a network message. Smb4K uses a magic package send via a UDP socket to wake up remote servers. If you want to take advantage of the Wake-On-LAN feature, you need to enable this option.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Waiting time</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>This is the waiting time in seconds between the sending of the magic Wake-On-LAN packages and the scanning of the network neighborhood or the mounting of a share.</para>
-              <para>Default: 5 s</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Enable Wake-On-LAN features</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Enable Wake-on-LAN (WOL) features. Wake-On-LAN is an ethernet computer networking standard that allows a computer to be turned on or woken up by a network message. Smb4K uses a magic package send via a UDP socket to wake up remote servers. If you want to take advantage of the Wake-On-LAN feature, you need to enable this option.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Waiting time</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>This is the waiting time in seconds between the sending of the magic Wake-On-LAN packages and the scanning of the network neighborhood or the mounting of a share.</para>
+            <para>Default: 5 s</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </sect2>
   </sect1>
 
@@ -1996,7 +1895,7 @@ polkit.addRule(function(action, subject) {
             <menuchoice><guibutton>Detect all shares that are mounted on the system</guibutton></menuchoice>
           </term>
           <listitem>
-            <para>You will not only see the shares that were mounted and are owned by you, but also all other mounts using the SMBFS (FreeBSD) and CIFS (&Linux;) file system that are present on the system.</para>
+            <para>You will not only see the shares that were mounted and are owned by you, but also all other mounts using the SMBFS (FreeBSD) and &CIFS; (&Linux;) file system that are present on the system.</para>
             <para>Default: not selected</para>
           </listitem>
         </varlistentry>  
@@ -2102,7 +2001,7 @@ polkit.addRule(function(action, subject) {
   <sect1 id="configuration_page_samba">
     <title>Samba</title>
 
-    <para>Here you can directly influence the command line arguments that are passed to the Samba programs. Please note, that the settings will have no effect outside &smb4k; and that no changes will be applied to the <filename>smb.conf</filename> configuration file. For further information, please refer to the manual pages of the Samba software suite.</para>
+    <para>Here you can directly influence the command line arguments that are passed to the &Samba; programs. Please note, that the settings will have no effect outside &smb4k; and that no changes will be applied to the <filename>smb.conf</filename> configuration file. For further information, please refer to the manual pages of the &Samba; software suite.</para>
 
     <screenshot>
       <screeninfo>Screenshot of the "Samba" configuration page</screeninfo>
@@ -2113,14 +2012,14 @@ polkit.addRule(function(action, subject) {
     </screenshot>
 
 <!-- 
-      Configuring Smb4K : Samba : General Settings 
+      Configuring Smb4K : Samba : Common Settings
 -->
   
-    <sect2 id="configuration_page_samba_general">
-      <title>General Settings</title>
+    <sect2 id="configuration_page_samba_common_settings">
+      <title>Common Settings</title>
       
-      <sect3 id="configuration_page_samba_general_general">
-        <title>General Options</title>
+      <sect3 id="configuration_page_samba_common_settings_common_options">
+        <title>Common Options</title>
         
         <variablelist>
           <varlistentry>
@@ -2172,7 +2071,7 @@ polkit.addRule(function(action, subject) {
         </variablelist>
       </sect3>
 
-      <sect3 id="configuration_page_samba_general_authentication">
+      <sect3 id="configuration_page_samba_common_settings_authentication">
         <title>Authentication</title>
 
         <variablelist>
@@ -2206,10 +2105,18 @@ polkit.addRule(function(action, subject) {
         </variablelist>
       </sect3>
 
-      <sect3 id="configuration_page_samba_general_security">
+      <sect3 id="configuration_page_samba_common_settings_security">
         <title>Security</title>
 
         <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Encryption level</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Set the level of encryption that is used to make connections.</para> <!--FIXME None Request Require-->
+            </listitem>
+          </varlistentry>
           <varlistentry>
             <term>
               <menuchoice><guibutton>Signing state</guibutton></menuchoice>
@@ -2259,7 +2166,7 @@ polkit.addRule(function(action, subject) {
               <menuchoice><guibutton>Encrypt SMB transport</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>This option requires the remote server to support the &UNIX; extensions. Request that the connection be encrypted. This is new for Samba 3.2 and will only work with Samba 3.2 or above servers. Fails the connection if encryption cannot be negotiated.</para>
+              <para>This option requires the remote server to support the &UNIX; extensions. Request that the connection be encrypted. This is new for &Samba; 3.2 and will only work with &Samba; 3.2 or above servers. Fails the connection if encryption cannot be negotiated.</para>
               <para>Default: not selected</para>
             </listitem>
           </varlistentry>
@@ -2274,31 +2181,6 @@ polkit.addRule(function(action, subject) {
     <sect2 id="configuration_page_samba_utility_programs">
       <title>Utility Programs</title>
     
-      <sect3 id="configuration_page_samba_utility_programs_nmblookup">
-        <title>nmblookup</title>
-
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Broadcast address</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Send a query to the given broadcast address. Without this option the default behavior of nmblookup is to send the query to the broadcast address of the network interfaces as either auto-detected or defined in the <programlisting>interfaces = ...</programlisting> parameter of the <filename>smb.conf</filename> file.</para>
-              <para>Default: options defined in <filename>smb.conf</filename></para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Try and bind to UDP port 137 to send and receive UDP datagrams</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>The reason for this option is a bug in Windows 95 where it ignores the source port of the requesting packet and only replies to UDP port 137. Under normal circumstances, you do not need to tick this check box. If you experience problems while scanning the network and you want to enable this option, read the manual page of <ulink url="man:/nmblookup"><citerefentry><refentrytitle>nmblookup</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> before.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-
       <sect3 id="configuration_page_samba_utility_programs_smbclient">
         <title>smbclient</title>
 
@@ -2360,49 +2242,16 @@ polkit.addRule(function(action, subject) {
     </screenshot>
   
 <!--
-      Configuring Smb4K : Mounting : Common Options
+      Configuring Smb4K : Mounting : Common Settings
 -->
   
     <sect2 id="configuration_page_mounting_common">
-      <title>Common Options</title>
+      <title>Common Settings</title>
 
-      <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice><guibutton>User ID</guibutton></menuchoice>
-          </term>
-          <listitem>
-            <para>Sets the owner of the files and directories on the file system. By default, your UID is used. To change the UID, press the search button and choose one from the drop down menu.</para>
-            <para>Default: your UID</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice><guibutton>Group ID</guibutton></menuchoice>
-          </term>
-          <listitem>
-            <para>Sets the group that owns the files and directories on the file system. By default, your GID is used. To change the GID, press the search button and choose one from the drop down menu.</para>
-            <para>Default: your GID</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice><guibutton>File mask</guibutton></menuchoice>
-          </term>
-          <listitem>
-            <para>Sets the permissions that are applied to files. The value is given in octal and has to have 4 digits. To learn more about the file mask (fmask), you should read the <ulink url="man:/mount"><citerefentry><refentrytitle>mount</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.</para>
-            <para>Default: 0755</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice><guibutton>Directory mask</guibutton></menuchoice>
-          </term>
-          <listitem>
-            <para>Sets the permissions that are applied to directories. The value is given in octal and has to have 4 digits. To learn more about the folder mask (dmask), you should read the <ulink url="man:/mount"><citerefentry><refentrytitle>mount</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.</para>
-            <para>Default: 0755</para>
-          </listitem>
-        </varlistentry>
+      <sect3 id="configuration_page_mounting_common_options">
+        <title>Common Options</title>
+
+        <variablelist>
         <varlistentry>
           <term>
             <menuchoice><guibutton>Write access</guibutton></menuchoice>
@@ -2423,16 +2272,6 @@ polkit.addRule(function(action, subject) {
         </varlistentry>
         <varlistentry>
           <term>
-            <menuchoice><guibutton>Server codepage</guibutton></menuchoice>
-          </term>
-          <listitem>
-            <para>Sets the codepage the remote server uses.</para> 
-            <para>This option is only available under FreeBSD and NetBSD.</para>
-            <para>Default: default</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
             <menuchoice><guibutton>File system port</guibutton></menuchoice>
           </term>
           <listitem>
@@ -2441,15 +2280,67 @@ polkit.addRule(function(action, subject) {
             <para>Default: 445</para>
           </listitem>
         </varlistentry>
+       </variablelist>
+      </sect3>
+
+      <sect3 id="configuration_page_mounting_cifs">
+        <title>&CIFS; Unix Extensions Support</title>
+        <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>All or most of the servers support the &CIFS; Unix extensions</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Most versions of Samba support the &CIFS; Unix or POSIX extensions. For these servers, some options are not needed, because the right values are negotiated during the mount process. For other servers, you might want to uncheck this option, so that predefined values can be passed to the server. Please note that if your computer is located in a Windows dominated network neighborhood with only a few Samba servers, you can safely uncheck this option and define custom options for the Samba servers.</para>
+            <para>Default: your UID</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>User ID</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Sets the owner of the files and directories on the file system. By default, your UID is used. To change the UID, press the search button and choose one from the drop down menu.</para>
+            <para>Default: your UID</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Group ID</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Sets the group that owns the files and directories on the file system. By default, your GID is used. To change the GID, press the search button and choose one from the drop down menu.</para>
+            <para>Default: your GID</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+              <menuchoice><guibutton>File mode</guibutton></menuchoice><!--FIXME file mode <> directory mask - inconsistent in gui-->
+          </term>
+          <listitem>
+            <para>Sets the permissions that are applied to files. The value is given in octal and has to have 4 digits. To learn more about the file mask (fmask), you should read the <ulink url="man:/mount"><citerefentry><refentrytitle>mount</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.</para>
+            <para>Default: 0755</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Directory mask</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Sets the permissions that are applied to directories. The value is given in octal and has to have 4 digits. To learn more about the folder mask (dmask), you should read the <ulink url="man:/mount"><citerefentry><refentrytitle>mount</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.</para>
+            <para>Default: 0755</para>
+          </listitem>
+        </varlistentry>
       </variablelist>
+      </sect3>
     </sect2>
   
 <!--
-      Configuring Smb4K : Mounting : Advanced Options
+      Configuring Smb4K : Mounting : Advanced Settings
 -->
 
     <sect2 id="configuration_page_mounting_advanced">
-      <title>Advanced Options</title>
+      <title>Advanced Settings</title>
       
       <para><emphasis>(This widget is not available under FreeBSD and NetBSD.)</emphasis></para>
       <para>Most of the options you can define here require &Linux; kernel 2.6.15 or later to work.</para>
@@ -2477,7 +2368,7 @@ polkit.addRule(function(action, subject) {
             <menuchoice><guibutton>Do permission checks</guibutton></menuchoice>
           </term>
           <listitem>
-            <para>The client side checks if you have the correct UID and GID to manipulate files and directories on the share. This is in addition to the normal ACL check on the target machine done by the server software. You might want to switch this feature off, if the server(s) support the CIFS Unix extensions and you are, hence, not allowed to access the share.</para>
+            <para>The client side checks if you have the correct UID and GID to manipulate files and directories on the share. This is in addition to the normal ACL check on the target machine done by the server software. You might want to switch this feature off, if the server(s) support the &CIFS; Unix extensions and you are, hence, not allowed to access the share.</para>
             <para>Default: selected</para>
           </listitem>
         </varlistentry>
@@ -2486,7 +2377,7 @@ polkit.addRule(function(action, subject) {
             <menuchoice><guibutton>Attempt to set UID and GID</guibutton></menuchoice>
           </term>
           <listitem>
-            <para>If the CIFS Unix extensions are negotiated with the server the client side will attempt to set the effective UID and GID of the local process on newly created files, directories, and devices. If this feature is turned off, the default UID and GID defined for the share will be used. It is recommended that you read the manual page of <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> before you change this setting.</para>
+            <para>If the &CIFS; Unix extensions are negotiated with the server the client side will attempt to set the effective UID and GID of the local process on newly created files, directories, and devices. If this feature is turned off, the default UID and GID defined for the share will be used. It is recommended that you read the manual page of <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> before you change this setting.</para>
             <para>Default: not selected</para>
           </listitem>
         </varlistentry>
@@ -2527,10 +2418,10 @@ polkit.addRule(function(action, subject) {
             <variablelist>
               <varlistentry>
                 <term>
-                  <menuchoice><guibutton>1.0 (Classic CIFS/SMBv1 protocol)</guibutton></menuchoice>
+                  <menuchoice><guibutton>1.0 (Classic &CIFS;/SMBv1 protocol)</guibutton></menuchoice>
                 </term>
                 <listitem>
-                  <para>The <option>vers=1.0</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the classic CIFS/SMBv1 protocol.</para>
+                  <para>The <option>vers=1.0</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the classic &CIFS;/SMBv1 protocol.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -2561,7 +2452,7 @@ polkit.addRule(function(action, subject) {
                 </listitem>
               </varlistentry>
             </variablelist>
-            <para>Default: <guibutton>1.0 (Classic CIFS/SMBv1 protocol)</guibutton></para>
+            <para>Default: <guibutton>1.0 (Classic &CIFS;/SMBv1 protocol)</guibutton></para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2569,7 +2460,7 @@ polkit.addRule(function(action, subject) {
             <menuchoice><guibutton>Cache mode</guibutton></menuchoice>
           </term>
           <listitem>
-            <para>Define how read and write requests are handled. In case you choose to not cache file data at all, the client never utilizes the cache for normal reads and writes. It always accesses the server directly to satisfy a read or write request. If you choose to follow the CIFS/SMB2 protocol strictly, the cache is only trusted if the client holds an oplock. If the client does not hold an oplock, then the client bypasses the cache and accesses the server directly to satisfy a read or write request. Choosing to allow loose caching semantics can sometimes provide better performance on the expense of cache coherency. This option might cause data corruption, if several clients access the same set of files on the server at the same time. Because of this, the strict cache mode is recommended.</para>
+            <para>Define how read and write requests are handled. In case you choose to not cache file data at all, the client never utilizes the cache for normal reads and writes. It always accesses the server directly to satisfy a read or write request. If you choose to follow the &CIFS;/SMB2 protocol strictly, the cache is only trusted if the client holds an oplock. If the client does not hold an oplock, then the client bypasses the cache and accesses the server directly to satisfy a read or write request. Choosing to allow loose caching semantics can sometimes provide better performance on the expense of cache coherency. This option might cause data corruption, if several clients access the same set of files on the server at the same time. Because of this, the strict cache mode is recommended.</para>
             <para>The following values are allowed:</para>
             <variablelist>
               <varlistentry>
@@ -2582,10 +2473,10 @@ polkit.addRule(function(action, subject) {
               </varlistentry>
               <varlistentry>
                 <term>
-                  <menuchoice><guibutton>Follow the CIFS/SMB2 protocol strictly</guibutton></menuchoice>
+                  <menuchoice><guibutton>Follow the &CIFS;/SMB2 protocol strictly</guibutton></menuchoice>
                 </term>
                 <listitem>
-                  <para>The <option>cache=strict</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to follow the CIFS/SMB2 protocol strictly.</para>
+                  <para>The <option>cache=strict</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to follow the &CIFS;/SMB2 protocol strictly.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -2597,7 +2488,7 @@ polkit.addRule(function(action, subject) {
                 </listitem>
               </varlistentry>
             </variablelist>
-            <para>Default: <guibutton>Follow the CIFS/SMB2 protocol strictly</guibutton></para>
+            <para>Default: <guibutton>Follow the &CIFS;/SMB2 protocol strictly</guibutton></para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2605,7 +2496,7 @@ polkit.addRule(function(action, subject) {
             <menuchoice><guibutton>Security mode</guibutton></menuchoice>
           </term>
           <listitem>
-            <para>Security mode. To be able to use this option, the CIFS kernel module 1.40 or later is needed.</para>
+            <para>Security mode. To be able to use this option, the &CIFS; kernel module 1.40 or later is needed.</para>
             <para>The allowed values are:</para>
             <variablelist>
               <varlistentry>
@@ -2715,13 +2606,13 @@ polkit.addRule(function(action, subject) {
     </screenshot>
 
 <!-- 
-      Configuring Smb4K : Synchronization : Copying 
+      Configuring Smb4K : Synchronization : Basic settings
 -->
 
-    <sect2 id="configuration_page_synchronization_copying">
+    <sect2 id="configuration_page_synchronization_basic_settings">
       <title>Copying</title>
-    
-      <sect3 id="configuration_page_synchronization_copying_defdest">
+
+      <sect3 id="configuration_page_synchronization_basic_settings_defdest">
         <title>Default Destination</title>
 
         <variablelist>
@@ -2738,7 +2629,7 @@ polkit.addRule(function(action, subject) {
         </variablelist>
       </sect3>
 
-      <sect3 id="configuration_page_synchronization_copying_general">
+      <sect3 id="configuration_page_synchronization_basic_settings_behavor">
         <title>General</title>
 
         <variablelist>
@@ -2760,27 +2651,6 @@ polkit.addRule(function(action, subject) {
               <para>Option: <option>-r</option>/<option>--recursive</option></para>
               <para>Recurse into subdirectories.</para>
               <para>Default: selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Update files</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Option: <option>-u</option>/<option>--update</option></para>
-              <para>This forces <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to skip any files that exist on the destination and have a modification time that is newer than the one of the source file. (If an existing destination file has a modification time equal to the source file's, it will be updated if the sizes are different.)</para>
-              <para>Default: selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Update files in place</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Option: <option>--inplace</option></para>
-              <para>This causes <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> not to create a new copy of the file and then move it into place. Instead <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> will overwrite the  existing file, meaning that the rsync algorithm cannot accomplish the full amount of network reduction it might be able to otherwise.  One exception to this is if you combine the option with <option>--backup</option>, since <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> is smart enough to use the backup file as the basis file for the transfer.</para>
-              <para>For further information you ought to read the <ulink url="man:/rsync">manual page</ulink>.</para>
-              <para>Default: not selected</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -2814,20 +2684,127 @@ polkit.addRule(function(action, subject) {
               <para>Default: not selected</para>
             </listitem>
           </varlistentry>
+        </variablelist>
+      </sect3>
+
+      <sect3 id="configuration_page_synchronization_basic_settings_backup">
+        <title>Backup</title>
+
+        <variablelist>
           <varlistentry>
             <term>
-              <menuchoice><guibutton>Compress data during transfer</guibutton></menuchoice>
+              <menuchoice><guibutton>Make backups</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>Option: <option>-z</option>/<option>--compress</option></para>
-              <para>Compress file data during the transfer.</para>
+              <para>Option: <option>-b</option>/<option>--backups</option></para>
+              <para>With this option, preexisting destination files are renamed as each file is transferred or deleted. You can control where the backup file goes and what (if any) suffix gets appended using the <option>--backup-dir</option> and <option>--suffix</option> options.</para>
+              <para>Note that if you don't specify <option>--backup-dir</option>, (1) the <option>--omit-dir-times</option> option will be implied, and (2) if <option>--delete</option> is also in effect (without <option>--delete-excluded</option>),  <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> will add a "protect" filter-rule for the backup suffix to the end of all your existing excludes (&eg; <option>-f "P *~"</option>). This will prevent previously backed-up files from being deleted. Note that if you are supplying your own filter rules, you may  need  to  manually insert your own exclude/protect rule somewhere higher up in the list so that it has a high enough priority to be effective (&eg;, if  your rules specify a trailing inclusion/exclusion of '*', the auto-added rule would never be reached).</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Backup suffix</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>--suffix=SUFFIX</option></para>
+              <para>This  option  allows  you  to override the default backup suffix used with the <option>--backup</option> option. The default suffix is a <emphasis>~</emphasis> if no <option>--backup-dir</option> was specified, otherwise it is an empty string.</para>
+              <para>This option is only available if you ticked the <guilabel>Make backups</guilabel> option above.</para>
+              <para>Default: not selected; SUFFIX: ~</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Backup directory</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>--backup-dir=DIR</option></para>
+              <para>In combination with the <option>--backup</option> option, this tells rsync to store all backups in the specified folder. This is very useful for incremental backups. You can additionally specify a backup suffix using the <option>--suffix</option> option (otherwise the files backed up in the specified folder will keep  their original filenames).</para>
+              <para>This option is only available if you ticked the <guilabel>Make backups</guilabel> option above.</para>
+              <para>Default: not selected; DIR: <envar>$HOME</envar></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
+    </sect2>
+
+<!--
+      Configuring Smb4K : Synchronization : File Handling
+-->
+
+    <sect2 id="configuration_page_synchronization_file_handling">
+      <title>File Handling</title>
+
+      <sect3 id="configuration_page_synchronization_file_handling_general">
+        <title>General</title>
+
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Update files</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>-u</option>/<option>--update</option></para>
+              <para>This forces <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to skip any files that exist on the destination and have a modification time that is newer than the one of the source file. (If an existing destination file has a modification time equal to the source file's, it will be updated if the sizes are different.)</para>
+              <para>Default: selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Update files in place</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>--inplace</option></para>
+              <para>This causes <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> not to create a new copy of the file and then move it into place. Instead <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> will overwrite the  existing file, meaning that the rsync algorithm cannot accomplish the full amount of network reduction it might be able to otherwise.  One exception to this is if you combine the option with <option>--backup</option>, since <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> is smart enough to use the backup file as the basis file for the transfer.</para>
+              <para>For further information you ought to read the <ulink url="man:/rsync">manual page</ulink>.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Handle sparse files efficiently</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>-S</option>/<option>--sparse</option></para>
+              <para>Try to handle sparse files efficiently so they take up less space on the destination. Conflicts with <option>--inplace</option> because it's not possible to overwrite data in a sparse fashion.</para>
+              <note><para>Do not use this option when the destination is a &Solaris; "tmpfs" file system. It doesn't seem to handle seeks over null regions correctly and ends up corrupting the files.</para></note>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Copy files whole (no rsync algorithm)</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>-W</option>/<option>--whole-file</option></para>
+              <para>With this option the incremental <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> algorithm is not used and the whole file is sent as-is instead. The transfer may be faster if this option is used when the bandwidth between the source and destination machines is higher than the bandwidth to disk (especially when the "disk" is actually a networked file system). This is the default when both the source and destination are specified as local paths.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Only update files that already exist</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>--existing</option>/<option>--ignore-non-existing</option></para>
+              <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to skip updating files that do not exist yet on the destination. If this option is combined with the <option>--ignore-existing</option> option, no files will be updated (which can be useful if all you want to do is to delete missing files).</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Ignore files that already exist</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>--ignore-existing</option></para>
+              <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to skip updating files that already exist on the destination. See also <option>--ignore-non-existing</option>.</para>
               <para>Default: not selected</para>
             </listitem>
           </varlistentry>
         </variablelist>
       </sect3>
 
-      <sect3 id="configuration_page_synchronization_copying_links">
+      <sect3 id="configuration_page_synchronization_file_handling_links">
         <title>Links</title>
 
         <variablelist>
@@ -2895,7 +2872,7 @@ polkit.addRule(function(action, subject) {
         </variablelist>
       </sect3>
 
-      <sect3 id="configuration_page_synchronization_copying_perms">
+      <sect3 id="configuration_page_synchronization_file_handling_perms">
         <title>File Permissions, &etc;</title>
 
         <variablelist>
@@ -2964,14 +2941,117 @@ polkit.addRule(function(action, subject) {
     </sect2>
 
 <!-- 
-      Configuring Smb4K : Synchronization : File Deletion & Transfer 
+      Configuring Smb4K : Synchronization : File Transfer
 -->
 
-    <sect2 id="configuration_page_synchronization_filedel">
-      <title>File Deletion &amp; Transfer</title>
+    <sect2 id="configuration_page_synchronization_file_transfer">
+      <title>File Transfer</title>
 
-      <sect3 id="configuration_page_synchronization_filedel_filedel">
-        <title>File Deletion</title>
+      <sect3 id="configuration_page_synchronization_file_transfer_compression">
+        <title>Compression</title>
+
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Compress data during transfer</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>-z</option>/<option>--compress</option></para>
+              <para>Compress file data during the transfer.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Set Compression level:</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Explicitly set the compression level to use (--compress-level=NUM). If NUM is non-zero, the --compress argument is implied.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Skip compression for following file suffixes:</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Overwrite the list of file suffixes that will not be compressed (--skip-compress=LIST). The LIST should be one or more file suffixes (without the dot) separated by slashes. You may specify an empty string to indicate that no file should be skipped. The default list of suffixes will be replaced by this list. For further details, see the manual page of rsync.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
+
+      <sect3 id="configuration_page_synchronization_file_transfer_files">
+        <title>Files</title>
+
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Do not transfer any file smaller than</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>--min-size=NUM</option></para>
+              <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to avoid transferring any file that is smaller than the specified SIZE, which can help in not transferring small, junk files.</para>
+              <para>Default: not selected; NUM: 0 kB</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Do not transfer any file larger than</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>--max-size=NUM</option></para>
+              <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to avoid transferring any file that is larger than the specified SIZE.</para>
+              <para>Default: not selected; NUM: 0 kB</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Keep partially transferred files</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>--partial</option></para>
+              <para>By default, <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> will delete any partially transferred file if the transfer is interrupted. In some circumstances it is more desirable to keep partially transferred files. Using the <option>--partial</option> option tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to keep the partial file which should make a subsequent transfer of the rest of the file much faster.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Put partially transferred files into</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>--partial-dir=DIR</option></para>
+              <para>A better way to keep partial files than the <option>--partial</option> option is to specify a folder DIR that will be used to hold the partial data (instead of writing it out to the  destination file). On the next transfer, <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> will use a file found in this folder as data to speed up the resumption of the transfer and then delete it after it has served its purpose. Before you tick this option, you should read the <ulink url="man:/rsync">manual page</ulink>.</para>
+              <para>Default: not selected; DIR: <filename class="directory">$HOME</filename></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
+
+      <sect3 id="configuration_page_synchronization_file_transfer_miscellaneous">
+        <title>Miscellaneous</title>
+
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Set bandwidth limit:</guibutton></menuchoice>
+            </term>
+            <listitem>
+                <para>Set the maximum data transfer rate in kilobytes per second (--bwlimit=RATE).</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
+    </sect2>
+
+<!--
+      Configuring Smb4K : Synchronization : File Deletion
+-->
+
+    <sect2 id="configuration_page_synchronization_file_deletion">
+      <title>File Deletion</title>
+
+      <sect3 id="configuration_page_synchronization_file_deletion_files_directories">
+        <title>Files &amp; Directories</title>
       
         <variablelist>
           <varlistentry>
@@ -3026,7 +3106,7 @@ polkit.addRule(function(action, subject) {
           </varlistentry>
           <varlistentry>
             <term>
-              <menuchoice><guibutton>Also delete excluded files</guibutton></menuchoice>
+              <menuchoice><guibutton>Delete excluded files</guibutton></menuchoice>
             </term>
             <listitem>
               <para>Option: <option>--delete-excluded</option></para>
@@ -3074,52 +3154,6 @@ polkit.addRule(function(action, subject) {
         </variablelist>
       </sect3>
 
-      <sect3 id="configuration_page_synchronization_filedel_transfer">
-        <title>File Transfer</title>
-
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Do not transfer any file smaller than</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Option: <option>--min-size=NUM</option></para>
-              <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to avoid transferring any file that is smaller than the specified SIZE, which can help in not transferring small, junk files.</para>
-              <para>Default: not selected; NUM: 0 kB</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Do not transfer any file larger than</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Option: <option>--max-size=NUM</option></para>
-              <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to avoid transferring any file that is larger than the specified SIZE.</para>
-              <para>Default: not selected; NUM: 0 kB</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Keep partially transferred files</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Option: <option>--partial</option></para>
-              <para>By default, <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> will delete any partially transferred file if the transfer is interrupted. In some circumstances it is more desirable to keep partially transferred files. Using the <option>--partial</option> option tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to keep the partial file which should make a subsequent transfer of the rest of the file much faster.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Put partially transferred files into</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Option: <option>--partial-dir=DIR</option></para>
-              <para>A better way to keep partial files than the <option>--partial</option> option is to specify a folder DIR that will be used to hold the partial data (instead of writing it out to the  destination file). On the next transfer, <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> will use a file found in this folder as data to speed up the resumption of the transfer and then delete it after it has served its purpose. Before you tick this option, you should read the <ulink url="man:/rsync">manual page</ulink>.</para>
-              <para>Default: not selected; DIR: <filename class="directory">$HOME</filename></para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
     </sect2>
 
 <!-- 
@@ -3230,122 +3264,13 @@ polkit.addRule(function(action, subject) {
     </sect2>
 
 <!-- 
-      Configuring Smb4K : Synchronization : Advanced Settings
+      Configuring Smb4K : Synchronization : Miscellaneous
 -->
 
-    <sect2 id="configuration_page_synchronization_advanced">
-      <title>Advanced Settings</title>
+    <sect2 id="configuration_page_synchronization_miscellaneous">
+      <title>Miscellaneous</title>
 
-      <sect3 id="configuration_page_synchronization_advanced_general">
-        <title>General</title>
-
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Handle sparse files efficiently</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Option: <option>-S</option>/<option>--sparse</option></para>
-              <para>Try to handle sparse files efficiently so they take up less space on the destination. Conflicts with <option>--inplace</option> because it's not possible to overwrite data in a sparse fashion.</para>
-              <note><para>Do not use this option when the destination is a &Solaris; "tmpfs" file system. It doesn't seem to handle seeks over null regions correctly and ends up corrupting the files.</para></note>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Copy files whole (no rsync algorithm)</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Option: <option>-W</option>/<option>--whole-file</option></para>
-              <para>With this option the incremental <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> algorithm is not used and the whole file is sent as-is instead. The transfer may be faster if this option is used when the bandwidth between the source and destination machines is higher than the bandwidth to disk (especially when the "disk" is actually a networked file system). This is the default when both the source and destination are specified as local paths.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Do not cross file system boundaries</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Option: <option>-x</option>/<option>--one-file-system</option></para>
-              <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to avoid crossing a file system boundary when recursing. This does not limit the user's ability to specify items to copy from multiple file systems, just <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink>'s recursion through the hierarchy of each folder that the user specified, and also the analogous recursion on the receiving side during deletion. Also keep in mind that <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> treats a "bind" mount to the same device as being on the same file system.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Only update files that already exist</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Option: <option>--existing</option>/<option>--ignore-non-existing</option></para>
-              <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to skip updating files that do not exist yet on the destination. If this option is combined with the <option>--ignore-existing</option> option, no files will be updated (which can be useful if all you want to do is to delete missing files).</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Ignore files that already exist</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Option: <option>--ignore-existing</option></para>
-              <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to skip updating files that already exist on the destination. See also <option>--ignore-non-existing</option>.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Delay updates until the end of transfer</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Option: <option>--delay-updates</option></para>
-              <para>This option puts the temporary file from each updated file into a holding folder until the end of the transfer, at which time all the files are renamed into place in rapid succession.</para>
-              <para>It is strongly recommended that you read the <ulink url="man:/rsync">manual page</ulink> before using this option.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-
-      <sect3 id="configuration_page_synchronization_advanced_backup">
-        <title>Backup</title>
-    
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Make backups</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Option: <option>-b</option>/<option>--backups</option></para>
-              <para>With this option, preexisting destination files are renamed as each file is transferred or deleted. You can control where the backup file goes and what (if any) suffix gets appended using the <option>--backup-dir</option> and <option>--suffix</option> options.</para>
-              <para>Note that if you don't specify <option>--backup-dir</option>, (1) the <option>--omit-dir-times</option> option will be implied, and (2) if <option>--delete</option> is also in effect (without <option>--delete-excluded</option>),  <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> will add a "protect" filter-rule for the backup suffix to the end of all your existing excludes (&eg; <option>-f "P *~"</option>). This will prevent previously backed-up files from being deleted. Note that if you are supplying your own filter rules, you may  need  to  manually insert your own exclude/protect rule somewhere higher up in the list so that it has a high enough priority to be effective (&eg;, if  your rules specify a trailing inclusion/exclusion of '*', the auto-added rule would never be reached).</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Backup suffix</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Option: <option>--suffix=SUFFIX</option></para>
-              <para>This  option  allows  you  to override the default backup suffix used with the <option>--backup</option> option. The default suffix is a <emphasis>~</emphasis> if no <option>--backup-dir</option> was specified, otherwise it is an empty string.</para>
-              <para>This option is only available if you ticked the <guilabel>Make backups</guilabel> option above.</para>
-              <para>Default: not selected; SUFFIX: ~</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Backup directory</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Option: <option>--backup-dir=DIR</option></para>
-              <para>In combination with the <option>--backup</option> option, this tells rsync to store all backups in the specified folder. This is very useful for incremental backups. You can additionally specify a backup suffix using the <option>--suffix</option> option (otherwise the files backed up in the specified folder will keep  their original filenames).</para>
-              <para>This option is only available if you ticked the <guilabel>Make backups</guilabel> option above.</para>
-              <para>Default: not selected; DIR: <envar>$HOME</envar></para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-
-      <sect3 id="configuration_page_synchronization_advanced_checksums">
+      <sect3 id="configuration_page_synchronization_miscellaneous_checksums">
         <title>Checksums</title>
 
         <variablelist>
@@ -3381,6 +3306,35 @@ polkit.addRule(function(action, subject) {
           </varlistentry>
         </variablelist>
       </sect3>
+
+      <sect3 id="configuration_page_synchronization_miscellaneous_miscellaneous">
+        <title>General</title>
+
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Do not cross file system boundaries</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>-x</option>/<option>--one-file-system</option></para>
+              <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to avoid crossing a file system boundary when recursing. This does not limit the user's ability to specify items to copy from multiple file systems, just <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink>'s recursion through the hierarchy of each folder that the user specified, and also the analogous recursion on the receiving side during deletion. Also keep in mind that <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> treats a "bind" mount to the same device as being on the same file system.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Delay updates until the end of transfer</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>--delay-updates</option></para>
+              <para>This option puts the temporary file from each updated file into a holding folder until the end of the transfer, at which time all the files are renamed into place in rapid succession.</para>
+              <para>It is strongly recommended that you read the <ulink url="man:/rsync">manual page</ulink> before using this option.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
+
     </sect2>
   </sect1>
 
@@ -3389,7 +3343,7 @@ polkit.addRule(function(action, subject) {
       Configuring Smb4K : Custom Options
 -->
 
-  <sect1 id="configuration_page_custom_options">
+  <sect1 id="configuration_page_custom_options"><!--FIXME changed to 4 tabs-->
     <title>Custom Options</title>
 
     <para>All servers and shares for which you defined custom options are listed here.</para>
@@ -3397,7 +3351,7 @@ polkit.addRule(function(action, subject) {
     <screenshot>
       <screeninfo>Screenshot of the "Custom Options" configuration tab</screeninfo>
       <mediaobject>
-        <imageobject><imagedata fileref="configuration_page_custom_options.png" format="PNG" /></imageobject>
+        <imageobject><imagedata fileref="configuration_page_custom_options.png" format="PNG" /></imageobject><!--FIXME update-->
         <textobject><phrase>The "Custom Options" configuration tab</phrase></textobject>
       </mediaobject>
     </screenshot>
@@ -4067,7 +4021,7 @@ polkit.addRule(function(action, subject) {
     <para>&smb4k; depends on the following <ulink url="http://www.qt.io">&Qt;</ulink> (&ge; 5.5.0) and <ulink url="http://www.kde.org">&kf5;</ulink> (&ge; 5.25.0) modules:</para>
     <itemizedlist>
       <listitem><para>QtCore, QtGui, QtWidgets, QtTest, QtNetwork, QtPrintSupport, QtQml</para></listitem>
-      <listitem><para>KConfig, KAuth, KDocTools, KIconThemes, KWidgetsAddons, KI18n, KCompletion, KCoreAddons, Solid, KIO, KNotifications, KXmlGui, KJobWidgets, KWallet, KDBusAddons, KParts, KConfigWidgets, KNotifications, KWindowSystem</para></listitem>
+      <listitem><para>KConfig, KAuth, KDocTools, KIconThemes, KWidgetsAddons, KI18n, KCompletion, KCoreAddons, &solid;, KIO, KNotifications, KXmlGui, KJobWidgets, &kwallet5;, KDBusAddons, KParts, KConfigWidgets, KNotifications, KWindowSystem</para></listitem>
     </itemizedlist>
     <para>It also runtime depends on the following <ulink url="http://www.kde.org">&kf5;</ulink> (&ge; 5.25.0) modules:</para>
     <itemizedlist>
@@ -4093,7 +4047,7 @@ polkit.addRule(function(action, subject) {
     <title>Configuration, Compilation and Installation</title>
 
     <para>This section describes the configuration, compilation and installation of &smb4k;. Make sure, you have read the <link linkend="appendix_requirements">Requirements</link> page before you start.</para>
-    <para><ulink url="https://sourceforge.net/projects/smb4k/files">Download</ulink> the version of Smb4K you are interested in and extract the source tarball:</para>
+    <para><ulink url="https://sourceforge.net/projects/smb4k/files">Download</ulink> the version of &smb4k; you are interested in and extract the source tarball:</para>
     
 <screen>
 <prompt>$</prompt> <userinput><command>tar</command> xvfJ smb4k-x.y.z.tar.xz</userinput>
@@ -4113,7 +4067,7 @@ polkit.addRule(function(action, subject) {
 <prompt>$</prompt> <userinput><command>cmake</command> -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` -DCMAKE_BUILD_TYPE=Release <filename class="directory">..</filename></userinput>
 </screen>
 
-    <para>If Smb4K cannot find some shared libraries after the installation (&eg; if you are using Kubuntu 16.04), it is necessary to add the <option>-DKDE_INSTALL_PLUGINDIR</option> argument to the command line above:</para>
+    <para>If &smb4k; cannot find some shared libraries after the installation (&eg; if you are using Kubuntu 16.04), it is necessary to add the <option>-DKDE_INSTALL_PLUGINDIR</option> argument to the command line above:</para>
 
 <screen>
 <prompt>$</prompt> <userinput><command>cd</command> <filename class="directory">build</filename></userinput>
@@ -4121,7 +4075,7 @@ polkit.addRule(function(action, subject) {
      -DKDE_INSTALL_PLUGINDIR=`qtpaths --plugin-dir` -DCMAKE_BUILD_TYPE=Release <filename class="directory">..</filename></userinput>
 </screen>
 
-    <para>If you want to compile Smb4K with debug symbols, replace Release by Debug. You should consider this if you experience &ie; a crash and want to either debug &smb4k; yourself or report a bug including a full backtrace.</para>
+    <para>If you want to compile &smb4k; with debug symbols, replace Release by Debug. You should consider this if you experience &ie; a crash and want to either debug &smb4k; yourself or report a bug including a full backtrace.</para>
     <para>There are also some &smb4k; specific arguments you might be interested in:</para>
     <para>
       <informaltable frame="all">
