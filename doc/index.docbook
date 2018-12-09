@@ -3,6 +3,11 @@
   <!ENTITY smb4k "<application>Smb4K</application>">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE">
+  <!-- Entities for use with "older" KF5 versions (before May 2018) -->
+  <!-- FIXME: Can we only include these if needed?                  -->
+  <!ENTITY CIFS "<acronym>CIFS</acronym>">
+  <!ENTITY Samba "<application>Samba</application>">
+  <!ENTITY solid "<application>Solid</application>">
 ]>
 
 <book id="smb4k" lang="&language;" >
