@@ -41,7 +41,6 @@
 #include "core/smb4kbasicnetworkitem.h"
 #include "core/smb4kbookmarkhandler.h"
 #include "core/smb4kbookmark.h"
-#include "core/smb4kprint.h"
 #include "core/smb4kcustomoptionsmanager.h"
 #include "core/smb4kprofilemanager.h"
 #include "core/smb4ksynchronizer.h"
@@ -74,9 +73,6 @@ Smb4KDeclarative::Smb4KDeclarative(QObject* parent)
   connect(Smb4KMounter::self(), SIGNAL(mountedSharesListChanged()), this, SLOT(slotMountedSharesListChanged()));
   connect(Smb4KMounter::self(), SIGNAL(aboutToStart(int)), this, SIGNAL(busy()));
   connect(Smb4KMounter::self(), SIGNAL(finished(int)), this, SIGNAL(idle()));
-  
-  connect(Smb4KPrint::self(), SIGNAL(aboutToStart(SharePtr)), this, SIGNAL(busy()));
-  connect(Smb4KPrint::self(), SIGNAL(finished(SharePtr)), this, SIGNAL(idle()));
   
   connect(Smb4KBookmarkHandler::self(), SIGNAL(updated()), this, SLOT(slotBookmarksListChanged()));
   
@@ -433,7 +429,7 @@ void Smb4KDeclarative::print(Smb4KNetworkObject* object)
     
     if (printer)
     {
-      Smb4KPrint::self()->print(printer, 0);
+      Smb4KClient::self()->openPrintDialog(printer);
     }
     else
     {
@@ -610,13 +606,13 @@ void Smb4KDeclarative::openCustomOptionsDialog(Smb4KNetworkObject *object)
 }
 
 
-void Smb4KDeclarative::startScanner()
+void Smb4KDeclarative::startClient()
 {
   Smb4KClient::self()->start();
 }
 
 
-void Smb4KDeclarative::abortScanner()
+void Smb4KDeclarative::abortClient()
 {
   Smb4KClient::self()->abort();
 }
@@ -631,18 +627,6 @@ void Smb4KDeclarative::startMounter()
 void Smb4KDeclarative::abortMounter()
 {
   Smb4KMounter::self()->abortAll();
-}
-
-
-void Smb4KDeclarative::startPrinter()
-{
-  Smb4KPrint::self()->start();
-}
-
-
-void Smb4KDeclarative::abortPrinter()
-{
-  Smb4KPrint::self()->abortAll();
 }
 
 

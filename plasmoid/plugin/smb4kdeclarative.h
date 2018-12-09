@@ -258,14 +258,14 @@ class Q_DECL_EXPORT Smb4KDeclarative : public QObject
     Q_INVOKABLE void openCustomOptionsDialog(Smb4KNetworkObject *object);
     
     /**
-     * This function starts the scanner.
+     * This function starts the client
      */
-    Q_INVOKABLE void startScanner();
+    Q_INVOKABLE void startClient();
     
     /**
-     * This function aborts any action of the scanner.
+     * This function aborts the client
      */
-    Q_INVOKABLE void abortScanner();
+    Q_INVOKABLE void abortClient();
     
     /**
      * This function starts the mounter.
@@ -276,16 +276,6 @@ class Q_DECL_EXPORT Smb4KDeclarative : public QObject
      * This function aborts any action of the mounter.
      */
     Q_INVOKABLE void abortMounter();
-    
-    /**
-     * This function starts the printer interface.
-     */
-    Q_INVOKABLE void startPrinter();
-    
-    /**
-     * This function aborts any actions of the printer interface.
-     */
-    Q_INVOKABLE void abortPrinter();
     
     /**
      * Return the currently active profile or an empty string if 

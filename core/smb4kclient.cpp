@@ -45,9 +45,7 @@
 #include <QHostAddress>
 #include <QTest>
 #include <QApplication>
-#include <QPrinter>
-#include <QTemporaryDir>
-#include <QTextDocument>
+
 
 #define TIMER_INTERVAL 250
 
@@ -369,90 +367,6 @@ void Smb4KClient::lookupFiles(const NetworkItemPtr &item)
 void Smb4KClient::printFile(const SharePtr& share, const KFileItem& fileItem, int copies)
 {
   //
-  // Set the URL of the file that is to be printed
-  // 
-  QUrl fileUrl;
-  
-  //
-  // Check if we can directly print the file
-  // 
-  if (fileItem.mimetype() == "application/postscript" || 
-      fileItem.mimetype() == "application/pdf" ||
-      fileItem.mimetype().startsWith(QLatin1String("image")))
-  {
-    //
-    // Set the URL of the file that is to be printed
-    // 
-    fileUrl = fileItem.url();
-  } 
-  else if (fileItem.mimetype() == "application/x-shellscript" ||
-           fileItem.mimetype().startsWith(QLatin1String("text")) || 
-           fileItem.mimetype().startsWith(QLatin1String("message")))
-  {
-    //
-    // Set the temporary directory
-    //
-    QTemporaryDir tempDir;
-    tempDir.setAutoRemove(false);
-    
-    //
-    // Set a printer object
-    //
-    QPrinter printer(QPrinter::HighResolution);
-    printer.setCreator("Smb4K");
-    printer.setOutputFormat(QPrinter::PdfFormat);
-    printer.setOutputFileName(QString("%1/smb4k_print.pdf").arg(tempDir.path()));
-    
-    //
-    // Open the file that is to be printed and read it
-    // 
-    QStringList contents;
-      
-    QFile file(fileItem.url().path());
-      
-    if (file.open(QFile::ReadOnly|QFile::Text))
-    {
-      QTextStream ts(&file);
-      
-      while (!ts.atEnd())
-      {
-        contents << ts.readLine();
-      }
-    }
-    else
-    {
-      return;
-    }
-    
-    //
-    // Convert the file to PDF
-    // 
-    QTextDocument doc;
-    
-    if (fileItem.mimetype().endsWith(QLatin1String("html")))
-    {
-      doc.setHtml(contents.join(" "));
-    }
-    else
-    {
-      doc.setPlainText(contents.join("\n"));
-    }
-      
-    doc.print(&printer);
-    
-    //
-    // Set the URL of the file that is to be printed
-    // 
-    fileUrl.setUrl(printer.outputFileName());
-    fileUrl.setScheme("file");
-  }
-  else
-  {
-    Smb4KNotification::mimetypeNotSupported(fileItem.mimetype());
-    return;
-  }
-  
-  //
   // Emit the aboutToStart() signal
   // 
   emit aboutToStart(share, PrintFile);
@@ -462,7 +376,7 @@ void Smb4KClient::printFile(const SharePtr& share, const KFileItem& fileItem, in
   // 
   Smb4KClientJob *job = new Smb4KClientJob(this);
   job->setNetworkItem(share);
-  job->setPrintFileUrl(fileUrl);
+  job->setPrintFileItem(fileItem);
   job->setPrintCopies(copies);
   job->setProcess(PrintFile);
     

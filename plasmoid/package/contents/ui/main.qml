@@ -56,8 +56,7 @@ Item {
   // Start interface
   //
   Component.onCompleted: {
-    iface.startScanner();
+    iface.startClient();
     iface.startMounter();
-    iface.startPrinter();
   }
 }

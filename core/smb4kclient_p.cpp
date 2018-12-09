@@ -57,6 +57,9 @@
 #include <QGroupBox>
 #include <QDir>
 #include <QSpinBox>
+#include <QPrinter>
+#include <QTemporaryDir>
+#include <QTextDocument>
 
 // KDE includes
 #include <KI18n/KLocalizedString>
@@ -100,7 +103,6 @@ static void get_auth_data_with_context_fn(SMBCCTX *context,
     }
   }
 }
-
 
 
 //
@@ -178,9 +180,9 @@ Smb4KGlobal::Process Smb4KClientJob::process() const
 }
 
 
-void Smb4KClientJob::setPrintFileUrl(const QUrl& url)
+void Smb4KClientJob::setPrintFileItem(const KFileItem& item)
 {
-  m_fileUrl = url;
+  m_fileItem = item;
 }
 
 
@@ -864,55 +866,179 @@ void Smb4KClientJob::doLookups()
 
 void Smb4KClientJob::doPrinting()
 {
-  // FIXME: Add copies
-  
-  qDebug() << "Printer:" << m_item->url().toString();
-  qDebug() << "File:" << m_fileUrl.path();
+  //
+  // The URL that is to be printed
+  // 
+  QUrl fileUrl;
   
   //
-  // Print the file
-  // 
-  int returnValue = smbc_print_file(m_fileUrl.path().toUtf8().data(), m_item->url().toString().toUtf8().data());
+  // Set the temporary directory
+  //
+  QTemporaryDir tempDir;
   
-  if (returnValue < 0)
+  //
+  // Check if we can directly print the file
+  // 
+  if (m_fileItem.mimetype() == "application/postscript" || 
+      m_fileItem.mimetype() == "application/pdf" ||
+      m_fileItem.mimetype().startsWith(QLatin1String("image")))
   {
-    int errorCode = errno;
+    //
+    // Set the URL to the incoming file
+    // 
+    fileUrl = m_fileItem.url();
+  } 
+  else if (m_fileItem.mimetype() == "application/x-shellscript" ||
+           m_fileItem.mimetype().startsWith(QLatin1String("text")) || 
+           m_fileItem.mimetype().startsWith(QLatin1String("message")))
+  {
+
     
-    // FIXME: Add all error codes    
+    //
+    // Set a printer object
+    //
+    QPrinter printer(QPrinter::HighResolution);
+    printer.setCreator("Smb4K");
+    printer.setOutputFormat(QPrinter::PdfFormat);
+    printer.setOutputFileName(QString("%1/smb4k_print.pdf").arg(tempDir.path()));
     
-    switch (errorCode)
+    //
+    // Open the file that is to be printed and read it
+    // 
+    QStringList contents;
+      
+    QFile file(m_fileItem.url().path());
+      
+    if (file.open(QFile::ReadOnly|QFile::Text))
     {
-      case EINVAL:
+      QTextStream ts(&file);
+      
+      while (!ts.atEnd())
       {
-        setError(InvalidUrlError);
-        setErrorText(i18n("An invalid URL was passed"));
-        break;
-      }
-      case ENOMEM:
-      {
-        setError(OutOfMemoryError);
-        setErrorText(i18n("Out of memory"));
-        break;
-      }
-      case EACCES:
-      {
-        setError(AccessDeniedError);
-        setErrorText(i18n("Permission denied"));
-        break;
-      }
-      default:
-      {
-        setError(UnknownError);
-        setErrorText(i18n("Unknown error"));
-        break;
+        contents << ts.readLine();
       }
     }
+    else
+    {
+      return;
+    }
+    
+    //
+    // Convert the file to PDF
+    // 
+    QTextDocument doc;
+    
+    if (m_fileItem.mimetype().endsWith(QLatin1String("html")))
+    {
+      doc.setHtml(contents.join(" "));
+    }
+    else
+    {
+      doc.setPlainText(contents.join("\n"));
+    }
+      
+    doc.print(&printer);
+    
+    //
+    // Set the URL to the converted file
+    // 
+    fileUrl.setUrl(printer.outputFileName());
+    fileUrl.setScheme("file");
   }
   else
   {
-    // Do nothing. Printing succeeded.
-    qDebug() << "Printing succeeded";
+    Smb4KNotification::mimetypeNotSupported(m_fileItem.mimetype());
+    return;
   }
+  
+  //
+  // Get the open function for the printer
+  // 
+  smbc_open_print_job_fn openPrinter = smbc_getFunctionOpenPrintJob(m_context);
+  
+  if (!openPrinter)
+  {
+    setError(OpenPrintJobError);
+    setErrorText(i18n("The print job could not be set up"));
+    
+    emitResult();
+    return;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // Open the printer for printing
+  // 
+  SMBCFILE *printer = openPrinter(m_context, m_item->url().toString().toUtf8().data());
+  
+  if (!printer)
+  {
+    setError(OpenPrintJobError);
+    setErrorText(i18n("The print job could not be set up"));
+    
+    emitResult();
+    return;
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // Open the file
+  // 
+  QFile file(fileUrl.path());
+  
+  if (!file.open(QFile::ReadOnly))
+  {
+    setError(FileAccessError);
+    setErrorText(i18n("The file %1 could not be read", fileUrl.path()));
+    
+    emitResult();
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // Write X copies of the file to the printer
+  // 
+  char buffer[4096];
+  qint64 bytes = 0;
+  int copy = 0;
+  
+  while (copy < m_copies)
+  {
+    while ((bytes = file.read(buffer, sizeof(buffer))) > 0)
+    {
+      smbc_write_fn writeFile = smbc_getFunctionWrite(m_context);
+      
+      if (writeFile(m_context, printer, buffer, bytes) < 0)
+      {
+        setError(PrintFileError);
+        setErrorText(i18n("The file %1 could not be printed to %2", fileUrl.path(), m_item.staticCast<Smb4KShare>()->displayString()));
+        
+        smbc_close_fn closePrinter = smbc_getFunctionClose(m_context);
+        closePrinter(m_context, printer);
+      }
+      else
+      {
+        // Do nothing
+      }
+    }
+    
+    copy++;
+  }
+  
+  //
+  // Close the printer
+  // 
+  smbc_close_fn closePrinter = smbc_getFunctionClose(m_context);
+  closePrinter(m_context, printer);
 }
 
 

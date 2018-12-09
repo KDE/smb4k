@@ -66,15 +66,19 @@ class Smb4KClientJob : public KJob
     /**
      * Error enumeration
      * 
-     * @param OutOfMemoryError    Out of memory
-     * @param NullContextError    The passed SMBCCTX context was a null pointer
-     * @param SmbConfError        The smb.conf file could not be read
-     * @param AccessDeniedError   Permission denied
-     * @param InvalidUrlError     The URL that was passed is invalid
-     * @param NonExistentUrlError The URL does not exist
-     * @param NoDirectoryError    The name is not a directory
-     * @param NetPermittedError   The operation is not permitted
-     * @param NotFoundError       The network item was not found
+     * @enum OutOfMemoryError    Out of memory
+     * @enum NullContextError    The passed SMBCCTX context was a null pointer
+     * @enum SmbConfError        The smb.conf file could not be read
+     * @enum AccessDeniedError   Permission denied
+     * @enum InvalidUrlError     The URL that was passed is invalid
+     * @enum NonExistentUrlError The URL does not exist
+     * @enum NoDirectoryError    The name is not a directory
+     * @enum NetPermittedError   The operation is not permitted
+     * @enum NotFoundError       The network item was not found
+     * @enum FileAccessError     The file could not be read
+     * @enum OpenPrintJobError   The printer share could not be opened
+     * @enum PrintFileError      The file could not be printed
+     * @enum UnknownError        Unknown error 
      */
     enum {
       OutOfMemoryError = UserDefinedError,
@@ -86,6 +90,9 @@ class Smb4KClientJob : public KJob
       NoDirectoryError,
       NotPermittedError,
       NotFoundError,
+      FileAccessError,
+      OpenPrintJobError,
+      PrintFileError,
       UnknownError
     };
     
@@ -117,7 +124,7 @@ class Smb4KClientJob : public KJob
     /**
      * Set the file to print
      */
-    void setPrintFileUrl(const QUrl &url);
+    void setPrintFileItem(const KFileItem &item);
     
     /**
      * Set the number of copies that are to be printed
@@ -174,7 +181,7 @@ class Smb4KClientJob : public KJob
     QList<HostPtr> m_hosts;
     QList<SharePtr> m_shares;
     QList<FilePtr> m_files;
-    QUrl m_fileUrl;
+    KFileItem m_fileItem;
     int m_copies;
 };
 
