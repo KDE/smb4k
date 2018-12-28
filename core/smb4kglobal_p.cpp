@@ -302,26 +302,6 @@ void Smb4KGlobalPrivate::setDefaultSettings()
       Smb4KSettings::self()->domainNameItem()->setDefault();
     }
   }
-
-  if (!opts["socket options"].isEmpty())
-  {
-    Smb4KSettings::self()->socketOptionsItem()->setDefaultValue(opts["socket options"]);
-
-    if (Smb4KSettings::socketOptions().isEmpty())
-    {
-      Smb4KSettings::self()->socketOptionsItem()->setDefault();
-    }
-  }
-
-  if (!opts["netbios scope"].isEmpty())
-  {
-    Smb4KSettings::self()->netBIOSScopeItem()->setDefaultValue(opts["netbios scope"]);
-
-    if (Smb4KSettings::netBIOSScope().isEmpty())
-    {
-      Smb4KSettings::self()->netBIOSScopeItem()->setDefault();
-    }
-  }
 }
 
 

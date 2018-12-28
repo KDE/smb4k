@@ -164,22 +164,6 @@ class Smb4KMainWindow : public KXmlGuiWindow
     void slotVisualUnmountFeedback(const SharePtr &share);
                                   
     /**
-     * This slot shows a status message as well as a busy bar. It is connected to the 
-     * Smb4KSearch::aboutToStart() signal.
-     *
-     * @param string        The search string
-     */
-    void slotSearchAboutToStart(const QString &string);
-    
-    /**
-     * This shows a status message and hides the busy bar if appropriate. It is 
-     * connected to the Smb4KSearch::finished() signal.
-     * 
-     * @param string        The search string
-     */
-   void slotSearchFinished(const QString &string);
-     
-    /**
      * This slot shows a message according to the action performed by the synchronizer.
      * It is connected to the Smb4KSynchronizer::aboutToStart() signal.
      *
@@ -221,15 +205,6 @@ class Smb4KMainWindow : public KXmlGuiWindow
      * @param visible         If the dock widget is visible.
      */
     void slotSharesViewVisibilityChanged(bool visible);
-    
-    
-    /**
-     * This slot is connected to the visibilityChanged() signals of the network browser
-     * dock widget. It is used to get the tool bars right.
-     *
-     * @param visible         If the dock widget is visible.
-     */
-    void slotSearchDialogVisibilityChanged(bool visible);
 
   private:
     /**

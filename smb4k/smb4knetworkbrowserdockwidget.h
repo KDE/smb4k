@@ -28,6 +28,7 @@
 
 // application specific includes
 #include "smb4knetworkbrowser.h"
+#include "smb4knetworksearchtoolbar.h"
 #include "core/smb4kglobal.h"
 
 // Qt includes
@@ -222,6 +223,50 @@ class Smb4KNetworkBrowserDockWidget : public QDockWidget
      */
     void slotIconSizeChanged(int group);
     
+    /**
+     * This slot is called when the search toolbar is to be shown
+     */
+    void slotShowSearchToolBar();
+    
+    /**
+     * This slot is called when the search toolbar is to be closed
+     */
+    void slotHideSearchToolBar();
+    
+    /**
+     * This slot is called when a search should be performed
+     * 
+     * @param item                The search item
+     */
+    void slotPerformSearch(const QString &item);
+    
+    /**
+     * This slot is called when a search should be stopped
+     */
+    void slotStopSearch();
+    
+    /**
+     * This slot is called when a search was performed and the search 
+     * results were returned
+     * 
+     * @param shares              The list of search results
+     */
+    void slotSearchResults(const QList<SharePtr> &shares);
+    
+    /**
+     * This slot is called when the user pressed the up or down action
+     * in the search toolbar
+     *
+     * @param url                 The URL of the search result the user wants 
+     *                            to jump to
+     */
+    void slotJumpToResult(const QString &url);
+    
+    /**
+     * This slot is called when the search results are to be cleared
+     */
+    void slotClearSearchResults();
+    
   private:
     /**
      * Set up the actions
@@ -242,6 +287,11 @@ class Smb4KNetworkBrowserDockWidget : public QDockWidget
      * Context menu
      */
     KActionMenu *m_contextMenu;
+    
+    /**
+     * Network search bar
+     */
+    Smb4KNetworkSearchToolBar *m_searchToolBar;
 };
 
 #endif

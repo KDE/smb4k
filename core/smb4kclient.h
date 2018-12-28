@@ -124,6 +124,13 @@ class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
     void printFile(const SharePtr &share, const KFileItem &fileItem, int copies);
     
     /**
+     * Perform a search on the entire network neighborhood
+     * 
+     * @param item            The search item
+     */
+    void search(const QString &item);
+    
+    /**
      * This function opens the preview dialog for @p share.
      * 
      * @param share           The share object
@@ -179,6 +186,13 @@ class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
      * @param list          The list of files and directories
      */
     void files(const QList<FilePtr> &list);
+    
+    /**
+     * Emitted when a search was done
+     * 
+     * @param list          The list of search results
+     */
+    void searchResults(const QList<SharePtr> &list);
     
   protected Q_SLOTS:
     /**

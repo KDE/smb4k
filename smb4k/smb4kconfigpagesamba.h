@@ -40,14 +40,11 @@
  */
 
 
-class Smb4KConfigPageSamba : public QTabWidget
+class Smb4KConfigPageSamba : public QWidget
 {
   Q_OBJECT
 
   public:
-    enum Tabs{ GeneralTab = 0,
-               ClientProgramsTab = 1 };
-
     /**
      * The constructor.
      *

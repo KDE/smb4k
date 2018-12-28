@@ -456,6 +456,7 @@ void Smb4KClientJob::doLookups()
     }
 
     emitResult();
+    return;
   }
   else
   {
@@ -958,8 +959,11 @@ void Smb4KClientJob::doPrinting()
   
   if (!openPrinter)
   {
+    if (errno != 0)
+        qDebug() << "errno is set:" << errno;
+      
     setError(OpenPrintJobError);
-    setErrorText(i18n("The print job could not be set up"));
+    setErrorText(i18n("The print job could not be set up (step 1)"));
     
     emitResult();
     return;
@@ -976,8 +980,11 @@ void Smb4KClientJob::doPrinting()
   
   if (!printer)
   {
+    if (errno != 0)
+        qDebug() << "errno is set:" << errno;
+    
     setError(OpenPrintJobError);
-    setErrorText(i18n("The print job could not be set up"));
+    setErrorText(i18n("The print job could not be set up (step 2)"));
     
     emitResult();
     return;
@@ -998,6 +1005,7 @@ void Smb4KClientJob::doPrinting()
     setErrorText(i18n("The file %1 could not be read", fileUrl.path()));
     
     emitResult();
+    return;
   }
   else
   {
@@ -1167,6 +1175,7 @@ void Smb4KClientJob::slotStartJob()
     }
     
     emitResult();
+    return;
   }
   
   //
@@ -1392,6 +1401,7 @@ void Smb4KClientJob::slotStartJob()
     smbc_free_context(m_context, 0);
 
     emitResult();
+    return;
   }
   
   //

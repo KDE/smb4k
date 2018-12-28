@@ -55,9 +55,7 @@ set(smb4k_SRCS
   smb4knetworkbrowser.cpp
   smb4knetworkbrowseritem.cpp
   smb4knetworkbrowserdockwidget.cpp
-  smb4knetworksearch.cpp
-  smb4knetworksearchitem.cpp
-  smb4knetworksearchdockwidget.cpp
+  smb4knetworksearchtoolbar.cpp
   smb4ksystemtray.cpp
   smb4ktooltip.cpp)
 

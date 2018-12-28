@@ -46,9 +46,6 @@
 #include <QTest>
 #include <QApplication>
 
-
-#define TIMER_INTERVAL 250
-
 using namespace Smb4KGlobal;
 
 Q_GLOBAL_STATIC(Smb4KClientStatic, p);
@@ -404,6 +401,79 @@ void Smb4KClient::printFile(const SharePtr& share, const KFileItem& fileItem, in
   // 
   job->start();
 }
+
+
+void Smb4KClient::search(const QString& item)
+{
+  //
+  // Create empty basic network item
+  // 
+  NetworkItemPtr networkItem = NetworkItemPtr(new Smb4KBasicNetworkItem());
+  
+  //
+  // Emit the aboutToStart() signal
+  // 
+  emit aboutToStart(networkItem, NetworkSearch);
+  
+  //
+  // Before doing the search, lookup all domains, servers and shares in the 
+  // network neighborhood.
+  // 
+  lookupDomains();
+  
+  while(isRunning())
+  {
+    QTest::qWait(50);
+  }
+  
+  for (const WorkgroupPtr &workgroup : workgroupsList())
+  {
+    lookupDomainMembers(workgroup);
+    
+    while(isRunning())
+    {
+      QTest::qWait(50);
+    }
+  }
+  
+  for (const HostPtr &host : hostsList())
+  {
+    lookupShares(host);
+    
+    while(isRunning())
+    {
+      QTest::qWait(50);
+    }
+  }
+  
+  //
+  // Do the actual search
+  // 
+  QList<SharePtr> results;
+  
+  for (const SharePtr &share : sharesList())
+  {
+    if (share->shareName().contains(item, Qt::CaseInsensitive))
+    {
+      results << share;
+    }
+    else
+    {
+      // Do nothing
+    }
+  }
+  
+  //
+  // Emit the search results
+  // 
+  emit searchResults(results);
+  
+  //
+  // Emit the finished() signal
+  // 
+  emit finished(networkItem, NetworkSearch);
+}
+
 
 
 void Smb4KClient::openPreviewDialog(const SharePtr &share)

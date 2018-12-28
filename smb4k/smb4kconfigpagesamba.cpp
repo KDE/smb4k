@@ -45,84 +45,68 @@
 #include <KCompletion/KComboBox>
 
 
-Smb4KConfigPageSamba::Smb4KConfigPageSamba(QWidget *parent) : QTabWidget(parent)
+Smb4KConfigPageSamba::Smb4KConfigPageSamba(QWidget *parent) : QWidget(parent)
 {
   //
-  // Common
+  // The layout
   //
-  QWidget *general_tab = new QWidget(this);
+  QVBoxLayout *layout = new QVBoxLayout(this);
+  layout->setSpacing(5);
+  layout->setMargin(0);
 
-  QVBoxLayout *general_layout = new QVBoxLayout(general_tab);
-  general_layout->setSpacing(5);
-  general_layout->setMargin(0);
+  // 
+  // Common options group box
+  // 
+  QGroupBox *commonBox = new QGroupBox(i18n("Common Options"), this);
 
-  // Common options
-  QGroupBox *general_box = new QGroupBox(i18n("Common Options"), general_tab);
+  QGridLayout *commonBoxLayout = new QGridLayout(commonBox);
+  commonBoxLayout->setSpacing(5);
 
-  QGridLayout *gen_opt_layout = new QGridLayout(general_box);
-  gen_opt_layout->setSpacing(5);
+  QLabel *nebiosNameLabel = new QLabel(Smb4KSettings::self()->netBIOSNameItem()->label(), commonBox);
+  KLineEdit *netbiosName = new KLineEdit(commonBox);
+  netbiosName->setObjectName("kcfg_NetBIOSName");
+  nebiosNameLabel->setBuddy(netbiosName);
 
-  QLabel *netbios_name_label = new QLabel(Smb4KSettings::self()->netBIOSNameItem()->label(), general_box);
-  KLineEdit *netbios_name = new KLineEdit(general_box);
-  netbios_name->setObjectName("kcfg_NetBIOSName");
-  netbios_name_label->setBuddy(netbios_name);
-
-  QLabel *domain_label = new QLabel(Smb4KSettings::self()->domainNameItem()->label(), general_box);
-  KLineEdit *domain = new KLineEdit(general_box);
+  QLabel *domainLabel = new QLabel(Smb4KSettings::self()->domainNameItem()->label(), commonBox);
+  KLineEdit *domain = new KLineEdit(commonBox);
   domain->setObjectName("kcfg_DomainName");
-  domain_label->setBuddy(domain);
+  domainLabel->setBuddy(domain);
   
-  QLabel *socket_options_label = new QLabel(Smb4KSettings::self()->socketOptionsItem()->label(), general_box);
-  KLineEdit *socket_options = new KLineEdit(general_box);
-  socket_options->setObjectName("kcfg_SocketOptions");
-  socket_options_label->setBuddy(socket_options);
-  
-  QLabel *netbios_scope_label = new QLabel(Smb4KSettings::self()->netBIOSScopeItem()->label(), general_box);
-  KLineEdit *netbios_scope = new KLineEdit(general_box);
-  netbios_scope->setObjectName("kcfg_NetBIOSScope");
-  netbios_scope_label->setBuddy(netbios_scope);
-  
-  QCheckBox *useRemoteSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), general_box);
+  QCheckBox *useRemoteSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), commonBox);
   useRemoteSmbPort->setObjectName("kcfg_UseRemoteSmbPort");
 
-  QSpinBox *remote_smb_port = new QSpinBox(general_box);
-  remote_smb_port->setObjectName("kcfg_RemoteSmbPort");
-//   remote_smb_port->setSliderEnabled(true); 
+  QSpinBox *remoteSmbPort = new QSpinBox(commonBox);
+  remoteSmbPort->setObjectName("kcfg_RemoteSmbPort");
+//   remoteSmbPort->setSliderEnabled(true); 
 
-  gen_opt_layout->addWidget(netbios_name_label, 0, 0, 0);
-  gen_opt_layout->addWidget(netbios_name, 0, 1, 0);
-  gen_opt_layout->addWidget(domain_label, 2, 0, 0);
-  gen_opt_layout->addWidget(domain, 2, 1, 0);
-  gen_opt_layout->addWidget(socket_options_label, 3, 0, 0);
-  gen_opt_layout->addWidget(socket_options, 3, 1, 0);
-  gen_opt_layout->addWidget(netbios_scope_label, 4, 0, 0);
-  gen_opt_layout->addWidget(netbios_scope, 4, 1, 0);
-  gen_opt_layout->addWidget(useRemoteSmbPort, 5, 0, 0);
-  gen_opt_layout->addWidget(remote_smb_port, 5, 1, 0);
+  commonBoxLayout->addWidget(nebiosNameLabel, 0, 0, 0);
+  commonBoxLayout->addWidget(netbiosName, 0, 1, 0);
+  commonBoxLayout->addWidget(domainLabel, 2, 0, 0);
+  commonBoxLayout->addWidget(domain, 2, 1, 0);
+  commonBoxLayout->addWidget(useRemoteSmbPort, 3, 0, 0);
+  commonBoxLayout->addWidget(remoteSmbPort, 3, 1, 0);
 
-  // Common client options
-  QGroupBox *auth_box = new QGroupBox(i18n("Authentication"), general_tab);
+  // 
+  // Authentication group box
+  // 
+  QGroupBox *authenticationBox = new QGroupBox(i18n("Authentication"), this);
 
-  QGridLayout *auth_layout = new QGridLayout(auth_box);
-  auth_layout->setSpacing(5);
+  QGridLayout *authenticationBoxLayout = new QGridLayout(authenticationBox);
+  authenticationBoxLayout->setSpacing(5);
 
-  QCheckBox *auth_kerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), auth_box);
+  QCheckBox *auth_kerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), authenticationBox);
   auth_kerberos->setObjectName("kcfg_UseKerberos");
 
-  QCheckBox *auth_machine_acc = new QCheckBox(Smb4KSettings::self()->machineAccountItem()->label(), auth_box);
-  auth_machine_acc->setObjectName("kcfg_MachineAccount");
-
-  QCheckBox *use_ccache = new QCheckBox(Smb4KSettings::self()->useWinbindCCacheItem()->label(), auth_box);
+  QCheckBox *use_ccache = new QCheckBox(Smb4KSettings::self()->useWinbindCCacheItem()->label(), authenticationBox);
   use_ccache->setObjectName("kcfg_UseWinbindCCache");
 
-  auth_layout->addWidget(auth_kerberos, 0, 0, 0);
-  auth_layout->addWidget(auth_machine_acc, 0, 1, 0);
-  auth_layout->addWidget(use_ccache, 1, 0, 0);
+  authenticationBoxLayout->addWidget(auth_kerberos, 0, 0, 0);
+  authenticationBoxLayout->addWidget(use_ccache, 0, 1, 0);
   
   //
   // Security group box
   // 
-  QGroupBox *securityBox = new QGroupBox(i18n("Security"), general_tab);
+  QGroupBox *securityBox = new QGroupBox(i18n("Security"), this);
   QGridLayout *securityBoxLayout = new QGridLayout(securityBox);
   securityBoxLayout->setSpacing(5);
   
@@ -140,61 +124,13 @@ Smb4KConfigPageSamba::Smb4KConfigPageSamba(QWidget *parent) : QTabWidget(parent)
     encryptionLevel->addItem(c.label);
   }
 
-  // Signing state
-  QLabel *signing_state_label = new QLabel(Smb4KSettings::self()->signingStateItem()->label(), securityBox);
-  KComboBox *signing_state = new KComboBox(securityBox);
-  signing_state->setObjectName("kcfg_SigningState");
-  signing_state->insertItem(Smb4KSettings::EnumSigningState::None,
-                             Smb4KSettings::self()->signingStateItem()->choices().value(Smb4KSettings::EnumSigningState::None).label);
-  signing_state->insertItem(Smb4KSettings::EnumSigningState::On,
-                             Smb4KSettings::self()->signingStateItem()->choices().value(Smb4KSettings::EnumSigningState::On).label);
-  signing_state->insertItem(Smb4KSettings::EnumSigningState::Off,
-                             Smb4KSettings::self()->signingStateItem()->choices().value(Smb4KSettings::EnumSigningState::Off).label);
-  signing_state->insertItem(Smb4KSettings::EnumSigningState::Required,
-                             Smb4KSettings::self()->signingStateItem()->choices().value(Smb4KSettings::EnumSigningState::Required).label);
-  signing_state_label->setBuddy(signing_state);
-
-  // Encrypt SMB transport
-  QCheckBox *encrypt_transport = new QCheckBox(Smb4KSettings::self()->encryptSMBTransportItem()->label(), securityBox);
-  encrypt_transport->setObjectName("kcfg_EncryptSMBTransport");
-
   securityBoxLayout->addWidget(useEncryptionLevel, 0, 0, 0);
   securityBoxLayout->addWidget(encryptionLevel, 0, 1, 0);
-  securityBoxLayout->addWidget(signing_state_label, 1, 0, 0);
-  securityBoxLayout->addWidget(signing_state, 1, 1, 0);
-  securityBoxLayout->addWidget(encrypt_transport, 2, 0, 1, 2, 0);
 
-  general_layout->addWidget(general_box);
-  general_layout->addWidget(auth_box);
-  general_layout->addWidget(securityBox);
-  general_layout->addStretch(100);
-
-  insertTab(GeneralTab, general_tab, i18n("Common Settings"));
-
-  //
-  // Options for the client programs
-  //
-  QWidget *clients_tab = new QWidget(this);
-
-  QVBoxLayout *client_layout = new QVBoxLayout(clients_tab);
-  client_layout->setSpacing(5);
-  client_layout->setMargin(0);
-
-  // 'smbtree' program
-  QGroupBox *smbtree_box = new QGroupBox(i18n("smbtree"), clients_tab);
-
-  QGridLayout *smbtree_layout = new QGridLayout(smbtree_box);
-  smbtree_layout->setSpacing(5);
-
-  QCheckBox *smbtree_bcasts = new QCheckBox(Smb4KSettings::self()->smbtreeSendBroadcastsItem()->label(), smbtree_box);
-  smbtree_bcasts->setObjectName("kcfg_SmbtreeSendBroadcasts");
-
-  smbtree_layout->addWidget(smbtree_bcasts, 0, 0, 0);
-
-  client_layout->addWidget(smbtree_box);
-  client_layout->addStretch(100);
-
-  insertTab(ClientProgramsTab, clients_tab, i18n("Utility Programs"));
+  layout->addWidget(commonBox);
+  layout->addWidget(authenticationBox);
+  layout->addWidget(securityBox);
+  layout->addStretch(100);
 }
 
 

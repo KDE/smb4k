@@ -185,16 +185,6 @@
       <whatsthis>This is the workgroup or domain this computer is or should be in. By default, it is the workgroup that is defined in the smb.conf file.</whatsthis>
       <!-- Will be filled by Smb4KCore::setDefaultConfigValues() -->
     </entry>
-    <entry name="SocketOptions" type="String">
-      <label>Socket options:</label>
-      <whatsthis>These are the TCP socket options that are used by nmblookup and smbclient. Socket options are controls on the networking layer of the operating systems which allow the connection to be tuned. See the manual page of smb.conf for more information.</whatsthis>
-      <!-- Will be filled by Smb4KCore::setDefaultConfigValues() -->
-    </entry>
-    <entry name="NetBIOSScope" type="String">
-      <label>NetBIOS scope:</label>
-      <whatsthis>This sets the NetBIOS scope that nmblookup and smbclient will operate under. It should not be set unless every machine on your network neighborhood sets this value.</whatsthis>
-      <!-- Will be filled by Smb4KCore::setDefaultConfigValues() -->
-    </entry>
     <entry name="UseRemoteSmbPort" type="Bool">
       <label>SMB port:</label>
       <whatsthis>This is the port that is used for connecting to remote servers with the client programs net, smbclient and smbtree. The default value is 139 (NetBIOS). Under FreeBSD, this setting is also used for mounting.</whatsthis>
@@ -208,17 +198,12 @@
     </entry>
     <entry name="UseKerberos" type="Bool">
       <label>Try to authenticate with Kerberos</label>
-      <whatsthis>Try to authenticate with Kerberos. This is only useful in an Active Directory environment. The setting affects the net, smbclient and smbtree command.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="MachineAccount" type="Bool">
-      <label>Authenticate with local machine account</label>
-      <whatsthis>Make queries to the remote server using the machine account of the local server. The setting affects the net, smbclient and smbtree command.</whatsthis>
+      <whatsthis>Try to authenticate with Kerberos. This is only useful in an Active Directory environment.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="UseWinbindCCache" type="Bool">
       <label>Use Winbind ccache for authentication</label>
-      <whatsthis>Use the Winbind ccache for authentication. This setting affects the net, smbclient and smbtree command.</whatsthis>
+      <whatsthis>Use the Winbind ccache for authentication.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="UseEncryptionLevel" type="Bool">
@@ -240,35 +225,6 @@
         </choice>
       </choices>
       <default>None</default>
-    </entry>
-    <entry name="SigningState" type="Enum">
-      <label>Signing state:</label>
-      <whatsthis>Set the signing state. This setting affects the smbclient and smbtree command.</whatsthis>
-      <choices>
-        <choice name="None">
-          <label>None</label>
-        </choice>
-        <choice name="On">
-          <label>On</label>
-        </choice>
-        <choice name="Off">
-          <label>Off</label>
-        </choice>
-        <choice name="Required">
-          <label>Required</label>
-        </choice>
-      </choices>
-      <default>None</default>
-    </entry>
-    <entry name="EncryptSMBTransport" type="Bool">
-      <label>Encrypt SMB transport</label>
-      <whatsthis>Encrypt the SMB transport (Unix extended servers only). This setting affects the net, smbclient and smbtree command.</whatsthis>
-      <default>false</default>
-    </entry>  
-    <entry name="SmbtreeSendBroadcasts" type="Bool">
-      <label>Send requests as broadcasts</label>
-      <whatsthis>Let smbtree query the network nodes by sending requests as broadcasts instead of querying the local master browser.</whatsthis>
-      <default>false</default>
     </entry>
   </group>  
 

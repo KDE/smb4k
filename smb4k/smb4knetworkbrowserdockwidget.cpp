@@ -44,6 +44,8 @@
 #include <QApplication>
 #include <QMenu>
 #include <QHeaderView>
+#include <QVBoxLayout>
+#include <QTreeWidgetItemIterator>
 
 // KDE includes
 #include <KWidgetsAddons/KDualAction>
@@ -58,10 +60,21 @@ Smb4KNetworkBrowserDockWidget::Smb4KNetworkBrowserDockWidget(const QString& titl
 : QDockWidget(title, parent)
 {
   //
-  // Set the network browser widget
+  // The network browser widget
   // 
-  m_networkBrowser = new Smb4KNetworkBrowser(this);
-  setWidget(m_networkBrowser);
+  QWidget *mainWidget = new QWidget(this);
+  QVBoxLayout *mainWidgetLayout = new QVBoxLayout(mainWidget);
+  mainWidgetLayout->setMargin(0);
+  mainWidgetLayout->setSpacing(5);
+  
+  m_networkBrowser = new Smb4KNetworkBrowser(mainWidget);
+  m_searchToolBar = new Smb4KNetworkSearchToolBar(mainWidget);
+  m_searchToolBar->setVisible(false);
+  
+  mainWidgetLayout->addWidget(m_networkBrowser);
+  mainWidgetLayout->addWidget(m_searchToolBar);
+  
+  setWidget(mainWidget);
   
   //
   // The action collection
@@ -90,11 +103,18 @@ Smb4KNetworkBrowserDockWidget::Smb4KNetworkBrowserDockWidget(const QString& titl
   connect(m_networkBrowser, SIGNAL(itemActivated(QTreeWidgetItem*,int)), this, SLOT(slotItemActivated(QTreeWidgetItem*,int)));
   connect(m_networkBrowser, SIGNAL(itemSelectionChanged()), this, SLOT(slotItemSelectionChanged()));
   
+  connect(m_searchToolBar, SIGNAL(close()), this, SLOT(slotHideSearchToolBar()));
+  connect(m_searchToolBar, SIGNAL(search(QString)), this, SLOT(slotPerformSearch(QString)));
+  connect(m_searchToolBar, SIGNAL(abort()), this, SLOT(slotStopSearch()));
+  connect(m_searchToolBar, SIGNAL(jumpToResult(QString)), this, SLOT(slotJumpToResult(QString)));
+  connect(m_searchToolBar, SIGNAL(clearSearchResults()), this, SLOT(slotClearSearchResults()));
+  
   connect(Smb4KClient::self(), SIGNAL(aboutToStart(NetworkItemPtr, int)), this, SLOT(slotClientAboutToStart(NetworkItemPtr, int)));
   connect(Smb4KClient::self(), SIGNAL(finished(NetworkItemPtr, int)), this, SLOT(slotClientFinished(NetworkItemPtr,int)));
   connect(Smb4KClient::self(), SIGNAL(workgroups()), this, SLOT(slotWorkgroups()));
   connect(Smb4KClient::self(), SIGNAL(hosts(WorkgroupPtr)), this, SLOT(slotWorkgroupMembers(WorkgroupPtr)));
   connect(Smb4KClient::self(), SIGNAL(shares(HostPtr)), this, SLOT(slotShares(HostPtr)));
+  connect(Smb4KClient::self(), SIGNAL(searchResults(QList<SharePtr>)), this, SLOT(slotSearchResults(QList<SharePtr>)));
 
   connect(Smb4KMounter::self(), SIGNAL(mounted(SharePtr)), this, SLOT(slotShareMounted(SharePtr)));
   connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)), this, SLOT(slotShareUnmounted(SharePtr)));
@@ -122,43 +142,104 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
   rescanAbortAction->setInactiveGuiItem(abortItem);
   rescanAbortAction->setActive(true);
   rescanAbortAction->setAutoToggle(false);
+  rescanAbortAction->setEnabled(true);
+
   connect(rescanAbortAction, SIGNAL(triggered(bool)), this, SLOT(slotRescanAbortActionTriggered(bool)));
+
+  m_actionCollection->addAction("rescan_abort_action", rescanAbortAction);
+  m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Refresh);
+  
+  //
+  // Separator
+  // 
+  QAction *separator1 = new QAction(this);
+  separator1->setSeparator(true);
+  
+  m_actionCollection->addAction("network_separator1", separator1);
   
   //
   // Bookmark action
   // 
   QAction *bookmarkAction = new QAction(KDE::icon("bookmark-new"), i18n("Add &Bookmark"), this);
+  bookmarkAction->setEnabled(false);
+  
   connect(bookmarkAction, SIGNAL(triggered(bool)), this, SLOT(slotAddBookmark(bool)));
+  
+  m_actionCollection->addAction("bookmark_action", bookmarkAction);
+  m_actionCollection->setDefaultShortcut(bookmarkAction, QKeySequence(Qt::CTRL+Qt::Key_B));
+  
+  //
+  // Search action
+  // 
+  QAction *searchAction = new QAction(KDE::icon("search"), i18n("&Search"), this);
+  
+  connect(searchAction, SIGNAL(triggered(bool)), this, SLOT(slotShowSearchToolBar()));
+  
+  m_actionCollection->addAction("search_action", searchAction);
+  m_actionCollection->setDefaultShortcut(searchAction, QKeySequence::Find);
   
   //
   // Mount dialog action
   // 
   QAction *manualAction = new QAction(KDE::icon("view-form", QStringList("emblem-mounted")), i18n("&Open Mount Dialog"), this);
+  manualAction->setEnabled(true);
+  
   connect(manualAction, SIGNAL(triggered(bool)), this, SLOT(slotMountManually(bool)));
+  
+  m_actionCollection->addAction("mount_manually_action", manualAction);
+  m_actionCollection->setDefaultShortcut(manualAction, QKeySequence(Qt::CTRL+Qt::Key_O));
+  
+  //
+  // Separator
+  // 
+  QAction *separator2 = new QAction(this);
+  separator2->setSeparator(true);
+  
+  m_actionCollection->addAction("network_separator2", separator2);
 
   //
   // Authentication action
   // 
   QAction *authAction = new QAction(KDE::icon("dialog-password"), i18n("Au&thentication"), this);
+  authAction->setEnabled(false);
+  
   connect(authAction, SIGNAL(triggered(bool)), this, SLOT(slotAuthentication(bool)));
+  
+  m_actionCollection->addAction("authentication_action", authAction);
+  m_actionCollection->setDefaultShortcut(authAction, QKeySequence(Qt::CTRL+Qt::Key_T));
 
   //
   // Custom options action
   // 
   QAction *customAction = new QAction(KDE::icon("preferences-system-network"), i18n("&Custom Options"), this);
+  customAction->setEnabled(false);
+  
   connect(customAction, SIGNAL(triggered(bool)), this, SLOT(slotCustomOptions(bool)));
+  
+  m_actionCollection->addAction("custom_action", customAction);
+  m_actionCollection->setDefaultShortcut(customAction, QKeySequence(Qt::CTRL+Qt::Key_C));
 
   //
   // Preview action
   // 
   QAction *previewAction  = new QAction(KDE::icon("view-list-icons"), i18n("Pre&view"), this);
+  previewAction->setEnabled(false);
+  
   connect(previewAction, SIGNAL(triggered(bool)), this, SLOT(slotPreview(bool)));
+  
+  m_actionCollection->addAction("preview_action", previewAction);
+  m_actionCollection->setDefaultShortcut(previewAction, QKeySequence(Qt::CTRL+Qt::Key_V));
 
   //
   // Print action
   // 
   QAction *printAction = new QAction(KDE::icon("printer"), i18n("&Print File"), this);
+  printAction->setEnabled(false);
+  
   connect(printAction, SIGNAL(triggered(bool)), this, SLOT(slotPrint(bool)));
+  
+  m_actionCollection->addAction("print_action", printAction);
+  m_actionCollection->setDefaultShortcut(printAction, QKeySequence(Qt::CTRL+Qt::Key_P));
 
   //
   // Mount/unmount action
@@ -170,54 +251,13 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
   mountAction->setInactiveGuiItem(unmountItem);
   mountAction->setActive(true);
   mountAction->setAutoToggle(false);
+  mountAction->setEnabled(false);
+  
   connect(mountAction, SIGNAL(triggered(bool)), this, SLOT(slotMountActionTriggered(bool)));
   connect(mountAction, SIGNAL(activeChanged(bool)), this, SLOT(slotMountActionChanged(bool)));
   
-  //
-  // Two separators for the menu
-  // 
-  QAction *separator1 = new QAction(this);
-  separator1->setSeparator(true);
-  QAction *separator2 = new QAction(this);
-  separator2->setSeparator(true);
-  
-  //
-  // Add the actions
-  //
-  m_actionCollection->addAction("rescan_abort_action", rescanAbortAction);
-  m_actionCollection->addAction("network_separator1", separator1);
-  m_actionCollection->addAction("bookmark_action", bookmarkAction);
-  m_actionCollection->addAction("mount_manually_action", manualAction);
-  m_actionCollection->addAction("network_separator2", separator2);
-  m_actionCollection->addAction("authentication_action", authAction);
-  m_actionCollection->addAction("custom_action", customAction);
-  m_actionCollection->addAction("preview_action", previewAction);
-  m_actionCollection->addAction("print_action", printAction);
   m_actionCollection->addAction("mount_action", mountAction);
-  
-  //
-  // Set the shortcuts
-  //
-  m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Refresh);
-  m_actionCollection->setDefaultShortcut(bookmarkAction, QKeySequence(Qt::CTRL+Qt::Key_B));
-  m_actionCollection->setDefaultShortcut(manualAction, QKeySequence(Qt::CTRL+Qt::Key_O));
-  m_actionCollection->setDefaultShortcut(authAction, QKeySequence(Qt::CTRL+Qt::Key_T));
-  m_actionCollection->setDefaultShortcut(customAction, QKeySequence(Qt::CTRL+Qt::Key_C));
-  m_actionCollection->setDefaultShortcut(previewAction, QKeySequence(Qt::CTRL+Qt::Key_V));
-  m_actionCollection->setDefaultShortcut(printAction, QKeySequence(Qt::CTRL+Qt::Key_P));
   m_actionCollection->setDefaultShortcut(mountAction, QKeySequence(Qt::CTRL+Qt::Key_M));
-  
-  //
-  // Enable/disable the actions
-  //
-  rescanAbortAction->setEnabled(true);
-  bookmarkAction->setEnabled(false);
-  manualAction->setEnabled(true);
-  authAction->setEnabled(false);
-  customAction->setEnabled(false);
-  previewAction->setEnabled(false);
-  printAction->setEnabled(false);
-  mountAction->setEnabled(false);
 
   // 
   // Plug the actions into the context menu
@@ -534,7 +574,7 @@ void Smb4KNetworkBrowserDockWidget::slotItemSelectionChanged()
 }
 
 
-void Smb4KNetworkBrowserDockWidget::slotClientAboutToStart(const NetworkItemPtr& /*item*/, int /*process*/)
+void Smb4KNetworkBrowserDockWidget::slotClientAboutToStart(const NetworkItemPtr& /*item*/, int process)
 {
   //
   // Get the rescan/abort action
@@ -561,10 +601,23 @@ void Smb4KNetworkBrowserDockWidget::slotClientAboutToStart(const NetworkItemPtr&
   {
     // Do nothing
   }
+  
+  //
+  // Set the active status of the search tool bar 
+  // 
+  if (process == NetworkSearch)
+  {
+    qDebug() << "Setting active state";
+    m_searchToolBar->setActiveState(true);
+  }
+  else
+  {
+    // Do nothing
+  }
 }
 
 
-void Smb4KNetworkBrowserDockWidget::slotClientFinished(const NetworkItemPtr& /*item*/, int /*process*/)
+void Smb4KNetworkBrowserDockWidget::slotClientFinished(const NetworkItemPtr& /*item*/, int process)
 {
   //
   // Get the rescan/abort action
@@ -586,6 +639,19 @@ void Smb4KNetworkBrowserDockWidget::slotClientFinished(const NetworkItemPtr& /*i
     {
       m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Cancel);
     }
+  }
+  else
+  {
+    // Do nothing
+  }
+  
+  //
+  // Set the active status of the search tool bar 
+  // 
+  if (process == NetworkSearch)
+  {
+    qDebug() << "Setting inactive state";
+    m_searchToolBar->setActiveState(false);
   }
   else
   {
@@ -1381,4 +1447,120 @@ void Smb4KNetworkBrowserDockWidget::slotIconSizeChanged(int group)
     }
   }
 }
+
+
+void Smb4KNetworkBrowserDockWidget::slotShowSearchToolBar()
+{
+  //
+  // Show the search toolbar
+  // 
+  m_searchToolBar->setVisible(true);
+  
+  //
+  // Set the focus to the search item input
+  // 
+  m_searchToolBar->prepareInput();
+}
+
+
+
+void Smb4KNetworkBrowserDockWidget::slotHideSearchToolBar()
+{
+  //
+  // Hide the search toolbar
+  // 
+  m_searchToolBar->setVisible(false);
+}
+
+
+void Smb4KNetworkBrowserDockWidget::slotPerformSearch(const QString& item)
+{
+  //
+  // Prevent another dock widget from stealing the focus when 
+  // the search item input is disabled
+  // 
+  m_networkBrowser->setFocus();
+  
+  //
+  // Start the search
+  // 
+  Smb4KClient::self()->search(item);
+}
+
+
+void Smb4KNetworkBrowserDockWidget::slotStopSearch()
+{
+  //
+  // Stop the network search
+  // 
+  Smb4KClient::self()->abort();
+}
+
+
+void Smb4KNetworkBrowserDockWidget::slotSearchResults(const QList<SharePtr>& shares)
+{
+  //
+  // Select the search results
+  // 
+  for (const SharePtr &share : shares)
+  {
+    QTreeWidgetItemIterator it(m_networkBrowser);
+    
+    while (*it)
+    {
+      Smb4KNetworkBrowserItem *networkItem = static_cast<Smb4KNetworkBrowserItem *>(*it);
+      
+      if (networkItem->shareItem() == share)
+      {
+        networkItem->setSelected(true);
+      }
+      else
+      {
+        // Do nothing
+      }
+      
+      it++;
+    }
+  }
+  
+  //
+  // Pass the search results to the search toolbar
+  // 
+  m_searchToolBar->setSearchResults(shares);
+}
+
+
+void Smb4KNetworkBrowserDockWidget::slotJumpToResult(const QString& url)
+{
+  //
+  // Find the share item with URL url
+  // 
+  QTreeWidgetItemIterator it(m_networkBrowser);
+  
+  while (*it)
+  {
+    Smb4KNetworkBrowserItem *networkItem = static_cast<Smb4KNetworkBrowserItem *>(*it);
+    
+    if (networkItem->type() == Share && networkItem->shareItem()->url().toString() == url)
+    {
+      m_networkBrowser->setCurrentItem(networkItem);
+      break;
+    }
+    else
+    {
+      // Do nothing
+    }
+    
+    it++;
+  }
+}
+
+
+void Smb4KNetworkBrowserDockWidget::slotClearSearchResults()
+{
+  m_networkBrowser->clearSelection();
+}
+
+
+
 
