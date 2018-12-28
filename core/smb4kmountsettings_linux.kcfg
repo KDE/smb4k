@@ -40,7 +40,7 @@
       <default>0755</default>
     </entry>
     <entry name="UseDirectoryMode" type="Bool">
-      <label>Directory mask:</label>
+      <label>Directory mode:</label>
       <whatsthis>This is the directory mode that will be used for creating directories. It must be defined in octal. In case the CIFS file system is used, this setting only takes effect if the server does not support the CIFS Unix Extensions.</whatsthis>
       <default>false</default>
     </entry>
