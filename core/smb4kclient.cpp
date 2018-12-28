@@ -698,7 +698,7 @@ void Smb4KClient::processErrors(Smb4KClientJob *job)
     }
     default:
     {
-      // Start Smb4KNotification here
+      // FIXME: Start Smb4KNotification here
       break;
     }
   }
@@ -1020,7 +1020,7 @@ void Smb4KClient::slotJobFinished(KJob *job)
   // finished() signal.
   // 
   NetworkItemPtr item = clientJob->networkItem();
-  Smb4KGlobal::Process process = NoProcess;
+  Smb4KGlobal::Process process = clientJob->process();
   
   //
   // Get the result from the query and process it
@@ -1035,30 +1035,18 @@ void Smb4KClient::slotJobFinished(KJob *job)
         {
           // Process the discovered workgroups
           processWorkgroups(clientJob);
-
-          // Set the process vlaue
-          process = LookupDomains;
-          
           break;
         }
         case Workgroup:
         {
           // Process the discovered workgroup members
           processHosts(clientJob);
-          
-          // Set the process value
-          process = LookupDomainMembers;
-          
           break;
         }
         case Host:
         {
           // Process the discovered shares
           processShares(clientJob);
-          
-          // Set the process value
-          process = LookupShares;
-          
           break;
         }
         case Share:
@@ -1066,10 +1054,6 @@ void Smb4KClient::slotJobFinished(KJob *job)
         {
           // Process the discoveres files and directories
           processFiles(clientJob);
-          
-          // Set the process value
-          process = LookupFiles;
-          
           break;
         }
         default:
