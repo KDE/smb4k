@@ -292,6 +292,12 @@ class Smb4KNetworkBrowserDockWidget : public QDockWidget
      * Network search bar
      */
     Smb4KNetworkSearchToolBar *m_searchToolBar;
+    
+    /**
+     * Boolean to prevent the expansion of the items while global 
+     * network search is underway
+     */
+    bool m_searchRunning;
 };
 
 #endif

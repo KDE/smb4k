@@ -87,6 +87,11 @@ Smb4KNetworkBrowserDockWidget::Smb4KNetworkBrowserDockWidget(const QString& titl
   m_contextMenu = new KActionMenu(this);
   
   //
+  // Search underway?
+  // 
+  m_searchRunning = false;
+  
+  //
   // Set up the actions
   //
   setupActions();
@@ -136,11 +141,10 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
   // Rescan and abort dual action
   // 
   KDualAction *rescanAbortAction = new KDualAction(this);
-  KGuiItem rescanItem(i18n("Scan Netwo&rk"), KDE::icon("view-refresh"));
-  KGuiItem abortItem(i18n("&Abort"), KDE::icon("process-stop"));
-  rescanAbortAction->setActiveGuiItem(rescanItem);
-  rescanAbortAction->setInactiveGuiItem(abortItem);
-  rescanAbortAction->setActive(true);
+  rescanAbortAction->setInactiveIcon(KDE::icon("view-refresh"));
+  rescanAbortAction->setInactiveText(i18n("Scan Netwo&rk"));
+  rescanAbortAction->setActiveIcon(KDE::icon("process-stop"));
+  rescanAbortAction->setActiveText(i18n("&Abort"));
   rescanAbortAction->setAutoToggle(false);
   rescanAbortAction->setEnabled(true);
 
@@ -442,8 +446,7 @@ void Smb4KNetworkBrowserDockWidget::slotItemSelectionChanged()
           //
           // Adjust the actions
           // 
-          KGuiItem rescanItem(i18n("Scan Compute&r"), KDE::icon("view-refresh"));
-          static_cast<KDualAction *>(m_actionCollection->action("rescan_abort_action"))->setActiveGuiItem(rescanItem);
+          qobject_cast<KDualAction *>(m_actionCollection->action("rescan_abort_action"))->setInactiveText(i18n("Scan Compute&r"));
           m_actionCollection->action("bookmark_action")->setEnabled(false);
           m_actionCollection->action("authentication_action")->setEnabled(true);
           m_actionCollection->action("custom_action")->setEnabled(true);
@@ -458,8 +461,7 @@ void Smb4KNetworkBrowserDockWidget::slotItemSelectionChanged()
           //
           // Adjust the actions
           // 
-          KGuiItem rescanItem(i18n("Scan Compute&r"), KDE::icon("view-refresh"));
-          static_cast<KDualAction *>(m_actionCollection->action("rescan_abort_action"))->setActiveGuiItem(rescanItem);
+          qobject_cast<KDualAction *>(m_actionCollection->action("rescan_abort_action"))->setInactiveText(i18n("Scan Compute&r"));
           m_actionCollection->action("bookmark_action")->setEnabled(!browserItem->shareItem()->isPrinter());
           m_actionCollection->action("authentication_action")->setEnabled(true);
           m_actionCollection->action("custom_action")->setEnabled(!browserItem->shareItem()->isPrinter());
@@ -496,8 +498,7 @@ void Smb4KNetworkBrowserDockWidget::slotItemSelectionChanged()
           //
           // Adjust the actions
           // 
-          KGuiItem rescanItem(i18n("Scan Wo&rkgroup"), KDE::icon("view-refresh"));
-          static_cast<KDualAction *>(m_actionCollection->action("rescan_abort_action"))->setActiveGuiItem(rescanItem);
+          qobject_cast<KDualAction *>(m_actionCollection->action("rescan_abort_action"))->setInactiveText(i18n("Scan Wo&rkgroup"));
           m_actionCollection->action("bookmark_action")->setEnabled(false);
           m_actionCollection->action("authentication_action")->setEnabled(false);
           m_actionCollection->action("custom_action")->setEnabled(false);
@@ -546,8 +547,7 @@ void Smb4KNetworkBrowserDockWidget::slotItemSelectionChanged()
     //
     // Adjust the actions
     //
-    KGuiItem rescanItem(i18n("Scan Netwo&rk"), KDE::icon("view-refresh"));
-    static_cast<KDualAction *>(m_actionCollection->action("rescan_abort_action"))->setActiveGuiItem(rescanItem);
+    qobject_cast<KDualAction *>(m_actionCollection->action("rescan_abort_action"))->setInactiveText(i18n("Scan Netwo&rk"));
     m_actionCollection->action("bookmark_action")->setEnabled(true);
     m_actionCollection->action("authentication_action")->setEnabled(false);
     m_actionCollection->action("custom_action")->setEnabled(false);
@@ -561,8 +561,7 @@ void Smb4KNetworkBrowserDockWidget::slotItemSelectionChanged()
     //
     // Adjust the actions
     // 
-    KGuiItem rescanItem(i18n("Scan Netwo&rk"), KDE::icon("view-refresh"));
-    static_cast<KDualAction *>(m_actionCollection->action("rescan_abort_action"))->setActiveGuiItem(rescanItem);
+    qobject_cast<KDualAction *>(m_actionCollection->action("rescan_abort_action"))->setInactiveText(i18n("Scan Netwo&rk"));
     m_actionCollection->action("bookmark_action")->setEnabled(false);
     m_actionCollection->action("authentication_action")->setEnabled(false);
     m_actionCollection->action("custom_action")->setEnabled(false);
@@ -586,16 +585,8 @@ void Smb4KNetworkBrowserDockWidget::slotClientAboutToStart(const NetworkItemPtr&
   // 
   if (rescanAbortAction)
   {
-    rescanAbortAction->setActive(!rescanAbortAction->isActive());
-    
-    if (rescanAbortAction->isActive())
-    {
-      m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Refresh);
-    }
-    else
-    {
-      m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Cancel);
-    }
+    rescanAbortAction->setActive(true);
+    m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Cancel);
   }
   else
   {
@@ -607,7 +598,6 @@ void Smb4KNetworkBrowserDockWidget::slotClientAboutToStart(const NetworkItemPtr&
   // 
   if (process == NetworkSearch)
   {
-    qDebug() << "Setting active state";
     m_searchToolBar->setActiveState(true);
   }
   else
@@ -629,16 +619,8 @@ void Smb4KNetworkBrowserDockWidget::slotClientFinished(const NetworkItemPtr& /*i
   // 
   if (rescanAbortAction)
   {
-    rescanAbortAction->setActive(!rescanAbortAction->isActive());
-    
-    if (rescanAbortAction->isActive())
-    {
-      m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Refresh);
-    }
-    else
-    {
-      m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Cancel);
-    }
+    rescanAbortAction->setActive(false);
+    m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Refresh);
   }
   else
   {
@@ -650,7 +632,6 @@ void Smb4KNetworkBrowserDockWidget::slotClientFinished(const NetworkItemPtr& /*i
   // 
   if (process == NetworkSearch)
   {
-    qDebug() << "Setting inactive state";
     m_searchToolBar->setActiveState(false);
   }
   else
@@ -824,7 +805,7 @@ void Smb4KNetworkBrowserDockWidget::slotWorkgroupMembers(const WorkgroupPtr& wor
           }
           
           // Auto-expand the workgroup item, if applicable
-          if (Smb4KSettings::autoExpandNetworkItems() && !workgroupItem->isExpanded())
+          if (Smb4KSettings::autoExpandNetworkItems() && !workgroupItem->isExpanded() && !m_searchRunning)
           {
             m_networkBrowser->expandItem(workgroupItem);
           }
@@ -950,7 +931,7 @@ void Smb4KNetworkBrowserDockWidget::slotShares(const HostPtr& host)
           }
           
           // Auto-expand the host item, if applicable
-          if (Smb4KSettings::autoExpandNetworkItems() && !hostItem->isExpanded())
+          if (Smb4KSettings::autoExpandNetworkItems() && !hostItem->isExpanded() && !m_searchRunning)
           {
             m_networkBrowser->expandItem(hostItem);
           }
@@ -1004,7 +985,7 @@ void Smb4KNetworkBrowserDockWidget::slotRescanAbortActionTriggered(bool /*checke
   // Perform actions according to the state of the action and the number of 
   // selected items.
   //
-  if (rescanAbortAction->isActive())
+  if (!rescanAbortAction->isActive())
   {
     if (selectedItems.size() == 1)
     {
@@ -1482,6 +1463,11 @@ void Smb4KNetworkBrowserDockWidget::slotPerformSearch(const QString& item)
   m_networkBrowser->setFocus();
   
   //
+  // A global search is underway
+  // 
+  m_searchRunning = true;
+  
+  //
   // Start the search
   // 
   Smb4KClient::self()->search(item);
@@ -1494,33 +1480,75 @@ void Smb4KNetworkBrowserDockWidget::slotStopSearch()
   // Stop the network search
   // 
   Smb4KClient::self()->abort();
+  
+  //
+  // A global search finished
+  // 
+  m_searchRunning = false;
 }
 
 
 void Smb4KNetworkBrowserDockWidget::slotSearchResults(const QList<SharePtr>& shares)
 {
   //
-  // Select the search results
+  // A global search finished
   // 
-  for (const SharePtr &share : shares)
-  {
-    QTreeWidgetItemIterator it(m_networkBrowser);
+  m_searchRunning = false;
+  
+  //
+  // Process the search results
+  // 
+  QTreeWidgetItemIterator it(m_networkBrowser);
     
-    while (*it)
+  while (*it)
+  {
+    Smb4KNetworkBrowserItem *networkItem = static_cast<Smb4KNetworkBrowserItem *>(*it);
+    
+    if (networkItem->type() == Share)
     {
-      Smb4KNetworkBrowserItem *networkItem = static_cast<Smb4KNetworkBrowserItem *>(*it);
-      
-      if (networkItem->shareItem() == share)
+      for (const SharePtr &share : shares)
       {
-        networkItem->setSelected(true);
+        if (networkItem->shareItem() == share)
+        {
+          //
+          // Select the search result
+          // 
+          networkItem->setSelected(true);
+          
+          //
+          // Expand the branch of the network tree where a search result
+          // was retrieved
+          // 
+          if (!networkItem->parent()->isExpanded())
+          {
+            m_networkBrowser->expandItem(networkItem->parent());
+          }
+          else
+          {
+            // Do nothing
+          }
+          
+          if (!networkItem->parent()->parent()->isExpanded())
+          {
+            m_networkBrowser->expandItem(networkItem->parent()->parent());
+          }
+          else
+          {
+            // Do nothing
+          }
+        }
+        else
+        {
+          // Do nothing
+        }
       }
-      else
-      {
-        // Do nothing
-      }
-      
-      it++;
     }
+    else
+    {
+      // Do nothing
+    }
+    
+    it++;
   }
   
   //
