@@ -3,7 +3,7 @@
     settings of Smb4K
                              -------------------
     begin                : Sa Nov 15 2003
-    copyright            : (C) 2003-2017 by Alexander Reinholdt
+    copyright            : (C) 2003-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -43,35 +43,111 @@
 // KDE includes
 #include <KIconThemes/KIconLoader>
 #include <KI18n/KLocalizedString>
+#include <KCompletion/KLineEdit>
+#include <KCompletion/KComboBox>
 
 
-Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QWidget(parent)
+Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(parent)
 {
   //
-  // Layout
+  // Network Neighborhood tab
   // 
-  QVBoxLayout *layout = new QVBoxLayout(this);
-  layout->setSpacing(5);
-  layout->setMargin(0);
+  QWidget *sambaTab = new QWidget(this);
+  
+  QVBoxLayout *sambaTabLayout = new QVBoxLayout(sambaTab);
+  sambaTabLayout->setSpacing(5);
+  sambaTabLayout->setMargin(0);
+  
+  // 
+  // Basic Settings group box
+  // 
+  QGroupBox *basicSettingsBox = new QGroupBox(i18n("Basic Settings"), sambaTab);
+
+  QGridLayout *basicSettingsBoxLayout = new QGridLayout(basicSettingsBox);
+  basicSettingsBoxLayout->setSpacing(5);
+
+  QLabel *nebiosNameLabel = new QLabel(Smb4KSettings::self()->netBIOSNameItem()->label(), basicSettingsBox);
+  KLineEdit *netbiosName = new KLineEdit(basicSettingsBox);
+  netbiosName->setObjectName("kcfg_NetBIOSName");
+  nebiosNameLabel->setBuddy(netbiosName);
+
+  QLabel *domainLabel = new QLabel(Smb4KSettings::self()->domainNameItem()->label(), basicSettingsBox);
+  KLineEdit *domain = new KLineEdit(basicSettingsBox);
+  domain->setObjectName("kcfg_DomainName");
+  domainLabel->setBuddy(domain);
+  
+  QCheckBox *useRemoteSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), basicSettingsBox);
+  useRemoteSmbPort->setObjectName("kcfg_UseRemoteSmbPort");
+
+  QSpinBox *remoteSmbPort = new QSpinBox(basicSettingsBox);
+  remoteSmbPort->setObjectName("kcfg_RemoteSmbPort");
+//   remoteSmbPort->setSliderEnabled(true);
+  
+  QCheckBox *largeNetworkNeighborhood = new QCheckBox(Smb4KSettings::self()->largeNetworkNeighborhoodItem()->label(), basicSettingsBox);
+  largeNetworkNeighborhood->setObjectName("kcfg_LargeNetworkNeighborhood");
+
+  basicSettingsBoxLayout->addWidget(nebiosNameLabel, 0, 0, 0);
+  basicSettingsBoxLayout->addWidget(netbiosName, 0, 1, 0);
+  basicSettingsBoxLayout->addWidget(domainLabel, 1, 0, 0);
+  basicSettingsBoxLayout->addWidget(domain, 1, 1, 0);
+  basicSettingsBoxLayout->addWidget(useRemoteSmbPort, 2, 0, 0);
+  basicSettingsBoxLayout->addWidget(remoteSmbPort, 2, 1, 0);
+  basicSettingsBoxLayout->addWidget(largeNetworkNeighborhood, 3, 0, 1, 2, 0);
+  
+  sambaTabLayout->addWidget(basicSettingsBox, 0);
 
   // 
   // Authentication group box
   // 
-  QGroupBox *authenticationBox = new QGroupBox(i18n("Authentication"), this);
-  QVBoxLayout *authenticationBoxLayout = new QVBoxLayout(authenticationBox);
+  QGroupBox *authenticationBox = new QGroupBox(i18n("Authentication"), sambaTab);
+  QGridLayout *authenticationBoxLayout = new QGridLayout(authenticationBox);
   authenticationBoxLayout->setSpacing(5);
 
   QCheckBox *masterBrowsersRequireAuth = new QCheckBox(Smb4KSettings::self()->masterBrowsersRequireAuthItem()->label(), authenticationBox);
   masterBrowsersRequireAuth->setObjectName("kcfg_MasterBrowsersRequireAuth");
+  
+  QCheckBox *useKerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), authenticationBox);
+  useKerberos->setObjectName("kcfg_UseKerberos");
 
-  authenticationBoxLayout->addWidget(masterBrowsersRequireAuth, 0);
+  QCheckBox *useCCache = new QCheckBox(Smb4KSettings::self()->useWinbindCCacheItem()->label(), authenticationBox);
+  useCCache->setObjectName("kcfg_UseWinbindCCache");
 
-  layout->addWidget(authenticationBox, 0);
+  authenticationBoxLayout->addWidget(masterBrowsersRequireAuth, 0, 0, 0);
+  authenticationBoxLayout->addWidget(useKerberos, 0, 1, 0);
+  authenticationBoxLayout->addWidget(useCCache, 1, 0, 0);
+
+  sambaTabLayout->addWidget(authenticationBox, 0);
+  
+  //
+  // Security group box
+  // 
+  QGroupBox *securityBox = new QGroupBox(i18n("Security"), sambaTab);
+  QGridLayout *securityBoxLayout = new QGridLayout(securityBox);
+  securityBoxLayout->setSpacing(5);
+  
+  // Encryption level
+  QCheckBox *useEncryptionLevel = new QCheckBox(Smb4KSettings::self()->useEncryptionLevelItem()->label(), securityBox);
+  useEncryptionLevel->setObjectName("kcfg_UseEncryptionLevel");
+  
+  KComboBox *encryptionLevel = new KComboBox(securityBox);
+  encryptionLevel->setObjectName("kcfg_EncryptionLevel");
+  
+  QList<KCoreConfigSkeleton::ItemEnum::Choice> encryptionLevelChoices = Smb4KSettings::self()->encryptionLevelItem()->choices();
+  
+  for (const KCoreConfigSkeleton::ItemEnum::Choice &c : encryptionLevelChoices)
+  {
+    encryptionLevel->addItem(c.label);
+  }
+
+  securityBoxLayout->addWidget(useEncryptionLevel, 0, 0, 0);
+  securityBoxLayout->addWidget(encryptionLevel, 0, 1, 0);
+  
+  sambaTabLayout->addWidget(securityBox, 0);
   
   // 
   // Behavior group box
   // 
-  QGroupBox *behaviorBox = new QGroupBox(i18n("Behavior"), this);
+  QGroupBox *behaviorBox = new QGroupBox(i18n("Behavior"), sambaTab);
   QGridLayout *behaviorBoxLayout = new QGridLayout(behaviorBox);
   behaviorBoxLayout->setSpacing(5);
   
@@ -88,12 +164,27 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QWidget(parent
   behaviorBoxLayout->addWidget(detectHiddenShares, 0, 1, 0);
   behaviorBoxLayout->addWidget(previewHiddenItems, 1, 0, 0);
   
-  layout->addWidget(behaviorBox, 0);
+  sambaTabLayout->addWidget(behaviorBox, 0);
+  sambaTabLayout->addStretch(100);
+  
+  addTab(sambaTab, i18n("Samba"));
+  
+  //
+  // Wake-On-LAN tab
+  //
+  QWidget *wakeOnLanTab = new QWidget(this);
+  
+  //
+  // Wake-On-LAN tab layout
+  //
+  QVBoxLayout *wakeOnLanTabLayout = new QVBoxLayout(wakeOnLanTab);
+  wakeOnLanTabLayout->setSpacing(5);
+  wakeOnLanTabLayout->setMargin(0);
   
   // 
   // Wake-On-LAN group box
   // 
-  QGroupBox *wakeOnLanBox = new QGroupBox(i18n("Wake-On-LAN"), this);
+  QGroupBox *wakeOnLanBox = new QGroupBox(i18n("Wake-On-LAN"), wakeOnLanTab);
   QGridLayout *wakeOnLanBoxLayout = new QGridLayout(wakeOnLanBox);
   wakeOnLanBoxLayout->setSpacing(5);
   
@@ -135,8 +226,10 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QWidget(parent
   wakeOnLanBoxLayout->addWidget(wakeOnLanWaitingTime, 1, 1, 0);
   wakeOnLanBoxLayout->addWidget(wakeOnLanNote, 2, 0, 1, 2, 0);
   
-  layout->addWidget(wakeOnLanBox, 0);
-  layout->addStretch(100);
+  wakeOnLanTabLayout->addWidget(wakeOnLanBox, 0);
+  wakeOnLanTabLayout->addStretch(100);
+  
+  addTab(wakeOnLanTab, i18n("Wake-On-LAN"));
 }
 
 

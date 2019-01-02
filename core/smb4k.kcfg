@@ -69,112 +69,6 @@
 <!-- Network -->
 
   <group name="Network">
-    <entry name="MasterBrowsersRequireAuth" type="Bool">
-      <label>The master browsers require authentication to return the browse list</label>
-      <whatsthis>The master browsers in your network neighborhood require a login to return the browse list. This setting is rarely needed and might even cause a master browser to return an empty browse list. It will not have any effect when you let Smb4K scan broadcast areas.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="EnableWakeOnLAN" type="Bool">
-      <label>Enable Wake-On-LAN features</label>
-      <whatsthis>Wake-on-LAN (WOL) is an ethernet computer networking standard that allows a computer to be turned on or woken up by a network message. Smb4K uses a magic package send via a UDP socket to wake up remote servers. If you want to take advantage of the Wake-On-LAN feature, you need to enable this option.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="WakeOnLANWaitingTime" type="Int">
-      <label>Waiting time:</label>
-      <whatsthis>This is the waiting time in seconds between the sending of the magic Wake-On-LAN packages and the scanning of the network neighborhood or the mounting of a share.</whatsthis>
-      <min>0</min>
-      <max>60</max>
-      <default>5</default>
-    </entry>
-    <entry name="PreviewHiddenItems" type="Bool">
-      <label>Preview hidden files and directories</label>
-      <whatsthis>Preview hidden files and directories. The hidden files and directories are those whose names begin with a period. They are usually needed for very specific purposes (storing the configuration information for an application, etc.). Since they are not of any importance for your regular work, you normally do not need to enable this feature.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="DetectPrinterShares" type="Bool">
-      <label>Detect printer shares</label>
-      <whatsthis>Printer shares are detected.</whatsthis>
-      <default>true</default>
-    </entry>
-    <entry name="DetectHiddenShares" type="Bool">
-      <label>Detect hidden shares</label>
-      <whatsthis>Hidden shares are detected. Hidden shares are ending with a $ sign, e.g. Musik$ or IPC$.</whatsthis>
-      <default>true</default>
-    </entry>
-  </group>
-
-<!-- Shares -->
-
-  <group name="Shares">
-    <entry name="MountPrefix" type="Url">
-      <label>Mount prefix:</label>
-      <whatsthis>This is the prefix where Smb4K will create the mount points and mount the remote shares.</whatsthis>
-      <default code="true">QUrl::fromLocalFile(QDir::homePath()+"/smb4k/")</default>
-    </entry>
-    <entry name="ForceLowerCaseSubdirs" type="Bool">
-      <label>Force generated subdirectories to be lower case</label>
-      <whatsthis>All names of the subdirectories created by Smb4K below the mount prefix will be lowercase.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="UnmountSharesOnExit" type="Bool">
-      <label>Unmount all personal shares on exit</label>
-      <whatsthis>Unmount all shares that belong to you when the program exits. Shares that are owned by other users are ignored.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="RemountShares" type="Bool">
-      <label>Remount shares</label>
-      <whatsthis>Remount all your shares that were mounted when you exited the program or changed a profile. If the remounting of a share fails, Smb4K will retry the next time it is started. Shares that were mounted by other users are ignored. Please note that this setting does not affect the automatic remounting of shares when your computer woke up from a sleep state.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="RemountAttempts" type="Int">
-      <label>Number of remount attempts:</label>
-      <whatsthis>Set the number of attempts that are made to remount shares before Smb4K gives up.</whatsthis>
-      <min>1</min>
-      <max>100</max>
-      <default>1</default>
-    </entry>
-    <entry name="RemountInterval" type="Int">
-      <label>Interval between remount attempts:</label>
-      <whatsthis>Set the time that elapses between attempts to remount shares.</whatsthis>
-      <min>1</min>
-      <max>30</max>
-      <default>5</default>
-    </entry>
-    <entry name="UnmountForeignShares" type="Bool">
-      <label>Allow the unmounting of shares that are owned by other users</label>
-      <whatsthis>Allow the unmounting of shares that were mounted by other users. Please think before you enable this option.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="ForceUnmountInaccessible" type="Bool">
-      <label>Force the unmounting of inaccessible shares</label>
-      <whatsthis>Force the unmounting of inaccessible shares (Linux only). In case a share is inaccessible, a lazy unmount is performed. Before the actual unmount is performed, a warning dialog is shown asking to approve the unmount.</whatsthis>
-      <default>false</default>
-    </entry>
-    <entry name="DetectAllShares" type="Bool">
-      <label>Detect all shares that are mounted on the system</label>
-      <whatsthis>You will not only see the shares that were mounted and are owned by you, but also all other mounts using the SMBFS and CIFS file system that are present on the system.</whatsthis>
-      <default>false</default>
-    </entry>
-  </group>
-
-<!-- Authentication -->
-
-  <group name="Authentication">
-    <entry name="UseWallet" type="Bool">
-      <label>Save logins in a wallet</label>
-      <whatsthis>Use a wallet to store the login. The username and password are stored encrypted on your hard drive. If this setting is disabled, the login is not stored permanently but only temporarily.</whatsthis>
-      <default>true</default>
-    </entry>
-    <entry name="UseDefaultLogin" type="Bool">
-      <label>Use a default login</label>
-      <whatsthis>Enable the usage of a default login. The provided data is used by default to authenticate to a remote server. This is very useful e.g. if you are working in an Active Directory environment or an NT domain.</whatsthis>
-      <default>false</default>
-    </entry>
-  </group>
-
-<!-- Samba -->
-
-  <group name="Samba">
     <entry name="NetBIOSName" type="String">
       <label>NetBIOS name:</label>
       <whatsthis>This is the NetBIOS name of this computer that is used by Smb4K. By default, it is either the NetBIOS name that is defined in the smb.conf file or the host name.</whatsthis>
@@ -196,9 +90,19 @@
       <max>65535</max>
       <default>139</default>
     </entry>
+    <entry name="LargeNetworkNeighborhood" type="Bool">
+      <label>This computer is on a large network neighborhood</label>
+      <whatsthis>In case your computer is on a large network neighborhood, discovering all workgroups, hosts and shares might take a long time, since in the default configuration all local master browsers are queried. Enabling this setting limits the number of used local master browsers to three. This can reduced the time consumption on large network neighborhoods considerably.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="MasterBrowsersRequireAuth" type="Bool">
+      <label>Master browsers require authentication</label>
+      <whatsthis>The master browsers in your network neighborhood require a login to return the browse list. This setting is rarely needed.</whatsthis>
+      <default>false</default>
+    </entry>
     <entry name="UseKerberos" type="Bool">
-      <label>Try to authenticate with Kerberos</label>
-      <whatsthis>Try to authenticate with Kerberos. This is only useful in an Active Directory environment.</whatsthis>
+      <label>Use Kerberos for authentication</label>
+      <whatsthis>Use Kerberos for authentication. This is only useful in an Active Directory environment.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="UseWinbindCCache" type="Bool">
@@ -226,7 +130,49 @@
       </choices>
       <default>None</default>
     </entry>
-  </group>  
+    <entry name="PreviewHiddenItems" type="Bool">
+      <label>Preview hidden files and directories</label>
+      <whatsthis>Preview hidden files and directories. The hidden files and directories are those whose names begin with a period. They are usually needed for very specific purposes (storing the configuration information for an application, etc.). Since they are not of any importance for your regular work, you normally do not need to enable this feature.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="DetectPrinterShares" type="Bool">
+      <label>Detect printer shares</label>
+      <whatsthis>Printer shares are detected.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="DetectHiddenShares" type="Bool">
+      <label>Detect hidden shares</label>
+      <whatsthis>Hidden shares are detected. Hidden shares are ending with a $ sign, e.g. Musik$ or IPC$.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="EnableWakeOnLAN" type="Bool">
+      <label>Enable Wake-On-LAN features</label>
+      <whatsthis>Wake-on-LAN (WOL) is an ethernet computer networking standard that allows a computer to be turned on or woken up by a network message. Smb4K uses a magic package send via a UDP socket to wake up remote servers. If you want to take advantage of the Wake-On-LAN feature, you need to enable this option.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="WakeOnLANWaitingTime" type="Int">
+      <label>Waiting time:</label>
+      <whatsthis>This is the waiting time in seconds between the sending of the magic Wake-On-LAN packages and the scanning of the network neighborhood or the mounting of a share.</whatsthis>
+      <min>0</min>
+      <max>60</max>
+      <default>5</default>
+    </entry>
+  </group>
+
+<!-- Authentication -->
+
+  <group name="Authentication">
+    <entry name="UseWallet" type="Bool">
+      <label>Save logins in a wallet</label>
+      <whatsthis>Use a wallet to store the login. The username and password are stored encrypted on your hard drive. If this setting is disabled, the login is not stored permanently but only temporarily.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="UseDefaultLogin" type="Bool">
+      <label>Use a default login</label>
+      <whatsthis>Enable the usage of a default login. The provided data is used by default to authenticate to a remote server. This is very useful e.g. if you are working in an Active Directory environment or an NT domain.</whatsthis>
+      <default>false</default>
+    </entry>
+  </group>
 
 <!-- Synchronization -->
 

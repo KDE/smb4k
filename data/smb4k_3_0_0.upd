@@ -1,0 +1,46 @@
+# Update configuration to the changes introduced 
+# in Smb4k 3.0.0
+Version=5
+Id=Smb4K_3.0.0
+File=smb4krc
+# Remove obsolete keys from the 'Network' group
+Group=Network
+RemoveKey=LookupDomains
+RemoveKey=QueryCurrentMaster
+RemoveKey=QueryCustomMaster
+RemoveKey=CustomMasterBrowser
+RemoveKey=PeriodicScanning
+RemoveKey=ScanInterval
+RemoveKey=LookupIPs
+# Remove obsolete keys from the 'Samba' group
+Group=Samba
+RemoveKey=SocketOptions
+RemoveKey=NetBIOSScope
+RemoveKey=MachineAccount
+RemoveKey=SigningState
+RemoveKey=EncryptSMBTransport
+RemoveKey=NameResolveOrder
+RemoveKey=BufferSize
+RemoveKey=BroadcastAddress
+RemoveKey=UsePort137
+RemoveKey=SmbtreeSendBroadcasts
+# Move keys to the 'Network' group
+Group=Samba,Network
+Key=NetBIOSName
+Key=DomainName
+Key=UseRemoteSmbPort
+Key=RemoteSmbPort
+Key=UseKerberos
+Key=UseWinbindCCache
+Key=UseEncryptionLevel
+Key=EncryptionLevel
+# Move all remaining keys to the new 'Mounting' group
+# and remove the 'Samba' group
+Group=Samba,Mounting
+AllKeys
+RemoveGroup=Samba
+# Move all keys of the 'Shares' group to the (new) 
+# 'Mounting' group and remove the obsolete group
+Group=Shares,Mounting
+AllKeys
+RemoveGroup=Shares

@@ -37,6 +37,12 @@
 #include "core/smb4kshare.h"
 #include "core/smb4khardwareinterface.h"
 
+#if defined(Q_OS_LINUX)
+#include "smb4kmountsettings_linux.h"
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+#include "smb4kmountsettings_bsd.h"
+#endif
+
 // Qt includes
 #include <QActionGroup>
 #include <QMenu>
@@ -306,7 +312,7 @@ void Smb4KSharesViewDockWidget::slotItemSelectionChanged()
     Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItems.first());
     bool syncRunning = Smb4KSynchronizer::self()->isRunning(item->shareItem());
 
-    m_actionCollection->action("unmount_action")->setEnabled((!item->shareItem()->isForeign() || Smb4KSettings::unmountForeignShares()));
+    m_actionCollection->action("unmount_action")->setEnabled((!item->shareItem()->isForeign() || Smb4KMountSettings::unmountForeignShares()));
     m_actionCollection->action("bookmark_action")->setEnabled(true);
 
     if (!item->shareItem()->isInaccessible())
@@ -370,7 +376,7 @@ void Smb4KSharesViewDockWidget::slotItemSelectionChanged()
       }
     }
     
-    m_actionCollection->action("unmount_action")->setEnabled(((selectedItems.size() > foreign) || Smb4KSettings::unmountForeignShares()));
+    m_actionCollection->action("unmount_action")->setEnabled(((selectedItems.size() > foreign) || Smb4KMountSettings::unmountForeignShares()));
     m_actionCollection->action("bookmark_action")->setEnabled(true);
 
     if (selectedItems.size() > inaccessible)
@@ -472,7 +478,7 @@ void Smb4KSharesViewDockWidget::slotShareMounted(const SharePtr& share)
     
     // Enable/disable the 'Unmount All' action
     actionCollection()->action("unmount_all_action")->setEnabled(
-      ((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && m_sharesView->count() != 0));
+      ((!onlyForeignMountedShares() || Smb4KMountSettings::unmountForeignShares()) && m_sharesView->count() != 0));
   }
   else
   {
@@ -515,7 +521,7 @@ void Smb4KSharesViewDockWidget::slotShareUnmounted(const SharePtr& share)
      
     // Enable/disable the 'Unmount All' action
     actionCollection()->action("unmount_all_action")->setEnabled(
-      ((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && m_sharesView->count() != 0));
+      ((!onlyForeignMountedShares() || Smb4KMountSettings::unmountForeignShares()) && m_sharesView->count() != 0));
   }
   else
   {

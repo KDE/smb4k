@@ -62,7 +62,7 @@ Smb4KSystemTray::Smb4KSystemTray(QWidget *parent)
   //
   // Set the icon for the system tray
   //
-  QString iconName = QStringLiteral("network-workgroup-symbolic");
+  QString iconName = QStringLiteral("network-workgroup");
   setIconByName(iconName);
   
   //

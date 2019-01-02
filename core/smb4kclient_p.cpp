@@ -1293,9 +1293,14 @@ void Smb4KClientJob::slotStartJob()
   //
   // Set number of master browsers to be used
   // 
-  // TODO: Implement a setting asking the user if she/he is on a big network (0 -> 3)
-  // 
-  smbc_setOptionBrowseMaxLmbCount(m_context, 0 /* all master browsers */);
+  if (Smb4KSettings::largeNetworkNeighborhood())
+  {
+    smbc_setOptionBrowseMaxLmbCount(m_context, 3);
+  }
+  else
+  {
+    smbc_setOptionBrowseMaxLmbCount(m_context, 0 /* all master browsers */);
+  }
   
   //
   // Set the encryption level
@@ -2116,7 +2121,7 @@ void Smb4KPrintDialog::slotCancelButtonClicked()
   //
   // Abort the printing
   // 
-  // FIXME
+  Smb4KClient::self()->abort();
   
   //
   // Emit the aboutToClose() signal

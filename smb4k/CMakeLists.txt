@@ -19,8 +19,6 @@ set(smb4kconfigdialog_LIB_SRCS
   smb4kconfigpagemounting.cpp
   smb4kconfigpagenetwork.cpp
   smb4kconfigpageprofiles.cpp
-  smb4kconfigpagesamba.cpp
-  smb4kconfigpageshares.cpp
   smb4kconfigpagesynchronization.cpp
   smb4kconfigpageuserinterface.cpp)
   

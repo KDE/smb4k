@@ -2,7 +2,7 @@
     The configuration dialog of Smb4K
                              -------------------
     begin                : Sa Apr 14 2007
-    copyright            : (C) 2004-2017 by Alexander Reinholdt
+    copyright            : (C) 2004-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -34,8 +34,6 @@
 #include "smb4kconfigpagemounting.h"
 #include "smb4kconfigpagenetwork.h"
 #include "smb4kconfigpageprofiles.h"
-#include "smb4kconfigpagesamba.h"
-#include "smb4kconfigpageshares.h"
 #include "smb4kconfigpagesynchronization.h"
 #include "smb4kconfigpageuserinterface.h"
 #include "core/smb4ksettings.h"
@@ -110,25 +108,7 @@ void Smb4KConfigDialog::setupDialog()
   network_area->setWidget(network_options);
   network_area->setWidgetResizable(true);
   network_area->setFrameStyle(QFrame::NoFrame);
-
-  Smb4KConfigPageShares *share_options = new Smb4KConfigPageShares(this);
-  QScrollArea *share_area = new QScrollArea(this);
-  share_area->setWidget(share_options);
-  share_area->setWidgetResizable(true);
-  share_area->setFrameStyle(QFrame::NoFrame);
-
-  Smb4KConfigPageAuthentication *auth_options = new Smb4KConfigPageAuthentication(this);
-  QScrollArea *auth_area = new QScrollArea(this);
-  auth_area->setWidget(auth_options);
-  auth_area->setWidgetResizable(true);
-  auth_area->setFrameStyle(QFrame::NoFrame);
-
-  Smb4KConfigPageSamba *samba_options = new Smb4KConfigPageSamba(this);
-  QScrollArea *samba_area = new QScrollArea(this);
-  samba_area->setWidget(samba_options);
-  samba_area->setWidgetResizable(true);
-  samba_area->setFrameStyle(QFrame::NoFrame);
-
+  
 #if !defined(SMB4K_UNSUPPORTED_PLATFORM)  
   Smb4KConfigPageMounting *mount_options = new Smb4KConfigPageMounting(this);
   QScrollArea *mount_area = new QScrollArea(this);
@@ -136,6 +116,12 @@ void Smb4KConfigDialog::setupDialog()
   mount_area->setWidgetResizable(true);
   mount_area->setFrameStyle(QFrame::NoFrame);
 #endif
+
+  Smb4KConfigPageAuthentication *auth_options = new Smb4KConfigPageAuthentication(this);
+  QScrollArea *auth_area = new QScrollArea(this);
+  auth_area->setWidget(auth_options);
+  auth_area->setWidgetResizable(true);
+  auth_area->setFrameStyle(QFrame::NoFrame);
 
   Smb4KConfigPageSynchronization *rsync_options = new Smb4KConfigPageSynchronization(this);
   QScrollArea *rsync_area = new QScrollArea(this);
@@ -161,13 +147,11 @@ void Smb4KConfigDialog::setupDialog()
   // Pages to the configuration dialog
   // 
   m_user_interface  = addPage(interface_area, Smb4KSettings::self(), i18n("User Interface"), "preferences-desktop");
-  m_network         = addPage(network_area, Smb4KSettings::self(), i18n("Network"), "network-workgroup");
-  m_shares          = addPage(share_area, Smb4KSettings::self(), i18n("Shares"), "folder-network");
-  m_authentication  = addPage(auth_area, Smb4KSettings::self(), i18n("Authentication"), "dialog-password");
-  m_samba           = addPage(samba_area, Smb4KSettings::self(), i18n("Samba"), "preferences-system-network-sharing");
+  m_network         = addPage(network_area, Smb4KSettings::self(), i18n("Network Neighborhood"), "network-workgroup");
 #if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   m_mounting        = addPage(mount_area, Smb4KMountSettings::self(), i18n("Mounting"), "system-run");
 #endif
+  m_authentication  = addPage(auth_area, Smb4KSettings::self(), i18n("Authentication"), "dialog-password");
   m_synchronization = addPage(rsync_area, Smb4KSettings::self(),i18n("Synchronization"), "folder-sync");
   m_custom_options  = addPage(custom_area, Smb4KSettings::self(), i18n("Custom Options"), "preferences-system-network");
   m_profiles        = addPage(profiles_area, Smb4KSettings::self(), i18n("Profiles"), "format-list-unordered");
@@ -313,16 +297,17 @@ bool Smb4KConfigDialog::checkNetworkPage()
 }
 
 
-bool Smb4KConfigDialog::checkSharesPage()
+bool Smb4KConfigDialog::checkMountingPage()
 {
-  KUrlRequester *mount_prefix = m_shares->widget()->findChild<KUrlRequester *>("kcfg_MountPrefix");
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
+  KUrlRequester *mount_prefix = m_mounting->widget()->findChild<KUrlRequester *>("kcfg_MountPrefix");
   
   QString msg = i18n("<qt>An incorrect setting has been found. You are now taken to the corresponding configuration page to fix it.</qt>");
   
   if (mount_prefix && mount_prefix->url().path().trimmed().isEmpty())
   {
     KMessageBox::sorry(this, msg);
-    setCurrentPage(m_shares);
+    setCurrentPage(m_mounting);
     mount_prefix->setFocus();
     return false;
   }
@@ -331,16 +316,9 @@ bool Smb4KConfigDialog::checkSharesPage()
     // Do nothing
   }
   
-  return true;
-}
-
-
-bool Smb4KConfigDialog::checkMountingPage()
-{
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   KLineEdit *file_mask = m_mounting->widget()->findChild<KLineEdit *>("kcfg_FileMask");
   
-  QString msg = i18n("<qt>An incorrect setting has been found. You are now taken to the corresponding configuration page to fix it.</qt>");
+  msg = i18n("<qt>An incorrect setting has been found. You are now taken to the corresponding configuration page to fix it.</qt>");
   
   if (file_mask && file_mask->text().trimmed().isEmpty())
   {
@@ -359,7 +337,7 @@ bool Smb4KConfigDialog::checkMountingPage()
   if (directory_mask && directory_mask->text().trimmed().isEmpty())
   {
     KMessageBox::sorry(this, msg);
-    setCurrentPage(m_samba);
+    setCurrentPage(m_mounting);
     directory_mask->setFocus();
     return false;
   }
@@ -684,16 +662,6 @@ bool Smb4KConfigDialog::checkSettings()
     // Do nothing
   }
   
-  // Check Shares page
-  if (!checkSharesPage())
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
   // Check Mounting page
   if (!checkMountingPage())
   {
@@ -732,8 +700,6 @@ void Smb4KConfigDialog::updateSettings()
   
   KConfigGroup group(Smb4KSettings::self()->config(), "ConfigDialog");
   KWindowConfig::saveWindowSize(windowHandle(), group);
-  
-  qDebug() << "Saving ...";
       
   KConfigDialog::updateSettings();
 }
@@ -949,24 +915,16 @@ void Smb4KConfigDialog::slotCheckPage(KPageWidgetItem* /*current*/, KPageWidgetI
   {
     (void)checkNetworkPage();
   }
-  else if (before == m_shares)
-  {
-    (void)checkSharesPage();
-  }
-  else if (before == m_authentication)
-  {
-    // Do nothing
-  }
-  else if (before == m_samba)
-  {
-    // Do nothing
-  }
 #if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   else if (before == m_mounting)
   {
     (void)checkMountingPage();
   }
 #endif
+  else if (before == m_authentication)
+  {
+    // Do nothing
+  }
   else if (before == m_synchronization)
   {
     (void)checkSynchronizationPage();

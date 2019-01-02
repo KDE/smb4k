@@ -2,7 +2,7 @@
     The configuration dialog of Smb4K
                              -------------------
     begin                : Sa Apr 14 2007
-    copyright            : (C) 2004-2017 by Alexander Reinholdt
+    copyright            : (C) 2004-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -123,19 +123,9 @@ class Q_DECL_EXPORT Smb4KConfigDialog : public KConfigDialog
     KPageWidgetItem *m_network;
     
     /**
-     * "Shares" page
-     */
-    KPageWidgetItem *m_shares;
-    
-    /**
      * "Authentication" page
      */
     KPageWidgetItem *m_authentication;
-    
-    /**
-     * "Samba" page
-     */
-    KPageWidgetItem *m_samba;
     
     /**
      * "Mounting" page
@@ -184,13 +174,6 @@ class Q_DECL_EXPORT Smb4KConfigDialog : public KConfigDialog
      * @returns TRUE if everything is OK and FALSE otherwise.
      */
     bool checkNetworkPage();
-    
-    /**
-     * Checks the settings in the Shares page.
-     * 
-     * @returns TRUE if everything is OK and FALSE otherwise.
-     */
-    bool checkSharesPage();
     
     /**
      * Checks the settings in the Mounting page.

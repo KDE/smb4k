@@ -1,4 +1,7 @@
-install(FILES smb4ksettings.upd DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR})
+install(FILES 
+  smb4ksettings.upd 
+  smb4k_3_0_0.upd 
+  DESTINATION ${KDE_INSTALL_KCONFUPDATEDIR})
 install(PROGRAMS
   authentication1.sh
   network1.sh

@@ -2,7 +2,7 @@
     The configuration page for the network settings of Smb4K
                              -------------------
     begin                : Sa Nov 15 2003
-    copyright            : (C) 2003-2017 by Alexander Reinholdt
+    copyright            : (C) 2003-2018 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -27,7 +27,7 @@
 #define SMB4KCONFIGPAGENETWORK_H
 
 // Qt includes
-#include <QWidget>
+#include <QTabWidget>
 
 /**
  * This is the configuration tab for the network settings
@@ -36,7 +36,7 @@
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-class Smb4KConfigPageNetwork : public QWidget
+class Smb4KConfigPageNetwork : public QTabWidget
 {
   Q_OBJECT
 

@@ -4,9 +4,10 @@
       xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
                           http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
   <include>KUser</include>
+  <include>QDir</include>
   <kcfgfile name="smb4krc" />
   
-  <group name="Samba">
+  <group name="Mounting">
     <entry name="UseUserId" type="Bool">
       <label>User ID:</label>
       <whatsthis>This is the user ID (a number) that the files and directories of the mounted share will have.</whatsthis>
@@ -229,6 +230,55 @@
         </choice>
       </choices>
       <default>default_codepage</default>
+    </entry>
+    <entry name="MountPrefix" type="Url">
+      <label>Mount prefix:</label>
+      <whatsthis>This is the prefix where Smb4K will create the mount points and mount the remote shares.</whatsthis>
+      <default code="true">QUrl::fromLocalFile(QDir::homePath()+"/smb4k/")</default>
+    </entry>
+    <entry name="ForceLowerCaseSubdirs" type="Bool">
+      <label>Force generated subdirectories to be lower case</label>
+      <whatsthis>All names of the subdirectories created by Smb4K below the mount prefix will be lowercase.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="UnmountSharesOnExit" type="Bool">
+      <label>Unmount all personal shares on exit</label>
+      <whatsthis>Unmount all shares that belong to you when the program exits. Shares that are owned by other users are ignored.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="RemountShares" type="Bool">
+      <label>Remount shares</label>
+      <whatsthis>Remount all your shares that were mounted when you exited the program or changed a profile. If the remounting of a share fails, Smb4K will retry the next time it is started. Shares that were mounted by other users are ignored. Please note that this setting does not affect the automatic remounting of shares when your computer woke up from a sleep state.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="RemountAttempts" type="Int">
+      <label>Number of remount attempts:</label>
+      <whatsthis>Set the number of attempts that are made to remount shares before Smb4K gives up.</whatsthis>
+      <min>1</min>
+      <max>100</max>
+      <default>1</default>
+    </entry>
+    <entry name="RemountInterval" type="Int">
+      <label>Interval between remount attempts:</label>
+      <whatsthis>Set the time that elapses between attempts to remount shares.</whatsthis>
+      <min>1</min>
+      <max>30</max>
+      <default>5</default>
+    </entry>
+    <entry name="UnmountForeignShares" type="Bool">
+      <label>Allow the unmounting of shares that are owned by other users</label>
+      <whatsthis>Allow the unmounting of shares that were mounted by other users. Please think before you enable this option.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="ForceUnmountInaccessible" type="Bool">
+      <label>Force the unmounting of inaccessible shares</label>
+      <whatsthis>Force the unmounting of inaccessible shares (Linux only). In case a share is inaccessible, a lazy unmount is performed. Before the actual unmount is performed, a warning dialog is shown asking to approve the unmount.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="DetectAllShares" type="Bool">
+      <label>Detect all shares that are mounted on the system</label>
+      <whatsthis>You will not only see the shares that were mounted and are owned by you, but also all other mounts using the SMBFS and CIFS file system that are present on the system.</whatsthis>
+      <default>false</default>
     </entry>
   </group>
 </kcfg>

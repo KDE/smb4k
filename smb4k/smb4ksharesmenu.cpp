@@ -32,9 +32,14 @@
 #include "core/smb4kshare.h"
 #include "core/smb4kmounter.h"
 #include "core/smb4kglobal.h"
-#include "core/smb4ksettings.h"
 #include "core/smb4ksynchronizer.h"
 #include "core/smb4kbookmarkhandler.h"
+
+#if defined(Q_OS_LINUX)
+#include "smb4kmountsettings_linux.h"
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+#include "smb4kmountsettings_bsd.h"
+#endif
 
 // Qt includes
 #include <QMap>
@@ -167,7 +172,7 @@ void Smb4KSharesMenu::setupMenu()
     unmountData["mountpoint"] = share->path();
     
     unmount->setData(unmountData);
-    unmount->setEnabled(!share->isForeign() || Smb4KSettings::unmountForeignShares());
+    unmount->setEnabled(!share->isForeign() || Smb4KMountSettings::unmountForeignShares());
     shareMenu->addAction(unmount);
     m_actions->addAction(unmount);
     
@@ -251,7 +256,7 @@ void Smb4KSharesMenu::setupMenu()
   // Enable or disable the Unmount All action, depending on the number of 
   // mounted shares present.
   //
-  unmount_all->setEnabled(((!onlyForeignMountedShares() || Smb4KSettings::unmountForeignShares()) && !m_menus->actions().isEmpty()));
+  unmount_all->setEnabled(((!onlyForeignMountedShares() || Smb4KMountSettings::unmountForeignShares()) && !m_menus->actions().isEmpty()));
 }
 
 

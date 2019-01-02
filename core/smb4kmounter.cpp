@@ -106,31 +106,20 @@ Smb4KMounter::Smb4KMounter(QObject *parent)
   d->mountShares = false;
   d->unmountShares = false;
   d->activeProfile = Smb4KProfileManager::self()->activeProfile();
-  d->detectAllShares = Smb4KSettings::detectAllShares();
+  d->detectAllShares = Smb4KMountSettings::detectAllShares();
 
-  connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()),
-          this, SLOT(slotAboutToQuit()));
+  // Connections
+  connect(Smb4KHardwareInterface::self(), SIGNAL(onlineStateChanged(bool)), this, SLOT(slotOnlineStateChanged(bool)));
+  connect(Smb4KHardwareInterface::self(), SIGNAL(networkShareAdded()), this, SLOT(slotTriggerImport()));
+  connect(Smb4KHardwareInterface::self(), SIGNAL(networkShareRemoved()), this, SLOT(slotTriggerImport()));
   
-  connect(Smb4KHardwareInterface::self(), SIGNAL(onlineStateChanged(bool)),
-          this, SLOT(slotOnlineStateChanged(bool)));
+  connect(Smb4KProfileManager::self(), SIGNAL(migratedProfile(QString,QString)), this, SLOT(slotProfileMigrated(QString,QString)));
+  connect(Smb4KProfileManager::self(), SIGNAL(aboutToChangeProfile()), this, SLOT(slotAboutToChangeProfile()));
+  connect(Smb4KProfileManager::self(), SIGNAL(activeProfileChanged(QString)), this, SLOT(slotActiveProfileChanged(QString)));
   
-  connect(Smb4KHardwareInterface::self(), SIGNAL(networkShareAdded()),
-          this, SLOT(slotTriggerImport()));
+  connect(Smb4KMountSettings::self(), SIGNAL(configChanged()), this, SLOT(slotConfigChanged()));
   
-  connect(Smb4KHardwareInterface::self(), SIGNAL(networkShareRemoved()),
-          this, SLOT(slotTriggerImport()));
-  
-  connect(Smb4KProfileManager::self(), SIGNAL(migratedProfile(QString,QString)),
-          this, SLOT(slotProfileMigrated(QString,QString)));
-  
-  connect(Smb4KProfileManager::self(), SIGNAL(aboutToChangeProfile()),
-          this, SLOT(slotAboutToChangeProfile()));
-  
-  connect(Smb4KProfileManager::self(), SIGNAL(activeProfileChanged(QString)),
-          this, SLOT(slotActiveProfileChanged(QString)));
-  
-  connect(Smb4KSettings::self(), SIGNAL(configChanged()),
-          this, SLOT(slotConfigChanged()));
+  connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()),this, SLOT(slotAboutToQuit()));
 }
 
 
@@ -180,7 +169,7 @@ bool Smb4KMounter::isRunning()
 
 void Smb4KMounter::triggerRemounts(bool fill_list)
 {
-  if (Smb4KSettings::remountShares() /* one-time remounts */ || 
+  if (Smb4KMountSettings::remountShares() /* one-time remounts */ || 
       !Smb4KCustomOptionsManager::self()->sharesToRemount().isEmpty() /* permanent remounts */)
   {
     if (fill_list)
@@ -668,18 +657,18 @@ void Smb4KMounter::mountShare(const SharePtr &share, QWidget *parent)
     // Create the mountpoint
     //
     QString mountpoint;
-    mountpoint += Smb4KSettings::mountPrefix().path();
+    mountpoint += Smb4KMountSettings::mountPrefix().path();
     mountpoint += QDir::separator();
-    mountpoint += (Smb4KSettings::forceLowerCaseSubdirs() ? share->hostName().toLower() : share->hostName());
+    mountpoint += (Smb4KMountSettings::forceLowerCaseSubdirs() ? share->hostName().toLower() : share->hostName());
     mountpoint += QDir::separator();
 
     if (!share->isHomesShare())
     {
-      mountpoint += (Smb4KSettings::forceLowerCaseSubdirs() ? share->shareName().toLower() : share->shareName());
+      mountpoint += (Smb4KMountSettings::forceLowerCaseSubdirs() ? share->shareName().toLower() : share->shareName());
     }
     else
     {
-      mountpoint += (Smb4KSettings::forceLowerCaseSubdirs() ? share->login().toLower() : share->login());
+      mountpoint += (Smb4KMountSettings::forceLowerCaseSubdirs() ? share->login().toLower() : share->login());
     }
     
     // Get the permissions that should be used for creating the
@@ -689,13 +678,13 @@ void Smb4KMounter::mountShare(const SharePtr &share, QWidget *parent)
     QFile::Permissions permissions;
     QUrl parentDirectory;
       
-    if (QFile::exists(Smb4KSettings::mountPrefix().path()))
+    if (QFile::exists(Smb4KMountSettings::mountPrefix().path()))
     {
-      parentDirectory = Smb4KSettings::mountPrefix();
+      parentDirectory = Smb4KMountSettings::mountPrefix();
     }
     else
     {
-      QUrl u = Smb4KSettings::mountPrefix();
+      QUrl u = Smb4KMountSettings::mountPrefix();
       parentDirectory = KIO::upUrl(u);
     }
       
@@ -912,7 +901,7 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent, QWidget *par
     //
     if (share->isForeign())
     {
-      if (!Smb4KSettings::unmountForeignShares())
+      if (!Smb4KMountSettings::unmountForeignShares())
       {
         if (!silent)
         {
@@ -965,7 +954,7 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent, QWidget *par
 #if defined(Q_OS_LINUX)
       if (share->isInaccessible())
       {
-        force = Smb4KSettings::forceUnmountInaccessible();
+        force = Smb4KMountSettings::forceUnmountInaccessible();
       }
       else
       {
@@ -1220,8 +1209,8 @@ void Smb4KMounter::timerEvent(QTimerEvent *)
   // before. Do this only if there are no subjobs, because we
   // do not want to get crashes because a share was invalidated
   // during processing the shares.
-  if ((Smb4KSettings::remountShares() || !Smb4KCustomOptionsManager::self()->sharesToRemount().isEmpty()) && 
-       Smb4KSettings::remountAttempts() > d->remountAttempts)
+  if ((Smb4KMountSettings::remountShares() || !Smb4KCustomOptionsManager::self()->sharesToRemount().isEmpty()) && 
+       Smb4KMountSettings::remountAttempts() > d->remountAttempts)
   {
     if (d->firstImportDone && !isRunning())
     {
@@ -1229,7 +1218,7 @@ void Smb4KMounter::timerEvent(QTimerEvent *)
       {
         triggerRemounts(true);
       }
-      else if (!d->remounts.isEmpty() && d->remountTimeout >= (60000 * Smb4KSettings::remountInterval()))
+      else if (!d->remounts.isEmpty() && d->remountTimeout >= (60000 * Smb4KMountSettings::remountInterval()))
       {
         triggerRemounts(false);
         d->remountTimeout = -TIMEOUT;
@@ -2565,7 +2554,7 @@ void Smb4KMounter::slotAboutToQuit()
   // Check if the user wants to remount shares and save the
   // shares for remount if so.
   //
-  if (Smb4KSettings::remountShares())
+  if (Smb4KMountSettings::remountShares())
   {
     saveSharesForRemount();
   }
@@ -2577,7 +2566,7 @@ void Smb4KMounter::slotAboutToQuit()
   //
   // Unmount the shares if the user chose to do so.
   //
-  if (Smb4KSettings::unmountSharesOnExit())
+  if (Smb4KMountSettings::unmountSharesOnExit())
   {
     unmountAllShares(true, 0);
   }
@@ -2592,7 +2581,7 @@ void Smb4KMounter::slotAboutToQuit()
   KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions);
   
   QDir dir;
-  dir.cd(Smb4KSettings::mountPrefix().path());
+  dir.cd(Smb4KMountSettings::mountPrefix().path());
   QStringList hostDirs = dir.entryList(QDir::Dirs|QDir::NoDotAndDotDot, QDir::NoSort);
   QStringList mountpoints;
   
@@ -2738,9 +2727,9 @@ void Smb4KMounter::slotStatResult(KJob *job)
   // 
   if ((importedShare->user().userId() == KUser(KUser::UseRealUserID).userId() &&
        importedShare->group().groupId() == KUserGroup(KUser::UseRealUserID).groupId()) ||
-      importedShare->path().startsWith(Smb4KSettings::mountPrefix().path()) ||
+      importedShare->path().startsWith(Smb4KMountSettings::mountPrefix().path()) ||
       importedShare->path().startsWith(QDir::homePath()) ||
-      importedShare->canonicalPath().startsWith(QDir(Smb4KSettings::mountPrefix().path()).canonicalPath()) ||
+      importedShare->canonicalPath().startsWith(QDir(Smb4KMountSettings::mountPrefix().path()).canonicalPath()) ||
       importedShare->canonicalPath().startsWith(QDir::home().canonicalPath()))
   {
     // Same UID and GID
@@ -2755,7 +2744,7 @@ void Smb4KMounter::slotStatResult(KJob *job)
   // Search for a previously added mounted share and try to update it. If this fails,
   // add the share to the global list.
   //
-  if (!importedShare->isForeign() || Smb4KSettings::detectAllShares())
+  if (!importedShare->isForeign() || Smb4KMountSettings::detectAllShares())
   {
     if (updateMountedShare(importedShare))
     {
@@ -2854,7 +2843,7 @@ void Smb4KMounter::slotAboutToChangeProfile()
   //
   // Save those shares that are to be remounted
   //
-  if (Smb4KSettings::remountShares())
+  if (Smb4KMountSettings::remountShares())
   {
     saveSharesForRemount();
   }
@@ -2933,10 +2922,10 @@ void Smb4KMounter::slotTriggerImport()
 
 void Smb4KMounter::slotConfigChanged()
 {
-  if (d->detectAllShares != Smb4KSettings::detectAllShares())
+  if (d->detectAllShares != Smb4KMountSettings::detectAllShares())
   {
     slotTriggerImport();
-    d->detectAllShares = Smb4KSettings::detectAllShares();
+    d->detectAllShares = Smb4KMountSettings::detectAllShares();
   }
   else
   {

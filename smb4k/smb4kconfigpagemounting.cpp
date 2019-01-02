@@ -53,6 +53,7 @@
 #include <KCompletion/KComboBox>
 #include <KIconThemes/KIconLoader>
 #include <KWidgetsAddons/KMessageBox>
+#include <KIOWidgets/KUrlRequester>
 
 using namespace Smb4KGlobal;
 
@@ -75,7 +76,91 @@ Smb4KConfigPageMounting::~Smb4KConfigPageMounting()
 void Smb4KConfigPageMounting::setupWidget()
 {
   //
-  // Common Settings tab
+  // Basic Settings tab
+  // 
+  QWidget *basicTab = new QWidget(this);
+  QVBoxLayout *basicTabLayout = new QVBoxLayout(basicTab);
+  basicTabLayout->setSpacing(5);
+  basicTabLayout->setMargin(0);
+  
+  //
+  // Directories
+  // 
+  QGroupBox *directoryBox = new QGroupBox(i18n("Directories"), basicTab);
+
+  QGridLayout *directoryBoxLayout = new QGridLayout(directoryBox);
+  directoryBoxLayout->setSpacing(5);
+
+  QLabel *prefixLabel = new QLabel(Smb4KMountSettings::self()->mountPrefixItem()->label(), directoryBox);
+  KUrlRequester *prefix = new KUrlRequester(directoryBox);
+  prefix->setMode(KFile::Directory | KFile::LocalOnly);
+  prefix->setObjectName("kcfg_MountPrefix");
+
+  prefixLabel->setBuddy(prefix);
+  
+  QCheckBox *lowercaseSubdirs = new QCheckBox(Smb4KMountSettings::self()->forceLowerCaseSubdirsItem()->label(), directoryBox);
+  lowercaseSubdirs->setObjectName("kcfg_ForceLowerCaseSubdirs");
+
+  directoryBoxLayout->addWidget(prefixLabel, 0, 0, 0);
+  directoryBoxLayout->addWidget(prefix, 0, 1, 0);
+  directoryBoxLayout->addWidget(lowercaseSubdirs, 1, 0, 1, 2, 0);
+  
+  basicTabLayout->addWidget(directoryBox, 0);
+  
+  // 
+  // Behavior
+  // 
+  QGroupBox *behaviorBox = new QGroupBox(i18n("Behavior"), this);
+  QGridLayout *behaviorBoxLayout = new QGridLayout(behaviorBox);
+  behaviorBoxLayout->setSpacing(5);
+  
+  QCheckBox *remountShares = new QCheckBox(Smb4KMountSettings::self()->remountSharesItem()->label(), behaviorBox);
+  remountShares->setObjectName("kcfg_RemountShares");
+  
+  QLabel *remountAttemptsLabel = new QLabel(Smb4KMountSettings::self()->remountAttemptsItem()->label(), behaviorBox);
+  remountAttemptsLabel->setIndent(25);
+  
+  QSpinBox *remountAttempts = new QSpinBox(behaviorBox);
+  remountAttempts->setObjectName("kcfg_RemountAttempts");
+  remountAttemptsLabel->setBuddy(remountAttempts);
+  
+  QLabel *remountIntervalLabel = new QLabel(Smb4KMountSettings::self()->remountIntervalItem()->label(), behaviorBox);
+  remountIntervalLabel->setIndent(25);
+  
+  QSpinBox *remountInterval = new QSpinBox(behaviorBox);
+  remountInterval->setObjectName("kcfg_RemountInterval");
+  remountInterval->setSuffix(i18n(" min"));
+  remountIntervalLabel->setBuddy(remountInterval);
+
+  QCheckBox *unmountAllShares = new QCheckBox(Smb4KMountSettings::self()->unmountSharesOnExitItem()->label(), behaviorBox);
+  unmountAllShares->setObjectName("kcfg_UnmountSharesOnExit");
+  
+  QCheckBox *unmountForeignShares = new QCheckBox(Smb4KMountSettings::self()->unmountForeignSharesItem()->label(), behaviorBox);
+  unmountForeignShares->setObjectName("kcfg_UnmountForeignShares");
+
+  QCheckBox *unmountInaccessibleShares = new QCheckBox(Smb4KMountSettings::self()->forceUnmountInaccessibleItem()->label(), behaviorBox);
+  unmountInaccessibleShares->setObjectName("kcfg_ForceUnmountInaccessible");
+  
+  QCheckBox *detectAllShares = new QCheckBox(Smb4KMountSettings::self()->detectAllSharesItem()->label(), behaviorBox);
+  detectAllShares->setObjectName("kcfg_DetectAllShares");
+
+  behaviorBoxLayout->addWidget(remountShares, 0, 0, 1, 2, 0);
+  behaviorBoxLayout->addWidget(remountAttemptsLabel, 1, 0, 0);
+  behaviorBoxLayout->addWidget(remountAttempts, 1, 1, 0);
+  behaviorBoxLayout->addWidget(remountIntervalLabel, 2, 0, 0);
+  behaviorBoxLayout->addWidget(remountInterval, 2, 1, 0);
+  behaviorBoxLayout->addWidget(unmountAllShares, 3, 0, 1, 2, 0);
+  behaviorBoxLayout->addWidget(unmountInaccessibleShares, 4, 0, 1, 2, 0);
+  behaviorBoxLayout->addWidget(unmountForeignShares, 5, 0, 1, 2, 0);
+  behaviorBoxLayout->addWidget(detectAllShares, 6, 0, 1, 2, 0);
+  
+  basicTabLayout->addWidget(behaviorBox, 0);
+  basicTabLayout->addStretch(100);
+  
+  addTab(basicTab, i18n("Basic Settings"));
+  
+  //
+  // Common Mount Settings tab
   //
   QWidget *commonTab = new QWidget(this);
   QVBoxLayout *commonTabLayout = new QVBoxLayout(commonTab);
@@ -134,7 +219,7 @@ void Smb4KConfigPageMounting::setupWidget()
   commonOptionsLayout->addWidget(useFilesystemPort, 2, 0, 0);
   commonOptionsLayout->addWidget(filesystemPort, 2, 1, 0);
   
-  commonTabLayout->addWidget(commonOptions, 0, 0);
+  commonTabLayout->addWidget(commonOptions, 0);
   
   //
   // CIFS Unix Extensions Support group box
@@ -253,10 +338,10 @@ void Smb4KConfigPageMounting::setupWidget()
   commonTabLayout->addWidget(cifsExtensionSupportBox, 1, 0);
   commonTabLayout->addStretch(100);
   
-  addTab(commonTab, i18n("Common Settings"));
+  addTab(commonTab, i18n("Common Mount Settings"));
 
   // 
-  // Advanced options
+  // Advanced Mount Settings tab
   // 
   QWidget *advancedTab = new QWidget(this);
   QVBoxLayout *advancedTabLayout = new QVBoxLayout(advancedTab);
@@ -398,7 +483,7 @@ void Smb4KConfigPageMounting::setupWidget()
   advancedTabLayout->addWidget(advancedOptions, 0);
   advancedTabLayout->addStretch(100);
   
-  addTab(advancedTab, i18n("Advanced Settings"));
+  addTab(advancedTab, i18n("Advanced Mount Settings"));
   
   //
   // Adjust widgets
@@ -420,16 +505,97 @@ void Smb4KConfigPageMounting::setupWidget()
 void Smb4KConfigPageMounting::setupWidget()
 {
   //
-  // The layout
-  //  
-  QVBoxLayout *layout = new QVBoxLayout(this);
-  layout->setSpacing(5);
-  layout->setMargin(0);
+  // Basic Settings tab
+  // 
+  QWidget *basicTab = new QWidget(this);
+  QVBoxLayout *basicTabLayout = new QVBoxLayout(basicTab);
+  basicTabLayout->setSpacing(5);
+  basicTabLayout->setMargin(0);
+  
+  //
+  // Directories
+  // 
+  QGroupBox *directoryBox = new QGroupBox(i18n("Directories"), basicTab);
+
+  QGridLayout *directoryBoxLayout = new QGridLayout(directoryBox);
+  directoryBoxLayout->setSpacing(5);
+
+  QLabel *prefixLabel = new QLabel(Smb4KMountSettings::self()->mountPrefixItem()->label(), directoryBox);
+  KUrlRequester *prefix = new KUrlRequester(directoryBox);
+  prefix->setMode(KFile::Directory | KFile::LocalOnly);
+  prefix->setObjectName("kcfg_MountPrefix");
+
+  prefixLabel->setBuddy(prefix);
+  
+  QCheckBox *lowercaseSubdirs = new QCheckBox(Smb4KMountSettings::self()->forceLowerCaseSubdirsItem()->label(), directoryBox);
+  lowercaseSubdirs->setObjectName("kcfg_ForceLowerCaseSubdirs");
+
+  directoryBoxLayout->addWidget(prefixLabel, 0, 0, 0);
+  directoryBoxLayout->addWidget(prefix, 0, 1, 0);
+  directoryBoxLayout->addWidget(lowercaseSubdirs, 1, 0, 1, 2, 0);
+  
+  basicTabLayout->addWidget(directoryBox, 0);
+  
+  // 
+  // Behavior
+  // 
+  QGroupBox *behaviorBox = new QGroupBox(i18n("Behavior"), this);
+  QGridLayout *behaviorBoxLayout = new QGridLayout(behaviorBox);
+  behaviorBoxLayout->setSpacing(5);
+  
+  QCheckBox *remountShares = new QCheckBox(Smb4KMountSettings::self()->remountSharesItem()->label(), behaviorBox);
+  remountShares->setObjectName("kcfg_RemountShares");
+  
+  QLabel *remountAttemptsLabel = new QLabel(Smb4KMountSettings::self()->remountAttemptsItem()->label(), behaviorBox);
+  remountAttemptsLabel->setIndent(25);
+  
+  QSpinBox *remountAttempts = new QSpinBox(behaviorBox);
+  remountAttempts->setObjectName("kcfg_RemountAttempts");
+  remountAttemptsLabel->setBuddy(remountAttempts);
+  
+  QLabel *remountIntervalLabel = new QLabel(Smb4KMountSettings::self()->remountIntervalItem()->label(), behaviorBox);
+  remountIntervalLabel->setIndent(25);
+  
+  QSpinBox *remountInterval = new QSpinBox(behaviorBox);
+  remountInterval->setObjectName("kcfg_RemountInterval");
+  remountInterval->setSuffix(i18n(" min"));
+  remountIntervalLabel->setBuddy(remountInterval);
+
+  QCheckBox *unmountAllShares = new QCheckBox(Smb4KMountSettings::self()->unmountSharesOnExitItem()->label(), behaviorBox);
+  unmountAllShares->setObjectName("kcfg_UnmountSharesOnExit");
+  
+  QCheckBox *unmountForeignShares = new QCheckBox(Smb4KMountSettings::self()->unmountForeignSharesItem()->label(), behaviorBox);
+  unmountForeignShares->setObjectName("kcfg_UnmountForeignShares");
+
+  QCheckBox *detectAllShares = new QCheckBox(Smb4KMountSettings::self()->detectAllSharesItem()->label(), behaviorBox);
+  detectAllShares->setObjectName("kcfg_DetectAllShares");
+
+  behaviorBoxLayout->addWidget(remountShares, 0, 0, 1, 2, 0);
+  behaviorBoxLayout->addWidget(remountAttemptsLabel, 1, 0, 0);
+  behaviorBoxLayout->addWidget(remountAttempts, 1, 1, 0);
+  behaviorBoxLayout->addWidget(remountIntervalLabel, 2, 0, 0);
+  behaviorBoxLayout->addWidget(remountInterval, 2, 1, 0);
+  behaviorBoxLayout->addWidget(unmountAllShares, 3, 0, 1, 2, 0);
+  behaviorBoxLayout->addWidget(unmountForeignShares, 4, 0, 1, 2, 0);
+  behaviorBoxLayout->addWidget(detectAllShares, 5, 0, 1, 2, 0);
+  
+  basicTabLayout->addWidget(behaviorBox, 0);
+  basicTabLayout->addStretch(100);
+  
+  addTab(basicTab, i18n("Basic Settings"));
+  
+  //
+  // Mount Settings tab
+  // 
+  QWidget *mountTab = new QWidget(this);
+  QVBoxLayout *mountTabLayout = new QVBoxLayout(mountTab);
+  mountTabLayout->setSpacing(5);
+  mountTabLayout->setMargin(0);
 
   //
   // Common Options
   //
-  QGroupBox *commonOptionsBox = new QGroupBox(i18n("Common Options"), this);
+  QGroupBox *commonOptionsBox = new QGroupBox(i18n("Common Options"), mountTab);
   QGridLayout *commonOptionsBoxLayout = new QGridLayout(commonOptionsBox);
   commonOptionsBoxLayout->setSpacing(5);
 
@@ -536,7 +702,7 @@ void Smb4KConfigPageMounting::setupWidget()
   // 
   // Character sets
   // 
-  QGroupBox *characterSetsBox = new QGroupBox(i18n("Character Sets"), this);
+  QGroupBox *characterSetsBox = new QGroupBox(i18n("Character Sets"), mountTab);
   QGridLayout *characterSetsBoxLayout = new QGridLayout(characterSetsBox);
   characterSetsBoxLayout->setSpacing(5);  
   
@@ -583,9 +749,9 @@ void Smb4KConfigPageMounting::setupWidget()
   characterSetsBoxLayout->addWidget(serverCharacterSetLabel, 2, 0, 0);
   characterSetsBoxLayout->addWidget(serverCharacterSet, 2, 1, 0);  
   
-  layout->addWidget(commonOptionsBox, 0);
-  layout->addWidget(characterSetsBox, 0);
-  layout->addStretch(100);
+  mountTabLayout->addWidget(commonOptionsBox, 0);
+  mountTabLayout->addWidget(characterSetsBox, 0);
+  mountTabLayout->addStretch(100);
   
   //
   // Connections
