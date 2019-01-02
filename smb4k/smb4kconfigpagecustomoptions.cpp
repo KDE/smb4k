@@ -1466,6 +1466,8 @@ void Smb4KConfigPageCustomOptions::populateEditors()
   {
     // Do nothing
   }
+  
+  slotCifsUnixExtensionsSupport(cifsExtensionsSupport->isChecked());
 #endif
 
   //
