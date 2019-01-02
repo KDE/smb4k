@@ -201,18 +201,6 @@ void Smb4KNotification::bookmarkLabelInUse(Smb4KBookmark* bookmark)
 }
 
 
-void Smb4KNotification::emptyCustomMasterBrowser()
-{
-  KNotification *notification = new KNotification("emptyMasterBrowser");
-  notification->setText(i18n("The entry of the custom master browser is empty. Smb4K is going to "
-                              "try to query the current master browser of your workgroup or domain instead."));
-  notification->setPixmap(KIconLoader::global()->loadIcon("dialog-warning", KIconLoader::NoGroup, 0,
-                          KIconLoader::DefaultState));
-  notification->setFlags(KNotification::CloseOnTimeout);
-  notification->sendEvent();
-}
-
-
 void Smb4KNotification::sambaConfigFileMissing()
 {
   KNotification *notification = new KNotification("sambaConfigFileMissing");
@@ -738,16 +726,5 @@ void Smb4KNotification::invalidURLPassed()
                           KIconLoader::DefaultState));
   notification->setFlags(KNotification::CloseOnTimeout);
   notification->sendEvent(); 
-}
-
-
-void Smb4KNotification::emptyBroadcastAreas()
-{
-  KNotification *notification = new KNotification("emptyBroadcastAreas");
-  notification->setText(i18n("<p>There are no broadcast areas defined.</p>"));
-  notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
-                          KIconLoader::DefaultState));
-  notification->setFlags(KNotification::CloseOnTimeout);
-  notification->sendEvent();
 }
 

@@ -114,12 +114,6 @@ namespace Smb4KNotification
   Q_DECL_EXPORT void bookmarkLabelInUse(Smb4KBookmark *bookmark);
   
   /**
-   * This warning is shown if the entry of the custom master browser
-   * is empty.
-   */
-  Q_DECL_EXPORT void emptyCustomMasterBrowser();
-  
-  /**
    * This warning is shown if the configuration file for the Samba suite
    * (smb.conf) could not be loaded.
    */
@@ -284,12 +278,6 @@ namespace Smb4KNotification
    * class that refuses to process it.
    */
   Q_DECL_EXPORT void invalidURLPassed();
-  
-  /**
-   * This error message is emitted if the entry of the broadcast areas
-   * is empty.
-   */
-  Q_DECL_EXPORT void emptyBroadcastAreas();
 };
 
 
