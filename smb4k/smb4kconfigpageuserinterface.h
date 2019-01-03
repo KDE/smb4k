@@ -37,7 +37,7 @@
  * @author Alexander Reinholdt  <alexander.reinholdt@kdemail.net>
  */
 
-class Smb4KConfigPageUserInterface : public QTabWidget
+class Smb4KConfigPageUserInterface : public QWidget
 {
   Q_OBJECT
 
