@@ -180,6 +180,6 @@ QString Smb4KFile::name() const
 
 bool Smb4KFile::isHidden() const
 {
-  return name().startsWith(".");
+  return name().startsWith('.');
 }
 
