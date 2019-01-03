@@ -84,7 +84,6 @@ Smb4KMainWindow::Smb4KMainWindow()
   // Set up main window
   // 
   setStandardToolBarMenuEnabled(true);
-  setTabPosition(Qt::AllDockWidgetAreas, QTabWidget::West);
   createStandardStatusBarAction();
   setDockNestingEnabled(true);
   setupActions();
@@ -94,7 +93,40 @@ Smb4KMainWindow::Smb4KMainWindow()
   setupStatusBar();
   setupSystemTrayWidget();
 
+  //
+  // Set the tab orientation
+  // 
+  switch (Smb4KSettings::mainWindowTabOrientation())
+  {
+    case Smb4KSettings::EnumMainWindowTabOrientation::Top:
+    {
+      setTabPosition(Qt::AllDockWidgetAreas, QTabWidget::North);
+      break;
+    }
+    case Smb4KSettings::EnumMainWindowTabOrientation::Bottom:
+    {
+      setTabPosition(Qt::AllDockWidgetAreas, QTabWidget::South);
+      break;
+    }
+    case Smb4KSettings::EnumMainWindowTabOrientation::Left:
+    {
+      setTabPosition(Qt::AllDockWidgetAreas, QTabWidget::West);
+      break;
+    }
+    case Smb4KSettings::EnumMainWindowTabOrientation::Right:
+    {
+      setTabPosition(Qt::AllDockWidgetAreas, QTabWidget::East);
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+  
+  // 
   // Apply the main window settings
+  // 
   setAutoSaveSettings(KConfigGroup(Smb4KSettings::self()->config(), "MainWindow"), true);
 }
 
@@ -311,6 +343,37 @@ void Smb4KMainWindow::setupSystemTrayWidget()
 
 void Smb4KMainWindow::loadSettings()
 {
+  //
+  // Main window
+  //
+  switch (Smb4KSettings::mainWindowTabOrientation())
+  {
+    case Smb4KSettings::EnumMainWindowTabOrientation::Top:
+    {
+      setTabPosition(Qt::AllDockWidgetAreas, QTabWidget::North);
+      break;
+    }
+    case Smb4KSettings::EnumMainWindowTabOrientation::Bottom:
+    {
+      setTabPosition(Qt::AllDockWidgetAreas, QTabWidget::South);
+      break;
+    }
+    case Smb4KSettings::EnumMainWindowTabOrientation::Left:
+    {
+      setTabPosition(Qt::AllDockWidgetAreas, QTabWidget::West);
+      break;
+    }
+    case Smb4KSettings::EnumMainWindowTabOrientation::Right:
+    {
+      setTabPosition(Qt::AllDockWidgetAreas, QTabWidget::East);
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }  
+  
   //
   // Let the network browser load its settings
   // 
