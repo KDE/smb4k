@@ -11,6 +11,25 @@
 <!-- User Interface -->
 
   <group name="UserInterface">
+    <entry name="MainWindowTabOrientation" type="Enum">
+      <label>Tab orientation:</label>
+      <whatsthis>Set the tab orientation for the tabified dock widgets.</whatsthis>
+      <choices>
+        <choice name="Top">
+          <label>Top</label>
+        </choice>
+        <choice name="Bottom">
+          <label>Bottom</label>
+        </choice>
+        <choice name="Left">
+          <label>Left</label>
+        </choice>
+        <choice name="Right">
+          <label>Right</label>
+        </choice>
+      </choices>
+      <default>Left</default>
+    </entry>
     <entry name="ShowCustomBookmarkLabel" type="Bool">
       <label>Show custom bookmark label if available</label>
       <whatsthis>Do not show the name of the share that is represented by the bookmark but the custom label that was defined in the bookmark editor.</whatsthis>
@@ -37,7 +56,7 @@
       <default>true</default>
     </entry>
     <entry name="ShowNetworkItemToolTip" type="Bool">
-      <label>Show a tooltip with information about the network item</label>
+      <label>Show tooltips for network items</label>
       <whatsthis>The tooltip shows various information about the current network item.</whatsthis>
       <default>true</default>
     </entry>
@@ -47,7 +66,7 @@
       <default>true</default>
     </entry>
     <entry name="ShowShareToolTip" type="Bool">
-      <label>Show a tooltip with information about the share</label>
+      <label>Show tooltips for mounted shares</label>
       <whatsthis>The tooltip shows various information about the current share.</whatsthis>
       <default>true</default>
     </entry>
