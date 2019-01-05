@@ -28,7 +28,7 @@
           <label>Right</label>
         </choice>
       </choices>
-      <default>Left</default>
+      <default>Bottom</default>
     </entry>
     <entry name="ShowCustomBookmarkLabel" type="Bool">
       <label>Show custom bookmark label if available</label>
